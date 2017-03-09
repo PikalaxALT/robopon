@@ -6,19 +6,20 @@ SECTION "rst $00", HOME [$00]
 SECTION "rst $08", HOME [$08]
 	jp Func_0068
 Bank_000b:
-	db $1e
+	db BANK(Func_78100)
 Bank_000c:
 	db $1e
 Byte_000d:
 	db $4a
 Banks_000e:
-	db $1e, $1f
+	db BANK(Pointers_78000), BANK(Pointers_7c000)
 
 SECTION "rst $10", HOME [$10]
 	jp Func_00c9
 	db $01, $08, $01, $f0, $a1
 
 SECTION "rst $20", HOME [$20]
+Func_0020:
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
@@ -91,7 +92,7 @@ Func_0068: ; 68 (0:0068)
 	ld h, $0
 	ld a, [hl]
 	call Func_00f7
-	ld hl, Pointers_38000
+	ld hl, Pointers_78000
 	ld d, l
 	add hl, de
 	ld e, [hl]
@@ -300,50 +301,166 @@ Func_0218:
 	ld de, $1c7d
 	ret
 
-Func_021c: ; 021c
-	dr $21c, $22c
+Func_021c: ; 21c (0:021c)
+	push af
+	push bc
+	push de
+	push hl
+	ld a, [$ff99]
+	bit 2, a
+	call nz, Func_0230
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
 
-Func_022c: ; 022c
-	dr $22c, $230
+Func_022c: ; 22c (0:022c)
+	ld l, $0
+	jr asm_0253
 
-Func_0230: ; 0230
-	dr $230, $234
+Func_0230: ; 230 (0:0230)
+	ld l, $3
+	jr asm_0253
 
-Func_0234: ; 0234
-	dr $234, $238
+Func_0234: ; 234 (0:0234)
+	ld l, $6
+	jr asm_0253
 
-Func_0238: ; 0238
-	dr $238, $241
+Func_0238: ; 238 (0:0238)
+	cp 60
+	ret c
+	sub 20
+	ld l, $9
+	jr asm_0253
 
-Func_0241: ; 0241
-	dr $241, $245
+Func_0241: ; 241 (0:0241)
+	ld l, $c
+	jr asm_0253
 
-Func_0245: ; 0245
-	dr $245, $249
+Func_0245: ; 245 (0:0245)
+	ld l, $f
+	jr asm_0253
 
-Func_0249: ; 0249
-	dr $249, $24d
+Func_0249: ; 249 (0:0249)
+	ld l, $12
+	jr asm_0253
 
-Func_024d: ; 024d
-	dr $24d, $251
+Func_024d: ; 24d (0:024d)
+	ld l, $15
+	jr asm_0253
 
-Func_0251: ; 0251
-	dr $251, $26c
+Func_0251: ; 251 (0:0251)
+	ld l, $18
+asm_0253
+	ld h, $40
+	push af
+	call Func_025e
+	pop hl
+	push af
+	ld a, h
+	jr asm_0267
 
-Func_026c: ; 026c
-	dr $26c, $296
+Func_025e: ; 25e (0:025e)
+	push hl
+	push af
+	ld a, [hROMBank]
+	ld hl, sp+$7
+	ld [hl], a
+	ld a, $1c
+asm_0267
+	call Func_0020
+	pop af
+	ret
 
-Func_0296: ; 0296
-	dr $296, $2fd
+Func_026c: ; 26c (0:026c)
+	ld a, d
+	cp $80
+	ret c
+	cp $a0
+	jp c, Func_03d3
+	cp $c0
+	jr c, .asm_0286
+	cp $e0
+	jp nc, Func_03d3
+	sub $c0
+	rst $08
+	db $50
+	jp c, Func_03d3
+	ret
 
-Func_02fd: ; 02fd
-	dr $2fd, $323
+.asm_0286
+	sub $a0
+	rst $08
+	db $bc
+	jp c, Func_03d3
+	ret
 
+Func_028e:
+	di
+	ld sp, $e000
+	rst $08
+	db $00
+	rst $08
+	db $6e
+Func_0296: ; 296 (0:0296)
+	ld hl, Func_0296
+	rst $08
+	db $6f
+	jp Func_0300
+
+
+SECTION "02fd", HOME [$2fd]
+Func_02fd: ; 2fd (0:02fd)
+	jp Func_0309
+
+Func_0300: ; 300 (0:0300)
+	jp Func_030a
+
+Func_0303:
+	jp Func_03a4
+
+Func_0306:
+	jp Func_03d1
+
+Func_0309: ; 309 (0:0309)
+	ret
+
+Func_030a: ; 30a (0:030a)
+	ld bc, $a0000 / $10000
+.asm_030d
+	ld hl, $10000 % $10000
+.asm_0310
+	dec hl
+	ld a, l
+	or h
+	jr nz, .asm_0310
+	dec bc
+	ld a, c
+	or b
+	jr nz, .asm_030d
+	di
+	ld sp, $e000
+	rst $08
+	db $00
+	call Func_1a90
 Start:
 	dr $323, $388
 
 Func_0388:
-	dr $388, $3fee
+	dr $388, $3a4
+
+Func_03a4:
+	dr $3a4, $3d1
+
+Func_03d1:
+	dr $3d1, $3d3
+
+Func_03d3:
+	dr $3d3, $1a90
+
+Func_1a90:
+	dr $1a90, $3fee
 
 SECTION "Bank 01", ROMX, BANK [$01]
 	dr $4000, $8000
@@ -385,11 +502,9 @@ SECTION "Bank 0d", ROMX, BANK [$0d]
 	dr $34000, $38000
 
 SECTION "Bank 0e", ROMX, BANK [$0e]
-Pointers_38000:
 	dr $38000, $3c000
 
 SECTION "Bank 0f", ROMX, BANK [$0f]
-Pointers_3c000:
 	dr $3c000, $40000
 
 SECTION "Bank 10", ROMX, BANK [$10]
@@ -435,12 +550,14 @@ SECTION "Bank 1d", ROMX, BANK [$1d]
 	dr $74000, $78000
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
+Pointers_78000:
 	dr $78000, $78100
 
 Func_78100:
 	dr $78100, $7c000
 
 SECTION "Bank 1f", ROMX, BANK [$1f]
+Pointers_7c000:
 	dr $7c000, $80000
 
 SECTION "Bank 20", ROMX, BANK [$20]
