@@ -5,7 +5,14 @@ SECTION "rst $00", HOME [$00]
 
 SECTION "rst $08", HOME [$08]
 	jp Func_0068
-	db $1e, $1e, $4a, $1e, $1f
+Bank_000b:
+	db $1e
+Bank_000c:
+	db $1e
+Byte_000d:
+	db $4a
+Banks_000e:
+	db $1e, $1f
 
 SECTION "rst $10", HOME [$10]
 	jp Func_00c9
@@ -32,14 +39,131 @@ SECTION "SerialInt", HOME [$58]
 
 
 SECTION "High Home", HOME [$68]
-Func_0068::
-	dr $68, $c9
+Func_0068: ; 68 (0:0068)
+	add sp, -$5
+	push af
+	push de
+	push hl
+	ld hl, sp+$b
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	inc de
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	ld e, a
+	ld a, [Byte_000d] ; 4a
+	cp e
+	jr c, .asm_0093
+	ld d, $0
+	ld hl, Pointers_01e0
+	add hl, de
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$9
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	pop hl
+	pop de
+	pop af
+	add sp, $3
+	ret
 
-Func_00c9::
-	dr $c9, $fd
+.asm_0093
+	ld d, e
+	dec hl
+	ld a, [hROMBank]
+	ld [hld], a
+	ld [hl], .Return / $100
+	dec hl
+	ld [hl], .Return % $100
+	sla e
+	ld a, d
+	rlca
+	and $1
+	add Banks_000e
+	ld l, a
+	ld h, $0
+	ld a, [hl]
+	call Func_00f7
+	ld hl, Pointers_38000
+	ld d, l
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$6
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	pop hl
+	pop de
+	pop af
+	ret
+
+.Return
+	push af
+	push hl
+	ld hl, sp+$4
+	ld a, [hl]
+	call Func_00f7
+	pop hl
+	pop af
+	inc sp
+	ret
+
+Func_00c9: ; c9 (0:00c9)
+	push af
+	push af
+	push de
+	push hl
+	ld hl, sp+$8
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push hl
+	dec hl
+	add hl, de
+	ld e, l
+	ld d, h
+	ld hl, sp+$b
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	pop de
+	inc de
+	dec hl
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	pop hl
+	pop de
+	pop af
+	ret
+
+Func_00e9:
+	xor a
+	ld [$ff81], a
+	inc a
+	ld [HuC3LatchClock], a
+	xor a
+	ld [HuC3SRamEnable], a
+	ld a, [Bank_000c]
+Func_00f7: ; f7 (0:00f7)
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ret
 
 SECTION "Init", HOME [$100]
-Init::
+Init:
 	nop
 	jp Start
 
@@ -47,16 +171,178 @@ SECTION "Header", HOME [$104]
 	ds $150 - $104
 
 SECTION "Home", HOME [$150]
-Func_0150::
-	dr $150, $21c
+Func_0150:
+	ld a, [Bank_000b]
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	jp Func_78100
 
-Func_021c::
-	dr $21c, $323
+Func_015b:
+	ld a, b
+	or c
+	ret z
+	ld a, [$ff86]
+	or a
+	jr z, .asm_0174
+	ld a, h
+	and $e0
+	cp $80
+	jr z, .asm_017d
+	ld a, d
+	and $e0
+	cp $80
+	jr nz, .asm_0174
+	rst $08
+	db $fe
+	ret
 
-Start::
+.asm_0174
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr nz, .asm_0174
+	ret
+
+.asm_017d
+	ld a, b
+	or a
+.asm_017f
+	push af
+	rst $08
+	db $fd
+	pop af
+	push af
+	jr nz, .asm_018a
+	ld a, b
+	cp c
+	jr nc, .asm_01a5
+.asm_018a
+	push bc
+	push hl
+	ld c, b
+	ld b, $0
+	push bc
+	call Func_01a6
+	pop bc
+	pop hl
+	add hl, bc
+	pop bc
+	pop af
+	push hl
+	ld l, b
+	ld b, a
+	ld a, c
+	sub l
+	ld c, a
+	ld a, b
+	sbc $0
+	ld b, a
+	pop hl
+	jr .asm_017f
+
+.asm_01a5
+	pop af
+Func_01a6: ; 1a6 (0:01a6)
+	rst $08
+	db $ff
+.asm_01a8
+	ld a, [de]
+	inc de
+	ld [hl], a
+	inc l
+	dec c
+	jr nz, .asm_01a8
+	di
+	ld a, l
+	ld [$ff87], a
+	ld a, [$ff89]
+	add b
+	ld [$ff89], a
+	ei
+Func_01b9:
+	ret
+
+SECTION "01e0", HOME [$1e0]
+Pointers_01e0:
+	dw Func_00e9
+	dw Func_0150
+	dw Func_015b
+	dw $6f00
+	dw $6f30
+	dw $6f39
+	dw $76d3
+	dw $76ec
+	dw $770d
+	dw Func_02fd
+	dw Func_01b9
+	dw Func_01b9
+	dw Func_01b9
+	dw Func_01b9
+	dw Func_01b9
+	dw Func_01b9
+	dw Func_0296
+	dw Func_022c
+	dw Func_0230
+	dw Func_0234
+	dw Func_0238
+	dw Func_0241
+	dw Func_0245
+	dw Func_0249
+	dw Func_024d
+	dw Func_0251
+	dw Func_0218
+	dw Func_026c
+
+Func_0218:
+	ld de, $1c7d
+	ret
+
+Func_021c: ; 021c
+	dr $21c, $22c
+
+Func_022c: ; 022c
+	dr $22c, $230
+
+Func_0230: ; 0230
+	dr $230, $234
+
+Func_0234: ; 0234
+	dr $234, $238
+
+Func_0238: ; 0238
+	dr $238, $241
+
+Func_0241: ; 0241
+	dr $241, $245
+
+Func_0245: ; 0245
+	dr $245, $249
+
+Func_0249: ; 0249
+	dr $249, $24d
+
+Func_024d: ; 024d
+	dr $24d, $251
+
+Func_0251: ; 0251
+	dr $251, $26c
+
+Func_026c: ; 026c
+	dr $26c, $296
+
+Func_0296: ; 0296
+	dr $296, $2fd
+
+Func_02fd: ; 02fd
+	dr $2fd, $323
+
+Start:
 	dr $323, $388
 
-Func_0388::
+Func_0388:
 	dr $388, $3fee
 
 SECTION "Bank 01", ROMX, BANK [$01]
@@ -99,9 +385,11 @@ SECTION "Bank 0d", ROMX, BANK [$0d]
 	dr $34000, $38000
 
 SECTION "Bank 0e", ROMX, BANK [$0e]
+Pointers_38000:
 	dr $38000, $3c000
 
 SECTION "Bank 0f", ROMX, BANK [$0f]
+Pointers_3c000:
 	dr $3c000, $40000
 
 SECTION "Bank 10", ROMX, BANK [$10]
@@ -147,7 +435,10 @@ SECTION "Bank 1d", ROMX, BANK [$1d]
 	dr $74000, $78000
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
-	dr $78000, $7c000
+	dr $78000, $78100
+
+Func_78100:
+	dr $78100, $7c000
 
 SECTION "Bank 1f", ROMX, BANK [$1f]
 	dr $7c000, $80000
