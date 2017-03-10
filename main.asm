@@ -398,7 +398,7 @@ Func_026c: ; 26c (0:026c)
 
 Func_028e:
 	di
-	ld sp, $e000
+	ld sp, wStackTop
 	rst $08
 	db $00
 	rst $08
@@ -439,13 +439,13 @@ Func_030a: ; 30a (0:030a)
 	or b
 	jr nz, .asm_030d
 	di
-	ld sp, $e000
+	ld sp, wStackTop
 	rst $08
 	db $00
 	call Func_1a90
 Start: ; 323 (0:0323)
 	di
-	ld sp, $e000
+	ld sp, wStackTop
 	ld [hSystemType], a
 	push af
 Func_032a: ; 32a (0:032a)
@@ -473,7 +473,7 @@ Func_0331: ; 331 (0:0331)
 	ld [rLCDC], a
 	pop af
 	di
-	ld sp, $e000
+	ld sp, wStackTop
 	push af
 	rst $08
 	db $00
@@ -486,9 +486,9 @@ Func_0331: ; 331 (0:0331)
 	call Func_63141
 	di
 	pop af
-	ld [$c2fb], a
+	ld [wSystemTypeTemp], a
 	di
-	ld sp, $e000
+	ld sp, wStackTop
 	ld a, BANK(Func_4064)
 	call BankSwitch_03f2
 	ld a, $3
@@ -497,11 +497,11 @@ Func_0331: ; 331 (0:0331)
 	ld a, BANK(Func_fe102)
 	call BankSwitch_03f2
 	call Func_fe102
-	ld a, [$c2fb]
+	ld a, [wSystemTypeTemp]
 	ld [hSystemType], a
 Func_0388: ; 388 (0:0388)
 	di
-	ld sp, $e000
+	ld sp, wStackTop
 	ld a, BANK(Func_4064)
 	call BankSwitch_03f2
 	ld a, $3
@@ -514,9 +514,9 @@ Func_0388: ; 388 (0:0388)
 
 Func_03a4: ; 3a4 (0:03a4)
 	ld a, [hSystemType]
-	ld [$c2fb], a
+	ld [wSystemTypeTemp], a
 	di
-	ld sp, $e000
+	ld sp, wStackTop
 	ld a, BANK(Func_4064)
 	call BankSwitch_03f2
 	ld a, $3
@@ -524,12 +524,12 @@ Func_03a4: ; 3a4 (0:03a4)
 	call Func_4064
 	call Func_1a90
 	ld a, $ff
-	ld [$c213], a
+	ld [wc213], a
 	ld a, BANK(Func_4000)
 	call BankSwitch_03f2
 	call Func_4000
 	xor a
-	ld [$c213], a
+	ld [wc213], a
 	jp Func_1e4d
 
 Func_03d1: ; 3d1 (0:03d1)
@@ -564,10 +564,1110 @@ BankSwitch_03f2:
 	ret
 
 Func_03f8:
-	dr $3f8, $1a90
+	push hl
+	push bc
+	ld hl, sp+$0
+	ld bc, $27f0
+	add hl, bc
+	bit 7, h
+	jr z, .asm_0417
+	di
+	ld hl, sp+$4
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [hROMBank]
+	ld c, a
+	ld b, $ff
+	ld hl, sp+$0
+	ld sp, wStackTop
+	jp Func_1d00
+
+.asm_0417
+	pop bc
+	pop hl
+	ld [$c212], a
+	ld a, [hROMBank]
+	push af
+	ld a, [$c21a]
+	call BankSwitch_03f2
+	ld a, l
+	ld [$c218], a
+	ld a, h
+	ld [$c219], a
+	ld hl, .Return
+	push hl
+	ld a, [$c21b]
+	ld l, a
+	ld a, [$c21c]
+	ld h, a
+	push hl
+	ld a, [$c219]
+	ld h, a
+	ld a, [$c218]
+	ld l, a
+	ld a, [$c212]
+	ret
+
+.Return:
+	ld [$c212], a
+	pop af
+	call BankSwitch_03f2
+	ld a, [$c212]
+	ret
+
+Func_0451:
+	push bc
+	ld a, [$c39e]
+	push af
+	xor a
+	ld [$c39e], a
+	call Func_0465
+	ld c, a
+	pop af
+	ld [$c39e], a
+	ld a, c
+	pop bc
+	ret
+
+Func_0465: ; 465 (0:0465)
+	push bc
+	ld a, [$c209]
+	ld c, a
+.asm_046a
+	halt
+	ld a, [$c207]
+	ld b, a
+	ld a, [$c209]
+	cp c
+	jr z, .asm_046a
+	ld a, b
+	push af
+	call Func_1b28
+	pop af
+	pop bc
+	ret
+
+.asm_047e
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr nz, .asm_047e
+	ret
+
+.asm_0487
+	ld a, e
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr nz, .asm_0487
+	ret
+
+SECTION "0500", HOME [$500]
+Func_0500:
+	ld sp, wStackTop
+	di
+	rst $08
+	db $00
+	ld a, $7
+	ld [$c654], a
+	ld a, $ff
+	ld [$c655], a
+	ld a, $20
+	rst $08
+	db $b3
+	ld hl, $400
+	rst $08
+	db $ca
+Func_0519: ; 519 (0:0519)
+	call Func_07a2
+	ld de, $204
+	rst $08
+	db $57
+	ld c, $80
+	ld de, $59c
+	ld a, [$c654]
+	ld b, a
+	ld a, [$c655]
+.asm_052d
+	push bc
+	push hl
+	push af
+	ld a, c
+	ld c, l
+	ld b, h
+	ld l, e
+	ld h, d
+	ld d, a
+	ld e, $7
+	pop af
+	rrca
+	push af
+	call Func_058a
+	pop af
+	ld e, l
+	ld d, h
+	pop hl
+	ld bc, $20
+	add hl, bc
+	pop bc
+	inc c
+	dec b
+	jr nz, .asm_052d
+	ld hl, Data_065e
+	call Func_083b
+	ld a, $1
+	rst $08
+	db $b4
+	ld c, $0
+.asm_0557
+	ld a, [$c654]
+	ld b, a
+	ld hl, $104
+	ld d, $20
+	ld e, $3e
+	rst $08
+	db $5e
+	jr c, .asm_0588
+	ld c, a
+	inc a
+	call Func_0739
+	ld h, a
+	ld a, [$c655]
+	and h
+	jr z, .asm_0557
+	ld l, c
+	ld h, $0
+	rst $08
+	db $06
+	ld [$117], sp
+	push af
+	ld bc, $1fb
+	ld bc, $702
+	ld [bc], a
+	dec c
+	ld [bc], a
+	inc de
+	ld [bc], a
+	ld [bc], a
+	nop
+.asm_0588
+	rst $08
+	db $01
+Func_058a: ; 58a (0:058a)
+	jr nc, .asm_058f
+	rst $08
+	db $5b
+	ret
+
+.asm_058f
+	ld a, [hli]
+	or a
+	jr nz, .asm_058f
+	ld a, $d
+	rst $08
+	db $b9
+	ld a, $1
+	rst $08
+	db $b9
+	ret
+
+Data_059c:
+	dr $59c, $65e
+
+Data_065e:
+	dr $65e, $739
+
+Func_0739: ; 739 (0:0739)
+	push bc
+	ld c, a
+	ld a, $80
+.asm_073d
+	rlca
+	dec c
+	jr nz, .asm_073d
+	pop bc
+	ret
+
+Data_0743:
+	dr $743, $76f
+
+Func_076f:
+	ld de, $4000
+	ld a, $7
+	call Func_0856
+	ld de, $4000
+	ld a, $9
+	call Func_0856
+	ld de, $4000
+	ld a, $b
+	call Func_0856
+	ld de, $4000
+	ld a, $d
+.asm_078c
+	call Func_0856
+	ld de, $4000
+	ld a, $e
+	call Func_0856
+	ld de, $4000
+	ld a, $f
+	call Func_0856
+	jp Func_0519
+
+Func_07a2: ; 7a2 (0:07a2)
+	rst $08
+	db $b5
+	ld a, $c
+	rst $08
+	db $b9
+	ld hl, $8800
+	ld e, $0
+	ld bc, $a00
+	rst $08
+	db $a6
+	ld de, $3
+	ld bc, $1409
+	rst $08
+	db $58
+	ld a, $80
+	ld de, $204
+	ld bc, $1007
+	ld hl, $701
+	rst $08
+	db $59
+	ld de, $d
+	ld bc, $1405
+	rst $08
+	db $58
+	ld a, $f0
+	ld de, $20e
+	ld bc, $1003
+	ld hl, $301
+	rst $08
+	db $59
+	ld hl, $101
+	rst $08
+	db $b8
+	ld hl, Data_07e7
+	rst $08
+	db $69
+	ret
+
+Data_07e7:
+	dr $7e7, $7fa
+
+Data_07fa:
+	dr $7fa, $83b
+
+Func_083b: ; 83b (0:083b)
+	bcbgcoord 2, 14
+Func_083e: ; 83e (0:083e)
+	ld d, $f0
+	ld e, $3
+.asm_0842
+	ld a, [hl]
+	or a
+	ret z
+	push de
+	push bc
+	rst $08
+	db $5b
+	pop bc
+	ld a, $20
+	add c
+	ld c, a
+	ld a, $0
+	adc b
+	ld b, a
+	pop de
+	inc d
+	jr .asm_0842
+
+Func_0856: ; 856 (0:0856)
+	ld hl, $c600
+	ld [hli], a
+	ld [hl], e
+	inc hl
+	ld [hl], d
+Func_085d: ; 85d (0:085d)
+	call Func_07a2
+	ld hl, Data_07fa
+	call Func_083b
+	ld a, [hROMBank]
+	push af
+	ld hl, $c600
+	ld a, [hli]
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ld hl, $c604
+	ld bc, $28
+	rst $08
+	db $02
+	pop af
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ld de, $304
+	rst $08
+	db $57
+	ld b, $7
+	ld c, $87
+	ld de, $c604
+Func_088f: ; 88f (0:088f)
+	push bc
+	push hl
+	ld l, e
+	ld h, d
+	ld a, [hli]
+	ld b, [hl]
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+	push hl
+	or a
+	jr z, .asm_08da
+	ld a, [hROMBank]
+	push af
+	ld a, b
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ld a, d
+	cp $80
+	jr c, .asm_08af
+	sub $40
+	ld d, a
+.asm_08af
+	push bc
+	ld hl, $c634
+	ld bc, $20
+	rst $08
+	db $02
+	pop bc
+	pop af
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ld d, c
+	ld e, $7
+	pop hl
+	pop bc
+	push bc
+	push hl
+	ld hl, $c638
+	rst $08
+	db $5b
+	pop de
+	pop hl
+	ld bc, $20
+	add hl, bc
+	pop bc
+	inc c
+	dec b
+	jp nz, Func_088f
+	push bc
+	push hl
+	push de
+.asm_08da
+	ld a, $1
+	rst $08
+	db $b4
+	pop de
+	pop hl
+	pop bc
+	ld a, $7
+	sub b
+	ld b, a
+	ld c, $0
+.asm_08e7
+	ld hl, $104
+	ld d, $20
+	ld e, $3e
+	push bc
+	rst $08
+	db $5e
+	pop bc
+	jr c, .asm_08ff
+	ld c, a
+	push bc
+	call Func_0906
+	pop bc
+	jr nc, .asm_08e7
+	jp Func_085d
+
+.asm_08ff
+	ld a, [$ff8a]
+	and $4
+	ret z
+	rst $08
+	db $01
+Func_0906: ; 906 (0:0906)
+	ld hl, $c604
+	add a
+	add a
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld a, [hli]
+	or a
+	scf
+	ret z
+	ld a, [$ff8a]
+	ld [$c660], a
+	ld a, [hROMBank]
+	ld [$c65f], a
+	push af
+	ld a, [hli]
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, h
+	cp $80
+	jr c, .asm_092f
+	sub $40
+	ld h, a
+.asm_092f
+	ld a, [hli]
+	ld b, [hl]
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	cp $44
+	jr z, .asm_09a2
+	pop af
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	push bc
+	push de
+	ld a, $4
+	add c
+	ld l, a
+	ld h, $1
+	rst $08
+	db $b8
+	ld a, $2a
+	rst $08
+	db $bb
+	ld a, [$c660]
+	and $1
+	call nz, Func_0c51
+	pop de
+	pop bc
+	ret c
+	ld a, [hROMBank]
+	push af
+	ld a, b
+	ld [$c65e], a
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ld l, e
+	ld h, d
+	push bc
+	call Func_09c2
+	pop bc
+	jr c, .asm_0972
+	ld de, $cfc
+	jr .asm_097e
+
+.asm_0972
+	ld de, $d0f
+	ld a, [$c664]
+	or a
+	jr z, .asm_097e
+	ld de, $d24
+.asm_097e
+	pop af
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ld a, $4
+	add c
+	push de
+	push bc
+	ld e, a
+	ld d, $2
+	rst $08
+	db $57
+	ld c, l
+	ld b, h
+	pop de
+	ld a, $80
+	add e
+	ld d, a
+	ld e, $7
+	pop hl
+	rst $08
+	db $5b
+	ld hl, Data_07fa
+	call Func_083b
+	xor a
+	ret
+
+.asm_09a2
+	pop af
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ld c, b
+	ld hl, $c600
+	ld b, [hl]
+	inc hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	push bc
+	push hl
+	ld a, c
+	call Func_0856
+	pop de
+	pop af
+	ld hl, $c600
+	ld [hli], a
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	scf
+	ret
+
+Func_09c2: ; 9c2 (0:09c2)
+	xor a
+	ld [$c664], a
+	ld a, [$c660]
+	bit 0, a
+	jp nz, Func_0a91
+	bit 7, h
+	jr nz, .asm_0a07
+	push hl
+	call Func_0a18
+	pop hl
+	ret c
+	ld b, $0
+	add hl, bc
+	ld c, e
+	ld b, d
+.asm_09dd
+	push bc
+	ld a, b
+	cp $8
+	jr c, .asm_09e6
+	ld bc, $800
+.asm_09e6
+	ld e, l
+	ld d, h
+	push de
+	push bc
+	ld hl, $c900
+	rst $08
+	db $02
+	pop bc
+	push bc
+	ld de, $c900
+	ld hl, $c500
+	rst $08
+	db $ec
+	pop de
+	pop hl
+	add hl, de
+	pop bc
+	ld a, c
+	sub e
+	ld c, a
+	ld a, b
+	sbc d
+	ld b, a
+	or c
+	jr nz, .asm_09dd
+	ret
+
+.asm_0a07
+	ld de, $c000
+	add hl, de
+	push hl
+	call Func_0a18
+	pop hl
+	ret c
+	ld b, $0
+	add hl, bc
+	ld c, e
+	ld b, d
+	jr .asm_09dd
+
+Func_0a18: ; a18 (0:0a18)
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+	push de
+	ld b, [hl]
+	inc hl
+	ld a, [hli]
+	ld c, [hl]
+	inc hl
+	push bc
+	push af
+	ld e, l
+	ld d, h
+	push bc
+	ld hl, $c400
+	ld b, $0
+	push hl
+	rst $08
+	db $02
+	pop de
+	pop bc
+	ld hl, $c500
+	push bc
+	push de
+	rst $08
+	db $6b
+	pop de
+	pop bc
+	jr nc, .asm_0a85
+	pop hl
+	pop bc
+	pop de
+	ld a, $2e
+	bit 0, b
+	jr nz, .asm_0a46
+	xor a
+.asm_0a46
+	add $5
+	add c
+	ld c, a
+	push bc
+	push bc
+	ld a, $0
+	adc a
+	ld b, a
+	ld a, e
+	sub c
+	ld e, a
+	ld a, d
+	sbc b
+	ld d, a
+	pop bc
+	ld c, $0
+	ld a, h
+	ld hl, $c50a
+	ld [hl], a
+	ld hl, $c500
+	push de
+	rst $08
+	db $e9
+	pop de
+	pop bc
+	jr c, .asm_0a8d
+	bit 0, b
+	ret z
+	push bc
+	push de
+	ld b, $0
+	ld de, $ffd2
+	ld hl, $c500
+	rst $08
+	db $ea
+	pop de
+	ld hl, $2e
+	add hl, de
+	ld e, l
+	ld d, h
+	pop bc
+	ld a, c
+	sub $2e
+	ld c, a
+	xor a
+	ret
+
+.asm_0a85
+	ld a, $1
+	ld [$c664], a
+	pop hl
+	pop bc
+	pop de
+.asm_0a8d
+	or $1
+	scf
+	ret
+
+Func_0a91: ; a91 (0:0a91)
+	bit 7, h
+	jr nz, .asm_0add
+	push hl
+	call Func_0aee
+	pop hl
+	ret c
+	ld b, $0
+	add hl, bc
+	ld c, e
+	ld b, d
+.asm_0aa0
+	push bc
+	ld a, b
+	or a
+	jr z, .asm_0aa8
+	ld bc, $100
+.asm_0aa8
+	ld e, l
+	ld d, h
+	push de
+	push bc
+	ld hl, $c900
+	rst $08
+	db $02
+	pop bc
+	push bc
+	ld de, $c900
+	call Func_0ce1
+	pop de
+	pop hl
+	push af
+	add hl, de
+	pop af
+	pop bc
+	jr c, .asm_0adb
+	ld a, c
+	sub e
+	ld c, a
+	ld a, b
+	sbc d
+	ld b, a
+	or c
+	jr nz, .asm_0aa0
+	call Func_0bae
+	jr c, .asm_0adb
+	ld a, $2
+	call Func_0cc1
+	jr c, .asm_0adb
+	call Func_0cd2
+	xor a
+	ret
+
+.asm_0adb
+	scf
+	ret
+
+.asm_0add
+	ld de, $c000
+	add hl, de
+	push hl
+	call Func_0aee
+	pop hl
+	ret c
+	ld b, $0
+	add hl, bc
+	ld c, e
+	ld b, d
+	jr .asm_0aa0
+
+Func_0aee: ; aee (0:0aee)
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+	push de
+	ld b, [hl]
+	inc hl
+	ld a, [hli]
+	ld c, [hl]
+	inc hl
+	push bc
+	ld [$c661], a
+	ld e, l
+	ld d, h
+	push bc
+	ld hl, $c400
+	ld b, $0
+	push hl
+	rst $08
+	db $02
+	pop de
+	pop bc
+	ld hl, $c700
+	push bc
+	push de
+	call Func_0cf3
+	pop de
+	pop bc
+	jp nc, Func_0b97
+	pop bc
+	pop de
+	cp $ff
+	jp z, Func_0baa
+	ld a, $2e
+	bit 0, b
+	jr nz, .asm_0b24
+	xor a
+.asm_0b24
+	add $5
+	add c
+	ld c, a
+	push bc
+	push bc
+	ld a, $0
+	adc a
+	ld b, a
+	ld a, e
+	sub c
+	ld e, a
+	ld a, d
+	sbc b
+	ld d, a
+	pop bc
+	ld a, [$c662]
+	ld c, a
+	ld a, $ff
+	ld hl, $c70a
+	ld [hl], a
+	push de
+	push bc
+	ld a, $5
+	call Func_0cc1
+	pop bc
+	pop de
+	push de
+	ld hl, $c700
+	call Func_0ced
+	pop de
+	pop bc
+	jr nc, .asm_0b5b
+	cp $ff
+	jr z, Func_0baa
+	ld a, $4
+	jr asm_0ba4
+
+.asm_0b5b
+	push bc
+	push de
+	push hl
+	ld hl, sp+$0
+	ld d, h
+	ld e, l
+	ld hl, $ce00
+	ld c, $2
+	call Func_0cbb
+	pop hl
+	pop de
+	pop bc
+	ld a, [$c663]
+	cp h
+	jr nz, asm_0ba2
+	ld a, $5
+	cp l
+	jr nz, asm_0ba2
+	xor a
+	bit 0, b
+	ret z
+	push bc
+	push de
+	ld b, $0
+	ld de, $ffd2
+	ld hl, $c700
+	call Func_0ce7
+	pop de
+	ld hl, $2e
+	add hl, de
+	ld e, l
+	ld d, h
+	pop bc
+	ld a, c
+	sub $2e
+	ld c, a
+	xor a
+	ret
+
+Func_0b97: ; b97 (0:0b97)
+	ld a, $1
+	ld [$c664], a
+	pop bc
+	pop de
+	ld a, $7
+	jr asm_0ba4
+
+asm_0ba2
+	ld a, $5
+asm_0ba4
+	call Func_0cc1
+	call Func_0cd2
+Func_0baa: ; baa (0:0baa)
+	or $1
+	scf
+	ret
+
+Func_0bae: ; bae (0:0bae)
+	ld hl, $c709
+	ld a, [hli]
+	push hl
+	inc hl
+	ld b, $0
+	bit 0, a
+	ld a, $fe
+	jr z, .asm_0bbe
+	sub $2e
+.asm_0bbe
+	sub [hl]
+	ld e, a
+	ld a, $ff
+	sbc b
+	ld d, a
+	call Func_0ce7
+	pop de
+	ret c
+	ld a, [$c661]
+	ld [de], a
+	ld bc, $1
+	jp Func_0ce1
+
+Data_0bd3:
+	dr $bd3, $c15
+
+Data_0c15:
+	dr $c15, $c51
+
+Func_0c51: ; c51 (0:0c51)
+	ld hl, Data_0bd3
+	call Func_083b
+.asm_0c57
+	rst $08
+	db $d8
+	bit 1, a
+	jr nz, .asm_0ca4
+	and $1
+	jr z, .asm_0c57
+	ld hl, Data_0c15
+	call Func_083b
+	ld hl, $ce00
+	ld de, $c800
+	ld c, $10
+	call Func_0cbb
+	jr c, .asm_0ca4
+	rst $10
+	add hl, sp
+	nop
+	pop hl
+	ld de, $c802
+	ld bc, $d
+	rst $08
+	db $67
+	ld a, h
+	or l
+	ld a, $6
+	jr nz, .asm_0ca6
+	ld a, [$c800]
+	or a
+	jr nz, .asm_0ca6
+.asm_0c8b
+	ld a, [$c801]
+	ld [$c663], a
+	ld a, [$c80f]
+	ld [$c662], a
+	ld a, $1
+	call Func_0cc1
+	jr c, .asm_0ca4
+	call Func_0cd2
+	xor a
+	ret
+
+.asm_0ca4
+	scf
+	ret
+
+.asm_0ca6
+	call Func_0cc1
+	call Func_0cd2
+	scf
+	ret
+
+Data_0cae:
+	dr $cae, $cbb
+
+Func_0cbb: ; cbb (0:0cbb)
+	rst $08
+	db $c3
+	rst $08
+	db $7c
+	jr asm_0cf7
+
+Func_0cc1: ; cc1 (0:0cc1)
+	ld [$c800], a
+	ld de, $ce00
+	ld hl, $c800
+	ld c, $1
+	rst $08
+	db $c3
+	rst $08
+	db $7f
+	jr asm_0cf7
+
+Func_0cd2: ; cd2 (0:0cd2)
+	rst $08
+	db $c3
+	rst $08
+	db $73
+	jr asm_0cf7
+
+Func_0cd8:
+	ld hl, $c700
+	rst $08
+	db $c3
+	rst $08
+	db $79
+	jr asm_0cf7
+
+Func_0ce1: ; ce1 (0:0ce1)
+	rst $08
+	db $c3
+	rst $08
+	db $7d
+	jr asm_0cf7
+
+Func_0ce7: ; ce7 (0:0ce7)
+	rst $08
+	db $c3
+	rst $08
+	db $77
+	jr asm_0cf7
+
+Func_0ced: ; ced (0:0ced)
+	rst $08
+	db $c3
+	rst $08
+	db $76
+	jr asm_0cf7
+
+Func_0cf3: ; cf3 (0:0cf3)
+	rst $08
+	db $c3
+	rst $08
+	db $75
+asm_0cf7
+	push af
+	rst $08
+	db $db
+	pop af
+	ret
+
+Data_0cfc:
+	dr $cfc, $d3a
+
+SECTION "0e00", HOME [$e00]
+Func_e00:
+	dr $e00, $1a90
 
 Func_1a90:
-	dr $1a90, $1e4d
+	dr $1a90, $1b28
+
+Func_1b28:
+	dr $1b28, $1d00
+
+Func_1d00:
+	dr $1d00, $1e4d
 
 Func_1e4d:
 	dr $1e4d, $3fee

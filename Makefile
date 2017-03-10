@@ -36,7 +36,7 @@ compare: roms
 roms: $(sun) $(star)
 
 tidy:
-	rm -f $(sun) $(star) $(objs) $(roms:.gbc=.sym) $(roms:.gbc=.map)
+	rm -f $(sun) $(star) $(sun_objs) $(star_objs) $(roms:.gbc=.sym) $(roms:.gbc=.map)
 
 clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' \) -exec rm {} +
@@ -52,9 +52,9 @@ $(star_objs): %_star.o: %.asm $$(%_dep)
 opts = -csv -k 18 -l 0x33 -m 0xfe -p 0x00 -r 0x03
 
 $(sun): $(sun_objs)
-	rgblink -n $*.sym -o $@ $^
+	rgblink -w -n $*.sym -o $@ $^
 	rgbfix $(opts) -t "ROBOPON SUN" $@
 
 $(star): $(star_objs)
-	rgblink -n $*.sym -o $@ $^
+	rgblink -w -n $*.sym -o $@ $^
 	rgbfix $(opts) -t "ROBOPON STAR" $@

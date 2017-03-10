@@ -28,3 +28,5 @@ ENDC
 ENDM
 
 hlbgcoord EQUS "bgcoord hl,"
+debgcoord EQUS "bgcoord de,"
+bcbgcoord EQUS "bgcoord bc,"
