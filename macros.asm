@@ -18,3 +18,13 @@ RGB: MACRO
 
 tile EQUS "+ $10 *"
 tiles EQUS "* $10"
+
+bgcoord: MACRO
+IF _NARG >= 4
+	ld \1, \3 * BG_MAP_WIDTH + \2 + \4
+ELSE
+	ld \1, \3 * BG_MAP_WIDTH + \2 + vBGMap
+ENDC
+ENDM
+
+hlbgcoord EQUS "bgcoord hl,"

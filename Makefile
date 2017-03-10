@@ -28,10 +28,11 @@ $(foreach obj, $(objs:.o=), \
 sun  := robosun.gbc
 star := robostar.gbc
 
+all: roms
+
 compare: roms
 	$(MD5) roms.md5
 
-all: roms ;
 roms: $(sun) $(star)
 
 tidy:

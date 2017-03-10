@@ -19,7 +19,7 @@ SECTION "rst $10", HOME [$10]
 	db $01, $08, $01, $f0, $a1
 
 SECTION "rst $20", HOME [$20]
-Func_0020:
+BankSwitch_0020:
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
@@ -91,7 +91,7 @@ Func_0068: ; 68 (0:0068)
 	ld l, a
 	ld h, $0
 	ld a, [hl]
-	call Func_00f7
+	call BankSwitch_00f7
 	ld hl, Pointers_78000
 	ld d, l
 	add hl, de
@@ -112,7 +112,7 @@ Func_0068: ; 68 (0:0068)
 	push hl
 	ld hl, sp+$4
 	ld a, [hl]
-	call Func_00f7
+	call BankSwitch_00f7
 	pop hl
 	pop af
 	inc sp
@@ -152,13 +152,13 @@ Func_00c9: ; c9 (0:00c9)
 
 Func_00e9:
 	xor a
-	ld [$ff81], a
+	ld [hSRAMBank], a
 	inc a
 	ld [HuC3LatchClock], a
 	xor a
 	ld [HuC3SRamEnable], a
 	ld a, [Bank_000c]
-Func_00f7: ; f7 (0:00f7)
+BankSwitch_00f7: ; f7 (0:00f7)
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
@@ -316,60 +316,60 @@ Func_021c: ; 21c (0:021c)
 	reti
 
 Func_022c: ; 22c (0:022c)
-	ld l, $0
+	ld l, Func_70000 % $100
 	jr asm_0253
 
 Func_0230: ; 230 (0:0230)
-	ld l, $3
+	ld l, Func_70003 % $100
 	jr asm_0253
 
 Func_0234: ; 234 (0:0234)
-	ld l, $6
+	ld l, Func_70006 % $100
 	jr asm_0253
 
 Func_0238: ; 238 (0:0238)
 	cp 60
 	ret c
 	sub 20
-	ld l, $9
+	ld l, Func_70009 % $100
 	jr asm_0253
 
 Func_0241: ; 241 (0:0241)
-	ld l, $c
+	ld l, Func_7000c % $100
 	jr asm_0253
 
 Func_0245: ; 245 (0:0245)
-	ld l, $f
+	ld l, Func_7000f % $100
 	jr asm_0253
 
 Func_0249: ; 249 (0:0249)
-	ld l, $12
+	ld l, Func_70012 % $100
 	jr asm_0253
 
 Func_024d: ; 24d (0:024d)
-	ld l, $15
+	ld l, Func_70015 % $100
 	jr asm_0253
 
 Func_0251: ; 251 (0:0251)
-	ld l, $18
+	ld l, Func_70018 % $100
 asm_0253
-	ld h, $40
+	ld h, Func_70000 / $100
 	push af
-	call Func_025e
+	call .Bank1CCall
 	pop hl
 	push af
 	ld a, h
-	jr asm_0267
+	jr .BankSwitchBack
 
-Func_025e: ; 25e (0:025e)
+.Bank1CCall: ; 25e (0:025e)
 	push hl
 	push af
 	ld a, [hROMBank]
 	ld hl, sp+$7
 	ld [hl], a
-	ld a, $1c
-asm_0267
-	call Func_0020
+	ld a, BANK(Func_70000)
+.BankSwitchBack
+	call BankSwitch_0020
 	pop af
 	ret
 
@@ -409,7 +409,6 @@ Func_0296: ; 296 (0:0296)
 	db $6f
 	jp Func_0300
 
-
 SECTION "02fd", HOME [$2fd]
 Func_02fd: ; 2fd (0:02fd)
 	jp Func_0309
@@ -444,26 +443,141 @@ Func_030a: ; 30a (0:030a)
 	rst $08
 	db $00
 	call Func_1a90
-Start:
-	dr $323, $388
+Start: ; 323 (0:0323)
+	di
+	ld sp, $e000
+	ld [hSystemType], a
+	push af
+Func_032a: ; 32a (0:032a)
+	ld a, [rLY]
+	cp $91
+	jp nc, Func_032a
+Func_0331: ; 331 (0:0331)
+	ld a, [rLY]
+	cp $91
+	jp c, Func_0331
+	ld a, [rLCDC]
+	and $7f
+	ld [rLCDC], a
+	hlbgcoord 0, 0
+	ld bc, $400
+.asm_0344
+	xor a
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr nz, .asm_0344
+	ld a, [rLCDC]
+	or $80
+	ld [rLCDC], a
+	pop af
+	di
+	ld sp, $e000
+	push af
+	rst $08
+	db $00
+	rst $08
+	db $11
+	ld a, BANK(Func_63141)
+	call BankSwitch_03f2
+	pop af
+	push af
+	call Func_63141
+	di
+	pop af
+	ld [$c2fb], a
+	di
+	ld sp, $e000
+	ld a, BANK(Func_4064)
+	call BankSwitch_03f2
+	ld a, $3
+	call Func_03d5
+	call Func_4064
+	ld a, BANK(Func_fe102)
+	call BankSwitch_03f2
+	call Func_fe102
+	ld a, [$c2fb]
+	ld [hSystemType], a
+Func_0388: ; 388 (0:0388)
+	di
+	ld sp, $e000
+	ld a, BANK(Func_4064)
+	call BankSwitch_03f2
+	ld a, $3
+	call Func_03d5
+	call Func_4064
+	call Func_1a90
+	ld a, BANK(Func_4000)
+	call BankSwitch_03f2
+	jp Func_4000
 
-Func_0388:
-	dr $388, $3a4
+Func_03a4: ; 3a4 (0:03a4)
+	ld a, [hSystemType]
+	ld [$c2fb], a
+	di
+	ld sp, $e000
+	ld a, BANK(Func_4064)
+	call BankSwitch_03f2
+	ld a, $3
+	call Func_03d5
+	call Func_4064
+	call Func_1a90
+	ld a, $ff
+	ld [$c213], a
+	ld a, BANK(Func_4000)
+	call BankSwitch_03f2
+	call Func_4000
+	xor a
+	ld [$c213], a
+	jp Func_1e4d
 
-Func_03a4:
-	dr $3a4, $3d1
+Func_03d1: ; 3d1 (0:03d1)
+	scf
+	ret
 
-Func_03d1:
-	dr $3d1, $3d3
+Func_03d3: ; 3d3 (0:03d3)
+	scf
+	ret
 
-Func_03d3:
-	dr $3d3, $1a90
+Func_03d5: ; 3d5 (0:03d5)
+	bit 7, a
+	jr nz, .asm_03e4
+	ld [hSRAMBank], a
+	ld [HuC3SRamBank], a
+	ld a, SRAM_ENABLE
+	ld [HuC3SRamEnable], a
+	ret
+
+.asm_03e4
+	set 7, a
+	ld [hSRAMBank], a
+	res 7, a
+	ld [HuC3SRamBank], a
+	xor a
+	ld [HuC3SRamEnable], a
+	ret
+
+BankSwitch_03f2:
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ret
+
+Func_03f8:
+	dr $3f8, $1a90
 
 Func_1a90:
-	dr $1a90, $3fee
+	dr $1a90, $1e4d
+
+Func_1e4d:
+	dr $1e4d, $3fee
 
 SECTION "Bank 01", ROMX, BANK [$01]
-	dr $4000, $8000
+Func_4000:
+	dr $4000, $4064
+
+Func_4064:
+	dr $4064, $8000
 
 SECTION "Bank 02", ROMX, BANK [$02]
 	dr $8000, $c000
@@ -532,7 +646,10 @@ SECTION "Bank 17", ROMX, BANK [$17]
 	dr $5c000, $60000
 
 SECTION "Bank 18", ROMX, BANK [$18]
-	dr $60000, $64000
+	dr $60000, $63141
+
+Func_63141:
+	dr $63141, $64000
 
 SECTION "Bank 19", ROMX, BANK [$19]
 	dr $64000, $68000
@@ -544,7 +661,32 @@ SECTION "Bank 1b", ROMX, BANK [$1b]
 	dr $6c000, $70000
 
 SECTION "Bank 1c", ROMX, BANK [$1c]
-	dr $70000, $74000
+Func_70000:
+	dr $70000, $70003
+
+Func_70003:
+	dr $70003, $70006
+
+Func_70006:
+	dr $70006, $70009
+
+Func_70009:
+	dr $70009, $7000c
+
+Func_7000c:
+	dr $7000c, $7000f
+
+Func_7000f:
+	dr $7000f, $70012
+
+Func_70012:
+	dr $70012, $70015
+
+Func_70015:
+	dr $70015, $70018
+
+Func_70018:
+	dr $70018, $74000
 
 SECTION "Bank 1d", ROMX, BANK [$1d]
 	dr $74000, $78000
@@ -654,4 +796,15 @@ SECTION "Bank 3e", ROMX, BANK [$3e]
 	dr $f8000, $fc000
 
 SECTION "Bank 3f", ROMX, BANK [$3f]
-	dr $fc000, $100000
+IF DEF(SUN)
+	dr $fc000, $fe102
+
+Func_fe102:
+	dr $fe102, $100000
+ENDC
+IF DEF(STAR)
+	dr $fc000, $fe100
+
+Func_fe102:
+	dr $fe100, $100000
+ENDC

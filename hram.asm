@@ -1,1 +1,4 @@
-hROMBank EQU $ff80
+hROMBank EQU $FF80
+hSRAMBank EQU $FF81
+
+hSystemType EQU $FFF4
