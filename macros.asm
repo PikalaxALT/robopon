@@ -30,3 +30,17 @@ ENDM
 hlbgcoord EQUS "bgcoord hl,"
 debgcoord EQUS "bgcoord de,"
 bcbgcoord EQUS "bgcoord bc,"
+
+oam_ram: MACRO
+\1YCoord:: ds 1
+\1XCoord:: ds 1
+\1VTile:: ds 1
+\1Attrs::
+; bit 7 - bg priority
+; bit 6 - y flip
+; bit 5 - x flip
+; bit 4 - dmg/sgb pal
+; bit 3 - cgb vram bank
+; bits 0-2 - cgb pal
+	ds 1
+	ENDM

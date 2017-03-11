@@ -45,7 +45,8 @@ Func_0068: ; 68 (0:0068)
 	push af
 	push de
 	push hl
-	ld hl, sp+$b
+	; 1-byte argument off the stack
+	ld hl, sp+$b ; 5 + 6
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -54,10 +55,12 @@ Func_0068: ; 68 (0:0068)
 	ld [hl], d
 	dec hl
 	ld [hl], e
+	; If >= $4a, it's a far call
 	ld e, a
 	ld a, [Byte_000d] ; 4a
 	cp e
 	jr c, .asm_0093
+	; Jump to a function from the table.
 	ld d, $0
 	ld hl, Pointers_01e0
 	add hl, de
@@ -77,12 +80,14 @@ Func_0068: ; 68 (0:0068)
 
 .asm_0093
 	ld d, e
+	; store the return bank and address on the stack
 	dec hl
 	ld a, [hROMBank]
 	ld [hld], a
 	ld [hl], .Return / $100
 	dec hl
 	ld [hl], .Return % $100
+	; get the far pointer
 	sla e
 	ld a, d
 	rlca
@@ -182,7 +187,7 @@ Func_015b:
 	ld a, b
 	or c
 	ret z
-	ld a, [$ff86]
+	ld a, [hFF86]
 	or a
 	jr z, .asm_0174
 	ld a, h
@@ -258,10 +263,10 @@ Func_01a6: ; 1a6 (0:01a6)
 	jr nz, .asm_01a8
 	di
 	ld a, l
-	ld [$ff87], a
-	ld a, [$ff89]
+	ld [hFF87], a
+	ld a, [hFF89]
 	add b
-	ld [$ff89], a
+	ld [hFF89], a
 	ei
 Func_01b9:
 	ret
@@ -306,7 +311,7 @@ Func_021c: ; 21c (0:021c)
 	push bc
 	push de
 	push hl
-	ld a, [$ff99]
+	ld a, [hFF99]
 	bit 2, a
 	call nz, Func_0230
 	pop hl
@@ -586,59 +591,59 @@ Func_03f8:
 .asm_0417
 	pop bc
 	pop hl
-	ld [$c212], a
+	ld [wc212], a
 	ld a, [hROMBank]
 	push af
-	ld a, [$c21a]
+	ld a, [wc21a]
 	call BankSwitch_03f2
 	ld a, l
-	ld [$c218], a
+	ld [wc218], a
 	ld a, h
-	ld [$c219], a
+	ld [wc218 + 1], a
 	ld hl, .Return
 	push hl
-	ld a, [$c21b]
+	ld a, [wc21b]
 	ld l, a
-	ld a, [$c21c]
+	ld a, [wc21b + 1]
 	ld h, a
 	push hl
-	ld a, [$c219]
+	ld a, [wc218 + 1]
 	ld h, a
-	ld a, [$c218]
+	ld a, [wc218]
 	ld l, a
-	ld a, [$c212]
+	ld a, [wc212]
 	ret
 
 .Return:
-	ld [$c212], a
+	ld [wc212], a
 	pop af
 	call BankSwitch_03f2
-	ld a, [$c212]
+	ld a, [wc212]
 	ret
 
 Func_0451:
 	push bc
-	ld a, [$c39e]
+	ld a, [wOAM27VTile]
 	push af
 	xor a
-	ld [$c39e], a
+	ld [wOAM27VTile], a
 	call Func_0465
 	ld c, a
 	pop af
-	ld [$c39e], a
+	ld [wOAM27VTile], a
 	ld a, c
 	pop bc
 	ret
 
 Func_0465: ; 465 (0:0465)
 	push bc
-	ld a, [$c209]
+	ld a, [wc209]
 	ld c, a
 .asm_046a
 	halt
-	ld a, [$c207]
+	ld a, [wc207]
 	ld b, a
-	ld a, [$c209]
+	ld a, [wc209]
 	cp c
 	jr z, .asm_046a
 	ld a, b
@@ -732,7 +737,7 @@ Func_0519: ; 519 (0:0519)
 	ld e, $3e
 	rst $08
 	db $5e
-	jr c, .asm_0588
+	jr c, asm_0588
 	ld c, a
 	inc a
 	call Func_0739
@@ -744,21 +749,14 @@ Func_0519: ; 519 (0:0519)
 	ld h, $0
 	rst $08
 	db $06
-	ld [$117], sp
-	push af
-	ld bc, $1fb
-	ld bc, $702
-	ld [bc], a
-	dec c
-	ld [bc], a
-	inc de
-	ld [bc], a
-	ld [bc], a
-	nop
-.asm_0588
+
+Data_0577:
+	dr $577, $588
+
+asm_0588
 	rst $08
 	db $01
-Func_058a: ; 58a (0:058a)
+Func_058a:
 	jr nc, .asm_058f
 	rst $08
 	db $5b
@@ -1002,7 +1000,7 @@ Func_088f: ; 88f (0:088f)
 	jp Func_085d
 
 .asm_08ff
-	ld a, [$ff8a]
+	ld a, [hFF8A]
 	and $4
 	ret z
 	rst $08
@@ -1018,7 +1016,7 @@ Func_0906: ; 906 (0:0906)
 	or a
 	scf
 	ret z
-	ld a, [$ff8a]
+	ld a, [hFF8A]
 	ld [$c660], a
 	ld a, [hROMBank]
 	ld [$c65f], a
