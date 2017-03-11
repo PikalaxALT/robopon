@@ -763,10 +763,16 @@ Func_058a:
 
 Data_059c:
 	db " PASSWORD INPUT", $0e, $0d, $01, $00
-	dr $5af, $65e
+	dr $5af, $607
+
+Data_0607:
+	dr $607, $65e
 
 Data_065e:
-	dr $65e, $68f
+	dr $65e, $686
+
+Data_0686:
+	dr $686, $68f
 
 Func_068f: ; 68f (0:068f)
 	call Func_07a2
@@ -782,17 +788,17 @@ Func_068f: ; 68f (0:068f)
 	predef Func_7be3e
 	ld hl, $204
 	predef Func_7d905
-	ld hl, $59c
+	ld hl, Data_059c
 	predef Func_7af96
-	ld hl, $607
+	ld hl, Data_0607
 	predef Func_7d905
-	ld hl, $686
+	ld hl, Data_0686
 	predef Func_7af96
-	ld hl, $743
+	ld hl, Data_0743
 	bcbgcoord 2, 8
 	call Func_083e
 	ld a, $3
-	ld [$ffae], a
+	ld [hFFAE], a
 	ld de, $900d
 	ld hl, $0
 	predef Func_7b85e
@@ -1314,7 +1320,7 @@ Func_0a18: ; a18 (0:0a18)
 	push bc
 	push de
 	ld b, $0
-	ld de, $ffd2
+	ld de, hFFD2
 	ld hl, $c500
 	predef Func_7cb98
 	pop de
@@ -1509,7 +1515,7 @@ Func_0aee: ; aee (0:0aee)
 	push bc
 	push de
 	ld b, $0
-	ld de, $ffd2
+	ld de, hFFD2
 	ld hl, $c700
 	call Func_0ce7
 	pop de
@@ -2005,6 +2011,7 @@ Func_7b6d3: ; 7b6d3 (1e:76d3)
 	ld a, $0
 	adc d
 	ld h, a
+asm_7b6e6:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -2012,68 +2019,1401 @@ Func_7b6d3: ; 7b6d3 (1e:76d3)
 	add hl, de
 	jp [hl]
 
-Func_7b6ec: ; 7b6ec
-	dr $7b6ec, $7b70d
+Func_7b6ec: ; 7b6ec (1e:76ec)
+	ld e, l
+	ld d, h
+	pop hl
+	inc d
+	dec d
+	jr nz, .asm_7b6fe
+.asm_7b6f3
+	ld a, [hli]
+	cp e
+	jr z, asm_7b704
+	ld a, [hli]
+	or [hl]
+	inc hl
+	jr nz, .asm_7b6f3
+	jr asm_7b6e6
 
-Func_7b70d: ; 7b70d
-	dr $7b70d, $7b72b
+.asm_7b6fe
+	inc hl
+	ld a, [hli]
+	or [hl]
+	inc hl
+	jr nz, .asm_7b6fe
+asm_7b704
+	ld a, [hli]
+	or [hl]
+	inc hl
+	jr z, asm_7b704
+	dec hl
+	dec hl
+	jr asm_7b6e6
 
-Func_7b72b: ; 7b72b
-	dr $7b72b, $7b767
+Func_7b70d: ; 7b70d (1e:770d)
+	ld e, l
+	ld d, h
+	pop hl
+.asm_7b710
+	ld a, [hli]
+	cp e
+	jr nz, .asm_7b719
+	ld a, [hli]
+	cp d
+	jr z, asm_7b704
+	dec hl
+.asm_7b719
+	inc hl
+	ld a, [hli]
+	or [hl]
+	inc hl
+	jr nz, .asm_7b710
+	jr asm_7b6e6
 
-Func_7b767: ; 7b767
-	dr $7b767, $7b776
+asm_7b721
+	ld b, $a0
+	bit 7, d
+	jr z, asm_7b74e
+	ld b, $41
+	jr asm_7b74e
 
-Func_7b776: ; 7b776
-	dr $7b776, $7b7a9
+Func_7b72b: ; 7b72b (1e:772b)
+	ld a, d
+	xor h
+	rla
+	jr c, asm_7b721
+	ld a, e
+	sub l
+	ld l, a
+	ld a, d
+	sbc h
+	ld h, a
+	rra
+	and $c0
+	ld b, a
+	ld a, l
+	or h
+	jr nz, .asm_7b742
+	set 4, b
+	jr asm_7b74e
 
-Func_7b7a9: ; 7b7a9
-	dr $7b7a9, $7b848
+.asm_7b742
+	bit 7, h
+	jr nz, .asm_7b748
+	set 5, b
+.asm_7b748
+	bit 7, b
+	jr nz, asm_7b74e
+	set 0, b
+asm_7b74e
+	ld a, b
+	ld b, $0
+	ld hl, Data_7b75d
+	add hl, bc
+	and [hl]
+	ld hl, $0
+	ret z
+	inc hl
+	scf
+	ret
 
-Func_7b848: ; 7b848
-	dr $7b848, $7b85e
+Data_7b75d:
+	dr $7b75d, $7b767
 
-Func_7b85e: ; 7b85e
-	dr $7b85e, $7b8eb
+Func_7b767: ; 7b767 (1e:7767)
+	ld a, [hli]
+	bit 7, a
+	ret nz
+	push hl
+	ld l, [hl]
+	ld h, a
+	predef Func_7d905
+	pop hl
+	inc hl
+	predef Func_7af96
+	jr Func_7b767
 
-Func_7b8eb: ; 7b8eb
-	dr $7b8eb, $7b93a
+Func_7b776: ; 7b776 (1e:7776)
+	add sp, -$a
+	ld hl, sp+$0
+	ld [hli], a
+	ld [hl], $0
+	inc hl
+	ld a, [de]
+	inc de
+	ld [hli], a
+	ld [hl], $0
+	ld hl, sp+$5
+	ld a, [de]
+	inc de
+	ld [hld], a
+	ld a, [de]
+	inc de
+	ld [hl], a
+	ld hl, sp+$6
+	ld a, [de]
+	inc de
+	ld [hli], a
+	ld a, [de]
+	inc de
+	ld [hli], a
+	ld a, [de]
+	inc de
+	ld l, a
+	ld a, [de]
+asm_7b797
+	dec de
+	ld h, a
+	or l
+	jr z, .asm_7b79d
+	add hl, de
+.asm_7b79d
+	ld e, l
+	ld d, h
+	ld hl, sp+$8
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, sp+$0
+	ld e, [hl]
+	jr asm_7b7f4
 
-Func_7b93a: ; 7b93a
-	dr $7b93a, $7bd42
+Func_7b7a9: ; 7b7a9 (1e:77a9)
+	push hl
+	push de
+	push hl
+	add sp, -$4
+	ld hl, sp+$0
+	ld [hl], c
+	inc hl
+	ld [hl], $0
+	inc hl
+	ld [hl], b
+	ld hl, sp+$8
+	xor a
+	ld [hli], a
+	ld [hl], a
+asm_7b7bb
+	predef Func_7e0b5
+	predef Func_7e17c
+	ld hl, sp+$3
+	ld [hl], a
+	ld c, a
+	and $9
+	jr nz, asm_7b813
+	ld a, c
+	and $6
+	jr nz, asm_7b81d
+	ld hl, sp+$2
+	ld b, [hl]
+	ld hl, sp+$0
+	ld a, [hl]
+	bit 6, c
+	jr nz, .asm_7b7df
+	bit 7, c
+	jr nz, .asm_7b7e8
+	call Func_7b827
+	jr asm_7b7bb
 
-Func_7bd42: ; 7bd42
-	dr $7bd42, $7bd5b
+.asm_7b7df
+	dec a
+	bit 7, a
+	jr z, .asm_7b7ed
+	ld a, b
+	dec a
+	jr .asm_7b7ed
 
-Func_7bd5b: ; 7bd5b
-	dr $7bd5b, $7bdaa
+.asm_7b7e8
+	inc a
+	cp b
+	jr c, .asm_7b7ed
+	xor a
+.asm_7b7ed
+	ld e, a
+	call Func_7b832
+	ld hl, sp+$0
+	ld [hl], e
+asm_7b7f4
+	inc hl
+	ld [hl], $0
+	inc hl
+	ld b, [hl]
+	inc hl
+	ld c, [hl]
+	ld hl, sp+$8
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	or h
+	jr z, .asm_7b80e
+	ld a, e
+	ld de, .Return
+	push de
+	jp [hl]
 
-Func_7bdaa: ; 7bdaa
-	dr $7bdaa, $7bdc7
+.Return: ; 7b809 (1e:7809)
+	jr nc, .asm_7b80e
+	ld hl, sp+$0
+	ld [hl], a
+.asm_7b80e
+	call Func_7b827
+	jr asm_7b7bb
 
-Func_7bdc7: ; 7bdc7
-	dr $7bdc7, $7bdec
+asm_7b813
+	call Func_7b832
+	ld hl, sp+$0
+	ld a, [hl]
+	add sp, $a
+	or a
+	ret
 
-Func_7bdec: ; 7bdec
-	dr $7bdec, $7bdfe
+asm_7b81d
+	call Func_7b832
+	ld hl, sp+$0
+	ld a, [hl]
+	add sp, $a
+	scf
+	ret
 
-Func_7bdfe: ; 7bdfe
-	dr $7bdfe, $7be3e
+Func_7b827: ; 7b827 (1e:7827)
+	ld hl, sp+$3
+	ld a, [hl]
+	inc [hl]
+	and $f
+	ret nz
+	bit 4, [hl]
+	jr z, asm_7b836
+Func_7b832: ; 7b832 (1e:7832)
+	ld hl, sp+$9
+	jr asm_7b838
 
-Func_7be3e: ; 7be3e
-	dr $7be3e, $7be72
+asm_7b836
+	ld hl, sp+$8
+asm_7b838
+	ld c, [hl]
+	ld hl, sp+$2
+	ld b, [hl]
+	ld hl, sp+$6
+	ld a, [hli]
+	ld h, [hl]
+	add b
+	ld l, a
+	predef Func_7d905
+	ld a, c
+	predef Func_7d93e
+	ret
 
-Func_7be72: ; 7be72
-	dr $7be72, $7be8b
+Func_7b848: ; 7b848 (1e:7848)
+	ld hl, hFFAB
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ld [hFFAE], a
+	ld c, $5
+	ld hl, hFFAF
+.asm_7b855
+	ld [hli], a
+	dec c
+	jr nz, .asm_7b855
+	ld a, $3
+	ld [hFFB4], a
+	ret
 
-Func_7be8b: ; 7be8b
-	dr $7be8b, $7beff
+Func_7b85e: ; 7b85e (1e:785e)
+	ld a, d
+	ld [hFFAA], a
+	push de
+	ld e, l
+	ld d, h
+	ld hl, hFFA8
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld a, e
+	or d
+	jr nz, .asm_7b878
+	ld de, hFFAE
+	ld a, [de]
+	cp $4
+	jr nz, .asm_7b878
+	xor a
+	ld [de], a
+.asm_7b878
+	pop de
+	push de
+	ld d, $1
+	ld bc, $1305
+	predef Func_7bdfe
+	pop de
+	push de
+	ld a, d
+	inc e
+	ld d, $2
+	ld hl, $10c
+	ld bc, $c03
+	predef Func_7be3e
+	pop de
+	push de
+	inc e
+	inc e
+	ld bc, $1
+	ld d, $0
+	ld a, $7f
+	predef Func_7d9c5
+	predef Func_7d9c5
+	predef Func_7d9c5
+	pop de
+	push de
+	ld bc, $1
+	ld d, $e
+	ld a, $7e
+	predef Func_7d9c5
+	ld a, $75
+	predef Func_7d9c5
+	predef Func_7d9c5
+	predef Func_7d9c5
+	ld a, $7d
+	predef Func_7d9c5
+	pop de
+	push de
+	inc e
+	inc e
+	ld a, d
+	add $24
+	ld d, $f
+	ld hl, $104
+	ld bc, $401
+	predef Func_7be3e
+	pop de
+	push de
+	ld a, d
+	add $28
+	ld d, $0
+	ld hl, $102
+	ld bc, $202
+	predef Func_7be3e
+	xor a
+	call Func_7bf1f
+	pop de
+	call Func_7bb09
+	ld de, Data_7bfeb
+	ld hl, $87f0
+	ld bc, $10
+	predef Func_015b
+	ret
 
-Func_7beff: ; 7beff
-	dr $7beff, $7bf2a
+Func_7b8eb: ; 7b8eb (1e:78eb)
+	push hl
+	push de
+	push bc
+	add sp, -$3c
+	ld hl, sp+$0
+	ld e, l
+	ld d, h
+	ld hl, sp+$40
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call Func_7beff
+	push af
+	ld c, a
+	jr .asm_7b905
 
-Func_7bf2a: ; 7bf2a
-	dr $7bf2a, $7c000
+.asm_7b900
+	ld a, $20
+	ld [de], a
+	inc de
+	inc c
+.asm_7b905
+	ld a, b
+	cp c
+	jr nz, .asm_7b900
+	pop af
+	ld c, a
+	cp b
+	jr nz, .asm_7b90f
+	dec c
+.asm_7b90f
+	ld hl, sp+$3d
+	ld b, [hl]
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$0
+	predef Func_7b93a
+	ld hl, sp+$3d
+	ld a, [hl]
+	ld hl, sp+$0
+	call Func_7be72
+	ld c, a
+	ld b, $0
+	add hl, bc
+	ld [hl], $0
+	ld hl, sp+$0
+	ld e, l
+	ld d, h
+	ld hl, sp+$40
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call Func_7be8b
+	add sp, $3c
+	pop bc
+	pop de
+	pop hl
+	ret
+
+Func_7b93a: ; 7b93a (1e:793a)
+	push hl
+	ld hl, hFFA2
+	ld [hl], d
+	inc hl
+	ld [hl], e
+	inc hl
+	ld [hl], b
+	inc hl
+	ld [hl], c
+	inc hl
+	pop bc
+	push bc
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	pop hl
+	ld a, [hFFA4]
+	ld c, a
+	call Func_7bdaa
+	ld a, [hFFA5]
+	ld c, a
+	or a
+	ld a, d
+	jr z, .asm_7b959
+.asm_7b959
+	add e
+	dec c
+	jr nz, .asm_7b959
+	ld [hFFA2], a
+	ld a, $1
+	call Func_7bf1f
+asm_7b964
+	predef Func_7e0b5
+	predef Func_7e17c
+	ld b, a
+	and $c
+	jr nz, asm_7b983
+	ld a, [hFFAB]
+	cp $c
+	jr z, Func_7b97b
+	bit 0, b
+	jr nz, asm_7b98e
+	bit 1, b
+	jr nz, asm_7b9c0
+Func_7b97b:
+	call Func_7b9f9
+	call Func_7ba84
+	jr asm_7b964
+
+asm_7b983
+	call Func_7ba80
+	xor a
+	call Func_7bf1f
+	ld a, [hFFA5]
+	or a
+	ret
+
+asm_7b98e
+	ld a, [hFFAB]
+	cp $c
+	jr z, Func_7b97b
+	ld hl, hFFA5
+	ld a, [hld]
+	cp [hl]
+	jr nc, .asm_7b9be
+	ld a, [hFFAE]
+	call Func_7bba4
+	ld e, a
+	ld a, [hFFA2]
+	ld d, a
+	call Func_7bdbb
+	call Func_7bb02
+	ld a, [hFFA5]
+	ld c, a
+	ld b, $0
+	add hl, bc
+	ld [hl], e
+	ld hl, hFFA4
+	cp [hl]
+	jr nc, .asm_7b9be
+	inc hl
+	inc [hl]
+	ld a, [hFFA3]
+	add d
+	ld [hFFA2], a
+.asm_7b9be
+	jr Func_7b97b
+
+asm_7b9c0
+	ld a, [hFFA2]
+	ld d, a
+	ld hl, hFFA5
+	ld a, [hld]
+	ld c, a
+	or a
+	jr z, Func_7b97b
+	cp [hl]
+	jr nc, .asm_7b9d3
+	ld e, $20
+	call Func_7bdbb
+.asm_7b9d3
+	dec hl
+	ld a, d
+	sub [hl]
+	ld [hFFA2], a
+	ld d, a
+	ld e, $20
+	call Func_7bdbb
+	ld hl, hFFA5
+	ld a, [hl]
+	dec [hl]
+	dec hl
+	cp [hl]
+	jr c, .asm_7b9e8
+	dec a
+.asm_7b9e8
+	push af
+	ld c, a
+	ld b, $0
+	call Func_7bb02
+	add hl, bc
+	ld [hl], e
+	pop af
+	jr nc, .asm_7b9f6
+	dec hl
+	ld [hl], e
+.asm_7b9f6
+	jp Func_7b97b
+
+Func_7b9f9: ; 7b9f9 (1e:79f9)
+	ld a, [hFFB6]
+	ld b, a
+	ld hl, hFFAB
+	ld a, [hli]
+	cp $c
+	jr z, .asm_7ba1a
+	ld a, [hl]
+	bit 6, b
+	jr nz, .asm_7ba60
+	bit 7, b
+	jr nz, .asm_7ba6e
+.asm_7ba0d
+	ld hl, hFFAB
+	ld a, [hl]
+	bit 5, b
+	jr nz, .asm_7ba4e
+	bit 4, b
+	jr nz, .asm_7ba57
+	ret
+
+.asm_7ba1a
+	ld c, $5
+	ld hl, hFFA8
+	ld a, [hli]
+	or [hl]
+	jr nz, .asm_7ba25
+	ld c, $4
+.asm_7ba25
+	ld hl, hFFAE
+	ld a, [hl]
+	bit 6, b
+	jr nz, .asm_7ba3c
+	bit 7, b
+	jr nz, .asm_7ba45
+	ld a, b
+	and $30
+	ret z
+	push bc
+	call Func_7ba80
+	pop bc
+	jr .asm_7ba0d
+
+.asm_7ba3c
+	dec a
+	bit 7, a
+	jr z, .asm_7ba4a
+	ld a, c
+	dec a
+	jr .asm_7ba4a
+
+.asm_7ba45
+	inc a
+	cp c
+	jr c, .asm_7ba4a
+	xor a
+.asm_7ba4a
+	ld [hl], a
+	jp Func_7bb09
+
+.asm_7ba4e
+	dec a
+	bit 7, a
+	jr z, .asm_7ba5d
+	ld a, $c
+	jr .asm_7ba5d
+
+.asm_7ba57
+	inc a
+	cp $d
+	jr c, .asm_7ba5d
+	xor a
+.asm_7ba5d
+	ld [hl], a
+	jr asm_7ba7c
+
+.asm_7ba60
+	or a
+	jr nz, .asm_7ba6b
+	call Func_7bb56
+	call Func_7bb09
+	jr asm_7ba7c
+
+.asm_7ba6b
+	dec a
+	jr asm_7ba7b
+
+.asm_7ba6e
+	cp $2
+	jr c, .asm_7ba7a
+	call Func_7bb66
+	call Func_7bb09
+	jr asm_7ba7c
+
+.asm_7ba7a
+	inc a
+asm_7ba7b
+	ld [hl], a
+asm_7ba7c
+	xor a
+	ld [hFFAD], a
+	ret
+
+Func_7ba80: ; 7ba80 (1e:7a80)
+	ld a, $10
+	ld [hFFAD], a
+Func_7ba84: ; 7ba84 (1e:7a84)
+	ld a, [hFFAD]
+	and $f
+	jr nz, .asm_7babc
+	ld a, [hFFA2]
+	ld d, a
+	ld hl, hFFA5
+	ld a, [hld]
+	ld c, a
+	cp [hl]
+	jr c, .asm_7ba9a
+	dec hl
+	ld a, d
+	sub [hl]
+	ld d, a
+	dec c
+.asm_7ba9a
+	ld a, [hFFAD]
+	bit 4, a
+	jr z, .asm_7baac
+	ld b, $0
+	call Func_7bb02
+	add hl, bc
+	ld e, [hl]
+	call Func_7bdc7
+	jr .asm_7baba
+
+.asm_7baac
+	ld e, $20
+	call Func_7bdc7
+	push hl
+	ld hl, $c3ee
+	ld a, $ff
+	ld [hli], a
+	ld [hl], a
+	pop hl
+.asm_7baba
+	predef Func_015b
+.asm_7babc
+	ld hl, $c39c
+	push hl
+	xor a
+	ld [hli], a
+	ld [hld], a
+	pop de
+	ld hl, hFFAD
+	ld a, [hFFAB]
+	cp $c
+	jr z, .asm_7baed
+	ld a, [hl]
+	inc [hl]
+	and $10
+	ret nz
+	ld hl, hFFAC
+	ld a, [hld]
+	add a
+	add a
+	add a
+	add $80
+	ld [de], a
+	inc de
+	ld a, [hl]
+	add a
+	add a
+	add a
+	add $18
+	ld [de], a
+	inc de
+	ld a, $7f
+	ld [de], a
+	inc de
+	ld a, $0
+	ld [de], a
+	ret
+
+.asm_7baed
+	ld a, [hl]
+	inc [hl]
+	and $f
+	ret nz
+	bit 4, [hl]
+	jr nz, .asm_7bafa
+	ld a, $30
+	ld [hFFB4], a
+.asm_7bafa
+	call Func_7bb2a
+	ld a, $3
+	ld [hFFB4], a
+	ret
+
+Func_7bb02: ; 7bb02 (1e:7b02)
+	ld hl, hFFA6
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
+
+Func_7bb09: ; 7bb09 (1e:7b09)
+	ld c, $3
+	call Func_7bb72
+	push af
+	ld a, [hFFAA]
+	ld d, a
+.asm_7bb12
+	ld b, $c
+.asm_7bb14
+	ld a, [hli]
+	ld e, a
+	call Func_7bdbb
+	inc d
+	dec b
+	jr nz, .asm_7bb14
+	push de
+	call Func_7bb66
+	pop de
+	dec c
+	jr nz, .asm_7bb12
+	call Func_7bb72
+	pop af
+	ld [de], a
+Func_7bb2a: ; 7bb2a (1e:7b2a)
+	ld a, [hFFAA]
+.asm_7bb2c
+	add $24
+	ld d, a
+	ld a, [hFFAE]
+	add a
+	add a
+	ld c, a
+	ld b, $0
+	ld hl, Data_7bb42
+	add hl, bc
+	ld c, $4
+	ld e, $1
+	call Func_7bdaa
+	ret
+
+Data_7bb42:
+	dr $7bb42, $7bb56
+
+Func_7bb56: ; 7bb56 (1e:7b56)
+	push de
+	call Func_7bb8b
+	ld a, [de]
+	dec a
+	bit 7, a
+	jr z, .asm_7bb62
+	ld a, [hl]
+	dec a
+.asm_7bb62
+	ld [de], a
+	pop de
+	jr Func_7bb72
+
+Func_7bb66: ; 7bb66 (1e:7b66)
+	push de
+	call Func_7bb8b
+	ld a, [de]
+	inc a
+	cp [hl]
+	jr c, .asm_7bb70
+	xor a
+.asm_7bb70
+	ld [de], a
+	pop de
+Func_7bb72: ; 7bb72 (1e:7b72)
+	push bc
+	call Func_7bb8b
+	inc hl
+	ld a, [de]
+	call Func_7bbcd
+	ld a, [hFFAE]
+	cp $4
+	jr nz, .asm_7bb87
+	ld hl, hFFA8
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+.asm_7bb87
+	add hl, bc
+	ld a, [de]
+	pop bc
+	ret
+
+Func_7bb8b: ; 7bb8b (1e:7b8b)
+	push bc
+	ld a, [hFFAE]
+	ld c, a
+	ld b, $0
+	ld hl, hFFAF
+	add hl, bc
+	push hl
+	add a
+	ld e, a
+	ld d, $0
+	ld hl, Data_7bbd7
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop de
+	pop bc
+	ret
+
+Func_7bba4: ; 7bba4 (1e:7ba4)
+	push hl
+	push de
+	push bc
+	call Func_7bbc0
+	ld a, [hFFAE]
+	cp $4
+	jr nz, .asm_7bbb6
+	ld hl, hFFA8
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+.asm_7bbb6
+	add hl, bc
+	ld a, [hFFAB]
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	pop bc
+	pop de
+	pop hl
+	ret
+
+Func_7bbc0: ; 7bbc0 (1e:7bc0)
+	call Func_7bb8b
+	ld a, [hFFAC]
+	ld c, a
+	ld a, [de]
+	add c
+	cp [hl]
+	jr c, .asm_7bbcc
+	sub [hl]
+.asm_7bbcc
+	inc hl
+Func_7bbcd: ; 7bbcd (1e:7bcd)
+	ld c, a
+	add a
+	add a
+	ld c, a
+	add a
+	add c
+	ld c, a
+	ld b, $0
+	ret
+
+Data_7bbd7:
+	dr $7bbd7, $7bd42
+
+Func_7bd42: ; 7bd42 (1e:7d42)
+	push bc
+.asm_7bd43
+	ld a, [hli]
+	bit 7, a
+	jr nz, .asm_7bd59
+	push de
+	ld d, a
+	ld e, [hl]
+	inc hl
+	push hl
+	call Func_7bdec
+	ld c, l
+	ld b, h
+	pop hl
+	pop de
+	call Func_7bd5b
+	jr .asm_7bd43
+
+.asm_7bd59
+	pop bc
+	ret
+
+Func_7bd5b: ; 7bd5b (1e:7d5b)
+	push hl
+	push bc
+	add sp, -$20
+	ld hl, sp+$0
+	ld c, l
+	ld b, h
+	ld hl, sp+$22
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+.asm_7bd68
+	ld a, [hli]
+	or a
+	jr z, .asm_7bd8b
+	cp $20
+	jr nc, .asm_7bd74
+	predef Func_7d9f9
+	jr .asm_7bd68
+
+.asm_7bd74
+	push de
+	ld e, a
+	ld d, [hl]
+	predef Func_7db91
+	jr nc, .asm_7bd7c
+	inc hl
+.asm_7bd7c
+	pop de
+	push de
+	ld e, a
+	call Func_7bdbb
+	pop de
+	ld a, d
+	ld [bc], a
+	inc bc
+	ld a, d
+	add e
+	ld d, a
+	jr .asm_7bd68
+
+.asm_7bd8b
+	push de
+	ld e, l
+	ld d, h
+	ld hl, sp+$24
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, sp+$2
+	ld a, c
+	sub l
+	ld c, a
+	ld a, b
+	sbc h
+	ld b, a
+	ld e, l
+	ld d, h
+	ld hl, sp+$22
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	predef Func_015b
+	pop de
+	add sp, $20
+	pop bc
+	pop hl
+	ret
+
+Func_7bdaa: ; 7bdaa (1e:7daa)
+	push de
+	push bc
+	ld b, e
+.asm_7bdad
+	ld e, [hl]
+	inc hl
+	call Func_7bdbb
+	ld a, b
+	add d
+	ld d, a
+	dec c
+	jr nz, .asm_7bdad
+	pop bc
+	pop de
+	ret
+
+Func_7bdbb: ; 7bdbb (1e:7dbb)
+	push hl
+	push de
+	push bc
+	call Func_7bdc7
+	predef Func_015b
+	pop bc
+	pop de
+	pop hl
+	ret
+
+Func_7bdc7: ; 7bdc7 (1e:7dc7)
+	ld b, d
+	ld hl, $c3e0
+	push hl
+	ld a, [hFFB4]
+	ld c, a
+	predef Func_7d689
+	ld a, b
+	xor $80
+	ld h, $0
+	add a
+	rl h
+	add a
+	rl h
+	add a
+	rl h
+	add a
+	rl h
+	ld l, a
+	ld bc, $8800
+	add hl, bc
+	pop de
+	ld bc, $10
+	ret
+
+Func_7bdec: ; 7bdec (1e:7dec)
+	ld h, e
+	xor a
+	srl h
+	rra
+	srl h
+	rra
+	srl h
+	rra
+	add d
+	ld l, a
+	ld a, h
+	adc $98
+	ld h, a
+	ret
+
+Func_7bdfe: ; 7bdfe (1e:7dfe)
+	call Func_7bdec
+	ld a, $79
+	lb de, $77, $78
+	call Func_7be1b
+	dec c
+	dec c
+.asm_7be0b
+	ld a, $7f
+	lb de, $75, $76
+	call Func_7be1b
+	dec c
+	jr nz, .asm_7be0b
+	ld a, $7c
+	lb de, $7a, $7b
+Func_7be1b: ; 7be1b (1e:7e1b)
+	add sp, -$20
+	push hl
+	push bc
+	ld hl, sp+$4
+	dec b
+	dec b
+	push hl
+	ld [hl], d
+	inc hl
+.asm_7be26
+	ld [hli], a
+	dec b
+	jr nz, .asm_7be26
+	ld [hl], e
+	pop de
+	pop bc
+	pop hl
+	push hl
+	push bc
+	ld c, b
+	ld b, $0
+	predef Func_015b
+	pop bc
+	pop de
+	ld hl, $20
+	add hl, de
+	add sp, $20
+	ret
+
+Func_7be3e: ; 7be3e (1e:7e3e)
+	push af
+	push hl
+	add sp, -$20
+	call Func_7bdec
+.asm_7be45
+	push hl
+	push bc
+	ld hl, sp+$25
+	ld d, [hl]
+	ld hl, sp+$27
+	ld a, [hl]
+	ld hl, sp+$4
+	push hl
+.asm_7be50
+	ld [hli], a
+	add d
+	dec b
+	jr nz, .asm_7be50
+	pop de
+	pop bc
+	pop hl
+	push hl
+	push bc
+	ld c, b
+	ld b, $0
+	predef Func_015b
+	ld hl, sp+$24
+	ld a, [hl]
+	ld hl, sp+$27
+	add [hl]
+	ld [hl], a
+	pop bc
+	pop de
+	ld hl, $20
+	add hl, de
+	dec c
+	jr nz, .asm_7be45
+	add sp, $24
+	ret
+
+Func_7be72: ; 7be72 (1e:7e72)
+	push hl
+	push de
+	push bc
+	ld b, a
+	ld c, b
+	ld e, b
+	ld d, $0
+	add hl, de
+	dec hl
+	inc c
+.asm_7be7d
+	scf
+	dec c
+	jr z, .asm_7be86
+	ld a, [hld]
+	cp $20
+	jr z, .asm_7be7d
+.asm_7be86
+	ld a, c
+	pop bc
+	pop de
+	pop hl
+	ret
+
+Func_7be8b: ; 7be8b (1e:7e8b)
+	push hl
+	push bc
+	ld c, $0
+	ld b, $80
+.asm_7be91
+	ld a, [de]
+	inc de
+	cp $20
+	jr c, .asm_7bea3
+	cp $b0
+	jr nc, .asm_7bec1
+	cp $60
+	jr nc, .asm_7beaf
+.asm_7be9f
+	ld [hli], a
+	inc c
+	jr .asm_7be91
+
+.asm_7bea3
+	add $60
+	cp $60
+	jr nz, .asm_7be9f
+	ld [hl], $0
+	ld a, c
+	pop bc
+	pop hl
+	ret
+
+.asm_7beaf
+	bit 7, b
+	jr z, .asm_7beb9
+.asm_7beb3
+	ld b, $1
+	ld [hl], $f
+	inc hl
+	inc c
+.asm_7beb9
+	bit 0, b
+	jr z, .asm_7beb3
+	add $50
+	jr .asm_7becf
+
+.asm_7bec1
+	bit 7, b
+	jr z, .asm_7becb
+.asm_7bec5
+	ld b, $0
+	ld [hl], $e
+	inc hl
+	inc c
+.asm_7becb
+	bit 0, b
+	jr nz, .asm_7bec5
+.asm_7becf
+	cp $f7
+	jr nc, .asm_7bedf
+	cp $de
+	jr nc, .asm_7bee3
+	cp $b0
+	jr nz, .asm_7be9f
+	ld a, $a6
+	jr .asm_7be9f
+
+.asm_7bedf
+	add $b0
+	jr .asm_7be9f
+
+.asm_7bee3
+	cp $ed
+	jr nc, .asm_7beef
+	add $d8
+.asm_7bee9
+	ld [hli], a
+	inc c
+	ld a, $de
+	jr .asm_7be9f
+
+.asm_7beef
+	cp $f2
+	jr nc, .asm_7bef7
+	add $dd
+	jr .asm_7bee9
+
+.asm_7bef7
+	add $d8
+	ld [hli], a
+	inc c
+	ld a, $df
+	jr .asm_7be9f
+
+Func_7beff: ; 7beff (1e:7eff)
+	push bc
+	ld c, $0
+.asm_7bf02
+	ld a, [hli]
+	or a
+	jr z, .asm_7bf1c
+	cp $20
+	jr nc, .asm_7bf0e
+	predef Func_7d9f9
+	jr .asm_7bf02
+
+.asm_7bf0e
+	push de
+	ld e, a
+	ld d, [hl]
+	predef Func_7db91
+	jr nc, .asm_7bf16
+	inc hl
+.asm_7bf16
+	pop de
+	ld [de], a
+	inc de
+	inc c
+	jr .asm_7bf02
+
+.asm_7bf1c
+	ld a, c
+	pop bc
+	ret
+
+Func_7bf1f: ; 7bf1f (1e:7f1f)
+	ld e, a
+	ld a, [hFFAA]
+	add $28
+	ld d, a
+	ld c, $4
+	ld hl, Data_7bfab
+Func_7bf2a: ; 7bf2a (1e:7f2a)
+	ld a, e
+	push af
+	push hl
+	push bc
+	ld e, d
+	call Func_7bdc7
+	pop bc
+	pop de
+	pop af
+	or a
+	jr nz, .asm_7bf46
+	push hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	pop hl
+	predef Func_015b
+	ret
+
+.asm_7bf46
+	push bc
+	push hl
+	ld hl, $c3e0
+	ld b, $10
+.asm_7bf4d
+	ld a, [de]
+	inc de
+	xor $ff
+	ld [hli], a
+	dec b
+	jr nz, .asm_7bf4d
+	pop hl
+	push de
+	push hl
+	ld de, $c3e0
+	ld bc, $10
+	predef Func_015b
+	pop hl
+	ld de, $10
+	add hl, de
+	pop de
+	pop bc
+	dec c
+	jr nz, .asm_7bf46
+	ret
+
+Data_7bf6b:
+	dr $7bf6b, $7bfab
+
+Data_7bfab:
+	dr $7bfab, $7bfeb
+
+Data_7bfeb:
+	dr $7bfeb, $7bffc
 
 SECTION "Bank 1f", ROMX, BANK [$1f]
 Pointers_7c000:

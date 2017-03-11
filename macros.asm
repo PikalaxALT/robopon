@@ -2,6 +2,10 @@ INCLUDE "macros/enum.asm"
 
 CallPredef EQUS "$08"
 
+lb: MACRO
+	ld \1, (\2 << 8) | \3
+	ENDM
+
 dr: MACRO
 IF DEF(SUN)
 INCBIN "baserom-sun.gbc", \1, \2 - \1
