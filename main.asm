@@ -722,7 +722,7 @@ Func_0519: ; 519 (0:0519)
 	ld d, $20
 	ld e, $3e
 	predef Func_7b7a9
-	jr c, asm_0588
+	jr c, .default
 	ld c, a
 	inc a
 	call BitIndexToMask
@@ -733,11 +733,18 @@ Func_0519: ; 519 (0:0519)
 	ld l, c
 	ld h, $0
 	predef Func_7b6d3
+	db 8
+	; 578
+	dw Func_068f - @
+	dw Func_076f - @
+	dw Func_0777 - @
+	dw Func_077f - @
+	dw Func_0787 - @
+	dw Func_078f - @
+	dw Func_0797 - @
+	dw .default - @
 
-Data_0577:
-	dr $577, $588
-
-asm_0588
+.default
 	predef Func_0150
 Func_058a:
 	jr nc, .wait
@@ -759,7 +766,88 @@ Data_059c:
 	dr $5af, $65e
 
 Data_065e:
-	dr $65e, $739
+	dr $65e, $68f
+
+Func_068f: ; 68f (0:068f)
+	call Func_07a2
+	ld a, $20
+	ld de, $204
+	ld bc, $1004
+	ld hl, $0
+	predef Func_7be3e
+	ld a, $f0
+	ld de, $208
+	ld bc, $1003
+	ld hl, $301
+	predef Func_7be3e
+	ld hl, $204
+	predef Func_7d905
+	ld hl, $59c
+	predef Func_7af96
+	ld hl, $607
+	predef Func_7d905
+	ld hl, $686
+	predef Func_7af96
+	ld hl, $743
+	bcbgcoord 2, 8
+	call Func_083e
+	ld a, $3
+	ld [$ffae], a
+	ld de, $900d
+	ld hl, $0
+	predef Func_7b85e
+	ld a, $80
+	ld de, $606
+	ld bc, $801
+	ld hl, $100
+	predef Func_7be3e
+	ld a, $3
+	predef Func_7d78e
+	ld hl, $c656
+	ld e, $20
+	ld bc, $8
+	predef Func_7d5e7
+	ld de, $8001
+	ld b, $8
+	ld hl, $c656
+	ld c, $0
+	predef Func_7b93a
+	jp c, Func_0519
+	ld hl, $636
+	ld bc, $502
+.asm_0705
+	push bc
+	push hl
+	ld de, $c656
+	ld bc, $8
+	push bc
+	predef Func_7af75
+	pop bc
+	ld a, h
+	or l
+	pop hl
+	add hl, bc
+	pop bc
+	inc c
+	or a
+	jr z, .asm_0720
+	dec b
+	jr nz, .asm_0705
+	jp Func_0519
+
+.asm_0720
+	ld a, [$c654]
+	cp c
+	ld a, c
+	jp nc, Func_072b
+	ld [$c654], a
+Func_072b: ; 72b (0:072b)
+	call BitIndexToMask
+	ld d, a
+	ld a, [$c655]
+	or d
+	ld [$c655], a
+	jp Func_0519
 
 BitIndexToMask: ; 739 (0:0739)
 	push bc
@@ -779,18 +867,23 @@ Func_076f:
 	ld de, $4000
 	ld a, $7
 	call Func_0856
+Func_0777:
 	ld de, $4000
 	ld a, $9
 	call Func_0856
+Func_077f:
 	ld de, $4000
 	ld a, $b
 	call Func_0856
+Func_0787:
 	ld de, $4000
 	ld a, $d
 	call Func_0856
+Func_078f:
 	ld de, $4000
 	ld a, $e
 	call Func_0856
+Func_0797:
 	ld de, $4000
 	ld a, $f
 	call Func_0856
@@ -834,6 +927,7 @@ Data_07fa:
 
 Func_083b: ; 83b (0:083b)
 	bcbgcoord 2, 14
+Func_083e: ; 083e
 	ld d, $f0
 	ld e, $3
 .loop
@@ -1892,8 +1986,31 @@ Func_7b21d: ; 7b21d
 Func_7b25b: ; 7b25b
 	dr $7b25b, $7b6d3
 
-Func_7b6d3: ; 7b6d3
-	dr $7b6d3, $7b6ec
+Func_7b6d3: ; 7b6d3 (1e:76d3)
+	pop de
+	ld a, [de]
+	inc de
+	inc h
+	dec h
+	jr nz, .default
+	cp l
+	jr nc, .go
+.default
+	ld l, a
+.go
+	ld a, l
+	add a
+	add e
+	ld l, a
+	ld a, $0
+	adc d
+	ld h, a
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	dec hl
+	add hl, de
+	jp [hl]
 
 Func_7b6ec: ; 7b6ec
 	dr $7b6ec, $7b70d
