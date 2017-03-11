@@ -8,3 +8,4 @@ hFF8A EQU $FF8A
 hFF99 EQU $FF99
 
 hSystemType EQU $FFF4
+hPushOAM EQU $FFF5

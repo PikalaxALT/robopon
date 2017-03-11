@@ -4,7 +4,9 @@ SECTION "rst $00", HOME [$00]
 	jp Func_0388
 
 SECTION "rst $08", HOME [$08]
-	jp Func_0068
+Predef_::
+	jp Predef
+
 Bank_000b:
 	db BANK(Func_78100)
 Bank_000c:
@@ -12,7 +14,7 @@ Bank_000c:
 Byte_000d:
 	db $4a
 Banks_000e:
-	db BANK(Pointers_78000), BANK(Pointers_7c000)
+	db BANK(Pointers_78096), BANK(Pointers_7c000)
 
 SECTION "rst $10", HOME [$10]
 	jp Func_00c9
@@ -40,7 +42,7 @@ SECTION "SerialInt", HOME [$58]
 
 
 SECTION "High Home", HOME [$68]
-Func_0068: ; 68 (0:0068)
+Predef: ; 68 (0:0068)
 	add sp, -$5
 	push af
 	push de
@@ -97,7 +99,7 @@ Func_0068: ; 68 (0:0068)
 	ld h, $0
 	ld a, [hl]
 	call BankSwitch_00f7
-	ld hl, Pointers_78000
+	ld hl, Pointers_78096 - 2 * $4b
 	ld d, l
 	add hl, de
 	ld e, [hl]
@@ -189,7 +191,7 @@ Func_015b:
 	ret z
 	ld a, [hFF86]
 	or a
-	jr z, .asm_0174
+	jr z, .copy
 	ld a, h
 	and $e0
 	cp $80
@@ -197,19 +199,18 @@ Func_015b:
 	ld a, d
 	and $e0
 	cp $80
-	jr nz, .asm_0174
-	rst $08
-	db $fe
+	jr nz, .copy
+	predef Func_7ce7d
 	ret
 
-.asm_0174
+.copy
 	ld a, [de]
 	inc de
 	ld [hli], a
 	dec bc
 	ld a, b
 	or c
-	jr nz, .asm_0174
+	jr nz, .copy
 	ret
 
 .asm_017d
@@ -217,8 +218,7 @@ Func_015b:
 	or a
 .asm_017f
 	push af
-	rst $08
-	db $fd
+	predef Func_7cdf6
 	pop af
 	push af
 	jr nz, .asm_018a
@@ -252,8 +252,7 @@ Func_015b:
 .asm_01a5
 	pop af
 Func_01a6: ; 1a6 (0:01a6)
-	rst $08
-	db $ff
+	predef Func_7ce36
 .asm_01a8
 	ld a, [de]
 	inc de
@@ -276,12 +275,12 @@ Pointers_01e0:
 	dw Func_00e9
 	dw Func_0150
 	dw Func_015b
-	dw $6f00
-	dw $6f30
-	dw $6f39
-	dw $76d3
-	dw $76ec
-	dw $770d
+	dw Func_7af00
+	dw Func_7af30
+	dw Func_7af39
+	dw Func_7b6d3
+	dw Func_7b6ec
+	dw Func_7b70d
 	dw Func_02fd
 	dw Func_01b9
 	dw Func_01b9
@@ -389,29 +388,24 @@ Func_026c: ; 26c (0:026c)
 	cp $e0
 	jp nc, Func_03d3
 	sub $c0
-	rst $08
-	db $50
+	predef Func_7b25b
 	jp c, Func_03d3
 	ret
 
 .asm_0286
 	sub $a0
-	rst $08
-	db $bc
+	predef Func_7c100
 	jp c, Func_03d3
 	ret
 
 Func_028e:
 	di
 	ld sp, wStackTop
-	rst $08
-	db $00
-	rst $08
-	db $6e
+	predef Func_00e9
+	predef Func_7b1e1
 Func_0296: ; 296 (0:0296)
 	ld hl, Func_0296
-	rst $08
-	db $6f
+	predef Func_7b133
 	jp Func_0300
 
 SECTION "02fd", HOME [$2fd]
@@ -445,8 +439,7 @@ Func_030a: ; 30a (0:030a)
 	jr nz, .asm_030d
 	di
 	ld sp, wStackTop
-	rst $08
-	db $00
+	predef Func_00e9
 	call Func_1a90
 Start: ; 323 (0:0323)
 	di
@@ -480,10 +473,8 @@ Func_0331: ; 331 (0:0331)
 	di
 	ld sp, wStackTop
 	push af
-	rst $08
-	db $00
-	rst $08
-	db $11
+	predef Func_00e9
+	predef Func_022c
 	ld a, BANK(Func_63141)
 	call BankSwitch_03f2
 	pop af
@@ -491,7 +482,7 @@ Func_0331: ; 331 (0:0331)
 	call Func_63141
 	di
 	pop af
-	ld [wSystemTypeTemp], a
+	ld [wSystemType], a
 	di
 	ld sp, wStackTop
 	ld a, BANK(Func_4064)
@@ -502,7 +493,7 @@ Func_0331: ; 331 (0:0331)
 	ld a, BANK(Func_fe102)
 	call BankSwitch_03f2
 	call Func_fe102
-	ld a, [wSystemTypeTemp]
+	ld a, [wSystemType]
 	ld [hSystemType], a
 Func_0388: ; 388 (0:0388)
 	di
@@ -519,7 +510,7 @@ Func_0388: ; 388 (0:0388)
 
 Func_03a4: ; 3a4 (0:03a4)
 	ld a, [hSystemType]
-	ld [wSystemTypeTemp], a
+	ld [wSystemType], a
 	di
 	ld sp, wStackTop
 	ld a, BANK(Func_4064)
@@ -676,23 +667,19 @@ SECTION "0500", HOME [$500]
 Func_0500:
 	ld sp, wStackTop
 	di
-	rst $08
-	db $00
+	predef Func_00e9
 	ld a, $7
 	ld [$c654], a
 	ld a, $ff
 	ld [$c655], a
 	ld a, $20
-	rst $08
-	db $b3
+	predef Func_7d753
 	ld hl, $400
-	rst $08
-	db $ca
+	predef Func_7d85d
 Func_0519: ; 519 (0:0519)
 	call Func_07a2
 	ld de, $204
-	rst $08
-	db $57
+	predef Func_7bdec
 	ld c, $80
 	ld de, $59c
 	ld a, [$c654]
@@ -726,68 +713,62 @@ Func_0519: ; 519 (0:0519)
 	ld hl, Data_065e
 	call Func_083b
 	ld a, $1
-	rst $08
-	db $b4
+	predef Func_7d78e
 	ld c, $0
-.asm_0557
+.loop
 	ld a, [$c654]
 	ld b, a
 	ld hl, $104
 	ld d, $20
 	ld e, $3e
-	rst $08
-	db $5e
+	predef Func_7b7a9
 	jr c, asm_0588
 	ld c, a
 	inc a
-	call Func_0739
+	call BitIndexToMask
 	ld h, a
 	ld a, [$c655]
 	and h
-	jr z, .asm_0557
+	jr z, .loop
 	ld l, c
 	ld h, $0
-	rst $08
-	db $06
+	predef Func_7b6d3
 
 Data_0577:
 	dr $577, $588
 
 asm_0588
-	rst $08
-	db $01
+	predef Func_0150
 Func_058a:
-	jr nc, .asm_058f
-	rst $08
-	db $5b
+	jr nc, .wait
+	predef Func_7bd5b
 	ret
 
-.asm_058f
+.wait
 	ld a, [hli]
 	or a
-	jr nz, .asm_058f
+	jr nz, .wait
 	ld a, $d
-	rst $08
-	db $b9
+	predef Func_7d9f9
 	ld a, $1
-	rst $08
-	db $b9
+	predef Func_7d9f9
 	ret
 
 Data_059c:
-	dr $59c, $65e
+	db " PASSWORD INPUT", $0e, $0d, $01, $00
+	dr $5af, $65e
 
 Data_065e:
 	dr $65e, $739
 
-Func_0739: ; 739 (0:0739)
+BitIndexToMask: ; 739 (0:0739)
 	push bc
 	ld c, a
 	ld a, $80
-.asm_073d
+.loop
 	rlca
 	dec c
-	jr nz, .asm_073d
+	jr nz, .loop
 	pop bc
 	ret
 
@@ -806,7 +787,6 @@ Func_076f:
 	call Func_0856
 	ld de, $4000
 	ld a, $d
-.asm_078c
 	call Func_0856
 	ld de, $4000
 	ld a, $e
@@ -817,65 +797,54 @@ Func_076f:
 	jp Func_0519
 
 Func_07a2: ; 7a2 (0:07a2)
-	rst $08
-	db $b5
+	predef Func_7d8d7
 	ld a, $c
-	rst $08
-	db $b9
+	predef Func_7d9f9
 	ld hl, $8800
 	ld e, $0
 	ld bc, $a00
-	rst $08
-	db $a6
+	predef Func_7d5e7
 	ld de, $3
 	ld bc, $1409
-	rst $08
-	db $58
+	predef Func_7bdfe
 	ld a, $80
 	ld de, $204
 	ld bc, $1007
 	ld hl, $701
-	rst $08
-	db $59
+	predef Func_7be3e
 	ld de, $d
 	ld bc, $1405
-	rst $08
-	db $58
+	predef Func_7bdfe
 	ld a, $f0
 	ld de, $20e
 	ld bc, $1003
 	ld hl, $301
-	rst $08
-	db $59
+	predef Func_7be3e
 	ld hl, $101
-	rst $08
-	db $b8
+	predef Func_7d905
 	ld hl, Data_07e7
-	rst $08
-	db $69
+	predef Func_7af96
 	ret
 
 Data_07e7:
-	dr $7e7, $7fa
+	db "GB KISS  MINI GAME", $00
 
 Data_07fa:
 	dr $7fa, $83b
 
 Func_083b: ; 83b (0:083b)
 	bcbgcoord 2, 14
-Func_083e: ; 83e (0:083e)
 	ld d, $f0
 	ld e, $3
-.asm_0842
+.loop
 	ld a, [hl]
 	or a
 	ret z
 	push de
 	push bc
-	rst $08
-	db $5b
+	predef Func_7bd5b
 	pop bc
-	ld a, $20
+	ld a, BG_MAP_WIDTH
 	add c
 	ld c, a
 	ld a, $0
@@ -883,7 +852,7 @@ Func_083e: ; 83e (0:083e)
 	ld b, a
 	pop de
 	inc d
-	jr .asm_0842
+	jr .loop
 
 Func_0856: ; 856 (0:0856)
 	ld hl, $c600
@@ -906,14 +875,12 @@ Func_085d: ; 85d (0:085d)
 	ld [HuC3RomBank], a
 	ld hl, $c604
 	ld bc, $28
-	rst $08
-	db $02
+	predef Func_015b
 	pop af
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ld de, $304
-	rst $08
-	db $57
+	predef Func_7bdec
 	ld b, $7
 	ld c, $87
 	ld de, $c604
@@ -946,8 +913,7 @@ Func_088f: ; 88f (0:088f)
 	push bc
 	ld hl, $c634
 	ld bc, $20
-	rst $08
-	db $02
+	predef Func_015b
 	pop bc
 	pop af
 	ld [hROMBank], a
@@ -959,8 +925,7 @@ Func_088f: ; 88f (0:088f)
 	push bc
 	push hl
 	ld hl, $c638
-	rst $08
-	db $5b
+	predef Func_7bd5b
 	pop de
 	pop hl
 	ld bc, $20
@@ -974,8 +939,7 @@ Func_088f: ; 88f (0:088f)
 	push de
 .asm_08da
 	ld a, $1
-	rst $08
-	db $b4
+	predef Func_7d78e
 	pop de
 	pop hl
 	pop bc
@@ -988,8 +952,7 @@ Func_088f: ; 88f (0:088f)
 	ld d, $20
 	ld e, $3e
 	push bc
-	rst $08
-	db $5e
+	predef Func_7b7a9
 	pop bc
 	jr c, .asm_08ff
 	ld c, a
@@ -1003,8 +966,7 @@ Func_088f: ; 88f (0:088f)
 	ld a, [hFF8A]
 	and $4
 	ret z
-	rst $08
-	db $01
+	predef Func_0150
 Func_0906: ; 906 (0:0906)
 	ld hl, $c604
 	add a
@@ -1050,11 +1012,9 @@ Func_0906: ; 906 (0:0906)
 	add c
 	ld l, a
 	ld h, $1
-	rst $08
-	db $b8
+	predef Func_7d905
 	ld a, $2a
-	rst $08
-	db $bb
+	predef Func_7d93e
 	ld a, [$c660]
 	and $1
 	call nz, Func_0c51
@@ -1092,8 +1052,7 @@ Func_0906: ; 906 (0:0906)
 	push bc
 	ld e, a
 	ld d, $2
-	rst $08
-	db $57
+	predef Func_7bdec
 	ld c, l
 	ld b, h
 	pop de
@@ -1102,8 +1061,7 @@ Func_0906: ; 906 (0:0906)
 	ld d, a
 	ld e, $7
 	pop hl
-	rst $08
-	db $5b
+	predef Func_7bd5b
 	ld hl, Data_07fa
 	call Func_083b
 	xor a
@@ -1162,14 +1120,12 @@ Func_09c2: ; 9c2 (0:09c2)
 	push de
 	push bc
 	ld hl, $c900
-	rst $08
-	db $02
+	predef Func_015b
 	pop bc
 	push bc
 	ld de, $c900
 	ld hl, $c500
-	rst $08
-	db $ec
+	predef Func_7cca9
 	pop de
 	pop hl
 	add hl, de
@@ -1216,15 +1172,13 @@ Func_0a18: ; a18 (0:0a18)
 	ld hl, $c400
 	ld b, $0
 	push hl
-	rst $08
-	db $02
+	predef Func_015b
 	pop de
 	pop bc
 	ld hl, $c500
 	push bc
 	push de
-	rst $08
-	db $6b
+	predef Func_7afe6
 	pop de
 	pop bc
 	jr nc, .asm_0a85
@@ -1257,8 +1211,7 @@ Func_0a18: ; a18 (0:0a18)
 	ld [hl], a
 	ld hl, $c500
 	push de
-	rst $08
-	db $e9
+	predef Func_7caa0
 	pop de
 	pop bc
 	jr c, .asm_0a8d
@@ -1269,8 +1222,7 @@ Func_0a18: ; a18 (0:0a18)
 	ld b, $0
 	ld de, $ffd2
 	ld hl, $c500
-	rst $08
-	db $ea
+	predef Func_7cb98
 	pop de
 	ld hl, $2e
 	add hl, de
@@ -1317,8 +1269,7 @@ Func_0a91: ; a91 (0:0a91)
 	push de
 	push bc
 	ld hl, $c900
-	rst $08
-	db $02
+	predef Func_015b
 	pop bc
 	push bc
 	ld de, $c900
@@ -1383,8 +1334,7 @@ Func_0aee: ; aee (0:0aee)
 	ld hl, $c400
 	ld b, $0
 	push hl
-	rst $08
-	db $02
+	predef Func_015b
 	pop de
 	pop bc
 	ld hl, $c700
@@ -1532,8 +1482,7 @@ Func_0c51: ; c51 (0:0c51)
 	ld hl, Data_0bd3
 	call Func_083b
 .asm_0c57
-	rst $08
-	db $d8
+	predef Func_7e17c
 	bit 1, a
 	jr nz, .asm_0ca4
 	and $1
@@ -1551,8 +1500,7 @@ Func_0c51: ; c51 (0:0c51)
 	pop hl
 	ld de, $c802
 	ld bc, $d
-	rst $08
-	db $67
+	predef Func_7af75
 	ld a, h
 	or l
 	ld a, $6
@@ -1586,10 +1534,8 @@ Data_0cae:
 	dr $cae, $cbb
 
 Func_0cbb: ; cbb (0:0cbb)
-	rst $08
-	db $c3
-	rst $08
-	db $7c
+	predef Func_7ceaf
+	predef Func_7ac8d
 	jr asm_0cf7
 
 Func_0cc1: ; cc1 (0:0cc1)
@@ -1597,57 +1543,42 @@ Func_0cc1: ; cc1 (0:0cc1)
 	ld de, $ce00
 	ld hl, $c800
 	ld c, $1
-	rst $08
-	db $c3
-	rst $08
-	db $7f
+	predef Func_7ceaf
+	predef Func_7aca4
 	jr asm_0cf7
 
 Func_0cd2: ; cd2 (0:0cd2)
-	rst $08
-	db $c3
-	rst $08
-	db $73
+	predef Func_7ceaf
+	predef Func_7ac16
 	jr asm_0cf7
 
 Func_0cd8:
 	ld hl, $c700
-	rst $08
-	db $c3
-	rst $08
-	db $79
+	predef Func_7ceaf
+	predef Func_7ac62
 	jr asm_0cf7
 
 Func_0ce1: ; ce1 (0:0ce1)
-	rst $08
-	db $c3
-	rst $08
-	db $7d
+	predef Func_7ceaf
+	predef Func_7acd3
 	jr asm_0cf7
 
 Func_0ce7: ; ce7 (0:0ce7)
-	rst $08
-	db $c3
-	rst $08
-	db $77
+	predef Func_7ceaf
+	predef Func_7ac56
 	jr asm_0cf7
 
 Func_0ced: ; ced (0:0ced)
-	rst $08
-	db $c3
-	rst $08
-	db $76
+	predef Func_7ceaf
+	predef Func_7ac37
 	jr asm_0cf7
 
 Func_0cf3: ; cf3 (0:0cf3)
-	rst $08
-	db $c3
-	rst $08
-	db $75
+	predef Func_7ceaf
+	predef Func_7ac2a
 asm_0cf7
 	push af
-	rst $08
-	db $db
+	predef Func_7e0d2
 	pop af
 	ret
 
@@ -1790,15 +1721,682 @@ SECTION "Bank 1d", ROMX, BANK [$1d]
 	dr $74000, $78000
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
-Pointers_78000:
-	dr $78000, $78100
+	dr $78000, $78096
+
+Pointers_78096:
+	dw Func_7bdc7
+	dw Func_7bf2a
+	dw Func_7be72
+	dw Func_7beff
+	dw Func_7be8b
+	dw Func_7b25b
+	dw Func_7a65c
+	dw Func_7b72b
+	dw Func_7b848
+	dw Func_7b85e
+	dw Func_7b93a
+	dw Func_7b8eb
+	dw Func_7bdec
+	dw Func_7bdfe
+	dw Func_7be3e
+	dw Func_7bd42
+	dw Func_7bd5b
+	dw Func_7b767
+	dw Func_7bdaa
+	dw Func_7b7a9
+	dw Func_7b776
+	dw Func_7ad2a
+	dw Func_7b21d
+	dw Func_7ad4e
+	dw Func_7ad6d
+	dw Func_7addf
+	dw Func_7ae29
+	dw Func_7af61
+	dw Func_7af75
+	dw Func_7af8a
+	dw Func_7af96
+	dw Func_7afd5
+	dw Func_7afe6
+	dw Func_7b148
+	dw Func_7b0b5
+	dw Func_7b1e1
+	dw Func_7b133
+	dw Func_7ae86
+	dw Func_7ae5e
+	dw Func_7aa8e
+	dw Func_7ac16
+	dw Func_7ac23
+	dw Func_7ac2a
+	dw Func_7ac37
+	dw Func_7ac56
+	dw Func_7ac33
+	dw Func_7ac62
+	dw Func_7acbe
+	dw Func_7ac89
+	dw Func_7ac8d
+	dw Func_7acd3
+	dw Func_7aca0
+	dw Func_7aca4
 
 Func_78100:
-	dr $78100, $7c000
+	dr $78100, $7a65c
+
+Func_7a65c: ; 7a65c
+	dr $7a65c, $7aa8e
+
+Func_7aa8e: ; 7aa8e
+	dr $7aa8e, $7ac16
+
+Func_7ac16: ; 7ac16
+	dr $7ac16, $7ac23
+
+Func_7ac23: ; 7ac23
+	dr $7ac23, $7ac2a
+
+Func_7ac2a: ; 7ac2a
+	dr $7ac2a, $7ac33
+
+Func_7ac33: ; 7ac33
+	dr $7ac33, $7ac37
+
+Func_7ac37: ; 7ac37
+	dr $7ac37, $7ac56
+
+Func_7ac56: ; 7ac56
+	dr $7ac56, $7ac62
+
+Func_7ac62: ; 7ac62
+	dr $7ac62, $7ac89
+
+Func_7ac89: ; 7ac89
+	dr $7ac89, $7ac8d
+
+Func_7ac8d: ; 7ac8d
+	dr $7ac8d, $7aca0
+
+Func_7aca0: ; 7aca0
+	dr $7aca0, $7aca4
+
+Func_7aca4: ; 7aca4
+	dr $7aca4, $7acbe
+
+Func_7acbe: ; 7acbe
+	dr $7acbe, $7acd3
+
+Func_7acd3: ; 7acd3
+	dr $7acd3, $7ad2a
+
+Func_7ad2a: ; 7ad2a
+	dr $7ad2a, $7ad4e
+
+Func_7ad4e: ; 7ad4e
+	dr $7ad4e, $7ad6d
+
+Func_7ad6d: ; 7ad6d
+	dr $7ad6d, $7addf
+
+Func_7addf: ; 7addf
+	dr $7addf, $7ae29
+
+Func_7ae29: ; 7ae29
+	dr $7ae29, $7ae5e
+
+Func_7ae5e: ; 7ae5e
+	dr $7ae5e, $7ae86
+
+Func_7ae86: ; 7ae86
+	dr $7ae86, $7af00
+
+Func_7af00: ; 7af00
+	dr $7af00, $7af30
+
+Func_7af30: ; 7af30
+	dr $7af30, $7af39
+
+Func_7af39: ; 7af39
+	dr $7af39, $7af61
+
+Func_7af61: ; 7af61
+	dr $7af61, $7af75
+
+Func_7af75: ; 7af75
+	dr $7af75, $7af8a
+
+Func_7af8a: ; 7af8a
+	dr $7af8a, $7af96
+
+Func_7af96: ; 7af96
+	dr $7af96, $7afd5
+
+Func_7afd5: ; 7afd5
+	dr $7afd5, $7afe6
+
+Func_7afe6: ; 7afe6
+	dr $7afe6, $7b0b5
+
+Func_7b0b5: ; 7b0b5
+	dr $7b0b5, $7b133
+
+Func_7b133: ; 7b133
+	dr $7b133, $7b148
+
+Func_7b148: ; 7b148
+	dr $7b148, $7b1e1
+
+Func_7b1e1: ; 7b1e1
+	dr $7b1e1, $7b21d
+
+Func_7b21d: ; 7b21d
+	dr $7b21d, $7b25b
+
+Func_7b25b: ; 7b25b
+	dr $7b25b, $7b6d3
+
+Func_7b6d3: ; 7b6d3
+	dr $7b6d3, $7b6ec
+
+Func_7b6ec: ; 7b6ec
+	dr $7b6ec, $7b70d
+
+Func_7b70d: ; 7b70d
+	dr $7b70d, $7b72b
+
+Func_7b72b: ; 7b72b
+	dr $7b72b, $7b767
+
+Func_7b767: ; 7b767
+	dr $7b767, $7b776
+
+Func_7b776: ; 7b776
+	dr $7b776, $7b7a9
+
+Func_7b7a9: ; 7b7a9
+	dr $7b7a9, $7b848
+
+Func_7b848: ; 7b848
+	dr $7b848, $7b85e
+
+Func_7b85e: ; 7b85e
+	dr $7b85e, $7b8eb
+
+Func_7b8eb: ; 7b8eb
+	dr $7b8eb, $7b93a
+
+Func_7b93a: ; 7b93a
+	dr $7b93a, $7bd42
+
+Func_7bd42: ; 7bd42
+	dr $7bd42, $7bd5b
+
+Func_7bd5b: ; 7bd5b
+	dr $7bd5b, $7bdaa
+
+Func_7bdaa: ; 7bdaa
+	dr $7bdaa, $7bdc7
+
+Func_7bdc7: ; 7bdc7
+	dr $7bdc7, $7bdec
+
+Func_7bdec: ; 7bdec
+	dr $7bdec, $7bdfe
+
+Func_7bdfe: ; 7bdfe
+	dr $7bdfe, $7be3e
+
+Func_7be3e: ; 7be3e
+	dr $7be3e, $7be72
+
+Func_7be72: ; 7be72
+	dr $7be72, $7be8b
+
+Func_7be8b: ; 7be8b
+	dr $7be8b, $7beff
+
+Func_7beff: ; 7beff
+	dr $7beff, $7bf2a
+
+Func_7bf2a: ; 7bf2a
+	dr $7bf2a, $7c000
 
 SECTION "Bank 1f", ROMX, BANK [$1f]
 Pointers_7c000:
-	dr $7c000, $80000
+	dw Func_7d267
+	dw Func_7d26e
+	dw Func_7d275
+	dw Func_7d27c
+	dw Func_7d283
+	dw Func_7d2b3
+	dw Func_7d2c8
+	dw Func_7d2de
+	dw Func_7d2e0
+	dw Func_7d2e7
+	dw Func_7d322
+	dw Func_7d382
+	dw Func_7d38c
+	dw Func_7d3bc
+	dw Func_7d391
+	dw Func_7c96e
+	dw Func_7e1e8
+	dw Func_7e1c0
+	dw Func_7e2d8
+	dw Func_7e320
+	dw Func_7e486
+	dw Func_7e497
+	dw Func_7e373
+	dw Func_7e44d
+	dw Func_7e4aa
+	dw Func_7e4d2
+	dw Func_7e2fd
+	dw Func_7e32f
+	dw Func_7e4f4
+	dw Func_7e523
+	dw Func_7e225
+	dw Func_7c17e
+	dw Func_7d4e0
+	dw Func_7d3c9
+	dw Func_7d3f9
+	dw Func_7d486
+	dw Func_7d5a6
+	dw Func_7d5da
+	dw Func_7d5e7
+	dw Func_7db91
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7e610
+	dw Func_7e6bd
+	dw Func_7e75b
+	dw Func_7e556
+	dw Func_7e640
+	dw Func_7dff6
+	dw Func_7e0b5
+	dw Func_7c17e
+	dw Func_7d753
+	dw Func_7d78e
+	dw Func_7d8d7
+	dw Func_7e064
+	dw Func_7d8fc
+	dw Func_7d905
+	dw Func_7d9f9
+	dw Func_7d689
+	dw Func_7d93e
+	dw Func_7c100
+	dw Func_7d918
+	dw Func_7d98c
+	dw Func_7de32
+	dw Func_7dde6
+	dw Func_7de0c
+	dw Func_7ea15
+	dw Func_7ceaf
+	dw Func_7d8c8
+	dw Func_7d6cc
+	dw Func_7d738
+	dw Func_7d724
+	dw Func_7d91f
+	dw Func_7dc58
+	dw Func_7d85d
+	dw Func_7c17f
+	dw Func_7c19f
+	dw Func_7d9c5
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7e17c
+	dw Func_0150
+	dw Func_7e168
+	dw Func_7e0d2
+	dw Func_7e0c2
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c437
+	dw Func_7c456
+	dw Func_7c54a
+	dw Func_7c566
+	dw Func_7c577
+	dw Func_7c5ca
+	dw Func_7c5da
+	dw Func_7c7b7
+	dw Func_7c9de
+	dw Func_7caa0
+	dw Func_7cb98
+	dw Func_7cc9a
+	dw Func_7cca9
+	dw Func_7ccf1
+	dw Func_7c17e
+	dw Func_7c8ec
+	dw Func_7cbed
+	dw Func_7c926
+	dw Func_7c881
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c17e
+	dw Func_7c1b0
+	dw Func_7c259
+	dw Func_7c17e
+	dw Func_7c586
+	dw Func_7ca3c
+	dw Func_7cdf6
+	dw Func_7ce7d
+	dw Func_7ce36
+
+Func_7c100: ; 7c100
+	dr $7c100, $7c17e
+
+Func_7c17e: ; 7c17e
+	dr $7c17e, $7c17f
+
+Func_7c17f: ; 7c17f
+	dr $7c17f, $7c19f
+
+Func_7c19f: ; 7c19f
+	dr $7c19f, $7c1b0
+
+Func_7c1b0: ; 7c1b0
+	dr $7c1b0, $7c259
+
+Func_7c259: ; 7c259
+	dr $7c259, $7c437
+
+Func_7c437: ; 7c437
+	dr $7c437, $7c456
+
+Func_7c456: ; 7c456
+	dr $7c456, $7c54a
+
+Func_7c54a: ; 7c54a
+	dr $7c54a, $7c566
+
+Func_7c566: ; 7c566
+	dr $7c566, $7c577
+
+Func_7c577: ; 7c577
+	dr $7c577, $7c586
+
+Func_7c586: ; 7c586
+	dr $7c586, $7c5ca
+
+Func_7c5ca: ; 7c5ca
+	dr $7c5ca, $7c5da
+
+Func_7c5da: ; 7c5da
+	dr $7c5da, $7c7b7
+
+Func_7c7b7: ; 7c7b7
+	dr $7c7b7, $7c881
+
+Func_7c881: ; 7c881
+	dr $7c881, $7c8ec
+
+Func_7c8ec: ; 7c8ec
+	dr $7c8ec, $7c926
+
+Func_7c926: ; 7c926
+	dr $7c926, $7c96e
+
+Func_7c96e: ; 7c96e
+	dr $7c96e, $7c9de
+
+Func_7c9de: ; 7c9de
+	dr $7c9de, $7ca3c
+
+Func_7ca3c: ; 7ca3c
+	dr $7ca3c, $7caa0
+
+Func_7caa0: ; 7caa0
+	dr $7caa0, $7cb98
+
+Func_7cb98: ; 7cb98
+	dr $7cb98, $7cbed
+
+Func_7cbed: ; 7cbed
+	dr $7cbed, $7cc9a
+
+Func_7cc9a: ; 7cc9a
+	dr $7cc9a, $7cca9
+
+Func_7cca9: ; 7cca9
+	dr $7cca9, $7ccf1
+
+Func_7ccf1: ; 7ccf1
+	dr $7ccf1, $7cdf6
+
+Func_7cdf6: ; 7cdf6
+	dr $7cdf6, $7ce36
+
+Func_7ce36: ; 7ce36
+	dr $7ce36, $7ce7d
+
+Func_7ce7d: ; 7ce7d
+	dr $7ce7d, $7ceaf
+
+Func_7ceaf: ; 7ceaf
+	dr $7ceaf, $7d267
+
+Func_7d267: ; 7d267
+	dr $7d267, $7d26e
+
+Func_7d26e: ; 7d26e
+	dr $7d26e, $7d275
+
+Func_7d275: ; 7d275
+	dr $7d275, $7d27c
+
+Func_7d27c: ; 7d27c
+	dr $7d27c, $7d283
+
+Func_7d283: ; 7d283
+	dr $7d283, $7d2b3
+
+Func_7d2b3: ; 7d2b3
+	dr $7d2b3, $7d2c8
+
+Func_7d2c8: ; 7d2c8
+	dr $7d2c8, $7d2de
+
+Func_7d2de: ; 7d2de
+	dr $7d2de, $7d2e0
+
+Func_7d2e0: ; 7d2e0
+	dr $7d2e0, $7d2e7
+
+Func_7d2e7: ; 7d2e7
+	dr $7d2e7, $7d322
+
+Func_7d322: ; 7d322
+	dr $7d322, $7d382
+
+Func_7d382: ; 7d382
+	dr $7d382, $7d38c
+
+Func_7d38c: ; 7d38c
+	dr $7d38c, $7d391
+
+Func_7d391: ; 7d391
+	dr $7d391, $7d3bc
+
+Func_7d3bc: ; 7d3bc
+	dr $7d3bc, $7d3c9
+
+Func_7d3c9: ; 7d3c9
+	dr $7d3c9, $7d3f9
+
+Func_7d3f9: ; 7d3f9
+	dr $7d3f9, $7d486
+
+Func_7d486: ; 7d486
+	dr $7d486, $7d4e0
+
+Func_7d4e0: ; 7d4e0
+	dr $7d4e0, $7d5a6
+
+Func_7d5a6: ; 7d5a6
+	dr $7d5a6, $7d5da
+
+Func_7d5da: ; 7d5da
+	dr $7d5da, $7d5e7
+
+Func_7d5e7: ; 7d5e7
+	dr $7d5e7, $7d689
+
+Func_7d689: ; 7d689
+	dr $7d689, $7d6cc
+
+Func_7d6cc: ; 7d6cc
+	dr $7d6cc, $7d724
+
+Func_7d724: ; 7d724
+	dr $7d724, $7d738
+
+Func_7d738: ; 7d738
+	dr $7d738, $7d753
+
+Func_7d753: ; 7d753
+	dr $7d753, $7d78e
+
+Func_7d78e: ; 7d78e
+	dr $7d78e, $7d85d
+
+Func_7d85d: ; 7d85d
+	dr $7d85d, $7d8c8
+
+Func_7d8c8: ; 7d8c8
+	dr $7d8c8, $7d8d7
+
+Func_7d8d7: ; 7d8d7
+	dr $7d8d7, $7d8fc
+
+Func_7d8fc: ; 7d8fc
+	dr $7d8fc, $7d905
+
+Func_7d905: ; 7d905
+	dr $7d905, $7d918
+
+Func_7d918: ; 7d918
+	dr $7d918, $7d91f
+
+Func_7d91f: ; 7d91f
+	dr $7d91f, $7d93e
+
+Func_7d93e: ; 7d93e
+	dr $7d93e, $7d98c
+
+Func_7d98c: ; 7d98c
+	dr $7d98c, $7d9c5
+
+Func_7d9c5: ; 7d9c5
+	dr $7d9c5, $7d9f9
+
+Func_7d9f9: ; 7d9f9
+	dr $7d9f9, $7db91
+
+Func_7db91: ; 7db91
+	dr $7db91, $7dc58
+
+Func_7dc58: ; 7dc58
+	dr $7dc58, $7dde6
+
+Func_7dde6: ; 7dde6
+	dr $7dde6, $7de0c
+
+Func_7de0c: ; 7de0c
+	dr $7de0c, $7de32
+
+Func_7de32: ; 7de32
+	dr $7de32, $7dff6
+
+Func_7dff6: ; 7dff6
+	dr $7dff6, $7e064
+
+Func_7e064: ; 7e064
+	dr $7e064, $7e0b5
+
+Func_7e0b5: ; 7e0b5
+	dr $7e0b5, $7e0c2
+
+Func_7e0c2: ; 7e0c2
+	dr $7e0c2, $7e0d2
+
+Func_7e0d2: ; 7e0d2
+	dr $7e0d2, $7e168
+
+Func_7e168: ; 7e168
+	dr $7e168, $7e17c
+
+Func_7e17c: ; 7e17c
+	dr $7e17c, $7e1c0
+
+Func_7e1c0: ; 7e1c0
+	dr $7e1c0, $7e1e8
+
+Func_7e1e8: ; 7e1e8
+	dr $7e1e8, $7e225
+
+Func_7e225: ; 7e225
+	dr $7e225, $7e2d8
+
+Func_7e2d8: ; 7e2d8
+	dr $7e2d8, $7e2fd
+
+Func_7e2fd: ; 7e2fd
+	dr $7e2fd, $7e320
+
+Func_7e320: ; 7e320
+	dr $7e320, $7e32f
+
+Func_7e32f: ; 7e32f
+	dr $7e32f, $7e373
+
+Func_7e373: ; 7e373
+	dr $7e373, $7e44d
+
+Func_7e44d: ; 7e44d
+	dr $7e44d, $7e486
+
+Func_7e486: ; 7e486
+	dr $7e486, $7e497
+
+Func_7e497: ; 7e497
+	dr $7e497, $7e4aa
+
+Func_7e4aa: ; 7e4aa
+	dr $7e4aa, $7e4d2
+
+Func_7e4d2: ; 7e4d2
+	dr $7e4d2, $7e4f4
+
+Func_7e4f4: ; 7e4f4
+	dr $7e4f4, $7e523
+
+Func_7e523: ; 7e523
+	dr $7e523, $7e556
+
+Func_7e556: ; 7e556
+	dr $7e556, $7e610
+
+Func_7e610: ; 7e610
+	dr $7e610, $7e640
+
+Func_7e640: ; 7e640
+	dr $7e640, $7e6bd
+
+Func_7e6bd: ; 7e6bd
+	dr $7e6bd, $7e75b
+
+Func_7e75b: ; 7e75b
+	dr $7e75b, $7ea15
+
+Func_7ea15: ; 7ea15
+	dr $7ea15, $80000
 
 SECTION "Bank 20", ROMX, BANK [$20]
 	dr $80000, $84000

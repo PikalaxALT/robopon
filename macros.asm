@@ -1,5 +1,7 @@
 INCLUDE "macros/enum.asm"
 
+CallPredef EQUS "$08"
+
 dr: MACRO
 IF DEF(SUN)
 INCBIN "baserom-sun.gbc", \1, \2 - \1
@@ -44,3 +46,13 @@ oam_ram: MACRO
 ; bits 0-2 - cgb pal
 	ds 1
 	ENDM
+
+defchar: MACRO
+charmap \1, __charval__
+__charval__ = __charval__ + 1
+ENDM
+
+
+char_def: MACRO
+__charval__ = 0
+ENDM
