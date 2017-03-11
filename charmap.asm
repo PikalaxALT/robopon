@@ -135,10 +135,10 @@
 
 	defchar "┌" ; 80
 	defchar "¯"
-    defchar "┐"
-    defchar "└"
+	defchar "┐"
+	defchar "└"
 	defchar "_"
-    defchar "┘"
+	defchar "┘"
 	defchar "["
 	defchar "]"
 	defchar "`"
