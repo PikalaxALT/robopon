@@ -493,7 +493,7 @@ Func_0331: ; 331 (0:0331)
 	ld a, BANK(Func_4064)
 	call BankSwitch_03f2
 	ld a, $3
-	call Func_03d5
+	call GetSRAMBank
 	call Func_4064
 	ld a, BANK(Func_fe102)
 	call BankSwitch_03f2
@@ -506,7 +506,7 @@ Func_0388: ; 388 (0:0388)
 	ld a, BANK(Func_4064)
 	call BankSwitch_03f2
 	ld a, $3
-	call Func_03d5
+	call GetSRAMBank
 	call Func_4064
 	call Func_1a90
 	ld a, BANK(Func_4000)
@@ -521,7 +521,7 @@ Func_03a4: ; 3a4 (0:03a4)
 	ld a, BANK(Func_4064)
 	call BankSwitch_03f2
 	ld a, $3
-	call Func_03d5
+	call GetSRAMBank
 	call Func_4064
 	call Func_1a90
 	ld a, $ff
@@ -541,7 +541,9 @@ Func_03d3: ; 3d3 (0:03d3)
 	scf
 	ret
 
-Func_03d5: ; 3d5 (0:03d5)
+GetSRAMBank: ; 3d5 (0:03d5)
+; a = SRAM bank
+; bit 7: read-only if set, read/write else
 	bit 7, a
 	jr nz, .asm_03e4
 	ld [hSRAMBank], a
@@ -555,7 +557,7 @@ Func_03d5: ; 3d5 (0:03d5)
 	ld [hSRAMBank], a
 	res 7, a
 	ld [HuC3SRamBank], a
-	xor a
+	xor a ; SRAM_READONLY
 	ld [HuC3SRamEnable], a
 	ret
 
@@ -1965,7 +1967,7 @@ Func_0f2d: ; f2d (0:0f2d)
 	ld a, [hROMBank]
 	push af
 	ld a, [$c225]
-	call Func_03d5
+	call GetSRAMBank
 	ld a, [$c224]
 	call BankSwitch_03f2
 	ld hl, .Return
@@ -1981,7 +1983,7 @@ Func_0f2d: ; f2d (0:0f2d)
 	pop af
 	call BankSwitch_03f2
 	pop af
-	call Func_03d5
+	call GetSRAMBank
 	pop de
 	pop af
 	ld hl, $c21a
@@ -2044,7 +2046,7 @@ Func_0fde:
 	ld a, [hSRAMBank]
 	push af
 	ld a, $3
-	call Func_03d5
+	call GetSRAMBank
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Func_62ce4)
@@ -2053,7 +2055,7 @@ Func_0fde:
 	pop af
 	call BankSwitch_03f2
 	pop af
-	call Func_03d5
+	call GetSRAMBank
 .asm_103e
 	ld hl, sp+$0
 	ld bc, $27f0
@@ -3829,21 +3831,390 @@ Func_1a70:
 	pop af
 	jp BankSwitch_03f2
 
-Func_1a90:
-	dr $1a90, $1a94
+Func_1a90: ; 1a90 (0:1a90)
+	ld l, Func_70000 % $100
+	jr Func_1a70
 
-Func_1a94: ; 1a94
-	dr $1a94, $1aaf
+Func_1a94: ; 1a94 (0:1a94)
+	ld a, [hROMBank]
+	ld [$c2ed], a
+	ld a, [$c2ea]
+	set 1, a
+	ld [$c2ea], a
+	ld l, Func_70003 % $100
+	call Func_1a70
+	ld a, [$c2ea]
+	res 1, a
+	ld [$c2ea], a
+	ret
 
-Func_1aaf: ; 1aaf
-	dr $1aaf, $1ab4
+Func_1aaf: ; 1aaf (0:1aaf)
+	ld l, Func_70006 % $100
+	ld h, a
+	jr Func_1a70
 
-Func_1ab4: ; 1ab4
-	dr $1ab4, $1b28
+Func_1ab4: ; 1ab4 (0:1ab4)
+	ld l, Func_70009 % $100
+	ld h, a
+	jr Func_1a70
 
-Func_1b28:
-	dr $1b28, $1d00
+Func_1ab9:
+	ld l, Func_7000c % $100
+	ld h, a
+	jr Func_1a70
 
+Func_1abe:
+	ld l, Func_7000f % $100
+	call Func_1a70
+	ld a, h
+	ret
+
+Func_1ac5:
+	ld l, Func_70012 % $100
+	call Func_1a70
+	ld a, h
+	ret
+
+Func_1acc:
+	ld l, Func_70015 % $100
+	jr Func_1a70
+
+Func_1ad0:
+	ld l, Func_70018 % $100
+	ld h, a
+	jr Func_1a70
+
+Func_1ad5:
+	ld l, Func_7001b % $100
+	jr Func_1a70
+
+Func_1ad9:
+	ld l, Func_7001e % $100
+	jr Func_1a70
+
+Func_1add:
+	di
+	xor a
+	ld [rIF], a
+	ld [rIE], a
+	ld a, $0
+	call GetSRAMBank
+	ld a, BANK(Func_1add)
+	call BankSwitch_03f2
+	ld sp, wStackTop
+	ld a, $e4
+	ld [rBGP], a
+	ld [rOBP0], a
+	ld a, $1b
+	ld [rOBP1], a
+	predef Func_00e9
+	predef Func_7b21d
+	jp @ - 1 ; better luck next time
+
+Func_1b01:
+	ld sp, wStackTop
+	ld a, $3
+	call GetSRAMBank
+	ld a, $3f
+	ld [wc21a], a
+IF DEF(SUN)
+	ld a, $13
+ENDC
+IF DEF(STAR)
+	ld a, $11
+ENDC
+	ld [wc21b], a
+	ld a, $52
+	ld [$c21c], a
+	call Func_03f8
+	ld a, $3
+	call GetSRAMBank
+	ld a, BANK(Func_4060)
+	call BankSwitch_03f2
+	jp Func_4060
+
+Func_1b28: ; 1b28 (0:1b28)
+	ld a, [wOAM27VTile]
+	or a
+	ret z
+	push bc
+	push de
+	push hl
+	call Func_1beb
+	push bc
+	ld a, [hSRAMBank]
+	push af
+	ld a, [$c01c]
+	cp $11
+	jr z, .asm_1b52
+	di
+	predef Func_7e225
+	ei
+	ld a, [$c01c]
+	cp $10
+	jp nz, Func_1bdf
+	ld a, $11
+	ld [$c01c], a
+	jp Func_1bdf
+
+.asm_1b52
+	di
+	predef Func_7e225
+	ei
+	ld a, $1
+	ld [$c01c], a
+	ld a, e
+	ld [$c930], a
+	ld a, d
+	ld [$c931], a
+	ld a, [$c92e]
+	ld e, a
+	ld a, c
+	ld [$c92c], a
+	ld a, b
+	ld [$c92d], a
+	ld a, l
+	ld [$c92e], a
+	ld a, h
+	ld [$c92f], a
+	ld a, e
+	cp l
+	jr z, Func_1bdf
+	ld a, [$c933]
+	cp b
+	jr c, .asm_1b9b
+	jr nz, Func_1bdf
+	ld a, [$c932]
+	cp c
+	jr c, .asm_1b9b
+	jr nz, Func_1bdf
+	ld a, [$c935]
+	cp h
+	jr c, .asm_1b9b
+	jr nz, Func_1bdf
+	ld a, [$c934]
+	cp l
+	jr c, .asm_1b9b
+	jr nz, Func_1bdf
+.asm_1b9b
+	di
+	ld a, [rIE]
+	push af
+	and $fe
+	ld [rIE], a
+	ei
+	ld hl, $c936
+	ld c, $26
+	ld b, $2
+	predef Func_7e497
+	ld a, $6e
+	predef Func_7e1c0
+	ld a, $6e
+	predef Func_7e1c0
+	di
+	pop af
+	and $1
+	ld c, a
+	ld a, [rIE]
+	or c
+	ld [rIE], a
+	ld hl, rIF
+	res 0, [hl]
+	ei
+	ld a, [wc21a]
+	push af
+	ld a, $24
+	ld [wc21a], a
+	ld a, $c
+	ld [wc21b], a
+	ld a, $7c
+	ld [$c21c], a
+	call Func_03f8
+	pop af
+	ld [wc21a], a
+Func_1bdf: ; 1bdf (0:1bdf)
+	pop af
+	call GetSRAMBank
+	pop bc
+	call Func_1bff
+	pop hl
+	pop de
+	pop bc
+	ret
+
+Func_1beb: ; 1beb (0:1beb)
+	di
+	ld a, [wc203]
+	ld c, a
+	res 7, a
+	ld [wc203], a
+	ld a, [$c2e8]
+	ld b, a
+	xor a
+	ld [$c2e8], a
+	ei
+	ret
+
+Func_1bff: ; 1bff (0:1bff)
+	ld a, c
+	and $80
+	ld c, a
+	di
+	ld a, [wc203]
+	or c
+	ld [wc203], a
+	ld a, b
+	ld [$c2e8], a
+	ei
+	ret
+
+Func_1c11:
+	ld a, [hSRAMBank]
+	push af
+	call Func_1beb
+	push bc
+	ld c, l
+	ld b, h
+	predef Func_7e640
+	pop bc
+	ld l, a
+	call Func_1bff
+	pop af
+	call GetSRAMBank
+	ld a, l
+	ret
+
+Func_1c27:
+	ld a, [hSRAMBank]
+	push af
+	call Func_1beb
+	push bc
+	predef Func_7e556
+	ld l, a
+	ld h, b
+	pop bc
+	call Func_1bff
+	pop af
+	call GetSRAMBank
+	ret
+
+Func_1c3b:
+	ld a, [hSRAMBank]
+	push af
+	call Func_1beb
+	push bc
+	predef Func_7aa8e
+	jr c, .asm_1c53
+	xor a
+	ld [wOAM09VTile], a
+.asm_1c4a
+	pop bc
+	call Func_1bff
+	pop af
+	call GetSRAMBank
+	ret
+
+.asm_1c53
+	ld a, $80
+	ld [wOAM09VTile], a
+	jr .asm_1c4a
+
+Func_1c5a:
+	ld a, [hSRAMBank]
+	push af
+	ld b, c
+	push bc
+	call Func_1beb
+	pop af
+	push bc
+	ld c, a
+	predef Func_7ac8d
+	jr asm_1c8c
+
+Func_1c69:
+	ld a, [hSRAMBank]
+	push af
+	ld b, c
+	push bc
+	call Func_1beb
+	pop af
+	push bc
+	ld c, a
+	predef Func_7aca4
+	jr asm_1c8c
+
+Func_1c78:
+	ld a, [hSRAMBank]
+	push af
+	call Func_1beb
+	push bc
+	predef Func_7aa8e
+	jr asm_1c8c
+
+Func_1c83:
+	ld a, [hSRAMBank]
+	push af
+	call Func_1beb
+	push bc
+	predef Func_7ac16
+asm_1c8c
+	jr nc, .asm_1c99
+	pop bc
+	call Func_1bff
+	pop af
+	call GetSRAMBank
+	ld a, $ff
+	ret
+
+.asm_1c99
+	pop bc
+	call Func_1bff
+	pop af
+	call GetSRAMBank
+	xor a
+	ret
+
+Func_1ca3:
+	ld hl, rIE
+	set 0, [hl]
+	ret
+
+Func_1ca9:
+	ld hl, rIE
+	res 0, [hl]
+	ret
+
+Func_1caf:
+	ld hl, rIE
+	set 1, [hl]
+	ret
+
+Func_1cb5:
+	ld hl, rIE
+	res 1, [hl]
+	ret
+
+Func_1cbb:
+	ld hl, rIE
+	set 2, [hl]
+	ret
+
+Func_1cc0:
+	ld hl, rIE
+	res 2, [hl]
+	ret
+
+Func_1cc5:
+	ld hl, rIE
+	set 3, [hl]
+	ret
+
+Func_1cca:
+	ld hl, rIE
+	res 3, [hl]
+	ret
+
+SECTION "1d00", HOME [$1d00]
 Func_1d00:
 	dr $1d00, $1e4d
 
@@ -3867,7 +4238,10 @@ Func_3a20: ; 3a20
 
 SECTION "Bank 01", ROMX, BANK [$01]
 Func_4000:
-	dr $4000, $4064
+	dr $4000, $4060
+
+Func_4060:
+	dr $4060, $4064
 
 Func_4064:
 	dr $4064, $65db
@@ -3992,7 +4366,13 @@ Func_70015:
 	dr $70015, $70018
 
 Func_70018:
-	dr $70018, $74000
+	dr $70018, $7001b
+
+Func_7001b:
+	dr $7001b, $7001e
+
+Func_7001e:
+	dr $7001e, $74000
 
 SECTION "Bank 1d", ROMX, BANK [$1d]
 	dr $74000, $78000
