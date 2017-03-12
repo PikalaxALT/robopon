@@ -2,6 +2,11 @@ INCLUDE "macros/enum.asm"
 
 CallPredef EQUS "$08"
 
+dbw: MACRO
+	db \1
+	dw \2
+	ENDM
+
 lb: MACRO
 	ld \1, (\2 << 8) | \3
 	ENDM

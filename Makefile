@@ -44,10 +44,10 @@ clean: tidy
 %.asm: ;
 
 $(sun_objs): %_sun.o: %.asm $$(%_dep)
-	rgbasm -D SUN -o $@ $*.asm
+	rgbasm -h -D SUN -o $@ $*.asm
 
 $(star_objs): %_star.o: %.asm $$(%_dep)
-	rgbasm -D STAR -o $@ $*.asm
+	rgbasm -h -D STAR -o $@ $*.asm
 
 opts = -csv -k 18 -l 0x33 -m 0xfe -p 0x00 -r 0x03
 

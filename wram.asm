@@ -3,7 +3,8 @@ INCLUDE "includes.asm"
 SECTION "WRAM0", WRAM0
 wTimer:: ds $3 ; c000
 wSerial:: ds $3 ; c003
-wVBlank:: ds $1fa ; c006
+wVBlank:: ds $1a ; c006
+wc020:: ds $1e0 ; c020
 wLCD:: ds $3 ; c200
 wc203:: ds $4 ; c203
 wc207:: ds $2 ; c207
