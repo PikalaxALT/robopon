@@ -6,8 +6,10 @@ wSerial:: ds $3 ; c003
 wVBlank:: ds $1a ; c006
 wc020:: ds $1e0 ; c020
 wLCD:: ds $3 ; c200
-wc203:: ds $4 ; c203
-wc207:: ds $2 ; c207
+wc203:: ds $2 ; c203
+wJoyPressed:: ds $1 ; c205
+wJoyLast:: ds $1 ; c206
+wJoyHeld:: ds $2 ; c207
 wc209:: ds $3 ; c209
 wSCX:: ds $1 ; c20c
 wSCX2:: ds $1 ; c20d
