@@ -4215,17 +4215,915 @@ Func_1cca:
 	ret
 
 SECTION "1d00", HOME [$1d00]
-Func_1d00:
-	dr $1d00, $1e4d
+Func_1d00: ; 1d00 (0:1d00)
+	push de
+	push bc
+	push hl
+	ld hl, $c21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $64
+	inc hl
+	ld [hl], $40
+	call Func_03f8
+	ld a, $ff
+	ld [wc213], a
+	ld hl, $c21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $0
+	inc hl
+	ld [hl], $40
+	call Func_03f8
+	ld a, [wc203]
+	or $11
+	ld [wc203], a
+Func_1d2c: ; 1d2c (0:1d2c)
+	ld a, [wc203]
+	ld hl, $c204
+	cp [hl]
+	jp nz, Func_1d2c
+	call Func_3aa8
+	ld de, Data_1d8d
+	ld hl, $1
+	call Func_230e
+.asm_1d40
+	ld de, Data_1d94
+	ld hl, $3
+	call Func_230e
+	ld e, $5
+	xor a
+	call Func_3a83
+	pop hl
+	push hl
+	ld hl, Data_1da2
+	push hl
+	call Func_150e
+.asm_1d59
+	pop bc
+	pop bc
+	ld e, $7
+	xor a
+	call Func_3a83
+	pop bc
+	push bc
+	ld hl, Data_1daa
+	push hl
+	call Func_150e
+	pop bc
+	pop bc
+	ld e, $9
+	xor a
+	call Func_3a83
+	pop de
+	push de
+	ld hl, Data_1db0
+	push hl
+	call Func_150e
+	pop bc
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	jp @ - 1 ; better luck next time
 
-Func_1e4d:
-	dr $1e4d, $2a49
+Data_1d8d: ; 1d8d
+	dr $1d8d, $1d94
+
+Data_1d94: ; 1d94
+	dr $1d94, $1da2
+
+Data_1da2: ; 1da2
+	dr $1da2, $1daa
+
+Data_1daa: ; 1daa
+	dr $1daa, $1db0
+
+Data_1db0: ; 1db0
+	dr $1db0, $1db9
+
+Func_1db9:
+	ld a, [hSRAMBank]
+	push af
+	ld a, $3
+	call GetSRAMBank
+	ld bc, $214
+	ld e, $0
+	ld hl, $c980
+	call FillMemory
+	ld a, $2
+	call GetSRAMBank
+	ld bc, $1298
+	ld e, $0
+	ld hl, $a007
+	call FillMemory
+	ld a, $3
+	call GetSRAMBank
+	ld bc, $a0
+	ld e, $0
+	ld hl, $cb94
+	call FillMemory
+	ld a, $3
+	call GetSRAMBank
+	ld bc, $dc
+	ld e, $0
+	ld hl, $cc34
+	call FillMemory
+	ld a, $3
+	call GetSRAMBank
+	ld bc, $fa
+	ld e, $0
+	ld hl, $cd10
+	call FillMemory
+	pop af
+	call GetSRAMBank
+	ld bc, $32
+	ld e, $0
+	ld hl, $c7ed
+	call FillMemory
+	ld bc, $64
+	ld e, $0
+	ld hl, $c789
+	call FillMemory
+	ld bc, $3c
+	ld e, $0
+	ld hl, $c347
+	call FillMemory
+	ld hl, $0
+	call Func_3855
+	dw $c391
+	ld hl, $0
+	call Func_3855
+	dw $c393
+	ld bc, $5
+	ld e, $0
+	ld hl, $c309
+	call FillMemory
+	ret
+
+Func_1e4d: ; 1e4d (0:1e4d)
+	call Func_3aa8
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $67
+	inc hl
+	ld [hl], $7a
+	ld de, $900
+	ld hl, $ce10
+	call Func_03f8
+	call Func_1db9
+	xor a
+	ld [wOAM26VTile], a
+	xor a
+	ld [$c91c], a
+	xor a
+	ld [$c92b], a
+	ld hl, wc21a
+	ld [hl], $18
+	inc hl
+	ld [hl], $fc
+	inc hl
+	ld [hl], $53
+	ld e, $0
+	xor a
+	call Func_03f8
+	ld hl, wc21a
+	ld [hl], $18
+	inc hl
+	ld [hl], $24
+	inc hl
+	ld [hl], $54
+	ld c, $1
+	ld e, $1
+	ld a, $1
+	call Func_03f8
+	ld bc, $48
+	ld e, $0
+	ld hl, $c938
+	call FillMemory
+	ld a, $1
+	ld [wOAM27VTile], a
+Func_1ea8: ; 1ea8 (0:1ea8)
+	ld a, [$c01c]
+	cp $11
+	jp z, Func_1ec2
+	ld a, [$c01c]
+	or a
+	jp nz, Func_1ebc
+	ld a, $1
+	ld [$c01c], a
+Func_1ebc: ; 1ebc (0:1ebc)
+	call Func_0465
+	jp Func_1ea8
+
+Func_1ec2: ; 1ec2 (0:1ec2)
+	call Func_0465
+	xor a
+Func_1ec6: ; 1ec6 (0:1ec6)
+	cp $6
+	jp nc, Func_1ed8
+	ld e, a
+	ld d, $0
+	ld hl, $c932
+	add hl, de
+	ld [hl], $ff
+	inc a
+	jp Func_1ec6
+
+Func_1ed8: ; 1ed8 (0:1ed8)
+	ld a, $5
+	call BankSwitch_03f2
+	ld e, $0
+	xor a
+	call Func_3a83
+	ld hl, wc21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $b3
+	inc hl
+	ld [hl], $79
+	ld a, $1
+	call Func_03f8
+	push hl
+	ld hl, wc21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $e4
+	inc hl
+	ld [hl], $7a
+	ld a, $1
+	call Func_03f8
+	push de
+	push hl
+	pop de
+	pop hl
+	push de
+	ld hl, wc21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $2b
+	inc hl
+	ld [hl], $7a
+	xor a
+	pop de
+	pop hl
+	call Func_3608
+	jp nz, Func_1f25
+	call Func_03f8
+	cp $ff
+	jp nz, Func_1f27
+Func_1f25: ; 1f25 (0:1f25)
+	ld a, $1
+Func_1f27: ; 1f27 (0:1f27)
+	ld a, $ff
+	ld [wOAM26Attrs], a
+	call Func_144fd
+	ret
+
+Func_1f30:
+	call Func_3875
+	dw $c30e
+	ld a, l
+	or h
+	jp nz, Func_1f7a
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $ba
+	inc hl
+	ld [hl], $7a
+	ld hl, Init
+	call Func_03f8
+	call Func_3855
+	ld c, $c3
+	call Func_14d4
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $f0
+	ld de, $88f0
+	call Func_3875
+	dw $c30e
+	call Func_146c
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $f0
+	ld de, $4a12
+	ld hl, $88f0
+	call Func_146c
+	call Func_14d4
+Func_1f7a: ; 1f7a (0:1f7a)
+	ret
+
+Func_1f7b:
+	call Func_3875
+	dw $c30e
+	ld a, l
+	or h
+	jp z, Func_1fbd
+	call Func_14d4
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $f0
+	call Func_3875
+	dw $c30e
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $88f0
+	call Func_146c
+	call Func_14d4
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $57
+	inc hl
+	ld [hl], $7c
+	call Func_3875
+	dw $c30e
+	call Func_03f8
+	ld hl, $0
+	call Func_3855
+	dw $c30e
+Func_1fbd: ; 1fbd (0:1fbd)
+	ret
+
+Func_1fbe:
+	call Func_3875
+	dw $c2f2
+	ld a, l
+	or h
+	jp nz, Func_2008
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $ba
+	inc hl
+	ld [hl], $7a
+	ld hl, $1ba
+	call Func_03f8
+	call Func_3855
+	dw $c2f2
+	call Func_14d4
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $1ba
+	ld de, $8cc0
+	call Func_3875
+	dw $c2f2
+	call Func_146c
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $1ba
+	ld de, $4b22
+	ld hl, $8cc0
+	call Func_146c
+	call Func_14d4
+Func_2008: ; 2008 (0:2008)
+	ret
+
+Func_2009:
+	call Func_3875
+	dw $c2f2
+	ld a, l
+	or h
+	jp z, Func_204b
+	call Func_14d4
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $1ba
+	call Func_3875
+	dw $c2f2
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $8cc0
+	call Func_146c
+	call Func_14d4
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $57
+	inc hl
+	ld [hl], $7c
+	call Func_3875
+	dw $c2f2
+	call Func_03f8
+	ld hl, HuC3SRamEnable
+	call Func_3855
+	dw $c2f2
+Func_204b:
+	ret
+
+Func_204c:
+	call Func_3875
+	dw $c2f2
+	ld a, l
+	or h
+	jp nz, Func_2096
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $ba
+	inc hl
+	ld [hl], $7a
+	ld hl, $50
+	call Func_03f8
+	call Func_3855
+	dw $c2f2
+	call Func_14d4
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $50
+	ld de, $8fa0
+	call Func_3875
+	dw $c2f2
+	call Func_146c
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $50
+	ld de, $4e02
+	ld hl, $8fa0
+	call Func_146c
+	call Func_14d4
+Func_2096: ; 2096 (0:2096)
+	ret
+
+Func_2097:
+	call Func_3875
+	dw $c2f2
+	ld a, l
+	or h
+	jp z, Func_20d9
+	call Func_14d4
+	ld a, $1
+	ld [wc21a], a
+	ld bc, $50
+	call Func_3875
+	dw $c2f2
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $8fa0
+	call Func_146c
+	call Func_14d4
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $57
+	inc hl
+	ld [hl], $7c
+	call Func_3875
+	dw $c2f2
+	call Func_03f8
+	ld hl, $0
+	call Func_3855
+	dw $c2f2
+Func_20d9: ; 20d9 (0:20d9)
+	ret
+
+Func_20da: ; 20da (0:20da)
+	push bc
+	ld a, h
+	ld a, l
+	ld hl, sp+$0
+	ld [hl], d
+	ld l, e
+	xor a
+Func_20e2: ; 20e2 (0:20e2)
+	cp l
+	jp nc, Func_2122
+	push hl
+	push af
+	xor a
+Func_20e9: ; 20e9 (0:20e9)
+	ld hl, sp+$4
+	cp [hl]
+	jp nc, Func_2101
+	push af
+	call Func_3848
+	inc c
+	ld a, [hl]
+	inc hl
+	call Func_37d4
+	inc c
+	ld [bc], a
+	inc bc
+	pop af
+	inc a
+	jp Func_20e9
+
+Func_2101: ; 2101 (0:2101)
+	pop af
+	push bc
+	push af
+	ld hl, sp+$6
+	ld c, [hl]
+	ld b, $0
+	ld hl, $14
+	ld a, l
+	sub c
+	ld c, a
+	ld a, h
+	sbc b
+	ld b, a
+	call Func_3848
+	inc c
+	add hl, bc
+	call Func_37d4
+	inc c
+	pop af
+	inc a
+	pop bc
+	pop hl
+	jp Func_20e2
+
+Func_2122: ; 2122 (0:2122)
+	pop bc
+	ret
+
+Func_2124:
+	push hl
+	push de
+	push bc
+	call Func_381d
+	ld c, h
+	call Func_381d
+	ld a, l
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, $c4a0
+	add hl, de
+	ld e, c
+	ld d, $0
+	add hl, de
+	pop bc
+	push hl
+	call Func_3829
+	push hl
+	call Func_3811
+	pop de
+	call Func_20da
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_2152:
+	push hl
+	push de
+	push bc
+	call Func_381d
+	ld c, h
+	call Func_381d
+	ld a, l
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, $c608
+	add hl, de
+	ld e, c
+	ld d, $0
+	add hl, de
+	pop bc
+	push hl
+	call Func_3829
+	push hl
+	call Func_3811
+	pop de
+	call Func_20da
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_2180: ; 2180 (0:2180)
+	push bc
+	ld a, h
+	ld a, l
+	ld hl, sp+$0
+	ld [hl], d
+	ld l, e
+	xor a
+Func_2188: ; 2188 (0:2188)
+	cp l
+	jp nc, Func_21c8
+	push hl
+	push af
+	xor a
+Func_218f: ; 218f (0:218f)
+	ld hl, sp+$4
+	cp [hl]
+	jp nc, Func_21a7
+	push af
+	ld a, [bc]
+	inc bc
+	call Func_3848
+	inc c
+	ld [hl], a
+	inc hl
+	call Func_37d4
+	inc c
+	pop af
+	inc a
+	jp Func_218f
+
+Func_21a7: ; 21a7 (0:21a7)
+	pop af
+	push bc
+	push af
+	ld hl, sp+$6
+	ld c, [hl]
+	ld b, $0
+	ld hl, $14
+	ld a, l
+	sub c
+	ld c, a
+	ld a, h
+	sbc b
+	ld b, a
+	call Func_3848
+	inc c
+	add hl, bc
+	call Func_37d4
+	inc c
+	pop af
+	inc a
+	pop bc
+	pop hl
+	jp Func_2188
+
+Func_21c8: ; 21c8 (0:21c8)
+	pop bc
+	ret
+
+Func_21ca:
+	push hl
+	push de
+	push bc
+	call Func_381d
+	ld c, h
+	call Func_381d
+	ld a, l
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, $c4a0
+	add hl, de
+	ld e, c
+	ld d, $0
+	add hl, de
+	pop bc
+	push hl
+	call Func_3829
+	push hl
+	call Func_3811
+	pop de
+	call Func_2180
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_21f8:
+	push hl
+	push de
+	push bc
+	call Func_381d
+	ld c, h
+	call Func_381d
+	ld a, l
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, $c608
+	add hl, de
+	ld e, c
+	ld d, $0
+	add hl, de
+	pop bc
+	push hl
+	call Func_3829
+	push hl
+	call Func_3811
+	pop de
+	call Func_2180
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_2226:
+	dr $2226, $2231
+
+Func_2231:
+	push bc
+	push bc
+	push bc
+	push bc
+	push de
+	call Func_3848
+	inc c
+	ld a, l
+	and h
+	inc a
+	jp nz, Func_224f
+	ld hl, sp+$4
+	ld a, [$c252]
+	ld [hl], a
+	ld hl, sp+$3
+	ld a, [$c253]
+	ld [hl], a
+	jp Func_225f
+
+Func_224f: ; 224f (0:224f)
+	call Func_3848
+	inc c
+	ld e, h
+	ld hl, sp+$4
+	ld [hl], e
+	call Func_3848
+	inc c
+	ld e, l
+	ld hl, sp+$3
+	ld [hl], e
+Func_225f: ; 225f (0:225f)
+	pop de
+	ld c, e
+	ld hl, sp+$0
+	ld [hl], d
+	ld hl, sp+$0
+	ld a, [hl]
+	and $1
+	jp z, Func_2285
+	ld hl, sp+$1
+	ld e, [hl]
+	ld hl, sp+$2
+	ld a, [hl]
+	call Func_3a83
+	call Func_3811
+	push hl
+	ld hl, Data_2304
+	push hl
+	call Func_150e
+	pop bc
+	pop bc
+	jp Func_22fe
+
+Func_2285: ; 2285 (0:2285)
+	ld e, c
+	ld d, $0
+	ld hl, $5
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	add hl, hl
+	ld de, Data_2226
+	add hl, de
+	call Func_3791
+Func_2299: ; 2299 (0:2299)
+	call Func_3823
+	ld a, [hl]
+	dec a
+	inc hl
+	or [hl]
+	jp z, Func_22e8
+	call Func_3823
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call Func_3811
+	call Func_35f8
+	jp nc, Func_22e8
+	ld hl, sp+$1
+	ld e, [hl]
+	ld hl, sp+$2
+	ld a, [hl]
+	call Func_3a83
+	ld hl, sp+$0
+	ld a, [hl]
+	and $2
+	jp z, Func_22ce
+	ld hl, $2307
+	push hl
+	call Func_150e
+	pop bc
+	jp Func_22d6
+
+Func_22ce: ; 22ce (0:22ce)
+	ld hl, $2309
+	push hl
+	call Func_150e
+	pop bc
+Func_22d6: ; 22d6 (0:22d6)
+	call Func_3823
+	inc hl
+	inc hl
+	call Func_3791
+	ld hl, sp+$2
+	ld a, [hl]
+	inc a
+	ld hl, sp+$2
+	ld [hl], a
+	jp Func_2299
+
+Func_22e8: ; 22e8 (0:22e8)
+	ld hl, sp+$1
+	ld e, [hl]
+	ld hl, sp+$2
+	ld a, [hl]
+	call Func_3a83
+	call Func_3811
+	push hl
+	ld hl, $230b
+	push hl
+	call Func_150e
+	pop bc
+	pop bc
+Func_22fe: ; 22fe (0:22fe)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_2304:
+	dr $2304, $230e
+
+Func_230e: ; 230e
+	dr $230e, $2a49
 
 Func_2a49: ; 2a49
-	dr $2a49, $3848
+	dr $2a49, $35f8
+
+Func_35f8: ; 35f8
+	dr $35f8, $3608
+
+Func_3608: ; 3608
+	dr $3608, $3791
+
+Func_3791: ; 3791
+	dr $3791, $37d4
+
+Func_37d4: ; 37d4
+	dr $37d4, $3811
+
+Func_3811: ; 3811
+	dr $3811, $381d
+
+Func_381d: ; 381d
+	dr $381d, $3823
+
+Func_3823: ; 3823
+	dr $3823, $3829
+
+Func_3829: ; 3829
+	dr $3829, $3848
 
 Func_3848: ; 3848
-	dr $3848, $3892
+	dr $3848, $3855
+
+Func_3855: ; 3855
+	dr $3855, $3875
+
+Func_3875: ; 3875
+	dr $3875, $3892
 
 Data_3892:
 	dr $3892, $3992
@@ -4234,7 +5132,16 @@ Func_3992: ; 3992
 	dr $3992, $3a20
 
 Func_3a20: ; 3a20
-	dr $3a20, $3fee
+	dr $3a20, $3a83
+
+Func_3a83: ; 3a83
+	dr $3a83, $3aa8
+
+Func_3aa8: ; 3aa8
+	dr $3aa8, $3bc5
+
+Func_3bc5: ; 3bc5
+	dr $3bc5, $3fee
 
 SECTION "Bank 01", ROMX, BANK [$01]
 Func_4000:
@@ -4265,7 +5172,10 @@ SECTION "Bank 04", ROMX, BANK [$04]
 	dr $10000, $14000
 
 SECTION "Bank 05", ROMX, BANK [$05]
-	dr $14000, $18000
+	dr $14000, $144fd
+
+Func_144fd:
+	dr $144fd, $18000
 
 SECTION "Bank 06", ROMX, BANK [$06]
 	dr $18000, $1c000
