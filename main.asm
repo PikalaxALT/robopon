@@ -1,10 +1,11 @@
 INCLUDE "includes.asm"
 
 SECTION "rst $00", HOME [$00]
+Serial_:
 	jp Func_0388
 
 SECTION "rst $08", HOME [$08]
-Predef_::
+Predef_:
 	jp Predef
 
 Bank_000b:
@@ -39,7 +40,7 @@ SECTION "HBlankInt", HOME [$48]
 
 SECTION "TimerInt", HOME [$50]
 	jp wTimer
-Func_0053:
+Timer_:
 	jp Func_021c
 
 SECTION "SerialInt", HOME [$58]
@@ -9941,13 +9942,966 @@ Func_3fe0:
 
 SECTION "Bank 01", ROMX, BANK [$01]
 Func_4000:
-	dr $4000, $4060
+	ld a, $0
+	call Func_6169
+	ld a, $e4
+	ld [rBGP], a
+	ld [wBGP], a
+	ld [rOBP0], a
+	ld [wOBP0], a
+	ld a, $e0
+	ld [rOBP1], a
+	ld [wOBP1], a
+	call Func_410c
+	hlbgcoord 0, 0
+	call Func_6149
+	hlbgcoord 0, 0, vWindowMap
+	call Func_6149
+	ld a, $81
+	call Func_617d
+	call Func_0fde
+	ld a, [wc203]
+	or $9
+	ld [wc203], a
+	ld a, [wc213]
+	or a
+	ret nz
+	ld a, $24
+	ld [wc21a], a
+	ld a, $87
+	ld [wc21b], a
+	ld a, $7b
+	ld [$c21c], a
+	call Func_03f8
+	ld a, $3f
+	ld [wc21a], a
+IF DEF(SUN)
+	ld a, $14
+ENDC
+IF DEF(STAR)
+	ld a, $12
+ENDC
+	ld [wc21b], a
+	ld a, $53
+	ld [$c21c], a
+	call Func_03f8
+Func_4060: ; 4060 (1:4060)
+	jp Func_1e4d
 
-Func_4060:
-	dr $4060, $4064
+Func_4063:
+	ret
 
-Func_4064:
-	dr $4064, $65db
+Func_4064: ; 4064 (1:4064)
+	di
+	ld a, [wSystemType]
+	push af
+	ld hl, wLCD
+	ld bc, $200
+.asm_406f
+	xor a
+	ld [hli], a
+	dec bc
+	ld a, c
+	or b
+	jr nz, .asm_406f
+	pop af
+	ld [wSystemType], a
+	ld hl, Func_40bf
+	ld de, wTimer
+	ld b, $9
+.asm_4082
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .asm_4082
+	ld de, wLCD
+	ld b, $3
+.asm_408d
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .asm_408d
+	call Func_40cb
+	ld a, $98
+	ld [$c210], a
+	call Func_40f4
+	ld a, $1
+	ld [rIE], a
+	ld a, [rSTAT]
+	set 6, a
+	ld [rSTAT], a
+	xor a
+	ld [rIF], a
+	ei
+	ld a, $d
+	ld [$c237], a
+	ld a, $4
+	ld [$c24d], a
+	xor a
+	ld [$c01c], a
+	ld a, $80
+	ld [rSC], a
+	ret
+
+Func_40bf:
+	jp Func_0fde
+
+Func_40c2:
+	jp Serial_
+
+Func_40c5:
+	jp VBlank
+
+Func_40c8:
+	jp Func_117e
+
+Func_40cb: ; 40cb (1:40cb)
+	ld hl, sp+$0
+	ld de, wOAM2_0aYCoord
+	ld a, l
+	sub e
+	ld c, a
+	ld a, h
+	sbc d
+	ld b, a
+	ld hl, Data_40ea
+.asm_40d9
+	ld a, [hli]
+	or a
+	jr nz, .asm_40e2
+	ld hl, Data_40ea
+	jr .asm_40d9
+
+.asm_40e2
+	ld [de], a
+	inc de
+	dec bc
+	ld a, c
+	or b
+	jr nz, .asm_40d9
+	ret
+
+Data_40ea:
+	db "WILL TEST", $00
+
+Func_40f4: ; 40f4 (1:40f4)
+	ld c, hPushOAM % $100
+	ld b, $a
+	ld hl, Func_4102
+.asm_40fb
+	ld a, [hli]
+	ld [$ff00+c], a
+	inc c
+	dec b
+	jr nz, .asm_40fb
+	ret
+
+Func_4102:
+	ld a, $c4
+	ld [rDMA], a
+	ld a, $28
+.asm_4108
+	dec a
+	jr nz, .asm_4108
+	ret
+
+Func_410c: ; 410c (1:410c)
+	ld hl, $9000
+	ld de, GFX_4122
+	ld bc, $800
+	call MemCopy
+	ld hl, $8800
+	ld bc, $1b0
+	call MemCopy
+	ret
+
+GFX_4122:
+	dr $4122, $6122
+
+Func_6122: ; 6122 (1:6122)
+	or a
+	jr nz, .asm_6137
+	ld a, $98
+	ld [$c231], a
+	ld a, [wSCX]
+	ld [$c232], a
+	ld a, [wSCY]
+	ld [$c233], a
+	ret
+
+.asm_6137
+	ld a, $9c
+	ld [$c231], a
+	ld a, [wSCX2]
+	ld [$c232], a
+	ld a, [wSCY2]
+	ld [$c233], a
+	ret
+
+Func_6149: ; 6149 (1:6149)
+	ld bc, $400
+.asm_614c
+	ld a, $8f
+	ld [hli], a
+	dec bc
+	ld a, b
+	or c
+	jr nz, .asm_614c
+	ret
+
+Func_6155:
+	hlbgcoord 0, 0
+	debgcoord 0, 0, vWindowMap
+	ld a, [wLCDC]
+	bit 3, a
+	jr z, .asm_6168
+	hlbgcoord 0, 0, vWindowMap
+	debgcoord 0, 0
+.asm_6168
+	ret
+
+Func_6169: ; 6169 (1:6169)
+	push af
+	call Func_6294
+	ld [wLCDC], a
+	ld a, [wc203]
+	or $4
+	ld [wc203], a
+	call Func_6294
+	pop af
+	ret
+
+Func_617d: ; 617d (1:617d)
+	ld [wLCDC], a
+	ld [rLCDC], a
+	ret
+
+Func_6183:
+	push af
+	ld a, [wLCDC]
+	bit 7, a
+	jr nz, .asm_618f
+	pop af
+	jp Func_617d
+
+.asm_618f
+	pop af
+	jp Func_6169
+
+Func_6193:
+	ld a, [$c210]
+	ld [$c231], a
+	sub $98
+	jr nz, .asm_61a3
+	xor a
+	call Func_6122
+	jr Func_61a8
+
+.asm_61a3
+	ld a, $1
+	call Func_6122
+Func_61a8:
+	ld a, c
+	or a
+	jp z, Func_1405
+	cp $1
+	jp z, Func_6226
+	cp $2
+	jp z, Func_61b8
+	ret
+
+Func_61b8: ; 61b8 (1:61b8)
+	ld a, [$c233]
+	srl a
+	srl a
+	srl a
+	add e
+	and $1f
+	ld c, $0
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	ld [$c22e], a
+	ld a, [$c231]
+	add c
+	ld [$c22f], a
+	ld a, [$c232]
+	srl a
+	srl a
+	srl a
+	add d
+	and $1f
+	ld [$c230], a
+	add b
+	cp $21
+	jr nc, asm_620a
+Func_61f8: ; 61f8 (1:61f8)
+	ld a, [$c22e]
+	ld e, a
+	ld a, [$c230]
+	add e
+	ld e, a
+	ld a, [$c22f]
+	adc $0
+	ld d, a
+	jp Func_1405
+
+asm_620a
+	sub $20
+	ld c, a
+	ld a, b
+	sub c
+	ld b, a
+	push bc
+	push hl
+	call Func_61f8
+	xor a
+	ld [$c230], a
+	pop hl
+	pop bc
+	ld a, l
+	add b
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	ld b, c
+	jp Func_61f8
+
+Func_6226: ; 6226 (1:6226)
+	ld a, [$c233]
+	srl a
+	srl a
+	srl a
+	add l
+	and $1f
+	ld c, $0
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	ld [$c22e], a
+	ld a, [$c231]
+	add c
+	ld [$c22f], a
+	ld a, [$c232]
+	srl a
+	srl a
+	srl a
+	add h
+	and $1f
+	ld [$c230], a
+	add b
+	cp $21
+	jr nc, asm_6278
+Func_6266: ; 6266 (1:6266)
+	ld a, [$c22e]
+	ld l, a
+	ld a, [$c230]
+	add l
+	ld l, a
+	ld a, [$c22f]
+	adc $0
+	ld h, a
+	jp Func_1405
+
+asm_6278
+	sub $20
+	ld c, a
+	ld a, b
+	sub c
+	ld b, a
+	push bc
+	push de
+	call Func_6266
+	xor a
+	ld [$c230], a
+	pop de
+	pop bc
+	ld a, e
+	add b
+	ld e, a
+	ld a, d
+	adc $0
+	ld d, a
+	ld b, c
+	jp Func_6266
+
+Func_6294: ; 6294 (1:6294)
+	push af
+	push bc
+.asm_6296
+	ld a, [wc203]
+	ld c, a
+	ld a, [$c204]
+	cp c
+	jr nz, .asm_6296
+	pop bc
+	pop af
+	ret
+
+Func_62a3:
+	push bc
+	ld b, $0
+	ld a, h
+	or a
+	jr z, .asm_62b2
+	ld b, $1
+	cp $1
+	jr z, .asm_62b2
+	ld b, $ff
+.asm_62b2
+	ld c, $0
+	ld a, l
+	or a
+	jr z, .asm_62c0
+	ld c, $1
+	cp $1
+	jr z, .asm_62c0
+	ld c, $ff
+.asm_62c0
+	ld a, b
+	cp $ff
+	jr z, asm_62fb
+	call Func_6122
+	pop bc
+	ld a, d
+	sub b
+	inc a
+	ld d, b
+	ld b, a
+	ld a, e
+	sub c
+	inc a
+	ld e, c
+	ld c, a
+	push bc
+	ld l, e
+	ld h, d
+	call Func_14da
+	pop bc
+	ld a, e
+	cp $12
+	jp c, Func_62e3
+	sub $12
+	ld e, a
+Func_62e3: ; 62e3 (1:62e3)
+	push bc
+	push hl
+	push de
+	ld c, $2
+	call Func_61a8
+	pop de
+	inc e
+	pop hl
+	ld a, l
+	add $14
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	pop bc
+	dec c
+	jr nz, Func_62e3
+	ret
+
+asm_62fb
+	ld a, c
+	call Func_6122
+	pop bc
+	ld a, d
+	sub b
+	inc a
+	ld d, b
+	ld b, a
+	ld a, e
+	sub c
+	inc a
+	ld e, c
+	ld c, a
+	push bc
+	ld l, e
+	ld h, d
+	call Func_14da
+	pop bc
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, l
+	cp $12
+	jp c, Func_631e
+	sub $12
+	ld l, a
+Func_631e: ; 631e (1:631e)
+	push bc
+	push de
+	push hl
+	ld c, $1
+	call Func_61a8
+	pop hl
+	inc l
+	pop de
+	ld a, e
+	add $14
+	ld e, a
+	ld a, d
+	adc $0
+	ld d, a
+	pop bc
+	dec c
+	jr nz, Func_631e
+	ret
+
+Func_6336:
+	ld a, c
+	or a
+	jr z, .asm_6368
+	cp $1
+	jr z, .asm_6355
+	call Func_14da
+	ld b, $8
+.asm_6343
+	ld c, $8
+.asm_6345
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec c
+	jr nz, .asm_6345
+	push bc
+	ld bc, $c
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .asm_6343
+	ret
+
+.asm_6355
+	ld a, $9c
+	ld [$c231], a
+	ld a, [wSCX2]
+	ld [$c232], a
+	ld a, [wSCY2]
+	ld [$c233], a
+	jr .asm_6379
+
+.asm_6368
+	ld a, $98
+	ld [$c231], a
+	ld a, [wSCX]
+	ld [$c232], a
+	ld a, [wSCY]
+	ld [$c233], a
+.asm_6379
+	ld c, $8
+.asm_637b
+	push bc
+	push hl
+	push de
+	ld bc, $801
+	call Func_61a8
+	pop hl
+	ld bc, $8
+	add hl, bc
+	ld e, l
+	ld d, h
+	pop hl
+	inc l
+	pop bc
+	dec c
+	jr nz, .asm_637b
+	ret
+
+Func_6392:
+	ld b, $80
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $7
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $2
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $2
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $2
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $2
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $2
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $2
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $2
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $2
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	inc de
+	ld c, $8
+	call Func_124e
+	ld [de], a
+	ret
+
+Func_6483:
+	rr l
+	jr nc, .asm_648a
+	ld a, [de]
+	or b
+	ld [de], a
+.asm_648a
+	rlc b
+	jr nc, .asm_648f
+	dec de
+.asm_648f
+	dec c
+	jr nz, Func_6483
+	ret
+
+Func_6493:
+	push hl
+	push de
+	ld l, e
+	ld h, d
+	ld de, $ffe5
+	add hl, de
+	ld e, $0
+	ld bc, $1c
+	call FillMemory
+	pop de
+	pop hl
+	ld b, $2
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $2
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $2
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $2
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $2
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $2
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $2
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $2
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $2
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $7
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call Func_6483
+	pop hl
+	dec hl
+	ret
 
 Func_65db: ; 65db
 	dr $65db, $68b6
@@ -19718,7 +20672,7 @@ Func_7dff6: ; 7dff6 (1f:5ff6)
 	ret
 
 Func_7e03a: ; Timer
-	jp Func_0053
+	jp Timer_
 
 Func_7e03d: ; Serial
 	reti
@@ -19791,7 +20745,7 @@ Func_7e070: ; 7e070 (1f:6070)
 	call nz, Func_7e0ea
 	ld a, [rIE]
 	bit 2, a
-	call z, Func_0053
+	call z, Timer_
 	ld hl, $ff83
 	inc [hl]
 	ld hl, $ff84
