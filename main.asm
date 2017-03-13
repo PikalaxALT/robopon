@@ -545,14 +545,14 @@ GetSRAMBank: ; 3d5 (0:03d5)
 ; a = SRAM bank
 ; bit 7: read-only if set, read/write else
 	bit 7, a
-	jr nz, .asm_03e4
+	jr nz, GetSRAMBank_ReadOnly
 	ld [hSRAMBank], a
 	ld [HuC3SRamBank], a
 	ld a, SRAM_READWRITE
 	ld [HuC3SRamEnable], a
 	ret
 
-.asm_03e4
+GetSRAMBank_ReadOnly:
 	set 7, a
 	ld [hSRAMBank], a
 	res 7, a
@@ -4709,7 +4709,7 @@ Func_20e9: ; 20e9 (0:20e9)
 	jp nc, Func_2101
 	push af
 	call Func_3848
-	inc c
+	db $c
 	ld a, [hl]
 	inc hl
 	call Func_37d4
@@ -4735,7 +4735,7 @@ Func_2101: ; 2101 (0:2101)
 	sbc b
 	ld b, a
 	call Func_3848
-	inc c
+	db $c
 	add hl, bc
 	call Func_37d4
 	inc c
@@ -4839,7 +4839,7 @@ Func_218f: ; 218f (0:218f)
 	ld a, [bc]
 	inc bc
 	call Func_3848
-	inc c
+	db $c
 	ld [hl], a
 	inc hl
 	call Func_37d4
@@ -4863,7 +4863,7 @@ Func_21a7: ; 21a7 (0:21a7)
 	sbc b
 	ld b, a
 	call Func_3848
-	inc c
+	db $c
 	add hl, bc
 	call Func_37d4
 	inc c
@@ -4955,7 +4955,7 @@ Func_2231:
 	push bc
 	push de
 	call Func_3848
-	inc c
+	db $c
 	ld a, l
 	and h
 	inc a
@@ -4970,12 +4970,12 @@ Func_2231:
 
 Func_224f: ; 224f (0:224f)
 	call Func_3848
-	inc c
+	db $c
 	ld e, h
 	ld hl, sp+$4
 	ld [hl], e
 	call Func_3848
-	inc c
+	db $c
 	ld e, l
 	ld hl, sp+$3
 	ld [hl], e
@@ -5046,7 +5046,7 @@ Func_2299: ; 2299 (0:2299)
 	jp Func_22d6
 
 Func_22ce: ; 22ce (0:22ce)
-	ld hl, $2309
+	ld hl, Data_2309
 	push hl
 	call Func_150e
 	pop bc
@@ -5070,7 +5070,7 @@ Func_22e8: ; 22e8 (0:22e8)
 	call Func_3a83
 	call Func_3811
 	push hl
-	ld hl, $230b
+	ld hl, Data_230b
 	push hl
 	call Func_150e
 	pop bc
@@ -5084,25 +5084,1289 @@ Func_22fe: ; 22fe (0:22fe)
 	ret
 
 Data_2304:
-	dr $2304, $230e
+	dr $2304, $2309
 
-Func_230e: ; 230e
-	dr $230e, $2a49
+Data_2309:
+	dr $2309, $230b
+
+Data_230b:
+	dr $230b, $230e
+
+Func_230e: ; 230e (0:230e)
+	push de
+	ld a, l
+	and h
+	inc a
+	jp z, Func_231c
+	ld c, h
+	ld a, l
+	ld e, a
+	ld a, c
+	call Func_3a83
+Func_231c: ; 231c (0:231c)
+	pop de
+	push de
+	call Func_150e
+	pop bc
+	ret
+
+Func_2323:
+	push hl
+	push bc
+	push bc
+	push bc
+	push de
+	call Func_3805
+	ld e, h
+	ld hl, sp+$6
+	ld [hl], e
+	call Func_3805
+	ld e, l
+	ld hl, sp+$5
+	ld [hl], e
+	pop de
+	ld hl, sp+$2
+	ld [hl], d
+	push de
+	ld l, e
+	push hl
+	ld hl, sp+$6
+	ld c, [hl]
+	ld hl, sp+$7
+	ld e, [hl]
+	ld hl, sp+$8
+	ld a, [hl]
+	call Func_3afc
+	pop bc
+	pop de
+	pop bc
+	push de
+	ld hl, sp+$2
+	ld a, [hl]
+	ld d, a
+	ld hl, sp+$4
+	ld a, [hl]
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, a
+	call Func_21ca
+	pop de
+	ld l, e
+	push hl
+	ld hl, sp+$2
+	ld c, [hl]
+	ld hl, sp+$3
+	ld e, [hl]
+	ld hl, sp+$4
+	ld a, [hl]
+	call Func_3ca1
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_236f:
+	push hl
+	ld hl, -$ee
+	add hl, sp
+	ld sp, hl
+	ld a, e
+	cp $aa
+	jp c, Func_23bb
+	ld a, e
+	cp $ae
+	jp nc, Func_23bb
+	push de
+	ld a, [hSRAMBank]
+	push af
+	ld a, $1
+	call GetSRAMBank_ReadOnly
+	pop af
+	pop de
+	push af
+	ld l, e
+	ld h, $0
+	ld de, $2f
+	call Func_3759
+	debgcoord 14, 23
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$2
+	ld bc, $2f
+	call MemCopy
+	pop af
+	call GetSRAMBank
+	ld bc, $2f
+	ld hl, sp+$0
+	push hl
+	call Func_3848
+	db $f2
+	pop de
+	call MemCopy
+	jp Func_2419
+
+Func_23bb: ; 23bb (0:23bb)
+	push de
+	ld a, [hROMBank]
+	push af
+	ld a, BANK(Data_65bc8)
+	call BankSwitch_03f2
+	ld hl, Data_65bc8
+	call Func_37d4
+	pop af
+	pop af
+	pop de
+	push af
+	push de
+	ld hl, sp+$4
+	push hl
+	ld l, e
+	ld h, $0
+	ld de, $5
+	call Func_36c6
+	add hl, hl
+	ld c, l
+	ld b, h
+	call Func_3848
+	db $f3
+	add hl, bc
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call Func_3848
+	db $f3
+	add hl, bc
+	pop de
+	ld bc, $eb
+	call Func_1263
+	pop de
+	ld l, e
+	ld h, $0
+	ld de, $5
+	call Func_36c6
+	ld hl, $2f
+	call Func_3759
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$2
+	add hl, de
+	push hl
+	call Func_3848
+	db $f4
+	pop de
+	ld bc, $2f
+	call MemCopy
+	pop af
+	call BankSwitch_03f2
+Func_2419: ; 2419 (0:2419)
+	ld hl, $f0
+	add hl, sp
+	ld sp, hl
+	ret
+
+Func_241f:
+	push hl
+	ld hl, -$c2
+	add hl, sp
+	ld sp, hl
+	dec e
+	push de
+	ld a, [hROMBank]
+	push af
+	ld a, BANK(Data_64390)
+	call BankSwitch_03f2
+	ld hl, Data_64390
+	call Func_37d4
+	add $f1
+	pop de
+	push af
+	push de
+	ld hl, sp+$4
+	push hl
+	ld l, e
+	ld h, $0
+	ld de, $8
+	call Func_36c6
+	add hl, hl
+	ld c, l
+	ld b, h
+	call Func_3848
+	db $c8
+	add hl, bc
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call Func_3848
+	db $c8
+	add hl, bc
+	pop de
+	ld bc, $c0
+	call Func_1263
+	pop de
+	ld l, e
+	ld h, $0
+	ld de, $8
+	call Func_36c6
+	push de
+	push hl
+	pop de
+	pop hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$2
+	add hl, de
+	push hl
+	call Func_3848
+	db $c8
+	pop de
+	ld bc, $18
+	call MemCopy
+	pop af
+	call BankSwitch_03f2
+	ld hl, $c4
+	add hl, sp
+	ld sp, hl
+	ret
+
+Func_248f:
+	push hl
+	push de
+	ld a, [hROMBank]
+	push af
+	ld a, BANK(Data_64093)
+	call BankSwitch_03f2
+	pop af
+	pop de
+	push af
+	ld l, e
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, Data_64093
+	add hl, de
+	push hl
+	call Func_381d
+	pop de
+	ld bc, $11
+	call MemCopy
+	pop af
+	call BankSwitch_03f2
+	pop bc
+	ret
+
+Func_24bb
+	push hl
+	push de
+	ld a, [hROMBank]
+	push af
+	ld a, BANK(Data_657c5)
+	call BankSwitch_03f2
+	pop af
+	pop de
+	push af
+	ld l, e
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_657c5
+	add hl, de
+	push hl
+	call Func_381d
+	pop de
+	ld bc, $d
+	call MemCopy
+	pop af
+	call BankSwitch_03f2
+	pop bc
+	ret
+
+Func_24e9: ; 24e9 (0:24e9)
+	call Func_0465
+	ld l, a
+	inc l
+	dec l
+	jp z, Func_2504
+	ld a, l
+	and $f0
+	jp nz, Func_2504
+	ld a, [$c208]
+	or a
+	jp nz, Func_2504
+	ld a, $1
+	ld [$c208], a
+Func_2504: ; 2504 (0:2504)
+	ld a, [wJoyPressed]
+	or a
+	jp nz, Func_250f
+	xor a
+	ld [$c208], a
+Func_250f: ; 250f (0:250f)
+	xor a
+	ld [wJoyHeld], a
+	ld a, l
+	ret
+
+Func_2515:
+	push de
+	push hl
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	ld hl, sp+$c
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	push bc
+	push hl
+	ld de, $100
+	call Func_36c6
+	ld a, l
+	pop hl
+	push hl
+	ld de, $100
+	call Func_36c6
+	ld a, e
+	pop hl
+	pop bc
+	push hl
+	push bc
+	ld l, c
+	ld h, b
+	ld de, $100
+	call Func_36c6
+	ld a, l
+	ld hl, sp+$e
+	ld [hl], a
+	pop hl
+	ld de, $100
+	call Func_36c6
+	ld a, e
+	ld hl, sp+$2
+	ld [hl], $96
+	ld hl, sp+$3
+	ld [hl], $90
+	ld hl, sp+$a
+	ld [hl], $91
+	ld hl, sp+$4
+	call Func_37d4
+	rrca
+	ld c, $0
+	ld a, [$c2cd]
+	or a
+	jp nz, Func_256d
+	ld e, $0
+	jp Func_256f
+
+Func_256d: ; 256d (0:256d)
+	ld e, $69
+Func_256f: ; 256f (0:256f)
+	ld hl, sp+$c
+	ld a, [hl]
+	add $94
+	add e
+	ld hl, sp+$b
+	ld [hl], a
+Func_2578: ; 2578 (0:2578)
+	call Func_3848
+	ld [de], a
+	ld de, $fff8
+	add hl, de
+	inc h
+	dec h
+	bit 7, h
+	jr nz, .asm_25a1
+	call Func_3848
+	rrca
+	ld [hl], $92
+	inc hl
+	call Func_37d4
+	rrca
+	call Func_3848
+	ld [de], a
+	ld de, $fff8
+	add hl, de
+	call Func_37d4
+	ld [de], a
+	inc c
+	jp Func_25a4
+
+.asm_25a1
+	jp Func_25a7
+
+Func_25a4: ; 25a4 (0:25a4)
+	jp Func_2578
+
+Func_25a7: ; 25a7 (0:25a7)
+	call Func_3848
+	ld [de], a
+	ld a, l
+	or h
+	jp z, Func_25eb
+	inc c
+	push bc
+	ld hl, sp+$d
+	ld a, [hl]
+	call Func_3848
+	ld de, $2377
+	call Func_37d4
+	ld de, $13e
+	ld [wc21a], a
+	ld bc, $10
+	call Func_3848
+	inc d
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, $4c32
+	add hl, de
+	push hl
+	ld hl, sp+$f
+	ld a, [hl]
+	and $7f
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, $8800
+	add hl, de
+	pop de
+	call Func_146c
+	pop bc
+Func_25eb: ; 25eb (0:25eb)
+	ld a, c
+	cp $6
+	jp nc, Func_2600
+	call Func_3848
+	rrca
+	ld [hl], $93
+	inc hl
+	call Func_37d4
+	rrca
+	inc c
+	jp Func_25eb
+
+Func_2600: ; 2600 (0:2600)
+	pop hl
+	call Func_14da
+	ld c, l
+	ld b, h
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	ld bc, $9
+	call MemCopy
+	add sp, $10
+	ret
+
+Func_2617:
+	push bc
+	push bc
+	push bc
+	ld a, l
+	or h
+	jp nz, Func_2642
+	call Func_381d
+	ld [hl], $0
+	inc hl
+	call Func_378b
+	call Func_381d
+	ld [hl], $0
+	inc hl
+	call Func_378b
+	call Func_381d
+	ld [hl], $0
+	inc hl
+	call Func_378b
+	call Func_381d
+	ld [hl], $0
+	jp Func_26d3
+
+Func_2642: ; 2642 (0:2642)
+	push de
+	ld c, $0
+Func_2645: ; 2645 (0:2645)
+	ld a, h
+	and $40
+	jp z, Func_264e
+	jp Func_2653
+
+Func_264e: ; 264e (0:264e)
+	inc c
+	add hl, hl
+	jp Func_2645
+
+Func_2653: ; 2653 (0:2653)
+	push bc
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_265e
+	dec bc
+.asm_265e
+	push bc
+	push hl
+	ld hl, $1
+	push hl
+	ld hl, $0
+	push hl
+	call Func_34c7
+	ld hl, sp+$8
+	call Func_32d1
+	pop bc
+	pop de
+	push bc
+	ld l, e
+	ld h, d
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_267f
+	dec bc
+.asm_267f
+	push bc
+	push hl
+	ld hl, sp+$6
+	call Func_3428
+	call Func_3811
+	inc hl
+	inc hl
+	inc hl
+	call Func_377f
+	pop bc
+Func_2690: ; 2690 (0:2690)
+	ld a, c
+	cp $1
+	jp c, Func_26a3
+	push bc
+	ld hl, sp+$2
+	ld b, $1
+	call Func_33bd
+	pop bc
+	dec c
+	jp Func_2690
+
+Func_26a3: ; 26a3 (0:26a3)
+	xor a
+Func_26a4: ; 26a4 (0:26a4)
+	cp $4
+	jp nc, Func_26d3
+	push af
+	ld hl, sp+$2
+	call Func_32e0
+	ld hl, $0
+	push hl
+	ld hl, $ff
+	push hl
+	call Func_3343
+	pop bc
+	pop af
+	call Func_3811
+	ld [hl], c
+	ld hl, sp+$2
+	ld b, $8
+	call Func_33bd
+	call Func_3811
+	dec hl
+	call Func_377f
+	pop af
+	inc a
+	jp Func_26a4
+
+Func_26d3: ; 26d3 (0:26d3)
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_26d7: ; 26d7 (0:26d7)
+	ld a, [de]
+	or a
+	jp z, Func_26e3
+	ld a, [de]
+	inc de
+	ld [hl], a
+	inc hl
+	jp Func_26d7
+
+Func_26e3: ; 26e3 (0:26e3)
+	xor a
+	ld [hl], a
+	ret
+
+Func_26e6:
+	push de
+	push hl
+	ld a, [hROMBank]
+	push af
+	ld a, c
+	call BankSwitch_03f2
+	pop af
+	pop hl
+	pop de
+	push af
+Func_26f3: ; 26f3 (0:26f3)
+	ld a, [de]
+	or a
+	jp z, Func_26ff
+	ld a, [de]
+	inc de
+	ld [hl], a
+	inc hl
+	jp Func_26f3
+
+Func_26ff: ; 26ff (0:26ff)
+	pop af
+	push hl
+	push af
+	xor a
+	ld [hl], a
+	pop af
+	call BankSwitch_03f2
+	pop hl
+	ret
+
+Func_270a:
+	push bc
+	push bc
+	push bc
+	push de
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, sp+$a
+	call Func_32d1
+	ld hl, $0
+	call Func_378b
+	pop hl
+	ld e, l
+	ld a, h
+	cp $8
+	jp nc, Func_2730
+	ld bc, $9
+	jp Func_273e
+
+Func_2730: ; 2730 (0:2730)
+	cp $b
+	jp nc, Func_273b
+	ld bc, $8
+	jp Func_273e
+
+Func_273b: ; 273b (0:273b)
+	ld bc, $7
+Func_273e: ; 273e (0:273e)
+	ld a, c
+Func_273f: ; 273f (0:273f)
+	dec e
+	jp nz, Func_2746
+	jp Func_2761
+
+Func_2746: ; 2746 (0:2746)
+	push bc
+	push de
+	call Func_3811
+	add hl, bc
+	call Func_377f
+	call Func_3811
+	ld bc, $0
+	push bc
+	push hl
+	ld hl, sp+$c
+	call Func_3553
+	pop de
+	pop bc
+	jp Func_273f
+
+Func_2761: ; 2761 (0:2761)
+	pop de
+	push bc
+	ld a, e
+	or d
+	jp z, Func_2770
+	ld hl, sp+$4
+	ld bc, $4
+	call Func_35e8
+Func_2770: ; 2770 (0:2770)
+	pop bc
+	pop hl
+	push hl
+	add hl, bc
+	pop de
+	push hl
+	pop hl
+	push hl
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_277c:
+	ld a, [hSRAMBank]
+	push af
+	ld a, $3
+	call GetSRAMBank_ReadOnly
+	ld hl, sp+$8
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $c989
+	ld bc, $4
+	call Func_35e8
+	ld hl, sp+$4
+	call Func_32e0
+	ld hl, sp+$c
+	call Func_3553
+	ld hl, Bank_000f
+	push hl
+	ld hl, $423b
+	push hl
+	ld hl, sp+$c
+	call Func_32e0
+	call Func_3579
+	jp nc, Func_27c0
+	ld hl, Bank_000f
+	push hl
+	ld hl, $423b
+	push hl
+	ld hl, sp+$c
+	call Func_32d1
+	jp Func_27e0
+
+Func_27c0: ; 27c0 (0:27c0)
+	ld hl, sp+$8
+	call Func_32e0
+	ld hl, $0
+	push hl
+	ld hl, $0
+	push hl
+	call Func_3579
+	jp nc, Func_27e0
+	ld hl, $0
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, sp+$c
+	call Func_32d1
+Func_27e0: ; 27e0 (0:27e0)
+	ld a, $3
+	call GetSRAMBank
+	ld de, $c989
+	ld hl, sp+$8
+	ld bc, $4
+	call Func_35e8
+	pop af
+	call GetSRAMBank
+	ret
+
+Func_27f5:
+	ld bc, $a0
+	ld e, $0
+	ld hl, wOAMBuffer2
+	call FillMemory
+	ret
+
+Func_2801: ; 2801 (0:2801)
+	push hl
+	push de
+	ld a, [hSRAMBank]
+	push af
+	call Func_3829
+	ld h, $0
+	push hl
+	call Func_381d
+	ld l, h
+	ld h, $0
+	pop de
+	call Func_3759
+	push de
+	push hl
+	pop de
+	pop hl
+	push de
+	ld a, $3
+	call GetSRAMBank
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $ba
+	inc hl
+	ld [hl], $7a
+	pop de
+	push de
+	push de
+	push hl
+	pop de
+	pop hl
+	add hl, hl
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	call Func_03f8
+	ld c, l
+	ld b, h
+	push bc
+	inc bc
+	inc bc
+	inc bc
+	inc bc
+	call Func_3811
+	push hl
+	call Func_3848
+	inc c
+	pop de
+	call Func_2124
+	pop bc
+	pop de
+	push bc
+	ld l, c
+	ld h, b
+	add hl, de
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld c, l
+	ld b, h
+	call Func_381d
+	push hl
+	call Func_3805
+	pop de
+	call Func_2152
+	pop bc
+	pop af
+	push bc
+	call Func_381d
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	call Func_3829
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	call GetSRAMBank
+	pop hl
+	pop bc
+	pop bc
+	ret
+
+Func_2887: ; 2887 (0:2887)
+	push hl
+	push bc
+	push bc
+	call Func_381d
+	ld a, [hSRAMBank]
+	push af
+	push hl
+	ld a, $3
+	call GetSRAMBank
+	call Func_3805
+	ld a, [hl]
+	inc hl
+	call Func_3773
+	ld hl, sp+$6
+	ld [hl], a
+	call Func_3805
+	ld a, [hl]
+	inc hl
+	call Func_3773
+	ld hl, sp+$7
+	ld [hl], a
+	call Func_3805
+	ld a, [hl]
+	inc hl
+	call Func_3773
+	ld hl, sp+$4
+	ld [hl], a
+	call Func_3805
+	ld a, [hl]
+	inc hl
+	call Func_3773
+	ld hl, sp+$5
+	ld [hl], a
+	call Func_3805
+	ld c, l
+	ld b, h
+	ld hl, sp+$4
+	ld e, [hl]
+	ld hl, sp+$5
+	ld h, [hl]
+	ld d, h
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	call Func_21ca
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$5
+	ld l, [hl]
+	ld h, $0
+	call Func_3759
+	ld c, l
+	ld b, h
+	call Func_3805
+	add hl, bc
+	ld c, l
+	ld b, h
+	ld hl, sp+$4
+	ld e, [hl]
+	ld hl, sp+$5
+	ld h, [hl]
+	ld d, h
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	call Func_21f8
+	ld a, $2
+	ld [wOAM26VTile], a
+	ld hl, sp+$4
+	ld l, [hl]
+	push hl
+	ld hl, sp+$7
+	ld c, [hl]
+	ld hl, sp+$8
+	ld e, [hl]
+	ld hl, sp+$9
+	ld a, [hl]
+	call Func_3ca1
+	pop bc
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $57
+	inc hl
+	ld [hl], $7c
+	pop hl
+	call Func_03f8
+	pop af
+	call GetSRAMBank
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_292b: ; 292b (0:292b)
+	ld e, $0
+Func_292d: ; 292d (0:292d)
+	ld a, [hl]
+	or a
+	jp z, Func_294f
+	ld a, [hl]
+	inc hl
+	cp $28
+	jp z, Func_2948
+	cp $29
+	jp z, Func_2948
+	cp $de
+	jp z, Func_2948
+	cp $df
+	jp nz, Func_294b
+Func_2948: ; 2948 (0:2948)
+	jp Func_292d
+
+Func_294b: ; 294b (0:294b)
+	inc e
+	jp Func_292d
+
+Func_294f: ; 294f (0:294f)
+	ld a, e
+	ret
+
+Func_2951: ; 2951 (0:2951)
+	push de
+	push bc
+	push hl
+	push bc
+	push hl
+	call Func_3805
+	call Func_292b
+	add $2
+	ld e, a
+	pop hl
+	push de
+	push hl
+	ld a, h
+	ld hl, sp+$9
+	ld [hl], a
+	cp $ff
+	jp nz, Func_2976
+	ld a, $14
+	sub e
+	ld b, $2
+	call Func_36af
+	ld hl, sp+$9
+	ld [hl], a
+Func_2976: ; 2976 (0:2976)
+	pop hl
+	ld a, l
+	ld hl, sp+$6
+	ld [hl], a
+	cp $ff
+	jp nz, Func_2984
+	ld hl, sp+$6
+	ld [hl], $7
+Func_2984: ; 2984 (0:2984)
+	pop de
+	pop bc
+	pop hl
+	push de
+	push bc
+	ld a, c
+	and $2
+	jp nz, Func_29a6
+	ld l, e
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	inc hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$5
+	ld a, [hl]
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, a
+	call Func_2801
+Func_29a6: ; 29a6 (0:29a6)
+	pop bc
+	pop de
+	push hl
+	push bc
+	ld a, c
+	and $8
+	jp nz, Func_29cb
+	push de
+	ld hl, wc21a
+	ld [hl], $5
+	inc hl
+	ld [hl], $95
+	inc hl
+	ld [hl], $7e
+	pop de
+	push de
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	ld c, $3
+	call Func_03f8
+	pop de
+Func_29cb: ; 29cb (0:29cb)
+	push de
+	ld a, $2
+	ld [wOAM26VTile], a
+	ld hl, wc21a
+	ld [hl], $31
+	inc hl
+	ld [hl], $9
+	inc hl
+	ld [hl], $71
+	pop de
+	push de
+	ld l, e
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	inc hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	ld c, $0
+	call Func_03f8
+	call Func_3805
+	push hl
+	ld hl, sp+$8
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc h
+	add hl, de
+	inc hl
+	pop de
+	call Func_230e
+	pop de
+	ld l, $3
+	push hl
+	ld c, e
+	ld hl, sp+$6
+	ld e, [hl]
+	ld hl, sp+$7
+	ld a, [hl]
+	call Func_3ca1
+	pop bc
+	pop bc
+	push bc
+	ld a, c
+	and $1
+	jp nz, Func_2a2e
+Func_2a26: ; 2a26 (0:2a26)
+	call Func_24e9
+	and $30
+	jp z, Func_2a26
+Func_2a2e: ; 2a2e (0:2a2e)
+	pop bc
+	pop hl
+	push hl
+	ld a, c
+	and $4
+	jp nz, Func_2a3a
+	call Func_2887
+Func_2a3a: ; 2a3a (0:2a3a)
+	pop hl
+	pop bc
+	pop bc
+	ret
+
+Func_2a3e:
+	ld c, e
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $ffff
+	jp Func_2951
 
 Func_2a49: ; 2a49
-	dr $2a49, $35f8
+	dr $2a49, $32d1
+
+Func_32d1: ; 32d1
+	dr $32d1, $32e0
+
+Func_32e0: ; 32e0
+	dr $32e0, $3343
+
+Func_3343: ; 3343
+	dr $3343, $33bd
+
+Func_33bd: ; 33bd
+	dr $33bd, $3428
+
+Func_3428: ; 3428
+	dr $3428, $34c7
+
+Func_34c7: ; 34c7
+	dr $34c7, $3553
+
+Func_3553: ; 3553
+	dr $3553, $3579
+
+Func_3579: ; 3579
+	dr $3579, $35e8
+
+Func_35e8: ; 35e8
+	dr $35e8, $35f8
 
 Func_35f8: ; 35f8
 	dr $35f8, $3608
 
 Func_3608: ; 3608
-	dr $3608, $3791
+	dr $3608, $36af
+
+Func_36af: ; 36af
+	dr $36af, $36c6
+
+Func_36c6: ; 36c6
+	dr $36c6, $3759
+
+Func_3759: ; 3759
+	dr $3759, $3773
+
+Func_3773: ; 3773
+	dr $3773, $377f
+
+Func_377f: ; 377f
+	dr $377f, $378b
+
+Func_378b: ; 378b
+	dr $378b, $3791
 
 Func_3791: ; 3791
 	dr $3791, $37d4
 
 Func_37d4: ; 37d4
-	dr $37d4, $3811
+	dr $37d4, $3805
+
+Func_3805: ; 3805
+	dr $3805, $3811
 
 Func_3811: ; 3811
 	dr $3811, $381d
@@ -5138,10 +6402,16 @@ Func_3a83: ; 3a83
 	dr $3a83, $3aa8
 
 Func_3aa8: ; 3aa8
-	dr $3aa8, $3bc5
+	dr $3aa8, $3afc
+
+Func_3afc: ; 3afc
+	dr $3afc, $3bc5
 
 Func_3bc5: ; 3bc5
-	dr $3bc5, $3fee
+	dr $3bc5, $3ca1
+
+Func_3ca1: ; 3ca1
+	dr $3ca1, $3fee
 
 SECTION "Bank 01", ROMX, BANK [$01]
 Func_4000:
@@ -5242,7 +6512,19 @@ Func_63141:
 	dr $63141, $64000
 
 SECTION "Bank 19", ROMX, BANK [$19]
-	dr $64000, $68000
+	dr $64000, $64093
+
+Data_64093:
+	dr $64093, $64390
+
+Data_64390:
+	dr $64390, $657c5
+
+Data_657c5:
+	dr $657c5, $65bc8
+
+Data_65bc8:
+	dr $65bc8, $68000
 
 SECTION "Bank 1a", ROMX, BANK [$1a]
 	dr $68000, $6c000
