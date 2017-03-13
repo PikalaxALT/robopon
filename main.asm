@@ -9813,17 +9813,131 @@ Func_3c99: ; 3c99 (0:3c99)
 	pop bc
 	ret
 
-Func_3ca1: ; 3ca1
-	dr $3ca1, $3cb8
+Func_3ca1: ; 3ca1 (0:3ca1)
+	push bc
+	push de
+	push af
+	ld hl, sp+$8
+	ld l, [hl]
+	push hl
+	call Func_3bc5
+	pop bc
+	pop af
+	pop de
+	pop bc
+	ld hl, sp+$2
+	ld l, [hl]
+	push hl
+	call Func_3bc5
+	pop bc
+	ret
 
-Func_3cb8:
-	dr $3cb8, $3cf2
+Func_3cb8: ; 3cb8 (0:3cb8)
+	push af
+	or a
+	jp nz, Func_3cc8
+	ld a, [wLCDC]
+	and $f7
+	ld [wLCDC], a
+	jp Func_3cd0
 
-Func_3cf2:
-	dr $3cf2, $3ec9
+Func_3cc8: ; 3cc8 (0:3cc8)
+	ld a, [wLCDC]
+	or $8
+	ld [wLCDC], a
+Func_3cd0: ; 3cd0 (0:3cd0)
+	ld a, [wc203]
+	or $6
+	ld [wc203], a
+	ld a, [wLCDC]
+	or $3
+	ld [wLCDC], a
+Func_3ce0: ; 3ce0 (0:3ce0)
+	ld a, [wc203]
+	ld hl, $c204
+	cp [hl]
+	jp z, Func_3ced
+	jp Func_3ce0
 
-Func_3ec9:
-	dr $3ec9, $3fee
+Func_3ced: ; 3ced (0:3ced)
+	pop af
+	ld [$c2cd], a
+	ret
+
+Func_3cf2: ; 3cf2 (0:3cf2)
+	push hl
+	ld bc, $0
+Func_3cf6: ; 3cf6 (0:3cf6)
+	pop hl
+	push hl
+	add hl, bc
+	ld a, [hl]
+	or a
+	jp z, Func_3d02
+	inc bc
+	jp Func_3cf6
+
+Func_3d02: ; 3d02 (0:3d02)
+	ld l, c
+	ld h, b
+	pop bc
+	ret
+
+Func_3d06:
+	cp $30
+	jp c, Func_3d13
+	cp $3a
+	jp nc, Func_3d13
+	ld a, $1
+	ret
+
+Func_3d13: ; 3d13 (0:3d13)
+	xor a
+	ret
+
+Func_3d15:
+	ld a, [wJoyPressed]
+	ret
+
+Func_3d19:
+	ld a, [wJoyHeld]
+	ld l, a
+	xor a
+	ld [wJoyHeld], a
+	ld a, l
+	ret
+
+SECTION "3f80", HOME [$3f80]
+Func_3f80:
+	push af
+	ld a, $1d
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	pop af
+	ld bc, .Return
+	push bc
+	jp [hl]
+
+.Return
+	ld a, $1c
+	ld [hROMBank], a
+	ld [HuC3RomBank], a
+	ret
+
+SECTION "3fe0", HOME [$3fe0]
+Func_3fe0:
+	push af
+	ld a, $14
+	rst $20
+	pop af
+	ld bc, .Return
+	push bc
+	jp [hl]
+
+.Return
+	ld a, $1c
+	rst $20
+	ret
 
 SECTION "Bank 01", ROMX, BANK [$01]
 Func_4000:
