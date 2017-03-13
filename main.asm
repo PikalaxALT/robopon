@@ -7932,119 +7932,1898 @@ Func_32a6: ; 32a6 (0:32a6)
 Data_32b1:
 	dr $32b1, $32d1
 
-Func_32d1: ; 32d1
-	dr $32d1, $32e0
+Func_32d1: ; 32d1 (0:32d1)
+	pop bc
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	inc hl
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	dec hl
+	dec hl
+	dec hl
+	push bc
+	ret
 
-Func_32e0: ; 32e0
-	dr $32e0, $3343
+Func_32e0: ; 32e0 (0:32e0)
+	pop bc
+	inc hl
+	inc hl
+	inc hl
+	ld d, [hl]
+	dec hl
+	ld e, [hl]
+	push de
+	dec hl
+	ld d, [hl]
+	dec hl
+	ld e, [hl]
+	push de
+	push bc
+	ret
 
-Func_3343: ; 3343
-	dr $3343, $33bd
+Func_32ef:
+	ld hl, $6
+	add hl, sp
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	add hl, sp
+	ld a, [de]
+	xor [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	xor [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	xor [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	xor [hl]
+	ld [de], a
+	dec de
+	dec de
+	dec de
+	push de
+	push hl
+	pop de
+	pop hl
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_33bd: ; 33bd
-	dr $33bd, $3428
+Func_3319:
+	ld hl, $6
+	add hl, sp
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	add hl, sp
+	ld a, [de]
+	or [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	or [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	or [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	or [hl]
+	ld [de], a
+	dec de
+	dec de
+	dec de
+	push de
+	push hl
+	pop de
+	pop hl
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_3428: ; 3428
-	dr $3428, $34c7
+Func_3343: ; 3343 (0:3343)
+	ld hl, $6
+	add hl, sp
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	add hl, sp
+	ld a, [de]
+	and [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	and [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	and [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	and [hl]
+	ld [de], a
+	dec de
+	dec de
+	dec de
+	push de
+	push hl
+	pop de
+	pop hl
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_34c7: ; 34c7
-	dr $34c7, $3553
+Func_336d:
+	ld hl, $2
+	add hl, sp
+	ld a, [hl]
+	cpl
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	cpl
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	cpl
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	cpl
+	ld [hl], a
+	ret
 
-Func_3553: ; 3553
-	dr $3553, $3579
+Func_3381:
+	ld hl, $2
+	add hl, sp
+	ld a, b
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push hl
+	jp Func_3396
 
-Func_3579: ; 3579
-	dr $3579, $35c1
+Func_3391: ; 3391 (0:3391)
+	ld d, e
+	ld e, b
+	ld b, c
+	ld c, $0
+Func_3396: ; 3396 (0:3396)
+	ld l, a
+	sub $8
+	jp nc, Func_3391
+	inc l
+	jp Func_33ac
 
-Func_35c1: ; 35c1
-	dr $35c1, $35ce
+Func_33a0: ; 33a0 (0:33a0)
+	ld a, c
+	add a
+	ld c, a
+	ld a, b
+	rla
+	ld b, a
+	ld a, e
+	rla
+	ld e, a
+	ld a, d
+	rla
+	ld d, a
+Func_33ac: ; 33ac (0:33ac)
+	dec l
+	jp nz, Func_33a0
+	pop hl
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	dec hl
+	ld [hl], b
+	dec hl
+	ld [hl], c
+	ret
 
-Func_35ce: ; 35ce
-	dr $35ce, $35e8
+Func_33b9:
+	ld hl, $2
+	add hl, sp
+Func_33bd: ; 33bd (0:33bd)
+	ld a, b
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push hl
+	jp Func_33ce
 
-Func_35e8: ; 35e8
-	dr $35e8, $35f8
+Func_33c9: ; 33c9 (0:33c9)
+	ld c, b
+	ld b, e
+	ld e, d
+	ld d, $0
+Func_33ce: ; 33ce (0:33ce)
+	ld l, a
+	sub $8
+	jp nc, Func_33c9
+	inc l
+	jp Func_33e5
 
-Func_35f8: ; 35f8
-	dr $35f8, $3608
+Func_33d8: ; 33d8 (0:33d8)
+	and a
+	ld a, d
+	rra
+	ld d, a
+	ld a, e
+	rra
+	ld e, a
+	ld a, b
+	rra
+	ld b, a
+	ld a, c
+	rra
+	ld c, a
+Func_33e5: ; 33e5 (0:33e5)
+	dec l
+	jp nz, Func_33d8
+	pop hl
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	dec hl
+	ld [hl], b
+	dec hl
+	ld [hl], c
+	ret
 
-Func_3608: ; 3608
-	dr $3608, $36af
+Func_33f2: ; 33f2 (0:33f2)
+	ld hl, $6
+	add hl, sp
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	pop hl
+	or a
+	push af
+	push hl
+	call Func_35c1
+	ld hl, $9
+	add hl, sp
+	ld a, [hl]
+	dec hl
+	dec hl
+	dec hl
+	or a
+	call Func_35c1
+	pop hl
+	call Func_346d
+	push hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	inc hl
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	pop hl
+	pop af
+	call Func_35c1
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_36af: ; 36af
-	dr $36af, $36c6
+Func_3424: ; 3424 (0:3424)
+	ld hl, $6
+	add hl, sp
+Func_3428: ; 3428 (0:3428)
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	pop hl
+	or a
+	push af
+	call Func_35c1
+	pop af
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $5
+	add hl, sp
+	xor [hl]
+	push af
+	ld a, [hl]
+	dec hl
+	dec hl
+	dec hl
+	or a
+	call Func_35c1
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_346d
+	pop af
+	call Func_35c1
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_36c6: ; 36c6
-	dr $36c6, $36fe
+Func_3456:
+	ld hl, $6
+	add hl, sp
+	push af
+	call Func_346d
+	pop af
+	push hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	inc hl
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	pop hl
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_36fe: ; 36fe
-	dr $36fe, $3759
+Func_346d: ; 346d (0:346d)
+	ld bc, $0
+	ld d, b
+	ld e, b
+	ld a, $20
+Func_3474: ; 3474 (0:3474)
+	push af
+	push hl
+	ld a, [hl]
+	add a
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	rla
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	rla
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	rla
+	ld [hl], a
+	ld a, e
+	rla
+	ld e, a
+	ld a, d
+	rla
+	ld d, a
+	ld a, c
+	rla
+	ld c, a
+	ld a, b
+	rla
+	ld b, a
+	push de
+	push bc
+	ld hl, $e
+	add hl, sp
+	ld a, e
+	sub [hl]
+	ld e, a
+	inc hl
+	ld a, d
+	sbc [hl]
+	ld d, a
+	inc hl
+	ld a, c
+	sbc [hl]
+	ld c, a
+	inc hl
+	ld a, b
+	sbc [hl]
+	ld b, a
+	jp nc, Func_34af
+	pop bc
+	pop de
+	pop hl
+	jp Func_34b3
 
-Func_3759: ; 3759
-	dr $3759, $3773
+Func_34af: ; 34af (0:34af)
+	pop af
+	pop af
+	pop hl
+	inc [hl]
+Func_34b3: ; 34b3 (0:34b3)
+	pop af
+	dec a
+	jp nz, Func_3474
+	ret
 
-Func_3773: ; 3773
-	dr $3773, $377f
+Func_34b9:
+	ld hl, $6
+	add hl, sp
+	push af
+	call Func_346d
+	pop af
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_377f: ; 377f
-	dr $377f, $378b
+Func_34c7: ; 34c7 (0:34c7)
+	ld hl, $6
+	add hl, sp
+	ld bc, $0
+	ld d, b
+	ld e, b
+	push hl
+	jp Func_3508
 
-Func_378b: ; 378b
-	dr $378b, $3791
+Func_34d4: ; 34d4 (0:34d4)
+	ld a, [hl]
+	rra
+	ld [hl], a
+	dec hl
+	ld a, [hl]
+	rra
+	ld [hl], a
+	dec hl
+	ld a, [hl]
+	rra
+	ld [hl], a
+	dec hl
+	ld a, [hl]
+	rra
+	ld [hl], a
+	jp nc, Func_34f7
+	pop hl
+	push hl
+	ld a, e
+	add [hl]
+	ld e, a
+	inc hl
+	ld a, d
+	adc [hl]
+	ld d, a
+	inc hl
+	ld a, c
+	adc [hl]
+	ld c, a
+	inc hl
+	ld a, b
+	adc [hl]
+	ld b, a
+Func_34f7: ; 34f7 (0:34f7)
+	pop hl
+	push hl
+	ld a, [hl]
+	add a
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	rla
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	rla
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	rla
+	ld [hl], a
+Func_3508: ; 3508 (0:3508)
+	ld hl, $4
+	add hl, sp
+	ld a, [hl]
+	inc hl
+	or [hl]
+	inc hl
+	or [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_34d4
+	pop hl
+	push hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	inc hl
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	pop hl
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_3791: ; 3791
-	dr $3791, $37d4
+Func_3525:
+	ld hl, $6
+	add hl, sp
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	add hl, sp
+	ld a, [de]
+	sub [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	sbc [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	sbc [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	sbc [hl]
+	ld [de], a
+	dec de
+	dec de
+	dec de
+	push de
+	push hl
+	pop de
+	pop hl
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_37d4: ; 37d4
-	dr $37d4, $3805
+Func_354f:
+	ld hl, $6
+	add hl, sp
+Func_3553: ; 3553 (0:3553)
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	add hl, sp
+	ld a, [de]
+	add [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	adc [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	adc [hl]
+	ld [de], a
+	inc de
+	inc hl
+	ld a, [de]
+	adc [hl]
+	ld [de], a
+	dec de
+	dec de
+	dec de
+	push de
+	push hl
+	pop de
+	pop hl
+	pop bc
+	pop af
+	pop af
+	push bc
+	ret
 
-Func_3805: ; 3805
-	dr $3805, $3811
+Func_3579: ; 3579 (0:3579)
+	ld hl, $9
+	add hl, sp
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $5
+	add hl, sp
+	ld a, [de]
+	xor [hl]
+	bit 7, a
+	jp z, Func_359f
+	push de
+	push hl
+	pop de
+	pop hl
+	jp Func_359f
 
-Func_3811: ; 3811
-	dr $3811, $381d
+Func_3593: ; 3593 (0:3593)
+	ld hl, $9
+	add hl, sp
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $5
+	add hl, sp
+Func_359f: ; 359f (0:359f)
+	call Func_35af
+	pop de
+	push af
+	ld hl, $a
+	add hl, sp
+	pop af
+	ld sp, hl
+	push de
+	push hl
+	pop de
+	pop hl
+	jp [hl]
 
-Func_381d: ; 381d
-	dr $381d, $3823
+Func_35af: ; 35af (0:35af)
+	ld a, [de]
+	cp [hl]
+	ret nz
+	dec de
+	dec hl
+	ld a, [de]
+	cp [hl]
+	ret nz
+	dec de
+	dec hl
+	ld a, [de]
+	cp [hl]
+	ret nz
+	dec de
+	dec hl
+	ld a, [de]
+	cp [hl]
+	ret
 
-Func_3823: ; 3823
-	dr $3823, $3829
+Func_35c1: ; 35c1 (0:35c1)
+	push af
+	and $80
+	jp nz, Func_35c9
+	pop af
+	ret
 
-Func_3829: ; 3829
-	dr $3829, $3848
+Func_35c9: ; 35c9 (0:35c9)
+	pop af
+	call Func_35d2
+	ret
 
-Func_3848: ; 3848
-	dr $3848, $3855
+Func_35ce: ; 35ce (0:35ce)
+	ld hl, $2
+	add hl, sp
+Func_35d2: ; 35d2 (0:35d2)
+	xor a
+	sub [hl]
+	ld [hl], a
+	inc hl
+	ld a, $0
+	sbc [hl]
+	ld [hl], a
+	inc hl
+	ld a, $0
+	sbc [hl]
+	ld [hl], a
+	inc hl
+	ld a, $0
+	sbc [hl]
+	ld [hl], a
+	dec hl
+	dec hl
+	dec hl
+	ret
 
-Func_3855: ; 3855
-	dr $3855, $3875
+Func_35e8: ; 35e8 (0:35e8)
+	push hl
+	jp Func_35f1
 
-Func_3875: ; 3875
-	dr $3875, $3892
+Func_35ec: ; 35ec (0:35ec)
+	ld a, [hl]
+	inc hl
+	ld [de], a
+	inc de
+	dec bc
+Func_35f1: ; 35f1 (0:35f1)
+	ld a, b
+	or c
+	jp nz, Func_35ec
+	pop hl
+	ret
 
-Data_3892:
+Func_35f8: ; 35f8 (0:35f8)
+	ld a, h
+	xor b
+	bit 7, a
+	jp z, Func_3602
+	ld a, b
+	cp h
+	ret
+
+Func_3602: ; 3602 (0:3602)
+	ld a, h
+	cp b
+	ret nz
+	ld a, l
+	cp c
+	ret
+
+Func_3608: ; 3608 (0:3608)
+	ld a, h
+	xor d
+	bit 7, a
+	jp z, Func_3612
+	ld a, d
+	cp h
+	ret
+
+Func_3612: ; 3612 (0:3612)
+	ld a, h
+	cp d
+	ret nz
+	ld a, l
+	cp e
+	ret
+
+Func_3618:
+	inc b
+Func_3619: ; 3619 (0:3619)
+	dec b
+	ret z
+	and a
+	rra
+	jp Func_3619
+
+Func_3620:
+	push de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_3638
+	push de
+	push hl
+	pop de
+	pop hl
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	ret
+
+Func_3638: ; 3638 (0:3638)
+	inc b
+Func_3639: ; 3639 (0:3639)
+	dec b
+	ret z
+	and a
+	ld a, h
+	rra
+	ld h, a
+	ld a, l
+	rra
+	ld l, a
+	jp Func_3639
+
+Func_3645:
+	inc b
+Func_3646: ; 3646 (0:3646)
+	dec b
+	ret z
+	add a
+	jp Func_3646
+
+Func_364c:
+	push de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_3664
+	push de
+	push hl
+	pop de
+	pop hl
+	ld [hl], d
+	dec hl
+	ld [hl], e
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	ret
+
+Func_3664: ; 3664 (0:3664)
+	inc b
+Func_3665: ; 3665 (0:3665)
+	dec b
+	ret z
+	add hl, hl
+	jp Func_3665
+
+Func_366b:
+	push hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call Func_36c6
+	pop hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ret
+
+Func_3678:
+	push hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call Func_3706
+	pop hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ret
+
+Func_3685:
+	push hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call Func_36c6
+	push de
+	push hl
+	pop de
+	pop hl
+	pop hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_369a:
+	push hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call Func_3706
+	push de
+	push hl
+	pop de
+	pop hl
+	pop hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_36af: ; 36af (0:36af)
+	push hl
+	ld l, a
+	ld h, $0
+	ld c, $8
+Func_36b5: ; 36b5 (0:36b5)
+	add hl, hl
+	ld a, h
+	cp b
+	jp c, Func_36be
+	sub b
+	inc l
+	ld h, a
+Func_36be: ; 36be (0:36be)
+	dec c
+	jp nz, Func_36b5
+	ld a, l
+	ld b, h
+	pop hl
+	ret
+
+Func_36c6: ; 36c6 (0:36c6)
+	ld a, h
+	or a
+	push af
+	xor d
+	push af
+	call Func_36fa
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_36fa
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_3706
+	pop af
+	call Func_36ed
+	pop af
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_36ed
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_36ed: ; 36ed (0:36ed)
+	push af
+	and $80
+	jp nz, Func_36f5
+	pop af
+	ret
+
+Func_36f5: ; 36f5 (0:36f5)
+	pop af
+	call Func_36fe
+	ret
+
+Func_36fa: ; 36fa (0:36fa)
+	ld a, h
+	and $80
+	ret z
+Func_36fe: ; 36fe (0:36fe)
+	dec hl
+	ld a, l
+	cpl
+	ld l, a
+	ld a, h
+	cpl
+	ld h, a
+	ret
+
+Func_3706: ; 3706 (0:3706)
+	ld b, d
+	ld c, e
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $0
+	ld a, $10
+Func_3711: ; 3711 (0:3711)
+	push af
+	add hl, hl
+	xor a
+	push de
+	push hl
+	pop de
+	pop hl
+	add hl, hl
+	push de
+	push hl
+	pop de
+	pop hl
+	adc l
+	sub c
+	ld l, a
+	ld a, h
+	sbc b
+	ld h, a
+	inc e
+	jp nc, Func_3729
+	add hl, bc
+	dec e
+Func_3729: ; 3729 (0:3729)
+	pop af
+	dec a
+	jp nz, Func_3711
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_3733:
+	push hl
+	ld h, a
+	xor a
+	ld c, $8
+Func_3738: ; 3738 (0:3738)
+	add a
+	add hl, hl
+	jp nc, Func_373e
+	add b
+Func_373e: ; 373e (0:373e)
+	dec c
+	jp nz, Func_3738
+	pop hl
+	ret
+
+Func_3744:
+	push hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call Func_3759
+	pop de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_3759: ; 3759 (0:3759)
+	ld b, h
+	ld c, l
+	ld hl, $0
+	ld a, $10
+Func_3760: ; 3760 (0:3760)
+	add hl, hl
+	push de
+	push hl
+	pop de
+	pop hl
+	add hl, hl
+	push de
+	push hl
+	pop de
+	pop hl
+	jp nc, Func_376e
+	add hl, bc
+Func_376e: ; 376e (0:376e)
+	dec a
+	jp nz, Func_3760
+	ret
+
+Func_3773: ; 3773 (0:3773)
+	ld de, $a
+	jp Func_37c7
+
+Func_3779:
+	ld de, $9
+	jp Func_37c7
+
+Func_377f: ; 377f (0:377f)
+	ld de, $8
+	jp Func_37c7
+
+Func_3785:
+	ld de, $7
+	jp Func_37c7
+
+Func_378b: ; 378b (0:378b)
+	ld de, $6
+	jp Func_37c7
+
+Func_3791: ; 3791 (0:3791)
+	ld de, $5
+	jp Func_37c7
+
+Func_3797: ; 3797 (0:3797)
+	ld de, $4
+	jp Func_37c7
+
+Func_379d:
+	ld de, $3
+	jp Func_37c7
+
+Func_37a3:
+	push af
+	push de
+	push hl
+	ld hl, sp+$6
+	pop de
+	ld a, [hl]
+	ld [hl], e
+	ld e, a
+	inc hl
+	ld a, [hl]
+	ld [hl], d
+	ld h, a
+	ld l, e
+	pop de
+	pop af
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+	push af
+	push de
+	push hl
+	ld hl, sp+$6
+	pop de
+	ld a, [hl]
+	ld [hl], e
+	ld e, a
+	inc hl
+	ld a, [hl]
+	ld [hl], d
+	ld h, a
+	ld l, e
+	pop de
+	pop af
+Func_37c7: ; 37c7 (0:37c7)
+	push de
+	push hl
+	pop de
+	pop hl
+	add hl, sp
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_37d4: ; 37d4 (0:37d4)
+	push af
+	push de
+	push hl
+	ld hl, sp+$6
+	pop de
+	ld a, [hl]
+	ld [hl], e
+	ld e, a
+	inc hl
+	ld a, [hl]
+	ld [hl], d
+	ld h, a
+	ld l, e
+	pop de
+	pop af
+	ld e, [hl]
+	inc hl
+	ld d, $0
+	push af
+	push de
+	push hl
+	ld hl, sp+$6
+	pop de
+	ld a, [hl]
+	ld [hl], e
+	ld e, a
+	inc hl
+	ld a, [hl]
+	ld [hl], d
+	ld h, a
+	ld l, e
+	pop de
+	pop af
+	push de
+	push hl
+	pop de
+	pop hl
+	add hl, sp
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_3805: ; 3805 (0:3805)
+	ld hl, $a
+	jp Func_383f
+
+Func_380b:
+	ld hl, $9
+	jp Func_383f
+
+Func_3811: ; 3811 (0:3811)
+	ld hl, $8
+	jp Func_383f
+
+Func_3817:
+	ld hl, $7
+	jp Func_383f
+
+Func_381d: ; 381d (0:381d)
+	ld hl, $6
+	jp Func_383f
+
+Func_3823: ; 3823 (0:3823)
+	ld hl, $5
+	jp Func_383f
+
+Func_3829: ; 3829 (0:3829)
+	ld hl, $4
+	jp Func_383f
+
+Func_382f:
+	ld hl, $3
+	jp Func_383f
+
+Func_3835:
+	pop hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+Func_383f: ; 383f (0:383f)
+	add hl, sp
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_3848: ; 3848 (0:3848)
+	pop hl
+	ld e, [hl]
+	inc hl
+	push hl
+	ld l, e
+	ld h, $0
+	add hl, sp
+	ld e, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, e
+	ret
+
+Func_3855: ; 3855 (0:3855)
+	push af
+	push bc
+	push de
+	push hl
+	ld hl, sp+$8
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+	ld c, l
+	ld b, h
+	ld hl, sp+$8
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld l, e
+	ld h, d
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld l, e
+	ld h, d
+	pop de
+	pop bc
+	pop af
+	ret
+
+Func_3875: ; 3875 (0:3875)
+	push af
+	push bc
+	push de
+	ld hl, sp+$6
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc hl
+	ld c, l
+	ld b, h
+	ld hl, sp+$6
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld l, e
+	ld h, d
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop de
+	pop bc
+	pop af
+	ret
+
+Func_3891:
+	ret
+
+Data_3892: ; 3892 (0:3892)
 	dr $3892, $3992
 
-Func_3992: ; 3992
-	dr $3992, $3a20
+Func_3992: ; 3992 (0:3992)
+	push hl
+	pop hl
+	push hl
+	push hl
+	ld hl, sp+$6
+	call Func_32e0
+	ld hl, $0
+	push hl
+	ld hl, $0
+	push hl
+	call Func_3579
+	jp nc, Func_39bd
+	ld a, $1
+	push af
+	ld hl, sp+$8
+	call Func_32e0
+	call Func_35ce
+	ld hl, sp+$c
+	call Func_32d1
+	pop af
+	jp Func_39be
 
-Func_3a20: ; 3a20
-	dr $3a20, $3a83
+Func_39bd: ; 39bd (0:39bd)
+	xor a
+Func_39be: ; 39be (0:39be)
+	push af
+	xor a
+Func_39c0: ; 39c0 (0:39c0)
+	ld hl, sp+$8
+	call Func_32e0
+	ld hl, $0
+	push hl
+	ld hl, $a
+	push hl
+	call Func_33f2
+	pop hl
+	pop af
+	ld a, l
+	add $30
+	call Func_381d
+	ld [hl], a
+	inc hl
+	call Func_378b
+	ld hl, sp+$8
+	call Func_32e0
+	ld hl, $0
+	push hl
+	ld hl, $a
+	push hl
+	call Func_3424
+	ld hl, sp+$c
+	call Func_32d1
+	ld hl, sp+$8
+	call Func_32e0
+	ld hl, $0
+	push hl
+	ld hl, $0
+	push hl
+	call Func_3593
+	jp nz, Func_39c0
+	pop af
+	or a
+	jp z, Func_3a13
+	call Func_3829
+	ld [hl], $2d
+	inc hl
+	call Func_3797
+Func_3a13: ; 3a13 (0:3a13)
+	call Func_3829
+	ld [hl], $0
+	pop hl
+	push hl
+	call Func_3a36
+	pop hl
+	pop bc
+	ret
 
-Func_3a83: ; 3a83
-	dr $3a83, $3aa8
+Func_3a20: ; 3a20 (0:3a20)
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_3a2a
+	dec bc
+.asm_3a2a
+	push bc
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_3992
+	pop bc
+	pop bc
+	ret
 
-Func_3aa8: ; 3aa8
-	dr $3aa8, $3afc
+Func_3a36: ; 3a36 (0:3a36)
+	push hl
+	push bc
+	push bc
+	ld hl, $0
+	pop de
+	push hl
+	call Func_381d
+	call Func_3cf2
+	dec hl
+	ld c, l
+	ld b, h
+Func_3a47: ; 3a47 (0:3a47)
+	pop hl
+	push hl
+	ld e, c
+	ld d, b
+	call Func_3608
+	jp nc, Func_3a7f
+	pop hl
+	push hl
+	push hl
+	call Func_3811
+	pop de
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	call Func_3797
+	call Func_381d
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	push hl
+	push hl
+	call Func_3811
+	pop de
+	add hl, de
+	ld [hl], a
+	call Func_3829
+	ld a, l
+	call Func_381d
+	add hl, bc
+	ld [hl], a
+	pop hl
+	push hl
+	inc hl
+	pop de
+	push hl
+	dec bc
+	jp Func_3a47
 
-Func_3afc: ; 3afc
-	dr $3afc, $3bc5
+Func_3a7f: ; 3a7f (0:3a7f)
+	pop bc
+	pop bc
+	pop bc
+	ret
 
-Func_3bc5: ; 3bc5
-	dr $3bc5, $3ca1
+Func_3a83: ; 3a83 (0:3a83)
+	ld [$c252], a
+	ld a, e
+	ld [$c253], a
+	ld hl, $c253
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, $c4a0
+	add hl, de
+	ld a, [$c252]
+	ld e, a
+	ld d, $0
+	add hl, de
+	call Func_3855
+	dw $c261
+	ret
+
+Func_3aa8: ; 3aa8 (0:3aa8)
+	ld a, $8f
+	call Func_3aae
+	ret
+
+Func_3aae: ; 3aae (0:3aae)
+	push af
+	call Func_27f5
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	pop af
+	ld e, a
+	ld hl, $c4a0
+	ld bc, $168
+	call FillMemory
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_3ae1
+	ld bc, $168
+	ld e, $0
+	ld hl, $c608
+	call FillMemory
+	ld a, $2
+	ld [wOAM26VTile], a
+Func_3ae1: ; 3ae1 (0:3ae1)
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	xor a
+	ld [$c252], a
+	xor a
+	ld [$c253], a
+	ret
+
+Func_3af6:
+	ld a, $8e
+	call Func_3aae
+	ret
+
+Func_3afc: ; 3afc (0:3afc)
+	push af
+	push de
+	push bc
+	push bc
+	ld hl, sp+$1
+	ld a, [$c2cd]
+	or a
+	jp nz, Func_3b0d
+	xor a
+	jp Func_3b0f
+
+Func_3b0d: ; 3b0d (0:3b0d)
+	ld a, $1
+Func_3b0f: ; 3b0f (0:3b0f)
+	ld [hl], a
+	ld hl, sp+$0
+	ld [hl], $2
+	ld hl, wc21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $a3
+	inc hl
+	ld [hl], $62
+	ld hl, sp+$4
+	ld c, [hl]
+	ld hl, sp+$7
+	ld h, [hl]
+	ld b, h
+	ld hl, sp+$a
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	dec hl
+	push hl
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	dec de
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld h, l
+	ld l, $0
+	pop de
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$1
+	ld a, [hl]
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, a
+	call Func_03f8
+	call Func_14d4
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_3bc0
+	ld a, [wOAM26VTile]
+	or a
+	jp z, Func_3bc0
+	ld a, [rVBK]
+	or $1
+	ld [rVBK], a
+	ld hl, sp+$4
+	ld a, [hl]
+	add $12
+	ld hl, sp+$4
+	ld [hl], a
+	ld hl, wc21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $a3
+	inc hl
+	ld [hl], $62
+	ld hl, sp+$4
+	ld c, [hl]
+	ld hl, sp+$7
+	ld h, [hl]
+	ld b, h
+	ld hl, sp+$a
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	dec hl
+	push hl
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	dec de
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld h, l
+	ld l, $0
+	pop de
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$1
+	ld a, [hl]
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, a
+	call Func_03f8
+	call Func_14d4
+	ld a, [rVBK]
+	and $fe
+	ld [rVBK], a
+	ld a, [wOAM26VTile]
+	dec a
+	ld [wOAM26VTile], a
+Func_3bc0: ; 3bc0 (0:3bc0)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_3bc5: ; 3bc5 (0:3bc5)
+	push af
+	push de
+	push bc
+	push bc
+	ld hl, sp+$1
+	ld [hl], $2
+	ld hl, sp+$0
+	ld a, [$c2cd]
+	or a
+	jp nz, Func_3bdb
+	ld a, $1
+	jp Func_3bdc
+
+Func_3bdb: ; 3bdb (0:3bdb)
+	xor a
+Func_3bdc: ; 3bdc (0:3bdc)
+	ld [hl], a
+	call Func_14d4
+	ld hl, wc21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $a3
+	inc hl
+	ld [hl], $62
+	ld hl, sp+$4
+	ld c, [hl]
+	ld hl, sp+$7
+	ld h, [hl]
+	ld b, h
+	ld hl, sp+$a
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	dec hl
+	push hl
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	dec de
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld h, l
+	ld l, $0
+	pop de
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$1
+	ld a, [hl]
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, a
+	call Func_03f8
+	call Func_14d4
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_3c8c
+	ld a, [wOAM26VTile]
+	or a
+	jp z, Func_3c8c
+	ld a, [rVBK]
+	or $1
+	ld [rVBK], a
+	ld hl, sp+$4
+	ld a, [hl]
+	add $12
+	ld hl, sp+$4
+	ld [hl], a
+	ld hl, wc21a
+	ld [hl], $1
+	inc hl
+	ld [hl], $a3
+	inc hl
+	ld [hl], $62
+	ld hl, sp+$4
+	ld c, [hl]
+	ld hl, sp+$7
+	ld h, [hl]
+	ld b, h
+	ld hl, sp+$a
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	dec hl
+	push hl
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	dec de
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld h, l
+	ld l, $0
+	pop de
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$1
+	ld a, [hl]
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, a
+	call Func_03f8
+	call Func_14d4
+	ld a, [rVBK]
+	and $fe
+	ld [rVBK], a
+	ld a, [wOAM26VTile]
+	dec a
+	ld [wOAM26VTile], a
+Func_3c8c: ; 3c8c (0:3c8c)
+	ld a, [$c2cd]
+	or a
+	jp nz, Func_3c98
+	ld a, $1
+	jp Func_3c99
+
+Func_3c98: ; 3c98 (0:3c98)
+	xor a
+Func_3c99: ; 3c99 (0:3c99)
+	call Func_3cb8
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
 
 Func_3ca1: ; 3ca1
-	dr $3ca1, $3fee
+	dr $3ca1, $3cb8
+
+Func_3cb8:
+	dr $3cb8, $3cf2
+
+Func_3cf2:
+	dr $3cf2, $3ec9
+
+Func_3ec9:
+	dr $3ec9, $3fee
 
 SECTION "Bank 01", ROMX, BANK [$01]
 Func_4000:
