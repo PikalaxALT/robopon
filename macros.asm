@@ -121,4 +121,27 @@ callba_hli: MACRO
 	set_farcall_addrs_hli \1
 	call FarCall
 	ENDM
-	
+
+dx: MACRO
+x = \2
+rept \1
+	db x & $ff
+x = x >> 8
+endr
+endm
+
+bigdx: MACRO
+y = \1
+rept \1
+	db (\2 >> ((y - 1) * 8)) & $ff
+y = y - 1
+endr
+endm
+
+dlong EQUS "dx 4,"
+
+TX_STACK EQUS "db $25, $63"
+TX_SNUM EQUS "db $25, $64"
+TX_LITERAL EQUS "db $25, $6c,"
+TX_UNUM EQUS "db $25, $6c, $64"
+TX_CALL EQUS "db $25, $73"

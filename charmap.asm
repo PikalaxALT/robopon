@@ -3,8 +3,6 @@
 charmap "…", $23
 charmap "<SPEC>", $25
 charmap "×", $2a
-charmap "ﾞ", $42
-charmap "ﾟ", $43
 
 charmap "<HIRA>", $28
 charmap "<KATA>", $29
@@ -17,13 +15,11 @@ charmap "<KATA>", $29
 	defchar "ぅ"
 	defchar "ぇ"
 	defchar "ぉ"
-	defchar "ゃ" ; 10
+	defchar "ゃ"
 	defchar "ゅ"
 	defchar "ょ"
 	defchar "っ"
-
-	char_def $b1
-
+	defchar "ー" ; b0
 	defchar "あ"
 	defchar "い"
 	defchar "う"
@@ -35,11 +31,11 @@ charmap "<KATA>", $29
 	defchar "け"
 	defchar "こ"
 	defchar "さ"
-	defchar "し" ; 20
+	defchar "し"
 	defchar "す"
 	defchar "せ"
 	defchar "そ"
-	defchar "た"
+	defchar "た" ; c0
 	defchar "ち"
 	defchar "つ"
 	defchar "て"
@@ -51,11 +47,11 @@ charmap "<KATA>", $29
 	defchar "の"
 	defchar "は"
 	defchar "ひ"
-	defchar "ふ" ; 30
+	defchar "ふ"
 	defchar "へ"
 	defchar "ほ"
 	defchar "ま"
-	defchar "み"
+	defchar "み" ; d0
 	defchar "む"
 	defchar "め"
 	defchar "も"
@@ -67,8 +63,10 @@ charmap "<KATA>", $29
 	defchar "る"
 	defchar "れ"
 	defchar "ろ"
-	defchar "わ" ; 40
+	defchar "わ"
 	defchar "ん"
+	defchar "ﾞ"
+	defchar "ﾟ" ; df
 
 ; Hiragana and Katakana share the same address space
 	char_def $a6
@@ -88,7 +86,7 @@ charmap "<KATA>", $29
 
 	defchar "ア"
 	defchar "イ"
-	defchar "ウ" ; 50
+	defchar "ウ"
 	defchar "エ"
 	defchar "オ"
 	defchar "カ"
@@ -104,7 +102,7 @@ charmap "<KATA>", $29
 	defchar "タ"
 	defchar "チ"
 	defchar "ツ"
-	defchar "テ" ; 60
+	defchar "テ"
 	defchar "ト"
 	defchar "ナ"
 	defchar "ニ"
@@ -120,7 +118,7 @@ charmap "<KATA>", $29
 	defchar "ミ"
 	defchar "ム"
 	defchar "メ"
-	defchar "モ" ; 70
+	defchar "モ"
 	defchar "ヤ"
 	defchar "ユ"
 	defchar "ヨ"

@@ -24,9 +24,28 @@ wFarCallDestAddr:: ds $2 ; c21b
 wBGP:: ds $1 ; c21d
 wOBP0:: ds $1 ; c21e
 wOBP1:: ds $1 ; c21f
-	ds $19
-wc239:: ds 5 * 4 ; c239
-	ds $5
+	ds $8
+wDecompressEndAddress:: ds $2 ; c228
+wDecompressLiteralCopySize:: ds $2 ; c22a
+wDecompresLiteralCopyOffsetHi:: ds $1 ; c22c
+	ds $c
+
+video_transfer_queue: MACRO
+\1::
+\1TilesRemaining:: ds 1
+\1Source:: ds 2
+\1Dest:: ds 2
+ENDM
+
+wVideoTransferQueue:: ; c239
+	video_transfer_queue wVideoTransferQueueEntry1 ; c239
+	video_transfer_queue wVideoTransferQueueEntry2 ; c23e
+	video_transfer_queue wVideoTransferQueueEntry3 ; c243
+	video_transfer_queue wVideoTransferQueueEntry4 ; c248
+
+wc24d:: ds 3
+wBlinkerTile:: ds $1 ; c250
+wBlinkerOffTile:: ds $1 ; c251
 wStringDestX:: ds $1 ; c252
 wStringDestY:: ds $1 ; c253
 	ds $1

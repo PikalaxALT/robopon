@@ -2330,7 +2330,7 @@ Func_11ce: ; 11ce (0:11ce)
 	xor a
 	ld [$c236], a
 	ld c, $4
-	ld hl, $c239
+	ld hl, wVideoTransferQueue
 .asm_11d9
 	ld a, [hl]
 	ld b, a
@@ -2419,22 +2419,22 @@ ReadJoypad: ; 1222 (0:1222)
 	ld [rJOYP], a
 	ret
 
-Func_124e: ; 124e (0:124e)
+Decompress_ReadCBits: ; 124e (0:124e)
 	push de
 	ld e, $0
-.asm_1251
+.loop
 	ld a, [hl]
 	and b
-	jr z, .asm_1256
+	jr z, .no_carry
 	scf
-.asm_1256
+.no_carry
 	rl e
 	rrc b
-	jr nc, .asm_125d
+	jr nc, .no_carry2
 	inc hl
-.asm_125d
+.no_carry2
 	dec c
-	jr nz, .asm_1251
+	jr nz, .loop
 	ld a, e
 	pop de
 	ret
@@ -2442,35 +2442,37 @@ Func_124e: ; 124e (0:124e)
 Func_1263: ; 1263 (0:1263)
 	ld a, c
 	add e
-	ld [$c229], a
+	ld [wDecompressEndAddress + 1], a
 	ld a, b
 	adc d
-	ld [$c228], a
+	ld [wDecompressEndAddress], a
 	ld b, $80
-Func_126f:
+.loop
 	ld c, $1
-	call Func_124e
+	call Decompress_ReadCBits
 	or a
-	jr z, .asm_128d
+	jr z, .not_literal
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
-	ld a, [$c228]
+	ld a, [wDecompressEndAddress]
 	cp d
-	jr nz, Func_126f
-	ld a, [$c229]
+	jr nz, .loop
+	ld a, [wDecompressEndAddress + 1]
 	cp e
-	jr nz, Func_126f
-	jp Func_138c
+	jr nz, .loop
+	jp .done
 
-.asm_128d
+.not_literal
 	ld c, $1
-	call Func_124e
+	call Decompress_ReadCBits
 	or a
-	jr nz, .asm_12b7
+	jr nz, .not_one_byte
+	; copy one byte literal from C bytes back in the destination
+	; 5-bit param
 	ld c, $5
-	call Func_124e
+	call Decompress_ReadCBits
 	push hl
 	inc a
 	ld c, a
@@ -2484,26 +2486,29 @@ Func_126f:
 	ld [de], a
 	inc de
 	pop hl
-	ld a, [$c228]
+	ld a, [wDecompressEndAddress]
 	cp d
-	jr nz, Func_126f
-	ld a, [$c229]
+	jr nz, .loop
+	ld a, [wDecompressEndAddress + 1]
 	cp e
-	jr nz, Func_126f
-	jp Func_138c
+	jr nz, .loop
+	jp .done
 
-.asm_12b7
+.not_one_byte
+; dest pointer de
+; copy (u3)(c + $2) bytes from de - (u8)
+; for copies $5 bytes and larger, use .asm_12de
 	ld a, $0
-	ld [$c22a], a
-	ld [$c22b], a
+	ld [wDecompressLiteralCopySize], a
+	ld [wDecompressLiteralCopySize + 1], a
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	cp $3
 	jr z, .asm_12de
 	add $2
-	ld [$c22b], a
+	ld [wDecompressLiteralCopySize + 1], a
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	push hl
 	ld c, a
 	ld a, e
@@ -2512,111 +2517,119 @@ Func_126f:
 	ld a, d
 	sbc $0
 	ld h, a
-	jp Func_136a
+	jp .copy_block
 
 .asm_12de
+; dest pointer de
+; copy (u5)(c + $5) bytes from de - (u9)
+; for copies $14 bytes and larger, use .asm_1308
 	ld c, $4
-	call Func_124e
+	call Decompress_ReadCBits
 	cp $f
 	jr z, .asm_1308
 	add $5
-	ld [$c22b], a
+	ld [wDecompressLiteralCopySize + 1], a
 	ld c, $1
-	call Func_124e
-	ld [$c22c], a
+	call Decompress_ReadCBits
+	ld [wDecompresLiteralCopyOffsetHi], a
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	push hl
 	ld c, a
 	ld a, e
 	sub c
 	ld l, a
-	ld a, [$c22c]
+	ld a, [wDecompresLiteralCopyOffsetHi]
 	ld c, a
 	ld a, d
 	sbc c
 	ld h, a
-	jp Func_136a
+	jp .copy_block
 
 .asm_1308
+; dest pointer de
+; copy (u8)(c + $20) bytes from de - (u10)
+; for copies $275 bytes and larger, use .asm_1339
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	cp $ff
 	jr z, .asm_1339
 	add $14
-	ld [$c22b], a
+	ld [wDecompressLiteralCopySize + 1], a
 	ld a, $0
 	adc $0
-	ld [$c22a], a
+	ld [wDecompressLiteralCopySize], a
 	ld c, $2
-	call Func_124e
-	ld [$c22c], a
+	call Decompress_ReadCBits
+	ld [wDecompresLiteralCopyOffsetHi], a
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	push hl
 	ld c, a
 	ld a, e
 	sub c
 	ld l, a
-	ld a, [$c22c]
+	ld a, [wDecompresLiteralCopyOffsetHi]
 	ld c, a
 	ld a, d
 	sbc c
 	ld h, a
-	jp Func_136a
+	jp .copy_block
 
 .asm_1339
+; dest pointer de
+; copy (u12)(c + $113) bytes from de - (u11)
 	ld c, $4
-	call Func_124e
+	call Decompress_ReadCBits
 	ld c, a
 	push bc
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	add $13
-	ld [$c22b], a
+	ld [wDecompressLiteralCopySize + 1], a
 	pop bc
 	ld a, c
 	adc $1
-	ld [$c22a], a
+	ld [wDecompressLiteralCopySize], a
 	ld c, $3
-	call Func_124e
-	ld [$c22c], a
+	call Decompress_ReadCBits
+	ld [wDecompresLiteralCopyOffsetHi], a
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	push hl
 	ld c, a
 	ld a, e
 	sub c
 	ld l, a
-	ld a, [$c22c]
+	ld a, [wDecompresLiteralCopyOffsetHi]
 	ld c, a
 	ld a, d
 	sbc c
 	ld h, a
-Func_136a: ; 136a (0:136a)
+.copy_block
 	push bc
-	ld a, [$c22b]
+	ld a, [wDecompressLiteralCopySize + 1]
 	ld c, a
-	ld a, [$c22a]
+	ld a, [wDecompressLiteralCopySize]
 	ld b, a
 	dec hl
-.asm_1374
+.copy_block_loop
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec bc
 	ld a, b
 	or c
-	jr nz, .asm_1374
+	jr nz, .copy_block_loop
 	pop bc
 	pop hl
-	ld a, [$c228]
+	ld a, [wDecompressEndAddress]
 	cp d
-	jp nz, Func_126f
-	ld a, [$c229]
+	jp nz, .loop
+	ld a, [wDecompressEndAddress + 1]
 	cp e
-	jp nz, Func_126f
-Func_138c: ; 138c (0:138c)
+	jp nz, .loop
+.done
 	ret
 
 Func_138d:
@@ -2680,14 +2693,14 @@ Func_138d:
 	pop hl
 	ret
 
-Func_13ed: ; 13ed (0:13ed)
-	ld a, [$c24d]
+RequestVideoTransferQueue: ; 13ed (0:13ed)
+	ld a, [wc24d]
 	ld c, a
-	ld hl, $c239
-.asm_13f4
+	ld hl, wVideoTransferQueue
+.loop
 	ld a, [hl]
 	or a
-	jr z, .asm_1404
+	jr z, .done
 	ld a, l
 	add $5
 	ld l, a
@@ -2695,25 +2708,25 @@ Func_13ed: ; 13ed (0:13ed)
 	adc $0
 	ld h, a
 	dec c
-	jr nz, .asm_13f4
+	jr nz, .loop
 	scf
-.asm_1404
+.done
 	ret
 
-Func_1405: ; 1405 (0:1405)
+PutOnVideoTransferQueue: ; 1405 (0:1405)
 	ld a, [wLCDC]
 	bit 7, a
-	jr nz, .asm_1412
+	jr nz, .lcd_enabled
 	ld c, b
 	ld b, $0
 	jp CopyFromDEtoHL
 
-.asm_1412
+.lcd_enabled
 	push hl
 	push bc
-.asm_1414
-	call Func_13ed
-	jr c, .asm_1414
+.wait
+	call RequestVideoTransferQueue
+	jr c, .wait
 	pop bc
 	di
 	ld a, b
@@ -2730,32 +2743,34 @@ Func_1405: ; 1405 (0:1405)
 	ei
 	ret
 
-Func_1428: ; 1428 (0:1428)
+RequestVideoData: ; 1428 (0:1428)
+; request bc bytes from de to hl
+; requests are handled during vblank
 	ld a, [wLCDC]
 	bit 7, a
 	jp z, CopyFromDEtoHL
-.asm_1430
+.loop
 	ld a, c
 	sub $40
 	ld c, a
 	ld a, b
 	sbc $0
 	ld b, a
-	jr nc, .asm_1444
+	jr nc, .not_final_tile
 	ld a, c
 	add $40
-	jr z, .asm_1443
+	jr z, .done
 	ld b, a
-	call Func_1405
-.asm_1443
+	call PutOnVideoTransferQueue
+.done
 	ret
 
-.asm_1444
+.not_final_tile
 	push bc
 	push hl
 	push de
 	ld b, $40
-	call Func_1405
+	call PutOnVideoTransferQueue
 	pop hl
 	ld bc, $40
 	add hl, bc
@@ -2764,7 +2779,7 @@ Func_1428: ; 1428 (0:1428)
 	pop hl
 	add hl, bc
 	pop bc
-	jr .asm_1430
+	jr .loop
 
 Func_1458:
 	ld a, [hROMBank]
@@ -2772,7 +2787,7 @@ Func_1458:
 	ld a, [wFarCallDestBank]
 	call BankSwitch
 	call CopyFromDEtoHL
-	call Func_14d4
+	call WaitVideoTransfer
 	pop af
 	call BankSwitch
 	ret
@@ -2782,8 +2797,8 @@ Func_146c:
 	push af
 	ld a, [wFarCallDestBank]
 	call BankSwitch
-	call Func_1428
-	call Func_14d4
+	call RequestVideoData
+	call WaitVideoTransfer
 	pop af
 	call BankSwitch
 	ret
@@ -2794,933 +2809,12 @@ Func_1480:
 	ld a, [wFarCallDestBank]
 	call BankSwitch
 	call Func_1263
-	call Func_14d4
+	call WaitVideoTransfer
 	pop af
 	call BankSwitch
 	ret
 
-Func_1494: ; 1494 (0:1494)
-	ld a, [hROMBank]
-	push af
-	ld b, $0
-.loop
-	ld a, [wFarCallDestBank]
-	call BankSwitch
-	ld a, [de]
-	inc de
-	or a
-	jr z, .done
-	dec a
-	push af
-	ld a, BANK(Func_68b6)
-	call BankSwitch
-	pop af
-	call Func_68b6
-	jr .loop
-
-.done
-	bit 0, b
-	jr z, .bit_0_clear
-	ld a, $29
-	ld [hli], a
-	xor a
-.bit_0_clear
-	ld [hli], a
-	pop af
-	call BankSwitch
-	ret
-
-Func_14bf: ; 14bf (0:14bf)
-	ld c, $4
-	ld hl, wc239
-.loop
-	ld a, [hl]
-	or a
-	jr nz, .found
-	ld a, l
-	add $5
-	ld l, a
-	ld a, h
-	adc $0
-	ld h, a
-	dec c
-	jr nz, .loop
-.found
-	ret
-
-Func_14d4: ; 14d4 (0:14d4)
-	call Func_14bf
-	jr nz, Func_14d4
-	ret
-
-Coord2TileMap: ; 14da (0:14da)
-; h = x
-; l = y
-; return hl = pointer
-	ld a, l
-	inc a
-	ld c, h
-	ld b, $0
-	ld hl, wTileMap - SCREEN_WIDTH
-	add hl, bc
-	ld bc, SCREEN_WIDTH
-.asm_14e6
-	add hl, bc
-	dec a
-	jr nz, .asm_14e6
-	ret
-
-Coord2AttrMap:
-; h = x
-; l = y
-; return hl = pointer
-	ld a, l
-	inc a
-	ld c, h
-	ld b, $0
-	ld hl, wAttrMap - SCREEN_WIDTH
-	add hl, bc
-	ld bc, SCREEN_WIDTH
-.asm_14f7
-	add hl, bc
-	dec a
-	jr nz, .asm_14f7
-	ret
-
-Func_14fc:
-	ld [$c2eb], a
-	jp Func_1aaf
-
-Func_1502:
-	ld [$c2ec], a
-	jp Func_1ab4
-
-Func_1508:
-	xor a
-	jr Func_14fc
-
-Func_150b:
-	xor a
-	jr Func_1502
-
-PlaceString: ; 150e (0:150e)
-	ld a, [wStringDestX]
-	ld h, a
-	ld a, [wStringDestY]
-	ld l, a
-	call Coord2TileMap
-	push hl
-	ld hl, sp+$4
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-	ld c, l
-	ld b, h
-	pop hl
-PlaceNextCharacter:
-	ld a, [de]
-	inc de
-	or a
-	jr nz, CheckDict
-	ret
-
-CheckDict:
-	cp $25
-	jp z, .SpecialCharacter
-	cp $28
-	jr z, .set_hiragana
-	cp $29
-	jr nz, .charmap
-	xor a
-	ld [wKana], a
-	jr PlaceNextCharacter
-
-.set_hiragana
-	xor a
-	dec a
-	ld [wKana], a
-	jr PlaceNextCharacter
-
-.charmap
-	push bc
-	ld bc, CharacterMapping
-	add c
-	ld c, a
-	ld a, $0
-	adc b
-	ld b, a
-	ld a, [bc]
-	cp $42
-	jr z, .place_dakuten
-	cp $43
-	jr z, .place_dakuten
-	ld c, a
-	ld a, [wKana]
-	or a
-	jr z, .no_dakuten
-	ld a, c
-	cp $44
-	jr c, .check_subtract
-	cp $4e
-	jr nc, .check_subtract
-	sub $3a
-	ld c, a
-	jr .no_dakuten
-
-.check_subtract
-	cp $4e
-	jr c, .no_dakuten
-	cp $7b
-	jr nc, .no_dakuten
-	sub $39
-	ld c, a
-.no_dakuten
-	ld a, c
-	ld [hli], a
-	ld a, [wStringDestX]
-	inc a
-	ld [wStringDestX], a
-	pop bc
-	; don't erase dakuten if printing text on the top row
-	ld a, [wStringDestY]
-	or a
-	jr z, PlaceNextCharacter
-	push bc
-	ld bc, -(SCREEN_WIDTH + 1)
-	add hl, bc
-	ld a, [hl]
-	cp $88 ; " top row of textbox
-	jr z, .no_dakuten_top_row
-	cp $89 ; o top row of textbox
-	jr z, .no_dakuten_top_row
-	cp $81 ; blank top row of textbox
-	jr z, .no_dakuten_restore_pointer
-	cp $42 ; interior "
-	jr z, .no_dakuten_interior
-	cp $43 ; interior o
-	jr nz, .no_dakuten_restore_pointer
-.no_dakuten_interior
-	ld [hl], $8f ; blank
-.no_dakuten_restore_pointer
-	ld bc, SCREEN_WIDTH + 1
-	add hl, bc
-	pop bc
-	jp PlaceNextCharacter
-
-.no_dakuten_top_row
-	ld [hl], $81 ; blank top row of textbox
-	jr .no_dakuten_restore_pointer
-
-.place_dakuten
-	push af
-	ld a, [wStringDestY]
-	or a
-	jr nz, .dakuten_okay
-	pop af
-	pop bc
-	jp PlaceNextCharacter
-
-.dakuten_okay
-	ld bc, -(SCREEN_WIDTH + 1)
-	add hl, bc
-	ld a, [hl]
-	cp $81
-	jr z, .top_row
-	cp $88
-	jr z, .top_row
-	cp $89
-	jr z, .top_row
-	pop af
-	ld [hl], a
-.after_dakuten_restore_pointer
-	ld bc, SCREEN_WIDTH + 1
-	add hl, bc
-	pop bc
-	jp PlaceNextCharacter
-
-.top_row
-	pop af
-	add $88 - $42
-	ld [hl], a
-	jr .after_dakuten_restore_pointer
-
-.SpecialCharacter: ; 15db (0:15db)
-	ld a, [de]
-	inc de
-	cp $64
-	jr z, .asm_15f1
-	cp $63
-	jr z, .place_stack_char
-	cp $73
-	jr z, .call_string
-	cp $6c
-	jr z, .asm_1634
-	ld [hli], a
-	jp PlaceNextCharacter
-
-.asm_15f1
-	push de
-	ld a, [bc]
-	inc bc
-	ld l, a
-	ld a, [bc]
-	inc bc
-	ld h, a
-	push bc
-	ld e, l
-	ld d, h
-	ld hl, sp-$c
-	add sp, -$c
-	push hl
-	push de
-	push hl
-	pop de
-	pop hl
-	ld bc, $a ; destroyed immediately in Func_3a20
-	call Func_3a20
-	call PlaceString
-	add sp, $e
-	pop bc
-	pop de
-	jp PlaceNextCharacter
-
-.place_stack_char
-	ld a, [bc]
-	inc bc
-	inc bc
-	jp CheckDict
-
-.call_string
-	ld a, [wKana]
-	push af
-	push de
-	ld a, [bc]
-	ld l, a
-	inc bc
-	ld a, [bc]
-	ld h, a
-	inc bc
-	push bc
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop de
-	pop af
-	ld [wKana], a
-	jp PlaceNextCharacter
-
-.asm_1634
-	ld a, [de]
-	inc de
-	cp $64
-	jr z, .asm_163e
-	ld [hli], a
-	jp PlaceNextCharacter
-
-.asm_163e
-	push de
-	ld a, [bc]
-	inc bc
-	ld e, a
-	ld a, [bc]
-	inc bc
-	ld d, a
-	ld a, [bc]
-	inc bc
-	ld l, a
-	ld a, [bc]
-	inc bc
-	ld h, a
-	push bc
-	push hl
-	pop bc
-	ld hl, sp-$c
-	add sp, -$c
-	push hl
-	push bc
-	push de
-	call Func_3992
-	pop bc
-	pop bc
-	call PlaceString
-	add sp, $e
-	pop bc
-	pop de
-	jp PlaceNextCharacter
-
-Func_1664:
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(Pointers_38000)
-	call BankSwitch
-	push hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	inc hl
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	inc a
-	jr nz, .asm_1698
-	xor h
-	inc a
-	jr nz, .asm_1698
-	ld l, c
-	ld h, b
-	add hl, hl
-	ld bc, Pointers_38000
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	xor a
-	ld b, h
-	sla b
-	rla
-	sla b
-	rla
-	add $e
-	ld b, a
-	call BankSwitch
-	res 7, h
-	set 6, h
-	ld c, [hl]
-.asm_1698
-	ld a, b
-	and $1f
-	call BankSwitch
-	ld a, b
-	srl a
-	srl a
-	srl a
-	srl a
-	srl a
-	ld b, $8
-	jr z, Func_16ae
-	ld b, a
-Func_16ae:
-	call Func_19fd
-	jp c, Func_1845
-	call Func_19fd
-	jp c, Func_1775
-	call Func_19fd
-	jp c, Func_1701
-	call Func_19fd
-	jr c, .asm_16e8
-	call Func_19fd
-	jr c, .asm_16e3
-	call Func_19fd
-	jr c, .asm_16de
-	call Func_19fd
-	jr c, .asm_16d9
-	ld a, $cc
-	jp Func_19b8
-
-.asm_16d9
-	ld a, $cb
-	jp Func_19b8
-
-.asm_16de
-	ld a, $bd
-	jp Func_19b8
-
-.asm_16e3
-	ld a, $c5
-	jp Func_19b8
-
-.asm_16e8
-	call Func_19fd
-	jr c, .asm_16fc
-	call Func_19fd
-	jr c, .asm_16f7
-	ld a, $cf
-	jp Func_19b8
-
-.asm_16f7
-	ld a, $b1
-	jp Func_19b8
-
-.asm_16fc
-	ld a, $b3
-	jp Func_19b8
-
-Func_1701: ; 1701 (0:1701)
-	call Func_19fd
-	jp c, Func_1752
-	call Func_19fd
-	jr c, .asm_1725
-	call Func_19fd
-	jr c, .asm_1720
-	call Func_19fd
-	jr c, .asm_171b
-	ld a, $ac
-	jp Func_19b8
-
-.asm_171b
-	ld a, $d0
-	jp Func_19b8
-
-.asm_1720
-	ld a, $d3
-	jp Func_19b8
-
-.asm_1725
-	call Func_19fd
-	jr c, .asm_174d
-	call Func_19fd
-	jr c, .asm_1748
-	call Func_19fd
-	jr c, .asm_1743
-	call Func_19fd
-	jr c, .asm_173e
-	ld a, $d5
-	jp Func_19b8
-
-.asm_173e
-	ld a, $a7
-	jp Func_19b8
-
-.asm_1743
-	ld a, $cd
-	jp Func_19b8
-
-.asm_1748
-	ld a, $b4
-	jp Func_19b8
-
-.asm_174d
-	ld a, $b5
-	jp Func_19b8
-
-Func_1752: ; 1752 (0:1752)
-	call Func_19fd
-	jr c, .asm_1770
-	call Func_19fd
-	jr c, .asm_1761
-	ld a, $b7
-	jp Func_19b8
-
-.asm_1761
-	call Func_19fd
-	jr c, .asm_176b
-	ld a, $d4
-	jp Func_19b8
-
-.asm_176b
-	ld a, $a6
-	jp Func_19b8
-
-.asm_1770
-	ld a, $c4
-	jp Func_19b8
-
-Func_1775: ; 1775 (0:1775)
-	call Func_19fd
-	jp c, Func_17b2
-	call Func_19fd
-	jr c, .asm_1785
-	ld a, $a
-	jp Func_19b8
-
-.asm_1785
-	call Func_19fd
-	jr c, .asm_17a3
-	call Func_19fd
-	jr c, .asm_179e
-	call Func_19fd
-	jr c, .asm_1799
-	ld a, $ae
-	jp Func_19b8
-
-.asm_1799
-	ld a, $df
-	jp Func_19b8
-
-.asm_179e
-	ld a, $c6
-	jp Func_19b8
-
-.asm_17a3
-	call Func_19fd
-	jr c, .asm_17ad
-	ld a, $0
-	jp Func_19b8
-
-.asm_17ad
-	ld a, $b0
-	jp Func_19b8
-
-Func_17b2: ; 17b2 (0:17b2)
-	call Func_19fd
-	jr c, .asm_17c6
-	call Func_19fd
-	jr c, .asm_17c1
-	ld a, $c3
-	jp Func_19b8
-
-.asm_17c1
-	ld a, $bc
-	jp Func_19b8
-
-.asm_17c6
-	call Func_19fd
-	jp c, Func_182c
-	call Func_19fd
-	jr c, .asm_17d6
-	ld a, $23
-	jp Func_19b8
-
-.asm_17d6
-	call Func_19fd
-	jr c, .asm_17e0
-	ld a, $d8
-	jp Func_19b8
-
-.asm_17e0
-	call Func_19fd
-	jr c, .asm_17ea
-	ld a, $d2
-	jp Func_19b8
-
-.asm_17ea
-	call Func_19fd
-	jp c, Func_1827
-	call Func_19fd
-	jr c, .asm_1818
-	call Func_19fd
-	jr c, .asm_1813
-	call Func_19fd
-	jr c, .asm_180e
-	call Func_19fd
-	jr c, .asm_1809
-	ld a, $39
-	jp Func_19b8
-
-.asm_1809
-	ld a, $a9
-	jp Func_19b8
-
-.asm_180e
-	ld a, $c7
-	jp Func_19b8
-
-.asm_1813
-	ld a, $38
-	jp Func_19b8
-
-.asm_1818
-	call Func_19fd
-	jr c, .asm_1822
-	ld a, $34
-	jp Func_19b8
-
-.asm_1822
-	ld a, $33
-	jp Func_19b8
-
-Func_1827: ; 1827 (0:1827)
-	ld a, $1
-	jp Func_19b8
-
-Func_182c: ; 182c (0:182c)
-	call Func_19fd
-	jr c, .asm_1836
-	ld a, $b8
-	jp Func_19b8
-
-.asm_1836
-	call Func_19fd
-	jr c, .asm_1840
-	ld a, $dc
-	jp Func_19b8
-
-.asm_1840
-	ld a, $be
-	jp Func_19b8
-
-Func_1845: ; 1845 (0:1845)
-	call Func_19fd
-	jp c, Func_191b
-	call Func_19fd
-	jp c, Func_189c
-	call Func_19fd
-	jr c, .asm_186f
-	call Func_19fd
-	jr c, .asm_1860
-	ld a, $dd
-	jp Func_19b8
-
-.asm_1860
-	call Func_19fd
-	jr c, .asm_186a
-	ld a, $d9
-	jp Func_19b8
-
-.asm_186a
-	ld a, $ba
-	jp Func_19b8
-
-.asm_186f
-	call Func_19fd
-	jr c, .asm_1897
-	call Func_19fd
-	jr c, .asm_1888
-	call Func_19fd
-	jr c, .asm_1883
-	ld a, $bf
-	jp Func_19b8
-
-.asm_1883
-	ld a, $db
-	jp Func_19b8
-
-.asm_1888
-	call Func_19fd
-	jr c, .asm_1892
-	ld a, $c2
-	jp Func_19b8
-
-.asm_1892
-	ld a, $bb
-	jp Func_19b8
-
-.asm_1897
-	ld a, $c0
-	jp Func_19b8
-
-Func_189c: ; 189c (0:189c)
-	call Func_19fd
-	jr c, .asm_18b0
-	call Func_19fd
-	jr c, .asm_18ab
-	ld a, $b6
-	jp Func_19b8
-
-.asm_18ab
-	ld a, $28
-	jp Func_19b8
-
-.asm_18b0
-	call Func_19fd
-	jr c, .asm_18ba
-	ld a, $29
-	jp Func_19b8
-
-.asm_18ba
-	call Func_19fd
-	jr c, .asm_18ce
-	call Func_19fd
-	jr c, .asm_18c9
-	ld a, $b9
-	jp Func_19b8
-
-.asm_18c9
-	ld a, $c1
-	jp Func_19b8
-
-.asm_18ce
-	call Func_19fd
-	jp c, Func_1916
-	call Func_19fd
-	jp c, Func_1911
-	call Func_19fd
-	jr c, .asm_190c
-	call Func_19fd
-	jr c, .asm_18e9
-	ld a, $aa
-	jp Func_19b8
-
-.asm_18e9
-	call Func_19fd
-	jr c, .asm_18fd
-	call Func_19fd
-	jr c, .asm_18f8
-	ld a, $36
-	jp Func_19b8
-
-.asm_18f8
-	ld a, $ab
-	jp Func_19b8
-
-.asm_18fd
-	call Func_19fd
-	jr c, .asm_1907
-	ld a, $30
-	jp Func_19b8
-
-.asm_1907
-	ld a, $35
-	jp Func_19b8
-
-.asm_190c
-	ld a, $d1
-	jp Func_19b8
-
-Func_1911: ; 1911 (0:1911)
-	ld a, $3f
-	jp Func_19b8
-
-Func_1916: ; 1916 (0:1916)
-	ld a, $d6
-	jp Func_19b8
-
-Func_191b: ; 191b (0:191b)
-	call Func_19fd
-	jp c, Func_198b
-	call Func_19fd
-	jr c, .asm_192b
-	ld a, $de
-	jp Func_19b8
-
-.asm_192b
-	call Func_19fd
-	jr c, .asm_193f
-	call Func_19fd
-	jr c, .asm_193a
-	ld a, $21
-	jp Func_19b8
-
-.asm_193a
-	ld a, $c9
-	jp Func_19b8
-
-.asm_193f
-	call Func_19fd
-	jp c, Func_1986
-	call Func_19fd
-	jr c, .asm_194f
-	ld a, $da
-	jp Func_19b8
-
-.asm_194f
-	call Func_19fd
-	jr c, .asm_1981
-	call Func_19fd
-	jr c, .asm_195e
-	ld a, $ad
-	jp Func_19b8
-
-.asm_195e
-	call Func_19fd
-	jr c, .asm_1968
-	ld a, $31
-	jp Func_19b8
-
-.asm_1968
-	call Func_19fd
-	jr c, .asm_1972
-	ld a, $32
-	jp Func_19b8
-
-.asm_1972
-	call Func_19fd
-	jr c, .asm_197c
-	ld a, $37
-	jp Func_19b8
-
-.asm_197c
-	ld a, $a8
-	jp Func_19b8
-
-.asm_1981
-	ld a, $c8
-	jp Func_19b8
-
-Func_1986: ; 1986 (0:1986)
-	ld a, $af
-	jp Func_19b8
-
-Func_198b: ; 198b (0:198b)
-	call Func_19fd
-	jr c, .asm_19b3
-	call Func_19fd
-	jr c, .asm_19ae
-	call Func_19fd
-	jr c, .asm_199f
-	ld a, $ca
-	jp Func_19b8
-
-.asm_199f
-	call Func_19fd
-	jr c, .asm_19a9
-	ld a, $ce
-	jp Func_19b8
-
-.asm_19a9
-	ld a, $d7
-	jp Func_19b8
-
-.asm_19ae
-	ld a, $b2
-	jp Func_19b8
-
-.asm_19b3
-	ld a, $20
-	jp Func_19b8
-
-Func_19b8: ; 19b8 (0:19b8)
-	ld [de], a
-	inc de
-	or a
-	jr z, asm_19df
-	cp $a
-	jp z, Func_19da
-	cp $1
-	jp nz, Func_16ae
-	dec de
-	push hl
-	push bc
-	ld l, e
-	ld h, d
-	ld de, $c309
-	call Func_1494
-	pop bc
-	dec hl
-	ld e, l
-	ld d, h
-	pop hl
-	jp Func_16ae
-
-Func_19da: ; 19da (0:19da)
-	xor a
-	dec de
-	ld [de], a
-	ld a, $a
-asm_19df
-	ld e, l
-	ld d, h
-	pop hl
-	push af
-	ld [hl], c
-	inc hl
-	sla b
-	sla b
-	sla b
-	sla b
-	sla b
-	ld a, [hROMBank]
-	or b
-	ld [hli], a
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	pop bc
-	pop af
-	call BankSwitch
-	ld a, b
-	ret
-
-Func_19fd: ; 19fd (0:19fd)
-	sla c
-	dec b
-	ret nz
-	inc hl
-	ld c, [hl]
-	ld b, $8
-	ret
+INCLUDE "home/text.asm"
 
 Func_1a06:
 	inc e
@@ -4451,7 +3545,7 @@ Func_1f30:
 	call FarCall
 	call WriteHalfWordTo
 	dw $c30e
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $f0
@@ -4465,7 +3559,7 @@ Func_1f30:
 	ld de, $4a12
 	ld hl, $88f0
 	call Func_146c
-	call Func_14d4
+	call WaitVideoTransfer
 Func_1f7a: ; 1f7a (0:1f7a)
 	ret
 
@@ -4475,7 +3569,7 @@ Func_1f7b:
 	ld a, l
 	or h
 	jp z, Func_1fbd
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $f0
@@ -4487,7 +3581,7 @@ Func_1f7b:
 	pop hl
 	ld hl, $88f0
 	call Func_146c
-	call Func_14d4
+	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
 	dw $c30e
@@ -4509,7 +3603,7 @@ Func_1fbe:
 	call FarCall
 	call WriteHalfWordTo
 	dw $c2f2
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $1ba
@@ -4523,7 +3617,7 @@ Func_1fbe:
 	ld de, $4b22
 	ld hl, $8cc0
 	call Func_146c
-	call Func_14d4
+	call WaitVideoTransfer
 Func_2008: ; 2008 (0:2008)
 	ret
 
@@ -4533,7 +3627,7 @@ Func_2009:
 	ld a, l
 	or h
 	jp z, Func_204b
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $1ba
@@ -4545,7 +3639,7 @@ Func_2009:
 	pop hl
 	ld hl, $8cc0
 	call Func_146c
-	call Func_14d4
+	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
 	dw $c2f2
@@ -4567,7 +3661,7 @@ Func_204c:
 	call FarCall
 	call WriteHalfWordTo
 	dw $c2f2
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $50
@@ -4581,7 +3675,7 @@ Func_204c:
 	ld de, $4e02
 	ld hl, $8fa0
 	call Func_146c
-	call Func_14d4
+	call WaitVideoTransfer
 Func_2096: ; 2096 (0:2096)
 	ret
 
@@ -4591,7 +3685,7 @@ Func_2097:
 	ld a, l
 	or h
 	jp z, Func_20d9
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $50
@@ -4603,7 +3697,7 @@ Func_2097:
 	pop hl
 	ld hl, $8fa0
 	call Func_146c
-	call Func_14d4
+	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
 	dw $c2f2
@@ -4964,7 +4058,7 @@ Func_2299: ; 2299 (0:2299)
 	ld a, [hl]
 	and $2
 	jp z, Func_22ce
-	ld hl, $2307
+	ld hl, Data_2307
 	push hl
 	call PlaceString
 	pop bc
@@ -5009,13 +4103,18 @@ Func_22fe: ; 22fe (0:22fe)
 	ret
 
 Data_2304:
-	dr $2304, $2309
+	TX_SNUM
+	db $00
+
+Data_2307:
+	db "0", $00
 
 Data_2309:
-	dr $2309, $230b
+	db " ", $00
 
 Data_230b:
-	dr $230b, $230e
+	TX_SNUM
+	db $00
 
 Func_230e: ; 230e (0:230e)
 	push de
@@ -5596,7 +4695,7 @@ Func_2653: ; 2653 (0:2653)
 	push bc
 	push hl
 	ld hl, sp+$6
-	call Func_3428
+	call DivideLongSigned
 	call GetHLAtSPPlus8
 	inc hl
 	inc hl
@@ -5794,7 +4893,7 @@ Func_277c:
 	push hl
 	ld hl, sp+$c
 	call PutLongFromHLOnStack
-	call Func_3579
+	call CompareStackLongs_Signed
 	jp nc, Func_27c0
 	ld hl, Bank_000f
 	push hl
@@ -5811,7 +4910,7 @@ Func_27c0: ; 27c0 (0:27c0)
 	push hl
 	ld hl, $0
 	push hl
-	call Func_3579
+	call CompareStackLongs_Signed
 	jp nc, Func_27e0
 	ld hl, $0
 	push hl
@@ -6226,7 +5325,7 @@ Func_2a49: ; 2a49 (0:2a49)
 	ld hl, wOAM24XCoord
 	call Func_3553
 	call PutLongFromHLOnStack
-	call Func_3579
+	call CompareStackLongs_Signed
 	jp nc, Func_2a78
 	ld hl, $5ba0
 	call WriteHalfWordTo
@@ -6250,7 +5349,7 @@ Func_2a79: ; 2a79 (0:2a79)
 	ld a, [rLCDC]
 	and $80
 	jp z, Func_2aab
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, [wc203]
 	and $8
 	jp z, Func_2aab
@@ -6760,7 +5859,7 @@ Func_2d47: ; 2d47 (0:2d47)
 	add hl, sp
 	and $80
 	push af
-	call Func_35c1
+	call AbsoluteValueLong
 	pop af
 	ld hl, $0
 	push hl
@@ -6844,7 +5943,7 @@ Func_2dab: ; 2dab (0:2dab)
 	push bc
 	and $80
 	ret z
-	jp Func_35ce
+	jp NegateLongOnStack
 
 Func_2dc3: ; 2dc3 (0:2dc3)
 	ld hl, $4
@@ -8076,21 +7175,21 @@ Func_33bd: ; 33bd (0:33bd)
 	inc hl
 	ld d, [hl]
 	push hl
-	jp Func_33ce
+	jp .handleLoop
 
-Func_33c9: ; 33c9 (0:33c9)
+.loop
 	ld c, b
 	ld b, e
 	ld e, d
 	ld d, $0
-Func_33ce: ; 33ce (0:33ce)
+.handleLoop
 	ld l, a
 	sub $8
-	jp nc, Func_33c9
+	jp nc, .loop
 	inc l
-	jp Func_33e5
+	jp .next
 
-Func_33d8: ; 33d8 (0:33d8)
+.loop2
 	and a
 	ld a, d
 	rra
@@ -8104,9 +7203,9 @@ Func_33d8: ; 33d8 (0:33d8)
 	ld a, c
 	rra
 	ld c, a
-Func_33e5: ; 33e5 (0:33e5)
+.next
 	dec l
-	jp nz, Func_33d8
+	jp nz, .loop2
 	pop hl
 	ld [hl], d
 	dec hl
@@ -8117,7 +7216,7 @@ Func_33e5: ; 33e5 (0:33e5)
 	ld [hl], c
 	ret
 
-Func_33f2: ; 33f2 (0:33f2)
+StackDivideLongSigned_KeepRemainder: ; 33f2 (0:33f2)
 	ld hl, $6
 	add hl, sp
 	push hl
@@ -8129,7 +7228,7 @@ Func_33f2: ; 33f2 (0:33f2)
 	or a
 	push af
 	push hl
-	call Func_35c1
+	call AbsoluteValueLong
 	ld hl, $9
 	add hl, sp
 	ld a, [hl]
@@ -8137,9 +7236,9 @@ Func_33f2: ; 33f2 (0:33f2)
 	dec hl
 	dec hl
 	or a
-	call Func_35c1
+	call AbsoluteValueLong
 	pop hl
-	call Func_346d
+	call DivideLong
 	push hl
 	ld [hl], e
 	inc hl
@@ -8150,17 +7249,17 @@ Func_33f2: ; 33f2 (0:33f2)
 	ld [hl], b
 	pop hl
 	pop af
-	call Func_35c1
+	call AbsoluteValueLong
 	pop bc
 	pop af
 	pop af
 	push bc
 	ret
 
-Func_3424: ; 3424 (0:3424)
+StackDivideLongSigned: ; 3424 (0:3424)
 	ld hl, $6
 	add hl, sp
-Func_3428: ; 3428 (0:3428)
+DivideLongSigned: ; 3428 (0:3428)
 	push hl
 	inc hl
 	inc hl
@@ -8169,7 +7268,7 @@ Func_3428: ; 3428 (0:3428)
 	pop hl
 	or a
 	push af
-	call Func_35c1
+	call AbsoluteValueLong
 	pop af
 	push de
 	push hl
@@ -8184,25 +7283,25 @@ Func_3428: ; 3428 (0:3428)
 	dec hl
 	dec hl
 	or a
-	call Func_35c1
+	call AbsoluteValueLong
 	push de
 	push hl
 	pop de
 	pop hl
-	call Func_346d
+	call DivideLong
 	pop af
-	call Func_35c1
+	call AbsoluteValueLong
 	pop bc
 	pop af
 	pop af
 	push bc
 	ret
 
-Func_3456:
+StackDivideLong_KeepRemainder:
 	ld hl, $6
 	add hl, sp
 	push af
-	call Func_346d
+	call DivideLong
 	pop af
 	push hl
 	ld [hl], e
@@ -8219,12 +7318,13 @@ Func_3456:
 	push bc
 	ret
 
-Func_346d: ; 346d (0:346d)
+DivideLong: ; 346d (0:346d)
+; remainder bcde
 	ld bc, $0
 	ld d, b
 	ld e, b
 	ld a, $20
-Func_3474: ; 3474 (0:3474)
+.loop: ; 3474 (0:3474)
 	push af
 	push hl
 	ld a, [hl]
@@ -8273,28 +7373,28 @@ Func_3474: ; 3474 (0:3474)
 	ld a, b
 	sbc [hl]
 	ld b, a
-	jp nc, Func_34af
+	jp nc, ._nc
 	pop bc
 	pop de
 	pop hl
-	jp Func_34b3
+	jp .next
 
-Func_34af: ; 34af (0:34af)
+._nc
 	pop af
 	pop af
 	pop hl
 	inc [hl]
-Func_34b3: ; 34b3 (0:34b3)
+.next
 	pop af
 	dec a
-	jp nz, Func_3474
+	jp nz, .loop
 	ret
 
 Func_34b9:
 	ld hl, $6
 	add hl, sp
 	push af
-	call Func_346d
+	call DivideLong
 	pop af
 	pop bc
 	pop af
@@ -8471,7 +7571,10 @@ Func_3553: ; 3553 (0:3553)
 	push bc
 	ret
 
-Func_3579: ; 3579 (0:3579)
+CompareStackLongs_Signed: ; 3579 (0:3579)
+; compare de=[sp+9] with hl=[sp+5]
+; return c if de < hl
+; takes into account sign of each
 	ld hl, $9
 	add hl, sp
 	push de
@@ -8483,14 +7586,16 @@ Func_3579: ; 3579 (0:3579)
 	ld a, [de]
 	xor [hl]
 	bit 7, a
-	jp z, Func_359f
+	jp z, compare_stack_longs
 	push de
 	push hl
 	pop de
 	pop hl
-	jp Func_359f
+	jp compare_stack_longs
 
-Func_3593: ; 3593 (0:3593)
+CompareStackLongs: ; 3593 (0:3593)
+; compare de=[sp+9] with hl=[sp+5]
+; return c if de < hl
 	ld hl, $9
 	add hl, sp
 	push de
@@ -8499,8 +7604,8 @@ Func_3593: ; 3593 (0:3593)
 	pop hl
 	ld hl, $5
 	add hl, sp
-Func_359f: ; 359f (0:359f)
-	call Func_35af
+compare_stack_longs
+	call CompareLong
 	pop de
 	push af
 	ld hl, $a
@@ -8513,7 +7618,7 @@ Func_359f: ; 359f (0:359f)
 	pop hl
 	jp [hl]
 
-Func_35af: ; 35af (0:35af)
+CompareLong: ; 35af (0:35af)
 	ld a, [de]
 	cp [hl]
 	ret nz
@@ -8533,22 +7638,23 @@ Func_35af: ; 35af (0:35af)
 	cp [hl]
 	ret
 
-Func_35c1: ; 35c1 (0:35c1)
+AbsoluteValueLong: ; 35c1 (0:35c1)
 	push af
 	and $80
-	jp nz, Func_35c9
+	jp nz, .negate_long
 	pop af
 	ret
 
-Func_35c9: ; 35c9 (0:35c9)
+.negate_long
 	pop af
-	call Func_35d2
+	call NegateLongHL
 	ret
 
-Func_35ce: ; 35ce (0:35ce)
+NegateLongOnStack: ; 35ce (0:35ce)
+; take negative of long
 	ld hl, $2
 	add hl, sp
-Func_35d2: ; 35d2 (0:35d2)
+NegateLongHL: ; 35d2 (0:35d2)
 	xor a
 	sub [hl]
 	ld [hl], a
@@ -8570,6 +7676,9 @@ Func_35d2: ; 35d2 (0:35d2)
 	ret
 
 MemCopy: ; 35e8 (0:35e8)
+; retains the start pointer
+; kills the copy size
+; destination pointer is at the end of the copied block
 	push hl
 	jp .handleLoop
 
@@ -9268,42 +8377,42 @@ CharacterMapping: ; 3892 (0:3892)
 	db $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $fa, $fb, $fc, $fd, $fe, $ff ; f
 
 
-Func_3992: ; 3992 (0:3992)
+PrintNum: ; 3992 (0:3992)
 	push hl
 	pop hl
 	push hl
 	push hl
 	ld hl, sp+$6
 	call PutLongFromHLOnStack
-	ld hl, $0
+	ld hl, 0 >> 16
 	push hl
-	ld hl, $0
+	ld hl, 0 & $ffff
 	push hl
-	call Func_3579
-	jp nc, Func_39bd
+	call CompareStackLongs_Signed
+	jp nc, .nonnegative
 	ld a, $1
 	push af
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
-	call Func_35ce
+	call NegateLongOnStack
 	ld hl, sp+$c
 	call PutLongFromStackToHL
 	pop af
-	jp Func_39be
+	jp .continue
 
-Func_39bd: ; 39bd (0:39bd)
+.nonnegative
 	xor a
-Func_39be: ; 39be (0:39be)
+.continue
 	push af
 	xor a
-Func_39c0: ; 39c0 (0:39c0)
+.loop
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
-	ld hl, $0
+	ld hl, 10 >> 16
 	push hl
-	ld hl, $a
+	ld hl, 10 & $ffff
 	push hl
-	call Func_33f2
+	call StackDivideLongSigned_KeepRemainder
 	pop hl
 	pop af
 	ld a, l
@@ -9314,29 +8423,29 @@ Func_39c0: ; 39c0 (0:39c0)
 	call WriteHLToSPPlus6
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
-	ld hl, $0
+	ld hl, 10 >> 16
 	push hl
-	ld hl, $a
+	ld hl, 10 & $ffff
 	push hl
-	call Func_3424
+	call StackDivideLongSigned
 	ld hl, sp+$c
 	call PutLongFromStackToHL
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
-	ld hl, $0
+	ld hl, 0 >> 16
 	push hl
-	ld hl, $0
+	ld hl, 0 & $ffff
 	push hl
-	call Func_3593
-	jp nz, Func_39c0
+	call CompareStackLongs
+	jp nz, .loop
 	pop af
 	or a
-	jp z, Func_3a13
+	jp z, .done
 	call GetHLAtSPPlus4
-	ld [hl], $2d
+	ld [hl], "-"
 	inc hl
 	call WriteHLToSPPlus4
-Func_3a13: ; 3a13 (0:3a13)
+.done
 	call GetHLAtSPPlus4
 	ld [hl], $0
 	pop hl
@@ -9346,7 +8455,8 @@ Func_3a13: ; 3a13 (0:3a13)
 	pop bc
 	ret
 
-Func_3a20: ; 3a20 (0:3a20)
+PrintNumSigned: ; 3a20 (0:3a20)
+; this is an atrocity
 	ld bc, $0
 	inc h
 	dec h
@@ -9360,7 +8470,7 @@ Func_3a20: ; 3a20 (0:3a20)
 	push hl
 	pop de
 	pop hl
-	call Func_3992
+	call PrintNum
 	pop bc
 	pop bc
 	ret
@@ -9377,13 +8487,13 @@ Func_3a36: ; 3a36 (0:3a36)
 	dec hl
 	ld c, l
 	ld b, h
-Func_3a47: ; 3a47 (0:3a47)
+.loop
 	pop hl
 	push hl
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp nc, Func_3a7f
+	jp nc, .done
 	pop hl
 	push hl
 	push hl
@@ -9414,9 +8524,9 @@ Func_3a47: ; 3a47 (0:3a47)
 	pop de
 	push hl
 	dec bc
-	jp Func_3a47
+	jp .loop
 
-Func_3a7f: ; 3a7f (0:3a7f)
+.done
 	pop bc
 	pop bc
 	pop bc
@@ -9549,7 +8659,7 @@ Func_3b0f: ; 3b0f (0:3b0f)
 	ld l, [hl]
 	ld h, a
 	call FarCall
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_3bc0
@@ -9601,7 +8711,7 @@ Func_3b0f: ; 3b0f (0:3b0f)
 	ld l, [hl]
 	ld h, a
 	call FarCall
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
@@ -9633,7 +8743,7 @@ Func_3bdb: ; 3bdb (0:3bdb)
 	xor a
 Func_3bdc: ; 3bdc (0:3bdc)
 	ld [hl], a
-	call Func_14d4
+	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_62a3
 	ld hl, sp+$4
 	ld c, [hl]
@@ -9671,7 +8781,7 @@ Func_3bdc: ; 3bdc (0:3bdc)
 	ld l, [hl]
 	ld h, a
 	call FarCall
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_3c8c
@@ -9723,7 +8833,7 @@ Func_3bdc: ; 3bdc (0:3bdc)
 	ld l, [hl]
 	ld h, a
 	call FarCall
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
@@ -10121,7 +9231,7 @@ Func_6193:
 Func_61a8:
 	ld a, c
 	or a
-	jp z, Func_1405
+	jp z, PutOnVideoTransferQueue
 	cp $1
 	jp z, Func_6226
 	cp $2
@@ -10169,7 +9279,7 @@ Func_61f8: ; 61f8 (1:61f8)
 	ld a, [$c22f]
 	adc $0
 	ld d, a
-	jp Func_1405
+	jp PutOnVideoTransferQueue
 
 asm_620a
 	sub $20
@@ -10234,7 +9344,7 @@ Func_6266: ; 6266 (1:6266)
 	ld a, [$c22f]
 	adc $0
 	ld h, a
-	jp Func_1405
+	jp PutOnVideoTransferQueue
 
 asm_6278
 	sub $20
@@ -10447,140 +9557,140 @@ Func_6336:
 Func_6392:
 	ld b, $80
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $7
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $2
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	inc de
 	ld c, $8
-	call Func_124e
+	call Decompress_ReadCBits
 	ld [de], a
 	ret
 
@@ -10861,7 +9971,7 @@ Func_65db: ; 65db (1:65db)
 .asm_660e
 	push de
 	push hl
-	call Func_1428
+	call RequestVideoData
 	pop hl
 	pop de
 	push hl
@@ -10990,7 +10100,7 @@ Func_667d:
 	pop bc
 	dec c
 	jr nz, .asm_66a3
-	call Func_14d4
+	call WaitVideoTransfer
 	ld a, $10
 .asm_66b7
 	pop bc
@@ -11239,22 +10349,22 @@ Func_696a: ; 696a (1:696a)
 	jr .asm_69b0
 
 .asm_69ad
-	ld a, [$c251]
+	ld a, [wBlinkerOffTile]
 .asm_69b0
 	push af
-	ld hl, $c248
+	ld hl, wVideoTransferQueueEntry4
 	ld a, $1
 	ld [hli], a
-	ld a, $50
+	ld a, wBlinkerTile % $100
 	ld [hli], a
-	ld a, $c2
+	ld a, wBlinkerTile / $100
 	ld [hli], a
 	ld a, e
 	ld [hli], a
 	ld a, d
 	ld [hli], a
 	pop af
-	ld [$c250], a
+	ld [wBlinkerTile], a
 	ld a, [wc209]
 	xor $80
 	and $80
@@ -11384,7 +10494,7 @@ Func_6a77:
 	ld hl, $8000
 	pop de
 	ld bc, $10
-	call Func_1428
+	call RequestVideoData
 	xor a
 	ld [$c2e2], a
 	ld a, [wLCDC]
@@ -11417,7 +10527,7 @@ Func_6a77:
 	ld d, a
 	dec b
 	jr nz, .asm_6aa0
-	call Func_14d4
+	call WaitVideoTransfer
 	pop hl
 	ld b, h
 .asm_6ac4
