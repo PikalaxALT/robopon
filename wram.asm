@@ -24,7 +24,18 @@ wFarCallDestAddr:: ds $2 ; c21b
 wBGP:: ds $1 ; c21d
 wOBP0:: ds $1 ; c21e
 wOBP1:: ds $1 ; c21f
-	ds $db
+	ds $19
+wc239:: ds 5 * 4 ; c239
+	ds $5
+wStringDestX:: ds $1 ; c252
+wStringDestY:: ds $1 ; c253
+	ds $1
+wKana:: ; c255
+; 00: katakana
+; ff: hiragana
+	ds $1
+
+	ds $a5
 wSystemType:: ; c2fb
 
 SECTION "OAM Buffer", WRAM0 [$c300]
@@ -112,6 +123,10 @@ wOAMBuffer2:: ; c300
 	oam_ram wOAM2_25
 	oam_ram wOAM2_26
 	oam_ram wOAM2_27
+
+SECTION "Tile Map", WRAM0 [$c4a0]
+wTileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
+wAttrMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 wCGB_BGPalsBuffer::

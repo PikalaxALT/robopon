@@ -1,7 +1,7 @@
 ; Graciously aped from http://nocash.emubase.de/pandocs.htm .
 
 ; HuC3
-HuC3SRamEnable EQU $0000
+HuC3SRamMode   EQU $0000
 HuC3RomBank    EQU $2000
 HuC3SRamBank   EQU $4000
 HuC3LatchClock EQU $6000

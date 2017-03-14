@@ -1,16 +1,15 @@
 
-	char_def
 
-	defchar "0" ; 00
-	defchar "1"
-	defchar "2"
-	defchar "3"
-	defchar "4"
-	defchar "5"
-	defchar "6"
-	defchar "7"
-	defchar "8"
-	defchar "9"
+charmap "…", $23
+charmap "<SPEC>", $25
+charmap "×", $2a
+charmap "ﾞ", $42
+charmap "ﾟ", $43
+
+charmap "<HIRA>", $28
+charmap "<KATA>", $29
+
+	char_def $a6
 
 	defchar "を"
 	defchar "ぁ"
@@ -22,7 +21,8 @@
 	defchar "ゅ"
 	defchar "ょ"
 	defchar "っ"
-	defchar "ー"
+
+	char_def $b1
 
 	defchar "あ"
 	defchar "い"
@@ -69,8 +69,9 @@
 	defchar "ろ"
 	defchar "わ" ; 40
 	defchar "ん"
-	defchar ","
-	defchar "."
+
+; Hiragana and Katakana share the same address space
+	char_def $a6
 
 	defchar "ヲ"
 	defchar "ァ"
@@ -82,6 +83,9 @@
 	defchar "ュ"
 	defchar "ョ"
 	defchar "ッ"
+
+	char_def $b1
+
 	defchar "ア"
 	defchar "イ"
 	defchar "ウ" ; 50
@@ -127,25 +131,3 @@
 	defchar "ロ"
 	defchar "ワ"
 	defchar "ン"
-	defchar "!"
-	defchar "?"
-	defchar ":"
-	defchar "/"
-	defchar "×"
-
-	defchar "┌" ; 80
-	defchar "¯"
-	defchar "┐"
-	defchar "└"
-	defchar "_"
-	defchar "┘"
-	defchar "["
-	defchar "]"
-	defchar "`"
-	defchar "。"
-	defchar "▼"
-	defchar "▶"
-	defchar "▷"
-	defchar "G"
-	defchar "…"
-	defchar " "

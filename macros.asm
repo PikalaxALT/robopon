@@ -30,6 +30,34 @@ RGB: MACRO
 tile EQUS "+ $10 *"
 tiles EQUS "* $10"
 
+coord: MACRO
+IF _NARG >= 4
+	ld \1, \3 * SCREEN_WIDTH + \2 + \4
+ELSE
+	ld \1, \3 * SCREEN_WIDTH + \2 + wTileMap
+ENDC
+ENDM
+
+hlcoord EQUS "coord hl,"
+decoord EQUS "coord de,"
+bccoord EQUS "coord bc,"
+
+aCoord: MACRO
+IF _NARG >= 3
+	ld a, [\2 * SCREEN_WIDTH + \1 + \3]
+ELSE
+	ld a, [\2 * SCREEN_WIDTH + \1 + wTileMap]
+ENDC
+ENDM
+
+Coorda: MACRO
+IF _NARG >= 3
+	ld [\2 * SCREEN_WIDTH + \1 + \3], a
+ELSE
+	ld [\2 * SCREEN_WIDTH + \1 + wTileMap], a
+ENDC
+ENDM
+
 bgcoord: MACRO
 IF _NARG >= 4
 	ld \1, \3 * BG_MAP_WIDTH + \2 + \4
@@ -63,7 +91,11 @@ ENDM
 
 
 char_def: MACRO
+IF _NARG >= 1
+__charval__ = \1
+ELSE
 __charval__ = 0
+ENDC
 ENDM
 
 callba: MACRO

@@ -14,8 +14,8 @@ predef_const: MACRO
 	predef_const Func_7af00
 	predef_const Func_7af30
 	predef_const Func_7af39
-	predef_const Func_7b6d3
-	predef_const Func_7b6ec
+	predef_const AnonJumpRelativeTable
+	predef_const AnonJumpRelativeTableLookup
 	predef_const Func_7b70d
 	predef_const Func_02fd
 	predef_const Func_01b9
