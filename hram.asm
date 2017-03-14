@@ -1,5 +1,6 @@
 hROMBank EQU $FF80
 hSRAMBank EQU $FF81
+hVBlankOccurred EQU $FF82
 
 hFF86 EQU $FF86
 hFF87 EQU $FF87

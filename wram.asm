@@ -16,11 +16,11 @@ wSCX2:: ds $1 ; c20d
 wSCY:: ds $1 ; c20e
 wSCY2:: ds $2 ; c20f
 wLCDC:: ds $1 ; c211
-wc212:: ds $1 ; c212
+wFarCallSavedA:: ds $1 ; c212
 wc213:: ds $5 ; c213
-wc218:: ds $2 ; c218
-wc21a:: ds $1 ; c21a
-wc21b:: ds $2 ; c21b
+wFarCallSavedHL:: ds $2 ; c218
+wFarCallDestBank:: ds $1 ; c21a
+wFarCallDestAddr:: ds $2 ; c21b
 wBGP:: ds $1 ; c21d
 wOBP0:: ds $1 ; c21e
 wOBP1:: ds $1 ; c21f
@@ -120,6 +120,6 @@ wCGB_BGPalsBuffer::
 wCGB_OBPalsBuffer::
 	ds 8 * 8
 
-SECTION "Stack", WRAM0 [$df00]
-wStackBottom:: ds $100 ; df00
+SECTION "Stack", WRAM0 [$d810]
+wStackBottom:: ds $7f0 ; d810
 wStackTop:: ; e000

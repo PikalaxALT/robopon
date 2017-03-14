@@ -140,7 +140,7 @@ const_value = $4b
 	predef_const Func_7e556
 	predef_const Func_7e640
 	predef_const Func_7dff6 ; b0
-	predef_const Func_7e0b5
+	predef_const DelayFrame
 	predef_const Func_7c17e_5
 	predef_const Func_7d753
 	predef_const Func_7d78e

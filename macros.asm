@@ -65,3 +65,28 @@ ENDM
 char_def: MACRO
 __charval__ = 0
 ENDM
+
+callba: MACRO
+	ld a, BANK(\1)
+	ld [wFarCallDestBank], a
+	ld a, \1 % $100
+	ld [wFarCallDestAddr], a
+	ld a, \1 / $100
+	ld [wFarCallDestAddr + 1], a
+	call FarCall
+	ENDM
+
+set_farcall_addrs_hli: MACRO
+	ld hl, wFarCallDestBank
+	ld [hl], BANK(\1)
+	inc hl
+	ld [hl], \1 % $100
+	inc hl
+	ld [hl], \1 / $100
+	ENDM
+
+callba_hli: MACRO
+	set_farcall_addrs_hli \1
+	call FarCall
+	ENDM
+	

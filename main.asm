@@ -22,7 +22,9 @@ Bank_000f:
 SECTION "rst $10", HOME [$10]
 	jp Func_00c9
 Byte_0013:
-	db $01, $08
+	db $01
+Byte_0014:
+	db $08
 Pointer_0015:
 	dbw $01, $a1f0
 
@@ -482,7 +484,7 @@ Func_0331: ; 331 (0:0331)
 	predef Func_00e9
 	predef Func_022c
 	ld a, BANK(Func_63141)
-	call BankSwitch_03f2
+	call BankSwitch
 	pop af
 	push af
 	call Func_63141
@@ -492,12 +494,12 @@ Func_0331: ; 331 (0:0331)
 	di
 	ld sp, wStackTop
 	ld a, BANK(Func_4064)
-	call BankSwitch_03f2
+	call BankSwitch
 	ld a, $3
 	call GetSRAMBank
 	call Func_4064
 	ld a, BANK(Func_fe102)
-	call BankSwitch_03f2
+	call BankSwitch
 	call Func_fe102
 	ld a, [wSystemType]
 	ld [hSystemType], a
@@ -505,13 +507,13 @@ Func_0388: ; 388 (0:0388)
 	di
 	ld sp, wStackTop
 	ld a, BANK(Func_4064)
-	call BankSwitch_03f2
+	call BankSwitch
 	ld a, $3
 	call GetSRAMBank
 	call Func_4064
 	call Func_1a90
 	ld a, BANK(Func_4000)
-	call BankSwitch_03f2
+	call BankSwitch
 	jp Func_4000
 
 Func_03a4: ; 3a4 (0:03a4)
@@ -520,7 +522,7 @@ Func_03a4: ; 3a4 (0:03a4)
 	di
 	ld sp, wStackTop
 	ld a, BANK(Func_4064)
-	call BankSwitch_03f2
+	call BankSwitch
 	ld a, $3
 	call GetSRAMBank
 	call Func_4064
@@ -528,7 +530,7 @@ Func_03a4: ; 3a4 (0:03a4)
 	ld a, $ff
 	ld [wc213], a
 	ld a, BANK(Func_4000)
-	call BankSwitch_03f2
+	call BankSwitch
 	call Func_4000
 	xor a
 	ld [wc213], a
@@ -562,19 +564,23 @@ GetSRAMBank_ReadOnly:
 	ld [HuC3SRamEnable], a
 	ret
 
-BankSwitch_03f2:
+BankSwitch:
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
 
-Func_03f8:
+FarCall:
+; call [c212]:[c21b]
+; preserves registers
+; does not preserve flags
+; stack overflow check
 	push hl
 	push bc
 	ld hl, sp+$0
-	ld bc, $27f0
+	ld bc, $10000 - wStackBottom
 	add hl, bc
 	bit 7, h
-	jr z, .asm_0417
+	jr z, .stack_okay
 	di
 	ld hl, sp+$4
 	ld e, [hl]
@@ -587,37 +593,37 @@ Func_03f8:
 	ld sp, wStackTop
 	jp Func_1d00
 
-.asm_0417
+.stack_okay
 	pop bc
 	pop hl
-	ld [wc212], a
+	ld [wFarCallSavedA], a
 	ld a, [hROMBank]
 	push af
-	ld a, [wc21a]
-	call BankSwitch_03f2
+	ld a, [wFarCallDestBank]
+	call BankSwitch
 	ld a, l
-	ld [wc218], a
+	ld [wFarCallSavedHL], a
 	ld a, h
-	ld [wc218 + 1], a
+	ld [wFarCallSavedHL + 1], a
 	ld hl, .Return
 	push hl
-	ld a, [wc21b]
+	ld a, [wFarCallDestAddr]
 	ld l, a
-	ld a, [wc21b + 1]
+	ld a, [wFarCallDestAddr + 1]
 	ld h, a
 	push hl
-	ld a, [wc218 + 1]
+	ld a, [wFarCallSavedHL + 1]
 	ld h, a
-	ld a, [wc218]
+	ld a, [wFarCallSavedHL]
 	ld l, a
-	ld a, [wc212]
+	ld a, [wFarCallSavedA]
 	ret
 
 .Return:
-	ld [wc212], a
+	ld [wFarCallSavedA], a
 	pop af
-	call BankSwitch_03f2
-	ld a, [wc212]
+	call BankSwitch
+	ld a, [wFarCallSavedA]
 	ret
 
 Func_0451:
@@ -653,7 +659,7 @@ Func_0465: ; 465 (0:0465)
 	pop bc
 	ret
 
-MemCopy:
+CopyFromDEtoHL:
 ; copy bc bytes from de to hl
 .asm_047e
 	ld a, [de]
@@ -1714,10 +1720,10 @@ VBlank:
 	ld a, [hROMBank]
 	push af
 	ld a, [$c2ed]
-	call BankSwitch_03f2
+	call BankSwitch
 	call Func_11ce
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	pop hl
 	jr .asm_0e2b
 
@@ -1956,7 +1962,7 @@ Func_0f2d: ; f2d (0:0f2d)
 	push hl
 	push bc
 	push de
-	ld hl, $c21a
+	ld hl, wFarCallDestBank
 	ld a, [hli]
 	push af
 	ld a, [hli]
@@ -1970,7 +1976,7 @@ Func_0f2d: ; f2d (0:0f2d)
 	ld a, [$c225]
 	call GetSRAMBank
 	ld a, [$c224]
-	call BankSwitch_03f2
+	call BankSwitch
 	ld hl, .Return
 	push hl
 	ld a, [$c226]
@@ -1982,12 +1988,12 @@ Func_0f2d: ; f2d (0:0f2d)
 
 .Return
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	pop af
 	call GetSRAMBank
 	pop de
 	pop af
-	ld hl, $c21a
+	ld hl, wFarCallDestBank
 	ld [hli], a
 	ld [hl], e
 	inc hl
@@ -2051,10 +2057,10 @@ Func_0fde:
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Func_62ce4)
-	call BankSwitch_03f2
+	call BankSwitch
 	call Func_62ce4
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	pop af
 	call GetSRAMBank
 .asm_103e
@@ -2064,11 +2070,11 @@ Func_0fde:
 	bit 7, h
 	jr z, .asm_105f
 	ld hl, sp+$0
-	ld a, [wc21b]
+	ld a, [wFarCallDestAddr]
 	ld e, a
-	ld a, [$c21c]
+	ld a, [wFarCallDestAddr + 1]
 	ld d, a
-	ld a, [wc21a]
+	ld a, [wFarCallDestBank]
 	ld c, a
 	ld b, $0
 	di
@@ -2619,7 +2625,7 @@ Func_138d:
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Data_e8000)
-	call BankSwitch_03f2
+	call BankSwitch
 	push bc
 	push de
 	ld h, $0
@@ -2635,7 +2641,7 @@ Func_138d:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	call BankSwitch_03f2
+	call BankSwitch
 	ld b, $0
 	sla c
 	rl b
@@ -2667,10 +2673,10 @@ Func_138d:
 	ld b, h
 	pop hl
 	ld a, BANK(Func_65db)
-	call BankSwitch_03f2
+	call BankSwitch
 	call Func_65db
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	pop hl
 	ret
 
@@ -2700,7 +2706,7 @@ Func_1405: ; 1405 (0:1405)
 	jr nz, .asm_1412
 	ld c, b
 	ld b, $0
-	jp MemCopy
+	jp CopyFromDEtoHL
 
 .asm_1412
 	push hl
@@ -2727,7 +2733,7 @@ Func_1405: ; 1405 (0:1405)
 Func_1428: ; 1428 (0:1428)
 	ld a, [wLCDC]
 	bit 7, a
-	jp z, MemCopy
+	jp z, CopyFromDEtoHL
 .asm_1430
 	ld a, c
 	sub $40
@@ -2763,34 +2769,34 @@ Func_1428: ; 1428 (0:1428)
 Func_1458:
 	ld a, [hROMBank]
 	push af
-	ld a, [wc21a]
-	call BankSwitch_03f2
-	call MemCopy
+	ld a, [wFarCallDestBank]
+	call BankSwitch
+	call CopyFromDEtoHL
 	call Func_14d4
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	ret
 
 Func_146c:
 	ld a, [hROMBank]
 	push af
-	ld a, [wc21a]
-	call BankSwitch_03f2
+	ld a, [wFarCallDestBank]
+	call BankSwitch
 	call Func_1428
 	call Func_14d4
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	ret
 
 Func_1480:
 	ld a, [hROMBank]
 	push af
-	ld a, [wc21a]
-	call BankSwitch_03f2
+	ld a, [wFarCallDestBank]
+	call BankSwitch
 	call Func_1263
 	call Func_14d4
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	ret
 
 Func_1494: ; 1494 (0:1494)
@@ -2798,8 +2804,8 @@ Func_1494: ; 1494 (0:1494)
 	push af
 	ld b, $0
 .asm_1499
-	ld a, [wc21a]
-	call BankSwitch_03f2
+	ld a, [wFarCallDestBank]
+	call BankSwitch
 	ld a, [de]
 	inc de
 	or a
@@ -2807,7 +2813,7 @@ Func_1494: ; 1494 (0:1494)
 	dec a
 	push af
 	ld a, BANK(Func_68b6)
-	call BankSwitch_03f2
+	call BankSwitch
 	pop af
 	call Func_68b6
 	jr .asm_1499
@@ -2821,7 +2827,7 @@ Func_1494: ; 1494 (0:1494)
 .asm_14b9
 	ld [hli], a
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	ret
 
 Func_14bf: ; 14bf (0:14bf)
@@ -3141,7 +3147,7 @@ Func_1664:
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Pointers_38000)
-	call BankSwitch_03f2
+	call BankSwitch
 	push hl
 	ld c, [hl]
 	inc hl
@@ -3171,14 +3177,14 @@ Func_1664:
 	rla
 	add $e
 	ld b, a
-	call BankSwitch_03f2
+	call BankSwitch
 	res 7, h
 	set 6, h
 	ld c, [hl]
 .asm_1698
 	ld a, b
 	and $1f
-	call BankSwitch_03f2
+	call BankSwitch
 	ld a, b
 	srl a
 	srl a
@@ -3696,7 +3702,7 @@ asm_19df
 	ld [hl], d
 	pop bc
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	ld a, b
 	ret
 
@@ -3752,7 +3758,7 @@ Func_1a1f:
 	ld c, l
 	ld b, h
 	push de
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $8
 	pop de
 	xor a
@@ -3819,7 +3825,7 @@ Func_1a70:
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Func_70000)
-	call BankSwitch_03f2
+	call BankSwitch
 	ld a, h
 	ld de, .Return
 	push de
@@ -3830,7 +3836,7 @@ Func_1a70:
 .Return
 	ld h, a
 	pop af
-	jp BankSwitch_03f2
+	jp BankSwitch
 
 Func_1a90: ; 1a90 (0:1a90)
 	ld l, Func_70000 % $100
@@ -3901,7 +3907,7 @@ Func_1add:
 	ld a, $0
 	call GetSRAMBank
 	ld a, BANK(Func_1add)
-	call BankSwitch_03f2
+	call BankSwitch
 	ld sp, wStackTop
 	ld a, $e4
 	ld [rBGP], a
@@ -3916,22 +3922,11 @@ Func_1b01:
 	ld sp, wStackTop
 	ld a, $3
 	call GetSRAMBank
-	ld a, $3f
-	ld [wc21a], a
-IF DEF(SUN)
-	ld a, $13
-ENDC
-IF DEF(STAR)
-	ld a, $11
-ENDC
-	ld [wc21b], a
-	ld a, $52
-	ld [$c21c], a
-	call Func_03f8
+	callba Func_fd213
 	ld a, $3
 	call GetSRAMBank
 	ld a, BANK(Func_4060)
-	call BankSwitch_03f2
+	call BankSwitch
 	jp Func_4060
 
 Func_1b28: ; 1b28 (0:1b28)
@@ -4022,17 +4017,11 @@ Func_1b28: ; 1b28 (0:1b28)
 	ld hl, rIF
 	res 0, [hl]
 	ei
-	ld a, [wc21a]
+	ld a, [wFarCallDestBank]
 	push af
-	ld a, $24
-	ld [wc21a], a
-	ld a, $c
-	ld [wc21b], a
-	ld a, $7c
-	ld [$c21c], a
-	call Func_03f8
+	callba Func_93c0c
 	pop af
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 Func_1bdf: ; 1bdf (0:1bdf)
 	pop af
 	call GetSRAMBank
@@ -4220,22 +4209,10 @@ Func_1d00: ; 1d00 (0:1d00)
 	push de
 	push bc
 	push hl
-	ld hl, $c21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $64
-	inc hl
-	ld [hl], $40
-	call Func_03f8
+	callba_hli Func_4064
 	ld a, $ff
 	ld [wc213], a
-	ld hl, $c21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $0
-	inc hl
-	ld [hl], $40
-	call Func_03f8
+	callba_hli Func_4000
 	ld a, [wc203]
 	or $11
 	ld [wc203], a
@@ -4355,10 +4332,10 @@ Func_1db9:
 	ld hl, $c347
 	call FillMemory
 	ld hl, $0
-	call Func_3855
+	call WriteHalfWordTo
 	dw $c391
 	ld hl, $0
-	call Func_3855
+	call WriteHalfWordTo
 	dw $c393
 	ld bc, $5
 	ld e, $0
@@ -4368,15 +4345,10 @@ Func_1db9:
 
 Func_1e4d: ; 1e4d (0:1e4d)
 	call Func_3aa8
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $67
-	inc hl
-	ld [hl], $7a
+	set_farcall_addrs_hli Func_17a67
 	ld de, $900
 	ld hl, $ce10
-	call Func_03f8
+	call FarCall
 	call Func_1db9
 	xor a
 	ld [wOAM26VTile], a
@@ -4384,25 +4356,15 @@ Func_1e4d: ; 1e4d (0:1e4d)
 	ld [$c91c], a
 	xor a
 	ld [$c92b], a
-	ld hl, wc21a
-	ld [hl], $18
-	inc hl
-	ld [hl], $fc
-	inc hl
-	ld [hl], $53
+	set_farcall_addrs_hli Func_613fc
 	ld e, $0
 	xor a
-	call Func_03f8
-	ld hl, wc21a
-	ld [hl], $18
-	inc hl
-	ld [hl], $24
-	inc hl
-	ld [hl], $54
+	call FarCall
+	set_farcall_addrs_hli Func_61424
 	ld c, $1
 	ld e, $1
 	ld a, $1
-	call Func_03f8
+	call FarCall
 	ld bc, $48
 	ld e, $0
 	ld hl, $c938
@@ -4438,44 +4400,29 @@ Func_1ec6: ; 1ec6 (0:1ec6)
 
 Func_1ed8: ; 1ed8 (0:1ed8)
 	ld a, $5
-	call BankSwitch_03f2
+	call BankSwitch
 	ld e, $0
 	xor a
 	call Func_3a83
-	ld hl, wc21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $b3
-	inc hl
-	ld [hl], $79
+	set_farcall_addrs_hli Func_79b3
 	ld a, $1
-	call Func_03f8
+	call FarCall
 	push hl
-	ld hl, wc21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $e4
-	inc hl
-	ld [hl], $7a
+	set_farcall_addrs_hli Func_7ae4
 	ld a, $1
-	call Func_03f8
+	call FarCall
 	push de
 	push hl
 	pop de
 	pop hl
 	push de
-	ld hl, wc21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $2b
-	inc hl
-	ld [hl], $7a
+	set_farcall_addrs_hli Func_7a2b
 	xor a
 	pop de
 	pop hl
-	call Func_3608
+	call CompareHLtoDE
 	jp nz, Func_1f25
-	call Func_03f8
+	call FarCall
 	cp $ff
 	jp nz, Func_1f27
 Func_1f25: ; 1f25 (0:1f25)
@@ -4487,31 +4434,26 @@ Func_1f27: ; 1f27 (0:1f27)
 	ret
 
 Func_1f30:
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c30e
 	ld a, l
 	or h
 	jp nz, Func_1f7a
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $ba
-	inc hl
-	ld [hl], $7a
-	ld hl, Init
-	call Func_03f8
-	call Func_3855
-	ld c, $c3
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $100
+	call FarCall
+	call WriteHalfWordTo
+	dw $c30e
 	call Func_14d4
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $f0
 	ld de, $88f0
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c30e
 	call Func_146c
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $f0
 	ld de, $4a12
 	ld hl, $88f0
@@ -4521,16 +4463,16 @@ Func_1f7a: ; 1f7a (0:1f7a)
 	ret
 
 Func_1f7b:
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c30e
 	ld a, l
 	or h
 	jp z, Func_1fbd
 	call Func_14d4
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $f0
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c30e
 	push de
 	push hl
@@ -4539,47 +4481,37 @@ Func_1f7b:
 	ld hl, $88f0
 	call Func_146c
 	call Func_14d4
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $57
-	inc hl
-	ld [hl], $7c
-	call Func_3875
+	set_farcall_addrs_hli Func_17c57
+	call ReadHalfWordAt
 	dw $c30e
-	call Func_03f8
+	call FarCall
 	ld hl, $0
-	call Func_3855
+	call WriteHalfWordTo
 	dw $c30e
 Func_1fbd: ; 1fbd (0:1fbd)
 	ret
 
 Func_1fbe:
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c2f2
 	ld a, l
 	or h
 	jp nz, Func_2008
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $ba
-	inc hl
-	ld [hl], $7a
+	set_farcall_addrs_hli Func_17aba
 	ld hl, $1ba
-	call Func_03f8
-	call Func_3855
+	call FarCall
+	call WriteHalfWordTo
 	dw $c2f2
 	call Func_14d4
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $1ba
 	ld de, $8cc0
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c2f2
 	call Func_146c
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $1ba
 	ld de, $4b22
 	ld hl, $8cc0
@@ -4589,16 +4521,16 @@ Func_2008: ; 2008 (0:2008)
 	ret
 
 Func_2009:
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c2f2
 	ld a, l
 	or h
 	jp z, Func_204b
 	call Func_14d4
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $1ba
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c2f2
 	push de
 	push hl
@@ -4607,47 +4539,37 @@ Func_2009:
 	ld hl, $8cc0
 	call Func_146c
 	call Func_14d4
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $57
-	inc hl
-	ld [hl], $7c
-	call Func_3875
+	set_farcall_addrs_hli Func_17c57
+	call ReadHalfWordAt
 	dw $c2f2
-	call Func_03f8
+	call FarCall
 	ld hl, HuC3SRamEnable
-	call Func_3855
+	call WriteHalfWordTo
 	dw $c2f2
 Func_204b:
 	ret
 
 Func_204c:
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c2f2
 	ld a, l
 	or h
 	jp nz, Func_2096
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $ba
-	inc hl
-	ld [hl], $7a
+	set_farcall_addrs_hli Func_17aba
 	ld hl, $50
-	call Func_03f8
-	call Func_3855
+	call FarCall
+	call WriteHalfWordTo
 	dw $c2f2
 	call Func_14d4
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $50
 	ld de, $8fa0
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c2f2
 	call Func_146c
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $50
 	ld de, $4e02
 	ld hl, $8fa0
@@ -4657,16 +4579,16 @@ Func_2096: ; 2096 (0:2096)
 	ret
 
 Func_2097:
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c2f2
 	ld a, l
 	or h
 	jp z, Func_20d9
 	call Func_14d4
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $50
-	call Func_3875
+	call ReadHalfWordAt
 	dw $c2f2
 	push de
 	push hl
@@ -4675,17 +4597,12 @@ Func_2097:
 	ld hl, $8fa0
 	call Func_146c
 	call Func_14d4
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $57
-	inc hl
-	ld [hl], $7c
-	call Func_3875
+	set_farcall_addrs_hli Func_17c57
+	call ReadHalfWordAt
 	dw $c2f2
-	call Func_03f8
+	call FarCall
 	ld hl, $0
-	call Func_3855
+	call WriteHalfWordTo
 	dw $c2f2
 Func_20d9: ; 20d9 (0:20d9)
 	ret
@@ -4709,11 +4626,11 @@ Func_20e9: ; 20e9 (0:20e9)
 	cp [hl]
 	jp nc, Func_2101
 	push af
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c
 	ld a, [hl]
 	inc hl
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $c
 	ld [bc], a
 	inc bc
@@ -4735,10 +4652,10 @@ Func_2101: ; 2101 (0:2101)
 	ld a, h
 	sbc b
 	ld b, a
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c
 	add hl, bc
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $c
 	pop af
 	inc a
@@ -4754,9 +4671,9 @@ Func_2124:
 	push hl
 	push de
 	push bc
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld c, h
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld a, l
 	ld l, a
 	ld h, $0
@@ -4774,9 +4691,9 @@ Func_2124:
 	add hl, de
 	pop bc
 	push hl
-	call Func_3829
+	call GetHLAtSPPlus4
 	push hl
-	call Func_3811
+	call GetHLAtSPPlus8
 	pop de
 	call Func_20da
 	pop bc
@@ -4788,9 +4705,9 @@ Func_2152:
 	push hl
 	push de
 	push bc
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld c, h
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld a, l
 	ld l, a
 	ld h, $0
@@ -4808,9 +4725,9 @@ Func_2152:
 	add hl, de
 	pop bc
 	push hl
-	call Func_3829
+	call GetHLAtSPPlus4
 	push hl
-	call Func_3811
+	call GetHLAtSPPlus8
 	pop de
 	call Func_20da
 	pop bc
@@ -4839,11 +4756,11 @@ Func_218f: ; 218f (0:218f)
 	push af
 	ld a, [bc]
 	inc bc
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c
 	ld [hl], a
 	inc hl
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $c
 	pop af
 	inc a
@@ -4863,10 +4780,10 @@ Func_21a7: ; 21a7 (0:21a7)
 	ld a, h
 	sbc b
 	ld b, a
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c
 	add hl, bc
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $c
 	pop af
 	inc a
@@ -4882,9 +4799,9 @@ Func_21ca:
 	push hl
 	push de
 	push bc
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld c, h
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld a, l
 	ld l, a
 	ld h, $0
@@ -4902,9 +4819,9 @@ Func_21ca:
 	add hl, de
 	pop bc
 	push hl
-	call Func_3829
+	call GetHLAtSPPlus4
 	push hl
-	call Func_3811
+	call GetHLAtSPPlus8
 	pop de
 	call Func_2180
 	pop bc
@@ -4916,9 +4833,9 @@ Func_21f8:
 	push hl
 	push de
 	push bc
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld c, h
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld a, l
 	ld l, a
 	ld h, $0
@@ -4936,9 +4853,9 @@ Func_21f8:
 	add hl, de
 	pop bc
 	push hl
-	call Func_3829
+	call GetHLAtSPPlus4
 	push hl
-	call Func_3811
+	call GetHLAtSPPlus8
 	pop de
 	call Func_2180
 	pop bc
@@ -4955,7 +4872,7 @@ Func_2231:
 	push bc
 	push bc
 	push de
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c
 	ld a, l
 	and h
@@ -4970,12 +4887,12 @@ Func_2231:
 	jp Func_225f
 
 Func_224f: ; 224f (0:224f)
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c
 	ld e, h
 	ld hl, sp+$4
 	ld [hl], e
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c
 	ld e, l
 	ld hl, sp+$3
@@ -4994,7 +4911,7 @@ Func_225f: ; 225f (0:225f)
 	ld hl, sp+$2
 	ld a, [hl]
 	call Func_3a83
-	call Func_3811
+	call GetHLAtSPPlus8
 	push hl
 	ld hl, Data_2304
 	push hl
@@ -5016,20 +4933,20 @@ Func_2285: ; 2285 (0:2285)
 	add hl, hl
 	ld de, Data_2226
 	add hl, de
-	call Func_3791
+	call WriteHLToSPPlus5
 Func_2299: ; 2299 (0:2299)
-	call Func_3823
+	call GetHLAtSPPlus5
 	ld a, [hl]
 	dec a
 	inc hl
 	or [hl]
 	jp z, Func_22e8
-	call Func_3823
+	call GetHLAtSPPlus5
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call Func_3811
-	call Func_35f8
+	call GetHLAtSPPlus8
+	call CompareHLtoBC
 	jp nc, Func_22e8
 	ld hl, sp+$1
 	ld e, [hl]
@@ -5052,10 +4969,10 @@ Func_22ce: ; 22ce (0:22ce)
 	call Func_150e
 	pop bc
 Func_22d6: ; 22d6 (0:22d6)
-	call Func_3823
+	call GetHLAtSPPlus5
 	inc hl
 	inc hl
-	call Func_3791
+	call WriteHLToSPPlus5
 	ld hl, sp+$2
 	ld a, [hl]
 	inc a
@@ -5069,7 +4986,7 @@ Func_22e8: ; 22e8 (0:22e8)
 	ld hl, sp+$2
 	ld a, [hl]
 	call Func_3a83
-	call Func_3811
+	call GetHLAtSPPlus8
 	push hl
 	ld hl, Data_230b
 	push hl
@@ -5117,11 +5034,11 @@ Func_2323:
 	push bc
 	push bc
 	push de
-	call Func_3805
+	call GetHLAtSPPlus10
 	ld e, h
 	ld hl, sp+$6
 	ld [hl], e
-	call Func_3805
+	call GetHLAtSPPlus10
 	ld e, l
 	ld hl, sp+$5
 	ld [hl], e
@@ -5189,7 +5106,7 @@ Func_236f:
 	ld l, e
 	ld h, $0
 	ld de, $2f
-	call Func_3759
+	call MultiplyHLbyDE
 	debgcoord 14, 23
 	add hl, de
 	push de
@@ -5198,16 +5115,16 @@ Func_236f:
 	pop hl
 	ld hl, sp+$2
 	ld bc, $2f
-	call MemCopy
+	call CopyFromDEtoHL
 	pop af
 	call GetSRAMBank
 	ld bc, $2f
 	ld hl, sp+$0
 	push hl
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $f2
 	pop de
-	call MemCopy
+	call CopyFromDEtoHL
 	jp Func_2419
 
 Func_23bb: ; 23bb (0:23bb)
@@ -5215,9 +5132,9 @@ Func_23bb: ; 23bb (0:23bb)
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Data_65bc8)
-	call BankSwitch_03f2
+	call BankSwitch
 	ld hl, Data_65bc8
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $f1
 	pop af
 	pop de
@@ -5228,17 +5145,17 @@ Func_23bb: ; 23bb (0:23bb)
 	ld l, e
 	ld h, $0
 	ld de, $5
-	call Func_36c6
+	call DivideHLByDESigned
 	add hl, hl
 	ld c, l
 	ld b, h
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $f3
 	add hl, bc
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $f3
 	add hl, bc
 	pop de
@@ -5248,9 +5165,9 @@ Func_23bb: ; 23bb (0:23bb)
 	ld l, e
 	ld h, $0
 	ld de, $5
-	call Func_36c6
+	call DivideHLByDESigned
 	ld hl, $2f
-	call Func_3759
+	call MultiplyHLbyDE
 	push de
 	push hl
 	pop de
@@ -5258,13 +5175,13 @@ Func_23bb: ; 23bb (0:23bb)
 	ld hl, sp+$2
 	add hl, de
 	push hl
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $f4
 	pop de
 	ld bc, $2f
-	call MemCopy
+	call CopyFromDEtoHL
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 Func_2419: ; 2419 (0:2419)
 	ld hl, $f0
 	add hl, sp
@@ -5281,9 +5198,9 @@ Func_241f:
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Data_64390)
-	call BankSwitch_03f2
+	call BankSwitch
 	ld hl, Data_64390
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $c6
 	pop af
 	pop de
@@ -5294,17 +5211,17 @@ Func_241f:
 	ld l, e
 	ld h, $0
 	ld de, $8
-	call Func_36c6
+	call DivideHLByDESigned
 	add hl, hl
 	ld c, l
 	ld b, h
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c8
 	add hl, bc
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c8
 	add hl, bc
 	pop de
@@ -5314,7 +5231,7 @@ Func_241f:
 	ld l, e
 	ld h, $0
 	ld de, $8
-	call Func_36c6
+	call DivideHLByDESigned
 	push de
 	push hl
 	pop de
@@ -5333,13 +5250,13 @@ Func_241f:
 	ld hl, sp+$2
 	add hl, de
 	push hl
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c8
 	pop de
 	ld bc, $18
-	call MemCopy
+	call CopyFromDEtoHL
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	ld hl, $c4
 	add hl, sp
 	ld sp, hl
@@ -5351,7 +5268,7 @@ Func_248f:
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Data_64093)
-	call BankSwitch_03f2
+	call BankSwitch
 	pop af
 	pop de
 	push af
@@ -5367,12 +5284,12 @@ Func_248f:
 	ld de, Data_64093
 	add hl, de
 	push hl
-	call Func_381d
+	call GetHLAtSPPlus6
 	pop de
 	ld bc, $11
-	call MemCopy
+	call CopyFromDEtoHL
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	pop bc
 	ret
 
@@ -5382,7 +5299,7 @@ Func_24bb
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(Data_657c5)
-	call BankSwitch_03f2
+	call BankSwitch
 	pop af
 	pop de
 	push af
@@ -5400,12 +5317,12 @@ Func_24bb
 	ld de, Data_657c5
 	add hl, de
 	push hl
-	call Func_381d
+	call GetHLAtSPPlus6
 	pop de
 	ld bc, $d
-	call MemCopy
+	call CopyFromDEtoHL
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	pop bc
 	ret
 
@@ -5452,12 +5369,12 @@ Func_2515:
 	push bc
 	push hl
 	ld de, $100
-	call Func_36c6
+	call DivideHLByDESigned
 	ld a, l
 	pop hl
 	push hl
 	ld de, $100
-	call Func_36c6
+	call DivideHLByDESigned
 	ld a, e
 	pop hl
 	pop bc
@@ -5466,13 +5383,13 @@ Func_2515:
 	ld l, c
 	ld h, b
 	ld de, $100
-	call Func_36c6
+	call DivideHLByDESigned
 	ld a, l
 	ld hl, sp+$e
 	ld [hl], a
 	pop hl
 	ld de, $100
-	call Func_36c6
+	call DivideHLByDESigned
 	ld a, e
 	ld hl, sp+$2
 	ld [hl], $96
@@ -5481,7 +5398,7 @@ Func_2515:
 	ld hl, sp+$a
 	ld [hl], $91
 	ld hl, sp+$4
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $f
 	ld c, $0
 	ld a, [$c2cd]
@@ -5500,7 +5417,7 @@ Func_256f: ; 256f (0:256f)
 	ld hl, sp+$b
 	ld [hl], a
 Func_2578: ; 2578 (0:2578)
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $12
 	ld de, $fff8
 	add hl, de
@@ -5508,17 +5425,17 @@ Func_2578: ; 2578 (0:2578)
 	dec h
 	bit 7, h
 	jr nz, .asm_25a1
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $f
 	ld [hl], $92
 	inc hl
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $f
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $12
 	ld de, $fff8
 	add hl, de
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $12
 	inc c
 	jp Func_25a4
@@ -5530,7 +5447,7 @@ Func_25a4: ; 25a4 (0:25a4)
 	jp Func_2578
 
 Func_25a7: ; 25a7 (0:25a7)
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $12
 	ld a, l
 	or h
@@ -5539,16 +5456,16 @@ Func_25a7: ; 25a7 (0:25a7)
 	push bc
 	ld hl, sp+$d
 	ld a, [hl]
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $11
 	ld [hl], a
 	inc hl
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $11
 	ld a, $1
-	ld [wc21a], a
+	ld [wFarCallDestBank], a
 	ld bc, $10
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $14
 	ld h, $0
 	add hl, hl
@@ -5576,11 +5493,11 @@ Func_25eb: ; 25eb (0:25eb)
 	ld a, c
 	cp $6
 	jp nc, Func_2600
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $f
 	ld [hl], $93
 	inc hl
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $f
 	inc c
 	jp Func_25eb
@@ -5598,7 +5515,7 @@ Func_2600: ; 2600 (0:2600)
 	ld l, c
 	ld h, b
 	ld bc, $9
-	call MemCopy
+	call CopyFromDEtoHL
 	add sp, $10
 	ret
 
@@ -5609,19 +5526,19 @@ Func_2617:
 	ld a, l
 	or h
 	jp nz, Func_2642
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld [hl], $0
 	inc hl
-	call Func_378b
-	call Func_381d
+	call WriteHLToSPPlus6
+	call GetHLAtSPPlus6
 	ld [hl], $0
 	inc hl
-	call Func_378b
-	call Func_381d
+	call WriteHLToSPPlus6
+	call GetHLAtSPPlus6
 	ld [hl], $0
 	inc hl
-	call Func_378b
-	call Func_381d
+	call WriteHLToSPPlus6
+	call GetHLAtSPPlus6
 	ld [hl], $0
 	jp Func_26d3
 
@@ -5673,11 +5590,11 @@ Func_2653: ; 2653 (0:2653)
 	push hl
 	ld hl, sp+$6
 	call Func_3428
-	call Func_3811
+	call GetHLAtSPPlus8
 	inc hl
 	inc hl
 	inc hl
-	call Func_377f
+	call WriteHLToSPPlus8
 	pop bc
 Func_2690: ; 2690 (0:2690)
 	ld a, c
@@ -5706,14 +5623,14 @@ Func_26a4: ; 26a4 (0:26a4)
 	call Func_3343
 	pop bc
 	pop af
-	call Func_3811
+	call GetHLAtSPPlus8
 	ld [hl], c
 	ld hl, sp+$2
 	ld b, $8
 	call Func_33bd
-	call Func_3811
+	call GetHLAtSPPlus8
 	dec hl
-	call Func_377f
+	call WriteHLToSPPlus8
 	pop af
 	inc a
 	jp Func_26a4
@@ -5745,7 +5662,7 @@ Func_26e6:
 	ld a, [hROMBank]
 	push af
 	ld a, c
-	call BankSwitch_03f2
+	call BankSwitch
 	pop af
 	pop hl
 	pop de
@@ -5767,7 +5684,7 @@ Func_26ff: ; 26ff (0:26ff)
 	xor a
 	ld [hl], a
 	pop af
-	call BankSwitch_03f2
+	call BankSwitch
 	pop hl
 	ret
 
@@ -5784,7 +5701,7 @@ Func_270a:
 	ld hl, sp+$a
 	call Func_32d1
 	ld hl, $0
-	call Func_378b
+	call WriteHLToSPPlus6
 	pop hl
 	ld e, l
 	ld a, h
@@ -5811,10 +5728,10 @@ Func_273f: ; 273f (0:273f)
 Func_2746: ; 2746 (0:2746)
 	push bc
 	push de
-	call Func_3811
+	call GetHLAtSPPlus8
 	add hl, bc
-	call Func_377f
-	call Func_3811
+	call WriteHLToSPPlus8
+	call GetHLAtSPPlus8
 	ld bc, $0
 	push bc
 	push hl
@@ -5832,7 +5749,7 @@ Func_2761: ; 2761 (0:2761)
 	jp z, Func_2770
 	ld hl, sp+$4
 	ld bc, $4
-	call Func_35e8
+	call MemCopy
 Func_2770: ; 2770 (0:2770)
 	pop bc
 	pop hl
@@ -5859,7 +5776,7 @@ Func_277c:
 	pop hl
 	ld hl, $c989
 	ld bc, $4
-	call Func_35e8
+	call MemCopy
 	ld hl, sp+$4
 	call Func_32e0
 	ld hl, sp+$c
@@ -5901,7 +5818,7 @@ Func_27e0: ; 27e0 (0:27e0)
 	ld de, $c989
 	ld hl, sp+$8
 	ld bc, $4
-	call Func_35e8
+	call MemCopy
 	pop af
 	call GetSRAMBank
 	ret
@@ -5918,14 +5835,14 @@ Func_2801: ; 2801 (0:2801)
 	push de
 	ld a, [hSRAMBank]
 	push af
-	call Func_3829
+	call GetHLAtSPPlus4
 	ld h, $0
 	push hl
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld l, h
 	ld h, $0
 	pop de
-	call Func_3759
+	call MultiplyHLbyDE
 	push de
 	push hl
 	pop de
@@ -5933,12 +5850,7 @@ Func_2801: ; 2801 (0:2801)
 	push de
 	ld a, $3
 	call GetSRAMBank
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $ba
-	inc hl
-	ld [hl], $7a
+	set_farcall_addrs_hli Func_17aba
 	pop de
 	push de
 	push de
@@ -5950,7 +5862,7 @@ Func_2801: ; 2801 (0:2801)
 	inc hl
 	inc hl
 	inc hl
-	call Func_03f8
+	call FarCall
 	ld c, l
 	ld b, h
 	push bc
@@ -5958,9 +5870,9 @@ Func_2801: ; 2801 (0:2801)
 	inc bc
 	inc bc
 	inc bc
-	call Func_3811
+	call GetHLAtSPPlus8
 	push hl
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $c
 	pop de
 	call Func_2124
@@ -5976,15 +5888,15 @@ Func_2801: ; 2801 (0:2801)
 	inc hl
 	ld c, l
 	ld b, h
-	call Func_381d
+	call GetHLAtSPPlus6
 	push hl
-	call Func_3805
+	call GetHLAtSPPlus10
 	pop de
 	call Func_2152
 	pop bc
 	pop af
 	push bc
-	call Func_381d
+	call GetHLAtSPPlus6
 	push de
 	push hl
 	pop de
@@ -5994,7 +5906,7 @@ Func_2801: ; 2801 (0:2801)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call Func_3829
+	call GetHLAtSPPlus4
 	push de
 	push hl
 	pop de
@@ -6016,37 +5928,37 @@ Func_2887: ; 2887 (0:2887)
 	push hl
 	push bc
 	push bc
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld a, [hSRAMBank]
 	push af
 	push hl
 	ld a, $3
 	call GetSRAMBank
-	call Func_3805
+	call GetHLAtSPPlus10
 	ld a, [hl]
 	inc hl
-	call Func_3773
+	call WriteHLToSPPlus10
 	ld hl, sp+$6
 	ld [hl], a
-	call Func_3805
+	call GetHLAtSPPlus10
 	ld a, [hl]
 	inc hl
-	call Func_3773
+	call WriteHLToSPPlus10
 	ld hl, sp+$7
 	ld [hl], a
-	call Func_3805
+	call GetHLAtSPPlus10
 	ld a, [hl]
 	inc hl
-	call Func_3773
+	call WriteHLToSPPlus10
 	ld hl, sp+$4
 	ld [hl], a
-	call Func_3805
+	call GetHLAtSPPlus10
 	ld a, [hl]
 	inc hl
-	call Func_3773
+	call WriteHLToSPPlus10
 	ld hl, sp+$5
 	ld [hl], a
-	call Func_3805
+	call GetHLAtSPPlus10
 	ld c, l
 	ld b, h
 	ld hl, sp+$4
@@ -6066,10 +5978,10 @@ Func_2887: ; 2887 (0:2887)
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
-	call Func_3759
+	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call Func_3805
+	call GetHLAtSPPlus10
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -6097,14 +6009,9 @@ Func_2887: ; 2887 (0:2887)
 	ld a, [hl]
 	call Func_3ca1
 	pop bc
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $57
-	inc hl
-	ld [hl], $7c
+	set_farcall_addrs_hli Func_17c57
 	pop hl
-	call Func_03f8
+	call FarCall
 	pop af
 	call GetSRAMBank
 	pop bc
@@ -6145,7 +6052,7 @@ Func_2951: ; 2951 (0:2951)
 	push hl
 	push bc
 	push hl
-	call Func_3805
+	call GetHLAtSPPlus10
 	call Func_292b
 	add $2
 	ld e, a
@@ -6160,7 +6067,7 @@ Func_2951: ; 2951 (0:2951)
 	ld a, $14
 	sub e
 	ld b, $2
-	call Func_36af
+	call DivideAbyB
 	ld hl, sp+$9
 	ld [hl], a
 Func_2976: ; 2976 (0:2976)
@@ -6207,12 +6114,7 @@ Func_29a6: ; 29a6 (0:29a6)
 	and $8
 	jp nz, Func_29cb
 	push de
-	ld hl, wc21a
-	ld [hl], $5
-	inc hl
-	ld [hl], $95
-	inc hl
-	ld [hl], $7e
+	set_farcall_addrs_hli Func_17e95
 	pop de
 	push de
 	ld hl, sp+$7
@@ -6221,18 +6123,13 @@ Func_29a6: ; 29a6 (0:29a6)
 	ld l, [hl]
 	ld h, a
 	ld c, $3
-	call Func_03f8
+	call FarCall
 	pop de
 Func_29cb: ; 29cb (0:29cb)
 	push de
 	ld a, $2
 	ld [wOAM26VTile], a
-	ld hl, wc21a
-	ld [hl], $31
-	inc hl
-	ld [hl], $9
-	inc hl
-	ld [hl], $71
+	set_farcall_addrs_hli Func_c7109
 	pop de
 	push de
 	ld l, e
@@ -6252,8 +6149,8 @@ Func_29cb: ; 29cb (0:29cb)
 	ld l, [hl]
 	ld h, a
 	ld c, $0
-	call Func_03f8
-	call Func_3805
+	call FarCall
+	call GetHLAtSPPlus10
 	push hl
 	ld hl, sp+$8
 	ld e, [hl]
@@ -6325,10 +6222,10 @@ Func_2a49: ; 2a49 (0:2a49)
 	call Func_3579
 	jp nc, Func_2a78
 	ld hl, $5ba0
-	call Func_3855
+	call WriteHalfWordTo
 	dw $c391
 	ld hl, $676
-	call Func_3855
+	call WriteHalfWordTo
 	dw $c393
 Func_2a78: ; 2a78 (0:2a78)
 	ret
@@ -6360,34 +6257,34 @@ Func_2aa1: ; 2aa1 (0:2aa1)
 	jp nz, Func_2aa1
 Func_2aab: ; 2aab (0:2aab)
 	ld a, BANK(Func_6b22)
-	call BankSwitch_03f2
+	call BankSwitch
 	pop af
 	pop bc
 	push af
 Func_2ab3: ; 2ab3 (0:2ab3)
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $16
 	push de
 	push hl
 	pop de
 	pop hl
 	ld hl, $0
-	call Func_3608
+	call CompareHLtoDE
 	jp nc, Func_2b70
 	push bc
 	xor a
 	call Func_6b22
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $18
 	ld de, $10
-	call Func_3608
+	call CompareHLtoDE
 	jp c, Func_2add
 	ld hl, sp+$14
 	ld [hl], $10
 	jp Func_2ae5
 
 Func_2add: ; 2add (0:2add)
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $18
 	ld e, l
 	ld hl, sp+$14
@@ -6395,18 +6292,18 @@ Func_2add: ; 2add (0:2add)
 Func_2ae5: ; 2ae5 (0:2ae5)
 	ld hl, sp+$15
 	ld a, [hl]
-	call BankSwitch_03f2
+	call BankSwitch
 	ld hl, sp+$14
 	ld c, [hl]
 	ld b, $0
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $1a
 	push de
 	push hl
 	pop de
 	pop hl
 	ld hl, sp+$4
-	call MemCopy
+	call CopyFromDEtoHL
 	ld hl, sp+$14
 	ld a, [hl]
 	cp $10
@@ -6430,7 +6327,7 @@ Func_2ae5: ; 2ae5 (0:2ae5)
 	call FillMemory
 Func_2b20: ; 2b20 (0:2b20)
 	ld a, BANK(Func_6b37)
-	call BankSwitch_03f2
+	call BankSwitch
 	ld a, $10
 	ld hl, sp+$4
 Func_2b29: ; 2b29 (0:2b29)
@@ -6463,7 +6360,7 @@ Func_2b49: ; 2b49 (0:2b49)
 	ld hl, sp+$14
 	ld c, [hl]
 	ld b, $0
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $18
 	ld a, l
 	sub c
@@ -6471,13 +6368,13 @@ Func_2b49: ; 2b49 (0:2b49)
 	ld a, h
 	sbc b
 	ld h, a
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $18
-	call Func_3848
+	call GetHLAtSPPlusParam8
 	db $1a
 	ld de, $10
 	add hl, de
-	call Func_37d4
+	call WriteHLToSPPlusParam8
 	db $1a
 	pop bc
 	jp Func_2ab3
@@ -6487,7 +6384,7 @@ Func_2b70: ; 2b70 (0:2b70)
 	ld [wc203], a
 	ld hl, sp+$11
 	ld a, [hl]
-	call BankSwitch_03f2
+	call BankSwitch
 	add sp, $16
 	ret
 
@@ -6906,7 +6803,7 @@ Func_2d7c:
 Func_2d90: ; 2d90 (0:2d90)
 	and $80
 	ret z
-	jp Func_36fe
+	jp NegativeHL
 
 Func_2d96:
 	ld bc, $20
@@ -6953,7 +6850,7 @@ Func_2dc3: ; 2dc3 (0:2dc3)
 	pop de
 	bit 7, h
 	jp nz, Func_2dec
-	call Func_35f8
+	call CompareHLtoBC
 	jp nc, Func_2dec
 	ld a, c
 	sub l
@@ -7171,7 +7068,7 @@ Func_2ed6: ; 2ed6 (0:2ed6)
 	sbc h
 	ld h, a
 	ld de, $4001
-	call Func_3608
+	call CompareHLtoDE
 	jp c, Func_2f07
 Func_2f01: ; 2f01 (0:2f01)
 	ld hl, $4000
@@ -7179,7 +7076,7 @@ Func_2f01: ; 2f01 (0:2f01)
 
 Func_2f07: ; 2f07 (0:2f07)
 	ld de, $c001
-	call Func_3608
+	call CompareHLtoDE
 	jp nc, Func_2f14
 	push de
 	push hl
@@ -7435,7 +7332,7 @@ Func_302f:
 	push af
 	xor c
 	push af
-	call Func_3608
+	call CompareHLtoDE
 	jp z, Func_30a1
 	jp c, Func_3076
 	ld b, d
@@ -7462,7 +7359,7 @@ Func_307b: ; 307b (0:307b)
 	ld d, a
 	push hl
 	ld hl, $48
-	call Func_3608
+	call CompareHLtoDE
 	pop hl
 	ld c, $9
 	jp c, Func_3097
@@ -8665,33 +8562,37 @@ Func_35d2: ; 35d2 (0:35d2)
 	dec hl
 	ret
 
-Func_35e8: ; 35e8 (0:35e8)
+MemCopy: ; 35e8 (0:35e8)
 	push hl
-	jp Func_35f1
+	jp .handleLoop
 
-Func_35ec: ; 35ec (0:35ec)
+.loop
 	ld a, [hl]
 	inc hl
 	ld [de], a
 	inc de
 	dec bc
-Func_35f1: ; 35f1 (0:35f1)
+.handleLoop
 	ld a, b
 	or c
-	jp nz, Func_35ec
+	jp nz, .loop
 	pop hl
 	ret
 
-Func_35f8: ; 35f8 (0:35f8)
+CompareHLtoBC: ; 35f8 (0:35f8)
+; signed
+;     z: hl = bc
+;     c: hl < bc
+; nz,nc: hl > bc
 	ld a, h
 	xor b
 	bit 7, a
-	jp z, Func_3602
+	jp z, .same_sign
 	ld a, b
 	cp h
 	ret
 
-Func_3602: ; 3602 (0:3602)
+.same_sign
 	ld a, h
 	cp b
 	ret nz
@@ -8699,16 +8600,20 @@ Func_3602: ; 3602 (0:3602)
 	cp c
 	ret
 
-Func_3608: ; 3608 (0:3608)
+CompareHLtoDE: ; 3608 (0:3608)
+; signed
+;     z: hl = de
+;     c: hl < de
+; nz,nc: hl > de
 	ld a, h
 	xor d
 	bit 7, a
-	jp z, Func_3612
+	jp z, .same_sign
 	ld a, d
 	cp h
 	ret
 
-Func_3612: ; 3612 (0:3612)
+.same_sign
 	ld a, h
 	cp d
 	ret nz
@@ -8716,16 +8621,16 @@ Func_3612: ; 3612 (0:3612)
 	cp e
 	ret
 
-Func_3618:
+RightShiftA:
 	inc b
-Func_3619: ; 3619 (0:3619)
+.loop
 	dec b
 	ret z
 	and a
 	rra
-	jp Func_3619
+	jp .loop
 
-Func_3620:
+RightShiftPointer:
 	push de
 	ld e, [hl]
 	inc hl
@@ -8734,7 +8639,7 @@ Func_3620:
 	push hl
 	pop de
 	pop hl
-	call Func_3638
+	call RightShiftHL
 	push de
 	push hl
 	pop de
@@ -8749,9 +8654,10 @@ Func_3620:
 	pop de
 	ret
 
-Func_3638: ; 3638 (0:3638)
+RightShiftHL: ; 3638 (0:3638)
+; hl >>= b
 	inc b
-Func_3639: ; 3639 (0:3639)
+.loop
 	dec b
 	ret z
 	and a
@@ -8761,17 +8667,18 @@ Func_3639: ; 3639 (0:3639)
 	ld a, l
 	rra
 	ld l, a
-	jp Func_3639
+	jp .loop
 
-Func_3645:
+LeftShiftA:
+; a <<= b
 	inc b
-Func_3646: ; 3646 (0:3646)
+.loop
 	dec b
 	ret z
 	add a
-	jp Func_3646
+	jp .loop
 
-Func_364c:
+LeftShiftPointer:
 	push de
 	ld e, [hl]
 	inc hl
@@ -8780,7 +8687,7 @@ Func_364c:
 	push hl
 	pop de
 	pop hl
-	call Func_3664
+	call LeftShiftHL
 	push de
 	push hl
 	pop de
@@ -8795,47 +8702,48 @@ Func_364c:
 	pop de
 	ret
 
-Func_3664: ; 3664 (0:3664)
+LeftShiftHL: ; 3664 (0:3664)
+; hl >>= b
 	inc b
-Func_3665: ; 3665 (0:3665)
+.loop
 	dec b
 	ret z
 	add hl, hl
-	jp Func_3665
+	jp .loop
 
-Func_366b:
+ModuloPointerByDESigned:
 	push hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call Func_36c6
+	call DivideHLByDESigned
 	pop hl
 	ld [hl], e
 	inc hl
 	ld [hl], d
 	ret
 
-Func_3678:
+ModuloPointerByDE:
 	push hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call Func_3706
+	call DivideHLbyDE
 	pop hl
 	ld [hl], e
 	inc hl
 	ld [hl], d
 	ret
 
-Func_3685:
+DividePointerByDESigned:
 	push hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call Func_36c6
+	call DivideHLByDESigned
 	push de
 	push hl
 	pop de
@@ -8850,13 +8758,13 @@ Func_3685:
 	pop hl
 	ret
 
-Func_369a:
+DividePointerByDE:
 	push hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call Func_3706
+	call DivideHLbyDE
 	push de
 	push hl
 	pop de
@@ -8871,75 +8779,75 @@ Func_369a:
 	pop hl
 	ret
 
-Func_36af: ; 36af (0:36af)
+DivideAbyB: ; 36af (0:36af)
 	push hl
 	ld l, a
 	ld h, $0
 	ld c, $8
-Func_36b5: ; 36b5 (0:36b5)
+.loop
 	add hl, hl
 	ld a, h
 	cp b
-	jp c, Func_36be
+	jp c, .next
 	sub b
 	inc l
 	ld h, a
-Func_36be: ; 36be (0:36be)
+.next
 	dec c
-	jp nz, Func_36b5
+	jp nz, .loop
 	ld a, l
 	ld b, h
 	pop hl
 	ret
 
-Func_36c6: ; 36c6 (0:36c6)
+DivideHLByDESigned: ; 36c6 (0:36c6)
 	ld a, h
 	or a
 	push af
 	xor d
 	push af
-	call Func_36fa
+	call .AbsoluteValueHL
 	push de
 	push hl
 	pop de
 	pop hl
-	call Func_36fa
+	call .AbsoluteValueHL
 	push de
 	push hl
 	pop de
 	pop hl
-	call Func_3706
+	call DivideHLbyDE
 	pop af
-	call Func_36ed
+	call .CorrectSignOfHL
 	pop af
 	push de
 	push hl
 	pop de
 	pop hl
-	call Func_36ed
+	call .CorrectSignOfHL
 	push de
 	push hl
 	pop de
 	pop hl
 	ret
 
-Func_36ed: ; 36ed (0:36ed)
+.CorrectSignOfHL
 	push af
 	and $80
-	jp nz, Func_36f5
+	jp nz, .NegativeRemainder
 	pop af
 	ret
 
-Func_36f5: ; 36f5 (0:36f5)
+.NegativeRemainder
 	pop af
-	call Func_36fe
+	call NegativeHL
 	ret
 
-Func_36fa: ; 36fa (0:36fa)
+.AbsoluteValueHL: ; 36fa (0:36fa)
 	ld a, h
 	and $80
 	ret z
-Func_36fe: ; 36fe (0:36fe)
+NegativeHL:
 	dec hl
 	ld a, l
 	cpl
@@ -8949,7 +8857,8 @@ Func_36fe: ; 36fe (0:36fe)
 	ld h, a
 	ret
 
-Func_3706: ; 3706 (0:3706)
+DivideHLbyDE: ; 3706 (0:3706)
+; returns quotient hl and remainder de
 	ld b, d
 	ld c, e
 	push de
@@ -8958,7 +8867,7 @@ Func_3706: ; 3706 (0:3706)
 	pop hl
 	ld hl, $0
 	ld a, $10
-Func_3711: ; 3711 (0:3711)
+.loop
 	push af
 	add hl, hl
 	xor a
@@ -8978,42 +8887,44 @@ Func_3711: ; 3711 (0:3711)
 	sbc b
 	ld h, a
 	inc e
-	jp nc, Func_3729
+	jp nc, .next
 	add hl, bc
 	dec e
-Func_3729: ; 3729 (0:3729)
+.next
 	pop af
 	dec a
-	jp nz, Func_3711
+	jp nz, .loop
 	push de
 	push hl
 	pop de
 	pop hl
 	ret
 
-Func_3733:
+MultiplyAbyB:
+; a *= b
 	push hl
 	ld h, a
 	xor a
 	ld c, $8
-Func_3738: ; 3738 (0:3738)
+.loop
 	add a
 	add hl, hl
-	jp nc, Func_373e
+	jp nc, .next
 	add b
-Func_373e: ; 373e (0:373e)
+.next
 	dec c
-	jp nz, Func_3738
+	jp nz, .loop
 	pop hl
 	ret
 
-Func_3744:
+MultiplyPointerByDE:
+; Store [hl] * de at hl
 	push hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call Func_3759
+	call MultiplyHLbyDE
 	pop de
 	push de
 	push hl
@@ -9028,12 +8939,13 @@ Func_3744:
 	pop hl
 	ret
 
-Func_3759: ; 3759 (0:3759)
+MultiplyHLbyDE: ; 3759 (0:3759)
+; hl *= de
 	ld b, h
 	ld c, l
 	ld hl, $0
 	ld a, $10
-Func_3760: ; 3760 (0:3760)
+.loop
 	add hl, hl
 	push de
 	push hl
@@ -9044,49 +8956,50 @@ Func_3760: ; 3760 (0:3760)
 	push hl
 	pop de
 	pop hl
-	jp nc, Func_376e
+	jp nc, .next
 	add hl, bc
-Func_376e: ; 376e (0:376e)
+.next
 	dec a
-	jp nz, Func_3760
+	jp nz, .loop
 	ret
 
-Func_3773: ; 3773 (0:3773)
+WriteHLToSPPlus10: ; 3773 (0:3773)
 	ld de, $a
-	jp Func_37c7
+	jp WriteHLToSPPlusDE
 
-Func_3779:
+WriteHLToSPPlus9:
 	ld de, $9
-	jp Func_37c7
+	jp WriteHLToSPPlusDE
 
-Func_377f: ; 377f (0:377f)
+WriteHLToSPPlus8: ; 377f (0:377f)
 	ld de, $8
-	jp Func_37c7
+	jp WriteHLToSPPlusDE
 
-Func_3785:
+WriteHLToSPPlus7:
 	ld de, $7
-	jp Func_37c7
+	jp WriteHLToSPPlusDE
 
-Func_378b: ; 378b (0:378b)
+WriteHLToSPPlus6: ; 378b (0:378b)
 	ld de, $6
-	jp Func_37c7
+	jp WriteHLToSPPlusDE
 
-Func_3791: ; 3791 (0:3791)
+WriteHLToSPPlus5: ; 3791 (0:3791)
 	ld de, $5
-	jp Func_37c7
+	jp WriteHLToSPPlusDE
 
-Func_3797: ; 3797 (0:3797)
+WriteHLToSPPlus4: ; 3797 (0:3797)
 	ld de, $4
-	jp Func_37c7
+	jp WriteHLToSPPlusDE
 
-Func_379d:
+WriteHLToSPPlus3:
 	ld de, $3
-	jp Func_37c7
+	jp WriteHLToSPPlusDE
 
-Func_37a3:
+WriteHLToSPPlusParam16:
 	push af
 	push de
 	push hl
+	; Exchange the return pointer with what was previously hl
 	ld hl, sp+$6
 	pop de
 	ld a, [hl]
@@ -9099,6 +9012,7 @@ Func_37a3:
 	ld l, e
 	pop de
 	pop af
+	; Read the short from the return pointer
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -9106,6 +9020,7 @@ Func_37a3:
 	push af
 	push de
 	push hl
+	; Exchange the previous value of hl with the return pointer
 	ld hl, sp+$6
 	pop de
 	ld a, [hl]
@@ -9118,7 +9033,8 @@ Func_37a3:
 	ld l, e
 	pop de
 	pop af
-Func_37c7: ; 37c7 (0:37c7)
+WriteHLToSPPlusDE: ; 37c7 (0:37c7)
+	; write the previous value of hl at sp + param
 	push de
 	push hl
 	pop de
@@ -9133,10 +9049,11 @@ Func_37c7: ; 37c7 (0:37c7)
 	pop hl
 	ret
 
-Func_37d4: ; 37d4 (0:37d4)
+WriteHLToSPPlusParam8: ; 37d4 (0:37d4)
 	push af
 	push de
 	push hl
+	; Exchange the return pointer with what was previously hl
 	ld hl, sp+$6
 	pop de
 	ld a, [hl]
@@ -9149,12 +9066,14 @@ Func_37d4: ; 37d4 (0:37d4)
 	ld l, e
 	pop de
 	pop af
+	; Read the byte from the return pointer
 	ld e, [hl]
 	inc hl
 	ld d, $0
 	push af
 	push de
 	push hl
+	; Exchange the previous value of hl with the return pointer
 	ld hl, sp+$6
 	pop de
 	ld a, [hl]
@@ -9167,6 +9086,7 @@ Func_37d4: ; 37d4 (0:37d4)
 	ld l, e
 	pop de
 	pop af
+	; write the previous value of hl at sp + param
 	push de
 	push hl
 	pop de
@@ -9181,39 +9101,39 @@ Func_37d4: ; 37d4 (0:37d4)
 	pop hl
 	ret
 
-Func_3805: ; 3805 (0:3805)
+GetHLAtSPPlus10: ; 3805 (0:3805)
 	ld hl, $a
-	jp Func_383f
+	jp GetHLAtSPPlusHL
 
-Func_380b:
+GetHLAtSPPlus9:
 	ld hl, $9
-	jp Func_383f
+	jp GetHLAtSPPlusHL
 
-Func_3811: ; 3811 (0:3811)
+GetHLAtSPPlus8: ; 3811 (0:3811)
 	ld hl, $8
-	jp Func_383f
+	jp GetHLAtSPPlusHL
 
-Func_3817:
+GetHLAtSPPlus7:
 	ld hl, $7
-	jp Func_383f
+	jp GetHLAtSPPlusHL
 
-Func_381d: ; 381d (0:381d)
+GetHLAtSPPlus6: ; 381d (0:381d)
 	ld hl, $6
-	jp Func_383f
+	jp GetHLAtSPPlusHL
 
-Func_3823: ; 3823 (0:3823)
+GetHLAtSPPlus5: ; 3823 (0:3823)
 	ld hl, $5
-	jp Func_383f
+	jp GetHLAtSPPlusHL
 
-Func_3829: ; 3829 (0:3829)
+GetHLAtSPPlus4: ; 3829 (0:3829)
 	ld hl, $4
-	jp Func_383f
+	jp GetHLAtSPPlusHL
 
-Func_382f:
+GetHLAtSPPlus3:
 	ld hl, $3
-	jp Func_383f
+	jp GetHLAtSPPlusHL
 
-Func_3835:
+GetHLAtSPPlusParam16:
 	pop hl
 	ld e, [hl]
 	inc hl
@@ -9224,7 +9144,7 @@ Func_3835:
 	push hl
 	pop de
 	pop hl
-Func_383f: ; 383f (0:383f)
+GetHLAtSPPlusHL: ; 383f (0:383f)
 	add hl, sp
 	ld e, [hl]
 	inc hl
@@ -9235,7 +9155,7 @@ Func_383f: ; 383f (0:383f)
 	pop hl
 	ret
 
-Func_3848: ; 3848 (0:3848)
+GetHLAtSPPlusParam8: ; 3848 (0:3848)
 	pop hl
 	ld e, [hl]
 	inc hl
@@ -9249,25 +9169,32 @@ Func_3848: ; 3848 (0:3848)
 	ld l, e
 	ret
 
-Func_3855: ; 3855 (0:3855)
+WriteHalfWordTo: ; 3855 (0:3855)
+; s16 *dest
+; s16 hl
+; preserves registers
 	push af
 	push bc
 	push de
 	push hl
+	; get the return pointer
 	ld hl, sp+$8
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	; read the address there
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	inc hl
+	; advance the return pointer
 	ld c, l
 	ld b, h
 	ld hl, sp+$8
 	ld [hl], c
 	inc hl
 	ld [hl], b
+	; store hl at the address
 	ld l, e
 	ld h, d
 	pop de
@@ -9281,7 +9208,9 @@ Func_3855: ; 3855 (0:3855)
 	pop af
 	ret
 
-Func_3875: ; 3875 (0:3875)
+ReadHalfWordAt: ; 3875 (0:3875)
+; s16 *dest
+; preserves registers except hl
 	push af
 	push bc
 	push de
@@ -9355,10 +9284,10 @@ Func_39c0: ; 39c0 (0:39c0)
 	pop af
 	ld a, l
 	add $30
-	call Func_381d
+	call GetHLAtSPPlus6
 	ld [hl], a
 	inc hl
-	call Func_378b
+	call WriteHLToSPPlus6
 	ld hl, sp+$8
 	call Func_32e0
 	ld hl, $0
@@ -9379,12 +9308,12 @@ Func_39c0: ; 39c0 (0:39c0)
 	pop af
 	or a
 	jp z, Func_3a13
-	call Func_3829
+	call GetHLAtSPPlus4
 	ld [hl], $2d
 	inc hl
-	call Func_3797
+	call WriteHLToSPPlus4
 Func_3a13: ; 3a13 (0:3a13)
-	call Func_3829
+	call GetHLAtSPPlus4
 	ld [hl], $0
 	pop hl
 	push hl
@@ -9419,7 +9348,7 @@ Func_3a36: ; 3a36 (0:3a36)
 	ld hl, $0
 	pop de
 	push hl
-	call Func_381d
+	call GetHLAtSPPlus6
 	call Func_3cf2
 	dec hl
 	ld c, l
@@ -9429,30 +9358,30 @@ Func_3a47: ; 3a47 (0:3a47)
 	push hl
 	ld e, c
 	ld d, b
-	call Func_3608
+	call CompareHLtoDE
 	jp nc, Func_3a7f
 	pop hl
 	push hl
 	push hl
-	call Func_3811
+	call GetHLAtSPPlus8
 	pop de
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	call Func_3797
-	call Func_381d
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus6
 	add hl, bc
 	ld a, [hl]
 	pop hl
 	push hl
 	push hl
-	call Func_3811
+	call GetHLAtSPPlus8
 	pop de
 	add hl, de
 	ld [hl], a
-	call Func_3829
+	call GetHLAtSPPlus4
 	ld a, l
-	call Func_381d
+	call GetHLAtSPPlus6
 	add hl, bc
 	ld [hl], a
 	pop hl
@@ -9489,7 +9418,7 @@ Func_3a83: ; 3a83 (0:3a83)
 	ld e, a
 	ld d, $0
 	add hl, de
-	call Func_3855
+	call WriteHalfWordTo
 	dw $c261
 	ret
 
@@ -9559,12 +9488,7 @@ Func_3b0f: ; 3b0f (0:3b0f)
 	ld [hl], a
 	ld hl, sp+$0
 	ld [hl], $2
-	ld hl, wc21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $a3
-	inc hl
-	ld [hl], $62
+	set_farcall_addrs_hli Func_62a3
 	ld hl, sp+$4
 	ld c, [hl]
 	ld hl, sp+$7
@@ -9600,7 +9524,7 @@ Func_3b0f: ; 3b0f (0:3b0f)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, a
-	call Func_03f8
+	call FarCall
 	call Func_14d4
 	ld a, [wSystemType]
 	cp $11
@@ -9616,12 +9540,7 @@ Func_3b0f: ; 3b0f (0:3b0f)
 	add $12
 	ld hl, sp+$4
 	ld [hl], a
-	ld hl, wc21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $a3
-	inc hl
-	ld [hl], $62
+	set_farcall_addrs_hli Func_62a3
 	ld hl, sp+$4
 	ld c, [hl]
 	ld hl, sp+$7
@@ -9657,7 +9576,7 @@ Func_3b0f: ; 3b0f (0:3b0f)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, a
-	call Func_03f8
+	call FarCall
 	call Func_14d4
 	ld a, [rVBK]
 	and $fe
@@ -9691,12 +9610,7 @@ Func_3bdb: ; 3bdb (0:3bdb)
 Func_3bdc: ; 3bdc (0:3bdc)
 	ld [hl], a
 	call Func_14d4
-	ld hl, wc21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $a3
-	inc hl
-	ld [hl], $62
+	set_farcall_addrs_hli Func_62a3
 	ld hl, sp+$4
 	ld c, [hl]
 	ld hl, sp+$7
@@ -9732,7 +9646,7 @@ Func_3bdc: ; 3bdc (0:3bdc)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, a
-	call Func_03f8
+	call FarCall
 	call Func_14d4
 	ld a, [wSystemType]
 	cp $11
@@ -9748,12 +9662,7 @@ Func_3bdc: ; 3bdc (0:3bdc)
 	add $12
 	ld hl, sp+$4
 	ld [hl], a
-	ld hl, wc21a
-	ld [hl], $1
-	inc hl
-	ld [hl], $a3
-	inc hl
-	ld [hl], $62
+	set_farcall_addrs_hli Func_62a3
 	ld hl, sp+$4
 	ld c, [hl]
 	ld hl, sp+$7
@@ -9789,7 +9698,7 @@ Func_3bdc: ; 3bdc (0:3bdc)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, a
-	call Func_03f8
+	call FarCall
 	call Func_14d4
 	ld a, [rVBK]
 	and $fe
@@ -9966,25 +9875,8 @@ Func_4000:
 	ld a, [wc213]
 	or a
 	ret nz
-	ld a, $24
-	ld [wc21a], a
-	ld a, $87
-	ld [wc21b], a
-	ld a, $7b
-	ld [$c21c], a
-	call Func_03f8
-	ld a, $3f
-	ld [wc21a], a
-IF DEF(SUN)
-	ld a, $14
-ENDC
-IF DEF(STAR)
-	ld a, $12
-ENDC
-	ld [wc21b], a
-	ld a, $53
-	ld [$c21c], a
-	call Func_03f8
+	callba Func_93b87
+	callba Func_fd314
 Func_4060: ; 4060 (1:4060)
 	jp Func_1e4d
 
@@ -10111,10 +10003,10 @@ Func_410c: ; 410c (1:410c)
 	ld hl, $9000
 	ld de, GFX_4122
 	ld bc, $800
-	call MemCopy
+	call CopyFromDEtoHL
 	ld hl, $8800
 	ld bc, $1b0
-	call MemCopy
+	call CopyFromDEtoHL
 	ret
 
 GFX_4122:
@@ -11049,7 +10941,7 @@ Func_667d:
 	push bc
 	dec a
 	jr nz, .asm_668c
-	ld [wc218], sp
+	ld [wFarCallSavedHL], sp
 	ld a, d
 	sub h
 	ld b, a
@@ -11058,7 +10950,7 @@ Func_667d:
 	sub l
 	ld c, a
 	inc c
-	ld a, [wc218]
+	ld a, [wFarCallSavedHL]
 	ld e, a
 	ld a, [$c219]
 	ld d, a
@@ -11201,7 +11093,7 @@ Func_68fd:
 	ld d, c
 	ld b, $1
 	xor a
-	ld [wc212], a
+	ld [wFarCallSavedA], a
 	ld [rSCX], a
 	ld a, [rLY]
 	ld c, a
@@ -11214,16 +11106,16 @@ Func_68fd:
 	jr c, .asm_691a
 	cp d
 	jr nc, .asm_691a
-	ld a, [wc212]
+	ld a, [wFarCallSavedA]
 	jr .asm_691b
 
 .asm_691a
 	xor a
 .asm_691b
 	ld [rSCX], a
-	ld a, [wc212]
+	ld a, [wFarCallSavedA]
 	add b
-	ld [wc212], a
+	ld [wFarCallSavedA], a
 	cp $4
 	jr c, .asm_692f
 	xor a
@@ -11601,7 +11493,16 @@ Func_6b37: ; 6b37 (1:6b37)
 	ret
 
 Func_6b4b: ; 6b4b
-	dr $6b4b, $7f9f
+	dr $6b4b, $79b3
+
+Func_79b3: ; 79b3
+	dr $79b3, $7a2b
+
+Func_7a2b: ; 7a2b
+	dr $7a2b, $7ae4
+
+Func_7ae4: ; 7ae4
+	dr $7ae4, $7f9f
 
 SECTION "Bank 02", ROMX, BANK [$02]
 	dr $8000, $c000
@@ -11619,7 +11520,19 @@ SECTION "Bank 05", ROMX, BANK [$05]
 	dr $14000, $144fd
 
 Func_144fd:
-	dr $144fd, $18000
+	dr $144fd, $17a67
+
+Func_17a67:
+	dr $17a67, $17aba
+
+Func_17aba:
+	dr $17aba, $17c57
+
+Func_17c57:
+	dr $17c57, $17e95
+
+Func_17e95:
+	dr $17e95, $18000
 
 SECTION "Bank 06", ROMX, BANK [$06]
 	dr $18000, $1c000
@@ -11677,7 +11590,13 @@ SECTION "Bank 17", ROMX, BANK [$17]
 	dr $5c000, $60000
 
 SECTION "Bank 18", ROMX, BANK [$18]
-	dr $60000, $62ce4
+	dr $60000, $613fc
+
+Func_613fc:
+	dr $613fc, $61424
+
+Func_61424:
+	dr $61424, $62ce4
 
 Func_62ce4:
 	dr $62ce4, $63141
@@ -12325,7 +12244,7 @@ Func_78440: ; 78440 (1e:4440)
 	ld hl, $c404
 	predef Func_7af96
 .asm_78489
-	predef Func_7e0b5
+	predef DelayFrame
 	predef Func_7e17c
 	and $3
 	jr z, .asm_78489
@@ -12483,7 +12402,7 @@ Func_785ec: ; 785ec (1e:45ec)
 	jr z, .asm_78617
 	or a
 	jr z, .asm_78605
-	ld hl, $14
+	ld hl, Byte_0014
 	cp [hl]
 	jr z, .asm_78605
 	ld de, Data_78028
@@ -13556,7 +13475,7 @@ Func_79019: ; 79019 (1e:5019)
 	ld hl, Data_78cbe
 	call Func_79033
 Func_7901f: ; 7901f (1e:501f)
-	predef Func_7e0b5
+	predef DelayFrame
 	predef Func_7e17c
 	and $3
 	jr z, Func_7901f
@@ -13670,7 +13589,7 @@ Func_79ea7:
 	ld a, $3
 	predef Func_7d78e
 asm_79ebb
-	predef Func_7e0b5
+	predef DelayFrame
 	predef Func_7e17c
 	ld c, a
 	and $6
@@ -13851,7 +13770,7 @@ Func_79fb7:
 	ld a, $3
 	predef Func_7d78e
 .asm_79fca
-	predef Func_7e0b5
+	predef DelayFrame
 	predef Func_7e17c
 	bit 6, a
 	jr nz, .asm_79fed
@@ -14103,7 +14022,7 @@ Func_7a169: ; 7a169 (1e:6169)
 	ld hl, Data_7a4c5
 	predef Func_7bd42
 Func_7a173: ; 7a173 (1e:6173)
-	predef Func_7e0b5
+	predef DelayFrame
 	predef Func_7e17c
 	and $3
 	jr z, Func_7a173
@@ -14631,7 +14550,7 @@ Func_7b7a9: ; 7b7a9 (1e:77a9)
 	ld [hli], a
 	ld [hl], a
 asm_7b7bb
-	predef Func_7e0b5
+	predef DelayFrame
 	predef Func_7e17c
 	ld hl, sp+$3
 	ld [hl], a
@@ -14934,7 +14853,7 @@ Func_7b93a: ; 7b93a (1e:793a)
 	ld a, $1
 	call Func_7bf1f
 asm_7b964
-	predef Func_7e0b5
+	predef DelayFrame
 	predef Func_7e17c
 	ld b, a
 	and $c
@@ -15902,7 +15821,7 @@ Pointers_7c000:
 	dw Func_7e556
 	dw Func_7e640
 	dw Func_7dff6
-	dw Func_7e0b5
+	dw DelayFrame
 	dw Func_7c17e
 	dw Func_7d753
 	dw Func_7d78e
@@ -16184,7 +16103,7 @@ Func_7c1b0: ; 7c1b0 (1f:41b0)
 	ld [rNR34], a
 	ld b, $6
 .asm_7c213
-	call Func_7e0b5
+	call DelayFrame
 	dec b
 	jr nz, .asm_7c213
 	ld a, [rNR30]
@@ -16195,7 +16114,7 @@ Func_7c1b0: ; 7c1b0 (1f:41b0)
 	ld [rNR52], a
 	ld b, $6
 .asm_7c227
-	call Func_7e0b5
+	call DelayFrame
 	dec b
 	jr nz, .asm_7c227
 	pop hl
@@ -20963,7 +20882,7 @@ Func_7de32: ; 7de32 (1f:5e32)
 	ld hl, sp+$0
 	call Func_7df32
 .asm_7de3b
-	call Func_7e0b5
+	call DelayFrame
 	call Func_7e17c
 	or a
 	jr z, .asm_7de3b
@@ -21335,7 +21254,7 @@ Func_7dff6: ; 7dff6 (1f:5ff6)
 	ld bc, $a
 	predef Func_015b
 	xor a
-	ld [$ff82], a
+	ld [hVBlankOccurred], a
 	ld [$ff83], a
 	ld [$ff84], a
 	ld [$ff85], a
@@ -21436,29 +21355,29 @@ Func_7e070: ; 7e070 (1f:6070)
 	ld hl, $ff84
 	inc [hl]
 	ld a, $1
-	ld [$ff82], a
+	ld [hVBlankOccurred], a
 	pop hl
 	pop de
 	pop bc
 	ret
 
-Func_7e0b5: ; 7e0b5 (1f:60b5)
+DelayFrame: ; 7e0b5 (1f:60b5)
 	xor a
-	ld [$ff82], a
+	ld [hVBlankOccurred], a
 	ei
 .asm_7e0b9
 	halt
-	ld a, [$ff82]
+	ld a, [hVBlankOccurred]
 	dec a
 	jr nz, .asm_7e0b9
-	ld [$ff82], a
+	ld [hVBlankOccurred], a
 	ret
 
 Func_7e0c2: ; 7e0c2 (1f:60c2)
 	push bc
 	ld b, a
 .asm_7e0c4
-	call Func_7e0b5
+	call DelayFrame
 	call Func_7e17c
 	or a
 	jr nz, .asm_7e0d0
@@ -24231,7 +24150,13 @@ SECTION "Bank 23", ROMX, BANK [$23]
 	dr $8c000, $90000
 
 SECTION "Bank 24", ROMX, BANK [$24]
-	dr $90000, $94000
+	dr $90000, $93b87
+
+Func_93b87:
+	dr $93b87, $93c0c
+
+Func_93c0c:
+	dr $93c0c, $94000
 
 SECTION "Bank 25", ROMX, BANK [$25]
 	dr $94000, $98000
@@ -24270,7 +24195,10 @@ SECTION "Bank 30", ROMX, BANK [$30]
 	dr $c0000, $c4000
 
 SECTION "Bank 31", ROMX, BANK [$31]
-	dr $c4000, $c8000
+	dr $c4000, $c7109
+
+Func_c7109:
+	dr $c7109, $c8000
 
 SECTION "Bank 32", ROMX, BANK [$32]
 	dr $c8000, $cc000
@@ -24314,13 +24242,25 @@ SECTION "Bank 3e", ROMX, BANK [$3e]
 
 SECTION "Bank 3f", ROMX, BANK [$3f]
 IF DEF(SUN)
-	dr $fc000, $fe102
+	dr $fc000, $fd213
+
+Func_fd213:
+	dr $fd213, $fd314
+
+Func_fd314:
+	dr $fd314, $fe102
 
 Func_fe102:
 	dr $fe102, $100000
 ENDC
 IF DEF(STAR)
-	dr $fc000, $fe100
+	dr $fc000, $fd211
+
+Func_fd213:
+	dr $fd211, $fd312
+
+Func_fd314:
+	dr $fd312, $fe100
 
 Func_fe102:
 	dr $fe100, $100000
