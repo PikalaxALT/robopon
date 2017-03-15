@@ -42,6 +42,14 @@ hlcoord EQUS "coord hl,"
 decoord EQUS "coord de,"
 bccoord EQUS "coord bc,"
 
+dwcoord: MACRO
+IF _NARG >= 3
+	dw \2 * SCREEN_WIDTH + \1 + \3
+ELSE
+	dw \2 * SCREEN_WIDTH + \1 + wTileMap
+ENDC
+ENDM
+
 aCoord: MACRO
 IF _NARG >= 3
 	ld a, [\2 * SCREEN_WIDTH + \1 + \3]

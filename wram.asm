@@ -9,8 +9,10 @@ wLCD:: ds $3 ; c200
 wc203:: ds $2 ; c203
 wJoyPressed:: ds $1 ; c205
 wJoyLast:: ds $1 ; c206
-wJoyHeld:: ds $2 ; c207
-wc209:: ds $3 ; c209
+wJoyHeld:: ds $1 ; c207
+wc208:: ds $1 ; c208
+wTextBlinkerFrameCounter:: ds $1 ; c209
+wFrameCounter:: ds $2 ; c20a
 wSCX:: ds $1 ; c20c
 wSCX2:: ds $1 ; c20d
 wSCY:: ds $1 ; c20e
@@ -24,7 +26,10 @@ wFarCallDestAddr:: ds $2 ; c21b
 wBGP:: ds $1 ; c21d
 wOBP0:: ds $1 ; c21e
 wOBP1:: ds $1 ; c21f
-	ds $8
+	ds $4
+wVBlankCallbackROMBank:: ds $1 ; c224
+wVBlankCallbackRAMBank:: ds $1 ; c225
+wVBlankCallbackAddress:: ds $2 ; c226
 wDecompressEndAddress:: ds $2 ; c228
 wDecompressLiteralCopySize:: ds $2 ; c22a
 wDecompresLiteralCopyOffsetHi:: ds $1 ; c22c
@@ -43,7 +48,9 @@ wVideoTransferQueue:: ; c239
 	video_transfer_queue wVideoTransferQueueEntry3 ; c243
 	video_transfer_queue wVideoTransferQueueEntry4 ; c248
 
-wc24d:: ds 3
+wc24d:: ds $1 ; c24d
+wBlinkerX:: ds $1 ; c24e
+wBlinkerY:: ds $1 ; c24f
 wBlinkerTile:: ds $1 ; c250
 wBlinkerOffTile:: ds $1 ; c251
 wStringDestX:: ds $1 ; c252
@@ -54,7 +61,12 @@ wKana:: ; c255
 ; ff: hiragana
 	ds $1
 
-	ds $a5
+	ds $94
+
+wVideoTransferRequestFlags:: ds $1 ; c2ea
+	ds $2
+wVideoTransferRequestBank:: ds $1 ; c2ed
+	ds $d
 wSystemType:: ; c2fb
 
 SECTION "OAM Buffer", WRAM0 [$c300]

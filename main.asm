@@ -591,7 +591,7 @@ FarCall:
 	ld b, $ff
 	ld hl, sp+$0
 	ld sp, wStackTop
-	jp Func_1d00
+	jp Crash
 
 .stack_okay
 	pop bc
@@ -642,14 +642,14 @@ Func_0451:
 
 Func_0465: ; 465 (0:0465)
 	push bc
-	ld a, [wc209]
+	ld a, [wTextBlinkerFrameCounter]
 	ld c, a
 .asm_046a
 	halt
 	nop
 	ld a, [wJoyHeld]
 	ld b, a
-	ld a, [wc209]
+	ld a, [wTextBlinkerFrameCounter]
 	cp c
 	jr z, .asm_046a
 	ld a, b
@@ -782,16 +782,26 @@ Func_058a:
 
 Data_059c:
 	db " PASSWORD INPUT", $0e, $0d, $01, $00
-	dr $5af, $607
-
-Data_0607:
-	dr $607, $65e
+	db " きゃらはﾞんはﾞーしﾞょん 5けﾞーむ", $0d, $01, $00
+	db " きすもん&はﾞけ", $0f, "ちゅ", $0e, "りれー", $0f, "ほか4", $0e, $0d, $01, $00
+	db " 15はﾟすﾞる&きゃのん", $0f, " ほか4こ", $0e, $0d, $01, $00
+	db " はﾞいなりーらんとﾞ", $0f, "&BJほか2こ", $0e, $0d, $01, $00
+	db " みにけﾞーむ", $0f, "かﾞそﾞういれかえ", $0e, "てﾞーた", $0d, $01, $00
+	db " GB KISS TOOLS", $0d, $01, $00
+	db "KISSMON "
+	db "CANNON  "
+	db "BINARY  "
+	db "GAMEDATA"
+	db "KISSTOOL"
 
 Data_065e:
-	dr $65e, $686
+	db "  めにゅー", $0f, "を せんたくして", $0e, $00
+	db " ", $00
+	db $0f, "START/Aを おしてくたﾞさい", $0e, $00
+	db $00
 
 Data_0686:
-	dr $686, $68f
+	db "--------", $00
 
 Func_068f: ; 68f (0:068f)
 	call Func_07a2
@@ -809,7 +819,7 @@ Func_068f: ; 68f (0:068f)
 	predef Func_7d905
 	ld hl, Data_059c
 	predef Func_7af96
-	ld hl, Data_0607
+	ld hl, $607
 	predef Func_7d905
 	ld hl, Data_0686
 	predef Func_7af96
@@ -886,7 +896,10 @@ BitIndexToMask: ; 739 (0:0739)
 	ret
 
 Data_0743:
-	dr $743, $76f
+	db " ", $00
+	db "はﾟすわーとﾞ", $0f, "を にゅうりょくして ", $0e, $00
+	db $0f, "STARTを おしてくたﾞさい  ", $0e, $00
+	db $00
 
 Func_076f:
 	ld de, $4000
@@ -1712,37 +1725,39 @@ VBlank:
 	ld a, [wc203]
 	ld h, a
 	bit 0, h
-	jr z, .asm_0e2b
+	jr z, .skip_vblank_transfer_request
 	push hl
-	ld a, [$c2ea]
+	ld a, [wVideoTransferRequestFlags]
 	bit 1, a
-	jr z, .asm_0e27
+	jr z, .no_bank_switch
 	ld a, [hROMBank]
 	push af
-	ld a, [$c2ed]
+	ld a, [wVideoTransferRequestBank]
 	call BankSwitch
-	call Func_11ce
+	call HandleVideoTransferRequest
 	pop af
 	call BankSwitch
 	pop hl
-	jr .asm_0e2b
+	jr .skip_vblank_transfer_request
 
-.asm_0e27
-	call Func_11ce
+.no_bank_switch
+	call HandleVideoTransferRequest
 	pop hl
-.asm_0e2b
+.skip_vblank_transfer_request
 	bit 6, h
-	jp z, Func_0f2d
+	jp z, .skip_bgmap_and_pals
 	res 6, l
 	push hl
 	ld a, [$c91c]
 	or a
-	jp z, Func_0ef1
+	jp z, .push_cgb_palettes
+	; push a metatile to the bgmap
+	; there are two queues
 	push bc
 	push de
 	ld a, [$c91c]
 	and $1
-	jp z, Func_0e92
+	jp z, .skip_bgmap_tile_push
 	ld a, [$c923]
 	ld l, a
 	ld a, [$c924]
@@ -1758,7 +1773,7 @@ VBlank:
 	ld a, [de]
 	ld [hli], a
 	inc de
-	ld bc, $1e
+	ld bc, BG_MAP_WIDTH - 2
 	add hl, bc
 	ld a, [de]
 	ld [hli], a
@@ -1769,7 +1784,7 @@ VBlank:
 	pop hl
 	ld a, [wSystemType]
 	cp $11
-	jp nz, Func_0e92
+	jp nz, .skip_bgmap_tile_push
 	ld a, [rVBK]
 	or $1
 	ld [rVBK], a
@@ -1783,7 +1798,7 @@ VBlank:
 	ld a, [de]
 	ld [hli], a
 	inc de
-	ld bc, $1e
+	ld bc, BG_MAP_WIDTH - 2
 	add hl, bc
 	ld a, [de]
 	ld [hli], a
@@ -1792,12 +1807,12 @@ VBlank:
 	ld [hli], a
 	inc de
 	ld a, [rVBK]
-	and $fe
+	and $ff ^ 1
 	ld [rVBK], a
-Func_0e92: ; e92 (0:0e92)
+.skip_bgmap_tile_push
 	ld a, [$c91c]
 	and $2
-	jp z, Func_0ee8
+	jp z, .skip_bgmap_tile_push2
 	ld a, [$c929]
 	ld l, a
 	ld a, [$c92a]
@@ -1813,7 +1828,7 @@ Func_0e92: ; e92 (0:0e92)
 	ld a, [de]
 	ld [hli], a
 	inc de
-	ld bc, $1e
+	ld bc, BG_MAP_WIDTH - 2
 	add hl, bc
 	ld a, [de]
 	ld [hli], a
@@ -1824,7 +1839,7 @@ Func_0e92: ; e92 (0:0e92)
 	pop hl
 	ld a, [wSystemType]
 	cp $11
-	jp nz, Func_0ee8
+	jp nz, .skip_bgmap_tile_push2
 	ld a, [rVBK]
 	or $1
 	ld [rVBK], a
@@ -1838,7 +1853,7 @@ Func_0e92: ; e92 (0:0e92)
 	ld a, [de]
 	ld [hli], a
 	inc de
-	ld bc, $1e
+	ld bc, BG_MAP_WIDTH - 2
 	add hl, bc
 	ld a, [de]
 	ld [hli], a
@@ -1847,108 +1862,84 @@ Func_0e92: ; e92 (0:0e92)
 	ld [hli], a
 	inc de
 	ld a, [rVBK]
-	and $fe
+	and $ff ^ 1
 	ld [rVBK], a
-Func_0ee8: ; ee8 (0:0ee8)
+.skip_bgmap_tile_push2
 	xor a
 	ld [$c91c], a
 	pop de
 	pop bc
-	jp Func_0f2c
+	jp .finished_bgmap_or_pals
 
-Func_0ef1: ; ef1 (0:0ef1)
+.push_cgb_palettes
 	push bc
 	ld hl, $c89c
 	ld a, $80
-	ld c, $68
+	ld c, rBGPI % $100
 	ld [$ff00+c], a
-	ld c, $6a
+	ld c, rOBPI % $100
 	ld [$ff00+c], a
 	ld b, $8
-	ld c, $69
-.asm_0f01
+	ld c, rBGPD % $100
+.bgpals
+rept 8
 	ld a, [hli]
 	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
+endr
 	dec b
-	jr nz, .asm_0f01
+	jr nz, .bgpals
 	ld b, $8
-	ld c, $6b
-.asm_0f18
+	ld c, rOBPD % $100
+.obpals
+rept 8
 	ld a, [hli]
 	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
-	ld a, [hli]
-	ld [$ff00+c], a
+endr
 	dec b
-	jr nz, .asm_0f18
+	jr nz, .obpals
 	pop bc
-Func_0f2c: ; f2c (0:0f2c)
+.finished_bgmap_or_pals
 	pop hl
-Func_0f2d: ; f2d (0:0f2d)
+.skip_bgmap_and_pals
 	bit 1, h
-	jr z, .asm_0f36
+	jr z, .skip_oam
 	res 1, l
 	call hPushOAM
-.asm_0f36
+.skip_oam
 	bit 2, h
-	jr z, .asm_0f47
+	jr z, .skip_push_lcdc
 	res 2, l
-.asm_0f3c
+.wait_ly
 	ld a, [rLY]
 	cp $90
-	jr z, .asm_0f3c
+	jr z, .wait_ly
 	ld a, [wLCDC]
 	ld [rLCDC], a
-.asm_0f47
+.skip_push_lcdc
 	bit 3, h
-	jr z, .asm_0f4e
-	call Func_120e
-.asm_0f4e
+	jr z, .skip_joypad
+	call VBlankReadJoypad
+.skip_joypad
 	bit 4, h
-	jr z, .asm_0f71
+	jr z, .skip_push_screen_coords
 	res 4, l
 	ld a, [wLCDC]
 	bit 3, a
-	jr nz, .asm_0f67
+	jr nz, .map_selected_9c00
 	ld a, [wSCX]
 	ld [rSCX], a
 	ld a, [wSCY]
 	ld [rSCY], a
-	jr .asm_0f71
+	jr .skip_push_screen_coords
 
-.asm_0f67
+.map_selected_9c00
 	ld a, [wSCX2]
 	ld [rSCX], a
 	ld a, [wSCY2]
 	ld [rSCY], a
-.asm_0f71
+.skip_push_screen_coords
 	bit 5, h
-	jr z, .asm_0f86
+	jr z, .skip_push_dmg_pals
 	res 5, l
 	ld a, [wBGP]
 	ld [rBGP], a
@@ -1956,9 +1947,9 @@ Func_0f2d: ; f2d (0:0f2d)
 	ld [rOBP0], a
 	ld a, [wOBP1]
 	ld [rOBP1], a
-.asm_0f86
+.skip_push_dmg_pals
 	bit 7, h
-	jr z, .asm_0fca
+	jr z, .skip_vblank_callback
 	push hl
 	push bc
 	push de
@@ -1973,15 +1964,15 @@ Func_0f2d: ; f2d (0:0f2d)
 	push af
 	ld a, [hROMBank]
 	push af
-	ld a, [$c225]
+	ld a, [wVBlankCallbackRAMBank]
 	call GetSRAMBank
-	ld a, [$c224]
+	ld a, [wVBlankCallbackROMBank]
 	call BankSwitch
 	ld hl, .Return
 	push hl
-	ld a, [$c226]
+	ld a, [wVBlankCallbackAddress]
 	ld l, a
-	ld a, [$c227]
+	ld a, [wVBlankCallbackAddress + 1]
 	ld h, a
 	push hl
 	ret
@@ -2001,14 +1992,14 @@ Func_0f2d: ; f2d (0:0f2d)
 	pop de
 	pop bc
 	pop hl
-.asm_0fca
+.skip_vblank_callback
 	ld a, [wc203]
 	and l
 	ld [wc203], a
-	ld [$c204], a
-	ld a, [wc209]
+	ld [wc203 + 1], a
+	ld a, [wTextBlinkerFrameCounter]
 	inc a
-	ld [wc209], a
+	ld [wTextBlinkerFrameCounter], a
 	pop hl
 	pop af
 	reti
@@ -2027,17 +2018,17 @@ Func_0fde:
 	ei
 	push bc
 	push de
-	ld a, [$c20a]
+	ld a, [wFrameCounter]
 	inc a
-	ld [$c20a], a
+	ld [wFrameCounter], a
 	jr nz, .asm_1004
-	ld a, [$c20b]
+	ld a, [wFrameCounter + 1]
 	inc a
-	ld [$c20b], a
+	ld [wFrameCounter + 1], a
 .asm_1004
 	call Func_1a94
 	call Func_2a49
-	ld a, [$c208]
+	ld a, [wc208]
 	or a
 	jr z, .asm_101a
 	inc a
@@ -2046,7 +2037,7 @@ Func_0fde:
 	ld [wJoyLast], a
 	ld a, $18
 .asm_101a
-	ld [$c208], a
+	ld [wc208], a
 	ld a, [$c2e8]
 	or a
 	jr z, .asm_103e
@@ -2068,7 +2059,7 @@ Func_0fde:
 	ld bc, $27f0
 	add hl, bc
 	bit 7, h
-	jr z, .asm_105f
+	jr z, .no_stack_overflow
 	ld hl, sp+$0
 	ld a, [wFarCallDestAddr]
 	ld e, a
@@ -2079,9 +2070,9 @@ Func_0fde:
 	ld b, $0
 	di
 	ld sp, wStackTop
-	jp Func_1d00
+	jp Crash
 
-.asm_105f
+.no_stack_overflow
 	pop de
 	pop bc
 	ld hl, rIE
@@ -2324,7 +2315,7 @@ Func_117e:
 	pop af
 	reti
 
-Func_11ce: ; 11ce (0:11ce)
+HandleVideoTransferRequest: ; 11ce (0:11ce)
 	push bc
 	push de
 	xor a
@@ -2379,7 +2370,7 @@ Func_11ce: ; 11ce (0:11ce)
 	pop bc
 	ret
 
-Func_120e: ; 120e (0:120e)
+VBlankReadJoypad: ; 120e (0:120e)
 	push bc
 	call ReadJoypad
 	ld a, [wJoyLast]
@@ -2439,7 +2430,7 @@ Decompress_ReadCBits: ; 124e (0:124e)
 	pop de
 	ret
 
-Func_1263: ; 1263 (0:1263)
+Decompress: ; 1263 (0:1263)
 	ld a, c
 	add e
 	ld [wDecompressEndAddress + 1], a
@@ -2673,7 +2664,7 @@ Func_138d:
 	pop de
 	push bc
 	push de
-	call Func_1263
+	call Decompress
 	pop hl
 	ld bc, $40
 	add hl, bc
@@ -2808,7 +2799,7 @@ Func_1480:
 	push af
 	ld a, [wFarCallDestBank]
 	call BankSwitch
-	call Func_1263
+	call Decompress
 	call WaitVideoTransfer
 	pop af
 	call BankSwitch
@@ -2916,7 +2907,7 @@ Func_1a1f:
 
 Func_1a70:
 	ld h, a
-	ld a, [$c2ea]
+	ld a, [wVideoTransferRequestFlags]
 	bit 0, a
 	jr z, .asm_1a7a
 	xor a
@@ -2945,15 +2936,15 @@ Func_1a90: ; 1a90 (0:1a90)
 
 Func_1a94: ; 1a94 (0:1a94)
 	ld a, [hROMBank]
-	ld [$c2ed], a
-	ld a, [$c2ea]
+	ld [wVideoTransferRequestBank], a
+	ld a, [wVideoTransferRequestFlags]
 	set 1, a
-	ld [$c2ea], a
+	ld [wVideoTransferRequestFlags], a
 	ld l, Func_70003 % $100
 	call Func_1a70
-	ld a, [$c2ea]
+	ld a, [wVideoTransferRequestFlags]
 	res 1, a
-	ld [$c2ea], a
+	ld [wVideoTransferRequestFlags], a
 	ret
 
 Func_1aaf: ; 1aaf (0:1aaf)
@@ -3290,23 +3281,23 @@ Func_1cbb:
 	set 2, [hl]
 	ret
 
-Func_1cc0:
+Func_1cc1:
 	ld hl, rIE
 	res 2, [hl]
 	ret
 
-Func_1cc5:
+Func_1cc7:
 	ld hl, rIE
 	set 3, [hl]
 	ret
 
-Func_1cca:
+Func_1ccd:
 	ld hl, rIE
 	res 3, [hl]
 	ret
 
 SECTION "1d00", HOME [$1d00]
-Func_1d00: ; 1d00 (0:1d00)
+Crash: ; 1d00 (0:1d00)
 	push de
 	push bc
 	push hl
@@ -3317,33 +3308,31 @@ Func_1d00: ; 1d00 (0:1d00)
 	ld a, [wc203]
 	or $11
 	ld [wc203], a
-Func_1d2c: ; 1d2c (0:1d2c)
+.wait
 	ld a, [wc203]
 	ld hl, $c204
 	cp [hl]
-	jp nz, Func_1d2c
+	jp nz, .wait
 	call Func_3aa8
 	ld de, Data_1d8d
 	ld hl, $1
 	call Func_230e
-.asm_1d40
 	ld de, Data_1d94
 	ld hl, $3
 	call Func_230e
 	ld e, $5
 	xor a
-	call Func_3a83
+	call WriteStringDestAddrToC261
 	pop hl
 	push hl
 	ld hl, Data_1da2
 	push hl
 	call PlaceString
-.asm_1d59
 	pop bc
 	pop bc
 	ld e, $7
 	xor a
-	call Func_3a83
+	call WriteStringDestAddrToC261
 	pop bc
 	push bc
 	ld hl, Data_1daa
@@ -3353,7 +3342,7 @@ Func_1d2c: ; 1d2c (0:1d2c)
 	pop bc
 	ld e, $9
 	xor a
-	call Func_3a83
+	call WriteStringDestAddrToC261
 	pop de
 	push de
 	ld hl, Data_1db0
@@ -3371,19 +3360,25 @@ Func_1d2c: ; 1d2c (0:1d2c)
 	jp @ - 1 ; better luck next time
 
 Data_1d8d: ; 1d8d
-	dr $1d8d, $1d94
+	db "<HIRA>あれ<KATA> ?", $00
 
 Data_1d94: ; 1d94
-	dr $1d94, $1da2
+	db "<HIRA>てﾞんけﾞんきってね<KATA>!", $00
 
 Data_1da2: ; 1da2
-	dr $1da2, $1daa
+	db "スタック:"
+	TX_SNUM
+	db $00
 
 Data_1daa: ; 1daa
-	dr $1daa, $1db0
+	db "ロム:"
+	TX_SNUM
+	db $00
 
 Data_1db0: ; 1db0
-	dr $1db0, $1db9
+	db "アトﾞレス:"
+	TX_SNUM
+	db $00
 
 Func_1db9:
 	ld a, [hSRAMBank]
@@ -3504,7 +3499,7 @@ Func_1ed8: ; 1ed8 (0:1ed8)
 	call BankSwitch
 	ld e, $0
 	xor a
-	call Func_3a83
+	call WriteStringDestAddrToC261
 	set_farcall_addrs_hli Func_79b3
 	ld a, $1
 	call FarCall
@@ -4011,7 +4006,7 @@ Func_225f: ; 225f (0:225f)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call Func_3a83
+	call WriteStringDestAddrToC261
 	call GetHLAtSPPlus8
 	push hl
 	ld hl, Data_2304
@@ -4053,7 +4048,7 @@ Func_2299: ; 2299 (0:2299)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call Func_3a83
+	call WriteStringDestAddrToC261
 	ld hl, sp+$0
 	ld a, [hl]
 	and $2
@@ -4086,7 +4081,7 @@ Func_22e8: ; 22e8 (0:22e8)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call Func_3a83
+	call WriteStringDestAddrToC261
 	call GetHLAtSPPlus8
 	push hl
 	ld hl, Data_230b
@@ -4126,7 +4121,7 @@ Func_230e: ; 230e (0:230e)
 	ld a, l
 	ld e, a
 	ld a, c
-	call Func_3a83
+	call WriteStringDestAddrToC261
 Func_231c: ; 231c (0:231c)
 	pop de
 	push de
@@ -4266,7 +4261,7 @@ Func_23bb: ; 23bb (0:23bb)
 	add hl, bc
 	pop de
 	ld bc, $eb
-	call Func_1263
+	call Decompress
 	pop de
 	ld l, e
 	ld h, $0
@@ -4332,7 +4327,7 @@ Func_241f:
 	add hl, bc
 	pop de
 	ld bc, $c0
-	call Func_1263
+	call Decompress
 	pop de
 	ld l, e
 	ld h, $0
@@ -4441,17 +4436,17 @@ Func_24e9: ; 24e9 (0:24e9)
 	ld a, l
 	and $f0
 	jp nz, Func_2504
-	ld a, [$c208]
+	ld a, [wc208]
 	or a
 	jp nz, Func_2504
 	ld a, $1
-	ld [$c208], a
+	ld [wc208], a
 Func_2504: ; 2504 (0:2504)
 	ld a, [wJoyPressed]
 	or a
 	jp nz, Func_250f
 	xor a
-	ld [$c208], a
+	ld [wc208], a
 Func_250f: ; 250f (0:250f)
 	xor a
 	ld [wJoyHeld], a
@@ -8532,7 +8527,7 @@ Func_3a36: ; 3a36 (0:3a36)
 	pop bc
 	ret
 
-Func_3a83: ; 3a83 (0:3a83)
+WriteStringDestAddrToC261: ; 3a83 (0:3a83)
 	ld [wStringDestX], a
 	ld a, e
 	ld [wStringDestY], a
@@ -8557,7 +8552,7 @@ Func_3a83: ; 3a83 (0:3a83)
 	ret
 
 Func_3aa8: ; 3aa8 (0:3aa8)
-	ld a, $8f
+	ld a, $8f ; blank tile
 	call Func_3aae
 	ret
 
@@ -8574,18 +8569,18 @@ Func_3aae: ; 3aae (0:3aae)
 	pop af
 	ld e, a
 	hlcoord 0, 0
-	ld bc, $168
+	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	call FillMemory
 	ld a, [wSystemType]
 	cp $11
-	jp nz, Func_3ae1
-	ld bc, $168
+	jp nz, .not_cgb
+	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	ld e, $0
 	hlcoord 0, 0, wAttrMap
 	call FillMemory
 	ld a, $2
 	ld [wOAM26VTile], a
-Func_3ae1: ; 3ae1 (0:3ae1)
+.not_cgb
 	ld l, $12
 	push hl
 	ld c, $14
@@ -8735,13 +8730,13 @@ Func_3bc5: ; 3bc5 (0:3bc5)
 	ld hl, sp+$0
 	ld a, [$c2cd]
 	or a
-	jp nz, Func_3bdb
+	jp nz, .zero
 	ld a, $1
-	jp Func_3bdc
+	jp .wait_transfer
 
-Func_3bdb: ; 3bdb (0:3bdb)
+.zero
 	xor a
-Func_3bdc: ; 3bdc (0:3bdc)
+.wait_transfer
 	ld [hl], a
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_62a3
@@ -8784,10 +8779,10 @@ Func_3bdc: ; 3bdc (0:3bdc)
 	call WaitVideoTransfer
 	ld a, [wSystemType]
 	cp $11
-	jp nz, Func_3c8c
+	jp nz, .skip_vbank1
 	ld a, [wOAM26VTile]
 	or a
-	jp z, Func_3c8c
+	jp z, .skip_vbank1
 	ld a, [rVBK]
 	or $1
 	ld [rVBK], a
@@ -8840,16 +8835,16 @@ Func_3bdc: ; 3bdc (0:3bdc)
 	ld a, [wOAM26VTile]
 	dec a
 	ld [wOAM26VTile], a
-Func_3c8c: ; 3c8c (0:3c8c)
+.skip_vbank1
 	ld a, [$c2cd]
 	or a
-	jp nz, Func_3c98
+	jp nz, .zero_2
 	ld a, $1
-	jp Func_3c99
+	jp .done
 
-Func_3c98: ; 3c98 (0:3c98)
+.zero_2
 	xor a
-Func_3c99: ; 3c99 (0:3c99)
+.done
 	call Func_3cb8
 	pop bc
 	pop bc
@@ -8881,7 +8876,7 @@ Func_3cb8: ; 3cb8 (0:3cb8)
 	or a
 	jp nz, Func_3cc8
 	ld a, [wLCDC]
-	and $f7
+	and $ff ^ $8
 	ld [wLCDC], a
 	jp Func_3cd0
 
@@ -9694,7 +9689,8 @@ Func_6392:
 	ld [de], a
 	ret
 
-Func_6483:
+ApplyBitMaskToDE:
+.loop
 	rr l
 	jr nc, .asm_648a
 	ld a, [de]
@@ -9706,7 +9702,7 @@ Func_6483:
 	dec de
 .asm_648f
 	dec c
-	jr nz, Func_6483
+	jr nz, .loop
 	ret
 
 Func_6493:
@@ -9725,206 +9721,206 @@ Func_6493:
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $2
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $2
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $2
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $2
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $2
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $2
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $2
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $2
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $7
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	push hl
 	ld l, [hl]
 	ld c, $8
-	call Func_6483
+	call ApplyBitMaskToDE
 	pop hl
 	dec hl
 	ret
@@ -9932,43 +9928,31 @@ Func_6493:
 Func_65db: ; 65db (1:65db)
 	ld a, [$c235]
 	or a
-	jr nz, .asm_660e
+	jr nz, .next
 	ld a, h
 	cp $89
-	jr z, .asm_660e
+	jr z, .next
 	push de
 	push hl
 	push bc
 	ld l, e
 	ld h, d
-.asm_65eb
+.loop
 	ld a, [hl]
+REPT 8
 	rrca
 	rl e
-	rrca
-	rl e
-	rrca
-	rl e
-	rrca
-	rl e
-	rrca
-	rl e
-	rrca
-	rl e
-	rrca
-	rl e
-	rrca
-	rl e
+ENDR
 	ld [hl], e
 	inc hl
 	dec bc
 	ld a, c
 	or b
-	jr nz, .asm_65eb
+	jr nz, .loop
 	pop bc
 	pop hl
 	pop de
-.asm_660e
+.next
 	push de
 	push hl
 	call RequestVideoData
@@ -10002,10 +9986,10 @@ Func_65db: ; 65db (1:65db)
 	pop hl
 	pop af
 	cp $89
-	jr z, .asm_667c
+	jr z, .quit
 	ld a, [$c235]
 	or a
-	jr nz, .asm_667c
+	jr nz, .quit
 	ld e, l
 	ld d, h
 	ld bc, $7
@@ -10017,7 +10001,7 @@ Func_65db: ; 65db (1:65db)
 	ld h, d
 	ld d, c
 	ld c, $8
-.asm_664e
+.loop2
 	push hl
 	push de
 	ld b, [hl]
@@ -10058,8 +10042,8 @@ Func_65db: ; 65db (1:65db)
 	adc $0
 	ld d, a
 	dec c
-	jr nz, .asm_664e
-.asm_667c
+	jr nz, .loop2
+.quit
 	ret
 
 Func_667d:
@@ -10086,7 +10070,7 @@ Func_667d:
 	inc c
 	ld a, [wFarCallSavedHL]
 	ld e, a
-	ld a, [$c219]
+	ld a, [wFarCallSavedHL + 1]
 	ld d, a
 .asm_66a3
 	push bc
@@ -10231,10 +10215,10 @@ Func_68fd:
 	ld [rSCX], a
 	ld a, [rLY]
 	ld c, a
-.asm_6909
+.wait_next_line
 	ld a, [rLY]
 	cp c
-	jr z, .asm_6909
+	jr z, .wait_next_line
 	ld c, a
 	cp e
 	jr c, .asm_691a
@@ -10261,7 +10245,7 @@ Func_68fd:
 	dec hl
 	ld a, h
 	or l
-	jr nz, .asm_6909
+	jr nz, .wait_next_line
 	xor a
 	ld [rSCX], a
 	ret
@@ -10297,20 +10281,20 @@ Func_6938:
 	ld [rSCX], a
 	jr .asm_693d
 
-Func_695f:
-	ld a, [wc209]
+BlinkTextCursor:
+	ld a, [wTextBlinkerFrameCounter]
 	and $7f
 	cp $1e
-	jp nc, Func_696a
+	jp nc, .toggle
 	ret
 
-Func_696a: ; 696a (1:696a)
+.toggle
 	ld a, [rSCX]
 	srl a
 	srl a
 	srl a
 	ld e, a
-	ld a, [$c24e]
+	ld a, [wBlinkerX]
 	add e
 	and $1f
 	ld e, a
@@ -10319,7 +10303,7 @@ Func_696a: ; 696a (1:696a)
 	srl a
 	srl a
 	ld l, a
-	ld a, [$c24f]
+	ld a, [wBlinkerY]
 	add l
 	and $1f
 	ld l, a
@@ -10342,7 +10326,7 @@ Func_696a: ; 696a (1:696a)
 	add hl, de
 	ld e, l
 	ld d, h
-	ld a, [wc209]
+	ld a, [wTextBlinkerFrameCounter]
 	bit 7, a
 	jr nz, .asm_69ad
 	ld a, $8f
@@ -10365,10 +10349,10 @@ Func_696a: ; 696a (1:696a)
 	ld [hli], a
 	pop af
 	ld [wBlinkerTile], a
-	ld a, [wc209]
+	ld a, [wTextBlinkerFrameCounter]
 	xor $80
 	and $80
-	ld [wc209], a
+	ld [wTextBlinkerFrameCounter], a
 	ret
 
 Func_69d0:
@@ -10626,8 +10610,792 @@ Func_6b37: ; 6b37 (1:6b37)
 	pop bc
 	ret
 
-Func_6b4b: ; 6b4b
-	dr $6b4b, $79b3
+Func_6b4b: ; 6b4b (1:6b4b)
+	ld bc, $2904
+.asm_6b4e
+	dec bc
+	ld a, c
+	or b
+	jr nz, .asm_6b4e
+	ret
+
+Func_6b54:
+	ret
+
+Func_6b55: ; 6b55 (1:6b55)
+	push de
+	pop hl
+	push hl
+	push hl
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $c9b8
+	add hl, de
+	pop de
+	ld bc, $23
+	call MemCopy
+	pop bc
+	ret
+
+Func_6b74: ; 6b74 (1:6b74)
+	push de
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $c9b8
+	add hl, de
+	push hl
+	call GetHLAtSPPlus4
+	pop de
+	ld bc, $23
+	call MemCopy
+	pop bc
+	ret
+
+Func_6b94:
+	push hl
+	add sp, -$24
+	ld l, e
+	push hl
+	ld a, d
+	push af
+	ld a, l
+	ld hl, sp+$4
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_6b55
+	pop af
+	cp $9
+	jp z, Func_6dd2
+	cp $8
+	jp z, Func_6d94
+	cp $7
+	jp z, Func_6d56
+	cp $6
+	jp z, Func_6d18
+	cp $5
+	jp z, Func_6cda
+	cp $4
+	jp z, Func_6c9c
+	cp $3
+	jp z, Func_6c91
+	cp $2
+	jp z, Func_6c53
+	cp $1
+	jp z, Func_6c15
+	or a
+	jp nz, Func_6e0d
+
+macro_6b94: MACRO
+	call GetHLAtSPPlusParam8
+	db $28
+	push hl
+	call GetHLAtSPPlusParam8
+	db \1 + 2
+	pop de
+	add hl, de
+	call WriteHLToSPPlusParam8
+	db \1
+	call GetHLAtSPPlusParam8
+	db \1
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, 999
+	call CompareHLtoDE
+	jp nc, .check_negative
+	ld hl, 999
+	call WriteHLToSPPlusParam8
+	db \1
+	jp .done
+
+.check_negative
+	call GetHLAtSPPlusParam8
+	db \1
+	inc h
+	dec h
+	bit 7, h
+	jr z, .done
+	ld hl, $0
+	call WriteHLToSPPlusParam8
+	db \1
+.done
+ENDM
+
+	macro_6b94 $10
+	jp Func_6e0d
+
+Func_6c15: ; 6c15 (1:6c15)
+	macro_6b94 $14
+	jp Func_6e0d
+
+Func_6c53: ; 6c53 (1:6c53)
+	macro_6b94 $18
+	jp Func_6e0d
+
+Func_6c91: ; 6c91 (1:6c91)
+	call GetHLAtSPPlusParam8
+	db $28
+	ld e, l
+	ld hl, [sp+$18]
+	ld [hl], e
+	jp Func_6e0d
+
+Func_6c9c: ; 6c9c (1:6c9c)
+	macro_6b94 $12
+	jp Func_6e0d
+
+Func_6cda: ; 6cda (1:6cda)
+	macro_6b94 $16
+	jp Func_6e0d
+
+Func_6d18: ; 6d18 (1:6d18)
+	macro_6b94 $1b
+	jp Func_6e0d
+
+Func_6d56: ; 6d56 (1:6d56)
+	macro_6b94 $1d
+	jp Func_6e0d
+
+Func_6d94: ; 6d94 (1:6d94)
+	macro_6b94 $1f
+	jp Func_6e0d
+
+Func_6dd2: ; 6dd2 (1:6dd2)
+	macro_6b94 $21
+Func_6e0d: ; 6e0d (1:6e0d)
+	pop hl
+	ld a, l
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_6b74
+	add sp, $26
+	ret
+
+Func_6e1b:
+	push hl
+	add sp, -$22
+	ld hl, sp+$22
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld e, l
+	ld a, h
+	push af
+	ld a, e
+	ld hl, sp+$2
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_6b55
+	pop af
+	cp $b
+	jp z, Func_6eaf
+	cp $9
+	jp z, Func_6ea8
+	cp $8
+	jp z, Func_6ea1
+	cp $7
+	jp z, Func_6e9a
+	cp $6
+	jp z, Func_6e93
+	cp $5
+	jp z, Func_6e8c
+	cp $4
+	jp z, Func_6e85
+	cp $3
+	jp z, Func_6e7d
+	cp $2
+	jp z, Func_6e76
+	cp $1
+	jp z, Func_6e6f
+	or a
+	jp nz, Func_6eb4
+	call GetHLAtSPPlusParam8
+	db $e
+	jp Func_6eb4
+
+Func_6e6f: ; 6e6f (1:6e6f)
+	call GetHLAtSPPlusParam8
+	db $12
+	jp Func_6eb4
+
+Func_6e76: ; 6e76 (1:6e76)
+	call GetHLAtSPPlusParam8
+	db $16
+	jp Func_6eb4
+
+Func_6e7d: ; 6e7d (1:6e7d)
+	ld hl, sp+$16
+	ld l, [hl]
+	ld h, $0
+	jp Func_6eb4
+
+Func_6e85: ; 6e85 (1:6e85)
+	call GetHLAtSPPlusParam8
+	db $10
+	jp Func_6eb4
+
+Func_6e8c: ; 6e8c (1:6e8c)
+	call GetHLAtSPPlusParam8
+	db $14
+	jp Func_6eb4
+
+Func_6e93: ; 6e93 (1:6e93)
+	call GetHLAtSPPlusParam8
+	db $19
+	jp Func_6eb4
+
+Func_6e9a: ; 6e9a (1:6e9a)
+	call GetHLAtSPPlusParam8
+	db $1b
+	jp Func_6eb4
+
+Func_6ea1: ; 6ea1 (1:6ea1)
+	call GetHLAtSPPlusParam8
+	db $1d
+	jp Func_6eb4
+
+Func_6ea8: ; 6ea8 (1:6ea8)
+	call GetHLAtSPPlusParam8
+	db $1f
+	jp Func_6eb4
+
+Func_6eaf: ; 6eaf (1:6eaf)
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+Func_6eb4: ; 6eb4 (1:6eb4)
+	push de
+	push hl
+	pop de
+	pop hl
+	add sp, $24
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Func_6ebf:
+	push hl
+	add sp, -$24
+	ld l, e
+	push hl
+	ld a, d
+	push af
+	ld a, l
+	ld hl, sp+$4
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_6b55
+	pop af
+	cp $9
+	jp z, Func_6f65
+	cp $8
+	jp z, Func_6f5a
+	cp $7
+	jp z, Func_6f4f
+	cp $6
+	jp z, Func_6f44
+	cp $5
+	jp z, Func_6f39
+	cp $4
+	jp z, Func_6f2e
+	cp $3
+	jp z, Func_6f23
+	cp $2
+	jp z, Func_6f18
+	cp $1
+	jp z, Func_6f0d
+	or a
+	jp nz, Func_6f6d
+.asm_6f00
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $10
+	jp Func_6f6d
+
+Func_6f0d: ; 6f0d (1:6f0d)
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $14
+	jp Func_6f6d
+
+Func_6f18: ; 6f18 (1:6f18)
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $18
+	jp Func_6f6d
+
+Func_6f23: ; 6f23 (1:6f23)
+	call GetHLAtSPPlusParam8
+	db $28
+	ld e, l
+	ld hl, sp+$18
+	ld [hl], e
+	jp Func_6f6d
+
+Func_6f2e: ; 6f2e (1:6f2e)
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $12
+	jp Func_6f6d
+
+Func_6f39: ; 6f39 (1:6f39)
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $16
+	jp Func_6f6d
+
+Func_6f44: ; 6f44 (1:6f44)
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $1b
+	jp Func_6f6d
+
+Func_6f4f: ; 6f4f (1:6f4f)
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $1d
+	jp Func_6f6d
+
+Func_6f5a: ; 6f5a (1:6f5a)
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $1f
+	jp Func_6f6d
+
+Func_6f65: ; 6f65 (1:6f65)
+	call GetHLAtSPPlusParam8
+	db $28
+	call WriteHLToSPPlusParam8
+	db $21
+Func_6f6d: ; 6f6d (1:6f6d)
+	pop hl
+	ld a, l
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_6b74
+	add sp, $26
+	ret
+
+Func_6f7b: ; 6f7b (1:6f7b)
+	push hl
+	push de
+	ld a, [rIE]
+	push af
+	call Func_1ca3
+	call Func_1cbb
+	pop af
+	pop de
+	push af
+	ld a, e
+	or d
+	jp z, Func_6f95
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_2887
+Func_6f95: ; 6f95 (1:6f95)
+	pop af
+	pop hl
+	push af
+	ld e, $5
+	call Func_2a3e
+	push de
+	push hl
+	pop de
+	pop hl
+	pop af
+	push de
+	push af
+	and $1
+	jp nz, Func_6fac
+	call Func_1ca9
+Func_6fac: ; 6fac (1:6fac)
+	pop af
+	and $4
+	jp nz, Func_6fb5
+	call Func_1cc1
+Func_6fb5: ; 6fb5 (1:6fb5)
+	pop hl
+	ret
+
+Func_6fb7: ; 6fb7 (1:6fb7)
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, Data_6fc1
+	jp Func_6f7b
+
+Data_6fc1:
+	db "<HIRA>つうしん まち<KATA>", $00
+
+Func_6fcb: ; 6fcb (1:6fcb)
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, Data_6fd5
+	jp Func_6f7b
+
+Data_6fd5:
+	db "<HIRA>つうしん <KATA>エラー", $00
+
+Func_6fe0:
+	push bc
+	ld e, $0
+	push de
+	ld hl, sp+$2
+	ld [hl], $0
+	ld a, [hSRAMBank]
+	ld l, a
+	push hl
+	xor a
+	ld [wOAM27VTile], a
+	ld a, $3
+	call GetSRAMBank
+	call Func_1ccd
+	ld hl, Func_1069
+	call WriteHalfWordTo
+	dw wSerial + 1
+	xor a
+	ld [wOAM07VTile], a
+	xor a
+.asm_7005
+	ld [wOAM06Attrs], a
+	ld [wOAM07XCoord], a
+	ld [rSC], a
+	xor a
+	ld [wOAM06XCoord], a
+	ld e, $5
+	ld hl, Data_71f0
+	call Func_2a3e
+	ld c, l
+	ld b, h
+	pop hl
+	pop de
+Func_701d: ; 701d (1:701d)
+	push hl
+	push bc
+	push de
+	call Func_1cc7
+	xor a
+	ld [wFrameCounter + 1], a
+	pop de
+Func_7028: ; 7028 (1:7028)
+	inc e
+	dec e
+	jp nz, Func_711e
+	ld a, [wFrameCounter + 1]
+	cp $2
+	jp c, Func_7038
+	jp Func_711e
+
+Func_7038: ; 7038 (1:7038)
+	ld hl, sp+$4
+	ld a, [hl]
+	or a
+	jp nz, Func_70bc
+	xor a
+	ld [wOAM06VTile], a
+	ld a, $dd
+	ld [wOAM06Attrs], a
+	ld a, $80
+	ld [wOAM07XCoord], a
+	ld a, [wTextBlinkerFrameCounter]
+	ld l, a
+Func_7051: ; 7051 (1:7051)
+	ld a, [wTextBlinkerFrameCounter]
+	xor l
+	and $2
+	jp nz, Func_7061
+	ld a, [wOAM06VTile]
+	or a
+	jp z, Func_7051
+Func_7061: ; 7061 (1:7061)
+	ld a, [wOAM06VTile]
+	or a
+	jp nz, Func_7090
+	push de
+	set_farcall_addrs_hli Func_dd67
+	ld a, $64
+	call FarCall
+	cp $46
+	jp nc, Func_708c
+	ld a, $fe
+	ld [wOAM06Attrs], a
+	ld a, $1
+	ld [wOAM07XCoord], a
+	ld hl, sp+$6
+	ld [hl], $1
+Func_708c: ; 708c (1:708c)
+	pop de
+	jp Func_70b9
+
+Func_7090: ; 7090 (1:7090)
+	xor a
+	ld [wOAM06VTile], a
+	ld a, [wTextBlinkerFrameCounter]
+	ld l, a
+Func_7098: ; 7098 (1:7098)
+	ld a, [wTextBlinkerFrameCounter]
+	xor l
+	and $2
+	jp nz, Func_70a8
+	ld a, [wOAM06VTile]
+	or a
+	jp z, Func_7098
+Func_70a8: ; 70a8 (1:70a8)
+	ld a, [wOAM07YCoord]
+	cp $fe
+	jp nz, Func_70b9
+	ld a, [wOAM06VTile]
+	or a
+	jp z, Func_70b9
+	ld e, $80
+Func_70b9: ; 70b9 (1:70b9)
+	jp Func_711b
+
+Func_70bc: ; 70bc (1:70bc)
+	push de
+	xor a
+	ld [wOAM06VTile], a
+	ld a, $fe
+	ld [wOAM06Attrs], a
+	ld a, $1
+	ld [wOAM07XCoord], a
+	ld a, $81
+	ld [rSC], a
+	ld l, $0
+Func_70d1: ; 70d1 (1:70d1)
+	ld a, l
+	cp $3
+	jp nc, Func_70fa
+Func_70d7: ; 70d7 (1:70d7)
+	ld a, [wOAM06VTile]
+	or a
+	jp z, Func_70d7
+	push hl
+	xor a
+	ld [wOAM06VTile], a
+	call Func_0465
+	ld a, $81
+	ld [rSC], a
+	pop hl
+	ld a, [wOAM07YCoord]
+	cp $dd
+	jp z, Func_70f6
+	jp Func_70fa
+
+Func_70f6: ; 70f6 (1:70f6)
+	inc l
+	jp Func_70d1
+
+Func_70fa: ; 70fa (1:70fa)
+	pop de
+	ld a, l
+	cp $3
+	jp c, Func_710e
+	ld a, [wOAM07YCoord]
+	cp $dd
+	jp nz, Func_710e
+	ld e, $81
+	jp Func_711b
+
+Func_710e: ; 710e (1:710e)
+	ld a, $dd
+	ld [wOAM06Attrs], a
+	xor a
+	ld [wOAM07XCoord], a
+	ld hl, sp+$4
+	ld [hl], $0
+Func_711b: ; 711b (1:711b)
+	jp Func_7028
+
+Func_711e: ; 711e (1:711e)
+	pop bc
+	pop hl
+	inc e
+	dec e
+	jp nz, Func_7161
+	push hl
+	xor a
+	ld [wOAM06VTile], a
+	xor a
+	ld [wOAM06Attrs], a
+	ld a, $1
+	ld [wOAM07XCoord], a
+	ld a, $81
+	ld [rSC], a
+Func_7137: ; 7137 (1:7137)
+	ld a, [wOAM06VTile]
+	or a
+	jp z, Func_7137
+	ld a, $81
+	ld [rSC], a
+	xor a
+	ld [wOAM06VTile], a
+Func_7146: ; 7146 (1:7146)
+	ld a, [wOAM06VTile]
+	or a
+	jp z, Func_7146
+	ld a, $1
+	ld [wOAM27VTile], a
+	ld l, c
+	ld h, b
+	call Func_2887
+	pop hl
+	ld a, l
+	call GetSRAMBank
+	ld a, $ff
+	jp Func_71ee
+
+Func_7161: ; 7161 (1:7161)
+	ld a, e
+	cp $81
+	jp nz, Func_71a7
+	push hl
+	push de
+	push bc
+	ld l, $0
+Func_716c: ; 716c (1:716c)
+	ld a, l
+	cp $f
+	jp nc, Func_718a
+Func_7172: ; 7172 (1:7172)
+	ld a, [wOAM06VTile]
+	or a
+	jp z, Func_7172
+	push hl
+	xor a
+	ld [wOAM06VTile], a
+	call Func_0465
+	ld a, $81
+	ld [rSC], a
+	pop hl
+	inc l
+	jp Func_716c
+
+Func_718a: ; 718a (1:718a)
+	pop bc
+	pop de
+	pop hl
+	ld a, [wOAM07YCoord]
+	cp $dd
+	jp z, Func_7198
+	jp Func_701d
+
+Func_7198: ; 7198 (1:7198)
+	push hl
+	ld a, $81
+	ld [wOAM06XCoord], a
+	ld l, c
+	ld h, b
+	call Func_2887
+	pop hl
+	jp Func_71e4
+
+Func_71a7: ; 71a7 (1:71a7)
+	push hl
+	push de
+	xor a
+	ld [wOAM06VTile], a
+	ld e, $0
+Func_71af: ; 71af (1:71af)
+	ld a, e
+.asm_71b0
+	cp $f
+	jp nc, Func_71c4
+	ld a, [wTextBlinkerFrameCounter]
+	ld l, a
+Func_71b9: ; 71b9 (1:71b9)
+	ld a, [wTextBlinkerFrameCounter]
+	cp l
+	jp z, Func_71b9
+	inc e
+	jp Func_71af
+
+Func_71c4: ; 71c4 (1:71c4)
+	pop de
+	pop hl
+	ld a, [wOAM07YCoord]
+	cp $fe
+	jp nz, Func_71d5
+	ld a, [wOAM06VTile]
+	or a
+	jp nz, Func_71d8
+Func_71d5: ; 71d5 (1:71d5)
+	jp Func_701d
+
+Func_71d8: ; 71d8 (1:71d8)
+	push hl
+	ld a, $80
+	ld [wOAM06XCoord], a
+	ld l, c
+	ld h, b
+	call Func_2887
+	pop hl
+Func_71e4: ; 71e4 (1:71e4)
+	ld a, l
+	call GetSRAMBank
+	ld a, $1
+	ld [wOAM27VTile], a
+	xor a
+Func_71ee: ; 71ee (1:71ee)
+	pop bc
+	ret
+
+Data_71f0:
+	db "<HIRA>せつそﾞくちゅう<KATA>", $00
+
+Func_71fb: ; 71fb (1:71fb)
+	dr $71fb, $79b3
 
 Func_79b3: ; 79b3
 	dr $79b3, $7a2b
@@ -10642,7 +11410,10 @@ SECTION "Bank 02", ROMX, BANK [$02]
 	dr $8000, $c000
 
 SECTION "Bank 03", ROMX, BANK [$03]
-	dr $c000, $e070
+	dr $c000, $dd67
+
+Func_dd67:
+	dr $dd67, $e070
 
 VBlank2::
 	dr $e070, $10000
@@ -13510,7 +14281,7 @@ Func_7a6c2: ; 7a6c2 (1e:66c2)
 	pop af
 	ld e, a
 	ld d, $30
-	ld hl, $7f6b
+	ld hl, Data_7bf6b
 	ld c, $4
 	predef Func_7bf2a
 	ret
@@ -15028,7 +15799,7 @@ Func_7af96: ; 7af96 (1e:6f96)
 	ret z
 	bit 6, e
 	jr nz, .asm_7afae
-	cp $20
+	cp " "
 	jr c, .asm_7afd1
 	ld e, a
 	ld d, [hl]
@@ -15280,7 +16051,7 @@ Func_7b0b5: ; 7b0b5 (1e:70b5)
 	call Func_7b124
 .asm_7b0e9
 	pop bc
-	ld sp, $e000
+	ld sp, wStackTop
 	push de
 	call Func_7b108
 	hlcoord 16, 4
