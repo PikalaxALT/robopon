@@ -644,14 +644,14 @@ Func_0465: ; 465 (0:0465)
 	push bc
 	ld a, [wTextBlinkerFrameCounter]
 	ld c, a
-.asm_046a
+.loop
 	halt
 	nop
 	ld a, [wJoyHeld]
 	ld b, a
 	ld a, [wTextBlinkerFrameCounter]
 	cp c
-	jr z, .asm_046a
+	jr z, .loop
 	ld a, b
 	push af
 	call Func_1b28
@@ -3483,19 +3483,19 @@ Func_1ebc: ; 1ebc (0:1ebc)
 Func_1ec2: ; 1ec2 (0:1ec2)
 	call Func_0465
 	xor a
-Func_1ec6: ; 1ec6 (0:1ec6)
+.loop
 	cp $6
-	jp nc, Func_1ed8
+	jp nc, .next
 	ld e, a
 	ld d, $0
 	ld hl, $c932
 	add hl, de
 	ld [hl], $ff
 	inc a
-	jp Func_1ec6
+	jp .loop
 
-Func_1ed8: ; 1ed8 (0:1ed8)
-	ld a, $5
+.next
+	ld a, BANK(Func_144fd)
 	call BankSwitch
 	ld e, $0
 	xor a
@@ -4672,7 +4672,7 @@ Func_2653: ; 2653 (0:2653)
 	push hl
 	ld hl, $0
 	push hl
-	call Func_34c7
+	call MultiplyLongsFromStack
 	ld hl, sp+$8
 	call PutLongFromStackToHL
 	pop bc
@@ -4704,7 +4704,7 @@ Func_2690: ; 2690 (0:2690)
 	push bc
 	ld hl, sp+$2
 	ld b, $1
-	call Func_33bd
+	call RightShiftLong
 	pop bc
 	dec c
 	jp Func_2690
@@ -4721,14 +4721,14 @@ Func_26a4: ; 26a4 (0:26a4)
 	push hl
 	ld hl, $ff
 	push hl
-	call Func_3343
+	call BitwiseAndLongsFromStack
 	pop bc
 	pop af
 	call GetHLAtSPPlus8
 	ld [hl], c
 	ld hl, sp+$2
 	ld b, $8
-	call Func_33bd
+	call RightShiftLong
 	call GetHLAtSPPlus8
 	dec hl
 	call WriteHLToSPPlus8
@@ -4768,17 +4768,17 @@ Func_26e6:
 	pop hl
 	pop de
 	push af
-Func_26f3: ; 26f3 (0:26f3)
+.loop
 	ld a, [de]
 	or a
-	jp z, Func_26ff
+	jp z, .done
 	ld a, [de]
 	inc de
 	ld [hl], a
 	inc hl
-	jp Func_26f3
+	jp .loop
 
-Func_26ff: ; 26ff (0:26ff)
+.done
 	pop af
 	push hl
 	push af
@@ -4837,7 +4837,7 @@ Func_2746: ; 2746 (0:2746)
 	push bc
 	push hl
 	ld hl, sp+$c
-	call Func_3553
+	call AddLongs
 	pop de
 	pop bc
 	jp Func_273f
@@ -4881,18 +4881,18 @@ Func_277c:
 	ld hl, sp+$4
 	call PutLongFromHLOnStack
 	ld hl, sp+$c
-	call Func_3553
-	ld hl, Bank_000f
+	call AddLongs
+	ld hl, 999995 >> 16
 	push hl
-	ld hl, $423b
+	ld hl, 999995 & $ffff
 	push hl
 	ld hl, sp+$c
 	call PutLongFromHLOnStack
 	call CompareStackLongs_Signed
 	jp nc, Func_27c0
-	ld hl, Bank_000f
+	ld hl, 999995 >> 16
 	push hl
-	ld hl, $423b
+	ld hl, 999995 & $ffff
 	push hl
 	ld hl, sp+$c
 	call PutLongFromStackToHL
@@ -5318,7 +5318,7 @@ Func_2a49: ; 2a49 (0:2a49)
 	ld hl, $1
 	push hl
 	ld hl, wOAM24XCoord
-	call Func_3553
+	call AddLongs
 	call PutLongFromHLOnStack
 	call CompareStackLongs_Signed
 	jp nc, Func_2a78
@@ -5546,7 +5546,7 @@ Func_2bc6: ; 2bc6 (0:2bc6)
 	add hl, sp
 	ld c, $8
 	ld b, e
-	call Func_31ea
+	call RightShiftArbitrarySize
 	ld de, $0
 .asm_2bd4
 	jp Func_2bea
@@ -5568,7 +5568,7 @@ Func_2bea: ; 2bea (0:2bea)
 	ld hl, $4
 	add hl, sp
 	ld bc, $509
-	call Func_31b4
+	call LeftShiftArbitrarySize
 	ld hl, Bank_000c
 	add hl, sp
 	push de
@@ -5715,7 +5715,7 @@ Func_2c9f: ; 2c9f (0:2c9f)
 	dec hl
 	ld c, $3
 	ld b, e
-	call Func_31ea
+	call RightShiftArbitrarySize
 	inc hl
 	inc hl
 	inc hl
@@ -5962,7 +5962,7 @@ Func_2dc3: ; 2dc3 (0:2dc3)
 	push hl
 	pop de
 	pop hl
-	call Func_31ea
+	call RightShiftArbitrarySize
 	pop af
 	and a
 	ret
@@ -6117,19 +6117,19 @@ Func_2ea7: ; 2ea7 (0:2ea7)
 	ld hl, $33
 	add hl, sp
 	ld bc, $109
-	call Func_31b4
+	call LeftShiftArbitrarySize
 	pop hl
 	pop bc
 	ld a, c
 	ld c, $10
 	or a
 	jp z, Func_2ec4
-	call Func_3230
+	call SubtractArbitrarySize
 	ccf
 	jp Func_2ec7
 
 Func_2ec4: ; 2ec4 (0:2ec4)
-	call Func_3245
+	call AddArbitrarySize
 Func_2ec7: ; 2ec7 (0:2ec7)
 	sbc a
 	ld c, a
@@ -6148,7 +6148,7 @@ Func_2ed6: ; 2ed6 (0:2ed6)
 	pop de
 	pop hl
 	ld bc, $110
-	call Func_31ea
+	call RightShiftArbitrarySize
 	push de
 	push hl
 	pop de
@@ -6231,7 +6231,7 @@ Func_2f4c: ; 2f4c (0:2f4c)
 	push af
 	push bc
 	ld bc, $110
-	call Func_31b4
+	call LeftShiftArbitrarySize
 	pop bc
 	ld a, [de]
 	and b
@@ -6249,12 +6249,12 @@ Func_2f4c: ; 2f4c (0:2f4c)
 	pop de
 	pop hl
 	ld bc, $8
-	call Func_3245
+	call AddArbitrarySize
 	pop de
 	jp nc, Func_2f78
 	push hl
 	add hl, bc
-	call Func_321e
+	call IncrementArbitrarySize
 	pop hl
 Func_2f78: ; 2f78 (0:2f78)
 	pop bc
@@ -6465,7 +6465,7 @@ Func_307b: ; 307b (0:307b)
 	ld c, $9
 	jp c, Func_3097
 	ld b, e
-	call Func_31ea
+	call RightShiftArbitrarySize
 	jp Func_30a2
 
 Func_3097: ; 3097 (0:3097)
@@ -6494,13 +6494,13 @@ Func_30a2: ; 30a2 (0:30a2)
 	ld c, $9
 	bit 7, h
 	jp nz, Func_30c2
-	call Func_3245
+	call AddArbitrarySize
 	pop de
 	call c, Func_30ec
 	jp Func_30db
 
 Func_30c2: ; 30c2 (0:30c2)
-	call Func_3230
+	call SubtractArbitrarySize
 	pop de
 	jp nc, Func_30db
 	push hl
@@ -6537,7 +6537,7 @@ Func_30ec: ; 30ec (0:30ec)
 	push hl
 	push de
 	ld b, $1
-	call Func_31ea
+	call RightShiftArbitrarySize
 	ld b, $0
 	add hl, bc
 	dec hl
@@ -6587,7 +6587,7 @@ Func_312c: ; 312c (0:312c)
 	add a
 	jp nc, Func_312c
 	pop hl
-	call Func_31b4
+	call LeftShiftArbitrarySize
 	push af
 	push de
 	push hl
@@ -6641,7 +6641,7 @@ Func_316a: ; 316a (0:316a)
 	rra
 	jp nc, Func_318d
 Func_317e: ; 317e (0:317e)
-	call Func_321e
+	call IncrementArbitrarySize
 	jp nz, Func_318d
 	add hl, bc
 	dec hl
@@ -6691,984 +6691,12 @@ Func_31a4: ; 31a4 (0:31a4)
 	pop hl
 	ret
 
-Func_31b4: ; 31b4 (0:31b4)
-	push hl
-	push de
-	push bc
-	ld e, b
-	ld b, $0
-Func_31ba: ; 31ba (0:31ba)
-	ld a, e
-	sub $8
-	jp c, Func_31d2
-	ld e, a
-	ld d, c
-	dec d
-	add hl, bc
-	dec hl
-Func_31c5: ; 31c5 (0:31c5)
-	dec hl
-	ld a, [hl]
-	inc hl
-	ld [hl], a
-	dec hl
-	dec d
-	jp nz, Func_31c5
-	ld [hl], b
-	jp Func_31ba
-
-Func_31d2: ; 31d2 (0:31d2)
-	inc e
-	jp Func_31e2
-
-Func_31d6: ; 31d6 (0:31d6)
-	push hl
-	ld d, c
-	and a
-Func_31d9: ; 31d9 (0:31d9)
-	ld a, [hl]
-	rla
-	ld [hl], a
-	inc hl
-	dec d
-	jp nz, Func_31d9
-	pop hl
-Func_31e2: ; 31e2 (0:31e2)
-	dec e
-	jp nz, Func_31d6
-	pop bc
-	pop de
-	pop hl
-	ret
-
-Func_31ea: ; 31ea (0:31ea)
-	push hl
-	push de
-	push bc
-	ld e, b
-	ld b, $0
-Func_31f0: ; 31f0 (0:31f0)
-	ld a, e
-	sub $8
-	jp c, Func_3208
-	ld e, a
-	push hl
-	ld d, c
-	dec d
-Func_31fa: ; 31fa (0:31fa)
-	inc hl
-	ld a, [hl]
-	dec hl
-	ld [hl], a
-	inc hl
-	dec d
-	jp nz, Func_31fa
-	ld [hl], b
-	pop hl
-	jp Func_31f0
-
-Func_3208: ; 3208 (0:3208)
-	inc e
-	jp Func_3216
-
-Func_320c: ; 320c (0:320c)
-	ld d, c
-	add hl, bc
-Func_320e: ; 320e (0:320e)
-	dec hl
-	ld a, [hl]
-	rra
-	ld [hl], a
-	dec d
-	jp nz, Func_320e
-Func_3216: ; 3216 (0:3216)
-	dec e
-	jp nz, Func_320c
-	pop bc
-	pop de
-	pop hl
-	ret
-
-Func_321e: ; 321e (0:321e)
-	push hl
-	push bc
-	inc c
-	jp Func_3229
-
-Func_3224: ; 3224 (0:3224)
-	inc [hl]
-	jp nz, Func_322d
-	inc hl
-Func_3229: ; 3229 (0:3229)
-	dec c
-	jp nz, Func_3224
-Func_322d: ; 322d (0:322d)
-	pop bc
-	pop hl
-	ret
-
-Func_3230: ; 3230 (0:3230)
-	push hl
-	push de
-	push bc
-	push de
-	push hl
-	pop de
-	pop hl
-	and a
-Func_3238: ; 3238 (0:3238)
-	ld a, [de]
-	sbc [hl]
-	ld [de], a
-	inc de
-	inc hl
-	dec c
-	jp nz, Func_3238
-	pop bc
-	pop de
-	pop hl
-	ret
-
-Func_3245: ; 3245 (0:3245)
-	push hl
-	push de
-	push bc
-	push de
-	push hl
-	pop de
-	pop hl
-	and a
-Func_324d: ; 324d (0:324d)
-	ld a, [de]
-	adc [hl]
-	ld [de], a
-	inc de
-	inc hl
-	dec c
-	jp nz, Func_324d
-	pop bc
-	pop de
-	pop hl
-	ret
-
-Func_325a:
-	pop hl
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $fff6
-	add hl, sp
-	ld sp, hl
-	ld c, $a
-Func_3266: ; 3266 (0:3266)
-	ld a, [de]
-	inc de
-	ld [hl], a
-	inc hl
-	dec c
-	jp nz, Func_3266
-	push de
-	push hl
-	pop de
-	pop hl
-	jp [hl]
-
-Func_3273:
-	pop bc
-	ld a, $5
-Func_3276: ; 3276 (0:3276)
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	dec a
-	jp nz, Func_3276
-	push bc
-	ld bc, $fff6
-	add hl, bc
-	ret
-
-Func_3285:
-	pop bc
-	ld a, $4
-Func_3288: ; 3288 (0:3288)
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	dec a
-	jp nz, Func_3288
-	push bc
-	ld bc, $fff8
-	add hl, bc
-	ret
-
-Func_3297:
-	ld bc, $8
-	ld a, $4
-	jp Func_32a4
-
-Func_329f:
-	ld bc, $a
-	ld a, $5
-Func_32a4: ; 32a4 (0:32a4)
-	add hl, bc
-	pop bc
-Func_32a6: ; 32a6 (0:32a6)
-	dec hl
-	ld d, [hl]
-	dec hl
-	ld e, [hl]
-	push de
-	dec a
-	jp nz, Func_32a6
-	push bc
-	ret
+INCLUDE "home/math/longlong.asm"
 
 Data_32b1:
 	dr $32b1, $32d1
 
-PutLongFromStackToHL: ; 32d1 (0:32d1)
-	pop bc
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	dec hl
-	dec hl
-	dec hl
-	push bc
-	ret
-
-PutLongFromHLOnStack: ; 32e0 (0:32e0)
-	pop bc
-	inc hl
-	inc hl
-	inc hl
-	ld d, [hl]
-	dec hl
-	ld e, [hl]
-	push de
-	dec hl
-	ld d, [hl]
-	dec hl
-	ld e, [hl]
-	push de
-	push bc
-	ret
-
-Func_32ef:
-	ld hl, $6
-	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $2
-	add hl, sp
-	ld a, [de]
-	xor [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	xor [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	xor [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	xor [hl]
-	ld [de], a
-	dec de
-	dec de
-	dec de
-	push de
-	push hl
-	pop de
-	pop hl
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-Func_3319:
-	ld hl, $6
-	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $2
-	add hl, sp
-	ld a, [de]
-	or [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	or [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	or [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	or [hl]
-	ld [de], a
-	dec de
-	dec de
-	dec de
-	push de
-	push hl
-	pop de
-	pop hl
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-Func_3343: ; 3343 (0:3343)
-	ld hl, $6
-	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $2
-	add hl, sp
-	ld a, [de]
-	and [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	and [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	and [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	and [hl]
-	ld [de], a
-	dec de
-	dec de
-	dec de
-	push de
-	push hl
-	pop de
-	pop hl
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-Func_336d:
-	ld hl, $2
-	add hl, sp
-	ld a, [hl]
-	cpl
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	cpl
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	cpl
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	cpl
-	ld [hl], a
-	ret
-
-Func_3381:
-	ld hl, $2
-	add hl, sp
-	ld a, b
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push hl
-	jp Func_3396
-
-Func_3391: ; 3391 (0:3391)
-	ld d, e
-	ld e, b
-	ld b, c
-	ld c, $0
-Func_3396: ; 3396 (0:3396)
-	ld l, a
-	sub $8
-	jp nc, Func_3391
-	inc l
-	jp Func_33ac
-
-Func_33a0: ; 33a0 (0:33a0)
-	ld a, c
-	add a
-	ld c, a
-	ld a, b
-	rla
-	ld b, a
-	ld a, e
-	rla
-	ld e, a
-	ld a, d
-	rla
-	ld d, a
-Func_33ac: ; 33ac (0:33ac)
-	dec l
-	jp nz, Func_33a0
-	pop hl
-	ld [hl], d
-	dec hl
-	ld [hl], e
-	dec hl
-	ld [hl], b
-	dec hl
-	ld [hl], c
-	ret
-
-Func_33b9:
-	ld hl, $2
-	add hl, sp
-Func_33bd: ; 33bd (0:33bd)
-	ld a, b
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push hl
-	jp .handleLoop
-
-.loop
-	ld c, b
-	ld b, e
-	ld e, d
-	ld d, $0
-.handleLoop
-	ld l, a
-	sub $8
-	jp nc, .loop
-	inc l
-	jp .next
-
-.loop2
-	and a
-	ld a, d
-	rra
-	ld d, a
-	ld a, e
-	rra
-	ld e, a
-	ld a, b
-	rra
-	ld b, a
-	ld a, c
-	rra
-	ld c, a
-.next
-	dec l
-	jp nz, .loop2
-	pop hl
-	ld [hl], d
-	dec hl
-	ld [hl], e
-	dec hl
-	ld [hl], b
-	dec hl
-	ld [hl], c
-	ret
-
-StackDivideLongSigned_KeepRemainder: ; 33f2 (0:33f2)
-	ld hl, $6
-	add hl, sp
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	pop hl
-	or a
-	push af
-	push hl
-	call AbsoluteValueLong
-	ld hl, $9
-	add hl, sp
-	ld a, [hl]
-	dec hl
-	dec hl
-	dec hl
-	or a
-	call AbsoluteValueLong
-	pop hl
-	call DivideLong
-	push hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	pop hl
-	pop af
-	call AbsoluteValueLong
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-StackDivideLongSigned: ; 3424 (0:3424)
-	ld hl, $6
-	add hl, sp
-DivideLongSigned: ; 3428 (0:3428)
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	pop hl
-	or a
-	push af
-	call AbsoluteValueLong
-	pop af
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $5
-	add hl, sp
-	xor [hl]
-	push af
-	ld a, [hl]
-	dec hl
-	dec hl
-	dec hl
-	or a
-	call AbsoluteValueLong
-	push de
-	push hl
-	pop de
-	pop hl
-	call DivideLong
-	pop af
-	call AbsoluteValueLong
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-StackDivideLong_KeepRemainder:
-	ld hl, $6
-	add hl, sp
-	push af
-	call DivideLong
-	pop af
-	push hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	pop hl
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-DivideLong: ; 346d (0:346d)
-; remainder bcde
-	ld bc, $0
-	ld d, b
-	ld e, b
-	ld a, $20
-.loop: ; 3474 (0:3474)
-	push af
-	push hl
-	ld a, [hl]
-	add a
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	rla
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	rla
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	rla
-	ld [hl], a
-	ld a, e
-	rla
-	ld e, a
-	ld a, d
-	rla
-	ld d, a
-	ld a, c
-	rla
-	ld c, a
-	ld a, b
-	rla
-	ld b, a
-	push de
-	push bc
-	ld hl, $e
-	add hl, sp
-	ld a, e
-	sub [hl]
-	ld e, a
-	inc hl
-	ld a, d
-	sbc [hl]
-	ld d, a
-	inc hl
-	ld a, c
-	sbc [hl]
-	ld c, a
-	inc hl
-	ld a, b
-	sbc [hl]
-	ld b, a
-	jp nc, ._nc
-	pop bc
-	pop de
-	pop hl
-	jp .next
-
-._nc
-	pop af
-	pop af
-	pop hl
-	inc [hl]
-.next
-	pop af
-	dec a
-	jp nz, .loop
-	ret
-
-Func_34b9:
-	ld hl, $6
-	add hl, sp
-	push af
-	call DivideLong
-	pop af
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-Func_34c7: ; 34c7 (0:34c7)
-	ld hl, $6
-	add hl, sp
-	ld bc, $0
-	ld d, b
-	ld e, b
-	push hl
-	jp Func_3508
-
-Func_34d4: ; 34d4 (0:34d4)
-	ld a, [hl]
-	rra
-	ld [hl], a
-	dec hl
-	ld a, [hl]
-	rra
-	ld [hl], a
-	dec hl
-	ld a, [hl]
-	rra
-	ld [hl], a
-	dec hl
-	ld a, [hl]
-	rra
-	ld [hl], a
-	jp nc, Func_34f7
-	pop hl
-	push hl
-	ld a, e
-	add [hl]
-	ld e, a
-	inc hl
-	ld a, d
-	adc [hl]
-	ld d, a
-	inc hl
-	ld a, c
-	adc [hl]
-	ld c, a
-	inc hl
-	ld a, b
-	adc [hl]
-	ld b, a
-Func_34f7: ; 34f7 (0:34f7)
-	pop hl
-	push hl
-	ld a, [hl]
-	add a
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	rla
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	rla
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	rla
-	ld [hl], a
-Func_3508: ; 3508 (0:3508)
-	ld hl, $4
-	add hl, sp
-	ld a, [hl]
-	inc hl
-	or [hl]
-	inc hl
-	or [hl]
-	inc hl
-	or [hl]
-	jp nz, Func_34d4
-	pop hl
-	push hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	pop hl
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-Func_3525:
-	ld hl, $6
-	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $2
-	add hl, sp
-	ld a, [de]
-	sub [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	sbc [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	sbc [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	sbc [hl]
-	ld [de], a
-	dec de
-	dec de
-	dec de
-	push de
-	push hl
-	pop de
-	pop hl
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-Func_354f:
-	ld hl, $6
-	add hl, sp
-Func_3553: ; 3553 (0:3553)
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $2
-	add hl, sp
-	ld a, [de]
-	add [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	adc [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	adc [hl]
-	ld [de], a
-	inc de
-	inc hl
-	ld a, [de]
-	adc [hl]
-	ld [de], a
-	dec de
-	dec de
-	dec de
-	push de
-	push hl
-	pop de
-	pop hl
-	pop bc
-	pop af
-	pop af
-	push bc
-	ret
-
-CompareStackLongs_Signed: ; 3579 (0:3579)
-; compare de=[sp+9] with hl=[sp+5]
-; return c if de < hl
-; takes into account sign of each
-	ld hl, $9
-	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $5
-	add hl, sp
-	ld a, [de]
-	xor [hl]
-	bit 7, a
-	jp z, compare_stack_longs
-	push de
-	push hl
-	pop de
-	pop hl
-	jp compare_stack_longs
-
-CompareStackLongs: ; 3593 (0:3593)
-; compare de=[sp+9] with hl=[sp+5]
-; return c if de < hl
-	ld hl, $9
-	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $5
-	add hl, sp
-compare_stack_longs
-	call CompareLong
-	pop de
-	push af
-	ld hl, $a
-	add hl, sp
-	pop af
-	ld sp, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	jp [hl]
-
-CompareLong: ; 35af (0:35af)
-	ld a, [de]
-	cp [hl]
-	ret nz
-	dec de
-	dec hl
-	ld a, [de]
-	cp [hl]
-	ret nz
-	dec de
-	dec hl
-	ld a, [de]
-	cp [hl]
-	ret nz
-	dec de
-	dec hl
-	ld a, [de]
-	cp [hl]
-	ret
-
-AbsoluteValueLong: ; 35c1 (0:35c1)
-	push af
-	and $80
-	jp nz, .negate_long
-	pop af
-	ret
-
-.negate_long
-	pop af
-	call NegateLongHL
-	ret
-
-NegateLongOnStack: ; 35ce (0:35ce)
-; take negative of long
-	ld hl, $2
-	add hl, sp
-NegateLongHL: ; 35d2 (0:35d2)
-	xor a
-	sub [hl]
-	ld [hl], a
-	inc hl
-	ld a, $0
-	sbc [hl]
-	ld [hl], a
-	inc hl
-	ld a, $0
-	sbc [hl]
-	ld [hl], a
-	inc hl
-	ld a, $0
-	sbc [hl]
-	ld [hl], a
-	dec hl
-	dec hl
-	dec hl
-	ret
+INCLUDE "home/math/long.asm"
 
 MemCopy: ; 35e8 (0:35e8)
 ; retains the start pointer
@@ -7690,687 +6718,14 @@ MemCopy: ; 35e8 (0:35e8)
 	pop hl
 	ret
 
-CompareHLtoBC: ; 35f8 (0:35f8)
-; signed
-;     z: hl = bc
-;     c: hl < bc
-; nz,nc: hl > bc
-	ld a, h
-	xor b
-	bit 7, a
-	jp z, .same_sign
-	ld a, b
-	cp h
-	ret
-
-.same_sign
-	ld a, h
-	cp b
-	ret nz
-	ld a, l
-	cp c
-	ret
-
-CompareHLtoDE: ; 3608 (0:3608)
-; signed
-;     z: hl = de
-;     c: hl < de
-; nz,nc: hl > de
-	ld a, h
-	xor d
-	bit 7, a
-	jp z, .same_sign
-	ld a, d
-	cp h
-	ret
-
-.same_sign
-	ld a, h
-	cp d
-	ret nz
-	ld a, l
-	cp e
-	ret
-
-RightShiftA:
-	inc b
-.loop
-	dec b
-	ret z
-	and a
-	rra
-	jp .loop
-
-RightShiftPointer:
-	push de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call RightShiftHL
-	push de
-	push hl
-	pop de
-	pop hl
-	ld [hl], d
-	dec hl
-	ld [hl], e
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	ret
-
-RightShiftHL: ; 3638 (0:3638)
-; hl >>= b
-	inc b
-.loop
-	dec b
-	ret z
-	and a
-	ld a, h
-	rra
-	ld h, a
-	ld a, l
-	rra
-	ld l, a
-	jp .loop
-
-LeftShiftA:
-; a <<= b
-	inc b
-.loop
-	dec b
-	ret z
-	add a
-	jp .loop
-
-LeftShiftPointer:
-	push de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call LeftShiftHL
-	push de
-	push hl
-	pop de
-	pop hl
-	ld [hl], d
-	dec hl
-	ld [hl], e
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	ret
-
-LeftShiftHL: ; 3664 (0:3664)
-; hl >>= b
-	inc b
-.loop
-	dec b
-	ret z
-	add hl, hl
-	jp .loop
-
-ModuloPointerByDESigned:
-	push hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call DivideHLByDESigned
-	pop hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ret
-
-ModuloPointerByDE:
-	push hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call DivideHLbyDE
-	pop hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ret
-
-DividePointerByDESigned:
-	push hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call DivideHLByDESigned
-	push de
-	push hl
-	pop de
-	pop hl
-	pop hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-DividePointerByDE:
-	push hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call DivideHLbyDE
-	push de
-	push hl
-	pop de
-	pop hl
-	pop hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-DivideAbyB: ; 36af (0:36af)
-	push hl
-	ld l, a
-	ld h, $0
-	ld c, $8
-.loop
-	add hl, hl
-	ld a, h
-	cp b
-	jp c, .next
-	sub b
-	inc l
-	ld h, a
-.next
-	dec c
-	jp nz, .loop
-	ld a, l
-	ld b, h
-	pop hl
-	ret
-
-DivideHLByDESigned: ; 36c6 (0:36c6)
-	ld a, h
-	or a
-	push af
-	xor d
-	push af
-	call .AbsoluteValueHL
-	push de
-	push hl
-	pop de
-	pop hl
-	call .AbsoluteValueHL
-	push de
-	push hl
-	pop de
-	pop hl
-	call DivideHLbyDE
-	pop af
-	call .CorrectSignOfHL
-	pop af
-	push de
-	push hl
-	pop de
-	pop hl
-	call .CorrectSignOfHL
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-.CorrectSignOfHL
-	push af
-	and $80
-	jp nz, .NegativeRemainder
-	pop af
-	ret
-
-.NegativeRemainder
-	pop af
-	call NegativeHL
-	ret
-
-.AbsoluteValueHL: ; 36fa (0:36fa)
-	ld a, h
-	and $80
-	ret z
-NegativeHL:
-	dec hl
-	ld a, l
-	cpl
-	ld l, a
-	ld a, h
-	cpl
-	ld h, a
-	ret
-
-DivideHLbyDE: ; 3706 (0:3706)
-; returns quotient hl and remainder de
-	ld b, d
-	ld c, e
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $0
-	ld a, $10
-.loop
-	push af
-	add hl, hl
-	xor a
-	push de
-	push hl
-	pop de
-	pop hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	adc l
-	sub c
-	ld l, a
-	ld a, h
-	sbc b
-	ld h, a
-	inc e
-	jp nc, .next
-	add hl, bc
-	dec e
-.next
-	pop af
-	dec a
-	jp nz, .loop
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-MultiplyAbyB:
-; a *= b
-	push hl
-	ld h, a
-	xor a
-	ld c, $8
-.loop
-	add a
-	add hl, hl
-	jp nc, .next
-	add b
-.next
-	dec c
-	jp nz, .loop
-	pop hl
-	ret
-
-MultiplyPointerByDE:
-; Store [hl] * de at hl
-	push hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call MultiplyHLbyDE
-	pop de
-	push de
-	push hl
-	pop de
-	pop hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-MultiplyHLbyDE: ; 3759 (0:3759)
-; hl *= de
-	ld b, h
-	ld c, l
-	ld hl, $0
-	ld a, $10
-.loop
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	jp nc, .next
-	add hl, bc
-.next
-	dec a
-	jp nz, .loop
-	ret
-
-WriteHLToSPPlus10: ; 3773 (0:3773)
-	ld de, $a
-	jp WriteHLToSPPlusDE
-
-WriteHLToSPPlus9:
-	ld de, $9
-	jp WriteHLToSPPlusDE
-
-WriteHLToSPPlus8: ; 377f (0:377f)
-	ld de, $8
-	jp WriteHLToSPPlusDE
-
-WriteHLToSPPlus7:
-	ld de, $7
-	jp WriteHLToSPPlusDE
-
-WriteHLToSPPlus6: ; 378b (0:378b)
-	ld de, $6
-	jp WriteHLToSPPlusDE
-
-WriteHLToSPPlus5: ; 3791 (0:3791)
-	ld de, $5
-	jp WriteHLToSPPlusDE
-
-WriteHLToSPPlus4: ; 3797 (0:3797)
-	ld de, $4
-	jp WriteHLToSPPlusDE
-
-WriteHLToSPPlus3:
-	ld de, $3
-	jp WriteHLToSPPlusDE
-
-WriteHLToSPPlusParam16:
-	push af
-	push de
-	push hl
-	; Exchange the return pointer with what was previously hl
-	ld hl, sp+$6
-	pop de
-	ld a, [hl]
-	ld [hl], e
-	ld e, a
-	inc hl
-	ld a, [hl]
-	ld [hl], d
-	ld h, a
-	ld l, e
-	pop de
-	pop af
-	; Read the short from the return pointer
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-	push af
-	push de
-	push hl
-	; Exchange the previous value of hl with the return pointer
-	ld hl, sp+$6
-	pop de
-	ld a, [hl]
-	ld [hl], e
-	ld e, a
-	inc hl
-	ld a, [hl]
-	ld [hl], d
-	ld h, a
-	ld l, e
-	pop de
-	pop af
-WriteHLToSPPlusDE: ; 37c7 (0:37c7)
-	; write the previous value of hl at sp + param
-	push de
-	push hl
-	pop de
-	pop hl
-	add hl, sp
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-WriteHLToSPPlusParam8: ; 37d4 (0:37d4)
-	push af
-	push de
-	push hl
-	; Exchange the return pointer with what was previously hl
-	ld hl, sp+$6
-	pop de
-	ld a, [hl]
-	ld [hl], e
-	ld e, a
-	inc hl
-	ld a, [hl]
-	ld [hl], d
-	ld h, a
-	ld l, e
-	pop de
-	pop af
-	; Read the byte from the return pointer
-	ld e, [hl]
-	inc hl
-	ld d, $0
-	push af
-	push de
-	push hl
-	; Exchange the previous value of hl with the return pointer
-	ld hl, sp+$6
-	pop de
-	ld a, [hl]
-	ld [hl], e
-	ld e, a
-	inc hl
-	ld a, [hl]
-	ld [hl], d
-	ld h, a
-	ld l, e
-	pop de
-	pop af
-	; write the previous value of hl at sp + param
-	push de
-	push hl
-	pop de
-	pop hl
-	add hl, sp
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-GetHLAtSPPlus10: ; 3805 (0:3805)
-	ld hl, $a
-	jp GetHLAtSPPlusHL
-
-GetHLAtSPPlus9:
-	ld hl, $9
-	jp GetHLAtSPPlusHL
-
-GetHLAtSPPlus8: ; 3811 (0:3811)
-	ld hl, $8
-	jp GetHLAtSPPlusHL
-
-GetHLAtSPPlus7:
-	ld hl, $7
-	jp GetHLAtSPPlusHL
-
-GetHLAtSPPlus6: ; 381d (0:381d)
-	ld hl, $6
-	jp GetHLAtSPPlusHL
-
-GetHLAtSPPlus5: ; 3823 (0:3823)
-	ld hl, $5
-	jp GetHLAtSPPlusHL
-
-GetHLAtSPPlus4: ; 3829 (0:3829)
-	ld hl, $4
-	jp GetHLAtSPPlusHL
-
-GetHLAtSPPlus3:
-	ld hl, $3
-	jp GetHLAtSPPlusHL
-
-GetHLAtSPPlusParam16:
-	pop hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-	push hl
-	push de
-	push hl
-	pop de
-	pop hl
-GetHLAtSPPlusHL: ; 383f (0:383f)
-	add hl, sp
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-GetHLAtSPPlusParam8: ; 3848 (0:3848)
-	pop hl
-	ld e, [hl]
-	inc hl
-	push hl
-	ld l, e
-	ld h, $0
-	add hl, sp
-	ld e, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, e
-	ret
-
-WriteHalfWordTo: ; 3855 (0:3855)
-; s16 *dest
-; s16 hl
-; preserves registers
-	push af
-	push bc
-	push de
-	push hl
-	; get the return pointer
-	ld hl, sp+$8
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	; read the address there
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-	; advance the return pointer
-	ld c, l
-	ld b, h
-	ld hl, sp+$8
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	; store hl at the address
-	ld l, e
-	ld h, d
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ld l, e
-	ld h, d
-	pop de
-	pop bc
-	pop af
-	ret
-
-ReadHalfWordAt: ; 3875 (0:3875)
-; s16 *dest
-; preserves registers except hl
-	push af
-	push bc
-	push de
-	ld hl, sp+$6
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-	ld c, l
-	ld b, h
-	ld hl, sp+$6
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld l, e
-	ld h, d
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	pop de
-	pop bc
-	pop af
-	ret
+INCLUDE "home/math/char_short.asm"
+INCLUDE "home/stack_rw.asm"
 
 Func_3891:
 	ret
 
 CharacterMapping: ; 3892 (0:3892)
-	;    0    1    2    3    4    5    6    7    8    9    a    b    c    d    e    f
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 ; 0
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00 ; 1
-	db $8f, $7b, $00, $8e, $00, $00, $00, $00, $00, $00, $7f, $00, $00, $14, $d6, $7d ; 2
-	db $00, $01, $02, $03, $04, $05, $06, $07, $08, $09, $7e, $00, $00, $00, $00, $7c ; 3
-	db $00, $d3, $d5, $ce, $00, $99, $d8, $8d, $96, $00, $00, $dc, $dd, $d4, $d7, $cd ; 4
-	db $97, $00, $d2, $00, $00, $cf, $98, $00, $00, $00, $00, $00, $00, $00, $8a, $db ; 5
-	db $cc, $d1, $da, $d0, $00, $00, $00, $fa, $fb, $fc, $fd, $fe, $00, $00, $00, $00 ; 6
-	db $e5, $00, $00, $00, $d9, $00, $00, $00, $00, $00, $00, $00, $00, $7d, $be, $00 ; 7
-	db $80, $81, $82, $83, $84, $85, $86, $87, $88, $89, $8a, $8b, $8c, $8d, $8e, $8f ; 8
-	db $90, $91, $92, $93, $94, $95, $96, $97, $98, $99, $9a, $00, $00, $00, $00, $00 ; 9
-	db $00, $93, $00, $00, $00, $cc, $44, $45, $46, $47, $48, $49, $4a, $4b, $4c, $4d ; a
-	db $14, $4e, $4f, $50, $51, $52, $53, $54, $55, $56, $57, $58, $59, $5a, $5b, $5c ; b
-	db $5d, $5e, $5f, $60, $61, $62, $63, $64, $65, $66, $67, $68, $69, $6a, $6b, $6c ; c
-	db $6d, $6e, $6f, $70, $71, $72, $73, $74, $75, $76, $77, $78, $79, $7a, $42, $43 ; d
-	db $be, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $cf, $00, $00 ; e
-	db $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $fa, $fb, $fc, $fd, $fe, $ff ; f
-
+INCLUDE "data/charmap.asm"
 
 PrintNum: ; 3992 (0:3992)
 	push hl
@@ -13607,7 +11962,10 @@ Func_7f73: ; 7f73 (1:7f73)
 	ret
 
 SECTION "Bank 02", ROMX, BANK [$02]
-	dr $8000, $c000
+	dr $8000, $804c
+
+Func_804c:
+	dr $804c, $bfba
 
 SECTION "Bank 03", ROMX, BANK [$03]
 	dr $c000, $dd67
@@ -13616,10 +11974,10 @@ Func_dd67:
 	dr $dd67, $e070
 
 VBlank2::
-	dr $e070, $10000
+	dr $e070, $fdf3
 
 SECTION "Bank 04", ROMX, BANK [$04]
-	dr $10000, $14000
+	dr $10000, $13729
 
 SECTION "Bank 05", ROMX, BANK [$05]
 	dr $14000, $144fd
@@ -13637,31 +11995,36 @@ Func_17c57:
 	dr $17c57, $17e95
 
 Func_17e95:
-	dr $17e95, $18000
+	dr $17e95, $17f9f
 
 SECTION "Bank 06", ROMX, BANK [$06]
-	dr $18000, $1c000
+	dr $18000, $1bfcf
 
 SECTION "Bank 07", ROMX, BANK [$07]
-	dr $1c000, $20000
+	dr $1c000, $1e7ec
 
 SECTION "Bank 08", ROMX, BANK [$08]
-	dr $20000, $24000
+	dr $20000, $23b61
 
 SECTION "Bank 09", ROMX, BANK [$09]
-	dr $24000, $28000
+	dr $24000, $27782
 
 SECTION "Bank 0a", ROMX, BANK [$0a]
-	dr $28000, $2c000
+	dr $28000, $2bfe4
 
 SECTION "Bank 0b", ROMX, BANK [$0b]
-	dr $2c000, $30000
+	dr $2c000, $2eeb2
 
 SECTION "Bank 0c", ROMX, BANK [$0c]
-	dr $30000, $34000
+IF DEF(SUN)
+	dr $30000, $33fe3
+ENDC
+IF DEF(STAR)
+	dr $30000, $33fec
+ENDC
 
 SECTION "Bank 0d", ROMX, BANK [$0d]
-	dr $34000, $38000
+	dr $34000, $37ec0
 
 SECTION "Bank 0e", ROMX, BANK [$0e]
 Pointers_38000:
