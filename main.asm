@@ -12570,16 +12570,1041 @@ Func_7987: ; 7987 (1:7987)
 	ret
 
 Data_798b:
-	dr $798b, $79b3
+	dr $798b, $7995
 
-Func_79b3: ; 79b3
-	dr $79b3, $7a2b
+Data_7995:
+	dr $7995, $79a9
 
-Func_7a2b: ; 7a2b
-	dr $7a2b, $7ae4
+Data_79a9:
+	dr $79a9, $79b3
 
-Func_7ae4: ; 7ae4
-	dr $7ae4, $7f9f
+Func_79b3: ; 79b3 (1:79b3)
+	push af
+	push bc
+	ld a, [hSRAMBank]
+	push af
+	ld hl, $0
+	call WriteHLToSPPlus4
+	xor a
+Func_79bf: ; 79bf (1:79bf)
+	cp $5
+	jp nc, Func_7a1a
+	push af
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, Data_798b
+	add hl, de
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld a, [hl]
+	call GetSRAMBank_ReadOnly
+	pop af
+	push af
+	ld l, a
+	ld h, $0
+	add hl, hl
+	ld de, Data_79a9
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, Data_7995
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	call Func_6b11
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus6
+	add hl, bc
+	call WriteHLToSPPlus6
+	pop af
+	inc a
+	jp Func_79bf
+
+Func_7a1a: ; 7a1a (1:7a1a)
+	pop af
+	call GetSRAMBank
+	pop hl
+	push hl
+	pop bc
+	pop bc
+	ret
+
+Data_7a23:
+	db "Robopon", $00
+
+Func_7a2b: ; 7a2b (1:7a2b)
+	push bc
+	ld a, [hSRAMBank]
+	push af
+	ld hl, sp+$2
+	ld [hl], $0
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	ld c, $0
+Func_7a3a: ; 7a3a (1:7a3a)
+	ld a, c
+	cp $7
+	jp nc, Func_7a5e
+	ld e, c
+	ld d, $0
+	ld hl, Data_7a23
+	add hl, de
+	ld a, [hl]
+	ld e, c
+	ld d, $0
+	ld hl, $a000
+	add hl, de
+	cp [hl]
+	jp z, Func_7a5a
+	ld hl, sp+$2
+	ld [hl], $ff
+	jp Func_7a5e
+
+Func_7a5a: ; 7a5a (1:7a5a)
+	inc c
+	jp Func_7a3a
+
+Func_7a5e: ; 7a5e (1:7a5e)
+	ld a, $1
+	call GetSRAMBank_ReadOnly
+	ld c, $0
+Func_7a65: ; 7a65 (1:7a65)
+	ld a, c
+	cp $7
+	jp nc, Func_7a89
+	ld e, c
+	ld d, $0
+	ld hl, Data_7a23
+	add hl, de
+	ld a, [hl]
+	ld e, c
+	ld d, $0
+	ld hl, $bae0
+	add hl, de
+	cp [hl]
+	jp z, Func_7a85
+	ld hl, sp+$2
+	ld [hl], $ff
+	jp Func_7a89
+
+Func_7a85: ; 7a85 (1:7a85)
+	inc c
+	jp Func_7a65
+
+Func_7a89: ; 7a89 (1:7a89)
+	pop af
+	call GetSRAMBank
+	ld hl, sp+$0
+	ld a, [hl]
+	pop bc
+	ret
+
+Func_7a92:
+	ld a, [hSRAMBank]
+	push af
+	ld a, $2
+	call GetSRAMBank
+	ld bc, $7
+	ld de, Data_7a23
+	ld hl, $a000
+	call CopyFromDEtoHL
+	ld a, $1
+	call GetSRAMBank
+	ld bc, $7
+	ld de, Data_7a23
+	ld hl, $bae0
+	call CopyFromDEtoHL
+	pop af
+	call GetSRAMBank
+	ret
+
+Func_7abc:
+	ld a, [hSRAMBank]
+	push af
+	inc e
+	dec e
+	jp nz, Func_7ad3
+	push hl
+	ld a, $3
+	call GetSRAMBank
+	pop hl
+	call WriteHalfWordTo
+	dw $ce0a
+	jp Func_7adf
+
+Func_7ad3: ; 7ad3 (1:7ad3)
+	push hl
+	ld a, $1
+	call GetSRAMBank
+	pop hl
+	call WriteHalfWordTo
+	dw $ba22
+Func_7adf:
+	pop af
+	call GetSRAMBank
+	ret
+
+Func_7ae4: ; 7ae4 (1:7ae4)
+	push af
+	ld a, [hSRAMBank]
+	ld e, a
+	pop af
+	push de
+	or a
+	jp nz, Func_7afb
+	ld a, $3
+	call GetSRAMBank_ReadOnly
+	call ReadHalfWordAt
+	ld a, [bc]
+	adc $c3
+	dec b
+	ld a, e
+Func_7afb: ; 7afb (1:7afb)
+	ld a, $1
+	call GetSRAMBank_ReadOnly
+	call ReadHalfWordAt
+	ld [hli], a
+	cp d
+	pop de
+	push hl
+	ld a, e
+	call GetSRAMBank
+	pop hl
+	ret
+
+Func_7b0d:
+	push hl
+	push bc
+	ld hl, sp+$1
+	ld [hl], $0
+Func_7b13: ; 7b13 (1:7b13)
+	ld a, [de]
+	or a
+	jp z, Func_7bc4
+	ld a, [de]
+	inc de
+	ld hl, sp+$0
+	ld [hl], a
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $28
+	jp z, Func_7b2d
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $29
+	jp nz, Func_7b38
+Func_7b2d: ; 7b2d (1:7b2d)
+	ld hl, sp+$1
+	ld a, [hl]
+	xor $1
+	ld hl, sp+$1
+	ld [hl], a
+	jp Func_7bc1
+
+Func_7b38: ; 7b38 (1:7b38)
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $30
+	jp c, Func_7b4d
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $3a
+	jp nc, Func_7b4d
+	ld c, $0
+	jp Func_7b98
+
+Func_7b4d: ; 7b4d (1:7b4d)
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $b0
+	jp nz, Func_7b5a
+	ld c, $0
+	jp Func_7b98
+
+Func_7b5a: ; 7b5a (1:7b5a)
+	ld hl, sp+$1
+	ld a, [hl]
+	or a
+	jp nz, Func_7b7e
+	ld a, [de]
+	cp $de
+	jp nz, Func_7b6d
+	ld c, $c0
+	inc de
+	jp Func_7b7b
+
+Func_7b6d: ; 7b6d (1:7b6d)
+	ld a, [de]
+	cp $df
+	jp nz, Func_7b79
+	inc de
+	ld c, $d4
+	jp Func_7b7b
+
+Func_7b79: ; 7b79 (1:7b79)
+	ld c, $44
+Func_7b7b: ; 7b7b (1:7b7b)
+	jp Func_7b98
+
+Func_7b7e: ; 7b7e (1:7b7e)
+	ld a, [de]
+	cp $de
+	jp nz, Func_7b8a
+	ld c, $a0
+	inc de
+	jp Func_7b98
+
+Func_7b8a: ; 7b8a (1:7b8a)
+	ld a, [de]
+	cp $df
+	jp nz, Func_7b96
+	inc de
+	ld c, $b4
+	jp Func_7b98
+
+Func_7b96: ; 7b96 (1:7b96)
+	ld c, $a
+Func_7b98: ; 7b98 (1:7b98)
+	push de
+	ld e, c
+	ld d, $0
+	ld hl, Data_66f6
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+Func_7ba4: ; 7ba4 (1:7ba4)
+	ld a, [de]
+	ld hl, sp+$2
+	cp [hl]
+	jp z, Func_7bb0
+	inc de
+	inc c
+	jp Func_7ba4
+
+Func_7bb0: ; 7bb0 (1:7bb0)
+	ld a, c
+	inc a
+	ld hl, sp+$2
+	ld [hl], a
+	ld hl, sp+$2
+	ld a, [hl]
+	call GetHLAtSPPlus6
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus6
+	pop de
+Func_7bc1: ; 7bc1 (1:7bc1)
+	jp Func_7b13
+
+Func_7bc4: ; 7bc4 (1:7bc4)
+	call GetHLAtSPPlus4
+	ld [hl], $0
+	pop bc
+	pop bc
+	ret
+
+Func_7bcc: ; 7bcc (1:7bcc)
+	push hl
+	push de
+	push bc
+	push bc
+	push bc
+	call GetHLAtSPPlus10
+	ld e, h
+	ld hl, sp+$3
+	ld [hl], e
+	call GetHLAtSPPlus10
+	ld e, l
+	ld hl, sp+$2
+	ld [hl], e
+	ld l, c
+	ld h, b
+	ld de, $100
+	call DivideHLByDESigned
+	ld e, l
+	ld d, $0
+	inc de
+	inc de
+	ld hl, sp+$5
+	ld [hl], e
+	pop bc
+	ld hl, sp+$2
+	ld [hl], c
+	ld hl, sp+$2
+	ld a, [hl]
+	cp $2
+	jp nz, Func_7c3d
+	ld hl, sp+$2
+	ld c, [hl]
+	call GetHLAtSPPlus6
+	push hl
+	call GetHLAtSPPlus10
+	pop de
+	call Func_6336
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	inc hl
+	push hl
+	ld hl, sp+$2
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	ld de, $700
+	add hl, de
+	add hl, bc
+	ld de, $7
+	add hl, de
+	push hl
+	call GetHLAtSPPlusParam8
+	db $0c
+	pop de
+	pop bc
+	call Func_667d
+	ld a, $2
+	ld [wOAM26VTile], a
+	jp Func_7c85
+
+Func_7c3d: ; 7c3d (1:7c3d)
+	ld hl, sp+$2
+	ld c, [hl]
+	call GetHLAtSPPlus6
+	push hl
+	call GetHLAtSPPlus10
+	pop de
+	call Func_6336
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	or $1
+	ld [rVBK], a
+	ld hl, sp+$2
+	ld c, [hl]
+	ld hl, sp+$3
+	ld h, [hl]
+	ld b, h
+	push bc
+	ld hl, sp+$2
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	ld de, $700
+	add hl, de
+	add hl, bc
+	ld de, $7
+	add hl, de
+	push hl
+	call GetHLAtSPPlusParam8
+	db $0c
+	pop de
+	pop bc
+	call Func_667d
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	and $fe
+	ld [rVBK], a
+Func_7c85: ; 7c85 (1:7c85)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_7c8a:
+	push hl
+	push de
+	call ReadHalfWordAt
+	dw $c2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $40
+	add hl, de
+	push hl
+	call GetHLAtSPPlus4
+	pop de
+	call CompareHLtoDE
+	jp nz, Func_7cac
+	ld l, $1
+	jp Func_7cae
+
+Func_7cac: ; 7cac (1:7cac)
+	ld l, $0
+Func_7cae: ; 7cae (1:7cae)
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_7cc4
+	ld b, l
+	pop hl
+	push hl
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	call Func_7bcc
+	jp Func_7cce
+
+Func_7cc4: ; 7cc4 (1:7cc4)
+	pop hl
+	push hl
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	call Func_6336
+Func_7cce: ; 7cce (1:7cce)
+	pop bc
+	pop bc
+	ret
+
+Func_7cd1:
+	ld a, [hSRAMBank]
+	push af
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	ld de, $a007
+	ld c, $0
+	ld l, c
+Func_7cdf: ; 7cdf (1:7cdf)
+	ld a, c
+	cp $aa
+	jp nc, Func_7cf9
+	ld a, [de]
+	or a
+	jp z, Func_7ceb
+	inc l
+Func_7ceb: ; 7ceb (1:7ceb)
+	push hl
+	inc c
+	ld hl, $1c
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	pop hl
+	jp Func_7cdf
+
+Func_7cf9: ; 7cf9 (1:7cf9)
+	pop af
+	push hl
+	call GetSRAMBank
+	pop hl
+	ld a, l
+	ret
+
+Func_7d01:
+	ld a, [hSRAMBank]
+	push af
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	ld de, $a007
+	ld c, $0
+Func_7d0e: ; 7d0e (1:7d0e)
+	ld a, c
+	cp $aa
+	jp nc, Func_7d28
+	ld a, [de]
+	or a
+	jp nz, Func_7d1c
+	jp Func_7d28
+
+Func_7d1c: ; 7d1c (1:7d1c)
+	inc c
+	ld hl, $1c
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	jp Func_7d0e
+
+Func_7d28: ; 7d28 (1:7d28)
+	pop af
+	push bc
+	call GetSRAMBank
+	pop bc
+	ld a, c
+	cp $aa
+	jp c, Func_7d37
+	ld a, $ff
+	ret
+
+Func_7d37: ; 7d37 (1:7d37)
+	ld a, c
+	ret
+
+Func_7d39:
+	push af
+	ld a, [hSRAMBank]
+	push af
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $a007
+	add hl, de
+	ld a, $2
+	call GetSRAMBank
+	ld hl, sp+$3
+	ld a, [hl]
+	inc a
+	ld l, a
+	ld a, $aa
+	sub l
+	jp z, Func_7da6
+	ld hl, sp+$3
+	ld e, [hl]
+	ld d, $0
+	inc de
+	ld hl, $aa
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	push hl
+	ld hl, sp+$5
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $a023
+	add hl, de
+	push hl
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $a007
+	add hl, de
+	pop de
+	pop bc
+	call CopyFromDEtoHL
+Func_7da6: ; 7da6 (1:7da6)
+	xor a
+	ld [$b283], a
+	pop af
+	call GetSRAMBank
+	pop bc
+	ret
+
+Func_7db0: ; 7db0 (1:7db0)
+	push de
+	add sp, -$40
+	push af
+	ld a, [hSRAMBank]
+	ld l, a
+	push hl
+	ld hl, sp+$4
+	push hl
+	call GetHLAtSPPlusParam8
+	db $48
+	pop de
+	ld bc, $23
+	call MemCopy
+	pop hl
+	pop af
+	push hl
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $a007
+	add hl, de
+	push hl
+	ld hl, sp+$42
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$26
+	call Func_6493
+	ld a, $2
+	call GetSRAMBank
+	pop de
+	ld hl, sp+$25
+	ld bc, $1c
+	call MemCopy
+	pop hl
+	ld a, l
+	call GetSRAMBank
+	add sp, $42
+	ret
+
+Func_7dfc: ; 7dfc (1:7dfc)
+	add sp, -$24
+	push de
+	push af
+	ld a, [hSRAMBank]
+	ld l, a
+	pop af
+	push hl
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $a007
+	add hl, de
+	ld c, l
+	ld b, h
+	push bc
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	pop bc
+	ld hl, sp+$4
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	call Func_6392
+	pop hl
+	ld a, l
+	call GetSRAMBank
+	pop de
+	push de
+	ld hl, sp+$2
+	ld bc, $23
+	call MemCopy
+	pop de
+	ld hl, $c
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_7e4d
+	ld hl, $16
+	add hl, de
+	ld [hl], $e
+	jp Func_7e53
+
+Func_7e4d: ; 7e4d (1:7e4d)
+	ld hl, $16
+	add hl, de
+	ld [hl], $0
+Func_7e53: ; 7e53 (1:7e53)
+	add sp, $24
+	ret
+
+Func_7e56:
+	add sp, -$24
+	push af
+	ld a, e
+	ld hl, sp+$2
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_6b55
+	pop af
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_7db0
+	add sp, $24
+	ret
+
+Func_7e70:
+	add sp, -$24
+	push de
+	ld hl, sp+$2
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_7dfc
+	pop de
+	ld a, e
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_6b74
+	add sp, $24
+	ret
+
+Func_7e8a:
+	push de
+	add sp, -$40
+	push af
+	ld a, [hSRAMBank]
+	ld l, a
+	pop af
+	push hl
+	ld l, a
+	ld h, $0
+	ld de, 849
+	call MultiplyHLbyDE
+	ld de, $b29f
+	add hl, de
+	ld c, l
+	ld b, h
+	xor a
+	pop hl
+Func_7ea4: ; 7ea4 (1:7ea4)
+	cp $d
+	jp nc, Func_7eee
+	push af
+	push hl
+	push bc
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	pop bc
+	pop hl
+	push bc
+	push hl
+	ld e, c
+	ld d, b
+	ld hl, sp+$6
+	ld bc, $40
+	call CopyFromDEtoHL
+	pop hl
+	push hl
+	ld a, l
+	call GetSRAMBank
+	ld bc, $40
+	ld hl, sp+$6
+	push hl
+	call GetHLAtSPPlusParam8
+	db $4a
+	pop de
+	call CopyFromDEtoHL
+	pop hl
+	pop bc
+	push hl
+	ld hl, $40
+	add hl, bc
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlusParam8
+	db $46
+	ld de, $40
+	add hl, de
+	call WriteHLToSPPlusParam8
+	db $46
+	pop hl
+	pop af
+	inc a
+	jp Func_7ea4
+
+Func_7eee: ; 7eee (1:7eee)
+	push hl
+	push bc
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	pop de
+	ld hl, sp+$2
+	ld bc, $11
+	call CopyFromDEtoHL
+	pop hl
+	ld a, l
+	call GetSRAMBank
+	ld bc, $11
+	ld hl, sp+$0
+	push hl
+	call GetHLAtSPPlusParam8
+	db $44
+	pop de
+	call CopyFromDEtoHL
+	add sp, $42
+	ret
+
+Func_7f14:
+	add sp, -$40
+	push de
+	push af
+	ld a, [hSRAMBank]
+	ld l, a
+	pop af
+	push hl
+	ld l, a
+	ld h, $0
+	ld de, 849
+	call MultiplyHLbyDE
+	ld de, $b29f
+	add hl, de
+	ld c, l
+	ld b, h
+	xor a
+	pop hl
+	pop de
+Func_7f2f: ; 7f2f (1:7f2f)
+	cp $d
+	jp nc, Func_7f73
+	push hl
+	push af
+	push bc
+	push de
+	ld a, l
+	call GetSRAMBank
+	pop de
+	pop bc
+	push de
+	push bc
+	ld hl, sp+$8
+	ld bc, $40
+	call CopyFromDEtoHL
+	ld a, $2
+	call GetSRAMBank
+	pop bc
+	push bc
+	ld hl, sp+$8
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	ld bc, $40
+	call CopyFromDEtoHL
+	pop bc
+	ld hl, $40
+	add hl, bc
+	ld c, l
+	ld b, h
+	pop de
+	ld hl, $40
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	pop af
+	inc a
+	pop hl
+	jp Func_7f2f
+
+Func_7f73: ; 7f73 (1:7f73)
+	push hl
+	push bc
+	push de
+	ld a, l
+	call GetSRAMBank
+	pop de
+	ld hl, sp+$4
+	ld bc, $11
+	call CopyFromDEtoHL
+	ld a, $2
+	call GetSRAMBank
+	pop bc
+	ld hl, sp+$2
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	ld bc, $11
+	call CopyFromDEtoHL
+	pop hl
+	ld a, l
+	call GetSRAMBank
+	add sp, $40
+	ret
 
 SECTION "Bank 02", ROMX, BANK [$02]
 	dr $8000, $c000
