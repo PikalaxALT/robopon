@@ -1718,291 +1718,7 @@ Data_0cfc:
 	dr $cfc, $d3a
 
 SECTION "0e00", HOME [$e00]
-VBlank:
-	push af
-	push hl
-	ld l, $ff
-	ld a, [wc203]
-	ld h, a
-	bit 0, h
-	jr z, .skip_vblank_transfer_request
-	push hl
-	ld a, [wVideoTransferRequestFlags]
-	bit 1, a
-	jr z, .no_bank_switch
-	ld a, [hROMBank]
-	push af
-	ld a, [wVideoTransferRequestBank]
-	call BankSwitch
-	call HandleVideoTransferRequest
-	pop af
-	call BankSwitch
-	pop hl
-	jr .skip_vblank_transfer_request
-
-.no_bank_switch
-	call HandleVideoTransferRequest
-	pop hl
-.skip_vblank_transfer_request
-	bit 6, h
-	jp z, .skip_bgmap_and_pals
-	res 6, l
-	push hl
-	ld a, [$c91c]
-	or a
-	jp z, .push_cgb_palettes
-	; push a metatile to the bgmap
-	; there are two queues
-	push bc
-	push de
-	ld a, [$c91c]
-	and $1
-	jp z, .skip_bgmap_tile_push
-	ld a, [$c923]
-	ld l, a
-	ld a, [$c924]
-	ld h, a
-	push hl
-	ld a, [$c91f]
-	ld e, a
-	ld a, [$c920]
-	ld d, a
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld bc, BG_MAP_WIDTH - 2
-	add hl, bc
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	pop hl
-	ld a, [wSystemType]
-	cp $11
-	jp nz, .skip_bgmap_tile_push
-	ld a, [rVBK]
-	or $1
-	ld [rVBK], a
-	ld a, [$c921]
-	ld e, a
-	ld a, [$c922]
-	ld d, a
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld bc, BG_MAP_WIDTH - 2
-	add hl, bc
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [rVBK]
-	and $ff ^ 1
-	ld [rVBK], a
-.skip_bgmap_tile_push
-	ld a, [$c91c]
-	and $2
-	jp z, .skip_bgmap_tile_push2
-	ld a, [$c929]
-	ld l, a
-	ld a, [$c92a]
-	ld h, a
-	push hl
-	ld a, [$c925]
-	ld e, a
-	ld a, [$c926]
-	ld d, a
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld bc, BG_MAP_WIDTH - 2
-	add hl, bc
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	pop hl
-	ld a, [wSystemType]
-	cp $11
-	jp nz, .skip_bgmap_tile_push2
-	ld a, [rVBK]
-	or $1
-	ld [rVBK], a
-	ld a, [$c927]
-	ld e, a
-	ld a, [$c928]
-	ld d, a
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld bc, BG_MAP_WIDTH - 2
-	add hl, bc
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [rVBK]
-	and $ff ^ 1
-	ld [rVBK], a
-.skip_bgmap_tile_push2
-	xor a
-	ld [$c91c], a
-	pop de
-	pop bc
-	jp .finished_bgmap_or_pals
-
-.push_cgb_palettes
-	push bc
-	ld hl, $c89c
-	ld a, $80
-	ld c, rBGPI % $100
-	ld [$ff00+c], a
-	ld c, rOBPI % $100
-	ld [$ff00+c], a
-	ld b, $8
-	ld c, rBGPD % $100
-.bgpals
-rept 8
-	ld a, [hli]
-	ld [$ff00+c], a
-endr
-	dec b
-	jr nz, .bgpals
-	ld b, $8
-	ld c, rOBPD % $100
-.obpals
-rept 8
-	ld a, [hli]
-	ld [$ff00+c], a
-endr
-	dec b
-	jr nz, .obpals
-	pop bc
-.finished_bgmap_or_pals
-	pop hl
-.skip_bgmap_and_pals
-	bit 1, h
-	jr z, .skip_oam
-	res 1, l
-	call hPushOAM
-.skip_oam
-	bit 2, h
-	jr z, .skip_push_lcdc
-	res 2, l
-.wait_ly
-	ld a, [rLY]
-	cp $90
-	jr z, .wait_ly
-	ld a, [wLCDC]
-	ld [rLCDC], a
-.skip_push_lcdc
-	bit 3, h
-	jr z, .skip_joypad
-	call VBlankReadJoypad
-.skip_joypad
-	bit 4, h
-	jr z, .skip_push_screen_coords
-	res 4, l
-	ld a, [wLCDC]
-	bit 3, a
-	jr nz, .map_selected_9c00
-	ld a, [wSCX]
-	ld [rSCX], a
-	ld a, [wSCY]
-	ld [rSCY], a
-	jr .skip_push_screen_coords
-
-.map_selected_9c00
-	ld a, [wSCX2]
-	ld [rSCX], a
-	ld a, [wSCY2]
-	ld [rSCY], a
-.skip_push_screen_coords
-	bit 5, h
-	jr z, .skip_push_dmg_pals
-	res 5, l
-	ld a, [wBGP]
-	ld [rBGP], a
-	ld a, [wOBP0]
-	ld [rOBP0], a
-	ld a, [wOBP1]
-	ld [rOBP1], a
-.skip_push_dmg_pals
-	bit 7, h
-	jr z, .skip_vblank_callback
-	push hl
-	push bc
-	push de
-	ld hl, wFarCallDestBank
-	ld a, [hli]
-	push af
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	push hl
-	ld a, [hSRAMBank]
-	push af
-	ld a, [hROMBank]
-	push af
-	ld a, [wVBlankCallbackRAMBank]
-	call GetSRAMBank
-	ld a, [wVBlankCallbackROMBank]
-	call BankSwitch
-	ld hl, .Return
-	push hl
-	ld a, [wVBlankCallbackAddress]
-	ld l, a
-	ld a, [wVBlankCallbackAddress + 1]
-	ld h, a
-	push hl
-	ret
-
-.Return
-	pop af
-	call BankSwitch
-	pop af
-	call GetSRAMBank
-	pop de
-	pop af
-	ld hl, wFarCallDestBank
-	ld [hli], a
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	pop de
-	pop bc
-	pop hl
-.skip_vblank_callback
-	ld a, [wc203]
-	and l
-	ld [wc203], a
-	ld [wc203 + 1], a
-	ld a, [wTextBlinkerFrameCounter]
-	inc a
-	ld [wTextBlinkerFrameCounter], a
-	pop hl
-	pop af
-	reti
+INCLUDE "home/vblank.asm"
 
 Func_0fde:
 	push af
@@ -3126,10 +2842,10 @@ Func_1bdf: ; 1bdf (0:1bdf)
 
 Func_1beb: ; 1beb (0:1beb)
 	di
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	ld c, a
 	res 7, a
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 	ld a, [$c2e8]
 	ld b, a
 	xor a
@@ -3142,9 +2858,9 @@ Func_1bff: ; 1bff (0:1bff)
 	and $80
 	ld c, a
 	di
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	or c
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 	ld a, b
 	ld [$c2e8], a
 	ei
@@ -3305,11 +3021,11 @@ Crash: ; 1d00 (0:1d00)
 	ld a, $ff
 	ld [wc213], a
 	callba_hli Func_4000
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	or $11
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 .wait
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	ld hl, $c204
 	cp [hl]
 	jp nz, .wait
@@ -3449,7 +3165,7 @@ Func_1e4d: ; 1e4d (0:1e4d)
 	xor a
 	ld [wOAM26VTile], a
 	xor a
-	ld [$c91c], a
+	ld [wVBlankTransferFlags], a
 	xor a
 	ld [$c92b], a
 	set_farcall_addrs_hli Func_613fc
@@ -5339,20 +5055,20 @@ Func_2a79: ; 2a79 (0:2a79)
 	ld hl, sp+$13
 	ld a, [hROMBank]
 	ld [hl], a
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	push af
 	ld a, [rLCDC]
 	and $80
 	jp z, Func_2aab
 	call WaitVideoTransfer
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	and $8
 	jp z, Func_2aab
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	and $f7
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 Func_2aa1: ; 2aa1 (0:2aa1)
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	ld hl, $c204
 	cp [hl]
 	jp nz, Func_2aa1
@@ -5482,7 +5198,7 @@ Func_2b49: ; 2b49 (0:2b49)
 
 Func_2b70: ; 2b70 (0:2b70)
 	pop af
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 	ld hl, sp+$11
 	ld a, [hl]
 	call BankSwitch
@@ -7240,14 +6956,14 @@ Func_3cc8: ; 3cc8 (0:3cc8)
 	or $8
 	ld [wLCDC], a
 Func_3cd0: ; 3cd0 (0:3cd0)
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	or $6
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 	ld a, [wLCDC]
 	or $3
 	ld [wLCDC], a
 Func_3ce0: ; 3ce0 (0:3ce0)
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	ld hl, $c204
 	cp [hl]
 	jp z, Func_3ced
@@ -7353,9 +7069,9 @@ Func_4000:
 	ld a, $81
 	call Func_617d
 	call Func_0fde
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	or $9
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 	ld a, [wc213]
 	or a
 	ret nz
@@ -7542,9 +7258,9 @@ Func_6169: ; 6169 (1:6169)
 	push af
 	call Func_6294
 	ld [wLCDC], a
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	or $4
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 	call Func_6294
 	pop af
 	ret
@@ -7722,7 +7438,7 @@ Func_6294: ; 6294 (1:6294)
 	push af
 	push bc
 .asm_6296
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	ld c, a
 	ld a, [$c204]
 	cp c
@@ -8870,9 +8586,9 @@ Func_6a77:
 	pop hl
 	ld b, h
 .asm_6ac4
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	set 1, a
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 	call Func_6294
 	ld hl, wOAM2_00YCoord
 	ld c, $28
@@ -8900,9 +8616,9 @@ Func_6a77:
 	ld e, $0
 	ld bc, $a0
 	call FillMemory
-	ld a, [wc203]
+	ld a, [wNextVBlankFlags]
 	set 1, a
-	ld [wc203], a
+	ld [wNextVBlankFlags], a
 	call Func_6294
 	ld a, $28
 	ld [$c2e2], a

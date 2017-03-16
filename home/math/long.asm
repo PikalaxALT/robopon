@@ -270,9 +270,9 @@ RightShiftLong: ; 33bd (0:33bd)
 	ld a, c
 	rra
 	ld c, a
-.next
+.handleLoop2
 	dec l
-	jp nz, .handleLoop2
+	jp nz, .loop2
 	pop hl
 	ld [hl], d
 	dec hl

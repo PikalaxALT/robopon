@@ -6,7 +6,17 @@ wSerial:: ds $3 ; c003
 wVBlank:: ds $1a ; c006
 wc020:: ds $1e0 ; c020
 wLCD:: ds $3 ; c200
-wc203:: ds $2 ; c203
+
+; bit 7: call wVBlankCallback (far call with SRAM open)
+; bit 6: push BGMap metatiles or CGB palettes
+; bit 5: push DMG pals
+; bit 4: push SCX and SCY
+; bit 3: read joypad
+; bit 2: push LCDC
+; bit 1: push OAM
+; bit 0: handle video transfer request
+wNextVBlankFlags:: ds $1 ; c203
+wLastVBlankFlags:: ds $1 ; c204
 wJoyPressed:: ds $1 ; c205
 wJoyLast:: ds $1 ; c206
 wJoyHeld:: ds $1 ; c207
@@ -160,11 +170,27 @@ wTileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 wAttrMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
-wCGB_BGPalsBuffer::
+wCGB_BGPalsBuffer:: ; c89c
 	ds 8 * 8
 
-wCGB_OBPalsBuffer::
+wCGB_OBPalsBuffer:: ; c8dc
 	ds 8 * 8
+
+wVBlankTransferFlags:: ; c91c
+; ==0: push CGB palettes
+; bit 1: push wVBlankMetaTileTransferQueue1
+; bit 0: push wVBlankMetaTileTransferQueue0
+	ds $1
+
+	ds $2
+
+wVBlankMetaTileTransferQueue0TileSource:: dw ; c91f
+wVBlankMetaTileTransferQueue0AttrSource:: dw ; c921
+wVBlankMetaTileTransferQueue0Dest:: dw ; c923
+
+wVBlankMetaTileTransferQueue1TileSource:: dw ; c925
+wVBlankMetaTileTransferQueue1AttrSource:: dw ; c927
+wVBlankMetaTileTransferQueue1Dest:: dw ; c929
 
 SECTION "Stack", WRAM0 [$d810]
 wStackBottom:: ds $7f0 ; d810
