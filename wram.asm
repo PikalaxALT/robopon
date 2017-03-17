@@ -22,7 +22,7 @@ wJoyLast:: ds $1 ; c206
 wJoyHeld:: ds $1 ; c207
 wc208:: ds $1 ; c208
 wTextBlinkerFrameCounter:: ds $1 ; c209
-wFrameCounter:: ds $2 ; c20a
+wTimerCounter:: ds $2 ; c20a
 wSCX:: ds $1 ; c20c
 wSCX2:: ds $1 ; c20d
 wSCY:: ds $1 ; c20e
@@ -71,7 +71,9 @@ wKana:: ; c255
 ; ff: hiragana
 	ds $1
 
-	ds $94
+	ds $92
+wc2e8:: ds $1 ; c2e8
+	ds $1
 
 wVideoTransferRequestFlags:: ds $1 ; c2ea
 	ds $2

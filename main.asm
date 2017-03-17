@@ -1720,12 +1720,12 @@ Data_0cfc:
 SECTION "0e00", HOME [$e00]
 INCLUDE "home/vblank.asm"
 
-Func_0fde:
+TimerInterrupt:
 	push af
 	push hl
 	ld a, $0
 	ld [rTAC], a
-	ld a, $bc
+	ld a, -68
 	ld [rTMA], a
 	ld a, $4
 	ld [rTAC], a
@@ -1734,29 +1734,29 @@ Func_0fde:
 	ei
 	push bc
 	push de
-	ld a, [wFrameCounter]
+	ld a, [wTimerCounter]
 	inc a
-	ld [wFrameCounter], a
-	jr nz, .asm_1004
-	ld a, [wFrameCounter + 1]
+	ld [wTimerCounter], a
+	jr nz, .increment_frame_counter
+	ld a, [wTimerCounter + 1]
 	inc a
-	ld [wFrameCounter + 1], a
-.asm_1004
+	ld [wTimerCounter + 1], a
+.increment_frame_counter
 	call Func_1a94
 	call Func_2a49
 	ld a, [wc208]
 	or a
-	jr z, .asm_101a
+	jr z, .set_wc208
 	inc a
 	and $1f
-	jr nz, .asm_101a
+	jr nz, .set_wc208
 	ld [wJoyLast], a
 	ld a, $18
-.asm_101a
+.set_wc208
 	ld [wc208], a
-	ld a, [$c2e8]
+	ld a, [wc2e8]
 	or a
-	jr z, .asm_103e
+	jr z, .check_stack_overflow
 	ld a, [hSRAMBank]
 	push af
 	ld a, $3
@@ -1770,9 +1770,9 @@ Func_0fde:
 	call BankSwitch
 	pop af
 	call GetSRAMBank
-.asm_103e
+.check_stack_overflow
 	ld hl, sp+$0
-	ld bc, $27f0
+	ld bc, $10000 - wStackBottom
 	add hl, bc
 	bit 7, h
 	jr z, .no_stack_overflow
@@ -1978,7 +1978,7 @@ Func_116c:
 	pop af
 	reti
 
-Func_117e:
+LCDInterrupt:
 	push af
 	push bc
 	ld a, [$c2e1]
@@ -2340,6 +2340,8 @@ Decompress: ; 1263 (0:1263)
 	ret
 
 Func_138d:
+	; index a
+	; destination de
 	push hl
 	ld l, a
 	ld a, [hROMBank]
@@ -2362,6 +2364,7 @@ Func_138d:
 	inc hl
 	ld d, [hl]
 	call BankSwitch
+	; size = $40 + (c << 4)
 	ld b, $0
 	sla c
 	rl b
@@ -2387,7 +2390,7 @@ Func_138d:
 	ld e, l
 	ld d, h
 	pop hl
-	ld bc, $ffc0
+	ld bc, -$40
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -2846,10 +2849,10 @@ Func_1beb: ; 1beb (0:1beb)
 	ld c, a
 	res 7, a
 	ld [wNextVBlankFlags], a
-	ld a, [$c2e8]
+	ld a, [wc2e8]
 	ld b, a
 	xor a
-	ld [$c2e8], a
+	ld [wc2e8], a
 	ei
 	ret
 
@@ -2862,7 +2865,7 @@ Func_1bff: ; 1bff (0:1bff)
 	or c
 	ld [wNextVBlankFlags], a
 	ld a, b
-	ld [$c2e8], a
+	ld [wc2e8], a
 	ei
 	ret
 
@@ -3013,88 +3016,7 @@ Func_1ccd:
 	ret
 
 SECTION "1d00", HOME [$1d00]
-Crash: ; 1d00 (0:1d00)
-	push de
-	push bc
-	push hl
-	callba_hli Func_4064
-	ld a, $ff
-	ld [wc213], a
-	callba_hli Func_4000
-	ld a, [wNextVBlankFlags]
-	or $11
-	ld [wNextVBlankFlags], a
-.wait
-	ld a, [wNextVBlankFlags]
-	ld hl, $c204
-	cp [hl]
-	jp nz, .wait
-	call Func_3aa8
-	ld de, Data_1d8d
-	ld hl, $1
-	call Func_230e
-	ld de, Data_1d94
-	ld hl, $3
-	call Func_230e
-	ld e, $5
-	xor a
-	call WriteStringDestAddrToC261
-	pop hl
-	push hl
-	ld hl, Data_1da2
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	ld e, $7
-	xor a
-	call WriteStringDestAddrToC261
-	pop bc
-	push bc
-	ld hl, Data_1daa
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	ld e, $9
-	xor a
-	call WriteStringDestAddrToC261
-	pop de
-	push de
-	ld hl, Data_1db0
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3bc5
-	pop bc
-	jp @ - 1 ; better luck next time
-
-Data_1d8d: ; 1d8d
-	db "<HIRA>あれ<KATA> ?", $00
-
-Data_1d94: ; 1d94
-	db "<HIRA>てﾞんけﾞんきってね<KATA>!", $00
-
-Data_1da2: ; 1da2
-	db "スタック:"
-	TX_SNUM
-	db $00
-
-Data_1daa: ; 1daa
-	db "ロム:"
-	TX_SNUM
-	db $00
-
-Data_1db0: ; 1db0
-	db "アトﾞレス:"
-	TX_SNUM
-	db $00
+INCLUDE "home/crash.asm"
 
 Func_1db9:
 	ld a, [hSRAMBank]
@@ -3215,7 +3137,7 @@ Func_1ec2: ; 1ec2 (0:1ec2)
 	call BankSwitch
 	ld e, $0
 	xor a
-	call WriteStringDestAddrToC261
+	call SetStringStartState
 	set_farcall_addrs_hli Func_79b3
 	ld a, $1
 	call FarCall
@@ -3722,7 +3644,7 @@ Func_225f: ; 225f (0:225f)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call WriteStringDestAddrToC261
+	call SetStringStartState
 	call GetHLAtSPPlus8
 	push hl
 	ld hl, Data_2304
@@ -3764,7 +3686,7 @@ Func_2299: ; 2299 (0:2299)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call WriteStringDestAddrToC261
+	call SetStringStartState
 	ld hl, sp+$0
 	ld a, [hl]
 	and $2
@@ -3797,7 +3719,7 @@ Func_22e8: ; 22e8 (0:22e8)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call WriteStringDestAddrToC261
+	call SetStringStartState
 	call GetHLAtSPPlus8
 	push hl
 	ld hl, Data_230b
@@ -3827,18 +3749,20 @@ Data_230b:
 	TX_SNUM
 	db $00
 
-Func_230e: ; 230e (0:230e)
+PlaceStringDEatCoordHL: ; 230e (0:230e)
 	push de
 	ld a, l
 	and h
 	inc a
-	jp z, Func_231c
+	jp z, .okay
+	; ld e, l
+	; ld a, h
 	ld c, h
 	ld a, l
 	ld e, a
 	ld a, c
-	call WriteStringDestAddrToC261
-Func_231c: ; 231c (0:231c)
+	call SetStringStartState
+.okay
 	pop de
 	push de
 	call PlaceString
@@ -4981,7 +4905,7 @@ Func_29cb: ; 29cb (0:29cb)
 	add hl, de
 	inc hl
 	pop de
-	call Func_230e
+	call PlaceStringDEatCoordHL
 	pop de
 	ld l, $3
 	push hl
@@ -5069,7 +4993,7 @@ Func_2a79: ; 2a79 (0:2a79)
 	ld [wNextVBlankFlags], a
 Func_2aa1: ; 2aa1 (0:2aa1)
 	ld a, [wNextVBlankFlags]
-	ld hl, $c204
+	ld hl, wLastVBlankFlags
 	cp [hl]
 	jp nz, Func_2aa1
 Func_2aab: ; 2aab (0:2aab)
@@ -6598,7 +6522,7 @@ Func_3a36: ; 3a36 (0:3a36)
 	pop bc
 	ret
 
-WriteStringDestAddrToC261: ; 3a83 (0:3a83)
+SetStringStartState: ; 3a83 (0:3a83)
 	ld [wStringDestX], a
 	ld a, e
 	ld [wStringDestY], a
@@ -6964,7 +6888,7 @@ Func_3cd0: ; 3cd0 (0:3cd0)
 	ld [wLCDC], a
 Func_3ce0: ; 3ce0 (0:3ce0)
 	ld a, [wNextVBlankFlags]
-	ld hl, $c204
+	ld hl, wLastVBlankFlags
 	cp [hl]
 	jp z, Func_3ced
 	jp Func_3ce0
@@ -7061,14 +6985,14 @@ Func_4000:
 	ld a, $e0
 	ld [rOBP1], a
 	ld [wOBP1], a
-	call Func_410c
+	call LoadFontGFX
 	hlbgcoord 0, 0
 	call Func_6149
 	hlbgcoord 0, 0, vWindowMap
 	call Func_6149
 	ld a, $81
 	call Func_617d
-	call Func_0fde
+	call TimerInterrupt
 	ld a, [wNextVBlankFlags]
 	or $9
 	ld [wNextVBlankFlags], a
@@ -7089,33 +7013,33 @@ Func_4064: ; 4064 (1:4064)
 	push af
 	ld hl, wLCD
 	ld bc, $200
-.asm_406f
+.clear_c200
 	xor a
 	ld [hli], a
 	dec bc
 	ld a, c
 	or b
-	jr nz, .asm_406f
+	jr nz, .clear_c200
 	pop af
 	ld [wSystemType], a
 	ld hl, Func_40bf
 	ld de, wTimer
 	ld b, $9
-.asm_4082
+.load_interrupts
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec b
-	jr nz, .asm_4082
+	jr nz, .load_interrupts
 	ld de, wLCD
 	ld b, $3
-.asm_408d
+.load_lcd_interrupt
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec b
-	jr nz, .asm_408d
-	call Func_40cb
+	jr nz, .load_lcd_interrupt
+	call FillToStackBottomWithWillTestString
 	ld a, $98
 	ld [$c210], a
 	call Func_40f4
@@ -7138,7 +7062,7 @@ Func_4064: ; 4064 (1:4064)
 	ret
 
 Func_40bf:
-	jp Func_0fde
+	jp TimerInterrupt
 
 Func_40c2:
 	jp Serial_
@@ -7147,9 +7071,9 @@ Func_40c5:
 	jp VBlank
 
 Func_40c8:
-	jp Func_117e
+	jp LCDInterrupt
 
-Func_40cb: ; 40cb (1:40cb)
+FillToStackBottomWithWillTestString: ; 40cb (1:40cb)
 	ld hl, sp+$0
 	ld de, wOAM2_0aYCoord
 	ld a, l
@@ -7158,30 +7082,30 @@ Func_40cb: ; 40cb (1:40cb)
 	ld a, h
 	sbc d
 	ld b, a
-	ld hl, Data_40ea
-.asm_40d9
+	ld hl, .WillTestString
+.loop
 	ld a, [hli]
 	or a
-	jr nz, .asm_40e2
-	ld hl, Data_40ea
-	jr .asm_40d9
+	jr nz, .place_string
+	ld hl, .WillTestString
+	jr .loop
 
-.asm_40e2
+.place_string
 	ld [de], a
 	inc de
 	dec bc
 	ld a, c
 	or b
-	jr nz, .asm_40d9
+	jr nz, .loop
 	ret
 
-Data_40ea:
+.WillTestString:
 	db "WILL TEST", $00
 
 Func_40f4: ; 40f4 (1:40f4)
 	ld c, hPushOAM % $100
 	ld b, $a
-	ld hl, Func_4102
+	ld hl, .PushOAM
 .asm_40fb
 	ld a, [hli]
 	ld [$ff00+c], a
@@ -7190,7 +7114,7 @@ Func_40f4: ; 40f4 (1:40f4)
 	jr nz, .asm_40fb
 	ret
 
-Func_4102:
+.PushOAM:
 	ld a, $c4
 	ld [rDMA], a
 	ld a, $28
@@ -7199,7 +7123,7 @@ Func_4102:
 	jr nz, .asm_4108
 	ret
 
-Func_410c: ; 410c (1:410c)
+LoadFontGFX: ; 410c (1:410c)
 	ld hl, $9000
 	ld de, GFX_4122
 	ld bc, $800
@@ -7209,8 +7133,8 @@ Func_410c: ; 410c (1:410c)
 	call CopyFromDEtoHL
 	ret
 
-GFX_4122:
-	dr $4122, $6122
+GFX_4122: INCBIN "gfx/misc/font.w128.t5.2bpp"
+	dr $4ad2, $6122
 
 Func_6122: ; 6122 (1:6122)
 	or a
@@ -7440,7 +7364,7 @@ Func_6294: ; 6294 (1:6294)
 .asm_6296
 	ld a, [wNextVBlankFlags]
 	ld c, a
-	ld a, [$c204]
+	ld a, [wLastVBlankFlags]
 	cp c
 	jr nz, .asm_6296
 	pop bc
@@ -8036,7 +7960,7 @@ ENDR
 	jr z, .asm_661f
 	ld c, $cc
 .asm_661f
-	ld hl, $ffc0
+	ld hl, -$40
 	add hl, de
 	push hl
 	ld b, $40
@@ -9197,13 +9121,13 @@ Func_701d: ; 701d (1:701d)
 	push de
 	call Func_1cc7
 	xor a
-	ld [wFrameCounter + 1], a
+	ld [wTimerCounter + 1], a
 	pop de
 Func_7028: ; 7028 (1:7028)
 	inc e
 	dec e
 	jp nz, Func_711e
-	ld a, [wFrameCounter + 1]
+	ld a, [wTimerCounter + 1]
 	cp $2
 	jp c, Func_7038
 	jp Func_711e
@@ -9468,18 +9392,18 @@ Data_71f0:
 Func_71fb: ; 71fb (1:71fb)
 	push af
 	xor a
-	ld [wFrameCounter], a
+	ld [wTimerCounter], a
 	ld e, a
 Func_7201: ; 7201 (1:7201)
 	ld a, e
 	ld hl, sp+$1
 	cp [hl]
 	jp nc, Func_7218
-	ld a, [wFrameCounter]
+	ld a, [wTimerCounter]
 	cp $3c
 	jp c, Func_7215
 	xor a
-	ld [wFrameCounter], a
+	ld [wTimerCounter], a
 	inc e
 Func_7215: ; 7215 (1:7215)
 	jp Func_7201
@@ -9490,10 +9414,10 @@ Func_7218: ; 7218 (1:7218)
 
 Func_721a: ; 721a (1:721a)
 	xor a
-	ld [wFrameCounter], a
+	ld [wTimerCounter], a
 	ld [wOAM06VTile], a
 Func_7221: ; 7221 (1:7221)
-	ld a, [wFrameCounter]
+	ld a, [wTimerCounter]
 	cp $b4
 	jp nc, Func_7230
 	ld a, [wOAM06VTile]
@@ -9607,10 +9531,10 @@ Func_72d0: ; 72d0 (1:72d0)
 	ld a, $1
 	ld [wOAM07VTile], a
 	xor a
-	ld [wFrameCounter], a
+	ld [wTimerCounter], a
 	pop de
 Func_72f4: ; 72f4 (1:72f4)
-	ld a, [wFrameCounter]
+	ld a, [wTimerCounter]
 	cp $b4
 	jp nc, Func_731e
 	ld a, [wOAM07Attrs]
@@ -9626,7 +9550,7 @@ Func_72f4: ; 72f4 (1:72f4)
 	jp c, Func_731b
 	inc de
 	xor a
-	ld [wFrameCounter], a
+	ld [wTimerCounter], a
 Func_731b: ; 731b (1:731b)
 	jp Func_72f4
 
@@ -9784,10 +9708,10 @@ Func_73f9: ; 73f9 (1:73f9)
 	xor a
 	ld [wOAM06VTile], a
 	xor a
-	ld [wFrameCounter], a
+	ld [wTimerCounter], a
 	pop de
 Func_742f: ; 742f (1:742f)
-	ld a, [wFrameCounter]
+	ld a, [wTimerCounter]
 	cp $b4
 	jp nc, Func_7459
 	ld a, [wOAM07Attrs]
@@ -9803,7 +9727,7 @@ Func_742f: ; 742f (1:742f)
 	jp c, Func_7456
 	inc de
 	xor a
-	ld [wFrameCounter], a
+	ld [wTimerCounter], a
 Func_7456: ; 7456 (1:7456)
 	jp Func_742f
 
@@ -9838,9 +9762,9 @@ Func_747b: ; 747b (1:747b)
 	pop de
 	call Func_6b11
 	xor a
-	ld [wFrameCounter], a
+	ld [wTimerCounter], a
 Func_748d: ; 748d (1:748d)
-	ld a, [wFrameCounter]
+	ld a, [wTimerCounter]
 	cp $5
 	jp nc, Func_74a7
 	ld a, [wOAM07YCoord]
@@ -26593,21 +26517,8 @@ SECTION "Bank 38", ROMX, BANK [$38]
 SECTION "Bank 39", ROMX, BANK [$39]
 	dr $e4000, $e8000
 
-SECTION "Bank 3a", ROMX, BANK [$3a]
-Data_e8000:
-	dr $e8000, $ec000
-
-SECTION "Bank 3b", ROMX, BANK [$3b]
-	dr $ec000, $f0000
-
-SECTION "Bank 3c", ROMX, BANK [$3c]
-	dr $f0000, $f4000
-
-SECTION "Bank 3d", ROMX, BANK [$3d]
-	dr $f4000, $f8000
-
-SECTION "Bank 3e", ROMX, BANK [$3e]
-	dr $f8000, $fc000
+SECTION "Bank 3e 2", ROMX [$6fb2], BANK [$3e]
+	dr $fafb2, $fbfcd
 
 SECTION "Bank 3f", ROMX, BANK [$3f]
 IF DEF(SUN)

@@ -9,6 +9,7 @@ objs := \
 	wram.o \
 	sram.o \
 	vram.o \
+	gfx.o \
 	main.o
 
 sun_objs := $(objs:.o=_sun.o)
@@ -42,6 +43,9 @@ clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' \) -exec rm {} +
 
 %.asm: ;
+
+%.2bpp: %.png
+	$(2bpp) $<
 
 $(sun_objs): %_sun.o: %.asm $$(%_dep)
 	rgbasm -h -D SUN -o $@ $*.asm

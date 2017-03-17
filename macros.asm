@@ -148,6 +148,11 @@ endm
 
 dlong EQUS "dx 4,"
 
+dbbw: MACRO
+	db \1, \2
+	dw \3
+	ENDM
+
 TX_STACK EQUS "db $25, $63"
 TX_SNUM EQUS "db $25, $64"
 TX_LITERAL EQUS "db $25, $6c,"
