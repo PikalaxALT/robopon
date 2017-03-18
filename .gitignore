@@ -1,6 +1,10 @@
 # generated
 *.tx
 *.o
+*.rz
+*.tm2bpp
+*.tm
+*.2bpp
 
 # precompiled python
 *.pyc

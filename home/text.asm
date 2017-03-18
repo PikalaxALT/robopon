@@ -11,10 +11,10 @@ Func_1494: ; 1494 (0:1494)
 	jr z, .done
 	dec a
 	push af
-	ld a, BANK(Func_68b6)
+	ld a, BANK(ApplyPoncotNameCharmap)
 	call BankSwitch
 	pop af
-	call Func_68b6
+	call ApplyPoncotNameCharmap
 	jr .loop
 
 .done

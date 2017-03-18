@@ -3829,16 +3829,17 @@ Func_2323:
 	ret
 
 Func_236f:
+	; e: Poncots index
 	push hl
 	ld hl, -$ee
 	add hl, sp
 	ld sp, hl
 	ld a, e
 	cp $aa
-	jp c, Func_23bb
+	jp c, .PoncotsOrTrainer
 	ld a, e
 	cp $ae
-	jp nc, Func_23bb
+	jp nc, .PoncotsOrTrainer
 	push de
 	ld a, [hSRAMBank]
 	push af
@@ -3849,35 +3850,35 @@ Func_236f:
 	push af
 	ld l, e
 	ld h, $0
-	ld de, $2f
+	ld de, 47
 	call MultiplyHLbyDE
-	debgcoord 14, 23
+	ld de, $ba24 - 47 * $aa
 	add hl, de
 	push de
 	push hl
 	pop de
 	pop hl
 	ld hl, sp+$2
-	ld bc, $2f
+	ld bc, 47
 	call CopyFromDEtoHL
 	pop af
 	call GetSRAMBank
-	ld bc, $2f
+	ld bc, 47
 	ld hl, sp+$0
 	push hl
 	call GetHLAtSPPlusParam8
 	db $f2
 	pop de
 	call CopyFromDEtoHL
-	jp Func_2419
+	jp .Done
 
-Func_23bb: ; 23bb (0:23bb)
+.PoncotsOrTrainer
 	push de
 	ld a, [hROMBank]
 	push af
-	ld a, BANK(Data_65bc8)
+	ld a, BANK(PoncotsBaseStats)
 	call BankSwitch
-	ld hl, Data_65bc8
+	ld hl, PoncotsBaseStats
 	call WriteHLToSPPlusParam8
 	db $f1
 	pop af
@@ -3903,14 +3904,14 @@ Func_23bb: ; 23bb (0:23bb)
 	db $f3
 	add hl, bc
 	pop de
-	ld bc, $eb
+	ld bc, 5 * 47
 	call Decompress
 	pop de
 	ld l, e
 	ld h, $0
 	ld de, $5
 	call DivideHLByDESigned
-	ld hl, $2f
+	ld hl, 47
 	call MultiplyHLbyDE
 	push de
 	push hl
@@ -3922,11 +3923,11 @@ Func_23bb: ; 23bb (0:23bb)
 	call GetHLAtSPPlusParam8
 	db $f4
 	pop de
-	ld bc, $2f
+	ld bc, 47
 	call CopyFromDEtoHL
 	pop af
 	call BankSwitch
-Func_2419: ; 2419 (0:2419)
+.Done
 	ld hl, $f0
 	add hl, sp
 	ld sp, hl
@@ -8151,32 +8152,76 @@ Func_667d:
 	jr nz, .asm_66e7
 	ret
 
-Data_66f6:
-	dr $66f6, $67d6
+PoncotNameCharacters:
+	db "0123456789をぁぃぅぇぉ" ; 00-0f
+	db "ゃゅょっーあいうえおかきくけこさ" ; 10-1f
+	db "しすせそたちつてとなにぬねのはひ" ; 20-2f
+	db "ふへほまみむめもやゆよらりるれろ" ; 30-3f
+	db "わん@@をぁぃぅぇぉゃゅょっあい" ; 40-4f
+	db "うえおかきくけこさしすせそたちつ" ; 50-5f
+	db "てとなにぬねのはひふへほまみむめ" ; 60-6f
+	db "もやゆよらりるれろわん!?/:×" ; 70-7f
+	db "Lp@@@@@@@@@@@G@ " ; 80-8f
+	db "R@@@@@HPVE@@@@@@" ; 90-9f
+	db "かきくけこさしすせそたちつてとは" ; a0-af
+	db "ひふへほはひふへほ@@@@@@@" ; b0-bf
+	db "かきくけこさしすせそたちつてとは" ; c0-cf
+	db "ひふへほはひふへほうcABM…a" ; d0-df
 
-Data_67d6:
-	dr $67d6, $68b6
+PoncotNameAttributes:
+; bit 0: hiragana if set else katakana
+; bit 1: handakuten
+; bit 2: dakuten
+; all three bits set: no special attributes
+	db %111, %111, %111, %111, %111, %111, %111, %111 ; 00-07
+	db %111, %111, %001, %001, %001, %001, %001, %001 ; 08-0f
+	db %001, %001, %001, %001, %111, %001, %001, %001 ; 10-17
+	db %001, %001, %001, %001, %001, %001, %001, %001 ; 18-1f
+	db %001, %001, %001, %001, %001, %001, %001, %001 ; 20-27
+	db %001, %001, %001, %001, %001, %001, %001, %001 ; 28-2f
+	db %001, %001, %001, %001, %001, %001, %001, %001 ; 30-37
+	db %001, %001, %001, %001, %001, %001, %001, %001 ; 38-3f
+	db %001, %001, %000, %000, %000, %000, %000, %000 ; 40-47
+	db %000, %000, %000, %000, %000, %000, %000, %000 ; 48-4f
+	db %000, %000, %000, %000, %000, %000, %000, %000 ; 50-57
+	db %000, %000, %000, %000, %000, %000, %000, %000 ; 58-5f
+	db %000, %000, %000, %000, %000, %000, %000, %000 ; 60-67
+	db %000, %000, %000, %000, %000, %000, %000, %000 ; 68-6f
+	db %000, %000, %000, %000, %000, %000, %000, %000 ; 70-77
+	db %000, %000, %000, %111, %111, %111, %111, %111 ; 78-7f
+	db %111, %111, %000, %000, %000, %000, %000, %000 ; 80-87
+	db %000, %000, %000, %000, %000, %111, %000, %111 ; 88-8f
+	db %111, %000, %000, %000, %000, %000, %111, %111 ; 90-97
+	db %111, %111, %000, %000, %000, %000, %000, %000 ; 98-9f
+	db %011, %011, %011, %011, %011, %011, %011, %011 ; a0-a7
+	db %011, %011, %011, %011, %011, %011, %011, %011 ; a8-af
+	db %011, %011, %011, %011, %101, %101, %101, %101 ; b0-b7
+	db %101, %000, %000, %000, %000, %000, %000, %000 ; b8-bf
+	db %010, %010, %010, %010, %010, %010, %010, %010 ; c0-c7
+	db %010, %010, %010, %010, %010, %010, %010, %010 ; c8-cf
+	db %010, %010, %010, %010, %100, %100, %100, %100 ; d0-d7
+	db %100, %010, %111, %111, %111, %111, %111, %111 ; d8-df
 
-Func_68b6: ; 68b6 (1:68b6)
+ApplyPoncotNameCharmap: ; 68b6 (1:68b6)
 	push de
 	push hl
 	ld e, a
 	ld d, $0
-	ld hl, Data_67d6
+	ld hl, PoncotNameAttributes
 	add hl, de
 	ld a, [hl]
 	ld c, a
-	ld hl, Data_66f6
+	ld hl, PoncotNameCharacters
 	add hl, de
 	cp $7
-	jr nz, .get_character
+	jr nz, .apply_flags
 	ld a, [hl]
 	pop hl
 	pop de
 	ld [hli], a
 	ret
 
-.get_character
+.apply_flags
 	ld a, [hl]
 	pop hl
 	pop de
@@ -8197,14 +8242,14 @@ Func_68b6: ; 68b6 (1:68b6)
 	ld [hli], a
 	bit 2, c
 	jr z, .test_handakuten
-	ld a, $df
+	ld a, "ﾟ"
 	ld [hli], a
 	jr .done_dakuten
 
 .test_handakuten
 	bit 1, c
 	jr z, .done_dakuten
-	ld a, $de
+	ld a, "ﾞ"
 	ld [hli], a
 .done_dakuten
 	ld a, c
@@ -10906,7 +10951,7 @@ Func_7b98: ; 7b98 (1:7b98)
 	push de
 	ld e, c
 	ld d, $0
-	ld hl, Data_66f6
+	ld hl, PoncotNameCharacters
 	add hl, de
 	push de
 	push hl
@@ -11734,8 +11779,10 @@ Data_64390:
 Data_657c5:
 	dr $657c5, $65bc8
 
-Data_65bc8:
-	dr $65bc8, $68000
+INCLUDE "data/base_stats.asm"
+
+Data_66ea7:
+	dr $66ea7, $67a08
 
 SECTION "Bank 1a", ROMX, BANK [$1a]
 	dr $68000, $6c000

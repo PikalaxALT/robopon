@@ -1,3 +1,4 @@
+import sys
 import argparse
 
 
@@ -49,14 +50,17 @@ def find_largest_block(source_data, src_ptr):
     return 0, 0
 
 
-def compress(infile, outfile, length=0x4000):
+def compress(infile, outfile, length=0x4000, print_dump=False):
     """Compress a Robopon graphics file
 
     :param outfile: Output file buffer
     :param infile: Decompressed file buffer
     :param length: Expected length of the output data
     """
-    global bitmask, last_byte
+    global bitmask, last_byte, output
+    if print_dump:
+        sys.stderr.write('Compression log for {}\n'.format(infile.name))
+        sys.stderr.flush()
     infile.seek(0)
     source_data = infile.read()
     bitmask = 0x80
@@ -64,15 +68,16 @@ def compress(infile, outfile, length=0x4000):
     src_ptr = 0
     outfile.seek(0)
     outfile.truncate()
+    output = ''
 
     def write_bits(nbits, value):
-        global bitmask, last_byte
+        global bitmask, last_byte, output
         assert value < (1 << nbits), '%d | %s' % (nbits, value)
         for bit in range(1, nbits + 1):
             last_byte |= (1 & (value >> (nbits - bit))) * bitmask
             bitmask >>= 1
             if not bitmask:
-                outfile.write(chr(last_byte))
+                output += chr(last_byte)
                 bitmask = 0x80
                 last_byte = 0x00
 
@@ -80,8 +85,8 @@ def compress(infile, outfile, length=0x4000):
         size, back = find_largest_block(source_data, src_ptr)
         if size == 0:
             write_bits(1, 0x01)
-            write_bits(8, ord(source_data[src_ptr]))
-            size = 1
+            value = ord(source_data[src_ptr])
+            write_bits(8, value)
         elif size < 2:
             write_bits(2, 0x00)
             write_bits(5, back - 1)
@@ -101,24 +106,36 @@ def compress(infile, outfile, length=0x4000):
             write_bits(16, 0x7fff)
             write_bits(12, size - 275)
             write_bits(11, back - 1)
-        src_ptr += size
+        src_ptr += max(1, size)
+        if print_dump:
+            if size:
+                sys.stderr.write('Copy {:d}, {:d}\n'.format(back, size))
+            else:
+                sys.stderr.write('Literal ${:02x}\n'.format(value))
+            sys.stderr.flush()
+    if print_dump:
+        sys.stderr.write('\n')
     if bitmask != 0x80:
-        outfile.write(chr(last_byte))
+        output += chr(last_byte)
+    written_length = len(output)
     if length < 0x4000 and outfile.tell() > length:
-        written_length = outfile.tell()
-        outfile.seek(0)
-        outfile.truncate()
         raise ValueError('Did all that work compressing, '
                          'but got the wrong output somehow!\n'
                          'Expected size %d, got %d' % 
                          (length, written_length))
     if src_ptr > len(source_data):
-        raise ValueError('Whoops! Something went amiss!')
+        raise ValueError('Whoops! Something went amiss!\n'
+                         'Overran our source file by %d bytes' % 
+                         (src_ptr - len(source_data)))
     if outfile.tell() > len(source_data):
-        raise ValueError('Somehow our compression yielded a larger file!')
+        raise ValueError('Somehow our compression yielded a larger '
+                         'file!\n'
+                         'Given size %d, got size %d' %
+                         (len(source_data), written_length))
+    outfile.write(bytes(output))
 
 
-def decompress(infile, outfile, start=0, length=0x4000):
+def decompress(infile, outfile, start=0, length=0x4000, print_dump=False):
     """Decompress a Robopon graphics file
     
     :param infile: Source file buffer, either a ROM or a standalone file
@@ -127,6 +144,9 @@ def decompress(infile, outfile, start=0, length=0x4000):
     :return: Decompressed data, compressed size
     """
     global bitmask, last_byte
+    if print_dump:
+        sys.stderr.write('Decompression log for {}\n'.format(outfile.name))
+        sys.stderr.flush()
     bitmask = 0x80
     infile.seek(start)
     last_byte = ord(infile.read(1))
@@ -145,43 +165,53 @@ def decompress(infile, outfile, start=0, length=0x4000):
                 last_byte = ord(infile.read(1))
         return output
 
-    unpacked = b''
+    unpacked = ''
     while len(unpacked) < length:
-        try:
-            back = -1
-            if read_bits(1):
-                size = 0
-                unpacked += chr(read_bits(8))
-            elif not read_bits(1):
-                size = 1
-                back = read_bits(5) + 1
+        back = -1
+        if read_bits(1):
+            size = 0
+            unpacked += chr(read_bits(8))
+        elif not read_bits(1):
+            size = 1
+            back = read_bits(5) + 1
+        else:
+            size = read_bits(2)
+            if size != 3:
+                size += 2
+                back = read_bits(8) + 1
             else:
-                size = read_bits(2)
-                if size != 3:
-                    size += 2
-                    back = read_bits(8) + 1
+                size = read_bits(4)
+                if size != 15:
+                    size += 5
+                    back = read_bits(9) + 1
                 else:
-                    size = read_bits(4)
-                    if size != 15:
-                        size += 5
-                        back = read_bits(9) + 1
+                    size = read_bits(8)
+                    if size != 255:
+                        size += 20
+                        back = read_bits(10) + 1
                     else:
-                        size = read_bits(8)
-                        if size != 255:
-                            size += 20
-                            back = read_bits(10) + 1
-                        else:
-                            size = read_bits(12) + 275
-                            back = read_bits(11) + 1
-            assert back <= len(unpacked), '%d, %d' % (back, len(unpacked))
+                        size = read_bits(12) + 275
+                        back = read_bits(11) + 1
+        if size:
+            assert back <= len(unpacked), \
+                   'Need to go back %d bytes in a %d-byte buffer' % \
+                   (back, len(unpacked))
             for _ in range(size):
                 unpacked += unpacked[-back]
-        except TypeError:
-            break
+            if print_dump:
+                sys.stderr.write('Copy {:d}, {:d}\n'.format(back, size))
+                sys.stderr.flush()
+        elif print_dump:
+            sys.stderr.write('Literal ${:02x}\n'.format(ord(unpacked[-1])))
+            sys.stderr.flush()
+    if print_dump:
+        sys.stderr.write('\n')
     if length < 0x4000 and len(unpacked) != length:
         raise ValueError('Did all that work decompressing, '
-                         'but got the wrong output somehow!')
-    outfile.write(unpacked)
+                         'but got the wrong output somehow!\n'
+                         'Expected size %d, got %d' % 
+                         (length, len(unpacked)))
+    outfile.write(bytes(unpacked))
     return infile.tell() - start - (bitmask == 0x80)
 
 if __name__ == '__main__':
@@ -191,10 +221,12 @@ if __name__ == '__main__':
     parser.add_argument('outfile', type=argparse.FileType('wb'))
     parser.add_argument('--start', type=int16, default=0)
     parser.add_argument('--length', type=int16, default=0x4000)
+    parser.add_argument('--dump', action='store_true')
     args = parser.parse_args()
     if args.method == 'decompress':
         outsize = decompress(args.infile, args.outfile, start=args.start,
-                             length=args.length)
+                             length=args.length, print_dump=args.dump)
     else:
-        compress(args.infile, args.outfile, length=args.length)
+        compress(args.infile, args.outfile, length=args.length,
+                 print_dump=args.dump)
         
