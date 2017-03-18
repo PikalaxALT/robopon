@@ -8169,44 +8169,44 @@ Func_68b6: ; 68b6 (1:68b6)
 	ld hl, Data_66f6
 	add hl, de
 	cp $7
-	jr nz, .asm_68ce
+	jr nz, .get_character
 	ld a, [hl]
 	pop hl
 	pop de
 	ld [hli], a
 	ret
 
-.asm_68ce
+.get_character
 	ld a, [hl]
 	pop hl
 	pop de
 	bit 0, b
-	jr nz, .asm_68dc
+	jr nz, .no_hira
 	bit 0, c
-	jr z, .asm_68dc
-	ld [hl], $28
+	jr z, .no_hira
+	ld [hl], "<HIRA>"
 	inc hl
-.asm_68dc
+.no_hira
 	bit 0, b
-	jr z, .asm_68e7
+	jr z, .no_kata
 	bit 0, c
-	jr nz, .asm_68e7
-	ld [hl], $29
+	jr nz, .no_kata
+	ld [hl], "<KATA>"
 	inc hl
-.asm_68e7
+.no_kata
 	ld [hli], a
 	bit 2, c
-	jr z, .asm_68f1
+	jr z, .test_handakuten
 	ld a, $df
 	ld [hli], a
-	jr .asm_68f8
+	jr .done_dakuten
 
-.asm_68f1
+.test_handakuten
 	bit 1, c
-	jr z, .asm_68f8
+	jr z, .done_dakuten
 	ld a, $de
 	ld [hli], a
-.asm_68f8
+.done_dakuten
 	ld a, c
 	and $1
 	ld b, a
