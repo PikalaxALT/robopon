@@ -43,7 +43,10 @@ wVBlankCallbackAddress:: ds $2 ; c226
 wDecompressEndAddress:: ds $2 ; c228
 wDecompressLiteralCopySize:: ds $2 ; c22a
 wDecompresLiteralCopyOffsetHi:: ds $1 ; c22c
-	ds $c
+	ds $8
+
+wPoncotPicAlignment:: ds $1 ; c235
+	ds $3
 
 video_transfer_queue: MACRO
 \1::

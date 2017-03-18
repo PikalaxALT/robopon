@@ -1,6 +1,8 @@
 PYTHON := python2.7
 MD5 := md5sum -c --quiet
 
+RZ       := $(PYTHON) rz.py compress
+TM       := $(PYTHON) tm2bpp.py furl
 2bpp     := $(PYTHON) gfx.py 2bpp
 1bpp     := $(PYTHON) gfx.py 1bpp
 includes := $(PYTHON) scan_includes.py
@@ -43,9 +45,17 @@ clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' \) -exec rm {} +
 
 %.asm: ;
+%.tm: ;
+%.png: ;
 
 %.2bpp: %.png
 	$(2bpp) $<
+
+%.tm2bpp: %.2bpp
+	$(TM) $< $@
+
+%.rz: %
+	$(RZ) $< $@
 
 $(sun_objs): %_sun.o: %.asm $$(%_dep)
 	rgbasm -h -D SUN -o $@ $*.asm

@@ -2147,6 +2147,9 @@ Decompress_ReadCBits: ; 124e (0:124e)
 	ret
 
 Decompress: ; 1263 (0:1263)
+	; source hl
+	; dest de
+	; size bc
 	ld a, c
 	add e
 	ld [wDecompressEndAddress + 1], a
@@ -2339,14 +2342,14 @@ Decompress: ; 1263 (0:1263)
 .done
 	ret
 
-Func_138d:
+DecompressRequestRoboponPic:
 	; index a
 	; destination de
 	push hl
 	ld l, a
 	ld a, [hROMBank]
 	push af
-	ld a, BANK(Data_e8000)
+	ld a, BANK(PoncotPicHeaders)
 	call BankSwitch
 	push bc
 	push de
@@ -2355,7 +2358,7 @@ Func_138d:
 	rl h
 	sla l
 	rl h
-	ld bc, Data_e8000
+	ld bc, PoncotPicHeaders
 	add hl, bc
 	ld a, [hli]
 	ld c, [hl]
@@ -2395,9 +2398,9 @@ Func_138d:
 	ld c, l
 	ld b, h
 	pop hl
-	ld a, BANK(Func_65db)
+	ld a, BANK(FixAndLoadPoncotPicWithTilemap)
 	call BankSwitch
-	call Func_65db
+	call FixAndLoadPoncotPicWithTilemap
 	pop af
 	call BankSwitch
 	pop hl
@@ -7920,12 +7923,19 @@ Func_6493:
 	dec hl
 	ret
 
-Func_65db: ; 65db (1:65db)
-	ld a, [$c235]
+FixAndLoadPoncotPicWithTilemap: ; 65db (1:65db)
+; hl - VTile coordinate for Poncot pic loading
+; de - Address where the decompressed Poncot pic lives
+; bc - Size of pic (only used if fixing alignment, see below)
+; [wPoncotPicAlignment] - If nonzero, don't fix alignment.
+;                         Otherwise, if loading the enemy
+;                         pic into $8cc0, reverse its
+;                         facing.
+	ld a, [wPoncotPicAlignment]
 	or a
 	jr nz, .next
 	ld a, h
-	cp $89
+	cp $89 ; monster gfx are loaded into VRAM at either $89b0 or $8cc0.
 	jr z, .next
 	push de
 	push hl
@@ -7957,32 +7967,32 @@ ENDR
 	ld a, h
 	ld c, $9b
 	cp $89
-	jr z, .asm_661f
+	jr z, .got_tile_start
 	ld c, $cc
-.asm_661f
+.got_tile_start
 	ld hl, -$40
 	add hl, de
 	push hl
 	ld b, $40
-.asm_6626
+.copy_tilemap
 	ld a, [hl]
 	or a
-	jr z, .asm_662e
+	jr z, .next_tile
 	ld a, $8f
-	jr .asm_6630
+	jr .load
 
-.asm_662e
+.next_tile
 	ld a, c
 	inc c
-.asm_6630
+.load
 	ld [hli], a
 	dec b
-	jr nz, .asm_6626
+	jr nz, .copy_tilemap
 	pop hl
 	pop af
 	cp $89
 	jr z, .quit
-	ld a, [$c235]
+	ld a, [wPoncotPicAlignment]
 	or a
 	jr nz, .quit
 	ld e, l
