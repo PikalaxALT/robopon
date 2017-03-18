@@ -1,214 +1,212 @@
-SECTION "Poncot Pic Headers", ROMX [$4000], BANK [$3a]
-PoncotPicHeaders::
-poncot_pic_header: MACRO
+pic_header: MACRO
 	db BANK(\1)
 	db (\2 - $40) >> 4
 	dw \1
 	ENDM
 
-	poncot_pic_header PoncotPic_00, $280
-	poncot_pic_header PoncotPic_01, $280
-	poncot_pic_header PoncotPic_02, $350
-	poncot_pic_header PoncotPic_03, $130
-	poncot_pic_header PoncotPic_04, $310
-	poncot_pic_header PoncotPic_05, $280
-	poncot_pic_header PoncotPic_06, $220
-	poncot_pic_header PoncotPic_07, $110
-	poncot_pic_header PoncotPic_08, $130
-	poncot_pic_header PoncotPic_09, $320
-	poncot_pic_header PoncotPic_0a, $120
-	poncot_pic_header PoncotPic_0b, $130
-	poncot_pic_header PoncotPic_0c, $330
-	poncot_pic_header PoncotPic_0d, $130
-	poncot_pic_header PoncotPic_0e, $210
-	poncot_pic_header PoncotPic_0f, $120
-	poncot_pic_header PoncotPic_10, $250
-	poncot_pic_header PoncotPic_11, $2a0
-	poncot_pic_header PoncotPic_12, $290
-	poncot_pic_header PoncotPic_13, $110
-	poncot_pic_header PoncotPic_14, $2a0
-	poncot_pic_header PoncotPic_15, $240
-	poncot_pic_header PoncotPic_16, $260
-	poncot_pic_header PoncotPic_17, $210
-	poncot_pic_header PoncotPic_18, $1e0
-	poncot_pic_header PoncotPic_19, $1a0
-	poncot_pic_header PoncotPic_1a, $160
-	poncot_pic_header PoncotPic_1b, $280
-	poncot_pic_header PoncotPic_1c, $120
-	poncot_pic_header PoncotPic_1d, $d0
-	poncot_pic_header PoncotPic_1e, $290
-	poncot_pic_header PoncotPic_1f, $2a0
-	poncot_pic_header PoncotPic_20, $320
-	poncot_pic_header PoncotPic_21, $120
-	poncot_pic_header PoncotPic_22, $350
-	poncot_pic_header PoncotPic_23, $140
-	poncot_pic_header PoncotPic_24, $200
-	poncot_pic_header PoncotPic_25, $290
-	poncot_pic_header PoncotPic_26, $340
-	poncot_pic_header PoncotPic_27, $2f0
-	poncot_pic_header PoncotPic_28, $2c0
-	poncot_pic_header PoncotPic_29, $130
-	poncot_pic_header PoncotPic_2a, $230
-	poncot_pic_header PoncotPic_2b, $350
-	poncot_pic_header PoncotPic_2c, $290
-	poncot_pic_header PoncotPic_2d, $270
-	poncot_pic_header PoncotPic_2e, $2e0
-	poncot_pic_header PoncotPic_2f, $120
-	poncot_pic_header PoncotPic_30, $210
-	poncot_pic_header PoncotPic_31, $350
-	poncot_pic_header PoncotPic_32, $120
-	poncot_pic_header PoncotPic_33, $140
-	poncot_pic_header PoncotPic_34, $210
-	poncot_pic_header PoncotPic_35, $300
-	poncot_pic_header PoncotPic_36, $220
-	poncot_pic_header PoncotPic_37, $1d0
-	poncot_pic_header PoncotPic_38, $290
-	poncot_pic_header PoncotPic_39, $1c0
-	poncot_pic_header PoncotPic_3a, $350
-	poncot_pic_header PoncotPic_3b, $280
-	poncot_pic_header PoncotPic_3c, $260
-	poncot_pic_header PoncotPic_3d, $220
-	poncot_pic_header PoncotPic_3e, $110
-	poncot_pic_header PoncotPic_3f, $290
-	poncot_pic_header PoncotPic_40, $210
-	poncot_pic_header PoncotPic_41, $c0
-	poncot_pic_header PoncotPic_42, $e0
-	poncot_pic_header PoncotPic_43, $250
-	poncot_pic_header PoncotPic_44, $140
-	poncot_pic_header PoncotPic_45, $270
-	poncot_pic_header PoncotPic_46, $f0
-	poncot_pic_header PoncotPic_47, $110
-	poncot_pic_header PoncotPic_48, $200
-	poncot_pic_header PoncotPic_49, $250
-	poncot_pic_header PoncotPic_4a, $230
-	poncot_pic_header PoncotPic_4b, $240
-	poncot_pic_header PoncotPic_4c, $280
-	poncot_pic_header PoncotPic_4d, $2c0
-	poncot_pic_header PoncotPic_4e, $130
-	poncot_pic_header PoncotPic_4f, $1e0
-	poncot_pic_header PoncotPic_50, $100
-	poncot_pic_header PoncotPic_51, $260
-	poncot_pic_header PoncotPic_52, $1f0
-	poncot_pic_header PoncotPic_53, $150
-	poncot_pic_header PoncotPic_54, $200
-	poncot_pic_header PoncotPic_55, $2e0
-	poncot_pic_header PoncotPic_56, $130
-	poncot_pic_header PoncotPic_57, $200
-	poncot_pic_header PoncotPic_58, $310
-	poncot_pic_header PoncotPic_59, $120
-	poncot_pic_header PoncotPic_5a, $200
-	poncot_pic_header PoncotPic_5b, $180
-	poncot_pic_header PoncotPic_5c, $220
-	poncot_pic_header PoncotPic_5d, $160
-	poncot_pic_header PoncotPic_5e, $1d0
-	poncot_pic_header PoncotPic_5f, $340
-	poncot_pic_header PoncotPic_60, $160
-	poncot_pic_header PoncotPic_61, $e0
-	poncot_pic_header PoncotPic_62, $1c0
-	poncot_pic_header PoncotPic_63, $250
-	poncot_pic_header PoncotPic_64, $140
-	poncot_pic_header PoncotPic_65, $240
-	poncot_pic_header PoncotPic_66, $250
-	poncot_pic_header PoncotPic_67, $120
-	poncot_pic_header PoncotPic_68, $140
-	poncot_pic_header PoncotPic_69, $260
-	poncot_pic_header PoncotPic_6a, $140
-	poncot_pic_header PoncotPic_6b, $160
-	poncot_pic_header PoncotPic_6c, $1f0
-	poncot_pic_header PoncotPic_6d, $320
-	poncot_pic_header PoncotPic_6e, $290
-	poncot_pic_header PoncotPic_6f, $1e0
-	poncot_pic_header PoncotPic_70, $130
-	poncot_pic_header PoncotPic_71, $280
-	poncot_pic_header PoncotPic_72, $130
-	poncot_pic_header PoncotPic_73, $110
-	poncot_pic_header PoncotPic_74, $250
-	poncot_pic_header PoncotPic_75, $130
-	poncot_pic_header PoncotPic_76, $180
-	poncot_pic_header PoncotPic_77, $130
-	poncot_pic_header PoncotPic_78, $2b0
-	poncot_pic_header PoncotPic_79, $130
-	poncot_pic_header PoncotPic_7a, $240
-	poncot_pic_header PoncotPic_7b, $210
-	poncot_pic_header PoncotPic_7c, $270
-	poncot_pic_header PoncotPic_7d, $200
-	poncot_pic_header PoncotPic_7e, $1f0
-	poncot_pic_header PoncotPic_7f, $100
-	poncot_pic_header PoncotPic_80, $180
-	poncot_pic_header PoncotPic_81, $2d0
-	poncot_pic_header PoncotPic_82, $120
-	poncot_pic_header PoncotPic_83, $140
-	poncot_pic_header PoncotPic_84, $1f0
-	poncot_pic_header PoncotPic_85, $300
-	poncot_pic_header PoncotPic_86, $120
-	poncot_pic_header PoncotPic_87, $250
-	poncot_pic_header PoncotPic_88, $320
-	poncot_pic_header PoncotPic_89, $140
-	poncot_pic_header PoncotPic_8a, $1e0
-	poncot_pic_header PoncotPic_8b, $220
-	poncot_pic_header PoncotPic_8c, $210
-	poncot_pic_header PoncotPic_8d, $1f0
-	poncot_pic_header PoncotPic_8e, $1f0
-	poncot_pic_header PoncotPic_8f, $170
-	poncot_pic_header PoncotPic_90, $120
-	poncot_pic_header PoncotPic_91, $130
-	poncot_pic_header PoncotPic_92, $1e0
-	poncot_pic_header PoncotPic_93, $1f0
-	poncot_pic_header PoncotPic_94, $250
-	poncot_pic_header PoncotPic_95, $200
-	poncot_pic_header PoncotPic_96, $220
-	poncot_pic_header PoncotPic_97, $1e0
-	poncot_pic_header PoncotPic_98, $200
-	poncot_pic_header PoncotPic_99, $310
-	poncot_pic_header PoncotPic_9a, $2e0
-	poncot_pic_header PoncotPic_9b, $270
-	poncot_pic_header PoncotPic_9c, $190
-	poncot_pic_header PoncotPic_9d, $300
-	poncot_pic_header PoncotPic_9e, $180
-	poncot_pic_header PoncotPic_9f, $330
-	poncot_pic_header PoncotPic_a0, $1f0
-	poncot_pic_header PoncotPic_a1, $210
-	poncot_pic_header PoncotPic_a2, $210
-	poncot_pic_header PoncotPic_a3, $240
-	poncot_pic_header PoncotPic_a4, $1e0
-	poncot_pic_header PoncotPic_a5, $280
-	poncot_pic_header PoncotPic_a6, $270
-	poncot_pic_header PoncotPic_a7, $220
-	poncot_pic_header PoncotPic_a8, $280
-	poncot_pic_header PoncotPic_a9, $310
-	dbbw $00, $00, $0000
-	dbbw $00, $00, $0000
-	dbbw $00, $00, $0000
-	dbbw $00, $00, $0000
-	poncot_pic_header PoncotPic_ae, $230
-	poncot_pic_header PoncotPic_af, $240
-	poncot_pic_header PoncotPic_b0, $260
-	poncot_pic_header PoncotPic_b1, $220
-	poncot_pic_header PoncotPic_b2, $1f0
-	poncot_pic_header PoncotPic_b3, $220
-	poncot_pic_header PoncotPic_b4, $260
-	poncot_pic_header PoncotPic_b5, $2a0
-	poncot_pic_header PoncotPic_b6, $2b0
-	poncot_pic_header PoncotPic_b7, $340
-	poncot_pic_header PoncotPic_b8, $230
-	poncot_pic_header PoncotPic_b9, $160
-	poncot_pic_header PoncotPic_ba, $270
-	poncot_pic_header PoncotPic_bb, $1d0
-	poncot_pic_header PoncotPic_bc, $300
-	poncot_pic_header PoncotPic_bd, $230
-	poncot_pic_header PoncotPic_be, $260
-	poncot_pic_header PoncotPic_bf, $2f0
-	poncot_pic_header PoncotPic_c0, $1f0
-	poncot_pic_header PoncotPic_c1, $280
-	poncot_pic_header PoncotPic_c2, $1d0
-	poncot_pic_header PoncotPic_c3, $2a0
-	poncot_pic_header PoncotPic_c4, $230
-	poncot_pic_header PoncotPic_c5, $230
-	poncot_pic_header PoncotPic_c6, $200
-	poncot_pic_header PoncotPic_c7, $200
-	poncot_pic_header PoncotPic_c8, $280
-	poncot_pic_header PoncotPic_c9, $220
-	poncot_pic_header PoncotPic_ca, $270
+SECTION "Poncot Pic Headers", ROMX [$4000], BANK [$3a]
+PoncotPicHeaders::
+	pic_header PoncotPic_00, $280
+	pic_header PoncotPic_01, $280
+	pic_header PoncotPic_02, $350
+	pic_header PoncotPic_03, $130
+	pic_header PoncotPic_04, $310
+	pic_header PoncotPic_05, $280
+	pic_header PoncotPic_06, $220
+	pic_header PoncotPic_07, $110
+	pic_header PoncotPic_08, $130
+	pic_header PoncotPic_09, $320
+	pic_header PoncotPic_0a, $120
+	pic_header PoncotPic_0b, $130
+	pic_header PoncotPic_0c, $330
+	pic_header PoncotPic_0d, $130
+	pic_header PoncotPic_0e, $210
+	pic_header PoncotPic_0f, $120
+	pic_header PoncotPic_10, $250
+	pic_header PoncotPic_11, $2a0
+	pic_header PoncotPic_12, $290
+	pic_header PoncotPic_13, $110
+	pic_header PoncotPic_14, $2a0
+	pic_header PoncotPic_15, $240
+	pic_header PoncotPic_16, $260
+	pic_header PoncotPic_17, $210
+	pic_header PoncotPic_18, $1e0
+	pic_header PoncotPic_19, $1a0
+	pic_header PoncotPic_1a, $160
+	pic_header PoncotPic_1b, $280
+	pic_header PoncotPic_1c, $120
+	pic_header PoncotPic_1d, $d0
+	pic_header PoncotPic_1e, $290
+	pic_header PoncotPic_1f, $2a0
+	pic_header PoncotPic_20, $320
+	pic_header PoncotPic_21, $120
+	pic_header PoncotPic_22, $350
+	pic_header PoncotPic_23, $140
+	pic_header PoncotPic_24, $200
+	pic_header PoncotPic_25, $290
+	pic_header PoncotPic_26, $340
+	pic_header PoncotPic_27, $2f0
+	pic_header PoncotPic_28, $2c0
+	pic_header PoncotPic_29, $130
+	pic_header PoncotPic_2a, $230
+	pic_header PoncotPic_2b, $350
+	pic_header PoncotPic_2c, $290
+	pic_header PoncotPic_2d, $270
+	pic_header PoncotPic_2e, $2e0
+	pic_header PoncotPic_2f, $120
+	pic_header PoncotPic_30, $210
+	pic_header PoncotPic_31, $350
+	pic_header PoncotPic_32, $120
+	pic_header PoncotPic_33, $140
+	pic_header PoncotPic_34, $210
+	pic_header PoncotPic_35, $300
+	pic_header PoncotPic_36, $220
+	pic_header PoncotPic_37, $1d0
+	pic_header PoncotPic_38, $290
+	pic_header PoncotPic_39, $1c0
+	pic_header PoncotPic_3a, $350
+	pic_header PoncotPic_3b, $280
+	pic_header PoncotPic_3c, $260
+	pic_header PoncotPic_3d, $220
+	pic_header PoncotPic_3e, $110
+	pic_header PoncotPic_3f, $290
+	pic_header PoncotPic_40, $210
+	pic_header PoncotPic_41, $c0
+	pic_header PoncotPic_42, $e0
+	pic_header PoncotPic_43, $250
+	pic_header PoncotPic_44, $140
+	pic_header PoncotPic_45, $270
+	pic_header PoncotPic_46, $f0
+	pic_header PoncotPic_47, $110
+	pic_header PoncotPic_48, $200
+	pic_header PoncotPic_49, $250
+	pic_header PoncotPic_4a, $230
+	pic_header PoncotPic_4b, $240
+	pic_header PoncotPic_4c, $280
+	pic_header PoncotPic_4d, $2c0
+	pic_header PoncotPic_4e, $130
+	pic_header PoncotPic_4f, $1e0
+	pic_header PoncotPic_50, $100
+	pic_header PoncotPic_51, $260
+	pic_header PoncotPic_52, $1f0
+	pic_header PoncotPic_53, $150
+	pic_header PoncotPic_54, $200
+	pic_header PoncotPic_55, $2e0
+	pic_header PoncotPic_56, $130
+	pic_header PoncotPic_57, $200
+	pic_header PoncotPic_58, $310
+	pic_header PoncotPic_59, $120
+	pic_header PoncotPic_5a, $200
+	pic_header PoncotPic_5b, $180
+	pic_header PoncotPic_5c, $220
+	pic_header PoncotPic_5d, $160
+	pic_header PoncotPic_5e, $1d0
+	pic_header PoncotPic_5f, $340
+	pic_header PoncotPic_60, $160
+	pic_header PoncotPic_61, $e0
+	pic_header PoncotPic_62, $1c0
+	pic_header PoncotPic_63, $250
+	pic_header PoncotPic_64, $140
+	pic_header PoncotPic_65, $240
+	pic_header PoncotPic_66, $250
+	pic_header PoncotPic_67, $120
+	pic_header PoncotPic_68, $140
+	pic_header PoncotPic_69, $260
+	pic_header PoncotPic_6a, $140
+	pic_header PoncotPic_6b, $160
+	pic_header PoncotPic_6c, $1f0
+	pic_header PoncotPic_6d, $320
+	pic_header PoncotPic_6e, $290
+	pic_header PoncotPic_6f, $1e0
+	pic_header PoncotPic_70, $130
+	pic_header PoncotPic_71, $280
+	pic_header PoncotPic_72, $130
+	pic_header PoncotPic_73, $110
+	pic_header PoncotPic_74, $250
+	pic_header PoncotPic_75, $130
+	pic_header PoncotPic_76, $180
+	pic_header PoncotPic_77, $130
+	pic_header PoncotPic_78, $2b0
+	pic_header PoncotPic_79, $130
+	pic_header PoncotPic_7a, $240
+	pic_header PoncotPic_7b, $210
+	pic_header PoncotPic_7c, $270
+	pic_header PoncotPic_7d, $200
+	pic_header PoncotPic_7e, $1f0
+	pic_header PoncotPic_7f, $100
+	pic_header PoncotPic_80, $180
+	pic_header PoncotPic_81, $2d0
+	pic_header PoncotPic_82, $120
+	pic_header PoncotPic_83, $140
+	pic_header PoncotPic_84, $1f0
+	pic_header PoncotPic_85, $300
+	pic_header PoncotPic_86, $120
+	pic_header PoncotPic_87, $250
+	pic_header PoncotPic_88, $320
+	pic_header PoncotPic_89, $140
+	pic_header PoncotPic_8a, $1e0
+	pic_header PoncotPic_8b, $220
+	pic_header PoncotPic_8c, $210
+	pic_header PoncotPic_8d, $1f0
+	pic_header PoncotPic_8e, $1f0
+	pic_header PoncotPic_8f, $170
+	pic_header PoncotPic_90, $120
+	pic_header PoncotPic_91, $130
+	pic_header PoncotPic_92, $1e0
+	pic_header PoncotPic_93, $1f0
+	pic_header PoncotPic_94, $250
+	pic_header PoncotPic_95, $200
+	pic_header PoncotPic_96, $220
+	pic_header PoncotPic_97, $1e0
+	pic_header PoncotPic_98, $200
+	pic_header PoncotPic_99, $310
+	pic_header PoncotPic_9a, $2e0
+	pic_header PoncotPic_9b, $270
+	pic_header PoncotPic_9c, $190
+	pic_header PoncotPic_9d, $300
+	pic_header PoncotPic_9e, $180
+	pic_header PoncotPic_9f, $330
+	pic_header PoncotPic_a0, $1f0
+	pic_header PoncotPic_a1, $210
+	pic_header PoncotPic_a2, $210
+	pic_header PoncotPic_a3, $240
+	pic_header PoncotPic_a4, $1e0
+	pic_header PoncotPic_a5, $280
+	pic_header PoncotPic_a6, $270
+	pic_header PoncotPic_a7, $220
+	pic_header PoncotPic_a8, $280
+	pic_header PoncotPic_a9, $310
+
+SECTION "Trainer Pic Headers", ROMX [$42b8], BANK [$3a]
+	pic_header TrainerPic_ae, $230
+	pic_header TrainerPic_af, $240
+	pic_header TrainerPic_b0, $260
+	pic_header TrainerPic_b1, $220
+	pic_header TrainerPic_b2, $1f0
+	pic_header TrainerPic_b3, $220
+	pic_header TrainerPic_b4, $260
+	pic_header TrainerPic_b5, $2a0
+	pic_header TrainerPic_b6, $2b0
+	pic_header TrainerPic_b7, $340
+	pic_header TrainerPic_b8, $230
+	pic_header TrainerPic_b9, $160
+	pic_header TrainerPic_ba, $270
+	pic_header TrainerPic_bb, $1d0
+	pic_header TrainerPic_bc, $300
+	pic_header TrainerPic_bd, $230
+	pic_header TrainerPic_be, $260
+	pic_header TrainerPic_bf, $2f0
+	pic_header TrainerPic_c0, $1f0
+	pic_header TrainerPic_c1, $280
+	pic_header TrainerPic_c2, $1d0
+	pic_header TrainerPic_c3, $2a0
+	pic_header TrainerPic_c4, $230
+	pic_header TrainerPic_c5, $230
+	pic_header TrainerPic_c6, $200
+	pic_header TrainerPic_c7, $200
+	pic_header TrainerPic_c8, $280
+	pic_header TrainerPic_c9, $220
+	pic_header TrainerPic_ca, $270
 
 SECTION "Poncot Pics 1", ROMX [$432c], BANK [$3a]
 PoncotPic_00: ; e832c (3a:432c)
@@ -724,90 +722,90 @@ INCBIN "gfx/pic/poncot/poncot_a8.tm2bpp.rz"
 PoncotPic_a9: ; f7d20 (3d:7d20)
 INCBIN "gfx/pic/poncot/poncot_a9.tm2bpp.rz"
 
-SECTION "Poncot Pics 5", ROMX [$4000], BANK [$3e]
-PoncotPic_ae: ; f8000 (3e:4000)
-INCBIN "gfx/pic/poncot/poncot_ae.tm2bpp.rz"
+SECTION "Trainer Pics", ROMX [$4000], BANK [$3e]
+TrainerPic_ae: ; f8000 (3e:4000)
+INCBIN "gfx/pic/trainer/trainer_ae.tm2bpp.rz"
 
-PoncotPic_af: ; f81c4 (3e:41c4)
-INCBIN "gfx/pic/poncot/poncot_af.tm2bpp.rz"
+TrainerPic_af: ; f81c4 (3e:41c4)
+INCBIN "gfx/pic/trainer/trainer_af.tm2bpp.rz"
 
-PoncotPic_b0: ; f8332 (3e:4332)
-INCBIN "gfx/pic/poncot/poncot_b0.tm2bpp.rz"
+TrainerPic_b0: ; f8332 (3e:4332)
+INCBIN "gfx/pic/trainer/trainer_b0.tm2bpp.rz"
 
-PoncotPic_b1: ; f84f3 (3e:44f3)
-INCBIN "gfx/pic/poncot/poncot_b1.tm2bpp.rz"
+TrainerPic_b1: ; f84f3 (3e:44f3)
+INCBIN "gfx/pic/trainer/trainer_b1.tm2bpp.rz"
 
-PoncotPic_b2: ; f8685 (3e:4685)
-INCBIN "gfx/pic/poncot/poncot_b2.tm2bpp.rz"
+TrainerPic_b2: ; f8685 (3e:4685)
+INCBIN "gfx/pic/trainer/trainer_b2.tm2bpp.rz"
 
-PoncotPic_b3: ; f87e1 (3e:47e1)
-INCBIN "gfx/pic/poncot/poncot_b3.tm2bpp.rz"
+TrainerPic_b3: ; f87e1 (3e:47e1)
+INCBIN "gfx/pic/trainer/trainer_b3.tm2bpp.rz"
 
-PoncotPic_b4: ; f8956 (3e:4956)
-INCBIN "gfx/pic/poncot/poncot_b4.tm2bpp.rz"
+TrainerPic_b4: ; f8956 (3e:4956)
+INCBIN "gfx/pic/trainer/trainer_b4.tm2bpp.rz"
 
-PoncotPic_b5: ; f8afd (3e:4afd)
-INCBIN "gfx/pic/poncot/poncot_b5.tm2bpp.rz"
+TrainerPic_b5: ; f8afd (3e:4afd)
+INCBIN "gfx/pic/trainer/trainer_b5.tm2bpp.rz"
 
-PoncotPic_b6: ; f8ceb (3e:4ceb)
-INCBIN "gfx/pic/poncot/poncot_b6.tm2bpp.rz"
+TrainerPic_b6: ; f8ceb (3e:4ceb)
+INCBIN "gfx/pic/trainer/trainer_b6.tm2bpp.rz"
 
-PoncotPic_b7: ; f8ec5 (3e:4ec5)
-INCBIN "gfx/pic/poncot/poncot_b7.tm2bpp.rz"
+TrainerPic_b7: ; f8ec5 (3e:4ec5)
+INCBIN "gfx/pic/trainer/trainer_b7.tm2bpp.rz"
 
-PoncotPic_b8: ; f90f4 (3e:50f4)
-INCBIN "gfx/pic/poncot/poncot_b8.tm2bpp.rz"
+TrainerPic_b8: ; f90f4 (3e:50f4)
+INCBIN "gfx/pic/trainer/trainer_b8.tm2bpp.rz"
 
-PoncotPic_b9: ; f9259 (3e:5259)
-INCBIN "gfx/pic/poncot/poncot_b9.tm2bpp.rz"
+TrainerPic_b9: ; f9259 (3e:5259)
+INCBIN "gfx/pic/trainer/trainer_b9.tm2bpp.rz"
 
-PoncotPic_ba: ; f9327 (3e:5327)
-INCBIN "gfx/pic/poncot/poncot_ba.tm2bpp.rz"
+TrainerPic_ba: ; f9327 (3e:5327)
+INCBIN "gfx/pic/trainer/trainer_ba.tm2bpp.rz"
 
-PoncotPic_bb: ; f94de (3e:54de)
-INCBIN "gfx/pic/poncot/poncot_bb.tm2bpp.rz"
+TrainerPic_bb: ; f94de (3e:54de)
+INCBIN "gfx/pic/trainer/trainer_bb.tm2bpp.rz"
 
-PoncotPic_bc: ; f9614 (3e:5614)
-INCBIN "gfx/pic/poncot/poncot_bc.tm2bpp.rz"
+TrainerPic_bc: ; f9614 (3e:5614)
+INCBIN "gfx/pic/trainer/trainer_bc.tm2bpp.rz"
 
-PoncotPic_bd: ; f986a (3e:586a)
-INCBIN "gfx/pic/poncot/poncot_bd.tm2bpp.rz"
+TrainerPic_bd: ; f986a (3e:586a)
+INCBIN "gfx/pic/trainer/trainer_bd.tm2bpp.rz"
 
-PoncotPic_be: ; f9a3b (3e:5a3b)
-INCBIN "gfx/pic/poncot/poncot_be.tm2bpp.rz"
+TrainerPic_be: ; f9a3b (3e:5a3b)
+INCBIN "gfx/pic/trainer/trainer_be.tm2bpp.rz"
 
-PoncotPic_bf: ; f9c0c (3e:5c0c)
-INCBIN "gfx/pic/poncot/poncot_bf.tm2bpp.rz"
+TrainerPic_bf: ; f9c0c (3e:5c0c)
+INCBIN "gfx/pic/trainer/trainer_bf.tm2bpp.rz"
 
-PoncotPic_c0: ; f9e3f (3e:5e3f)
-INCBIN "gfx/pic/poncot/poncot_c0.tm2bpp.rz"
+TrainerPic_c0: ; f9e3f (3e:5e3f)
+INCBIN "gfx/pic/trainer/trainer_c0.tm2bpp.rz"
 
-PoncotPic_c1: ; f9f9b (3e:5f9b)
-INCBIN "gfx/pic/poncot/poncot_c1.tm2bpp.rz"
+TrainerPic_c1: ; f9f9b (3e:5f9b)
+INCBIN "gfx/pic/trainer/trainer_c1.tm2bpp.rz"
 
-PoncotPic_c2: ; fa182 (3e:6182)
-INCBIN "gfx/pic/poncot/poncot_c2.tm2bpp.rz"
+TrainerPic_c2: ; fa182 (3e:6182)
+INCBIN "gfx/pic/trainer/trainer_c2.tm2bpp.rz"
 
-PoncotPic_c3: ; fa2ae (3e:62ae)
-INCBIN "gfx/pic/poncot/poncot_c3.tm2bpp.rz"
+TrainerPic_c3: ; fa2ae (3e:62ae)
+INCBIN "gfx/pic/trainer/trainer_c3.tm2bpp.rz"
 
-PoncotPic_c4: ; fa4a6 (3e:64a6)
-INCBIN "gfx/pic/poncot/poncot_c4.tm2bpp.rz"
+TrainerPic_c4: ; fa4a6 (3e:64a6)
+INCBIN "gfx/pic/trainer/trainer_c4.tm2bpp.rz"
 
-PoncotPic_c5: ; fa64d (3e:664d)
-INCBIN "gfx/pic/poncot/poncot_c5.tm2bpp.rz"
+TrainerPic_c5: ; fa64d (3e:664d)
+INCBIN "gfx/pic/trainer/trainer_c5.tm2bpp.rz"
 
-PoncotPic_c6: ; fa7f4 (3e:67f4)
-INCBIN "gfx/pic/poncot/poncot_c6.tm2bpp.rz"
+TrainerPic_c6: ; fa7f4 (3e:67f4)
+INCBIN "gfx/pic/trainer/trainer_c6.tm2bpp.rz"
 
-PoncotPic_c7: ; fa953 (3e:6953)
-INCBIN "gfx/pic/poncot/poncot_c7.tm2bpp.rz"
+TrainerPic_c7: ; fa953 (3e:6953)
+INCBIN "gfx/pic/trainer/trainer_c7.tm2bpp.rz"
 
-PoncotPic_c8: ; faaaa (3e:6aaa)
-INCBIN "gfx/pic/poncot/poncot_c8.tm2bpp.rz"
+TrainerPic_c8: ; faaaa (3e:6aaa)
+INCBIN "gfx/pic/trainer/trainer_c8.tm2bpp.rz"
 
-PoncotPic_c9: ; fac61 (3e:6c61)
-INCBIN "gfx/pic/poncot/poncot_c9.tm2bpp.rz"
+TrainerPic_c9: ; fac61 (3e:6c61)
+INCBIN "gfx/pic/trainer/trainer_c9.tm2bpp.rz"
 
-PoncotPic_ca: ; fadef (3e:6def)
-INCBIN "gfx/pic/poncot/poncot_ca.tm2bpp.rz"
+TrainerPic_ca: ; fadef (3e:6def)
+INCBIN "gfx/pic/trainer/trainer_ca.tm2bpp.rz"
