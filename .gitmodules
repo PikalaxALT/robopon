@@ -3,4 +3,4 @@
 	url = git@github.com:pret/pokemon-reverse-engineering-tools
 [submodule "extras"]
 	path = extras
-	url = git@github.com:pret/pokemon-reverse-engineering-tools
+	url = https://github.com/pret/pokemon-reverse-engineering-tools
