@@ -42,7 +42,7 @@ tidy:
 	rm -f $(sun) $(star) $(sun_objs) $(star_objs) $(roms:.gbc=.sym) $(roms:.gbc=.map)
 
 clean: tidy
-	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' \) -exec rm {} +
+	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' \) -exec rm {} +
 
 %.asm: ;
 %.tm: ;
