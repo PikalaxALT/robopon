@@ -1,4 +1,4 @@
-Func_1494: ; 1494 (0:1494)
+LiteralStringInTree: ; 1494 (0:1494)
 	ld a, [hROMBank]
 	push af
 	ld b, $0
@@ -358,10 +358,10 @@ CheckDict:
 	pop de
 	jp PlaceNextCharacter
 
-PrintMapText:
+PrintCharacterFromTree:
 	ld a, [hROMBank]
 	push af
-	ld a, BANK(Pointers_38000)
+	ld a, BANK(TextTreeBitstreams)
 	call BankSwitch
 	push hl
 	ld c, [hl]
@@ -371,15 +371,21 @@ PrintMapText:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	; hl = pointer
+	; bc = pointer table index if hl == $ffff
+	; otherwise:
+	;     b = number of bits remaining on current byte (bits 5-7),
+	;         bank (bits 0-4)
+	;     c = last byte read (with bits remaining)
 	inc a
-	jr nz, .asm_1698
+	jr nz, .addr_okay
 	xor h
 	inc a
-	jr nz, .asm_1698
+	jr nz, .addr_okay
 	ld l, c
 	ld h, b
 	add hl, hl
-	ld bc, Pointers_38000
+	ld bc, TextTreeBitstreams
 	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
@@ -390,13 +396,13 @@ PrintMapText:
 	rla
 	sla b
 	rla
-	add $e
+	add BANK(TextTreeBitstreams)
 	ld b, a
 	call BankSwitch
 	res 7, h
 	set 6, h
 	ld c, [hl]
-.asm_1698
+.addr_okay
 	ld a, b
 	and $1f
 	call BankSwitch
@@ -410,462 +416,498 @@ PrintMapText:
 	jr z, .loop
 	ld b, a
 .loop
-	call LeftShiftInLargeBitField
-	jp c, .asm_1845
-	call LeftShiftInLargeBitField
-	jp c, .asm_1775
-	call LeftShiftInLargeBitField
-	jp c, .asm_1701
-	call LeftShiftInLargeBitField
-	jr c, .asm_16e8
-	call LeftShiftInLargeBitField
-	jr c, .asm_16e3
-	call LeftShiftInLargeBitField
-	jr c, .asm_16de
-	call LeftShiftInLargeBitField
-	jr c, .asm_16d9
+	call .GetNextBit
+	jp c, .bits1
+	call .GetNextBit
+	jp c, .bits01
+	call .GetNextBit
+	jp c, .bits001
+	call .GetNextBit
+	jr c, .bits0001
+	call .GetNextBit
+	jr c, .bits00001
+	call .GetNextBit
+	jr c, .bits000001
+	call .GetNextBit
+	jr c, .bits0000001
+	; 0000000
 	ld a, "ふ"
 	jp .queue_character
 
-.asm_16d9
+.bits0000001
 	ld a, "ひ"
 	jp .queue_character
 
-.asm_16de
+.bits000001
 	ld a, "す"
 	jp .queue_character
 
-.asm_16e3
+.bits00001
 	ld a, "な"
 	jp .queue_character
 
-.asm_16e8
-	call LeftShiftInLargeBitField
-	jr c, .asm_16fc
-	call LeftShiftInLargeBitField
-	jr c, .asm_16f7
+.bits0001
+	call .GetNextBit
+	jr c, .bits00011
+	call .GetNextBit
+	jr c, .bits000101
+	; 000100
 	ld a, "ま"
 	jp .queue_character
 
-.asm_16f7
+.bits000101
 	ld a, "あ"
 	jp .queue_character
 
-.asm_16fc
+.bits00011
 	ld a, "う"
 	jp .queue_character
 
-.asm_1701: ; 1701 (0:1701)
-	call LeftShiftInLargeBitField
-	jp c, .asm_1752
-	call LeftShiftInLargeBitField
-	jr c, .asm_1725
-	call LeftShiftInLargeBitField
-	jr c, .asm_1720
-	call LeftShiftInLargeBitField
-	jr c, .asm_171b
+.bits001
+	call .GetNextBit
+	jp c, .bits0011
+	call .GetNextBit
+	jr c, .bits00101
+	call .GetNextBit
+	jr c, .bits001001
+	call .GetNextBit
+	jr c, .bits0010001
+	; 0010000
 	ld a, "ゃ"
 	jp .queue_character
 
-.asm_171b
+.bits0010001
 	ld a, "み"
 	jp .queue_character
 
-.asm_1720
+.bits001001
 	ld a, "も"
 	jp .queue_character
 
-.asm_1725
-	call LeftShiftInLargeBitField
-	jr c, .asm_174d
-	call LeftShiftInLargeBitField
-	jr c, .asm_1748
-	call LeftShiftInLargeBitField
-	jr c, .asm_1743
-	call LeftShiftInLargeBitField
-	jr c, .asm_173e
+.bits00101
+	call .GetNextBit
+	jr c, .bits001011
+	call .GetNextBit
+	jr c, .bits0010101
+	call .GetNextBit
+	jr c, .bits00101001
+	call .GetNextBit
+	jr c, .bits001010001
+	; 001010000
 	ld a, "ゆ"
 	jp .queue_character
 
-.asm_173e
+.bits001010001
 	ld a, "ぁ"
 	jp .queue_character
 
-.asm_1743
+.bits00101001
 	ld a, "へ"
 	jp .queue_character
 
-.asm_1748
+.bits0010101
 	ld a, "え"
 	jp .queue_character
 
-.asm_174d
+.bits001011
 	ld a, "お"
 	jp .queue_character
 
-.asm_1752: ; 1752 (0:1752)
-	call LeftShiftInLargeBitField
-	jr c, .asm_1770
-	call LeftShiftInLargeBitField
-	jr c, .asm_1761
+.bits0011
+	call .GetNextBit
+	jr c, .bits00111
+	call .GetNextBit
+	jr c, .bits001101
+	; 001100
 	ld a, "き"
 	jp .queue_character
 
-.asm_1761
-	call LeftShiftInLargeBitField
-	jr c, .asm_176b
+.bits001101
+	call .GetNextBit
+	jr c, .bits0011011
+	; 0011010
 	ld a, "や"
 	jp .queue_character
 
-.asm_176b
+.bits0011011
 	ld a, "を"
 	jp .queue_character
 
-.asm_1770
+.bits00111
 	ld a, "と"
 	jp .queue_character
 
-.asm_1775: ; 1775 (0:1775)
-	call LeftShiftInLargeBitField
-	jp c, .asm_17b2
-	call LeftShiftInLargeBitField
-	jr c, .asm_1785
+.bits01
+	call .GetNextBit
+	jp c, .bits011
+	call .GetNextBit
+	jr c, .bits0101
+	; 0100
 	ld a, $a
 	jp .queue_character
 
-.asm_1785
-	call LeftShiftInLargeBitField
-	jr c, .asm_17a3
-	call LeftShiftInLargeBitField
-	jr c, .asm_179e
-	call LeftShiftInLargeBitField
-	jr c, .asm_1799
+.bits0101
+	call .GetNextBit
+	jr c, .bits01011
+	call .GetNextBit
+	jr c, .bits010101
+	call .GetNextBit
+	jr c, .bits0101001
+	; 0101000
 	ld a, "ょ"
 	jp .queue_character
 
-.asm_1799
+.bits0101001
 	ld a, "ﾟ"
 	jp .queue_character
 
-.asm_179e
+.bits010101
 	ld a, "に"
 	jp .queue_character
 
-.asm_17a3
-	call LeftShiftInLargeBitField
-	jr c, .asm_17ad
+.bits01011
+	call .GetNextBit
+	jr c, .bits010111
+	; 010110
 	ld a, $0
 	jp .queue_character
 
-.asm_17ad
+.bits010111
 	ld a, "ー"
 	jp .queue_character
 
-.asm_17b2: ; 17b2 (0:17b2)
-	call LeftShiftInLargeBitField
-	jr c, .asm_17c6
-	call LeftShiftInLargeBitField
-	jr c, .asm_17c1
+.bits011
+	call .GetNextBit
+	jr c, .bits0111
+	call .GetNextBit
+	jr c, .bits01101
+	; 01100
 	ld a, "て"
 	jp .queue_character
 
-.asm_17c1
+.bits01101
 	ld a, "し"
 	jp .queue_character
 
-.asm_17c6
-	call LeftShiftInLargeBitField
-	jp c, .asm_182c
-	call LeftShiftInLargeBitField
-	jr c, .asm_17d6
+.bits0111
+	call .GetNextBit
+	jp c, .bits01111
+	call .GetNextBit
+	jr c, .bits011101
+	; 011100
 	ld a, "…"
 	jp .queue_character
 
-.asm_17d6
-	call LeftShiftInLargeBitField
-	jr c, .asm_17e0
+.bits011101
+	call .GetNextBit
+	jr c, .bits0111011
+	; 0111010
 	ld a, "り"
 	jp .queue_character
 
-.asm_17e0
-	call LeftShiftInLargeBitField
-	jr c, .asm_17ea
+.bits0111011
+	call .GetNextBit
+	jr c, .bits01110111
+	; 01110110
 	ld a, "め"
 	jp .queue_character
 
-.asm_17ea
-	call LeftShiftInLargeBitField
-	jp c, .asm_1827
-	call LeftShiftInLargeBitField
-	jr c, .asm_1818
-	call LeftShiftInLargeBitField
-	jr c, .asm_1813
-	call LeftShiftInLargeBitField
-	jr c, .asm_180e
-	call LeftShiftInLargeBitField
-	jr c, .asm_1809
+.bits01110111
+	call .GetNextBit
+	jp c, .bits011101111
+	call .GetNextBit
+	jr c, .bits0111011101
+	call .GetNextBit
+	jr c, .bits01110111001
+	call .GetNextBit
+	jr c, .bits011101110001
+	call .GetNextBit
+	jr c, .bits0111011100001
+	; 0111011100000
 	ld a, "9"
 	jp .queue_character
 
-.asm_1809
+.bits0111011100001
 	ld a, "ぅ"
 	jp .queue_character
 
-.asm_180e
+.bits011101110001
 	ld a, "ぬ"
 	jp .queue_character
 
-.asm_1813
+.bits01110111001
 	ld a, "8"
 	jp .queue_character
 
-.asm_1818
-	call LeftShiftInLargeBitField
-	jr c, .asm_1822
+.bits0111011101
+	call .GetNextBit
+	jr c, .bits01110111011
+	; 01110111010
 	ld a, "4"
 	jp .queue_character
 
-.asm_1822
+.bits01110111011
 	ld a, "3"
 	jp .queue_character
 
-.asm_1827: ; 1827 (0:1827)
+.bits011101111
 	ld a, $1
 	jp .queue_character
 
-.asm_182c: ; 182c (0:182c)
-	call LeftShiftInLargeBitField
-	jr c, .asm_1836
+.bits01111
+	call .GetNextBit
+	jr c, .bits011111
+	; 011110
 	ld a, "く"
 	jp .queue_character
 
-.asm_1836
-	call LeftShiftInLargeBitField
-	jr c, .asm_1840
+.bits011111
+	call .GetNextBit
+	jr c, .bits0111111
+	; 0111110
 	ld a, "わ"
 	jp .queue_character
 
-.asm_1840
+.bits0111111
 	ld a, "せ"
 	jp .queue_character
 
-.asm_1845: ; 1845 (0:1845)
-	call LeftShiftInLargeBitField
-	jp c, .asm_191b
-	call LeftShiftInLargeBitField
-	jp c, .asm_189c
-	call LeftShiftInLargeBitField
-	jr c, .asm_186f
-	call LeftShiftInLargeBitField
-	jr c, .asm_1860
+.bits1
+	call .GetNextBit
+	jp c, .bits11
+	call .GetNextBit
+	jp c, .bits101
+	call .GetNextBit
+	jr c, .bits1001
+	call .GetNextBit
+	jr c, .bits10001
+	; 10000
 	ld a, "ん"
 	jp .queue_character
 
-.asm_1860
-	call LeftShiftInLargeBitField
-	jr c, .asm_186a
+.bits10001
+	call .GetNextBit
+	jr c, .bits100011
+	; 100010
 	ld a, "る"
 	jp .queue_character
 
-.asm_186a
+.bits100011
 	ld a, "こ"
 	jp .queue_character
 
-.asm_186f
-	call LeftShiftInLargeBitField
-	jr c, .asm_1897
-	call LeftShiftInLargeBitField
-	jr c, .asm_1888
-	call LeftShiftInLargeBitField
-	jr c, .asm_1883
+.bits1001
+	call .GetNextBit
+	jr c, .bits10011
+	call .GetNextBit
+	jr c, .bits100101
+	call .GetNextBit
+	jr c, .bits1001001
+	; 1001000
 	ld a, "そ"
 	jp .queue_character
 
-.asm_1883
+.bits1001001
 	ld a, "ろ"
 	jp .queue_character
 
-.asm_1888
-	call LeftShiftInLargeBitField
-	jr c, .asm_1892
+.bits100101
+	call .GetNextBit
+	jr c, .bits1001011
+	; 1001010
 	ld a, "つ"
 	jp .queue_character
 
-.asm_1892
+.bits1001011
 	ld a, "さ"
 	jp .queue_character
 
-.asm_1897
+.bits10011
 	ld a, "た"
 	jp .queue_character
 
-.asm_189c: ; 189c (0:189c)
-	call LeftShiftInLargeBitField
-	jr c, .asm_18b0
-	call LeftShiftInLargeBitField
-	jr c, .asm_18ab
+.bits101
+	call .GetNextBit
+	jr c, .bits1011
+	call .GetNextBit
+	jr c, .bits10101
+	; 10100
 	ld a, "か"
 	jp .queue_character
 
-.asm_18ab
+.bits10101
 	ld a, "<HIRA>"
 	jp .queue_character
 
-.asm_18b0
-	call LeftShiftInLargeBitField
-	jr c, .asm_18ba
+.bits1011
+	call .GetNextBit
+	jr c, .bits10111
+	; 10110
 	ld a, "<KATA>"
 	jp .queue_character
 
-.asm_18ba
-	call LeftShiftInLargeBitField
-	jr c, .asm_18ce
-	call LeftShiftInLargeBitField
-	jr c, .asm_18c9
+.bits10111
+	call .GetNextBit
+	jr c, .bits101111
+	call .GetNextBit
+	jr c, .bits1011101
+	; 1011100
 	ld a, "け"
 	jp .queue_character
 
-.asm_18c9
+.bits1011101
 	ld a, "ち"
 	jp .queue_character
 
-.asm_18ce
-	call LeftShiftInLargeBitField
-	jp c, .asm_1916
-	call LeftShiftInLargeBitField
-	jp c, .asm_1911
-	call LeftShiftInLargeBitField
-	jr c, .asm_190c
-	call LeftShiftInLargeBitField
-	jr c, .asm_18e9
+.bits101111
+	call .GetNextBit
+	jp c, .bits1011111
+	call .GetNextBit
+	jp c, .bits10111101
+	call .GetNextBit
+	jr c, .bits101111001
+	call .GetNextBit
+	jr c, .bits1011110001
+	; 1011110000
 	ld a, "ぇ"
 	jp .queue_character
 
-.asm_18e9
-	call LeftShiftInLargeBitField
-	jr c, .asm_18fd
-	call LeftShiftInLargeBitField
-	jr c, .asm_18f8
+.bits1011110001
+	call .GetNextBit
+	jr c, .bits10111100011
+	call .GetNextBit
+	jr c, .bits101111000101
+	; 101111000100
 	ld a, "6"
 	jp .queue_character
 
-.asm_18f8
+.bits101111000101
 	ld a, "ぉ"
 	jp .queue_character
 
-.asm_18fd
-	call LeftShiftInLargeBitField
-	jr c, .asm_1907
+.bits10111100011
+	call .GetNextBit
+	jr c, .bits101111000111
+	; 101111000110
 	ld a, "0"
 	jp .queue_character
 
-.asm_1907
+.bits101111000111
 	ld a, "5"
 	jp .queue_character
 
-.asm_190c
+.bits101111001
 	ld a, "む"
 	jp .queue_character
 
-.asm_1911: ; 1911 (0:1911)
+.bits10111101
 	ld a, "?"
 	jp .queue_character
 
-.asm_1916: ; 1916 (0:1916)
+.bits1011111
 	ld a, "よ"
 	jp .queue_character
 
-.asm_191b: ; 191b (0:191b)
-	call LeftShiftInLargeBitField
-	jp c, .asm_198b
-	call LeftShiftInLargeBitField
-	jr c, .asm_192b
+.bits11
+	call .GetNextBit
+	jp c, .bits111
+	call .GetNextBit
+	jr c, .bits1101
+	; 1100
 	ld a, "ﾞ"
 	jp .queue_character
 
-.asm_192b
-	call LeftShiftInLargeBitField
-	jr c, .asm_193f
-	call LeftShiftInLargeBitField
-	jr c, .asm_193a
+.bits1101
+	call .GetNextBit
+	jr c, .bits11011
+	call .GetNextBit
+	jr c, .bits110101
+	; 110100
 	ld a, "!"
 	jp .queue_character
 
-.asm_193a
+.bits110101
 	ld a, "の"
 	jp .queue_character
 
-.asm_193f
-	call LeftShiftInLargeBitField
-	jp c, .asm_1986
-	call LeftShiftInLargeBitField
-	jr c, .asm_194f
+.bits11011
+	call .GetNextBit
+	jp c, .bits110111
+	call .GetNextBit
+	jr c, .bits1101101
+	; 1101100
 	ld a, "れ"
 	jp .queue_character
 
-.asm_194f
-	call LeftShiftInLargeBitField
-	jr c, .asm_1981
-	call LeftShiftInLargeBitField
-	jr c, .asm_195e
+.bits1101101
+	call .GetNextBit
+	jr c, .bits11011011
+	call .GetNextBit
+	jr c, .bits110110101
+	; 110110100
 	ld a, "ゅ"
 	jp .queue_character
 
-.asm_195e
-	call LeftShiftInLargeBitField
-	jr c, .asm_1968
+.bits110110101
+	call .GetNextBit
+	jr c, .bits1101101011
+	; 1101101010
 	ld a, "1"
 	jp .queue_character
 
-.asm_1968
-	call LeftShiftInLargeBitField
-	jr c, .asm_1972
+.bits1101101011
+	call .GetNextBit
+	jr c, .bits11011010111
+	; 11011010110
 	ld a, "2"
 	jp .queue_character
 
-.asm_1972
-	call LeftShiftInLargeBitField
-	jr c, .asm_197c
+.bits11011010111
+	call .GetNextBit
+	jr c, .bits110110101111
+	; 110110101110
 	ld a, "7"
 	jp .queue_character
 
-.asm_197c
+.bits110110101111
 	ld a, "ぃ"
 	jp .queue_character
 
-.asm_1981
+.bits11011011
 	ld a, "ね"
 	jp .queue_character
 
-.asm_1986: ; 1986 (0:1986)
+.bits110111
 	ld a, "っ"
 	jp .queue_character
 
-.asm_198b: ; 198b (0:198b)
-	call LeftShiftInLargeBitField
-	jr c, .asm_19b3
-	call LeftShiftInLargeBitField
-	jr c, .asm_19ae
-	call LeftShiftInLargeBitField
-	jr c, .asm_199f
+.bits111
+	call .GetNextBit
+	jr c, .bits1111
+	call .GetNextBit
+	jr c, .bits11101
+	call .GetNextBit
+	jr c, .bits111001
+	; 111000
 	ld a, "は"
 	jp .queue_character
 
-.asm_199f
-	call LeftShiftInLargeBitField
-	jr c, .asm_19a9
+.bits111001
+	call .GetNextBit
+	jr c, .bits1110011
+	; 1110010
 	ld a, "ほ"
 	jp .queue_character
 
-.asm_19a9
+.bits1110011
 	ld a, "ら"
 	jp .queue_character
 
-.asm_19ae
+.bits11101
 	ld a, "い"
 	jp .queue_character
 
-.asm_19b3
+.bits1111
 	ld a, " "
 	jp .queue_character
 
@@ -883,8 +925,8 @@ PrintMapText:
 	push bc
 	ld l, e
 	ld h, d
-	ld de, $c309
-	call Func_1494
+	ld de, wOAM02XCoord
+	call LiteralStringInTree
 	pop bc
 	dec hl
 	ld e, l
@@ -921,7 +963,7 @@ PrintMapText:
 	ld a, b
 	ret
 
-LeftShiftInLargeBitField: ; 19fd (0:19fd)
+.GetNextBit: ; 19fd (0:19fd)
 	sla c
 	dec b
 	ret nz

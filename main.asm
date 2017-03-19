@@ -3076,7 +3076,7 @@ Func_1db9:
 	dw $c393
 	ld bc, $5
 	ld e, $0
-	ld hl, $c309
+	ld hl, wOAM02XCoord
 	call FillMemory
 	ret
 
@@ -11722,7 +11722,7 @@ SECTION "Bank 0d", ROMX, BANK [$0d]
 	dr $34000, $37ec0
 
 SECTION "Bank 0e", ROMX, BANK [$0e]
-Pointers_38000:
+TextTreeBitstreams:
 	dr $38000, $3c000
 
 SECTION "Bank 0f", ROMX, BANK [$0f]

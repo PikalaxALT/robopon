@@ -93,7 +93,10 @@ oam_ram: MACRO
 	ENDM
 
 defchar: MACRO
+REPT _NARG
 charmap \1, __charval__
+shift
+ENDR
 __charval__ = __charval__ + 1
 ENDM
 
