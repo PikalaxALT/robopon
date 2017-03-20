@@ -925,7 +925,7 @@ PrintCharacterFromTree:
 	push bc
 	ld l, e
 	ld h, d
-	ld de, wOAM02XCoord
+	ld de, wPlayerName
 	call LiteralStringInTree
 	pop bc
 	dec hl

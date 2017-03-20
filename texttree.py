@@ -1,5 +1,4 @@
 import re
-import json
 pattern = re.compile(r'(\.bits|\t; )([01]+)\n\tld a, (.+)')
 
 
@@ -29,7 +28,7 @@ def build_tree():
             elif charval == 10:
                 character = '<NL>'
             elif charval == 1:
-                character = '<STBF>'
+                character = '<PLAYER>'
         path = list(map(int, bits))
         node = tree
         for choice in path[:-1]:

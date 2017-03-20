@@ -127,8 +127,13 @@ wOAMBuffer:: ; c300
 	oam_ram wOAM26
 	oam_ram wOAM27
 
+	ds wOAMBuffer - @
+
+wc300:: ds $9
+wPlayerName:: ds $4
+
 SECTION "OAM Buffer 2", WRAM0 [$c400]
-wOAMBuffer2:: ; c300
+wOAMBuffer2:: ; c400
 	oam_ram wOAM2_00
 	oam_ram wOAM2_01
 	oam_ram wOAM2_02

@@ -199,6 +199,8 @@ DividePointerByDE:
 	ret
 
 DivideAbyB: ; 36af (0:36af)
+; dividend a, divisor b
+; returns quotient a, remainder b
 	push hl
 	ld l, a
 	ld h, $0

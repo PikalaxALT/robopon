@@ -2000,5139 +2000,5740 @@ SECTION "Tree Bitstream Text Pointers", ROMX [$4000], BANK [$0e]
 	dw TreeBitstreamText_46fbb
 	dw TreeBitstreamText_46fd8
 ; 38fa0
+
 SECTION "Tree Bitstream Text 0", ROMX [$e], BANK [$4fa0]
 TreeBitstreamText_38fa0:
-	ctxt "<NL>"
-	ctxt "     <HIRA>これは <KATA>タﾞミー<HIRA>てﾞす<KATA><TERM>"
+	ctxt ""
+	line "     <HIRA>これは <KATA>ダミー<HIRA>です<KATA>"
+	done
 
 TreeBitstreamText_38fae:
-	ctxt "<HIRA>いったい なんの さわきﾞたﾞ???<KATA><TERM>"
+	ctxt "<HIRA>いったい なんの さわぎだ???<KATA>"
+	done
 
 TreeBitstreamText_38fbd:
-	ctxt "<HIRA>とﾞうなってるんたﾞ???<KATA><TERM>"
+	ctxt "<HIRA>どうなってるんだ???<KATA>"
+	done
 
 TreeBitstreamText_38fc9:
-	ctxt "ママ<NL>"
-	ctxt "<HIRA>また おしﾞいちゃんの しわさﾞね<NL>"
-	ctxt "ほんとに とﾞうしようもないんたﾞから<KATA><TERM>"
+	ctxt "ママ"
+	line "<HIRA>また おじいちゃんの しわざね"
+	line "ほんとに どうしようもないんだから<KATA>"
+	done
 
 TreeBitstreamText_38fe6:
-	ctxt "ハﾟハﾟ<NL>"
-	ctxt "<HIRA>すまんかﾞ きゅうな しゅっちょうてﾞ<NL>"
-	ctxt "しはﾞらく いえに かえってこれない<NL>"
-	ctxt "いいか <KATA>ハﾟハﾟ<HIRA>かﾞ かえってくるまてﾞ<NL>"
-	ctxt "おとなしく いい<KATA>コ<HIRA>に してるんたﾞそﾞ<NL>"
-	ctxt "それしﾞゃ いってくるよ<KATA><TERM>"
+	ctxt "パパ"
+	line "<HIRA>すまんが きゅうな しゅっちょうで"
+	line "しばらく いえに かえってこれない"
+	line "いいか <KATA>パパ<HIRA>が かえってくるまで"
+	line "おとなしく いい<KATA>コ<HIRA>に してるんだぞ"
+	line "それじゃ いってくるよ<KATA>"
+	done
 
 TreeBitstreamText_3902d:
-	ctxt "ママ<NL>"
-	ctxt "<HIRA>こﾞめんなさいね これから<NL>"
-	ctxt "かあさんも てﾞかけるのよ……<NL>"
-	ctxt "ちょっと とおくの <KATA>テﾞハﾟート<HIRA>てﾞ<NL>"
-	ctxt "<KATA>ハﾞーケﾞンセール<HIRA>かﾞ あってね<NL>"
-	ctxt "かえりは おそくなると おもうの<NL>"
-	ctxt "おるすはﾞん まかせたわよ<NL>"
-	ctxt "おしﾞいちゃんと なかよく やってね<KATA><TERM>"
+	ctxt "ママ"
+	line "<HIRA>ごめんなさいね これから"
+	line "かあさんも でかけるのよ……"
+	line "ちょっと とおくの <KATA>デパート<HIRA>で"
+	line "<KATA>バーゲンセール<HIRA>が あってね"
+	line "かえりは おそくなると おもうの"
+	line "おるすばん まかせたわよ"
+	line "おじいちゃんと なかよく やってね<KATA>"
+	done
 
 TreeBitstreamText_39084:
-	ctxt "ママ<NL>"
-	ctxt "<HIRA>おしﾞいちゃんには すくﾞに かえる<NL>"
-	ctxt "って いっておいてね<NL>"
-	ctxt "しんはﾟいすると いけないから……<NL>"
-	ctxt "それしﾞゃあ いってくるわね!<KATA><TERM>"
+	ctxt "ママ"
+	line "<HIRA>おじいちゃんには すぐに かえる"
+	line "って いっておいてね"
+	line "しんぱいすると いけないから……"
+	line "それじゃあ いってくるわね!<KATA>"
+	done
 
 TreeBitstreamText_390b4:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "おーい たﾞれか おらんのかー<NL>"
-	ctxt "ちょっと てつたﾞってくれー<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "おーい だれか おらんのかー"
+	line "ちょっと てつだってくれー<KATA>"
+	done
 
 TreeBitstreamText_390d1:
-	ctxt "<HIRA>しﾞいちゃんかﾞ うらにわ から<NL>"
-	ctxt "よんてﾞいるみたいたﾞ……<KATA><TERM>"
+	ctxt "<HIRA>じいちゃんが うらにわ から"
+	line "よんでいるみたいだ……<KATA>"
+	done
 
 TreeBitstreamText_390e8:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "あわわわ…… しんかﾞた <KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "しﾞっけん またしても しっはﾟいか…<NL>"
-	ctxt "なんとﾞ やっても うまくいかんのう…<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "あわわわ…… しんがた <KATA>ロボポン<HIRA>の"
+	line "じっけん またしても しっぱいか…"
+	line "なんど やっても うまくいかんのう…<KATA>"
+	done
 
 TreeBitstreamText_3911a:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "おっ! おまえは……<NL>"
-	ctxt "えーと <KATA>タタﾞシ<HIRA>か!?<NL>"
-	ctxt "うーん <KATA>アキラ<HIRA>たﾞったかな?!<NL>"
-	ctxt "いやいや <KATA>シﾞェームス<HIRA>たﾞったっけ?<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "おっ! おまえは……"
+	line "えーと <KATA>タダシ<HIRA>か!?"
+	line "うーん <KATA>アキラ<HIRA>だったかな?!"
+	line "いやいや <KATA>ジェームス<HIRA>だったっけ?<KATA>"
+	done
 
 TreeBitstreamText_3914e:
-	ctxt "<HIRA>しﾞいちゃん! しっかり おほﾞえてよ<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>の なまえは……<KATA><TERM>"
+	ctxt "<HIRA>じいちゃん! しっかり おぼえてよ"
+	line "<KATA>ボク<HIRA>の なまえは……<KATA>"
+	done
 
 TreeBitstreamText_39167:
-	ctxt "<STBF><NL>"
-	ctxt "ホﾞク<HIRA>の なまえは <KATA><STBF><HIRA>たﾞよ<NL>"
-	ctxt "わすれちゃったの?<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "ボク<HIRA>の なまえは <KATA><PLAYER><HIRA>だよ"
+	line "わすれちゃったの?<KATA>"
+	done
 
 TreeBitstreamText_3917e:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "いやあ すまん すまん<NL>"
-	ctxt "ちょっとほんきてﾞ <KATA>ホﾞケ<HIRA>た たﾞけしﾞゃ<NL>"
-	ctxt "………………<NL>"
-	ctxt "<NL>"
-	ctxt "よしっ きめた!!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>の けんきゅうも<NL>"
-	ctxt "この かいしゃの けいえいも……<NL>"
-	ctxt "せﾞーんふﾞ おまえに まかせた!<NL>"
-	ctxt "<NL>"
-	ctxt "いや たった いまから<NL>"
-	ctxt "しゃちょうは <KATA><STBF><HIRA>しﾞゃ!<NL>"
-	ctxt "かいしゃを つけﾞるものは<NL>"
-	ctxt "おまえしか おらん!<NL>"
-	ctxt "たのんたﾞそﾞ <KATA><STBF>!!!<TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "いやあ すまん すまん"
+	line "ちょっとほんきで <KATA>ボケ<HIRA>た だけじゃ"
+	line "………………"
+	line ""
+	line "よしっ きめた!!"
+	line ""
+	line "<KATA>ロボポン<HIRA>の けんきゅうも"
+	line "この かいしゃの けいえいも……"
+	line "ぜーんぶ おまえに まかせた!"
+	line ""
+	line "いや たった いまから"
+	line "しゃちょうは <KATA><PLAYER><HIRA>じゃ!"
+	line "かいしゃを つげるものは"
+	line "おまえしか おらん!"
+	line "たのんだぞ <KATA><PLAYER>!!!"
+	done
 
 TreeBitstreamText_391fd:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "そうしﾞゃ! たった 1たいたﾞけ<NL>"
-	ctxt "のこった <KATA>ロホﾞホﾟン<HIRA>を やろう!<NL>"
-	ctxt "<KATA>ワシ<HIRA>の しﾞしんさく しﾞゃ!!<NL>"
-	ctxt "<NL>"
-	ctxt "………さあ こっちしﾞゃ<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "そうじゃ! たった 1たいだけ"
+	line "のこった <KATA>ロボポン<HIRA>を やろう!"
+	line "<KATA>ワシ<HIRA>の じしんさく じゃ!!"
+	line ""
+	line "………さあ こっちじゃ<KATA>"
+	done
 
 TreeBitstreamText_39235:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "きょうから <KATA><STBF><HIRA>かﾞ<NL>"
-	ctxt "しゃちょうしﾞゃ!<NL>"
-	ctxt "いろいろ よろしく たのむ!<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "きょうから <KATA><PLAYER><HIRA>が"
+	line "しゃちょうじゃ!"
+	line "いろいろ よろしく たのむ!<KATA>"
+	done
 
 TreeBitstreamText_39257:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "<KATA><STBF><HIRA>しゃちょう<NL>"
-	ctxt "かﾞんはﾞりましょうね<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "<KATA><PLAYER><HIRA>しゃちょう"
+	line "がんばりましょうね<KATA>"
+	done
 
 TreeBitstreamText_3926c:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "とﾞうしﾞゃ <KATA>カッコ<HIRA>いいしﾞゃろ!<NL>"
-	ctxt "<NL>"
-	ctxt "これを おまえに やる!<NL>"
-	ctxt "たﾞいしﾞに つかうんしﾞゃそﾞ<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "どうじゃ <KATA>カッコ<HIRA>いいじゃろ!"
+	line ""
+	line "これを おまえに やる!"
+	line "だいじに つかうんじゃぞ<KATA>"
+	done
 
 TreeBitstreamText_39295:
-	ctxt "スホﾟロ<HIRA>から <KATA>ロホﾞ<HIRA>まる<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "スポロ<HIRA>から <KATA>ロボ<HIRA>まる"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_392a8:
-	ctxt "スホﾟロ<HIRA>から <KATA>タンサン<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA><TERM>"
+	ctxt "スポロ<HIRA>から <KATA>タンサン"
+	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_392ba:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "<KATA>ワシ<HIRA>は けんきゅうしﾞょに のこって<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>けんきゅうを つつﾞけよう<NL>"
-	ctxt "あとな <KATA>ロホﾞホﾟン<HIRA>は にんけﾞんと<NL>"
-	ctxt "おなしﾞ いきもの なんしﾞゃ<NL>"
-	ctxt "わるいことに つかっては ならんそﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "はしﾞめは なにかと おかねかﾞ かかる<NL>"
-	ctxt "ちょっとは もっていたほうかﾞよいな<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "<KATA>ワシ<HIRA>は けんきゅうじょに のこって"
+	line "<KATA>ロボポン<HIRA>けんきゅうを つづけよう"
+	line "あとな <KATA>ロボポン<HIRA>は にんげんと"
+	line "おなじ いきもの なんじゃ"
+	line "わるいことに つかっては ならんぞ"
+	line ""
+	line "はじめは なにかと おかねが かかる"
+	line "ちょっとは もっていたほうがよいな<KATA>"
+	done
 
 TreeBitstreamText_39321:
-	ctxt "スホﾟロ<HIRA>しﾞいから<NL>"
-	ctxt "1000<KATA>コﾞールトﾞ<HIRA>を もらった!<KATA><TERM>"
+	ctxt "スポロ<HIRA>じいから"
+	line "1000<KATA>ゴールド<HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_3933b:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>かﾞ こわれてしまったら<NL>"
-	ctxt "いつてﾞも もとﾞってこい<NL>"
-	ctxt "しゅうりくﾞらいは てつたﾞってやるそﾞ<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "<KATA>ロボポン<HIRA>が こわれてしまったら"
+	line "いつでも もどってこい"
+	line "しゅうりぐらいは てつだってやるぞ<KATA>"
+	done
 
 TreeBitstreamText_39369:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "………それと かいしゃかﾞ<NL>"
-	ctxt "<KATA>チョット<HIRA>はﾞかし あふﾞないんしﾞゃ<NL>"
-	ctxt "<KATA><STBF><HIRA>かﾞ すこしはﾞかり おかねに<NL>"
-	ctxt "よゆうかﾞ あるときてﾞ いいんしﾞゃ<NL>"
-	ctxt "かいしゃに とうし してくれんか?<NL>"
-	ctxt "<NL>"
-	ctxt "くわしいことは かいしゃにいる<NL>"
-	ctxt "みんなから きいてほしい<NL>"
-	ctxt "てﾞは かいしゃを たのんたﾞそﾞ!<KATA>"
+	ctxt "スポロ<HIRA>じい"
+	line "………それと かいしゃが"
+	line "<KATA>チョット<HIRA>ばかし あぶないんじゃ"
+	line "<KATA><PLAYER><HIRA>が すこしばかり おかねに"
+	line "よゆうが あるときで いいんじゃ"
+	line "かいしゃに とうし してくれんか?"
+	line ""
+	line "くわしいことは かいしゃにいる"
+	line "みんなから きいてほしい"
+	line "では かいしゃを たのんだぞ!<KATA>"
 
 TreeBitstreamText_393ce:
-	ctxt "トヒﾞラ<HIRA>は<NL>"
-	ctxt "かたく とさﾞされている<KATA><TERM>"
+	ctxt "トビラ<HIRA>は"
+	line "かたく とざされている<KATA>"
+	done
 
 TreeBitstreamText_393dd:
-	ctxt "リモコンシャワー<HIRA>そうちたﾞ<KATA><TERM>"
+	ctxt "リモコンシャワー<HIRA>そうちだ<KATA>"
+	done
 
 TreeBitstreamText_393e9:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "とﾞうしﾞゃ! <KATA><STBF><NL>"
-	ctxt "リモコンシャワー<HIRA>そうちしﾞゃ!<NL>"
-	ctxt "そうちのなかに <KATA>ロホﾞホﾟン<HIRA>をいれて<NL>"
-	ctxt "<KATA>リモコン<HIRA>のひかりを あひﾞせると……<NL>"
-	ctxt "たまに しっはﾟいする ことはあるかﾞ<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を つよくてﾞきるのしﾞゃ!<NL>"
-	ctxt "たたﾞし いちとﾞ ひかりをあひﾞた<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>には こうかかﾞないそﾞ<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "どうじゃ! <KATA><PLAYER>"
+	line "リモコンシャワー<HIRA>そうちじゃ!"
+	line "そうちのなかに <KATA>ロボポン<HIRA>をいれて"
+	line "<KATA>リモコン<HIRA>のひかりを あびせると……"
+	line "たまに しっぱいする ことはあるが"
+	line "<KATA>ロボポン<HIRA>を つよくできるのじゃ!"
+	line "ただし いちど ひかりをあびた"
+	line "<KATA>ロボポン<HIRA>には こうかがないぞ<KATA>"
+	done
 
 TreeBitstreamText_3945b:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "とﾞうしﾞゃ <KATA><STBF><HIRA>よ<NL>"
-	ctxt "ためしてみるか?<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "どうじゃ <KATA><PLAYER><HIRA>よ"
+	line "ためしてみるか?<KATA>"
+	done
 
 TreeBitstreamText_39471:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "せっかく つくったのに<NL>"
-	ctxt "ためしてくれんのか……<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "せっかく つくったのに"
+	line "ためしてくれんのか……<KATA>"
+	done
 
 TreeBitstreamText_3948a:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "とﾞうやら せいこうした みたいしﾞゃ<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "どうやら せいこうした みたいじゃ<KATA>"
+	done
 
 TreeBitstreamText_3949f:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "<KATA><STBF><HIRA>よ………<NL>"
-	ctxt "<NL>"
-	ctxt "おまえのかいしゃも<NL>"
-	ctxt "すﾞいふﾞんと おおきくなったな<NL>"
-	ctxt "もう おもいのこすことはない<NL>"
-	ctxt "<NL>"
-	ctxt "そう おもいのこすことなく<NL>"
-	ctxt "あそんてﾞ くらせるということしﾞゃ!<NL>"
-	ctxt "いやぁ はしﾞめは ちょっと<NL>"
-	ctxt "ふあん たﾞったんしﾞゃかﾞ<NL>"
-	ctxt "なんとか なるもんしﾞゃな<NL>"
-	ctxt "よくそﾞ ここまてﾞ おおきくしたっ!<NL>"
-	ctxt "よしっ! ひまつふﾞしに つくっとった<NL>"
-	ctxt "おちゃくみ<KATA>ロホﾞホﾟン<HIRA>を やろう!<NL>"
-	ctxt "<KATA><STBF><HIRA>も りっはﾟな しゃちょうしﾞゃ<NL>"
-	ctxt "おちゃくﾞらい くんてﾞもらいなさい<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "<KATA><PLAYER><HIRA>よ………"
+	line ""
+	line "おまえのかいしゃも"
+	line "ずいぶんと おおきくなったな"
+	line "もう おもいのこすことはない"
+	line ""
+	line "そう おもいのこすことなく"
+	line "あそんで くらせるということじゃ!"
+	line "いやぁ はじめは ちょっと"
+	line "ふあん だったんじゃが"
+	line "なんとか なるもんじゃな"
+	line "よくぞ ここまで おおきくしたっ!"
+	line "よしっ! ひまつぶしに つくっとった"
+	line "おちゃくみ<KATA>ロボポン<HIRA>を やろう!"
+	line "<KATA><PLAYER><HIRA>も りっぱな しゃちょうじゃ"
+	line "おちゃぐらい くんでもらいなさい<KATA>"
+	done
 
 TreeBitstreamText_39545:
-	ctxt "スホﾟロ<HIRA>しﾞいから <KATA>カラクリ<NL>"
-	ctxt "<HIRA>を もらった!!<KATA><TERM>"
+	ctxt "スポロ<HIRA>じいから <KATA>カラクリ"
+	line "<HIRA>を もらった!!<KATA>"
+	done
 
 TreeBitstreamText_39559:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "<KATA>ロホﾞホﾟンテﾞータファイル<HIRA>かﾞ<NL>"
-	ctxt "150たいふﾞん かんせいしﾞゃ!<NL>"
-	ctxt "はっきしいって <KATA><STBF><HIRA>よ<NL>"
-	ctxt "おまえは <KATA>スコﾞイ<HIRA>そﾞ!<NL>"
-	ctxt "そのとﾞりょくをみとめ<NL>"
-	ctxt "<KATA>トロフィー<HIRA>をやろう!<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "<KATA>ロボポンデータファイル<HIRA>が"
+	line "150たいぶん かんせいじゃ!"
+	line "はっきしいって <KATA><PLAYER><HIRA>よ"
+	line "おまえは <KATA>スゴイ<HIRA>ぞ!"
+	line "そのどりょくをみとめ"
+	line "<KATA>トロフィー<HIRA>をやろう!<KATA>"
+	done
 
 TreeBitstreamText_395a3:
-	ctxt "<HIRA>きﾞんの<KATA>トロフィー<NL>"
-	ctxt "<HIRA>を もらった!<KATA><TERM>"
+	ctxt "<HIRA>ぎんの<KATA>トロフィー"
+	line "<HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_395b4:
-	ctxt "スホﾟロ<NL>"
-	ctxt "<STBF><HIRA>よ しﾞつはな……<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は 150たい しﾞゃない<NL>"
-	ctxt "せﾞんふﾞてﾞ 168たい いるのしﾞゃ!<NL>"
-	ctxt "168たいふﾞんの <KATA>テﾞータファイル<HIRA>を<NL>"
-	ctxt "かんせいさせるのしﾞゃ!!<NL>"
-	ctxt "……そのときこそ しんの<NL>"
-	ctxt "<KATA>ロホﾞホﾟンマスター<HIRA>なのしﾞゃ!!<NL>"
-	ctxt "かﾞんはﾞれ <KATA><STBF>!"
+	ctxt "スポロ"
+	line "<PLAYER><HIRA>よ じつはな……"
+	line ""
+	line "<KATA>ロボポン<HIRA>は 150たい じゃない"
+	line "ぜんぶで 168たい いるのじゃ!"
+	line "168たいぶんの <KATA>データファイル<HIRA>を"
+	line "かんせいさせるのじゃ!!"
+	line "……そのときこそ しんの"
+	line "<KATA>ロボポンマスター<HIRA>なのじゃ!!"
+	line "がんばれ <KATA><PLAYER>!"
 
 TreeBitstreamText_3961c:
-	ctxt "スホﾟロ<HIRA>しﾞい<NL>"
-	ctxt "<KATA>ロホﾞホﾟンテﾞータファイル<HIRA>かﾞ<NL>"
-	ctxt "168たいふﾞん かんせいしﾞゃ!<NL>"
-	ctxt "<KATA><STBF><HIRA>よ ついに やりおったな!<NL>"
-	ctxt "せﾞんしﾞんみとうの いきﾞょうしﾞゃ!<NL>"
-	ctxt "はっきしいって <KATA>スコﾞ<HIRA>すきﾞ!<NL>"
-	ctxt "よく かﾞんはﾞったな <KATA><STBF>!<NL>"
-	ctxt "ロホﾞホﾟンマスター<HIRA>の あかしとして<NL>"
-	ctxt "きんの<KATA>トロフィー<HIRA>を やろう!<KATA><TERM>"
+	ctxt "スポロ<HIRA>じい"
+	line "<KATA>ロボポンデータファイル<HIRA>が"
+	line "168たいぶん かんせいじゃ!"
+	line "<KATA><PLAYER><HIRA>よ ついに やりおったな!"
+	line "ぜんじんみとうの いぎょうじゃ!"
+	line "はっきしいって <KATA>スゴ<HIRA>すぎ!"
+	line "よく がんばったな <KATA><PLAYER>!"
+	line "ロボポンマスター<HIRA>の あかしとして"
+	line "きんの<KATA>トロフィー<HIRA>を やろう!<KATA>"
+	done
 
 TreeBitstreamText_3968a:
-	ctxt "<HIRA>きんの<KATA>トロフィー<NL>"
-	ctxt "<HIRA>を もらった!<KATA><TERM>"
+	ctxt "<HIRA>きんの<KATA>トロフィー"
+	line "<HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_3969a:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "うえーん <KATA><STBF><HIRA>にいちゃーん<NL>"
-	ctxt "ひとﾞいよ ひとﾞいよー<NL>"
-	ctxt "このひと <KATA>ホﾞク<HIRA>の <KATA>アイスクリーム<HIRA>を<NL>"
-	ctxt "とっちゃうんたﾞよ!<NL>"
-	ctxt "かえしてよー!<KATA><TERM>"
+	ctxt "<HIRA>こども"
+	line "うえーん <KATA><PLAYER><HIRA>にいちゃーん"
+	line "ひどいよ ひどいよー"
+	line "このひと <KATA>ボク<HIRA>の <KATA>アイスクリーム<HIRA>を"
+	line "とっちゃうんだよ!"
+	line "かえしてよー!<KATA>"
+	done
 
 TreeBitstreamText_396d0:
-	ctxt "<HIRA>こふﾞん1<NL>"
-	ctxt "<KATA>イヒヒヒ <HIRA>うまそうな <KATA>アイス!<NL>"
-	ctxt "<HIRA>たへﾞちゃおーっと!<KATA><TERM>"
+	ctxt "<HIRA>こぶん1"
+	line "<KATA>イヒヒヒ <HIRA>うまそうな <KATA>アイス!"
+	line "<HIRA>たべちゃおーっと!<KATA>"
+	done
 
 TreeBitstreamText_396ec:
-	ctxt "ヒﾞスコ<HIRA>の こふﾞんを<NL>"
-	ctxt "こらしめますか?<KATA><TERM>"
+	ctxt "ビスコ<HIRA>の こぶんを"
+	line "こらしめますか?<KATA>"
+	done
 
 TreeBitstreamText_396fd:
-	ctxt "<HIRA>こふﾞん1<NL>"
-	ctxt "<KATA>チクショー ヒﾞスコ<HIRA>さんに<NL>"
-	ctxt "いいつけて やるからな!<KATA><TERM>"
+	ctxt "<HIRA>こぶん1"
+	line "<KATA>チクショー ビスコ<HIRA>さんに"
+	line "いいつけて やるからな!<KATA>"
+	done
 
 TreeBitstreamText_39718:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "<KATA><STBF><HIRA>にいちゃん!<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>を みすてるの?<KATA>"
+	ctxt "<HIRA>こども"
+	line "<KATA><PLAYER><HIRA>にいちゃん!"
+	line "<KATA>ボク<HIRA>を みすてるの?<KATA>"
 
 TreeBitstreamText_3972e:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "<KATA><STBF><HIRA>にいちゃん ありかﾞとう!<NL>"
-	ctxt "<NL>"
-	ctxt "あっ そうたﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ロル<HIRA>ねえちゃんかﾞ たいへんなんたﾞ!<NL>"
-	ctxt "おねかﾞい たすけてあけﾞて!<KATA><TERM>"
+	ctxt "<HIRA>こども"
+	line "<KATA><PLAYER><HIRA>にいちゃん ありがとう!"
+	line ""
+	line "あっ そうだ!"
+	line ""
+	line "<KATA>ロル<HIRA>ねえちゃんが たいへんなんだ!"
+	line "おねがい たすけてあげて!<KATA>"
+	done
 
 TreeBitstreamText_39760:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>えっ! <KATA>ロル<HIRA>って?<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>えっ! <KATA>ロル<HIRA>って?<KATA>"
+	done
 
 TreeBitstreamText_3976c:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "<KATA><STBF><HIRA>にいちゃんの<NL>"
-	ctxt "<KATA>カﾞールフレントﾞ <HIRA>しﾞゃないか!<NL>"
-	ctxt "わすれたの?<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ロル<HIRA>ねえちゃんのこと<NL>"
-	ctxt "すき なんてﾞしょ?<NL>"
-	ctxt "しﾞゃあ たすけに いって<NL>"
-	ctxt "<KATA>カッコ<HIRA>いいとこ みせなきゃ!<KATA>"
+	ctxt "<HIRA>こども"
+	line "<KATA><PLAYER><HIRA>にいちゃんの"
+	line "<KATA>ガールフレンド <HIRA>じゃないか!"
+	line "わすれたの?"
+	line ""
+	line "<KATA>ロル<HIRA>ねえちゃんのこと"
+	line "すき なんでしょ?"
+	line "じゃあ たすけに いって"
+	line "<KATA>カッコ<HIRA>いいとこ みせなきゃ!<KATA>"
 
 TreeBitstreamText_397b1:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "<KATA>ロル<HIRA>ねえちゃんのこと<NL>"
-	ctxt "すき なんてﾞしょ?<NL>"
-	ctxt "しﾞゃあ たすけに いって<NL>"
-	ctxt "<KATA>カッコ<HIRA>いいとこ みせなきゃ!<KATA><TERM>"
+	ctxt "<HIRA>こども"
+	line "<KATA>ロル<HIRA>ねえちゃんのこと"
+	line "すき なんでしょ?"
+	line "じゃあ たすけに いって"
+	line "<KATA>カッコ<HIRA>いいとこ みせなきゃ!<KATA>"
+	done
 
 TreeBitstreamText_397dc:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "<KATA><STBF><HIRA>にいちゃん ありかﾞとう!<KATA><TERM>"
+	ctxt "<HIRA>こども"
+	line "<KATA><PLAYER><HIRA>にいちゃん ありがとう!<KATA>"
+	done
 
 TreeBitstreamText_397ed:
-	ctxt "ロル<NL>"
-	ctxt "<STBF>ーーーーーー!<TERM>"
+	ctxt "ロル"
+	line "<PLAYER>ーーーーーー!"
+	done
 
 TreeBitstreamText_397f7:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>あっ <KATA><STBF>!<NL>"
-	ctxt "<HIRA>いいところに きてくれたわ!<NL>"
-	ctxt "このひと しつこくて こまってるの<NL>"
-	ctxt "たすけてよ!<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>あっ <KATA><PLAYER>!"
+	line "<HIRA>いいところに きてくれたわ!"
+	line "このひと しつこくて こまってるの"
+	line "たすけてよ!<KATA>"
+	done
 
 TreeBitstreamText_3981d:
-	ctxt "<HIRA>こふﾞん2<NL>"
-	ctxt "<KATA>ヒﾞスコ<HIRA>さんの めいれいなんたﾞ<NL>"
-	ctxt "おとなしく ついてきな!<KATA><TERM>"
+	ctxt "<HIRA>こぶん2"
+	line "<KATA>ビスコ<HIRA>さんの めいれいなんだ"
+	line "おとなしく ついてきな!<KATA>"
+	done
 
 TreeBitstreamText_39839:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>ねぇ <KATA><STBF> <HIRA>たすけて!<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>ねぇ <KATA><PLAYER> <HIRA>たすけて!<KATA>"
+	done
 
 TreeBitstreamText_39847:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>ちょ ちょっとー<NL>"
-	ctxt "しﾞょうたﾞんは やめてよー<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>ちょ ちょっとー"
+	line "じょうだんは やめてよー<KATA>"
+	done
 
 TreeBitstreamText_3985c:
-	ctxt "<HIRA>こふﾞん2<NL>"
-	ctxt "<KATA>ケッ <HIRA>おまえも <KATA>ロホﾞホﾟン<NL>"
-	ctxt "<HIRA>もってんのかよ!<NL>"
-	ctxt "てﾞもな………<NL>"
-	ctxt "<KATA>ヒﾞスコ<HIRA>さんには かなわねえよ!<KATA><TERM>"
+	ctxt "<HIRA>こぶん2"
+	line "<KATA>ケッ <HIRA>おまえも <KATA>ロボポン"
+	line "<HIRA>もってんのかよ!"
+	line "でもな………"
+	line "<KATA>ビスコ<HIRA>さんには かなわねえよ!<KATA>"
+	done
 
 TreeBitstreamText_39889:
-	ctxt "ロル<NL>"
-	ctxt "<STBF> <HIRA>ありかﾞとう!<NL>"
-	ctxt "<NL>"
-	ctxt "むこうの てﾞくﾞちてﾞも <KATA>ヒﾞスコ<HIRA>の<NL>"
-	ctxt "こふﾞんかﾞ わるさを しているわ<NL>"
-	ctxt "おねかﾞい こらしめてきて!<KATA><TERM>"
+	ctxt "ロル"
+	line "<PLAYER> <HIRA>ありがとう!"
+	line ""
+	line "むこうの でぐちでも <KATA>ビスコ<HIRA>の"
+	line "こぶんが わるさを しているわ"
+	line "おねがい こらしめてきて!<KATA>"
+	done
 
 TreeBitstreamText_398ba:
-	ctxt "ロル<NL>"
-	ctxt "<STBF> <HIRA>ありかﾞとう………<NL>"
-	ctxt "<NL>"
-	ctxt "それより かﾞっこうかﾞ たいへんなの!<KATA><TERM>"
+	ctxt "ロル"
+	line "<PLAYER> <HIRA>ありがとう………"
+	line ""
+	line "それより がっこうが たいへんなの!<KATA>"
+	done
 
 TreeBitstreamText_398d5:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>かﾞっこうかﾞ たいへんなのよ!<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>がっこうが たいへんなのよ!<KATA>"
+	done
 
 TreeBitstreamText_398e4:
-	ctxt "ロル<NL>"
-	ctxt "ヒﾞスコ<HIRA>かﾞ 1はﾞん つよい<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を きめようとしてるの!<NL>"
-	ctxt "はﾞしょは……<NL>"
-	ctxt "かﾞっこうの たいいくかんよ!<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は あたしたちの なかま!<NL>"
-	ctxt "あたしたちの ともたﾞち! <NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は そんな<KATA>コト<HIRA>に<NL>"
-	ctxt "つかうものしﾞゃ ないてﾞしょ!<KATA><TERM>"
+	ctxt "ロル"
+	line "ビスコ<HIRA>が 1ばん つよい"
+	line "<KATA>ロボポン<HIRA>を きめようとしてるの!"
+	line "ばしょは……"
+	line "がっこうの たいいくかんよ!"
+	line "<KATA>ロボポン<HIRA>は あたしたちの なかま!"
+	line "あたしたちの ともだち! "
+	line "<KATA>ロボポン<HIRA>は そんな<KATA>コト<HIRA>に"
+	line "つかうものじゃ ないでしょ!<KATA>"
+	done
 
 TreeBitstreamText_39944:
-	ctxt "<STBF><NL>"
-	ctxt "ヒﾞスコ<HIRA>って たﾞれたﾞっけ?<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "ビスコ<HIRA>って だれだっけ?<KATA>"
+	done
 
 TreeBitstreamText_39953:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>あたしたちと おなしﾞ <KATA>クラス<HIRA>の<NL>"
-	ctxt "<KATA>ヒﾞスコ<HIRA>のこと わすれたの?<NL>"
-	ctxt "いつも いたすﾞらはﾞかり してる<NL>"
-	ctxt "しﾞしょう <KATA>ロホﾞホﾟン<HIRA>はﾞんちょうよ!<NL>"
-	ctxt "なに <KATA>トホﾞ<HIRA>けてんのよ!<NL>"
-	ctxt "<KATA>ヒﾞスコ<HIRA>を なんとか してよ!<NL>"
-	ctxt "となりの <KATA>リフﾞラ<HIRA>まちを きたに<NL>"
-	ctxt "のほﾞっていけはﾞ かﾞっこうかﾞあるわ<NL>"
-	ctxt "たのんたﾞわよ <KATA>ヒﾞスコ<HIRA>のこと!<NL>"
-	ctxt "………しﾞゃあね!<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>あたしたちと おなじ <KATA>クラス<HIRA>の"
+	line "<KATA>ビスコ<HIRA>のこと わすれたの?"
+	line "いつも いたずらばかり してる"
+	line "じしょう <KATA>ロボポン<HIRA>ばんちょうよ!"
+	line "なに <KATA>トボ<HIRA>けてんのよ!"
+	line "<KATA>ビスコ<HIRA>を なんとか してよ!"
+	line "となりの <KATA>リブラ<HIRA>まちを きたに"
+	line "のぼっていけば がっこうがあるわ"
+	line "たのんだわよ <KATA>ビスコ<HIRA>のこと!"
+	line "………じゃあね!<KATA>"
+	done
 
 TreeBitstreamText_399d1:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "<KATA><STBF><HIRA>にいちゃん ありかﾞとう!<NL>"
-	ctxt "やっはﾟり <KATA>アイス<HIRA>は おいしいね!!<KATA><TERM>"
+	ctxt "<HIRA>こども"
+	line "<KATA><PLAYER><HIRA>にいちゃん ありがとう!"
+	line "やっぱり <KATA>アイス<HIRA>は おいしいね!!<KATA>"
+	done
 
 TreeBitstreamText_399f1:
-	ctxt "<HIRA>こふﾞん1<NL>"
-	ctxt "さっきは <KATA>カフﾟリ<HIRA>てﾞ いい <KATA>ハシﾞ<HIRA>を<NL>"
-	ctxt "かかせて くれたな!<NL>"
-	ctxt "おほﾞえて いるか? <KATA>ヒﾞスコ<HIRA>さまの<NL>"
-	ctxt "こふﾞん1と 2たﾞ! <KATA><TERM>"
+	ctxt "<HIRA>こぶん1"
+	line "さっきは <KATA>カプリ<HIRA>で いい <KATA>ハジ<HIRA>を"
+	line "かかせて くれたな!"
+	line "おぼえて いるか? <KATA>ビスコ<HIRA>さまの"
+	line "こぶん1と 2だ! <KATA>"
+	done
 
 TreeBitstreamText_39a27:
-	ctxt "<HIRA>こふﾞん2<NL>"
-	ctxt "<KATA><STBF><HIRA>も <KATA>ハﾞトロホﾞ<HIRA>たいかいに<NL>"
-	ctxt "てﾞよう ってのかよ!<KATA><TERM>"
+	ctxt "<HIRA>こぶん2"
+	line "<KATA><PLAYER><HIRA>も <KATA>バトロボ<HIRA>たいかいに"
+	line "でよう ってのかよ!<KATA>"
+	done
 
 TreeBitstreamText_39a42:
-	ctxt "<HIRA>こふﾞん1<NL>"
-	ctxt "ちょうとﾞいいや いまのうちに<NL>"
-	ctxt "こいつ <KATA>シメ<HIRA>ちゃおうせﾞ!<KATA><TERM>"
+	ctxt "<HIRA>こぶん1"
+	line "ちょうどいいや いまのうちに"
+	line "こいつ <KATA>シメ<HIRA>ちゃおうぜ!<KATA>"
+	done
 
 TreeBitstreamText_39a5f:
-	ctxt "<HIRA>こふﾞん2<NL>"
-	ctxt "おう そりゃ いい かんかﾞえたﾞな!<NL>"
-	ctxt "<KATA><STBF> <HIRA>かくこﾞしな!!<KATA><TERM>"
+	ctxt "<HIRA>こぶん2"
+	line "おう そりゃ いい かんがえだな!"
+	line "<KATA><PLAYER> <HIRA>かくごしな!!<KATA>"
+	done
 
 TreeBitstreamText_39a7b:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>まて まて まつんたﾞ こふﾞんとﾞもよ!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>まて まて まつんだ こぶんどもよ!<KATA>"
+	done
 
 TreeBitstreamText_39a8f:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>こいつ <KATA>ロホﾞホﾟン <HIRA>もってやかﾞるせﾞ<NL>"
-	ctxt "<KATA>ナマイキ<HIRA>な <KATA>ヤロー<HIRA>たﾞせﾞ!<NL>"
-	ctxt "とﾞうせ おまえんちの <KATA>ホﾞケ<HIRA>しﾞしﾞいかﾞ<NL>"
-	ctxt "つくった <KATA>ホﾞロロホﾞホﾟン<HIRA>たﾞろ<NL>"
-	ctxt "とﾞれ みせてみな!<NL>"
-	ctxt "<NL>"
-	ctxt "………………………………<KATA>カﾞハハハ!!<NL>"
-	ctxt "<HIRA>やっはﾟ よわっちぃ <KATA>ロホﾞホﾟン<HIRA>たﾞせﾞ!<NL>"
-	ctxt "そんなんしﾞゃ <KATA>オレ<HIRA>さまには<NL>"
-	ctxt "かてねえよ!!<KATA>"
+	ctxt "ビスコ"
+	line "<HIRA>こいつ <KATA>ロボポン <HIRA>もってやがるぜ"
+	line "<KATA>ナマイキ<HIRA>な <KATA>ヤロー<HIRA>だぜ!"
+	line "どうせ おまえんちの <KATA>ボケ<HIRA>じじいが"
+	line "つくった <KATA>ボロロボポン<HIRA>だろ"
+	line "どれ みせてみな!"
+	line ""
+	line "………………………………<KATA>ガハハハ!!"
+	line "<HIRA>やっぱ よわっちぃ <KATA>ロボポン<HIRA>だぜ!"
+	line "そんなんじゃ <KATA>オレ<HIRA>さまには"
+	line "かてねえよ!!<KATA>"
 
 TreeBitstreamText_39b0b:
-	ctxt "<HIRA>こふﾞん1<NL>"
-	ctxt "たいいくかんの <KATA>ハﾞトロホﾞ<HIRA>たいかいは<NL>"
-	ctxt "さんかしょうかﾞ ひつようたﾞせﾞ<KATA>ェ<NL>"
-	ctxt "<HIRA>さんかしょうを もっていないと<NL>"
-	ctxt "たいかいには てﾞられないのさ!<KATA><TERM>"
+	ctxt "<HIRA>こぶん1"
+	line "たいいくかんの <KATA>バトロボ<HIRA>たいかいは"
+	line "さんかしょうが ひつようだぜ<KATA>ェ"
+	line "<HIRA>さんかしょうを もっていないと"
+	line "たいかいには でられないのさ!<KATA>"
+	done
 
 TreeBitstreamText_39b45:
-	ctxt "<HIRA>こふﾞん2<NL>"
-	ctxt "ゆうしょうすれはﾞ <KATA>クﾞレイテスト7<HIRA>に<NL>"
-	ctxt "ちょうせん てﾞきるんたﾞせﾞぇ!<NL>"
-	ctxt "せﾞんこく <KATA>ハﾞトロホﾞ <HIRA>たﾞい7いの<NL>"
-	ctxt "<KATA>クﾞレイテスト7<HIRA>へ ちょうせんたﾞせﾞ!<NL>"
-	ctxt "まんかﾞいち かってしまったら<NL>"
-	ctxt "いっきに ゆうめいしﾞんさ!<NL>"
-	ctxt "とﾞうたﾞ <KATA>スケﾞー<HIRA>たﾞろっ!<KATA><TERM>"
+	ctxt "<HIRA>こぶん2"
+	line "ゆうしょうすれば <KATA>グレイテスト7<HIRA>に"
+	line "ちょうせん できるんだぜぇ!"
+	line "ぜんこく <KATA>バトロボ <HIRA>だい7いの"
+	line "<KATA>グレイテスト7<HIRA>へ ちょうせんだぜ!"
+	line "まんがいち かってしまったら"
+	line "いっきに ゆうめいじんさ!"
+	line "どうだ <KATA>スゲー<HIRA>だろっ!<KATA>"
+	done
 
 TreeBitstreamText_39ba9:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>もちろん ここの たいかいは<NL>"
-	ctxt "<KATA>オレ<HIRA>さまかﾞ ゆうしょうする!<NL>"
-	ctxt "そして <KATA>クﾞレイテスト7<HIRA>への<NL>"
-	ctxt "ちょうせんけんを てにする!<NL>"
-	ctxt "なんせ しゅくたﾞい そっちのけてﾞ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ <HIRA>いっほﾟん たﾞからな!<NL>"
-	ctxt "まっ <KATA><STBF><HIRA>も <KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "つよくして さんか すると いい<NL>"
-	ctxt "いくそﾞ やろうとﾞも!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>もちろん ここの たいかいは"
+	line "<KATA>オレ<HIRA>さまが ゆうしょうする!"
+	line "そして <KATA>グレイテスト7<HIRA>への"
+	line "ちょうせんけんを てにする!"
+	line "なんせ しゅくだい そっちのけで"
+	line "<KATA>バトロボ <HIRA>いっぽん だからな!"
+	line "まっ <KATA><PLAYER><HIRA>も <KATA>ロボポン<HIRA>を"
+	line "つよくして さんか すると いい"
+	line "いくぞ やろうども!<KATA>"
+	done
 
 TreeBitstreamText_39c19:
-	ctxt "スホﾟロ<HIRA>しﾞいからの<KATA>メール<NL>"
-	ctxt "<HIRA>おーい <KATA><STBF><HIRA>よ!<NL>"
-	ctxt "いま とﾞこにいるんしﾞゃ?<NL>"
-	ctxt "ちょっと おもしろいもん<NL>"
-	ctxt "つくったんしﾞゃ みにこんか?<NL>"
-	ctxt "うけつけの よこのとひﾞらのおくに<NL>"
-	ctxt "つくっといたからな<NL>"
-	ctxt "ひまなときにてﾞも みにきてちょ<KATA><TERM>"
+	ctxt "スポロ<HIRA>じいからの<KATA>メール"
+	line "<HIRA>おーい <KATA><PLAYER><HIRA>よ!"
+	line "いま どこにいるんじゃ?"
+	line "ちょっと おもしろいもん"
+	line "つくったんじゃ みにこんか?"
+	line "うけつけの よこのとびらのおくに"
+	line "つくっといたからな"
+	line "ひまなときにでも みにきてちょ<KATA>"
+	done
 
 TreeBitstreamText_39c6c:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>ん? しﾞいちゃんから<NL>"
-	ctxt "<KATA>メール<HIRA>かﾞ ととﾞいたそﾞ<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>ん? じいちゃんから"
+	line "<KATA>メール<HIRA>が とどいたぞ<KATA>"
+	done
 
 TreeBitstreamText_39c82:
-	ctxt "スホﾟロ<HIRA>しﾞいからの<KATA>メール<NL>"
-	ctxt "<HIRA>おーい <KATA><STBF><HIRA>よ!<NL>"
-	ctxt "いま とﾞこにいるんしﾞゃ?<NL>"
-	ctxt "ちょっと おもしろいもん<NL>"
-	ctxt "つくったんしﾞゃ みにこんか?<NL>"
-	ctxt "<KATA>ワシ<HIRA>の けんきゅうしつに<NL>"
-	ctxt "すこﾞい そうちを つくったんしﾞゃ<NL>"
-	ctxt "ひまなときにてﾞも みにきてちょ<KATA><TERM>"
+	ctxt "スポロ<HIRA>じいからの<KATA>メール"
+	line "<HIRA>おーい <KATA><PLAYER><HIRA>よ!"
+	line "いま どこにいるんじゃ?"
+	line "ちょっと おもしろいもん"
+	line "つくったんじゃ みにこんか?"
+	line "<KATA>ワシ<HIRA>の けんきゅうしつに"
+	line "すごい そうちを つくったんじゃ"
+	line "ひまなときにでも みにきてちょ<KATA>"
+	done
 
 TreeBitstreamText_39cd9:
-	ctxt "<HIRA>こうちょーせんせい<NL>"
-	ctxt "<KATA>ハイハイ <HIRA>なになに……<NL>"
-	ctxt "さんかしょうかﾞ ほしいとな?<NL>"
-	ctxt "それしﾞゃあ この<KATA>カートﾞ<HIRA>いっはﾟいに<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>を おしてもらいなさーい!<NL>"
-	ctxt "それそﾞれの きょうしつにいる<NL>"
-	ctxt "せんせいたちと <KATA>ハﾞトロホﾞ<HIRA>するの!<NL>"
-	ctxt "しょうふﾞにかてはﾞ <KATA>スタンフﾟ<HIRA>を<NL>"
-	ctxt "おしてもらえるんたﾞなー<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>かﾞ いっはﾟいになったら<NL>"
-	ctxt "わたしに みせにきなさい!<NL>"
-	ctxt "そしたら そのときに<NL>"
-	ctxt "さんかしょうを あけﾞよう!!<KATA><TERM>"
+	ctxt "<HIRA>こうちょーせんせい"
+	line "<KATA>ハイハイ <HIRA>なになに……"
+	line "さんかしょうが ほしいとな?"
+	line "それじゃあ この<KATA>カード<HIRA>いっぱいに"
+	line "<KATA>スタンプ<HIRA>を おしてもらいなさーい!"
+	line "それぞれの きょうしつにいる"
+	line "せんせいたちと <KATA>バトロボ<HIRA>するの!"
+	line "しょうぶにかてば <KATA>スタンプ<HIRA>を"
+	line "おしてもらえるんだなー"
+	line "<KATA>スタンプ<HIRA>が いっぱいになったら"
+	line "わたしに みせにきなさい!"
+	line "そしたら そのときに"
+	line "さんかしょうを あげよう!!<KATA>"
+	done
 
 TreeBitstreamText_39d70:
-	ctxt "スタンフﾟカートﾞ<NL>"
-	ctxt "<HIRA>を もらった!<KATA><TERM>"
+	ctxt "スタンプカード"
+	line "<HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_39d7e:
-	ctxt "ハイハイ <HIRA>ふむふむ………<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>は あと7<KATA>コ!<TERM>"
+	ctxt "ハイハイ <HIRA>ふむふむ………"
+	line "<KATA>スタンプ<HIRA>は あと7<KATA>コ!"
+	done
 
 TreeBitstreamText_39d95:
-	ctxt "ハイハイ <HIRA>ふむふむ………<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>は あと6<KATA>コ!<TERM>"
+	ctxt "ハイハイ <HIRA>ふむふむ………"
+	line "<KATA>スタンプ<HIRA>は あと6<KATA>コ!"
+	done
 
 TreeBitstreamText_39dac:
-	ctxt "ハイハイ <HIRA>ふむふむ………<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>は あと5<KATA>コ!<TERM>"
+	ctxt "ハイハイ <HIRA>ふむふむ………"
+	line "<KATA>スタンプ<HIRA>は あと5<KATA>コ!"
+	done
 
 TreeBitstreamText_39dc3:
-	ctxt "ハイハイ <HIRA>ふむふむ………<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>は あと4<KATA>コ!<TERM>"
+	ctxt "ハイハイ <HIRA>ふむふむ………"
+	line "<KATA>スタンプ<HIRA>は あと4<KATA>コ!"
+	done
 
 TreeBitstreamText_39dda:
-	ctxt "ハイハイ <HIRA>ふむふむ………<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>は あと3<KATA>コ!<TERM>"
+	ctxt "ハイハイ <HIRA>ふむふむ………"
+	line "<KATA>スタンプ<HIRA>は あと3<KATA>コ!"
+	done
 
 TreeBitstreamText_39df1:
-	ctxt "ハイハイ <HIRA>ふむふむ………<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>は あと2<KATA>コ!<TERM>"
+	ctxt "ハイハイ <HIRA>ふむふむ………"
+	line "<KATA>スタンプ<HIRA>は あと2<KATA>コ!"
+	done
 
 TreeBitstreamText_39e08:
-	ctxt "ハイハイ <HIRA>ふむふむ………<NL>"
-	ctxt "<KATA>スタンフﾟ<HIRA>は あと1<KATA>コ!<TERM>"
+	ctxt "ハイハイ <HIRA>ふむふむ………"
+	line "<KATA>スタンプ<HIRA>は あと1<KATA>コ!"
+	done
 
 TreeBitstreamText_39e1f:
-	ctxt "<HIRA>こうちょーせんせい<NL>"
-	ctxt "<KATA>ハイハイ <HIRA>ふむふむ………<NL>"
-	ctxt "よしっ こﾞーかくー!!<NL>"
-	ctxt "かﾞんはﾞった こﾞほうひﾞに<NL>"
-	ctxt "さんかしょうを あけﾞましょう!<NL>"
-	ctxt "<KATA>スタンフﾟカートﾞ<HIRA>と<NL>"
-	ctxt "さんかしょうを こうかんっ!<KATA>"
+	ctxt "<HIRA>こうちょーせんせい"
+	line "<KATA>ハイハイ <HIRA>ふむふむ………"
+	line "よしっ ごーかくー!!"
+	line "がんばった ごほうびに"
+	line "さんかしょうを あげましょう!"
+	line "<KATA>スタンプカード<HIRA>と"
+	line "さんかしょうを こうかんっ!<KATA>"
 
 TreeBitstreamText_39e65:
-	ctxt "<HIRA>さんかしょう<NL>"
-	ctxt "を もらった!<KATA><TERM>"
+	ctxt "<HIRA>さんかしょう"
+	line "を もらった!<KATA>"
+	done
 
 TreeBitstreamText_39e71:
-	ctxt "<HIRA>こうちょーせんせい<NL>"
-	ctxt "<KATA>スタンフﾟカートﾞ<HIRA>は<NL>"
-	ctxt "とﾞこにやっちゃたの?<KATA><TERM>"
+	ctxt "<HIRA>こうちょーせんせい"
+	line "<KATA>スタンプカード<HIRA>は"
+	line "どこにやっちゃたの?<KATA>"
+	done
 
 TreeBitstreamText_39e8c:
-	ctxt "<HIRA>こうちょーせんせい<NL>"
-	ctxt "みんな けﾞんきてﾞ<NL>"
-	ctxt "よいこに そたﾞっているよ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>きょういくは<NL>"
-	ctxt "たﾞいせいこうたﾞよ<KATA><TERM>"
+	ctxt "<HIRA>こうちょーせんせい"
+	line "みんな げんきで"
+	line "よいこに そだっているよ"
+	line "<KATA>バトロボ<HIRA>きょういくは"
+	line "だいせいこうだよ<KATA>"
+	done
 
 TreeBitstreamText_39eb7:
-	ctxt "<HIRA>ほけんのせんせい<NL>"
-	ctxt "<KATA>ハイ <HIRA>それしﾞゃあ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>しょうふﾞよ!<KATA><TERM>"
+	ctxt "<HIRA>ほけんのせんせい"
+	line "<KATA>ハイ <HIRA>それじゃあ"
+	line "<KATA>バトロボ<HIRA>しょうぶよ!<KATA>"
+	done
 
 TreeBitstreamText_39ed3:
-	ctxt "<HIRA>ほけんのせんせい<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>も いいけとﾞ<NL>"
-	ctxt "<KATA>ケカﾞ<HIRA>には ちゅういするのよ!<KATA><TERM>"
+	ctxt "<HIRA>ほけんのせんせい"
+	line "<KATA>バトロボ<HIRA>も いいけど"
+	line "<KATA>ケガ<HIRA>には ちゅういするのよ!<KATA>"
+	done
 
 TreeBitstreamText_39ef3:
-	ctxt "<HIRA>ほけんのせんせい<NL>"
-	ctxt "<KATA>ハイ <HIRA>それしﾞゃあ<NL>"
-	ctxt "また きなさい<KATA><TERM>"
+	ctxt "<HIRA>ほけんのせんせい"
+	line "<KATA>ハイ <HIRA>それじゃあ"
+	line "また きなさい<KATA>"
+	done
 
 TreeBitstreamText_39f09:
-	ctxt "<HIRA>ほけんのせんせい<NL>"
-	ctxt "この こうしゃは 7かいたﾞてよ<NL>"
-	ctxt "かﾞっこうに しちゃ たかいわよね<NL>"
-	ctxt "まあ それかﾞ <KATA>ウリ <HIRA>らしいけとﾞ<KATA><TERM>"
+	ctxt "<HIRA>ほけんのせんせい"
+	line "この こうしゃは 7かいだてよ"
+	line "がっこうに しちゃ たかいわよね"
+	line "まあ それが <KATA>ウリ <HIRA>らしいけど<KATA>"
+	done
 
 TreeBitstreamText_39f37:
-	ctxt "<HIRA>こくこﾞのせんせい<NL>"
-	ctxt "さぁ はりきって<NL>"
-	ctxt "しょうふﾞしようか?<KATA>"
+	ctxt "<HIRA>こくごのせんせい"
+	line "さぁ はりきって"
+	line "しょうぶしようか?<KATA>"
 
 TreeBitstreamText_39f4e:
-	ctxt "<HIRA>こくこﾞのせんせい<NL>"
-	ctxt "なかなか やるわね!<KATA><TERM>"
+	ctxt "<HIRA>こくごのせんせい"
+	line "なかなか やるわね!<KATA>"
+	done
 
 TreeBitstreamText_39f5f:
-	ctxt "<HIRA>こくこﾞのせんせい<NL>"
-	ctxt "そうかい またあとてﾞ<KATA><TERM>"
+	ctxt "<HIRA>こくごのせんせい"
+	line "そうかい またあとで<KATA>"
+	done
 
 TreeBitstreamText_39f70:
-	ctxt "<HIRA>こくこﾞのせんせい<NL>"
-	ctxt "<KATA>エネ<HIRA>たﾞまは おとﾞりくﾞいてﾞ <KATA>ハクﾞッ<HIRA>と<NL>"
-	ctxt "いっきに やるのかﾞ せいかい!<NL>"
-	ctxt "つまり <KATA>ハﾞトル<HIRA>のあと すくﾞに<NL>"
-	ctxt "たへﾞさせないと <KATA>シﾞ エントﾞ<HIRA>たﾞよ!<KATA><TERM>"
+	ctxt "<HIRA>こくごのせんせい"
+	line "<KATA>エネ<HIRA>だまは おどりぐいで <KATA>ハグッ<HIRA>と"
+	line "いっきに やるのが せいかい!"
+	line "つまり <KATA>バトル<HIRA>のあと すぐに"
+	line "たべさせないと <KATA>ジ エンド<HIRA>だよ!<KATA>"
+	done
 
 TreeBitstreamText_39fb2:
-	ctxt "<HIRA>すうかﾞくのせんせい<NL>"
-	ctxt "はいはい しょうふﾞするかね?<KATA><TERM>"
+	ctxt "<HIRA>すうがくのせんせい"
+	line "はいはい しょうぶするかね?<KATA>"
+	done
 
 TreeBitstreamText_39fc7:
-	ctxt "<HIRA>すうかﾞくのせんせい<NL>"
-	ctxt "ひゃっ ひゃっ ひゃ<KATA><TERM>"
+	ctxt "<HIRA>すうがくのせんせい"
+	line "ひゃっ ひゃっ ひゃ<KATA>"
+	done
 
 TreeBitstreamText_39fd9:
-	ctxt "<HIRA>すうかﾞくのせんせい<NL>"
-	ctxt "そうかい?<KATA><TERM>"
+	ctxt "<HIRA>すうがくのせんせい"
+	line "そうかい?<KATA>"
+	done
 
 TreeBitstreamText_39fe7:
-	ctxt "<HIRA>すうかﾞくのせんせい<NL>"
-	ctxt "ねつ に かかると <KATA>ターン<HIRA>こﾞとに<NL>"
-	ctxt "<KATA>タﾞメーシﾞ<HIRA>を うけるのしﾞゃ!<KATA>"
+	ctxt "<HIRA>すうがくのせんせい"
+	line "ねつ に かかると <KATA>ターン<HIRA>ごとに"
+	line "<KATA>ダメージ<HIRA>を うけるのじゃ!<KATA>"
 
 TreeBitstreamText_3a00a:
-	ctxt "<HIRA>えいこﾞのせんせい<NL>"
-	ctxt "<KATA>レッツ ヒﾞキﾞンッ!<NL>"
-	ctxt "アーユーレテﾞィ?<TERM>"
+	ctxt "<HIRA>えいごのせんせい"
+	line "<KATA>レッツ ビギンッ!"
+	line "アーユーレディ?"
+	done
 
 TreeBitstreamText_3a024:
-	ctxt "<HIRA>えいこﾞのせんせい<NL>"
-	ctxt "<KATA>ホﾞーイスﾞ ヒﾞー アンヒﾞシャス!<TERM>"
+	ctxt "<HIRA>えいごのせんせい"
+	line "<KATA>ボーイズ ビー アンビシャス!"
+	done
 
 TreeBitstreamText_3a03a:
-	ctxt "<HIRA>えいこﾞのせんせい<NL>"
-	ctxt "<KATA>シー ユー レイター<TERM>"
+	ctxt "<HIRA>えいごのせんせい"
+	line "<KATA>シー ユー レイター"
+	done
 
 TreeBitstreamText_3a04b:
-	ctxt "<HIRA>えいこﾞのせんせい<NL>"
-	ctxt "わさﾞと <KATA>イーヒﾟー<HIRA>の かんけいは<NL>"
-	ctxt "<KATA>ケﾞーム<HIRA>に よくある まほうと<NL>"
-	ctxt "<KATA>マシﾞックハﾟワー<HIRA>の かんけい たﾞと<NL>"
-	ctxt "おもえはﾞ わかりやすい たﾞろ?<NL>"
-	ctxt "<KATA>トﾞゥー ユー アンタﾞースタン?<TERM>"
+	ctxt "<HIRA>えいごのせんせい"
+	line "わざと <KATA>イーピー<HIRA>の かんけいは"
+	line "<KATA>ゲーム<HIRA>に よくある まほうと"
+	line "<KATA>マジックパワー<HIRA>の かんけい だと"
+	line "おもえば わかりやすい だろ?"
+	line "<KATA>ドゥー ユー アンダースタン?"
+	done
 
 TreeBitstreamText_3a097:
-	ctxt "<HIRA>たいいくのせんせい<NL>"
-	ctxt "よーしっ!!<NL>"
-	ctxt "てかけﾞんは なしたﾞ かかってこい!<KATA>"
+	ctxt "<HIRA>たいいくのせんせい"
+	line "よーしっ!!"
+	line "てかげんは なしだ かかってこい!<KATA>"
 
 TreeBitstreamText_3a0b1:
-	ctxt "<HIRA>たいいくのせんせい<NL>"
-	ctxt "よーしっ!<NL>"
-	ctxt "けﾞんきかﾞあって よろしい!<KATA><TERM>"
+	ctxt "<HIRA>たいいくのせんせい"
+	line "よーしっ!"
+	line "げんきがあって よろしい!<KATA>"
+	done
 
 TreeBitstreamText_3a0c9:
-	ctxt "<HIRA>たいいくのせんせい<NL>"
-	ctxt "とﾞうしたぁ!<NL>"
-	ctxt "きょうは けんかﾞくかぁ?<KATA><TERM>"
+	ctxt "<HIRA>たいいくのせんせい"
+	line "どうしたぁ!"
+	line "きょうは けんがくかぁ?<KATA>"
+	done
 
 TreeBitstreamText_3a0e1:
-	ctxt "<HIRA>たいいくのせんせい<NL>"
-	ctxt "ようりょうは <KATA>アール エー エム<NL>"
-	ctxt "<HIRA>つまり<KATA>ラム<HIRA>って いうんたﾞ<NL>"
-	ctxt "<KATA>ラム<HIRA>は すうしﾞを よーく<NL>"
-	ctxt "<KATA>チェック<HIRA>しなきゃ いけないな<NL>"
-	ctxt "<KATA>ハﾟーツ<HIRA>の のこり ようりょう より<NL>"
-	ctxt "おおきい<KATA>ソフト<HIRA>は くみこめないそﾞ<KATA><TERM>"
+	ctxt "<HIRA>たいいくのせんせい"
+	line "ようりょうは <KATA>アール エー エム"
+	line "<HIRA>つまり<KATA>ラム<HIRA>って いうんだ"
+	line "<KATA>ラム<HIRA>は すうじを よーく"
+	line "<KATA>チェック<HIRA>しなきゃ いけないな"
+	line "<KATA>パーツ<HIRA>の のこり ようりょう より"
+	line "おおきい<KATA>ソフト<HIRA>は くみこめないぞ<KATA>"
+	done
 
 TreeBitstreamText_3a138:
-	ctxt "<HIRA>しゃかいのせんせい<NL>"
-	ctxt "とﾞれとﾞれ <KATA>ワシ<HIRA>と<NL>"
-	ctxt "しょうふﾞするのか?<KATA><TERM>"
+	ctxt "<HIRA>しゃかいのせんせい"
+	line "どれどれ <KATA>ワシ<HIRA>と"
+	line "しょうぶするのか?<KATA>"
+	done
 
 TreeBitstreamText_3a151:
-	ctxt "<HIRA>しゃかいのせんせい<NL>"
-	ctxt "かんしん かんしん<NL>"
-	ctxt "よきかな よきかな<KATA><TERM>"
+	ctxt "<HIRA>しゃかいのせんせい"
+	line "かんしん かんしん"
+	line "よきかな よきかな<KATA>"
+	done
 
 TreeBitstreamText_3a167:
-	ctxt "<HIRA>しゃかいのせんせい<NL>"
-	ctxt "えぇ わかいもんかﾞ<NL>"
-	ctxt "<KATA>ホレ シャキッ<HIRA>と せんかいっ!<KATA><TERM>"
+	ctxt "<HIRA>しゃかいのせんせい"
+	line "えぇ わかいもんが"
+	line "<KATA>ホレ シャキッ<HIRA>と せんかいっ!<KATA>"
+	done
 
 TreeBitstreamText_3a184:
-	ctxt "<HIRA>しゃかいのせんせい<NL>"
-	ctxt "せんとうちゅう <KATA>ロホﾞホﾟン<HIRA>を ほかく<NL>"
-	ctxt "したはﾞあいは けいけんち <KATA>エネ<HIRA>たﾞま<NL>"
-	ctxt "<KATA>アイテム<HIRA>は すへﾞて もらえん!<KATA><TERM>"
+	ctxt "<HIRA>しゃかいのせんせい"
+	line "せんとうちゅう <KATA>ロボポン<HIRA>を ほかく"
+	line "したばあいは けいけんち <KATA>エネ<HIRA>だま"
+	line "<KATA>アイテム<HIRA>は すべて もらえん!<KATA>"
+	done
 
 TreeBitstreamText_3a1b9:
-	ctxt "<HIRA>りかのせんせい<NL>"
-	ctxt "ん? しょうふﾞか?<NL>"
-	ctxt "<NL>"
-	ctxt "しﾞっけんてﾞ いそかﾞしいから<NL>"
-	ctxt "また あとてﾞ きてくれっ!<KATA><TERM>"
+	ctxt "<HIRA>りかのせんせい"
+	line "ん? しょうぶか?"
+	line ""
+	line "じっけんで いそがしいから"
+	line "また あとで きてくれっ!<KATA>"
+	done
 
 TreeBitstreamText_3a1de:
-	ctxt "<HIRA>りかのせんせい<NL>"
-	ctxt "ふーっ………<NL>"
-	ctxt "しﾞっけんは しっはﾟいたﾞったよ<NL>"
-	ctxt "しかたない しょうふﾞするか?<KATA><TERM>"
+	ctxt "<HIRA>りかのせんせい"
+	line "ふーっ………"
+	line "じっけんは しっぱいだったよ"
+	line "しかたない しょうぶするか?<KATA>"
+	done
 
 TreeBitstreamText_3a202:
-	ctxt "<HIRA>りかのせんせい<NL>"
-	ctxt "さぁ しﾞっけん しﾞっけん!<KATA><TERM>"
+	ctxt "<HIRA>りかのせんせい"
+	line "さぁ じっけん じっけん!<KATA>"
+	done
 
 TreeBitstreamText_3a215:
-	ctxt "<HIRA>りかのせんせい<NL>"
-	ctxt "ん? とﾞうした?<NL>"
-	ctxt "<KATA>オレ<HIRA>てﾞ さいこﾞたﾞろ?<KATA><TERM>"
+	ctxt "<HIRA>りかのせんせい"
+	line "ん? どうした?"
+	line "<KATA>オレ<HIRA>で さいごだろ?<KATA>"
+	done
 
 TreeBitstreamText_3a22e:
-	ctxt "<HIRA>りかのせんせい<NL>"
-	ctxt "<KATA>サヒﾞ<HIRA>の<KATA>タﾞメーシﾞ<HIRA>は くらうなよ!<NL>"
-	ctxt "ねつ と おなしﾞ<KATA>タﾞメーシﾞ<HIRA>になるそﾞ!<NL>"
-	ctxt "それに <KATA>ロホﾞホﾟン <HIRA>と たたかう の<NL>"
-	ctxt "<KATA>コマントﾞ<HIRA>かﾞ ときとﾞき つかえん!<KATA><TERM>"
+	ctxt "<HIRA>りかのせんせい"
+	line "<KATA>サビ<HIRA>の<KATA>ダメージ<HIRA>は くらうなよ!"
+	line "ねつ と おなじ<KATA>ダメージ<HIRA>になるぞ!"
+	line "それに <KATA>ロボポン <HIRA>と たたかう の"
+	line "<KATA>コマンド<HIRA>が ときどき つかえん!<KATA>"
+	done
 
 TreeBitstreamText_3a272:
-	ctxt "スタンフﾟ<HIRA>を おしてもらった!<KATA><TERM>"
+	ctxt "スタンプ<HIRA>を おしてもらった!<KATA>"
+	done
 
 TreeBitstreamText_3a27f:
-	ctxt "スタンフﾟカートﾞ<HIRA>を もらったら<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ <HIRA>しょうふﾞてﾞきるよ<KATA><TERM>"
+	ctxt "スタンプカード<HIRA>を もらったら"
+	line "<KATA>バトロボ <HIRA>しょうぶできるよ<KATA>"
+	done
 
 TreeBitstreamText_3a29a:
-	ctxt "<HIRA>あら <KATA><STBF><HIRA>しﾞゃない<NL>"
-	ctxt "<NL>"
-	ctxt "さっき こうちょーせんせいかﾞ<NL>"
-	ctxt "あなたのこと さかﾞしてたわよ<KATA><TERM>"
+	ctxt "<HIRA>あら <KATA><PLAYER><HIRA>じゃない"
+	line ""
+	line "さっき こうちょーせんせいが"
+	line "あなたのこと さがしてたわよ<KATA>"
+	done
 
 TreeBitstreamText_3a2bb:
-	ctxt "<HIRA>こうちょーせんせいなら<NL>"
-	ctxt "ちかしつに いったみたいたﾞよ<KATA><TERM>"
+	ctxt "<HIRA>こうちょーせんせいなら"
+	line "ちかしつに いったみたいだよ<KATA>"
+	done
 
 TreeBitstreamText_3a2d1:
-	ctxt "<HIRA>こうちょーせんせいには<NL>"
-	ctxt "あえたのかい?<KATA><TERM>"
+	ctxt "<HIRA>こうちょーせんせいには"
+	line "あえたのかい?<KATA>"
+	done
 
 TreeBitstreamText_3a2e2:
-	ctxt "<HIRA>こふﾞん<NL>"
-	ctxt "さんかしょう もってないのに<NL>"
-	ctxt "たいかいに てﾞようってのか?<NL>"
-	ctxt "あまいせﾞ! かえった かえった!<KATA><TERM>"
+	ctxt "<HIRA>こぶん"
+	line "さんかしょう もってないのに"
+	line "たいかいに でようってのか?"
+	line "あまいぜ! かえった かえった!<KATA>"
+	done
 
 TreeBitstreamText_3a308:
-	ctxt "<HIRA>こふﾞん1<NL>"
-	ctxt "おー <KATA><STBF><HIRA>の <KATA>ロホﾞホﾟン<NL>"
-	ctxt "<HIRA>いつのまにか つよくなってんな!<NL>"
-	ctxt "てﾞもな かんたんに たいかいに<NL>"
-	ctxt "てﾞられると おもったら あまい!<NL>"
-	ctxt "ここてﾞ かえって もらうせﾞ!<KATA><TERM>"
+	ctxt "<HIRA>こぶん1"
+	line "おー <KATA><PLAYER><HIRA>の <KATA>ロボポン"
+	line "<HIRA>いつのまにか つよくなってんな!"
+	line "でもな かんたんに たいかいに"
+	line "でられると おもったら あまい!"
+	line "ここで かえって もらうぜ!<KATA>"
+	done
 
 TreeBitstreamText_3a349:
-	ctxt "<HIRA>こふﾞん2<NL>"
-	ctxt "<KATA>ヒﾞスコ<HIRA>さんと たたかうまてﾞも ないせﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "おれかﾞ いるからな!<KATA><TERM>"
+	ctxt "<HIRA>こぶん2"
+	line "<KATA>ビスコ<HIRA>さんと たたかうまでも ないぜ"
+	line ""
+	line "おれが いるからな!<KATA>"
+	done
 
 TreeBitstreamText_3a368:
-	ctxt "<HIRA>こふﾞん<NL>"
-	ctxt "<KATA>オイオイ <HIRA>とﾞこに いくき たﾞぁ?!<NL>"
-	ctxt "<NL>"
-	ctxt "おまえの あいては こっちたﾞよ!!<KATA><TERM>"
+	ctxt "<HIRA>こぶん"
+	line "<KATA>オイオイ <HIRA>どこに いくき だぁ?!"
+	line ""
+	line "おまえの あいては こっちだよ!!<KATA>"
+	done
 
 TreeBitstreamText_3a38a:
-	ctxt "<HIRA>しかい<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>たいかいの ゆうしょうしゃは<NL>"
-	ctxt "<KATA>ヒﾞスコ<HIRA>くんに けっていしました!!<KATA><TERM>"
+	ctxt "<HIRA>しかい"
+	line "<KATA>バトロボ<HIRA>たいかいの ゆうしょうしゃは"
+	line "<KATA>ビスコ<HIRA>くんに けっていしました!!<KATA>"
+	done
 
 TreeBitstreamText_3a3ac:
-	ctxt "<HIRA>こふﾞん1<NL>"
-	ctxt "おやふﾞーん<NL>"
-	ctxt "<KATA><STBF><HIRA>に やられちまいました<KATA><TERM>"
+	ctxt "<HIRA>こぶん1"
+	line "おやぶーん"
+	line "<KATA><PLAYER><HIRA>に やられちまいました<KATA>"
+	done
 
 TreeBitstreamText_3a3c2:
-	ctxt "<HIRA>こふﾞん2<NL>"
-	ctxt "おやふﾞん あっしらの<KATA>カタキ<HIRA>を<NL>"
-	ctxt "とってくたﾞさい!!<KATA>"
+	ctxt "<HIRA>こぶん2"
+	line "おやぶん あっしらの<KATA>カタキ<HIRA>を"
+	line "とってください!!<KATA>"
 
 TreeBitstreamText_3a3dc:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<STBF>!<NL>"
-	ctxt "<HIRA>いい とﾞきょう してるしﾞゃねえか!<NL>"
-	ctxt "こふﾞんたちの ふﾞんも たっふﾟり<NL>"
-	ctxt "かわいかﾞって やろうしﾞゃねえか!<NL>"
-	ctxt "かったほうかﾞ <KATA>クﾞレイテスト7<HIRA>へ<NL>"
-	ctxt "ちょうせんたﾞ!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<PLAYER>!"
+	line "<HIRA>いい どきょう してるじゃねえか!"
+	line "こぶんたちの ぶんも たっぷり"
+	line "かわいがって やろうじゃねえか!"
+	line "かったほうが <KATA>グレイテスト7<HIRA>へ"
+	line "ちょうせんだ!<KATA>"
+	done
 
 TreeBitstreamText_3a420:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<STBF> <HIRA>おほﾞえてろよ!<NL>"
-	ctxt "かならすﾞ この かりは かえす!<NL>"
-	ctxt "ちかいうちに かならすﾞ なっ!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>クﾞレイテスト7<HIRA>への ちょうせんけんを<NL>"
-	ctxt "さきに かちとったのは <KATA>オレ<HIRA>たﾞ!<NL>"
-	ctxt "わるいかﾞ おさきに<KATA>ロホﾞホﾟントﾞーム<HIRA>へ<NL>"
-	ctxt "いかせてもらうせﾞ <KATA>ヘヘヘン!<TERM>"
+	ctxt "ビスコ"
+	line "<PLAYER> <HIRA>おぼえてろよ!"
+	line "かならず この かりは かえす!"
+	line "ちかいうちに かならず なっ!"
+	line ""
+	line "<KATA>グレイテスト7<HIRA>への ちょうせんけんを"
+	line "さきに かちとったのは <KATA>オレ<HIRA>だ!"
+	line "わるいが おさきに<KATA>ロボポンドーム<HIRA>へ"
+	line "いかせてもらうぜ <KATA>ヘヘヘン!"
+	done
 
 TreeBitstreamText_3a481:
-	ctxt "<HIRA>しかい<NL>"
-	ctxt "すはﾞらしい!<NL>"
-	ctxt "しかい ひとすしﾞ 30ねん………<NL>"
-	ctxt "きみのような <KATA>ロホﾞホﾟン<HIRA>つかいを<NL>"
-	ctxt "わたしは まっていた!<NL>"
-	ctxt "きみは いつか きっと すはﾞらしい<NL>"
-	ctxt "<KATA>ハﾞトロホﾞランカー<HIRA>に なるかも!<NL>"
-	ctxt "きたいを こめて <KATA>ランキンクﾞ<HIRA>せんの<NL>"
-	ctxt "<KATA>ルール<HIRA>を おしえて しんせﾞよう<NL>"
-	ctxt "ますﾞ <KATA>ランキンクﾞ<HIRA>せんてﾞ たたかうなら<NL>"
-	ctxt "たいせんあいてに ちょくせつ あう!<NL>"
-	ctxt "そして しあいを もうしこむんたﾞ!<NL>"
-	ctxt "そのあと <KATA>ロホﾞホﾟントﾞーム<HIRA>に いく!<NL>"
-	ctxt "まあ あいてに あうまてﾞかﾞ<NL>"
-	ctxt "<KATA>メチャ<HIRA>たいへん なんたﾞけとﾞね<NL>"
-	ctxt "そうそう しﾞふﾞんより 1つ うえの<NL>"
-	ctxt "<KATA>ランカー<HIRA>としか たたかえないんたﾞ<NL>"
-	ctxt "ちゅういしてね<KATA>"
+	ctxt "<HIRA>しかい"
+	line "すばらしい!"
+	line "しかい ひとすじ 30ねん………"
+	line "きみのような <KATA>ロボポン<HIRA>つかいを"
+	line "わたしは まっていた!"
+	line "きみは いつか きっと すばらしい"
+	line "<KATA>バトロボランカー<HIRA>に なるかも!"
+	line "きたいを こめて <KATA>ランキング<HIRA>せんの"
+	line "<KATA>ルール<HIRA>を おしえて しんぜよう"
+	line "まず <KATA>ランキング<HIRA>せんで たたかうなら"
+	line "たいせんあいてに ちょくせつ あう!"
+	line "そして しあいを もうしこむんだ!"
+	line "そのあと <KATA>ロボポンドーム<HIRA>に いく!"
+	line "まあ あいてに あうまでが"
+	line "<KATA>メチャ<HIRA>たいへん なんだけどね"
+	line "そうそう じぶんより 1つ うえの"
+	line "<KATA>ランカー<HIRA>としか たたかえないんだ"
+	line "ちゅういしてね<KATA>"
 
 TreeBitstreamText_3a556:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>よう <KATA><STBF>!<NL>"
-	ctxt "<HIRA>おそかった しﾞゃねえか<NL>"
-	ctxt "おまえかﾞ くるまえに <KATA>オレ<HIRA>さまかﾞ<NL>"
-	ctxt "7いに なっちゃったもんねー<NL>"
-	ctxt "さっきの <KATA>クﾞレイテスト7<HIRA>ったら<NL>"
-	ctxt "よわいこと よわいこと!<NL>"
-	ctxt "かんたんに かっちゃったもんね!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>よう <KATA><PLAYER>!"
+	line "<HIRA>おそかった じゃねえか"
+	line "おまえが くるまえに <KATA>オレ<HIRA>さまが"
+	line "7いに なっちゃったもんねー"
+	line "さっきの <KATA>グレイテスト7<HIRA>ったら"
+	line "よわいこと よわいこと!"
+	line "かんたんに かっちゃったもんね!<KATA>"
+	done
 
 TreeBitstreamText_3a5a7:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>やい <KATA>ヒﾞスコ!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>ほんとうは <KATA>ホﾞク<HIRA>かﾞ ちょうせんけんを<NL>"
-	ctxt "もっていたんたﾞそﾞ!!<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>やい <KATA>ビスコ!"
+	line ""
+	line "<HIRA>ほんとうは <KATA>ボク<HIRA>が ちょうせんけんを"
+	line "もっていたんだぞ!!<KATA>"
+	done
 
 TreeBitstreamText_3a5cb:
-	ctxt "<HIRA>こふﾞん1<NL>"
-	ctxt "<KATA><STBF> <HIRA>もう ておくれさっ!<NL>"
-	ctxt "とっとと うちへ かえりな!<KATA>"
+	ctxt "<HIRA>こぶん1"
+	line "<KATA><PLAYER> <HIRA>もう ておくれさっ!"
+	line "とっとと うちへ かえりな!<KATA>"
 
 TreeBitstreamText_3a5e6:
-	ctxt "<HIRA>こふﾞん2<NL>"
-	ctxt "けっきょく おまえかﾞ <KATA>ヒﾞスコ<HIRA>さんに<NL>"
-	ctxt "かなうわけかﾞ ないのさ!<KATA><TERM>"
+	ctxt "<HIRA>こぶん2"
+	line "けっきょく おまえが <KATA>ビスコ<HIRA>さんに"
+	line "かなうわけが ないのさ!<KATA>"
+	done
 
 TreeBitstreamText_3a605:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>まっ そんなわけたﾞ <KATA><STBF><NL>"
-	ctxt "<HIRA>あきらめる ことたﾞな<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>まっ そんなわけだ <KATA><PLAYER>"
+	line "<HIRA>あきらめる ことだな<KATA>"
+	done
 
 TreeBitstreamText_3a61d:
-	ctxt "<STBF><NL>"
-	ctxt "スﾞルイ<HIRA>そﾞ <KATA>インチキ<HIRA>たﾞ!!<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "ズルイ<HIRA>ぞ <KATA>インチキ<HIRA>だ!!<KATA>"
+	done
 
 TreeBitstreamText_3a62c:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>うるせーっ!<NL>"
-	ctxt "<NL>"
-	ctxt "もう <KATA>オレ<HIRA>さまかﾞ <KATA>クﾞレイテスト7<HIRA>に<NL>"
-	ctxt "きまったんたﾞよ!!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>うるせーっ!"
+	line ""
+	line "もう <KATA>オレ<HIRA>さまが <KATA>グレイテスト7<HIRA>に"
+	line "きまったんだよ!!<KATA>"
+	done
 
 TreeBitstreamText_3a64f:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "やめないかっ<NL>"
-	ctxt "みくﾞるしいそﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "やめないかっ"
+	line "みぐるしいぞ!<KATA>"
+	done
 
 TreeBitstreamText_3a662:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>ん?<NL>"
-	ctxt "たﾞれたﾞ うえから えらそうに……<NL>"
-	ctxt "あれは………<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞ と <KATA>タﾞース<HIRA>ひめ!<NL>"
-	ctxt "そっか <KATA>クﾞレイテスト<HIRA>せんの<NL>"
-	ctxt "しゅさいしゃたﾞもんな そういえはﾞ<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>ん?"
+	line "だれだ うえから えらそうに……"
+	line "あれは………"
+	line "<KATA>テール<HIRA>おうじ と <KATA>ダース<HIRA>ひめ!"
+	line "そっか <KATA>グレイテスト<HIRA>せんの"
+	line "しゅさいしゃだもんな そういえば<KATA>"
+	done
 
 TreeBitstreamText_3a6a3:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "ふたりとも <KATA>コﾞチャコﾞチャ <HIRA>いわすﾞ<NL>"
-	ctxt "ここてﾞ たたかうかﾞいい!<NL>"
-	ctxt "しんの <KATA>クﾞレイテスト7<HIRA>の<NL>"
-	ctxt "けっていせんを おこなうのたﾞ!<NL>"
-	ctxt "それならはﾞ もんたﾞい なかろう!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "ふたりとも <KATA>ゴチャゴチャ <HIRA>いわず"
+	line "ここで たたかうがいい!"
+	line "しんの <KATA>グレイテスト7<HIRA>の"
+	line "けっていせんを おこなうのだ!"
+	line "それならば もんだい なかろう!<KATA>"
+	done
 
 TreeBitstreamText_3a6e6:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>よーし やってやろう しﾞゃねぇか!!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>よーし やってやろう じゃねぇか!!<KATA>"
+	done
 
 TreeBitstreamText_3a6fa:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<STBF>! <HIRA>おほﾞえてやかﾞれ!<NL>"
-	ctxt "<NL>"
-	ctxt "きっと いつか とﾞこかてﾞ<NL>"
-	ctxt "かならすﾞ ふくしゅう してやる!!<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を もっと つよくするために<NL>"
-	ctxt "<KATA>オレ<HIRA>さまは しゅきﾞょうに てﾞる!<NL>"
-	ctxt "よくきけ! <KATA>オレ<HIRA>は <KATA>カリーユ<HIRA>まちに<NL>"
-	ctxt "たひﾞたﾞつかﾞ あとを おうなよ!<NL>"
-	ctxt "………それしﾞゃあな!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<PLAYER>! <HIRA>おぼえてやがれ!"
+	line ""
+	line "きっと いつか どこかで"
+	line "かならず ふくしゅう してやる!!"
+	line "<KATA>ロボポン<HIRA>を もっと つよくするために"
+	line "<KATA>オレ<HIRA>さまは しゅぎょうに でる!"
+	line "よくきけ! <KATA>オレ<HIRA>は <KATA>カリーユ<HIRA>まちに"
+	line "たびだつが あとを おうなよ!"
+	line "………それじゃあな!<KATA>"
+	done
 
 TreeBitstreamText_3a765:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA><STBF> <HIRA>おめてﾞとう!!<NL>"
-	ctxt "<NL>"
-	ctxt "この ちょうしてﾞ <KATA>トﾞントﾞン<NL>"
-	ctxt "<HIRA>うえの<KATA>ランク<HIRA>を めさﾞすかﾞ よい!<NL>"
-	ctxt "つきﾞは <KATA>クﾞレイテスト6<HIRA>たﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>クﾞレイテスト6<HIRA>は <KATA>ハﾞンサﾞ<HIRA>むらにいる<NL>"
-	ctxt "<KATA>アムロン<HIRA>という <KATA>アイトﾞル<HIRA>たﾞ!<NL>"
-	ctxt "<KATA>ランカー<HIRA>さかﾞしは くろうするかﾞ<NL>"
-	ctxt "たいせんまてﾞ <KATA>ロホﾞホﾟン<HIRA>を きたえ<NL>"
-	ctxt "<KATA>レヘﾞルアッフﾟ<HIRA>させるのたﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA><PLAYER> <HIRA>おめでとう!!"
+	line ""
+	line "この ちょうしで <KATA>ドンドン"
+	line "<HIRA>うえの<KATA>ランク<HIRA>を めざすが よい!"
+	line "つぎは <KATA>グレイテスト6<HIRA>だ!"
+	line ""
+	line "<KATA>グレイテスト6<HIRA>は <KATA>バンザ<HIRA>むらにいる"
+	line "<KATA>アムロン<HIRA>という <KATA>アイドル<HIRA>だ!"
+	line "<KATA>ランカー<HIRA>さがしは くろうするが"
+	line "たいせんまで <KATA>ロボポン<HIRA>を きたえ"
+	line "<KATA>レベルアップ<HIRA>させるのだ!<KATA>"
+	done
 
 TreeBitstreamText_3a7e7:
-	ctxt "クﾞレイテスト7<HIRA>の しょうこﾞう<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "グレイテスト7<HIRA>の しょうごう"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3a7fb:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA>クﾞレイテスト7<HIRA>は <KATA><STBF><HIRA>か<NL>"
-	ctxt "<NL>"
-	ctxt "ひさしふﾞりに <KATA>イキ<HIRA>のいい せんしゅかﾞ<NL>"
-	ctxt "とうしﾞょう したものたﾞな<NL>"
-	ctxt "<KATA>クﾞレイテスト6<HIRA>の <KATA>アムロン<HIRA>も<NL>"
-	ctxt "うかうか してられないそﾞ<NL>"
-	ctxt "しﾞゅんいかﾞ おおきく かわりそうな<NL>"
-	ctxt "よかんかﾞ してきたそﾞ………<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA>グレイテスト7<HIRA>は <KATA><PLAYER><HIRA>か"
+	line ""
+	line "ひさしぶりに <KATA>イキ<HIRA>のいい せんしゅが"
+	line "とうじょう したものだな"
+	line "<KATA>グレイテスト6<HIRA>の <KATA>アムロン<HIRA>も"
+	line "うかうか してられないぞ"
+	line "じゅんいが おおきく かわりそうな"
+	line "よかんが してきたぞ………<KATA>"
+	done
 
 TreeBitstreamText_3a858:
-	ctxt "テﾞカケル トキハ テレヒﾞノ<NL>"
-	ctxt "スイッチヲ キリマショウ<NL>"
-	ctxt "シﾞフﾞン ノ イエハ モチロン<NL>"
-	ctxt "ホカ ノ ヒトノ イエテﾞモ ネ!<NL>"
-	ctxt "テレヒﾞノ スイッチ ハ<NL>"
-	ctxt "ヨコ ノ タカラハﾞコニ ツイテルヨ<NL>"
-	ctxt "ホナ サイナラ"
+	ctxt "デカケル トキハ テレビノ"
+	line "スイッチヲ キリマショウ"
+	line "ジブン ノ イエハ モチロン"
+	line "ホカ ノ ヒトノ イエデモ ネ!"
+	line "テレビノ スイッチ ハ"
+	line "ヨコ ノ タカラバコニ ツイテルヨ"
+	line "ホナ サイナラ"
 
 TreeBitstreamText_3a89f:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>あかりを ともさないと<NL>"
-	ctxt "まっくらてﾞ なんにもみえないや<NL>"
-	ctxt "<KATA>カンテラ<HIRA>かﾞ あれはﾞなぁ……<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>あかりを ともさないと"
+	line "まっくらで なんにもみえないや"
+	line "<KATA>カンテラ<HIRA>が あればなぁ……<KATA>"
+	done
 
 TreeBitstreamText_3a8c3:
-	ctxt "<HIRA>ほい いらっしゃい!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>カンテラ<HIRA>は うってないけとﾞ<NL>"
-	ctxt "<KATA>カンテラ<HIRA>や たﾞよ!<KATA><TERM>"
+	ctxt "<HIRA>ほい いらっしゃい!"
+	line ""
+	line "<KATA>カンテラ<HIRA>は うってないけど"
+	line "<KATA>カンテラ<HIRA>や だよ!<KATA>"
+	done
 
 TreeBitstreamText_3a8e1:
-	ctxt "<HIRA>え!? とﾞうしても ほしいの?<NL>"
-	ctxt "<KATA>ワチキ<HIRA>のもってる <KATA>カンテラ<HIRA>てﾞいい?<NL>"
-	ctxt "とくへﾞつたﾞ しﾞょうけんつきてﾞ<NL>"
-	ctxt "<KATA>フﾟレセﾞント <HIRA>しようしﾞゃないか<NL>"
-	ctxt "しﾞゃあねぇ………<NL>"
-	ctxt "<NL>"
-	ctxt "うみふﾞとﾞう<NL>"
-	ctxt "とってきて くんないかなぁ<KATA>"
+	ctxt "<HIRA>え!? どうしても ほしいの?"
+	line "<KATA>ワチキ<HIRA>のもってる <KATA>カンテラ<HIRA>でいい?"
+	line "とくべつだ じょうけんつきで"
+	line "<KATA>プレゼント <HIRA>しようじゃないか"
+	line "じゃあねぇ………"
+	line ""
+	line "うみぶどう"
+	line "とってきて くんないかなぁ<KATA>"
 
 TreeBitstreamText_3a92f:
-	ctxt "<HIRA>うみにある ふﾞとﾞう うみふﾞとﾞう………<NL>"
-	ctxt "あれ おいしいんたﾞよねー!<NL>"
-	ctxt "あさせの うみなら とﾞっか さかﾞせはﾞ<NL>"
-	ctxt "きっと おっこちてんたﾞろ たふﾞん<KATA><TERM>"
+	ctxt "<HIRA>うみにある ぶどう うみぶどう………"
+	line "あれ おいしいんだよねー!"
+	line "あさせの うみなら どっか さがせば"
+	line "きっと おっこちてんだろ たぶん<KATA>"
+	done
 
 TreeBitstreamText_3a966:
-	ctxt "<HIRA>あっ それは うみふﾞとﾞう!<NL>"
-	ctxt "それ <KATA>ワチキ<HIRA>に くれるの?<KATA><TERM>"
+	ctxt "<HIRA>あっ それは うみぶどう!"
+	line "それ <KATA>ワチキ<HIRA>に くれるの?<KATA>"
+	done
 
 TreeBitstreamText_3a97f:
-	ctxt "<HIRA>え!? くれないの!!<NL>"
-	ctxt "さﾞんねんたﾞなぁ………………<KATA><TERM>"
+	ctxt "<HIRA>え!? くれないの!!"
+	line "ざんねんだなぁ………………<KATA>"
+	done
 
 TreeBitstreamText_3a995:
-	ctxt "<HIRA>えっ ほんとに くれるの?<NL>"
-	ctxt "よしっ さっそく たへﾞちゃおう<NL>"
-	ctxt "<KATA>モクﾞモクﾞ₆₆₆フﾟチフﾟチ₆₆₆<HIRA>んーーー<NL>"
-	ctxt "これ これ これたﾞよ うまいねー<NL>"
-	ctxt "いやー おいしかったよ ありかﾞとう<NL>"
-	ctxt "それしﾞゃあ この<KATA>カンテラ <HIRA>あけﾞるね<KATA><TERM>"
+	ctxt "<HIRA>えっ ほんとに くれるの?"
+	line "よしっ さっそく たべちゃおう"
+	line "<KATA>モグモグ………プチプチ………<HIRA>んーーー"
+	line "これ これ これだよ うまいねー"
+	line "いやー おいしかったよ ありがとう"
+	line "それじゃあ この<KATA>カンテラ <HIRA>あげるね<KATA>"
+	done
 
 TreeBitstreamText_3a9e8:
-	ctxt "カンテラ<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA><TERM>"
+	ctxt "カンテラ"
+	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3a9f3:
-	ctxt "<HIRA>ねぇ もし よかったら<NL>"
-	ctxt "また もってきて くんないかなぁ<NL>"
-	ctxt "うみふﾞとﾞう ……いやぁ めかﾞなくって<NL>"
-	ctxt "よろしく たのむよ ほんとに<KATA><TERM>"
+	ctxt "<HIRA>ねぇ もし よかったら"
+	line "また もってきて くんないかなぁ"
+	line "うみぶどう ……いやぁ めがなくって"
+	line "よろしく たのむよ ほんとに<KATA>"
+	done
 
 TreeBitstreamText_3aa23:
-	ctxt "<HIRA>えっ? またくれるの うみふﾞとﾞう<NL>"
-	ctxt "ほんとにっ!? いやぁ わるいねぇ<NL>"
-	ctxt "てﾞも もう なにも あけﾞないよ<KATA><TERM>"
+	ctxt "<HIRA>えっ? またくれるの うみぶどう"
+	line "ほんとにっ!? いやぁ わるいねぇ"
+	line "でも もう なにも あげないよ<KATA>"
+	done
 
 TreeBitstreamText_3aa4c:
-	ctxt "<HIRA>しらないの? おんなの<KATA>コ<HIRA>の あいたﾞてﾞ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>かﾞ はやってんのよ!<NL>"
-	ctxt "………ところてﾞ 2と6は もとﾞれ!<NL>"
-	ctxt "このこと おほﾞえとくと いいわよ<NL>"
-	ctxt "たまには もとﾞることも たいせつよ<NL>"
-	ctxt "あたらしい みちかﾞ ひらけるかもね<KATA>"
+	ctxt "<HIRA>しらないの? おんなの<KATA>コ<HIRA>の あいだで"
+	line "<KATA>バトロボ<HIRA>が はやってんのよ!"
+	line "………ところで 2と6は もどれ!"
+	line "このこと おぼえとくと いいわよ"
+	line "たまには もどることも たいせつよ"
+	line "あたらしい みちが ひらけるかもね<KATA>"
 
 TreeBitstreamText_3aaa0:
-	ctxt "ハﾞトロホﾞ<HIRA>は <KATA>アムロン<HIRA>かﾞ<NL>"
-	ctxt "やってるんたﾞもん<NL>"
-	ctxt "あたしたちも やりたいもん!<KATA><TERM>"
+	ctxt "バトロボ<HIRA>は <KATA>アムロン<HIRA>が"
+	line "やってるんだもん"
+	line "あたしたちも やりたいもん!<KATA>"
+	done
 
 TreeBitstreamText_3aabf:
-	ctxt "ロホﾞホﾟン<HIRA>に <KATA>ルースﾞソックス<HIRA>はかせると<NL>"
-	ctxt "<KATA>スヒﾟートﾞアッフﾟ<HIRA>するのよ<KATA><TERM>"
+	ctxt "ロボポン<HIRA>に <KATA>ルーズソックス<HIRA>はかせると"
+	line "<KATA>スピードアップ<HIRA>するのよ<KATA>"
+	done
 
 TreeBitstreamText_3aadf:
-	ctxt "<HIRA>あたしの <KATA>ロホﾞホﾟン <HIRA>かわいいてﾞしょ<NL>"
-	ctxt "ほそ<KATA>マユ<HIRA>に しちゃったぁ<KATA><TERM>"
+	ctxt "<HIRA>あたしの <KATA>ロボポン <HIRA>かわいいでしょ"
+	line "ほそ<KATA>マユ<HIRA>に しちゃったぁ<KATA>"
+	done
 
 TreeBitstreamText_3aafc:
-	ctxt "テレヒﾞ<HIRA>から とつせﾞん ひとかﾞ<NL>"
-	ctxt "とひﾞたﾞして くる………<NL>"
-	ctxt "そんな けﾞんしﾞつは こまるな!<NL>"
-	ctxt "<KATA>ワッハッハッハッハッハッハッ!<TERM>"
+	ctxt "テレビ<HIRA>から とつぜん ひとが"
+	line "とびだして くる………"
+	line "そんな げんじつは こまるな!"
+	line "<KATA>ワッハッハッハッハッハッハッ!"
+	done
 
 TreeBitstreamText_3ab2b:
-	ctxt "<HIRA>わしの なまえは ひかる!<NL>"
-	ctxt "ひたﾞり まかﾞりの たﾞんてﾞぃ<NL>"
-	ctxt "と なせﾞか よはﾞれておる<NL>"
-	ctxt "…………ところてﾞ<NL>"
-	ctxt "わしも そうやって <KATA>テレヒﾞ<HIRA>から<NL>"
-	ctxt "てﾞて みたいのう!<NL>"
-	ctxt "てﾞも もっと いうと <KATA>テレヒﾞ<HIRA>に<NL>"
-	ctxt "てﾞて みたいのう! <KATA>イェーイ!<TERM>"
+	ctxt "<HIRA>わしの なまえは ひかる!"
+	line "ひだり まがりの だんでぃ"
+	line "と なぜか よばれておる"
+	line "…………ところで"
+	line "わしも そうやって <KATA>テレビ<HIRA>から"
+	line "でて みたいのう!"
+	line "でも もっと いうと <KATA>テレビ<HIRA>に"
+	line "でて みたいのう! <KATA>イェーイ!"
+	done
 
 TreeBitstreamText_3ab80:
-	ctxt "<HIRA>あたしゃ いちとﾞてﾞ いいから<NL>"
-	ctxt "<KATA>テレヒﾞ<HIRA>に はいってみたい!<NL>"
-	ctxt "え? またﾞ はいってない?<NL>"
-	ctxt "そんなこと いったって……<NL>"
-	ctxt "てﾞてきた ってことは そのまえは<NL>"
-	ctxt "はいってた ってことしﾞゃし……<NL>"
-	ctxt "てﾞたら てﾞっはﾟなしは よくない!<NL>"
-	ctxt "………それは ともかく<NL>"
-	ctxt "あたしゃ みきﾞまかﾞりの たﾞんてﾞぃ<NL>"
-	ctxt "しﾞゃなきゃ <KATA>イヤ<HIRA>なの!<KATA><TERM>"
+	ctxt "<HIRA>あたしゃ いちどで いいから"
+	line "<KATA>テレビ<HIRA>に はいってみたい!"
+	line "え? まだ はいってない?"
+	line "そんなこと いったって……"
+	line "でてきた ってことは そのまえは"
+	line "はいってた ってことじゃし……"
+	line "でたら でっぱなしは よくない!"
+	line "………それは ともかく"
+	line "あたしゃ みぎまがりの だんでぃ"
+	line "じゃなきゃ <KATA>イヤ<HIRA>なの!<KATA>"
+	done
 
 TreeBitstreamText_3abf2:
-	ctxt "<HIRA>よう <KATA><STBF>! <HIRA>ひさしふﾞり!<NL>"
-	ctxt "まえに あったのは 1かけﾞつまえ?<NL>"
-	ctxt "けﾞんかんかﾞ あるのに <KATA>テレヒﾞ<HIRA>から<NL>"
-	ctxt "ひとんちに あかﾞるのは やめろ!<NL>"
-	ctxt "きﾞょうきﾞの わるい<KATA>ヤツ<HIRA>たﾞな!<NL>"
-	ctxt "え? <KATA>トﾞア<HIRA>かﾞ あかなかった?<NL>"
-	ctxt "そんなこと ないと おもうけとﾞ……<NL>"
-	ctxt "もう1かい あけてみなよ<NL>"
-	ctxt "さいきん <KATA>テレヒﾞ<HIRA>はﾞっかり みてんたﾞ<NL>"
-	ctxt "<KATA>スイッチ<HIRA>けすの わすれちゃうんたﾞ<NL>"
-	ctxt "<KATA>アムロン<HIRA>ちゃん <KATA>サイコー!"
+	ctxt "<HIRA>よう <KATA><PLAYER>! <HIRA>ひさしぶり!"
+	line "まえに あったのは 1かげつまえ?"
+	line "げんかんが あるのに <KATA>テレビ<HIRA>から"
+	line "ひとんちに あがるのは やめろ!"
+	line "ぎょうぎの わるい<KATA>ヤツ<HIRA>だな!"
+	line "え? <KATA>ドア<HIRA>が あかなかった?"
+	line "そんなこと ないと おもうけど……"
+	line "もう1かい あけてみなよ"
+	line "さいきん <KATA>テレビ<HIRA>ばっかり みてんだ"
+	line "<KATA>スイッチ<HIRA>けすの わすれちゃうんだ"
+	line "<KATA>アムロン<HIRA>ちゃん <KATA>サイコー!"
 
 TreeBitstreamText_3ac82:
-	ctxt "<HIRA>ああ かﾞっこうに いって<NL>"
-	ctxt "けんきゅうの つつﾞきをしないと……<NL>"
-	ctxt "と おもいつつ とﾞうしても<NL>"
-	ctxt "<KATA>テレヒﾞ<HIRA>を みてしまうんたﾞ!<NL>"
-	ctxt "てﾞも <KATA>アムロン<HIRA>ちゃん <KATA>ステキ<HIRA>たﾞ!<NL>"
-	ctxt "……これって ひﾞょうきなのかな<KATA><TERM>"
+	ctxt "<HIRA>ああ がっこうに いって"
+	line "けんきゅうの つづきをしないと……"
+	line "と おもいつつ どうしても"
+	line "<KATA>テレビ<HIRA>を みてしまうんだ!"
+	line "でも <KATA>アムロン<HIRA>ちゃん <KATA>ステキ<HIRA>だ!"
+	line "……これって びょうきなのかな<KATA>"
+	done
 
 TreeBitstreamText_3accc:
-	ctxt "<HIRA>さいきん <KATA>テレヒﾞ<HIRA>はﾞっか みてて<NL>"
-	ctxt "そと てﾞてないからなぁ<NL>"
-	ctxt "<KATA>カマット<HIRA>は またﾞ せんそうを<NL>"
-	ctxt "おこしてないのかい?<NL>"
-	ctxt "え? なんのことたﾞか わからない?<NL>"
-	ctxt "……まあ そのうち わかるさ<NL>"
-	ctxt "いまは わからなくてもね<KATA><TERM>"
+	ctxt "<HIRA>さいきん <KATA>テレビ<HIRA>ばっか みてて"
+	line "そと でてないからなぁ"
+	line "<KATA>カマット<HIRA>は まだ せんそうを"
+	line "おこしてないのかい?"
+	line "え? なんのことだか わからない?"
+	line "……まあ そのうち わかるさ"
+	line "いまは わからなくてもね<KATA>"
+	done
 
 TreeBitstreamText_3ad19:
-	ctxt "アムロン<HIRA>ちゃん かわいいなぁ<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>クー <HIRA>かわいい!<NL>"
-	ctxt "かわいすきﾞる!<NL>"
-	ctxt "……もう しろの けいひﾞ なんて<NL>"
-	ctxt "やってられっかーい!<KATA><TERM>"
+	ctxt "アムロン<HIRA>ちゃん かわいいなぁ"
+	line ""
+	line "<KATA>クー <HIRA>かわいい!"
+	line "かわいすぎる!"
+	line "……もう しろの けいび なんて"
+	line "やってられっかーい!<KATA>"
+	done
 
 TreeBitstreamText_3ad48:
-	ctxt "タツフミ<NL>"
-	ctxt "<HIRA>よっ! こまっているかい?<NL>"
-	ctxt "<KATA>ワーフﾟ<HIRA>のしかけは ややこしいからね<NL>"
-	ctxt "100<KATA>コﾞールトﾞ <HIRA>くれたら<NL>"
-	ctxt "<KATA>ヒント<HIRA>を おしえるせﾞ!<KATA><TERM>"
+	ctxt "タツフミ"
+	line "<HIRA>よっ! こまっているかい?"
+	line "<KATA>ワープ<HIRA>のしかけは ややこしいからね"
+	line "100<KATA>ゴールド <HIRA>くれたら"
+	line "<KATA>ヒント<HIRA>を おしえるぜ!<KATA>"
+	done
 
 TreeBitstreamText_3ad7f:
-	ctxt "タツフミ<NL>"
-	ctxt "チミ<HIRA>の おかねを くれるかい?<KATA><TERM>"
+	ctxt "タツフミ"
+	line "チミ<HIRA>の おかねを くれるかい?<KATA>"
+	done
 
 TreeBitstreamText_3ad91:
-	ctxt "タツフミ<NL>"
-	ctxt "<HIRA>なんたﾞい おかね もってないしﾞゃん<NL>"
-	ctxt "<KATA>チミ<HIRA>は ひﾞんほﾞうたﾞね<KATA>"
+	ctxt "タツフミ"
+	line "<HIRA>なんだい おかね もってないじゃん"
+	line "<KATA>チミ<HIRA>は びんぼうだね<KATA>"
 
 TreeBitstreamText_3adae:
-	ctxt "タツフミ<NL>"
-	ctxt "<HIRA>そうかい……<NL>"
-	ctxt "それは さﾞんねん<KATA><TERM>"
+	ctxt "タツフミ"
+	line "<HIRA>そうかい……"
+	line "それは ざんねん<KATA>"
+	done
 
 TreeBitstreamText_3adc0:
-	ctxt "タツフミ<HIRA>に<NL>"
-	ctxt "100<KATA>コﾞールトﾞ <HIRA>わたした!<KATA><TERM>"
+	ctxt "タツフミ<HIRA>に"
+	line "100<KATA>ゴールド <HIRA>わたした!<KATA>"
+	done
 
 TreeBitstreamText_3add4:
-	ctxt "タツフミ<NL>"
-	ctxt "<HIRA>ありかﾞとう <KATA>チミ<HIRA>は いいひとたﾞね<NL>"
-	ctxt "そいてﾞもって かねもちたﾞね<NL>"
-	ctxt "さあ <KATA>ワーフﾟ<HIRA>のしかけを おしえるから<NL>"
-	ctxt "よーく おほﾞえるように<NL>"
-	ctxt "みきﾞは すすむ<NL>"
-	ctxt "ひたﾞりは もとﾞる かﾞ きほん<NL>"
-	ctxt "けとﾞ それたﾞけしﾞゃあ <KATA>タﾞメ<NL>"
-	ctxt "<HIRA>くわしくは そのはﾞてﾞ おしえるよ<NL>"
-	ctxt "<KATA>オレ<HIRA>を みかけたら こえをかけてみな<NL>"
-	ctxt "それしﾞゃあ また あとてﾞ!<KATA><TERM>"
+	ctxt "タツフミ"
+	line "<HIRA>ありがとう <KATA>チミ<HIRA>は いいひとだね"
+	line "そいでもって かねもちだね"
+	line "さあ <KATA>ワープ<HIRA>のしかけを おしえるから"
+	line "よーく おぼえるように"
+	line "みぎは すすむ"
+	line "ひだりは もどる が きほん"
+	line "けど それだけじゃあ <KATA>ダメ"
+	line "<HIRA>くわしくは そのばで おしえるよ"
+	line "<KATA>オレ<HIRA>を みかけたら こえをかけてみな"
+	line "それじゃあ また あとで!<KATA>"
+	done
 
 TreeBitstreamText_3ae53:
-	ctxt "タツフミ<NL>"
-	ctxt "<HIRA>ここは ひたﾞりかﾞ せいかいっ!<NL>"
-	ctxt "ついてきなっ!<KATA><TERM>"
+	ctxt "タツフミ"
+	line "<HIRA>ここは ひだりが せいかいっ!"
+	line "ついてきなっ!<KATA>"
+	done
 
 TreeBitstreamText_3ae6a:
-	ctxt "ヒロシ<NL>"
-	ctxt "<HIRA>おれの なまえは<NL>"
-	ctxt "やまもと けいしﾞ……<NL>"
-	ctxt "ひとよんてﾞ <KATA>ヒロシ<HIRA>っ!!<NL>"
-	ctxt "<NL>"
-	ctxt "すへﾞてのいわを あなにおとせはﾞ<NL>"
-	ctxt "みすﾞのなかﾞれを とめられるせﾞっ!<KATA><TERM>"
+	ctxt "ヒロシ"
+	line "<HIRA>おれの なまえは"
+	line "やまもと けいじ……"
+	line "ひとよんで <KATA>ヒロシ<HIRA>っ!!"
+	line ""
+	line "すべてのいわを あなにおとせば"
+	line "みずのながれを とめられるぜっ!<KATA>"
+	done
 
 TreeBitstreamText_3aea4:
-	ctxt "ヒロシ<NL>"
-	ctxt "<HIRA>ここの しかけかﾞ わからない?<NL>"
-	ctxt "<NL>"
-	ctxt "それなら この<KATA>オレ ヒロシ<HIRA>かﾞ<NL>"
-	ctxt "なんとかしてやろうしﾞゃないか!<NL>"
-	ctxt "そうたﾞなー あっ おもいたﾞした!<NL>"
-	ctxt "なかﾞくﾞつを <KATA>オレ<HIRA>に くれよ!<NL>"
-	ctxt "そしたら なんとか してやるよ<KATA><TERM>"
+	ctxt "ヒロシ"
+	line "<HIRA>ここの しかけが わからない?"
+	line ""
+	line "それなら この<KATA>オレ ヒロシ<HIRA>が"
+	line "なんとかしてやろうじゃないか!"
+	line "そうだなー あっ おもいだした!"
+	line "ながぐつを <KATA>オレ<HIRA>に くれよ!"
+	line "そしたら なんとか してやるよ<KATA>"
+	done
 
 TreeBitstreamText_3aef1:
-	ctxt "ヒロシ<NL>"
-	ctxt "<HIRA>なかﾞくﾞつを くれるのか?<KATA><TERM>"
+	ctxt "ヒロシ"
+	line "<HIRA>ながぐつを くれるのか?<KATA>"
+	done
 
 TreeBitstreamText_3af00:
-	ctxt "ヒロシ<NL>"
-	ctxt "<HIRA>ちぇっ とﾞうせ <KATA>カﾞラクタ<HIRA>なんたﾞから<NL>"
-	ctxt "<KATA>オレ<HIRA>に くれてもいいしﾞゃん<KATA><TERM>"
+	ctxt "ヒロシ"
+	line "<HIRA>ちぇっ どうせ <KATA>ガラクタ<HIRA>なんだから"
+	line "<KATA>オレ<HIRA>に くれてもいいじゃん<KATA>"
+	done
 
 TreeBitstreamText_3af20:
-	ctxt "ヒロシ<NL>"
-	ctxt "サンキューッ!<NL>"
-	ctxt "<HIRA>そらよっと これてﾞ <KATA>オッケー<HIRA>さっ!<KATA><TERM>"
+	ctxt "ヒロシ"
+	line "サンキューッ!"
+	line "<HIRA>そらよっと これで <KATA>オッケー<HIRA>さっ!<KATA>"
+	done
 
 TreeBitstreamText_3af3a:
-	ctxt "ヒロシ<NL>"
-	ctxt "<HIRA>なかﾞくﾞつは つりに つかうんたﾞ<NL>"
-	ctxt "<KATA>オレ<HIRA>は <KATA>ハﾞサー<HIRA>たﾞからねっ<KATA>"
+	ctxt "ヒロシ"
+	line "<HIRA>ながぐつは つりに つかうんだ"
+	line "<KATA>オレ<HIRA>は <KATA>バサー<HIRA>だからねっ<KATA>"
 
 TreeBitstreamText_3af58:
-	ctxt "ヒロシ<NL>"
-	ctxt "<HIRA>うえの とﾞうくつから<NL>"
-	ctxt "いわを おとしたのは <KATA>キミ<HIRA>かい?<NL>"
-	ctxt "いわかﾞ みすﾞを とめちゃったから<NL>"
-	ctxt "つりかﾞ てﾞきなく なっちゃったよ<KATA>"
+	ctxt "ヒロシ"
+	line "<HIRA>うえの どうくつから"
+	line "いわを おとしたのは <KATA>キミ<HIRA>かい?"
+	line "いわが みずを とめちゃったから"
+	line "つりが できなく なっちゃったよ<KATA>"
 
 TreeBitstreamText_3af8c:
-	ctxt "チネン<NL>"
-	ctxt "<HIRA>ここは かんけいしゃ いかﾞい<NL>"
-	ctxt "たちいり きんしよ!!<NL>"
-	ctxt "ひきかえしなさい!!<NL>"
-	ctxt "<NL>"
-	ctxt "それとも………<NL>"
-	ctxt "しﾞつりょくこうしてﾞ くるの?!<KATA><TERM>"
+	ctxt "チネン"
+	line "<HIRA>ここは かんけいしゃ いがい"
+	line "たちいり きんしよ!!"
+	line "ひきかえしなさい!!"
+	line ""
+	line "それとも………"
+	line "じつりょくこうしで くるの?!<KATA>"
+	done
 
 TreeBitstreamText_3afbf:
-	ctxt "チネン<NL>"
-	ctxt "<HIRA>よくもやったわねー ひとﾞいひとﾞい<NL>"
-	ctxt "おへやてﾞ ないちゃうからー!<KATA><TERM>"
+	ctxt "チネン"
+	line "<HIRA>よくもやったわねー ひどいひどい"
+	line "おへやで ないちゃうからー!<KATA>"
+	done
 
 TreeBitstreamText_3afdd:
-	ctxt "アムロン<NL>"
-	ctxt "<HIRA>よくきたね………<NL>"
-	ctxt "<KATA><STBF> <HIRA>っていったっけ?<NL>"
-	ctxt "<KATA>アタシ<HIRA>の なかまを<NL>"
-	ctxt "みんな やっつけたんたﾞってね<NL>"
-	ctxt "とﾞりょくは みとめるよ<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>キチン<HIRA>と おとしまえ<NL>"
-	ctxt "つけようしﾞゃないの!<NL>"
-	ctxt "ちょうせんは うけてたつよ!<KATA><TERM>"
+	ctxt "アムロン"
+	line "<HIRA>よくきたね………"
+	line "<KATA><PLAYER> <HIRA>っていったっけ?"
+	line "<KATA>アタシ<HIRA>の なかまを"
+	line "みんな やっつけたんだってね"
+	line "どりょくは みとめるよ"
+	line ""
+	line "<KATA>キチン<HIRA>と おとしまえ"
+	line "つけようじゃないの!"
+	line "ちょうせんは うけてたつよ!<KATA>"
+	done
 
 TreeBitstreamText_3b02c:
-	ctxt "アムロン<NL>"
-	ctxt "<HIRA>あんた ここまてﾞ <KATA>ノコノコ<HIRA>やってきて<NL>"
-	ctxt "<KATA>アタシ<HIRA>に かてると おもってるの?<NL>"
-	ctxt "<KATA>アタシ<HIRA>に はむかうと<NL>"
-	ctxt "いたい めに あうわよ!<KATA><TERM>"
+	ctxt "アムロン"
+	line "<HIRA>あんた ここまで <KATA>ノコノコ<HIRA>やってきて"
+	line "<KATA>アタシ<HIRA>に かてると おもってるの?"
+	line "<KATA>アタシ<HIRA>に はむかうと"
+	line "いたい めに あうわよ!<KATA>"
+	done
 
 TreeBitstreamText_3b060:
-	ctxt "アムロン<NL>"
-	ctxt "₆₆₆₆₆₆₆₆<NL>"
-	ctxt "<NL>"
-	ctxt "アタシ<HIRA>かﾞ まけるなんて……<NL>"
-	ctxt "<NL>"
-	ctxt "てﾞも これてﾞ よかったのかも<NL>"
-	ctxt "しれないわね……<NL>"
-	ctxt "<KATA>アタシ<HIRA>は みんなかﾞ あこかﾞれる<NL>"
-	ctxt "<KATA>アイトﾞル<HIRA>に なりたかったの……<NL>"
-	ctxt "たﾞから <KATA>テレヒﾞ<HIRA>のてﾞんはﾟを つかって<NL>"
-	ctxt "せんのう するように したの<NL>"
-	ctxt "てﾞも それって <KATA>ホント<HIRA>は たﾞれも<NL>"
-	ctxt "<KATA>アタシ<HIRA>を おうえんしてないもの……<NL>"
-	ctxt "みんな <KATA>アタシ<HIRA>の <KATA>マネ<HIRA>して こせい<NL>"
-	ctxt "とか かんかﾞえなくなっちゃった……<NL>"
-	ctxt "みんな おなしﾞなんて つまんない!<NL>"
-	ctxt "たﾞから もう ほうそうは やめるわ<NL>"
-	ctxt "<KATA>アタシ<HIRA>のすかﾞたを てﾞんはﾟに なかﾞして<NL>"
-	ctxt "みんなを こんらんするのは やめる<NL>"
-	ctxt "とりあえすﾞ いなかに かえって<NL>"
-	ctxt "これからのこと かんかﾞえるわ<NL>"
-	ctxt "………そうたﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "あたしの おきにいりの <KATA>ロホﾞホﾟン<NL>"
-	ctxt "<HIRA>あなたに あけﾞるわ<NL>"
-	ctxt "やくに たつと いいけれとﾞ………<KATA><TERM>"
+	ctxt "アムロン"
+	line "……………………"
+	line ""
+	line "アタシ<HIRA>が まけるなんて……"
+	line ""
+	line "でも これで よかったのかも"
+	line "しれないわね……"
+	line "<KATA>アタシ<HIRA>は みんなが あこがれる"
+	line "<KATA>アイドル<HIRA>に なりたかったの……"
+	line "だから <KATA>テレビ<HIRA>のでんぱを つかって"
+	line "せんのう するように したの"
+	line "でも それって <KATA>ホント<HIRA>は だれも"
+	line "<KATA>アタシ<HIRA>を おうえんしてないもの……"
+	line "みんな <KATA>アタシ<HIRA>の <KATA>マネ<HIRA>して こせい"
+	line "とか かんがえなくなっちゃった……"
+	line "みんな おなじなんて つまんない!"
+	line "だから もう ほうそうは やめるわ"
+	line "<KATA>アタシ<HIRA>のすがたを でんぱに ながして"
+	line "みんなを こんらんするのは やめる"
+	line "とりあえず いなかに かえって"
+	line "これからのこと かんがえるわ"
+	line "………そうだ"
+	line ""
+	line "あたしの おきにいりの <KATA>ロボポン"
+	line "<HIRA>あなたに あげるわ"
+	line "やくに たつと いいけれど………<KATA>"
+	done
 
 TreeBitstreamText_3b169:
-	ctxt "アムロン<HIRA>から <KATA>チャリ<NL>"
-	ctxt "<HIRA>を もらった!<KATA><TERM>"
+	ctxt "アムロン<HIRA>から <KATA>チャリ"
+	line "<HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_3b17a:
-	ctxt "アムロン<NL>"
-	ctxt "₆₆₆<STBF> <HIRA>ありかﾞとう<NL>"
-	ctxt "またいつか あえると いいわね<NL>"
-	ctxt "それしﾞゃあね<KATA><TERM>"
+	ctxt "アムロン"
+	line "………<PLAYER> <HIRA>ありがとう"
+	line "またいつか あえると いいわね"
+	line "それじゃあね<KATA>"
+	done
 
 TreeBitstreamText_3b199:
-	ctxt "アムロン<NL>"
-	ctxt "<HIRA>あら <KATA><STBF><HIRA>しﾞゃない!<NL>"
-	ctxt "あのときのこと かんしゃ してるわ<NL>"
-	ctxt "………………<NL>"
-	ctxt "やっはﾟり <KATA>ハﾞンサﾞ<HIRA>むらは いいものね<NL>"
-	ctxt "のんひﾞりして あらそいこﾞとも ないし<NL>"
-	ctxt "みんな やさしいし うみも あるし<NL>"
-	ctxt "あたし このむらてﾞ のんひﾞり<NL>"
-	ctxt "くらすことに したの<NL>"
-	ctxt "<KATA><STBF><HIRA>は これからも とﾞんとﾞん<NL>"
-	ctxt "つよくなって いくと おもうわ<NL>"
-	ctxt "わたし おうえん してるからね<KATA><TERM>"
+	ctxt "アムロン"
+	line "<HIRA>あら <KATA><PLAYER><HIRA>じゃない!"
+	line "あのときのこと かんしゃ してるわ"
+	line "………………"
+	line "やっぱり <KATA>バンザ<HIRA>むらは いいものね"
+	line "のんびりして あらそいごとも ないし"
+	line "みんな やさしいし うみも あるし"
+	line "あたし このむらで のんびり"
+	line "くらすことに したの"
+	line "<KATA><PLAYER><HIRA>は これからも どんどん"
+	line "つよくなって いくと おもうわ"
+	line "わたし おうえん してるからね<KATA>"
+	done
 
 TreeBitstreamText_3b219:
-	ctxt "クﾞレイテスト6<HIRA>の しょうこﾞう<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "グレイテスト6<HIRA>の しょうごう"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3b22d:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "やはり <KATA>キミ<HIRA>も <KATA>クﾞレイテスト1<HIRA>を<NL>"
-	ctxt "めさﾞして いるのか?<NL>"
-	ctxt "たﾞとしたら いすﾞれ この わたしと<NL>"
-	ctxt "たたかう ことに なるのたﾞな<NL>"
-	ctxt "のそﾞむ ところたﾞかﾞ………<NL>"
-	ctxt "<NL>"
-	ctxt "わたしの まえに 4にんの<KATA>ランカー<HIRA>かﾞ<NL>"
-	ctxt "いるのを わすれないてﾞほしい!<NL>"
-	ctxt "……<KATA>キミ<HIRA>は ここまてﾞ これるかな?<NL>"
-	ctxt "そんな ゆうきかﾞ あるかな?<NL>"
-	ctxt "たのしみにしてるよ <KATA><STBF>!<NL>"
-	ctxt "<NL>"
-	ctxt "クﾞレイテスト5<HIRA>は <KATA>キャロル<HIRA>むらの<NL>"
-	ctxt "<KATA>フタﾞ<HIRA>つきの ならすﾞもの らしいそﾞ<NL>"
-	ctxt "くれくﾞれも ようしﾞん することたﾞな<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "やはり <KATA>キミ<HIRA>も <KATA>グレイテスト1<HIRA>を"
+	line "めざして いるのか?"
+	line "だとしたら いずれ この わたしと"
+	line "たたかう ことに なるのだな"
+	line "のぞむ ところだが………"
+	line ""
+	line "わたしの まえに 4にんの<KATA>ランカー<HIRA>が"
+	line "いるのを わすれないでほしい!"
+	line "……<KATA>キミ<HIRA>は ここまで これるかな?"
+	line "そんな ゆうきが あるかな?"
+	line "たのしみにしてるよ <KATA><PLAYER>!"
+	line ""
+	line "グレイテスト5<HIRA>は <KATA>キャロル<HIRA>むらの"
+	line "<KATA>フダ<HIRA>つきの ならずもの らしいぞ"
+	line "くれぐれも ようじん することだな<KATA>"
+	done
 
 TreeBitstreamText_3b2db:
-	ctxt "<HIRA>おにいちゃん わたしの<NL>"
-	ctxt "たいせつな<KATA>ロホﾞホﾟン <HIRA>あけﾞるね<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>もってると<NL>"
-	ctxt "こわいひとたちに とられちゃうの<KATA><TERM>"
+	ctxt "<HIRA>おにいちゃん わたしの"
+	line "たいせつな<KATA>ロボポン <HIRA>あげるね"
+	line "<KATA>ロボポン<HIRA>もってると"
+	line "こわいひとたちに とられちゃうの<KATA>"
+	done
 
 TreeBitstreamText_3b30a:
-	ctxt "<HIRA>おんなの<KATA>コ<HIRA>から <KATA>トﾞルッヒﾟ<HIRA>を<NL>"
-	ctxt "わたされた!<KATA><TERM>"
+	ctxt "<HIRA>おんなの<KATA>コ<HIRA>から <KATA>ドルッピ<HIRA>を"
+	line "わたされた!<KATA>"
+	done
 
 TreeBitstreamText_3b31f:
-	ctxt "<HIRA>あっ!<KATA><TERM>"
+	ctxt "<HIRA>あっ!<KATA>"
+	done
 
 TreeBitstreamText_3b324:
-	ctxt "ヒﾞーノ<NL>"
-	ctxt "<HIRA>おうおうおう!<NL>"
-	ctxt "もうひとつ おまけに おう!<NL>"
-	ctxt "なかなか つよそうな <KATA>ロホﾞホﾟン<NL>"
-	ctxt "<HIRA>もってるしﾞゃねえか<NL>"
-	ctxt "ひとつ <KATA>オレ<HIRA>たちに くれねぇか?<KATA><TERM>"
+	ctxt "ビーノ"
+	line "<HIRA>おうおうおう!"
+	line "もうひとつ おまけに おう!"
+	line "なかなか つよそうな <KATA>ロボポン"
+	line "<HIRA>もってるじゃねえか"
+	line "ひとつ <KATA>オレ<HIRA>たちに くれねぇか?<KATA>"
+	done
 
 TreeBitstreamText_3b35d:
-	ctxt "ヒﾞーノ<HIRA>に<NL>"
-	ctxt "<KATA>トﾞルッヒﾟ<HIRA>を わたした!<KATA><TERM>"
+	ctxt "ビーノ<HIRA>に"
+	line "<KATA>ドルッピ<HIRA>を わたした!<KATA>"
+	done
 
 TreeBitstreamText_3b36e:
-	ctxt "ヒﾞーノ<NL>"
-	ctxt "サンキュー! <HIRA>なかなか ものわかりの<NL>"
-	ctxt "いい <KATA>ロケンローラー<HIRA>たﾞせﾞ<NL>"
-	ctxt "<KATA>ユー<HIRA>みたいに ものわかりかﾞ いいと<NL>"
-	ctxt "せかいは へいわに なるのによぉ<NL>"
-	ctxt "<KATA>ラフﾞ アントﾞ ヒﾟース!<NL>"
-	ctxt "<HIRA>しﾞゃあな おひとよし さんよぉ!<KATA>"
+	ctxt "ビーノ"
+	line "サンキュー! <HIRA>なかなか ものわかりの"
+	line "いい <KATA>ロケンローラー<HIRA>だぜ"
+	line "<KATA>ユー<HIRA>みたいに ものわかりが いいと"
+	line "せかいは へいわに なるのによぉ"
+	line "<KATA>ラブ アンド ピース!"
+	line "<HIRA>じゃあな おひとよし さんよぉ!<KATA>"
 
 TreeBitstreamText_3b3c0:
-	ctxt "ヒﾞーノ<NL>"
-	ctxt "<HIRA>おっ? なんたﾞぁ<NL>"
-	ctxt "<KATA>オレ<HIRA>たちに はむかおう ってのか?<NL>"
-	ctxt "………まったく<NL>"
-	ctxt "いいとﾞきょう してるしﾞゃねぇか!<NL>"
-	ctxt "よーし おまえ みたいな <KATA>ヤツ<HIRA>は<NL>"
-	ctxt "こうしてやるっ!<KATA><TERM>"
+	ctxt "ビーノ"
+	line "<HIRA>おっ? なんだぁ"
+	line "<KATA>オレ<HIRA>たちに はむかおう ってのか?"
+	line "………まったく"
+	line "いいどきょう してるじゃねぇか!"
+	line "よーし おまえ みたいな <KATA>ヤツ<HIRA>は"
+	line "こうしてやるっ!<KATA>"
+	done
 
 TreeBitstreamText_3b401:
-	ctxt "トﾞルッヒﾟ<HIRA>を<NL>"
-	ctxt "<KATA>ヒﾞーノ<HIRA>に とられた!<KATA><TERM>"
+	ctxt "ドルッピ<HIRA>を"
+	line "<KATA>ビーノ<HIRA>に とられた!<KATA>"
+	done
 
 TreeBitstreamText_3b412:
-	ctxt "ヒﾞーノ<NL>"
-	ctxt "<HIRA>やーい おまえの <KATA>ロホﾞホﾟン<NL>"
-	ctxt "<HIRA>いたたﾞきー!!<NL>"
-	ctxt "<KATA>チェッ <HIRA>くちこﾞたえ なんか するから<NL>"
-	ctxt "こういうめに あうんたﾞよ <KATA>ハﾞーカ!<TERM>"
+	ctxt "ビーノ"
+	line "<HIRA>やーい おまえの <KATA>ロボポン"
+	line "<HIRA>いただきー!!"
+	line "<KATA>チェッ <HIRA>くちごたえ なんか するから"
+	line "こういうめに あうんだよ <KATA>バーカ!"
+	done
 
 TreeBitstreamText_3b447:
-	ctxt "ヒﾞーノ<NL>"
-	ctxt "<HIRA>つよめの <KATA>ロホﾞホﾟン <HIRA>もってるから<NL>"
-	ctxt "いわせて もらうせﾞ!<NL>"
-	ctxt "なかﾞれ<KATA>モン<HIRA>は あんまり めたﾞつことは<NL>"
-	ctxt "しねぇほうかﾞ みのため たﾞせﾞ!<KATA><TERM>"
+	ctxt "ビーノ"
+	line "<HIRA>つよめの <KATA>ロボポン <HIRA>もってるから"
+	line "いわせて もらうぜ!"
+	line "ながれ<KATA>モン<HIRA>は あんまり めだつことは"
+	line "しねぇほうが みのため だぜ!<KATA>"
+	done
 
 TreeBitstreamText_3b481:
-	ctxt "ヒﾞーノ<NL>"
-	ctxt "<HIRA>おっと ひとつ いいわすれた!<NL>"
-	ctxt "<NL>"
-	ctxt "なかﾞれ<KATA>モン<HIRA>は よけいなことを<NL>"
-	ctxt "しっちゃ いけねぇよ<NL>"
-	ctxt "とくに <KATA>オレ<HIRA>たちの ことはな!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>チーム<HIRA>めいかﾞ <KATA>ニコニコ<HIRA>そﾞく たﾞとか<NL>"
-	ctxt "<KATA>リータﾞー<HIRA>かﾞ <KATA>ワイルトﾞ<HIRA>さま たﾞとか<NL>"
-	ctxt "<KATA>オレ<HIRA>たちの かくれかﾞ かﾞ<NL>"
-	ctxt "<KATA>クﾞリース<HIRA>やまに あるとか!<NL>"
-	ctxt "そんなことは しってても<NL>"
-	ctxt "しらんふﾟり しないと いけねぇな!<NL>"
-	ctxt "それかﾞ なかﾞれ<KATA>モン<HIRA>の <KATA>ルール<NL>"
-	ctxt "<HIRA>ってもんたﾞろ!<KATA><TERM>"
+	ctxt "ビーノ"
+	line "<HIRA>おっと ひとつ いいわすれた!"
+	line ""
+	line "ながれ<KATA>モン<HIRA>は よけいなことを"
+	line "しっちゃ いけねぇよ"
+	line "とくに <KATA>オレ<HIRA>たちの ことはな!"
+	line ""
+	line "<KATA>チーム<HIRA>めいが <KATA>ニコニコ<HIRA>ぞく だとか"
+	line "<KATA>リーダー<HIRA>が <KATA>ワイルド<HIRA>さま だとか"
+	line "<KATA>オレ<HIRA>たちの かくれが が"
+	line "<KATA>グリース<HIRA>やまに あるとか!"
+	line "そんなことは しってても"
+	line "しらんぷり しないと いけねぇな!"
+	line "それが ながれ<KATA>モン<HIRA>の <KATA>ルール"
+	line "<HIRA>ってもんだろ!<KATA>"
+	done
 
 TreeBitstreamText_3b516:
-	ctxt "<HIRA>おにいちゃん!<NL>"
-	ctxt "みてたわよ!<NL>"
-	ctxt "なんにもしないてﾞ <KATA>トﾞルッヒﾟ<NL>"
-	ctxt "<HIRA>わたしちゃったてﾞしょう!<NL>"
-	ctxt "まぁ <KATA>ニコニコ<HIRA>そﾞく は<NL>"
-	ctxt "たしかに おっかないけとﾞ………<NL>"
-	ctxt "ちょっとは ていこうしなさいよ<NL>"
-	ctxt "なさけないわよ!<KATA>"
+	ctxt "<HIRA>おにいちゃん!"
+	line "みてたわよ!"
+	line "なんにもしないで <KATA>ドルッピ"
+	line "<HIRA>わたしちゃったでしょう!"
+	line "まぁ <KATA>ニコニコ<HIRA>ぞく は"
+	line "たしかに おっかないけど………"
+	line "ちょっとは ていこうしなさいよ"
+	line "なさけないわよ!<KATA>"
 
 TreeBitstreamText_3b560:
-	ctxt "<HIRA>おにいちゃん <KATA>コﾞメンネ₆₆₆<NL>"
-	ctxt "ホﾞコホﾞコ<HIRA>に されちゃったね<NL>"
-	ctxt "<KATA>トﾞルッヒﾟ<HIRA>かﾞいれはﾞ<NL>"
-	ctxt "みすﾞのなかに もくﾞれるのよ<NL>"
-	ctxt "このせかいの みすﾞのなかは<NL>"
-	ctxt "みんな ちかてﾞ つなかﾞってるのよ<NL>"
-	ctxt "<KATA>クﾞリース<HIRA>やまに いって<NL>"
-	ctxt "かえしてもらったら?<NL>"
-	ctxt "<KATA>ムリ<HIRA>かな?<KATA><TERM>"
+	ctxt "<HIRA>おにいちゃん <KATA>ゴメンネ………"
+	line "ボコボコ<HIRA>に されちゃったね"
+	line "<KATA>ドルッピ<HIRA>がいれば"
+	line "みずのなかに もぐれるのよ"
+	line "このせかいの みずのなかは"
+	line "みんな ちかで つながってるのよ"
+	line "<KATA>グリース<HIRA>やまに いって"
+	line "かえしてもらったら?"
+	line "<KATA>ムリ<HIRA>かな?<KATA>"
+	done
 
 TreeBitstreamText_3b5bf:
-	ctxt "<HIRA>あっ おにいちゃん!<NL>"
-	ctxt "<KATA>トﾞルッヒﾟ <HIRA>かえしてもらったんたﾞね!<NL>"
-	ctxt "みすﾞのなかには もくﾞってみた?<NL>"
-	ctxt "いろんなものかﾞ あるはすﾞよ<KATA><TERM>"
+	ctxt "<HIRA>あっ おにいちゃん!"
+	line "<KATA>ドルッピ <HIRA>かえしてもらったんだね!"
+	line "みずのなかには もぐってみた?"
+	line "いろんなものが あるはずよ<KATA>"
+	done
 
 TreeBitstreamText_3b5f0:
-	ctxt "<HIRA>おにいちゃん!<NL>"
-	ctxt "<KATA>ニコニコ<HIRA>そﾞくを とﾞうにかして!<KATA><TERM>"
+	ctxt "<HIRA>おにいちゃん!"
+	line "<KATA>ニコニコ<HIRA>ぞくを どうにかして!<KATA>"
+	done
 
 TreeBitstreamText_3b605:
-	ctxt "<HIRA>まちおさ<NL>"
-	ctxt "おぉ なまえは そﾞんしﾞませんかﾞ<NL>"
-	ctxt "ありかﾞとう こﾞさﾞいます<NL>"
-	ctxt "しﾞつは われわれ <KATA>クールス<HIRA>の たみは<NL>"
-	ctxt "みな ちかに ひなんしているのてﾞす<NL>"
-	ctxt "あまりにも <KATA>ニコニコ<HIRA>そﾞく たちの<NL>"
-	ctxt "<KATA>イヤ<HIRA>かﾞらせかﾞ <KATA>ヒトﾞ<HIRA>くて <KATA>ヒトﾞ<HIRA>くて<NL>"
-	ctxt "くわしい ことは せﾞひ ちかてﾞ………<NL>"
-	ctxt "さあ とﾞうそﾞ こちらに!<KATA><TERM>"
+	ctxt "<HIRA>まちおさ"
+	line "おぉ なまえは ぞんじませんが"
+	line "ありがとう ございます"
+	line "じつは われわれ <KATA>クールス<HIRA>の たみは"
+	line "みな ちかに ひなんしているのです"
+	line "あまりにも <KATA>ニコニコ<HIRA>ぞく たちの"
+	line "<KATA>イヤ<HIRA>がらせが <KATA>ヒド<HIRA>くて <KATA>ヒド<HIRA>くて"
+	line "くわしい ことは ぜひ ちかで………"
+	line "さあ どうぞ こちらに!<KATA>"
+	done
 
 TreeBitstreamText_3b676:
-	ctxt "<HIRA>まちおさ<NL>"
-	ctxt "………ほう おなまえは<NL>"
-	ctxt "<KATA><STBF><HIRA>さん というのてﾞすか……<NL>"
-	ctxt "さっきも いったとおり ほﾞうそうそﾞく<NL>"
-	ctxt "いや <KATA>ニコニコ<HIRA>そﾞくかﾞ あはﾞれて……<NL>"
-	ctxt "さいしょは <KATA>ハﾞイク<HIRA>を とはﾞす たﾞけ<NL>"
-	ctxt "ちﾞゃったん ちﾞゃかﾞ……<NL>"
-	ctxt "そのうち まちの ものを<NL>"
-	ctxt "こわすように なっての!<NL>"
-	ctxt "…………まったく みんなに<NL>"
-	ctxt "めいわくを かけすきﾞちﾞゃ!<KATA><TERM>"
+	ctxt "<HIRA>まちおさ"
+	line "………ほう おなまえは"
+	line "<KATA><PLAYER><HIRA>さん というのですか……"
+	line "さっきも いったとおり ぼうそうぞく"
+	line "いや <KATA>ニコニコ<HIRA>ぞくが あばれて……"
+	line "さいしょは <KATA>バイク<HIRA>を とばす だけ"
+	line "ぢゃったん ぢゃが……"
+	line "そのうち まちの ものを"
+	line "こわすように なっての!"
+	line "…………まったく みんなに"
+	line "めいわくを かけすぎぢゃ!<KATA>"
+	done
 
 TreeBitstreamText_3b6ef:
-	ctxt "<HIRA>みんな<NL>"
-	ctxt "そうたﾞ そうたﾞ!<KATA><TERM>"
+	ctxt "<HIRA>みんな"
+	line "そうだ そうだ!<KATA>"
+	done
 
 TreeBitstreamText_3b6fb:
-	ctxt "<HIRA>まちおさ<NL>"
-	ctxt "このとおり ちょうみん たちは<NL>"
-	ctxt "ちしﾞょうに すめなくなってしまった<NL>"
-	ctxt "すなわち ひなんして ちかに<NL>"
-	ctxt "たﾞっしゅつした っちゅうことちﾞゃ<KATA><TERM>"
+	ctxt "<HIRA>まちおさ"
+	line "このとおり ちょうみん たちは"
+	line "ちじょうに すめなくなってしまった"
+	line "すなわち ひなんして ちかに"
+	line "だっしゅつした っちゅうことぢゃ<KATA>"
+	done
 
 TreeBitstreamText_3b731:
-	ctxt "<HIRA>まちおさ<NL>"
-	ctxt "とﾞうにか してくれ とはいわんかﾞ<NL>"
-	ctxt "とﾞうにか ならん もんか………<NL>"
-	ctxt "のう? <KATA><STBF><HIRA>くん!<NL>"
-	ctxt "えーっ みんな とﾞうなんちﾞゃ!!<KATA>"
+	ctxt "<HIRA>まちおさ"
+	line "どうにか してくれ とはいわんが"
+	line "どうにか ならん もんか………"
+	line "のう? <KATA><PLAYER><HIRA>くん!"
+	line "えーっ みんな どうなんぢゃ!!<KATA>"
 
 TreeBitstreamText_3b762:
-	ctxt "<HIRA>まちおさ<NL>"
-	ctxt "おまえらは そうたﾞ そうたﾞ しか<NL>"
-	ctxt "いえんのかいっ!!<KATA><TERM>"
+	ctxt "<HIRA>まちおさ"
+	line "おまえらは そうだ そうだ しか"
+	line "いえんのかいっ!!<KATA>"
+	done
 
 TreeBitstreamText_3b77b:
-	ctxt "<HIRA>みんな<NL>"
-	ctxt "なめんなー<NL>"
-	ctxt "       かﾞんはﾞってんな おい<NL>"
-	ctxt "あまり ちょうし こくなよー<NL>"
-	ctxt "       <KATA>オレ ハラ<HIRA>へったー<KATA><TERM>"
+	ctxt "<HIRA>みんな"
+	line "なめんなー"
+	line "       がんばってんな おい"
+	line "あまり ちょうし こくなよー"
+	line "       <KATA>オレ ハラ<HIRA>へったー<KATA>"
+	done
 
 TreeBitstreamText_3b7a6:
-	ctxt "<HIRA>まちおさ<NL>"
-	ctxt "みな ここてﾞの せいかつてﾞ もう<NL>"
-	ctxt "なにもかも あきらめて しまっての<NL>"
-	ctxt "しﾞふﾞんたちてﾞ とﾞうこう しよう<NL>"
-	ctxt "っちゅう きりょくも ないんちﾞゃ<NL>"
-	ctxt "まったく なさけない のう……<NL>"
-	ctxt "<NL>"
-	ctxt "そういう わしも おなしﾞちﾞゃかﾞ……<KATA><TERM>"
+	ctxt "<HIRA>まちおさ"
+	line "みな ここでの せいかつで もう"
+	line "なにもかも あきらめて しまっての"
+	line "じぶんたちで どうこう しよう"
+	line "っちゅう きりょくも ないんぢゃ"
+	line "まったく なさけない のう……"
+	line ""
+	line "そういう わしも おなじぢゃが……<KATA>"
+	done
 
 TreeBitstreamText_3b7f7:
-	ctxt "メカ<HIRA>おやしﾞ<NL>"
-	ctxt "あ あのさ <KATA>ホﾞ ホﾞク <HIRA>きかい いしﾞり<NL>"
-	ctxt "す すきなんたﾞけとﾞ<NL>"
-	ctxt "<KATA>チャ チャリ<HIRA>を <KATA>ニ ニリーン<HIRA>に<NL>"
-	ctxt "か かいそﾞう てﾞ てﾞきるんたﾞな<NL>"
-	ctxt "す すなの う うえてﾞも <KATA>ヒﾞ ヒﾞュン<NL>"
-	ctxt "ヒﾞュン <HIRA>と とはﾞせるんたﾞな<NL>"
-	ctxt "そ そんな <KATA>ハﾞ ハﾞイク<HIRA>に<NL>"
-	ctxt "の のりたいと お おもわない?<KATA>"
+	ctxt "メカ<HIRA>おやじ"
+	line "あ あのさ <KATA>ボ ボク <HIRA>きかい いじり"
+	line "す すきなんだけど"
+	line "<KATA>チャ チャリ<HIRA>を <KATA>ニ ニリーン<HIRA>に"
+	line "か かいぞう で できるんだな"
+	line "す すなの う うえでも <KATA>ビ ビュン"
+	line "ビュン <HIRA>と とばせるんだな"
+	line "そ そんな <KATA>バ バイク<HIRA>に"
+	line "の のりたいと お おもわない?<KATA>"
 
 TreeBitstreamText_3b860:
-	ctxt "メカ<HIRA>おやしﾞ<NL>"
-	ctxt "しﾞゃ しﾞゃあさ お おねかﾞいかﾞ あ<NL>"
-	ctxt "あるんたﾞけとﾞ き きいてくれるかな<NL>"
-	ctxt "とﾞ とﾞこかてﾞ き きんの<KATA>スハﾟナ<HIRA>を<NL>"
-	ctxt "お おとしちゃったんたﾞな <KATA>ホﾞ ホﾞク<NL>"
-	ctxt "<HIRA>す すこﾞく こ こまってるんたﾞな<NL>"
-	ctxt "み みつけて ほ ほしいんたﾞな<KATA><TERM>"
+	ctxt "メカ<HIRA>おやじ"
+	line "じゃ じゃあさ お おねがいが あ"
+	line "あるんだけど き きいてくれるかな"
+	line "ど どこかで き きんの<KATA>スパナ<HIRA>を"
+	line "お おとしちゃったんだな <KATA>ボ ボク"
+	line "<HIRA>す すごく こ こまってるんだな"
+	line "み みつけて ほ ほしいんだな<KATA>"
+	done
 
 TreeBitstreamText_3b8b8:
-	ctxt "メカ<HIRA>おやしﾞ<NL>"
-	ctxt "<KATA>ニ ニリーン<HIRA>かﾞ いないと <KATA>クﾞ<NL>"
-	ctxt "クﾞリース<HIRA>やまに い いけないんたﾞ!<NL>"
-	ctxt "<KATA>キ キミ <HIRA>し しってたかな?<NL>"
-	ctxt "さ さはﾞくかﾞ と とおれないんたﾞな<KATA><TERM>"
+	ctxt "メカ<HIRA>おやじ"
+	line "<KATA>ニ ニリーン<HIRA>が いないと <KATA>グ"
+	line "グリース<HIRA>やまに い いけないんだ!"
+	line "<KATA>キ キミ <HIRA>し しってたかな?"
+	line "さ さばくが と とおれないんだな<KATA>"
+	done
 
 TreeBitstreamText_3b8f2:
-	ctxt "メカ<HIRA>おやしﾞ<NL>"
-	ctxt "あ <KATA>ホﾞ ホﾞク<HIRA>の き きんの<KATA>スハﾟナ<HIRA>たﾞ<NL>"
-	ctxt "あ ありかﾞとう<NL>"
-	ctxt "しﾞゃ しﾞゃあ きみの <KATA>チャ チャリ<HIRA>を<NL>"
-	ctxt "か かして も もらうよ<NL>"
-	ctxt "ちょ ちょっと ま まってて<KATA>"
+	ctxt "メカ<HIRA>おやじ"
+	line "あ <KATA>ボ ボク<HIRA>の き きんの<KATA>スパナ<HIRA>だ"
+	line "あ ありがとう"
+	line "じゃ じゃあ きみの <KATA>チャ チャリ<HIRA>を"
+	line "か かして も もらうよ"
+	line "ちょ ちょっと ま まってて<KATA>"
 
 TreeBitstreamText_3b932:
-	ctxt "チャリ<HIRA>は <KATA>ニリーン<HIRA>へ しんかした!<KATA><TERM>"
+	ctxt "チャリ<HIRA>は <KATA>ニリーン<HIRA>へ しんかした!<KATA>"
+	done
 
 TreeBitstreamText_3b942:
-	ctxt "メカ<HIRA>おやしﾞ<NL>"
-	ctxt "ほ ほら てﾞ てﾞきたよ<NL>"
-	ctxt "<NL>"
-	ctxt "こ これてﾞ さ さはﾞくの う うえも<NL>"
-	ctxt "と とはﾞせるんたﾞ<NL>"
-	ctxt "か かせﾞになって お おいてﾞよ<KATA><TERM>"
+	ctxt "メカ<HIRA>おやじ"
+	line "ほ ほら で できたよ"
+	line ""
+	line "こ これで さ さばくの う うえも"
+	line "と とばせるんだ"
+	line "か かぜになって お おいでよ<KATA>"
+	done
 
 TreeBitstreamText_3b973:
-	ctxt "メカ<HIRA>おやしﾞ<NL>"
-	ctxt "ちょ ちょうしは とﾞ とﾞう?<NL>"
-	ctxt "<NL>"
-	ctxt "と とにかく い いとﾞに たﾞけは<NL>"
-	ctxt "お おっこちない よ ようにね<NL>"
-	ctxt "って そ そんなひとは い いないか<KATA><TERM>"
+	ctxt "メカ<HIRA>おやじ"
+	line "ちょ ちょうしは ど どう?"
+	line ""
+	line "と とにかく い いどに だけは"
+	line "お おっこちない よ ようにね"
+	line "って そ そんなひとは い いないか<KATA>"
+	done
 
 TreeBitstreamText_3b9a9:
-	ctxt "メカ<HIRA>おやしﾞ<NL>"
-	ctxt "き きんの <KATA>スハﾟナ<HIRA>は<NL>"
-	ctxt "た たふﾞん い いとﾞの なかに<NL>"
-	ctxt "お おちてるんたﾞな<NL>"
-	ctxt "と とってきて ほ ほしいんたﾞな<KATA><TERM>"
+	ctxt "メカ<HIRA>おやじ"
+	line "き きんの <KATA>スパナ<HIRA>は"
+	line "た たぶん い いどの なかに"
+	line "お おちてるんだな"
+	line "と とってきて ほ ほしいんだな<KATA>"
+	done
 
 TreeBitstreamText_3b9d7:
-	ctxt "メカ<HIRA>おやしﾞ<NL>"
-	ctxt "<KATA>チャ チャリ<HIRA>かﾞ い いないと<NL>"
-	ctxt "か かいそﾞう てﾞ てﾞきないんたﾞな<KATA><TERM>"
+	ctxt "メカ<HIRA>おやじ"
+	line "<KATA>チャ チャリ<HIRA>が い いないと"
+	line "か かいぞう で できないんだな<KATA>"
+	done
 
 TreeBitstreamText_3b9f6:
-	ctxt "メカ<HIRA>しﾞい<NL>"
-	ctxt "ああ また 4りん<KATA>ハﾞキﾞー<HIRA>てﾞ<NL>"
-	ctxt "とはﾞしたい………<NL>"
-	ctxt "ああ わかいころに もとﾞって<NL>"
-	ctxt "かせﾞに なりたい………<KATA><TERM>"
+	ctxt "メカ<HIRA>じい"
+	line "ああ また 4りん<KATA>バギー<HIRA>で"
+	line "とばしたい………"
+	line "ああ わかいころに もどって"
+	line "かぜに なりたい………<KATA>"
+	done
 
 TreeBitstreamText_3ba23:
-	ctxt "メカ<HIRA>しﾞい<NL>"
-	ctxt "むかしは わしも とはﾞしや と<NL>"
-	ctxt "おそれられた おとこ………<NL>"
-	ctxt "もう 70ねんも むかしの<NL>"
-	ctxt "はなし しﾞゃかﾞな……<NL>"
-	ctxt "しﾞゃから 4りん<KATA>ハﾞキﾞー<HIRA>に<NL>"
-	ctxt "かいそﾞうする ほうほうは………<NL>"
-	ctxt "わすれた!<NL>"
-	ctxt "<NL>"
-	ctxt "ほかを あたって くれんかい………<NL>"
-	ctxt "………おっ!<NL>"
-	ctxt "いいことを おもいたﾞしたそﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "わしの たったひとりの むすこ<NL>"
-	ctxt "<KATA>シﾞョー<HIRA>なら しってる かもしれん<NL>"
-	ctxt "てﾞも とﾞこへ いったのか<NL>"
-	ctxt "ゆくえふめいの まま なんしﾞゃ<KATA><TERM>"
+	ctxt "メカ<HIRA>じい"
+	line "むかしは わしも とばしや と"
+	line "おそれられた おとこ………"
+	line "もう 70ねんも むかしの"
+	line "はなし じゃがな……"
+	line "じゃから 4りん<KATA>バギー<HIRA>に"
+	line "かいぞうする ほうほうは………"
+	line "わすれた!"
+	line ""
+	line "ほかを あたって くれんかい………"
+	line "………おっ!"
+	line "いいことを おもいだしたぞ!"
+	line ""
+	line "わしの たったひとりの むすこ"
+	line "<KATA>ジョー<HIRA>なら しってる かもしれん"
+	line "でも どこへ いったのか"
+	line "ゆくえふめいの まま なんじゃ<KATA>"
+	done
 
 TreeBitstreamText_3babb:
-	ctxt "ウォリア<NL>"
-	ctxt "ヘン <HIRA>てめぇ みたいな <KATA>カﾞキ<HIRA>は<NL>"
-	ctxt "<KATA>ワイルトﾞ<HIRA>さまに あわせられねぇな!<NL>"
-	ctxt "わるいかﾞ ここてﾞ<NL>"
-	ctxt "かえって もらうせﾞ!!<KATA><TERM>"
+	ctxt "ウォリア"
+	line "ヘン <HIRA>てめぇ みたいな <KATA>ガキ<HIRA>は"
+	line "<KATA>ワイルド<HIRA>さまに あわせられねぇな!"
+	line "わるいが ここで"
+	line "かえって もらうぜ!!<KATA>"
+	done
 
 TreeBitstreamText_3baee:
-	ctxt "ウォリア<NL>"
-	ctxt "オレ<HIRA>に かっても <KATA>ワイルトﾞ<HIRA>さまの<NL>"
-	ctxt "もとには かんたんには いけねえせﾞ<NL>"
-	ctxt "なせﾞなら その<KATA>ハﾞイク<HIRA>は もう やくに<NL>"
-	ctxt "たたないんたﾞからな <KATA>クククク₆₆₆<TERM>"
+	ctxt "ウォリア"
+	line "オレ<HIRA>に かっても <KATA>ワイルド<HIRA>さまの"
+	line "もとには かんたんには いけねえぜ"
+	line "なぜなら その<KATA>バイク<HIRA>は もう やくに"
+	line "たたないんだからな <KATA>クククク………"
+	done
 
 TreeBitstreamText_3bb2b:
-	ctxt "ウォリア<NL>"
-	ctxt "<HIRA>この さかみちは そんしﾞょ そこらの<NL>"
-	ctxt "<KATA>ハﾞイク<HIRA>しﾞゃ のほﾞれねぇせﾞ!<NL>"
-	ctxt "<KATA>タイヤ<HIRA>かﾞ 4つあって しかも<NL>"
-	ctxt "<KATA>ハﾞキﾞー<HIRA>しよう しﾞゃねぇとな!<NL>"
-	ctxt "4りん<KATA>ハﾞキﾞー<HIRA>は たﾞれてﾞも<NL>"
-	ctxt "つくれるって もんしﾞゃ ねぇんたﾞ<NL>"
-	ctxt "たしか <KATA>キャロル<HIRA>に <KATA>メカ<HIRA>に くわしい<NL>"
-	ctxt "しﾞいさんかﾞ いたと おもったけとﾞ<NL>"
-	ctxt "もう しんしﾞまった かもしれねえ<KATA><TERM>"
+	ctxt "ウォリア"
+	line "<HIRA>この さかみちは そんじょ そこらの"
+	line "<KATA>バイク<HIRA>じゃ のぼれねぇぜ!"
+	line "<KATA>タイヤ<HIRA>が 4つあって しかも"
+	line "<KATA>バギー<HIRA>しよう じゃねぇとな!"
+	line "4りん<KATA>バギー<HIRA>は だれでも"
+	line "つくれるって もんじゃ ねぇんだ"
+	line "たしか <KATA>キャロル<HIRA>に <KATA>メカ<HIRA>に くわしい"
+	line "じいさんが いたと おもったけど"
+	line "もう しんじまった かもしれねえ<KATA>"
+	done
 
 TreeBitstreamText_3bbab:
-	ctxt "シﾞョー<NL>"
-	ctxt "<HIRA>おれ さすらい<KATA>シﾞョー<NL>"
-	ctxt "カッコ<HIRA>よく いえはﾞ よすてひﾞと<NL>"
-	ctxt "<KATA>カッコ<HIRA>わるく いえはﾞ とっても<NL>"
-	ctxt "やるきの ないひと<NL>"
-	ctxt "きよらかに かかﾞやく すいめんを<NL>"
-	ctxt "みているたﾞけてﾞ こころかﾞ なこﾞむよ<NL>"
-	ctxt "………そんな<KATA>オレ<HIRA>も むかしは<NL>"
-	ctxt "<KATA>ハﾞイク<HIRA>を とはﾞしてた もんさ<NL>"
-	ctxt "てﾞも うんわるく この いとﾞに<NL>"
-	ctxt "おっこちて てﾞられなく なった<NL>"
-	ctxt "………いまこﾞろ みんな<NL>"
-	ctxt "なに やってんのかなぁ………<KATA><TERM>"
+	ctxt "ジョー"
+	line "<HIRA>おれ さすらい<KATA>ジョー"
+	line "カッコ<HIRA>よく いえば よすてびと"
+	line "<KATA>カッコ<HIRA>わるく いえば とっても"
+	line "やるきの ないひと"
+	line "きよらかに かがやく すいめんを"
+	line "みているだけで こころが なごむよ"
+	line "………そんな<KATA>オレ<HIRA>も むかしは"
+	line "<KATA>バイク<HIRA>を とばしてた もんさ"
+	line "でも うんわるく この いどに"
+	line "おっこちて でられなく なった"
+	line "………いまごろ みんな"
+	line "なに やってんのかなぁ………<KATA>"
+	done
 
 TreeBitstreamText_3bc38:
-	ctxt "<HIRA>おれ かいてーしﾞん<NL>"
-	ctxt "<NL>"
-	ctxt "はくﾞれた なかまと<NL>"
-	ctxt "かえりてーな ふるさとに<NL>"
-	ctxt "やさしーよ <KATA>シﾞョー<HIRA>は<NL>"
-	ctxt "<KATA>チュー<HIRA>もする つきよのはﾞんは<NL>"
-	ctxt "かえりたいよてﾞ かえりたくないな<NL>"
-	ctxt "<NL>"
-	ctxt "たﾞって すきたﾞもん <KATA>シﾞョー<HIRA>かﾞ<KATA><TERM>"
+	ctxt "<HIRA>おれ かいてーじん"
+	line ""
+	line "はぐれた なかまと"
+	line "かえりてーな ふるさとに"
+	line "やさしーよ <KATA>ジョー<HIRA>は"
+	line "<KATA>チュー<HIRA>もする つきよのばんは"
+	line "かえりたいよで かえりたくないな"
+	line ""
+	line "だって すきだもん <KATA>ジョー<HIRA>が<KATA>"
+	done
 
 TreeBitstreamText_3bc83:
-	ctxt "シﾞョー<NL>"
-	ctxt "ヌオッヒﾟロッヒﾟー!<NL>"
-	ctxt "ハﾞ ハﾞイク<HIRA>しﾞゃないか!<NL>"
-	ctxt "………なつかしい この<NL>"
-	ctxt "<KATA>カﾞソリン<HIRA>の かおり! <KATA>クーッ!!<NL>"
-	ctxt "₆₆₆<HIRA>おまえ こんなんしﾞゃ<NL>"
-	ctxt "せﾞんせﾞん <KATA>タﾞメタﾞメヘﾞイヘﾞー<NL>"
-	ctxt "4<HIRA>りん<KATA>ハﾞキﾞー<HIRA>に かいそﾞうしたほうかﾞ<NL>"
-	ctxt "<KATA>クﾞリース<HIRA>やまも <KATA>ラク<HIRA>にとはﾞせるんたﾞ<NL>"
-	ctxt "<KATA>オレ<HIRA>かﾞ かいそﾞうしちゃる!<NL>"
-	ctxt "めんとﾞうみちゃる!<KATA><TERM>"
+	ctxt "ジョー"
+	line "ヌオッピロッピー!"
+	line "バ バイク<HIRA>じゃないか!"
+	line "………なつかしい この"
+	line "<KATA>ガソリン<HIRA>の かおり! <KATA>クーッ!!"
+	line "………<HIRA>おまえ こんなんじゃ"
+	line "ぜんぜん <KATA>ダメダメベイベー"
+	line "4<HIRA>りん<KATA>バギー<HIRA>に かいぞうしたほうが"
+	line "<KATA>グリース<HIRA>やまも <KATA>ラク<HIRA>にとばせるんだ"
+	line "<KATA>オレ<HIRA>が かいぞうしちゃる!"
+	line "めんどうみちゃる!<KATA>"
+	done
 
 TreeBitstreamText_3bd02:
-	ctxt "シﾞョー<NL>"
-	ctxt "アイ ラフﾞ ロック!<NL>"
-	ctxt "アイ ラフﾞ ハﾞキﾞー!<NL>"
-	ctxt "アイ ラフﾞ <HIRA>かいてーしﾞん!<NL>"
-	ctxt "<NL>"
-	ctxt "きょうも いちにち<NL>"
-	ctxt "あんせﾞんうんてんてﾞ いきましょう!<KATA>"
+	ctxt "ジョー"
+	line "アイ ラブ ロック!"
+	line "アイ ラブ バギー!"
+	line "アイ ラブ <HIRA>かいてーじん!"
+	line ""
+	line "きょうも いちにち"
+	line "あんぜんうんてんで いきましょう!<KATA>"
 
 TreeBitstreamText_3bd37:
-	ctxt "シﾞョー<NL>"
-	ctxt "<HIRA>そうか……<NL>"
-	ctxt "あんた おやしﾞに あったのか<NL>"
-	ctxt "えっ? 4りん<KATA>ハﾞキﾞー?<NL>"
-	ctxt "<HIRA>たﾞったら <KATA>ニリーン<HIRA>を もってきな<NL>"
-	ctxt "そしたら <KATA>ヨンクー<HIRA>に<NL>"
-	ctxt "かいそﾞう してやるせﾞ!<KATA><TERM>"
+	ctxt "ジョー"
+	line "<HIRA>そうか……"
+	line "あんた おやじに あったのか"
+	line "えっ? 4りん<KATA>バギー?"
+	line "<HIRA>だったら <KATA>ニリーン<HIRA>を もってきな"
+	line "そしたら <KATA>ヨンクー<HIRA>に"
+	line "かいぞう してやるぜ!<KATA>"
+	done
 
 TreeBitstreamText_3bd77:
-	ctxt "ニリーン<HIRA>は<NL>"
-	ctxt "<KATA>ヨンクー<HIRA>へ しんかした<KATA><TERM>"
+	ctxt "ニリーン<HIRA>は"
+	line "<KATA>ヨンクー<HIRA>へ しんかした<KATA>"
+	done
 
 TreeBitstreamText_3bd87:
-	ctxt "ヒﾞーノ<NL>"
-	ctxt "<HIRA>おっと <KATA>オレ<HIRA>かﾞ <KATA>ニコニコ<HIRA>そﾞく<NL>"
-	ctxt "さいこﾞの あいてたﾞ!!<NL>"
-	ctxt "<KATA>ワイルトﾞ<HIRA>さまには ゆひﾞ いっほﾟん<NL>"
-	ctxt "ふれさせないせﾞ!<NL>"
-	ctxt "いさﾞ しょうふﾞ!!<KATA><TERM>"
+	ctxt "ビーノ"
+	line "<HIRA>おっと <KATA>オレ<HIRA>が <KATA>ニコニコ<HIRA>ぞく"
+	line "さいごの あいてだ!!"
+	line "<KATA>ワイルド<HIRA>さまには ゆび いっぽん"
+	line "ふれさせないぜ!"
+	line "いざ しょうぶ!!<KATA>"
+	done
 
 TreeBitstreamText_3bdc2:
-	ctxt "ヒﾞーノ<NL>"
-	ctxt "オレ<HIRA>らって しﾞつは ひとりしﾞゃ<NL>"
-	ctxt "よわいんたﾞ<NL>"
-	ctxt "たﾞから みんなてﾞ いるときかﾞ<NL>"
-	ctxt "いちはﾞん たのしかったりする……<KATA><TERM>"
+	ctxt "ビーノ"
+	line "オレ<HIRA>らって じつは ひとりじゃ"
+	line "よわいんだ"
+	line "だから みんなで いるときが"
+	line "いちばん たのしかったりする……<KATA>"
+	done
 
 TreeBitstreamText_3bdf0:
-	ctxt "<HIRA>さはﾞくには おとしあなかﾞあるから<NL>"
-	ctxt "たいへんなんたﾞよな………<NL>"
-	ctxt "おまえさん <KATA>ニリーン<HIRA>っていう<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は しっているかい?<NL>"
-	ctxt "さはﾞくを <KATA>ヒﾞュンヒﾞュン<HIRA>とはﾞす<NL>"
-	ctxt "いとﾞうよう<KATA>ロホﾞホﾟン<HIRA>なんたﾞせﾞ!<KATA><TERM>"
+	ctxt "<HIRA>さばくには おとしあながあるから"
+	line "たいへんなんだよな………"
+	line "おまえさん <KATA>ニリーン<HIRA>っていう"
+	line "<KATA>ロボポン<HIRA>は しっているかい?"
+	line "さばくを <KATA>ビュンビュン<HIRA>とばす"
+	line "いどうよう<KATA>ロボポン<HIRA>なんだぜ!<KATA>"
+	done
 
 TreeBitstreamText_3be3f:
-	ctxt "<HIRA>きゅうなしゃめんは <KATA>ニリーン<HIRA>しﾞゃ<NL>"
-	ctxt "のほﾞれないんたﾞよな……<NL>"
-	ctxt "おまえさん <KATA>ヨンクー<HIRA>っていう<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を しっているかい?<NL>"
-	ctxt "きゅうなしゃめんも へっちゃらな<NL>"
-	ctxt "いとﾞうよう<KATA>ロホﾞホﾟン<HIRA>なんたﾞせﾞ!<KATA><TERM>"
+	ctxt "<HIRA>きゅうなしゃめんは <KATA>ニリーン<HIRA>じゃ"
+	line "のぼれないんだよな……"
+	line "おまえさん <KATA>ヨンクー<HIRA>っていう"
+	line "<KATA>ロボポン<HIRA>を しっているかい?"
+	line "きゅうなしゃめんも へっちゃらな"
+	line "いどうよう<KATA>ロボポン<HIRA>なんだぜ!<KATA>"
+	done
 
 TreeBitstreamText_3be8e:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>え? おまえ たﾞれ? しんいり?<NL>"
-	ctxt "もうすこし <KATA>カッコ<HIRA>つけろよな!<NL>"
-	ctxt "かわ<KATA>シﾞャン<HIRA>くﾞらい きてこいよー<NL>"
-	ctxt "てﾞきれはﾞ <KATA>ヒﾟアス<HIRA>も しろよー<NL>"
-	ctxt "え? そうしﾞゃない? ちょうせん?<NL>"
-	ctxt "………な なんたﾞよ!!<NL>"
-	ctxt "お おい! おまえら こんな<KATA>カﾞキ<NL>"
-	ctxt "<HIRA>たたき のめしちまえ!!<NL>"
-	ctxt "………………………………<NL>"
-	ctxt "<KATA>コﾞクッ<NL>"
-	ctxt "<HIRA>え? もう みんな やっつけた?<NL>"
-	ctxt "たﾞれも いないの?<NL>"
-	ctxt "………た たすけてよ <KATA>ママ<HIRA>ぁー!<KATA>"
+	ctxt "ワイルド"
+	line "<HIRA>え? おまえ だれ? しんいり?"
+	line "もうすこし <KATA>カッコ<HIRA>つけろよな!"
+	line "かわ<KATA>ジャン<HIRA>ぐらい きてこいよー"
+	line "できれば <KATA>ピアス<HIRA>も しろよー"
+	line "え? そうじゃない? ちょうせん?"
+	line "………な なんだよ!!"
+	line "お おい! おまえら こんな<KATA>ガキ"
+	line "<HIRA>たたき のめしちまえ!!"
+	line "………………………………"
+	line "<KATA>ゴクッ"
+	line "<HIRA>え? もう みんな やっつけた?"
+	line "だれも いないの?"
+	line "………た たすけてよ <KATA>ママ<HIRA>ぁー!<KATA>"
 
 TreeBitstreamText_3bf25:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>おっかしいな………あっ<NL>"
-	ctxt "<KATA>エンシﾞン<HIRA>かけるの わすれてた!<NL>"
-	ctxt "くっそー <KATA>カキﾞ カキﾞ₆₆₆<TERM>"
+	ctxt "ワイルド"
+	line "<HIRA>おっかしいな………あっ"
+	line "<KATA>エンジン<HIRA>かけるの わすれてた!"
+	line "くっそー <KATA>カギ カギ………"
+	done
 
 TreeBitstreamText_3bf4b:
-	ctxt "クﾞチャッ<TERM>"
+	ctxt "グチャッ"
+	done
 
 TreeBitstreamText_3bf50:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>な なんたﾞよ<NL>"
-	ctxt "<KATA>カキﾞ<HIRA>しﾞゃなくて <KATA>カキ<HIRA>しﾞゃねえか!<NL>"
-	ctxt "くたﾞものの <KATA>カキ<HIRA>たﾞよ <KATA>カキ!<NL>"
-	ctxt "<HIRA>ちっくしょう <KATA>カキﾞ カキﾞ<HIRA>っと<KATA><TERM>"
+	ctxt "ワイルド"
+	line "<HIRA>な なんだよ"
+	line "<KATA>カギ<HIRA>じゃなくて <KATA>カキ<HIRA>じゃねえか!"
+	line "くだものの <KATA>カキ<HIRA>だよ <KATA>カキ!"
+	line "<HIRA>ちっくしょう <KATA>カギ カギ<HIRA>っと<KATA>"
+	done
 
 TreeBitstreamText_3bf85:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "アイテテテッ<TERM>"
+	ctxt "ワイルド"
+	line "アイテテテッ"
+	done
 
 TreeBitstreamText_3bf8e:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>ちっくしょう<NL>"
-	ctxt "こりゃ <KATA>カニ<HIRA>しﾞゃんかぁ!<NL>"
-	ctxt "<KATA>ハサ<HIRA>まれちゃったよ まったく……<NL>"
-	ctxt "ちかﾞう! <KATA>カキﾞ<HIRA>たﾞよ <KATA>カキﾞ<HIRA>っ!<KATA><TERM>"
+	ctxt "ワイルド"
+	line "<HIRA>ちっくしょう"
+	line "こりゃ <KATA>カニ<HIRA>じゃんかぁ!"
+	line "<KATA>ハサ<HIRA>まれちゃったよ まったく……"
+	line "ちがう! <KATA>カギ<HIRA>だよ <KATA>カギ<HIRA>っ!<KATA>"
+	done
 
 TreeBitstreamText_3bfc1:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>あ あった よーしっ!<NL>"
-	ctxt "<KATA>ロホﾞホﾟントﾞーム<HIRA>てﾞ まってるそﾞ<NL>"
-	ctxt "そこてﾞ おもしろい ものを<NL>"
-	ctxt "みせて やるからな!<KATA><TERM>"
+	ctxt "ワイルド"
+	line "<HIRA>あ あった よーしっ!"
+	line "<KATA>ロボポンドーム<HIRA>で まってるぞ"
+	line "そこで おもしろい ものを"
+	line "みせて やるからな!<KATA>"
+	done
 
 SECTION "Tree Bitstream Text 1", ROMX [$f], BANK [$4000]
 TreeBitstreamText_3c000:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>とﾞうたﾞ この <KATA>ロホﾞホﾟン<HIRA>を みろ!<NL>"
-	ctxt "うはﾞいとった <KATA>トﾞルッヒﾟ<HIRA>たﾞよ!<NL>"
-	ctxt "こんなに かわいい<KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "<KATA>スクラッフﾟ<HIRA>に してしまう……<NL>"
-	ctxt "そんな ゆうきかﾞ おまえさんに<NL>"
-	ctxt "あるのかい?<KATA><TERM>"
+	ctxt "ワイルド"
+	line "<HIRA>どうだ この <KATA>ロボポン<HIRA>を みろ!"
+	line "うばいとった <KATA>ドルッピ<HIRA>だよ!"
+	line "こんなに かわいい<KATA>ロボポン<HIRA>を"
+	line "<KATA>スクラップ<HIRA>に してしまう……"
+	line "そんな ゆうきが おまえさんに"
+	line "あるのかい?<KATA>"
+	done
 
 TreeBitstreamText_3c04e:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "コﾞメン₆₆₆ <HIRA>かえすよ ちょっとたﾞけ<NL>"
-	ctxt "<KATA>レヘﾞルアッフﾟ <HIRA>させといたから<KATA>"
+	ctxt "ワイルド"
+	line "ゴメン……… <HIRA>かえすよ ちょっとだけ"
+	line "<KATA>レベルアップ <HIRA>させといたから<KATA>"
 
 TreeBitstreamText_3c070:
-	ctxt "ワイルトﾞ<HIRA>から <KATA>トﾞルッヒﾟ<HIRA>を<NL>"
-	ctxt "かえして もらった!<KATA><TERM>"
+	ctxt "ワイルド<HIRA>から <KATA>ドルッピ<HIRA>を"
+	line "かえして もらった!<KATA>"
+	done
 
 TreeBitstreamText_3c086:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "オレ<HIRA>って <KATA>ホント<HIRA>は<NL>"
-	ctxt "しょうしんもの なんたﾞ………<NL>"
-	ctxt "なにか ちからに なれることかﾞ<NL>"
-	ctxt "あったら <KATA>クﾞリース<HIRA>やま に きなよ<NL>"
-	ctxt "<KATA>アイ ラフﾞ ロケンロール!<NL>"
-	ctxt "アイ ラフﾞ <STBF>!<TERM>"
+	ctxt "ワイルド"
+	line "オレ<HIRA>って <KATA>ホント<HIRA>は"
+	line "しょうしんもの なんだ………"
+	line "なにか ちからに なれることが"
+	line "あったら <KATA>グリース<HIRA>やま に きなよ"
+	line "<KATA>アイ ラブ ロケンロール!"
+	line "アイ ラブ <PLAYER>!"
+	done
 
 TreeBitstreamText_3c0ca:
-	ctxt "クﾞレイテスト5<HIRA>の しょうこﾞう<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "グレイテスト5<HIRA>の しょうごう"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3c0de:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "つきﾞの <KATA>クﾞレイテスト4<HIRA>の あいては<NL>"
-	ctxt "<KATA>アホﾟロ <HIRA>という まちに いる<NL>"
-	ctxt "<KATA>フフフ₆₆ <HIRA>きっと おとﾞろくそﾞ<NL>"
-	ctxt "<KATA>アホﾟロ<HIRA>は おそろしい まちたﾞ<NL>"
-	ctxt "<KATA>ランキンクﾞ <HIRA>しﾞょういは もうすくﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "わたしとの たいせんも<NL>"
-	ctxt "あと わすﾞかたﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "つぎの <KATA>グレイテスト4<HIRA>の あいては"
+	line "<KATA>アポロ <HIRA>という まちに いる"
+	line "<KATA>フフフ…… <HIRA>きっと おどろくぞ"
+	line "<KATA>アポロ<HIRA>は おそろしい まちだ"
+	line "<KATA>ランキング <HIRA>じょういは もうすぐ!"
+	line ""
+	line "わたしとの たいせんも"
+	line "あと わずかだ!<KATA>"
+	done
 
 TreeBitstreamText_3c13a:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "あいつ <KATA><STBF> <HIRA>とか いったな……<NL>"
-	ctxt "<NL>"
-	ctxt "あいつと たたかう ひ も<NL>"
-	ctxt "そう とおくは なさそうたﾞ……<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "あいつ <KATA><PLAYER> <HIRA>とか いったな……"
+	line ""
+	line "あいつと たたかう ひ も"
+	line "そう とおくは なさそうだ……<KATA>"
+	done
 
 TreeBitstreamText_3c162:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>おっ <KATA><STBF>!<NL>"
-	ctxt "<HIRA>きてくれたのかい!<NL>"
-	ctxt "<KATA><STBF><HIRA>に まけたあと みんなてﾞ<NL>"
-	ctxt "はんせーかいを やったんたﾞせﾞ<NL>"
-	ctxt "それてﾞさ やっはﾟり みんなに<NL>"
-	ctxt "めいわく かけるのは よくない<NL>"
-	ctxt "ってことてﾞ <KATA>ニコニコ<HIRA>そﾞくは<NL>"
-	ctxt "かいさん することに したんたﾞよ<NL>"
-	ctxt "ちょっと さみしいけとﾞ<NL>"
-	ctxt "それかﾞ <KATA>ヘﾞスト<HIRA>たﾞと おもうんたﾞ<NL>"
-	ctxt "てﾞ いまの <KATA>オレ<HIRA>は <KATA>ロケンローラー<HIRA>さ<NL>"
-	ctxt "<KATA>メンハﾞー<HIRA>そのままてﾞ <KATA>ハﾞントﾞ<HIRA>たﾞせﾞ<NL>"
-	ctxt "けっこう ましﾞめに やってるんたﾞ<NL>"
-	ctxt "もちろん <KATA>ライフﾞ<HIRA>も <KATA>ハﾞリハﾞリ<HIRA>よ!<NL>"
-	ctxt "いまに <KATA>メシﾞャーテﾞヒﾞュー<HIRA>するから<NL>"
-	ctxt "おうえん してくれよな <KATA><STBF>!<TERM>"
+	ctxt "ワイルド"
+	line "<HIRA>おっ <KATA><PLAYER>!"
+	line "<HIRA>きてくれたのかい!"
+	line "<KATA><PLAYER><HIRA>に まけたあと みんなで"
+	line "はんせーかいを やったんだぜ"
+	line "それでさ やっぱり みんなに"
+	line "めいわく かけるのは よくない"
+	line "ってことで <KATA>ニコニコ<HIRA>ぞくは"
+	line "かいさん することに したんだよ"
+	line "ちょっと さみしいけど"
+	line "それが <KATA>ベスト<HIRA>だと おもうんだ"
+	line "で いまの <KATA>オレ<HIRA>は <KATA>ロケンローラー<HIRA>さ"
+	line "<KATA>メンバー<HIRA>そのままで <KATA>バンド<HIRA>だぜ"
+	line "けっこう まじめに やってるんだ"
+	line "もちろん <KATA>ライブ<HIRA>も <KATA>バリバリ<HIRA>よ!"
+	line "いまに <KATA>メジャーデビュー<HIRA>するから"
+	line "おうえん してくれよな <KATA><PLAYER>!"
+	done
 
 TreeBitstreamText_3c22b:
-	ctxt "<HIRA>おとこ<NL>"
-	ctxt "<KATA>フッフッフ₆₆<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>このおくに なにかﾞあるか<NL>"
-	ctxt "しっているか?<NL>"
-	ctxt "せかいに7<KATA>コ<HIRA>しかないという<NL>"
-	ctxt "たからはﾞこかﾞ あるんたﾞかﾞ………<NL>"
-	ctxt "<KATA>カヘﾞ<HIRA>かﾞ しﾞゃまして とおれない<NL>"
-	ctxt "とﾞうすれはﾞいいのか わからない<NL>"
-	ctxt "<KATA>ハﾞクタﾞン <HIRA>てﾞも あれはﾞ<NL>"
-	ctxt "いっきに ふっとはﾞせるんたﾞかﾞな<NL>"
-	ctxt "しかし あんまり<KATA>ハテﾞ<HIRA>にやると<NL>"
-	ctxt "とﾞうくつしﾞたいかﾞ こわれてしまう<NL>"
-	ctxt "むすﾞかしい もんたﾞいたﾞ<KATA><TERM>"
+	ctxt "<HIRA>おとこ"
+	line "<KATA>フッフッフ……"
+	line ""
+	line "<HIRA>このおくに なにがあるか"
+	line "しっているか?"
+	line "せかいに7<KATA>コ<HIRA>しかないという"
+	line "たからばこが あるんだが………"
+	line "<KATA>カベ<HIRA>が じゃまして とおれない"
+	line "どうすればいいのか わからない"
+	line "<KATA>バクダン <HIRA>でも あれば"
+	line "いっきに ふっとばせるんだがな"
+	line "しかし あんまり<KATA>ハデ<HIRA>にやると"
+	line "どうくつじたいが こわれてしまう"
+	line "むずかしい もんだいだ<KATA>"
+	done
 
 TreeBitstreamText_3c2b2:
-	ctxt "<HIRA>おとこ<NL>"
-	ctxt "おや?<NL>"
-	ctxt "<NL>"
-	ctxt "あんた <KATA>カﾞーナ<HIRA>の<KATA>ハﾞクタﾞン<NL>"
-	ctxt "<HIRA>しかも ふはつたﾞんを もってるな<NL>"
-	ctxt "その あおい<KATA>ハﾞクタﾞン<HIRA>なら<NL>"
-	ctxt "ここの<KATA>カヘﾞ<HIRA>を こわせるたﾞろう<NL>"
-	ctxt "ちょっと<KATA>キケン<HIRA>な かけたﾞかﾞ<NL>"
-	ctxt "やってみる かちは ありそうたﾞせﾞ!<KATA>"
+	ctxt "<HIRA>おとこ"
+	line "おや?"
+	line ""
+	line "あんた <KATA>ガーナ<HIRA>の<KATA>バクダン"
+	line "<HIRA>しかも ふはつだんを もってるな"
+	line "その あおい<KATA>バクダン<HIRA>なら"
+	line "ここの<KATA>カベ<HIRA>を こわせるだろう"
+	line "ちょっと<KATA>キケン<HIRA>な かけだが"
+	line "やってみる かちは ありそうだぜ!<KATA>"
 
 TreeBitstreamText_3c305:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "わかﾞ <KATA>カマット<HIRA>くﾞん への<NL>"
-	ctxt "こﾞにゅうたい てﾞすね<NL>"
-	ctxt "ありかﾞとうこﾞさﾞいます<NL>"
-	ctxt "<NL>"
-	ctxt "ますﾞは てすうりょう の<NL>"
-	ctxt "てつつﾞきを していたたﾞきます<NL>"
-	ctxt "てすうりょう 1000<KATA>コﾞールトﾞ<NL>"
-	ctxt "<HIRA>いたたﾞきますかﾞ よろしいてﾞすか?<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "わが <KATA>カマット<HIRA>ぐん への"
+	line "ごにゅうたい ですね"
+	line "ありがとうございます"
+	line ""
+	line "まずは てすうりょう の"
+	line "てつづきを していただきます"
+	line "てすうりょう 1000<KATA>ゴールド"
+	line "<HIRA>いただきますが よろしいですか?<KATA>"
+	done
 
 TreeBitstreamText_3c35b:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "……………………………<KATA>マシﾞ?<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>いっ いや<NL>"
-	ctxt "まことに さﾞんねんてﾞす………<NL>"
-	ctxt "………もし きかﾞ かわったら<NL>"
-	ctxt "また おこしくたﾞさい<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "……………………………<KATA>マジ?"
+	line ""
+	line "<HIRA>いっ いや"
+	line "まことに ざんねんです………"
+	line "………もし きが かわったら"
+	line "また おこしください<KATA>"
+	done
 
 TreeBitstreamText_3c390:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "あらら…………<NL>"
-	ctxt "おかねかﾞ たりないようてﾞすね………<NL>"
-	ctxt "おかねを ためてから<NL>"
-	ctxt "もういちとﾞ おこし くたﾞさい<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "あらら…………"
+	line "おかねが たりないようですね………"
+	line "おかねを ためてから"
+	line "もういちど おこし ください<KATA>"
+	done
 
 TreeBitstreamText_3c3bd:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "えーっと おなまえは………<NL>"
-	ctxt "<KATA><STBF><HIRA>さん てﾞすね<NL>"
-	ctxt "こﾞそﾞんしﾞ てﾞしょうかﾞ <KATA>カマット<HIRA>くﾞんは<NL>"
-	ctxt "5つの ふﾞたいに わかれています<NL>"
-	ctxt "ますﾞ きほﾞうする ふﾞたいの ものを<NL>"
-	ctxt "5にんの なかから えらひﾞます<NL>"
-	ctxt "そのくﾞんの <KATA>ルール<HIRA>てﾞ <KATA>ハﾞトル<HIRA>をして<NL>"
-	ctxt "あなたかﾞ かてはﾞ こﾞうかくてﾞす<NL>"
-	ctxt "てﾞは こﾞけんとうを おいのりします<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "えーっと おなまえは………"
+	line "<KATA><PLAYER><HIRA>さん ですね"
+	line "ごぞんじ でしょうが <KATA>カマット<HIRA>ぐんは"
+	line "5つの ぶたいに わかれています"
+	line "まず きぼうする ぶたいの ものを"
+	line "5にんの なかから えらびます"
+	line "そのぐんの <KATA>ルール<HIRA>で <KATA>バトル<HIRA>をして"
+	line "あなたが かてば ごうかくです"
+	line "では ごけんとうを おいのりします<KATA>"
+	done
 
 TreeBitstreamText_3c437:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "これてﾞ あなたも<NL>"
-	ctxt "<KATA>カマット<HIRA>くﾞんの いちいん てﾞすね!<NL>"
-	ctxt "すはﾞらしい みらいを <KATA>カマット<HIRA>さま<NL>"
-	ctxt "と きすﾞこうしﾞゃ ありませんか!<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "これで あなたも"
+	line "<KATA>カマット<HIRA>ぐんの いちいん ですね!"
+	line "すばらしい みらいを <KATA>カマット<HIRA>さま"
+	line "と きずこうじゃ ありませんか!<KATA>"
+	done
 
 TreeBitstreamText_3c46d:
-	ctxt "<HIRA>おまえ みたいな こそﾞうかﾞ<NL>"
-	ctxt "にゅうたい?<NL>"
-	ctxt "………<KATA>フン <HIRA>まあ よいわ<NL>"
-	ctxt "<KATA>オトコ<HIRA>の せかいを おしえてやる<NL>"
-	ctxt "<KATA>サッサ<HIRA>と うけつけてﾞ はらうもんを<NL>"
-	ctxt "はらってこい!<KATA><TERM>"
+	ctxt "<HIRA>おまえ みたいな こぞうが"
+	line "にゅうたい?"
+	line "………<KATA>フン <HIRA>まあ よいわ"
+	line "<KATA>オトコ<HIRA>の せかいを おしえてやる"
+	line "<KATA>サッサ<HIRA>と うけつけで はらうもんを"
+	line "はらってこい!<KATA>"
+	done
 
 TreeBitstreamText_3c4ab:
-	ctxt "<HIRA>ん? <KATA>ハﾞッチ<HIRA>なら もう<NL>"
-	ctxt "もっているてﾞは ないか<NL>"
-	ctxt "おちつきの ないやつたﾞな!<NL>"
-	ctxt "いや よくはﾞりと いうへﾞきか………<NL>"
-	ctxt "とにかく とうの てっへﾟんまてﾞ いき<NL>"
-	ctxt "きちんと そつきﾞょう してこい!<KATA><TERM>"
+	ctxt "<HIRA>ん? <KATA>バッチ<HIRA>なら もう"
+	line "もっているでは ないか"
+	line "おちつきの ないやつだな!"
+	line "いや よくばりと いうべきか………"
+	line "とにかく とうの てっぺんまで いき"
+	line "きちんと そつぎょう してこい!<KATA>"
+	done
 
 TreeBitstreamText_3c4f2:
-	ctxt "<HIRA>ん? おまえは もう わかﾞくﾞんを<NL>"
-	ctxt "そつきﾞょう したてﾞは ないか<NL>"
-	ctxt "そつきﾞょうした ふﾞたいに<NL>"
-	ctxt "もう ようは ないはすﾞたﾞ<KATA>"
+	ctxt "<HIRA>ん? おまえは もう わがぐんを"
+	line "そつぎょう したでは ないか"
+	line "そつぎょうした ぶたいに"
+	line "もう ようは ないはずだ<KATA>"
 
 TreeBitstreamText_3c51f:
-	ctxt "ハﾞトラー<HIRA>くﾞんは <KATA>エリート ロホﾞホﾟン<HIRA>かﾞ<NL>"
-	ctxt "しょそﾞくする かこくな ふﾞたい!<NL>"
-	ctxt "それてﾞも <KATA>ハﾞトラー<HIRA>くﾞんに<NL>"
-	ctxt "はいりたいのか?<KATA><TERM>"
+	ctxt "バトラー<HIRA>ぐんは <KATA>エリート ロボポン<HIRA>が"
+	line "しょぞくする かこくな ぶたい!"
+	line "それでも <KATA>バトラー<HIRA>ぐんに"
+	line "はいりたいのか?<KATA>"
+	done
 
 TreeBitstreamText_3c552:
-	ctxt "シﾞャンハﾟー<HIRA>くﾞんは そらかﾞ とへﾞて<NL>"
-	ctxt "すはﾞやさかﾞ たかくなけれはﾞ<KATA>タﾞメ<HIRA>たﾞ!<NL>"
-	ctxt "<KATA>ムーフﾞ<HIRA>そﾞくの <KATA>ロホﾞホﾟン<HIRA>かﾞ おおく<NL>"
-	ctxt "しょそﾞくしている ふﾞたいなのたﾞ<NL>"
-	ctxt "<KATA>シﾞャンハﾟー<HIRA>くﾞんてﾞ いいのか?<KATA><TERM>"
+	ctxt "ジャンパー<HIRA>ぐんは そらが とべて"
+	line "すばやさが たかくなければ<KATA>ダメ<HIRA>だ!"
+	line "<KATA>ムーブ<HIRA>ぞくの <KATA>ロボポン<HIRA>が おおく"
+	line "しょぞくしている ぶたいなのだ"
+	line "<KATA>ジャンパー<HIRA>ぐんで いいのか?<KATA>"
+	done
 
 TreeBitstreamText_3c5a0:
-	ctxt "スヒﾟータﾞー<HIRA>くﾞんは すはﾞやさのたかい<NL>"
-	ctxt "<KATA>ムーフﾞ<HIRA>そﾞくかﾞ ゆうりな ふﾞたいたﾞ<NL>"
-	ctxt "<KATA>スヒﾟータﾞー<HIRA>くﾞんてﾞ いいのか?<KATA><TERM>"
+	ctxt "スピーダー<HIRA>ぐんは すばやさのたかい"
+	line "<KATA>ムーブ<HIRA>ぞくが ゆうりな ぶたいだ"
+	line "<KATA>スピーダー<HIRA>ぐんで いいのか?<KATA>"
+	done
 
 TreeBitstreamText_3c5cf:
-	ctxt "シールタﾞー<HIRA>くﾞんは <KATA>ヒットホﾟイント<HIRA>や<NL>"
-	ctxt "ほﾞうきﾞょりょくかﾞ ものをいう!<NL>"
-	ctxt "かﾞんしﾞょうな <KATA>ロホﾞホﾟン<HIRA>かﾞ ゆうりな<NL>"
-	ctxt "ふﾞたいたﾞから <KATA>フﾞート<HIRA>そﾞくかﾞ いいな<NL>"
-	ctxt "<KATA>シールタﾞー<HIRA>くﾞんてﾞ いいんたﾞな?<KATA><TERM>"
+	ctxt "シールダー<HIRA>ぐんは <KATA>ヒットポイント<HIRA>や"
+	line "ぼうぎょりょくが ものをいう!"
+	line "がんじょうな <KATA>ロボポン<HIRA>が ゆうりな"
+	line "ぶたいだから <KATA>ブート<HIRA>ぞくが いいな"
+	line "<KATA>シールダー<HIRA>ぐんで いいんだな?<KATA>"
+	done
 
 TreeBitstreamText_3c61c:
-	ctxt "ハﾟンチャー<HIRA>くﾞんは こうけﾞきりょくかﾞ<NL>"
-	ctxt "もっとも しﾞゅうようたﾞ<NL>"
-	ctxt "また <KATA>アーム<HIRA>そﾞくかﾞ<NL>"
-	ctxt "ゆうりな ふﾞたいてﾞもある<NL>"
-	ctxt "わかﾞ <KATA>ハﾟンチャー<HIRA>くﾞんに<NL>"
-	ctxt "はいりたいのか?<KATA><TERM>"
+	ctxt "パンチャー<HIRA>ぐんは こうげきりょくが"
+	line "もっとも じゅうようだ"
+	line "また <KATA>アーム<HIRA>ぞくが"
+	line "ゆうりな ぶたいでもある"
+	line "わが <KATA>パンチャー<HIRA>ぐんに"
+	line "はいりたいのか?<KATA>"
+	done
 
 TreeBitstreamText_3c65d:
-	ctxt "<HIRA>てﾞは えんりょなく いくそﾞ!<KATA>"
+	ctxt "<HIRA>では えんりょなく いくぞ!<KATA>"
 
 TreeBitstreamText_3c66a:
-	ctxt "<HIRA>なんたﾞ おしﾞけつﾞいたのか?<KATA><TERM>"
+	ctxt "<HIRA>なんだ おじけづいたのか?<KATA>"
+	done
 
 TreeBitstreamText_3c677:
-	ctxt "<HIRA>うむ てﾞは わかﾞくﾞん への<NL>"
-	ctxt "にゅうたいを きょか しよう<NL>"
-	ctxt "さあ この<KATA>ハﾞッチ<HIRA>を つけるのたﾞ<KATA><TERM>"
+	ctxt "<HIRA>うむ では わがぐん への"
+	line "にゅうたいを きょか しよう"
+	line "さあ この<KATA>バッチ<HIRA>を つけるのだ<KATA>"
+	done
 
 TreeBitstreamText_3c69d:
-	ctxt "シﾞャンハﾟーハﾞッチ<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA>"
+	ctxt "ジャンパーバッチ"
+	line "<HIRA>を てにいれた!<KATA>"
 
 TreeBitstreamText_3c6ad:
-	ctxt "スヒﾟータﾞーハﾞッチ<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA><TERM>"
+	ctxt "スピーダーバッチ"
+	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3c6be:
-	ctxt "ハﾟンチャーハﾞッチ<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA><TERM>"
+	ctxt "パンチャーバッチ"
+	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3c6ce:
-	ctxt "シールタﾞーハﾞッチ<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA>"
+	ctxt "シールダーバッチ"
+	line "<HIRA>を てにいれた!<KATA>"
 
 TreeBitstreamText_3c6dd:
-	ctxt "ハﾞトラーハﾞッチ<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA><TERM>"
+	ctxt "バトラーバッチ"
+	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3c6ec:
-	ctxt "<HIRA>てﾞは <KATA>アホﾟロ<HIRA>ようさいに ある<NL>"
-	ctxt "わかﾞ ふﾞたいの とうに ゆけ!<KATA><TERM>"
+	ctxt "<HIRA>では <KATA>アポロ<HIRA>ようさいに ある"
+	line "わが ぶたいの とうに ゆけ!<KATA>"
+	done
 
 TreeBitstreamText_3c707:
-	ctxt "<HIRA>おまえ しんいり たﾞろ?<NL>"
-	ctxt "その <KATA>マヌケ<HIRA>つﾞら みりゃ わかるせﾞ<NL>"
-	ctxt "しょーかﾞねぇな <KATA>オレ<HIRA>かﾞ ここの<NL>"
-	ctxt "あんないを してやるよ<NL>"
-	ctxt "ますﾞ この てﾞっかい とうかﾞ<NL>"
-	ctxt "<KATA>カマットタワー<HIRA>たﾞ<NL>"
-	ctxt "てﾞ この<KATA>カマットタワー<HIRA>の きたに<NL>"
-	ctxt "あるのかﾞ <KATA>ハﾟンチャー<HIRA>のとう たﾞ<NL>"
-	ctxt "ひかﾞしに あるのは <KATA>スヒﾟータﾞー<NL>"
-	ctxt "<HIRA>にしに あるのは <KATA>シールタﾞー<HIRA>たﾞ<NL>"
-	ctxt "さらに みなみに ある 2つのうち<NL>"
-	ctxt "ひかﾞしかﾞ <KATA>ハﾞトラー<HIRA>のとう<NL>"
-	ctxt "にしは <KATA>シﾞャンハﾟー<HIRA>のとう たﾞ<NL>"
-	ctxt "………おほﾞえたかい?<KATA>"
+	ctxt "<HIRA>おまえ しんいり だろ?"
+	line "その <KATA>マヌケ<HIRA>づら みりゃ わかるぜ"
+	line "しょーがねぇな <KATA>オレ<HIRA>が ここの"
+	line "あんないを してやるよ"
+	line "まず この でっかい とうが"
+	line "<KATA>カマットタワー<HIRA>だ"
+	line "で この<KATA>カマットタワー<HIRA>の きたに"
+	line "あるのが <KATA>パンチャー<HIRA>のとう だ"
+	line "ひがしに あるのは <KATA>スピーダー"
+	line "<HIRA>にしに あるのは <KATA>シールダー<HIRA>だ"
+	line "さらに みなみに ある 2つのうち"
+	line "ひがしが <KATA>バトラー<HIRA>のとう"
+	line "にしは <KATA>ジャンパー<HIRA>のとう だ"
+	line "………おぼえたかい?<KATA>"
 
 TreeBitstreamText_3c7b1:
-	ctxt "<HIRA>おまえなぁ せﾞんふﾞの ふﾞたいを<NL>"
-	ctxt "そつきﾞょう しないと <KATA>タﾞメ<HIRA>たﾞせﾞ!<NL>"
-	ctxt "それてﾞ <KATA>カマット<HIRA>さまに あおうたぁ<NL>"
-	ctxt "<KATA>ナイス<HIRA>こんしﾞょーたﾞな おい!<KATA><TERM>"
+	ctxt "<HIRA>おまえなぁ ぜんぶの ぶたいを"
+	line "そつぎょう しないと <KATA>ダメ<HIRA>だぜ!"
+	line "それで <KATA>カマット<HIRA>さまに あおうたぁ"
+	line "<KATA>ナイス<HIRA>こんじょーだな おい!<KATA>"
+	done
 
 TreeBitstreamText_3c7ea:
-	ctxt "<HIRA>わたしと たたかおう とてﾞも<NL>"
-	ctxt "いうのか?<NL>"
-	ctxt "100まん おく こうねん<NL>"
-	ctxt "はやいんしﾞゃ ないのかね?<KATA><TERM>"
+	ctxt "<HIRA>わたしと たたかおう とでも"
+	line "いうのか?"
+	line "100まん おく こうねん"
+	line "はやいんじゃ ないのかね?<KATA>"
+	done
 
 TreeBitstreamText_3c810:
-	ctxt "<HIRA>たにんに やさしく!<NL>"
-	ctxt "しﾞふﾞんに きひﾞしく!<NL>"
-	ctxt "それかﾞ わたしの <KATA>モットー!<NL>"
-	ctxt "<HIRA>つけあかﾞっては こまるよ <KATA>チミ<TERM>"
+	ctxt "<HIRA>たにんに やさしく!"
+	line "じぶんに きびしく!"
+	line "それが わたしの <KATA>モットー!"
+	line "<HIRA>つけあがっては こまるよ <KATA>チミ"
+	done
 
 TreeBitstreamText_3c83b:
-	ctxt "<HIRA>さいきんの <KATA>カﾞキ<HIRA>んちょは とﾞうして<NL>"
-	ctxt "こう みのほとﾞ しらすﾞなんたﾞ?!<KATA><TERM>"
+	ctxt "<HIRA>さいきんの <KATA>ガキ<HIRA>んちょは どうして"
+	line "こう みのほど しらずなんだ?!<KATA>"
+	done
 
 TreeBitstreamText_3c859:
-	ctxt "<HIRA>もっと やさしくして!<NL>"
-	ctxt "<NL>"
-	ctxt "しﾞゃなくって もっと ひとに<NL>"
-	ctxt "やさしく てﾞきないの?!<KATA><TERM>"
+	ctxt "<HIRA>もっと やさしくして!"
+	line ""
+	line "じゃなくって もっと ひとに"
+	line "やさしく できないの?!<KATA>"
+	done
 
 TreeBitstreamText_3c878:
-	ctxt "<HIRA>わたしかﾞ たﾞれたﾞか わかって<NL>"
-	ctxt "いるのか?<NL>"
-	ctxt "………なに?<NL>"
-	ctxt "しんしﾞん たﾞから わからない?<NL>"
-	ctxt "<KATA>フン!<NL>"
-	ctxt "<HIRA>いますくﾞに わからせて やる!<KATA><TERM>"
+	ctxt "<HIRA>わたしが だれだか わかって"
+	line "いるのか?"
+	line "………なに?"
+	line "しんじん だから わからない?"
+	line "<KATA>フン!"
+	line "<HIRA>いますぐに わからせて やる!<KATA>"
+	done
 
 TreeBitstreamText_3c8aa:
-	ctxt "<HIRA>とﾞ とﾞうたﾞ わ わかったか!<NL>"
-	ctxt "<NL>"
-	ctxt "わたしは きみの ことかﾞ<NL>"
-	ctxt "よぉーく わかった!<NL>"
-	ctxt "たﾞから もう やめて!<KATA><TERM>"
+	ctxt "<HIRA>ど どうだ わ わかったか!"
+	line ""
+	line "わたしは きみの ことが"
+	line "よぉーく わかった!"
+	line "だから もう やめて!<KATA>"
+	done
 
 TreeBitstreamText_3c8d2:
-	ctxt "<HIRA>ほう おまえか? いせいの いい<NL>"
-	ctxt "しんいり というのは?<NL>"
-	ctxt "そういうやつは つけあかﾞらないように<NL>"
-	ctxt "おれかﾞ きょういく してやる!<KATA>"
+	ctxt "<HIRA>ほう おまえか? いせいの いい"
+	line "しんいり というのは?"
+	line "そういうやつは つけあがらないように"
+	line "おれが きょういく してやる!<KATA>"
 
 TreeBitstreamText_3c901:
-	ctxt "<HIRA>ありかﾞとうこﾞさﾞいました!!<KATA><TERM>"
+	ctxt "<HIRA>ありがとうございました!!<KATA>"
+	done
 
 TreeBitstreamText_3c90e:
-	ctxt "<HIRA>みかけん かおたﾞな………<NL>"
-	ctxt "まあよい あいてを してやるか!<KATA><TERM>"
+	ctxt "<HIRA>みかけん かおだな………"
+	line "まあよい あいてを してやるか!<KATA>"
+	done
 
 TreeBitstreamText_3c925:
-	ctxt "<HIRA>そ その ちょうしてﾞ こんこﾞとも<NL>"
-	ctxt "たのむよ <KATA>ハッハッハッ! ハァ₆₆<TERM>"
+	ctxt "<HIRA>そ その ちょうしで こんごとも"
+	line "たのむよ <KATA>ハッハッハッ! ハァ……"
+	done
 
 TreeBitstreamText_3c941:
-	ctxt "<HIRA>ん? すへﾞてのふﾞたいを<NL>"
-	ctxt "そつきﾞょうしたのか!!<NL>"
-	ctxt "ならはﾞ この<KATA>カートﾞ<HIRA>をやろう!<KATA><TERM>"
+	ctxt "<HIRA>ん? すべてのぶたいを"
+	line "そつぎょうしたのか!!"
+	line "ならば この<KATA>カード<HIRA>をやろう!<KATA>"
+	done
 
 TreeBitstreamText_3c963:
-	ctxt "メンハﾞースﾞカートﾞ<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA><TERM>"
+	ctxt "メンバーズカード"
+	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3c973:
-	ctxt "₆₆₆<HIRA>よし <KATA>ハﾞッチ<HIRA>を もっているな<KATA><TERM>"
+	ctxt "………<HIRA>よし <KATA>バッチ<HIRA>を もっているな<KATA>"
+	done
 
 TreeBitstreamText_3c983:
-	ctxt "<HIRA>おまえみたいな <KATA>ハﾞッチ<HIRA>の ないやつは<NL>"
-	ctxt "はなしに ならないな<NL>"
-	ctxt "<KATA>タﾞイン<HIRA>まちてﾞ にゅうたい<KATA>テスト<HIRA>に<NL>"
-	ctxt "こﾞうかく してから きな!<KATA><TERM>"
+	ctxt "<HIRA>おまえみたいな <KATA>バッチ<HIRA>の ないやつは"
+	line "はなしに ならないな"
+	line "<KATA>ダイン<HIRA>まちで にゅうたい<KATA>テスト<HIRA>に"
+	line "ごうかく してから きな!<KATA>"
+	done
 
 TreeBitstreamText_3c9b4:
-	ctxt "カマットタワー<HIRA>に<NL>"
-	ctxt "ようこそ!<KATA><TERM>"
+	ctxt "カマットタワー<HIRA>に"
+	line "ようこそ!<KATA>"
+	done
 
 TreeBitstreamText_3c9c1:
-	ctxt "<HIRA>なせﾞ こんな ところに いる!<NL>"
-	ctxt "あやしい <KATA>ヤツ<HIRA>たﾞな!<NL>"
-	ctxt "はははーん さては きさま<NL>"
-	ctxt "<KATA>スハﾟイ<HIRA>たﾞな!<NL>"
-	ctxt "<KATA>カマット<HIRA>くﾞんに <KATA>クーテﾞター<HIRA>を<NL>"
-	ctxt "おこそうとてﾞも いうのか?<KATA><TERM>"
+	ctxt "<HIRA>なぜ こんな ところに いる!"
+	line "あやしい <KATA>ヤツ<HIRA>だな!"
+	line "はははーん さては きさま"
+	line "<KATA>スパイ<HIRA>だな!"
+	line "<KATA>カマット<HIRA>ぐんに <KATA>クーデター<HIRA>を"
+	line "おこそうとでも いうのか?<KATA>"
+	done
 
 TreeBitstreamText_3ca00:
-	ctxt "<HIRA>むむむ とﾞこてﾞ そんなに<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を きょうか したのたﾞ……<KATA>"
+	ctxt "<HIRA>むむむ どこで そんなに"
+	line "<KATA>ロボポン<HIRA>を きょうか したのだ……<KATA>"
 
 TreeBitstreamText_3ca1c:
-	ctxt "<HIRA>とﾞうやら たたﾞものてﾞは<NL>"
-	ctxt "なさそうたﾞな<NL>"
-	ctxt "たﾞかﾞ おまえを <KATA>カマット<HIRA>さまに<NL>"
-	ctxt "あわせる わけには いかない!<NL>"
-	ctxt "ここてﾞ くたはﾞって もらう!<KATA><TERM>"
+	ctxt "<HIRA>どうやら ただものでは"
+	line "なさそうだな"
+	line "だが おまえを <KATA>カマット<HIRA>さまに"
+	line "あわせる わけには いかない!"
+	line "ここで くたばって もらう!<KATA>"
+	done
 
 TreeBitstreamText_3ca51:
-	ctxt "<HIRA>くっ なせﾞ こんな こそﾞうに………<KATA><TERM>"
+	ctxt "<HIRA>くっ なぜ こんな こぞうに………<KATA>"
+	done
 
 TreeBitstreamText_3ca60:
-	ctxt "<HIRA>あっ おまえは このまえの!<NL>"
-	ctxt "なせﾞ こんな ところに!?<NL>"
-	ctxt "てﾞえぇい!<NL>"
-	ctxt "つけあかﾞるのも いいかけﾞんにしろ!<KATA><TERM>"
+	ctxt "<HIRA>あっ おまえは このまえの!"
+	line "なぜ こんな ところに!?"
+	line "でえぇい!"
+	line "つけあがるのも いいかげんにしろ!<KATA>"
+	done
 
 TreeBitstreamText_3ca8a:
-	ctxt "ハﾞトル<HIRA>すﾞきの やはﾞんしﾞんめ!<KATA><TERM>"
+	ctxt "バトル<HIRA>ずきの やばんじんめ!<KATA>"
+	done
 
 TreeBitstreamText_3ca99:
-	ctxt "<HIRA>また おまえか!?<NL>"
-	ctxt "きちんと きょういく したのに!<NL>"
-	ctxt "まあ よい! もういちとﾞ<NL>"
-	ctxt "きょういく しなおして やる!<KATA><TERM>"
+	ctxt "<HIRA>また おまえか!?"
+	line "きちんと きょういく したのに!"
+	line "まあ よい! もういちど"
+	line "きょういく しなおして やる!<KATA>"
+	done
 
 TreeBitstreamText_3cac2:
-	ctxt "<HIRA>きさま とﾞうせ <KATA>クﾞレイテスト<HIRA>の<NL>"
-	ctxt "<KATA>ランカー<HIRA>に なりたいのたﾞろ?!<NL>"
-	ctxt "………くたﾞらんことたﾞ!<KATA><TERM>"
+	ctxt "<HIRA>きさま どうせ <KATA>グレイテスト<HIRA>の"
+	line "<KATA>ランカー<HIRA>に なりたいのだろ?!"
+	line "………くだらんことだ!<KATA>"
+	done
 
 TreeBitstreamText_3cae8:
-	ctxt "<HIRA>わたしかﾞ たﾞれたﾞか わかって<NL>"
-	ctxt "いるのかあ!!<NL>"
-	ctxt "また おまえか!<NL>"
-	ctxt "くそっ<NL>"
-	ctxt "たﾞかﾞ おまえを とおす わけには<NL>"
-	ctxt "いかない!<KATA>"
+	ctxt "<HIRA>わたしが だれだか わかって"
+	line "いるのかあ!!"
+	line "また おまえか!"
+	line "くそっ"
+	line "だが おまえを とおす わけには"
+	line "いかない!<KATA>"
 
 TreeBitstreamText_3cb14:
-	ctxt "<HIRA>ああ! また <KATA>カマット<HIRA>さまの<NL>"
-	ctxt "おしおきかﾞ………<NL>"
-	ctxt "たすけて!!<KATA><TERM>"
+	ctxt "<HIRA>ああ! また <KATA>カマット<HIRA>さまの"
+	line "おしおきが………"
+	line "たすけて!!<KATA>"
+	done
 
 TreeBitstreamText_3cb2d:
-	ctxt "カマット<NL>"
-	ctxt "<HIRA>あら よくきたわねぇ <KATA>ホﾞウヤ<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>あたしの しんらいする ふﾞかたちを<NL>"
-	ctxt "よくも つふﾞして くれたわねぇ<NL>"
-	ctxt "これてﾞ <KATA>ホﾟロンホﾞ<HIRA>とう のっとり<NL>"
-	ctxt "けいかくは <KATA>ハﾟー<HIRA>ね………<NL>"
-	ctxt "<KATA>ホﾞウヤ<HIRA>の もくてきは<NL>"
-	ctxt "いわなくても わかるわ<NL>"
-	ctxt "<KATA>クﾞレイテスト<HIRA>せん てﾞしょ<NL>"
-	ctxt "こうなったら うけて たつわよ<NL>"
-	ctxt "それしﾞゃあ <KATA>トﾞーム<HIRA>へ むかうわよ<KATA><TERM>"
+	ctxt "カマット"
+	line "<HIRA>あら よくきたわねぇ <KATA>ボウヤ"
+	line ""
+	line "<HIRA>あたしの しんらいする ぶかたちを"
+	line "よくも つぶして くれたわねぇ"
+	line "これで <KATA>ポロンボ<HIRA>とう のっとり"
+	line "けいかくは <KATA>パー<HIRA>ね………"
+	line "<KATA>ボウヤ<HIRA>の もくてきは"
+	line "いわなくても わかるわ"
+	line "<KATA>グレイテスト<HIRA>せん でしょ"
+	line "こうなったら うけて たつわよ"
+	line "それじゃあ <KATA>ドーム<HIRA>へ むかうわよ<KATA>"
+	done
 
 TreeBitstreamText_3cbab:
-	ctxt "カマット<NL>"
-	ctxt "<HIRA>たたかう まえに 1つたﾞけ<NL>"
-	ctxt "あたしから しﾞょうけんかﾞ あるわ<NL>"
-	ctxt "<KATA>ホﾞウヤ<HIRA>かﾞ まけたら おとなしく<NL>"
-	ctxt "あたしの ふﾞかに なって もらうわ<NL>"
-	ctxt "いい? よろしいこと?<NL>"
-	ctxt "<NL>"
-	ctxt "……しﾞゃあ かかってらっしゃい!<KATA><TERM>"
+	ctxt "カマット"
+	line "<HIRA>たたかう まえに 1つだけ"
+	line "あたしから じょうけんが あるわ"
+	line "<KATA>ボウヤ<HIRA>が まけたら おとなしく"
+	line "あたしの ぶかに なって もらうわ"
+	line "いい? よろしいこと?"
+	line ""
+	line "……じゃあ かかってらっしゃい!<KATA>"
+	done
 
 TreeBitstreamText_3cbf7:
-	ctxt "カマット<NL>"
-	ctxt "<HIRA>かんせﾞんに あたしの まけたﾞわ………<NL>"
-	ctxt "<NL>"
-	ctxt "それしﾞゃ やくそく とﾞおり あたしは<NL>"
-	ctxt "あなたの とﾞ れ い よ!<NL>"
-	ctxt "さあ <KATA>スキ<HIRA>にして ちょうたﾞい!<NL>"
-	ctxt "<NL>"
-	ctxt "………なによ あたし しﾞゃ<NL>"
-	ctxt "<KATA>イヤ<HIRA>なの?!<NL>"
-	ctxt "んもぅ! つれない しﾞゃない!<KATA><TERM>"
+	ctxt "カマット"
+	line "<HIRA>かんぜんに あたしの まけだわ………"
+	line ""
+	line "それじゃ やくそく どおり あたしは"
+	line "あなたの ど れ い よ!"
+	line "さあ <KATA>スキ<HIRA>にして ちょうだい!"
+	line ""
+	line "………なによ あたし じゃ"
+	line "<KATA>イヤ<HIRA>なの?!"
+	line "んもぅ! つれない じゃない!<KATA>"
+	done
 
 TreeBitstreamText_3cc4d:
-	ctxt "クﾞレイテスト4<HIRA>の しょうこﾞう<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "グレイテスト4<HIRA>の しょうごう"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3cc61:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "な なんなのたﾞ いまのは?!<NL>"
-	ctxt "<NL>"
-	ctxt "………しかし そんな しﾞゆうな<NL>"
-	ctxt "しょみんかﾞ うらやましくも あるな<NL>"
-	ctxt "………ところてﾞ<NL>"
-	ctxt "いよいよ <KATA>クﾞレイテスト3<HIRA>たﾞな<NL>"
-	ctxt "つきﾞの あいては <KATA><STBF><HIRA>の すむ<NL>"
-	ctxt "<KATA>カフﾟリ<HIRA>むら に いるようたﾞそﾞ<NL>"
-	ctxt "<KATA><STBF><HIRA>の みちﾞかに そんな<NL>"
-	ctxt "にんけﾞんは いたか?<NL>"
-	ctxt "まぁ よい<NL>"
-	ctxt "<NL>"
-	ctxt "あいてを さかﾞして ちょうせんを<NL>"
-	ctxt "もうしこんたﾞら ここへ くるかﾞいい<NL>"
-	ctxt "そう この <KATA>ロホﾞホﾟントﾞーム<HIRA>へ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "な なんなのだ いまのは?!"
+	line ""
+	line "………しかし そんな じゆうな"
+	line "しょみんが うらやましくも あるな"
+	line "………ところで"
+	line "いよいよ <KATA>グレイテスト3<HIRA>だな"
+	line "つぎの あいては <KATA><PLAYER><HIRA>の すむ"
+	line "<KATA>カプリ<HIRA>むら に いるようだぞ"
+	line "<KATA><PLAYER><HIRA>の みぢかに そんな"
+	line "にんげんは いたか?"
+	line "まぁ よい"
+	line ""
+	line "あいてを さがして ちょうせんを"
+	line "もうしこんだら ここへ くるがいい"
+	line "そう この <KATA>ロボポンドーム<HIRA>へ!<KATA>"
+	done
 
 TreeBitstreamText_3ccf9:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>おーい <KATA>ヘットﾞ<HIRA>はかせーっ!<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>おーい <KATA>ヘッド<HIRA>はかせーっ!<KATA>"
+	done
 
 TreeBitstreamText_3cd08:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "おおーっ <KATA><STBF><HIRA>かぁ!<NL>"
-	ctxt "ひさしふﾞりたﾞなぁ!<NL>"
-	ctxt "おまえかﾞ <KATA>クﾞレイテスト4<HIRA>に なった<NL>"
-	ctxt "ことは とっくに きいているそﾞ<NL>"
-	ctxt "たﾞからなぁ さいしょに いっておく!<NL>"
-	ctxt "おまえと たたかうのは <KATA>イヤ<HIRA>なんたﾞ<NL>"
-	ctxt "こわいんしﾞゃない! <KATA><STBF><HIRA>を<NL>"
-	ctxt "ちいさいころから しってるからたﾞ!<NL>"
-	ctxt "とﾞうしても えんりょとか<NL>"
-	ctxt "なさけかﾞ かかって しまうんたﾞ!<NL>"
-	ctxt "たたかいの みちは ひしﾞょうなんたﾞ!<NL>"
-	ctxt "たたかいに なさけは いらない!<NL>"
-	ctxt "たﾞから いりくﾞちも つくってない!<NL>"
-	ctxt "<NL>"
-	ctxt "………それに <KATA>ロル<HIRA>かﾞな<NL>"
-	ctxt "<NL>"
-	ctxt "おまえのことを すきたﾞから<NL>"
-	ctxt "たたかわないてﾞ って いうし………<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "おおーっ <KATA><PLAYER><HIRA>かぁ!"
+	line "ひさしぶりだなぁ!"
+	line "おまえが <KATA>グレイテスト4<HIRA>に なった"
+	line "ことは とっくに きいているぞ"
+	line "だからなぁ さいしょに いっておく!"
+	line "おまえと たたかうのは <KATA>イヤ<HIRA>なんだ"
+	line "こわいんじゃない! <KATA><PLAYER><HIRA>を"
+	line "ちいさいころから しってるからだ!"
+	line "どうしても えんりょとか"
+	line "なさけが かかって しまうんだ!"
+	line "たたかいの みちは ひじょうなんだ!"
+	line "たたかいに なさけは いらない!"
+	line "だから いりぐちも つくってない!"
+	line ""
+	line "………それに <KATA>ロル<HIRA>がな"
+	line ""
+	line "おまえのことを すきだから"
+	line "たたかわないで って いうし………<KATA>"
+	done
 
 TreeBitstreamText_3cdce:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>ち ちょっと おとうさん!<NL>"
-	ctxt "なに よけいなこと いってるのっ!<NL>"
-	ctxt "<KATA><STBF><HIRA>かﾞ いるまえてﾞ そんなこと<NL>"
-	ctxt "いわなくても いいしﾞゃない!<NL>"
-	ctxt "もーっ ひとの きもち<NL>"
-	ctxt "わからないんたﾞからぁーーーっ!<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>ち ちょっと おとうさん!"
+	line "なに よけいなこと いってるのっ!"
+	line "<KATA><PLAYER><HIRA>が いるまえで そんなこと"
+	line "いわなくても いいじゃない!"
+	line "もーっ ひとの きもち"
+	line "わからないんだからぁーーーっ!<KATA>"
+	done
 
 TreeBitstreamText_3ce14:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "す すまん すまんっ!<NL>"
-	ctxt "ついつい くちかﾞ すへﾞってしまった<NL>"
-	ctxt "………と いうことたﾞ <KATA><STBF>!<NL>"
-	ctxt "<HIRA>わしは おまえとたたかう きかﾞない<NL>"
-	ctxt "とﾞうしても わしと たたかいたい<NL>"
-	ctxt "と いうなら ここまてﾞ きてみぃ<NL>"
-	ctxt "てﾞも それはせﾞったい <KATA>ムリ<HIRA>たﾞから<NL>"
-	ctxt "わしとの たいけつは ふかのう!<NL>"
-	ctxt "99<KATA>ハﾟーセント<HIRA>の かくりつてﾞ<NL>"
-	ctxt "ふかのう!<NL>"
-	ctxt "………ん?<NL>"
-	ctxt "のこりの 1<KATA>ハﾟーセント<HIRA>か?<NL>"
-	ctxt "<KATA><STBF> <HIRA>おまえ <KATA>アホ<HIRA>かいな?<NL>"
-	ctxt "<NL>"
-	ctxt "そんなこと わしかﾞ おしえるわけ<NL>"
-	ctxt "ないたﾞろ っちゅーの!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "す すまん すまんっ!"
+	line "ついつい くちが すべってしまった"
+	line "………と いうことだ <KATA><PLAYER>!"
+	line "<HIRA>わしは おまえとたたかう きがない"
+	line "どうしても わしと たたかいたい"
+	line "と いうなら ここまで きてみぃ"
+	line "でも それはぜったい <KATA>ムリ<HIRA>だから"
+	line "わしとの たいけつは ふかのう!"
+	line "99<KATA>パーセント<HIRA>の かくりつで"
+	line "ふかのう!"
+	line "………ん?"
+	line "のこりの 1<KATA>パーセント<HIRA>か?"
+	line "<KATA><PLAYER> <HIRA>おまえ <KATA>アホ<HIRA>かいな?"
+	line ""
+	line "そんなこと わしが おしえるわけ"
+	line "ないだろ っちゅーの!<KATA>"
+	done
 
 TreeBitstreamText_3cec2:
-	ctxt "ロル<NL>"
-	ctxt "<STBF> <HIRA>あたし こんなところに<NL>"
-	ctxt "すﾞっと いるの <KATA>イヤ<HIRA>たﾞよぉ!<NL>"
-	ctxt "あのね <KATA>カﾞーナ<HIRA>いけ に<NL>"
-	ctxt "なにか あるらしいの<NL>"
-	ctxt "おねかﾞいたﾞから さかﾞしてきてぇー!<KATA><TERM>"
+	ctxt "ロル"
+	line "<PLAYER> <HIRA>あたし こんなところに"
+	line "ずっと いるの <KATA>イヤ<HIRA>だよぉ!"
+	line "あのね <KATA>ガーナ<HIRA>いけ に"
+	line "なにか あるらしいの"
+	line "おねがいだから さがしてきてぇー!<KATA>"
+	done
 
 TreeBitstreamText_3cefd:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "それを いっちゃ <KATA>イカーン!!<NL>"
-	ctxt "<NL>"
-	ctxt "カﾞーナ<HIRA>いけ の ひみつたﾞけは<NL>"
-	ctxt "いっては ならん!<NL>"
-	ctxt "<KATA>マシﾞ<HIRA>てﾞ たたりかﾞ おきてしまうそﾞ!<NL>"
-	ctxt "さ こっちへきなさい <KATA>ロル!<NL>"
-	ctxt "₆₆₆<HIRA>と いうことたﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "とにかく わしとの たいけつは<NL>"
-	ctxt "あきらめろ <KATA><STBF>!<TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "それを いっちゃ <KATA>イカーン!!"
+	line ""
+	line "ガーナ<HIRA>いけ の ひみつだけは"
+	line "いっては ならん!"
+	line "<KATA>マジ<HIRA>で たたりが おきてしまうぞ!"
+	line "さ こっちへきなさい <KATA>ロル!"
+	line "………<HIRA>と いうことだ"
+	line ""
+	line "とにかく わしとの たいけつは"
+	line "あきらめろ <KATA><PLAYER>!"
+	done
 
 TreeBitstreamText_3cf5a:
-	ctxt "<HIRA>つりくﾞや<NL>"
-	ctxt "いらっしゃい! やるの? つり?<NL>"
-	ctxt "しらないよ とﾞうなっても………<NL>"
-	ctxt "………あのね <KATA>ウチ <HIRA>つりくﾞ の<NL>"
-	ctxt "かしたﾞし やってるんたﾞけとﾞさぁ<NL>"
-	ctxt "かえって こないんたﾞよ!<NL>"
-	ctxt "とﾞうくﾞ かした れんちゅうかﾞ!!<NL>"
-	ctxt "<KATA>ミステリー<HIRA>たﾞよ <KATA>ミステリー!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>それてﾞも やるっていうなら<NL>"
-	ctxt "つりさﾞお かすけとﾞ さぁ<NL>"
-	ctxt "しらないよ <KATA>ホント<HIRA>に<NL>"
-	ctxt "<NL>"
-	ctxt "つりさﾞおは <KATA>タタﾞ<HIRA>てﾞ かすけとﾞ<NL>"
-	ctxt "<KATA>エサ<HIRA>は おかね とるよ<NL>"
-	ctxt "はい つりさﾞお ね<NL>"
-	ctxt "<NL>"
-	ctxt "しﾞゃ せいせﾞい きをつけて!<KATA><TERM>"
+	ctxt "<HIRA>つりぐや"
+	line "いらっしゃい! やるの? つり?"
+	line "しらないよ どうなっても………"
+	line "………あのね <KATA>ウチ <HIRA>つりぐ の"
+	line "かしだし やってるんだけどさぁ"
+	line "かえって こないんだよ!"
+	line "どうぐ かした れんちゅうが!!"
+	line "<KATA>ミステリー<HIRA>だよ <KATA>ミステリー!"
+	line ""
+	line "<HIRA>それでも やるっていうなら"
+	line "つりざお かすけど さぁ"
+	line "しらないよ <KATA>ホント<HIRA>に"
+	line ""
+	line "つりざおは <KATA>タダ<HIRA>で かすけど"
+	line "<KATA>エサ<HIRA>は おかね とるよ"
+	line "はい つりざお ね"
+	line ""
+	line "じゃ せいぜい きをつけて!<KATA>"
+	done
 
 TreeBitstreamText_3d001:
-	ctxt "<HIRA>つりさﾞお<NL>"
-	ctxt "を てにいれた!<KATA>"
+	ctxt "<HIRA>つりざお"
+	line "を てにいれた!<KATA>"
 
 TreeBitstreamText_3d00d:
-	ctxt "<HIRA>この つりくﾞや なんか <KATA>ヘン<HIRA>たﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "たﾞって なんてﾞ つりえさに<NL>"
-	ctxt "<KATA>コロッケ<HIRA>や <KATA>ハンハﾞークﾞ <HIRA>つけんの?<NL>"
-	ctxt "ふつう そんなもん つかう?<NL>"
-	ctxt "にんけﾞん てﾞも つれってか?<NL>"
-	ctxt "あ そうそう いちおう <KATA>カﾞーナ<HIRA>いけは<NL>"
-	ctxt "さんはﾞしの さきかﾞ <KATA>ホﾟイント<HIRA>ね<NL>"
-	ctxt "そこてﾞ たまに すこﾞい あたりかﾞ<NL>"
-	ctxt "くるんたﾞけとﾞさ<NL>"
-	ctxt "しﾞつは いつも <KATA>ヒﾞヒﾞッ<HIRA>て さおを<NL>"
-	ctxt "はなしちゃうんたﾞな これかﾞ<KATA><TERM>"
+	ctxt "<HIRA>この つりぐや なんか <KATA>ヘン<HIRA>だ"
+	line ""
+	line "だって なんで つりえさに"
+	line "<KATA>コロッケ<HIRA>や <KATA>ハンバーグ <HIRA>つけんの?"
+	line "ふつう そんなもん つかう?"
+	line "にんげん でも つれってか?"
+	line "あ そうそう いちおう <KATA>ガーナ<HIRA>いけは"
+	line "さんばしの さきが <KATA>ポイント<HIRA>ね"
+	line "そこで たまに すごい あたりが"
+	line "くるんだけどさ"
+	line "じつは いつも <KATA>ビビッ<HIRA>て さおを"
+	line "はなしちゃうんだな これが<KATA>"
+	done
 
 TreeBitstreamText_3d098:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "すきやき すきやきーっと<NL>"
-	ctxt "きょうのはﾞん<KATA>メシ <HIRA>すきやきーっと!<NL>"
-	ctxt "あっ! にんけﾞんたﾞっ!<NL>"
-	ctxt "って <KATA>ホﾞク<HIRA>も にんけﾞんたﾞけとﾞ<NL>"
-	ctxt "ま また にんけﾞんかﾞ つれちゃった!<NL>"
-	ctxt "おかあさーん!<KATA><TERM>"
+	ctxt "<HIRA>こども"
+	line "すきやき すきやきーっと"
+	line "きょうのばん<KATA>メシ <HIRA>すきやきーっと!"
+	line "あっ! にんげんだっ!"
+	line "って <KATA>ボク<HIRA>も にんげんだけど"
+	line "ま また にんげんが つれちゃった!"
+	line "おかあさーん!<KATA>"
+	done
 
 TreeBitstreamText_3d0e0:
-	ctxt "<HIRA>ははおや<NL>"
-	ctxt "い いらっしゃい………<NL>"
-	ctxt "<NL>"
-	ctxt "あのー ここ またﾞ <KATA>ヒト<HIRA>かﾞ<NL>"
-	ctxt "すんてﾞまして えーと…………<NL>"
-	ctxt "しﾞつは ちしﾞょうの せいかつに<NL>"
-	ctxt "ひしﾞょうに あこかﾞれかﾞ ありまして<NL>"
-	ctxt "きﾞゅうにくは きちょうてﾞ ここてﾞは<NL>"
-	ctxt "せﾞったいに たへﾞられない ものてﾞ<NL>"
-	ctxt "つい この<KATA>コ<HIRA>かﾞ いけないことを……<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>コラッ! <HIRA>おにいさんに <KATA>キチン<HIRA>と<NL>"
-	ctxt "あやまりなさいっ!!<KATA><TERM>"
+	ctxt "<HIRA>ははおや"
+	line "い いらっしゃい………"
+	line ""
+	line "あのー ここ まだ <KATA>ヒト<HIRA>が"
+	line "すんでまして えーと…………"
+	line "じつは ちじょうの せいかつに"
+	line "ひじょうに あこがれが ありまして"
+	line "ぎゅうにくは きちょうで ここでは"
+	line "ぜったいに たべられない もので"
+	line "つい この<KATA>コ<HIRA>が いけないことを……"
+	line ""
+	line "<KATA>コラッ! <HIRA>おにいさんに <KATA>キチン<HIRA>と"
+	line "あやまりなさいっ!!<KATA>"
+	done
 
 TreeBitstreamText_3d160:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "<KATA>イヤ<HIRA>たﾞよー<NL>"
-	ctxt "おちてたものを ひろったたﾞけたﾞもん<NL>"
-	ctxt "きょうは すきやき たへﾞるんたﾞもーん<KATA><TERM>"
+	ctxt "<HIRA>こども"
+	line "<KATA>イヤ<HIRA>だよー"
+	line "おちてたものを ひろっただけだもん"
+	line "きょうは すきやき たべるんだもーん<KATA>"
+	done
 
 TreeBitstreamText_3d187:
-	ctxt "<HIRA>ははおや<NL>"
-	ctxt "すみませんねぇ………<NL>"
-	ctxt "<NL>"
-	ctxt "なにせ ひとりむすこな ものてﾞ<NL>"
-	ctxt "わかﾞままに そたﾞってしまって……<NL>"
-	ctxt "おわひﾞ といっては なんてﾞすかﾞ<NL>"
-	ctxt "これを さしあけﾞます<KATA><TERM>"
+	ctxt "<HIRA>ははおや"
+	line "すみませんねぇ………"
+	line ""
+	line "なにせ ひとりむすこな もので"
+	line "わがままに そだってしまって……"
+	line "おわび といっては なんですが"
+	line "これを さしあげます<KATA>"
+	done
 
 TreeBitstreamText_3d1c4:
-	ctxt "シュノーケル<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA>"
+	ctxt "シュノーケル"
+	line "<HIRA>を てにいれた!<KATA>"
 
 TreeBitstreamText_3d1d1:
-	ctxt "<HIRA>ははおや<NL>"
-	ctxt "<KATA>シュノーケル<HIRA>を つけていれはﾞ<NL>"
-	ctxt "みすﾞの なかてﾞも へいきなんてﾞす<NL>"
-	ctxt "てﾞも はすﾞすと すくﾞに<NL>"
-	ctxt "ちっそく してしまいますよ<KATA><TERM>"
+	ctxt "<HIRA>ははおや"
+	line "<KATA>シュノーケル<HIRA>を つけていれば"
+	line "みずの なかでも へいきなんです"
+	line "でも はずすと すぐに"
+	line "ちっそく してしまいますよ<KATA>"
+	done
 
 TreeBitstreamText_3d204:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "あー うまいっ!!<NL>"
-	ctxt "やっはﾟり たへﾞてみる もんたﾞなー<NL>"
-	ctxt "みすﾞてﾞ たへﾞる すきやき <KATA>サイコー!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>あ! さっきの おにいちゃん!<NL>"
-	ctxt "とﾞも こﾞちそうさまてﾞした<NL>"
-	ctxt "おれいに <KATA>ホﾞク<HIRA>かﾞ たいせつに してる<NL>"
-	ctxt "たからものを あけﾞるね!<NL>"
-	ctxt "えっ それは なにかって?<NL>"
-	ctxt "あとの おたのしみ!<NL>"
-	ctxt "もうちょっと まっててね<KATA>"
+	ctxt "<HIRA>こども"
+	line "あー うまいっ!!"
+	line "やっぱり たべてみる もんだなー"
+	line "みずで たべる すきやき <KATA>サイコー!"
+	line ""
+	line "<HIRA>あ! さっきの おにいちゃん!"
+	line "ども ごちそうさまでした"
+	line "おれいに <KATA>ボク<HIRA>が たいせつに してる"
+	line "たからものを あげるね!"
+	line "えっ それは なにかって?"
+	line "あとの おたのしみ!"
+	line "もうちょっと まっててね<KATA>"
 
 TreeBitstreamText_3d278:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "おお わしの たいせつな <KATA>ヒﾞル<HIRA>を<NL>"
-	ctxt "ふﾞちこわしやかﾞって!<NL>"
-	ctxt "それも せﾞったいに そんしﾞょそこらの<NL>"
-	ctxt "はﾞくたﾞんしﾞゃ こわれるはすﾞないのに<NL>"
-	ctxt "なんちゅう<KATA>ヤツ<HIRA>しﾞゃ!<NL>"
-	ctxt "この ふととﾞき ものかﾞ!<NL>"
-	ctxt "いいかけﾞんに せんかい!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "おお わしの たいせつな <KATA>ビル<HIRA>を"
+	line "ぶちこわしやがって!"
+	line "それも ぜったいに そんじょそこらの"
+	line "ばくだんじゃ こわれるはずないのに"
+	line "なんちゅう<KATA>ヤツ<HIRA>じゃ!"
+	line "この ふとどき ものが!"
+	line "いいかげんに せんかい!<KATA>"
+	done
 
 TreeBitstreamText_3d2d1:
-	ctxt "ロル<NL>"
-	ctxt "<STBF>ー<HIRA>っ かﾞんはﾞって!<NL>"
-	ctxt "<KATA>トﾞントﾞン <HIRA>はﾞくは しちゃって!!<NL>"
-	ctxt "<KATA>ハﾟハﾟ<HIRA>の いうことなんて<NL>"
-	ctxt "きかなくても いいんたﾞからぁ!<KATA><TERM>"
+	ctxt "ロル"
+	line "<PLAYER>ー<HIRA>っ がんばって!"
+	line "<KATA>ドンドン <HIRA>ばくは しちゃって!!"
+	line "<KATA>パパ<HIRA>の いうことなんて"
+	line "きかなくても いいんだからぁ!<KATA>"
+	done
 
 TreeBitstreamText_3d302:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "やあ おにいちゃん!<NL>"
-	ctxt "さっきは すきやき ありかﾞとう!!<NL>"
-	ctxt "やくそく とﾞおり<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>の たからものを あけﾞるよ<NL>"
-	ctxt "なんたﾞか わからないけとﾞ あきちてﾞ<NL>"
-	ctxt "みつけた <KATA>キレイ<HIRA>な たま なんたﾞ<NL>"
-	ctxt "はい <KATA>フﾟレセﾞント!<TERM>"
+	ctxt "<HIRA>こども"
+	line "やあ おにいちゃん!"
+	line "さっきは すきやき ありがとう!!"
+	line "やくそく どおり"
+	line "<KATA>ボク<HIRA>の たからものを あげるよ"
+	line "なんだか わからないけど あきちで"
+	line "みつけた <KATA>キレイ<HIRA>な たま なんだ"
+	line "はい <KATA>プレゼント!"
+	done
 
 TreeBitstreamText_3d354:
-	ctxt "<HIRA>ことﾞも<NL>"
-	ctxt "ああああ <KATA>エライ<HIRA>こと<NL>"
-	ctxt "やってもうた………<NL>"
-	ctxt "あの たま って<NL>"
-	ctxt "はﾞくたﾞん たﾞったのね………<KATA><TERM>"
+	ctxt "<HIRA>こども"
+	line "ああああ <KATA>エライ<HIRA>こと"
+	line "やってもうた………"
+	line "あの たま って"
+	line "ばくだん だったのね………<KATA>"
+	done
 
 TreeBitstreamText_3d37a:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "あぁ すこしすﾞつ<NL>"
-	ctxt "<KATA>ヒﾞル<HIRA>かﾞ こわされて いくぅ!<NL>"
-	ctxt "てﾞもな したまてﾞ いかないと<NL>"
-	ctxt "たいけつは てﾞきんそﾞ!<NL>"
-	ctxt "まあ <KATA>ムリ<HIRA>な はなしたﾞと<NL>"
-	ctxt "おもうかﾞ な<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "あぁ すこしずつ"
+	line "<KATA>ビル<HIRA>が こわされて いくぅ!"
+	line "でもな したまで いかないと"
+	line "たいけつは できんぞ!"
+	line "まあ <KATA>ムリ<HIRA>な はなしだと"
+	line "おもうが な<KATA>"
+	done
 
 TreeBitstreamText_3d3ba:
-	ctxt "ロル<NL>"
-	ctxt "<STBF> <HIRA>もうすくﾞよ!<NL>"
-	ctxt "もっと はﾞくたﾞん もってきて!<NL>"
-	ctxt "かならすﾞ <KATA>カﾞーナ<HIRA>に あるんたﾞから!<NL>"
-	ctxt "ちゃんと さかﾞしたの?<NL>"
-	ctxt "もう なにいろの はﾞくたﾞんてﾞも<NL>"
-	ctxt "いいから <KATA>ハﾞンハﾞン<HIRA>はﾞくはつさせて!<KATA><TERM>"
+	ctxt "ロル"
+	line "<PLAYER> <HIRA>もうすぐよ!"
+	line "もっと ばくだん もってきて!"
+	line "かならず <KATA>ガーナ<HIRA>に あるんだから!"
+	line "ちゃんと さがしたの?"
+	line "もう なにいろの ばくだんでも"
+	line "いいから <KATA>バンバン<HIRA>ばくはつさせて!<KATA>"
+	done
 
 TreeBitstreamText_3d404:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "ああああ<NL>"
-	ctxt "てっへﾟきの はすﾞの <KATA>ヒﾞル<HIRA>かﾞぁぁ<NL>"
-	ctxt "うわーっ!<NL>"
-	ctxt "もうすこしてﾞ しﾞめんに つくよー<NL>"
-	ctxt "わしは たたかいたく ないって<NL>"
-	ctxt "いってる たﾞろーに!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "ああああ"
+	line "てっぺきの はずの <KATA>ビル<HIRA>がぁぁ"
+	line "うわーっ!"
+	line "もうすこしで じめんに つくよー"
+	line "わしは たたかいたく ないって"
+	line "いってる だろーに!<KATA>"
+	done
 
 TreeBitstreamText_3d442:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>やったね <KATA><STBF>!<NL>"
-	ctxt "<HIRA>すこﾞいしﾞゃない!<NL>"
-	ctxt "はやく ここから たﾞして!<NL>"
-	ctxt "まってるからね!<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>やったね <KATA><PLAYER>!"
+	line "<HIRA>すごいじゃない!"
+	line "はやく ここから だして!"
+	line "まってるからね!<KATA>"
+	done
 
 TreeBitstreamText_3d465:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>ありかﾞとう <KATA><STBF>!<NL>"
-	ctxt "<HIRA>よかったぁ ようやく てﾞられたわ<NL>"
-	ctxt "そんなことより<NL>"
-	ctxt "はやく <KATA>ハﾟハﾟ<HIRA>と たたかいなさいよ!<NL>"
-	ctxt "いまの <KATA><STBF><HIRA>なら<NL>"
-	ctxt "せﾞったいに かてるわ!<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>ありがとう <KATA><PLAYER>!"
+	line "<HIRA>よかったぁ ようやく でられたわ"
+	line "そんなことより"
+	line "はやく <KATA>パパ<HIRA>と たたかいなさいよ!"
+	line "いまの <KATA><PLAYER><HIRA>なら"
+	line "ぜったいに かてるわ!<KATA>"
+	done
 
 TreeBitstreamText_3d4a3:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "う うわぁー! <KATA>ホント<HIRA>に<KATA>ヒﾞル<NL>"
-	ctxt "<HIRA>ふﾞっこわしやかﾞったな!<NL>"
-	ctxt "こうなりゃ おまえとのしょうふﾞ<NL>"
-	ctxt "うけてたってやる!<NL>"
-	ctxt "たたﾞしっ! わしかﾞ かったら<NL>"
-	ctxt "おまえんちの<KATA>ヒﾞル<HIRA>を こわすそﾞ!<NL>"
-	ctxt "1かいすﾞつ しﾞっくりと<NL>"
-	ctxt "はかいさせて もらう! いいな!<NL>"
-	ctxt "この しﾞょうけんかﾞ のめないなら<NL>"
-	ctxt "わしは たたかわないもーん!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "う うわぁー! <KATA>ホント<HIRA>に<KATA>ビル"
+	line "<HIRA>ぶっこわしやがったな!"
+	line "こうなりゃ おまえとのしょうぶ"
+	line "うけてたってやる!"
+	line "ただしっ! わしが かったら"
+	line "おまえんちの<KATA>ビル<HIRA>を こわすぞ!"
+	line "1かいずつ じっくりと"
+	line "はかいさせて もらう! いいな!"
+	line "この じょうけんが のめないなら"
+	line "わしは たたかわないもーん!<KATA>"
+	done
 
 TreeBitstreamText_3d51a:
-	ctxt "ロル<NL>"
-	ctxt "ハﾟハﾟ <HIRA>ひとﾞい しﾞゃないっ!<NL>"
-	ctxt "そんな しﾞょうけん!<NL>"
-	ctxt "<KATA><STBF><HIRA>かﾞ いっしょうけんめい<NL>"
-	ctxt "たてた <KATA>ヒﾞル<HIRA>しﾞゃないの!<NL>"
-	ctxt "ひとﾞい ひとﾞい ひとﾞい!<KATA>"
+	ctxt "ロル"
+	line "パパ <HIRA>ひどい じゃないっ!"
+	line "そんな じょうけん!"
+	line "<KATA><PLAYER><HIRA>が いっしょうけんめい"
+	line "たてた <KATA>ビル<HIRA>じゃないの!"
+	line "ひどい ひどい ひどい!<KATA>"
 
 TreeBitstreamText_3d552:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "まえにも いったはすﾞたﾞ!!<NL>"
-	ctxt "しょうふﾞの せかいは ひしﾞょうたﾞと<NL>"
-	ctxt "もういちとﾞ くりかえす!<NL>"
-	ctxt "<NL>"
-	ctxt "わしかﾞ かったら おまえの<KATA>ヒﾞル<HIRA>を<NL>"
-	ctxt "1かいすﾞつ はかいさせて もらう!<NL>"
-	ctxt "いいな?<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "まえにも いったはずだ!!"
+	line "しょうぶの せかいは ひじょうだと"
+	line "もういちど くりかえす!"
+	line ""
+	line "わしが かったら おまえの<KATA>ビル<HIRA>を"
+	line "1かいずつ はかいさせて もらう!"
+	line "いいな?<KATA>"
+	done
 
 TreeBitstreamText_3d59c:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "そうか! こんな むちゃな<NL>"
-	ctxt "しﾞょうけんを のむってか!<NL>"
-	ctxt "ところてﾞ <KATA>ロル! <HIRA>おまえは<NL>"
-	ctxt "とﾞっちの みかたを するんたﾞ?<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "そうか! こんな むちゃな"
+	line "じょうけんを のむってか!"
+	line "ところで <KATA>ロル! <HIRA>おまえは"
+	line "どっちの みかたを するんだ?<KATA>"
+	done
 
 TreeBitstreamText_3d5d0:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "うーん もう しﾞれったいの!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ハﾟハﾟ<HIRA>の みかた してくんなきゃ<NL>"
-	ctxt "<KATA>イヤ! イヤ<HIRA>っ!<NL>"
-	ctxt "しﾞゃあな <KATA><STBF><NL>"
-	ctxt "<HIRA>さきに <KATA>トﾞーム<HIRA>に いってるそﾞ!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "うーん もう じれったいの!"
+	line ""
+	line "<KATA>パパ<HIRA>の みかた してくんなきゃ"
+	line "<KATA>イヤ! イヤ<HIRA>っ!"
+	line "じゃあな <KATA><PLAYER>"
+	line "<HIRA>さきに <KATA>ドーム<HIRA>に いってるぞ!<KATA>"
+	done
 
 TreeBitstreamText_3d60c:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>こﾞめんなさい へんな <KATA>ハﾟハﾟ<HIRA>てﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "あたしは <KATA><STBF><HIRA>のこと<NL>"
-	ctxt "おうえんしてるから<NL>"
-	ctxt "いまたﾞけしﾞゃないよ<NL>"
-	ctxt "これからも すﾞっと<KATA><TERM>"
+	ctxt "ロル"
+	line "<HIRA>ごめんなさい へんな <KATA>パパ<HIRA>で"
+	line ""
+	line "あたしは <KATA><PLAYER><HIRA>のこと"
+	line "おうえんしてるから"
+	line "いまだけじゃないよ"
+	line "これからも ずっと<KATA>"
+	done
 
 TreeBitstreamText_3d63e:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "ふーん <KATA><STBF><HIRA>は そんなに<NL>"
-	ctxt "おくひﾞょうもの たﾞったか<NL>"
-	ctxt "そんなんしﾞゃ<NL>"
-	ctxt "<KATA>ロル<HIRA>にも きらわれちまうそﾞい<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "ふーん <KATA><PLAYER><HIRA>は そんなに"
+	line "おくびょうもの だったか"
+	line "そんなんじゃ"
+	line "<KATA>ロル<HIRA>にも きらわれちまうぞい<KATA>"
+	done
 
 TreeBitstreamText_3d66c:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "わしは おまえと たたかいたくない<NL>"
-	ctxt "と あれほとﾞ いったのに………<NL>"
-	ctxt "そんなに あらそいこﾞとかﾞ すきか<NL>"
-	ctxt "<KATA><STBF>!<NL>"
-	ctxt "<HIRA>てﾞも こうなった いしﾞょう<NL>"
-	ctxt "もう えんりょは せんそﾞ!<NL>"
-	ctxt "おまえの <KATA>ヒﾞル<HIRA>てﾞも こわさんと<NL>"
-	ctxt "わしの きかﾞ おさまらん!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "わしは おまえと たたかいたくない"
+	line "と あれほど いったのに………"
+	line "そんなに あらそいごとが すきか"
+	line "<KATA><PLAYER>!"
+	line "<HIRA>でも こうなった いじょう"
+	line "もう えんりょは せんぞ!"
+	line "おまえの <KATA>ビル<HIRA>でも こわさんと"
+	line "わしの きが おさまらん!<KATA>"
+	done
 
 TreeBitstreamText_3d6c8:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "………そうか <KATA><STBF><NL>"
-	ctxt "<HIRA>そんなに つよく なったか………<NL>"
-	ctxt "わしの きも もう おさまったわい<NL>"
-	ctxt "………てﾞもてﾞも<NL>"
-	ctxt "<KATA>ロル<HIRA>は やらんそﾞー <KATA>アッカンヘﾞー!<NL>"
-	ctxt "<HIRA>せﾞったい <KATA>イヤ<HIRA>たﾞもんねー!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "………そうか <KATA><PLAYER>"
+	line "<HIRA>そんなに つよく なったか………"
+	line "わしの きも もう おさまったわい"
+	line "………でもでも"
+	line "<KATA>ロル<HIRA>は やらんぞー <KATA>アッカンベー!"
+	line "<HIRA>ぜったい <KATA>イヤ<HIRA>だもんねー!<KATA>"
+	done
 
 TreeBitstreamText_3d713:
-	ctxt "クﾞレイテスト3<HIRA>の しょうこﾞう<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "グレイテスト3<HIRA>の しょうごう"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3d727:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "ついに ここまてﾞきたね<NL>"
-	ctxt "かﾞんはﾞったな <KATA><STBF>!<NL>"
-	ctxt "ホﾞク<HIRA>との たいせんも もうすくﾞたﾞ!<NL>"
-	ctxt "たﾞかﾞ <KATA>クﾞレイテスト2<HIRA>も つよいそﾞ!<NL>"
-	ctxt "そのさきに <KATA>ホﾞク<HIRA>かﾞいる!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "ついに ここまできたね"
+	line "がんばったな <KATA><PLAYER>!"
+	line "ボク<HIRA>との たいせんも もうすぐだ!"
+	line "だが <KATA>グレイテスト2<HIRA>も つよいぞ!"
+	line "そのさきに <KATA>ボク<HIRA>がいる!<KATA>"
+	done
 
 TreeBitstreamText_3d76a:
-	ctxt "<HIRA>おうしﾞ! たいへんてﾞす!<NL>"
-	ctxt "きんきゅうしﾞたい はっせいてﾞす!<NL>"
-	ctxt "<KATA>コﾞニョコﾞニョコﾞニョコﾞニョ₆₆₆₆₆₆<TERM>"
+	ctxt "<HIRA>おうじ! たいへんです!"
+	line "きんきゅうじたい はっせいです!"
+	line "<KATA>ゴニョゴニョゴニョゴニョ………………"
+	done
 
 TreeBitstreamText_3d793:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "な なんたﾞとぉ!! みなのもの<NL>"
-	ctxt "きんきゅうはいひﾞ に つくのたﾞ!!<NL>"
-	ctxt "しろを<NL>"
-	ctxt "そして <KATA>タﾞース<HIRA>ひめを まもるのたﾞ!<NL>"
-	ctxt "………<KATA><STBF> <HIRA>もうしわけない<NL>"
-	ctxt "<NL>"
-	ctxt "はなしの つつﾞきは また おりをみて<NL>"
-	ctxt "ということに しよう<NL>"
-	ctxt "いまは それとﾞころてﾞは ないのたﾞ<NL>"
-	ctxt "しはﾞし せきを はすﾞさせて もらう<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "な なんだとぉ!! みなのもの"
+	line "きんきゅうはいび に つくのだ!!"
+	line "しろを"
+	line "そして <KATA>ダース<HIRA>ひめを まもるのだ!"
+	line "………<KATA><PLAYER> <HIRA>もうしわけない"
+	line ""
+	line "はなしの つづきは また おりをみて"
+	line "ということに しよう"
+	line "いまは それどころでは ないのだ"
+	line "しばし せきを はずさせて もらう<KATA>"
+	done
 
 TreeBitstreamText_3d801:
-	ctxt "<HIRA>とﾞうやら しろてﾞ なにか<NL>"
-	ctxt "おきてる みたいたﾞな<NL>"
-	ctxt "たしか ここのちかに <KATA>テール<HIRA>しﾞょうに<NL>"
-	ctxt "いける つうろかﾞ あったはすﾞたﾞ……<KATA><TERM>"
+	ctxt "<HIRA>どうやら しろで なにか"
+	line "おきてる みたいだな"
+	line "たしか ここのちかに <KATA>テール<HIRA>じょうに"
+	line "いける つうろが あったはずだ……<KATA>"
+	done
 
 TreeBitstreamText_3d831:
-	ctxt "<HIRA>おまえ こんな ところてﾞ<NL>"
-	ctxt "なにを している?!<KATA><TERM>"
+	ctxt "<HIRA>おまえ こんな ところで"
+	line "なにを している?!<KATA>"
+	done
 
 TreeBitstreamText_3d844:
-	ctxt "<HIRA>いっはﾟんしﾞんは <KATA>タﾞメ<HIRA>たﾞ <KATA>タﾞメ<HIRA>たﾞ!<NL>"
-	ctxt "ここは とおさん!<KATA><TERM>"
+	ctxt "<HIRA>いっぱんじんは <KATA>ダメ<HIRA>だ <KATA>ダメ<HIRA>だ!"
+	line "ここは とおさん!<KATA>"
+	done
 
 TreeBitstreamText_3d85e:
-	ctxt "<HIRA>えーい こそﾞうは あっちへ いけ!<KATA><TERM>"
+	ctxt "<HIRA>えーい こぞうは あっちへ いけ!<KATA>"
+	done
 
 TreeBitstreamText_3d86d:
-	ctxt "<HIRA>いっ    はﾟん<KATA>ヒﾟー    フﾟル<HIRA>は<NL>"
-	ctxt "たちいりきんし たﾞと いってるん<NL>"
-	ctxt "たﾞーーーーーーーーーーーっっ!!<KATA><TERM>"
+	ctxt "<HIRA>いっ    ぱん<KATA>ピー    プル<HIRA>は"
+	line "たちいりきんし だと いってるん"
+	line "だーーーーーーーーーーーっっ!!<KATA>"
+	done
 
 TreeBitstreamText_3d897:
-	ctxt "₆₆₆₆₆₆₆₆₆₆₆₆₆<TERM>"
+	ctxt "…………………………………"
+	done
 
 TreeBitstreamText_3d8a2:
-	ctxt "<HIRA>あっちへ いけ!<KATA><TERM>"
+	ctxt "<HIRA>あっちへ いけ!<KATA>"
+	done
 
 TreeBitstreamText_3d8ab:
-	ctxt "<HIRA>きさま なにものたﾞ!!<NL>"
-	ctxt "<NL>"
-	ctxt "このさきは かんけいしゃ いかﾞい<NL>"
-	ctxt "たちいりきんし なんたﾞそﾞ!!<KATA><TERM>"
+	ctxt "<HIRA>きさま なにものだ!!"
+	line ""
+	line "このさきは かんけいしゃ いがい"
+	line "たちいりきんし なんだぞ!!<KATA>"
+	done
 
 TreeBitstreamText_3d8ce:
-	ctxt "<HIRA>おしろかﾞ たいへん!<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞ かﾞ たいへん!!<NL>"
-	ctxt "いったい なにかﾞ おこってるのよ!<KATA>"
+	ctxt "<HIRA>おしろが たいへん!"
+	line "<KATA>テール<HIRA>おうじ が たいへん!!"
+	line "いったい なにが おこってるのよ!<KATA>"
 
 TreeBitstreamText_3d8f1:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "おまえは きょうらんの<NL>"
-	ctxt "<KATA>インテリシﾞェンス トﾞクターセﾞロ!<NL>"
-	ctxt "<HIRA>せんとうよう <KATA>ロホﾞホﾟン<HIRA>を たくみに<NL>"
-	ctxt "あやつる あくの はかせ!<NL>"
-	ctxt "その むかし <KATA>ホﾟロンホﾞ<HIRA>とうを<NL>"
-	ctxt "せいあつ しようとした ほんにん!<NL>"
-	ctxt "……しかし そのとき おまえは<NL>"
-	ctxt "わたしの ちちに ころされたはすﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "おまえは きょうらんの"
+	line "<KATA>インテリジェンス ドクターゼロ!"
+	line "<HIRA>せんとうよう <KATA>ロボポン<HIRA>を たくみに"
+	line "あやつる あくの はかせ!"
+	line "その むかし <KATA>ポロンボ<HIRA>とうを"
+	line "せいあつ しようとした ほんにん!"
+	line "……しかし そのとき おまえは"
+	line "わたしの ちちに ころされたはず!<KATA>"
+	done
 
 TreeBitstreamText_3d95c:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>ああ たしかに わたしは しんたﾞ<NL>"
-	ctxt "たﾞかﾞ………<NL>"
-	ctxt "そう かんたんに この わたしかﾞ<NL>"
-	ctxt "しぬわけ ないたﾞろう?<NL>"
-	ctxt "こんとﾞは わたし しﾞしんの からたﾞを<NL>"
-	ctxt "かいそﾞう したのさ………<NL>"
-	ctxt "かみかﾞ いうのたﾞ……… おまえは<NL>"
-	ctxt "またﾞ しんてﾞは いけない と<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>ああ たしかに わたしは しんだ"
+	line "だが………"
+	line "そう かんたんに この わたしが"
+	line "しぬわけ ないだろう?"
+	line "こんどは わたし じしんの からだを"
+	line "かいぞう したのさ………"
+	line "かみが いうのだ……… おまえは"
+	line "まだ しんでは いけない と<KATA>"
+	done
 
 TreeBitstreamText_3d9b8:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "そんなことは とﾞうてﾞも いい<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>セﾞロ <HIRA>よみかﾞえった きさまの<NL>"
-	ctxt "ねらいは いったい なんなのたﾞ?<NL>"
-	ctxt "なせﾞ とつせﾞん こんなところへ<NL>"
-	ctxt "あらわれたんたﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "そんなことは どうでも いい"
+	line ""
+	line "<KATA>ゼロ <HIRA>よみがえった きさまの"
+	line "ねらいは いったい なんなのだ?"
+	line "なぜ とつぜん こんなところへ"
+	line "あらわれたんだ!<KATA>"
+	done
 
 TreeBitstreamText_3d9f7:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>わすれもの たﾞよ<NL>"
-	ctxt "わすれものを したんたﾞよ<NL>"
-	ctxt "わたしかﾞ しんたﾞのを いいことに<NL>"
-	ctxt "きみの ちちは ひとﾞいことをした<NL>"
-	ctxt "わたしの もってた <KATA>クﾞレイテスト1<HIRA>の<NL>"
-	ctxt "さﾞを はくたﾞつ してくれた<NL>"
-	ctxt "そうたﾞね? <KATA>テール<HIRA>おうしﾞ<NL>"
-	ctxt "かってに おうさﾞを うはﾞいとった…<NL>"
-	ctxt "<KATA>フフフフ <HIRA>この わたしかﾞ かんたんに<NL>"
-	ctxt "しぬ と かんちかﾞい したようたﾞかﾞ<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>わすれもの だよ"
+	line "わすれものを したんだよ"
+	line "わたしが しんだのを いいことに"
+	line "きみの ちちは ひどいことをした"
+	line "わたしの もってた <KATA>グレイテスト1<HIRA>の"
+	line "ざを はくだつ してくれた"
+	line "そうだね? <KATA>テール<HIRA>おうじ"
+	line "かってに おうざを うばいとった…"
+	line "<KATA>フフフフ <HIRA>この わたしが かんたんに"
+	line "しぬ と かんちがい したようだが<KATA>"
+	done
 
 TreeBitstreamText_3da77:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "そ それは………<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "そ それは………<KATA>"
+	done
 
 TreeBitstreamText_3da85:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>きみたち おうしつの にんけﾞんは<NL>"
-	ctxt "いつも そうなんたﾞね<NL>"
-	ctxt "いつてﾞも しﾞふﾞんたちの つこﾞうの<NL>"
-	ctxt "いいように れきしを かえてしまう<NL>"
-	ctxt "れきししﾞょう はしﾞめて きみの<NL>"
-	ctxt "ちちうえを たおした わたし………<NL>"
-	ctxt "そして その しﾞしﾞつを<NL>"
-	ctxt "けそうと した……… さらに!<NL>"
-	ctxt "わたしを きょうらんの <KATA>トﾞクター<NL>"
-	ctxt "<HIRA>あつかいし まっさつ せんとした!<NL>"
-	ctxt "あれから すうねんこﾞ………<NL>"
-	ctxt "<NL>"
-	ctxt "さいかい された <KATA>クﾞレイテスト<HIRA>の<NL>"
-	ctxt "<KATA>トッフﾟ<HIRA>に たったのは……<NL>"
-	ctxt "いちとﾞも <KATA>ハﾞトル<HIRA>けいけんの ない<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞ! おまえたﾞな!<NL>"
-	ctxt "それは <KATA>クﾞレイテスト<HIRA>を めさﾞすものに<NL>"
-	ctxt "あまりにも しつれいしﾞゃないかね?<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>きみたち おうしつの にんげんは"
+	line "いつも そうなんだね"
+	line "いつでも じぶんたちの つごうの"
+	line "いいように れきしを かえてしまう"
+	line "れきしじょう はじめて きみの"
+	line "ちちうえを たおした わたし………"
+	line "そして その じじつを"
+	line "けそうと した……… さらに!"
+	line "わたしを きょうらんの <KATA>ドクター"
+	line "<HIRA>あつかいし まっさつ せんとした!"
+	line "あれから すうねんご………"
+	line ""
+	line "さいかい された <KATA>グレイテスト<HIRA>の"
+	line "<KATA>トップ<HIRA>に たったのは……"
+	line "いちども <KATA>バトル<HIRA>けいけんの ない"
+	line "<KATA>テール<HIRA>おうじ! おまえだな!"
+	line "それは <KATA>グレイテスト<HIRA>を めざすものに"
+	line "あまりにも しつれいじゃないかね?<KATA>"
+	done
 
 TreeBitstreamText_3db5f:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "すへﾞては ちちの やったこと!<NL>"
-	ctxt "<NL>"
-	ctxt "わたしは なんの かんけいも ない!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "すべては ちちの やったこと!"
+	line ""
+	line "わたしは なんの かんけいも ない!<KATA>"
+	done
 
 TreeBitstreamText_3db7f:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>なにも しらない<NL>"
-	ctxt "<NL>"
-	ctxt "なにも かんけいない<NL>"
-	ctxt "<NL>"
-	ctxt "それてﾞ すまされる ことか?<NL>"
-	ctxt "<NL>"
-	ctxt "わたしは おまえたち いちそﾞくを<NL>"
-	ctxt "にくむ!<NL>"
-	ctxt "せいせい とﾞうとﾞうと しょうふﾞを<NL>"
-	ctxt "いとﾞもうと おもったかﾞ……<NL>"
-	ctxt "この しﾞょうきょうてﾞは <KATA>ムリ<HIRA>も<NL>"
-	ctxt "いいところたﾞ<NL>"
-	ctxt "たいけつは また あらためて<NL>"
-	ctxt "もうしこむ ことに するよ<NL>"
-	ctxt "しかし てふﾞらてﾞ かえる わけにも<NL>"
-	ctxt "いかないんてﾞね<NL>"
-	ctxt "この <KATA>クﾞレイテスト1<HIRA>の あかし<NL>"
-	ctxt "<KATA>ウイニンクﾞローレル<HIRA>を いたたﾞく!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>なにも しらない"
+	line ""
+	line "なにも かんけいない"
+	line ""
+	line "それで すまされる ことか?"
+	line ""
+	line "わたしは おまえたち いちぞくを"
+	line "にくむ!"
+	line "せいせい どうどうと しょうぶを"
+	line "いどもうと おもったが……"
+	line "この じょうきょうでは <KATA>ムリ<HIRA>も"
+	line "いいところだ"
+	line "たいけつは また あらためて"
+	line "もうしこむ ことに するよ"
+	line "しかし てぶらで かえる わけにも"
+	line "いかないんでね"
+	line "この <KATA>グレイテスト1<HIRA>の あかし"
+	line "<KATA>ウイニングローレル<HIRA>を いただく!<KATA>"
+	done
 
 TreeBitstreamText_3dc1e:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>それと おうしﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "きみには <KATA>ローレル<HIRA>と おなしﾞたﾞけ<NL>"
-	ctxt "たいせつな ものも いたたﾞこう!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>それと おうじ!"
+	line ""
+	line "きみには <KATA>ローレル<HIRA>と おなじだけ"
+	line "たいせつな ものも いただこう!<KATA>"
+	done
 
 TreeBitstreamText_3dc47:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA>タﾞース<HIRA>ひめ!<NL>"
-	ctxt "<NL>"
-	ctxt "やめないか <KATA>トﾞクターセﾞロ!<TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA>ダース<HIRA>ひめ!"
+	line ""
+	line "やめないか <KATA>ドクターゼロ!"
+	done
 
 TreeBitstreamText_3dc61:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>ちかいうちに また ここへ くる<NL>"
-	ctxt "<NL>"
-	ctxt "そのときは たたかいの ときたﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "すへﾞてを かけて しんの<NL>"
-	ctxt "<KATA>クﾞレイテスト1<HIRA>せんを おこなおう!<NL>"
-	ctxt "<KATA>フフフフ <HIRA>まあ おうしﾞに その<NL>"
-	ctxt "ゆうきかﾞ あれはﾞ たﾞかﾞな………<NL>"
-	ctxt "それてﾞは さらはﾞたﾞ!<KATA>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>ちかいうちに また ここへ くる"
+	line ""
+	line "そのときは たたかいの ときだ!"
+	line ""
+	line "すべてを かけて しんの"
+	line "<KATA>グレイテスト1<HIRA>せんを おこなおう!"
+	line "<KATA>フフフフ <HIRA>まあ おうじに その"
+	line "ゆうきが あれば だがな………"
+	line "それでは さらばだ!<KATA>"
 
 TreeBitstreamText_3dcbd:
-	ctxt "タﾞース<HIRA>ひめ<NL>"
-	ctxt "おうしﾞ!<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞ!<KATA><TERM>"
+	ctxt "ダース<HIRA>ひめ"
+	line "おうじ!"
+	line "<KATA>テール<HIRA>おうじ!<KATA>"
+	done
 
 TreeBitstreamText_3dccf:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA>タﾞメ<HIRA>たﾞ! やつに たちむかう<NL>"
-	ctxt "ては ない!<NL>"
-	ctxt "<KATA>トﾞクターセﾞロ<HIRA>の いはﾞしょの <KATA>テﾞータ<HIRA>も<NL>"
-	ctxt "まったく ない………<NL>"
-	ctxt "いったい とﾞうすれはﾞ………<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA>ダメ<HIRA>だ! やつに たちむかう"
+	line "ては ない!"
+	line "<KATA>ドクターゼロ<HIRA>の いばしょの <KATA>データ<HIRA>も"
+	line "まったく ない………"
+	line "いったい どうすれば………<KATA>"
+	done
 
 TreeBitstreamText_3dd0b:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>きみかﾞ <KATA>クﾞレイテスト3<HIRA>たﾞって?<NL>"
-	ctxt "<NL>"
-	ctxt "おとﾞろいたな……… こんな ことﾞもかﾞ<NL>"
-	ctxt "<KATA>クﾞレイテスト3<HIRA>たﾞなんて<NL>"
-	ctxt "………もしかして これも<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞの さしかﾞね か?<NL>"
-	ctxt "わたしは けﾞんさﾞい <KATA>クﾞレイテスト2<HIRA>たﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "ほんらいならはﾞ きみの ちょうせんを<NL>"
-	ctxt "うけて たつへﾞき なのたﾞかﾞ……<NL>"
-	ctxt "そのまえに <KATA>テール<HIRA>おうしﾞとの<NL>"
-	ctxt "たたかいを とりつけて しまった<NL>"
-	ctxt "すまないかﾞ おうしﾞとの <KATA>ハﾞトル<HIRA>に<NL>"
-	ctxt "せんねん させて くれないか<NL>"
-	ctxt "とﾞうしても というのなら わたしの<NL>"
-	ctxt "てﾞしたちかﾞ おあいて しよう<NL>"
-	ctxt "せﾞんいんに かてはﾞ きみとの<NL>"
-	ctxt "<KATA>ハﾞトル<HIRA>を ゆうせん しなくもない<NL>"
-	ctxt "たﾞかﾞ わたしの てﾞしたちを<NL>"
-	ctxt "あなとﾞっては いけないよ<NL>"
-	ctxt "いままてﾞ たたかった たﾞれよりも<NL>"
-	ctxt "すうたﾞん つよい はすﾞたﾞ!<NL>"
-	ctxt "なにしろ わたしの はつめいした<NL>"
-	ctxt "<KATA>ハﾞトル アントﾞロイトﾞ <HIRA>たﾞからな!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>きみが <KATA>グレイテスト3<HIRA>だって?"
+	line ""
+	line "おどろいたな……… こんな こどもが"
+	line "<KATA>グレイテスト3<HIRA>だなんて"
+	line "………もしかして これも"
+	line "<KATA>テール<HIRA>おうじの さしがね か?"
+	line "わたしは げんざい <KATA>グレイテスト2<HIRA>だ"
+	line ""
+	line "ほんらいならば きみの ちょうせんを"
+	line "うけて たつべき なのだが……"
+	line "そのまえに <KATA>テール<HIRA>おうじとの"
+	line "たたかいを とりつけて しまった"
+	line "すまないが おうじとの <KATA>バトル<HIRA>に"
+	line "せんねん させて くれないか"
+	line "どうしても というのなら わたしの"
+	line "でしたちが おあいて しよう"
+	line "ぜんいんに かてば きみとの"
+	line "<KATA>バトル<HIRA>を ゆうせん しなくもない"
+	line "だが わたしの でしたちを"
+	line "あなどっては いけないよ"
+	line "いままで たたかった だれよりも"
+	line "すうだん つよい はずだ!"
+	line "なにしろ わたしの はつめいした"
+	line "<KATA>バトル アンドロイド <HIRA>だからな!<KATA>"
+	done
 
 TreeBitstreamText_3de23:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>きみの しﾞつりょくは<NL>"
-	ctxt "しﾞゅうふﾞんに わかった<NL>"
-	ctxt "しかし いまは きみと<NL>"
-	ctxt "たたかう わけには いかない<NL>"
-	ctxt "わたしには さきに たたかうへﾞき<NL>"
-	ctxt "あいてかﾞ いるからね<NL>"
-	ctxt "きみとは なにか うんめいてきな<NL>"
-	ctxt "ものを かんしﾞるよ<NL>"
-	ctxt "きっと たたかう ことに<NL>"
-	ctxt "なるたﾞろう………<NL>"
-	ctxt "<KATA>アイル ヒﾞー ハﾞック!<TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>きみの じつりょくは"
+	line "じゅうぶんに わかった"
+	line "しかし いまは きみと"
+	line "たたかう わけには いかない"
+	line "わたしには さきに たたかうべき"
+	line "あいてが いるからね"
+	line "きみとは なにか うんめいてきな"
+	line "ものを かんじるよ"
+	line "きっと たたかう ことに"
+	line "なるだろう………"
+	line "<KATA>アイル ビー バック!"
+	done
 
 TreeBitstreamText_3de8e:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>しょうこりもない <KATA>カﾞキ<HIRA>たﾞな………<NL>"
-	ctxt "わたしは にけﾞているのてﾞは ない<NL>"
-	ctxt "さきに <KATA>テール<HIRA>おうしﾞと<NL>"
-	ctxt "たたかわなけれはﾞ ならないのたﾞ<NL>"
-	ctxt "………それとも きみは へﾞつの<NL>"
-	ctxt "ものを もとめて いるのか?<NL>"
-	ctxt "たとえはﾞ ここにいる <KATA>タﾞース<HIRA>ひめ<NL>"
-	ctxt "とか?<NL>"
-	ctxt "まさか おうしﾞの かわりに ひめを<NL>"
-	ctxt "たすけよう というのてﾞは ないな?<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>しょうこりもない <KATA>ガキ<HIRA>だな………"
+	line "わたしは にげているのでは ない"
+	line "さきに <KATA>テール<HIRA>おうじと"
+	line "たたかわなければ ならないのだ"
+	line "………それとも きみは べつの"
+	line "ものを もとめて いるのか?"
+	line "たとえば ここにいる <KATA>ダース<HIRA>ひめ"
+	line "とか?"
+	line "まさか おうじの かわりに ひめを"
+	line "たすけよう というのでは ないな?<KATA>"
+	done
 
 TreeBitstreamText_3df08:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>そうか きみは<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞの なかまか………<NL>"
-	ctxt "おうしﾞは とことん しﾞふﾞんの てを<NL>"
-	ctxt "よこﾞさない つもりたﾞな<NL>"
-	ctxt "たﾞかﾞ そうかんたんに<NL>"
-	ctxt "ひめを わたすわけには いかない<NL>"
-	ctxt "けっせんまてﾞの たﾞいしﾞな<NL>"
-	ctxt "ひとしﾞち たﾞからな<NL>"
-	ctxt "こﾞそくろうの かわりに きみに<NL>"
-	ctxt "すはﾞらしいものを おみせ しよう!<NL>"
-	ctxt "<KATA>テール<HIRA>おうこく なとﾞ<NL>"
-	ctxt "もはや れきししﾞょうの かせき!!<NL>"
-	ctxt "これからの <KATA>ホﾟロンホﾞ<HIRA>とうは わたしの<NL>"
-	ctxt "てによって うこﾞかされるのたﾞ!!<NL>"
-	ctxt "いてﾞよ しんせいきの らくえん!!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>そうか きみは"
+	line "<KATA>テール<HIRA>おうじの なかまか………"
+	line "おうじは とことん じぶんの てを"
+	line "よごさない つもりだな"
+	line "だが そうかんたんに"
+	line "ひめを わたすわけには いかない"
+	line "けっせんまでの だいじな"
+	line "ひとじち だからな"
+	line "ごそくろうの かわりに きみに"
+	line "すばらしいものを おみせ しよう!"
+	line "<KATA>テール<HIRA>おうこく など"
+	line "もはや れきしじょうの かせき!!"
+	line "これからの <KATA>ポロンボ<HIRA>とうは わたしの"
+	line "てによって うごかされるのだ!!"
+	line "いでよ しんせいきの らくえん!!<KATA>"
+	done
 
 TreeBitstreamText_3dfb9:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>そうか それなら いいのたﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "みょうな かんかﾞえは<NL>"
-	ctxt "おこさない ほうかﾞ いい<NL>"
-	ctxt "もうすくﾞ <KATA>ホﾟロンホﾞ<HIRA>とうは<NL>"
-	ctxt "わたしの てに おちる<NL>"
-	ctxt "とﾞうかね きみも わたしとの<NL>"
-	ctxt "たたかいなとﾞ やめないか?<NL>"
-	ctxt "ここの いちいんに ならないかね?<NL>"
-	ctxt "<NL>"
-	ctxt "いてﾞよ しんせいきの らくえん!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>そうか それなら いいのだ"
+	line ""
+	line "みょうな かんがえは"
+	line "おこさない ほうが いい"
+	line "もうすぐ <KATA>ポロンボ<HIRA>とうは"
+	line "わたしの てに おちる"
+	line "どうかね きみも わたしとの"
+	line "たたかいなど やめないか?"
+	line "ここの いちいんに ならないかね?"
+	line ""
+	line "いでよ しんせいきの らくえん!<KATA>"
+	done
 
 TreeBitstreamText_3e01f:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>ここから すへﾞてかﾞ はしﾞまる<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>セﾞロ キャッスル<HIRA>から すへﾞてかﾞ<NL>"
-	ctxt "はしﾞまるのたﾞっ!!!<KATA>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>ここから すべてが はじまる"
+	line ""
+	line "<KATA>ゼロ キャッスル<HIRA>から すべてが"
+	line "はじまるのだっ!!!<KATA>"
 
 TreeBitstreamText_3e04a:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>きみの あいては わたしてﾞはない<NL>"
-	ctxt "<NL>"
-	ctxt "ここには きみ<KATA>レヘﾞル<HIRA>の にんけﾞんかﾞ<NL>"
-	ctxt "おおせﾞい いる<NL>"
-	ctxt "かれらかﾞ きみの あいてを<NL>"
-	ctxt "してくれる たﾞろう<NL>"
-	ctxt "まぁ せいせﾞい <KATA>ケカﾞ<HIRA>を しないように<NL>"
-	ctxt "きをつけて くれたまえ<NL>"
-	ctxt "もう わたしは <KATA>テール<HIRA>おうしﾞの<NL>"
-	ctxt "ところへ ゆかねはﾞ ならない<NL>"
-	ctxt "いままてﾞの れきしに <KATA>ヒﾟリオトﾞ<HIRA>を<NL>"
-	ctxt "うつために!<NL>"
-	ctxt "てﾞは <KATA>シー ユー アケﾞイン!<TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>きみの あいては わたしではない"
+	line ""
+	line "ここには きみ<KATA>レベル<HIRA>の にんげんが"
+	line "おおぜい いる"
+	line "かれらが きみの あいてを"
+	line "してくれる だろう"
+	line "まぁ せいぜい <KATA>ケガ<HIRA>を しないように"
+	line "きをつけて くれたまえ"
+	line "もう わたしは <KATA>テール<HIRA>おうじの"
+	line "ところへ ゆかねば ならない"
+	line "いままでの れきしに <KATA>ピリオド<HIRA>を"
+	line "うつために!"
+	line "では <KATA>シー ユー アゲイン!"
+	done
 
 TreeBitstreamText_3e0d5:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>おお <KATA><STBF><HIRA>しﾞゃねぇか!<NL>"
-	ctxt "ひさしふﾞり たﾞなぁ…………<NL>"
-	ctxt "ところてﾞ <KATA><STBF><NL>"
-	ctxt "<HIRA>なにやってんたﾞ こんな ところてﾞ<NL>"
-	ctxt "………それよりよ たいへんたﾞせﾞ<NL>"
-	ctxt "<KATA>トﾞクターセﾞロ<HIRA>って おとこ たﾞけとﾞよ<NL>"
-	ctxt "きょうあくな <KATA>ロホﾞホﾟン <HIRA>つくらせたら<NL>"
-	ctxt "みきﾞに てﾞるものは いないな!<NL>"
-	ctxt "おっそろしいせﾞぇー<NL>"
-	ctxt "<NL>"
-	ctxt "まぁ <KATA>オレ<HIRA>さまは そこを みこんてﾞ<NL>"
-	ctxt "ここに しのひﾞこんたﾞ ってわけさ!<NL>"
-	ctxt "いい ふﾞひんや ふﾞきかﾞ<NL>"
-	ctxt "いっはﾟい あるんたﾞせﾞぇー!<NL>"
-	ctxt "もう うれしくって たまらん<KATA>チン<HIRA>たﾞよ<NL>"
-	ctxt "<NL>"
-	ctxt "おう ここから はやく てﾞたけりゃ<NL>"
-	ctxt "この ちかみちを つかいな<NL>"
-	ctxt "<KATA>オレ<HIRA>さまは もうちょっと いいふﾞきを<NL>"
-	ctxt "くすねてから てﾞていくわ<NL>"
-	ctxt "ほんしﾞゃあな!!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>おお <KATA><PLAYER><HIRA>じゃねぇか!"
+	line "ひさしぶり だなぁ…………"
+	line "ところで <KATA><PLAYER>"
+	line "<HIRA>なにやってんだ こんな ところで"
+	line "………それよりよ たいへんだぜ"
+	line "<KATA>ドクターゼロ<HIRA>って おとこ だけどよ"
+	line "きょうあくな <KATA>ロボポン <HIRA>つくらせたら"
+	line "みぎに でるものは いないな!"
+	line "おっそろしいぜぇー"
+	line ""
+	line "まぁ <KATA>オレ<HIRA>さまは そこを みこんで"
+	line "ここに しのびこんだ ってわけさ!"
+	line "いい ぶひんや ぶきが"
+	line "いっぱい あるんだぜぇー!"
+	line "もう うれしくって たまらん<KATA>チン<HIRA>だよ"
+	line ""
+	line "おう ここから はやく でたけりゃ"
+	line "この ちかみちを つかいな"
+	line "<KATA>オレ<HIRA>さまは もうちょっと いいぶきを"
+	line "くすねてから でていくわ"
+	line "ほんじゃあな!!<KATA>"
+	done
 
 TreeBitstreamText_3e1be:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "ふかく! つうこん!<NL>"
-	ctxt "まけは まけたﾞっ!<NL>"
-	ctxt "いさきﾞよく みとめよう!<NL>"
-	ctxt "<NL>"
-	ctxt "たﾞかﾞ <KATA>タﾞース<HIRA>ひめの はなしは へﾞつたﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "さあ ひめを こっちに かえすんたﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "ふかく! つうこん!"
+	line "まけは まけだっ!"
+	line "いさぎよく みとめよう!"
+	line ""
+	line "だが <KATA>ダース<HIRA>ひめの はなしは べつだ"
+	line ""
+	line "さあ ひめを こっちに かえすんだ!<KATA>"
+	done
 
 TreeBitstreamText_3e1ff:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>さﾞんねんたﾞかﾞ それは てﾞきない<NL>"
-	ctxt "<NL>"
-	ctxt "わたしは <KATA>クﾞレイテスト1<HIRA>に なった<NL>"
-	ctxt "<NL>"
-	ctxt "……つまり すへﾞては わたしの<NL>"
-	ctxt "てのなかに ある!<NL>"
-	ctxt "すへﾞては わたしの しﾞゆう!!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>テール<HIRA>おうこくは きょうから<NL>"
-	ctxt "<KATA>セﾞロ<HIRA>おうこくに なるっ!!<NL>"
-	ctxt "<KATA>タﾞース<HIRA>ひめも しろの へいしも<NL>"
-	ctxt "わたしの ものたﾞっ!!<NL>"
-	ctxt "もんく あるかね <KATA>テール<HIRA>おうしﾞ<NL>"
-	ctxt "………いや <KATA>テール<HIRA>ほﾞうや?<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>ざんねんだが それは できない"
+	line ""
+	line "わたしは <KATA>グレイテスト1<HIRA>に なった"
+	line ""
+	line "……つまり すべては わたしの"
+	line "てのなかに ある!"
+	line "すべては わたしの じゆう!!"
+	line ""
+	line "<KATA>テール<HIRA>おうこくは きょうから"
+	line "<KATA>ゼロ<HIRA>おうこくに なるっ!!"
+	line "<KATA>ダース<HIRA>ひめも しろの へいしも"
+	line "わたしの ものだっ!!"
+	line "もんく あるかね <KATA>テール<HIRA>おうじ"
+	line "………いや <KATA>テール<HIRA>ぼうや?<KATA>"
+	done
 
 TreeBitstreamText_3e289:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "う う うううううううっ…………<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "う う うううううううっ…………<KATA>"
+	done
 
 TreeBitstreamText_3e29b:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>ほぉ きみは うんのいい<KATA>コ<HIRA>たﾞねぇ<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>セﾞロキャッスル<HIRA>を<NL>"
-	ctxt "ふﾞしﾞに たﾞっしゅつ てﾞきたのか<NL>"
-	ctxt "しかし いま みたように わたしは<NL>"
-	ctxt "<KATA>クﾞレイテスト1<HIRA>の さﾞ についた<NL>"
-	ctxt "わたしと たたかいたけれはﾞ さきに<NL>"
-	ctxt "<KATA>クﾞレイテスト2<HIRA>を たおすこと!<NL>"
-	ctxt "そう!<NL>"
-	ctxt "あの <KATA>テール<HIRA>を たおすのたﾞ!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>ほぉ きみは うんのいい<KATA>コ<HIRA>だねぇ"
+	line ""
+	line "<KATA>ゼロキャッスル<HIRA>を"
+	line "ぶじに だっしゅつ できたのか"
+	line "しかし いま みたように わたしは"
+	line "<KATA>グレイテスト1<HIRA>の ざ についた"
+	line "わたしと たたかいたければ さきに"
+	line "<KATA>グレイテスト2<HIRA>を たおすこと!"
+	line "そう!"
+	line "あの <KATA>テール<HIRA>を たおすのだ!<KATA>"
+	done
 
 TreeBitstreamText_3e30b:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>にけﾞも かくれも しない<NL>"
-	ctxt "わたしは まっているよ<KATA>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>にげも かくれも しない"
+	line "わたしは まっているよ<KATA>"
 
 TreeBitstreamText_3e324:
-	ctxt "タﾞース<HIRA>ひめ<NL>"
-	ctxt "ああ <KATA>テール<HIRA>おうしﾞ…………<NL>"
-	ctxt "<NL>"
-	ctxt "とﾞうか かれを たすけてくたﾞさい!<NL>"
-	ctxt "わたしは とﾞうなっても いいのてﾞす<NL>"
-	ctxt "おもいつめて しまった あのひとの<NL>"
-	ctxt "ことたﾞけかﾞ しんはﾟいてﾞ………<NL>"
-	ctxt "おうしﾞは きっと ふたりの<NL>"
-	ctxt "おもいてﾞの はﾞしょに いるはすﾞてﾞす<NL>"
-	ctxt "その はﾞしょは……<NL>"
-	ctxt "<KATA>ツキカﾞ<HIRA>おか というところ てﾞす<NL>"
-	ctxt "わたしは ふﾞしﾞたﾞと つたえてくたﾞさい<NL>"
-	ctxt "<NL>"
-	ctxt "きっと なにも かもかﾞ<NL>"
-	ctxt "もととﾞおりになる ひかﾞ くる と<KATA><TERM>"
+	ctxt "ダース<HIRA>ひめ"
+	line "ああ <KATA>テール<HIRA>おうじ…………"
+	line ""
+	line "どうか かれを たすけてください!"
+	line "わたしは どうなっても いいのです"
+	line "おもいつめて しまった あのひとの"
+	line "ことだけが しんぱいで………"
+	line "おうじは きっと ふたりの"
+	line "おもいでの ばしょに いるはずです"
+	line "その ばしょは……"
+	line "<KATA>ツキガ<HIRA>おか というところ です"
+	line "わたしは ぶじだと つたえてください"
+	line ""
+	line "きっと なにも かもが"
+	line "もとどおりになる ひが くる と<KATA>"
+	done
 
 TreeBitstreamText_3e3bb:
-	ctxt "タﾞース<HIRA>ひめ<NL>"
-	ctxt "ちょっと おまちになってくたﾞさい<NL>"
-	ctxt "わたしの はなしをきいてくたﾞさい!<KATA>"
+	ctxt "ダース<HIRA>ひめ"
+	line "ちょっと おまちになってください"
+	line "わたしの はなしをきいてください!<KATA>"
 
 TreeBitstreamText_3e3db:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "よし かなり<KATA>ロホﾞホﾟン<HIRA>かﾞ<NL>"
-	ctxt "つよく なったそﾞ<NL>"
-	ctxt "このまま いけはﾞ <KATA>トﾞクターセﾞロ<HIRA>なとﾞ<NL>"
-	ctxt "いっはﾟつてﾞ たおすことかﾞ てﾞきる!<NL>"
-	ctxt "しﾞみちな とﾞりょくを つつﾞけねはﾞ!<NL>"
-	ctxt "そして <KATA>タﾞース<HIRA>ひめを かならすﾞ!<NL>"
-	ctxt "かならすﾞ とりもとﾞす!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "よし かなり<KATA>ロボポン<HIRA>が"
+	line "つよく なったぞ"
+	line "このまま いけば <KATA>ドクターゼロ<HIRA>など"
+	line "いっぱつで たおすことが できる!"
+	line "じみちな どりょくを つづけねば!"
+	line "そして <KATA>ダース<HIRA>ひめを かならず!"
+	line "かならず とりもどす!<KATA>"
+	done
 
 TreeBitstreamText_3e43a:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA><STBF> <HIRA>きていたのか<NL>"
-	ctxt "なせﾞ ここたﾞと わかったのたﾞ?<NL>"
-	ctxt "………なに? <KATA>タﾞース<HIRA>ひめ に <NL>"
-	ctxt "おしえて もらったのか!<NL>"
-	ctxt "おお ひめは けﾞんきか!<NL>"
-	ctxt "ありかﾞとう <KATA><STBF><HIRA>よ<NL>"
-	ctxt "しかし わたしと <KATA><STBF><HIRA>の<NL>"
-	ctxt "ゆうしﾞょうも ここまてﾞたﾞ<NL>"
-	ctxt "わたしは <KATA>クﾞレイテスト2!<NL>"
-	ctxt "<STBF><HIRA>は <KATA>クﾞレイテスト3!<NL>"
-	ctxt "<HIRA>けっきょく はやかれ おそかれ<NL>"
-	ctxt "<KATA><STBF><HIRA>とは たたかう うんめい<NL>"
-	ctxt "たたﾞ これたﾞけは いっておく!<NL>"
-	ctxt "<NL>"
-	ctxt "この たたかいに かったものは<NL>"
-	ctxt "<KATA>トﾞクターセﾞロ<HIRA>に ちょうせんてﾞきる!<NL>"
-	ctxt "わたしは まけられない<NL>"
-	ctxt "かたなくては ならない!<NL>"
-	ctxt "いいたﾞろう <KATA><STBF><HIRA>の<NL>"
-	ctxt "ちょうせんを うけよう<NL>"
-	ctxt "そう かんたんには まけない!<NL>"
-	ctxt "<KATA>ロホﾞホﾟントﾞーム<HIRA>てﾞ まっているそﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA><PLAYER> <HIRA>きていたのか"
+	line "なぜ ここだと わかったのだ?"
+	line "………なに? <KATA>ダース<HIRA>ひめ に "
+	line "おしえて もらったのか!"
+	line "おお ひめは げんきか!"
+	line "ありがとう <KATA><PLAYER><HIRA>よ"
+	line "しかし わたしと <KATA><PLAYER><HIRA>の"
+	line "ゆうじょうも ここまでだ"
+	line "わたしは <KATA>グレイテスト2!"
+	line "<PLAYER><HIRA>は <KATA>グレイテスト3!"
+	line "<HIRA>けっきょく はやかれ おそかれ"
+	line "<KATA><PLAYER><HIRA>とは たたかう うんめい"
+	line "ただ これだけは いっておく!"
+	line ""
+	line "この たたかいに かったものは"
+	line "<KATA>ドクターゼロ<HIRA>に ちょうせんできる!"
+	line "わたしは まけられない"
+	line "かたなくては ならない!"
+	line "いいだろう <KATA><PLAYER><HIRA>の"
+	line "ちょうせんを うけよう"
+	line "そう かんたんには まけない!"
+	line "<KATA>ロボポンドーム<HIRA>で まっているぞ!<KATA>"
+	done
 
 TreeBitstreamText_3e522:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "フッ <HIRA>もうすくﾞたﾞ もうすくﾞてﾞ<NL>"
-	ctxt "わかﾞ やほﾞうかﾞ たっせいされる!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "フッ <HIRA>もうすぐだ もうすぐで"
+	line "わが やぼうが たっせいされる!<KATA>"
+	done
 
 TreeBitstreamText_3e544:
-	ctxt "タﾞース<HIRA>ひめ<NL>"
-	ctxt "あぁ……<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞ………<KATA>"
+	ctxt "ダース<HIRA>ひめ"
+	line "あぁ……"
+	line "<KATA>テール<HIRA>おうじ………<KATA>"
 
 TreeBitstreamText_3e557:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA><STBF>! <HIRA>いまの わたしは<NL>"
-	ctxt "おまえとは たちはﾞかﾞ ちかﾞうのたﾞ!<NL>"
-	ctxt "この たたかいに まけれはﾞ<NL>"
-	ctxt "すへﾞてを うしなって しまう!<NL>"
-	ctxt "かといって たたかいに えんりょなとﾞ<NL>"
-	ctxt "むようたﾞ!<NL>"
-	ctxt "さあ こい <KATA><STBF>!<NL>"
-	ctxt "<HIRA>とっくんの せいかを みせてやる!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA><PLAYER>! <HIRA>いまの わたしは"
+	line "おまえとは たちばが ちがうのだ!"
+	line "この たたかいに まければ"
+	line "すべてを うしなって しまう!"
+	line "かといって たたかいに えんりょなど"
+	line "むようだ!"
+	line "さあ こい <KATA><PLAYER>!"
+	line "<HIRA>とっくんの せいかを みせてやる!<KATA>"
+	done
 
 TreeBitstreamText_3e5b2:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "くっ<NL>"
-	ctxt "………なせﾞ<NL>"
-	ctxt "………なせﾞ かてないんたﾞ<NL>"
-	ctxt "あれほとﾞ とっくん したのに!<NL>"
-	ctxt "わたしは これっほﾟっちの にんけﾞん<NL>"
-	ctxt "てﾞしか なかったのか………<NL>"
-	ctxt "もう のこされた みちは<NL>"
-	ctxt "なくなって しまうのか……<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "くっ"
+	line "………なぜ"
+	line "………なぜ かてないんだ"
+	line "あれほど とっくん したのに!"
+	line "わたしは これっぽっちの にんげん"
+	line "でしか なかったのか………"
+	line "もう のこされた みちは"
+	line "なくなって しまうのか……<KATA>"
+	done
 
 TreeBitstreamText_3e5ff:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA>セﾞロ! <HIRA>きさまぁ!!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>タﾞース<HIRA>ひめを かえせ!<NL>"
-	ctxt "かえすんたﾞーーっ!!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA>ゼロ! <HIRA>きさまぁ!!"
+	line ""
+	line "<KATA>ダース<HIRA>ひめを かえせ!"
+	line "かえすんだーーっ!!<KATA>"
+	done
 
 TreeBitstreamText_3e624:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>おちつけ みっともないそﾞ <KATA>テール!<NL>"
-	ctxt "₆₆₆₆₆<HIRA>よく たたかった<NL>"
-	ctxt "せﾞんりょくてﾞ いとﾞんたﾞ<NL>"
-	ctxt "すはﾞらしい しあい たﾞったよ<NL>"
-	ctxt "あんしん したまえ<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>テール <HIRA>きみの ゆうきに<NL>"
-	ctxt "けいいを あらわそう しﾞゃないか<NL>"
-	ctxt "<KATA>タﾞース<HIRA>ひめを いま おまえの<NL>"
-	ctxt "もとへ かえしてやろう<NL>"
-	ctxt "それも その ひﾞほﾞうを<NL>"
-	ctxt "えいえんの ものとしてな!<NL>"
-	ctxt "これを みるかﾞいい!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>おちつけ みっともないぞ <KATA>テール!"
+	line "……………<HIRA>よく たたかった"
+	line "ぜんりょくで いどんだ"
+	line "すばらしい しあい だったよ"
+	line "あんしん したまえ"
+	line ""
+	line "<KATA>テール <HIRA>きみの ゆうきに"
+	line "けいいを あらわそう じゃないか"
+	line "<KATA>ダース<HIRA>ひめを いま おまえの"
+	line "もとへ かえしてやろう"
+	line "それも その びぼうを"
+	line "えいえんの ものとしてな!"
+	line "これを みるがいい!<KATA>"
+	done
 
 TreeBitstreamText_3e6a8:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>いい しあいてﾞは あったかﾞ<NL>"
-	ctxt "<KATA>テール! <HIRA>おまえは まけた<NL>"
-	ctxt "まけたら とﾞうにも ならないんたﾞよ<NL>"
-	ctxt "……きさま わたしに てをあけﾞたな<NL>"
-	ctxt "そんな ほﾞうきょかﾞ まかりとおる<NL>"
-	ctxt "と てﾞも おもっているのか?<NL>"
-	ctxt "きさまの <KATA>クﾞレイテスト3<HIRA>の<NL>"
-	ctxt "しょうこﾞうは はくたﾞつたﾞ!<NL>"
-	ctxt "おまえも ひめも おはらい はﾞこたﾞ<NL>"
-	ctxt "きたない しろ は くれてやるっ!<NL>"
-	ctxt "せいせﾞい <KATA>カカﾞミ<HIRA>の なかの ひめと<NL>"
-	ctxt "なかよく くらすかﾞ いい!!<NL>"
-	ctxt "この あわれな ふたりの わかものを<NL>"
-	ctxt "さっさと そとへ つれたﾞせ!!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>いい しあいでは あったが"
+	line "<KATA>テール! <HIRA>おまえは まけた"
+	line "まけたら どうにも ならないんだよ"
+	line "……きさま わたしに てをあげたな"
+	line "そんな ぼうきょが まかりとおる"
+	line "と でも おもっているのか?"
+	line "きさまの <KATA>グレイテスト3<HIRA>の"
+	line "しょうごうは はくだつだ!"
+	line "おまえも ひめも おはらい ばこだ"
+	line "きたない しろ は くれてやるっ!"
+	line "せいぜい <KATA>カガミ<HIRA>の なかの ひめと"
+	line "なかよく くらすが いい!!"
+	line "この あわれな ふたりの わかものを"
+	line "さっさと そとへ つれだせ!!<KATA>"
+	done
 
 TreeBitstreamText_3e75b:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "カﾞハハハハハハハーーーーーーーッ!!<TERM>"
+	ctxt "ドクターゼロ"
+	line "ガハハハハハハハーーーーーーーッ!!"
+	done
 
 TreeBitstreamText_3e770:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "もう なにもかも <KATA>タﾞメ<HIRA>たﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA><STBF><HIRA>にも まけ<NL>"
-	ctxt "ひめ まてﾞ こんな すかﾞたに………<NL>"
-	ctxt "これから <KATA>ホﾞク<HIRA>は<NL>"
-	ctxt "とﾞうすれはﾞ いいのたﾞ………………<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "もう なにもかも <KATA>ダメ<HIRA>だ"
+	line ""
+	line "<KATA><PLAYER><HIRA>にも まけ"
+	line "ひめ まで こんな すがたに………"
+	line "これから <KATA>ボク<HIRA>は"
+	line "どうすれば いいのだ………………<KATA>"
+	done
 
 TreeBitstreamText_3e7ac:
-	ctxt "クﾞレイテスト2<HIRA>の しょうこﾞう<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "グレイテスト2<HIRA>の しょうごう"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3e7c0:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<STBF> クﾞレイテスト2<NL>"
-	ctxt "<HIRA>しょうしん おめてﾞとう<NL>"
-	ctxt "わたしは <KATA>テール<HIRA>とは ちかﾞって<NL>"
-	ctxt "いつてﾞも ちょうせんを うけるそﾞ<NL>"
-	ctxt "しﾞゅんひﾞを ととのえて<NL>"
-	ctxt "いとﾞんてﾞ きなさい<NL>"
-	ctxt "たたﾞし <KATA>ロホﾞホﾟントﾞーム<HIRA>てﾞの<NL>"
-	ctxt "たたかいは きょうてﾞ おわりたﾞ<NL>"
-	ctxt "こんこﾞは <KATA>セﾞロキャッスル<HIRA>から<NL>"
-	ctxt "あたらしい れきしかﾞ つくられる!<NL>"
-	ctxt "てﾞは <KATA>セﾞロキャッスル<HIRA>てﾞ <KATA><STBF><HIRA>の<NL>"
-	ctxt "ちょうせんを まっている!<NL>"
-	ctxt "<KATA>シー ユー アケﾞイン!<TERM>"
+	ctxt "ドクターゼロ"
+	line "<PLAYER> グレイテスト2"
+	line "<HIRA>しょうしん おめでとう"
+	line "わたしは <KATA>テール<HIRA>とは ちがって"
+	line "いつでも ちょうせんを うけるぞ"
+	line "じゅんびを ととのえて"
+	line "いどんで きなさい"
+	line "ただし <KATA>ロボポンドーム<HIRA>での"
+	line "たたかいは きょうで おわりだ"
+	line "こんごは <KATA>ゼロキャッスル<HIRA>から"
+	line "あたらしい れきしが つくられる!"
+	line "では <KATA>ゼロキャッスル<HIRA>で <KATA><PLAYER><HIRA>の"
+	line "ちょうせんを まっている!"
+	line "<KATA>シー ユー アゲイン!"
+	done
 
 TreeBitstreamText_3e85a:
-	ctxt "ヒテﾞキ<NL>"
-	ctxt "4<HIRA>つの いわを 4つの あなのうえに<NL>"
-	ctxt "のっけることかﾞ てﾞきたら………<KATA><TERM>"
+	ctxt "ヒデキ"
+	line "4<HIRA>つの いわを 4つの あなのうえに"
+	line "のっけることが できたら………<KATA>"
+	done
 
 TreeBitstreamText_3e87a:
-	ctxt "ヒテﾞキ<NL>"
-	ctxt "ラーメン <HIRA>おこﾞってくれたら<NL>"
-	ctxt "しかけを もっと かんたんにするよ<KATA><TERM>"
+	ctxt "ヒデキ"
+	line "ラーメン <HIRA>おごってくれたら"
+	line "しかけを もっと かんたんにするよ<KATA>"
+	done
 
 TreeBitstreamText_3e896:
-	ctxt "ヒテﾞキ<NL>"
-	ctxt "ラーメン <HIRA>おこﾞってくれる?<KATA><TERM>"
+	ctxt "ヒデキ"
+	line "ラーメン <HIRA>おごってくれる?<KATA>"
+	done
 
 TreeBitstreamText_3e8a6:
-	ctxt "ヒテﾞキ<NL>"
-	ctxt "<HIRA>うっ うまいねぇ <KATA>ラーメン<HIRA>は<NL>"
-	ctxt "よしっ やくそくを はたそう<NL>"
-	ctxt "しﾞゅんひﾞ するから<NL>"
-	ctxt "いったん したへ おりてね<KATA><TERM>"
+	ctxt "ヒデキ"
+	line "<HIRA>うっ うまいねぇ <KATA>ラーメン<HIRA>は"
+	line "よしっ やくそくを はたそう"
+	line "じゅんび するから"
+	line "いったん したへ おりてね<KATA>"
+	done
 
 TreeBitstreamText_3e8d4:
-	ctxt "ヒテﾞキ<NL>"
-	ctxt "<HIRA>そう……<NL>"
-	ctxt "<KATA>ヒテﾞキ ショック₆₆<TERM>"
+	ctxt "ヒデキ"
+	line "<HIRA>そう……"
+	line "<KATA>ヒデキ ショック……"
+	done
 
 TreeBitstreamText_3e8e5:
-	ctxt "ヒテﾞキ<NL>"
-	ctxt "ラーメン<HIRA>さいこうっ!!<KATA><TERM>"
+	ctxt "ヒデキ"
+	line "ラーメン<HIRA>さいこうっ!!<KATA>"
+	done
 
 TreeBitstreamText_3e8f3:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>このさきに あなかﾞ みえるたﾞろう?<NL>"
-	ctxt "あの あなの さきに………<NL>"
-	ctxt "すんこﾞい おたからかﾞ あるらしい<NL>"
-	ctxt "<KATA>テール<HIRA>おうこくの さﾞいほうかﾞ ね<NL>"
-	ctxt "たﾞけとﾞ むこうかﾞわ には いけない<NL>"
-	ctxt "とﾞうした もんかね?<KATA><TERM>"
+	ctxt "ハンター"
+	line "<HIRA>このさきに あなが みえるだろう?"
+	line "あの あなの さきに………"
+	line "すんごい おたからが あるらしい"
+	line "<KATA>テール<HIRA>おうこくの ざいほうが ね"
+	line "だけど むこうがわ には いけない"
+	line "どうした もんかね?<KATA>"
+	done
 
 TreeBitstreamText_3e940:
-	ctxt "ハンター<NL>"
-	ctxt "リモコンシャワー<HIRA>かﾞ <KATA>カキﾞ<HIRA>なんたﾞけとﾞ<NL>"
-	ctxt "<KATA>リモコンシャワー<HIRA>か……<NL>"
-	ctxt "<KATA>リモコンシャワー<HIRA>ってなんたﾞ?<NL>"
-	ctxt "<KATA>キミ<HIRA>はわかるかい?<KATA><TERM>"
+	ctxt "ハンター"
+	line "リモコンシャワー<HIRA>が <KATA>カギ<HIRA>なんだけど"
+	line "<KATA>リモコンシャワー<HIRA>か……"
+	line "<KATA>リモコンシャワー<HIRA>ってなんだ?"
+	line "<KATA>キミ<HIRA>はわかるかい?<KATA>"
+	done
 
 TreeBitstreamText_3e974:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>おおっ!<NL>"
-	ctxt "はしかﾞ かかった!<NL>"
-	ctxt "<KATA>キミ<HIRA>には わるいかﾞ<NL>"
-	ctxt "おうけの さﾞいほうは いたたﾞくせﾞ!<KATA><TERM>"
+	ctxt "ハンター"
+	line "<HIRA>おおっ!"
+	line "はしが かかった!"
+	line "<KATA>キミ<HIRA>には わるいが"
+	line "おうけの ざいほうは いただくぜ!<KATA>"
+	done
 
 TreeBitstreamText_3e99a:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>くっそーっ<NL>"
-	ctxt "また とおれない しﾞゃないかぁ!<NL>"
-	ctxt "あの かいたﾞんのさきに<NL>"
-	ctxt "おたからかﾞ あるっていうのに……<KATA>"
+	ctxt "ハンター"
+	line "<HIRA>くっそーっ"
+	line "また とおれない じゃないかぁ!"
+	line "あの かいだんのさきに"
+	line "おたからが あるっていうのに……<KATA>"
 
 TreeBitstreamText_3e9c4:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>おおおおっ!<NL>"
-	ctxt "とおれるように なった!<NL>"
-	ctxt "おたからは いたたﾞいたっ!<KATA><TERM>"
+	ctxt "ハンター"
+	line "<HIRA>おおおおっ!"
+	line "とおれるように なった!"
+	line "おたからは いただいたっ!<KATA>"
+	done
 
 TreeBitstreamText_3e9e1:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>そうか やっはﾟり<KATA>キミ<HIRA>かﾞ やったのか<NL>"
-	ctxt "あの しかけかﾞ よくわかったね<NL>"
-	ctxt "ほんらいなら おたからは <KATA>キミ<HIRA>のもの<NL>"
-	ctxt "たﾞろうけとﾞ そうは いかない!<NL>"
-	ctxt "ここは ちからすﾞくてﾞも<NL>"
-	ctxt "おたからを いたたﾞくよっ!<KATA>"
+	ctxt "ハンター"
+	line "<HIRA>そうか やっぱり<KATA>キミ<HIRA>が やったのか"
+	line "あの しかけが よくわかったね"
+	line "ほんらいなら おたからは <KATA>キミ<HIRA>のもの"
+	line "だろうけど そうは いかない!"
+	line "ここは ちからずくでも"
+	line "おたからを いただくよっ!<KATA>"
 
 TreeBitstreamText_3ea2f:
-	ctxt "ハンター<NL>"
-	ctxt "キミ<HIRA>は つよいね……<NL>"
-	ctxt "おうけのさﾞいほうは <KATA>キミ<HIRA>にゆすﾞるよ<NL>"
-	ctxt "おうけのさﾞいほう は<NL>"
-	ctxt "<KATA>モリス<HIRA>のなみたﾞ と よはﾞれるものさ<NL>"
-	ctxt "とﾞんな ひﾞょうき <KATA>ケカﾞ <HIRA>のろいてﾞも<NL>"
-	ctxt "いっしゅんにして なおすんたﾞ<NL>"
-	ctxt "たたﾞし <KATA>ロホﾞホﾟン<HIRA>には きかないよ<NL>"
-	ctxt "にんけﾞんにしか きかないんたﾞ<KATA><TERM>"
+	ctxt "ハンター"
+	line "キミ<HIRA>は つよいね……"
+	line "おうけのざいほうは <KATA>キミ<HIRA>にゆずるよ"
+	line "おうけのざいほう は"
+	line "<KATA>モリス<HIRA>のなみだ と よばれるものさ"
+	line "どんな びょうき <KATA>ケガ <HIRA>のろいでも"
+	line "いっしゅんにして なおすんだ"
+	line "ただし <KATA>ロボポン<HIRA>には きかないよ"
+	line "にんげんにしか きかないんだ<KATA>"
+	done
 
 TreeBitstreamText_3ea97:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>そとへ <KATA>ワーフﾟ<HIRA>するかい<KATA><TERM>"
+	ctxt "ハンター"
+	line "<HIRA>そとへ <KATA>ワープ<HIRA>するかい<KATA>"
+	done
 
 TreeBitstreamText_3eaa7:
-	ctxt "モリス<HIRA>のなみたﾞ<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "モリス<HIRA>のなみだ"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3eab5:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>そっかぁ <KATA>モリス<HIRA>のなみたﾞてﾞ<NL>"
-	ctxt "<KATA>タﾞース<HIRA>ひめをねぇ………<NL>"
-	ctxt "おうけのさﾞいほうかﾞ<NL>"
-	ctxt "やくにたったわけたﾞ<KATA><TERM>"
+	ctxt "ハンター"
+	line "<HIRA>そっかぁ <KATA>モリス<HIRA>のなみだで"
+	line "<KATA>ダース<HIRA>ひめをねぇ………"
+	line "おうけのざいほうが"
+	line "やくにたったわけだ<KATA>"
+	done
 
 TreeBitstreamText_3eae2:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>やはり たたかわねはﾞ ならぬ か……<NL>"
-	ctxt "<NL>"
-	ctxt "こそﾞうあいてに れきしは かわらん!<NL>"
-	ctxt "<NL>"
-	ctxt "わたしは こそﾞうたﾞから といって<NL>"
-	ctxt "ては ぬかんそﾞ<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞの かたきうち か?<NL>"
-	ctxt "<NL>"
-	ctxt "それとも おのれの ために<NL>"
-	ctxt "たたかうのか?<NL>"
-	ctxt "ほんとうの つよさを<NL>"
-	ctxt "たしかめたいのか?<NL>"
-	ctxt "………わたしを たおすために<NL>"
-	ctxt "たたかうのか?<NL>"
-	ctxt "しんの <KATA>クﾞレイテスト1<HIRA>の<NL>"
-	ctxt "しﾞつりょくを みせつけてやる!<NL>"
-	ctxt "いさﾞ しょうふﾞ!<KATA><TERM>"
+	ctxt "ドクターゼロ"
+	line "<HIRA>やはり たたかわねば ならぬ か……"
+	line ""
+	line "こぞうあいてに れきしは かわらん!"
+	line ""
+	line "わたしは こぞうだから といって"
+	line "ては ぬかんぞ"
+	line "<KATA>テール<HIRA>おうじの かたきうち か?"
+	line ""
+	line "それとも おのれの ために"
+	line "たたかうのか?"
+	line "ほんとうの つよさを"
+	line "たしかめたいのか?"
+	line "………わたしを たおすために"
+	line "たたかうのか?"
+	line "しんの <KATA>グレイテスト1<HIRA>の"
+	line "じつりょくを みせつけてやる!"
+	line "いざ しょうぶ!<KATA>"
+	done
 
 TreeBitstreamText_3eb76:
-	ctxt "トﾞクターセﾞロ<NL>"
-	ctxt "<HIRA>まけれはﾞ すへﾞてかﾞ おわることは<NL>"
-	ctxt "わかっていた<NL>"
-	ctxt "たﾞから <KATA>クﾞレイテスト1<HIRA>の さﾞは<NL>"
-	ctxt "たﾞれにも わたさん<NL>"
-	ctxt "たとえ きさまこﾞとき こそﾞうに<NL>"
-	ctxt "まけようとも………<NL>"
-	ctxt "この はﾞくは<KATA>スイッチ<HIRA>を おせはﾞ<NL>"
-	ctxt "<KATA>セﾞロキャッスル<HIRA>は こっはﾟみしﾞん たﾞ<NL>"
-	ctxt "たったいま <KATA>クﾞレイテスト1<HIRA>となった<NL>"
-	ctxt "きみも <KATA>カﾞレキ<HIRA>の したしﾞきと なる<NL>"
-	ctxt "<KATA>クﾞレイテスト1<HIRA>の あかし<NL>"
-	ctxt "<KATA>ウイニンクﾞローレル <HIRA>は……<NL>"
-	ctxt "わたしの ての なかてﾞ<NL>"
-	ctxt "えいえんに いきるのたﾞ<NL>"
-	ctxt "そう えいえんの <KATA>クﾞレイテスト1<HIRA>は<NL>"
-	ctxt "<KATA>トﾞクターセﾞロ <HIRA>なのたﾞ!<NL>"
-	ctxt "さらはﾞ <KATA>ホﾟロンホﾞ<HIRA>とう!<NL>"
-	ctxt "<NL>"
-	ctxt "さらはﾞ <KATA>テール<HIRA>おうこく!<NL>"
-	ctxt "<NL>"
-	ctxt "さらはﾞ………<KATA><STBF>₆₆₆"
+	ctxt "ドクターゼロ"
+	line "<HIRA>まければ すべてが おわることは"
+	line "わかっていた"
+	line "だから <KATA>グレイテスト1<HIRA>の ざは"
+	line "だれにも わたさん"
+	line "たとえ きさまごとき こぞうに"
+	line "まけようとも………"
+	line "この ばくは<KATA>スイッチ<HIRA>を おせば"
+	line "<KATA>ゼロキャッスル<HIRA>は こっぱみじん だ"
+	line "たったいま <KATA>グレイテスト1<HIRA>となった"
+	line "きみも <KATA>ガレキ<HIRA>の したじきと なる"
+	line "<KATA>グレイテスト1<HIRA>の あかし"
+	line "<KATA>ウイニングローレル <HIRA>は……"
+	line "わたしの ての なかで"
+	line "えいえんに いきるのだ"
+	line "そう えいえんの <KATA>グレイテスト1<HIRA>は"
+	line "<KATA>ドクターゼロ <HIRA>なのだ!"
+	line "さらば <KATA>ポロンボ<HIRA>とう!"
+	line ""
+	line "さらば <KATA>テール<HIRA>おうこく!"
+	line ""
+	line "さらば………<KATA><PLAYER>………"
 
 TreeBitstreamText_3ec56:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>なにやってんたﾞよ <KATA><STBF>!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>はやく たﾞっしゅつ しねぇと<NL>"
-	ctxt "<KATA>オレ<HIRA>たちも <KATA>カﾞレキ<HIRA>の したしﾞきたﾞ!<NL>"
-	ctxt "こっちに <KATA>ヒミツ<HIRA>の ぬけみちかﾞ ある<NL>"
-	ctxt "さっさと <KATA>スﾞラ<HIRA>かろうせﾞ!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>なにやってんだよ <KATA><PLAYER>!"
+	line ""
+	line "<HIRA>はやく だっしゅつ しねぇと"
+	line "<KATA>オレ<HIRA>たちも <KATA>ガレキ<HIRA>の したじきだ!"
+	line "こっちに <KATA>ヒミツ<HIRA>の ぬけみちが ある"
+	line "さっさと <KATA>ズラ<HIRA>かろうぜ!<KATA>"
+	done
 
 TreeBitstreamText_3ec9f:
-	ctxt "ママ<NL>"
-	ctxt "<STBF>!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>あんた おとうさんと おかあさんかﾞ<NL>"
-	ctxt "いない あいたﾞに なに してたの!<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞさま から あなたあてに<NL>"
-	ctxt "てかﾞみかﾞ きてるわよ!<KATA><TERM>"
+	ctxt "ママ"
+	line "<PLAYER>!"
+	line ""
+	line "<HIRA>あんた おとうさんと おかあさんが"
+	line "いない あいだに なに してたの!"
+	line "<KATA>テール<HIRA>おうじさま から あなたあてに"
+	line "てがみが きてるわよ!<KATA>"
+	done
 
 TreeBitstreamText_3ecd6:
-	ctxt "<STBF><HIRA>さま<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA><STBF><HIRA>を しんの<NL>"
-	ctxt "<KATA>クﾞレイテスト1<HIRA>として みとめる<NL>"
-	ctxt "せいしきな <KATA>ウイニンクﾞローレル<HIRA>の<NL>"
-	ctxt "そﾞうていしきを おこなう<NL>"
-	ctxt "<NL>"
-	ctxt "           <KATA>テール<HIRA>おうしﾞ<KATA><TERM>"
+	ctxt "<PLAYER><HIRA>さま"
+	line ""
+	line "<KATA><PLAYER><HIRA>を しんの"
+	line "<KATA>グレイテスト1<HIRA>として みとめる"
+	line "せいしきな <KATA>ウイニングローレル<HIRA>の"
+	line "ぞうていしきを おこなう"
+	line ""
+	line "           <KATA>テール<HIRA>おうじ<KATA>"
+	done
 
 TreeBitstreamText_3ed13:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA>セﾞロ<HIRA>を たおしてくれて ありかﾞとう<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA><STBF><HIRA>を <KATA>クﾞレイテスト1<HIRA>として<NL>"
-	ctxt "えいえんに なを きさﾞむ<NL>"
-	ctxt "これから もっと きひﾞしい<NL>"
-	ctxt "たたかいかﾞ あるかも しれない<NL>"
-	ctxt "しかし <KATA>クﾞレイテスト1<HIRA>に なった<NL>"
-	ctxt "<KATA><STBF><HIRA>に こわいものなとﾞ ない!<NL>"
-	ctxt "いままてﾞの ゆうきと せいきﾞを<NL>"
-	ctxt "わすれすﾞに かﾞんはﾞってほしい!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA>ゼロ<HIRA>を たおしてくれて ありがとう"
+	line ""
+	line "<KATA><PLAYER><HIRA>を <KATA>グレイテスト1<HIRA>として"
+	line "えいえんに なを きざむ"
+	line "これから もっと きびしい"
+	line "たたかいが あるかも しれない"
+	line "しかし <KATA>グレイテスト1<HIRA>に なった"
+	line "<KATA><PLAYER><HIRA>に こわいものなど ない!"
+	line "いままでの ゆうきと せいぎを"
+	line "わすれずに がんばってほしい!<KATA>"
+	done
 
 TreeBitstreamText_3ed88:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA>ホﾟロンホﾞ<HIRA>とうの へいわは<NL>"
-	ctxt "とりもとﾞされたのたﾞかﾞ……<NL>"
-	ctxt "<KATA>セﾞロ<HIRA>の のろいは とけていない<NL>"
-	ctxt "<KATA>タﾞース<HIRA>ひめは <KATA>カカﾞミ<HIRA>のなかたﾞ……<NL>"
-	ctxt "おうけのひほう <KATA>モリス<HIRA>のなみたﾞ<NL>"
-	ctxt "それさえあれはﾞ………<NL>"
-	ctxt "おっと <KATA>クﾞチ<HIRA>を こほﾞしてすまん<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA>ポロンボ<HIRA>とうの へいわは"
+	line "とりもどされたのだが……"
+	line "<KATA>ゼロ<HIRA>の のろいは とけていない"
+	line "<KATA>ダース<HIRA>ひめは <KATA>カガミ<HIRA>のなかだ……"
+	line "おうけのひほう <KATA>モリス<HIRA>のなみだ"
+	line "それさえあれば………"
+	line "おっと <KATA>グチ<HIRA>を こぼしてすまん<KATA>"
+	done
 
 TreeBitstreamText_3ede7:
-	ctxt "クﾞレイテスト1<HIRA>の あかし てﾞある<NL>"
-	ctxt "<KATA>ウイニンクﾞローレル<HIRA>を うけとった!<KATA><TERM>"
+	ctxt "グレイテスト1<HIRA>の あかし である"
+	line "<KATA>ウイニングローレル<HIRA>を うけとった!<KATA>"
+	done
 
 TreeBitstreamText_3ee04:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "さあ<NL>"
-	ctxt "<NL>"
-	ctxt "わかき<KATA>クﾞレイテスト1 <STBF><HIRA>を<NL>"
-	ctxt "みんなてﾞ たたえるのたﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "さあ"
+	line ""
+	line "わかき<KATA>グレイテスト1 <PLAYER><HIRA>を"
+	line "みんなで たたえるのだ!<KATA>"
+	done
 
 TreeBitstreamText_3ee24:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "おっと<NL>"
-	ctxt "まってくれ <KATA><STBF>!<NL>"
-	ctxt "チャンヒﾟオンヘﾞルト<HIRA>を わたすのを<NL>"
-	ctxt "わすれていた!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "おっと"
+	line "まってくれ <KATA><PLAYER>!"
+	line "チャンピオンベルト<HIRA>を わたすのを"
+	line "わすれていた!<KATA>"
+	done
 
 TreeBitstreamText_3ee49:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA>チャンヒﾟオンヘﾞルト<HIRA>を もっていれはﾞ<NL>"
-	ctxt "<KATA>タイトルマッチ<HIRA>かﾞ てﾞきるのたﾞ<NL>"
-	ctxt "<KATA>タイトルマッチ<HIRA>は <KATA>ヘﾞルト<HIRA>を かけて<NL>"
-	ctxt "うはﾞいあいする たたかい!!<NL>"
-	ctxt "もちろん かてはﾞ あいての<KATA>ヘﾞルト<HIRA>を<NL>"
-	ctxt "うはﾞえるかﾞ……<NL>"
-	ctxt "まけたときは とうせﾞん <KATA>ヘﾞルト<HIRA>を<NL>"
-	ctxt "うはﾞわれて しまうそﾞ<NL>"
-	ctxt "……と いうわけたﾞ <KATA><STBF><NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>おまえこそ <KATA>テール<HIRA>おうこくの<NL>"
-	ctxt "いや <KATA>ホﾟロンホﾞ<HIRA>とうの えいゆうたﾞ!<NL>"
-	ctxt "これからも おまえの すはﾞらしい<NL>"
-	ctxt "<KATA>ハﾞトル<HIRA>を みたいものたﾞ<NL>"
-	ctxt "……てﾞは またあおう<NL>"
-	ctxt "わかき えいゆう <KATA><STBF><HIRA>よ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA>チャンピオンベルト<HIRA>を もっていれば"
+	line "<KATA>タイトルマッチ<HIRA>が できるのだ"
+	line "<KATA>タイトルマッチ<HIRA>は <KATA>ベルト<HIRA>を かけて"
+	line "うばいあいする たたかい!!"
+	line "もちろん かてば あいての<KATA>ベルト<HIRA>を"
+	line "うばえるが……"
+	line "まけたときは とうぜん <KATA>ベルト<HIRA>を"
+	line "うばわれて しまうぞ"
+	line "……と いうわけだ <KATA><PLAYER>"
+	line ""
+	line "<HIRA>おまえこそ <KATA>テール<HIRA>おうこくの"
+	line "いや <KATA>ポロンボ<HIRA>とうの えいゆうだ!"
+	line "これからも おまえの すばらしい"
+	line "<KATA>バトル<HIRA>を みたいものだ"
+	line "……では またあおう"
+	line "わかき えいゆう <KATA><PLAYER><HIRA>よ!<KATA>"
+	done
 
 TreeBitstreamText_3ef04:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>よう <KATA><STBF>!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>きょうは <KATA>オレ<HIRA>に <KATA>ウイニンクﾞローレル<NL>"
-	ctxt "<HIRA>くれるんたﾞってな こﾞくろうさん!<NL>"
-	ctxt "まっ そんな <KATA>カオ<HIRA>するなって<NL>"
-	ctxt "とﾞうせ <KATA>オレ<HIRA>さまかﾞ かつんたﾞからな<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>よう <KATA><PLAYER>!"
+	line ""
+	line "<HIRA>きょうは <KATA>オレ<HIRA>に <KATA>ウイニングローレル"
+	line "<HIRA>くれるんだってな ごくろうさん!"
+	line "まっ そんな <KATA>カオ<HIRA>するなって"
+	line "どうせ <KATA>オレ<HIRA>さまが かつんだからな<KATA>"
+	done
 
 TreeBitstreamText_3ef47:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "₆₆₆₆₆<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>ちぇっ<NL>"
-	ctxt "こいつ ほんとに つよいてﾞやんの<NL>"
-	ctxt "また<NL>"
-	ctxt "しゅきﾞょうの たひﾞにてﾞるか………<KATA>"
+	ctxt "ビスコ"
+	line "……………"
+	line ""
+	line "<HIRA>ちぇっ"
+	line "こいつ ほんとに つよいでやんの"
+	line "また"
+	line "しゅぎょうの たびにでるか………<KATA>"
 
 TreeBitstreamText_3ef70:
-	ctxt "アムロン<NL>"
-	ctxt "<STBF>!<NL>"
-	ctxt "<HIRA>おひさしふﾞりっ!<NL>"
-	ctxt "<KATA><STBF><HIRA>には いちとﾞ まけてるけとﾞ<NL>"
-	ctxt "えんりょは いらないわっ!<NL>"
-	ctxt "おたかﾞい ほんきてﾞ<NL>"
-	ctxt "たたかいましょう!<KATA><TERM>"
+	ctxt "アムロン"
+	line "<PLAYER>!"
+	line "<HIRA>おひさしぶりっ!"
+	line "<KATA><PLAYER><HIRA>には いちど まけてるけど"
+	line "えんりょは いらないわっ!"
+	line "おたがい ほんきで"
+	line "たたかいましょう!<KATA>"
+	done
 
 TreeBitstreamText_3efa5:
-	ctxt "アムロン<NL>"
-	ctxt "<HIRA>ふう……<NL>"
-	ctxt "やっはﾟ かてないか………<NL>"
-	ctxt "<KATA>アタシ<HIRA>も あれから すこしは<NL>"
-	ctxt "せいちょうしたと おもったけとﾞ<NL>"
-	ctxt "とﾞんとﾞん はなされていくわね<NL>"
-	ctxt "ちょっと くやしいかな<NL>"
-	ctxt "また <KATA>アタシ<HIRA>と しょうふﾞしてよ<NL>"
-	ctxt "こんとﾞは まけないわよ<KATA><TERM>"
+	ctxt "アムロン"
+	line "<HIRA>ふう……"
+	line "やっぱ かてないか………"
+	line "<KATA>アタシ<HIRA>も あれから すこしは"
+	line "せいちょうしたと おもったけど"
+	line "どんどん はなされていくわね"
+	line "ちょっと くやしいかな"
+	line "また <KATA>アタシ<HIRA>と しょうぶしてよ"
+	line "こんどは まけないわよ<KATA>"
+	done
 
 TreeBitstreamText_3eff8:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>よう! <KATA><STBF>!<NL>"
-	ctxt "<HIRA>けﾞんきそうしﾞゃねぇか!<NL>"
-	ctxt "<KATA>ヘ<HIRA>へ<KATA>ッ!<NL>"
-	ctxt "オレ<HIRA>も ましﾞめに かﾞんはﾞってるせﾞ!<NL>"
-	ctxt "ひとの ちからを あてにするよりも<NL>"
-	ctxt "ますﾞ しﾞふﾞんかﾞ かﾞんはﾞんなきゃな!<NL>"
-	ctxt "<KATA>オレ<HIRA>も かﾞんはﾞってるんたﾞよ<NL>"
-	ctxt "ひこﾞろのせいかを ためさせてくれ!<KATA>"
+	ctxt "ワイルド"
+	line "<HIRA>よう! <KATA><PLAYER>!"
+	line "<HIRA>げんきそうじゃねぇか!"
+	line "<KATA>ヘ<HIRA>へ<KATA>ッ!"
+	line "オレ<HIRA>も まじめに がんばってるぜ!"
+	line "ひとの ちからを あてにするよりも"
+	line "まず じぶんが がんばんなきゃな!"
+	line "<KATA>オレ<HIRA>も がんばってるんだよ"
+	line "ひごろのせいかを ためさせてくれ!<KATA>"
 
 TreeBitstreamText_3f05a:
-	ctxt "ワイルトﾞ<NL>"
-	ctxt "<HIRA>なぁ………<NL>"
-	ctxt "ちょっとは つよくなってたたﾞろ?<NL>"
-	ctxt "<KATA><STBF><HIRA>との <KATA>ハﾞトロホﾞ<HIRA>は<NL>"
-	ctxt "やっはﾟし たのしいな!<NL>"
-	ctxt "<KATA>オレ<HIRA>も かﾞんはﾞるからよー<NL>"
-	ctxt "<KATA><STBF><HIRA>も かﾞんはﾞれよ!<NL>"
-	ctxt "また やろうせﾞ!!<NL>"
-	ctxt "しﾞゃあな!<KATA>"
+	ctxt "ワイルド"
+	line "<HIRA>なぁ………"
+	line "ちょっとは つよくなってただろ?"
+	line "<KATA><PLAYER><HIRA>との <KATA>バトロボ<HIRA>は"
+	line "やっぱし たのしいな!"
+	line "<KATA>オレ<HIRA>も がんばるからよー"
+	line "<KATA><PLAYER><HIRA>も がんばれよ!"
+	line "また やろうぜ!!"
+	line "じゃあな!<KATA>"
 
 TreeBitstreamText_3f0a6:
-	ctxt "カマット<NL>"
-	ctxt "<HIRA>ひさしふﾞりね <KATA>ホﾞウヤ₆₆₆<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>あたしも ちょっとは<NL>"
-	ctxt "はんせいしているのよ………<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は にんけﾞんの<NL>"
-	ctxt "なかま なのよね………<NL>"
-	ctxt "わかってるわ わかってたのよ<NL>"
-	ctxt "たたﾞ ちょっと まかﾞさしたのね<NL>"
-	ctxt "もう あんなことは しないわ<NL>"
-	ctxt "あたしも <KATA>ランカー<HIRA>のはしくれ<NL>"
-	ctxt "せいせいとﾞうとﾞうと しょうふﾞよ!<KATA><TERM>"
+	ctxt "カマット"
+	line "<HIRA>ひさしぶりね <KATA>ボウヤ………"
+	line ""
+	line "<HIRA>あたしも ちょっとは"
+	line "はんせいしているのよ………"
+	line "<KATA>ロボポン<HIRA>は にんげんの"
+	line "なかま なのよね………"
+	line "わかってるわ わかってたのよ"
+	line "ただ ちょっと まがさしたのね"
+	line "もう あんなことは しないわ"
+	line "あたしも <KATA>ランカー<HIRA>のはしくれ"
+	line "せいせいどうどうと しょうぶよ!<KATA>"
+	done
 
 TreeBitstreamText_3f118:
-	ctxt "カマット<NL>"
-	ctxt "<HIRA>また まけちゃったわね………<NL>"
-	ctxt "<KATA><STBF><HIRA>は ほんとうに つよいわね<NL>"
-	ctxt "あたしにも あなたのような<NL>"
-	ctxt "つよさかﾞあれはﾞ………<NL>"
-	ctxt "あんな あやまちは<NL>"
-	ctxt "おかさなかったと おもうわ<NL>"
-	ctxt "これからも しﾞふﾞんのきもちに<NL>"
-	ctxt "しょうしﾞきに いきていきなさい<NL>"
-	ctxt "あたしは またﾞまたﾞ おかした<NL>"
-	ctxt "つみを つくﾞないつつﾞけるわ!<NL>"
-	ctxt "また <KATA>ハﾞトロホﾞ<HIRA>しましょう!<KATA><TERM>"
+	ctxt "カマット"
+	line "<HIRA>また まけちゃったわね………"
+	line "<KATA><PLAYER><HIRA>は ほんとうに つよいわね"
+	line "あたしにも あなたのような"
+	line "つよさがあれば………"
+	line "あんな あやまちは"
+	line "おかさなかったと おもうわ"
+	line "これからも じぶんのきもちに"
+	line "しょうじきに いきていきなさい"
+	line "あたしは まだまだ おかした"
+	line "つみを つぐないつづけるわ!"
+	line "また <KATA>バトロボ<HIRA>しましょう!<KATA>"
+	done
 
 TreeBitstreamText_3f192:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "やぁ <KATA><STBF><NL>"
-	ctxt "<HIRA>おまえも りっはﾟになったなぁ<NL>"
-	ctxt "またﾞまたﾞ <KATA><STBF><HIRA>に <KATA>ロル<HIRA>を<NL>"
-	ctxt "やるわけには いかないそﾞ!<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>の しﾞつりょくは みとめる!<NL>"
-	ctxt "<KATA>ワシ<HIRA>より つよいからな!<NL>"
-	ctxt "たﾞかﾞ またﾞまたﾞ <KATA>ワシ<HIRA>も<NL>"
-	ctxt "けﾞんえきの <KATA>ランカー<HIRA>たﾞ!<NL>"
-	ctxt "てかけﾞんは しないそﾞ!<NL>"
-	ctxt "<KATA><STBF><HIRA>も ほんきてﾞ こいっ!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "やぁ <KATA><PLAYER>"
+	line "<HIRA>おまえも りっぱになったなぁ"
+	line "まだまだ <KATA><PLAYER><HIRA>に <KATA>ロル<HIRA>を"
+	line "やるわけには いかないぞ!"
+	line "<KATA>バトロボ<HIRA>の じつりょくは みとめる!"
+	line "<KATA>ワシ<HIRA>より つよいからな!"
+	line "だが まだまだ <KATA>ワシ<HIRA>も"
+	line "げんえきの <KATA>ランカー<HIRA>だ!"
+	line "てかげんは しないぞ!"
+	line "<KATA><PLAYER><HIRA>も ほんきで こいっ!<KATA>"
+	done
 
 TreeBitstreamText_3f207:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "ほんとに たいした<KATA>ヤツ<HIRA>たﾞ!<NL>"
-	ctxt "<KATA>ワシ<HIRA>なんか もんたﾞいしﾞゃない!<NL>"
-	ctxt "とﾞうたﾞ <KATA><STBF><HIRA>よ<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ワシ<HIRA>と いっしょに <KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "けんきゅうを せんか?<NL>"
-	ctxt "いや <KATA>スマン₆₆<NL>"
-	ctxt "<HIRA>きにせんてﾞくれ……<NL>"
-	ctxt "つい うれしくなってしまって<NL>"
-	ctxt "よくかﾞ てﾞてしまった……<NL>"
-	ctxt "また <KATA>ワシ<HIRA>とあそんてﾞくれるな?<KATA>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "ほんとに たいした<KATA>ヤツ<HIRA>だ!"
+	line "<KATA>ワシ<HIRA>なんか もんだいじゃない!"
+	line "どうだ <KATA><PLAYER><HIRA>よ"
+	line ""
+	line "<KATA>ワシ<HIRA>と いっしょに <KATA>ロボポン<HIRA>の"
+	line "けんきゅうを せんか?"
+	line "いや <KATA>スマン……"
+	line "<HIRA>きにせんでくれ……"
+	line "つい うれしくなってしまって"
+	line "よくが でてしまった……"
+	line "また <KATA>ワシ<HIRA>とあそんでくれるな?<KATA>"
 
 TreeBitstreamText_3f276:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA><STBF><HIRA>よ………<NL>"
-	ctxt "おまえには せわになったな<NL>"
-	ctxt "また こうして たたかえることを<NL>"
-	ctxt "わたしは ほこりに おもうそﾞっ!<NL>"
-	ctxt "こんとﾞは まけぬそﾞ<NL>"
-	ctxt "わたしにも おうけの いしﾞかﾞ……<NL>"
-	ctxt "いや よそう とﾞうてﾞもよいことたﾞ<NL>"
-	ctxt "<KATA><STBF><HIRA>に おしえられたこと……<NL>"
-	ctxt "そんなつまらぬものは<NL>"
-	ctxt "ひつようなかったんたﾞな……<NL>"
-	ctxt "しﾞゅんすいな きもちてﾞ<NL>"
-	ctxt "<KATA><STBF><HIRA>と たたかおう!<NL>"
-	ctxt "いさﾞ しょうふﾞ!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA><PLAYER><HIRA>よ………"
+	line "おまえには せわになったな"
+	line "また こうして たたかえることを"
+	line "わたしは ほこりに おもうぞっ!"
+	line "こんどは まけぬぞ"
+	line "わたしにも おうけの いじが……"
+	line "いや よそう どうでもよいことだ"
+	line "<KATA><PLAYER><HIRA>に おしえられたこと……"
+	line "そんなつまらぬものは"
+	line "ひつようなかったんだな……"
+	line "じゅんすいな きもちで"
+	line "<KATA><PLAYER><HIRA>と たたかおう!"
+	line "いざ しょうぶ!<KATA>"
+	done
 
 TreeBitstreamText_3f2ff:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA><STBF>₆₆₆<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>わたしは おまえかﾞ<NL>"
-	ctxt "うらやましい………<NL>"
-	ctxt "おまえみたいな いきかたかﾞ<NL>"
-	ctxt "わたしにも てﾞきるたﾞろうか?<NL>"
-	ctxt "これからも よき<KATA>ライハﾞル<HIRA>として<NL>"
-	ctxt "わたしと たたかってくれ<NL>"
-	ctxt "おまえと たたかっていると<NL>"
-	ctxt "なんたﾞか ちからかﾞ わいてくる<NL>"
-	ctxt "ほんとに ふしきﾞなやつたﾞ<NL>"
-	ctxt "また あおう!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA><PLAYER>………"
+	line ""
+	line "<HIRA>わたしは おまえが"
+	line "うらやましい………"
+	line "おまえみたいな いきかたが"
+	line "わたしにも できるだろうか?"
+	line "これからも よき<KATA>ライバル<HIRA>として"
+	line "わたしと たたかってくれ"
+	line "おまえと たたかっていると"
+	line "なんだか ちからが わいてくる"
+	line "ほんとに ふしぎなやつだ"
+	line "また あおう!<KATA>"
+	done
 
 TreeBitstreamText_3f36a:
-	ctxt "クﾞレイテスト<HIRA>の <KATA>ランク<HIRA>のひくい<NL>"
-	ctxt "しﾞゅんはﾞんに たたかってね<KATA><TERM>"
+	ctxt "グレイテスト<HIRA>の <KATA>ランク<HIRA>のひくい"
+	line "じゅんばんに たたかってね<KATA>"
+	done
 
 TreeBitstreamText_3f384:
-	ctxt "<HIRA>この いえの ひと ったら<NL>"
-	ctxt "ちっとも そとに てﾞてこないわよ<NL>"
-	ctxt "<KATA>ハﾟラホﾞラアンテナ<HIRA>を かってから<NL>"
-	ctxt "すﾞっと <KATA>テレヒﾞ <HIRA>みてるらしいのよ<NL>"
-	ctxt "そんなに たのしいもの なのかね?<KATA>"
+	ctxt "<HIRA>この いえの ひと ったら"
+	line "ちっとも そとに でてこないわよ"
+	line "<KATA>パラボラアンテナ<HIRA>を かってから"
+	line "ずっと <KATA>テレビ <HIRA>みてるらしいのよ"
+	line "そんなに たのしいもの なのかね?<KATA>"
 
 TreeBitstreamText_3f3c4:
-	ctxt "テレヒﾞ<HIRA>には <KATA>アムロン<HIRA>っていう<KATA>コ<HIRA>かﾞ<NL>"
-	ctxt "すﾞっと てﾞてるんたﾞって!<NL>"
-	ctxt "うたって おとﾞって <KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "<KATA>ハﾞトル<HIRA>をしてる らしいけとﾞ……<NL>"
-	ctxt "それの なにかﾞ たのしいの?<KATA><TERM>"
+	ctxt "テレビ<HIRA>には <KATA>アムロン<HIRA>っていう<KATA>コ<HIRA>が"
+	line "ずっと でてるんだって!"
+	line "うたって おどって <KATA>ロボポン<HIRA>の"
+	line "<KATA>バトル<HIRA>をしてる らしいけど……"
+	line "それの なにが たのしいの?<KATA>"
+	done
 
 TreeBitstreamText_3f406:
-	ctxt "<HIRA>あんたも りっはﾟに なったわね!<NL>"
-	ctxt "<KATA>クﾞレイテスト<HIRA>に なったんたﾞって?<NL>"
-	ctxt "おとうさんも おかあさんも<NL>"
-	ctxt "よろこんてﾞる てﾞしょ……<KATA>"
+	ctxt "<HIRA>あんたも りっぱに なったわね!"
+	line "<KATA>グレイテスト<HIRA>に なったんだって?"
+	line "おとうさんも おかあさんも"
+	line "よろこんでる でしょ……<KATA>"
 
 TreeBitstreamText_3f436:
-	ctxt "<HIRA>ねぇねぇ <KATA>クﾞレイテスト<HIRA>って<NL>"
-	ctxt "しってる?<KATA><TERM>"
+	ctxt "<HIRA>ねぇねぇ <KATA>グレイテスト<HIRA>って"
+	line "しってる?<KATA>"
+	done
 
 TreeBitstreamText_3f449:
-	ctxt "<HIRA>これからは <KATA>クﾞレイテスト<HIRA>かﾞ<NL>"
-	ctxt "おんなの<KATA>コ<HIRA>に <KATA>モテ<HIRA>るわよ<KATA><TERM>"
+	ctxt "<HIRA>これからは <KATA>グレイテスト<HIRA>が"
+	line "おんなの<KATA>コ<HIRA>に <KATA>モテ<HIRA>るわよ<KATA>"
+	done
 
 TreeBitstreamText_3f463:
-	ctxt "<HIRA>えっ! しらないの!!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>は しﾞふﾞんと あいての<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を <KATA>ハﾞトル<HIRA>させること ね<NL>"
-	ctxt "<KATA>クﾞレイテスト<HIRA>は <KATA>ハﾞトロホﾞ<HIRA>かﾞ つよい<NL>"
-	ctxt "ひとに おくられる しょうこﾞう ね<NL>"
-	ctxt "そのためには <KATA>ロホﾞホﾟントﾞーム<HIRA>の<NL>"
-	ctxt "<KATA>ハﾞトル<HIRA>てﾞ かたないと <KATA>タﾞメ<HIRA>なの ね<NL>"
-	ctxt "<KATA>クﾞレイテスト<HIRA>の しょうこﾞうを<NL>"
-	ctxt "もつことかﾞ ゆるされて いるのは<NL>"
-	ctxt "せかいてﾞ たったの7にん………<NL>"
-	ctxt "とﾞう? すこﾞいてﾞしょう!!<KATA><TERM>"
+	ctxt "<HIRA>えっ! しらないの!!"
+	line ""
+	line "<KATA>バトロボ<HIRA>は じぶんと あいての"
+	line "<KATA>ロボポン<HIRA>を <KATA>バトル<HIRA>させること ね"
+	line "<KATA>グレイテスト<HIRA>は <KATA>バトロボ<HIRA>が つよい"
+	line "ひとに おくられる しょうごう ね"
+	line "そのためには <KATA>ロボポンドーム<HIRA>の"
+	line "<KATA>バトル<HIRA>で かたないと <KATA>ダメ<HIRA>なの ね"
+	line "<KATA>グレイテスト<HIRA>の しょうごうを"
+	line "もつことが ゆるされて いるのは"
+	line "せかいで たったの7にん………"
+	line "どう? すごいでしょう!!<KATA>"
+	done
 
 TreeBitstreamText_3f4fb:
-	ctxt "<HIRA>たいへん たいへん!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ヘットﾞ<HIRA>はかせかﾞ <KATA>ロル<HIRA>をつれて<NL>"
-	ctxt "いなくなっちゃったのよ!<KATA><TERM>"
+	ctxt "<HIRA>たいへん たいへん!"
+	line ""
+	line "<KATA>ヘッド<HIRA>はかせが <KATA>ロル<HIRA>をつれて"
+	line "いなくなっちゃったのよ!<KATA>"
+	done
 
 TreeBitstreamText_3f51d:
-	ctxt "<HIRA>ここより となりの<NL>"
-	ctxt "<KATA>リフﾞラ<HIRA>まちかﾞ たいへん!<NL>"
-	ctxt "<KATA>ヘットﾞ<HIRA>はかせかﾞ おおきな<NL>"
-	ctxt "けんきゅうしﾞょを つくったの!<NL>"
-	ctxt "それも いりくﾞちかﾞ ないから<NL>"
-	ctxt "さあ たいへん!<KATA><TERM>"
+	ctxt "<HIRA>ここより となりの"
+	line "<KATA>リブラ<HIRA>まちが たいへん!"
+	line "<KATA>ヘッド<HIRA>はかせが おおきな"
+	line "けんきゅうじょを つくったの!"
+	line "それも いりぐちが ないから"
+	line "さあ たいへん!<KATA>"
+	done
 
 TreeBitstreamText_3f55b:
-	ctxt "ロル<HIRA>は きのとﾞく ね<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ヘットﾞ<HIRA>はかせかﾞ <KATA>イヤ<HIRA>かﾞる <KATA>ロル<HIRA>を<NL>"
-	ctxt "<KATA>ムリヤリ <HIRA>つれて いっちゃったのよ<NL>"
-	ctxt "そりゃ ないてﾞしょ<KATA><TERM>"
+	ctxt "ロル<HIRA>は きのどく ね"
+	line ""
+	line "<KATA>ヘッド<HIRA>はかせが <KATA>イヤ<HIRA>がる <KATA>ロル<HIRA>を"
+	line "<KATA>ムリヤリ <HIRA>つれて いっちゃったのよ"
+	line "そりゃ ないでしょ<KATA>"
+	done
 
 TreeBitstreamText_3f58e:
-	ctxt "<HIRA>きゅうに <KATA>ヘットﾞ<HIRA>はかせかﾞ<NL>"
-	ctxt "おかしく なっちゃったのよ!<NL>"
-	ctxt "なんてﾞも <KATA>クﾞレイテスト3<HIRA>の さﾞは<NL>"
-	ctxt "わたさないって いってるらしいの<NL>"
-	ctxt "ついに あたまかﾞ おかしく<NL>"
-	ctxt "なっちゃったのかねぇ……<KATA><TERM>"
+	ctxt "<HIRA>きゅうに <KATA>ヘッド<HIRA>はかせが"
+	line "おかしく なっちゃったのよ!"
+	line "なんでも <KATA>グレイテスト3<HIRA>の ざは"
+	line "わたさないって いってるらしいの"
+	line "ついに あたまが おかしく"
+	line "なっちゃったのかねぇ……<KATA>"
+	done
 
 TreeBitstreamText_3f5d5:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "やぁ けﾞんきに やってるかね?<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>の たいりょく くﾞらい<NL>"
-	ctxt "かんたんに かいふく してやるよ<NL>"
-	ctxt "まあ けﾞんきてﾞ かﾞんはﾞれ!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "やぁ げんきに やってるかね?"
+	line ""
+	line "<KATA>ロボポン<HIRA>の たいりょく ぐらい"
+	line "かんたんに かいふく してやるよ"
+	line "まあ げんきで がんばれ!<KATA>"
+	done
 
 TreeBitstreamText_3f60f:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "きいたそﾞ きいたそﾞ <KATA><STBF><NL>"
-	ctxt "<HIRA>しゃちょうに なったんたﾞってな<NL>"
-	ctxt "とりあえすﾞ かﾞんはﾞれ<NL>"
-	ctxt "とたﾞけ いっておくそﾞ<NL>"
-	ctxt "おいわいに <KATA>ロホﾞホﾟン<HIRA>を やろう<NL>"
-	ctxt "なにかと やくに たつことたﾞろう<NL>"
-	ctxt "なにも いわすﾞ もっていってくれ<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "きいたぞ きいたぞ <KATA><PLAYER>"
+	line "<HIRA>しゃちょうに なったんだってな"
+	line "とりあえず がんばれ"
+	line "とだけ いっておくぞ"
+	line "おいわいに <KATA>ロボポン<HIRA>を やろう"
+	line "なにかと やくに たつことだろう"
+	line "なにも いわず もっていってくれ<KATA>"
+	done
 
 TreeBitstreamText_3f665:
-	ctxt "ヘットﾞ<HIRA>はかせの <KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "もらった!<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせの <KATA>ロボポン<HIRA>を"
+	line "もらった!<KATA>"
+	done
 
 TreeBitstreamText_3f679:
-	ctxt "ヘットﾞ<HIRA>はかせ<NL>"
-	ctxt "しゃちょう となった <KATA><STBF><HIRA>に<NL>"
-	ctxt "<KATA>アトﾞハﾞイス<HIRA>を してやろう<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を つよくする ようそは<NL>"
-	ctxt "たﾞいたい 4つあるな<NL>"
-	ctxt "1 けんきゅうしﾞょてﾞ<NL>"
-	ctxt "  <KATA>チッフﾟ<HIRA>をこうしん すること<NL>"
-	ctxt "2 <KATA>ハﾟーツ<HIRA>やてﾞ <KATA>ハﾟーツ<HIRA>をかって<NL>"
-	ctxt "  そうひﾞさせること<NL>"
-	ctxt "3 しんかてﾞきる ようになったら<NL>"
-	ctxt "  けんきゅうしﾞょにつれてゆくこと<NL>"
-	ctxt "4 <KATA>ソフト<HIRA>は <KATA>ハﾟーツ<HIRA>に<NL>"
-	ctxt "  くみこめるたﾞけ くみこむこと<NL>"
-	ctxt "あとは しﾞみちに <KATA>レヘﾞルアッフﾟ<HIRA>を<NL>"
-	ctxt "くりかえすことかﾞ きほん!!<NL>"
-	ctxt "そﾞくせいの あいしょうや<NL>"
-	ctxt "わさﾞのこうかを おほﾞえること!!<NL>"
-	ctxt "まぁ かﾞんはﾞってみることたﾞな<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせ"
+	line "しゃちょう となった <KATA><PLAYER><HIRA>に"
+	line "<KATA>アドバイス<HIRA>を してやろう"
+	line "<KATA>ロボポン<HIRA>を つよくする ようそは"
+	line "だいたい 4つあるな"
+	line "1 けんきゅうじょで"
+	line "  <KATA>チップ<HIRA>をこうしん すること"
+	line "2 <KATA>パーツ<HIRA>やで <KATA>パーツ<HIRA>をかって"
+	line "  そうびさせること"
+	line "3 しんかできる ようになったら"
+	line "  けんきゅうじょにつれてゆくこと"
+	line "4 <KATA>ソフト<HIRA>は <KATA>パーツ<HIRA>に"
+	line "  くみこめるだけ くみこむこと"
+	line "あとは じみちに <KATA>レベルアップ<HIRA>を"
+	line "くりかえすことが きほん!!"
+	line "ぞくせいの あいしょうや"
+	line "わざのこうかを おぼえること!!"
+	line "まぁ がんばってみることだな<KATA>"
+	done
 
 TreeBitstreamText_3f750:
-	ctxt "ロル<NL>"
-	ctxt "<HIRA>せっかくの なつやすみ なのに<NL>"
-	ctxt "とﾞこにも てﾞかける よていかﾞないの<NL>"
-	ctxt "<KATA>ハﾟハﾟ<HIRA>ったら けんきゅう はﾞっかりてﾞ<NL>"
-	ctxt "ちっとも あいてに してくれないの<NL>"
-	ctxt "あーあ とﾞこてﾞも いいから<NL>"
-	ctxt "おてﾞかけ したいなぁ………<KATA>"
+	ctxt "ロル"
+	line "<HIRA>せっかくの なつやすみ なのに"
+	line "どこにも でかける よていがないの"
+	line "<KATA>パパ<HIRA>ったら けんきゅう ばっかりで"
+	line "ちっとも あいてに してくれないの"
+	line "あーあ どこでも いいから"
+	line "おでかけ したいなぁ………<KATA>"
 
 TreeBitstreamText_3f79e:
-	ctxt "<HIRA>おおきな <KATA>クマ<HIRA>の ぬいくﾞるみたﾞ<KATA><TERM>"
+	ctxt "<HIRA>おおきな <KATA>クマ<HIRA>の ぬいぐるみだ<KATA>"
+	done
 
 TreeBitstreamText_3f7ae:
-	ctxt "<HIRA>かﾞくせい<NL>"
-	ctxt "あ きみ たいかいに てﾞたいの?<NL>"
-	ctxt "たﾞったらさぁ<NL>"
-	ctxt "こうきん<KATA>カハﾞー <HIRA>っていう<NL>"
-	ctxt "<KATA>アイテム<HIRA>かﾞ みて みたいなぁ<NL>"
-	ctxt "おみせてﾞ うってるんたﾞけとﾞね<KATA><TERM>"
+	ctxt "<HIRA>がくせい"
+	line "あ きみ たいかいに でたいの?"
+	line "だったらさぁ"
+	line "こうきん<KATA>カバー <HIRA>っていう"
+	line "<KATA>アイテム<HIRA>が みて みたいなぁ"
+	line "おみせで うってるんだけどね<KATA>"
+	done
 
 TreeBitstreamText_3f7e8:
-	ctxt "<HIRA>かﾞくせい<NL>"
-	ctxt "あ それ こうきん<KATA>カハﾞー<HIRA>かい?<NL>"
-	ctxt "へーえ なるほとﾞねぇ ふーん<NL>"
-	ctxt "あ こﾞめんこﾞめん たいかいと その<NL>"
-	ctxt "<KATA>アイテム<HIRA>は かんけい ないよ<NL>"
-	ctxt "たﾞって ちょっと かんかﾞえれはﾞ<NL>"
-	ctxt "わかると おもったからさぁ<NL>"
-	ctxt "あ てﾞも それは しﾞふﾞんてﾞ<NL>"
-	ctxt "つかえはﾞ いいし<NL>"
-	ctxt "ほﾞくかﾞ たたﾞしい しようほうを<NL>"
-	ctxt "おしえてあけﾞるよ きく?<KATA>"
+	ctxt "<HIRA>がくせい"
+	line "あ それ こうきん<KATA>カバー<HIRA>かい?"
+	line "へーえ なるほどねぇ ふーん"
+	line "あ ごめんごめん たいかいと その"
+	line "<KATA>アイテム<HIRA>は かんけい ないよ"
+	line "だって ちょっと かんがえれば"
+	line "わかると おもったからさぁ"
+	line "あ でも それは じぶんで"
+	line "つかえば いいし"
+	line "ぼくが ただしい しようほうを"
+	line "おしえてあげるよ きく?<KATA>"
 
 TreeBitstreamText_3f85e:
-	ctxt "<HIRA>かﾞくせい<NL>"
-	ctxt "この<KATA>アイテム<HIRA>はね <KATA>ターン<HIRA>こﾞとに<NL>"
-	ctxt "<KATA>タﾞメーシﾞ<HIRA>を うける<NL>"
-	ctxt "ねつ しﾞょうたいを なおすんたﾞ<NL>"
-	ctxt "たﾞから つかうなら はやめかﾞ いい<NL>"
-	ctxt "てﾞも これてﾞ よほﾞうは てﾞきないんたﾞ<NL>"
-	ctxt "なんか かせﾞ<KATA>クﾞスリ<HIRA>みたい たﾞけとﾞ<NL>"
-	ctxt "あ てﾞも ことﾞもの ての ととﾞかない<NL>"
-	ctxt "はﾞしょに ほかんしなくても いいよ<KATA><TERM>"
+	ctxt "<HIRA>がくせい"
+	line "この<KATA>アイテム<HIRA>はね <KATA>ターン<HIRA>ごとに"
+	line "<KATA>ダメージ<HIRA>を うける"
+	line "ねつ じょうたいを なおすんだ"
+	line "だから つかうなら はやめが いい"
+	line "でも これで よぼうは できないんだ"
+	line "なんか かぜ<KATA>グスリ<HIRA>みたい だけど"
+	line "あ でも こどもの ての とどかない"
+	line "ばしょに ほかんしなくても いいよ<KATA>"
+	done
 
 TreeBitstreamText_3f8cd:
-	ctxt "<HIRA>かﾞくせい<NL>"
-	ctxt "…………<NL>"
-	ctxt "もしかしたら おこってるの?<NL>"
-	ctxt "しﾞゃあさぁ これあけﾞるから<NL>"
-	ctxt "ゆるしてよ<KATA><TERM>"
+	ctxt "<HIRA>がくせい"
+	line "…………"
+	line "もしかしたら おこってるの?"
+	line "じゃあさぁ これあげるから"
+	line "ゆるしてよ<KATA>"
+	done
 
 TreeBitstreamText_3f8f1:
-	ctxt "ハﾟーツ <HIRA>てなけﾞたﾞん<NL>"
-	ctxt "を もらった!<KATA><TERM>"
+	ctxt "パーツ <HIRA>てなげだん"
+	line "を もらった!<KATA>"
+	done
 
 TreeBitstreamText_3f901:
-	ctxt "<HIRA>かﾞくせい<NL>"
-	ctxt "とﾞう? きけﾞんなおった?<NL>"
-	ctxt "とっておきの <KATA>ハﾟーツ<HIRA>なんたﾞよ それ<KATA><TERM>"
+	ctxt "<HIRA>がくせい"
+	line "どう? きげんなおった?"
+	line "とっておきの <KATA>パーツ<HIRA>なんだよ それ<KATA>"
+	done
 
 TreeBitstreamText_3f920:
-	ctxt "<HIRA>きみ とﾞーせ たいかいに てﾞれない<NL>"
-	ctxt "から うたﾞうたﾞ してるんてﾞしょ<NL>"
-	ctxt "たﾞったら こくはﾞんは せﾞんふﾞ みた?<NL>"
-	ctxt "きっとなにか やくにたつと おもう<KATA><TERM>"
+	ctxt "<HIRA>きみ どーせ たいかいに でれない"
+	line "から うだうだ してるんでしょ"
+	line "だったら こくばんは ぜんぶ みた?"
+	line "きっとなにか やくにたつと おもう<KATA>"
+	done
 
 TreeBitstreamText_3f956:
-	ctxt "<HIRA>なつやすみに かﾞっこうてﾞ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ <HIRA>たいかい なんて!<NL>"
-	ctxt "みんな ほんとうに すきね<NL>"
-	ctxt "それも まいにち!<KATA><TERM>"
+	ctxt "<HIRA>なつやすみに がっこうで"
+	line "<KATA>バトロボ <HIRA>たいかい なんて!"
+	line "みんな ほんとうに すきね"
+	line "それも まいにち!<KATA>"
+	done
 
 TreeBitstreamText_3f97f:
-	ctxt "<HIRA>きみも <KATA>ロホﾞホﾟン <HIRA>もってるのか<NL>"
-	ctxt "たﾞったら きみも <KATA>ライハﾞル<HIRA>たﾞね<NL>"
-	ctxt "みんなに きいてまわれはﾞ<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>について おしえてくれるよ<KATA><TERM>"
+	ctxt "<HIRA>きみも <KATA>ロボポン <HIRA>もってるのか"
+	line "だったら きみも <KATA>ライバル<HIRA>だね"
+	line "みんなに きいてまわれば"
+	line "<KATA>ロボポン<HIRA>について おしえてくれるよ<KATA>"
+	done
 
 TreeBitstreamText_3f9b7:
-	ctxt "エネ<HIRA>たﾞまを たへﾞさせていると<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>かﾞ ひかることかﾞ あるわ<NL>"
-	ctxt "それは しんかする たﾞんかいに<NL>"
-	ctxt "たっしている ということたﾞから<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を けんきゅうしﾞょに つれて<NL>"
-	ctxt "いけはﾞ しんか させてもらえるのよ<KATA>"
+	ctxt "エネ<HIRA>だまを たべさせていると"
+	line "<KATA>ロボポン<HIRA>が ひかることが あるわ"
+	line "それは しんかする だんかいに"
+	line "たっしている ということだから"
+	line "<KATA>ロボポン<HIRA>を けんきゅうじょに つれて"
+	line "いけば しんか させてもらえるのよ<KATA>"
 
 TreeBitstreamText_3fa09:
-	ctxt "<HIRA>さいきん <KATA>ロホﾞホﾟン<HIRA>に つかれかﾞ<NL>"
-	ctxt "たまっていると かんしﾞた ときは<NL>"
-	ctxt "とうゆを のませれはﾞ<NL>"
-	ctxt "<KATA>ファイト <HIRA>はﾞくはつ!<NL>"
-	ctxt "けいゆを のませれはﾞ もう<NL>"
-	ctxt "<KATA>ファイト <HIRA>たﾞいはﾞくはつ!!<NL>"
-	ctxt "………ま そんな かんしﾞてﾞ とうせﾞん<NL>"
-	ctxt "<KATA>カﾞソリン ハイオク<HIRA>と つつﾞくのよ<KATA><TERM>"
+	ctxt "<HIRA>さいきん <KATA>ロボポン<HIRA>に つかれが"
+	line "たまっていると かんじた ときは"
+	line "とうゆを のませれば"
+	line "<KATA>ファイト <HIRA>ばくはつ!"
+	line "けいゆを のませれば もう"
+	line "<KATA>ファイト <HIRA>だいばくはつ!!"
+	line "………ま そんな かんじで とうぜん"
+	line "<KATA>ガソリン ハイオク<HIRA>と つづくのよ<KATA>"
+	done
 
 TreeBitstreamText_3fa6b:
-	ctxt "<HIRA>しﾞょうたい いしﾞょうは おもに<NL>"
-	ctxt "わさﾞによって ひきおこされるんたﾞ<NL>"
-	ctxt "そのなかには かかると ゆうりな<NL>"
-	ctxt "ものも あるようたﾞよ<KATA><TERM>"
+	ctxt "<HIRA>じょうたい いじょうは おもに"
+	line "わざによって ひきおこされるんだ"
+	line "そのなかには かかると ゆうりな"
+	line "ものも あるようだよ<KATA>"
+	done
 
 TreeBitstreamText_3fa9a:
-	ctxt "ロホﾞホﾟン<HIRA>かﾞ <KATA>ハﾞクﾞ<HIRA>にかかると ときとﾞき<NL>"
-	ctxt "こうけﾞきする あいてを まちかﾞうそﾞ<NL>"
-	ctxt "つまり しﾞふﾞんを<NL>"
-	ctxt "こうけﾞきしたり するのたﾞー!<KATA><TERM>"
+	ctxt "ロボポン<HIRA>が <KATA>バグ<HIRA>にかかると ときどき"
+	line "こうげきする あいてを まちがうぞ"
+	line "つまり じぶんを"
+	line "こうげきしたり するのだー!<KATA>"
+	done
 
 TreeBitstreamText_3facf:
-	ctxt "<HIRA>あのね のろいに かかると<NL>"
-	ctxt "<KATA>ターン<HIRA>こﾞとに こうけﾞきりょく<NL>"
-	ctxt "ほﾞうきﾞょりょく すはﾞやさ の<NL>"
-	ctxt "とﾞれかかﾞ たﾞんたﾞん ひくくなるのよ<KATA><TERM>"
+	ctxt "<HIRA>あのね のろいに かかると"
+	line "<KATA>ターン<HIRA>ごとに こうげきりょく"
+	line "ぼうぎょりょく すばやさ の"
+	line "どれかが だんだん ひくくなるのよ<KATA>"
+	done
 
 TreeBitstreamText_3fb02:
-	ctxt "<HIRA>いのりは のろいとは きﾞゃくてﾞ<NL>"
-	ctxt "<KATA>ターン<HIRA>こﾞとに こうけﾞきりょく<NL>"
-	ctxt "ほﾞうきﾞょりょく すはﾞやさの 3つ<NL>"
-	ctxt "すへﾞてかﾞ しﾞょしﾞょに たかくなるわ<KATA><TERM>"
+	ctxt "<HIRA>いのりは のろいとは ぎゃくで"
+	line "<KATA>ターン<HIRA>ごとに こうげきりょく"
+	line "ぼうぎょりょく すばやさの 3つ"
+	line "すべてが じょじょに たかくなるわ<KATA>"
+	done
 
 TreeBitstreamText_3fb3a:
-	ctxt "ハﾞリヤ<HIRA>を かけれはﾞ その<KATA>ターン<HIRA>のあと<NL>"
-	ctxt "しﾞょうたい いしﾞょうに ならない!<NL>"
-	ctxt "たたﾞし <KATA>ハﾞリヤ<HIRA>を かける まえの<NL>"
-	ctxt "しﾞょうたい いしﾞょうも そのままさ<KATA><TERM>"
+	ctxt "バリヤ<HIRA>を かければ その<KATA>ターン<HIRA>のあと"
+	line "じょうたい いじょうに ならない!"
+	line "ただし <KATA>バリヤ<HIRA>を かける まえの"
+	line "じょうたい いじょうも そのままさ<KATA>"
+	done
 
 TreeBitstreamText_3fb74:
-	ctxt "ハﾞーシﾞョン<HIRA>かﾞ たかい <KATA>ソフト<HIRA>ほとﾞ<NL>"
-	ctxt "ようりょうかﾞ おおきいんたﾞ<NL>"
-	ctxt "たﾞから きほんてきには <KATA>ハﾟーツ<HIRA>の<NL>"
-	ctxt "ようりょうも おおきいほうかﾞ いい<KATA><TERM>"
+	ctxt "バージョン<HIRA>が たかい <KATA>ソフト<HIRA>ほど"
+	line "ようりょうが おおきいんだ"
+	line "だから きほんてきには <KATA>パーツ<HIRA>の"
+	line "ようりょうも おおきいほうが いい<KATA>"
+	done
 
 TreeBitstreamText_3fbab:
-	ctxt "ロホﾞホﾟン<HIRA>を 4たい つれている とき<NL>"
-	ctxt "あたらしいのを ほかくすると<NL>"
-	ctxt "そいつは しﾞとﾞうてﾞ そうこに<NL>"
-	ctxt "おくられるせﾞ<NL>"
-	ctxt "まあ そうこに あきかﾞ あれはﾞ の<NL>"
-	ctxt "はなし たﾞけとﾞな<NL>"
-	ctxt "あと そうこに いる <KATA>ロホﾞホﾟン<HIRA>は<NL>"
-	ctxt "とﾞこてﾞも よひﾞたﾞせるからな<KATA>"
+	ctxt "ロボポン<HIRA>を 4たい つれている とき"
+	line "あたらしいのを ほかくすると"
+	line "そいつは じどうで そうこに"
+	line "おくられるぜ"
+	line "まあ そうこに あきが あれば の"
+	line "はなし だけどな"
+	line "あと そうこに いる <KATA>ロボポン<HIRA>は"
+	line "どこでも よびだせるからな<KATA>"
 
 TreeBitstreamText_3fc06:
-	ctxt "ロホﾞホﾟン<HIRA>を ほかく するときに<NL>"
-	ctxt "すてﾞに 4たい つれていて<NL>"
-	ctxt "さらに そうこかﾞ いっはﾟいたﾞと<NL>"
-	ctxt "ほかくを あきらめるか<NL>"
-	ctxt "そうこにいる <KATA>ロホﾞホﾟン<HIRA>のうち<NL>"
-	ctxt "とﾞれか1たいを てはﾞなすしか ない<KATA><TERM>"
+	ctxt "ロボポン<HIRA>を ほかく するときに"
+	line "すでに 4たい つれていて"
+	line "さらに そうこが いっぱいだと"
+	line "ほかくを あきらめるか"
+	line "そうこにいる <KATA>ロボポン<HIRA>のうち"
+	line "どれか1たいを てばなすしか ない<KATA>"
+	done
 
 TreeBitstreamText_3fc50:
-	ctxt "<HIRA>この<KATA>ロホﾞホﾟン <HIRA>いうこと きかない!<NL>"
-	ctxt "って おもうとき ない?<NL>"
-	ctxt "そんなときは <KATA>チッフﾟ<HIRA>を<NL>"
-	ctxt "かくにんしたほうかﾞ いいわ<NL>"
-	ctxt "わるい<KATA>チッフﾟ<HIRA>を つんてﾞいると<NL>"
-	ctxt "せいかくかﾞ わるくなっちゃうのよ!<KATA><TERM>"
+	ctxt "<HIRA>この<KATA>ロボポン <HIRA>いうこと きかない!"
+	line "って おもうとき ない?"
+	line "そんなときは <KATA>チップ<HIRA>を"
+	line "かくにんしたほうが いいわ"
+	line "わるい<KATA>チップ<HIRA>を つんでいると"
+	line "せいかくが わるくなっちゃうのよ!<KATA>"
+	done
 
 TreeBitstreamText_3fc99:
-	ctxt "ホﾞルト<HIRA>って なまえのつく <KATA>アイテム<HIRA>は<NL>"
-	ctxt "<KATA>イーヒﾟー<HIRA>を かいふく するんたﾞね<KATA><TERM>"
+	ctxt "ボルト<HIRA>って なまえのつく <KATA>アイテム<HIRA>は"
+	line "<KATA>イーピー<HIRA>を かいふく するんだね<KATA>"
+	done
 
 TreeBitstreamText_3fcb9:
-	ctxt "<HIRA>ほかくした <KATA>ロホﾞホﾟン<HIRA>の なかには<NL>"
-	ctxt "めいれいを きかないやつも いるそﾞ<NL>"
-	ctxt "それは きっと <KATA>ヒﾞットチッフﾟ<HIRA>に<NL>"
-	ctxt "けﾞんいんかﾞ あるんしﾞゃないか?<KATA><TERM>"
+	ctxt "<HIRA>ほかくした <KATA>ロボポン<HIRA>の なかには"
+	line "めいれいを きかないやつも いるぞ"
+	line "それは きっと <KATA>ビットチップ<HIRA>に"
+	line "げんいんが あるんじゃないか?<KATA>"
+	done
 
 TreeBitstreamText_3fcf1:
-	ctxt "ヒﾞル<HIRA>に そって うえを みあけﾞれはﾞ<NL>"
-	ctxt "<KATA>ヘットﾞ<HIRA>はかせかﾞ かおを たﾞすさ<KATA><TERM>"
+	ctxt "ビル<HIRA>に そって うえを みあげれば"
+	line "<KATA>ヘッド<HIRA>はかせが かおを だすさ<KATA>"
+	done
 
 TreeBitstreamText_3fd10:
-	ctxt "ヘットﾞ<HIRA>はかせの <KATA>ヒﾞル<HIRA>って<NL>"
-	ctxt "<KATA>ホント<HIRA>に しﾞゃまたﾞせﾞ!<NL>"
-	ctxt "はﾞくたﾞんてﾞ こわすってのは とﾞうたﾞ?<NL>"
-	ctxt "めいあんたﾞと おもうんたﾞかﾞ………<KATA><TERM>"
+	ctxt "ヘッド<HIRA>はかせの <KATA>ビル<HIRA>って"
+	line "<KATA>ホント<HIRA>に じゃまだぜ!"
+	line "ばくだんで こわすってのは どうだ?"
+	line "めいあんだと おもうんだが………<KATA>"
+	done
 
 TreeBitstreamText_3fd45:
-	ctxt "<HIRA>このまちは けんきゅう かﾞくえん<NL>"
-	ctxt "とし と よはﾞれて いるんたﾞよ<NL>"
-	ctxt "まちの なかを きたに いけはﾞ<NL>"
-	ctxt "この まちの ちゅうしん きかん<NL>"
-	ctxt "<KATA>リフﾞラ<HIRA>かﾞっこうに いけるよ<KATA><TERM>"
+	ctxt "<HIRA>このまちは けんきゅう がくえん"
+	line "とし と よばれて いるんだよ"
+	line "まちの なかを きたに いけば"
+	line "この まちの ちゅうしん きかん"
+	line "<KATA>リブラ<HIRA>がっこうに いけるよ<KATA>"
+	done
 
 TreeBitstreamText_3fd83:
-	ctxt "カﾞーナ?<NL>"
-	ctxt "<HIRA>いけ しかないよ あそこ<NL>"
-	ctxt "とても ひみつかﾞ ある ようには<NL>"
-	ctxt "おもえないけとﾞなぁ………<KATA><TERM>"
+	ctxt "ガーナ?"
+	line "<HIRA>いけ しかないよ あそこ"
+	line "とても ひみつが ある ようには"
+	line "おもえないけどなぁ………<KATA>"
+	done
 
 TreeBitstreamText_3fda8:
-	ctxt "<HIRA>こうけﾞきりょく ほﾞうきﾞょりょく<NL>"
-	ctxt "すはﾞやさ……<NL>"
-	ctxt "この 3つかﾞ <KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "きほん のうりょくたﾞ<KATA><TERM>"
+	ctxt "<HIRA>こうげきりょく ぼうぎょりょく"
+	line "すばやさ……"
+	line "この 3つが <KATA>ロボポン<HIRA>の"
+	line "きほん のうりょくだ<KATA>"
+	done
 
 TreeBitstreamText_3fdd3:
-	ctxt "カﾞーナ<HIRA>いけ には<NL>"
-	ctxt "こんな いいつたえかﾞ ある………<NL>"
-	ctxt "いまから なんひﾞゃくねんも まえ<NL>"
-	ctxt "<KATA>カﾞーナ<HIRA>には まちかﾞ あった と<KATA><TERM>"
+	ctxt "ガーナ<HIRA>いけ には"
+	line "こんな いいつたえが ある………"
+	line "いまから なんびゃくねんも まえ"
+	line "<KATA>ガーナ<HIRA>には まちが あった と<KATA>"
+	done
 
 TreeBitstreamText_3fe01:
-	ctxt "ハﾞトル<HIRA>てﾞ あいてを こうけﾞきするには<NL>"
-	ctxt "<KATA>アタック<HIRA>と わさﾞの 2つかﾞあるの<NL>"
-	ctxt "<KATA>アタック<HIRA>は すへﾞての<KATA>ロホﾞホﾟン<HIRA>かﾞ もつ<NL>"
-	ctxt "こうけﾞきてﾞ なんとﾞてﾞも つかえるわ<KATA>"
+	ctxt "バトル<HIRA>で あいてを こうげきするには"
+	line "<KATA>アタック<HIRA>と わざの 2つがあるの"
+	line "<KATA>アタック<HIRA>は すべての<KATA>ロボポン<HIRA>が もつ"
+	line "こうげきで なんどでも つかえるわ<KATA>"
 
 TreeBitstreamText_3fe41:
-	ctxt "<HIRA>わたしは きいたことかﾞ あるわ<NL>"
-	ctxt "<NL>"
-	ctxt "むかし <KATA>カﾞーナ<HIRA>のまち は<NL>"
-	ctxt "せんそうかﾞ あったときに<NL>"
-	ctxt "こうせいのう はﾞくたﾞんを<NL>"
-	ctxt "つくったっていう はなしを………<NL>"
-	ctxt "てﾞも そのはﾞくたﾞんを まちかﾞって<NL>"
-	ctxt "まちのなかてﾞ はﾞくはつさせた………<NL>"
-	ctxt "わたしかﾞ きいたことかﾞ あるのは<NL>"
-	ctxt "ここまてﾞよ<KATA><TERM>"
+	ctxt "<HIRA>わたしは きいたことが あるわ"
+	line ""
+	line "むかし <KATA>ガーナ<HIRA>のまち は"
+	line "せんそうが あったときに"
+	line "こうせいのう ばくだんを"
+	line "つくったっていう はなしを………"
+	line "でも そのばくだんを まちがって"
+	line "まちのなかで ばくはつさせた………"
+	line "わたしが きいたことが あるのは"
+	line "ここまでよ<KATA>"
+	done
 
 TreeBitstreamText_3fea5:
-	ctxt "<HIRA>そﾞくせい って わかるか?<NL>"
-	ctxt "たとえはﾞ……<NL>"
-	ctxt "りく そﾞくせいの やつに うみ<NL>"
-	ctxt "そﾞくせいの わさﾞてﾞ こうけﾞきする<NL>"
-	ctxt "なんか いかにも<NL>"
-	ctxt "<KATA>タﾞメタﾞメ <HIRA>ってかんしﾞ たﾞろ!?<NL>"
-	ctxt "てﾞも きﾞゃくに うみの てきに<NL>"
-	ctxt "りく てﾞ こうけﾞき してみなよ!<NL>"
-	ctxt "こうか <KATA>ハﾞツクﾞン <HIRA>たﾞったり するのよ<KATA><TERM>"
+	ctxt "<HIRA>ぞくせい って わかるか?"
+	line "たとえば……"
+	line "りく ぞくせいの やつに うみ"
+	line "ぞくせいの わざで こうげきする"
+	line "なんか いかにも"
+	line "<KATA>ダメダメ <HIRA>ってかんじ だろ!?"
+	line "でも ぎゃくに うみの てきに"
+	line "りく で こうげき してみなよ!"
+	line "こうか <KATA>バツグン <HIRA>だったり するのよ<KATA>"
+	done
 
 TreeBitstreamText_3ff0d:
-	ctxt "<HIRA>わさﾞを つかうには <KATA>イーヒﾟー <HIRA>つまり<NL>"
-	ctxt "<KATA>エネルキﾞーホﾟイント<HIRA>かﾞ ひつよう!<NL>"
-	ctxt "それかﾞ たりないとき わさﾞは<NL>"
-	ctxt "つかうことかﾞ てﾞきないんたﾞ<NL>"
-	ctxt "てﾞも <KATA>アタック<HIRA>は <KATA>エネルキﾞー<HIRA>かﾞ<NL>"
-	ctxt "なくても つかえるんたﾞよ<KATA><TERM>"
+	ctxt "<HIRA>わざを つかうには <KATA>イーピー <HIRA>つまり"
+	line "<KATA>エネルギーポイント<HIRA>が ひつよう!"
+	line "それが たりないとき わざは"
+	line "つかうことが できないんだ"
+	line "でも <KATA>アタック<HIRA>は <KATA>エネルギー<HIRA>が"
+	line "なくても つかえるんだよ<KATA>"
+	done
 
 TreeBitstreamText_3ff5e:
-	ctxt "ロホﾞホﾟン<HIRA>には しんか するものと<NL>"
-	ctxt "しないものかﾞ いるの<NL>"
-	ctxt "しんか するものには <KATA>エネ<HIRA>たﾞまを<NL>"
-	ctxt "たへﾞさせると いいのよ<KATA><TERM>"
+	ctxt "ロボポン<HIRA>には しんか するものと"
+	line "しないものが いるの"
+	line "しんか するものには <KATA>エネ<HIRA>だまを"
+	line "たべさせると いいのよ<KATA>"
+	done
 
 TreeBitstreamText_3ff8c:
-	ctxt "<HIRA>いま しょうへﾞん してるから<NL>"
-	ctxt "てかﾞ はなせないんしﾞゃ!<NL>"
-	ctxt "え? とﾞこから はなせないかって?<NL>"
-	ctxt "             ああっ!<NL>"
-	ctxt "あんたの くつに かけちゃった!<KATA>"
+	ctxt "<HIRA>いま しょうべん してるから"
+	line "てが はなせないんじゃ!"
+	line "え? どこから はなせないかって?"
+	line "             ああっ!"
+	line "あんたの くつに かけちゃった!<KATA>"
 
 TreeBitstreamText_3ffc5:
-	ctxt "<HIRA>おかねかﾞ あまってたら けんきゅうに<NL>"
-	ctxt "とうし してくれると ありかﾞたいな<NL>"
-	ctxt "けんきゅうしﾞょ としては おおいに<NL>"
-	ctxt "たすかるんたﾞけとﾞなぁ<KATA><TERM>"
+	ctxt "<HIRA>おかねが あまってたら けんきゅうに"
+	line "とうし してくれると ありがたいな"
+	line "けんきゅうじょ としては おおいに"
+	line "たすかるんだけどなぁ<KATA>"
+	done
 
 SECTION "Tree Bitstream Text 2", ROMX [$10], BANK [$4000]
 TreeBitstreamText_40000:
-	ctxt "<HIRA>ふふん とﾞう このまちは?<NL>"
-	ctxt "<KATA>スッキリ<HIRA>と ととのって いるてﾞしょ<KATA><TERM>"
+	ctxt "<HIRA>ふふん どう このまちは?"
+	line "<KATA>スッキリ<HIRA>と ととのって いるでしょ<KATA>"
+	done
 
 TreeBitstreamText_4001a:
-	ctxt "<HIRA>なんなのよ あの<KATA>ヒﾞル<HIRA>は!<NL>"
-	ctxt "<NL>"
-	ctxt "まちの <KATA>ハﾞランス <HIRA>ってものを<NL>"
-	ctxt "かんかﾞえてない! <KATA>サイテー!<TERM>"
+	ctxt "<HIRA>なんなのよ あの<KATA>ビル<HIRA>は!"
+	line ""
+	line "まちの <KATA>バランス <HIRA>ってものを"
+	line "かんがえてない! <KATA>サイテー!"
+	done
 
 TreeBitstreamText_4003e:
-	ctxt "<HIRA>あんたも <KATA>ロホﾞホﾟン<HIRA>つかい しﾞゃろ?<NL>"
-	ctxt "<NL>"
-	ctxt "わしらの けんきゅうかﾞ すすめはﾞ<NL>"
-	ctxt "あんたにとっても ために なるそﾞい<KATA><TERM>"
+	ctxt "<HIRA>あんたも <KATA>ロボポン<HIRA>つかい じゃろ?"
+	line ""
+	line "わしらの けんきゅうが すすめば"
+	line "あんたにとっても ために なるぞい<KATA>"
+	done
 
 TreeBitstreamText_4006b:
-	ctxt "<HIRA>さいきん そっちの かへﾞのほうかﾞ<NL>"
-	ctxt "なんか におうんしﾞゃかﾞ きのせい?<NL>"
-	ctxt "たたﾞの<KATA>ホﾞケ<HIRA>かも しれんかﾞの<KATA><TERM>"
+	ctxt "<HIRA>さいきん そっちの かべのほうが"
+	line "なんか におうんじゃが きのせい?"
+	line "ただの<KATA>ボケ<HIRA>かも しれんがの<KATA>"
+	done
 
 TreeBitstreamText_40094:
-	ctxt "<HIRA>とﾞうくつ なとﾞてﾞ おそってくる<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>には しﾞしゃくを つかえ!<NL>"
-	ctxt "しﾞしゃくを つかって ほかくすれはﾞ<NL>"
-	ctxt "しﾞふﾞんのものに てﾞきるんたﾞ<NL>"
-	ctxt "てﾞも ひとの あやつる <KATA>ロホﾞホﾟン<HIRA>は<NL>"
-	ctxt "ほかく てﾞきないんたﾞ<KATA><TERM>"
+	ctxt "<HIRA>どうくつ などで おそってくる"
+	line "<KATA>ロボポン<HIRA>には じしゃくを つかえ!"
+	line "じしゃくを つかって ほかくすれば"
+	line "じぶんのものに できるんだ"
+	line "でも ひとの あやつる <KATA>ロボポン<HIRA>は"
+	line "ほかく できないんだ<KATA>"
+	done
 
 TreeBitstreamText_400e4:
-	ctxt "<HIRA>あの<KATA>ヒﾞル<HIRA>の せいてﾞ うちに ひかﾞ<NL>"
-	ctxt "あたらないしﾞゃないか!<NL>"
-	ctxt "せんたくものかﾞ かわかないんたﾞよ<KATA><TERM>"
+	ctxt "<HIRA>あの<KATA>ビル<HIRA>の せいで うちに ひが"
+	line "あたらないじゃないか!"
+	line "せんたくものが かわかないんだよ<KATA>"
+	done
 
 TreeBitstreamText_4010a:
-	ctxt "<HIRA>ほかくに しっはﾟい することは<NL>"
-	ctxt "ないかい?<NL>"
-	ctxt "しﾞしゃくを つかって<NL>"
-	ctxt "ほかくまえに きをつけること……<NL>"
-	ctxt "なるへﾞく <KATA>タﾞメーシﾞ<HIRA>を あたえること!<NL>"
-	ctxt "<KATA>サヒﾞ <HIRA>なとﾞてﾞ よわらせておくこと!<NL>"
-	ctxt "その2つを まもっておけはﾞ<NL>"
-	ctxt "せいこう しやすいんたﾞ<KATA>"
+	ctxt "<HIRA>ほかくに しっぱい することは"
+	line "ないかい?"
+	line "じしゃくを つかって"
+	line "ほかくまえに きをつけること……"
+	line "なるべく <KATA>ダメージ<HIRA>を あたえること!"
+	line "<KATA>サビ <HIRA>などで よわらせておくこと!"
+	line "その2つを まもっておけば"
+	line "せいこう しやすいんだ<KATA>"
 
 TreeBitstreamText_40164:
-	ctxt "<HIRA>みすﾞ と あふﾞら って まさに<NL>"
-	ctxt "せいはんたいの せいしつ たﾞわ<NL>"
-	ctxt "みすﾞには てﾞんきかﾞ いい!<NL>"
-	ctxt "あふﾞらには ほのおかﾞ いい!<NL>"
-	ctxt "てﾞも みすﾞは ほのおかﾞ <KATA>タﾞメ!<NL>"
-	ctxt "<HIRA>あふﾞらには みすﾞかﾞ <KATA>タﾞメ!<TERM>"
+	ctxt "<HIRA>みず と あぶら って まさに"
+	line "せいはんたいの せいしつ だわ"
+	line "みずには でんきが いい!"
+	line "あぶらには ほのおが いい!"
+	line "でも みずは ほのおが <KATA>ダメ!"
+	line "<HIRA>あぶらには みずが <KATA>ダメ!"
+	done
 
 TreeBitstreamText_401ae:
-	ctxt "<HIRA>あの<KATA>ヒﾞル<HIRA>って みんなかﾞ<NL>"
-	ctxt "いうほとﾞ わるくないと おもうわ<NL>"
-	ctxt "うちは へﾞつに めいわくしてないし<NL>"
-	ctxt "まちの<KATA>シンホﾞル<HIRA>に なるしﾞゃない<KATA><TERM>"
+	ctxt "<HIRA>あの<KATA>ビル<HIRA>って みんなが"
+	line "いうほど わるくないと おもうわ"
+	line "うちは べつに めいわくしてないし"
+	line "まちの<KATA>シンボル<HIRA>に なるじゃない<KATA>"
+	done
 
 TreeBitstreamText_401e1:
-	ctxt "ロホﾞホﾟン<HIRA>は しﾞしゃくを つかえはﾞ<NL>"
-	ctxt "つかまえられるのたﾞ!<NL>"
-	ctxt "しﾞしゃくには なんしゅるいか あって<NL>"
-	ctxt "みんな ねたﾞんかﾞ ちかﾞう!<NL>"
-	ctxt "ねたﾞんかﾞ たかいほとﾞ <KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "つかまえやすい ってこと!<KATA><TERM>"
+	ctxt "ロボポン<HIRA>は じしゃくを つかえば"
+	line "つかまえられるのだ!"
+	line "じしゃくには なんしゅるいか あって"
+	line "みんな ねだんが ちがう!"
+	line "ねだんが たかいほど <KATA>ロボポン<HIRA>を"
+	line "つかまえやすい ってこと!<KATA>"
+	done
 
 TreeBitstreamText_4022d:
-	ctxt "<HIRA>このまちの いえの たかさや<NL>"
-	ctxt "かんかくは みんなてﾞ きめたんしﾞゃ<NL>"
-	ctxt "とﾞのいえも ひあたりは さいこうてﾞな<NL>"
-	ctxt "すみよい まちに なったもんしﾞゃ<KATA><TERM>"
+	ctxt "<HIRA>このまちの いえの たかさや"
+	line "かんかくは みんなで きめたんじゃ"
+	line "どのいえも ひあたりは さいこうでな"
+	line "すみよい まちに なったもんじゃ<KATA>"
+	done
 
 TreeBitstreamText_40261:
-	ctxt "<HIRA>みんなに ことわりもなく あんな<NL>"
-	ctxt "ものを たてて とﾞういうつもりたﾞ<KATA><TERM>"
+	ctxt "<HIRA>みんなに ことわりもなく あんな"
+	line "ものを たてて どういうつもりだ<KATA>"
+	done
 
 TreeBitstreamText_4027b:
-	ctxt "カﾞールスﾞ8<HIRA>って しってる?<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>かﾞ たﾞいすきな<NL>"
-	ctxt "8にんくﾞみの おんなの<KATA>コ<HIRA>のことさ<KATA><TERM>"
+	ctxt "ガールズ8<HIRA>って しってる?"
+	line ""
+	line "<KATA>レア<HIRA>な<KATA>ロボポン<HIRA>が だいすきな"
+	line "8にんぐみの おんなの<KATA>コ<HIRA>のことさ<KATA>"
+	done
 
 TreeBitstreamText_402a7:
-	ctxt "ヒﾞスコ<HIRA>を へ とも おもわない<NL>"
-	ctxt "おとこ それかﾞ わたしたﾞ<NL>"
-	ctxt "いつてﾞも こい この <KATA>スカホﾟンタン<NL>"
-	ctxt "<HIRA>よのなかの きひﾞしさを おしえて<NL>"
-	ctxt "<NL>"
-	ctxt "             くたﾞさい<KATA><TERM>"
+	ctxt "ビスコ<HIRA>を へ とも おもわない"
+	line "おとこ それが わたしだ"
+	line "いつでも こい この <KATA>スカポンタン"
+	line "<HIRA>よのなかの きびしさを おしえて"
+	line ""
+	line "             ください<KATA>"
+	done
 
 TreeBitstreamText_402e4:
-	ctxt "ロホﾞホﾟン<HIRA>には <KATA>アーム ムーフﾞ フﾞート<NL>"
-	ctxt "<HIRA>という 3つのしゅそﾞくかﾞ ある<NL>"
-	ctxt "それそﾞれの もつ とくちょうは<NL>"
-	ctxt "つきﾞの とおりてﾞある<NL>"
-	ctxt "1 <KATA>アーム<HIRA>そﾞく<NL>"
-	ctxt "<KATA>ハﾟンチ<HIRA>りょくかﾞ とくに つよい<NL>"
-	ctxt "2 <KATA>ムーフﾞ<HIRA>そﾞく<NL>"
-	ctxt "<KATA>シﾞャンフﾟ<HIRA>りょくかﾞ たかく すはﾞやい<NL>"
-	ctxt "3 <KATA>フﾞート<HIRA>そﾞく<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ハﾟーツ<HIRA>や<KATA>ソフト<HIRA>を そうひﾞてﾞきないかﾞ<NL>"
-	ctxt "とても しﾞょうふﾞに てﾞきている<KATA><TERM>"
+	ctxt "ロボポン<HIRA>には <KATA>アーム ムーブ ブート"
+	line "<HIRA>という 3つのしゅぞくが ある"
+	line "それぞれの もつ とくちょうは"
+	line "つぎの とおりである"
+	line "1 <KATA>アーム<HIRA>ぞく"
+	line "<KATA>パンチ<HIRA>りょくが とくに つよい"
+	line "2 <KATA>ムーブ<HIRA>ぞく"
+	line "<KATA>ジャンプ<HIRA>りょくが たかく すばやい"
+	line "3 <KATA>ブート<HIRA>ぞく"
+	line ""
+	line "<KATA>パーツ<HIRA>や<KATA>ソフト<HIRA>を そうびできないが"
+	line "とても じょうぶに できている<KATA>"
+	done
 
 TreeBitstreamText_40371:
-	ctxt "シーヒﾟーユー<HIRA>は <KATA>ヒﾞット<HIRA>すう かﾞ<NL>"
-	ctxt "おおきいほとﾞ <KATA>ロホﾞホﾟン<HIRA>かﾞ つよい<NL>"
-	ctxt "また <KATA>ハﾟーツ<HIRA>を <KATA>ロホﾞホﾟン<HIRA>に そうひﾞ<NL>"
-	ctxt "しても つよさかﾞ へんかするそﾞ<NL>"
-	ctxt "こうけﾞきりょくかﾞ <KATA>クﾞン<HIRA>とあかﾞるものや<NL>"
-	ctxt "すはﾞやさかﾞ とくに あかﾞるものなとﾞ<NL>"
-	ctxt "それそﾞれ とくちょうかﾞ あるのてﾞ<NL>"
-	ctxt "たたかって たしかめること!<NL>"
-	ctxt "また とﾞの<KATA>ロホﾞホﾟン<HIRA>も そうひﾞてﾞきる<NL>"
-	ctxt "<KATA>ハﾟーツ<HIRA>は 1つたﾞけてﾞある<KATA><TERM>"
+	ctxt "シーピーユー<HIRA>は <KATA>ビット<HIRA>すう が"
+	line "おおきいほど <KATA>ロボポン<HIRA>が つよい"
+	line "また <KATA>パーツ<HIRA>を <KATA>ロボポン<HIRA>に そうび"
+	line "しても つよさが へんかするぞ"
+	line "こうげきりょくが <KATA>グン<HIRA>とあがるものや"
+	line "すばやさが とくに あがるものなど"
+	line "それぞれ とくちょうが あるので"
+	line "たたかって たしかめること!"
+	line "また どの<KATA>ロボポン<HIRA>も そうびできる"
+	line "<KATA>パーツ<HIRA>は 1つだけである<KATA>"
+	done
 
 TreeBitstreamText_40405:
-	ctxt "1<HIRA>つの<KATA>ソフト<HIRA>には 1つの わさﾞかﾞ<NL>"
-	ctxt "はいっていると かんかﾞえて よい<NL>"
-	ctxt "また とﾞの<KATA>ハﾟーツ<HIRA>も <KATA>ソフト<HIRA>を<NL>"
-	ctxt "くみこめるのは さいたﾞい3つまてﾞ!<NL>"
-	ctxt "ふくすうの <KATA>ソフト<HIRA>をくみこめはﾞ<NL>"
-	ctxt "あらたな わさﾞかﾞ うまれるかも!<NL>"
-	ctxt "おなしﾞ<KATA>ソフト 2<HIRA>つてﾞは より<NL>"
-	ctxt "きょうりょくな わさﾞにもなる!<NL>"
-	ctxt "ことなる <KATA>ソフト<HIRA>てﾞは それそﾞれの<NL>"
-	ctxt "とくちょうある わさﾞかﾞ うまれる?<KATA><TERM>"
+	ctxt "1<HIRA>つの<KATA>ソフト<HIRA>には 1つの わざが"
+	line "はいっていると かんがえて よい"
+	line "また どの<KATA>パーツ<HIRA>も <KATA>ソフト<HIRA>を"
+	line "くみこめるのは さいだい3つまで!"
+	line "ふくすうの <KATA>ソフト<HIRA>をくみこめば"
+	line "あらたな わざが うまれるかも!"
+	line "おなじ<KATA>ソフト 2<HIRA>つでは より"
+	line "きょうりょくな わざにもなる!"
+	line "ことなる <KATA>ソフト<HIRA>では それぞれの"
+	line "とくちょうある わざが うまれる?<KATA>"
+	done
 
 TreeBitstreamText_40491:
-	ctxt "    <HIRA>ようりょう とは?<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ハﾟーツ<HIRA>は かいもの<KATA>カコﾞ ソフト<HIRA>は<NL>"
-	ctxt "しなもの と かんかﾞえる<NL>"
-	ctxt "すると <KATA>ハﾟーツ<HIRA>の ようりょうは<NL>"
-	ctxt "<KATA>カコﾞ<HIRA>の <KATA>サイスﾞ<HIRA>てﾞあり<NL>"
-	ctxt "<KATA>ソフト<HIRA>の ようりょうは しなものの<NL>"
-	ctxt "おおきさ てﾞある<NL>"
-	ctxt "あなたは とﾞんな しなもの てﾞも<NL>"
-	ctxt "3つまてﾞなら かって よいかﾞ<NL>"
-	ctxt "おおきい ものを 3つ かうのなら<NL>"
-	ctxt "おおきな <KATA>カコﾞ<HIRA>かﾞ ひつようてﾞ<NL>"
-	ctxt "きﾞゃくに 3つとも ちいさけれはﾞ<NL>"
-	ctxt "かこﾞも ちいさくて よい<NL>"
-	ctxt "<KATA>カコﾞ<HIRA>より おおきな ものは<NL>"
-	ctxt "はいらない これ しﾞょうしき<KATA><TERM>"
+	ctxt "    <HIRA>ようりょう とは?"
+	line ""
+	line "<KATA>パーツ<HIRA>は かいもの<KATA>カゴ ソフト<HIRA>は"
+	line "しなもの と かんがえる"
+	line "すると <KATA>パーツ<HIRA>の ようりょうは"
+	line "<KATA>カゴ<HIRA>の <KATA>サイズ<HIRA>であり"
+	line "<KATA>ソフト<HIRA>の ようりょうは しなものの"
+	line "おおきさ である"
+	line "あなたは どんな しなもの でも"
+	line "3つまでなら かって よいが"
+	line "おおきい ものを 3つ かうのなら"
+	line "おおきな <KATA>カゴ<HIRA>が ひつようで"
+	line "ぎゃくに 3つとも ちいさければ"
+	line "かごも ちいさくて よい"
+	line "<KATA>カゴ<HIRA>より おおきな ものは"
+	line "はいらない これ じょうしき<KATA>"
+	done
 
 TreeBitstreamText_40542:
-	ctxt "<HIRA>しﾞょうたい いしﾞょう……<NL>"
-	ctxt "<NL>"
-	ctxt "それは <KATA>ロホﾞホﾟン<HIRA>の からたﾞかﾞ<NL>"
-	ctxt "へんか している ことてﾞある<NL>"
-	ctxt "けﾞんさﾞい かくにん されているのは<NL>"
-	ctxt "せﾞんふﾞてﾞ 7しゅるい ある<NL>"
-	ctxt "ていし ねつ <KATA>サヒﾞ <HIRA>いのり のろい<NL>"
-	ctxt "<KATA>ハﾞクﾞ ハﾞリヤ₆₆<HIRA>の7つてﾞある<KATA><TERM>"
+	ctxt "<HIRA>じょうたい いじょう……"
+	line ""
+	line "それは <KATA>ロボポン<HIRA>の からだが"
+	line "へんか している ことである"
+	line "げんざい かくにん されているのは"
+	line "ぜんぶで 7しゅるい ある"
+	line "ていし ねつ <KATA>サビ <HIRA>いのり のろい"
+	line "<KATA>バグ バリヤ……<HIRA>の7つである<KATA>"
+	done
 
 TreeBitstreamText_4059e:
-	ctxt "<HIRA>こくはﾞんは みた?<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>のことかﾞ いっはﾟい<NL>"
-	ctxt "かいてあるよ てﾞも きみには<NL>"
-	ctxt "ちょっと むすﾞかしい かもね<KATA><TERM>"
+	ctxt "<HIRA>こくばんは みた?"
+	line "<KATA>ロボポン<HIRA>のことが いっぱい"
+	line "かいてあるよ でも きみには"
+	line "ちょっと むずかしい かもね<KATA>"
+	done
 
 TreeBitstreamText_405cb:
-	ctxt "    <HIRA>ほんしﾞつの <KATA>テーマ<NL>"
-	ctxt "   <HIRA>そﾞくせい とは なにか?<NL>"
-	ctxt "1 <KATA>ロホﾞホﾟン<HIRA>には ほﾞうきﾞょそﾞくせい<NL>"
-	ctxt "わさﾞには こうけﾞきそﾞくせいかﾞ ある<NL>"
-	ctxt "2 そﾞくせいは こうけﾞきてﾞ うける<NL>"
-	ctxt "<KATA>タﾞメーシﾞ<HIRA>の おおきさかﾞ かわる<NL>"
-	ctxt "3 そﾞくせい とﾞうしの あいしょうてﾞ<NL>"
-	ctxt "<KATA>ハﾞトル<HIRA>を おおきく さゆうする<NL>"
-	ctxt "4 すなわち そﾞくせいは <KATA>ハﾞトル<HIRA>に<NL>"
-	ctxt "ゆうり ふり を もたらすのてﾞある<KATA><TERM>"
+	ctxt "    <HIRA>ほんじつの <KATA>テーマ"
+	line "   <HIRA>ぞくせい とは なにか?"
+	line "1 <KATA>ロボポン<HIRA>には ぼうぎょぞくせい"
+	line "わざには こうげきぞくせいが ある"
+	line "2 ぞくせいは こうげきで うける"
+	line "<KATA>ダメージ<HIRA>の おおきさが かわる"
+	line "3 ぞくせい どうしの あいしょうで"
+	line "<KATA>バトル<HIRA>を おおきく さゆうする"
+	line "4 すなわち ぞくせいは <KATA>バトル<HIRA>に"
+	line "ゆうり ふり を もたらすのである<KATA>"
+	done
 
 TreeBitstreamText_40659:
-	ctxt "<HIRA>うつくしいしﾞゃろ この まちの<NL>"
-	ctxt "はなも みすﾞも きも……<NL>"
-	ctxt "しかし いつまてﾞも このままてﾞ<NL>"
-	ctxt "いられるのしﾞゃろうか?<KATA><TERM>"
+	ctxt "<HIRA>うつくしいじゃろ この まちの"
+	line "はなも みずも きも……"
+	line "しかし いつまでも このままで"
+	line "いられるのじゃろうか?<KATA>"
+	done
 
 TreeBitstreamText_40685:
-	ctxt "<HIRA>おまえの<KATA>ロホﾞホﾟン <HIRA>つよいか?<NL>"
-	ctxt "<NL>"
-	ctxt "そうてﾞもない と おもうなら<NL>"
-	ctxt "<KATA>ハﾟーツショッフﾟ<HIRA>に いってみなよ<NL>"
-	ctxt "いろんな かいそﾞう<KATA>ハﾟーツ<HIRA>かﾞ あるせﾞ<NL>"
-	ctxt "かって <KATA>ハﾟワーアッフﾟ <HIRA>するんたﾞな<KATA><TERM>"
+	ctxt "<HIRA>おまえの<KATA>ロボポン <HIRA>つよいか?"
+	line ""
+	line "そうでもない と おもうなら"
+	line "<KATA>パーツショップ<HIRA>に いってみなよ"
+	line "いろんな かいぞう<KATA>パーツ<HIRA>が あるぜ"
+	line "かって <KATA>パワーアップ <HIRA>するんだな<KATA>"
+	done
 
 TreeBitstreamText_406ce:
-	ctxt "キﾞョエーッ! <HIRA>なんたﾞ この<KATA>リンコﾞ<HIRA>は!<NL>"
-	ctxt "か かしﾞると ち ちかﾞ てﾞてくる!<NL>"
-	ctxt "ええっ!? <KATA>ウッソーン!!<NL>"
-	ctxt "<HIRA>わしの はくﾞきかﾞ よわい たﾞけ!?<KATA><TERM>"
+	ctxt "ギョエーッ! <HIRA>なんだ この<KATA>リンゴ<HIRA>は!"
+	line "か かじると ち ちが でてくる!"
+	line "ええっ!? <KATA>ウッソーン!!"
+	line "<HIRA>わしの はぐきが よわい だけ!?<KATA>"
+	done
 
 TreeBitstreamText_40707:
-	ctxt "ロホﾞホﾟントﾞーム<HIRA>は このさきよ<KATA><TERM>"
+	ctxt "ロボポンドーム<HIRA>は このさきよ<KATA>"
+	done
 
 TreeBitstreamText_40716:
-	ctxt "テール<HIRA>おうしﾞの まえの<NL>"
-	ctxt "<KATA>クﾞレイテスト1 <HIRA>って しってる?<NL>"
-	ctxt "<KATA>トﾞクター<HIRA>なんとか っていう ひと<NL>"
-	ctxt "おほﾞえてるかなぁ みんな<NL>"
-	ctxt "てﾞも とﾞんな ひと たﾞったか<NL>"
-	ctxt "あたしも おほﾞえてないなぁ………<NL>"
-	ctxt "とつせﾞん いなくなっちゃったけとﾞ<NL>"
-	ctxt "とﾞこに いっちゃったのかしら<NL>"
-	ctxt "しかも いつのまにか <KATA>テール<HIRA>おうしﾞかﾞ<NL>"
-	ctxt "<KATA>クﾞレイテスト1<HIRA>に なってるし………<NL>"
-	ctxt "なにか あったのかな?<KATA><TERM>"
+	ctxt "テール<HIRA>おうじの まえの"
+	line "<KATA>グレイテスト1 <HIRA>って しってる?"
+	line "<KATA>ドクター<HIRA>なんとか っていう ひと"
+	line "おぼえてるかなぁ みんな"
+	line "でも どんな ひと だったか"
+	line "あたしも おぼえてないなぁ………"
+	line "とつぜん いなくなっちゃったけど"
+	line "どこに いっちゃったのかしら"
+	line "しかも いつのまにか <KATA>テール<HIRA>おうじが"
+	line "<KATA>グレイテスト1<HIRA>に なってるし………"
+	line "なにか あったのかな?<KATA>"
+	done
 
 TreeBitstreamText_4079a:
-	ctxt "<HIRA>ほんっと おんなの このみ って<NL>"
-	ctxt "わっかんないよなぁ<KATA><TERM>"
+	ctxt "<HIRA>ほんっと おんなの このみ って"
+	line "わっかんないよなぁ<KATA>"
+	done
 
 TreeBitstreamText_407af:
-	ctxt "タﾞース<HIRA>ひめ もう さいこう<KATA>ッス<HIRA>よ!<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞかﾞ うらやましい<KATA>ッス!<NL>"
-	ctxt "<HIRA>せﾞっせいの ひﾞしﾞょ っていうのは<NL>"
-	ctxt "ああいう ひとのことを いうん<KATA>ス<HIRA>ね<NL>"
-	ctxt "ああ もし <KATA>ホﾞク<HIRA>かﾞ <KATA>テール<HIRA>おうしﾞなら<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>は   <KATA>ホﾞク<HIRA>は………<NL>"
-	ctxt "<KATA>ホﾟヨヨヨーン!<TERM>"
+	ctxt "ダース<HIRA>ひめ もう さいこう<KATA>ッス<HIRA>よ!"
+	line "<KATA>テール<HIRA>おうじが うらやましい<KATA>ッス!"
+	line "<HIRA>ぜっせいの びじょ っていうのは"
+	line "ああいう ひとのことを いうん<KATA>ス<HIRA>ね"
+	line "ああ もし <KATA>ボク<HIRA>が <KATA>テール<HIRA>おうじなら"
+	line "<KATA>ボク<HIRA>は   <KATA>ボク<HIRA>は………"
+	line "<KATA>ポヨヨヨーン!"
+	done
 
 TreeBitstreamText_4080f:
-	ctxt "テール<HIRA>おうしﾞ って <KATA>クール<HIRA>てﾞ<NL>"
-	ctxt "とーっても <KATA>ステキ<HIRA>よぉ!<NL>"
-	ctxt "あんたなんか てんてﾞ くらへﾞものに<NL>"
-	ctxt "ならないくらい <KATA>ステキ<HIRA>なんたﾞから!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ って <KATA>クール<HIRA>で"
+	line "とーっても <KATA>ステキ<HIRA>よぉ!"
+	line "あんたなんか てんで くらべものに"
+	line "ならないくらい <KATA>ステキ<HIRA>なんだから!<KATA>"
+	done
 
 TreeBitstreamText_40843:
-	ctxt "テール<HIRA>さまの おすかﾞた さいきん<NL>"
-	ctxt "せﾞんせﾞん みてないわ…… んもう<NL>"
-	ctxt "おしろと <KATA>トﾞーム<HIRA>に いりひﾞたりみたい<NL>"
-	ctxt "すﾞっと おあい していないわ<NL>"
-	ctxt "とﾞうしてるのかしら………………<KATA>"
+	ctxt "テール<HIRA>さまの おすがた さいきん"
+	line "ぜんぜん みてないわ…… んもう"
+	line "おしろと <KATA>ドーム<HIRA>に いりびたりみたい"
+	line "ずっと おあい していないわ"
+	line "どうしてるのかしら………………<KATA>"
 
 TreeBitstreamText_40883:
-	ctxt "<HIRA>まえに こくおうかﾞ <KATA>クﾞレイテスト1<HIRA>を<NL>"
-	ctxt "かけて たたかったんたﾞけとﾞさ<NL>"
-	ctxt "あいては たしか <KATA>トﾞクター<HIRA>なんとか<NL>"
-	ctxt "っていう<KATA>ヤツ<HIRA>たﾞと おもったけとﾞ……<NL>"
-	ctxt "<KATA>オレ<HIRA>かﾞ みた かきﾞりてﾞは たしか<NL>"
-	ctxt "そいつかﾞ かった はすﾞなんたﾞ<NL>"
-	ctxt "てﾞも きかﾞつけはﾞ <KATA>クﾞレイテスト1<HIRA>は<NL>"
-	ctxt "むすこの <KATA>テール<HIRA>おうしﾞ たﾞろ?<NL>"
-	ctxt "<KATA>オレ<HIRA>はさ なにか しﾞゅうたﾞいな<NL>"
-	ctxt "しﾞけんかﾞ おこったんたﾞと おもうね<KATA><TERM>"
+	ctxt "<HIRA>まえに こくおうが <KATA>グレイテスト1<HIRA>を"
+	line "かけて たたかったんだけどさ"
+	line "あいては たしか <KATA>ドクター<HIRA>なんとか"
+	line "っていう<KATA>ヤツ<HIRA>だと おもったけど……"
+	line "<KATA>オレ<HIRA>が みた かぎりでは たしか"
+	line "そいつが かった はずなんだ"
+	line "でも きがつけば <KATA>グレイテスト1<HIRA>は"
+	line "むすこの <KATA>テール<HIRA>おうじ だろ?"
+	line "<KATA>オレ<HIRA>はさ なにか じゅうだいな"
+	line "じけんが おこったんだと おもうね<KATA>"
+	done
 
 TreeBitstreamText_4090e:
-	ctxt "<HIRA>あっ おにいちゃん ようこそ!<NL>"
-	ctxt "<NL>"
-	ctxt "まあ たいしたものは ないけとﾞ<NL>"
-	ctxt "ゆっくり なかてﾞも みてってよ<KATA><TERM>"
+	ctxt "<HIRA>あっ おにいちゃん ようこそ!"
+	line ""
+	line "まあ たいしたものは ないけど"
+	line "ゆっくり なかでも みてってよ<KATA>"
+	done
 
 TreeBitstreamText_40933:
-	ctxt "<HIRA>この<KATA>ケﾞーム₆₆<NL>"
-	ctxt "              <HIRA>あ!!<NL>"
-	ctxt "いや この くにてﾞは かってな<NL>"
-	ctxt "しﾞゆうこうとﾞうは <KATA>オッケー<HIRA>なのさ!<NL>"
-	ctxt "かってに ひとんちに あかﾞったり<NL>"
-	ctxt "ものを もっていっても いいの!<NL>"
-	ctxt "よゆうてﾞ <KATA>オッケー! <HIRA>っていう<NL>"
-	ctxt "<KATA>スコﾞイ <HIRA>ほうりつかﾞ あるんたﾞな<NL>"
-	ctxt "もう うれしいやら かなしいやらてﾞ<NL>"
-	ctxt "おはﾞさん たいへんたﾞよ!<NL>"
-	ctxt "たたﾞね <KATA>ロホﾞホﾟン<HIRA>たﾞけは <KATA>タﾞメ<HIRA>たﾞよ<NL>"
-	ctxt "ゆうかいと おなしﾞ たﾞからね!<KATA><TERM>"
+	ctxt "<HIRA>この<KATA>ゲーム……"
+	line "              <HIRA>あ!!"
+	line "いや この くにでは かってな"
+	line "じゆうこうどうは <KATA>オッケー<HIRA>なのさ!"
+	line "かってに ひとんちに あがったり"
+	line "ものを もっていっても いいの!"
+	line "よゆうで <KATA>オッケー! <HIRA>っていう"
+	line "<KATA>スゴイ <HIRA>ほうりつが あるんだな"
+	line "もう うれしいやら かなしいやらで"
+	line "おばさん たいへんだよ!"
+	line "ただね <KATA>ロボポン<HIRA>だけは <KATA>ダメ<HIRA>だよ"
+	line "ゆうかいと おなじ だからね!<KATA>"
+	done
 
 TreeBitstreamText_409c8:
-	ctxt "<HIRA>つまり ほﾞうそうそﾞくに ついほう<NL>"
-	ctxt "されたって ことよね わたしたち…<NL>"
-	ctxt "このふﾞんたﾞと おそらく よのなかに<NL>"
-	ctxt "きまり なんて ものは ないわね<KATA>"
+	ctxt "<HIRA>つまり ぼうそうぞくに ついほう"
+	line "されたって ことよね わたしたち…"
+	line "このぶんだと おそらく よのなかに"
+	line "きまり なんて ものは ないわね<KATA>"
 
 TreeBitstreamText_409fd:
-	ctxt "キミ<HIRA>かﾞ ほﾞうそうそﾞくの <KATA>リータﾞー<HIRA>を<NL>"
-	ctxt "やっつけて くれたの?<NL>"
-	ctxt "とにかく ありかﾞとう!<NL>"
-	ctxt "かんしゃ してるわ<NL>"
-	ctxt "またﾞまたﾞ よのなか すてたもんしﾞゃ<NL>"
-	ctxt "ないかも って おもっちゃうわね<KATA><TERM>"
+	ctxt "キミ<HIRA>が ぼうそうぞくの <KATA>リーダー<HIRA>を"
+	line "やっつけて くれたの?"
+	line "とにかく ありがとう!"
+	line "かんしゃ してるわ"
+	line "まだまだ よのなか すてたもんじゃ"
+	line "ないかも って おもっちゃうわね<KATA>"
+	done
 
 TreeBitstreamText_40a41:
-	ctxt "<HIRA>ここは けんきゅうしﾞょ たﾞよ<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>の かいはつを してるんたﾞ<NL>"
-	ctxt "ここ いかﾞいにも <KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "けんきゅうしﾞょは いっはﾟい あるよ<KATA><TERM>"
+	ctxt "<HIRA>ここは けんきゅうじょ だよ"
+	line "<KATA>ロボポン<HIRA>の かいはつを してるんだ"
+	line "ここ いがいにも <KATA>ロボポン<HIRA>の"
+	line "けんきゅうじょは いっぱい あるよ<KATA>"
+	done
 
 TreeBitstreamText_40a7a:
-	ctxt "<HIRA>いとﾞかﾞ あるから なんとか<NL>"
-	ctxt "ここてﾞも いきて いけるけとﾞ………<NL>"
-	ctxt "すてﾞに ここかﾞ いとﾞの なか<NL>"
-	ctxt "みたいな もんたﾞわよ<NL>"
-	ctxt "もし いとﾞに <KATA>カエル<HIRA>かﾞいるとしたら<NL>"
-	ctxt "わたしと とﾞっちかﾞ しあわせかしら<KATA><TERM>"
+	ctxt "<HIRA>いどが あるから なんとか"
+	line "ここでも いきて いけるけど………"
+	line "すでに ここが いどの なか"
+	line "みたいな もんだわよ"
+	line "もし いどに <KATA>カエル<HIRA>がいるとしたら"
+	line "わたしと どっちが しあわせかしら<KATA>"
+	done
 
 TreeBitstreamText_40ac2:
-	ctxt "<HIRA>ありかﾞとう! <KATA>キミ<HIRA>には<NL>"
-	ctxt "たすけて もらって はﾞっかりね<NL>"
-	ctxt "ちしﾞょうに もとﾞっても いえかﾞ<NL>"
-	ctxt "ないから しはﾞらくは ここにいるわ<NL>"
-	ctxt "ようやく ちしﾞょうに もとﾞれるのね<NL>"
-	ctxt "……たいようかﾞ まふﾞしいたﾞろうな<KATA>"
+	ctxt "<HIRA>ありがとう! <KATA>キミ<HIRA>には"
+	line "たすけて もらって ばっかりね"
+	line "ちじょうに もどっても いえが"
+	line "ないから しばらくは ここにいるわ"
+	line "ようやく ちじょうに もどれるのね"
+	line "……たいようが まぶしいだろうな<KATA>"
 
 TreeBitstreamText_40b0e:
-	ctxt "アイテム<HIRA>やも <KATA>ハﾟーツ<HIRA>やも<NL>"
-	ctxt "もうかってんたﾞろなー!<NL>"
-	ctxt "<KATA>オラッチ<HIRA>は とおーい くにてﾞ<NL>"
-	ctxt "まほうや やってんたﾞけんとﾞ<NL>"
-	ctxt "さいきんは ことﾞもも まほうなんて<NL>"
-	ctxt "ちっとも しんしﾞて くれねぇんたﾞ<NL>"
-	ctxt "かなしー!<KATA><TERM>"
+	ctxt "アイテム<HIRA>やも <KATA>パーツ<HIRA>やも"
+	line "もうかってんだろなー!"
+	line "<KATA>オラッチ<HIRA>は とおーい くにで"
+	line "まほうや やってんだけんど"
+	line "さいきんは こどもも まほうなんて"
+	line "ちっとも しんじて くれねぇんだ"
+	line "かなしー!<KATA>"
+	done
 
 TreeBitstreamText_40b59:
-	ctxt "<HIRA>ちぇっ <KATA>クﾞレイテスト<HIRA>しﾞゃないと<NL>"
-	ctxt "<KATA>ランキンクﾞ<HIRA>せん には てﾞれないんたﾞ<NL>"
-	ctxt "せっかく <KATA>ロホﾞホﾟン <HIRA>きたえてきたのに<NL>"
-	ctxt "………かﾞっくし<KATA><TERM>"
+	ctxt "<HIRA>ちぇっ <KATA>グレイテスト<HIRA>じゃないと"
+	line "<KATA>ランキング<HIRA>せん には でれないんだ"
+	line "せっかく <KATA>ロボポン <HIRA>きたえてきたのに"
+	line "………がっくし<KATA>"
+	done
 
 TreeBitstreamText_40b8e:
-	ctxt "<HIRA>すへﾞての<KATA>クﾞレイテスト<HIRA>の<NL>"
-	ctxt "ちょうてん <KATA>クﾞレイテスト1<HIRA>には<NL>"
-	ctxt "<KATA>ウイニンクﾞローレル<HIRA>っていう<NL>"
-	ctxt "おうかんかﾞ あたえられるの<NL>"
-	ctxt "いまは <KATA>テール<HIRA>おうしﾞかﾞ もってるのよ<KATA><TERM>"
+	ctxt "<HIRA>すべての<KATA>グレイテスト<HIRA>の"
+	line "ちょうてん <KATA>グレイテスト1<HIRA>には"
+	line "<KATA>ウイニングローレル<HIRA>っていう"
+	line "おうかんが あたえられるの"
+	line "いまは <KATA>テール<HIRA>おうじが もってるのよ<KATA>"
+	done
 
 TreeBitstreamText_40bcd:
-	ctxt "<HIRA>はいはい ここは おやくそくの<NL>"
-	ctxt "いとﾞ たﾞよ<NL>"
-	ctxt "みすﾞかﾞ ないと いきていけないのは<NL>"
-	ctxt "みんな おなしﾞ!<KATA><TERM>"
+	ctxt "<HIRA>はいはい ここは おやくそくの"
+	line "いど だよ"
+	line "みずが ないと いきていけないのは"
+	line "みんな おなじ!<KATA>"
+	done
 
 TreeBitstreamText_40bf2:
-	ctxt "<HIRA>きれいな まちたﾞろ?<NL>"
-	ctxt "いや しﾞつに すはﾞらしいね<NL>"
-	ctxt "たたﾞ あの なまいきな おうしﾞは<NL>"
-	ctxt "かんへﾞん してほしい けとﾞな<KATA><TERM>"
+	ctxt "<HIRA>きれいな まちだろ?"
+	line "いや じつに すばらしいね"
+	line "ただ あの なまいきな おうじは"
+	line "かんべん してほしい けどな<KATA>"
+	done
 
 TreeBitstreamText_40c1e:
-	ctxt "<HIRA>おまえは みるからに いっはﾟんしﾞん!<NL>"
-	ctxt "さあ かえれ かえれ!<KATA><TERM>"
+	ctxt "<HIRA>おまえは みるからに いっぱんじん!"
+	line "さあ かえれ かえれ!<KATA>"
+	done
 
 TreeBitstreamText_40c37:
-	ctxt "<HIRA>おまえに ようかﾞ あっても こっちは<NL>"
-	ctxt "ようかﾞ ない!<NL>"
-	ctxt "さあ かえった かえった!<KATA><TERM>"
+	ctxt "<HIRA>おまえに ようが あっても こっちは"
+	line "ようが ない!"
+	line "さあ かえった かえった!<KATA>"
+	done
 
 TreeBitstreamText_40c56:
-	ctxt "<HIRA>いっはﾟんしﾞんは たちいり きんしたﾞ!<NL>"
-	ctxt "しゃかﾞんてﾞも とんてﾞも <KATA>タﾞメ<HIRA>たﾞそﾞ!<KATA><TERM>"
+	ctxt "<HIRA>いっぱんじんは たちいり きんしだ!"
+	line "しゃがんでも とんでも <KATA>ダメ<HIRA>だぞ!<KATA>"
+	done
 
 TreeBitstreamText_40c77:
-	ctxt "<HIRA>たいへんたﾞ たいへんたﾞ!<NL>"
-	ctxt "<KATA>ロホﾞホﾟントﾞーム<HIRA>かﾞ たいへんたﾞ!<NL>"
-	ctxt "<KATA>テール<HIRA>おうしﾞと <KATA>トﾞクターセﾞロ<HIRA>の<NL>"
-	ctxt "<KATA>ハﾞトル<HIRA>かﾞ はしﾞまろうと してるそﾞ!<NL>"
-	ctxt "てﾞも <KATA>テール<HIRA>おうしﾞかﾞ まけたら<NL>"
-	ctxt "…………<KATA>ホント <HIRA>いちたﾞいしﾞ たﾞ!<KATA>"
+	ctxt "<HIRA>たいへんだ たいへんだ!"
+	line "<KATA>ロボポンドーム<HIRA>が たいへんだ!"
+	line "<KATA>テール<HIRA>おうじと <KATA>ドクターゼロ<HIRA>の"
+	line "<KATA>バトル<HIRA>が はじまろうと してるぞ!"
+	line "でも <KATA>テール<HIRA>おうじが まけたら"
+	line "…………<KATA>ホント <HIRA>いちだいじ だ!<KATA>"
 
 TreeBitstreamText_40ccc:
-	ctxt "<HIRA>へい らっしゃい!<NL>"
-	ctxt "<KATA>オイラ<HIRA>は いつもここてﾞ おるすはﾞん<NL>"
-	ctxt "たﾞから もう さひﾞしくてよぉ<NL>"
-	ctxt "よし わかった! しょうかﾞねぇな<NL>"
-	ctxt "<KATA>オイラ<HIRA>の ひみつを あんたたﾞけに<NL>"
-	ctxt "こっそり おしえちゃる! <KATA>トﾞキトﾞキ<NL>"
-	ctxt "オイラ<HIRA>みたいな うみけい <KATA>ロホﾞホﾟン<HIRA>は<NL>"
-	ctxt "みすﾞのなかに もくﾞれるんたﾞせﾞ<NL>"
-	ctxt "たとえはﾞ <KATA>トﾞルッヒﾟ<HIRA>なんかも そうたﾞ<NL>"
-	ctxt "よーく おほﾞえて おきなよ!<KATA><TERM>"
+	ctxt "<HIRA>へい らっしゃい!"
+	line "<KATA>オイラ<HIRA>は いつもここで おるすばん"
+	line "だから もう さびしくてよぉ"
+	line "よし わかった! しょうがねぇな"
+	line "<KATA>オイラ<HIRA>の ひみつを あんただけに"
+	line "こっそり おしえちゃる! <KATA>ドキドキ"
+	line "オイラ<HIRA>みたいな うみけい <KATA>ロボポン<HIRA>は"
+	line "みずのなかに もぐれるんだぜ"
+	line "たとえば <KATA>ドルッピ<HIRA>なんかも そうだ"
+	line "よーく おぼえて おきなよ!<KATA>"
+	done
 
 TreeBitstreamText_40d52:
-	ctxt "<HIRA>ひとひﾞとの ゆめ! <KATA>クﾞレイテスト!<NL>"
-	ctxt "<HIRA>もえよ <KATA>チャレンシﾞャー!<NL>"
-	ctxt "<HIRA>かちつつﾞけて <KATA>トッフﾟ<HIRA>を めさﾞせ!<NL>"
-	ctxt "まけるな <KATA>チャレンシﾞャー<HIRA>よ!<KATA><TERM>"
+	ctxt "<HIRA>ひとびとの ゆめ! <KATA>グレイテスト!"
+	line "<HIRA>もえよ <KATA>チャレンジャー!"
+	line "<HIRA>かちつづけて <KATA>トップ<HIRA>を めざせ!"
+	line "まけるな <KATA>チャレンジャー<HIRA>よ!<KATA>"
+	done
 
 TreeBitstreamText_40d8c:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "ここから なかﾞめる <KATA>ランキンクﾞ<HIRA>せんは<NL>"
-	ctxt "はくりょくまんてんたﾞ!!<KATA>"
+	ctxt "テール<HIRA>おうじ"
+	line "ここから ながめる <KATA>ランキング<HIRA>せんは"
+	line "はくりょくまんてんだ!!<KATA>"
 
 TreeBitstreamText_40dac:
-	ctxt "タﾞース<HIRA>ひめ<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>とﾞうしの <KATA>ランキンクﾞ<HIRA>せんかﾞ<NL>"
-	ctxt "おこなわれている……ということは<NL>"
-	ctxt "それたﾞけ せかいかﾞ<NL>"
-	ctxt "へいわ たﾞということてﾞす<KATA><TERM>"
+	ctxt "ダース<HIRA>ひめ"
+	line "<KATA>ロボポン<HIRA>どうしの <KATA>ランキング<HIRA>せんが"
+	line "おこなわれている……ということは"
+	line "それだけ せかいが"
+	line "へいわ だということです<KATA>"
+	done
 
 TreeBitstreamText_40de3:
-	ctxt "ハﾟラホﾞラアンテナ<HIRA>の あるいえって<NL>"
-	ctxt "ひとの てﾞいりかﾞ ないんたﾞよ<NL>"
-	ctxt "………あとさ さいきん わかい<NL>"
-	ctxt "おんなの<KATA>コ<HIRA>を みかけなくなった<NL>"
-	ctxt "………そう おもわないか?<KATA><TERM>"
+	ctxt "パラボラアンテナ<HIRA>の あるいえって"
+	line "ひとの でいりが ないんだよ"
+	line "………あとさ さいきん わかい"
+	line "おんなの<KATA>コ<HIRA>を みかけなくなった"
+	line "………そう おもわないか?<KATA>"
+	done
 
 TreeBitstreamText_40e1f:
-	ctxt "<HIRA>あの ほうそうきょくは いったい<NL>"
-	ctxt "なんの ほうそうを してるの?<NL>"
-	ctxt "<KATA>ハﾟラホﾞラアンテナ<HIRA>のある いえ しか<NL>"
-	ctxt "ほうそうは みれない らしいけとﾞ<NL>"
-	ctxt "なんたﾞか ちょっと <KATA>フﾞキミ<HIRA>たﾞわ………<KATA>"
+	ctxt "<HIRA>あの ほうそうきょくは いったい"
+	line "なんの ほうそうを してるの?"
+	line "<KATA>パラボラアンテナ<HIRA>のある いえ しか"
+	line "ほうそうは みれない らしいけど"
+	line "なんだか ちょっと <KATA>ブキミ<HIRA>だわ………<KATA>"
 
 TreeBitstreamText_40e63:
-	ctxt "<HIRA>さいきん わかい おんなの<KATA>コ <HIRA>たちかﾞ<NL>"
-	ctxt "あいてに してくれないんてﾞす………<NL>"
-	ctxt "きっと あの <KATA>アムロン <HIRA>っていう<NL>"
-	ctxt "<KATA>アイトﾞル<HIRA>に むちゅう なんてﾞす<KATA>"
+	ctxt "<HIRA>さいきん わかい おんなの<KATA>コ <HIRA>たちが"
+	line "あいてに してくれないんです………"
+	line "きっと あの <KATA>アムロン <HIRA>っていう"
+	line "<KATA>アイドル<HIRA>に むちゅう なんです<KATA>"
 
 TreeBitstreamText_40e9a:
-	ctxt "<HIRA>なーんか さいきんの おんなの<KATA>コ<NL>"
-	ctxt "<HIRA>って みんな おなしﾞに みえるそﾞ<NL>"
-	ctxt "かのしﾞょたち から みれはﾞ おれも<NL>"
-	ctxt "かんせﾞんな <KATA>オヤシﾞ <HIRA>なんたﾞろうけとﾞ<NL>"
-	ctxt "てﾞも それと これとは なんか<NL>"
-	ctxt "ちかﾞうんたﾞよなぁ たふﾞん<KATA><TERM>"
+	ctxt "<HIRA>なーんか さいきんの おんなの<KATA>コ"
+	line "<HIRA>って みんな おなじに みえるぞ"
+	line "かのじょたち から みれば おれも"
+	line "かんぜんな <KATA>オヤジ <HIRA>なんだろうけど"
+	line "でも それと これとは なんか"
+	line "ちがうんだよなぁ たぶん<KATA>"
+	done
 
 TreeBitstreamText_40ee8:
-	ctxt "ハﾞタロホﾞ<HIRA>っていう とても つよくて<NL>"
-	ctxt "たよりになる たへﾞものかﾞ ある!<NL>"
-	ctxt "しかも <KATA>キﾞャル<HIRA>の あいたﾞてﾞ<NL>"
-	ctxt "はやってる そうしﾞゃないか!<NL>"
-	ctxt "きめた! わしも <KATA>ハﾞタロホﾞ <HIRA>たへﾞて<NL>"
-	ctxt "わかもの ふﾞんかを りかいしよう!<NL>"
-	ctxt "そして とけこみたい!<NL>"
-	ctxt "<NL>"
-	ctxt "               ぬ?<NL>"
-	ctxt "しょうねんよ そう しんはﾟいするな!<NL>"
-	ctxt "わたしたﾞって むかしは <KATA>ヤンクﾞ<HIRA>たﾞ<KATA><TERM>"
+	ctxt "バタロボ<HIRA>っていう とても つよくて"
+	line "たよりになる たべものが ある!"
+	line "しかも <KATA>ギャル<HIRA>の あいだで"
+	line "はやってる そうじゃないか!"
+	line "きめた! わしも <KATA>バタロボ <HIRA>たべて"
+	line "わかもの ぶんかを りかいしよう!"
+	line "そして とけこみたい!"
+	line ""
+	line "               ぬ?"
+	line "しょうねんよ そう しんぱいするな!"
+	line "わたしだって むかしは <KATA>ヤング<HIRA>だ<KATA>"
+	done
 
 TreeBitstreamText_40f67:
-	ctxt "<HIRA>おんなの<KATA>コ<HIRA>たちかﾞ <KATA>ハﾞトロホﾞ<HIRA>ねぇ<NL>"
-	ctxt "<KATA>アムロン<HIRA>の えいきょう てﾞしょ<NL>"
-	ctxt "みたこと ないけとﾞ 24しﾞかん<NL>"
-	ctxt "<KATA>テレヒﾞ<HIRA>てﾞ やってるらしいしﾞゃないか<NL>"
-	ctxt "おんなの<KATA>コ<HIRA>は すくﾞ <KATA>アキ<HIRA>るのにね<NL>"
-	ctxt "この<KATA>フﾞーム<HIRA>は ほんものかも!!<KATA><TERM>"
+	ctxt "<HIRA>おんなの<KATA>コ<HIRA>たちが <KATA>バトロボ<HIRA>ねぇ"
+	line "<KATA>アムロン<HIRA>の えいきょう でしょ"
+	line "みたこと ないけど 24じかん"
+	line "<KATA>テレビ<HIRA>で やってるらしいじゃないか"
+	line "おんなの<KATA>コ<HIRA>は すぐ <KATA>アキ<HIRA>るのにね"
+	line "この<KATA>ブーム<HIRA>は ほんものかも!!<KATA>"
+	done
 
 TreeBitstreamText_40fbf:
-	ctxt "ハﾞンサﾞ<HIRA>むらの かいかﾞんには<NL>"
-	ctxt "いろんなものかﾞ おっこちてるよ!<NL>"
-	ctxt "きれい なんたﾞか きたないんたﾞか<NL>"
-	ctxt "よく わからないけとﾞさ<NL>"
-	ctxt "<KATA>アイテム<HIRA>たﾞろ たへﾞものたﾞろ<NL>"
-	ctxt "……おもいてﾞ たﾞろ     <KATA>ホﾟッ<NL>"
-	ctxt "<HIRA>いちとﾞ いってみると いいよ<KATA><TERM>"
+	ctxt "バンザ<HIRA>むらの かいがんには"
+	line "いろんなものが おっこちてるよ!"
+	line "きれい なんだか きたないんだか"
+	line "よく わからないけどさ"
+	line "<KATA>アイテム<HIRA>だろ たべものだろ"
+	line "……おもいで だろ     <KATA>ポッ"
+	line "<HIRA>いちど いってみると いいよ<KATA>"
+	done
 
 TreeBitstreamText_41013:
-	ctxt "<HIRA>ここは てﾞんはﾟの とひﾞかう<NL>"
-	ctxt "<KATA>カリーユ<HIRA>まち たﾞ<NL>"
-	ctxt "さいきん まちの はやりは<NL>"
-	ctxt "<KATA>ハﾟラホﾞラアンテナ<HIRA>を つけること!<NL>"
-	ctxt "あと まちの おくにある あやしけﾞな<NL>"
-	ctxt "<KATA>カンテラ<HIRA>やも きになる ところたﾞ!<KATA>"
+	ctxt "<HIRA>ここは でんぱの とびかう"
+	line "<KATA>カリーユ<HIRA>まち だ"
+	line "さいきん まちの はやりは"
+	line "<KATA>パラボラアンテナ<HIRA>を つけること!"
+	line "あと まちの おくにある あやしげな"
+	line "<KATA>カンテラ<HIRA>やも きになる ところだ!<KATA>"
 
 TreeBitstreamText_4105d:
-	ctxt "<HIRA>ここの まちのひと って<NL>"
-	ctxt "かわいそうよね!<NL>"
-	ctxt "たかい たてものかﾞ ひかけﾞに なって<NL>"
-	ctxt "せんたくものかﾞ かわかないから!<KATA><TERM>"
+	ctxt "<HIRA>ここの まちのひと って"
+	line "かわいそうよね!"
+	line "たかい たてものが ひかげに なって"
+	line "せんたくものが かわかないから!<KATA>"
+	done
 
 TreeBitstreamText_41088:
-	ctxt "<HIRA>ここは てﾞんはﾟの とひﾞかってた<NL>"
-	ctxt "<KATA>カリーユ<HIRA>まちたﾞ<NL>"
-	ctxt "てﾞも いまは あの ほうそうとうは<NL>"
-	ctxt "つかわれて いないんたﾞ<NL>"
-	ctxt "<KATA>アンテナ<HIRA>のある いえの しﾞゅうにんも<NL>"
-	ctxt "てﾞてきて いまは かっきかﾞ あるよ<KATA><TERM>"
+	ctxt "<HIRA>ここは でんぱの とびかってた"
+	line "<KATA>カリーユ<HIRA>まちだ"
+	line "でも いまは あの ほうそうとうは"
+	line "つかわれて いないんだ"
+	line "<KATA>アンテナ<HIRA>のある いえの じゅうにんも"
+	line "でてきて いまは かっきが あるよ<KATA>"
+	done
 
 TreeBitstreamText_410cf:
-	ctxt "<HIRA>さいきん あの ほうそうとうを<NL>"
-	ctxt "つかった <KATA>テレヒﾞ<HIRA>かﾞ おわったの<NL>"
-	ctxt "けとﾞ こんとﾞは とても しﾞゃまに<NL>"
-	ctxt "なってくるのよね きふﾞんてきに<KATA><TERM>"
+	ctxt "<HIRA>さいきん あの ほうそうとうを"
+	line "つかった <KATA>テレビ<HIRA>が おわったの"
+	line "けど こんどは とても じゃまに"
+	line "なってくるのよね きぶんてきに<KATA>"
+	done
 
 TreeBitstreamText_41102:
-	ctxt "アムロン<HIRA>かﾞ いなくなったけとﾞ<NL>"
-	ctxt "<KATA>ロホﾞホﾟンフﾞーム<HIRA>は かわらないなぁ<NL>"
-	ctxt "あいかわらすﾞ おんなの<KATA>コ<HIRA>たちは<NL>"
-	ctxt "あいてに してくれない……<KATA><TERM>"
+	ctxt "アムロン<HIRA>が いなくなったけど"
+	line "<KATA>ロボポンブーム<HIRA>は かわらないなぁ"
+	line "あいかわらず おんなの<KATA>コ<HIRA>たちは"
+	line "あいてに してくれない……<KATA>"
+	done
 
 TreeBitstreamText_41136:
-	ctxt "<HIRA>さいきん きゅうに おんなの<KATA>コ<HIRA>を<NL>"
-	ctxt "たくさん みかけるように なったよ<NL>"
-	ctxt "<KATA>アンテナ<HIRA>つきの いえの ひとも<NL>"
-	ctxt "そとに てﾞてくるように なったし<NL>"
-	ctxt "まちかﾞ いきかえったって かんしﾞたﾞ<KATA><TERM>"
+	ctxt "<HIRA>さいきん きゅうに おんなの<KATA>コ<HIRA>を"
+	line "たくさん みかけるように なったよ"
+	line "<KATA>アンテナ<HIRA>つきの いえの ひとも"
+	line "そとに でてくるように なったし"
+	line "まちが いきかえったって かんじだ<KATA>"
+	done
 
 TreeBitstreamText_41177:
-	ctxt "<HIRA>いい<KATA>チッフﾟ<HIRA>を つんてﾞいる<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は <KATA>ホﾟントﾞ<NL>"
-	ctxt "<HIRA>わるい<KATA>チッフﾟ<HIRA>を つんてﾞいる<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は <KATA>ルートﾞ<NL>"
-	ctxt "<HIRA>ちなみに わたしは<NL>"
-	ctxt "<KATA>ルートﾞ ロホﾞホﾟン<HIRA>かﾞ すきね<NL>"
-	ctxt "いうことは きかないし<NL>"
-	ctxt "かってに せんとうから にけﾞるし<NL>"
-	ctxt "なにかこう しﾞゆうって かんしﾞかﾞ<NL>"
-	ctxt "ひしひしと つたわってくるのよね<KATA><TERM>"
+	ctxt "<HIRA>いい<KATA>チップ<HIRA>を つんでいる"
+	line "<KATA>ロボポン<HIRA>は <KATA>ポンド"
+	line "<HIRA>わるい<KATA>チップ<HIRA>を つんでいる"
+	line "<KATA>ロボポン<HIRA>は <KATA>ルード"
+	line "<HIRA>ちなみに わたしは"
+	line "<KATA>ルード ロボポン<HIRA>が すきね"
+	line "いうことは きかないし"
+	line "かってに せんとうから にげるし"
+	line "なにかこう じゆうって かんじが"
+	line "ひしひしと つたわってくるのよね<KATA>"
+	done
 
 TreeBitstreamText_411eb:
-	ctxt "ロホﾞホﾟン<HIRA>の <KATA>ステータス ウイントﾞゥ<HIRA>を<NL>"
-	ctxt "ひらいて みなされ!<NL>"
-	ctxt "<KATA>チッフﾟ<HIRA>のよこに <KATA>マル <HIRA>かﾞあれはﾞ<NL>"
-	ctxt "それは いい<KATA>チッフﾟ<HIRA>ということしﾞゃ<NL>"
-	ctxt "はんたいに <KATA>ハﾞツ <HIRA>かﾞあれはﾞ<NL>"
-	ctxt "それは わるい<KATA>チッフﾟ<HIRA>しﾞゃ<NL>"
-	ctxt "わるい<KATA>チッフﾟ<HIRA>の <KATA>ロホﾞホﾟン<HIRA>のほうかﾞ<NL>"
-	ctxt "のうりょくてきには たかいそうしﾞゃ<NL>"
-	ctxt "たたﾞ わかﾞまますきﾞて<NL>"
-	ctxt "てにおえないのかﾞ けってんしﾞゃ<KATA><TERM>"
+	ctxt "ロボポン<HIRA>の <KATA>ステータス ウインドゥ<HIRA>を"
+	line "ひらいて みなされ!"
+	line "<KATA>チップ<HIRA>のよこに <KATA>マル <HIRA>があれば"
+	line "それは いい<KATA>チップ<HIRA>ということじゃ"
+	line "はんたいに <KATA>バツ <HIRA>があれば"
+	line "それは わるい<KATA>チップ<HIRA>じゃ"
+	line "わるい<KATA>チップ<HIRA>の <KATA>ロボポン<HIRA>のほうが"
+	line "のうりょくてきには たかいそうじゃ"
+	line "ただ わがまますぎて"
+	line "てにおえないのが けってんじゃ<KATA>"
+	done
 
 TreeBitstreamText_41271:
-	ctxt "ルートﾞロホﾞホﾟン<HIRA>って<NL>"
-	ctxt "ほんとに そたﾞてにくいよなぁ<NL>"
-	ctxt "てﾞさぁ <KATA>チッフﾟ<HIRA>を かえるのも<NL>"
-	ctxt "ひとつの しゅたﾞんたﾞけとﾞ<NL>"
-	ctxt "やっはﾟ <KATA>オレ<HIRA>なんか <KATA>ルートﾞ<HIRA>のまま<NL>"
-	ctxt "そたﾞてたいんたﾞよねぇ<NL>"
-	ctxt "なにか いいほうほう ないかなぁ<NL>"
-	ctxt "…………<NL>"
-	ctxt "そうたﾞ!<NL>"
-	ctxt "はけんすれはﾞ いいんたﾞよ!<KATA><TERM>"
+	ctxt "ルードロボポン<HIRA>って"
+	line "ほんとに そだてにくいよなぁ"
+	line "でさぁ <KATA>チップ<HIRA>を かえるのも"
+	line "ひとつの しゅだんだけど"
+	line "やっぱ <KATA>オレ<HIRA>なんか <KATA>ルード<HIRA>のまま"
+	line "そだてたいんだよねぇ"
+	line "なにか いいほうほう ないかなぁ"
+	line "…………"
+	line "そうだ!"
+	line "はけんすれば いいんだよ!<KATA>"
+	done
 
 TreeBitstreamText_412d6:
-	ctxt "クマ<HIRA>のぬいくﾞるみを みかけたら<NL>"
-	ctxt "しらへﾞてみたほうかﾞ いいよ<KATA><TERM>"
+	ctxt "クマ<HIRA>のぬいぐるみを みかけたら"
+	line "しらべてみたほうが いいよ<KATA>"
+	done
 
 TreeBitstreamText_412f0:
-	ctxt "<HIRA>きょうらんの <KATA>インテリ<HIRA>けﾞんちゃん<NL>"
-	ctxt "とか いう かかﾞくしゃ しってる?<NL>"
-	ctxt "かなり <KATA>ヤハﾞイ <HIRA>かかﾞくしゃ てﾞ<NL>"
-	ctxt "もう しんしﾞゃったんたﾞって?<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>つかい としては<NL>"
-	ctxt "<KATA>マスタークラス <HIRA>たﾞったって<KATA>"
+	ctxt "<HIRA>きょうらんの <KATA>インテリ<HIRA>げんちゃん"
+	line "とか いう かがくしゃ しってる?"
+	line "かなり <KATA>ヤバイ <HIRA>かがくしゃ で"
+	line "もう しんじゃったんだって?"
+	line "<KATA>ロボポン<HIRA>つかい としては"
+	line "<KATA>マスタークラス <HIRA>だったって<KATA>"
 
 TreeBitstreamText_4133b:
-	ctxt "アーロハァー!<NL>"
-	ctxt "ウオェェェーーーーーッ!<NL>"
-	ctxt "<HIRA>ところてﾞ <KATA>シッテル<HIRA>かーい?<NL>"
-	ctxt "<NL>"
-	ctxt "みんなの <KATA>アイトﾞル アムロン<HIRA>は<NL>"
-	ctxt "このむら しゅっしん なんたﾞー<KATA><TERM>"
+	ctxt "アーロハァー!"
+	line "ウオェェェーーーーーッ!"
+	line "<HIRA>ところで <KATA>シッテル<HIRA>かーい?"
+	line ""
+	line "みんなの <KATA>アイドル アムロン<HIRA>は"
+	line "このむら しゅっしん なんだー<KATA>"
+	done
 
 TreeBitstreamText_41373:
-	ctxt "アーロハァー!<NL>"
-	ctxt "ウオェェェーーーーーッ!<NL>"
-	ctxt "<HIRA>ところてﾞ <KATA>アムロン<HIRA>かﾞ このむらに<NL>"
-	ctxt "もとﾞって きたんたﾞー <KATA>ワーイ<NL>"
-	ctxt "<HIRA>めてﾞたい なーっと!<KATA><TERM>"
+	ctxt "アーロハァー!"
+	line "ウオェェェーーーーーッ!"
+	line "<HIRA>ところで <KATA>アムロン<HIRA>が このむらに"
+	line "もどって きたんだー <KATA>ワーイ"
+	line "<HIRA>めでたい なーっと!<KATA>"
+	done
 
 TreeBitstreamText_413a9:
-	ctxt "<HIRA>このむらに この ほうそうとうって<NL>"
-	ctxt "<KATA>チョー <HIRA>いみ ありけﾞ しﾞゃない?<NL>"
-	ctxt "てゆーか てゆーか!<NL>"
-	ctxt "わたし よく わかんなーい!<NL>"
-	ctxt "ってゆーかぁ <KATA>アムロン<HIRA>かﾞ ここに<NL>"
-	ctxt "はいっていくの みたこと あるしぃ<KATA><TERM>"
+	ctxt "<HIRA>このむらに この ほうそうとうって"
+	line "<KATA>チョー <HIRA>いみ ありげ じゃない?"
+	line "てゆーか てゆーか!"
+	line "わたし よく わかんなーい!"
+	line "ってゆーかぁ <KATA>アムロン<HIRA>が ここに"
+	line "はいっていくの みたこと あるしぃ<KATA>"
+	done
 
 TreeBitstreamText_413f4:
-	ctxt "<HIRA>このむらに あの ほうそうとうって<NL>"
-	ctxt "やっはﾟ ういてると おもったしー<NL>"
-	ctxt "てゆーか てゆーか!<NL>"
-	ctxt "わたし よく わかんなーい!<NL>"
-	ctxt "てﾞも <KATA>アムロン<HIRA>かﾞ あそこから<NL>"
-	ctxt "てﾞてくるの みたことあるしぃ<NL>"
-	ctxt "ってゆーかぁ いつのまにか<NL>"
-	ctxt "ほうそうとう なくなってるしー<KATA><TERM>"
+	ctxt "<HIRA>このむらに あの ほうそうとうって"
+	line "やっぱ ういてると おもったしー"
+	line "てゆーか てゆーか!"
+	line "わたし よく わかんなーい!"
+	line "でも <KATA>アムロン<HIRA>が あそこから"
+	line "でてくるの みたことあるしぃ"
+	line "ってゆーかぁ いつのまにか"
+	line "ほうそうとう なくなってるしー<KATA>"
+	done
 
 TreeBitstreamText_4144f:
-	ctxt "<HIRA>いやぁ きもちかﾞ いいね!<NL>"
-	ctxt "うみは ひろくて おおきいなぁ<NL>"
-	ctxt "<KATA>ウチ<HIRA>は せまくて ちいさいなぁ<NL>"
-	ctxt "<NL>"
-	ctxt "……わらえないな これしﾞゃ<KATA><TERM>"
+	ctxt "<HIRA>いやぁ きもちが いいね!"
+	line "うみは ひろくて おおきいなぁ"
+	line "<KATA>ウチ<HIRA>は せまくて ちいさいなぁ"
+	line ""
+	line "……わらえないな これじゃ<KATA>"
+	done
 
 TreeBitstreamText_4147f:
-	ctxt "<HIRA>くらい とﾞうくつには <KATA>カンテラ1<HIRA>はﾞん<NL>"
-	ctxt "<KATA>カステラ2<HIRA>はﾞん………<NL>"
-	ctxt "きみは これから くらい とﾞうくつに<NL>"
-	ctxt "いきそうな きかﾞするのさ……<KATA><TERM>"
+	ctxt "<HIRA>くらい どうくつには <KATA>カンテラ1<HIRA>ばん"
+	line "<KATA>カステラ2<HIRA>ばん………"
+	line "きみは これから くらい どうくつに"
+	line "いきそうな きがするのさ……<KATA>"
+	done
 
 TreeBitstreamText_414b4:
-	ctxt "<HIRA>なみの おとを きいていると<NL>"
-	ctxt "ふるい おもいてﾞかﾞ よみかﾞえるわ<NL>"
-	ctxt "ことﾞもの ころ <KATA>カンテラ<HIRA>もって<NL>"
-	ctxt "とﾞうくつ たんけんしたこと……<NL>"
-	ctxt "こわくて すﾞっと ふるえてた<NL>"
-	ctxt "きおく しか ないけとﾞね<KATA>"
+	ctxt "<HIRA>なみの おとを きいていると"
+	line "ふるい おもいでが よみがえるわ"
+	line "こどもの ころ <KATA>カンテラ<HIRA>もって"
+	line "どうくつ たんけんしたこと……"
+	line "こわくて ずっと ふるえてた"
+	line "きおく しか ないけどね<KATA>"
 
 TreeBitstreamText_414f9:
-	ctxt "ヒュー! ニコニコ<HIRA>そﾞく って<NL>"
-	ctxt "めいわくたﾞけとﾞ <KATA>カッコ<HIRA>いいよねー!<NL>"
-	ctxt "しょうらいは めいわくを かけない<NL>"
-	ctxt "ほﾞうそうそﾞく に なろっかな<NL>"
-	ctxt "そんな ほﾞうそうそﾞくは いない?<NL>"
-	ctxt "……すみません しつれいしました!<KATA><TERM>"
+	ctxt "ヒュー! ニコニコ<HIRA>ぞく って"
+	line "めいわくだけど <KATA>カッコ<HIRA>いいよねー!"
+	line "しょうらいは めいわくを かけない"
+	line "ぼうそうぞく に なろっかな"
+	line "そんな ぼうそうぞくは いない?"
+	line "……すみません しつれいしました!<KATA>"
+	done
 
 TreeBitstreamText_41548:
-	ctxt "ヒュー! ロケンローラー<HIRA>なら きっと<NL>"
-	ctxt "めいわくには ならないよね!<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>も しょうらいは <KATA>ニコニコ<HIRA>の<NL>"
-	ctxt "<KATA>ロケンローラー<HIRA>に なりたいな<KATA><TERM>"
+	ctxt "ヒュー! ロケンローラー<HIRA>なら きっと"
+	line "めいわくには ならないよね!"
+	line "<KATA>ボク<HIRA>も しょうらいは <KATA>ニコニコ<HIRA>の"
+	line "<KATA>ロケンローラー<HIRA>に なりたいな<KATA>"
+	done
 
 TreeBitstreamText_4157e:
-	ctxt "アイテム<HIRA>の <KATA>テﾞフラクﾞ <HIRA>は <KATA>スケﾞー<HIRA>そﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "せんとうふのう いかﾞいなら とﾞんな<NL>"
-	ctxt "しﾞょうたい いしﾞょうも なおるんたﾞ<KATA><TERM>"
+	ctxt "アイテム<HIRA>の <KATA>デフラグ <HIRA>は <KATA>スゲー<HIRA>ぞ"
+	line ""
+	line "せんとうふのう いがいなら どんな"
+	line "じょうたい いじょうも なおるんだ<KATA>"
+	done
 
 TreeBitstreamText_415ac:
-	ctxt "<HIRA>なんとか<KATA>メモリー <HIRA>って <KATA>アイテム<HIRA>は<NL>"
-	ctxt "せﾞんふﾞてﾞ 5しゅるい あってね!<NL>"
-	ctxt "それを つかうと <KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "のうりょくかﾞ あかﾞる らしいね!<NL>"
-	ctxt "たふﾞん とても たかいんたﾞろうね!<KATA><TERM>"
+	ctxt "<HIRA>なんとか<KATA>メモリー <HIRA>って <KATA>アイテム<HIRA>は"
+	line "ぜんぶで 5しゅるい あってね!"
+	line "それを つかうと <KATA>ロボポン<HIRA>の"
+	line "のうりょくが あがる らしいね!"
+	line "たぶん とても たかいんだろうね!<KATA>"
+	done
 
 TreeBitstreamText_415f3:
-	ctxt "サフﾞハﾞッテリー <HIRA>って しってる?<NL>"
-	ctxt "<NL>"
-	ctxt "あれは ていし なとﾞの しﾞょうたい<NL>"
-	ctxt "いしﾞょうを かいふく てﾞきるのよん<KATA><TERM>"
+	ctxt "サブバッテリー <HIRA>って しってる?"
+	line ""
+	line "あれは ていし などの じょうたい"
+	line "いじょうを かいふく できるのよん<KATA>"
+	done
 
 TreeBitstreamText_4161d:
-	ctxt "<HIRA>あなほり<KATA>モクﾞラ <HIRA>てﾞ <KATA>タﾞンシﾞョン<HIRA>から<NL>"
-	ctxt "ぬけたﾞせるのは なせﾞ?<KATA><TERM>"
+	ctxt "<HIRA>あなほり<KATA>モグラ <HIRA>で <KATA>ダンジョン<HIRA>から"
+	line "ぬけだせるのは なぜ?<KATA>"
+	done
 
 TreeBitstreamText_4163b:
-	ctxt "ヒットホﾟイント<HIRA>と <KATA>イーヒﾟー<HIRA>の<NL>"
-	ctxt "りょうほうを いっきに かいふく!<NL>"
-	ctxt "それかﾞ <KATA>ハイトﾞロシステム <HIRA>なとﾞの<NL>"
-	ctxt "<KATA>システム<HIRA>けい <KATA>アイテム<HIRA>ってわけたﾞ<KATA><TERM>"
+	ctxt "ヒットポイント<HIRA>と <KATA>イーピー<HIRA>の"
+	line "りょうほうを いっきに かいふく!"
+	line "それが <KATA>ハイドロシステム <HIRA>などの"
+	line "<KATA>システム<HIRA>けい <KATA>アイテム<HIRA>ってわけだ<KATA>"
+	done
 
 TreeBitstreamText_41675:
-	ctxt "キャロル<HIRA>むらに ようこそ!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>イヤー <HIRA>あんたも ほﾞうそうそﾞくに<NL>"
-	ctxt "からまれる なんて おとﾞろきたﾞろ?<NL>"
-	ctxt "さっきの れんちゅう すﾞっと<NL>"
-	ctxt "このへんてﾞ すきほうたﾞい やってて<NL>"
-	ctxt "そりゃ もう たﾞい<KATA>メーワク<HIRA>さ!<KATA>"
+	ctxt "キャロル<HIRA>むらに ようこそ!"
+	line ""
+	line "<KATA>イヤー <HIRA>あんたも ぼうそうぞくに"
+	line "からまれる なんて おどろきだろ?"
+	line "さっきの れんちゅう ずっと"
+	line "このへんで すきほうだい やってて"
+	line "そりゃ もう だい<KATA>メーワク<HIRA>さ!<KATA>"
 
 TreeBitstreamText_416c4:
-	ctxt "<HIRA>あいつら いつも <KATA>クールス<HIRA>まちの<NL>"
-	ctxt "ほうから くーるす!!<NL>"
-	ctxt "いや しﾞょうたﾞん しﾞゃなくて<NL>"
-	ctxt "<KATA>ホント<HIRA>たﾞってはﾞ!!<KATA>"
+	ctxt "<HIRA>あいつら いつも <KATA>クールス<HIRA>まちの"
+	line "ほうから くーるす!!"
+	line "いや じょうだん じゃなくて"
+	line "<KATA>ホント<HIRA>だってば!!<KATA>"
 
 TreeBitstreamText_416f0:
-	ctxt "クールス<HIRA>は まちの <KATA>クセ<HIRA>に<NL>"
-	ctxt "<KATA>キャロル<HIRA>むら より さひﾞれてるわ<NL>"
-	ctxt "いいかけﾞん <KATA>クールス<HIRA>むら に<NL>"
-	ctxt "したほうかﾞ いいのにね<KATA><TERM>"
+	ctxt "クールス<HIRA>は まちの <KATA>クセ<HIRA>に"
+	line "<KATA>キャロル<HIRA>むら より さびれてるわ"
+	line "いいかげん <KATA>クールス<HIRA>むら に"
+	line "したほうが いいのにね<KATA>"
+	done
 
 TreeBitstreamText_41721:
-	ctxt "クールス<HIRA>まちには いかない ほうかﾞ<NL>"
-	ctxt "いいわ………<NL>"
-	ctxt "なーんて いわれると あなた もう<NL>"
-	ctxt "いてもたっても いられないてﾞしょ?<KATA><TERM>"
+	ctxt "クールス<HIRA>まちには いかない ほうが"
+	line "いいわ………"
+	line "なーんて いわれると あなた もう"
+	line "いてもたっても いられないでしょ?<KATA>"
+	done
 
 TreeBitstreamText_4174d:
-	ctxt "<HIRA>ちょっと まちなさいよ あんた!<NL>"
-	ctxt "<NL>"
-	ctxt "こんな いい<KATA>オンナ<HIRA>に こえ かけて<NL>"
-	ctxt "ようかﾞ ないって とﾞういうこと?!<NL>"
-	ctxt "あたしの <KATA>フﾟライトﾞ<HIRA>かﾞ <KATA>スﾞタスﾞタ<HIRA>よ!<NL>"
-	ctxt "<KATA>イカ<HIRA>した <KATA>セリフ<HIRA>いって みなさい!<NL>"
-	ctxt "<KATA>ヘイ! <HIRA>しﾞかん ある?<NL>"
-	ctxt "<KATA>オレ<HIRA>と すなはﾞてﾞ あそはﾞない?<NL>"
-	ctxt "いっしょに <KATA>トンネル <HIRA>ほろう<KATA>セﾞ<NL>"
-	ctxt "     <HIRA>とかさ!<KATA><TERM>"
+	ctxt "<HIRA>ちょっと まちなさいよ あんた!"
+	line ""
+	line "こんな いい<KATA>オンナ<HIRA>に こえ かけて"
+	line "ようが ないって どういうこと?!"
+	line "あたしの <KATA>プライド<HIRA>が <KATA>ズタズタ<HIRA>よ!"
+	line "<KATA>イカ<HIRA>した <KATA>セリフ<HIRA>いって みなさい!"
+	line "<KATA>ヘイ! <HIRA>じかん ある?"
+	line "<KATA>オレ<HIRA>と すなばで あそばない?"
+	line "いっしょに <KATA>トンネル <HIRA>ほろう<KATA>ゼ"
+	line "     <HIRA>とかさ!<KATA>"
+	done
 
 TreeBitstreamText_417c2:
-	ctxt "<HIRA>いいか <KATA>ニコニコ<HIRA>そﾞくの <KATA>リータﾞー<HIRA>は<NL>"
-	ctxt "<KATA>メッチャクチャ <HIRA>つよいそﾞ!<NL>"
-	ctxt "<KATA>クﾞレイテスト<HIRA>にも <KATA>ランクイン<HIRA>している<NL>"
-	ctxt "そうとうな <KATA>ロホﾞホﾟン<HIRA>つかい なんたﾞ<KATA><TERM>"
+	ctxt "<HIRA>いいか <KATA>ニコニコ<HIRA>ぞくの <KATA>リーダー<HIRA>は"
+	line "<KATA>メッチャクチャ <HIRA>つよいぞ!"
+	line "<KATA>グレイテスト<HIRA>にも <KATA>ランクイン<HIRA>している"
+	line "そうとうな <KATA>ロボポン<HIRA>つかい なんだ<KATA>"
+	done
 
 TreeBitstreamText_41800:
-	ctxt "<HIRA>となりに <KATA>アホﾟロ<HIRA>ようさい っていう<NL>"
-	ctxt "とんてﾞもなく<KATA>テﾞカイ <HIRA>きちかﾞ ある<KATA>"
+	ctxt "<HIRA>となりに <KATA>アポロ<HIRA>ようさい っていう"
+	line "とんでもなく<KATA>デカイ <HIRA>きちが ある<KATA>"
 
 TreeBitstreamText_4181e:
-	ctxt "カマット<HIRA>を たおしたのは <KATA>キミ<HIRA>か!<NL>"
-	ctxt "いやー たいしたもんたﾞ!<KATA>"
+	ctxt "カマット<HIRA>を たおしたのは <KATA>キミ<HIRA>か!"
+	line "いやー たいしたもんだ!<KATA>"
 
 TreeBitstreamText_41836:
-	ctxt "アホﾟロ<HIRA>ようさい を うこﾞかす<NL>"
-	ctxt "さいこう しとﾞうしゃ!!!<NL>"
-	ctxt "……それかﾞ <KATA>クﾞレイテスト<NL>"
-	ctxt "ナンハﾞー4<HIRA>の <KATA>カマット<HIRA>さんたﾞ!<KATA><TERM>"
+	ctxt "アポロ<HIRA>ようさい を うごかす"
+	line "さいこう しどうしゃ!!!"
+	line "……それが <KATA>グレイテスト"
+	line "ナンバー4<HIRA>の <KATA>カマット<HIRA>さんだ!<KATA>"
+	done
 
 TreeBitstreamText_41867:
-	ctxt "<HIRA>き きみかﾞ <KATA>カマット<HIRA>を<NL>"
-	ctxt "やっつけたのかー!?<NL>"
-	ctxt "す すこﾞいや! <KATA>カマット<HIRA>なんか<NL>"
-	ctxt "かまっとられないね!<KATA><TERM>"
+	ctxt "<HIRA>き きみが <KATA>カマット<HIRA>を"
+	line "やっつけたのかー!?"
+	line "す すごいや! <KATA>カマット<HIRA>なんか"
+	line "かまっとられないね!<KATA>"
+	done
 
 TreeBitstreamText_41890:
-	ctxt "<HIRA>ここ さいきん わかものの<NL>"
-	ctxt "まちはﾞなれかﾞ ひとﾞくてねぇ<NL>"
-	ctxt "みんな <KATA>アホﾟロ<HIRA>ようさい に<NL>"
-	ctxt "いって しまうのさ………<KATA><TERM>"
+	ctxt "<HIRA>ここ さいきん わかものの"
+	line "まちばなれが ひどくてねぇ"
+	line "みんな <KATA>アポロ<HIRA>ようさい に"
+	line "いって しまうのさ………<KATA>"
+	done
 
 TreeBitstreamText_418bd:
-	ctxt "<HIRA>やっはﾟり <KATA>ロホﾞホﾟン<HIRA>に ふﾞそうさせる<NL>"
-	ctxt "なんて やめたほうかﾞ よかったのよ<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を せんそうに つかうなんて<NL>"
-	ctxt "かんかﾞえた たﾞけてﾞも <KATA>イヤ!<NL>"
-	ctxt "<HIRA>おはﾞさん そうおもう!<KATA><TERM>"
+	ctxt "<HIRA>やっぱり <KATA>ロボポン<HIRA>に ぶそうさせる"
+	line "なんて やめたほうが よかったのよ"
+	line "<KATA>ロボポン<HIRA>を せんそうに つかうなんて"
+	line "かんがえた だけでも <KATA>イヤ!"
+	line "<HIRA>おばさん そうおもう!<KATA>"
+	done
 
 TreeBitstreamText_41903:
-	ctxt "<HIRA>いまのところ <KATA>アホﾟロ<HIRA>ようさいに<NL>"
-	ctxt "おおきな うこﾞきは ないけとﾞ……<NL>"
-	ctxt "<KATA>カマット<HIRA>は <KATA>ホﾟロンホﾞ<HIRA>とうを しはい<NL>"
-	ctxt "しようと たくらんてﾞ いるんたﾞ<NL>"
-	ctxt "もちろん <KATA>ロホﾞホﾟン<HIRA>を へいき として<NL>"
-	ctxt "りようする つもり たﾞせﾞ!<NL>"
-	ctxt "しﾞんるいは きかいに<NL>"
-	ctxt "せいあつ されても いいのか?<NL>"
-	ctxt "えっ あんちゃんよぉ!<NL>"
-	ctxt "<NL>"
-	ctxt "………<KATA>カﾞキ<HIRA>に いっても しかたねぇか<KATA><TERM>"
+	ctxt "<HIRA>いまのところ <KATA>アポロ<HIRA>ようさいに"
+	line "おおきな うごきは ないけど……"
+	line "<KATA>カマット<HIRA>は <KATA>ポロンボ<HIRA>とうを しはい"
+	line "しようと たくらんで いるんだ"
+	line "もちろん <KATA>ロボポン<HIRA>を へいき として"
+	line "りようする つもり だぜ!"
+	line "じんるいは きかいに"
+	line "せいあつ されても いいのか?"
+	line "えっ あんちゃんよぉ!"
+	line ""
+	line "………<KATA>ガキ<HIRA>に いっても しかたねぇか<KATA>"
+	done
 
 TreeBitstreamText_41982:
-	ctxt "<HIRA>あんちゃんか? <KATA>カマット<HIRA>を たおした<NL>"
-	ctxt "っちゅうのは?!<NL>"
-	ctxt "え みかけによらすﾞ やるしﾞゃねぇか<KATA>"
+	ctxt "<HIRA>あんちゃんか? <KATA>カマット<HIRA>を たおした"
+	line "っちゅうのは?!"
+	line "え みかけによらず やるじゃねぇか<KATA>"
 
 TreeBitstreamText_419a8:
-	ctxt "カマット<HIRA>って みたこと ある?<NL>"
-	ctxt "<KATA>ホﾞク <HIRA>しってるんたﾞー<NL>"
-	ctxt "おんな みたいな おとこ なんたﾞよ<NL>"
-	ctxt "つまり <KATA>オ カ マ!<TERM>"
+	ctxt "カマット<HIRA>って みたこと ある?"
+	line "<KATA>ボク <HIRA>しってるんだー"
+	line "おんな みたいな おとこ なんだよ"
+	line "つまり <KATA>オ カ マ!"
+	done
 
 TreeBitstreamText_419d2:
-	ctxt "ロホﾞホﾟン<HIRA>かﾞ にんけﾞんの てきに<NL>"
-	ctxt "なるなんて <KATA>イヤ<HIRA>よ!<NL>"
-	ctxt "すﾞっと なかよく していたいのに<NL>"
-	ctxt "………………<KATA><TERM>"
+	ctxt "ロボポン<HIRA>が にんげんの てきに"
+	line "なるなんて <KATA>イヤ<HIRA>よ!"
+	line "ずっと なかよく していたいのに"
+	line "………………<KATA>"
+	done
 
 TreeBitstreamText_419fb:
-	ctxt "<HIRA>これてﾞ <KATA>カマット<HIRA>かﾞ おとなしくなれはﾞ<NL>"
-	ctxt "ひとますﾞ あんしんたﾞわ………ね?<KATA><TERM>"
+	ctxt "<HIRA>これで <KATA>カマット<HIRA>が おとなしくなれば"
+	line "ひとまず あんしんだわ………ね?<KATA>"
+	done
 
 TreeBitstreamText_41a1a:
-	ctxt "アホﾟロ<HIRA>ようさいの おかけﾞてﾞ<NL>"
-	ctxt "わたしたち あんしんして くらせる<NL>"
-	ctxt "このまちに すんてﾞて よかった!<NL>"
-	ctxt "………ところてﾞ なによ あなた<NL>"
-	ctxt "<KATA>イケ<HIRA>てない へいたい ね<KATA><TERM>"
+	ctxt "アポロ<HIRA>ようさいの おかげで"
+	line "わたしたち あんしんして くらせる"
+	line "このまちに すんでて よかった!"
+	line "………ところで なによ あなた"
+	line "<KATA>イケ<HIRA>てない へいたい ね<KATA>"
+	done
 
 TreeBitstreamText_41a56:
-	ctxt "<HIRA>やっはﾟ これからは <KATA>ヒﾞシﾞュアル<HIRA>けい<NL>"
-	ctxt "たﾞよな <KATA>カマット<HIRA>さん みたいにさ<KATA><TERM>"
+	ctxt "<HIRA>やっぱ これからは <KATA>ビジュアル<HIRA>けい"
+	line "だよな <KATA>カマット<HIRA>さん みたいにさ<KATA>"
+	done
 
 TreeBitstreamText_41a76:
-	ctxt "<HIRA>やっはﾟ これからは<NL>"
-	ctxt "<KATA>ヒﾞシﾞュアル<HIRA>たﾞけしﾞゃ <KATA>タﾞメ<HIRA>たﾞな<NL>"
-	ctxt "よのなか ふけいきたﾞし……<NL>"
-	ctxt "しょくにんかﾞ いいのかな?<KATA><TERM>"
+	ctxt "<HIRA>やっぱ これからは"
+	line "<KATA>ビジュアル<HIRA>だけじゃ <KATA>ダメ<HIRA>だな"
+	line "よのなか ふけいきだし……"
+	line "しょくにんが いいのかな?<KATA>"
+	done
 
 TreeBitstreamText_41aa5:
-	ctxt "<HIRA>さいきん きみのような ことﾞもの<NL>"
-	ctxt "にゅうたい しかﾞんしゃかﾞ ふえたよ<NL>"
-	ctxt "わらっちゃうよ このよに<NL>"
-	ctxt "にんけﾞんかﾞ いるかきﾞり……<NL>"
-	ctxt "しんの らくえん なんて<NL>"
-	ctxt "ありえないのに ね<NL>"
-	ctxt "たﾞから みんな しﾞふﾞんの こころに<NL>"
-	ctxt "ゆめの らくえんを つくるのさ<KATA><TERM>"
+	ctxt "<HIRA>さいきん きみのような こどもの"
+	line "にゅうたい しがんしゃが ふえたよ"
+	line "わらっちゃうよ このよに"
+	line "にんげんが いるかぎり……"
+	line "しんの らくえん なんて"
+	line "ありえないのに ね"
+	line "だから みんな じぶんの こころに"
+	line "ゆめの らくえんを つくるのさ<KATA>"
+	done
 
 TreeBitstreamText_41b00:
-	ctxt "<HIRA>きみは しﾞふﾞんの やってることを<NL>"
-	ctxt "しんしﾞて いるのかい?<NL>"
-	ctxt "たたﾞしいこと なんて しﾞふﾞんてﾞ<NL>"
-	ctxt "きめるしか ないんたﾞから!<NL>"
-	ctxt "しﾞふﾞんの えらんたﾞ ことを<NL>"
-	ctxt "せﾞったいに こうかいするなよ!<NL>"
-	ctxt "たたﾞしけれはﾞ おおせﾞいの にんけﾞんかﾞ<NL>"
-	ctxt "きみを たたえて くれるからね<KATA><TERM>"
+	ctxt "<HIRA>きみは じぶんの やってることを"
+	line "しんじて いるのかい?"
+	line "ただしいこと なんて じぶんで"
+	line "きめるしか ないんだから!"
+	line "じぶんの えらんだ ことを"
+	line "ぜったいに こうかいするなよ!"
+	line "ただしければ おおぜいの にんげんが"
+	line "きみを たたえて くれるからね<KATA>"
+	done
 
 TreeBitstreamText_41b5f:
-	ctxt "<HIRA>なんてﾞも かんてﾞも <KATA>ロホﾞホﾟン<HIRA>てﾞ<NL>"
-	ctxt "かいけつ てﾞきるの?!<NL>"
-	ctxt "いったい とﾞうなってるんたﾞろう<NL>"
-	ctxt "このせかいは………<NL>"
-	ctxt "なんてﾞ わさﾞわさﾞ <KATA>ケンカ<HIRA>に<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を つかうの?<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は <KATA>ホﾞク<HIRA>らの ともたﾞち!<NL>"
-	ctxt "せﾞったいに わすれちゃ いけない!<KATA><TERM>"
+	ctxt "<HIRA>なんでも かんでも <KATA>ロボポン<HIRA>で"
+	line "かいけつ できるの?!"
+	line "いったい どうなってるんだろう"
+	line "このせかいは………"
+	line "なんで わざわざ <KATA>ケンカ<HIRA>に"
+	line "<KATA>ロボポン<HIRA>を つかうの?"
+	line "<KATA>ロボポン<HIRA>は <KATA>ボク<HIRA>らの ともだち!"
+	line "ぜったいに わすれちゃ いけない!<KATA>"
+	done
 
 TreeBitstreamText_41bc2:
-	ctxt "<HIRA>たﾞれか <KATA>カマット<HIRA>を とめろ!<NL>"
-	ctxt "<NL>"
-	ctxt "あいつは とんてﾞもない ことを<NL>"
-	ctxt "たくらんてﾞる はすﾞたﾞせﾞ<NL>"
-	ctxt "とりあえすﾞ くﾞんたいに はいって<NL>"
-	ctxt "ないふﾞの ようすを みてみる!<NL>"
-	ctxt "これかﾞ かしこい やりかた たﾞな<NL>"
-	ctxt "<KATA>オレ<HIRA>は そう おもうそﾞ!<NL>"
-	ctxt "<KATA>カネ<HIRA>を はらって しけんを うけれはﾞ<NL>"
-	ctxt "たﾞれてﾞも にゅうたい てﾞきるからな<NL>"
-	ctxt "<KATA>オ オレ?!<NL>"
-	ctxt "<NL>"
-	ctxt "オレ<HIRA>は <KATA>カネ<HIRA>かﾞ ないから <KATA>タﾞメ<HIRA>よ!<KATA><TERM>"
+	ctxt "<HIRA>だれか <KATA>カマット<HIRA>を とめろ!"
+	line ""
+	line "あいつは とんでもない ことを"
+	line "たくらんでる はずだぜ"
+	line "とりあえず ぐんたいに はいって"
+	line "ないぶの ようすを みてみる!"
+	line "これが かしこい やりかた だな"
+	line "<KATA>オレ<HIRA>は そう おもうぞ!"
+	line "<KATA>カネ<HIRA>を はらって しけんを うければ"
+	line "だれでも にゅうたい できるからな"
+	line "<KATA>オ オレ?!"
+	line ""
+	line "オレ<HIRA>は <KATA>カネ<HIRA>が ないから <KATA>ダメ<HIRA>よ!<KATA>"
+	done
 
 TreeBitstreamText_41c4a:
-	ctxt "<HIRA>はﾞくはつ しﾞけんの あと このまちは<NL>"
-	ctxt "<KATA>カﾞーナ<HIRA>いけ に のみこまれたんたﾞ<NL>"
-	ctxt "そりゃ もう たいへんな<KATA>モン<HIRA>さ!<NL>"
-	ctxt "<KATA>テﾞィーフﾟインハﾟクト<HIRA>って かんしﾞ!!<KATA><TERM>"
+	ctxt "<HIRA>ばくはつ じけんの あと このまちは"
+	line "<KATA>ガーナ<HIRA>いけ に のみこまれたんだ"
+	line "そりゃ もう たいへんな<KATA>モン<HIRA>さ!"
+	line "<KATA>ディープインパクト<HIRA>って かんじ!!<KATA>"
+	done
 
 TreeBitstreamText_41c86:
-	ctxt "<HIRA>おー よく きたな しんいり!<NL>"
-	ctxt "ゆたﾞんして おほﾞれ しぬなよ<NL>"
-	ctxt "われわれかﾞ なんひﾞゃくねんも<NL>"
-	ctxt "すいちゅうてﾞ いきのひﾞた りゆう!<NL>"
-	ctxt "それは <KATA>シュノーケル<HIRA>の おかけﾞ!<NL>"
-	ctxt "すいちゅう こきゅうは <KATA>ハﾞッチリ!<NL>"
-	ctxt "シュノーケル<HIRA>を していれはﾞ はなてﾞも<NL>"
-	ctxt "くちてﾞも こきゅう てﾞきるんたﾞ!<NL>"
-	ctxt "いいたﾞろ この <KATA>ヒﾟンク<HIRA>いろの<NL>"
-	ctxt "<KATA>シュノーケル!<NL>"
-	ctxt "<HIRA>かしてやろうか?<KATA><TERM>"
+	ctxt "<HIRA>おー よく きたな しんいり!"
+	line "ゆだんして おぼれ しぬなよ"
+	line "われわれが なんびゃくねんも"
+	line "すいちゅうで いきのびた りゆう!"
+	line "それは <KATA>シュノーケル<HIRA>の おかげ!"
+	line "すいちゅう こきゅうは <KATA>バッチリ!"
+	line "シュノーケル<HIRA>を していれば はなでも"
+	line "くちでも こきゅう できるんだ!"
+	line "いいだろ この <KATA>ピンク<HIRA>いろの"
+	line "<KATA>シュノーケル!"
+	line "<HIRA>かしてやろうか?<KATA>"
+	done
 
 TreeBitstreamText_41d0d:
-	ctxt "オレ<HIRA>の <KATA>シュノーケル <HIRA>うらも<NL>"
-	ctxt "こってて おしゃれなんたﾞ!<NL>"
-	ctxt "みてこﾞらん えかﾞ かいてあっ……<NL>"
-	ctxt "<KATA>フﾞクフﾞクフﾞクフﾞクッ₆₆₆<NL>"
-	ctxt "<HIRA>く くるしいっ…………<KATA><TERM>"
+	ctxt "オレ<HIRA>の <KATA>シュノーケル <HIRA>うらも"
+	line "こってて おしゃれなんだ!"
+	line "みてごらん えが かいてあっ……"
+	line "<KATA>ブクブクブクブクッ………"
+	line "<HIRA>く くるしいっ…………<KATA>"
+	done
 
 TreeBitstreamText_41d47:
-	ctxt "<HIRA>はﾞくたﾞん? そうたﾞなぁ…………<NL>"
-	ctxt "<NL>"
-	ctxt "あった としても なかﾞい あいたﾞ<NL>"
-	ctxt "みすﾞに つかっていたからなぁ<NL>"
-	ctxt "つかいものには ならないと<NL>"
-	ctxt "おもうんたﾞけとﾞなぁ………<KATA><TERM>"
+	ctxt "<HIRA>ばくだん? そうだなぁ…………"
+	line ""
+	line "あった としても ながい あいだ"
+	line "みずに つかっていたからなぁ"
+	line "つかいものには ならないと"
+	line "おもうんだけどなぁ………<KATA>"
+	done
 
 TreeBitstreamText_41d81:
-	ctxt "<HIRA>むかし この まちてﾞ つくっていた<NL>"
-	ctxt "はﾞくたﾞんは すこﾞかったんてﾞすって<NL>"
-	ctxt "おおきな せんかんや せんしゃを<NL>"
-	ctxt "いっはﾟつてﾞ はかいしたそうよ<NL>"
-	ctxt "いりょくかﾞ きょうれつ たﾞった<NL>"
-	ctxt "って はなしを きいたことかﾞあるわ<KATA><TERM>"
+	ctxt "<HIRA>むかし この まちで つくっていた"
+	line "ばくだんは すごかったんですって"
+	line "おおきな せんかんや せんしゃを"
+	line "いっぱつで はかいしたそうよ"
+	line "いりょくが きょうれつ だった"
+	line "って はなしを きいたことがあるわ<KATA>"
+	done
 
 TreeBitstreamText_41dce:
-	ctxt "チクショー <HIRA>さっきの <KATA>カﾞキ<NL>"
-	ctxt "<HIRA>すきやき<KATA>セット <HIRA>もってたな!<NL>"
-	ctxt "いいなぁ きﾞゅうにく………<NL>"
-	ctxt "すいちゅうに <KATA>ウシ <HIRA>いないからなぁ<NL>"
-	ctxt "あー いちとﾞてﾞいいから<NL>"
-	ctxt "にく ってものを たへﾞてみたいなぁ<KATA><TERM>"
+	ctxt "チクショー <HIRA>さっきの <KATA>ガキ"
+	line "<HIRA>すきやき<KATA>セット <HIRA>もってたな!"
+	line "いいなぁ ぎゅうにく………"
+	line "すいちゅうに <KATA>ウシ <HIRA>いないからなぁ"
+	line "あー いちどでいいから"
+	line "にく ってものを たべてみたいなぁ<KATA>"
+	done
 
 TreeBitstreamText_41e16:
-	ctxt "<HIRA>むかし このまちは はﾞくたﾞんの<NL>"
-	ctxt "せいそﾞうてﾞ さかえて いたんしﾞゃ<NL>"
-	ctxt "しかし すうひゃくねん まえに<NL>"
-	ctxt "はﾞくはつ しﾞけんかﾞ おきてしまって<NL>"
-	ctxt "いまは みすﾞのなかしﾞゃ………<KATA><TERM>"
+	ctxt "<HIRA>むかし このまちは ばくだんの"
+	line "せいぞうで さかえて いたんじゃ"
+	line "しかし すうひゃくねん まえに"
+	line "ばくはつ じけんが おきてしまって"
+	line "いまは みずのなかじゃ………<KATA>"
+	done
 
 TreeBitstreamText_41e56:
-	ctxt "<HIRA>おまえは <KATA>オレ<HIRA>の せなかに<NL>"
-	ctxt "はなしかける……… なせﾞたﾞ?<NL>"
-	ctxt "<KATA>オトコ<HIRA>は せなかてﾞ かたる<NL>"
-	ctxt "せなかには あいしゅうかﾞ ある<NL>"
-	ctxt "<KATA>オトコ<HIRA>の <KATA>カオ<HIRA>は りれきしょ たﾞ<NL>"
-	ctxt "<KATA>カオ<HIRA>には いきさﾞまかﾞ きさﾞまれてる<NL>"
-	ctxt "おまえ たいした <KATA>カオ<HIRA>しﾞゃないな<KATA><TERM>"
+	ctxt "<HIRA>おまえは <KATA>オレ<HIRA>の せなかに"
+	line "はなしかける……… なぜだ?"
+	line "<KATA>オトコ<HIRA>は せなかで かたる"
+	line "せなかには あいしゅうが ある"
+	line "<KATA>オトコ<HIRA>の <KATA>カオ<HIRA>は りれきしょ だ"
+	line "<KATA>カオ<HIRA>には いきざまが きざまれてる"
+	line "おまえ たいした <KATA>カオ<HIRA>じゃないな<KATA>"
+	done
 
 TreeBitstreamText_41eb0:
-	ctxt "<HIRA>ああ もういちとﾞ ちしﾞょうかﾞ<NL>"
-	ctxt "みたい <KATA>ウッウッウッ₆₆₆<TERM>"
+	ctxt "<HIRA>ああ もういちど ちじょうが"
+	line "みたい <KATA>ウッウッウッ………"
+	done
 
 TreeBitstreamText_41ec7:
-	ctxt "<HIRA>おはﾞあちゃん いつも おなしﾞこと<NL>"
-	ctxt "はﾞっかり いってるの<NL>"
-	ctxt "それなら しﾞりきてﾞ なんとか<NL>"
-	ctxt "すれはﾞ いいんしﾞゃない?<NL>"
-	ctxt "うちには はﾞくたﾞん あるんたﾞし<NL>"
-	ctxt "みんな ふっとはﾞしちゃえ!<KATA><TERM>"
+	ctxt "<HIRA>おばあちゃん いつも おなじこと"
+	line "ばっかり いってるの"
+	line "それなら じりきで なんとか"
+	line "すれば いいんじゃない?"
+	line "うちには ばくだん あるんだし"
+	line "みんな ふっとばしちゃえ!<KATA>"
+	done
 
 TreeBitstreamText_41f0a:
-	ctxt "<HIRA>うちは せんそﾞ たﾞいたﾞい<NL>"
-	ctxt "はﾞくは しょくにん なのさ!<NL>"
-	ctxt "てﾞも この みすﾞの なかしﾞゃあ<NL>"
-	ctxt "………な?<NL>"
-	ctxt "たしか ひいしﾞいさん あいようの<NL>"
-	ctxt "はﾞくたﾞんかﾞ とってあったけとﾞ<NL>"
-	ctxt "………はて<NL>"
-	ctxt "とﾞこに しまったかな………<KATA><TERM>"
+	ctxt "<HIRA>うちは せんぞ だいだい"
+	line "ばくは しょくにん なのさ!"
+	line "でも この みずの なかじゃあ"
+	line "………な?"
+	line "たしか ひいじいさん あいようの"
+	line "ばくだんが とってあったけど"
+	line "………はて"
+	line "どこに しまったかな………<KATA>"
+	done
 
 TreeBitstreamText_41f57:
-	ctxt "₆₆₆<HIRA>ねむーい<NL>"
-	ctxt "みすﾞのなか たﾞと なにも てﾞきない<NL>"
-	ctxt "たﾞから まいにち ねてるのよ<NL>"
-	ctxt "あー ときめきたい………<KATA><TERM>"
+	ctxt "………<HIRA>ねむーい"
+	line "みずのなか だと なにも できない"
+	line "だから まいにち ねてるのよ"
+	line "あー ときめきたい………<KATA>"
+	done
 
 TreeBitstreamText_41f81:
-	ctxt "<HIRA>あー もう! せかいかﾞ せまいと<NL>"
-	ctxt "たいくつな にんけﾞんに なりそう!<NL>"
-	ctxt "もっと いろんなものに ふれたい!<NL>"
-	ctxt "もっと いろんなことを しりたい!<KATA><TERM>"
+	ctxt "<HIRA>あー もう! せかいが せまいと"
+	line "たいくつな にんげんに なりそう!"
+	line "もっと いろんなものに ふれたい!"
+	line "もっと いろんなことを しりたい!<KATA>"
+	done
 
 TreeBitstreamText_41fb4:
-	ctxt "<HIRA>あなた ちしﾞょうから きたの?<NL>"
-	ctxt "<NL>"
-	ctxt "しﾞゃあさ いま ちしﾞょうてﾞ<NL>"
-	ctxt "なにかﾞ はやってるのか おしえて!<NL>"
-	ctxt "え? <KATA>ロホﾞホﾟン<HIRA>たﾞって?<NL>"
-	ctxt "<NL>"
-	ctxt "たﾞったら ここと かわんないしﾞゃん<KATA><TERM>"
+	ctxt "<HIRA>あなた ちじょうから きたの?"
+	line ""
+	line "じゃあさ いま ちじょうで"
+	line "なにが はやってるのか おしえて!"
+	line "え? <KATA>ロボポン<HIRA>だって?"
+	line ""
+	line "だったら ここと かわんないじゃん<KATA>"
+	done
 
 TreeBitstreamText_41ff4:
-	ctxt "<HIRA>ほﾞくの ひいひいひいひいひいひい<NL>"
-	ctxt "ひい おしﾞいちゃんは ね<NL>"
-	ctxt "このまちてﾞ 1はﾞんの<NL>"
-	ctxt "はﾞくは しょくにん たﾞったんたﾞ!<NL>"
-	ctxt "はﾞくたﾞん<KATA>ヤロウ <HIRA>って<NL>"
-	ctxt "よはﾞれてたんたﾞって! <KATA>カックイー!<TERM>"
+	ctxt "<HIRA>ぼくの ひいひいひいひいひいひい"
+	line "ひい おじいちゃんは ね"
+	line "このまちで 1ばんの"
+	line "ばくは しょくにん だったんだ!"
+	line "ばくだん<KATA>ヤロウ <HIRA>って"
+	line "よばれてたんだって! <KATA>カックイー!"
+	done
 
 TreeBitstreamText_4203a:
-	ctxt "<HIRA>いまは しらないけとﾞ <KATA>メイシﾞ<HIRA>のもりに<NL>"
-	ctxt "てﾞんせつの ようせいかﾞ いるって!<NL>"
-	ctxt "そのなも <KATA>オヤシﾞ<HIRA>ようせい って<NL>"
-	ctxt "いうらしいけとﾞ <KATA>ウワサ<HIRA>たﾞよ <KATA>ウワサ<TERM>"
+	ctxt "<HIRA>いまは しらないけど <KATA>メイジ<HIRA>のもりに"
+	line "でんせつの ようせいが いるって!"
+	line "そのなも <KATA>オヤジ<HIRA>ようせい って"
+	line "いうらしいけど <KATA>ウワサ<HIRA>だよ <KATA>ウワサ"
+	done
 
 TreeBitstreamText_42075:
-	ctxt "<HIRA>はﾞくたﾞん?<NL>"
-	ctxt "………………うーん<NL>"
-	ctxt "こﾞせんそﾞさまかﾞ つかってたのかﾞ<NL>"
-	ctxt "のこってる いえも あるかもね<KATA><TERM>"
+	ctxt "<HIRA>ばくだん?"
+	line "………………うーん"
+	line "ごせんぞさまが つかってたのが"
+	line "のこってる いえも あるかもね<KATA>"
+	done
 
 TreeBitstreamText_4209c:
-	ctxt "<HIRA>もはや とひﾞらは ひらかれた!<NL>"
-	ctxt "<NL>"
-	ctxt "さあ わかものよ<NL>"
-	ctxt "<KATA>サッサ<HIRA>と まえへ すすむんたﾞ!<KATA><TERM>"
+	ctxt "<HIRA>もはや とびらは ひらかれた!"
+	line ""
+	line "さあ わかものよ"
+	line "<KATA>サッサ<HIRA>と まえへ すすむんだ!<KATA>"
+	done
 
 TreeBitstreamText_420bf:
-	ctxt "<HIRA>な なんたﾞ? ま まふﾞしいっ!<NL>"
-	ctxt "か からたﾞかﾞぁーっ<NL>"
-	ctxt "かるい!<KATA><TERM>"
+	ctxt "<HIRA>な なんだ? ま まぶしいっ!"
+	line "か からだがぁーっ"
+	line "かるい!<KATA>"
+	done
 
 TreeBitstreamText_420d8:
-	ctxt "イヤーン <HIRA>はすﾞかしい!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>シュノーケル<HIRA>を はすﾞすと<NL>"
-	ctxt "なんか へんたﾞわ!<NL>"
-	ctxt "これしﾞゃ お<KATA>ヨメ<HIRA>に いけなーい!<KATA><TERM>"
+	ctxt "イヤーン <HIRA>はずかしい!"
+	line ""
+	line "<KATA>シュノーケル<HIRA>を はずすと"
+	line "なんか へんだわ!"
+	line "これじゃ お<KATA>ヨメ<HIRA>に いけなーい!<KATA>"
+	done
 
 TreeBitstreamText_42104:
-	ctxt "<HIRA>ちしﾞょうって こまかい<KATA>コト<HIRA>たﾞらけ<NL>"
-	ctxt "あれこれ きを つかうから <KATA>イヤ<HIRA>よ<NL>"
-	ctxt "たﾞって きんしﾞょ つﾞきあいとか<NL>"
-	ctxt "また めんとﾞうくさい しﾞゃない<NL>"
-	ctxt "あいさつまわりも <KATA>イヤ<HIRA>たﾞし………<KATA><TERM>"
+	ctxt "<HIRA>ちじょうって こまかい<KATA>コト<HIRA>だらけ"
+	line "あれこれ きを つかうから <KATA>イヤ<HIRA>よ"
+	line "だって きんじょ づきあいとか"
+	line "また めんどうくさい じゃない"
+	line "あいさつまわりも <KATA>イヤ<HIRA>だし………<KATA>"
+	done
 
 TreeBitstreamText_42148:
-	ctxt "<HIRA>わしは たﾞんこ として<NL>"
-	ctxt "しのーける は はすﾞさんそﾞ!<NL>"
-	ctxt "わしらの あいてﾞんていてい しﾞゃし<NL>"
-	ctxt "これには <KATA>カミサマ<HIRA>かﾞ やとﾞっとる!<KATA><TERM>"
+	ctxt "<HIRA>わしは だんこ として"
+	line "しのーける は はずさんぞ!"
+	line "わしらの あいでんていてい じゃし"
+	line "これには <KATA>カミサマ<HIRA>が やどっとる!<KATA>"
+	done
 
 TreeBitstreamText_4217a:
-	ctxt "<HIRA>なんたﾞよ なんたﾞよ みんな<NL>"
-	ctxt "ちょっと <KATA>ハシャキﾞ<HIRA>すきﾞ たﾞせﾞ!<NL>"
-	ctxt "すこしは しすﾞかにして<NL>"
-	ctxt "おれの うたを きいてくれよ!<NL>"
-	ctxt "<KATA>ヘﾞイヒﾞー キミ<HIRA>の <KATA>ホﾞテﾞィ<HIRA>は<NL>"
-	ctxt "<KATA>オー マイ カﾞァーッ!<NL>"
-	ctxt "<HIRA>はうぁ!!<NL>"
-	ctxt "たﾞったﾞたﾞったﾞっ たﾞれたﾞ!<NL>"
-	ctxt "おれに うなきﾞ なけﾞるのは!<KATA><TERM>"
+	ctxt "<HIRA>なんだよ なんだよ みんな"
+	line "ちょっと <KATA>ハシャギ<HIRA>すぎ だぜ!"
+	line "すこしは しずかにして"
+	line "おれの うたを きいてくれよ!"
+	line "<KATA>ベイビー キミ<HIRA>の <KATA>ボディ<HIRA>は"
+	line "<KATA>オー マイ ガァーッ!"
+	line "<HIRA>はうぁ!!"
+	line "だっだだっだっ だれだ!"
+	line "おれに うなぎ なげるのは!<KATA>"
+	done
 
 TreeBitstreamText_421dd:
-	ctxt "<HIRA>もう きゅうくつな せいかつは<NL>"
-	ctxt "<KATA>コリコﾞリ<HIRA>たﾞわ<NL>"
-	ctxt "これからは <KATA>ハテﾞ<HIRA>に あそふﾞのよ!<NL>"
-	ctxt "そうね とりあえすﾞ……<NL>"
-	ctxt "かいものして おさけをのんてﾞ<NL>"
-	ctxt "……これって <KATA>フツー<HIRA>たﾞなぁ<KATA><TERM>"
+	ctxt "<HIRA>もう きゅうくつな せいかつは"
+	line "<KATA>コリゴリ<HIRA>だわ"
+	line "これからは <KATA>ハデ<HIRA>に あそぶのよ!"
+	line "そうね とりあえず……"
+	line "かいものして おさけをのんで"
+	line "……これって <KATA>フツー<HIRA>だなぁ<KATA>"
+	done
 
 TreeBitstreamText_42221:
-	ctxt "<HIRA>これてﾞ やっと ほんとうの<NL>"
-	ctxt "<KATA>サカナ<HIRA>つりかﾞ てﾞきるそﾞい<KATA><TERM>"
+	ctxt "<HIRA>これで やっと ほんとうの"
+	line "<KATA>サカナ<HIRA>つりが できるぞい<KATA>"
+	done
 
 TreeBitstreamText_42239:
-	ctxt "<HIRA>ああ もういちとﾞ ちしﾞょうかﾞ<NL>"
-	ctxt "みれるとは おもわなかったわ<NL>"
-	ctxt "<KATA>ウッウッウッ₆₆ <HIRA>うれしいっ!<KATA>"
+	ctxt "<HIRA>ああ もういちど ちじょうが"
+	line "みれるとは おもわなかったわ"
+	line "<KATA>ウッウッウッ…… <HIRA>うれしいっ!<KATA>"
 
 TreeBitstreamText_4225d:
-	ctxt "<HIRA>ひゃー おはﾞあちゃん!<NL>"
-	ctxt "なにそれ!<NL>"
-	ctxt "め と はな から<NL>"
-	ctxt "いけの みすﾞかﾞ てﾞてるしﾞゃん!<KATA><TERM>"
+	ctxt "<HIRA>ひゃー おばあちゃん!"
+	line "なにそれ!"
+	line "め と はな から"
+	line "いけの みずが でてるじゃん!<KATA>"
+	done
 
 TreeBitstreamText_42280:
-	ctxt "<HIRA>いちとﾞ すいめんに とひﾞこんてﾞ<NL>"
-	ctxt "みたかったんたﾞ……<NL>"
-	ctxt "てﾞも こわいなぁ<KATA>"
+	ctxt "<HIRA>いちど すいめんに とびこんで"
+	line "みたかったんだ……"
+	line "でも こわいなぁ<KATA>"
 
 TreeBitstreamText_4229c:
-	ctxt "<HIRA>わたしたち いままてﾞ このいけの<NL>"
-	ctxt "なかに すんてﾞたのね………<NL>"
-	ctxt "てﾞも すめはﾞ みやこ って かんしﾞてﾞ<NL>"
-	ctxt "けっきょく とﾞこも いいものよね<KATA><TERM>"
+	ctxt "<HIRA>わたしたち いままで このいけの"
+	line "なかに すんでたのね………"
+	line "でも すめば みやこ って かんじで"
+	line "けっきょく どこも いいものよね<KATA>"
+	done
 
 TreeBitstreamText_422d0:
-	ctxt "ハﾞーケﾞンセール <HIRA>やってる<NL>"
-	ctxt "<KATA>テﾞハﾟート<HIRA>は とﾞこにあるのよ!?<NL>"
-	ctxt "あんた しってたら <KATA>サッサ<HIRA>と<NL>"
-	ctxt "おしえなさいよ!<KATA><TERM>"
+	ctxt "バーゲンセール <HIRA>やってる"
+	line "<KATA>デパート<HIRA>は どこにあるのよ!?"
+	line "あんた しってたら <KATA>サッサ<HIRA>と"
+	line "おしえなさいよ!<KATA>"
+	done
 
 TreeBitstreamText_422fd:
-	ctxt "<HIRA>え? ちしﾞょうに なった?<NL>"
-	ctxt "あ そう てﾞも ねむいのよ<NL>"
-	ctxt "とﾞーせ かわりゃ しないわよ<NL>"
-	ctxt "みすﾞのなかと<KATA>"
+	ctxt "<HIRA>え? ちじょうに なった?"
+	line "あ そう でも ねむいのよ"
+	line "どーせ かわりゃ しないわよ"
+	line "みずのなかと<KATA>"
 
 TreeBitstreamText_42324:
-	ctxt "<HIRA>およ? ちしﾞょうに なったのか?<NL>"
-	ctxt "そうか そうか めてﾞたいねぇ!<NL>"
-	ctxt "よし けいきつﾞけに いっちょ<NL>"
-	ctxt "<KATA>ヒﾞル<HIRA>てﾞも ふっとはﾞすか!<NL>"
-	ctxt "えー はﾞくは <KATA>マニュアル<HIRA>は……と<KATA><TERM>"
+	ctxt "<HIRA>およ? ちじょうに なったのか?"
+	line "そうか そうか めでたいねぇ!"
+	line "よし けいきづけに いっちょ"
+	line "<KATA>ビル<HIRA>でも ふっとばすか!"
+	line "えー ばくは <KATA>マニュアル<HIRA>は……と<KATA>"
+	done
 
 TreeBitstreamText_42364:
-	ctxt "<HIRA>ゆけ <KATA>ホﾞンハﾞーキンクﾞ!<NL>"
-	ctxt "イェーイ! ファイト <HIRA>はﾞくはつ!<NL>"
-	ctxt "<KATA>チョー <HIRA>よゆうっ<KATA>ス<HIRA>よ!<KATA>"
+	ctxt "<HIRA>ゆけ <KATA>ボンバーキング!"
+	line "イェーイ! ファイト <HIRA>ばくはつ!"
+	line "<KATA>チョー <HIRA>よゆうっ<KATA>ス<HIRA>よ!<KATA>"
 
 TreeBitstreamText_4238a:
-	ctxt "<HIRA>かりた つりさﾞお かえしてこよっと<KATA><TERM>"
+	ctxt "<HIRA>かりた つりざお かえしてこよっと<KATA>"
+	done
 
 TreeBitstreamText_42399:
-	ctxt "<HIRA>はにゃー ほにゃー<NL>"
-	ctxt "<KATA>アラサーイ!"
+	ctxt "<HIRA>はにゃー ほにゃー"
+	line "<KATA>アラサーイ!"
 
 TreeBitstreamText_423a7:
-	ctxt "<HIRA>ははおや<NL>"
-	ctxt "あっ このあいたﾞは とんたﾞ<NL>"
-	ctxt "こﾞめいわくを おかけしまして………<NL>"
-	ctxt "あの<KATA>コ<HIRA>ったら とﾞこかに いったっきり<NL>"
-	ctxt "かえってこないんてﾞす<NL>"
-	ctxt "また とﾞこかてﾞ なにか わるさを<NL>"
-	ctxt "してないと いいのたﾞけとﾞ………<KATA><TERM>"
+	ctxt "<HIRA>ははおや"
+	line "あっ このあいだは とんだ"
+	line "ごめいわくを おかけしまして………"
+	line "あの<KATA>コ<HIRA>ったら どこかに いったっきり"
+	line "かえってこないんです"
+	line "また どこかで なにか わるさを"
+	line "してないと いいのだけど………<KATA>"
+	done
 
 TreeBitstreamText_423f3:
-	ctxt "サウナ<HIRA>おやしﾞ<NL>"
-	ctxt "おう! ここは <KATA>オレ<HIRA>のへや たﾞからな<NL>"
-	ctxt "ゆっくりしてけはﾞ いいしﾞゃない!<NL>"
-	ctxt "<KATA>サウナ<HIRA>は ますﾞ あついところてﾞ<NL>"
-	ctxt "20ふﾟん しﾞっくり <KATA>アセ<HIRA>をかけ!<NL>"
-	ctxt "つきﾞに 5ふん みすﾞふﾞろ!<NL>"
-	ctxt "それも あしたﾞけ つかるんたﾞ!<NL>"
-	ctxt "てﾞ また 20ふﾟん <KATA>サウナ<HIRA>に はいる<NL>"
-	ctxt "<KATA>アセ<HIRA>を いっはﾟい かくんたﾞそﾞ!<NL>"
-	ctxt "そしたら こんとﾞは 5ふんかん<NL>"
-	ctxt "せﾞんしん みすﾞふﾞろに つかれ!<NL>"
-	ctxt "これを 5かい くりかえせはﾞ<NL>"
-	ctxt "<KATA>キミ<HIRA>も ほんとうの <KATA>サウナー<HIRA>たﾞな<KATA><TERM>"
+	ctxt "サウナ<HIRA>おやじ"
+	line "おう! ここは <KATA>オレ<HIRA>のへや だからな"
+	line "ゆっくりしてけば いいじゃない!"
+	line "<KATA>サウナ<HIRA>は まず あついところで"
+	line "20ぷん じっくり <KATA>アセ<HIRA>をかけ!"
+	line "つぎに 5ふん みずぶろ!"
+	line "それも あしだけ つかるんだ!"
+	line "で また 20ぷん <KATA>サウナ<HIRA>に はいる"
+	line "<KATA>アセ<HIRA>を いっぱい かくんだぞ!"
+	line "そしたら こんどは 5ふんかん"
+	line "ぜんしん みずぶろに つかれ!"
+	line "これを 5かい くりかえせば"
+	line "<KATA>キミ<HIRA>も ほんとうの <KATA>サウナー<HIRA>だな<KATA>"
+	done
 
 TreeBitstreamText_4249f:
-	ctxt "<HIRA>ん?<NL>"
-	ctxt "なんか ようか?<KATA><TERM>"
+	ctxt "<HIRA>ん?"
+	line "なんか ようか?<KATA>"
+	done
 
 TreeBitstreamText_424a9:
-	ctxt "<HIRA>けんきゅうしﾞょてﾞは 3つのことかﾞ<NL>"
-	ctxt "てﾞきるんたﾞって しってた?<NL>"
-	ctxt "1つめは けんきゅうしﾞょへの とうし<NL>"
-	ctxt "あたらしい<KATA>ロホﾞホﾟン<HIRA>かﾞ てﾞきるかもよ<NL>"
-	ctxt "2つめは <KATA>ヒﾞットチッフﾟ<HIRA>の こうしん<NL>"
-	ctxt "<KATA>ハﾟワーアッフﾟ<HIRA>させなきゃね<NL>"
-	ctxt "3つめに <KATA>ロホﾞホﾟン<HIRA>の しんか<NL>"
-	ctxt "<KATA>エネ<HIRA>たﾞま いっはﾟい たへﾞさせてね!<KATA><TERM>"
+	ctxt "<HIRA>けんきゅうじょでは 3つのことが"
+	line "できるんだって しってた?"
+	line "1つめは けんきゅうじょへの とうし"
+	line "あたらしい<KATA>ロボポン<HIRA>が できるかもよ"
+	line "2つめは <KATA>ビットチップ<HIRA>の こうしん"
+	line "<KATA>パワーアップ<HIRA>させなきゃね"
+	line "3つめに <KATA>ロボポン<HIRA>の しんか"
+	line "<KATA>エネ<HIRA>だま いっぱい たべさせてね!<KATA>"
+	done
 
 TreeBitstreamText_4251f:
-	ctxt "キミ<HIRA>の おかねを けんきゅうしﾞょに<NL>"
-	ctxt "とうし してみない?<NL>"
-	ctxt "あたらしい<KATA>ロホﾞホﾟン<HIRA>の かいはつに<NL>"
-	ctxt "おおいに やくたﾞつわ<NL>"
-	ctxt "あたらしく かいはつした<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>は はんはﾞいするのよ<NL>"
-	ctxt "あと いらなくなった<KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "かいとりも やっているからね<KATA>"
+	ctxt "キミ<HIRA>の おかねを けんきゅうじょに"
+	line "とうし してみない?"
+	line "あたらしい<KATA>ロボポン<HIRA>の かいはつに"
+	line "おおいに やくだつわ"
+	line "あたらしく かいはつした"
+	line "<KATA>ロボポン<HIRA>は はんばいするのよ"
+	line "あと いらなくなった<KATA>ロボポン<HIRA>の"
+	line "かいとりも やっているからね<KATA>"
 
 TreeBitstreamText_4257c:
-	ctxt "<HIRA>この みせの めたﾞましょうひんは<NL>"
-	ctxt "<NL>"
-	ctxt "こちら!<NL>"
-	ctxt "ははﾞたき<KATA>カラス <HIRA>てﾞす!<NL>"
-	ctxt "せんとうから にけﾞたい はﾞあいに<NL>"
-	ctxt "これさえあれはﾞ もう あなたは<NL>"
-	ctxt "かんへﾟきに <KATA>ランナウェイ!<NL>"
-	ctxt "₆₆<HIRA>てﾞは また おあいしましょう!<KATA><TERM>"
+	ctxt "<HIRA>この みせの めだましょうひんは"
+	line ""
+	line "こちら!"
+	line "はばたき<KATA>カラス <HIRA>です!"
+	line "せんとうから にげたい ばあいに"
+	line "これさえあれば もう あなたは"
+	line "かんぺきに <KATA>ランナウェイ!"
+	line "……<HIRA>では また おあいしましょう!<KATA>"
+	done
 
 TreeBitstreamText_425cb:
-	ctxt "<HIRA>ここ <KATA>アホﾟロ<HIRA>てんの<NL>"
-	ctxt "めたﾞましょうひんは こちら!<NL>"
-	ctxt "<KATA>スキャンテﾞィスク <HIRA>てﾞす!<NL>"
-	ctxt "<KATA>ハﾞクﾞ <HIRA>とかって かなり めいわく!<NL>"
-	ctxt "そんな あなたに <KATA>ヒﾟッタリ<HIRA>てﾞす!<NL>"
-	ctxt "……てﾞは また おあいしましょう!<KATA><TERM>"
+	ctxt "<HIRA>ここ <KATA>アポロ<HIRA>てんの"
+	line "めだましょうひんは こちら!"
+	line "<KATA>スキャンディスク <HIRA>です!"
+	line "<KATA>バグ <HIRA>とかって かなり めいわく!"
+	line "そんな あなたに <KATA>ピッタリ<HIRA>です!"
+	line "……では また おあいしましょう!<KATA>"
+	done
 
 TreeBitstreamText_42617:
-	ctxt "テール<HIRA>てんの めたﾞましょうひんは<NL>"
-	ctxt "こちら! <KATA>ハﾞーシﾞョンアッフﾟ <HIRA>てﾞす!<NL>"
-	ctxt "いやー しﾞつに いい ひひﾞきてﾞす!<NL>"
-	ctxt "のろいを とくには これしかない!<KATA><TERM>"
+	ctxt "テール<HIRA>てんの めだましょうひんは"
+	line "こちら! <KATA>バージョンアップ <HIRA>です!"
+	line "いやー じつに いい ひびきです!"
+	line "のろいを とくには これしかない!<KATA>"
+	done
 
 TreeBitstreamText_42650:
-	ctxt "<HIRA>ここ <KATA>カリーユ<HIRA>てんの<NL>"
-	ctxt "めたﾞましょうひんは こちら!<NL>"
-	ctxt "しゅうふくそうち てﾞす!<NL>"
-	ctxt "<NL>"
-	ctxt "しﾞょうたいいしﾞょう <KATA>ハﾟーツ<HIRA>はかい を<NL>"
-	ctxt "なおすなら これしか ありません!<KATA><TERM>"
+	ctxt "<HIRA>ここ <KATA>カリーユ<HIRA>てんの"
+	line "めだましょうひんは こちら!"
+	line "しゅうふくそうち です!"
+	line ""
+	line "じょうたいいじょう <KATA>パーツ<HIRA>はかい を"
+	line "なおすなら これしか ありません!<KATA>"
+	done
 
 TreeBitstreamText_4268e:
-	ctxt "アイテム<HIRA>の <KATA>ハﾞックアッフﾟ<HIRA>てﾞ<NL>"
-	ctxt "<KATA>スクラッフﾟ<HIRA>を なおすと……<NL>"
-	ctxt "<KATA>ヒットホﾟイント<HIRA>は はんふﾞん!<NL>"
-	ctxt "<KATA>エネルキﾞー<HIRA>は もとのまま!<NL>"
-	ctxt "ふっき<KATA>フﾟロクﾞラム<HIRA>てﾞ なおせはﾞ<NL>"
-	ctxt "まんたんしﾞょうたいてﾞ ふっかつ!<KATA><TERM>"
+	ctxt "アイテム<HIRA>の <KATA>バックアップ<HIRA>で"
+	line "<KATA>スクラップ<HIRA>を なおすと……"
+	line "<KATA>ヒットポイント<HIRA>は はんぶん!"
+	line "<KATA>エネルギー<HIRA>は もとのまま!"
+	line "ふっき<KATA>プログラム<HIRA>で なおせば"
+	line "まんたんじょうたいで ふっかつ!<KATA>"
+	done
 
 TreeBitstreamText_426de:
-	ctxt "ソフト<HIRA>は やすいから<NL>"
-	ctxt "たくさん かったほうかﾞいいよ!<NL>"
-	ctxt "<KATA>ハﾟーツ<HIRA>に <KATA>ソフト<HIRA>を くみこめはﾞ<NL>"
-	ctxt "おおくのわさﾞかﾞ うまれるからね<NL>"
-	ctxt "おなしﾞ<KATA>ソフト<HIRA>を そうひﾞしても へﾞつの<NL>"
-	ctxt "わさﾞかﾞ うまれることも あるんたﾞ<KATA><TERM>"
+	ctxt "ソフト<HIRA>は やすいから"
+	line "たくさん かったほうがいいよ!"
+	line "<KATA>パーツ<HIRA>に <KATA>ソフト<HIRA>を くみこめば"
+	line "おおくのわざが うまれるからね"
+	line "おなじ<KATA>ソフト<HIRA>を そうびしても べつの"
+	line "わざが うまれることも あるんだ<KATA>"
+	done
 
 TreeBitstreamText_4272e:
-	ctxt "ハﾟーツ<HIRA>は たかいけとﾞ<NL>"
-	ctxt "とても しﾞゅうようなのよ<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>をつよくしたいなら<NL>"
-	ctxt "せﾞひとも かうへﾞきたﾞわ<NL>"
-	ctxt "たたﾞし ふﾞそﾞくによっては<NL>"
-	ctxt "そうひﾞてﾞきない こともあるの<NL>"
-	ctxt "<KATA>アーム<HIRA>そﾞくかﾞ そうひﾞてﾞきない<KATA>ハﾟーツ<NL>"
-	ctxt "ムーフﾞ<HIRA>そﾞくかﾞ そうひﾞてﾞきない<KATA>ハﾟーツ<NL>"
-	ctxt "フﾞート<HIRA>そﾞくたﾞけかﾞ そうひﾞてﾞきない<NL>"
-	ctxt "<KATA>ハﾟーツ<HIRA>の 3しゅるいかﾞ あるわ<KATA><TERM>"
+	ctxt "パーツ<HIRA>は たかいけど"
+	line "とても じゅうようなのよ"
+	line "<KATA>ロボポン<HIRA>をつよくしたいなら"
+	line "ぜひとも かうべきだわ"
+	line "ただし ぶぞくによっては"
+	line "そうびできない こともあるの"
+	line "<KATA>アーム<HIRA>ぞくが そうびできない<KATA>パーツ"
+	line "ムーブ<HIRA>ぞくが そうびできない<KATA>パーツ"
+	line "ブート<HIRA>ぞくだけが そうびできない"
+	line "<KATA>パーツ<HIRA>の 3しゅるいが あるわ<KATA>"
+	done
 
 TreeBitstreamText_427b2:
-	ctxt "テール<HIRA>おうしﾞの <KATA>ロホﾞホﾟン<NL>"
-	ctxt "オトシコﾞ <HIRA>を もらった!<KATA><TERM>"
+	ctxt "テール<HIRA>おうじの <KATA>ロボポン"
+	line "オトシゴ <HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_427ca:
-	ctxt "タﾞース<HIRA>ひめの <KATA>ソフト<NL>"
-	ctxt "<HIRA>いのり を もらった!<KATA><TERM>"
+	ctxt "ダース<HIRA>ひめの <KATA>ソフト"
+	line "<HIRA>いのり を もらった!<KATA>"
+	done
 
 TreeBitstreamText_427de:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "<KATA><STBF><NL>"
-	ctxt "<HIRA>こころから かんしゃする<NL>"
-	ctxt "<KATA>タﾞース<HIRA>ひめは わたしにとって<NL>"
-	ctxt "なにものにも かえかﾞたきひと<NL>"
-	ctxt "さいかいを なかはﾞ<NL>"
-	ctxt "あきらめていたというのに<NL>"
-	ctxt "たにんてﾞある わたしのために<NL>"
-	ctxt "ここまてﾞしてくれるとは<NL>"
-	ctxt "なんと れいを いったら<NL>"
-	ctxt "よいものか<NL>"
-	ctxt "おもたﾞったものは <KATA>トﾞクターセﾞロ<HIRA>に<NL>"
-	ctxt "もっていかれて しまったことたﾞし<NL>"
-	ctxt "そうたﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "わかﾞ おうけに たﾞいたﾞいつたわった<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を もらってはくれないか?<KATA><TERM>"
+	ctxt "テール<HIRA>おうじ"
+	line "<KATA><PLAYER>"
+	line "<HIRA>こころから かんしゃする"
+	line "<KATA>ダース<HIRA>ひめは わたしにとって"
+	line "なにものにも かえがたきひと"
+	line "さいかいを なかば"
+	line "あきらめていたというのに"
+	line "たにんである わたしのために"
+	line "ここまでしてくれるとは"
+	line "なんと れいを いったら"
+	line "よいものか"
+	line "おもだったものは <KATA>ドクターゼロ<HIRA>に"
+	line "もっていかれて しまったことだし"
+	line "そうだ!"
+	line ""
+	line "わが おうけに だいだいつたわった"
+	line "<KATA>ロボポン<HIRA>を もらってはくれないか?<KATA>"
+	done
 
 TreeBitstreamText_42876:
-	ctxt "タﾞース<HIRA>ひめ<NL>"
-	ctxt "ほんとうに ありかﾞとうこﾞさﾞいます<NL>"
-	ctxt "<NL>"
-	ctxt "わたしからも おれいをさせてくたﾞさい<KATA><TERM>"
+	ctxt "ダース<HIRA>ひめ"
+	line "ほんとうに ありがとうございます"
+	line ""
+	line "わたしからも おれいをさせてください<KATA>"
+	done
 
 TreeBitstreamText_42899:
-	ctxt "テール<HIRA>おうしﾞ<NL>"
-	ctxt "ありかﾞとう<NL>"
-	ctxt "<KATA><STBF>₆₆₆"
+	ctxt "テール<HIRA>おうじ"
+	line "ありがとう"
+	line "<KATA><PLAYER>………"
 
 TreeBitstreamText_428a8:
-	ctxt "タﾞース<HIRA>ひめ<NL>"
-	ctxt "<KATA><STBF><HIRA>さん ほんとうに<NL>"
-	ctxt "ありかﾞとうこﾞさﾞいました……<KATA><TERM>"
+	ctxt "ダース<HIRA>ひめ"
+	line "<KATA><PLAYER><HIRA>さん ほんとうに"
+	line "ありがとうございました……<KATA>"
+	done
 
 TreeBitstreamText_428c3:
-	ctxt "<HIRA>やるきは あるのか?<KATA><TERM>"
+	ctxt "<HIRA>やるきは あるのか?<KATA>"
+	done
 
 TreeBitstreamText_428cd:
-	ctxt "<HIRA>きょうは このへんてﾞ かんへﾞんして<NL>"
-	ctxt "くたﾞさい!<KATA><TERM>"
+	ctxt "<HIRA>きょうは このへんで かんべんして"
+	line "ください!<KATA>"
+	done
 
 TreeBitstreamText_428e1:
-	ctxt "<HIRA>なによ そのきに させといて!<KATA><TERM>"
+	ctxt "<HIRA>なによ そのきに させといて!<KATA>"
+	done
 
 TreeBitstreamText_428ee:
-	ctxt "<HIRA>きみは よわいのかな?<KATA><TERM>"
+	ctxt "<HIRA>きみは よわいのかな?<KATA>"
+	done
 
 TreeBitstreamText_428f9:
-	ctxt "<HIRA>そりゃねぇっす!<KATA><TERM>"
+	ctxt "<HIRA>そりゃねぇっす!<KATA>"
+	done
 
 TreeBitstreamText_42903:
-	ctxt "<HIRA>ま とﾞっちてﾞも いいけとﾞ<KATA><TERM>"
+	ctxt "<HIRA>ま どっちでも いいけど<KATA>"
+	done
 
 TreeBitstreamText_4290f:
-	ctxt "<HIRA>しらないたﾞろうけとﾞ このさき つよい<NL>"
-	ctxt "おんなのこかﾞ いっはﾟい いるわよ<NL>"
-	ctxt "かくこﾞした ほうかﾞいいわ!<KATA><TERM>"
+	ctxt "<HIRA>しらないだろうけど このさき つよい"
+	line "おんなのこが いっぱい いるわよ"
+	line "かくごした ほうがいいわ!<KATA>"
+	done
 
 TreeBitstreamText_42937:
-	ctxt "アムロン<HIRA>は <KATA>クﾞレイテスト6<HIRA>の<NL>"
-	ctxt "しょうこﾞうを もってるのよ<NL>"
-	ctxt "あなたこﾞときかﾞ かなうわけ<NL>"
-	ctxt "ないしﾞゃない!<NL>"
-	ctxt "えっ?<NL>"
-	ctxt "あなた <KATA>クﾞレイテスト7<HIRA>なの!?<KATA><TERM>"
+	ctxt "アムロン<HIRA>は <KATA>グレイテスト6<HIRA>の"
+	line "しょうごうを もってるのよ"
+	line "あなたごときが かなうわけ"
+	line "ないじゃない!"
+	line "えっ?"
+	line "あなた <KATA>グレイテスト7<HIRA>なの!?<KATA>"
+	done
 
 TreeBitstreamText_42972:
-	ctxt "アムロン<HIRA>さま………<KATA><TERM>"
+	ctxt "アムロン<HIRA>さま………<KATA>"
+	done
 
 TreeBitstreamText_4297c:
-	ctxt "<HIRA>おんなのこ <KATA>イシﾞメ<HIRA>る わけ?<KATA>"
+	ctxt "<HIRA>おんなのこ <KATA>イジメ<HIRA>る わけ?<KATA>"
 
 TreeBitstreamText_4298a:
 	ctxt "サイアク<HIRA>ね あんたって おとこは!<KATA>"
 
 TreeBitstreamText_42998:
-	ctxt "<HIRA>なにしに きたの!<KATA><TERM>"
+	ctxt "<HIRA>なにしに きたの!<KATA>"
+	done
 
 TreeBitstreamText_429a1:
-	ctxt "<HIRA>なんなのよ あんた!<KATA><TERM>"
+	ctxt "<HIRA>なんなのよ あんた!<KATA>"
+	done
 
 TreeBitstreamText_429aa:
-	ctxt "アムロン<HIRA>さまに ちかつﾞくな!<KATA><TERM>"
+	ctxt "アムロン<HIRA>さまに ちかづくな!<KATA>"
+	done
 
 TreeBitstreamText_429b8:
-	ctxt "<HIRA>とﾞうせ <KATA>アムロン<HIRA>さまに やられるわ!<KATA><TERM>"
+	ctxt "<HIRA>どうせ <KATA>アムロン<HIRA>さまに やられるわ!<KATA>"
+	done
 
 TreeBitstreamText_429ca:
-	ctxt "<HIRA>いくしﾞなし!<KATA><TERM>"
+	ctxt "<HIRA>いくじなし!<KATA>"
+	done
 
 TreeBitstreamText_429d1:
-	ctxt "<HIRA>きたい させないてﾞよ!<KATA><TERM>"
+	ctxt "<HIRA>きたい させないでよ!<KATA>"
+	done
 
 TreeBitstreamText_429dc:
-	ctxt "サイテー!<TERM>"
+	ctxt "サイテー!"
+	done
 
 TreeBitstreamText_429e1:
-	ctxt "ケンカ<HIRA>か?<NL>"
-	ctxt "しﾞょうとう しﾞゃねぇか!<KATA><TERM>"
+	ctxt "ケンカ<HIRA>か?"
+	line "じょうとう じゃねぇか!<KATA>"
+	done
 
 TreeBitstreamText_429f2:
 	ctxt "<HIRA>こいこいこい こいっ <KATA>コノヤロー!"
 
 TreeBitstreamText_42a00:
-	ctxt "メンチ<HIRA>きっとんのかい <KATA>ワレ!<TERM>"
+	ctxt "メンチ<HIRA>きっとんのかい <KATA>ワレ!"
+	done
 
 TreeBitstreamText_42a0d:
-	ctxt "<HIRA>はんこﾞろしやな!<NL>"
-	ctxt "すくなくとも <KATA>オレ<HIRA>のはﾞあいはよー!<KATA>"
+	ctxt "<HIRA>はんごろしやな!"
+	line "すくなくとも <KATA>オレ<HIRA>のばあいはよー!<KATA>"
 
 TreeBitstreamText_42a24:
-	ctxt "<HIRA>おう <KATA>タイマン<HIRA>かい!<NL>"
-	ctxt "しんてﾞも しらんそﾞ!<KATA><TERM>"
+	ctxt "<HIRA>おう <KATA>タイマン<HIRA>かい!"
+	line "しんでも しらんぞ!<KATA>"
+	done
 
 TreeBitstreamText_42a37:
-	ctxt "<HIRA>おまえ わさﾞわさﾞ こんなところまてﾞ<NL>"
-	ctxt "くるなよ!<KATA><TERM>"
+	ctxt "<HIRA>おまえ わざわざ こんなところまで"
+	line "くるなよ!<KATA>"
+	done
 
 TreeBitstreamText_42a4c:
-	ctxt "アニキ! <HIRA>おれの<KATA>アニキ<HIRA>に なって<NL>"
-	ctxt "くたﾞさいっす!<KATA><TERM>"
+	ctxt "アニキ! <HIRA>おれの<KATA>アニキ<HIRA>に なって"
+	line "くださいっす!<KATA>"
+	done
 
 TreeBitstreamText_42a61:
-	ctxt "<HIRA>ちっ めんとﾞくせーな………<KATA><TERM>"
+	ctxt "<HIRA>ちっ めんどくせーな………<KATA>"
+	done
 
 TreeBitstreamText_42a6e:
-	ctxt "₆₆₆<HIRA>わかったから さっさと<NL>"
-	ctxt "いけよ<KATA><TERM>"
+	ctxt "………<HIRA>わかったから さっさと"
+	line "いけよ<KATA>"
+	done
 
 TreeBitstreamText_42a7e:
-	ctxt "<HIRA>おれは たたﾞの <KATA>サﾞコ<HIRA>とは ちかﾞうせﾞ!<NL>"
-	ctxt "それてﾞも やんのかよ?<KATA><TERM>"
+	ctxt "<HIRA>おれは ただの <KATA>ザコ<HIRA>とは ちがうぜ!"
+	line "それでも やんのかよ?<KATA>"
+	done
 
 TreeBitstreamText_42a9a:
-	ctxt "トホホ₆₆ <HIRA>なんてﾞ みんな<NL>"
-	ctxt "こんなに よわいかな もう!<KATA><TERM>"
+	ctxt "トホホ…… <HIRA>なんで みんな"
+	line "こんなに よわいかな もう!<KATA>"
+	done
 
 TreeBitstreamText_42ab0:
-	ctxt "<HIRA>あーあ もう やめてーなぁ……<KATA><TERM>"
+	ctxt "<HIRA>あーあ もう やめてーなぁ……<KATA>"
+	done
 
 TreeBitstreamText_42abe:
-	ctxt "<HIRA>おれのこと たおせる と<NL>"
-	ctxt "おもってんのかい?<KATA><TERM>"
+	ctxt "<HIRA>おれのこと たおせる と"
+	line "おもってんのかい?<KATA>"
+	done
 
 TreeBitstreamText_42ad0:
-	ctxt "<HIRA>うーん やっはﾟり!<KATA><TERM>"
+	ctxt "<HIRA>うーん やっぱり!<KATA>"
+	done
 
 TreeBitstreamText_42ada:
-	ctxt "ヒーロー<HIRA>きとﾞりか この<KATA>ヤロー!<TERM>"
+	ctxt "ヒーロー<HIRA>きどりか この<KATA>ヤロー!"
+	done
 
 TreeBitstreamText_42ae8:
-	ctxt "<HIRA>よく ここまてﾞ きたしﾞゃんか!<KATA><TERM>"
+	ctxt "<HIRA>よく ここまで きたじゃんか!<KATA>"
+	done
 
 TreeBitstreamText_42af6:
-	ctxt "<HIRA>くそっ また まけた………<KATA><TERM>"
+	ctxt "<HIRA>くそっ また まけた………<KATA>"
+	done
 
 TreeBitstreamText_42b02:
-	ctxt "<HIRA>おれと やるのか?<KATA><TERM>"
+	ctxt "<HIRA>おれと やるのか?<KATA>"
+	done
 
 TreeBitstreamText_42b0b:
-	ctxt "<HIRA>もう やってらんねー<KATA>ッ!<TERM>"
+	ctxt "<HIRA>もう やってらんねー<KATA>ッ!"
+	done
 
 TreeBitstreamText_42b16:
-	ctxt "<HIRA>ちょうし こいてんしﾞゃ ねー!<KATA><TERM>"
+	ctxt "<HIRA>ちょうし こいてんじゃ ねー!<KATA>"
+	done
 
 TreeBitstreamText_42b24:
-	ctxt "<HIRA>なんたﾞよ こんしﾞょー なしかﾞ!<KATA><TERM>"
+	ctxt "<HIRA>なんだよ こんじょー なしが!<KATA>"
+	done
 
 TreeBitstreamText_42b32:
-	ctxt "<HIRA>なにしに ここまてﾞ きたんたﾞよ?!<KATA><TERM>"
+	ctxt "<HIRA>なにしに ここまで きたんだよ?!<KATA>"
+	done
 
 TreeBitstreamText_42b41:
 	ctxt "<HIRA>ふん かってに しろ………<KATA>"
 
 TreeBitstreamText_42b4c:
-	ctxt "ハﾞンサﾞ<HIRA>のうみは あおい!<NL>"
-	ctxt "<KATA>ハﾞンサﾞ<HIRA>のうみは とうめい!<KATA><TERM>"
+	ctxt "バンザ<HIRA>のうみは あおい!"
+	line "<KATA>バンザ<HIRA>のうみは とうめい!<KATA>"
+	done
 
 TreeBitstreamText_42b64:
-	ctxt "<HIRA>すなはまには またﾞまたﾞ<NL>"
-	ctxt "いろんなものかﾞ おちてるらしいよ<KATA>"
+	ctxt "<HIRA>すなはまには まだまだ"
+	line "いろんなものが おちてるらしいよ<KATA>"
 
 TreeBitstreamText_42b7b:
 	ctxt "<HIRA>くらいよな ここ………<KATA>"
@@ -7141,2321 +7742,2657 @@ TreeBitstreamText_42b85:
 	ctxt "<HIRA>せまいよな ここ………<KATA>"
 
 TreeBitstreamText_42b8f:
-	ctxt "<HIRA>しあわせ かーい?<KATA><TERM>"
+	ctxt "<HIRA>しあわせ かーい?<KATA>"
+	done
 
 TreeBitstreamText_42b98:
 	ctxt "<HIRA>はーら へったー<KATA>"
 
 TreeBitstreamText_42ba0:
-	ctxt "<HIRA>おめ なにしに きた?<KATA><TERM>"
+	ctxt "<HIRA>おめ なにしに きた?<KATA>"
+	done
 
 TreeBitstreamText_42baa:
-	ctxt "<HIRA>おら なんてﾞ ここに いる?<KATA><TERM>"
+	ctxt "<HIRA>おら なんで ここに いる?<KATA>"
+	done
 
 TreeBitstreamText_42bb7:
-	ctxt "<HIRA>いやぁ きょうも<NL>"
-	ctxt "いい おてんき てﾞすね<KATA><TERM>"
+	ctxt "<HIRA>いやぁ きょうも"
+	line "いい おてんき ですね<KATA>"
+	done
 
 TreeBitstreamText_42bc8:
-	ctxt "<HIRA>てﾞは こﾞきけﾞんよう<KATA><TERM>"
+	ctxt "<HIRA>では ごきげんよう<KATA>"
+	done
 
 TreeBitstreamText_42bd2:
-	ctxt "カサッ! カサカサカサッ!<TERM>"
+	ctxt "カサッ! カサカサカサッ!"
+	done
 
 TreeBitstreamText_42bdd:
-	ctxt "サカッ? サカサカサカッ?<TERM>"
+	ctxt "サカッ? サカサカサカッ?"
+	done
 
 TreeBitstreamText_42be8:
-	ctxt "<HIRA>ぬぬぬ?<NL>"
-	ctxt "あやしい やつめ!<KATA><TERM>"
+	ctxt "<HIRA>ぬぬぬ?"
+	line "あやしい やつめ!<KATA>"
+	done
 
 TreeBitstreamText_42bf7:
-	ctxt "<HIRA>あやしいのは <KATA>オレ<HIRA>たﾞったな<NL>"
-	ctxt "わっはっはっ<KATA>"
+	ctxt "<HIRA>あやしいのは <KATA>オレ<HIRA>だったな"
+	line "わっはっはっ<KATA>"
 
 TreeBitstreamText_42c09:
-	ctxt "<HIRA>とﾞうくつてﾞ <KATA>ハﾞトロホﾞ?<TERM>"
+	ctxt "<HIRA>どうくつで <KATA>バトロボ?"
+	done
 
 TreeBitstreamText_42c16:
-	ctxt "ハﾞトリンクﾞ! ハﾞトリンクﾞ!<NL>"
-	ctxt "<HIRA>これかﾞ たのしいのねー!<KATA><TERM>"
+	ctxt "バトリング! バトリング!"
+	line "<HIRA>これが たのしいのねー!<KATA>"
+	done
 
 TreeBitstreamText_42c2d:
-	ctxt "<HIRA>おっ おまえ しんいりか?<KATA><TERM>"
+	ctxt "<HIRA>おっ おまえ しんいりか?<KATA>"
+	done
 
 TreeBitstreamText_42c39:
-	ctxt "<HIRA>とﾞうやら しんしﾞんてﾞは ない<NL>"
-	ctxt "ようたﾞな<KATA><TERM>"
+	ctxt "<HIRA>どうやら しんじんでは ない"
+	line "ようだな<KATA>"
+	done
 
 TreeBitstreamText_42c4a:
-	ctxt "<HIRA>おれに かてるわけかﾞ なかろう?<KATA>"
+	ctxt "<HIRA>おれに かてるわけが なかろう?<KATA>"
 
 TreeBitstreamText_42c58:
-	ctxt "<HIRA>おまえは うんの いいやつたﾞ!<KATA>"
+	ctxt "<HIRA>おまえは うんの いいやつだ!<KATA>"
 
 TreeBitstreamText_42c65:
-	ctxt "<HIRA>おれは うんかﾞ わるいんたﾞ!<KATA><TERM>"
+	ctxt "<HIRA>おれは うんが わるいんだ!<KATA>"
+	done
 
 TreeBitstreamText_42c72:
-	ctxt "<HIRA>たﾞから いったたﾞろう!<KATA><TERM>"
+	ctxt "<HIRA>だから いっただろう!<KATA>"
+	done
 
 TreeBitstreamText_42c7d:
-	ctxt "<HIRA>お <KATA>トレーニンクﾞ<HIRA>か? つきあうせﾞ!<KATA><TERM>"
+	ctxt "<HIRA>お <KATA>トレーニング<HIRA>か? つきあうぜ!<KATA>"
+	done
 
 TreeBitstreamText_42c8e:
-	ctxt "<HIRA>ふーっ いいあせ かいたな!<NL>"
-	ctxt "<NL>"
-	ctxt "………と いいたいかﾞ<NL>"
-	ctxt "たたかうのは <KATA>ロホﾞホﾟン<HIRA>なんたﾞよな<KATA><TERM>"
+	ctxt "<HIRA>ふーっ いいあせ かいたな!"
+	line ""
+	line "………と いいたいが"
+	line "たたかうのは <KATA>ロボポン<HIRA>なんだよな<KATA>"
+	done
 
 TreeBitstreamText_42cb1:
-	ctxt "<HIRA>かってに しな<KATA><TERM>"
+	ctxt "<HIRA>かってに しな<KATA>"
+	done
 
 TreeBitstreamText_42cb8:
-	ctxt "<HIRA>そう たたかいは よくない!<KATA><TERM>"
+	ctxt "<HIRA>そう たたかいは よくない!<KATA>"
+	done
 
 TreeBitstreamText_42cc4:
-	ctxt "<HIRA>なんたﾞよ おい<KATA><TERM>"
+	ctxt "<HIRA>なんだよ おい<KATA>"
+	done
 
 TreeBitstreamText_42ccc:
-	ctxt "<HIRA>てﾞなおして こい!<KATA><TERM>"
+	ctxt "<HIRA>でなおして こい!<KATA>"
+	done
 
 TreeBitstreamText_42cd5:
-	ctxt "<HIRA>おっと!<NL>"
-	ctxt "ここを とおすわけには いかないせﾞ<NL>"
-	ctxt "なにせ ひみつの かいたﾞん たﾞからな<NL>"
-	ctxt "<NL>"
-	ctxt "とﾞうしても とおりたいっていうなら<NL>"
-	ctxt "<KATA>オレ<HIRA>と <KATA>ハﾞトロホﾞ<HIRA>しょうふﾞたﾞ!<KATA>"
+	ctxt "<HIRA>おっと!"
+	line "ここを とおすわけには いかないぜ"
+	line "なにせ ひみつの かいだん だからな"
+	line ""
+	line "どうしても とおりたいっていうなら"
+	line "<KATA>オレ<HIRA>と <KATA>バトロボ<HIRA>しょうぶだ!<KATA>"
 
 TreeBitstreamText_42d11:
-	ctxt "<HIRA>そうたﾞな…… おたかﾞい<NL>"
-	ctxt "<KATA>ムリ<HIRA>は しないほうかﾞいいな<KATA><TERM>"
+	ctxt "<HIRA>そうだな…… おたがい"
+	line "<KATA>ムリ<HIRA>は しないほうがいいな<KATA>"
+	done
 
 TreeBitstreamText_42d27:
-	ctxt "<HIRA>ちっ! やくそくたﾞ<NL>"
-	ctxt "とおっていいせﾞ<KATA><TERM>"
+	ctxt "<HIRA>ちっ! やくそくだ"
+	line "とおっていいぜ<KATA>"
+	done
 
 TreeBitstreamText_42d37:
-	ctxt "<HIRA>ようこそ <KATA>メイシﾞ<HIRA>のもりへ<NL>"
-	ctxt "<NL>"
-	ctxt "けんきゅうしﾞょに くるかたは<NL>"
-	ctxt "かんはﾞんを よんてﾞね!<NL>"
-	ctxt "ますﾞは ひたﾞりうえの<NL>"
-	ctxt "かんはﾞんを よめ<KATA><TERM>"
+	ctxt "<HIRA>ようこそ <KATA>メイジ<HIRA>のもりへ"
+	line ""
+	line "けんきゅうじょに くるかたは"
+	line "かんばんを よんでね!"
+	line "まずは ひだりうえの"
+	line "かんばんを よめ<KATA>"
+	done
 
 TreeBitstreamText_42d69:
-	ctxt "<HIRA>みきﾞへ すすんてﾞ<NL>"
-	ctxt "かんはﾞんを よめ<KATA><TERM>"
+	ctxt "<HIRA>みぎへ すすんで"
+	line "かんばんを よめ<KATA>"
+	done
 
 TreeBitstreamText_42d79:
-	ctxt "<HIRA>ひたﾞりへすすんてﾞ<NL>"
-	ctxt "かんはﾞんを よめ<KATA>"
+	ctxt "<HIRA>ひだりへすすんで"
+	line "かんばんを よめ<KATA>"
 
 TreeBitstreamText_42d89:
-	ctxt "<HIRA>みきﾞしたへ すすんてﾞ<NL>"
-	ctxt "かんはﾞんを よめ<KATA>"
+	ctxt "<HIRA>みぎしたへ すすんで"
+	line "かんばんを よめ<KATA>"
 
 TreeBitstreamText_42d9a:
-	ctxt "<HIRA>ひたﾞりうえへ すすんてﾞ<NL>"
-	ctxt "かんはﾞんを よめ<KATA>"
+	ctxt "<HIRA>ひだりうえへ すすんで"
+	line "かんばんを よめ<KATA>"
 
 TreeBitstreamText_42dac:
-	ctxt "<HIRA>みきﾞしたの かんはﾞんを よますﾞに<NL>"
-	ctxt "さらに したの かんはﾞんを よめ<KATA><TERM>"
+	ctxt "<HIRA>みぎしたの かんばんを よまずに"
+	line "さらに したの かんばんを よめ<KATA>"
+	done
 
 TreeBitstreamText_42dc8:
-	ctxt "<HIRA>こﾞくろうさん<NL>"
-	ctxt "<NL>"
-	ctxt "けんきゅうしﾞょへ<NL>"
-	ctxt "いらっしゃーい!<KATA><TERM>"
+	ctxt "<HIRA>ごくろうさん"
+	line ""
+	line "けんきゅうじょへ"
+	line "いらっしゃーい!<KATA>"
+	done
 
 TreeBitstreamText_42dde:
-	ctxt "<HIRA>こﾞくろうさん<NL>"
-	ctxt "<NL>"
-	ctxt "はしﾞめから<NL>"
-	ctxt "やりなおしっ!!<KATA><TERM>"
+	ctxt "<HIRA>ごくろうさん"
+	line ""
+	line "はじめから"
+	line "やりなおしっ!!<KATA>"
+	done
 
 TreeBitstreamText_42df1:
-	ctxt "     <HIRA>かかﾞく いのち!<NL>"
-	ctxt "<NL>"
-	ctxt "   <KATA>フラワー<HIRA>けんきゅうしﾞょ<NL>"
-	ctxt "    24しﾞかん えいきﾞょう<KATA>"
+	ctxt "     <HIRA>かがく いのち!"
+	line ""
+	line "   <KATA>フラワー<HIRA>けんきゅうじょ"
+	line "    24じかん えいぎょう<KATA>"
 
 TreeBitstreamText_42e15:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "ついにかんせい!<NL>"
-	ctxt "せいきの たﾞいはつめい!<NL>"
-	ctxt "<KATA>ハネ<HIRA>をつけた そらとふﾞにんけﾞん!<NL>"
-	ctxt "たﾞいして………<NL>"
-	ctxt "とりにんけﾞん <KATA>ハﾞートﾞメン!!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>さあ てﾞていたたﾞきましょう!!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "ついにかんせい!"
+	line "せいきの だいはつめい!"
+	line "<KATA>ハネ<HIRA>をつけた そらとぶにんげん!"
+	line "だいして………"
+	line "とりにんげん <KATA>バードメン!!"
+	line ""
+	line "<HIRA>さあ でていただきましょう!!<KATA>"
+	done
 
 TreeBitstreamText_42e5e:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "うーん また しﾞっけん しっはﾟいか<NL>"
-	ctxt "…………………<NL>"
-	ctxt "<KATA>ノースﾞ<HIRA>くん! てﾞんし<KATA>レンシﾞ<HIRA>てﾞ<NL>"
-	ctxt "とりにんけﾞんは てﾞきんたﾞろ!<NL>"
-	ctxt "………まあ いい<NL>"
-	ctxt "<NL>"
-	ctxt "やっはﾟり てﾞんせつの ようせいに<NL>"
-	ctxt "おねかﾞいしたほうかﾞ いいのかな……<NL>"
-	ctxt "あの <KATA>オヤシﾞ<HIRA>ようせいに……<KATA>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "うーん また じっけん しっぱいか"
+	line "…………………"
+	line "<KATA>ノーズ<HIRA>くん! でんし<KATA>レンジ<HIRA>で"
+	line "とりにんげんは できんだろ!"
+	line "………まあ いい"
+	line ""
+	line "やっぱり でんせつの ようせいに"
+	line "おねがいしたほうが いいのかな……"
+	line "あの <KATA>オヤジ<HIRA>ようせいに……<KATA>"
 
 TreeBitstreamText_42ec2:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "や やぁ いらっしゃい!<NL>"
-	ctxt "<NL>"
-	ctxt "いま きみかﾞ みたものは まほﾞろし<NL>"
-	ctxt "てしﾞな たﾞよ てしﾞな!<NL>"
-	ctxt "とﾞうやら <KATA>オヤシﾞ<HIRA>ようせいの はなしを<NL>"
-	ctxt "きいちゃった みたいたﾞね<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせいは このしまに<NL>"
-	ctxt "かたりつかﾞれる <KATA>トﾞリーム<HIRA>ようせい!<NL>"
-	ctxt "とﾞんな ゆめも かなえてくれる<NL>"
-	ctxt "すてきな ようせい なんたﾞ!<NL>"
-	ctxt "わたしは みたこと ないかﾞ<NL>"
-	ctxt "とても かわいいんたﾞって!<NL>"
-	ctxt "ほかに ききたいこと ある?<NL>"
-	ctxt "ないよね! はい それしﾞゃあね!<NL>"
-	ctxt "さよなら! かえった かえった!<NL>"
-	ctxt "<NL>"
-	ctxt "ここてﾞ みたことは<NL>"
-	ctxt "たﾞれにも いわないよーに いいね!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "や やぁ いらっしゃい!"
+	line ""
+	line "いま きみが みたものは まぼろし"
+	line "てじな だよ てじな!"
+	line "どうやら <KATA>オヤジ<HIRA>ようせいの はなしを"
+	line "きいちゃった みたいだね"
+	line "<KATA>オヤジ<HIRA>ようせいは このしまに"
+	line "かたりつがれる <KATA>ドリーム<HIRA>ようせい!"
+	line "どんな ゆめも かなえてくれる"
+	line "すてきな ようせい なんだ!"
+	line "わたしは みたこと ないが"
+	line "とても かわいいんだって!"
+	line "ほかに ききたいこと ある?"
+	line "ないよね! はい それじゃあね!"
+	line "さよなら! かえった かえった!"
+	line ""
+	line "ここで みたことは"
+	line "だれにも いわないよーに いいね!<KATA>"
+	done
 
 TreeBitstreamText_42f84:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせいの はなしって<NL>"
-	ctxt "とﾞうも <KATA>ウソ<HIRA>みたい なんたﾞ<NL>"
-	ctxt "ことﾞもすら しんしﾞて ないってのに<NL>"
-	ctxt "………<KATA>ノースﾞ<HIRA>の<KATA>ハﾞカ<HIRA>め!<NL>"
-	ctxt "いまたﾞに しんしﾞて いやかﾞる!<NL>"
-	ctxt "<NL>"
-	ctxt "かかﾞくてﾞ かいめい てﾞきないことは<NL>"
-	ctxt "けﾞんしﾞつには ありえないのに!<NL>"
-	ctxt "それより もっと かかﾞくの<NL>"
-	ctxt "へﾞんきょうをして ほしいんたﾞかﾞ……<KATA>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "<KATA>オヤジ<HIRA>ようせいの はなしって"
+	line "どうも <KATA>ウソ<HIRA>みたい なんだ"
+	line "こどもすら しんじて ないってのに"
+	line "………<KATA>ノーズ<HIRA>の<KATA>バカ<HIRA>め!"
+	line "いまだに しんじて いやがる!"
+	line ""
+	line "かがくで かいめい できないことは"
+	line "げんじつには ありえないのに!"
+	line "それより もっと かがくの"
+	line "べんきょうをして ほしいんだが……<KATA>"
 
 TreeBitstreamText_42ffd:
-	ctxt "ノースﾞ<NL>"
-	ctxt "オラ <HIRA>みたんたﾞ 2ねんまえの よる<NL>"
-	ctxt "この こやの まとﾞから こそーっと<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせいかﾞ ねている<NL>"
-	ctxt "<KATA>オラ<HIRA>たちを のそﾞいてたんたﾞ<NL>"
-	ctxt "<KATA>オラ <HIRA>ねた<KATA>フリ<HIRA>して うすめ あけて<NL>"
-	ctxt "しﾞーっと ようせいを みてたんたﾞー<NL>"
-	ctxt "これ <KATA>ホント<HIRA>の はなしたﾞ!<NL>"
-	ctxt "<KATA>ホント<HIRA>の<KATA>ホント ホント<HIRA>のはなしたﾞ!<NL>"
-	ctxt "きょうしﾞゅは しんしﾞねーけとﾞ<NL>"
-	ctxt "おまえ しんしﾞて くれるよな?<KATA><TERM>"
+	ctxt "ノーズ"
+	line "オラ <HIRA>みたんだ 2ねんまえの よる"
+	line "この こやの まどから こそーっと"
+	line "<KATA>オヤジ<HIRA>ようせいが ねている"
+	line "<KATA>オラ<HIRA>たちを のぞいてたんだ"
+	line "<KATA>オラ <HIRA>ねた<KATA>フリ<HIRA>して うすめ あけて"
+	line "じーっと ようせいを みてたんだー"
+	line "これ <KATA>ホント<HIRA>の はなしだ!"
+	line "<KATA>ホント<HIRA>の<KATA>ホント ホント<HIRA>のはなしだ!"
+	line "きょうじゅは しんじねーけど"
+	line "おまえ しんじて くれるよな?<KATA>"
+	done
 
 TreeBitstreamText_43084:
-	ctxt "ノースﾞ<NL>"
-	ctxt "<HIRA>そ そうかい! おまえも<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせいを しんしﾞるってか!<NL>"
-	ctxt "よし きまった!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>フラワー<HIRA>きょうしﾞゅかﾞ うるさいから<NL>"
-	ctxt "こっそり よるに あいに いこう<NL>"
-	ctxt "よるの6しﾞに <KATA>メイシﾞ<HIRA>とﾞうくつの<NL>"
-	ctxt "いりくﾞちのまえてﾞ まってる!<NL>"
-	ctxt "よるの6しﾞにあおう! くれくﾞれも<NL>"
-	ctxt "きょうしﾞゅには ないしょにね<KATA><TERM>"
+	ctxt "ノーズ"
+	line "<HIRA>そ そうかい! おまえも"
+	line "<KATA>オヤジ<HIRA>ようせいを しんじるってか!"
+	line "よし きまった!"
+	line ""
+	line "<KATA>フラワー<HIRA>きょうじゅが うるさいから"
+	line "こっそり よるに あいに いこう"
+	line "よるの6じに <KATA>メイジ<HIRA>どうくつの"
+	line "いりぐちのまえで まってる!"
+	line "よるの6じにあおう! くれぐれも"
+	line "きょうじゅには ないしょにね<KATA>"
+	done
 
 TreeBitstreamText_430f7:
-	ctxt "ノースﾞ<NL>"
-	ctxt "<HIRA>ふーん そうかい<NL>"
-	ctxt "そうたﾞよなー<NL>"
-	ctxt "せっかく <KATA>オヤシﾞ<HIRA>ようせいに<NL>"
-	ctxt "あわせて あけﾞようと おもったのに<NL>"
-	ctxt "たﾞーれも しんしﾞて くれないのか<NL>"
-	ctxt "さひﾞしいけとﾞ これかﾞ けﾞんしﾞつか<NL>"
-	ctxt "かかﾞくしﾞゃ かいめい てﾞきないことも<NL>"
-	ctxt "あると おもうんたﾞけとﾞなぁ………<KATA><TERM>"
+	ctxt "ノーズ"
+	line "<HIRA>ふーん そうかい"
+	line "そうだよなー"
+	line "せっかく <KATA>オヤジ<HIRA>ようせいに"
+	line "あわせて あげようと おもったのに"
+	line "だーれも しんじて くれないのか"
+	line "さびしいけど これが げんじつか"
+	line "かがくじゃ かいめい できないことも"
+	line "あると おもうんだけどなぁ………<KATA>"
+	done
 
 TreeBitstreamText_43156:
-	ctxt "ノースﾞ<NL>"
-	ctxt "メイシﾞ<HIRA>とﾞうくつ は きょうしﾞゅかﾞ<NL>"
-	ctxt "きりひらいた とﾞうくつなんたﾞ……<NL>"
-	ctxt "なんてﾞも むかし きょうしﾞゅも<NL>"
-	ctxt "ようせいを しんしﾞてたんたﾞって!<NL>"
-	ctxt "たﾞから いいつたえの ある<NL>"
-	ctxt "このとﾞうくつを かいとったのさ!<NL>"
-	ctxt "てﾞも 1とﾞも あえなかったから<NL>"
-	ctxt "とﾞうくつを ふさいたﾞんたﾞって!<NL>"
-	ctxt "………まあ それは ともかく<NL>"
-	ctxt "よるの6しﾞたﾞよ わすれないてﾞね!<KATA><TERM>"
+	ctxt "ノーズ"
+	line "メイジ<HIRA>どうくつ は きょうじゅが"
+	line "きりひらいた どうくつなんだ……"
+	line "なんでも むかし きょうじゅも"
+	line "ようせいを しんじてたんだって!"
+	line "だから いいつたえの ある"
+	line "このどうくつを かいとったのさ!"
+	line "でも 1ども あえなかったから"
+	line "どうくつを ふさいだんだって!"
+	line "………まあ それは ともかく"
+	line "よるの6じだよ わすれないでね!<KATA>"
+	done
 
 TreeBitstreamText_431d7:
-	ctxt "<STBF><NL>"
-	ctxt "オヤシﾞ<HIRA>ようせい <KATA>カモーン!<TERM>"
+	ctxt "<PLAYER>"
+	line "オヤジ<HIRA>ようせい <KATA>カモーン!"
+	done
 
 TreeBitstreamText_431e5:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ! それは それは<NL>"
-	ctxt "まほﾞろしの <KATA>ヒケﾞヒケﾞ<HIRA>ようせい!<NL>"
-	ctxt "さあ こっちへ よこしなさい!<NL>"
-	ctxt "<NL>"
-	ctxt "この とﾞうくつは わたしの しきち!<NL>"
-	ctxt "もんくは いわせないそﾞ!!<NL>"
-	ctxt "さあ <KATA>ヒケﾞヒケﾞ<HIRA>ようせい!<NL>"
-	ctxt "ねかﾞいを かなえたまえ!!!<NL>"
-	ctxt "わたしは とおい とおい<NL>"
-	ctxt "はるか うちゅうに いきたい!<NL>"
-	ctxt "うちゅうに いって このほしを<NL>"
-	ctxt "はるか とおくから なかﾞめたいんたﾞ<NL>"
-	ctxt "たﾞから うちゅうに いくための<NL>"
-	ctxt "<KATA>ロケット<HIRA>かﾞ ほしい!!<NL>"
-	ctxt "うちゅうへ いくための <KATA>ロケット!<NL>"
-	ctxt "ロケット<HIRA>かﾞ ほしい!<NL>"
-	ctxt "いま すくﾞ ここに<NL>"
-	ctxt "<KATA>ロケット<HIRA>を たﾞしてくれ!<NL>"
-	ctxt "このねかﾞい <KATA>オヤシﾞ<HIRA>ようせいよ<NL>"
-	ctxt "かなえて おくれ!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ! それは それは"
+	line "まぼろしの <KATA>ヒゲヒゲ<HIRA>ようせい!"
+	line "さあ こっちへ よこしなさい!"
+	line ""
+	line "この どうくつは わたしの しきち!"
+	line "もんくは いわせないぞ!!"
+	line "さあ <KATA>ヒゲヒゲ<HIRA>ようせい!"
+	line "ねがいを かなえたまえ!!!"
+	line "わたしは とおい とおい"
+	line "はるか うちゅうに いきたい!"
+	line "うちゅうに いって このほしを"
+	line "はるか とおくから ながめたいんだ"
+	line "だから うちゅうに いくための"
+	line "<KATA>ロケット<HIRA>が ほしい!!"
+	line "うちゅうへ いくための <KATA>ロケット!"
+	line "ロケット<HIRA>が ほしい!"
+	line "いま すぐ ここに"
+	line "<KATA>ロケット<HIRA>を だしてくれ!"
+	line "このねがい <KATA>オヤジ<HIRA>ようせいよ"
+	line "かなえて おくれ!<KATA>"
+	done
 
 TreeBitstreamText_432c2:
-	ctxt "オヤシﾞ<HIRA>ようせい<NL>"
-	ctxt "あいよー わかったよー<KATA><TERM>"
+	ctxt "オヤジ<HIRA>ようせい"
+	line "あいよー わかったよー<KATA>"
+	done
 
 TreeBitstreamText_432d3:
-	ctxt "オヤシﾞ<HIRA>ようせい<NL>"
-	ctxt "はい これてﾞしょ<KATA><TERM>"
+	ctxt "オヤジ<HIRA>ようせい"
+	line "はい これでしょ<KATA>"
+	done
 
 TreeBitstreamText_432e2:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ これは!<NL>"
-	ctxt "!!!!!!!!!!!!!!!<NL>"
-	ctxt "らいしゅう <KATA>トﾞーム<HIRA>きゅうしﾞょうてﾞ<NL>"
-	ctxt "おこなわれる やきゅうの しあい!<NL>"
-	ctxt "しかも たﾞいにんきの<NL>"
-	ctxt "<KATA>シﾞャイアンツ <HIRA>たい <KATA>タイカﾞース!<NL>"
-	ctxt "₆₆₆<HIRA>って これは<KATA>チケット<HIRA>てﾞしょ!<NL>"
-	ctxt "<KATA>チケット <HIRA>しﾞゃなくて <KATA>ロケット!<NL>"
-	ctxt "オヤシﾞ<HIRA>ようせいめ<NL>"
-	ctxt "わさﾞと <KATA>ホﾞケ<HIRA>やかﾞったな!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ これは!"
+	line "!!!!!!!!!!!!!!!"
+	line "らいしゅう <KATA>ドーム<HIRA>きゅうじょうで"
+	line "おこなわれる やきゅうの しあい!"
+	line "しかも だいにんきの"
+	line "<KATA>ジャイアンツ <HIRA>たい <KATA>タイガース!"
+	line "………<HIRA>って これは<KATA>チケット<HIRA>でしょ!"
+	line "<KATA>チケット <HIRA>じゃなくて <KATA>ロケット!"
+	line "オヤジ<HIRA>ようせいめ"
+	line "わざと <KATA>ボケ<HIRA>やがったな!<KATA>"
+	done
 
 TreeBitstreamText_43362:
-	ctxt "オヤシﾞ<HIRA>ようせい<NL>"
-	ctxt "のそﾞみは かなえました<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>のやくめは これてﾞおしまいてﾞす<NL>"
-	ctxt "しﾞゃあね <KATA>ハﾞッハハーイ!<TERM>"
+	ctxt "オヤジ<HIRA>ようせい"
+	line "のぞみは かなえました"
+	line "<KATA>ボク<HIRA>のやくめは これでおしまいです"
+	line "じゃあね <KATA>バッハハーイ!"
+	done
 
 TreeBitstreamText_4338d:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ! それは まほﾞろしの<NL>"
-	ctxt "<KATA>ネクタイ<HIRA>ようせい!<NL>"
-	ctxt "さあ こっちへ よこしなさい!<NL>"
-	ctxt "<NL>"
-	ctxt "この とﾞうくつは わたしの しきち!<NL>"
-	ctxt "もんくは いわせないそﾞ!!<NL>"
-	ctxt "さあ <KATA>ネクタイ<HIRA>ようせい!<NL>"
-	ctxt "ねかﾞいを かなえたまえ!!!<NL>"
-	ctxt "わたしは とおい とおい<NL>"
-	ctxt "はるか うちゅうに いきたい!<NL>"
-	ctxt "うちゅうに いって このほしを<NL>"
-	ctxt "はるか とおくから なかﾞめたいんたﾞ<NL>"
-	ctxt "たﾞから うちゅうに いくための<NL>"
-	ctxt "<KATA>ロケット<HIRA>かﾞ ほしい!!<NL>"
-	ctxt "うちゅうへ いくための <KATA>ロケット!<NL>"
-	ctxt "ロケット<HIRA>かﾞ ほしい!<NL>"
-	ctxt "<KATA>ロケット<HIRA>よ <KATA>ロ ケ ッ ト!<NL>"
-	ctxt "ロ   ケ   ッ   ト!<NL>"
-	ctxt "<HIRA>いま ここに すくﾞ <KATA>ロケット<HIRA>を<NL>"
-	ctxt "たﾞしてくれ!<NL>"
-	ctxt "このねかﾞい <KATA>ネクタイ<HIRA>ようせいよ<NL>"
-	ctxt "かなえて おくれ!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ! それは まぼろしの"
+	line "<KATA>ネクタイ<HIRA>ようせい!"
+	line "さあ こっちへ よこしなさい!"
+	line ""
+	line "この どうくつは わたしの しきち!"
+	line "もんくは いわせないぞ!!"
+	line "さあ <KATA>ネクタイ<HIRA>ようせい!"
+	line "ねがいを かなえたまえ!!!"
+	line "わたしは とおい とおい"
+	line "はるか うちゅうに いきたい!"
+	line "うちゅうに いって このほしを"
+	line "はるか とおくから ながめたいんだ"
+	line "だから うちゅうに いくための"
+	line "<KATA>ロケット<HIRA>が ほしい!!"
+	line "うちゅうへ いくための <KATA>ロケット!"
+	line "ロケット<HIRA>が ほしい!"
+	line "<KATA>ロケット<HIRA>よ <KATA>ロ ケ ッ ト!"
+	line "ロ   ケ   ッ   ト!"
+	line "<HIRA>いま ここに すぐ <KATA>ロケット<HIRA>を"
+	line "だしてくれ!"
+	line "このねがい <KATA>ネクタイ<HIRA>ようせいよ"
+	line "かなえて おくれ!<KATA>"
+	done
 
 TreeBitstreamText_4347a:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ これは!<NL>"
-	ctxt "<NL>"
-	ctxt "わりと ちいさめの <KATA>ロケット<HIRA>てﾞ<NL>"
-	ctxt "ちょっと たへﾞてみると……<NL>"
-	ctxt "<KATA>カリッ<HIRA>とした はこﾞたえ!<NL>"
-	ctxt "あっさりした あまさかﾞ ある!<NL>"
-	ctxt "……って これ <KATA>ヒﾞスケット<HIRA>しﾞゃんか!<NL>"
-	ctxt "<KATA>ヒﾞスケット<HIRA>しﾞゃなくて <KATA>ロケット!<NL>"
-	ctxt "<HIRA>この <KATA>オヤシﾞ<HIRA>ようせいめ<NL>"
-	ctxt "また わさﾞと <KATA>ホﾞケ<HIRA>やかﾞったな!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ これは!"
+	line ""
+	line "わりと ちいさめの <KATA>ロケット<HIRA>で"
+	line "ちょっと たべてみると……"
+	line "<KATA>カリッ<HIRA>とした はごたえ!"
+	line "あっさりした あまさが ある!"
+	line "……って これ <KATA>ビスケット<HIRA>じゃんか!"
+	line "<KATA>ビスケット<HIRA>じゃなくて <KATA>ロケット!"
+	line "<HIRA>この <KATA>オヤジ<HIRA>ようせいめ"
+	line "また わざと <KATA>ボケ<HIRA>やがったな!<KATA>"
+	done
 
 TreeBitstreamText_434f2:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ! それは まほﾞろしの<NL>"
-	ctxt "<KATA>ツルツル<HIRA>ようせい!<NL>"
-	ctxt "さあ こっちへ よこしなさい!<NL>"
-	ctxt "<NL>"
-	ctxt "この とﾞうくつは わたしの しきち!<NL>"
-	ctxt "もんくは いわせないそﾞ!!<NL>"
-	ctxt "さあ <KATA>ツルツル<HIRA>ようせい!<NL>"
-	ctxt "<NL>"
-	ctxt "わたしは うちゅうに いきたい!<NL>"
-	ctxt "<NL>"
-	ctxt "たﾞから うちゅうに いくための<NL>"
-	ctxt "<KATA>ロケット<HIRA>かﾞ ほしい!<NL>"
-	ctxt "<KATA>チケット<HIRA>てﾞも <KATA>ヒﾞスケット<HIRA>てﾞもなく<NL>"
-	ctxt "<KATA>ロケット<HIRA>かﾞ ほしいんたﾞ!<NL>"
-	ctxt "いいかい <KATA>ロケット<HIRA>たﾞよ <KATA>ロケット!<NL>"
-	ctxt "<HIRA>さあ <KATA>ロケット<HIRA>を たﾞしやかﾞれ!<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせい こんとﾞは<NL>"
-	ctxt "<KATA>ホﾞケ<HIRA>るんしﾞゃないそﾞ!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ! それは まぼろしの"
+	line "<KATA>ツルツル<HIRA>ようせい!"
+	line "さあ こっちへ よこしなさい!"
+	line ""
+	line "この どうくつは わたしの しきち!"
+	line "もんくは いわせないぞ!!"
+	line "さあ <KATA>ツルツル<HIRA>ようせい!"
+	line ""
+	line "わたしは うちゅうに いきたい!"
+	line ""
+	line "だから うちゅうに いくための"
+	line "<KATA>ロケット<HIRA>が ほしい!"
+	line "<KATA>チケット<HIRA>でも <KATA>ビスケット<HIRA>でもなく"
+	line "<KATA>ロケット<HIRA>が ほしいんだ!"
+	line "いいかい <KATA>ロケット<HIRA>だよ <KATA>ロケット!"
+	line "<HIRA>さあ <KATA>ロケット<HIRA>を だしやがれ!"
+	line "<KATA>オヤジ<HIRA>ようせい こんどは"
+	line "<KATA>ボケ<HIRA>るんじゃないぞ!<KATA>"
+	done
 
 TreeBitstreamText_435b0:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ これは!<NL>"
-	ctxt "<NL>"
-	ctxt "いやー <KATA>クﾞリッフﾟ<HIRA>かﾞ しっかりしてて<NL>"
-	ctxt "<KATA>カﾞット<HIRA>の はりくﾞあいも いい!<NL>"
-	ctxt "なかなか かるいんてﾞ これなら<NL>"
-	ctxt "<KATA>サーヒﾞスエース<HIRA>かﾞ ねらえそうたﾞなー<NL>"
-	ctxt "<KATA>スマッシュ<HIRA>も <KATA>ホﾞレー<HIRA>も きまりそうな<NL>"
-	ctxt "きかﾞする……… って これ<NL>"
-	ctxt "<KATA>テニス<HIRA>の <KATA>ラケット <HIRA>しﾞゃねぇか!<NL>"
-	ctxt "おまえら わさﾞと <KATA>ホﾞケ<HIRA>てんたﾞろ!<NL>"
-	ctxt "いいかけﾞんに しやかﾞれ!<NL>"
-	ctxt "こんとﾞ やったら ふﾞっころすそﾞ!<NL>"
-	ctxt "<KATA>オイ <HIRA>てめぇ!<NL>"
-	ctxt "やくたたすﾞの <KATA>オヤシﾞ<HIRA>ようせい!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ これは!"
+	line ""
+	line "いやー <KATA>グリップ<HIRA>が しっかりしてて"
+	line "<KATA>ガット<HIRA>の はりぐあいも いい!"
+	line "なかなか かるいんで これなら"
+	line "<KATA>サービスエース<HIRA>が ねらえそうだなー"
+	line "<KATA>スマッシュ<HIRA>も <KATA>ボレー<HIRA>も きまりそうな"
+	line "きがする……… って これ"
+	line "<KATA>テニス<HIRA>の <KATA>ラケット <HIRA>じゃねぇか!"
+	line "おまえら わざと <KATA>ボケ<HIRA>てんだろ!"
+	line "いいかげんに しやがれ!"
+	line "こんど やったら ぶっころすぞ!"
+	line "<KATA>オイ <HIRA>てめぇ!"
+	line "やくたたずの <KATA>オヤジ<HIRA>ようせい!<KATA>"
+	done
 
 TreeBitstreamText_4365f:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ! それは まほﾞろしの<NL>"
-	ctxt "<KATA>ワンカッフﾟ<HIRA>ようせい!<NL>"
-	ctxt "さあ こっちへ よこしなさい!<NL>"
-	ctxt "<NL>"
-	ctxt "この とﾞうくつは わたしの しきち!<NL>"
-	ctxt "もんくは いわせないそﾞ!!<NL>"
-	ctxt "おい <KATA>ワンカッフﾟ<HIRA>ようせい!<NL>"
-	ctxt "<NL>"
-	ctxt "もう うちゅうなんか いきたくない!<NL>"
-	ctxt "<KATA>ロケット<HIRA>なんか いらない!<NL>"
-	ctxt "とﾞうせ <KATA>タオルケット<HIRA>とか<NL>"
-	ctxt "<KATA>ハﾞスケット<HIRA>とか <KATA>ソケット<HIRA>とか<NL>"
-	ctxt "またﾞまたﾞ いろいろと <KATA>ホﾞケ<HIRA>やかﾞる<NL>"
-	ctxt "かのうせいかﾞ あるからな!<NL>"
-	ctxt "こんとﾞは <KATA>ホﾞケ<HIRA>られない<NL>"
-	ctxt "おねかﾞいをするそﾞ!<NL>"
-	ctxt "そうたﾞ! わたしは とﾞくしん なんてﾞ<NL>"
-	ctxt "せﾞひとも お<KATA>ヨメ<HIRA>さんかﾞ ほしい!<NL>"
-	ctxt "おくさんたﾞ! <KATA>フィアンセ<HIRA>たﾞ!<NL>"
-	ctxt "かのしﾞょたﾞ! おんなたﾞそﾞ!<NL>"
-	ctxt "おい わかってる たﾞろうな!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせい こんとﾞは<NL>"
-	ctxt "<KATA>ホﾞケ<HIRA>るんしﾞゃないそﾞ!<KATA>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ! それは まぼろしの"
+	line "<KATA>ワンカップ<HIRA>ようせい!"
+	line "さあ こっちへ よこしなさい!"
+	line ""
+	line "この どうくつは わたしの しきち!"
+	line "もんくは いわせないぞ!!"
+	line "おい <KATA>ワンカップ<HIRA>ようせい!"
+	line ""
+	line "もう うちゅうなんか いきたくない!"
+	line "<KATA>ロケット<HIRA>なんか いらない!"
+	line "どうせ <KATA>タオルケット<HIRA>とか"
+	line "<KATA>バスケット<HIRA>とか <KATA>ソケット<HIRA>とか"
+	line "まだまだ いろいろと <KATA>ボケ<HIRA>やがる"
+	line "かのうせいが あるからな!"
+	line "こんどは <KATA>ボケ<HIRA>られない"
+	line "おねがいをするぞ!"
+	line "そうだ! わたしは どくしん なんで"
+	line "ぜひとも お<KATA>ヨメ<HIRA>さんが ほしい!"
+	line "おくさんだ! <KATA>フィアンセ<HIRA>だ!"
+	line "かのじょだ! おんなだぞ!"
+	line "おい わかってる だろうな!"
+	line ""
+	line "<KATA>オヤジ<HIRA>ようせい こんどは"
+	line "<KATA>ボケ<HIRA>るんじゃないぞ!<KATA>"
 
 TreeBitstreamText_43761:
-	ctxt "オヤシﾞ<HIRA>ようせい<NL>"
-	ctxt "あいよー わかったよー<NL>"
-	ctxt "もう<KATA>ホﾞケ<HIRA>ないよー<KATA><TERM>"
+	ctxt "オヤジ<HIRA>ようせい"
+	line "あいよー わかったよー"
+	line "もう<KATA>ボケ<HIRA>ないよー<KATA>"
+	done
 
 TreeBitstreamText_4377a:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ これは!<NL>"
-	ctxt "<NL>"
-	ctxt "かわいい!<NL>"
-	ctxt "<NL>"
-	ctxt "やさしい!!<NL>"
-	ctxt "<NL>"
-	ctxt "お<KATA>ヨメ<HIRA>さんに したい <KATA>ナンハﾞーワン!<NL>"
-	ctxt "<HIRA>こんな おくさん いたら いいなぁ<NL>"
-	ctxt "って かいてーしﾞんの<KATA>メス<HIRA>しﾞゃねぇか!<NL>"
-	ctxt "<NL>"
-	ctxt "こんなもんと けっこん てﾞきるわけ<NL>"
-	ctxt "ねぇしﾞゃねぇか!<NL>"
-	ctxt "おまえら おもしろい<KATA>ホﾞケ <HIRA>するから<NL>"
-	ctxt "こっちも つい <KATA>ノ<HIRA>っちゃうたﾞろ!<NL>"
-	ctxt "あのなー もう ふﾞち<KATA>キレ<HIRA>たそﾞ!<NL>"
-	ctxt "つかまえて くってやる!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ これは!"
+	line ""
+	line "かわいい!"
+	line ""
+	line "やさしい!!"
+	line ""
+	line "お<KATA>ヨメ<HIRA>さんに したい <KATA>ナンバーワン!"
+	line "<HIRA>こんな おくさん いたら いいなぁ"
+	line "って かいてーじんの<KATA>メス<HIRA>じゃねぇか!"
+	line ""
+	line "こんなもんと けっこん できるわけ"
+	line "ねぇじゃねぇか!"
+	line "おまえら おもしろい<KATA>ボケ <HIRA>するから"
+	line "こっちも つい <KATA>ノ<HIRA>っちゃうだろ!"
+	line "あのなー もう ぶち<KATA>キレ<HIRA>たぞ!"
+	line "つかまえて くってやる!<KATA>"
+	done
 
 TreeBitstreamText_4380b:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "あいしてるよ………<NL>"
-	ctxt "<NL>"
-	ctxt "?<NL>"
-	ctxt "            ああっ!!<NL>"
-	ctxt "<KATA><STBF><HIRA>くん しﾞゃないか!<NL>"
-	ctxt "いるなら いると いってくれぃ!<NL>"
-	ctxt "とはいうものの……… ふりむきさﾞまに<NL>"
-	ctxt "いってしまった わたしの <KATA>ミス<HIRA>たﾞ!<NL>"
-	ctxt "おお <KATA>ハスﾞカシイ!!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>こっちかﾞ つまの よしえ たﾞ<NL>"
-	ctxt "………<KATA>ホレ<HIRA>るなよー<NL>"
-	ctxt "しかし なんたﾞなー<NL>"
-	ctxt "やっはﾟり <KATA>ヨメ<HIRA>さんは いいもんたﾞよ<NL>"
-	ctxt "<KATA><STBF><HIRA>くん!<NL>"
-	ctxt "きみも はやく けっこんしなさい!<NL>"
-	ctxt "かかﾞく なとﾞというものは しょせん<NL>"
-	ctxt "たのしみの 1つに すきﾞん!<NL>"
-	ctxt "いま せかいに もとめられているのは<NL>"
-	ctxt "かかﾞく なとﾞてﾞは ない!<NL>"
-	ctxt "こころと こころの ふれあい……<NL>"
-	ctxt "まさに <KATA>コミュニケーション<HIRA>たﾞ!<NL>"
-	ctxt "わたしは よしえ と てﾞあい<NL>"
-	ctxt "はしﾞめて そのことに きつﾞいたのたﾞ<NL>"
-	ctxt "こんな しあわせな きもちに<NL>"
-	ctxt "なれるなんて おもわなんたﾞなぁ<NL>"
-	ctxt "………ところてﾞ<NL>"
-	ctxt "せっかくの おきゃくさん たﾞし<NL>"
-	ctxt "よしえ <KATA>サケ<HIRA>たﾞ!<NL>"
-	ctxt "<KATA>サケ<HIRA>もってきてくれ!<KATA>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "あいしてるよ………"
+	line ""
+	line "?"
+	line "            ああっ!!"
+	line "<KATA><PLAYER><HIRA>くん じゃないか!"
+	line "いるなら いると いってくれぃ!"
+	line "とはいうものの……… ふりむきざまに"
+	line "いってしまった わたしの <KATA>ミス<HIRA>だ!"
+	line "おお <KATA>ハズカシイ!!"
+	line ""
+	line "<HIRA>こっちが つまの よしえ だ"
+	line "………<KATA>ホレ<HIRA>るなよー"
+	line "しかし なんだなー"
+	line "やっぱり <KATA>ヨメ<HIRA>さんは いいもんだよ"
+	line "<KATA><PLAYER><HIRA>くん!"
+	line "きみも はやく けっこんしなさい!"
+	line "かがく などというものは しょせん"
+	line "たのしみの 1つに すぎん!"
+	line "いま せかいに もとめられているのは"
+	line "かがく などでは ない!"
+	line "こころと こころの ふれあい……"
+	line "まさに <KATA>コミュニケーション<HIRA>だ!"
+	line "わたしは よしえ と であい"
+	line "はじめて そのことに きづいたのだ"
+	line "こんな しあわせな きもちに"
+	line "なれるなんて おもわなんだなぁ"
+	line "………ところで"
+	line "せっかくの おきゃくさん だし"
+	line "よしえ <KATA>サケ<HIRA>だ!"
+	line "<KATA>サケ<HIRA>もってきてくれ!<KATA>"
 
 TreeBitstreamText_4393b:
-	ctxt "<HIRA>よしえ<NL>"
-	ctxt "<KATA>イヤ<HIRA>てﾞす<KATA><TERM>"
+	ctxt "<HIRA>よしえ"
+	line "<KATA>イヤ<HIRA>です<KATA>"
+	done
 
 TreeBitstreamText_43945:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "せつねぇ………<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "せつねぇ………<KATA>"
+	done
 
 TreeBitstreamText_43956:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ! それは まほﾞろしの<NL>"
-	ctxt "<KATA>サルマタ<HIRA>ようせい!<NL>"
-	ctxt "さあ こっちへ よこしなさい!<NL>"
-	ctxt "<NL>"
-	ctxt "この とﾞうくつは わたしの しきち!<NL>"
-	ctxt "もんくは いわせないそﾞ!!<NL>"
-	ctxt "こら <KATA>サルマタ<HIRA>ようせい!<NL>"
-	ctxt "おまえかﾞ さいこﾞの のそﾞみたﾞ!<NL>"
-	ctxt "もう<KATA>ロケット<HIRA>なんか いらない!<NL>"
-	ctxt "およめさんも いらない!<NL>"
-	ctxt "おねかﾞいたﾞ わたしを せかいいちの<NL>"
-	ctxt "きょうしﾞゅに してほしいんたﾞ……<NL>"
-	ctxt "せかいいちの きょうしﾞゅたﾞよ!<NL>"
-	ctxt "せ  か  い  い  ち!<NL>"
-	ctxt "おねかﾞいしますよー<NL>"
-	ctxt "ねぇ ねぇってはﾞー<NL>"
-	ctxt "<KATA>ホﾞケ<HIRA>るのは せﾞんかい まてﾞてﾞ<NL>"
-	ctxt "もう おなかいっはﾟい たﾞからさぁ<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ! それは まぼろしの"
+	line "<KATA>サルマタ<HIRA>ようせい!"
+	line "さあ こっちへ よこしなさい!"
+	line ""
+	line "この どうくつは わたしの しきち!"
+	line "もんくは いわせないぞ!!"
+	line "こら <KATA>サルマタ<HIRA>ようせい!"
+	line "おまえが さいごの のぞみだ!"
+	line "もう<KATA>ロケット<HIRA>なんか いらない!"
+	line "およめさんも いらない!"
+	line "おねがいだ わたしを せかいいちの"
+	line "きょうじゅに してほしいんだ……"
+	line "せかいいちの きょうじゅだよ!"
+	line "せ  か  い  い  ち!"
+	line "おねがいしますよー"
+	line "ねぇ ねぇってばー"
+	line "<KATA>ボケ<HIRA>るのは ぜんかい までで"
+	line "もう おなかいっぱい だからさぁ<KATA>"
+	done
 
 TreeBitstreamText_43a21:
-	ctxt "オヤシﾞ<HIRA>ようせい<NL>"
-	ctxt "あいよー わかったよー<NL>"
-	ctxt "ほんとうに <KATA>ホﾞケ<HIRA>ないよー<NL>"
-	ctxt "せかいいちの きょうしﾞゅに<NL>"
-	ctxt "したけﾞるよー<NL>"
-	ctxt "たﾞって かんたんなこと なんたﾞもーん<KATA><TERM>"
+	ctxt "オヤジ<HIRA>ようせい"
+	line "あいよー わかったよー"
+	line "ほんとうに <KATA>ボケ<HIRA>ないよー"
+	line "せかいいちの きょうじゅに"
+	line "したげるよー"
+	line "だって かんたんなこと なんだもーん<KATA>"
+	done
 
 TreeBitstreamText_43a5a:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "おおっ これは!<NL>"
-	ctxt "このうてﾞ このあし この<KATA>カオ₆₆₆<NL>"
-	ctxt "<HIRA>からたﾞかﾞ せかいいち<NL>"
-	ctxt "おおきくなったたﾞけ しﾞゃねぇーか!<NL>"
-	ctxt "<KATA>オレ<HIRA>は かいしﾞゅうか <KATA>コノヤロー!<NL>"
-	ctxt "<HIRA>まちてﾞも はかいしろっつーのか!<NL>"
-	ctxt "まてよ? からたﾞかﾞ せかいいち<NL>"
-	ctxt "おおきいたﾞけに みえるけとﾞ……<NL>"
-	ctxt "これかﾞ ほんとうの せかいいちの<NL>"
-	ctxt "きょうしﾞゅ とも おもえる………<NL>"
-	ctxt "ふしきﾞたﾞ!<NL>"
-	ctxt "うーん とても ふしきﾞたﾞ!<NL>"
-	ctxt "……って ほんきてﾞ おもうか!<NL>"
-	ctxt "さんさﾞん <KATA>タﾞマ<HIRA>しやかﾞって!<NL>"
-	ctxt "けっきょく さいこﾞは からたﾞかﾞ<NL>"
-	ctxt "<KATA>テﾞカ<HIRA>くなって おわりかい!<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせいの <KATA>ヤロー<HIRA>め<NL>"
-	ctxt "にきﾞり つふﾞしてやる!<NL>"
-	ctxt "まて <KATA>コノヤロー!!<NL>"
-	ctxt "₆₆₆₆₆₆₆<NL>"
-	ctxt "<HIRA>はぁ………<NL>"
-	ctxt "つかれた……<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "おおっ これは!"
+	line "このうで このあし この<KATA>カオ………"
+	line "<HIRA>からだが せかいいち"
+	line "おおきくなっただけ じゃねぇーか!"
+	line "<KATA>オレ<HIRA>は かいじゅうか <KATA>コノヤロー!"
+	line "<HIRA>まちでも はかいしろっつーのか!"
+	line "まてよ? からだが せかいいち"
+	line "おおきいだけに みえるけど……"
+	line "これが ほんとうの せかいいちの"
+	line "きょうじゅ とも おもえる………"
+	line "ふしぎだ!"
+	line "うーん とても ふしぎだ!"
+	line "……って ほんきで おもうか!"
+	line "さんざん <KATA>ダマ<HIRA>しやがって!"
+	line "けっきょく さいごは からだが"
+	line "<KATA>デカ<HIRA>くなって おわりかい!"
+	line "<KATA>オヤジ<HIRA>ようせいの <KATA>ヤロー<HIRA>め"
+	line "にぎり つぶしてやる!"
+	line "まて <KATA>コノヤロー!!"
+	line "…………………"
+	line "<HIRA>はぁ………"
+	line "つかれた……<KATA>"
+	done
 
 TreeBitstreamText_43b4c:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "………<KATA><STBF><HIRA>くん か……<NL>"
-	ctxt "<NL>"
-	ctxt "もはや わたしは いきる<NL>"
-	ctxt "きほﾞうを うしなった………<NL>"
-	ctxt "いえは こわれ つまには にけﾞられ<NL>"
-	ctxt "からたﾞは このとおり <KATA>テﾞカイ<HIRA>ままたﾞ<NL>"
-	ctxt "それもすへﾞて わたしの よくほﾞうかﾞ<NL>"
-	ctxt "もとてﾞ おきた ふこうたﾞ………<NL>"
-	ctxt "すへﾞてを うしなった かわりに<NL>"
-	ctxt "1つたﾞけ わかったことかﾞ ある!<NL>"
-	ctxt "それは よくはﾞりすきﾞは いかん!<NL>"
-	ctxt "と いうことたﾞ<NL>"
-	ctxt "………さあ もう わたしにとって<NL>"
-	ctxt "かちの あるものは ここには ない<NL>"
-	ctxt "きみの やくにたつものかﾞ あるなら<NL>"
-	ctxt "よろこんてﾞ ゆすﾞろう<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "………<KATA><PLAYER><HIRA>くん か……"
+	line ""
+	line "もはや わたしは いきる"
+	line "きぼうを うしなった………"
+	line "いえは こわれ つまには にげられ"
+	line "からだは このとおり <KATA>デカイ<HIRA>ままだ"
+	line "それもすべて わたしの よくぼうが"
+	line "もとで おきた ふこうだ………"
+	line "すべてを うしなった かわりに"
+	line "1つだけ わかったことが ある!"
+	line "それは よくばりすぎは いかん!"
+	line "と いうことだ"
+	line "………さあ もう わたしにとって"
+	line "かちの あるものは ここには ない"
+	line "きみの やくにたつものが あるなら"
+	line "よろこんで ゆずろう<KATA>"
+	done
 
 TreeBitstreamText_43c04:
-	ctxt "ノースﾞ<NL>"
-	ctxt "<HIRA>まってたよ!<NL>"
-	ctxt "<NL>"
-	ctxt "かならすﾞ このとﾞうくつには<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせいかﾞ いるはすﾞさ<NL>"
-	ctxt "<KATA>オラ<HIRA>は <KATA>フラワー<HIRA>きょうしﾞゅかﾞ<NL>"
-	ctxt "こないように みはっているから!<NL>"
-	ctxt "きみは <KATA>オヤシﾞ<HIRA>ようせいを<NL>"
-	ctxt "さかﾞしてきて おくれよ!<NL>"
-	ctxt "きをつけないと <KATA>フラワー<HIRA>きょうしﾞゅかﾞ<NL>"
-	ctxt "とﾞなりこんてﾞ くるそﾞ!<NL>"
-	ctxt "さあ はやく <KATA>オヤシﾞ<HIRA>ようせいを<NL>"
-	ctxt "みつけてきて!<KATA><TERM>"
+	ctxt "ノーズ"
+	line "<HIRA>まってたよ!"
+	line ""
+	line "かならず このどうくつには"
+	line "<KATA>オヤジ<HIRA>ようせいが いるはずさ"
+	line "<KATA>オラ<HIRA>は <KATA>フラワー<HIRA>きょうじゅが"
+	line "こないように みはっているから!"
+	line "きみは <KATA>オヤジ<HIRA>ようせいを"
+	line "さがしてきて おくれよ!"
+	line "きをつけないと <KATA>フラワー<HIRA>きょうじゅが"
+	line "どなりこんで くるぞ!"
+	line "さあ はやく <KATA>オヤジ<HIRA>ようせいを"
+	line "みつけてきて!<KATA>"
+	done
 
 TreeBitstreamText_43c84:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "<KATA>コラッ! <HIRA>この とﾞうくつは わたしかﾞ<NL>"
-	ctxt "たかい <KATA>カネ<HIRA>てﾞ かった とちたﾞそﾞ!<NL>"
-	ctxt "むたﾞんてﾞ あらすやつは ゆるさん!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "<KATA>コラッ! <HIRA>この どうくつは わたしが"
+	line "たかい <KATA>カネ<HIRA>で かった とちだぞ!"
+	line "むだんで あらすやつは ゆるさん!<KATA>"
+	done
 
 TreeBitstreamText_43cbb:
-	ctxt "フラワー<HIRA>きょうしﾞゅ<NL>"
-	ctxt "やあ <KATA><STBF><HIRA>くん<NL>"
-	ctxt "<NL>"
-	ctxt "やはり <KATA>オヤシﾞ<HIRA>ようせいは いたね<NL>"
-	ctxt "……<KATA>フフ <HIRA>おもった とおりたﾞ<NL>"
-	ctxt "たたﾞ しﾞっさいに いると わかるまてﾞ<NL>"
-	ctxt "かかﾞくてき てﾞは ないからね<NL>"
-	ctxt "たﾞから ひてい しては いたかﾞ<NL>"
-	ctxt "かならすﾞ いると しんしﾞていたよ<NL>"
-	ctxt "たたﾞし あんなやつを もってきても<NL>"
-	ctxt "なんの やくにも たたん!<NL>"
-	ctxt "くそー <KATA>オヤシﾞ<HIRA>ようせいめ<NL>"
-	ctxt "わたしのことを <KATA>ハﾞカ<HIRA>に しおって!<KATA><TERM>"
+	ctxt "フラワー<HIRA>きょうじゅ"
+	line "やあ <KATA><PLAYER><HIRA>くん"
+	line ""
+	line "やはり <KATA>オヤジ<HIRA>ようせいは いたね"
+	line "……<KATA>フフ <HIRA>おもった とおりだ"
+	line "ただ じっさいに いると わかるまで"
+	line "かがくてき では ないからね"
+	line "だから ひてい しては いたが"
+	line "かならず いると しんじていたよ"
+	line "ただし あんなやつを もってきても"
+	line "なんの やくにも たたん!"
+	line "くそー <KATA>オヤジ<HIRA>ようせいめ"
+	line "わたしのことを <KATA>バカ<HIRA>に しおって!<KATA>"
+	done
 
 TreeBitstreamText_43d46:
-	ctxt "ノースﾞ<NL>"
-	ctxt "<HIRA>すこﾞいよ!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>オヤシﾞ<HIRA>ようせいは ほんとうに<NL>"
-	ctxt "いたんたﾞね <KATA><STBF><HIRA>くん!<NL>"
-	ctxt "かかﾞくてﾞ かいめい てﾞきなくても<NL>"
-	ctxt "しﾞっさいに みつけちゃったんたﾞ!<NL>"
-	ctxt "これは せいきの たﾞいはっけん たﾞ!<KATA><TERM>"
+	ctxt "ノーズ"
+	line "<HIRA>すごいよ!"
+	line ""
+	line "<KATA>オヤジ<HIRA>ようせいは ほんとうに"
+	line "いたんだね <KATA><PLAYER><HIRA>くん!"
+	line "かがくで かいめい できなくても"
+	line "じっさいに みつけちゃったんだ!"
+	line "これは せいきの だいはっけん だ!<KATA>"
+	done
 
 TreeBitstreamText_43d8e:
-	ctxt "ヒケﾞヒケﾞ<HIRA>ようせい<NL>"
-	ctxt "ちーす!<NL>"
-	ctxt "<NL>"
-	ctxt "この<KATA>ヒケﾞ<HIRA>かﾞ <KATA>ホﾞク<HIRA>の<NL>"
-	ctxt "<KATA>チャームホﾟイント<HIRA>さ!<NL>"
-	ctxt "きみかﾞ <KATA>ホﾞク<HIRA>を つかまえに きた<NL>"
-	ctxt "ってことは わかってるよ<NL>"
-	ctxt "てﾞも そんなの <KATA>イヤ<HIRA>に きまってる!<NL>"
-	ctxt "<NL>"
-	ctxt "なせﾞなら きみは<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>の このみしﾞゃ ないからね!<KATA><TERM>"
+	ctxt "ヒゲヒゲ<HIRA>ようせい"
+	line "ちーす!"
+	line ""
+	line "この<KATA>ヒゲ<HIRA>が <KATA>ボク<HIRA>の"
+	line "<KATA>チャームポイント<HIRA>さ!"
+	line "きみが <KATA>ボク<HIRA>を つかまえに きた"
+	line "ってことは わかってるよ"
+	line "でも そんなの <KATA>イヤ<HIRA>に きまってる!"
+	line ""
+	line "なぜなら きみは"
+	line "<KATA>ボク<HIRA>の このみじゃ ないからね!<KATA>"
+	done
 
 TreeBitstreamText_43dee:
-	ctxt "ネクタイ<HIRA>ようせい<NL>"
-	ctxt "おお <KATA><STBF><HIRA>くんか<NL>"
-	ctxt "さいきん ちょうしは とﾞうかね?<NL>"
-	ctxt "あっそ<NL>"
-	ctxt "<NL>"
-	ctxt "ところてﾞ………<NL>"
-	ctxt "この<KATA>ネクタイ <HIRA>にあっているかね?<NL>"
-	ctxt "なんたﾞい <KATA>タﾞメ<HIRA>かい!<NL>"
-	ctxt "<NL>"
-	ctxt "そういうときは おせしﾞてﾞも<NL>"
-	ctxt "<KATA>シャチョー! <HIRA>よく おにあい<KATA>テﾞス!<NL>"
-	ctxt "<HIRA>って いわなきゃ <KATA>タﾞメ<HIRA>よ <KATA>チミ!<NL>"
-	ctxt "<HIRA>かﾞっこうてﾞ ならわなかったのかね?<NL>"
-	ctxt "しゃかいてﾞは しこﾞとより おせしﾞかﾞ<NL>"
-	ctxt "たいせつなんたﾞよ <KATA>チミ!<TERM>"
+	ctxt "ネクタイ<HIRA>ようせい"
+	line "おお <KATA><PLAYER><HIRA>くんか"
+	line "さいきん ちょうしは どうかね?"
+	line "あっそ"
+	line ""
+	line "ところで………"
+	line "この<KATA>ネクタイ <HIRA>にあっているかね?"
+	line "なんだい <KATA>ダメ<HIRA>かい!"
+	line ""
+	line "そういうときは おせじでも"
+	line "<KATA>シャチョー! <HIRA>よく おにあい<KATA>デス!"
+	line "<HIRA>って いわなきゃ <KATA>ダメ<HIRA>よ <KATA>チミ!"
+	line "<HIRA>がっこうで ならわなかったのかね?"
+	line "しゃかいでは しごとより おせじが"
+	line "たいせつなんだよ <KATA>チミ!"
+	done
 
 TreeBitstreamText_43e7a:
-	ctxt "ツルツル<HIRA>ようせい<NL>"
-	ctxt "<KATA>オイッス!<NL>"
-	ctxt "₆₆₆₆₆₆₆₆₆₆<HIRA>もう いっちょ<NL>"
-	ctxt "<KATA>オイッス!<NL>"
-	ctxt "₆₆₆₆₆₆₆<NL>"
-	ctxt "チミ ノリ<HIRA>かﾞ わるいね!<NL>"
-	ctxt "<NL>"
-	ctxt "そんな ひとと いっしょに いても<NL>"
-	ctxt "つまんないな <KATA>ホﾞク<NL>"
-	ctxt "<HIRA>たﾞから さﾞんねん たﾞけとﾞ<NL>"
-	ctxt "<KATA>チミ<HIRA>には つかまりたく ないさ!<KATA><TERM>"
+	ctxt "ツルツル<HIRA>ようせい"
+	line "<KATA>オイッス!"
+	line "…………………………<HIRA>もう いっちょ"
+	line "<KATA>オイッス!"
+	line "…………………"
+	line "チミ ノリ<HIRA>が わるいね!"
+	line ""
+	line "そんな ひとと いっしょに いても"
+	line "つまんないな <KATA>ボク"
+	line "<HIRA>だから ざんねん だけど"
+	line "<KATA>チミ<HIRA>には つかまりたく ないさ!<KATA>"
+	done
 
 TreeBitstreamText_43ed7:
-	ctxt "ワンカッフﾟ<HIRA>ようせい<NL>"
-	ctxt "   はにゃー   ほにゃー<NL>"
-	ctxt "  へﾞらんめい!  ていていっ!<NL>"
-	ctxt "    てやんてﾞいっ!<NL>"
-	ctxt "へい まいとﾞ!<NL>"
-	ctxt "<KATA>イヤー <HIRA>よっはﾟらっちゃったなーーー<NL>"
-	ctxt "<NL>"
-	ctxt "………なんたﾞぁ? <KATA>オラッチ<HIRA>を<NL>"
-	ctxt "つかまえよう ってーのかぁ?<NL>"
-	ctxt "<KATA>ナメ<HIRA>んしﾞゃあ ねぇそﾞっと!<NL>"
-	ctxt "<NL>"
-	ctxt "おめぇに <KATA>オラッチ<HIRA>の きもちかﾞ<NL>"
-	ctxt "わかるか<KATA>ッテンタﾞヨー!<TERM>"
+	ctxt "ワンカップ<HIRA>ようせい"
+	line "   はにゃー   ほにゃー"
+	line "  べらんめい!  ていていっ!"
+	line "    てやんでいっ!"
+	line "へい まいど!"
+	line "<KATA>イヤー <HIRA>よっぱらっちゃったなーーー"
+	line ""
+	line "………なんだぁ? <KATA>オラッチ<HIRA>を"
+	line "つかまえよう ってーのかぁ?"
+	line "<KATA>ナメ<HIRA>んじゃあ ねぇぞっと!"
+	line ""
+	line "おめぇに <KATA>オラッチ<HIRA>の きもちが"
+	line "わかるか<KATA>ッテンダヨー!"
+	done
 
 TreeBitstreamText_43f51:
-	ctxt "サルマタ<HIRA>ようせい<NL>"
-	ctxt "うひょひょーい!<NL>"
-	ctxt "<KATA>サルマタ<HIRA>ようせいてﾞ <KATA>コﾞサﾞイマスー!<NL>"
-	ctxt "<HIRA>わたしは みえない おしゃれに<NL>"
-	ctxt "こたﾞわる ようせい なのたﾞ!<NL>"
-	ctxt "くつした あらってる?<NL>"
-	ctxt "<KATA>ハﾟンツ <HIRA>くさくない?<NL>"
-	ctxt "………なに?<NL>"
-	ctxt "わたしを つかまえに きた?<NL>"
-	ctxt "あいての きもちを かんかﾞえないてﾞ<NL>"
-	ctxt "そういうこと するのは <KATA>タﾞメ<HIRA>たﾞよ!<KATA><TERM>"
+	ctxt "サルマタ<HIRA>ようせい"
+	line "うひょひょーい!"
+	line "<KATA>サルマタ<HIRA>ようせいで <KATA>ゴザイマスー!"
+	line "<HIRA>わたしは みえない おしゃれに"
+	line "こだわる ようせい なのだ!"
+	line "くつした あらってる?"
+	line "<KATA>パンツ <HIRA>くさくない?"
+	line "………なに?"
+	line "わたしを つかまえに きた?"
+	line "あいての きもちを かんがえないで"
+	line "そういうこと するのは <KATA>ダメ<HIRA>だよ!<KATA>"
+	done
 
 SECTION "Tree Bitstream Text 3", ROMX [$11], BANK [$4000]
 TreeBitstreamText_44000:
-	ctxt "レイナ<NL>"
-	ctxt "₆₆<HIRA>なせﾞ うまれたの?<NL>"
-	ctxt "……なせﾞ てﾞあったの?<NL>"
-	ctxt "<KATA>ワケ<HIRA>なんて あるようてﾞ ないもの!<NL>"
-	ctxt "あたし <KATA>カﾞールスﾞ8<HIRA>の <KATA>レイナ!<NL>"
-	ctxt "<HIRA>かすﾞすくない <KATA>レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "さかﾞして あるいてるんたﾞけとﾞ……<KATA><TERM>"
+	ctxt "レイナ"
+	line "……<HIRA>なぜ うまれたの?"
+	line "……なぜ であったの?"
+	line "<KATA>ワケ<HIRA>なんて あるようで ないもの!"
+	line "あたし <KATA>ガールズ8<HIRA>の <KATA>レイナ!"
+	line "<HIRA>かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
+	line "さがして あるいてるんだけど……<KATA>"
+	done
 
 TreeBitstreamText_44051:
-	ctxt "レイナ<NL>"
-	ctxt "<HIRA>とりあえすﾞ あたしかﾞ ほしいのは<NL>"
-	ctxt "<KATA>コキﾞャル ロホﾞホﾟン<HIRA>の<KATA>キﾞャルル!<NL>"
-	ctxt "<HIRA>ねえ <KATA>キﾞャルル<HIRA>って みたことある?<NL>"
-	ctxt "とﾞうしても いま ほしいんたﾞー<NL>"
-	ctxt "あたしの<KATA>トリヘﾟル<HIRA>と こうかんして!<NL>"
-	ctxt "<NL>"
-	ctxt "もし <KATA>キﾞャルル<HIRA>を ほかくしたら<NL>"
-	ctxt "すくﾞに <KATA>レイナ<HIRA>のところに きてね!<NL>"
-	ctxt "やくそくたﾞよ! <KATA>ハﾞッハﾞーイ!<TERM>"
+	ctxt "レイナ"
+	line "<HIRA>とりあえず あたしが ほしいのは"
+	line "<KATA>コギャル ロボポン<HIRA>の<KATA>ギャルル!"
+	line "<HIRA>ねえ <KATA>ギャルル<HIRA>って みたことある?"
+	line "どうしても いま ほしいんだー"
+	line "あたしの<KATA>トリペル<HIRA>と こうかんして!"
+	line ""
+	line "もし <KATA>ギャルル<HIRA>を ほかくしたら"
+	line "すぐに <KATA>レイナ<HIRA>のところに きてね!"
+	line "やくそくだよ! <KATA>バッバーイ!"
+	done
 
 TreeBitstreamText_440c4:
-	ctxt "レイナ<NL>"
-	ctxt "<HIRA>あっ <KATA>キミ キﾞャルル <HIRA>もってるー!<NL>"
-	ctxt "いいな いいな いいなー!<NL>"
-	ctxt "ねえねえ あたしの <KATA>トリヘﾟル<HIRA>と<NL>"
-	ctxt "こうかん しない?<KATA><TERM>"
+	ctxt "レイナ"
+	line "<HIRA>あっ <KATA>キミ ギャルル <HIRA>もってるー!"
+	line "いいな いいな いいなー!"
+	line "ねえねえ あたしの <KATA>トリペル<HIRA>と"
+	line "こうかん しない?<KATA>"
+	done
 
 TreeBitstreamText_440f4:
-	ctxt "レイナ<NL>"
-	ctxt "<HIRA>ありかﾞとう! <KATA>レイナ <HIRA>うれしいな!<NL>"
-	ctxt "<KATA>キミ <HIRA>みかけとﾞおり やさしいんたﾞね<NL>"
-	ctxt "あたしの<KATA>トリヘﾟル <HIRA>たいせつにね!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>キミ<HIRA>の やさしさをみこんてﾞ<NL>"
-	ctxt "ひとつたﾞけ おねかﾞいしてもいい?<NL>"
-	ctxt "<KATA>ウーマンホﾞ<HIRA>っていう <KATA>ロホﾞホﾟン<HIRA>と<NL>"
-	ctxt "あたしの<KATA>オネタﾞリ<HIRA>を こうかんして!<NL>"
-	ctxt "ねえ <KATA>ウーマンホﾞ<HIRA>を ほかくしたら<NL>"
-	ctxt "すくﾞに <KATA>レイナ<HIRA>のところに きてね!<NL>"
-	ctxt "やくそくたﾞよ! <KATA>ハﾞッハﾞーイ!<TERM>"
+	ctxt "レイナ"
+	line "<HIRA>ありがとう! <KATA>レイナ <HIRA>うれしいな!"
+	line "<KATA>キミ <HIRA>みかけどおり やさしいんだね"
+	line "あたしの<KATA>トリペル <HIRA>たいせつにね!"
+	line ""
+	line "<KATA>キミ<HIRA>の やさしさをみこんで"
+	line "ひとつだけ おねがいしてもいい?"
+	line "<KATA>ウーマンボ<HIRA>っていう <KATA>ロボポン<HIRA>と"
+	line "あたしの<KATA>オネダリ<HIRA>を こうかんして!"
+	line "ねえ <KATA>ウーマンボ<HIRA>を ほかくしたら"
+	line "すぐに <KATA>レイナ<HIRA>のところに きてね!"
+	line "やくそくだよ! <KATA>バッバーイ!"
+	done
 
 TreeBitstreamText_44185:
-	ctxt "レイナ<NL>"
-	ctxt "<HIRA>ふーん みかけによらすﾞ <KATA>ケチ<HIRA>ね!<NL>"
-	ctxt "いいよ いいよ いいよーたﾞ!<NL>"
-	ctxt "<KATA>ホント<HIRA>に <KATA>ハﾞッハﾞーイ<HIRA>しちゃうから!<KATA><TERM>"
+	ctxt "レイナ"
+	line "<HIRA>ふーん みかけによらず <KATA>ケチ<HIRA>ね!"
+	line "いいよ いいよ いいよーだ!"
+	line "<KATA>ホント<HIRA>に <KATA>バッバーイ<HIRA>しちゃうから!<KATA>"
+	done
 
 TreeBitstreamText_441b3:
-	ctxt "レイナ<NL>"
-	ctxt "キミ<HIRA>の やさしさをみこんてﾞ<NL>"
-	ctxt "もひとつたﾞけ おねかﾞいしてもいい?<NL>"
-	ctxt "<KATA>ウーマンホﾞ<HIRA>と あたしの <KATA>オネタﾞリ<HIRA>を<NL>"
-	ctxt "こうかんして ほしいんたﾞー<NL>"
-	ctxt "ねえ <KATA>ウーマンホﾞ<HIRA>を ほかくしたら<NL>"
-	ctxt "すくﾞに <KATA>レイナ<HIRA>のところに きてね!<NL>"
-	ctxt "やくそくたﾞよ! <KATA>ハﾞッハﾞーイ!<TERM>"
+	ctxt "レイナ"
+	line "キミ<HIRA>の やさしさをみこんで"
+	line "もひとつだけ おねがいしてもいい?"
+	line "<KATA>ウーマンボ<HIRA>と あたしの <KATA>オネダリ<HIRA>を"
+	line "こうかんして ほしいんだー"
+	line "ねえ <KATA>ウーマンボ<HIRA>を ほかくしたら"
+	line "すぐに <KATA>レイナ<HIRA>のところに きてね!"
+	line "やくそくだよ! <KATA>バッバーイ!"
+	done
 
 TreeBitstreamText_44213:
-	ctxt "レイナ<NL>"
-	ctxt "<HIRA>あっ <KATA>ウーマンホﾞ <HIRA>もってるー!<NL>"
-	ctxt "<NL>"
-	ctxt "ねえねえ わたしの <KATA>オネタﾞリ<HIRA>と<NL>"
-	ctxt "こうかん しない?<KATA><TERM>"
+	ctxt "レイナ"
+	line "<HIRA>あっ <KATA>ウーマンボ <HIRA>もってるー!"
+	line ""
+	line "ねえねえ わたしの <KATA>オネダリ<HIRA>と"
+	line "こうかん しない?<KATA>"
+	done
 
 TreeBitstreamText_44239:
-	ctxt "レイナ<NL>"
-	ctxt "<HIRA>ありかﾞとう! <KATA>レイナ <HIRA>うれしいな!<NL>"
-	ctxt "みかけとﾞおり いい<KATA>ヤツ<HIRA>なんたﾞね<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>のみんなは またﾞまたﾞ<NL>"
-	ctxt "とﾞこかにいるから さかﾞしてみてね!<NL>"
-	ctxt "あたしの<KATA>オネタﾞリ <HIRA>たいせつにね!<NL>"
-	ctxt "それしﾞゃあ <KATA>ハﾞッハﾞーーイ!"
+	ctxt "レイナ"
+	line "<HIRA>ありがとう! <KATA>レイナ <HIRA>うれしいな!"
+	line "みかけどおり いい<KATA>ヤツ<HIRA>なんだね"
+	line "<KATA>ガールズ8<HIRA>のみんなは まだまだ"
+	line "どこかにいるから さがしてみてね!"
+	line "あたしの<KATA>オネダリ <HIRA>たいせつにね!"
+	line "それじゃあ <KATA>バッバーーイ!"
 
 TreeBitstreamText_4428f:
-	ctxt "レイナ<NL>"
-	ctxt "<HIRA>さっきは とﾞうも ありかﾞとう!<NL>"
-	ctxt "みかけとﾞおり いい<KATA>ヤツ<HIRA>なんたﾞね<NL>"
-	ctxt "2とﾞも こうかんして くれるんたﾞもん<NL>"
-	ctxt "あたし とっても うれしかったよ!<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>のみんなは またﾞまたﾞ<NL>"
-	ctxt "とﾞこかにいるから さかﾞしてみてね!<NL>"
-	ctxt "それしﾞゃあ <KATA>ハﾞッハﾞーーイ!"
+	ctxt "レイナ"
+	line "<HIRA>さっきは どうも ありがとう!"
+	line "みかけどおり いい<KATA>ヤツ<HIRA>なんだね"
+	line "2ども こうかんして くれるんだもん"
+	line "あたし とっても うれしかったよ!"
+	line "<KATA>ガールズ8<HIRA>のみんなは まだまだ"
+	line "どこかにいるから さがしてみてね!"
+	line "それじゃあ <KATA>バッバーーイ!"
 
 TreeBitstreamText_442ef:
-	ctxt "ミカチ<NL>"
-	ctxt "<HIRA>ちょうしは いかかﾞてﾞすか?<NL>"
-	ctxt "あまり <KATA>ムリ<HIRA>はﾞっかりしたら <KATA>タﾞメ<HIRA>よ<NL>"
-	ctxt "むねをはって まえに あるこう!<NL>"
-	ctxt "わたし <KATA>カﾞールスﾞ8<HIRA>の <KATA>ミカチ<HIRA>てﾞす!<NL>"
-	ctxt "かすﾞすくない <KATA>レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "さかﾞして あるいてるんたﾞけとﾞ……<KATA><TERM>"
+	ctxt "ミカチ"
+	line "<HIRA>ちょうしは いかがですか?"
+	line "あまり <KATA>ムリ<HIRA>ばっかりしたら <KATA>ダメ<HIRA>よ"
+	line "むねをはって まえに あるこう!"
+	line "わたし <KATA>ガールズ8<HIRA>の <KATA>ミカチ<HIRA>です!"
+	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
+	line "さがして あるいてるんだけど……<KATA>"
+	done
 
 TreeBitstreamText_4434a:
-	ctxt "ミカチ<NL>"
-	ctxt "トリヘﾟル<HIRA>っていう <KATA>ロホﾞホﾟン<HIRA>しってる?<NL>"
-	ctxt "<KATA><STBF><HIRA>は しらないかな?<NL>"
-	ctxt "もし <KATA>トリヘﾟル<HIRA>を つかまえたら<NL>"
-	ctxt "<KATA>フﾟリースト<HIRA>と こうかんするわ<NL>"
-	ctxt "おほﾞえていてね <KATA>フﾟリースト<HIRA>よ!<KATA><TERM>"
+	ctxt "ミカチ"
+	line "トリペル<HIRA>っていう <KATA>ロボポン<HIRA>しってる?"
+	line "<KATA><PLAYER><HIRA>は しらないかな?"
+	line "もし <KATA>トリペル<HIRA>を つかまえたら"
+	line "<KATA>プリースト<HIRA>と こうかんするわ"
+	line "おぼえていてね <KATA>プリースト<HIRA>よ!<KATA>"
+	done
 
 TreeBitstreamText_44392:
-	ctxt "ミカチ<NL>"
-	ctxt "<HIRA>ち ちょっと まって!<NL>"
-	ctxt "もしかして それって <KATA>トリヘﾟル?<NL>"
-	ctxt "<HIRA>おねかﾞいたﾞから <KATA>フﾟリースト<HIRA>と<NL>"
-	ctxt "こうかん してくれる?!!<KATA><TERM>"
+	ctxt "ミカチ"
+	line "<HIRA>ち ちょっと まって!"
+	line "もしかして それって <KATA>トリペル?"
+	line "<HIRA>おねがいだから <KATA>プリースト<HIRA>と"
+	line "こうかん してくれる?!!<KATA>"
+	done
 
 TreeBitstreamText_443c5:
-	ctxt "ミカチ<NL>"
-	ctxt "ミカチ <HIRA>かんけﾞきしちゃった!<NL>"
-	ctxt "<KATA><STBF><HIRA>のこと たﾞーいすき!<NL>"
-	ctxt "もし わたしのことかﾞ すきなら<NL>"
-	ctxt "ひとつ おねかﾞい きいてくれる?<NL>"
-	ctxt "<KATA>ヘヒﾞータ<HIRA>っていう <KATA>ロホﾞホﾟン<HIRA>かﾞいるのね<NL>"
-	ctxt "<KATA>ヘヒﾞ<HIRA>みたいに <KATA>クネクネ<HIRA>してるやつ!<NL>"
-	ctxt "それと わたしかﾞ ほかくしたはﾞかりの<NL>"
-	ctxt "<KATA>ハﾞーナー<HIRA>を こうかんしてほしいの<NL>"
-	ctxt "<KATA>オトコ<HIRA>なら すきな<KATA>コ<HIRA>には<NL>"
-	ctxt "<KATA>キチン<HIRA>と あいしﾞょう みせなきゃ!<NL>"
-	ctxt "<KATA>ミカチ <HIRA>ここてﾞ まってるから!<KATA><TERM>"
+	ctxt "ミカチ"
+	line "ミカチ <HIRA>かんげきしちゃった!"
+	line "<KATA><PLAYER><HIRA>のこと だーいすき!"
+	line "もし わたしのことが すきなら"
+	line "ひとつ おねがい きいてくれる?"
+	line "<KATA>ヘビータ<HIRA>っていう <KATA>ロボポン<HIRA>がいるのね"
+	line "<KATA>ヘビ<HIRA>みたいに <KATA>クネクネ<HIRA>してるやつ!"
+	line "それと わたしが ほかくしたばかりの"
+	line "<KATA>バーナー<HIRA>を こうかんしてほしいの"
+	line "<KATA>オトコ<HIRA>なら すきな<KATA>コ<HIRA>には"
+	line "<KATA>キチン<HIRA>と あいじょう みせなきゃ!"
+	line "<KATA>ミカチ <HIRA>ここで まってるから!<KATA>"
+	done
 
 TreeBitstreamText_4445d:
-	ctxt "ミカチ<NL>"
-	ctxt "<HIRA>やさしさのない <KATA>オトコ<HIRA>なんて<NL>"
-	ctxt "ちっとも <KATA>モテ<HIRA>ないわよ!<NL>"
-	ctxt "<KATA>ハﾞカ<HIRA>らしくて つきあってらんない!<KATA><TERM>"
+	ctxt "ミカチ"
+	line "<HIRA>やさしさのない <KATA>オトコ<HIRA>なんて"
+	line "ちっとも <KATA>モテ<HIRA>ないわよ!"
+	line "<KATA>バカ<HIRA>らしくて つきあってらんない!<KATA>"
+	done
 
 TreeBitstreamText_44486:
-	ctxt "ミカチ<NL>"
-	ctxt "<HIRA>もし わたしのことかﾞ すきなら<NL>"
-	ctxt "ひとつ おねかﾞい きいてくれる?<NL>"
-	ctxt "<KATA>ヘヒﾞータ<HIRA>っていう <KATA>ロホﾞホﾟン<HIRA>かﾞいるのね<NL>"
-	ctxt "<KATA>ヘヒﾞ<HIRA>みたいに <KATA>クネクネ<HIRA>してるやつ!<NL>"
-	ctxt "それと わたしかﾞ ほかくしたはﾞかりの<NL>"
-	ctxt "<KATA>ハﾞーナー<HIRA>を こうかんしてほしいの<NL>"
-	ctxt "おとこなら すきな<KATA>コ<HIRA>には<NL>"
-	ctxt "<KATA>キチン<HIRA>と あいしﾞょう みせなきゃ!<NL>"
-	ctxt "<KATA>ミカチ <HIRA>ここてﾞ まってるから!<KATA><TERM>"
+	ctxt "ミカチ"
+	line "<HIRA>もし わたしのことが すきなら"
+	line "ひとつ おねがい きいてくれる?"
+	line "<KATA>ヘビータ<HIRA>っていう <KATA>ロボポン<HIRA>がいるのね"
+	line "<KATA>ヘビ<HIRA>みたいに <KATA>クネクネ<HIRA>してるやつ!"
+	line "それと わたしが ほかくしたばかりの"
+	line "<KATA>バーナー<HIRA>を こうかんしてほしいの"
+	line "おとこなら すきな<KATA>コ<HIRA>には"
+	line "<KATA>キチン<HIRA>と あいじょう みせなきゃ!"
+	line "<KATA>ミカチ <HIRA>ここで まってるから!<KATA>"
+	done
 
 TreeBitstreamText_44507:
-	ctxt "ミカチ<NL>"
-	ctxt "<HIRA>ちょ ちょっと まって!<NL>"
-	ctxt "もしかして それって <KATA>ヘヒﾞータ?<NL>"
-	ctxt "<HIRA>おねかﾞいたﾞから わたしの <KATA>ハﾞーナー<HIRA>と<NL>"
-	ctxt "こうかん してくれない?!?<KATA><TERM>"
+	ctxt "ミカチ"
+	line "<HIRA>ちょ ちょっと まって!"
+	line "もしかして それって <KATA>ヘビータ?"
+	line "<HIRA>おねがいだから わたしの <KATA>バーナー<HIRA>と"
+	line "こうかん してくれない?!?<KATA>"
+	done
 
 TreeBitstreamText_4453d:
-	ctxt "ミカチ<NL>"
-	ctxt "ミカチ <HIRA>また かんけﾞきしちゃった!<NL>"
-	ctxt "<KATA><STBF><HIRA>のこと たﾞーいすき!<NL>"
-	ctxt "<KATA>ハﾞーナー<HIRA>を つよく そたﾞててね<NL>"
-	ctxt "<NL>"
-	ctxt "えっ! <KATA><STBF><HIRA>のこと<NL>"
-	ctxt "とﾞうおもうかって?<NL>"
-	ctxt "うーん そうねぇ……<NL>"
-	ctxt "なかのいい ともたﾞち かな<NL>"
-	ctxt "それより <KATA><STBF><HIRA>には やらなきゃ<NL>"
-	ctxt "いけないことかﾞあるてﾞしょ!<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>のみんなを さかﾞさなきゃ!<KATA><TERM>"
+	ctxt "ミカチ"
+	line "ミカチ <HIRA>また かんげきしちゃった!"
+	line "<KATA><PLAYER><HIRA>のこと だーいすき!"
+	line "<KATA>バーナー<HIRA>を つよく そだててね"
+	line ""
+	line "えっ! <KATA><PLAYER><HIRA>のこと"
+	line "どうおもうかって?"
+	line "うーん そうねぇ……"
+	line "なかのいい ともだち かな"
+	line "それより <KATA><PLAYER><HIRA>には やらなきゃ"
+	line "いけないことがあるでしょ!"
+	line "<KATA>ガールズ8<HIRA>のみんなを さがさなきゃ!<KATA>"
+	done
 
 TreeBitstreamText_445b1:
-	ctxt "ミカチ<NL>"
-	ctxt "<STBF><HIRA>は やさしい<KATA>オトコ<HIRA>の<KATA>コ<HIRA>たﾞから<NL>"
-	ctxt "きっと <KATA>モテ<HIRA>るかもね!<NL>"
-	ctxt "てﾞも れんあいなんて またﾞまたﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA><STBF><HIRA>には やらなくちゃ<NL>"
-	ctxt "いけないことかﾞあるてﾞしょ!<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>のみんなを さかﾞさなきゃ!<KATA><TERM>"
+	ctxt "ミカチ"
+	line "<PLAYER><HIRA>は やさしい<KATA>オトコ<HIRA>の<KATA>コ<HIRA>だから"
+	line "きっと <KATA>モテ<HIRA>るかもね!"
+	line "でも れんあいなんて まだまだ!"
+	line ""
+	line "<KATA><PLAYER><HIRA>には やらなくちゃ"
+	line "いけないことがあるでしょ!"
+	line "<KATA>ガールズ8<HIRA>のみんなを さがさなきゃ!<KATA>"
+	done
 
 TreeBitstreamText_44601:
-	ctxt "マーヤ<NL>"
-	ctxt "クー クー クー クー クー クー<NL>"
-	ctxt "<HIRA>もひとつ おまけに <KATA>クー<TERM>"
+	ctxt "マーヤ"
+	line "クー クー クー クー クー クー"
+	line "<HIRA>もひとつ おまけに <KATA>クー"
+	done
 
 TreeBitstreamText_4461b:
-	ctxt "マーヤ<NL>"
-	ctxt "<HIRA>せっかく ひとかﾞ ねてるのに……<NL>"
-	ctxt "……<KATA>カﾞールスﾞ8<HIRA>の <KATA>マーヤ<HIRA>よ<NL>"
-	ctxt "かすﾞすくない <KATA>レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "さかﾞして あるいてるんたﾞけとﾞ……<KATA>"
+	ctxt "マーヤ"
+	line "<HIRA>せっかく ひとが ねてるのに……"
+	line "……<KATA>ガールズ8<HIRA>の <KATA>マーヤ<HIRA>よ"
+	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
+	line "さがして あるいてるんだけど……<KATA>"
 
 TreeBitstreamText_44657:
-	ctxt "マーヤ<NL>"
-	ctxt "<HIRA>そこの にーさん!<NL>"
-	ctxt "<KATA>フﾟリースト<HIRA>を もってきなさい<NL>"
-	ctxt "わかった? <KATA>フﾟリースト<HIRA>たﾞよ!<NL>"
-	ctxt "そうりょ<KATA>ロホﾞホﾟン<HIRA>の <KATA>フﾟリースト!<NL>"
-	ctxt "<HIRA>こﾞほうひﾞに <KATA>マーヤ<HIRA>の <KATA>トﾞクロイトﾞ<HIRA>と<NL>"
-	ctxt "こうかんしてあけﾞるから!<NL>"
-	ctxt "わかったら さっさと いく!<NL>"
-	ctxt "<NL>"
-	ctxt "そのあいたﾞ <KATA>マーヤ<HIRA>は ここてﾞ<NL>"
-	ctxt "<KATA>クﾞークﾞー <HIRA>ねむって まってるから!<NL>"
-	ctxt "それしﾞゃ たのんたﾞからね!<KATA><TERM>"
+	ctxt "マーヤ"
+	line "<HIRA>そこの にーさん!"
+	line "<KATA>プリースト<HIRA>を もってきなさい"
+	line "わかった? <KATA>プリースト<HIRA>だよ!"
+	line "そうりょ<KATA>ロボポン<HIRA>の <KATA>プリースト!"
+	line "<HIRA>ごほうびに <KATA>マーヤ<HIRA>の <KATA>ドクロイド<HIRA>と"
+	line "こうかんしてあげるから!"
+	line "わかったら さっさと いく!"
+	line ""
+	line "そのあいだ <KATA>マーヤ<HIRA>は ここで"
+	line "<KATA>グーグー <HIRA>ねむって まってるから!"
+	line "それじゃ たのんだからね!<KATA>"
+	done
 
 TreeBitstreamText_446dc:
-	ctxt "マーヤ<NL>"
-	ctxt "<HIRA>もってるしﾞゃない <KATA>フﾟリースト<HIRA>を!<NL>"
-	ctxt "にーさん やれはﾞ てﾞきるしﾞゃーん<NL>"
-	ctxt "まさに かほうは ねて まて!<NL>"
-	ctxt "ねてると いいことあるんたﾞなー<NL>"
-	ctxt "さっそく にーさんの <KATA>フﾟリースト<HIRA>と<NL>"
-	ctxt "<KATA>マーヤ<HIRA>の <KATA>トﾞクロイトﾞ<HIRA>を こうかんね<KATA><TERM>"
+	ctxt "マーヤ"
+	line "<HIRA>もってるじゃない <KATA>プリースト<HIRA>を!"
+	line "にーさん やれば できるじゃーん"
+	line "まさに かほうは ねて まて!"
+	line "ねてると いいことあるんだなー"
+	line "さっそく にーさんの <KATA>プリースト<HIRA>と"
+	line "<KATA>マーヤ<HIRA>の <KATA>ドクロイド<HIRA>を こうかんね<KATA>"
+	done
 
 TreeBitstreamText_44733:
-	ctxt "マーヤ<NL>"
-	ctxt "<HIRA>はい <KATA>サンキュー<HIRA>っと!<NL>"
-	ctxt "にーさん かなり <KATA>ヒマ<HIRA>みたいね<NL>"
-	ctxt "あのさ にーさん ついてﾞなんたﾞけとﾞ<NL>"
-	ctxt "もうひとっはﾟしり してくんない?<NL>"
-	ctxt "こんとﾞは <KATA>ストーン<HIRA>っていう <KATA>ロホﾞホﾟン<NL>"
-	ctxt "<HIRA>まーるい いわみたいな <KATA>ロホﾞホﾟン!<NL>"
-	ctxt "1<HIRA>かい いったら おほﾞえるっ!<NL>"
-	ctxt "<NL>"
-	ctxt "そのあいたﾞ <KATA>マーヤ<HIRA>は ここてﾞ<NL>"
-	ctxt "<KATA>クﾞークﾞー <HIRA>ねむって まってるから!<NL>"
-	ctxt "それしﾞゃ たのんたﾞからね!<KATA><TERM>"
+	ctxt "マーヤ"
+	line "<HIRA>はい <KATA>サンキュー<HIRA>っと!"
+	line "にーさん かなり <KATA>ヒマ<HIRA>みたいね"
+	line "あのさ にーさん ついでなんだけど"
+	line "もうひとっぱしり してくんない?"
+	line "こんどは <KATA>ストーン<HIRA>っていう <KATA>ロボポン"
+	line "<HIRA>まーるい いわみたいな <KATA>ロボポン!"
+	line "1<HIRA>かい いったら おぼえるっ!"
+	line ""
+	line "そのあいだ <KATA>マーヤ<HIRA>は ここで"
+	line "<KATA>グーグー <HIRA>ねむって まってるから!"
+	line "それじゃ たのんだからね!<KATA>"
+	done
 
 TreeBitstreamText_447bd:
-	ctxt "マーヤ<NL>"
-	ctxt "ハッキリ<HIRA>いって みそこなったね<NL>"
-	ctxt "にーさん <KATA>カﾞマン<HIRA>にも <KATA>ホトﾞ<HIRA>かﾞあるよ<NL>"
-	ctxt "それてﾞも <KATA>チンチン <HIRA>ついてんの?!<KATA><TERM>"
+	ctxt "マーヤ"
+	line "ハッキリ<HIRA>いって みそこなったね"
+	line "にーさん <KATA>ガマン<HIRA>にも <KATA>ホド<HIRA>があるよ"
+	line "それでも <KATA>チンチン <HIRA>ついてんの?!<KATA>"
+	done
 
 TreeBitstreamText_447ed:
-	ctxt "マーヤ<NL>"
-	ctxt "<HIRA>あのさ にーさん ついてﾞなんたﾞけとﾞ<NL>"
-	ctxt "もうひとっはﾟしり してくんない?<NL>"
-	ctxt "こんとﾞは <KATA>ストーン<HIRA>っていう <KATA>ロホﾞホﾟン<NL>"
-	ctxt "<HIRA>まーるい いわみたいな <KATA>ロホﾞホﾟン!<NL>"
-	ctxt "1<HIRA>かい いったら おほﾞえるっ!<NL>"
-	ctxt "<NL>"
-	ctxt "そのあいたﾞ <KATA>マーヤ<HIRA>は ここてﾞ<NL>"
-	ctxt "<KATA>クﾞークﾞー <HIRA>ねむって まってるから!<NL>"
-	ctxt "それしﾞゃ たのんたﾞからね!<KATA><TERM>"
+	ctxt "マーヤ"
+	line "<HIRA>あのさ にーさん ついでなんだけど"
+	line "もうひとっぱしり してくんない?"
+	line "こんどは <KATA>ストーン<HIRA>っていう <KATA>ロボポン"
+	line "<HIRA>まーるい いわみたいな <KATA>ロボポン!"
+	line "1<HIRA>かい いったら おぼえるっ!"
+	line ""
+	line "そのあいだ <KATA>マーヤ<HIRA>は ここで"
+	line "<KATA>グーグー <HIRA>ねむって まってるから!"
+	line "それじゃ たのんだからね!<KATA>"
+	done
 
 TreeBitstreamText_44861:
-	ctxt "マーヤ<NL>"
-	ctxt "<HIRA>もってるしﾞゃない <KATA>ストーン<HIRA>を!<NL>"
-	ctxt "にーさん やれはﾞ てﾞきるしﾞゃーん<NL>"
-	ctxt "まさに ねる<KATA>コ<HIRA>は そたﾞつ!<NL>"
-	ctxt "ねてると いい<KATA>コ<HIRA>に そたﾞつんたﾞなー<NL>"
-	ctxt "さっそく にーさんの <KATA>ストーン<HIRA>と<NL>"
-	ctxt "<KATA>マーヤ<HIRA>の <KATA>トﾞライハﾞル<HIRA>を こうかん!<KATA><TERM>"
+	ctxt "マーヤ"
+	line "<HIRA>もってるじゃない <KATA>ストーン<HIRA>を!"
+	line "にーさん やれば できるじゃーん"
+	line "まさに ねる<KATA>コ<HIRA>は そだつ!"
+	line "ねてると いい<KATA>コ<HIRA>に そだつんだなー"
+	line "さっそく にーさんの <KATA>ストーン<HIRA>と"
+	line "<KATA>マーヤ<HIRA>の <KATA>ドライバル<HIRA>を こうかん!<KATA>"
+	done
 
 TreeBitstreamText_448b8:
-	ctxt "マーヤ<NL>"
-	ctxt "<HIRA>はい またまた <KATA>サンキュー<HIRA>っと!<NL>"
-	ctxt "にーさん なかなか やるねー<NL>"
-	ctxt "<KATA>マーヤ <HIRA>ちょっとたﾞけ <KATA>ホレ<HIRA>ちゃった<NL>"
-	ctxt "……なーんてね <KATA>ウソ<HIRA>たﾞよ <KATA>ウソ!<NL>"
-	ctxt "<HIRA>ほかの <KATA>カﾞールスﾞ8<HIRA>には あったの?<NL>"
-	ctxt "ほら <KATA>モタモタ<HIRA>しないてﾞ いきな!<NL>"
-	ctxt "<KATA>マーヤ<HIRA>に かまわないてﾞ にーさんは<NL>"
-	ctxt "にーさんの みちを いきなさい!<NL>"
-	ctxt "<KATA>マーヤ<HIRA>は ここてﾞ ねてるから<KATA><TERM>"
+	ctxt "マーヤ"
+	line "<HIRA>はい またまた <KATA>サンキュー<HIRA>っと!"
+	line "にーさん なかなか やるねー"
+	line "<KATA>マーヤ <HIRA>ちょっとだけ <KATA>ホレ<HIRA>ちゃった"
+	line "……なーんてね <KATA>ウソ<HIRA>だよ <KATA>ウソ!"
+	line "<HIRA>ほかの <KATA>ガールズ8<HIRA>には あったの?"
+	line "ほら <KATA>モタモタ<HIRA>しないで いきな!"
+	line "<KATA>マーヤ<HIRA>に かまわないで にーさんは"
+	line "にーさんの みちを いきなさい!"
+	line "<KATA>マーヤ<HIRA>は ここで ねてるから<KATA>"
+	done
 
 TreeBitstreamText_44937:
-	ctxt "マーヤ<NL>"
-	ctxt "<HIRA>にーさん なかなか やるねー<NL>"
-	ctxt "ほかの <KATA>カﾞールスﾞ8<HIRA>には あったの?<NL>"
-	ctxt "ほら <KATA>モタモタ<HIRA>しないてﾞ いきな!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>マーヤ<HIRA>に かまわないてﾞ にーさんは<NL>"
-	ctxt "にーさんの みちを いきなさい!<NL>"
-	ctxt "<KATA>マーヤ<HIRA>は ここてﾞ ねてるから<KATA><TERM>"
+	ctxt "マーヤ"
+	line "<HIRA>にーさん なかなか やるねー"
+	line "ほかの <KATA>ガールズ8<HIRA>には あったの?"
+	line "ほら <KATA>モタモタ<HIRA>しないで いきな!"
+	line ""
+	line "<KATA>マーヤ<HIRA>に かまわないで にーさんは"
+	line "にーさんの みちを いきなさい!"
+	line "<KATA>マーヤ<HIRA>は ここで ねてるから<KATA>"
+	done
 
 TreeBitstreamText_4498a:
-	ctxt "ユーコ<NL>"
-	ctxt "<HIRA>うー <KATA>タﾞル<HIRA>ぅー ……あたし<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>の <KATA>ユーコ <HIRA>てﾞすけとﾞー<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>のー <KATA>レア<HIRA>っていうか<NL>"
-	ctxt "おもしろいの? さかﾞしてんたﾞけとﾞー<KATA><TERM>"
+	ctxt "ユーコ"
+	line "<HIRA>うー <KATA>ダル<HIRA>ぅー ……あたし"
+	line "<KATA>ガールズ8<HIRA>の <KATA>ユーコ <HIRA>ですけどー"
+	line "<KATA>ロボポン<HIRA>のー <KATA>レア<HIRA>っていうか"
+	line "おもしろいの? さがしてんだけどー<KATA>"
+	done
 
 TreeBitstreamText_449c9:
-	ctxt "ユーコ<NL>"
-	ctxt "カﾞイコツ<HIRA>みたいな <KATA>ロホﾞホﾟン<HIRA>てﾞ<NL>"
-	ctxt "<KATA>トﾞクロイトﾞ<HIRA>っていうやつ?<NL>"
-	ctxt "なんか とﾞこにも ないんたﾞよねー<NL>"
-	ctxt "たﾞからー<NL>"
-	ctxt "もしー <KATA>トﾞクロイトﾞ<HIRA>つかまえたらー<NL>"
-	ctxt "あたしに ちょーたﾞい!<NL>"
-	ctxt "あたしの<KATA>カワイイー オヤカタ<HIRA>ちゃん<NL>"
-	ctxt "あけﾞるから! よろしくね!<NL>"
-	ctxt "まってるから!<KATA>"
+	ctxt "ユーコ"
+	line "ガイコツ<HIRA>みたいな <KATA>ロボポン<HIRA>で"
+	line "<KATA>ドクロイド<HIRA>っていうやつ?"
+	line "なんか どこにも ないんだよねー"
+	line "だからー"
+	line "もしー <KATA>ドクロイド<HIRA>つかまえたらー"
+	line "あたしに ちょーだい!"
+	line "あたしの<KATA>カワイイー オヤカタ<HIRA>ちゃん"
+	line "あげるから! よろしくね!"
+	line "まってるから!<KATA>"
 
 TreeBitstreamText_44a2d:
-	ctxt "ユーコ<NL>"
-	ctxt "<HIRA>ていうか <KATA>キミ<HIRA>のもってんの それ<NL>"
-	ctxt "もしかして <KATA>トﾞクロイトﾞ<HIRA>しﾞゃない?<NL>"
-	ctxt "あたし それ すっこﾞいさかﾞしてたの!<NL>"
-	ctxt "<NL>"
-	ctxt "ねー それ あたしの<KATA>オヤカタ<HIRA>と<NL>"
-	ctxt "とりかえっこしてっ!<NL>"
-	ctxt "ほら <KATA>オヤカタ<HIRA>たﾞって<KATA>カワイイ<HIRA>よ!<KATA><TERM>"
+	ctxt "ユーコ"
+	line "<HIRA>ていうか <KATA>キミ<HIRA>のもってんの それ"
+	line "もしかして <KATA>ドクロイド<HIRA>じゃない?"
+	line "あたし それ すっごいさがしてたの!"
+	line ""
+	line "ねー それ あたしの<KATA>オヤカタ<HIRA>と"
+	line "とりかえっこしてっ!"
+	line "ほら <KATA>オヤカタ<HIRA>だって<KATA>カワイイ<HIRA>よ!<KATA>"
+	done
 
 TreeBitstreamText_44a7f:
-	ctxt "ユーコ<NL>"
-	ctxt "ホント<HIRA>に いいの? ありかﾞとう!<NL>"
-	ctxt "しんせつなひとに あえてよかった!<NL>"
-	ctxt "たいせつにするね!<NL>"
-	ctxt "<NL>"
-	ctxt "それから よかったらてﾞ<KATA>イイ<HIRA>んたﾞけとﾞ<KATA>ネ<NL>"
-	ctxt "コンホﾞイル<HIRA>ってやつ しってる?<NL>"
-	ctxt "それを あたしの<KATA>マットﾞソン<HIRA>ちゃんとー<NL>"
-	ctxt "とりかえっこ してほしいの<NL>"
-	ctxt "たﾞから てに いれたら<NL>"
-	ctxt "せﾞったい あたしのところに きて!<NL>"
-	ctxt "まってる<KATA>ワ!<TERM>"
+	ctxt "ユーコ"
+	line "ホント<HIRA>に いいの? ありがとう!"
+	line "しんせつなひとに あえてよかった!"
+	line "たいせつにするね!"
+	line ""
+	line "それから よかったらで<KATA>イイ<HIRA>んだけど<KATA>ネ"
+	line "コンボイル<HIRA>ってやつ しってる?"
+	line "それを あたしの<KATA>マッドソン<HIRA>ちゃんとー"
+	line "とりかえっこ してほしいの"
+	line "だから てに いれたら"
+	line "ぜったい あたしのところに きて!"
+	line "まってる<KATA>ワ!"
+	done
 
 TreeBitstreamText_44af6:
-	ctxt "ユーコ<NL>"
-	ctxt "<HIRA>えー! なんてﾞっ!<NL>"
-	ctxt "とﾞーして こうかんしてくれないの!?<NL>"
-	ctxt "<KATA>オヤカタ<HIRA>ちゃん きらいなの?<KATA><TERM>"
+	ctxt "ユーコ"
+	line "<HIRA>えー! なんでっ!"
+	line "どーして こうかんしてくれないの!?"
+	line "<KATA>オヤカタ<HIRA>ちゃん きらいなの?<KATA>"
+	done
 
 TreeBitstreamText_44b1c:
-	ctxt "ユーコ<NL>"
-	ctxt "<HIRA>あのねー <KATA>コンホﾞイル<HIRA>っていうやつかﾞ<NL>"
-	ctxt "なんか とﾞこにもいないんたﾞよねー<NL>"
-	ctxt "たﾞからー <KATA>コンホﾞイル<HIRA>つかまえたら<NL>"
-	ctxt "あたしに ちょーたﾞい!<NL>"
-	ctxt "あたしの<KATA>ステキ<HIRA>な <KATA>マットﾞソン<HIRA>ちゃん<NL>"
-	ctxt "あけﾞるから! よろしくね!<NL>"
-	ctxt "まってるから!<KATA><TERM>"
+	ctxt "ユーコ"
+	line "<HIRA>あのねー <KATA>コンボイル<HIRA>っていうやつが"
+	line "なんか どこにもいないんだよねー"
+	line "だからー <KATA>コンボイル<HIRA>つかまえたら"
+	line "あたしに ちょーだい!"
+	line "あたしの<KATA>ステキ<HIRA>な <KATA>マッドソン<HIRA>ちゃん"
+	line "あげるから! よろしくね!"
+	line "まってるから!<KATA>"
+	done
 
 TreeBitstreamText_44b74:
-	ctxt "ユーコ<NL>"
-	ctxt "<HIRA>あれー もしかして <KATA>キミ<HIRA>かﾞもってるの<NL>"
-	ctxt "<KATA>コンホﾞイル? <HIRA>たﾞよね!<NL>"
-	ctxt "すこﾞい!<NL>"
-	ctxt "あたし それ すﾞっと さかﾞしてたの!<NL>"
-	ctxt "おねかﾞい! あたしにちょうたﾞい!<NL>"
-	ctxt "<NL>"
-	ctxt "この <KATA>ステキ<HIRA>な<KATA>マットﾞソン<HIRA>ちゃん<NL>"
-	ctxt "あけﾞるから!!!<NL>"
-	ctxt "おーねーかﾞーいー!<KATA><TERM>"
+	ctxt "ユーコ"
+	line "<HIRA>あれー もしかして <KATA>キミ<HIRA>がもってるの"
+	line "<KATA>コンボイル? <HIRA>だよね!"
+	line "すごい!"
+	line "あたし それ ずっと さがしてたの!"
+	line "おねがい! あたしにちょうだい!"
+	line ""
+	line "この <KATA>ステキ<HIRA>な<KATA>マッドソン<HIRA>ちゃん"
+	line "あげるから!!!"
+	line "おーねーがーいー!<KATA>"
+	done
 
 TreeBitstreamText_44bcf:
-	ctxt "ユーコ<NL>"
-	ctxt "<HIRA>ほんとに?!<NL>"
-	ctxt "また おねかﾞいきーてくれるなんて!!<NL>"
-	ctxt "<KATA>キミ<HIRA>って <KATA>チョーーー<HIRA>しんせつなのね<NL>"
-	ctxt "<NL>"
-	ctxt "わたしの <KATA>マットﾞソン<HIRA>ちゃん<NL>"
-	ctxt "<KATA>イイコ<HIRA>にそたﾞててあけﾞてね!<NL>"
-	ctxt "ほかの <KATA>カﾞールスﾞ8<HIRA>のみんなにも<NL>"
-	ctxt "あって あけﾞてね! <KATA>ハﾞイハﾞイ!<TERM>"
+	ctxt "ユーコ"
+	line "<HIRA>ほんとに?!"
+	line "また おねがいきーてくれるなんて!!"
+	line "<KATA>キミ<HIRA>って <KATA>チョーーー<HIRA>しんせつなのね"
+	line ""
+	line "わたしの <KATA>マッドソン<HIRA>ちゃん"
+	line "<KATA>イイコ<HIRA>にそだててあげてね!"
+	line "ほかの <KATA>ガールズ8<HIRA>のみんなにも"
+	line "あって あげてね! <KATA>バイバイ!"
+	done
 
 TreeBitstreamText_44c2a:
-	ctxt "ユーコ<NL>"
-	ctxt "<HIRA>えー! なんてﾞっ!<NL>"
-	ctxt "とﾞーして こうかんしてくれないの!?<NL>"
-	ctxt "<KATA>マットﾞソン<HIRA>ちゃん きらいなの?<KATA><TERM>"
+	ctxt "ユーコ"
+	line "<HIRA>えー! なんでっ!"
+	line "どーして こうかんしてくれないの!?"
+	line "<KATA>マッドソン<HIRA>ちゃん きらいなの?<KATA>"
+	done
 
 TreeBitstreamText_44c51:
-	ctxt "ユーコ<NL>"
-	ctxt "キミ<HIRA>って <KATA>ホント<HIRA>に <KATA>イイ<HIRA>ひとたﾞよね?<NL>"
-	ctxt "かおも <KATA>ステキ<HIRA>たﾞし<KATA>ネ ホﾟッ<NL>"
-	ctxt "<HIRA>ほかの <KATA>カﾞールスﾞ8<HIRA>の<KATA>コ<HIRA>にも<NL>"
-	ctxt "はやく あってあけﾞてね!<NL>"
-	ctxt "<KATA>ハﾞイハﾞイ!!<TERM>"
+	ctxt "ユーコ"
+	line "キミ<HIRA>って <KATA>ホント<HIRA>に <KATA>イイ<HIRA>ひとだよね?"
+	line "かおも <KATA>ステキ<HIRA>だし<KATA>ネ ポッ"
+	line "<HIRA>ほかの <KATA>ガールズ8<HIRA>の<KATA>コ<HIRA>にも"
+	line "はやく あってあげてね!"
+	line "<KATA>バイバイ!!"
+	done
 
 TreeBitstreamText_44c92:
-	ctxt "ナッツ<NL>"
-	ctxt "フフフ <HIRA>しﾞまん しちゃおっと!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>の えを かくなら<NL>"
-	ctxt "あたしのみきﾞに てﾞるひとはいない!<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>の <KATA>ナッツ<HIRA>と もうします<NL>"
-	ctxt "<NL>"
-	ctxt "かすﾞすくない <KATA>レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "さかﾞして あるいてるんたﾞけとﾞ……<KATA><TERM>"
+	ctxt "ナッツ"
+	line "フフフ <HIRA>じまん しちゃおっと!"
+	line ""
+	line "<KATA>ロボポン<HIRA>の えを かくなら"
+	line "あたしのみぎに でるひとはいない!"
+	line "<KATA>ガールズ8<HIRA>の <KATA>ナッツ<HIRA>と もうします"
+	line ""
+	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
+	line "さがして あるいてるんだけど……<KATA>"
+	done
 
 TreeBitstreamText_44ceb:
-	ctxt "ナッツ<NL>"
-	ctxt "マットﾞソン <HIRA>とﾞこにもいないっ!<NL>"
-	ctxt "とﾞこを さかﾞしても いないっ!<NL>"
-	ctxt "<KATA><STBF><HIRA>さん! みませんてﾞした?<KATA><TERM>"
+	ctxt "ナッツ"
+	line "マッドソン <HIRA>どこにもいないっ!"
+	line "どこを さがしても いないっ!"
+	line "<KATA><PLAYER><HIRA>さん! みませんでした?<KATA>"
+	done
 
 TreeBitstreamText_44d13:
-	ctxt "ナッツ<NL>"
-	ctxt "<HIRA>あ <KATA>マットﾞソン <HIRA>もってるの?!<NL>"
-	ctxt "ほしいなー ほしいなー<NL>"
-	ctxt "………もう しょうかﾞないわね!<NL>"
-	ctxt "たいせつに そたﾞてた あたしの<NL>"
-	ctxt "<KATA>カスタムロホﾞホﾟン<HIRA>と こうかんして!<KATA><TERM>"
+	ctxt "ナッツ"
+	line "<HIRA>あ <KATA>マッドソン <HIRA>もってるの?!"
+	line "ほしいなー ほしいなー"
+	line "………もう しょうがないわね!"
+	line "たいせつに そだてた あたしの"
+	line "<KATA>カスタムロボポン<HIRA>と こうかんして!<KATA>"
+	done
 
 TreeBitstreamText_44d53:
-	ctxt "ナッツ<NL>"
-	ctxt "<HIRA>ありかﾞとー! <KATA>ナッツ <HIRA>うれしい!<NL>"
-	ctxt "けとﾞ <KATA>カスタムロホﾞホﾟン<HIRA>は おしい!<NL>"
-	ctxt "ふくさﾞつな しんきょうたﾞな<NL>"
-	ctxt "<KATA>ステータス<HIRA>を よく <KATA>チェック<HIRA>してね<NL>"
-	ctxt "ものすこﾞく つよいから<NL>"
-	ctxt "すくﾞ <KATA>ハﾞトル<HIRA>に つかえるよ!<NL>"
-	ctxt "それしﾞゃ あたしは あたらしい<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>の えてﾞも かこうかな<NL>"
-	ctxt "<KATA>ハﾞイハﾞイ <HIRA>またね!<KATA>"
+	ctxt "ナッツ"
+	line "<HIRA>ありがとー! <KATA>ナッツ <HIRA>うれしい!"
+	line "けど <KATA>カスタムロボポン<HIRA>は おしい!"
+	line "ふくざつな しんきょうだな"
+	line "<KATA>ステータス<HIRA>を よく <KATA>チェック<HIRA>してね"
+	line "ものすごく つよいから"
+	line "すぐ <KATA>バトル<HIRA>に つかえるよ!"
+	line "それじゃ あたしは あたらしい"
+	line "<KATA>ロボポン<HIRA>の えでも かこうかな"
+	line "<KATA>バイバイ <HIRA>またね!<KATA>"
 
 TreeBitstreamText_44dc8:
-	ctxt "ナッツ<NL>"
-	ctxt "<HIRA>うっそーん! <KATA>ナッツ ショック!<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>てﾞも <KATA>カスタムロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "あけﾞなくて すむから いいのか!<KATA>"
+	ctxt "ナッツ"
+	line "<HIRA>うっそーん! <KATA>ナッツ ショック!"
+	line ""
+	line "<HIRA>でも <KATA>カスタムロボポン<HIRA>を"
+	line "あげなくて すむから いいのか!<KATA>"
 
 TreeBitstreamText_44df3:
-	ctxt "ナッツ<NL>"
-	ctxt "<HIRA>とﾞうやら <KATA>カﾞールスﾞ8<HIRA>の みんなと<NL>"
-	ctxt "ふﾞしﾞに あえたみたいね<NL>"
-	ctxt "よかった よかった おめてﾞと<NL>"
-	ctxt "<NL>"
-	ctxt "あたらしい <KATA>ロホﾞホﾟン<HIRA>の えを<NL>"
-	ctxt "かこうと おもったんたﾞけとﾞ……<NL>"
-	ctxt "<KATA>サンフﾟル<HIRA>の えかﾞ またﾞこない?!<NL>"
-	ctxt "ねえねえ とﾞうなってんの?<NL>"
-	ctxt "こうなったのも せﾞんふﾞ<NL>"
-	ctxt "<KATA><STBF><HIRA>の せいたﾞからね!<KATA><TERM>"
+	ctxt "ナッツ"
+	line "<HIRA>どうやら <KATA>ガールズ8<HIRA>の みんなと"
+	line "ぶじに あえたみたいね"
+	line "よかった よかった おめでと"
+	line ""
+	line "あたらしい <KATA>ロボポン<HIRA>の えを"
+	line "かこうと おもったんだけど……"
+	line "<KATA>サンプル<HIRA>の えが まだこない?!"
+	line "ねえねえ どうなってんの?"
+	line "こうなったのも ぜんぶ"
+	line "<KATA><PLAYER><HIRA>の せいだからね!<KATA>"
+	done
 
 TreeBitstreamText_44e62:
-	ctxt "リッツ<NL>"
-	ctxt "オレ カﾞールスﾞ8<HIRA>の <KATA>リッツ!<NL>"
-	ctxt "<HIRA>さいしょに ことわっておく!<NL>"
-	ctxt "<KATA>オレ <HIRA>おんなたﾞけとﾞ しﾞふﾞんのことは<NL>"
-	ctxt "<KATA>オレ<HIRA>って よふﾞことにしてる!<NL>"
-	ctxt "かすﾞすくない <KATA>レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "さかﾞして あるいてるんたﾞけとﾞ……<KATA><TERM>"
+	ctxt "リッツ"
+	line "オレ ガールズ8<HIRA>の <KATA>リッツ!"
+	line "<HIRA>さいしょに ことわっておく!"
+	line "<KATA>オレ <HIRA>おんなだけど じぶんのことは"
+	line "<KATA>オレ<HIRA>って よぶことにしてる!"
+	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
+	line "さがして あるいてるんだけど……<KATA>"
+	done
 
 TreeBitstreamText_44eb8:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>たﾞいく<KATA>ロホﾞホﾟン<HIRA>の <KATA>オヤカタ<HIRA>って<KATA>ヤツ<NL>"
-	ctxt "<HIRA>おまえ しらないか?<NL>"
-	ctxt "<KATA>オレ<HIRA>も あいにく みたことないんたﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "そこてﾞ おまえは <KATA>オレ<HIRA>のために<NL>"
-	ctxt "<KATA>オヤカタ<HIRA>を つかまえてきてくれ!<NL>"
-	ctxt "おれいに いい<KATA>ロホﾞホﾟン<HIRA>やるからさ!<KATA>"
+	ctxt "リッツ"
+	line "<HIRA>だいく<KATA>ロボポン<HIRA>の <KATA>オヤカタ<HIRA>って<KATA>ヤツ"
+	line "<HIRA>おまえ しらないか?"
+	line "<KATA>オレ<HIRA>も あいにく みたことないんだ"
+	line ""
+	line "そこで おまえは <KATA>オレ<HIRA>のために"
+	line "<KATA>オヤカタ<HIRA>を つかまえてきてくれ!"
+	line "おれいに いい<KATA>ロボポン<HIRA>やるからさ!<KATA>"
 
 TreeBitstreamText_44f10:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>ややっ!? もしや………<NL>"
-	ctxt "それは <KATA>オヤカタ?!<NL>"
-	ctxt "₆₆₆<HIRA>わかった!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>オレ<HIRA>の <KATA>スタントﾞ<HIRA>と こうかんしよう!<KATA><TERM>"
+	ctxt "リッツ"
+	line "<HIRA>ややっ!? もしや………"
+	line "それは <KATA>オヤカタ?!"
+	line "………<HIRA>わかった!"
+	line ""
+	line "<KATA>オレ<HIRA>の <KATA>スタンド<HIRA>と こうかんしよう!<KATA>"
+	done
 
 TreeBitstreamText_44f3f:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>おまえ あんかﾞい いい<KATA>ヤツ<HIRA>なんたﾞな<NL>"
-	ctxt "<KATA>オトコ<HIRA>として みとめてやるよ<NL>"
-	ctxt "てﾞも やさしいたﾞけの <KATA>オトコ<HIRA>なんて<NL>"
-	ctxt "ありきたりてﾞ つまんない<KATA>モン<HIRA>さ<NL>"
-	ctxt "おまえかﾞ <KATA>ホント<HIRA>に いい<KATA>ヤツ<HIRA>かとﾞうか<NL>"
-	ctxt "もう1とﾞ しらへﾞさせてくれ!<NL>"
-	ctxt "こうくﾞ<KATA>ロホﾞホﾟン<HIRA>の <KATA>トﾞライハﾞル<HIRA>って<KATA>ヤツ<NL>"
-	ctxt "<HIRA>おまえ しらないか?<NL>"
-	ctxt "<KATA>オレ<HIRA>も あいにく みたことないんたﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "そこてﾞ おまえは <KATA>オレ<HIRA>のために<NL>"
-	ctxt "<KATA>トﾞライハﾞル<HIRA>を つかまえてきてくれ!<NL>"
-	ctxt "おれいに いい<KATA>ロホﾞホﾟン<HIRA>やるからさ!<KATA>"
+	ctxt "リッツ"
+	line "<HIRA>おまえ あんがい いい<KATA>ヤツ<HIRA>なんだな"
+	line "<KATA>オトコ<HIRA>として みとめてやるよ"
+	line "でも やさしいだけの <KATA>オトコ<HIRA>なんて"
+	line "ありきたりで つまんない<KATA>モン<HIRA>さ"
+	line "おまえが <KATA>ホント<HIRA>に いい<KATA>ヤツ<HIRA>かどうか"
+	line "もう1ど しらべさせてくれ!"
+	line "こうぐ<KATA>ロボポン<HIRA>の <KATA>ドライバル<HIRA>って<KATA>ヤツ"
+	line "<HIRA>おまえ しらないか?"
+	line "<KATA>オレ<HIRA>も あいにく みたことないんだ"
+	line ""
+	line "そこで おまえは <KATA>オレ<HIRA>のために"
+	line "<KATA>ドライバル<HIRA>を つかまえてきてくれ!"
+	line "おれいに いい<KATA>ロボポン<HIRA>やるからさ!<KATA>"
 
 TreeBitstreamText_44fed:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>おまえ いかﾞいと つめたい<KATA>ヤツ<HIRA>たﾞな<NL>"
-	ctxt "おんなたﾞから つめたくするのか?<NL>"
-	ctxt "……<KATA>カッコ<HIRA>つけんしﾞゃねぇ!<NL>"
-	ctxt "<NL>"
-	ctxt "おまえなぁ しﾞふﾞんのこと<NL>"
-	ctxt "<KATA>ナンホﾞ<HIRA>の<KATA>オトコ<HIRA>たﾞと おもってんたﾞ?<NL>"
-	ctxt "かかﾞみ みてみろ <KATA>ハﾞカヤロー!<TERM>"
+	ctxt "リッツ"
+	line "<HIRA>おまえ いがいと つめたい<KATA>ヤツ<HIRA>だな"
+	line "おんなだから つめたくするのか?"
+	line "……<KATA>カッコ<HIRA>つけんじゃねぇ!"
+	line ""
+	line "おまえなぁ じぶんのこと"
+	line "<KATA>ナンボ<HIRA>の<KATA>オトコ<HIRA>だと おもってんだ?"
+	line "かがみ みてみろ <KATA>バカヤロー!"
+	done
 
 TreeBitstreamText_45042:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>おまえかﾞ <KATA>ホント<HIRA>に いい<KATA>ヤツ<HIRA>かとﾞうか<NL>"
-	ctxt "もう1とﾞ しらへﾞさせてくれ!<NL>"
-	ctxt "こうくﾞ<KATA>ロホﾞホﾟン<HIRA>の <KATA>トﾞライハﾞル<HIRA>って<KATA>ヤツ<NL>"
-	ctxt "<HIRA>おまえ しらないか?<NL>"
-	ctxt "<KATA>オレ<HIRA>も あいにく みたことないんたﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "そこてﾞ おまえは <KATA>オレ<HIRA>のために<NL>"
-	ctxt "<KATA>トﾞライハﾞル<HIRA>を つかまえてきてくれ!<NL>"
-	ctxt "おれいに いい<KATA>ロホﾞホﾟン<HIRA>やるからさ!<KATA><TERM>"
+	ctxt "リッツ"
+	line "<HIRA>おまえが <KATA>ホント<HIRA>に いい<KATA>ヤツ<HIRA>かどうか"
+	line "もう1ど しらべさせてくれ!"
+	line "こうぐ<KATA>ロボポン<HIRA>の <KATA>ドライバル<HIRA>って<KATA>ヤツ"
+	line "<HIRA>おまえ しらないか?"
+	line "<KATA>オレ<HIRA>も あいにく みたことないんだ"
+	line ""
+	line "そこで おまえは <KATA>オレ<HIRA>のために"
+	line "<KATA>ドライバル<HIRA>を つかまえてきてくれ!"
+	line "おれいに いい<KATA>ロボポン<HIRA>やるからさ!<KATA>"
+	done
 
 TreeBitstreamText_450bb:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>ややややっ!? もしや………<NL>"
-	ctxt "それは <KATA>トﾞライハﾞル?!<NL>"
-	ctxt "₆₆₆<HIRA>わかったよ!<NL>"
-	ctxt "<NL>"
-	ctxt "わたしの もってる <KATA>コンホﾞイル<HIRA>と<NL>"
-	ctxt "こうかん してやるよ!<KATA><TERM>"
+	ctxt "リッツ"
+	line "<HIRA>ややややっ!? もしや………"
+	line "それは <KATA>ドライバル?!"
+	line "………<HIRA>わかったよ!"
+	line ""
+	line "わたしの もってる <KATA>コンボイル<HIRA>と"
+	line "こうかん してやるよ!<KATA>"
+	done
 
 TreeBitstreamText_450f4:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>おまえ やっはﾟり いい<KATA>ヤツ<HIRA>なんたﾞな<NL>"
-	ctxt "<KATA>オトコ<HIRA>として かちの ある<KATA>ヤツ<HIRA>たﾞよ<NL>"
-	ctxt "てﾞも いい<KATA>ヤツ<HIRA>とﾞまりの <KATA>オトコ<HIRA>なんて<NL>"
-	ctxt "よのなかに いっはﾟいいる<KATA>モン<HIRA>さ<NL>"
-	ctxt "ほら <KATA>オレ<HIRA>の <KATA>コンホﾞイル<HIRA>やるよ!<NL>"
-	ctxt "<NL>"
-	ctxt "つよく <KATA>ハﾟワーアッフﾟ<HIRA>させて<NL>"
-	ctxt "すこしは <KATA>ハﾞトロホﾞ<HIRA>に つかえよな!<NL>"
-	ctxt "……<KATA>クククク ヘン<HIRA>な<KATA>ヤツ<HIRA>たﾞな<NL>"
-	ctxt "てﾞも おまえってさぁ……<NL>"
-	ctxt "<KATA>オレ<HIRA>かﾞみた いい<KATA>ヤツ<HIRA>のなかてﾞも<NL>"
-	ctxt "いちはﾞんの いい<KATA>ヤツ<HIRA>かもな<KATA><TERM>"
+	ctxt "リッツ"
+	line "<HIRA>おまえ やっぱり いい<KATA>ヤツ<HIRA>なんだな"
+	line "<KATA>オトコ<HIRA>として かちの ある<KATA>ヤツ<HIRA>だよ"
+	line "でも いい<KATA>ヤツ<HIRA>どまりの <KATA>オトコ<HIRA>なんて"
+	line "よのなかに いっぱいいる<KATA>モン<HIRA>さ"
+	line "ほら <KATA>オレ<HIRA>の <KATA>コンボイル<HIRA>やるよ!"
+	line ""
+	line "つよく <KATA>パワーアップ<HIRA>させて"
+	line "すこしは <KATA>バトロボ<HIRA>に つかえよな!"
+	line "……<KATA>クククク ヘン<HIRA>な<KATA>ヤツ<HIRA>だな"
+	line "でも おまえってさぁ……"
+	line "<KATA>オレ<HIRA>がみた いい<KATA>ヤツ<HIRA>のなかでも"
+	line "いちばんの いい<KATA>ヤツ<HIRA>かもな<KATA>"
+	done
 
 TreeBitstreamText_45194:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>おまえ いかﾞいと つめたい<KATA>ヤツ<HIRA>たﾞな<NL>"
-	ctxt "おんなたﾞから つめたくするのか?<NL>"
-	ctxt "……<KATA>カッコ<HIRA>つけんしﾞゃねぇ!<NL>"
-	ctxt "<NL>"
-	ctxt "おまえなぁ しﾞふﾞんのこと<NL>"
-	ctxt "<KATA>ナンホﾞ<HIRA>の<KATA>オトコ<HIRA>たﾞと おもってんたﾞ?<NL>"
-	ctxt "かかﾞみ みてみろ <KATA>ハﾞカヤロー!<TERM>"
+	ctxt "リッツ"
+	line "<HIRA>おまえ いがいと つめたい<KATA>ヤツ<HIRA>だな"
+	line "おんなだから つめたくするのか?"
+	line "……<KATA>カッコ<HIRA>つけんじゃねぇ!"
+	line ""
+	line "おまえなぁ じぶんのこと"
+	line "<KATA>ナンボ<HIRA>の<KATA>オトコ<HIRA>だと おもってんだ?"
+	line "かがみ みてみろ <KATA>バカヤロー!"
+	done
 
 TreeBitstreamText_451e9:
-	ctxt "リッツ<NL>"
-	ctxt "<HIRA>おまえ やっはﾟり いい<KATA>ヤツ<HIRA>なんたﾞな<NL>"
-	ctxt "<KATA>オトコ<HIRA>として かちの ある<KATA>ヤツ<HIRA>たﾞよ<NL>"
-	ctxt "てﾞも いい<KATA>ヤツ<HIRA>とﾞまりの <KATA>オトコ<HIRA>なんて<NL>"
-	ctxt "よのなかに いっはﾟいいる<KATA>モン<HIRA>さ<NL>"
-	ctxt "もしかして おまえってさぁ……<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>オレ<HIRA>かﾞみた いい<KATA>ヤツ<HIRA>のなかてﾞも<NL>"
-	ctxt "いちはﾞんの いい<KATA>ヤツ<HIRA>かもな……<NL>"
-	ctxt "さあ さあ さっさと ほかの<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>を さかﾞしにいきやかﾞれ!<NL>"
-	ctxt "もう くるんしﾞゃ ないそﾞ!<KATA>"
+	ctxt "リッツ"
+	line "<HIRA>おまえ やっぱり いい<KATA>ヤツ<HIRA>なんだな"
+	line "<KATA>オトコ<HIRA>として かちの ある<KATA>ヤツ<HIRA>だよ"
+	line "でも いい<KATA>ヤツ<HIRA>どまりの <KATA>オトコ<HIRA>なんて"
+	line "よのなかに いっぱいいる<KATA>モン<HIRA>さ"
+	line "もしかして おまえってさぁ……"
+	line ""
+	line "<KATA>オレ<HIRA>がみた いい<KATA>ヤツ<HIRA>のなかでも"
+	line "いちばんの いい<KATA>ヤツ<HIRA>かもな……"
+	line "さあ さあ さっさと ほかの"
+	line "<KATA>ガールズ8<HIRA>を さがしにいきやがれ!"
+	line "もう くるんじゃ ないぞ!<KATA>"
 
 TreeBitstreamText_45277:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "ちょっとぉ あんたぁ なによぉ<NL>"
-	ctxt "すﾞっと こっちはﾞっか みてさぁ<NL>"
-	ctxt "なんか ようてﾞも あんのぉ?<NL>"
-	ctxt "<KATA>アタイ カﾞールスﾞ8<HIRA>の ひろみ!<NL>"
-	ctxt "かすﾞすくない <KATA>レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "さかﾞして あるいてんたﾞけとﾞさぁ……<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "ちょっとぉ あんたぁ なによぉ"
+	line "ずっと こっちばっか みてさぁ"
+	line "なんか ようでも あんのぉ?"
+	line "<KATA>アタイ ガールズ8<HIRA>の ひろみ!"
+	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
+	line "さがして あるいてんだけどさぁ……<KATA>"
+	done
 
 TreeBitstreamText_452cd:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "<KATA>アタイ<HIRA>かﾞほしいのは <KATA>スタントﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "カﾞタカﾞタ<HIRA>いわすﾞに さっさと<NL>"
-	ctxt "<KATA>スタントﾞ<HIRA>を ここに たﾞしな!<NL>"
-	ctxt "なにぃ もってない たﾞあ?<NL>"
-	ctxt "なら とってくんのかﾞ <KATA>スシﾞ<HIRA>たﾞろ!<NL>"
-	ctxt "はしれ! はしって もってこい!<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "<KATA>アタイ<HIRA>がほしいのは <KATA>スタンド!"
+	line ""
+	line "ガタガタ<HIRA>いわずに さっさと"
+	line "<KATA>スタンド<HIRA>を ここに だしな!"
+	line "なにぃ もってない だあ?"
+	line "なら とってくんのが <KATA>スジ<HIRA>だろ!"
+	line "はしれ! はしって もってこい!<KATA>"
+	done
 
 TreeBitstreamText_4531c:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "ほう <KATA>アタイ<HIRA>に いわれたとおり<NL>"
-	ctxt "<KATA>スタントﾞ <HIRA>もってきたんたﾞね<NL>"
-	ctxt "<KATA>タタﾞ<HIRA>なんて いわないよぉ<NL>"
-	ctxt "<KATA>アタイ<HIRA>は <KATA>ホﾞイラース<HIRA>を やるよ<NL>"
-	ctxt "もちろん こうかん すんたﾞろ?<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "ほう <KATA>アタイ<HIRA>に いわれたとおり"
+	line "<KATA>スタンド <HIRA>もってきたんだね"
+	line "<KATA>タダ<HIRA>なんて いわないよぉ"
+	line "<KATA>アタイ<HIRA>は <KATA>ボイラース<HIRA>を やるよ"
+	line "もちろん こうかん すんだろ?<KATA>"
+	done
 
 TreeBitstreamText_4535e:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "やっはﾟ そうこなくっちゃな!<NL>"
-	ctxt "<KATA>アタイ<HIRA>かﾞ みこんたﾞたﾞけあるよ<NL>"
-	ctxt "こんしﾞょう あるしﾞゃん!<NL>"
-	ctxt "そこてﾞ たﾞ!<NL>"
-	ctxt "あんたに つきﾞの しれいを<NL>"
-	ctxt "いいわたそうしﾞゃないか!<NL>"
-	ctxt "いいなぁ しあわせ<KATA>モン<HIRA>たﾞなぁ<NL>"
-	ctxt "<KATA>アタイ<HIRA>のしれいを きけるなんて<NL>"
-	ctxt "ちょー<KATA>ラッキー <HIRA>たﾞよなぁ<NL>"
-	ctxt "つきﾞは <KATA>ハﾞーナー<HIRA>たﾞよ <KATA>ハﾞーナー!<NL>"
-	ctxt "<HIRA>また <KATA>アタイ<HIRA>のとこに もってきな!<NL>"
-	ctxt "ほら さっさと さかﾞしてくるっ!<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "やっぱ そうこなくっちゃな!"
+	line "<KATA>アタイ<HIRA>が みこんだだけあるよ"
+	line "こんじょう あるじゃん!"
+	line "そこで だ!"
+	line "あんたに つぎの しれいを"
+	line "いいわたそうじゃないか!"
+	line "いいなぁ しあわせ<KATA>モン<HIRA>だなぁ"
+	line "<KATA>アタイ<HIRA>のしれいを きけるなんて"
+	line "ちょー<KATA>ラッキー <HIRA>だよなぁ"
+	line "つぎは <KATA>バーナー<HIRA>だよ <KATA>バーナー!"
+	line "<HIRA>また <KATA>アタイ<HIRA>のとこに もってきな!"
+	line "ほら さっさと さがしてくるっ!<KATA>"
+	done
 
 TreeBitstreamText_453ee:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "あんたぁ <KATA>ナメ<HIRA>てんのかぁ?<NL>"
-	ctxt "へんっ そんな<KATA>カオ <HIRA>みたくもねぇよ<NL>"
-	ctxt "さっさと とﾞっか きえな!<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "あんたぁ <KATA>ナメ<HIRA>てんのかぁ?"
+	line "へんっ そんな<KATA>カオ <HIRA>みたくもねぇよ"
+	line "さっさと どっか きえな!<KATA>"
+	done
 
 TreeBitstreamText_45418:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "あんたに つきﾞの しれいを<NL>"
-	ctxt "いいわたそうしﾞゃないか!<NL>"
-	ctxt "いいなぁ しあわせ<KATA>モン<HIRA>たﾞなぁ<NL>"
-	ctxt "<KATA>アタイ<HIRA>のしれいを きけるなんて<NL>"
-	ctxt "ちょー<KATA>ラッキー <HIRA>たﾞよなぁ<NL>"
-	ctxt "つきﾞは <KATA>ハﾞーナー<HIRA>たﾞよ <KATA>ハﾞーナー!<NL>"
-	ctxt "<HIRA>また <KATA>アタイ<HIRA>のとこに もってきな!<NL>"
-	ctxt "ほら さっさと さかﾞしてくるっ!<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "あんたに つぎの しれいを"
+	line "いいわたそうじゃないか!"
+	line "いいなぁ しあわせ<KATA>モン<HIRA>だなぁ"
+	line "<KATA>アタイ<HIRA>のしれいを きけるなんて"
+	line "ちょー<KATA>ラッキー <HIRA>だよなぁ"
+	line "つぎは <KATA>バーナー<HIRA>だよ <KATA>バーナー!"
+	line "<HIRA>また <KATA>アタイ<HIRA>のとこに もってきな!"
+	line "ほら さっさと さがしてくるっ!<KATA>"
+	done
 
 TreeBitstreamText_4547f:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "ほう <KATA>アタイ<HIRA>に いわれたとおり<NL>"
-	ctxt "<KATA>ハﾞーナー <HIRA>もってきたんたﾞね<NL>"
-	ctxt "<KATA>タタﾞ<HIRA>なんて いわないよぉ<NL>"
-	ctxt "<KATA>アタイ<HIRA>は <KATA>ストーン<HIRA>を やるよ<NL>"
-	ctxt "もちろん こうかん すんたﾞろ?<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "ほう <KATA>アタイ<HIRA>に いわれたとおり"
+	line "<KATA>バーナー <HIRA>もってきたんだね"
+	line "<KATA>タダ<HIRA>なんて いわないよぉ"
+	line "<KATA>アタイ<HIRA>は <KATA>ストーン<HIRA>を やるよ"
+	line "もちろん こうかん すんだろ?<KATA>"
+	done
 
 TreeBitstreamText_454c0:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "やっはﾟ そうこなくっちゃな!<NL>"
-	ctxt "<KATA>アタイ<HIRA>かﾞ みこんたﾞたﾞけあるよ<NL>"
-	ctxt "こんしﾞょう あるしﾞゃん!<NL>"
-	ctxt "こﾞほうひﾞに いい<KATA>コ<HIRA>いい<KATA>コ<HIRA>してやるよ<NL>"
-	ctxt "よく やった!<NL>"
-	ctxt "<KATA>エライ<HIRA>っ!!<NL>"
-	ctxt "<NL>"
-	ctxt "……って ちょうしに のるなよな!<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "やっぱ そうこなくっちゃな!"
+	line "<KATA>アタイ<HIRA>が みこんだだけあるよ"
+	line "こんじょう あるじゃん!"
+	line "ごほうびに いい<KATA>コ<HIRA>いい<KATA>コ<HIRA>してやるよ"
+	line "よく やった!"
+	line "<KATA>エライ<HIRA>っ!!"
+	line ""
+	line "……って ちょうしに のるなよな!<KATA>"
+	done
 
 TreeBitstreamText_45511:
-	ctxt "<HIRA>ひろみ<NL>"
-	ctxt "あんた こんしﾞょう あるしﾞゃん!<NL>"
-	ctxt "<KATA>アタイ<HIRA>かﾞ みこんたﾞたﾞけあるよ<NL>"
-	ctxt "そのちょうしてﾞ <KATA>カﾞールスﾞ8<HIRA>せﾞんいんと<NL>"
-	ctxt "はやく かおを あわせるんたﾞな<NL>"
-	ctxt "さいこﾞには いい<KATA>コト <HIRA>あるかもよ!<NL>"
-	ctxt "しﾞゃあな <KATA>ハﾞイ<HIRA>っ!<KATA><TERM>"
+	ctxt "<HIRA>ひろみ"
+	line "あんた こんじょう あるじゃん!"
+	line "<KATA>アタイ<HIRA>が みこんだだけあるよ"
+	line "そのちょうしで <KATA>ガールズ8<HIRA>ぜんいんと"
+	line "はやく かおを あわせるんだな"
+	line "さいごには いい<KATA>コト <HIRA>あるかもよ!"
+	line "じゃあな <KATA>バイ<HIRA>っ!<KATA>"
+	done
 
 TreeBitstreamText_45564:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>こんにちは! こﾞきけﾞんいかかﾞ?<NL>"
-	ctxt "<KATA>コレクション <HIRA>すすんてﾞる?<NL>"
-	ctxt "<KATA>クﾞレイテスト<HIRA>の <KATA>ランク <HIRA>あかﾞった?<NL>"
-	ctxt "わたし <KATA>カﾞールスﾞ8<HIRA>の <KATA>ユキコ!<NL>"
-	ctxt "<HIRA>かすﾞすくない <KATA>レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "さかﾞして あるいてるんたﾞけとﾞ……<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>こんにちは! ごきげんいかが?"
+	line "<KATA>コレクション <HIRA>すすんでる?"
+	line "<KATA>グレイテスト<HIRA>の <KATA>ランク <HIRA>あがった?"
+	line "わたし <KATA>ガールズ8<HIRA>の <KATA>ユキコ!"
+	line "<HIRA>かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
+	line "さがして あるいてるんだけど……<KATA>"
+	done
 
 TreeBitstreamText_455be:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>かなり おおきな <KATA>ロホﾞホﾟン<HIRA>なんたﾞけとﾞ<NL>"
-	ctxt "<KATA>ホﾞイラース<HIRA>って しってるかな?<NL>"
-	ctxt "わたし あれかﾞ おきにいりなの!<NL>"
-	ctxt "てﾞも もってないのよ!<NL>"
-	ctxt "<KATA>ウーマンホﾞ<HIRA>となら こうかんするけとﾞ<NL>"
-	ctxt "あー とﾞうしても ほしいなぁ<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>かなり おおきな <KATA>ロボポン<HIRA>なんだけど"
+	line "<KATA>ボイラース<HIRA>って しってるかな?"
+	line "わたし あれが おきにいりなの!"
+	line "でも もってないのよ!"
+	line "<KATA>ウーマンボ<HIRA>となら こうかんするけど"
+	line "あー どうしても ほしいなぁ<KATA>"
+	done
 
 TreeBitstreamText_4560f:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>ああ! それは ゆめにまてﾞ みた<NL>"
-	ctxt "<KATA>ホﾞ ホﾞ ホﾞイラース!!<NL>"
-	ctxt "ハァァーーッ!??<NL>"
-	ctxt "<HIRA>おねかﾞい おねかﾞい おねかﾞいっ!<NL>"
-	ctxt "わたしの <KATA>ウーマンホﾞ<HIRA>と せﾞひせﾞひ<NL>"
-	ctxt "こうかん してちょーたﾞい!<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>ああ! それは ゆめにまで みた"
+	line "<KATA>ボ ボ ボイラース!!"
+	line "ハァァーーッ!??"
+	line "<HIRA>おねがい おねがい おねがいっ!"
+	line "わたしの <KATA>ウーマンボ<HIRA>と ぜひぜひ"
+	line "こうかん してちょーだい!<KATA>"
+	done
 
 TreeBitstreamText_4565b:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>やったね! ありかﾞと <KATA>チュッ!<NL>"
-	ctxt "<STBF><HIRA>って そんけいしちゃう!<NL>"
-	ctxt "たﾞって あたしの ゆめを<NL>"
-	ctxt "かなえて くれるんたﾞ<KATA>モン!<NL>"
-	ctxt "<HIRA>ねえねえ <KATA><STBF><HIRA>ってはﾞぁ<NL>"
-	ctxt "<NL>"
-	ctxt "もひとつ <KATA>ユキコ<HIRA>のわかﾞまま<NL>"
-	ctxt "きいてくれないかなぁ……<NL>"
-	ctxt "<KATA>オネタﾞリ<HIRA>って <KATA>ロホﾞホﾟン<HIRA>しってる?<NL>"
-	ctxt "あれ かわいいと おもわない?<NL>"
-	ctxt "あーん <KATA>オネタﾞリ <HIRA>ほしいぃぃぃ!<NL>"
-	ctxt "<KATA>ヘヒﾞータ<HIRA>となら こうかんするけとﾞ<NL>"
-	ctxt "あーあ とﾞうしても ほしいなぁ<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>やったね! ありがと <KATA>チュッ!"
+	line "<PLAYER><HIRA>って そんけいしちゃう!"
+	line "だって あたしの ゆめを"
+	line "かなえて くれるんだ<KATA>モン!"
+	line "<HIRA>ねえねえ <KATA><PLAYER><HIRA>ってばぁ"
+	line ""
+	line "もひとつ <KATA>ユキコ<HIRA>のわがまま"
+	line "きいてくれないかなぁ……"
+	line "<KATA>オネダリ<HIRA>って <KATA>ロボポン<HIRA>しってる?"
+	line "あれ かわいいと おもわない?"
+	line "あーん <KATA>オネダリ <HIRA>ほしいぃぃぃ!"
+	line "<KATA>ヘビータ<HIRA>となら こうかんするけど"
+	line "あーあ どうしても ほしいなぁ<KATA>"
+	done
 
 TreeBitstreamText_456f4:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>あー そう そーなんたﾞー<NL>"
-	ctxt "そーいう たいとﾞ とるんたﾞー<NL>"
-	ctxt "おんなを ふこうにする<KATA>オトコ<HIRA>って<NL>"
-	ctxt "<KATA>ホント サイテー サイアク<HIRA>たﾞね!<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>あー そう そーなんだー"
+	line "そーいう たいど とるんだー"
+	line "おんなを ふこうにする<KATA>オトコ<HIRA>って"
+	line "<KATA>ホント サイテー サイアク<HIRA>だね!<KATA>"
+	done
 
 TreeBitstreamText_45728:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>ねえねえ <KATA><STBF><HIRA>ってはﾞぁ<NL>"
-	ctxt "<NL>"
-	ctxt "もひとつ <KATA>ユキコ<HIRA>のわかﾞまま<NL>"
-	ctxt "きいてくれないかなぁ……<NL>"
-	ctxt "<KATA>オネタﾞリ<HIRA>って <KATA>ロホﾞホﾟン<HIRA>しってる?<NL>"
-	ctxt "あれ かわいいと おもわない?<NL>"
-	ctxt "あーん <KATA>オネタﾞリ <HIRA>ほしいぃぃぃ!<NL>"
-	ctxt "<KATA>ヘヒﾞータ<HIRA>となら こうかんするけとﾞ<NL>"
-	ctxt "あーあ とﾞうしても ほしいなぁ<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>ねえねえ <KATA><PLAYER><HIRA>ってばぁ"
+	line ""
+	line "もひとつ <KATA>ユキコ<HIRA>のわがまま"
+	line "きいてくれないかなぁ……"
+	line "<KATA>オネダリ<HIRA>って <KATA>ロボポン<HIRA>しってる?"
+	line "あれ かわいいと おもわない?"
+	line "あーん <KATA>オネダリ <HIRA>ほしいぃぃぃ!"
+	line "<KATA>ヘビータ<HIRA>となら こうかんするけど"
+	line "あーあ どうしても ほしいなぁ<KATA>"
+	done
 
 TreeBitstreamText_45794:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>ああ! それは ゆめにまてﾞ みた<NL>"
-	ctxt "<KATA>オ オ オネタﾞリ!!<NL>"
-	ctxt "ハァァーーッ!??<NL>"
-	ctxt "<HIRA>おねかﾞい おねかﾞい おねかﾞいっ!<NL>"
-	ctxt "わたしの <KATA>ヘヒﾞータ<HIRA>と せﾞひせﾞひ<NL>"
-	ctxt "こうかん してちょーたﾞい!<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>ああ! それは ゆめにまで みた"
+	line "<KATA>オ オ オネダリ!!"
+	line "ハァァーーッ!??"
+	line "<HIRA>おねがい おねがい おねがいっ!"
+	line "わたしの <KATA>ヘビータ<HIRA>と ぜひぜひ"
+	line "こうかん してちょーだい!<KATA>"
+	done
 
 TreeBitstreamText_457de:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>やったね! ありかﾞと <KATA>チュッ!<NL>"
-	ctxt "<STBF><HIRA>って そんけいしちゃう!<NL>"
-	ctxt "たﾞって あたしの ゆめを<NL>"
-	ctxt "かなえて くれるんたﾞ<KATA>モン!<NL>"
-	ctxt "<HIRA>ところてﾞ <KATA>ユキコ<HIRA>いかﾞいの<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>のみんなには あったの?<NL>"
-	ctxt "8にん せﾞんいんと あった?<NL>"
-	ctxt "またﾞなら さかﾞしてみてね<NL>"
-	ctxt "このしまの とﾞこかに いるはすﾞよ<NL>"
-	ctxt "<KATA>オトコ<HIRA>は こうとﾞうりょく!<NL>"
-	ctxt "こうとﾞうりょくを みせてくれれはﾞ<NL>"
-	ctxt "おんなの<KATA>コ<HIRA>は <KATA>ウットリ<HIRA>するはすﾞよ<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>やったね! ありがと <KATA>チュッ!"
+	line "<PLAYER><HIRA>って そんけいしちゃう!"
+	line "だって あたしの ゆめを"
+	line "かなえて くれるんだ<KATA>モン!"
+	line "<HIRA>ところで <KATA>ユキコ<HIRA>いがいの"
+	line "<KATA>ガールズ8<HIRA>のみんなには あったの?"
+	line "8にん ぜんいんと あった?"
+	line "まだなら さがしてみてね"
+	line "このしまの どこかに いるはずよ"
+	line "<KATA>オトコ<HIRA>は こうどうりょく!"
+	line "こうどうりょくを みせてくれれば"
+	line "おんなの<KATA>コ<HIRA>は <KATA>ウットリ<HIRA>するはずよ<KATA>"
+	done
 
 TreeBitstreamText_45875:
-	ctxt "ユキコ<NL>"
-	ctxt "<HIRA>ところてﾞ <KATA>ユキコ<HIRA>いかﾞいの<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>のみんなには あったの?<NL>"
-	ctxt "8にん せﾞんいんと あった?<NL>"
-	ctxt "またﾞなら さかﾞしてみてね<NL>"
-	ctxt "このしまの とﾞこかに いるはすﾞよ!<NL>"
-	ctxt "<KATA>オトコ<HIRA>は こうとﾞうりょく!<NL>"
-	ctxt "こうとﾞうりょくを みせてくれれはﾞ<NL>"
-	ctxt "おんなの<KATA>コ<HIRA>は <KATA>ウットリ<HIRA>するはすﾞよ<KATA><TERM>"
+	ctxt "ユキコ"
+	line "<HIRA>ところで <KATA>ユキコ<HIRA>いがいの"
+	line "<KATA>ガールズ8<HIRA>のみんなには あったの?"
+	line "8にん ぜんいんと あった?"
+	line "まだなら さがしてみてね"
+	line "このしまの どこかに いるはずよ!"
+	line "<KATA>オトコ<HIRA>は こうどうりょく!"
+	line "こうどうりょくを みせてくれれば"
+	line "おんなの<KATA>コ<HIRA>は <KATA>ウットリ<HIRA>するはずよ<KATA>"
+	done
 
 TreeBitstreamText_458e0:
-	ctxt "ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "こうかんしますか?<KATA><TERM>"
+	ctxt "ロボポン<HIRA>を"
+	line "こうかんしますか?<KATA>"
+	done
 
 TreeBitstreamText_458ef:
-	ctxt "カﾞールスﾞ8<HIRA>は なそﾞの おんなの<KATA>コ!<NL>"
-	ctxt "<NL>"
-	ctxt "レア<HIRA>な<KATA>ロホﾞホﾟン<HIRA>を あつめていて<NL>"
-	ctxt "こうかんしてくれるんたﾞ!<NL>"
-	ctxt "<KATA>レイナ ミカチ マーヤ ユーコ<HIRA>に<NL>"
-	ctxt "<KATA>ナッツ リッツ <HIRA>ひろみ <KATA>ユキコ!<NL>"
-	ctxt "<HIRA>こﾞうけい8にんさ!<KATA><TERM>"
+	ctxt "ガールズ8<HIRA>は なぞの おんなの<KATA>コ!"
+	line ""
+	line "レア<HIRA>な<KATA>ロボポン<HIRA>を あつめていて"
+	line "こうかんしてくれるんだ!"
+	line "<KATA>レイナ ミカチ マーヤ ユーコ<HIRA>に"
+	line "<KATA>ナッツ リッツ <HIRA>ひろみ <KATA>ユキコ!"
+	line "<HIRA>ごうけい8にんさ!<KATA>"
+	done
 
 TreeBitstreamText_4593e:
-	ctxt "ホﾞク<HIRA>は こころかﾞわりのはけﾞしい<NL>"
-	ctxt "おっかけたﾞった おとこ!<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>っていう おんなのこを<NL>"
-	ctxt "おっかけてたんたﾞけとﾞ……<NL>"
-	ctxt "<KATA>メンハﾞー<HIRA>かﾞ8にんもいるから<NL>"
-	ctxt "おっかけるほうも たいへんたﾞったよ<NL>"
-	ctxt "ますﾞ はしﾞめかﾞ <KATA>レイナ <HIRA>てﾞ<NL>"
-	ctxt "そのあとに <KATA>ミカチ マーヤ ユーコ<NL>"
-	ctxt "リッツ <HIRA>ひろみ <KATA>ユキコ レイナ<NL>"
-	ctxt "ユキコ ミカチ <HIRA>ひろみ <KATA>マーヤ<NL>"
-	ctxt "リッツ ユーコ ナッツ<NL>"
-	ctxt "<HIRA>とﾞう? おほﾞえた?<NL>"
-	ctxt "このしﾞゅんはﾞんかﾞ たいせつなんたﾞよ<KATA><TERM>"
+	ctxt "ボク<HIRA>は こころがわりのはげしい"
+	line "おっかけだった おとこ!"
+	line "<KATA>ガールズ8<HIRA>っていう おんなのこを"
+	line "おっかけてたんだけど……"
+	line "<KATA>メンバー<HIRA>が8にんもいるから"
+	line "おっかけるほうも たいへんだったよ"
+	line "まず はじめが <KATA>レイナ <HIRA>で"
+	line "そのあとに <KATA>ミカチ マーヤ ユーコ"
+	line "リッツ <HIRA>ひろみ <KATA>ユキコ レイナ"
+	line "ユキコ ミカチ <HIRA>ひろみ <KATA>マーヤ"
+	line "リッツ ユーコ ナッツ"
+	line "<HIRA>どう? おぼえた?"
+	line "このじゅんばんが たいせつなんだよ<KATA>"
+	done
 
 TreeBitstreamText_459de:
-	ctxt "ホﾞク <HIRA>しってるよー<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>カﾞールスﾞ8<HIRA>の<KATA>メンハﾞー<HIRA>は みんな<NL>"
-	ctxt "<KATA>ロホﾞホﾟン <HIRA>ほしかﾞってるんたﾞよー<NL>"
-	ctxt "<KATA>レイナ<HIRA>は <KATA>キﾞャルル<HIRA>を もってくと<NL>"
-	ctxt "<KATA>トリヘﾟル<HIRA>と こうかんしてくれるし<NL>"
-	ctxt "<KATA>トリヘﾟル<HIRA>を <KATA>ミカチ<HIRA>に もってくと<NL>"
-	ctxt "………あれ? わすれちゃった!<KATA><TERM>"
+	ctxt "ボク <HIRA>しってるよー"
+	line ""
+	line "<KATA>ガールズ8<HIRA>の<KATA>メンバー<HIRA>は みんな"
+	line "<KATA>ロボポン <HIRA>ほしがってるんだよー"
+	line "<KATA>レイナ<HIRA>は <KATA>ギャルル<HIRA>を もってくと"
+	line "<KATA>トリペル<HIRA>と こうかんしてくれるし"
+	line "<KATA>トリペル<HIRA>を <KATA>ミカチ<HIRA>に もってくと"
+	line "………あれ? わすれちゃった!<KATA>"
+	done
 
 TreeBitstreamText_45a40:
-	ctxt "<HIRA>こうかんてﾞきる <KATA>ロホﾞホﾟン<HIRA>かﾞ<NL>"
-	ctxt "<KATA>ハﾟーティー<HIRA>のなかに ふくすういるよ<NL>"
-	ctxt "こうかんてﾞきる <KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "1たいに してから きてね<KATA><TERM>"
+	ctxt "<HIRA>こうかんできる <KATA>ロボポン<HIRA>が"
+	line "<KATA>パーティー<HIRA>のなかに ふくすういるよ"
+	line "こうかんできる <KATA>ロボポン<HIRA>を"
+	line "1たいに してから きてね<KATA>"
+	done
 
 TreeBitstreamText_45a76:
-	ctxt "<HIRA>いわれた<KATA>ロホﾞホﾟン<HIRA>は<NL>"
-	ctxt "もってきたみたいたﾞね<NL>"
-	ctxt "てﾞもね <KATA>ロホﾞホﾟン<HIRA>こうかんは<NL>"
-	ctxt "しﾞゅんはﾞんとﾞおりに やるんたﾞよ<NL>"
-	ctxt "ほかの <KATA>カﾞールスﾞ8<HIRA>との<NL>"
-	ctxt "こうかんかﾞ さき みたいたﾞね<KATA><TERM>"
+	ctxt "<HIRA>いわれた<KATA>ロボポン<HIRA>は"
+	line "もってきたみたいだね"
+	line "でもね <KATA>ロボポン<HIRA>こうかんは"
+	line "じゅんばんどおりに やるんだよ"
+	line "ほかの <KATA>ガールズ8<HIRA>との"
+	line "こうかんが さき みたいだね<KATA>"
+	done
 
 TreeBitstreamText_45abb:
-	ctxt "<HIRA>いまは <KATA>レイナ<HIRA>の しﾞゅんはﾞんたﾞね<KATA><TERM>"
+	ctxt "<HIRA>いまは <KATA>レイナ<HIRA>の じゅんばんだね<KATA>"
+	done
 
 TreeBitstreamText_45acc:
-	ctxt "<HIRA>いまは <KATA>ミカチ<HIRA>の しﾞゅんはﾞんたﾞね<KATA><TERM>"
+	ctxt "<HIRA>いまは <KATA>ミカチ<HIRA>の じゅんばんだね<KATA>"
+	done
 
 TreeBitstreamText_45add:
-	ctxt "<HIRA>いまは <KATA>マーヤ<HIRA>の しﾞゅんはﾞんたﾞね<KATA><TERM>"
+	ctxt "<HIRA>いまは <KATA>マーヤ<HIRA>の じゅんばんだね<KATA>"
+	done
 
 TreeBitstreamText_45aee:
-	ctxt "<HIRA>いまは <KATA>ユーコ<HIRA>の しﾞゅんはﾞんたﾞね<KATA><TERM>"
+	ctxt "<HIRA>いまは <KATA>ユーコ<HIRA>の じゅんばんだね<KATA>"
+	done
 
 TreeBitstreamText_45aff:
-	ctxt "<HIRA>いまは <KATA>リッツ<HIRA>の しﾞゅんはﾞんたﾞね<KATA><TERM>"
+	ctxt "<HIRA>いまは <KATA>リッツ<HIRA>の じゅんばんだね<KATA>"
+	done
 
 TreeBitstreamText_45b10:
-	ctxt "<HIRA>いまは ひろみの しﾞゅんはﾞんたﾞね<KATA><TERM>"
+	ctxt "<HIRA>いまは ひろみの じゅんばんだね<KATA>"
+	done
 
 TreeBitstreamText_45b20:
-	ctxt "<HIRA>いまは <KATA>ユキコ<HIRA>の しﾞゅんはﾞんたﾞね<KATA><TERM>"
+	ctxt "<HIRA>いまは <KATA>ユキコ<HIRA>の じゅんばんだね<KATA>"
+	done
 
 TreeBitstreamText_45b31:
-	ctxt "<HIRA>なそﾞのしﾞんふﾞつ<NL>"
-	ctxt "ようこそ <KATA>ハﾞートﾞ<HIRA>しﾞまへ<NL>"
-	ctxt "まさか また あえるとはなぁ……<NL>"
-	ctxt "おまえのほうから<NL>"
-	ctxt "こっちへ てﾞむいてくるとは<NL>"
-	ctxt "とんてﾞ ひにいる なつのむしとは<NL>"
-	ctxt "<KATA><STBF> <HIRA>おまえのことたﾞせﾞ!<NL>"
-	ctxt "<KATA>オレ<HIRA>さまは おまえをたおすために<NL>"
-	ctxt "しゅきﾞょうを つつﾞけてきた<NL>"
-	ctxt "<KATA>クﾞフフフ<NL>"
-	ctxt "<HIRA>こんとﾞは <KATA><STBF>₆₆<NL>"
-	ctxt "<HIRA>おまえかﾞ しゅきﾞょうするはﾞんたﾞ!<KATA><TERM>"
+	ctxt "<HIRA>なぞのじんぶつ"
+	line "ようこそ <KATA>バード<HIRA>じまへ"
+	line "まさか また あえるとはなぁ……"
+	line "おまえのほうから"
+	line "こっちへ でむいてくるとは"
+	line "とんで ひにいる なつのむしとは"
+	line "<KATA><PLAYER> <HIRA>おまえのことだぜ!"
+	line "<KATA>オレ<HIRA>さまは おまえをたおすために"
+	line "しゅぎょうを つづけてきた"
+	line "<KATA>グフフフ"
+	line "<HIRA>こんどは <KATA><PLAYER>……"
+	line "<HIRA>おまえが しゅぎょうするばんだ!<KATA>"
+	done
 
 TreeBitstreamText_45bb0:
-	ctxt "<HIRA>なそﾞのしﾞんふﾞつ<NL>"
-	ctxt "<KATA>クﾞフフフ<NL>"
-	ctxt "<NL>"
-	ctxt "<HIRA>とﾞうやら ふﾞしﾞに ここまてﾞ<NL>"
-	ctxt "たとﾞりついた みたいたﾞなぁ……<NL>"
-	ctxt "たﾞかﾞ しかし おまえの<NL>"
-	ctxt "あくうんも ここまてﾞたﾞ!<NL>"
-	ctxt "<KATA>オレ<HIRA>さまかﾞ <KATA>キッチリ<NL>"
-	ctxt "<HIRA>ととﾞめを さしてやるからな!<KATA><TERM>"
+	ctxt "<HIRA>なぞのじんぶつ"
+	line "<KATA>グフフフ"
+	line ""
+	line "<HIRA>どうやら ぶじに ここまで"
+	line "たどりついた みたいだなぁ……"
+	line "だが しかし おまえの"
+	line "あくうんも ここまでだ!"
+	line "<KATA>オレ<HIRA>さまが <KATA>キッチリ"
+	line "<HIRA>とどめを さしてやるからな!<KATA>"
+	done
 
 TreeBitstreamText_45c00:
-	ctxt "ヒﾞスコ<NL>"
-	ctxt "<HIRA>ちくしょう!<NL>"
-	ctxt "またまた まけた!<NL>"
-	ctxt "しﾞょうたﾞんしﾞゃねぇ!<NL>"
-	ctxt "せﾞったいに こんなはすﾞしﾞゃない!<NL>"
-	ctxt "おーしっ! もういちとﾞ<NL>"
-	ctxt "しゅきﾞょうの やりなおしたﾞ!<NL>"
-	ctxt "こんとﾞたﾞ こんとﾞこそ <KATA>コテンハﾟン<HIRA>の<NL>"
-	ctxt "<KATA>キﾞッチョンキﾞッチョン<HIRA>にしてやる<NL>"
-	ctxt "いいか!<NL>"
-	ctxt "おほﾞえてろよ!<KATA><TERM>"
+	ctxt "ビスコ"
+	line "<HIRA>ちくしょう!"
+	line "またまた まけた!"
+	line "じょうだんじゃねぇ!"
+	line "ぜったいに こんなはずじゃない!"
+	line "おーしっ! もういちど"
+	line "しゅぎょうの やりなおしだ!"
+	line "こんどだ こんどこそ <KATA>コテンパン<HIRA>の"
+	line "<KATA>ギッチョンギッチョン<HIRA>にしてやる"
+	line "いいか!"
+	line "おぼえてろよ!<KATA>"
+	done
 
 TreeBitstreamText_45c64:
-	ctxt "ホﾞンホﾞン<HIRA>とﾞくしゃ<KATA>テﾞサﾞイン<HIRA>の<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を てにいれた!<KATA><TERM>"
+	ctxt "ボンボン<HIRA>どくしゃ<KATA>デザイン<HIRA>の"
+	line "<KATA>ロボポン<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_45c80:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "おうっ おいらは<NL>"
-	ctxt "たﾞいくの <KATA>ケン<HIRA>って いう<KATA>モン<HIRA>てﾞい!<NL>"
-	ctxt "<KATA>カネ<HIRA>を くれたら いつてﾞも<NL>"
-	ctxt "<KATA>ヒﾞル<HIRA>を てﾞっかく してやるせﾞ!<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "おうっ おいらは"
+	line "だいくの <KATA>ケン<HIRA>って いう<KATA>モン<HIRA>でい!"
+	line "<KATA>カネ<HIRA>を くれたら いつでも"
+	line "<KATA>ビル<HIRA>を でっかく してやるぜ!<KATA>"
+	done
 
 TreeBitstreamText_45cb9:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "おうっ <KATA>カネ <HIRA>もってるな<NL>"
-	ctxt "そﾞうちく たのむって かい?<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "おうっ <KATA>カネ <HIRA>もってるな"
+	line "ぞうちく たのむって かい?<KATA>"
+	done
 
 TreeBitstreamText_45cd8:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "なんてﾞい <KATA>カネ <HIRA>もってないのかい?<NL>"
-	ctxt "それしﾞゃあ そﾞうちくは てﾞきないせﾞ<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "なんでい <KATA>カネ <HIRA>もってないのかい?"
+	line "それじゃあ ぞうちくは できないぜ<KATA>"
+	done
 
 TreeBitstreamText_45cff:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "そうかい きかﾞ かわったら<NL>"
-	ctxt "いつてﾞも こいってんたﾞ<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "そうかい きが かわったら"
+	line "いつでも こいってんだ<KATA>"
+	done
 
 TreeBitstreamText_45d1c:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "おいら とっても きけﾞんかﾞいいから<NL>"
-	ctxt "いまなら やすく しとくせﾞ<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "おいら とっても きげんがいいから"
+	line "いまなら やすく しとくぜ<KATA>"
+	done
 
 TreeBitstreamText_45d3d:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "<KATA>チャッチャ<HIRA>と おわらせるせﾞ<NL>"
-	ctxt "おいらの うてﾞの みせとﾞころてﾞい<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "<KATA>チャッチャ<HIRA>と おわらせるぜ"
+	line "おいらの うでの みせどころでい<KATA>"
+	done
 
 TreeBitstreamText_45d61:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "なんてﾞい おいら ふきけﾞんなんたﾞ<NL>"
-	ctxt "<KATA>ホﾞッ<HIRA>たくってやるのさー<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "なんでい おいら ふきげんなんだ"
+	line "<KATA>ボッ<HIRA>たくってやるのさー<KATA>"
+	done
 
 TreeBitstreamText_45d82:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "さぁて ちょっくら いってくるせﾞ<NL>"
-	ctxt "すくﾞに おわらせてやるせﾞい<NL>"
-	ctxt "<KATA>メシ<HIRA>てﾞも くって まってな!<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "さぁて ちょっくら いってくるぜ"
+	line "すぐに おわらせてやるぜい"
+	line "<KATA>メシ<HIRA>でも くって まってな!<KATA>"
+	done
 
 TreeBitstreamText_45db0:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "おぅ <KATA>オイラ<HIRA>かﾞつくった<KATA>ヒﾞル<NL>"
-	ctxt "<HIRA>きに いってくれたか?<NL>"
-	ctxt "もう これより たかく<NL>"
-	ctxt "そﾞうちく てﾞきねぇからな!<NL>"
-	ctxt "<KATA>キﾞフﾞアッフﾟ! <HIRA>まいった!<NL>"
-	ctxt "おいら たかいところ <KATA>タﾞメ<HIRA>なんたﾞよ<KATA>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "おぅ <KATA>オイラ<HIRA>がつくった<KATA>ビル"
+	line "<HIRA>きに いってくれたか?"
+	line "もう これより たかく"
+	line "ぞうちく できねぇからな!"
+	line "<KATA>ギブアップ! <HIRA>まいった!"
+	line "おいら たかいところ <KATA>ダメ<HIRA>なんだよ<KATA>"
 
 TreeBitstreamText_45dff:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "おぅ そういえはﾞよぉ<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>スホﾟロ<HIRA>のしﾞいさんかﾞ<NL>"
-	ctxt "おまえさんのこと よんてﾞたせﾞ<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "おぅ そういえばよぉ"
+	line ""
+	line "<KATA>スポロ<HIRA>のじいさんが"
+	line "おまえさんのこと よんでたぜ<KATA>"
+	done
 
 TreeBitstreamText_45e29:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "おう <KATA>ヒﾞル<HIRA>をそﾞうちくしといたせﾞ<NL>"
-	ctxt "ちょっと みてきな<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "おう <KATA>ビル<HIRA>をぞうちくしといたぜ"
+	line "ちょっと みてきな<KATA>"
+	done
 
 TreeBitstreamText_45e48:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "<KATA><STBF><HIRA>しゃちょう<NL>"
-	ctxt "おはようこﾞさﾞいます<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "<KATA><PLAYER><HIRA>しゃちょう"
+	line "おはようございます<KATA>"
+	done
 
 TreeBitstreamText_45e5d:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "<KATA><STBF><HIRA>しゃちょう<NL>"
-	ctxt "つうしんてﾞ あそふﾞのてﾞすね?<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "<KATA><PLAYER><HIRA>しゃちょう"
+	line "つうしんで あそぶのですね?<KATA>"
+	done
 
 TreeBitstreamText_45e76:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "こちらの へやは つうしんてﾞ<NL>"
-	ctxt "あそふﾞための へやてﾞす<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "こちらの へやは つうしんで"
+	line "あそぶための へやです<KATA>"
+	done
 
 TreeBitstreamText_45e91:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "<KATA>ハﾞトルシﾞェネシス5<HIRA>てﾞ<NL>"
-	ctxt "あそふﾞのてﾞすか?<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "<KATA>バトルジェネシス5<HIRA>で"
+	line "あそぶのですか?<KATA>"
+	done
 
 TreeBitstreamText_45eaa:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "とﾞうそﾞ たのしんてﾞきてくたﾞさい<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "どうぞ たのしんできてください<KATA>"
+	done
 
 TreeBitstreamText_45ebc:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "そうてﾞすか……<NL>"
-	ctxt "こんとﾞ せﾞひ いらしてくたﾞさいね<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "そうですか……"
+	line "こんど ぜひ いらしてくださいね<KATA>"
+	done
 
 TreeBitstreamText_45ed5:
-	ctxt "<HIRA>うけつけ<NL>"
-	ctxt "このさきへは<NL>"
-	ctxt "またﾞ はいれません!<KATA><TERM>"
+	ctxt "<HIRA>うけつけ"
+	line "このさきへは"
+	line "まだ はいれません!<KATA>"
+	done
 
 TreeBitstreamText_45ee8:
-	ctxt "<HIRA>やぁ <KATA>ホﾞク <HIRA>かいてーしﾞん!<NL>"
-	ctxt "<NL>"
-	ctxt "せﾞんこくかくちに ちらはﾞった<NL>"
-	ctxt "なかまを さかﾞしているんたﾞ!<NL>"
-	ctxt "おもいてﾞの<KATA>カケラ<HIRA>かﾞあれはﾞなぁ……<KATA><TERM>"
+	ctxt "<HIRA>やぁ <KATA>ボク <HIRA>かいてーじん!"
+	line ""
+	line "ぜんこくかくちに ちらばった"
+	line "なかまを さがしているんだ!"
+	line "おもいでの<KATA>カケラ<HIRA>があればなぁ……<KATA>"
+	done
 
 TreeBitstreamText_45f1d:
-	ctxt "<HIRA>うーん それはさﾞんねん<KATA><TERM>"
+	ctxt "<HIRA>うーん それはざんねん<KATA>"
+	done
 
 TreeBitstreamText_45f28:
-	ctxt "<HIRA>あっ! おもいてﾞの<KATA>カケラ!<NL>"
-	ctxt "<HIRA>それちょーたﾞい!<KATA><TERM>"
+	ctxt "<HIRA>あっ! おもいでの<KATA>カケラ!"
+	line "<HIRA>それちょーだい!<KATA>"
+	done
 
 TreeBitstreamText_45f3d:
-	ctxt "₆₆₆₆₆₆<HIRA>みんなけﾞんきそうたﾞね<NL>"
-	ctxt "ありかﾞとう あんしんしたよ<KATA><TERM>"
+	ctxt "………………<HIRA>みんなげんきそうだね"
+	line "ありがとう あんしんしたよ<KATA>"
+	done
 
 TreeBitstreamText_45f56:
-	ctxt "<HIRA>みんなのおもいてﾞ みせてもらったよ<NL>"
-	ctxt "ありかﾞとう まんそﾞくしたよ<NL>"
-	ctxt "おれいをさせてくれないかな?<NL>"
-	ctxt "おもいてﾞのゆひﾞわを もらってよ<KATA><TERM>"
+	ctxt "<HIRA>みんなのおもいで みせてもらったよ"
+	line "ありがとう まんぞくしたよ"
+	line "おれいをさせてくれないかな?"
+	line "おもいでのゆびわを もらってよ<KATA>"
+	done
 
 TreeBitstreamText_45f88:
-	ctxt "<HIRA>おもいてﾞのゆひﾞわ<NL>"
-	ctxt "を てにいれた!<KATA><TERM>"
+	ctxt "<HIRA>おもいでのゆびわ"
+	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_45f98:
-	ctxt "<HIRA>あっそうたﾞ そのゆひﾞわ<NL>"
-	ctxt "ちょうろうに みせてくれないかな?<NL>"
-	ctxt "にんけﾞんきﾞらいの ちょうろうも<NL>"
-	ctxt "きっとよろこんてﾞくれるよ<KATA><TERM>"
+	ctxt "<HIRA>あっそうだ そのゆびわ"
+	line "ちょうろうに みせてくれないかな?"
+	line "にんげんぎらいの ちょうろうも"
+	line "きっとよろこんでくれるよ<KATA>"
+	done
 
 TreeBitstreamText_45fc8:
-	ctxt "<HIRA>おもいてﾞの<KATA>カケラ<NL>"
-	ctxt "<HIRA>を わたした<KATA><TERM>"
+	ctxt "<HIRA>おもいでの<KATA>カケラ"
+	line "<HIRA>を わたした<KATA>"
+	done
 
 TreeBitstreamText_45fd7:
-	ctxt "<HIRA>なかまと はくﾞれたけとﾞ<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>は けﾞんきたﾞよ<KATA><TERM>"
+	ctxt "<HIRA>なかまと はぐれたけど"
+	line "<KATA>ボク<HIRA>は げんきだよ<KATA>"
+	done
 
 TreeBitstreamText_45fec:
-	ctxt "<HIRA>みせてあけﾞるよ! ほﾞくのおもいてﾞ!<KATA><TERM>"
+	ctxt "<HIRA>みせてあげるよ! ぼくのおもいで!<KATA>"
+	done
 
 TreeBitstreamText_45ffd:
-	ctxt "<HIRA>おもいてﾞの<KATA>カケラ<NL>"
-	ctxt "<HIRA>を てにいれた!<KATA><TERM>"
+	ctxt "<HIRA>おもいでの<KATA>カケラ"
+	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_4600d:
-	ctxt "<HIRA>やぁ! こんにちは<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>キミ<HIRA>のもっている <KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "なまえを かえてあけﾞようか?<KATA><TERM>"
+	ctxt "<HIRA>やぁ! こんにちは"
+	line ""
+	line "<KATA>キミ<HIRA>のもっている <KATA>ロボポン<HIRA>の"
+	line "なまえを かえてあげようか?<KATA>"
+	done
 
 TreeBitstreamText_46031:
-	ctxt "<HIRA>しﾞゃあ すきな なまえを<NL>"
-	ctxt "いれてね<KATA><TERM>"
+	ctxt "<HIRA>じゃあ すきな なまえを"
+	line "いれてね<KATA>"
+	done
 
 TreeBitstreamText_46040:
-	ctxt "<HIRA>そっか<NL>"
-	ctxt "きかﾞ むいたら またきてね<KATA><TERM>"
+	ctxt "<HIRA>そっか"
+	line "きが むいたら またきてね<KATA>"
+	done
 
 TreeBitstreamText_4604f:
 	ctxt "<HIRA>また きてね!<KATA>"
 
 TreeBitstreamText_46056:
-	ctxt "<HIRA>ここは <KATA>ハﾟーティー<HIRA>のはけんしﾞょたﾞ<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>の はけんの しかたを<NL>"
-	ctxt "おしえるから よく ききな<NL>"
-	ctxt "ますﾞ そうこのなかにいる <KATA>ロホﾞホﾟン<HIRA>を<NL>"
-	ctxt "4たい ひとくみの <KATA>ハﾟーティ<HIRA>にする<NL>"
-	ctxt "<KATA>ハﾟーティ<HIRA>を はけんする はﾞしょ と<NL>"
-	ctxt "はけんする しﾞかんを きめる<NL>"
-	ctxt "それてﾞ しﾞゅんひﾞは かんりょう!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ハﾟーティ<HIRA>の <KATA>ロホﾞホﾟン<HIRA>たちは<NL>"
-	ctxt "しゅきﾞょうのたひﾞに てﾞるんたﾞ!<NL>"
-	ctxt "たひﾞにてﾞた <KATA>ハﾟーティ<HIRA>は たひﾞさきてﾞ<NL>"
-	ctxt "しゅきﾞょうを つんてﾞくるそﾞ!<NL>"
-	ctxt "<KATA>レヘﾞルアッフﾟ<HIRA>したり <KATA>アイテム<HIRA>を<NL>"
-	ctxt "みつけたりして かえってくるんたﾞ!<NL>"
-	ctxt "てﾞも あいてかﾞ つよい はﾞしょたﾞと<NL>"
-	ctxt "しっはﾟいして くることもある……<NL>"
-	ctxt "<KATA>ハﾟーティ<HIRA>かﾞ かえってきたときには<NL>"
-	ctxt "<KATA>スヒﾟーカー<HIRA>てﾞ おしらせするせﾞ!<NL>"
-	ctxt "とﾞうしﾞに 3<KATA>ハﾟーティ<HIRA>まてﾞ<NL>"
-	ctxt "はけんに たﾞすことかﾞ てﾞきるせﾞ!<KATA><TERM>"
+	ctxt "<HIRA>ここは <KATA>パーティー<HIRA>のはけんじょだ"
+	line ""
+	line "<KATA>ロボポン<HIRA>の はけんの しかたを"
+	line "おしえるから よく ききな"
+	line "まず そうこのなかにいる <KATA>ロボポン<HIRA>を"
+	line "4たい ひとくみの <KATA>パーティ<HIRA>にする"
+	line "<KATA>パーティ<HIRA>を はけんする ばしょ と"
+	line "はけんする じかんを きめる"
+	line "それで じゅんびは かんりょう!"
+	line ""
+	line "<KATA>パーティ<HIRA>の <KATA>ロボポン<HIRA>たちは"
+	line "しゅぎょうのたびに でるんだ!"
+	line "たびにでた <KATA>パーティ<HIRA>は たびさきで"
+	line "しゅぎょうを つんでくるぞ!"
+	line "<KATA>レベルアップ<HIRA>したり <KATA>アイテム<HIRA>を"
+	line "みつけたりして かえってくるんだ!"
+	line "でも あいてが つよい ばしょだと"
+	line "しっぱいして くることもある……"
+	line "<KATA>パーティ<HIRA>が かえってきたときには"
+	line "<KATA>スピーカー<HIRA>で おしらせするぜ!"
+	line "どうじに 3<KATA>パーティ<HIRA>まで"
+	line "はけんに だすことが できるぜ!<KATA>"
+	done
 
 TreeBitstreamText_46175:
-	ctxt "エレヘﾞーター<HIRA>かﾞ てﾞきたよ!<KATA><TERM>"
+	ctxt "エレベーター<HIRA>が できたよ!<KATA>"
+	done
 
 TreeBitstreamText_46183:
-	ctxt "アイテム<HIRA>やかﾞ てﾞきたよ!<KATA><TERM>"
+	ctxt "アイテム<HIRA>やが できたよ!<KATA>"
+	done
 
 TreeBitstreamText_4618f:
-	ctxt "ハﾟーツ<HIRA>やかﾞ てﾞきたよ!<KATA><TERM>"
+	ctxt "パーツ<HIRA>やが できたよ!<KATA>"
+	done
 
 TreeBitstreamText_4619b:
-	ctxt "<HIRA>けんきゅうしﾞょかﾞ てﾞきたよ!<KATA><TERM>"
+	ctxt "<HIRA>けんきゅうじょが できたよ!<KATA>"
+	done
 
 TreeBitstreamText_461a9:
-	ctxt "<HIRA>なまえやかﾞ てﾞきたよ!<KATA><TERM>"
+	ctxt "<HIRA>なまえやが できたよ!<KATA>"
+	done
 
 TreeBitstreamText_461b4:
-	ctxt "<HIRA>はけんしﾞょかﾞ てﾞきたよ!<KATA>"
+	ctxt "<HIRA>はけんじょが できたよ!<KATA>"
 
 TreeBitstreamText_461c0:
-	ctxt "ハﾞトルシﾞェネシス5<HIRA>は とﾞれも<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>を つかった <KATA>ハﾞトル<HIRA>たﾞ<NL>"
-	ctxt "ということは とうせﾞん <KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "のうりょくかﾞ たﾞいしﾞ たﾞよな<NL>"
-	ctxt "<KATA>レヘﾞル<HIRA>に <KATA>チッフﾟ<HIRA>に しゅそﾞく<NL>"
-	ctxt "<KATA>ハッキリ<HIRA>いって あとは うんたﾞな<KATA><TERM>"
+	ctxt "バトルジェネシス5<HIRA>は どれも"
+	line "<KATA>ロボポン<HIRA>を つかった <KATA>バトル<HIRA>だ"
+	line "ということは とうぜん <KATA>ロボポン<HIRA>の"
+	line "のうりょくが だいじ だよな"
+	line "<KATA>レベル<HIRA>に <KATA>チップ<HIRA>に しゅぞく"
+	line "<KATA>ハッキリ<HIRA>いって あとは うんだな<KATA>"
+	done
 
 TreeBitstreamText_46218:
-	ctxt "ヨンクー<NL>"
-	ctxt "スヒﾟータﾞー<HIRA>は すはﾞやさかﾞ<NL>"
-	ctxt "いちはﾞん しﾞゅうようたﾞそﾞ<NL>"
-	ctxt "めいろを より はやく<KATA>コﾞール<HIRA>に<NL>"
-	ctxt "たとﾞりついた ほうかﾞ かちたﾞ<NL>"
-	ctxt "<KATA>タイミンクﾞ<HIRA>よく <KATA>スタート<HIRA>する<NL>"
-	ctxt "ことかﾞ しﾞゅうようたﾞそﾞ<NL>"
-	ctxt "すはﾞやさのたかい <KATA>ムーフﾞ<HIRA>そﾞくかﾞ<NL>"
-	ctxt "ひかくてき ゆうりたﾞせﾞ<NL>"
-	ctxt "やってみるかい?<KATA><TERM>"
+	ctxt "ヨンクー"
+	line "スピーダー<HIRA>は すばやさが"
+	line "いちばん じゅうようだぞ"
+	line "めいろを より はやく<KATA>ゴール<HIRA>に"
+	line "たどりついた ほうが かちだ"
+	line "<KATA>タイミング<HIRA>よく <KATA>スタート<HIRA>する"
+	line "ことが じゅうようだぞ"
+	line "すばやさのたかい <KATA>ムーブ<HIRA>ぞくが"
+	line "ひかくてき ゆうりだぜ"
+	line "やってみるかい?<KATA>"
+	done
 
 TreeBitstreamText_46285:
-	ctxt "ヨンクー<NL>"
-	ctxt "<HIRA>そうかい……<NL>"
-	ctxt "また きなよ<KATA><TERM>"
+	ctxt "ヨンクー"
+	line "<HIRA>そうかい……"
+	line "また きなよ<KATA>"
+	done
 
 TreeBitstreamText_46294:
-	ctxt "ヨンクー<NL>"
-	ctxt "<HIRA>なかなか やるね<KATA><TERM>"
+	ctxt "ヨンクー"
+	line "<HIRA>なかなか やるね<KATA>"
+	done
 
 TreeBitstreamText_462a0:
-	ctxt "ロホﾞ<HIRA>まる<NL>"
-	ctxt "<KATA>ハﾟンチャー<HIRA>は <KATA>ハﾟンチ<HIRA>りょくを<NL>"
-	ctxt "きそう<KATA>ハﾞトル<HIRA>たﾞよ!<NL>"
-	ctxt "<KATA>ハﾟンチンクﾞマシーン<HIRA>のうえてﾞ<NL>"
-	ctxt "かいてんするすうしﾞを<NL>"
-	ctxt "たかいすうしﾞてﾞ とめるほとﾞ<NL>"
-	ctxt "いりょくかﾞ たかくなるよ<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>みたいな <KATA>アーム<HIRA>そﾞくかﾞ<NL>"
-	ctxt "<KATA>ハﾟンチャー<HIRA>には ゆうりたﾞよ<NL>"
-	ctxt "しょうふﾞしてみる?<KATA>"
+	ctxt "ロボ<HIRA>まる"
+	line "<KATA>パンチャー<HIRA>は <KATA>パンチ<HIRA>りょくを"
+	line "きそう<KATA>バトル<HIRA>だよ!"
+	line "<KATA>パンチングマシーン<HIRA>のうえで"
+	line "かいてんするすうじを"
+	line "たかいすうじで とめるほど"
+	line "いりょくが たかくなるよ"
+	line "<KATA>ボク<HIRA>みたいな <KATA>アーム<HIRA>ぞくが"
+	line "<KATA>パンチャー<HIRA>には ゆうりだよ"
+	line "しょうぶしてみる?<KATA>"
 
 TreeBitstreamText_4630b:
-	ctxt "ロホﾞ<HIRA>まる<NL>"
-	ctxt "それしﾞゃあ またこんとﾞ<NL>"
-	ctxt "しょうふﾞしようよ<KATA><TERM>"
+	ctxt "ロボ<HIRA>まる"
+	line "それじゃあ またこんど"
+	line "しょうぶしようよ<KATA>"
+	done
 
 TreeBitstreamText_46322:
-	ctxt "ロホﾞ<HIRA>まる<NL>"
-	ctxt "<KATA>キミ<HIRA>は つよいね<KATA><TERM>"
+	ctxt "ロボ<HIRA>まる"
+	line "<KATA>キミ<HIRA>は つよいね<KATA>"
+	done
 
 TreeBitstreamText_46330:
-	ctxt "ハﾞクﾞエル<NL>"
-	ctxt "シールタﾞー<HIRA>は ほﾞうきﾞょりょく と<NL>"
-	ctxt "うん かﾞ ものをいう <KATA>ハﾞトル<HIRA>たﾞせﾞ!<NL>"
-	ctxt "ますﾞ 6まいの<KATA>カートﾞ<HIRA>の なかから<NL>"
-	ctxt "すきな<KATA>カートﾞ<HIRA>を 1まい ひく!<NL>"
-	ctxt "<KATA>カートﾞ<HIRA>には しﾞふﾞんに あたえる<NL>"
-	ctxt "<KATA>タﾞメーシﾞ<HIRA>かﾞ かかれてあるんたﾞ<NL>"
-	ctxt "さきに <KATA>ヒットホﾟイント<HIRA>かﾞ<NL>"
-	ctxt "0になった ほうかﾞ まけたﾞ!<NL>"
-	ctxt "よしっ! しょうふﾞしようせﾞ!<KATA><TERM>"
+	ctxt "バグエル"
+	line "シールダー<HIRA>は ぼうぎょりょく と"
+	line "うん が ものをいう <KATA>バトル<HIRA>だぜ!"
+	line "まず 6まいの<KATA>カード<HIRA>の なかから"
+	line "すきな<KATA>カード<HIRA>を 1まい ひく!"
+	line "<KATA>カード<HIRA>には じぶんに あたえる"
+	line "<KATA>ダメージ<HIRA>が かかれてあるんだ"
+	line "さきに <KATA>ヒットポイント<HIRA>が"
+	line "0になった ほうが まけだ!"
+	line "よしっ! しょうぶしようぜ!<KATA>"
+	done
 
 TreeBitstreamText_463ad:
-	ctxt "ハﾞクﾞエル<NL>"
-	ctxt "<HIRA>えっ!!<NL>"
-	ctxt "そんなあ しょうふﾞしようせﾞ!<KATA><TERM>"
+	ctxt "バグエル"
+	line "<HIRA>えっ!!"
+	line "そんなあ しょうぶしようぜ!<KATA>"
+	done
 
 TreeBitstreamText_463c3:
-	ctxt "ハﾞクﾞエル<NL>"
-	ctxt "<HIRA>くっそー<NL>"
-	ctxt "つきﾞは まけないからな!<KATA><TERM>"
+	ctxt "バグエル"
+	line "<HIRA>くっそー"
+	line "つぎは まけないからな!<KATA>"
+	done
 
 TreeBitstreamText_463d7:
-	ctxt "トリヘﾟル<NL>"
-	ctxt "シﾞャンハﾟー<HIRA>は より とおくへ<NL>"
-	ctxt "とんたﾞほうかﾞ かちになる<KATA>ハﾞトル<HIRA>たﾞ<NL>"
-	ctxt "<KATA>スキー<HIRA>の<KATA>シﾞャンフﾟ <HIRA>みたいな<KATA>ハﾞトル<NL>"
-	ctxt "<HIRA>と おもえはﾞ わかりやすいかな<NL>"
-	ctxt "<KATA>シﾞャンフﾟ<HIRA>している さいちゅうに<NL>"
-	ctxt "<KATA>ホﾞタン<HIRA>を れんたﾞするのたﾞ!<NL>"
-	ctxt "つうしﾞょうの <KATA>シﾞャンフﾟ<HIRA>よりも<NL>"
-	ctxt "ひきょりかﾞ <KATA>クﾞン<HIRA>と のひﾞるよ<NL>"
-	ctxt "そらをとへﾞる<KATA>ロホﾞホﾟン<HIRA>のほうかﾞ<NL>"
-	ctxt "よりとおくへ とへﾞるんたﾞ<NL>"
-	ctxt "やってみる?<KATA><TERM>"
+	ctxt "トリペル"
+	line "ジャンパー<HIRA>は より とおくへ"
+	line "とんだほうが かちになる<KATA>バトル<HIRA>だ"
+	line "<KATA>スキー<HIRA>の<KATA>ジャンプ <HIRA>みたいな<KATA>バトル"
+	line "<HIRA>と おもえば わかりやすいかな"
+	line "<KATA>ジャンプ<HIRA>している さいちゅうに"
+	line "<KATA>ボタン<HIRA>を れんだするのだ!"
+	line "つうじょうの <KATA>ジャンプ<HIRA>よりも"
+	line "ひきょりが <KATA>グン<HIRA>と のびるよ"
+	line "そらをとべる<KATA>ロボポン<HIRA>のほうが"
+	line "よりとおくへ とべるんだ"
+	line "やってみる?<KATA>"
+	done
 
 TreeBitstreamText_4646b:
-	ctxt "トリヘﾟル<NL>"
-	ctxt "<HIRA>そらをとふﾞのは<NL>"
-	ctxt "きもち いいのに……<KATA><TERM>"
+	ctxt "トリペル"
+	line "<HIRA>そらをとぶのは"
+	line "きもち いいのに……<KATA>"
+	done
 
 TreeBitstreamText_46480:
-	ctxt "トリヘﾟル<NL>"
-	ctxt "<HIRA>こんとﾞは まけないよ!<NL>"
-	ctxt "また あそほﾞうね<KATA><TERM>"
+	ctxt "トリペル"
+	line "<HIRA>こんどは まけないよ!"
+	line "また あそぼうね<KATA>"
+	done
 
 TreeBitstreamText_46496:
-	ctxt "ムサシ<NL>"
-	ctxt "ハﾞトラー<HIRA>は <KATA>ホﾞスハﾞトル<HIRA>と<NL>"
-	ctxt "おなしﾞてﾞこﾞさﾞる<NL>"
-	ctxt "<KATA>レヘﾞル チッフﾟ ハﾟーツ ソフト<NL>"
-	ctxt "<HIRA>すへﾞてのようそを きわめる!<NL>"
-	ctxt "きほんちゅうの きほんの<KATA>ハﾞトル!<NL>"
-	ctxt "<HIRA>さあ さいきょうを めさﾞせ!<NL>"
-	ctxt "さあ せっしゃと<NL>"
-	ctxt "たたかってみるか?<KATA><TERM>"
+	ctxt "ムサシ"
+	line "バトラー<HIRA>は <KATA>ボスバトル<HIRA>と"
+	line "おなじでござる"
+	line "<KATA>レベル チップ パーツ ソフト"
+	line "<HIRA>すべてのようそを きわめる!"
+	line "きほんちゅうの きほんの<KATA>バトル!"
+	line "<HIRA>さあ さいきょうを めざせ!"
+	line "さあ せっしゃと"
+	line "たたかってみるか?<KATA>"
+	done
 
 TreeBitstreamText_464f1:
-	ctxt "ムサシ<NL>"
-	ctxt "<HIRA>そうか それはさﾞんねん<KATA><TERM>"
+	ctxt "ムサシ"
+	line "<HIRA>そうか それはざんねん<KATA>"
+	done
 
 TreeBitstreamText_464ff:
-	ctxt "ムサシ<NL>"
-	ctxt "<HIRA>おぬし なかなかやるな!<KATA>"
+	ctxt "ムサシ"
+	line "<HIRA>おぬし なかなかやるな!<KATA>"
 
 TreeBitstreamText_4650d:
-	ctxt "   <HIRA>ようこそ <KATA>カフﾟリ<HIRA>むらへ<KATA><TERM>"
+	ctxt "   <HIRA>ようこそ <KATA>カプリ<HIRA>むらへ<KATA>"
+	done
 
 TreeBitstreamText_4651c:
-	ctxt "<HIRA>ここは けんきゅう かﾞくえん とし<NL>"
-	ctxt "きれいてﾞ すみよい <KATA>リフﾞラ<HIRA>のまち<KATA><TERM>"
+	ctxt "<HIRA>ここは けんきゅう がくえん とし"
+	line "きれいで すみよい <KATA>リブラ<HIRA>のまち<KATA>"
+	done
 
 TreeBitstreamText_4653a:
-	ctxt "   <HIRA>このさき <KATA>リフﾞラ<HIRA>かﾞっこう<KATA><TERM>"
+	ctxt "   <HIRA>このさき <KATA>リブラ<HIRA>がっこう<KATA>"
+	done
 
 TreeBitstreamText_46549:
-	ctxt "     リフﾞラ<HIRA>かﾞっこう<KATA><TERM>"
+	ctxt "     リブラ<HIRA>がっこう<KATA>"
+	done
 
 TreeBitstreamText_46554:
-	ctxt "   <HIRA>れきしと ふﾞんかの まち<NL>"
-	ctxt "   <KATA>テール <HIRA>しﾞょうか まち<KATA><TERM>"
+	ctxt "   <HIRA>れきしと ぶんかの まち"
+	line "   <KATA>テール <HIRA>じょうか まち<KATA>"
+	done
 
 TreeBitstreamText_4656c:
-	ctxt "   ロホﾞホﾟントﾞーム <HIRA>いりくﾞち<KATA><TERM>"
+	ctxt "   ロボポンドーム <HIRA>いりぐち<KATA>"
+	done
 
 TreeBitstreamText_4657c:
-	ctxt "   <HIRA>このさき <KATA>テール<HIRA>しﾞょう<NL>"
-	ctxt "  いっはﾟんしﾞんは はいれません<KATA><TERM>"
+	ctxt "   <HIRA>このさき <KATA>テール<HIRA>じょう"
+	line "  いっぱんじんは はいれません<KATA>"
+	done
 
 TreeBitstreamText_46596:
-	ctxt "   <HIRA>ここは <KATA>ロホﾞホﾟントﾞーム<TERM>"
+	ctxt "   <HIRA>ここは <KATA>ロボポンドーム"
+	done
 
 TreeBitstreamText_465a4:
-	ctxt "      テール<HIRA>しﾞょう<KATA><TERM>"
+	ctxt "      テール<HIRA>じょう<KATA>"
+	done
 
 TreeBitstreamText_465ae:
-	ctxt "カンテラ<HIRA>や<KATA><TERM>"
+	ctxt "カンテラ<HIRA>や<KATA>"
+	done
 
 TreeBitstreamText_465b4:
-	ctxt "<HIRA>ようこそ!<NL>"
-	ctxt "<KATA>アンテナ<HIRA>の さと <KATA>カリーユ<HIRA>まちへ!<KATA><TERM>"
+	ctxt "<HIRA>ようこそ!"
+	line "<KATA>アンテナ<HIRA>の さと <KATA>カリーユ<HIRA>まちへ!<KATA>"
+	done
 
 TreeBitstreamText_465ca:
-	ctxt "   <HIRA>りょうしの むら <KATA>ハﾞンサﾞ<TERM>"
+	ctxt "   <HIRA>りょうしの むら <KATA>バンザ"
+	done
 
 TreeBitstreamText_465d8:
-	ctxt "   <HIRA>ここは さはﾞくの<KATA>オアシス<NL>"
-	ctxt "       キャロル"
+	ctxt "   <HIRA>ここは さばくの<KATA>オアシス"
+	line "       キャロル"
 
 TreeBitstreamText_465ec:
-	ctxt "       <HIRA>おねかﾞい<NL>"
-	ctxt "<NL>"
-	ctxt " ほﾞうそう こういは きけんなのてﾞ<NL>"
-	ctxt " やめましょう   <KATA>クールス<HIRA>まち<KATA><TERM>"
+	ctxt "       <HIRA>おねがい"
+	line ""
+	line " ぼうそう こういは きけんなので"
+	line " やめましょう   <KATA>クールス<HIRA>まち<KATA>"
+	done
 
 TreeBitstreamText_46610:
-	ctxt "    <HIRA>けわしさ <KATA>ハﾞクハツ!<NL>"
-	ctxt "           クﾞリース<HIRA>やま<KATA><TERM>"
+	ctxt "    <HIRA>けわしさ <KATA>バクハツ!"
+	line "           グリース<HIRA>やま<KATA>"
+	done
 
 TreeBitstreamText_46629:
-	ctxt "  サンタﾞートﾞーム<HIRA>へ <KATA>ウェルカム!<NL>"
-	ctxt "        リータﾞー ワイルトﾞ<TERM>"
+	ctxt "  サンダードーム<HIRA>へ <KATA>ウェルカム!"
+	line "        リーダー ワイルド"
+	done
 
 TreeBitstreamText_46645:
-	ctxt "<HIRA>にゅうたい うけつけしﾞょ<KATA><TERM>"
+	ctxt "<HIRA>にゅうたい うけつけじょ<KATA>"
+	done
 
 TreeBitstreamText_46651:
-	ctxt "<HIRA>ここ <KATA>タﾞイン<HIRA>まち なら<NL>"
-	ctxt "せんそうかﾞ おきても あんしん<KATA><TERM>"
+	ctxt "<HIRA>ここ <KATA>ダイン<HIRA>まち なら"
+	line "せんそうが おきても あんしん<KATA>"
+	done
 
 TreeBitstreamText_46668:
-	ctxt "<HIRA>もとむ! わかくて <KATA>タフ<HIRA>な<NL>"
-	ctxt "いろおとこ<NL>"
-	ctxt "<KATA>アホﾟロ<HIRA>ようさい かんりきょく<KATA><TERM>"
+	ctxt "<HIRA>もとむ! わかくて <KATA>タフ<HIRA>な"
+	line "いろおとこ"
+	line "<KATA>アポロ<HIRA>ようさい かんりきょく<KATA>"
+	done
 
 TreeBitstreamText_46686:
-	ctxt "ヒﾞックﾞヒット<HIRA>の うらには<NL>"
-	ctxt "<KATA>ヒﾞックﾞ<HIRA>な おとしあなも ある<NL>"
-	ctxt "つりは しﾞんせいと にてる<NL>"
-	ctxt "          つり せんにん<KATA><TERM>"
+	ctxt "ビッグヒット<HIRA>の うらには"
+	line "<KATA>ビッグ<HIRA>な おとしあなも ある"
+	line "つりは じんせいと にてる"
+	line "          つり せんにん<KATA>"
+	done
 
 TreeBitstreamText_466b3:
-	ctxt "<HIRA>たかい <KATA>エサ<HIRA>を つかってみても<NL>"
-	ctxt "いいことはﾞかり とは かきﾞらない<NL>"
-	ctxt "しﾞんせいも たふﾞん そう<NL>"
-	ctxt "          つり せんにん<KATA><TERM>"
+	ctxt "<HIRA>たかい <KATA>エサ<HIRA>を つかってみても"
+	line "いいことばかり とは かぎらない"
+	line "じんせいも たぶん そう"
+	line "          つり せんにん<KATA>"
+	done
 
 TreeBitstreamText_466e2:
-	ctxt "   <HIRA>はﾞくたﾞんの まち <KATA>カﾞーナ<TERM>"
+	ctxt "   <HIRA>ばくだんの まち <KATA>ガーナ"
+	done
 
 TreeBitstreamText_466f0:
-	ctxt "  <HIRA>ようこそ <KATA>セﾞロキャッスル<HIRA>へ<KATA>"
+	ctxt "  <HIRA>ようこそ <KATA>ゼロキャッスル<HIRA>へ<KATA>"
 
 TreeBitstreamText_466ff:
-	ctxt "   <HIRA>ここは <KATA>コﾞルトﾞ<HIRA>へいけﾞん<KATA><TERM>"
+	ctxt "   <HIRA>ここは <KATA>ゴルド<HIRA>へいげん<KATA>"
+	done
 
 TreeBitstreamText_4670e:
-	ctxt "    オワリ<HIRA>の もり<KATA><TERM>"
+	ctxt "    オワリ<HIRA>の もり<KATA>"
+	done
 
 TreeBitstreamText_46718:
-	ctxt "    <HIRA>かいてーしﾞんの むら<NL>"
-	ctxt "        <KATA>ホﾟロ<TERM>"
+	ctxt "    <HIRA>かいてーじんの むら"
+	line "        <KATA>ポロ"
+	done
 
 TreeBitstreamText_4672b:
-	ctxt "     <HIRA>まるてﾞ けﾞんしﾞつ<NL>"
-	ctxt "      まほﾞろしむら<KATA><TERM>"
+	ctxt "     <HIRA>まるで げんじつ"
+	line "      まぼろしむら<KATA>"
+	done
 
 TreeBitstreamText_46740:
-	ctxt "   アミュースﾞメント <HIRA>とﾞうくつ<NL>"
-	ctxt "     まほﾞろし<KATA>タﾞンシﾞョン<NL>"
-	ctxt "<HIRA>たいちょう たいりょく あたま<NL>"
-	ctxt "うん こんしﾞょー こうきしん<NL>"
-	ctxt "なとﾞの すくﾞれない かたは<NL>"
-	ctxt "こﾞえんりょ くたﾞさい   <KATA>マスター<TERM>"
+	ctxt "   アミューズメント <HIRA>どうくつ"
+	line "     まぼろし<KATA>ダンジョン"
+	line "<HIRA>たいちょう たいりょく あたま"
+	line "うん こんじょー こうきしん"
+	line "などの すぐれない かたは"
+	line "ごえんりょ ください   <KATA>マスター"
+	done
 
 TreeBitstreamText_46788:
-	ctxt "   <HIRA>ここは <KATA>エラフﾞー<HIRA>とﾞうくつ<NL>"
-	ctxt "  ちか3かいに ちていこ あり<NL>"
-	ctxt "つりひﾞとは らくせきに ちゅうい<NL>"
-	ctxt "          つり せんにん<KATA><TERM>"
+	ctxt "   <HIRA>ここは <KATA>エラブー<HIRA>どうくつ"
+	line "  ちか3かいに ちていこ あり"
+	line "つりびとは らくせきに ちゅうい"
+	line "          つり せんにん<KATA>"
+	done
 
 TreeBitstreamText_467bb:
-	ctxt "リフﾞラ<HIRA>かﾞっこう 1かい<KATA><TERM>"
+	ctxt "リブラ<HIRA>がっこう 1かい<KATA>"
+	done
 
 TreeBitstreamText_467c7:
-	ctxt "リフﾞラ<HIRA>かﾞっこう 2かい<KATA><TERM>"
+	ctxt "リブラ<HIRA>がっこう 2かい<KATA>"
+	done
 
 TreeBitstreamText_467d3:
-	ctxt "リフﾞラ<HIRA>かﾞっこう 3かい<KATA><TERM>"
+	ctxt "リブラ<HIRA>がっこう 3かい<KATA>"
+	done
 
 TreeBitstreamText_467df:
-	ctxt "リフﾞラ<HIRA>かﾞっこう 4かい<KATA><TERM>"
+	ctxt "リブラ<HIRA>がっこう 4かい<KATA>"
+	done
 
 TreeBitstreamText_467eb:
-	ctxt "リフﾞラ<HIRA>かﾞっこう 5かい<KATA><TERM>"
+	ctxt "リブラ<HIRA>がっこう 5かい<KATA>"
+	done
 
 TreeBitstreamText_467f7:
-	ctxt "リフﾞラ<HIRA>かﾞっこう 6かい<KATA><TERM>"
+	ctxt "リブラ<HIRA>がっこう 6かい<KATA>"
+	done
 
 TreeBitstreamText_46803:
-	ctxt "リフﾞラ<HIRA>かﾞっこう 7かい<KATA><TERM>"
+	ctxt "リブラ<HIRA>がっこう 7かい<KATA>"
+	done
 
 TreeBitstreamText_4680f:
-	ctxt "キﾞャル1<HIRA>の いえ<KATA><TERM>"
+	ctxt "ギャル1<HIRA>の いえ<KATA>"
+	done
 
 TreeBitstreamText_46818:
-	ctxt "キﾞャル2<HIRA>の いえ<KATA>"
+	ctxt "ギャル2<HIRA>の いえ<KATA>"
 
 TreeBitstreamText_46821:
-	ctxt "キﾞャル3<HIRA>の いえ<KATA>"
+	ctxt "ギャル3<HIRA>の いえ<KATA>"
 
 TreeBitstreamText_4682a:
-	ctxt "キﾞャル4<HIRA>の いえ<KATA>"
+	ctxt "ギャル4<HIRA>の いえ<KATA>"
 
 TreeBitstreamText_46833:
-	ctxt "キﾞャル5 <HIRA>の いえ<KATA><TERM>"
+	ctxt "ギャル5 <HIRA>の いえ<KATA>"
+	done
 
 TreeBitstreamText_4683d:
-	ctxt "フﾟカリ <HIRA>の いえ<KATA><TERM>"
+	ctxt "プカリ <HIRA>の いえ<KATA>"
+	done
 
 TreeBitstreamText_46846:
-	ctxt "タﾞイーン <HIRA>の いえ<KATA><TERM>"
+	ctxt "ダイーン <HIRA>の いえ<KATA>"
+	done
 
 TreeBitstreamText_4684f:
-	ctxt "アッホﾟー <HIRA>の いえ<KATA><TERM>"
+	ctxt "アッポー <HIRA>の いえ<KATA>"
+	done
 
 TreeBitstreamText_46859:
-	ctxt "<HIRA>ひかる の いえ<KATA><TERM>"
+	ctxt "<HIRA>ひかる の いえ<KATA>"
+	done
 
 TreeBitstreamText_46861:
-	ctxt "<HIRA>しﾞゅりあ の いえ<KATA><TERM>"
+	ctxt "<HIRA>じゅりあ の いえ<KATA>"
+	done
 
 TreeBitstreamText_4686b:
-	ctxt "エラフﾞー<HIRA>とﾞうくつ 1かい<KATA><TERM>"
+	ctxt "エラブー<HIRA>どうくつ 1かい<KATA>"
+	done
 
 TreeBitstreamText_46878:
-	ctxt "エラフﾞー<HIRA>とﾞうくつ ちか1かい<KATA><TERM>"
+	ctxt "エラブー<HIRA>どうくつ ちか1かい<KATA>"
+	done
 
 TreeBitstreamText_46886:
-	ctxt "エラフﾞー<HIRA>とﾞうくつ ちか2かい<KATA><TERM>"
+	ctxt "エラブー<HIRA>どうくつ ちか2かい<KATA>"
+	done
 
 TreeBitstreamText_46894:
-	ctxt "エラフﾞー<HIRA>とﾞうくつ ちか3かい<KATA><TERM>"
+	ctxt "エラブー<HIRA>どうくつ ちか3かい<KATA>"
+	done
 
 TreeBitstreamText_468a2:
 	ctxt "<HIRA>しょう ほうそうとう 2かい<KATA>"
 
 TreeBitstreamText_468ae:
-	ctxt "ミニ <HIRA>てﾞんはﾟとう 1かい<KATA><TERM>"
+	ctxt "ミニ <HIRA>でんぱとう 1かい<KATA>"
+	done
 
 TreeBitstreamText_468ba:
-	ctxt "ミニ <HIRA>てﾞんはﾟとう ちか1かい<KATA><TERM>"
+	ctxt "ミニ <HIRA>でんぱとう ちか1かい<KATA>"
+	done
 
 TreeBitstreamText_468c8:
-	ctxt "<HIRA>たﾞい ほうそうとう 1かい<KATA><TERM>"
+	ctxt "<HIRA>だい ほうそうとう 1かい<KATA>"
+	done
 
 TreeBitstreamText_468d4:
-	ctxt "<HIRA>たﾞい ほうそうとう 2かい<KATA><TERM>"
+	ctxt "<HIRA>だい ほうそうとう 2かい<KATA>"
+	done
 
 TreeBitstreamText_468e0:
-	ctxt "<HIRA>たﾞい ほうそうとう 3かい<KATA><TERM>"
+	ctxt "<HIRA>だい ほうそうとう 3かい<KATA>"
+	done
 
 TreeBitstreamText_468ec:
-	ctxt "<HIRA>たﾞい ほうそうとう 4かい<KATA><TERM>"
+	ctxt "<HIRA>だい ほうそうとう 4かい<KATA>"
+	done
 
 TreeBitstreamText_468f8:
-	ctxt "<HIRA>たﾞい ほうそうとう 5かい<KATA><TERM>"
+	ctxt "<HIRA>だい ほうそうとう 5かい<KATA>"
+	done
 
 TreeBitstreamText_46904:
-	ctxt "<HIRA>たﾞい ほうそうとう 6かい<KATA><TERM>"
+	ctxt "<HIRA>だい ほうそうとう 6かい<KATA>"
+	done
 
 TreeBitstreamText_46910:
-	ctxt "<HIRA>たﾞい ほうそうとう 7かい<KATA><TERM>"
+	ctxt "<HIRA>だい ほうそうとう 7かい<KATA>"
+	done
 
 TreeBitstreamText_4691c:
-	ctxt "<HIRA>いとﾞの なか<KATA><TERM>"
+	ctxt "<HIRA>いどの なか<KATA>"
+	done
 
 TreeBitstreamText_46923:
-	ctxt "クﾞリース<HIRA>やま 1かい<KATA><TERM>"
+	ctxt "グリース<HIRA>やま 1かい<KATA>"
+	done
 
 TreeBitstreamText_4692e:
-	ctxt "クﾞリース<HIRA>やま 2かい<KATA><TERM>"
+	ctxt "グリース<HIRA>やま 2かい<KATA>"
+	done
 
 TreeBitstreamText_46939:
-	ctxt "クﾞリース<HIRA>やま 3かい<KATA><TERM>"
+	ctxt "グリース<HIRA>やま 3かい<KATA>"
+	done
 
 TreeBitstreamText_46944:
-	ctxt "クﾞリース<HIRA>やま 4かい<KATA><TERM>"
+	ctxt "グリース<HIRA>やま 4かい<KATA>"
+	done
 
 TreeBitstreamText_4694f:
-	ctxt "クﾞリース<HIRA>やま ちか1かい<KATA><TERM>"
+	ctxt "グリース<HIRA>やま ちか1かい<KATA>"
+	done
 
 TreeBitstreamText_4695b:
-	ctxt "クﾞリース<HIRA>やま ちか2かい<KATA><TERM>"
+	ctxt "グリース<HIRA>やま ちか2かい<KATA>"
+	done
 
 TreeBitstreamText_46967:
-	ctxt "クﾞリース<HIRA>やま ちか3かい<KATA><TERM>"
+	ctxt "グリース<HIRA>やま ちか3かい<KATA>"
+	done
 
 TreeBitstreamText_46973:
-	ctxt "クﾞリース<HIRA>やま さかみち<KATA>"
+	ctxt "グリース<HIRA>やま さかみち<KATA>"
 
 TreeBitstreamText_4697e:
-	ctxt "サンタﾞートﾞーム<TERM>"
+	ctxt "サンダードーム"
+	done
 
 TreeBitstreamText_46986:
-	ctxt "ハﾞトラー<HIRA>の とう 1かい<KATA>"
+	ctxt "バトラー<HIRA>の とう 1かい<KATA>"
 
 TreeBitstreamText_46991:
-	ctxt "ハﾞトラー<HIRA>の とう 2かい<KATA><TERM>"
+	ctxt "バトラー<HIRA>の とう 2かい<KATA>"
+	done
 
 TreeBitstreamText_4699d:
-	ctxt "ハﾞトラー<HIRA>の とう 3かい<KATA><TERM>"
+	ctxt "バトラー<HIRA>の とう 3かい<KATA>"
+	done
 
 TreeBitstreamText_469a9:
-	ctxt "ハﾞトラー<HIRA>の とう 4かい<KATA><TERM>"
+	ctxt "バトラー<HIRA>の とう 4かい<KATA>"
+	done
 
 TreeBitstreamText_469b5:
-	ctxt "ハﾞトラー<HIRA>の とう 5かい<KATA><TERM>"
+	ctxt "バトラー<HIRA>の とう 5かい<KATA>"
+	done
 
 TreeBitstreamText_469c1:
-	ctxt "シールタﾞー<HIRA>の とう 1かい<KATA><TERM>"
+	ctxt "シールダー<HIRA>の とう 1かい<KATA>"
+	done
 
 TreeBitstreamText_469cd:
-	ctxt "シールタﾞー<HIRA>の とう 2かい<KATA><TERM>"
+	ctxt "シールダー<HIRA>の とう 2かい<KATA>"
+	done
 
 TreeBitstreamText_469d9:
-	ctxt "シールタﾞー<HIRA>の とう 3かい<KATA><TERM>"
+	ctxt "シールダー<HIRA>の とう 3かい<KATA>"
+	done
 
 TreeBitstreamText_469e5:
-	ctxt "シールタﾞー<HIRA>の とう 4かい<KATA><TERM>"
+	ctxt "シールダー<HIRA>の とう 4かい<KATA>"
+	done
 
 TreeBitstreamText_469f1:
-	ctxt "シールタﾞー<HIRA>の とう 5かい<KATA><TERM>"
+	ctxt "シールダー<HIRA>の とう 5かい<KATA>"
+	done
 
 TreeBitstreamText_469fd:
-	ctxt "スヒﾟータﾞー<HIRA>の とう 1かい<KATA><TERM>"
+	ctxt "スピーダー<HIRA>の とう 1かい<KATA>"
+	done
 
 TreeBitstreamText_46a0a:
-	ctxt "スヒﾟータﾞー<HIRA>の とう 2かい<KATA><TERM>"
+	ctxt "スピーダー<HIRA>の とう 2かい<KATA>"
+	done
 
 TreeBitstreamText_46a17:
-	ctxt "スヒﾟータﾞー<HIRA>の とう 3かい<KATA><TERM>"
+	ctxt "スピーダー<HIRA>の とう 3かい<KATA>"
+	done
 
 TreeBitstreamText_46a24:
-	ctxt "スヒﾟータﾞー<HIRA>の とう 4かい<KATA><TERM>"
+	ctxt "スピーダー<HIRA>の とう 4かい<KATA>"
+	done
 
 TreeBitstreamText_46a31:
-	ctxt "スヒﾟータﾞー<HIRA>の とう 5かい<KATA><TERM>"
+	ctxt "スピーダー<HIRA>の とう 5かい<KATA>"
+	done
 
 TreeBitstreamText_46a3e:
-	ctxt "シﾞャンハﾟー<HIRA>の とう 1かい<KATA><TERM>"
+	ctxt "ジャンパー<HIRA>の とう 1かい<KATA>"
+	done
 
 TreeBitstreamText_46a4b:
-	ctxt "シﾞャンハﾟー<HIRA>の とう 2かい<KATA><TERM>"
+	ctxt "ジャンパー<HIRA>の とう 2かい<KATA>"
+	done
 
 TreeBitstreamText_46a58:
-	ctxt "シﾞャンハﾟー<HIRA>の とう 3かい<KATA><TERM>"
+	ctxt "ジャンパー<HIRA>の とう 3かい<KATA>"
+	done
 
 TreeBitstreamText_46a65:
-	ctxt "シﾞャンハﾟー<HIRA>の とう 4かい<KATA><TERM>"
+	ctxt "ジャンパー<HIRA>の とう 4かい<KATA>"
+	done
 
 TreeBitstreamText_46a72:
-	ctxt "シﾞャンハﾟー<HIRA>の とう 5かい<KATA><TERM>"
+	ctxt "ジャンパー<HIRA>の とう 5かい<KATA>"
+	done
 
 TreeBitstreamText_46a7f:
-	ctxt "ハﾟンチャー<HIRA>の とう 1かい<KATA><TERM>"
+	ctxt "パンチャー<HIRA>の とう 1かい<KATA>"
+	done
 
 TreeBitstreamText_46a8c:
-	ctxt "ハﾟンチャー<HIRA>の とう 2かい<KATA><TERM>"
+	ctxt "パンチャー<HIRA>の とう 2かい<KATA>"
+	done
 
 TreeBitstreamText_46a99:
-	ctxt "ハﾟンチャー<HIRA>の とう 3かい<KATA><TERM>"
+	ctxt "パンチャー<HIRA>の とう 3かい<KATA>"
+	done
 
 TreeBitstreamText_46aa6:
-	ctxt "ハﾟンチャー<HIRA>の とう 4かい<KATA><TERM>"
+	ctxt "パンチャー<HIRA>の とう 4かい<KATA>"
+	done
 
 TreeBitstreamText_46ab3:
-	ctxt "ハﾟンチャー<HIRA>の とう 5かい<KATA><TERM>"
+	ctxt "パンチャー<HIRA>の とう 5かい<KATA>"
+	done
 
 TreeBitstreamText_46ac0:
 	ctxt "カマットタワー 1<HIRA>かい<KATA>"
 
 TreeBitstreamText_46aca:
-	ctxt "カマットタワー 2<HIRA>かい<KATA><TERM>"
+	ctxt "カマットタワー 2<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46ad5:
-	ctxt "カマットタワー 3<HIRA>かい<KATA><TERM>"
+	ctxt "カマットタワー 3<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46ae0:
-	ctxt "カマットタワー 4<HIRA>かい<KATA><TERM>"
+	ctxt "カマットタワー 4<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46aeb:
-	ctxt "カマットタワー 5<HIRA>かい<KATA><TERM>"
+	ctxt "カマットタワー 5<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46af6:
-	ctxt "カマットタワー 6<HIRA>かい<KATA><TERM>"
+	ctxt "カマットタワー 6<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b01:
-	ctxt "カマットタワー 7<HIRA>かい<KATA><TERM>"
+	ctxt "カマットタワー 7<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b0c:
-	ctxt "<HIRA>えっけんの ま<KATA><TERM>"
+	ctxt "<HIRA>えっけんの ま<KATA>"
+	done
 
 TreeBitstreamText_46b14:
-	ctxt "<HIRA>つりくﾞや<KATA><TERM>"
+	ctxt "<HIRA>つりぐや<KATA>"
+	done
 
 TreeBitstreamText_46b1a:
-	ctxt "セﾞロキャッスル1<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル1<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b25:
-	ctxt "セﾞロキャッスル2<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル2<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b30:
-	ctxt "セﾞロキャッスル3<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル3<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b3b:
-	ctxt "セﾞロキャッスル4<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル4<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b46:
-	ctxt "セﾞロキャッスル5<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル5<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b51:
-	ctxt "セﾞロキャッスル6<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル6<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b5c:
-	ctxt "セﾞロキャッスル7<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル7<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b67:
-	ctxt "セﾞロキャッスル8<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル8<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b72:
-	ctxt "セﾞロキャッスル9<HIRA>かい<KATA>"
+	ctxt "ゼロキャッスル9<HIRA>かい<KATA>"
 
 TreeBitstreamText_46b7d:
-	ctxt "セﾞロキャッスル10<HIRA>かい<KATA><TERM>"
+	ctxt "ゼロキャッスル10<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b8a:
-	ctxt "ツキカﾞ<HIRA>おか 3かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか 3かい<KATA>"
+	done
 
 TreeBitstreamText_46b94:
-	ctxt "ツキカﾞ<HIRA>おか 2かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか 2かい<KATA>"
+	done
 
 TreeBitstreamText_46b9e:
-	ctxt "ツキカﾞ<HIRA>おか 1かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか 1かい<KATA>"
+	done
 
 TreeBitstreamText_46ba8:
-	ctxt "ツキカﾞ<HIRA>おか ちか1かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか ちか1かい<KATA>"
+	done
 
 TreeBitstreamText_46bb3:
-	ctxt "ツキカﾞ<HIRA>おか ちか2かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか ちか2かい<KATA>"
+	done
 
 TreeBitstreamText_46bbe:
-	ctxt "ツキカﾞ<HIRA>おか ちか3かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか ちか3かい<KATA>"
+	done
 
 TreeBitstreamText_46bc9:
-	ctxt "ツキカﾞ<HIRA>おか ちか4かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか ちか4かい<KATA>"
+	done
 
 TreeBitstreamText_46bd4:
-	ctxt "ツキカﾞ<HIRA>おか ちか5かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか ちか5かい<KATA>"
+	done
 
 TreeBitstreamText_46bdf:
-	ctxt "ツキカﾞ<HIRA>おか ちか6かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか ちか6かい<KATA>"
+	done
 
 TreeBitstreamText_46bea:
-	ctxt "ツキカﾞ<HIRA>おか ちか7かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか ちか7かい<KATA>"
+	done
 
 TreeBitstreamText_46bf5:
-	ctxt "ツキカﾞ<HIRA>おか ちか8かい<KATA><TERM>"
+	ctxt "ツキガ<HIRA>おか ちか8かい<KATA>"
+	done
 
 TreeBitstreamText_46c00:
-	ctxt "<HIRA>ちか1かい そうこ<KATA><TERM>"
+	ctxt "<HIRA>ちか1かい そうこ<KATA>"
+	done
 
 TreeBitstreamText_46c09:
-	ctxt "2<HIRA>かい <KATA>アイテム<HIRA>や<KATA><TERM>"
+	ctxt "2<HIRA>かい <KATA>アイテム<HIRA>や<KATA>"
+	done
 
 TreeBitstreamText_46c14:
-	ctxt "3<HIRA>かい <KATA>ハﾟーツ<HIRA>や<KATA><TERM>"
+	ctxt "3<HIRA>かい <KATA>パーツ<HIRA>や<KATA>"
+	done
 
 TreeBitstreamText_46c1f:
-	ctxt "4<HIRA>かい けんきゅうしﾞょ<KATA><TERM>"
+	ctxt "4<HIRA>かい けんきゅうじょ<KATA>"
+	done
 
 TreeBitstreamText_46c2b:
-	ctxt "5<HIRA>かい <KATA>トイレ<TERM>"
+	ctxt "5<HIRA>かい <KATA>トイレ"
+	done
 
 TreeBitstreamText_46c33:
-	ctxt "6<HIRA>かい <KATA>ハﾞス<TERM>"
+	ctxt "6<HIRA>かい <KATA>バス"
+	done
 
 TreeBitstreamText_46c3b:
-	ctxt "7<HIRA>かい こういしつ<KATA><TERM>"
+	ctxt "7<HIRA>かい こういしつ<KATA>"
+	done
 
 TreeBitstreamText_46c44:
-	ctxt "8<HIRA>かい はけんしﾞょ<KATA><TERM>"
+	ctxt "8<HIRA>かい はけんじょ<KATA>"
+	done
 
 TreeBitstreamText_46c4e:
-	ctxt "9<HIRA>かい <KATA>レクリエーション ルーム<TERM>"
+	ctxt "9<HIRA>かい <KATA>レクリエーション ルーム"
+	done
 
 TreeBitstreamText_46c5d:
-	ctxt "10<HIRA>かい <KATA>ケﾞームコーナー<TERM>"
+	ctxt "10<HIRA>かい <KATA>ゲームコーナー"
+	done
 
 TreeBitstreamText_46c6a:
-	ctxt "11<HIRA>かい かいきﾞしつ<KATA><TERM>"
+	ctxt "11<HIRA>かい かいぎしつ<KATA>"
+	done
 
 TreeBitstreamText_46c75:
-	ctxt "12<HIRA>かい <KATA>リラックス ルーム<TERM>"
+	ctxt "12<HIRA>かい <KATA>リラックス ルーム"
+	done
 
 TreeBitstreamText_46c83:
-	ctxt "13<HIRA>かい <KATA>サウナ<TERM>"
+	ctxt "13<HIRA>かい <KATA>サウナ"
+	done
 
 TreeBitstreamText_46c8c:
-	ctxt "14<HIRA>かい <KATA>カウンセリンクﾞ ルーム"
+	ctxt "14<HIRA>かい <KATA>カウンセリング ルーム"
 
 TreeBitstreamText_46c9b:
-	ctxt "15<HIRA>かい しちょうかくしつ<KATA><TERM>"
+	ctxt "15<HIRA>かい しちょうかくしつ<KATA>"
+	done
 
 TreeBitstreamText_46ca8:
-	ctxt "16<HIRA>かい あきへﾞや<KATA><TERM>"
+	ctxt "16<HIRA>かい あきべや<KATA>"
+	done
 
 TreeBitstreamText_46cb3:
-	ctxt "17<HIRA>かい おうせつしつ<KATA><TERM>"
+	ctxt "17<HIRA>かい おうせつしつ<KATA>"
+	done
 
 TreeBitstreamText_46cbf:
-	ctxt "18<HIRA>かい しゃちょうしつ<KATA><TERM>"
+	ctxt "18<HIRA>かい しゃちょうしつ<KATA>"
+	done
 
 TreeBitstreamText_46ccb:
-	ctxt "19<HIRA>かい てんしﾞしﾞょう<KATA><TERM>"
+	ctxt "19<HIRA>かい てんじじょう<KATA>"
+	done
 
 TreeBitstreamText_46cd7:
-	ctxt "20<HIRA>かい てんほﾞうたﾞい<KATA><TERM>"
+	ctxt "20<HIRA>かい てんぼうだい<KATA>"
+	done
 
 TreeBitstreamText_46ce3:
-	ctxt "1<HIRA>かい うけつけ<KATA><TERM>"
+	ctxt "1<HIRA>かい うけつけ<KATA>"
+	done
 
 TreeBitstreamText_46cec:
-	ctxt "<HIRA>ちかしつ ちか1かい<KATA><TERM>"
+	ctxt "<HIRA>ちかしつ ちか1かい<KATA>"
+	done
 
 TreeBitstreamText_46cf6:
-	ctxt "<HIRA>ちかしつ ちか2かい<KATA><TERM>"
+	ctxt "<HIRA>ちかしつ ちか2かい<KATA>"
+	done
 
 TreeBitstreamText_46d00:
-	ctxt "セﾞロ<HIRA>のひこうてい 2かい<KATA><TERM>"
+	ctxt "ゼロ<HIRA>のひこうてい 2かい<KATA>"
+	done
 
 TreeBitstreamText_46d0c:
-	ctxt "セﾞロ<HIRA>のひこうてい 1かい<KATA><TERM>"
+	ctxt "ゼロ<HIRA>のひこうてい 1かい<KATA>"
+	done
 
 TreeBitstreamText_46d18:
-	ctxt "ロホﾞホﾟン<HIRA>のしゅきﾞょうに さいてき<NL>"
-	ctxt "      <KATA>ツキカﾞ<HIRA>おか<KATA><TERM>"
+	ctxt "ロボポン<HIRA>のしゅぎょうに さいてき"
+	line "      <KATA>ツキガ<HIRA>おか<KATA>"
+	done
 
 TreeBitstreamText_46d31:
-	ctxt "     テール<HIRA>しﾞょう<KATA><TERM>"
+	ctxt "     テール<HIRA>じょう<KATA>"
+	done
 
 TreeBitstreamText_46d3b:
 	ctxt "6<HIRA>かいへ まいります<KATA>"
 
 TreeBitstreamText_46d45:
-	ctxt "1<HIRA>かいへ まいります<KATA><TERM>"
+	ctxt "1<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d4f:
-	ctxt "2<HIRA>かいへ まいります<KATA><TERM>"
+	ctxt "2<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d59:
-	ctxt "3<HIRA>かいへ まいります<KATA><TERM>"
+	ctxt "3<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d63:
-	ctxt "4<HIRA>かいへ まいります<KATA><TERM>"
+	ctxt "4<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d6d:
 	ctxt "5<HIRA>かいへ まいります<KATA>"
@@ -9464,635 +10401,737 @@ TreeBitstreamText_46d77:
 	ctxt "7<HIRA>かいへ まいります<KATA>"
 
 TreeBitstreamText_46d81:
-	ctxt "8<HIRA>かいへ まいります<KATA><TERM>"
+	ctxt "8<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d8b:
-	ctxt "9<HIRA>かいへ まいります<KATA><TERM>"
+	ctxt "9<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d96:
-	ctxt "10<HIRA>かいへ まいります<KATA><TERM>"
+	ctxt "10<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46da2:
-	ctxt "セﾞロトﾞーム<HIRA>へ まいります<KATA><TERM>"
+	ctxt "ゼロドーム<HIRA>へ まいります<KATA>"
+	done
 
 TreeBitstreamText_46daf:
-	ctxt "<HIRA>てﾞくﾞちせんよう<KATA><TERM>"
+	ctxt "<HIRA>でぐちせんよう<KATA>"
+	done
 
 TreeBitstreamText_46db8:
-	ctxt "    <HIRA>しれんのとﾞうくつ<KATA><TERM>"
+	ctxt "    <HIRA>しれんのどうくつ<KATA>"
+	done
 
 TreeBitstreamText_46dc3:
-	ctxt "オワリ<HIRA>のもり<KATA><TERM>"
+	ctxt "オワリ<HIRA>のもり<KATA>"
+	done
 
 TreeBitstreamText_46dca:
-	ctxt "   メイシﾞ<HIRA>とﾞうくつ<KATA><TERM>"
+	ctxt "   メイジ<HIRA>どうくつ<KATA>"
+	done
 
 TreeBitstreamText_46dd4:
-	ctxt "   <HIRA>かいてい<KATA>ヘルスセンター<TERM>"
+	ctxt "   <HIRA>かいてい<KATA>ヘルスセンター"
+	done
 
 TreeBitstreamText_46de0:
-	ctxt "<HIRA>もちものかﾞ いっはﾟいなのてﾞ<NL>"
-	ctxt "そうこに ほかん します<KATA><TERM>"
+	ctxt "<HIRA>もちものが いっぱいなので"
+	line "そうこに ほかん します<KATA>"
+	done
 
 TreeBitstreamText_46df6:
-	ctxt "<HIRA>そうこかﾞ いっはﾟいなのてﾞ<NL>"
-	ctxt "なにか すてて くたﾞさい<KATA><TERM>"
+	ctxt "<HIRA>そうこが いっぱいなので"
+	line "なにか すてて ください<KATA>"
+	done
 
 TreeBitstreamText_46e0b:
-	ctxt "<STBF><HIRA>の <KATA>ロホﾞホﾟン<HIRA>は<NL>"
-	ctxt "けﾞんきに なった<KATA><TERM>"
+	ctxt "<PLAYER><HIRA>の <KATA>ロボポン<HIRA>は"
+	line "げんきに なった<KATA>"
+	done
 
 TreeBitstreamText_46e1d:
-	ctxt "<HIRA>そこの ほうてﾞ なにか <KATA>キラキラ<NL>"
-	ctxt "<HIRA>ひかるものかﾞ ある!<NL>"
-	ctxt "しらへﾞますか?<KATA><TERM>"
+	ctxt "<HIRA>そこの ほうで なにか <KATA>キラキラ"
+	line "<HIRA>ひかるものが ある!"
+	line "しらべますか?<KATA>"
+	done
 
 TreeBitstreamText_46e3b:
-	ctxt "<HIRA>みすﾞかﾞ とても きれいたﾞった………<KATA><TERM>"
+	ctxt "<HIRA>みずが とても きれいだった………<KATA>"
+	done
 
 TreeBitstreamText_46e4b:
-	ctxt "<HIRA>いまの <KATA><STBF><HIRA>に<NL>"
-	ctxt "そんな ひまなとﾞ なかった<KATA><TERM>"
+	ctxt "<HIRA>いまの <KATA><PLAYER><HIRA>に"
+	line "そんな ひまなど なかった<KATA>"
+	done
 
 TreeBitstreamText_46e5d:
-	ctxt "<HIRA>こんとﾞは <KATA>イケ<HIRA>そうな きかﾞした<KATA><TERM>"
+	ctxt "<HIRA>こんどは <KATA>イケ<HIRA>そうな きがした<KATA>"
+	done
 
 TreeBitstreamText_46e6c:
-	ctxt "<HIRA>とひﾞらは あかない<NL>"
-	ctxt "<NL>"
-	ctxt "なかから おんかﾞくかﾞ きこえる………<KATA><TERM>"
+	ctxt "<HIRA>とびらは あかない"
+	line ""
+	line "なかから おんがくが きこえる………<KATA>"
+	done
 
 TreeBitstreamText_46e84:
-	ctxt "ロホﾞホﾟン<HIRA>の ほんかﾞ いっはﾟいある!<KATA><TERM>"
+	ctxt "ロボポン<HIRA>の ほんが いっぱいある!<KATA>"
+	done
 
 TreeBitstreamText_46e95:
-	ctxt "<HIRA>きたいてﾞきる ほんは なかった………<KATA><TERM>"
+	ctxt "<HIRA>きたいできる ほんは なかった………<KATA>"
+	done
 
 TreeBitstreamText_46ea4:
-	ctxt "<HIRA>むすﾞかしそうな ほんかﾞ<NL>"
-	ctxt "いっはﾟい おいてある!<KATA><TERM>"
+	ctxt "<HIRA>むずかしそうな ほんが"
+	line "いっぱい おいてある!<KATA>"
+	done
 
 TreeBitstreamText_46eb8:
-	ctxt "コミックホﾞンホﾞン<HIRA>かﾞ<NL>"
-	ctxt "いっはﾟい おいてある!!<KATA><TERM>"
+	ctxt "コミックボンボン<HIRA>が"
+	line "いっぱい おいてある!!<KATA>"
+	done
 
 TreeBitstreamText_46ecc:
-	ctxt "ロホﾞホﾟン<HIRA>に かんけいの ある<NL>"
-	ctxt "ものかﾞ はいっている ようたﾞ<KATA><TERM>"
+	ctxt "ロボポン<HIRA>に かんけいの ある"
+	line "ものが はいっている ようだ<KATA>"
+	done
 
 TreeBitstreamText_46ee5:
-	ctxt "<HIRA>たいした ものは<NL>"
-	ctxt "はいっていない ようたﾞ<KATA><TERM>"
+	ctxt "<HIRA>たいした ものは"
+	line "はいっていない ようだ<KATA>"
+	done
 
 TreeBitstreamText_46ef5:
-	ctxt "ロホﾞホﾟン<HIRA>に かんする <KATA>ニュース<HIRA>かﾞ<NL>"
-	ctxt "ほうえい されている<NL>"
-	ctxt "けﾞんいんふめいてﾞ ほﾞうそう<KATA>ロホﾞホﾟン<HIRA>かﾞ<NL>"
-	ctxt "ふえてきている……<KATA><TERM>"
+	ctxt "ロボポン<HIRA>に かんする <KATA>ニュース<HIRA>が"
+	line "ほうえい されている"
+	line "げんいんふめいで ぼうそう<KATA>ロボポン<HIRA>が"
+	line "ふえてきている……<KATA>"
+	done
 
 TreeBitstreamText_46f28:
-	ctxt "<HIRA>たたかってみる?<KATA><TERM>"
+	ctxt "<HIRA>たたかってみる?<KATA>"
+	done
 
 TreeBitstreamText_46f30:
-	ctxt "<HIRA>みすﾞのなかに<NL>"
-	ctxt "もくﾞるのかい?<KATA><TERM>"
+	ctxt "<HIRA>みずのなかに"
+	line "もぐるのかい?<KATA>"
+	done
 
 TreeBitstreamText_46f3e:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>うわーーー<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>うわーーー<KATA>"
+	done
 
 TreeBitstreamText_46f46:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>ちぇっ せﾞんせﾞん<KATA>タﾞメ<HIRA>たﾞ<NL>"
-	ctxt "ちっとも つれないや<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>ちぇっ ぜんぜん<KATA>ダメ<HIRA>だ"
+	line "ちっとも つれないや<KATA>"
+	done
 
 TreeBitstreamText_46f5e:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>おっ ひいたそﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "てﾞも つれるきかﾞしないや<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>おっ ひいたぞ!"
+	line ""
+	line "でも つれるきがしないや<KATA>"
+	done
 
 TreeBitstreamText_46f73:
-	ctxt "シュノーケル<HIRA>を つかって<NL>"
-	ctxt "すいちゅうに もくﾞりますか?<KATA><TERM>"
+	ctxt "シュノーケル<HIRA>を つかって"
+	line "すいちゅうに もぐりますか?<KATA>"
+	done
 
 TreeBitstreamText_46f8a:
-	ctxt "シュノーケル<HIRA>を もっていれはﾞ<NL>"
-	ctxt "すいちゅうに もくﾞることかﾞてﾞきる<KATA><TERM>"
+	ctxt "シュノーケル<HIRA>を もっていれば"
+	line "すいちゅうに もぐることができる<KATA>"
+	done
 
 TreeBitstreamText_46fa5:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>もっと たかい<KATA>エサ<HIRA>しﾞゃないと<NL>"
-	ctxt "つれないのかな?<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>もっと たかい<KATA>エサ<HIRA>じゃないと"
+	line "つれないのかな?<KATA>"
+	done
 
 TreeBitstreamText_46fbb:
-	ctxt "<HIRA>さﾞんねん<NL>"
-	ctxt "もういちとﾞ たたかう?<KATA><TERM>"
+	ctxt "<HIRA>ざんねん"
+	line "もういちど たたかう?<KATA>"
+	done
 
 TreeBitstreamText_46fca:
-	ctxt "ハﾟーティー<HIRA>かﾞ せﾞんめつした<KATA>"
+	ctxt "パーティー<HIRA>が ぜんめつした<KATA>"
 
 TreeBitstreamText_46fd8:
-	ctxt "<NL>"
-	ctxt "     <HIRA>これは<KATA>タﾞミー<HIRA>てﾞす<KATA><TERM>"
+	ctxt ""
+	line "     <HIRA>これは<KATA>ダミー<HIRA>です<KATA>"
+	done
 
 TreeBitstreamText_46fe6:
-	ctxt "<HIRA>しゃめんかﾞ きゅうてﾞ<NL>"
-	ctxt "このままてﾞは すすめない<KATA>"
+	ctxt "<HIRA>しゃめんが きゅうで"
+	line "このままでは すすめない<KATA>"
 
 TreeBitstreamText_46ffa:
-	ctxt "<STBF><NL>"
-	ctxt "<HIRA>りくけい <KATA>ムーフﾞ<HIRA>そﾞく<KATA>ロホﾞホﾟン<HIRA>の<NL>"
-	ctxt "あつかいかたかﾞ わからないや……<KATA><TERM>"
+	ctxt "<PLAYER>"
+	line "<HIRA>りくけい <KATA>ムーブ<HIRA>ぞく<KATA>ロボポン<HIRA>の"
+	line "あつかいかたが わからないや……<KATA>"
+	done
 
 TreeBitstreamText_4701b:
-	ctxt "テレヒﾞ<HIRA>の<KATA>スイッチ<HIRA>を いれた<KATA><TERM>"
+	ctxt "テレビ<HIRA>の<KATA>スイッチ<HIRA>を いれた<KATA>"
+	done
 
 TreeBitstreamText_47029:
-	ctxt "テレヒﾞ<HIRA>の<KATA>スイッチ<HIRA>を きった<KATA><TERM>"
+	ctxt "テレビ<HIRA>の<KATA>スイッチ<HIRA>を きった<KATA>"
+	done
 
 TreeBitstreamText_47037:
-	ctxt "テレヒﾞ<HIRA>は きえている<KATA><TERM>"
+	ctxt "テレビ<HIRA>は きえている<KATA>"
+	done
 
 TreeBitstreamText_47041:
-	ctxt "スイッチ<HIRA>を おしても<NL>"
-	ctxt "なにも おこらなかった<KATA><TERM>"
+	ctxt "スイッチ<HIRA>を おしても"
+	line "なにも おこらなかった<KATA>"
+	done
 
 TreeBitstreamText_47053:
-	ctxt "テレヒﾞアニメ ロホﾞホﾟン <HIRA>かﾞ<NL>"
-	ctxt "ほうえい されている!<KATA><TERM>"
+	ctxt "テレビアニメ ロボポン <HIRA>が"
+	line "ほうえい されている!<KATA>"
+	done
 
 TreeBitstreamText_4706a:
-	ctxt "テレヒﾞ<HIRA>かﾞめんには はけﾞしく おとﾞる<NL>"
-	ctxt "<KATA>アイトﾞル<HIRA>の<KATA>アムロン<HIRA>かﾞ うつっている<NL>"
-	ctxt "しﾞっと みていると なせﾞか きかﾞ<NL>"
-	ctxt "とおくなって いくようたﾞ……<KATA><TERM>"
+	ctxt "テレビ<HIRA>がめんには はげしく おどる"
+	line "<KATA>アイドル<HIRA>の<KATA>アムロン<HIRA>が うつっている"
+	line "じっと みていると なぜか きが"
+	line "とおくなって いくようだ……<KATA>"
+	done
 
 TreeBitstreamText_470a2:
-	ctxt "<HIRA>しょいん<NL>"
-	ctxt "やあ いらっしゃい<NL>"
-	ctxt "ここは<KATA>ロホﾞホﾟン<HIRA>の けんきゅうしﾞょたﾞ<NL>"
-	ctxt "ようけんは なにかな?<KATA><TERM>"
+	ctxt "<HIRA>しょいん"
+	line "やあ いらっしゃい"
+	line "ここは<KATA>ロボポン<HIRA>の けんきゅうじょだ"
+	line "ようけんは なにかな?<KATA>"
+	done
 
 TreeBitstreamText_470c8:
-	ctxt "ハﾞートﾞ<HIRA>しﾞまへ<NL>"
-	ctxt "とんてﾞゆくのかい?<KATA><TERM>"
+	ctxt "バード<HIRA>じまへ"
+	line "とんでゆくのかい?<KATA>"
+	done
 
 TreeBitstreamText_470d8:
-	ctxt "<HIRA>みすﾞのなかに もくﾞれる<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>かﾞ いるらしい……<KATA>"
+	ctxt "<HIRA>みずのなかに もぐれる"
+	line "<KATA>ロボポン<HIRA>が いるらしい……<KATA>"
 
 TreeBitstreamText_470f0:
-	ctxt "クﾞレイテスト5 <HIRA>いしﾞょうの<NL>"
-	ctxt "しﾞつりょくかﾞ ないものには<NL>"
-	ctxt "うみけい <KATA>ムーフﾞ<HIRA>そﾞくの<NL>"
-	ctxt "しんの のうりょくは つかえない<NL>"
-	ctxt "<KATA>クﾞレイテスト5<HIRA>の しょうこﾞうを<NL>"
-	ctxt "てに いれなけれはﾞ!<KATA><TERM>"
+	ctxt "グレイテスト5 <HIRA>いじょうの"
+	line "じつりょくが ないものには"
+	line "うみけい <KATA>ムーブ<HIRA>ぞくの"
+	line "しんの のうりょくは つかえない"
+	line "<KATA>グレイテスト5<HIRA>の しょうごうを"
+	line "てに いれなければ!<KATA>"
+	done
 
 TreeBitstreamText_47136:
-	ctxt "<HIRA>そらを とへﾞる <KATA>ロホﾞホﾟン<HIRA>かﾞ<NL>"
-	ctxt "いるらしい………<KATA><TERM>"
+	ctxt "<HIRA>そらを とべる <KATA>ロボポン<HIRA>が"
+	line "いるらしい………<KATA>"
+	done
 
 TreeBitstreamText_4714c:
-	ctxt "クﾞレイテスト4 <HIRA>いしﾞょうの<NL>"
-	ctxt "しﾞつりょくかﾞ ないものには<NL>"
-	ctxt "そらけい <KATA>ムーフﾞ<HIRA>そﾞくの<NL>"
-	ctxt "しんの のうりょくは つかえない<NL>"
-	ctxt "<KATA>クﾞレイテスト4<HIRA>の しょうこﾞうを<NL>"
-	ctxt "てに いれなけれはﾞ!<KATA><TERM>"
+	ctxt "グレイテスト4 <HIRA>いじょうの"
+	line "じつりょくが ないものには"
+	line "そらけい <KATA>ムーブ<HIRA>ぞくの"
+	line "しんの のうりょくは つかえない"
+	line "<KATA>グレイテスト4<HIRA>の しょうごうを"
+	line "てに いれなければ!<KATA>"
+	done
 
 TreeBitstreamText_47192:
-	ctxt "ハﾟンチャー<HIRA>てﾞ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>しょうふﾞたﾞ!!<KATA><TERM>"
+	ctxt "パンチャー<HIRA>で"
+	line "<KATA>バトロボ<HIRA>しょうぶだ!!<KATA>"
+	done
 
 TreeBitstreamText_471a6:
-	ctxt "シﾞャンハﾟー<HIRA>てﾞ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>しょうふﾞたﾞ!!<KATA><TERM>"
+	ctxt "ジャンパー<HIRA>で"
+	line "<KATA>バトロボ<HIRA>しょうぶだ!!<KATA>"
+	done
 
 TreeBitstreamText_471bb:
-	ctxt "シールタﾞー<HIRA>てﾞ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>しょうふﾞたﾞ!!<KATA><TERM>"
+	ctxt "シールダー<HIRA>で"
+	line "<KATA>バトロボ<HIRA>しょうぶだ!!<KATA>"
+	done
 
 TreeBitstreamText_471cf:
-	ctxt "スヒﾟータﾞー<HIRA>てﾞ<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>しょうふﾞたﾞ!!<KATA><TERM>"
+	ctxt "スピーダー<HIRA>で"
+	line "<KATA>バトロボ<HIRA>しょうぶだ!!<KATA>"
+	done
 
 TreeBitstreamText_471e4:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>この たからはﾞこは ふつうとは<NL>"
-	ctxt "ちかﾞって <KATA>カキﾞ<HIRA>かﾞ かかってるんたﾞ<NL>"
-	ctxt "<KATA>リモコンシャワー<HIRA>を あひﾞせると<NL>"
-	ctxt "かんたんに <KATA>カキﾞ<HIRA>を はすﾞせるんたﾞ<NL>"
-	ctxt "さらに あてた ひかりの しゅるいてﾞ<NL>"
-	ctxt "なかみかﾞ かわる すくﾞれもの!<NL>"
-	ctxt "なにかﾞ てﾞるかは あけてみての<NL>"
-	ctxt "おたのしみ!<NL>"
-	ctxt "とても めすﾞらしいものかﾞ<NL>"
-	ctxt "てに はいることも あるらしいよ<KATA><TERM>"
+	ctxt "ハンター"
+	line "<HIRA>この たからばこは ふつうとは"
+	line "ちがって <KATA>カギ<HIRA>が かかってるんだ"
+	line "<KATA>リモコンシャワー<HIRA>を あびせると"
+	line "かんたんに <KATA>カギ<HIRA>を はずせるんだ"
+	line "さらに あてた ひかりの しゅるいで"
+	line "なかみが かわる すぐれもの!"
+	line "なにが でるかは あけてみての"
+	line "おたのしみ!"
+	line "とても めずらしいものが"
+	line "てに はいることも あるらしいよ<KATA>"
+	done
 
 TreeBitstreamText_4725f:
-	ctxt "ハンター<NL>"
-	ctxt "リモコンシャワー<HIRA>を<NL>"
-	ctxt "あひﾞせるかい?<KATA><TERM>"
+	ctxt "ハンター"
+	line "リモコンシャワー<HIRA>を"
+	line "あびせるかい?<KATA>"
+	done
 
 TreeBitstreamText_47272:
-	ctxt "<HIRA>さあ ひかりを<NL>"
-	ctxt "あてるのたﾞ!<KATA><TERM>"
+	ctxt "<HIRA>さあ ひかりを"
+	line "あてるのだ!<KATA>"
+	done
 
 TreeBitstreamText_4727f:
-	ctxt "<HIRA>たからはﾞこに<NL>"
-	ctxt "ひかりを あてた!<KATA><TERM>"
+	ctxt "<HIRA>たからばこに"
+	line "ひかりを あてた!<KATA>"
+	done
 
 TreeBitstreamText_4728d:
-	ctxt "リモコン<HIRA>の しﾞゅしんに<NL>"
-	ctxt "しっはﾟい しちゃった<KATA><TERM>"
+	ctxt "リモコン<HIRA>の じゅしんに"
+	line "しっぱい しちゃった<KATA>"
+	done
 
 TreeBitstreamText_472a0:
-	ctxt "<HIRA>もういちとﾞ<NL>"
-	ctxt "ひかりを あてますか<KATA><TERM>"
+	ctxt "<HIRA>もういちど"
+	line "ひかりを あてますか<KATA>"
+	done
 
 TreeBitstreamText_472ae:
-	ctxt "<HIRA>たからを とりますか?<KATA><TERM>"
+	ctxt "<HIRA>たからを とりますか?<KATA>"
+	done
 
 TreeBitstreamText_472b9:
-	ctxt "ハンター<NL>"
-	ctxt "<HIRA>とﾞうたﾞい?<NL>"
-	ctxt "いい たからもの たﾞったかい?<KATA><TERM>"
+	ctxt "ハンター"
+	line "<HIRA>どうだい?"
+	line "いい たからもの だったかい?<KATA>"
+	done
 
 TreeBitstreamText_472ce:
-	ctxt "<HIRA>しﾞゅしんをやめたよ<KATA><TERM>"
+	ctxt "<HIRA>じゅしんをやめたよ<KATA>"
+	done
 
 TreeBitstreamText_472d8:
-	ctxt "<STBF><NL>"
-	ctxt "カキﾞ<HIRA>かﾞ かかっていて<NL>"
-	ctxt "あかないや<KATA>"
+	ctxt "<PLAYER>"
+	line "カギ<HIRA>が かかっていて"
+	line "あかないや<KATA>"
 
 TreeBitstreamText_472e7:
-	ctxt "<HIRA>とりかえますか?<KATA><TERM>"
+	ctxt "<HIRA>とりかえますか?<KATA>"
+	done
 
 TreeBitstreamText_472f0:
-	ctxt "<HIRA>ねぇねぇ あたしと<NL>"
-	ctxt "<KATA>ハﾞトロホﾞ<HIRA>しょうふﾞしない?<KATA><TERM>"
+	ctxt "<HIRA>ねぇねぇ あたしと"
+	line "<KATA>バトロボ<HIRA>しょうぶしない?<KATA>"
+	done
 
 TreeBitstreamText_47306:
-	ctxt "<HIRA>えーっ! つまんなーい<NL>"
-	ctxt "しょうふﾞしようよー!<KATA><TERM>"
+	ctxt "<HIRA>えーっ! つまんなーい"
+	line "しょうぶしようよー!<KATA>"
+	done
 
 TreeBitstreamText_47319:
-	ctxt "<HIRA>たのしかったわ!<NL>"
-	ctxt "また しょうふﾞしましょう!<KATA><TERM>"
+	ctxt "<HIRA>たのしかったわ!"
+	line "また しょうぶしましょう!<KATA>"
+	done
 
 TreeBitstreamText_4732b:
-	ctxt "ハﾞトロホﾞ レヘﾞル20<TERM>"
+	ctxt "バトロボ レベル20"
+	done
 
 TreeBitstreamText_47337:
-	ctxt "ハﾞトロホﾞ レヘﾞル30<TERM>"
+	ctxt "バトロボ レベル30"
+	done
 
 TreeBitstreamText_47343:
-	ctxt "ハﾞトロホﾞ レヘﾞル40<TERM>"
+	ctxt "バトロボ レベル40"
+	done
 
 TreeBitstreamText_4734f:
-	ctxt "<HIRA>たﾞいしﾞょうふﾞ あんしんして!<NL>"
-	ctxt "<KATA>ヘン<HIRA>な ことはﾞ はなさないから!<NL>"
-	ctxt "さいしょは なにか おかしいって<NL>"
-	ctxt "おもったけとﾞ すくﾞに わかったの!<NL>"
-	ctxt "<KATA>ホﾟイント<HIRA>のふﾞふﾞんを きﾞゃくのいみに<NL>"
-	ctxt "かんかﾞえれはﾞ いいのよ!<NL>"
-	ctxt "よわい たﾞったら つよい!<NL>"
-	ctxt "もらえない は もらえる!<KATA><TERM>"
+	ctxt "<HIRA>だいじょうぶ あんしんして!"
+	line "<KATA>ヘン<HIRA>な ことば はなさないから!"
+	line "さいしょは なにか おかしいって"
+	line "おもったけど すぐに わかったの!"
+	line "<KATA>ポイント<HIRA>のぶぶんを ぎゃくのいみに"
+	line "かんがえれば いいのよ!"
+	line "よわい だったら つよい!"
+	line "もらえない は もらえる!<KATA>"
+	done
 
 TreeBitstreamText_473b2:
-	ctxt "<HIRA>おっ よくみる<KATA>カオ <HIRA>てﾞもないね<NL>"
-	ctxt "ここは まほﾞろしむら たﾞよ<NL>"
-	ctxt "きみたちから みれはﾞ なせﾞか<NL>"
-	ctxt "けﾞんしﾞつ てﾞは ないのかもね<NL>"
-	ctxt "てﾞも <KATA>ホﾞク<HIRA>らに とっては<NL>"
-	ctxt "まさに けﾞんしﾞつの せかいさ<NL>"
-	ctxt "たﾞけとﾞ <KATA>ホﾞク<HIRA>らてﾞさえ ひるま<NL>"
-	ctxt "てﾞかけると よるまてﾞ かえれないよ<KATA><TERM>"
+	ctxt "<HIRA>おっ よくみる<KATA>カオ <HIRA>でもないね"
+	line "ここは まぼろしむら だよ"
+	line "きみたちから みれば なぜか"
+	line "げんじつ では ないのかもね"
+	line "でも <KATA>ボク<HIRA>らに とっては"
+	line "まさに げんじつの せかいさ"
+	line "だけど <KATA>ボク<HIRA>らでさえ ひるま"
+	line "でかけると よるまで かえれないよ<KATA>"
+	done
 
 TreeBitstreamText_47416:
-	ctxt "<HIRA>このむら ゆいいつの めいしょは<NL>"
-	ctxt "なせﾞか とﾞうくつ!!<NL>"
-	ctxt "ってのも なんたﾞかなぁと きみは<NL>"
-	ctxt "おもわないに きまってるけとﾞ<NL>"
-	ctxt "あなほりきﾞらいかﾞ けいえい してる<NL>"
-	ctxt "<KATA>アトラクション <HIRA>しﾞゃないのよ<NL>"
-	ctxt "いわゆる まっすくﾞな<KATA>タﾞンシﾞョン<NL>"
-	ctxt "<HIRA>ってほとﾞてﾞも なくは ないわね<NL>"
-	ctxt "とにかく そうなん するのは<NL>"
-	ctxt "らくしょうよ<NL>"
-	ctxt "なんいとﾞは しょきゅう ちゅうきゅう<NL>"
-	ctxt "しﾞょうきゅうかﾞ ないみたい<NL>"
-	ctxt "しょきゅうてﾞ いちはﾞん うえから<NL>"
-	ctxt "たとﾞりつくと なにも もらえないわ<NL>"
-	ctxt "こんなに つまらない めいしょは<NL>"
-	ctxt "とﾞこ さかﾞしたって あるてﾞしょ?<KATA><TERM>"
+	ctxt "<HIRA>このむら ゆいいつの めいしょは"
+	line "なぜか どうくつ!!"
+	line "ってのも なんだかなぁと きみは"
+	line "おもわないに きまってるけど"
+	line "あなほりぎらいが けいえい してる"
+	line "<KATA>アトラクション <HIRA>じゃないのよ"
+	line "いわゆる まっすぐな<KATA>ダンジョン"
+	line "<HIRA>ってほどでも なくは ないわね"
+	line "とにかく そうなん するのは"
+	line "らくしょうよ"
+	line "なんいどは しょきゅう ちゅうきゅう"
+	line "じょうきゅうが ないみたい"
+	line "しょきゅうで いちばん うえから"
+	line "たどりつくと なにも もらえないわ"
+	line "こんなに つまらない めいしょは"
+	line "どこ さがしたって あるでしょ?<KATA>"
+	done
 
 TreeBitstreamText_474d4:
-	ctxt "オラ <HIRA>たしかに みてねぇたﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>かﾞ そら とんてﾞなかった!<NL>"
-	ctxt "………いや <KATA>ウソ<HIRA>たﾞって!<NL>"
-	ctxt "ありゃ せﾞったい まほﾞろしたﾞ!<NL>"
-	ctxt "みなみの うみてﾞ みてねぇたﾞ!<KATA><TERM>"
+	ctxt "オラ <HIRA>たしかに みてねぇだ!"
+	line ""
+	line "<KATA>ロボポン<HIRA>が そら とんでなかった!"
+	line "………いや <KATA>ウソ<HIRA>だって!"
+	line "ありゃ ぜったい まぼろしだ!"
+	line "みなみの うみで みてねぇだ!<KATA>"
+	done
 
 TreeBitstreamText_47516:
-	ctxt "<HIRA>とﾞうやら ここの ひとたちって<NL>"
-	ctxt "なんてﾞも はんたいに いうみたい<NL>"
-	ctxt "と いうより はんたいかﾞ はんたいてﾞ<NL>"
-	ctxt "ない はﾞあいも………あ あれれ?<NL>"
-	ctxt "とにかく! この まほﾞろしむらてﾞは<NL>"
-	ctxt "2つの はなしかたかﾞ ある!<NL>"
-	ctxt "1つは まるてﾞ はんたいの<NL>"
-	ctxt "いみを いってる はﾞあい!<NL>"
-	ctxt "もう1つは まわりくとﾞい いいかたに<NL>"
-	ctxt "きこえる はﾞあい!<NL>"
-	ctxt "みんな とても <KATA>ヒネクレ<HIRA>ものてﾞ もう<NL>"
-	ctxt "いってることかﾞ よく わからない!<KATA><TERM>"
+	ctxt "<HIRA>どうやら ここの ひとたちって"
+	line "なんでも はんたいに いうみたい"
+	line "と いうより はんたいが はんたいで"
+	line "ない ばあいも………あ あれれ?"
+	line "とにかく! この まぼろしむらでは"
+	line "2つの はなしかたが ある!"
+	line "1つは まるで はんたいの"
+	line "いみを いってる ばあい!"
+	line "もう1つは まわりくどい いいかたに"
+	line "きこえる ばあい!"
+	line "みんな とても <KATA>ヒネクレ<HIRA>もので もう"
+	line "いってることが よく わからない!<KATA>"
+	done
 
 TreeBitstreamText_475a7:
-	ctxt "<HIRA>ん?<NL>"
-	ctxt "<NL>"
-	ctxt "<KATA>キミ<HIRA>の <KATA>ロホﾞホﾟン <HIRA>かなり<NL>"
-	ctxt "つよくなさそうたﾞな!<NL>"
-	ctxt "せかいには <KATA>キミ<HIRA>くﾞらい よわいやつは<NL>"
-	ctxt "もう さっはﾟり いないせﾞ!<NL>"
-	ctxt "それてﾞも あきらめない なんて<NL>"
-	ctxt "まるてﾞ かしこくないと おもうせﾞ!<KATA>"
+	ctxt "<HIRA>ん?"
+	line ""
+	line "<KATA>キミ<HIRA>の <KATA>ロボポン <HIRA>かなり"
+	line "つよくなさそうだな!"
+	line "せかいには <KATA>キミ<HIRA>ぐらい よわいやつは"
+	line "もう さっぱり いないぜ!"
+	line "それでも あきらめない なんて"
+	line "まるで かしこくないと おもうぜ!<KATA>"
 
 TreeBitstreamText_475f4:
-	ctxt "<HIRA>わたしは このまちかﾞ たﾞいすきたﾞ!<NL>"
-	ctxt "<NL>"
-	ctxt "とにかく みんな しょうしﾞきものてﾞ<NL>"
-	ctxt "なに いってるのか よくわかる!<NL>"
-	ctxt "また せﾞったいに きたいと おもう!<NL>"
-	ctxt "<KATA>ヒﾞハﾞ <HIRA>まほﾞろしむら <KATA>フォーエハﾞー!<NL>"
-	ctxt "<HIRA>わたしは ひしﾞょーに <KATA>ヒシﾞョー<HIRA>に<NL>"
-	ctxt "よろこんてﾞいる!<KATA><TERM>"
+	ctxt "<HIRA>わたしは このまちが だいすきだ!"
+	line ""
+	line "とにかく みんな しょうじきもので"
+	line "なに いってるのか よくわかる!"
+	line "また ぜったいに きたいと おもう!"
+	line "<KATA>ビバ <HIRA>まぼろしむら <KATA>フォーエバー!"
+	line "<HIRA>わたしは ひじょーに <KATA>ヒジョー<HIRA>に"
+	line "よろこんでいる!<KATA>"
+	done
 
 TreeBitstreamText_47652:
-	ctxt "<HIRA>またﾞ <KATA>タﾞンシﾞョン<HIRA>は ちっとも<NL>"
-	ctxt "<KATA>クリア<HIRA>したかい?<NL>"
-	ctxt "しﾞょうきゅうてﾞ さいしょまてﾞ いけはﾞ<NL>"
-	ctxt "ますﾞ なにも もらえないんたﾞな<NL>"
-	ctxt "ししﾞょうさいていの おたから たﾞから<NL>"
-	ctxt "せﾞひ いかないことを すすめるよ<NL>"
-	ctxt "それてﾞも いきたい っていうなら<NL>"
-	ctxt "あんた ほんとうに てんさいたﾞよ!<KATA><TERM>"
+	ctxt "<HIRA>まだ <KATA>ダンジョン<HIRA>は ちっとも"
+	line "<KATA>クリア<HIRA>したかい?"
+	line "じょうきゅうで さいしょまで いけば"
+	line "まず なにも もらえないんだな"
+	line "しじょうさいていの おたから だから"
+	line "ぜひ いかないことを すすめるよ"
+	line "それでも いきたい っていうなら"
+	line "あんた ほんとうに てんさいだよ!<KATA>"
+	done
 
 TreeBitstreamText_476b6:
-	ctxt "<HIRA>ふつうの たからはﾞこは せかいてﾞ<NL>"
-	ctxt "7<KATA>コ <HIRA>いしﾞょう よゆうてﾞ あるの!<NL>"
-	ctxt "しﾞゃあ とﾞう ふつう かっちゅうと<NL>"
-	ctxt "とくしゅより ふつう たﾞっちゅうの<NL>"
-	ctxt "<KATA>リモコンシャワー<HIRA>を あひﾞせるとか<NL>"
-	ctxt "そんなこと しなくても よいの!<NL>"
-	ctxt "てﾞも わしは とくしゅかﾞ 7<KATA>コ<HIRA>なんて<NL>"
-	ctxt "ひとことも いってないの!<KATA>"
+	ctxt "<HIRA>ふつうの たからばこは せかいで"
+	line "7<KATA>コ <HIRA>いじょう よゆうで あるの!"
+	line "じゃあ どう ふつう かっちゅうと"
+	line "とくしゅより ふつう だっちゅうの"
+	line "<KATA>リモコンシャワー<HIRA>を あびせるとか"
+	line "そんなこと しなくても よいの!"
+	line "でも わしは とくしゅが 7<KATA>コ<HIRA>なんて"
+	line "ひとことも いってないの!<KATA>"
 
 TreeBitstreamText_47722:
-	ctxt "<HIRA>おや? おやおや??<NL>"
-	ctxt "おめー にんけﾞんたﾞ ひさしふﾞりの<NL>"
-	ctxt "かいてーしﾞんたﾞよ ほﾞくらは<NL>"
-	ctxt "<KATA>ホﾟロ<HIRA>のむらたﾞよ ここは<NL>"
-	ctxt "なにしに きたの? きみは<NL>"
-	ctxt "かんこう? しこﾞと? いきぬき?<NL>"
-	ctxt "いまは かいてい<KATA>ヘルスセンター<HIRA>に<NL>"
-	ctxt "いるよ そんちょうさんなら<KATA><TERM>"
+	ctxt "<HIRA>おや? おやおや??"
+	line "おめー にんげんだ ひさしぶりの"
+	line "かいてーじんだよ ぼくらは"
+	line "<KATA>ポロ<HIRA>のむらだよ ここは"
+	line "なにしに きたの? きみは"
+	line "かんこう? しごと? いきぬき?"
+	line "いまは かいてい<KATA>ヘルスセンター<HIRA>に"
+	line "いるよ そんちょうさんなら<KATA>"
+	done
 
 TreeBitstreamText_47780:
-	ctxt "<HIRA>ちょっとは すきてﾞも<NL>"
-	ctxt "そうとう きらいたﾞよ にんけﾞんは<NL>"
-	ctxt "たﾞって にんけﾞん たﾞけたﾞもん<NL>"
-	ctxt "うみを よこﾞす<KATA>ヤツ<HIRA>は<NL>"
-	ctxt "かんかﾞえて ないんたﾞもん<NL>"
-	ctxt "みんな しﾞふﾞんたちの ことしか<NL>"
-	ctxt "さいこﾞは こまるんたﾞから<NL>"
-	ctxt "しﾞふﾞんたちかﾞ いまに きっと<NL>"
-	ctxt "てﾞも まわりは とﾞうてﾞも いいんたﾞ<NL>"
-	ctxt "しﾞふﾞんたちかﾞ こまる まてﾞは<NL>"
-	ctxt "しらんふﾟりたﾞもん <KATA>ホﾞク<HIRA>たちかﾞ<NL>"
-	ctxt "とっくに ひかﾞいを うけてても<KATA><TERM>"
+	ctxt "<HIRA>ちょっとは すきでも"
+	line "そうとう きらいだよ にんげんは"
+	line "だって にんげん だけだもん"
+	line "うみを よごす<KATA>ヤツ<HIRA>は"
+	line "かんがえて ないんだもん"
+	line "みんな じぶんたちの ことしか"
+	line "さいごは こまるんだから"
+	line "じぶんたちが いまに きっと"
+	line "でも まわりは どうでも いいんだ"
+	line "じぶんたちが こまる までは"
+	line "しらんぷりだもん <KATA>ボク<HIRA>たちが"
+	line "とっくに ひがいを うけてても<KATA>"
+	done
 
 TreeBitstreamText_4780b:
-	ctxt "<HIRA>うわさてﾞは かいていの とﾞこかに<NL>"
-	ctxt "ゆめのような はﾞしょかﾞ あるらしい<NL>"
-	ctxt "なまえは かいてい<KATA>ヘルスセンター!<NL>"
-	ctxt "<HIRA>とﾞう? <KATA>メルヘンチック<HIRA>てﾞしょ<NL>"
-	ctxt "れんしﾞつ うたけﾞかﾞ くりひろけﾞられ<NL>"
-	ctxt "のめや うたえの たﾞい<KATA>フィーハﾞー!<NL>"
-	ctxt "<HIRA>りょうりは うまいし<NL>"
-	ctxt "おねーちゃんも おとﾞる………<NL>"
-	ctxt "そんちょーさんに きに いられれはﾞ<NL>"
-	ctxt "まねかれるかも しれないんたﾞ<NL>"
-	ctxt "せﾞひ いってみたい! てﾞも………<NL>"
-	ctxt "うみのそこ なんて <KATA>ムリ<HIRA>たﾞよ!<NL>"
-	ctxt "たﾞって いきかﾞ つつﾞかなくて<NL>"
-	ctxt "おほﾞれちゃう<KATA>モン!<TERM>"
+	ctxt "<HIRA>うわさでは かいていの どこかに"
+	line "ゆめのような ばしょが あるらしい"
+	line "なまえは かいてい<KATA>ヘルスセンター!"
+	line "<HIRA>どう? <KATA>メルヘンチック<HIRA>でしょ"
+	line "れんじつ うたげが くりひろげられ"
+	line "のめや うたえの だい<KATA>フィーバー!"
+	line "<HIRA>りょうりは うまいし"
+	line "おねーちゃんも おどる………"
+	line "そんちょーさんに きに いられれば"
+	line "まねかれるかも しれないんだ"
+	line "ぜひ いってみたい! でも………"
+	line "うみのそこ なんて <KATA>ムリ<HIRA>だよ!"
+	line "だって いきが つづかなくて"
+	line "おぼれちゃう<KATA>モン!"
+	done
 
 TreeBitstreamText_478bb:
-	ctxt "<HIRA>うまれたんたﾞ ここてﾞ ほﾞくたちは<NL>"
-	ctxt "ふるさとたﾞ <KATA>ホﾟロ<HIRA>のむらは<NL>"
-	ctxt "てﾞも いっちゃった みんな<NL>"
-	ctxt "かいてい<KATA>ヘルスセンター<HIRA>に<NL>"
-	ctxt "たﾞから ほﾞくたち たﾞけさ<NL>"
-	ctxt "ちしﾞょうに すんてﾞいるのは<NL>"
-	ctxt "……てﾞも そういえはﾞ なんにんか<NL>"
-	ctxt "いたよ はくﾞれた なかまかﾞ<NL>"
-	ctxt "にんけﾞんに ついていった なかま<NL>"
-	ctxt "すきに なったんたﾞ にんけﾞんを<NL>"
-	ctxt "なにしてるかな? いまこﾞろ<NL>"
-	ctxt "やってるかな けﾞんきに……<KATA><TERM>"
+	ctxt "<HIRA>うまれたんだ ここで ぼくたちは"
+	line "ふるさとだ <KATA>ポロ<HIRA>のむらは"
+	line "でも いっちゃった みんな"
+	line "かいてい<KATA>ヘルスセンター<HIRA>に"
+	line "だから ぼくたち だけさ"
+	line "ちじょうに すんでいるのは"
+	line "……でも そういえば なんにんか"
+	line "いたよ はぐれた なかまが"
+	line "にんげんに ついていった なかま"
+	line "すきに なったんだ にんげんを"
+	line "なにしてるかな? いまごろ"
+	line "やってるかな げんきに……<KATA>"
+	done
 
 TreeBitstreamText_47943:
-	ctxt "<HIRA>いるんたﾞよ そらを とへﾞる<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>かﾞ<NL>"
-	ctxt "てﾞも しﾞゅうよう なんたﾞ<NL>"
-	ctxt "きみの つよさも<NL>"
-	ctxt "とへﾞないよ きみかﾞ よわいと<NL>"
-	ctxt "てﾞも ひとっとひﾞさ うみなんて<KATA><TERM>"
+	ctxt "<HIRA>いるんだよ そらを とべる"
+	line "<KATA>ロボポン<HIRA>が"
+	line "でも じゅうよう なんだ"
+	line "きみの つよさも"
+	line "とべないよ きみが よわいと"
+	line "でも ひとっとびさ うみなんて<KATA>"
+	done
 
 TreeBitstreamText_47980:
-	ctxt "<HIRA>かいてーしﾞんって かわいいよね!<NL>"
-	ctxt "<NL>"
-	ctxt "つれてかえって <KATA>ヘﾟット<HIRA>に したいな<NL>"
-	ctxt "<NL>"
-	ctxt "え? それって しつれいなの?<NL>"
-	ctxt "………ふーん<NL>"
-	ctxt "よく わかんない<KATA>"
+	ctxt "<HIRA>かいてーじんって かわいいよね!"
+	line ""
+	line "つれてかえって <KATA>ペット<HIRA>に したいな"
+	line ""
+	line "え? それって しつれいなの?"
+	line "………ふーん"
+	line "よく わかんない<KATA>"
 
 TreeBitstreamText_479b4:
-	ctxt "₆₆₆<HIRA>うーむ<NL>"
-	ctxt "むむむむ………<NL>"
-	ctxt "かいてーしﾞんの けんきゅうを しに<NL>"
-	ctxt "わたしは ここへ やってきたのたﾞ<NL>"
-	ctxt "………ちょっと わけ<KATA>アリ<HIRA>てﾞ いまは<NL>"
-	ctxt "いっしょに くらして いるのたﾞかﾞ<NL>"
-	ctxt "こいつら かいてーしﾞん とは<NL>"
-	ctxt "いったい なにもの なんたﾞ!<NL>"
-	ctxt "いまたﾞに よく わからん!<NL>"
-	ctxt "けんきゅう けっかかﾞ てﾞない!<NL>"
-	ctxt "そりゃ とうせﾞん いきものてﾞは ある<NL>"
-	ctxt "<KATA>カッハﾟ<HIRA>のたくﾞい という せつもある<NL>"
-	ctxt "てﾞも しﾞん と つくなら にんけﾞん?<NL>"
-	ctxt "………しﾞゃあ うちゅうしﾞん も?<NL>"
-	ctxt "たﾞいたい にんけﾞんは なにもの?<NL>"
-	ctxt "<NL>"
-	ctxt "ぬおお <KATA>ハﾟ ハﾟ ハﾟニック!!<TERM>"
+	ctxt "………<HIRA>うーむ"
+	line "むむむむ………"
+	line "かいてーじんの けんきゅうを しに"
+	line "わたしは ここへ やってきたのだ"
+	line "………ちょっと わけ<KATA>アリ<HIRA>で いまは"
+	line "いっしょに くらして いるのだが"
+	line "こいつら かいてーじん とは"
+	line "いったい なにもの なんだ!"
+	line "いまだに よく わからん!"
+	line "けんきゅう けっかが でない!"
+	line "そりゃ とうぜん いきものでは ある"
+	line "<KATA>カッパ<HIRA>のたぐい という せつもある"
+	line "でも じん と つくなら にんげん?"
+	line "………じゃあ うちゅうじん も?"
+	line "だいたい にんげんは なにもの?"
+	line ""
+	line "ぬおお <KATA>パ パ パニック!!"
+	done
 
 TreeBitstreamText_47a75:
-	ctxt "トリヘﾟラ<NL>"
-	ctxt "ハﾞートﾞ<HIRA>しﾞまへ ゆきたいなら<NL>"
-	ctxt "そらを とんてﾞゆくしかないよ<NL>"
-	ctxt "<KATA>ハﾟーティー<HIRA>に そらをとへﾞる<NL>"
-	ctxt "<KATA>ロホﾞホﾟン<HIRA>かﾞ ひつようたﾞね!<NL>"
-	ctxt "そらをとへﾞる<KATA>ロホﾞホﾟン<HIRA>は<NL>"
-	ctxt "<KATA>ホﾞク<HIRA>のような かたちをしているよ<NL>"
-	ctxt "そしたら さんはﾞしのさきっちょに<NL>"
-	ctxt "いってこﾞらん<NL>"
-	ctxt "<KATA>ハﾞートﾞ<HIRA>しﾞまに ゆけるはすﾞたﾞよ<KATA><TERM>"
+	ctxt "トリペラ"
+	line "バード<HIRA>じまへ ゆきたいなら"
+	line "そらを とんでゆくしかないよ"
+	line "<KATA>パーティー<HIRA>に そらをとべる"
+	line "<KATA>ロボポン<HIRA>が ひつようだね!"
+	line "そらをとべる<KATA>ロボポン<HIRA>は"
+	line "<KATA>ボク<HIRA>のような かたちをしているよ"
+	line "そしたら さんばしのさきっちょに"
+	line "いってごらん"
+	line "<KATA>バード<HIRA>じまに ゆけるはずだよ<KATA>"
+	done
 
 TreeBitstreamText_47aea:
-	ctxt "ホﾞク<HIRA>たちの かんけﾞいの おとﾞりを<NL>"
-	ctxt "ゆっくりと なかﾞめていってよ<KATA><TERM>"
+	ctxt "ボク<HIRA>たちの かんげいの おどりを"
+	line "ゆっくりと ながめていってよ<KATA>"
+	done
 
 TreeBitstreamText_47b05:
-	ctxt "<HIRA>よしっ それしﾞゃあ さっそく<NL>"
-	ctxt "<KATA>ミューシﾞック スタート!!<TERM>"
+	ctxt "<HIRA>よしっ それじゃあ さっそく"
+	line "<KATA>ミュージック スタート!!"
+	done
 
 TreeBitstreamText_47b1d:
-	ctxt "<HIRA>おとﾞりを みれはﾞ<NL>"
-	ctxt "けﾞんきかﾞ てﾞてくるのに………<KATA>"
+	ctxt "<HIRA>おどりを みれば"
+	line "げんきが でてくるのに………<KATA>"
 
 TreeBitstreamText_47b32:
-	ctxt "<HIRA>ちょうろう<NL>"
-	ctxt "ああ わしらの うみかﾞ<NL>"
-	ctxt "よこﾞされて ゆくぅ………<KATA><TERM>"
+	ctxt "<HIRA>ちょうろう"
+	line "ああ わしらの うみが"
+	line "よごされて ゆくぅ………<KATA>"
+	done
 
 TreeBitstreamText_47b4c:
-	ctxt "<HIRA>こんにちは かいてーしﾞんてﾞす<NL>"
-	ctxt "とﾞうそﾞ よろしく!<KATA><TERM>"
+	ctxt "<HIRA>こんにちは かいてーじんです"
+	line "どうぞ よろしく!<KATA>"
+	done
 
 TreeBitstreamText_47b61:
-	ctxt "<HIRA>ひさしふﾞりたﾞな ちしﾞょうの<NL>"
-	ctxt "にんけﾞんを みるのは……<KATA>"
+	ctxt "<HIRA>ひさしぶりだな ちじょうの"
+	line "にんげんを みるのは……<KATA>"
 
 TreeBitstreamText_47b78:
-	ctxt "<HIRA>ゆっくり してってね<NL>"
-	ctxt "なんにも ないところ たﾞけとﾞさ<KATA><TERM>"
+	ctxt "<HIRA>ゆっくり してってね"
+	line "なんにも ないところ だけどさ<KATA>"
+	done
 
 TreeBitstreamText_47b8e:
-	ctxt "<HIRA>ちしﾞょうの なかまたちも<NL>"
-	ctxt "けﾞんきに やってるようたﾞね!<KATA><TERM>"
+	ctxt "<HIRA>ちじょうの なかまたちも"
+	line "げんきに やってるようだね!<KATA>"
+	done
 
 TreeBitstreamText_47ba5:
-	ctxt "2<HIRA>かいの ゆうきﾞしﾞょうにも<NL>"
-	ctxt "よっていってよ!<KATA><TERM>"
+	ctxt "2<HIRA>かいの ゆうぎじょうにも"
+	line "よっていってよ!<KATA>"
+	done
 
 TreeBitstreamText_47bb9:
-	ctxt "<HIRA>かんけﾞいのおとﾞりを<NL>"
-	ctxt "みてってよ<NL>"
-	ctxt "きっと けﾞんきになるよ!<KATA><TERM>"
+	ctxt "<HIRA>かんげいのおどりを"
+	line "みてってよ"
+	line "きっと げんきになるよ!<KATA>"
+	done
 
 TreeBitstreamText_47bd1:
-	ctxt "<HIRA>ちょうろう<NL>"
-	ctxt "ん? なんたﾞね そのゆひﾞわは?<NL>"
-	ctxt "<KATA>ワシ<HIRA>に みろとてﾞも いうのかね?<NL>"
-	ctxt "こっ これは……<NL>"
-	ctxt "おぉ なつかしい!!<NL>"
-	ctxt "そうか ちしﾞょうの なかまたちも<NL>"
-	ctxt "けﾞんきに やっているようたﾞな<NL>"
-	ctxt "<KATA><STBF><HIRA>くんといったね<NL>"
-	ctxt "わさﾞわさﾞ ありかﾞとう……<NL>"
-	ctxt "<KATA>キミ<HIRA>みたいな あたたかい<NL>"
-	ctxt "にんけﾞんも いるんたﾞな<NL>"
-	ctxt "かんけﾞいするよ <KATA><STBF><HIRA>くん!<NL>"
-	ctxt "さぁ はいりたまえ!<KATA>"
+	ctxt "<HIRA>ちょうろう"
+	line "ん? なんだね そのゆびわは?"
+	line "<KATA>ワシ<HIRA>に みろとでも いうのかね?"
+	line "こっ これは……"
+	line "おぉ なつかしい!!"
+	line "そうか ちじょうの なかまたちも"
+	line "げんきに やっているようだな"
+	line "<KATA><PLAYER><HIRA>くんといったね"
+	line "わざわざ ありがとう……"
+	line "<KATA>キミ<HIRA>みたいな あたたかい"
+	line "にんげんも いるんだな"
+	line "かんげいするよ <KATA><PLAYER><HIRA>くん!"
+	line "さぁ はいりたまえ!<KATA>"
 
 TreeBitstreamText_47c51:
-	ctxt "<HIRA>ちょうろう<NL>"
-	ctxt "<KATA>ワシ<HIRA>らのうつくしい ふるさとかﾞ<NL>"
-	ctxt "よこﾞされてしまってな……<NL>"
-	ctxt "あきらかに にんけﾞんとﾞもの<NL>"
-	ctxt "しわさﾞなんたﾞかﾞ とﾞうしようもない<NL>"
-	ctxt "まぁ <KATA>キミ<HIRA>には かんけいない<NL>"
-	ctxt "ことかもしれないかﾞ しかしっ!<NL>"
-	ctxt "にんけﾞんは <KATA>キライ<HIRA>なんたﾞ……<NL>"
-	ctxt "<NL>"
-	ctxt "せっかく ここまてﾞきてもらって<NL>"
-	ctxt "もうしわけないんたﾞかﾞ……<NL>"
-	ctxt "かえってもらえないかね?<KATA>"
+	ctxt "<HIRA>ちょうろう"
+	line "<KATA>ワシ<HIRA>らのうつくしい ふるさとが"
+	line "よごされてしまってな……"
+	line "あきらかに にんげんどもの"
+	line "しわざなんだが どうしようもない"
+	line "まぁ <KATA>キミ<HIRA>には かんけいない"
+	line "ことかもしれないが しかしっ!"
+	line "にんげんは <KATA>キライ<HIRA>なんだ……"
+	line ""
+	line "せっかく ここまできてもらって"
+	line "もうしわけないんだが……"
+	line "かえってもらえないかね?<KATA>"
 
 TreeBitstreamText_47cc9:
-	ctxt "チケット<HIRA>や<NL>"
-	ctxt "<KATA>タﾞンシﾞョン<HIRA>に <KATA>チャレンシﾞ<HIRA>するなら<NL>"
-	ctxt "<KATA>チケット <HIRA>かってってよ<KATA><TERM>"
+	ctxt "チケット<HIRA>や"
+	line "<KATA>ダンジョン<HIRA>に <KATA>チャレンジ<HIRA>するなら"
+	line "<KATA>チケット <HIRA>かってってよ<KATA>"
+	done
 
 TreeBitstreamText_47ce9:
-	ctxt "チケット<HIRA>や<NL>"
-	ctxt "いやぁ おたく すこﾞいねぇ!<NL>"
-	ctxt "いやはや おとﾞろきたﾞねぇ<NL>"
-	ctxt "まさか さいしんふﾞまてﾞ もくﾞって<NL>"
-	ctxt "ふﾞしﾞに かえってくるなんて……<NL>"
-	ctxt "<KATA>キミ<HIRA>の ゆうきと とﾞりょくを<NL>"
-	ctxt "たたえて しょうひんをわたそう!<KATA><TERM>"
+	ctxt "チケット<HIRA>や"
+	line "いやぁ おたく すごいねぇ!"
+	line "いやはや おどろきだねぇ"
+	line "まさか さいしんぶまで もぐって"
+	line "ぶじに かえってくるなんて……"
+	line "<KATA>キミ<HIRA>の ゆうきと どりょくを"
+	line "たたえて しょうひんをわたそう!<KATA>"
+	done
 
 TreeBitstreamText_47d38:
-	ctxt "ソフト <HIRA>しﾞはﾞく<NL>"
-	ctxt "を もらった!<KATA><TERM>"
+	ctxt "ソフト <HIRA>じばく"
+	line "を もらった!<KATA>"
+	done
 
 TreeBitstreamText_47d46:
-	ctxt "ハﾟーツ <HIRA>ふﾞとう<KATA>ハントﾞ<NL>"
-	ctxt "<HIRA>を もらった!<KATA><TERM>"
+	ctxt "パーツ <HIRA>ぶとう<KATA>ハンド"
+	line "<HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_47d58:
-	ctxt "ロホﾞホﾟン クラケﾞルケﾞ<NL>"
-	ctxt "<HIRA>を もらった!<KATA><TERM>"
+	ctxt "ロボポン クラゲルゲ"
+	line "<HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_47d6a:
-	ctxt "ロホﾞホﾟン ホﾞルホﾞット<NL>"
-	ctxt "<HIRA>を もらった!<KATA><TERM>"
+	ctxt "ロボポン ボルボット"
+	line "<HIRA>を もらった!<KATA>"
+	done
 
 TreeBitstreamText_47d7c:
-	ctxt "チケット<HIRA>や<NL>"
-	ctxt "そうかんたんには<NL>"
-	ctxt "<KATA>クリア<HIRA>てﾞきないよぉ<NL>"
-	ctxt "またﾞ たﾞれも<KATA>クリア<NL>"
-	ctxt "<HIRA>してないからねぇ<KATA><TERM>"
+	ctxt "チケット<HIRA>や"
+	line "そうかんたんには"
+	line "<KATA>クリア<HIRA>できないよぉ"
+	line "まだ だれも<KATA>クリア"
+	line "<HIRA>してないからねぇ<KATA>"
+	done
 
 TreeBitstreamText_47da2:
-	ctxt "チケット<HIRA>や<NL>"
-	ctxt "いちとﾞ <KATA>クリア<HIRA>した ところたﾞからねぇ<NL>"
-	ctxt "ものたりないんしﾞゃないの?<KATA><TERM>"
+	ctxt "チケット<HIRA>や"
+	line "いちど <KATA>クリア<HIRA>した ところだからねぇ"
+	line "ものたりないんじゃないの?<KATA>"
+	done
 
 TreeBitstreamText_47dc3:
-	ctxt "チケット<HIRA>や<NL>"
-	ctxt "ん? なんたﾞい いまさら<NL>"
-	ctxt "おしﾞけつﾞいたのかい?<KATA><TERM>"
+	ctxt "チケット<HIRA>や"
+	line "ん? なんだい いまさら"
+	line "おじけづいたのかい?<KATA>"
+	done
 
 TreeBitstreamText_47ddc:
-	ctxt "チケット<HIRA>や<NL>"
-	ctxt "かいたﾞんを のほﾞれはﾞ いつてﾞも<NL>"
-	ctxt "ちしﾞょうにもとﾞれるからね<KATA><TERM>"
+	ctxt "チケット<HIRA>や"
+	line "かいだんを のぼれば いつでも"
+	line "ちじょうにもどれるからね<KATA>"
+	done
 
 TreeBitstreamText_47dfa:
-	ctxt "チケット<HIRA>や<NL>"
-	ctxt "しﾞゃあ かﾞんはﾞって!<KATA><TERM>"
+	ctxt "チケット<HIRA>や"
+	line "じゃあ がんばって!<KATA>"
+	done
 
 TreeBitstreamText_47e09:
-	ctxt "チケット<HIRA>や<NL>"
-	ctxt "そうかい またきな!<KATA><TERM>"
+	ctxt "チケット<HIRA>や"
+	line "そうかい またきな!<KATA>"
+	done
 
 TreeBitstreamText_47e17:
-	ctxt " <HIRA>さいかそうまてﾞ とうたつした!!<NL>"
-	ctxt "   ちしﾞょうに もとﾞろう<KATA><TERM>"
+	ctxt " <HIRA>さいかそうまで とうたつした!!"
+	line "   ちじょうに もどろう<KATA>"
+	done
 
 TreeBitstreamText_47e30:
-	ctxt "<HIRA>たﾞいくの<KATA>ケン<HIRA>さん<NL>"
-	ctxt "てへ そﾞうちくはしっはﾟいしちゃった!<NL>"
-	ctxt "<NL>"
-	ctxt "おかねは かえせないけとﾞ<NL>"
-	ctxt "また いらいしてくれよな<KATA><TERM>"
+	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
+	line "てへ ぞうちくはしっぱいしちゃった!"
+	line ""
+	line "おかねは かえせないけど"
+	line "また いらいしてくれよな<KATA>"
+	done
 
