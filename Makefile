@@ -1,4 +1,5 @@
 PYTHON := python2.7
+PYTHON3 := python3.4
 MD5 := md5sum -c --quiet
 
 RZ       := $(PYTHON) rz.py compress
@@ -12,6 +13,7 @@ objs := \
 	sram.o \
 	vram.o \
 	gfx.o \
+	text.o \
 	main.o
 
 sun_objs := $(objs:.o=_sun.o)
@@ -47,6 +49,9 @@ clean: tidy
 %.asm: ;
 %.tm: ;
 %.png: ;
+
+%.ctf: %.asm
+	$(PYTHON3) textcomp.py $<
 
 %.2bpp: %.png
 	$(2bpp) $<

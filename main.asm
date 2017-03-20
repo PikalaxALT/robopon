@@ -11740,19 +11740,6 @@ ENDC
 SECTION "Bank 0d", ROMX, BANK [$0d]
 	dr $34000, $37ec0
 
-SECTION "Bank 0e", ROMX, BANK [$0e]
-TextTreeBitstreams:
-	dr $38000, $3c000
-
-SECTION "Bank 0f", ROMX, BANK [$0f]
-	dr $3c000, $40000
-
-SECTION "Bank 10", ROMX, BANK [$10]
-	dr $40000, $44000
-
-SECTION "Bank 11", ROMX, BANK [$11]
-	dr $44000, $48000
-
 SECTION "Bank 12", ROMX, BANK [$12]
 	dr $48000, $4b8ac
 

@@ -1,2025 +1,2031 @@
 SECTION "Tree Bitstream Text Pointers", ROMX [$4000], BANK [$0e]
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fae
-	dw TreeBitstreamText_38fbd
-	dw TreeBitstreamText_38fc9
-	dw TreeBitstreamText_38fe6
-	dw TreeBitstreamText_3902d
-	dw TreeBitstreamText_39084
-	dw TreeBitstreamText_390b4
-	dw TreeBitstreamText_390d1
-	dw TreeBitstreamText_390e8
-	dw TreeBitstreamText_3911a
-	dw TreeBitstreamText_3914e
-	dw TreeBitstreamText_39167
-	dw TreeBitstreamText_3917e
-	dw TreeBitstreamText_391fd
-	dw TreeBitstreamText_39235
-	dw TreeBitstreamText_39257
-	dw TreeBitstreamText_3926c
-	dw TreeBitstreamText_39295
-	dw TreeBitstreamText_392ba
-	dw TreeBitstreamText_39369
-	dw TreeBitstreamText_3969a
-	dw TreeBitstreamText_396d0
-	dw TreeBitstreamText_396ec
-	dw TreeBitstreamText_396fd
-	dw TreeBitstreamText_39718
-	dw TreeBitstreamText_3972e
-	dw TreeBitstreamText_39760
-	dw TreeBitstreamText_3976c
-	dw TreeBitstreamText_3f406
-	dw TreeBitstreamText_397b1
-	dw TreeBitstreamText_47d6a
-	dw TreeBitstreamText_397dc
-	dw TreeBitstreamText_397ed
-	dw TreeBitstreamText_397f7
-	dw TreeBitstreamText_3981d
-	dw TreeBitstreamText_39839
-	dw TreeBitstreamText_39847
-	dw TreeBitstreamText_3985c
-	dw TreeBitstreamText_39889
-	dw TreeBitstreamText_398ba
-	dw TreeBitstreamText_398e4
-	dw TreeBitstreamText_39944
-	dw TreeBitstreamText_39953
-	dw TreeBitstreamText_3a89f
-	dw TreeBitstreamText_46d18
-	dw TreeBitstreamText_399f1
-	dw TreeBitstreamText_39a27
-	dw TreeBitstreamText_39a42
-	dw TreeBitstreamText_39a5f
-	dw TreeBitstreamText_39a7b
-	dw TreeBitstreamText_39a8f
-	dw TreeBitstreamText_39b0b
-	dw TreeBitstreamText_39b45
-	dw TreeBitstreamText_39ba9
-	dw TreeBitstreamText_39cd9
-	dw TreeBitstreamText_39eb7
-	dw TreeBitstreamText_39ed3
-	dw TreeBitstreamText_39ef3
-	dw TreeBitstreamText_3b973
-	dw TreeBitstreamText_39f37
-	dw TreeBitstreamText_39f4e
-	dw TreeBitstreamText_39f5f
-	dw TreeBitstreamText_3a00a
-	dw TreeBitstreamText_3a024
-	dw TreeBitstreamText_3a03a
-	dw TreeBitstreamText_3a097
-	dw TreeBitstreamText_3a2e2
-	dw TreeBitstreamText_3a308
-	dw TreeBitstreamText_3a349
-	dw TreeBitstreamText_3a368
-	dw TreeBitstreamText_3a38a
-	dw TreeBitstreamText_3a3ac
-	dw TreeBitstreamText_3a3c2
-	dw TreeBitstreamText_3a3dc
-	dw TreeBitstreamText_3a420
-	dw TreeBitstreamText_3a556
-	dw TreeBitstreamText_3a5a7
-	dw TreeBitstreamText_3a5cb
-	dw TreeBitstreamText_3a5e6
-	dw TreeBitstreamText_3a605
-	dw TreeBitstreamText_3a61d
-	dw TreeBitstreamText_3a62c
-	dw TreeBitstreamText_3a64f
-	dw TreeBitstreamText_3a6a3
-	dw TreeBitstreamText_3a6e6
-	dw TreeBitstreamText_3a662
-	dw TreeBitstreamText_3a6fa
-	dw TreeBitstreamText_3a765
-	dw TreeBitstreamText_3a7e7
-	dw TreeBitstreamText_3a7fb
-	dw TreeBitstreamText_3a8c3
-	dw TreeBitstreamText_3a8e1
-	dw TreeBitstreamText_3a92f
-	dw TreeBitstreamText_3a966
-	dw TreeBitstreamText_3a97f
-	dw TreeBitstreamText_3a995
-	dw TreeBitstreamText_3a9e8
-	dw TreeBitstreamText_3a9f3
-	dw TreeBitstreamText_3aa23
-	dw TreeBitstreamText_3aa4c
-	dw TreeBitstreamText_3aaa0
-	dw TreeBitstreamText_3aabf
-	dw TreeBitstreamText_3aadf
-	dw TreeBitstreamText_472d8
-	dw TreeBitstreamText_3aafc
-	dw TreeBitstreamText_46e5d
-	dw TreeBitstreamText_3ab2b
-	dw TreeBitstreamText_3ab80
-	dw TreeBitstreamText_3ad48
-	dw TreeBitstreamText_3ad7f
-	dw TreeBitstreamText_3ad91
-	dw TreeBitstreamText_3adae
-	dw TreeBitstreamText_3add4
-	dw TreeBitstreamText_3ae53
-	dw TreeBitstreamText_3ae6a
-	dw TreeBitstreamText_3aea4
-	dw TreeBitstreamText_3aef1
-	dw TreeBitstreamText_3af00
-	dw TreeBitstreamText_3af20
-	dw TreeBitstreamText_3af3a
-	dw TreeBitstreamText_3af58
-	dw TreeBitstreamText_3af8c
-	dw TreeBitstreamText_3afbf
-	dw TreeBitstreamText_3afdd
-	dw TreeBitstreamText_3b02c
-	dw TreeBitstreamText_3b060
-	dw TreeBitstreamText_3b219
-	dw TreeBitstreamText_3b22d
-	dw TreeBitstreamText_4257c
-	dw TreeBitstreamText_3b2db
-	dw TreeBitstreamText_3b324
-	dw TreeBitstreamText_3b36e
-	dw TreeBitstreamText_3b3c0
-	dw TreeBitstreamText_3b412
-	dw TreeBitstreamText_3b447
-	dw TreeBitstreamText_3b481
-	dw TreeBitstreamText_3b605
-	dw TreeBitstreamText_3b676
-	dw TreeBitstreamText_3b6ef
-	dw TreeBitstreamText_3b6fb
-	dw TreeBitstreamText_3b731
-	dw TreeBitstreamText_3b762
-	dw TreeBitstreamText_3b77b
-	dw TreeBitstreamText_3b7a6
-	dw TreeBitstreamText_3b7f7
-	dw TreeBitstreamText_3b860
-	dw TreeBitstreamText_3b8b8
-	dw TreeBitstreamText_3b8f2
-	dw TreeBitstreamText_3b942
-	dw TreeBitstreamText_3b9f6
-	dw TreeBitstreamText_3ba23
-	dw TreeBitstreamText_3babb
-	dw TreeBitstreamText_3baee
-	dw TreeBitstreamText_3bb2b
-	dw TreeBitstreamText_4600d
-	dw TreeBitstreamText_3bbab
-	dw TreeBitstreamText_3bc38
-	dw TreeBitstreamText_3bc83
-	dw TreeBitstreamText_3bd02
-	dw TreeBitstreamText_3bd87
-	dw TreeBitstreamText_3bdc2
-	dw TreeBitstreamText_3be8e
-	dw TreeBitstreamText_3bf25
-	dw TreeBitstreamText_3bf4b
-	dw TreeBitstreamText_3bf50
-	dw TreeBitstreamText_3bf85
-	dw TreeBitstreamText_3bf8e
-	dw TreeBitstreamText_3bfc1
-	dw TreeBitstreamText_3c000
-	dw TreeBitstreamText_3c04e
-	dw TreeBitstreamText_3c0ca
-	dw TreeBitstreamText_3c0de
-	dw TreeBitstreamText_3c13a
-	dw TreeBitstreamText_3c305
-	dw TreeBitstreamText_3c35b
-	dw TreeBitstreamText_3c390
-	dw TreeBitstreamText_3c3bd
-	dw TreeBitstreamText_46dc3
-	dw TreeBitstreamText_46d3b
-	dw TreeBitstreamText_3c4ab
-	dw TreeBitstreamText_3c69d
-	dw TreeBitstreamText_3c4f2
-	dw TreeBitstreamText_3c6ad
-	dw TreeBitstreamText_3c6be
-	dw TreeBitstreamText_3c6ce
-	dw TreeBitstreamText_3c6dd
-	dw TreeBitstreamText_3c6ec
-	dw TreeBitstreamText_3c707
-	dw TreeBitstreamText_3c7b1
-	dw TreeBitstreamText_3c437
-	dw TreeBitstreamText_3c46d
-	dw TreeBitstreamText_3c51f
-	dw TreeBitstreamText_3c552
-	dw TreeBitstreamText_3c5a0
-	dw TreeBitstreamText_3c5cf
-	dw TreeBitstreamText_3c61c
-	dw TreeBitstreamText_3c65d
-	dw TreeBitstreamText_3c66a
-	dw TreeBitstreamText_3c677
-	dw TreeBitstreamText_3c7ea
-	dw TreeBitstreamText_3c810
-	dw TreeBitstreamText_3c83b
-	dw TreeBitstreamText_3c859
-	dw TreeBitstreamText_3c878
-	dw TreeBitstreamText_3c8aa
-	dw TreeBitstreamText_3c8d2
-	dw TreeBitstreamText_3c901
-	dw TreeBitstreamText_3c90e
-	dw TreeBitstreamText_3c925
-	dw TreeBitstreamText_3c973
-	dw TreeBitstreamText_3c983
-	dw TreeBitstreamText_3c9c1
-	dw TreeBitstreamText_3ca00
-	dw TreeBitstreamText_3ca1c
-	dw TreeBitstreamText_3ca51
-	dw TreeBitstreamText_3ca60
-	dw TreeBitstreamText_3ca8a
-	dw TreeBitstreamText_3ca99
-	dw TreeBitstreamText_3cac2
-	dw TreeBitstreamText_3cae8
-	dw TreeBitstreamText_3cb14
-	dw TreeBitstreamText_3cb2d
-	dw TreeBitstreamText_3cbab
-	dw TreeBitstreamText_3cbf7
-	dw TreeBitstreamText_3cc4d
-	dw TreeBitstreamText_3cc61
-	dw TreeBitstreamText_3ccf9
-	dw TreeBitstreamText_3cd08
-	dw TreeBitstreamText_3cdce
-	dw TreeBitstreamText_3ce14
-	dw TreeBitstreamText_3cec2
-	dw TreeBitstreamText_3cefd
-	dw TreeBitstreamText_3d278
-	dw TreeBitstreamText_3d2d1
-	dw TreeBitstreamText_3d37a
-	dw TreeBitstreamText_3d3ba
-	dw TreeBitstreamText_3d404
-	dw TreeBitstreamText_3d442
-	dw TreeBitstreamText_3d465
-	dw TreeBitstreamText_3d4a3
-	dw TreeBitstreamText_3d51a
-	dw TreeBitstreamText_3d59c
-	dw TreeBitstreamText_47aea
-	dw TreeBitstreamText_3d5d0
-	dw TreeBitstreamText_3d60c
-	dw TreeBitstreamText_3d63e
-	dw TreeBitstreamText_47e17
-	dw TreeBitstreamText_3d66c
-	dw TreeBitstreamText_3d6c8
-	dw TreeBitstreamText_3d727
-	dw TreeBitstreamText_3d76a
-	dw TreeBitstreamText_3d793
-	dw TreeBitstreamText_3cf5a
-	dw TreeBitstreamText_3d001
-	dw TreeBitstreamText_45e29
-	dw TreeBitstreamText_4059e
-	dw TreeBitstreamText_3d098
-	dw TreeBitstreamText_3d0e0
-	dw TreeBitstreamText_3d160
-	dw TreeBitstreamText_3d187
-	dw TreeBitstreamText_3d1c4
-	dw TreeBitstreamText_3d1d1
-	dw TreeBitstreamText_3d204
-	dw TreeBitstreamText_3d302
-	dw TreeBitstreamText_3d354
-	dw TreeBitstreamText_3d831
-	dw TreeBitstreamText_3d844
-	dw TreeBitstreamText_3d85e
-	dw TreeBitstreamText_3d86d
-	dw TreeBitstreamText_3d897
-	dw TreeBitstreamText_3d8a2
-	dw TreeBitstreamText_473b2
-	dw TreeBitstreamText_3d8ce
-	dw TreeBitstreamText_3d801
-	dw TreeBitstreamText_3d8ab
-	dw TreeBitstreamText_3d8f1
-	dw TreeBitstreamText_3d95c
-	dw TreeBitstreamText_3d9b8
-	dw TreeBitstreamText_3d9f7
-	dw TreeBitstreamText_3da77
-	dw TreeBitstreamText_3da85
-	dw TreeBitstreamText_3db5f
-	dw TreeBitstreamText_3db7f
-	dw TreeBitstreamText_3dc1e
-	dw TreeBitstreamText_3dc47
-	dw TreeBitstreamText_3dc61
-	dw TreeBitstreamText_3dcbd
-	dw TreeBitstreamText_47416
-	dw TreeBitstreamText_3dccf
-	dw TreeBitstreamText_3dd0b
-	dw TreeBitstreamText_3de23
-	dw TreeBitstreamText_3de8e
-	dw TreeBitstreamText_3df08
-	dw TreeBitstreamText_3dfb9
-	dw TreeBitstreamText_3e01f
-	dw TreeBitstreamText_3e04a
-	dw TreeBitstreamText_3e0d5
-	dw TreeBitstreamText_3e1be
-	dw TreeBitstreamText_3e1ff
-	dw TreeBitstreamText_3e289
-	dw TreeBitstreamText_3e29b
-	dw TreeBitstreamText_3e30b
-	dw TreeBitstreamText_3e324
-	dw TreeBitstreamText_3e3db
-	dw TreeBitstreamText_3e43a
-	dw TreeBitstreamText_3e557
-	dw TreeBitstreamText_3e5b2
-	dw TreeBitstreamText_3e5ff
-	dw TreeBitstreamText_3e624
-	dw TreeBitstreamText_3e6a8
-	dw TreeBitstreamText_3e75b
-	dw TreeBitstreamText_3e770
-	dw TreeBitstreamText_3e7c0
-	dw TreeBitstreamText_3e85a
-	dw TreeBitstreamText_3e87a
-	dw TreeBitstreamText_3e896
-	dw TreeBitstreamText_3e8a6
-	dw TreeBitstreamText_3e8d4
-	dw TreeBitstreamText_45a76
-	dw TreeBitstreamText_3e8e5
-	dw TreeBitstreamText_3e8f3
-	dw TreeBitstreamText_3e940
-	dw TreeBitstreamText_3e974
-	dw TreeBitstreamText_3e99a
-	dw TreeBitstreamText_3e9c4
-	dw TreeBitstreamText_3e9e1
-	dw TreeBitstreamText_3ea2f
-	dw TreeBitstreamText_3ea97
-	dw TreeBitstreamText_3eae2
-	dw TreeBitstreamText_3eb76
-	dw TreeBitstreamText_3ec56
-	dw TreeBitstreamText_3ec9f
-	dw TreeBitstreamText_3ecd6
-	dw TreeBitstreamText_3ed13
-	dw TreeBitstreamText_3ee04
-	dw TreeBitstreamText_3f384
-	dw TreeBitstreamText_3f3c4
-	dw TreeBitstreamText_3f436
-	dw TreeBitstreamText_3f449
-	dw TreeBitstreamText_3f463
-	dw TreeBitstreamText_3f4fb
-	dw TreeBitstreamText_3f51d
-	dw TreeBitstreamText_3f55b
-	dw TreeBitstreamText_3f58e
-	dw TreeBitstreamText_3f5d5
-	dw TreeBitstreamText_3f750
-	dw TreeBitstreamText_3f79e
-	dw TreeBitstreamText_47192
-	dw TreeBitstreamText_471a6
-	dw TreeBitstreamText_47722
-	dw TreeBitstreamText_3f7ae
-	dw TreeBitstreamText_3f7e8
-	dw TreeBitstreamText_3f85e
-	dw TreeBitstreamText_3f920
-	dw TreeBitstreamText_3f8cd
-	dw TreeBitstreamText_3f956
-	dw TreeBitstreamText_3f97f
-	dw TreeBitstreamText_46d31
-	dw TreeBitstreamText_39f09
-	dw TreeBitstreamText_3f9b7
-	dw TreeBitstreamText_39f70
-	dw TreeBitstreamText_471bb
-	dw TreeBitstreamText_3fa09
-	dw TreeBitstreamText_3a04b
-	dw TreeBitstreamText_3fa6b
-	dw TreeBitstreamText_39fe7
-	dw TreeBitstreamText_3a22e
-	dw TreeBitstreamText_3fa9a
-	dw TreeBitstreamText_3facf
-	dw TreeBitstreamText_3fb02
-	dw TreeBitstreamText_3fb3a
-	dw TreeBitstreamText_3fb74
-	dw TreeBitstreamText_3a0e1
-	dw TreeBitstreamText_3fbab
-	dw TreeBitstreamText_3fc06
-	dw TreeBitstreamText_3a184
-	dw TreeBitstreamText_471cf
-	dw TreeBitstreamText_3fc50
-	dw TreeBitstreamText_3f36a
-	dw TreeBitstreamText_398d5
-	dw TreeBitstreamText_3fcb9
-	dw TreeBitstreamText_3fcf1
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_3fd10
-	dw TreeBitstreamText_3fd45
-	dw TreeBitstreamText_3fd83
-	dw TreeBitstreamText_3fda8
-	dw TreeBitstreamText_3fdd3
-	dw TreeBitstreamText_3fe01
-	dw TreeBitstreamText_3fe41
-	dw TreeBitstreamText_3fea5
-	dw TreeBitstreamText_3ff0d
-	dw TreeBitstreamText_3ff5e
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_44051
-	dw TreeBitstreamText_452cd
-	dw TreeBitstreamText_3d00d
-	dw TreeBitstreamText_3ff8c
-	dw TreeBitstreamText_3ffc5
-	dw TreeBitstreamText_40000
-	dw TreeBitstreamText_4001a
-	dw TreeBitstreamText_4003e
-	dw TreeBitstreamText_4006b
-	dw TreeBitstreamText_40094
-	dw TreeBitstreamText_400e4
-	dw TreeBitstreamText_4010a
-	dw TreeBitstreamText_42dac
-	dw TreeBitstreamText_40164
-	dw TreeBitstreamText_401ae
-	dw TreeBitstreamText_401e1
-	dw TreeBitstreamText_4022d
-	dw TreeBitstreamText_40261
-	dw TreeBitstreamText_402a7
-	dw TreeBitstreamText_402e4
-	dw TreeBitstreamText_40371
-	dw TreeBitstreamText_40405
-	dw TreeBitstreamText_40491
-	dw TreeBitstreamText_40542
-	dw TreeBitstreamText_405cb
-	dw TreeBitstreamText_40659
-	dw TreeBitstreamText_40685
-	dw TreeBitstreamText_406ce
-	dw TreeBitstreamText_40707
-	dw TreeBitstreamText_40716
-	dw TreeBitstreamText_4079a
-	dw TreeBitstreamText_407af
-	dw TreeBitstreamText_4080f
-	dw TreeBitstreamText_40843
-	dw TreeBitstreamText_40883
-	dw TreeBitstreamText_4090e
-	dw TreeBitstreamText_40933
-	dw TreeBitstreamText_409c8
-	dw TreeBitstreamText_40a41
-	dw TreeBitstreamText_40a7a
-	dw TreeBitstreamText_3abf2
-	dw TreeBitstreamText_4691c
-	dw TreeBitstreamText_40b0e
-	dw TreeBitstreamText_40b59
-	dw TreeBitstreamText_40b8e
-	dw TreeBitstreamText_40bcd
-	dw TreeBitstreamText_44eb8
-	dw TreeBitstreamText_40bf2
-	dw TreeBitstreamText_40c1e
-	dw TreeBitstreamText_40c37
-	dw TreeBitstreamText_40c56
-	dw TreeBitstreamText_40c77
-	dw TreeBitstreamText_40d52
-	dw TreeBitstreamText_40de3
-	dw TreeBitstreamText_40e1f
-	dw TreeBitstreamText_40e63
-	dw TreeBitstreamText_40e9a
-	dw TreeBitstreamText_40ee8
-	dw TreeBitstreamText_40f67
-	dw TreeBitstreamText_40fbf
-	dw TreeBitstreamText_4434a
-	dw TreeBitstreamText_41013
-	dw TreeBitstreamText_4105d
-	dw TreeBitstreamText_41177
-	dw TreeBitstreamText_411eb
-	dw TreeBitstreamText_41271
-	dw TreeBitstreamText_412d6
-	dw TreeBitstreamText_474d4
-	dw TreeBitstreamText_412f0
-	dw TreeBitstreamText_4133b
-	dw TreeBitstreamText_413a9
-	dw TreeBitstreamText_4144f
-	dw TreeBitstreamText_4147f
-	dw TreeBitstreamText_414b4
-	dw TreeBitstreamText_414f9
-	dw TreeBitstreamText_4157e
-	dw TreeBitstreamText_472f0
-	dw TreeBitstreamText_415ac
-	dw TreeBitstreamText_415f3
-	dw TreeBitstreamText_4161d
-	dw TreeBitstreamText_4163b
-	dw TreeBitstreamText_41675
-	dw TreeBitstreamText_416c4
-	dw TreeBitstreamText_416f0
-	dw TreeBitstreamText_41721
-	dw TreeBitstreamText_4174d
-	dw TreeBitstreamText_417c2
-	dw TreeBitstreamText_44657
-	dw TreeBitstreamText_41800
-	dw TreeBitstreamText_41836
-	dw TreeBitstreamText_449c9
-	dw TreeBitstreamText_41890
-	dw TreeBitstreamText_41903
-	dw TreeBitstreamText_419a8
-	dw TreeBitstreamText_419d2
-	dw TreeBitstreamText_41a1a
-	dw TreeBitstreamText_41a56
-	dw TreeBitstreamText_41aa5
-	dw TreeBitstreamText_41b5f
-	dw TreeBitstreamText_41bc2
-	dw TreeBitstreamText_41c4a
-	dw TreeBitstreamText_41c86
-	dw TreeBitstreamText_41d0d
-	dw TreeBitstreamText_41d47
-	dw TreeBitstreamText_41d81
-	dw TreeBitstreamText_41dce
-	dw TreeBitstreamText_41e16
-	dw TreeBitstreamText_41e56
-	dw TreeBitstreamText_41eb0
-	dw TreeBitstreamText_41ec7
-	dw TreeBitstreamText_41f0a
-	dw TreeBitstreamText_41f57
-	dw TreeBitstreamText_41f81
-	dw TreeBitstreamText_41fb4
-	dw TreeBitstreamText_41ff4
-	dw TreeBitstreamText_4203a
-	dw TreeBitstreamText_42075
-	dw TreeBitstreamText_4209c
-	dw TreeBitstreamText_420bf
-	dw TreeBitstreamText_47b1d
-	dw TreeBitstreamText_420d8
-	dw TreeBitstreamText_45add
-	dw TreeBitstreamText_42104
-	dw TreeBitstreamText_42148
-	dw TreeBitstreamText_4217a
-	dw TreeBitstreamText_421dd
-	dw TreeBitstreamText_45aee
-	dw TreeBitstreamText_42221
-	dw TreeBitstreamText_42239
-	dw TreeBitstreamText_4225d
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_42280
-	dw TreeBitstreamText_4229c
-	dw TreeBitstreamText_422d0
-	dw TreeBitstreamText_422fd
-	dw TreeBitstreamText_42324
-	dw TreeBitstreamText_42364
-	dw TreeBitstreamText_4238a
-	dw TreeBitstreamText_42399
-	dw TreeBitstreamText_3a0b1
-	dw TreeBitstreamText_45aff
-	dw TreeBitstreamText_3a0c9
-	dw TreeBitstreamText_3a138
-	dw TreeBitstreamText_3a151
-	dw TreeBitstreamText_3a167
-	dw TreeBitstreamText_39fb2
-	dw TreeBitstreamText_39fc7
-	dw TreeBitstreamText_39fd9
-	dw TreeBitstreamText_3a1b9
-	dw TreeBitstreamText_3a1de
-	dw TreeBitstreamText_3a202
-	dw TreeBitstreamText_428c3
-	dw TreeBitstreamText_428cd
-	dw TreeBitstreamText_428e1
-	dw TreeBitstreamText_428ee
-	dw TreeBitstreamText_428f9
-	dw TreeBitstreamText_42903
-	dw TreeBitstreamText_4290f
-	dw TreeBitstreamText_42937
-	dw TreeBitstreamText_42972
-	dw TreeBitstreamText_4297c
-	dw TreeBitstreamText_4298a
-	dw TreeBitstreamText_42998
-	dw TreeBitstreamText_429a1
-	dw TreeBitstreamText_429aa
-	dw TreeBitstreamText_429b8
-	dw TreeBitstreamText_429ca
-	dw TreeBitstreamText_429d1
-	dw TreeBitstreamText_429dc
-	dw TreeBitstreamText_429e1
-	dw TreeBitstreamText_429f2
-	dw TreeBitstreamText_42a00
-	dw TreeBitstreamText_42a0d
-	dw TreeBitstreamText_42a24
-	dw TreeBitstreamText_42a37
-	dw TreeBitstreamText_42a4c
-	dw TreeBitstreamText_42a61
-	dw TreeBitstreamText_42a6e
-	dw TreeBitstreamText_42a7e
-	dw TreeBitstreamText_42a9a
-	dw TreeBitstreamText_42ab0
-	dw TreeBitstreamText_45b10
-	dw TreeBitstreamText_42abe
-	dw TreeBitstreamText_42ad0
-	dw TreeBitstreamText_45b20
-	dw TreeBitstreamText_42ada
-	dw TreeBitstreamText_42ae8
-	dw TreeBitstreamText_42af6
-	dw TreeBitstreamText_42b02
-	dw TreeBitstreamText_42b0b
-	dw TreeBitstreamText_42b16
-	dw TreeBitstreamText_42b24
-	dw TreeBitstreamText_42b32
-	dw TreeBitstreamText_42b41
-	dw TreeBitstreamText_42b4c
-	dw TreeBitstreamText_42b64
-	dw TreeBitstreamText_42b7b
-	dw TreeBitstreamText_42b85
-	dw TreeBitstreamText_42b8f
-	dw TreeBitstreamText_42b98
-	dw TreeBitstreamText_42ba0
-	dw TreeBitstreamText_42baa
-	dw TreeBitstreamText_42bb7
-	dw TreeBitstreamText_42bc8
-	dw TreeBitstreamText_42bd2
-	dw TreeBitstreamText_42bdd
-	dw TreeBitstreamText_42be8
-	dw TreeBitstreamText_42bf7
-	dw TreeBitstreamText_42c09
-	dw TreeBitstreamText_42c16
-	dw TreeBitstreamText_3a215
-	dw TreeBitstreamText_42c2d
-	dw TreeBitstreamText_42c39
-	dw TreeBitstreamText_42c4a
-	dw TreeBitstreamText_42c58
-	dw TreeBitstreamText_42c65
-	dw TreeBitstreamText_42c72
-	dw TreeBitstreamText_42c7d
-	dw TreeBitstreamText_42c8e
-	dw TreeBitstreamText_42cb1
-	dw TreeBitstreamText_42cb8
-	dw TreeBitstreamText_42cc4
-	dw TreeBitstreamText_42e15
-	dw TreeBitstreamText_42e5e
-	dw TreeBitstreamText_42ec2
-	dw TreeBitstreamText_42f84
-	dw TreeBitstreamText_42ffd
-	dw TreeBitstreamText_43084
-	dw TreeBitstreamText_430f7
-	dw TreeBitstreamText_43156
-	dw TreeBitstreamText_431e5
-	dw TreeBitstreamText_432c2
-	dw TreeBitstreamText_432d3
-	dw TreeBitstreamText_432e2
-	dw TreeBitstreamText_43362
-	dw TreeBitstreamText_4338d
-	dw TreeBitstreamText_4347a
-	dw TreeBitstreamText_434f2
-	dw TreeBitstreamText_435b0
-	dw TreeBitstreamText_4365f
-	dw TreeBitstreamText_43761
-	dw TreeBitstreamText_4377a
-	dw TreeBitstreamText_43956
-	dw TreeBitstreamText_43a21
-	dw TreeBitstreamText_43a5a
-	dw TreeBitstreamText_43c04
-	dw TreeBitstreamText_43c84
-	dw TreeBitstreamText_47037
-	dw TreeBitstreamText_42df1
-	dw TreeBitstreamText_4380b
-	dw TreeBitstreamText_4393b
-	dw TreeBitstreamText_43d8e
-	dw TreeBitstreamText_43dee
-	dw TreeBitstreamText_43e7a
-	dw TreeBitstreamText_43ed7
-	dw TreeBitstreamText_43f51
-	dw TreeBitstreamText_440c4
-	dw TreeBitstreamText_44213
-	dw TreeBitstreamText_44392
-	dw TreeBitstreamText_44507
-	dw TreeBitstreamText_446dc
-	dw TreeBitstreamText_44861
-	dw TreeBitstreamText_44a2d
-	dw TreeBitstreamText_44b74
-	dw TreeBitstreamText_44d13
-	dw TreeBitstreamText_44f10
-	dw TreeBitstreamText_450bb
-	dw TreeBitstreamText_4531c
-	dw TreeBitstreamText_4547f
-	dw TreeBitstreamText_4560f
-	dw TreeBitstreamText_45794
-	dw TreeBitstreamText_458ef
-	dw TreeBitstreamText_442ef
-	dw TreeBitstreamText_45c80
-	dw TreeBitstreamText_45cb9
-	dw TreeBitstreamText_45cd8
-	dw TreeBitstreamText_45cff
-	dw TreeBitstreamText_45d1c
-	dw TreeBitstreamText_45d3d
-	dw TreeBitstreamText_45d61
-	dw TreeBitstreamText_45d82
-	dw TreeBitstreamText_45db0
-	dw TreeBitstreamText_45e48
-	dw TreeBitstreamText_45e5d
-	dw TreeBitstreamText_45e76
-	dw TreeBitstreamText_46923
-	dw TreeBitstreamText_46d00
-	dw TreeBitstreamText_4650d
-	dw TreeBitstreamText_4651c
-	dw TreeBitstreamText_4653a
-	dw TreeBitstreamText_46549
-	dw TreeBitstreamText_46554
-	dw TreeBitstreamText_4656c
-	dw TreeBitstreamText_4657c
-	dw TreeBitstreamText_46596
-	dw TreeBitstreamText_465a4
-	dw TreeBitstreamText_465ae
-	dw TreeBitstreamText_465b4
-	dw TreeBitstreamText_465ca
-	dw TreeBitstreamText_465d8
-	dw TreeBitstreamText_465ec
-	dw TreeBitstreamText_46610
-	dw TreeBitstreamText_46629
-	dw TreeBitstreamText_46645
-	dw TreeBitstreamText_46651
-	dw TreeBitstreamText_46668
-	dw TreeBitstreamText_46686
-	dw TreeBitstreamText_466b3
-	dw TreeBitstreamText_466e2
-	dw TreeBitstreamText_466f0
-	dw TreeBitstreamText_466ff
-	dw TreeBitstreamText_4670e
-	dw TreeBitstreamText_467bb
-	dw TreeBitstreamText_467c7
-	dw TreeBitstreamText_467d3
-	dw TreeBitstreamText_467df
-	dw TreeBitstreamText_467eb
-	dw TreeBitstreamText_467f7
-	dw TreeBitstreamText_46803
-	dw TreeBitstreamText_4680f
-	dw TreeBitstreamText_46818
-	dw TreeBitstreamText_46821
-	dw TreeBitstreamText_4682a
-	dw TreeBitstreamText_46833
-	dw TreeBitstreamText_4683d
-	dw TreeBitstreamText_46846
-	dw TreeBitstreamText_4684f
-	dw TreeBitstreamText_46859
-	dw TreeBitstreamText_46861
-	dw TreeBitstreamText_4686b
-	dw TreeBitstreamText_46878
-	dw TreeBitstreamText_46886
-	dw TreeBitstreamText_46894
-	dw TreeBitstreamText_468a2
-	dw TreeBitstreamText_468ae
-	dw TreeBitstreamText_468ba
-	dw TreeBitstreamText_468c8
-	dw TreeBitstreamText_468d4
-	dw TreeBitstreamText_468e0
-	dw TreeBitstreamText_468ec
-	dw TreeBitstreamText_468f8
-	dw TreeBitstreamText_46904
-	dw TreeBitstreamText_46910
-	dw TreeBitstreamText_46973
-	dw TreeBitstreamText_47306
-	dw TreeBitstreamText_47319
-	dw TreeBitstreamText_46986
-	dw TreeBitstreamText_46991
-	dw TreeBitstreamText_4699d
-	dw TreeBitstreamText_469a9
-	dw TreeBitstreamText_469b5
-	dw TreeBitstreamText_469c1
-	dw TreeBitstreamText_469cd
-	dw TreeBitstreamText_469d9
-	dw TreeBitstreamText_469e5
-	dw TreeBitstreamText_469f1
-	dw TreeBitstreamText_469fd
-	dw TreeBitstreamText_46a0a
-	dw TreeBitstreamText_46a17
-	dw TreeBitstreamText_46a24
-	dw TreeBitstreamText_46a31
-	dw TreeBitstreamText_46a3e
-	dw TreeBitstreamText_46a4b
-	dw TreeBitstreamText_46a58
-	dw TreeBitstreamText_46a65
-	dw TreeBitstreamText_46a72
-	dw TreeBitstreamText_46a7f
-	dw TreeBitstreamText_46a8c
-	dw TreeBitstreamText_46a99
-	dw TreeBitstreamText_46aa6
-	dw TreeBitstreamText_46ab3
-	dw TreeBitstreamText_46ac0
-	dw TreeBitstreamText_46aca
-	dw TreeBitstreamText_46ad5
-	dw TreeBitstreamText_46ae0
-	dw TreeBitstreamText_46aeb
-	dw TreeBitstreamText_46af6
-	dw TreeBitstreamText_46b01
-	dw TreeBitstreamText_46b0c
-	dw TreeBitstreamText_46b14
-	dw TreeBitstreamText_4732b
-	dw TreeBitstreamText_47337
-	dw TreeBitstreamText_47343
-	dw TreeBitstreamText_46b1a
-	dw TreeBitstreamText_46b25
-	dw TreeBitstreamText_46b30
-	dw TreeBitstreamText_46b3b
-	dw TreeBitstreamText_46b46
-	dw TreeBitstreamText_46b51
-	dw TreeBitstreamText_46b5c
-	dw TreeBitstreamText_46b67
-	dw TreeBitstreamText_46b72
-	dw TreeBitstreamText_46b7d
-	dw TreeBitstreamText_46b8a
-	dw TreeBitstreamText_46b94
-	dw TreeBitstreamText_46b9e
-	dw TreeBitstreamText_46ba8
-	dw TreeBitstreamText_46bb3
-	dw TreeBitstreamText_46bbe
-	dw TreeBitstreamText_46bc9
-	dw TreeBitstreamText_46bd4
-	dw TreeBitstreamText_46bdf
-	dw TreeBitstreamText_46bea
-	dw TreeBitstreamText_46bf5
-	dw TreeBitstreamText_46de0
-	dw TreeBitstreamText_46df6
-	dw TreeBitstreamText_46e0b
-	dw TreeBitstreamText_46e1d
-	dw TreeBitstreamText_46e3b
-	dw TreeBitstreamText_46e4b
-	dw TreeBitstreamText_46e6c
-	dw TreeBitstreamText_46daf
-	dw TreeBitstreamText_46e84
-	dw TreeBitstreamText_46e95
-	dw TreeBitstreamText_46ea4
-	dw TreeBitstreamText_46eb8
-	dw TreeBitstreamText_46f28
-	dw TreeBitstreamText_46f30
-	dw TreeBitstreamText_46f3e
-	dw TreeBitstreamText_46dca
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_46f46
-	dw TreeBitstreamText_46f5e
-	dw TreeBitstreamText_46f73
-	dw TreeBitstreamText_46f8a
-	dw TreeBitstreamText_46fa5
-	dw TreeBitstreamText_3d713
-	dw TreeBitstreamText_3e522
-	dw TreeBitstreamText_3e544
-	dw TreeBitstreamText_3eab5
-	dw TreeBitstreamText_46dd4
-	dw TreeBitstreamText_4604f
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_39e1f
-	dw TreeBitstreamText_42ccc
-	dw TreeBitstreamText_39e65
-	dw TreeBitstreamText_39e8c
-	dw TreeBitstreamText_3a272
-	dw TreeBitstreamText_39d7e
-	dw TreeBitstreamText_455be
-	dw TreeBitstreamText_3a481
-	dw TreeBitstreamText_3ac82
-	dw TreeBitstreamText_39d95
-	dw TreeBitstreamText_424a9
-	dw TreeBitstreamText_4251f
-	dw TreeBitstreamText_4692e
-	dw TreeBitstreamText_45abb
-	dw TreeBitstreamText_461c0
-	dw TreeBitstreamText_45acc
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_46218
-	dw TreeBitstreamText_462a0
-	dw TreeBitstreamText_46330
-	dw TreeBitstreamText_463d7
-	dw TreeBitstreamText_3fc99
-	dw TreeBitstreamText_425cb
-	dw TreeBitstreamText_42617
-	dw TreeBitstreamText_42650
-	dw TreeBitstreamText_4268e
-	dw TreeBitstreamText_3d552
-	dw TreeBitstreamText_3b932
-	dw TreeBitstreamText_46fe6
-	dw TreeBitstreamText_47029
-	dw TreeBitstreamText_4701b
-	dw TreeBitstreamText_42d37
-	dw TreeBitstreamText_42d69
-	dw TreeBitstreamText_42d79
-	dw TreeBitstreamText_42dc8
-	dw TreeBitstreamText_42dde
-	dw TreeBitstreamText_470a2
-	dw TreeBitstreamText_3a858
-	dw TreeBitstreamText_470c8
-	dw TreeBitstreamText_43945
-	dw TreeBitstreamText_43b4c
-	dw TreeBitstreamText_3b169
-	dw TreeBitstreamText_3b17a
-	dw TreeBitstreamText_3b30a
-	dw TreeBitstreamText_3c070
-	dw TreeBitstreamText_3c086
-	dw TreeBitstreamText_3b31f
-	dw TreeBitstreamText_471e4
-	dw TreeBitstreamText_4725f
-	dw TreeBitstreamText_47272
-	dw TreeBitstreamText_4727f
-	dw TreeBitstreamText_4728d
-	dw TreeBitstreamText_472a0
-	dw TreeBitstreamText_472ae
-	dw TreeBitstreamText_472b9
-	dw TreeBitstreamText_40ccc
-	dw TreeBitstreamText_470d8
-	dw TreeBitstreamText_470f0
-	dw TreeBitstreamText_3accc
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_3ad19
-	dw TreeBitstreamText_4697e
-	dw TreeBitstreamText_47136
-	dw TreeBitstreamText_4714c
-	dw TreeBitstreamText_43cbb
-	dw TreeBitstreamText_43d46
-	dw TreeBitstreamText_46718
-	dw TreeBitstreamText_4672b
-	dw TreeBitstreamText_46740
-	dw TreeBitstreamText_47516
-	dw TreeBitstreamText_475a7
-	dw TreeBitstreamText_475f4
-	dw TreeBitstreamText_47652
-	dw TreeBitstreamText_47780
-	dw TreeBitstreamText_4780b
-	dw TreeBitstreamText_478bb
-	dw TreeBitstreamText_3b9a9
-	dw TreeBitstreamText_3b9d7
-	dw TreeBitstreamText_3bd37
-	dw TreeBitstreamText_3bd77
-	dw TreeBitstreamText_46ecc
-	dw TreeBitstreamText_46ee5
-	dw TreeBitstreamText_46788
-	dw TreeBitstreamText_46031
-	dw TreeBitstreamText_46040
-	dw TreeBitstreamText_3ee24
-	dw TreeBitstreamText_3ee49
-	dw TreeBitstreamText_47053
-	dw TreeBitstreamText_4706a
-	dw TreeBitstreamText_476b6
-	dw TreeBitstreamText_41373
-	dw TreeBitstreamText_413f4
-	dw TreeBitstreamText_3b199
-	dw TreeBitstreamText_3c162
-	dw TreeBitstreamText_41088
-	dw TreeBitstreamText_410cf
-	dw TreeBitstreamText_41102
-	dw TreeBitstreamText_41136
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_47b05
-	dw TreeBitstreamText_41548
-	dw TreeBitstreamText_47943
-	dw TreeBitstreamText_47980
-	dw TreeBitstreamText_479b4
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_423a7
-	dw TreeBitstreamText_409fd
-	dw TreeBitstreamText_40ac2
-	dw TreeBitstreamText_3ede7
-	dw TreeBitstreamText_4181e
-	dw TreeBitstreamText_41867
-	dw TreeBitstreamText_41a76
-	dw TreeBitstreamText_41982
-	dw TreeBitstreamText_419fb
-	dw TreeBitstreamText_41b00
-	dw TreeBitstreamText_418bd
-	dw TreeBitstreamText_431d7
-	dw TreeBitstreamText_47cc9
-	dw TreeBitstreamText_47ce9
-	dw TreeBitstreamText_47d38
-	dw TreeBitstreamText_47d46
-	dw TreeBitstreamText_47d58
-	dw TreeBitstreamText_47d7c
-	dw TreeBitstreamText_47da2
-	dw TreeBitstreamText_47dc3
-	dw TreeBitstreamText_47ddc
-	dw TreeBitstreamText_47dfa
-	dw TreeBitstreamText_47e09
-	dw TreeBitstreamText_3c9b4
-	dw TreeBitstreamText_399d1
-	dw TreeBitstreamText_39321
-	dw TreeBitstreamText_3933b
-	dw TreeBitstreamText_393e9
-	dw TreeBitstreamText_3945b
-	dw TreeBitstreamText_39471
-	dw TreeBitstreamText_3948a
-	dw TreeBitstreamText_3e7ac
-	dw TreeBitstreamText_393ce
-	dw TreeBitstreamText_46c00
-	dw TreeBitstreamText_46c09
-	dw TreeBitstreamText_46c14
-	dw TreeBitstreamText_46c1f
-	dw TreeBitstreamText_46c2b
-	dw TreeBitstreamText_46c33
-	dw TreeBitstreamText_46c3b
-	dw TreeBitstreamText_46c44
-	dw TreeBitstreamText_46c4e
-	dw TreeBitstreamText_46c5d
-	dw TreeBitstreamText_46c6a
-	dw TreeBitstreamText_46c75
-	dw TreeBitstreamText_46c83
-	dw TreeBitstreamText_46c8c
-	dw TreeBitstreamText_46c9b
-	dw TreeBitstreamText_46ca8
-	dw TreeBitstreamText_46cb3
-	dw TreeBitstreamText_46cbf
-	dw TreeBitstreamText_46ccb
-	dw TreeBitstreamText_46cd7
-	dw TreeBitstreamText_46ce3
-	dw TreeBitstreamText_47041
-	dw TreeBitstreamText_40d8c
-	dw TreeBitstreamText_40dac
-	dw TreeBitstreamText_46496
-	dw TreeBitstreamText_4646b
-	dw TreeBitstreamText_46480
-	dw TreeBitstreamText_464f1
-	dw TreeBitstreamText_464ff
-	dw TreeBitstreamText_46d0c
-	dw TreeBitstreamText_3a29a
-	dw TreeBitstreamText_46fca
-	dw TreeBitstreamText_3a2bb
-	dw TreeBitstreamText_3a2d1
-	dw TreeBitstreamText_46db8
-	dw TreeBitstreamText_44000
-	dw TreeBitstreamText_45ee8
-	dw TreeBitstreamText_45e91
-	dw TreeBitstreamText_46939
-	dw TreeBitstreamText_393dd
-	dw TreeBitstreamText_46ef5
-	dw TreeBitstreamText_46cec
-	dw TreeBitstreamText_46cf6
-	dw TreeBitstreamText_426de
-	dw TreeBitstreamText_4272e
-	dw TreeBitstreamText_3f8f1
-	dw TreeBitstreamText_3f901
-	dw TreeBitstreamText_3eaa7
-	dw TreeBitstreamText_47a75
-	dw TreeBitstreamText_3f665
-	dw TreeBitstreamText_3f60f
-	dw TreeBitstreamText_3f679
-	dw TreeBitstreamText_427b2
-	dw TreeBitstreamText_427ca
-	dw TreeBitstreamText_427de
-	dw TreeBitstreamText_42876
-	dw TreeBitstreamText_458e0
-	dw TreeBitstreamText_440f4
-	dw TreeBitstreamText_44185
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_443c5
-	dw TreeBitstreamText_4445d
-	dw TreeBitstreamText_44733
-	dw TreeBitstreamText_447bd
-	dw TreeBitstreamText_44a7f
-	dw TreeBitstreamText_44af6
-	dw TreeBitstreamText_44d53
-	dw TreeBitstreamText_44dc8
-	dw TreeBitstreamText_44f3f
-	dw TreeBitstreamText_44fed
-	dw TreeBitstreamText_4535e
-	dw TreeBitstreamText_453ee
-	dw TreeBitstreamText_4565b
-	dw TreeBitstreamText_456f4
-	dw TreeBitstreamText_4593e
-	dw TreeBitstreamText_4461b
-	dw TreeBitstreamText_4498a
-	dw TreeBitstreamText_44c92
-	dw TreeBitstreamText_44e62
-	dw TreeBitstreamText_45277
-	dw TreeBitstreamText_45564
-	dw TreeBitstreamText_42899
-	dw TreeBitstreamText_428a8
-	dw TreeBitstreamText_3adc0
-	dw TreeBitstreamText_46944
-	dw TreeBitstreamText_459de
-	dw TreeBitstreamText_4694f
-	dw TreeBitstreamText_4695b
-	dw TreeBitstreamText_441b3
-	dw TreeBitstreamText_44239
-	dw TreeBitstreamText_44601
-	dw TreeBitstreamText_4428f
-	dw TreeBitstreamText_44486
-	dw TreeBitstreamText_4453d
-	dw TreeBitstreamText_42cd5
-	dw TreeBitstreamText_445b1
-	dw TreeBitstreamText_447ed
-	dw TreeBitstreamText_448b8
-	dw TreeBitstreamText_44ceb
-	dw TreeBitstreamText_44937
-	dw TreeBitstreamText_44b1c
-	dw TreeBitstreamText_44bcf
-	dw TreeBitstreamText_44c2a
-	dw TreeBitstreamText_44c51
-	dw TreeBitstreamText_44df3
-	dw TreeBitstreamText_45042
-	dw TreeBitstreamText_450f4
-	dw TreeBitstreamText_45194
-	dw TreeBitstreamText_451e9
-	dw TreeBitstreamText_45418
-	dw TreeBitstreamText_454c0
-	dw TreeBitstreamText_42d11
-	dw TreeBitstreamText_45511
-	dw TreeBitstreamText_45728
-	dw TreeBitstreamText_457de
-	dw TreeBitstreamText_42d27
-	dw TreeBitstreamText_45875
-	dw TreeBitstreamText_45b31
-	dw TreeBitstreamText_45bb0
-	dw TreeBitstreamText_45c00
-	dw TreeBitstreamText_45c64
-	dw TreeBitstreamText_392a8
-	dw TreeBitstreamText_3ef04
-	dw TreeBitstreamText_3ef47
-	dw TreeBitstreamText_3ef70
-	dw TreeBitstreamText_3efa5
-	dw TreeBitstreamText_3eff8
-	dw TreeBitstreamText_3f05a
-	dw TreeBitstreamText_3f0a6
-	dw TreeBitstreamText_3f118
-	dw TreeBitstreamText_3f192
-	dw TreeBitstreamText_3f207
-	dw TreeBitstreamText_3f276
-	dw TreeBitstreamText_3f2ff
-	dw TreeBitstreamText_4734f
-	dw TreeBitstreamText_4027b
-	dw TreeBitstreamText_3b401
-	dw TreeBitstreamText_3b35d
-	dw TreeBitstreamText_3b516
-	dw TreeBitstreamText_3b560
-	dw TreeBitstreamText_3b5bf
-	dw TreeBitstreamText_3b5f0
-	dw TreeBitstreamText_45dff
-	dw TreeBitstreamText_3949f
-	dw TreeBitstreamText_39545
-	dw TreeBitstreamText_42d89
-	dw TreeBitstreamText_42d9a
-	dw TreeBitstreamText_3c22b
-	dw TreeBitstreamText_3c2b2
-	dw TreeBitstreamText_46967
-	dw TreeBitstreamText_46285
-	dw TreeBitstreamText_46294
-	dw TreeBitstreamText_4630b
-	dw TreeBitstreamText_46322
-	dw TreeBitstreamText_463ad
-	dw TreeBitstreamText_463c3
-	dw TreeBitstreamText_46d45
-	dw TreeBitstreamText_46d4f
-	dw TreeBitstreamText_46d59
-	dw TreeBitstreamText_46d63
-	dw TreeBitstreamText_46d6d
-	dw TreeBitstreamText_46d77
-	dw TreeBitstreamText_46d81
-	dw TreeBitstreamText_46d8b
-	dw TreeBitstreamText_46d96
-	dw TreeBitstreamText_46da2
-	dw TreeBitstreamText_45a40
-	dw TreeBitstreamText_3c941
-	dw TreeBitstreamText_3c963
-	dw TreeBitstreamText_423f3
-	dw TreeBitstreamText_4249f
-	dw TreeBitstreamText_39dac
-	dw TreeBitstreamText_39dc3
-	dw TreeBitstreamText_39dda
-	dw TreeBitstreamText_39df1
-	dw TreeBitstreamText_39e08
-	dw TreeBitstreamText_3a27f
-	dw TreeBitstreamText_39d70
-	dw TreeBitstreamText_39e71
-	dw TreeBitstreamText_3e3bb
-	dw TreeBitstreamText_472ce
-	dw TreeBitstreamText_39559
-	dw TreeBitstreamText_3961c
-	dw TreeBitstreamText_395a3
-	dw TreeBitstreamText_3968a
-	dw TreeBitstreamText_395b4
-	dw TreeBitstreamText_45ebc
-	dw TreeBitstreamText_39c19
-	dw TreeBitstreamText_39c6c
-	dw TreeBitstreamText_39c82
-	dw TreeBitstreamText_45eaa
-	dw TreeBitstreamText_45ed5
-	dw TreeBitstreamText_472e7
-	dw TreeBitstreamText_3ed88
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_47e30
-	dw TreeBitstreamText_46ffa
-	dw TreeBitstreamText_3bdf0
-	dw TreeBitstreamText_3be3f
-	dw TreeBitstreamText_46175
-	dw TreeBitstreamText_46183
-	dw TreeBitstreamText_4618f
-	dw TreeBitstreamText_4619b
-	dw TreeBitstreamText_461a9
-	dw TreeBitstreamText_461b4
-	dw TreeBitstreamText_46056
-	dw TreeBitstreamText_45f1d
-	dw TreeBitstreamText_45f28
-	dw TreeBitstreamText_45f3d
-	dw TreeBitstreamText_45f56
-	dw TreeBitstreamText_45f88
-	dw TreeBitstreamText_45fc8
-	dw TreeBitstreamText_45fd7
-	dw TreeBitstreamText_45fec
-	dw TreeBitstreamText_45ffd
-	dw TreeBitstreamText_47b32
-	dw TreeBitstreamText_47bd1
-	dw TreeBitstreamText_47c51
-	dw TreeBitstreamText_47b4c
-	dw TreeBitstreamText_47b61
-	dw TreeBitstreamText_47b78
-	dw TreeBitstreamText_47b8e
-	dw TreeBitstreamText_47ba5
-	dw TreeBitstreamText_47bb9
-	dw TreeBitstreamText_45f98
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_38fa0
-	dw TreeBitstreamText_46fbb
-	dw TreeBitstreamText_46fd8
+TextTreeBitstreams:: ; 38000
+
+tree_text_pointer: MACRO
+	dw (BANK(\1) - $e) << 14 | (\1 & $3fff)
+	ENDM
+
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fae
+	tree_text_pointer TreeBitstreamText_38fbd
+	tree_text_pointer TreeBitstreamText_38fc9
+	tree_text_pointer TreeBitstreamText_38fe6
+	tree_text_pointer TreeBitstreamText_3902d
+	tree_text_pointer TreeBitstreamText_39084
+	tree_text_pointer TreeBitstreamText_390b4
+	tree_text_pointer TreeBitstreamText_390d1
+	tree_text_pointer TreeBitstreamText_390e8
+	tree_text_pointer TreeBitstreamText_3911a
+	tree_text_pointer TreeBitstreamText_3914e
+	tree_text_pointer TreeBitstreamText_39167
+	tree_text_pointer TreeBitstreamText_3917e
+	tree_text_pointer TreeBitstreamText_391fd
+	tree_text_pointer TreeBitstreamText_39235
+	tree_text_pointer TreeBitstreamText_39257
+	tree_text_pointer TreeBitstreamText_3926c
+	tree_text_pointer TreeBitstreamText_39295
+	tree_text_pointer TreeBitstreamText_392ba
+	tree_text_pointer TreeBitstreamText_39369
+	tree_text_pointer TreeBitstreamText_3969a
+	tree_text_pointer TreeBitstreamText_396d0
+	tree_text_pointer TreeBitstreamText_396ec
+	tree_text_pointer TreeBitstreamText_396fd
+	tree_text_pointer TreeBitstreamText_39718
+	tree_text_pointer TreeBitstreamText_3972e
+	tree_text_pointer TreeBitstreamText_39760
+	tree_text_pointer TreeBitstreamText_3976c
+	tree_text_pointer TreeBitstreamText_3f406
+	tree_text_pointer TreeBitstreamText_397b1
+	tree_text_pointer TreeBitstreamText_47d6a
+	tree_text_pointer TreeBitstreamText_397dc
+	tree_text_pointer TreeBitstreamText_397ed
+	tree_text_pointer TreeBitstreamText_397f7
+	tree_text_pointer TreeBitstreamText_3981d
+	tree_text_pointer TreeBitstreamText_39839
+	tree_text_pointer TreeBitstreamText_39847
+	tree_text_pointer TreeBitstreamText_3985c
+	tree_text_pointer TreeBitstreamText_39889
+	tree_text_pointer TreeBitstreamText_398ba
+	tree_text_pointer TreeBitstreamText_398e4
+	tree_text_pointer TreeBitstreamText_39944
+	tree_text_pointer TreeBitstreamText_39953
+	tree_text_pointer TreeBitstreamText_3a89f
+	tree_text_pointer TreeBitstreamText_46d18
+	tree_text_pointer TreeBitstreamText_399f1
+	tree_text_pointer TreeBitstreamText_39a27
+	tree_text_pointer TreeBitstreamText_39a42
+	tree_text_pointer TreeBitstreamText_39a5f
+	tree_text_pointer TreeBitstreamText_39a7b
+	tree_text_pointer TreeBitstreamText_39a8f
+	tree_text_pointer TreeBitstreamText_39b0b
+	tree_text_pointer TreeBitstreamText_39b45
+	tree_text_pointer TreeBitstreamText_39ba9
+	tree_text_pointer TreeBitstreamText_39cd9
+	tree_text_pointer TreeBitstreamText_39eb7
+	tree_text_pointer TreeBitstreamText_39ed3
+	tree_text_pointer TreeBitstreamText_39ef3
+	tree_text_pointer TreeBitstreamText_3b973
+	tree_text_pointer TreeBitstreamText_39f37
+	tree_text_pointer TreeBitstreamText_39f4e
+	tree_text_pointer TreeBitstreamText_39f5f
+	tree_text_pointer TreeBitstreamText_3a00a
+	tree_text_pointer TreeBitstreamText_3a024
+	tree_text_pointer TreeBitstreamText_3a03a
+	tree_text_pointer TreeBitstreamText_3a097
+	tree_text_pointer TreeBitstreamText_3a2e2
+	tree_text_pointer TreeBitstreamText_3a308
+	tree_text_pointer TreeBitstreamText_3a349
+	tree_text_pointer TreeBitstreamText_3a368
+	tree_text_pointer TreeBitstreamText_3a38a
+	tree_text_pointer TreeBitstreamText_3a3ac
+	tree_text_pointer TreeBitstreamText_3a3c2
+	tree_text_pointer TreeBitstreamText_3a3dc
+	tree_text_pointer TreeBitstreamText_3a420
+	tree_text_pointer TreeBitstreamText_3a556
+	tree_text_pointer TreeBitstreamText_3a5a7
+	tree_text_pointer TreeBitstreamText_3a5cb
+	tree_text_pointer TreeBitstreamText_3a5e6
+	tree_text_pointer TreeBitstreamText_3a605
+	tree_text_pointer TreeBitstreamText_3a61d
+	tree_text_pointer TreeBitstreamText_3a62c
+	tree_text_pointer TreeBitstreamText_3a64f
+	tree_text_pointer TreeBitstreamText_3a6a3
+	tree_text_pointer TreeBitstreamText_3a6e6
+	tree_text_pointer TreeBitstreamText_3a662
+	tree_text_pointer TreeBitstreamText_3a6fa
+	tree_text_pointer TreeBitstreamText_3a765
+	tree_text_pointer TreeBitstreamText_3a7e7
+	tree_text_pointer TreeBitstreamText_3a7fb
+	tree_text_pointer TreeBitstreamText_3a8c3
+	tree_text_pointer TreeBitstreamText_3a8e1
+	tree_text_pointer TreeBitstreamText_3a92f
+	tree_text_pointer TreeBitstreamText_3a966
+	tree_text_pointer TreeBitstreamText_3a97f
+	tree_text_pointer TreeBitstreamText_3a995
+	tree_text_pointer TreeBitstreamText_3a9e8
+	tree_text_pointer TreeBitstreamText_3a9f3
+	tree_text_pointer TreeBitstreamText_3aa23
+	tree_text_pointer TreeBitstreamText_3aa4c
+	tree_text_pointer TreeBitstreamText_3aaa0
+	tree_text_pointer TreeBitstreamText_3aabf
+	tree_text_pointer TreeBitstreamText_3aadf
+	tree_text_pointer TreeBitstreamText_472d8
+	tree_text_pointer TreeBitstreamText_3aafc
+	tree_text_pointer TreeBitstreamText_46e5d
+	tree_text_pointer TreeBitstreamText_3ab2b
+	tree_text_pointer TreeBitstreamText_3ab80
+	tree_text_pointer TreeBitstreamText_3ad48
+	tree_text_pointer TreeBitstreamText_3ad7f
+	tree_text_pointer TreeBitstreamText_3ad91
+	tree_text_pointer TreeBitstreamText_3adae
+	tree_text_pointer TreeBitstreamText_3add4
+	tree_text_pointer TreeBitstreamText_3ae53
+	tree_text_pointer TreeBitstreamText_3ae6a
+	tree_text_pointer TreeBitstreamText_3aea4
+	tree_text_pointer TreeBitstreamText_3aef1
+	tree_text_pointer TreeBitstreamText_3af00
+	tree_text_pointer TreeBitstreamText_3af20
+	tree_text_pointer TreeBitstreamText_3af3a
+	tree_text_pointer TreeBitstreamText_3af58
+	tree_text_pointer TreeBitstreamText_3af8c
+	tree_text_pointer TreeBitstreamText_3afbf
+	tree_text_pointer TreeBitstreamText_3afdd
+	tree_text_pointer TreeBitstreamText_3b02c
+	tree_text_pointer TreeBitstreamText_3b060
+	tree_text_pointer TreeBitstreamText_3b219
+	tree_text_pointer TreeBitstreamText_3b22d
+	tree_text_pointer TreeBitstreamText_4257c
+	tree_text_pointer TreeBitstreamText_3b2db
+	tree_text_pointer TreeBitstreamText_3b324
+	tree_text_pointer TreeBitstreamText_3b36e
+	tree_text_pointer TreeBitstreamText_3b3c0
+	tree_text_pointer TreeBitstreamText_3b412
+	tree_text_pointer TreeBitstreamText_3b447
+	tree_text_pointer TreeBitstreamText_3b481
+	tree_text_pointer TreeBitstreamText_3b605
+	tree_text_pointer TreeBitstreamText_3b676
+	tree_text_pointer TreeBitstreamText_3b6ef
+	tree_text_pointer TreeBitstreamText_3b6fb
+	tree_text_pointer TreeBitstreamText_3b731
+	tree_text_pointer TreeBitstreamText_3b762
+	tree_text_pointer TreeBitstreamText_3b77b
+	tree_text_pointer TreeBitstreamText_3b7a6
+	tree_text_pointer TreeBitstreamText_3b7f7
+	tree_text_pointer TreeBitstreamText_3b860
+	tree_text_pointer TreeBitstreamText_3b8b8
+	tree_text_pointer TreeBitstreamText_3b8f2
+	tree_text_pointer TreeBitstreamText_3b942
+	tree_text_pointer TreeBitstreamText_3b9f6
+	tree_text_pointer TreeBitstreamText_3ba23
+	tree_text_pointer TreeBitstreamText_3babb
+	tree_text_pointer TreeBitstreamText_3baee
+	tree_text_pointer TreeBitstreamText_3bb2b
+	tree_text_pointer TreeBitstreamText_4600d
+	tree_text_pointer TreeBitstreamText_3bbab
+	tree_text_pointer TreeBitstreamText_3bc38
+	tree_text_pointer TreeBitstreamText_3bc83
+	tree_text_pointer TreeBitstreamText_3bd02
+	tree_text_pointer TreeBitstreamText_3bd87
+	tree_text_pointer TreeBitstreamText_3bdc2
+	tree_text_pointer TreeBitstreamText_3be8e
+	tree_text_pointer TreeBitstreamText_3bf25
+	tree_text_pointer TreeBitstreamText_3bf4b
+	tree_text_pointer TreeBitstreamText_3bf50
+	tree_text_pointer TreeBitstreamText_3bf85
+	tree_text_pointer TreeBitstreamText_3bf8e
+	tree_text_pointer TreeBitstreamText_3bfc1
+	tree_text_pointer TreeBitstreamText_3c000
+	tree_text_pointer TreeBitstreamText_3c04e
+	tree_text_pointer TreeBitstreamText_3c0ca
+	tree_text_pointer TreeBitstreamText_3c0de
+	tree_text_pointer TreeBitstreamText_3c13a
+	tree_text_pointer TreeBitstreamText_3c305
+	tree_text_pointer TreeBitstreamText_3c35b
+	tree_text_pointer TreeBitstreamText_3c390
+	tree_text_pointer TreeBitstreamText_3c3bd
+	tree_text_pointer TreeBitstreamText_46dc3
+	tree_text_pointer TreeBitstreamText_46d3b
+	tree_text_pointer TreeBitstreamText_3c4ab
+	tree_text_pointer TreeBitstreamText_3c69d
+	tree_text_pointer TreeBitstreamText_3c4f2
+	tree_text_pointer TreeBitstreamText_3c6ad
+	tree_text_pointer TreeBitstreamText_3c6be
+	tree_text_pointer TreeBitstreamText_3c6ce
+	tree_text_pointer TreeBitstreamText_3c6dd
+	tree_text_pointer TreeBitstreamText_3c6ec
+	tree_text_pointer TreeBitstreamText_3c707
+	tree_text_pointer TreeBitstreamText_3c7b1
+	tree_text_pointer TreeBitstreamText_3c437
+	tree_text_pointer TreeBitstreamText_3c46d
+	tree_text_pointer TreeBitstreamText_3c51f
+	tree_text_pointer TreeBitstreamText_3c552
+	tree_text_pointer TreeBitstreamText_3c5a0
+	tree_text_pointer TreeBitstreamText_3c5cf
+	tree_text_pointer TreeBitstreamText_3c61c
+	tree_text_pointer TreeBitstreamText_3c65d
+	tree_text_pointer TreeBitstreamText_3c66a
+	tree_text_pointer TreeBitstreamText_3c677
+	tree_text_pointer TreeBitstreamText_3c7ea
+	tree_text_pointer TreeBitstreamText_3c810
+	tree_text_pointer TreeBitstreamText_3c83b
+	tree_text_pointer TreeBitstreamText_3c859
+	tree_text_pointer TreeBitstreamText_3c878
+	tree_text_pointer TreeBitstreamText_3c8aa
+	tree_text_pointer TreeBitstreamText_3c8d2
+	tree_text_pointer TreeBitstreamText_3c901
+	tree_text_pointer TreeBitstreamText_3c90e
+	tree_text_pointer TreeBitstreamText_3c925
+	tree_text_pointer TreeBitstreamText_3c973
+	tree_text_pointer TreeBitstreamText_3c983
+	tree_text_pointer TreeBitstreamText_3c9c1
+	tree_text_pointer TreeBitstreamText_3ca00
+	tree_text_pointer TreeBitstreamText_3ca1c
+	tree_text_pointer TreeBitstreamText_3ca51
+	tree_text_pointer TreeBitstreamText_3ca60
+	tree_text_pointer TreeBitstreamText_3ca8a
+	tree_text_pointer TreeBitstreamText_3ca99
+	tree_text_pointer TreeBitstreamText_3cac2
+	tree_text_pointer TreeBitstreamText_3cae8
+	tree_text_pointer TreeBitstreamText_3cb14
+	tree_text_pointer TreeBitstreamText_3cb2d
+	tree_text_pointer TreeBitstreamText_3cbab
+	tree_text_pointer TreeBitstreamText_3cbf7
+	tree_text_pointer TreeBitstreamText_3cc4d
+	tree_text_pointer TreeBitstreamText_3cc61
+	tree_text_pointer TreeBitstreamText_3ccf9
+	tree_text_pointer TreeBitstreamText_3cd08
+	tree_text_pointer TreeBitstreamText_3cdce
+	tree_text_pointer TreeBitstreamText_3ce14
+	tree_text_pointer TreeBitstreamText_3cec2
+	tree_text_pointer TreeBitstreamText_3cefd
+	tree_text_pointer TreeBitstreamText_3d278
+	tree_text_pointer TreeBitstreamText_3d2d1
+	tree_text_pointer TreeBitstreamText_3d37a
+	tree_text_pointer TreeBitstreamText_3d3ba
+	tree_text_pointer TreeBitstreamText_3d404
+	tree_text_pointer TreeBitstreamText_3d442
+	tree_text_pointer TreeBitstreamText_3d465
+	tree_text_pointer TreeBitstreamText_3d4a3
+	tree_text_pointer TreeBitstreamText_3d51a
+	tree_text_pointer TreeBitstreamText_3d59c
+	tree_text_pointer TreeBitstreamText_47aea
+	tree_text_pointer TreeBitstreamText_3d5d0
+	tree_text_pointer TreeBitstreamText_3d60c
+	tree_text_pointer TreeBitstreamText_3d63e
+	tree_text_pointer TreeBitstreamText_47e17
+	tree_text_pointer TreeBitstreamText_3d66c
+	tree_text_pointer TreeBitstreamText_3d6c8
+	tree_text_pointer TreeBitstreamText_3d727
+	tree_text_pointer TreeBitstreamText_3d76a
+	tree_text_pointer TreeBitstreamText_3d793
+	tree_text_pointer TreeBitstreamText_3cf5a
+	tree_text_pointer TreeBitstreamText_3d001
+	tree_text_pointer TreeBitstreamText_45e29
+	tree_text_pointer TreeBitstreamText_4059e
+	tree_text_pointer TreeBitstreamText_3d098
+	tree_text_pointer TreeBitstreamText_3d0e0
+	tree_text_pointer TreeBitstreamText_3d160
+	tree_text_pointer TreeBitstreamText_3d187
+	tree_text_pointer TreeBitstreamText_3d1c4
+	tree_text_pointer TreeBitstreamText_3d1d1
+	tree_text_pointer TreeBitstreamText_3d204
+	tree_text_pointer TreeBitstreamText_3d302
+	tree_text_pointer TreeBitstreamText_3d354
+	tree_text_pointer TreeBitstreamText_3d831
+	tree_text_pointer TreeBitstreamText_3d844
+	tree_text_pointer TreeBitstreamText_3d85e
+	tree_text_pointer TreeBitstreamText_3d86d
+	tree_text_pointer TreeBitstreamText_3d897
+	tree_text_pointer TreeBitstreamText_3d8a2
+	tree_text_pointer TreeBitstreamText_473b2
+	tree_text_pointer TreeBitstreamText_3d8ce
+	tree_text_pointer TreeBitstreamText_3d801
+	tree_text_pointer TreeBitstreamText_3d8ab
+	tree_text_pointer TreeBitstreamText_3d8f1
+	tree_text_pointer TreeBitstreamText_3d95c
+	tree_text_pointer TreeBitstreamText_3d9b8
+	tree_text_pointer TreeBitstreamText_3d9f7
+	tree_text_pointer TreeBitstreamText_3da77
+	tree_text_pointer TreeBitstreamText_3da85
+	tree_text_pointer TreeBitstreamText_3db5f
+	tree_text_pointer TreeBitstreamText_3db7f
+	tree_text_pointer TreeBitstreamText_3dc1e
+	tree_text_pointer TreeBitstreamText_3dc47
+	tree_text_pointer TreeBitstreamText_3dc61
+	tree_text_pointer TreeBitstreamText_3dcbd
+	tree_text_pointer TreeBitstreamText_47416
+	tree_text_pointer TreeBitstreamText_3dccf
+	tree_text_pointer TreeBitstreamText_3dd0b
+	tree_text_pointer TreeBitstreamText_3de23
+	tree_text_pointer TreeBitstreamText_3de8e
+	tree_text_pointer TreeBitstreamText_3df08
+	tree_text_pointer TreeBitstreamText_3dfb9
+	tree_text_pointer TreeBitstreamText_3e01f
+	tree_text_pointer TreeBitstreamText_3e04a
+	tree_text_pointer TreeBitstreamText_3e0d5
+	tree_text_pointer TreeBitstreamText_3e1be
+	tree_text_pointer TreeBitstreamText_3e1ff
+	tree_text_pointer TreeBitstreamText_3e289
+	tree_text_pointer TreeBitstreamText_3e29b
+	tree_text_pointer TreeBitstreamText_3e30b
+	tree_text_pointer TreeBitstreamText_3e324
+	tree_text_pointer TreeBitstreamText_3e3db
+	tree_text_pointer TreeBitstreamText_3e43a
+	tree_text_pointer TreeBitstreamText_3e557
+	tree_text_pointer TreeBitstreamText_3e5b2
+	tree_text_pointer TreeBitstreamText_3e5ff
+	tree_text_pointer TreeBitstreamText_3e624
+	tree_text_pointer TreeBitstreamText_3e6a8
+	tree_text_pointer TreeBitstreamText_3e75b
+	tree_text_pointer TreeBitstreamText_3e770
+	tree_text_pointer TreeBitstreamText_3e7c0
+	tree_text_pointer TreeBitstreamText_3e85a
+	tree_text_pointer TreeBitstreamText_3e87a
+	tree_text_pointer TreeBitstreamText_3e896
+	tree_text_pointer TreeBitstreamText_3e8a6
+	tree_text_pointer TreeBitstreamText_3e8d4
+	tree_text_pointer TreeBitstreamText_45a76
+	tree_text_pointer TreeBitstreamText_3e8e5
+	tree_text_pointer TreeBitstreamText_3e8f3
+	tree_text_pointer TreeBitstreamText_3e940
+	tree_text_pointer TreeBitstreamText_3e974
+	tree_text_pointer TreeBitstreamText_3e99a
+	tree_text_pointer TreeBitstreamText_3e9c4
+	tree_text_pointer TreeBitstreamText_3e9e1
+	tree_text_pointer TreeBitstreamText_3ea2f
+	tree_text_pointer TreeBitstreamText_3ea97
+	tree_text_pointer TreeBitstreamText_3eae2
+	tree_text_pointer TreeBitstreamText_3eb76
+	tree_text_pointer TreeBitstreamText_3ec56
+	tree_text_pointer TreeBitstreamText_3ec9f
+	tree_text_pointer TreeBitstreamText_3ecd6
+	tree_text_pointer TreeBitstreamText_3ed13
+	tree_text_pointer TreeBitstreamText_3ee04
+	tree_text_pointer TreeBitstreamText_3f384
+	tree_text_pointer TreeBitstreamText_3f3c4
+	tree_text_pointer TreeBitstreamText_3f436
+	tree_text_pointer TreeBitstreamText_3f449
+	tree_text_pointer TreeBitstreamText_3f463
+	tree_text_pointer TreeBitstreamText_3f4fb
+	tree_text_pointer TreeBitstreamText_3f51d
+	tree_text_pointer TreeBitstreamText_3f55b
+	tree_text_pointer TreeBitstreamText_3f58e
+	tree_text_pointer TreeBitstreamText_3f5d5
+	tree_text_pointer TreeBitstreamText_3f750
+	tree_text_pointer TreeBitstreamText_3f79e
+	tree_text_pointer TreeBitstreamText_47192
+	tree_text_pointer TreeBitstreamText_471a6
+	tree_text_pointer TreeBitstreamText_47722
+	tree_text_pointer TreeBitstreamText_3f7ae
+	tree_text_pointer TreeBitstreamText_3f7e8
+	tree_text_pointer TreeBitstreamText_3f85e
+	tree_text_pointer TreeBitstreamText_3f920
+	tree_text_pointer TreeBitstreamText_3f8cd
+	tree_text_pointer TreeBitstreamText_3f956
+	tree_text_pointer TreeBitstreamText_3f97f
+	tree_text_pointer TreeBitstreamText_46d31
+	tree_text_pointer TreeBitstreamText_39f09
+	tree_text_pointer TreeBitstreamText_3f9b7
+	tree_text_pointer TreeBitstreamText_39f70
+	tree_text_pointer TreeBitstreamText_471bb
+	tree_text_pointer TreeBitstreamText_3fa09
+	tree_text_pointer TreeBitstreamText_3a04b
+	tree_text_pointer TreeBitstreamText_3fa6b
+	tree_text_pointer TreeBitstreamText_39fe7
+	tree_text_pointer TreeBitstreamText_3a22e
+	tree_text_pointer TreeBitstreamText_3fa9a
+	tree_text_pointer TreeBitstreamText_3facf
+	tree_text_pointer TreeBitstreamText_3fb02
+	tree_text_pointer TreeBitstreamText_3fb3a
+	tree_text_pointer TreeBitstreamText_3fb74
+	tree_text_pointer TreeBitstreamText_3a0e1
+	tree_text_pointer TreeBitstreamText_3fbab
+	tree_text_pointer TreeBitstreamText_3fc06
+	tree_text_pointer TreeBitstreamText_3a184
+	tree_text_pointer TreeBitstreamText_471cf
+	tree_text_pointer TreeBitstreamText_3fc50
+	tree_text_pointer TreeBitstreamText_3f36a
+	tree_text_pointer TreeBitstreamText_398d5
+	tree_text_pointer TreeBitstreamText_3fcb9
+	tree_text_pointer TreeBitstreamText_3fcf1
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_3fd10
+	tree_text_pointer TreeBitstreamText_3fd45
+	tree_text_pointer TreeBitstreamText_3fd83
+	tree_text_pointer TreeBitstreamText_3fda8
+	tree_text_pointer TreeBitstreamText_3fdd3
+	tree_text_pointer TreeBitstreamText_3fe01
+	tree_text_pointer TreeBitstreamText_3fe41
+	tree_text_pointer TreeBitstreamText_3fea5
+	tree_text_pointer TreeBitstreamText_3ff0d
+	tree_text_pointer TreeBitstreamText_3ff5e
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_44051
+	tree_text_pointer TreeBitstreamText_452cd
+	tree_text_pointer TreeBitstreamText_3d00d
+	tree_text_pointer TreeBitstreamText_3ff8c
+	tree_text_pointer TreeBitstreamText_3ffc5
+	tree_text_pointer TreeBitstreamText_40000
+	tree_text_pointer TreeBitstreamText_4001a
+	tree_text_pointer TreeBitstreamText_4003e
+	tree_text_pointer TreeBitstreamText_4006b
+	tree_text_pointer TreeBitstreamText_40094
+	tree_text_pointer TreeBitstreamText_400e4
+	tree_text_pointer TreeBitstreamText_4010a
+	tree_text_pointer TreeBitstreamText_42dac
+	tree_text_pointer TreeBitstreamText_40164
+	tree_text_pointer TreeBitstreamText_401ae
+	tree_text_pointer TreeBitstreamText_401e1
+	tree_text_pointer TreeBitstreamText_4022d
+	tree_text_pointer TreeBitstreamText_40261
+	tree_text_pointer TreeBitstreamText_402a7
+	tree_text_pointer TreeBitstreamText_402e4
+	tree_text_pointer TreeBitstreamText_40371
+	tree_text_pointer TreeBitstreamText_40405
+	tree_text_pointer TreeBitstreamText_40491
+	tree_text_pointer TreeBitstreamText_40542
+	tree_text_pointer TreeBitstreamText_405cb
+	tree_text_pointer TreeBitstreamText_40659
+	tree_text_pointer TreeBitstreamText_40685
+	tree_text_pointer TreeBitstreamText_406ce
+	tree_text_pointer TreeBitstreamText_40707
+	tree_text_pointer TreeBitstreamText_40716
+	tree_text_pointer TreeBitstreamText_4079a
+	tree_text_pointer TreeBitstreamText_407af
+	tree_text_pointer TreeBitstreamText_4080f
+	tree_text_pointer TreeBitstreamText_40843
+	tree_text_pointer TreeBitstreamText_40883
+	tree_text_pointer TreeBitstreamText_4090e
+	tree_text_pointer TreeBitstreamText_40933
+	tree_text_pointer TreeBitstreamText_409c8
+	tree_text_pointer TreeBitstreamText_40a41
+	tree_text_pointer TreeBitstreamText_40a7a
+	tree_text_pointer TreeBitstreamText_3abf2
+	tree_text_pointer TreeBitstreamText_4691c
+	tree_text_pointer TreeBitstreamText_40b0e
+	tree_text_pointer TreeBitstreamText_40b59
+	tree_text_pointer TreeBitstreamText_40b8e
+	tree_text_pointer TreeBitstreamText_40bcd
+	tree_text_pointer TreeBitstreamText_44eb8
+	tree_text_pointer TreeBitstreamText_40bf2
+	tree_text_pointer TreeBitstreamText_40c1e
+	tree_text_pointer TreeBitstreamText_40c37
+	tree_text_pointer TreeBitstreamText_40c56
+	tree_text_pointer TreeBitstreamText_40c77
+	tree_text_pointer TreeBitstreamText_40d52
+	tree_text_pointer TreeBitstreamText_40de3
+	tree_text_pointer TreeBitstreamText_40e1f
+	tree_text_pointer TreeBitstreamText_40e63
+	tree_text_pointer TreeBitstreamText_40e9a
+	tree_text_pointer TreeBitstreamText_40ee8
+	tree_text_pointer TreeBitstreamText_40f67
+	tree_text_pointer TreeBitstreamText_40fbf
+	tree_text_pointer TreeBitstreamText_4434a
+	tree_text_pointer TreeBitstreamText_41013
+	tree_text_pointer TreeBitstreamText_4105d
+	tree_text_pointer TreeBitstreamText_41177
+	tree_text_pointer TreeBitstreamText_411eb
+	tree_text_pointer TreeBitstreamText_41271
+	tree_text_pointer TreeBitstreamText_412d6
+	tree_text_pointer TreeBitstreamText_474d4
+	tree_text_pointer TreeBitstreamText_412f0
+	tree_text_pointer TreeBitstreamText_4133b
+	tree_text_pointer TreeBitstreamText_413a9
+	tree_text_pointer TreeBitstreamText_4144f
+	tree_text_pointer TreeBitstreamText_4147f
+	tree_text_pointer TreeBitstreamText_414b4
+	tree_text_pointer TreeBitstreamText_414f9
+	tree_text_pointer TreeBitstreamText_4157e
+	tree_text_pointer TreeBitstreamText_472f0
+	tree_text_pointer TreeBitstreamText_415ac
+	tree_text_pointer TreeBitstreamText_415f3
+	tree_text_pointer TreeBitstreamText_4161d
+	tree_text_pointer TreeBitstreamText_4163b
+	tree_text_pointer TreeBitstreamText_41675
+	tree_text_pointer TreeBitstreamText_416c4
+	tree_text_pointer TreeBitstreamText_416f0
+	tree_text_pointer TreeBitstreamText_41721
+	tree_text_pointer TreeBitstreamText_4174d
+	tree_text_pointer TreeBitstreamText_417c2
+	tree_text_pointer TreeBitstreamText_44657
+	tree_text_pointer TreeBitstreamText_41800
+	tree_text_pointer TreeBitstreamText_41836
+	tree_text_pointer TreeBitstreamText_449c9
+	tree_text_pointer TreeBitstreamText_41890
+	tree_text_pointer TreeBitstreamText_41903
+	tree_text_pointer TreeBitstreamText_419a8
+	tree_text_pointer TreeBitstreamText_419d2
+	tree_text_pointer TreeBitstreamText_41a1a
+	tree_text_pointer TreeBitstreamText_41a56
+	tree_text_pointer TreeBitstreamText_41aa5
+	tree_text_pointer TreeBitstreamText_41b5f
+	tree_text_pointer TreeBitstreamText_41bc2
+	tree_text_pointer TreeBitstreamText_41c4a
+	tree_text_pointer TreeBitstreamText_41c86
+	tree_text_pointer TreeBitstreamText_41d0d
+	tree_text_pointer TreeBitstreamText_41d47
+	tree_text_pointer TreeBitstreamText_41d81
+	tree_text_pointer TreeBitstreamText_41dce
+	tree_text_pointer TreeBitstreamText_41e16
+	tree_text_pointer TreeBitstreamText_41e56
+	tree_text_pointer TreeBitstreamText_41eb0
+	tree_text_pointer TreeBitstreamText_41ec7
+	tree_text_pointer TreeBitstreamText_41f0a
+	tree_text_pointer TreeBitstreamText_41f57
+	tree_text_pointer TreeBitstreamText_41f81
+	tree_text_pointer TreeBitstreamText_41fb4
+	tree_text_pointer TreeBitstreamText_41ff4
+	tree_text_pointer TreeBitstreamText_4203a
+	tree_text_pointer TreeBitstreamText_42075
+	tree_text_pointer TreeBitstreamText_4209c
+	tree_text_pointer TreeBitstreamText_420bf
+	tree_text_pointer TreeBitstreamText_47b1d
+	tree_text_pointer TreeBitstreamText_420d8
+	tree_text_pointer TreeBitstreamText_45add
+	tree_text_pointer TreeBitstreamText_42104
+	tree_text_pointer TreeBitstreamText_42148
+	tree_text_pointer TreeBitstreamText_4217a
+	tree_text_pointer TreeBitstreamText_421dd
+	tree_text_pointer TreeBitstreamText_45aee
+	tree_text_pointer TreeBitstreamText_42221
+	tree_text_pointer TreeBitstreamText_42239
+	tree_text_pointer TreeBitstreamText_4225d
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_42280
+	tree_text_pointer TreeBitstreamText_4229c
+	tree_text_pointer TreeBitstreamText_422d0
+	tree_text_pointer TreeBitstreamText_422fd
+	tree_text_pointer TreeBitstreamText_42324
+	tree_text_pointer TreeBitstreamText_42364
+	tree_text_pointer TreeBitstreamText_4238a
+	tree_text_pointer TreeBitstreamText_42399
+	tree_text_pointer TreeBitstreamText_3a0b1
+	tree_text_pointer TreeBitstreamText_45aff
+	tree_text_pointer TreeBitstreamText_3a0c9
+	tree_text_pointer TreeBitstreamText_3a138
+	tree_text_pointer TreeBitstreamText_3a151
+	tree_text_pointer TreeBitstreamText_3a167
+	tree_text_pointer TreeBitstreamText_39fb2
+	tree_text_pointer TreeBitstreamText_39fc7
+	tree_text_pointer TreeBitstreamText_39fd9
+	tree_text_pointer TreeBitstreamText_3a1b9
+	tree_text_pointer TreeBitstreamText_3a1de
+	tree_text_pointer TreeBitstreamText_3a202
+	tree_text_pointer TreeBitstreamText_428c3
+	tree_text_pointer TreeBitstreamText_428cd
+	tree_text_pointer TreeBitstreamText_428e1
+	tree_text_pointer TreeBitstreamText_428ee
+	tree_text_pointer TreeBitstreamText_428f9
+	tree_text_pointer TreeBitstreamText_42903
+	tree_text_pointer TreeBitstreamText_4290f
+	tree_text_pointer TreeBitstreamText_42937
+	tree_text_pointer TreeBitstreamText_42972
+	tree_text_pointer TreeBitstreamText_4297c
+	tree_text_pointer TreeBitstreamText_4298a
+	tree_text_pointer TreeBitstreamText_42998
+	tree_text_pointer TreeBitstreamText_429a1
+	tree_text_pointer TreeBitstreamText_429aa
+	tree_text_pointer TreeBitstreamText_429b8
+	tree_text_pointer TreeBitstreamText_429ca
+	tree_text_pointer TreeBitstreamText_429d1
+	tree_text_pointer TreeBitstreamText_429dc
+	tree_text_pointer TreeBitstreamText_429e1
+	tree_text_pointer TreeBitstreamText_429f2
+	tree_text_pointer TreeBitstreamText_42a00
+	tree_text_pointer TreeBitstreamText_42a0d
+	tree_text_pointer TreeBitstreamText_42a24
+	tree_text_pointer TreeBitstreamText_42a37
+	tree_text_pointer TreeBitstreamText_42a4c
+	tree_text_pointer TreeBitstreamText_42a61
+	tree_text_pointer TreeBitstreamText_42a6e
+	tree_text_pointer TreeBitstreamText_42a7e
+	tree_text_pointer TreeBitstreamText_42a9a
+	tree_text_pointer TreeBitstreamText_42ab0
+	tree_text_pointer TreeBitstreamText_45b10
+	tree_text_pointer TreeBitstreamText_42abe
+	tree_text_pointer TreeBitstreamText_42ad0
+	tree_text_pointer TreeBitstreamText_45b20
+	tree_text_pointer TreeBitstreamText_42ada
+	tree_text_pointer TreeBitstreamText_42ae8
+	tree_text_pointer TreeBitstreamText_42af6
+	tree_text_pointer TreeBitstreamText_42b02
+	tree_text_pointer TreeBitstreamText_42b0b
+	tree_text_pointer TreeBitstreamText_42b16
+	tree_text_pointer TreeBitstreamText_42b24
+	tree_text_pointer TreeBitstreamText_42b32
+	tree_text_pointer TreeBitstreamText_42b41
+	tree_text_pointer TreeBitstreamText_42b4c
+	tree_text_pointer TreeBitstreamText_42b64
+	tree_text_pointer TreeBitstreamText_42b7b
+	tree_text_pointer TreeBitstreamText_42b85
+	tree_text_pointer TreeBitstreamText_42b8f
+	tree_text_pointer TreeBitstreamText_42b98
+	tree_text_pointer TreeBitstreamText_42ba0
+	tree_text_pointer TreeBitstreamText_42baa
+	tree_text_pointer TreeBitstreamText_42bb7
+	tree_text_pointer TreeBitstreamText_42bc8
+	tree_text_pointer TreeBitstreamText_42bd2
+	tree_text_pointer TreeBitstreamText_42bdd
+	tree_text_pointer TreeBitstreamText_42be8
+	tree_text_pointer TreeBitstreamText_42bf7
+	tree_text_pointer TreeBitstreamText_42c09
+	tree_text_pointer TreeBitstreamText_42c16
+	tree_text_pointer TreeBitstreamText_3a215
+	tree_text_pointer TreeBitstreamText_42c2d
+	tree_text_pointer TreeBitstreamText_42c39
+	tree_text_pointer TreeBitstreamText_42c4a
+	tree_text_pointer TreeBitstreamText_42c58
+	tree_text_pointer TreeBitstreamText_42c65
+	tree_text_pointer TreeBitstreamText_42c72
+	tree_text_pointer TreeBitstreamText_42c7d
+	tree_text_pointer TreeBitstreamText_42c8e
+	tree_text_pointer TreeBitstreamText_42cb1
+	tree_text_pointer TreeBitstreamText_42cb8
+	tree_text_pointer TreeBitstreamText_42cc4
+	tree_text_pointer TreeBitstreamText_42e15
+	tree_text_pointer TreeBitstreamText_42e5e
+	tree_text_pointer TreeBitstreamText_42ec2
+	tree_text_pointer TreeBitstreamText_42f84
+	tree_text_pointer TreeBitstreamText_42ffd
+	tree_text_pointer TreeBitstreamText_43084
+	tree_text_pointer TreeBitstreamText_430f7
+	tree_text_pointer TreeBitstreamText_43156
+	tree_text_pointer TreeBitstreamText_431e5
+	tree_text_pointer TreeBitstreamText_432c2
+	tree_text_pointer TreeBitstreamText_432d3
+	tree_text_pointer TreeBitstreamText_432e2
+	tree_text_pointer TreeBitstreamText_43362
+	tree_text_pointer TreeBitstreamText_4338d
+	tree_text_pointer TreeBitstreamText_4347a
+	tree_text_pointer TreeBitstreamText_434f2
+	tree_text_pointer TreeBitstreamText_435b0
+	tree_text_pointer TreeBitstreamText_4365f
+	tree_text_pointer TreeBitstreamText_43761
+	tree_text_pointer TreeBitstreamText_4377a
+	tree_text_pointer TreeBitstreamText_43956
+	tree_text_pointer TreeBitstreamText_43a21
+	tree_text_pointer TreeBitstreamText_43a5a
+	tree_text_pointer TreeBitstreamText_43c04
+	tree_text_pointer TreeBitstreamText_43c84
+	tree_text_pointer TreeBitstreamText_47037
+	tree_text_pointer TreeBitstreamText_42df1
+	tree_text_pointer TreeBitstreamText_4380b
+	tree_text_pointer TreeBitstreamText_4393b
+	tree_text_pointer TreeBitstreamText_43d8e
+	tree_text_pointer TreeBitstreamText_43dee
+	tree_text_pointer TreeBitstreamText_43e7a
+	tree_text_pointer TreeBitstreamText_43ed7
+	tree_text_pointer TreeBitstreamText_43f51
+	tree_text_pointer TreeBitstreamText_440c4
+	tree_text_pointer TreeBitstreamText_44213
+	tree_text_pointer TreeBitstreamText_44392
+	tree_text_pointer TreeBitstreamText_44507
+	tree_text_pointer TreeBitstreamText_446dc
+	tree_text_pointer TreeBitstreamText_44861
+	tree_text_pointer TreeBitstreamText_44a2d
+	tree_text_pointer TreeBitstreamText_44b74
+	tree_text_pointer TreeBitstreamText_44d13
+	tree_text_pointer TreeBitstreamText_44f10
+	tree_text_pointer TreeBitstreamText_450bb
+	tree_text_pointer TreeBitstreamText_4531c
+	tree_text_pointer TreeBitstreamText_4547f
+	tree_text_pointer TreeBitstreamText_4560f
+	tree_text_pointer TreeBitstreamText_45794
+	tree_text_pointer TreeBitstreamText_458ef
+	tree_text_pointer TreeBitstreamText_442ef
+	tree_text_pointer TreeBitstreamText_45c80
+	tree_text_pointer TreeBitstreamText_45cb9
+	tree_text_pointer TreeBitstreamText_45cd8
+	tree_text_pointer TreeBitstreamText_45cff
+	tree_text_pointer TreeBitstreamText_45d1c
+	tree_text_pointer TreeBitstreamText_45d3d
+	tree_text_pointer TreeBitstreamText_45d61
+	tree_text_pointer TreeBitstreamText_45d82
+	tree_text_pointer TreeBitstreamText_45db0
+	tree_text_pointer TreeBitstreamText_45e48
+	tree_text_pointer TreeBitstreamText_45e5d
+	tree_text_pointer TreeBitstreamText_45e76
+	tree_text_pointer TreeBitstreamText_46923
+	tree_text_pointer TreeBitstreamText_46d00
+	tree_text_pointer TreeBitstreamText_4650d
+	tree_text_pointer TreeBitstreamText_4651c
+	tree_text_pointer TreeBitstreamText_4653a
+	tree_text_pointer TreeBitstreamText_46549
+	tree_text_pointer TreeBitstreamText_46554
+	tree_text_pointer TreeBitstreamText_4656c
+	tree_text_pointer TreeBitstreamText_4657c
+	tree_text_pointer TreeBitstreamText_46596
+	tree_text_pointer TreeBitstreamText_465a4
+	tree_text_pointer TreeBitstreamText_465ae
+	tree_text_pointer TreeBitstreamText_465b4
+	tree_text_pointer TreeBitstreamText_465ca
+	tree_text_pointer TreeBitstreamText_465d8
+	tree_text_pointer TreeBitstreamText_465ec
+	tree_text_pointer TreeBitstreamText_46610
+	tree_text_pointer TreeBitstreamText_46629
+	tree_text_pointer TreeBitstreamText_46645
+	tree_text_pointer TreeBitstreamText_46651
+	tree_text_pointer TreeBitstreamText_46668
+	tree_text_pointer TreeBitstreamText_46686
+	tree_text_pointer TreeBitstreamText_466b3
+	tree_text_pointer TreeBitstreamText_466e2
+	tree_text_pointer TreeBitstreamText_466f0
+	tree_text_pointer TreeBitstreamText_466ff
+	tree_text_pointer TreeBitstreamText_4670e
+	tree_text_pointer TreeBitstreamText_467bb
+	tree_text_pointer TreeBitstreamText_467c7
+	tree_text_pointer TreeBitstreamText_467d3
+	tree_text_pointer TreeBitstreamText_467df
+	tree_text_pointer TreeBitstreamText_467eb
+	tree_text_pointer TreeBitstreamText_467f7
+	tree_text_pointer TreeBitstreamText_46803
+	tree_text_pointer TreeBitstreamText_4680f
+	tree_text_pointer TreeBitstreamText_46818
+	tree_text_pointer TreeBitstreamText_46821
+	tree_text_pointer TreeBitstreamText_4682a
+	tree_text_pointer TreeBitstreamText_46833
+	tree_text_pointer TreeBitstreamText_4683d
+	tree_text_pointer TreeBitstreamText_46846
+	tree_text_pointer TreeBitstreamText_4684f
+	tree_text_pointer TreeBitstreamText_46859
+	tree_text_pointer TreeBitstreamText_46861
+	tree_text_pointer TreeBitstreamText_4686b
+	tree_text_pointer TreeBitstreamText_46878
+	tree_text_pointer TreeBitstreamText_46886
+	tree_text_pointer TreeBitstreamText_46894
+	tree_text_pointer TreeBitstreamText_468a2
+	tree_text_pointer TreeBitstreamText_468ae
+	tree_text_pointer TreeBitstreamText_468ba
+	tree_text_pointer TreeBitstreamText_468c8
+	tree_text_pointer TreeBitstreamText_468d4
+	tree_text_pointer TreeBitstreamText_468e0
+	tree_text_pointer TreeBitstreamText_468ec
+	tree_text_pointer TreeBitstreamText_468f8
+	tree_text_pointer TreeBitstreamText_46904
+	tree_text_pointer TreeBitstreamText_46910
+	tree_text_pointer TreeBitstreamText_46973
+	tree_text_pointer TreeBitstreamText_47306
+	tree_text_pointer TreeBitstreamText_47319
+	tree_text_pointer TreeBitstreamText_46986
+	tree_text_pointer TreeBitstreamText_46991
+	tree_text_pointer TreeBitstreamText_4699d
+	tree_text_pointer TreeBitstreamText_469a9
+	tree_text_pointer TreeBitstreamText_469b5
+	tree_text_pointer TreeBitstreamText_469c1
+	tree_text_pointer TreeBitstreamText_469cd
+	tree_text_pointer TreeBitstreamText_469d9
+	tree_text_pointer TreeBitstreamText_469e5
+	tree_text_pointer TreeBitstreamText_469f1
+	tree_text_pointer TreeBitstreamText_469fd
+	tree_text_pointer TreeBitstreamText_46a0a
+	tree_text_pointer TreeBitstreamText_46a17
+	tree_text_pointer TreeBitstreamText_46a24
+	tree_text_pointer TreeBitstreamText_46a31
+	tree_text_pointer TreeBitstreamText_46a3e
+	tree_text_pointer TreeBitstreamText_46a4b
+	tree_text_pointer TreeBitstreamText_46a58
+	tree_text_pointer TreeBitstreamText_46a65
+	tree_text_pointer TreeBitstreamText_46a72
+	tree_text_pointer TreeBitstreamText_46a7f
+	tree_text_pointer TreeBitstreamText_46a8c
+	tree_text_pointer TreeBitstreamText_46a99
+	tree_text_pointer TreeBitstreamText_46aa6
+	tree_text_pointer TreeBitstreamText_46ab3
+	tree_text_pointer TreeBitstreamText_46ac0
+	tree_text_pointer TreeBitstreamText_46aca
+	tree_text_pointer TreeBitstreamText_46ad5
+	tree_text_pointer TreeBitstreamText_46ae0
+	tree_text_pointer TreeBitstreamText_46aeb
+	tree_text_pointer TreeBitstreamText_46af6
+	tree_text_pointer TreeBitstreamText_46b01
+	tree_text_pointer TreeBitstreamText_46b0c
+	tree_text_pointer TreeBitstreamText_46b14
+	tree_text_pointer TreeBitstreamText_4732b
+	tree_text_pointer TreeBitstreamText_47337
+	tree_text_pointer TreeBitstreamText_47343
+	tree_text_pointer TreeBitstreamText_46b1a
+	tree_text_pointer TreeBitstreamText_46b25
+	tree_text_pointer TreeBitstreamText_46b30
+	tree_text_pointer TreeBitstreamText_46b3b
+	tree_text_pointer TreeBitstreamText_46b46
+	tree_text_pointer TreeBitstreamText_46b51
+	tree_text_pointer TreeBitstreamText_46b5c
+	tree_text_pointer TreeBitstreamText_46b67
+	tree_text_pointer TreeBitstreamText_46b72
+	tree_text_pointer TreeBitstreamText_46b7d
+	tree_text_pointer TreeBitstreamText_46b8a
+	tree_text_pointer TreeBitstreamText_46b94
+	tree_text_pointer TreeBitstreamText_46b9e
+	tree_text_pointer TreeBitstreamText_46ba8
+	tree_text_pointer TreeBitstreamText_46bb3
+	tree_text_pointer TreeBitstreamText_46bbe
+	tree_text_pointer TreeBitstreamText_46bc9
+	tree_text_pointer TreeBitstreamText_46bd4
+	tree_text_pointer TreeBitstreamText_46bdf
+	tree_text_pointer TreeBitstreamText_46bea
+	tree_text_pointer TreeBitstreamText_46bf5
+	tree_text_pointer TreeBitstreamText_46de0
+	tree_text_pointer TreeBitstreamText_46df6
+	tree_text_pointer TreeBitstreamText_46e0b
+	tree_text_pointer TreeBitstreamText_46e1d
+	tree_text_pointer TreeBitstreamText_46e3b
+	tree_text_pointer TreeBitstreamText_46e4b
+	tree_text_pointer TreeBitstreamText_46e6c
+	tree_text_pointer TreeBitstreamText_46daf
+	tree_text_pointer TreeBitstreamText_46e84
+	tree_text_pointer TreeBitstreamText_46e95
+	tree_text_pointer TreeBitstreamText_46ea4
+	tree_text_pointer TreeBitstreamText_46eb8
+	tree_text_pointer TreeBitstreamText_46f28
+	tree_text_pointer TreeBitstreamText_46f30
+	tree_text_pointer TreeBitstreamText_46f3e
+	tree_text_pointer TreeBitstreamText_46dca
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_46f46
+	tree_text_pointer TreeBitstreamText_46f5e
+	tree_text_pointer TreeBitstreamText_46f73
+	tree_text_pointer TreeBitstreamText_46f8a
+	tree_text_pointer TreeBitstreamText_46fa5
+	tree_text_pointer TreeBitstreamText_3d713
+	tree_text_pointer TreeBitstreamText_3e522
+	tree_text_pointer TreeBitstreamText_3e544
+	tree_text_pointer TreeBitstreamText_3eab5
+	tree_text_pointer TreeBitstreamText_46dd4
+	tree_text_pointer TreeBitstreamText_4604f
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_39e1f
+	tree_text_pointer TreeBitstreamText_42ccc
+	tree_text_pointer TreeBitstreamText_39e65
+	tree_text_pointer TreeBitstreamText_39e8c
+	tree_text_pointer TreeBitstreamText_3a272
+	tree_text_pointer TreeBitstreamText_39d7e
+	tree_text_pointer TreeBitstreamText_455be
+	tree_text_pointer TreeBitstreamText_3a481
+	tree_text_pointer TreeBitstreamText_3ac82
+	tree_text_pointer TreeBitstreamText_39d95
+	tree_text_pointer TreeBitstreamText_424a9
+	tree_text_pointer TreeBitstreamText_4251f
+	tree_text_pointer TreeBitstreamText_4692e
+	tree_text_pointer TreeBitstreamText_45abb
+	tree_text_pointer TreeBitstreamText_461c0
+	tree_text_pointer TreeBitstreamText_45acc
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_46218
+	tree_text_pointer TreeBitstreamText_462a0
+	tree_text_pointer TreeBitstreamText_46330
+	tree_text_pointer TreeBitstreamText_463d7
+	tree_text_pointer TreeBitstreamText_3fc99
+	tree_text_pointer TreeBitstreamText_425cb
+	tree_text_pointer TreeBitstreamText_42617
+	tree_text_pointer TreeBitstreamText_42650
+	tree_text_pointer TreeBitstreamText_4268e
+	tree_text_pointer TreeBitstreamText_3d552
+	tree_text_pointer TreeBitstreamText_3b932
+	tree_text_pointer TreeBitstreamText_46fe6
+	tree_text_pointer TreeBitstreamText_47029
+	tree_text_pointer TreeBitstreamText_4701b
+	tree_text_pointer TreeBitstreamText_42d37
+	tree_text_pointer TreeBitstreamText_42d69
+	tree_text_pointer TreeBitstreamText_42d79
+	tree_text_pointer TreeBitstreamText_42dc8
+	tree_text_pointer TreeBitstreamText_42dde
+	tree_text_pointer TreeBitstreamText_470a2
+	tree_text_pointer TreeBitstreamText_3a858
+	tree_text_pointer TreeBitstreamText_470c8
+	tree_text_pointer TreeBitstreamText_43945
+	tree_text_pointer TreeBitstreamText_43b4c
+	tree_text_pointer TreeBitstreamText_3b169
+	tree_text_pointer TreeBitstreamText_3b17a
+	tree_text_pointer TreeBitstreamText_3b30a
+	tree_text_pointer TreeBitstreamText_3c070
+	tree_text_pointer TreeBitstreamText_3c086
+	tree_text_pointer TreeBitstreamText_3b31f
+	tree_text_pointer TreeBitstreamText_471e4
+	tree_text_pointer TreeBitstreamText_4725f
+	tree_text_pointer TreeBitstreamText_47272
+	tree_text_pointer TreeBitstreamText_4727f
+	tree_text_pointer TreeBitstreamText_4728d
+	tree_text_pointer TreeBitstreamText_472a0
+	tree_text_pointer TreeBitstreamText_472ae
+	tree_text_pointer TreeBitstreamText_472b9
+	tree_text_pointer TreeBitstreamText_40ccc
+	tree_text_pointer TreeBitstreamText_470d8
+	tree_text_pointer TreeBitstreamText_470f0
+	tree_text_pointer TreeBitstreamText_3accc
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_3ad19
+	tree_text_pointer TreeBitstreamText_4697e
+	tree_text_pointer TreeBitstreamText_47136
+	tree_text_pointer TreeBitstreamText_4714c
+	tree_text_pointer TreeBitstreamText_43cbb
+	tree_text_pointer TreeBitstreamText_43d46
+	tree_text_pointer TreeBitstreamText_46718
+	tree_text_pointer TreeBitstreamText_4672b
+	tree_text_pointer TreeBitstreamText_46740
+	tree_text_pointer TreeBitstreamText_47516
+	tree_text_pointer TreeBitstreamText_475a7
+	tree_text_pointer TreeBitstreamText_475f4
+	tree_text_pointer TreeBitstreamText_47652
+	tree_text_pointer TreeBitstreamText_47780
+	tree_text_pointer TreeBitstreamText_4780b
+	tree_text_pointer TreeBitstreamText_478bb
+	tree_text_pointer TreeBitstreamText_3b9a9
+	tree_text_pointer TreeBitstreamText_3b9d7
+	tree_text_pointer TreeBitstreamText_3bd37
+	tree_text_pointer TreeBitstreamText_3bd77
+	tree_text_pointer TreeBitstreamText_46ecc
+	tree_text_pointer TreeBitstreamText_46ee5
+	tree_text_pointer TreeBitstreamText_46788
+	tree_text_pointer TreeBitstreamText_46031
+	tree_text_pointer TreeBitstreamText_46040
+	tree_text_pointer TreeBitstreamText_3ee24
+	tree_text_pointer TreeBitstreamText_3ee49
+	tree_text_pointer TreeBitstreamText_47053
+	tree_text_pointer TreeBitstreamText_4706a
+	tree_text_pointer TreeBitstreamText_476b6
+	tree_text_pointer TreeBitstreamText_41373
+	tree_text_pointer TreeBitstreamText_413f4
+	tree_text_pointer TreeBitstreamText_3b199
+	tree_text_pointer TreeBitstreamText_3c162
+	tree_text_pointer TreeBitstreamText_41088
+	tree_text_pointer TreeBitstreamText_410cf
+	tree_text_pointer TreeBitstreamText_41102
+	tree_text_pointer TreeBitstreamText_41136
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_47b05
+	tree_text_pointer TreeBitstreamText_41548
+	tree_text_pointer TreeBitstreamText_47943
+	tree_text_pointer TreeBitstreamText_47980
+	tree_text_pointer TreeBitstreamText_479b4
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_423a7
+	tree_text_pointer TreeBitstreamText_409fd
+	tree_text_pointer TreeBitstreamText_40ac2
+	tree_text_pointer TreeBitstreamText_3ede7
+	tree_text_pointer TreeBitstreamText_4181e
+	tree_text_pointer TreeBitstreamText_41867
+	tree_text_pointer TreeBitstreamText_41a76
+	tree_text_pointer TreeBitstreamText_41982
+	tree_text_pointer TreeBitstreamText_419fb
+	tree_text_pointer TreeBitstreamText_41b00
+	tree_text_pointer TreeBitstreamText_418bd
+	tree_text_pointer TreeBitstreamText_431d7
+	tree_text_pointer TreeBitstreamText_47cc9
+	tree_text_pointer TreeBitstreamText_47ce9
+	tree_text_pointer TreeBitstreamText_47d38
+	tree_text_pointer TreeBitstreamText_47d46
+	tree_text_pointer TreeBitstreamText_47d58
+	tree_text_pointer TreeBitstreamText_47d7c
+	tree_text_pointer TreeBitstreamText_47da2
+	tree_text_pointer TreeBitstreamText_47dc3
+	tree_text_pointer TreeBitstreamText_47ddc
+	tree_text_pointer TreeBitstreamText_47dfa
+	tree_text_pointer TreeBitstreamText_47e09
+	tree_text_pointer TreeBitstreamText_3c9b4
+	tree_text_pointer TreeBitstreamText_399d1
+	tree_text_pointer TreeBitstreamText_39321
+	tree_text_pointer TreeBitstreamText_3933b
+	tree_text_pointer TreeBitstreamText_393e9
+	tree_text_pointer TreeBitstreamText_3945b
+	tree_text_pointer TreeBitstreamText_39471
+	tree_text_pointer TreeBitstreamText_3948a
+	tree_text_pointer TreeBitstreamText_3e7ac
+	tree_text_pointer TreeBitstreamText_393ce
+	tree_text_pointer TreeBitstreamText_46c00
+	tree_text_pointer TreeBitstreamText_46c09
+	tree_text_pointer TreeBitstreamText_46c14
+	tree_text_pointer TreeBitstreamText_46c1f
+	tree_text_pointer TreeBitstreamText_46c2b
+	tree_text_pointer TreeBitstreamText_46c33
+	tree_text_pointer TreeBitstreamText_46c3b
+	tree_text_pointer TreeBitstreamText_46c44
+	tree_text_pointer TreeBitstreamText_46c4e
+	tree_text_pointer TreeBitstreamText_46c5d
+	tree_text_pointer TreeBitstreamText_46c6a
+	tree_text_pointer TreeBitstreamText_46c75
+	tree_text_pointer TreeBitstreamText_46c83
+	tree_text_pointer TreeBitstreamText_46c8c
+	tree_text_pointer TreeBitstreamText_46c9b
+	tree_text_pointer TreeBitstreamText_46ca8
+	tree_text_pointer TreeBitstreamText_46cb3
+	tree_text_pointer TreeBitstreamText_46cbf
+	tree_text_pointer TreeBitstreamText_46ccb
+	tree_text_pointer TreeBitstreamText_46cd7
+	tree_text_pointer TreeBitstreamText_46ce3
+	tree_text_pointer TreeBitstreamText_47041
+	tree_text_pointer TreeBitstreamText_40d8c
+	tree_text_pointer TreeBitstreamText_40dac
+	tree_text_pointer TreeBitstreamText_46496
+	tree_text_pointer TreeBitstreamText_4646b
+	tree_text_pointer TreeBitstreamText_46480
+	tree_text_pointer TreeBitstreamText_464f1
+	tree_text_pointer TreeBitstreamText_464ff
+	tree_text_pointer TreeBitstreamText_46d0c
+	tree_text_pointer TreeBitstreamText_3a29a
+	tree_text_pointer TreeBitstreamText_46fca
+	tree_text_pointer TreeBitstreamText_3a2bb
+	tree_text_pointer TreeBitstreamText_3a2d1
+	tree_text_pointer TreeBitstreamText_46db8
+	tree_text_pointer TreeBitstreamText_44000
+	tree_text_pointer TreeBitstreamText_45ee8
+	tree_text_pointer TreeBitstreamText_45e91
+	tree_text_pointer TreeBitstreamText_46939
+	tree_text_pointer TreeBitstreamText_393dd
+	tree_text_pointer TreeBitstreamText_46ef5
+	tree_text_pointer TreeBitstreamText_46cec
+	tree_text_pointer TreeBitstreamText_46cf6
+	tree_text_pointer TreeBitstreamText_426de
+	tree_text_pointer TreeBitstreamText_4272e
+	tree_text_pointer TreeBitstreamText_3f8f1
+	tree_text_pointer TreeBitstreamText_3f901
+	tree_text_pointer TreeBitstreamText_3eaa7
+	tree_text_pointer TreeBitstreamText_47a75
+	tree_text_pointer TreeBitstreamText_3f665
+	tree_text_pointer TreeBitstreamText_3f60f
+	tree_text_pointer TreeBitstreamText_3f679
+	tree_text_pointer TreeBitstreamText_427b2
+	tree_text_pointer TreeBitstreamText_427ca
+	tree_text_pointer TreeBitstreamText_427de
+	tree_text_pointer TreeBitstreamText_42876
+	tree_text_pointer TreeBitstreamText_458e0
+	tree_text_pointer TreeBitstreamText_440f4
+	tree_text_pointer TreeBitstreamText_44185
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_443c5
+	tree_text_pointer TreeBitstreamText_4445d
+	tree_text_pointer TreeBitstreamText_44733
+	tree_text_pointer TreeBitstreamText_447bd
+	tree_text_pointer TreeBitstreamText_44a7f
+	tree_text_pointer TreeBitstreamText_44af6
+	tree_text_pointer TreeBitstreamText_44d53
+	tree_text_pointer TreeBitstreamText_44dc8
+	tree_text_pointer TreeBitstreamText_44f3f
+	tree_text_pointer TreeBitstreamText_44fed
+	tree_text_pointer TreeBitstreamText_4535e
+	tree_text_pointer TreeBitstreamText_453ee
+	tree_text_pointer TreeBitstreamText_4565b
+	tree_text_pointer TreeBitstreamText_456f4
+	tree_text_pointer TreeBitstreamText_4593e
+	tree_text_pointer TreeBitstreamText_4461b
+	tree_text_pointer TreeBitstreamText_4498a
+	tree_text_pointer TreeBitstreamText_44c92
+	tree_text_pointer TreeBitstreamText_44e62
+	tree_text_pointer TreeBitstreamText_45277
+	tree_text_pointer TreeBitstreamText_45564
+	tree_text_pointer TreeBitstreamText_42899
+	tree_text_pointer TreeBitstreamText_428a8
+	tree_text_pointer TreeBitstreamText_3adc0
+	tree_text_pointer TreeBitstreamText_46944
+	tree_text_pointer TreeBitstreamText_459de
+	tree_text_pointer TreeBitstreamText_4694f
+	tree_text_pointer TreeBitstreamText_4695b
+	tree_text_pointer TreeBitstreamText_441b3
+	tree_text_pointer TreeBitstreamText_44239
+	tree_text_pointer TreeBitstreamText_44601
+	tree_text_pointer TreeBitstreamText_4428f
+	tree_text_pointer TreeBitstreamText_44486
+	tree_text_pointer TreeBitstreamText_4453d
+	tree_text_pointer TreeBitstreamText_42cd5
+	tree_text_pointer TreeBitstreamText_445b1
+	tree_text_pointer TreeBitstreamText_447ed
+	tree_text_pointer TreeBitstreamText_448b8
+	tree_text_pointer TreeBitstreamText_44ceb
+	tree_text_pointer TreeBitstreamText_44937
+	tree_text_pointer TreeBitstreamText_44b1c
+	tree_text_pointer TreeBitstreamText_44bcf
+	tree_text_pointer TreeBitstreamText_44c2a
+	tree_text_pointer TreeBitstreamText_44c51
+	tree_text_pointer TreeBitstreamText_44df3
+	tree_text_pointer TreeBitstreamText_45042
+	tree_text_pointer TreeBitstreamText_450f4
+	tree_text_pointer TreeBitstreamText_45194
+	tree_text_pointer TreeBitstreamText_451e9
+	tree_text_pointer TreeBitstreamText_45418
+	tree_text_pointer TreeBitstreamText_454c0
+	tree_text_pointer TreeBitstreamText_42d11
+	tree_text_pointer TreeBitstreamText_45511
+	tree_text_pointer TreeBitstreamText_45728
+	tree_text_pointer TreeBitstreamText_457de
+	tree_text_pointer TreeBitstreamText_42d27
+	tree_text_pointer TreeBitstreamText_45875
+	tree_text_pointer TreeBitstreamText_45b31
+	tree_text_pointer TreeBitstreamText_45bb0
+	tree_text_pointer TreeBitstreamText_45c00
+	tree_text_pointer TreeBitstreamText_45c64
+	tree_text_pointer TreeBitstreamText_392a8
+	tree_text_pointer TreeBitstreamText_3ef04
+	tree_text_pointer TreeBitstreamText_3ef47
+	tree_text_pointer TreeBitstreamText_3ef70
+	tree_text_pointer TreeBitstreamText_3efa5
+	tree_text_pointer TreeBitstreamText_3eff8
+	tree_text_pointer TreeBitstreamText_3f05a
+	tree_text_pointer TreeBitstreamText_3f0a6
+	tree_text_pointer TreeBitstreamText_3f118
+	tree_text_pointer TreeBitstreamText_3f192
+	tree_text_pointer TreeBitstreamText_3f207
+	tree_text_pointer TreeBitstreamText_3f276
+	tree_text_pointer TreeBitstreamText_3f2ff
+	tree_text_pointer TreeBitstreamText_4734f
+	tree_text_pointer TreeBitstreamText_4027b
+	tree_text_pointer TreeBitstreamText_3b401
+	tree_text_pointer TreeBitstreamText_3b35d
+	tree_text_pointer TreeBitstreamText_3b516
+	tree_text_pointer TreeBitstreamText_3b560
+	tree_text_pointer TreeBitstreamText_3b5bf
+	tree_text_pointer TreeBitstreamText_3b5f0
+	tree_text_pointer TreeBitstreamText_45dff
+	tree_text_pointer TreeBitstreamText_3949f
+	tree_text_pointer TreeBitstreamText_39545
+	tree_text_pointer TreeBitstreamText_42d89
+	tree_text_pointer TreeBitstreamText_42d9a
+	tree_text_pointer TreeBitstreamText_3c22b
+	tree_text_pointer TreeBitstreamText_3c2b2
+	tree_text_pointer TreeBitstreamText_46967
+	tree_text_pointer TreeBitstreamText_46285
+	tree_text_pointer TreeBitstreamText_46294
+	tree_text_pointer TreeBitstreamText_4630b
+	tree_text_pointer TreeBitstreamText_46322
+	tree_text_pointer TreeBitstreamText_463ad
+	tree_text_pointer TreeBitstreamText_463c3
+	tree_text_pointer TreeBitstreamText_46d45
+	tree_text_pointer TreeBitstreamText_46d4f
+	tree_text_pointer TreeBitstreamText_46d59
+	tree_text_pointer TreeBitstreamText_46d63
+	tree_text_pointer TreeBitstreamText_46d6d
+	tree_text_pointer TreeBitstreamText_46d77
+	tree_text_pointer TreeBitstreamText_46d81
+	tree_text_pointer TreeBitstreamText_46d8b
+	tree_text_pointer TreeBitstreamText_46d96
+	tree_text_pointer TreeBitstreamText_46da2
+	tree_text_pointer TreeBitstreamText_45a40
+	tree_text_pointer TreeBitstreamText_3c941
+	tree_text_pointer TreeBitstreamText_3c963
+	tree_text_pointer TreeBitstreamText_423f3
+	tree_text_pointer TreeBitstreamText_4249f
+	tree_text_pointer TreeBitstreamText_39dac
+	tree_text_pointer TreeBitstreamText_39dc3
+	tree_text_pointer TreeBitstreamText_39dda
+	tree_text_pointer TreeBitstreamText_39df1
+	tree_text_pointer TreeBitstreamText_39e08
+	tree_text_pointer TreeBitstreamText_3a27f
+	tree_text_pointer TreeBitstreamText_39d70
+	tree_text_pointer TreeBitstreamText_39e71
+	tree_text_pointer TreeBitstreamText_3e3bb
+	tree_text_pointer TreeBitstreamText_472ce
+	tree_text_pointer TreeBitstreamText_39559
+	tree_text_pointer TreeBitstreamText_3961c
+	tree_text_pointer TreeBitstreamText_395a3
+	tree_text_pointer TreeBitstreamText_3968a
+	tree_text_pointer TreeBitstreamText_395b4
+	tree_text_pointer TreeBitstreamText_45ebc
+	tree_text_pointer TreeBitstreamText_39c19
+	tree_text_pointer TreeBitstreamText_39c6c
+	tree_text_pointer TreeBitstreamText_39c82
+	tree_text_pointer TreeBitstreamText_45eaa
+	tree_text_pointer TreeBitstreamText_45ed5
+	tree_text_pointer TreeBitstreamText_472e7
+	tree_text_pointer TreeBitstreamText_3ed88
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_47e30
+	tree_text_pointer TreeBitstreamText_46ffa
+	tree_text_pointer TreeBitstreamText_3bdf0
+	tree_text_pointer TreeBitstreamText_3be3f
+	tree_text_pointer TreeBitstreamText_46175
+	tree_text_pointer TreeBitstreamText_46183
+	tree_text_pointer TreeBitstreamText_4618f
+	tree_text_pointer TreeBitstreamText_4619b
+	tree_text_pointer TreeBitstreamText_461a9
+	tree_text_pointer TreeBitstreamText_461b4
+	tree_text_pointer TreeBitstreamText_46056
+	tree_text_pointer TreeBitstreamText_45f1d
+	tree_text_pointer TreeBitstreamText_45f28
+	tree_text_pointer TreeBitstreamText_45f3d
+	tree_text_pointer TreeBitstreamText_45f56
+	tree_text_pointer TreeBitstreamText_45f88
+	tree_text_pointer TreeBitstreamText_45fc8
+	tree_text_pointer TreeBitstreamText_45fd7
+	tree_text_pointer TreeBitstreamText_45fec
+	tree_text_pointer TreeBitstreamText_45ffd
+	tree_text_pointer TreeBitstreamText_47b32
+	tree_text_pointer TreeBitstreamText_47bd1
+	tree_text_pointer TreeBitstreamText_47c51
+	tree_text_pointer TreeBitstreamText_47b4c
+	tree_text_pointer TreeBitstreamText_47b61
+	tree_text_pointer TreeBitstreamText_47b78
+	tree_text_pointer TreeBitstreamText_47b8e
+	tree_text_pointer TreeBitstreamText_47ba5
+	tree_text_pointer TreeBitstreamText_47bb9
+	tree_text_pointer TreeBitstreamText_45f98
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_38fa0
+	tree_text_pointer TreeBitstreamText_46fbb
+	tree_text_pointer TreeBitstreamText_46fd8
 ; 38fa0
 
-SECTION "Tree Bitstream Text 0", ROMX [$e], BANK [$4fa0]
+SECTION "Tree Bitstream Text 0", ROMX [$4fa0], BANK [$0e]
 TreeBitstreamText_38fa0:
 	ctxt ""
 	line "     <HIRA>これは <KATA>ダミー<HIRA>です<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_38fae:
 	ctxt "<HIRA>いったい なんの さわぎだ???<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_38fbd:
 	ctxt "<HIRA>どうなってるんだ???<KATA>"
-	done
+	done %110111
 
 TreeBitstreamText_38fc9:
 	ctxt "ママ"
 	line "<HIRA>また おじいちゃんの しわざね"
 	line "ほんとに どうしようもないんだから<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_38fe6:
 	ctxt "パパ"
@@ -2028,7 +2034,7 @@ TreeBitstreamText_38fe6:
 	line "いいか <KATA>パパ<HIRA>が かえってくるまで"
 	line "おとなしく いい<KATA>コ<HIRA>に してるんだぞ"
 	line "それじゃ いってくるよ<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_3902d:
 	ctxt "ママ"
@@ -2039,7 +2045,7 @@ TreeBitstreamText_3902d:
 	line "かえりは おそくなると おもうの"
 	line "おるすばん まかせたわよ"
 	line "おじいちゃんと なかよく やってね<KATA>"
-	done
+	done %01101
 
 TreeBitstreamText_39084:
 	ctxt "ママ"
@@ -2047,25 +2053,25 @@ TreeBitstreamText_39084:
 	line "って いっておいてね"
 	line "しんぱいすると いけないから……"
 	line "それじゃあ いってくるわね!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_390b4:
 	ctxt "スポロ<HIRA>じい"
 	line "おーい だれか おらんのかー"
 	line "ちょっと てつだってくれー<KATA>"
-	done
+	done %111111
 
 TreeBitstreamText_390d1:
 	ctxt "<HIRA>じいちゃんが うらにわ から"
 	line "よんでいるみたいだ……<KATA>"
-	done
+	done %0011110
 
 TreeBitstreamText_390e8:
 	ctxt "スポロ<HIRA>じい"
 	line "あわわわ…… しんがた <KATA>ロボポン<HIRA>の"
 	line "じっけん またしても しっぱいか…"
 	line "なんど やっても うまくいかんのう…<KATA>"
-	done
+	done %10110
 
 TreeBitstreamText_3911a:
 	ctxt "スポロ<HIRA>じい"
@@ -2073,18 +2079,18 @@ TreeBitstreamText_3911a:
 	line "えーと <KATA>タダシ<HIRA>か!?"
 	line "うーん <KATA>アキラ<HIRA>だったかな?!"
 	line "いやいや <KATA>ジェームス<HIRA>だったっけ?<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3914e:
 	ctxt "<HIRA>じいちゃん! しっかり おぼえてよ"
 	line "<KATA>ボク<HIRA>の なまえは……<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_39167:
 	ctxt "<PLAYER>"
 	line "ボク<HIRA>の なまえは <KATA><PLAYER><HIRA>だよ"
 	line "わすれちゃったの?<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3917e:
 	ctxt "スポロ<HIRA>じい"
@@ -2103,7 +2109,7 @@ TreeBitstreamText_3917e:
 	line "かいしゃを つげるものは"
 	line "おまえしか おらん!"
 	line "たのんだぞ <KATA><PLAYER>!!!"
-	done
+	done %01101
 
 TreeBitstreamText_391fd:
 	ctxt "スポロ<HIRA>じい"
@@ -2112,20 +2118,20 @@ TreeBitstreamText_391fd:
 	line "<KATA>ワシ<HIRA>の じしんさく じゃ!!"
 	line ""
 	line "………さあ こっちじゃ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_39235:
 	ctxt "スポロ<HIRA>じい"
 	line "きょうから <KATA><PLAYER><HIRA>が"
 	line "しゃちょうじゃ!"
 	line "いろいろ よろしく たのむ!<KATA>"
-	done
+	done %01111
 
 TreeBitstreamText_39257:
 	ctxt "<HIRA>うけつけ"
 	line "<KATA><PLAYER><HIRA>しゃちょう"
 	line "がんばりましょうね<KATA>"
-	done
+	done %011010
 
 TreeBitstreamText_3926c:
 	ctxt "スポロ<HIRA>じい"
@@ -2133,17 +2139,17 @@ TreeBitstreamText_3926c:
 	line ""
 	line "これを おまえに やる!"
 	line "だいじに つかうんじゃぞ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_39295:
 	ctxt "スポロ<HIRA>から <KATA>ロボ<HIRA>まる"
 	line "を てにいれた!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_392a8:
 	ctxt "スポロ<HIRA>から <KATA>タンサン"
 	line "<HIRA>を てにいれた!<KATA>"
-	done
+	done %1001
 
 TreeBitstreamText_392ba:
 	ctxt "スポロ<HIRA>じい"
@@ -2155,19 +2161,19 @@ TreeBitstreamText_392ba:
 	line ""
 	line "はじめは なにかと おかねが かかる"
 	line "ちょっとは もっていたほうがよいな<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_39321:
 	ctxt "スポロ<HIRA>じいから"
 	line "1000<KATA>ゴールド<HIRA>を もらった!<KATA>"
-	done
+	done %0011000
 
 TreeBitstreamText_3933b:
 	ctxt "スポロ<HIRA>じい"
 	line "<KATA>ロボポン<HIRA>が こわれてしまったら"
 	line "いつでも もどってこい"
 	line "しゅうりぐらいは てつだってやるぞ<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_39369:
 	ctxt "スポロ<HIRA>じい"
@@ -2180,15 +2186,16 @@ TreeBitstreamText_39369:
 	line "くわしいことは かいしゃにいる"
 	line "みんなから きいてほしい"
 	line "では かいしゃを たのんだぞ!<KATA>"
+	done
 
 TreeBitstreamText_393ce:
 	ctxt "トビラ<HIRA>は"
 	line "かたく とざされている<KATA>"
-	done
+	done %10011
 
 TreeBitstreamText_393dd:
 	ctxt "リモコンシャワー<HIRA>そうちだ<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_393e9:
 	ctxt "スポロ<HIRA>じい"
@@ -2200,24 +2207,24 @@ TreeBitstreamText_393e9:
 	line "<KATA>ロボポン<HIRA>を つよくできるのじゃ!"
 	line "ただし いちど ひかりをあびた"
 	line "<KATA>ロボポン<HIRA>には こうかがないぞ<KATA>"
-	done
+	done %10111
 
 TreeBitstreamText_3945b:
 	ctxt "スポロ<HIRA>じい"
 	line "どうじゃ <KATA><PLAYER><HIRA>よ"
 	line "ためしてみるか?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_39471:
 	ctxt "スポロ<HIRA>じい"
 	line "せっかく つくったのに"
 	line "ためしてくれんのか……<KATA>"
-	done
+	done %0000110
 
 TreeBitstreamText_3948a:
 	ctxt "スポロ<HIRA>じい"
 	line "どうやら せいこうした みたいじゃ<KATA>"
-	done
+	done %01101
 
 TreeBitstreamText_3949f:
 	ctxt "スポロ<HIRA>じい"
@@ -2237,12 +2244,12 @@ TreeBitstreamText_3949f:
 	line "おちゃくみ<KATA>ロボポン<HIRA>を やろう!"
 	line "<KATA><PLAYER><HIRA>も りっぱな しゃちょうじゃ"
 	line "おちゃぐらい くんでもらいなさい<KATA>"
-	done
+	done %001101
 
 TreeBitstreamText_39545:
 	ctxt "スポロ<HIRA>じいから <KATA>カラクリ"
 	line "<HIRA>を もらった!!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_39559:
 	ctxt "スポロ<HIRA>じい"
@@ -2252,12 +2259,12 @@ TreeBitstreamText_39559:
 	line "おまえは <KATA>スゴイ<HIRA>ぞ!"
 	line "そのどりょくをみとめ"
 	line "<KATA>トロフィー<HIRA>をやろう!<KATA>"
-	done
+	done %010001
 
 TreeBitstreamText_395a3:
 	ctxt "<HIRA>ぎんの<KATA>トロフィー"
 	line "<HIRA>を もらった!<KATA>"
-	done
+	done %1101100
 
 TreeBitstreamText_395b4:
 	ctxt "スポロ"
@@ -2270,6 +2277,7 @@ TreeBitstreamText_395b4:
 	line "……そのときこそ しんの"
 	line "<KATA>ロボポンマスター<HIRA>なのじゃ!!"
 	line "がんばれ <KATA><PLAYER>!"
+	done
 
 TreeBitstreamText_3961c:
 	ctxt "スポロ<HIRA>じい"
@@ -2281,12 +2289,12 @@ TreeBitstreamText_3961c:
 	line "よく がんばったな <KATA><PLAYER>!"
 	line "ロボポンマスター<HIRA>の あかしとして"
 	line "きんの<KATA>トロフィー<HIRA>を やろう!<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3968a:
 	ctxt "<HIRA>きんの<KATA>トロフィー"
 	line "<HIRA>を もらった!<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3969a:
 	ctxt "<HIRA>こども"
@@ -2295,29 +2303,30 @@ TreeBitstreamText_3969a:
 	line "このひと <KATA>ボク<HIRA>の <KATA>アイスクリーム<HIRA>を"
 	line "とっちゃうんだよ!"
 	line "かえしてよー!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_396d0:
 	ctxt "<HIRA>こぶん1"
 	line "<KATA>イヒヒヒ <HIRA>うまそうな <KATA>アイス!"
 	line "<HIRA>たべちゃおーっと!<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_396ec:
 	ctxt "ビスコ<HIRA>の こぶんを"
 	line "こらしめますか?<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_396fd:
 	ctxt "<HIRA>こぶん1"
 	line "<KATA>チクショー ビスコ<HIRA>さんに"
 	line "いいつけて やるからな!<KATA>"
-	done
+	done %01100
 
 TreeBitstreamText_39718:
 	ctxt "<HIRA>こども"
 	line "<KATA><PLAYER><HIRA>にいちゃん!"
 	line "<KATA>ボク<HIRA>を みすてるの?<KATA>"
+	done
 
 TreeBitstreamText_3972e:
 	ctxt "<HIRA>こども"
@@ -2327,12 +2336,12 @@ TreeBitstreamText_3972e:
 	line ""
 	line "<KATA>ロル<HIRA>ねえちゃんが たいへんなんだ!"
 	line "おねがい たすけてあげて!<KATA>"
-	done
+	done %1100
 
 TreeBitstreamText_39760:
 	ctxt "<PLAYER>"
 	line "<HIRA>えっ! <KATA>ロル<HIRA>って?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3976c:
 	ctxt "<HIRA>こども"
@@ -2344,6 +2353,7 @@ TreeBitstreamText_3976c:
 	line "すき なんでしょ?"
 	line "じゃあ たすけに いって"
 	line "<KATA>カッコ<HIRA>いいとこ みせなきゃ!<KATA>"
+	done
 
 TreeBitstreamText_397b1:
 	ctxt "<HIRA>こども"
@@ -2351,17 +2361,17 @@ TreeBitstreamText_397b1:
 	line "すき なんでしょ?"
 	line "じゃあ たすけに いって"
 	line "<KATA>カッコ<HIRA>いいとこ みせなきゃ!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_397dc:
 	ctxt "<HIRA>こども"
 	line "<KATA><PLAYER><HIRA>にいちゃん ありがとう!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_397ed:
 	ctxt "ロル"
 	line "<PLAYER>ーーーーーー!"
-	done
+	done %100001
 
 TreeBitstreamText_397f7:
 	ctxt "ロル"
@@ -2369,24 +2379,24 @@ TreeBitstreamText_397f7:
 	line "<HIRA>いいところに きてくれたわ!"
 	line "このひと しつこくて こまってるの"
 	line "たすけてよ!<KATA>"
-	done
+	done %010111
 
 TreeBitstreamText_3981d:
 	ctxt "<HIRA>こぶん2"
 	line "<KATA>ビスコ<HIRA>さんの めいれいなんだ"
 	line "おとなしく ついてきな!<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_39839:
 	ctxt "ロル"
 	line "<HIRA>ねぇ <KATA><PLAYER> <HIRA>たすけて!<KATA>"
-	done
+	done %10111
 
 TreeBitstreamText_39847:
 	ctxt "ロル"
 	line "<HIRA>ちょ ちょっとー"
 	line "じょうだんは やめてよー<KATA>"
-	done
+	done %0101
 
 TreeBitstreamText_3985c:
 	ctxt "<HIRA>こぶん2"
@@ -2394,7 +2404,7 @@ TreeBitstreamText_3985c:
 	line "<HIRA>もってんのかよ!"
 	line "でもな………"
 	line "<KATA>ビスコ<HIRA>さんには かなわねえよ!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_39889:
 	ctxt "ロル"
@@ -2403,19 +2413,19 @@ TreeBitstreamText_39889:
 	line "むこうの でぐちでも <KATA>ビスコ<HIRA>の"
 	line "こぶんが わるさを しているわ"
 	line "おねがい こらしめてきて!<KATA>"
-	done
+	done %1000
 
 TreeBitstreamText_398ba:
 	ctxt "ロル"
 	line "<PLAYER> <HIRA>ありがとう………"
 	line ""
 	line "それより がっこうが たいへんなの!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_398d5:
 	ctxt "ロル"
 	line "<HIRA>がっこうが たいへんなのよ!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_398e4:
 	ctxt "ロル"
@@ -2427,12 +2437,12 @@ TreeBitstreamText_398e4:
 	line "あたしたちの ともだち! "
 	line "<KATA>ロボポン<HIRA>は そんな<KATA>コト<HIRA>に"
 	line "つかうものじゃ ないでしょ!<KATA>"
-	done
+	done %0010000
 
 TreeBitstreamText_39944:
 	ctxt "<PLAYER>"
 	line "ビスコ<HIRA>って だれだっけ?<KATA>"
-	done
+	done %1010010
 
 TreeBitstreamText_39953:
 	ctxt "ロル"
@@ -2446,13 +2456,13 @@ TreeBitstreamText_39953:
 	line "のぼっていけば がっこうがあるわ"
 	line "たのんだわよ <KATA>ビスコ<HIRA>のこと!"
 	line "………じゃあね!<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_399d1:
 	ctxt "<HIRA>こども"
 	line "<KATA><PLAYER><HIRA>にいちゃん ありがとう!"
 	line "やっぱり <KATA>アイス<HIRA>は おいしいね!!<KATA>"
-	done
+	done %00000
 
 TreeBitstreamText_399f1:
 	ctxt "<HIRA>こぶん1"
@@ -2460,30 +2470,30 @@ TreeBitstreamText_399f1:
 	line "かかせて くれたな!"
 	line "おぼえて いるか? <KATA>ビスコ<HIRA>さまの"
 	line "こぶん1と 2だ! <KATA>"
-	done
+	done %11111
 
 TreeBitstreamText_39a27:
 	ctxt "<HIRA>こぶん2"
 	line "<KATA><PLAYER><HIRA>も <KATA>バトロボ<HIRA>たいかいに"
 	line "でよう ってのかよ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_39a42:
 	ctxt "<HIRA>こぶん1"
 	line "ちょうどいいや いまのうちに"
 	line "こいつ <KATA>シメ<HIRA>ちゃおうぜ!<KATA>"
-	done
+	done %00010
 
 TreeBitstreamText_39a5f:
 	ctxt "<HIRA>こぶん2"
 	line "おう そりゃ いい かんがえだな!"
 	line "<KATA><PLAYER> <HIRA>かくごしな!!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_39a7b:
 	ctxt "ビスコ"
 	line "<HIRA>まて まて まつんだ こぶんどもよ!<KATA>"
-	done
+	done %101111
 
 TreeBitstreamText_39a8f:
 	ctxt "ビスコ"
@@ -2497,6 +2507,7 @@ TreeBitstreamText_39a8f:
 	line "<HIRA>やっぱ よわっちぃ <KATA>ロボポン<HIRA>だぜ!"
 	line "そんなんじゃ <KATA>オレ<HIRA>さまには"
 	line "かてねえよ!!<KATA>"
+	done
 
 TreeBitstreamText_39b0b:
 	ctxt "<HIRA>こぶん1"
@@ -2504,7 +2515,7 @@ TreeBitstreamText_39b0b:
 	line "さんかしょうが ひつようだぜ<KATA>ェ"
 	line "<HIRA>さんかしょうを もっていないと"
 	line "たいかいには でられないのさ!<KATA>"
-	done
+	done %0011100
 
 TreeBitstreamText_39b45:
 	ctxt "<HIRA>こぶん2"
@@ -2515,7 +2526,7 @@ TreeBitstreamText_39b45:
 	line "まんがいち かってしまったら"
 	line "いっきに ゆうめいじんさ!"
 	line "どうだ <KATA>スゲー<HIRA>だろっ!<KATA>"
-	done
+	done %0100101
 
 TreeBitstreamText_39ba9:
 	ctxt "ビスコ"
@@ -2528,7 +2539,7 @@ TreeBitstreamText_39ba9:
 	line "まっ <KATA><PLAYER><HIRA>も <KATA>ロボポン<HIRA>を"
 	line "つよくして さんか すると いい"
 	line "いくぞ やろうども!<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_39c19:
 	ctxt "スポロ<HIRA>じいからの<KATA>メール"
@@ -2539,13 +2550,13 @@ TreeBitstreamText_39c19:
 	line "うけつけの よこのとびらのおくに"
 	line "つくっといたからな"
 	line "ひまなときにでも みにきてちょ<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_39c6c:
 	ctxt "<PLAYER>"
 	line "<HIRA>ん? じいちゃんから"
 	line "<KATA>メール<HIRA>が とどいたぞ<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_39c82:
 	ctxt "スポロ<HIRA>じいからの<KATA>メール"
@@ -2556,7 +2567,7 @@ TreeBitstreamText_39c82:
 	line "<KATA>ワシ<HIRA>の けんきゅうしつに"
 	line "すごい そうちを つくったんじゃ"
 	line "ひまなときにでも みにきてちょ<KATA>"
-	done
+	done %11100
 
 TreeBitstreamText_39cd9:
 	ctxt "<HIRA>こうちょーせんせい"
@@ -2572,47 +2583,47 @@ TreeBitstreamText_39cd9:
 	line "わたしに みせにきなさい!"
 	line "そしたら そのときに"
 	line "さんかしょうを あげよう!!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_39d70:
 	ctxt "スタンプカード"
 	line "<HIRA>を もらった!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_39d7e:
 	ctxt "ハイハイ <HIRA>ふむふむ………"
 	line "<KATA>スタンプ<HIRA>は あと7<KATA>コ!"
-	done
+	done %111
 
 TreeBitstreamText_39d95:
 	ctxt "ハイハイ <HIRA>ふむふむ………"
 	line "<KATA>スタンプ<HIRA>は あと6<KATA>コ!"
-	done
+	done %111
 
 TreeBitstreamText_39dac:
 	ctxt "ハイハイ <HIRA>ふむふむ………"
 	line "<KATA>スタンプ<HIRA>は あと5<KATA>コ!"
-	done
+	done %111
 
 TreeBitstreamText_39dc3:
 	ctxt "ハイハイ <HIRA>ふむふむ………"
 	line "<KATA>スタンプ<HIRA>は あと4<KATA>コ!"
-	done
+	done %0111
 
 TreeBitstreamText_39dda:
 	ctxt "ハイハイ <HIRA>ふむふむ………"
 	line "<KATA>スタンプ<HIRA>は あと3<KATA>コ!"
-	done
+	done %0111
 
 TreeBitstreamText_39df1:
 	ctxt "ハイハイ <HIRA>ふむふむ………"
 	line "<KATA>スタンプ<HIRA>は あと2<KATA>コ!"
-	done
+	done %0111
 
 TreeBitstreamText_39e08:
 	ctxt "ハイハイ <HIRA>ふむふむ………"
 	line "<KATA>スタンプ<HIRA>は あと1<KATA>コ!"
-	done
+	done %00111
 
 TreeBitstreamText_39e1f:
 	ctxt "<HIRA>こうちょーせんせい"
@@ -2622,17 +2633,18 @@ TreeBitstreamText_39e1f:
 	line "さんかしょうを あげましょう!"
 	line "<KATA>スタンプカード<HIRA>と"
 	line "さんかしょうを こうかんっ!<KATA>"
+	done
 
 TreeBitstreamText_39e65:
 	ctxt "<HIRA>さんかしょう"
 	line "を もらった!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_39e71:
 	ctxt "<HIRA>こうちょーせんせい"
 	line "<KATA>スタンプカード<HIRA>は"
 	line "どこにやっちゃたの?<KATA>"
-	done
+	done %1001
 
 TreeBitstreamText_39e8c:
 	ctxt "<HIRA>こうちょーせんせい"
@@ -2640,47 +2652,48 @@ TreeBitstreamText_39e8c:
 	line "よいこに そだっているよ"
 	line "<KATA>バトロボ<HIRA>きょういくは"
 	line "だいせいこうだよ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_39eb7:
 	ctxt "<HIRA>ほけんのせんせい"
 	line "<KATA>ハイ <HIRA>それじゃあ"
 	line "<KATA>バトロボ<HIRA>しょうぶよ!<KATA>"
-	done
+	done %001001
 
 TreeBitstreamText_39ed3:
 	ctxt "<HIRA>ほけんのせんせい"
 	line "<KATA>バトロボ<HIRA>も いいけど"
 	line "<KATA>ケガ<HIRA>には ちゅういするのよ!<KATA>"
-	done
+	done %00000
 
 TreeBitstreamText_39ef3:
 	ctxt "<HIRA>ほけんのせんせい"
 	line "<KATA>ハイ <HIRA>それじゃあ"
 	line "また きなさい<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_39f09:
 	ctxt "<HIRA>ほけんのせんせい"
 	line "この こうしゃは 7かいだてよ"
 	line "がっこうに しちゃ たかいわよね"
 	line "まあ それが <KATA>ウリ <HIRA>らしいけど<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_39f37:
 	ctxt "<HIRA>こくごのせんせい"
 	line "さぁ はりきって"
 	line "しょうぶしようか?<KATA>"
+	done
 
 TreeBitstreamText_39f4e:
 	ctxt "<HIRA>こくごのせんせい"
 	line "なかなか やるわね!<KATA>"
-	done
+	done %110000
 
 TreeBitstreamText_39f5f:
 	ctxt "<HIRA>こくごのせんせい"
 	line "そうかい またあとで<KATA>"
-	done
+	done %0110000
 
 TreeBitstreamText_39f70:
 	ctxt "<HIRA>こくごのせんせい"
@@ -2688,43 +2701,44 @@ TreeBitstreamText_39f70:
 	line "いっきに やるのが せいかい!"
 	line "つまり <KATA>バトル<HIRA>のあと すぐに"
 	line "たべさせないと <KATA>ジ エンド<HIRA>だよ!<KATA>"
-	done
+	done %000111
 
 TreeBitstreamText_39fb2:
 	ctxt "<HIRA>すうがくのせんせい"
 	line "はいはい しょうぶするかね?<KATA>"
-	done
+	done %11011
 
 TreeBitstreamText_39fc7:
 	ctxt "<HIRA>すうがくのせんせい"
 	line "ひゃっ ひゃっ ひゃ<KATA>"
-	done
+	done %011011
 
 TreeBitstreamText_39fd9:
 	ctxt "<HIRA>すうがくのせんせい"
 	line "そうかい?<KATA>"
-	done
+	done %111111
 
 TreeBitstreamText_39fe7:
 	ctxt "<HIRA>すうがくのせんせい"
 	line "ねつ に かかると <KATA>ターン<HIRA>ごとに"
 	line "<KATA>ダメージ<HIRA>を うけるのじゃ!<KATA>"
+	done
 
 TreeBitstreamText_3a00a:
 	ctxt "<HIRA>えいごのせんせい"
 	line "<KATA>レッツ ビギンッ!"
 	line "アーユーレディ?"
-	done
+	done %0111001
 
 TreeBitstreamText_3a024:
 	ctxt "<HIRA>えいごのせんせい"
 	line "<KATA>ボーイズ ビー アンビシャス!"
-	done
+	done %1
 
 TreeBitstreamText_3a03a:
 	ctxt "<HIRA>えいごのせんせい"
 	line "<KATA>シー ユー レイター"
-	done
+	done %1000000
 
 TreeBitstreamText_3a04b:
 	ctxt "<HIRA>えいごのせんせい"
@@ -2733,24 +2747,25 @@ TreeBitstreamText_3a04b:
 	line "<KATA>マジックパワー<HIRA>の かんけい だと"
 	line "おもえば わかりやすい だろ?"
 	line "<KATA>ドゥー ユー アンダースタン?"
-	done
+	done %1011
 
 TreeBitstreamText_3a097:
 	ctxt "<HIRA>たいいくのせんせい"
 	line "よーしっ!!"
 	line "てかげんは なしだ かかってこい!<KATA>"
+	done
 
 TreeBitstreamText_3a0b1:
 	ctxt "<HIRA>たいいくのせんせい"
 	line "よーしっ!"
 	line "げんきがあって よろしい!<KATA>"
-	done
+	done %11011
 
 TreeBitstreamText_3a0c9:
 	ctxt "<HIRA>たいいくのせんせい"
 	line "どうしたぁ!"
 	line "きょうは けんがくかぁ?<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3a0e1:
 	ctxt "<HIRA>たいいくのせんせい"
@@ -2760,32 +2775,32 @@ TreeBitstreamText_3a0e1:
 	line "<KATA>チェック<HIRA>しなきゃ いけないな"
 	line "<KATA>パーツ<HIRA>の のこり ようりょう より"
 	line "おおきい<KATA>ソフト<HIRA>は くみこめないぞ<KATA>"
-	done
+	done %0000000
 
 TreeBitstreamText_3a138:
 	ctxt "<HIRA>しゃかいのせんせい"
 	line "どれどれ <KATA>ワシ<HIRA>と"
 	line "しょうぶするのか?<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3a151:
 	ctxt "<HIRA>しゃかいのせんせい"
 	line "かんしん かんしん"
 	line "よきかな よきかな<KATA>"
-	done
+	done %010110
 
 TreeBitstreamText_3a167:
 	ctxt "<HIRA>しゃかいのせんせい"
 	line "えぇ わかいもんが"
 	line "<KATA>ホレ シャキッ<HIRA>と せんかいっ!<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3a184:
 	ctxt "<HIRA>しゃかいのせんせい"
 	line "せんとうちゅう <KATA>ロボポン<HIRA>を ほかく"
 	line "したばあいは けいけんち <KATA>エネ<HIRA>だま"
 	line "<KATA>アイテム<HIRA>は すべて もらえん!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3a1b9:
 	ctxt "<HIRA>りかのせんせい"
@@ -2793,25 +2808,25 @@ TreeBitstreamText_3a1b9:
 	line ""
 	line "じっけんで いそがしいから"
 	line "また あとで きてくれっ!<KATA>"
-	done
+	done %001111
 
 TreeBitstreamText_3a1de:
 	ctxt "<HIRA>りかのせんせい"
 	line "ふーっ………"
 	line "じっけんは しっぱいだったよ"
 	line "しかたない しょうぶするか?<KATA>"
-	done
+	done %100101
 
 TreeBitstreamText_3a202:
 	ctxt "<HIRA>りかのせんせい"
 	line "さぁ じっけん じっけん!<KATA>"
-	done
+	done %010100
 
 TreeBitstreamText_3a215:
 	ctxt "<HIRA>りかのせんせい"
 	line "ん? どうした?"
 	line "<KATA>オレ<HIRA>で さいごだろ?<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3a22e:
 	ctxt "<HIRA>りかのせんせい"
@@ -2819,40 +2834,40 @@ TreeBitstreamText_3a22e:
 	line "ねつ と おなじ<KATA>ダメージ<HIRA>になるぞ!"
 	line "それに <KATA>ロボポン <HIRA>と たたかう の"
 	line "<KATA>コマンド<HIRA>が ときどき つかえん!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3a272:
 	ctxt "スタンプ<HIRA>を おしてもらった!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3a27f:
 	ctxt "スタンプカード<HIRA>を もらったら"
 	line "<KATA>バトロボ <HIRA>しょうぶできるよ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3a29a:
 	ctxt "<HIRA>あら <KATA><PLAYER><HIRA>じゃない"
 	line ""
 	line "さっき こうちょーせんせいが"
 	line "あなたのこと さがしてたわよ<KATA>"
-	done
+	done %10010
 
 TreeBitstreamText_3a2bb:
 	ctxt "<HIRA>こうちょーせんせいなら"
 	line "ちかしつに いったみたいだよ<KATA>"
-	done
+	done %010000
 
 TreeBitstreamText_3a2d1:
 	ctxt "<HIRA>こうちょーせんせいには"
 	line "あえたのかい?<KATA>"
-	done
+	done %0001100
 
 TreeBitstreamText_3a2e2:
 	ctxt "<HIRA>こぶん"
 	line "さんかしょう もってないのに"
 	line "たいかいに でようってのか?"
 	line "あまいぜ! かえった かえった!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3a308:
 	ctxt "<HIRA>こぶん1"
@@ -2861,38 +2876,39 @@ TreeBitstreamText_3a308:
 	line "でもな かんたんに たいかいに"
 	line "でられると おもったら あまい!"
 	line "ここで かえって もらうぜ!<KATA>"
-	done
+	done %0001010
 
 TreeBitstreamText_3a349:
 	ctxt "<HIRA>こぶん2"
 	line "<KATA>ビスコ<HIRA>さんと たたかうまでも ないぜ"
 	line ""
 	line "おれが いるからな!<KATA>"
-	done
+	done %0010010
 
 TreeBitstreamText_3a368:
 	ctxt "<HIRA>こぶん"
 	line "<KATA>オイオイ <HIRA>どこに いくき だぁ?!"
 	line ""
 	line "おまえの あいては こっちだよ!!<KATA>"
-	done
+	done %100111
 
 TreeBitstreamText_3a38a:
 	ctxt "<HIRA>しかい"
 	line "<KATA>バトロボ<HIRA>たいかいの ゆうしょうしゃは"
 	line "<KATA>ビスコ<HIRA>くんに けっていしました!!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3a3ac:
 	ctxt "<HIRA>こぶん1"
 	line "おやぶーん"
 	line "<KATA><PLAYER><HIRA>に やられちまいました<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3a3c2:
 	ctxt "<HIRA>こぶん2"
 	line "おやぶん あっしらの<KATA>カタキ<HIRA>を"
 	line "とってください!!<KATA>"
+	done
 
 TreeBitstreamText_3a3dc:
 	ctxt "ビスコ"
@@ -2902,7 +2918,7 @@ TreeBitstreamText_3a3dc:
 	line "かわいがって やろうじゃねえか!"
 	line "かったほうが <KATA>グレイテスト7<HIRA>へ"
 	line "ちょうせんだ!<KATA>"
-	done
+	done %1100
 
 TreeBitstreamText_3a420:
 	ctxt "ビスコ"
@@ -2914,7 +2930,7 @@ TreeBitstreamText_3a420:
 	line "さきに かちとったのは <KATA>オレ<HIRA>だ!"
 	line "わるいが おさきに<KATA>ロボポンドーム<HIRA>へ"
 	line "いかせてもらうぜ <KATA>ヘヘヘン!"
-	done
+	done %01101
 
 TreeBitstreamText_3a481:
 	ctxt "<HIRA>しかい"
@@ -2935,6 +2951,7 @@ TreeBitstreamText_3a481:
 	line "そうそう じぶんより 1つ うえの"
 	line "<KATA>ランカー<HIRA>としか たたかえないんだ"
 	line "ちゅういしてね<KATA>"
+	done
 
 TreeBitstreamText_3a556:
 	ctxt "ビスコ"
@@ -2945,7 +2962,7 @@ TreeBitstreamText_3a556:
 	line "さっきの <KATA>グレイテスト7<HIRA>ったら"
 	line "よわいこと よわいこと!"
 	line "かんたんに かっちゃったもんね!<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_3a5a7:
 	ctxt "<PLAYER>"
@@ -2953,29 +2970,30 @@ TreeBitstreamText_3a5a7:
 	line ""
 	line "<HIRA>ほんとうは <KATA>ボク<HIRA>が ちょうせんけんを"
 	line "もっていたんだぞ!!<KATA>"
-	done
+	done %101010
 
 TreeBitstreamText_3a5cb:
 	ctxt "<HIRA>こぶん1"
 	line "<KATA><PLAYER> <HIRA>もう ておくれさっ!"
 	line "とっとと うちへ かえりな!<KATA>"
+	done
 
 TreeBitstreamText_3a5e6:
 	ctxt "<HIRA>こぶん2"
 	line "けっきょく おまえが <KATA>ビスコ<HIRA>さんに"
 	line "かなうわけが ないのさ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3a605:
 	ctxt "ビスコ"
 	line "<HIRA>まっ そんなわけだ <KATA><PLAYER>"
 	line "<HIRA>あきらめる ことだな<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_3a61d:
 	ctxt "<PLAYER>"
 	line "ズルイ<HIRA>ぞ <KATA>インチキ<HIRA>だ!!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3a62c:
 	ctxt "ビスコ"
@@ -2983,13 +3001,13 @@ TreeBitstreamText_3a62c:
 	line ""
 	line "もう <KATA>オレ<HIRA>さまが <KATA>グレイテスト7<HIRA>に"
 	line "きまったんだよ!!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_3a64f:
 	ctxt "テール<HIRA>おうじ"
 	line "やめないかっ"
 	line "みぐるしいぞ!<KATA>"
-	done
+	done %11101
 
 TreeBitstreamText_3a662:
 	ctxt "ビスコ"
@@ -2999,7 +3017,7 @@ TreeBitstreamText_3a662:
 	line "<KATA>テール<HIRA>おうじ と <KATA>ダース<HIRA>ひめ!"
 	line "そっか <KATA>グレイテスト<HIRA>せんの"
 	line "しゅさいしゃだもんな そういえば<KATA>"
-	done
+	done %10111
 
 TreeBitstreamText_3a6a3:
 	ctxt "テール<HIRA>おうじ"
@@ -3008,12 +3026,12 @@ TreeBitstreamText_3a6a3:
 	line "しんの <KATA>グレイテスト7<HIRA>の"
 	line "けっていせんを おこなうのだ!"
 	line "それならば もんだい なかろう!<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_3a6e6:
 	ctxt "ビスコ"
 	line "<HIRA>よーし やってやろう じゃねぇか!!<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3a6fa:
 	ctxt "ビスコ"
@@ -3026,7 +3044,7 @@ TreeBitstreamText_3a6fa:
 	line "よくきけ! <KATA>オレ<HIRA>は <KATA>カリーユ<HIRA>まちに"
 	line "たびだつが あとを おうなよ!"
 	line "………それじゃあな!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3a765:
 	ctxt "テール<HIRA>おうじ"
@@ -3041,12 +3059,12 @@ TreeBitstreamText_3a765:
 	line "<KATA>ランカー<HIRA>さがしは くろうするが"
 	line "たいせんまで <KATA>ロボポン<HIRA>を きたえ"
 	line "<KATA>レベルアップ<HIRA>させるのだ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3a7e7:
 	ctxt "グレイテスト7<HIRA>の しょうごう"
 	line "を てにいれた!<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_3a7fb:
 	ctxt "テール<HIRA>おうじ"
@@ -3058,7 +3076,7 @@ TreeBitstreamText_3a7fb:
 	line "うかうか してられないぞ"
 	line "じゅんいが おおきく かわりそうな"
 	line "よかんが してきたぞ………<KATA>"
-	done
+	done %1001
 
 TreeBitstreamText_3a858:
 	ctxt "デカケル トキハ テレビノ"
@@ -3068,20 +3086,21 @@ TreeBitstreamText_3a858:
 	line "テレビノ スイッチ ハ"
 	line "ヨコ ノ タカラバコニ ツイテルヨ"
 	line "ホナ サイナラ"
+	done
 
 TreeBitstreamText_3a89f:
 	ctxt "<PLAYER>"
 	line "<HIRA>あかりを ともさないと"
 	line "まっくらで なんにもみえないや"
 	line "<KATA>カンテラ<HIRA>が あればなぁ……<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_3a8c3:
 	ctxt "<HIRA>ほい いらっしゃい!"
 	line ""
 	line "<KATA>カンテラ<HIRA>は うってないけど"
 	line "<KATA>カンテラ<HIRA>や だよ!<KATA>"
-	done
+	done %100111
 
 TreeBitstreamText_3a8e1:
 	ctxt "<HIRA>え!? どうしても ほしいの?"
@@ -3092,23 +3111,24 @@ TreeBitstreamText_3a8e1:
 	line ""
 	line "うみぶどう"
 	line "とってきて くんないかなぁ<KATA>"
+	done
 
 TreeBitstreamText_3a92f:
 	ctxt "<HIRA>うみにある ぶどう うみぶどう………"
 	line "あれ おいしいんだよねー!"
 	line "あさせの うみなら どっか さがせば"
 	line "きっと おっこちてんだろ たぶん<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_3a966:
 	ctxt "<HIRA>あっ それは うみぶどう!"
 	line "それ <KATA>ワチキ<HIRA>に くれるの?<KATA>"
-	done
+	done %010111
 
 TreeBitstreamText_3a97f:
 	ctxt "<HIRA>え!? くれないの!!"
 	line "ざんねんだなぁ………………<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3a995:
 	ctxt "<HIRA>えっ ほんとに くれるの?"
@@ -3117,25 +3137,25 @@ TreeBitstreamText_3a995:
 	line "これ これ これだよ うまいねー"
 	line "いやー おいしかったよ ありがとう"
 	line "それじゃあ この<KATA>カンテラ <HIRA>あげるね<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3a9e8:
 	ctxt "カンテラ"
 	line "<HIRA>を てにいれた!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3a9f3:
 	ctxt "<HIRA>ねぇ もし よかったら"
 	line "また もってきて くんないかなぁ"
 	line "うみぶどう ……いやぁ めがなくって"
 	line "よろしく たのむよ ほんとに<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3aa23:
 	ctxt "<HIRA>えっ? またくれるの うみぶどう"
 	line "ほんとにっ!? いやぁ わるいねぇ"
 	line "でも もう なにも あげないよ<KATA>"
-	done
+	done %10101
 
 TreeBitstreamText_3aa4c:
 	ctxt "<HIRA>しらないの? おんなの<KATA>コ<HIRA>の あいだで"
@@ -3144,29 +3164,30 @@ TreeBitstreamText_3aa4c:
 	line "このこと おぼえとくと いいわよ"
 	line "たまには もどることも たいせつよ"
 	line "あたらしい みちが ひらけるかもね<KATA>"
+	done
 
 TreeBitstreamText_3aaa0:
 	ctxt "バトロボ<HIRA>は <KATA>アムロン<HIRA>が"
 	line "やってるんだもん"
 	line "あたしたちも やりたいもん!<KATA>"
-	done
+	done %1110001
 
 TreeBitstreamText_3aabf:
 	ctxt "ロボポン<HIRA>に <KATA>ルーズソックス<HIRA>はかせると"
 	line "<KATA>スピードアップ<HIRA>するのよ<KATA>"
-	done
+	done %1000011
 
 TreeBitstreamText_3aadf:
 	ctxt "<HIRA>あたしの <KATA>ロボポン <HIRA>かわいいでしょ"
 	line "ほそ<KATA>マユ<HIRA>に しちゃったぁ<KATA>"
-	done
+	done %1011
 
 TreeBitstreamText_3aafc:
 	ctxt "テレビ<HIRA>から とつぜん ひとが"
 	line "とびだして くる………"
 	line "そんな げんじつは こまるな!"
 	line "<KATA>ワッハッハッハッハッハッハッ!"
-	done
+	done %0111
 
 TreeBitstreamText_3ab2b:
 	ctxt "<HIRA>わしの なまえは ひかる!"
@@ -3177,7 +3198,7 @@ TreeBitstreamText_3ab2b:
 	line "でて みたいのう!"
 	line "でも もっと いうと <KATA>テレビ<HIRA>に"
 	line "でて みたいのう! <KATA>イェーイ!"
-	done
+	done %110
 
 TreeBitstreamText_3ab80:
 	ctxt "<HIRA>あたしゃ いちどで いいから"
@@ -3190,7 +3211,7 @@ TreeBitstreamText_3ab80:
 	line "………それは ともかく"
 	line "あたしゃ みぎまがりの だんでぃ"
 	line "じゃなきゃ <KATA>イヤ<HIRA>なの!<KATA>"
-	done
+	done %0110010
 
 TreeBitstreamText_3abf2:
 	ctxt "<HIRA>よう <KATA><PLAYER>! <HIRA>ひさしぶり!"
@@ -3204,6 +3225,7 @@ TreeBitstreamText_3abf2:
 	line "さいきん <KATA>テレビ<HIRA>ばっかり みてんだ"
 	line "<KATA>スイッチ<HIRA>けすの わすれちゃうんだ"
 	line "<KATA>アムロン<HIRA>ちゃん <KATA>サイコー!"
+	done
 
 TreeBitstreamText_3ac82:
 	ctxt "<HIRA>ああ がっこうに いって"
@@ -3212,7 +3234,7 @@ TreeBitstreamText_3ac82:
 	line "<KATA>テレビ<HIRA>を みてしまうんだ!"
 	line "でも <KATA>アムロン<HIRA>ちゃん <KATA>ステキ<HIRA>だ!"
 	line "……これって びょうきなのかな<KATA>"
-	done
+	done %011001
 
 TreeBitstreamText_3accc:
 	ctxt "<HIRA>さいきん <KATA>テレビ<HIRA>ばっか みてて"
@@ -3222,7 +3244,7 @@ TreeBitstreamText_3accc:
 	line "え? なんのことだか わからない?"
 	line "……まあ そのうち わかるさ"
 	line "いまは わからなくてもね<KATA>"
-	done
+	done %0110100
 
 TreeBitstreamText_3ad19:
 	ctxt "アムロン<HIRA>ちゃん かわいいなぁ"
@@ -3231,7 +3253,7 @@ TreeBitstreamText_3ad19:
 	line "かわいすぎる!"
 	line "……もう しろの けいび なんて"
 	line "やってられっかーい!<KATA>"
-	done
+	done %1000
 
 TreeBitstreamText_3ad48:
 	ctxt "タツフミ"
@@ -3239,28 +3261,29 @@ TreeBitstreamText_3ad48:
 	line "<KATA>ワープ<HIRA>のしかけは ややこしいからね"
 	line "100<KATA>ゴールド <HIRA>くれたら"
 	line "<KATA>ヒント<HIRA>を おしえるぜ!<KATA>"
-	done
+	done %0101
 
 TreeBitstreamText_3ad7f:
 	ctxt "タツフミ"
 	line "チミ<HIRA>の おかねを くれるかい?<KATA>"
-	done
+	done %0001010
 
 TreeBitstreamText_3ad91:
 	ctxt "タツフミ"
 	line "<HIRA>なんだい おかね もってないじゃん"
 	line "<KATA>チミ<HIRA>は びんぼうだね<KATA>"
+	done
 
 TreeBitstreamText_3adae:
 	ctxt "タツフミ"
 	line "<HIRA>そうかい……"
 	line "それは ざんねん<KATA>"
-	done
+	done %0101101
 
 TreeBitstreamText_3adc0:
 	ctxt "タツフミ<HIRA>に"
 	line "100<KATA>ゴールド <HIRA>わたした!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3add4:
 	ctxt "タツフミ"
@@ -3274,13 +3297,13 @@ TreeBitstreamText_3add4:
 	line "<HIRA>くわしくは そのばで おしえるよ"
 	line "<KATA>オレ<HIRA>を みかけたら こえをかけてみな"
 	line "それじゃあ また あとで!<KATA>"
-	done
+	done %10010
 
 TreeBitstreamText_3ae53:
 	ctxt "タツフミ"
 	line "<HIRA>ここは ひだりが せいかいっ!"
 	line "ついてきなっ!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3ae6a:
 	ctxt "ヒロシ"
@@ -3290,7 +3313,7 @@ TreeBitstreamText_3ae6a:
 	line ""
 	line "すべてのいわを あなにおとせば"
 	line "みずのながれを とめられるぜっ!<KATA>"
-	done
+	done %10001
 
 TreeBitstreamText_3aea4:
 	ctxt "ヒロシ"
@@ -3301,29 +3324,30 @@ TreeBitstreamText_3aea4:
 	line "そうだなー あっ おもいだした!"
 	line "ながぐつを <KATA>オレ<HIRA>に くれよ!"
 	line "そしたら なんとか してやるよ<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_3aef1:
 	ctxt "ヒロシ"
 	line "<HIRA>ながぐつを くれるのか?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3af00:
 	ctxt "ヒロシ"
 	line "<HIRA>ちぇっ どうせ <KATA>ガラクタ<HIRA>なんだから"
 	line "<KATA>オレ<HIRA>に くれてもいいじゃん<KATA>"
-	done
+	done %01100
 
 TreeBitstreamText_3af20:
 	ctxt "ヒロシ"
 	line "サンキューッ!"
 	line "<HIRA>そらよっと これで <KATA>オッケー<HIRA>さっ!<KATA>"
-	done
+	done %0100
 
 TreeBitstreamText_3af3a:
 	ctxt "ヒロシ"
 	line "<HIRA>ながぐつは つりに つかうんだ"
 	line "<KATA>オレ<HIRA>は <KATA>バサー<HIRA>だからねっ<KATA>"
+	done
 
 TreeBitstreamText_3af58:
 	ctxt "ヒロシ"
@@ -3331,6 +3355,7 @@ TreeBitstreamText_3af58:
 	line "いわを おとしたのは <KATA>キミ<HIRA>かい?"
 	line "いわが みずを とめちゃったから"
 	line "つりが できなく なっちゃったよ<KATA>"
+	done
 
 TreeBitstreamText_3af8c:
 	ctxt "チネン"
@@ -3340,13 +3365,13 @@ TreeBitstreamText_3af8c:
 	line ""
 	line "それとも………"
 	line "じつりょくこうしで くるの?!<KATA>"
-	done
+	done %1111101
 
 TreeBitstreamText_3afbf:
 	ctxt "チネン"
 	line "<HIRA>よくもやったわねー ひどいひどい"
 	line "おへやで ないちゃうからー!<KATA>"
-	done
+	done %10001
 
 TreeBitstreamText_3afdd:
 	ctxt "アムロン"
@@ -3359,7 +3384,7 @@ TreeBitstreamText_3afdd:
 	line "<KATA>キチン<HIRA>と おとしまえ"
 	line "つけようじゃないの!"
 	line "ちょうせんは うけてたつよ!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3b02c:
 	ctxt "アムロン"
@@ -3367,7 +3392,7 @@ TreeBitstreamText_3b02c:
 	line "<KATA>アタシ<HIRA>に かてると おもってるの?"
 	line "<KATA>アタシ<HIRA>に はむかうと"
 	line "いたい めに あうわよ!<KATA>"
-	done
+	done %11101
 
 TreeBitstreamText_3b060:
 	ctxt "アムロン"
@@ -3396,19 +3421,19 @@ TreeBitstreamText_3b060:
 	line "あたしの おきにいりの <KATA>ロボポン"
 	line "<HIRA>あなたに あげるわ"
 	line "やくに たつと いいけれど………<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_3b169:
 	ctxt "アムロン<HIRA>から <KATA>チャリ"
 	line "<HIRA>を もらった!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3b17a:
 	ctxt "アムロン"
 	line "………<PLAYER> <HIRA>ありがとう"
 	line "またいつか あえると いいわね"
 	line "それじゃあね<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3b199:
 	ctxt "アムロン"
@@ -3423,12 +3448,12 @@ TreeBitstreamText_3b199:
 	line "<KATA><PLAYER><HIRA>は これからも どんどん"
 	line "つよくなって いくと おもうわ"
 	line "わたし おうえん してるからね<KATA>"
-	done
+	done %1011
 
 TreeBitstreamText_3b219:
 	ctxt "グレイテスト6<HIRA>の しょうごう"
 	line "を てにいれた!<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_3b22d:
 	ctxt "テール<HIRA>おうじ"
@@ -3447,23 +3472,23 @@ TreeBitstreamText_3b22d:
 	line "グレイテスト5<HIRA>は <KATA>キャロル<HIRA>むらの"
 	line "<KATA>フダ<HIRA>つきの ならずもの らしいぞ"
 	line "くれぐれも ようじん することだな<KATA>"
-	done
+	done %1100110
 
 TreeBitstreamText_3b2db:
 	ctxt "<HIRA>おにいちゃん わたしの"
 	line "たいせつな<KATA>ロボポン <HIRA>あげるね"
 	line "<KATA>ロボポン<HIRA>もってると"
 	line "こわいひとたちに とられちゃうの<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_3b30a:
 	ctxt "<HIRA>おんなの<KATA>コ<HIRA>から <KATA>ドルッピ<HIRA>を"
 	line "わたされた!<KATA>"
-	done
+	done %00110
 
 TreeBitstreamText_3b31f:
 	ctxt "<HIRA>あっ!<KATA>"
-	done
+	done %001110
 
 TreeBitstreamText_3b324:
 	ctxt "ビーノ"
@@ -3472,12 +3497,12 @@ TreeBitstreamText_3b324:
 	line "なかなか つよそうな <KATA>ロボポン"
 	line "<HIRA>もってるじゃねえか"
 	line "ひとつ <KATA>オレ<HIRA>たちに くれねぇか?<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3b35d:
 	ctxt "ビーノ<HIRA>に"
 	line "<KATA>ドルッピ<HIRA>を わたした!<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3b36e:
 	ctxt "ビーノ"
@@ -3487,6 +3512,7 @@ TreeBitstreamText_3b36e:
 	line "せかいは へいわに なるのによぉ"
 	line "<KATA>ラブ アンド ピース!"
 	line "<HIRA>じゃあな おひとよし さんよぉ!<KATA>"
+	done
 
 TreeBitstreamText_3b3c0:
 	ctxt "ビーノ"
@@ -3496,12 +3522,12 @@ TreeBitstreamText_3b3c0:
 	line "いいどきょう してるじゃねぇか!"
 	line "よーし おまえ みたいな <KATA>ヤツ<HIRA>は"
 	line "こうしてやるっ!<KATA>"
-	done
+	done %10101
 
 TreeBitstreamText_3b401:
 	ctxt "ドルッピ<HIRA>を"
 	line "<KATA>ビーノ<HIRA>に とられた!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3b412:
 	ctxt "ビーノ"
@@ -3509,7 +3535,7 @@ TreeBitstreamText_3b412:
 	line "<HIRA>いただきー!!"
 	line "<KATA>チェッ <HIRA>くちごたえ なんか するから"
 	line "こういうめに あうんだよ <KATA>バーカ!"
-	done
+	done %0011111
 
 TreeBitstreamText_3b447:
 	ctxt "ビーノ"
@@ -3517,7 +3543,7 @@ TreeBitstreamText_3b447:
 	line "いわせて もらうぜ!"
 	line "ながれ<KATA>モン<HIRA>は あんまり めだつことは"
 	line "しねぇほうが みのため だぜ!<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_3b481:
 	ctxt "ビーノ"
@@ -3535,7 +3561,7 @@ TreeBitstreamText_3b481:
 	line "しらんぷり しないと いけねぇな!"
 	line "それが ながれ<KATA>モン<HIRA>の <KATA>ルール"
 	line "<HIRA>ってもんだろ!<KATA>"
-	done
+	done %1010
 
 TreeBitstreamText_3b516:
 	ctxt "<HIRA>おにいちゃん!"
@@ -3546,6 +3572,7 @@ TreeBitstreamText_3b516:
 	line "たしかに おっかないけど………"
 	line "ちょっとは ていこうしなさいよ"
 	line "なさけないわよ!<KATA>"
+	done
 
 TreeBitstreamText_3b560:
 	ctxt "<HIRA>おにいちゃん <KATA>ゴメンネ………"
@@ -3557,19 +3584,19 @@ TreeBitstreamText_3b560:
 	line "<KATA>グリース<HIRA>やまに いって"
 	line "かえしてもらったら?"
 	line "<KATA>ムリ<HIRA>かな?<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_3b5bf:
 	ctxt "<HIRA>あっ おにいちゃん!"
 	line "<KATA>ドルッピ <HIRA>かえしてもらったんだね!"
 	line "みずのなかには もぐってみた?"
 	line "いろんなものが あるはずよ<KATA>"
-	done
+	done %11111
 
 TreeBitstreamText_3b5f0:
 	ctxt "<HIRA>おにいちゃん!"
 	line "<KATA>ニコニコ<HIRA>ぞくを どうにかして!<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3b605:
 	ctxt "<HIRA>まちおさ"
@@ -3581,7 +3608,7 @@ TreeBitstreamText_3b605:
 	line "<KATA>イヤ<HIRA>がらせが <KATA>ヒド<HIRA>くて <KATA>ヒド<HIRA>くて"
 	line "くわしい ことは ぜひ ちかで………"
 	line "さあ どうぞ こちらに!<KATA>"
-	done
+	done %100001
 
 TreeBitstreamText_3b676:
 	ctxt "<HIRA>まちおさ"
@@ -3595,12 +3622,12 @@ TreeBitstreamText_3b676:
 	line "こわすように なっての!"
 	line "…………まったく みんなに"
 	line "めいわくを かけすぎぢゃ!<KATA>"
-	done
+	done %11101
 
 TreeBitstreamText_3b6ef:
 	ctxt "<HIRA>みんな"
 	line "そうだ そうだ!<KATA>"
-	done
+	done %0101111
 
 TreeBitstreamText_3b6fb:
 	ctxt "<HIRA>まちおさ"
@@ -3608,7 +3635,7 @@ TreeBitstreamText_3b6fb:
 	line "ちじょうに すめなくなってしまった"
 	line "すなわち ひなんして ちかに"
 	line "だっしゅつした っちゅうことぢゃ<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3b731:
 	ctxt "<HIRA>まちおさ"
@@ -3616,12 +3643,13 @@ TreeBitstreamText_3b731:
 	line "どうにか ならん もんか………"
 	line "のう? <KATA><PLAYER><HIRA>くん!"
 	line "えーっ みんな どうなんぢゃ!!<KATA>"
+	done
 
 TreeBitstreamText_3b762:
 	ctxt "<HIRA>まちおさ"
 	line "おまえらは そうだ そうだ しか"
 	line "いえんのかいっ!!<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3b77b:
 	ctxt "<HIRA>みんな"
@@ -3629,7 +3657,7 @@ TreeBitstreamText_3b77b:
 	line "       がんばってんな おい"
 	line "あまり ちょうし こくなよー"
 	line "       <KATA>オレ ハラ<HIRA>へったー<KATA>"
-	done
+	done %1000
 
 TreeBitstreamText_3b7a6:
 	ctxt "<HIRA>まちおさ"
@@ -3640,7 +3668,7 @@ TreeBitstreamText_3b7a6:
 	line "まったく なさけない のう……"
 	line ""
 	line "そういう わしも おなじぢゃが……<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3b7f7:
 	ctxt "メカ<HIRA>おやじ"
@@ -3652,6 +3680,7 @@ TreeBitstreamText_3b7f7:
 	line "ビュン <HIRA>と とばせるんだな"
 	line "そ そんな <KATA>バ バイク<HIRA>に"
 	line "の のりたいと お おもわない?<KATA>"
+	done
 
 TreeBitstreamText_3b860:
 	ctxt "メカ<HIRA>おやじ"
@@ -3661,7 +3690,7 @@ TreeBitstreamText_3b860:
 	line "お おとしちゃったんだな <KATA>ボ ボク"
 	line "<HIRA>す すごく こ こまってるんだな"
 	line "み みつけて ほ ほしいんだな<KATA>"
-	done
+	done %001111
 
 TreeBitstreamText_3b8b8:
 	ctxt "メカ<HIRA>おやじ"
@@ -3669,7 +3698,7 @@ TreeBitstreamText_3b8b8:
 	line "グリース<HIRA>やまに い いけないんだ!"
 	line "<KATA>キ キミ <HIRA>し しってたかな?"
 	line "さ さばくが と とおれないんだな<KATA>"
-	done
+	done %01110
 
 TreeBitstreamText_3b8f2:
 	ctxt "メカ<HIRA>おやじ"
@@ -3678,10 +3707,11 @@ TreeBitstreamText_3b8f2:
 	line "じゃ じゃあ きみの <KATA>チャ チャリ<HIRA>を"
 	line "か かして も もらうよ"
 	line "ちょ ちょっと ま まってて<KATA>"
+	done
 
 TreeBitstreamText_3b932:
 	ctxt "チャリ<HIRA>は <KATA>ニリーン<HIRA>へ しんかした!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_3b942:
 	ctxt "メカ<HIRA>おやじ"
@@ -3690,7 +3720,7 @@ TreeBitstreamText_3b942:
 	line "こ これで さ さばくの う うえも"
 	line "と とばせるんだ"
 	line "か かぜになって お おいでよ<KATA>"
-	done
+	done %001111
 
 TreeBitstreamText_3b973:
 	ctxt "メカ<HIRA>おやじ"
@@ -3699,7 +3729,7 @@ TreeBitstreamText_3b973:
 	line "と とにかく い いどに だけは"
 	line "お おっこちない よ ようにね"
 	line "って そ そんなひとは い いないか<KATA>"
-	done
+	done %1010
 
 TreeBitstreamText_3b9a9:
 	ctxt "メカ<HIRA>おやじ"
@@ -3707,13 +3737,13 @@ TreeBitstreamText_3b9a9:
 	line "た たぶん い いどの なかに"
 	line "お おちてるんだな"
 	line "と とってきて ほ ほしいんだな<KATA>"
-	done
+	done %0000100
 
 TreeBitstreamText_3b9d7:
 	ctxt "メカ<HIRA>おやじ"
 	line "<KATA>チャ チャリ<HIRA>が い いないと"
 	line "か かいぞう で できないんだな<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3b9f6:
 	ctxt "メカ<HIRA>じい"
@@ -3721,7 +3751,7 @@ TreeBitstreamText_3b9f6:
 	line "とばしたい………"
 	line "ああ わかいころに もどって"
 	line "かぜに なりたい………<KATA>"
-	done
+	done %001011
 
 TreeBitstreamText_3ba23:
 	ctxt "メカ<HIRA>じい"
@@ -3741,7 +3771,7 @@ TreeBitstreamText_3ba23:
 	line "<KATA>ジョー<HIRA>なら しってる かもしれん"
 	line "でも どこへ いったのか"
 	line "ゆくえふめいの まま なんじゃ<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_3babb:
 	ctxt "ウォリア"
@@ -3749,7 +3779,7 @@ TreeBitstreamText_3babb:
 	line "<KATA>ワイルド<HIRA>さまに あわせられねぇな!"
 	line "わるいが ここで"
 	line "かえって もらうぜ!!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3baee:
 	ctxt "ウォリア"
@@ -3757,7 +3787,7 @@ TreeBitstreamText_3baee:
 	line "もとには かんたんには いけねえぜ"
 	line "なぜなら その<KATA>バイク<HIRA>は もう やくに"
 	line "たたないんだからな <KATA>クククク………"
-	done
+	done %100
 
 TreeBitstreamText_3bb2b:
 	ctxt "ウォリア"
@@ -3770,7 +3800,7 @@ TreeBitstreamText_3bb2b:
 	line "たしか <KATA>キャロル<HIRA>に <KATA>メカ<HIRA>に くわしい"
 	line "じいさんが いたと おもったけど"
 	line "もう しんじまった かもしれねえ<KATA>"
-	done
+	done %00100
 
 TreeBitstreamText_3bbab:
 	ctxt "ジョー"
@@ -3786,7 +3816,7 @@ TreeBitstreamText_3bbab:
 	line "おっこちて でられなく なった"
 	line "………いまごろ みんな"
 	line "なに やってんのかなぁ………<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3bc38:
 	ctxt "<HIRA>おれ かいてーじん"
@@ -3798,7 +3828,7 @@ TreeBitstreamText_3bc38:
 	line "かえりたいよで かえりたくないな"
 	line ""
 	line "だって すきだもん <KATA>ジョー<HIRA>が<KATA>"
-	done
+	done %1000111
 
 TreeBitstreamText_3bc83:
 	ctxt "ジョー"
@@ -3812,7 +3842,7 @@ TreeBitstreamText_3bc83:
 	line "<KATA>グリース<HIRA>やまも <KATA>ラク<HIRA>にとばせるんだ"
 	line "<KATA>オレ<HIRA>が かいぞうしちゃる!"
 	line "めんどうみちゃる!<KATA>"
-	done
+	done %1111001
 
 TreeBitstreamText_3bd02:
 	ctxt "ジョー"
@@ -3822,6 +3852,7 @@ TreeBitstreamText_3bd02:
 	line ""
 	line "きょうも いちにち"
 	line "あんぜんうんてんで いきましょう!<KATA>"
+	done
 
 TreeBitstreamText_3bd37:
 	ctxt "ジョー"
@@ -3831,12 +3862,12 @@ TreeBitstreamText_3bd37:
 	line "<HIRA>だったら <KATA>ニリーン<HIRA>を もってきな"
 	line "そしたら <KATA>ヨンクー<HIRA>に"
 	line "かいぞう してやるぜ!<KATA>"
-	done
+	done %0111011
 
 TreeBitstreamText_3bd77:
 	ctxt "ニリーン<HIRA>は"
 	line "<KATA>ヨンクー<HIRA>へ しんかした<KATA>"
-	done
+	done %1110111
 
 TreeBitstreamText_3bd87:
 	ctxt "ビーノ"
@@ -3845,7 +3876,7 @@ TreeBitstreamText_3bd87:
 	line "<KATA>ワイルド<HIRA>さまには ゆび いっぽん"
 	line "ふれさせないぜ!"
 	line "いざ しょうぶ!!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3bdc2:
 	ctxt "ビーノ"
@@ -3853,7 +3884,7 @@ TreeBitstreamText_3bdc2:
 	line "よわいんだ"
 	line "だから みんなで いるときが"
 	line "いちばん たのしかったりする……<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_3bdf0:
 	ctxt "<HIRA>さばくには おとしあながあるから"
@@ -3862,7 +3893,7 @@ TreeBitstreamText_3bdf0:
 	line "<KATA>ロボポン<HIRA>は しっているかい?"
 	line "さばくを <KATA>ビュンビュン<HIRA>とばす"
 	line "いどうよう<KATA>ロボポン<HIRA>なんだぜ!<KATA>"
-	done
+	done %1010
 
 TreeBitstreamText_3be3f:
 	ctxt "<HIRA>きゅうなしゃめんは <KATA>ニリーン<HIRA>じゃ"
@@ -3871,7 +3902,7 @@ TreeBitstreamText_3be3f:
 	line "<KATA>ロボポン<HIRA>を しっているかい?"
 	line "きゅうなしゃめんも へっちゃらな"
 	line "いどうよう<KATA>ロボポン<HIRA>なんだぜ!<KATA>"
-	done
+	done %1101010
 
 TreeBitstreamText_3be8e:
 	ctxt "ワイルド"
@@ -3888,17 +3919,18 @@ TreeBitstreamText_3be8e:
 	line "<HIRA>え? もう みんな やっつけた?"
 	line "だれも いないの?"
 	line "………た たすけてよ <KATA>ママ<HIRA>ぁー!<KATA>"
+	done
 
 TreeBitstreamText_3bf25:
 	ctxt "ワイルド"
 	line "<HIRA>おっかしいな………あっ"
 	line "<KATA>エンジン<HIRA>かけるの わすれてた!"
 	line "くっそー <KATA>カギ カギ………"
-	done
+	done %001111
 
 TreeBitstreamText_3bf4b:
 	ctxt "グチャッ"
-	done
+	done %0010
 
 TreeBitstreamText_3bf50:
 	ctxt "ワイルド"
@@ -3906,12 +3938,12 @@ TreeBitstreamText_3bf50:
 	line "<KATA>カギ<HIRA>じゃなくて <KATA>カキ<HIRA>じゃねえか!"
 	line "くだものの <KATA>カキ<HIRA>だよ <KATA>カキ!"
 	line "<HIRA>ちっくしょう <KATA>カギ カギ<HIRA>っと<KATA>"
-	done
+	done %010100
 
 TreeBitstreamText_3bf85:
 	ctxt "ワイルド"
 	line "アイテテテッ"
-	done
+	done %110
 
 TreeBitstreamText_3bf8e:
 	ctxt "ワイルド"
@@ -3919,7 +3951,7 @@ TreeBitstreamText_3bf8e:
 	line "こりゃ <KATA>カニ<HIRA>じゃんかぁ!"
 	line "<KATA>ハサ<HIRA>まれちゃったよ まったく……"
 	line "ちがう! <KATA>カギ<HIRA>だよ <KATA>カギ<HIRA>っ!<KATA>"
-	done
+	done %1001111
 
 TreeBitstreamText_3bfc1:
 	ctxt "ワイルド"
@@ -3927,9 +3959,9 @@ TreeBitstreamText_3bfc1:
 	line "<KATA>ロボポンドーム<HIRA>で まってるぞ"
 	line "そこで おもしろい ものを"
 	line "みせて やるからな!<KATA>"
-	done
+	done %101111101110110001000111110001001010100111110000011100111100111110001111010111111011010010011110010110011100100101001100001010100
 
-SECTION "Tree Bitstream Text 1", ROMX [$f], BANK [$4000]
+SECTION "Tree Bitstream Text 1", ROMX [$4000], BANK [$0f]
 TreeBitstreamText_3c000:
 	ctxt "ワイルド"
 	line "<HIRA>どうだ この <KATA>ロボポン<HIRA>を みろ!"
@@ -3938,17 +3970,18 @@ TreeBitstreamText_3c000:
 	line "<KATA>スクラップ<HIRA>に してしまう……"
 	line "そんな ゆうきが おまえさんに"
 	line "あるのかい?<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3c04e:
 	ctxt "ワイルド"
 	line "ゴメン……… <HIRA>かえすよ ちょっとだけ"
 	line "<KATA>レベルアップ <HIRA>させといたから<KATA>"
+	done
 
 TreeBitstreamText_3c070:
 	ctxt "ワイルド<HIRA>から <KATA>ドルッピ<HIRA>を"
 	line "かえして もらった!<KATA>"
-	done
+	done %10011
 
 TreeBitstreamText_3c086:
 	ctxt "ワイルド"
@@ -3958,12 +3991,12 @@ TreeBitstreamText_3c086:
 	line "あったら <KATA>グリース<HIRA>やま に きなよ"
 	line "<KATA>アイ ラブ ロケンロール!"
 	line "アイ ラブ <PLAYER>!"
-	done
+	done %0010
 
 TreeBitstreamText_3c0ca:
 	ctxt "グレイテスト5<HIRA>の しょうごう"
 	line "を てにいれた!<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3c0de:
 	ctxt "テール<HIRA>おうじ"
@@ -3975,7 +4008,7 @@ TreeBitstreamText_3c0de:
 	line ""
 	line "わたしとの たいせんも"
 	line "あと わずかだ!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3c13a:
 	ctxt "テール<HIRA>おうじ"
@@ -3983,7 +4016,7 @@ TreeBitstreamText_3c13a:
 	line ""
 	line "あいつと たたかう ひ も"
 	line "そう とおくは なさそうだ……<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3c162:
 	ctxt "ワイルド"
@@ -4003,7 +4036,7 @@ TreeBitstreamText_3c162:
 	line "もちろん <KATA>ライブ<HIRA>も <KATA>バリバリ<HIRA>よ!"
 	line "いまに <KATA>メジャーデビュー<HIRA>するから"
 	line "おうえん してくれよな <KATA><PLAYER>!"
-	done
+	done %000
 
 TreeBitstreamText_3c22b:
 	ctxt "<HIRA>おとこ"
@@ -4020,7 +4053,7 @@ TreeBitstreamText_3c22b:
 	line "しかし あんまり<KATA>ハデ<HIRA>にやると"
 	line "どうくつじたいが こわれてしまう"
 	line "むずかしい もんだいだ<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3c2b2:
 	ctxt "<HIRA>おとこ"
@@ -4032,6 +4065,7 @@ TreeBitstreamText_3c2b2:
 	line "ここの<KATA>カベ<HIRA>を こわせるだろう"
 	line "ちょっと<KATA>キケン<HIRA>な かけだが"
 	line "やってみる かちは ありそうだぜ!<KATA>"
+	done
 
 TreeBitstreamText_3c305:
 	ctxt "<HIRA>うけつけ"
@@ -4043,7 +4077,7 @@ TreeBitstreamText_3c305:
 	line "てつづきを していただきます"
 	line "てすうりょう 1000<KATA>ゴールド"
 	line "<HIRA>いただきますが よろしいですか?<KATA>"
-	done
+	done %100011
 
 TreeBitstreamText_3c35b:
 	ctxt "<HIRA>うけつけ"
@@ -4053,7 +4087,7 @@ TreeBitstreamText_3c35b:
 	line "まことに ざんねんです………"
 	line "………もし きが かわったら"
 	line "また おこしください<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3c390:
 	ctxt "<HIRA>うけつけ"
@@ -4061,7 +4095,7 @@ TreeBitstreamText_3c390:
 	line "おかねが たりないようですね………"
 	line "おかねを ためてから"
 	line "もういちど おこし ください<KATA>"
-	done
+	done %0010010
 
 TreeBitstreamText_3c3bd:
 	ctxt "<HIRA>うけつけ"
@@ -4074,7 +4108,7 @@ TreeBitstreamText_3c3bd:
 	line "そのぐんの <KATA>ルール<HIRA>で <KATA>バトル<HIRA>をして"
 	line "あなたが かてば ごうかくです"
 	line "では ごけんとうを おいのりします<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_3c437:
 	ctxt "<HIRA>うけつけ"
@@ -4082,7 +4116,7 @@ TreeBitstreamText_3c437:
 	line "<KATA>カマット<HIRA>ぐんの いちいん ですね!"
 	line "すばらしい みらいを <KATA>カマット<HIRA>さま"
 	line "と きずこうじゃ ありませんか!<KATA>"
-	done
+	done %1110
 
 TreeBitstreamText_3c46d:
 	ctxt "<HIRA>おまえ みたいな こぞうが"
@@ -4091,7 +4125,7 @@ TreeBitstreamText_3c46d:
 	line "<KATA>オトコ<HIRA>の せかいを おしえてやる"
 	line "<KATA>サッサ<HIRA>と うけつけで はらうもんを"
 	line "はらってこい!<KATA>"
-	done
+	done %1111101
 
 TreeBitstreamText_3c4ab:
 	ctxt "<HIRA>ん? <KATA>バッチ<HIRA>なら もう"
@@ -4100,20 +4134,21 @@ TreeBitstreamText_3c4ab:
 	line "いや よくばりと いうべきか………"
 	line "とにかく とうの てっぺんまで いき"
 	line "きちんと そつぎょう してこい!<KATA>"
-	done
+	done %000011
 
 TreeBitstreamText_3c4f2:
 	ctxt "<HIRA>ん? おまえは もう わがぐんを"
 	line "そつぎょう したでは ないか"
 	line "そつぎょうした ぶたいに"
 	line "もう ようは ないはずだ<KATA>"
+	done
 
 TreeBitstreamText_3c51f:
 	ctxt "バトラー<HIRA>ぐんは <KATA>エリート ロボポン<HIRA>が"
 	line "しょぞくする かこくな ぶたい!"
 	line "それでも <KATA>バトラー<HIRA>ぐんに"
 	line "はいりたいのか?<KATA>"
-	done
+	done %00101
 
 TreeBitstreamText_3c552:
 	ctxt "ジャンパー<HIRA>ぐんは そらが とべて"
@@ -4121,13 +4156,13 @@ TreeBitstreamText_3c552:
 	line "<KATA>ムーブ<HIRA>ぞくの <KATA>ロボポン<HIRA>が おおく"
 	line "しょぞくしている ぶたいなのだ"
 	line "<KATA>ジャンパー<HIRA>ぐんで いいのか?<KATA>"
-	done
+	done %00000
 
 TreeBitstreamText_3c5a0:
 	ctxt "スピーダー<HIRA>ぐんは すばやさのたかい"
 	line "<KATA>ムーブ<HIRA>ぞくが ゆうりな ぶたいだ"
 	line "<KATA>スピーダー<HIRA>ぐんで いいのか?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3c5cf:
 	ctxt "シールダー<HIRA>ぐんは <KATA>ヒットポイント<HIRA>や"
@@ -4135,7 +4170,7 @@ TreeBitstreamText_3c5cf:
 	line "がんじょうな <KATA>ロボポン<HIRA>が ゆうりな"
 	line "ぶたいだから <KATA>ブート<HIRA>ぞくが いいな"
 	line "<KATA>シールダー<HIRA>ぐんで いいんだな?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3c61c:
 	ctxt "パンチャー<HIRA>ぐんは こうげきりょくが"
@@ -4144,48 +4179,51 @@ TreeBitstreamText_3c61c:
 	line "ゆうりな ぶたいでもある"
 	line "わが <KATA>パンチャー<HIRA>ぐんに"
 	line "はいりたいのか?<KATA>"
-	done
+	done %0001010
 
 TreeBitstreamText_3c65d:
 	ctxt "<HIRA>では えんりょなく いくぞ!<KATA>"
+	done
 
 TreeBitstreamText_3c66a:
 	ctxt "<HIRA>なんだ おじけづいたのか?<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_3c677:
 	ctxt "<HIRA>うむ では わがぐん への"
 	line "にゅうたいを きょか しよう"
 	line "さあ この<KATA>バッチ<HIRA>を つけるのだ<KATA>"
-	done
+	done %010000
 
 TreeBitstreamText_3c69d:
 	ctxt "ジャンパーバッチ"
 	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3c6ad:
 	ctxt "スピーダーバッチ"
 	line "<HIRA>を てにいれた!<KATA>"
-	done
+	done %0111111
 
 TreeBitstreamText_3c6be:
 	ctxt "パンチャーバッチ"
 	line "<HIRA>を てにいれた!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3c6ce:
 	ctxt "シールダーバッチ"
 	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3c6dd:
 	ctxt "バトラーバッチ"
 	line "<HIRA>を てにいれた!<KATA>"
-	done
+	done %0110
 
 TreeBitstreamText_3c6ec:
 	ctxt "<HIRA>では <KATA>アポロ<HIRA>ようさいに ある"
 	line "わが ぶたいの とうに ゆけ!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3c707:
 	ctxt "<HIRA>おまえ しんいり だろ?"
@@ -4202,39 +4240,40 @@ TreeBitstreamText_3c707:
 	line "ひがしが <KATA>バトラー<HIRA>のとう"
 	line "にしは <KATA>ジャンパー<HIRA>のとう だ"
 	line "………おぼえたかい?<KATA>"
+	done
 
 TreeBitstreamText_3c7b1:
 	ctxt "<HIRA>おまえなぁ ぜんぶの ぶたいを"
 	line "そつぎょう しないと <KATA>ダメ<HIRA>だぜ!"
 	line "それで <KATA>カマット<HIRA>さまに あおうたぁ"
 	line "<KATA>ナイス<HIRA>こんじょーだな おい!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3c7ea:
 	ctxt "<HIRA>わたしと たたかおう とでも"
 	line "いうのか?"
 	line "100まん おく こうねん"
 	line "はやいんじゃ ないのかね?<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3c810:
 	ctxt "<HIRA>たにんに やさしく!"
 	line "じぶんに きびしく!"
 	line "それが わたしの <KATA>モットー!"
 	line "<HIRA>つけあがっては こまるよ <KATA>チミ"
-	done
+	done %1000
 
 TreeBitstreamText_3c83b:
 	ctxt "<HIRA>さいきんの <KATA>ガキ<HIRA>んちょは どうして"
 	line "こう みのほど しらずなんだ?!<KATA>"
-	done
+	done %011001
 
 TreeBitstreamText_3c859:
 	ctxt "<HIRA>もっと やさしくして!"
 	line ""
 	line "じゃなくって もっと ひとに"
 	line "やさしく できないの?!<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3c878:
 	ctxt "<HIRA>わたしが だれだか わかって"
@@ -4243,7 +4282,7 @@ TreeBitstreamText_3c878:
 	line "しんじん だから わからない?"
 	line "<KATA>フン!"
 	line "<HIRA>いますぐに わからせて やる!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3c8aa:
 	ctxt "<HIRA>ど どうだ わ わかったか!"
@@ -4251,54 +4290,55 @@ TreeBitstreamText_3c8aa:
 	line "わたしは きみの ことが"
 	line "よぉーく わかった!"
 	line "だから もう やめて!<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_3c8d2:
 	ctxt "<HIRA>ほう おまえか? いせいの いい"
 	line "しんいり というのは?"
 	line "そういうやつは つけあがらないように"
 	line "おれが きょういく してやる!<KATA>"
+	done
 
 TreeBitstreamText_3c901:
 	ctxt "<HIRA>ありがとうございました!!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3c90e:
 	ctxt "<HIRA>みかけん かおだな………"
 	line "まあよい あいてを してやるか!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_3c925:
 	ctxt "<HIRA>そ その ちょうしで こんごとも"
 	line "たのむよ <KATA>ハッハッハッ! ハァ……"
-	done
+	done %000
 
 TreeBitstreamText_3c941:
 	ctxt "<HIRA>ん? すべてのぶたいを"
 	line "そつぎょうしたのか!!"
 	line "ならば この<KATA>カード<HIRA>をやろう!<KATA>"
-	done
+	done %01010
 
 TreeBitstreamText_3c963:
 	ctxt "メンバーズカード"
 	line "<HIRA>を てにいれた!<KATA>"
-	done
+	done %1001
 
 TreeBitstreamText_3c973:
 	ctxt "………<HIRA>よし <KATA>バッチ<HIRA>を もっているな<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3c983:
 	ctxt "<HIRA>おまえみたいな <KATA>バッチ<HIRA>の ないやつは"
 	line "はなしに ならないな"
 	line "<KATA>ダイン<HIRA>まちで にゅうたい<KATA>テスト<HIRA>に"
 	line "ごうかく してから きな!<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_3c9b4:
 	ctxt "カマットタワー<HIRA>に"
 	line "ようこそ!<KATA>"
-	done
+	done %1111010
 
 TreeBitstreamText_3c9c1:
 	ctxt "<HIRA>なぜ こんな ところに いる!"
@@ -4307,11 +4347,12 @@ TreeBitstreamText_3c9c1:
 	line "<KATA>スパイ<HIRA>だな!"
 	line "<KATA>カマット<HIRA>ぐんに <KATA>クーデター<HIRA>を"
 	line "おこそうとでも いうのか?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3ca00:
 	ctxt "<HIRA>むむむ どこで そんなに"
 	line "<KATA>ロボポン<HIRA>を きょうか したのだ……<KATA>"
+	done
 
 TreeBitstreamText_3ca1c:
 	ctxt "<HIRA>どうやら ただものでは"
@@ -4319,35 +4360,35 @@ TreeBitstreamText_3ca1c:
 	line "だが おまえを <KATA>カマット<HIRA>さまに"
 	line "あわせる わけには いかない!"
 	line "ここで くたばって もらう!<KATA>"
-	done
+	done %1011100
 
 TreeBitstreamText_3ca51:
 	ctxt "<HIRA>くっ なぜ こんな こぞうに………<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3ca60:
 	ctxt "<HIRA>あっ おまえは このまえの!"
 	line "なぜ こんな ところに!?"
 	line "でえぇい!"
 	line "つけあがるのも いいかげんにしろ!<KATA>"
-	done
+	done %11011
 
 TreeBitstreamText_3ca8a:
 	ctxt "バトル<HIRA>ずきの やばんじんめ!<KATA>"
-	done
+	done %0011100
 
 TreeBitstreamText_3ca99:
 	ctxt "<HIRA>また おまえか!?"
 	line "きちんと きょういく したのに!"
 	line "まあ よい! もういちど"
 	line "きょういく しなおして やる!<KATA>"
-	done
+	done %0110010
 
 TreeBitstreamText_3cac2:
 	ctxt "<HIRA>きさま どうせ <KATA>グレイテスト<HIRA>の"
 	line "<KATA>ランカー<HIRA>に なりたいのだろ?!"
 	line "………くだらんことだ!<KATA>"
-	done
+	done %100010
 
 TreeBitstreamText_3cae8:
 	ctxt "<HIRA>わたしが だれだか わかって"
@@ -4356,12 +4397,13 @@ TreeBitstreamText_3cae8:
 	line "くそっ"
 	line "だが おまえを とおす わけには"
 	line "いかない!<KATA>"
+	done
 
 TreeBitstreamText_3cb14:
 	ctxt "<HIRA>ああ! また <KATA>カマット<HIRA>さまの"
 	line "おしおきが………"
 	line "たすけて!!<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_3cb2d:
 	ctxt "カマット"
@@ -4376,7 +4418,7 @@ TreeBitstreamText_3cb2d:
 	line "<KATA>グレイテスト<HIRA>せん でしょ"
 	line "こうなったら うけて たつわよ"
 	line "それじゃあ <KATA>ドーム<HIRA>へ むかうわよ<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_3cbab:
 	ctxt "カマット"
@@ -4387,7 +4429,7 @@ TreeBitstreamText_3cbab:
 	line "いい? よろしいこと?"
 	line ""
 	line "……じゃあ かかってらっしゃい!<KATA>"
-	done
+	done %101111
 
 TreeBitstreamText_3cbf7:
 	ctxt "カマット"
@@ -4400,12 +4442,12 @@ TreeBitstreamText_3cbf7:
 	line "………なによ あたし じゃ"
 	line "<KATA>イヤ<HIRA>なの?!"
 	line "んもぅ! つれない じゃない!<KATA>"
-	done
+	done %001001
 
 TreeBitstreamText_3cc4d:
 	ctxt "グレイテスト4<HIRA>の しょうごう"
 	line "を てにいれた!<KATA>"
-	done
+	done %1011
 
 TreeBitstreamText_3cc61:
 	ctxt "テール<HIRA>おうじ"
@@ -4424,12 +4466,12 @@ TreeBitstreamText_3cc61:
 	line "あいてを さがして ちょうせんを"
 	line "もうしこんだら ここへ くるがいい"
 	line "そう この <KATA>ロボポンドーム<HIRA>へ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3ccf9:
 	ctxt "<PLAYER>"
 	line "<HIRA>おーい <KATA>ヘッド<HIRA>はかせーっ!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3cd08:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4451,7 +4493,7 @@ TreeBitstreamText_3cd08:
 	line ""
 	line "おまえのことを すきだから"
 	line "たたかわないで って いうし………<KATA>"
-	done
+	done %1110110
 
 TreeBitstreamText_3cdce:
 	ctxt "ロル"
@@ -4461,7 +4503,7 @@ TreeBitstreamText_3cdce:
 	line "いわなくても いいじゃない!"
 	line "もーっ ひとの きもち"
 	line "わからないんだからぁーーーっ!<KATA>"
-	done
+	done %00001
 
 TreeBitstreamText_3ce14:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4481,7 +4523,7 @@ TreeBitstreamText_3ce14:
 	line ""
 	line "そんなこと わしが おしえるわけ"
 	line "ないだろ っちゅーの!<KATA>"
-	done
+	done %100001
 
 TreeBitstreamText_3cec2:
 	ctxt "ロル"
@@ -4490,7 +4532,7 @@ TreeBitstreamText_3cec2:
 	line "あのね <KATA>ガーナ<HIRA>いけ に"
 	line "なにか あるらしいの"
 	line "おねがいだから さがしてきてぇー!<KATA>"
-	done
+	done %10011
 
 TreeBitstreamText_3cefd:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4504,7 +4546,7 @@ TreeBitstreamText_3cefd:
 	line ""
 	line "とにかく わしとの たいけつは"
 	line "あきらめろ <KATA><PLAYER>!"
-	done
+	done %1111010
 
 TreeBitstreamText_3cf5a:
 	ctxt "<HIRA>つりぐや"
@@ -4525,11 +4567,12 @@ TreeBitstreamText_3cf5a:
 	line "はい つりざお ね"
 	line ""
 	line "じゃ せいぜい きをつけて!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3d001:
 	ctxt "<HIRA>つりざお"
 	line "を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3d00d:
 	ctxt "<HIRA>この つりぐや なんか <KATA>ヘン<HIRA>だ"
@@ -4544,7 +4587,7 @@ TreeBitstreamText_3d00d:
 	line "くるんだけどさ"
 	line "じつは いつも <KATA>ビビッ<HIRA>て さおを"
 	line "はなしちゃうんだな これが<KATA>"
-	done
+	done %0101
 
 TreeBitstreamText_3d098:
 	ctxt "<HIRA>こども"
@@ -4554,7 +4597,7 @@ TreeBitstreamText_3d098:
 	line "って <KATA>ボク<HIRA>も にんげんだけど"
 	line "ま また にんげんが つれちゃった!"
 	line "おかあさーん!<KATA>"
-	done
+	done %11111
 
 TreeBitstreamText_3d0e0:
 	ctxt "<HIRA>ははおや"
@@ -4570,14 +4613,14 @@ TreeBitstreamText_3d0e0:
 	line ""
 	line "<KATA>コラッ! <HIRA>おにいさんに <KATA>キチン<HIRA>と"
 	line "あやまりなさいっ!!<KATA>"
-	done
+	done %110000
 
 TreeBitstreamText_3d160:
 	ctxt "<HIRA>こども"
 	line "<KATA>イヤ<HIRA>だよー"
 	line "おちてたものを ひろっただけだもん"
 	line "きょうは すきやき たべるんだもーん<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3d187:
 	ctxt "<HIRA>ははおや"
@@ -4587,11 +4630,12 @@ TreeBitstreamText_3d187:
 	line "わがままに そだってしまって……"
 	line "おわび といっては なんですが"
 	line "これを さしあげます<KATA>"
-	done
+	done %0101100
 
 TreeBitstreamText_3d1c4:
 	ctxt "シュノーケル"
 	line "<HIRA>を てにいれた!<KATA>"
+	done
 
 TreeBitstreamText_3d1d1:
 	ctxt "<HIRA>ははおや"
@@ -4599,7 +4643,7 @@ TreeBitstreamText_3d1d1:
 	line "みずの なかでも へいきなんです"
 	line "でも はずすと すぐに"
 	line "ちっそく してしまいますよ<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_3d204:
 	ctxt "<HIRA>こども"
@@ -4614,6 +4658,7 @@ TreeBitstreamText_3d204:
 	line "えっ それは なにかって?"
 	line "あとの おたのしみ!"
 	line "もうちょっと まっててね<KATA>"
+	done
 
 TreeBitstreamText_3d278:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4624,7 +4669,7 @@ TreeBitstreamText_3d278:
 	line "なんちゅう<KATA>ヤツ<HIRA>じゃ!"
 	line "この ふとどき ものが!"
 	line "いいかげんに せんかい!<KATA>"
-	done
+	done %0101
 
 TreeBitstreamText_3d2d1:
 	ctxt "ロル"
@@ -4632,7 +4677,7 @@ TreeBitstreamText_3d2d1:
 	line "<KATA>ドンドン <HIRA>ばくは しちゃって!!"
 	line "<KATA>パパ<HIRA>の いうことなんて"
 	line "きかなくても いいんだからぁ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3d302:
 	ctxt "<HIRA>こども"
@@ -4643,7 +4688,7 @@ TreeBitstreamText_3d302:
 	line "なんだか わからないけど あきちで"
 	line "みつけた <KATA>キレイ<HIRA>な たま なんだ"
 	line "はい <KATA>プレゼント!"
-	done
+	done %10
 
 TreeBitstreamText_3d354:
 	ctxt "<HIRA>こども"
@@ -4651,7 +4696,7 @@ TreeBitstreamText_3d354:
 	line "やってもうた………"
 	line "あの たま って"
 	line "ばくだん だったのね………<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_3d37a:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4661,7 +4706,7 @@ TreeBitstreamText_3d37a:
 	line "たいけつは できんぞ!"
 	line "まあ <KATA>ムリ<HIRA>な はなしだと"
 	line "おもうが な<KATA>"
-	done
+	done %1011000
 
 TreeBitstreamText_3d3ba:
 	ctxt "ロル"
@@ -4671,7 +4716,7 @@ TreeBitstreamText_3d3ba:
 	line "ちゃんと さがしたの?"
 	line "もう なにいろの ばくだんでも"
 	line "いいから <KATA>バンバン<HIRA>ばくはつさせて!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3d404:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4681,7 +4726,7 @@ TreeBitstreamText_3d404:
 	line "もうすこしで じめんに つくよー"
 	line "わしは たたかいたく ないって"
 	line "いってる だろーに!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3d442:
 	ctxt "ロル"
@@ -4689,7 +4734,7 @@ TreeBitstreamText_3d442:
 	line "<HIRA>すごいじゃない!"
 	line "はやく ここから だして!"
 	line "まってるからね!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3d465:
 	ctxt "ロル"
@@ -4699,7 +4744,7 @@ TreeBitstreamText_3d465:
 	line "はやく <KATA>パパ<HIRA>と たたかいなさいよ!"
 	line "いまの <KATA><PLAYER><HIRA>なら"
 	line "ぜったいに かてるわ!<KATA>"
-	done
+	done %1000
 
 TreeBitstreamText_3d4a3:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4713,7 +4758,7 @@ TreeBitstreamText_3d4a3:
 	line "はかいさせて もらう! いいな!"
 	line "この じょうけんが のめないなら"
 	line "わしは たたかわないもーん!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3d51a:
 	ctxt "ロル"
@@ -4722,6 +4767,7 @@ TreeBitstreamText_3d51a:
 	line "<KATA><PLAYER><HIRA>が いっしょうけんめい"
 	line "たてた <KATA>ビル<HIRA>じゃないの!"
 	line "ひどい ひどい ひどい!<KATA>"
+	done
 
 TreeBitstreamText_3d552:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4732,7 +4778,7 @@ TreeBitstreamText_3d552:
 	line "わしが かったら おまえの<KATA>ビル<HIRA>を"
 	line "1かいずつ はかいさせて もらう!"
 	line "いいな?<KATA>"
-	done
+	done %0001001
 
 TreeBitstreamText_3d59c:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4740,7 +4786,7 @@ TreeBitstreamText_3d59c:
 	line "じょうけんを のむってか!"
 	line "ところで <KATA>ロル! <HIRA>おまえは"
 	line "どっちの みかたを するんだ?<KATA>"
-	done
+	done %0000
 
 TreeBitstreamText_3d5d0:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4750,7 +4796,7 @@ TreeBitstreamText_3d5d0:
 	line "<KATA>イヤ! イヤ<HIRA>っ!"
 	line "じゃあな <KATA><PLAYER>"
 	line "<HIRA>さきに <KATA>ドーム<HIRA>に いってるぞ!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3d60c:
 	ctxt "ロル"
@@ -4760,7 +4806,7 @@ TreeBitstreamText_3d60c:
 	line "おうえんしてるから"
 	line "いまだけじゃないよ"
 	line "これからも ずっと<KATA>"
-	done
+	done %1110001
 
 TreeBitstreamText_3d63e:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4768,7 +4814,7 @@ TreeBitstreamText_3d63e:
 	line "おくびょうもの だったか"
 	line "そんなんじゃ"
 	line "<KATA>ロル<HIRA>にも きらわれちまうぞい<KATA>"
-	done
+	done %0000011
 
 TreeBitstreamText_3d66c:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4780,7 +4826,7 @@ TreeBitstreamText_3d66c:
 	line "もう えんりょは せんぞ!"
 	line "おまえの <KATA>ビル<HIRA>でも こわさんと"
 	line "わしの きが おさまらん!<KATA>"
-	done
+	done %1001111
 
 TreeBitstreamText_3d6c8:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -4790,12 +4836,12 @@ TreeBitstreamText_3d6c8:
 	line "………でもでも"
 	line "<KATA>ロル<HIRA>は やらんぞー <KATA>アッカンベー!"
 	line "<HIRA>ぜったい <KATA>イヤ<HIRA>だもんねー!<KATA>"
-	done
+	done %000010
 
 TreeBitstreamText_3d713:
 	ctxt "グレイテスト3<HIRA>の しょうごう"
 	line "を てにいれた!<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_3d727:
 	ctxt "テール<HIRA>おうじ"
@@ -4804,13 +4850,13 @@ TreeBitstreamText_3d727:
 	line "ボク<HIRA>との たいせんも もうすぐだ!"
 	line "だが <KATA>グレイテスト2<HIRA>も つよいぞ!"
 	line "そのさきに <KATA>ボク<HIRA>がいる!<KATA>"
-	done
+	done %0110
 
 TreeBitstreamText_3d76a:
 	ctxt "<HIRA>おうじ! たいへんです!"
 	line "きんきゅうじたい はっせいです!"
 	line "<KATA>ゴニョゴニョゴニョゴニョ………………"
-	done
+	done %110
 
 TreeBitstreamText_3d793:
 	ctxt "テール<HIRA>おうじ"
@@ -4824,54 +4870,55 @@ TreeBitstreamText_3d793:
 	line "ということに しよう"
 	line "いまは それどころでは ないのだ"
 	line "しばし せきを はずさせて もらう<KATA>"
-	done
+	done %111100
 
 TreeBitstreamText_3d801:
 	ctxt "<HIRA>どうやら しろで なにか"
 	line "おきてる みたいだな"
 	line "たしか ここのちかに <KATA>テール<HIRA>じょうに"
 	line "いける つうろが あったはずだ……<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_3d831:
 	ctxt "<HIRA>おまえ こんな ところで"
 	line "なにを している?!<KATA>"
-	done
+	done %11011
 
 TreeBitstreamText_3d844:
 	ctxt "<HIRA>いっぱんじんは <KATA>ダメ<HIRA>だ <KATA>ダメ<HIRA>だ!"
 	line "ここは とおさん!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3d85e:
 	ctxt "<HIRA>えーい こぞうは あっちへ いけ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3d86d:
 	ctxt "<HIRA>いっ    ぱん<KATA>ピー    プル<HIRA>は"
 	line "たちいりきんし だと いってるん"
 	line "だーーーーーーーーーーーっっ!!<KATA>"
-	done
+	done %0111110
 
 TreeBitstreamText_3d897:
 	ctxt "…………………………………"
-	done
+	done %1111
 
 TreeBitstreamText_3d8a2:
 	ctxt "<HIRA>あっちへ いけ!<KATA>"
-	done
+	done %0011100
 
 TreeBitstreamText_3d8ab:
 	ctxt "<HIRA>きさま なにものだ!!"
 	line ""
 	line "このさきは かんけいしゃ いがい"
 	line "たちいりきんし なんだぞ!!<KATA>"
-	done
+	done %1110101
 
 TreeBitstreamText_3d8ce:
 	ctxt "<HIRA>おしろが たいへん!"
 	line "<KATA>テール<HIRA>おうじ が たいへん!!"
 	line "いったい なにが おこってるのよ!<KATA>"
+	done
 
 TreeBitstreamText_3d8f1:
 	ctxt "テール<HIRA>おうじ"
@@ -4883,7 +4930,7 @@ TreeBitstreamText_3d8f1:
 	line "せいあつ しようとした ほんにん!"
 	line "……しかし そのとき おまえは"
 	line "わたしの ちちに ころされたはず!<KATA>"
-	done
+	done %0111100
 
 TreeBitstreamText_3d95c:
 	ctxt "ドクターゼロ"
@@ -4895,7 +4942,7 @@ TreeBitstreamText_3d95c:
 	line "かいぞう したのさ………"
 	line "かみが いうのだ……… おまえは"
 	line "まだ しんでは いけない と<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_3d9b8:
 	ctxt "テール<HIRA>おうじ"
@@ -4905,7 +4952,7 @@ TreeBitstreamText_3d9b8:
 	line "ねらいは いったい なんなのだ?"
 	line "なぜ とつぜん こんなところへ"
 	line "あらわれたんだ!<KATA>"
-	done
+	done %01100
 
 TreeBitstreamText_3d9f7:
 	ctxt "ドクターゼロ"
@@ -4919,12 +4966,12 @@ TreeBitstreamText_3d9f7:
 	line "かってに おうざを うばいとった…"
 	line "<KATA>フフフフ <HIRA>この わたしが かんたんに"
 	line "しぬ と かんちがい したようだが<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3da77:
 	ctxt "テール<HIRA>おうじ"
 	line "そ それは………<KATA>"
-	done
+	done %100011
 
 TreeBitstreamText_3da85:
 	ctxt "ドクターゼロ"
@@ -4946,14 +4993,14 @@ TreeBitstreamText_3da85:
 	line "<KATA>テール<HIRA>おうじ! おまえだな!"
 	line "それは <KATA>グレイテスト<HIRA>を めざすものに"
 	line "あまりにも しつれいじゃないかね?<KATA>"
-	done
+	done %1111111
 
 TreeBitstreamText_3db5f:
 	ctxt "テール<HIRA>おうじ"
 	line "すべては ちちの やったこと!"
 	line ""
 	line "わたしは なんの かんけいも ない!<KATA>"
-	done
+	done %1110
 
 TreeBitstreamText_3db7f:
 	ctxt "ドクターゼロ"
@@ -4975,7 +5022,7 @@ TreeBitstreamText_3db7f:
 	line "いかないんでね"
 	line "この <KATA>グレイテスト1<HIRA>の あかし"
 	line "<KATA>ウイニングローレル<HIRA>を いただく!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3dc1e:
 	ctxt "ドクターゼロ"
@@ -4983,14 +5030,14 @@ TreeBitstreamText_3dc1e:
 	line ""
 	line "きみには <KATA>ローレル<HIRA>と おなじだけ"
 	line "たいせつな ものも いただこう!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3dc47:
 	ctxt "テール<HIRA>おうじ"
 	line "<KATA>ダース<HIRA>ひめ!"
 	line ""
 	line "やめないか <KATA>ドクターゼロ!"
-	done
+	done %1001001
 
 TreeBitstreamText_3dc61:
 	ctxt "ドクターゼロ"
@@ -5003,12 +5050,13 @@ TreeBitstreamText_3dc61:
 	line "<KATA>フフフフ <HIRA>まあ おうじに その"
 	line "ゆうきが あれば だがな………"
 	line "それでは さらばだ!<KATA>"
+	done
 
 TreeBitstreamText_3dcbd:
 	ctxt "ダース<HIRA>ひめ"
 	line "おうじ!"
 	line "<KATA>テール<HIRA>おうじ!<KATA>"
-	done
+	done %00100
 
 TreeBitstreamText_3dccf:
 	ctxt "テール<HIRA>おうじ"
@@ -5017,7 +5065,7 @@ TreeBitstreamText_3dccf:
 	line "<KATA>ドクターゼロ<HIRA>の いばしょの <KATA>データ<HIRA>も"
 	line "まったく ない………"
 	line "いったい どうすれば………<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3dd0b:
 	ctxt "ドクターゼロ"
@@ -5045,7 +5093,7 @@ TreeBitstreamText_3dd0b:
 	line "すうだん つよい はずだ!"
 	line "なにしろ わたしの はつめいした"
 	line "<KATA>バトル アンドロイド <HIRA>だからな!<KATA>"
-	done
+	done %01101
 
 TreeBitstreamText_3de23:
 	ctxt "ドクターゼロ"
@@ -5060,7 +5108,7 @@ TreeBitstreamText_3de23:
 	line "きっと たたかう ことに"
 	line "なるだろう………"
 	line "<KATA>アイル ビー バック!"
-	done
+	done %00110
 
 TreeBitstreamText_3de8e:
 	ctxt "ドクターゼロ"
@@ -5074,7 +5122,7 @@ TreeBitstreamText_3de8e:
 	line "とか?"
 	line "まさか おうじの かわりに ひめを"
 	line "たすけよう というのでは ないな?<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_3df08:
 	ctxt "ドクターゼロ"
@@ -5093,7 +5141,7 @@ TreeBitstreamText_3df08:
 	line "これからの <KATA>ポロンボ<HIRA>とうは わたしの"
 	line "てによって うごかされるのだ!!"
 	line "いでよ しんせいきの らくえん!!<KATA>"
-	done
+	done %11011
 
 TreeBitstreamText_3dfb9:
 	ctxt "ドクターゼロ"
@@ -5108,7 +5156,7 @@ TreeBitstreamText_3dfb9:
 	line "ここの いちいんに ならないかね?"
 	line ""
 	line "いでよ しんせいきの らくえん!<KATA>"
-	done
+	done %1010
 
 TreeBitstreamText_3e01f:
 	ctxt "ドクターゼロ"
@@ -5116,6 +5164,7 @@ TreeBitstreamText_3e01f:
 	line ""
 	line "<KATA>ゼロ キャッスル<HIRA>から すべてが"
 	line "はじまるのだっ!!!<KATA>"
+	done
 
 TreeBitstreamText_3e04a:
 	ctxt "ドクターゼロ"
@@ -5132,7 +5181,7 @@ TreeBitstreamText_3e04a:
 	line "いままでの れきしに <KATA>ピリオド<HIRA>を"
 	line "うつために!"
 	line "では <KATA>シー ユー アゲイン!"
-	done
+	done %0
 
 TreeBitstreamText_3e0d5:
 	ctxt "ビスコ"
@@ -5157,7 +5206,7 @@ TreeBitstreamText_3e0d5:
 	line "<KATA>オレ<HIRA>さまは もうちょっと いいぶきを"
 	line "くすねてから でていくわ"
 	line "ほんじゃあな!!<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_3e1be:
 	ctxt "テール<HIRA>おうじ"
@@ -5168,7 +5217,7 @@ TreeBitstreamText_3e1be:
 	line "だが <KATA>ダース<HIRA>ひめの はなしは べつだ"
 	line ""
 	line "さあ ひめを こっちに かえすんだ!<KATA>"
-	done
+	done %010111
 
 TreeBitstreamText_3e1ff:
 	ctxt "ドクターゼロ"
@@ -5186,12 +5235,12 @@ TreeBitstreamText_3e1ff:
 	line "わたしの ものだっ!!"
 	line "もんく あるかね <KATA>テール<HIRA>おうじ"
 	line "………いや <KATA>テール<HIRA>ぼうや?<KATA>"
-	done
+	done %0100
 
 TreeBitstreamText_3e289:
 	ctxt "テール<HIRA>おうじ"
 	line "う う うううううううっ…………<KATA>"
-	done
+	done %1000
 
 TreeBitstreamText_3e29b:
 	ctxt "ドクターゼロ"
@@ -5205,12 +5254,13 @@ TreeBitstreamText_3e29b:
 	line "<KATA>グレイテスト2<HIRA>を たおすこと!"
 	line "そう!"
 	line "あの <KATA>テール<HIRA>を たおすのだ!<KATA>"
-	done
+	done %00100
 
 TreeBitstreamText_3e30b:
 	ctxt "ドクターゼロ"
 	line "<HIRA>にげも かくれも しない"
 	line "わたしは まっているよ<KATA>"
+	done
 
 TreeBitstreamText_3e324:
 	ctxt "ダース<HIRA>ひめ"
@@ -5228,12 +5278,13 @@ TreeBitstreamText_3e324:
 	line ""
 	line "きっと なにも かもが"
 	line "もとどおりになる ひが くる と<KATA>"
-	done
+	done %101111
 
 TreeBitstreamText_3e3bb:
 	ctxt "ダース<HIRA>ひめ"
 	line "ちょっと おまちになってください"
 	line "わたしの はなしをきいてください!<KATA>"
+	done
 
 TreeBitstreamText_3e3db:
 	ctxt "テール<HIRA>おうじ"
@@ -5244,7 +5295,7 @@ TreeBitstreamText_3e3db:
 	line "じみちな どりょくを つづけねば!"
 	line "そして <KATA>ダース<HIRA>ひめを かならず!"
 	line "かならず とりもどす!<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3e43a:
 	ctxt "テール<HIRA>おうじ"
@@ -5270,18 +5321,19 @@ TreeBitstreamText_3e43a:
 	line "ちょうせんを うけよう"
 	line "そう かんたんには まけない!"
 	line "<KATA>ロボポンドーム<HIRA>で まっているぞ!<KATA>"
-	done
+	done %1100
 
 TreeBitstreamText_3e522:
 	ctxt "ドクターゼロ"
 	line "フッ <HIRA>もうすぐだ もうすぐで"
 	line "わが やぼうが たっせいされる!<KATA>"
-	done
+	done %000001
 
 TreeBitstreamText_3e544:
 	ctxt "ダース<HIRA>ひめ"
 	line "あぁ……"
 	line "<KATA>テール<HIRA>おうじ………<KATA>"
+	done
 
 TreeBitstreamText_3e557:
 	ctxt "テール<HIRA>おうじ"
@@ -5293,7 +5345,7 @@ TreeBitstreamText_3e557:
 	line "むようだ!"
 	line "さあ こい <KATA><PLAYER>!"
 	line "<HIRA>とっくんの せいかを みせてやる!<KATA>"
-	done
+	done %011001
 
 TreeBitstreamText_3e5b2:
 	ctxt "テール<HIRA>おうじ"
@@ -5305,7 +5357,7 @@ TreeBitstreamText_3e5b2:
 	line "でしか なかったのか………"
 	line "もう のこされた みちは"
 	line "なくなって しまうのか……<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3e5ff:
 	ctxt "テール<HIRA>おうじ"
@@ -5313,7 +5365,7 @@ TreeBitstreamText_3e5ff:
 	line ""
 	line "<KATA>ダース<HIRA>ひめを かえせ!"
 	line "かえすんだーーっ!!<KATA>"
-	done
+	done %11110
 
 TreeBitstreamText_3e624:
 	ctxt "ドクターゼロ"
@@ -5330,7 +5382,7 @@ TreeBitstreamText_3e624:
 	line "それも その びぼうを"
 	line "えいえんの ものとしてな!"
 	line "これを みるがいい!<KATA>"
-	done
+	done %1100
 
 TreeBitstreamText_3e6a8:
 	ctxt "ドクターゼロ"
@@ -5348,12 +5400,12 @@ TreeBitstreamText_3e6a8:
 	line "なかよく くらすが いい!!"
 	line "この あわれな ふたりの わかものを"
 	line "さっさと そとへ つれだせ!!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3e75b:
 	ctxt "ドクターゼロ"
 	line "ガハハハハハハハーーーーーーーッ!!"
-	done
+	done %010
 
 TreeBitstreamText_3e770:
 	ctxt "テール<HIRA>おうじ"
@@ -5363,12 +5415,12 @@ TreeBitstreamText_3e770:
 	line "ひめ まで こんな すがたに………"
 	line "これから <KATA>ボク<HIRA>は"
 	line "どうすれば いいのだ………………<KATA>"
-	done
+	done %010100
 
 TreeBitstreamText_3e7ac:
 	ctxt "グレイテスト2<HIRA>の しょうごう"
 	line "を てにいれた!<KATA>"
-	done
+	done %0101
 
 TreeBitstreamText_3e7c0:
 	ctxt "ドクターゼロ"
@@ -5385,24 +5437,24 @@ TreeBitstreamText_3e7c0:
 	line "では <KATA>ゼロキャッスル<HIRA>で <KATA><PLAYER><HIRA>の"
 	line "ちょうせんを まっている!"
 	line "<KATA>シー ユー アゲイン!"
-	done
+	done %011111
 
 TreeBitstreamText_3e85a:
 	ctxt "ヒデキ"
 	line "4<HIRA>つの いわを 4つの あなのうえに"
 	line "のっけることが できたら………<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3e87a:
 	ctxt "ヒデキ"
 	line "ラーメン <HIRA>おごってくれたら"
 	line "しかけを もっと かんたんにするよ<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3e896:
 	ctxt "ヒデキ"
 	line "ラーメン <HIRA>おごってくれる?<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3e8a6:
 	ctxt "ヒデキ"
@@ -5410,18 +5462,18 @@ TreeBitstreamText_3e8a6:
 	line "よしっ やくそくを はたそう"
 	line "じゅんび するから"
 	line "いったん したへ おりてね<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3e8d4:
 	ctxt "ヒデキ"
 	line "<HIRA>そう……"
 	line "<KATA>ヒデキ ショック……"
-	done
+	done %1111
 
 TreeBitstreamText_3e8e5:
 	ctxt "ヒデキ"
 	line "ラーメン<HIRA>さいこうっ!!<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3e8f3:
 	ctxt "ハンター"
@@ -5431,7 +5483,7 @@ TreeBitstreamText_3e8f3:
 	line "<KATA>テール<HIRA>おうこくの ざいほうが ね"
 	line "だけど むこうがわ には いけない"
 	line "どうした もんかね?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3e940:
 	ctxt "ハンター"
@@ -5439,7 +5491,7 @@ TreeBitstreamText_3e940:
 	line "<KATA>リモコンシャワー<HIRA>か……"
 	line "<KATA>リモコンシャワー<HIRA>ってなんだ?"
 	line "<KATA>キミ<HIRA>はわかるかい?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3e974:
 	ctxt "ハンター"
@@ -5447,7 +5499,7 @@ TreeBitstreamText_3e974:
 	line "はしが かかった!"
 	line "<KATA>キミ<HIRA>には わるいが"
 	line "おうけの ざいほうは いただくぜ!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3e99a:
 	ctxt "ハンター"
@@ -5455,13 +5507,14 @@ TreeBitstreamText_3e99a:
 	line "また とおれない じゃないかぁ!"
 	line "あの かいだんのさきに"
 	line "おたからが あるっていうのに……<KATA>"
+	done
 
 TreeBitstreamText_3e9c4:
 	ctxt "ハンター"
 	line "<HIRA>おおおおっ!"
 	line "とおれるように なった!"
 	line "おたからは いただいたっ!<KATA>"
-	done
+	done %0100
 
 TreeBitstreamText_3e9e1:
 	ctxt "ハンター"
@@ -5471,6 +5524,7 @@ TreeBitstreamText_3e9e1:
 	line "だろうけど そうは いかない!"
 	line "ここは ちからずくでも"
 	line "おたからを いただくよっ!<KATA>"
+	done
 
 TreeBitstreamText_3ea2f:
 	ctxt "ハンター"
@@ -5482,17 +5536,17 @@ TreeBitstreamText_3ea2f:
 	line "いっしゅんにして なおすんだ"
 	line "ただし <KATA>ロボポン<HIRA>には きかないよ"
 	line "にんげんにしか きかないんだ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3ea97:
 	ctxt "ハンター"
 	line "<HIRA>そとへ <KATA>ワープ<HIRA>するかい<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_3eaa7:
 	ctxt "モリス<HIRA>のなみだ"
 	line "を てにいれた!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3eab5:
 	ctxt "ハンター"
@@ -5500,7 +5554,7 @@ TreeBitstreamText_3eab5:
 	line "<KATA>ダース<HIRA>ひめをねぇ………"
 	line "おうけのざいほうが"
 	line "やくにたったわけだ<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3eae2:
 	ctxt "ドクターゼロ"
@@ -5521,7 +5575,7 @@ TreeBitstreamText_3eae2:
 	line "しんの <KATA>グレイテスト1<HIRA>の"
 	line "じつりょくを みせつけてやる!"
 	line "いざ しょうぶ!<KATA>"
-	done
+	done %101111
 
 TreeBitstreamText_3eb76:
 	ctxt "ドクターゼロ"
@@ -5546,6 +5600,7 @@ TreeBitstreamText_3eb76:
 	line "さらば <KATA>テール<HIRA>おうこく!"
 	line ""
 	line "さらば………<KATA><PLAYER>………"
+	done
 
 TreeBitstreamText_3ec56:
 	ctxt "ビスコ"
@@ -5555,7 +5610,7 @@ TreeBitstreamText_3ec56:
 	line "<KATA>オレ<HIRA>たちも <KATA>ガレキ<HIRA>の したじきだ!"
 	line "こっちに <KATA>ヒミツ<HIRA>の ぬけみちが ある"
 	line "さっさと <KATA>ズラ<HIRA>かろうぜ!<KATA>"
-	done
+	done %111011
 
 TreeBitstreamText_3ec9f:
 	ctxt "ママ"
@@ -5565,7 +5620,7 @@ TreeBitstreamText_3ec9f:
 	line "いない あいだに なに してたの!"
 	line "<KATA>テール<HIRA>おうじさま から あなたあてに"
 	line "てがみが きてるわよ!<KATA>"
-	done
+	done %000
 
 TreeBitstreamText_3ecd6:
 	ctxt "<PLAYER><HIRA>さま"
@@ -5576,7 +5631,7 @@ TreeBitstreamText_3ecd6:
 	line "ぞうていしきを おこなう"
 	line ""
 	line "           <KATA>テール<HIRA>おうじ<KATA>"
-	done
+	done %0111101
 
 TreeBitstreamText_3ed13:
 	ctxt "テール<HIRA>おうじ"
@@ -5590,7 +5645,7 @@ TreeBitstreamText_3ed13:
 	line "<KATA><PLAYER><HIRA>に こわいものなど ない!"
 	line "いままでの ゆうきと せいぎを"
 	line "わすれずに がんばってほしい!<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3ed88:
 	ctxt "テール<HIRA>おうじ"
@@ -5601,12 +5656,12 @@ TreeBitstreamText_3ed88:
 	line "おうけのひほう <KATA>モリス<HIRA>のなみだ"
 	line "それさえあれば………"
 	line "おっと <KATA>グチ<HIRA>を こぼしてすまん<KATA>"
-	done
+	done %1010111
 
 TreeBitstreamText_3ede7:
 	ctxt "グレイテスト1<HIRA>の あかし である"
 	line "<KATA>ウイニングローレル<HIRA>を うけとった!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_3ee04:
 	ctxt "テール<HIRA>おうじ"
@@ -5614,7 +5669,7 @@ TreeBitstreamText_3ee04:
 	line ""
 	line "わかき<KATA>グレイテスト1 <PLAYER><HIRA>を"
 	line "みんなで たたえるのだ!<KATA>"
-	done
+	done %1010
 
 TreeBitstreamText_3ee24:
 	ctxt "テール<HIRA>おうじ"
@@ -5622,7 +5677,7 @@ TreeBitstreamText_3ee24:
 	line "まってくれ <KATA><PLAYER>!"
 	line "チャンピオンベルト<HIRA>を わたすのを"
 	line "わすれていた!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3ee49:
 	ctxt "テール<HIRA>おうじ"
@@ -5642,7 +5697,7 @@ TreeBitstreamText_3ee49:
 	line "<KATA>バトル<HIRA>を みたいものだ"
 	line "……では またあおう"
 	line "わかき えいゆう <KATA><PLAYER><HIRA>よ!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3ef04:
 	ctxt "ビスコ"
@@ -5652,7 +5707,7 @@ TreeBitstreamText_3ef04:
 	line "<HIRA>くれるんだってな ごくろうさん!"
 	line "まっ そんな <KATA>カオ<HIRA>するなって"
 	line "どうせ <KATA>オレ<HIRA>さまが かつんだからな<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3ef47:
 	ctxt "ビスコ"
@@ -5662,6 +5717,7 @@ TreeBitstreamText_3ef47:
 	line "こいつ ほんとに つよいでやんの"
 	line "また"
 	line "しゅぎょうの たびにでるか………<KATA>"
+	done
 
 TreeBitstreamText_3ef70:
 	ctxt "アムロン"
@@ -5671,7 +5727,7 @@ TreeBitstreamText_3ef70:
 	line "えんりょは いらないわっ!"
 	line "おたがい ほんきで"
 	line "たたかいましょう!<KATA>"
-	done
+	done %10111
 
 TreeBitstreamText_3efa5:
 	ctxt "アムロン"
@@ -5683,7 +5739,7 @@ TreeBitstreamText_3efa5:
 	line "ちょっと くやしいかな"
 	line "また <KATA>アタシ<HIRA>と しょうぶしてよ"
 	line "こんどは まけないわよ<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_3eff8:
 	ctxt "ワイルド"
@@ -5695,6 +5751,7 @@ TreeBitstreamText_3eff8:
 	line "まず じぶんが がんばんなきゃな!"
 	line "<KATA>オレ<HIRA>も がんばってるんだよ"
 	line "ひごろのせいかを ためさせてくれ!<KATA>"
+	done
 
 TreeBitstreamText_3f05a:
 	ctxt "ワイルド"
@@ -5706,6 +5763,7 @@ TreeBitstreamText_3f05a:
 	line "<KATA><PLAYER><HIRA>も がんばれよ!"
 	line "また やろうぜ!!"
 	line "じゃあな!<KATA>"
+	done
 
 TreeBitstreamText_3f0a6:
 	ctxt "カマット"
@@ -5720,7 +5778,7 @@ TreeBitstreamText_3f0a6:
 	line "もう あんなことは しないわ"
 	line "あたしも <KATA>ランカー<HIRA>のはしくれ"
 	line "せいせいどうどうと しょうぶよ!<KATA>"
-	done
+	done %11011
 
 TreeBitstreamText_3f118:
 	ctxt "カマット"
@@ -5735,7 +5793,7 @@ TreeBitstreamText_3f118:
 	line "あたしは まだまだ おかした"
 	line "つみを つぐないつづけるわ!"
 	line "また <KATA>バトロボ<HIRA>しましょう!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3f192:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -5749,7 +5807,7 @@ TreeBitstreamText_3f192:
 	line "げんえきの <KATA>ランカー<HIRA>だ!"
 	line "てかげんは しないぞ!"
 	line "<KATA><PLAYER><HIRA>も ほんきで こいっ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3f207:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -5764,6 +5822,7 @@ TreeBitstreamText_3f207:
 	line "つい うれしくなってしまって"
 	line "よくが でてしまった……"
 	line "また <KATA>ワシ<HIRA>とあそんでくれるな?<KATA>"
+	done
 
 TreeBitstreamText_3f276:
 	ctxt "テール<HIRA>おうじ"
@@ -5780,7 +5839,7 @@ TreeBitstreamText_3f276:
 	line "じゅんすいな きもちで"
 	line "<KATA><PLAYER><HIRA>と たたかおう!"
 	line "いざ しょうぶ!<KATA>"
-	done
+	done %1100011
 
 TreeBitstreamText_3f2ff:
 	ctxt "テール<HIRA>おうじ"
@@ -5796,12 +5855,12 @@ TreeBitstreamText_3f2ff:
 	line "なんだか ちからが わいてくる"
 	line "ほんとに ふしぎなやつだ"
 	line "また あおう!<KATA>"
-	done
+	done %1100001
 
 TreeBitstreamText_3f36a:
 	ctxt "グレイテスト<HIRA>の <KATA>ランク<HIRA>のひくい"
 	line "じゅんばんに たたかってね<KATA>"
-	done
+	done %001000
 
 TreeBitstreamText_3f384:
 	ctxt "<HIRA>この いえの ひと ったら"
@@ -5809,6 +5868,7 @@ TreeBitstreamText_3f384:
 	line "<KATA>パラボラアンテナ<HIRA>を かってから"
 	line "ずっと <KATA>テレビ <HIRA>みてるらしいのよ"
 	line "そんなに たのしいもの なのかね?<KATA>"
+	done
 
 TreeBitstreamText_3f3c4:
 	ctxt "テレビ<HIRA>には <KATA>アムロン<HIRA>っていう<KATA>コ<HIRA>が"
@@ -5816,23 +5876,24 @@ TreeBitstreamText_3f3c4:
 	line "うたって おどって <KATA>ロボポン<HIRA>の"
 	line "<KATA>バトル<HIRA>をしてる らしいけど……"
 	line "それの なにが たのしいの?<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_3f406:
 	ctxt "<HIRA>あんたも りっぱに なったわね!"
 	line "<KATA>グレイテスト<HIRA>に なったんだって?"
 	line "おとうさんも おかあさんも"
 	line "よろこんでる でしょ……<KATA>"
+	done
 
 TreeBitstreamText_3f436:
 	ctxt "<HIRA>ねぇねぇ <KATA>グレイテスト<HIRA>って"
 	line "しってる?<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3f449:
 	ctxt "<HIRA>これからは <KATA>グレイテスト<HIRA>が"
 	line "おんなの<KATA>コ<HIRA>に <KATA>モテ<HIRA>るわよ<KATA>"
-	done
+	done %1011001
 
 TreeBitstreamText_3f463:
 	ctxt "<HIRA>えっ! しらないの!!"
@@ -5847,14 +5908,14 @@ TreeBitstreamText_3f463:
 	line "もつことが ゆるされて いるのは"
 	line "せかいで たったの7にん………"
 	line "どう? すごいでしょう!!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_3f4fb:
 	ctxt "<HIRA>たいへん たいへん!"
 	line ""
 	line "<KATA>ヘッド<HIRA>はかせが <KATA>ロル<HIRA>をつれて"
 	line "いなくなっちゃったのよ!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_3f51d:
 	ctxt "<HIRA>ここより となりの"
@@ -5863,7 +5924,7 @@ TreeBitstreamText_3f51d:
 	line "けんきゅうじょを つくったの!"
 	line "それも いりぐちが ないから"
 	line "さあ たいへん!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3f55b:
 	ctxt "ロル<HIRA>は きのどく ね"
@@ -5871,7 +5932,7 @@ TreeBitstreamText_3f55b:
 	line "<KATA>ヘッド<HIRA>はかせが <KATA>イヤ<HIRA>がる <KATA>ロル<HIRA>を"
 	line "<KATA>ムリヤリ <HIRA>つれて いっちゃったのよ"
 	line "そりゃ ないでしょ<KATA>"
-	done
+	done %1001100
 
 TreeBitstreamText_3f58e:
 	ctxt "<HIRA>きゅうに <KATA>ヘッド<HIRA>はかせが"
@@ -5880,7 +5941,7 @@ TreeBitstreamText_3f58e:
 	line "わたさないって いってるらしいの"
 	line "ついに あたまが おかしく"
 	line "なっちゃったのかねぇ……<KATA>"
-	done
+	done %110100
 
 TreeBitstreamText_3f5d5:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -5889,7 +5950,7 @@ TreeBitstreamText_3f5d5:
 	line "<KATA>ロボポン<HIRA>の たいりょく ぐらい"
 	line "かんたんに かいふく してやるよ"
 	line "まあ げんきで がんばれ!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3f60f:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -5900,12 +5961,12 @@ TreeBitstreamText_3f60f:
 	line "おいわいに <KATA>ロボポン<HIRA>を やろう"
 	line "なにかと やくに たつことだろう"
 	line "なにも いわず もっていってくれ<KATA>"
-	done
+	done %101010
 
 TreeBitstreamText_3f665:
 	ctxt "ヘッド<HIRA>はかせの <KATA>ロボポン<HIRA>を"
 	line "もらった!<KATA>"
-	done
+	done %10100
 
 TreeBitstreamText_3f679:
 	ctxt "ヘッド<HIRA>はかせ"
@@ -5926,7 +5987,7 @@ TreeBitstreamText_3f679:
 	line "ぞくせいの あいしょうや"
 	line "わざのこうかを おぼえること!!"
 	line "まぁ がんばってみることだな<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3f750:
 	ctxt "ロル"
@@ -5936,10 +5997,11 @@ TreeBitstreamText_3f750:
 	line "ちっとも あいてに してくれないの"
 	line "あーあ どこでも いいから"
 	line "おでかけ したいなぁ………<KATA>"
+	done
 
 TreeBitstreamText_3f79e:
 	ctxt "<HIRA>おおきな <KATA>クマ<HIRA>の ぬいぐるみだ<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_3f7ae:
 	ctxt "<HIRA>がくせい"
@@ -5948,7 +6010,7 @@ TreeBitstreamText_3f7ae:
 	line "こうきん<KATA>カバー <HIRA>っていう"
 	line "<KATA>アイテム<HIRA>が みて みたいなぁ"
 	line "おみせで うってるんだけどね<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3f7e8:
 	ctxt "<HIRA>がくせい"
@@ -5962,6 +6024,7 @@ TreeBitstreamText_3f7e8:
 	line "つかえば いいし"
 	line "ぼくが ただしい しようほうを"
 	line "おしえてあげるよ きく?<KATA>"
+	done
 
 TreeBitstreamText_3f85e:
 	ctxt "<HIRA>がくせい"
@@ -5973,7 +6036,7 @@ TreeBitstreamText_3f85e:
 	line "なんか かぜ<KATA>グスリ<HIRA>みたい だけど"
 	line "あ でも こどもの ての とどかない"
 	line "ばしょに ほかんしなくても いいよ<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_3f8cd:
 	ctxt "<HIRA>がくせい"
@@ -5981,39 +6044,39 @@ TreeBitstreamText_3f8cd:
 	line "もしかしたら おこってるの?"
 	line "じゃあさぁ これあげるから"
 	line "ゆるしてよ<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_3f8f1:
 	ctxt "パーツ <HIRA>てなげだん"
 	line "を もらった!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_3f901:
 	ctxt "<HIRA>がくせい"
 	line "どう? きげんなおった?"
 	line "とっておきの <KATA>パーツ<HIRA>なんだよ それ<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3f920:
 	ctxt "<HIRA>きみ どーせ たいかいに でれない"
 	line "から うだうだ してるんでしょ"
 	line "だったら こくばんは ぜんぶ みた?"
 	line "きっとなにか やくにたつと おもう<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3f956:
 	ctxt "<HIRA>なつやすみに がっこうで"
 	line "<KATA>バトロボ <HIRA>たいかい なんて!"
 	line "みんな ほんとうに すきね"
 	line "それも まいにち!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_3f97f:
 	ctxt "<HIRA>きみも <KATA>ロボポン <HIRA>もってるのか"
 	line "だったら きみも <KATA>ライバル<HIRA>だね"
 	line "みんなに きいてまわれば"
 	line "<KATA>ロボポン<HIRA>について おしえてくれるよ<KATA>"
-	done
+	done %0011111
 
 TreeBitstreamText_3f9b7:
 	ctxt "エネ<HIRA>だまを たべさせていると"
@@ -6022,6 +6085,7 @@ TreeBitstreamText_3f9b7:
 	line "たっしている ということだから"
 	line "<KATA>ロボポン<HIRA>を けんきゅうじょに つれて"
 	line "いけば しんか させてもらえるのよ<KATA>"
+	done
 
 TreeBitstreamText_3fa09:
 	ctxt "<HIRA>さいきん <KATA>ロボポン<HIRA>に つかれが"
@@ -6032,49 +6096,49 @@ TreeBitstreamText_3fa09:
 	line "<KATA>ファイト <HIRA>だいばくはつ!!"
 	line "………ま そんな かんじで とうぜん"
 	line "<KATA>ガソリン ハイオク<HIRA>と つづくのよ<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_3fa6b:
 	ctxt "<HIRA>じょうたい いじょうは おもに"
 	line "わざによって ひきおこされるんだ"
 	line "そのなかには かかると ゆうりな"
 	line "ものも あるようだよ<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3fa9a:
 	ctxt "ロボポン<HIRA>が <KATA>バグ<HIRA>にかかると ときどき"
 	line "こうげきする あいてを まちがうぞ"
 	line "つまり じぶんを"
 	line "こうげきしたり するのだー!<KATA>"
-	done
+	done %011100
 
 TreeBitstreamText_3facf:
 	ctxt "<HIRA>あのね のろいに かかると"
 	line "<KATA>ターン<HIRA>ごとに こうげきりょく"
 	line "ぼうぎょりょく すばやさ の"
 	line "どれかが だんだん ひくくなるのよ<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3fb02:
 	ctxt "<HIRA>いのりは のろいとは ぎゃくで"
 	line "<KATA>ターン<HIRA>ごとに こうげきりょく"
 	line "ぼうぎょりょく すばやさの 3つ"
 	line "すべてが じょじょに たかくなるわ<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3fb3a:
 	ctxt "バリヤ<HIRA>を かければ その<KATA>ターン<HIRA>のあと"
 	line "じょうたい いじょうに ならない!"
 	line "ただし <KATA>バリヤ<HIRA>を かける まえの"
 	line "じょうたい いじょうも そのままさ<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3fb74:
 	ctxt "バージョン<HIRA>が たかい <KATA>ソフト<HIRA>ほど"
 	line "ようりょうが おおきいんだ"
 	line "だから きほんてきには <KATA>パーツ<HIRA>の"
 	line "ようりょうも おおきいほうが いい<KATA>"
-	done
+	done %001000
 
 TreeBitstreamText_3fbab:
 	ctxt "ロボポン<HIRA>を 4たい つれている とき"
@@ -6085,6 +6149,7 @@ TreeBitstreamText_3fbab:
 	line "はなし だけどな"
 	line "あと そうこに いる <KATA>ロボポン<HIRA>は"
 	line "どこでも よびだせるからな<KATA>"
+	done
 
 TreeBitstreamText_3fc06:
 	ctxt "ロボポン<HIRA>を ほかく するときに"
@@ -6093,7 +6158,7 @@ TreeBitstreamText_3fc06:
 	line "ほかくを あきらめるか"
 	line "そうこにいる <KATA>ロボポン<HIRA>のうち"
 	line "どれか1たいを てばなすしか ない<KATA>"
-	done
+	done %0101100
 
 TreeBitstreamText_3fc50:
 	ctxt "<HIRA>この<KATA>ロボポン <HIRA>いうこと きかない!"
@@ -6102,31 +6167,31 @@ TreeBitstreamText_3fc50:
 	line "かくにんしたほうが いいわ"
 	line "わるい<KATA>チップ<HIRA>を つんでいると"
 	line "せいかくが わるくなっちゃうのよ!<KATA>"
-	done
+	done %01011
 
 TreeBitstreamText_3fc99:
 	ctxt "ボルト<HIRA>って なまえのつく <KATA>アイテム<HIRA>は"
 	line "<KATA>イーピー<HIRA>を かいふく するんだね<KATA>"
-	done
+	done %0000
 
 TreeBitstreamText_3fcb9:
 	ctxt "<HIRA>ほかくした <KATA>ロボポン<HIRA>の なかには"
 	line "めいれいを きかないやつも いるぞ"
 	line "それは きっと <KATA>ビットチップ<HIRA>に"
 	line "げんいんが あるんじゃないか?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3fcf1:
 	ctxt "ビル<HIRA>に そって うえを みあげれば"
 	line "<KATA>ヘッド<HIRA>はかせが かおを だすさ<KATA>"
-	done
+	done %1110001
 
 TreeBitstreamText_3fd10:
 	ctxt "ヘッド<HIRA>はかせの <KATA>ビル<HIRA>って"
 	line "<KATA>ホント<HIRA>に じゃまだぜ!"
 	line "ばくだんで こわすってのは どうだ?"
 	line "めいあんだと おもうんだが………<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_3fd45:
 	ctxt "<HIRA>このまちは けんきゅう がくえん"
@@ -6134,34 +6199,35 @@ TreeBitstreamText_3fd45:
 	line "まちの なかを きたに いけば"
 	line "この まちの ちゅうしん きかん"
 	line "<KATA>リブラ<HIRA>がっこうに いけるよ<KATA>"
-	done
+	done %01100
 
 TreeBitstreamText_3fd83:
 	ctxt "ガーナ?"
 	line "<HIRA>いけ しかないよ あそこ"
 	line "とても ひみつが ある ようには"
 	line "おもえないけどなぁ………<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_3fda8:
 	ctxt "<HIRA>こうげきりょく ぼうぎょりょく"
 	line "すばやさ……"
 	line "この 3つが <KATA>ロボポン<HIRA>の"
 	line "きほん のうりょくだ<KATA>"
-	done
+	done %1011010
 
 TreeBitstreamText_3fdd3:
 	ctxt "ガーナ<HIRA>いけ には"
 	line "こんな いいつたえが ある………"
 	line "いまから なんびゃくねんも まえ"
 	line "<KATA>ガーナ<HIRA>には まちが あった と<KATA>"
-	done
+	done %10011
 
 TreeBitstreamText_3fe01:
 	ctxt "バトル<HIRA>で あいてを こうげきするには"
 	line "<KATA>アタック<HIRA>と わざの 2つがあるの"
 	line "<KATA>アタック<HIRA>は すべての<KATA>ロボポン<HIRA>が もつ"
 	line "こうげきで なんどでも つかえるわ<KATA>"
+	done
 
 TreeBitstreamText_3fe41:
 	ctxt "<HIRA>わたしは きいたことが あるわ"
@@ -6174,7 +6240,7 @@ TreeBitstreamText_3fe41:
 	line "まちのなかで ばくはつさせた………"
 	line "わたしが きいたことが あるのは"
 	line "ここまでよ<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_3fea5:
 	ctxt "<HIRA>ぞくせい って わかるか?"
@@ -6186,7 +6252,7 @@ TreeBitstreamText_3fea5:
 	line "でも ぎゃくに うみの てきに"
 	line "りく で こうげき してみなよ!"
 	line "こうか <KATA>バツグン <HIRA>だったり するのよ<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_3ff0d:
 	ctxt "<HIRA>わざを つかうには <KATA>イーピー <HIRA>つまり"
@@ -6195,14 +6261,14 @@ TreeBitstreamText_3ff0d:
 	line "つかうことが できないんだ"
 	line "でも <KATA>アタック<HIRA>は <KATA>エネルギー<HIRA>が"
 	line "なくても つかえるんだよ<KATA>"
-	done
+	done %100110
 
 TreeBitstreamText_3ff5e:
 	ctxt "ロボポン<HIRA>には しんか するものと"
 	line "しないものが いるの"
 	line "しんか するものには <KATA>エネ<HIRA>だまを"
 	line "たべさせると いいのよ<KATA>"
-	done
+	done %0100000
 
 TreeBitstreamText_3ff8c:
 	ctxt "<HIRA>いま しょうべん してるから"
@@ -6210,39 +6276,40 @@ TreeBitstreamText_3ff8c:
 	line "え? どこから はなせないかって?"
 	line "             ああっ!"
 	line "あんたの くつに かけちゃった!<KATA>"
+	done
 
 TreeBitstreamText_3ffc5:
 	ctxt "<HIRA>おかねが あまってたら けんきゅうに"
 	line "とうし してくれると ありがたいな"
 	line "けんきゅうじょ としては おおいに"
 	line "たすかるんだけどなぁ<KATA>"
-	done
+	done %111101010000000000000010000111100111110000011111110001111010100010010111011
 
-SECTION "Tree Bitstream Text 2", ROMX [$10], BANK [$4000]
+SECTION "Tree Bitstream Text 2", ROMX [$4000], BANK [$10]
 TreeBitstreamText_40000:
 	ctxt "<HIRA>ふふん どう このまちは?"
 	line "<KATA>スッキリ<HIRA>と ととのって いるでしょ<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_4001a:
 	ctxt "<HIRA>なんなのよ あの<KATA>ビル<HIRA>は!"
 	line ""
 	line "まちの <KATA>バランス <HIRA>ってものを"
 	line "かんがえてない! <KATA>サイテー!"
-	done
+	done %00
 
 TreeBitstreamText_4003e:
 	ctxt "<HIRA>あんたも <KATA>ロボポン<HIRA>つかい じゃろ?"
 	line ""
 	line "わしらの けんきゅうが すすめば"
 	line "あんたにとっても ために なるぞい<KATA>"
-	done
+	done %01011
 
 TreeBitstreamText_4006b:
 	ctxt "<HIRA>さいきん そっちの かべのほうが"
 	line "なんか におうんじゃが きのせい?"
 	line "ただの<KATA>ボケ<HIRA>かも しれんがの<KATA>"
-	done
+	done %100010
 
 TreeBitstreamText_40094:
 	ctxt "<HIRA>どうくつ などで おそってくる"
@@ -6251,13 +6318,13 @@ TreeBitstreamText_40094:
 	line "じぶんのものに できるんだ"
 	line "でも ひとの あやつる <KATA>ロボポン<HIRA>は"
 	line "ほかく できないんだ<KATA>"
-	done
+	done %00101
 
 TreeBitstreamText_400e4:
 	ctxt "<HIRA>あの<KATA>ビル<HIRA>の せいで うちに ひが"
 	line "あたらないじゃないか!"
 	line "せんたくものが かわかないんだよ<KATA>"
-	done
+	done %1111001
 
 TreeBitstreamText_4010a:
 	ctxt "<HIRA>ほかくに しっぱい することは"
@@ -6268,6 +6335,7 @@ TreeBitstreamText_4010a:
 	line "<KATA>サビ <HIRA>などで よわらせておくこと!"
 	line "その2つを まもっておけば"
 	line "せいこう しやすいんだ<KATA>"
+	done
 
 TreeBitstreamText_40164:
 	ctxt "<HIRA>みず と あぶら って まさに"
@@ -6276,14 +6344,14 @@ TreeBitstreamText_40164:
 	line "あぶらには ほのおが いい!"
 	line "でも みずは ほのおが <KATA>ダメ!"
 	line "<HIRA>あぶらには みずが <KATA>ダメ!"
-	done
+	done %111
 
 TreeBitstreamText_401ae:
 	ctxt "<HIRA>あの<KATA>ビル<HIRA>って みんなが"
 	line "いうほど わるくないと おもうわ"
 	line "うちは べつに めいわくしてないし"
 	line "まちの<KATA>シンボル<HIRA>に なるじゃない<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_401e1:
 	ctxt "ロボポン<HIRA>は じしゃくを つかえば"
@@ -6292,26 +6360,26 @@ TreeBitstreamText_401e1:
 	line "みんな ねだんが ちがう!"
 	line "ねだんが たかいほど <KATA>ロボポン<HIRA>を"
 	line "つかまえやすい ってこと!<KATA>"
-	done
+	done %010011
 
 TreeBitstreamText_4022d:
 	ctxt "<HIRA>このまちの いえの たかさや"
 	line "かんかくは みんなで きめたんじゃ"
 	line "どのいえも ひあたりは さいこうでな"
 	line "すみよい まちに なったもんじゃ<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_40261:
 	ctxt "<HIRA>みんなに ことわりもなく あんな"
 	line "ものを たてて どういうつもりだ<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_4027b:
 	ctxt "ガールズ8<HIRA>って しってる?"
 	line ""
 	line "<KATA>レア<HIRA>な<KATA>ロボポン<HIRA>が だいすきな"
 	line "8にんぐみの おんなの<KATA>コ<HIRA>のことさ<KATA>"
-	done
+	done %1110101
 
 TreeBitstreamText_402a7:
 	ctxt "ビスコ<HIRA>を へ とも おもわない"
@@ -6320,7 +6388,7 @@ TreeBitstreamText_402a7:
 	line "<HIRA>よのなかの きびしさを おしえて"
 	line ""
 	line "             ください<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_402e4:
 	ctxt "ロボポン<HIRA>には <KATA>アーム ムーブ ブート"
@@ -6335,7 +6403,7 @@ TreeBitstreamText_402e4:
 	line ""
 	line "<KATA>パーツ<HIRA>や<KATA>ソフト<HIRA>を そうびできないが"
 	line "とても じょうぶに できている<KATA>"
-	done
+	done %1000100
 
 TreeBitstreamText_40371:
 	ctxt "シーピーユー<HIRA>は <KATA>ビット<HIRA>すう が"
@@ -6348,7 +6416,7 @@ TreeBitstreamText_40371:
 	line "たたかって たしかめること!"
 	line "また どの<KATA>ロボポン<HIRA>も そうびできる"
 	line "<KATA>パーツ<HIRA>は 1つだけである<KATA>"
-	done
+	done %100011
 
 TreeBitstreamText_40405:
 	ctxt "1<HIRA>つの<KATA>ソフト<HIRA>には 1つの わざが"
@@ -6361,7 +6429,7 @@ TreeBitstreamText_40405:
 	line "きょうりょくな わざにもなる!"
 	line "ことなる <KATA>ソフト<HIRA>では それぞれの"
 	line "とくちょうある わざが うまれる?<KATA>"
-	done
+	done %101101
 
 TreeBitstreamText_40491:
 	ctxt "    <HIRA>ようりょう とは?"
@@ -6380,7 +6448,7 @@ TreeBitstreamText_40491:
 	line "かごも ちいさくて よい"
 	line "<KATA>カゴ<HIRA>より おおきな ものは"
 	line "はいらない これ じょうしき<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_40542:
 	ctxt "<HIRA>じょうたい いじょう……"
@@ -6391,14 +6459,14 @@ TreeBitstreamText_40542:
 	line "ぜんぶで 7しゅるい ある"
 	line "ていし ねつ <KATA>サビ <HIRA>いのり のろい"
 	line "<KATA>バグ バリヤ……<HIRA>の7つである<KATA>"
-	done
+	done %000100
 
 TreeBitstreamText_4059e:
 	ctxt "<HIRA>こくばんは みた?"
 	line "<KATA>ロボポン<HIRA>のことが いっぱい"
 	line "かいてあるよ でも きみには"
 	line "ちょっと むずかしい かもね<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_405cb:
 	ctxt "    <HIRA>ほんじつの <KATA>テーマ"
@@ -6411,14 +6479,14 @@ TreeBitstreamText_405cb:
 	line "<KATA>バトル<HIRA>を おおきく さゆうする"
 	line "4 すなわち ぞくせいは <KATA>バトル<HIRA>に"
 	line "ゆうり ふり を もたらすのである<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_40659:
 	ctxt "<HIRA>うつくしいじゃろ この まちの"
 	line "はなも みずも きも……"
 	line "しかし いつまでも このままで"
 	line "いられるのじゃろうか?<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_40685:
 	ctxt "<HIRA>おまえの<KATA>ロボポン <HIRA>つよいか?"
@@ -6427,18 +6495,18 @@ TreeBitstreamText_40685:
 	line "<KATA>パーツショップ<HIRA>に いってみなよ"
 	line "いろんな かいぞう<KATA>パーツ<HIRA>が あるぜ"
 	line "かって <KATA>パワーアップ <HIRA>するんだな<KATA>"
-	done
+	done %1100101
 
 TreeBitstreamText_406ce:
 	ctxt "ギョエーッ! <HIRA>なんだ この<KATA>リンゴ<HIRA>は!"
 	line "か かじると ち ちが でてくる!"
 	line "ええっ!? <KATA>ウッソーン!!"
 	line "<HIRA>わしの はぐきが よわい だけ!?<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_40707:
 	ctxt "ロボポンドーム<HIRA>は このさきよ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_40716:
 	ctxt "テール<HIRA>おうじの まえの"
@@ -6452,12 +6520,12 @@ TreeBitstreamText_40716:
 	line "しかも いつのまにか <KATA>テール<HIRA>おうじが"
 	line "<KATA>グレイテスト1<HIRA>に なってるし………"
 	line "なにか あったのかな?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_4079a:
 	ctxt "<HIRA>ほんっと おんなの このみ って"
 	line "わっかんないよなぁ<KATA>"
-	done
+	done %1101100
 
 TreeBitstreamText_407af:
 	ctxt "ダース<HIRA>ひめ もう さいこう<KATA>ッス<HIRA>よ!"
@@ -6467,14 +6535,14 @@ TreeBitstreamText_407af:
 	line "ああ もし <KATA>ボク<HIRA>が <KATA>テール<HIRA>おうじなら"
 	line "<KATA>ボク<HIRA>は   <KATA>ボク<HIRA>は………"
 	line "<KATA>ポヨヨヨーン!"
-	done
+	done %111111
 
 TreeBitstreamText_4080f:
 	ctxt "テール<HIRA>おうじ って <KATA>クール<HIRA>で"
 	line "とーっても <KATA>ステキ<HIRA>よぉ!"
 	line "あんたなんか てんで くらべものに"
 	line "ならないくらい <KATA>ステキ<HIRA>なんだから!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_40843:
 	ctxt "テール<HIRA>さまの おすがた さいきん"
@@ -6482,6 +6550,7 @@ TreeBitstreamText_40843:
 	line "おしろと <KATA>ドーム<HIRA>に いりびたりみたい"
 	line "ずっと おあい していないわ"
 	line "どうしてるのかしら………………<KATA>"
+	done
 
 TreeBitstreamText_40883:
 	ctxt "<HIRA>まえに こくおうが <KATA>グレイテスト1<HIRA>を"
@@ -6494,14 +6563,14 @@ TreeBitstreamText_40883:
 	line "むすこの <KATA>テール<HIRA>おうじ だろ?"
 	line "<KATA>オレ<HIRA>はさ なにか じゅうだいな"
 	line "じけんが おこったんだと おもうね<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_4090e:
 	ctxt "<HIRA>あっ おにいちゃん ようこそ!"
 	line ""
 	line "まあ たいしたものは ないけど"
 	line "ゆっくり なかでも みてってよ<KATA>"
-	done
+	done %101011
 
 TreeBitstreamText_40933:
 	ctxt "<HIRA>この<KATA>ゲーム……"
@@ -6516,13 +6585,14 @@ TreeBitstreamText_40933:
 	line "おばさん たいへんだよ!"
 	line "ただね <KATA>ロボポン<HIRA>だけは <KATA>ダメ<HIRA>だよ"
 	line "ゆうかいと おなじ だからね!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_409c8:
 	ctxt "<HIRA>つまり ぼうそうぞくに ついほう"
 	line "されたって ことよね わたしたち…"
 	line "このぶんだと おそらく よのなかに"
 	line "きまり なんて ものは ないわね<KATA>"
+	done
 
 TreeBitstreamText_409fd:
 	ctxt "キミ<HIRA>が ぼうそうぞくの <KATA>リーダー<HIRA>を"
@@ -6531,14 +6601,14 @@ TreeBitstreamText_409fd:
 	line "かんしゃ してるわ"
 	line "まだまだ よのなか すてたもんじゃ"
 	line "ないかも って おもっちゃうわね<KATA>"
-	done
+	done %00010
 
 TreeBitstreamText_40a41:
 	ctxt "<HIRA>ここは けんきゅうじょ だよ"
 	line "<KATA>ロボポン<HIRA>の かいはつを してるんだ"
 	line "ここ いがいにも <KATA>ロボポン<HIRA>の"
 	line "けんきゅうじょは いっぱい あるよ<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_40a7a:
 	ctxt "<HIRA>いどが あるから なんとか"
@@ -6547,7 +6617,7 @@ TreeBitstreamText_40a7a:
 	line "みたいな もんだわよ"
 	line "もし いどに <KATA>カエル<HIRA>がいるとしたら"
 	line "わたしと どっちが しあわせかしら<KATA>"
-	done
+	done %011001
 
 TreeBitstreamText_40ac2:
 	ctxt "<HIRA>ありがとう! <KATA>キミ<HIRA>には"
@@ -6556,6 +6626,7 @@ TreeBitstreamText_40ac2:
 	line "ないから しばらくは ここにいるわ"
 	line "ようやく ちじょうに もどれるのね"
 	line "……たいようが まぶしいだろうな<KATA>"
+	done
 
 TreeBitstreamText_40b0e:
 	ctxt "アイテム<HIRA>やも <KATA>パーツ<HIRA>やも"
@@ -6565,14 +6636,14 @@ TreeBitstreamText_40b0e:
 	line "さいきんは こどもも まほうなんて"
 	line "ちっとも しんじて くれねぇんだ"
 	line "かなしー!<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_40b59:
 	ctxt "<HIRA>ちぇっ <KATA>グレイテスト<HIRA>じゃないと"
 	line "<KATA>ランキング<HIRA>せん には でれないんだ"
 	line "せっかく <KATA>ロボポン <HIRA>きたえてきたのに"
 	line "………がっくし<KATA>"
-	done
+	done %010011
 
 TreeBitstreamText_40b8e:
 	ctxt "<HIRA>すべての<KATA>グレイテスト<HIRA>の"
@@ -6580,37 +6651,37 @@ TreeBitstreamText_40b8e:
 	line "<KATA>ウイニングローレル<HIRA>っていう"
 	line "おうかんが あたえられるの"
 	line "いまは <KATA>テール<HIRA>おうじが もってるのよ<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_40bcd:
 	ctxt "<HIRA>はいはい ここは おやくそくの"
 	line "いど だよ"
 	line "みずが ないと いきていけないのは"
 	line "みんな おなじ!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_40bf2:
 	ctxt "<HIRA>きれいな まちだろ?"
 	line "いや じつに すばらしいね"
 	line "ただ あの なまいきな おうじは"
 	line "かんべん してほしい けどな<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_40c1e:
 	ctxt "<HIRA>おまえは みるからに いっぱんじん!"
 	line "さあ かえれ かえれ!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_40c37:
 	ctxt "<HIRA>おまえに ようが あっても こっちは"
 	line "ようが ない!"
 	line "さあ かえった かえった!<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_40c56:
 	ctxt "<HIRA>いっぱんじんは たちいり きんしだ!"
 	line "しゃがんでも とんでも <KATA>ダメ<HIRA>だぞ!<KATA>"
-	done
+	done %01000
 
 TreeBitstreamText_40c77:
 	ctxt "<HIRA>たいへんだ たいへんだ!"
@@ -6619,6 +6690,7 @@ TreeBitstreamText_40c77:
 	line "<KATA>バトル<HIRA>が はじまろうと してるぞ!"
 	line "でも <KATA>テール<HIRA>おうじが まけたら"
 	line "…………<KATA>ホント <HIRA>いちだいじ だ!<KATA>"
+	done
 
 TreeBitstreamText_40ccc:
 	ctxt "<HIRA>へい らっしゃい!"
@@ -6631,19 +6703,20 @@ TreeBitstreamText_40ccc:
 	line "みずのなかに もぐれるんだぜ"
 	line "たとえば <KATA>ドルッピ<HIRA>なんかも そうだ"
 	line "よーく おぼえて おきなよ!<KATA>"
-	done
+	done %110011
 
 TreeBitstreamText_40d52:
 	ctxt "<HIRA>ひとびとの ゆめ! <KATA>グレイテスト!"
 	line "<HIRA>もえよ <KATA>チャレンジャー!"
 	line "<HIRA>かちつづけて <KATA>トップ<HIRA>を めざせ!"
 	line "まけるな <KATA>チャレンジャー<HIRA>よ!<KATA>"
-	done
+	done %001001
 
 TreeBitstreamText_40d8c:
 	ctxt "テール<HIRA>おうじ"
 	line "ここから ながめる <KATA>ランキング<HIRA>せんは"
 	line "はくりょくまんてんだ!!<KATA>"
+	done
 
 TreeBitstreamText_40dac:
 	ctxt "ダース<HIRA>ひめ"
@@ -6651,7 +6724,7 @@ TreeBitstreamText_40dac:
 	line "おこなわれている……ということは"
 	line "それだけ せかいが"
 	line "へいわ だということです<KATA>"
-	done
+	done %1101111
 
 TreeBitstreamText_40de3:
 	ctxt "パラボラアンテナ<HIRA>の あるいえって"
@@ -6659,7 +6732,7 @@ TreeBitstreamText_40de3:
 	line "………あとさ さいきん わかい"
 	line "おんなの<KATA>コ<HIRA>を みかけなくなった"
 	line "………そう おもわないか?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_40e1f:
 	ctxt "<HIRA>あの ほうそうきょくは いったい"
@@ -6667,12 +6740,14 @@ TreeBitstreamText_40e1f:
 	line "<KATA>パラボラアンテナ<HIRA>のある いえ しか"
 	line "ほうそうは みれない らしいけど"
 	line "なんだか ちょっと <KATA>ブキミ<HIRA>だわ………<KATA>"
+	done
 
 TreeBitstreamText_40e63:
 	ctxt "<HIRA>さいきん わかい おんなの<KATA>コ <HIRA>たちが"
 	line "あいてに してくれないんです………"
 	line "きっと あの <KATA>アムロン <HIRA>っていう"
 	line "<KATA>アイドル<HIRA>に むちゅう なんです<KATA>"
+	done
 
 TreeBitstreamText_40e9a:
 	ctxt "<HIRA>なーんか さいきんの おんなの<KATA>コ"
@@ -6681,7 +6756,7 @@ TreeBitstreamText_40e9a:
 	line "かんぜんな <KATA>オヤジ <HIRA>なんだろうけど"
 	line "でも それと これとは なんか"
 	line "ちがうんだよなぁ たぶん<KATA>"
-	done
+	done %11100
 
 TreeBitstreamText_40ee8:
 	ctxt "バタロボ<HIRA>っていう とても つよくて"
@@ -6695,7 +6770,7 @@ TreeBitstreamText_40ee8:
 	line "               ぬ?"
 	line "しょうねんよ そう しんぱいするな!"
 	line "わたしだって むかしは <KATA>ヤング<HIRA>だ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_40f67:
 	ctxt "<HIRA>おんなの<KATA>コ<HIRA>たちが <KATA>バトロボ<HIRA>ねぇ"
@@ -6704,7 +6779,7 @@ TreeBitstreamText_40f67:
 	line "<KATA>テレビ<HIRA>で やってるらしいじゃないか"
 	line "おんなの<KATA>コ<HIRA>は すぐ <KATA>アキ<HIRA>るのにね"
 	line "この<KATA>ブーム<HIRA>は ほんものかも!!<KATA>"
-	done
+	done %11111
 
 TreeBitstreamText_40fbf:
 	ctxt "バンザ<HIRA>むらの かいがんには"
@@ -6714,7 +6789,7 @@ TreeBitstreamText_40fbf:
 	line "<KATA>アイテム<HIRA>だろ たべものだろ"
 	line "……おもいで だろ     <KATA>ポッ"
 	line "<HIRA>いちど いってみると いいよ<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_41013:
 	ctxt "<HIRA>ここは でんぱの とびかう"
@@ -6723,13 +6798,14 @@ TreeBitstreamText_41013:
 	line "<KATA>パラボラアンテナ<HIRA>を つけること!"
 	line "あと まちの おくにある あやしげな"
 	line "<KATA>カンテラ<HIRA>やも きになる ところだ!<KATA>"
+	done
 
 TreeBitstreamText_4105d:
 	ctxt "<HIRA>ここの まちのひと って"
 	line "かわいそうよね!"
 	line "たかい たてものが ひかげに なって"
 	line "せんたくものが かわかないから!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_41088:
 	ctxt "<HIRA>ここは でんぱの とびかってた"
@@ -6738,21 +6814,21 @@ TreeBitstreamText_41088:
 	line "つかわれて いないんだ"
 	line "<KATA>アンテナ<HIRA>のある いえの じゅうにんも"
 	line "でてきて いまは かっきが あるよ<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_410cf:
 	ctxt "<HIRA>さいきん あの ほうそうとうを"
 	line "つかった <KATA>テレビ<HIRA>が おわったの"
 	line "けど こんどは とても じゃまに"
 	line "なってくるのよね きぶんてきに<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_41102:
 	ctxt "アムロン<HIRA>が いなくなったけど"
 	line "<KATA>ロボポンブーム<HIRA>は かわらないなぁ"
 	line "あいかわらず おんなの<KATA>コ<HIRA>たちは"
 	line "あいてに してくれない……<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_41136:
 	ctxt "<HIRA>さいきん きゅうに おんなの<KATA>コ<HIRA>を"
@@ -6760,7 +6836,7 @@ TreeBitstreamText_41136:
 	line "<KATA>アンテナ<HIRA>つきの いえの ひとも"
 	line "そとに でてくるように なったし"
 	line "まちが いきかえったって かんじだ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_41177:
 	ctxt "<HIRA>いい<KATA>チップ<HIRA>を つんでいる"
@@ -6773,7 +6849,7 @@ TreeBitstreamText_41177:
 	line "かってに せんとうから にげるし"
 	line "なにかこう じゆうって かんじが"
 	line "ひしひしと つたわってくるのよね<KATA>"
-	done
+	done %111011
 
 TreeBitstreamText_411eb:
 	ctxt "ロボポン<HIRA>の <KATA>ステータス ウインドゥ<HIRA>を"
@@ -6786,7 +6862,7 @@ TreeBitstreamText_411eb:
 	line "のうりょくてきには たかいそうじゃ"
 	line "ただ わがまますぎて"
 	line "てにおえないのが けってんじゃ<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_41271:
 	ctxt "ルードロボポン<HIRA>って"
@@ -6799,12 +6875,12 @@ TreeBitstreamText_41271:
 	line "…………"
 	line "そうだ!"
 	line "はけんすれば いいんだよ!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_412d6:
 	ctxt "クマ<HIRA>のぬいぐるみを みかけたら"
 	line "しらべてみたほうが いいよ<KATA>"
-	done
+	done %01110
 
 TreeBitstreamText_412f0:
 	ctxt "<HIRA>きょうらんの <KATA>インテリ<HIRA>げんちゃん"
@@ -6813,6 +6889,7 @@ TreeBitstreamText_412f0:
 	line "もう しんじゃったんだって?"
 	line "<KATA>ロボポン<HIRA>つかい としては"
 	line "<KATA>マスタークラス <HIRA>だったって<KATA>"
+	done
 
 TreeBitstreamText_4133b:
 	ctxt "アーロハァー!"
@@ -6821,7 +6898,7 @@ TreeBitstreamText_4133b:
 	line ""
 	line "みんなの <KATA>アイドル アムロン<HIRA>は"
 	line "このむら しゅっしん なんだー<KATA>"
-	done
+	done %00110
 
 TreeBitstreamText_41373:
 	ctxt "アーロハァー!"
@@ -6829,7 +6906,7 @@ TreeBitstreamText_41373:
 	line "<HIRA>ところで <KATA>アムロン<HIRA>が このむらに"
 	line "もどって きたんだー <KATA>ワーイ"
 	line "<HIRA>めでたい なーっと!<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_413a9:
 	ctxt "<HIRA>このむらに この ほうそうとうって"
@@ -6838,7 +6915,7 @@ TreeBitstreamText_413a9:
 	line "わたし よく わかんなーい!"
 	line "ってゆーかぁ <KATA>アムロン<HIRA>が ここに"
 	line "はいっていくの みたこと あるしぃ<KATA>"
-	done
+	done %10110
 
 TreeBitstreamText_413f4:
 	ctxt "<HIRA>このむらに あの ほうそうとうって"
@@ -6849,7 +6926,7 @@ TreeBitstreamText_413f4:
 	line "でてくるの みたことあるしぃ"
 	line "ってゆーかぁ いつのまにか"
 	line "ほうそうとう なくなってるしー<KATA>"
-	done
+	done %11001
 
 TreeBitstreamText_4144f:
 	ctxt "<HIRA>いやぁ きもちが いいね!"
@@ -6857,14 +6934,14 @@ TreeBitstreamText_4144f:
 	line "<KATA>ウチ<HIRA>は せまくて ちいさいなぁ"
 	line ""
 	line "……わらえないな これじゃ<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_4147f:
 	ctxt "<HIRA>くらい どうくつには <KATA>カンテラ1<HIRA>ばん"
 	line "<KATA>カステラ2<HIRA>ばん………"
 	line "きみは これから くらい どうくつに"
 	line "いきそうな きがするのさ……<KATA>"
-	done
+	done %110001
 
 TreeBitstreamText_414b4:
 	ctxt "<HIRA>なみの おとを きいていると"
@@ -6873,6 +6950,7 @@ TreeBitstreamText_414b4:
 	line "どうくつ たんけんしたこと……"
 	line "こわくて ずっと ふるえてた"
 	line "きおく しか ないけどね<KATA>"
+	done
 
 TreeBitstreamText_414f9:
 	ctxt "ヒュー! ニコニコ<HIRA>ぞく って"
@@ -6881,21 +6959,21 @@ TreeBitstreamText_414f9:
 	line "ぼうそうぞく に なろっかな"
 	line "そんな ぼうそうぞくは いない?"
 	line "……すみません しつれいしました!<KATA>"
-	done
+	done %0010011
 
 TreeBitstreamText_41548:
 	ctxt "ヒュー! ロケンローラー<HIRA>なら きっと"
 	line "めいわくには ならないよね!"
 	line "<KATA>ボク<HIRA>も しょうらいは <KATA>ニコニコ<HIRA>の"
 	line "<KATA>ロケンローラー<HIRA>に なりたいな<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_4157e:
 	ctxt "アイテム<HIRA>の <KATA>デフラグ <HIRA>は <KATA>スゲー<HIRA>ぞ"
 	line ""
 	line "せんとうふのう いがいなら どんな"
 	line "じょうたい いじょうも なおるんだ<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_415ac:
 	ctxt "<HIRA>なんとか<KATA>メモリー <HIRA>って <KATA>アイテム<HIRA>は"
@@ -6903,26 +6981,26 @@ TreeBitstreamText_415ac:
 	line "それを つかうと <KATA>ロボポン<HIRA>の"
 	line "のうりょくが あがる らしいね!"
 	line "たぶん とても たかいんだろうね!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_415f3:
 	ctxt "サブバッテリー <HIRA>って しってる?"
 	line ""
 	line "あれは ていし などの じょうたい"
 	line "いじょうを かいふく できるのよん<KATA>"
-	done
+	done %1100001
 
 TreeBitstreamText_4161d:
 	ctxt "<HIRA>あなほり<KATA>モグラ <HIRA>で <KATA>ダンジョン<HIRA>から"
 	line "ぬけだせるのは なぜ?<KATA>"
-	done
+	done %0000001
 
 TreeBitstreamText_4163b:
 	ctxt "ヒットポイント<HIRA>と <KATA>イーピー<HIRA>の"
 	line "りょうほうを いっきに かいふく!"
 	line "それが <KATA>ハイドロシステム <HIRA>などの"
 	line "<KATA>システム<HIRA>けい <KATA>アイテム<HIRA>ってわけだ<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_41675:
 	ctxt "キャロル<HIRA>むらに ようこそ!"
@@ -6932,26 +7010,28 @@ TreeBitstreamText_41675:
 	line "さっきの れんちゅう ずっと"
 	line "このへんで すきほうだい やってて"
 	line "そりゃ もう だい<KATA>メーワク<HIRA>さ!<KATA>"
+	done
 
 TreeBitstreamText_416c4:
 	ctxt "<HIRA>あいつら いつも <KATA>クールス<HIRA>まちの"
 	line "ほうから くーるす!!"
 	line "いや じょうだん じゃなくて"
 	line "<KATA>ホント<HIRA>だってば!!<KATA>"
+	done
 
 TreeBitstreamText_416f0:
 	ctxt "クールス<HIRA>は まちの <KATA>クセ<HIRA>に"
 	line "<KATA>キャロル<HIRA>むら より さびれてるわ"
 	line "いいかげん <KATA>クールス<HIRA>むら に"
 	line "したほうが いいのにね<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_41721:
 	ctxt "クールス<HIRA>まちには いかない ほうが"
 	line "いいわ………"
 	line "なーんて いわれると あなた もう"
 	line "いてもたっても いられないでしょ?<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_4174d:
 	ctxt "<HIRA>ちょっと まちなさいよ あんた!"
@@ -6964,43 +7044,45 @@ TreeBitstreamText_4174d:
 	line "<KATA>オレ<HIRA>と すなばで あそばない?"
 	line "いっしょに <KATA>トンネル <HIRA>ほろう<KATA>ゼ"
 	line "     <HIRA>とかさ!<KATA>"
-	done
+	done %0100
 
 TreeBitstreamText_417c2:
 	ctxt "<HIRA>いいか <KATA>ニコニコ<HIRA>ぞくの <KATA>リーダー<HIRA>は"
 	line "<KATA>メッチャクチャ <HIRA>つよいぞ!"
 	line "<KATA>グレイテスト<HIRA>にも <KATA>ランクイン<HIRA>している"
 	line "そうとうな <KATA>ロボポン<HIRA>つかい なんだ<KATA>"
-	done
+	done %00111
 
 TreeBitstreamText_41800:
 	ctxt "<HIRA>となりに <KATA>アポロ<HIRA>ようさい っていう"
 	line "とんでもなく<KATA>デカイ <HIRA>きちが ある<KATA>"
+	done
 
 TreeBitstreamText_4181e:
 	ctxt "カマット<HIRA>を たおしたのは <KATA>キミ<HIRA>か!"
 	line "いやー たいしたもんだ!<KATA>"
+	done
 
 TreeBitstreamText_41836:
 	ctxt "アポロ<HIRA>ようさい を うごかす"
 	line "さいこう しどうしゃ!!!"
 	line "……それが <KATA>グレイテスト"
 	line "ナンバー4<HIRA>の <KATA>カマット<HIRA>さんだ!<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_41867:
 	ctxt "<HIRA>き きみが <KATA>カマット<HIRA>を"
 	line "やっつけたのかー!?"
 	line "す すごいや! <KATA>カマット<HIRA>なんか"
 	line "かまっとられないね!<KATA>"
-	done
+	done %1101010
 
 TreeBitstreamText_41890:
 	ctxt "<HIRA>ここ さいきん わかものの"
 	line "まちばなれが ひどくてねぇ"
 	line "みんな <KATA>アポロ<HIRA>ようさい に"
 	line "いって しまうのさ………<KATA>"
-	done
+	done %0101110
 
 TreeBitstreamText_418bd:
 	ctxt "<HIRA>やっぱり <KATA>ロボポン<HIRA>に ぶそうさせる"
@@ -7008,7 +7090,7 @@ TreeBitstreamText_418bd:
 	line "<KATA>ロボポン<HIRA>を せんそうに つかうなんて"
 	line "かんがえた だけでも <KATA>イヤ!"
 	line "<HIRA>おばさん そうおもう!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_41903:
 	ctxt "<HIRA>いまのところ <KATA>アポロ<HIRA>ようさいに"
@@ -7022,31 +7104,32 @@ TreeBitstreamText_41903:
 	line "えっ あんちゃんよぉ!"
 	line ""
 	line "………<KATA>ガキ<HIRA>に いっても しかたねぇか<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_41982:
 	ctxt "<HIRA>あんちゃんか? <KATA>カマット<HIRA>を たおした"
 	line "っちゅうのは?!"
 	line "え みかけによらず やるじゃねぇか<KATA>"
+	done
 
 TreeBitstreamText_419a8:
 	ctxt "カマット<HIRA>って みたこと ある?"
 	line "<KATA>ボク <HIRA>しってるんだー"
 	line "おんな みたいな おとこ なんだよ"
 	line "つまり <KATA>オ カ マ!"
-	done
+	done %000
 
 TreeBitstreamText_419d2:
 	ctxt "ロボポン<HIRA>が にんげんの てきに"
 	line "なるなんて <KATA>イヤ<HIRA>よ!"
 	line "ずっと なかよく していたいのに"
 	line "………………<KATA>"
-	done
+	done %101000
 
 TreeBitstreamText_419fb:
 	ctxt "<HIRA>これで <KATA>カマット<HIRA>が おとなしくなれば"
 	line "ひとまず あんしんだわ………ね?<KATA>"
-	done
+	done %01110
 
 TreeBitstreamText_41a1a:
 	ctxt "アポロ<HIRA>ようさいの おかげで"
@@ -7054,19 +7137,19 @@ TreeBitstreamText_41a1a:
 	line "このまちに すんでて よかった!"
 	line "………ところで なによ あなた"
 	line "<KATA>イケ<HIRA>てない へいたい ね<KATA>"
-	done
+	done %001111
 
 TreeBitstreamText_41a56:
 	ctxt "<HIRA>やっぱ これからは <KATA>ビジュアル<HIRA>けい"
 	line "だよな <KATA>カマット<HIRA>さん みたいにさ<KATA>"
-	done
+	done %10001
 
 TreeBitstreamText_41a76:
 	ctxt "<HIRA>やっぱ これからは"
 	line "<KATA>ビジュアル<HIRA>だけじゃ <KATA>ダメ<HIRA>だな"
 	line "よのなか ふけいきだし……"
 	line "しょくにんが いいのかな?<KATA>"
-	done
+	done %01000
 
 TreeBitstreamText_41aa5:
 	ctxt "<HIRA>さいきん きみのような こどもの"
@@ -7077,7 +7160,7 @@ TreeBitstreamText_41aa5:
 	line "ありえないのに ね"
 	line "だから みんな じぶんの こころに"
 	line "ゆめの らくえんを つくるのさ<KATA>"
-	done
+	done %1111010
 
 TreeBitstreamText_41b00:
 	ctxt "<HIRA>きみは じぶんの やってることを"
@@ -7088,7 +7171,7 @@ TreeBitstreamText_41b00:
 	line "ぜったいに こうかいするなよ!"
 	line "ただしければ おおぜいの にんげんが"
 	line "きみを たたえて くれるからね<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_41b5f:
 	ctxt "<HIRA>なんでも かんでも <KATA>ロボポン<HIRA>で"
@@ -7099,7 +7182,7 @@ TreeBitstreamText_41b5f:
 	line "<KATA>ロボポン<HIRA>を つかうの?"
 	line "<KATA>ロボポン<HIRA>は <KATA>ボク<HIRA>らの ともだち!"
 	line "ぜったいに わすれちゃ いけない!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_41bc2:
 	ctxt "<HIRA>だれか <KATA>カマット<HIRA>を とめろ!"
@@ -7115,14 +7198,14 @@ TreeBitstreamText_41bc2:
 	line "<KATA>オ オレ?!"
 	line ""
 	line "オレ<HIRA>は <KATA>カネ<HIRA>が ないから <KATA>ダメ<HIRA>よ!<KATA>"
-	done
+	done %101000
 
 TreeBitstreamText_41c4a:
 	ctxt "<HIRA>ばくはつ じけんの あと このまちは"
 	line "<KATA>ガーナ<HIRA>いけ に のみこまれたんだ"
 	line "そりゃ もう たいへんな<KATA>モン<HIRA>さ!"
 	line "<KATA>ディープインパクト<HIRA>って かんじ!!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_41c86:
 	ctxt "<HIRA>おー よく きたな しんいり!"
@@ -7136,7 +7219,7 @@ TreeBitstreamText_41c86:
 	line "いいだろ この <KATA>ピンク<HIRA>いろの"
 	line "<KATA>シュノーケル!"
 	line "<HIRA>かしてやろうか?<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_41d0d:
 	ctxt "オレ<HIRA>の <KATA>シュノーケル <HIRA>うらも"
@@ -7144,7 +7227,7 @@ TreeBitstreamText_41d0d:
 	line "みてごらん えが かいてあっ……"
 	line "<KATA>ブクブクブクブクッ………"
 	line "<HIRA>く くるしいっ…………<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_41d47:
 	ctxt "<HIRA>ばくだん? そうだなぁ…………"
@@ -7153,7 +7236,7 @@ TreeBitstreamText_41d47:
 	line "みずに つかっていたからなぁ"
 	line "つかいものには ならないと"
 	line "おもうんだけどなぁ………<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_41d81:
 	ctxt "<HIRA>むかし この まちで つくっていた"
@@ -7162,7 +7245,7 @@ TreeBitstreamText_41d81:
 	line "いっぱつで はかいしたそうよ"
 	line "いりょくが きょうれつ だった"
 	line "って はなしを きいたことがあるわ<KATA>"
-	done
+	done %1110101
 
 TreeBitstreamText_41dce:
 	ctxt "チクショー <HIRA>さっきの <KATA>ガキ"
@@ -7171,7 +7254,7 @@ TreeBitstreamText_41dce:
 	line "すいちゅうに <KATA>ウシ <HIRA>いないからなぁ"
 	line "あー いちどでいいから"
 	line "にく ってものを たべてみたいなぁ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_41e16:
 	ctxt "<HIRA>むかし このまちは ばくだんの"
@@ -7179,7 +7262,7 @@ TreeBitstreamText_41e16:
 	line "しかし すうひゃくねん まえに"
 	line "ばくはつ じけんが おきてしまって"
 	line "いまは みずのなかじゃ………<KATA>"
-	done
+	done %111111
 
 TreeBitstreamText_41e56:
 	ctxt "<HIRA>おまえは <KATA>オレ<HIRA>の せなかに"
@@ -7189,12 +7272,12 @@ TreeBitstreamText_41e56:
 	line "<KATA>オトコ<HIRA>の <KATA>カオ<HIRA>は りれきしょ だ"
 	line "<KATA>カオ<HIRA>には いきざまが きざまれてる"
 	line "おまえ たいした <KATA>カオ<HIRA>じゃないな<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_41eb0:
 	ctxt "<HIRA>ああ もういちど ちじょうが"
 	line "みたい <KATA>ウッウッウッ………"
-	done
+	done %010
 
 TreeBitstreamText_41ec7:
 	ctxt "<HIRA>おばあちゃん いつも おなじこと"
@@ -7203,7 +7286,7 @@ TreeBitstreamText_41ec7:
 	line "すれば いいんじゃない?"
 	line "うちには ばくだん あるんだし"
 	line "みんな ふっとばしちゃえ!<KATA>"
-	done
+	done %0010010
 
 TreeBitstreamText_41f0a:
 	ctxt "<HIRA>うちは せんぞ だいだい"
@@ -7214,21 +7297,21 @@ TreeBitstreamText_41f0a:
 	line "ばくだんが とってあったけど"
 	line "………はて"
 	line "どこに しまったかな………<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_41f57:
 	ctxt "………<HIRA>ねむーい"
 	line "みずのなか だと なにも できない"
 	line "だから まいにち ねてるのよ"
 	line "あー ときめきたい………<KATA>"
-	done
+	done %0011110
 
 TreeBitstreamText_41f81:
 	ctxt "<HIRA>あー もう! せかいが せまいと"
 	line "たいくつな にんげんに なりそう!"
 	line "もっと いろんなものに ふれたい!"
 	line "もっと いろんなことを しりたい!<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_41fb4:
 	ctxt "<HIRA>あなた ちじょうから きたの?"
@@ -7238,7 +7321,7 @@ TreeBitstreamText_41fb4:
 	line "え? <KATA>ロボポン<HIRA>だって?"
 	line ""
 	line "だったら ここと かわんないじゃん<KATA>"
-	done
+	done %000111
 
 TreeBitstreamText_41ff4:
 	ctxt "<HIRA>ぼくの ひいひいひいひいひいひい"
@@ -7247,34 +7330,34 @@ TreeBitstreamText_41ff4:
 	line "ばくは しょくにん だったんだ!"
 	line "ばくだん<KATA>ヤロウ <HIRA>って"
 	line "よばれてたんだって! <KATA>カックイー!"
-	done
+	done %1011010
 
 TreeBitstreamText_4203a:
 	ctxt "<HIRA>いまは しらないけど <KATA>メイジ<HIRA>のもりに"
 	line "でんせつの ようせいが いるって!"
 	line "そのなも <KATA>オヤジ<HIRA>ようせい って"
 	line "いうらしいけど <KATA>ウワサ<HIRA>だよ <KATA>ウワサ"
-	done
+	done %1001001
 
 TreeBitstreamText_42075:
 	ctxt "<HIRA>ばくだん?"
 	line "………………うーん"
 	line "ごせんぞさまが つかってたのが"
 	line "のこってる いえも あるかもね<KATA>"
-	done
+	done %110111
 
 TreeBitstreamText_4209c:
 	ctxt "<HIRA>もはや とびらは ひらかれた!"
 	line ""
 	line "さあ わかものよ"
 	line "<KATA>サッサ<HIRA>と まえへ すすむんだ!<KATA>"
-	done
+	done %101010
 
 TreeBitstreamText_420bf:
 	ctxt "<HIRA>な なんだ? ま まぶしいっ!"
 	line "か からだがぁーっ"
 	line "かるい!<KATA>"
-	done
+	done %11000
 
 TreeBitstreamText_420d8:
 	ctxt "イヤーン <HIRA>はずかしい!"
@@ -7282,7 +7365,7 @@ TreeBitstreamText_420d8:
 	line "<KATA>シュノーケル<HIRA>を はずすと"
 	line "なんか へんだわ!"
 	line "これじゃ お<KATA>ヨメ<HIRA>に いけなーい!<KATA>"
-	done
+	done %0011111
 
 TreeBitstreamText_42104:
 	ctxt "<HIRA>ちじょうって こまかい<KATA>コト<HIRA>だらけ"
@@ -7290,14 +7373,14 @@ TreeBitstreamText_42104:
 	line "だって きんじょ づきあいとか"
 	line "また めんどうくさい じゃない"
 	line "あいさつまわりも <KATA>イヤ<HIRA>だし………<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_42148:
 	ctxt "<HIRA>わしは だんこ として"
 	line "しのーける は はずさんぞ!"
 	line "わしらの あいでんていてい じゃし"
 	line "これには <KATA>カミサマ<HIRA>が やどっとる!<KATA>"
-	done
+	done %1101110
 
 TreeBitstreamText_4217a:
 	ctxt "<HIRA>なんだよ なんだよ みんな"
@@ -7309,7 +7392,7 @@ TreeBitstreamText_4217a:
 	line "<HIRA>はうぁ!!"
 	line "だっだだっだっ だれだ!"
 	line "おれに うなぎ なげるのは!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_421dd:
 	ctxt "<HIRA>もう きゅうくつな せいかつは"
@@ -7318,49 +7401,52 @@ TreeBitstreamText_421dd:
 	line "そうね とりあえず……"
 	line "かいものして おさけをのんで"
 	line "……これって <KATA>フツー<HIRA>だなぁ<KATA>"
-	done
+	done %01111
 
 TreeBitstreamText_42221:
 	ctxt "<HIRA>これで やっと ほんとうの"
 	line "<KATA>サカナ<HIRA>つりが できるぞい<KATA>"
-	done
+	done %11111
 
 TreeBitstreamText_42239:
 	ctxt "<HIRA>ああ もういちど ちじょうが"
 	line "みれるとは おもわなかったわ"
 	line "<KATA>ウッウッウッ…… <HIRA>うれしいっ!<KATA>"
+	done
 
 TreeBitstreamText_4225d:
 	ctxt "<HIRA>ひゃー おばあちゃん!"
 	line "なにそれ!"
 	line "め と はな から"
 	line "いけの みずが でてるじゃん!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_42280:
 	ctxt "<HIRA>いちど すいめんに とびこんで"
 	line "みたかったんだ……"
 	line "でも こわいなぁ<KATA>"
+	done
 
 TreeBitstreamText_4229c:
 	ctxt "<HIRA>わたしたち いままで このいけの"
 	line "なかに すんでたのね………"
 	line "でも すめば みやこ って かんじで"
 	line "けっきょく どこも いいものよね<KATA>"
-	done
+	done %111010
 
 TreeBitstreamText_422d0:
 	ctxt "バーゲンセール <HIRA>やってる"
 	line "<KATA>デパート<HIRA>は どこにあるのよ!?"
 	line "あんた しってたら <KATA>サッサ<HIRA>と"
 	line "おしえなさいよ!<KATA>"
-	done
+	done %00111
 
 TreeBitstreamText_422fd:
 	ctxt "<HIRA>え? ちじょうに なった?"
 	line "あ そう でも ねむいのよ"
 	line "どーせ かわりゃ しないわよ"
 	line "みずのなかと<KATA>"
+	done
 
 TreeBitstreamText_42324:
 	ctxt "<HIRA>およ? ちじょうに なったのか?"
@@ -7368,20 +7454,22 @@ TreeBitstreamText_42324:
 	line "よし けいきづけに いっちょ"
 	line "<KATA>ビル<HIRA>でも ふっとばすか!"
 	line "えー ばくは <KATA>マニュアル<HIRA>は……と<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_42364:
 	ctxt "<HIRA>ゆけ <KATA>ボンバーキング!"
 	line "イェーイ! ファイト <HIRA>ばくはつ!"
 	line "<KATA>チョー <HIRA>よゆうっ<KATA>ス<HIRA>よ!<KATA>"
+	done
 
 TreeBitstreamText_4238a:
 	ctxt "<HIRA>かりた つりざお かえしてこよっと<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_42399:
 	ctxt "<HIRA>はにゃー ほにゃー"
 	line "<KATA>アラサーイ!"
+	done
 
 TreeBitstreamText_423a7:
 	ctxt "<HIRA>ははおや"
@@ -7391,7 +7479,7 @@ TreeBitstreamText_423a7:
 	line "かえってこないんです"
 	line "また どこかで なにか わるさを"
 	line "してないと いいのだけど………<KATA>"
-	done
+	done %11110
 
 TreeBitstreamText_423f3:
 	ctxt "サウナ<HIRA>おやじ"
@@ -7407,12 +7495,12 @@ TreeBitstreamText_423f3:
 	line "ぜんしん みずぶろに つかれ!"
 	line "これを 5かい くりかえせば"
 	line "<KATA>キミ<HIRA>も ほんとうの <KATA>サウナー<HIRA>だな<KATA>"
-	done
+	done %10110
 
 TreeBitstreamText_4249f:
 	ctxt "<HIRA>ん?"
 	line "なんか ようか?<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_424a9:
 	ctxt "<HIRA>けんきゅうじょでは 3つのことが"
@@ -7423,7 +7511,7 @@ TreeBitstreamText_424a9:
 	line "<KATA>パワーアップ<HIRA>させなきゃね"
 	line "3つめに <KATA>ロボポン<HIRA>の しんか"
 	line "<KATA>エネ<HIRA>だま いっぱい たべさせてね!<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_4251f:
 	ctxt "キミ<HIRA>の おかねを けんきゅうじょに"
@@ -7434,6 +7522,7 @@ TreeBitstreamText_4251f:
 	line "<KATA>ロボポン<HIRA>は はんばいするのよ"
 	line "あと いらなくなった<KATA>ロボポン<HIRA>の"
 	line "かいとりも やっているからね<KATA>"
+	done
 
 TreeBitstreamText_4257c:
 	ctxt "<HIRA>この みせの めだましょうひんは"
@@ -7444,7 +7533,7 @@ TreeBitstreamText_4257c:
 	line "これさえあれば もう あなたは"
 	line "かんぺきに <KATA>ランナウェイ!"
 	line "……<HIRA>では また おあいしましょう!<KATA>"
-	done
+	done %101001
 
 TreeBitstreamText_425cb:
 	ctxt "<HIRA>ここ <KATA>アポロ<HIRA>てんの"
@@ -7453,14 +7542,14 @@ TreeBitstreamText_425cb:
 	line "<KATA>バグ <HIRA>とかって かなり めいわく!"
 	line "そんな あなたに <KATA>ピッタリ<HIRA>です!"
 	line "……では また おあいしましょう!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_42617:
 	ctxt "テール<HIRA>てんの めだましょうひんは"
 	line "こちら! <KATA>バージョンアップ <HIRA>です!"
 	line "いやー じつに いい ひびきです!"
 	line "のろいを とくには これしかない!<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_42650:
 	ctxt "<HIRA>ここ <KATA>カリーユ<HIRA>てんの"
@@ -7469,7 +7558,7 @@ TreeBitstreamText_42650:
 	line ""
 	line "じょうたいいじょう <KATA>パーツ<HIRA>はかい を"
 	line "なおすなら これしか ありません!<KATA>"
-	done
+	done %000100
 
 TreeBitstreamText_4268e:
 	ctxt "アイテム<HIRA>の <KATA>バックアップ<HIRA>で"
@@ -7478,7 +7567,7 @@ TreeBitstreamText_4268e:
 	line "<KATA>エネルギー<HIRA>は もとのまま!"
 	line "ふっき<KATA>プログラム<HIRA>で なおせば"
 	line "まんたんじょうたいで ふっかつ!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_426de:
 	ctxt "ソフト<HIRA>は やすいから"
@@ -7487,7 +7576,7 @@ TreeBitstreamText_426de:
 	line "おおくのわざが うまれるからね"
 	line "おなじ<KATA>ソフト<HIRA>を そうびしても べつの"
 	line "わざが うまれることも あるんだ<KATA>"
-	done
+	done %110101
 
 TreeBitstreamText_4272e:
 	ctxt "パーツ<HIRA>は たかいけど"
@@ -7500,17 +7589,17 @@ TreeBitstreamText_4272e:
 	line "ムーブ<HIRA>ぞくが そうびできない<KATA>パーツ"
 	line "ブート<HIRA>ぞくだけが そうびできない"
 	line "<KATA>パーツ<HIRA>の 3しゅるいが あるわ<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_427b2:
 	ctxt "テール<HIRA>おうじの <KATA>ロボポン"
 	line "オトシゴ <HIRA>を もらった!<KATA>"
-	done
+	done %0100110
 
 TreeBitstreamText_427ca:
 	ctxt "ダース<HIRA>ひめの <KATA>ソフト"
 	line "<HIRA>いのり を もらった!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_427de:
 	ctxt "テール<HIRA>おうじ"
@@ -7530,56 +7619,57 @@ TreeBitstreamText_427de:
 	line ""
 	line "わが おうけに だいだいつたわった"
 	line "<KATA>ロボポン<HIRA>を もらってはくれないか?<KATA>"
-	done
+	done %110101
 
 TreeBitstreamText_42876:
 	ctxt "ダース<HIRA>ひめ"
 	line "ほんとうに ありがとうございます"
 	line ""
 	line "わたしからも おれいをさせてください<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_42899:
 	ctxt "テール<HIRA>おうじ"
 	line "ありがとう"
 	line "<KATA><PLAYER>………"
+	done
 
 TreeBitstreamText_428a8:
 	ctxt "ダース<HIRA>ひめ"
 	line "<KATA><PLAYER><HIRA>さん ほんとうに"
 	line "ありがとうございました……<KATA>"
-	done
+	done %1010011
 
 TreeBitstreamText_428c3:
 	ctxt "<HIRA>やるきは あるのか?<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_428cd:
 	ctxt "<HIRA>きょうは このへんで かんべんして"
 	line "ください!<KATA>"
-	done
+	done %0101
 
 TreeBitstreamText_428e1:
 	ctxt "<HIRA>なによ そのきに させといて!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_428ee:
 	ctxt "<HIRA>きみは よわいのかな?<KATA>"
-	done
+	done %100110
 
 TreeBitstreamText_428f9:
 	ctxt "<HIRA>そりゃねぇっす!<KATA>"
-	done
+	done %1100101
 
 TreeBitstreamText_42903:
 	ctxt "<HIRA>ま どっちでも いいけど<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_4290f:
 	ctxt "<HIRA>しらないだろうけど このさき つよい"
 	line "おんなのこが いっぱい いるわよ"
 	line "かくごした ほうがいいわ!<KATA>"
-	done
+	done %0000010
 
 TreeBitstreamText_42937:
 	ctxt "アムロン<HIRA>は <KATA>グレイテスト6<HIRA>の"
@@ -7588,258 +7678,270 @@ TreeBitstreamText_42937:
 	line "ないじゃない!"
 	line "えっ?"
 	line "あなた <KATA>グレイテスト7<HIRA>なの!?<KATA>"
-	done
+	done %0101100
 
 TreeBitstreamText_42972:
 	ctxt "アムロン<HIRA>さま………<KATA>"
-	done
+	done %000001
 
 TreeBitstreamText_4297c:
 	ctxt "<HIRA>おんなのこ <KATA>イジメ<HIRA>る わけ?<KATA>"
+	done
 
 TreeBitstreamText_4298a:
 	ctxt "サイアク<HIRA>ね あんたって おとこは!<KATA>"
+	done
 
 TreeBitstreamText_42998:
 	ctxt "<HIRA>なにしに きたの!<KATA>"
-	done
+	done %1001111
 
 TreeBitstreamText_429a1:
 	ctxt "<HIRA>なんなのよ あんた!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_429aa:
 	ctxt "アムロン<HIRA>さまに ちかづくな!<KATA>"
-	done
+	done %010110
 
 TreeBitstreamText_429b8:
 	ctxt "<HIRA>どうせ <KATA>アムロン<HIRA>さまに やられるわ!<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_429ca:
 	ctxt "<HIRA>いくじなし!<KATA>"
-	done
+	done %0100
 
 TreeBitstreamText_429d1:
 	ctxt "<HIRA>きたい させないでよ!<KATA>"
-	done
+	done %010111
 
 TreeBitstreamText_429dc:
 	ctxt "サイテー!"
-	done
+	done %11110
 
 TreeBitstreamText_429e1:
 	ctxt "ケンカ<HIRA>か?"
 	line "じょうとう じゃねぇか!<KATA>"
-	done
+	done %101100
 
 TreeBitstreamText_429f2:
 	ctxt "<HIRA>こいこいこい こいっ <KATA>コノヤロー!"
+	done
 
 TreeBitstreamText_42a00:
 	ctxt "メンチ<HIRA>きっとんのかい <KATA>ワレ!"
-	done
+	done %111101
 
 TreeBitstreamText_42a0d:
 	ctxt "<HIRA>はんごろしやな!"
 	line "すくなくとも <KATA>オレ<HIRA>のばあいはよー!<KATA>"
+	done
 
 TreeBitstreamText_42a24:
 	ctxt "<HIRA>おう <KATA>タイマン<HIRA>かい!"
 	line "しんでも しらんぞ!<KATA>"
-	done
+	done %1011110
 
 TreeBitstreamText_42a37:
 	ctxt "<HIRA>おまえ わざわざ こんなところまで"
 	line "くるなよ!<KATA>"
-	done
+	done %101111
 
 TreeBitstreamText_42a4c:
 	ctxt "アニキ! <HIRA>おれの<KATA>アニキ<HIRA>に なって"
 	line "くださいっす!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_42a61:
 	ctxt "<HIRA>ちっ めんどくせーな………<KATA>"
-	done
+	done %0111011
 
 TreeBitstreamText_42a6e:
 	ctxt "………<HIRA>わかったから さっさと"
 	line "いけよ<KATA>"
-	done
+	done %1100100
 
 TreeBitstreamText_42a7e:
 	ctxt "<HIRA>おれは ただの <KATA>ザコ<HIRA>とは ちがうぜ!"
 	line "それでも やんのかよ?<KATA>"
-	done
+	done %100001
 
 TreeBitstreamText_42a9a:
 	ctxt "トホホ…… <HIRA>なんで みんな"
 	line "こんなに よわいかな もう!<KATA>"
-	done
+	done %11010
 
 TreeBitstreamText_42ab0:
 	ctxt "<HIRA>あーあ もう やめてーなぁ……<KATA>"
-	done
+	done %1111110
 
 TreeBitstreamText_42abe:
 	ctxt "<HIRA>おれのこと たおせる と"
 	line "おもってんのかい?<KATA>"
-	done
+	done %11110
 
 TreeBitstreamText_42ad0:
 	ctxt "<HIRA>うーん やっぱり!<KATA>"
-	done
+	done %00010
 
 TreeBitstreamText_42ada:
 	ctxt "ヒーロー<HIRA>きどりか この<KATA>ヤロー!"
-	done
+	done %0
 
 TreeBitstreamText_42ae8:
 	ctxt "<HIRA>よく ここまで きたじゃんか!<KATA>"
-	done
+	done %01100
 
 TreeBitstreamText_42af6:
 	ctxt "<HIRA>くそっ また まけた………<KATA>"
-	done
+	done %110100
 
 TreeBitstreamText_42b02:
 	ctxt "<HIRA>おれと やるのか?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_42b0b:
 	ctxt "<HIRA>もう やってらんねー<KATA>ッ!"
-	done
+	done %1
 
 TreeBitstreamText_42b16:
 	ctxt "<HIRA>ちょうし こいてんじゃ ねー!<KATA>"
-	done
+	done %1001100
 
 TreeBitstreamText_42b24:
 	ctxt "<HIRA>なんだよ こんじょー なしが!<KATA>"
-	done
+	done %1100
 
 TreeBitstreamText_42b32:
 	ctxt "<HIRA>なにしに ここまで きたんだよ?!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_42b41:
 	ctxt "<HIRA>ふん かってに しろ………<KATA>"
+	done
 
 TreeBitstreamText_42b4c:
 	ctxt "バンザ<HIRA>のうみは あおい!"
 	line "<KATA>バンザ<HIRA>のうみは とうめい!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_42b64:
 	ctxt "<HIRA>すなはまには まだまだ"
 	line "いろんなものが おちてるらしいよ<KATA>"
+	done
 
 TreeBitstreamText_42b7b:
 	ctxt "<HIRA>くらいよな ここ………<KATA>"
+	done
 
 TreeBitstreamText_42b85:
 	ctxt "<HIRA>せまいよな ここ………<KATA>"
+	done
 
 TreeBitstreamText_42b8f:
 	ctxt "<HIRA>しあわせ かーい?<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_42b98:
 	ctxt "<HIRA>はーら へったー<KATA>"
+	done
 
 TreeBitstreamText_42ba0:
 	ctxt "<HIRA>おめ なにしに きた?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_42baa:
 	ctxt "<HIRA>おら なんで ここに いる?<KATA>"
-	done
+	done %0010010
 
 TreeBitstreamText_42bb7:
 	ctxt "<HIRA>いやぁ きょうも"
 	line "いい おてんき ですね<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_42bc8:
 	ctxt "<HIRA>では ごきげんよう<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_42bd2:
 	ctxt "カサッ! カサカサカサッ!"
-	done
+	done %010000
 
 TreeBitstreamText_42bdd:
 	ctxt "サカッ? サカサカサカッ?"
-	done
+	done %00
 
 TreeBitstreamText_42be8:
 	ctxt "<HIRA>ぬぬぬ?"
 	line "あやしい やつめ!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_42bf7:
 	ctxt "<HIRA>あやしいのは <KATA>オレ<HIRA>だったな"
 	line "わっはっはっ<KATA>"
+	done
 
 TreeBitstreamText_42c09:
 	ctxt "<HIRA>どうくつで <KATA>バトロボ?"
-	done
+	done %1111101
 
 TreeBitstreamText_42c16:
 	ctxt "バトリング! バトリング!"
 	line "<HIRA>これが たのしいのねー!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_42c2d:
 	ctxt "<HIRA>おっ おまえ しんいりか?<KATA>"
-	done
+	done %010010
 
 TreeBitstreamText_42c39:
 	ctxt "<HIRA>どうやら しんじんでは ない"
 	line "ようだな<KATA>"
-	done
+	done %10101
 
 TreeBitstreamText_42c4a:
 	ctxt "<HIRA>おれに かてるわけが なかろう?<KATA>"
+	done
 
 TreeBitstreamText_42c58:
 	ctxt "<HIRA>おまえは うんの いいやつだ!<KATA>"
+	done
 
 TreeBitstreamText_42c65:
 	ctxt "<HIRA>おれは うんが わるいんだ!<KATA>"
-	done
+	done %0110
 
 TreeBitstreamText_42c72:
 	ctxt "<HIRA>だから いっただろう!<KATA>"
-	done
+	done %1010
 
 TreeBitstreamText_42c7d:
 	ctxt "<HIRA>お <KATA>トレーニング<HIRA>か? つきあうぜ!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_42c8e:
 	ctxt "<HIRA>ふーっ いいあせ かいたな!"
 	line ""
 	line "………と いいたいが"
 	line "たたかうのは <KATA>ロボポン<HIRA>なんだよな<KATA>"
-	done
+	done %010000
 
 TreeBitstreamText_42cb1:
 	ctxt "<HIRA>かってに しな<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_42cb8:
 	ctxt "<HIRA>そう たたかいは よくない!<KATA>"
-	done
+	done %11000
 
 TreeBitstreamText_42cc4:
 	ctxt "<HIRA>なんだよ おい<KATA>"
-	done
+	done %1011110
 
 TreeBitstreamText_42ccc:
 	ctxt "<HIRA>でなおして こい!<KATA>"
-	done
+	done %01111
 
 TreeBitstreamText_42cd5:
 	ctxt "<HIRA>おっと!"
@@ -7848,16 +7950,17 @@ TreeBitstreamText_42cd5:
 	line ""
 	line "どうしても とおりたいっていうなら"
 	line "<KATA>オレ<HIRA>と <KATA>バトロボ<HIRA>しょうぶだ!<KATA>"
+	done
 
 TreeBitstreamText_42d11:
 	ctxt "<HIRA>そうだな…… おたがい"
 	line "<KATA>ムリ<HIRA>は しないほうがいいな<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_42d27:
 	ctxt "<HIRA>ちっ! やくそくだ"
 	line "とおっていいぜ<KATA>"
-	done
+	done %1111011
 
 TreeBitstreamText_42d37:
 	ctxt "<HIRA>ようこそ <KATA>メイジ<HIRA>のもりへ"
@@ -7866,49 +7969,53 @@ TreeBitstreamText_42d37:
 	line "かんばんを よんでね!"
 	line "まずは ひだりうえの"
 	line "かんばんを よめ<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_42d69:
 	ctxt "<HIRA>みぎへ すすんで"
 	line "かんばんを よめ<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_42d79:
 	ctxt "<HIRA>ひだりへすすんで"
 	line "かんばんを よめ<KATA>"
+	done
 
 TreeBitstreamText_42d89:
 	ctxt "<HIRA>みぎしたへ すすんで"
 	line "かんばんを よめ<KATA>"
+	done
 
 TreeBitstreamText_42d9a:
 	ctxt "<HIRA>ひだりうえへ すすんで"
 	line "かんばんを よめ<KATA>"
+	done
 
 TreeBitstreamText_42dac:
 	ctxt "<HIRA>みぎしたの かんばんを よまずに"
 	line "さらに したの かんばんを よめ<KATA>"
-	done
+	done %0110111
 
 TreeBitstreamText_42dc8:
 	ctxt "<HIRA>ごくろうさん"
 	line ""
 	line "けんきゅうじょへ"
 	line "いらっしゃーい!<KATA>"
-	done
+	done %11001
 
 TreeBitstreamText_42dde:
 	ctxt "<HIRA>ごくろうさん"
 	line ""
 	line "はじめから"
 	line "やりなおしっ!!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_42df1:
 	ctxt "     <HIRA>かがく いのち!"
 	line ""
 	line "   <KATA>フラワー<HIRA>けんきゅうじょ"
 	line "    24じかん えいぎょう<KATA>"
+	done
 
 TreeBitstreamText_42e15:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -7919,7 +8026,7 @@ TreeBitstreamText_42e15:
 	line "とりにんげん <KATA>バードメン!!"
 	line ""
 	line "<HIRA>さあ でていただきましょう!!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_42e5e:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -7932,6 +8039,7 @@ TreeBitstreamText_42e5e:
 	line "やっぱり でんせつの ようせいに"
 	line "おねがいしたほうが いいのかな……"
 	line "あの <KATA>オヤジ<HIRA>ようせいに……<KATA>"
+	done
 
 TreeBitstreamText_42ec2:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -7953,7 +8061,7 @@ TreeBitstreamText_42ec2:
 	line ""
 	line "ここで みたことは"
 	line "だれにも いわないよーに いいね!<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_42f84:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -7967,6 +8075,7 @@ TreeBitstreamText_42f84:
 	line "げんじつには ありえないのに!"
 	line "それより もっと かがくの"
 	line "べんきょうをして ほしいんだが……<KATA>"
+	done
 
 TreeBitstreamText_42ffd:
 	ctxt "ノーズ"
@@ -7980,7 +8089,7 @@ TreeBitstreamText_42ffd:
 	line "<KATA>ホント<HIRA>の<KATA>ホント ホント<HIRA>のはなしだ!"
 	line "きょうじゅは しんじねーけど"
 	line "おまえ しんじて くれるよな?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_43084:
 	ctxt "ノーズ"
@@ -7994,7 +8103,7 @@ TreeBitstreamText_43084:
 	line "いりぐちのまえで まってる!"
 	line "よるの6じにあおう! くれぐれも"
 	line "きょうじゅには ないしょにね<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_430f7:
 	ctxt "ノーズ"
@@ -8006,7 +8115,7 @@ TreeBitstreamText_430f7:
 	line "さびしいけど これが げんじつか"
 	line "かがくじゃ かいめい できないことも"
 	line "あると おもうんだけどなぁ………<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_43156:
 	ctxt "ノーズ"
@@ -8020,12 +8129,12 @@ TreeBitstreamText_43156:
 	line "どうくつを ふさいだんだって!"
 	line "………まあ それは ともかく"
 	line "よるの6じだよ わすれないでね!<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_431d7:
 	ctxt "<PLAYER>"
 	line "オヤジ<HIRA>ようせい <KATA>カモーン!"
-	done
+	done %00011
 
 TreeBitstreamText_431e5:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8049,17 +8158,17 @@ TreeBitstreamText_431e5:
 	line "<KATA>ロケット<HIRA>を だしてくれ!"
 	line "このねがい <KATA>オヤジ<HIRA>ようせいよ"
 	line "かなえて おくれ!<KATA>"
-	done
+	done %101111
 
 TreeBitstreamText_432c2:
 	ctxt "オヤジ<HIRA>ようせい"
 	line "あいよー わかったよー<KATA>"
-	done
+	done %011011
 
 TreeBitstreamText_432d3:
 	ctxt "オヤジ<HIRA>ようせい"
 	line "はい これでしょ<KATA>"
-	done
+	done %01111
 
 TreeBitstreamText_432e2:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8073,14 +8182,14 @@ TreeBitstreamText_432e2:
 	line "<KATA>チケット <HIRA>じゃなくて <KATA>ロケット!"
 	line "オヤジ<HIRA>ようせいめ"
 	line "わざと <KATA>ボケ<HIRA>やがったな!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_43362:
 	ctxt "オヤジ<HIRA>ようせい"
 	line "のぞみは かなえました"
 	line "<KATA>ボク<HIRA>のやくめは これでおしまいです"
 	line "じゃあね <KATA>バッハハーイ!"
-	done
+	done %0
 
 TreeBitstreamText_4338d:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8106,7 +8215,7 @@ TreeBitstreamText_4338d:
 	line "だしてくれ!"
 	line "このねがい <KATA>ネクタイ<HIRA>ようせいよ"
 	line "かなえて おくれ!<KATA>"
-	done
+	done %110011
 
 TreeBitstreamText_4347a:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8120,7 +8229,7 @@ TreeBitstreamText_4347a:
 	line "<KATA>ビスケット<HIRA>じゃなくて <KATA>ロケット!"
 	line "<HIRA>この <KATA>オヤジ<HIRA>ようせいめ"
 	line "また わざと <KATA>ボケ<HIRA>やがったな!<KATA>"
-	done
+	done %0100111
 
 TreeBitstreamText_434f2:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8142,7 +8251,7 @@ TreeBitstreamText_434f2:
 	line "<HIRA>さあ <KATA>ロケット<HIRA>を だしやがれ!"
 	line "<KATA>オヤジ<HIRA>ようせい こんどは"
 	line "<KATA>ボケ<HIRA>るんじゃないぞ!<KATA>"
-	done
+	done %11111
 
 TreeBitstreamText_435b0:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8160,7 +8269,7 @@ TreeBitstreamText_435b0:
 	line "こんど やったら ぶっころすぞ!"
 	line "<KATA>オイ <HIRA>てめぇ!"
 	line "やくたたずの <KATA>オヤジ<HIRA>ようせい!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_4365f:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8188,12 +8297,13 @@ TreeBitstreamText_4365f:
 	line ""
 	line "<KATA>オヤジ<HIRA>ようせい こんどは"
 	line "<KATA>ボケ<HIRA>るんじゃないぞ!<KATA>"
+	done
 
 TreeBitstreamText_43761:
 	ctxt "オヤジ<HIRA>ようせい"
 	line "あいよー わかったよー"
 	line "もう<KATA>ボケ<HIRA>ないよー<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_4377a:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8213,7 +8323,7 @@ TreeBitstreamText_4377a:
 	line "こっちも つい <KATA>ノ<HIRA>っちゃうだろ!"
 	line "あのなー もう ぶち<KATA>キレ<HIRA>たぞ!"
 	line "つかまえて くってやる!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_4380b:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8247,16 +8357,17 @@ TreeBitstreamText_4380b:
 	line "せっかくの おきゃくさん だし"
 	line "よしえ <KATA>サケ<HIRA>だ!"
 	line "<KATA>サケ<HIRA>もってきてくれ!<KATA>"
+	done
 
 TreeBitstreamText_4393b:
 	ctxt "<HIRA>よしえ"
 	line "<KATA>イヤ<HIRA>です<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_43945:
 	ctxt "フラワー<HIRA>きょうじゅ"
 	line "せつねぇ………<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_43956:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8278,7 +8389,7 @@ TreeBitstreamText_43956:
 	line "ねぇ ねぇってばー"
 	line "<KATA>ボケ<HIRA>るのは ぜんかい までで"
 	line "もう おなかいっぱい だからさぁ<KATA>"
-	done
+	done %10000
 
 TreeBitstreamText_43a21:
 	ctxt "オヤジ<HIRA>ようせい"
@@ -8287,7 +8398,7 @@ TreeBitstreamText_43a21:
 	line "せかいいちの きょうじゅに"
 	line "したげるよー"
 	line "だって かんたんなこと なんだもーん<KATA>"
-	done
+	done %110111
 
 TreeBitstreamText_43a5a:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8313,7 +8424,7 @@ TreeBitstreamText_43a5a:
 	line "…………………"
 	line "<HIRA>はぁ………"
 	line "つかれた……<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_43b4c:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8333,7 +8444,7 @@ TreeBitstreamText_43b4c:
 	line "かちの あるものは ここには ない"
 	line "きみの やくにたつものが あるなら"
 	line "よろこんで ゆずろう<KATA>"
-	done
+	done %1001010
 
 TreeBitstreamText_43c04:
 	ctxt "ノーズ"
@@ -8349,14 +8460,14 @@ TreeBitstreamText_43c04:
 	line "どなりこんで くるぞ!"
 	line "さあ はやく <KATA>オヤジ<HIRA>ようせいを"
 	line "みつけてきて!<KATA>"
-	done
+	done %11101
 
 TreeBitstreamText_43c84:
 	ctxt "フラワー<HIRA>きょうじゅ"
 	line "<KATA>コラッ! <HIRA>この どうくつは わたしが"
 	line "たかい <KATA>カネ<HIRA>で かった とちだぞ!"
 	line "むだんで あらすやつは ゆるさん!<KATA>"
-	done
+	done %000110
 
 TreeBitstreamText_43cbb:
 	ctxt "フラワー<HIRA>きょうじゅ"
@@ -8372,7 +8483,7 @@ TreeBitstreamText_43cbb:
 	line "なんの やくにも たたん!"
 	line "くそー <KATA>オヤジ<HIRA>ようせいめ"
 	line "わたしのことを <KATA>バカ<HIRA>に しおって!<KATA>"
-	done
+	done %1011
 
 TreeBitstreamText_43d46:
 	ctxt "ノーズ"
@@ -8383,7 +8494,7 @@ TreeBitstreamText_43d46:
 	line "かがくで かいめい できなくても"
 	line "じっさいに みつけちゃったんだ!"
 	line "これは せいきの だいはっけん だ!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_43d8e:
 	ctxt "ヒゲヒゲ<HIRA>ようせい"
@@ -8397,7 +8508,7 @@ TreeBitstreamText_43d8e:
 	line ""
 	line "なぜなら きみは"
 	line "<KATA>ボク<HIRA>の このみじゃ ないからね!<KATA>"
-	done
+	done %011010
 
 TreeBitstreamText_43dee:
 	ctxt "ネクタイ<HIRA>ようせい"
@@ -8415,7 +8526,7 @@ TreeBitstreamText_43dee:
 	line "<HIRA>がっこうで ならわなかったのかね?"
 	line "しゃかいでは しごとより おせじが"
 	line "たいせつなんだよ <KATA>チミ!"
-	done
+	done %111
 
 TreeBitstreamText_43e7a:
 	ctxt "ツルツル<HIRA>ようせい"
@@ -8429,7 +8540,7 @@ TreeBitstreamText_43e7a:
 	line "つまんないな <KATA>ボク"
 	line "<HIRA>だから ざんねん だけど"
 	line "<KATA>チミ<HIRA>には つかまりたく ないさ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_43ed7:
 	ctxt "ワンカップ<HIRA>ようせい"
@@ -8445,7 +8556,7 @@ TreeBitstreamText_43ed7:
 	line ""
 	line "おめぇに <KATA>オラッチ<HIRA>の きもちが"
 	line "わかるか<KATA>ッテンダヨー!"
-	done
+	done %00
 
 TreeBitstreamText_43f51:
 	ctxt "サルマタ<HIRA>ようせい"
@@ -8459,9 +8570,9 @@ TreeBitstreamText_43f51:
 	line "わたしを つかまえに きた?"
 	line "あいての きもちを かんがえないで"
 	line "そういうこと するのは <KATA>ダメ<HIRA>だよ!<KATA>"
-	done
+	done %100111011001110100001010001110001110010101000010111111110011110001100010011011001001111010110111101010001110001110000001011111111001111011001100000101110111100111101011011110101001011001111101011100101010000110000011001111000101100010101111100011011001100111100001111010010011101011101000100000101100110110111111011010100110001011110001000000111000111011100110101110101111110110110110011101000011101000100101011010000000111000000010111100000111101111110110110110000010
 
-SECTION "Tree Bitstream Text 3", ROMX [$11], BANK [$4000]
+SECTION "Tree Bitstream Text 3", ROMX [$4000], BANK [$11]
 TreeBitstreamText_44000:
 	ctxt "レイナ"
 	line "……<HIRA>なぜ うまれたの?"
@@ -8470,7 +8581,7 @@ TreeBitstreamText_44000:
 	line "あたし <KATA>ガールズ8<HIRA>の <KATA>レイナ!"
 	line "<HIRA>かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
 	line "さがして あるいてるんだけど……<KATA>"
-	done
+	done %1001
 
 TreeBitstreamText_44051:
 	ctxt "レイナ"
@@ -8483,7 +8594,7 @@ TreeBitstreamText_44051:
 	line "もし <KATA>ギャルル<HIRA>を ほかくしたら"
 	line "すぐに <KATA>レイナ<HIRA>のところに きてね!"
 	line "やくそくだよ! <KATA>バッバーイ!"
-	done
+	done %010
 
 TreeBitstreamText_440c4:
 	ctxt "レイナ"
@@ -8491,7 +8602,7 @@ TreeBitstreamText_440c4:
 	line "いいな いいな いいなー!"
 	line "ねえねえ あたしの <KATA>トリペル<HIRA>と"
 	line "こうかん しない?<KATA>"
-	done
+	done %000
 
 TreeBitstreamText_440f4:
 	ctxt "レイナ"
@@ -8506,14 +8617,14 @@ TreeBitstreamText_440f4:
 	line "ねえ <KATA>ウーマンボ<HIRA>を ほかくしたら"
 	line "すぐに <KATA>レイナ<HIRA>のところに きてね!"
 	line "やくそくだよ! <KATA>バッバーイ!"
-	done
+	done %1010101
 
 TreeBitstreamText_44185:
 	ctxt "レイナ"
 	line "<HIRA>ふーん みかけによらず <KATA>ケチ<HIRA>ね!"
 	line "いいよ いいよ いいよーだ!"
 	line "<KATA>ホント<HIRA>に <KATA>バッバーイ<HIRA>しちゃうから!<KATA>"
-	done
+	done %1110
 
 TreeBitstreamText_441b3:
 	ctxt "レイナ"
@@ -8524,7 +8635,7 @@ TreeBitstreamText_441b3:
 	line "ねえ <KATA>ウーマンボ<HIRA>を ほかくしたら"
 	line "すぐに <KATA>レイナ<HIRA>のところに きてね!"
 	line "やくそくだよ! <KATA>バッバーイ!"
-	done
+	done %01010
 
 TreeBitstreamText_44213:
 	ctxt "レイナ"
@@ -8532,7 +8643,7 @@ TreeBitstreamText_44213:
 	line ""
 	line "ねえねえ わたしの <KATA>オネダリ<HIRA>と"
 	line "こうかん しない?<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_44239:
 	ctxt "レイナ"
@@ -8542,6 +8653,7 @@ TreeBitstreamText_44239:
 	line "どこかにいるから さがしてみてね!"
 	line "あたしの<KATA>オネダリ <HIRA>たいせつにね!"
 	line "それじゃあ <KATA>バッバーーイ!"
+	done
 
 TreeBitstreamText_4428f:
 	ctxt "レイナ"
@@ -8552,6 +8664,7 @@ TreeBitstreamText_4428f:
 	line "<KATA>ガールズ8<HIRA>のみんなは まだまだ"
 	line "どこかにいるから さがしてみてね!"
 	line "それじゃあ <KATA>バッバーーイ!"
+	done
 
 TreeBitstreamText_442ef:
 	ctxt "ミカチ"
@@ -8561,7 +8674,7 @@ TreeBitstreamText_442ef:
 	line "わたし <KATA>ガールズ8<HIRA>の <KATA>ミカチ<HIRA>です!"
 	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
 	line "さがして あるいてるんだけど……<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_4434a:
 	ctxt "ミカチ"
@@ -8570,7 +8683,7 @@ TreeBitstreamText_4434a:
 	line "もし <KATA>トリペル<HIRA>を つかまえたら"
 	line "<KATA>プリースト<HIRA>と こうかんするわ"
 	line "おぼえていてね <KATA>プリースト<HIRA>よ!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_44392:
 	ctxt "ミカチ"
@@ -8578,7 +8691,7 @@ TreeBitstreamText_44392:
 	line "もしかして それって <KATA>トリペル?"
 	line "<HIRA>おねがいだから <KATA>プリースト<HIRA>と"
 	line "こうかん してくれる?!!<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_443c5:
 	ctxt "ミカチ"
@@ -8593,14 +8706,14 @@ TreeBitstreamText_443c5:
 	line "<KATA>オトコ<HIRA>なら すきな<KATA>コ<HIRA>には"
 	line "<KATA>キチン<HIRA>と あいじょう みせなきゃ!"
 	line "<KATA>ミカチ <HIRA>ここで まってるから!<KATA>"
-	done
+	done %1000
 
 TreeBitstreamText_4445d:
 	ctxt "ミカチ"
 	line "<HIRA>やさしさのない <KATA>オトコ<HIRA>なんて"
 	line "ちっとも <KATA>モテ<HIRA>ないわよ!"
 	line "<KATA>バカ<HIRA>らしくて つきあってらんない!<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_44486:
 	ctxt "ミカチ"
@@ -8613,7 +8726,7 @@ TreeBitstreamText_44486:
 	line "おとこなら すきな<KATA>コ<HIRA>には"
 	line "<KATA>キチン<HIRA>と あいじょう みせなきゃ!"
 	line "<KATA>ミカチ <HIRA>ここで まってるから!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_44507:
 	ctxt "ミカチ"
@@ -8621,7 +8734,7 @@ TreeBitstreamText_44507:
 	line "もしかして それって <KATA>ヘビータ?"
 	line "<HIRA>おねがいだから わたしの <KATA>バーナー<HIRA>と"
 	line "こうかん してくれない?!?<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_4453d:
 	ctxt "ミカチ"
@@ -8636,7 +8749,7 @@ TreeBitstreamText_4453d:
 	line "それより <KATA><PLAYER><HIRA>には やらなきゃ"
 	line "いけないことがあるでしょ!"
 	line "<KATA>ガールズ8<HIRA>のみんなを さがさなきゃ!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_445b1:
 	ctxt "ミカチ"
@@ -8647,13 +8760,13 @@ TreeBitstreamText_445b1:
 	line "<KATA><PLAYER><HIRA>には やらなくちゃ"
 	line "いけないことがあるでしょ!"
 	line "<KATA>ガールズ8<HIRA>のみんなを さがさなきゃ!<KATA>"
-	done
+	done %111110
 
 TreeBitstreamText_44601:
 	ctxt "マーヤ"
 	line "クー クー クー クー クー クー"
 	line "<HIRA>もひとつ おまけに <KATA>クー"
-	done
+	done %101
 
 TreeBitstreamText_4461b:
 	ctxt "マーヤ"
@@ -8661,6 +8774,7 @@ TreeBitstreamText_4461b:
 	line "……<KATA>ガールズ8<HIRA>の <KATA>マーヤ<HIRA>よ"
 	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
 	line "さがして あるいてるんだけど……<KATA>"
+	done
 
 TreeBitstreamText_44657:
 	ctxt "マーヤ"
@@ -8675,7 +8789,7 @@ TreeBitstreamText_44657:
 	line "そのあいだ <KATA>マーヤ<HIRA>は ここで"
 	line "<KATA>グーグー <HIRA>ねむって まってるから!"
 	line "それじゃ たのんだからね!<KATA>"
-	done
+	done %10010
 
 TreeBitstreamText_446dc:
 	ctxt "マーヤ"
@@ -8685,7 +8799,7 @@ TreeBitstreamText_446dc:
 	line "ねてると いいことあるんだなー"
 	line "さっそく にーさんの <KATA>プリースト<HIRA>と"
 	line "<KATA>マーヤ<HIRA>の <KATA>ドクロイド<HIRA>を こうかんね<KATA>"
-	done
+	done %0111101
 
 TreeBitstreamText_44733:
 	ctxt "マーヤ"
@@ -8700,14 +8814,14 @@ TreeBitstreamText_44733:
 	line "そのあいだ <KATA>マーヤ<HIRA>は ここで"
 	line "<KATA>グーグー <HIRA>ねむって まってるから!"
 	line "それじゃ たのんだからね!<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_447bd:
 	ctxt "マーヤ"
 	line "ハッキリ<HIRA>いって みそこなったね"
 	line "にーさん <KATA>ガマン<HIRA>にも <KATA>ホド<HIRA>があるよ"
 	line "それでも <KATA>チンチン <HIRA>ついてんの?!<KATA>"
-	done
+	done %0110101
 
 TreeBitstreamText_447ed:
 	ctxt "マーヤ"
@@ -8720,7 +8834,7 @@ TreeBitstreamText_447ed:
 	line "そのあいだ <KATA>マーヤ<HIRA>は ここで"
 	line "<KATA>グーグー <HIRA>ねむって まってるから!"
 	line "それじゃ たのんだからね!<KATA>"
-	done
+	done %1110101
 
 TreeBitstreamText_44861:
 	ctxt "マーヤ"
@@ -8730,7 +8844,7 @@ TreeBitstreamText_44861:
 	line "ねてると いい<KATA>コ<HIRA>に そだつんだなー"
 	line "さっそく にーさんの <KATA>ストーン<HIRA>と"
 	line "<KATA>マーヤ<HIRA>の <KATA>ドライバル<HIRA>を こうかん!<KATA>"
-	done
+	done %110011
 
 TreeBitstreamText_448b8:
 	ctxt "マーヤ"
@@ -8743,7 +8857,7 @@ TreeBitstreamText_448b8:
 	line "<KATA>マーヤ<HIRA>に かまわないで にーさんは"
 	line "にーさんの みちを いきなさい!"
 	line "<KATA>マーヤ<HIRA>は ここで ねてるから<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_44937:
 	ctxt "マーヤ"
@@ -8754,7 +8868,7 @@ TreeBitstreamText_44937:
 	line "<KATA>マーヤ<HIRA>に かまわないで にーさんは"
 	line "にーさんの みちを いきなさい!"
 	line "<KATA>マーヤ<HIRA>は ここで ねてるから<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_4498a:
 	ctxt "ユーコ"
@@ -8762,7 +8876,7 @@ TreeBitstreamText_4498a:
 	line "<KATA>ガールズ8<HIRA>の <KATA>ユーコ <HIRA>ですけどー"
 	line "<KATA>ロボポン<HIRA>のー <KATA>レア<HIRA>っていうか"
 	line "おもしろいの? さがしてんだけどー<KATA>"
-	done
+	done %10111
 
 TreeBitstreamText_449c9:
 	ctxt "ユーコ"
@@ -8775,6 +8889,7 @@ TreeBitstreamText_449c9:
 	line "あたしの<KATA>カワイイー オヤカタ<HIRA>ちゃん"
 	line "あげるから! よろしくね!"
 	line "まってるから!<KATA>"
+	done
 
 TreeBitstreamText_44a2d:
 	ctxt "ユーコ"
@@ -8785,7 +8900,7 @@ TreeBitstreamText_44a2d:
 	line "ねー それ あたしの<KATA>オヤカタ<HIRA>と"
 	line "とりかえっこしてっ!"
 	line "ほら <KATA>オヤカタ<HIRA>だって<KATA>カワイイ<HIRA>よ!<KATA>"
-	done
+	done %0000
 
 TreeBitstreamText_44a7f:
 	ctxt "ユーコ"
@@ -8800,14 +8915,14 @@ TreeBitstreamText_44a7f:
 	line "だから てに いれたら"
 	line "ぜったい あたしのところに きて!"
 	line "まってる<KATA>ワ!"
-	done
+	done %0111
 
 TreeBitstreamText_44af6:
 	ctxt "ユーコ"
 	line "<HIRA>えー! なんでっ!"
 	line "どーして こうかんしてくれないの!?"
 	line "<KATA>オヤカタ<HIRA>ちゃん きらいなの?<KATA>"
-	done
+	done %01101
 
 TreeBitstreamText_44b1c:
 	ctxt "ユーコ"
@@ -8818,7 +8933,7 @@ TreeBitstreamText_44b1c:
 	line "あたしの<KATA>ステキ<HIRA>な <KATA>マッドソン<HIRA>ちゃん"
 	line "あげるから! よろしくね!"
 	line "まってるから!<KATA>"
-	done
+	done %1100
 
 TreeBitstreamText_44b74:
 	ctxt "ユーコ"
@@ -8831,7 +8946,7 @@ TreeBitstreamText_44b74:
 	line "この <KATA>ステキ<HIRA>な<KATA>マッドソン<HIRA>ちゃん"
 	line "あげるから!!!"
 	line "おーねーがーいー!<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_44bcf:
 	ctxt "ユーコ"
@@ -8843,14 +8958,14 @@ TreeBitstreamText_44bcf:
 	line "<KATA>イイコ<HIRA>にそだててあげてね!"
 	line "ほかの <KATA>ガールズ8<HIRA>のみんなにも"
 	line "あって あげてね! <KATA>バイバイ!"
-	done
+	done %0010
 
 TreeBitstreamText_44c2a:
 	ctxt "ユーコ"
 	line "<HIRA>えー! なんでっ!"
 	line "どーして こうかんしてくれないの!?"
 	line "<KATA>マッドソン<HIRA>ちゃん きらいなの?<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_44c51:
 	ctxt "ユーコ"
@@ -8859,7 +8974,7 @@ TreeBitstreamText_44c51:
 	line "<HIRA>ほかの <KATA>ガールズ8<HIRA>の<KATA>コ<HIRA>にも"
 	line "はやく あってあげてね!"
 	line "<KATA>バイバイ!!"
-	done
+	done %1010
 
 TreeBitstreamText_44c92:
 	ctxt "ナッツ"
@@ -8871,14 +8986,14 @@ TreeBitstreamText_44c92:
 	line ""
 	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
 	line "さがして あるいてるんだけど……<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_44ceb:
 	ctxt "ナッツ"
 	line "マッドソン <HIRA>どこにもいないっ!"
 	line "どこを さがしても いないっ!"
 	line "<KATA><PLAYER><HIRA>さん! みませんでした?<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_44d13:
 	ctxt "ナッツ"
@@ -8887,7 +9002,7 @@ TreeBitstreamText_44d13:
 	line "………もう しょうがないわね!"
 	line "たいせつに そだてた あたしの"
 	line "<KATA>カスタムロボポン<HIRA>と こうかんして!<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_44d53:
 	ctxt "ナッツ"
@@ -8900,6 +9015,7 @@ TreeBitstreamText_44d53:
 	line "それじゃ あたしは あたらしい"
 	line "<KATA>ロボポン<HIRA>の えでも かこうかな"
 	line "<KATA>バイバイ <HIRA>またね!<KATA>"
+	done
 
 TreeBitstreamText_44dc8:
 	ctxt "ナッツ"
@@ -8907,6 +9023,7 @@ TreeBitstreamText_44dc8:
 	line ""
 	line "<HIRA>でも <KATA>カスタムロボポン<HIRA>を"
 	line "あげなくて すむから いいのか!<KATA>"
+	done
 
 TreeBitstreamText_44df3:
 	ctxt "ナッツ"
@@ -8920,7 +9037,7 @@ TreeBitstreamText_44df3:
 	line "ねえねえ どうなってんの?"
 	line "こうなったのも ぜんぶ"
 	line "<KATA><PLAYER><HIRA>の せいだからね!<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_44e62:
 	ctxt "リッツ"
@@ -8930,7 +9047,7 @@ TreeBitstreamText_44e62:
 	line "<KATA>オレ<HIRA>って よぶことにしてる!"
 	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
 	line "さがして あるいてるんだけど……<KATA>"
-	done
+	done %0000
 
 TreeBitstreamText_44eb8:
 	ctxt "リッツ"
@@ -8941,6 +9058,7 @@ TreeBitstreamText_44eb8:
 	line "そこで おまえは <KATA>オレ<HIRA>のために"
 	line "<KATA>オヤカタ<HIRA>を つかまえてきてくれ!"
 	line "おれいに いい<KATA>ロボポン<HIRA>やるからさ!<KATA>"
+	done
 
 TreeBitstreamText_44f10:
 	ctxt "リッツ"
@@ -8949,7 +9067,7 @@ TreeBitstreamText_44f10:
 	line "………<HIRA>わかった!"
 	line ""
 	line "<KATA>オレ<HIRA>の <KATA>スタンド<HIRA>と こうかんしよう!<KATA>"
-	done
+	done %1100110
 
 TreeBitstreamText_44f3f:
 	ctxt "リッツ"
@@ -8966,6 +9084,7 @@ TreeBitstreamText_44f3f:
 	line "そこで おまえは <KATA>オレ<HIRA>のために"
 	line "<KATA>ドライバル<HIRA>を つかまえてきてくれ!"
 	line "おれいに いい<KATA>ロボポン<HIRA>やるからさ!<KATA>"
+	done
 
 TreeBitstreamText_44fed:
 	ctxt "リッツ"
@@ -8976,7 +9095,7 @@ TreeBitstreamText_44fed:
 	line "おまえなぁ じぶんのこと"
 	line "<KATA>ナンボ<HIRA>の<KATA>オトコ<HIRA>だと おもってんだ?"
 	line "かがみ みてみろ <KATA>バカヤロー!"
-	done
+	done %0011
 
 TreeBitstreamText_45042:
 	ctxt "リッツ"
@@ -8989,7 +9108,7 @@ TreeBitstreamText_45042:
 	line "そこで おまえは <KATA>オレ<HIRA>のために"
 	line "<KATA>ドライバル<HIRA>を つかまえてきてくれ!"
 	line "おれいに いい<KATA>ロボポン<HIRA>やるからさ!<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_450bb:
 	ctxt "リッツ"
@@ -8999,7 +9118,7 @@ TreeBitstreamText_450bb:
 	line ""
 	line "わたしの もってる <KATA>コンボイル<HIRA>と"
 	line "こうかん してやるよ!<KATA>"
-	done
+	done %011110
 
 TreeBitstreamText_450f4:
 	ctxt "リッツ"
@@ -9015,7 +9134,7 @@ TreeBitstreamText_450f4:
 	line "でも おまえってさぁ……"
 	line "<KATA>オレ<HIRA>がみた いい<KATA>ヤツ<HIRA>のなかでも"
 	line "いちばんの いい<KATA>ヤツ<HIRA>かもな<KATA>"
-	done
+	done %10101
 
 TreeBitstreamText_45194:
 	ctxt "リッツ"
@@ -9026,7 +9145,7 @@ TreeBitstreamText_45194:
 	line "おまえなぁ じぶんのこと"
 	line "<KATA>ナンボ<HIRA>の<KATA>オトコ<HIRA>だと おもってんだ?"
 	line "かがみ みてみろ <KATA>バカヤロー!"
-	done
+	done %0100
 
 TreeBitstreamText_451e9:
 	ctxt "リッツ"
@@ -9041,6 +9160,7 @@ TreeBitstreamText_451e9:
 	line "さあ さあ さっさと ほかの"
 	line "<KATA>ガールズ8<HIRA>を さがしにいきやがれ!"
 	line "もう くるんじゃ ないぞ!<KATA>"
+	done
 
 TreeBitstreamText_45277:
 	ctxt "<HIRA>ひろみ"
@@ -9050,7 +9170,7 @@ TreeBitstreamText_45277:
 	line "<KATA>アタイ ガールズ8<HIRA>の ひろみ!"
 	line "かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
 	line "さがして あるいてんだけどさぁ……<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_452cd:
 	ctxt "<HIRA>ひろみ"
@@ -9061,7 +9181,7 @@ TreeBitstreamText_452cd:
 	line "なにぃ もってない だあ?"
 	line "なら とってくんのが <KATA>スジ<HIRA>だろ!"
 	line "はしれ! はしって もってこい!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_4531c:
 	ctxt "<HIRA>ひろみ"
@@ -9070,7 +9190,7 @@ TreeBitstreamText_4531c:
 	line "<KATA>タダ<HIRA>なんて いわないよぉ"
 	line "<KATA>アタイ<HIRA>は <KATA>ボイラース<HIRA>を やるよ"
 	line "もちろん こうかん すんだろ?<KATA>"
-	done
+	done %000
 
 TreeBitstreamText_4535e:
 	ctxt "<HIRA>ひろみ"
@@ -9086,14 +9206,14 @@ TreeBitstreamText_4535e:
 	line "つぎは <KATA>バーナー<HIRA>だよ <KATA>バーナー!"
 	line "<HIRA>また <KATA>アタイ<HIRA>のとこに もってきな!"
 	line "ほら さっさと さがしてくるっ!<KATA>"
-	done
+	done %010000
 
 TreeBitstreamText_453ee:
 	ctxt "<HIRA>ひろみ"
 	line "あんたぁ <KATA>ナメ<HIRA>てんのかぁ?"
 	line "へんっ そんな<KATA>カオ <HIRA>みたくもねぇよ"
 	line "さっさと どっか きえな!<KATA>"
-	done
+	done %111110
 
 TreeBitstreamText_45418:
 	ctxt "<HIRA>ひろみ"
@@ -9105,7 +9225,7 @@ TreeBitstreamText_45418:
 	line "つぎは <KATA>バーナー<HIRA>だよ <KATA>バーナー!"
 	line "<HIRA>また <KATA>アタイ<HIRA>のとこに もってきな!"
 	line "ほら さっさと さがしてくるっ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_4547f:
 	ctxt "<HIRA>ひろみ"
@@ -9114,7 +9234,7 @@ TreeBitstreamText_4547f:
 	line "<KATA>タダ<HIRA>なんて いわないよぉ"
 	line "<KATA>アタイ<HIRA>は <KATA>ストーン<HIRA>を やるよ"
 	line "もちろん こうかん すんだろ?<KATA>"
-	done
+	done %001100
 
 TreeBitstreamText_454c0:
 	ctxt "<HIRA>ひろみ"
@@ -9126,7 +9246,7 @@ TreeBitstreamText_454c0:
 	line "<KATA>エライ<HIRA>っ!!"
 	line ""
 	line "……って ちょうしに のるなよな!<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_45511:
 	ctxt "<HIRA>ひろみ"
@@ -9136,7 +9256,7 @@ TreeBitstreamText_45511:
 	line "はやく かおを あわせるんだな"
 	line "さいごには いい<KATA>コト <HIRA>あるかもよ!"
 	line "じゃあな <KATA>バイ<HIRA>っ!<KATA>"
-	done
+	done %0111100
 
 TreeBitstreamText_45564:
 	ctxt "ユキコ"
@@ -9146,7 +9266,7 @@ TreeBitstreamText_45564:
 	line "わたし <KATA>ガールズ8<HIRA>の <KATA>ユキコ!"
 	line "<HIRA>かずすくない <KATA>レア<HIRA>な<KATA>ロボポン<HIRA>を"
 	line "さがして あるいてるんだけど……<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_455be:
 	ctxt "ユキコ"
@@ -9156,7 +9276,7 @@ TreeBitstreamText_455be:
 	line "でも もってないのよ!"
 	line "<KATA>ウーマンボ<HIRA>となら こうかんするけど"
 	line "あー どうしても ほしいなぁ<KATA>"
-	done
+	done %0010
 
 TreeBitstreamText_4560f:
 	ctxt "ユキコ"
@@ -9166,7 +9286,7 @@ TreeBitstreamText_4560f:
 	line "<HIRA>おねがい おねがい おねがいっ!"
 	line "わたしの <KATA>ウーマンボ<HIRA>と ぜひぜひ"
 	line "こうかん してちょーだい!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_4565b:
 	ctxt "ユキコ"
@@ -9183,7 +9303,7 @@ TreeBitstreamText_4565b:
 	line "あーん <KATA>オネダリ <HIRA>ほしいぃぃぃ!"
 	line "<KATA>ヘビータ<HIRA>となら こうかんするけど"
 	line "あーあ どうしても ほしいなぁ<KATA>"
-	done
+	done %0111101
 
 TreeBitstreamText_456f4:
 	ctxt "ユキコ"
@@ -9191,7 +9311,7 @@ TreeBitstreamText_456f4:
 	line "そーいう たいど とるんだー"
 	line "おんなを ふこうにする<KATA>オトコ<HIRA>って"
 	line "<KATA>ホント サイテー サイアク<HIRA>だね!<KATA>"
-	done
+	done %110010
 
 TreeBitstreamText_45728:
 	ctxt "ユキコ"
@@ -9204,7 +9324,7 @@ TreeBitstreamText_45728:
 	line "あーん <KATA>オネダリ <HIRA>ほしいぃぃぃ!"
 	line "<KATA>ヘビータ<HIRA>となら こうかんするけど"
 	line "あーあ どうしても ほしいなぁ<KATA>"
-	done
+	done %011110
 
 TreeBitstreamText_45794:
 	ctxt "ユキコ"
@@ -9214,7 +9334,7 @@ TreeBitstreamText_45794:
 	line "<HIRA>おねがい おねがい おねがいっ!"
 	line "わたしの <KATA>ヘビータ<HIRA>と ぜひぜひ"
 	line "こうかん してちょーだい!<KATA>"
-	done
+	done %1001
 
 TreeBitstreamText_457de:
 	ctxt "ユキコ"
@@ -9230,7 +9350,7 @@ TreeBitstreamText_457de:
 	line "<KATA>オトコ<HIRA>は こうどうりょく!"
 	line "こうどうりょくを みせてくれれば"
 	line "おんなの<KATA>コ<HIRA>は <KATA>ウットリ<HIRA>するはずよ<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_45875:
 	ctxt "ユキコ"
@@ -9242,12 +9362,12 @@ TreeBitstreamText_45875:
 	line "<KATA>オトコ<HIRA>は こうどうりょく!"
 	line "こうどうりょくを みせてくれれば"
 	line "おんなの<KATA>コ<HIRA>は <KATA>ウットリ<HIRA>するはずよ<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_458e0:
 	ctxt "ロボポン<HIRA>を"
 	line "こうかんしますか?<KATA>"
-	done
+	done %01010
 
 TreeBitstreamText_458ef:
 	ctxt "ガールズ8<HIRA>は なぞの おんなの<KATA>コ!"
@@ -9257,7 +9377,7 @@ TreeBitstreamText_458ef:
 	line "<KATA>レイナ ミカチ マーヤ ユーコ<HIRA>に"
 	line "<KATA>ナッツ リッツ <HIRA>ひろみ <KATA>ユキコ!"
 	line "<HIRA>ごうけい8にんさ!<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_4593e:
 	ctxt "ボク<HIRA>は こころがわりのはげしい"
@@ -9273,7 +9393,7 @@ TreeBitstreamText_4593e:
 	line "リッツ ユーコ ナッツ"
 	line "<HIRA>どう? おぼえた?"
 	line "このじゅんばんが たいせつなんだよ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_459de:
 	ctxt "ボク <HIRA>しってるよー"
@@ -9284,14 +9404,14 @@ TreeBitstreamText_459de:
 	line "<KATA>トリペル<HIRA>と こうかんしてくれるし"
 	line "<KATA>トリペル<HIRA>を <KATA>ミカチ<HIRA>に もってくと"
 	line "………あれ? わすれちゃった!<KATA>"
-	done
+	done %0101000
 
 TreeBitstreamText_45a40:
 	ctxt "<HIRA>こうかんできる <KATA>ロボポン<HIRA>が"
 	line "<KATA>パーティー<HIRA>のなかに ふくすういるよ"
 	line "こうかんできる <KATA>ロボポン<HIRA>を"
 	line "1たいに してから きてね<KATA>"
-	done
+	done %1000111
 
 TreeBitstreamText_45a76:
 	ctxt "<HIRA>いわれた<KATA>ロボポン<HIRA>は"
@@ -9300,35 +9420,35 @@ TreeBitstreamText_45a76:
 	line "じゅんばんどおりに やるんだよ"
 	line "ほかの <KATA>ガールズ8<HIRA>との"
 	line "こうかんが さき みたいだね<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_45abb:
 	ctxt "<HIRA>いまは <KATA>レイナ<HIRA>の じゅんばんだね<KATA>"
-	done
+	done %0110011
 
 TreeBitstreamText_45acc:
 	ctxt "<HIRA>いまは <KATA>ミカチ<HIRA>の じゅんばんだね<KATA>"
-	done
+	done %10011
 
 TreeBitstreamText_45add:
 	ctxt "<HIRA>いまは <KATA>マーヤ<HIRA>の じゅんばんだね<KATA>"
-	done
+	done %10011
 
 TreeBitstreamText_45aee:
 	ctxt "<HIRA>いまは <KATA>ユーコ<HIRA>の じゅんばんだね<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_45aff:
 	ctxt "<HIRA>いまは <KATA>リッツ<HIRA>の じゅんばんだね<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_45b10:
 	ctxt "<HIRA>いまは ひろみの じゅんばんだね<KATA>"
-	done
+	done %11001
 
 TreeBitstreamText_45b20:
 	ctxt "<HIRA>いまは <KATA>ユキコ<HIRA>の じゅんばんだね<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_45b31:
 	ctxt "<HIRA>なぞのじんぶつ"
@@ -9343,7 +9463,7 @@ TreeBitstreamText_45b31:
 	line "<KATA>グフフフ"
 	line "<HIRA>こんどは <KATA><PLAYER>……"
 	line "<HIRA>おまえが しゅぎょうするばんだ!<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_45bb0:
 	ctxt "<HIRA>なぞのじんぶつ"
@@ -9355,7 +9475,7 @@ TreeBitstreamText_45bb0:
 	line "あくうんも ここまでだ!"
 	line "<KATA>オレ<HIRA>さまが <KATA>キッチリ"
 	line "<HIRA>とどめを さしてやるからな!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_45c00:
 	ctxt "ビスコ"
@@ -9369,12 +9489,12 @@ TreeBitstreamText_45c00:
 	line "<KATA>ギッチョンギッチョン<HIRA>にしてやる"
 	line "いいか!"
 	line "おぼえてろよ!<KATA>"
-	done
+	done %0000
 
 TreeBitstreamText_45c64:
 	ctxt "ボンボン<HIRA>どくしゃ<KATA>デザイン<HIRA>の"
 	line "<KATA>ロボポン<HIRA>を てにいれた!<KATA>"
-	done
+	done %1011110
 
 TreeBitstreamText_45c80:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
@@ -9382,50 +9502,50 @@ TreeBitstreamText_45c80:
 	line "だいくの <KATA>ケン<HIRA>って いう<KATA>モン<HIRA>でい!"
 	line "<KATA>カネ<HIRA>を くれたら いつでも"
 	line "<KATA>ビル<HIRA>を でっかく してやるぜ!<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_45cb9:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
 	line "おうっ <KATA>カネ <HIRA>もってるな"
 	line "ぞうちく たのむって かい?<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_45cd8:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
 	line "なんでい <KATA>カネ <HIRA>もってないのかい?"
 	line "それじゃあ ぞうちくは できないぜ<KATA>"
-	done
+	done %1011001
 
 TreeBitstreamText_45cff:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
 	line "そうかい きが かわったら"
 	line "いつでも こいってんだ<KATA>"
-	done
+	done %110000
 
 TreeBitstreamText_45d1c:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
 	line "おいら とっても きげんがいいから"
 	line "いまなら やすく しとくぜ<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_45d3d:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
 	line "<KATA>チャッチャ<HIRA>と おわらせるぜ"
 	line "おいらの うでの みせどころでい<KATA>"
-	done
+	done %01111
 
 TreeBitstreamText_45d61:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
 	line "なんでい おいら ふきげんなんだ"
 	line "<KATA>ボッ<HIRA>たくってやるのさー<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_45d82:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
 	line "さぁて ちょっくら いってくるぜ"
 	line "すぐに おわらせてやるぜい"
 	line "<KATA>メシ<HIRA>でも くって まってな!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_45db0:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
@@ -9435,6 +9555,7 @@ TreeBitstreamText_45db0:
 	line "ぞうちく できねぇからな!"
 	line "<KATA>ギブアップ! <HIRA>まいった!"
 	line "おいら たかいところ <KATA>ダメ<HIRA>なんだよ<KATA>"
+	done
 
 TreeBitstreamText_45dff:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
@@ -9442,54 +9563,54 @@ TreeBitstreamText_45dff:
 	line ""
 	line "<KATA>スポロ<HIRA>のじいさんが"
 	line "おまえさんのこと よんでたぜ<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_45e29:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
 	line "おう <KATA>ビル<HIRA>をぞうちくしといたぜ"
 	line "ちょっと みてきな<KATA>"
-	done
+	done %000
 
 TreeBitstreamText_45e48:
 	ctxt "<HIRA>うけつけ"
 	line "<KATA><PLAYER><HIRA>しゃちょう"
 	line "おはようございます<KATA>"
-	done
+	done %100110
 
 TreeBitstreamText_45e5d:
 	ctxt "<HIRA>うけつけ"
 	line "<KATA><PLAYER><HIRA>しゃちょう"
 	line "つうしんで あそぶのですね?<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_45e76:
 	ctxt "<HIRA>うけつけ"
 	line "こちらの へやは つうしんで"
 	line "あそぶための へやです<KATA>"
-	done
+	done %100
 
 TreeBitstreamText_45e91:
 	ctxt "<HIRA>うけつけ"
 	line "<KATA>バトルジェネシス5<HIRA>で"
 	line "あそぶのですか?<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_45eaa:
 	ctxt "<HIRA>うけつけ"
 	line "どうぞ たのしんできてください<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_45ebc:
 	ctxt "<HIRA>うけつけ"
 	line "そうですか……"
 	line "こんど ぜひ いらしてくださいね<KATA>"
-	done
+	done %000
 
 TreeBitstreamText_45ed5:
 	ctxt "<HIRA>うけつけ"
 	line "このさきへは"
 	line "まだ はいれません!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_45ee8:
 	ctxt "<HIRA>やぁ <KATA>ボク <HIRA>かいてーじん!"
@@ -9497,79 +9618,80 @@ TreeBitstreamText_45ee8:
 	line "ぜんこくかくちに ちらばった"
 	line "なかまを さがしているんだ!"
 	line "おもいでの<KATA>カケラ<HIRA>があればなぁ……<KATA>"
-	done
+	done %100110
 
 TreeBitstreamText_45f1d:
 	ctxt "<HIRA>うーん それはざんねん<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_45f28:
 	ctxt "<HIRA>あっ! おもいでの<KATA>カケラ!"
 	line "<HIRA>それちょーだい!<KATA>"
-	done
+	done %11101
 
 TreeBitstreamText_45f3d:
 	ctxt "………………<HIRA>みんなげんきそうだね"
 	line "ありがとう あんしんしたよ<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_45f56:
 	ctxt "<HIRA>みんなのおもいで みせてもらったよ"
 	line "ありがとう まんぞくしたよ"
 	line "おれいをさせてくれないかな?"
 	line "おもいでのゆびわを もらってよ<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_45f88:
 	ctxt "<HIRA>おもいでのゆびわ"
 	line "を てにいれた!<KATA>"
-	done
+	done %0101
 
 TreeBitstreamText_45f98:
 	ctxt "<HIRA>あっそうだ そのゆびわ"
 	line "ちょうろうに みせてくれないかな?"
 	line "にんげんぎらいの ちょうろうも"
 	line "きっとよろこんでくれるよ<KATA>"
-	done
+	done %01011
 
 TreeBitstreamText_45fc8:
 	ctxt "<HIRA>おもいでの<KATA>カケラ"
 	line "<HIRA>を わたした<KATA>"
-	done
+	done %011010
 
 TreeBitstreamText_45fd7:
 	ctxt "<HIRA>なかまと はぐれたけど"
 	line "<KATA>ボク<HIRA>は げんきだよ<KATA>"
-	done
+	done %1110
 
 TreeBitstreamText_45fec:
 	ctxt "<HIRA>みせてあげるよ! ぼくのおもいで!<KATA>"
-	done
+	done %000110
 
 TreeBitstreamText_45ffd:
 	ctxt "<HIRA>おもいでの<KATA>カケラ"
 	line "<HIRA>を てにいれた!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_4600d:
 	ctxt "<HIRA>やぁ! こんにちは"
 	line ""
 	line "<KATA>キミ<HIRA>のもっている <KATA>ロボポン<HIRA>の"
 	line "なまえを かえてあげようか?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46031:
 	ctxt "<HIRA>じゃあ すきな なまえを"
 	line "いれてね<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_46040:
 	ctxt "<HIRA>そっか"
 	line "きが むいたら またきてね<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_4604f:
 	ctxt "<HIRA>また きてね!<KATA>"
+	done
 
 TreeBitstreamText_46056:
 	ctxt "<HIRA>ここは <KATA>パーティー<HIRA>のはけんじょだ"
@@ -9594,30 +9716,31 @@ TreeBitstreamText_46056:
 	line "<KATA>スピーカー<HIRA>で おしらせするぜ!"
 	line "どうじに 3<KATA>パーティ<HIRA>まで"
 	line "はけんに だすことが できるぜ!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_46175:
 	ctxt "エレベーター<HIRA>が できたよ!<KATA>"
-	done
+	done %1011100
 
 TreeBitstreamText_46183:
 	ctxt "アイテム<HIRA>やが できたよ!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_4618f:
 	ctxt "パーツ<HIRA>やが できたよ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_4619b:
 	ctxt "<HIRA>けんきゅうじょが できたよ!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_461a9:
 	ctxt "<HIRA>なまえやが できたよ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_461b4:
 	ctxt "<HIRA>はけんじょが できたよ!<KATA>"
+	done
 
 TreeBitstreamText_461c0:
 	ctxt "バトルジェネシス5<HIRA>は どれも"
@@ -9626,7 +9749,7 @@ TreeBitstreamText_461c0:
 	line "のうりょくが だいじ だよな"
 	line "<KATA>レベル<HIRA>に <KATA>チップ<HIRA>に しゅぞく"
 	line "<KATA>ハッキリ<HIRA>いって あとは うんだな<KATA>"
-	done
+	done %011110
 
 TreeBitstreamText_46218:
 	ctxt "ヨンクー"
@@ -9639,18 +9762,18 @@ TreeBitstreamText_46218:
 	line "すばやさのたかい <KATA>ムーブ<HIRA>ぞくが"
 	line "ひかくてき ゆうりだぜ"
 	line "やってみるかい?<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_46285:
 	ctxt "ヨンクー"
 	line "<HIRA>そうかい……"
 	line "また きなよ<KATA>"
-	done
+	done %01001
 
 TreeBitstreamText_46294:
 	ctxt "ヨンクー"
 	line "<HIRA>なかなか やるね<KATA>"
-	done
+	done %1000000
 
 TreeBitstreamText_462a0:
 	ctxt "ロボ<HIRA>まる"
@@ -9663,17 +9786,18 @@ TreeBitstreamText_462a0:
 	line "<KATA>ボク<HIRA>みたいな <KATA>アーム<HIRA>ぞくが"
 	line "<KATA>パンチャー<HIRA>には ゆうりだよ"
 	line "しょうぶしてみる?<KATA>"
+	done
 
 TreeBitstreamText_4630b:
 	ctxt "ロボ<HIRA>まる"
 	line "それじゃあ またこんど"
 	line "しょうぶしようよ<KATA>"
-	done
+	done %0011101
 
 TreeBitstreamText_46322:
 	ctxt "ロボ<HIRA>まる"
 	line "<KATA>キミ<HIRA>は つよいね<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_46330:
 	ctxt "バグエル"
@@ -9686,19 +9810,19 @@ TreeBitstreamText_46330:
 	line "さきに <KATA>ヒットポイント<HIRA>が"
 	line "0になった ほうが まけだ!"
 	line "よしっ! しょうぶしようぜ!<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_463ad:
 	ctxt "バグエル"
 	line "<HIRA>えっ!!"
 	line "そんなあ しょうぶしようぜ!<KATA>"
-	done
+	done %00111
 
 TreeBitstreamText_463c3:
 	ctxt "バグエル"
 	line "<HIRA>くっそー"
 	line "つぎは まけないからな!<KATA>"
-	done
+	done %10100
 
 TreeBitstreamText_463d7:
 	ctxt "トリペル"
@@ -9713,19 +9837,19 @@ TreeBitstreamText_463d7:
 	line "そらをとべる<KATA>ロボポン<HIRA>のほうが"
 	line "よりとおくへ とべるんだ"
 	line "やってみる?<KATA>"
-	done
+	done %001111
 
 TreeBitstreamText_4646b:
 	ctxt "トリペル"
 	line "<HIRA>そらをとぶのは"
 	line "きもち いいのに……<KATA>"
-	done
+	done %10000
 
 TreeBitstreamText_46480:
 	ctxt "トリペル"
 	line "<HIRA>こんどは まけないよ!"
 	line "また あそぼうね<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_46496:
 	ctxt "ムサシ"
@@ -9737,143 +9861,146 @@ TreeBitstreamText_46496:
 	line "<HIRA>さあ さいきょうを めざせ!"
 	line "さあ せっしゃと"
 	line "たたかってみるか?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_464f1:
 	ctxt "ムサシ"
 	line "<HIRA>そうか それはざんねん<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_464ff:
 	ctxt "ムサシ"
 	line "<HIRA>おぬし なかなかやるな!<KATA>"
+	done
 
 TreeBitstreamText_4650d:
 	ctxt "   <HIRA>ようこそ <KATA>カプリ<HIRA>むらへ<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_4651c:
 	ctxt "<HIRA>ここは けんきゅう がくえん とし"
 	line "きれいで すみよい <KATA>リブラ<HIRA>のまち<KATA>"
-	done
+	done %0000000
 
 TreeBitstreamText_4653a:
 	ctxt "   <HIRA>このさき <KATA>リブラ<HIRA>がっこう<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46549:
 	ctxt "     リブラ<HIRA>がっこう<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_46554:
 	ctxt "   <HIRA>れきしと ぶんかの まち"
 	line "   <KATA>テール <HIRA>じょうか まち<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_4656c:
 	ctxt "   ロボポンドーム <HIRA>いりぐち<KATA>"
-	done
+	done %001011
 
 TreeBitstreamText_4657c:
 	ctxt "   <HIRA>このさき <KATA>テール<HIRA>じょう"
 	line "  いっぱんじんは はいれません<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46596:
 	ctxt "   <HIRA>ここは <KATA>ロボポンドーム"
-	done
+	done %1
 
 TreeBitstreamText_465a4:
 	ctxt "      テール<HIRA>じょう<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_465ae:
 	ctxt "カンテラ<HIRA>や<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_465b4:
 	ctxt "<HIRA>ようこそ!"
 	line "<KATA>アンテナ<HIRA>の さと <KATA>カリーユ<HIRA>まちへ!<KATA>"
-	done
+	done %0110
 
 TreeBitstreamText_465ca:
 	ctxt "   <HIRA>りょうしの むら <KATA>バンザ"
-	done
+	done %1110
 
 TreeBitstreamText_465d8:
 	ctxt "   <HIRA>ここは さばくの<KATA>オアシス"
 	line "       キャロル"
+	done
 
 TreeBitstreamText_465ec:
 	ctxt "       <HIRA>おねがい"
 	line ""
 	line " ぼうそう こういは きけんなので"
 	line " やめましょう   <KATA>クールス<HIRA>まち<KATA>"
-	done
+	done %000
 
 TreeBitstreamText_46610:
 	ctxt "    <HIRA>けわしさ <KATA>バクハツ!"
 	line "           グリース<HIRA>やま<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_46629:
 	ctxt "  サンダードーム<HIRA>へ <KATA>ウェルカム!"
 	line "        リーダー ワイルド"
-	done
+	done %1
 
 TreeBitstreamText_46645:
 	ctxt "<HIRA>にゅうたい うけつけじょ<KATA>"
-	done
+	done %0000
 
 TreeBitstreamText_46651:
 	ctxt "<HIRA>ここ <KATA>ダイン<HIRA>まち なら"
 	line "せんそうが おきても あんしん<KATA>"
-	done
+	done %00101
 
 TreeBitstreamText_46668:
 	ctxt "<HIRA>もとむ! わかくて <KATA>タフ<HIRA>な"
 	line "いろおとこ"
 	line "<KATA>アポロ<HIRA>ようさい かんりきょく<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_46686:
 	ctxt "ビッグヒット<HIRA>の うらには"
 	line "<KATA>ビッグ<HIRA>な おとしあなも ある"
 	line "つりは じんせいと にてる"
 	line "          つり せんにん<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_466b3:
 	ctxt "<HIRA>たかい <KATA>エサ<HIRA>を つかってみても"
 	line "いいことばかり とは かぎらない"
 	line "じんせいも たぶん そう"
 	line "          つり せんにん<KATA>"
-	done
+	done %00011
 
 TreeBitstreamText_466e2:
 	ctxt "   <HIRA>ばくだんの まち <KATA>ガーナ"
-	done
+	done %1101111
 
 TreeBitstreamText_466f0:
 	ctxt "  <HIRA>ようこそ <KATA>ゼロキャッスル<HIRA>へ<KATA>"
+	done
 
 TreeBitstreamText_466ff:
 	ctxt "   <HIRA>ここは <KATA>ゴルド<HIRA>へいげん<KATA>"
-	done
+	done %010110
 
 TreeBitstreamText_4670e:
 	ctxt "    オワリ<HIRA>の もり<KATA>"
-	done
+	done %01010
 
 TreeBitstreamText_46718:
 	ctxt "    <HIRA>かいてーじんの むら"
 	line "        <KATA>ポロ"
-	done
+	done %10
 
 TreeBitstreamText_4672b:
 	ctxt "     <HIRA>まるで げんじつ"
 	line "      まぼろしむら<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46740:
 	ctxt "   アミューズメント <HIRA>どうくつ"
@@ -9882,745 +10009,760 @@ TreeBitstreamText_46740:
 	line "うん こんじょー こうきしん"
 	line "などの すぐれない かたは"
 	line "ごえんりょ ください   <KATA>マスター"
-	done
+	done %111111
 
 TreeBitstreamText_46788:
 	ctxt "   <HIRA>ここは <KATA>エラブー<HIRA>どうくつ"
 	line "  ちか3かいに ちていこ あり"
 	line "つりびとは らくせきに ちゅうい"
 	line "          つり せんにん<KATA>"
-	done
+	done %0101
 
 TreeBitstreamText_467bb:
 	ctxt "リブラ<HIRA>がっこう 1かい<KATA>"
-	done
+	done %01101
 
 TreeBitstreamText_467c7:
 	ctxt "リブラ<HIRA>がっこう 2かい<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_467d3:
 	ctxt "リブラ<HIRA>がっこう 3かい<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_467df:
 	ctxt "リブラ<HIRA>がっこう 4かい<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_467eb:
 	ctxt "リブラ<HIRA>がっこう 5かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_467f7:
 	ctxt "リブラ<HIRA>がっこう 6かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_46803:
 	ctxt "リブラ<HIRA>がっこう 7かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_4680f:
 	ctxt "ギャル1<HIRA>の いえ<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46818:
 	ctxt "ギャル2<HIRA>の いえ<KATA>"
+	done
 
 TreeBitstreamText_46821:
 	ctxt "ギャル3<HIRA>の いえ<KATA>"
+	done
 
 TreeBitstreamText_4682a:
 	ctxt "ギャル4<HIRA>の いえ<KATA>"
+	done
 
 TreeBitstreamText_46833:
 	ctxt "ギャル5 <HIRA>の いえ<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_4683d:
 	ctxt "プカリ <HIRA>の いえ<KATA>"
-	done
+	done %1100
 
 TreeBitstreamText_46846:
 	ctxt "ダイーン <HIRA>の いえ<KATA>"
-	done
+	done %01100
 
 TreeBitstreamText_4684f:
 	ctxt "アッポー <HIRA>の いえ<KATA>"
-	done
+	done %110111
 
 TreeBitstreamText_46859:
 	ctxt "<HIRA>ひかる の いえ<KATA>"
-	done
+	done %1011
 
 TreeBitstreamText_46861:
 	ctxt "<HIRA>じゅりあ の いえ<KATA>"
-	done
+	done %0110111
 
 TreeBitstreamText_4686b:
 	ctxt "エラブー<HIRA>どうくつ 1かい<KATA>"
-	done
+	done %101001
 
 TreeBitstreamText_46878:
 	ctxt "エラブー<HIRA>どうくつ ちか1かい<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_46886:
 	ctxt "エラブー<HIRA>どうくつ ちか2かい<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_46894:
 	ctxt "エラブー<HIRA>どうくつ ちか3かい<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_468a2:
 	ctxt "<HIRA>しょう ほうそうとう 2かい<KATA>"
+	done
 
 TreeBitstreamText_468ae:
 	ctxt "ミニ <HIRA>でんぱとう 1かい<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_468ba:
 	ctxt "ミニ <HIRA>でんぱとう ちか1かい<KATA>"
-	done
+	done %101101
 
 TreeBitstreamText_468c8:
 	ctxt "<HIRA>だい ほうそうとう 1かい<KATA>"
-	done
+	done %1011
 
 TreeBitstreamText_468d4:
 	ctxt "<HIRA>だい ほうそうとう 2かい<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_468e0:
 	ctxt "<HIRA>だい ほうそうとう 3かい<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_468ec:
 	ctxt "<HIRA>だい ほうそうとう 4かい<KATA>"
-	done
+	done %011
 
 TreeBitstreamText_468f8:
 	ctxt "<HIRA>だい ほうそうとう 5かい<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_46904:
 	ctxt "<HIRA>だい ほうそうとう 6かい<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_46910:
 	ctxt "<HIRA>だい ほうそうとう 7かい<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_4691c:
 	ctxt "<HIRA>いどの なか<KATA>"
-	done
+	done %110001
 
 TreeBitstreamText_46923:
 	ctxt "グリース<HIRA>やま 1かい<KATA>"
-	done
+	done %110110
 
 TreeBitstreamText_4692e:
 	ctxt "グリース<HIRA>やま 2かい<KATA>"
-	done
+	done %10110
 
 TreeBitstreamText_46939:
 	ctxt "グリース<HIRA>やま 3かい<KATA>"
-	done
+	done %10110
 
 TreeBitstreamText_46944:
 	ctxt "グリース<HIRA>やま 4かい<KATA>"
-	done
+	done %10110
 
 TreeBitstreamText_4694f:
 	ctxt "グリース<HIRA>やま ちか1かい<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_4695b:
 	ctxt "グリース<HIRA>やま ちか2かい<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_46967:
 	ctxt "グリース<HIRA>やま ちか3かい<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_46973:
 	ctxt "グリース<HIRA>やま さかみち<KATA>"
+	done
 
 TreeBitstreamText_4697e:
 	ctxt "サンダードーム"
-	done
+	done %1101000
 
 TreeBitstreamText_46986:
 	ctxt "バトラー<HIRA>の とう 1かい<KATA>"
+	done
 
 TreeBitstreamText_46991:
 	ctxt "バトラー<HIRA>の とう 2かい<KATA>"
-	done
+	done %0101101
 
 TreeBitstreamText_4699d:
 	ctxt "バトラー<HIRA>の とう 3かい<KATA>"
-	done
+	done %0101101
 
 TreeBitstreamText_469a9:
 	ctxt "バトラー<HIRA>の とう 4かい<KATA>"
-	done
+	done %0101101
 
 TreeBitstreamText_469b5:
 	ctxt "バトラー<HIRA>の とう 5かい<KATA>"
-	done
+	done %101101
 
 TreeBitstreamText_469c1:
 	ctxt "シールダー<HIRA>の とう 1かい<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_469cd:
 	ctxt "シールダー<HIRA>の とう 2かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_469d9:
 	ctxt "シールダー<HIRA>の とう 3かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_469e5:
 	ctxt "シールダー<HIRA>の とう 4かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_469f1:
 	ctxt "シールダー<HIRA>の とう 5かい<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_469fd:
 	ctxt "スピーダー<HIRA>の とう 1かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_46a0a:
 	ctxt "スピーダー<HIRA>の とう 2かい<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_46a17:
 	ctxt "スピーダー<HIRA>の とう 3かい<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_46a24:
 	ctxt "スピーダー<HIRA>の とう 4かい<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_46a31:
 	ctxt "スピーダー<HIRA>の とう 5かい<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_46a3e:
 	ctxt "ジャンパー<HIRA>の とう 1かい<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_46a4b:
 	ctxt "ジャンパー<HIRA>の とう 2かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_46a58:
 	ctxt "ジャンパー<HIRA>の とう 3かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_46a65:
 	ctxt "ジャンパー<HIRA>の とう 4かい<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_46a72:
 	ctxt "ジャンパー<HIRA>の とう 5かい<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_46a7f:
 	ctxt "パンチャー<HIRA>の とう 1かい<KATA>"
-	done
+	done %011001
 
 TreeBitstreamText_46a8c:
 	ctxt "パンチャー<HIRA>の とう 2かい<KATA>"
-	done
+	done %11001
 
 TreeBitstreamText_46a99:
 	ctxt "パンチャー<HIRA>の とう 3かい<KATA>"
-	done
+	done %11001
 
 TreeBitstreamText_46aa6:
 	ctxt "パンチャー<HIRA>の とう 4かい<KATA>"
-	done
+	done %11001
 
 TreeBitstreamText_46ab3:
 	ctxt "パンチャー<HIRA>の とう 5かい<KATA>"
-	done
+	done %1001
 
 TreeBitstreamText_46ac0:
 	ctxt "カマットタワー 1<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46aca:
 	ctxt "カマットタワー 2<HIRA>かい<KATA>"
-	done
+	done %1001110
 
 TreeBitstreamText_46ad5:
 	ctxt "カマットタワー 3<HIRA>かい<KATA>"
-	done
+	done %1001110
 
 TreeBitstreamText_46ae0:
 	ctxt "カマットタワー 4<HIRA>かい<KATA>"
-	done
+	done %1001110
 
 TreeBitstreamText_46aeb:
 	ctxt "カマットタワー 5<HIRA>かい<KATA>"
-	done
+	done %001110
 
 TreeBitstreamText_46af6:
 	ctxt "カマットタワー 6<HIRA>かい<KATA>"
-	done
+	done %001110
 
 TreeBitstreamText_46b01:
 	ctxt "カマットタワー 7<HIRA>かい<KATA>"
-	done
+	done %001110
 
 TreeBitstreamText_46b0c:
 	ctxt "<HIRA>えっけんの ま<KATA>"
-	done
+	done %0101101
 
 TreeBitstreamText_46b14:
 	ctxt "<HIRA>つりぐや<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46b1a:
 	ctxt "ゼロキャッスル1<HIRA>かい<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_46b25:
 	ctxt "ゼロキャッスル2<HIRA>かい<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46b30:
 	ctxt "ゼロキャッスル3<HIRA>かい<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46b3b:
 	ctxt "ゼロキャッスル4<HIRA>かい<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46b46:
 	ctxt "ゼロキャッスル5<HIRA>かい<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46b51:
 	ctxt "ゼロキャッスル6<HIRA>かい<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46b5c:
 	ctxt "ゼロキャッスル7<HIRA>かい<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46b67:
 	ctxt "ゼロキャッスル8<HIRA>かい<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_46b72:
 	ctxt "ゼロキャッスル9<HIRA>かい<KATA>"
+	done
 
 TreeBitstreamText_46b7d:
 	ctxt "ゼロキャッスル10<HIRA>かい<KATA>"
-	done
+	done %1101001
 
 TreeBitstreamText_46b8a:
 	ctxt "ツキガ<HIRA>おか 3かい<KATA>"
-	done
+	done %011010
 
 TreeBitstreamText_46b94:
 	ctxt "ツキガ<HIRA>おか 2かい<KATA>"
-	done
+	done %011010
 
 TreeBitstreamText_46b9e:
 	ctxt "ツキガ<HIRA>おか 1かい<KATA>"
-	done
+	done %0011010
 
 TreeBitstreamText_46ba8:
 	ctxt "ツキガ<HIRA>おか ちか1かい<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_46bb3:
 	ctxt "ツキガ<HIRA>おか ちか2かい<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46bbe:
 	ctxt "ツキガ<HIRA>おか ちか3かい<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46bc9:
 	ctxt "ツキガ<HIRA>おか ちか4かい<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46bd4:
 	ctxt "ツキガ<HIRA>おか ちか5かい<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46bdf:
 	ctxt "ツキガ<HIRA>おか ちか6かい<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46bea:
 	ctxt "ツキガ<HIRA>おか ちか7かい<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46bf5:
 	ctxt "ツキガ<HIRA>おか ちか8かい<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_46c00:
 	ctxt "<HIRA>ちか1かい そうこ<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_46c09:
 	ctxt "2<HIRA>かい <KATA>アイテム<HIRA>や<KATA>"
-	done
+	done %11000
 
 TreeBitstreamText_46c14:
 	ctxt "3<HIRA>かい <KATA>パーツ<HIRA>や<KATA>"
-	done
+	done %1000
 
 TreeBitstreamText_46c1f:
 	ctxt "4<HIRA>かい けんきゅうじょ<KATA>"
-	done
+	done %1001011
 
 TreeBitstreamText_46c2b:
 	ctxt "5<HIRA>かい <KATA>トイレ"
-	done
+	done %01101
 
 TreeBitstreamText_46c33:
 	ctxt "6<HIRA>かい <KATA>バス"
-	done
+	done %001101
 
 TreeBitstreamText_46c3b:
 	ctxt "7<HIRA>かい こういしつ<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_46c44:
 	ctxt "8<HIRA>かい はけんじょ<KATA>"
-	done
+	done %00010
 
 TreeBitstreamText_46c4e:
 	ctxt "9<HIRA>かい <KATA>レクリエーション ルーム"
-	done
+	done %11
 
 TreeBitstreamText_46c5d:
 	ctxt "10<HIRA>かい <KATA>ゲームコーナー"
-	done
+	done %111
 
 TreeBitstreamText_46c6a:
 	ctxt "11<HIRA>かい かいぎしつ<KATA>"
-	done
+	done %110000
 
 TreeBitstreamText_46c75:
 	ctxt "12<HIRA>かい <KATA>リラックス ルーム"
-	done
+	done %1001
 
 TreeBitstreamText_46c83:
 	ctxt "13<HIRA>かい <KATA>サウナ"
-	done
+	done %1100
 
 TreeBitstreamText_46c8c:
 	ctxt "14<HIRA>かい <KATA>カウンセリング ルーム"
+	done
 
 TreeBitstreamText_46c9b:
 	ctxt "15<HIRA>かい しちょうかくしつ<KATA>"
-	done
+	done %01011
 
 TreeBitstreamText_46ca8:
 	ctxt "16<HIRA>かい あきべや<KATA>"
-	done
+	done %01010
 
 TreeBitstreamText_46cb3:
 	ctxt "17<HIRA>かい おうせつしつ<KATA>"
-	done
+	done %0110010
 
 TreeBitstreamText_46cbf:
 	ctxt "18<HIRA>かい しゃちょうしつ<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46ccb:
 	ctxt "19<HIRA>かい てんじじょう<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_46cd7:
 	ctxt "20<HIRA>かい てんぼうだい<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_46ce3:
 	ctxt "1<HIRA>かい うけつけ<KATA>"
-	done
+	done %111001
 
 TreeBitstreamText_46cec:
 	ctxt "<HIRA>ちかしつ ちか1かい<KATA>"
-	done
+	done %0111
 
 TreeBitstreamText_46cf6:
 	ctxt "<HIRA>ちかしつ ちか2かい<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_46d00:
 	ctxt "ゼロ<HIRA>のひこうてい 2かい<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_46d0c:
 	ctxt "ゼロ<HIRA>のひこうてい 1かい<KATA>"
-	done
+	done %0010
 
 TreeBitstreamText_46d18:
 	ctxt "ロボポン<HIRA>のしゅぎょうに さいてき"
 	line "      <KATA>ツキガ<HIRA>おか<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46d31:
 	ctxt "     テール<HIRA>じょう<KATA>"
-	done
+	done %010000
 
 TreeBitstreamText_46d3b:
 	ctxt "6<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d45:
 	ctxt "1<HIRA>かいへ まいります<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46d4f:
 	ctxt "2<HIRA>かいへ まいります<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46d59:
 	ctxt "3<HIRA>かいへ まいります<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46d63:
 	ctxt "4<HIRA>かいへ まいります<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46d6d:
 	ctxt "5<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d77:
 	ctxt "7<HIRA>かいへ まいります<KATA>"
+	done
 
 TreeBitstreamText_46d81:
 	ctxt "8<HIRA>かいへ まいります<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46d8b:
 	ctxt "9<HIRA>かいへ まいります<KATA>"
-	done
+	done %0110101
 
 TreeBitstreamText_46d96:
 	ctxt "10<HIRA>かいへ まいります<KATA>"
-	done
+	done %111110
 
 TreeBitstreamText_46da2:
 	ctxt "ゼロドーム<HIRA>へ まいります<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_46daf:
 	ctxt "<HIRA>でぐちせんよう<KATA>"
-	done
+	done %110101
 
 TreeBitstreamText_46db8:
 	ctxt "    <HIRA>しれんのどうくつ<KATA>"
-	done
+	done %000000
 
 TreeBitstreamText_46dc3:
 	ctxt "オワリ<HIRA>のもり<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46dca:
 	ctxt "   メイジ<HIRA>どうくつ<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_46dd4:
 	ctxt "   <HIRA>かいてい<KATA>ヘルスセンター"
-	done
+	done %11001
 
 TreeBitstreamText_46de0:
 	ctxt "<HIRA>もちものが いっぱいなので"
 	line "そうこに ほかん します<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_46df6:
 	ctxt "<HIRA>そうこが いっぱいなので"
 	line "なにか すてて ください<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46e0b:
 	ctxt "<PLAYER><HIRA>の <KATA>ロボポン<HIRA>は"
 	line "げんきに なった<KATA>"
-	done
+	done %1100
 
 TreeBitstreamText_46e1d:
 	ctxt "<HIRA>そこの ほうで なにか <KATA>キラキラ"
 	line "<HIRA>ひかるものが ある!"
 	line "しらべますか?<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_46e3b:
 	ctxt "<HIRA>みずが とても きれいだった………<KATA>"
-	done
+	done %100100
 
 TreeBitstreamText_46e4b:
 	ctxt "<HIRA>いまの <KATA><PLAYER><HIRA>に"
 	line "そんな ひまなど なかった<KATA>"
-	done
+	done %01011
 
 TreeBitstreamText_46e5d:
 	ctxt "<HIRA>こんどは <KATA>イケ<HIRA>そうな きがした<KATA>"
-	done
+	done %100110
 
 TreeBitstreamText_46e6c:
 	ctxt "<HIRA>とびらは あかない"
 	line ""
 	line "なかから おんがくが きこえる………<KATA>"
-	done
+	done %001100
 
 TreeBitstreamText_46e84:
 	ctxt "ロボポン<HIRA>の ほんが いっぱいある!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_46e95:
 	ctxt "<HIRA>きたいできる ほんは なかった………<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_46ea4:
 	ctxt "<HIRA>むずかしそうな ほんが"
 	line "いっぱい おいてある!<KATA>"
-	done
+	done %11
 
 TreeBitstreamText_46eb8:
 	ctxt "コミックボンボン<HIRA>が"
 	line "いっぱい おいてある!!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_46ecc:
 	ctxt "ロボポン<HIRA>に かんけいの ある"
 	line "ものが はいっている ようだ<KATA>"
-	done
+	done %100111
 
 TreeBitstreamText_46ee5:
 	ctxt "<HIRA>たいした ものは"
 	line "はいっていない ようだ<KATA>"
-	done
+	done %1111
 
 TreeBitstreamText_46ef5:
 	ctxt "ロボポン<HIRA>に かんする <KATA>ニュース<HIRA>が"
 	line "ほうえい されている"
 	line "げんいんふめいで ぼうそう<KATA>ロボポン<HIRA>が"
 	line "ふえてきている……<KATA>"
-	done
+	done %1100101
 
 TreeBitstreamText_46f28:
 	ctxt "<HIRA>たたかってみる?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46f30:
 	ctxt "<HIRA>みずのなかに"
 	line "もぐるのかい?<KATA>"
-	done
+	done %0000110
 
 TreeBitstreamText_46f3e:
 	ctxt "<PLAYER>"
 	line "<HIRA>うわーーー<KATA>"
-	done
+	done %01100
 
 TreeBitstreamText_46f46:
 	ctxt "<PLAYER>"
 	line "<HIRA>ちぇっ ぜんぜん<KATA>ダメ<HIRA>だ"
 	line "ちっとも つれないや<KATA>"
-	done
+	done %10010
 
 TreeBitstreamText_46f5e:
 	ctxt "<PLAYER>"
 	line "<HIRA>おっ ひいたぞ!"
 	line ""
 	line "でも つれるきがしないや<KATA>"
-	done
+	done %11110
 
 TreeBitstreamText_46f73:
 	ctxt "シュノーケル<HIRA>を つかって"
 	line "すいちゅうに もぐりますか?<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_46f8a:
 	ctxt "シュノーケル<HIRA>を もっていれば"
 	line "すいちゅうに もぐることができる<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_46fa5:
 	ctxt "<PLAYER>"
 	line "<HIRA>もっと たかい<KATA>エサ<HIRA>じゃないと"
 	line "つれないのかな?<KATA>"
-	done
+	done %1101
 
 TreeBitstreamText_46fbb:
 	ctxt "<HIRA>ざんねん"
 	line "もういちど たたかう?<KATA>"
-	done
+	done %1001010
 
 TreeBitstreamText_46fca:
 	ctxt "パーティー<HIRA>が ぜんめつした<KATA>"
+	done
 
 TreeBitstreamText_46fd8:
 	ctxt ""
 	line "     <HIRA>これは<KATA>ダミー<HIRA>です<KATA>"
-	done
+	done %010110
 
 TreeBitstreamText_46fe6:
 	ctxt "<HIRA>しゃめんが きゅうで"
 	line "このままでは すすめない<KATA>"
+	done
 
 TreeBitstreamText_46ffa:
 	ctxt "<PLAYER>"
 	line "<HIRA>りくけい <KATA>ムーブ<HIRA>ぞく<KATA>ロボポン<HIRA>の"
 	line "あつかいかたが わからないや……<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_4701b:
 	ctxt "テレビ<HIRA>の<KATA>スイッチ<HIRA>を いれた<KATA>"
-	done
+	done %01001
 
 TreeBitstreamText_47029:
 	ctxt "テレビ<HIRA>の<KATA>スイッチ<HIRA>を きった<KATA>"
-	done
+	done %01001
 
 TreeBitstreamText_47037:
 	ctxt "テレビ<HIRA>は きえている<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_47041:
 	ctxt "スイッチ<HIRA>を おしても"
 	line "なにも おこらなかった<KATA>"
-	done
+	done %000010
 
 TreeBitstreamText_47053:
 	ctxt "テレビアニメ ロボポン <HIRA>が"
 	line "ほうえい されている!<KATA>"
-	done
+	done %010
 
 TreeBitstreamText_4706a:
 	ctxt "テレビ<HIRA>がめんには はげしく おどる"
 	line "<KATA>アイドル<HIRA>の<KATA>アムロン<HIRA>が うつっている"
 	line "じっと みていると なぜか きが"
 	line "とおくなって いくようだ……<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_470a2:
 	ctxt "<HIRA>しょいん"
 	line "やあ いらっしゃい"
 	line "ここは<KATA>ロボポン<HIRA>の けんきゅうじょだ"
 	line "ようけんは なにかな?<KATA>"
-	done
+	done %0100011
 
 TreeBitstreamText_470c8:
 	ctxt "バード<HIRA>じまへ"
 	line "とんでゆくのかい?<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_470d8:
 	ctxt "<HIRA>みずのなかに もぐれる"
 	line "<KATA>ロボポン<HIRA>が いるらしい……<KATA>"
+	done
 
 TreeBitstreamText_470f0:
 	ctxt "グレイテスト5 <HIRA>いじょうの"
@@ -10629,12 +10771,12 @@ TreeBitstreamText_470f0:
 	line "しんの のうりょくは つかえない"
 	line "<KATA>グレイテスト5<HIRA>の しょうごうを"
 	line "てに いれなければ!<KATA>"
-	done
+	done %1001101
 
 TreeBitstreamText_47136:
 	ctxt "<HIRA>そらを とべる <KATA>ロボポン<HIRA>が"
 	line "いるらしい………<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_4714c:
 	ctxt "グレイテスト4 <HIRA>いじょうの"
@@ -10643,27 +10785,27 @@ TreeBitstreamText_4714c:
 	line "しんの のうりょくは つかえない"
 	line "<KATA>グレイテスト4<HIRA>の しょうごうを"
 	line "てに いれなければ!<KATA>"
-	done
+	done %1001101
 
 TreeBitstreamText_47192:
 	ctxt "パンチャー<HIRA>で"
 	line "<KATA>バトロボ<HIRA>しょうぶだ!!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_471a6:
 	ctxt "ジャンパー<HIRA>で"
 	line "<KATA>バトロボ<HIRA>しょうぶだ!!<KATA>"
-	done
+	done %0101010
 
 TreeBitstreamText_471bb:
 	ctxt "シールダー<HIRA>で"
 	line "<KATA>バトロボ<HIRA>しょうぶだ!!<KATA>"
-	done
+	done %1001011
 
 TreeBitstreamText_471cf:
 	ctxt "スピーダー<HIRA>で"
 	line "<KATA>バトロボ<HIRA>しょうぶだ!!<KATA>"
-	done
+	done %101010
 
 TreeBitstreamText_471e4:
 	ctxt "ハンター"
@@ -10677,83 +10819,84 @@ TreeBitstreamText_471e4:
 	line "おたのしみ!"
 	line "とても めずらしいものが"
 	line "てに はいることも あるらしいよ<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_4725f:
 	ctxt "ハンター"
 	line "リモコンシャワー<HIRA>を"
 	line "あびせるかい?<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_47272:
 	ctxt "<HIRA>さあ ひかりを"
 	line "あてるのだ!<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_4727f:
 	ctxt "<HIRA>たからばこに"
 	line "ひかりを あてた!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_4728d:
 	ctxt "リモコン<HIRA>の じゅしんに"
 	line "しっぱい しちゃった<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_472a0:
 	ctxt "<HIRA>もういちど"
 	line "ひかりを あてますか<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_472ae:
 	ctxt "<HIRA>たからを とりますか?<KATA>"
-	done
+	done %0000100
 
 TreeBitstreamText_472b9:
 	ctxt "ハンター"
 	line "<HIRA>どうだい?"
 	line "いい たからもの だったかい?<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_472ce:
 	ctxt "<HIRA>じゅしんをやめたよ<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_472d8:
 	ctxt "<PLAYER>"
 	line "カギ<HIRA>が かかっていて"
 	line "あかないや<KATA>"
+	done
 
 TreeBitstreamText_472e7:
 	ctxt "<HIRA>とりかえますか?<KATA>"
-	done
+	done %0011101
 
 TreeBitstreamText_472f0:
 	ctxt "<HIRA>ねぇねぇ あたしと"
 	line "<KATA>バトロボ<HIRA>しょうぶしない?<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_47306:
 	ctxt "<HIRA>えーっ! つまんなーい"
 	line "しょうぶしようよー!<KATA>"
-	done
+	done %00011
 
 TreeBitstreamText_47319:
 	ctxt "<HIRA>たのしかったわ!"
 	line "また しょうぶしましょう!<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_4732b:
 	ctxt "バトロボ レベル20"
-	done
+	done %00110
 
 TreeBitstreamText_47337:
 	ctxt "バトロボ レベル30"
-	done
+	done %00110
 
 TreeBitstreamText_47343:
 	ctxt "バトロボ レベル40"
-	done
+	done %00110
 
 TreeBitstreamText_4734f:
 	ctxt "<HIRA>だいじょうぶ あんしんして!"
@@ -10764,7 +10907,7 @@ TreeBitstreamText_4734f:
 	line "かんがえれば いいのよ!"
 	line "よわい だったら つよい!"
 	line "もらえない は もらえる!<KATA>"
-	done
+	done %0100011
 
 TreeBitstreamText_473b2:
 	ctxt "<HIRA>おっ よくみる<KATA>カオ <HIRA>でもないね"
@@ -10775,7 +10918,7 @@ TreeBitstreamText_473b2:
 	line "まさに げんじつの せかいさ"
 	line "だけど <KATA>ボク<HIRA>らでさえ ひるま"
 	line "でかけると よるまで かえれないよ<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_47416:
 	ctxt "<HIRA>このむら ゆいいつの めいしょは"
@@ -10794,7 +10937,7 @@ TreeBitstreamText_47416:
 	line "たどりつくと なにも もらえないわ"
 	line "こんなに つまらない めいしょは"
 	line "どこ さがしたって あるでしょ?<KATA>"
-	done
+	done %0010001
 
 TreeBitstreamText_474d4:
 	ctxt "オラ <HIRA>たしかに みてねぇだ!"
@@ -10803,7 +10946,7 @@ TreeBitstreamText_474d4:
 	line "………いや <KATA>ウソ<HIRA>だって!"
 	line "ありゃ ぜったい まぼろしだ!"
 	line "みなみの うみで みてねぇだ!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_47516:
 	ctxt "<HIRA>どうやら ここの ひとたちって"
@@ -10818,7 +10961,7 @@ TreeBitstreamText_47516:
 	line "きこえる ばあい!"
 	line "みんな とても <KATA>ヒネクレ<HIRA>もので もう"
 	line "いってることが よく わからない!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_475a7:
 	ctxt "<HIRA>ん?"
@@ -10829,6 +10972,7 @@ TreeBitstreamText_475a7:
 	line "もう さっぱり いないぜ!"
 	line "それでも あきらめない なんて"
 	line "まるで かしこくないと おもうぜ!<KATA>"
+	done
 
 TreeBitstreamText_475f4:
 	ctxt "<HIRA>わたしは このまちが だいすきだ!"
@@ -10839,7 +10983,7 @@ TreeBitstreamText_475f4:
 	line "<KATA>ビバ <HIRA>まぼろしむら <KATA>フォーエバー!"
 	line "<HIRA>わたしは ひじょーに <KATA>ヒジョー<HIRA>に"
 	line "よろこんでいる!<KATA>"
-	done
+	done %110
 
 TreeBitstreamText_47652:
 	ctxt "<HIRA>まだ <KATA>ダンジョン<HIRA>は ちっとも"
@@ -10850,7 +10994,7 @@ TreeBitstreamText_47652:
 	line "ぜひ いかないことを すすめるよ"
 	line "それでも いきたい っていうなら"
 	line "あんた ほんとうに てんさいだよ!<KATA>"
-	done
+	done %00
 
 TreeBitstreamText_476b6:
 	ctxt "<HIRA>ふつうの たからばこは せかいで"
@@ -10861,6 +11005,7 @@ TreeBitstreamText_476b6:
 	line "そんなこと しなくても よいの!"
 	line "でも わしは とくしゅが 7<KATA>コ<HIRA>なんて"
 	line "ひとことも いってないの!<KATA>"
+	done
 
 TreeBitstreamText_47722:
 	ctxt "<HIRA>おや? おやおや??"
@@ -10871,7 +11016,7 @@ TreeBitstreamText_47722:
 	line "かんこう? しごと? いきぬき?"
 	line "いまは かいてい<KATA>ヘルスセンター<HIRA>に"
 	line "いるよ そんちょうさんなら<KATA>"
-	done
+	done %10110
 
 TreeBitstreamText_47780:
 	ctxt "<HIRA>ちょっとは すきでも"
@@ -10886,7 +11031,7 @@ TreeBitstreamText_47780:
 	line "じぶんたちが こまる までは"
 	line "しらんぷりだもん <KATA>ボク<HIRA>たちが"
 	line "とっくに ひがいを うけてても<KATA>"
-	done
+	done %1110111
 
 TreeBitstreamText_4780b:
 	ctxt "<HIRA>うわさでは かいていの どこかに"
@@ -10903,7 +11048,7 @@ TreeBitstreamText_4780b:
 	line "うみのそこ なんて <KATA>ムリ<HIRA>だよ!"
 	line "だって いきが つづかなくて"
 	line "おぼれちゃう<KATA>モン!"
-	done
+	done %011111
 
 TreeBitstreamText_478bb:
 	ctxt "<HIRA>うまれたんだ ここで ぼくたちは"
@@ -10918,7 +11063,7 @@ TreeBitstreamText_478bb:
 	line "すきに なったんだ にんげんを"
 	line "なにしてるかな? いまごろ"
 	line "やってるかな げんきに……<KATA>"
-	done
+	done %11011
 
 TreeBitstreamText_47943:
 	ctxt "<HIRA>いるんだよ そらを とべる"
@@ -10927,7 +11072,7 @@ TreeBitstreamText_47943:
 	line "きみの つよさも"
 	line "とべないよ きみが よわいと"
 	line "でも ひとっとびさ うみなんて<KATA>"
-	done
+	done %000110
 
 TreeBitstreamText_47980:
 	ctxt "<HIRA>かいてーじんって かわいいよね!"
@@ -10937,6 +11082,7 @@ TreeBitstreamText_47980:
 	line "え? それって しつれいなの?"
 	line "………ふーん"
 	line "よく わかんない<KATA>"
+	done
 
 TreeBitstreamText_479b4:
 	ctxt "………<HIRA>うーむ"
@@ -10956,7 +11102,7 @@ TreeBitstreamText_479b4:
 	line "だいたい にんげんは なにもの?"
 	line ""
 	line "ぬおお <KATA>パ パ パニック!!"
-	done
+	done %1101110
 
 TreeBitstreamText_47a75:
 	ctxt "トリペラ"
@@ -10969,57 +11115,59 @@ TreeBitstreamText_47a75:
 	line "そしたら さんばしのさきっちょに"
 	line "いってごらん"
 	line "<KATA>バード<HIRA>じまに ゆけるはずだよ<KATA>"
-	done
+	done %00100
 
 TreeBitstreamText_47aea:
 	ctxt "ボク<HIRA>たちの かんげいの おどりを"
 	line "ゆっくりと ながめていってよ<KATA>"
-	done
+	done %11011
 
 TreeBitstreamText_47b05:
 	ctxt "<HIRA>よしっ それじゃあ さっそく"
 	line "<KATA>ミュージック スタート!!"
-	done
+	done %110
 
 TreeBitstreamText_47b1d:
 	ctxt "<HIRA>おどりを みれば"
 	line "げんきが でてくるのに………<KATA>"
+	done
 
 TreeBitstreamText_47b32:
 	ctxt "<HIRA>ちょうろう"
 	line "ああ わしらの うみが"
 	line "よごされて ゆくぅ………<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_47b4c:
 	ctxt "<HIRA>こんにちは かいてーじんです"
 	line "どうぞ よろしく!<KATA>"
-	done
+	done %0011
 
 TreeBitstreamText_47b61:
 	ctxt "<HIRA>ひさしぶりだな ちじょうの"
 	line "にんげんを みるのは……<KATA>"
+	done
 
 TreeBitstreamText_47b78:
 	ctxt "<HIRA>ゆっくり してってね"
 	line "なんにも ないところ だけどさ<KATA>"
-	done
+	done %00101
 
 TreeBitstreamText_47b8e:
 	ctxt "<HIRA>ちじょうの なかまたちも"
 	line "げんきに やってるようだね!<KATA>"
-	done
+	done %0
 
 TreeBitstreamText_47ba5:
 	ctxt "2<HIRA>かいの ゆうぎじょうにも"
 	line "よっていってよ!<KATA>"
-	done
+	done %10011
 
 TreeBitstreamText_47bb9:
 	ctxt "<HIRA>かんげいのおどりを"
 	line "みてってよ"
 	line "きっと げんきになるよ!<KATA>"
-	done
+	done %0001
 
 TreeBitstreamText_47bd1:
 	ctxt "<HIRA>ちょうろう"
@@ -11035,6 +11183,7 @@ TreeBitstreamText_47bd1:
 	line "にんげんも いるんだな"
 	line "かんげいするよ <KATA><PLAYER><HIRA>くん!"
 	line "さぁ はいりたまえ!<KATA>"
+	done
 
 TreeBitstreamText_47c51:
 	ctxt "<HIRA>ちょうろう"
@@ -11049,12 +11198,13 @@ TreeBitstreamText_47c51:
 	line "せっかく ここまできてもらって"
 	line "もうしわけないんだが……"
 	line "かえってもらえないかね?<KATA>"
+	done
 
 TreeBitstreamText_47cc9:
 	ctxt "チケット<HIRA>や"
 	line "<KATA>ダンジョン<HIRA>に <KATA>チャレンジ<HIRA>するなら"
 	line "<KATA>チケット <HIRA>かってってよ<KATA>"
-	done
+	done %111
 
 TreeBitstreamText_47ce9:
 	ctxt "チケット<HIRA>や"
@@ -11064,27 +11214,27 @@ TreeBitstreamText_47ce9:
 	line "ぶじに かえってくるなんて……"
 	line "<KATA>キミ<HIRA>の ゆうきと どりょくを"
 	line "たたえて しょうひんをわたそう!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_47d38:
 	ctxt "ソフト <HIRA>じばく"
 	line "を もらった!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_47d46:
 	ctxt "パーツ <HIRA>ぶとう<KATA>ハンド"
 	line "<HIRA>を もらった!<KATA>"
-	done
+	done %01
 
 TreeBitstreamText_47d58:
 	ctxt "ロボポン クラゲルゲ"
 	line "<HIRA>を もらった!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_47d6a:
 	ctxt "ロボポン ボルボット"
 	line "<HIRA>を もらった!<KATA>"
-	done
+	done %101
 
 TreeBitstreamText_47d7c:
 	ctxt "チケット<HIRA>や"
@@ -11092,40 +11242,40 @@ TreeBitstreamText_47d7c:
 	line "<KATA>クリア<HIRA>できないよぉ"
 	line "まだ だれも<KATA>クリア"
 	line "<HIRA>してないからねぇ<KATA>"
-	done
+	done %001
 
 TreeBitstreamText_47da2:
 	ctxt "チケット<HIRA>や"
 	line "いちど <KATA>クリア<HIRA>した ところだからねぇ"
 	line "ものたりないんじゃないの?<KATA>"
-	done
+	done %1010
 
 TreeBitstreamText_47dc3:
 	ctxt "チケット<HIRA>や"
 	line "ん? なんだい いまさら"
 	line "おじけづいたのかい?<KATA>"
-	done
+	done %0000011
 
 TreeBitstreamText_47ddc:
 	ctxt "チケット<HIRA>や"
 	line "かいだんを のぼれば いつでも"
 	line "ちじょうにもどれるからね<KATA>"
-	done
+	done %10
 
 TreeBitstreamText_47dfa:
 	ctxt "チケット<HIRA>や"
 	line "じゃあ がんばって!<KATA>"
-	done
+	done %1
 
 TreeBitstreamText_47e09:
 	ctxt "チケット<HIRA>や"
 	line "そうかい またきな!<KATA>"
-	done
+	done %001011
 
 TreeBitstreamText_47e17:
 	ctxt " <HIRA>さいかそうまで とうたつした!!"
 	line "   ちじょうに もどろう<KATA>"
-	done
+	done %0110110
 
 TreeBitstreamText_47e30:
 	ctxt "<HIRA>だいくの<KATA>ケン<HIRA>さん"
@@ -11133,5 +11283,5 @@ TreeBitstreamText_47e30:
 	line ""
 	line "おかねは かえせないけど"
 	line "また いらいしてくれよな<KATA>"
-	done
+	done %10101011001011111010110111011010000011101100111011011011101111110101110110111000101101111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
