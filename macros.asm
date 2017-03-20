@@ -133,6 +133,10 @@ callba_hli: MACRO
 	call FarCall
 	ENDM
 
+ctxt: MACRO
+	fail "ctxt must be passed through textcomp.py"
+	ENDM
+
 dx: MACRO
 x = \2
 rept \1
