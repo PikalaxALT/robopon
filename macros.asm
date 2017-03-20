@@ -7,6 +7,10 @@ dbw: MACRO
 	dw \2
 	ENDM
 
+dba: MACRO
+	dbw BANK(\1), \1
+	ENDM
+
 lb: MACRO
 	ld \1, (\2 << 8) | \3
 	ENDM

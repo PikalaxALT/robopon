@@ -72,23 +72,25 @@ def textcomp(filename):
                     paths = []
                 kata = True
             for character in characters:
-                if character == '<KATA>':
-                    kata = True
-                elif character == '<HIRA>':
-                    kata = False
-                elif len(character) == 1:
+                if len(character) == 1:
                     value = ord(character)
-                    # if value in range(0x3040, 0x3098):
-                        # if kata:
-                            # paths += ctrlhira
-                            # kata = False
-                    # elif value in range(0x30a0, 0x30f8):
                     if value in range(0x30a0, 0x30f8):
-                        # if not kata:
-                            # paths += ctrlkata
-                            # kata = True
                         value -= 0x60
                         character = chr(value)
+                        if not kata:
+                            paths += ctrlkata
+                            kata = True
+                    elif value in range(0x3040, 0x3098):
+                        if kata:
+                            paths += ctrlhira
+                            kata = False
+                elif character == '<PLAYER>' and not kata:
+                    paths += ctrlkata
+                    kata = True
+                # elif character == '<KATA>':
+                    # kata = True
+                # elif character == '<HIRA>':
+                    # kata = False
                 path = get_path(tree, character)
                 if path:
                     paths += path
@@ -109,6 +111,9 @@ def textcomp(filename):
                         paths += ctrlhand
         # Signal text end
         elif line.startswith('\tdone'):
+            if not kata:
+                paths += ctrlkata
+                kata = True
             paths += ctrlterm
             if '%' in line:
                 paths += list(map(int, line.split('%')[1].strip()))
