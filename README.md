@@ -1,6 +1,6 @@
 # Robot Poncots Disassembly
 
-Disassembly of Robot Poncots (Robotto Ponkottsu; Robopon) Sun and Moon for the Gameboy Color.
+Disassembly of Robot Poncots (Robotto Ponkottsu; Robopon) Sun and Star for the Gameboy Color.
 
 Blame Keizaron, Dabomstew, and ProjectRevoTPP for this repository's existence.
 
