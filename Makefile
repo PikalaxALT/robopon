@@ -1,5 +1,5 @@
 PYTHON := python2.7
-PYTHON3 := python3.4
+PYTHON3 := python3
 MD5 := md5sum -c --quiet
 
 RZ       := $(PYTHON) rz.py compress

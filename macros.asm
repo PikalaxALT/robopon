@@ -31,6 +31,14 @@ RGB: MACRO
 	dw ((\3) << 10) + ((\2) << 5) + (\1)
 	ENDM
 
+ldRGB: MACRO
+	ld \1, ((\4) << 10) + ((\3) << 5) + (\2)
+	ENDM
+
+hlRGB EQUS "ldRGB hl,"
+deRGB EQUS "ldRGB de,"
+bcRGB EQUS "ldRGB bc,"
+
 tile EQUS "+ $10 *"
 tiles EQUS "* $10"
 
