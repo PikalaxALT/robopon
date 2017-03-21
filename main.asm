@@ -18057,25 +18057,619 @@ Data_630f2: ; $630f2
 	dr $630f2, $63102
 
 Data_63102: ; $63102
-	dr $63102, $63141
+	dr $63102, $63112
 
-Func_63141:
-	dr $63141, $63c5f
+Func_63112:
+	ld a, $80
+	ld [rBGPI], a
+	ld hl, rBGPD
+	call Func_63123
+	ld a, $80
+	ld [rOBPI], a
+	ld hl, rOBPD
+Func_63123: ; 63123 (18:7123)
+	ld a, $4
+.asm_63125
+	ld [hl], $ff
+	ld [hl], $7f
+	ld [hl], c
+	ld [hl], b
+	ld [hl], e
+	ld [hl], d
+	ld [hl], $0
+	ld [hl], $0
+	ld [hl], $ff
+	ld [hl], $7f
+	ld [hl], e
+	ld [hl], d
+	ld [hl], c
+	ld [hl], b
+	ld [hl], $0
+	ld [hl], $0
+	dec a
+	jr nz, .asm_63125
+	ret
 
-Func_63c5f: ; $63c5f
-	dr $63c5f, $63ce1
+Func_63141: ; 63141 (18:7141)
+	cp $11
+	jr z, asm_6316f
+	push af
+	di
+	ld bc, $3c
+	call Func_62ea0
+	call Func_62ee4
+	jr c, asm_63182
+	pop af
+	ld a, $20
+	predef Func_7d753
+	call Func_631f7
+	ld a, $f0
+	ld [hBGP], a
+	ld a, $1
+	predef Func_7d78e
+	call Func_63167
+	xor a
+	ret
 
-Func_63ce1: ; $63ce1
-	dr $63ce1, $63cf3
+Func_63167: ; 63167 (18:7167)
+	ld b, $78
+.asm_63169
+	predef DelayFrame
+	dec b
+	jr nz, .asm_63169
+	ret
 
-Func_63cf3: ; $63cf3
-	dr $63cf3, $63d05
+asm_6316f
+	ld a, $20
+	predef Func_7d753
+	call Func_631d0
+	call Func_631f7
+	ld a, $1
+	predef Func_7d78e
+	call Func_63167
+	xor a
+	ret
 
-Func_63d05: ; $63d05
-	dr $63d05, $63e6f
+asm_63182
+	pop af
+	ld a, $0
+	predef Func_7d753
+	ld bc, $2
+	call Func_62ea0
+	ld a, $20
+	predef Func_7d753
+	di
+	call Func_62fd5
+	call Func_631f7
+	ld a, $1
+	predef Func_7d78e
+	ld bc, $2
+	call Func_62ea0
+	call Func_63167
+	ld a, $0
+	predef Func_7d753
+	di
+	ld bc, $2
+	call Func_62ea0
+	ld hl, Data_631c0
+	call Func_62eb1
+	ld bc, $4
+	call Func_62ea0
+	ei
+	ld a, $1
+	ret
 
-Func_63e6f: ; $63e6f
-	dr $63e6f, $63f02
+Data_631c0:
+	dr $631c0, $631d0
+
+Func_631d0: ; 631d0 (18:71d0)
+	ld a, $1
+	ld [rVBK], a
+	hlbgcoord 0, 0
+	xor a
+	ld bc, $800
+.asm_631db
+	ld [hli], a
+	dec c
+	jr nz, .asm_631db
+	dec b
+	jr nz, .asm_631db
+	xor a
+	ld [rVBK], a
+	ld bc, $f7f
+	ld de, $58e4
+	jp Func_63112
+
+Func_631ee:
+	ld bc, $5ef7
+	ld de, $3def
+	jp Func_63112
+
+Func_631f7: ; 631f7 (18:71f7)
+	ei
+	ld de, Data_6320f
+	ld hl, $9000
+	ld bc, $800
+	predef Func_015b
+	ld de, Data_639af
+	hlbgcoord 0, 0
+	ld bc, $400
+	predef Func_015b
+	ret
+
+Data_6320f:
+	dr $6320f, $639af
+
+Data_639af:
+	dr $639af, $63bef
+
+GFX_63bef:
+	dr $63bef, $63c5f
+
+Func_63c5f: ; 63c5f (18:7c5f)
+	call Coord2TileMap
+	ld [hl], $96
+	inc hl
+	ld [hl], $90
+	inc hl
+	ld a, e
+	ld c, $0
+.asm_63c6b
+	sub $8
+	jr c, .asm_63c75
+	inc c
+	ld [hl], $92
+	inc hl
+	jr .asm_63c6b
+
+.asm_63c75
+	add $8
+	jr z, .asm_63ccb
+	ld b, a
+	ld a, $94
+	add d
+	ld e, a
+	ld a, [$c2cd]
+	or a
+	jr z, .asm_63c88
+	ld a, $69
+	add e
+	ld e, a
+.asm_63c88
+	ld [hl], e
+	inc hl
+	inc c
+	push hl
+	push bc
+	ld a, e
+	and $7f
+	ld e, a
+	ld d, $0
+	sla e
+	rl d
+	sla e
+	rl d
+	sla e
+	rl d
+	sla e
+	rl d
+	ld hl, $8800
+	add hl, de
+	push hl
+	dec b
+	ld l, b
+	ld h, $0
+	sla l
+	rl h
+	sla l
+	rl h
+	sla l
+	rl h
+	sla l
+	rl h
+	ld de, GFX_63bef
+	add hl, de
+	ld e, l
+	ld d, h
+	pop hl
+	ld bc, $10
+	call RequestVideoData
+	pop bc
+	pop hl
+.asm_63ccb
+	ld a, $7
+	sub c
+	ld c, a
+	ld a, $93
+	jr .asm_63cd4
+
+.asm_63cd3
+	ld [hli], a
+.asm_63cd4
+	dec c
+	jr nz, .asm_63cd3
+	ld [hl], $91
+	ret
+
+Func_63cd8:
+	call Func_63c5f
+	call WaitVideoTransfer
+	ret
+
+Func_63ce1: ; 63ce1 (18:7ce1)
+	ld c, $4
+	scf
+	ccf
+.asm_63ce5
+	ld a, [de]
+	ld b, a
+	ld a, [hl]
+	sbc b
+	ld [hld], a
+	dec de
+	dec c
+	jr nz, .asm_63ce5
+	ld a, c
+	jr nc, .asm_63cf2
+	inc a
+.asm_63cf2
+	ret
+
+Func_63cf3: ; 63cf3 (18:7cf3)
+	ld c, $4
+	scf
+	ccf
+.asm_63cf7
+	ld a, [de]
+	ld b, a
+	ld a, [hl]
+	adc b
+	ld [hld], a
+	dec de
+	dec c
+	jr nz, .asm_63cf7
+	ld a, c
+	jr nc, .asm_63d04
+	inc a
+.asm_63d04
+	ret
+
+Func_63d05: ; 63d05 (18:7d05)
+	call Coord2TileMap
+	push hl
+	ld l, e
+	ld h, d
+	pop de
+	ld a, $0
+	ld bc, hBGP
+.asm_63d11
+	add hl, bc
+	inc a
+	bit 7, h
+	jr z, .asm_63d11
+	ld bc, $64
+	add hl, bc
+	dec a
+	jr nz, .asm_63d3a
+	ld a, $8f
+	ld [de], a
+	inc de
+	ld a, $0
+	ld bc, hPushOAM + 1
+.asm_63d27
+	add hl, bc
+	inc a
+	bit 7, h
+	jr z, .asm_63d27
+	ld bc, $a
+	add hl, bc
+	dec a
+	jr nz, .asm_63d4c
+	ld a, $8f
+	ld [de], a
+	inc de
+	jr .asm_63d4e
+
+.asm_63d3a
+	ld [de], a
+	inc de
+	ld a, $0
+	ld bc, hPushOAM + 1
+.asm_63d41
+	add hl, bc
+	inc a
+	bit 7, h
+	jr z, .asm_63d41
+	dec a
+	ld bc, $a
+	add hl, bc
+.asm_63d4c
+	ld [de], a
+	inc de
+.asm_63d4e
+	ld a, $0
+	ld bc, rIE
+.asm_63d53
+	add hl, bc
+	inc a
+	bit 7, h
+	jr z, .asm_63d53
+	dec a
+	ld [de], a
+	ret
+
+Func_63d5c: ; 63d5c (18:7d5c)
+	or a
+	jr nz, .asm_63d71
+	ld a, $98
+	ld [wDecompresLiteralCopyOffsetHi + 5], a
+	ld a, [wSCX]
+	ld [wDecompresLiteralCopyOffsetHi + 6], a
+	ld a, [wSCY]
+	ld [wDecompresLiteralCopyOffsetHi + 7], a
+	ret
+
+.asm_63d71
+	ld a, $9c
+	ld [wDecompresLiteralCopyOffsetHi + 5], a
+	ld a, [wSCX2]
+	ld [wDecompresLiteralCopyOffsetHi + 6], a
+	ld a, [wSCY2]
+	ld [wDecompresLiteralCopyOffsetHi + 7], a
+	ret
+
+Func_63d83: ; 63d83 (18:7d83)
+	ld a, c
+	or a
+	jp z, PutOnVideoTransferQueue
+	cp $1
+	jp z, Func_63e01
+	cp $2
+	jp z, Func_63d93
+	ret
+
+Func_63d93: ; 63d93 (18:7d93)
+	ld a, [wDecompresLiteralCopyOffsetHi + 7]
+	srl a
+	srl a
+	srl a
+	add e
+	and $1f
+	ld c, $0
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	ld [wDecompresLiteralCopyOffsetHi + 2], a
+	ld a, [wDecompresLiteralCopyOffsetHi + 5]
+	add c
+	ld [wDecompresLiteralCopyOffsetHi + 3], a
+	ld a, [wDecompresLiteralCopyOffsetHi + 6]
+	srl a
+	srl a
+	srl a
+	add d
+	and $1f
+	ld [wDecompresLiteralCopyOffsetHi + 4], a
+	add b
+	cp $21
+	jr nc, asm_63de5
+Func_63dd3: ; 63dd3 (18:7dd3)
+	ld a, [wDecompresLiteralCopyOffsetHi + 2]
+	ld e, a
+	ld a, [wDecompresLiteralCopyOffsetHi + 4]
+	add e
+	ld e, a
+	ld a, [wDecompresLiteralCopyOffsetHi + 3]
+	adc $0
+	ld d, a
+	jp PutOnVideoTransferQueue
+
+asm_63de5
+	sub $20
+	ld c, a
+	ld a, b
+	sub c
+	ld b, a
+	push bc
+	push hl
+	call Func_63dd3
+	xor a
+	ld [wDecompresLiteralCopyOffsetHi + 4], a
+	pop hl
+	pop bc
+	ld a, l
+	add b
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	ld b, c
+	jp Func_63dd3
+
+Func_63e01: ; 63e01 (18:7e01)
+	ld a, [wDecompresLiteralCopyOffsetHi + 7]
+	srl a
+	srl a
+	srl a
+	add l
+	and $1f
+	ld c, $0
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	sla a
+	rl c
+	ld [wDecompresLiteralCopyOffsetHi + 2], a
+	ld a, [wDecompresLiteralCopyOffsetHi + 5]
+	add c
+	ld [wDecompresLiteralCopyOffsetHi + 3], a
+	ld a, [wDecompresLiteralCopyOffsetHi + 6]
+	srl a
+	srl a
+	srl a
+	add h
+	and $1f
+	ld [wDecompresLiteralCopyOffsetHi + 4], a
+	add b
+	cp $21
+	jr nc, asm_63e53
+Func_63e41: ; 63e41 (18:7e41)
+	ld a, [wDecompresLiteralCopyOffsetHi + 2]
+	ld l, a
+	ld a, [wDecompresLiteralCopyOffsetHi + 4]
+	add l
+	ld l, a
+	ld a, [wDecompresLiteralCopyOffsetHi + 3]
+	adc $0
+	ld h, a
+	jp PutOnVideoTransferQueue
+
+asm_63e53
+	sub $20
+	ld c, a
+	ld a, b
+	sub c
+	ld b, a
+	push bc
+	push de
+	call Func_63e41
+	xor a
+	ld [wDecompresLiteralCopyOffsetHi + 4], a
+	pop de
+	pop bc
+	ld a, e
+	add b
+	ld e, a
+	ld a, d
+	adc $0
+	ld d, a
+	ld b, c
+	jp Func_63e41
+
+Func_63e6f: ; 63e6f (18:7e6f)
+	push bc
+	ld b, $0
+	ld a, h
+	or a
+	jr z, .asm_63e7e
+	ld b, $1
+	cp $1
+	jr z, .asm_63e7e
+	ld b, $ff
+.asm_63e7e
+	ld c, $0
+	ld a, l
+	or a
+	jr z, .asm_63e8c
+	ld c, $1
+	cp $1
+	jr z, .asm_63e8c
+	ld c, $ff
+.asm_63e8c
+	ld a, b
+	cp $ff
+	jr z, asm_63ec7
+	call Func_63d5c
+	pop bc
+	ld a, d
+	sub b
+	inc a
+	ld d, b
+	ld b, a
+	ld a, e
+	sub c
+	inc a
+	ld e, c
+	ld c, a
+	push bc
+	ld l, e
+	ld h, d
+	call Coord2TileMap
+	pop bc
+	ld a, e
+	cp $12
+	jp c, Func_63eaf
+	sub $12
+	ld e, a
+Func_63eaf: ; 63eaf (18:7eaf)
+	push bc
+	push hl
+	push de
+	ld c, $2
+	call Func_63d83
+	pop de
+	inc e
+	pop hl
+	ld a, l
+	add $14
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	pop bc
+	dec c
+	jr nz, Func_63eaf
+	ret
+
+asm_63ec7
+	ld a, c
+	call Func_63d5c
+	pop bc
+	ld a, d
+	sub b
+	inc a
+	ld d, b
+	ld b, a
+	ld a, e
+	sub c
+	inc a
+	ld e, c
+	ld c, a
+	push bc
+	ld l, e
+	ld h, d
+	call Coord2TileMap
+	pop bc
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, l
+	cp $12
+	jp c, Func_63eea
+	sub $12
+	ld l, a
+Func_63eea: ; 63eea (18:7eea)
+	push bc
+	push de
+	push hl
+	ld c, $1
+	call Func_63d83
+	pop hl
+	inc l
+	pop de
+	ld a, e
+	add $14
+	ld e, a
+	ld a, d
+	adc $0
+	ld d, a
+	pop bc
+	dec c
+	jr nz, Func_63eea
+	ret
 
 SECTION "Bank 19", ROMX, BANK [$19]
 	dr $64000, $64093
