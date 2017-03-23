@@ -13,6 +13,7 @@ objs := \
 	sram.o \
 	vram.o \
 	gfx.o \
+	audio.o \
 	text.o \
 	main.o
 

@@ -6947,7 +6947,7 @@ Func_3d19:
 	ret
 
 SECTION "3f80", HOME [$3f80]
-Func_3f80:
+AudioEngineFarCall::
 	push af
 	ld a, $1d
 	ld [hROMBank], a
@@ -22442,42 +22442,8 @@ Func_6bbf3: ; $6bbf3
 SECTION "Bank 1b", ROMX, BANK [$1b]
 	dr $6c000, $70000
 
-SECTION "Bank 1c", ROMX, BANK [$1c]
-Func_70000:
-	dr $70000, $70003
-
-Func_70003:
-	dr $70003, $70006
-
-Func_70006:
-	dr $70006, $70009
-
-Func_70009:
-	dr $70009, $7000c
-
-Func_7000c:
-	dr $7000c, $7000f
-
-Func_7000f:
-	dr $7000f, $70012
-
-Func_70012:
-	dr $70012, $70015
-
-Func_70015:
-	dr $70015, $70018
-
-Func_70018:
-	dr $70018, $7001b
-
-Func_7001b:
-	dr $7001b, $7001e
-
-Func_7001e:
-	dr $7001e, $74000
-
-SECTION "Bank 1d", ROMX, BANK [$1d]
-	dr $74000, $78000
+SECTION "Bank 1d", ROMX [$4000], BANK [$1d]
+	dr $74000, $76800
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
 Data_78000:
@@ -37326,3 +37292,4 @@ Func_fd314:
 Func_fe102:
 	dr $fe100, $100000
 ENDC
+
