@@ -2494,7 +2494,7 @@ RequestVideoData: ; 1428 (0:1428)
 	pop bc
 	jr .loop
 
-FarCopyDEtoHLAndWaitVideoTransfer:
+FarCopyVideoData:
 	ld a, [hROMBank]
 	push af
 	ld a, [wFarCallDestBank]
@@ -2505,7 +2505,7 @@ FarCopyDEtoHLAndWaitVideoTransfer:
 	call BankSwitch
 	ret
 
-FarRequestAndWaitVideoTransfer:
+FarRequestVideoData:
 	ld a, [hROMBank]
 	push af
 	ld a, [wFarCallDestBank]
@@ -2516,7 +2516,7 @@ FarRequestAndWaitVideoTransfer:
 	call BankSwitch
 	ret
 
-FarDecompressAndWaitVideoTransfer:
+FarDecompressVideoData:
 	ld a, [hROMBank]
 	push af
 	ld a, [wFarCallDestBank]
@@ -3182,19 +3182,19 @@ Func_1f30:
 	call WriteHalfWordTo
 	dw $c30e
 	call WaitVideoTransfer
-	ld a, $1
+	ld a, BANK(GFX_4a12)
 	ld [wFarCallDestBank], a
 	ld bc, $f0
 	ld de, $88f0
 	call ReadHalfWordAt
 	dw $c30e
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	ld a, BANK(GFX_4a12)
 	ld [wFarCallDestBank], a
 	ld bc, $f0
 	ld de, GFX_4a12
 	ld hl, $88f0
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	call WaitVideoTransfer
 Func_1f7a: ; 1f7a (0:1f7a)
 	ret
@@ -3216,7 +3216,7 @@ Func_1f7b:
 	pop de
 	pop hl
 	ld hl, $88f0
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
@@ -3246,13 +3246,13 @@ Func_1fbe:
 	ld de, $8cc0
 	call ReadHalfWordAt
 	dw $c2f2
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	ld a, BANK(GFX_4b22)
 	ld [wFarCallDestBank], a
 	ld bc, $1ba
 	ld de, GFX_4b22
 	ld hl, $8cc0
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	call WaitVideoTransfer
 Func_2008: ; 2008 (0:2008)
 	ret
@@ -3274,7 +3274,7 @@ Func_2009:
 	pop de
 	pop hl
 	ld hl, $8cc0
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
@@ -3304,13 +3304,13 @@ Func_204c:
 	ld de, $8fa0
 	call ReadHalfWordAt
 	dw $c2f2
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $50
 	ld de, $4e02
 	ld hl, $8fa0
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	call WaitVideoTransfer
 Func_2096: ; 2096 (0:2096)
 	ret
@@ -3332,7 +3332,7 @@ Func_2097:
 	pop de
 	pop hl
 	ld hl, $8fa0
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
@@ -4232,7 +4232,7 @@ Func_25a7: ; 25a7 (0:25a7)
 	ld de, $8800
 	add hl, de
 	pop de
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	pop bc
 Func_25eb: ; 25eb (0:25eb)
 	ld a, c
@@ -7712,7 +7712,7 @@ Func_6493:
 	push de
 	ld l, e
 	ld h, d
-	ld de, $ffe5
+	ld de, -$1b
 	add hl, de
 	ld e, $0
 	ld bc, $1c
@@ -8408,10 +8408,10 @@ BlinkTextCursor:
 	ld [wTextBlinkerFrameCounter], a
 	ret
 
-Func_69d0:
-	ld a, [$c2e6]
+DoShakeProgram:
+	ld a, [wc2e6]
 	ld l, a
-	ld a, [$c2e7]
+	ld a, [wc2e6 + 1]
 	ld h, a
 	ld de, $7
 	add hl, de
@@ -8419,7 +8419,7 @@ Func_69d0:
 	inc a
 	ld [hli], a
 	cp [hl]
-	jr c, .asm_69f4
+	jr c, .done
 	inc hl
 	ld a, [hl]
 	cpl
@@ -8435,13 +8435,13 @@ Func_69d0:
 	dec hl
 	dec hl
 	ld [hl], $0
-.asm_69f4
+.done
 	ret
 
-Func_69f5:
-	ld a, [$c2e6]
+DoFlashProgram:
+	ld a, [wc2e6]
 	ld l, a
-	ld a, [$c2e7]
+	ld a, [wc2e6 + 1]
 	ld h, a
 	ld a, [hli]
 	ld c, a
@@ -8449,7 +8449,7 @@ Func_69f5:
 	inc a
 	ld [hl], a
 	cp c
-	jr c, .asm_6a15
+	jr c, .done
 	xor a
 	ld [hli], a
 	ld a, [hl]
@@ -8462,13 +8462,13 @@ Func_69f5:
 	ld [rBGP], a
 	ld a, [hl]
 	ld [rOBP0], a
-.asm_6a15
+.done
 	ret
 
-Func_6a16:
-	ld a, [$c2e6]
+DoFadeProgram:
+	ld a, [wc2e6]
 	ld l, a
-	ld a, [$c2e7]
+	ld a, [wc2e6 + 1]
 	ld h, a
 	ld a, [hli]
 	ld b, a
@@ -8476,7 +8476,7 @@ Func_6a16:
 	inc a
 	ld [hl], a
 	cp b
-	jr c, .asm_6a54
+	jr c, .done
 	xor a
 	ld [hli], a
 	push hl
@@ -8486,9 +8486,9 @@ Func_6a16:
 	add c
 	pop hl
 	cp $ff
-	jr z, .asm_6a54
+	jr z, .done
 	cp $11
-	jr z, .asm_6a54
+	jr z, .done
 	ld [hli], a
 	ld c, a
 	inc hl
@@ -8497,26 +8497,58 @@ Func_6a16:
 	ld e, [hl]
 	ld hl, Data_6a55
 	bit 0, e
-	jr nz, .asm_6a46
+	jr nz, .got_direction
 	ld hl, Data_6a66
-.asm_6a46
+.got_direction
 	add hl, bc
 	ld a, [hl]
 	bit 1, e
-	jr z, .asm_6a4e
+	jr z, .no_bgp
 	ld [rBGP], a
-.asm_6a4e
+.no_bgp
 	bit 2, e
-	jr z, .asm_6a54
+	jr z, .done
 	ld [rOBP0], a
-.asm_6a54
+.done
 	ret
 
 Data_6a55:
-	dr $6a55, $6a66
+	db %11100100
+	db %11100100
+	db %11100100
+	db %11100101
+	db %11101001
+	db %11101001
+	db %11101001
+	db %11101001
+	db %11101010
+	db %11111010
+	db %11111010
+	db %11111110
+	db %11111110
+	db %11111110
+	db %11111111
+	db %11111111
+	db %11111111
 
 Data_6a66:
-	dr $6a66, $6a77
+	db %11100100
+	db %11100100
+	db %11100100
+	db %10100100
+	db %10100100
+	db %10010100
+	db %10010100
+	db %10010100
+	db %10010100
+	db %01010000
+	db %01010000
+	db %01010000
+	db %01010000
+	db %01000000
+	db %00000000
+	db %00000000
+	db %00000000
 
 Func_6a77:
 	push hl
@@ -11113,7 +11145,7 @@ Func_7c8a:
 	push hl
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -12236,7 +12268,7 @@ Func_8661: ; 8661 (2:4661)
 	pop de
 	pop hl
 	ld hl, sp+$5e
-	call FarCopyDEtoHLAndWaitVideoTransfer
+	call FarCopyVideoData
 	ld hl, $728
 	push hl
 	call Func_be4d
@@ -12253,7 +12285,7 @@ Func_8661: ; 8661 (2:4661)
 	call GetHLAtSPPlusParam8
 	db $63
 	pop de
-	call FarDecompressAndWaitVideoTransfer
+	call FarDecompressVideoData
 	call ReadHalfWordAt
 	dw $c85b
 	ld de, $2a8
@@ -12687,7 +12719,7 @@ Func_89ab: ; 89ab (2:49ab)
 	ld bc, $8900
 	add hl, bc
 	ld bc, $10
-	call FarCopyDEtoHLAndWaitVideoTransfer
+	call FarCopyVideoData
 	ld a, [$c889]
 	inc a
 	ld [$c889], a
@@ -12798,7 +12830,7 @@ asm_8ad9
 	ld h, a
 	add hl, bc
 	ld bc, $1
-	call FarCopyDEtoHLAndWaitVideoTransfer
+	call FarCopyVideoData
 	ld a, [$c890]
 	ld c, a
 	ld a, [$c891]
@@ -12864,7 +12896,7 @@ Func_8b33: ; 8b33 (2:4b33)
 	add hl, de
 	pop de
 	ld bc, $10
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	pop bc
 	jp Func_8ba3
 
@@ -12893,7 +12925,7 @@ Func_8b7e: ; 8b7e (2:4b7e)
 	add hl, de
 	pop de
 	ld bc, $10
-	call FarRequestAndWaitVideoTransfer
+	call FarRequestVideoData
 	pop bc
 Func_8ba3: ; 8ba3 (2:4ba3)
 	inc bc
@@ -13132,7 +13164,7 @@ Func_8d2a: ; 8d2a (2:4d2a)
 	pop hl
 	ld hl, sp+$2
 	ld bc, $5
-	call FarCopyDEtoHLAndWaitVideoTransfer
+	call FarCopyVideoData
 	ld hl, sp+$6
 	ld a, [hl]
 	ld [$c2d6], a
@@ -13163,7 +13195,7 @@ Func_8d2a: ; 8d2a (2:4d2a)
 	push hl
 	call GetHLAtSPPlus9
 	pop de
-	call FarDecompressAndWaitVideoTransfer
+	call FarDecompressVideoData
 	ld bc, $80
 	ld e, $0
 	call ReadHalfWordAt
@@ -13377,8 +13409,262 @@ Func_174ab: ; $174ab
 Func_17a67:
 	dr $17a67, $17aba
 
-Func_17aba:
-	dr $17aba, $17c57
+Func_17aba: ; 17aba (5:7aba)
+	push hl
+	push bc
+	call GetHLAtSPPlus4
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $0
+	call CompareHLtoDE
+	jp c, .okay
+	ld hl, $0
+	jp .done
+
+.okay
+	call GetHLAtSPPlus4
+	ld de, $f
+	add hl, de
+	ld de, $10
+	call DivideHLByDESigned
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	call WriteHLToSPPlus4
+	call ReadHalfWordAt
+	dw $c2de
+	pop de
+	push hl
+.loop
+	pop hl
+	push hl
+	ld a, l
+	or h
+	jp z, .crash
+	ld a, [wc2e0]
+	cp $1
+	jp nz, .okay2
+	pop hl
+	push hl
+	ld a, l
+	sub $c000 % $100
+	ld a, h
+	sbc $c000 / $100
+	jp nc, .okay2
+	jp .next
+
+.okay2
+	ld a, [wc2e0]
+	cp $2
+	jp nz, .okay_3
+	pop hl
+	push hl
+	ld a, l
+	sub $c000 % $100
+	ld a, h
+	sbc $c000 / $100
+	jp c, .okay_3
+	jp .next
+
+.okay_3
+	pop hl
+	push hl
+	ld a, [hl]
+	cp $55
+	jp nz, .next
+	call GetHLAtSPPlus4
+	push hl
+	call GetHLAtSPPlus4
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	call CompareHLtoDE
+	jp c, .next
+	pop hl
+	push hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus4
+	ld de, $a
+	add hl, de
+	call CompareHLtoBC
+	jp nc, .set_aa
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	push bc
+	call GetHLAtSPPlus4
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus6
+	ld a, c
+	sub l
+	ld l, a
+	ld a, b
+	sbc h
+	ld h, a
+	ld de, hPushOAM + 6
+	add hl, de
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus4
+	ld [hl], $aa
+	call GetHLAtSPPlus6
+	push hl
+	call GetHLAtSPPlus6
+	inc hl
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	call GetHLAtSPPlus6
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	add hl, de
+	ld de, $5
+	add hl, de
+	push hl
+	call GetHLAtSPPlus6
+	inc hl
+	inc hl
+	inc hl
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	call GetHLAtSPPlus4
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld [hl], $55
+	call GetHLAtSPPlus4
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	pop bc
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	jp .finish
+
+.set_aa
+	pop hl
+	push hl
+	ld [hl], $aa
+.finish
+	call ReadHalfWordAt
+	dw $c2dc
+	inc hl
+	call WriteHalfWordTo
+	dw $c2dc
+	pop hl
+	push hl
+	ld de, $5
+	add hl, de
+	jp .done
+
+.next
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	pop de
+	push hl
+	jp .loop
+
+.crash
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	call Func_3aa8
+	ld e, $1
+	xor a
+	call SetStringStartState
+	ld hl, Data_17c44
+	push hl
+	call PlaceString
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+.crash_wait
+	call Func_24e9
+	or a
+	jp z, .crash_wait
+	set_farcall_addrs_hli Func_bf431
+	ld hl, rIE
+	call FarCall
+	set_farcall_addrs_hli Func_bf431
+	call GetHLAtSPPlus4
+	call FarCall
+	jp @ - 1 ; better luck next time
+
+.done
+	pop bc
+	pop bc
+	ret
+
+Data_17c44:
+	db "ケﾞットハﾞッファー ヌル エラー", $00 ; GET BUFFER FULL ERROR
+
+Func_17c56:
+	ret
 
 Func_17c57:
 	dr $17c57, $17e95
@@ -13692,7 +13978,7 @@ Func_60181: ; 60181 (18:4181)
 	ld hl, sp+$0
 	ld [hl], $ff
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -13778,7 +14064,7 @@ Func_6020a: ; 6020a (18:420a)
 	ld hl, $d
 	call Func_600f4
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -14259,7 +14545,7 @@ Func_60556: ; 60556 (18:4556)
 	call Func_3bc5
 	pop bc
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -14482,7 +14768,7 @@ Func_606c5: ; 606c5 (18:46c5)
 	pop de
 	pop hl
 	ld hl, sp+$43
-	call FarCopyDEtoHLAndWaitVideoTransfer
+	call FarCopyVideoData
 Func_606e3: ; 606e3 (18:46e3)
 	pop de
 	pop bc
@@ -14664,7 +14950,7 @@ Func_607ea: ; 607ea (18:47ea)
 	pop de
 	pop hl
 	ld hl, sp+$43
-	call FarCopyDEtoHLAndWaitVideoTransfer
+	call FarCopyVideoData
 	call GetHLAtSPPlusParam8
 	db $45
 	ld a, l
@@ -14887,7 +15173,7 @@ Func_6095c: ; 6095c (18:495c)
 	push de
 	push bc
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -14995,13 +15281,13 @@ Func_609d3: ; 609d3 (18:49d3)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c
 	add hl, de
 	add hl, bc
 	call WriteHLToSPPlus4
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -15192,7 +15478,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -15251,7 +15537,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -15277,7 +15563,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -15305,7 +15591,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -15341,7 +15627,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -15367,7 +15653,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -15393,7 +15679,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -15419,7 +15705,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -15600,7 +15886,7 @@ Func_60e24: ; 60e24 (18:4e24)
 	ld hl, sp+$2
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -15628,7 +15914,7 @@ Func_60e81:
 	add sp, -$2e
 	push af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -15754,7 +16040,7 @@ Func_60f61: ; 60f61 (18:4f61)
 	cp $81
 	jp nz, Func_60f7d
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c4
 	add hl, de
 	ld [hl], $3
@@ -15762,7 +16048,7 @@ Func_60f61: ; 60f61 (18:4f61)
 
 Func_60f7d: ; 60f7d (18:4f7d)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c4
 	add hl, de
 	ld [hl], $1
@@ -15774,7 +16060,7 @@ Func_60f88: ; 60f88 (18:4f88)
 	call Func_6020a
 Func_60f92: ; 60f92 (18:4f92)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c
 	add hl, de
 	call WriteHLToSPPlusParam8
@@ -15841,7 +16127,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	add hl, de
 	ld a, [hl]
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -15852,7 +16138,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	ld [hl], a
 	set_farcall_addrs_hli Func_6b74
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -15910,7 +16196,7 @@ Func_61072: ; 61072 (18:5072)
 Func_61076: ; 61076 (18:5076)
 	push bc
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $e2
 	add hl, de
 	ld [hl], c
@@ -16475,7 +16761,7 @@ Func_615ce: ; 615ce (18:55ce)
 	push bc
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $15
 	add hl, de
 	ld e, [hl]
@@ -16662,7 +16948,7 @@ Func_616dd:
 	ld e, $2
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -16706,7 +16992,7 @@ Func_6172c: ; 6172c (18:572c)
 	ld hl, sp+$2b
 	ld a, [hl]
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -16758,7 +17044,7 @@ Func_6178d: ; 6178d (18:578d)
 Func_6179d: ; 6179d (18:579d)
 	push af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -17173,7 +17459,7 @@ Func_61a3e:
 	ld e, $2
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -17211,7 +17497,7 @@ Func_61a78: ; 61a78 (18:5a78)
 Func_61a88: ; 61a88 (18:5a88)
 	push af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -18102,7 +18388,7 @@ Func_620d5:
 	push bc
 	add sp, -$3a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -19165,9 +19451,9 @@ Func_62ce4: ; 62ce4 (18:6ce4)
 	ld a, [wNextVBlankFlags]
 	bit 6, a
 	ret nz
-	ld a, [$c2e6]
+	ld a, [wc2e6]
 	ld l, a
-	ld a, [$c2e7]
+	ld a, [wc2e6 + 1]
 	ld h, a
 	ld a, [hli]
 	ld b, a
@@ -35121,7 +35407,10 @@ SECTION "Bank 2f", ROMX, BANK [$2f]
 	dr $bc000, $bd6fa
 
 Func_bd6fa: ; $bd6fa
-	dr $bd6fa, $c0000
+	dr $bd6fa, $bf431
+
+Func_bf431:
+	dr $bf431, $c0000
 
 SECTION "Bank 30", ROMX, BANK [$30]
 	dr $c0000, $c4000

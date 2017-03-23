@@ -74,7 +74,11 @@ wKana:: ; c255
 ; ff: hiragana
 	ds $1
 
-	ds $92
+	ds $8a
+
+wc2e0:: ds $1 ; c2e0
+	ds $5
+wc2e6:: ds $2 ; c2e6
 wc2e8:: ds $1 ; c2e8
 	ds $1
 
