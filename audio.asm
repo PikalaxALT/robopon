@@ -4,28 +4,16 @@ INCLUDE "audio/engine.asm"
 
 SECTION "Audio Data 1", ROMX [$4c12], BANK [$1c]
 Data_70c12: ; $70c12
-	dr $70c12, $70c13
-
-Data_70c13: ; $70c13
-	dr $70c13, $70c14
+	dw $c17b
 
 Data_70c14: ; $70c14
-	dr $70c14, $70c15
-
-Data_70c15: ; $70c15
-	dr $70c15, $70c16
+	dw $c187
 
 Data_70c16: ; $70c16
-	dr $70c16, $70c17
-
-Data_70c17: ; $70c17
-	dr $70c17, $70c18
+	dw $c193
 
 Data_70c18: ; $70c18
-	dr $70c18, $70c19
-
-Data_70c19: ; $70c19
-	dr $70c19, $70c1a
+	dw $c19f
 
 Data_70c1a: ; $70c1a
 	dr $70c1a, $70c22
@@ -56,7 +44,7 @@ Data_712b9: ; $712b9
 
 SECTION "Audio Data 2", ROMX [$6a37], BANK [$1d]
 Data_76a37:
-	dr $76a37, $76a38
+	db $6c
 
 Data_76a38:
 	dr $76a38, $76c72

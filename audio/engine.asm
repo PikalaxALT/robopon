@@ -299,7 +299,7 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c14b], a
 	ld a, [Data_70c12]
 	ld [$c173], a
-	ld a, [Data_70c13]
+	ld a, [Data_70c12 + 1]
 	ld [$c174], a
 	ld a, $8
 	ld [$c147], a
@@ -325,7 +325,7 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c14c], a
 	ld a, [Data_70c14]
 	ld [$c175], a
-	ld a, [Data_70c15]
+	ld a, [Data_70c14 + 1]
 	ld [$c176], a
 	ld a, $8
 	ld [$c148], a
@@ -351,7 +351,7 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c14d], a
 	ld a, [Data_70c16]
 	ld [$c177], a
-	ld a, [Data_70c17]
+	ld a, [Data_70c16 + 1]
 	ld [$c178], a
 	ld a, $40
 	ld [$c149], a
@@ -376,7 +376,7 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c14e], a
 	ld a, [Data_70c18]
 	ld [$c179], a
-	ld a, [Data_70c19]
+	ld a, [Data_70c18 + 1]
 	ld [$c17a], a
 	ld a, $40
 	ld [$c14a], a
