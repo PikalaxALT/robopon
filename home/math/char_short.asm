@@ -98,6 +98,7 @@ LeftShiftA:
 	jp .loop
 
 LeftShiftPointer:
+; * hl >>= b
 	push de
 	ld e, [hl]
 	inc hl
@@ -130,7 +131,8 @@ LeftShiftHL: ; 3664 (0:3664)
 	add hl, hl
 	jp .loop
 
-ModuloPointerByDESigned:
+ModuloPointerByDESigned: ; *s16
+; * hl %= de
 	push hl
 	ld a, [hl]
 	inc hl
@@ -143,7 +145,7 @@ ModuloPointerByDESigned:
 	ld [hl], d
 	ret
 
-ModuloPointerByDE:
+ModuloPointerByDE: ; *u16
 	push hl
 	ld a, [hl]
 	inc hl
@@ -156,7 +158,7 @@ ModuloPointerByDE:
 	ld [hl], d
 	ret
 
-DividePointerByDESigned:
+DividePointerByDESigned: ; *s16
 	push hl
 	ld a, [hl]
 	inc hl
@@ -177,7 +179,7 @@ DividePointerByDESigned:
 	pop hl
 	ret
 
-DividePointerByDE:
+DividePointerByDE: ; *u16
 	push hl
 	ld a, [hl]
 	inc hl

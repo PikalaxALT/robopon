@@ -10,7 +10,7 @@ predef_const: MACRO
 	const_def
 	predef_const Func_00e9 ; 00
 	predef_const Func_0150
-	predef_const Func_015b
+	predef_const CopyPredef
 	predef_const Func_7af00
 	predef_const Func_7af30
 	predef_const Func_7af39
@@ -18,12 +18,12 @@ predef_const: MACRO
 	predef_const AnonJumpRelativeTableLookup
 	predef_const Func_7b70d
 	predef_const Func_02fd
-	predef_const Func_01b9
-	predef_const Func_01b9_2
-	predef_const Func_01b9_3
-	predef_const Func_01b9_4
-	predef_const Func_01b9_5
-	predef_const Func_01b9_6
+	predef_const NullPredef
+	predef_const NullPredef_2
+	predef_const NullPredef_3
+	predef_const NullPredef_4
+	predef_const NullPredef_5
+	predef_const NullPredef_6
 	predef_const Func_0296 ; 10
 	predef_const Func_022c
 	predef_const Func_0230
