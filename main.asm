@@ -20175,7 +20175,7 @@ Func_ba47:
 	db $0c
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -20186,7 +20186,7 @@ Func_ba47:
 	pop de
 	call FarCopyVideoData
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -20866,10 +20866,19 @@ Func_c000:
 	ret
 
 Data_c001:
-	dr $c001, $c5dd
+	dr $c001, $c009
+
+Data_c009:
+	dr $c009, $c016
+
+Data_c016:
+	dr $c016, $c5dd
 
 Data_c5dd:
-	dr $c5dd, $c6eb
+	dr $c5dd, $c6e1
+
+Data_c6e1:
+	dr $c6e1, $c6eb
 
 Data_c6eb:
 	dr $c6eb, $c6ed
@@ -20969,7 +20978,7 @@ Func_c7ba:
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -20980,7 +20989,7 @@ Func_c7ba:
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -21482,7 +21491,7 @@ Func_cb3c: ; cb3c (3:4b3c)
 
 Func_cb4a: ; cb4a (3:4b4a)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld a, l
 	or h
 	jp nz, Func_cc0b
@@ -21493,11 +21502,11 @@ Func_cb4a: ; cb4a (3:4b4a)
 	ld hl, $34a
 	call FarCall
 	call WriteHalfWordTo
-	dw $c2e6
+	dw wc2e6
 	ld bc, $34a
 	ld e, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	call FillMemory
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $80
@@ -21505,7 +21514,7 @@ Func_cb4a: ; cb4a (3:4b4a)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld [hl], c
@@ -21517,7 +21526,7 @@ Func_cb4a: ; cb4a (3:4b4a)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld [hl], c
@@ -21525,7 +21534,7 @@ Func_cb4a: ; cb4a (3:4b4a)
 	ld [hl], b
 	ld bc, $91
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -21543,7 +21552,7 @@ Func_cb4a: ; cb4a (3:4b4a)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c6
 	add hl, de
 	ld [hl], c
@@ -21557,7 +21566,7 @@ Func_cc0b: ; cc0b (3:4c0b)
 
 Func_cc0c:
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld a, l
 	or h
 	jp nz, Func_ccec
@@ -21568,11 +21577,11 @@ Func_cc0c:
 	ld hl, $34a
 	call FarCall
 	call WriteHalfWordTo
-	dw $c2e6
+	dw wc2e6
 	ld bc, $34a
 	ld e, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	call FillMemory
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $80
@@ -21580,7 +21589,7 @@ Func_cc0c:
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld [hl], c
@@ -21592,7 +21601,7 @@ Func_cc0c:
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld [hl], c
@@ -21600,7 +21609,7 @@ Func_cc0c:
 	ld [hl], b
 	ld bc, $91
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -21618,7 +21627,7 @@ Func_cc0c:
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c6
 	add hl, de
 	ld [hl], c
@@ -21630,7 +21639,7 @@ Func_cc0c:
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1a
 	add hl, de
 	ld [hl], c
@@ -21644,13 +21653,13 @@ Func_ccec: ; ccec (3:4cec)
 
 Func_cced: ; cced (3:4ced)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld a, l
 	or h
 	jp z, Func_cd99
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -21663,7 +21672,7 @@ Func_cced: ; cced (3:4ced)
 	call FarCall
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -21676,7 +21685,7 @@ Func_cced: ; cced (3:4ced)
 	call FarCall
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c6
 	add hl, de
 	ld e, [hl]
@@ -21688,7 +21697,7 @@ Func_cced: ; cced (3:4ced)
 	pop hl
 	call FarCall
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1a
 	add hl, de
 	ld a, [hl]
@@ -21697,7 +21706,7 @@ Func_cced: ; cced (3:4ced)
 	jp z, Func_cd7e
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -21711,11 +21720,11 @@ Func_cced: ; cced (3:4ced)
 Func_cd7e: ; cd7e (3:4d7e)
 	set_farcall_addrs_hli Func_17c57
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	call FarCall
 	ld hl, $0
 	call WriteHalfWordTo
-	dw $c2e6
+	dw wc2e6
 Func_cd99: ; cd99 (3:4d99)
 	ret
 
@@ -21783,7 +21792,7 @@ Func_ce18: ; ce18 (3:4e18)
 	ld a, [$c2cd]
 	ld c, a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -21795,7 +21804,7 @@ Func_ce18: ; ce18 (3:4e18)
 	ld a, [$c2cd]
 	ld c, a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -21826,7 +21835,7 @@ Func_ce79: ; ce79 (3:4e79)
 	ld [wVBlankCallbackRAMBank], a
 	ld hl, $4da9
 	call WriteHalfWordTo
-	dw $c226
+	dw wVBlankCallbackAddress
 	ld a, [wNextVBlankFlags]
 	or $80
 	ld [wNextVBlankFlags], a
@@ -21933,7 +21942,7 @@ Func_cf49: ; cf49 (3:4f49)
 	ld [wVBlankCallbackRAMBank], a
 	ld hl, Func_ced9
 	call WriteHalfWordTo
-	dw $c226
+	dw wVBlankCallbackAddress
 	ld a, [wc2e0 + 4]
 	ld [wBlinkerOffTile], a
 	ld a, [wNextVBlankFlags]
@@ -22071,7 +22080,7 @@ Func_d030:
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld [hl], $0
@@ -22097,7 +22106,7 @@ Func_d030:
 	ld a, [$c2cd]
 	ld c, a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -22128,7 +22137,7 @@ Func_d0d5: ; d0d5 (3:50d5)
 	ld a, [$c2cd]
 	ld c, a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -22264,7 +22273,7 @@ Func_d1c1: ; d1c1 (3:51c1)
 	ld [hl], $b
 Func_d1c5: ; d1c5 (3:51c5)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -22394,7 +22403,7 @@ Func_d280: ; d280 (3:5280)
 	or a
 	jp z, Func_d2ac
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -22510,7 +22519,7 @@ Func_d329: ; d329 (3:5329)
 	or a
 	jp z, Func_d365
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -22584,7 +22593,7 @@ Func_d3b8: ; d3b8 (3:53b8)
 	ld [hl], $b
 Func_d3bc: ; d3bc (3:53bc)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -22711,7 +22720,7 @@ Func_d474: ; d474 (3:5474)
 	or a
 	jp z, Func_d4a0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -22827,7 +22836,7 @@ Func_d51d: ; d51d (3:551d)
 	or a
 	jp z, Func_d559
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -22898,7 +22907,7 @@ Func_d5a7: ; d5a7 (3:55a7)
 Func_d5ab: ; d5ab (3:55ab)
 	push af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -23012,7 +23021,7 @@ Func_d665: ; d665 (3:5665)
 	or a
 	jp z, Func_d681
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -23210,7 +23219,7 @@ Func_d7f5: ; d7f5 (3:57f5)
 	push bc
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -23278,7 +23287,7 @@ Func_d833: ; d833 (3:5833)
 	ld l, a
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -23401,7 +23410,7 @@ Func_d945: ; d945 (3:5945)
 	xor a
 	call Func_dbf5
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -23429,7 +23438,7 @@ Func_d96d: ; d96d (3:596d)
 	ld a, $1
 	call Func_dbf5
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -23444,7 +23453,7 @@ Func_d96d: ; d96d (3:596d)
 
 Func_d99a: ; d99a (3:599a)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -23452,7 +23461,7 @@ Func_d99a: ; d99a (3:599a)
 	jp z, Func_d9c5
 	ld c, $7
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $e2
 	add hl, de
 	ld e, [hl]
@@ -23471,7 +23480,7 @@ Func_d9c5: ; d9c5 (3:59c5)
 	call Func_dbf5
 	ld c, $7
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $e2
 	add hl, de
 	ld e, [hl]
@@ -23479,7 +23488,7 @@ Func_d9c5: ; d9c5 (3:59c5)
 	call Func_dbf5
 Func_d9de: ; d9de (3:59de)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -23493,7 +23502,7 @@ Func_d9de: ; d9de (3:59de)
 
 Func_d9f5: ; d9f5 (3:59f5)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -23507,7 +23516,7 @@ Func_d9f5: ; d9f5 (3:59f5)
 
 Func_da0c: ; da0c (3:5a0c)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -23522,7 +23531,7 @@ Func_da0c: ; da0c (3:5a0c)
 
 Func_da26: ; da26 (3:5a26)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -23530,7 +23539,7 @@ Func_da26: ; da26 (3:5a26)
 	jp z, Func_da51
 	ld c, $7
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $e2
 	add hl, de
 	ld e, [hl]
@@ -23549,7 +23558,7 @@ Func_da51: ; da51 (3:5a51)
 	call Func_dbf5
 	ld c, $7
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $e2
 	add hl, de
 	ld e, [hl]
@@ -23557,7 +23566,7 @@ Func_da51: ; da51 (3:5a51)
 	call Func_dbf5
 Func_da6a: ; da6a (3:5a6a)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -23708,7 +23717,7 @@ Func_db5a: ; db5a (3:5b5a)
 Func_db78: ; db78 (3:5b78)
 	push bc
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -23861,7 +23870,7 @@ Func_dcaf:
 	push af
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -23887,7 +23896,7 @@ Func_dcd6: ; dcd6 (3:5cd6)
 	ld hl, sp+$3
 	ld a, [hl]
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -23922,7 +23931,7 @@ Func_dd07: ; dd07 (3:5d07)
 Func_dd0a:
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -23944,7 +23953,7 @@ Func_dd0a:
 
 Func_dd29:
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld [hl], $0
@@ -23965,7 +23974,7 @@ Func_dd29:
 
 Func_dd47:
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -24107,7 +24116,7 @@ Func_de2c: ; de2c (3:5e2c)
 	push bc
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $15
 	add hl, de
 	ld e, [hl]
@@ -24339,7 +24348,7 @@ Func_df8b: ; df8b (3:5f8b)
 	push bc
 	ld bc, $80
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ca
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
@@ -24376,7 +24385,7 @@ Func_dfce: ; dfce (3:5fce)
 Func_dfd1: ; dfd1 (3:5fd1)
 	ld bc, $80
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ca
 	add hl, de
 	push de
@@ -24913,7 +24922,7 @@ Func_e3d1:
 	ld hl, sp+$2
 	ld [hl], a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -24929,14 +24938,14 @@ Func_e408: ; e408 (3:6408)
 	pop af
 	push af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld l, [hl]
@@ -24977,7 +24986,7 @@ Func_e408: ; e408 (3:6408)
 	add hl, hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld l, [hl]
@@ -24993,7 +25002,7 @@ Func_e408: ; e408 (3:6408)
 	add hl, hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $d
 	add hl, de
 	pop de
@@ -25011,7 +25020,7 @@ Func_e408: ; e408 (3:6408)
 	add hl, hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld l, [hl]
@@ -25027,7 +25036,7 @@ Func_e408: ; e408 (3:6408)
 	add hl, hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $11
 	add hl, de
 	pop de
@@ -25075,34 +25084,34 @@ Func_e4d1: ; e4d1 (3:64d1)
 	ld hl, sp+$5
 	ld [hl], a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$5
 	ld a, [hl]
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	xor [hl]
 	call Func_e4b4
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $15
 	add hl, de
 	ld [hl], a
 	ld hl, $8000
 	call WriteHLToSPPlus4
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $18
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -25247,7 +25256,7 @@ Func_e5e1: ; e5e1 (3:65e1)
 	dec b
 Func_e5ed: ; e5ed (3:65ed)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -25283,7 +25292,7 @@ Func_e608: ; e608 (3:6608)
 	call GetHLAtSPPlus4
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -25300,7 +25309,7 @@ Func_e608: ; e608 (3:6608)
 	add hl, hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $d
 	add hl, de
 	pop de
@@ -25310,7 +25319,7 @@ Func_e608: ; e608 (3:6608)
 	inc hl
 	ld [hl], d
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -25327,7 +25336,7 @@ Func_e608: ; e608 (3:6608)
 	add hl, hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $11
 	add hl, de
 	pop de
@@ -25401,7 +25410,7 @@ Func_e6b7:
 	push hl
 	push af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -25417,7 +25426,7 @@ Func_e6b7:
 	add hl, hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $d
 	add hl, de
 	pop de
@@ -25433,7 +25442,7 @@ Func_e6b7:
 	ld [hl], a
 	pop af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -25449,7 +25458,7 @@ Func_e6b7:
 	add hl, hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $11
 	add hl, de
 	pop de
@@ -25552,7 +25561,7 @@ Func_e7b1: ; e7b1 (3:67b1)
 	call WriteHLToSPPlus6
 	push af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -25569,13 +25578,13 @@ Func_e7b1: ; e7b1 (3:67b1)
 	call WriteHLToSPPlus6
 Func_e7d5: ; e7d5 (3:67d5)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -25590,7 +25599,7 @@ Func_e7d5: ; e7d5 (3:67d5)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -25600,13 +25609,13 @@ Func_e7d5: ; e7d5 (3:67d5)
 	ld l, a
 	call WriteHLToSPPlus4
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -25621,7 +25630,7 @@ Func_e7d5: ; e7d5 (3:67d5)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -25658,13 +25667,13 @@ Func_e862: ; e862 (3:6862)
 	push hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -25679,7 +25688,7 @@ Func_e862: ; e862 (3:6862)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -25718,13 +25727,13 @@ Func_e8bf: ; e8bf (3:68bf)
 	call WriteHLToSPPlus6
 	push af
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -25739,7 +25748,7 @@ Func_e8bf: ; e8bf (3:68bf)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -25748,13 +25757,13 @@ Func_e8bf: ; e8bf (3:68bf)
 	ld b, [hl]
 	push bc
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -25769,7 +25778,7 @@ Func_e8bf: ; e8bf (3:68bf)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -25813,13 +25822,13 @@ Func_e95b: ; e95b (3:695b)
 	push hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -25834,7 +25843,7 @@ Func_e95b: ; e95b (3:695b)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -25851,7 +25860,7 @@ Func_e95b: ; e95b (3:695b)
 Func_e994:
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $15
 	add hl, de
 	ld a, $20
@@ -25919,7 +25928,7 @@ Func_ea05: ; ea05 (3:6a05)
 	push hl
 Func_ea15: ; ea15 (3:6a15)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -25950,13 +25959,13 @@ Func_ea32: ; ea32 (3:6a32)
 	call GetHLAtSPPlus4
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -25971,7 +25980,7 @@ Func_ea32: ; ea32 (3:6a32)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -25983,13 +25992,13 @@ Func_ea32: ; ea32 (3:6a32)
 	push hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -26004,7 +26013,7 @@ Func_ea32: ; ea32 (3:6a32)
 	ld c, l
 	ld b, h
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -26027,7 +26036,7 @@ Func_ea32: ; ea32 (3:6a32)
 Func_eab8:
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $15
 	add hl, de
 	ld a, $40
@@ -26039,7 +26048,7 @@ Func_eab8:
 Func_eac8:
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $15
 	add hl, de
 	ld a, $80
@@ -26068,7 +26077,7 @@ Func_eae7: ; eae7 (3:6ae7)
 	push bc
 	push bc
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	inc hl
 	inc hl
@@ -26101,7 +26110,7 @@ Func_eb15: ; eb15 (3:6b15)
 	inc hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ca
 	add hl, de
 	push de
@@ -26110,7 +26119,7 @@ Func_eb15: ; eb15 (3:6b15)
 	pop hl
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $24a
 	add hl, de
 	call WriteHLToSPPlus7
@@ -26482,7 +26491,7 @@ Func_ed38: ; ed38 (3:6d38)
 	inc hl
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ca
 	add hl, de
 	push de
@@ -26491,7 +26500,7 @@ Func_ed38: ; ed38 (3:6d38)
 	pop hl
 	push de
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $2ca
 	add hl, de
 	call WriteHLToSPPlus7
@@ -26840,24 +26849,24 @@ Func_ef36:
 
 Func_ef3f: ; ef3f (3:6f3f)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	ld a, $1
 	add [hl]
 	ld [hl], a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	cp [hl]
 	jp nc, Func_ef53
 	ret
 
 Func_ef53: ; ef53 (3:6f53)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	ld [hl], $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -26865,7 +26874,7 @@ Func_ef53: ; ef53 (3:6f53)
 	jp nz, Func_ef80
 	ld bc, $80
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $24a
 	add hl, de
 	push de
@@ -26879,7 +26888,7 @@ Func_ef53: ; ef53 (3:6f53)
 Func_ef80: ; ef80 (3:6f80)
 	ld bc, $80
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $2ca
 	add hl, de
 	push de
@@ -26890,7 +26899,7 @@ Func_ef80: ; ef80 (3:6f80)
 	call CopyFromDEtoHL
 Func_ef96: ; ef96 (3:6f96)
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	inc hl
 	ld a, $1
@@ -26910,14 +26919,14 @@ Func_efaa:
 	pop de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld [hl], a
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	ld [hl], $0
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	inc hl
 	ld [hl], $0
@@ -26928,7 +26937,7 @@ Func_efaa:
 	pop de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	inc hl
 	inc hl
@@ -26940,7 +26949,7 @@ Func_efaa:
 	pop de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	inc hl
 	inc hl
 	inc hl
@@ -26953,7 +26962,7 @@ Func_efaa:
 	pop de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $5
 	add hl, de
 	ld [hl], a
@@ -26964,7 +26973,7 @@ Func_efaa:
 	pop de
 	push hl
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $6
 	add hl, de
 	ld [hl], a
@@ -26973,7 +26982,7 @@ Func_efaa:
 	jp nz, Func_f049
 	ld bc, $80
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ca
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
@@ -26988,7 +26997,7 @@ Func_efaa:
 	ld [wVBlankCallbackRAMBank], a
 	ld hl, $6f36
 	call WriteHalfWordTo
-	dw $c226
+	dw wVBlankCallbackAddress
 	ld a, [wNextVBlankFlags]
 	or $80
 	ld [wNextVBlankFlags], a
@@ -27001,7 +27010,7 @@ Func_f049: ; f049 (3:7049)
 	ld [wVBlankCallbackRAMBank], a
 	ld hl, DoFlashProgram
 	call WriteHalfWordTo
-	dw $c226
+	dw wVBlankCallbackAddress
 	ld a, [wNextVBlankFlags]
 	or $80
 	ld [wNextVBlankFlags], a
@@ -27027,7 +27036,7 @@ Func_f07c: ; f07c (3:707c)
 	jp nz, Func_f07c
 	ld bc, $80
 	call ReadHalfWordAt
-	dw $c2e6
+	dw wc2e6
 	ld de, $1ca
 	add hl, de
 	push de
@@ -27062,8 +27071,989 @@ Func_f0cd: ; f0cd (3:70cd)
 	pop hl
 	ret
 
-Func_f0cf:
-	dr $f0cf, $f723
+Func_f0cf: ; f0cf (3:70cf)
+	ld a, [hl]
+	inc hl
+	push hl
+	push af
+	ld a, [wLCDC]
+	ld e, a
+	push de
+	ld a, [rIE]
+	ld l, a
+	push hl
+	ld a, [wLCDC]
+	and $fb
+	ld [wLCDC], a
+	ld a, [wNextVBlankFlags]
+	or $4
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	call Func_1cb5
+	set_farcall_addrs_hli Func_da729
+	pop hl
+	pop de
+	pop af
+	push hl
+	push de
+	push af
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $b
+	add hl, de
+	ld e, [hl]
+	call FarCall
+	pop af
+	push hl
+	push af
+	set_farcall_addrs_hli Func_e2bf8
+	pop af
+	call FarCall
+Func_f122: ; f122 (3:7122)
+	call Func_0451
+	callba_hli Func_e2c29
+	set_farcall_addrs_hli Func_da093
+	xor a
+	call FarCall
+	or a
+	jp nz, Func_f149
+	jp Func_f15a
+
+Func_f149: ; f149 (3:7149)
+	callba_hli Func_d9f55
+	jp Func_f122
+
+Func_f15a: ; f15a (3:715a)
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	call Func_27f5
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	pop de
+	ld a, e
+	ld [wLCDC], a
+	ld a, [wNextVBlankFlags]
+	or $4
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	pop hl
+	ld a, l
+	and $2
+	jp z, Func_f191
+	call Func_1caf
+Func_f191: ; f191 (3:7191)
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	pop hl
+	ret
+
+Func_f19f:
+	push hl
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	ld l, a
+	ld h, $0
+	ld de, $9c
+	call MultiplyHLbyDE
+	call Func_ddc2
+	pop hl
+	push hl
+	pop bc
+	ret
+
+Func_f1b6:
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $7
+	add hl, de
+	ld [hl], $0
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $8
+	add hl, de
+	ld [hl], a
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $9
+	add hl, de
+	ld [hl], a
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $a
+	add hl, de
+	ld [hl], a
+	ld a, BANK(DoShakeProgram)
+	ld [wVBlankCallbackROMBank], a
+	ld a, $3
+	ld [wVBlankCallbackRAMBank], a
+	ld hl, DoShakeProgram
+	call WriteHalfWordTo
+	dw wVBlankCallbackAddress
+	ld a, [wNextVBlankFlags]
+	or $80
+	ld [wNextVBlankFlags], a
+	pop hl
+	push hl
+	pop bc
+	ret
+
+Func_f210:
+	push hl
+	ld a, [wNextVBlankFlags]
+	and $7f
+	ld [wNextVBlankFlags], a
+	xor a
+	ld [wSCY2], a
+	ld [wSCY], a
+	ld [wSCX2], a
+	ld [wSCX], a
+	ld a, [wNextVBlankFlags]
+	or $10
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	pop hl
+	ret
+
+Func_f233: ; f233 (3:7233)
+	push bc
+	ld bc, wCGB_BGPalsBuffer
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $24a
+	add hl, de
+	pop de
+	push hl
+	xor a
+Func_f243: ; f243 (3:7243)
+	cp $40
+	jp nc, Func_f29b
+	push af
+	push bc
+	ld l, c
+	ld h, b
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld b, $a
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld c, a
+	ld b, $0
+	call GetHLAtSPPlus6
+	ld [hl], c
+	inc hl
+	call WriteHLToSPPlus6
+	pop bc
+	push bc
+	ld l, c
+	ld h, b
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld b, $5
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld c, a
+	ld b, $0
+	call GetHLAtSPPlus6
+	ld [hl], c
+	inc hl
+	call WriteHLToSPPlus6
+	pop bc
+	pop af
+	push bc
+	push af
+	ld l, c
+	ld h, b
+	ld a, [hl]
+	and $1f
+	ld c, a
+	inc hl
+	ld b, $0
+	call GetHLAtSPPlus6
+	ld [hl], c
+	inc hl
+	call WriteHLToSPPlus6
+	pop af
+	inc a
+	pop bc
+	inc bc
+	inc bc
+	jp Func_f243
+
+Func_f29b: ; f29b (3:729b)
+	pop bc
+	ret
+
+Func_f29d:
+	push hl
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	ld [hl], a
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	ld [hl], $0
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	inc hl
+	ld [hl], $0
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], $1
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], $0
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $5
+	add hl, de
+	ld [hl], a
+	ld a, [wSystemType]
+	or a
+	jp z, Func_f31b
+	cp $ff
+	jp z, Func_f31b
+	cp $1
+	jp z, Func_f31b
+	cp $11
+	jp nz, Func_f335
+	ld bc, $80
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $1ca
+	add hl, de
+	ld de, wCGB_BGPalsBuffer
+	call CopyFromDEtoHL
+	call Func_f233
+	call WaitVideoTransfer
+	ld a, $2
+	ld [wc24d], a
+	ld a, $1
+	ld [wc2e8], a
+	jp Func_f335
+
+Func_f31b: ; f31b (3:731b)
+	ld a, $1
+	ld [wVBlankCallbackROMBank], a
+	ld a, $3
+	ld [wVBlankCallbackRAMBank], a
+	ld hl, $6a16
+	call WriteHalfWordTo
+	dw wVBlankCallbackAddress
+	ld a, [wNextVBlankFlags]
+	or $80
+	ld [wNextVBlankFlags], a
+Func_f335: ; f335 (3:7335)
+	pop hl
+	push hl
+	pop bc
+	ret
+
+Func_f339:
+	push hl
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_f358
+	xor a
+	ld [wc2e8], a
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], $ff
+	ld a, $1
+	ld [wc2e8], a
+	jp Func_f375
+
+Func_f358: ; f358 (3:7358)
+	ld a, [wNextVBlankFlags]
+	and $7f
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], $ff
+	ld a, [wNextVBlankFlags]
+	or $80
+	ld [wNextVBlankFlags], a
+Func_f375: ; f375 (3:7375)
+	pop hl
+	ret
+
+Func_f377:
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	cp $ff
+	jp nz, Func_f395
+Func_f386: ; f386 (3:7386)
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	inc hl
+	ld a, [hl]
+	or a
+	jp z, Func_f3a2
+	jp Func_f386
+
+Func_f395: ; f395 (3:7395)
+	call ReadHalfWordAt
+	dw wc2e6
+	inc hl
+	inc hl
+	ld a, [hl]
+	cp $10
+	jp nz, Func_f395
+Func_f3a2: ; f3a2 (3:73a2)
+	pop hl
+	ret
+
+Func_f3a4:
+	push hl
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	ld l, a
+	xor a
+Func_f3ad: ; f3ad (3:73ad)
+	cp l
+	jp nc, Func_f3bc
+	push hl
+	push af
+	call Func_0451
+	pop af
+	inc a
+	pop hl
+	jp Func_f3ad
+
+Func_f3bc: ; f3bc (3:73bc)
+	pop hl
+	push hl
+	pop bc
+	ret
+
+Func_f3c0:
+	push hl
+	ld hl, Data_c009
+	call Func_f723
+	pop hl
+	ret
+
+Func_f3c9:
+	push hl
+	ld hl, Data_c016
+	call Func_f723
+	pop hl
+	ret
+
+Func_f3d2:
+	push hl
+	push bc
+	push bc
+	call GetHLAtSPPlus6
+	ld a, [hl]
+	inc hl
+	call WriteHLToSPPlus6
+	push af
+	call GetHLAtSPPlus8
+	ld a, [hl]
+	inc hl
+	call WriteHLToSPPlus8
+	ld l, a
+	ld h, $0
+	call WriteHLToSPPlus6
+	call GetHLAtSPPlus8
+	ld a, [hl]
+	inc hl
+	call WriteHLToSPPlus8
+	ld l, a
+	ld h, $0
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus6
+	ld de, $80
+	call CompareHLtoDE
+	jp c, Func_f40c
+	call GetHLAtSPPlus6
+	dec h
+	call WriteHLToSPPlus6
+Func_f40c: ; f40c (3:740c)
+	ld l, c
+	ld h, b
+	ld de, $80
+	call CompareHLtoDE
+	jp c, Func_f418
+	dec b
+Func_f418: ; f418 (3:7418)
+	push bc
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $b
+	add hl, de
+	ld a, [hl]
+	or a
+	jp z, Func_f434
+	call GetHLAtSPPlus8
+	ld a, l
+	cpl
+	ld l, a
+	ld a, h
+	cpl
+	ld h, a
+	inc hl
+	call WriteHLToSPPlus8
+Func_f434: ; f434 (3:7434)
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $b
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $c
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld a, l
+	xor c
+	ld l, a
+	ld a, h
+	xor b
+	ld h, a
+	add hl, hl
+	ld c, l
+	ld b, h
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $d
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus6
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $b
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $c
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld a, l
+	xor c
+	ld l, a
+	ld a, h
+	xor b
+	ld h, a
+	add hl, hl
+	ld c, l
+	ld b, h
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $11
+	add hl, de
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	pop bc
+	pop af
+Func_f496: ; f496 (3:7496)
+	cp $1
+	jp c, Func_f4ea
+	push de
+	push af
+	push bc
+	push de
+	push hl
+	pop de
+	pop hl
+	add hl, bc
+	push hl
+	call GetHLAtSPPlusParam8
+	db $0c
+	push hl
+	call GetHLAtSPPlusParam8
+	db $0c
+	pop de
+	add hl, de
+	pop de
+	call Func_de2c
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	xor a
+Func_f4bf: ; f4bf (3:74bf)
+	cp $2
+	jp nc, Func_f4cd
+	push af
+	call Func_0451
+	pop af
+	inc a
+	jp Func_f4bf
+
+Func_f4cd: ; f4cd (3:74cd)
+	call GetHLAtSPPlus10
+	ld a, l
+	cpl
+	ld l, a
+	ld a, h
+	cpl
+	ld h, a
+	inc hl
+	call WriteHLToSPPlus10
+	pop bc
+	ld a, c
+	cpl
+	ld l, a
+	ld a, b
+	cpl
+	ld h, a
+	inc hl
+	ld c, l
+	ld b, h
+	pop af
+	dec a
+	pop de
+	jp Func_f496
+
+Func_f4ea: ; f4ea (3:74ea)
+	call GetHLAtSPPlus6
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_f4f1:
+	ld a, [hl]
+	inc hl
+	push hl
+	push af
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $b
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $c
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld a, l
+	xor c
+	ld l, a
+	ld a, h
+	xor b
+	ld h, a
+	add hl, hl
+	ld c, l
+	ld b, h
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $d
+	add hl, de
+	add hl, bc
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	push bc
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $b
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $c
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld a, l
+	xor c
+	ld l, a
+	ld a, h
+	xor b
+	ld h, a
+	add hl, hl
+	ld c, l
+	ld b, h
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $11
+	add hl, de
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	pop bc
+	pop af
+Func_f554: ; f554 (3:7554)
+	cp $1
+	jp c, Func_f5c5
+	push af
+	push bc
+	push de
+	ld hl, $8
+	add hl, bc
+	call Func_de2c
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	pop de
+	pop bc
+	push bc
+	push de
+	ld hl, hPushOAM + 3
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $8
+	add hl, bc
+	call Func_de2c
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	pop de
+	pop bc
+	push bc
+	push de
+	ld hl, hPushOAM + 3
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	call Func_de2c
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	pop de
+	pop bc
+	pop af
+	push bc
+	push de
+	push af
+	ld l, c
+	ld h, b
+	call Func_de2c
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+	call DelayFrames_NoHalt
+	pop af
+	dec a
+	pop de
+	pop bc
+	jp Func_f554
+
+Func_f5c5: ; f5c5 (3:75c5)
+	pop hl
+	ret
+
+Func_f5c7:
+	push hl
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	ld c, a
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	ld l, a
+Func_f5d6: ; f5d6 (3:75d6)
+	ld a, c
+	cp $1
+	jp c, Func_f5f5
+	push hl
+	push bc
+	ld h, $0
+	add hl, hl
+	ld de, Data_c6e1
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_f723
+	pop bc
+	dec c
+	pop hl
+	jp Func_f5d6
+
+Func_f5f5: ; f5f5 (3:75f5)
+	pop hl
+	push hl
+	pop bc
+	ret
+
+Func_f5f9:
+	push hl
+	set_farcall_addrs_hli Func_6a77
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call FarCall
+	pop hl
+	inc hl
+	inc hl
+	ret
+
+Func_f612:
+	push hl
+Func_f613: ; f613 (3:7613)
+	call Func_1ac5
+	or a
+	jp nz, Func_f613
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	call Func_1502
+	pop hl
+	push hl
+	pop bc
+	ret
+
+Func_f627:
+	ld a, [hl]
+	inc hl
+	ld [wOAM06YCoord], a
+	ret
+
+Func_f62d:
+	push hl
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	pop de
+	push hl
+	call Func_14fc
+	pop hl
+	push hl
+	pop bc
+	ret
+
+Func_f63b:
+	push hl
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_f64c
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_f660
+Func_f64c: ; f64c (3:764c)
+	set_farcall_addrs_hli Func_61424
+	ld c, $1
+	ld e, $1
+	ld a, $1
+	call FarCall
+Func_f660: ; f660 (3:7660)
+	pop hl
+	ret
+
+Func_f662:
+	push hl
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_f673
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_f687
+Func_f673: ; f673 (3:7673)
+	set_farcall_addrs_hli Func_61424
+	ld c, $1
+	ld e, $3
+	ld a, $2
+	call FarCall
+Func_f687: ; f687 (3:7687)
+	pop hl
+	ret
+
+Func_f689:
+	push hl
+	ld e, $0
+	xor a
+	call SetStringStartState
+	ld hl, Data_f6cb
+	push hl
+	call PlaceString
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+.asm_f69e
+	xor a
+	call Func_3bc5
+	pop bc
+	xor a
+	ld [wJoyHeld], a
+Func_f6a8: ; f6a8 (3:76a8)
+	call Func_0465
+	or a
+	jp z, Func_f6a8
+	ld e, $0
+	xor a
+	call SetStringStartState
+	ld hl, Data_f6d1
+	push hl
+	call PlaceString
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	pop hl
+	ret
+
+Data_f6cb:
+	db "キー マチ", $00
+
+Data_f6d1:
+	db "     ", $00
+
+Pointers_f6d7:
+	dw $0000
+	dw Func_e3bd
+	dw Func_e3d1
+	dw Func_e4d1
+	dw Func_e6b7
+	dw Func_e787
+	dw Func_e78d
+	dw Func_e89b
+	dw Func_e994
+	dw Func_e9a4
+	dw Func_e9bc
+	dw Func_e9d4
+	dw Func_eab8
+	dw Func_eac8
+	dw Func_ead8
+	dw Func_eadf
+	dw Func_efaa
+	dw Func_f067
+	dw Func_f0cf
+	dw Func_f19f
+	dw Func_f1b6
+	dw Func_f210
+	dw Func_f29d
+	dw Func_f339
+	dw Func_f377
+	dw Func_f3a4
+	dw Func_f3c0
+	dw Func_f3c9
+	dw Func_f3d2
+	dw Func_f4f1
+	dw Func_f5c7
+	dw Func_f5f9
+	dw Func_f612
+	dw Func_f627
+	dw Func_f62d
+	dw Func_f63b
+	dw Func_f662
+	dw Func_f689
 
 Func_f723: ; $f723
 	dr $f723, $fa81
@@ -49193,7 +50183,10 @@ Func_da4dc: ; $da4dc
 	dr $da4dc, $da4fc
 
 Func_da4fc: ; $da4fc
-	dr $da4fc, $da835
+	dr $da4fc, $da729
+
+Func_da729:
+	dr $da729, $da835
 
 Func_da835: ; $da835
 	dr $da835, $da839
@@ -49223,7 +50216,13 @@ Func_e220d: ; $e220d
 	dr $e220d, $e2780
 
 Func_e2780: ; $e2780
-	dr $e2780, $e4000
+	dr $e2780, $e2bf8
+
+Func_e2bf8:
+	dr $e2bf8, $e2c29
+
+Func_e2c29:
+	dr $e2c29, $e4000
 
 SECTION "Bank 39", ROMX, BANK [$39]
 	dr $e4000, $e8000
