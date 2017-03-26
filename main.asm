@@ -46547,7 +46547,14 @@ SECTION "Bank 07", ROMX, BANK [$07]
 	dr $1c000, $1e7ec
 
 SECTION "Bank 08", ROMX, BANK [$08]
-	dr $20000, $222b7
+Func_20000:
+	ret
+
+Data_20001:
+	dr $20001, $202f0
+
+Func_202f0:
+	dr $202f0, $222b7
 
 Func_222b7:
 	dr $222b7, $2328f
