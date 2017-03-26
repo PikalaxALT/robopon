@@ -44650,20 +44650,1036 @@ Func_17488: ; 17488 (5:7488)
 Data_174a3:
 	dr $174a3, $174ab
 
-Func_174ab: ; $174ab
-	dr $174ab, $17863
+Func_174ab: ; 174ab (5:74ab)
+	push hl
+	push bc
+	push bc
+	push bc
+	ld hl, -1
+	ld bc, $4000
+	call GetHLAtSPPlus8
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	pop de
+	push hl
+	pop hl
+	push hl
+	ld e, [hl]
+	ld hl, sp+$5
+	ld [hl], e
+	pop hl
+	push hl
+	inc hl
+	ld e, [hl]
+	ld hl, sp+$4
+	ld [hl], e
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	ld hl, sp+$3
+	ld [hl], e
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	ld hl, sp+$2
+	ld [hl], e
+	call GetHLAtSPPlus8
+	ld de, $f
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_17551
+	push bc
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$5
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	add hl, hl
+	call Func_17aba
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus10
+	ld de, $f
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	call GetHLAtSPPlus10
+	ld de, $f
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	ld hl, sp+$4
+	ld e, [hl]
+	ld hl, sp+$5
+	ld h, [hl]
+	ld d, h
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	call Func_2124
+	call GetHLAtSPPlus10
+	ld de, $f
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, sp+$6
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	pop de
+	add hl, de
+	ld c, l
+	ld b, h
+	ld hl, sp+$4
+	ld e, [hl]
+	ld hl, sp+$5
+	ld h, [hl]
+	ld d, h
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	call Func_2152
+	pop bc
+Func_17551: ; 17551 (5:7551)
+	pop hl
+	push hl
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_1757e
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	pop hl
+	push hl
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus8
+	call FarCall
+	ld c, l
+	ld b, h
+Func_1757e: ; 1757e (5:757e)
+	push bc
+	ld hl, sp+$4
+	ld a, [hl]
+	ld b, $2
+	call DivideAbyB
+	ld hl, $0
+	pop bc
+Func_1758b: ; 1758b (5:758b)
+	ld a, c
+	and b
+	inc a
+	jp nz, Func_17597
+	ld hl, -1
+	jp Func_1779a
 
-Func_17863:
-	dr $17863, $17a44
+Func_17597: ; 17597 (5:7597)
+	call GetHLAtSPPlus8
+	inc hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	inc hl
+	ld h, [hl]
+	call GetHLAtSPPlus8
+	ld de, $5
+	add hl, de
+	ld l, [hl]
+	inc hl
+	ld h, [hl]
+	call GetHLAtSPPlus8
+	ld de, $7
+	add hl, de
+	ld l, [hl]
+	inc hl
+	ld h, [hl]
+	pop hl
+	push hl
+	ld de, $1a
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_175e1
+	pop hl
+	push hl
+	ld de, $19
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	pop hl
+	push hl
+	ld de, $1a
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus8
+	call FarCall
+	ld c, l
+	ld b, h
+Func_175e1: ; 175e1 (5:75e1)
+	push bc
+	call Func_24e9
+	ld l, a
+	pop bc
+	ld a, l
+	and $4
+	jp z, Func_17625
+	push bc
+	ld bc, $0
+	call GetHLAtSPPlus4
+	ld de, $b
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_17621
+	call GetHLAtSPPlus4
+	ld de, $a
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	call GetHLAtSPPlus4
+	ld de, $b
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus10
+	ld e, c
+	ld d, b
+	call FarCall
+Func_17621: ; 17621 (5:7621)
+	pop bc
+	jp Func_17780
 
-Func_17a44: ; $17a44
-	dr $17a44, $17a67
+Func_17625: ; 17625 (5:7625)
+	ld a, l
+	and $8
+	jp z, Func_17663
+	push bc
+	ld bc, $1
+	call GetHLAtSPPlus4
+	ld de, $b
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_1765f
+	call GetHLAtSPPlus4
+	ld de, $a
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	call GetHLAtSPPlus4
+	ld de, $b
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus10
+	ld e, c
+	ld d, b
+	call FarCall
+Func_1765f: ; 1765f (5:765f)
+	pop bc
+	jp Func_17780
 
-Func_17a67:
-	dr $17a67, $17ab6
+Func_17663: ; 17663 (5:7663)
+	ld a, l
+	and $1
+	jp z, Func_1769f
+	push bc
+	ld hl, $2
+	call GetHLAtSPPlus4
+	ld de, $14
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_1769b
+	call GetHLAtSPPlus4
+	ld de, $13
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	call GetHLAtSPPlus4
+	ld de, $14
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus10
+	call FarCall
+Func_1769b: ; 1769b (5:769b)
+	pop bc
+	jp Func_17780
 
-Func_17ab6:
-	dr $17ab6, $17aba
+Func_1769f: ; 1769f (5:769f)
+	ld a, l
+	and $2
+	jp z, Func_176db
+	push bc
+	ld hl, $3
+	call GetHLAtSPPlus4
+	ld de, $17
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_176d7
+	call GetHLAtSPPlus4
+	ld de, $16
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	call GetHLAtSPPlus4
+	ld de, $17
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus10
+	call FarCall
+Func_176d7: ; 176d7 (5:76d7)
+	pop bc
+	jp Func_17780
+
+Func_176db: ; 176db (5:76db)
+	ld a, l
+	and $10
+	jp z, Func_17711
+	pop hl
+	push hl
+	ld de, $e
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_1770e
+	pop hl
+	push hl
+	ld de, $d
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	pop hl
+	push hl
+	ld de, $e
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus8
+	call FarCall
+	ld c, l
+	ld b, h
+Func_1770e: ; 1770e (5:770e)
+	jp Func_17780
+
+Func_17711: ; 17711 (5:7711)
+	ld a, l
+	and $40
+	jp z, Func_17747
+	pop hl
+	push hl
+	ld de, $1d
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_17744
+	pop hl
+	push hl
+	ld de, $1c
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	pop hl
+	push hl
+	ld de, $1d
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus8
+	call FarCall
+	ld c, l
+	ld b, h
+Func_17744: ; 17744 (5:7744)
+	jp Func_17780
+
+Func_17747: ; 17747 (5:7747)
+	ld a, l
+	and $20
+	jp z, Func_17780
+	pop hl
+	push hl
+	ld de, $11
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_1777d
+	pop hl
+	push hl
+	ld de, $10
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	pop hl
+	push hl
+	ld de, $11
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus8
+	call FarCall
+	ld c, l
+	ld b, h
+	jp Func_17780
+
+Func_1777d: ; 1777d (5:777d)
+	jp Func_1779a
+
+Func_17780: ; 17780 (5:7780)
+	ld hl, -1
+	ld a, b
+	sub $80
+	or c
+	jp nz, Func_1778d
+	jp Func_17551
+
+Func_1778d: ; 1778d (5:778d)
+	ld a, b
+	sub $40
+	or c
+	jp z, Func_17797
+	jp Func_1779a
+
+Func_17797: ; 17797 (5:7797)
+	jp Func_1758b
+
+Func_1779a: ; 1779a (5:779a)
+	pop hl
+	push hl
+	ld de, $8
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_177c7
+	pop hl
+	push hl
+	ld de, $7
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	pop hl
+	push hl
+	ld de, $8
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHalfWordTo
+	dw wFarCallDestAddr
+	call GetHLAtSPPlus8
+	call FarCall
+	ld c, l
+	ld b, h
+Func_177c7: ; 177c7 (5:77c7)
+	push bc
+	call GetHLAtSPPlus10
+	ld de, $f
+	add hl, de
+	ld a, [hl]
+	inc hl
+	and [hl]
+	inc a
+	jp z, Func_1785d
+	ld a, [wOAM05Attrs]
+	or a
+	jp nz, Func_1784c
+	ld a, $3
+	ld [wOAM26VTile], a
+	ld hl, sp+$4
+	ld l, [hl]
+	push hl
+	ld hl, sp+$7
+	ld c, [hl]
+	ld hl, sp+$8
+	ld e, [hl]
+	ld hl, sp+$9
+	ld a, [hl]
+	call Func_3afc
+	pop bc
+	call GetHLAtSPPlus10
+	ld de, $f
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	ld hl, sp+$4
+	ld e, [hl]
+	ld hl, sp+$5
+	ld h, [hl]
+	ld d, h
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	call Func_21ca
+	call GetHLAtSPPlus10
+	ld de, $f
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, sp+$6
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	pop de
+	add hl, de
+	ld c, l
+	ld b, h
+	ld hl, sp+$4
+	ld e, [hl]
+	ld hl, sp+$5
+	ld h, [hl]
+	ld d, h
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	call Func_21f8
+	ld hl, sp+$4
+	ld l, [hl]
+	push hl
+	ld hl, sp+$7
+	ld c, [hl]
+	ld hl, sp+$8
+	ld e, [hl]
+	ld hl, sp+$9
+	ld a, [hl]
+	call Func_3ca1
+	pop bc
+Func_1784c: ; 1784c (5:784c)
+	call GetHLAtSPPlus10
+	ld de, $f
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_17c57
+Func_1785d: ; 1785d (5:785d)
+	pop hl
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_17863: ; 17863 (5:7863)
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	pop de
+	push hl
+	pop hl
+	push hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	ld hl, sp+$3
+	ld [hl], a
+	pop hl
+	push hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$2
+	ld [hl], a
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	push bc
+	call GetHLAtSPPlus4
+	ld de, $b
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus4
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus8
+	call GetHLAtSPPlus4
+	ld de, $9
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlusParam8
+	db $0c
+	call GetHLAtSPPlus4
+	ld de, $7
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus10
+	call GetHLAtSPPlus4
+	ld de, $d
+	add hl, de
+	ld a, [hl]
+	ld a, c
+	and b
+	inc a
+	jp z, Func_178e5
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	inc de
+	ld l, c
+	ld h, b
+	add hl, hl
+	add hl, de
+	ld e, l
+	ld hl, sp+$5
+	ld a, [hl]
+	inc a
+	call SetStringStartState
+	ld hl, Data_1796b
+	push hl
+	call PlaceString
+	pop bc
+Func_178e5: ; 178e5 (5:78e5)
+	pop bc
+	ld hl, sp+$2
+	ld e, [hl]
+	ld d, $0
+	inc de
+	ld l, c
+	ld h, b
+	add hl, hl
+	add hl, de
+	ld e, l
+	ld hl, sp+$3
+	ld a, [hl]
+	inc a
+	call SetStringStartState
+	ld hl, $8b
+	push hl
+	ld hl, Data_1796d
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	call GetHLAtSPPlus8
+	push hl
+	call GetHLAtSPPlusParam8
+	db $0c
+	pop de
+	call CompareHLtoDE
+	jp z, Func_17965
+	pop hl
+	push hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$2
+	add [hl]
+	add $fe
+	ld l, a
+	push hl
+	call GetHLAtSPPlus4
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$5
+	add [hl]
+	add $fe
+	pop de
+	call SetStringStartState
+	call GetHLAtSPPlus8
+	push hl
+	call GetHLAtSPPlusParam8
+	db $0c
+	push hl
+	call GetHLAtSPPlus10
+	pop de
+	add hl, de
+	pop de
+	call CompareHLtoDE
+	jp nc, Func_1795d
+	ld hl, $8a
+	push hl
+	ld hl, Data_17970
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	jp Func_17965
+
+Func_1795d: ; 1795d (5:795d)
+	ld hl, Data_17973
+	push hl
+	call PlaceString
+	pop bc
+Func_17965: ; 17965 (5:7965)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_1796b:
+	db " ", $00
+
+Data_1796d:
+	TX_STACK
+	db $00
+
+Data_17970:
+	TX_STACK
+	db $00
+
+Data_17973:
+	db " ", $00
+
+Func_17975:
+	push hl
+	push bc
+	push bc
+	push bc
+	xor a
+	ld a, c
+	and $80
+	ld hl, sp+$2
+	ld [hl], a
+	ld a, c
+	and $7f
+	ld hl, sp+$3
+	ld [hl], a
+	ld hl, sp+$3
+	ld a, [hl]
+	or a
+	jp nz, Func_1799c
+	push de
+	ld hl, Data_174a3
+	call WriteHLToSPPlus4
+	ld hl, sp+$6
+	ld [hl], $4
+	pop de
+	jp Func_179ba
+
+Func_1799c: ; 1799c (5:799c)
+	push de
+	ld hl, sp+$5
+	ld e, [hl]
+	ld d, $0
+	ld hl, $4
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	add hl, hl
+	ld de, Data_174a3
+	add hl, de
+	call WriteHLToSPPlus4
+	ld hl, sp+$5
+	ld a, [hl]
+	ld hl, sp+$6
+	ld [hl], a
+	pop de
+Func_179ba: ; 179ba (5:79ba)
+	ld hl, sp+$4
+	ld a, [hl]
+	cp $1
+	jp c, Func_17a39
+	push de
+	ld c, $0
+Func_179c5: ; 179c5 (5:79c5)
+	call GetHLAtSPPlus10
+	inc h
+	dec h
+	bit 7, h
+	jr nz, .asm_179e8
+	push bc
+	call GetHLAtSPPlus6
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlusParam8
+	db $0c
+	ld a, l
+	sub c
+	ld l, a
+	ld a, h
+	sbc b
+	ld h, a
+	call WriteHLToSPPlusParam8
+	db $0c
+	pop bc
+	inc c
+	jp Func_179c5
+
+.asm_179e8
+	push bc
+	call GetHLAtSPPlus6
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlusParam8
+	db $0c
+	add hl, bc
+	call WriteHLToSPPlusParam8
+	db $0c
+	pop bc
+	pop de
+	ld a, c
+	cp $2
+	jp nc, Func_17a0f
+	ld hl, sp+$2
+	ld a, [hl]
+	or a
+	jp z, Func_17a0f
+	ld hl, sp+$4
+	ld a, [hl]
+	cp $1
+	jp nz, Func_17a19
+Func_17a0f: ; 17a0f (5:7a0f)
+	ld hl, sp+$2
+	ld [hl], $0
+	ld a, c
+	ld [de], a
+	inc de
+	jp Func_17a25
+
+Func_17a19: ; 17a19 (5:7a19)
+	ld hl, sp+$3
+	ld a, [hl]
+	cp $1
+	jp c, Func_17a25
+	ld a, $90
+	ld [de], a
+	inc de
+Func_17a25: ; 17a25 (5:7a25)
+	push de
+	ld hl, sp+$6
+	ld a, [hl]
+	dec a
+	ld hl, sp+$6
+	ld [hl], a
+	call GetHLAtSPPlus4
+	inc hl
+	inc hl
+	call WriteHLToSPPlus4
+	pop de
+	jp Func_179ba
+
+Func_17a39: ; 17a39 (5:7a39)
+	xor a
+	ld [de], a
+	push de
+	push hl
+	pop de
+	pop hl
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_17a44: ; 17a44 (5:7a44)
+	call Func_0465
+	call Func_24e9
+	ld l, a
+	ld h, $0
+	ld a, l
+	and $10
+	jp z, Func_17a58
+	ld a, $10
+	jp Func_17a66
+
+Func_17a58: ; 17a58 (5:7a58)
+	ld a, l
+	and $20
+	jp z, Func_17a63
+	ld a, $20
+	jp Func_17a66
+
+Func_17a63: ; 17a63 (5:7a63)
+	jp Func_17a44
+
+Func_17a66: ; 17a66 (5:7a66)
+	ret
+
+Func_17a67: ; 17a67 (5:7a67)
+	call WriteHalfWordTo
+	dw $c2de
+	call ReadHalfWordAt
+	dw $c2de
+	ld c, l
+	ld b, h
+	ld a, $55
+	ld [bc], a
+	ld hl, -5
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	inc hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld de, $a002
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld bc, $a002
+	ld a, $55
+	ld [bc], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld de, $1ffd
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	xor a
+	ld [wc2e0], a
+	ld hl, $0
+	call WriteHalfWordTo
+	dw $c2dc
+	ret
+
+Func_17ab6: ; 17ab6 (5:7ab6)
+	ld [wc2e0], a
+	ret
 
 Func_17aba: ; 17aba (5:7aba)
 	push hl
@@ -44922,17 +45938,607 @@ Data_17c44:
 Func_17c56:
 	ret
 
-Func_17c57:
-	dr $17c57, $17e91
+Func_17c57: ; 17c57 (5:7c57)
+	push hl
+	push bc
+	push bc
+	call GetHLAtSPPlus6
+	ld a, l
+	or h
+	jp z, Func_17d77
+	call ReadHalfWordAt
+	dw $c2dc
+	dec hl
+	call WriteHalfWordTo
+	dw $c2dc
+	call GetHLAtSPPlus6
+	ld de, hPushOAM + 6
+	add hl, de
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus4
+	ld a, [hl]
+	cp $aa
+	jp nz, Func_17d77
+	call GetHLAtSPPlus4
+	ld [hl], $55
+	call ReadHalfWordAt
+	dw $c2de
+	ld c, l
+	ld b, h
+Func_17c8c: ; 17c8c (5:7c8c)
+	ld a, c
+	or b
+	jp z, Func_17cc9
+	push bc
+	call GetHLAtSPPlus6
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus6
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus4
+	add hl, bc
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus4
+	ld de, $5
+	add hl, de
+	call WriteHLToSPPlus4
+	pop bc
+	pop hl
+	push hl
+	ld e, c
+	ld d, b
+	call CompareHLtoDE
+	jp nz, Func_17cbe
+	jp Func_17cc9
 
-Func_17e91: ; $17e91
-	dr $17e91, $17e95
+Func_17cbe: ; 17cbe (5:7cbe)
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	jp Func_17c8c
 
-Func_17e95:
-	dr $17e95, $17ef7
+Func_17cc9: ; 17cc9 (5:7cc9)
+	ld a, c
+	or b
+	jp z, Func_17cfc
+	ld a, [bc]
+	cp $55
+	jp nz, Func_17cfc
+	push bc
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus6
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	pop hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $5
+	add hl, de
+	push hl
+	call GetHLAtSPPlus6
+	inc hl
+	pop de
+	ld a, [hl]
+	add e
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc d
+	ld [hl], a
+Func_17cfc: ; 17cfc (5:7cfc)
+	call ReadHalfWordAt
+	dw $c2de
+	ld c, l
+	ld b, h
+Func_17d03: ; 17d03 (5:7d03)
+	ld a, c
+	or b
+	jp z, Func_17d42
+	push bc
+	ld l, c
+	ld h, b
+	call WriteHLToSPPlus4
+	ld l, c
+	ld h, b
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus4
+	add hl, bc
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus4
+	ld de, $5
+	add hl, de
+	call WriteHLToSPPlus4
+	pop bc
+	call GetHLAtSPPlus4
+	push hl
+	call GetHLAtSPPlus4
+	pop de
+	call CompareHLtoDE
+	jp nz, Func_17d37
+	jp Func_17d42
 
-Func_17ef7:
-	dr $17ef7, $17f9f
+Func_17d37: ; 17d37 (5:7d37)
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	jp Func_17d03
+
+Func_17d42: ; 17d42 (5:7d42)
+	ld a, c
+	or b
+	jp z, Func_17d77
+	ld a, [bc]
+	cp $55
+	jp nz, Func_17d77
+	call GetHLAtSPPlus4
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	call GetHLAtSPPlus4
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $5
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	add e
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc d
+	ld [hl], a
+Func_17d77: ; 17d77 (5:7d77)
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_17d7b:
+	push bc
+	push bc
+	push bc
+	push bc
+	call ReadHalfWordAt
+	dw $c2de
+	call WriteHLToSPPlus8
+	ld hl, $0
+	call WriteHLToSPPlus6
+	ld bc, $0
+	ld l, c
+	ld h, b
+	call WriteHLToSPPlus4
+	ld hl, $0
+	pop de
+	push hl
+Func_17d9a: ; 17d9a (5:7d9a)
+	call GetHLAtSPPlus8
+	ld a, l
+	or h
+	jp z, Func_17e0c
+	call GetHLAtSPPlus8
+	ld a, [hl]
+	cp $55
+	jp nz, Func_17df5
+	call GetHLAtSPPlus8
+	ld a, l
+	sub $0
+	ld a, h
+	sbc $c0
+	jp c, Func_17dca
+	push bc
+	call GetHLAtSPPlus10
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus6
+	add hl, bc
+	call WriteHLToSPPlus6
+	pop bc
+	jp Func_17dd5
+
+Func_17dca: ; 17dca (5:7dca)
+	call GetHLAtSPPlus8
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	add hl, bc
+	ld c, l
+	ld b, h
+Func_17dd5: ; 17dd5 (5:7dd5)
+	push bc
+	call GetHLAtSPPlus10
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus4
+	call CompareHLtoBC
+	jp nc, Func_17df1
+	call GetHLAtSPPlus10
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus4
+Func_17df1: ; 17df1 (5:7df1)
+	pop bc
+	jp Func_17dfc
+
+Func_17df5: ; 17df5 (5:7df5)
+	call GetHLAtSPPlus6
+	inc hl
+	call WriteHLToSPPlus6
+Func_17dfc: ; 17dfc (5:7dfc)
+	call GetHLAtSPPlus8
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus8
+	jp Func_17d9a
+
+Func_17e0c: ; 17e0c (5:7e0c)
+	push bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ld e, $0
+	xor a
+	call SetStringStartState
+	call GetHLAtSPPlus8
+	push hl
+	call ReadHalfWordAt
+	dw $c2dc
+	push hl
+	ld hl, Data_17e6c
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	ld e, $2
+	xor a
+.asm_17e36
+	call SetStringStartState
+	pop bc
+	push bc
+	call GetHLAtSPPlus6
+	push hl
+	ld hl, Data_17e77
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	ld e, $4
+	xor a
+	call SetStringStartState
+	pop hl
+	push hl
+	push hl
+	ld hl, Data_17e88
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_17e6c:
+	db "カウント "
+	TX_SNUM
+	db " "
+	TX_SNUM
+	db $00
+
+Data_17e77:
+	db "ナイフﾞ "
+	TX_SNUM
+	db " カﾞイフﾞ "
+	TX_SNUM
+	db $00
+
+Data_17e88:
+	db "サイタﾞイ "
+	TX_SNUM
+	db $00
+
+Func_17e91: ; 17e91 (5:7e91)
+	call Func_17d7b
+	ret
+
+Func_17e95: ; 17e95 (5:7e95)
+	push bc
+	push de
+	push hl
+	ld b, e
+	push bc
+	call Coord2TileMap
+	pop bc
+	ld de, SCREEN_WIDTH * SCREEN_HEIGHT
+	add hl, de
+.asm_17ea2
+	push hl
+	ld d, b
+	xor a
+.asm_17ea5
+	ld [hli], a
+	dec b
+	jr nz, .asm_17ea5
+	ld b, d
+	pop hl
+	ld de, $14
+	add hl, de
+	dec c
+	jr nz, .asm_17ea2
+	pop hl
+	pop de
+	pop bc
+	ld d, c
+	call Coord2TileMap
+	ld a, $14
+	sub e
+	ld c, a
+	ld b, $0
+	dec e
+	dec d
+	push de
+	ld a, $80
+	ld [hli], a
+	ld a, $81
+	jr .asm_17eca
+
+.asm_17ec9
+	ld [hli], a
+.asm_17eca
+	dec e
+	jr nz, .asm_17ec9
+	ld a, $82
+	ld [hli], a
+	add hl, bc
+	pop de
+	jr .asm_17ee5
+
+.asm_17ed4
+	push de
+	ld a, $86
+	ld [hli], a
+	ld a, $8f
+	jr .asm_17edd
+
+.asm_17edc
+	ld [hli], a
+.asm_17edd
+	dec e
+	jr nz, .asm_17edc
+	ld a, $87
+	ld [hli], a
+	add hl, bc
+	pop de
+.asm_17ee5
+	dec d
+	jr nz, .asm_17ed4
+	ld a, $83
+	ld [hli], a
+	ld a, $84
+	jr .asm_17ef0
+
+.asm_17eef
+	ld [hli], a
+.asm_17ef0
+	dec e
+	jr nz, .asm_17eef
+	ld a, $85
+	ld [hli], a
+	ret
+
+Func_17ef7: ; 17ef7 (5:7ef7)
+	bit 0, c
+	jr nz, .asm_17f48
+	ld a, h
+	add d
+	ld h, a
+	dec h
+	ld a, l
+	add e
+	ld l, a
+	dec l
+	call Coord2TileMap
+	ld a, e
+	push af
+	ld a, $14
+	sub d
+	ld e, a
+	ld a, l
+	sub $28
+	ld c, a
+	ld a, h
+	sbc $0
+	ld b, a
+	pop af
+	sub $3
+.asm_17f17
+	push af
+	push de
+.asm_17f19
+	ld a, [bc]
+	dec bc
+	ld [hld], a
+	dec d
+	jr nz, .asm_17f19
+	pop de
+	ld a, c
+	sub e
+	ld c, a
+	ld a, b
+	sbc $0
+	ld b, a
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc $0
+	ld h, a
+	pop af
+	dec a
+	jr nz, .asm_17f17
+.asm_17f32
+	ld a, [bc]
+	dec bc
+	ld e, $42
+	cp $88
+	jr z, .asm_17f42
+	ld e, $43
+	cp $89
+	jr z, .asm_17f42
+	ld e, $8f
+.asm_17f42
+	ld a, e
+	ld [hld], a
+	dec d
+	jr nz, .asm_17f32
+	ret
+
+.asm_17f48
+	call Coord2TileMap
+	ld a, e
+	push af
+	ld a, $14
+	sub d
+	ld e, a
+	ld a, l
+	add $28
+	ld c, a
+	ld a, h
+	adc $0
+	ld b, a
+	pop af
+	sub $3
+	push af
+	push de
+.asm_17f5e
+	ld a, [bc]
+	inc bc
+	ld e, $88
+	cp $42
+	jr z, .asm_17f6e
+	ld e, $89
+	cp $43
+	jr z, .asm_17f6e
+	ld e, $81
+.asm_17f6e
+	ld a, e
+	ld [hli], a
+	dec d
+	jr nz, .asm_17f5e
+	pop de
+	ld a, c
+	add e
+	ld c, a
+	ld a, b
+	adc $0
+	ld b, a
+	ld a, l
+	add e
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	pop af
+.asm_17f83
+	push af
+	push de
+.asm_17f85
+	ld a, [bc]
+	ld [hli], a
+	inc bc
+	dec d
+	jr nz, .asm_17f85
+	pop de
+	ld a, c
+	add e
+	ld c, a
+	ld a, b
+	adc $0
+	ld b, a
+	ld a, l
+	add e
+	ld l, a
+	ld a, h
+	adc $0
+	ld h, a
+	pop af
+	dec a
+	jr nz, .asm_17f83
+	ret
 
 SECTION "Bank 06", ROMX, BANK [$06]
 	dr $18000, $1bfcf
