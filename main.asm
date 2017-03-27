@@ -55079,8 +55079,280 @@ Pointers_241f5:
 	dw Text_241eb
 	dw Text_241f1
 
-Data_24225:
-	dr $24225, $27750
+Text_24225:
+	db "えいきょうで ", $00
+
+Text_2422d:
+	db "こうかで ", $00
+
+Text_24233:
+	db "のこうかが きれた", $00
+
+Text_2423d:
+	db "で まもられている", $00
+
+Text_24247:
+	db "は こんらんしている", $00
+
+Text_24252:
+	db "しかし ", $00
+
+Text_24257:
+	db "で つつまれた", $00
+
+Text_2425f:
+	db "バリアにはねかえされた", $00
+
+Text_2426b:
+	db "さらに", $00
+
+Text_2426f:
+	db "のこうかで", $00
+
+Text_24275:
+	db "HP", $00
+
+Text_24278:
+	db "そのわざは", $00
+
+Text_2427e:
+	db "ぞくせいは", $00
+
+Text_24284:
+	db "にげようとした", $00
+
+Text_2428c:
+	db "しかし にげられなかった", $00
+
+Text_24299:
+	db "うまく にげた", $00
+
+Text_242a1:
+	db "ばくはつした", $00
+
+Pointers_242a8:
+	dw Text_24225
+	dw Text_2422d
+	dw Text_24233
+	dw Text_2423d
+	dw Text_24247
+	dw Text_24252
+	dw Text_24257
+	dw Text_2425f
+	dw Text_2426b
+	dw Text_2426f
+	dw Text_24275
+	dw Text_24278
+	dw Text_2427e
+	dw Text_24284
+	dw Text_2428c
+	dw Text_24299
+	dw Text_242a1
+
+Text_242ca:
+	db "ノーマル", $00
+
+Text_242cf:
+	db "ひ", $00
+
+Text_242d1:
+	db "みず", $00
+
+Text_242d4:
+	db "かぜ", $00
+
+Text_242d7:
+	db "つち", $00
+
+Text_242da:
+	db "かみなり", $00
+
+Text_242df:
+	db "こおり", $00
+
+Text_242e3:
+	db "せい", $00
+
+Text_242e6:
+	db "じゃ", $00
+
+Text_242e9:
+	db "りく", $00
+
+Text_242ec:
+	db "かい", $00
+
+Text_242ef:
+	db "くう", $00
+
+Pointers_242f2:
+	dw Text_242ca
+	dw Text_242cf
+	dw Text_242d1
+	dw Text_242d4
+	dw Text_242d7
+	dw Text_242da
+	dw Text_242df
+	dw Text_242e3
+	dw Text_242e6
+	dw Text_242e9
+	dw Text_242ec
+	dw Text_242ef
+
+Text_2430a:
+	db "こうか17", $00
+
+Text_24310:
+	db "EP", $00
+
+Text_24313:
+	db "ついかダメージ", $00
+
+Text_2431b:
+	db "ごうげきのはんどうで", $00
+
+Text_24326:
+	db "じばくした", $00
+
+Text_2432c:
+	db "はんげき", $00
+
+Text_24331:
+	db "いちげきひっさつ", $00
+
+Text_2433a:
+	db "がまんしている", $00
+
+Text_24342:
+	db "してきた", $00
+
+Text_24347:
+	db "した", $00
+
+Text_2434a:
+	db "27", $00
+
+Text_2434d:
+	db "28", $00
+
+Text_24350:
+	db "はんてんかいふく", $00
+
+Text_24359:
+	db "きゅうしゅう", $00
+
+Text_24360:
+	db "HPかいふく", $00
+
+Text_24367:
+	db "32", $00
+
+Text_2436a:
+	db "ぼうぎょ", $00
+
+Text_2436f:
+	db "うけみ", $00
+
+Text_24373:
+	db "35", $00
+
+Text_24376:
+	db "36", $00
+
+Text_24379:
+	db "37", $00
+
+Text_2437c:
+	db "38", $00
+
+Text_2437f:
+	db "れんぞくこうげき", $00
+
+Text_24388:
+	db "こうか40", $00
+
+Text_2438e:
+	db "こうか41", $00
+
+Text_24394:
+	db "こうか42", $00
+
+Text_2439a:
+	db "こうか43", $00
+
+Text_243a0:
+	db "こうか44", $00
+
+Pointers_243a6:
+	dw Text_2430a
+	dw Text_24310
+	dw Text_24313
+	dw Text_2431b
+	dw Text_24326
+	dw Text_2432c
+	dw Text_24331
+	dw Text_2433a
+	dw Text_24342
+	dw Text_24347
+	dw Text_2434a
+	dw Text_2434d
+	dw Text_24350
+	dw Text_24359
+	dw Text_24360
+	dw Text_24367
+	dw Text_2436a
+	dw Text_2436f
+	dw Text_24373
+	dw Text_24376
+	dw Text_24379
+	dw Text_2437c
+	dw Text_2437f
+	dw Text_24388
+	dw Text_2438e
+	dw Text_24394
+	dw Text_2439a
+	dw Text_243a0
+
+Text_243de:
+	db "ていしじょうたいで うごけない!", $00
+
+Text_243ef:
+	db "ぼうぎょしている", $00
+
+Text_243f8:
+	db "かいひしようとしている", $00
+
+Text_24404:
+	db "なにもしない", $00
+
+Pointers_2440b:
+	dw Text_243de
+	dw Text_243ef
+	dw Text_243f8
+	dw Text_24404
+
+Text_24413:
+	db "こうげきの はんどうで", $00
+
+Text_2441f:
+	db "の ダメージ", $00
+
+Pointers_24426:
+	dw Text_24413
+	dw Text_2441f
+
+Text_2442a:
+	db "しかし", $00
+
+Text_2442e:
+	db "バリアに はねかえされた", $00
+
+Pointers_2443b:
+	dw Text_2442a
+	dw Text_2442e
+
+Data_2443f:
+	dr $2443f, $27750
 
 Func_27750:
 	dr $27750, $27782
