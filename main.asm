@@ -6479,7 +6479,7 @@ Func_3a36: ; 3a36 (0:3a36)
 	pop de
 	push hl
 	call GetHLAtSPPlus6
-	call Func_3cf2
+	call FindFirstNonzero
 	dec hl
 	ld c, l
 	ld b, h
@@ -6846,7 +6846,7 @@ Func_3bc5: ; 3bc5 (0:3bc5)
 .zero_2
 	xor a
 .done
-	call Func_3cb8
+	call ToggleBGMapSelect
 	pop bc
 	pop bc
 	pop bc
@@ -6872,74 +6872,74 @@ Func_3ca1: ; 3ca1 (0:3ca1)
 	pop bc
 	ret
 
-Func_3cb8: ; 3cb8 (0:3cb8)
+ToggleBGMapSelect: ; 3cb8 (0:3cb8)
 	push af
 	or a
-	jp nz, Func_3cc8
+	jp nz, .toggle_bgmap_select
 	ld a, [wLCDC]
 	and $ff ^ $8
 	ld [wLCDC], a
-	jp Func_3cd0
+	jp .okay
 
-Func_3cc8: ; 3cc8 (0:3cc8)
+.toggle_bgmap_select
 	ld a, [wLCDC]
 	or $8
 	ld [wLCDC], a
-Func_3cd0: ; 3cd0 (0:3cd0)
+.okay
 	ld a, [wNextVBlankFlags]
-	or $6
+	or $6 ; push OAM, push LCDC
 	ld [wNextVBlankFlags], a
 	ld a, [wLCDC]
 	or $3
 	ld [wLCDC], a
-Func_3ce0: ; 3ce0 (0:3ce0)
+.wait_vblank
 	ld a, [wNextVBlankFlags]
 	ld hl, wLastVBlankFlags
 	cp [hl]
-	jp z, Func_3ced
-	jp Func_3ce0
+	jp z, .done
+	jp .wait_vblank
 
-Func_3ced: ; 3ced (0:3ced)
+.done
 	pop af
 	ld [$c2cd], a
 	ret
 
-Func_3cf2: ; 3cf2 (0:3cf2)
+FindFirstNonzero: ; 3cf2 (0:3cf2)
 	push hl
 	ld bc, $0
-Func_3cf6: ; 3cf6 (0:3cf6)
+.loop
 	pop hl
 	push hl
 	add hl, bc
 	ld a, [hl]
 	or a
-	jp z, Func_3d02
+	jp z, .done
 	inc bc
-	jp Func_3cf6
+	jp .loop
 
-Func_3d02: ; 3d02 (0:3d02)
+.done
 	ld l, c
 	ld h, b
 	pop bc
 	ret
 
-Func_3d06:
+IsBetween48And58:
 	cp $30
-	jp c, Func_3d13
+	jp c, .nope
 	cp $3a
-	jp nc, Func_3d13
+	jp nc, .nope
 	ld a, $1
 	ret
 
-Func_3d13: ; 3d13 (0:3d13)
+.nope
 	xor a
 	ret
 
-Func_3d15:
+GetJoyPressed:
 	ld a, [wJoyPressed]
 	ret
 
-Func_3d19:
+GetAndResetJoyHeld:
 	ld a, [wJoyHeld]
 	ld l, a
 	xor a
@@ -13696,7 +13696,7 @@ Func_90d6: ; 90d6 (2:50d6)
 Func_90e2: ; 90e2 (2:50e2)
 	xor a
 Func_90e3: ; 90e3 (2:50e3)
-	call Func_3cb8
+	call ToggleBGMapSelect
 Func_90e6: ; 90e6 (2:50e6)
 	add sp, $30
 	ret
@@ -13855,7 +13855,7 @@ Func_9222: ; 9222 (2:5222)
 	ld hl, sp+$4
 	ld [hl], $ff
 Func_9227: ; 9227 (2:5227)
-	call Func_3d15
+	call GetJoyPressed
 	and $40
 	jp z, Func_92f7
 	call Func_0465
@@ -18003,7 +18003,7 @@ Func_ac37:
 	ld a, $12
 	call FarCall
 Func_ac50: ; ac50 (2:6c50)
-	call Func_3d15
+	call GetJoyPressed
 	ld l, a
 	ld a, l
 	and $10
@@ -18020,7 +18020,7 @@ Func_ac66: ; ac66 (2:6c66)
 	jp Func_ac50
 
 Func_ac69: ; ac69 (2:6c69)
-	call Func_3d15
+	call GetJoyPressed
 	ld l, a
 	ld a, l
 	and $10
@@ -19298,7 +19298,7 @@ Func_b44d: ; b44d (2:744d)
 	ld a, l
 	or h
 	jp nz, Func_b4bd
-	call Func_3d15
+	call GetJoyPressed
 	ld hl, sp+$4
 	ld [hl], a
 	ld hl, $0
@@ -29238,7 +29238,7 @@ Func_100a4: ; 100a4 (4:40a4)
 	push bc
 	push de
 	call Func_0465
-	call Func_3d15
+	call GetJoyPressed
 	ld l, a
 	ld h, $0
 	pop de
@@ -40095,7 +40095,7 @@ Func_156af: ; 156af (5:56af)
 	ld hl, sp+$4
 	call Func_157c5
 	ld hl, sp+$4
-	call Func_3cf2
+	call FindFirstNonzero
 	push de
 	push hl
 	pop de
@@ -40159,7 +40159,7 @@ Func_15714: ; 15714 (5:5714)
 	ld hl, sp+$4
 	call Func_157c5
 	ld hl, sp+$4
-	call Func_3cf2
+	call FindFirstNonzero
 	push de
 	push hl
 	pop de
@@ -40359,7 +40359,7 @@ Func_1584b: ; 1584b (5:584b)
 	call Func_15ad6
 Func_1585a: ; 1585a (5:585a)
 	call GetHLAtSPPlus8
-	call Func_3cf2
+	call FindFirstNonzero
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus8

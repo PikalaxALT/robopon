@@ -3,6 +3,14 @@ VBlank:
 	push hl
 	ld l, $ff
 	ld a, [wNextVBlankFlags]
+; bit 7: call wVBlankCallback (far call with SRAM open)
+; bit 6: push BGMap metatiles or CGB palettes
+; bit 5: push DMG pals
+; bit 4: push SCX and SCY
+; bit 3: read joypad
+; bit 2: push LCDC
+; bit 1: push OAM
+; bit 0: handle video transfer request
 	ld h, a
 	bit 0, h
 	jr z, .skip_vblank_transfer_request
