@@ -56382,9 +56382,10 @@ Func_24bfc: ; 24bfc (9:4bfc)
 	callba_hli Func_5cdb0
 	ret
 
-Data_24c0b:
-	db $e8, $cc, $2e, $00, $4d
-
+Func_24c0b:
+	add sp, -$34
+	ld l, $0
+	ld c, l
 Func_24c10: ; 24c10 (9:4c10)
 	ld a, l
 	cp $2
@@ -63038,8 +63039,36 @@ Func_2774b: ; 2774b (9:774b)
 	pop bc
 	ret
 
-Func_27750:
-	dr $27750, $27782
+Func_27750: ; 27750 (9:7750)
+	push bc
+	call Func_24c0b
+	or a
+	jp z, Func_2775b
+	jp Func_27780
+
+Func_2775b: ; 2775b (9:775b)
+	call Func_25430
+	ld hl, sp+$0
+	ld [hl], a
+	ld e, $0
+	ld hl, sp+$0
+	ld a, [hl]
+	call Func_2757b
+	or a
+	jp nz, Func_27780
+	ld e, $1
+	ld hl, sp+$0
+	ld a, [hl]
+	xor $1
+	call Func_2757b
+	or a
+	jp nz, Func_27780
+	push af
+	call Func_251d1
+	pop af
+Func_27780: ; 27780 (9:7780)
+	pop bc
+	ret
 
 SECTION "Bank 0a", ROMX, BANK [$0a]
 	dr $28000, $2bfe4
