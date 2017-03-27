@@ -3298,7 +3298,7 @@ Func_204c:
 	call WriteHalfWordTo
 	dw $c2f2
 	call WaitVideoTransfer
-	ld a, $1
+	ld a, BANK(GFX_4e02)
 	ld [wFarCallDestBank], a
 	ld bc, $50
 	ld de, $8fa0
@@ -3308,7 +3308,7 @@ Func_204c:
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $50
-	ld de, $4e02
+	ld de, GFX_4e02
 	ld hl, $8fa0
 	call FarRequestVideoData
 	call WaitVideoTransfer
@@ -7145,12 +7145,13 @@ GFX_4a12: INCBIN "gfx/misc/font.w128.t5.2bpp", $8f0, $c0
 GFX_4ad2: dr $4ad2, $4b22
 IF DEF(SUN)
 GFX_4b22: dr $4b22, $4dd2
-GFX_4dd2: dr $4dd2, $6122
+GFX_4dd2: dr $4dd2, $4e02
 ENDC
 IF DEF(STAR)
 GFX_4b22: dr $4b22, $4de2
-GFX_4dd2: dr $4de2, $6122
+GFX_4dd2: dr $4de2, $4e02
 ENDC
+GFX_4e02: dr $4e02, $6122
 
 Func_6122: ; 6122 (1:6122)
 	or a
@@ -12254,7 +12255,7 @@ Func_8661: ; 8661 (2:4661)
 	ld hl, sp+$5d
 	ld a, [hl]
 	call Func_8d2a
-	ld a, $7
+	ld a, BANK(GFX_1c000)
 	ld [wFarCallDestBank], a
 	ld bc, $3
 	ld hl, sp+$5d
@@ -12270,7 +12271,7 @@ Func_8661: ; 8661 (2:4661)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, $4000
+	ld de, GFX_1c000
 	add hl, de
 	push de
 	push hl
@@ -12285,7 +12286,7 @@ Func_8661: ; 8661 (2:4661)
 	dw $c85b
 	ld hl, sp+$60
 	ld a, [hl]
-	add $7
+	add BANK(GFX_1c000)
 	ld [wFarCallDestBank], a
 	pop bc
 	call ReadHalfWordAt
@@ -12701,11 +12702,11 @@ Func_89ab: ; 89ab (2:49ab)
 	ld a, [wSystemType]
 	cp $11
 	jr nz, .asm_8a37
-	ld a, $39
+	ld a, BANK(GFX_e4000)
 	jr .asm_8a39
 
 .asm_8a37
-	ld a, $6
+	ld a, BANK(GFX_18000)
 .asm_8a39
 	ld [wFarCallDestBank], a
 	ld h, b
@@ -12714,7 +12715,7 @@ Func_89ab: ; 89ab (2:49ab)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, $4000
+	ld de, GFX_18000
 	add hl, de
 	ld d, h
 	ld e, l
@@ -12819,13 +12820,13 @@ asm_8ad9
 	add hl, bc
 	ld a, [$c88b]
 	ld [hl], a
-	ld a, $36
+	ld a, BANK(GFX_d93e8)
 	ld [wFarCallDestBank], a
 	ld a, [$c88e]
 	ld l, a
 	ld a, [$c88f]
 	ld h, a
-	ld bc, $53e8
+	ld bc, GFX_d93e8
 	add hl, bc
 	ld d, h
 	ld e, l
@@ -12882,7 +12883,7 @@ Func_8b33: ; 8b33 (2:4b33)
 	cp $11
 	jp nz, Func_8b7e
 	push bc
-	ld a, $39
+	ld a, BANK(GFX_e4000)
 	ld [wFarCallDestBank], a
 	push de
 	push hl
@@ -12892,7 +12893,7 @@ Func_8b33: ; 8b33 (2:4b33)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, $4000
+	ld de, GFX_e4000
 	add hl, de
 	push hl
 	ld l, c
@@ -12911,7 +12912,7 @@ Func_8b33: ; 8b33 (2:4b33)
 
 Func_8b7e: ; 8b7e (2:4b7e)
 	push bc
-	ld a, $6
+	ld a, BANK(GFX_18000)
 	ld [wFarCallDestBank], a
 	push de
 	push hl
@@ -12921,7 +12922,7 @@ Func_8b7e: ; 8b7e (2:4b7e)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, $4000
+	ld de, GFX_18000
 	add hl, de
 	push hl
 	ld l, c
@@ -13155,7 +13156,7 @@ Func_8d2a: ; 8d2a (2:4d2a)
 	push bc
 	push bc
 	push af
-	ld a, $a
+	ld a, BANK(GFX_28000)
 	ld [wFarCallDestBank], a
 	pop af
 	push af
@@ -13166,7 +13167,7 @@ Func_8d2a: ; 8d2a (2:4d2a)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, $4000
+	ld de, GFX_28000
 	add hl, de
 	push de
 	push hl
@@ -13194,7 +13195,7 @@ Func_8d2a: ; 8d2a (2:4d2a)
 	dw $c828
 	ld hl, sp+$4
 	ld a, [hl]
-	add $a
+	add BANK(GFX_28000)
 	ld [wFarCallDestBank], a
 	pop hl
 	push hl
@@ -16245,7 +16246,7 @@ Func_a1ad: ; a1ad (2:61ad)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld a, $6
+	ld a, BANK(GFX_18000)
 	ld [wFarCallDestBank], a
 	add hl, hl
 	add hl, hl
@@ -16377,7 +16378,7 @@ Func_a26c: ; a26c (2:626c)
 	jp Func_a2b0
 
 Func_a296: ; a296 (2:6296)
-	ld a, $30
+	ld a, BANK(GFX_c0000)
 	ld [wFarCallDestBank], a
 	ld h, $0
 	add hl, hl
@@ -20689,7 +20690,7 @@ Func_bea1: ; bea1 (2:7ea1)
 	ld hl, Data_be6e
 	add hl, de
 	ld l, [hl]
-	ld a, $35
+	ld a, BANK(GFX_d4000)
 	ld [wFarCallDestBank], a
 	ld h, $0
 	add hl, hl
@@ -20704,7 +20705,7 @@ Func_bea1: ; bea1 (2:7ea1)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, $4000
+	ld de, GFX_d4000
 	add hl, de
 	push de
 	push hl
@@ -24690,7 +24691,7 @@ Func_e20d: ; e20d (3:620d)
 	set_farcall_addrs_hli Func_6183
 	pop af
 	call FarCall
-	ld a, $1
+	ld a, BANK(GFX_4a02)
 	ld [wFarCallDestBank], a
 	ld bc, $d0
 	ld de, GFX_4a02
@@ -46541,9 +46542,11 @@ Func_17ef7: ; 17ef7 (5:7ef7)
 	ret
 
 SECTION "Bank 06", ROMX, BANK [$06]
+GFX_18000:
 	dr $18000, $1bfcf
 
 SECTION "Bank 07", ROMX, BANK [$07]
+GFX_1c000:
 	dr $1c000, $1e7ec
 
 SECTION "Bank 08", ROMX [$4000], BANK [$08]
@@ -54549,7 +54552,7 @@ Func_238c7: ; 238c7 (8:78c7)
 	ret
 
 Func_238c8: ; 238c8 (8:78c8)
-	ld a, $19
+	ld a, BANK(GFX_66f73)
 	ld [wFarCallDestBank], a
 	ld bc, $214
 	ld de, GFX_66f73
@@ -57943,7 +57946,7 @@ Func_255c4: ; 255c4 (9:55c4)
 	jp Func_2564a
 
 Func_25604: ; 25604 (9:5604)
-	ld a, $19
+	ld a, BANK(GFX_64c7d)
 	ld [wFarCallDestBank], a
 	ld a, [bc]
 	ld l, a
@@ -63071,6 +63074,7 @@ Func_27780: ; 27780 (9:7780)
 	ret
 
 SECTION "Bank 0a", ROMX, BANK [$0a]
+GFX_28000:
 	dr $28000, $2bfe4
 
 SECTION "Bank 0b", ROMX, BANK [$0b]
@@ -84926,6 +84930,7 @@ Func_bf431:
 	dr $bf431, $c0000
 
 SECTION "Bank 30", ROMX, BANK [$30]
+GFX_c0000:
 	dr $c0000, $c4000
 
 SECTION "Bank 31", ROMX, BANK [$31]
@@ -84956,10 +84961,14 @@ SECTION "Bank 34", ROMX, BANK [$34]
 	dr $d0000, $d4000
 
 SECTION "Bank 35", ROMX, BANK [$35]
+GFX_d4000:
 	dr $d4000, $d8000
 
 SECTION "Bank 36", ROMX, BANK [$36]
-	dr $d8000, $d9f38
+	dr $d8000, $d93e8
+
+GFX_d93e8:
+	dr $d93e8, $d9f38
 
 Func_d9f38: ; $d9f38
 	dr $d9f38, $d9f55
@@ -85028,6 +85037,7 @@ Func_e2c29:
 	dr $e2c29, $e4000
 
 SECTION "Bank 39", ROMX, BANK [$39]
+GFX_e4000:
 	dr $e4000, $e8000
 
 SECTION "Bank 3e 2", ROMX [$6fb2], BANK [$3e]
