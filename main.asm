@@ -55351,8 +55351,179 @@ Pointers_2443b:
 	dw Text_2442a
 	dw Text_2442e
 
-Data_2443f:
-	dr $2443f, $27750
+Text_2443f:
+	db "きゅうしょ にあたって", $00
+
+Text_2444b:
+	db "いちげきひっさつ にした!", $00
+
+Pointers_24459:
+	dw Text_2443f
+	dw Text_2444b
+
+Text_2445d:
+	db "は すべての わざの", $00
+
+Text_24468:
+	db "しようが できなくなった!", $00
+
+Pointers_24476:
+	dw Text_2445d
+	dw Text_24468
+
+Text_2447a:
+	db "きあい をいれた!", $00
+
+Pointers_24484:
+	dw Text_2447a
+
+Text_24486:
+	db "しようできなくなった!", $00
+
+Pointers_24492:
+	dw Text_24486
+
+Text_24494:
+	db "りく こうげき をふうじた!", $00
+
+Text_244a3:
+	db "うみ こうげき をふうじた!", $00
+
+Text_244b2:
+	db "そら こうげき をふうじた!", $00
+
+Text_244c1:
+	db "ノーマル こうげき をふうじた!", $00
+
+Pointers_244d2:
+	dw Text_24494
+	dw Text_244a3
+	dw Text_244b2
+	dw Text_244c1
+
+Text_244da:
+	db "を ぬすんだ", $00
+
+Pointers_244e1:
+	dw Text_244da
+
+Text_244e3:
+	db "は ", $00
+
+Text_244e6:
+	db "を", $00
+
+Text_244e8:
+	db "スキャニングした!", $00
+
+Text_244f2:
+	db "の ぼうぎょぞくせいは", $00
+
+Text_244fe:
+	db "ヒットポイントの", $00
+
+Text_24507:
+	db "じょうたいも わかった!", $00
+
+Pointers_24514:
+	dw Text_244e3
+	dw Text_244e6
+	dw Text_244e8
+	dw Text_244f2
+	dw Text_244fe
+	dw Text_24507
+
+Text_24520:
+	db "は ", $00
+
+Text_24523:
+	db "から", $00
+
+Text_24526:
+	db "ゴールド ごうだつした!", $00
+
+Pointers_24533:
+	dw Text_24520
+	dw Text_24523
+	dw Text_24526
+
+Text_24539:
+	db "は ", $00
+
+Text_2453c:
+	db "れんぞくこうげき した!", $00
+
+Pointers_24549:
+	dw Text_24539
+	dw Text_2453c
+
+Text_2454d:
+	db "は ", $00
+
+Text_24550:
+	db "せんせいこうげき した!", $00
+
+Pointers_2455d:
+	dw Text_2454d
+	dw Text_24550
+
+Text_24561:
+	db "かけた", $00
+
+Text_24565:
+	db "かけてきた", $00
+
+Pointers_2456b:
+	dw Text_24561
+	dw Text_24565
+
+Text_2456f:
+	db "よしっ!", $00
+
+Text_24574:
+	db "かなりきいたみたいだぞ", $00
+
+Pointers_24580:
+	dw Text_2456f
+	dw Text_24574
+
+Text_24584:
+	db "しまった!", $00
+
+Text_2458a:
+	db "かなりやられたみたいだ", $00
+
+Pointers_24596:
+	dw Text_24584
+	dw Text_2458a
+
+Text_2459a:
+	db "しまった!", $00
+
+Text_245a0:
+	db "ぜんぜんきいていないみたいだ", $00
+
+Pointers_245af:
+	dw Text_2459a
+	dw Text_245a0
+
+Text_245b3:
+	db "よしっ!", $00
+
+Text_245b8:
+	db "ぜんぜんきいていないぞ", $00
+
+Pointers_245c4:
+	dw Text_245b3
+	dw Text_245b8
+
+SECTION "Bank 9 part 2", ROMX [$45c8], BANK [$09]
+INCLUDE "charmap.asm"
+Data_245c8:
+	dr $245c8, $245d8
+
+Func_245d8:
+	dr $245d8, $27750
 
 Func_27750:
 	dr $27750, $27782
