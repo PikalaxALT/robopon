@@ -68456,9 +68456,1101 @@ Func_32800: ; 32800 (c:6800)
 	add sp, $52
 	ret
 
+Func_32822: ; 32822 (c:6822)
+	push hl
+	push af
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	ld e, a
+	pop af
+	pop hl
+	push de
+	cp $2
+	jp z, Func_32886
+	cp $1
+	jp z, Func_3284e
+	or a
+	jp nz, Func_328bb
+	ld l, $0
+	jp Func_328bb
+
+Func_3284e: ; 3284e (c:684e)
+	ld a, [$c9a2]
+	cp $14
+	jp nz, Func_32881
+	ld c, $0
+Func_32858: ; 32858 (c:6858)
+	ld a, c
+	cp $fa
+	jp nc, Func_32871
+	ld e, c
+	ld d, $0
+	ld hl, $cd10
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_3286d
+	jp Func_32871
+
+Func_3286d: ; 3286d (c:686d)
+	inc c
+	jp Func_32858
+
+Func_32871: ; 32871 (c:6871)
+	ld a, c
+	cp $fa
+	jp nz, Func_3287c
+	ld l, $1
+	jp Func_3287e
+
+Func_3287c: ; 3287c (c:687c)
+	ld l, $0
+Func_3287e: ; 3287e (c:687e)
+	jp Func_32883
+
+Func_32881: ; 32881 (c:6881)
+	ld l, $0
+Func_32883: ; 32883 (c:6883)
+	jp Func_328bb
+
+Func_32886: ; 32886 (c:6886)
+	ld a, [$c9b7]
+	cp $14
+	jp nz, Func_328b9
+	ld c, $0
+Func_32890: ; 32890 (c:6890)
+	ld a, c
+	cp $dc
+	jp nc, Func_328a9
+	ld e, c
+	ld d, $0
+	ld hl, $cc34
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_328a5
+	jp Func_328a9
+
+Func_328a5: ; 328a5 (c:68a5)
+	inc c
+	jp Func_32890
+
+Func_328a9: ; 328a9 (c:68a9)
+	ld a, c
+	cp $dc
+	jp nz, Func_328b4
+	ld l, $1
+	jp Func_328b6
+
+Func_328b4: ; 328b4 (c:68b4)
+	ld l, $0
+Func_328b6: ; 328b6 (c:68b6)
+	jp Func_328bb
+
+Func_328b9: ; 328b9 (c:68b9)
+	ld l, $0
+Func_328bb: ; 328bb (c:68bb)
+	pop de
+	push hl
+	ld a, e
+	call GetSRAMBank
+	pop hl
+	ld a, l
+	ret
+
+Func_328c4: ; 328c4 (c:68c4)
+	push af
+	add sp, -$1a
+	push de
+	ld hl, sp+$19
+	ld [hl], $ff
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	pop de
+	push af
+	inc e
+	dec e
+	jp nz, Func_3297b
+	ld c, $0
+Func_328e8: ; 328e8 (c:68e8)
+	ld a, c
+	ld hl, $ca6c
+	cp [hl]
+	jp nc, Func_32916
+	ld e, c
+	ld d, $0
+	ld hl, $ca44
+	add hl, de
+	ld a, [hl]
+	ld hl, sp+$1d
+	cp [hl]
+	jp nz, Func_32912
+	ld e, c
+	ld d, $0
+	ld hl, $ca58
+	add hl, de
+	ld a, $63
+	sub [hl]
+	ld hl, sp+$1a
+	ld [hl], a
+	ld hl, sp+$19
+	ld [hl], $0
+	jp Func_32916
+
+Func_32912: ; 32912 (c:6912)
+	inc c
+	jp Func_328e8
+
+Func_32916: ; 32916 (c:6916)
+	ld hl, sp+$19
+	ld a, [hl]
+	cp $ff
+	jp nz, Func_3292e
+	ld a, [$ca6c]
+	cp $14
+	jp nc, Func_3292e
+	ld hl, sp+$1a
+	ld [hl], $63
+	ld hl, sp+$19
+	ld [hl], $0
+Func_3292e: ; 3292e (c:692e)
+	ld hl, sp+$19
+	ld a, [hl]
+	cp $ff
+	jp nz, Func_3296c
+	ld a, $3
+	call GetSRAMBank
+	ld c, $0
+Func_3293d: ; 3293d (c:693d)
+	ld a, c
+	cp $50
+	jp nc, Func_3296c
+	ld hl, sp+$1d
+	ld a, [hl]
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $cb94
+	add hl, de
+	cp [hl]
+	jp nz, Func_32968
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $cb94
+	add hl, de
+	inc hl
+	ld a, $63
+	sub [hl]
+	ld hl, sp+$1a
+	ld [hl], a
+	ld hl, sp+$19
+	ld [hl], $0
+	jp Func_3296c
+
+Func_32968: ; 32968 (c:6968)
+	inc c
+	jp Func_3293d
+
+Func_3296c: ; 3296c (c:696c)
+	ld hl, sp+$19
+	ld a, [hl]
+	cp $ff
+	jp nz, Func_32978
+	ld hl, sp+$1a
+	ld [hl], $63
+Func_32978: ; 32978 (c:6978)
+	jp Func_32a2d
+
+Func_3297b: ; 3297b (c:697b)
+	ld hl, sp+$1a
+	ld [hl], $63
+	ld hl, sp+$13
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $c989
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$1d
+	ld l, [hl]
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $57b8
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$2
+	ld bc, $d
+	call FarCopyVideoData
+	ld a, [wOAM23XCoord]
+	cp $1
+	jp nz, Func_329c5
+	call GetHLAtSPPlusParam8
+	db $0f
+	ld de, $2
+	call DivideHLByDESigned
+	call WriteHLToSPPlusParam8
+	db $19
+	jp Func_329e1
+
+Func_329c5: ; 329c5 (c:69c5)
+	ld a, [wOAM23XCoord]
+	cp $2
+	jp nz, Func_329d9
+	call GetHLAtSPPlusParam8
+	db $0f
+	add hl, hl
+	call WriteHLToSPPlusParam8
+	db $19
+	jp Func_329e1
+
+Func_329d9: ; 329d9 (c:69d9)
+	call GetHLAtSPPlusParam8
+	db $0f
+	call WriteHLToSPPlusParam8
+	db $19
+Func_329e1: ; 329e1 (c:69e1)
+	ld hl, sp+$13
+	call PutLongFromHLOnStack
+	call GetHLAtSPPlusParam8
+	db $1d
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_329f4
+	dec bc
+.asm_329f4
+	push bc
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, $a
+	push hl
+	call MultiplyLongsFromStack
+	call StackDivideLongSigned
+	ld hl, sp+$13
+	call PutLongFromStackToHL
+	ld hl, $0
+	push hl
+	ld hl, $63
+	push hl
+	ld hl, sp+$13
+	call PutLongFromHLOnStack
+	call CompareStackLongs_Signed
+	jp nc, Func_32a23
+	ld hl, sp+$1a
+	ld [hl], $63
+	jp Func_32a2d
+
+Func_32a23: ; 32a23 (c:6a23)
+	ld hl, sp+$f
+	call PutLongFromHLOnStack
+	pop de
+	pop af
+	ld hl, sp+$1a
+	ld [hl], e
+Func_32a2d: ; 32a2d (c:6a2d)
+	pop af
+	call GetSRAMBank
+	ld hl, sp+$18
+	ld a, [hl]
+	add sp, $1c
+	ret
+
+Func_32a37:
+	push hl
+	add sp, -$16
+	call GetHLAtSPPlusParam8
+	db $18
+	ld c, l
+	ld b, h
+	ld hl, $5
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	add hl, de
+	ld a, l
+	ld hl, $c2f8
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, Data_30151
+	add hl, de
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld a, [hl]
+	dec a
+	ld c, a
+	push bc
+	ld a, c
+	ld hl, sp+$2
+	push de
+	push hl
+	pop de
+	pop hl
+	call Func_3149e
+	ld l, $10
+	push hl
+	ld c, $14
+	ld e, $2
+	xor a
+	call Func_3bc5
+	pop bc
+	pop bc
+	push bc
+	ld a, c
+	inc a
+	ld e, $0
+	call Func_328c4
+	ld l, a
+	pop bc
+	push bc
+	push hl
+	ld a, c
+	inc a
+	ld e, $1
+	call Func_328c4
+	pop hl
+	pop bc
+	inc l
+	dec l
+	jp nz, Func_32aa5
+	ld a, $1
+	call Func_3304d
+	ld hl, $8000
+	jp Func_32c1c
+
+Func_32aa5: ; 32aa5 (c:6aa5)
+	or a
+	jp nz, Func_32ab3
+	xor a
+	call Func_3304d
+	ld hl, -1
+	jp Func_32c1c
+
+Func_32ab3: ; 32ab3 (c:6ab3)
+	push bc
+	cp l
+	jp nc, Func_32abe
+	ld [wVideoTransferRequestBank + 9], a
+	jp Func_32ac2
+
+Func_32abe: ; 32abe (c:6abe)
+	ld a, l
+	ld [wVideoTransferRequestBank + 9], a
+Func_32ac2: ; 32ac2 (c:6ac2)
+	set_farcall_addrs_hli Func_14db8
+	call GetHLAtSPPlusParam8
+	db $1a
+	call FarCall
+	pop bc
+	ld a, [wVideoTransferRequestBank + 9]
+	cp $ff
+	jp z, Func_32ae4
+	ld a, [wVideoTransferRequestBank + 9]
+	or a
+	jp nz, Func_32aea
+Func_32ae4: ; 32ae4 (c:6ae4)
+	ld hl, $8000
+	jp Func_32c1c
+
+Func_32aea: ; 32aea (c:6aea)
+	push bc
+	call GetHLAtSPPlusParam8
+	db $0f
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_32af9
+	dec bc
+.asm_32af9
+	push bc
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, $a
+	push hl
+	call MultiplyLongsFromStack
+	ld hl, wVideoTransferRequestBank + 9
+	ld l, [hl]
+	ld h, $0
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_32b16
+	dec bc
+.asm_32b16
+	push bc
+	push hl
+	call MultiplyLongsFromStack
+	ld hl, sp+$17
+	call PutLongFromStackToHL
+	ld a, [wOAM23XCoord]
+	cp $1
+	jp nz, Func_32b38
+	ld hl, $0
+	push hl
+	ld hl, $2
+	push hl
+	ld hl, sp+$17
+	call DivideLongSigned
+	jp Func_32b4d
+
+Func_32b38: ; 32b38 (c:6b38)
+	ld a, [wOAM23XCoord]
+	cp $2
+	jp nz, Func_32b4d
+	ld hl, $0
+	push hl
+	ld hl, $2
+	push hl
+	ld hl, sp+$17
+	call MultiplyLongs
+Func_32b4d: ; 32b4d (c:6b4d)
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call Func_30313
+	ld hl, sp+$13
+	call PutLongFromHLOnStack
+	xor a
+	call Func_314da
+	pop bc
+	pop bc
+	ld l, $5
+	push hl
+	ld c, $14
+	ld e, $d
+	xor a
+	call Func_3ca1
+	pop bc
+	callba_hli Func_1482e
+	pop bc
+	ld a, l
+	or h
+	jp nz, Func_32c0e
+	push bc
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call Func_30313
+	ld l, $5
+	push hl
+	ld c, $14
+	ld e, $d
+	xor a
+	call Func_3ca1
+	pop bc
+	set_farcall_addrs_hli Func_5a0e0
+	pop bc
+	ld a, [wVideoTransferRequestBank + 9]
+	ld e, a
+	ld a, c
+	inc a
+	ld c, $0
+	call FarCall
+	push hl
+	push hl
+	ld hl, sp+$15
+	call PutLongFromHLOnStack
+	ld hl, -1
+	push hl
+	ld hl, -1
+	push hl
+	call MultiplyLongsFromStack
+	call Func_277c
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	push hl
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, $0
+	push hl
+	call Func_277c
+	pop bc
+	pop bc
+	ld hl, sp+$11
+	call PutLongFromStackToHL
+	ld e, $1
+	ld a, $6
+	call SetStringStartState
+	ld hl, Data_32c27
+	push hl
+	call PlaceString
+	pop bc
+	ld hl, sp+$d
+	call PutLongFromHLOnStack
+	ld hl, -1
+	call Func_319be
+	pop bc
+	pop bc
+	ld l, $2
+	push hl
+	ld c, $e
+	ld e, $1
+	ld a, $6
+	call Func_3ca1
+	pop bc
+	ld a, $2
+	call Func_3304d
+	jp Func_32c0f
+
+Func_32c0e: ; 32c0e (c:6c0e)
+	xor a
+Func_32c0f: ; 32c0f (c:6c0f)
+	or a
+	jp nz, Func_32c19
+	ld hl, $8000
+	jp Func_32c1c
+
+Func_32c19: ; 32c19 (c:6c19)
+	ld hl, -1
+Func_32c1c: ; 32c1c (c:6c1c)
+	push de
+	push hl
+	pop de
+	pop hl
+	add sp, $18
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Data_32c27:
+	db "<HIRA>しょしﾞきん<KATA>", $00
+
+Func_32c30:
+	push hl
+	add sp, -$32
+	ld hl, sp+$32
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld c, l
+	ld b, h
+	ld hl, $5
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	add hl, de
+	ld a, l
+	ld hl, sp+$32
+	ld [hl], a
+	ld hl, $d
+	add hl, bc
+	ld a, [hl]
+	ld hl, sp+$31
+	ld [hl], a
+	ld hl, sp+$31
+	ld a, [hl]
+	cp $34
+	jp nz, Func_32c7d
+	ld hl, sp+$32
+	ld c, [hl]
+	ld b, $0
+	ld hl, $c2f8
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, Data_301bd
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	dec a
+	ld hl, sp+$33
+	ld [hl], a
+	jp Func_32c96
+
+Func_32c7d: ; 32c7d (c:6c7d)
+	ld hl, sp+$32
+	ld c, [hl]
+	ld b, $0
+	ld hl, $c2f8
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, Data_30223
+	add hl, de
+	add hl, bc
+	ld e, [hl]
+	ld hl, sp+$33
+	ld [hl], e
+Func_32c96: ; 32c96 (c:6c96)
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	push af
+	ld hl, sp+$2b
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $c989
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$33
+	ld a, [hl]
+	cp $34
+	jp nz, Func_32ce3
+	ld hl, sp+$35
+	ld a, [hl]
+	and $3f
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, $4093
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$1a
+	ld bc, $11
+	call FarCopyVideoData
+	jp Func_32ceb
+
+Func_32ce3: ; 32ce3 (c:6ce3)
+	ld hl, sp+$35
+	ld e, [hl]
+	ld hl, sp+$2
+	call Func_241f
+Func_32ceb: ; 32ceb (c:6ceb)
+	pop af
+	call GetSRAMBank
+	ld l, $10
+	push hl
+	ld c, $14
+	ld e, $2
+	xor a
+	call Func_3bc5
+	pop bc
+	ld hl, sp+$31
+	ld a, [hl]
+	cp $34
+	jp nz, Func_32d3f
+	call GetHLAtSPPlusParam8
+	db $28
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_32d11
+	dec bc
+.asm_32d11
+	push bc
+	push hl
+	ld hl, sp+$37
+	ld l, [hl]
+	ld h, $0
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_32d22
+	dec bc
+.asm_32d22
+	push bc
+	push hl
+	ld b, $6
+	call RightShiftLongFromStack
+	ld hl, $0
+	push hl
+	ld hl, $1
+	push hl
+	call AddLongsFromStack
+	call MultiplyLongsFromStack
+	ld hl, sp+$31
+	call PutLongFromStackToHL
+	jp Func_32d5f
+
+Func_32d3f: ; 32d3f (c:6d3f)
+	call GetHLAtSPPlusParam8
+	db $17
+	ld bc, $0
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_32d4d
+	dec bc
+.asm_32d4d
+	push bc
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, $64
+	push hl
+	call MultiplyLongsFromStack
+	ld hl, sp+$31
+	call PutLongFromStackToHL
+Func_32d5f: ; 32d5f (c:6d5f)
+	ld a, [wOAM23XCoord]
+	cp $1
+	jp nz, Func_32d77
+	ld hl, $0
+	push hl
+	ld hl, $2
+	push hl
+	ld hl, sp+$31
+	call DivideLongSigned
+	jp Func_32d8c
+
+Func_32d77: ; 32d77 (c:6d77)
+	ld a, [wOAM23XCoord]
+	cp $2
+	jp nz, Func_32d8c
+	ld hl, $0
+	push hl
+	ld hl, $2
+	push hl
+	ld hl, sp+$31
+	call MultiplyLongs
+Func_32d8c: ; 32d8c (c:6d8c)
+	ld hl, sp+$29
+	call PutLongFromHLOnStack
+	ld hl, sp+$31
+	call PutLongFromHLOnStack
+	call CompareStackLongs_Signed
+	jp nc, Func_32da6
+	xor a
+	call Func_3304d
+	ld hl, $8000
+	jp Func_32f6f
+
+Func_32da6: ; 32da6 (c:6da6)
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call Func_30313
+	ld hl, sp+$2d
+	call PutLongFromHLOnStack
+	xor a
+	call Func_314da
+	pop bc
+	pop bc
+	ld hl, sp+$31
+	ld a, [hl]
+	cp $34
+	jp nz, Func_32df4
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $b4
+	call FarCall
+	push de
+	push hl
+	pop de
+	pop hl
+	push de
+	push de
+	ld l, $9
+	push hl
+	ld c, $a
+	ld e, $3
+	ld a, $a
+	call Func_30289
+	pop bc
+	pop bc
+	ld hl, sp+$35
+	ld e, [hl]
+	ld a, $1
+	call Func_3175f
+	pop de
+	jp Func_32e21
+
+Func_32df4: ; 32df4 (c:6df4)
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $1b8
+	call FarCall
+	push de
+	push hl
+	pop de
+	pop hl
+	push de
+	push de
+	ld l, $b
+	push hl
+	ld c, $14
+	ld e, $2
+	xor a
+	call Func_30289
+	pop bc
+	pop bc
+	ld hl, sp+$35
+	ld e, [hl]
+	ld a, $2
+	call Func_3175f
+	pop de
+Func_32e21: ; 32e21 (c:6e21)
+	push de
+	ld a, $2
+	ld [wOAM26VTile], a
+	ld l, $10
+	push hl
+	ld c, $14
+	ld e, $2
+	xor a
+	call Func_3ca1
+	pop bc
+	callba_hli Func_1482e
+	pop de
+	push hl
+	ld hl, sp+$33
+	ld a, [hl]
+	cp $34
+	jp nz, Func_32e5f
+	push de
+	push de
+	ld l, $9
+	push hl
+	ld c, $a
+	ld e, $3
+	ld a, $a
+	call Func_302ce
+	pop bc
+	pop bc
+	pop de
+	jp Func_32e6f
+
+Func_32e5f: ; 32e5f (c:6e5f)
+	push de
+	push de
+	ld l, $b
+	push hl
+	ld c, $14
+	ld e, $2
+	xor a
+	call Func_302ce
+	pop bc
+	pop bc
+	pop de
+Func_32e6f: ; 32e6f (c:6e6f)
+	push de
+	ld a, $2
+	ld [wOAM26VTile], a
+	ld l, $10
+	push hl
+	ld c, $14
+	ld e, $2
+	xor a
+	call Func_3ca1
+	pop bc
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	pop hl
+	ld a, l
+	or h
+	jp nz, Func_32f61
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call Func_30313
+	ld l, $5
+	push hl
+	ld c, $14
+	ld e, $d
+	xor a
+	call Func_3ca1
+	pop bc
+	ld hl, sp+$31
+	ld a, [hl]
+	cp $34
+	jp nz, Func_32ed2
+	set_farcall_addrs_hli Func_4ed5d
+	ld e, $0
+	ld hl, sp+$33
+	ld a, [hl]
+	inc a
+	call FarCall
+	ld e, $0
+	ld a, $1
+	call Func_32822
+	jp Func_32eec
+
+Func_32ed2: ; 32ed2 (c:6ed2)
+	set_farcall_addrs_hli Func_6af0d
+	ld e, $0
+	ld hl, sp+$33
+	ld a, [hl]
+	call FarCall
+	ld e, $0
+	ld a, $2
+	call Func_32822
+Func_32eec: ; 32eec (c:6eec)
+	push af
+	push hl
+	push hl
+	ld hl, sp+$33
+	call PutLongFromHLOnStack
+	ld hl, -1
+	push hl
+	ld hl, -1
+	push hl
+	call MultiplyLongsFromStack
+	call Func_277c
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	push hl
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, $0
+	push hl
+	call Func_277c
+	pop bc
+	pop bc
+	ld hl, sp+$2f
+	call PutLongFromStackToHL
+	ld e, $1
+	ld a, $6
+	call SetStringStartState
+	ld hl, Data_32f7a
+	push hl
+	call PlaceString
+	pop bc
+	ld hl, sp+$2b
+	call PutLongFromHLOnStack
+	ld hl, -1
+	call Func_319be
+	pop bc
+	pop bc
+	ld l, $2
+	push hl
+	ld c, $e
+	ld e, $1
+	ld a, $6
+	call Func_3ca1
+	pop bc
+	pop af
+	cp $1
+	jp nz, Func_32f58
+	ld a, $8
+	call Func_3304d
+	ld a, $1
+	call Func_3304d
+	ld a, $1
+	jp Func_32f5e
+
+Func_32f58: ; 32f58 (c:6f58)
+	ld a, $2
+	call Func_3304d
+	xor a
+Func_32f5e: ; 32f5e (c:6f5e)
+	jp Func_32f62
+
+Func_32f61: ; 32f61 (c:6f61)
+	xor a
+Func_32f62: ; 32f62 (c:6f62)
+	or a
+	jp nz, Func_32f6c
+	ld hl, $8000
+	jp Func_32f6f
+
+Func_32f6c: ; 32f6c (c:6f6c)
+	ld hl, -1
+Func_32f6f: ; 32f6f (c:6f6f)
+	push de
+	push hl
+	pop de
+	pop hl
+	add sp, $34
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Data_32f7a:
+	db "<HIRA>しょしﾞきん<KATA>", $00
+
+Pointers_32f83:
+	dw Data_32f87
+	dw $0000
+
+Data_32f87:
+	db "<HIRA>おかねかﾞたりないよ<KATA>", $00
+
+Pointers_32f94:
+	dw Data_32f98
+	dw $0000
+
+Data_32f98:
+	db "<HIRA>これいしﾞょう かえないよ<KATA>", $00
+
+Pointers_32fa8:
+	dw Data_32fac
+	dw $0000
+
+Data_32fac:
+	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
+
+Data_32fb9:
 IF DEF(SUN)
-Func_32822: ; 32822
-	dr $32822, $3304d
+	dr $32fb9, $3304d
 
 Func_3304d: ; 3304d
 	dr $3304d, $3312f
@@ -68485,8 +69577,7 @@ Func_33db7:
 	dr $33db7, $33fe3
 ENDC
 IF DEF(STAR)
-Func_32822: ; 32822
-	dr $3282b, $33056
+	dr $32fc2, $33056
 
 Func_3304d: ; 3304d
 	dr $33056, $33138
@@ -68526,7 +69617,10 @@ SECTION "Bank 13", ROMX, BANK [$13]
 	dr $4c000, $4ec2b
 
 Func_4ec2b: ; $4ec2b
-	dr $4ec2b, $4ed70
+	dr $4ec2b, $4ed5d
+
+Func_4ed5d:
+	dr $4ed5d, $4ed70
 
 Func_4ed70:
 	dr $4ed70, $4f800
@@ -68619,7 +69713,10 @@ SECTION "Bank 16", ROMX, BANK [$16]
 	dr $58000, $58df9
 
 Func_58df9:
-	dr $58df9, $5a149
+	dr $58df9, $5a0e0
+
+Func_5a0e0:
+	dr $5a0e0, $5a149
 
 Func_5a149:
 	dr $5a149, $5c000
@@ -75579,7 +76676,10 @@ Func_69436:
 	dr $69436, $6adb3
 
 Func_6adb3: ; $6adb3
-	dr $6adb3, $6bbf3
+	dr $6adb3, $6af0d
+
+Func_6af0d:
+	dr $6af0d, $6bbf3
 
 Func_6bbf3: ; $6bbf3
 	dr $6bbf3, $6c000
