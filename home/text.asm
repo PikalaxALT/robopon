@@ -1,4 +1,4 @@
-LiteralStringInTree: ; 1494 (0:1494)
+LiteralStringInTree:: ; 1494 (0:1494)
 	ld a, [hROMBank]
 	push af
 	ld b, $0

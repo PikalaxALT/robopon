@@ -1,3 +1,5 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 INCLUDE "text/treestreams.ctf"
+INCLUDE "text/treestreams2.ctf"
+INCLUDE "text/treestreams_bank12.asm"

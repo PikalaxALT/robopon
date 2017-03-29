@@ -2,7 +2,6 @@ import os
 import sys
 import pickle
 import re
-tree = pickle.load(open('string_tree.pickle', 'rb'))
 pattern = re.compile(r'\t(ctxt|line) "(.*)"')
 
 
@@ -42,16 +41,21 @@ def write_paths(outstream, paths):
 
 def textcomp(filename):
     kata = True
-    ctrlkata = get_path(tree, '<KATA>')
-    ctrlhira = get_path(tree, '<HIRA>')
-    ctrlterm = get_path(tree, '<TERM>')
-    ctrlline = get_path(tree, '<NL>')
-    ctrldaku = get_path(tree, 'ﾞ')
-    ctrlhand = get_path(tree, 'ﾟ')
     instream = open(filename, 'r')
     outstream = open(os.path.splitext(filename)[0] + '.ctf', 'w')
     paths = []
+    tree = []
     for line in instream.readlines():
+        if line.startswith('\ttree "'):
+            treefname = line[7:-2]
+            tree = pickle.load(open(treefname, 'rb'))
+            ctrlkata = get_path(tree, '<KATA>')
+            ctrlhira = get_path(tree, '<HIRA>')
+            ctrlterm = get_path(tree, '<TERM>')
+            ctrlline = get_path(tree, '<NL>')
+            ctrldaku = get_path(tree, 'ﾞ')
+            ctrlhand = get_path(tree, 'ﾟ')
+            continue
         M = pattern.match(line)
         if M:
             opcode, characters = M.groups()

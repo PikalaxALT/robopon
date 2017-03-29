@@ -15,9 +15,9 @@ def get_path(tree, character):
         return []
 
 
-def build_tree():
+def build_tree(fname='home/text.asm'):
     tree = []
-    for match in pattern.finditer(open('home/text.asm', 'r').read()):
+    for match in pattern.finditer(open(fname, 'r').read()):
         _, bits, character = match.groups()
         if character.startswith('"'):
             character = character[1:-1].encode('utf-8')

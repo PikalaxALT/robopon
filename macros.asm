@@ -1,5 +1,9 @@
 INCLUDE "macros/enum.asm"
 
+tree_text_pointer: MACRO
+	dw (BANK(\2) - BANK(\1)) << 14 | (\2 & $3fff)
+	ENDM
+
 CallPredef EQUS "$08"
 
 dbw: MACRO

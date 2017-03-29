@@ -564,7 +564,7 @@ GetSRAMBank_ReadOnly:
 	ld [HuC3SRamMode], a
 	ret
 
-BankSwitch:
+BankSwitch::
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
@@ -71643,12 +71643,6 @@ Func_33fdf: ; 33fdf (c:7fdf)
 
 SECTION "Bank 0d", ROMX, BANK [$0d]
 	dr $34000, $37ec0
-
-SECTION "Bank 12", ROMX, BANK [$12]
-	dr $48000, $4b8ac
-
-Func_4b8ac: ; $4b8ac
-	dr $4b8ac, $4c000
 
 SECTION "Bank 13", ROMX, BANK [$13]
 	dr $4c000, $4ec2b

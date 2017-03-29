@@ -45,14 +45,14 @@ tidy:
 	rm -f $(sun) $(star) $(sun_objs) $(star_objs) $(roms:.gbc=.sym) $(roms:.gbc=.map)
 
 clean: tidy
-	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' \) -exec rm {} +
+	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' -o -iname '*.ctf' \) -exec rm {} +
+
+%.ctf: %.asm
+	$(PYTHON3) textcomp.py $<
 
 %.asm: ;
 %.tm: ;
 %.png: ;
-
-%.ctf: %.asm
-	$(PYTHON3) textcomp.py $<
 
 %.2bpp: %.png
 	$(2bpp) $<
