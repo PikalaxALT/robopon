@@ -1,43 +1,43 @@
-SECTION "Audio Engine", ROMX [$4000], BANK [$1c]
-Func_70000::
-	jp Func_70088
+audio_engine: MACRO
+Func_70000_\1::
+	jp Func_70088_\1
 
-Func_70003:: ; 70003 (1c:4003)
-	jp Func_700f4
+Func_70003_\1:: ; 70003 (1c:4003)
+	jp Func_700f4_\1
 
-Func_70006:: ; 70006 (1c:4006)
-	jp Func_70021
+Func_70006_\1:: ; 70006 (1c:4006)
+	jp Func_70021_\1
 
-Func_70009:: ; 70009 (1c:4009)
-	jp Func_70038
+Func_70009_\1:: ; 70009 (1c:4009)
+	jp Func_70038_\1
 
-Func_7000c:: ; 7000c (1c:400c)
-	jp Func_70059
+Func_7000c_\1:: ; 7000c (1c:400c)
+	jp Func_70059_\1
 
-Func_7000f:: ; 7000f (1c:400f)
-	jp Func_7005d
+Func_7000f_\1:: ; 7000f (1c:400f)
+	jp Func_7005d_\1
 
-Func_70012:: ; 70012 (1c:4012)
-	jp Func_70067
+Func_70012_\1:: ; 70012 (1c:4012)
+	jp Func_70067_\1
 
-Func_70015:: ; 70015 (1c:4015)
-	jp Func_70071
+Func_70015_\1:: ; 70015 (1c:4015)
+	jp Func_70071_\1
 
-Func_70018:: ; 70018 (1c:4018)
-	jp Func_7007a
+Func_70018_\1:: ; 70018 (1c:4018)
+	jp Func_7007a_\1
 
-Func_7001b:: ; 7001b (1c:401b)
-	jp Func_709ba
+Func_7001b_\1:: ; 7001b (1c:401b)
+	jp Func_709ba_\1
 
-Func_7001e:: ; 7001e (1c:401e)
-	jp Func_709c4
+Func_7001e_\1:: ; 7001e (1c:401e)
+	jp Func_709c4_\1
 
-Func_70021: ; 70021 (1c:4021)
+Func_70021_\1: ; 70021 (1c:4021)
 	push hl
-	ld hl, Data_7129b
+	ld hl, Data_7129b_\1
 	cp [hl]
 	jr nc, .asm_70036
-	ld [$c100], a
+	ld [wc100], a
 	xor a
 	ld [$c10b], a
 	ld [$c16f], a
@@ -47,14 +47,14 @@ Func_70021: ; 70021 (1c:4021)
 	pop hl
 	ret
 
-Func_70038: ; 70038 (1c:4038)
+Func_70038_\1: ; 70038 (1c:4038)
 	push bc
 	push hl
 	ld b, $0
 	ld c, a
 	or a
 	jr z, .asm_7004e
-	ld hl, Data_7122e
+	ld hl, Data_7122e_\1
 	add hl, bc
 	ld b, [hl]
 	ld a, [$c103]
@@ -72,19 +72,19 @@ Func_70038: ; 70038 (1c:4038)
 	pop bc
 	ret
 
-Func_70059: ; 70059 (1c:4059)
+Func_70059_\1: ; 70059 (1c:4059)
 	ld [$c170], a
 	ret
 
-Func_7005d: ; 7005d (1c:405d)
-	ld a, [$c100]
+Func_7005d_\1: ; 7005d (1c:405d)
+	ld a, [wc100]
 	cp $80
 	ld a, $1
 	ret nz
 	xor a
 	ret
 
-Func_70067: ; 70067 (1c:4067)
+Func_70067_\1: ; 70067 (1c:4067)
 	ld a, [$c102]
 	cp $80
 	ld a, $1
@@ -92,13 +92,13 @@ Func_70067: ; 70067 (1c:4067)
 	xor a
 	ret
 
-Func_70071: ; 70071 (1c:4071)
+Func_70071_\1: ; 70071 (1c:4071)
 	ld a, [$c172]
 	xor $1
 	ld [$c172], a
 	ret
 
-Func_7007a: ; 7007a (1c:407a)
+Func_7007a_\1: ; 7007a (1c:407a)
 	push bc
 	push af
 	and $7
@@ -110,7 +110,7 @@ Func_7007a: ; 7007a (1c:407a)
 	pop bc
 	ret
 
-Func_70088: ; 70088 (1c:4088)
+Func_70088_\1: ; 70088 (1c:4088)
 	xor a
 	ld [rNR52], a
 	ld a, $80
@@ -120,9 +120,9 @@ Func_70088: ; 70088 (1c:4088)
 	ld a, $ff
 	ld [rNR51], a
 	ld a, $1c
-	ld [$c101], a
+	ld [wAudioROMBank], a
 	ld a, $80
-	ld [$c100], a
+	ld [wc100], a
 	ld [$c102], a
 	ld a, $77
 	ld [$c171], a
@@ -157,7 +157,7 @@ Func_70088: ; 70088 (1c:4088)
 	ld a, c
 	cp $4
 	jr nz, .asm_700c6
-	ld hl, Data_70c12
+	ld hl, Data_70c12_\1
 	ld bc, $c173
 	ld d, $8
 .asm_700ed
@@ -168,40 +168,40 @@ Func_70088: ; 70088 (1c:4088)
 	jr nz, .asm_700ed
 	ret
 
-Func_700f4: ; 700f4 (1c:40f4)
-	call Func_702af
-	call Func_70127
+Func_700f4_\1: ; 700f4 (1c:40f4)
+	call Func_702af_\1
+	call Func_70127_\1
 	ld hl, Func_76803
 	call AudioEngineFarCall
-	ld a, [$c101]
+	ld a, [wAudioROMBank]
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ld a, [$c172]
 	cp $0
 	jr z, .asm_70114
-	call Func_70976
+	call Func_70976_\1
 	jr .asm_70120
 
 .asm_70114
-	call Func_702b0
-	call Func_70315
-	call Func_7037a
-	call Func_703d9
+	call Func_702b0_\1
+	call Func_70315_\1
+	call Func_7037a_\1
+	call Func_703d9_\1
 .asm_70120
-	call Func_7086f
-	call Func_709a7
+	call Func_7086f_\1
+	call Func_709a7_\1
 	ret
 
-Func_70127: ; 70127 (1c:4127)
-	ld a, [$c100]
+Func_70127_\1: ; 70127 (1c:4127)
+	ld a, [wc100]
 	rla
 	jr c, .asm_7013e
-	call Func_70156
-	ld a, [$c100]
-	call Func_70197
-	ld a, [$c100]
+	call Func_70156_\1
+	ld a, [wc100]
+	call Func_70197_\1
+	ld a, [wc100]
 	or $80
-	ld [$c100], a
+	ld [wc100], a
 .asm_7013e
 	ld a, [$c102]
 	rla
@@ -215,7 +215,7 @@ Func_70127: ; 70127 (1c:4127)
 .asm_70155
 	ret
 
-Func_70156: ; 70156 (1c:4156)
+Func_70156_\1: ; 70156 (1c:4156)
 	ld a, [$c10c]
 	ld d, a
 	xor a
@@ -254,21 +254,21 @@ Func_70156: ; 70156 (1c:4156)
 .asm_70196
 	ret
 
-Func_70197: ; 70197 (1c:4197)
+Func_70197_\1: ; 70197 (1c:4197)
 	push af
 	ld c, a
 	ld b, $0
-	ld hl, Data_7129c
+	ld hl, Data_7129c_\1
 	add hl, bc
 	ld a, [hl]
-	ld [$c101], a
+	ld [wAudioROMBank], a
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	pop af
 	add a
 	ld c, a
 	ld b, $0
-	ld hl, Data_712b9
+	ld hl, Data_712b9_1c
 	add hl, bc
 	ld e, [hl]
 	inc hl
@@ -297,9 +297,9 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c13f], a
 	ld [$c15f], a
 	ld [$c14b], a
-	ld a, [Data_70c12]
+	ld a, [Data_70c12_\1]
 	ld [$c173], a
-	ld a, [Data_70c12 + 1]
+	ld a, [Data_70c12_\1 + 1]
 	ld [$c174], a
 	ld a, $8
 	ld [$c147], a
@@ -323,9 +323,9 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c140], a
 	ld [$c160], a
 	ld [$c14c], a
-	ld a, [Data_70c14]
+	ld a, [Data_70c14_\1]
 	ld [$c175], a
-	ld a, [Data_70c14 + 1]
+	ld a, [Data_70c14_\1 + 1]
 	ld [$c176], a
 	ld a, $8
 	ld [$c148], a
@@ -349,9 +349,9 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c141], a
 	ld [$c161], a
 	ld [$c14d], a
-	ld a, [Data_70c16]
+	ld a, [Data_70c16_\1]
 	ld [$c177], a
-	ld a, [Data_70c16 + 1]
+	ld a, [Data_70c16_\1 + 1]
 	ld [$c178], a
 	ld a, $40
 	ld [$c149], a
@@ -374,9 +374,9 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c142], a
 	ld [$c162], a
 	ld [$c14e], a
-	ld a, [Data_70c18]
+	ld a, [Data_70c18_\1]
 	ld [$c179], a
-	ld a, [Data_70c18 + 1]
+	ld a, [Data_70c18_\1 + 1]
 	ld [$c17a], a
 	ld a, $40
 	ld [$c14a], a
@@ -385,10 +385,10 @@ Func_70197: ; 70197 (1c:4197)
 	ld [$c172], a
 	ret
 
-Func_702af: ; 702af (1c:42af)
+Func_702af_\1: ; 702af (1c:42af)
 	ret
 
-Func_702b0: ; 702b0 (1c:42b0)
+Func_702b0_\1: ; 702b0 (1c:42b0)
 	ld a, [$c10d]
 	or a
 	jr z, .asm_70305
@@ -421,14 +421,14 @@ Func_702b0: ; 702b0 (1c:42b0)
 	ld a, [$c115]
 	ld l, a
 	ld bc, $0
-	call Func_7041f
+	call Func_7041f_\1
 	ld a, [$c10d]
 	or a
 	jr z, .asm_70305
-	call Func_7071d
+	call Func_7071d_\1
 .asm_702ff
 	ld a, $0
-	call Func_70863
+	call Func_70863_\1
 	ret
 
 .asm_70305
@@ -442,7 +442,7 @@ Func_702b0: ; 702b0 (1c:42b0)
 .asm_70314
 	ret
 
-Func_70315: ; 70315 (1c:4315)
+Func_70315_\1: ; 70315 (1c:4315)
 	ld a, [$c10e]
 	or a
 	jr z, .asm_7036a
@@ -475,14 +475,14 @@ Func_70315: ; 70315 (1c:4315)
 	ld a, [$c117]
 	ld l, a
 	ld bc, $1
-	call Func_7041f
+	call Func_7041f_\1
 	ld a, [$c10e]
 	or a
 	jr z, .asm_7036a
-	call Func_70763
+	call Func_70763_\1
 .asm_70364
 	ld a, $1
-	call Func_70863
+	call Func_70863_\1
 	ret
 
 .asm_7036a
@@ -496,7 +496,7 @@ Func_70315: ; 70315 (1c:4315)
 .asm_70379
 	ret
 
-Func_7037a: ; 7037a (1c:437a)
+Func_7037a_\1: ; 7037a (1c:437a)
 	ld a, [$c10f]
 	or a
 	jr z, .asm_703c9
@@ -525,14 +525,14 @@ Func_7037a: ; 7037a (1c:437a)
 	ld a, [$c119]
 	ld l, a
 	ld bc, $2
-	call Func_7041f
+	call Func_7041f_\1
 	ld a, [$c10f]
 	or a
 	jr z, .asm_703c9
-	call Func_707a5
+	call Func_707a5_\1
 .asm_703c3
 	ld a, $2
-	call Func_70863
+	call Func_70863_\1
 	ret
 
 .asm_703c9
@@ -546,7 +546,7 @@ Func_7037a: ; 7037a (1c:437a)
 .asm_703d8
 	ret
 
-Func_703d9: ; 703d9 (1c:43d9)
+Func_703d9_\1: ; 703d9 (1c:43d9)
 	ld a, [$c110]
 	or a
 	jr z, .asm_7040b
@@ -559,18 +559,18 @@ Func_703d9: ; 703d9 (1c:43d9)
 	ld a, [$c11b]
 	ld l, a
 	ld bc, $3
-	call Func_7041f
+	call Func_7041f_\1
 	ld a, [$c110]
 	or a
 	jr z, .asm_7040b
-	call Func_70813
+	call Func_70813_\1
 	jr .asm_7041e
 
 .asm_70401
 	ld a, [$c16f]
 	or a
 	jr z, .asm_7041e
-	call Func_70842
+	call Func_70842_\1
 	ret
 
 .asm_7040b
@@ -586,7 +586,7 @@ Func_703d9: ; 703d9 (1c:43d9)
 .asm_7041e
 	ret
 
-Func_7041f: ; 7041f (1c:441f)
+Func_7041f_\1: ; 7041f (1c:441f)
 	ld a, [hli]
 	push hl
 	push af
@@ -607,54 +607,54 @@ Func_7041f: ; 7041f (1c:441f)
 	jp [hl]
 
 .pointers_70437
-	dw Func_705a3
-	dw Func_705ae
-	dw Func_705ae
-	dw Func_705ae
-	dw Func_705ae
-	dw Func_705ae
-	dw Func_705ae
-	dw Func_705c6
-	dw Func_705ce
-	dw Func_705d6
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_705df
-	dw Func_705fa
-	dw Func_70608
-	dw Func_70614
-	dw Func_70629
-	dw Func_70643
-	dw Func_7064a
-	dw Func_70661
-	dw Func_70672
-	dw Func_7067f
-	dw Func_7068c
-	dw Func_70699
-	dw Func_706a9
-	dw Func_706b6
-	dw Func_706c3
-	dw Func_706d5
-	dw Func_706e2
-	dw Func_706ef
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
-	dw Func_706fd
+	dw Func_705a3_\1
+	dw Func_705ae_\1
+	dw Func_705ae_\1
+	dw Func_705ae_\1
+	dw Func_705ae_\1
+	dw Func_705ae_\1
+	dw Func_705ae_\1
+	dw Func_705c6_\1
+	dw Func_705ce_\1
+	dw Func_705d6_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_705df_\1
+	dw Func_705fa_\1
+	dw Func_70608_\1
+	dw Func_70614_\1
+	dw Func_70629_\1
+	dw Func_70643_\1
+	dw Func_7064a_\1
+	dw Func_70661_\1
+	dw Func_70672_\1
+	dw Func_7067f_\1
+	dw Func_7068c_\1
+	dw Func_70699_\1
+	dw Func_706a9_\1
+	dw Func_706b6_\1
+	dw Func_706c3_\1
+	dw Func_706d5_\1
+	dw Func_706e2_\1
+	dw Func_706ef_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
+	dw Func_706fd_\1
 
 .asm_70497
 	push af
@@ -748,7 +748,7 @@ Func_7041f: ; 7041f (1c:441f)
 	ld [hl], a
 	or a
 	jr nz, .asm_70519
-	jp Func_70599
+	jp Func_70599_\1
 
 .asm_70519
 	swap a
@@ -773,7 +773,7 @@ Func_7041f: ; 7041f (1c:441f)
 	sla a
 	ld e, a
 	pop af
-	ld hl, Data_70de4
+	ld hl, Data_70de4_\1
 	add a
 	ld d, c
 	ld c, a
@@ -812,7 +812,7 @@ Func_7041f: ; 7041f (1c:441f)
 	ld [hl], d
 	ld a, $1
 	ld [$c16f], a
-	jr Func_70599
+	jr Func_70599_\1
 
 .asm_7056f
 	ld hl, $c125
@@ -823,7 +823,7 @@ Func_7041f: ; 7041f (1c:441f)
 	add hl, bc
 	ld e, [hl]
 	ld d, $0
-	ld hl, Data_70c1a
+	ld hl, Data_70c1a_\1
 	add hl, de
 	add a
 	ld e, [hl]
@@ -834,17 +834,17 @@ Func_7041f: ; 7041f (1c:441f)
 	add e
 	add e
 	ld e, a
-	ld hl, Data_70c22
+	ld hl, Data_70c22_\1
 	add hl, de
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	call Func_7095d
+	call Func_7095d_\1
 	pop hl
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-Func_70599: ; 70599 (1c:4599)
+Func_70599_\1: ; 70599 (1c:4599)
 	pop de
 	ld hl, $c115
 	add hl, bc
@@ -854,16 +854,16 @@ Func_70599: ; 70599 (1c:4599)
 	ld [hl], d
 	ret
 
-Func_705a3: ; 705a3 (1c:45a3)
+Func_705a3_\1: ; 705a3 (1c:45a3)
 	pop hl
 	ld a, [hli]
 	push hl
 	ld hl, $c14f
 	add hl, bc
 	ld [hl], a
-	jp Func_70719
+	jp Func_70719_\1
 
-Func_705ae: ; 705ae (1c:45ae)
+Func_705ae_\1: ; 705ae (1c:45ae)
 	and $7
 	dec a
 	ld hl, $c12f
@@ -875,32 +875,32 @@ Func_705ae: ; 705ae (1c:45ae)
 	pop af
 	inc a
 	ld [hl], a
-	jp Func_70719
+	jp Func_70719_\1
 
 .asm_705c1
 	pop af
 	ld [hl], a
-	jp Func_70719
+	jp Func_70719_\1
 
-Func_705c6: ; 705c6 (1c:45c6)
+Func_705c6_\1: ; 705c6 (1c:45c6)
 	ld hl, $c12f
 	add hl, bc
 	inc [hl]
-	jp Func_70719
+	jp Func_70719_\1
 
-Func_705ce: ; 705ce (1c:45ce)
+Func_705ce_\1: ; 705ce (1c:45ce)
 	ld hl, $c12f
 	add hl, bc
 	dec [hl]
-	jp Func_70719
+	jp Func_70719_\1
 
-Func_705d6: ; 705d6 (1c:45d6)
+Func_705d6_\1: ; 705d6 (1c:45d6)
 	ld hl, $c111
 	add hl, bc
 	ld [hl], $80
-	jp Func_70719
+	jp Func_70719_\1
 
-Func_705df: ; 705df (1c:45df)
+Func_705df_\1: ; 705df (1c:45df)
 	pop hl
 	ld a, [hli]
 	push hl
@@ -922,9 +922,9 @@ Func_705df: ; 705df (1c:45df)
 	or d
 	ld [hl], a
 	pop bc
-	jp Func_70719
+	jp Func_70719_\1
 
-Func_705fa: ; 705fa (1c:45fa)
+Func_705fa_\1: ; 705fa (1c:45fa)
 	pop de
 	push de
 	dec de
@@ -934,9 +934,9 @@ Func_705fa: ; 705fa (1c:45fa)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	jp Func_70719
+	jp Func_70719_\1
 
-Func_70608: ; 70608 (1c:4608)
+Func_70608_\1: ; 70608 (1c:4608)
 	pop hl
 	ld hl, $c11d
 	add hl, bc
@@ -944,14 +944,14 @@ Func_70608: ; 70608 (1c:4608)
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_70614: ; 70614 (1c:4614)
+Func_70614_\1: ; 70614 (1c:4614)
 	pop de
 	ld a, [de]
 	inc de
 	push af
-	call Func_70705
+	call Func_70705_\1
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -960,11 +960,11 @@ Func_70614: ; 70614 (1c:4614)
 	ld [hl], a
 	inc hl
 	push de
-	call Func_7070e
-	jp Func_70719
+	call Func_7070e_\1
+	jp Func_70719_\1
 
-Func_70629: ; 70629 (1c:4629)
-	call Func_70705
+Func_70629_\1: ; 70629 (1c:4629)
+	call Func_70705_\1
 	dec hl
 	ld a, [hl]
 	dec a
@@ -976,23 +976,23 @@ Func_70629: ; 70629 (1c:4629)
 	pop hl
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
 .asm_7063b
 	dec hl
 	dec hl
-	call Func_7070e
-	jp Func_70719
+	call Func_7070e_\1
+	jp Func_70719_\1
 
-Func_70643: ; 70643 (1c:4643)
+Func_70643_\1: ; 70643 (1c:4643)
 	pop hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_7064a: ; 7064a (1c:464a)
-	call Func_70705
+Func_7064a_\1: ; 7064a (1c:464a)
+	call Func_70705_\1
 	pop de
 	ld a, e
 	ld [hli], a
@@ -1006,12 +1006,12 @@ Func_7064a: ; 7064a (1c:464a)
 	ld e, b
 	ld b, $0
 	push de
-	call Func_7070e
-	jp Func_70719
+	call Func_7070e_\1
+	jp Func_70719_\1
 
-Func_70661: ; 70661 (1c:4661)
+Func_70661_\1: ; 70661 (1c:4661)
 	pop de
-	call Func_70705
+	call Func_70705_\1
 	dec hl
 	ld a, [hld]
 	ld e, [hl]
@@ -1019,10 +1019,10 @@ Func_70661: ; 70661 (1c:4661)
 	inc de
 	inc de
 	push de
-	call Func_7070e
-	jp Func_70719
+	call Func_7070e_\1
+	jp Func_70719_\1
 
-Func_70672: ; 70672 (1c:4672)
+Func_70672_\1: ; 70672 (1c:4672)
 	pop de
 	ld a, [de]
 	inc de
@@ -1031,9 +1031,9 @@ Func_70672: ; 70672 (1c:4672)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_7067f: ; 7067f (1c:467f)
+Func_7067f_\1: ; 7067f (1c:467f)
 	pop de
 	ld a, [de]
 	inc de
@@ -1042,9 +1042,9 @@ Func_7067f: ; 7067f (1c:467f)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_7068c: ; 7068c (1c:468c)
+Func_7068c_\1: ; 7068c (1c:468c)
 	pop de
 	ld a, [de]
 	inc de
@@ -1053,9 +1053,9 @@ Func_7068c: ; 7068c (1c:468c)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_70699: ; 70699 (1c:4699)
+Func_70699_\1: ; 70699 (1c:4699)
 	pop de
 	ld a, [de]
 	inc de
@@ -1064,9 +1064,9 @@ Func_70699: ; 70699 (1c:4699)
 	ld [$c10b], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_706a9: ; 706a9 (1c:46a9)
+Func_706a9_\1: ; 706a9 (1c:46a9)
 	pop de
 	ld a, [de]
 	inc de
@@ -1075,9 +1075,9 @@ Func_706a9: ; 706a9 (1c:46a9)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_706b6: ; 706b6 (1c:46b6)
+Func_706b6_\1: ; 706b6 (1c:46b6)
 	pop de
 	ld a, [de]
 	inc de
@@ -1086,9 +1086,9 @@ Func_706b6: ; 706b6 (1c:46b6)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_706c3: ; 706c3 (1c:46c3)
+Func_706c3_\1: ; 706c3 (1c:46c3)
 	pop de
 	ld a, [de]
 	inc de
@@ -1100,9 +1100,9 @@ Func_706c3: ; 706c3 (1c:46c3)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_706d5: ; 706d5 (1c:46d5)
+Func_706d5_\1: ; 706d5 (1c:46d5)
 	pop de
 	ld a, [de]
 	inc de
@@ -1111,9 +1111,9 @@ Func_706d5: ; 706d5 (1c:46d5)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_706e2: ; 706e2 (1c:46e2)
+Func_706e2_\1: ; 706e2 (1c:46e2)
 	pop de
 	ld a, [de]
 	inc de
@@ -1122,9 +1122,9 @@ Func_706e2: ; 706e2 (1c:46e2)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_706ef: ; 706ef (1c:46ef)
+Func_706ef_\1: ; 706ef (1c:46ef)
 	pop de
 	ld a, [de]
 	inc de
@@ -1134,16 +1134,16 @@ Func_706ef: ; 706ef (1c:46ef)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_706fd: ; 706fd (1c:46fd)
+Func_706fd_\1: ; 706fd (1c:46fd)
 	ld hl, $c10d
 	add hl, bc
 	ld [hl], $0
 	pop hl
 	ret
 
-Func_70705: ; 70705 (1c:4705)
+Func_70705_\1: ; 70705 (1c:4705)
 	ld hl, $c173
 	add hl, bc
 	add hl, bc
@@ -1152,7 +1152,7 @@ Func_70705: ; 70705 (1c:4705)
 	ld l, a
 	ret
 
-Func_7070e: ; 7070e (1c:470e)
+Func_7070e_\1: ; 7070e (1c:470e)
 	ld d, h
 	ld e, l
 	ld hl, $c173
@@ -1163,11 +1163,11 @@ Func_7070e: ; 7070e (1c:470e)
 	ld [hl], d
 	ret
 
-Func_70719: ; 70719 (1c:4719)
+Func_70719_\1: ; 70719 (1c:4719)
 	pop hl
-	jp Func_7041f
+	jp Func_7041f_\1
 
-Func_7071d: ; 7071d (1c:471d)
+Func_7071d_\1: ; 7071d (1c:471d)
 	ld a, [$c10c]
 	bit 0, a
 	jr nz, .asm_70752
@@ -1207,7 +1207,7 @@ Func_7071d: ; 7071d (1c:471d)
 	ld [hl], a
 	ret
 
-Func_70763: ; 70763 (1c:4763)
+Func_70763_\1: ; 70763 (1c:4763)
 	ld a, [$c10c]
 	bit 1, a
 	jr nz, .asm_70794
@@ -1245,7 +1245,7 @@ Func_70763: ; 70763 (1c:4763)
 	ld [hl], a
 	ret
 
-Func_707a5: ; 707a5 (1c:47a5)
+Func_707a5_\1: ; 707a5 (1c:47a5)
 	ld a, [$c10c]
 	bit 2, a
 	jr nz, .asm_707e9
@@ -1255,7 +1255,7 @@ Func_707a5: ; 707a5 (1c:47a5)
 	jr z, .asm_707bc
 	xor a
 	ld [rNR30], a
-	call Func_707f3
+	call Func_707f3_\1
 	ld d, $80
 .asm_707bc
 	ld a, [$c139]
@@ -1291,12 +1291,12 @@ Func_707a5: ; 707a5 (1c:47a5)
 	ld [rNR30], a
 	ret
 
-Func_707f3: ; 707f3 (1c:47f3)
+Func_707f3_\1: ; 707f3 (1c:47f3)
 	ld a, [$c10a]
 	add a
 	ld d, $0
 	ld e, a
-	ld hl, Data_70ccc
+	ld hl, Data_70ccc_\1
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -1315,13 +1315,13 @@ Func_707f3: ; 707f3 (1c:47f3)
 	ld [$c10b], a
 	ret
 
-Func_70813: ; 70813 (1c:4813)
+Func_70813_\1: ; 70813 (1c:4813)
 	ld a, [$c10c]
 	bit 3, a
 	jr nz, .asm_70832
 	ld a, [$c13a]
 	cp $0
-	jr z, asm_70833
+	jr z, asm_70833_\1
 	ld de, rNR41
 	ld hl, $c12b
 	ld a, [hli]
@@ -1338,7 +1338,7 @@ Func_70813: ; 70813 (1c:4813)
 .asm_70832
 	ret
 
-asm_70833
+asm_70833_\1
 	xor a
 	ld [$c16f], a
 	ld hl, rNR42
@@ -1349,7 +1349,7 @@ asm_70833
 	ld [hl], a
 	ret
 
-Func_70842: ; 70842 (1c:4842)
+Func_70842_\1: ; 70842 (1c:4842)
 	ld a, [$c10c]
 	bit 3, a
 	jr z, .asm_7084f
@@ -1365,7 +1365,7 @@ Func_70842: ; 70842 (1c:4842)
 	ld a, [de]
 	cp $ff
 	jr nz, .asm_7085c
-	jr asm_70833
+	jr asm_70833_\1
 
 .asm_7085c
 	ld [rNR43], a
@@ -1376,16 +1376,16 @@ Func_70842: ; 70842 (1c:4842)
 .asm_70862
 	ret
 
-Func_70863: ; 70863 (1c:4863)
+Func_70863_\1: ; 70863 (1c:4863)
 	push af
 	ld b, $0
 	ld c, a
-	call Func_708a1
+	call Func_708a1_\1
 	pop af
-	call Func_70914
+	call Func_70914_\1
 	ret
 
-Func_7086f: ; 7086f (1c:486f)
+Func_7086f_\1: ; 7086f (1c:486f)
 	ld a, [$c171]
 	ld [rNR50], a
 	ld a, [$c10c]
@@ -1419,7 +1419,7 @@ Func_7086f: ; 7086f (1c:486f)
 	ld [rNR51], a
 	ret
 
-Func_708a1: ; 708a1 (1c:48a1)
+Func_708a1_\1: ; 708a1 (1c:48a1)
 	ld hl, $c15f
 	add hl, bc
 	ld a, [hl]
@@ -1437,7 +1437,7 @@ Func_708a1: ; 708a1 (1c:48a1)
 	add hl, bc
 	ld e, [hl]
 	ld d, $0
-	ld hl, Data_70fa4
+	ld hl, Data_70fa4_\1
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -1508,7 +1508,7 @@ Func_708a1: ; 708a1 (1c:48a1)
 	ld d, [hl]
 	ret
 
-Func_70914: ; 70914 (1c:4914)
+Func_70914_\1: ; 70914 (1c:4914)
 	cp $0
 	jr nz, .asm_7092c
 	ld a, [$c15f]
@@ -1550,7 +1550,7 @@ Func_70914: ; 70914 (1c:4914)
 .asm_7095c
 	ret
 
-Func_7095d: ; 7095d (1c:495d)
+Func_7095d_\1: ; 7095d (1c:495d)
 	ld hl, $c16a
 	add hl, bc
 	ld a, [hl]
@@ -1574,7 +1574,7 @@ Func_7095d: ; 7095d (1c:495d)
 	ld d, a
 	ret
 
-Func_70976: ; 70976 (1c:4976)
+Func_70976_\1: ; 70976 (1c:4976)
 	ld a, [$c10c]
 	ld d, a
 	bit 0, d
@@ -1605,7 +1605,7 @@ Func_70976: ; 70976 (1c:4976)
 .asm_709a6
 	ret
 
-Func_709a7: ; 709a7 (1c:49a7)
+Func_709a7_\1: ; 709a7 (1c:49a7)
 	ld hl, $c10d
 	xor a
 	add [hl]
@@ -1618,32 +1618,32 @@ Func_709a7: ; 709a7 (1c:49a7)
 	or a
 	ret nz
 	ld a, $80
-	ld [$c100], a
+	ld [wc100], a
 	ret
 
-Func_709ba: ; 709ba (1c:49ba)
-	call Func_70976
-	call Func_709ce
-	call Func_70156
+Func_709ba_\1: ; 709ba (1c:49ba)
+	call Func_70976_\1
+	call Func_709ce_\1
+	call Func_70156_\1
 	ret
 
-Func_709c4: ; 709c4 (1c:49c4)
-	call Func_70976
-	call Func_70156
-	call Func_70af3
+Func_709c4_\1: ; 709c4 (1c:49c4)
+	call Func_70976_\1
+	call Func_70156_\1
+	call Func_70af3_\1
 	ret
 
-Func_709ce: ; 709ce (1c:49ce)
-	ld a, [$c100]
+Func_709ce_\1: ; 709ce (1c:49ce)
+	ld a, [wc100]
 	ld [wc020], a
-	ld a, [$c101]
+	ld a, [wAudioROMBank]
 	ld [wc020 + 1], a
 	ld a, [$c104]
 	ld [wc020 + 2], a
 	ld hl, $c106
 	ld de, wc020 + 3
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld a, [$c10a]
 	ld [wc020 + 7], a
 	ld a, [$c10b]
@@ -1651,19 +1651,19 @@ Func_709ce: ; 709ce (1c:49ce)
 	ld hl, $c10d
 	ld de, wc020 + 9
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c111
 	ld de, $c02d
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c115
 	ld de, $c031
 	ld a, $8
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c11d
 	ld de, $c039
 	ld a, $8
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld a, [$c12b]
 	ld [$c041], a
 	ld a, [$c12c]
@@ -1671,47 +1671,47 @@ Func_709ce: ; 709ce (1c:49ce)
 	ld hl, $c12f
 	ld de, $c043
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c133
 	ld de, $c047
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c137
 	ld de, $c04b
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c13b
 	ld de, $c04f
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c13f
 	ld de, $c053
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c143
 	ld de, $c057
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c147
 	ld de, $c05b
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c14b
 	ld de, $c05f
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c14f
 	ld de, $c063
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c157
 	ld de, $c067
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c15f
 	ld de, $c06b
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld a, $0
 	ld [$c15b], a
 	ld [$c15c], a
@@ -1720,38 +1720,38 @@ Func_709ce: ; 709ce (1c:49ce)
 	ld hl, $c167
 	ld de, $c06f
 	ld a, $3
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c16a
 	ld de, $c072
 	ld a, $3
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c16d
 	ld de, $c075
 	ld a, $2
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld a, $0
 	ld [$c077], a
 	ld hl, $c173
 	ld de, $c078
 	ld a, $8
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c17b
 	ld de, $c080
 	ld a, $30
-	call Func_70c0a
+	call Func_70c0a_\1
 	ret
 
-Func_70af3: ; 70af3 (1c:4af3)
+Func_70af3_\1: ; 70af3 (1c:4af3)
 	ld a, [wc020]
-	ld [$c100], a
+	ld [wc100], a
 	ld a, [wc020 + 1]
-	ld [$c101], a
+	ld [wAudioROMBank], a
 	ld a, [wc020 + 2]
 	ld [$c104], a
 	ld hl, wc020 + 3
 	ld de, $c106
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld a, [wc020 + 7]
 	ld [$c10a], a
 	ld a, $1
@@ -1759,19 +1759,19 @@ Func_70af3: ; 70af3 (1c:4af3)
 	ld hl, wc020 + 9
 	ld de, $c10d
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c02d
 	ld de, $c111
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c031
 	ld de, $c115
 	ld a, $8
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c039
 	ld de, $c11d
 	ld a, $8
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld a, [$c041]
 	ld [$c12b], a
 	ld a, [$c042]
@@ -1779,72 +1779,72 @@ Func_70af3: ; 70af3 (1c:4af3)
 	ld hl, $c043
 	ld de, $c12f
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c047
 	ld de, $c133
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c04b
 	ld de, $c137
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c04f
 	ld de, $c13b
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c053
 	ld de, $c13f
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c057
 	ld de, $c143
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c05b
 	ld de, $c147
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c05f
 	ld de, $c14b
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c063
 	ld de, $c14f
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c067
 	ld de, $c157
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c06b
 	ld de, $c15f
 	ld a, $4
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c06f
 	ld de, $c167
 	ld a, $3
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c072
 	ld de, $c16a
 	ld a, $3
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c075
 	ld de, $c16d
 	ld a, $2
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld a, [$c077]
 	ld [$c16f], a
 	ld hl, $c078
 	ld de, $c173
 	ld a, $8
-	call Func_70c0a
+	call Func_70c0a_\1
 	ld hl, $c080
 	ld de, $c17b
 	ld a, $30
-	call Func_70c0a
+	call Func_70c0a_\1
 	ret
 
-Func_70c0a: ; 70c0a (1c:4c0a)
+Func_70c0a_\1: ; 70c0a (1c:4c0a)
 	ld c, a
 .asm_70c0b
 	ld a, [hli]
@@ -1853,8 +1853,15 @@ Func_70c0a: ; 70c0a (1c:4c0a)
 	dec c
 	jr nz, .asm_70c0b
 	ret
+ENDM
 
-SECTION "Audio Engine 2", ROMX [$6800], BANK [$1d]
+SECTION "Audio Engine", ROMX [$4000], BANK [$1c]
+	audio_engine 1c
+
+SECTION "Audio Engine 2", ROMX [$4000], BANK [$1d]
+	audio_engine 1d
+
+SECTION "Audio Engine 3", ROMX [$6800], BANK [$1d]
 Func_76800:
 	jp Func_76806
 

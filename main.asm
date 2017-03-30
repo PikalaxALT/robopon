@@ -327,63 +327,7 @@ Func_021c: ; 21c (0:021c)
 	pop af
 	reti
 
-Func_022c: ; 22c (0:022c)
-	ld l, Func_70000 % $100
-	jr asm_0253
-
-Func_0230: ; 230 (0:0230)
-	ld l, Func_70003 % $100
-	jr asm_0253
-
-Func_0234: ; 234 (0:0234)
-	ld l, Func_70006 % $100
-	jr asm_0253
-
-Func_0238: ; 238 (0:0238)
-	cp 60
-	ret c
-	sub 20
-	ld l, Func_70009 % $100
-	jr asm_0253
-
-Func_0241: ; 241 (0:0241)
-	ld l, Func_7000c % $100
-	jr asm_0253
-
-Func_0245: ; 245 (0:0245)
-	ld l, Func_7000f % $100
-	jr asm_0253
-
-Func_0249: ; 249 (0:0249)
-	ld l, Func_70012 % $100
-	jr asm_0253
-
-Func_024d: ; 24d (0:024d)
-	ld l, Func_70015 % $100
-	jr asm_0253
-
-Func_0251: ; 251 (0:0251)
-	ld l, Func_70018 % $100
-asm_0253
-	ld h, Func_70000 / $100
-	push af
-	call .Bank1CCall
-	pop hl
-	push af
-	ld a, h
-	jr .BankSwitchBack
-
-.Bank1CCall: ; 25e (0:025e)
-	push hl
-	push af
-	ld a, [hROMBank]
-	ld hl, sp+$7
-	ld [hl], a
-	ld a, BANK(Func_70000)
-.BankSwitchBack
-	call BankSwitch_0020
-	pop af
-	ret
+INCLUDE "home/audio.asm"
 
 Func_026c: ; 26c (0:026c)
 	ld a, d
@@ -2638,12 +2582,12 @@ Func_1a70:
 .asm_1a7a
 	ld a, [hROMBank]
 	push af
-	ld a, BANK(Func_70000)
+	ld a, BANK(Func_70000_1c)
 	call BankSwitch
 	ld a, h
 	ld de, .Return
 	push de
-	ld h, Func_70000 / $100
+	ld h, Func_70000_1c / $100
 	push hl
 	ret
 
@@ -2653,7 +2597,7 @@ Func_1a70:
 	jp BankSwitch
 
 Func_1a90: ; 1a90 (0:1a90)
-	ld l, Func_70000 % $100
+	ld l, Func_70000_1c % $100
 	jr Func_1a70
 
 Func_1a94: ; 1a94 (0:1a94)
@@ -2662,7 +2606,7 @@ Func_1a94: ; 1a94 (0:1a94)
 	ld a, [wVideoTransferRequestFlags]
 	set 1, a
 	ld [wVideoTransferRequestFlags], a
-	ld l, Func_70003 % $100
+	ld l, Func_70003_1c % $100
 	call Func_1a70
 	ld a, [wVideoTransferRequestFlags]
 	res 1, a
@@ -2670,47 +2614,47 @@ Func_1a94: ; 1a94 (0:1a94)
 	ret
 
 Func_1aaf: ; 1aaf (0:1aaf)
-	ld l, Func_70006 % $100
+	ld l, Func_70006_1c % $100
 	ld h, a
 	jr Func_1a70
 
 Func_1ab4: ; 1ab4 (0:1ab4)
-	ld l, Func_70009 % $100
+	ld l, Func_70009_1c % $100
 	ld h, a
 	jr Func_1a70
 
 Func_1ab9:
-	ld l, Func_7000c % $100
+	ld l, Func_7000c_1c % $100
 	ld h, a
 	jr Func_1a70
 
 Func_1abe:
-	ld l, Func_7000f % $100
+	ld l, Func_7000f_1c % $100
 	call Func_1a70
 	ld a, h
 	ret
 
 Func_1ac5:
-	ld l, Func_70012 % $100
+	ld l, Func_70012_1c % $100
 	call Func_1a70
 	ld a, h
 	ret
 
 Func_1acc:
-	ld l, Func_70015 % $100
+	ld l, Func_70015_1c % $100
 	jr Func_1a70
 
 Func_1ad0:
-	ld l, Func_70018 % $100
+	ld l, Func_70018_1c % $100
 	ld h, a
 	jr Func_1a70
 
 Func_1ad5:
-	ld l, Func_7001b % $100
+	ld l, Func_7001b_1c % $100
 	jr Func_1a70
 
 Func_1ad9:
-	ld l, Func_7001e % $100
+	ld l, Func_7001e_1c % $100
 	jr Func_1a70
 
 Func_1add:
@@ -86744,9 +86688,6 @@ Func_6f6de:
 
 Func_6faba: ; 6faba
 	dr $6faba, $70000
-
-SECTION "Bank 1d", ROMX [$4000], BANK [$1d]
-	dr $74000, $76800
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
 Data_78000:

@@ -4,7 +4,16 @@ SECTION "WRAM0", WRAM0
 wTimer:: ds $3 ; c000
 wSerial:: ds $3 ; c003
 wVBlank:: ds $1a ; c006
-wc020:: ds $1e0 ; c020
+
+SECTION "Audio RAM 1", WRAM0 [$c020]
+wc020:: ds $e0 ; c020
+
+SECTION "Audio RAM 2", WRAM0 [$c100]
+wc100:: ds $1 ; c100
+wAudioROMBank:: ds $1 ; c101
+	ds $fe
+
+SECTION "LCD Interrupt", WRAM0 [$c200]
 wLCD:: ds $3 ; c200
 
 ; bit 7: call wVBlankCallback (far call with SRAM open)
