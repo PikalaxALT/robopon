@@ -37993,7 +37993,7 @@ Func_1472c: ; 1472c (5:472c)
 	push hl
 	ld hl, $702
 	push hl
-	ld hl, rTAC
+	ld hl, $ff07
 	push hl
 	ld hl, $0
 	push hl
@@ -50819,7 +50819,7 @@ Data_21f22:
 
 Func_21f2e:
 	push af
-	ld hl, rNR21
+	ld hl, -$ea
 	add hl, sp
 	ld sp, hl
 	xor a
@@ -73588,7 +73588,78 @@ Data_4d1d4:
 	db "<HIRA>しあい<KATA>", $00
 
 Func_4d1e1: ; 4d1e1 (13:51e1)
-	dr $4d1e1, $4d299
+	push af
+	ld a, [wVideoTransferRequestFlags + 1]
+	ld e, a
+	pop af
+	push de
+	cp $4
+	jp z, Func_4d26c
+	cp $3
+	jp z, Func_4d259
+	cp $2
+	jp z, Func_4d246
+	cp $1
+	jp z, Func_4d233
+	or a
+	jp nz, Func_4d27c
+	set_farcall_addrs_hli Func_60e81
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d21d
+	ld a, [wOAM01Attrs]
+	call FarCall
+	ld l, a
+	jp Func_4d230
+
+Func_4d21d: ; 4d21d (13:521d)
+	ld a, [wOAM02YCoord]
+	call FarCall
+	ld l, a
+	inc l
+	dec l
+	jp nz, Func_4d22e
+	ld l, $1
+	jp Func_4d230
+
+Func_4d22e: ; 4d22e (13:522e)
+	ld l, $0
+Func_4d230: ; 4d230 (13:5230)
+	jp Func_4d27c
+
+Func_4d233: ; 4d233 (13:5233)
+	set_farcall_addrs_hli Func_6d395
+	ld a, $1
+	call FarCall
+	jp Func_4d27c
+
+Func_4d246: ; 4d246 (13:5246)
+	set_farcall_addrs_hli Func_10abf
+	ld a, $1
+	call FarCall
+	jp Func_4d27c
+
+Func_4d259: ; 4d259 (13:5259)
+	set_farcall_addrs_hli Func_1228e
+	ld a, $1
+	call FarCall
+	jp Func_4d27c
+
+Func_4d26c: ; 4d26c (13:526c)
+	set_farcall_addrs_hli Func_6c5bb
+	ld a, $1
+	call FarCall
+Func_4d27c: ; 4d27c (13:527c)
+	pop de
+	push hl
+	ld a, e
+	call Func_14fc
+	pop hl
+	ld a, l
+	ret
+
+Data_4d285:
+	dr $4d285, $4d299
 
 Func_4d299:
 	dr $4d299, $4d84e
