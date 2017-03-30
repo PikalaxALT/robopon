@@ -74130,7 +74130,7 @@ Func_4d595: ; 4d595 (13:5595)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, rIE
+	ld hl, -1
 	call PlaceStringDEatCoordHL
 	pop af
 	inc a
@@ -75521,8 +75521,1866 @@ Data_4df41:
 Data_4df43:
 	db " ", $00
 
-Func_4df45:
-	dr $4df45, $4ec2b
+Func_4df45: ; 4df45 (13:5f45)
+	push af
+	push bc
+	push bc
+	ld hl, sp+$2
+	ld [hl], $0
+Func_4df4c: ; 4df4c (13:5f4c)
+	ld hl, sp+$2
+	ld a, [hl]
+	cp $9
+	jp nc, Func_4dfdc
+	ld hl, sp+$2
+	ld a, [hl]
+	add a
+	add $2
+	ld hl, sp+$1
+	ld [hl], a
+	ld hl, sp+$3
+	ld [hl], $0
+Func_4df61: ; 4df61 (13:5f61)
+	ld hl, sp+$3
+	ld a, [hl]
+	cp $6
+	jp nc, Func_4dfd2
+	ld hl, sp+$3
+	ld a, [hl]
+	add a
+	add $3
+	ld hl, sp+$0
+	ld [hl], a
+	ld hl, sp+$2
+	ld a, [hl]
+	cp $4
+	jp z, Func_4df82
+	ld hl, sp+$2
+	ld a, [hl]
+	cp $5
+	jp nz, Func_4df98
+Func_4df82: ; 4df82 (13:5f82)
+	ld hl, sp+$3
+	ld a, [hl]
+	cp $5
+	jp nz, Func_4df98
+	ld hl, sp+$0
+	ld a, [hl]
+	inc a
+	ld hl, sp+$0
+	ld [hl], a
+	ld hl, sp+$1
+	ld a, [hl]
+	inc a
+	ld hl, sp+$1
+	ld [hl], a
+Func_4df98: ; 4df98 (13:5f98)
+	ld hl, sp+$3
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$2
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	push hl
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	ld de, $36
+	call MultiplyHLbyDE
+	pop de
+	add hl, de
+	add hl, hl
+	ld de, Pointers_4dd29
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$1
+	ld a, [hl]
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, a
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$3
+	ld a, [hl]
+	inc a
+	ld hl, sp+$3
+	ld [hl], a
+	jp Func_4df61
+
+Func_4dfd2: ; 4dfd2 (13:5fd2)
+	ld hl, sp+$2
+	ld a, [hl]
+	inc a
+	ld hl, sp+$2
+	ld [hl], a
+	jp Func_4df4c
+
+Func_4dfdc: ; 4dfdc (13:5fdc)
+	ld hl, sp+$5
+	ld a, [hl]
+	or a
+	jp nz, Func_4dfef
+	ld de, Data_4dffc
+	ld hl, $20f
+	call PlaceStringDEatCoordHL
+	jp Func_4dff8
+
+Func_4dfef: ; 4dfef (13:5fef)
+	ld de, Data_4e001
+	ld hl, $20f
+	call PlaceStringDEatCoordHL
+Func_4dff8: ; 4dff8 (13:5ff8)
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_4dffc:
+	db "カタカナ", $00
+
+Data_4e001:
+	db "<HIRA>かな  <KATA>", $00
+
+Func_4e008: ; 4e008 (13:6008)
+	push bc
+	push de
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus4
+	inc hl
+	inc hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus4
+	ld de, $b
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	pop de
+	ld a, e
+	sub $4
+	or d
+	jp z, Func_4e152
+	ld a, e
+	sub $3
+	or d
+	jp z, Func_4e12f
+	ld a, e
+	sub $2
+	or d
+	jp z, Func_4e107
+	ld a, e
+	dec a
+	or d
+	jp z, Func_4e096
+	ld a, e
+	or d
+	jp nz, Func_4e155
+	ld a, c
+	sub $30
+	or b
+	jp z, Func_4e086
+	ld a, c
+	sub $2a
+	or b
+	jp z, Func_4e086
+	ld a, c
+	sub $24
+	or b
+	jp z, Func_4e086
+	ld a, c
+	sub $1e
+	or b
+	jp z, Func_4e086
+	ld a, c
+	sub $18
+	or b
+	jp z, Func_4e086
+	ld a, c
+	sub $12
+	or b
+	jp z, Func_4e086
+	ld a, c
+	sub $c
+	or b
+	jp z, Func_4e086
+	ld a, c
+	sub $6
+	or b
+	jp z, Func_4e086
+	ld a, c
+	sub $36
+	or b
+	jp nz, Func_4e089
+	ld bc, $5
+	jp Func_4e093
+
+Func_4e086: ; 4e086 (13:6086)
+	jp Func_4e093
+
+Func_4e089: ; 4e089 (13:6089)
+	dec bc
+	inc b
+	dec b
+	bit 7, b
+	jr z, Func_4e093
+	ld bc, $0
+Func_4e093: ; 4e093 (13:6093)
+	jp Func_4e155
+
+Func_4e096: ; 4e096 (13:6096)
+	ld a, c
+	sub $37
+	or b
+	jp z, Func_4e0ef
+	ld a, c
+	sub $36
+	or b
+	jp z, Func_4e0e9
+	ld a, c
+	sub $35
+	or b
+	jp z, Func_4e0e3
+	ld a, c
+	sub $2f
+	or b
+	jp z, Func_4e0e3
+	ld a, c
+	sub $29
+	or b
+	jp z, Func_4e0e3
+	ld a, c
+	sub $23
+	or b
+	jp z, Func_4e0e3
+	ld a, c
+	sub $1d
+	or b
+	jp z, Func_4e0e3
+	ld a, c
+	sub $17
+	or b
+	jp z, Func_4e0e3
+	ld a, c
+	sub $11
+	or b
+	jp z, Func_4e0e3
+	ld a, c
+	sub $b
+	or b
+	jp z, Func_4e0e3
+	ld a, c
+	sub $5
+	or b
+	jp nz, Func_4e0f5
+Func_4e0e3: ; 4e0e3 (13:60e3)
+	ld bc, $36
+	jp Func_4e104
+
+Func_4e0e9: ; 4e0e9 (13:60e9)
+	ld bc, $37
+	jp Func_4e104
+
+Func_4e0ef: ; 4e0ef (13:60ef)
+	ld bc, $37
+	jp Func_4e104
+
+Func_4e0f5: ; 4e0f5 (13:60f5)
+	inc bc
+	ld l, c
+	ld h, b
+	ld de, $36
+	call CompareHLtoDE
+	jp c, Func_4e104
+	ld bc, $35
+Func_4e104: ; 4e104 (13:6104)
+	jp Func_4e155
+
+Func_4e107: ; 4e107 (13:6107)
+	ld a, c
+	sub $36
+	or b
+	jp z, Func_4e12c
+	ld a, c
+	sub $37
+	or b
+	jp z, Func_4e12c
+	ld hl, $6
+	add hl, bc
+	ld c, l
+	ld b, h
+	ld l, c
+	ld h, b
+	ld de, $36
+	call CompareHLtoDE
+	jp c, Func_4e12c
+	ld hl, -6
+	add hl, bc
+	ld c, l
+	ld b, h
+Func_4e12c: ; 4e12c (13:612c)
+	jp Func_4e155
+
+Func_4e12f: ; 4e12f (13:612f)
+	ld a, c
+	sub $36
+	or b
+	jp z, Func_4e14f
+	ld a, c
+	sub $37
+	or b
+	jp z, Func_4e14f
+	ld hl, -6
+	add hl, bc
+	ld c, l
+	ld b, h
+	inc b
+	dec b
+	bit 7, b
+	jr z, Func_4e14f
+	ld hl, $6
+	add hl, bc
+	ld c, l
+	ld b, h
+Func_4e14f: ; 4e14f (13:614f)
+	jp Func_4e155
+
+Func_4e152: ; 4e152 (13:6152)
+	ld bc, $37
+Func_4e155: ; 4e155 (13:6155)
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	set_farcall_addrs_hli Func_50604
+	pop hl
+	push hl
+	call FarCall
+	call Func_4c0c6
+	ld hl, $4000
+	pop bc
+	ret
+
+Func_4e175:
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $d
+	add hl, de
+	ld a, [hl]
+	pop hl
+	cp $20
+	jp z, Func_4e19d
+	cp $14
+	jp z, Func_4e19d
+	cp $19
+	jp z, Func_4e194
+	cp $13
+	jp nz, Func_4e1a3
+Func_4e194: ; 4e194 (13:6194)
+	ld de, $2
+	call Func_4e008
+	jp Func_4e1a3
+
+Func_4e19d: ; 4e19d (13:619d)
+	ld de, $2
+	call Func_4e813
+Func_4e1a3: ; 4e1a3 (13:61a3)
+	ret
+
+Func_4e1a4:
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $d
+	add hl, de
+	ld a, [hl]
+	pop hl
+	cp $20
+	jp z, Func_4e1cc
+	cp $14
+	jp z, Func_4e1cc
+	cp $19
+	jp z, Func_4e1c3
+	cp $13
+	jp nz, Func_4e1d2
+Func_4e1c3: ; 4e1c3 (13:61c3)
+	ld de, $3
+	call Func_4e008
+	jp Func_4e1d2
+
+Func_4e1cc: ; 4e1cc (13:61cc)
+	ld de, $3
+	call Func_4e813
+Func_4e1d2: ; 4e1d2 (13:61d2)
+	ret
+
+Func_4e1d3:
+	push hl
+	push bc
+	push bc
+	call GetHLAtSPPlus6
+	ld c, l
+	ld b, h
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus3
+	ld hl, $d
+	add hl, bc
+	ld a, [hl]
+	ld hl, sp+$0
+	ld [hl], a
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $13
+	jp nz, Func_4e1fc
+	ld c, $4
+	jp Func_4e1fe
+
+Func_4e1fc: ; 4e1fc (13:61fc)
+	ld c, $5
+Func_4e1fe: ; 4e1fe (13:61fe)
+	push bc
+	call Func_4c0ac
+	ld a, $1
+	pop bc
+	call GetHLAtSPPlus3
+	ld a, l
+	sub $37
+	or h
+	jp z, Func_4e232
+	ld a, l
+	sub $36
+	or h
+	jp nz, Func_4e272
+	ld a, [$c2f9]
+	or a
+	jp nz, Func_4e225
+	ld a, $1
+	ld [$c2f9], a
+	jp Func_4e229
+
+Func_4e225: ; 4e225 (13:6225)
+	xor a
+	ld [$c2f9], a
+Func_4e229: ; 4e229 (13:6229)
+	ld a, [$c2f9]
+	call Func_4df45
+	jp Func_4e39a
+
+Func_4e232: ; 4e232 (13:6232)
+	ld a, [$c2f7]
+	or a
+	jp nz, Func_4e23f
+	ld hl, $4000
+	jp Func_4e3a0
+
+Func_4e23f: ; 4e23f (13:623f)
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $13
+	jp nz, Func_4e259
+	set_farcall_addrs_hli Func_335de
+	xor a
+	call FarCall
+	jp Func_4e269
+
+Func_4e259: ; 4e259 (13:6259)
+	set_farcall_addrs_hli Func_335de
+	ld a, $1
+	call FarCall
+Func_4e269: ; 4e269 (13:6269)
+	call Func_4c0b9
+	ld hl, -1
+	jp Func_4e3a0
+
+Func_4e272: ; 4e272 (13:6272)
+	call GetHLAtSPPlus3
+	ld a, l
+	sub $23
+	or h
+	jp z, Func_4e283
+	ld a, l
+	sub $1d
+	or h
+	jp nz, Func_4e2e0
+Func_4e283: ; 4e283 (13:6283)
+	push bc
+	ld a, [wOAM01VTile]
+	cp $1
+	jp c, Func_4e2cc
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType
+	add hl, de
+	ld a, [hl]
+	call GetHLAtSPPlus5
+	ld e, l
+	call Func_4e4ee
+	cp $1
+	jp nz, Func_4e2cc
+	ld e, $10
+	ld a, [$c2f7]
+	add $b
+	call SetStringStartState
+	call GetHLAtSPPlus5
+	add hl, hl
+	ld de, Pointers_4dd29
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	call PlaceString
+	pop bc
+	call GetHLAtSPPlus5
+	ld a, l
+	ld hl, wOAM01VTile
+	ld l, [hl]
+	ld h, $0
+	ld de, wOAMBuffer
+	add hl, de
+	ld [hl], a
+Func_4e2cc: ; 4e2cc (13:62cc)
+	pop bc
+	ld a, [$c2f7]
+	cp c
+	jp nz, Func_4e2dd
+	call GetHLAtSPPlus6
+	ld de, $4
+	call Func_4e008
+Func_4e2dd: ; 4e2dd (13:62dd)
+	jp Func_4e39a
+
+Func_4e2e0: ; 4e2e0 (13:62e0)
+	ld a, [$c2f7]
+	cp c
+	jp nz, Func_4e2f3
+	call GetHLAtSPPlus6
+	ld de, $4
+	call Func_4e008
+	jp Func_4e39a
+
+Func_4e2f3: ; 4e2f3 (13:62f3)
+	push bc
+	ld e, $10
+	ld a, [$c2f7]
+	add $b
+	call SetStringStartState
+	ld hl, $c2f9
+	ld l, [hl]
+	ld h, $0
+	ld de, $36
+	call MultiplyHLbyDE
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus5
+	add hl, bc
+	add hl, hl
+	ld de, Pointers_4dd29
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	call PlaceString
+	pop bc
+	ld hl, $c2f9
+	ld l, [hl]
+	ld h, $0
+	ld de, $36
+	call MultiplyHLbyDE
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus5
+	add hl, bc
+	ld a, l
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType + 1
+	add hl, de
+	ld [hl], a
+	pop bc
+	ld l, c
+	dec l
+	ld a, [$c2f7]
+	cp l
+	jp nz, Func_4e35f
+	ld a, [$c2f7]
+	inc a
+	ld [$c2f7], a
+	ld a, [wOAM01VTile]
+	inc a
+	ld [wOAM01VTile], a
+	call GetHLAtSPPlus6
+	ld de, $4
+	call Func_4e008
+	jp Func_4e39a
+
+Func_4e35f: ; 4e35f (13:635f)
+	ld l, c
+	dec l
+	ld a, [$c2f7]
+	cp l
+	jp nc, Func_4e39a
+	ld e, $11
+	ld a, [$c2f7]
+	add $b
+	call SetStringStartState
+	ld hl, Data_4e3a4
+	push hl
+	call PlaceString
+	pop bc
+	ld a, [$c2f7]
+	inc a
+	ld [$c2f7], a
+	ld a, [wOAM01VTile]
+	inc a
+	ld [wOAM01VTile], a
+	ld e, $11
+	ld a, [$c2f7]
+	add $b
+	call SetStringStartState
+	ld hl, Data_4e3a6
+	push hl
+	call PlaceString
+	pop bc
+Func_4e39a: ; 4e39a (13:639a)
+	call Func_4c0b9
+	ld hl, $4000
+Func_4e3a0: ; 4e3a0 (13:63a0)
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_4e3a4:
+	db "_", $00
+
+Data_4e3a6:
+	db "b", $00
+
+Func_4e3a8:
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $d
+	add hl, de
+	ld a, [hl]
+	cp $13
+	jp nz, Func_4e3bb
+	ld c, $4
+	jp Func_4e3bd
+
+Func_4e3bb: ; 4e3bb (13:63bb)
+	ld c, $5
+Func_4e3bd: ; 4e3bd (13:63bd)
+	ld a, [$c2f7]
+	or a
+	jp nz, Func_4e3f3
+	ld a, c
+	cp $4
+	jp nz, Func_4e3ed
+	ld a, $61
+	ld [wSystemType + 1], a
+	ld a, $5f
+	ld [wSystemType + 2], a
+	ld a, $44
+	ld [wSystemType + 3], a
+	ld a, $3f
+	ld [wSystemType + 4], a
+	set_farcall_addrs_hli Func_335de
+	xor a
+	call FarCall
+Func_4e3ed: ; 4e3ed (13:63ed)
+	ld hl, -1
+	jp Func_4e4e3
+
+Func_4e3f3: ; 4e3f3 (13:63f3)
+	push bc
+	call Func_4c0ac
+	pop bc
+	ld e, c
+	ld d, $0
+	ld hl, wSystemType
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	jp z, Func_4e43e
+	ld l, c
+	dec l
+	ld a, [$c2f7]
+	cp l
+	jp nz, Func_4e43e
+	push bc
+	ld e, $10
+	ld a, [$c2f7]
+	add $b
+	call SetStringStartState
+	ld hl, Data_4e4e4
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	ld e, c
+	ld d, $0
+	ld hl, wSystemType
+	add hl, de
+	ld [hl], $ff
+	ld e, c
+	ld d, $0
+	ld hl, wOAM00YCoord
+	add hl, de
+	ld [hl], $ff
+	ld a, [wOAM01VTile]
+	dec a
+	ld [wOAM01VTile], a
+	jp Func_4e4dd
+
+Func_4e43e: ; 4e43e (13:643e)
+	ld a, [$c2f7]
+	cp c
+	jp nz, Func_4e47a
+	push bc
+	ld a, c
+	add $a
+	ld e, $10
+	call SetStringStartState
+	ld hl, Data_4e4e6
+	push hl
+	call PlaceString
+	pop bc
+	ld a, [$c2f7]
+	dec a
+	ld [$c2f7], a
+	ld a, [wOAM01VTile]
+	dec a
+	ld [wOAM01VTile], a
+	pop bc
+	ld e, c
+	ld d, $0
+	ld hl, wSystemType
+	add hl, de
+	ld [hl], $ff
+	ld e, c
+	ld d, $0
+	ld hl, wc300
+	add hl, de
+	ld [hl], $ff
+	jp Func_4e4dd
+
+Func_4e47a: ; 4e47a (13:647a)
+	ld a, [$c2f7]
+	cp c
+	jp nc, Func_4e4dd
+	ld e, $11
+	ld a, [$c2f7]
+	add $b
+	call SetStringStartState
+	ld hl, Data_4e4e8
+	push hl
+	call PlaceString
+	pop bc
+	ld a, [$c2f7]
+	dec a
+	ld [$c2f7], a
+	ld a, [wOAM01VTile]
+	dec a
+	ld [wOAM01VTile], a
+	ld e, $10
+	ld a, [$c2f7]
+	add $b
+	call SetStringStartState
+	ld hl, Data_4e4ea
+	push hl
+	call PlaceString
+	pop bc
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType + 1
+	add hl, de
+	ld [hl], $ff
+	ld hl, wOAM01VTile
+	ld l, [hl]
+	ld h, $0
+	ld de, wOAM00XCoord
+	add hl, de
+	ld [hl], $ff
+	ld e, $11
+	ld a, [$c2f7]
+	add $b
+	call SetStringStartState
+	ld hl, Data_4e4ec
+	push hl
+	call PlaceString
+	pop bc
+Func_4e4dd: ; 4e4dd (13:64dd)
+	call Func_4c0b9
+	ld hl, $4000
+Func_4e4e3: ; 4e4e3 (13:64e3)
+	ret
+
+Data_4e4e4:
+	db " ", $00
+
+Data_4e4e6:
+	db " ", $00
+
+Data_4e4e8:
+	db "_", $00
+
+Data_4e4ea:
+	db " ", $00
+
+Data_4e4ec:
+	db "b", $00
+
+Func_4e4ee: ; 4e4ee (13:64ee)
+	push af
+	push de
+	ld a, [$c2f9]
+	or a
+	jp nz, Func_4e4fc
+	ld e, $0
+	jp Func_4e4fe
+
+Func_4e4fc: ; 4e4fc (13:64fc)
+	ld e, $36
+Func_4e4fe: ; 4e4fe (13:64fe)
+	ld hl, sp+$3
+	ld a, [hl]
+	sub e
+	ld hl, sp+$3
+	ld [hl], a
+	pop de
+	ld a, e
+	cp $23
+	jp z, Func_4e56a
+	cp $1d
+	jp nz, Func_4e581
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $6
+	jp c, Func_4e526
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $b
+	jp nc, Func_4e526
+	ld a, $1
+	jp Func_4e581
+
+Func_4e526: ; 4e526 (13:6526)
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $c
+	jp c, Func_4e53b
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $11
+	jp nc, Func_4e53b
+	ld a, $1
+	jp Func_4e581
+
+Func_4e53b: ; 4e53b (13:653b)
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $12
+	jp c, Func_4e550
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $17
+	jp nc, Func_4e550
+	ld a, $1
+	jp Func_4e581
+
+Func_4e550: ; 4e550 (13:6550)
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $1e
+	jp c, Func_4e565
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $23
+	jp nc, Func_4e565
+	ld a, $1
+	jp Func_4e581
+
+Func_4e565: ; 4e565 (13:6565)
+	ld a, $ff
+	jp Func_4e581
+
+Func_4e56a: ; 4e56a (13:656a)
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $1e
+	jp c, Func_4e57f
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $23
+	jp nc, Func_4e57f
+	ld a, $1
+	jp Func_4e581
+
+Func_4e57f: ; 4e57f (13:657f)
+	ld a, $ff
+Func_4e581: ; 4e581 (13:6581)
+	pop bc
+	ret
+
+Data_4e583:
+	dr $4e583, $4e58b
+
+Func_4e58b:
+	push hl
+	add sp, -$16
+	ld hl, sp+$16
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	xor a
+	push af
+	ld c, l
+	ld b, h
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	ld hl, sp+$19
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$18
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	ld l, [hl]
+	push hl
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	push af
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	push af
+	ld hl, $c980
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$a
+	ld bc, $5
+	call FarCopyVideoData
+	pop af
+	call GetSRAMBank
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	call Func_1fbe
+	pop af
+	pop hl
+	ld c, a
+	ld e, l
+	ld hl, sp+$19
+	ld a, [hl]
+	ld hl, sp+$18
+	ld l, [hl]
+	ld h, a
+	call Func_4c0d3
+	ld c, $3
+	ld e, $a
+	ld hl, $0
+	call Func_4c0d3
+	ld c, $5
+	ld e, $a
+	ld hl, $a06
+	call Func_4c0d3
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call Func_4c0d3
+	ld de, Data_4e743
+	ld hl, $101
+	call PlaceStringDEatCoordHL
+	ld de, Data_4e749
+	ld hl, $b01
+	call PlaceStringDEatCoordHL
+	ld de, Data_4e754
+	ld hl, $b07
+	call PlaceStringDEatCoordHL
+	ld de, Data_4e75b
+	ld hl, $10e
+	call PlaceStringDEatCoordHL
+	set_farcall_addrs_hli Func_16019
+	ld hl, sp+$4
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $5
+	call FarCall
+	xor a
+	ld [$c2f7], a
+	xor a
+	ld [wSystemType + 1], a
+	ld a, $1
+	ld [wSystemType + 2], a
+	xor a
+	ld [wSystemType + 3], a
+	ld a, $1
+	ld [wSystemType + 4], a
+	ld de, Data_4e771
+	ld hl, $d03
+	call PlaceStringDEatCoordHL
+	ld de, Data_4e777
+	ld hl, $1103
+	call PlaceStringDEatCoordHL
+	call Func_4e780
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $400
+	call FarCall
+	call WriteHLToSPPlus4
+	pop af
+	or a
+	jp nz, Func_4e6ac
+	ld hl, $0
+	jp Func_4e6af
+
+Func_4e6ac: ; 4e6ac (13:66ac)
+	ld hl, $310
+Func_4e6af: ; 4e6af (13:66af)
+	ld de, $89b0
+	add hl, de
+	ld c, l
+	ld b, h
+	pop hl
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, $c5
+	call DecompressRequestRoboponPic
+	call WaitVideoTransfer
+	set_farcall_addrs_hli Func_615be
+	ld a, $c5
+	call FarCall
+	push af
+	set_farcall_addrs_hli Func_613fc
+	pop af
+	ld e, a
+	call FarCall
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_4e6f4
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_4e6fd
+Func_4e6f4: ; 4e6f4 (13:66f4)
+	ld de, $8
+	ld hl, Data_4e583
+	call Func_2b7d
+Func_4e6fd: ; 4e6fd (13:66fd)
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	pop hl
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $4
+	call FarCall
+	call WaitVideoTransfer
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	push hl
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld hl, $4000
+	push de
+	push hl
+	pop de
+	pop hl
+	add sp, $18
+	push de
+	push hl
+	pop de
+	pop hl
+	ret
+
+Data_4e743:
+	db "<HIRA>なまえ<KATA>", $00
+
+Data_4e749:
+	db "<HIRA>たんしﾞょうひﾞ<KATA>", $00
+
+Data_4e754:
+	db "<HIRA>せいさﾞ<KATA>", $00
+
+Data_4e75b:
+	db "ホﾞク<HIRA>の たんしﾞょうひﾞを きめて<KATA>ネ", $00
+
+Data_4e771:
+	db "<HIRA>かﾞつ<KATA>", $00
+
+Data_4e777:
+	db "<HIRA>にち<KATA>", $00
+
+Data_4e77c:
+	db 11, 12
+	db 15, 16
+
+Func_4e780: ; 4e780 (13:6780)
+	push bc
+	push bc
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, Data_4e77c
+	ld bc, $4
+	call MemCopy
+	ld l, $0
+Func_4e793: ; 4e793 (13:6793)
+	ld a, l
+	cp $4
+	jp nc, Func_4e7fb
+	ld a, [$c2f7]
+	cp l
+	jp nz, Func_4e7bb
+	push hl
+	ld e, l
+	ld d, $0
+	ld hl, sp+$2
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld de, Data_4e80c
+	call PlaceStringDEatCoordHL
+	pop hl
+	jp Func_4e7d3
+
+Func_4e7bb: ; 4e7bb (13:67bb)
+	push hl
+	ld e, l
+	ld d, $0
+	ld hl, sp+$2
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld de, Data_4e80e
+	call PlaceStringDEatCoordHL
+	pop hl
+Func_4e7d3: ; 4e7d3 (13:67d3)
+	push hl
+	ld e, l
+	ld d, $0
+	ld hl, sp+$2
+	add hl, de
+	ld a, [hl]
+	ld e, $3
+	call SetStringStartState
+	pop hl
+	push hl
+	ld e, l
+	ld d, $0
+	ld hl, wSystemType + 1
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_4e810
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop hl
+	inc l
+	jp Func_4e793
+
+Func_4e7fb: ; 4e7fb (13:67fb)
+	callba_hli Func_537dc
+	pop bc
+	pop bc
+	ret
+
+Data_4e80c:
+	db "b", $00
+
+Data_4e80e:
+	db "_", $00
+
+Data_4e810:
+	TX_SNUM
+	db $00
+
+Func_4e813: ; 4e813 (13:6813)
+	push bc
+	push bc
+	push de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $d
+	add hl, de
+	ld a, [hl]
+	ld hl, sp+$4
+	ld [hl], a
+	ld hl, $0
+	ld a, [wSystemType + 1]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 2
+	add [hl]
+	ld l, a
+	push hl
+	ld a, [wSystemType + 3]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 4
+	add [hl]
+	ld c, $0
+	pop hl
+	ld a, [$c2f7]
+	cp $3
+	jp z, Func_4e89e
+	cp $2
+	jp z, Func_4e884
+	cp $1
+	jp z, Func_4e863
+	or a
+	jp nz, Func_4e8a9
+	push hl
+	ld c, $0
+	ld hl, sp+$7
+	ld [hl], $1
+	pop hl
+	jp Func_4e8a9
+
+Func_4e863: ; 4e863 (13:6863)
+	push hl
+	ld a, [wSystemType + 1]
+	cp $1
+	jp nz, Func_4e873
+	ld hl, sp+$7
+	ld [hl], $2
+	jp Func_4e880
+
+Func_4e873: ; 4e873 (13:6873)
+	ld a, [wSystemType + 1]
+	or a
+	jp nz, Func_4e87c
+	ld c, $1
+Func_4e87c: ; 4e87c (13:687c)
+	ld hl, sp+$7
+	ld [hl], $9
+Func_4e880: ; 4e880 (13:6880)
+	pop hl
+	jp Func_4e8a9
+
+Func_4e884: ; 4e884 (13:6884)
+	push hl
+	ld a, l
+	cp $2
+	jp nz, Func_4e894
+	ld c, $0
+	ld hl, sp+$7
+	ld [hl], $2
+	jp Func_4e89a
+
+Func_4e894: ; 4e894 (13:6894)
+	ld c, $0
+	ld hl, sp+$7
+	ld [hl], $3
+Func_4e89a: ; 4e89a (13:689a)
+	pop hl
+	jp Func_4e8a9
+
+Func_4e89e: ; 4e89e (13:689e)
+	push hl
+	ld hl, $0
+	ld c, $0
+	ld hl, sp+$7
+	ld [hl], $9
+	pop hl
+Func_4e8a9: ; 4e8a9 (13:68a9)
+	pop de
+	push hl
+	ld a, e
+	sub $3
+	or d
+	jp z, Func_4e9a6
+	ld a, e
+	sub $2
+	or d
+	jp z, Func_4e994
+	ld a, e
+	dec a
+	or d
+	jp z, Func_4e92b
+	ld a, e
+	or d
+	jp nz, Func_4e9b5
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType + 1
+	add hl, de
+	ld a, [hl]
+	ld hl, sp+$5
+	cp [hl]
+	jp nz, Func_4e902
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType + 1
+	add hl, de
+	ld [hl], c
+	ld hl, sp+$5
+	ld a, [hl]
+	cp c
+	jp z, Func_4e8ff
+	ld a, [$c2f7]
+	or a
+	jp z, Func_4e8f6
+	ld a, [$c2f7]
+	cp $1
+	jp nz, Func_4e8ff
+Func_4e8f6: ; 4e8f6 (13:68f6)
+	xor a
+	ld [wSystemType + 3], a
+	ld a, $1
+	ld [wSystemType + 4], a
+Func_4e8ff: ; 4e8ff (13:68ff)
+	jp Func_4e928
+
+Func_4e902: ; 4e902 (13:6902)
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType + 1
+	add hl, de
+	ld a, $1
+	add [hl]
+	ld [hl], a
+	ld a, [$c2f7]
+	or a
+	jp z, Func_4e91f
+	ld a, [$c2f7]
+	cp $1
+	jp nz, Func_4e928
+Func_4e91f: ; 4e91f (13:691f)
+	xor a
+	ld [wSystemType + 3], a
+	ld a, $1
+	ld [wSystemType + 4], a
+Func_4e928: ; 4e928 (13:6928)
+	jp Func_4e9b5
+
+Func_4e92b: ; 4e92b (13:692b)
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType + 1
+	add hl, de
+	ld a, [hl]
+	cp c
+	jp nz, Func_4e96a
+	ld hl, sp+$5
+	ld a, [hl]
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType + 1
+	add hl, de
+	ld [hl], a
+	ld hl, sp+$5
+	ld a, [hl]
+	cp c
+	jp z, Func_4e967
+	ld a, [$c2f7]
+	or a
+	jp z, Func_4e95e
+	ld a, [$c2f7]
+	cp $1
+	jp nz, Func_4e967
+Func_4e95e: ; 4e95e (13:695e)
+	xor a
+	ld [wSystemType + 3], a
+	ld a, $1
+	ld [wSystemType + 4], a
+Func_4e967: ; 4e967 (13:6967)
+	jp Func_4e991
+
+Func_4e96a: ; 4e96a (13:696a)
+	ld hl, $c2f7
+	ld l, [hl]
+	ld h, $0
+	ld de, wSystemType + 1
+	add hl, de
+	ld e, $1
+	ld a, [hl]
+	sub e
+	ld [hl], a
+	ld a, [$c2f7]
+	or a
+	jp z, Func_4e988
+	ld a, [$c2f7]
+	cp $1
+	jp nz, Func_4e991
+Func_4e988: ; 4e988 (13:6988)
+	xor a
+	ld [wSystemType + 3], a
+	ld a, $1
+	ld [wSystemType + 4], a
+Func_4e991: ; 4e991 (13:6991)
+	jp Func_4e9b5
+
+Func_4e994: ; 4e994 (13:6994)
+	ld a, [$c2f7]
+	cp $3
+	jp nc, Func_4e9a3
+	ld a, [$c2f7]
+	inc a
+	ld [$c2f7], a
+Func_4e9a3: ; 4e9a3 (13:69a3)
+	jp Func_4e9b5
+
+Func_4e9a6: ; 4e9a6 (13:69a6)
+	ld a, [$c2f7]
+	cp $1
+	jp c, Func_4e9b5
+	ld a, [$c2f7]
+	dec a
+	ld [$c2f7], a
+Func_4e9b5: ; 4e9b5 (13:69b5)
+	ld a, [wSystemType + 1]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 2
+	add [hl]
+	cp $d
+	jp c, Func_4e9cd
+	xor a
+	ld [wSystemType + 2], a
+	jp Func_4e9e1
+
+Func_4e9cd: ; 4e9cd (13:69cd)
+	ld a, [wSystemType + 1]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 2
+	add [hl]
+	jp nz, Func_4e9e1
+	ld a, $1
+	ld [wSystemType + 2], a
+Func_4e9e1: ; 4e9e1 (13:69e1)
+	pop hl
+	ld a, l
+	cp $4
+	jp z, Func_4e9fa
+	ld a, l
+	cp $6
+	jp z, Func_4e9fa
+	ld a, l
+	cp $9
+	jp z, Func_4e9fa
+	ld a, l
+	cp $b
+	jp nz, Func_4ea12
+Func_4e9fa: ; 4e9fa (13:69fa)
+	ld a, [wSystemType + 3]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 4
+	add [hl]
+	cp $1f
+	jp c, Func_4ea0f
+	xor a
+	ld [wSystemType + 4], a
+Func_4ea0f: ; 4ea0f (13:6a0f)
+	jp Func_4ead7
+
+Func_4ea12: ; 4ea12 (13:6a12)
+	ld a, l
+	cp $2
+	jp nz, Func_4eabc
+	ld hl, sp+$2
+	ld a, [hl]
+	cp $20
+	jp nz, Func_4eab9
+	ld hl, wVideoTransferRequestBank + 2
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	push hl
+	ld hl, wVideoTransferRequestBank + 1
+	ld l, [hl]
+	ld h, $0
+	ld de, $3e8
+	call MultiplyHLbyDE
+	pop de
+	add hl, de
+	ld c, l
+	ld b, h
+	ld hl, wVideoTransferRequestBank + 3
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld a, [wVideoTransferRequestBank + 4]
+	ld e, a
+	ld d, $0
+	add hl, de
+	pop de
+	push hl
+	pop hl
+	push hl
+	ld de, $4
+	call DivideHLByDESigned
+	ld a, e
+	or d
+	jp nz, Func_4ea73
+	pop hl
+	push hl
+	ld de, $64
+	call DivideHLByDESigned
+	ld a, e
+	or d
+	jp nz, Func_4ea80
+Func_4ea73: ; 4ea73 (13:6a73)
+	pop hl
+	push hl
+	ld de, $190
+	call DivideHLByDESigned
+	ld a, e
+	or d
+	jp nz, Func_4ea9e
+Func_4ea80: ; 4ea80 (13:6a80)
+	ld a, [wSystemType + 3]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 4
+	add [hl]
+	cp $1e
+	jp c, Func_4ea9b
+	ld a, $9
+	ld [wSystemType + 4], a
+	ld a, $2
+	ld [wSystemType + 3], a
+Func_4ea9b: ; 4ea9b (13:6a9b)
+	jp Func_4eab9
+
+Func_4ea9e: ; 4ea9e (13:6a9e)
+	ld a, [wSystemType + 3]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 4
+	add [hl]
+	cp $1d
+	jp c, Func_4eab9
+	ld a, $8
+	ld [wSystemType + 4], a
+	ld a, $2
+	ld [wSystemType + 3], a
+Func_4eab9: ; 4eab9 (13:6ab9)
+	jp Func_4ead7
+
+Func_4eabc: ; 4eabc (13:6abc)
+	ld a, [wSystemType + 3]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 4
+	add [hl]
+	cp $20
+	jp c, Func_4ead7
+	ld a, $1
+	ld [wSystemType + 4], a
+	ld a, $3
+	ld [wSystemType + 3], a
+Func_4ead7: ; 4ead7 (13:6ad7)
+	ld a, [wSystemType + 3]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 4
+	add [hl]
+	jp nz, Func_4eaeb
+	ld a, $1
+	ld [wSystemType + 4], a
+Func_4eaeb: ; 4eaeb (13:6aeb)
+	ld hl, sp+$2
+	ld a, [hl]
+	cp $20
+	jp nz, Func_4eb51
+	ld e, $5
+	ld a, $7
+	call SetStringStartState
+	ld hl, wSystemType + 2
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, wSystemType + 1
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_4eb67
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	ld e, $5
+	ld a, $c
+	call SetStringStartState
+	ld hl, wSystemType + 4
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, wSystemType + 3
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_4eb6c
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	set_farcall_addrs_hli Func_533f8
+	ld a, $1
+	call FarCall
+	ld l, $2
+	push hl
+	ld c, $8
+	ld e, $5
+	ld a, $7
+	call Func_3bc5
+	pop bc
+	jp Func_4eb61
+
+Func_4eb51: ; 4eb51 (13:6b51)
+	call Func_4e780
+	ld l, $b
+	push hl
+	ld c, $a
+	ld e, $0
+	ld a, $a
+	call Func_3bc5
+	pop bc
+Func_4eb61: ; 4eb61 (13:6b61)
+	ld hl, $4000
+	pop bc
+	pop bc
+	ret
+
+Data_4eb67:
+	TX_SNUM
+	TX_SNUM
+	db $00
+
+Data_4eb6c:
+	TX_SNUM
+	TX_SNUM
+	db $00
+
+Func_4eb71:
+	inc hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	inc hl
+	ld h, [hl]
+	call Func_4c0ac
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call Func_4c0d3
+	ld de, Data_4ec21
+	ld hl, $10e
+	call PlaceStringDEatCoordHL
+	call Func_4c0b9
+	callba_hli Func_1482e
+	push hl
+	callba_hli Func_537dc
+	ld c, a
+	pop hl
+	ld a, l
+	or h
+	jp nz, Func_4ec1d
+	push bc
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	ld e, a
+	ld a, [wSystemType + 1]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 2
+	add [hl]
+	ld [$c985], a
+	ld a, [wSystemType + 3]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wSystemType + 4
+	add [hl]
+	ld [$c986], a
+	pop bc
+	ld a, c
+	ld [$c987], a
+	ld a, e
+	call GetSRAMBank
+	call Func_3aa8
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_4ec03
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_4ec17
+Func_4ec03: ; 4ec03 (13:6c03)
+	set_farcall_addrs_hli Func_61424
+	ld c, $1
+	ld e, $1
+	ld a, $1
+	call FarCall
+Func_4ec17: ; 4ec17 (13:6c17)
+	ld hl, $0
+	jp Func_4ec20
+
+Func_4ec1d: ; 4ec1d (13:6c1d)
+	ld hl, $1
+Func_4ec20: ; 4ec20 (13:6c20)
+	ret
+
+Data_4ec21:
+	db "<HIRA>これてﾞいい<KATA>?", $00
 
 Func_4ec2b: ; $4ec2b
 	dr $4ec2b, $4ed5d
@@ -75571,7 +77429,13 @@ Func_52d1f:
 	dr $52d1f, $52df8
 
 Func_52df8:
-	dr $52df8, $53a0d
+	dr $52df8, $533f8
+
+Func_533f8:
+	dr $533f8, $537dc
+
+Func_537dc:
+	dr $537dc, $53a0d
 
 Func_53a0d: ; $53a0d
 	dr $53a0d, $53b1e
@@ -78682,8 +80546,11 @@ Func_614f0: ; 614f0 (18:54f0)
 	ret
 
 Data_614f3:
-	dr $614f3, $615c3
+	dr $614f3, $615be
 
+Func_615be:
+	cp $cb
+	jp nc, Func_615cc
 Func_615c3:
 	ld e, a
 	ld d, $0
