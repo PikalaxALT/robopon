@@ -73661,11 +73661,1868 @@ Func_4d27c: ; 4d27c (13:527c)
 Data_4d285:
 	dr $4d285, $4d299
 
-Func_4d299:
-	dr $4d299, $4d84e
+Func_4d299: ; 4d299 (13:5299)
+	push hl
+	ld hl, -$88
+	add hl, sp
+	ld sp, hl
+	push de
+	call Func_4c0ac
+	call Func_3aa8
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_4d2b6
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_4d2ca
+Func_4d2b6: ; 4d2b6 (13:52b6)
+	set_farcall_addrs_hli Func_61424
+	ld c, $1
+	ld e, $1
+	ld a, $1
+	call FarCall
+Func_4d2ca: ; 4d2ca (13:52ca)
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d2ec
+	set_farcall_addrs_hli Func_6b55
+	ld hl, sp+$67
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, [wOAM01Attrs]
+	call FarCall
+	jp Func_4d303
 
-Func_4d84e:
-	dr $4d84e, $4ec2b
+Func_4d2ec: ; 4d2ec (13:52ec)
+	set_farcall_addrs_hli Func_6b55
+	ld hl, sp+$44
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, [wOAM02YCoord]
+	call FarCall
+Func_4d303: ; 4d303 (13:5303)
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	push af
+	call ReadHalfWordAt
+	dw $cb55
+	call WriteHLToSPPlus8
+	ld hl, sp+$8
+	xor a
+	ld [hl], a
+	ld hl, sp+$9
+	ld [hl], a
+	ld c, $0
+	pop af
+	pop de
+	push af
+Func_4d32b: ; 4d32b (13:532b)
+	ld a, c
+	cp $3
+	jp nc, Func_4d469
+	ld l, c
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	jp z, Func_4d465
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d3d4
+	push de
+	ld l, c
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_4d390
+	call GetHLAtSPPlusParam8
+	db $8e
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $cb3f
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	ld de, 999
+	call CompareHLtoDE
+	jp nc, Func_4d386
+	call GetHLAtSPPlusParam8
+	db $8e
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $cb3f
+	add hl, de
+	ld a, [hl]
+	add $1
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+Func_4d386: ; 4d386 (13:5386)
+	ld hl, sp+$9
+	ld a, [hl]
+	inc a
+	ld hl, sp+$9
+	ld [hl], a
+	jp Func_4d3d0
+
+Func_4d390: ; 4d390 (13:5390)
+	call GetHLAtSPPlusParam8
+	db $8e
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $cb49
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	ld de, 999
+	call CompareHLtoDE
+	jp nc, Func_4d3c9
+	call GetHLAtSPPlusParam8
+	db $8e
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $cb49
+	add hl, de
+	ld a, [hl]
+	add $1
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+Func_4d3c9: ; 4d3c9 (13:53c9)
+	ld hl, sp+$8
+	ld a, [hl]
+	inc a
+	ld hl, sp+$8
+	ld [hl], a
+Func_4d3d0: ; 4d3d0 (13:53d0)
+	pop de
+	jp Func_4d465
+
+Func_4d3d4: ; 4d3d4 (13:53d4)
+	ld l, c
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	cp $1
+	jp nz, Func_4d423
+	push de
+	call GetHLAtSPPlusParam8
+	db $8e
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $cb3f
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	ld de, 999
+	call CompareHLtoDE
+	jp nc, Func_4d418
+	call GetHLAtSPPlusParam8
+	db $8e
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $cb3f
+	add hl, de
+	ld a, [hl]
+	add $1
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+Func_4d418: ; 4d418 (13:5418)
+	ld hl, sp+$8
+	ld a, [hl]
+	inc a
+	ld hl, sp+$8
+	ld [hl], a
+	pop de
+	jp Func_4d465
+
+Func_4d423: ; 4d423 (13:5423)
+	push de
+	call GetHLAtSPPlusParam8
+	db $8e
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $cb49
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	ld de, 999
+	call CompareHLtoDE
+	jp nc, Func_4d45d
+	call GetHLAtSPPlusParam8
+	db $8e
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $cb49
+	add hl, de
+	ld a, [hl]
+	add $1
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+Func_4d45d: ; 4d45d (13:545d)
+	ld hl, sp+$9
+	ld a, [hl]
+	inc a
+	ld hl, sp+$9
+	ld [hl], a
+	pop de
+Func_4d465: ; 4d465 (13:5465)
+	inc c
+	jp Func_4d32b
+
+Func_4d469: ; 4d469 (13:5469)
+	pop af
+	push de
+	call GetSRAMBank
+	ld hl, sp+$6
+	ld a, [hl]
+	ld hl, sp+$7
+	cp [hl]
+	jp nc, Func_4d47c
+	ld l, $0
+	jp Func_4d47e
+
+Func_4d47c: ; 4d47c (13:547c)
+	ld l, $1
+Func_4d47e: ; 4d47e (13:547e)
+	push hl
+	call Func_4c21e
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d4ce
+	ld c, $1
+	ld hl, sp+$46
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $23
+	call Func_4c1f6
+	ld c, $1
+	ld hl, sp+$69
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $23
+	call Func_4c20a
+	ld c, $1
+	ld hl, sp+$4
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	call Func_4c1f6
+	ld c, $1
+	ld hl, sp+$6
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	call Func_4c20a
+	ld hl, sp+$46
+	ld e, [hl]
+	ld hl, sp+$69
+	ld a, [hl]
+	call Func_4dad5
+	jp Func_4d50f
+
+Func_4d4ce: ; 4d4ce (13:54ce)
+	ld c, $1
+	ld hl, sp+$46
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $23
+	call Func_4c20a
+	ld c, $1
+	ld hl, sp+$69
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $23
+	call Func_4c1f6
+	ld c, $1
+	ld hl, sp+$6
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	call Func_4c20a
+	ld c, $1
+	ld hl, sp+$4
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2
+	call Func_4c1f6
+	ld hl, sp+$46
+	ld e, [hl]
+	ld hl, sp+$69
+	ld a, [hl]
+	call Func_4dad5
+Func_4d50f: ; 4d50f (13:550f)
+	ld hl, sp+$6a
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$a
+	ld bc, $6
+	call CopyFromDEtoHL
+	ld hl, sp+$47
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$28
+	ld bc, $6
+	call CopyFromDEtoHL
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d55b
+	set_farcall_addrs_hli Func_16019
+	ld hl, sp+$a
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $1
+	call FarCall
+	ld hl, sp+$28
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $b
+	call FarCall
+	jp Func_4d580
+
+Func_4d55b: ; 4d55b (13:555b)
+	set_farcall_addrs_hli Func_16019
+	ld hl, sp+$a
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $b
+	call FarCall
+	ld hl, sp+$28
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $1
+	call FarCall
+Func_4d580: ; 4d580 (13:5580)
+	ld c, $a
+	ld e, $a
+	ld hl, $2
+	call Func_4c0d3
+	ld c, $a
+	ld e, $a
+	ld hl, $a02
+	call Func_4c0d3
+	xor a
+Func_4d595: ; 4d595 (13:5595)
+	cp $3
+	jp nc, Func_4d5d4
+	push af
+	add a
+	add $d
+	ld e, a
+	ld a, $4
+	call SetStringStartState
+	pop af
+	push af
+	ld l, a
+	ld h, $0
+	inc hl
+	push hl
+	ld hl, Data_4d7ac
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop af
+	push af
+	call GetHLAtSPPlusParam8
+	db $90
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_4cccb
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, rIE
+	call PlaceStringDEatCoordHL
+	pop af
+	inc a
+	jp Func_4d595
+
+Func_4d5d4: ; 4d5d4 (13:55d4)
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_4d5e4
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_4d5ed
+Func_4d5e4: ; 4d5e4 (13:55e4)
+	ld de, $14
+	ld hl, Data_4d285
+	call Func_2b7d
+Func_4d5ed: ; 4d5ed (13:55ed)
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d621
+	set_farcall_addrs_hli Func_dc0a
+	ld hl, sp+$69
+	ld a, [hl]
+	dec a
+	ld e, a
+	xor a
+	call FarCall
+	set_farcall_addrs_hli Func_dc0a
+	ld hl, sp+$46
+	ld a, [hl]
+	dec a
+	ld e, a
+	ld a, $1
+	call FarCall
+	jp Func_4d64a
+
+Func_4d621: ; 4d621 (13:5621)
+	set_farcall_addrs_hli Func_dc0a
+	ld hl, sp+$46
+	ld a, [hl]
+	dec a
+	ld e, a
+	xor a
+	call FarCall
+	set_farcall_addrs_hli Func_dc0a
+	ld hl, sp+$69
+	ld a, [hl]
+	dec a
+	ld e, a
+	ld a, $1
+	call FarCall
+Func_4d64a: ; 4d64a (13:564a)
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $103
+	call FarCall
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $40
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $b03
+	call FarCall
+	call WaitVideoTransfer
+	ld c, $0
+	pop hl
+	pop de
+	push hl
+Func_4d698: ; 4d698 (13:5698)
+	ld a, c
+	cp $3
+	jp nc, Func_4d713
+	push de
+	ld l, c
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	jp z, Func_4d70e
+	ld l, c
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_4d6ba
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp z, Func_4d6cb
+Func_4d6ba: ; 4d6ba (13:56ba)
+	ld l, c
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	or a
+	jp z, Func_4d6ee
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp z, Func_4d6ee
+Func_4d6cb: ; 4d6cb (13:56cb)
+	push bc
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $d
+	add hl, de
+	ld de, Data_4d7ba
+	call PlaceStringDEatCoordHL
+	pop bc
+	push bc
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $120d
+	add hl, de
+	ld de, Data_4d7bf
+	call PlaceStringDEatCoordHL
+	pop bc
+	jp Func_4d70e
+
+Func_4d6ee: ; 4d6ee (13:56ee)
+	push bc
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $120d
+	add hl, de
+	ld de, Data_4d7c4
+	call PlaceStringDEatCoordHL
+	pop bc
+	push bc
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $d
+	add hl, de
+	ld de, Data_4d7c9
+	call PlaceStringDEatCoordHL
+	pop bc
+Func_4d70e: ; 4d70e (13:570e)
+	inc c
+	pop de
+	jp Func_4d698
+
+Func_4d713: ; 4d713 (13:5713)
+	pop hl
+	ld a, [wOAM23XCoord]
+	cp $1
+	jp nz, Func_4d769
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d745
+	push hl
+	ld a, l
+	cp $1
+	jp nz, Func_4d736
+	ld de, $0
+	ld a, $1
+	call Func_4d7d6
+	jp Func_4d741
+
+Func_4d736: ; 4d736 (13:5736)
+	call GetHLAtSPPlus4
+	push de
+	push hl
+	pop de
+	pop hl
+	xor a
+	call Func_4d7d6
+Func_4d741: ; 4d741 (13:5741)
+	pop hl
+	jp Func_4d764
+
+Func_4d745: ; 4d745 (13:5745)
+	inc l
+	dec l
+	jp nz, Func_4d757
+	push hl
+	ld de, $0
+	ld a, $1
+	call Func_4d7d6
+	pop hl
+	jp Func_4d764
+
+Func_4d757: ; 4d757 (13:5757)
+	push hl
+	call GetHLAtSPPlus4
+	push de
+	push hl
+	pop de
+	pop hl
+	xor a
+	call Func_4d7d6
+	pop hl
+Func_4d764: ; 4d764 (13:5764)
+	push hl
+	call Func_4c4b3
+	pop hl
+Func_4d769: ; 4d769 (13:5769)
+	push hl
+	ld c, $5
+	ld e, $c
+	ld hl, $407
+	call Func_4c0d3
+	set_farcall_addrs_hli Func_16019
+	pop hl
+	ld h, $0
+	ld de, $1e
+	call MultiplyHLbyDE
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$6
+	add hl, de
+	ld c, l
+	ld b, h
+	ld de, $8
+	ld hl, $5
+	call FarCall
+	ld de, Data_4d7ce
+	ld hl, $90a
+	call PlaceStringDEatCoordHL
+	call Func_4c0b9
+	ld hl, $8a
+	add hl, sp
+	ld sp, hl
+	ret
+
+Data_4d7ac:
+	db "<HIRA>たﾞい<KATA>"
+	TX_SNUM
+	db "<HIRA>しあい<KATA> ", $00
+
+Data_4d7ba:
+	db "<HIRA>かち<KATA>", $00
+
+Data_4d7bf:
+	db "<HIRA>まけ<KATA>", $00
+
+Data_4d7c4:
+	db "<HIRA>かち<KATA>", $00
+
+Data_4d7c9:
+	db "<HIRA>まけ<KATA>", $00
+
+Data_4d7ce:
+	db "<HIRA>のしょうり<KATA>", $00
+
+Func_4d7d6: ; 4d7d6 (13:57d6)
+	push de
+	push af
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	ld c, a
+	pop af
+	pop de
+	or a
+	jp nz, Func_4d825
+	call ReadHalfWordAt
+	dw $cb53
+	inc hl
+	call WriteHalfWordTo
+	dw $cb53
+	call ReadHalfWordAt
+	dw $cb55
+	add hl, de
+	ld a, 30000 % $100
+	sub l
+	ld a, 30000 / $100
+	sbc h
+	jp c, Func_4d81a
+	call ReadHalfWordAt
+	dw $cb55
+	add hl, de
+	call WriteHalfWordTo
+	dw $cb55
+	jp Func_4d822
+
+Func_4d81a: ; 4d81a (13:581a)
+	ld hl, 30000
+	call WriteHalfWordTo
+	dw $cb55
+Func_4d822: ; 4d822 (13:5822)
+	jp Func_4d839
+
+Func_4d825: ; 4d825 (13:5825)
+	xor a
+	ld [$cb57], a
+	ld hl, $0
+	call WriteHalfWordTo
+	dw $cb55
+	ld hl, $0
+	call WriteHalfWordTo
+	dw $cb53
+Func_4d839: ; 4d839 (13:5839)
+	ld a, c
+	call GetSRAMBank
+	ret
+
+Data_4d83e:
+	dr $4d83e, $4d846
+
+Data_4d846:
+	dr $4d846, $4d84e
+
+Func_4d84e: ; 4d84e (13:584e)
+	push hl
+	ld hl, -$84
+	add hl, sp
+	ld sp, hl
+	callba_hli Func_cc0c
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d891
+	set_farcall_addrs_hli Func_6b55
+	ld hl, sp+$61
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, [wc2e8 + 1]
+	call FarCall
+	ld hl, sp+$61
+	ld a, [hl]
+	dec a
+	ld hl, sp+$0
+	ld [hl], a
+	ld a, [wc2e8 + 1]
+	ld [wOAM01Attrs], a
+	jp Func_4d8b5
+
+Func_4d891: ; 4d891 (13:5891)
+	set_farcall_addrs_hli Func_6b55
+	ld hl, sp+$3e
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, [wc2e8 + 1]
+	call FarCall
+	ld hl, sp+$3e
+	ld a, [hl]
+	dec a
+	ld hl, sp+$1
+	ld [hl], a
+	ld a, [wc2e8 + 1]
+	ld [wOAM02YCoord], a
+Func_4d8b5: ; 4d8b5 (13:58b5)
+	call Func_4c21e
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4d905
+	ld c, $1
+	ld de, wOAM02YCoord
+	ld hl, $1
+	call Func_4c1f6
+	ld c, $1
+	ld de, wOAM01Attrs
+	ld hl, $1
+	call Func_4c20a
+	ld c, $1
+	ld hl, sp+$3e
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $23
+	call Func_4c1f6
+	ld c, $1
+	ld hl, sp+$61
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $23
+	call Func_4c20a
+	ld hl, sp+$3e
+	ld e, [hl]
+	ld hl, sp+$61
+	ld a, [hl]
+	call Func_4dad5
+	ld hl, sp+$3e
+	ld a, [hl]
+	dec a
+	ld hl, sp+$1
+	ld [hl], a
+	jp Func_4d947
+
+Func_4d905: ; 4d905 (13:5905)
+	ld c, $1
+	ld de, wOAM02YCoord
+	ld hl, $1
+	call Func_4c20a
+	ld c, $1
+	ld de, wOAM01Attrs
+	ld hl, $1
+	call Func_4c1f6
+	ld c, $1
+	ld hl, sp+$3e
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $23
+	call Func_4c20a
+	ld c, $1
+	ld hl, sp+$61
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $23
+	call Func_4c1f6
+	ld hl, sp+$61
+	ld a, [hl]
+	dec a
+	ld hl, sp+$0
+	ld [hl], a
+	ld hl, sp+$3e
+	ld e, [hl]
+	ld hl, sp+$61
+	ld a, [hl]
+	call Func_4dad5
+Func_4d947: ; 4d947 (13:5947)
+	ld hl, sp+$62
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$2
+	ld bc, $6
+	call CopyFromDEtoHL
+	ld hl, sp+$3f
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$20
+	ld bc, $6
+	call CopyFromDEtoHL
+	ld c, $a
+	ld e, $a
+	ld hl, $2
+	call Func_4c0d3
+	ld c, $a
+	ld e, $a
+	ld hl, $a02
+	call Func_4c0d3
+	xor a
+Func_4d978: ; 4d978 (13:5978)
+	cp $3
+	jp nc, Func_4d9b7
+	push af
+	add a
+	add $d
+	ld e, a
+	ld a, $4
+	call SetStringStartState
+	pop af
+	push af
+	ld l, a
+	ld h, $0
+	inc hl
+	push hl
+	ld hl, Data_4dac7
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop af
+	push af
+	call GetHLAtSPPlusParam8
+	db $88
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_4cccb
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, -1
+	call PlaceStringDEatCoordHL
+	pop af
+	inc a
+	jp Func_4d978
+
+Func_4d9b7: ; 4d9b7 (13:59b7)
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_4d9c7
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_4d9d9
+Func_4d9c7: ; 4d9c7 (13:59c7)
+	ld de, $8
+	ld hl, Data_4d83e
+	call Func_2b7d
+	ld de, $8
+	ld hl, Data_4d846
+	call Func_2b7d
+Func_4d9d9: ; 4d9d9 (13:59d9)
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4da2e
+	set_farcall_addrs_hli Func_16019
+	ld hl, sp+$2
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $1
+	call FarCall
+	ld hl, sp+$20
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $b
+	call FarCall
+	set_farcall_addrs_hli Func_dc0a
+	ld hl, sp+$0
+	ld e, [hl]
+	xor a
+	call FarCall
+	set_farcall_addrs_hli Func_dc0a
+	ld hl, sp+$1
+	ld e, [hl]
+	ld a, $1
+	call FarCall
+	jp Func_4da78
+
+Func_4da2e: ; 4da2e (13:5a2e)
+	set_farcall_addrs_hli Func_16019
+	ld hl, sp+$2
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $b
+	call FarCall
+	ld hl, sp+$20
+	ld c, l
+	ld b, h
+	ld de, $1
+	ld hl, $1
+	call FarCall
+	set_farcall_addrs_hli Func_dc0a
+	ld hl, sp+$1
+	ld e, [hl]
+	xor a
+	call FarCall
+	set_farcall_addrs_hli Func_dc0a
+	ld hl, sp+$0
+	ld e, [hl]
+	ld a, $1
+	call FarCall
+Func_4da78: ; 4da78 (13:5a78)
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $103
+	call FarCall
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $40
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $b03
+	call FarCall
+	call WaitVideoTransfer
+	ld hl, $86
+	add hl, sp
+	ld sp, hl
+	ret
+
+Data_4dac7:
+	db "<HIRA>たﾞい<KATA>"
+	TX_SNUM
+	db "<HIRA>しあい<KATA> ", $00
+
+Func_4dad5: ; 4dad5 (13:5ad5)
+	push af
+	ld hl, -$352
+	add hl, sp
+	ld sp, hl
+	ld a, [hSRAMBank]
+	ld c, a
+	ld a, [wOAM06XCoord]
+	cp $81
+	jp nz, Func_4db69
+	push de
+	ld hl, $355
+	add hl, sp
+	ld a, [hl]
+	cp $ab
+	jp c, Func_4db31
+	ld hl, $355
+	add hl, sp
+	ld a, [hl]
+	cp $af
+	jp nc, Func_4db31
+	push bc
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	ld hl, $357
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	ld de, $351
+	call MultiplyHLbyDE
+	ld de, ($b29f - $351 * $ab) & $ffff
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$4
+	ld bc, $351
+	call CopyFromDEtoHL
+	pop bc
+	ld a, c
+	call GetSRAMBank
+	ld c, $1
+	ld hl, sp+$2
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $351
+	call Func_4c20a
+Func_4db31: ; 4db31 (13:5b31)
+	pop de
+	ld a, e
+	cp $ab
+	jp c, Func_4db66
+	ld a, e
+	cp $af
+	jp nc, Func_4db66
+	ld c, $1
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $351
+	call Func_4c1f6
+	ld bc, $351
+	ld hl, sp+$0
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $1a
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	call CopyFromDEtoHL
+Func_4db66: ; 4db66 (13:5b66)
+	jp Func_4dbe9
+
+Func_4db69: ; 4db69 (13:5b69)
+	push bc
+	push de
+	ld hl, $357
+	add hl, sp
+	ld a, [hl]
+	cp $ab
+	jp c, Func_4dba7
+	ld hl, $357
+	add hl, sp
+	ld a, [hl]
+	cp $af
+	jp nc, Func_4dba7
+	ld c, $1
+	ld hl, sp+$4
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $351
+	call Func_4c1f6
+	ld bc, $351
+	ld hl, sp+$4
+	push hl
+	call ReadHalfWordAt
+	dw wc2e6
+	ld de, $1a
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	call CopyFromDEtoHL
+Func_4dba7: ; 4dba7 (13:5ba7)
+	pop de
+	pop bc
+	ld a, e
+	cp $ab
+	jp c, Func_4dbe9
+	ld a, e
+	cp $af
+	jp nc, Func_4dbe9
+	push bc
+	push de
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	pop de
+	ld l, e
+	ld h, $0
+	ld de, $351
+	call MultiplyHLbyDE
+	ld de, ($b29f - $351 * $ab) & $ffff
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$2
+	ld bc, $351
+	call CopyFromDEtoHL
+	pop bc
+	ld a, c
+	call GetSRAMBank
+	ld c, $1
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $351
+	call Func_4c20a
+Func_4dbe9: ; 4dbe9 (13:5be9)
+	ld hl, $354
+	add hl, sp
+	ld sp, hl
+	ret
+
+Func_4dbef:
+	push bc
+	push hl
+	call Func_1fbe
+	pop bc
+	push bc
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	ld hl, sp+$3
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$2
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	ld l, [hl]
+	push hl
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	push af
+	ld hl, $d
+	add hl, bc
+	ld a, [hl]
+	push af
+	xor a
+Func_4dc29: ; 4dc29 (13:5c29)
+	cp $5
+	jp nc, Func_4dc44
+	ld e, a
+	ld d, $0
+	ld hl, wSystemType + 1
+	add hl, de
+	ld [hl], $ff
+	ld e, a
+	ld d, $0
+	ld hl, wOAM00XCoord
+	add hl, de
+	ld [hl], $ff
+	inc a
+	jp Func_4dc29
+
+Func_4dc44: ; 4dc44 (13:5c44)
+	xor a
+	ld [$c2f7], a
+	xor a
+	ld [wOAM01VTile], a
+	xor a
+	ld [$c2f9], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	pop af
+	cp $13
+	jp nz, Func_4dc77
+	ld de, Data_4dcee
+	ld hl, $101
+	call PlaceStringDEatCoordHL
+	ld de, Data_4dcfe
+	ld hl, $b11
+	call PlaceStringDEatCoordHL
+	jp Func_4dc89
+
+Func_4dc77: ; 4dc77 (13:5c77)
+	ld de, Data_4dd03
+	ld hl, $101
+	call PlaceStringDEatCoordHL
+	ld de, Data_4dd16
+	ld hl, $b11
+	call PlaceStringDEatCoordHL
+Func_4dc89: ; 4dc89 (13:5c89)
+	pop af
+	pop hl
+	ld c, a
+	ld e, l
+	ld hl, sp+$3
+	ld a, [hl]
+	ld hl, sp+$2
+	ld l, [hl]
+	ld h, a
+	call Func_4c0d3
+	ld a, [$c2f9]
+	call Func_4df45
+	set_farcall_addrs_hli Func_50604
+	pop hl
+	call FarCall
+	ld e, $f
+	ld a, $1
+	call SetStringStartState
+	ld hl, $8c
+	push hl
+	ld hl, Data_4dd1c
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	ld e, $11
+	ld a, $1
+	call SetStringStartState
+	ld hl, $8c
+	push hl
+	ld hl, Data_4dd1f
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	ld de, Data_4dd22
+	ld hl, $211
+	call PlaceStringDEatCoordHL
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld hl, $4000
+	pop bc
+	ret
+
+Data_4dcee:
+	db "ホﾞク<HIRA>のなまえを きめて<KATA>ネ", $00
+
+Data_4dcfe:
+	db "b___", $00
+
+Data_4dd03:
+	db "ロホﾞホﾟン<HIRA>のなまえを きめて<KATA>ネ", $00
+
+Data_4dd16:
+	db "b____", $00
+
+Data_4dd1c:
+	TX_STACK
+	db $00
+
+Data_4dd1f:
+	TX_STACK
+	db $00
+
+Data_4dd22:
+	db "<HIRA>けってい<KATA>", $00
+
+Pointers_4dd29:
+	dw Data_4de01
+	dw Data_4de05
+	dw Data_4de09
+	dw Data_4de0d
+	dw Data_4de11
+	dw Data_4de15
+	dw Data_4de19
+	dw Data_4de1d
+	dw Data_4de21
+	dw Data_4de25
+	dw Data_4de29
+	dw Data_4de2d
+	dw Data_4de31
+	dw Data_4de35
+	dw Data_4de39
+	dw Data_4de3d
+	dw Data_4de41
+	dw Data_4de45
+	dw Data_4de49
+	dw Data_4de4d
+	dw Data_4de51
+	dw Data_4de55
+	dw Data_4de59
+	dw Data_4de5d
+	dw Data_4de61
+	dw Data_4de65
+	dw Data_4de69
+	dw Data_4de6d
+	dw Data_4de71
+	dw Data_4de75
+	dw Data_4de79
+	dw Data_4de7d
+	dw Data_4de81
+	dw Data_4de85
+	dw Data_4de89
+	dw Data_4de8d
+	dw Data_4de91
+	dw Data_4de95
+	dw Data_4de99
+	dw Data_4de9d
+	dw Data_4dea1
+	dw Data_4dea5
+	dw Data_4dea9
+	dw Data_4dead
+	dw Data_4deb1
+	dw Data_4deb5
+	dw Data_4deb9
+	dw Data_4debd
+	dw Data_4dec1
+	dw Data_4dec5
+	dw Data_4dec9
+	dw Data_4decd
+	dw Data_4ded1
+	dw Data_4ded5
+	dw Data_4ded9
+	dw Data_4dedb
+	dw Data_4dedd
+	dw Data_4dedf
+	dw Data_4dee1
+	dw Data_4dee3
+	dw Data_4dee5
+	dw Data_4dee7
+	dw Data_4dee9
+	dw Data_4deeb
+	dw Data_4deed
+	dw Data_4deef
+	dw Data_4def1
+	dw Data_4def3
+	dw Data_4def5
+	dw Data_4def7
+	dw Data_4def9
+	dw Data_4defb
+	dw Data_4defd
+	dw Data_4deff
+	dw Data_4df01
+	dw Data_4df03
+	dw Data_4df05
+	dw Data_4df07
+	dw Data_4df09
+	dw Data_4df0b
+	dw Data_4df0d
+	dw Data_4df0f
+	dw Data_4df11
+	dw Data_4df13
+	dw Data_4df15
+	dw Data_4df17
+	dw Data_4df19
+	dw Data_4df1b
+	dw Data_4df1d
+	dw Data_4df1f
+	dw Data_4df21
+	dw Data_4df23
+	dw Data_4df25
+	dw Data_4df27
+	dw Data_4df29
+	dw Data_4df2b
+	dw Data_4df2d
+	dw Data_4df2f
+	dw Data_4df31
+	dw Data_4df33
+	dw Data_4df35
+	dw Data_4df37
+	dw Data_4df39
+	dw Data_4df3b
+	dw Data_4df3d
+	dw Data_4df3f
+	dw Data_4df41
+	dw Data_4df43
+
+Data_4de01:
+	db "<HIRA>あ<KATA>", $00
+
+Data_4de05:
+	db "<HIRA>い<KATA>", $00
+
+Data_4de09:
+	db "<HIRA>う<KATA>", $00
+
+Data_4de0d:
+	db "<HIRA>え<KATA>", $00
+
+Data_4de11:
+	db "<HIRA>お<KATA>", $00
+
+Data_4de15:
+	db "<HIRA>ゃ<KATA>", $00
+
+Data_4de19:
+	db "<HIRA>か<KATA>", $00
+
+Data_4de1d:
+	db "<HIRA>き<KATA>", $00
+
+Data_4de21:
+	db "<HIRA>く<KATA>", $00
+
+Data_4de25:
+	db "<HIRA>け<KATA>", $00
+
+Data_4de29:
+	db "<HIRA>こ<KATA>", $00
+
+Data_4de2d:
+	db "<HIRA>ゅ<KATA>", $00
+
+Data_4de31:
+	db "<HIRA>さ<KATA>", $00
+
+Data_4de35:
+	db "<HIRA>し<KATA>", $00
+
+Data_4de39:
+	db "<HIRA>す<KATA>", $00
+
+Data_4de3d:
+	db "<HIRA>せ<KATA>", $00
+
+Data_4de41:
+	db "<HIRA>そ<KATA>", $00
+
+Data_4de45:
+	db "<HIRA>ょ<KATA>", $00
+
+Data_4de49:
+	db "<HIRA>た<KATA>", $00
+
+Data_4de4d:
+	db "<HIRA>ち<KATA>", $00
+
+Data_4de51:
+	db "<HIRA>つ<KATA>", $00
+
+Data_4de55:
+	db "<HIRA>て<KATA>", $00
+
+Data_4de59:
+	db "<HIRA>と<KATA>", $00
+
+Data_4de5d:
+	db "<HIRA>っ<KATA>", $00
+
+Data_4de61:
+	db "<HIRA>な<KATA>", $00
+
+Data_4de65:
+	db "<HIRA>に<KATA>", $00
+
+Data_4de69:
+	db "<HIRA>ぬ<KATA>", $00
+
+Data_4de6d:
+	db "<HIRA>ね<KATA>", $00
+
+Data_4de71:
+	db "<HIRA>の<KATA>", $00
+
+Data_4de75:
+	db "<HIRA>ﾞ<KATA>", $00
+
+Data_4de79:
+	db "<HIRA>は<KATA>", $00
+
+Data_4de7d:
+	db "<HIRA>ひ<KATA>", $00
+
+Data_4de81:
+	db "<HIRA>ふ<KATA>", $00
+
+Data_4de85:
+	db "<HIRA>へ<KATA>", $00
+
+Data_4de89:
+	db "<HIRA>ほ<KATA>", $00
+
+Data_4de8d:
+	db "<HIRA>ﾟ<KATA>", $00
+
+Data_4de91:
+	db "<HIRA>ま<KATA>", $00
+
+Data_4de95:
+	db "<HIRA>み<KATA>", $00
+
+Data_4de99:
+	db "<HIRA>む<KATA>", $00
+
+Data_4de9d:
+	db "<HIRA>め<KATA>", $00
+
+Data_4dea1:
+	db "<HIRA>も<KATA>", $00
+
+Data_4dea5:
+	db "<HIRA>-<KATA>", $00
+
+Data_4dea9:
+	db "<HIRA>や<KATA>", $00
+
+Data_4dead:
+	db "<HIRA>ゆ<KATA>", $00
+
+Data_4deb1:
+	db "<HIRA>よ<KATA>", $00
+
+Data_4deb5:
+	db "<HIRA>わ<KATA>", $00
+
+Data_4deb9:
+	db "<HIRA>を<KATA>", $00
+
+Data_4debd:
+	db "<HIRA>ん<KATA>", $00
+
+Data_4dec1:
+	db "<HIRA>ら<KATA>", $00
+
+Data_4dec5:
+	db "<HIRA>り<KATA>", $00
+
+Data_4dec9:
+	db "<HIRA>る<KATA>", $00
+
+Data_4decd:
+	db "<HIRA>れ<KATA>", $00
+
+Data_4ded1:
+	db "<HIRA>ろ<KATA>", $00
+
+Data_4ded5:
+	db "<HIRA> <KATA>", $00
+
+Data_4ded9:
+	db "ア", $00
+
+Data_4dedb:
+	db "イ", $00
+
+Data_4dedd:
+	db "ウ", $00
+
+Data_4dedf:
+	db "エ", $00
+
+Data_4dee1:
+	db "オ", $00
+
+Data_4dee3:
+	db "ャ", $00
+
+Data_4dee5:
+	db "カ", $00
+
+Data_4dee7:
+	db "キ", $00
+
+Data_4dee9:
+	db "ク", $00
+
+Data_4deeb:
+	db "ケ", $00
+
+Data_4deed:
+	db "コ", $00
+
+Data_4deef:
+	db "ュ", $00
+
+Data_4def1:
+	db "サ", $00
+
+Data_4def3:
+	db "シ", $00
+
+Data_4def5:
+	db "ス", $00
+
+Data_4def7:
+	db "セ", $00
+
+Data_4def9:
+	db "ソ", $00
+
+Data_4defb:
+	db "ョ", $00
+
+Data_4defd:
+	db "タ", $00
+
+Data_4deff:
+	db "チ", $00
+
+Data_4df01:
+	db "ツ", $00
+
+Data_4df03:
+	db "テ", $00
+
+Data_4df05:
+	db "ト", $00
+
+Data_4df07:
+	db "ッ", $00
+
+Data_4df09:
+	db "ナ", $00
+
+Data_4df0b:
+	db "ニ", $00
+
+Data_4df0d:
+	db "ヌ", $00
+
+Data_4df0f:
+	db "ネ", $00
+
+Data_4df11:
+	db "ノ", $00
+
+Data_4df13:
+	db "ﾞ", $00
+
+Data_4df15:
+	db "ハ", $00
+
+Data_4df17:
+	db "ヒ", $00
+
+Data_4df19:
+	db "フ", $00
+
+Data_4df1b:
+	db "ヘ", $00
+
+Data_4df1d:
+	db "ホ", $00
+
+Data_4df1f:
+	db "ﾟ", $00
+
+Data_4df21:
+	db "マ", $00
+
+Data_4df23:
+	db "ミ", $00
+
+Data_4df25:
+	db "ム", $00
+
+Data_4df27:
+	db "メ", $00
+
+Data_4df29:
+	db "モ", $00
+
+Data_4df2b:
+	db "-", $00
+
+Data_4df2d:
+	db "ヤ", $00
+
+Data_4df2f:
+	db "ユ", $00
+
+Data_4df31:
+	db "ヨ", $00
+
+Data_4df33:
+	db "ワ", $00
+
+Data_4df35:
+	db "ヲ", $00
+
+Data_4df37:
+	db "ン", $00
+
+Data_4df39:
+	db "ラ", $00
+
+Data_4df3b:
+	db "リ", $00
+
+Data_4df3d:
+	db "ル", $00
+
+Data_4df3f:
+	db "レ", $00
+
+Data_4df41:
+	db "ロ", $00
+
+Data_4df43:
+	db " ", $00
+
+Func_4df45:
+	dr $4df45, $4ec2b
 
 Func_4ec2b: ; $4ec2b
 	dr $4ec2b, $4ed5d
@@ -73692,7 +75549,14 @@ Func_4fef1: ; $4fef1
 	dr $4fef1, $50000
 
 SECTION "Bank 14", ROMX, BANK [$14]
-	dr $50000, $5190c
+Func_50000:
+	ret
+
+Func_50001:
+	dr $50001, $50604
+
+Func_50604:
+	dr $50604, $5190c
 
 Func_5190c: ; $5190c
 	dr $5190c, $51bf3
