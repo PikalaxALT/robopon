@@ -2005,26 +2005,26 @@ TextTreeBitstreams:: ; 38000
 ; 38fa0
 
 SECTION "Tree Bitstream Text 0", ROMX [$4fa0], BANK [$0e]
-TreeBitstreamText_38fa0:
+TreeBitstreamText_38fa0: ; 38fa0
 	ctxt ""
 	line "     これは ダミーです"
 	done %01
 
-TreeBitstreamText_38fae:
+TreeBitstreamText_38fae: ; 38fae
 	ctxt "いったい なんの さわぎだ???"
 	done %01
 
-TreeBitstreamText_38fbd:
+TreeBitstreamText_38fbd: ; 38fbd
 	ctxt "どうなってるんだ???"
 	done %110111
 
-TreeBitstreamText_38fc9:
+TreeBitstreamText_38fc9: ; 38fc9
 	ctxt "ママ"
 	line "また おじいちゃんの しわざね"
 	line "ほんとに どうしようもないんだから"
 	done %1
 
-TreeBitstreamText_38fe6:
+TreeBitstreamText_38fe6: ; 38fe6
 	ctxt "パパ"
 	line "すまんが きゅうな しゅっちょうで"
 	line "しばらく いえに かえってこれない"
@@ -2033,7 +2033,7 @@ TreeBitstreamText_38fe6:
 	line "それじゃ いってくるよ"
 	done %1101
 
-TreeBitstreamText_3902d:
+TreeBitstreamText_3902d: ; 3902d
 	ctxt "ママ"
 	line "ごめんなさいね これから"
 	line "かあさんも でかけるのよ……"
@@ -2044,7 +2044,7 @@ TreeBitstreamText_3902d:
 	line "おじいちゃんと なかよく やってね"
 	done %01101
 
-TreeBitstreamText_39084:
+TreeBitstreamText_39084: ; 39084
 	ctxt "ママ"
 	line "おじいちゃんには すぐに かえる"
 	line "って いっておいてね"
@@ -2052,25 +2052,25 @@ TreeBitstreamText_39084:
 	line "それじゃあ いってくるわね!"
 	done %11
 
-TreeBitstreamText_390b4:
+TreeBitstreamText_390b4: ; 390b4
 	ctxt "スポロじい"
 	line "おーい だれか おらんのかー"
 	line "ちょっと てつだってくれー"
 	done %111111
 
-TreeBitstreamText_390d1:
+TreeBitstreamText_390d1: ; 390d1
 	ctxt "じいちゃんが うらにわ から"
 	line "よんでいるみたいだ……"
 	done %0011110
 
-TreeBitstreamText_390e8:
+TreeBitstreamText_390e8: ; 390e8
 	ctxt "スポロじい"
 	line "あわわわ…… しんがた ロボポンの"
 	line "じっけん またしても しっぱいか…"
 	line "なんど やっても うまくいかんのう…"
 	done %10110
 
-TreeBitstreamText_3911a:
+TreeBitstreamText_3911a: ; 3911a
 	ctxt "スポロじい"
 	line "おっ! おまえは……"
 	line "えーと タダシか!?"
@@ -2078,18 +2078,18 @@ TreeBitstreamText_3911a:
 	line "いやいや ジェームスだったっけ?"
 	done %01
 
-TreeBitstreamText_3914e:
+TreeBitstreamText_3914e: ; 3914e
 	ctxt "じいちゃん! しっかり おぼえてよ"
 	line "ボクの なまえは……"
 	done %0
 
-TreeBitstreamText_39167:
+TreeBitstreamText_39167: ; 39167
 	ctxt "<PLAYER>"
 	line "ボクの なまえは <PLAYER>だよ"
 	line "わすれちゃったの?"
 	done %01
 
-TreeBitstreamText_3917e:
+TreeBitstreamText_3917e: ; 3917e
 	ctxt "スポロじい"
 	line "いやあ すまん すまん"
 	line "ちょっとほんきで ボケた だけじゃ"
@@ -2108,7 +2108,7 @@ TreeBitstreamText_3917e:
 	line "たのんだぞ <PLAYER>!!!"
 	done %01101
 
-TreeBitstreamText_391fd:
+TreeBitstreamText_391fd: ; 391fd
 	ctxt "スポロじい"
 	line "そうじゃ! たった 1たいだけ"
 	line "のこった ロボポンを やろう!"
@@ -2117,20 +2117,20 @@ TreeBitstreamText_391fd:
 	line "………さあ こっちじゃ"
 	done %1
 
-TreeBitstreamText_39235:
+TreeBitstreamText_39235: ; 39235
 	ctxt "スポロじい"
 	line "きょうから <PLAYER>が"
 	line "しゃちょうじゃ!"
 	line "いろいろ よろしく たのむ!"
 	done %01111
 
-TreeBitstreamText_39257:
+TreeBitstreamText_39257: ; 39257
 	ctxt "うけつけ"
 	line "<PLAYER>しゃちょう"
 	line "がんばりましょうね"
 	done %011010
 
-TreeBitstreamText_3926c:
+TreeBitstreamText_3926c: ; 3926c
 	ctxt "スポロじい"
 	line "どうじゃ カッコいいじゃろ!"
 	line ""
@@ -2138,17 +2138,17 @@ TreeBitstreamText_3926c:
 	line "だいじに つかうんじゃぞ"
 	done %1
 
-TreeBitstreamText_39295:
+TreeBitstreamText_39295: ; 39295
 	ctxt "スポロから ロボまる"
 	line "を てにいれた!"
 	done %0001
 
-TreeBitstreamText_392a8:
+TreeBitstreamText_392a8: ; 392a8
 	ctxt "スポロから タンサン"
 	line "を てにいれた!"
 	done %1001
 
-TreeBitstreamText_392ba:
+TreeBitstreamText_392ba: ; 392ba
 	ctxt "スポロじい"
 	line "ワシは けんきゅうじょに のこって"
 	line "ロボポンけんきゅうを つづけよう"
@@ -2160,19 +2160,19 @@ TreeBitstreamText_392ba:
 	line "ちょっとは もっていたほうがよいな"
 	done %111
 
-TreeBitstreamText_39321:
+TreeBitstreamText_39321: ; 39321
 	ctxt "スポロじいから"
 	line "1000ゴールドを もらった!"
 	done %0011000
 
-TreeBitstreamText_3933b:
+TreeBitstreamText_3933b: ; 3933b
 	ctxt "スポロじい"
 	line "ロボポンが こわれてしまったら"
 	line "いつでも もどってこい"
 	line "しゅうりぐらいは てつだってやるぞ"
 	done %111
 
-TreeBitstreamText_39369:
+TreeBitstreamText_39369: ; 39369
 	ctxt "スポロじい"
 	line "………それと かいしゃが"
 	line "チョットばかし あぶないんじゃ"
@@ -2185,16 +2185,16 @@ TreeBitstreamText_39369:
 	line "では かいしゃを たのんだぞ!"
 	done
 
-TreeBitstreamText_393ce:
+TreeBitstreamText_393ce: ; 393ce
 	ctxt "トビラは"
 	line "かたく とざされている"
 	done %10011
 
-TreeBitstreamText_393dd:
+TreeBitstreamText_393dd: ; 393dd
 	ctxt "リモコンシャワーそうちだ"
 	done %111
 
-TreeBitstreamText_393e9:
+TreeBitstreamText_393e9: ; 393e9
 	ctxt "スポロじい"
 	line "どうじゃ! <PLAYER>"
 	line "リモコンシャワーそうちじゃ!"
@@ -2206,24 +2206,24 @@ TreeBitstreamText_393e9:
 	line "ロボポンには こうかがないぞ"
 	done %10111
 
-TreeBitstreamText_3945b:
+TreeBitstreamText_3945b: ; 3945b
 	ctxt "スポロじい"
 	line "どうじゃ <PLAYER>よ"
 	line "ためしてみるか?"
 	done %10
 
-TreeBitstreamText_39471:
+TreeBitstreamText_39471: ; 39471
 	ctxt "スポロじい"
 	line "せっかく つくったのに"
 	line "ためしてくれんのか……"
 	done %0000110
 
-TreeBitstreamText_3948a:
+TreeBitstreamText_3948a: ; 3948a
 	ctxt "スポロじい"
 	line "どうやら せいこうした みたいじゃ"
 	done %01101
 
-TreeBitstreamText_3949f:
+TreeBitstreamText_3949f: ; 3949f
 	ctxt "スポロじい"
 	line "<PLAYER>よ………"
 	line ""
@@ -2243,12 +2243,12 @@ TreeBitstreamText_3949f:
 	line "おちゃぐらい くんでもらいなさい"
 	done %001101
 
-TreeBitstreamText_39545:
+TreeBitstreamText_39545: ; 39545
 	ctxt "スポロじいから カラクリ"
 	line "を もらった!!"
 	done %0
 
-TreeBitstreamText_39559:
+TreeBitstreamText_39559: ; 39559
 	ctxt "スポロじい"
 	line "ロボポンデータファイルが"
 	line "150たいぶん かんせいじゃ!"
@@ -2258,12 +2258,12 @@ TreeBitstreamText_39559:
 	line "トロフィーをやろう!"
 	done %010001
 
-TreeBitstreamText_395a3:
+TreeBitstreamText_395a3: ; 395a3
 	ctxt "ぎんのトロフィー"
 	line "を もらった!"
 	done %1101100
 
-TreeBitstreamText_395b4:
+TreeBitstreamText_395b4: ; 395b4
 	ctxt "スポロ"
 	line "<PLAYER>よ じつはな……"
 	line ""
@@ -2276,7 +2276,7 @@ TreeBitstreamText_395b4:
 	line "がんばれ <PLAYER>!"
 	done
 
-TreeBitstreamText_3961c:
+TreeBitstreamText_3961c: ; 3961c
 	ctxt "スポロじい"
 	line "ロボポンデータファイルが"
 	line "168たいぶん かんせいじゃ!"
@@ -2288,12 +2288,12 @@ TreeBitstreamText_3961c:
 	line "きんのトロフィーを やろう!"
 	done %111
 
-TreeBitstreamText_3968a:
+TreeBitstreamText_3968a: ; 3968a
 	ctxt "きんのトロフィー"
 	line "を もらった!"
 	done %001
 
-TreeBitstreamText_3969a:
+TreeBitstreamText_3969a: ; 3969a
 	ctxt "こども"
 	line "うえーん <PLAYER>にいちゃーん"
 	line "ひどいよ ひどいよー"
@@ -2302,30 +2302,30 @@ TreeBitstreamText_3969a:
 	line "かえしてよー!"
 	done %11
 
-TreeBitstreamText_396d0:
+TreeBitstreamText_396d0: ; 396d0
 	ctxt "こぶん1"
 	line "イヒヒヒ うまそうな アイス!"
 	line "たべちゃおーっと!"
 	done %100
 
-TreeBitstreamText_396ec:
+TreeBitstreamText_396ec: ; 396ec
 	ctxt "ビスコの こぶんを"
 	line "こらしめますか?"
 	done %011
 
-TreeBitstreamText_396fd:
+TreeBitstreamText_396fd: ; 396fd
 	ctxt "こぶん1"
 	line "チクショー ビスコさんに"
 	line "いいつけて やるからな!"
 	done %01100
 
-TreeBitstreamText_39718:
+TreeBitstreamText_39718: ; 39718
 	ctxt "こども"
 	line "<PLAYER>にいちゃん!"
 	line "ボクを みすてるの?"
 	done
 
-TreeBitstreamText_3972e:
+TreeBitstreamText_3972e: ; 3972e
 	ctxt "こども"
 	line "<PLAYER>にいちゃん ありがとう!"
 	line ""
@@ -2335,12 +2335,12 @@ TreeBitstreamText_3972e:
 	line "おねがい たすけてあげて!"
 	done %1100
 
-TreeBitstreamText_39760:
+TreeBitstreamText_39760: ; 39760
 	ctxt "<PLAYER>"
 	line "えっ! ロルって?"
 	done %10
 
-TreeBitstreamText_3976c:
+TreeBitstreamText_3976c: ; 3976c
 	ctxt "こども"
 	line "<PLAYER>にいちゃんの"
 	line "ガールフレンド じゃないか!"
@@ -2352,7 +2352,7 @@ TreeBitstreamText_3976c:
 	line "カッコいいとこ みせなきゃ!"
 	done
 
-TreeBitstreamText_397b1:
+TreeBitstreamText_397b1: ; 397b1
 	ctxt "こども"
 	line "ロルねえちゃんのこと"
 	line "すき なんでしょ?"
@@ -2360,17 +2360,17 @@ TreeBitstreamText_397b1:
 	line "カッコいいとこ みせなきゃ!"
 	done %00
 
-TreeBitstreamText_397dc:
+TreeBitstreamText_397dc: ; 397dc
 	ctxt "こども"
 	line "<PLAYER>にいちゃん ありがとう!"
 	done %0001
 
-TreeBitstreamText_397ed:
+TreeBitstreamText_397ed: ; 397ed
 	ctxt "ロル"
 	line "<PLAYER>ーーーーーー!"
 	done %100001
 
-TreeBitstreamText_397f7:
+TreeBitstreamText_397f7: ; 397f7
 	ctxt "ロル"
 	line "あっ <PLAYER>!"
 	line "いいところに きてくれたわ!"
@@ -2378,24 +2378,24 @@ TreeBitstreamText_397f7:
 	line "たすけてよ!"
 	done %010111
 
-TreeBitstreamText_3981d:
+TreeBitstreamText_3981d: ; 3981d
 	ctxt "こぶん2"
 	line "ビスコさんの めいれいなんだ"
 	line "おとなしく ついてきな!"
 	done %100
 
-TreeBitstreamText_39839:
+TreeBitstreamText_39839: ; 39839
 	ctxt "ロル"
 	line "ねぇ <PLAYER> たすけて!"
 	done %10111
 
-TreeBitstreamText_39847:
+TreeBitstreamText_39847: ; 39847
 	ctxt "ロル"
 	line "ちょ ちょっとー"
 	line "じょうだんは やめてよー"
 	done %0101
 
-TreeBitstreamText_3985c:
+TreeBitstreamText_3985c: ; 3985c
 	ctxt "こぶん2"
 	line "ケッ おまえも ロボポン"
 	line "もってんのかよ!"
@@ -2403,7 +2403,7 @@ TreeBitstreamText_3985c:
 	line "ビスコさんには かなわねえよ!"
 	done %01
 
-TreeBitstreamText_39889:
+TreeBitstreamText_39889: ; 39889
 	ctxt "ロル"
 	line "<PLAYER> ありがとう!"
 	line ""
@@ -2412,19 +2412,19 @@ TreeBitstreamText_39889:
 	line "おねがい こらしめてきて!"
 	done %1000
 
-TreeBitstreamText_398ba:
+TreeBitstreamText_398ba: ; 398ba
 	ctxt "ロル"
 	line "<PLAYER> ありがとう………"
 	line ""
 	line "それより がっこうが たいへんなの!"
 	done %0
 
-TreeBitstreamText_398d5:
+TreeBitstreamText_398d5: ; 398d5
 	ctxt "ロル"
 	line "がっこうが たいへんなのよ!"
 	done %1
 
-TreeBitstreamText_398e4:
+TreeBitstreamText_398e4: ; 398e4
 	ctxt "ロル"
 	line "ビスコが 1ばん つよい"
 	line "ロボポンを きめようとしてるの!"
@@ -2436,12 +2436,12 @@ TreeBitstreamText_398e4:
 	line "つかうものじゃ ないでしょ!"
 	done %0010000
 
-TreeBitstreamText_39944:
+TreeBitstreamText_39944: ; 39944
 	ctxt "<PLAYER>"
 	line "ビスコって だれだっけ?"
 	done %1010010
 
-TreeBitstreamText_39953:
+TreeBitstreamText_39953: ; 39953
 	ctxt "ロル"
 	line "あたしたちと おなじ クラスの"
 	line "ビスコのこと わすれたの?"
@@ -2455,13 +2455,13 @@ TreeBitstreamText_39953:
 	line "………じゃあね!"
 	done %001
 
-TreeBitstreamText_399d1:
+TreeBitstreamText_399d1: ; 399d1
 	ctxt "こども"
 	line "<PLAYER>にいちゃん ありがとう!"
 	line "やっぱり アイスは おいしいね!!"
 	done %00000
 
-TreeBitstreamText_399f1:
+TreeBitstreamText_399f1: ; 399f1
 	ctxt "こぶん1"
 	line "さっきは カプリで いい ハジを"
 	line "かかせて くれたな!"
@@ -2469,30 +2469,30 @@ TreeBitstreamText_399f1:
 	line "こぶん1と 2だ! "
 	done %11111
 
-TreeBitstreamText_39a27:
+TreeBitstreamText_39a27: ; 39a27
 	ctxt "こぶん2"
 	line "<PLAYER>も バトロボたいかいに"
 	line "でよう ってのかよ!"
 	done %0
 
-TreeBitstreamText_39a42:
+TreeBitstreamText_39a42: ; 39a42
 	ctxt "こぶん1"
 	line "ちょうどいいや いまのうちに"
 	line "こいつ シメちゃおうぜ!"
 	done %00010
 
-TreeBitstreamText_39a5f:
+TreeBitstreamText_39a5f: ; 39a5f
 	ctxt "こぶん2"
 	line "おう そりゃ いい かんがえだな!"
 	line "<PLAYER> かくごしな!!"
 	done %0
 
-TreeBitstreamText_39a7b:
+TreeBitstreamText_39a7b: ; 39a7b
 	ctxt "ビスコ"
 	line "まて まて まつんだ こぶんどもよ!"
 	done %101111
 
-TreeBitstreamText_39a8f:
+TreeBitstreamText_39a8f: ; 39a8f
 	ctxt "ビスコ"
 	line "こいつ ロボポン もってやがるぜ"
 	line "ナマイキな ヤローだぜ!"
@@ -2506,7 +2506,7 @@ TreeBitstreamText_39a8f:
 	line "かてねえよ!!"
 	done
 
-TreeBitstreamText_39b0b:
+TreeBitstreamText_39b0b: ; 39b0b
 	ctxt "こぶん1"
 	line "たいいくかんの バトロボたいかいは"
 	line "さんかしょうが ひつようだぜェ"
@@ -2514,7 +2514,7 @@ TreeBitstreamText_39b0b:
 	line "たいかいには でられないのさ!"
 	done %0011100
 
-TreeBitstreamText_39b45:
+TreeBitstreamText_39b45: ; 39b45
 	ctxt "こぶん2"
 	line "ゆうしょうすれば グレイテスト7に"
 	line "ちょうせん できるんだぜぇ!"
@@ -2525,7 +2525,7 @@ TreeBitstreamText_39b45:
 	line "どうだ スゲーだろっ!"
 	done %0100101
 
-TreeBitstreamText_39ba9:
+TreeBitstreamText_39ba9: ; 39ba9
 	ctxt "ビスコ"
 	line "もちろん ここの たいかいは"
 	line "オレさまが ゆうしょうする!"
@@ -2538,7 +2538,7 @@ TreeBitstreamText_39ba9:
 	line "いくぞ やろうども!"
 	done %011
 
-TreeBitstreamText_39c19:
+TreeBitstreamText_39c19: ; 39c19
 	ctxt "スポロじいからのメール"
 	line "おーい <PLAYER>よ!"
 	line "いま どこにいるんじゃ?"
@@ -2549,13 +2549,13 @@ TreeBitstreamText_39c19:
 	line "ひまなときにでも みにきてちょ"
 	done %01
 
-TreeBitstreamText_39c6c:
+TreeBitstreamText_39c6c: ; 39c6c
 	ctxt "<PLAYER>"
 	line "ん? じいちゃんから"
 	line "メールが とどいたぞ"
 	done %111
 
-TreeBitstreamText_39c82:
+TreeBitstreamText_39c82: ; 39c82
 	ctxt "スポロじいからのメール"
 	line "おーい <PLAYER>よ!"
 	line "いま どこにいるんじゃ?"
@@ -2566,7 +2566,7 @@ TreeBitstreamText_39c82:
 	line "ひまなときにでも みにきてちょ"
 	done %11100
 
-TreeBitstreamText_39cd9:
+TreeBitstreamText_39cd9: ; 39cd9
 	ctxt "こうちょーせんせい"
 	line "ハイハイ なになに……"
 	line "さんかしょうが ほしいとな?"
@@ -2582,47 +2582,47 @@ TreeBitstreamText_39cd9:
 	line "さんかしょうを あげよう!!"
 	done %01
 
-TreeBitstreamText_39d70:
+TreeBitstreamText_39d70: ; 39d70
 	ctxt "スタンプカード"
 	line "を もらった!"
 	done %0
 
-TreeBitstreamText_39d7e:
+TreeBitstreamText_39d7e: ; 39d7e
 	ctxt "ハイハイ ふむふむ………"
 	line "スタンプは あと7コ!"
 	done %111
 
-TreeBitstreamText_39d95:
+TreeBitstreamText_39d95: ; 39d95
 	ctxt "ハイハイ ふむふむ………"
 	line "スタンプは あと6コ!"
 	done %111
 
-TreeBitstreamText_39dac:
+TreeBitstreamText_39dac: ; 39dac
 	ctxt "ハイハイ ふむふむ………"
 	line "スタンプは あと5コ!"
 	done %111
 
-TreeBitstreamText_39dc3:
+TreeBitstreamText_39dc3: ; 39dc3
 	ctxt "ハイハイ ふむふむ………"
 	line "スタンプは あと4コ!"
 	done %0111
 
-TreeBitstreamText_39dda:
+TreeBitstreamText_39dda: ; 39dda
 	ctxt "ハイハイ ふむふむ………"
 	line "スタンプは あと3コ!"
 	done %0111
 
-TreeBitstreamText_39df1:
+TreeBitstreamText_39df1: ; 39df1
 	ctxt "ハイハイ ふむふむ………"
 	line "スタンプは あと2コ!"
 	done %0111
 
-TreeBitstreamText_39e08:
+TreeBitstreamText_39e08: ; 39e08
 	ctxt "ハイハイ ふむふむ………"
 	line "スタンプは あと1コ!"
 	done %00111
 
-TreeBitstreamText_39e1f:
+TreeBitstreamText_39e1f: ; 39e1f
 	ctxt "こうちょーせんせい"
 	line "ハイハイ ふむふむ………"
 	line "よしっ ごーかくー!!"
@@ -2632,18 +2632,18 @@ TreeBitstreamText_39e1f:
 	line "さんかしょうを こうかんっ!"
 	done
 
-TreeBitstreamText_39e65:
+TreeBitstreamText_39e65: ; 39e65
 	ctxt "さんかしょう"
 	line "を もらった!"
 	done %1
 
-TreeBitstreamText_39e71:
+TreeBitstreamText_39e71: ; 39e71
 	ctxt "こうちょーせんせい"
 	line "スタンプカードは"
 	line "どこにやっちゃたの?"
 	done %1001
 
-TreeBitstreamText_39e8c:
+TreeBitstreamText_39e8c: ; 39e8c
 	ctxt "こうちょーせんせい"
 	line "みんな げんきで"
 	line "よいこに そだっているよ"
@@ -2651,48 +2651,48 @@ TreeBitstreamText_39e8c:
 	line "だいせいこうだよ"
 	done %1
 
-TreeBitstreamText_39eb7:
+TreeBitstreamText_39eb7: ; 39eb7
 	ctxt "ほけんのせんせい"
 	line "ハイ それじゃあ"
 	line "バトロボしょうぶよ!"
 	done %001001
 
-TreeBitstreamText_39ed3:
+TreeBitstreamText_39ed3: ; 39ed3
 	ctxt "ほけんのせんせい"
 	line "バトロボも いいけど"
 	line "ケガには ちゅういするのよ!"
 	done %00000
 
-TreeBitstreamText_39ef3:
+TreeBitstreamText_39ef3: ; 39ef3
 	ctxt "ほけんのせんせい"
 	line "ハイ それじゃあ"
 	line "また きなさい"
 	done %1111
 
-TreeBitstreamText_39f09:
+TreeBitstreamText_39f09: ; 39f09
 	ctxt "ほけんのせんせい"
 	line "この こうしゃは 7かいだてよ"
 	line "がっこうに しちゃ たかいわよね"
 	line "まあ それが ウリ らしいけど"
 	done %0
 
-TreeBitstreamText_39f37:
+TreeBitstreamText_39f37: ; 39f37
 	ctxt "こくごのせんせい"
 	line "さぁ はりきって"
 	line "しょうぶしようか?"
 	done
 
-TreeBitstreamText_39f4e:
+TreeBitstreamText_39f4e: ; 39f4e
 	ctxt "こくごのせんせい"
 	line "なかなか やるわね!"
 	done %110000
 
-TreeBitstreamText_39f5f:
+TreeBitstreamText_39f5f: ; 39f5f
 	ctxt "こくごのせんせい"
 	line "そうかい またあとで"
 	done %0110000
 
-TreeBitstreamText_39f70:
+TreeBitstreamText_39f70: ; 39f70
 	ctxt "こくごのせんせい"
 	line "エネだまは おどりぐいで ハグッと"
 	line "いっきに やるのが せいかい!"
@@ -2700,44 +2700,44 @@ TreeBitstreamText_39f70:
 	line "たべさせないと ジ エンドだよ!"
 	done %000111
 
-TreeBitstreamText_39fb2:
+TreeBitstreamText_39fb2: ; 39fb2
 	ctxt "すうがくのせんせい"
 	line "はいはい しょうぶするかね?"
 	done %11011
 
-TreeBitstreamText_39fc7:
+TreeBitstreamText_39fc7: ; 39fc7
 	ctxt "すうがくのせんせい"
 	line "ひゃっ ひゃっ ひゃ"
 	done %011011
 
-TreeBitstreamText_39fd9:
+TreeBitstreamText_39fd9: ; 39fd9
 	ctxt "すうがくのせんせい"
 	line "そうかい?"
 	done %111111
 
-TreeBitstreamText_39fe7:
+TreeBitstreamText_39fe7: ; 39fe7
 	ctxt "すうがくのせんせい"
 	line "ねつ に かかると ターンごとに"
 	line "ダメージを うけるのじゃ!"
 	done
 
-TreeBitstreamText_3a00a:
+TreeBitstreamText_3a00a: ; 3a00a
 	ctxt "えいごのせんせい"
 	line "レッツ ビギンッ!"
 	line "アーユーレディ?"
 	done %0111001
 
-TreeBitstreamText_3a024:
+TreeBitstreamText_3a024: ; 3a024
 	ctxt "えいごのせんせい"
 	line "ボーイズ ビー アンビシャス!"
 	done %1
 
-TreeBitstreamText_3a03a:
+TreeBitstreamText_3a03a: ; 3a03a
 	ctxt "えいごのせんせい"
 	line "シー ユー レイター"
 	done %1000000
 
-TreeBitstreamText_3a04b:
+TreeBitstreamText_3a04b: ; 3a04b
 	ctxt "えいごのせんせい"
 	line "わざと イーピーの かんけいは"
 	line "ゲームに よくある まほうと"
@@ -2746,25 +2746,25 @@ TreeBitstreamText_3a04b:
 	line "ドゥー ユー アンダースタン?"
 	done %1011
 
-TreeBitstreamText_3a097:
+TreeBitstreamText_3a097: ; 3a097
 	ctxt "たいいくのせんせい"
 	line "よーしっ!!"
 	line "てかげんは なしだ かかってこい!"
 	done
 
-TreeBitstreamText_3a0b1:
+TreeBitstreamText_3a0b1: ; 3a0b1
 	ctxt "たいいくのせんせい"
 	line "よーしっ!"
 	line "げんきがあって よろしい!"
 	done %11011
 
-TreeBitstreamText_3a0c9:
+TreeBitstreamText_3a0c9: ; 3a0c9
 	ctxt "たいいくのせんせい"
 	line "どうしたぁ!"
 	line "きょうは けんがくかぁ?"
 	done %1
 
-TreeBitstreamText_3a0e1:
+TreeBitstreamText_3a0e1: ; 3a0e1
 	ctxt "たいいくのせんせい"
 	line "ようりょうは アール エー エム"
 	line "つまりラムって いうんだ"
@@ -2774,32 +2774,32 @@ TreeBitstreamText_3a0e1:
 	line "おおきいソフトは くみこめないぞ"
 	done %0000000
 
-TreeBitstreamText_3a138:
+TreeBitstreamText_3a138: ; 3a138
 	ctxt "しゃかいのせんせい"
 	line "どれどれ ワシと"
 	line "しょうぶするのか?"
 	done %00
 
-TreeBitstreamText_3a151:
+TreeBitstreamText_3a151: ; 3a151
 	ctxt "しゃかいのせんせい"
 	line "かんしん かんしん"
 	line "よきかな よきかな"
 	done %010110
 
-TreeBitstreamText_3a167:
+TreeBitstreamText_3a167: ; 3a167
 	ctxt "しゃかいのせんせい"
 	line "えぇ わかいもんが"
 	line "ホレ シャキッと せんかいっ!"
 	done %111
 
-TreeBitstreamText_3a184:
+TreeBitstreamText_3a184: ; 3a184
 	ctxt "しゃかいのせんせい"
 	line "せんとうちゅう ロボポンを ほかく"
 	line "したばあいは けいけんち エネだま"
 	line "アイテムは すべて もらえん!"
 	done %11
 
-TreeBitstreamText_3a1b9:
+TreeBitstreamText_3a1b9: ; 3a1b9
 	ctxt "りかのせんせい"
 	line "ん? しょうぶか?"
 	line ""
@@ -2807,25 +2807,25 @@ TreeBitstreamText_3a1b9:
 	line "また あとで きてくれっ!"
 	done %001111
 
-TreeBitstreamText_3a1de:
+TreeBitstreamText_3a1de: ; 3a1de
 	ctxt "りかのせんせい"
 	line "ふーっ………"
 	line "じっけんは しっぱいだったよ"
 	line "しかたない しょうぶするか?"
 	done %100101
 
-TreeBitstreamText_3a202:
+TreeBitstreamText_3a202: ; 3a202
 	ctxt "りかのせんせい"
 	line "さぁ じっけん じっけん!"
 	done %010100
 
-TreeBitstreamText_3a215:
+TreeBitstreamText_3a215: ; 3a215
 	ctxt "りかのせんせい"
 	line "ん? どうした?"
 	line "オレで さいごだろ?"
 	done %001
 
-TreeBitstreamText_3a22e:
+TreeBitstreamText_3a22e: ; 3a22e
 	ctxt "りかのせんせい"
 	line "サビのダメージは くらうなよ!"
 	line "ねつ と おなじダメージになるぞ!"
@@ -2833,40 +2833,40 @@ TreeBitstreamText_3a22e:
 	line "コマンドが ときどき つかえん!"
 	done %0
 
-TreeBitstreamText_3a272:
+TreeBitstreamText_3a272: ; 3a272
 	ctxt "スタンプを おしてもらった!"
 	done %0
 
-TreeBitstreamText_3a27f:
+TreeBitstreamText_3a27f: ; 3a27f
 	ctxt "スタンプカードを もらったら"
 	line "バトロボ しょうぶできるよ"
 	done %1
 
-TreeBitstreamText_3a29a:
+TreeBitstreamText_3a29a: ; 3a29a
 	ctxt "あら <PLAYER>じゃない"
 	line ""
 	line "さっき こうちょーせんせいが"
 	line "あなたのこと さがしてたわよ"
 	done %10010
 
-TreeBitstreamText_3a2bb:
+TreeBitstreamText_3a2bb: ; 3a2bb
 	ctxt "こうちょーせんせいなら"
 	line "ちかしつに いったみたいだよ"
 	done %010000
 
-TreeBitstreamText_3a2d1:
+TreeBitstreamText_3a2d1: ; 3a2d1
 	ctxt "こうちょーせんせいには"
 	line "あえたのかい?"
 	done %0001100
 
-TreeBitstreamText_3a2e2:
+TreeBitstreamText_3a2e2: ; 3a2e2
 	ctxt "こぶん"
 	line "さんかしょう もってないのに"
 	line "たいかいに でようってのか?"
 	line "あまいぜ! かえった かえった!"
 	done %10
 
-TreeBitstreamText_3a308:
+TreeBitstreamText_3a308: ; 3a308
 	ctxt "こぶん1"
 	line "おー <PLAYER>の ロボポン"
 	line "いつのまにか つよくなってんな!"
@@ -2875,39 +2875,39 @@ TreeBitstreamText_3a308:
 	line "ここで かえって もらうぜ!"
 	done %0001010
 
-TreeBitstreamText_3a349:
+TreeBitstreamText_3a349: ; 3a349
 	ctxt "こぶん2"
 	line "ビスコさんと たたかうまでも ないぜ"
 	line ""
 	line "おれが いるからな!"
 	done %0010010
 
-TreeBitstreamText_3a368:
+TreeBitstreamText_3a368: ; 3a368
 	ctxt "こぶん"
 	line "オイオイ どこに いくき だぁ?!"
 	line ""
 	line "おまえの あいては こっちだよ!!"
 	done %100111
 
-TreeBitstreamText_3a38a:
+TreeBitstreamText_3a38a: ; 3a38a
 	ctxt "しかい"
 	line "バトロボたいかいの ゆうしょうしゃは"
 	line "ビスコくんに けっていしました!!"
 	done %1
 
-TreeBitstreamText_3a3ac:
+TreeBitstreamText_3a3ac: ; 3a3ac
 	ctxt "こぶん1"
 	line "おやぶーん"
 	line "<PLAYER>に やられちまいました"
 	done %0
 
-TreeBitstreamText_3a3c2:
+TreeBitstreamText_3a3c2: ; 3a3c2
 	ctxt "こぶん2"
 	line "おやぶん あっしらのカタキを"
 	line "とってください!!"
 	done
 
-TreeBitstreamText_3a3dc:
+TreeBitstreamText_3a3dc: ; 3a3dc
 	ctxt "ビスコ"
 	line "<PLAYER>!"
 	line "いい どきょう してるじゃねえか!"
@@ -2917,7 +2917,7 @@ TreeBitstreamText_3a3dc:
 	line "ちょうせんだ!"
 	done %1100
 
-TreeBitstreamText_3a420:
+TreeBitstreamText_3a420: ; 3a420
 	ctxt "ビスコ"
 	line "<PLAYER> おぼえてろよ!"
 	line "かならず この かりは かえす!"
@@ -2929,7 +2929,7 @@ TreeBitstreamText_3a420:
 	line "いかせてもらうぜ ヘヘヘン!"
 	done %01101
 
-TreeBitstreamText_3a481:
+TreeBitstreamText_3a481: ; 3a481
 	ctxt "しかい"
 	line "すばらしい!"
 	line "しかい ひとすじ 30ねん………"
@@ -2950,7 +2950,7 @@ TreeBitstreamText_3a481:
 	line "ちゅういしてね"
 	done
 
-TreeBitstreamText_3a556:
+TreeBitstreamText_3a556: ; 3a556
 	ctxt "ビスコ"
 	line "よう <PLAYER>!"
 	line "おそかった じゃねえか"
@@ -2961,7 +2961,7 @@ TreeBitstreamText_3a556:
 	line "かんたんに かっちゃったもんね!"
 	done %110
 
-TreeBitstreamText_3a5a7:
+TreeBitstreamText_3a5a7: ; 3a5a7
 	ctxt "<PLAYER>"
 	line "やい ビスコ!"
 	line ""
@@ -2969,30 +2969,30 @@ TreeBitstreamText_3a5a7:
 	line "もっていたんだぞ!!"
 	done %101010
 
-TreeBitstreamText_3a5cb:
+TreeBitstreamText_3a5cb: ; 3a5cb
 	ctxt "こぶん1"
 	line "<PLAYER> もう ておくれさっ!"
 	line "とっとと うちへ かえりな!"
 	done
 
-TreeBitstreamText_3a5e6:
+TreeBitstreamText_3a5e6: ; 3a5e6
 	ctxt "こぶん2"
 	line "けっきょく おまえが ビスコさんに"
 	line "かなうわけが ないのさ!"
 	done %0
 
-TreeBitstreamText_3a605:
+TreeBitstreamText_3a605: ; 3a605
 	ctxt "ビスコ"
 	line "まっ そんなわけだ <PLAYER>"
 	line "あきらめる ことだな"
 	done %0111
 
-TreeBitstreamText_3a61d:
+TreeBitstreamText_3a61d: ; 3a61d
 	ctxt "<PLAYER>"
 	line "ズルイぞ インチキだ!!"
 	done %0
 
-TreeBitstreamText_3a62c:
+TreeBitstreamText_3a62c: ; 3a62c
 	ctxt "ビスコ"
 	line "うるせーっ!"
 	line ""
@@ -3000,13 +3000,13 @@ TreeBitstreamText_3a62c:
 	line "きまったんだよ!!"
 	done %101
 
-TreeBitstreamText_3a64f:
+TreeBitstreamText_3a64f: ; 3a64f
 	ctxt "テールおうじ"
 	line "やめないかっ"
 	line "みぐるしいぞ!"
 	done %11101
 
-TreeBitstreamText_3a662:
+TreeBitstreamText_3a662: ; 3a662
 	ctxt "ビスコ"
 	line "ん?"
 	line "だれだ うえから えらそうに……"
@@ -3016,7 +3016,7 @@ TreeBitstreamText_3a662:
 	line "しゅさいしゃだもんな そういえば"
 	done %10111
 
-TreeBitstreamText_3a6a3:
+TreeBitstreamText_3a6a3: ; 3a6a3
 	ctxt "テールおうじ"
 	line "ふたりとも ゴチャゴチャ いわず"
 	line "ここで たたかうがいい!"
@@ -3025,12 +3025,12 @@ TreeBitstreamText_3a6a3:
 	line "それならば もんだい なかろう!"
 	done %110
 
-TreeBitstreamText_3a6e6:
+TreeBitstreamText_3a6e6: ; 3a6e6
 	ctxt "ビスコ"
 	line "よーし やってやろう じゃねぇか!!"
 	done %001
 
-TreeBitstreamText_3a6fa:
+TreeBitstreamText_3a6fa: ; 3a6fa
 	ctxt "ビスコ"
 	line "<PLAYER>! おぼえてやがれ!"
 	line ""
@@ -3043,7 +3043,7 @@ TreeBitstreamText_3a6fa:
 	line "………それじゃあな!"
 	done %00
 
-TreeBitstreamText_3a765:
+TreeBitstreamText_3a765: ; 3a765
 	ctxt "テールおうじ"
 	line "<PLAYER> おめでとう!!"
 	line ""
@@ -3058,12 +3058,12 @@ TreeBitstreamText_3a765:
 	line "レベルアップさせるのだ!"
 	done %0
 
-TreeBitstreamText_3a7e7:
+TreeBitstreamText_3a7e7: ; 3a7e7
 	ctxt "グレイテスト7の しょうごう"
 	line "を てにいれた!"
 	done %011
 
-TreeBitstreamText_3a7fb:
+TreeBitstreamText_3a7fb: ; 3a7fb
 	ctxt "テールおうじ"
 	line "グレイテスト7は <PLAYER>か"
 	line ""
@@ -3075,7 +3075,7 @@ TreeBitstreamText_3a7fb:
 	line "よかんが してきたぞ………"
 	done %1001
 
-TreeBitstreamText_3a858:
+TreeBitstreamText_3a858: ; 3a858
 	ctxt "デカケル トキハ テレビノ"
 	line "スイッチヲ キリマショウ"
 	line "ジブン ノ イエハ モチロン"
@@ -3085,21 +3085,21 @@ TreeBitstreamText_3a858:
 	line "ホナ サイナラ"
 	done
 
-TreeBitstreamText_3a89f:
+TreeBitstreamText_3a89f: ; 3a89f
 	ctxt "<PLAYER>"
 	line "あかりを ともさないと"
 	line "まっくらで なんにもみえないや"
 	line "カンテラが あればなぁ……"
 	done %0111
 
-TreeBitstreamText_3a8c3:
+TreeBitstreamText_3a8c3: ; 3a8c3
 	ctxt "ほい いらっしゃい!"
 	line ""
 	line "カンテラは うってないけど"
 	line "カンテラや だよ!"
 	done %100111
 
-TreeBitstreamText_3a8e1:
+TreeBitstreamText_3a8e1: ; 3a8e1
 	ctxt "え!? どうしても ほしいの?"
 	line "ワチキのもってる カンテラでいい?"
 	line "とくべつだ じょうけんつきで"
@@ -3110,24 +3110,24 @@ TreeBitstreamText_3a8e1:
 	line "とってきて くんないかなぁ"
 	done
 
-TreeBitstreamText_3a92f:
+TreeBitstreamText_3a92f: ; 3a92f
 	ctxt "うみにある ぶどう うみぶどう………"
 	line "あれ おいしいんだよねー!"
 	line "あさせの うみなら どっか さがせば"
 	line "きっと おっこちてんだろ たぶん"
 	done %101
 
-TreeBitstreamText_3a966:
+TreeBitstreamText_3a966: ; 3a966
 	ctxt "あっ それは うみぶどう!"
 	line "それ ワチキに くれるの?"
 	done %010111
 
-TreeBitstreamText_3a97f:
+TreeBitstreamText_3a97f: ; 3a97f
 	ctxt "え!? くれないの!!"
 	line "ざんねんだなぁ………………"
 	done %11
 
-TreeBitstreamText_3a995:
+TreeBitstreamText_3a995: ; 3a995
 	ctxt "えっ ほんとに くれるの?"
 	line "よしっ さっそく たべちゃおう"
 	line "モグモグ………プチプチ………んーーー"
@@ -3136,25 +3136,25 @@ TreeBitstreamText_3a995:
 	line "それじゃあ このカンテラ あげるね"
 	done %0
 
-TreeBitstreamText_3a9e8:
+TreeBitstreamText_3a9e8: ; 3a9e8
 	ctxt "カンテラ"
 	line "を てにいれた!"
 	done %0
 
-TreeBitstreamText_3a9f3:
+TreeBitstreamText_3a9f3: ; 3a9f3
 	ctxt "ねぇ もし よかったら"
 	line "また もってきて くんないかなぁ"
 	line "うみぶどう ……いやぁ めがなくって"
 	line "よろしく たのむよ ほんとに"
 	done %11
 
-TreeBitstreamText_3aa23:
+TreeBitstreamText_3aa23: ; 3aa23
 	ctxt "えっ? またくれるの うみぶどう"
 	line "ほんとにっ!? いやぁ わるいねぇ"
 	line "でも もう なにも あげないよ"
 	done %10101
 
-TreeBitstreamText_3aa4c:
+TreeBitstreamText_3aa4c: ; 3aa4c
 	ctxt "しらないの? おんなのコの あいだで"
 	line "バトロボが はやってんのよ!"
 	line "………ところで 2と6は もどれ!"
@@ -3163,30 +3163,30 @@ TreeBitstreamText_3aa4c:
 	line "あたらしい みちが ひらけるかもね"
 	done
 
-TreeBitstreamText_3aaa0:
+TreeBitstreamText_3aaa0: ; 3aaa0
 	ctxt "バトロボは アムロンが"
 	line "やってるんだもん"
 	line "あたしたちも やりたいもん!"
 	done %1110001
 
-TreeBitstreamText_3aabf:
+TreeBitstreamText_3aabf: ; 3aabf
 	ctxt "ロボポンに ルーズソックスはかせると"
 	line "スピードアップするのよ"
 	done %1000011
 
-TreeBitstreamText_3aadf:
+TreeBitstreamText_3aadf: ; 3aadf
 	ctxt "あたしの ロボポン かわいいでしょ"
 	line "ほそマユに しちゃったぁ"
 	done %1011
 
-TreeBitstreamText_3aafc:
+TreeBitstreamText_3aafc: ; 3aafc
 	ctxt "テレビから とつぜん ひとが"
 	line "とびだして くる………"
 	line "そんな げんじつは こまるな!"
 	line "ワッハッハッハッハッハッハッ!"
 	done %0111
 
-TreeBitstreamText_3ab2b:
+TreeBitstreamText_3ab2b: ; 3ab2b
 	ctxt "わしの なまえは ひかる!"
 	line "ひだり まがりの だんでぃ"
 	line "と なぜか よばれておる"
@@ -3197,7 +3197,7 @@ TreeBitstreamText_3ab2b:
 	line "でて みたいのう! イェーイ!"
 	done %110
 
-TreeBitstreamText_3ab80:
+TreeBitstreamText_3ab80: ; 3ab80
 	ctxt "あたしゃ いちどで いいから"
 	line "テレビに はいってみたい!"
 	line "え? まだ はいってない?"
@@ -3210,7 +3210,7 @@ TreeBitstreamText_3ab80:
 	line "じゃなきゃ イヤなの!"
 	done %0110010
 
-TreeBitstreamText_3abf2:
+TreeBitstreamText_3abf2: ; 3abf2
 	ctxt "よう <PLAYER>! ひさしぶり!"
 	line "まえに あったのは 1かげつまえ?"
 	line "げんかんが あるのに テレビから"
@@ -3224,7 +3224,7 @@ TreeBitstreamText_3abf2:
 	line "アムロンちゃん サイコー!"
 	done
 
-TreeBitstreamText_3ac82:
+TreeBitstreamText_3ac82: ; 3ac82
 	ctxt "ああ がっこうに いって"
 	line "けんきゅうの つづきをしないと……"
 	line "と おもいつつ どうしても"
@@ -3233,7 +3233,7 @@ TreeBitstreamText_3ac82:
 	line "……これって びょうきなのかな"
 	done %011001
 
-TreeBitstreamText_3accc:
+TreeBitstreamText_3accc: ; 3accc
 	ctxt "さいきん テレビばっか みてて"
 	line "そと でてないからなぁ"
 	line "カマットは まだ せんそうを"
@@ -3243,7 +3243,7 @@ TreeBitstreamText_3accc:
 	line "いまは わからなくてもね"
 	done %0110100
 
-TreeBitstreamText_3ad19:
+TreeBitstreamText_3ad19: ; 3ad19
 	ctxt "アムロンちゃん かわいいなぁ"
 	line ""
 	line "クー かわいい!"
@@ -3252,7 +3252,7 @@ TreeBitstreamText_3ad19:
 	line "やってられっかーい!"
 	done %1000
 
-TreeBitstreamText_3ad48:
+TreeBitstreamText_3ad48: ; 3ad48
 	ctxt "タツフミ"
 	line "よっ! こまっているかい?"
 	line "ワープのしかけは ややこしいからね"
@@ -3260,29 +3260,29 @@ TreeBitstreamText_3ad48:
 	line "ヒントを おしえるぜ!"
 	done %0101
 
-TreeBitstreamText_3ad7f:
+TreeBitstreamText_3ad7f: ; 3ad7f
 	ctxt "タツフミ"
 	line "チミの おかねを くれるかい?"
 	done %0001010
 
-TreeBitstreamText_3ad91:
+TreeBitstreamText_3ad91: ; 3ad91
 	ctxt "タツフミ"
 	line "なんだい おかね もってないじゃん"
 	line "チミは びんぼうだね"
 	done
 
-TreeBitstreamText_3adae:
+TreeBitstreamText_3adae: ; 3adae
 	ctxt "タツフミ"
 	line "そうかい……"
 	line "それは ざんねん"
 	done %0101101
 
-TreeBitstreamText_3adc0:
+TreeBitstreamText_3adc0: ; 3adc0
 	ctxt "タツフミに"
 	line "100ゴールド わたした!"
 	done %1
 
-TreeBitstreamText_3add4:
+TreeBitstreamText_3add4: ; 3add4
 	ctxt "タツフミ"
 	line "ありがとう チミは いいひとだね"
 	line "そいでもって かねもちだね"
@@ -3296,13 +3296,13 @@ TreeBitstreamText_3add4:
 	line "それじゃあ また あとで!"
 	done %10010
 
-TreeBitstreamText_3ae53:
+TreeBitstreamText_3ae53: ; 3ae53
 	ctxt "タツフミ"
 	line "ここは ひだりが せいかいっ!"
 	line "ついてきなっ!"
 	done %11
 
-TreeBitstreamText_3ae6a:
+TreeBitstreamText_3ae6a: ; 3ae6a
 	ctxt "ヒロシ"
 	line "おれの なまえは"
 	line "やまもと けいじ……"
@@ -3312,7 +3312,7 @@ TreeBitstreamText_3ae6a:
 	line "みずのながれを とめられるぜっ!"
 	done %10001
 
-TreeBitstreamText_3aea4:
+TreeBitstreamText_3aea4: ; 3aea4
 	ctxt "ヒロシ"
 	line "ここの しかけが わからない?"
 	line ""
@@ -3323,30 +3323,30 @@ TreeBitstreamText_3aea4:
 	line "そしたら なんとか してやるよ"
 	done %1101
 
-TreeBitstreamText_3aef1:
+TreeBitstreamText_3aef1: ; 3aef1
 	ctxt "ヒロシ"
 	line "ながぐつを くれるのか?"
 	done %0
 
-TreeBitstreamText_3af00:
+TreeBitstreamText_3af00: ; 3af00
 	ctxt "ヒロシ"
 	line "ちぇっ どうせ ガラクタなんだから"
 	line "オレに くれてもいいじゃん"
 	done %01100
 
-TreeBitstreamText_3af20:
+TreeBitstreamText_3af20: ; 3af20
 	ctxt "ヒロシ"
 	line "サンキューッ!"
 	line "そらよっと これで オッケーさっ!"
 	done %0100
 
-TreeBitstreamText_3af3a:
+TreeBitstreamText_3af3a: ; 3af3a
 	ctxt "ヒロシ"
 	line "ながぐつは つりに つかうんだ"
 	line "オレは バサーだからねっ"
 	done
 
-TreeBitstreamText_3af58:
+TreeBitstreamText_3af58: ; 3af58
 	ctxt "ヒロシ"
 	line "うえの どうくつから"
 	line "いわを おとしたのは キミかい?"
@@ -3354,7 +3354,7 @@ TreeBitstreamText_3af58:
 	line "つりが できなく なっちゃったよ"
 	done
 
-TreeBitstreamText_3af8c:
+TreeBitstreamText_3af8c: ; 3af8c
 	ctxt "チネン"
 	line "ここは かんけいしゃ いがい"
 	line "たちいり きんしよ!!"
@@ -3364,13 +3364,13 @@ TreeBitstreamText_3af8c:
 	line "じつりょくこうしで くるの?!"
 	done %1111101
 
-TreeBitstreamText_3afbf:
+TreeBitstreamText_3afbf: ; 3afbf
 	ctxt "チネン"
 	line "よくもやったわねー ひどいひどい"
 	line "おへやで ないちゃうからー!"
 	done %10001
 
-TreeBitstreamText_3afdd:
+TreeBitstreamText_3afdd: ; 3afdd
 	ctxt "アムロン"
 	line "よくきたね………"
 	line "<PLAYER> っていったっけ?"
@@ -3383,7 +3383,7 @@ TreeBitstreamText_3afdd:
 	line "ちょうせんは うけてたつよ!"
 	done %11
 
-TreeBitstreamText_3b02c:
+TreeBitstreamText_3b02c: ; 3b02c
 	ctxt "アムロン"
 	line "あんた ここまで ノコノコやってきて"
 	line "アタシに かてると おもってるの?"
@@ -3391,7 +3391,7 @@ TreeBitstreamText_3b02c:
 	line "いたい めに あうわよ!"
 	done %11101
 
-TreeBitstreamText_3b060:
+TreeBitstreamText_3b060: ; 3b060
 	ctxt "アムロン"
 	line "……………………"
 	line ""
@@ -3420,19 +3420,19 @@ TreeBitstreamText_3b060:
 	line "やくに たつと いいけれど………"
 	done %101
 
-TreeBitstreamText_3b169:
+TreeBitstreamText_3b169: ; 3b169
 	ctxt "アムロンから チャリ"
 	line "を もらった!"
 	done %0
 
-TreeBitstreamText_3b17a:
+TreeBitstreamText_3b17a: ; 3b17a
 	ctxt "アムロン"
 	line "………<PLAYER> ありがとう"
 	line "またいつか あえると いいわね"
 	line "それじゃあね"
 	done %0
 
-TreeBitstreamText_3b199:
+TreeBitstreamText_3b199: ; 3b199
 	ctxt "アムロン"
 	line "あら <PLAYER>じゃない!"
 	line "あのときのこと かんしゃ してるわ"
@@ -3447,12 +3447,12 @@ TreeBitstreamText_3b199:
 	line "わたし おうえん してるからね"
 	done %1011
 
-TreeBitstreamText_3b219:
+TreeBitstreamText_3b219: ; 3b219
 	ctxt "グレイテスト6の しょうごう"
 	line "を てにいれた!"
 	done %100
 
-TreeBitstreamText_3b22d:
+TreeBitstreamText_3b22d: ; 3b22d
 	ctxt "テールおうじ"
 	line "やはり キミも グレイテスト1を"
 	line "めざして いるのか?"
@@ -3471,23 +3471,23 @@ TreeBitstreamText_3b22d:
 	line "くれぐれも ようじん することだな"
 	done %1100110
 
-TreeBitstreamText_3b2db:
+TreeBitstreamText_3b2db: ; 3b2db
 	ctxt "おにいちゃん わたしの"
 	line "たいせつなロボポン あげるね"
 	line "ロボポンもってると"
 	line "こわいひとたちに とられちゃうの"
 	done %011
 
-TreeBitstreamText_3b30a:
+TreeBitstreamText_3b30a: ; 3b30a
 	ctxt "おんなのコから ドルッピを"
 	line "わたされた!"
 	done %00110
 
-TreeBitstreamText_3b31f:
+TreeBitstreamText_3b31f: ; 3b31f
 	ctxt "あっ!"
 	done %001110
 
-TreeBitstreamText_3b324:
+TreeBitstreamText_3b324: ; 3b324
 	ctxt "ビーノ"
 	line "おうおうおう!"
 	line "もうひとつ おまけに おう!"
@@ -3496,12 +3496,12 @@ TreeBitstreamText_3b324:
 	line "ひとつ オレたちに くれねぇか?"
 	done %1
 
-TreeBitstreamText_3b35d:
+TreeBitstreamText_3b35d: ; 3b35d
 	ctxt "ビーノに"
 	line "ドルッピを わたした!"
 	done %111
 
-TreeBitstreamText_3b36e:
+TreeBitstreamText_3b36e: ; 3b36e
 	ctxt "ビーノ"
 	line "サンキュー! なかなか ものわかりの"
 	line "いい ロケンローラーだぜ"
@@ -3511,7 +3511,7 @@ TreeBitstreamText_3b36e:
 	line "じゃあな おひとよし さんよぉ!"
 	done
 
-TreeBitstreamText_3b3c0:
+TreeBitstreamText_3b3c0: ; 3b3c0
 	ctxt "ビーノ"
 	line "おっ? なんだぁ"
 	line "オレたちに はむかおう ってのか?"
@@ -3521,12 +3521,12 @@ TreeBitstreamText_3b3c0:
 	line "こうしてやるっ!"
 	done %10101
 
-TreeBitstreamText_3b401:
+TreeBitstreamText_3b401: ; 3b401
 	ctxt "ドルッピを"
 	line "ビーノに とられた!"
 	done %1
 
-TreeBitstreamText_3b412:
+TreeBitstreamText_3b412: ; 3b412
 	ctxt "ビーノ"
 	line "やーい おまえの ロボポン"
 	line "いただきー!!"
@@ -3534,7 +3534,7 @@ TreeBitstreamText_3b412:
 	line "こういうめに あうんだよ バーカ!"
 	done %0011111
 
-TreeBitstreamText_3b447:
+TreeBitstreamText_3b447: ; 3b447
 	ctxt "ビーノ"
 	line "つよめの ロボポン もってるから"
 	line "いわせて もらうぜ!"
@@ -3542,7 +3542,7 @@ TreeBitstreamText_3b447:
 	line "しねぇほうが みのため だぜ!"
 	done %011
 
-TreeBitstreamText_3b481:
+TreeBitstreamText_3b481: ; 3b481
 	ctxt "ビーノ"
 	line "おっと ひとつ いいわすれた!"
 	line ""
@@ -3560,7 +3560,7 @@ TreeBitstreamText_3b481:
 	line "ってもんだろ!"
 	done %1010
 
-TreeBitstreamText_3b516:
+TreeBitstreamText_3b516: ; 3b516
 	ctxt "おにいちゃん!"
 	line "みてたわよ!"
 	line "なんにもしないで ドルッピ"
@@ -3571,7 +3571,7 @@ TreeBitstreamText_3b516:
 	line "なさけないわよ!"
 	done
 
-TreeBitstreamText_3b560:
+TreeBitstreamText_3b560: ; 3b560
 	ctxt "おにいちゃん ゴメンネ………"
 	line "ボコボコに されちゃったね"
 	line "ドルッピがいれば"
@@ -3583,19 +3583,19 @@ TreeBitstreamText_3b560:
 	line "ムリかな?"
 	done %101
 
-TreeBitstreamText_3b5bf:
+TreeBitstreamText_3b5bf: ; 3b5bf
 	ctxt "あっ おにいちゃん!"
 	line "ドルッピ かえしてもらったんだね!"
 	line "みずのなかには もぐってみた?"
 	line "いろんなものが あるはずよ"
 	done %11111
 
-TreeBitstreamText_3b5f0:
+TreeBitstreamText_3b5f0: ; 3b5f0
 	ctxt "おにいちゃん!"
 	line "ニコニコぞくを どうにかして!"
 	done %001
 
-TreeBitstreamText_3b605:
+TreeBitstreamText_3b605: ; 3b605
 	ctxt "まちおさ"
 	line "おぉ なまえは ぞんじませんが"
 	line "ありがとう ございます"
@@ -3607,7 +3607,7 @@ TreeBitstreamText_3b605:
 	line "さあ どうぞ こちらに!"
 	done %100001
 
-TreeBitstreamText_3b676:
+TreeBitstreamText_3b676: ; 3b676
 	ctxt "まちおさ"
 	line "………ほう おなまえは"
 	line "<PLAYER>さん というのですか……"
@@ -3621,12 +3621,12 @@ TreeBitstreamText_3b676:
 	line "めいわくを かけすぎぢゃ!"
 	done %11101
 
-TreeBitstreamText_3b6ef:
+TreeBitstreamText_3b6ef: ; 3b6ef
 	ctxt "みんな"
 	line "そうだ そうだ!"
 	done %0101111
 
-TreeBitstreamText_3b6fb:
+TreeBitstreamText_3b6fb: ; 3b6fb
 	ctxt "まちおさ"
 	line "このとおり ちょうみん たちは"
 	line "ちじょうに すめなくなってしまった"
@@ -3634,7 +3634,7 @@ TreeBitstreamText_3b6fb:
 	line "だっしゅつした っちゅうことぢゃ"
 	done %00
 
-TreeBitstreamText_3b731:
+TreeBitstreamText_3b731: ; 3b731
 	ctxt "まちおさ"
 	line "どうにか してくれ とはいわんが"
 	line "どうにか ならん もんか………"
@@ -3642,13 +3642,13 @@ TreeBitstreamText_3b731:
 	line "えーっ みんな どうなんぢゃ!!"
 	done
 
-TreeBitstreamText_3b762:
+TreeBitstreamText_3b762: ; 3b762
 	ctxt "まちおさ"
 	line "おまえらは そうだ そうだ しか"
 	line "いえんのかいっ!!"
 	done %001
 
-TreeBitstreamText_3b77b:
+TreeBitstreamText_3b77b: ; 3b77b
 	ctxt "みんな"
 	line "なめんなー"
 	line "       がんばってんな おい"
@@ -3656,7 +3656,7 @@ TreeBitstreamText_3b77b:
 	line "       オレ ハラへったー"
 	done %1000
 
-TreeBitstreamText_3b7a6:
+TreeBitstreamText_3b7a6: ; 3b7a6
 	ctxt "まちおさ"
 	line "みな ここでの せいかつで もう"
 	line "なにもかも あきらめて しまっての"
@@ -3667,7 +3667,7 @@ TreeBitstreamText_3b7a6:
 	line "そういう わしも おなじぢゃが……"
 	done %1
 
-TreeBitstreamText_3b7f7:
+TreeBitstreamText_3b7f7: ; 3b7f7
 	ctxt "メカおやじ"
 	line "あ あのさ ボ ボク きかい いじり"
 	line "す すきなんだけど"
@@ -3679,7 +3679,7 @@ TreeBitstreamText_3b7f7:
 	line "の のりたいと お おもわない?"
 	done
 
-TreeBitstreamText_3b860:
+TreeBitstreamText_3b860: ; 3b860
 	ctxt "メカおやじ"
 	line "じゃ じゃあさ お おねがいが あ"
 	line "あるんだけど き きいてくれるかな"
@@ -3689,7 +3689,7 @@ TreeBitstreamText_3b860:
 	line "み みつけて ほ ほしいんだな"
 	done %001111
 
-TreeBitstreamText_3b8b8:
+TreeBitstreamText_3b8b8: ; 3b8b8
 	ctxt "メカおやじ"
 	line "ニ ニリーンが いないと グ"
 	line "グリースやまに い いけないんだ!"
@@ -3697,7 +3697,7 @@ TreeBitstreamText_3b8b8:
 	line "さ さばくが と とおれないんだな"
 	done %01110
 
-TreeBitstreamText_3b8f2:
+TreeBitstreamText_3b8f2: ; 3b8f2
 	ctxt "メカおやじ"
 	line "あ ボ ボクの き きんのスパナだ"
 	line "あ ありがとう"
@@ -3706,11 +3706,11 @@ TreeBitstreamText_3b8f2:
 	line "ちょ ちょっと ま まってて"
 	done
 
-TreeBitstreamText_3b932:
+TreeBitstreamText_3b932: ; 3b932
 	ctxt "チャリは ニリーンへ しんかした!"
 	done %0001
 
-TreeBitstreamText_3b942:
+TreeBitstreamText_3b942: ; 3b942
 	ctxt "メカおやじ"
 	line "ほ ほら で できたよ"
 	line ""
@@ -3719,7 +3719,7 @@ TreeBitstreamText_3b942:
 	line "か かぜになって お おいでよ"
 	done %001111
 
-TreeBitstreamText_3b973:
+TreeBitstreamText_3b973: ; 3b973
 	ctxt "メカおやじ"
 	line "ちょ ちょうしは ど どう?"
 	line ""
@@ -3728,7 +3728,7 @@ TreeBitstreamText_3b973:
 	line "って そ そんなひとは い いないか"
 	done %1010
 
-TreeBitstreamText_3b9a9:
+TreeBitstreamText_3b9a9: ; 3b9a9
 	ctxt "メカおやじ"
 	line "き きんの スパナは"
 	line "た たぶん い いどの なかに"
@@ -3736,13 +3736,13 @@ TreeBitstreamText_3b9a9:
 	line "と とってきて ほ ほしいんだな"
 	done %0000100
 
-TreeBitstreamText_3b9d7:
+TreeBitstreamText_3b9d7: ; 3b9d7
 	ctxt "メカおやじ"
 	line "チャ チャリが い いないと"
 	line "か かいぞう で できないんだな"
 	done %00
 
-TreeBitstreamText_3b9f6:
+TreeBitstreamText_3b9f6: ; 3b9f6
 	ctxt "メカじい"
 	line "ああ また 4りんバギーで"
 	line "とばしたい………"
@@ -3750,7 +3750,7 @@ TreeBitstreamText_3b9f6:
 	line "かぜに なりたい………"
 	done %001011
 
-TreeBitstreamText_3ba23:
+TreeBitstreamText_3ba23: ; 3ba23
 	ctxt "メカじい"
 	line "むかしは わしも とばしや と"
 	line "おそれられた おとこ………"
@@ -3770,7 +3770,7 @@ TreeBitstreamText_3ba23:
 	line "ゆくえふめいの まま なんじゃ"
 	done %0011
 
-TreeBitstreamText_3babb:
+TreeBitstreamText_3babb: ; 3babb
 	ctxt "ウォリア"
 	line "ヘン てめぇ みたいな ガキは"
 	line "ワイルドさまに あわせられねぇな!"
@@ -3778,7 +3778,7 @@ TreeBitstreamText_3babb:
 	line "かえって もらうぜ!!"
 	done %01
 
-TreeBitstreamText_3baee:
+TreeBitstreamText_3baee: ; 3baee
 	ctxt "ウォリア"
 	line "オレに かっても ワイルドさまの"
 	line "もとには かんたんには いけねえぜ"
@@ -3786,7 +3786,7 @@ TreeBitstreamText_3baee:
 	line "たたないんだからな クククク………"
 	done %100
 
-TreeBitstreamText_3bb2b:
+TreeBitstreamText_3bb2b: ; 3bb2b
 	ctxt "ウォリア"
 	line "この さかみちは そんじょ そこらの"
 	line "バイクじゃ のぼれねぇぜ!"
@@ -3799,7 +3799,7 @@ TreeBitstreamText_3bb2b:
 	line "もう しんじまった かもしれねえ"
 	done %00100
 
-TreeBitstreamText_3bbab:
+TreeBitstreamText_3bbab: ; 3bbab
 	ctxt "ジョー"
 	line "おれ さすらいジョー"
 	line "カッコよく いえば よすてびと"
@@ -3815,7 +3815,7 @@ TreeBitstreamText_3bbab:
 	line "なに やってんのかなぁ………"
 	done %10
 
-TreeBitstreamText_3bc38:
+TreeBitstreamText_3bc38: ; 3bc38
 	ctxt "おれ かいてーじん"
 	line ""
 	line "はぐれた なかまと"
@@ -3827,7 +3827,7 @@ TreeBitstreamText_3bc38:
 	line "だって すきだもん ジョーが"
 	done %1000111
 
-TreeBitstreamText_3bc83:
+TreeBitstreamText_3bc83: ; 3bc83
 	ctxt "ジョー"
 	line "ヌオッピロッピー!"
 	line "バ バイクじゃないか!"
@@ -3841,7 +3841,7 @@ TreeBitstreamText_3bc83:
 	line "めんどうみちゃる!"
 	done %1111001
 
-TreeBitstreamText_3bd02:
+TreeBitstreamText_3bd02: ; 3bd02
 	ctxt "ジョー"
 	line "アイ ラブ ロック!"
 	line "アイ ラブ バギー!"
@@ -3851,7 +3851,7 @@ TreeBitstreamText_3bd02:
 	line "あんぜんうんてんで いきましょう!"
 	done
 
-TreeBitstreamText_3bd37:
+TreeBitstreamText_3bd37: ; 3bd37
 	ctxt "ジョー"
 	line "そうか……"
 	line "あんた おやじに あったのか"
@@ -3861,12 +3861,12 @@ TreeBitstreamText_3bd37:
 	line "かいぞう してやるぜ!"
 	done %0111011
 
-TreeBitstreamText_3bd77:
+TreeBitstreamText_3bd77: ; 3bd77
 	ctxt "ニリーンは"
 	line "ヨンクーへ しんかした"
 	done %1110111
 
-TreeBitstreamText_3bd87:
+TreeBitstreamText_3bd87: ; 3bd87
 	ctxt "ビーノ"
 	line "おっと オレが ニコニコぞく"
 	line "さいごの あいてだ!!"
@@ -3875,7 +3875,7 @@ TreeBitstreamText_3bd87:
 	line "いざ しょうぶ!!"
 	done %1
 
-TreeBitstreamText_3bdc2:
+TreeBitstreamText_3bdc2: ; 3bdc2
 	ctxt "ビーノ"
 	line "オレらって じつは ひとりじゃ"
 	line "よわいんだ"
@@ -3883,7 +3883,7 @@ TreeBitstreamText_3bdc2:
 	line "いちばん たのしかったりする……"
 	done %1111
 
-TreeBitstreamText_3bdf0:
+TreeBitstreamText_3bdf0: ; 3bdf0
 	ctxt "さばくには おとしあながあるから"
 	line "たいへんなんだよな………"
 	line "おまえさん ニリーンっていう"
@@ -3892,7 +3892,7 @@ TreeBitstreamText_3bdf0:
 	line "いどうようロボポンなんだぜ!"
 	done %1010
 
-TreeBitstreamText_3be3f:
+TreeBitstreamText_3be3f: ; 3be3f
 	ctxt "きゅうなしゃめんは ニリーンじゃ"
 	line "のぼれないんだよな……"
 	line "おまえさん ヨンクーっていう"
@@ -3901,7 +3901,7 @@ TreeBitstreamText_3be3f:
 	line "いどうようロボポンなんだぜ!"
 	done %1101010
 
-TreeBitstreamText_3be8e:
+TreeBitstreamText_3be8e: ; 3be8e
 	ctxt "ワイルド"
 	line "え? おまえ だれ? しんいり?"
 	line "もうすこし カッコつけろよな!"
@@ -3918,18 +3918,18 @@ TreeBitstreamText_3be8e:
 	line "………た たすけてよ ママぁー!"
 	done
 
-TreeBitstreamText_3bf25:
+TreeBitstreamText_3bf25: ; 3bf25
 	ctxt "ワイルド"
 	line "おっかしいな………あっ"
 	line "エンジンかけるの わすれてた!"
 	line "くっそー カギ カギ………"
 	done %001111
 
-TreeBitstreamText_3bf4b:
+TreeBitstreamText_3bf4b: ; 3bf4b
 	ctxt "グチャッ"
 	done %0010
 
-TreeBitstreamText_3bf50:
+TreeBitstreamText_3bf50: ; 3bf50
 	ctxt "ワイルド"
 	line "な なんだよ"
 	line "カギじゃなくて カキじゃねえか!"
@@ -3937,12 +3937,12 @@ TreeBitstreamText_3bf50:
 	line "ちっくしょう カギ カギっと"
 	done %010100
 
-TreeBitstreamText_3bf85:
+TreeBitstreamText_3bf85: ; 3bf85
 	ctxt "ワイルド"
 	line "アイテテテッ"
 	done %110
 
-TreeBitstreamText_3bf8e:
+TreeBitstreamText_3bf8e: ; 3bf8e
 	ctxt "ワイルド"
 	line "ちっくしょう"
 	line "こりゃ カニじゃんかぁ!"
@@ -3950,7 +3950,7 @@ TreeBitstreamText_3bf8e:
 	line "ちがう! カギだよ カギっ!"
 	done %1001111
 
-TreeBitstreamText_3bfc1:
+TreeBitstreamText_3bfc1: ; 3bfc1
 	ctxt "ワイルド"
 	line "あ あった よーしっ!"
 	line "ロボポンドームで まってるぞ"
@@ -3959,7 +3959,7 @@ TreeBitstreamText_3bfc1:
 	done %101111101110110001000111110001001010100111110000011100111100111110001111010111111011010010011110010110011100100101001100001010100
 
 SECTION "Tree Bitstream Text 1", ROMX [$4000], BANK [$0f]
-TreeBitstreamText_3c000:
+TreeBitstreamText_3c000: ; 3c000
 	ctxt "ワイルド"
 	line "どうだ この ロボポンを みろ!"
 	line "うばいとった ドルッピだよ!"
@@ -3969,18 +3969,18 @@ TreeBitstreamText_3c000:
 	line "あるのかい?"
 	done %111
 
-TreeBitstreamText_3c04e:
+TreeBitstreamText_3c04e: ; 3c04e
 	ctxt "ワイルド"
 	line "ゴメン……… かえすよ ちょっとだけ"
 	line "レベルアップ させといたから"
 	done
 
-TreeBitstreamText_3c070:
+TreeBitstreamText_3c070: ; 3c070
 	ctxt "ワイルドから ドルッピを"
 	line "かえして もらった!"
 	done %10011
 
-TreeBitstreamText_3c086:
+TreeBitstreamText_3c086: ; 3c086
 	ctxt "ワイルド"
 	line "オレって ホントは"
 	line "しょうしんもの なんだ………"
@@ -3990,12 +3990,12 @@ TreeBitstreamText_3c086:
 	line "アイ ラブ <PLAYER>!"
 	done %0010
 
-TreeBitstreamText_3c0ca:
+TreeBitstreamText_3c0ca: ; 3c0ca
 	ctxt "グレイテスト5の しょうごう"
 	line "を てにいれた!"
 	done %111
 
-TreeBitstreamText_3c0de:
+TreeBitstreamText_3c0de: ; 3c0de
 	ctxt "テールおうじ"
 	line "つぎの グレイテスト4の あいては"
 	line "アポロ という まちに いる"
@@ -4007,7 +4007,7 @@ TreeBitstreamText_3c0de:
 	line "あと わずかだ!"
 	done %1
 
-TreeBitstreamText_3c13a:
+TreeBitstreamText_3c13a: ; 3c13a
 	ctxt "テールおうじ"
 	line "あいつ <PLAYER> とか いったな……"
 	line ""
@@ -4015,7 +4015,7 @@ TreeBitstreamText_3c13a:
 	line "そう とおくは なさそうだ……"
 	done %001
 
-TreeBitstreamText_3c162:
+TreeBitstreamText_3c162: ; 3c162
 	ctxt "ワイルド"
 	line "おっ <PLAYER>!"
 	line "きてくれたのかい!"
@@ -4035,7 +4035,7 @@ TreeBitstreamText_3c162:
 	line "おうえん してくれよな <PLAYER>!"
 	done %000
 
-TreeBitstreamText_3c22b:
+TreeBitstreamText_3c22b: ; 3c22b
 	ctxt "おとこ"
 	line "フッフッフ……"
 	line ""
@@ -4052,7 +4052,7 @@ TreeBitstreamText_3c22b:
 	line "むずかしい もんだいだ"
 	done %001
 
-TreeBitstreamText_3c2b2:
+TreeBitstreamText_3c2b2: ; 3c2b2
 	ctxt "おとこ"
 	line "おや?"
 	line ""
@@ -4064,7 +4064,7 @@ TreeBitstreamText_3c2b2:
 	line "やってみる かちは ありそうだぜ!"
 	done
 
-TreeBitstreamText_3c305:
+TreeBitstreamText_3c305: ; 3c305
 	ctxt "うけつけ"
 	line "わが カマットぐん への"
 	line "ごにゅうたい ですね"
@@ -4076,7 +4076,7 @@ TreeBitstreamText_3c305:
 	line "いただきますが よろしいですか?"
 	done %100011
 
-TreeBitstreamText_3c35b:
+TreeBitstreamText_3c35b: ; 3c35b
 	ctxt "うけつけ"
 	line "……………………………マジ?"
 	line ""
@@ -4086,7 +4086,7 @@ TreeBitstreamText_3c35b:
 	line "また おこしください"
 	done %00
 
-TreeBitstreamText_3c390:
+TreeBitstreamText_3c390: ; 3c390
 	ctxt "うけつけ"
 	line "あらら…………"
 	line "おかねが たりないようですね………"
@@ -4094,7 +4094,7 @@ TreeBitstreamText_3c390:
 	line "もういちど おこし ください"
 	done %0010010
 
-TreeBitstreamText_3c3bd:
+TreeBitstreamText_3c3bd: ; 3c3bd
 	ctxt "うけつけ"
 	line "えーっと おなまえは………"
 	line "<PLAYER>さん ですね"
@@ -4107,7 +4107,7 @@ TreeBitstreamText_3c3bd:
 	line "では ごけんとうを おいのりします"
 	done %0001
 
-TreeBitstreamText_3c437:
+TreeBitstreamText_3c437: ; 3c437
 	ctxt "うけつけ"
 	line "これで あなたも"
 	line "カマットぐんの いちいん ですね!"
@@ -4115,7 +4115,7 @@ TreeBitstreamText_3c437:
 	line "と きずこうじゃ ありませんか!"
 	done %1110
 
-TreeBitstreamText_3c46d:
+TreeBitstreamText_3c46d: ; 3c46d
 	ctxt "おまえ みたいな こぞうが"
 	line "にゅうたい?"
 	line "………フン まあ よいわ"
@@ -4124,7 +4124,7 @@ TreeBitstreamText_3c46d:
 	line "はらってこい!"
 	done %1111101
 
-TreeBitstreamText_3c4ab:
+TreeBitstreamText_3c4ab: ; 3c4ab
 	ctxt "ん? バッチなら もう"
 	line "もっているでは ないか"
 	line "おちつきの ないやつだな!"
@@ -4133,21 +4133,21 @@ TreeBitstreamText_3c4ab:
 	line "きちんと そつぎょう してこい!"
 	done %000011
 
-TreeBitstreamText_3c4f2:
+TreeBitstreamText_3c4f2: ; 3c4f2
 	ctxt "ん? おまえは もう わがぐんを"
 	line "そつぎょう したでは ないか"
 	line "そつぎょうした ぶたいに"
 	line "もう ようは ないはずだ"
 	done
 
-TreeBitstreamText_3c51f:
+TreeBitstreamText_3c51f: ; 3c51f
 	ctxt "バトラーぐんは エリート ロボポンが"
 	line "しょぞくする かこくな ぶたい!"
 	line "それでも バトラーぐんに"
 	line "はいりたいのか?"
 	done %00101
 
-TreeBitstreamText_3c552:
+TreeBitstreamText_3c552: ; 3c552
 	ctxt "ジャンパーぐんは そらが とべて"
 	line "すばやさが たかくなければダメだ!"
 	line "ムーブぞくの ロボポンが おおく"
@@ -4155,13 +4155,13 @@ TreeBitstreamText_3c552:
 	line "ジャンパーぐんで いいのか?"
 	done %00000
 
-TreeBitstreamText_3c5a0:
+TreeBitstreamText_3c5a0: ; 3c5a0
 	ctxt "スピーダーぐんは すばやさのたかい"
 	line "ムーブぞくが ゆうりな ぶたいだ"
 	line "スピーダーぐんで いいのか?"
 	done %0
 
-TreeBitstreamText_3c5cf:
+TreeBitstreamText_3c5cf: ; 3c5cf
 	ctxt "シールダーぐんは ヒットポイントや"
 	line "ぼうぎょりょくが ものをいう!"
 	line "がんじょうな ロボポンが ゆうりな"
@@ -4169,7 +4169,7 @@ TreeBitstreamText_3c5cf:
 	line "シールダーぐんで いいんだな?"
 	done %10
 
-TreeBitstreamText_3c61c:
+TreeBitstreamText_3c61c: ; 3c61c
 	ctxt "パンチャーぐんは こうげきりょくが"
 	line "もっとも じゅうようだ"
 	line "また アームぞくが"
@@ -4178,51 +4178,51 @@ TreeBitstreamText_3c61c:
 	line "はいりたいのか?"
 	done %0001010
 
-TreeBitstreamText_3c65d:
+TreeBitstreamText_3c65d: ; 3c65d
 	ctxt "では えんりょなく いくぞ!"
 	done
 
-TreeBitstreamText_3c66a:
+TreeBitstreamText_3c66a: ; 3c66a
 	ctxt "なんだ おじけづいたのか?"
 	done %110
 
-TreeBitstreamText_3c677:
+TreeBitstreamText_3c677: ; 3c677
 	ctxt "うむ では わがぐん への"
 	line "にゅうたいを きょか しよう"
 	line "さあ このバッチを つけるのだ"
 	done %010000
 
-TreeBitstreamText_3c69d:
+TreeBitstreamText_3c69d: ; 3c69d
 	ctxt "ジャンパーバッチ"
 	line "を てにいれた!"
 	done
 
-TreeBitstreamText_3c6ad:
+TreeBitstreamText_3c6ad: ; 3c6ad
 	ctxt "スピーダーバッチ"
 	line "を てにいれた!"
 	done %0111111
 
-TreeBitstreamText_3c6be:
+TreeBitstreamText_3c6be: ; 3c6be
 	ctxt "パンチャーバッチ"
 	line "を てにいれた!"
 	done %11
 
-TreeBitstreamText_3c6ce:
+TreeBitstreamText_3c6ce: ; 3c6ce
 	ctxt "シールダーバッチ"
 	line "を てにいれた!"
 	done
 
-TreeBitstreamText_3c6dd:
+TreeBitstreamText_3c6dd: ; 3c6dd
 	ctxt "バトラーバッチ"
 	line "を てにいれた!"
 	done %0110
 
-TreeBitstreamText_3c6ec:
+TreeBitstreamText_3c6ec: ; 3c6ec
 	ctxt "では アポロようさいに ある"
 	line "わが ぶたいの とうに ゆけ!"
 	done %1
 
-TreeBitstreamText_3c707:
+TreeBitstreamText_3c707: ; 3c707
 	ctxt "おまえ しんいり だろ?"
 	line "その マヌケづら みりゃ わかるぜ"
 	line "しょーがねぇな オレが ここの"
@@ -4239,40 +4239,40 @@ TreeBitstreamText_3c707:
 	line "………おぼえたかい?"
 	done
 
-TreeBitstreamText_3c7b1:
+TreeBitstreamText_3c7b1: ; 3c7b1
 	ctxt "おまえなぁ ぜんぶの ぶたいを"
 	line "そつぎょう しないと ダメだぜ!"
 	line "それで カマットさまに あおうたぁ"
 	line "ナイスこんじょーだな おい!"
 	done %11
 
-TreeBitstreamText_3c7ea:
+TreeBitstreamText_3c7ea: ; 3c7ea
 	ctxt "わたしと たたかおう とでも"
 	line "いうのか?"
 	line "100まん おく こうねん"
 	line "はやいんじゃ ないのかね?"
 	done %00
 
-TreeBitstreamText_3c810:
+TreeBitstreamText_3c810: ; 3c810
 	ctxt "たにんに やさしく!"
 	line "じぶんに きびしく!"
 	line "それが わたしの モットー!"
 	line "つけあがっては こまるよ チミ"
 	done %1000
 
-TreeBitstreamText_3c83b:
+TreeBitstreamText_3c83b: ; 3c83b
 	ctxt "さいきんの ガキんちょは どうして"
 	line "こう みのほど しらずなんだ?!"
 	done %011001
 
-TreeBitstreamText_3c859:
+TreeBitstreamText_3c859: ; 3c859
 	ctxt "もっと やさしくして!"
 	line ""
 	line "じゃなくって もっと ひとに"
 	line "やさしく できないの?!"
 	done %111
 
-TreeBitstreamText_3c878:
+TreeBitstreamText_3c878: ; 3c878
 	ctxt "わたしが だれだか わかって"
 	line "いるのか?"
 	line "………なに?"
@@ -4281,7 +4281,7 @@ TreeBitstreamText_3c878:
 	line "いますぐに わからせて やる!"
 	done %0
 
-TreeBitstreamText_3c8aa:
+TreeBitstreamText_3c8aa: ; 3c8aa
 	ctxt "ど どうだ わ わかったか!"
 	line ""
 	line "わたしは きみの ことが"
@@ -4289,55 +4289,55 @@ TreeBitstreamText_3c8aa:
 	line "だから もう やめて!"
 	done %110
 
-TreeBitstreamText_3c8d2:
+TreeBitstreamText_3c8d2: ; 3c8d2
 	ctxt "ほう おまえか? いせいの いい"
 	line "しんいり というのは?"
 	line "そういうやつは つけあがらないように"
 	line "おれが きょういく してやる!"
 	done
 
-TreeBitstreamText_3c901:
+TreeBitstreamText_3c901: ; 3c901
 	ctxt "ありがとうございました!!"
 	done %11
 
-TreeBitstreamText_3c90e:
+TreeBitstreamText_3c90e: ; 3c90e
 	ctxt "みかけん かおだな………"
 	line "まあよい あいてを してやるか!"
 	done %0001
 
-TreeBitstreamText_3c925:
+TreeBitstreamText_3c925: ; 3c925
 	ctxt "そ その ちょうしで こんごとも"
 	line "たのむよ ハッハッハッ! ハァ……"
 	done %000
 
-TreeBitstreamText_3c941:
+TreeBitstreamText_3c941: ; 3c941
 	ctxt "ん? すべてのぶたいを"
 	line "そつぎょうしたのか!!"
 	line "ならば このカードをやろう!"
 	done %01010
 
-TreeBitstreamText_3c963:
+TreeBitstreamText_3c963: ; 3c963
 	ctxt "メンバーズカード"
 	line "を てにいれた!"
 	done %1001
 
-TreeBitstreamText_3c973:
+TreeBitstreamText_3c973: ; 3c973
 	ctxt "………よし バッチを もっているな"
 	done %1
 
-TreeBitstreamText_3c983:
+TreeBitstreamText_3c983: ; 3c983
 	ctxt "おまえみたいな バッチの ないやつは"
 	line "はなしに ならないな"
 	line "ダインまちで にゅうたいテストに"
 	line "ごうかく してから きな!"
 	done %011
 
-TreeBitstreamText_3c9b4:
+TreeBitstreamText_3c9b4: ; 3c9b4
 	ctxt "カマットタワーに"
 	line "ようこそ!"
 	done %1111010
 
-TreeBitstreamText_3c9c1:
+TreeBitstreamText_3c9c1: ; 3c9c1
 	ctxt "なぜ こんな ところに いる!"
 	line "あやしい ヤツだな!"
 	line "はははーん さては きさま"
@@ -4346,12 +4346,12 @@ TreeBitstreamText_3c9c1:
 	line "おこそうとでも いうのか?"
 	done %0
 
-TreeBitstreamText_3ca00:
+TreeBitstreamText_3ca00: ; 3ca00
 	ctxt "むむむ どこで そんなに"
 	line "ロボポンを きょうか したのだ……"
 	done
 
-TreeBitstreamText_3ca1c:
+TreeBitstreamText_3ca1c: ; 3ca1c
 	ctxt "どうやら ただものでは"
 	line "なさそうだな"
 	line "だが おまえを カマットさまに"
@@ -4359,35 +4359,35 @@ TreeBitstreamText_3ca1c:
 	line "ここで くたばって もらう!"
 	done %1011100
 
-TreeBitstreamText_3ca51:
+TreeBitstreamText_3ca51: ; 3ca51
 	ctxt "くっ なぜ こんな こぞうに………"
 	done %01
 
-TreeBitstreamText_3ca60:
+TreeBitstreamText_3ca60: ; 3ca60
 	ctxt "あっ おまえは このまえの!"
 	line "なぜ こんな ところに!?"
 	line "でえぇい!"
 	line "つけあがるのも いいかげんにしろ!"
 	done %11011
 
-TreeBitstreamText_3ca8a:
+TreeBitstreamText_3ca8a: ; 3ca8a
 	ctxt "バトルずきの やばんじんめ!"
 	done %0011100
 
-TreeBitstreamText_3ca99:
+TreeBitstreamText_3ca99: ; 3ca99
 	ctxt "また おまえか!?"
 	line "きちんと きょういく したのに!"
 	line "まあ よい! もういちど"
 	line "きょういく しなおして やる!"
 	done %0110010
 
-TreeBitstreamText_3cac2:
+TreeBitstreamText_3cac2: ; 3cac2
 	ctxt "きさま どうせ グレイテストの"
 	line "ランカーに なりたいのだろ?!"
 	line "………くだらんことだ!"
 	done %100010
 
-TreeBitstreamText_3cae8:
+TreeBitstreamText_3cae8: ; 3cae8
 	ctxt "わたしが だれだか わかって"
 	line "いるのかあ!!"
 	line "また おまえか!"
@@ -4396,13 +4396,13 @@ TreeBitstreamText_3cae8:
 	line "いかない!"
 	done
 
-TreeBitstreamText_3cb14:
+TreeBitstreamText_3cb14: ; 3cb14
 	ctxt "ああ! また カマットさまの"
 	line "おしおきが………"
 	line "たすけて!!"
 	done %010
 
-TreeBitstreamText_3cb2d:
+TreeBitstreamText_3cb2d: ; 3cb2d
 	ctxt "カマット"
 	line "あら よくきたわねぇ ボウヤ"
 	line ""
@@ -4417,7 +4417,7 @@ TreeBitstreamText_3cb2d:
 	line "それじゃあ ドームへ むかうわよ"
 	done %100
 
-TreeBitstreamText_3cbab:
+TreeBitstreamText_3cbab: ; 3cbab
 	ctxt "カマット"
 	line "たたかう まえに 1つだけ"
 	line "あたしから じょうけんが あるわ"
@@ -4428,7 +4428,7 @@ TreeBitstreamText_3cbab:
 	line "……じゃあ かかってらっしゃい!"
 	done %101111
 
-TreeBitstreamText_3cbf7:
+TreeBitstreamText_3cbf7: ; 3cbf7
 	ctxt "カマット"
 	line "かんぜんに あたしの まけだわ………"
 	line ""
@@ -4441,12 +4441,12 @@ TreeBitstreamText_3cbf7:
 	line "んもぅ! つれない じゃない!"
 	done %001001
 
-TreeBitstreamText_3cc4d:
+TreeBitstreamText_3cc4d: ; 3cc4d
 	ctxt "グレイテスト4の しょうごう"
 	line "を てにいれた!"
 	done %1011
 
-TreeBitstreamText_3cc61:
+TreeBitstreamText_3cc61: ; 3cc61
 	ctxt "テールおうじ"
 	line "な なんなのだ いまのは?!"
 	line ""
@@ -4465,12 +4465,12 @@ TreeBitstreamText_3cc61:
 	line "そう この ロボポンドームへ!"
 	done %0
 
-TreeBitstreamText_3ccf9:
+TreeBitstreamText_3ccf9: ; 3ccf9
 	ctxt "<PLAYER>"
 	line "おーい ヘッドはかせーっ!"
 	done %1
 
-TreeBitstreamText_3cd08:
+TreeBitstreamText_3cd08: ; 3cd08
 	ctxt "ヘッドはかせ"
 	line "おおーっ <PLAYER>かぁ!"
 	line "ひさしぶりだなぁ!"
@@ -4492,7 +4492,7 @@ TreeBitstreamText_3cd08:
 	line "たたかわないで って いうし………"
 	done %1110110
 
-TreeBitstreamText_3cdce:
+TreeBitstreamText_3cdce: ; 3cdce
 	ctxt "ロル"
 	line "ち ちょっと おとうさん!"
 	line "なに よけいなこと いってるのっ!"
@@ -4502,7 +4502,7 @@ TreeBitstreamText_3cdce:
 	line "わからないんだからぁーーーっ!"
 	done %00001
 
-TreeBitstreamText_3ce14:
+TreeBitstreamText_3ce14: ; 3ce14
 	ctxt "ヘッドはかせ"
 	line "す すまん すまんっ!"
 	line "ついつい くちが すべってしまった"
@@ -4522,7 +4522,7 @@ TreeBitstreamText_3ce14:
 	line "ないだろ っちゅーの!"
 	done %100001
 
-TreeBitstreamText_3cec2:
+TreeBitstreamText_3cec2: ; 3cec2
 	ctxt "ロル"
 	line "<PLAYER> あたし こんなところに"
 	line "ずっと いるの イヤだよぉ!"
@@ -4531,7 +4531,7 @@ TreeBitstreamText_3cec2:
 	line "おねがいだから さがしてきてぇー!"
 	done %10011
 
-TreeBitstreamText_3cefd:
+TreeBitstreamText_3cefd: ; 3cefd
 	ctxt "ヘッドはかせ"
 	line "それを いっちゃ イカーン!!"
 	line ""
@@ -4545,7 +4545,7 @@ TreeBitstreamText_3cefd:
 	line "あきらめろ <PLAYER>!"
 	done %1111010
 
-TreeBitstreamText_3cf5a:
+TreeBitstreamText_3cf5a: ; 3cf5a
 	ctxt "つりぐや"
 	line "いらっしゃい! やるの? つり?"
 	line "しらないよ どうなっても………"
@@ -4566,12 +4566,12 @@ TreeBitstreamText_3cf5a:
 	line "じゃ せいぜい きをつけて!"
 	done %11
 
-TreeBitstreamText_3d001:
+TreeBitstreamText_3d001: ; 3d001
 	ctxt "つりざお"
 	line "を てにいれた!"
 	done
 
-TreeBitstreamText_3d00d:
+TreeBitstreamText_3d00d: ; 3d00d
 	ctxt "この つりぐや なんか ヘンだ"
 	line ""
 	line "だって なんで つりえさに"
@@ -4586,7 +4586,7 @@ TreeBitstreamText_3d00d:
 	line "はなしちゃうんだな これが"
 	done %0101
 
-TreeBitstreamText_3d098:
+TreeBitstreamText_3d098: ; 3d098
 	ctxt "こども"
 	line "すきやき すきやきーっと"
 	line "きょうのばんメシ すきやきーっと!"
@@ -4596,7 +4596,7 @@ TreeBitstreamText_3d098:
 	line "おかあさーん!"
 	done %11111
 
-TreeBitstreamText_3d0e0:
+TreeBitstreamText_3d0e0: ; 3d0e0
 	ctxt "ははおや"
 	line "い いらっしゃい………"
 	line ""
@@ -4612,14 +4612,14 @@ TreeBitstreamText_3d0e0:
 	line "あやまりなさいっ!!"
 	done %110000
 
-TreeBitstreamText_3d160:
+TreeBitstreamText_3d160: ; 3d160
 	ctxt "こども"
 	line "イヤだよー"
 	line "おちてたものを ひろっただけだもん"
 	line "きょうは すきやき たべるんだもーん"
 	done %1
 
-TreeBitstreamText_3d187:
+TreeBitstreamText_3d187: ; 3d187
 	ctxt "ははおや"
 	line "すみませんねぇ………"
 	line ""
@@ -4629,12 +4629,12 @@ TreeBitstreamText_3d187:
 	line "これを さしあげます"
 	done %0101100
 
-TreeBitstreamText_3d1c4:
+TreeBitstreamText_3d1c4: ; 3d1c4
 	ctxt "シュノーケル"
 	line "を てにいれた!"
 	done
 
-TreeBitstreamText_3d1d1:
+TreeBitstreamText_3d1d1: ; 3d1d1
 	ctxt "ははおや"
 	line "シュノーケルを つけていれば"
 	line "みずの なかでも へいきなんです"
@@ -4642,7 +4642,7 @@ TreeBitstreamText_3d1d1:
 	line "ちっそく してしまいますよ"
 	done %100
 
-TreeBitstreamText_3d204:
+TreeBitstreamText_3d204: ; 3d204
 	ctxt "こども"
 	line "あー うまいっ!!"
 	line "やっぱり たべてみる もんだなー"
@@ -4657,7 +4657,7 @@ TreeBitstreamText_3d204:
 	line "もうちょっと まっててね"
 	done
 
-TreeBitstreamText_3d278:
+TreeBitstreamText_3d278: ; 3d278
 	ctxt "ヘッドはかせ"
 	line "おお わしの たいせつな ビルを"
 	line "ぶちこわしやがって!"
@@ -4668,7 +4668,7 @@ TreeBitstreamText_3d278:
 	line "いいかげんに せんかい!"
 	done %0101
 
-TreeBitstreamText_3d2d1:
+TreeBitstreamText_3d2d1: ; 3d2d1
 	ctxt "ロル"
 	line "<PLAYER>ーっ がんばって!"
 	line "ドンドン ばくは しちゃって!!"
@@ -4676,7 +4676,7 @@ TreeBitstreamText_3d2d1:
 	line "きかなくても いいんだからぁ!"
 	done %0
 
-TreeBitstreamText_3d302:
+TreeBitstreamText_3d302: ; 3d302
 	ctxt "こども"
 	line "やあ おにいちゃん!"
 	line "さっきは すきやき ありがとう!!"
@@ -4687,7 +4687,7 @@ TreeBitstreamText_3d302:
 	line "はい プレゼント!"
 	done %10
 
-TreeBitstreamText_3d354:
+TreeBitstreamText_3d354: ; 3d354
 	ctxt "こども"
 	line "ああああ エライこと"
 	line "やってもうた………"
@@ -4695,7 +4695,7 @@ TreeBitstreamText_3d354:
 	line "ばくだん だったのね………"
 	done %011
 
-TreeBitstreamText_3d37a:
+TreeBitstreamText_3d37a: ; 3d37a
 	ctxt "ヘッドはかせ"
 	line "あぁ すこしずつ"
 	line "ビルが こわされて いくぅ!"
@@ -4705,7 +4705,7 @@ TreeBitstreamText_3d37a:
 	line "おもうが な"
 	done %1011000
 
-TreeBitstreamText_3d3ba:
+TreeBitstreamText_3d3ba: ; 3d3ba
 	ctxt "ロル"
 	line "<PLAYER> もうすぐよ!"
 	line "もっと ばくだん もってきて!"
@@ -4715,7 +4715,7 @@ TreeBitstreamText_3d3ba:
 	line "いいから バンバンばくはつさせて!"
 	done %1
 
-TreeBitstreamText_3d404:
+TreeBitstreamText_3d404: ; 3d404
 	ctxt "ヘッドはかせ"
 	line "ああああ"
 	line "てっぺきの はずの ビルがぁぁ"
@@ -4725,7 +4725,7 @@ TreeBitstreamText_3d404:
 	line "いってる だろーに!"
 	done %00
 
-TreeBitstreamText_3d442:
+TreeBitstreamText_3d442: ; 3d442
 	ctxt "ロル"
 	line "やったね <PLAYER>!"
 	line "すごいじゃない!"
@@ -4733,7 +4733,7 @@ TreeBitstreamText_3d442:
 	line "まってるからね!"
 	done %10
 
-TreeBitstreamText_3d465:
+TreeBitstreamText_3d465: ; 3d465
 	ctxt "ロル"
 	line "ありがとう <PLAYER>!"
 	line "よかったぁ ようやく でられたわ"
@@ -4743,7 +4743,7 @@ TreeBitstreamText_3d465:
 	line "ぜったいに かてるわ!"
 	done %1000
 
-TreeBitstreamText_3d4a3:
+TreeBitstreamText_3d4a3: ; 3d4a3
 	ctxt "ヘッドはかせ"
 	line "う うわぁー! ホントにビル"
 	line "ぶっこわしやがったな!"
@@ -4757,7 +4757,7 @@ TreeBitstreamText_3d4a3:
 	line "わしは たたかわないもーん!"
 	done %1
 
-TreeBitstreamText_3d51a:
+TreeBitstreamText_3d51a: ; 3d51a
 	ctxt "ロル"
 	line "パパ ひどい じゃないっ!"
 	line "そんな じょうけん!"
@@ -4766,7 +4766,7 @@ TreeBitstreamText_3d51a:
 	line "ひどい ひどい ひどい!"
 	done
 
-TreeBitstreamText_3d552:
+TreeBitstreamText_3d552: ; 3d552
 	ctxt "ヘッドはかせ"
 	line "まえにも いったはずだ!!"
 	line "しょうぶの せかいは ひじょうだと"
@@ -4777,7 +4777,7 @@ TreeBitstreamText_3d552:
 	line "いいな?"
 	done %0001001
 
-TreeBitstreamText_3d59c:
+TreeBitstreamText_3d59c: ; 3d59c
 	ctxt "ヘッドはかせ"
 	line "そうか! こんな むちゃな"
 	line "じょうけんを のむってか!"
@@ -4785,7 +4785,7 @@ TreeBitstreamText_3d59c:
 	line "どっちの みかたを するんだ?"
 	done %0000
 
-TreeBitstreamText_3d5d0:
+TreeBitstreamText_3d5d0: ; 3d5d0
 	ctxt "ヘッドはかせ"
 	line "うーん もう じれったいの!"
 	line ""
@@ -4795,7 +4795,7 @@ TreeBitstreamText_3d5d0:
 	line "さきに ドームに いってるぞ!"
 	done %10
 
-TreeBitstreamText_3d60c:
+TreeBitstreamText_3d60c: ; 3d60c
 	ctxt "ロル"
 	line "ごめんなさい へんな パパで"
 	line ""
@@ -4805,7 +4805,7 @@ TreeBitstreamText_3d60c:
 	line "これからも ずっと"
 	done %1110001
 
-TreeBitstreamText_3d63e:
+TreeBitstreamText_3d63e: ; 3d63e
 	ctxt "ヘッドはかせ"
 	line "ふーん <PLAYER>は そんなに"
 	line "おくびょうもの だったか"
@@ -4813,7 +4813,7 @@ TreeBitstreamText_3d63e:
 	line "ロルにも きらわれちまうぞい"
 	done %0000011
 
-TreeBitstreamText_3d66c:
+TreeBitstreamText_3d66c: ; 3d66c
 	ctxt "ヘッドはかせ"
 	line "わしは おまえと たたかいたくない"
 	line "と あれほど いったのに………"
@@ -4825,7 +4825,7 @@ TreeBitstreamText_3d66c:
 	line "わしの きが おさまらん!"
 	done %1001111
 
-TreeBitstreamText_3d6c8:
+TreeBitstreamText_3d6c8: ; 3d6c8
 	ctxt "ヘッドはかせ"
 	line "………そうか <PLAYER>"
 	line "そんなに つよく なったか………"
@@ -4835,12 +4835,12 @@ TreeBitstreamText_3d6c8:
 	line "ぜったい イヤだもんねー!"
 	done %000010
 
-TreeBitstreamText_3d713:
+TreeBitstreamText_3d713: ; 3d713
 	ctxt "グレイテスト3の しょうごう"
 	line "を てにいれた!"
 	done %1101
 
-TreeBitstreamText_3d727:
+TreeBitstreamText_3d727: ; 3d727
 	ctxt "テールおうじ"
 	line "ついに ここまできたね"
 	line "がんばったな <PLAYER>!"
@@ -4849,13 +4849,13 @@ TreeBitstreamText_3d727:
 	line "そのさきに ボクがいる!"
 	done %0110
 
-TreeBitstreamText_3d76a:
+TreeBitstreamText_3d76a: ; 3d76a
 	ctxt "おうじ! たいへんです!"
 	line "きんきゅうじたい はっせいです!"
 	line "ゴニョゴニョゴニョゴニョ………………"
 	done %110
 
-TreeBitstreamText_3d793:
+TreeBitstreamText_3d793: ; 3d793
 	ctxt "テールおうじ"
 	line "な なんだとぉ!! みなのもの"
 	line "きんきゅうはいび に つくのだ!!"
@@ -4869,55 +4869,55 @@ TreeBitstreamText_3d793:
 	line "しばし せきを はずさせて もらう"
 	done %111100
 
-TreeBitstreamText_3d801:
+TreeBitstreamText_3d801: ; 3d801
 	ctxt "どうやら しろで なにか"
 	line "おきてる みたいだな"
 	line "たしか ここのちかに テールじょうに"
 	line "いける つうろが あったはずだ……"
 	done %1111
 
-TreeBitstreamText_3d831:
+TreeBitstreamText_3d831: ; 3d831
 	ctxt "おまえ こんな ところで"
 	line "なにを している?!"
 	done %11011
 
-TreeBitstreamText_3d844:
+TreeBitstreamText_3d844: ; 3d844
 	ctxt "いっぱんじんは ダメだ ダメだ!"
 	line "ここは とおさん!"
 	done %10
 
-TreeBitstreamText_3d85e:
+TreeBitstreamText_3d85e: ; 3d85e
 	ctxt "えーい こぞうは あっちへ いけ!"
 	done %0
 
-TreeBitstreamText_3d86d:
+TreeBitstreamText_3d86d: ; 3d86d
 	ctxt "いっ    ぱんピー    プルは"
 	line "たちいりきんし だと いってるん"
 	line "だーーーーーーーーーーーっっ!!"
 	done %0111110
 
-TreeBitstreamText_3d897:
+TreeBitstreamText_3d897: ; 3d897
 	ctxt "…………………………………"
 	done %1111
 
-TreeBitstreamText_3d8a2:
+TreeBitstreamText_3d8a2: ; 3d8a2
 	ctxt "あっちへ いけ!"
 	done %0011100
 
-TreeBitstreamText_3d8ab:
+TreeBitstreamText_3d8ab: ; 3d8ab
 	ctxt "きさま なにものだ!!"
 	line ""
 	line "このさきは かんけいしゃ いがい"
 	line "たちいりきんし なんだぞ!!"
 	done %1110101
 
-TreeBitstreamText_3d8ce:
+TreeBitstreamText_3d8ce: ; 3d8ce
 	ctxt "おしろが たいへん!"
 	line "テールおうじ が たいへん!!"
 	line "いったい なにが おこってるのよ!"
 	done
 
-TreeBitstreamText_3d8f1:
+TreeBitstreamText_3d8f1: ; 3d8f1
 	ctxt "テールおうじ"
 	line "おまえは きょうらんの"
 	line "インテリジェンス ドクターゼロ!"
@@ -4929,7 +4929,7 @@ TreeBitstreamText_3d8f1:
 	line "わたしの ちちに ころされたはず!"
 	done %0111100
 
-TreeBitstreamText_3d95c:
+TreeBitstreamText_3d95c: ; 3d95c
 	ctxt "ドクターゼロ"
 	line "ああ たしかに わたしは しんだ"
 	line "だが………"
@@ -4941,7 +4941,7 @@ TreeBitstreamText_3d95c:
 	line "まだ しんでは いけない と"
 	done %0011
 
-TreeBitstreamText_3d9b8:
+TreeBitstreamText_3d9b8: ; 3d9b8
 	ctxt "テールおうじ"
 	line "そんなことは どうでも いい"
 	line ""
@@ -4951,7 +4951,7 @@ TreeBitstreamText_3d9b8:
 	line "あらわれたんだ!"
 	done %01100
 
-TreeBitstreamText_3d9f7:
+TreeBitstreamText_3d9f7: ; 3d9f7
 	ctxt "ドクターゼロ"
 	line "わすれもの だよ"
 	line "わすれものを したんだよ"
@@ -4965,12 +4965,12 @@ TreeBitstreamText_3d9f7:
 	line "しぬ と かんちがい したようだが"
 	done %00
 
-TreeBitstreamText_3da77:
+TreeBitstreamText_3da77: ; 3da77
 	ctxt "テールおうじ"
 	line "そ それは………"
 	done %100011
 
-TreeBitstreamText_3da85:
+TreeBitstreamText_3da85: ; 3da85
 	ctxt "ドクターゼロ"
 	line "きみたち おうしつの にんげんは"
 	line "いつも そうなんだね"
@@ -4992,14 +4992,14 @@ TreeBitstreamText_3da85:
 	line "あまりにも しつれいじゃないかね?"
 	done %1111111
 
-TreeBitstreamText_3db5f:
+TreeBitstreamText_3db5f: ; 3db5f
 	ctxt "テールおうじ"
 	line "すべては ちちの やったこと!"
 	line ""
 	line "わたしは なんの かんけいも ない!"
 	done %1110
 
-TreeBitstreamText_3db7f:
+TreeBitstreamText_3db7f: ; 3db7f
 	ctxt "ドクターゼロ"
 	line "なにも しらない"
 	line ""
@@ -5021,7 +5021,7 @@ TreeBitstreamText_3db7f:
 	line "ウイニングローレルを いただく!"
 	done %01
 
-TreeBitstreamText_3dc1e:
+TreeBitstreamText_3dc1e: ; 3dc1e
 	ctxt "ドクターゼロ"
 	line "それと おうじ!"
 	line ""
@@ -5029,14 +5029,14 @@ TreeBitstreamText_3dc1e:
 	line "たいせつな ものも いただこう!"
 	done %11
 
-TreeBitstreamText_3dc47:
+TreeBitstreamText_3dc47: ; 3dc47
 	ctxt "テールおうじ"
 	line "ダースひめ!"
 	line ""
 	line "やめないか ドクターゼロ!"
 	done %1001001
 
-TreeBitstreamText_3dc61:
+TreeBitstreamText_3dc61: ; 3dc61
 	ctxt "ドクターゼロ"
 	line "ちかいうちに また ここへ くる"
 	line ""
@@ -5049,13 +5049,13 @@ TreeBitstreamText_3dc61:
 	line "それでは さらばだ!"
 	done
 
-TreeBitstreamText_3dcbd:
+TreeBitstreamText_3dcbd: ; 3dcbd
 	ctxt "ダースひめ"
 	line "おうじ!"
 	line "テールおうじ!"
 	done %00100
 
-TreeBitstreamText_3dccf:
+TreeBitstreamText_3dccf: ; 3dccf
 	ctxt "テールおうじ"
 	line "ダメだ! やつに たちむかう"
 	line "ては ない!"
@@ -5064,7 +5064,7 @@ TreeBitstreamText_3dccf:
 	line "いったい どうすれば………"
 	done %111
 
-TreeBitstreamText_3dd0b:
+TreeBitstreamText_3dd0b: ; 3dd0b
 	ctxt "ドクターゼロ"
 	line "きみが グレイテスト3だって?"
 	line ""
@@ -5092,7 +5092,7 @@ TreeBitstreamText_3dd0b:
 	line "バトル アンドロイド だからな!"
 	done %01101
 
-TreeBitstreamText_3de23:
+TreeBitstreamText_3de23: ; 3de23
 	ctxt "ドクターゼロ"
 	line "きみの じつりょくは"
 	line "じゅうぶんに わかった"
@@ -5107,7 +5107,7 @@ TreeBitstreamText_3de23:
 	line "アイル ビー バック!"
 	done %00110
 
-TreeBitstreamText_3de8e:
+TreeBitstreamText_3de8e: ; 3de8e
 	ctxt "ドクターゼロ"
 	line "しょうこりもない ガキだな………"
 	line "わたしは にげているのでは ない"
@@ -5121,7 +5121,7 @@ TreeBitstreamText_3de8e:
 	line "たすけよう というのでは ないな?"
 	done %110
 
-TreeBitstreamText_3df08:
+TreeBitstreamText_3df08: ; 3df08
 	ctxt "ドクターゼロ"
 	line "そうか きみは"
 	line "テールおうじの なかまか………"
@@ -5140,7 +5140,7 @@ TreeBitstreamText_3df08:
 	line "いでよ しんせいきの らくえん!!"
 	done %11011
 
-TreeBitstreamText_3dfb9:
+TreeBitstreamText_3dfb9: ; 3dfb9
 	ctxt "ドクターゼロ"
 	line "そうか それなら いいのだ"
 	line ""
@@ -5155,7 +5155,7 @@ TreeBitstreamText_3dfb9:
 	line "いでよ しんせいきの らくえん!"
 	done %1010
 
-TreeBitstreamText_3e01f:
+TreeBitstreamText_3e01f: ; 3e01f
 	ctxt "ドクターゼロ"
 	line "ここから すべてが はじまる"
 	line ""
@@ -5163,7 +5163,7 @@ TreeBitstreamText_3e01f:
 	line "はじまるのだっ!!!"
 	done
 
-TreeBitstreamText_3e04a:
+TreeBitstreamText_3e04a: ; 3e04a
 	ctxt "ドクターゼロ"
 	line "きみの あいては わたしではない"
 	line ""
@@ -5180,7 +5180,7 @@ TreeBitstreamText_3e04a:
 	line "では シー ユー アゲイン!"
 	done %0
 
-TreeBitstreamText_3e0d5:
+TreeBitstreamText_3e0d5: ; 3e0d5
 	ctxt "ビスコ"
 	line "おお <PLAYER>じゃねぇか!"
 	line "ひさしぶり だなぁ…………"
@@ -5205,7 +5205,7 @@ TreeBitstreamText_3e0d5:
 	line "ほんじゃあな!!"
 	done %100
 
-TreeBitstreamText_3e1be:
+TreeBitstreamText_3e1be: ; 3e1be
 	ctxt "テールおうじ"
 	line "ふかく! つうこん!"
 	line "まけは まけだっ!"
@@ -5216,7 +5216,7 @@ TreeBitstreamText_3e1be:
 	line "さあ ひめを こっちに かえすんだ!"
 	done %010111
 
-TreeBitstreamText_3e1ff:
+TreeBitstreamText_3e1ff: ; 3e1ff
 	ctxt "ドクターゼロ"
 	line "ざんねんだが それは できない"
 	line ""
@@ -5234,12 +5234,12 @@ TreeBitstreamText_3e1ff:
 	line "………いや テールぼうや?"
 	done %0100
 
-TreeBitstreamText_3e289:
+TreeBitstreamText_3e289: ; 3e289
 	ctxt "テールおうじ"
 	line "う う うううううううっ…………"
 	done %1000
 
-TreeBitstreamText_3e29b:
+TreeBitstreamText_3e29b: ; 3e29b
 	ctxt "ドクターゼロ"
 	line "ほぉ きみは うんのいいコだねぇ"
 	line ""
@@ -5253,13 +5253,13 @@ TreeBitstreamText_3e29b:
 	line "あの テールを たおすのだ!"
 	done %00100
 
-TreeBitstreamText_3e30b:
+TreeBitstreamText_3e30b: ; 3e30b
 	ctxt "ドクターゼロ"
 	line "にげも かくれも しない"
 	line "わたしは まっているよ"
 	done
 
-TreeBitstreamText_3e324:
+TreeBitstreamText_3e324: ; 3e324
 	ctxt "ダースひめ"
 	line "ああ テールおうじ…………"
 	line ""
@@ -5277,13 +5277,13 @@ TreeBitstreamText_3e324:
 	line "もとどおりになる ひが くる と"
 	done %101111
 
-TreeBitstreamText_3e3bb:
+TreeBitstreamText_3e3bb: ; 3e3bb
 	ctxt "ダースひめ"
 	line "ちょっと おまちになってください"
 	line "わたしの はなしをきいてください!"
 	done
 
-TreeBitstreamText_3e3db:
+TreeBitstreamText_3e3db: ; 3e3db
 	ctxt "テールおうじ"
 	line "よし かなりロボポンが"
 	line "つよく なったぞ"
@@ -5294,7 +5294,7 @@ TreeBitstreamText_3e3db:
 	line "かならず とりもどす!"
 	done %111
 
-TreeBitstreamText_3e43a:
+TreeBitstreamText_3e43a: ; 3e43a
 	ctxt "テールおうじ"
 	line "<PLAYER> きていたのか"
 	line "なぜ ここだと わかったのだ?"
@@ -5320,19 +5320,19 @@ TreeBitstreamText_3e43a:
 	line "ロボポンドームで まっているぞ!"
 	done %1100
 
-TreeBitstreamText_3e522:
+TreeBitstreamText_3e522: ; 3e522
 	ctxt "ドクターゼロ"
 	line "フッ もうすぐだ もうすぐで"
 	line "わが やぼうが たっせいされる!"
 	done %000001
 
-TreeBitstreamText_3e544:
+TreeBitstreamText_3e544: ; 3e544
 	ctxt "ダースひめ"
 	line "あぁ……"
 	line "テールおうじ………"
 	done
 
-TreeBitstreamText_3e557:
+TreeBitstreamText_3e557: ; 3e557
 	ctxt "テールおうじ"
 	line "<PLAYER>! いまの わたしは"
 	line "おまえとは たちばが ちがうのだ!"
@@ -5344,7 +5344,7 @@ TreeBitstreamText_3e557:
 	line "とっくんの せいかを みせてやる!"
 	done %011001
 
-TreeBitstreamText_3e5b2:
+TreeBitstreamText_3e5b2: ; 3e5b2
 	ctxt "テールおうじ"
 	line "くっ"
 	line "………なぜ"
@@ -5356,7 +5356,7 @@ TreeBitstreamText_3e5b2:
 	line "なくなって しまうのか……"
 	done %001
 
-TreeBitstreamText_3e5ff:
+TreeBitstreamText_3e5ff: ; 3e5ff
 	ctxt "テールおうじ"
 	line "ゼロ! きさまぁ!!"
 	line ""
@@ -5364,7 +5364,7 @@ TreeBitstreamText_3e5ff:
 	line "かえすんだーーっ!!"
 	done %11110
 
-TreeBitstreamText_3e624:
+TreeBitstreamText_3e624: ; 3e624
 	ctxt "ドクターゼロ"
 	line "おちつけ みっともないぞ テール!"
 	line "……………よく たたかった"
@@ -5381,7 +5381,7 @@ TreeBitstreamText_3e624:
 	line "これを みるがいい!"
 	done %1100
 
-TreeBitstreamText_3e6a8:
+TreeBitstreamText_3e6a8: ; 3e6a8
 	ctxt "ドクターゼロ"
 	line "いい しあいでは あったが"
 	line "テール! おまえは まけた"
@@ -5399,12 +5399,12 @@ TreeBitstreamText_3e6a8:
 	line "さっさと そとへ つれだせ!!"
 	done %0
 
-TreeBitstreamText_3e75b:
+TreeBitstreamText_3e75b: ; 3e75b
 	ctxt "ドクターゼロ"
 	line "ガハハハハハハハーーーーーーーッ!!"
 	done %010
 
-TreeBitstreamText_3e770:
+TreeBitstreamText_3e770: ; 3e770
 	ctxt "テールおうじ"
 	line "もう なにもかも ダメだ"
 	line ""
@@ -5414,12 +5414,12 @@ TreeBitstreamText_3e770:
 	line "どうすれば いいのだ………………"
 	done %010100
 
-TreeBitstreamText_3e7ac:
+TreeBitstreamText_3e7ac: ; 3e7ac
 	ctxt "グレイテスト2の しょうごう"
 	line "を てにいれた!"
 	done %0101
 
-TreeBitstreamText_3e7c0:
+TreeBitstreamText_3e7c0: ; 3e7c0
 	ctxt "ドクターゼロ"
 	line "<PLAYER> グレイテスト2"
 	line "しょうしん おめでとう"
@@ -5436,24 +5436,24 @@ TreeBitstreamText_3e7c0:
 	line "シー ユー アゲイン!"
 	done %011111
 
-TreeBitstreamText_3e85a:
+TreeBitstreamText_3e85a: ; 3e85a
 	ctxt "ヒデキ"
 	line "4つの いわを 4つの あなのうえに"
 	line "のっけることが できたら………"
 	done %11
 
-TreeBitstreamText_3e87a:
+TreeBitstreamText_3e87a: ; 3e87a
 	ctxt "ヒデキ"
 	line "ラーメン おごってくれたら"
 	line "しかけを もっと かんたんにするよ"
 	done %01
 
-TreeBitstreamText_3e896:
+TreeBitstreamText_3e896: ; 3e896
 	ctxt "ヒデキ"
 	line "ラーメン おごってくれる?"
 	done %01
 
-TreeBitstreamText_3e8a6:
+TreeBitstreamText_3e8a6: ; 3e8a6
 	ctxt "ヒデキ"
 	line "うっ うまいねぇ ラーメンは"
 	line "よしっ やくそくを はたそう"
@@ -5461,18 +5461,18 @@ TreeBitstreamText_3e8a6:
 	line "いったん したへ おりてね"
 	done %01
 
-TreeBitstreamText_3e8d4:
+TreeBitstreamText_3e8d4: ; 3e8d4
 	ctxt "ヒデキ"
 	line "そう……"
 	line "ヒデキ ショック……"
 	done %1111
 
-TreeBitstreamText_3e8e5:
+TreeBitstreamText_3e8e5: ; 3e8e5
 	ctxt "ヒデキ"
 	line "ラーメンさいこうっ!!"
 	done %111
 
-TreeBitstreamText_3e8f3:
+TreeBitstreamText_3e8f3: ; 3e8f3
 	ctxt "ハンター"
 	line "このさきに あなが みえるだろう?"
 	line "あの あなの さきに………"
@@ -5482,7 +5482,7 @@ TreeBitstreamText_3e8f3:
 	line "どうした もんかね?"
 	done %0
 
-TreeBitstreamText_3e940:
+TreeBitstreamText_3e940: ; 3e940
 	ctxt "ハンター"
 	line "リモコンシャワーが カギなんだけど"
 	line "リモコンシャワーか……"
@@ -5490,7 +5490,7 @@ TreeBitstreamText_3e940:
 	line "キミはわかるかい?"
 	done %10
 
-TreeBitstreamText_3e974:
+TreeBitstreamText_3e974: ; 3e974
 	ctxt "ハンター"
 	line "おおっ!"
 	line "はしが かかった!"
@@ -5498,7 +5498,7 @@ TreeBitstreamText_3e974:
 	line "おうけの ざいほうは いただくぜ!"
 	done %1
 
-TreeBitstreamText_3e99a:
+TreeBitstreamText_3e99a: ; 3e99a
 	ctxt "ハンター"
 	line "くっそーっ"
 	line "また とおれない じゃないかぁ!"
@@ -5506,14 +5506,14 @@ TreeBitstreamText_3e99a:
 	line "おたからが あるっていうのに……"
 	done
 
-TreeBitstreamText_3e9c4:
+TreeBitstreamText_3e9c4: ; 3e9c4
 	ctxt "ハンター"
 	line "おおおおっ!"
 	line "とおれるように なった!"
 	line "おたからは いただいたっ!"
 	done %0100
 
-TreeBitstreamText_3e9e1:
+TreeBitstreamText_3e9e1: ; 3e9e1
 	ctxt "ハンター"
 	line "そうか やっぱりキミが やったのか"
 	line "あの しかけが よくわかったね"
@@ -5523,7 +5523,7 @@ TreeBitstreamText_3e9e1:
 	line "おたからを いただくよっ!"
 	done
 
-TreeBitstreamText_3ea2f:
+TreeBitstreamText_3ea2f: ; 3ea2f
 	ctxt "ハンター"
 	line "キミは つよいね……"
 	line "おうけのざいほうは キミにゆずるよ"
@@ -5535,17 +5535,17 @@ TreeBitstreamText_3ea2f:
 	line "にんげんにしか きかないんだ"
 	done %1
 
-TreeBitstreamText_3ea97:
+TreeBitstreamText_3ea97: ; 3ea97
 	ctxt "ハンター"
 	line "そとへ ワープするかい"
 	done %011
 
-TreeBitstreamText_3eaa7:
+TreeBitstreamText_3eaa7: ; 3eaa7
 	ctxt "モリスのなみだ"
 	line "を てにいれた!"
 	done %1
 
-TreeBitstreamText_3eab5:
+TreeBitstreamText_3eab5: ; 3eab5
 	ctxt "ハンター"
 	line "そっかぁ モリスのなみだで"
 	line "ダースひめをねぇ………"
@@ -5553,7 +5553,7 @@ TreeBitstreamText_3eab5:
 	line "やくにたったわけだ"
 	done %11
 
-TreeBitstreamText_3eae2:
+TreeBitstreamText_3eae2: ; 3eae2
 	ctxt "ドクターゼロ"
 	line "やはり たたかわねば ならぬ か……"
 	line ""
@@ -5574,7 +5574,7 @@ TreeBitstreamText_3eae2:
 	line "いざ しょうぶ!"
 	done %101111
 
-TreeBitstreamText_3eb76:
+TreeBitstreamText_3eb76: ; 3eb76
 	ctxt "ドクターゼロ"
 	line "まければ すべてが おわることは"
 	line "わかっていた"
@@ -5599,7 +5599,7 @@ TreeBitstreamText_3eb76:
 	line "さらば………<PLAYER>………"
 	done
 
-TreeBitstreamText_3ec56:
+TreeBitstreamText_3ec56: ; 3ec56
 	ctxt "ビスコ"
 	line "なにやってんだよ <PLAYER>!"
 	line ""
@@ -5609,7 +5609,7 @@ TreeBitstreamText_3ec56:
 	line "さっさと ズラかろうぜ!"
 	done %111011
 
-TreeBitstreamText_3ec9f:
+TreeBitstreamText_3ec9f: ; 3ec9f
 	ctxt "ママ"
 	line "<PLAYER>!"
 	line ""
@@ -5619,7 +5619,7 @@ TreeBitstreamText_3ec9f:
 	line "てがみが きてるわよ!"
 	done %000
 
-TreeBitstreamText_3ecd6:
+TreeBitstreamText_3ecd6: ; 3ecd6
 	ctxt "<PLAYER>さま"
 	line ""
 	line "<PLAYER>を しんの"
@@ -5630,7 +5630,7 @@ TreeBitstreamText_3ecd6:
 	line "           テールおうじ"
 	done %0111101
 
-TreeBitstreamText_3ed13:
+TreeBitstreamText_3ed13: ; 3ed13
 	ctxt "テールおうじ"
 	line "ゼロを たおしてくれて ありがとう"
 	line ""
@@ -5644,7 +5644,7 @@ TreeBitstreamText_3ed13:
 	line "わすれずに がんばってほしい!"
 	done %001
 
-TreeBitstreamText_3ed88:
+TreeBitstreamText_3ed88: ; 3ed88
 	ctxt "テールおうじ"
 	line "ポロンボとうの へいわは"
 	line "とりもどされたのだが……"
@@ -5655,12 +5655,12 @@ TreeBitstreamText_3ed88:
 	line "おっと グチを こぼしてすまん"
 	done %1010111
 
-TreeBitstreamText_3ede7:
+TreeBitstreamText_3ede7: ; 3ede7
 	ctxt "グレイテスト1の あかし である"
 	line "ウイニングローレルを うけとった!"
 	done %1
 
-TreeBitstreamText_3ee04:
+TreeBitstreamText_3ee04: ; 3ee04
 	ctxt "テールおうじ"
 	line "さあ"
 	line ""
@@ -5668,7 +5668,7 @@ TreeBitstreamText_3ee04:
 	line "みんなで たたえるのだ!"
 	done %1010
 
-TreeBitstreamText_3ee24:
+TreeBitstreamText_3ee24: ; 3ee24
 	ctxt "テールおうじ"
 	line "おっと"
 	line "まってくれ <PLAYER>!"
@@ -5676,7 +5676,7 @@ TreeBitstreamText_3ee24:
 	line "わすれていた!"
 	done %0
 
-TreeBitstreamText_3ee49:
+TreeBitstreamText_3ee49: ; 3ee49
 	ctxt "テールおうじ"
 	line "チャンピオンベルトを もっていれば"
 	line "タイトルマッチが できるのだ"
@@ -5696,7 +5696,7 @@ TreeBitstreamText_3ee49:
 	line "わかき えいゆう <PLAYER>よ!"
 	done %01
 
-TreeBitstreamText_3ef04:
+TreeBitstreamText_3ef04: ; 3ef04
 	ctxt "ビスコ"
 	line "よう <PLAYER>!"
 	line ""
@@ -5706,7 +5706,7 @@ TreeBitstreamText_3ef04:
 	line "どうせ オレさまが かつんだからな"
 	done %10
 
-TreeBitstreamText_3ef47:
+TreeBitstreamText_3ef47: ; 3ef47
 	ctxt "ビスコ"
 	line "……………"
 	line ""
@@ -5716,7 +5716,7 @@ TreeBitstreamText_3ef47:
 	line "しゅぎょうの たびにでるか………"
 	done
 
-TreeBitstreamText_3ef70:
+TreeBitstreamText_3ef70: ; 3ef70
 	ctxt "アムロン"
 	line "<PLAYER>!"
 	line "おひさしぶりっ!"
@@ -5726,7 +5726,7 @@ TreeBitstreamText_3ef70:
 	line "たたかいましょう!"
 	done %10111
 
-TreeBitstreamText_3efa5:
+TreeBitstreamText_3efa5: ; 3efa5
 	ctxt "アムロン"
 	line "ふう……"
 	line "やっぱ かてないか………"
@@ -5738,7 +5738,7 @@ TreeBitstreamText_3efa5:
 	line "こんどは まけないわよ"
 	done %001
 
-TreeBitstreamText_3eff8:
+TreeBitstreamText_3eff8: ; 3eff8
 	ctxt "ワイルド"
 	line "よう! <PLAYER>!"
 	line "げんきそうじゃねぇか!"
@@ -5750,7 +5750,7 @@ TreeBitstreamText_3eff8:
 	line "ひごろのせいかを ためさせてくれ!"
 	done
 
-TreeBitstreamText_3f05a:
+TreeBitstreamText_3f05a: ; 3f05a
 	ctxt "ワイルド"
 	line "なぁ………"
 	line "ちょっとは つよくなってただろ?"
@@ -5762,7 +5762,7 @@ TreeBitstreamText_3f05a:
 	line "じゃあな!"
 	done
 
-TreeBitstreamText_3f0a6:
+TreeBitstreamText_3f0a6: ; 3f0a6
 	ctxt "カマット"
 	line "ひさしぶりね ボウヤ………"
 	line ""
@@ -5777,7 +5777,7 @@ TreeBitstreamText_3f0a6:
 	line "せいせいどうどうと しょうぶよ!"
 	done %11011
 
-TreeBitstreamText_3f118:
+TreeBitstreamText_3f118: ; 3f118
 	ctxt "カマット"
 	line "また まけちゃったわね………"
 	line "<PLAYER>は ほんとうに つよいわね"
@@ -5792,7 +5792,7 @@ TreeBitstreamText_3f118:
 	line "また バトロボしましょう!"
 	done %0
 
-TreeBitstreamText_3f192:
+TreeBitstreamText_3f192: ; 3f192
 	ctxt "ヘッドはかせ"
 	line "やぁ <PLAYER>"
 	line "おまえも りっぱになったなぁ"
@@ -5806,7 +5806,7 @@ TreeBitstreamText_3f192:
 	line "<PLAYER>も ほんきで こいっ!"
 	done %0
 
-TreeBitstreamText_3f207:
+TreeBitstreamText_3f207: ; 3f207
 	ctxt "ヘッドはかせ"
 	line "ほんとに たいしたヤツだ!"
 	line "ワシなんか もんだいじゃない!"
@@ -5821,7 +5821,7 @@ TreeBitstreamText_3f207:
 	line "また ワシとあそんでくれるな?"
 	done
 
-TreeBitstreamText_3f276:
+TreeBitstreamText_3f276: ; 3f276
 	ctxt "テールおうじ"
 	line "<PLAYER>よ………"
 	line "おまえには せわになったな"
@@ -5838,7 +5838,7 @@ TreeBitstreamText_3f276:
 	line "いざ しょうぶ!"
 	done %1100011
 
-TreeBitstreamText_3f2ff:
+TreeBitstreamText_3f2ff: ; 3f2ff
 	ctxt "テールおうじ"
 	line "<PLAYER>………"
 	line ""
@@ -5854,12 +5854,12 @@ TreeBitstreamText_3f2ff:
 	line "また あおう!"
 	done %1100001
 
-TreeBitstreamText_3f36a:
+TreeBitstreamText_3f36a: ; 3f36a
 	ctxt "グレイテストの ランクのひくい"
 	line "じゅんばんに たたかってね"
 	done %001000
 
-TreeBitstreamText_3f384:
+TreeBitstreamText_3f384: ; 3f384
 	ctxt "この いえの ひと ったら"
 	line "ちっとも そとに でてこないわよ"
 	line "パラボラアンテナを かってから"
@@ -5867,7 +5867,7 @@ TreeBitstreamText_3f384:
 	line "そんなに たのしいもの なのかね?"
 	done
 
-TreeBitstreamText_3f3c4:
+TreeBitstreamText_3f3c4: ; 3f3c4
 	ctxt "テレビには アムロンっていうコが"
 	line "ずっと でてるんだって!"
 	line "うたって おどって ロボポンの"
@@ -5875,24 +5875,24 @@ TreeBitstreamText_3f3c4:
 	line "それの なにが たのしいの?"
 	done %1101
 
-TreeBitstreamText_3f406:
+TreeBitstreamText_3f406: ; 3f406
 	ctxt "あんたも りっぱに なったわね!"
 	line "グレイテストに なったんだって?"
 	line "おとうさんも おかあさんも"
 	line "よろこんでる でしょ……"
 	done
 
-TreeBitstreamText_3f436:
+TreeBitstreamText_3f436: ; 3f436
 	ctxt "ねぇねぇ グレイテストって"
 	line "しってる?"
 	done %111
 
-TreeBitstreamText_3f449:
+TreeBitstreamText_3f449: ; 3f449
 	ctxt "これからは グレイテストが"
 	line "おんなのコに モテるわよ"
 	done %1011001
 
-TreeBitstreamText_3f463:
+TreeBitstreamText_3f463: ; 3f463
 	ctxt "えっ! しらないの!!"
 	line ""
 	line "バトロボは じぶんと あいての"
@@ -5907,14 +5907,14 @@ TreeBitstreamText_3f463:
 	line "どう? すごいでしょう!!"
 	done %10
 
-TreeBitstreamText_3f4fb:
+TreeBitstreamText_3f4fb: ; 3f4fb
 	ctxt "たいへん たいへん!"
 	line ""
 	line "ヘッドはかせが ロルをつれて"
 	line "いなくなっちゃったのよ!"
 	done %0001
 
-TreeBitstreamText_3f51d:
+TreeBitstreamText_3f51d: ; 3f51d
 	ctxt "ここより となりの"
 	line "リブラまちが たいへん!"
 	line "ヘッドはかせが おおきな"
@@ -5923,7 +5923,7 @@ TreeBitstreamText_3f51d:
 	line "さあ たいへん!"
 	done %0
 
-TreeBitstreamText_3f55b:
+TreeBitstreamText_3f55b: ; 3f55b
 	ctxt "ロルは きのどく ね"
 	line ""
 	line "ヘッドはかせが イヤがる ロルを"
@@ -5931,7 +5931,7 @@ TreeBitstreamText_3f55b:
 	line "そりゃ ないでしょ"
 	done %1001100
 
-TreeBitstreamText_3f58e:
+TreeBitstreamText_3f58e: ; 3f58e
 	ctxt "きゅうに ヘッドはかせが"
 	line "おかしく なっちゃったのよ!"
 	line "なんでも グレイテスト3の ざは"
@@ -5940,7 +5940,7 @@ TreeBitstreamText_3f58e:
 	line "なっちゃったのかねぇ……"
 	done %110100
 
-TreeBitstreamText_3f5d5:
+TreeBitstreamText_3f5d5: ; 3f5d5
 	ctxt "ヘッドはかせ"
 	line "やぁ げんきに やってるかね?"
 	line ""
@@ -5949,7 +5949,7 @@ TreeBitstreamText_3f5d5:
 	line "まあ げんきで がんばれ!"
 	done %01
 
-TreeBitstreamText_3f60f:
+TreeBitstreamText_3f60f: ; 3f60f
 	ctxt "ヘッドはかせ"
 	line "きいたぞ きいたぞ <PLAYER>"
 	line "しゃちょうに なったんだってな"
@@ -5960,12 +5960,12 @@ TreeBitstreamText_3f60f:
 	line "なにも いわず もっていってくれ"
 	done %101010
 
-TreeBitstreamText_3f665:
+TreeBitstreamText_3f665: ; 3f665
 	ctxt "ヘッドはかせの ロボポンを"
 	line "もらった!"
 	done %10100
 
-TreeBitstreamText_3f679:
+TreeBitstreamText_3f679: ; 3f679
 	ctxt "ヘッドはかせ"
 	line "しゃちょう となった <PLAYER>に"
 	line "アドバイスを してやろう"
@@ -5986,7 +5986,7 @@ TreeBitstreamText_3f679:
 	line "まぁ がんばってみることだな"
 	done %111
 
-TreeBitstreamText_3f750:
+TreeBitstreamText_3f750: ; 3f750
 	ctxt "ロル"
 	line "せっかくの なつやすみ なのに"
 	line "どこにも でかける よていがないの"
@@ -5996,11 +5996,11 @@ TreeBitstreamText_3f750:
 	line "おでかけ したいなぁ………"
 	done
 
-TreeBitstreamText_3f79e:
+TreeBitstreamText_3f79e: ; 3f79e
 	ctxt "おおきな クマの ぬいぐるみだ"
 	done %0011
 
-TreeBitstreamText_3f7ae:
+TreeBitstreamText_3f7ae: ; 3f7ae
 	ctxt "がくせい"
 	line "あ きみ たいかいに でたいの?"
 	line "だったらさぁ"
@@ -6009,7 +6009,7 @@ TreeBitstreamText_3f7ae:
 	line "おみせで うってるんだけどね"
 	done %11
 
-TreeBitstreamText_3f7e8:
+TreeBitstreamText_3f7e8: ; 3f7e8
 	ctxt "がくせい"
 	line "あ それ こうきんカバーかい?"
 	line "へーえ なるほどねぇ ふーん"
@@ -6023,7 +6023,7 @@ TreeBitstreamText_3f7e8:
 	line "おしえてあげるよ きく?"
 	done
 
-TreeBitstreamText_3f85e:
+TreeBitstreamText_3f85e: ; 3f85e
 	ctxt "がくせい"
 	line "このアイテムはね ターンごとに"
 	line "ダメージを うける"
@@ -6035,7 +6035,7 @@ TreeBitstreamText_3f85e:
 	line "ばしょに ほかんしなくても いいよ"
 	done %1101
 
-TreeBitstreamText_3f8cd:
+TreeBitstreamText_3f8cd: ; 3f8cd
 	ctxt "がくせい"
 	line "…………"
 	line "もしかしたら おこってるの?"
@@ -6043,39 +6043,39 @@ TreeBitstreamText_3f8cd:
 	line "ゆるしてよ"
 	done %111
 
-TreeBitstreamText_3f8f1:
+TreeBitstreamText_3f8f1: ; 3f8f1
 	ctxt "パーツ てなげだん"
 	line "を もらった!"
 	done %00
 
-TreeBitstreamText_3f901:
+TreeBitstreamText_3f901: ; 3f901
 	ctxt "がくせい"
 	line "どう? きげんなおった?"
 	line "とっておきの パーツなんだよ それ"
 	done %0
 
-TreeBitstreamText_3f920:
+TreeBitstreamText_3f920: ; 3f920
 	ctxt "きみ どーせ たいかいに でれない"
 	line "から うだうだ してるんでしょ"
 	line "だったら こくばんは ぜんぶ みた?"
 	line "きっとなにか やくにたつと おもう"
 	done %11
 
-TreeBitstreamText_3f956:
+TreeBitstreamText_3f956: ; 3f956
 	ctxt "なつやすみに がっこうで"
 	line "バトロボ たいかい なんて!"
 	line "みんな ほんとうに すきね"
 	line "それも まいにち!"
 	done %0001
 
-TreeBitstreamText_3f97f:
+TreeBitstreamText_3f97f: ; 3f97f
 	ctxt "きみも ロボポン もってるのか"
 	line "だったら きみも ライバルだね"
 	line "みんなに きいてまわれば"
 	line "ロボポンについて おしえてくれるよ"
 	done %0011111
 
-TreeBitstreamText_3f9b7:
+TreeBitstreamText_3f9b7: ; 3f9b7
 	ctxt "エネだまを たべさせていると"
 	line "ロボポンが ひかることが あるわ"
 	line "それは しんかする だんかいに"
@@ -6084,7 +6084,7 @@ TreeBitstreamText_3f9b7:
 	line "いけば しんか させてもらえるのよ"
 	done
 
-TreeBitstreamText_3fa09:
+TreeBitstreamText_3fa09: ; 3fa09
 	ctxt "さいきん ロボポンに つかれが"
 	line "たまっていると かんじた ときは"
 	line "とうゆを のませれば"
@@ -6095,49 +6095,49 @@ TreeBitstreamText_3fa09:
 	line "ガソリン ハイオクと つづくのよ"
 	done %0011
 
-TreeBitstreamText_3fa6b:
+TreeBitstreamText_3fa6b: ; 3fa6b
 	ctxt "じょうたい いじょうは おもに"
 	line "わざによって ひきおこされるんだ"
 	line "そのなかには かかると ゆうりな"
 	line "ものも あるようだよ"
 	done %01
 
-TreeBitstreamText_3fa9a:
+TreeBitstreamText_3fa9a: ; 3fa9a
 	ctxt "ロボポンが バグにかかると ときどき"
 	line "こうげきする あいてを まちがうぞ"
 	line "つまり じぶんを"
 	line "こうげきしたり するのだー!"
 	done %011100
 
-TreeBitstreamText_3facf:
+TreeBitstreamText_3facf: ; 3facf
 	ctxt "あのね のろいに かかると"
 	line "ターンごとに こうげきりょく"
 	line "ぼうぎょりょく すばやさ の"
 	line "どれかが だんだん ひくくなるのよ"
 	done %01
 
-TreeBitstreamText_3fb02:
+TreeBitstreamText_3fb02: ; 3fb02
 	ctxt "いのりは のろいとは ぎゃくで"
 	line "ターンごとに こうげきりょく"
 	line "ぼうぎょりょく すばやさの 3つ"
 	line "すべてが じょじょに たかくなるわ"
 	done %0
 
-TreeBitstreamText_3fb3a:
+TreeBitstreamText_3fb3a: ; 3fb3a
 	ctxt "バリヤを かければ そのターンのあと"
 	line "じょうたい いじょうに ならない!"
 	line "ただし バリヤを かける まえの"
 	line "じょうたい いじょうも そのままさ"
 	done %0
 
-TreeBitstreamText_3fb74:
+TreeBitstreamText_3fb74: ; 3fb74
 	ctxt "バージョンが たかい ソフトほど"
 	line "ようりょうが おおきいんだ"
 	line "だから きほんてきには パーツの"
 	line "ようりょうも おおきいほうが いい"
 	done %001000
 
-TreeBitstreamText_3fbab:
+TreeBitstreamText_3fbab: ; 3fbab
 	ctxt "ロボポンを 4たい つれている とき"
 	line "あたらしいのを ほかくすると"
 	line "そいつは じどうで そうこに"
@@ -6148,7 +6148,7 @@ TreeBitstreamText_3fbab:
 	line "どこでも よびだせるからな"
 	done
 
-TreeBitstreamText_3fc06:
+TreeBitstreamText_3fc06: ; 3fc06
 	ctxt "ロボポンを ほかく するときに"
 	line "すでに 4たい つれていて"
 	line "さらに そうこが いっぱいだと"
@@ -6157,7 +6157,7 @@ TreeBitstreamText_3fc06:
 	line "どれか1たいを てばなすしか ない"
 	done %0101100
 
-TreeBitstreamText_3fc50:
+TreeBitstreamText_3fc50: ; 3fc50
 	ctxt "このロボポン いうこと きかない!"
 	line "って おもうとき ない?"
 	line "そんなときは チップを"
@@ -6166,31 +6166,31 @@ TreeBitstreamText_3fc50:
 	line "せいかくが わるくなっちゃうのよ!"
 	done %01011
 
-TreeBitstreamText_3fc99:
+TreeBitstreamText_3fc99: ; 3fc99
 	ctxt "ボルトって なまえのつく アイテムは"
 	line "イーピーを かいふく するんだね"
 	done %0000
 
-TreeBitstreamText_3fcb9:
+TreeBitstreamText_3fcb9: ; 3fcb9
 	ctxt "ほかくした ロボポンの なかには"
 	line "めいれいを きかないやつも いるぞ"
 	line "それは きっと ビットチップに"
 	line "げんいんが あるんじゃないか?"
 	done %0
 
-TreeBitstreamText_3fcf1:
+TreeBitstreamText_3fcf1: ; 3fcf1
 	ctxt "ビルに そって うえを みあげれば"
 	line "ヘッドはかせが かおを だすさ"
 	done %1110001
 
-TreeBitstreamText_3fd10:
+TreeBitstreamText_3fd10: ; 3fd10
 	ctxt "ヘッドはかせの ビルって"
 	line "ホントに じゃまだぜ!"
 	line "ばくだんで こわすってのは どうだ?"
 	line "めいあんだと おもうんだが………"
 	done %11
 
-TreeBitstreamText_3fd45:
+TreeBitstreamText_3fd45: ; 3fd45
 	ctxt "このまちは けんきゅう がくえん"
 	line "とし と よばれて いるんだよ"
 	line "まちの なかを きたに いけば"
@@ -6198,35 +6198,35 @@ TreeBitstreamText_3fd45:
 	line "リブラがっこうに いけるよ"
 	done %01100
 
-TreeBitstreamText_3fd83:
+TreeBitstreamText_3fd83: ; 3fd83
 	ctxt "ガーナ?"
 	line "いけ しかないよ あそこ"
 	line "とても ひみつが ある ようには"
 	line "おもえないけどなぁ………"
 	done %011
 
-TreeBitstreamText_3fda8:
+TreeBitstreamText_3fda8: ; 3fda8
 	ctxt "こうげきりょく ぼうぎょりょく"
 	line "すばやさ……"
 	line "この 3つが ロボポンの"
 	line "きほん のうりょくだ"
 	done %1011010
 
-TreeBitstreamText_3fdd3:
+TreeBitstreamText_3fdd3: ; 3fdd3
 	ctxt "ガーナいけ には"
 	line "こんな いいつたえが ある………"
 	line "いまから なんびゃくねんも まえ"
 	line "ガーナには まちが あった と"
 	done %10011
 
-TreeBitstreamText_3fe01:
+TreeBitstreamText_3fe01: ; 3fe01
 	ctxt "バトルで あいてを こうげきするには"
 	line "アタックと わざの 2つがあるの"
 	line "アタックは すべてのロボポンが もつ"
 	line "こうげきで なんどでも つかえるわ"
 	done
 
-TreeBitstreamText_3fe41:
+TreeBitstreamText_3fe41: ; 3fe41
 	ctxt "わたしは きいたことが あるわ"
 	line ""
 	line "むかし ガーナのまち は"
@@ -6239,7 +6239,7 @@ TreeBitstreamText_3fe41:
 	line "ここまでよ"
 	done %01
 
-TreeBitstreamText_3fea5:
+TreeBitstreamText_3fea5: ; 3fea5
 	ctxt "ぞくせい って わかるか?"
 	line "たとえば……"
 	line "りく ぞくせいの やつに うみ"
@@ -6251,7 +6251,7 @@ TreeBitstreamText_3fea5:
 	line "こうか バツグン だったり するのよ"
 	done %0
 
-TreeBitstreamText_3ff0d:
+TreeBitstreamText_3ff0d: ; 3ff0d
 	ctxt "わざを つかうには イーピー つまり"
 	line "エネルギーポイントが ひつよう!"
 	line "それが たりないとき わざは"
@@ -6260,14 +6260,14 @@ TreeBitstreamText_3ff0d:
 	line "なくても つかえるんだよ"
 	done %100110
 
-TreeBitstreamText_3ff5e:
+TreeBitstreamText_3ff5e: ; 3ff5e
 	ctxt "ロボポンには しんか するものと"
 	line "しないものが いるの"
 	line "しんか するものには エネだまを"
 	line "たべさせると いいのよ"
 	done %0100000
 
-TreeBitstreamText_3ff8c:
+TreeBitstreamText_3ff8c: ; 3ff8c
 	ctxt "いま しょうべん してるから"
 	line "てが はなせないんじゃ!"
 	line "え? どこから はなせないかって?"
@@ -6275,7 +6275,7 @@ TreeBitstreamText_3ff8c:
 	line "あんたの くつに かけちゃった!"
 	done
 
-TreeBitstreamText_3ffc5:
+TreeBitstreamText_3ffc5: ; 3ffc5
 	ctxt "おかねが あまってたら けんきゅうに"
 	line "とうし してくれると ありがたいな"
 	line "けんきゅうじょ としては おおいに"
@@ -6283,32 +6283,32 @@ TreeBitstreamText_3ffc5:
 	done %111101010000000000000010000111100111110000011111110001111010100010010111011
 
 SECTION "Tree Bitstream Text 2", ROMX [$4000], BANK [$10]
-TreeBitstreamText_40000:
+TreeBitstreamText_40000: ; 40000
 	ctxt "ふふん どう このまちは?"
 	line "スッキリと ととのって いるでしょ"
 	done %0
 
-TreeBitstreamText_4001a:
+TreeBitstreamText_4001a: ; 4001a
 	ctxt "なんなのよ あのビルは!"
 	line ""
 	line "まちの バランス ってものを"
 	line "かんがえてない! サイテー!"
 	done %00
 
-TreeBitstreamText_4003e:
+TreeBitstreamText_4003e: ; 4003e
 	ctxt "あんたも ロボポンつかい じゃろ?"
 	line ""
 	line "わしらの けんきゅうが すすめば"
 	line "あんたにとっても ために なるぞい"
 	done %01011
 
-TreeBitstreamText_4006b:
+TreeBitstreamText_4006b: ; 4006b
 	ctxt "さいきん そっちの かべのほうが"
 	line "なんか におうんじゃが きのせい?"
 	line "ただのボケかも しれんがの"
 	done %100010
 
-TreeBitstreamText_40094:
+TreeBitstreamText_40094: ; 40094
 	ctxt "どうくつ などで おそってくる"
 	line "ロボポンには じしゃくを つかえ!"
 	line "じしゃくを つかって ほかくすれば"
@@ -6317,13 +6317,13 @@ TreeBitstreamText_40094:
 	line "ほかく できないんだ"
 	done %00101
 
-TreeBitstreamText_400e4:
+TreeBitstreamText_400e4: ; 400e4
 	ctxt "あのビルの せいで うちに ひが"
 	line "あたらないじゃないか!"
 	line "せんたくものが かわかないんだよ"
 	done %1111001
 
-TreeBitstreamText_4010a:
+TreeBitstreamText_4010a: ; 4010a
 	ctxt "ほかくに しっぱい することは"
 	line "ないかい?"
 	line "じしゃくを つかって"
@@ -6334,7 +6334,7 @@ TreeBitstreamText_4010a:
 	line "せいこう しやすいんだ"
 	done
 
-TreeBitstreamText_40164:
+TreeBitstreamText_40164: ; 40164
 	ctxt "みず と あぶら って まさに"
 	line "せいはんたいの せいしつ だわ"
 	line "みずには でんきが いい!"
@@ -6343,14 +6343,14 @@ TreeBitstreamText_40164:
 	line "あぶらには みずが ダメ!"
 	done %111
 
-TreeBitstreamText_401ae:
+TreeBitstreamText_401ae: ; 401ae
 	ctxt "あのビルって みんなが"
 	line "いうほど わるくないと おもうわ"
 	line "うちは べつに めいわくしてないし"
 	line "まちのシンボルに なるじゃない"
 	done %011
 
-TreeBitstreamText_401e1:
+TreeBitstreamText_401e1: ; 401e1
 	ctxt "ロボポンは じしゃくを つかえば"
 	line "つかまえられるのだ!"
 	line "じしゃくには なんしゅるいか あって"
@@ -6359,26 +6359,26 @@ TreeBitstreamText_401e1:
 	line "つかまえやすい ってこと!"
 	done %010011
 
-TreeBitstreamText_4022d:
+TreeBitstreamText_4022d: ; 4022d
 	ctxt "このまちの いえの たかさや"
 	line "かんかくは みんなで きめたんじゃ"
 	line "どのいえも ひあたりは さいこうでな"
 	line "すみよい まちに なったもんじゃ"
 	done %01
 
-TreeBitstreamText_40261:
+TreeBitstreamText_40261: ; 40261
 	ctxt "みんなに ことわりもなく あんな"
 	line "ものを たてて どういうつもりだ"
 	done %1101
 
-TreeBitstreamText_4027b:
+TreeBitstreamText_4027b: ; 4027b
 	ctxt "ガールズ8って しってる?"
 	line ""
 	line "レアなロボポンが だいすきな"
 	line "8にんぐみの おんなのコのことさ"
 	done %1110101
 
-TreeBitstreamText_402a7:
+TreeBitstreamText_402a7: ; 402a7
 	ctxt "ビスコを へ とも おもわない"
 	line "おとこ それが わたしだ"
 	line "いつでも こい この スカポンタン"
@@ -6387,7 +6387,7 @@ TreeBitstreamText_402a7:
 	line "             ください"
 	done %0
 
-TreeBitstreamText_402e4:
+TreeBitstreamText_402e4: ; 402e4
 	ctxt "ロボポンには アーム ムーブ ブート"
 	line "という 3つのしゅぞくが ある"
 	line "それぞれの もつ とくちょうは"
@@ -6402,7 +6402,7 @@ TreeBitstreamText_402e4:
 	line "とても じょうぶに できている"
 	done %1000100
 
-TreeBitstreamText_40371:
+TreeBitstreamText_40371: ; 40371
 	ctxt "シーピーユーは ビットすう が"
 	line "おおきいほど ロボポンが つよい"
 	line "また パーツを ロボポンに そうび"
@@ -6415,7 +6415,7 @@ TreeBitstreamText_40371:
 	line "パーツは 1つだけである"
 	done %100011
 
-TreeBitstreamText_40405:
+TreeBitstreamText_40405: ; 40405
 	ctxt "1つのソフトには 1つの わざが"
 	line "はいっていると かんがえて よい"
 	line "また どのパーツも ソフトを"
@@ -6428,7 +6428,7 @@ TreeBitstreamText_40405:
 	line "とくちょうある わざが うまれる?"
 	done %101101
 
-TreeBitstreamText_40491:
+TreeBitstreamText_40491: ; 40491
 	ctxt "    ようりょう とは?"
 	line ""
 	line "パーツは かいものカゴ ソフトは"
@@ -6447,7 +6447,7 @@ TreeBitstreamText_40491:
 	line "はいらない これ じょうしき"
 	done %1
 
-TreeBitstreamText_40542:
+TreeBitstreamText_40542: ; 40542
 	ctxt "じょうたい いじょう……"
 	line ""
 	line "それは ロボポンの からだが"
@@ -6458,14 +6458,14 @@ TreeBitstreamText_40542:
 	line "バグ バリヤ……の7つである"
 	done %000100
 
-TreeBitstreamText_4059e:
+TreeBitstreamText_4059e: ; 4059e
 	ctxt "こくばんは みた?"
 	line "ロボポンのことが いっぱい"
 	line "かいてあるよ でも きみには"
 	line "ちょっと むずかしい かもね"
 	done %0
 
-TreeBitstreamText_405cb:
+TreeBitstreamText_405cb: ; 405cb
 	ctxt "    ほんじつの テーマ"
 	line "   ぞくせい とは なにか?"
 	line "1 ロボポンには ぼうぎょぞくせい"
@@ -6478,14 +6478,14 @@ TreeBitstreamText_405cb:
 	line "ゆうり ふり を もたらすのである"
 	done %1
 
-TreeBitstreamText_40659:
+TreeBitstreamText_40659: ; 40659
 	ctxt "うつくしいじゃろ この まちの"
 	line "はなも みずも きも……"
 	line "しかし いつまでも このままで"
 	line "いられるのじゃろうか?"
 	done %1
 
-TreeBitstreamText_40685:
+TreeBitstreamText_40685: ; 40685
 	ctxt "おまえのロボポン つよいか?"
 	line ""
 	line "そうでもない と おもうなら"
@@ -6494,18 +6494,18 @@ TreeBitstreamText_40685:
 	line "かって パワーアップ するんだな"
 	done %1100101
 
-TreeBitstreamText_406ce:
+TreeBitstreamText_406ce: ; 406ce
 	ctxt "ギョエーッ! なんだ このリンゴは!"
 	line "か かじると ち ちが でてくる!"
 	line "ええっ!? ウッソーン!!"
 	line "わしの はぐきが よわい だけ!?"
 	done %011
 
-TreeBitstreamText_40707:
+TreeBitstreamText_40707: ; 40707
 	ctxt "ロボポンドームは このさきよ"
 	done %1
 
-TreeBitstreamText_40716:
+TreeBitstreamText_40716: ; 40716
 	ctxt "テールおうじの まえの"
 	line "グレイテスト1 って しってる?"
 	line "ドクターなんとか っていう ひと"
@@ -6519,12 +6519,12 @@ TreeBitstreamText_40716:
 	line "なにか あったのかな?"
 	done %10
 
-TreeBitstreamText_4079a:
+TreeBitstreamText_4079a: ; 4079a
 	ctxt "ほんっと おんなの このみ って"
 	line "わっかんないよなぁ"
 	done %1101100
 
-TreeBitstreamText_407af:
+TreeBitstreamText_407af: ; 407af
 	ctxt "ダースひめ もう さいこうッスよ!"
 	line "テールおうじが うらやましいッス!"
 	line "ぜっせいの びじょ っていうのは"
@@ -6534,14 +6534,14 @@ TreeBitstreamText_407af:
 	line "ポヨヨヨーン!"
 	done %111111
 
-TreeBitstreamText_4080f:
+TreeBitstreamText_4080f: ; 4080f
 	ctxt "テールおうじ って クールで"
 	line "とーっても ステキよぉ!"
 	line "あんたなんか てんで くらべものに"
 	line "ならないくらい ステキなんだから!"
 	done %10
 
-TreeBitstreamText_40843:
+TreeBitstreamText_40843: ; 40843
 	ctxt "テールさまの おすがた さいきん"
 	line "ぜんぜん みてないわ…… んもう"
 	line "おしろと ドームに いりびたりみたい"
@@ -6549,7 +6549,7 @@ TreeBitstreamText_40843:
 	line "どうしてるのかしら………………"
 	done
 
-TreeBitstreamText_40883:
+TreeBitstreamText_40883: ; 40883
 	ctxt "まえに こくおうが グレイテスト1を"
 	line "かけて たたかったんだけどさ"
 	line "あいては たしか ドクターなんとか"
@@ -6562,14 +6562,14 @@ TreeBitstreamText_40883:
 	line "じけんが おこったんだと おもうね"
 	done %100
 
-TreeBitstreamText_4090e:
+TreeBitstreamText_4090e: ; 4090e
 	ctxt "あっ おにいちゃん ようこそ!"
 	line ""
 	line "まあ たいしたものは ないけど"
 	line "ゆっくり なかでも みてってよ"
 	done %101011
 
-TreeBitstreamText_40933:
+TreeBitstreamText_40933: ; 40933
 	ctxt "このゲーム……"
 	line "              あ!!"
 	line "いや この くにでは かってな"
@@ -6584,14 +6584,14 @@ TreeBitstreamText_40933:
 	line "ゆうかいと おなじ だからね!"
 	done %10
 
-TreeBitstreamText_409c8:
+TreeBitstreamText_409c8: ; 409c8
 	ctxt "つまり ぼうそうぞくに ついほう"
 	line "されたって ことよね わたしたち…"
 	line "このぶんだと おそらく よのなかに"
 	line "きまり なんて ものは ないわね"
 	done
 
-TreeBitstreamText_409fd:
+TreeBitstreamText_409fd: ; 409fd
 	ctxt "キミが ぼうそうぞくの リーダーを"
 	line "やっつけて くれたの?"
 	line "とにかく ありがとう!"
@@ -6600,14 +6600,14 @@ TreeBitstreamText_409fd:
 	line "ないかも って おもっちゃうわね"
 	done %00010
 
-TreeBitstreamText_40a41:
+TreeBitstreamText_40a41: ; 40a41
 	ctxt "ここは けんきゅうじょ だよ"
 	line "ロボポンの かいはつを してるんだ"
 	line "ここ いがいにも ロボポンの"
 	line "けんきゅうじょは いっぱい あるよ"
 	done %100
 
-TreeBitstreamText_40a7a:
+TreeBitstreamText_40a7a: ; 40a7a
 	ctxt "いどが あるから なんとか"
 	line "ここでも いきて いけるけど………"
 	line "すでに ここが いどの なか"
@@ -6616,7 +6616,7 @@ TreeBitstreamText_40a7a:
 	line "わたしと どっちが しあわせかしら"
 	done %011001
 
-TreeBitstreamText_40ac2:
+TreeBitstreamText_40ac2: ; 40ac2
 	ctxt "ありがとう! キミには"
 	line "たすけて もらって ばっかりね"
 	line "ちじょうに もどっても いえが"
@@ -6625,7 +6625,7 @@ TreeBitstreamText_40ac2:
 	line "……たいようが まぶしいだろうな"
 	done
 
-TreeBitstreamText_40b0e:
+TreeBitstreamText_40b0e: ; 40b0e
 	ctxt "アイテムやも パーツやも"
 	line "もうかってんだろなー!"
 	line "オラッチは とおーい くにで"
@@ -6635,14 +6635,14 @@ TreeBitstreamText_40b0e:
 	line "かなしー!"
 	done %1101
 
-TreeBitstreamText_40b59:
+TreeBitstreamText_40b59: ; 40b59
 	ctxt "ちぇっ グレイテストじゃないと"
 	line "ランキングせん には でれないんだ"
 	line "せっかく ロボポン きたえてきたのに"
 	line "………がっくし"
 	done %010011
 
-TreeBitstreamText_40b8e:
+TreeBitstreamText_40b8e: ; 40b8e
 	ctxt "すべてのグレイテストの"
 	line "ちょうてん グレイテスト1には"
 	line "ウイニングローレルっていう"
@@ -6650,37 +6650,37 @@ TreeBitstreamText_40b8e:
 	line "いまは テールおうじが もってるのよ"
 	done %110
 
-TreeBitstreamText_40bcd:
+TreeBitstreamText_40bcd: ; 40bcd
 	ctxt "はいはい ここは おやくそくの"
 	line "いど だよ"
 	line "みずが ないと いきていけないのは"
 	line "みんな おなじ!"
 	done %01
 
-TreeBitstreamText_40bf2:
+TreeBitstreamText_40bf2: ; 40bf2
 	ctxt "きれいな まちだろ?"
 	line "いや じつに すばらしいね"
 	line "ただ あの なまいきな おうじは"
 	line "かんべん してほしい けどな"
 	done %111
 
-TreeBitstreamText_40c1e:
+TreeBitstreamText_40c1e: ; 40c1e
 	ctxt "おまえは みるからに いっぱんじん!"
 	line "さあ かえれ かえれ!"
 	done %10
 
-TreeBitstreamText_40c37:
+TreeBitstreamText_40c37: ; 40c37
 	ctxt "おまえに ようが あっても こっちは"
 	line "ようが ない!"
 	line "さあ かえった かえった!"
 	done %0111
 
-TreeBitstreamText_40c56:
+TreeBitstreamText_40c56: ; 40c56
 	ctxt "いっぱんじんは たちいり きんしだ!"
 	line "しゃがんでも とんでも ダメだぞ!"
 	done %01000
 
-TreeBitstreamText_40c77:
+TreeBitstreamText_40c77: ; 40c77
 	ctxt "たいへんだ たいへんだ!"
 	line "ロボポンドームが たいへんだ!"
 	line "テールおうじと ドクターゼロの"
@@ -6689,7 +6689,7 @@ TreeBitstreamText_40c77:
 	line "…………ホント いちだいじ だ!"
 	done
 
-TreeBitstreamText_40ccc:
+TreeBitstreamText_40ccc: ; 40ccc
 	ctxt "へい らっしゃい!"
 	line "オイラは いつもここで おるすばん"
 	line "だから もう さびしくてよぉ"
@@ -6702,20 +6702,20 @@ TreeBitstreamText_40ccc:
 	line "よーく おぼえて おきなよ!"
 	done %110011
 
-TreeBitstreamText_40d52:
+TreeBitstreamText_40d52: ; 40d52
 	ctxt "ひとびとの ゆめ! グレイテスト!"
 	line "もえよ チャレンジャー!"
 	line "かちつづけて トップを めざせ!"
 	line "まけるな チャレンジャーよ!"
 	done %001001
 
-TreeBitstreamText_40d8c:
+TreeBitstreamText_40d8c: ; 40d8c
 	ctxt "テールおうじ"
 	line "ここから ながめる ランキングせんは"
 	line "はくりょくまんてんだ!!"
 	done
 
-TreeBitstreamText_40dac:
+TreeBitstreamText_40dac: ; 40dac
 	ctxt "ダースひめ"
 	line "ロボポンどうしの ランキングせんが"
 	line "おこなわれている……ということは"
@@ -6723,7 +6723,7 @@ TreeBitstreamText_40dac:
 	line "へいわ だということです"
 	done %1101111
 
-TreeBitstreamText_40de3:
+TreeBitstreamText_40de3: ; 40de3
 	ctxt "パラボラアンテナの あるいえって"
 	line "ひとの でいりが ないんだよ"
 	line "………あとさ さいきん わかい"
@@ -6731,7 +6731,7 @@ TreeBitstreamText_40de3:
 	line "………そう おもわないか?"
 	done %10
 
-TreeBitstreamText_40e1f:
+TreeBitstreamText_40e1f: ; 40e1f
 	ctxt "あの ほうそうきょくは いったい"
 	line "なんの ほうそうを してるの?"
 	line "パラボラアンテナのある いえ しか"
@@ -6739,14 +6739,14 @@ TreeBitstreamText_40e1f:
 	line "なんだか ちょっと ブキミだわ………"
 	done
 
-TreeBitstreamText_40e63:
+TreeBitstreamText_40e63: ; 40e63
 	ctxt "さいきん わかい おんなのコ たちが"
 	line "あいてに してくれないんです………"
 	line "きっと あの アムロン っていう"
 	line "アイドルに むちゅう なんです"
 	done
 
-TreeBitstreamText_40e9a:
+TreeBitstreamText_40e9a: ; 40e9a
 	ctxt "なーんか さいきんの おんなのコ"
 	line "って みんな おなじに みえるぞ"
 	line "かのじょたち から みれば おれも"
@@ -6755,7 +6755,7 @@ TreeBitstreamText_40e9a:
 	line "ちがうんだよなぁ たぶん"
 	done %11100
 
-TreeBitstreamText_40ee8:
+TreeBitstreamText_40ee8: ; 40ee8
 	ctxt "バタロボっていう とても つよくて"
 	line "たよりになる たべものが ある!"
 	line "しかも ギャルの あいだで"
@@ -6769,7 +6769,7 @@ TreeBitstreamText_40ee8:
 	line "わたしだって むかしは ヤングだ"
 	done %1
 
-TreeBitstreamText_40f67:
+TreeBitstreamText_40f67: ; 40f67
 	ctxt "おんなのコたちが バトロボねぇ"
 	line "アムロンの えいきょう でしょ"
 	line "みたこと ないけど 24じかん"
@@ -6778,7 +6778,7 @@ TreeBitstreamText_40f67:
 	line "このブームは ほんものかも!!"
 	done %11111
 
-TreeBitstreamText_40fbf:
+TreeBitstreamText_40fbf: ; 40fbf
 	ctxt "バンザむらの かいがんには"
 	line "いろんなものが おっこちてるよ!"
 	line "きれい なんだか きたないんだか"
@@ -6788,7 +6788,7 @@ TreeBitstreamText_40fbf:
 	line "いちど いってみると いいよ"
 	done %0
 
-TreeBitstreamText_41013:
+TreeBitstreamText_41013: ; 41013
 	ctxt "ここは でんぱの とびかう"
 	line "カリーユまち だ"
 	line "さいきん まちの はやりは"
@@ -6797,14 +6797,14 @@ TreeBitstreamText_41013:
 	line "カンテラやも きになる ところだ!"
 	done
 
-TreeBitstreamText_4105d:
+TreeBitstreamText_4105d: ; 4105d
 	ctxt "ここの まちのひと って"
 	line "かわいそうよね!"
 	line "たかい たてものが ひかげに なって"
 	line "せんたくものが かわかないから!"
 	done %00
 
-TreeBitstreamText_41088:
+TreeBitstreamText_41088: ; 41088
 	ctxt "ここは でんぱの とびかってた"
 	line "カリーユまちだ"
 	line "でも いまは あの ほうそうとうは"
@@ -6813,21 +6813,21 @@ TreeBitstreamText_41088:
 	line "でてきて いまは かっきが あるよ"
 	done %110
 
-TreeBitstreamText_410cf:
+TreeBitstreamText_410cf: ; 410cf
 	ctxt "さいきん あの ほうそうとうを"
 	line "つかった テレビが おわったの"
 	line "けど こんどは とても じゃまに"
 	line "なってくるのよね きぶんてきに"
 	done %011
 
-TreeBitstreamText_41102:
+TreeBitstreamText_41102: ; 41102
 	ctxt "アムロンが いなくなったけど"
 	line "ロボポンブームは かわらないなぁ"
 	line "あいかわらず おんなのコたちは"
 	line "あいてに してくれない……"
 	done %101
 
-TreeBitstreamText_41136:
+TreeBitstreamText_41136: ; 41136
 	ctxt "さいきん きゅうに おんなのコを"
 	line "たくさん みかけるように なったよ"
 	line "アンテナつきの いえの ひとも"
@@ -6835,7 +6835,7 @@ TreeBitstreamText_41136:
 	line "まちが いきかえったって かんじだ"
 	done %1
 
-TreeBitstreamText_41177:
+TreeBitstreamText_41177: ; 41177
 	ctxt "いいチップを つんでいる"
 	line "ロボポンは ポンド"
 	line "わるいチップを つんでいる"
@@ -6848,7 +6848,7 @@ TreeBitstreamText_41177:
 	line "ひしひしと つたわってくるのよね"
 	done %111011
 
-TreeBitstreamText_411eb:
+TreeBitstreamText_411eb: ; 411eb
 	ctxt "ロボポンの ステータス ウインドゥを"
 	line "ひらいて みなされ!"
 	line "チップのよこに マル があれば"
@@ -6861,7 +6861,7 @@ TreeBitstreamText_411eb:
 	line "てにおえないのが けってんじゃ"
 	done %11
 
-TreeBitstreamText_41271:
+TreeBitstreamText_41271: ; 41271
 	ctxt "ルードロボポンって"
 	line "ほんとに そだてにくいよなぁ"
 	line "でさぁ チップを かえるのも"
@@ -6874,12 +6874,12 @@ TreeBitstreamText_41271:
 	line "はけんすれば いいんだよ!"
 	done %1
 
-TreeBitstreamText_412d6:
+TreeBitstreamText_412d6: ; 412d6
 	ctxt "クマのぬいぐるみを みかけたら"
 	line "しらべてみたほうが いいよ"
 	done %01110
 
-TreeBitstreamText_412f0:
+TreeBitstreamText_412f0: ; 412f0
 	ctxt "きょうらんの インテリげんちゃん"
 	line "とか いう かがくしゃ しってる?"
 	line "かなり ヤバイ かがくしゃ で"
@@ -6888,7 +6888,7 @@ TreeBitstreamText_412f0:
 	line "マスタークラス だったって"
 	done
 
-TreeBitstreamText_4133b:
+TreeBitstreamText_4133b: ; 4133b
 	ctxt "アーロハァー!"
 	line "ウオェェェーーーーーッ!"
 	line "ところで シッテルかーい?"
@@ -6897,7 +6897,7 @@ TreeBitstreamText_4133b:
 	line "このむら しゅっしん なんだー"
 	done %00110
 
-TreeBitstreamText_41373:
+TreeBitstreamText_41373: ; 41373
 	ctxt "アーロハァー!"
 	line "ウオェェェーーーーーッ!"
 	line "ところで アムロンが このむらに"
@@ -6905,7 +6905,7 @@ TreeBitstreamText_41373:
 	line "めでたい なーっと!"
 	done %0111
 
-TreeBitstreamText_413a9:
+TreeBitstreamText_413a9: ; 413a9
 	ctxt "このむらに この ほうそうとうって"
 	line "チョー いみ ありげ じゃない?"
 	line "てゆーか てゆーか!"
@@ -6914,7 +6914,7 @@ TreeBitstreamText_413a9:
 	line "はいっていくの みたこと あるしぃ"
 	done %10110
 
-TreeBitstreamText_413f4:
+TreeBitstreamText_413f4: ; 413f4
 	ctxt "このむらに あの ほうそうとうって"
 	line "やっぱ ういてると おもったしー"
 	line "てゆーか てゆーか!"
@@ -6925,7 +6925,7 @@ TreeBitstreamText_413f4:
 	line "ほうそうとう なくなってるしー"
 	done %11001
 
-TreeBitstreamText_4144f:
+TreeBitstreamText_4144f: ; 4144f
 	ctxt "いやぁ きもちが いいね!"
 	line "うみは ひろくて おおきいなぁ"
 	line "ウチは せまくて ちいさいなぁ"
@@ -6933,14 +6933,14 @@ TreeBitstreamText_4144f:
 	line "……わらえないな これじゃ"
 	done %1101
 
-TreeBitstreamText_4147f:
+TreeBitstreamText_4147f: ; 4147f
 	ctxt "くらい どうくつには カンテラ1ばん"
 	line "カステラ2ばん………"
 	line "きみは これから くらい どうくつに"
 	line "いきそうな きがするのさ……"
 	done %110001
 
-TreeBitstreamText_414b4:
+TreeBitstreamText_414b4: ; 414b4
 	ctxt "なみの おとを きいていると"
 	line "ふるい おもいでが よみがえるわ"
 	line "こどもの ころ カンテラもって"
@@ -6949,7 +6949,7 @@ TreeBitstreamText_414b4:
 	line "きおく しか ないけどね"
 	done
 
-TreeBitstreamText_414f9:
+TreeBitstreamText_414f9: ; 414f9
 	ctxt "ヒュー! ニコニコぞく って"
 	line "めいわくだけど カッコいいよねー!"
 	line "しょうらいは めいわくを かけない"
@@ -6958,21 +6958,21 @@ TreeBitstreamText_414f9:
 	line "……すみません しつれいしました!"
 	done %0010011
 
-TreeBitstreamText_41548:
+TreeBitstreamText_41548: ; 41548
 	ctxt "ヒュー! ロケンローラーなら きっと"
 	line "めいわくには ならないよね!"
 	line "ボクも しょうらいは ニコニコの"
 	line "ロケンローラーに なりたいな"
 	done %1
 
-TreeBitstreamText_4157e:
+TreeBitstreamText_4157e: ; 4157e
 	ctxt "アイテムの デフラグ は スゲーぞ"
 	line ""
 	line "せんとうふのう いがいなら どんな"
 	line "じょうたい いじょうも なおるんだ"
 	done %1111
 
-TreeBitstreamText_415ac:
+TreeBitstreamText_415ac: ; 415ac
 	ctxt "なんとかメモリー って アイテムは"
 	line "ぜんぶで 5しゅるい あってね!"
 	line "それを つかうと ロボポンの"
@@ -6980,26 +6980,26 @@ TreeBitstreamText_415ac:
 	line "たぶん とても たかいんだろうね!"
 	done %101
 
-TreeBitstreamText_415f3:
+TreeBitstreamText_415f3: ; 415f3
 	ctxt "サブバッテリー って しってる?"
 	line ""
 	line "あれは ていし などの じょうたい"
 	line "いじょうを かいふく できるのよん"
 	done %1100001
 
-TreeBitstreamText_4161d:
+TreeBitstreamText_4161d: ; 4161d
 	ctxt "あなほりモグラ で ダンジョンから"
 	line "ぬけだせるのは なぜ?"
 	done %0000001
 
-TreeBitstreamText_4163b:
+TreeBitstreamText_4163b: ; 4163b
 	ctxt "ヒットポイントと イーピーの"
 	line "りょうほうを いっきに かいふく!"
 	line "それが ハイドロシステム などの"
 	line "システムけい アイテムってわけだ"
 	done %00
 
-TreeBitstreamText_41675:
+TreeBitstreamText_41675: ; 41675
 	ctxt "キャロルむらに ようこそ!"
 	line ""
 	line "イヤー あんたも ぼうそうぞくに"
@@ -7009,28 +7009,28 @@ TreeBitstreamText_41675:
 	line "そりゃ もう だいメーワクさ!"
 	done
 
-TreeBitstreamText_416c4:
+TreeBitstreamText_416c4: ; 416c4
 	ctxt "あいつら いつも クールスまちの"
 	line "ほうから くーるす!!"
 	line "いや じょうだん じゃなくて"
 	line "ホントだってば!!"
 	done
 
-TreeBitstreamText_416f0:
+TreeBitstreamText_416f0: ; 416f0
 	ctxt "クールスは まちの クセに"
 	line "キャロルむら より さびれてるわ"
 	line "いいかげん クールスむら に"
 	line "したほうが いいのにね"
 	done %1
 
-TreeBitstreamText_41721:
+TreeBitstreamText_41721: ; 41721
 	ctxt "クールスまちには いかない ほうが"
 	line "いいわ………"
 	line "なーんて いわれると あなた もう"
 	line "いてもたっても いられないでしょ?"
 	done %1
 
-TreeBitstreamText_4174d:
+TreeBitstreamText_4174d: ; 4174d
 	ctxt "ちょっと まちなさいよ あんた!"
 	line ""
 	line "こんな いいオンナに こえ かけて"
@@ -7043,45 +7043,45 @@ TreeBitstreamText_4174d:
 	line "     とかさ!"
 	done %0100
 
-TreeBitstreamText_417c2:
+TreeBitstreamText_417c2: ; 417c2
 	ctxt "いいか ニコニコぞくの リーダーは"
 	line "メッチャクチャ つよいぞ!"
 	line "グレイテストにも ランクインしている"
 	line "そうとうな ロボポンつかい なんだ"
 	done %00111
 
-TreeBitstreamText_41800:
+TreeBitstreamText_41800: ; 41800
 	ctxt "となりに アポロようさい っていう"
 	line "とんでもなくデカイ きちが ある"
 	done
 
-TreeBitstreamText_4181e:
+TreeBitstreamText_4181e: ; 4181e
 	ctxt "カマットを たおしたのは キミか!"
 	line "いやー たいしたもんだ!"
 	done
 
-TreeBitstreamText_41836:
+TreeBitstreamText_41836: ; 41836
 	ctxt "アポロようさい を うごかす"
 	line "さいこう しどうしゃ!!!"
 	line "……それが グレイテスト"
 	line "ナンバー4の カマットさんだ!"
 	done %111
 
-TreeBitstreamText_41867:
+TreeBitstreamText_41867: ; 41867
 	ctxt "き きみが カマットを"
 	line "やっつけたのかー!?"
 	line "す すごいや! カマットなんか"
 	line "かまっとられないね!"
 	done %1101010
 
-TreeBitstreamText_41890:
+TreeBitstreamText_41890: ; 41890
 	ctxt "ここ さいきん わかものの"
 	line "まちばなれが ひどくてねぇ"
 	line "みんな アポロようさい に"
 	line "いって しまうのさ………"
 	done %0101110
 
-TreeBitstreamText_418bd:
+TreeBitstreamText_418bd: ; 418bd
 	ctxt "やっぱり ロボポンに ぶそうさせる"
 	line "なんて やめたほうが よかったのよ"
 	line "ロボポンを せんそうに つかうなんて"
@@ -7089,7 +7089,7 @@ TreeBitstreamText_418bd:
 	line "おばさん そうおもう!"
 	done %11
 
-TreeBitstreamText_41903:
+TreeBitstreamText_41903: ; 41903
 	ctxt "いまのところ アポロようさいに"
 	line "おおきな うごきは ないけど……"
 	line "カマットは ポロンボとうを しはい"
@@ -7103,32 +7103,32 @@ TreeBitstreamText_41903:
 	line "………ガキに いっても しかたねぇか"
 	done %00
 
-TreeBitstreamText_41982:
+TreeBitstreamText_41982: ; 41982
 	ctxt "あんちゃんか? カマットを たおした"
 	line "っちゅうのは?!"
 	line "え みかけによらず やるじゃねぇか"
 	done
 
-TreeBitstreamText_419a8:
+TreeBitstreamText_419a8: ; 419a8
 	ctxt "カマットって みたこと ある?"
 	line "ボク しってるんだー"
 	line "おんな みたいな おとこ なんだよ"
 	line "つまり オ カ マ!"
 	done %000
 
-TreeBitstreamText_419d2:
+TreeBitstreamText_419d2: ; 419d2
 	ctxt "ロボポンが にんげんの てきに"
 	line "なるなんて イヤよ!"
 	line "ずっと なかよく していたいのに"
 	line "………………"
 	done %101000
 
-TreeBitstreamText_419fb:
+TreeBitstreamText_419fb: ; 419fb
 	ctxt "これで カマットが おとなしくなれば"
 	line "ひとまず あんしんだわ………ね?"
 	done %01110
 
-TreeBitstreamText_41a1a:
+TreeBitstreamText_41a1a: ; 41a1a
 	ctxt "アポロようさいの おかげで"
 	line "わたしたち あんしんして くらせる"
 	line "このまちに すんでて よかった!"
@@ -7136,19 +7136,19 @@ TreeBitstreamText_41a1a:
 	line "イケてない へいたい ね"
 	done %001111
 
-TreeBitstreamText_41a56:
+TreeBitstreamText_41a56: ; 41a56
 	ctxt "やっぱ これからは ビジュアルけい"
 	line "だよな カマットさん みたいにさ"
 	done %10001
 
-TreeBitstreamText_41a76:
+TreeBitstreamText_41a76: ; 41a76
 	ctxt "やっぱ これからは"
 	line "ビジュアルだけじゃ ダメだな"
 	line "よのなか ふけいきだし……"
 	line "しょくにんが いいのかな?"
 	done %01000
 
-TreeBitstreamText_41aa5:
+TreeBitstreamText_41aa5: ; 41aa5
 	ctxt "さいきん きみのような こどもの"
 	line "にゅうたい しがんしゃが ふえたよ"
 	line "わらっちゃうよ このよに"
@@ -7159,7 +7159,7 @@ TreeBitstreamText_41aa5:
 	line "ゆめの らくえんを つくるのさ"
 	done %1111010
 
-TreeBitstreamText_41b00:
+TreeBitstreamText_41b00: ; 41b00
 	ctxt "きみは じぶんの やってることを"
 	line "しんじて いるのかい?"
 	line "ただしいこと なんて じぶんで"
@@ -7170,7 +7170,7 @@ TreeBitstreamText_41b00:
 	line "きみを たたえて くれるからね"
 	done %01
 
-TreeBitstreamText_41b5f:
+TreeBitstreamText_41b5f: ; 41b5f
 	ctxt "なんでも かんでも ロボポンで"
 	line "かいけつ できるの?!"
 	line "いったい どうなってるんだろう"
@@ -7181,7 +7181,7 @@ TreeBitstreamText_41b5f:
 	line "ぜったいに わすれちゃ いけない!"
 	done %101
 
-TreeBitstreamText_41bc2:
+TreeBitstreamText_41bc2: ; 41bc2
 	ctxt "だれか カマットを とめろ!"
 	line ""
 	line "あいつは とんでもない ことを"
@@ -7197,14 +7197,14 @@ TreeBitstreamText_41bc2:
 	line "オレは カネが ないから ダメよ!"
 	done %101000
 
-TreeBitstreamText_41c4a:
+TreeBitstreamText_41c4a: ; 41c4a
 	ctxt "ばくはつ じけんの あと このまちは"
 	line "ガーナいけ に のみこまれたんだ"
 	line "そりゃ もう たいへんなモンさ!"
 	line "ディープインパクトって かんじ!!"
 	done %11
 
-TreeBitstreamText_41c86:
+TreeBitstreamText_41c86: ; 41c86
 	ctxt "おー よく きたな しんいり!"
 	line "ゆだんして おぼれ しぬなよ"
 	line "われわれが なんびゃくねんも"
@@ -7218,7 +7218,7 @@ TreeBitstreamText_41c86:
 	line "かしてやろうか?"
 	done %1
 
-TreeBitstreamText_41d0d:
+TreeBitstreamText_41d0d: ; 41d0d
 	ctxt "オレの シュノーケル うらも"
 	line "こってて おしゃれなんだ!"
 	line "みてごらん えが かいてあっ……"
@@ -7226,7 +7226,7 @@ TreeBitstreamText_41d0d:
 	line "く くるしいっ…………"
 	done %0
 
-TreeBitstreamText_41d47:
+TreeBitstreamText_41d47: ; 41d47
 	ctxt "ばくだん? そうだなぁ…………"
 	line ""
 	line "あった としても ながい あいだ"
@@ -7235,7 +7235,7 @@ TreeBitstreamText_41d47:
 	line "おもうんだけどなぁ………"
 	done %0
 
-TreeBitstreamText_41d81:
+TreeBitstreamText_41d81: ; 41d81
 	ctxt "むかし この まちで つくっていた"
 	line "ばくだんは すごかったんですって"
 	line "おおきな せんかんや せんしゃを"
@@ -7244,7 +7244,7 @@ TreeBitstreamText_41d81:
 	line "って はなしを きいたことがあるわ"
 	done %1110101
 
-TreeBitstreamText_41dce:
+TreeBitstreamText_41dce: ; 41dce
 	ctxt "チクショー さっきの ガキ"
 	line "すきやきセット もってたな!"
 	line "いいなぁ ぎゅうにく………"
@@ -7253,7 +7253,7 @@ TreeBitstreamText_41dce:
 	line "にく ってものを たべてみたいなぁ"
 	done %1
 
-TreeBitstreamText_41e16:
+TreeBitstreamText_41e16: ; 41e16
 	ctxt "むかし このまちは ばくだんの"
 	line "せいぞうで さかえて いたんじゃ"
 	line "しかし すうひゃくねん まえに"
@@ -7261,7 +7261,7 @@ TreeBitstreamText_41e16:
 	line "いまは みずのなかじゃ………"
 	done %111111
 
-TreeBitstreamText_41e56:
+TreeBitstreamText_41e56: ; 41e56
 	ctxt "おまえは オレの せなかに"
 	line "はなしかける……… なぜだ?"
 	line "オトコは せなかで かたる"
@@ -7271,12 +7271,12 @@ TreeBitstreamText_41e56:
 	line "おまえ たいした カオじゃないな"
 	done %0011
 
-TreeBitstreamText_41eb0:
+TreeBitstreamText_41eb0: ; 41eb0
 	ctxt "ああ もういちど ちじょうが"
 	line "みたい ウッウッウッ………"
 	done %010
 
-TreeBitstreamText_41ec7:
+TreeBitstreamText_41ec7: ; 41ec7
 	ctxt "おばあちゃん いつも おなじこと"
 	line "ばっかり いってるの"
 	line "それなら じりきで なんとか"
@@ -7285,7 +7285,7 @@ TreeBitstreamText_41ec7:
 	line "みんな ふっとばしちゃえ!"
 	done %0010010
 
-TreeBitstreamText_41f0a:
+TreeBitstreamText_41f0a: ; 41f0a
 	ctxt "うちは せんぞ だいだい"
 	line "ばくは しょくにん なのさ!"
 	line "でも この みずの なかじゃあ"
@@ -7296,21 +7296,21 @@ TreeBitstreamText_41f0a:
 	line "どこに しまったかな………"
 	done %1
 
-TreeBitstreamText_41f57:
+TreeBitstreamText_41f57: ; 41f57
 	ctxt "………ねむーい"
 	line "みずのなか だと なにも できない"
 	line "だから まいにち ねてるのよ"
 	line "あー ときめきたい………"
 	done %0011110
 
-TreeBitstreamText_41f81:
+TreeBitstreamText_41f81: ; 41f81
 	ctxt "あー もう! せかいが せまいと"
 	line "たいくつな にんげんに なりそう!"
 	line "もっと いろんなものに ふれたい!"
 	line "もっと いろんなことを しりたい!"
 	done %011
 
-TreeBitstreamText_41fb4:
+TreeBitstreamText_41fb4: ; 41fb4
 	ctxt "あなた ちじょうから きたの?"
 	line ""
 	line "じゃあさ いま ちじょうで"
@@ -7320,7 +7320,7 @@ TreeBitstreamText_41fb4:
 	line "だったら ここと かわんないじゃん"
 	done %000111
 
-TreeBitstreamText_41ff4:
+TreeBitstreamText_41ff4: ; 41ff4
 	ctxt "ぼくの ひいひいひいひいひいひい"
 	line "ひい おじいちゃんは ね"
 	line "このまちで 1ばんの"
@@ -7329,34 +7329,34 @@ TreeBitstreamText_41ff4:
 	line "よばれてたんだって! カックイー!"
 	done %1011010
 
-TreeBitstreamText_4203a:
+TreeBitstreamText_4203a: ; 4203a
 	ctxt "いまは しらないけど メイジのもりに"
 	line "でんせつの ようせいが いるって!"
 	line "そのなも オヤジようせい って"
 	line "いうらしいけど ウワサだよ ウワサ"
 	done %1001001
 
-TreeBitstreamText_42075:
+TreeBitstreamText_42075: ; 42075
 	ctxt "ばくだん?"
 	line "………………うーん"
 	line "ごせんぞさまが つかってたのが"
 	line "のこってる いえも あるかもね"
 	done %110111
 
-TreeBitstreamText_4209c:
+TreeBitstreamText_4209c: ; 4209c
 	ctxt "もはや とびらは ひらかれた!"
 	line ""
 	line "さあ わかものよ"
 	line "サッサと まえへ すすむんだ!"
 	done %101010
 
-TreeBitstreamText_420bf:
+TreeBitstreamText_420bf: ; 420bf
 	ctxt "な なんだ? ま まぶしいっ!"
 	line "か からだがぁーっ"
 	line "かるい!"
 	done %11000
 
-TreeBitstreamText_420d8:
+TreeBitstreamText_420d8: ; 420d8
 	ctxt "イヤーン はずかしい!"
 	line ""
 	line "シュノーケルを はずすと"
@@ -7364,7 +7364,7 @@ TreeBitstreamText_420d8:
 	line "これじゃ おヨメに いけなーい!"
 	done %0011111
 
-TreeBitstreamText_42104:
+TreeBitstreamText_42104: ; 42104
 	ctxt "ちじょうって こまかいコトだらけ"
 	line "あれこれ きを つかうから イヤよ"
 	line "だって きんじょ づきあいとか"
@@ -7372,14 +7372,14 @@ TreeBitstreamText_42104:
 	line "あいさつまわりも イヤだし………"
 	done %10
 
-TreeBitstreamText_42148:
+TreeBitstreamText_42148: ; 42148
 	ctxt "わしは だんこ として"
 	line "しのーける は はずさんぞ!"
 	line "わしらの あいでんていてい じゃし"
 	line "これには カミサマが やどっとる!"
 	done %1101110
 
-TreeBitstreamText_4217a:
+TreeBitstreamText_4217a: ; 4217a
 	ctxt "なんだよ なんだよ みんな"
 	line "ちょっと ハシャギすぎ だぜ!"
 	line "すこしは しずかにして"
@@ -7391,7 +7391,7 @@ TreeBitstreamText_4217a:
 	line "おれに うなぎ なげるのは!"
 	done %0
 
-TreeBitstreamText_421dd:
+TreeBitstreamText_421dd: ; 421dd
 	ctxt "もう きゅうくつな せいかつは"
 	line "コリゴリだわ"
 	line "これからは ハデに あそぶのよ!"
@@ -7400,52 +7400,52 @@ TreeBitstreamText_421dd:
 	line "……これって フツーだなぁ"
 	done %01111
 
-TreeBitstreamText_42221:
+TreeBitstreamText_42221: ; 42221
 	ctxt "これで やっと ほんとうの"
 	line "サカナつりが できるぞい"
 	done %11111
 
-TreeBitstreamText_42239:
+TreeBitstreamText_42239: ; 42239
 	ctxt "ああ もういちど ちじょうが"
 	line "みれるとは おもわなかったわ"
 	line "ウッウッウッ…… うれしいっ!"
 	done
 
-TreeBitstreamText_4225d:
+TreeBitstreamText_4225d: ; 4225d
 	ctxt "ひゃー おばあちゃん!"
 	line "なにそれ!"
 	line "め と はな から"
 	line "いけの みずが でてるじゃん!"
 	done %101
 
-TreeBitstreamText_42280:
+TreeBitstreamText_42280: ; 42280
 	ctxt "いちど すいめんに とびこんで"
 	line "みたかったんだ……"
 	line "でも こわいなぁ"
 	done
 
-TreeBitstreamText_4229c:
+TreeBitstreamText_4229c: ; 4229c
 	ctxt "わたしたち いままで このいけの"
 	line "なかに すんでたのね………"
 	line "でも すめば みやこ って かんじで"
 	line "けっきょく どこも いいものよね"
 	done %111010
 
-TreeBitstreamText_422d0:
+TreeBitstreamText_422d0: ; 422d0
 	ctxt "バーゲンセール やってる"
 	line "デパートは どこにあるのよ!?"
 	line "あんた しってたら サッサと"
 	line "おしえなさいよ!"
 	done %00111
 
-TreeBitstreamText_422fd:
+TreeBitstreamText_422fd: ; 422fd
 	ctxt "え? ちじょうに なった?"
 	line "あ そう でも ねむいのよ"
 	line "どーせ かわりゃ しないわよ"
 	line "みずのなかと"
 	done
 
-TreeBitstreamText_42324:
+TreeBitstreamText_42324: ; 42324
 	ctxt "およ? ちじょうに なったのか?"
 	line "そうか そうか めでたいねぇ!"
 	line "よし けいきづけに いっちょ"
@@ -7453,22 +7453,22 @@ TreeBitstreamText_42324:
 	line "えー ばくは マニュアルは……と"
 	done %11
 
-TreeBitstreamText_42364:
+TreeBitstreamText_42364: ; 42364
 	ctxt "ゆけ ボンバーキング!"
 	line "イェーイ! ファイト ばくはつ!"
 	line "チョー よゆうっスよ!"
 	done
 
-TreeBitstreamText_4238a:
+TreeBitstreamText_4238a: ; 4238a
 	ctxt "かりた つりざお かえしてこよっと"
 	done %11
 
-TreeBitstreamText_42399:
+TreeBitstreamText_42399: ; 42399
 	ctxt "はにゃー ほにゃー"
 	line "アラサーイ!"
 	done
 
-TreeBitstreamText_423a7:
+TreeBitstreamText_423a7: ; 423a7
 	ctxt "ははおや"
 	line "あっ このあいだは とんだ"
 	line "ごめいわくを おかけしまして………"
@@ -7478,7 +7478,7 @@ TreeBitstreamText_423a7:
 	line "してないと いいのだけど………"
 	done %11110
 
-TreeBitstreamText_423f3:
+TreeBitstreamText_423f3: ; 423f3
 	ctxt "サウナおやじ"
 	line "おう! ここは オレのへや だからな"
 	line "ゆっくりしてけば いいじゃない!"
@@ -7494,12 +7494,12 @@ TreeBitstreamText_423f3:
 	line "キミも ほんとうの サウナーだな"
 	done %10110
 
-TreeBitstreamText_4249f:
+TreeBitstreamText_4249f: ; 4249f
 	ctxt "ん?"
 	line "なんか ようか?"
 	done %001
 
-TreeBitstreamText_424a9:
+TreeBitstreamText_424a9: ; 424a9
 	ctxt "けんきゅうじょでは 3つのことが"
 	line "できるんだって しってた?"
 	line "1つめは けんきゅうじょへの とうし"
@@ -7510,7 +7510,7 @@ TreeBitstreamText_424a9:
 	line "エネだま いっぱい たべさせてね!"
 	done %0011
 
-TreeBitstreamText_4251f:
+TreeBitstreamText_4251f: ; 4251f
 	ctxt "キミの おかねを けんきゅうじょに"
 	line "とうし してみない?"
 	line "あたらしいロボポンの かいはつに"
@@ -7521,7 +7521,7 @@ TreeBitstreamText_4251f:
 	line "かいとりも やっているからね"
 	done
 
-TreeBitstreamText_4257c:
+TreeBitstreamText_4257c: ; 4257c
 	ctxt "この みせの めだましょうひんは"
 	line ""
 	line "こちら!"
@@ -7532,7 +7532,7 @@ TreeBitstreamText_4257c:
 	line "……では また おあいしましょう!"
 	done %101001
 
-TreeBitstreamText_425cb:
+TreeBitstreamText_425cb: ; 425cb
 	ctxt "ここ アポロてんの"
 	line "めだましょうひんは こちら!"
 	line "スキャンディスク です!"
@@ -7541,14 +7541,14 @@ TreeBitstreamText_425cb:
 	line "……では また おあいしましょう!"
 	done %0001
 
-TreeBitstreamText_42617:
+TreeBitstreamText_42617: ; 42617
 	ctxt "テールてんの めだましょうひんは"
 	line "こちら! バージョンアップ です!"
 	line "いやー じつに いい ひびきです!"
 	line "のろいを とくには これしかない!"
 	done %110
 
-TreeBitstreamText_42650:
+TreeBitstreamText_42650: ; 42650
 	ctxt "ここ カリーユてんの"
 	line "めだましょうひんは こちら!"
 	line "しゅうふくそうち です!"
@@ -7557,7 +7557,7 @@ TreeBitstreamText_42650:
 	line "なおすなら これしか ありません!"
 	done %000100
 
-TreeBitstreamText_4268e:
+TreeBitstreamText_4268e: ; 4268e
 	ctxt "アイテムの バックアップで"
 	line "スクラップを なおすと……"
 	line "ヒットポイントは はんぶん!"
@@ -7566,7 +7566,7 @@ TreeBitstreamText_4268e:
 	line "まんたんじょうたいで ふっかつ!"
 	done %101
 
-TreeBitstreamText_426de:
+TreeBitstreamText_426de: ; 426de
 	ctxt "ソフトは やすいから"
 	line "たくさん かったほうがいいよ!"
 	line "パーツに ソフトを くみこめば"
@@ -7575,7 +7575,7 @@ TreeBitstreamText_426de:
 	line "わざが うまれることも あるんだ"
 	done %110101
 
-TreeBitstreamText_4272e:
+TreeBitstreamText_4272e: ; 4272e
 	ctxt "パーツは たかいけど"
 	line "とても じゅうようなのよ"
 	line "ロボポンをつよくしたいなら"
@@ -7588,17 +7588,17 @@ TreeBitstreamText_4272e:
 	line "パーツの 3しゅるいが あるわ"
 	done %111
 
-TreeBitstreamText_427b2:
+TreeBitstreamText_427b2: ; 427b2
 	ctxt "テールおうじの ロボポン"
 	line "オトシゴ を もらった!"
 	done %0100110
 
-TreeBitstreamText_427ca:
+TreeBitstreamText_427ca: ; 427ca
 	ctxt "ダースひめの ソフト"
 	line "いのり を もらった!"
 	done %10
 
-TreeBitstreamText_427de:
+TreeBitstreamText_427de: ; 427de
 	ctxt "テールおうじ"
 	line "<PLAYER>"
 	line "こころから かんしゃする"
@@ -7618,57 +7618,57 @@ TreeBitstreamText_427de:
 	line "ロボポンを もらってはくれないか?"
 	done %110101
 
-TreeBitstreamText_42876:
+TreeBitstreamText_42876: ; 42876
 	ctxt "ダースひめ"
 	line "ほんとうに ありがとうございます"
 	line ""
 	line "わたしからも おれいをさせてください"
 	done %1111
 
-TreeBitstreamText_42899:
+TreeBitstreamText_42899: ; 42899
 	ctxt "テールおうじ"
 	line "ありがとう"
 	line "<PLAYER>………"
 	done
 
-TreeBitstreamText_428a8:
+TreeBitstreamText_428a8: ; 428a8
 	ctxt "ダースひめ"
 	line "<PLAYER>さん ほんとうに"
 	line "ありがとうございました……"
 	done %1010011
 
-TreeBitstreamText_428c3:
+TreeBitstreamText_428c3: ; 428c3
 	ctxt "やるきは あるのか?"
 	done %1111
 
-TreeBitstreamText_428cd:
+TreeBitstreamText_428cd: ; 428cd
 	ctxt "きょうは このへんで かんべんして"
 	line "ください!"
 	done %0101
 
-TreeBitstreamText_428e1:
+TreeBitstreamText_428e1: ; 428e1
 	ctxt "なによ そのきに させといて!"
 	done %10
 
-TreeBitstreamText_428ee:
+TreeBitstreamText_428ee: ; 428ee
 	ctxt "きみは よわいのかな?"
 	done %100110
 
-TreeBitstreamText_428f9:
+TreeBitstreamText_428f9: ; 428f9
 	ctxt "そりゃねぇっす!"
 	done %1100101
 
-TreeBitstreamText_42903:
+TreeBitstreamText_42903: ; 42903
 	ctxt "ま どっちでも いいけど"
 	done %110
 
-TreeBitstreamText_4290f:
+TreeBitstreamText_4290f: ; 4290f
 	ctxt "しらないだろうけど このさき つよい"
 	line "おんなのこが いっぱい いるわよ"
 	line "かくごした ほうがいいわ!"
 	done %0000010
 
-TreeBitstreamText_42937:
+TreeBitstreamText_42937: ; 42937
 	ctxt "アムロンは グレイテスト6の"
 	line "しょうごうを もってるのよ"
 	line "あなたごときが かなうわけ"
@@ -7677,270 +7677,270 @@ TreeBitstreamText_42937:
 	line "あなた グレイテスト7なの!?"
 	done %0101100
 
-TreeBitstreamText_42972:
+TreeBitstreamText_42972: ; 42972
 	ctxt "アムロンさま………"
 	done %000001
 
-TreeBitstreamText_4297c:
+TreeBitstreamText_4297c: ; 4297c
 	ctxt "おんなのこ イジメる わけ?"
 	done
 
-TreeBitstreamText_4298a:
+TreeBitstreamText_4298a: ; 4298a
 	ctxt "サイアクね あんたって おとこは!"
 	done
 
-TreeBitstreamText_42998:
+TreeBitstreamText_42998: ; 42998
 	ctxt "なにしに きたの!"
 	done %1001111
 
-TreeBitstreamText_429a1:
+TreeBitstreamText_429a1: ; 429a1
 	ctxt "なんなのよ あんた!"
 	done %11
 
-TreeBitstreamText_429aa:
+TreeBitstreamText_429aa: ; 429aa
 	ctxt "アムロンさまに ちかづくな!"
 	done %010110
 
-TreeBitstreamText_429b8:
+TreeBitstreamText_429b8: ; 429b8
 	ctxt "どうせ アムロンさまに やられるわ!"
 	done %011
 
-TreeBitstreamText_429ca:
+TreeBitstreamText_429ca: ; 429ca
 	ctxt "いくじなし!"
 	done %0100
 
-TreeBitstreamText_429d1:
+TreeBitstreamText_429d1: ; 429d1
 	ctxt "きたい させないでよ!"
 	done %010111
 
-TreeBitstreamText_429dc:
+TreeBitstreamText_429dc: ; 429dc
 	ctxt "サイテー!"
 	done %11110
 
-TreeBitstreamText_429e1:
+TreeBitstreamText_429e1: ; 429e1
 	ctxt "ケンカか?"
 	line "じょうとう じゃねぇか!"
 	done %101100
 
-TreeBitstreamText_429f2:
+TreeBitstreamText_429f2: ; 429f2
 	ctxt "こいこいこい こいっ コノヤロー!"
 	done
 
-TreeBitstreamText_42a00:
+TreeBitstreamText_42a00: ; 42a00
 	ctxt "メンチきっとんのかい ワレ!"
 	done %111101
 
-TreeBitstreamText_42a0d:
+TreeBitstreamText_42a0d: ; 42a0d
 	ctxt "はんごろしやな!"
 	line "すくなくとも オレのばあいはよー!"
 	done
 
-TreeBitstreamText_42a24:
+TreeBitstreamText_42a24: ; 42a24
 	ctxt "おう タイマンかい!"
 	line "しんでも しらんぞ!"
 	done %1011110
 
-TreeBitstreamText_42a37:
+TreeBitstreamText_42a37: ; 42a37
 	ctxt "おまえ わざわざ こんなところまで"
 	line "くるなよ!"
 	done %101111
 
-TreeBitstreamText_42a4c:
+TreeBitstreamText_42a4c: ; 42a4c
 	ctxt "アニキ! おれのアニキに なって"
 	line "くださいっす!"
 	done %11
 
-TreeBitstreamText_42a61:
+TreeBitstreamText_42a61: ; 42a61
 	ctxt "ちっ めんどくせーな………"
 	done %0111011
 
-TreeBitstreamText_42a6e:
+TreeBitstreamText_42a6e: ; 42a6e
 	ctxt "………わかったから さっさと"
 	line "いけよ"
 	done %1100100
 
-TreeBitstreamText_42a7e:
+TreeBitstreamText_42a7e: ; 42a7e
 	ctxt "おれは ただの ザコとは ちがうぜ!"
 	line "それでも やんのかよ?"
 	done %100001
 
-TreeBitstreamText_42a9a:
+TreeBitstreamText_42a9a: ; 42a9a
 	ctxt "トホホ…… なんで みんな"
 	line "こんなに よわいかな もう!"
 	done %11010
 
-TreeBitstreamText_42ab0:
+TreeBitstreamText_42ab0: ; 42ab0
 	ctxt "あーあ もう やめてーなぁ……"
 	done %1111110
 
-TreeBitstreamText_42abe:
+TreeBitstreamText_42abe: ; 42abe
 	ctxt "おれのこと たおせる と"
 	line "おもってんのかい?"
 	done %11110
 
-TreeBitstreamText_42ad0:
+TreeBitstreamText_42ad0: ; 42ad0
 	ctxt "うーん やっぱり!"
 	done %00010
 
-TreeBitstreamText_42ada:
+TreeBitstreamText_42ada: ; 42ada
 	ctxt "ヒーローきどりか このヤロー!"
 	done %0
 
-TreeBitstreamText_42ae8:
+TreeBitstreamText_42ae8: ; 42ae8
 	ctxt "よく ここまで きたじゃんか!"
 	done %01100
 
-TreeBitstreamText_42af6:
+TreeBitstreamText_42af6: ; 42af6
 	ctxt "くそっ また まけた………"
 	done %110100
 
-TreeBitstreamText_42b02:
+TreeBitstreamText_42b02: ; 42b02
 	ctxt "おれと やるのか?"
 	done %10
 
-TreeBitstreamText_42b0b:
+TreeBitstreamText_42b0b: ; 42b0b
 	ctxt "もう やってらんねーッ!"
 	done %1
 
-TreeBitstreamText_42b16:
+TreeBitstreamText_42b16: ; 42b16
 	ctxt "ちょうし こいてんじゃ ねー!"
 	done %1001100
 
-TreeBitstreamText_42b24:
+TreeBitstreamText_42b24: ; 42b24
 	ctxt "なんだよ こんじょー なしが!"
 	done %1100
 
-TreeBitstreamText_42b32:
+TreeBitstreamText_42b32: ; 42b32
 	ctxt "なにしに ここまで きたんだよ?!"
 	done %1
 
-TreeBitstreamText_42b41:
+TreeBitstreamText_42b41: ; 42b41
 	ctxt "ふん かってに しろ………"
 	done
 
-TreeBitstreamText_42b4c:
+TreeBitstreamText_42b4c: ; 42b4c
 	ctxt "バンザのうみは あおい!"
 	line "バンザのうみは とうめい!"
 	done %00
 
-TreeBitstreamText_42b64:
+TreeBitstreamText_42b64: ; 42b64
 	ctxt "すなはまには まだまだ"
 	line "いろんなものが おちてるらしいよ"
 	done
 
-TreeBitstreamText_42b7b:
+TreeBitstreamText_42b7b: ; 42b7b
 	ctxt "くらいよな ここ………"
 	done
 
-TreeBitstreamText_42b85:
+TreeBitstreamText_42b85: ; 42b85
 	ctxt "せまいよな ここ………"
 	done
 
-TreeBitstreamText_42b8f:
+TreeBitstreamText_42b8f: ; 42b8f
 	ctxt "しあわせ かーい?"
 	done %101
 
-TreeBitstreamText_42b98:
+TreeBitstreamText_42b98: ; 42b98
 	ctxt "はーら へったー"
 	done
 
-TreeBitstreamText_42ba0:
+TreeBitstreamText_42ba0: ; 42ba0
 	ctxt "おめ なにしに きた?"
 	done %0
 
-TreeBitstreamText_42baa:
+TreeBitstreamText_42baa: ; 42baa
 	ctxt "おら なんで ここに いる?"
 	done %0010010
 
-TreeBitstreamText_42bb7:
+TreeBitstreamText_42bb7: ; 42bb7
 	ctxt "いやぁ きょうも"
 	line "いい おてんき ですね"
 	done %0111
 
-TreeBitstreamText_42bc8:
+TreeBitstreamText_42bc8: ; 42bc8
 	ctxt "では ごきげんよう"
 	done %1
 
-TreeBitstreamText_42bd2:
+TreeBitstreamText_42bd2: ; 42bd2
 	ctxt "カサッ! カサカサカサッ!"
 	done %010000
 
-TreeBitstreamText_42bdd:
+TreeBitstreamText_42bdd: ; 42bdd
 	ctxt "サカッ? サカサカサカッ?"
 	done %00
 
-TreeBitstreamText_42be8:
+TreeBitstreamText_42be8: ; 42be8
 	ctxt "ぬぬぬ?"
 	line "あやしい やつめ!"
 	done %1
 
-TreeBitstreamText_42bf7:
+TreeBitstreamText_42bf7: ; 42bf7
 	ctxt "あやしいのは オレだったな"
 	line "わっはっはっ"
 	done
 
-TreeBitstreamText_42c09:
+TreeBitstreamText_42c09: ; 42c09
 	ctxt "どうくつで バトロボ?"
 	done %1111101
 
-TreeBitstreamText_42c16:
+TreeBitstreamText_42c16: ; 42c16
 	ctxt "バトリング! バトリング!"
 	line "これが たのしいのねー!"
 	done %0
 
-TreeBitstreamText_42c2d:
+TreeBitstreamText_42c2d: ; 42c2d
 	ctxt "おっ おまえ しんいりか?"
 	done %010010
 
-TreeBitstreamText_42c39:
+TreeBitstreamText_42c39: ; 42c39
 	ctxt "どうやら しんじんでは ない"
 	line "ようだな"
 	done %10101
 
-TreeBitstreamText_42c4a:
+TreeBitstreamText_42c4a: ; 42c4a
 	ctxt "おれに かてるわけが なかろう?"
 	done
 
-TreeBitstreamText_42c58:
+TreeBitstreamText_42c58: ; 42c58
 	ctxt "おまえは うんの いいやつだ!"
 	done
 
-TreeBitstreamText_42c65:
+TreeBitstreamText_42c65: ; 42c65
 	ctxt "おれは うんが わるいんだ!"
 	done %0110
 
-TreeBitstreamText_42c72:
+TreeBitstreamText_42c72: ; 42c72
 	ctxt "だから いっただろう!"
 	done %1010
 
-TreeBitstreamText_42c7d:
+TreeBitstreamText_42c7d: ; 42c7d
 	ctxt "お トレーニングか? つきあうぜ!"
 	done %101
 
-TreeBitstreamText_42c8e:
+TreeBitstreamText_42c8e: ; 42c8e
 	ctxt "ふーっ いいあせ かいたな!"
 	line ""
 	line "………と いいたいが"
 	line "たたかうのは ロボポンなんだよな"
 	done %010000
 
-TreeBitstreamText_42cb1:
+TreeBitstreamText_42cb1: ; 42cb1
 	ctxt "かってに しな"
 	done %1111
 
-TreeBitstreamText_42cb8:
+TreeBitstreamText_42cb8: ; 42cb8
 	ctxt "そう たたかいは よくない!"
 	done %11000
 
-TreeBitstreamText_42cc4:
+TreeBitstreamText_42cc4: ; 42cc4
 	ctxt "なんだよ おい"
 	done %1011110
 
-TreeBitstreamText_42ccc:
+TreeBitstreamText_42ccc: ; 42ccc
 	ctxt "でなおして こい!"
 	done %01111
 
-TreeBitstreamText_42cd5:
+TreeBitstreamText_42cd5: ; 42cd5
 	ctxt "おっと!"
 	line "ここを とおすわけには いかないぜ"
 	line "なにせ ひみつの かいだん だからな"
@@ -7949,17 +7949,17 @@ TreeBitstreamText_42cd5:
 	line "オレと バトロボしょうぶだ!"
 	done
 
-TreeBitstreamText_42d11:
+TreeBitstreamText_42d11: ; 42d11
 	ctxt "そうだな…… おたがい"
 	line "ムリは しないほうがいいな"
 	done %00
 
-TreeBitstreamText_42d27:
+TreeBitstreamText_42d27: ; 42d27
 	ctxt "ちっ! やくそくだ"
 	line "とおっていいぜ"
 	done %1111011
 
-TreeBitstreamText_42d37:
+TreeBitstreamText_42d37: ; 42d37
 	ctxt "ようこそ メイジのもりへ"
 	line ""
 	line "けんきゅうじょに くるかたは"
@@ -7968,53 +7968,53 @@ TreeBitstreamText_42d37:
 	line "かんばんを よめ"
 	done %0
 
-TreeBitstreamText_42d69:
+TreeBitstreamText_42d69: ; 42d69
 	ctxt "みぎへ すすんで"
 	line "かんばんを よめ"
 	done %00
 
-TreeBitstreamText_42d79:
+TreeBitstreamText_42d79: ; 42d79
 	ctxt "ひだりへすすんで"
 	line "かんばんを よめ"
 	done
 
-TreeBitstreamText_42d89:
+TreeBitstreamText_42d89: ; 42d89
 	ctxt "みぎしたへ すすんで"
 	line "かんばんを よめ"
 	done
 
-TreeBitstreamText_42d9a:
+TreeBitstreamText_42d9a: ; 42d9a
 	ctxt "ひだりうえへ すすんで"
 	line "かんばんを よめ"
 	done
 
-TreeBitstreamText_42dac:
+TreeBitstreamText_42dac: ; 42dac
 	ctxt "みぎしたの かんばんを よまずに"
 	line "さらに したの かんばんを よめ"
 	done %0110111
 
-TreeBitstreamText_42dc8:
+TreeBitstreamText_42dc8: ; 42dc8
 	ctxt "ごくろうさん"
 	line ""
 	line "けんきゅうじょへ"
 	line "いらっしゃーい!"
 	done %11001
 
-TreeBitstreamText_42dde:
+TreeBitstreamText_42dde: ; 42dde
 	ctxt "ごくろうさん"
 	line ""
 	line "はじめから"
 	line "やりなおしっ!!"
 	done %1
 
-TreeBitstreamText_42df1:
+TreeBitstreamText_42df1: ; 42df1
 	ctxt "     かがく いのち!"
 	line ""
 	line "   フラワーけんきゅうじょ"
 	line "    24じかん えいぎょう"
 	done
 
-TreeBitstreamText_42e15:
+TreeBitstreamText_42e15: ; 42e15
 	ctxt "フラワーきょうじゅ"
 	line "ついにかんせい!"
 	line "せいきの だいはつめい!"
@@ -8025,7 +8025,7 @@ TreeBitstreamText_42e15:
 	line "さあ でていただきましょう!!"
 	done %0001
 
-TreeBitstreamText_42e5e:
+TreeBitstreamText_42e5e: ; 42e5e
 	ctxt "フラワーきょうじゅ"
 	line "うーん また じっけん しっぱいか"
 	line "…………………"
@@ -8038,7 +8038,7 @@ TreeBitstreamText_42e5e:
 	line "あの オヤジようせいに……"
 	done
 
-TreeBitstreamText_42ec2:
+TreeBitstreamText_42ec2: ; 42ec2
 	ctxt "フラワーきょうじゅ"
 	line "や やぁ いらっしゃい!"
 	line ""
@@ -8060,7 +8060,7 @@ TreeBitstreamText_42ec2:
 	line "だれにも いわないよーに いいね!"
 	done %1101
 
-TreeBitstreamText_42f84:
+TreeBitstreamText_42f84: ; 42f84
 	ctxt "フラワーきょうじゅ"
 	line "オヤジようせいの はなしって"
 	line "どうも ウソみたい なんだ"
@@ -8074,7 +8074,7 @@ TreeBitstreamText_42f84:
 	line "べんきょうをして ほしいんだが……"
 	done
 
-TreeBitstreamText_42ffd:
+TreeBitstreamText_42ffd: ; 42ffd
 	ctxt "ノーズ"
 	line "オラ みたんだ 2ねんまえの よる"
 	line "この こやの まどから こそーっと"
@@ -8088,7 +8088,7 @@ TreeBitstreamText_42ffd:
 	line "おまえ しんじて くれるよな?"
 	done %0
 
-TreeBitstreamText_43084:
+TreeBitstreamText_43084: ; 43084
 	ctxt "ノーズ"
 	line "そ そうかい! おまえも"
 	line "オヤジようせいを しんじるってか!"
@@ -8102,7 +8102,7 @@ TreeBitstreamText_43084:
 	line "きょうじゅには ないしょにね"
 	done %00
 
-TreeBitstreamText_430f7:
+TreeBitstreamText_430f7: ; 430f7
 	ctxt "ノーズ"
 	line "ふーん そうかい"
 	line "そうだよなー"
@@ -8114,7 +8114,7 @@ TreeBitstreamText_430f7:
 	line "あると おもうんだけどなぁ………"
 	done %0
 
-TreeBitstreamText_43156:
+TreeBitstreamText_43156: ; 43156
 	ctxt "ノーズ"
 	line "メイジどうくつ は きょうじゅが"
 	line "きりひらいた どうくつなんだ……"
@@ -8128,12 +8128,12 @@ TreeBitstreamText_43156:
 	line "よるの6じだよ わすれないでね!"
 	done %011
 
-TreeBitstreamText_431d7:
+TreeBitstreamText_431d7: ; 431d7
 	ctxt "<PLAYER>"
 	line "オヤジようせい カモーン!"
 	done %00011
 
-TreeBitstreamText_431e5:
+TreeBitstreamText_431e5: ; 431e5
 	ctxt "フラワーきょうじゅ"
 	line "おおっ! それは それは"
 	line "まぼろしの ヒゲヒゲようせい!"
@@ -8157,17 +8157,17 @@ TreeBitstreamText_431e5:
 	line "かなえて おくれ!"
 	done %101111
 
-TreeBitstreamText_432c2:
+TreeBitstreamText_432c2: ; 432c2
 	ctxt "オヤジようせい"
 	line "あいよー わかったよー"
 	done %011011
 
-TreeBitstreamText_432d3:
+TreeBitstreamText_432d3: ; 432d3
 	ctxt "オヤジようせい"
 	line "はい これでしょ"
 	done %01111
 
-TreeBitstreamText_432e2:
+TreeBitstreamText_432e2: ; 432e2
 	ctxt "フラワーきょうじゅ"
 	line "おおっ これは!"
 	line "!!!!!!!!!!!!!!!"
@@ -8181,14 +8181,14 @@ TreeBitstreamText_432e2:
 	line "わざと ボケやがったな!"
 	done %1
 
-TreeBitstreamText_43362:
+TreeBitstreamText_43362: ; 43362
 	ctxt "オヤジようせい"
 	line "のぞみは かなえました"
 	line "ボクのやくめは これでおしまいです"
 	line "じゃあね バッハハーイ!"
 	done %0
 
-TreeBitstreamText_4338d:
+TreeBitstreamText_4338d: ; 4338d
 	ctxt "フラワーきょうじゅ"
 	line "おおっ! それは まぼろしの"
 	line "ネクタイようせい!"
@@ -8214,7 +8214,7 @@ TreeBitstreamText_4338d:
 	line "かなえて おくれ!"
 	done %110011
 
-TreeBitstreamText_4347a:
+TreeBitstreamText_4347a: ; 4347a
 	ctxt "フラワーきょうじゅ"
 	line "おおっ これは!"
 	line ""
@@ -8228,7 +8228,7 @@ TreeBitstreamText_4347a:
 	line "また わざと ボケやがったな!"
 	done %0100111
 
-TreeBitstreamText_434f2:
+TreeBitstreamText_434f2: ; 434f2
 	ctxt "フラワーきょうじゅ"
 	line "おおっ! それは まぼろしの"
 	line "ツルツルようせい!"
@@ -8250,7 +8250,7 @@ TreeBitstreamText_434f2:
 	line "ボケるんじゃないぞ!"
 	done %11111
 
-TreeBitstreamText_435b0:
+TreeBitstreamText_435b0: ; 435b0
 	ctxt "フラワーきょうじゅ"
 	line "おおっ これは!"
 	line ""
@@ -8268,7 +8268,7 @@ TreeBitstreamText_435b0:
 	line "やくたたずの オヤジようせい!"
 	done %10
 
-TreeBitstreamText_4365f:
+TreeBitstreamText_4365f: ; 4365f
 	ctxt "フラワーきょうじゅ"
 	line "おおっ! それは まぼろしの"
 	line "ワンカップようせい!"
@@ -8296,13 +8296,13 @@ TreeBitstreamText_4365f:
 	line "ボケるんじゃないぞ!"
 	done
 
-TreeBitstreamText_43761:
+TreeBitstreamText_43761: ; 43761
 	ctxt "オヤジようせい"
 	line "あいよー わかったよー"
 	line "もうボケないよー"
 	done %0001
 
-TreeBitstreamText_4377a:
+TreeBitstreamText_4377a: ; 4377a
 	ctxt "フラワーきょうじゅ"
 	line "おおっ これは!"
 	line ""
@@ -8322,7 +8322,7 @@ TreeBitstreamText_4377a:
 	line "つかまえて くってやる!"
 	done %01
 
-TreeBitstreamText_4380b:
+TreeBitstreamText_4380b: ; 4380b
 	ctxt "フラワーきょうじゅ"
 	line "あいしてるよ………"
 	line ""
@@ -8356,17 +8356,17 @@ TreeBitstreamText_4380b:
 	line "サケもってきてくれ!"
 	done
 
-TreeBitstreamText_4393b:
+TreeBitstreamText_4393b: ; 4393b
 	ctxt "よしえ"
 	line "イヤです"
 	done %0111
 
-TreeBitstreamText_43945:
+TreeBitstreamText_43945: ; 43945
 	ctxt "フラワーきょうじゅ"
 	line "せつねぇ………"
 	done %011
 
-TreeBitstreamText_43956:
+TreeBitstreamText_43956: ; 43956
 	ctxt "フラワーきょうじゅ"
 	line "おおっ! それは まぼろしの"
 	line "サルマタようせい!"
@@ -8388,7 +8388,7 @@ TreeBitstreamText_43956:
 	line "もう おなかいっぱい だからさぁ"
 	done %10000
 
-TreeBitstreamText_43a21:
+TreeBitstreamText_43a21: ; 43a21
 	ctxt "オヤジようせい"
 	line "あいよー わかったよー"
 	line "ほんとうに ボケないよー"
@@ -8397,7 +8397,7 @@ TreeBitstreamText_43a21:
 	line "だって かんたんなこと なんだもーん"
 	done %110111
 
-TreeBitstreamText_43a5a:
+TreeBitstreamText_43a5a: ; 43a5a
 	ctxt "フラワーきょうじゅ"
 	line "おおっ これは!"
 	line "このうで このあし このカオ………"
@@ -8423,7 +8423,7 @@ TreeBitstreamText_43a5a:
 	line "つかれた……"
 	done %110
 
-TreeBitstreamText_43b4c:
+TreeBitstreamText_43b4c: ; 43b4c
 	ctxt "フラワーきょうじゅ"
 	line "………<PLAYER>くん か……"
 	line ""
@@ -8443,7 +8443,7 @@ TreeBitstreamText_43b4c:
 	line "よろこんで ゆずろう"
 	done %1001010
 
-TreeBitstreamText_43c04:
+TreeBitstreamText_43c04: ; 43c04
 	ctxt "ノーズ"
 	line "まってたよ!"
 	line ""
@@ -8459,14 +8459,14 @@ TreeBitstreamText_43c04:
 	line "みつけてきて!"
 	done %11101
 
-TreeBitstreamText_43c84:
+TreeBitstreamText_43c84: ; 43c84
 	ctxt "フラワーきょうじゅ"
 	line "コラッ! この どうくつは わたしが"
 	line "たかい カネで かった とちだぞ!"
 	line "むだんで あらすやつは ゆるさん!"
 	done %000110
 
-TreeBitstreamText_43cbb:
+TreeBitstreamText_43cbb: ; 43cbb
 	ctxt "フラワーきょうじゅ"
 	line "やあ <PLAYER>くん"
 	line ""
@@ -8482,7 +8482,7 @@ TreeBitstreamText_43cbb:
 	line "わたしのことを バカに しおって!"
 	done %1011
 
-TreeBitstreamText_43d46:
+TreeBitstreamText_43d46: ; 43d46
 	ctxt "ノーズ"
 	line "すごいよ!"
 	line ""
@@ -8493,7 +8493,7 @@ TreeBitstreamText_43d46:
 	line "これは せいきの だいはっけん だ!"
 	done %11
 
-TreeBitstreamText_43d8e:
+TreeBitstreamText_43d8e: ; 43d8e
 	ctxt "ヒゲヒゲようせい"
 	line "ちーす!"
 	line ""
@@ -8507,7 +8507,7 @@ TreeBitstreamText_43d8e:
 	line "ボクの このみじゃ ないからね!"
 	done %011010
 
-TreeBitstreamText_43dee:
+TreeBitstreamText_43dee: ; 43dee
 	ctxt "ネクタイようせい"
 	line "おお <PLAYER>くんか"
 	line "さいきん ちょうしは どうかね?"
@@ -8525,7 +8525,7 @@ TreeBitstreamText_43dee:
 	line "たいせつなんだよ チミ!"
 	done %111
 
-TreeBitstreamText_43e7a:
+TreeBitstreamText_43e7a: ; 43e7a
 	ctxt "ツルツルようせい"
 	line "オイッス!"
 	line "…………………………もう いっちょ"
@@ -8539,7 +8539,7 @@ TreeBitstreamText_43e7a:
 	line "チミには つかまりたく ないさ!"
 	done %0
 
-TreeBitstreamText_43ed7:
+TreeBitstreamText_43ed7: ; 43ed7
 	ctxt "ワンカップようせい"
 	line "   はにゃー   ほにゃー"
 	line "  べらんめい!  ていていっ!"
@@ -8555,7 +8555,7 @@ TreeBitstreamText_43ed7:
 	line "わかるかッテンダヨー!"
 	done %00
 
-TreeBitstreamText_43f51:
+TreeBitstreamText_43f51: ; 43f51
 	ctxt "サルマタようせい"
 	line "うひょひょーい!"
 	line "サルマタようせいで ゴザイマスー!"
@@ -8570,7 +8570,7 @@ TreeBitstreamText_43f51:
 	done %100111011001110100001010001110001110010101000010111111110011110001100010011011001001111010110111101010001110001110000001011111111001111011001100000101110111100111101011011110101001011001111101011100101010000110000011001111000101100010101111100011011001100111100001111010010011101011101000100000101100110110111111011010100110001011110001000000111000111011100110101110101111110110110110011101000011101000100101011010000000111000000010111100000111101111110110110110000010
 
 SECTION "Tree Bitstream Text 3", ROMX [$4000], BANK [$11]
-TreeBitstreamText_44000:
+TreeBitstreamText_44000: ; 44000
 	ctxt "レイナ"
 	line "……なぜ うまれたの?"
 	line "……なぜ であったの?"
@@ -8580,7 +8580,7 @@ TreeBitstreamText_44000:
 	line "さがして あるいてるんだけど……"
 	done %1001
 
-TreeBitstreamText_44051:
+TreeBitstreamText_44051: ; 44051
 	ctxt "レイナ"
 	line "とりあえず あたしが ほしいのは"
 	line "コギャル ロボポンのギャルル!"
@@ -8593,7 +8593,7 @@ TreeBitstreamText_44051:
 	line "やくそくだよ! バッバーイ!"
 	done %010
 
-TreeBitstreamText_440c4:
+TreeBitstreamText_440c4: ; 440c4
 	ctxt "レイナ"
 	line "あっ キミ ギャルル もってるー!"
 	line "いいな いいな いいなー!"
@@ -8601,7 +8601,7 @@ TreeBitstreamText_440c4:
 	line "こうかん しない?"
 	done %000
 
-TreeBitstreamText_440f4:
+TreeBitstreamText_440f4: ; 440f4
 	ctxt "レイナ"
 	line "ありがとう! レイナ うれしいな!"
 	line "キミ みかけどおり やさしいんだね"
@@ -8616,14 +8616,14 @@ TreeBitstreamText_440f4:
 	line "やくそくだよ! バッバーイ!"
 	done %1010101
 
-TreeBitstreamText_44185:
+TreeBitstreamText_44185: ; 44185
 	ctxt "レイナ"
 	line "ふーん みかけによらず ケチね!"
 	line "いいよ いいよ いいよーだ!"
 	line "ホントに バッバーイしちゃうから!"
 	done %1110
 
-TreeBitstreamText_441b3:
+TreeBitstreamText_441b3: ; 441b3
 	ctxt "レイナ"
 	line "キミの やさしさをみこんで"
 	line "もひとつだけ おねがいしてもいい?"
@@ -8634,7 +8634,7 @@ TreeBitstreamText_441b3:
 	line "やくそくだよ! バッバーイ!"
 	done %01010
 
-TreeBitstreamText_44213:
+TreeBitstreamText_44213: ; 44213
 	ctxt "レイナ"
 	line "あっ ウーマンボ もってるー!"
 	line ""
@@ -8642,7 +8642,7 @@ TreeBitstreamText_44213:
 	line "こうかん しない?"
 	done %110
 
-TreeBitstreamText_44239:
+TreeBitstreamText_44239: ; 44239
 	ctxt "レイナ"
 	line "ありがとう! レイナ うれしいな!"
 	line "みかけどおり いいヤツなんだね"
@@ -8652,7 +8652,7 @@ TreeBitstreamText_44239:
 	line "それじゃあ バッバーーイ!"
 	done
 
-TreeBitstreamText_4428f:
+TreeBitstreamText_4428f: ; 4428f
 	ctxt "レイナ"
 	line "さっきは どうも ありがとう!"
 	line "みかけどおり いいヤツなんだね"
@@ -8663,7 +8663,7 @@ TreeBitstreamText_4428f:
 	line "それじゃあ バッバーーイ!"
 	done
 
-TreeBitstreamText_442ef:
+TreeBitstreamText_442ef: ; 442ef
 	ctxt "ミカチ"
 	line "ちょうしは いかがですか?"
 	line "あまり ムリばっかりしたら ダメよ"
@@ -8673,7 +8673,7 @@ TreeBitstreamText_442ef:
 	line "さがして あるいてるんだけど……"
 	done %011
 
-TreeBitstreamText_4434a:
+TreeBitstreamText_4434a: ; 4434a
 	ctxt "ミカチ"
 	line "トリペルっていう ロボポンしってる?"
 	line "<PLAYER>は しらないかな?"
@@ -8682,7 +8682,7 @@ TreeBitstreamText_4434a:
 	line "おぼえていてね プリーストよ!"
 	done %01
 
-TreeBitstreamText_44392:
+TreeBitstreamText_44392: ; 44392
 	ctxt "ミカチ"
 	line "ち ちょっと まって!"
 	line "もしかして それって トリペル?"
@@ -8690,7 +8690,7 @@ TreeBitstreamText_44392:
 	line "こうかん してくれる?!!"
 	done %1111
 
-TreeBitstreamText_443c5:
+TreeBitstreamText_443c5: ; 443c5
 	ctxt "ミカチ"
 	line "ミカチ かんげきしちゃった!"
 	line "<PLAYER>のこと だーいすき!"
@@ -8705,14 +8705,14 @@ TreeBitstreamText_443c5:
 	line "ミカチ ここで まってるから!"
 	done %1000
 
-TreeBitstreamText_4445d:
+TreeBitstreamText_4445d: ; 4445d
 	ctxt "ミカチ"
 	line "やさしさのない オトコなんて"
 	line "ちっとも モテないわよ!"
 	line "バカらしくて つきあってらんない!"
 	done %0111
 
-TreeBitstreamText_44486:
+TreeBitstreamText_44486: ; 44486
 	ctxt "ミカチ"
 	line "もし わたしのことが すきなら"
 	line "ひとつ おねがい きいてくれる?"
@@ -8725,7 +8725,7 @@ TreeBitstreamText_44486:
 	line "ミカチ ここで まってるから!"
 	done %11
 
-TreeBitstreamText_44507:
+TreeBitstreamText_44507: ; 44507
 	ctxt "ミカチ"
 	line "ちょ ちょっと まって!"
 	line "もしかして それって ヘビータ?"
@@ -8733,7 +8733,7 @@ TreeBitstreamText_44507:
 	line "こうかん してくれない?!?"
 	done %00
 
-TreeBitstreamText_4453d:
+TreeBitstreamText_4453d: ; 4453d
 	ctxt "ミカチ"
 	line "ミカチ また かんげきしちゃった!"
 	line "<PLAYER>のこと だーいすき!"
@@ -8748,7 +8748,7 @@ TreeBitstreamText_4453d:
 	line "ガールズ8のみんなを さがさなきゃ!"
 	done %0001
 
-TreeBitstreamText_445b1:
+TreeBitstreamText_445b1: ; 445b1
 	ctxt "ミカチ"
 	line "<PLAYER>は やさしいオトコのコだから"
 	line "きっと モテるかもね!"
@@ -8759,13 +8759,13 @@ TreeBitstreamText_445b1:
 	line "ガールズ8のみんなを さがさなきゃ!"
 	done %111110
 
-TreeBitstreamText_44601:
+TreeBitstreamText_44601: ; 44601
 	ctxt "マーヤ"
 	line "クー クー クー クー クー クー"
 	line "もひとつ おまけに クー"
 	done %101
 
-TreeBitstreamText_4461b:
+TreeBitstreamText_4461b: ; 4461b
 	ctxt "マーヤ"
 	line "せっかく ひとが ねてるのに……"
 	line "……ガールズ8の マーヤよ"
@@ -8773,7 +8773,7 @@ TreeBitstreamText_4461b:
 	line "さがして あるいてるんだけど……"
 	done
 
-TreeBitstreamText_44657:
+TreeBitstreamText_44657: ; 44657
 	ctxt "マーヤ"
 	line "そこの にーさん!"
 	line "プリーストを もってきなさい"
@@ -8788,7 +8788,7 @@ TreeBitstreamText_44657:
 	line "それじゃ たのんだからね!"
 	done %10010
 
-TreeBitstreamText_446dc:
+TreeBitstreamText_446dc: ; 446dc
 	ctxt "マーヤ"
 	line "もってるじゃない プリーストを!"
 	line "にーさん やれば できるじゃーん"
@@ -8798,7 +8798,7 @@ TreeBitstreamText_446dc:
 	line "マーヤの ドクロイドを こうかんね"
 	done %0111101
 
-TreeBitstreamText_44733:
+TreeBitstreamText_44733: ; 44733
 	ctxt "マーヤ"
 	line "はい サンキューっと!"
 	line "にーさん かなり ヒマみたいね"
@@ -8813,14 +8813,14 @@ TreeBitstreamText_44733:
 	line "それじゃ たのんだからね!"
 	done %010
 
-TreeBitstreamText_447bd:
+TreeBitstreamText_447bd: ; 447bd
 	ctxt "マーヤ"
 	line "ハッキリいって みそこなったね"
 	line "にーさん ガマンにも ホドがあるよ"
 	line "それでも チンチン ついてんの?!"
 	done %0110101
 
-TreeBitstreamText_447ed:
+TreeBitstreamText_447ed: ; 447ed
 	ctxt "マーヤ"
 	line "あのさ にーさん ついでなんだけど"
 	line "もうひとっぱしり してくんない?"
@@ -8833,7 +8833,7 @@ TreeBitstreamText_447ed:
 	line "それじゃ たのんだからね!"
 	done %1110101
 
-TreeBitstreamText_44861:
+TreeBitstreamText_44861: ; 44861
 	ctxt "マーヤ"
 	line "もってるじゃない ストーンを!"
 	line "にーさん やれば できるじゃーん"
@@ -8843,7 +8843,7 @@ TreeBitstreamText_44861:
 	line "マーヤの ドライバルを こうかん!"
 	done %110011
 
-TreeBitstreamText_448b8:
+TreeBitstreamText_448b8: ; 448b8
 	ctxt "マーヤ"
 	line "はい またまた サンキューっと!"
 	line "にーさん なかなか やるねー"
@@ -8856,7 +8856,7 @@ TreeBitstreamText_448b8:
 	line "マーヤは ここで ねてるから"
 	done %1101
 
-TreeBitstreamText_44937:
+TreeBitstreamText_44937: ; 44937
 	ctxt "マーヤ"
 	line "にーさん なかなか やるねー"
 	line "ほかの ガールズ8には あったの?"
@@ -8867,7 +8867,7 @@ TreeBitstreamText_44937:
 	line "マーヤは ここで ねてるから"
 	done %110
 
-TreeBitstreamText_4498a:
+TreeBitstreamText_4498a: ; 4498a
 	ctxt "ユーコ"
 	line "うー ダルぅー ……あたし"
 	line "ガールズ8の ユーコ ですけどー"
@@ -8875,7 +8875,7 @@ TreeBitstreamText_4498a:
 	line "おもしろいの? さがしてんだけどー"
 	done %10111
 
-TreeBitstreamText_449c9:
+TreeBitstreamText_449c9: ; 449c9
 	ctxt "ユーコ"
 	line "ガイコツみたいな ロボポンで"
 	line "ドクロイドっていうやつ?"
@@ -8888,7 +8888,7 @@ TreeBitstreamText_449c9:
 	line "まってるから!"
 	done
 
-TreeBitstreamText_44a2d:
+TreeBitstreamText_44a2d: ; 44a2d
 	ctxt "ユーコ"
 	line "ていうか キミのもってんの それ"
 	line "もしかして ドクロイドじゃない?"
@@ -8899,7 +8899,7 @@ TreeBitstreamText_44a2d:
 	line "ほら オヤカタだってカワイイよ!"
 	done %0000
 
-TreeBitstreamText_44a7f:
+TreeBitstreamText_44a7f: ; 44a7f
 	ctxt "ユーコ"
 	line "ホントに いいの? ありがとう!"
 	line "しんせつなひとに あえてよかった!"
@@ -8914,14 +8914,14 @@ TreeBitstreamText_44a7f:
 	line "まってるワ!"
 	done %0111
 
-TreeBitstreamText_44af6:
+TreeBitstreamText_44af6: ; 44af6
 	ctxt "ユーコ"
 	line "えー! なんでっ!"
 	line "どーして こうかんしてくれないの!?"
 	line "オヤカタちゃん きらいなの?"
 	done %01101
 
-TreeBitstreamText_44b1c:
+TreeBitstreamText_44b1c: ; 44b1c
 	ctxt "ユーコ"
 	line "あのねー コンボイルっていうやつが"
 	line "なんか どこにもいないんだよねー"
@@ -8932,7 +8932,7 @@ TreeBitstreamText_44b1c:
 	line "まってるから!"
 	done %1100
 
-TreeBitstreamText_44b74:
+TreeBitstreamText_44b74: ; 44b74
 	ctxt "ユーコ"
 	line "あれー もしかして キミがもってるの"
 	line "コンボイル? だよね!"
@@ -8945,7 +8945,7 @@ TreeBitstreamText_44b74:
 	line "おーねーがーいー!"
 	done %010
 
-TreeBitstreamText_44bcf:
+TreeBitstreamText_44bcf: ; 44bcf
 	ctxt "ユーコ"
 	line "ほんとに?!"
 	line "また おねがいきーてくれるなんて!!"
@@ -8957,14 +8957,14 @@ TreeBitstreamText_44bcf:
 	line "あって あげてね! バイバイ!"
 	done %0010
 
-TreeBitstreamText_44c2a:
+TreeBitstreamText_44c2a: ; 44c2a
 	ctxt "ユーコ"
 	line "えー! なんでっ!"
 	line "どーして こうかんしてくれないの!?"
 	line "マッドソンちゃん きらいなの?"
 	done %100
 
-TreeBitstreamText_44c51:
+TreeBitstreamText_44c51: ; 44c51
 	ctxt "ユーコ"
 	line "キミって ホントに イイひとだよね?"
 	line "かおも ステキだしネ ポッ"
@@ -8973,7 +8973,7 @@ TreeBitstreamText_44c51:
 	line "バイバイ!!"
 	done %1010
 
-TreeBitstreamText_44c92:
+TreeBitstreamText_44c92: ; 44c92
 	ctxt "ナッツ"
 	line "フフフ じまん しちゃおっと!"
 	line ""
@@ -8985,14 +8985,14 @@ TreeBitstreamText_44c92:
 	line "さがして あるいてるんだけど……"
 	done %1101
 
-TreeBitstreamText_44ceb:
+TreeBitstreamText_44ceb: ; 44ceb
 	ctxt "ナッツ"
 	line "マッドソン どこにもいないっ!"
 	line "どこを さがしても いないっ!"
 	line "<PLAYER>さん! みませんでした?"
 	done %1
 
-TreeBitstreamText_44d13:
+TreeBitstreamText_44d13: ; 44d13
 	ctxt "ナッツ"
 	line "あ マッドソン もってるの?!"
 	line "ほしいなー ほしいなー"
@@ -9001,7 +9001,7 @@ TreeBitstreamText_44d13:
 	line "カスタムロボポンと こうかんして!"
 	done %1111
 
-TreeBitstreamText_44d53:
+TreeBitstreamText_44d53: ; 44d53
 	ctxt "ナッツ"
 	line "ありがとー! ナッツ うれしい!"
 	line "けど カスタムロボポンは おしい!"
@@ -9014,7 +9014,7 @@ TreeBitstreamText_44d53:
 	line "バイバイ またね!"
 	done
 
-TreeBitstreamText_44dc8:
+TreeBitstreamText_44dc8: ; 44dc8
 	ctxt "ナッツ"
 	line "うっそーん! ナッツ ショック!"
 	line ""
@@ -9022,7 +9022,7 @@ TreeBitstreamText_44dc8:
 	line "あげなくて すむから いいのか!"
 	done
 
-TreeBitstreamText_44df3:
+TreeBitstreamText_44df3: ; 44df3
 	ctxt "ナッツ"
 	line "どうやら ガールズ8の みんなと"
 	line "ぶじに あえたみたいね"
@@ -9036,7 +9036,7 @@ TreeBitstreamText_44df3:
 	line "<PLAYER>の せいだからね!"
 	done %0011
 
-TreeBitstreamText_44e62:
+TreeBitstreamText_44e62: ; 44e62
 	ctxt "リッツ"
 	line "オレ ガールズ8の リッツ!"
 	line "さいしょに ことわっておく!"
@@ -9046,7 +9046,7 @@ TreeBitstreamText_44e62:
 	line "さがして あるいてるんだけど……"
 	done %0000
 
-TreeBitstreamText_44eb8:
+TreeBitstreamText_44eb8: ; 44eb8
 	ctxt "リッツ"
 	line "だいくロボポンの オヤカタってヤツ"
 	line "おまえ しらないか?"
@@ -9057,7 +9057,7 @@ TreeBitstreamText_44eb8:
 	line "おれいに いいロボポンやるからさ!"
 	done
 
-TreeBitstreamText_44f10:
+TreeBitstreamText_44f10: ; 44f10
 	ctxt "リッツ"
 	line "ややっ!? もしや………"
 	line "それは オヤカタ?!"
@@ -9066,7 +9066,7 @@ TreeBitstreamText_44f10:
 	line "オレの スタンドと こうかんしよう!"
 	done %1100110
 
-TreeBitstreamText_44f3f:
+TreeBitstreamText_44f3f: ; 44f3f
 	ctxt "リッツ"
 	line "おまえ あんがい いいヤツなんだな"
 	line "オトコとして みとめてやるよ"
@@ -9083,7 +9083,7 @@ TreeBitstreamText_44f3f:
 	line "おれいに いいロボポンやるからさ!"
 	done
 
-TreeBitstreamText_44fed:
+TreeBitstreamText_44fed: ; 44fed
 	ctxt "リッツ"
 	line "おまえ いがいと つめたいヤツだな"
 	line "おんなだから つめたくするのか?"
@@ -9094,7 +9094,7 @@ TreeBitstreamText_44fed:
 	line "かがみ みてみろ バカヤロー!"
 	done %0011
 
-TreeBitstreamText_45042:
+TreeBitstreamText_45042: ; 45042
 	ctxt "リッツ"
 	line "おまえが ホントに いいヤツかどうか"
 	line "もう1ど しらべさせてくれ!"
@@ -9107,7 +9107,7 @@ TreeBitstreamText_45042:
 	line "おれいに いいロボポンやるからさ!"
 	done %0111
 
-TreeBitstreamText_450bb:
+TreeBitstreamText_450bb: ; 450bb
 	ctxt "リッツ"
 	line "ややややっ!? もしや………"
 	line "それは ドライバル?!"
@@ -9117,7 +9117,7 @@ TreeBitstreamText_450bb:
 	line "こうかん してやるよ!"
 	done %011110
 
-TreeBitstreamText_450f4:
+TreeBitstreamText_450f4: ; 450f4
 	ctxt "リッツ"
 	line "おまえ やっぱり いいヤツなんだな"
 	line "オトコとして かちの あるヤツだよ"
@@ -9133,7 +9133,7 @@ TreeBitstreamText_450f4:
 	line "いちばんの いいヤツかもな"
 	done %10101
 
-TreeBitstreamText_45194:
+TreeBitstreamText_45194: ; 45194
 	ctxt "リッツ"
 	line "おまえ いがいと つめたいヤツだな"
 	line "おんなだから つめたくするのか?"
@@ -9144,7 +9144,7 @@ TreeBitstreamText_45194:
 	line "かがみ みてみろ バカヤロー!"
 	done %0100
 
-TreeBitstreamText_451e9:
+TreeBitstreamText_451e9: ; 451e9
 	ctxt "リッツ"
 	line "おまえ やっぱり いいヤツなんだな"
 	line "オトコとして かちの あるヤツだよ"
@@ -9159,7 +9159,7 @@ TreeBitstreamText_451e9:
 	line "もう くるんじゃ ないぞ!"
 	done
 
-TreeBitstreamText_45277:
+TreeBitstreamText_45277: ; 45277
 	ctxt "ひろみ"
 	line "ちょっとぉ あんたぁ なによぉ"
 	line "ずっと こっちばっか みてさぁ"
@@ -9169,7 +9169,7 @@ TreeBitstreamText_45277:
 	line "さがして あるいてんだけどさぁ……"
 	done %0
 
-TreeBitstreamText_452cd:
+TreeBitstreamText_452cd: ; 452cd
 	ctxt "ひろみ"
 	line "アタイがほしいのは スタンド!"
 	line ""
@@ -9180,7 +9180,7 @@ TreeBitstreamText_452cd:
 	line "はしれ! はしって もってこい!"
 	done %00
 
-TreeBitstreamText_4531c:
+TreeBitstreamText_4531c: ; 4531c
 	ctxt "ひろみ"
 	line "ほう アタイに いわれたとおり"
 	line "スタンド もってきたんだね"
@@ -9189,7 +9189,7 @@ TreeBitstreamText_4531c:
 	line "もちろん こうかん すんだろ?"
 	done %000
 
-TreeBitstreamText_4535e:
+TreeBitstreamText_4535e: ; 4535e
 	ctxt "ひろみ"
 	line "やっぱ そうこなくっちゃな!"
 	line "アタイが みこんだだけあるよ"
@@ -9205,14 +9205,14 @@ TreeBitstreamText_4535e:
 	line "ほら さっさと さがしてくるっ!"
 	done %010000
 
-TreeBitstreamText_453ee:
+TreeBitstreamText_453ee: ; 453ee
 	ctxt "ひろみ"
 	line "あんたぁ ナメてんのかぁ?"
 	line "へんっ そんなカオ みたくもねぇよ"
 	line "さっさと どっか きえな!"
 	done %111110
 
-TreeBitstreamText_45418:
+TreeBitstreamText_45418: ; 45418
 	ctxt "ひろみ"
 	line "あんたに つぎの しれいを"
 	line "いいわたそうじゃないか!"
@@ -9224,7 +9224,7 @@ TreeBitstreamText_45418:
 	line "ほら さっさと さがしてくるっ!"
 	done %0
 
-TreeBitstreamText_4547f:
+TreeBitstreamText_4547f: ; 4547f
 	ctxt "ひろみ"
 	line "ほう アタイに いわれたとおり"
 	line "バーナー もってきたんだね"
@@ -9233,7 +9233,7 @@ TreeBitstreamText_4547f:
 	line "もちろん こうかん すんだろ?"
 	done %001100
 
-TreeBitstreamText_454c0:
+TreeBitstreamText_454c0: ; 454c0
 	ctxt "ひろみ"
 	line "やっぱ そうこなくっちゃな!"
 	line "アタイが みこんだだけあるよ"
@@ -9245,7 +9245,7 @@ TreeBitstreamText_454c0:
 	line "……って ちょうしに のるなよな!"
 	done %1101
 
-TreeBitstreamText_45511:
+TreeBitstreamText_45511: ; 45511
 	ctxt "ひろみ"
 	line "あんた こんじょう あるじゃん!"
 	line "アタイが みこんだだけあるよ"
@@ -9255,7 +9255,7 @@ TreeBitstreamText_45511:
 	line "じゃあな バイっ!"
 	done %0111100
 
-TreeBitstreamText_45564:
+TreeBitstreamText_45564: ; 45564
 	ctxt "ユキコ"
 	line "こんにちは! ごきげんいかが?"
 	line "コレクション すすんでる?"
@@ -9265,7 +9265,7 @@ TreeBitstreamText_45564:
 	line "さがして あるいてるんだけど……"
 	done %100
 
-TreeBitstreamText_455be:
+TreeBitstreamText_455be: ; 455be
 	ctxt "ユキコ"
 	line "かなり おおきな ロボポンなんだけど"
 	line "ボイラースって しってるかな?"
@@ -9275,7 +9275,7 @@ TreeBitstreamText_455be:
 	line "あー どうしても ほしいなぁ"
 	done %0010
 
-TreeBitstreamText_4560f:
+TreeBitstreamText_4560f: ; 4560f
 	ctxt "ユキコ"
 	line "ああ! それは ゆめにまで みた"
 	line "ボ ボ ボイラース!!"
@@ -9285,7 +9285,7 @@ TreeBitstreamText_4560f:
 	line "こうかん してちょーだい!"
 	done %01
 
-TreeBitstreamText_4565b:
+TreeBitstreamText_4565b: ; 4565b
 	ctxt "ユキコ"
 	line "やったね! ありがと チュッ!"
 	line "<PLAYER>って そんけいしちゃう!"
@@ -9302,7 +9302,7 @@ TreeBitstreamText_4565b:
 	line "あーあ どうしても ほしいなぁ"
 	done %0111101
 
-TreeBitstreamText_456f4:
+TreeBitstreamText_456f4: ; 456f4
 	ctxt "ユキコ"
 	line "あー そう そーなんだー"
 	line "そーいう たいど とるんだー"
@@ -9310,7 +9310,7 @@ TreeBitstreamText_456f4:
 	line "ホント サイテー サイアクだね!"
 	done %110010
 
-TreeBitstreamText_45728:
+TreeBitstreamText_45728: ; 45728
 	ctxt "ユキコ"
 	line "ねえねえ <PLAYER>ってばぁ"
 	line ""
@@ -9323,7 +9323,7 @@ TreeBitstreamText_45728:
 	line "あーあ どうしても ほしいなぁ"
 	done %011110
 
-TreeBitstreamText_45794:
+TreeBitstreamText_45794: ; 45794
 	ctxt "ユキコ"
 	line "ああ! それは ゆめにまで みた"
 	line "オ オ オネダリ!!"
@@ -9333,7 +9333,7 @@ TreeBitstreamText_45794:
 	line "こうかん してちょーだい!"
 	done %1001
 
-TreeBitstreamText_457de:
+TreeBitstreamText_457de: ; 457de
 	ctxt "ユキコ"
 	line "やったね! ありがと チュッ!"
 	line "<PLAYER>って そんけいしちゃう!"
@@ -9349,7 +9349,7 @@ TreeBitstreamText_457de:
 	line "おんなのコは ウットリするはずよ"
 	done %10
 
-TreeBitstreamText_45875:
+TreeBitstreamText_45875: ; 45875
 	ctxt "ユキコ"
 	line "ところで ユキコいがいの"
 	line "ガールズ8のみんなには あったの?"
@@ -9361,12 +9361,12 @@ TreeBitstreamText_45875:
 	line "おんなのコは ウットリするはずよ"
 	done %100
 
-TreeBitstreamText_458e0:
+TreeBitstreamText_458e0: ; 458e0
 	ctxt "ロボポンを"
 	line "こうかんしますか?"
 	done %01010
 
-TreeBitstreamText_458ef:
+TreeBitstreamText_458ef: ; 458ef
 	ctxt "ガールズ8は なぞの おんなのコ!"
 	line ""
 	line "レアなロボポンを あつめていて"
@@ -9376,7 +9376,7 @@ TreeBitstreamText_458ef:
 	line "ごうけい8にんさ!"
 	done %0011
 
-TreeBitstreamText_4593e:
+TreeBitstreamText_4593e: ; 4593e
 	ctxt "ボクは こころがわりのはげしい"
 	line "おっかけだった おとこ!"
 	line "ガールズ8っていう おんなのこを"
@@ -9392,7 +9392,7 @@ TreeBitstreamText_4593e:
 	line "このじゅんばんが たいせつなんだよ"
 	done %1
 
-TreeBitstreamText_459de:
+TreeBitstreamText_459de: ; 459de
 	ctxt "ボク しってるよー"
 	line ""
 	line "ガールズ8のメンバーは みんな"
@@ -9403,14 +9403,14 @@ TreeBitstreamText_459de:
 	line "………あれ? わすれちゃった!"
 	done %0101000
 
-TreeBitstreamText_45a40:
+TreeBitstreamText_45a40: ; 45a40
 	ctxt "こうかんできる ロボポンが"
 	line "パーティーのなかに ふくすういるよ"
 	line "こうかんできる ロボポンを"
 	line "1たいに してから きてね"
 	done %1000111
 
-TreeBitstreamText_45a76:
+TreeBitstreamText_45a76: ; 45a76
 	ctxt "いわれたロボポンは"
 	line "もってきたみたいだね"
 	line "でもね ロボポンこうかんは"
@@ -9419,35 +9419,35 @@ TreeBitstreamText_45a76:
 	line "こうかんが さき みたいだね"
 	done %10
 
-TreeBitstreamText_45abb:
+TreeBitstreamText_45abb: ; 45abb
 	ctxt "いまは レイナの じゅんばんだね"
 	done %0110011
 
-TreeBitstreamText_45acc:
+TreeBitstreamText_45acc: ; 45acc
 	ctxt "いまは ミカチの じゅんばんだね"
 	done %10011
 
-TreeBitstreamText_45add:
+TreeBitstreamText_45add: ; 45add
 	ctxt "いまは マーヤの じゅんばんだね"
 	done %10011
 
-TreeBitstreamText_45aee:
+TreeBitstreamText_45aee: ; 45aee
 	ctxt "いまは ユーコの じゅんばんだね"
 	done %011
 
-TreeBitstreamText_45aff:
+TreeBitstreamText_45aff: ; 45aff
 	ctxt "いまは リッツの じゅんばんだね"
 	done %0011
 
-TreeBitstreamText_45b10:
+TreeBitstreamText_45b10: ; 45b10
 	ctxt "いまは ひろみの じゅんばんだね"
 	done %11001
 
-TreeBitstreamText_45b20:
+TreeBitstreamText_45b20: ; 45b20
 	ctxt "いまは ユキコの じゅんばんだね"
 	done %011
 
-TreeBitstreamText_45b31:
+TreeBitstreamText_45b31: ; 45b31
 	ctxt "なぞのじんぶつ"
 	line "ようこそ バードじまへ"
 	line "まさか また あえるとはなぁ……"
@@ -9462,7 +9462,7 @@ TreeBitstreamText_45b31:
 	line "おまえが しゅぎょうするばんだ!"
 	done %0111
 
-TreeBitstreamText_45bb0:
+TreeBitstreamText_45bb0: ; 45bb0
 	ctxt "なぞのじんぶつ"
 	line "グフフフ"
 	line ""
@@ -9474,7 +9474,7 @@ TreeBitstreamText_45bb0:
 	line "とどめを さしてやるからな!"
 	done %101
 
-TreeBitstreamText_45c00:
+TreeBitstreamText_45c00: ; 45c00
 	ctxt "ビスコ"
 	line "ちくしょう!"
 	line "またまた まけた!"
@@ -9488,12 +9488,12 @@ TreeBitstreamText_45c00:
 	line "おぼえてろよ!"
 	done %0000
 
-TreeBitstreamText_45c64:
+TreeBitstreamText_45c64: ; 45c64
 	ctxt "ボンボンどくしゃデザインの"
 	line "ロボポンを てにいれた!"
 	done %1011110
 
-TreeBitstreamText_45c80:
+TreeBitstreamText_45c80: ; 45c80
 	ctxt "だいくのケンさん"
 	line "おうっ おいらは"
 	line "だいくの ケンって いうモンでい!"
@@ -9501,50 +9501,50 @@ TreeBitstreamText_45c80:
 	line "ビルを でっかく してやるぜ!"
 	done %011
 
-TreeBitstreamText_45cb9:
+TreeBitstreamText_45cb9: ; 45cb9
 	ctxt "だいくのケンさん"
 	line "おうっ カネ もってるな"
 	line "ぞうちく たのむって かい?"
 	done %01
 
-TreeBitstreamText_45cd8:
+TreeBitstreamText_45cd8: ; 45cd8
 	ctxt "だいくのケンさん"
 	line "なんでい カネ もってないのかい?"
 	line "それじゃあ ぞうちくは できないぜ"
 	done %1011001
 
-TreeBitstreamText_45cff:
+TreeBitstreamText_45cff: ; 45cff
 	ctxt "だいくのケンさん"
 	line "そうかい きが かわったら"
 	line "いつでも こいってんだ"
 	done %110000
 
-TreeBitstreamText_45d1c:
+TreeBitstreamText_45d1c: ; 45d1c
 	ctxt "だいくのケンさん"
 	line "おいら とっても きげんがいいから"
 	line "いまなら やすく しとくぜ"
 	done %01
 
-TreeBitstreamText_45d3d:
+TreeBitstreamText_45d3d: ; 45d3d
 	ctxt "だいくのケンさん"
 	line "チャッチャと おわらせるぜ"
 	line "おいらの うでの みせどころでい"
 	done %01111
 
-TreeBitstreamText_45d61:
+TreeBitstreamText_45d61: ; 45d61
 	ctxt "だいくのケンさん"
 	line "なんでい おいら ふきげんなんだ"
 	line "ボッたくってやるのさー"
 	done %1
 
-TreeBitstreamText_45d82:
+TreeBitstreamText_45d82: ; 45d82
 	ctxt "だいくのケンさん"
 	line "さぁて ちょっくら いってくるぜ"
 	line "すぐに おわらせてやるぜい"
 	line "メシでも くって まってな!"
 	done %1
 
-TreeBitstreamText_45db0:
+TreeBitstreamText_45db0: ; 45db0
 	ctxt "だいくのケンさん"
 	line "おぅ オイラがつくったビル"
 	line "きに いってくれたか?"
@@ -9554,7 +9554,7 @@ TreeBitstreamText_45db0:
 	line "おいら たかいところ ダメなんだよ"
 	done
 
-TreeBitstreamText_45dff:
+TreeBitstreamText_45dff: ; 45dff
 	ctxt "だいくのケンさん"
 	line "おぅ そういえばよぉ"
 	line ""
@@ -9562,54 +9562,54 @@ TreeBitstreamText_45dff:
 	line "おまえさんのこと よんでたぜ"
 	done %1
 
-TreeBitstreamText_45e29:
+TreeBitstreamText_45e29: ; 45e29
 	ctxt "だいくのケンさん"
 	line "おう ビルをぞうちくしといたぜ"
 	line "ちょっと みてきな"
 	done %000
 
-TreeBitstreamText_45e48:
+TreeBitstreamText_45e48: ; 45e48
 	ctxt "うけつけ"
 	line "<PLAYER>しゃちょう"
 	line "おはようございます"
 	done %100110
 
-TreeBitstreamText_45e5d:
+TreeBitstreamText_45e5d: ; 45e5d
 	ctxt "うけつけ"
 	line "<PLAYER>しゃちょう"
 	line "つうしんで あそぶのですね?"
 	done %1101
 
-TreeBitstreamText_45e76:
+TreeBitstreamText_45e76: ; 45e76
 	ctxt "うけつけ"
 	line "こちらの へやは つうしんで"
 	line "あそぶための へやです"
 	done %100
 
-TreeBitstreamText_45e91:
+TreeBitstreamText_45e91: ; 45e91
 	ctxt "うけつけ"
 	line "バトルジェネシス5で"
 	line "あそぶのですか?"
 	done %00
 
-TreeBitstreamText_45eaa:
+TreeBitstreamText_45eaa: ; 45eaa
 	ctxt "うけつけ"
 	line "どうぞ たのしんできてください"
 	done %0
 
-TreeBitstreamText_45ebc:
+TreeBitstreamText_45ebc: ; 45ebc
 	ctxt "うけつけ"
 	line "そうですか……"
 	line "こんど ぜひ いらしてくださいね"
 	done %000
 
-TreeBitstreamText_45ed5:
+TreeBitstreamText_45ed5: ; 45ed5
 	ctxt "うけつけ"
 	line "このさきへは"
 	line "まだ はいれません!"
 	done %00
 
-TreeBitstreamText_45ee8:
+TreeBitstreamText_45ee8: ; 45ee8
 	ctxt "やぁ ボク かいてーじん!"
 	line ""
 	line "ぜんこくかくちに ちらばった"
@@ -9617,80 +9617,80 @@ TreeBitstreamText_45ee8:
 	line "おもいでのカケラがあればなぁ……"
 	done %100110
 
-TreeBitstreamText_45f1d:
+TreeBitstreamText_45f1d: ; 45f1d
 	ctxt "うーん それはざんねん"
 	done %010
 
-TreeBitstreamText_45f28:
+TreeBitstreamText_45f28: ; 45f28
 	ctxt "あっ! おもいでのカケラ!"
 	line "それちょーだい!"
 	done %11101
 
-TreeBitstreamText_45f3d:
+TreeBitstreamText_45f3d: ; 45f3d
 	ctxt "………………みんなげんきそうだね"
 	line "ありがとう あんしんしたよ"
 	done %00
 
-TreeBitstreamText_45f56:
+TreeBitstreamText_45f56: ; 45f56
 	ctxt "みんなのおもいで みせてもらったよ"
 	line "ありがとう まんぞくしたよ"
 	line "おれいをさせてくれないかな?"
 	line "おもいでのゆびわを もらってよ"
 	done %10
 
-TreeBitstreamText_45f88:
+TreeBitstreamText_45f88: ; 45f88
 	ctxt "おもいでのゆびわ"
 	line "を てにいれた!"
 	done %0101
 
-TreeBitstreamText_45f98:
+TreeBitstreamText_45f98: ; 45f98
 	ctxt "あっそうだ そのゆびわ"
 	line "ちょうろうに みせてくれないかな?"
 	line "にんげんぎらいの ちょうろうも"
 	line "きっとよろこんでくれるよ"
 	done %01011
 
-TreeBitstreamText_45fc8:
+TreeBitstreamText_45fc8: ; 45fc8
 	ctxt "おもいでのカケラ"
 	line "を わたした"
 	done %011010
 
-TreeBitstreamText_45fd7:
+TreeBitstreamText_45fd7: ; 45fd7
 	ctxt "なかまと はぐれたけど"
 	line "ボクは げんきだよ"
 	done %1110
 
-TreeBitstreamText_45fec:
+TreeBitstreamText_45fec: ; 45fec
 	ctxt "みせてあげるよ! ぼくのおもいで!"
 	done %000110
 
-TreeBitstreamText_45ffd:
+TreeBitstreamText_45ffd: ; 45ffd
 	ctxt "おもいでのカケラ"
 	line "を てにいれた!"
 	done %01
 
-TreeBitstreamText_4600d:
+TreeBitstreamText_4600d: ; 4600d
 	ctxt "やぁ! こんにちは"
 	line ""
 	line "キミのもっている ロボポンの"
 	line "なまえを かえてあげようか?"
 	done %10
 
-TreeBitstreamText_46031:
+TreeBitstreamText_46031: ; 46031
 	ctxt "じゃあ すきな なまえを"
 	line "いれてね"
 	done %101
 
-TreeBitstreamText_46040:
+TreeBitstreamText_46040: ; 46040
 	ctxt "そっか"
 	line "きが むいたら またきてね"
 	done %101
 
-TreeBitstreamText_4604f:
+TreeBitstreamText_4604f: ; 4604f
 	ctxt "また きてね!"
 	done
 
-TreeBitstreamText_46056:
+TreeBitstreamText_46056: ; 46056
 	ctxt "ここは パーティーのはけんじょだ"
 	line ""
 	line "ロボポンの はけんの しかたを"
@@ -9715,31 +9715,31 @@ TreeBitstreamText_46056:
 	line "はけんに だすことが できるぜ!"
 	done %101
 
-TreeBitstreamText_46175:
+TreeBitstreamText_46175: ; 46175
 	ctxt "エレベーターが できたよ!"
 	done %1011100
 
-TreeBitstreamText_46183:
+TreeBitstreamText_46183: ; 46183
 	ctxt "アイテムやが できたよ!"
 	done %10
 
-TreeBitstreamText_4618f:
+TreeBitstreamText_4618f: ; 4618f
 	ctxt "パーツやが できたよ!"
 	done %0
 
-TreeBitstreamText_4619b:
+TreeBitstreamText_4619b: ; 4619b
 	ctxt "けんきゅうじょが できたよ!"
 	done %00
 
-TreeBitstreamText_461a9:
+TreeBitstreamText_461a9: ; 461a9
 	ctxt "なまえやが できたよ!"
 	done %0
 
-TreeBitstreamText_461b4:
+TreeBitstreamText_461b4: ; 461b4
 	ctxt "はけんじょが できたよ!"
 	done
 
-TreeBitstreamText_461c0:
+TreeBitstreamText_461c0: ; 461c0
 	ctxt "バトルジェネシス5は どれも"
 	line "ロボポンを つかった バトルだ"
 	line "ということは とうぜん ロボポンの"
@@ -9748,7 +9748,7 @@ TreeBitstreamText_461c0:
 	line "ハッキリいって あとは うんだな"
 	done %011110
 
-TreeBitstreamText_46218:
+TreeBitstreamText_46218: ; 46218
 	ctxt "ヨンクー"
 	line "スピーダーは すばやさが"
 	line "いちばん じゅうようだぞ"
@@ -9761,18 +9761,18 @@ TreeBitstreamText_46218:
 	line "やってみるかい?"
 	done %1111
 
-TreeBitstreamText_46285:
+TreeBitstreamText_46285: ; 46285
 	ctxt "ヨンクー"
 	line "そうかい……"
 	line "また きなよ"
 	done %01001
 
-TreeBitstreamText_46294:
+TreeBitstreamText_46294: ; 46294
 	ctxt "ヨンクー"
 	line "なかなか やるね"
 	done %1000000
 
-TreeBitstreamText_462a0:
+TreeBitstreamText_462a0: ; 462a0
 	ctxt "ロボまる"
 	line "パンチャーは パンチりょくを"
 	line "きそうバトルだよ!"
@@ -9785,18 +9785,18 @@ TreeBitstreamText_462a0:
 	line "しょうぶしてみる?"
 	done
 
-TreeBitstreamText_4630b:
+TreeBitstreamText_4630b: ; 4630b
 	ctxt "ロボまる"
 	line "それじゃあ またこんど"
 	line "しょうぶしようよ"
 	done %0011101
 
-TreeBitstreamText_46322:
+TreeBitstreamText_46322: ; 46322
 	ctxt "ロボまる"
 	line "キミは つよいね"
 	done %01
 
-TreeBitstreamText_46330:
+TreeBitstreamText_46330: ; 46330
 	ctxt "バグエル"
 	line "シールダーは ぼうぎょりょく と"
 	line "うん が ものをいう バトルだぜ!"
@@ -9809,19 +9809,19 @@ TreeBitstreamText_46330:
 	line "よしっ! しょうぶしようぜ!"
 	done %010
 
-TreeBitstreamText_463ad:
+TreeBitstreamText_463ad: ; 463ad
 	ctxt "バグエル"
 	line "えっ!!"
 	line "そんなあ しょうぶしようぜ!"
 	done %00111
 
-TreeBitstreamText_463c3:
+TreeBitstreamText_463c3: ; 463c3
 	ctxt "バグエル"
 	line "くっそー"
 	line "つぎは まけないからな!"
 	done %10100
 
-TreeBitstreamText_463d7:
+TreeBitstreamText_463d7: ; 463d7
 	ctxt "トリペル"
 	line "ジャンパーは より とおくへ"
 	line "とんだほうが かちになるバトルだ"
@@ -9836,19 +9836,19 @@ TreeBitstreamText_463d7:
 	line "やってみる?"
 	done %001111
 
-TreeBitstreamText_4646b:
+TreeBitstreamText_4646b: ; 4646b
 	ctxt "トリペル"
 	line "そらをとぶのは"
 	line "きもち いいのに……"
 	done %10000
 
-TreeBitstreamText_46480:
+TreeBitstreamText_46480: ; 46480
 	ctxt "トリペル"
 	line "こんどは まけないよ!"
 	line "また あそぼうね"
 	done %1
 
-TreeBitstreamText_46496:
+TreeBitstreamText_46496: ; 46496
 	ctxt "ムサシ"
 	line "バトラーは ボスバトルと"
 	line "おなじでござる"
@@ -9860,146 +9860,146 @@ TreeBitstreamText_46496:
 	line "たたかってみるか?"
 	done %10
 
-TreeBitstreamText_464f1:
+TreeBitstreamText_464f1: ; 464f1
 	ctxt "ムサシ"
 	line "そうか それはざんねん"
 	done %1
 
-TreeBitstreamText_464ff:
+TreeBitstreamText_464ff: ; 464ff
 	ctxt "ムサシ"
 	line "おぬし なかなかやるな!"
 	done
 
-TreeBitstreamText_4650d:
+TreeBitstreamText_4650d: ; 4650d
 	ctxt "   ようこそ カプリむらへ"
 	done %011
 
-TreeBitstreamText_4651c:
+TreeBitstreamText_4651c: ; 4651c
 	ctxt "ここは けんきゅう がくえん とし"
 	line "きれいで すみよい リブラのまち"
 	done %0000000
 
-TreeBitstreamText_4653a:
+TreeBitstreamText_4653a: ; 4653a
 	ctxt "   このさき リブラがっこう"
 	done %10
 
-TreeBitstreamText_46549:
+TreeBitstreamText_46549: ; 46549
 	ctxt "     リブラがっこう"
 	done %1
 
-TreeBitstreamText_46554:
+TreeBitstreamText_46554: ; 46554
 	ctxt "   れきしと ぶんかの まち"
 	line "   テール じょうか まち"
 	done %001
 
-TreeBitstreamText_4656c:
+TreeBitstreamText_4656c: ; 4656c
 	ctxt "   ロボポンドーム いりぐち"
 	done %001011
 
-TreeBitstreamText_4657c:
+TreeBitstreamText_4657c: ; 4657c
 	ctxt "   このさき テールじょう"
 	line "  いっぱんじんは はいれません"
 	done %10
 
-TreeBitstreamText_46596:
+TreeBitstreamText_46596: ; 46596
 	ctxt "   ここは ロボポンドーム"
 	done %1
 
-TreeBitstreamText_465a4:
+TreeBitstreamText_465a4: ; 465a4
 	ctxt "      テールじょう"
 	done %00
 
-TreeBitstreamText_465ae:
+TreeBitstreamText_465ae: ; 465ae
 	ctxt "カンテラや"
 	done %101
 
-TreeBitstreamText_465b4:
+TreeBitstreamText_465b4: ; 465b4
 	ctxt "ようこそ!"
 	line "アンテナの さと カリーユまちへ!"
 	done %0110
 
-TreeBitstreamText_465ca:
+TreeBitstreamText_465ca: ; 465ca
 	ctxt "   りょうしの むら バンザ"
 	done %1110
 
-TreeBitstreamText_465d8:
+TreeBitstreamText_465d8: ; 465d8
 	ctxt "   ここは さばくのオアシス"
 	line "       キャロル"
 	done
 
-TreeBitstreamText_465ec:
+TreeBitstreamText_465ec: ; 465ec
 	ctxt "       おねがい"
 	line ""
 	line " ぼうそう こういは きけんなので"
 	line " やめましょう   クールスまち"
 	done %000
 
-TreeBitstreamText_46610:
+TreeBitstreamText_46610: ; 46610
 	ctxt "    けわしさ バクハツ!"
 	line "           グリースやま"
 	done %001
 
-TreeBitstreamText_46629:
+TreeBitstreamText_46629: ; 46629
 	ctxt "  サンダードームへ ウェルカム!"
 	line "        リーダー ワイルド"
 	done %1
 
-TreeBitstreamText_46645:
+TreeBitstreamText_46645: ; 46645
 	ctxt "にゅうたい うけつけじょ"
 	done %0000
 
-TreeBitstreamText_46651:
+TreeBitstreamText_46651: ; 46651
 	ctxt "ここ ダインまち なら"
 	line "せんそうが おきても あんしん"
 	done %00101
 
-TreeBitstreamText_46668:
+TreeBitstreamText_46668: ; 46668
 	ctxt "もとむ! わかくて タフな"
 	line "いろおとこ"
 	line "アポロようさい かんりきょく"
 	done %01
 
-TreeBitstreamText_46686:
+TreeBitstreamText_46686: ; 46686
 	ctxt "ビッグヒットの うらには"
 	line "ビッグな おとしあなも ある"
 	line "つりは じんせいと にてる"
 	line "          つり せんにん"
 	done %1
 
-TreeBitstreamText_466b3:
+TreeBitstreamText_466b3: ; 466b3
 	ctxt "たかい エサを つかってみても"
 	line "いいことばかり とは かぎらない"
 	line "じんせいも たぶん そう"
 	line "          つり せんにん"
 	done %00011
 
-TreeBitstreamText_466e2:
+TreeBitstreamText_466e2: ; 466e2
 	ctxt "   ばくだんの まち ガーナ"
 	done %1101111
 
-TreeBitstreamText_466f0:
+TreeBitstreamText_466f0: ; 466f0
 	ctxt "  ようこそ ゼロキャッスルへ"
 	done
 
-TreeBitstreamText_466ff:
+TreeBitstreamText_466ff: ; 466ff
 	ctxt "   ここは ゴルドへいげん"
 	done %010110
 
-TreeBitstreamText_4670e:
+TreeBitstreamText_4670e: ; 4670e
 	ctxt "    オワリの もり"
 	done %01010
 
-TreeBitstreamText_46718:
+TreeBitstreamText_46718: ; 46718
 	ctxt "    かいてーじんの むら"
 	line "        ポロ"
 	done %10
 
-TreeBitstreamText_4672b:
+TreeBitstreamText_4672b: ; 4672b
 	ctxt "     まるで げんじつ"
 	line "      まぼろしむら"
 	done %10
 
-TreeBitstreamText_46740:
+TreeBitstreamText_46740: ; 46740
 	ctxt "   アミューズメント どうくつ"
 	line "     まぼろしダンジョン"
 	line "たいちょう たいりょく あたま"
@@ -10008,760 +10008,760 @@ TreeBitstreamText_46740:
 	line "ごえんりょ ください   マスター"
 	done %111111
 
-TreeBitstreamText_46788:
+TreeBitstreamText_46788: ; 46788
 	ctxt "   ここは エラブーどうくつ"
 	line "  ちか3かいに ちていこ あり"
 	line "つりびとは らくせきに ちゅうい"
 	line "          つり せんにん"
 	done %0101
 
-TreeBitstreamText_467bb:
+TreeBitstreamText_467bb: ; 467bb
 	ctxt "リブラがっこう 1かい"
 	done %01101
 
-TreeBitstreamText_467c7:
+TreeBitstreamText_467c7: ; 467c7
 	ctxt "リブラがっこう 2かい"
 	done %1101
 
-TreeBitstreamText_467d3:
+TreeBitstreamText_467d3: ; 467d3
 	ctxt "リブラがっこう 3かい"
 	done %1101
 
-TreeBitstreamText_467df:
+TreeBitstreamText_467df: ; 467df
 	ctxt "リブラがっこう 4かい"
 	done %1101
 
-TreeBitstreamText_467eb:
+TreeBitstreamText_467eb: ; 467eb
 	ctxt "リブラがっこう 5かい"
 	done %101
 
-TreeBitstreamText_467f7:
+TreeBitstreamText_467f7: ; 467f7
 	ctxt "リブラがっこう 6かい"
 	done %101
 
-TreeBitstreamText_46803:
+TreeBitstreamText_46803: ; 46803
 	ctxt "リブラがっこう 7かい"
 	done %101
 
-TreeBitstreamText_4680f:
+TreeBitstreamText_4680f: ; 4680f
 	ctxt "ギャル1の いえ"
 	done %0
 
-TreeBitstreamText_46818:
+TreeBitstreamText_46818: ; 46818
 	ctxt "ギャル2の いえ"
 	done
 
-TreeBitstreamText_46821:
+TreeBitstreamText_46821: ; 46821
 	ctxt "ギャル3の いえ"
 	done
 
-TreeBitstreamText_4682a:
+TreeBitstreamText_4682a: ; 4682a
 	ctxt "ギャル4の いえ"
 	done
 
-TreeBitstreamText_46833:
+TreeBitstreamText_46833: ; 46833
 	ctxt "ギャル5 の いえ"
 	done %111
 
-TreeBitstreamText_4683d:
+TreeBitstreamText_4683d: ; 4683d
 	ctxt "プカリ の いえ"
 	done %1100
 
-TreeBitstreamText_46846:
+TreeBitstreamText_46846: ; 46846
 	ctxt "ダイーン の いえ"
 	done %01100
 
-TreeBitstreamText_4684f:
+TreeBitstreamText_4684f: ; 4684f
 	ctxt "アッポー の いえ"
 	done %110111
 
-TreeBitstreamText_46859:
+TreeBitstreamText_46859: ; 46859
 	ctxt "ひかる の いえ"
 	done %1011
 
-TreeBitstreamText_46861:
+TreeBitstreamText_46861: ; 46861
 	ctxt "じゅりあ の いえ"
 	done %0110111
 
-TreeBitstreamText_4686b:
+TreeBitstreamText_4686b: ; 4686b
 	ctxt "エラブーどうくつ 1かい"
 	done %101001
 
-TreeBitstreamText_46878:
+TreeBitstreamText_46878: ; 46878
 	ctxt "エラブーどうくつ ちか1かい"
 	done %01
 
-TreeBitstreamText_46886:
+TreeBitstreamText_46886: ; 46886
 	ctxt "エラブーどうくつ ちか2かい"
 	done %1
 
-TreeBitstreamText_46894:
+TreeBitstreamText_46894: ; 46894
 	ctxt "エラブーどうくつ ちか3かい"
 	done %1
 
-TreeBitstreamText_468a2:
+TreeBitstreamText_468a2: ; 468a2
 	ctxt "しょう ほうそうとう 2かい"
 	done
 
-TreeBitstreamText_468ae:
+TreeBitstreamText_468ae: ; 468ae
 	ctxt "ミニ でんぱとう 1かい"
 	done %10
 
-TreeBitstreamText_468ba:
+TreeBitstreamText_468ba: ; 468ba
 	ctxt "ミニ でんぱとう ちか1かい"
 	done %101101
 
-TreeBitstreamText_468c8:
+TreeBitstreamText_468c8: ; 468c8
 	ctxt "だい ほうそうとう 1かい"
 	done %1011
 
-TreeBitstreamText_468d4:
+TreeBitstreamText_468d4: ; 468d4
 	ctxt "だい ほうそうとう 2かい"
 	done %011
 
-TreeBitstreamText_468e0:
+TreeBitstreamText_468e0: ; 468e0
 	ctxt "だい ほうそうとう 3かい"
 	done %011
 
-TreeBitstreamText_468ec:
+TreeBitstreamText_468ec: ; 468ec
 	ctxt "だい ほうそうとう 4かい"
 	done %011
 
-TreeBitstreamText_468f8:
+TreeBitstreamText_468f8: ; 468f8
 	ctxt "だい ほうそうとう 5かい"
 	done %11
 
-TreeBitstreamText_46904:
+TreeBitstreamText_46904: ; 46904
 	ctxt "だい ほうそうとう 6かい"
 	done %11
 
-TreeBitstreamText_46910:
+TreeBitstreamText_46910: ; 46910
 	ctxt "だい ほうそうとう 7かい"
 	done %11
 
-TreeBitstreamText_4691c:
+TreeBitstreamText_4691c: ; 4691c
 	ctxt "いどの なか"
 	done %110001
 
-TreeBitstreamText_46923:
+TreeBitstreamText_46923: ; 46923
 	ctxt "グリースやま 1かい"
 	done %110110
 
-TreeBitstreamText_4692e:
+TreeBitstreamText_4692e: ; 4692e
 	ctxt "グリースやま 2かい"
 	done %10110
 
-TreeBitstreamText_46939:
+TreeBitstreamText_46939: ; 46939
 	ctxt "グリースやま 3かい"
 	done %10110
 
-TreeBitstreamText_46944:
+TreeBitstreamText_46944: ; 46944
 	ctxt "グリースやま 4かい"
 	done %10110
 
-TreeBitstreamText_4694f:
+TreeBitstreamText_4694f: ; 4694f
 	ctxt "グリースやま ちか1かい"
 	done %11
 
-TreeBitstreamText_4695b:
+TreeBitstreamText_4695b: ; 4695b
 	ctxt "グリースやま ちか2かい"
 	done %1
 
-TreeBitstreamText_46967:
+TreeBitstreamText_46967: ; 46967
 	ctxt "グリースやま ちか3かい"
 	done %1
 
-TreeBitstreamText_46973:
+TreeBitstreamText_46973: ; 46973
 	ctxt "グリースやま さかみち"
 	done
 
-TreeBitstreamText_4697e:
+TreeBitstreamText_4697e: ; 4697e
 	ctxt "サンダードーム"
 	done %1101000
 
-TreeBitstreamText_46986:
+TreeBitstreamText_46986: ; 46986
 	ctxt "バトラーの とう 1かい"
 	done
 
-TreeBitstreamText_46991:
+TreeBitstreamText_46991: ; 46991
 	ctxt "バトラーの とう 2かい"
 	done %0101101
 
-TreeBitstreamText_4699d:
+TreeBitstreamText_4699d: ; 4699d
 	ctxt "バトラーの とう 3かい"
 	done %0101101
 
-TreeBitstreamText_469a9:
+TreeBitstreamText_469a9: ; 469a9
 	ctxt "バトラーの とう 4かい"
 	done %0101101
 
-TreeBitstreamText_469b5:
+TreeBitstreamText_469b5: ; 469b5
 	ctxt "バトラーの とう 5かい"
 	done %101101
 
-TreeBitstreamText_469c1:
+TreeBitstreamText_469c1: ; 469c1
 	ctxt "シールダーの とう 1かい"
 	done %1101
 
-TreeBitstreamText_469cd:
+TreeBitstreamText_469cd: ; 469cd
 	ctxt "シールダーの とう 2かい"
 	done %101
 
-TreeBitstreamText_469d9:
+TreeBitstreamText_469d9: ; 469d9
 	ctxt "シールダーの とう 3かい"
 	done %101
 
-TreeBitstreamText_469e5:
+TreeBitstreamText_469e5: ; 469e5
 	ctxt "シールダーの とう 4かい"
 	done %101
 
-TreeBitstreamText_469f1:
+TreeBitstreamText_469f1: ; 469f1
 	ctxt "シールダーの とう 5かい"
 	done %01
 
-TreeBitstreamText_469fd:
+TreeBitstreamText_469fd: ; 469fd
 	ctxt "スピーダーの とう 1かい"
 	done %101
 
-TreeBitstreamText_46a0a:
+TreeBitstreamText_46a0a: ; 46a0a
 	ctxt "スピーダーの とう 2かい"
 	done %01
 
-TreeBitstreamText_46a17:
+TreeBitstreamText_46a17: ; 46a17
 	ctxt "スピーダーの とう 3かい"
 	done %01
 
-TreeBitstreamText_46a24:
+TreeBitstreamText_46a24: ; 46a24
 	ctxt "スピーダーの とう 4かい"
 	done %01
 
-TreeBitstreamText_46a31:
+TreeBitstreamText_46a31: ; 46a31
 	ctxt "スピーダーの とう 5かい"
 	done %1
 
-TreeBitstreamText_46a3e:
+TreeBitstreamText_46a3e: ; 46a3e
 	ctxt "ジャンパーの とう 1かい"
 	done %1101
 
-TreeBitstreamText_46a4b:
+TreeBitstreamText_46a4b: ; 46a4b
 	ctxt "ジャンパーの とう 2かい"
 	done %101
 
-TreeBitstreamText_46a58:
+TreeBitstreamText_46a58: ; 46a58
 	ctxt "ジャンパーの とう 3かい"
 	done %101
 
-TreeBitstreamText_46a65:
+TreeBitstreamText_46a65: ; 46a65
 	ctxt "ジャンパーの とう 4かい"
 	done %101
 
-TreeBitstreamText_46a72:
+TreeBitstreamText_46a72: ; 46a72
 	ctxt "ジャンパーの とう 5かい"
 	done %01
 
-TreeBitstreamText_46a7f:
+TreeBitstreamText_46a7f: ; 46a7f
 	ctxt "パンチャーの とう 1かい"
 	done %011001
 
-TreeBitstreamText_46a8c:
+TreeBitstreamText_46a8c: ; 46a8c
 	ctxt "パンチャーの とう 2かい"
 	done %11001
 
-TreeBitstreamText_46a99:
+TreeBitstreamText_46a99: ; 46a99
 	ctxt "パンチャーの とう 3かい"
 	done %11001
 
-TreeBitstreamText_46aa6:
+TreeBitstreamText_46aa6: ; 46aa6
 	ctxt "パンチャーの とう 4かい"
 	done %11001
 
-TreeBitstreamText_46ab3:
+TreeBitstreamText_46ab3: ; 46ab3
 	ctxt "パンチャーの とう 5かい"
 	done %1001
 
-TreeBitstreamText_46ac0:
+TreeBitstreamText_46ac0: ; 46ac0
 	ctxt "カマットタワー 1かい"
 	done
 
-TreeBitstreamText_46aca:
+TreeBitstreamText_46aca: ; 46aca
 	ctxt "カマットタワー 2かい"
 	done %1001110
 
-TreeBitstreamText_46ad5:
+TreeBitstreamText_46ad5: ; 46ad5
 	ctxt "カマットタワー 3かい"
 	done %1001110
 
-TreeBitstreamText_46ae0:
+TreeBitstreamText_46ae0: ; 46ae0
 	ctxt "カマットタワー 4かい"
 	done %1001110
 
-TreeBitstreamText_46aeb:
+TreeBitstreamText_46aeb: ; 46aeb
 	ctxt "カマットタワー 5かい"
 	done %001110
 
-TreeBitstreamText_46af6:
+TreeBitstreamText_46af6: ; 46af6
 	ctxt "カマットタワー 6かい"
 	done %001110
 
-TreeBitstreamText_46b01:
+TreeBitstreamText_46b01: ; 46b01
 	ctxt "カマットタワー 7かい"
 	done %001110
 
-TreeBitstreamText_46b0c:
+TreeBitstreamText_46b0c: ; 46b0c
 	ctxt "えっけんの ま"
 	done %0101101
 
-TreeBitstreamText_46b14:
+TreeBitstreamText_46b14: ; 46b14
 	ctxt "つりぐや"
 	done %0
 
-TreeBitstreamText_46b1a:
+TreeBitstreamText_46b1a: ; 46b1a
 	ctxt "ゼロキャッスル1かい"
 	done %110
 
-TreeBitstreamText_46b25:
+TreeBitstreamText_46b25: ; 46b25
 	ctxt "ゼロキャッスル2かい"
 	done %10
 
-TreeBitstreamText_46b30:
+TreeBitstreamText_46b30: ; 46b30
 	ctxt "ゼロキャッスル3かい"
 	done %10
 
-TreeBitstreamText_46b3b:
+TreeBitstreamText_46b3b: ; 46b3b
 	ctxt "ゼロキャッスル4かい"
 	done %10
 
-TreeBitstreamText_46b46:
+TreeBitstreamText_46b46: ; 46b46
 	ctxt "ゼロキャッスル5かい"
 	done %0
 
-TreeBitstreamText_46b51:
+TreeBitstreamText_46b51: ; 46b51
 	ctxt "ゼロキャッスル6かい"
 	done %0
 
-TreeBitstreamText_46b5c:
+TreeBitstreamText_46b5c: ; 46b5c
 	ctxt "ゼロキャッスル7かい"
 	done %0
 
-TreeBitstreamText_46b67:
+TreeBitstreamText_46b67: ; 46b67
 	ctxt "ゼロキャッスル8かい"
 	done %00
 
-TreeBitstreamText_46b72:
+TreeBitstreamText_46b72: ; 46b72
 	ctxt "ゼロキャッスル9かい"
 	done
 
-TreeBitstreamText_46b7d:
+TreeBitstreamText_46b7d: ; 46b7d
 	ctxt "ゼロキャッスル10かい"
 	done %1101001
 
-TreeBitstreamText_46b8a:
+TreeBitstreamText_46b8a: ; 46b8a
 	ctxt "ツキガおか 3かい"
 	done %011010
 
-TreeBitstreamText_46b94:
+TreeBitstreamText_46b94: ; 46b94
 	ctxt "ツキガおか 2かい"
 	done %011010
 
-TreeBitstreamText_46b9e:
+TreeBitstreamText_46b9e: ; 46b9e
 	ctxt "ツキガおか 1かい"
 	done %0011010
 
-TreeBitstreamText_46ba8:
+TreeBitstreamText_46ba8: ; 46ba8
 	ctxt "ツキガおか ちか1かい"
 	done %110
 
-TreeBitstreamText_46bb3:
+TreeBitstreamText_46bb3: ; 46bb3
 	ctxt "ツキガおか ちか2かい"
 	done %10
 
-TreeBitstreamText_46bbe:
+TreeBitstreamText_46bbe: ; 46bbe
 	ctxt "ツキガおか ちか3かい"
 	done %10
 
-TreeBitstreamText_46bc9:
+TreeBitstreamText_46bc9: ; 46bc9
 	ctxt "ツキガおか ちか4かい"
 	done %10
 
-TreeBitstreamText_46bd4:
+TreeBitstreamText_46bd4: ; 46bd4
 	ctxt "ツキガおか ちか5かい"
 	done %0
 
-TreeBitstreamText_46bdf:
+TreeBitstreamText_46bdf: ; 46bdf
 	ctxt "ツキガおか ちか6かい"
 	done %0
 
-TreeBitstreamText_46bea:
+TreeBitstreamText_46bea: ; 46bea
 	ctxt "ツキガおか ちか7かい"
 	done %0
 
-TreeBitstreamText_46bf5:
+TreeBitstreamText_46bf5: ; 46bf5
 	ctxt "ツキガおか ちか8かい"
 	done %00
 
-TreeBitstreamText_46c00:
+TreeBitstreamText_46c00: ; 46c00
 	ctxt "ちか1かい そうこ"
 	done %11
 
-TreeBitstreamText_46c09:
+TreeBitstreamText_46c09: ; 46c09
 	ctxt "2かい アイテムや"
 	done %11000
 
-TreeBitstreamText_46c14:
+TreeBitstreamText_46c14: ; 46c14
 	ctxt "3かい パーツや"
 	done %1000
 
-TreeBitstreamText_46c1f:
+TreeBitstreamText_46c1f: ; 46c1f
 	ctxt "4かい けんきゅうじょ"
 	done %1001011
 
-TreeBitstreamText_46c2b:
+TreeBitstreamText_46c2b: ; 46c2b
 	ctxt "5かい トイレ"
 	done %01101
 
-TreeBitstreamText_46c33:
+TreeBitstreamText_46c33: ; 46c33
 	ctxt "6かい バス"
 	done %001101
 
-TreeBitstreamText_46c3b:
+TreeBitstreamText_46c3b: ; 46c3b
 	ctxt "7かい こういしつ"
 	done %00
 
-TreeBitstreamText_46c44:
+TreeBitstreamText_46c44: ; 46c44
 	ctxt "8かい はけんじょ"
 	done %00010
 
-TreeBitstreamText_46c4e:
+TreeBitstreamText_46c4e: ; 46c4e
 	ctxt "9かい レクリエーション ルーム"
 	done %11
 
-TreeBitstreamText_46c5d:
+TreeBitstreamText_46c5d: ; 46c5d
 	ctxt "10かい ゲームコーナー"
 	done %111
 
-TreeBitstreamText_46c6a:
+TreeBitstreamText_46c6a: ; 46c6a
 	ctxt "11かい かいぎしつ"
 	done %110000
 
-TreeBitstreamText_46c75:
+TreeBitstreamText_46c75: ; 46c75
 	ctxt "12かい リラックス ルーム"
 	done %1001
 
-TreeBitstreamText_46c83:
+TreeBitstreamText_46c83: ; 46c83
 	ctxt "13かい サウナ"
 	done %1100
 
-TreeBitstreamText_46c8c:
+TreeBitstreamText_46c8c: ; 46c8c
 	ctxt "14かい カウンセリング ルーム"
 	done
 
-TreeBitstreamText_46c9b:
+TreeBitstreamText_46c9b: ; 46c9b
 	ctxt "15かい しちょうかくしつ"
 	done %01011
 
-TreeBitstreamText_46ca8:
+TreeBitstreamText_46ca8: ; 46ca8
 	ctxt "16かい あきべや"
 	done %01010
 
-TreeBitstreamText_46cb3:
+TreeBitstreamText_46cb3: ; 46cb3
 	ctxt "17かい おうせつしつ"
 	done %0110010
 
-TreeBitstreamText_46cbf:
+TreeBitstreamText_46cbf: ; 46cbf
 	ctxt "18かい しゃちょうしつ"
 	done %10
 
-TreeBitstreamText_46ccb:
+TreeBitstreamText_46ccb: ; 46ccb
 	ctxt "19かい てんじじょう"
 	done %010
 
-TreeBitstreamText_46cd7:
+TreeBitstreamText_46cd7: ; 46cd7
 	ctxt "20かい てんぼうだい"
 	done %010
 
-TreeBitstreamText_46ce3:
+TreeBitstreamText_46ce3: ; 46ce3
 	ctxt "1かい うけつけ"
 	done %111001
 
-TreeBitstreamText_46cec:
+TreeBitstreamText_46cec: ; 46cec
 	ctxt "ちかしつ ちか1かい"
 	done %0111
 
-TreeBitstreamText_46cf6:
+TreeBitstreamText_46cf6: ; 46cf6
 	ctxt "ちかしつ ちか2かい"
 	done %111
 
-TreeBitstreamText_46d00:
+TreeBitstreamText_46d00: ; 46d00
 	ctxt "ゼロのひこうてい 2かい"
 	done %010
 
-TreeBitstreamText_46d0c:
+TreeBitstreamText_46d0c: ; 46d0c
 	ctxt "ゼロのひこうてい 1かい"
 	done %0010
 
-TreeBitstreamText_46d18:
+TreeBitstreamText_46d18: ; 46d18
 	ctxt "ロボポンのしゅぎょうに さいてき"
 	line "      ツキガおか"
 	done %0
 
-TreeBitstreamText_46d31:
+TreeBitstreamText_46d31: ; 46d31
 	ctxt "     テールじょう"
 	done %010000
 
-TreeBitstreamText_46d3b:
+TreeBitstreamText_46d3b: ; 46d3b
 	ctxt "6かいへ まいります"
 	done
 
-TreeBitstreamText_46d45:
+TreeBitstreamText_46d45: ; 46d45
 	ctxt "1かいへ まいります"
 	done %10
 
-TreeBitstreamText_46d4f:
+TreeBitstreamText_46d4f: ; 46d4f
 	ctxt "2かいへ まいります"
 	done %0
 
-TreeBitstreamText_46d59:
+TreeBitstreamText_46d59: ; 46d59
 	ctxt "3かいへ まいります"
 	done %0
 
-TreeBitstreamText_46d63:
+TreeBitstreamText_46d63: ; 46d63
 	ctxt "4かいへ まいります"
 	done %0
 
-TreeBitstreamText_46d6d:
+TreeBitstreamText_46d6d: ; 46d6d
 	ctxt "5かいへ まいります"
 	done
 
-TreeBitstreamText_46d77:
+TreeBitstreamText_46d77: ; 46d77
 	ctxt "7かいへ まいります"
 	done
 
-TreeBitstreamText_46d81:
+TreeBitstreamText_46d81: ; 46d81
 	ctxt "8かいへ まいります"
 	done %0
 
-TreeBitstreamText_46d8b:
+TreeBitstreamText_46d8b: ; 46d8b
 	ctxt "9かいへ まいります"
 	done %0110101
 
-TreeBitstreamText_46d96:
+TreeBitstreamText_46d96: ; 46d96
 	ctxt "10かいへ まいります"
 	done %111110
 
-TreeBitstreamText_46da2:
+TreeBitstreamText_46da2: ; 46da2
 	ctxt "ゼロドームへ まいります"
 	done %1111
 
-TreeBitstreamText_46daf:
+TreeBitstreamText_46daf: ; 46daf
 	ctxt "でぐちせんよう"
 	done %110101
 
-TreeBitstreamText_46db8:
+TreeBitstreamText_46db8: ; 46db8
 	ctxt "    しれんのどうくつ"
 	done %000000
 
-TreeBitstreamText_46dc3:
+TreeBitstreamText_46dc3: ; 46dc3
 	ctxt "オワリのもり"
 	done %0
 
-TreeBitstreamText_46dca:
+TreeBitstreamText_46dca: ; 46dca
 	ctxt "   メイジどうくつ"
 	done %101
 
-TreeBitstreamText_46dd4:
+TreeBitstreamText_46dd4: ; 46dd4
 	ctxt "   かいていヘルスセンター"
 	done %11001
 
-TreeBitstreamText_46de0:
+TreeBitstreamText_46de0: ; 46de0
 	ctxt "もちものが いっぱいなので"
 	line "そうこに ほかん します"
 	done %010
 
-TreeBitstreamText_46df6:
+TreeBitstreamText_46df6: ; 46df6
 	ctxt "そうこが いっぱいなので"
 	line "なにか すてて ください"
 	done %0
 
-TreeBitstreamText_46e0b:
+TreeBitstreamText_46e0b: ; 46e0b
 	ctxt "<PLAYER>の ロボポンは"
 	line "げんきに なった"
 	done %1100
 
-TreeBitstreamText_46e1d:
+TreeBitstreamText_46e1d: ; 46e1d
 	ctxt "そこの ほうで なにか キラキラ"
 	line "ひかるものが ある!"
 	line "しらべますか?"
 	done %10
 
-TreeBitstreamText_46e3b:
+TreeBitstreamText_46e3b: ; 46e3b
 	ctxt "みずが とても きれいだった………"
 	done %100100
 
-TreeBitstreamText_46e4b:
+TreeBitstreamText_46e4b: ; 46e4b
 	ctxt "いまの <PLAYER>に"
 	line "そんな ひまなど なかった"
 	done %01011
 
-TreeBitstreamText_46e5d:
+TreeBitstreamText_46e5d: ; 46e5d
 	ctxt "こんどは イケそうな きがした"
 	done %100110
 
-TreeBitstreamText_46e6c:
+TreeBitstreamText_46e6c: ; 46e6c
 	ctxt "とびらは あかない"
 	line ""
 	line "なかから おんがくが きこえる………"
 	done %001100
 
-TreeBitstreamText_46e84:
+TreeBitstreamText_46e84: ; 46e84
 	ctxt "ロボポンの ほんが いっぱいある!"
 	done %1
 
-TreeBitstreamText_46e95:
+TreeBitstreamText_46e95: ; 46e95
 	ctxt "きたいできる ほんは なかった………"
 	done %11
 
-TreeBitstreamText_46ea4:
+TreeBitstreamText_46ea4: ; 46ea4
 	ctxt "むずかしそうな ほんが"
 	line "いっぱい おいてある!"
 	done %11
 
-TreeBitstreamText_46eb8:
+TreeBitstreamText_46eb8: ; 46eb8
 	ctxt "コミックボンボンが"
 	line "いっぱい おいてある!!"
 	done %1
 
-TreeBitstreamText_46ecc:
+TreeBitstreamText_46ecc: ; 46ecc
 	ctxt "ロボポンに かんけいの ある"
 	line "ものが はいっている ようだ"
 	done %100111
 
-TreeBitstreamText_46ee5:
+TreeBitstreamText_46ee5: ; 46ee5
 	ctxt "たいした ものは"
 	line "はいっていない ようだ"
 	done %1111
 
-TreeBitstreamText_46ef5:
+TreeBitstreamText_46ef5: ; 46ef5
 	ctxt "ロボポンに かんする ニュースが"
 	line "ほうえい されている"
 	line "げんいんふめいで ぼうそうロボポンが"
 	line "ふえてきている……"
 	done %1100101
 
-TreeBitstreamText_46f28:
+TreeBitstreamText_46f28: ; 46f28
 	ctxt "たたかってみる?"
 	done %0
 
-TreeBitstreamText_46f30:
+TreeBitstreamText_46f30: ; 46f30
 	ctxt "みずのなかに"
 	line "もぐるのかい?"
 	done %0000110
 
-TreeBitstreamText_46f3e:
+TreeBitstreamText_46f3e: ; 46f3e
 	ctxt "<PLAYER>"
 	line "うわーーー"
 	done %01100
 
-TreeBitstreamText_46f46:
+TreeBitstreamText_46f46: ; 46f46
 	ctxt "<PLAYER>"
 	line "ちぇっ ぜんぜんダメだ"
 	line "ちっとも つれないや"
 	done %10010
 
-TreeBitstreamText_46f5e:
+TreeBitstreamText_46f5e: ; 46f5e
 	ctxt "<PLAYER>"
 	line "おっ ひいたぞ!"
 	line ""
 	line "でも つれるきがしないや"
 	done %11110
 
-TreeBitstreamText_46f73:
+TreeBitstreamText_46f73: ; 46f73
 	ctxt "シュノーケルを つかって"
 	line "すいちゅうに もぐりますか?"
 	done %0
 
-TreeBitstreamText_46f8a:
+TreeBitstreamText_46f8a: ; 46f8a
 	ctxt "シュノーケルを もっていれば"
 	line "すいちゅうに もぐることができる"
 	done %00
 
-TreeBitstreamText_46fa5:
+TreeBitstreamText_46fa5: ; 46fa5
 	ctxt "<PLAYER>"
 	line "もっと たかいエサじゃないと"
 	line "つれないのかな?"
 	done %1101
 
-TreeBitstreamText_46fbb:
+TreeBitstreamText_46fbb: ; 46fbb
 	ctxt "ざんねん"
 	line "もういちど たたかう?"
 	done %1001010
 
-TreeBitstreamText_46fca:
+TreeBitstreamText_46fca: ; 46fca
 	ctxt "パーティーが ぜんめつした"
 	done
 
-TreeBitstreamText_46fd8:
+TreeBitstreamText_46fd8: ; 46fd8
 	ctxt ""
 	line "     これはダミーです"
 	done %010110
 
-TreeBitstreamText_46fe6:
+TreeBitstreamText_46fe6: ; 46fe6
 	ctxt "しゃめんが きゅうで"
 	line "このままでは すすめない"
 	done
 
-TreeBitstreamText_46ffa:
+TreeBitstreamText_46ffa: ; 46ffa
 	ctxt "<PLAYER>"
 	line "りくけい ムーブぞくロボポンの"
 	line "あつかいかたが わからないや……"
 	done %01
 
-TreeBitstreamText_4701b:
+TreeBitstreamText_4701b: ; 4701b
 	ctxt "テレビのスイッチを いれた"
 	done %01001
 
-TreeBitstreamText_47029:
+TreeBitstreamText_47029: ; 47029
 	ctxt "テレビのスイッチを きった"
 	done %01001
 
-TreeBitstreamText_47037:
+TreeBitstreamText_47037: ; 47037
 	ctxt "テレビは きえている"
 	done %10
 
-TreeBitstreamText_47041:
+TreeBitstreamText_47041: ; 47041
 	ctxt "スイッチを おしても"
 	line "なにも おこらなかった"
 	done %000010
 
-TreeBitstreamText_47053:
+TreeBitstreamText_47053: ; 47053
 	ctxt "テレビアニメ ロボポン が"
 	line "ほうえい されている!"
 	done %010
 
-TreeBitstreamText_4706a:
+TreeBitstreamText_4706a: ; 4706a
 	ctxt "テレビがめんには はげしく おどる"
 	line "アイドルのアムロンが うつっている"
 	line "じっと みていると なぜか きが"
 	line "とおくなって いくようだ……"
 	done %111
 
-TreeBitstreamText_470a2:
+TreeBitstreamText_470a2: ; 470a2
 	ctxt "しょいん"
 	line "やあ いらっしゃい"
 	line "ここはロボポンの けんきゅうじょだ"
 	line "ようけんは なにかな?"
 	done %0100011
 
-TreeBitstreamText_470c8:
+TreeBitstreamText_470c8: ; 470c8
 	ctxt "バードじまへ"
 	line "とんでゆくのかい?"
 	done %00
 
-TreeBitstreamText_470d8:
+TreeBitstreamText_470d8: ; 470d8
 	ctxt "みずのなかに もぐれる"
 	line "ロボポンが いるらしい……"
 	done
 
-TreeBitstreamText_470f0:
+TreeBitstreamText_470f0: ; 470f0
 	ctxt "グレイテスト5 いじょうの"
 	line "じつりょくが ないものには"
 	line "うみけい ムーブぞくの"
@@ -10770,12 +10770,12 @@ TreeBitstreamText_470f0:
 	line "てに いれなければ!"
 	done %1001101
 
-TreeBitstreamText_47136:
+TreeBitstreamText_47136: ; 47136
 	ctxt "そらを とべる ロボポンが"
 	line "いるらしい………"
 	done %10
 
-TreeBitstreamText_4714c:
+TreeBitstreamText_4714c: ; 4714c
 	ctxt "グレイテスト4 いじょうの"
 	line "じつりょくが ないものには"
 	line "そらけい ムーブぞくの"
@@ -10784,27 +10784,27 @@ TreeBitstreamText_4714c:
 	line "てに いれなければ!"
 	done %1001101
 
-TreeBitstreamText_47192:
+TreeBitstreamText_47192: ; 47192
 	ctxt "パンチャーで"
 	line "バトロボしょうぶだ!!"
 	done %1
 
-TreeBitstreamText_471a6:
+TreeBitstreamText_471a6: ; 471a6
 	ctxt "ジャンパーで"
 	line "バトロボしょうぶだ!!"
 	done %0101010
 
-TreeBitstreamText_471bb:
+TreeBitstreamText_471bb: ; 471bb
 	ctxt "シールダーで"
 	line "バトロボしょうぶだ!!"
 	done %1001011
 
-TreeBitstreamText_471cf:
+TreeBitstreamText_471cf: ; 471cf
 	ctxt "スピーダーで"
 	line "バトロボしょうぶだ!!"
 	done %101010
 
-TreeBitstreamText_471e4:
+TreeBitstreamText_471e4: ; 471e4
 	ctxt "ハンター"
 	line "この たからばこは ふつうとは"
 	line "ちがって カギが かかってるんだ"
@@ -10818,84 +10818,84 @@ TreeBitstreamText_471e4:
 	line "てに はいることも あるらしいよ"
 	done %001
 
-TreeBitstreamText_4725f:
+TreeBitstreamText_4725f: ; 4725f
 	ctxt "ハンター"
 	line "リモコンシャワーを"
 	line "あびせるかい?"
 	done %01
 
-TreeBitstreamText_47272:
+TreeBitstreamText_47272: ; 47272
 	ctxt "さあ ひかりを"
 	line "あてるのだ!"
 	done %001
 
-TreeBitstreamText_4727f:
+TreeBitstreamText_4727f: ; 4727f
 	ctxt "たからばこに"
 	line "ひかりを あてた!"
 	done %1
 
-TreeBitstreamText_4728d:
+TreeBitstreamText_4728d: ; 4728d
 	ctxt "リモコンの じゅしんに"
 	line "しっぱい しちゃった"
 	done %1
 
-TreeBitstreamText_472a0:
+TreeBitstreamText_472a0: ; 472a0
 	ctxt "もういちど"
 	line "ひかりを あてますか"
 	done %01
 
-TreeBitstreamText_472ae:
+TreeBitstreamText_472ae: ; 472ae
 	ctxt "たからを とりますか?"
 	done %0000100
 
-TreeBitstreamText_472b9:
+TreeBitstreamText_472b9: ; 472b9
 	ctxt "ハンター"
 	line "どうだい?"
 	line "いい たからもの だったかい?"
 	done %1
 
-TreeBitstreamText_472ce:
+TreeBitstreamText_472ce: ; 472ce
 	ctxt "じゅしんをやめたよ"
 	done %10
 
-TreeBitstreamText_472d8:
+TreeBitstreamText_472d8: ; 472d8
 	ctxt "<PLAYER>"
 	line "カギが かかっていて"
 	line "あかないや"
 	done
 
-TreeBitstreamText_472e7:
+TreeBitstreamText_472e7: ; 472e7
 	ctxt "とりかえますか?"
 	done %0011101
 
-TreeBitstreamText_472f0:
+TreeBitstreamText_472f0: ; 472f0
 	ctxt "ねぇねぇ あたしと"
 	line "バトロボしょうぶしない?"
 	done %1
 
-TreeBitstreamText_47306:
+TreeBitstreamText_47306: ; 47306
 	ctxt "えーっ! つまんなーい"
 	line "しょうぶしようよー!"
 	done %00011
 
-TreeBitstreamText_47319:
+TreeBitstreamText_47319: ; 47319
 	ctxt "たのしかったわ!"
 	line "また しょうぶしましょう!"
 	done %10
 
-TreeBitstreamText_4732b:
+TreeBitstreamText_4732b: ; 4732b
 	ctxt "バトロボ レベル20"
 	done %00110
 
-TreeBitstreamText_47337:
+TreeBitstreamText_47337: ; 47337
 	ctxt "バトロボ レベル30"
 	done %00110
 
-TreeBitstreamText_47343:
+TreeBitstreamText_47343: ; 47343
 	ctxt "バトロボ レベル40"
 	done %00110
 
-TreeBitstreamText_4734f:
+TreeBitstreamText_4734f: ; 4734f
 	ctxt "だいじょうぶ あんしんして!"
 	line "ヘンな ことば はなさないから!"
 	line "さいしょは なにか おかしいって"
@@ -10906,7 +10906,7 @@ TreeBitstreamText_4734f:
 	line "もらえない は もらえる!"
 	done %0100011
 
-TreeBitstreamText_473b2:
+TreeBitstreamText_473b2: ; 473b2
 	ctxt "おっ よくみるカオ でもないね"
 	line "ここは まぼろしむら だよ"
 	line "きみたちから みれば なぜか"
@@ -10917,7 +10917,7 @@ TreeBitstreamText_473b2:
 	line "でかけると よるまで かえれないよ"
 	done %10
 
-TreeBitstreamText_47416:
+TreeBitstreamText_47416: ; 47416
 	ctxt "このむら ゆいいつの めいしょは"
 	line "なぜか どうくつ!!"
 	line "ってのも なんだかなぁと きみは"
@@ -10936,7 +10936,7 @@ TreeBitstreamText_47416:
 	line "どこ さがしたって あるでしょ?"
 	done %0010001
 
-TreeBitstreamText_474d4:
+TreeBitstreamText_474d4: ; 474d4
 	ctxt "オラ たしかに みてねぇだ!"
 	line ""
 	line "ロボポンが そら とんでなかった!"
@@ -10945,7 +10945,7 @@ TreeBitstreamText_474d4:
 	line "みなみの うみで みてねぇだ!"
 	done %0
 
-TreeBitstreamText_47516:
+TreeBitstreamText_47516: ; 47516
 	ctxt "どうやら ここの ひとたちって"
 	line "なんでも はんたいに いうみたい"
 	line "と いうより はんたいが はんたいで"
@@ -10960,7 +10960,7 @@ TreeBitstreamText_47516:
 	line "いってることが よく わからない!"
 	done %0
 
-TreeBitstreamText_475a7:
+TreeBitstreamText_475a7: ; 475a7
 	ctxt "ん?"
 	line ""
 	line "キミの ロボポン かなり"
@@ -10971,7 +10971,7 @@ TreeBitstreamText_475a7:
 	line "まるで かしこくないと おもうぜ!"
 	done
 
-TreeBitstreamText_475f4:
+TreeBitstreamText_475f4: ; 475f4
 	ctxt "わたしは このまちが だいすきだ!"
 	line ""
 	line "とにかく みんな しょうじきもので"
@@ -10982,7 +10982,7 @@ TreeBitstreamText_475f4:
 	line "よろこんでいる!"
 	done %110
 
-TreeBitstreamText_47652:
+TreeBitstreamText_47652: ; 47652
 	ctxt "まだ ダンジョンは ちっとも"
 	line "クリアしたかい?"
 	line "じょうきゅうで さいしょまで いけば"
@@ -10993,7 +10993,7 @@ TreeBitstreamText_47652:
 	line "あんた ほんとうに てんさいだよ!"
 	done %00
 
-TreeBitstreamText_476b6:
+TreeBitstreamText_476b6: ; 476b6
 	ctxt "ふつうの たからばこは せかいで"
 	line "7コ いじょう よゆうで あるの!"
 	line "じゃあ どう ふつう かっちゅうと"
@@ -11004,7 +11004,7 @@ TreeBitstreamText_476b6:
 	line "ひとことも いってないの!"
 	done
 
-TreeBitstreamText_47722:
+TreeBitstreamText_47722: ; 47722
 	ctxt "おや? おやおや??"
 	line "おめー にんげんだ ひさしぶりの"
 	line "かいてーじんだよ ぼくらは"
@@ -11015,7 +11015,7 @@ TreeBitstreamText_47722:
 	line "いるよ そんちょうさんなら"
 	done %10110
 
-TreeBitstreamText_47780:
+TreeBitstreamText_47780: ; 47780
 	ctxt "ちょっとは すきでも"
 	line "そうとう きらいだよ にんげんは"
 	line "だって にんげん だけだもん"
@@ -11030,7 +11030,7 @@ TreeBitstreamText_47780:
 	line "とっくに ひがいを うけてても"
 	done %1110111
 
-TreeBitstreamText_4780b:
+TreeBitstreamText_4780b: ; 4780b
 	ctxt "うわさでは かいていの どこかに"
 	line "ゆめのような ばしょが あるらしい"
 	line "なまえは かいていヘルスセンター!"
@@ -11047,7 +11047,7 @@ TreeBitstreamText_4780b:
 	line "おぼれちゃうモン!"
 	done %011111
 
-TreeBitstreamText_478bb:
+TreeBitstreamText_478bb: ; 478bb
 	ctxt "うまれたんだ ここで ぼくたちは"
 	line "ふるさとだ ポロのむらは"
 	line "でも いっちゃった みんな"
@@ -11062,7 +11062,7 @@ TreeBitstreamText_478bb:
 	line "やってるかな げんきに……"
 	done %11011
 
-TreeBitstreamText_47943:
+TreeBitstreamText_47943: ; 47943
 	ctxt "いるんだよ そらを とべる"
 	line "ロボポンが"
 	line "でも じゅうよう なんだ"
@@ -11071,7 +11071,7 @@ TreeBitstreamText_47943:
 	line "でも ひとっとびさ うみなんて"
 	done %000110
 
-TreeBitstreamText_47980:
+TreeBitstreamText_47980: ; 47980
 	ctxt "かいてーじんって かわいいよね!"
 	line ""
 	line "つれてかえって ペットに したいな"
@@ -11081,7 +11081,7 @@ TreeBitstreamText_47980:
 	line "よく わかんない"
 	done
 
-TreeBitstreamText_479b4:
+TreeBitstreamText_479b4: ; 479b4
 	ctxt "………うーむ"
 	line "むむむむ………"
 	line "かいてーじんの けんきゅうを しに"
@@ -11101,7 +11101,7 @@ TreeBitstreamText_479b4:
 	line "ぬおお パ パ パニック!!"
 	done %1101110
 
-TreeBitstreamText_47a75:
+TreeBitstreamText_47a75: ; 47a75
 	ctxt "トリペラ"
 	line "バードじまへ ゆきたいなら"
 	line "そらを とんでゆくしかないよ"
@@ -11114,59 +11114,59 @@ TreeBitstreamText_47a75:
 	line "バードじまに ゆけるはずだよ"
 	done %00100
 
-TreeBitstreamText_47aea:
+TreeBitstreamText_47aea: ; 47aea
 	ctxt "ボクたちの かんげいの おどりを"
 	line "ゆっくりと ながめていってよ"
 	done %11011
 
-TreeBitstreamText_47b05:
+TreeBitstreamText_47b05: ; 47b05
 	ctxt "よしっ それじゃあ さっそく"
 	line "ミュージック スタート!!"
 	done %110
 
-TreeBitstreamText_47b1d:
+TreeBitstreamText_47b1d: ; 47b1d
 	ctxt "おどりを みれば"
 	line "げんきが でてくるのに………"
 	done
 
-TreeBitstreamText_47b32:
+TreeBitstreamText_47b32: ; 47b32
 	ctxt "ちょうろう"
 	line "ああ わしらの うみが"
 	line "よごされて ゆくぅ………"
 	done %0
 
-TreeBitstreamText_47b4c:
+TreeBitstreamText_47b4c: ; 47b4c
 	ctxt "こんにちは かいてーじんです"
 	line "どうぞ よろしく!"
 	done %0011
 
-TreeBitstreamText_47b61:
+TreeBitstreamText_47b61: ; 47b61
 	ctxt "ひさしぶりだな ちじょうの"
 	line "にんげんを みるのは……"
 	done
 
-TreeBitstreamText_47b78:
+TreeBitstreamText_47b78: ; 47b78
 	ctxt "ゆっくり してってね"
 	line "なんにも ないところ だけどさ"
 	done %00101
 
-TreeBitstreamText_47b8e:
+TreeBitstreamText_47b8e: ; 47b8e
 	ctxt "ちじょうの なかまたちも"
 	line "げんきに やってるようだね!"
 	done %0
 
-TreeBitstreamText_47ba5:
+TreeBitstreamText_47ba5: ; 47ba5
 	ctxt "2かいの ゆうぎじょうにも"
 	line "よっていってよ!"
 	done %10011
 
-TreeBitstreamText_47bb9:
+TreeBitstreamText_47bb9: ; 47bb9
 	ctxt "かんげいのおどりを"
 	line "みてってよ"
 	line "きっと げんきになるよ!"
 	done %0001
 
-TreeBitstreamText_47bd1:
+TreeBitstreamText_47bd1: ; 47bd1
 	ctxt "ちょうろう"
 	line "ん? なんだね そのゆびわは?"
 	line "ワシに みろとでも いうのかね?"
@@ -11182,7 +11182,7 @@ TreeBitstreamText_47bd1:
 	line "さぁ はいりたまえ!"
 	done
 
-TreeBitstreamText_47c51:
+TreeBitstreamText_47c51: ; 47c51
 	ctxt "ちょうろう"
 	line "ワシらのうつくしい ふるさとが"
 	line "よごされてしまってな……"
@@ -11197,13 +11197,13 @@ TreeBitstreamText_47c51:
 	line "かえってもらえないかね?"
 	done
 
-TreeBitstreamText_47cc9:
+TreeBitstreamText_47cc9: ; 47cc9
 	ctxt "チケットや"
 	line "ダンジョンに チャレンジするなら"
 	line "チケット かってってよ"
 	done %111
 
-TreeBitstreamText_47ce9:
+TreeBitstreamText_47ce9: ; 47ce9
 	ctxt "チケットや"
 	line "いやぁ おたく すごいねぇ!"
 	line "いやはや おどろきだねぇ"
@@ -11213,27 +11213,27 @@ TreeBitstreamText_47ce9:
 	line "たたえて しょうひんをわたそう!"
 	done %01
 
-TreeBitstreamText_47d38:
+TreeBitstreamText_47d38: ; 47d38
 	ctxt "ソフト じばく"
 	line "を もらった!"
 	done %101
 
-TreeBitstreamText_47d46:
+TreeBitstreamText_47d46: ; 47d46
 	ctxt "パーツ ぶとうハンド"
 	line "を もらった!"
 	done %01
 
-TreeBitstreamText_47d58:
+TreeBitstreamText_47d58: ; 47d58
 	ctxt "ロボポン クラゲルゲ"
 	line "を もらった!"
 	done %1
 
-TreeBitstreamText_47d6a:
+TreeBitstreamText_47d6a: ; 47d6a
 	ctxt "ロボポン ボルボット"
 	line "を もらった!"
 	done %101
 
-TreeBitstreamText_47d7c:
+TreeBitstreamText_47d7c: ; 47d7c
 	ctxt "チケットや"
 	line "そうかんたんには"
 	line "クリアできないよぉ"
@@ -11241,40 +11241,40 @@ TreeBitstreamText_47d7c:
 	line "してないからねぇ"
 	done %001
 
-TreeBitstreamText_47da2:
+TreeBitstreamText_47da2: ; 47da2
 	ctxt "チケットや"
 	line "いちど クリアした ところだからねぇ"
 	line "ものたりないんじゃないの?"
 	done %1010
 
-TreeBitstreamText_47dc3:
+TreeBitstreamText_47dc3: ; 47dc3
 	ctxt "チケットや"
 	line "ん? なんだい いまさら"
 	line "おじけづいたのかい?"
 	done %0000011
 
-TreeBitstreamText_47ddc:
+TreeBitstreamText_47ddc: ; 47ddc
 	ctxt "チケットや"
 	line "かいだんを のぼれば いつでも"
 	line "ちじょうにもどれるからね"
 	done %10
 
-TreeBitstreamText_47dfa:
+TreeBitstreamText_47dfa: ; 47dfa
 	ctxt "チケットや"
 	line "じゃあ がんばって!"
 	done %1
 
-TreeBitstreamText_47e09:
+TreeBitstreamText_47e09: ; 47e09
 	ctxt "チケットや"
 	line "そうかい またきな!"
 	done %001011
 
-TreeBitstreamText_47e17:
+TreeBitstreamText_47e17: ; 47e17
 	ctxt " さいかそうまで とうたつした!!"
 	line "   ちじょうに もどろう"
 	done %0110110
 
-TreeBitstreamText_47e30:
+TreeBitstreamText_47e30: ; 47e30
 	ctxt "だいくのケンさん"
 	line "てへ ぞうちくはしっぱいしちゃった!"
 	line ""

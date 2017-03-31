@@ -8,28 +8,28 @@ Serial_:
 SECTION "rst $08", HOME [$08]
 	jp Predef
 
-Bank_000b:
+Bank_000b: ; 000b
 	db BANK(Func_78100)
-Bank_000c:
+Bank_000c: ; 000c
 	db $1e
-Byte_000d:
+Byte_000d: ; 000d
 	db $4a
-Bank_000e:
+Bank_000e: ; 000e
 	db BANK(Pointers_78096)
-Bank_000f:
+Bank_000f: ; 000f
 	db BANK(Pointers_7c000)
 
 SECTION "rst $10", HOME [$10]
 	jp Func_00c9
-Byte_0013:
+Byte_0013: ; 0013
 	db $01
-Byte_0014:
+Byte_0014: ; 0014
 	db $08
-Pointer_0015:
+Pointer_0015: ; 0015
 	dbw $01, $a1f0
 
 SECTION "rst $20", HOME [$20]
-BankSwitch_0020:
+BankSwitch_0020: ; 0020
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
@@ -166,7 +166,7 @@ Func_00c9: ; c9 (0:00c9)
 	pop af
 	ret
 
-Func_00e9:
+Func_00e9: ; 00e9
 	xor a
 	ld [hSRAMBank], a
 	inc a
@@ -188,7 +188,7 @@ SECTION "Header", HOME [$104]
 	ds $150 - $104
 
 SECTION "Home", HOME [$150]
-Func_0150:
+Func_0150: ; 0150
 	ld a, [Bank_000b]
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
@@ -280,7 +280,7 @@ NullPredef:
 	ret
 
 SECTION "01e0", HOME [$1e0]
-Pointers_01e0:
+Pointers_01e0: ; 01e0
 	dw Func_00e9
 	dw Func_0150
 	dw CopyPredef
@@ -310,7 +310,7 @@ Pointers_01e0:
 	dw Func_0218
 	dw Func_026c
 
-Func_0218:
+Func_0218: ; 0218
 	ld de, $1c7d
 	ret
 
@@ -351,7 +351,7 @@ Func_026c: ; 26c (0:026c)
 	jp c, Func_03d3
 	ret
 
-Func_028e:
+Func_028e: ; 028e
 	di
 	ld sp, wStackTop
 	predef Func_00e9
@@ -368,10 +368,10 @@ Func_02fd: ; 2fd (0:02fd)
 Func_0300: ; 300 (0:0300)
 	jp Func_030a
 
-Func_0303:
+Func_0303: ; 0303
 	jp Func_03a4
 
-Func_0306:
+Func_0306: ; 0306
 	jp Func_03d1
 
 Func_0309: ; 309 (0:0309)
@@ -571,7 +571,7 @@ FarCall:
 	ld a, [wFarCallSavedA]
 	ret
 
-Func_0451:
+Func_0451: ; 0451
 	push bc
 	ld a, [wOAM27VTile]
 	push af
@@ -628,7 +628,7 @@ FillMemory:
 	ret
 
 SECTION "0500", HOME [$500]
-Func_0500:
+Func_0500: ; 0500
 	ld sp, wStackTop
 	di
 	predef Func_00e9
@@ -710,7 +710,7 @@ Func_0519: ; 519 (0:0519)
 
 .default
 	predef Func_0150
-Func_058a:
+Func_058a: ; 058a
 	jr nc, .wait
 	predef Func_7bd5b
 	ret
@@ -725,7 +725,7 @@ Func_058a:
 	predef Func_7d9f9
 	ret
 
-Data_059c:
+Data_059c: ; 059c
 	db " PASSWORD INPUT", $0e, $0d, $01, $00
 	db " きゃらはﾞんはﾞーしﾞょん 5けﾞーむ", $0d, $01, $00
 	db " きすもん&はﾞけ", $0f, "ちゅ", $0e, "りれー", $0f, "ほか4", $0e, $0d, $01, $00
@@ -739,13 +739,13 @@ Data_059c:
 	db "GAMEDATA"
 	db "KISSTOOL"
 
-Data_065e:
+Data_065e: ; 065e
 	db "  めにゅー", $0f, "を せんたくして", $0e, $00
 	db " ", $00
 	db $0f, "START/Aを おしてくたﾞさい", $0e, $00
 	db $00
 
-Data_0686:
+Data_0686: ; 0686
 	db "--------", $00
 
 Func_068f: ; 68f (0:068f)
@@ -840,33 +840,33 @@ BitIndexToMask: ; 739 (0:0739)
 	pop bc
 	ret
 
-Data_0743:
+Data_0743: ; 0743
 	db " ", $00
 	db "はﾟすわーとﾞ", $0f, "を にゅうりょくして ", $0e, $00
 	db $0f, "STARTを おしてくたﾞさい  ", $0e, $00
 	db $00
 
-Func_076f:
+Func_076f: ; 076f
 	ld de, $4000
 	ld a, $7
 	call Func_0856
-Func_0777:
+Func_0777: ; 0777
 	ld de, $4000
 	ld a, $9
 	call Func_0856
-Func_077f:
+Func_077f: ; 077f
 	ld de, $4000
 	ld a, $b
 	call Func_0856
-Func_0787:
+Func_0787: ; 0787
 	ld de, $4000
 	ld a, $d
 	call Func_0856
-Func_078f:
+Func_078f: ; 078f
 	ld de, $4000
 	ld a, $e
 	call Func_0856
-Func_0797:
+Func_0797: ; 0797
 	ld de, $4000
 	ld a, $f
 	call Func_0856
@@ -902,10 +902,10 @@ Func_07a2: ; 7a2 (0:07a2)
 	predef Func_7af96
 	ret
 
-Data_07e7:
+Data_07e7: ; 07e7
 	db "GB KISS  MINI GAME", $00
 
-Data_07fa:
+Data_07fa: ; 07fa
 	dr $7fa, $83b
 
 Func_083b: ; 83b (0:083b)
@@ -1549,10 +1549,10 @@ Func_0bae: ; bae (0:0bae)
 	ld bc, $1
 	jp Func_0ce1
 
-Data_0bd3:
+Data_0bd3: ; 0bd3
 	dr $bd3, $c15
 
-Data_0c15:
+Data_0c15: ; 0c15
 	dr $c15, $c51
 
 Func_0c51: ; c51 (0:0c51)
@@ -1607,7 +1607,7 @@ Func_0c51: ; c51 (0:0c51)
 	scf
 	ret
 
-Data_0cae:
+Data_0cae: ; 0cae
 	dr $cae, $cbb
 
 Func_0cbb: ; cbb (0:0cbb)
@@ -1629,7 +1629,7 @@ Func_0cd2: ; cd2 (0:0cd2)
 	predef Func_7ac16
 	jr asm_0cf7
 
-Func_0cd8:
+Func_0cd8: ; 0cd8
 	hlcoord 8, 12, wAttrMap
 	predef Func_7ceaf
 	predef Func_7ac62
@@ -1659,7 +1659,7 @@ asm_0cf7
 	pop af
 	ret
 
-Data_0cfc:
+Data_0cfc: ; 0cfc
 	dr $cfc, $d3a
 
 SECTION "0e00", HOME [$e00]
@@ -1742,7 +1742,7 @@ TimerInterrupt:
 	pop af
 	reti
 
-Func_1069:
+Func_1069: ; 1069
 	push af
 	push hl
 	ld a, [rSB]
@@ -1766,7 +1766,7 @@ Func_1069:
 	ld l, a
 	jp [hl]
 
-Pointers_1090:
+Pointers_1090: ; 1090
 	dw Func_10a6
 	dw Func_10b9
 	dw Func_10cc
@@ -1779,12 +1779,12 @@ Pointers_1090:
 	dw Func_10a9
 	dw Func_10b1
 
-Func_10a6:
+Func_10a6: ; 10a6
 	pop hl
 	pop af
 	reti
 
-Func_10a9:
+Func_10a9: ; 10a9
 	ld a, $2
 	ld [wOAM07VTile], a
 	pop hl
@@ -1792,14 +1792,14 @@ Func_10a9:
 	pop af
 	reti
 
-Func_10b1:
+Func_10b1: ; 10b1
 	ld a, $6
 	ld [wOAM07VTile], a
 	pop hl
 	pop af
 	reti
 
-Func_10b9:
+Func_10b9: ; 10b9
 	ld a, [wOAM07YCoord]
 	cp $a0
 	jr nz, .asm_10c9
@@ -1812,7 +1812,7 @@ Func_10b9:
 	pop af
 	reti
 
-Func_10cc:
+Func_10cc: ; 10cc
 	ld a, [wOAM08VTile]
 	ld l, a
 	ld a, [wOAM08Attrs]
@@ -1841,7 +1841,7 @@ Func_10cc:
 	pop af
 	reti
 
-Func_10fc:
+Func_10fc: ; 10fc
 	ld a, [wOAM07YCoord]
 	ld [wOAM09YCoord], a
 	ld a, $4
@@ -1850,7 +1850,7 @@ Func_10fc:
 	pop af
 	reti
 
-Func_110a:
+Func_110a: ; 110a
 	ld a, $1
 	ld [wOAM07Attrs], a
 	ld a, [wOAM07YCoord]
@@ -1861,7 +1861,7 @@ Func_110a:
 	pop af
 	reti
 
-Func_111d:
+Func_111d: ; 111d
 	ld a, [wOAM07YCoord]
 	cp $a2
 	jr nz, .asm_112d
@@ -1874,7 +1874,7 @@ Func_111d:
 	pop af
 	reti
 
-Func_1130:
+Func_1130: ; 1130
 	ld a, [wOAM08VTile]
 	ld l, a
 	ld a, [wOAM08Attrs]
@@ -1903,7 +1903,7 @@ Func_1130:
 	pop af
 	reti
 
-Func_115f:
+Func_115f: ; 115f
 	ld a, [wOAM09YCoord]
 	ld [rSB], a
 	ld a, $8
@@ -1912,7 +1912,7 @@ Func_115f:
 	pop af
 	reti
 
-Func_116c:
+Func_116c: ; 116c
 	ld a, $1
 	ld [wOAM07Attrs], a
 	ld a, [wOAM09XCoord]
@@ -2474,7 +2474,7 @@ FarDecompressVideoData:
 
 INCLUDE "home/text.asm"
 
-Func_1a06:
+Func_1a06: ; 1a06
 	inc e
 	ld b, h
 	ld c, l
@@ -2498,7 +2498,7 @@ Func_1a06:
 	jr nz, .asm_1a0b
 	ret
 
-Func_1a1f:
+Func_1a1f: ; 1a1f
 	push bc
 	ld c, l
 	ld b, h
@@ -2624,41 +2624,41 @@ Func_1ab4: ; 1ab4 (0:1ab4)
 	ld h, a
 	jr CallAudioEngine1C
 
-Func_1ab9:
+Func_1ab9: ; 1ab9
 	ld l, Func_7000c_1c % $100
 	ld h, a
 	jr CallAudioEngine1C
 
-Func_1abe:
+Func_1abe: ; 1abe
 	ld l, Func_7000f_1c % $100
 	call CallAudioEngine1C
 	ld a, h
 	ret
 
-Func_1ac5:
+Func_1ac5: ; 1ac5
 	ld l, Func_70012_1c % $100
 	call CallAudioEngine1C
 	ld a, h
 	ret
 
-Func_1acc:
+Func_1acc: ; 1acc
 	ld l, Func_70015_1c % $100
 	jr CallAudioEngine1C
 
-Func_1ad0:
+Func_1ad0: ; 1ad0
 	ld l, Func_70018_1c % $100
 	ld h, a
 	jr CallAudioEngine1C
 
-Func_1ad5:
+Func_1ad5: ; 1ad5
 	ld l, Func_7001b_1c % $100
 	jr CallAudioEngine1C
 
-Func_1ad9:
+Func_1ad9: ; 1ad9
 	ld l, Func_7001e_1c % $100
 	jr CallAudioEngine1C
 
-Func_1add:
+Func_1add: ; 1add
 	di
 	xor a
 	ld [rIF], a
@@ -2677,7 +2677,7 @@ Func_1add:
 	predef Func_7b21d
 	jp @ - 1 ; better luck next time
 
-Func_1b01:
+Func_1b01: ; 1b01
 	ld sp, wStackTop
 	ld a, $3
 	call GetSRAMBank
@@ -2817,7 +2817,7 @@ ApplyVBlankCallbackEnableFlag: ; 1bff (0:1bff)
 	ei
 	ret
 
-Func_1c11:
+Func_1c11: ; 1c11
 	ld a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
@@ -2833,7 +2833,7 @@ Func_1c11:
 	ld a, l
 	ret
 
-Func_1c27:
+Func_1c27: ; 1c27
 	ld a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
@@ -2847,7 +2847,7 @@ Func_1c27:
 	call GetSRAMBank
 	ret
 
-Func_1c3b:
+Func_1c3b: ; 1c3b
 	ld a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
@@ -2868,7 +2868,7 @@ Func_1c3b:
 	ld [wOAM09VTile], a
 	jr .asm_1c4a
 
-Func_1c5a:
+Func_1c5a: ; 1c5a
 	ld a, [hSRAMBank]
 	push af
 	ld b, c
@@ -2880,7 +2880,7 @@ Func_1c5a:
 	predef Func_7ac8d
 	jr asm_1c8c
 
-Func_1c69:
+Func_1c69: ; 1c69
 	ld a, [hSRAMBank]
 	push af
 	ld b, c
@@ -2892,7 +2892,7 @@ Func_1c69:
 	predef Func_7aca4
 	jr asm_1c8c
 
-Func_1c78:
+Func_1c78: ; 1c78
 	ld a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
@@ -2900,7 +2900,7 @@ Func_1c78:
 	predef Func_7aa8e
 	jr asm_1c8c
 
-Func_1c83:
+Func_1c83: ; 1c83
 	ld a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
@@ -2966,7 +2966,7 @@ DisableJoypadInt:
 SECTION "1d00", HOME [$1d00]
 INCLUDE "home/crash.asm"
 
-Func_1db9:
+Func_1db9: ; 1db9
 	ld a, [hSRAMBank]
 	push af
 	ld a, $3
@@ -3115,7 +3115,7 @@ Func_1f27: ; 1f27 (0:1f27)
 	call Func_144fd
 	ret
 
-Func_1f30:
+Func_1f30: ; 1f30
 	call ReadHalfWordAt
 	dw $c30e
 	ld a, l
@@ -3144,7 +3144,7 @@ Func_1f30:
 Func_1f7a: ; 1f7a (0:1f7a)
 	ret
 
-Func_1f7b:
+Func_1f7b: ; 1f7b
 	call ReadHalfWordAt
 	dw $c30e
 	ld a, l
@@ -3173,7 +3173,7 @@ Func_1f7b:
 Func_1fbd: ; 1fbd (0:1fbd)
 	ret
 
-Func_1fbe:
+Func_1fbe: ; 1fbe
 	call ReadHalfWordAt
 	dw $c2f2
 	ld a, l
@@ -3202,7 +3202,7 @@ Func_1fbe:
 Func_2008: ; 2008 (0:2008)
 	ret
 
-Func_2009:
+Func_2009: ; 2009
 	call ReadHalfWordAt
 	dw $c2f2
 	ld a, l
@@ -3228,10 +3228,10 @@ Func_2009:
 	ld hl, HuC3SRamMode
 	call WriteHalfWordTo
 	dw $c2f2
-Func_204b:
+Func_204b: ; 204b
 	ret
 
-Func_204c:
+Func_204c: ; 204c
 	call ReadHalfWordAt
 	dw $c2f2
 	ld a, l
@@ -3260,7 +3260,7 @@ Func_204c:
 Func_2096: ; 2096 (0:2096)
 	ret
 
-Func_2097:
+Func_2097: ; 2097
 	call ReadHalfWordAt
 	dw $c2f2
 	ld a, l
@@ -3349,7 +3349,7 @@ Func_2122: ; 2122 (0:2122)
 	pop bc
 	ret
 
-Func_2124:
+Func_2124: ; 2124
 	push hl
 	push de
 	push bc
@@ -3383,7 +3383,7 @@ Func_2124:
 	pop bc
 	ret
 
-Func_2152:
+Func_2152: ; 2152
 	push hl
 	push de
 	push bc
@@ -3477,7 +3477,7 @@ Func_21c8: ; 21c8 (0:21c8)
 	pop bc
 	ret
 
-Func_21ca:
+Func_21ca: ; 21ca
 	push hl
 	push de
 	push bc
@@ -3511,7 +3511,7 @@ Func_21ca:
 	pop bc
 	ret
 
-Func_21f8:
+Func_21f8: ; 21f8
 	push hl
 	push de
 	push bc
@@ -3545,10 +3545,10 @@ Func_21f8:
 	pop bc
 	ret
 
-Data_2226:
+Data_2226: ; 2226
 	dr $2226, $2230
 
-Func_2230:
+Func_2230: ; 2230
 	push hl
 	push bc
 	push bc
@@ -3684,17 +3684,17 @@ Func_22fe: ; 22fe (0:22fe)
 	pop bc
 	ret
 
-Data_2304:
+Data_2304: ; 2304
 	TX_SNUM
 	db $00
 
-Data_2307:
+Data_2307: ; 2307
 	db "0", $00
 
-Data_2309:
+Data_2309: ; 2309
 	db " ", $00
 
-Data_230b:
+Data_230b: ; 230b
 	TX_SNUM
 	db $00
 
@@ -3718,7 +3718,7 @@ PlaceStringDEatCoordHL: ; 230e (0:230e)
 	pop bc
 	ret
 
-Func_2323:
+Func_2323: ; 2323
 	push hl
 	push bc
 	push bc
@@ -3774,7 +3774,7 @@ Func_2323:
 	pop bc
 	ret
 
-Func_236f:
+Func_236f: ; 236f
 	; e: Poncots index
 	push hl
 	ld hl, -$ee
@@ -3879,7 +3879,7 @@ Func_236f:
 	ld sp, hl
 	ret
 
-Func_241f:
+Func_241f: ; 241f
 	push hl
 	ld hl, -$c2
 	add hl, sp
@@ -3953,7 +3953,7 @@ Func_241f:
 	ld sp, hl
 	ret
 
-Func_248f:
+Func_248f: ; 248f
 	push hl
 	push de
 	ld a, [hROMBank]
@@ -4043,7 +4043,7 @@ Func_24e9: ; 24e9 (0:24e9)
 	ld a, l
 	ret
 
-Func_2515:
+Func_2515: ; 2515
 	push de
 	push hl
 	push bc
@@ -4210,7 +4210,7 @@ Func_2600: ; 2600 (0:2600)
 	add sp, $10
 	ret
 
-Func_2617:
+Func_2617: ; 2617
 	push bc
 	push bc
 	push bc
@@ -4380,7 +4380,7 @@ FarCopyUntilNull:
 	pop hl
 	ret
 
-Func_270a:
+Func_270a: ; 270a
 	push bc
 	push bc
 	push bc
@@ -4456,7 +4456,7 @@ Func_2770: ; 2770 (0:2770)
 	pop bc
 	ret
 
-Func_277c:
+Func_277c: ; 277c
 	ld a, [hSRAMBank]
 	push af
 	ld a, $3
@@ -4515,7 +4515,7 @@ Func_27e0: ; 27e0 (0:27e0)
 	call GetSRAMBank
 	ret
 
-Func_27f5:
+Func_27f5: ; 27f5
 	ld bc, $a0
 	ld e, $0
 	ld hl, wOAMBuffer2
@@ -4890,7 +4890,7 @@ Func_2a3a: ; 2a3a (0:2a3a)
 	pop bc
 	ret
 
-Func_2a3e:
+Func_2a3e: ; 2a3e
 	ld c, e
 	push de
 	push hl
@@ -5086,7 +5086,7 @@ Func_2b7d: ; 2b7d (0:2b7d)
 	call Func_2a79
 	ret
 
-Func_2b83:
+Func_2b83: ; 2b83
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_2b93
@@ -5098,7 +5098,7 @@ Func_2b93: ; 2b93 (0:2b93)
 Func_2b96: ; 2b96 (0:2b96)
 	ret
 
-Func_2b97:
+Func_2b97: ; 2b97
 	push hl
 	ld hl, $d
 	add hl, sp
@@ -5186,7 +5186,7 @@ Func_2c0b: ; 2c0b (0:2c0b)
 	push bc
 	ret
 
-Func_2c10:
+Func_2c10: ; 2c10
 	pop bc
 	ld de, $0
 	push de
@@ -5266,7 +5266,7 @@ Func_2c51: ; 2c51 (0:2c51)
 	pop hl
 	ret
 
-Func_2c72:
+Func_2c72: ; 2c72
 	push hl
 	ld hl, $d
 	add hl, sp
@@ -5364,7 +5364,7 @@ Func_2ce0: ; 2ce0 (0:2ce0)
 	push bc
 	ret
 
-Func_2ce7:
+Func_2ce7: ; 2ce7
 	pop bc
 	ld de, $0
 	push de
@@ -5422,7 +5422,7 @@ Func_2d10: ; 2d10 (0:2d10)
 	pop hl
 	ret
 
-Func_2d31:
+Func_2d31: ; 2d31
 	pop bc
 	ld a, h
 	push hl
@@ -5431,7 +5431,7 @@ Func_2d31:
 	ld de, $400e
 	jp Func_2d47
 
-Func_2d3d:
+Func_2d3d: ; 2d3d
 	pop bc
 	pop hl
 	pop de
@@ -5455,12 +5455,12 @@ Func_2d47: ; 2d47 (0:2d47)
 	ld c, $8
 	jp Func_3106
 
-Func_2d60:
+Func_2d60: ; 2d60
 	pop bc
 	ld de, $0
 	jp Func_2d69
 
-Func_2d66:
+Func_2d66: ; 2d66
 	pop bc
 	pop hl
 	pop de
@@ -5478,7 +5478,7 @@ Func_2d69: ; 2d69 (0:2d69)
 	ld c, $8
 	jp Func_3106
 
-Func_2d7c:
+Func_2d7c: ; 2d7c
 	ld bc, $10
 	call Func_2dc3
 	pop bc
@@ -5497,7 +5497,7 @@ Func_2d90: ; 2d90 (0:2d90)
 	ret z
 	jp NegativeHL
 
-Func_2d96:
+Func_2d96: ; 2d96
 	ld bc, $20
 	call Func_2dc3
 	pop bc
@@ -5563,7 +5563,7 @@ Func_2dec: ; 2dec (0:2dec)
 	scf
 	ret
 
-Func_2def:
+Func_2def: ; 2def
 	ld hl, $b
 	add hl, sp
 	ld a, [hl]
@@ -5629,7 +5629,7 @@ Func_2e41: ; 2e41 (0:2e41)
 	push bc
 	ret
 
-Func_2e46:
+Func_2e46: ; 2e46
 	ld hl, $b
 	add hl, sp
 	ld a, [hl]
@@ -5651,7 +5651,7 @@ Func_2e5c: ; 2e5c (0:2e5c)
 	ld [hl], a
 	ret
 
-Func_2e60:
+Func_2e60: ; 2e60
 	pop bc
 	ld de, $0
 	ld a, $c
@@ -5798,7 +5798,7 @@ Func_2f14: ; 2f14 (0:2f14)
 	push bc
 	ret
 
-Func_2f2f:
+Func_2f2f: ; 2f2f
 	pop bc
 	ld de, $0
 	ld a, $9
@@ -5944,7 +5944,7 @@ Func_2fde: ; 2fde (0:2fde)
 	push bc
 	ret
 
-Func_2ff4:
+Func_2ff4: ; 2ff4
 	ld hl, $2
 	add hl, sp
 	push hl
@@ -5987,7 +5987,7 @@ Func_302d: ; 302d (0:302d)
 	pop hl
 	ret
 
-Func_302f:
+Func_302f: ; 302f
 	push de
 	push hl
 	pop de
@@ -6284,7 +6284,7 @@ Func_31a4: ; 31a4 (0:31a4)
 
 INCLUDE "home/math/longlong.asm"
 
-Data_32b1:
+Data_32b1: ; 32b1
 	dr $32b1, $32d1
 
 INCLUDE "home/math/long.asm"
@@ -6312,7 +6312,7 @@ MemCopy: ; 35e8 (0:35e8)
 INCLUDE "home/math/char_short.asm"
 INCLUDE "home/stack_rw.asm"
 
-Func_3891:
+Func_3891: ; 3891
 	ret
 
 CharacterMapping: ; 3892 (0:3892)
@@ -6540,7 +6540,7 @@ Func_3aae: ; 3aae (0:3aae)
 	ld [wStringDestY], a
 	ret
 
-Func_3af6:
+Func_3af6: ; 3af6
 	ld a, $8e
 	call Func_3aae
 	ret
@@ -6910,7 +6910,7 @@ AudioEngineFarCall::
 	ret
 
 SECTION "3fe0", HOME [$3fe0]
-Func_3fe0:
+Func_3fe0: ; 3fe0
 	push af
 	ld a, $14
 	rst $20
@@ -6925,7 +6925,7 @@ Func_3fe0:
 	ret
 
 SECTION "Bank 01", ROMX, BANK [$01]
-Func_4000:
+Func_4000: ; 4000
 	ld a, $0
 	call Func_6169
 	ld a, $e4
@@ -6955,7 +6955,7 @@ Func_4000:
 Func_4060: ; 4060 (1:4060)
 	jp Func_1e4d
 
-Func_4063:
+Func_4063: ; 4063
 	ret
 
 Func_4064: ; 4064 (1:4064)
@@ -7012,16 +7012,16 @@ Func_4064: ; 4064 (1:4064)
 	ld [rSC], a
 	ret
 
-Func_40bf:
+Func_40bf: ; 40bf
 	jp TimerInterrupt
 
-Func_40c2:
+Func_40c2: ; 40c2
 	jp Serial_
 
-Func_40c5:
+Func_40c5: ; 40c5
 	jp VBlank
 
-Func_40c8:
+Func_40c8: ; 40c8
 	jp LCDInterrupt
 
 FillToStackBottomWithWillTestString: ; 40cb (1:40cb)
@@ -7134,7 +7134,7 @@ Func_6149: ; 6149 (1:6149)
 	jr nz, .asm_614c
 	ret
 
-Func_6155:
+Func_6155: ; 6155
 	hlbgcoord 0, 0
 	debgcoord 0, 0, vWindowMap
 	ld a, [wLCDC]
@@ -7161,7 +7161,7 @@ Func_617d: ; 617d (1:617d)
 	ld [rLCDC], a
 	ret
 
-Func_6183:
+Func_6183: ; 6183
 	push af
 	ld a, [wLCDC]
 	bit 7, a
@@ -7173,7 +7173,7 @@ Func_6183:
 	pop af
 	jp Func_6169
 
-Func_6193:
+Func_6193: ; 6193
 	ld a, [$c210]
 	ld [$c231], a
 	sub $98
@@ -7185,7 +7185,7 @@ Func_6193:
 .asm_61a3
 	ld a, $1
 	call Func_6122
-Func_61a8:
+Func_61a8: ; 61a8
 	ld a, c
 	or a
 	jp z, PutOnVideoTransferQueue
@@ -7338,7 +7338,7 @@ Func_6294: ; 6294 (1:6294)
 	pop af
 	ret
 
-Func_62a3:
+Func_62a3: ; 62a3
 	push bc
 	ld b, $0
 	ld a, h
@@ -7451,7 +7451,7 @@ Func_631e: ; 631e (1:631e)
 	jr nz, Func_631e
 	ret
 
-Func_6336:
+Func_6336: ; 6336
 	ld a, c
 	or a
 	jr z, .asm_6368
@@ -7511,7 +7511,7 @@ Func_6336:
 	jr nz, .asm_637b
 	ret
 
-Func_6392:
+Func_6392: ; 6392
 	ld b, $80
 	ld c, $8
 	call Decompress_ReadCBits
@@ -7667,7 +7667,7 @@ ApplyBitMaskToDE:
 	jr nz, .loop
 	ret
 
-Func_6493:
+Func_6493: ; 6493
 	push hl
 	push de
 	ld l, e
@@ -8015,7 +8015,7 @@ ENDR
 .quit
 	ret
 
-Func_667d:
+Func_667d: ; 667d
 	ld a, c
 	cp $2
 	jr z, .asm_66bc
@@ -8220,7 +8220,7 @@ ApplyPoncotNameCharmap: ; 68b6 (1:68b6)
 	ld b, a
 	ret
 
-Func_68fd:
+Func_68fd: ; 68fd
 	ld d, c
 	ld b, $1
 	xor a
@@ -8263,7 +8263,7 @@ Func_68fd:
 	ld [rSCX], a
 	ret
 
-Func_6938:
+Func_6938: ; 6938
 	ld d, c
 	ld b, $5
 .asm_693b
@@ -8472,7 +8472,7 @@ DoFadeProgram:
 .done
 	ret
 
-Data_6a55:
+Data_6a55: ; 6a55
 	db %11100100
 	db %11100100
 	db %11100100
@@ -8491,7 +8491,7 @@ Data_6a55:
 	db %11111111
 	db %11111111
 
-Data_6a66:
+Data_6a66: ; 6a66
 	db %11100100
 	db %11100100
 	db %11100100
@@ -8510,7 +8510,7 @@ Data_6a66:
 	db %00000000
 	db %00000000
 
-Func_6a77:
+Func_6a77: ; 6a77
 	push hl
 	ld h, $0
 	add hl, hl
@@ -8600,7 +8600,7 @@ Func_6a77:
 	set 2, a
 	jp Func_6183
 
-Func_6b11:
+Func_6b11: ; 6b11
 	xor a
 	ld c, a
 	ld b, a
@@ -8631,11 +8631,11 @@ Func_6b22: ; 6b22 (1:6b22)
 	pop af
 	ret
 
-Func_6b2f:
+Func_6b2f: ; 6b2f
 	ld a, $20
 	jr Func_6b22
 
-Func_6b33:
+Func_6b33: ; 6b33
 	ld a, $10
 	jr Func_6b22
 
@@ -8664,7 +8664,7 @@ Func_6b4b: ; 6b4b (1:6b4b)
 	jr nz, .asm_6b4e
 	ret
 
-Func_6b54:
+Func_6b54: ; 6b54
 	ret
 
 Func_6b55: ; 6b55 (1:6b55)
@@ -8718,7 +8718,7 @@ Func_6b74: ; 6b74 (1:6b74)
 	pop bc
 	ret
 
-Func_6b94:
+Func_6b94: ; 6b94
 	push hl
 	add sp, -$24
 	ld l, e
@@ -8844,7 +8844,7 @@ Func_6e0d: ; 6e0d (1:6e0d)
 	add sp, $26
 	ret
 
-Func_6e1b:
+Func_6e1b: ; 6e1b
 	push hl
 	add sp, -$22
 	ld hl, sp+$22
@@ -8951,7 +8951,7 @@ Func_6eb4: ; 6eb4 (1:6eb4)
 	pop hl
 	ret
 
-Func_6ebf:
+Func_6ebf: ; 6ebf
 	push hl
 	add sp, -$24
 	ld l, e
@@ -9118,7 +9118,7 @@ Func_6fb7: ; 6fb7 (1:6fb7)
 	ld hl, Data_6fc1
 	jp Func_6f7b
 
-Data_6fc1:
+Data_6fc1: ; 6fc1
 	db "<HIRA>つうしん まち<KATA>", $00
 
 Func_6fcb: ; 6fcb (1:6fcb)
@@ -9129,10 +9129,10 @@ Func_6fcb: ; 6fcb (1:6fcb)
 	ld hl, Data_6fd5
 	jp Func_6f7b
 
-Data_6fd5:
+Data_6fd5: ; 6fd5
 	db "<HIRA>つうしん <KATA>エラー", $00
 
-Func_6fe0:
+Func_6fe0: ; 6fe0
 	push bc
 	ld e, $0
 	push de
@@ -9436,7 +9436,7 @@ Func_71ee: ; 71ee (1:71ee)
 	pop bc
 	ret
 
-Data_71f0:
+Data_71f0: ; 71f0
 	db "<HIRA>せつそﾞくちゅう<KATA>", $00
 
 Func_71fb: ; 71fb (1:71fb)
@@ -9649,7 +9649,7 @@ Func_733d: ; 733d (1:733d)
 	ld [hl], $1
 	jp Func_72ac
 
-Func_7376:
+Func_7376: ; 7376
 	ld a, $c0
 	ld [wOAM06Attrs], a
 	call Func_721a
@@ -10022,7 +10022,7 @@ Func_7594: ; 7594 (1:7594)
 	ld a, $1
 	jp Func_752a
 
-Func_75e8:
+Func_75e8: ; 75e8
 	ld e, $c0
 	ld hl, sp+$4
 	ld a, [hl]
@@ -10268,7 +10268,7 @@ Func_773c: ; 773c (1:773c)
 	pop bc
 	ret
 
-Func_7748:
+Func_7748: ; 7748
 	xor a
 	ld [wOAM27VTile], a
 	ld a, [wOAM06XCoord]
@@ -10287,7 +10287,7 @@ Func_775f: ; 775f (1:775f)
 	ld a, l
 	ret
 
-Func_7766:
+Func_7766: ; 7766
 	xor a
 	ld [wOAM27VTile], a
 	ld a, [wOAM06XCoord]
@@ -10306,7 +10306,7 @@ Func_777d: ; 777d (1:777d)
 	ld a, l
 	ret
 
-Data_7784:
+Data_7784: ; 7784
 	db "ROBOPON IR TAKANORI", $00
 
 Func_7798: ; 7798 (1:7798)
@@ -10452,7 +10452,7 @@ Func_787d: ; 787d (1:787d)
 	pop bc
 	ret
 
-Func_7882:
+Func_7882: ; 7882
 	push hl
 	push de
 	push bc
@@ -10536,7 +10536,7 @@ Func_790b: ; 790b (1:790b)
 	pop bc
 	ret
 
-Func_790f:
+Func_790f: ; 790f
 	push hl
 	push de
 	push bc
@@ -10614,13 +10614,13 @@ Func_7987: ; 7987 (1:7987)
 	pop bc
 	ret
 
-Data_798b:
+Data_798b: ; 798b
 	dr $798b, $7995
 
-Data_7995:
+Data_7995: ; 7995
 	dr $7995, $79a9
 
-Data_79a9:
+Data_79a9: ; 79a9
 	dr $79a9, $79b3
 
 Func_79b3: ; 79b3 (1:79b3)
@@ -10707,7 +10707,7 @@ Func_7a1a: ; 7a1a (1:7a1a)
 	pop bc
 	ret
 
-Data_7a23:
+Data_7a23: ; 7a23
 	db "Robopon", $00
 
 Func_7a2b: ; 7a2b (1:7a2b)
@@ -10777,7 +10777,7 @@ Func_7a89: ; 7a89 (1:7a89)
 	pop bc
 	ret
 
-Func_7a92:
+Func_7a92: ; 7a92
 	ld a, [hSRAMBank]
 	push af
 	ld a, $2
@@ -10796,7 +10796,7 @@ Func_7a92:
 	call GetSRAMBank
 	ret
 
-Func_7abc:
+Func_7abc: ; 7abc
 	ld a, [hSRAMBank]
 	push af
 	inc e
@@ -10817,7 +10817,7 @@ Func_7ad3: ; 7ad3 (1:7ad3)
 	pop hl
 	call WriteHalfWordTo
 	dw $ba22
-Func_7adf:
+Func_7adf: ; 7adf
 	pop af
 	call GetSRAMBank
 	ret
@@ -10850,7 +10850,7 @@ Func_7afb: ; 7afb (1:7afb)
 	pop hl
 	ret
 
-Func_7b0d:
+Func_7b0d: ; 7b0d
 	push hl
 	push bc
 	ld hl, sp+$1
@@ -11101,7 +11101,7 @@ Func_7c85: ; 7c85 (1:7c85)
 	pop bc
 	ret
 
-Func_7c8a:
+Func_7c8a: ; 7c8a
 	push hl
 	push de
 	call ReadHalfWordAt
@@ -11148,7 +11148,7 @@ Func_7cce: ; 7cce (1:7cce)
 	pop bc
 	ret
 
-Func_7cd1:
+Func_7cd1: ; 7cd1
 	ld a, [hSRAMBank]
 	push af
 	ld a, $2
@@ -11184,7 +11184,7 @@ Func_7cf9: ; 7cf9 (1:7cf9)
 	ld a, l
 	ret
 
-Func_7d01:
+Func_7d01: ; 7d01
 	ld a, [hSRAMBank]
 	push af
 	ld a, $2
@@ -11225,7 +11225,7 @@ Func_7d37: ; 7d37 (1:7d37)
 	ld a, c
 	ret
 
-Func_7d39:
+Func_7d39: ; 7d39
 	push af
 	ld a, [hSRAMBank]
 	push af
@@ -11432,7 +11432,7 @@ Func_7e53: ; 7e53 (1:7e53)
 	add sp, $24
 	ret
 
-Func_7e56:
+Func_7e56: ; 7e56
 	add sp, -$24
 	push af
 	ld a, e
@@ -11452,7 +11452,7 @@ Func_7e56:
 	add sp, $24
 	ret
 
-Func_7e70:
+Func_7e70: ; 7e70
 	add sp, -$24
 	push de
 	ld hl, sp+$2
@@ -11472,7 +11472,7 @@ Func_7e70:
 	add sp, $24
 	ret
 
-Func_7e8a:
+Func_7e8a: ; 7e8a
 	push de
 	add sp, -$40
 	push af
@@ -11558,7 +11558,7 @@ Func_7eee: ; 7eee (1:7eee)
 	add sp, $42
 	ret
 
-Func_7f14:
+Func_7f14: ; 7f14
 	add sp, -$40
 	push de
 	push af
@@ -11652,22 +11652,22 @@ Func_7f73: ; 7f73 (1:7f73)
 	ret
 
 SECTION "Bank 02", ROMX, BANK [$02]
-Func_8000:
+Func_8000: ; 8000
 	ret
 
-Data_8001: ; $8001
+Data_8001: ; 8001
 	dr $8001, $8020
 
-Data_8020: ; $8020
+Data_8020: ; 8020
 	dr $8020, $802a
 
-Data_802a: ; $802a
+Data_802a: ; 802a
 	dr $802a, $8034
 
-Data_8034: ; $8034
+Data_8034: ; 8034
 	dr $8034, $8041
 
-Data_8041: ; $8041
+Data_8041: ; 8041
 	dr $8041, $804c
 
 Func_804c: ; 804c (2:404c)
@@ -11750,7 +11750,7 @@ Func_804c: ; 804c (2:404c)
 	add sp, $64
 	ret
 
-Func_80f6:
+Func_80f6: ; 80f6
 	push de
 	push hl
 	pop de
@@ -11795,19 +11795,19 @@ Func_8146: ; 8146 (2:4146)
 Func_814e: ; 814e (2:414e)
 	ret
 
-Func_814f:
+Func_814f: ; 814f
 	ret
 
-Func_8150:
+Func_8150: ; 8150
 	ret
 
-Data_8151:
+Data_8151: ; 8151
 	dr $8151, $81c3
 
 Data_81c3
 	dr $81c3, $81c9
 
-Data_81c9:
+Data_81c9: ; 81c9
 	dr $81c9, $81cf
 
 Func_81cf: ; 81cf (2:41cf)
@@ -12029,16 +12029,16 @@ Func_8409: ; 8409 (2:4409)
 	call Func_8df1
 	jp Func_8324
 
-Data_840f:
+Data_840f: ; 840f
 	db "<HIRA>なう ろーてﾞぃんくﾞ<KATA>", $00
 
-Data_841d:
+Data_841d: ; 841d
 	dr $841d, $84f1
 
-Data_84f1:
+Data_84f1: ; 84f1
 	dr $84f1, $84f9
 
-Data_84f9:
+Data_84f9: ; 84f9
 	dr $84f9, $854b
 
 Func_854b: ; 854b (2:454b)
@@ -12894,7 +12894,7 @@ Func_8ba3: ; 8ba3 (2:4ba3)
 Func_8ba7: ; 8ba7 (2:4ba7)
 	ret
 
-Func_8ba8:
+Func_8ba8: ; 8ba8
 	push af
 	push bc
 	call Func_b6f2
@@ -13034,7 +13034,7 @@ Func_8cc8: ; 8cc8 (2:4cc8)
 	pop bc
 	ret
 
-Data_8ccb:
+Data_8ccb: ; 8ccb
 	dr $8ccb, $8ccf
 
 Func_8ccf: ; 8ccf (2:4ccf)
@@ -13193,7 +13193,7 @@ Func_8dbd: ; 8dbd (2:4dbd)
 	pop bc
 	ret
 
-Func_8dc8:
+Func_8dc8: ; 8dc8
 	ld a, $50
 	ld hl, wSCX
 	sub [hl]
@@ -14045,7 +14045,7 @@ Func_9413: ; 9413 (2:5413)
 	add sp, $10
 	ret
 
-Data_9416:
+Data_9416: ; 9416
 	TX_SNUM
 	db "/"
 	TX_SNUM
@@ -14053,25 +14053,25 @@ Data_9416:
 	TX_SNUM
 	db " ", $00
 
-Data_9420:
+Data_9420: ; 9420
 	db "0"
 	TX_SNUM
 	db ":", $00
 
-Data_9425:
+Data_9425: ; 9425
 	TX_SNUM
 	db ":", $00
 
-Data_9429:
+Data_9429: ; 9429
 	db "0"
 	TX_SNUM
 	db $00
 
-Data_942d:
+Data_942d: ; 942d
 	TX_SNUM
 	db $00
 
-Func_9430:
+Func_9430: ; 9430
 	callba_hli Func_17e91
 	ret
 
@@ -14913,7 +14913,7 @@ Func_99de: ; 99de (2:59de)
 	pop bc
 	ret
 
-Func_99e2:
+Func_99e2: ; 99e2
 	ret
 
 Func_99e3: ; 99e3 (2:59e3)
@@ -15393,7 +15393,7 @@ Func_9d31: ; 9d31 (2:5d31)
 	ld [$c850], a
 	ret
 
-Func_9d3e:
+Func_9d3e: ; 9d3e
 	ld a, $1
 	ld [$c84e], a
 	ld a, $2
@@ -15402,7 +15402,7 @@ Func_9d3e:
 	ld [$c850], a
 	ret
 
-Func_9d4d:
+Func_9d4d: ; 9d4d
 	ld a, [$c84f]
 	cp $2
 	jp z, Func_9d73
@@ -15652,7 +15652,7 @@ Func_9ea0: ; 9ea0 (2:5ea0)
 	jr nz, .asm_9ea8
 	ret
 
-Data_9ead:
+Data_9ead: ; 9ead
 	dr $9ead, $9eb4
 
 Func_9eb4: ; 9eb4 (2:5eb4)
@@ -16389,10 +16389,10 @@ Func_a2b0: ; a2b0 (2:62b0)
 	pop bc
 	ret
 
-Data_a2e7:
+Data_a2e7: ; a2e7
 	dr $a2e7, $a2eb
 
-Func_a2eb:
+Func_a2eb: ; a2eb
 	push hl
 	push bc
 	push bc
@@ -16632,7 +16632,7 @@ Func_a43f: ; a43f (2:643f)
 	pop bc
 	ret
 
-Func_a444:
+Func_a444: ; a444
 	push af
 	push de
 	push bc
@@ -16870,7 +16870,7 @@ Func_a57b: ; a57b (2:657b)
 	pop bc
 	ret
 
-Func_a580:
+Func_a580: ; a580
 	push de
 	pop hl
 	push hl
@@ -16902,7 +16902,7 @@ Func_a580:
 	pop bc
 	ret
 
-Func_a5a3:
+Func_a5a3: ; a5a3
 	push hl
 	push de
 	push bc
@@ -16982,7 +16982,7 @@ Func_a60b: ; a60b (2:660b)
 	pop bc
 	ret
 
-Func_a60f:
+Func_a60f: ; a60f
 	push de
 	push bc
 	ld hl, $c772
@@ -17138,7 +17138,7 @@ Func_a6d1: ; a6d1 (2:66d1)
 	pop bc
 	ret
 
-Data_a6d4:
+Data_a6d4: ; a6d4
 	dr $a6d4, $a6d8
 
 Func_a6d8: ; a6d8 (2:66d8)
@@ -17574,7 +17574,7 @@ Func_a97f: ; a97f (2:697f)
 	ld a, [$c888]
 	ret
 
-Data_a983:
+Data_a983: ; a983
 	db $01
 	db $02
 	db $04
@@ -17584,7 +17584,7 @@ Data_a983:
 	db $40
 	db $80
 
-Func_a98b:
+Func_a98b: ; a98b
 	push hl
 	push de
 	call GetHLAtSPPlus4
@@ -17923,28 +17923,28 @@ Func_ac0c: ; ac0c (2:6c0c)
 	add sp, $48
 	ret
 
-Func_ac24:
+Func_ac24: ; ac24
 	ld e, $e
 	ld c, $0
 	call Func_aa5d
 	ret
 
-Func_ac2b:
+Func_ac2b: ; ac2b
 	ld e, $c
 	ld c, $0
 	call Func_aa5d
 	ret
 
-Func_ac34:
+Func_ac34: ; ac34
 	ret
 
-Func_ac35:
+Func_ac35: ; ac35
 	ret
 
-Func_ac36:
+Func_ac36: ; ac36
 	ret
 
-Func_ac37:
+Func_ac37: ; ac37
 	ld a, $8a
 	ld [wBlinkerOffTile], a
 	set_farcall_addrs_hli Func_60001
@@ -17991,21 +17991,21 @@ Func_ac7f: ; ac7f (2:6c7f)
 	call FarCall
 	ret
 
-Func_ac94:
+Func_ac94: ; ac94
 	ld e, $e
 	ld c, $1
 	jp Func_aa5d
 
-Func_ac9b:
+Func_ac9b: ; ac9b
 	xor a
 	ret
 
-Func_ac9d:
+Func_ac9d: ; ac9d
 	ld e, $c
 	ld c, $1
 	jp Func_aa5d
 
-Func_aca4:
+Func_aca4: ; aca4
 	xor a
 	ret
 
@@ -18027,7 +18027,7 @@ Func_acbc: ; acbc (2:6cbc)
 	dw $c77a
 	ret
 
-Func_acc8:
+Func_acc8: ; acc8
 	push hl
 	push bc
 	call GetHLAtSPPlus4
@@ -18263,13 +18263,13 @@ Func_ae3b: ; ae3b (2:6e3b)
 	xor a
 	ret
 
-Data_ae3d:
+Data_ae3d: ; ae3d
 	dr $ae3d, $ae45
 
-Data_ae45:
+Data_ae45: ; ae45
 	dr $ae45, $ae4d
 
-Func_ae4d:
+Func_ae4d: ; ae4d
 	push bc
 	push bc
 	push bc
@@ -18416,7 +18416,7 @@ Func_af68: ; af68 (2:6f68)
 	pop bc
 	ret
 
-Func_af7a:
+Func_af7a: ; af7a
 	push hl
 	push bc
 	push de
@@ -18507,7 +18507,7 @@ Func_affd: ; affd (2:6ffd)
 Func_b01a: ; b01a (2:701a)
 	ret
 
-Func_b01b:
+Func_b01b: ; b01b
 	push af
 	push de
 	push bc
@@ -19174,7 +19174,7 @@ Func_b3eb: ; b3eb (2:73eb)
 Func_b3ee: ; b3ee (2:73ee)
 	ret
 
-Func_b3ef:
+Func_b3ef: ; b3ef
 	push af
 	ld a, [$c838]
 	add $2
@@ -19228,7 +19228,7 @@ Func_b41d: ; b41d (2:741d)
 	pop bc
 	ret
 
-Data_b449:
+Data_b449: ; b449
 	dr $b449, $b44d
 
 Func_b44d: ; b44d (2:744d)
@@ -19411,10 +19411,10 @@ Func_b530: ; b530 (2:7530)
 	call Func_8f44
 	ret
 
-Data_b58a:
+Data_b58a: ; b58a
 	dr $b58a, $b58e
 
-Func_b58e:
+Func_b58e: ; b58e
 	push bc
 	push bc
 	push af
@@ -19462,7 +19462,7 @@ Func_b58e:
 	pop bc
 	ret
 
-Func_b5db:
+Func_b5db: ; b5db
 	push hl
 	ld bc, $0
 Func_b5df: ; b5df (2:75df)
@@ -19491,10 +19491,10 @@ Func_b603: ; b603 (2:7603)
 	pop bc
 	ret
 
-Data_b605:
+Data_b605: ; b605
 	dr $b605, $b609
 
-Data_b609:
+Data_b609: ; b609
 	dr $b609, $b60d
 
 Func_b60d: ; b60d (2:760d)
@@ -19701,7 +19701,7 @@ Func_b773: ; b773 (2:7773)
 	ld [$c784], a
 	ret
 
-Func_b785:
+Func_b785: ; b785
 	push af
 	push bc
 	push bc
@@ -19766,7 +19766,7 @@ Func_b7f2: ; b7f2 (2:77f2)
 	pop bc
 	ret
 
-Func_b7fd:
+Func_b7fd: ; b7fd
 	ld [$c77d], a
 	push de
 	push hl
@@ -20107,7 +20107,7 @@ Func_ba44: ; ba44 (2:7a44)
 	add sp, $3c
 	ret
 
-Func_ba47:
+Func_ba47: ; ba47
 	push de
 	push bc
 	push bc
@@ -20244,7 +20244,7 @@ Func_bb31: ; bb31 (2:7b31)
 	pop bc
 	ret
 
-Func_bb37:
+Func_bb37: ; bb37
 	inc e
 	dec e
 	jp nz, Func_bba9
@@ -20385,7 +20385,7 @@ Func_bc6a: ; bc6a (2:7c6a)
 	add sp, $20
 	ret
 
-Func_bc6d:
+Func_bc6d: ; bc6d
 	push bc
 	add sp, -$20
 	push de
@@ -20436,7 +20436,7 @@ Func_bcd1: ; bcd1 (2:7cd1)
 	add sp, $22
 	ret
 
-Func_bce5:
+Func_bce5: ; bce5
 	push bc
 	add sp, -$20
 	push de
@@ -20487,7 +20487,7 @@ Func_bd49: ; bd49 (2:7d49)
 	add sp, $22
 	ret
 
-Func_bd5d:
+Func_bd5d: ; bd5d
 	push bc
 	add sp, -$20
 	push de
@@ -20538,7 +20538,7 @@ Func_bdc1: ; bdc1 (2:7dc1)
 	add sp, $22
 	ret
 
-Func_bdd5:
+Func_bdd5: ; bdd5
 	push bc
 	add sp, -$20
 	push de
@@ -20602,10 +20602,10 @@ Func_be5d: ; be5d (2:7e5d)
 	call FarCall
 	ret
 
-Data_be6e:
+Data_be6e: ; be6e
 	dr $be6e, $be73
 
-Data_be73:
+Data_be73: ; be73
 	dr $be73, $be77
 
 Func_be77: ; be77 (2:7e77)
@@ -20717,7 +20717,7 @@ Func_bf12: ; bf12 (2:7f12)
 	pop bc
 	ret
 
-Func_bf1f:
+Func_bf1f: ; bf1f
 	ld l, $12
 	push hl
 	ld c, $14
@@ -20735,7 +20735,7 @@ Func_bf2c: ; bf2c (2:7f2c)
 	dw $c852
 	ret
 
-Func_bf39:
+Func_bf39: ; bf39
 	ld [$c851], a
 	push de
 	push hl
@@ -20820,31 +20820,31 @@ Func_bfb9: ; bfb9 (2:7fb9)
 	ret
 
 SECTION "Bank 03", ROMX, BANK [$03]
-Func_c000:
+Func_c000: ; c000
 	ret
 
-Data_c001:
+Data_c001: ; c001
 	dr $c001, $c009
 
-Data_c009:
+Data_c009: ; c009
 	dr $c009, $c016
 
-Data_c016:
+Data_c016: ; c016
 	dr $c016, $c5dd
 
-Data_c5dd:
+Data_c5dd: ; c5dd
 	dr $c5dd, $c6e1
 
-Data_c6e1:
+Data_c6e1: ; c6e1
 	dr $c6e1, $c6eb
 
-Data_c6eb:
+Data_c6eb: ; c6eb
 	dr $c6eb, $c6ed
 
-Data_c6ed:
+Data_c6ed: ; c6ed
 	dr $c6ed, $c6fd
 
-Data_c6fd:
+Data_c6fd: ; c6fd
 	dr $c6fd, $c6ff
 
 Func_c6ff: ; c6ff (3:46ff)
@@ -20892,7 +20892,7 @@ Func_c758: ; c758 (3:4758)
 	call FarCall
 	ret
 
-Data_c76b:
+Data_c76b: ; c76b
 	dr $c76b, $c779
 
 Func_c779: ; c779 (3:4779)
@@ -20927,7 +20927,7 @@ Func_c79d: ; c79d (3:479d)
 	pop bc
 	ret
 
-Func_c7ba:
+Func_c7ba: ; c7ba
 	ld a, [$c2cd]
 	xor $1
 	ld [$c2cd], a
@@ -20964,7 +20964,7 @@ Func_c7ba:
 	call Func_c779
 	ret
 
-Func_c812:
+Func_c812: ; c812
 	push hl
 	ld a, [hSRAMBank]
 	push af
@@ -20981,7 +20981,7 @@ Func_c812:
 	pop hl
 	ret
 
-Func_c82b:
+Func_c82b: ; c82b
 	push hl
 	ld a, [hSRAMBank]
 	push af
@@ -21077,32 +21077,32 @@ Func_c8ab: ; c8ab (3:48ab)
 	call Func_c896
 	ret
 
-Pointers_c8c1:
+Pointers_c8c1: ; c8c1
 	dw Data_c8cb
 	dw Data_c8d5
 	dw Data_c8de
 	dw Data_c8e6
 	dw Data_c8ed
 
-Data_c8cb:
+Data_c8cb: ; c8cb
 	db "<HIRA>たのんたﾞそﾞ<KATA>", $00
 
-Data_c8d5:
+Data_c8d5: ; c8d5
 	db "<HIRA>かﾞんはﾞれ<KATA>", $00
 
-Data_c8de:
+Data_c8de: ; c8de
 	db "<HIRA>いっけぇー<KATA>", $00
 
-Data_c8e6:
+Data_c8e6: ; c8e6
 	db "<HIRA>よしっ<KATA> ", $00
 
 Data_c8ed
 	db " <HIRA>ゆけっ!!<KATA>", $00
 
-Data_c8f6:
+Data_c8f6: ; c8f6
 	dr $c8f6, $c8fe
 
-Func_c8fe:
+Func_c8fe: ; c8fe
 	add sp, -$68
 	ld hl, sp+$0
 	push de
@@ -21522,7 +21522,7 @@ Func_cb4a: ; cb4a (3:4b4a)
 Func_cc0b: ; cc0b (3:4c0b)
 	ret
 
-Func_cc0c:
+Func_cc0c: ; cc0c
 	call ReadHalfWordAt
 	dw wc2e6
 	ld a, l
@@ -21690,7 +21690,7 @@ Func_cd9a: ; cd9a (3:4d9a)
 	callba_hli Func_bf214
 	ret
 
-Func_cda9:
+Func_cda9: ; cda9
 	call DisableHBlank
 	xor a
 	ld [rSCX], a
@@ -21823,12 +21823,12 @@ Func_cea1: ; cea1 (3:4ea1)
 	pop bc
 	ret
 
-Func_ced9:
+Func_ced9: ; ced9
 	ld a, [wBlinkerOffTile]
 	ld [wc2e0 + 4], a
 	ret
 
-Data_cee0:
+Data_cee0: ; cee0
 	db  2, -2,  2, -2
 	db  8,  8,  8,  8
 	db  2,  2,  2,  2
@@ -21997,25 +21997,25 @@ Func_cfde: ; cfde (3:4fde)
 	pop bc
 	ret
 
-Data_cfef:
+Data_cfef: ; cfef
 	dr $cfef, $cff2
 
-Data_cff2:
+Data_cff2: ; cff2
 	dr $cff2, $cffa
 
-Data_cffa:
+Data_cffa: ; cffa
 	dr $cffa, $d005
 
-Data_d005:
+Data_d005: ; d005
 	dr $d005, $d015
 
-Data_d015:
+Data_d015: ; d015
 	dr $d015, $d020
 
-Data_d020:
+Data_d020: ; d020
 	dr $d020, $d030
 
-Func_d030:
+Func_d030: ; d030
 	push bc
 	push af
 	ld hl, $a0
@@ -22532,7 +22532,7 @@ Func_d384: ; d384 (3:5384)
 	pop hl
 	ret
 
-Func_d3a2:
+Func_d3a2: ; d3a2
 	push af
 	add sp, -$18
 	push de
@@ -23114,25 +23114,25 @@ Func_d735: ; d735 (3:5735)
 	add sp, $1a
 	ret
 
-Data_d747:
+Data_d747: ; d747
 	db "         ", $00
 
-Data_d751:
+Data_d751: ; d751
 	db "        ", $00
 
-Data_d75a:
+Data_d75a: ; d75a
 	TX_STACK
 	db "V"
 	TX_SNUM
 	db $00
 
-Data_d760:
+Data_d760: ; d760
 	db " ", $00
 
-Data_d762:
+Data_d762: ; d762
 	db "/   ", $00
 
-Func_d767:
+Func_d767: ; d767
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -23169,7 +23169,7 @@ Func_d767:
 	call Func_d596
 	ret
 
-Data_d7e7:
+Data_d7e7: ; d7e7
 	dr $d7e7, $d7f5
 
 Func_d7f5: ; d7f5 (3:57f5)
@@ -23738,7 +23738,7 @@ Func_dbd3: ; dbd3 (3:5bd3)
 	pop bc
 	ret
 
-Func_dbe2:
+Func_dbe2: ; dbe2
 	push hl
 	push de
 	set_farcall_addrs_hli Func_6086c
@@ -23767,7 +23767,7 @@ Func_dc0a: ; dc0a (3:5c0a)
 	call FarCall
 	ret
 
-Func_dc1d:
+Func_dc1d: ; dc1d
 	push de
 	ld e, a
 	xor a
@@ -23777,7 +23777,7 @@ Func_dc1d:
 	call Func_dc0a
 	ret
 
-Data_dc2a:
+Data_dc2a: ; dc2a
 	db $1, $0
 
 Func_dc2c: ; dc2c (3:5c2c)
@@ -23824,7 +23824,7 @@ Func_dc2c: ; dc2c (3:5c2c)
 	call WaitVideoTransfer
 	ret
 
-Func_dcaf:
+Func_dcaf: ; dcaf
 	push af
 	push de
 	call ReadHalfWordAt
@@ -23886,7 +23886,7 @@ Func_dd07: ; dd07 (3:5d07)
 	pop bc
 	ret
 
-Func_dd0a:
+Func_dd0a: ; dd0a
 	push de
 	call ReadHalfWordAt
 	dw wc2e6
@@ -23909,7 +23909,7 @@ Func_dd0a:
 	call Func_dc2c
 	ret
 
-Func_dd29:
+Func_dd29: ; dd29
 	call ReadHalfWordAt
 	dw wc2e6
 	ld de, $b
@@ -23930,7 +23930,7 @@ Func_dd29:
 	call Func_dc2c
 	ret
 
-Func_dd47:
+Func_dd47: ; dd47
 	call ReadHalfWordAt
 	dw wc2e6
 	ld de, $b
@@ -23941,13 +23941,13 @@ Func_dd47:
 	call Func_dc2c
 	ret
 
-Func_dd5a:
+Func_dd5a: ; dd5a
 	ld a, $64
 	call Func_dd67
 	ld hl, $4000
 	ret
 
-Data_dd63:
+Data_dd63: ; dd63
 	ds $4
 
 Func_dd67: ; dd67 (3:5d67)
@@ -24001,7 +24001,7 @@ Func_dd67: ; dd67 (3:5d67)
 	pop bc
 	ret
 
-Func_ddc2:
+Func_ddc2: ; ddc2
 	push hl
 	push bc
 	ld hl, sp+$0
@@ -24242,10 +24242,10 @@ Func_df20: ; df20 (3:5f20)
 	pop bc
 	ret
 
-Data_df24:
+Data_df24: ; df24
 	dr $df24, $df28
 
-Func_df28:
+Func_df28: ; df28
 	push af
 	ld c, $0
 	ld a, [wSystemType]
@@ -24422,7 +24422,7 @@ Func_e03f: ; e03f (3:603f)
 	ld hl, $88e0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-Func_e051:
+Func_e051: ; e051
 	set_farcall_addrs_hli Func_667d
 	ld hl, $c2cd
 	ld l, [hl]
@@ -24651,7 +24651,7 @@ Func_e20d: ; e20d (3:620d)
 	add sp, $14
 	ret
 
-Data_e233:
+Data_e233: ; e233
 	db $22, $22, $22, $21, $13, $22
 	db $24, $31, $22, $02, $22, $22
 	db $21, $42, $04, $22, $22, $22
@@ -24665,14 +24665,14 @@ Data_e233:
 	db $12, $22, $22, $22, $24, $20
 	db $12, $22, $12, $22, $20, $22
 
-Data_e27b:
+Data_e27b: ; e27b
 	db $00, $02, $00, $00
 	db $00, $01, $80, $00
 	db $00, $01, $00, $00
 	db $00, $00, $80, $00
 	db $00, $00, $40, $00
 
-Func_e28f:
+Func_e28f: ; e28f
 	push hl
 	push de
 	push bc
@@ -24794,7 +24794,7 @@ Func_e339: ; e339 (3:6339)
 	pop bc
 	ret
 
-Data_e342:
+Data_e342: ; e342
 	db $00, $00, $00, $00
 	db $00, $00, $99, $99
 	db $00, $00, $c0, $00
@@ -24818,7 +24818,7 @@ Data_e342:
 	db $00, $01, $b3, $33
 	db $00, $01, $cc, $cc
 
-Func_e39a:
+Func_e39a: ; e39a
 	push de
 	push bc
 	push bc
@@ -24845,7 +24845,7 @@ Func_e39a:
 	pop bc
 	ret
 
-Func_e3bd:
+Func_e3bd: ; e3bd
 	push hl
 	ld a, $2
 	ld [wOAM26VTile], a
@@ -24859,7 +24859,7 @@ Func_e3bd:
 	pop hl
 	ret
 
-Func_e3d1:
+Func_e3d1: ; e3d1
 	push hl
 	push bc
 	call GetHLAtSPPlus4
@@ -25008,7 +25008,7 @@ Func_e408: ; e408 (3:6408)
 	pop bc
 	ret
 
-Func_e4b4:
+Func_e4b4: ; e4b4
 	push af
 	ld a, [wSystemType]
 	cp $11
@@ -25361,7 +25361,7 @@ Func_e6a4: ; e6a4 (3:66a4)
 	pop bc
 	ret
 
-Func_e6b7:
+Func_e6b7: ; e6b7
 	push bc
 	ld a, [hl]
 	inc hl
@@ -25488,13 +25488,13 @@ Func_e784: ; e784 (3:6784)
 	pop bc
 	ret
 
-Func_e787:
+Func_e787: ; e787
 	push hl
 	call Func_27f5
 	pop hl
 	ret
 
-Func_e78d:
+Func_e78d: ; e78d
 	push hl
 	push bc
 	push bc
@@ -25660,7 +25660,7 @@ Func_e862: ; e862 (3:6862)
 	pop bc
 	ret
 
-Func_e89b:
+Func_e89b: ; e89b
 	push hl
 	push bc
 	push bc
@@ -25815,7 +25815,7 @@ Func_e95b: ; e95b (3:695b)
 	pop bc
 	ret
 
-Func_e994:
+Func_e994: ; e994
 	push hl
 	call ReadHalfWordAt
 	dw wc2e6
@@ -25827,7 +25827,7 @@ Func_e994:
 	pop hl
 	ret
 
-Func_e9a4:
+Func_e9a4: ; e9a4
 	push hl
 	set_farcall_addrs_hli Func_6938
 	ld c, $67
@@ -25837,7 +25837,7 @@ Func_e9a4:
 	pop hl
 	ret
 
-Func_e9bc:
+Func_e9bc: ; e9bc
 	push hl
 	set_farcall_addrs_hli Func_68fd
 	ld c, $68
@@ -25847,7 +25847,7 @@ Func_e9bc:
 	pop hl
 	ret
 
-Func_e9d4:
+Func_e9d4: ; e9d4
 	push hl
 	push bc
 	push bc
@@ -25991,7 +25991,7 @@ Func_ea32: ; ea32 (3:6a32)
 	pop bc
 	ret
 
-Func_eab8:
+Func_eab8: ; eab8
 	push hl
 	call ReadHalfWordAt
 	dw wc2e6
@@ -26003,7 +26003,7 @@ Func_eab8:
 	pop hl
 	ret
 
-Func_eac8:
+Func_eac8: ; eac8
 	push hl
 	call ReadHalfWordAt
 	dw wc2e6
@@ -26015,14 +26015,14 @@ Func_eac8:
 	pop hl
 	ret
 
-Func_ead8:
+Func_ead8: ; ead8
 	push hl
 	xor a
 	call Func_df28
 	pop hl
 	ret
 
-Func_eadf:
+Func_eadf: ; eadf
 	push hl
 	ld a, $1
 	call Func_df28
@@ -26799,7 +26799,7 @@ Func_ef31: ; ef31 (3:6f31)
 	pop bc
 	ret
 
-Func_ef36:
+Func_ef36: ; ef36
 	ld a, [wNextVBlankFlags]
 	and $40
 	jp z, Func_ef3f
@@ -26868,7 +26868,7 @@ Func_ef96: ; ef96 (3:6f96)
 	ld [wNextVBlankFlags], a
 	ret
 
-Func_efaa:
+Func_efaa: ; efaa
 	push hl
 	pop hl
 	push hl
@@ -26978,7 +26978,7 @@ Func_f063: ; f063 (3:7063)
 	pop bc
 	ret
 
-Func_f067:
+Func_f067: ; f067
 	push hl
 	ld a, [wSystemType]
 	cp $11
@@ -27113,7 +27113,7 @@ Func_f191: ; f191 (3:7191)
 	pop hl
 	ret
 
-Func_f19f:
+Func_f19f: ; f19f
 	push hl
 	pop hl
 	push hl
@@ -27131,7 +27131,7 @@ Func_f19f:
 	pop bc
 	ret
 
-Func_f1b6:
+Func_f1b6: ; f1b6
 	push hl
 	call ReadHalfWordAt
 	dw wc2e6
@@ -27186,7 +27186,7 @@ Func_f1b6:
 	pop bc
 	ret
 
-Func_f210:
+Func_f210: ; f210
 	push hl
 	ld a, [wNextVBlankFlags]
 	and $7f
@@ -27278,7 +27278,7 @@ Func_f29b: ; f29b (3:729b)
 	pop bc
 	ret
 
-Func_f29d:
+Func_f29d: ; f29d
 	push hl
 	pop hl
 	push hl
@@ -27363,7 +27363,7 @@ Func_f335: ; f335 (3:7335)
 	pop bc
 	ret
 
-Func_f339:
+Func_f339: ; f339
 	push hl
 	ld a, [wSystemType]
 	cp $11
@@ -27398,7 +27398,7 @@ Func_f375: ; f375 (3:7375)
 	pop hl
 	ret
 
-Func_f377:
+Func_f377: ; f377
 	push hl
 	call ReadHalfWordAt
 	dw wc2e6
@@ -27430,7 +27430,7 @@ Func_f3a2: ; f3a2 (3:73a2)
 	pop hl
 	ret
 
-Func_f3a4:
+Func_f3a4: ; f3a4
 	push hl
 	pop hl
 	push hl
@@ -27457,21 +27457,21 @@ Func_f3bc: ; f3bc (3:73bc)
 	pop bc
 	ret
 
-Func_f3c0:
+Func_f3c0: ; f3c0
 	push hl
 	ld hl, Data_c009
 	call Func_f723
 	pop hl
 	ret
 
-Func_f3c9:
+Func_f3c9: ; f3c9
 	push hl
 	ld hl, Data_c016
 	call Func_f723
 	pop hl
 	ret
 
-Func_f3d2:
+Func_f3d2: ; f3d2
 	push hl
 	push bc
 	push bc
@@ -27657,7 +27657,7 @@ Func_f4ea: ; f4ea (3:74ea)
 	pop bc
 	ret
 
-Func_f4f1:
+Func_f4f1: ; f4f1
 	ld a, [hl]
 	inc hl
 	push hl
@@ -27793,7 +27793,7 @@ Func_f5c5: ; f5c5 (3:75c5)
 	pop hl
 	ret
 
-Func_f5c7:
+Func_f5c7: ; f5c7
 	push hl
 	pop hl
 	push hl
@@ -27838,7 +27838,7 @@ Func_f5f5: ; f5f5 (3:75f5)
 	pop bc
 	ret
 
-Func_f5f9:
+Func_f5f9: ; f5f9
 	push hl
 	set_farcall_addrs_hli Func_6a77
 	pop hl
@@ -27853,7 +27853,7 @@ Func_f5f9:
 	inc hl
 	ret
 
-Func_f612:
+Func_f612: ; f612
 	push hl
 Func_f613: ; f613 (3:7613)
 	call Func_1ac5
@@ -27871,13 +27871,13 @@ Func_f613: ; f613 (3:7613)
 	pop bc
 	ret
 
-Func_f627:
+Func_f627: ; f627
 	ld a, [hl]
 	inc hl
 	ld [wOAM06YCoord], a
 	ret
 
-Func_f62d:
+Func_f62d: ; f62d
 	push hl
 	pop hl
 	push hl
@@ -27891,7 +27891,7 @@ Func_f62d:
 	pop bc
 	ret
 
-Func_f63b:
+Func_f63b: ; f63b
 	push hl
 	ld a, [wSystemType]
 	cp $1
@@ -27909,7 +27909,7 @@ Func_f660: ; f660 (3:7660)
 	pop hl
 	ret
 
-Func_f662:
+Func_f662: ; f662
 	push hl
 	ld a, [wSystemType]
 	cp $1
@@ -27927,7 +27927,7 @@ Func_f687: ; f687 (3:7687)
 	pop hl
 	ret
 
-Func_f689:
+Func_f689: ; f689
 	push hl
 	ld e, $0
 	xor a
@@ -27967,13 +27967,13 @@ Func_f6a8: ; f6a8 (3:76a8)
 	pop hl
 	ret
 
-Data_f6cb:
+Data_f6cb: ; f6cb
 	db "キー マチ", $00
 
-Data_f6d1:
+Data_f6d1: ; f6d1
 	db "     ", $00
 
-Pointers_f6d7:
+Pointers_f6d7: ; f6d7
 	dw $0000
 	dw Func_e3bd
 	dw Func_e3d1
@@ -28046,16 +28046,16 @@ Func_f748: ; f748 (3:7748)
 	pop bc
 	ret
 
-Data_f74a:
+Data_f74a: ; f74a
 	dr $f74a, $f752
 
-Data_f752:
+Data_f752: ; f752
 	dr $f752, $f758
 
-Data_f758:
+Data_f758: ; f758
 	dr $f758, $f771
 
-Func_f771:
+Func_f771: ; f771
 	ld hl, -$ee
 	add hl, sp
 	ld sp, hl
@@ -28534,7 +28534,7 @@ Func_fa45: ; fa45 (3:7a45)
 	ld sp, hl
 	ret
 
-String_fa7b:
+String_fa7b: ; fa7b
 	db " <HIRA>かﾞ<KATA>", $00
 
 Func_fa81: ; fa81 (3:7a81)
@@ -29096,17 +29096,17 @@ Func_fddb: ; fddb (3:7ddb)
 	ld a, $1
 	ret
 
-Func_fdf1:
+Func_fdf1: ; fdf1
 	ret
 
-Func_fdf2:
+Func_fdf2: ; fdf2
 	ret
 
 SECTION "Bank 04", ROMX, BANK [$04]
-Func_10000:
+Func_10000: ; 10000
 	ret
 
-Func_10001:
+Func_10001: ; 10001
 	push af
 	set_farcall_addrs_hli Func_dd67
 	pop af
@@ -29330,23 +29330,23 @@ Func_10190: ; 10190 (4:4190)
 	pop bc
 	ret
 
-Data_1019d:
+Data_1019d: ; 1019d
 	TX_STACK
 	db $00
 
-Data_101a0:
+Data_101a0: ; 101a0
 	db "スヒﾟータﾞー", $00 ; speeder
 
-Data_101a8:
+Data_101a8: ; 101a8
 	db "ハﾟンチャー", $00 ; puncher
 
-Data_101af:
+Data_101af: ; 101af
 	db "シールタﾞー", $00 ; shielder
 
-Data_101b6:
+Data_101b6: ; 101b6
 	db "シﾞャンハﾟー", $00 ; jumper
 
-Func_101be:
+Func_101be: ; 101be
 	push bc
 	push bc
 	push de
@@ -29414,7 +29414,7 @@ Func_10212: ; 10212 (4:4212)
 	pop bc
 	ret
 
-Func_10215:
+Func_10215: ; 10215
 	push bc
 	push bc
 	call SetStringStartState
@@ -29471,13 +29471,13 @@ Func_1025d: ; 1025d (4:425d)
 	jp nz, Func_1025d
 	ret
 
-Data_10268:
+Data_10268: ; 10268
 	dr $10268, $1027d
 
-Data_1027d:
+Data_1027d: ; 1027d
 	dr $1027d, $1028b
 
-Func_1028b:
+Func_1028b: ; 1028b
 	push bc
 	push bc
 	push bc
@@ -29918,7 +29918,7 @@ Func_105cc: ; 105cc (4:45cc)
 	pop bc
 	ret
 
-Func_105ce:
+Func_105ce: ; 105ce
 	push af
 	call Func_1052e
 	ld a, [wOAM06XCoord]
@@ -30049,13 +30049,13 @@ Func_10732: ; 10732 (4:4732)
 	pop bc
 	ret
 
-Data_10734:
+Data_10734: ; 10734
 	db "<HIRA>てﾞはﾞっく<KATA>", $00
 
-Data_1073d:
+Data_1073d: ; 1073d
 	dr $1073d, $10766
 
-Func_10766:
+Func_10766: ; 10766
 	add sp, -$32
 	ld hl, sp+$29
 	push de
@@ -30095,17 +30095,17 @@ Func_10766:
 	add sp, $32
 	ret
 
-Func_107b8:
+Func_107b8: ; 107b8
 	callba_hli Func_cced
 	ret
 
-Data_107c7:
+Data_107c7: ; 107c7
 	db $21, $01, $03, $1a, $04, $01, $0b, $08
 
-Data_107cf:
+Data_107cf: ; 107cf
 	db $21, $01, $03, $1f, $04, $01, $0b, $08
 
-Func_107d7:
+Func_107d7: ; 107d7
 	push af
 	push de
 	ld a, b
@@ -30308,36 +30308,36 @@ Func_1095a: ; 1095a (4:495a)
 	pop bc
 	ret
 
-Data_1095c:
+Data_1095c: ; 1095c
 	db "<HIRA>のしょうり<KATA>", $00
 
-Data_10964:
+Data_10964: ; 10964
 	db "<HIRA>のしょうり<KATA>", $00
 
-Data_1096c:
+Data_1096c: ; 1096c
 	db "<HIRA>ひきわけ<KATA>", $00
 
-Data_10973:
+Data_10973: ; 10973
 	db "<HIRA>きろく<KATA>", $00
 
-Data_10979:
+Data_10979: ; 10979
 	TX_SNUM
 	db "キロ", $00
 
-Data_1097e:
+Data_1097e: ; 1097e
 	db "メートル", $00
 
-Data_10983:
+Data_10983: ; 10983
 	TX_SNUM
 	db "<HIRA>とん<KATA>", $00
 
-Data_1098a:
+Data_1098a: ; 1098a
 	dr $1098a, $10992
 
-Data_10992:
+Data_10992: ; 10992
 	dr $10992, $1099a
 
-Func_1099a:
+Func_1099a: ; 1099a
 	add sp, -$2a
 	push af
 	ld hl, sp+$a
@@ -30492,7 +30492,7 @@ Func_10a58: ; 10a58 (4:4a58)
 	pop hl
 	ret
 
-Func_10a8b:
+Func_10a8b: ; 10a8b
 	call Func_1099a
 	push de
 	push hl
@@ -31736,13 +31736,13 @@ Func_111db: ; 111db (4:51db)
 	pop bc
 	ret
 
-Data_111de:
+Data_111de: ; 111de
 	dr $111de, $114e0
 
-Data_114e0:
+Data_114e0: ; 114e0
 	dr $114e0, $114e5
 
-Data_114e5:
+Data_114e5: ; 114e5
 	dr $114e5, $114ea
 
 Func_114ea: ; 114ea (4:54ea)
@@ -31857,10 +31857,10 @@ Func_11590: ; 11590 (4:5590)
 	add sp, $e
 	ret
 
-Data_11593:
+Data_11593: ; 11593
 	dr $11593, $115a8
 
-Data_115a8:
+Data_115a8: ; 115a8
 	dr $115a8, $115af
 
 Func_115af: ; 115af (4:55af)
@@ -32341,7 +32341,7 @@ Func_1185a: ; 1185a (4:585a)
 	add sp, $24
 	ret
 
-Data_1185d:
+Data_1185d: ; 1185d
 	dr $1185d, $11872
 
 Func_11872: ; 11872 (4:5872)
@@ -32864,27 +32864,27 @@ Func_11a9e: ; 11a9e (4:5a9e)
 	pop bc
 	ret
 
-Data_11b47:
+Data_11b47: ; 11b47
 	TX_STACK
 	TX_STACK
 	db $00
 
-Data_11b4c:
+Data_11b4c: ; 11b4c
 	TX_STACK
 	TX_STACK
 	db $00
 
-Data_11b51:
+Data_11b51: ; 11b51
 	TX_STACK
 	TX_STACK
 	db $00
 
-Data_11b56:
+Data_11b56: ; 11b56
 	TX_STACK
 	TX_STACK
 	db $00
 
-Data_11b5b:
+Data_11b5b: ; 11b5b
 	TX_STACK
 	TX_STACK
 	db $00
@@ -33079,39 +33079,39 @@ Func_11cb2: ; 11cb2 (4:5cb2)
 	pop bc
 	ret
 
-Data_11cc1:
+Data_11cc1: ; 11cc1
 	db "スタート", $00
 
-Data_11cc6:
+Data_11cc6: ; 11cc6
 	db " "
 	TX_SNUM
 	db $00
 
-Data_11cca:
+Data_11cca: ; 11cca
 	db "<HIRA>あなたのかち<KATA>", $00
 
-Data_11cd3:
+Data_11cd3: ; 11cd3
 	db "<HIRA>あなたのまけ<KATA>", $00
 
-Data_11cdc:
+Data_11cdc: ; 11cdc
 	db "<HIRA>ひきわけ<KATA>", $00
 
-Data_11ce3:
+Data_11ce3: ; 11ce3
 	db "タイムオーハﾞー", $00
 
-Data_11cec:
+Data_11cec: ; 11cec
 	db "タイム", $00
 
-Data_11cf0:
+Data_11cf0: ; 11cf0
 	TX_SNUM
 	db $00
 
-Data_11cf3:
+Data_11cf3: ; 11cf3
 	db " "
 	TX_SNUM
 	db $00
 
-Data_11cf7:
+Data_11cf7: ; 11cf7
 	db ":"
 	TX_SNUM
 	db $00
@@ -33546,7 +33546,7 @@ Func_12021: ; 12021 (4:6021)
 	call Func_3aa8
 	ret
 
-Data_12025:
+Data_12025: ; 12025
 	db $00, $0c, $18, $0c
 
 Func_12029: ; 12029 (4:6029)
@@ -33704,7 +33704,7 @@ Func_1209f: ; 1209f (4:609f)
 	add sp, $14
 	ret
 
-Data_12155:
+Data_12155: ; 12155
 	dr $12155, $1228e
 
 Func_1228e: ; 1228e (4:628e)
@@ -33944,7 +33944,7 @@ Func_1242f: ; 1242f (4:642f)
 	pop bc
 	ret
 
-Data_12436:
+Data_12436: ; 12436
 	db "<HIRA>ひきわけなのてﾞ もういちとﾞ<KATA>", $00
 
 Func_12448: ; 12448 (4:6448)
@@ -34559,7 +34559,7 @@ Func_12818: ; 12818 (4:6818)
 	add sp, $50
 	ret
 
-Func_12821:
+Func_12821: ; 12821
 	push hl
 	push de
 	call GetHLAtSPPlus8
@@ -34786,10 +34786,10 @@ Func_12972: ; 12972 (4:6972)
 	pop bc
 	ret
 
-Data_12974:
+Data_12974: ; 12974
 	db "<HIRA>しﾞふﾞん<KATA>", $00
 
-Data_1297c:
+Data_1297c: ; 1297c
 	db "<HIRA>あいて<KATA>", $00
 
 Func_12982: ; 12982 (4:6982)
@@ -35014,11 +35014,11 @@ Func_12ab0: ; 12ab0 (4:6ab0)
 	pop bc
 	ret
 
-Data_12ac2:
+Data_12ac2: ; 12ac2
 	TX_CALL
 	db $00
 
-Data_12ac5:
+Data_12ac5: ; 12ac5
 	dr $12ac5, $12acb
 
 Func_12acb: ; 12acb (4:6acb)
@@ -35248,10 +35248,10 @@ Func_12bba: ; 12bba (4:6bba)
 	pop bc
 	ret
 
-Data_12c88:
+Data_12c88: ; 12c88
 	db "カートﾞ<HIRA>を えらんてﾞ<KATA>", $00
 
-Data_12c96:
+Data_12c96: ; 12c96
 	db "Aホﾞタン<HIRA>を おしてね<KATA>", $00
 
 Func_12ca4: ; 12ca4 (4:6ca4)
@@ -35395,7 +35395,7 @@ Func_12d9e: ; 12d9e (4:6d9e)
 	pop bc
 	ret
 
-Data_12da5:
+Data_12da5: ; 12da5
 	dr $12da5, $12db3
 
 Func_12db3: ; 12db3 (4:6db3)
@@ -35790,11 +35790,11 @@ Func_13071: ; 13071 (4:7071)
 	add sp, $e
 	ret
 
-Data_13074:
+Data_13074: ; 13074
 	TX_CALL
 	db $00
 
-Data_13077:
+Data_13077: ; 13077
 	TX_CALL
 	db $00
 
@@ -36822,18 +36822,18 @@ Func_13632: ; 13632 (4:7632)
 	pop hl
 	ret
 
-Data_13640:
+Data_13640: ; 13640
 	db "<HIRA>かいふく<KATA> 50", $00
 
-Data_1364a:
+Data_1364a: ; 1364a
 	db "タﾞメーシﾞ "
 	TX_SNUM
 	db $00
 
-Data_13654:
+Data_13654: ; 13654
 	db "<HIRA>かいふく<KATA> 50", $00
 
-Data_1365e:
+Data_1365e: ; 1365e
 	db "タﾞメーシﾞ "
 	TX_SNUM
 	db $00
@@ -36880,7 +36880,7 @@ Func_13668: ; 13668 (4:7668)
 Func_136b0: ; 136b0 (4:76b0)
 	ret
 
-Data_136b1:
+Data_136b1: ; 136b1
 	dr $136b1, $136cc
 
 Func_136cc: ; 136cc (4:76cc)
@@ -36928,10 +36928,10 @@ Func_13726: ; 13726 (4:7726)
 	ret
 
 SECTION "Bank 05", ROMX, BANK [$05]
-Func_14000:
+Func_14000: ; 14000
 	ret
 
-Func_14001:
+Func_14001: ; 14001
 	ld l, $12
 	push hl
 	ld c, $14
@@ -36941,7 +36941,7 @@ Func_14001:
 	pop bc
 	ret
 
-Func_1400e:
+Func_1400e: ; 1400e
 	ld l, $12
 	push hl
 	ld c, $14
@@ -36951,7 +36951,7 @@ Func_1400e:
 	pop bc
 	ret
 
-Func_1401b:
+Func_1401b: ; 1401b
 	ld l, $12
 	push hl
 	ld c, $14
@@ -37557,7 +37557,7 @@ Func_14452: ; 14452 (5:4452)
 	pop hl
 	ret
 
-Func_1445e:
+Func_1445e: ; 1445e
 	push hl
 	add sp, -$10
 	push bc
@@ -37622,7 +37622,7 @@ Func_1445e:
 	pop hl
 	ret
 
-Func_144bd:
+Func_144bd: ; 144bd
 	ld l, $15
 	push hl
 	ld hl, $600
@@ -37959,7 +37959,7 @@ Func_14763: ; 14763 (5:4763)
 	call Func_17488
 	ret
 
-Data_14767:
+Data_14767: ; 14767
 	db  0
 	db -1
 	db  1
@@ -38023,7 +38023,7 @@ Func_147d4: ; 147d4 (5:47d4)
 Func_147e7: ; 147e7 (5:47e7)
 	ret
 
-Func_147e8:
+Func_147e8: ; 147e8
 	call Func_1fbe
 	ld l, $15
 	push hl
@@ -38044,7 +38044,7 @@ Func_147e8:
 	call Func_2009
 	ret
 
-Func_1480e:
+Func_1480e: ; 1480e
 	ld l, $15
 	push hl
 	ld hl, $200
@@ -38082,7 +38082,7 @@ Func_1482e: ; 1482e (5:482e)
 	pop bc
 	ret
 
-Func_1484e:
+Func_1484e: ; 1484e
 	ld l, $15
 	push hl
 	ld hl, $200
@@ -38101,7 +38101,7 @@ Func_1484e:
 	pop bc
 	ret
 
-Func_1486e:
+Func_1486e: ; 1486e
 	ld l, $15
 	push hl
 	ld hl, $300
@@ -38120,7 +38120,7 @@ Func_1486e:
 	pop bc
 	ret
 
-Func_1488e:
+Func_1488e: ; 1488e
 	ld l, $15
 	push hl
 	ld hl, $3
@@ -38139,7 +38139,7 @@ Func_1488e:
 	pop bc
 	ret
 
-Func_148ae:
+Func_148ae: ; 148ae
 	ld l, $15
 	push hl
 	ld hl, $302
@@ -38158,7 +38158,7 @@ Func_148ae:
 	pop bc
 	ret
 
-Func_148ce:
+Func_148ce: ; 148ce
 	call Func_1fbe
 	ld l, $15
 	push hl
@@ -38179,7 +38179,7 @@ Func_148ce:
 	call Func_2009
 	ret
 
-Func_148f4:
+Func_148f4: ; 148f4
 	call Func_1fbe
 	ld l, $15
 	push hl
@@ -38200,7 +38200,7 @@ Func_148f4:
 	call Func_2009
 	ret
 
-Func_1491a:
+Func_1491a: ; 1491a
 	call Func_1fbe
 	ld l, $15
 	push hl
@@ -38221,7 +38221,7 @@ Func_1491a:
 	call Func_2009
 	ret
 
-Func_14940:
+Func_14940: ; 14940
 	ld l, $15
 	push hl
 	ld hl, $402
@@ -38240,7 +38240,7 @@ Func_14940:
 	pop bc
 	ret
 
-Func_14960:
+Func_14960: ; 14960
 	ld l, $15
 	push hl
 	ld hl, $302
@@ -38259,7 +38259,7 @@ Func_14960:
 	pop bc
 	ret
 
-Func_14980:
+Func_14980: ; 14980
 	ld l, $15
 	push hl
 	ld hl, $21
@@ -38293,7 +38293,7 @@ Func_149c6: ; 149c6 (5:49c6)
 	callba_hli Func_e1e83
 	ret
 
-Func_149d5:
+Func_149d5: ; 149d5
 	push bc
 	ld hl, sp+$0
 	xor a
@@ -38373,7 +38373,7 @@ Func_14a31: ; 14a31 (5:4a31)
 	pop bc
 	ret
 
-Func_14a64:
+Func_14a64: ; 14a64
 	ld l, $15
 	push hl
 	ld hl, $1e
@@ -38392,7 +38392,7 @@ Func_14a64:
 	pop bc
 	ret
 
-Func_14a84:
+Func_14a84: ; 14a84
 	ld l, $15
 	push hl
 	ld hl, $9
@@ -38411,7 +38411,7 @@ Func_14a84:
 	pop bc
 	ret
 
-Func_14aa4:
+Func_14aa4: ; 14aa4
 	ld l, $15
 	push hl
 	ld hl, $10
@@ -38430,7 +38430,7 @@ Func_14aa4:
 	pop bc
 	ret
 
-Func_14ac4:
+Func_14ac4: ; 14ac4
 	ld l, $15
 	push hl
 	ld hl, $a
@@ -38449,7 +38449,7 @@ Func_14ac4:
 	pop bc
 	ret
 
-Func_14ae4:
+Func_14ae4: ; 14ae4
 	ld l, $15
 	push hl
 	ld hl, $11
@@ -38468,7 +38468,7 @@ Func_14ae4:
 	pop bc
 	ret
 
-Func_14b04:
+Func_14b04: ; 14b04
 	ld l, $15
 	push hl
 	ld hl, $b
@@ -38487,7 +38487,7 @@ Func_14b04:
 	pop bc
 	ret
 
-Func_14b24:
+Func_14b24: ; 14b24
 	ld l, $15
 	push hl
 	ld hl, $c
@@ -38506,7 +38506,7 @@ Func_14b24:
 	pop bc
 	ret
 
-Func_14b44:
+Func_14b44: ; 14b44
 	ld a, $3
 	ld [wOAM26VTile], a
 	ld l, $12
@@ -38633,7 +38633,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	call FarCall
 	ret
 
-Func_14c55:
+Func_14c55: ; 14c55
 	call Func_17470
 	ld l, $15
 	push hl
@@ -38655,7 +38655,7 @@ Func_14c55:
 	callba_hli Func_69436
 	ret
 
-Func_14c89:
+Func_14c89: ; 14c89
 	ld l, $15
 	push hl
 	ld hl, $61e
@@ -38674,7 +38674,7 @@ Func_14c89:
 	pop bc
 	ret
 
-Func_14ca9:
+Func_14ca9: ; 14ca9
 	ld l, $12
 	push hl
 	ld c, $14
@@ -38830,7 +38830,7 @@ Func_14d93: ; 14d93 (5:4d93)
 	pop hl
 	ret
 
-Func_14db8:
+Func_14db8: ; 14db8
 	push bc
 	ld c, l
 	ld b, h
@@ -39043,7 +39043,7 @@ Func_14edb: ; 14edb (5:4edb)
 	pop bc
 	ret
 
-Func_14f0e:
+Func_14f0e: ; 14f0e
 	push bc
 	push hl
 	ld bc, $8000
@@ -39487,15 +39487,15 @@ Func_151b9: ; 151b9 (5:51b9)
 	add sp, $4c
 	ret
 
-Data_151bc:
+Data_151bc: ; 151bc
 	TX_CALL
 	db $00
 
-Data_151bf:
+Data_151bf: ; 151bf
 	TX_CALL
 	db $00
 
-Func_151c2:
+Func_151c2: ; 151c2
 	push bc
 	push bc
 	push bc
@@ -39624,7 +39624,7 @@ Func_15258: ; 15258 (5:5258)
 	pop bc
 	ret
 
-Func_15281:
+Func_15281: ; 15281
 	push hl
 	pop hl
 	push hl
@@ -39646,7 +39646,7 @@ Func_15281:
 	pop bc
 	ret
 
-Func_15297:
+Func_15297: ; 15297
 	push hl
 	ld a, $3
 	ld [wOAM26VTile], a
@@ -39671,7 +39671,7 @@ Func_15297:
 	ld hl, -1
 	ret
 
-Func_152bd:
+Func_152bd: ; 152bd
 	ld c, l
 	ld b, h
 	ld l, c
@@ -39693,13 +39693,13 @@ Func_152bd:
 	ld hl, -1
 	ret
 
-Func_152db:
+Func_152db: ; 152db
 	ld a, $ff
 	ld [wVideoTransferRequestBank + 9], a
 	ld hl, -1
 	ret
 
-Func_152e4:
+Func_152e4: ; 152e4
 	ld l, $15
 	push hl
 	ld hl, $302
@@ -39718,7 +39718,7 @@ Func_152e4:
 	pop bc
 	ret
 
-Func_15304:
+Func_15304: ; 15304
 	call Func_1fbe
 	call Func_1f30
 	ld l, $15
@@ -39741,7 +39741,7 @@ Func_15304:
 	call Func_1f7b
 	ret
 
-Func_15330:
+Func_15330: ; 15330
 	call Func_1fbe
 	call Func_1f30
 	ld l, $15
@@ -39764,7 +39764,7 @@ Func_15330:
 	call Func_1f7b
 	ret
 
-Func_1535c:
+Func_1535c: ; 1535c
 	call Func_1fbe
 	call Func_1f30
 	ld l, $15
@@ -39787,17 +39787,17 @@ Func_1535c:
 	call Func_1f7b
 	ret
 
-Func_15388:
+Func_15388: ; 15388
 	push hl
 	set_farcall_addrs_hli Func_61fb8
 	pop hl
 	call FarCall
 	ret
 
-Data_15399:
+Data_15399: ; 15399
 	dr $15399, $153c6
 
-Data_153c6:
+Data_153c6: ; 153c6
 	dr $153c6, $1551f
 
 	push bc
@@ -40205,10 +40205,10 @@ Func_157b3: ; 157b3 (5:57b3)
 	add sp, $1a
 	ret
 
-Data_157b6:
+Data_157b6: ; 157b6
 	db "<HIRA>てﾞ つかえるわさﾞ<KATA>", $00
 
-Data_157c3:
+Data_157c3: ; 157c3
 	db "^", $00
 
 Func_157c5: ; 157c5 (5:57c5)
@@ -40338,7 +40338,7 @@ Func_15887: ; 15887 (5:5887)
 	pop bc
 	ret
 
-Data_1588f:
+Data_1588f: ; 1588f
 	sub l
 	ld e, b
 	xor [hl]
@@ -40346,13 +40346,13 @@ Data_1588f:
 	nop
 	nop
 
-Data_15895:
+Data_15895: ; 15895
 	db "フﾞート<HIRA>そﾞくは<KATA> ソフト<HIRA>の つけかえかﾞ<KATA>", $00
 
-Data_158ae:
+Data_158ae: ; 158ae
 	db "<HIRA>てﾞきないよ<KATA>", $00
 
-Func_158b7:
+Func_158b7: ; 158b7
 	add sp, -$76
 	push af
 	ld hl, sp+$2
@@ -40647,22 +40647,22 @@ Func_15a9f: ; 15a9f (5:5a9f)
 	add sp, $76
 	ret
 
-Data_15aa2:
+Data_15aa2: ; 15aa2
 	db "M", $00
 
-Data_15aa4:
+Data_15aa4: ; 15aa4
 	db "<HIRA>そうひﾞ<KATA>ソフト", $00
 
-Data_15aae:
+Data_15aae: ; 15aae
 	db "<HIRA>もちもの<KATA>ソフト", $00
 
-Data_15ab8:
+Data_15ab8: ; 15ab8
 	db "<HIRA>すへﾞてはすﾞす<KATA>", $00
 
-Data_15ac3:
+Data_15ac3: ; 15ac3
 	db "<HIRA>つかえる わさﾞ<KATA>", $00
 
-Data_15ace:
+Data_15ace: ; 15ace
 	db "ソフト<HIRA>なし<KATA>", $00
 
 Func_15ad6: ; 15ad6 (5:5ad6)
@@ -40833,7 +40833,7 @@ Func_15bcb: ; 15bcb (5:5bcb)
 	add sp, $70
 	ret
 
-Func_15bde:
+Func_15bde: ; 15bde
 	push bc
 	push bc
 	push bc
@@ -41512,7 +41512,7 @@ Func_16019: ; 16019 (5:6019)
 	add sp, $22
 	ret
 
-Func_16038:
+Func_16038: ; 16038
 	push bc
 	push bc
 	push bc
@@ -41605,7 +41605,7 @@ Func_160be: ; 160be (5:60be)
 	pop bc
 	ret
 
-Func_160c2:
+Func_160c2: ; 160c2
 	push hl
 	ld c, l
 	ld b, h
@@ -42052,26 +42052,26 @@ Func_16364: ; 16364 (5:6364)
 	add sp, $c
 	ret
 
-Data_16367:
+Data_16367: ; 16367
 	db " ", $00
 
-Data_16369:
+Data_16369: ; 16369
 	TX_STACK
 	db $00
 
-Data_1636c:
+Data_1636c: ; 1636c
 	TX_STACK
 	db $00
 
-Data_1636f:
+Data_1636f: ; 1636f
 	TX_STACK
 	db $00
 
-Data_16372:
+Data_16372: ; 16372
 	TX_STACK
 	db $00
 
-Data_16375:
+Data_16375: ; 16375
 	db " ", $00
 
 Func_16377: ; 16377 (5:6377)
@@ -43468,13 +43468,13 @@ Func_16ce3: ; 16ce3 (5:6ce3)
 	pop hl
 	ret
 
-Data_16cee:
+Data_16cee: ; 16cee
 	db "<HIRA>わさﾞ なし<KATA>", $00
 
-Data_16cf7:
+Data_16cf7: ; 16cf7
 	db "ロホﾞホﾟン <HIRA>なし<KATA>", $00
 
-Data_16d03:
+Data_16d03: ; 16d03
 	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>をさくしﾞょする<KATA>?", $00
 
 Func_16d1a: ; 16d1a (5:6d1a)
@@ -43498,7 +43498,7 @@ Func_16d2d: ; 16d2d (5:6d2d)
 	call Func_16d1a
 	ret
 
-Data_16d3d:
+Data_16d3d: ; 16d3d
 	db "アイテム <HIRA>なし<KATA>", $00
 
 Func_16d47: ; 16d47 (5:6d47)
@@ -43520,7 +43520,7 @@ Func_16d47: ; 16d47 (5:6d47)
 	call PlaceStringDEatCoordHL
 	ret
 
-Data_16d61:
+Data_16d61: ; 16d61
 	db "ハﾟーツ <HIRA>なし<KATA>", $00
 
 Func_16d6b: ; 16d6b (5:6d6b)
@@ -43542,10 +43542,10 @@ Func_16d6b: ; 16d6b (5:6d6b)
 	call PlaceStringDEatCoordHL
 	ret
 
-Data_16d85:
+Data_16d85: ; 16d85
 	db "ソフト <HIRA>なし<KATA>", $00
 
-Func_16d8e:
+Func_16d8e: ; 16d8e
 	push hl
 	add sp, -$e
 	ld hl, sp+$e
@@ -44182,11 +44182,11 @@ Func_17195: ; 17195 (5:7195)
 	pop hl
 	ret
 
-Data_171a6:
+Data_171a6: ; 171a6
 	TX_STACK
 	db $00
 
-Data_171a9:
+Data_171a9: ; 171a9
 	db " ", $00
 
 Func_171ab: ; 171ab (5:71ab)
@@ -44426,7 +44426,7 @@ Func_1739b: ; 1739b (5:739b)
 	add sp, $24
 	ret
 
-Data_1739e:
+Data_1739e: ; 1739e
 	TX_STACK
 	db $00
 
@@ -44453,7 +44453,7 @@ Func_173b2: ; 173b2 (5:73b2)
 	ld hl, $4000
 	ret
 
-Data_173c1:
+Data_173c1: ; 173c1
 	TX_CALL
 	db $00
 
@@ -44541,10 +44541,10 @@ Func_17429: ; 17429 (5:7429)
 	pop bc
 	ret
 
-Data_1743d:
+Data_1743d: ; 1743d
 	db " ", $00
 
-Func_1743f:
+Func_1743f: ; 1743f
 	ld a, [wOAM26Attrs]
 	cp $ff
 	jp z, Func_17450
@@ -44557,7 +44557,7 @@ Func_17450: ; 17450 (5:7450)
 Func_17453: ; 17453 (5:7453)
 	ret
 
-Func_17454:
+Func_17454: ; 17454
 	ld a, [wOAM26Attrs]
 	cp $ff
 	jp z, Func_17465
@@ -44571,7 +44571,7 @@ Func_17465: ; 17465 (5:7465)
 Func_1746b: ; 1746b (5:746b)
 	ret
 
-Func_1746c:
+Func_1746c: ; 1746c
 	ld hl, $4000
 	ret
 
@@ -44598,7 +44598,7 @@ Func_17488: ; 17488 (5:7488)
 	call WaitVideoTransfer
 	ret
 
-Data_174a3:
+Data_174a3: ; 174a3
 	dr $174a3, $174ab
 
 Func_174ab: ; 174ab (5:74ab)
@@ -45388,21 +45388,21 @@ Func_17965: ; 17965 (5:7965)
 	pop bc
 	ret
 
-Data_1796b:
+Data_1796b: ; 1796b
 	db " ", $00
 
-Data_1796d:
+Data_1796d: ; 1796d
 	TX_STACK
 	db $00
 
-Data_17970:
+Data_17970: ; 17970
 	TX_STACK
 	db $00
 
-Data_17973:
+Data_17973: ; 17973
 	db " ", $00
 
-Func_17975:
+Func_17975: ; 17975
 	push hl
 	push bc
 	push bc
@@ -45883,10 +45883,10 @@ Func_17aba: ; 17aba (5:7aba)
 	pop bc
 	ret
 
-Data_17c44:
+Data_17c44: ; 17c44
 	db "ケﾞットハﾞッファー ヌル エラー", $00 ; GET BUFFER FULL ERROR
 
-Func_17c56:
+Func_17c56: ; 17c56
 	ret
 
 Func_17c57: ; 17c57 (5:7c57)
@@ -46091,7 +46091,7 @@ Func_17d77: ; 17d77 (5:7d77)
 	pop bc
 	ret
 
-Func_17d7b:
+Func_17d7b: ; 17d7b
 	push bc
 	push bc
 	push bc
@@ -46243,21 +46243,21 @@ Func_17e0c: ; 17e0c (5:7e0c)
 	pop bc
 	ret
 
-Data_17e6c:
+Data_17e6c: ; 17e6c
 	db "カウント "
 	TX_SNUM
 	db " "
 	TX_SNUM
 	db $00
 
-Data_17e77:
+Data_17e77: ; 17e77
 	db "ナイフﾞ "
 	TX_SNUM
 	db " カﾞイフﾞ "
 	TX_SNUM
 	db $00
 
-Data_17e88:
+Data_17e88: ; 17e88
 	db "サイタﾞイ "
 	TX_SNUM
 	db $00
@@ -46492,71 +46492,71 @@ Func_17ef7: ; 17ef7 (5:7ef7)
 	ret
 
 SECTION "Bank 06", ROMX, BANK [$06]
-GFX_18000:
+GFX_18000: ; 18000
 	dr $18000, $1bfcf
 
 SECTION "Bank 07", ROMX, BANK [$07]
-GFX_1c000:
+GFX_1c000: ; 1c000
 	dr $1c000, $1e7ec
 
 SECTION "Bank 08", ROMX [$4000], BANK [$08]
 INCLUDE "charmap2.asm"
-Func_20000:
+Func_20000: ; 20000
 	ret
 
-Data_20001:
+Data_20001: ; 20001
 	dr $20001, $200fd
 
-Text_200fd:
+Text_200fd: ; 200fd
 	db "エネだま", $00
 
-Text_20102:
+Text_20102: ; 20102
 	db "は", $00
 
-Text_20104:
+Text_20104: ; 20104
 	db "G", $00
 
-Text_20106:
+Text_20106: ; 20106
 	db "レベル", $00
 
-Text_2010a:
+Text_2010a: ; 2010a
 	db "の", $00
 
-Pointers_2010c:
+Pointers_2010c: ; 2010c
 	dw Text_200fd
 	dw Text_20102
 	dw Text_20104
 	dw Text_20106
 	dw Text_2010a
 
-Text_20116:
+Text_20116: ; 20116
 	db "を ひろった", $00
 
-Text_2011d:
+Text_2011d: ; 2011d
 	db "ひかっている", $00
 
-Text_20124:
+Text_20124: ; 20124
 	db "しかし いっぱいなので すてた", $00
 
-Text_20134:
+Text_20134: ; 20134
 	db "けいけんちが ふえた", $00
 
-Text_2013f:
+Text_2013f: ; 2013f
 	db "に なった", $00
 
-Text_20145:
+Text_20145: ; 20145
 	db "ほかくに せいこうした", $00
 
-Text_20151:
+Text_20151: ; 20151
 	db "ほかくに しっぱいした", $00
 
-Text_2015d:
+Text_2015d: ; 2015d
 	db "しかし だれもたべられない", $00
 
-Text_2016b:
+Text_2016b: ; 2016b
 	db "そのコマンドは つかえません", $00
 
-Pointers_2017a:
+Pointers_2017a: ; 2017a
 	dw Text_20116
 	dw Text_2011d
 	dw Text_20124
@@ -46567,42 +46567,42 @@ Pointers_2017a:
 	dw Text_2015d
 	dw Text_2016b
 
-Text_2018c:
+Text_2018c: ; 2018c
 	db "ここでは", $00
 
-Text_20191:
+Text_20191: ; 20191
 	db "しようできない", $00
 
-Pointers_20199:
+Pointers_20199: ; 20199
 	dw Text_2018c
 	dw Text_20191
 	dw $0000
 
-Text_2019f:
+Text_2019f: ; 2019f
 	db "ひとのものを", $00
 
-Text_201a6:
+Text_201a6: ; 201a6
 	db "とっちゃいけないよ!", $00
 
-Pointers_201b1:
+Pointers_201b1: ; 201b1
 	dw Text_2019f
 	dw Text_201a6
 	dw $0000
 
-Text_201b7:
+Text_201b7: ; 201b7
 	db "は まだ がまんしている!", $00
 
-Pointers_201c5:
+Pointers_201c5: ; 201c5
 	dw Text_201b7
 
 INCLUDE "text/attack_categories.asm"
-Text_202d7:
+Text_202d7: ; 202d7
 	db "エネルギー ポイントが", $00
 
-Text_202e3:
+Text_202e3: ; 202e3
 	db "たりません!", $00
 
-Pointers_202ea:
+Pointers_202ea: ; 202ea
 	dw Text_202d7
 	dw Text_202e3
 	dw $0000
@@ -46630,7 +46630,7 @@ Func_20304: ; 20304 (8:4304)
 	pop hl
 	jp FarCall
 
-Func_20318:
+Func_20318: ; 20318
 	push bc
 	ld hl, sp+$0
 	ld [hl], $ff
@@ -46671,7 +46671,7 @@ Func_2034d: ; 2034d (8:434d)
 	call FarCall
 	ret
 
-Func_2035e:
+Func_2035e: ; 2035e
 	callba_hli Func_5ec5e
 	ret
 
@@ -46770,7 +46770,7 @@ Func_203fa: ; 203fa (8:43fa)
 	call Func_203a3
 	ret
 
-Func_20405:
+Func_20405: ; 20405
 	push af
 	push de
 	set_farcall_addrs_hli Func_d3a2
@@ -46778,7 +46778,7 @@ Func_20405:
 	pop af
 	jp FarCall
 
-Func_20417:
+Func_20417: ; 20417
 	ld hl, $4000
 	ret
 
@@ -46805,7 +46805,7 @@ Func_20436: ; 20436 (8:4436)
 	jp nz, Func_20436
 	ret
 
-Pointers_20441:
+Pointers_20441: ; 20441
 	dw Data_2044d
 	dw Data_20454
 	dw Data_2045b
@@ -46813,22 +46813,22 @@ Pointers_20441:
 	dw Data_20467
 	dw Data_20470
 
-Data_2044d:
+Data_2044d: ; 2044d
 	db "<HIRA>たたかう<KATA>", $00
 
-Data_20454:
+Data_20454: ; 20454
 	db "ロホﾞホﾟン", $00
 
-Data_2045b:
+Data_2045b: ; 2045b
 	db "アイテム", $00
 
-Data_20460:
+Data_20460: ; 20460
 	db "<HIRA>にけﾞる<KATA>", $00
 
-Data_20467:
+Data_20467: ; 20467
 	db "<HIRA>ほﾞうきﾞょ<KATA>", $00
 
-Data_20470:
+Data_20470: ; 20470
 	db "<HIRA>かいひ<KATA>", $00
 
 DrawBattleSelectionMenu: ; 20476 (8:4476)
@@ -47018,21 +47018,21 @@ DrawBattleSelectionMenu: ; 20476 (8:4476)
 	pop bc
 	ret
 
-Data_2058f:
+Data_2058f: ; 2058f
 	db " ", $00
 
-Data_20591:
+Data_20591: ; 20591
 	TX_STACK
 	db $00
 
-Data_20594:
+Data_20594: ; 20594
 	TX_STACK
 	db $00
 
-Data_20597:
+Data_20597: ; 20597
 	db " ", $00
 
-Func_20599:
+Func_20599: ; 20599
 	push hl
 	push bc
 	push de
@@ -47149,11 +47149,11 @@ Func_2061d: ; 2061d (8:461d)
 	pop bc
 	ret
 
-Func_20640:
+Func_20640: ; 20640
 	ld de, $2
 	jp Func_20599
 
-Func_20646:
+Func_20646: ; 20646
 	ld de, $3
 	jp Func_20599
 
@@ -47259,10 +47259,10 @@ Func_206e4: ; 206e4 (8:46e4)
 	add sp, $3e
 	ret
 
-Data_206e7:
+Data_206e7: ; 206e7
 	dr $206e7, $206f5
 
-Func_206f5:
+Func_206f5: ; 206f5
 	push af
 	add sp, -$e
 	push de
@@ -47319,7 +47319,7 @@ Func_20743: ; 20743 (8:4743)
 	add sp, $10
 	ret
 
-Data_20746:
+Data_20746: ; 20746
 	dr $20746, $20754
 
 PrintMoveInfoInBattle: ; 20754 (8:4754)
@@ -47595,25 +47595,25 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	pop hl
 	ret
 
-Data_2094f:
+Data_2094f: ; 2094f
 	db "/", $00
 
-Data_20951:
+Data_20951: ; 20951
 	db "タイフﾟ:"
 	TX_CALL
 	db $00
 
-Data_20959:
+Data_20959: ; 20959
 	db "P", $00
 
-Data_2095b:
+Data_2095b: ; 2095b
 	db "<HIRA>こうか:<KATA>", $00
 
-Data_20962:
+Data_20962: ; 20962
 	TX_STACK
 	db $00
 
-Func_20965:
+Func_20965: ; 20965
 	push bc
 	push bc
 	push hl
@@ -47691,7 +47691,7 @@ Func_209e5: ; 209e5 (8:49e5)
 	pop bc
 	ret
 
-Func_209e8:
+Func_209e8: ; 209e8
 	push hl
 	push bc
 	push de
@@ -47774,7 +47774,7 @@ Func_20a3c: ; 20a3c (8:4a3c)
 	pop bc
 	ret
 
-Data_20a54:
+Data_20a54: ; 20a54
 	dr $20a54, $20a63
 
 Data_20a63: ; 20a63
@@ -47786,7 +47786,7 @@ Data_20a82: ; 20a82
 Data_20a91: ; 20a91
 	dr $20a91, $20ab0
 
-Func_20ab0:
+Func_20ab0: ; 20ab0
 	push hl
 	add sp, -$2e
 	ld hl, sp+$2e
@@ -48007,10 +48007,10 @@ Func_20c8e: ; 20c8e (8:4c8e)
 	pop hl
 	ret
 
-Data_20c99:
+Data_20c99: ; 20c99
 	db "<HIRA>を つかいますか?<KATA>", $00
 
-Data_20ca5:
+Data_20ca5: ; 20ca5
 	dr $20ca5, $20cb4
 
 Data_20cb4: ; 20cb4
@@ -48455,7 +48455,7 @@ Data_20fb6: ; 20fb6
 Data_20fbd: ; 20fbd
 	dr $20fbd, $20fc5
 
-Pointers_20fc5:
+Pointers_20fc5: ; 20fc5
 	dw Data_20fa1
 	dw Data_20fa2
 	dw Data_20fa4
@@ -48465,7 +48465,7 @@ Pointers_20fc5:
 	dw Data_20fb6
 	dw Data_20fbd
 
-Func_20fd5:
+Func_20fd5: ; 20fd5
 	push bc
 	push bc
 	push bc
@@ -48704,7 +48704,7 @@ Func_2114d: ; 2114d (8:514d)
 	pop bc
 	ret
 
-Data_21152:
+Data_21152: ; 21152
 	dr $21152, $21160
 
 Func_21160: ; 21160 (8:5160)
@@ -49282,7 +49282,7 @@ Func_21573: ; 21573 (8:5573)
 	pop bc
 	ret
 
-Func_21593:
+Func_21593: ; 21593
 	push bc
 	push bc
 	push bc
@@ -49482,7 +49482,7 @@ Func_216d7: ; 216d7 (8:56d7)
 	pop bc
 	ret
 
-Data_216dc:
+Data_216dc: ; 216dc
 	ds 6
 
 Func_216e2: ; 216e2 (8:56e2)
@@ -49807,7 +49807,7 @@ Func_218dd: ; 218dd (8:58dd)
 	pop bc
 	ret
 
-Func_218e2:
+Func_218e2: ; 218e2
 	add sp, -$46
 	xor a
 	ld hl, sp+$44
@@ -49876,7 +49876,7 @@ Func_21912: ; 21912 (8:5912)
 	add sp, $46
 	ret
 
-Func_2193a:
+Func_2193a: ; 2193a
 	push bc
 	push bc
 	ld hl, sp+$2
@@ -50166,7 +50166,7 @@ Func_21b0a: ; 21b0a (8:5b0a)
 	pop bc
 	ret
 
-Func_21b0d:
+Func_21b0d: ; 21b0d
 	push bc
 	push bc
 	push bc
@@ -50304,7 +50304,7 @@ Func_21bc5: ; 21bc5 (8:5bc5)
 	call FarCall
 	ret
 
-Func_21bf5:
+Func_21bf5: ; 21bf5
 	push af
 	ld hl, -$114
 	add hl, sp
@@ -50769,10 +50769,10 @@ Func_21f1c: ; 21f1c (8:5f1c)
 	ld sp, hl
 	ret
 
-Data_21f22:
+Data_21f22: ; 21f22
 	db "<HIRA>たへﾞさせますか?<KATA>", $00
 
-Func_21f2e:
+Func_21f2e: ; 21f2e
 	push af
 	ld hl, -$ea
 	add hl, sp
@@ -50935,7 +50935,7 @@ Func_2201e: ; 2201e (8:601e)
 	ld sp, hl
 	ret
 
-Func_22030:
+Func_22030: ; 22030
 	push af
 	ld hl, -$f6
 	add hl, sp
@@ -51096,7 +51096,7 @@ Func_2211c: ; 2211c (8:611c)
 	ld sp, hl
 	ret
 
-Func_2212e:
+Func_2212e: ; 2212e
 	push hl
 	ld hl, -$e4
 	add hl, sp
@@ -51340,7 +51340,7 @@ Func_22250: ; 22250 (8:6250)
 	ld sp, hl
 	ret
 
-Data_222b2:
+Data_222b2: ; 222b2
 	dr $222b2, $222b7
 
 Func_222b7: ; 222b7 (8:62b7)
@@ -52287,10 +52287,10 @@ Func_228c5: ; 228c5 (8:68c5)
 	ld sp, hl
 	ret
 
-Data_228cb:
+Data_228cb: ; 228cb
 	dw 10, 20, 30, 1000
 
-Func_228d3:
+Func_228d3: ; 228d3
 	ld hl, -$f0
 	add hl, sp
 	ld sp, hl
@@ -52859,7 +52859,7 @@ Func_22cca: ; 22cca (8:6cca)
 	ld sp, hl
 	ret
 
-Func_22cd0:
+Func_22cd0: ; 22cd0
 	push bc
 	push bc
 	call ReadHalfWordAt
@@ -53066,7 +53066,7 @@ Func_22db3: ; 22db3 (8:6db3)
 	pop bc
 	ret
 
-Func_22e03:
+Func_22e03: ; 22e03
 	call ReadHalfWordAt
 	dw wc2e6
 	ld de, $e4
@@ -53531,18 +53531,18 @@ Func_23137: ; 23137 (8:7137)
 	add sp, $16
 	ret
 
-Pointers_2313a:
+Pointers_2313a: ; 2313a
 	dw Data_23140
 	dw Data_23150
 	dw $0000
 
-Data_23140:
+Data_23140: ; 23140
 	db "<HIRA>つうしん<KATA>ハﾞトル<HIRA>てﾞは<KATA>", $00
 
-Data_23150:
+Data_23150: ; 23150
 	db "<HIRA>つかえない<KATA>!", $00
 
-Func_23159:
+Func_23159: ; 23159
 	call ReadHalfWordAt
 	dw wc2e6
 	ld de, $1c4
@@ -53653,15 +53653,15 @@ Func_2320d: ; 2320d (8:720d)
 	pop hl
 	ret
 
-Pointers_2326e:
+Pointers_2326e: ; 2326e
 	dw Data_23274
 	dw Data_23284
 	dw $0000
 
-Data_23274:
+Data_23274: ; 23274
 	db "<HIRA>つうしん<KATA>ハﾞトル<HIRA>てﾞは<KATA>", $00
 
-Data_23284:
+Data_23284: ; 23284
 	db "<HIRA>にけﾞられない<KATA>!", $00
 
 Func_2328f: ; 2328f (8:728f)
@@ -54372,10 +54372,10 @@ Func_237af: ; 237af (8:77af)
 	add sp, $52
 	ret
 
-Data_237b5:
+Data_237b5: ; 237b5
 	db "<HIRA>とﾞうする?<KATA>", $00
 
-Func_237be:
+Func_237be: ; 237be
 	set_farcall_addrs_hli Func_6183
 	ld a, [wLCDC]
 	and $7f
@@ -54404,7 +54404,7 @@ Func_237fb: ; 237fb (8:77fb)
 	call FarCall
 	ret
 
-Func_2380f:
+Func_2380f: ; 2380f
 	xor a
 	ld [wSCY2], a
 	ld [wSCY], a
@@ -54544,7 +54544,7 @@ Func_238c8: ; 238c8 (8:78c8)
 	call CopyFromDEtoHL
 	ret
 
-Func_2391e:
+Func_2391e: ; 2391e
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -54645,7 +54645,7 @@ Func_23a64: ; 23a64 (8:7a64)
 	ld hl, $8000
 	ret
 
-Func_23a68:
+Func_23a68: ; 23a68
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -54729,14 +54729,14 @@ Func_23b5d: ; 23b5d (8:7b5d)
 
 SECTION "Bank 09", ROMX, BANK [$09]
 INCLUDE "charmap2.asm"
-Func_24000:
+Func_24000: ; 24000
 	ret
 
-Func_24001:
+Func_24001: ; 24001
 	callba_hli Func_5cf1d
 	ret
 
-Func_24010:
+Func_24010: ; 24010
 	push hl
 	set_farcall_addrs_hli Func_5cf85
 	pop hl
@@ -54744,7 +54744,7 @@ Func_24010:
 	call FarCall
 	ret
 
-Func_24023:
+Func_24023: ; 24023
 	push hl
 	set_farcall_addrs_hli Func_5d02d
 	pop hl
@@ -54752,52 +54752,52 @@ Func_24023:
 	call FarCall
 	ret
 
-Func_24036:
+Func_24036: ; 24036
 	callba_hli Func_5d107
 	ret
 
-Func_24045:
+Func_24045: ; 24045
 	callba_hli Func_5d10d
 	ret
 
-Func_24054:
+Func_24054: ; 24054
 	push af
 	set_farcall_addrs_hli Func_5d096
 	pop af
 	call FarCall
 	ret
 
-Text_24065:
+Text_24065: ; 24065
 	db " ", $00
 
-Text_24067:
+Text_24067: ; 24067
 	db "!", $00
 
-Text_24069:
+Text_24069: ; 24069
 	db "は", $00
 
-Text_2406b:
+Text_2406b: ; 2406b
 	db "に", $00
 
-Text_2406d:
+Text_2406d: ; 2406d
 	db "が", $00
 
-Text_2406f:
+Text_2406f: ; 2406f
 	db "の", $00
 
-Text_24071:
+Text_24071: ; 24071
 	db "を", $00
 
-Text_24073:
+Text_24073: ; 24073
 	db "で", $00
 
-Text_24075:
+Text_24075: ; 24075
 	db "/", $00
 
-Text_24077:
+Text_24077: ; 24077
 	db "G", $00
 
-Pointers_24079:
+Pointers_24079: ; 24079
 	dw Text_24065
 	dw Text_24067
 	dw Text_24069
@@ -54809,52 +54809,52 @@ Pointers_24079:
 	dw Text_24075
 	dw Text_24077
 
-Text_2408d:
+Text_2408d: ; 2408d
 	db " ", $00
 
-Text_2408f:
+Text_2408f: ; 2408f
 	db "いのり", $00
 
-Text_24093:
+Text_24093: ; 24093
 	db "のろい", $00
 
-Text_24097:
+Text_24097: ; 24097
 	db "ねつ", $00
 
-Text_2409a:
+Text_2409a: ; 2409a
 	db "バグ", $00
 
-Text_2409d:
+Text_2409d: ; 2409d
 	db "のうむ", $00
 
-Text_240a1:
+Text_240a1: ; 240a1
 	db "めいれいむし", $00
 
-Text_240a8:
+Text_240a8: ; 240a8
 	db "ていし", $00
 
-Text_240ac:
+Text_240ac: ; 240ac
 	db "サビ", $00
 
-Text_240af:
+Text_240af: ; 240af
 	db "ぼうそう", $00
 
-Text_240b4:
+Text_240b4: ; 240b4
 	db "はんどう", $00
 
-Text_240b9:
+Text_240b9: ; 240b9
 	db "みずびたし", $00
 
-Text_240bf:
+Text_240bf: ; 240bf
 	db "あぶらまみれ", $00
 
-Text_240c6:
+Text_240c6: ; 240c6
 	db "バリヤ", $00
 
-Text_240ca:
+Text_240ca: ; 240ca
 	db "ふのう", $00
 
-Pointers_240ce:
+Pointers_240ce: ; 240ce
 	dw Text_2408d
 	dw Text_2408f
 	dw Text_24093
@@ -54871,40 +54871,40 @@ Pointers_240ce:
 	dw Text_240c6
 	dw Text_240ca
 
-Text_240ec:
+Text_240ec: ; 240ec
 	db "ぼうぎょ", $00
 
-Text_240f1:
+Text_240f1: ; 240f1
 	db "こうげき", $00
 
-Text_240f6:
+Text_240f6: ; 240f6
 	db "すばやさ", $00
 
-Text_240fb:
+Text_240fb: ; 240fb
 	db "めいちゅう", $00
 
-Text_24101:
+Text_24101: ; 24101
 	db "ポイント", $00
 
-Text_24106:
+Text_24106: ; 24106
 	db "エネルギー", $00
 
-Text_2410c:
+Text_2410c: ; 2410c
 	db "ヒット", $00
 
-Text_24110:
+Text_24110: ; 24110
 	db "こうげき", $00
 
-Text_24115:
+Text_24115: ; 24115
 	db "わざ", $00
 
-Text_24118:
+Text_24118: ; 24118
 	db "はんどう", $00
 
-Text_2411d:
+Text_2411d: ; 2411d
 	db "ばくはつ", $00
 
-Pointers_24122:
+Pointers_24122: ; 24122
 	dw Text_240ec
 	dw Text_240f1
 	dw Text_240f6
@@ -54917,25 +54917,25 @@ Pointers_24122:
 	dw Text_24118
 	dw Text_2411d
 
-Text_24138:
+Text_24138: ; 24138
 	db "たたかう", $00
 
-Text_2413d:
+Text_2413d: ; 2413d
 	db "アイテム", $00
 
-Text_24142:
+Text_24142: ; 24142
 	db "ロボポン", $00
 
-Text_24147:
+Text_24147: ; 24147
 	db "にげる", $00
 
-Text_2414b:
+Text_2414b: ; 2414b
 	db "コマンド", $00
 
-Text_24150:
+Text_24150: ; 24150
 	db "すべて", $00
 
-Pointers_24154:
+Pointers_24154: ; 24154
 	dw Text_24138
 	dw Text_2413d
 	dw Text_24142
@@ -54943,79 +54943,79 @@ Pointers_24154:
 	dw Text_2414b
 	dw Text_24150
 
-Text_24160:
+Text_24160: ; 24160
 	db "あがった", $00
 
-Text_24165:
+Text_24165: ; 24165
 	db "さがった", $00
 
-Text_2416a:
+Text_2416a: ; 2416a
 	db "うけた", $00
 
-Text_2416e:
+Text_2416e: ; 2416e
 	db "つかえません", $00
 
-Text_24175:
+Text_24175: ; 24175
 	db "はずれた", $00
 
-Text_2417a:
+Text_2417a: ; 2417a
 	db "なっている", $00
 
-Text_24180:
+Text_24180: ; 24180
 	db "なおった", $00
 
-Text_24185:
+Text_24185: ; 24185
 	db "ふせいだ", $00
 
-Text_2418a:
+Text_2418a: ; 2418a
 	db "すいとった", $00
 
-Text_24190:
+Text_24190: ; 24190
 	db "あたえた", $00
 
-Text_24195:
+Text_24195: ; 24195
 	db "ダメージ", $00
 
-Text_2419a:
+Text_2419a: ; 2419a
 	db "はんげきした", $00
 
-Text_241a1:
+Text_241a1: ; 241a1
 	db "ひろった", $00
 
-Text_241a6:
+Text_241a6: ; 241a6
 	db "かけてきた", $00
 
-Text_241ac:
+Text_241ac: ; 241ac
 	db "かけている", $00
 
-Text_241b2:
+Text_241b2: ; 241b2
 	db "しっぱいした", $00
 
-Text_241b9:
+Text_241b9: ; 241b9
 	db "になった", $00
 
-Text_241be:
+Text_241be: ; 241be
 	db "ダメージをうけとめた", $00
 
-Text_241c9:
+Text_241c9: ; 241c9
 	db "にへった", $00
 
-Text_241ce:
+Text_241ce: ; 241ce
 	db "しようできなくなった", $00
 
-Text_241d9:
+Text_241d9: ; 241d9
 	db "の ばくははしっぱいした", $00
 
-Text_241e6:
+Text_241e6: ; 241e6
 	db "つかった", $00
 
-Text_241eb:
+Text_241eb: ; 241eb
 	db "スクラップ", $00
 
-Text_241f1:
+Text_241f1: ; 241f1
 	db "にした", $00
 
-Pointers_241f5:
+Pointers_241f5: ; 241f5
 	dw Text_24160
 	dw Text_24165
 	dw Text_2416a
@@ -55041,58 +55041,58 @@ Pointers_241f5:
 	dw Text_241eb
 	dw Text_241f1
 
-Text_24225:
+Text_24225: ; 24225
 	db "えいきょうで ", $00
 
-Text_2422d:
+Text_2422d: ; 2422d
 	db "こうかで ", $00
 
-Text_24233:
+Text_24233: ; 24233
 	db "のこうかが きれた", $00
 
-Text_2423d:
+Text_2423d: ; 2423d
 	db "で まもられている", $00
 
-Text_24247:
+Text_24247: ; 24247
 	db "は こんらんしている", $00
 
-Text_24252:
+Text_24252: ; 24252
 	db "しかし ", $00
 
-Text_24257:
+Text_24257: ; 24257
 	db "で つつまれた", $00
 
-Text_2425f:
+Text_2425f: ; 2425f
 	db "バリアにはねかえされた", $00
 
-Text_2426b:
+Text_2426b: ; 2426b
 	db "さらに", $00
 
-Text_2426f:
+Text_2426f: ; 2426f
 	db "のこうかで", $00
 
-Text_24275:
+Text_24275: ; 24275
 	db "HP", $00
 
-Text_24278:
+Text_24278: ; 24278
 	db "そのわざは", $00
 
-Text_2427e:
+Text_2427e: ; 2427e
 	db "ぞくせいは", $00
 
-Text_24284:
+Text_24284: ; 24284
 	db "にげようとした", $00
 
-Text_2428c:
+Text_2428c: ; 2428c
 	db "しかし にげられなかった", $00
 
-Text_24299:
+Text_24299: ; 24299
 	db "うまく にげた", $00
 
-Text_242a1:
+Text_242a1: ; 242a1
 	db "ばくはつした", $00
 
-Pointers_242a8:
+Pointers_242a8: ; 242a8
 	dw Text_24225
 	dw Text_2422d
 	dw Text_24233
@@ -55111,43 +55111,43 @@ Pointers_242a8:
 	dw Text_24299
 	dw Text_242a1
 
-Text_242ca:
+Text_242ca: ; 242ca
 	db "ノーマル", $00
 
-Text_242cf:
+Text_242cf: ; 242cf
 	db "ひ", $00
 
-Text_242d1:
+Text_242d1: ; 242d1
 	db "みず", $00
 
-Text_242d4:
+Text_242d4: ; 242d4
 	db "かぜ", $00
 
-Text_242d7:
+Text_242d7: ; 242d7
 	db "つち", $00
 
-Text_242da:
+Text_242da: ; 242da
 	db "かみなり", $00
 
-Text_242df:
+Text_242df: ; 242df
 	db "こおり", $00
 
-Text_242e3:
+Text_242e3: ; 242e3
 	db "せい", $00
 
-Text_242e6:
+Text_242e6: ; 242e6
 	db "じゃ", $00
 
-Text_242e9:
+Text_242e9: ; 242e9
 	db "りく", $00
 
-Text_242ec:
+Text_242ec: ; 242ec
 	db "かい", $00
 
-Text_242ef:
+Text_242ef: ; 242ef
 	db "くう", $00
 
-Pointers_242f2:
+Pointers_242f2: ; 242f2
 	dw Text_242ca
 	dw Text_242cf
 	dw Text_242d1
@@ -55161,91 +55161,91 @@ Pointers_242f2:
 	dw Text_242ec
 	dw Text_242ef
 
-Text_2430a:
+Text_2430a: ; 2430a
 	db "こうか17", $00
 
-Text_24310:
+Text_24310: ; 24310
 	db "EP", $00
 
-Text_24313:
+Text_24313: ; 24313
 	db "ついかダメージ", $00
 
-Text_2431b:
+Text_2431b: ; 2431b
 	db "ごうげきのはんどうで", $00
 
-Text_24326:
+Text_24326: ; 24326
 	db "じばくした", $00
 
-Text_2432c:
+Text_2432c: ; 2432c
 	db "はんげき", $00
 
-Text_24331:
+Text_24331: ; 24331
 	db "いちげきひっさつ", $00
 
-Text_2433a:
+Text_2433a: ; 2433a
 	db "がまんしている", $00
 
-Text_24342:
+Text_24342: ; 24342
 	db "してきた", $00
 
-Text_24347:
+Text_24347: ; 24347
 	db "した", $00
 
-Text_2434a:
+Text_2434a: ; 2434a
 	db "27", $00
 
-Text_2434d:
+Text_2434d: ; 2434d
 	db "28", $00
 
-Text_24350:
+Text_24350: ; 24350
 	db "はんてんかいふく", $00
 
-Text_24359:
+Text_24359: ; 24359
 	db "きゅうしゅう", $00
 
-Text_24360:
+Text_24360: ; 24360
 	db "HPかいふく", $00
 
-Text_24367:
+Text_24367: ; 24367
 	db "32", $00
 
-Text_2436a:
+Text_2436a: ; 2436a
 	db "ぼうぎょ", $00
 
-Text_2436f:
+Text_2436f: ; 2436f
 	db "うけみ", $00
 
-Text_24373:
+Text_24373: ; 24373
 	db "35", $00
 
-Text_24376:
+Text_24376: ; 24376
 	db "36", $00
 
-Text_24379:
+Text_24379: ; 24379
 	db "37", $00
 
-Text_2437c:
+Text_2437c: ; 2437c
 	db "38", $00
 
-Text_2437f:
+Text_2437f: ; 2437f
 	db "れんぞくこうげき", $00
 
-Text_24388:
+Text_24388: ; 24388
 	db "こうか40", $00
 
-Text_2438e:
+Text_2438e: ; 2438e
 	db "こうか41", $00
 
-Text_24394:
+Text_24394: ; 24394
 	db "こうか42", $00
 
-Text_2439a:
+Text_2439a: ; 2439a
 	db "こうか43", $00
 
-Text_243a0:
+Text_243a0: ; 243a0
 	db "こうか44", $00
 
-Pointers_243a6:
+Pointers_243a6: ; 243a6
 	dw Text_2430a
 	dw Text_24310
 	dw Text_24313
@@ -55275,119 +55275,119 @@ Pointers_243a6:
 	dw Text_2439a
 	dw Text_243a0
 
-Text_243de:
+Text_243de: ; 243de
 	db "ていしじょうたいで うごけない!", $00
 
-Text_243ef:
+Text_243ef: ; 243ef
 	db "ぼうぎょしている", $00
 
-Text_243f8:
+Text_243f8: ; 243f8
 	db "かいひしようとしている", $00
 
-Text_24404:
+Text_24404: ; 24404
 	db "なにもしない", $00
 
-Pointers_2440b:
+Pointers_2440b: ; 2440b
 	dw Text_243de
 	dw Text_243ef
 	dw Text_243f8
 	dw Text_24404
 
-Text_24413:
+Text_24413: ; 24413
 	db "こうげきの はんどうで", $00
 
-Text_2441f:
+Text_2441f: ; 2441f
 	db "の ダメージ", $00
 
-Pointers_24426:
+Pointers_24426: ; 24426
 	dw Text_24413
 	dw Text_2441f
 
-Text_2442a:
+Text_2442a: ; 2442a
 	db "しかし", $00
 
-Text_2442e:
+Text_2442e: ; 2442e
 	db "バリアに はねかえされた", $00
 
-Pointers_2443b:
+Pointers_2443b: ; 2443b
 	dw Text_2442a
 	dw Text_2442e
 
-Text_2443f:
+Text_2443f: ; 2443f
 	db "きゅうしょ にあたって", $00
 
-Text_2444b:
+Text_2444b: ; 2444b
 	db "いちげきひっさつ にした!", $00
 
-Pointers_24459:
+Pointers_24459: ; 24459
 	dw Text_2443f
 	dw Text_2444b
 
-Text_2445d:
+Text_2445d: ; 2445d
 	db "は すべての わざの", $00
 
-Text_24468:
+Text_24468: ; 24468
 	db "しようが できなくなった!", $00
 
-Pointers_24476:
+Pointers_24476: ; 24476
 	dw Text_2445d
 	dw Text_24468
 
-Text_2447a:
+Text_2447a: ; 2447a
 	db "きあい をいれた!", $00
 
-Pointers_24484:
+Pointers_24484: ; 24484
 	dw Text_2447a
 
-Text_24486:
+Text_24486: ; 24486
 	db "しようできなくなった!", $00
 
-Pointers_24492:
+Pointers_24492: ; 24492
 	dw Text_24486
 
-Text_24494:
+Text_24494: ; 24494
 	db "りく こうげき をふうじた!", $00
 
-Text_244a3:
+Text_244a3: ; 244a3
 	db "うみ こうげき をふうじた!", $00
 
-Text_244b2:
+Text_244b2: ; 244b2
 	db "そら こうげき をふうじた!", $00
 
-Text_244c1:
+Text_244c1: ; 244c1
 	db "ノーマル こうげき をふうじた!", $00
 
-Pointers_244d2:
+Pointers_244d2: ; 244d2
 	dw Text_24494
 	dw Text_244a3
 	dw Text_244b2
 	dw Text_244c1
 
-Text_244da:
+Text_244da: ; 244da
 	db "を ぬすんだ", $00
 
-Pointers_244e1:
+Pointers_244e1: ; 244e1
 	dw Text_244da
 
-Text_244e3:
+Text_244e3: ; 244e3
 	db "は ", $00
 
-Text_244e6:
+Text_244e6: ; 244e6
 	db "を", $00
 
-Text_244e8:
+Text_244e8: ; 244e8
 	db "スキャニングした!", $00
 
-Text_244f2:
+Text_244f2: ; 244f2
 	db "の ぼうぎょぞくせいは", $00
 
-Text_244fe:
+Text_244fe: ; 244fe
 	db "ヒットポイントの", $00
 
-Text_24507:
+Text_24507: ; 24507
 	db "じょうたいも わかった!", $00
 
-Pointers_24514:
+Pointers_24514: ; 24514
 	dw Text_244e3
 	dw Text_244e6
 	dw Text_244e8
@@ -55395,99 +55395,99 @@ Pointers_24514:
 	dw Text_244fe
 	dw Text_24507
 
-Text_24520:
+Text_24520: ; 24520
 	db "は ", $00
 
-Text_24523:
+Text_24523: ; 24523
 	db "から", $00
 
-Text_24526:
+Text_24526: ; 24526
 	db "ゴールド ごうだつした!", $00
 
-Pointers_24533:
+Pointers_24533: ; 24533
 	dw Text_24520
 	dw Text_24523
 	dw Text_24526
 
-Text_24539:
+Text_24539: ; 24539
 	db "は ", $00
 
-Text_2453c:
+Text_2453c: ; 2453c
 	db "れんぞくこうげき した!", $00
 
-Pointers_24549:
+Pointers_24549: ; 24549
 	dw Text_24539
 	dw Text_2453c
 
-Text_2454d:
+Text_2454d: ; 2454d
 	db "は ", $00
 
-Text_24550:
+Text_24550: ; 24550
 	db "せんせいこうげき した!", $00
 
-Pointers_2455d:
+Pointers_2455d: ; 2455d
 	dw Text_2454d
 	dw Text_24550
 
-Text_24561:
+Text_24561: ; 24561
 	db "かけた", $00
 
-Text_24565:
+Text_24565: ; 24565
 	db "かけてきた", $00
 
-Pointers_2456b:
+Pointers_2456b: ; 2456b
 	dw Text_24561
 	dw Text_24565
 
-Text_2456f:
+Text_2456f: ; 2456f
 	db "よしっ!", $00
 
-Text_24574:
+Text_24574: ; 24574
 	db "かなりきいたみたいだぞ", $00
 
-Pointers_24580:
+Pointers_24580: ; 24580
 	dw Text_2456f
 	dw Text_24574
 
-Text_24584:
+Text_24584: ; 24584
 	db "しまった!", $00
 
-Text_2458a:
+Text_2458a: ; 2458a
 	db "かなりやられたみたいだ", $00
 
-Pointers_24596:
+Pointers_24596: ; 24596
 	dw Text_24584
 	dw Text_2458a
 
-Text_2459a:
+Text_2459a: ; 2459a
 	db "しまった!", $00
 
-Text_245a0:
+Text_245a0: ; 245a0
 	db "ぜんぜんきいていないみたいだ", $00
 
-Pointers_245af:
+Pointers_245af: ; 245af
 	dw Text_2459a
 	dw Text_245a0
 
-Text_245b3:
+Text_245b3: ; 245b3
 	db "よしっ!", $00
 
-Text_245b8:
+Text_245b8: ; 245b8
 	db "ぜんぜんきいていないぞ", $00
 
-Pointers_245c4:
+Pointers_245c4: ; 245c4
 	dw Text_245b3
 	dw Text_245b8
 
 SECTION "Bank 9 part 2", ROMX [$45c8], BANK [$09]
 INCLUDE "charmap.asm"
-Data_245c8:
+Data_245c8: ; 245c8
 	dr $245c8, $245d0
 
-Data_245d0:
+Data_245d0: ; 245d0
 	dr $245d0, $245d8
 
-Func_245d8:
+Func_245d8: ; 245d8
 	push hl
 	push de
 	push bc
@@ -55497,7 +55497,7 @@ Func_245d8:
 	pop hl
 	jp FarCall
 
-Func_245ec:
+Func_245ec: ; 245ec
 	push hl
 	push de
 	push bc
@@ -55514,7 +55514,7 @@ Func_24600: ; 24600 (9:4600)
 	call FarCall
 	ret
 
-Func_24611:
+Func_24611: ; 24611
 	callba_hli Func_5ec5e
 	ret
 
@@ -55534,7 +55534,7 @@ Func_24632: ; 24632 (9:4632)
 	pop af
 	jp FarCall
 
-Func_24644:
+Func_24644: ; 24644
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -55722,7 +55722,7 @@ Func_2478b: ; 2478b (9:478b)
 	pop hl
 	jp FarCall
 
-Data_2479d:
+Data_2479d: ; 2479d
 	db $00, $00, $26, $66
 
 Func_247a1: ; 247a1 (9:47a1)
@@ -56345,7 +56345,7 @@ Func_24bfc: ; 24bfc (9:4bfc)
 	callba_hli Func_5cdb0
 	ret
 
-Func_24c0b:
+Func_24c0b: ; 24c0b
 	add sp, -$34
 	ld l, $0
 	ld c, l
@@ -57278,7 +57278,7 @@ Func_251ce: ; 251ce (9:51ce)
 	add sp, $34
 	ret
 
-Func_251d1:
+Func_251d1: ; 251d1
 	push bc
 	push bc
 	push bc
@@ -57651,7 +57651,7 @@ Func_2542b: ; 2542b (9:542b)
 	pop bc
 	ret
 
-Func_25430:
+Func_25430: ; 25430
 	callba_hli Func_5c386
 	ret
 
@@ -60103,16 +60103,16 @@ Func_264e7: ; 264e7 (9:64e7)
 	pop bc
 	ret
 
-Func_264eb:
+Func_264eb: ; 264eb
 	ret
 
-Func_264ec:
+Func_264ec: ; 264ec
 	ret
 
-Data_264ed:
+Data_264ed: ; 264ed
 	dr $264ed, $264f1
 
-Func_264f1:
+Func_264f1: ; 264f1
 	push af
 	add sp, -$1e
 	push de
@@ -60248,7 +60248,7 @@ Func_265cd: ; 265cd (9:65cd)
 	add sp, $20
 	ret
 
-Func_265d0:
+Func_265d0: ; 265d0
 	push af
 	add sp, -$1c
 	push de
@@ -60583,10 +60583,10 @@ Func_26816: ; 26816 (9:6816)
 	add sp, $c
 	ret
 
-Func_2681c:
+Func_2681c: ; 2681c
 	ret
 
-Func_2681d:
+Func_2681d: ; 2681d
 	push af
 	push bc
 	push bc
@@ -60673,10 +60673,10 @@ Func_268a2: ; 268a2 (9:68a2)
 	pop bc
 	ret
 
-Func_268a6:
+Func_268a6: ; 268a6
 	ret
 
-Func_268a7:
+Func_268a7: ; 268a7
 	ret
 
 Func_268a8: ; 268a8 (9:68a8)
@@ -60686,7 +60686,7 @@ Func_268a8: ; 268a8 (9:68a8)
 	call FarCall
 	ret
 
-Func_268b9:
+Func_268b9: ; 268b9
 	push af
 	add sp, -$1a
 	push de
@@ -60889,7 +60889,7 @@ Func_269f4: ; 269f4 (9:69f4)
 	add sp, $1c
 	ret
 
-Func_269f7:
+Func_269f7: ; 269f7
 	push af
 	push bc
 	push bc
@@ -60991,7 +60991,7 @@ Func_26a8a: ; 26a8a (9:6a8a)
 	pop bc
 	ret
 
-Func_26a8e:
+Func_26a8e: ; 26a8e
 	push af
 	push bc
 	push bc
@@ -61180,7 +61180,7 @@ Func_26ba4: ; 26ba4 (9:6ba4)
 	pop bc
 	ret
 
-Func_26baa:
+Func_26baa: ; 26baa
 	ret
 
 Func_26bab: ; 26bab (9:6bab)
@@ -61365,7 +61365,7 @@ Func_26c6a: ; 26c6a (9:6c6a)
 	add sp, $1c
 	ret
 
-Func_26cd6:
+Func_26cd6: ; 26cd6
 	push bc
 	push bc
 	push de
@@ -61488,13 +61488,13 @@ Func_26d7c: ; 26d7c (9:6d7c)
 	pop bc
 	ret
 
-Func_26d7f:
+Func_26d7f: ; 26d7f
 	ret
 
-Func_26d80:
+Func_26d80: ; 26d80
 	ret
 
-Func_26d81:
+Func_26d81: ; 26d81
 	push af
 	push bc
 	push de
@@ -61546,10 +61546,10 @@ Func_26dd4: ; 26dd4 (9:6dd4)
 	pop bc
 	ret
 
-Data_26dd7:
+Data_26dd7: ; 26dd7
 	db $00
 
-Func_26dd8:
+Func_26dd8: ; 26dd8
 	push af
 	push bc
 	push bc
@@ -61705,13 +61705,13 @@ Func_26edb: ; 26edb (9:6edb)
 	pop bc
 	ret
 
-Func_26ee0:
+Func_26ee0: ; 26ee0
 	call Func_263cb
 	ld a, h
 	call Func_24045
 	ret
 
-Func_26ee8:
+Func_26ee8: ; 26ee8
 	push af
 	add sp, -$18
 	push de
@@ -61833,25 +61833,25 @@ Func_26fa4: ; 26fa4 (9:6fa4)
 	add sp, $1a
 	ret
 
-Func_26faa:
+Func_26faa: ; 26faa
 	ret
 
-Func_26fab:
+Func_26fab: ; 26fab
 	ret
 
-Func_26fac:
+Func_26fac: ; 26fac
 	ret
 
-Func_26fad:
+Func_26fad: ; 26fad
 	ret
 
-Func_26fae:
+Func_26fae: ; 26fae
 	ret
 
-Func_26faf:
+Func_26faf: ; 26faf
 	ret
 
-Pointers_26fb0:
+Pointers_26fb0: ; 26fb0
 	dw Func_264eb
 	dw Func_264ec
 	dw Func_264f1
@@ -62731,7 +62731,7 @@ Func_27569: ; 27569 (9:7569)
 	callba_hli Func_228d3
 	ret
 
-Func_2757b:
+Func_2757b: ; 2757b
 	push af
 	push de
 	push bc
@@ -63034,17 +63034,17 @@ Func_27780: ; 27780 (9:7780)
 	ret
 
 SECTION "Bank 0a", ROMX, BANK [$0a]
-GFX_28000:
+GFX_28000: ; 28000
 	dr $28000, $2bfe4
 
 SECTION "Bank 0b", ROMX, BANK [$0b]
 	dr $2c000, $2eeb2
 
 SECTION "Bank 0c", ROMX [$4000], BANK [$0c]
-Func_30000:
+Func_30000: ; 30000
 	ret
 
-Data_30001:
+Data_30001: ; 30001
 	dr $30001, $30020
 
 Data_30020: ; 30020
@@ -63086,13 +63086,13 @@ Data_30115: ; 30115
 Data_30142: ; 30142
 	dr $30142, $30151
 
-Data_30151:
+Data_30151: ; 30151
 	dr $30151, $301bd
 
-Data_301bd:
+Data_301bd: ; 301bd
 	dr $301bd, $30223
 
-Data_30223:
+Data_30223: ; 30223
 	dr $30223, $30283
 
 SECTION "Bank 0c part 2", ROMX [$4289], BANK [$0c]
@@ -63205,7 +63205,7 @@ Func_30313: ; 30313 (c:4313)
 	call FarCall
 	ret
 
-Func_30328:
+Func_30328: ; 30328
 	ld a, $f
 	ld [$c2f8], a
 	ld c, l
@@ -63597,16 +63597,16 @@ Func_305f4: ; 305f4 (c:45f4)
 	pop bc
 	ret
 
-Data_3064a:
+Data_3064a: ; 3064a
 	db "<HIRA>しょしﾞきん<KATA>", $00
 
-Data_30653:
+Data_30653: ; 30653
 	db "<HIRA>いらっしゃい<KATA>", $00
 
-Data_3065c:
+Data_3065c: ; 3065c
 	db "<HIRA>ようけんはなに<KATA>?", $00
 
-Data_30667:
+Data_30667: ; 30667
 	db "<HIRA>ほかにも ようかﾞある<KATA>?", $00
 
 Func_30676: ; 30676 (c:4676)
@@ -63950,13 +63950,13 @@ Func_308a5: ; 308a5 (c:48a5)
 	callba_hli Func_17a44
 	ret
 
-Data_308c0:
+Data_308c0: ; 308c0
 	db "アイテム<HIRA>なし<KATA>", $00
 
-Data_308c9:
+Data_308c9: ; 308c9
 	db "ソフト<HIRA>なし<KATA>", $00
 
-Data_308d1:
+Data_308d1: ; 308d1
 	db "ハﾟーツ<HIRA>なし<KATA>", $00
 
 Func_308da: ; 308da (c:48da)
@@ -64081,7 +64081,7 @@ Func_309be: ; 309be (c:49be)
 	add sp, $20
 	ret
 
-Func_309da:
+Func_309da: ; 309da
 	push hl
 	add sp, -$10
 	ld hl, sp+$10
@@ -64551,7 +64551,7 @@ Func_30ca7: ; 30ca7 (c:4ca7)
 	pop hl
 	ret
 
-Func_30cc1:
+Func_30cc1: ; 30cc1
 	push bc
 	push bc
 	ld c, l
@@ -64635,7 +64635,7 @@ Func_30d16: ; 30d16 (c:4d16)
 	pop bc
 	ret
 
-Func_30d44:
+Func_30d44: ; 30d44
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -65030,19 +65030,19 @@ Func_30fe0: ; 30fe0 (c:4fe0)
 	add sp, $38
 	ret
 
-Data_30fe7:
+Data_30fe7: ; 30fe7
 	db "0G", $00
 
-Data_30fea:
+Data_30fea: ; 30fea
 	db "    ", $00
 
-Data_30fef:
+Data_30fef: ; 30fef
 	db "G", $00
 
-Data_30ff1:
+Data_30ff1: ; 30ff1
 	db "00G", $00
 
-Data_30ff5:
+Data_30ff5: ; 30ff5
 	db "0G", $00
 
 Func_30ff8: ; 30ff8 (c:4ff8)
@@ -65069,13 +65069,13 @@ Func_3101b: ; 3101b (c:501b)
 Func_31024: ; 31024 (c:5024)
 	ret
 
-Data_31025:
+Data_31025: ; 31025
 	db "<HIRA>なにを かう<KATA>?", $00
 
-Data_3102f:
+Data_3102f: ; 3102f
 	db "<HIRA>なにを うってくれる<KATA>?", $00
 
-Func_3103d:
+Func_3103d: ; 3103d
 	push hl
 	add sp, -$3c
 	call GetHLAtSPPlusParam8
@@ -65421,7 +65421,7 @@ Func_31299: ; 31299 (c:5299)
 	pop hl
 	ret
 
-Func_312a4:
+Func_312a4: ; 312a4
 	push af
 	push bc
 	add sp, -$12
@@ -65639,39 +65639,39 @@ Func_31432: ; 31432 (c:5432)
 	add sp, $16
 	ret
 
-Data_31435:
+Data_31435: ; 31435
 	db "<HIRA>ねたﾞん<KATA>", $00
 
-Data_3143c:
+Data_3143c: ; 3143c
 	db "     "
 	TX_UNUM
 	db "G", $00
 
-Data_31446:
+Data_31446: ; 31446
 	db "    "
 	TX_UNUM
 	db "0G", $00
 
-Data_31450:
+Data_31450: ; 31450
 	db "   "
 	TX_UNUM
 	db "0G", $00
 
-Data_31459:
+Data_31459: ; 31459
 	db "  "
 	TX_UNUM
 	db "0G", $00
 
-Data_31461:
+Data_31461: ; 31461
 	db " "
 	TX_UNUM
 	db "0G", $00
 
-Data_31468:
+Data_31468: ; 31468
 	TX_UNUM
 	db "0G", $00
 
-Func_31475:
+Func_31475: ; 31475
 	ld l, $12
 	push hl
 	ld c, $14
@@ -65693,7 +65693,7 @@ Func_31475:
 	pop bc
 	ret
 
-Func_3149e:
+Func_3149e: ; 3149e
 	push de
 	push af
 	set_farcall_addrs_hli Func_16007
@@ -65760,17 +65760,17 @@ Func_3150b: ; 3150b (c:550b)
 Func_31514: ; 31514 (c:5514)
 	ret
 
-Data_31515:
+Data_31515: ; 31515
 	TX_UNUM
 	db "G", $00
 
-Data_3151a:
+Data_3151a: ; 3151a
 	db "<HIRA>になります<KATA>", $00
 
-Data_31522:
+Data_31522: ; 31522
 	db "<HIRA>おもとめになりますか<KATA>?", $00
 
-Data_31530:
+Data_31530: ; 31530
 	db "<HIRA>うりますか<KATA>?", $00
 
 Func_31539: ; 31539 (c:5539)
@@ -66058,10 +66058,10 @@ Func_31750: ; 31750 (c:5750)
 	pop bc
 	ret
 
-Data_31756:
+Data_31756: ; 31756
 	db "<HIRA>しょしﾞきん<KATA>", $00
 
-Func_3175f:
+Func_3175f: ; 3175f
 	add sp, -$3e
 	push de
 	push af
@@ -66293,47 +66293,47 @@ Func_31932: ; 31932 (c:5932)
 	add sp, $3e
 	ret
 
-Data_31935:
+Data_31935: ; 31935
 	db "タイフﾟ:", $00
 
-Data_3193b:
+Data_3193b: ; 3193b
 	db "RAM:", $00
 
-Data_31940:
+Data_31940: ; 31940
 	db " "
 	TX_SNUM
 	db "M", $00
 
-Data_31945:
+Data_31945: ; 31945
 	db "<HIRA>いりょく<KATA>", $00
 
-Data_3194c:
+Data_3194c: ; 3194c
 	TX_STACK
 	TX_STACK
 	db $00
 
-Data_31951:
+Data_31951: ; 31951
 	db "<HIRA>こうけﾞき<KATA>", $00
 
-Data_31959:
+Data_31959: ; 31959
 	db "<HIRA>ほﾞうきﾞょ<KATA>", $00
 
-Data_31962:
+Data_31962: ; 31962
 	db "<HIRA>すはﾞやさ<KATA>", $00
 
-Data_3196a:
+Data_3196a: ; 3196a
 	db "RAM:", $00
 
-Data_3196f:
+Data_3196f: ; 3196f
 	db "M", $00
 
-Data_31971:
+Data_31971: ; 31971
 	db "<HIRA>すへﾞての<KATA>アーム<HIRA>そﾞくかﾞ そうひﾞかのう<KATA>", $00
 
-Data_3198b:
+Data_3198b: ; 3198b
 	db "<HIRA>すへﾞての<KATA>ムーフﾞ<HIRA>そﾞくかﾞ そうひﾞかのう<KATA>", $00
 
-Data_319a6:
+Data_319a6: ; 319a6
 	db "フﾞート<HIRA>そﾞくいかﾞいかﾞ そうひﾞかのう<KATA>", $00
 
 Func_319be: ; 319be (c:59be)
@@ -66454,48 +66454,48 @@ Func_31a87: ; 31a87 (c:5a87)
 Func_31a96: ; 31a96 (c:5a96)
 	ret
 
-Data_31a97:
+Data_31a97: ; 31a97
 	db "      "
 	TX_UNUM
 	db "G", $00
 
-Data_31aa2:
+Data_31aa2: ; 31aa2
 	db "     "
 	TX_UNUM
 	db "G", $00
 
-Data_31aac:
+Data_31aac: ; 31aac
 	db "    "
 	TX_UNUM
 	db "G", $00
 
-Data_31ab5:
+Data_31ab5: ; 31ab5
 	db "   "
 	TX_UNUM
 	db "G", $00
 
-Data_31abd:
+Data_31abd: ; 31abd
 	db "  "
 	TX_UNUM
 	db "G", $00
 
-Data_31ac4:
+Data_31ac4: ; 31ac4
 	db " "
 	TX_UNUM
 	db "G", $00
 
-Data_31aca:
+Data_31aca: ; 31aca
 	dw Data_31ad0
 	dw Data_31ae2
 	dw $0000
 
-Data_31ad0:
+Data_31ad0: ; 31ad0
 	db "<HIRA>そうこかﾞ いっはﾟいなのてﾞ<KATA>", $00
 
-Data_31ae2:
+Data_31ae2: ; 31ae2
 	db "<HIRA>さくしﾞょしてくたﾞさい<KATA>", $00
 
-Func_31af1:
+Func_31af1: ; 31af1
 	push af
 	push bc
 	push bc
@@ -67360,36 +67360,36 @@ Func_32079: ; 32079 (c:6079)
 	pop bc
 	ret
 
-Pointers_3207b:
+Pointers_3207b: ; 3207b
 	dw Data_3207f
 	dw $0000
 
-Data_3207f:
+Data_3207f: ; 3207f
 	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は<KATA> <HIRA>えらへﾞないよ<KATA>", $00
 
-Pointers_32097:
+Pointers_32097: ; 32097
 	dw Data_3209d
 	dw Data_320ac
 	dw $0000
 
-Data_3209d:
+Data_3209d: ; 3209d
 	db "リモコン<HIRA>の しﾞゅしんに<KATA>", $00
 
-Data_320ac:
+Data_320ac: ; 320ac
 	db "<HIRA>しっはﾟいしました<KATA>", $00
 
-Pointers_320b8:
+Pointers_320b8: ; 320b8
 	dw Data_320be
 	dw Data_320cd
 	dw $0000
 
-Data_320be:
+Data_320be: ; 320be
 	db "リモコン<HIRA>の しﾞゅしんに<KATA>", $00
 
-Data_320cd:
+Data_320cd: ; 320cd
 	db "<HIRA>せいこうしました<KATA>", $00
 
-Func_320d8:
+Func_320d8: ; 320d8
 	push af
 	ld hl, -$94
 	add hl, sp
@@ -67627,10 +67627,10 @@ Func_322a1: ; 322a1 (c:62a1)
 	ld sp, hl
 	ret
 
-Data_322a7:
+Data_322a7: ; 322a7
 	db "リモコン<HIRA>の<KATA> ホﾞタン<HIRA>を おしてね<KATA>", $00
 
-Data_322bc:
+Data_322bc: ; 322bc
 	dr $322bc, $322ce
 
 Func_322ce: ; 322ce (c:62ce)
@@ -67943,17 +67943,17 @@ Func_3248b: ; 3248b (c:648b)
 	ret
 
 IF DEF(SUN)
-Data_324ad:
+Data_324ad: ; 324ad
 	dr $324ad, $324b7
 
-Data_324b7:
+Data_324b7: ; 324b7
 	dr $324b7, $324c1
 ENDC
 IF DEF(STAR)
-Data_324ad:
+Data_324ad: ; 324ad
 	dr $324b6, $324c0
 
-Data_324b7:
+Data_324b7: ; 324b7
 	dr $324c0, $324ca
 ENDC
 
@@ -68773,7 +68773,7 @@ Func_32a2d: ; 32a2d (c:6a2d)
 	add sp, $1c
 	ret
 
-Func_32a37:
+Func_32a37: ; 32a37
 	push hl
 	add sp, -$16
 	call GetHLAtSPPlusParam8
@@ -69053,10 +69053,10 @@ Func_32c1c: ; 32c1c (c:6c1c)
 	pop hl
 	ret
 
-Data_32c27:
+Data_32c27: ; 32c27
 	db "<HIRA>しょしﾞきん<KATA>", $00
 
-Func_32c30:
+Func_32c30: ; 32c30
 	push hl
 	add sp, -$32
 	ld hl, sp+$32
@@ -69523,82 +69523,82 @@ Func_32f6f: ; 32f6f (c:6f6f)
 	pop hl
 	ret
 
-Data_32f7a:
+Data_32f7a: ; 32f7a
 	db "<HIRA>しょしﾞきん<KATA>", $00
 
-Pointers_32f83:
+Pointers_32f83: ; 32f83
 	dw Data_32f87
 	dw $0000
 
-Data_32f87:
+Data_32f87: ; 32f87
 	db "<HIRA>おかねかﾞたりないよ<KATA>", $00
 
-Pointers_32f94:
+Pointers_32f94: ; 32f94
 	dw Data_32f98
 	dw $0000
 
-Data_32f98:
+Data_32f98: ; 32f98
 	db "<HIRA>これいしﾞょう かえないよ<KATA>", $00
 
-Pointers_32fa8:
+Pointers_32fa8: ; 32fa8
 	dw Data_32fac
 	dw $0000
 
-Data_32fac:
+Data_32fac: ; 32fac
 	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
 
-Pointers_32fb9:
+Pointers_32fb9: ; 32fb9
 	dw Data_32fbf
 	dw Data_32fcc
 	dw $0000
 
-Data_32fbf:
+Data_32fbf: ; 32fbf
 	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
 
-Data_32fcc:
+Data_32fcc: ; 32fcc
 	db "<HIRA>ほかにも かうかい<KATA>?", $00
 
-Pointers_32fd9:
+Pointers_32fd9: ; 32fd9
 	dw Data_32fdd
 	dw $0000
 
-Data_32fdd:
+Data_32fdd: ; 32fdd
 	db "<HIRA>ほかのものは かうかい<KATA>?", $00
 
-Pointers_32fec:
+Pointers_32fec: ; 32fec
 	dw Data_32ff2
 	dw Data_32fff
 	dw $0000
 
-Data_32ff2:
+Data_32ff2: ; 32ff2
 	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
 
-Data_32fff:
+Data_32fff: ; 32fff
 	db "<HIRA>ほかにも うるかい<KATA>?", $00
 
-Pointers_3300c:
+Pointers_3300c: ; 3300c
 	dw Data_33010
 	dw $0000
 
-Data_33010:
+Data_33010: ; 33010
 	db "<HIRA>ほかのものは うるかい<KATA>?", $00
 
-Pointers_3301f:
+Pointers_3301f: ; 3301f
 	dw Data_33025
 	dw Data_33032
 	dw $0000
 
-Data_33025:
+Data_33025: ; 33025
 	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
 
-Data_33032:
+Data_33032: ; 33032
 	db "<HIRA>またきてね<KATA>", $00
 
-Pointers_3303a:
+Pointers_3303a: ; 3303a
 	dw Data_3303e
 	dw $0000
 
-Data_3303e:
+Data_3303e: ; 3303e
 	db "<HIRA>それは うっちゃたﾞめ<KATA>!", $00
 
 Func_3304d: ; 3304d (c:704d)
@@ -69937,7 +69937,7 @@ Func_33371: ; 33371 (c:7371)
 	call Func_2009
 	ret
 
-Func_33375:
+Func_33375: ; 33375
 	ld c, $4
 	ld e, $c
 	ld hl, $0
@@ -69958,13 +69958,13 @@ Func_33375:
 	call PlaceStringDEatCoordHL
 	ret
 
-Data_333a6:
+Data_333a6: ; 333a6
 	db "<HIRA>ひつよう<KATA>エネルキﾞー", $00
 
-Data_333b3:
+Data_333b3: ; 333b3
 	db "エネルキﾞー", $00
 
-Func_333ba:
+Func_333ba: ; 333ba
 	push af
 	set_farcall_addrs_hli Func_16007
 	ld de, $19
@@ -69982,7 +69982,7 @@ Func_333ba:
 	call GetSRAMBank
 	ret
 
-Func_333e0:
+Func_333e0: ; 333e0
 	add sp, -$4e
 	push af
 	set_farcall_addrs_hli Func_16007
@@ -70128,22 +70128,22 @@ Func_334d6: ; 334d6 (c:74d6)
 	add sp, $4e
 	ret
 
-Data_334ee:
+Data_334ee: ; 334ee
 	db "ヘ", $00
 
-Data_334f0:
+Data_334f0: ; 334f0
 	db "<HIRA>しんか かのう<KATA>", $00
 
-Data_334fa:
+Data_334fa: ; 334fa
 	db "<HIRA>しんか てﾞきないよ<KATA>", $00
 
-Data_33507:
+Data_33507: ; 33507
 	db "エネルキﾞー <HIRA>ふﾞそくてﾞ<KATA>", $00
 
-Data_33517:
+Data_33517: ; 33517
 	db "<HIRA>しんか てﾞきないよ<KATA>", $00
 
-Func_33524:
+Func_33524: ; 33524
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -70182,7 +70182,7 @@ Func_3356b: ; 3356b (c:756b)
 	ld hl, $8000
 	ret
 
-Data_33572:
+Data_33572: ; 33572
 IF DEF(SUN)
 	dr $33572, $335de
 ENDC
@@ -70190,7 +70190,7 @@ IF DEF(STAR)
 	dr $3357b, $335e7
 ENDC
 
-Func_335de:
+Func_335de: ; 335de
 	push af
 	push bc
 	push bc
@@ -70885,19 +70885,19 @@ Func_33a03: ; 33a03 (c:7a03)
 	pop bc
 	ret
 
-Data_33a17:
+Data_33a17: ; 33a17
 	db "_", $00
 
-Data_33a19:
+Data_33a19: ; 33a19
 	db "b", $00
 
-Data_33a1b:
+Data_33a1b: ; 33a1b
 	db "b", $00
 
-Data_33a1d:
+Data_33a1d: ; 33a1d
 	db "_", $00
 
-Func_33a1f:
+Func_33a1f: ; 33a1f
 	push bc
 	push bc
 	push bc
@@ -71132,14 +71132,14 @@ Func_33b9b: ; 33b9b (c:7b9b)
 	pop bc
 	ret
 
-Func_33bb9:
+Func_33bb9: ; 33bb9
 	xor a
 	ld [$c2f7], a
 	call Func_338f5
 	ld hl, $4000
 	ret
 
-Func_33bc4:
+Func_33bc4: ; 33bc4
 	ld a, $1
 	ld [$c2f7], a
 	call Func_338f5
@@ -71336,35 +71336,35 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	ld sp, hl
 	ret
 
-Data_33d73:
+Data_33d73: ; 33d73
 	db ":", $00
 
-Data_33d75:
+Data_33d75: ; 33d75
 	db "<HIRA>そうひﾞちゅうの<KATA>", $00
 
-Data_33d80:
+Data_33d80: ; 33d80
 	db "ハﾟーツ", $00
 
-Data_33d85:
+Data_33d85: ; 33d85
 	db "<HIRA>こうけﾞき <KATA>", $00
 
-Data_33d8e:
+Data_33d8e: ; 33d8e
 	db "<HIRA>ほﾞうきﾞょ <KATA>", $00
 
-Data_33d98:
+Data_33d98: ; 33d98
 	db "<HIRA>すはﾞやさ <KATA>", $00
 
-Data_33da1:
+Data_33da1: ; 33da1
 	db "RAM:", $00
 
-Data_33da6:
+Data_33da6: ; 33da6
 	db "M", $00
 
-Pointers_33da8:
+Pointers_33da8: ; 33da8
 	dw Data_33dac
 	dw $0000
 
-Data_33dac:
+Data_33dac: ; 33dac
 	db "<HIRA>すてちゃ<KATA>タﾞメ!", $00
 
 Func_33db7: ; 33db7 (c:7db7)
@@ -71551,16 +71551,16 @@ Func_33f3d: ; 33f3d (c:7f3d)
 	pop bc
 	ret
 
-Data_33f40:
+Data_33f40: ; 33f40
 	db "<HIRA>すてる こすうを<KATA>", $00
 
-Data_33f4b:
+Data_33f4b: ; 33f4b
 	db "<HIRA>にゅうりょくしてくたﾞさい<KATA>", $00
 
-Data_33f5b:
+Data_33f5b: ; 33f5b
 	db "<HIRA>ほんとうに<KATA>", $00
 
-Data_33f63:
+Data_33f63: ; 33f63
 	db "<HIRA>すてても いいてﾞすか?<KATA>", $00
 
 Func_33f72: ; 33f72 (c:7f72)
@@ -71639,10 +71639,10 @@ SECTION "Bank 0d", ROMX, BANK [$0d]
 	dr $34000, $37ec0
 
 SECTION "Bank 13", ROMX, BANK [$13]
-Func_4c000:
+Func_4c000: ; 4c000
 	ret
 
-Data_4c001:
+Data_4c001: ; 4c001
 	dr $4c001, $4c06f
 
 Data_4c06f: ; 4c06f
@@ -71695,10 +71695,10 @@ Func_4c0d3: ; 4c0d3 (13:40d3)
 	call FarCall
 	ret
 
-Data_4c0e8:
+Data_4c0e8: ; 4c0e8
 	dr $4c0e8, $4c12c
 
-Func_4c12c:
+Func_4c12c: ; 4c12c
 	ld a, $2
 	ld [wOAM26VTile], a
 	call Func_4c0b9
@@ -71836,7 +71836,7 @@ Func_4c24a: ; 4c24a (13:424a)
 	pop bc
 	ret
 
-Func_4c24c:
+Func_4c24c: ; 4c24c
 	push af
 	push bc
 	ld a, [wOAM06XCoord]
@@ -71927,10 +71927,10 @@ Func_4c304: ; 4c304 (13:4304)
 	ld a, l
 	ret
 
-Data_4c307:
+Data_4c307: ; 4c307
 	db "<HIRA>つうしんてﾞ あそふﾞまえに<KATA>", $00
 
-Data_4c318:
+Data_4c318: ; 4c318
 	db "<HIRA>きろくしますか<KATA>?", $00
 
 Func_4c323: ; 4c323 (13:4323)
@@ -71993,10 +71993,10 @@ Func_4c3bc: ; 4c3bc (13:43bc)
 	xor a
 	ret
 
-Data_4c3be:
+Data_4c3be: ; 4c3be
 	db "<HIRA>ほんしﾞつは<KATA>", $00
 
-Data_4c3c7:
+Data_4c3c7: ; 4c3c7
 	db "<HIRA>とﾞの<KATA>モートﾞ<HIRA>てﾞ あそひﾞますか<KATA>?", $00
 
 Func_4c3de: ; 4c3de (13:43de)
@@ -72219,13 +72219,13 @@ Func_4c5dd: ; 4c5dd (13:45dd)
 	pop bc
 	ret
 
-Data_4c5df:
+Data_4c5df: ; 4c5df
 	db "<HIRA>たたﾞいま<KATA>", $00
 
-Data_4c5e7:
+Data_4c5e7: ; 4c5e7
 	db "モートﾞ <HIRA>せんたくちゅう<KATA>", $00
 
-Pointers_4c5f6:
+Pointers_4c5f6: ; 4c5f6
 	dw Data_4c604
 	dw Data_4c611
 	dw Data_4c623
@@ -72234,32 +72234,32 @@ Pointers_4c5f6:
 	dw Data_4c662
 	dw $0000
 
-Data_4c604:
+Data_4c604: ; 4c604
 	db "タイトルマッチ<HIRA>てﾞは<KATA>", $00
 
-Data_4c611:
+Data_4c611: ; 4c611
 	db "ヘﾞルト<HIRA>をかけて たたかいます<KATA>", $00
 
-Data_4c623:
+Data_4c623: ; 4c623
 	db "<HIRA>かてはﾞ あいての もっている<KATA>", $00
 
-Data_4c635:
+Data_4c635: ; 4c635
 	db "ヘﾞルト<HIRA>を うはﾞうことかﾞ てﾞきますかﾞ<KATA>", $00
 
-Data_4c64e:
+Data_4c64e: ; 4c64e
 	db "<HIRA>まけると しﾞふﾞんの もっている<KATA>", $00
 
-Data_4c662:
+Data_4c662: ; 4c662
 	db "ヘﾞルト<HIRA>を うはﾞわれて しまいます<KATA>", $00
 
-Pointers_4c677:
+Pointers_4c677: ; 4c677
 	dw Data_4c67b
 	dw $0000
 
-Data_4c67b:
+Data_4c67b: ; 4c67b
 	db "ヘﾞルト<HIRA>かﾞ ありません<KATA>", $00
 
-Func_4c68a:
+Func_4c68a: ; 4c68a
 	push bc
 	push hl
 	call Func_4c0ac
@@ -72562,108 +72562,108 @@ Func_4c8f7: ; 4c8f7 (13:48f7)
 	pop bc
 	ret
 
-Data_4c8f9:
+Data_4c8f9: ; 4c8f9
 	db "ロホﾞホﾟン<HIRA>こうかんてﾞ<KATA>", $00
 
-Data_4c908:
+Data_4c908: ; 4c908
 	db "タイトルマッチ<HIRA>てﾞ<KATA>", $00
 
-Data_4c914:
+Data_4c914: ; 4c914
 	db "ノンタイトルマッチ<HIRA>てﾞ<KATA>", $00
 
-Data_4c922:
+Data_4c922: ; 4c922
 	db "ハﾟーティーハﾞトル<HIRA>てﾞ<KATA>", $00
 
-Data_4c931:
+Data_4c931: ; 4c931
 	db "ロホﾞホﾟン<HIRA>あけﾞるてﾞ<KATA>", $00
 
-Data_4c940:
+Data_4c940: ; 4c940
 	db "ロホﾞホﾟン<HIRA>もらうてﾞ<KATA>", $00
 
-Data_4c94e:
+Data_4c94e: ; 4c94e
 	db "<HIRA>たいせん しますか<KATA>?", $00
 
-Data_4c95b:
+Data_4c95b: ; 4c95b
 	db "<HIRA>いいてﾞすか<KATA>?", $00
 
-Pointers_4c965:
+Pointers_4c965: ; 4c965
 	dw Data_4c96b
 	dw Data_4c984
 	dw $0000
 
-Data_4c96b:
+Data_4c96b: ; 4c96b
 	db "ハﾟーティー<HIRA>に 4たい<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
 
-Data_4c984:
+Data_4c984: ; 4c984
 	db "<HIRA>いるから もらえないよ<KATA>", $00
 
-Pointers_4c992:
+Pointers_4c992: ; 4c992
 	dw Data_4c998
 	dw Data_4c9b3
 	dw $0000
 
-Data_4c998:
+Data_4c998: ; 4c998
 	db "ハﾟーティー<HIRA>に 1たいしか<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
 
-Data_4c9b3:
+Data_4c9b3: ; 4c9b3
 	db "<HIRA>いないから あけﾞれないよ<KATA>", $00
 
-Pointers_4c9c3:
+Pointers_4c9c3: ; 4c9c3
 	dw Data_4c9c9
 	dw Data_4c9df
 	dw $0000
 
-Data_4c9c9:
+Data_4c9c9: ; 4c9c9
 	db "<HIRA>あいての<KATA> ロホﾞホﾟン<HIRA>かﾞ 4たい<KATA>", $00
 
-Data_4c9df:
+Data_4c9df: ; 4c9df
 	db "<HIRA>いるから あけﾞれないよ<KATA>", $00
 
-Pointers_4c9ee:
+Pointers_4c9ee: ; 4c9ee
 	dw Data_4c9f4
 	dw Data_4ca0a
 	dw $0000
 
-Data_4c9f4:
+Data_4c9f4: ; 4c9f4
 	db "<HIRA>あいての<KATA> ロホﾞホﾟン<HIRA>かﾞ 1たい<KATA>", $00
 
-Data_4ca0a:
+Data_4ca0a: ; 4ca0a
 	db "<HIRA>しかいないから もらえないよ<KATA>", $00
 
-Pointers_4ca1b:
+Pointers_4ca1b: ; 4ca1b
 	dw Data_4ca21
 	dw Data_4ca30
 	dw $0000
 
-Data_4ca21:
+Data_4ca21: ; 4ca21
 	db "<HIRA>その<KATA> ロホﾞホﾟン<HIRA>は<KATA>", $00
 
-Data_4ca30:
+Data_4ca30: ; 4ca30
 	db "<HIRA>あけﾞれないよ<KATA>", $00
 
-Pointers_4ca3a:
+Pointers_4ca3a: ; 4ca3a
 	dw Data_4ca3e
 	dw $0000
 
-Data_4ca3e:
+Data_4ca3e: ; 4ca3e
 	db "<HIRA>あけﾞたよ<KATA>", $00
 
-Pointers_4ca46:
+Pointers_4ca46: ; 4ca46
 	dw Data_4ca4a
 	dw $0000
 
-Data_4ca4a:
+Data_4ca4a: ; 4ca4a
 	db "<HIRA>もらったよ<KATA>", $00
 
-Pointers_4ca52:
+Pointers_4ca52: ; 4ca52
 	dw Data_4ca58
 	dw Data_4ca6b
 	dw $0000
 
-Data_4ca58:
+Data_4ca58: ; 4ca58
 	db "<HIRA>たたかえる<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
 
-Data_4ca6b:
+Data_4ca6b: ; 4ca6b
 	db "<HIRA>いなくなるよ<KATA>", $00
 
 Func_4ca74: ; 4ca74 (13:4a74)
@@ -72783,13 +72783,13 @@ Func_4cb59: ; 4cb59 (13:4b59)
 Func_4cb64: ; 4cb64 (13:4b64)
 	ret
 
-Data_4cb65:
+Data_4cb65: ; 4cb65
 	db "<HIRA>ほんしﾞつは<KATA>", $00
 
-Data_4cb6e:
+Data_4cb6e: ; 4cb6e
 	db "<HIRA>とﾞの<KATA>モートﾞ<HIRA>てﾞ あそひﾞますか<KATA>?", $00
 
-Func_4cb85:
+Func_4cb85: ; 4cb85
 	ld a, $ff
 	ld [wOAM23XCoord], a
 	set_farcall_addrs_hli Func_7766
@@ -72801,11 +72801,11 @@ Func_4cb85:
 	ld hl, -1
 	ret
 
-Pointers_4cba7:
+Pointers_4cba7: ; 4cba7
 	dw Data_4cbab
 	dw $0000
 
-Data_4cbab:
+Data_4cbab: ; 4cbab
 	db "スクラッフﾟ<HIRA>に なっているよ<KATA>", $00
 
 Func_4cbbc: ; 4cbbc (13:4bbc)
@@ -72947,29 +72947,29 @@ Func_4ccc6: ; 4ccc6 (13:4cc6)
 	pop bc
 	ret
 
-Pointers_4cccb:
+Pointers_4cccb: ; 4cccb
 	dw Data_4ccd5
 	dw Data_4ccdb
 	dw Data_4cce3
 	dw Data_4cceb
 	dw Data_4ccf2
 
-Data_4ccd5:
+Data_4ccd5: ; 4ccd5
 	db "ハﾞトラー", $00
 
-Data_4ccdb:
+Data_4ccdb: ; 4ccdb
 	db "シﾞャンハﾟー", $00
 
-Data_4cce3:
+Data_4cce3: ; 4cce3
 	db "スヒﾟータﾞー", $00
 
-Data_4cceb:
+Data_4cceb: ; 4cceb
 	db "シールタﾞー", $00
 
-Data_4ccf2:
+Data_4ccf2: ; 4ccf2
 	db "ハﾟンチャー", $00
 
-Func_4ccf9:
+Func_4ccf9: ; 4ccf9
 	push bc
 	push bc
 	call WriteHLToSPPlus4
@@ -73081,54 +73081,54 @@ Func_4cd88: ; 4cd88 (13:4d88)
 	pop bc
 	ret
 
-Data_4cdb1:
+Data_4cdb1: ; 4cdb1
 	db "<HIRA>たいせんする<KATA> ステーシﾞ<HIRA>を<KATA>", $00
 
-Data_4cdc3:
+Data_4cdc3: ; 4cdc3
 	db "<HIRA>えらんてﾞくたﾞさい<KATA>", $00
 
-Pointers_4cdd0:
+Pointers_4cdd0: ; 4cdd0
 	dw Data_4cde4
 	dw Data_4cdf6
 	dw Data_4ce01
 	dw Data_4ce0b
 	dw Data_4ce1a
 
-Pointers_4cdda:
+Pointers_4cdda: ; 4cdda
 	dw Data_4ce27
 	dw Data_4ce32
 	dw Data_4ce41
 	dw Data_4ce4f
 	dw Data_4ce5c
 
-Data_4cde4:
+Data_4cde4: ; 4cde4
 	db "<HIRA>つうしﾞょうの<KATA>ハﾞトル<HIRA>てﾞ<KATA>", $00
 
-Data_4cdf6:
+Data_4cdf6: ; 4cdf6
 	db "<HIRA>ひきょりをきそう<KATA>", $00
 
-Data_4ce01:
+Data_4ce01: ; 4ce01
 	db "タイム<HIRA>をきそう<KATA>", $00
 
-Data_4ce0b:
+Data_4ce0b: ; 4ce0b
 	db "<HIRA>かﾞんしﾞょうさをきそう<KATA>", $00
 
-Data_4ce1a:
+Data_4ce1a: ; 4ce1a
 	db "<HIRA>はかいりょくをきそう<KATA>", $00
 
-Data_4ce27:
+Data_4ce27: ; 4ce27
 	db "<HIRA><HIRA>たいせんします<KATA>", $00
 
-Data_4ce32:
+Data_4ce32: ; 4ce32
 	db "シﾞャンフﾟケﾞーム<HIRA>てﾞ<KATA>", $00
 
-Data_4ce41:
+Data_4ce41: ; 4ce41
 	db "<HIRA>めいろ<KATA>ケﾞーム<HIRA>てﾞ<KATA>", $00
 
-Data_4ce4f:
+Data_4ce4f: ; 4ce4f
 	db "カートﾞケﾞーム<HIRA>てﾞ<KATA>", $00
 
-Data_4ce5c:
+Data_4ce5c: ; 4ce5c
 	db "ハﾟンチンクﾞケﾞーム<HIRA>てﾞ<KATA>", $00
 
 Func_4ce6c: ; 4ce6c (13:4e6c)
@@ -73175,7 +73175,7 @@ Func_4ce6c: ; 4ce6c (13:4e6c)
 Func_4ceb1: ; 4ceb1 (13:4eb1)
 	ret
 
-Func_4ceb2:
+Func_4ceb2: ; 4ceb2
 	push bc
 	push bc
 	push bc
@@ -73302,7 +73302,7 @@ Func_4cf4b: ; 4cf4b (13:4f4b)
 	pop bc
 	ret
 
-Func_4cf85:
+Func_4cf85: ; 4cf85
 	inc hl
 	inc hl
 	inc hl
@@ -73312,7 +73312,7 @@ Func_4cf85:
 	ld l, a
 	ret
 
-Func_4cf8d:
+Func_4cf8d: ; 4cf8d
 	ld hl, -1
 	ret
 
@@ -73585,7 +73585,7 @@ Func_4d1c7: ; 4d1c7 (13:51c7)
 	pop bc
 	ret
 
-Data_4d1d4:
+Data_4d1d4: ; 4d1d4
 	db "<HIRA>たﾞい<KATA>"
 	TX_SNUM
 	db "<HIRA>しあい<KATA>", $00
@@ -73661,7 +73661,7 @@ Func_4d27c: ; 4d27c (13:527c)
 	ld a, l
 	ret
 
-Data_4d285:
+Data_4d285: ; 4d285
 	dr $4d285, $4d299
 
 Func_4d299: ; 4d299 (13:5299)
@@ -74379,24 +74379,24 @@ Func_4d769: ; 4d769 (13:5769)
 	ld sp, hl
 	ret
 
-Data_4d7ac:
+Data_4d7ac: ; 4d7ac
 	db "<HIRA>たﾞい<KATA>"
 	TX_SNUM
 	db "<HIRA>しあい<KATA> ", $00
 
-Data_4d7ba:
+Data_4d7ba: ; 4d7ba
 	db "<HIRA>かち<KATA>", $00
 
-Data_4d7bf:
+Data_4d7bf: ; 4d7bf
 	db "<HIRA>まけ<KATA>", $00
 
-Data_4d7c4:
+Data_4d7c4: ; 4d7c4
 	db "<HIRA>かち<KATA>", $00
 
-Data_4d7c9:
+Data_4d7c9: ; 4d7c9
 	db "<HIRA>まけ<KATA>", $00
 
-Data_4d7ce:
+Data_4d7ce: ; 4d7ce
 	db "<HIRA>のしょうり<KATA>", $00
 
 Func_4d7d6: ; 4d7d6 (13:57d6)
@@ -74452,10 +74452,10 @@ Func_4d839: ; 4d839 (13:5839)
 	call GetSRAMBank
 	ret
 
-Data_4d83e:
+Data_4d83e: ; 4d83e
 	dr $4d83e, $4d846
 
-Data_4d846:
+Data_4d846: ; 4d846
 	dr $4d846, $4d84e
 
 Func_4d84e: ; 4d84e (13:584e)
@@ -74745,7 +74745,7 @@ Func_4da78: ; 4da78 (13:5a78)
 	ld sp, hl
 	ret
 
-Data_4dac7:
+Data_4dac7: ; 4dac7
 	db "<HIRA>たﾞい<KATA>"
 	TX_SNUM
 	db "<HIRA>しあい<KATA> ", $00
@@ -74916,7 +74916,7 @@ Func_4dbe9: ; 4dbe9 (13:5be9)
 	ld sp, hl
 	ret
 
-Func_4dbef:
+Func_4dbef: ; 4dbef
 	push bc
 	push hl
 	call Func_1fbe
@@ -75067,30 +75067,30 @@ Func_4dc89: ; 4dc89 (13:5c89)
 	pop bc
 	ret
 
-Data_4dcee:
+Data_4dcee: ; 4dcee
 	db "ホﾞク<HIRA>のなまえを きめて<KATA>ネ", $00
 
-Data_4dcfe:
+Data_4dcfe: ; 4dcfe
 	db "b___", $00
 
-Data_4dd03:
+Data_4dd03: ; 4dd03
 	db "ロホﾞホﾟン<HIRA>のなまえを きめて<KATA>ネ", $00
 
-Data_4dd16:
+Data_4dd16: ; 4dd16
 	db "b____", $00
 
-Data_4dd1c:
+Data_4dd1c: ; 4dd1c
 	TX_STACK
 	db $00
 
-Data_4dd1f:
+Data_4dd1f: ; 4dd1f
 	TX_STACK
 	db $00
 
-Data_4dd22:
+Data_4dd22: ; 4dd22
 	db "<HIRA>けってい<KATA>", $00
 
-Pointers_4dd29:
+Pointers_4dd29: ; 4dd29
 	dw Data_4de01
 	dw Data_4de05
 	dw Data_4de09
@@ -75200,328 +75200,328 @@ Pointers_4dd29:
 	dw Data_4df41
 	dw Data_4df43
 
-Data_4de01:
+Data_4de01: ; 4de01
 	db "<HIRA>あ<KATA>", $00
 
-Data_4de05:
+Data_4de05: ; 4de05
 	db "<HIRA>い<KATA>", $00
 
-Data_4de09:
+Data_4de09: ; 4de09
 	db "<HIRA>う<KATA>", $00
 
-Data_4de0d:
+Data_4de0d: ; 4de0d
 	db "<HIRA>え<KATA>", $00
 
-Data_4de11:
+Data_4de11: ; 4de11
 	db "<HIRA>お<KATA>", $00
 
-Data_4de15:
+Data_4de15: ; 4de15
 	db "<HIRA>ゃ<KATA>", $00
 
-Data_4de19:
+Data_4de19: ; 4de19
 	db "<HIRA>か<KATA>", $00
 
-Data_4de1d:
+Data_4de1d: ; 4de1d
 	db "<HIRA>き<KATA>", $00
 
-Data_4de21:
+Data_4de21: ; 4de21
 	db "<HIRA>く<KATA>", $00
 
-Data_4de25:
+Data_4de25: ; 4de25
 	db "<HIRA>け<KATA>", $00
 
-Data_4de29:
+Data_4de29: ; 4de29
 	db "<HIRA>こ<KATA>", $00
 
-Data_4de2d:
+Data_4de2d: ; 4de2d
 	db "<HIRA>ゅ<KATA>", $00
 
-Data_4de31:
+Data_4de31: ; 4de31
 	db "<HIRA>さ<KATA>", $00
 
-Data_4de35:
+Data_4de35: ; 4de35
 	db "<HIRA>し<KATA>", $00
 
-Data_4de39:
+Data_4de39: ; 4de39
 	db "<HIRA>す<KATA>", $00
 
-Data_4de3d:
+Data_4de3d: ; 4de3d
 	db "<HIRA>せ<KATA>", $00
 
-Data_4de41:
+Data_4de41: ; 4de41
 	db "<HIRA>そ<KATA>", $00
 
-Data_4de45:
+Data_4de45: ; 4de45
 	db "<HIRA>ょ<KATA>", $00
 
-Data_4de49:
+Data_4de49: ; 4de49
 	db "<HIRA>た<KATA>", $00
 
-Data_4de4d:
+Data_4de4d: ; 4de4d
 	db "<HIRA>ち<KATA>", $00
 
-Data_4de51:
+Data_4de51: ; 4de51
 	db "<HIRA>つ<KATA>", $00
 
-Data_4de55:
+Data_4de55: ; 4de55
 	db "<HIRA>て<KATA>", $00
 
-Data_4de59:
+Data_4de59: ; 4de59
 	db "<HIRA>と<KATA>", $00
 
-Data_4de5d:
+Data_4de5d: ; 4de5d
 	db "<HIRA>っ<KATA>", $00
 
-Data_4de61:
+Data_4de61: ; 4de61
 	db "<HIRA>な<KATA>", $00
 
-Data_4de65:
+Data_4de65: ; 4de65
 	db "<HIRA>に<KATA>", $00
 
-Data_4de69:
+Data_4de69: ; 4de69
 	db "<HIRA>ぬ<KATA>", $00
 
-Data_4de6d:
+Data_4de6d: ; 4de6d
 	db "<HIRA>ね<KATA>", $00
 
-Data_4de71:
+Data_4de71: ; 4de71
 	db "<HIRA>の<KATA>", $00
 
-Data_4de75:
+Data_4de75: ; 4de75
 	db "<HIRA>ﾞ<KATA>", $00
 
-Data_4de79:
+Data_4de79: ; 4de79
 	db "<HIRA>は<KATA>", $00
 
-Data_4de7d:
+Data_4de7d: ; 4de7d
 	db "<HIRA>ひ<KATA>", $00
 
-Data_4de81:
+Data_4de81: ; 4de81
 	db "<HIRA>ふ<KATA>", $00
 
-Data_4de85:
+Data_4de85: ; 4de85
 	db "<HIRA>へ<KATA>", $00
 
-Data_4de89:
+Data_4de89: ; 4de89
 	db "<HIRA>ほ<KATA>", $00
 
-Data_4de8d:
+Data_4de8d: ; 4de8d
 	db "<HIRA>ﾟ<KATA>", $00
 
-Data_4de91:
+Data_4de91: ; 4de91
 	db "<HIRA>ま<KATA>", $00
 
-Data_4de95:
+Data_4de95: ; 4de95
 	db "<HIRA>み<KATA>", $00
 
-Data_4de99:
+Data_4de99: ; 4de99
 	db "<HIRA>む<KATA>", $00
 
-Data_4de9d:
+Data_4de9d: ; 4de9d
 	db "<HIRA>め<KATA>", $00
 
-Data_4dea1:
+Data_4dea1: ; 4dea1
 	db "<HIRA>も<KATA>", $00
 
-Data_4dea5:
+Data_4dea5: ; 4dea5
 	db "<HIRA>-<KATA>", $00
 
-Data_4dea9:
+Data_4dea9: ; 4dea9
 	db "<HIRA>や<KATA>", $00
 
-Data_4dead:
+Data_4dead: ; 4dead
 	db "<HIRA>ゆ<KATA>", $00
 
-Data_4deb1:
+Data_4deb1: ; 4deb1
 	db "<HIRA>よ<KATA>", $00
 
-Data_4deb5:
+Data_4deb5: ; 4deb5
 	db "<HIRA>わ<KATA>", $00
 
-Data_4deb9:
+Data_4deb9: ; 4deb9
 	db "<HIRA>を<KATA>", $00
 
-Data_4debd:
+Data_4debd: ; 4debd
 	db "<HIRA>ん<KATA>", $00
 
-Data_4dec1:
+Data_4dec1: ; 4dec1
 	db "<HIRA>ら<KATA>", $00
 
-Data_4dec5:
+Data_4dec5: ; 4dec5
 	db "<HIRA>り<KATA>", $00
 
-Data_4dec9:
+Data_4dec9: ; 4dec9
 	db "<HIRA>る<KATA>", $00
 
-Data_4decd:
+Data_4decd: ; 4decd
 	db "<HIRA>れ<KATA>", $00
 
-Data_4ded1:
+Data_4ded1: ; 4ded1
 	db "<HIRA>ろ<KATA>", $00
 
-Data_4ded5:
+Data_4ded5: ; 4ded5
 	db "<HIRA> <KATA>", $00
 
-Data_4ded9:
+Data_4ded9: ; 4ded9
 	db "ア", $00
 
-Data_4dedb:
+Data_4dedb: ; 4dedb
 	db "イ", $00
 
-Data_4dedd:
+Data_4dedd: ; 4dedd
 	db "ウ", $00
 
-Data_4dedf:
+Data_4dedf: ; 4dedf
 	db "エ", $00
 
-Data_4dee1:
+Data_4dee1: ; 4dee1
 	db "オ", $00
 
-Data_4dee3:
+Data_4dee3: ; 4dee3
 	db "ャ", $00
 
-Data_4dee5:
+Data_4dee5: ; 4dee5
 	db "カ", $00
 
-Data_4dee7:
+Data_4dee7: ; 4dee7
 	db "キ", $00
 
-Data_4dee9:
+Data_4dee9: ; 4dee9
 	db "ク", $00
 
-Data_4deeb:
+Data_4deeb: ; 4deeb
 	db "ケ", $00
 
-Data_4deed:
+Data_4deed: ; 4deed
 	db "コ", $00
 
-Data_4deef:
+Data_4deef: ; 4deef
 	db "ュ", $00
 
-Data_4def1:
+Data_4def1: ; 4def1
 	db "サ", $00
 
-Data_4def3:
+Data_4def3: ; 4def3
 	db "シ", $00
 
-Data_4def5:
+Data_4def5: ; 4def5
 	db "ス", $00
 
-Data_4def7:
+Data_4def7: ; 4def7
 	db "セ", $00
 
-Data_4def9:
+Data_4def9: ; 4def9
 	db "ソ", $00
 
-Data_4defb:
+Data_4defb: ; 4defb
 	db "ョ", $00
 
-Data_4defd:
+Data_4defd: ; 4defd
 	db "タ", $00
 
-Data_4deff:
+Data_4deff: ; 4deff
 	db "チ", $00
 
-Data_4df01:
+Data_4df01: ; 4df01
 	db "ツ", $00
 
-Data_4df03:
+Data_4df03: ; 4df03
 	db "テ", $00
 
-Data_4df05:
+Data_4df05: ; 4df05
 	db "ト", $00
 
-Data_4df07:
+Data_4df07: ; 4df07
 	db "ッ", $00
 
-Data_4df09:
+Data_4df09: ; 4df09
 	db "ナ", $00
 
-Data_4df0b:
+Data_4df0b: ; 4df0b
 	db "ニ", $00
 
-Data_4df0d:
+Data_4df0d: ; 4df0d
 	db "ヌ", $00
 
-Data_4df0f:
+Data_4df0f: ; 4df0f
 	db "ネ", $00
 
-Data_4df11:
+Data_4df11: ; 4df11
 	db "ノ", $00
 
-Data_4df13:
+Data_4df13: ; 4df13
 	db "ﾞ", $00
 
-Data_4df15:
+Data_4df15: ; 4df15
 	db "ハ", $00
 
-Data_4df17:
+Data_4df17: ; 4df17
 	db "ヒ", $00
 
-Data_4df19:
+Data_4df19: ; 4df19
 	db "フ", $00
 
-Data_4df1b:
+Data_4df1b: ; 4df1b
 	db "ヘ", $00
 
-Data_4df1d:
+Data_4df1d: ; 4df1d
 	db "ホ", $00
 
-Data_4df1f:
+Data_4df1f: ; 4df1f
 	db "ﾟ", $00
 
-Data_4df21:
+Data_4df21: ; 4df21
 	db "マ", $00
 
-Data_4df23:
+Data_4df23: ; 4df23
 	db "ミ", $00
 
-Data_4df25:
+Data_4df25: ; 4df25
 	db "ム", $00
 
-Data_4df27:
+Data_4df27: ; 4df27
 	db "メ", $00
 
-Data_4df29:
+Data_4df29: ; 4df29
 	db "モ", $00
 
-Data_4df2b:
+Data_4df2b: ; 4df2b
 	db "-", $00
 
-Data_4df2d:
+Data_4df2d: ; 4df2d
 	db "ヤ", $00
 
-Data_4df2f:
+Data_4df2f: ; 4df2f
 	db "ユ", $00
 
-Data_4df31:
+Data_4df31: ; 4df31
 	db "ヨ", $00
 
-Data_4df33:
+Data_4df33: ; 4df33
 	db "ワ", $00
 
-Data_4df35:
+Data_4df35: ; 4df35
 	db "ヲ", $00
 
-Data_4df37:
+Data_4df37: ; 4df37
 	db "ン", $00
 
-Data_4df39:
+Data_4df39: ; 4df39
 	db "ラ", $00
 
-Data_4df3b:
+Data_4df3b: ; 4df3b
 	db "リ", $00
 
-Data_4df3d:
+Data_4df3d: ; 4df3d
 	db "ル", $00
 
-Data_4df3f:
+Data_4df3f: ; 4df3f
 	db "レ", $00
 
-Data_4df41:
+Data_4df41: ; 4df41
 	db "ロ", $00
 
-Data_4df43:
+Data_4df43: ; 4df43
 	db " ", $00
 
 Func_4df45: ; 4df45 (13:5f45)
@@ -75645,10 +75645,10 @@ Func_4dff8: ; 4dff8 (13:5ff8)
 	pop bc
 	ret
 
-Data_4dffc:
+Data_4dffc: ; 4dffc
 	db "カタカナ", $00
 
-Data_4e001:
+Data_4e001: ; 4e001
 	db "<HIRA>かな  <KATA>", $00
 
 Func_4e008: ; 4e008 (13:6008)
@@ -75877,7 +75877,7 @@ Func_4e155: ; 4e155 (13:6155)
 	pop bc
 	ret
 
-Func_4e175:
+Func_4e175: ; 4e175
 	push hl
 	push de
 	push hl
@@ -75906,7 +75906,7 @@ Func_4e19d: ; 4e19d (13:619d)
 Func_4e1a3: ; 4e1a3 (13:61a3)
 	ret
 
-Func_4e1a4:
+Func_4e1a4: ; 4e1a4
 	push hl
 	push de
 	push hl
@@ -75935,7 +75935,7 @@ Func_4e1cc: ; 4e1cc (13:61cc)
 Func_4e1d2: ; 4e1d2 (13:61d2)
 	ret
 
-Func_4e1d3:
+Func_4e1d3: ; 4e1d3
 	push hl
 	push bc
 	push bc
@@ -76183,13 +76183,13 @@ Func_4e3a0: ; 4e3a0 (13:63a0)
 	pop bc
 	ret
 
-Data_4e3a4:
+Data_4e3a4: ; 4e3a4
 	db "_", $00
 
-Data_4e3a6:
+Data_4e3a6: ; 4e3a6
 	db "b", $00
 
-Func_4e3a8:
+Func_4e3a8: ; 4e3a8
 	push de
 	push hl
 	pop de
@@ -76351,19 +76351,19 @@ Func_4e4dd: ; 4e4dd (13:64dd)
 Func_4e4e3: ; 4e4e3 (13:64e3)
 	ret
 
-Data_4e4e4:
+Data_4e4e4: ; 4e4e4
 	db " ", $00
 
-Data_4e4e6:
+Data_4e4e6: ; 4e4e6
 	db " ", $00
 
-Data_4e4e8:
+Data_4e4e8: ; 4e4e8
 	db "_", $00
 
-Data_4e4ea:
+Data_4e4ea: ; 4e4ea
 	db " ", $00
 
-Data_4e4ec:
+Data_4e4ec: ; 4e4ec
 	db "b", $00
 
 Func_4e4ee: ; 4e4ee (13:64ee)
@@ -76458,10 +76458,10 @@ Func_4e581: ; 4e581 (13:6581)
 	pop bc
 	ret
 
-Data_4e583:
+Data_4e583: ; 4e583
 	dr $4e583, $4e58b
 
-Func_4e58b:
+Func_4e58b: ; 4e58b
 	push hl
 	add sp, -$16
 	ld hl, sp+$16
@@ -76675,25 +76675,25 @@ Func_4e6fd: ; 4e6fd (13:66fd)
 	pop hl
 	ret
 
-Data_4e743:
+Data_4e743: ; 4e743
 	db "<HIRA>なまえ<KATA>", $00
 
-Data_4e749:
+Data_4e749: ; 4e749
 	db "<HIRA>たんしﾞょうひﾞ<KATA>", $00
 
-Data_4e754:
+Data_4e754: ; 4e754
 	db "<HIRA>せいさﾞ<KATA>", $00
 
-Data_4e75b:
+Data_4e75b: ; 4e75b
 	db "ホﾞク<HIRA>の たんしﾞょうひﾞを きめて<KATA>ネ", $00
 
-Data_4e771:
+Data_4e771: ; 4e771
 	db "<HIRA>かﾞつ<KATA>", $00
 
-Data_4e777:
+Data_4e777: ; 4e777
 	db "<HIRA>にち<KATA>", $00
 
-Data_4e77c:
+Data_4e77c: ; 4e77c
 	db 11, 12
 	db 15, 16
 
@@ -76784,13 +76784,13 @@ Func_4e7fb: ; 4e7fb (13:67fb)
 	pop bc
 	ret
 
-Data_4e80c:
+Data_4e80c: ; 4e80c
 	db "b", $00
 
-Data_4e80e:
+Data_4e80e: ; 4e80e
 	db "_", $00
 
-Data_4e810:
+Data_4e810: ; 4e810
 	TX_SNUM
 	db $00
 
@@ -77297,17 +77297,17 @@ Func_4eb61: ; 4eb61 (13:6b61)
 	pop bc
 	ret
 
-Data_4eb67:
+Data_4eb67: ; 4eb67
 	TX_SNUM
 	TX_SNUM
 	db $00
 
-Data_4eb6c:
+Data_4eb6c: ; 4eb6c
 	TX_SNUM
 	TX_SNUM
 	db $00
 
-Func_4eb71:
+Func_4eb71: ; 4eb71
 	inc hl
 	inc hl
 	inc hl
@@ -77382,7 +77382,7 @@ Func_4ec1d: ; 4ec1d (13:6c1d)
 Func_4ec20: ; 4ec20 (13:6c20)
 	ret
 
-Data_4ec21:
+Data_4ec21: ; 4ec21
 	db "<HIRA>これてﾞいい<KATA>?", $00
 
 Func_4ec2b: ; 4ec2b (13:6c2b)
@@ -77745,11 +77745,11 @@ Func_4eeaa: ; 4eeaa (13:6eaa)
 	pop bc
 	ret
 
-Pointers_4eead:
+Pointers_4eead: ; 4eead
 	dw Data_4eeb1
 	dw $0000
 
-Data_4eeb1:
+Data_4eeb1: ; 4eeb1
 	db "<HIRA>それはつかえない<KATA>", $00
 
 Func_4eebc: ; 4eebc (13:6ebc)
@@ -77794,7 +77794,7 @@ Func_4eebc: ; 4eebc (13:6ebc)
 	pop bc
 	ret
 
-Func_4ef0b:
+Func_4ef0b: ; 4ef0b
 	push af
 	call Func_4f6a3
 	set_farcall_addrs_hli Func_fb42d
@@ -77807,14 +77807,14 @@ Func_4ef0b:
 	call Func_4f6dc
 	ret
 
-Pointers_4ef28:
+Pointers_4ef28: ; 4ef28
 	dw Data_4ef2c
 	dw $0000
 
-Data_4ef2c:
+Data_4ef2c: ; 4ef2c
 	db "<HIRA>を つかった<KATA>", $00
 
-Func_4ef35:
+Func_4ef35: ; 4ef35
 	push af
 	add sp, -$1e
 	ld l, $0
@@ -77921,14 +77921,14 @@ Func_4f03d: ; 4f03d (13:703d)
 	add sp, $20
 	ret
 
-Pointers_4f040:
+Pointers_4f040: ; 4f040
 	dw Data_4f044
 	dw $0000
 
-Data_4f044:
+Data_4f044: ; 4f044
 	db "<HIRA>を つかった<KATA>", $00
 
-Func_4f04d:
+Func_4f04d: ; 4f04d
 	push af
 	add sp, -$1e
 	ld l, $0
@@ -78014,14 +78014,14 @@ Func_4f129: ; 4f129 (13:7129)
 	add sp, $20
 	ret
 
-Pointers_4f12c:
+Pointers_4f12c: ; 4f12c
 	dw Data_4f130
 	dw $0000
 
-Data_4f130:
+Data_4f130: ; 4f130
 	db "<HIRA>を つかった<KATA>", $00
 
-Func_4f139:
+Func_4f139: ; 4f139
 	push af
 	add sp, -$1e
 	ld e, $0
@@ -78534,7 +78534,7 @@ Func_4f58e: ; 4f58e (13:758e)
 	add sp, $20
 	ret
 
-Func_4f591:
+Func_4f591: ; 4f591
 	push af
 	call Func_4f6a3
 	ld hl, sp+$1
@@ -78624,7 +78624,7 @@ Func_4f655: ; 4f655 (13:7655)
 	pop bc
 	ret
 
-Func_4f657:
+Func_4f657: ; 4f657
 	push af
 	call Func_4f6a3
 	ld hl, sp+$1
@@ -78651,11 +78651,11 @@ Func_4f686: ; 4f686 (13:7686)
 	pop bc
 	ret
 
-Pointers_4f688:
+Pointers_4f688: ; 4f688
 	dw Data_4f68c
 	dw $0000
 
-Data_4f68c:
+Data_4f68c: ; 4f68c
 	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>に つかいますか<KATA>?", $00
 
 Func_4f6a3: ; 4f6a3 (13:76a3)
@@ -78706,7 +78706,7 @@ Func_4f70d: ; 4f70d (13:770d)
 	ld a, $ff
 	ret
 
-Pointers_4f713:
+Pointers_4f713: ; 4f713
 	dba Func_4eebc
 	dba Func_4eebc
 	dba Func_4eebc
@@ -78836,7 +78836,7 @@ Func_4f800: ; 4f800 (13:7800)
 	call FarCall
 	ret
 
-Func_4f850:
+Func_4f850: ; 4f850
 	add sp, -$1e
 	push af
 	set_farcall_addrs_hli Func_16007
@@ -78871,20 +78871,20 @@ Func_4f850:
 	add sp, $1e
 	ret
 
-Pointers_4f8a6:
+Pointers_4f8a6: ; 4f8a6
 	dw Data_4f8aa
 	dw $0000
 
-Data_4f8aa:
+Data_4f8aa: ; 4f8aa
 	db "<HIRA>しんかした<KATA>", $00
 
-Data_4f8b2:
+Data_4f8b2: ; 4f8b2
 	dr $4f8b2, $4f8ba
 
-Data_4f8ba:
+Data_4f8ba: ; 4f8ba
 	dr $4f8ba, $4f8d3
 
-Data_4f8d3:
+Data_4f8d3: ; 4f8d3
 	dr $4f8d3, $4f8ec
 
 Func_4f8ec: ; 4f8ec (13:78ec)
@@ -79070,10 +79070,10 @@ Func_4fa9e: ; 4fa9e (13:7a9e)
 	add sp, $72
 	ret
 
-Data_4fab2:
+Data_4fab2: ; 4fab2
 	db "<HIRA>は<KATA> ", $00
 
-Data_4fab7:
+Data_4fab7: ; 4fab7
 	db "<HIRA>に<KATA>", $00
 
 Func_4fabb: ; 4fabb (13:7abb)
@@ -79551,10 +79551,10 @@ Func_4fec1: ; 4fec1 (13:7ec1)
 	add sp, $2a
 	ret
 
-Data_4fec4:
+Data_4fec4: ; 4fec4
 	db "<HIRA>くれる<KATA> ロホﾞホﾟン<HIRA>を<KATA>", $00
 
-Data_4fed4:
+Data_4fed4: ; 4fed4
 	db "<HIRA>えらんてﾞいるよ<KATA>", $00
 
 Func_4fedf: ; 4fedf (13:7edf)
@@ -79644,10 +79644,10 @@ Func_4ff8c: ; 4ff8c (13:7f8c)
 	ret
 
 SECTION "Bank 14", ROMX, BANK [$14]
-Func_50000:
+Func_50000: ; 50000
 	ret
 
-Data_50001:
+Data_50001: ; 50001
 	dr $50001, $50020
 
 Data_50020: ; 50020
@@ -79676,7 +79676,7 @@ Func_50185: ; 50185 (14:4185)
 	call FarCall
 	ret
 
-Func_5019a:
+Func_5019a: ; 5019a
 	set_farcall_addrs_hli Func_16007
 	ld de, $19
 	ld a, $3
@@ -79918,33 +79918,33 @@ Func_50331: ; 50331 (14:4331)
 	pop bc
 	ret
 
-Data_50337:
+Data_50337: ; 50337
 	db " ", $00
 
-Data_50339:
+Data_50339: ; 50339
 	TX_STACK
 	db $00
 
-Data_5033c:
+Data_5033c: ; 5033c
 	TX_STACK
 	db $00
 
-Data_5033f:
+Data_5033f: ; 5033f
 	TX_STACK
 	db $00
 
-Data_50342:
+Data_50342: ; 50342
 	TX_STACK
 	db $00
 
-Data_50345:
+Data_50345: ; 50345
 	TX_STACK
 	db $00
 
-Data_50348:
+Data_50348: ; 50348
 	db " ", $00
 
-Data_5034a:
+Data_5034a: ; 5034a
 	TX_STACK
 	db $00
 
@@ -80144,15 +80144,15 @@ Func_5043a: ; 5043a (14:443a)
 	pop bc
 	ret
 
-Func_50473:
+Func_50473: ; 50473
 	ld de, $2
 	jp Func_5034d
 
-Func_50479:
+Func_50479: ; 50479
 	ld de, $3
 	jp Func_5034d
 
-Func_5047f:
+Func_5047f: ; 5047f
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $64
 	call FarCall
@@ -80226,14 +80226,14 @@ Func_504e1: ; 504e1 (14:44e1)
 	ld hl, -1
 	ret
 
-Pointers_5052d:
+Pointers_5052d: ; 5052d
 	dw Data_50531
 	dw $0000
 
-Data_50531:
+Data_50531: ; 50531
 	db "セーフﾞ<HIRA>したよ<KATA>", $00
 
-Func_5053b:
+Func_5053b: ; 5053b
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $64
 	call FarCall
@@ -80305,7 +80305,7 @@ Func_505dc: ; 505dc (14:45dc)
 	call FarCall
 	ret
 
-Data_505f9:
+Data_505f9: ; 505f9
 	db "セーフﾞ<HIRA>するよ<KATA>?", $00
 
 Func_50604: ; 50604 (14:4604)
@@ -80737,39 +80737,39 @@ Func_508bc: ; 508bc (14:48bc)
 	pop bc
 	ret
 
-Data_508c0:
+Data_508c0: ; 508c0
 	db " ", $00
 
-Data_508c2:
+Data_508c2: ; 508c2
 	TX_STACK
 	db $00
 
-Data_508c5:
+Data_508c5: ; 508c5
 	TX_STACK
 	db $00
 
-Data_508c8:
+Data_508c8: ; 508c8
 	db " ", $00
 
-Data_508ca:
+Data_508ca: ; 508ca
 	TX_STACK
 	db $00
 
-Data_508cd:
+Data_508cd: ; 508cd
 	db " ", $00
 
-Data_508cf:
+Data_508cf: ; 508cf
 	TX_STACK
 	db $00
 
-Func_508d2:
+Func_508d2: ; 508d2
 	set_farcall_addrs_hli Func_1445e
 	ld c, BANK(Data_500d8)
 	ld de, Data_500d8
 	ld hl, Data_500b9
 	jp FarCall
 
-Func_508e8:
+Func_508e8: ; 508e8
 	push hl
 	ld l, $c
 	push hl
@@ -80791,7 +80791,7 @@ Func_508e8:
 	ld hl, $4000
 	ret
 
-Func_50914:
+Func_50914: ; 50914
 	ld c, l
 	ld b, h
 	push bc
@@ -80877,24 +80877,24 @@ Func_50961: ; 50961 (14:4961)
 	ld hl, -1
 	ret
 
-Data_5098a:
+Data_5098a: ; 5098a
 	db " ", $00
 
-Data_5098c:
+Data_5098c: ; 5098c
 	db " ", $00
 
-Pointers_5098e:
+Pointers_5098e: ; 5098e
 	dw Data_50994
 	dw Data_509a4
 	dw $0000
 	
-Data_50994:
+Data_50994: ; 50994
 	db "<HIRA>おなしﾞ<KATA>ロホﾞホﾟン<HIRA>は<KATA>", $00
 
-Data_509a4:
+Data_509a4: ; 509a4
 	db "<HIRA>ならひﾞかえてﾞきません<KATA>", $00
 
-Func_509b3:
+Func_509b3: ; 509b3
 	push bc
 	push hl
 	ld c, l
@@ -81088,7 +81088,7 @@ Func_50af6: ; 50af6 (14:4af6)
 	pop bc
 	ret
 
-Func_50b19:
+Func_50b19: ; 50b19
 	add sp, -$30
 	push af
 	set_farcall_addrs_hli Func_16007
@@ -81114,7 +81114,7 @@ Func_50b19:
 	add sp, $30
 	ret
 
-Func_50b55:
+Func_50b55: ; 50b55
 	push hl
 	add sp, -$18
 	ld hl, sp+$18
@@ -81307,10 +81307,10 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	pop hl
 	ret
 
-Data_50cf6:
+Data_50cf6: ; 50cf6
 	db "<HIRA>を すてても よろしいてﾞすか<KATA>?", $00
 
-Func_50d09:
+Func_50d09: ; 50d09
 	set_farcall_addrs_hli Func_16007
 	ld de, $19
 	ld a, $3
@@ -81384,7 +81384,7 @@ Func_50d7c: ; 50d7c (14:4d7c)
 	pop bc
 	ret
 
-Func_50d85:
+Func_50d85: ; 50d85
 	set_farcall_addrs_hli Func_16007
 	ld de, $19
 	ld a, $3
@@ -81397,7 +81397,7 @@ Func_50d85:
 	pop af
 	ret
 
-Func_50da3:
+Func_50da3: ; 50da3
 	push af
 	push bc
 	ld hl, sp+$0
@@ -81569,7 +81569,7 @@ Func_50ebc: ; 50ebc (14:4ebc)
 	pop bc
 	ret
 
-Func_50ec6:
+Func_50ec6: ; 50ec6
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
@@ -82037,50 +82037,50 @@ Func_51252: ; 51252 (14:5252)
 	pop bc
 	ret
 
-Pointers_5125a:
+Pointers_5125a: ; 5125a
 	dw Data_5125e
 	dw $0000
 
-Data_5125e:
+Data_5125e: ; 5125e
 	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は はけん されているよ<KATA>", $00
 
-Pointers_51277:
+Pointers_51277: ; 51277
 	dw Data_5127b
 	dw $0000
 
-Data_5127b:
+Data_5127b: ; 5127b
 	db "ハﾟーティー<HIRA>かﾞ いっはﾟいたﾞよ<KATA>", $00
 
-Pointers_5128f:
+Pointers_5128f: ; 5128f
 	dw Data_51293
 	dw $0000
 
-Data_51293:
+Data_51293: ; 51293
 	db "<HIRA>こうかんしたよ<KATA>", $00
 
-Pointers_5129d:
+Pointers_5129d: ; 5129d
 	dw Data_512a1
 	dw $0000
 
-Data_512a1:
+Data_512a1: ; 512a1
 	db "<HIRA>ひきたﾞしたよ<KATA>", $00
 
-Pointers_512ab:
+Pointers_512ab: ; 512ab
 	dw Data_512b1
 	dw Data_512c4
 	dw $0000
 
-Data_512b1:
+Data_512b1: ; 512b1
 	db "<HIRA>たたかえる<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
 
-Data_512c4:
+Data_512c4: ; 512c4
 	db "<HIRA>いなくなるよ<KATA>", $00
 
-Pointers_512cd:
+Pointers_512cd: ; 512cd
 	dw Data_512d1
 	dw $0000
 
-Data_512d1:
+Data_512d1: ; 512d1
 	db "<HIRA>そいつは えらへﾞないよ<KATA>!", $00
 
 Func_512e1: ; 512e1 (14:52e1)
@@ -82166,7 +82166,7 @@ Func_51385: ; 51385 (14:5385)
 	call FarCall
 	ret
 
-Func_513a2:
+Func_513a2: ; 513a2
 	push bc
 	push bc
 	push bc
@@ -82591,10 +82591,10 @@ Func_516c3: ; 516c3 (14:56c3)
 	pop bc
 	ret
 
-Data_516c8:
+Data_516c8: ; 516c8
 	db "ハﾟーティー<HIRA>の<KATA> ロホﾞホﾟン<HIRA>と<KATA>", $00
 
-Data_516dc:
+Data_516dc: ; 516dc
 	db "<HIRA>こうかんする<KATA>?", $00
 
 Func_516e6: ; 516e6 (14:56e6)
@@ -82642,32 +82642,32 @@ Func_516e6: ; 516e6 (14:56e6)
 	add sp, $46
 	ret
 
-Pointers_51747:
+Pointers_51747: ; 51747
 	dw Data_5174b
 	dw $0000
 
-Data_5174b:
+Data_5174b: ; 5174b
 	db "<HIRA>を ひきたﾞしました<KATA>", $00
 
-Pointers_51758:
+Pointers_51758: ; 51758
 	dw Data_5175e
 	dw Data_51772
 	dw $0000
 
-Data_5175e:
+Data_5175e: ; 5175e
 	db "<HIRA>これいしﾞょう<KATA> ハﾟーティー<HIRA>に<KATA>", $00
 
-Data_51772:
+Data_51772: ; 51772
 	db "<HIRA>ついかてﾞきないよ<KATA>", $00
 
-Pointers_5177e:
+Pointers_5177e: ; 5177e
 	dw Data_51782
 	dw $0000
 
-Data_51782:
+Data_51782: ; 51782
 	db "<HIRA>を すてた<KATA>", $00
 
-Func_5178a:
+Func_5178a: ; 5178a
 	push hl
 	add sp, -$38
 	xor a
@@ -82860,7 +82860,7 @@ Func_5190c: ; 5190c (14:590c)
 	call FarCall
 	ret
 
-Func_51923:
+Func_51923: ; 51923
 	ld c, l
 	ld b, h
 	push bc
@@ -82892,15 +82892,15 @@ Func_51923:
 	ld hl, -1
 	ret
 
-Func_51961:
+Func_51961: ; 51961
 	ld a, $7
 	ld [$c790], a
 	ret
 
-Data_51967:
+Data_51967: ; 51967
 	dr $51967, $51975
 
-Func_51975:
+Func_51975: ; 51975
 	ld a, $6
 	ld [$c790], a
 	ld a, $b
@@ -82939,10 +82939,10 @@ Func_519a7: ; 519a7 (14:59a7)
 	call FarCall
 	ret
 
-Data_519dc:
+Data_519dc: ; 519dc
 	dr $519dc, $519ea
 
-Func_519ea:
+Func_519ea: ; 519ea
 	ld a, $5
 	ld [$c790], a
 	xor a
@@ -82988,10 +82988,10 @@ Func_51a17: ; 51a17 (14:5a17)
 	call FarCall
 	ret
 
-Data_51a70:
+Data_51a70: ; 51a70
 	dr $51a70, $51a81
 
-Func_51a81:
+Func_51a81: ; 51a81
 	ld a, $4
 	ld [$c790], a
 	ld a, $7
@@ -83030,13 +83030,13 @@ Func_51ab3: ; 51ab3 (14:5ab3)
 	call FarCall
 	ret
 
-Data_51ae8:
+Data_51ae8: ; 51ae8
 	dr $51ae8, $51aec
 
-Data_51aec:
+Data_51aec: ; 51aec
 	dr $51aec, $51aef
 
-Func_51aef:
+Func_51aef: ; 51aef
 	ld a, $1
 	ld [$c78d], a
 	ld a, $3
@@ -83094,10 +83094,10 @@ Func_51b49: ; 51b49 (14:5b49)
 	call FarCall
 	ret
 
-Data_51b7a:
+Data_51b7a: ; 51b7a
 	dr $51b7a, $51b81
 
-Func_51b81:
+Func_51b81: ; 51b81
 	ld a, $2
 	ld [$c790], a
 	xor a
@@ -83132,10 +83132,10 @@ Func_51bae: ; 51bae (14:5bae)
 	call FarCall
 	ret
 
-Data_51bdf:
+Data_51bdf: ; 51bdf
 	dr $51bdf, $51bef
 
-Data_51bef:
+Data_51bef: ; 51bef
 	dr $51bef, $51bf3
 
 Func_51bf3: ; 51bf3 (14:5bf3)
@@ -83403,35 +83403,35 @@ Func_51e43: ; 51e43 (14:5e43)
 Func_51e55: ; 51e55 (14:5e55)
 	ret
 
-Pointers_51e56:
+Pointers_51e56: ; 51e56
 	dw Data_51e5a
 	dw $0000
 
-Data_51e5a:
+Data_51e5a: ; 51e5a
 	db "<HIRA>これいしﾞょう ほかんてﾞきないよ<KATA>", $00
 
-Pointers_51e6e:
+Pointers_51e6e: ; 51e6e
 	dw Data_51e72
 	dw $0000
 
-Data_51e72:
+Data_51e72: ; 51e72
 	db "<HIRA>これいしﾞょう ひきたﾞせないよ<KATA>", $00
 
-Pointers_51e85:
+Pointers_51e85: ; 51e85
 	dw Data_51e89
 	dw $0000
 
-Data_51e89:
+Data_51e89: ; 51e89
 	db "<HIRA>を ほかんしたよ<KATA>", $00
 
-Pointers_51e94:
+Pointers_51e94: ; 51e94
 	dw Data_51e98
 	dw $0000
 
-Data_51e98:
+Data_51e98: ; 51e98
 	db "<HIRA>を ひきたﾞしたよ<KATA>", $00
 
-Func_51ea4:
+Func_51ea4: ; 51ea4
 	push hl
 	add sp, -$1c
 	ld hl, sp+$1c
@@ -83888,38 +83888,38 @@ Func_522ac: ; 522ac (14:62ac)
 	pop hl
 	ret
 
-Data_522b7:
+Data_522b7: ; 522b7
 	db "<HIRA>ほかんする こすうを<KATA>", $00
 
-Data_522c4:
+Data_522c4: ; 522c4
 	db "<HIRA>ひきたﾞす こすうを<KATA>", $00
 
-Data_522d1:
+Data_522d1: ; 522d1
 	db "<HIRA>にゅうりょくしてくたﾞさい<KATA>", $00
 
-Pointers_522e1:
+Pointers_522e1: ; 522e1
 	dw Data_522e7
 	dw Data_522fa
 	dw $0000
 
-Data_522e7:
+Data_522e7: ; 522e7
 	db "<HIRA>もちものかﾞ いっはﾟいなのてﾞ<KATA>", $00
 
-Data_522fa:
+Data_522fa: ; 522fa
 	db "<HIRA>ひきたﾞせないよ<KATA>", $00
 
-Pointers_52305:
+Pointers_52305: ; 52305
 	dw Data_5230b
 	dw Data_5231a
 	dw $0000
 
-Data_5230b:
+Data_5230b: ; 5230b
 	db "<HIRA>これいしﾞょう そうこに<KATA>", $00
 
-Data_5231a:
+Data_5231a: ; 5231a
 	db "<HIRA>ついかてﾞきないよ<KATA>", $00
 
-Func_52326:
+Func_52326: ; 52326
 	push bc
 	push af
 	ld hl, sp+$2
@@ -84006,7 +84006,7 @@ Func_523c5: ; 523c5 (14:63c5)
 	pop bc
 	ret
 
-Func_523f2:
+Func_523f2: ; 523f2
 	push bc
 	push bc
 	ld c, l
@@ -84090,7 +84090,7 @@ Func_52447: ; 52447 (14:6447)
 	pop bc
 	ret
 
-Func_52475:
+Func_52475: ; 52475
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -84131,29 +84131,29 @@ Func_52475:
 	call FarCall
 	ret
 
-Func_524b6: ; $524b6
+Func_524b6: ; 524b6
 	dr $524b6, $52d1f
 
-Func_52d1f:
+Func_52d1f: ; 52d1f
 	dr $52d1f, $52d58
 
 Func_52d58: ; 52d58
 	dr $52d58, $52df8
 
-Func_52df8:
+Func_52df8: ; 52df8
 	dr $52df8, $533f8
 
-Func_533f8:
+Func_533f8: ; 533f8
 	dr $533f8, $537dc
 
-Func_537dc:
+Func_537dc: ; 537dc
 	dr $537dc, $53a0d
 
-Func_53a0d: ; $53a0d
+Func_53a0d: ; 53a0d
 	dr $53a0d, $53b1e
 
-Func_53b1e:
-	dr $53b1e, $54000
+Func_53b1e: ; 53b1e
+	dr $53b1e, $53e4c
 
 SECTION "Bank 15", ROMX, BANK [$15]
 	dr $54000, $54767
@@ -84161,58 +84161,58 @@ SECTION "Bank 15", ROMX, BANK [$15]
 Func_54767: ; 54767
 	dr $54767, $54af8
 
-Func_54af8:
+Func_54af8: ; 54af8
 	dr $54af8, $5575d
 
 Func_5575d: ; 5575d
 	dr $5575d, $55dd6
 
-Func_55dd6: ; $55dd6
+Func_55dd6: ; 55dd6
 	dr $55dd6, $55ed2
 
-Func_55ed2: ; $55ed2
+Func_55ed2: ; 55ed2
 	dr $55ed2, $55f95
 
-Func_55f95: ; $55f95
+Func_55f95: ; 55f95
 	dr $55f95, $5601b
 
-Func_5601b: ; $5601b
+Func_5601b: ; 5601b
 	dr $5601b, $5615c
 
-Func_5615c: ; $5615c
+Func_5615c: ; 5615c
 	dr $5615c, $566fe
 
-Func_566fe: ; $566fe
+Func_566fe: ; 566fe
 	dr $566fe, $569d9
 
-Func_569d9: ; $569d9
+Func_569d9: ; 569d9
 	dr $569d9, $56abf
 
-Func_56abf: ; $56abf
+Func_56abf: ; 56abf
 	dr $56abf, $56b35
 
-Func_56b35:
+Func_56b35: ; 56b35
 	dr $56b35, $56ba1
 
 Func_56ba1: ; 56ba1
 	dr $56ba1, $56d87
 
-Func_56d87: ; $56d87
+Func_56d87: ; 56d87
 	dr $56d87, $56d9b
 
 Func_56d9b: ; 56d9b
 	dr $56d9b, $56fc2
 
-Func_56fc2: ; $56fc2
+Func_56fc2: ; 56fc2
 	dr $56fc2, $5712f
 
-Func_5712f: ; $5712f
+Func_5712f: ; 5712f
 	dr $5712f, $576c1
 
-Func_576c1: ; $576c1
+Func_576c1: ; 576c1
 	dr $576c1, $57840
 
-Func_57840: ; $57840
+Func_57840: ; 57840
 	dr $57840, $57c4a
 
 Func_57c4a: ; 57c4a
@@ -84245,31 +84245,31 @@ Data_58d2f: ; 58d2f
 Data_58d4e: ; 58d4e
 	dr $58d4e, $58df9
 
-Func_58df9:
+Func_58df9: ; 58df9
 	dr $58df9, $59087
 
-Func_59087:
+Func_59087: ; 59087
 	dr $59087, $5a0e0
 
-Func_5a0e0:
+Func_5a0e0: ; 5a0e0
 	dr $5a0e0, $5a149
 
-Func_5a149:
+Func_5a149: ; 5a149
 	dr $5a149, $5c000
 
 SECTION "Bank 17", ROMX, BANK [$17]
 	dr $5c000, $5c0b2
 
-Func_5c0b2:
+Func_5c0b2: ; 5c0b2
 	dr $5c0b2, $5c328
 
-Func_5c328:
+Func_5c328: ; 5c328
 	dr $5c328, $5c386
 
 Func_5c386: ; 5c386
 	dr $5c386, $5c6e3
 
-Func_5c6e3: ; $5c6e3
+Func_5c6e3: ; 5c6e3
 	dr $5c6e3, $5c732
 
 Func_5c732: ; 5c732
@@ -84299,16 +84299,16 @@ Func_5d107: ; 5d107
 Func_5d10d: ; 5d10d
 	dr $5d10d, $5d113
 
-Func_5d113:
+Func_5d113: ; 5d113
 	dr $5d113, $5d184
 
 Func_5d184: ; 5d184
 	dr $5d184, $5e504
 
-Func_5e504:
+Func_5e504: ; 5e504
 	dr $5e504, $5ec5e
 
-Func_5ec5e:
+Func_5ec5e: ; 5ec5e
 	dr $5ec5e, $60000
 
 SECTION "Bank 18", ROMX, BANK [$18]
@@ -84519,7 +84519,7 @@ Func_6015e: ; 6015e (18:415e)
 	pop hl
 	jp FarCall
 
-Func_60172:
+Func_60172: ; 60172
 	callba_hli Func_6fe0
 	ret
 
@@ -84557,11 +84557,11 @@ Func_601b4: ; 601b4 (18:41b4)
 	pop bc
 	ret
 
-Func_601b6:
+Func_601b6: ; 601b6
 	callba_hli Func_cb4a
 	ret
 
-Func_601c5:
+Func_601c5: ; 601c5
 	callba_hli Func_cced
 	ret
 
@@ -84569,13 +84569,13 @@ Func_601d4: ; 601d4 (18:41d4)
 	callba_hli Func_2328f
 	ret
 
-Data_601e3:
+Data_601e3: ; 601e3
 	dr $601e3, $601eb
 
-Data_601eb:
+Data_601eb: ; 601eb
 	dr $601eb, $601f1
 
-Data_601f1:
+Data_601f1: ; 601f1
 	dr $601f1, $6020a
 
 Func_6020a: ; 6020a (18:420a)
@@ -85189,13 +85189,13 @@ Func_605fc: ; 605fc (18:45fc)
 	ld sp, hl
 	ret
 
-Data_60619:
+Data_60619: ; 60619
 	db " <HIRA>かﾞ<KATA>", $00
 
-Data_6061f:
+Data_6061f: ; 6061f
 	dw $0000
 
-Func_60621:
+Func_60621: ; 60621
 	push hl
 	push de
 	add sp, -$4c
@@ -86454,13 +86454,13 @@ Func_60e69: ; 60e69 (18:4e69)
 	ld sp, hl
 	ret
 
-Data_60e6f:
+Data_60e6f: ; 60e6f
 	dr $60e6f, $60e77
 
-Data_60e77:
+Data_60e77: ; 60e77
 	dr $60e77, $60e81
 
-Func_60e81:
+Func_60e81: ; 60e81
 	add sp, -$2e
 	push af
 	call ReadHalfWordAt
@@ -86844,7 +86844,7 @@ Func_6112a: ; 6112a (18:512a)
 	add sp, $2e
 	ret
 
-Func_61133:
+Func_61133: ; 61133
 	push hl
 	add sp, -$44
 	push de
@@ -86886,13 +86886,13 @@ Func_61179: ; 61179 (18:5179)
 	add sp, $46
 	ret
 
-Data_6117c:
+Data_6117c: ; 6117c
 	dr $6117c, $6118b
 
-Data_6118b:
+Data_6118b: ; 6118b
 	dr $6118b, $611f7
 
-Func_611f7:
+Func_611f7: ; 611f7
 	push af
 	add sp, -$10
 	push de
@@ -86996,10 +86996,10 @@ Func_61276: ; 61276 (18:5276)
 	add sp, $12
 	ret
 
-Data_61288:
+Data_61288: ; 61288
 	dr $61288, $612f4
 
-Func_612f4:
+Func_612f4: ; 612f4
 	push af
 	push de
 Func_612f6: ; 612f6 (18:52f6)
@@ -87184,7 +87184,7 @@ Func_61414: ; 61414 (18:5414)
 	pop bc
 	ret
 
-Data_61416:
+Data_61416: ; 61416
 	dr $61416, $61424
 
 Func_61424: ; 61424 (18:5424)
@@ -87290,13 +87290,13 @@ Func_614f0: ; 614f0 (18:54f0)
 	add sp, $10
 	ret
 
-Data_614f3:
+Data_614f3: ; 614f3
 	dr $614f3, $615be
 
-Func_615be:
+Func_615be: ; 615be
 	cp $cb
 	jp nc, Func_615cc
-Func_615c3:
+Func_615c3: ; 615c3
 	ld e, a
 	ld d, $0
 	ld hl, Data_614f3
@@ -87482,19 +87482,19 @@ Func_616c2: ; 616c2 (18:56c2)
 	pop bc
 	ret
 
-Data_616c6:
+Data_616c6: ; 616c6
 	dr $616c6, $616ce
 
-Data_616ce:
+Data_616ce: ; 616ce
 	dr $616ce, $616d5
 
-Data_616d5:
+Data_616d5: ; 616d5
 	dr $616d5, $616db
 
-Data_616db:
+Data_616db: ; 616db
 	dr $616db, $616dd
 
-Func_616dd:
+Func_616dd: ; 616dd
 	push af
 	push de
 	add sp, -$26
@@ -88005,7 +88005,7 @@ Func_61a25: ; 61a25 (18:5a25)
 	pop hl
 	ret
 
-Func_61a3e:
+Func_61a3e: ; 61a3e
 	push af
 	push de
 	add sp, -$14
@@ -88375,7 +88375,7 @@ Func_61c63: ; 61c63 (18:5c63)
 	pop hl
 	ret
 
-Func_61c90:
+Func_61c90: ; 61c90
 	push hl
 	pop hl
 	push hl
@@ -88485,21 +88485,21 @@ Func_61d23: ; 61d23 (18:5d23)
 	pop bc
 	ret
 
-Data_61d32:
+Data_61d32: ; 61d32
 	db " ", $00
 
-Data_61d34:
+Data_61d34: ; 61d34
 	TX_STACK
 	db $00
 
-Data_61d37:
+Data_61d37: ; 61d37
 	TX_STACK
 	db $00
 
-Data_61d3a:
+Data_61d3a: ; 61d3a
 	dr $61d3a, $61d3e
 
-Func_61d3e:
+Func_61d3e: ; 61d3e
 	push hl
 	push de
 	push bc
@@ -88589,7 +88589,7 @@ Func_61dd8: ; 61dd8 (18:5dd8)
 	pop bc
 	ret
 
-Func_61deb:
+Func_61deb: ; 61deb
 	push af
 Func_61dec: ; 61dec (18:5dec)
 	ld hl, sp+$1
@@ -88646,7 +88646,7 @@ Func_61e59: ; 61e59 (18:5e59)
 	pop bc
 	ret
 
-Func_61e5b:
+Func_61e5b: ; 61e5b
 	push de
 	push hl
 	pop de
@@ -88708,7 +88708,7 @@ Func_61ef0: ; 61ef0 (18:5ef0)
 	ld hl, $8000
 	ret
 
-Func_61ef3:
+Func_61ef3: ; 61ef3
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -88721,13 +88721,13 @@ Func_61ef3:
 	call PlaceStringDEatCoordHL
 	ret
 
-Data_61f11:
+Data_61f11: ; 61f11
 	db "<HIRA>はけんする<KATA> ロホﾞホﾟン<HIRA>を<KATA>", $00
 
-Data_61f23:
+Data_61f23: ; 61f23
 	db "4<HIRA>たい えらんてﾞくたﾞさい<KATA>", $00
 
-Func_61f34:
+Func_61f34: ; 61f34
 	push af
 	push de
 	push bc
@@ -88813,15 +88813,15 @@ Func_61fae: ; 61fae (18:5fae)
 	pop bc
 	ret
 
-Data_61fb2:
+Data_61fb2: ; 61fb2
 	TX_STACK
 	db $00
 
-Data_61fb5:
+Data_61fb5: ; 61fb5
 	TX_STACK
 	db $00
 
-Func_61fb8:
+Func_61fb8: ; 61fb8
 	push hl
 	pop hl
 	push hl
@@ -88902,40 +88902,40 @@ Func_62068: ; 62068 (18:6068)
 	pop bc
 	ret
 
-Data_6206a:
+Data_6206a: ; 6206a
 	db "RAM:", $00
 
-Data_6206f:
+Data_6206f: ; 6206f
 	db "<HIRA>いりょく<KATA>", $00
 
-Data_62076:
+Data_62076: ; 62076
 	db "EP", $00
 
-Data_62079:
+Data_62079: ; 62079
 	db "<HIRA>こうけﾞき<KATA>   0", $00
 
-Data_62085:
+Data_62085: ; 62085
 	db "<HIRA>ほﾞうきﾞょ<KATA>   0", $00
 
-Data_62092:
+Data_62092: ; 62092
 	db "<HIRA>すはﾞやさ<KATA>   0", $00
 
-Data_6209e:
+Data_6209e: ; 6209e
 	db "RAM:  0M", $00
 
-Data_620a7:
+Data_620a7: ; 620a7
 	db "<HIRA>こうけﾞき<KATA>   0", $00
 
-Data_620b3:
+Data_620b3: ; 620b3
 	db "<HIRA>ほﾞうきﾞょ<KATA>   0", $00
 
-Data_620c0:
+Data_620c0: ; 620c0
 	db "<HIRA>すはﾞやさ<KATA>   0", $00
 
-Data_620cc:
+Data_620cc: ; 620cc
 	db "RAM:  0M", $00
 
-Func_620d5:
+Func_620d5: ; 620d5
 	push hl
 	push de
 	push bc
@@ -89373,7 +89373,7 @@ Func_623cd: ; 623cd (18:63cd)
 	add sp, $40
 	ret
 
-Func_623d0:
+Func_623d0: ; 623d0
 	add sp, -$1c
 	set_farcall_addrs_hli Func_16007
 	ld de, $19
@@ -89478,19 +89478,19 @@ Func_62478: ; 62478 (18:6478)
 	add sp, $1c
 	ret
 
-Data_62482:
+Data_62482: ; 62482
 	dw Data_62486, $0000
 
-Data_62486:
+Data_62486: ; 62486
 	db "<HIRA>RAMかﾞたりないよ<KATA>", $00
 
-Data_62493:
+Data_62493: ; 62493
 	dw Data_62497, $0000
 
-Data_62497:
+Data_62497: ; 62497
 	db "ソフト<HIRA>かﾞ いっはﾟいてﾞ はすﾞせません<KATA>", $00
 
-Func_624af:
+Func_624af: ; 624af
 	push af
 	add sp, -$2c
 	ld hl, sp+$4
@@ -89833,13 +89833,13 @@ Func_626ff: ; 626ff (18:66ff)
 	add sp, $2e
 	ret
 
-Data_6273a:
+Data_6273a: ; 6273a
 	db "<HIRA>すへﾞてはすﾞして いいてﾞすか?<KATA>", $00
 
-Data_6274e:
+Data_6274e: ; 6274e
 	db "<HIRA>を はすﾞしますか?<KATA>", $00
 
-Func_6275b:
+Func_6275b: ; 6275b
 	push bc
 	push bc
 	push hl
@@ -89959,10 +89959,10 @@ Func_62822: ; 62822 (18:6822)
 	pop bc
 	ret
 
-Data_62825:
+Data_62825: ; 62825
 	dr $62825, $62845
 
-Data_62845:
+Data_62845: ; 62845
 	dr $62845, $62865
 
 Func_62865: ; 62865 (18:6865)
@@ -89994,10 +89994,10 @@ Func_6289b: ; 6289b (18:689b)
 Func_628a3: ; 628a3 (18:68a3)
 	ret
 
-Data_628a4:
+Data_628a4: ; 628a4
 	dr $628a4, $62ac4
 
-Data_62ac4:
+Data_62ac4: ; 62ac4
 	dr $62ac4, $62ce4
 
 Func_62ce4: ; 62ce4 (18:6ce4)
@@ -90301,7 +90301,7 @@ asm_62e05
 	ld [wNextVBlankFlags], a
 	ret
 
-Func_62ea0:
+Func_62ea0: ; 62ea0
 	ld de, 1750
 .delay
 	nop
@@ -90357,7 +90357,7 @@ Func_62eb1: ; 62eb1 (18:6eb1)
 	ret z
 	jr .asm_62eb8
 
-Func_62ee4:
+Func_62ee4: ; 62ee4
 	ld hl, Data_62f52
 	call Func_62eb1
 	ld bc, $4
@@ -90404,13 +90404,13 @@ Func_62ee4:
 	scf
 	ret
 
-Data_62f42:
+Data_62f42: ; 62f42
 	dr $62f42, $62f52
 
-Data_62f52:
+Data_62f52: ; 62f52
 	dr $62f52, $62f62
 
-Func_62f62:
+Func_62f62: ; 62f62
 	ld a, [rLCDC]
 	push af
 	push de
@@ -90469,21 +90469,21 @@ Func_62f62:
 	ld [rLCDC], a
 	ret
 
-Func_62fbb:
+Func_62fbb: ; 62fbb
 	ld hl, Data_630f2
 	call Func_62eb1
 	ld bc, $4
 	call Func_62ea0
 	ret
 
-Func_62fc8:
+Func_62fc8: ; 62fc8
 	ld hl, Data_63102
 	call Func_62eb1
 	ld bc, $4
 	call Func_62ea0
 	ret
 
-Func_62fd5:
+Func_62fd5: ; 62fd5
 	ld hl, Data_63072
 	call Func_62eb1
 	ld bc, $4
@@ -90522,40 +90522,40 @@ Func_62fd5:
 	call Func_62ea0
 	ret
 
-Data_63042:
+Data_63042: ; 63042
 	dr $63042, $63072
 
-Data_63072: ; $63072
+Data_63072: ; 63072
 	dr $63072, $63082
 
-Data_63082: ; $63082
+Data_63082: ; 63082
 	dr $63082, $63092
 
-Data_63092: ; $63092
+Data_63092: ; 63092
 	dr $63092, $630a2
 
-Data_630a2: ; $630a2
+Data_630a2: ; 630a2
 	dr $630a2, $630b2
 
-Data_630b2: ; $630b2
+Data_630b2: ; 630b2
 	dr $630b2, $630c2
 
-Data_630c2: ; $630c2
+Data_630c2: ; 630c2
 	dr $630c2, $630d2
 
-Data_630d2: ; $630d2
+Data_630d2: ; 630d2
 	dr $630d2, $630e2
 
-Data_630e2: ; $630e2
+Data_630e2: ; 630e2
 	dr $630e2, $630f2
 
-Data_630f2: ; $630f2
+Data_630f2: ; 630f2
 	dr $630f2, $63102
 
-Data_63102: ; $63102
+Data_63102: ; 63102
 	dr $63102, $63112
 
-Func_63112:
+Func_63112: ; 63112
 	ld a, $80
 	ld [rBGPI], a
 	ld hl, rBGPD
@@ -90655,7 +90655,7 @@ asm_63182
 	ld a, $1
 	ret
 
-Data_631c0:
+Data_631c0: ; 631c0
 	dr $631c0, $631d0
 
 Func_631d0: ; 631d0 (18:71d0)
@@ -90676,7 +90676,7 @@ Func_631d0: ; 631d0 (18:71d0)
 	deRGB 04, 07, 22
 	jp Func_63112
 
-Func_631ee:
+Func_631ee: ; 631ee
 	bcRGB 23, 23, 23
 	deRGB 15, 15, 15
 	jp Func_63112
@@ -90693,13 +90693,13 @@ Func_631f7: ; 631f7 (18:71f7)
 	predef CopyPredef
 	ret
 
-Data_6320f:
+Data_6320f: ; 6320f
 	dr $6320f, $639af
 
-Data_639af:
+Data_639af: ; 639af
 	dr $639af, $63bef
 
-GFX_63bef:
+GFX_63bef: ; 63bef
 	dr $63bef, $63c5f
 
 Func_63c5f: ; 63c5f (18:7c5f)
@@ -90787,7 +90787,7 @@ Func_63c5f: ; 63c5f (18:7c5f)
 	ld [hl], $91
 	ret
 
-Func_63cd8:
+Func_63cd8: ; 63cd8
 	call Func_63c5f
 	call WaitVideoTransfer
 	ret
@@ -91170,60 +91170,60 @@ Func_63eea: ; 63eea (18:7eea)
 SECTION "Bank 19", ROMX, BANK [$19]
 	dr $64000, $64093
 
-Data_64093:
+Data_64093: ; 64093
 	dr $64093, $64390
 
-Data_64390:
+Data_64390: ; 64390
 	dr $64390, $64c7d
 
-GFX_64c7d:
+GFX_64c7d: ; 64c7d
 	dr $64c7d, $64c90
 
-Data_64c90:
+Data_64c90: ; 64c90
 	dr $64c90, $657c5
 
-Data_657c5:
+Data_657c5: ; 657c5
 	dr $657c5, $65bc8
 
 INCLUDE "data/base_stats.asm"
 
-GFX_66ea7:
+GFX_66ea7: ; 66ea7
 	dr $66ea7, $66efb
 
-Data_66efb:
+Data_66efb: ; 66efb
 	dr $66efb, $66f73
 
-GFX_66f73:
+GFX_66f73: ; 66f73
 	dr $66f73, $673ff
 
-Func_673ff: ; $673ff
+Func_673ff: ; 673ff
 	dr $673ff, $67a08
 
 SECTION "Bank 1a", ROMX, BANK [$1a]
 	dr $68000, $6810b
 
-Func_6810b: ; $6810b
+Func_6810b: ; 6810b
 	dr $6810b, $681a6
 
-Func_681a6: ; $681a6
+Func_681a6: ; 681a6
 	dr $681a6, $681bd
 
-Func_681bd: ; $681bd
+Func_681bd: ; 681bd
 	dr $681bd, $69436
 
-Func_69436:
+Func_69436: ; 69436
 	dr $69436, $6ab29
 
 Func_6ab29: ; 6ab29
 	dr $6ab29, $6adb3
 
-Func_6adb3: ; $6adb3
+Func_6adb3: ; 6adb3
 	dr $6adb3, $6af0d
 
-Func_6af0d:
+Func_6af0d: ; 6af0d
 	dr $6af0d, $6bbf3
 
-Func_6bbf3: ; $6bbf3
+Func_6bbf3: ; 6bbf3
 	dr $6bbf3, $6c000
 
 SECTION "Bank 1b", ROMX, BANK [$1b]
@@ -91232,10 +91232,10 @@ SECTION "Bank 1b", ROMX, BANK [$1b]
 Func_6c11d
 	dr $6c11d, $6c5bb
 
-Func_6c5bb:
+Func_6c5bb: ; 6c5bb
 	dr $6c5bb, $6d395
 
-Func_6d395:
+Func_6d395: ; 6d395
 	dr $6d395, $6ef0d
 
 Func_6ef0d: ; 6ef0d
@@ -91244,20 +91244,20 @@ Func_6ef0d: ; 6ef0d
 Func_6ef7f: ; 6ef7f
 	dr $6ef7f, $6f43b
 
-Func_6f43b:
+Func_6f43b: ; 6f43b
 	dr $6f43b, $6f512
 
-Func_6f512:
+Func_6f512: ; 6f512
 	dr $6f512, $6f6de
 
-Func_6f6de:
+Func_6f6de: ; 6f6de
 	dr $6f6de, $6faba
 
 Func_6faba: ; 6faba
 	dr $6faba, $70000
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
-Data_78000:
+Data_78000: ; 78000
 	dr $78000, $78018
 
 Data_78018: ; 78018
@@ -91285,7 +91285,7 @@ Data_78078: ; 78078
 	dr $78078, $78088
 
 SECTION "Predef 1e", ROMX [$4096], BANK [$1e]
-Pointers_78096:
+Pointers_78096: ; 78096
 	dw Func_7bdc7
 	dw Func_7bf2a
 	dw Func_7be72
@@ -91388,13 +91388,13 @@ Func_7813a: ; 7813a (1e:413a)
 	call Func_78b36
 	jr asm_78125
 
-Func_78159:
+Func_78159: ; 78159
 	hlcoord 16, 4
 	predef Func_7b0b5
 	ld hl, Data_78fb1
 	jp Func_783b4
 
-Func_78164:
+Func_78164: ; 78164
 	ld a, [$ffc0]
 	ld [$ffc2], a
 	ld a, [$ffc1]
@@ -91595,7 +91595,7 @@ Func_782a6: ; 782a6 (1e:42a6)
 	call Func_782f5
 	jp Func_7810e
 
-Func_782b6:
+Func_782b6: ; 782b6
 	hlcoord 16, 4
 	ld a, [hli]
 	or [hl]
@@ -91667,7 +91667,7 @@ Func_782f5: ; 782f5 (1e:42f5)
 	pop af
 	ret
 
-Func_78358:
+Func_78358: ; 78358
 .asm_78358
 	predef Func_7e168
 	and $2
@@ -91745,7 +91745,7 @@ Func_783b4: ; 783b4 (1e:43b4)
 	predef Func_7e0c2
 	jp Func_7813a
 
-Func_783be:
+Func_783be: ; 783be
 	call Func_78278
 	jr z, Func_783b1
 	call Func_783f1
@@ -91790,10 +91790,10 @@ Func_783f1: ; 783f1 (1e:43f1)
 	predef Func_7af96
 	ret
 
-Data_7840d:
+Data_7840d: ; 7840d
 	dr $7840d, $7841d
 
-Func_7841d:
+Func_7841d: ; 7841d
 	ld a, $c4
 	ld h, $4
 	ld bc, $301
@@ -91856,7 +91856,7 @@ Func_784a1: ; 784a1 (1e:44a1)
 	predef Func_7e0c2
 	ret
 
-Data_784a6:
+Data_784a6: ; 784a6
 	dr $784a6, $78510
 
 Data_78510: ; 78510
@@ -92292,7 +92292,7 @@ Func_787cb: ; 787cb (1e:47cb)
 	ld d, a
 	ret
 
-Data_787da:
+Data_787da: ; 787da
 	dr $787da, $787eb
 
 Func_787eb: ; 787eb (1e:47eb)
@@ -92319,7 +92319,7 @@ Func_787eb: ; 787eb (1e:47eb)
 	predef Func_7d8c8
 .asm_78811
 	call Func_7879d
-Func_78814:
+Func_78814: ; 78814
 .asm_78814
 	call Func_78fec
 	push af
@@ -92753,7 +92753,7 @@ Func_78a36: ; 78a36 (1e:4a36)
 	pop bc
 	ret
 
-Data_78ac2:
+Data_78ac2: ; 78ac2
 	dr $78ac2, $78acb
 
 Func_78acb: ; 78acb (1e:4acb)
@@ -92962,7 +92962,7 @@ asm_78be1
 	predef Func_7af96
 	jr asm_78be1
 
-Data_78bf6:
+Data_78bf6: ; 78bf6
 	dr $78bf6, $78c02
 
 Data_78c02: ; 78c02
@@ -93150,7 +93150,7 @@ Func_7909b: ; 7909b (1e:509b)
 	jr nz, Func_7909b
 	ret
 
-Data_790b2:
+Data_790b2: ; 790b2
 	dr $790b2, $799cf
 
 Data_799cf: ; 799cf
@@ -93174,7 +93174,7 @@ Data_79ccf: ; 79ccf
 Data_79d33: ; 79d33
 	dr $79d33, $79ea7
 
-Func_79ea7:
+Func_79ea7: ; 79ea7
 	call Func_7a57f
 	ld a, $1
 	call Func_7a6c2
@@ -93217,7 +93217,7 @@ Func_79ee7: ; 79ee7 (1e:5ee7)
 	predef Func_7bdaa
 	ret
 
-Func_79ef2:
+Func_79ef2: ; 79ef2
 	xor a
 	call Func_7a6c2
 	call Func_7a181
@@ -93301,7 +93301,7 @@ Func_79f2d: ; 79f2d (1e:5f2d)
 Func_79f61: ; 79f61 (1e:5f61)
 	call Func_79ee7
 	call Func_7a501
-Func_79f67:
+Func_79f67: ; 79f67
 	xor a
 	ld de, Data_79f82
 	predef Func_7b776
@@ -93318,7 +93318,7 @@ Func_79f67:
 	dw Func_79fb7 - @
 	dw Func_79fa4 - @
 
-Data_79f82:
+Data_79f82: ; 79f82
 	dr $79f82, $79f89
 
 Func_79f89: ; 79f89 (1e:5f89)
@@ -93341,7 +93341,7 @@ Func_79f89: ; 79f89 (1e:5f89)
 	or a
 	ret
 
-Func_79fa4:
+Func_79fa4: ; 79fa4
 	ld a, [$ffc2]
 	or a
 	jr z, Func_79fb5
@@ -93351,10 +93351,10 @@ Func_79fa4:
 	jr nc, Func_79fb5
 	jr Func_79f67
 
-Func_79fb5:
+Func_79fb5: ; 79fb5
 	predef Func_0150
 
-Func_79fb7:
+Func_79fb7: ; 79fb7
 	call Func_7a57f
 	ld a, [$ffc0]
 	push af
@@ -93414,7 +93414,7 @@ Func_79fb7:
 	predef Func_7e0d2
 	jr .asm_79fca
 
-Func_7a01f:
+Func_7a01f: ; 7a01f
 	ld a, [$ffc0]
 	push af
 	xor a
@@ -93462,7 +93462,7 @@ Func_7a01f:
 	ld [$ffc0], a
 	jp Func_79f67
 
-Func_7a071:
+Func_7a071: ; 7a071
 	call Func_7a57f
 	ld a, $c
 	call Func_79f89
@@ -93501,7 +93501,7 @@ Func_7a071:
 	call Func_7a112
 	jr .asm_7a0a7
 
-Func_7a0ba:
+Func_7a0ba: ; 7a0ba
 	ld a, [$ffc2]
 	or a
 	jr z, .asm_7a0c9
@@ -93652,7 +93652,7 @@ Func_7a181: ; 7a181 (1e:6181)
 	ld c, a
 	ret
 
-Pointers_7a1a1:
+Pointers_7a1a1: ; 7a1a1
 	dw Data_7a1c9
 	dw Data_7a1de
 	dw Data_7a1f4
@@ -93737,7 +93737,7 @@ Data_7a490: ; 7a490
 Data_7a4c5: ; 7a4c5
 	dr $7a4c5, $7a4d3
 
-Func_7a4d3:
+Func_7a4d3: ; 7a4d3
 	hlcoord 16, 4
 	ld a, [hli]
 	or [hl]
@@ -93763,7 +93763,7 @@ Func_7a4d3:
 	predef Func_7d8d7
 	ret
 
-Func_7a501:
+Func_7a501: ; 7a501
 	predef Func_7d8d7
 	call Func_7a6dc
 	ld de, Data_78078
@@ -93788,7 +93788,7 @@ Func_7a52c: ; 7a52c (1e:652c)
 	predef Func_7bdfe
 	ret
 
-Data_7a535:
+Data_7a535: ; 7a535
 	dr $7a535, $7a57f
 
 Func_7a57f: ; 7a57f (1e:657f)
@@ -93862,7 +93862,7 @@ Func_7a5db: ; 7a5db (1e:65db)
 	predef Func_7bd42
 	ret
 
-Data_7a607:
+Data_7a607: ; 7a607
 	dr $7a607, $7a61d
 
 Data_7a61d: ; 7a61d
@@ -94109,19 +94109,19 @@ Func_7a7b5: ; 7a7b5 (1e:67b5)
 	xor a
 	ret
 
-Data_7a7c2:
+Data_7a7c2: ; 7a7c2
 	dr $7a7c2, $7a7fe
 
-Data_7a7fe:
+Data_7a7fe: ; 7a7fe
 	dr $7a7fe, $7a80e
 
-Data_7a80e:
+Data_7a80e: ; 7a80e
 	dr $7a80e, $7a824
 
-Data_7a824:
+Data_7a824: ; 7a824
 	dr $7a824, $7a855
 
-Data_7a855:
+Data_7a855: ; 7a855
 	dr $7a855, $7a85d
 
 Func_7a85d: ; 7a85d (1e:685d)
@@ -94547,7 +94547,7 @@ Func_7aaae: ; 7aaae (1e:6aae)
 	ld l, a
 	jp [hl]
 
-Pointers_7aab9:
+Pointers_7aab9: ; 7aab9
 	dw Func_7aae2
 	dw Func_7aae8
 	dw Func_7aaf3
@@ -96120,10 +96120,10 @@ Func_7b25b: ; 7b25b (1e:725b)
 	jr nz, .asm_7b2b5
 	ret
 
-Data_7b2cd:
+Data_7b2cd: ; 7b2cd
 	dr $7b2cd, $7b2e2
 
-Data_7b2e2:
+Data_7b2e2: ; 7b2e2
 	dr $7b2e2, $7b6d3
 
 AnonJumpRelativeTable: ; 7b6d3 (1e:76d3)
@@ -96252,7 +96252,7 @@ asm_7b74e
 	scf
 	ret
 
-Data_7b75d:
+Data_7b75d: ; 7b75d
 	dr $7b75d, $7b767
 
 Func_7b767: ; 7b767 (1e:7767)
@@ -96644,7 +96644,7 @@ asm_7b964
 	jr nz, asm_7b98e
 	bit 1, b
 	jr nz, asm_7b9c0
-Func_7b97b:
+Func_7b97b: ; 7b97b
 	call Func_7b9f9
 	call Func_7ba84
 	jr asm_7b964
@@ -96972,7 +96972,7 @@ Func_7bb2a: ; 7bb2a (1e:7b2a)
 	call Func_7bdaa
 	ret
 
-Data_7bb42:
+Data_7bb42: ; 7bb42
 	dr $7bb42, $7bb56
 
 Func_7bb56: ; 7bb56 (1e:7b56)
@@ -97084,7 +97084,7 @@ Func_7bbcd: ; 7bbcd (1e:7bcd)
 	ld b, $0
 	ret
 
-Data_7bbd7:
+Data_7bbd7: ; 7bbd7
 	dr $7bbd7, $7bd42
 
 Func_7bd42: ; 7bd42 (1e:7d42)
@@ -97540,17 +97540,17 @@ Func_7bf2a: ; 7bf2a (1e:7f2a)
 	jr nz, .asm_7bf46
 	ret
 
-Data_7bf6b:
+Data_7bf6b: ; 7bf6b
 	dr $7bf6b, $7bfab
 
-Data_7bfab:
+Data_7bfab: ; 7bfab
 	dr $7bfab, $7bfeb
 
-Data_7bfeb:
+Data_7bfeb: ; 7bfeb
 	dr $7bfeb, $7bffc
 
 SECTION "Bank 1f", ROMX, BANK [$1f]
-Pointers_7c000:
+Pointers_7c000: ; 7c000
 	dw Func_7d267
 	dw Func_7d26e
 	dw Func_7d275
@@ -97772,7 +97772,7 @@ Func_7c167
 	jr nz, Func_7c167
 	ret
 
-Data_7c171:
+Data_7c171: ; 7c171
 	dr $7c171, $7c17e
 
 Func_7c17e: ; 7c17e (1f:417e)
@@ -97901,10 +97901,10 @@ Func_7c1b0: ; 7c1b0 (1f:41b0)
 	xor a
 	ret
 
-Data_7c231:
+Data_7c231: ; 7c231
 	dr $7c231, $7c241
 
-Data_7c241:
+Data_7c241: ; 7c241
 	dr $7c241, $7c259
 
 Func_7c259: ; 7c259 (1f:4259)
@@ -97941,10 +97941,10 @@ Func_7c26e: ; 7c26e (1f:426e)
 	inc hl
 	jr .asm_7c27a
 
-Data_7c283:
+Data_7c283: ; 7c283
 	dr $7c283, $7c30a
 
-Data_7c30a:
+Data_7c30a: ; 7c30a
 	dr $7c30a, $7c437
 
 Func_7c437: ; 7c437 (1f:4437)
@@ -97977,21 +97977,21 @@ Func_7c456: ; 7c456 (1f:4456)
 	push af
 	call Func_7c47b
 	jr c, Func_7c466
-Func_7c45e:
+Func_7c45e: ; 7c45e
 	pop af
 	call Bank1F_GetSRAMBank
 	xor a
 	ret
 
-Func_7c464:
+Func_7c464: ; 7c464
 	add sp, $2
-Func_7c466:
+Func_7c466: ; 7c466
 	pop af
 	call Bank1F_GetSRAMBank
 	scf
 	ret
 
-Func_7c46c:
+Func_7c46c: ; 7c46c
 	ld hl, Pointer_0015 + 1
 	ld a, [hli]
 	ld h, [hl]
@@ -98221,7 +98221,7 @@ Func_7c591: ; 7c591 (1f:4591)
 	pop hl
 	jp Bank1F_GetSRAMBank
 
-Func_7c5a8:
+Func_7c5a8: ; 7c5a8
 	call Func_7c46c
 	ld d, $0
 	add hl, de
@@ -98685,7 +98685,7 @@ asm_7c7ff
 	ld [hl], d
 	ld l, c
 	ld h, b
-Func_7c808:
+Func_7c808: ; 7c808
 	ld b, h
 	ld c, l
 	ld a, d
@@ -98768,7 +98768,7 @@ Func_7c856: ; 7c856 (1f:4856)
 	cp h
 	jr asm_7c852
 
-Func_7c86b:
+Func_7c86b: ; 7c86b
 	push bc
 	inc bc
 	inc bc
@@ -98828,7 +98828,7 @@ Func_7c889: ; 7c889 (1f:4889)
 	ld a, [bc]
 	cp $46
 	jr z, asm_7c8bc
-Func_7c8ba:
+Func_7c8ba: ; 7c8ba
 	ld c, l
 	ld b, h
 asm_7c8bc
@@ -99752,7 +99752,7 @@ Func_7cd26: ; 7cd26 (1f:4d26)
 	call Func_7cd3b
 	dec b
 	jr nz, .asm_7cd31
-Func_7cd37:
+Func_7cd37: ; 7cd37
 	pop af
 	pop hl
 	pop de
@@ -100140,7 +100140,7 @@ Func_7ceb8: ; 7ceb8 (1f:4eb8)
 	ei
 	ret
 
-Func_7cf08:
+Func_7cf08: ; 7cf08
 	REPT 64
 	ld a, [hl]
 	cpl
@@ -100152,7 +100152,7 @@ Func_7cf08:
 	ld [hFF88], a
 	ret
 
-Func_7cfcf:
+Func_7cfcf: ; 7cfcf
 	REPT 64
 	ld a, [hli]
 	ld [de], a
@@ -100164,7 +100164,7 @@ Func_7cfcf:
 	ld [hFF88], a
 	ret
 
-Func_7d096:
+Func_7d096: ; 7d096
 	REPT 128
 	ld [hli], a
 	ENDR
@@ -100174,7 +100174,7 @@ Func_7d096:
 	ld [hFF88], a
 	ret
 
-Func_7d11d:
+Func_7d11d: ; 7d11d
 	REPT 64
 	ld a, [de]
 	inc e
@@ -100373,7 +100373,7 @@ Func_7d283: ; 7d283 (1f:5283)
 	ld hl, $ffff
 	ret
 
-Data_7d2aa:
+Data_7d2aa: ; 7d2aa
 	dr $7d2aa, $7d2b3
 
 Func_7d2b3: ; 7d2b3 (1f:52b3)
@@ -100681,7 +100681,7 @@ Func_7d3f9: ; 7d3f9 (1f:53f9)
 	cp $2d
 	jr z, asm_7d41a
 	dec de
-Func_7d412:
+Func_7d412: ; 7d412
 	call Func_7d43b
 	ret nc
 	ld hl, $0
@@ -101109,7 +101109,7 @@ Func_7d5e7: ; 7d5e7 (1f:55e7)
 
 asm_7d62a
 	halt
-Func_7d62b:
+Func_7d62b: ; 7d62b
 	ld a, [hFF88]
 	ld b, a
 	ld a, [hFF87]
@@ -101878,10 +101878,10 @@ Func_7da03: ; 7da03 (1f:5a03)
 	ld h, b
 	jr c, Func_7da41
 	ld hl, $ff92
-Func_7da41:
+Func_7da41: ; 7da41
 	ret
 
-Data_7da42:
+Data_7da42: ; 7da42
 	dw Func_7db40
 	dw Func_7db50
 	dw Func_7db47
@@ -101898,7 +101898,7 @@ Data_7da42:
 	dw Func_7da9a
 	dw Func_7da9d
 
-Data_7da60:
+Data_7da60: ; 7da60
 	dw Func_7db72
 	dw Func_7db81
 	dw Func_7db7b
@@ -101923,79 +101923,79 @@ Data_7da60:
 	dw Func_7dac6
 	dw Func_7dacd
 
-Func_7da8e:
+Func_7da8e: ; 7da8e
 	ld hl, $ff92
 	res 3, [hl]
 	ret
 
-Func_7da94:
+Func_7da94: ; 7da94
 	ld hl, $ff92
 	set 3, [hl]
 	ret
 
-Func_7da9a:
+Func_7da9a: ; 7da9a
 	res 2, [hl]
 	ret
 
-Func_7da9d:
+Func_7da9d: ; 7da9d
 	set 2, [hl]
 	ret
 
-Func_7daa0:
+Func_7daa0: ; 7daa0
 	ld a, [hl]
 	and $fc
 	ld [hl], a
 	ret
 
-Func_7daa5:
+Func_7daa5: ; 7daa5
 	ld a, [hl]
 	and $fc
 	or $1
 	ld [hl], a
 	ret
 
-Func_7daac:
+Func_7daac: ; 7daac
 	ld a, [hl]
 	and $fc
 	or $2
 	ld [hl], a
 	ret
 
-Func_7dab3:
+Func_7dab3: ; 7dab3
 	ld a, [hl]
 	and $fc
 	or $3
 	ld [hl], a
 	ret
 
-Func_7daba:
+Func_7daba: ; 7daba
 	ld a, [hl]
 	and $cf
 	ld [hl], a
 	ret
 
-Func_7dabf:
+Func_7dabf: ; 7dabf
 	ld a, [hl]
 	and $cf
 	or $10
 	ld [hl], a
 	ret
 
-Func_7dac6:
+Func_7dac6: ; 7dac6
 	ld a, [hl]
 	and $cf
 	or $20
 	ld [hl], a
 	ret
 
-Func_7dacd:
+Func_7dacd: ; 7dacd
 	ld a, [hl]
 	and $cf
 	or $30
 	ld [hl], a
 	ret
 
-Func_7dad4:
+Func_7dad4: ; 7dad4
 	push bc
 	push de
 	ld e, $20
@@ -102012,7 +102012,7 @@ Func_7dad4:
 	pop bc
 	ret
 
-Func_7daea:
+Func_7daea: ; 7daea
 	push bc
 	push de
 	ld e, $20
@@ -102037,12 +102037,12 @@ Func_7daea:
 	pop bc
 	ret
 
-Func_7db0d:
+Func_7db0d: ; 7db0d
 	call Func_7db50
 	ld a, $20
 	jp Func_7d95c
 
-Func_7db15:
+Func_7db15: ; 7db15
 	push bc
 	push de
 	ld a, [$c3c8]
@@ -102065,7 +102065,7 @@ Func_7db15:
 	pop de
 	pop bc
 	ld hl, $ff8e
-Func_7db39:
+Func_7db39: ; 7db39
 	xor a
 	ld [hli], a
 	ld [hl], a
@@ -102073,15 +102073,15 @@ Func_7db39:
 
 Func_7db3d: ; 7db3d (1f:5b3d)
 	ld hl, $ff8e
-Func_7db40:
+Func_7db40: ; 7db40
 	inc [hl]
 	ld a, [hl]
 Func_7db42: ; 7db42 (1f:5b42)
 	cp $14
 	ret c
-Func_7db45:
+Func_7db45: ; 7db45
 	ld [hl], $0
-Func_7db47:
+Func_7db47: ; 7db47
 	inc hl
 	inc [hl]
 	ld a, [hl]
@@ -102107,7 +102107,7 @@ Func_7db50: ; 7db50 (1f:5b50)
 .asm_7db60
 	ret
 
-Func_7db61:
+Func_7db61: ; 7db61
 	inc hl
 	ld a, [hl]
 	or a
@@ -102115,22 +102115,22 @@ Func_7db61:
 	dec [hl]
 	ret
 
-Func_7db67:
+Func_7db67: ; 7db67
 	call Func_7db81
 	ld a, $20
 	jp Func_7d95c
 
 Func_7db6f: ; 7db6f (1f:5b6f)
 	ld hl, $ff90
-Func_7db72:
+Func_7db72: ; 7db72
 	inc [hl]
 	ld a, [$c3b9]
 	dec a
 	cp [hl]
 	ret nc
-Func_7db79:
+Func_7db79: ; 7db79
 	ld [hl], $0
-Func_7db7b:
+Func_7db7b: ; 7db7b
 	inc hl
 	ld a, [hl]
 	add $9
@@ -102145,7 +102145,7 @@ Func_7db81: ; 7db81 (1f:5b81)
 	ld a, [$c3b9]
 	dec a
 	ld [hl], a
-Func_7db8a:
+Func_7db8a: ; 7db8a
 	inc hl
 	ld a, [hl]
 	sub $9
@@ -102268,7 +102268,7 @@ Func_7db91: ; 7db91 (1f:5b91)
 
 .asm_7dc33
 	add $50
-Func_7dc35:
+Func_7dc35: ; 7dc35
 	push hl
 	ld hl, $ff92
 	or a
@@ -102519,7 +102519,7 @@ Func_7dd59: ; 7dd59 (1f:5d59)
 	ld l, $7c
 	jr .asm_7dd68
 
-Func_7dd7c:
+Func_7dd7c: ; 7dd7c
 	ld a, [$ff92]
 	ld b, a
 Func_7dd7f: ; 7dd7f (1f:5d7f)
@@ -102961,7 +102961,7 @@ Func_7df7d: ; 7df7d (1f:5f7d)
 
 asm_7dfa9
 	halt
-Func_7dfaa:
+Func_7dfaa: ; 7dfaa
 	ld a, [hFF88]
 	ld b, a
 	ld a, [hFF87]
@@ -103751,7 +103751,7 @@ Func_7e373: ; 7e373 (1f:6373)
 	pop hl
 	ret
 
-Data_7e401:
+Data_7e401: ; 7e401
 	dr $7e401, $7e40d
 
 Func_7e40d: ; 7e40d (1f:640d)
@@ -105906,7 +105906,7 @@ Func_7ef16: ; 7ef16 (1f:6f16)
 .asm_7efb4
 	ret
 
-Data_7efb5:
+Data_7efb5: ; 7efb5
 	dr $7efb5, $7f7b5
 
 Data_7f7b5: ; 7f7b5
@@ -105921,7 +105921,7 @@ Data_7f875: ; 7f875
 SECTION "Bank 20", ROMX, BANK [$20]
 	dr $80000, $8208c
 
-Func_8208c:
+Func_8208c: ; 8208c
 	dr $8208c, $84000
 
 SECTION "Bank 21", ROMX, BANK [$21]
@@ -105933,25 +105933,25 @@ SECTION "Bank 22", ROMX, BANK [$22]
 SECTION "Bank 23", ROMX, BANK [$23]
 	dr $8c000, $8d4d8
 
-Func_8d4d8:
+Func_8d4d8: ; 8d4d8
 	dr $8d4d8, $90000
 
 SECTION "Bank 24", ROMX, BANK [$24]
 	dr $90000, $93370
 
-Func_93370: ; $93370
+Func_93370: ; 93370
 	dr $93370, $935a8
 
 Func_935a8: ; 935a8
 	dr $935a8, $93941
 
-Func_93941:
+Func_93941: ; 93941
 	dr $93941, $93b87
 
-Func_93b87:
+Func_93b87: ; 93b87
 	dr $93b87, $93c0c
 
-Func_93c0c:
+Func_93c0c: ; 93c0c
 	dr $93c0c, $94000
 
 SECTION "Bank 25", ROMX, BANK [$25]
@@ -105960,16 +105960,16 @@ SECTION "Bank 25", ROMX, BANK [$25]
 SECTION "Bank 26", ROMX, BANK [$26]
 	dr $98000, $9a41d
 
-Func_9a41d: ; $9a41d
+Func_9a41d: ; 9a41d
 	dr $9a41d, $9a8c3
 
-Func_9a8c3: ; $9a8c3
+Func_9a8c3: ; 9a8c3
 	dr $9a8c3, $9b251
 
-Func_9b251: ; $9b251
+Func_9b251: ; 9b251
 	dr $9b251, $9b326
 
-Func_9b326: ; $9b326
+Func_9b326: ; 9b326
 	dr $9b326, $9c000
 
 SECTION "Bank 27", ROMX, BANK [$27]
@@ -105979,26 +105979,26 @@ SECTION "Bank 28", ROMX, BANK [$28]
 IF DEF(SUN)
 	dr $a0000, $a3c17
 
-Func_a3c17:
+Func_a3c17: ; a3c17
 	dr $a3c17, $a4000
 ENDC
 IF DEF(STAR)
 	dr $a0000, $a3c5d
 
-Func_a3c17:
+Func_a3c17: ; a3c17
 	dr $a3c5d, $a4000
 ENDC
 
 SECTION "Bank 29", ROMX, BANK [$29]
 	dr $a4000, $a517c
 
-Func_a517c:
+Func_a517c: ; a517c
 	dr $a517c, $a8000
 
 SECTION "Bank 2a", ROMX, BANK [$2a]
 	dr $a8000, $abb74
 
-Func_abb74:
+Func_abb74: ; abb74
 	dr $abb74, $ac000
 
 SECTION "Bank 2b", ROMX, BANK [$2b]
@@ -106016,35 +106016,35 @@ SECTION "Bank 2e", ROMX, BANK [$2e]
 SECTION "Bank 2f", ROMX, BANK [$2f]
 	dr $bc000, $bd6fa
 
-Func_bd6fa: ; $bd6fa
+Func_bd6fa: ; bd6fa
 	dr $bd6fa, $bf214
 
-Func_bf214: ; $bf214
+Func_bf214: ; bf214
 	dr $bf214, $bf431
 
-Func_bf431:
+Func_bf431: ; bf431
 	dr $bf431, $c0000
 
 SECTION "Bank 30", ROMX, BANK [$30]
-GFX_c0000:
+GFX_c0000: ; c0000
 	dr $c0000, $c4000
 
 SECTION "Bank 31", ROMX, BANK [$31]
 	dr $c4000, $c7109
 
-Func_c7109:
+Func_c7109: ; c7109
 	dr $c7109, $c7551
 
-Func_c7551:
+Func_c7551: ; c7551
 	dr $c7551, $c7759
 
-Func_c7759: ; $c7759
+Func_c7759: ; c7759
 	dr $c7759, $c7ae6
 
-Func_c7ae6: ; $c7ae6
+Func_c7ae6: ; c7ae6
 	dr $c7ae6, $c7bd0
 
-Func_c7bd0: ; $c7bd0
+Func_c7bd0: ; c7bd0
 	dr $c7bd0, $c8000
 
 SECTION "Bank 32", ROMX, BANK [$32]
@@ -106056,59 +106056,59 @@ SECTION "Bank 33", ROMX, BANK [$33]
 SECTION "Bank 34", ROMX, BANK [$34]
 	dr $d0000, $d18ba
 
-Func_d18ba:
+Func_d18ba: ; d18ba
 	dr $d18ba, $d4000
 
 SECTION "Bank 35", ROMX, BANK [$35]
-GFX_d4000:
+GFX_d4000: ; d4000
 	dr $d4000, $d8000
 
 SECTION "Bank 36", ROMX, BANK [$36]
 	dr $d8000, $d93e8
 
-GFX_d93e8:
+GFX_d93e8: ; d93e8
 	dr $d93e8, $d9f38
 
-Func_d9f38: ; $d9f38
+Func_d9f38: ; d9f38
 	dr $d9f38, $d9f55
 
-Func_d9f55: ; $d9f55
+Func_d9f55: ; d9f55
 	dr $d9f55, $d9f68
 
-Func_d9f68: ; $d9f68
+Func_d9f68: ; d9f68
 	dr $d9f68, $d9f74
 
-Func_d9f74: ; $d9f74
+Func_d9f74: ; d9f74
 	dr $d9f74, $da07a
 
-Func_da07a: ; $da07a
+Func_da07a: ; da07a
 	dr $da07a, $da093
 
-Func_da093:
+Func_da093: ; da093
 	dr $da093, $da4dc
 
-Func_da4dc: ; $da4dc
+Func_da4dc: ; da4dc
 	dr $da4dc, $da4fc
 
-Func_da4fc: ; $da4fc
+Func_da4fc: ; da4fc
 	dr $da4fc, $da729
 
-Func_da729:
+Func_da729: ; da729
 	dr $da729, $da835
 
-Func_da835: ; $da835
+Func_da835: ; da835
 	dr $da835, $da839
 
-Func_da839: ; $da839
+Func_da839: ; da839
 	dr $da839, $da901
 
-Func_da901: ; $da901
+Func_da901: ; da901
 	dr $da901, $daa40
 
-Func_daa40: ; $daa40
+Func_daa40: ; daa40
 	dr $daa40, $daa72
 
-Func_daa72: ; $daa72
+Func_daa72: ; daa72
 	dr $daa72, $dc000
 
 SECTION "Bank 37", ROMX, BANK [$37]
@@ -106120,66 +106120,66 @@ SECTION "Bank 38", ROMX, BANK [$38]
 Func_e1aa9: ; e1aa9
 	dr $e1aa9, $e1e83
 
-Func_e1e83:
+Func_e1e83: ; e1e83
 	dr $e1e83, $e1f2d
 
-Func_e1f2d:
+Func_e1f2d: ; e1f2d
 	dr $e1f2d, $e220d
 
-Func_e220d: ; $e220d
+Func_e220d: ; e220d
 	dr $e220d, $e2780
 
-Func_e2780: ; $e2780
+Func_e2780: ; e2780
 	dr $e2780, $e2bf8
 
-Func_e2bf8:
+Func_e2bf8: ; e2bf8
 	dr $e2bf8, $e2c29
 
-Func_e2c29:
+Func_e2c29: ; e2c29
 	dr $e2c29, $e3507
 
 Func_e3507: ; e3507
 	dr $e3507, $e4000
 
 SECTION "Bank 39", ROMX, BANK [$39]
-GFX_e4000:
+GFX_e4000: ; e4000
 	dr $e4000, $e8000
 
 SECTION "Bank 3e 2", ROMX [$6fb2], BANK [$3e]
 	dr $fafb2, $fb2ed
 
-Func_fb2ed:
+Func_fb2ed: ; fb2ed
 	dr $fb2ed, $fb42d
 
-Func_fb42d:
+Func_fb42d: ; fb42d
 	dr $fb42d, $fbd5e
 
-Func_fbd5e:
+Func_fbd5e: ; fbd5e
 	dr $fbd5e, $fbfcd
 
 SECTION "Bank 3f", ROMX, BANK [$3f]
 IF DEF(SUN)
 	dr $fc000, $fd213
 
-Func_fd213:
+Func_fd213: ; fd213
 	dr $fd213, $fd314
 
-Func_fd314:
+Func_fd314: ; fd314
 	dr $fd314, $fe102
 
-Func_fe102:
+Func_fe102: ; fe102
 	dr $fe102, $100000
 ENDC
 IF DEF(STAR)
 	dr $fc000, $fd211
 
-Func_fd213:
+Func_fd213: ; fd213
 	dr $fd211, $fd312
 
-Func_fd314:
+Func_fd314: ; fd314
 	dr $fd312, $fe100
 
-Func_fe102:
+Func_fe102: ; fe102
 	dr $fe100, $100000
 ENDC
 

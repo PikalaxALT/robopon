@@ -436,7 +436,7 @@ SFX_76c60: ; 76c60
 SFX_76c69: ; 76c69
 	dr $76c69, $76c72
 
-Pointers_76c72:
+Pointers_76c72: ; 76c72
 	dw Sample_76c9a
 	dw Sample_76caa
 	dw Sample_76cba

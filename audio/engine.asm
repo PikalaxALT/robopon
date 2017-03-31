@@ -1857,19 +1857,19 @@ Func_70c0a_\1: ; 70c0a (1c:4c0a)
 	ret
 
 
-Data_70c12_\1: ; $70c12
+Data_70c12_\1: ; 70c12
 	dw $c17b
 
-Data_70c14_\1: ; $70c14
+Data_70c14_\1: ; 70c14
 	dw $c187
 
-Data_70c16_\1: ; $70c16
+Data_70c16_\1: ; 70c16
 	dw $c193
 
-Data_70c18_\1: ; $70c18
+Data_70c18_\1: ; 70c18
 	dw $c19f
 
-Data_70c1a_\1: ; $70c1a
+Data_70c1a_\1: ; 70c1a
 	db   0
 	db  24
 	db  48
@@ -1879,7 +1879,7 @@ Data_70c1a_\1: ; $70c1a
 	db 144
 	db 168
 
-Data_70c22_\1: ; $70c22
+Data_70c22_\1: ; 70c22
 	dw $002c
 	dw $009c
 	dw $0106
@@ -1966,7 +1966,7 @@ Data_70c22_\1: ; $70c22
 	dw $07ef
 	dw $07f0
 
-Data_70ccc_\1: ; $70ccc
+Data_70ccc_\1: ; 70ccc
 	dw Data_70cf4_\1
 	dw Data_70d04_\1
 	dw Data_70d14_\1
@@ -2033,7 +2033,7 @@ Data_70dc4_\1: ; 70dc4
 Data_70dd4_\1: ; 70dd4
 	dr $70dd4, $70de4
 
-Data_70de4_\1: ; $70de4
+Data_70de4_\1: ; 70de4
 	dw Data_70e52_\1
 	dw Data_70e59_\1
 	dw Data_70e60_\1
@@ -2168,7 +2168,7 @@ Data_70f74_\1: ; 70f74
 Data_70f8c_\1: ; 70f8c
 	dr $70f8c, $70fa4
 
-Data_70fa4_\1: ; $70fa4
+Data_70fa4_\1: ; 70fa4
 	dw Data_70fce_\1
 	dw Data_70fd1_\1
 	dw Data_70fe3_\1
@@ -2254,13 +2254,13 @@ Data_7120e_\1: ; 7120e
 Data_71220_\1: ; 71220
 	dr $71220, $7122e
 
-Data_7122e_\1: ; $7122e
+Data_7122e_\1: ; 7122e
 	db $0
 	REPT 108
 	db $0a
 	ENDR
 
-NumSongs_\1: ; $7129b
+NumSongs_\1: ; 7129b
 	db 29
 ENDM
 
@@ -2274,7 +2274,7 @@ SECTION "Audio Engine 3", ROMX [$6800], BANK [$1d]
 PlaySFX:
 	jp PlaySFX_
 
-Func_76803:
+Func_76803: ; 76803
 	jp Func_76859
 
 PlaySFX_: ; 76806 (1d:6806)
@@ -2395,7 +2395,7 @@ Func_76894: ; 76894 (1d:6894)
 	ld l, e
 	jp [hl]
 
-Pointers_768ab:
+Pointers_768ab: ; 768ab
 	dw Func_768ce
 	dw Func_768f9
 	dw Func_76912
