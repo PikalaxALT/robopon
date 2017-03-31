@@ -37,7 +37,7 @@ Func_70021_\1: ; 70021 (1c:4021)
 	ld hl, Data_7129b_\1
 	cp [hl]
 	jr nc, .asm_70036
-	ld [wc100], a
+	ld [wSongIndex], a
 	xor a
 	ld [$c10b], a
 	ld [$c16f], a
@@ -64,7 +64,7 @@ Func_70038_\1: ; 70038 (1c:4038)
 	jr c, .asm_70056
 .asm_7004e
 	ld a, c
-	ld [$c102], a
+	ld [wSFXIndex], a
 	ld a, b
 	ld [$c103], a
 .asm_70056
@@ -77,7 +77,7 @@ Func_70059_\1: ; 70059 (1c:4059)
 	ret
 
 Func_7005d_\1: ; 7005d (1c:405d)
-	ld a, [wc100]
+	ld a, [wSongIndex]
 	cp $80
 	ld a, $1
 	ret nz
@@ -85,7 +85,7 @@ Func_7005d_\1: ; 7005d (1c:405d)
 	ret
 
 Func_70067_\1: ; 70067 (1c:4067)
-	ld a, [$c102]
+	ld a, [wSFXIndex]
 	cp $80
 	ld a, $1
 	ret nz
@@ -122,8 +122,8 @@ Func_70088_\1: ; 70088 (1c:4088)
 	ld a, $1c
 	ld [wAudioROMBank], a
 	ld a, $80
-	ld [wc100], a
-	ld [$c102], a
+	ld [wSongIndex], a
+	ld [wSFXIndex], a
 	ld a, $77
 	ld [$c171], a
 	xor a
@@ -193,26 +193,26 @@ Func_700f4_\1: ; 700f4 (1c:40f4)
 	ret
 
 Func_70127_\1: ; 70127 (1c:4127)
-	ld a, [wc100]
+	ld a, [wSongIndex]
 	rla
-	jr c, .asm_7013e
+	jr c, .already_started_song
 	call Func_70156_\1
-	ld a, [wc100]
-	call Func_70197_\1
-	ld a, [wc100]
+	ld a, [wSongIndex]
+	call PlaySong_\1
+	ld a, [wSongIndex]
 	or $80
-	ld [wc100], a
-.asm_7013e
-	ld a, [$c102]
+	ld [wSongIndex], a
+.already_started_song
+	ld a, [wSFXIndex]
 	rla
-	jr c, .asm_70155
-	ld a, [$c102]
-	ld hl, Func_76800
+	jr c, .already_started_sfx
+	ld a, [wSFXIndex]
+	ld hl, PlaySFX
 	call AudioEngineFarCall
-	ld a, [$c102]
+	ld a, [wSFXIndex]
 	or $80
-	ld [$c102], a
-.asm_70155
+	ld [wSFXIndex], a
+.already_started_sfx
 	ret
 
 Func_70156_\1: ; 70156 (1c:4156)
@@ -254,11 +254,11 @@ Func_70156_\1: ; 70156 (1c:4156)
 .asm_70196
 	ret
 
-Func_70197_\1: ; 70197 (1c:4197)
+PlaySong_\1: ; 70197 (1c:4197)
 	push af
 	ld c, a
 	ld b, $0
-	ld hl, Data_7129c_\1
+	ld hl, SongBanks_\1
 	add hl, bc
 	ld a, [hl]
 	ld [wAudioROMBank], a
@@ -268,7 +268,7 @@ Func_70197_\1: ; 70197 (1c:4197)
 	add a
 	ld c, a
 	ld b, $0
-	ld hl, Data_712b9_1c
+	ld hl, SongPointers_\1
 	add hl, bc
 	ld e, [hl]
 	inc hl
@@ -279,15 +279,15 @@ Func_70197_\1: ; 70197 (1c:4197)
 	ld b, h
 	ld c, l
 	rr e
-	jr nc, .asm_701f6
+	jr nc, .not_ch1
 	ld a, [bc]
 	inc bc
-	ld [$c115], a
-	ld [$c11d], a
+	ld [wChannel1Pointer], a
+	ld [wChannel1StartPointer], a
 	ld a, [bc]
 	inc bc
-	ld [$c116], a
-	ld [$c11e], a
+	ld [wChannel1Pointer + 1], a
+	ld [wChannel1StartPointer + 1], a
 	ld a, $1
 	ld [$c13b], a
 	ld [$c10d], a
@@ -303,17 +303,17 @@ Func_70197_\1: ; 70197 (1c:4197)
 	ld [$c174], a
 	ld a, $8
 	ld [$c147], a
-.asm_701f6
+.not_ch1
 	rr e
-	jr nc, .asm_70233
+	jr nc, .not_ch2
 	ld a, [bc]
 	inc bc
-	ld [$c117], a
-	ld [$c11f], a
+	ld [wChannel2Pointer], a
+	ld [wChannel2StartPointer], a
 	ld a, [bc]
 	inc bc
-	ld [$c118], a
-	ld [$c120], a
+	ld [wChannel2Pointer + 1], a
+	ld [wChannel2StartPointer + 1], a
 	ld a, $1
 	ld [$c13c], a
 	ld [$c10e], a
@@ -329,17 +329,17 @@ Func_70197_\1: ; 70197 (1c:4197)
 	ld [$c176], a
 	ld a, $8
 	ld [$c148], a
-.asm_70233
+.not_ch2
 	rr e
-	jr nc, .asm_70270
+	jr nc, .not_ch3
 	ld a, [bc]
 	inc bc
-	ld [$c119], a
-	ld [$c121], a
+	ld [wChannel3Pointer], a
+	ld [wChannel3StartPointer], a
 	ld a, [bc]
 	inc bc
-	ld [$c11a], a
-	ld [$c122], a
+	ld [wChannel3Pointer + 1], a
+	ld [wChannel3StartPointer + 1], a
 	ld a, $1
 	ld [$c13d], a
 	ld [$c10f], a
@@ -355,17 +355,17 @@ Func_70197_\1: ; 70197 (1c:4197)
 	ld [$c178], a
 	ld a, $40
 	ld [$c149], a
-.asm_70270
+.not_ch3
 	rr e
-	jr nc, .asm_702aa
+	jr nc, .not_ch4
 	ld a, [bc]
 	inc bc
-	ld [$c11b], a
-	ld [$c123], a
+	ld [wChannel4Pointer], a
+	ld [wChannel4StartPointer], a
 	ld a, [bc]
 	inc bc
-	ld [$c11c], a
-	ld [$c124], a
+	ld [wChannel4Pointer + 1], a
+	ld [wChannel4StartPointer + 1], a
 	ld a, $1
 	ld [$c13e], a
 	ld [$c110], a
@@ -380,7 +380,7 @@ Func_70197_\1: ; 70197 (1c:4197)
 	ld [$c17a], a
 	ld a, $40
 	ld [$c14a], a
-.asm_702aa
+.not_ch4
 	xor a
 	ld [$c172], a
 	ret
@@ -416,12 +416,12 @@ Func_702b0_\1: ; 702b0 (1c:42b0)
 	dec a
 	ld [$c13b], a
 	jr nz, .asm_702ff
-	ld a, [$c116]
+	ld a, [wChannel1Pointer + 1]
 	ld h, a
-	ld a, [$c115]
+	ld a, [wChannelPointers]
 	ld l, a
 	ld bc, $0
-	call Func_7041f_\1
+	call AudioCommandProcessor_\1
 	ld a, [$c10d]
 	or a
 	jr z, .asm_70305
@@ -470,12 +470,12 @@ Func_70315_\1: ; 70315 (1c:4315)
 	dec a
 	ld [$c13c], a
 	jr nz, .asm_70364
-	ld a, [$c118]
+	ld a, [wChannel2Pointer + 1]
 	ld h, a
-	ld a, [$c117]
+	ld a, [wChannel2Pointer]
 	ld l, a
 	ld bc, $1
-	call Func_7041f_\1
+	call AudioCommandProcessor_\1
 	ld a, [$c10e]
 	or a
 	jr z, .asm_7036a
@@ -520,12 +520,12 @@ Func_7037a_\1: ; 7037a (1c:437a)
 	dec a
 	ld [$c13d], a
 	jr nz, .asm_703c3
-	ld a, [$c11a]
+	ld a, [wChannel3Pointer + 1]
 	ld h, a
-	ld a, [$c119]
+	ld a, [wChannel3Pointer]
 	ld l, a
 	ld bc, $2
-	call Func_7041f_\1
+	call AudioCommandProcessor_\1
 	ld a, [$c10f]
 	or a
 	jr z, .asm_703c9
@@ -554,12 +554,12 @@ Func_703d9_\1: ; 703d9 (1c:43d9)
 	dec a
 	ld [$c13e], a
 	jr nz, .asm_70401
-	ld a, [$c11c]
+	ld a, [wChannel4Pointer + 1]
 	ld h, a
-	ld a, [$c11b]
+	ld a, [wChannel4Pointer]
 	ld l, a
 	ld bc, $3
-	call Func_7041f_\1
+	call AudioCommandProcessor_\1
 	ld a, [$c110]
 	or a
 	jr z, .asm_7040b
@@ -586,12 +586,12 @@ Func_703d9_\1: ; 703d9 (1c:43d9)
 .asm_7041e
 	ret
 
-Func_7041f_\1: ; 7041f (1c:441f)
+AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	ld a, [hli]
 	push hl
 	push af
 	cp $d0
-	jr c, .asm_70497
+	jr c, .note
 	sub $d0
 	add a
 	ld e, a
@@ -656,7 +656,7 @@ Func_7041f_\1: ; 7041f (1c:441f)
 	dw Func_706fd_\1
 	dw Func_706fd_\1
 
-.asm_70497
+.note
 	push af
 	ld a, [hl]
 	ld e, a
@@ -846,7 +846,7 @@ Func_7041f_\1: ; 7041f (1c:441f)
 	ld [hl], d
 Func_70599_\1: ; 70599 (1c:4599)
 	pop de
-	ld hl, $c115
+	ld hl, wChannelPointers
 	add hl, bc
 	add hl, bc
 	ld [hl], e
@@ -928,7 +928,7 @@ Func_705fa_\1: ; 705fa (1c:45fa)
 	pop de
 	push de
 	dec de
-	ld hl, $c11d
+	ld hl, wChannelStartPointers
 	add hl, bc
 	add hl, bc
 	ld [hl], e
@@ -938,13 +938,13 @@ Func_705fa_\1: ; 705fa (1c:45fa)
 
 Func_70608_\1: ; 70608 (1c:4608)
 	pop hl
-	ld hl, $c11d
+	ld hl, wChannelStartPointers
 	add hl, bc
 	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_70614_\1: ; 70614 (1c:4614)
 	pop de
@@ -976,7 +976,7 @@ Func_70629_\1: ; 70629 (1c:4629)
 	pop hl
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 .asm_7063b
 	dec hl
@@ -989,7 +989,7 @@ Func_70643_\1: ; 70643 (1c:4643)
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_7064a_\1: ; 7064a (1c:464a)
 	call Func_70705_\1
@@ -1031,7 +1031,7 @@ Func_70672_\1: ; 70672 (1c:4672)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_7067f_\1: ; 7067f (1c:467f)
 	pop de
@@ -1042,7 +1042,7 @@ Func_7067f_\1: ; 7067f (1c:467f)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_7068c_\1: ; 7068c (1c:468c)
 	pop de
@@ -1053,7 +1053,7 @@ Func_7068c_\1: ; 7068c (1c:468c)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_70699_\1: ; 70699 (1c:4699)
 	pop de
@@ -1064,7 +1064,7 @@ Func_70699_\1: ; 70699 (1c:4699)
 	ld [$c10b], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_706a9_\1: ; 706a9 (1c:46a9)
 	pop de
@@ -1075,7 +1075,7 @@ Func_706a9_\1: ; 706a9 (1c:46a9)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_706b6_\1: ; 706b6 (1c:46b6)
 	pop de
@@ -1086,7 +1086,7 @@ Func_706b6_\1: ; 706b6 (1c:46b6)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_706c3_\1: ; 706c3 (1c:46c3)
 	pop de
@@ -1100,7 +1100,7 @@ Func_706c3_\1: ; 706c3 (1c:46c3)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_706d5_\1: ; 706d5 (1c:46d5)
 	pop de
@@ -1111,7 +1111,7 @@ Func_706d5_\1: ; 706d5 (1c:46d5)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_706e2_\1: ; 706e2 (1c:46e2)
 	pop de
@@ -1122,7 +1122,7 @@ Func_706e2_\1: ; 706e2 (1c:46e2)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_706ef_\1: ; 706ef (1c:46ef)
 	pop de
@@ -1134,7 +1134,7 @@ Func_706ef_\1: ; 706ef (1c:46ef)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_706fd_\1: ; 706fd (1c:46fd)
 	ld hl, $c10d
@@ -1165,7 +1165,7 @@ Func_7070e_\1: ; 7070e (1c:470e)
 
 Func_70719_\1: ; 70719 (1c:4719)
 	pop hl
-	jp Func_7041f_\1
+	jp AudioCommandProcessor_\1
 
 Func_7071d_\1: ; 7071d (1c:471d)
 	ld a, [$c10c]
@@ -1618,7 +1618,7 @@ Func_709a7_\1: ; 709a7 (1c:49a7)
 	or a
 	ret nz
 	ld a, $80
-	ld [wc100], a
+	ld [wSongIndex], a
 	ret
 
 Func_709ba_\1: ; 709ba (1c:49ba)
@@ -1634,7 +1634,7 @@ Func_709c4_\1: ; 709c4 (1c:49c4)
 	ret
 
 Func_709ce_\1: ; 709ce (1c:49ce)
-	ld a, [wc100]
+	ld a, [wSongIndex]
 	ld [wc020], a
 	ld a, [wAudioROMBank]
 	ld [wc020 + 1], a
@@ -1656,11 +1656,11 @@ Func_709ce_\1: ; 709ce (1c:49ce)
 	ld de, $c02d
 	ld a, $4
 	call Func_70c0a_\1
-	ld hl, $c115
+	ld hl, wChannelPointers
 	ld de, $c031
 	ld a, $8
 	call Func_70c0a_\1
-	ld hl, $c11d
+	ld hl, wChannelStartPointers
 	ld de, $c039
 	ld a, $8
 	call Func_70c0a_\1
@@ -1743,7 +1743,7 @@ Func_709ce_\1: ; 709ce (1c:49ce)
 
 Func_70af3_\1: ; 70af3 (1c:4af3)
 	ld a, [wc020]
-	ld [wc100], a
+	ld [wSongIndex], a
 	ld a, [wc020 + 1]
 	ld [wAudioROMBank], a
 	ld a, [wc020 + 2]
@@ -1765,11 +1765,11 @@ Func_70af3_\1: ; 70af3 (1c:4af3)
 	ld a, $4
 	call Func_70c0a_\1
 	ld hl, $c031
-	ld de, $c115
+	ld de, wChannelPointers
 	ld a, $8
 	call Func_70c0a_\1
 	ld hl, $c039
-	ld de, $c11d
+	ld de, wChannelStartPointers
 	ld a, $8
 	call Func_70c0a_\1
 	ld a, [$c041]
@@ -1862,27 +1862,27 @@ SECTION "Audio Engine 2", ROMX [$4000], BANK [$1d]
 	audio_engine 1d
 
 SECTION "Audio Engine 3", ROMX [$6800], BANK [$1d]
-Func_76800:
-	jp Func_76806
+PlaySFX:
+	jp PlaySFX_
 
 Func_76803:
 	jp Func_76859
 
-Func_76806: ; 76806 (1d:6806)
-	ld hl, Data_76a37
+PlaySFX_: ; 76806 (1d:6806)
+	ld hl, MaxSFXIndex
 	cp [hl]
-	jr nc, .asm_76858
+	jr nc, .invalid_sfx
 	add a
 	ld c, a
 	ld b, $0
 	ld a, [$c1d3]
 	or a
-	jr z, .asm_76819
+	jr z, .skip
 	call Func_76a20
-.asm_76819
+.skip
 	ld a, $1
 	ld [$c1d3], a
-	ld hl, Data_76a38
+	ld hl, SFXHeaderPointers
 	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
@@ -1892,11 +1892,11 @@ Func_76806: ; 76806 (1d:6806)
 	ld [$c1d4], a
 	ld de, $c1cb
 	ld c, $0
-.asm_76831
+.loop
 	ld a, [$c1d4]
 	rrca
 	ld [$c1d4], a
-	jr nc, .asm_76850
+	jr nc, .next
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -1911,17 +1911,17 @@ Func_76806: ; 76806 (1d:6806)
 	add hl, bc
 	ld [hl], $1
 	pop hl
-	jr .asm_76852
+	jr .next_ch
 
-.asm_76850
+.next
 	inc de
 	inc de
-.asm_76852
+.next_ch
 	inc c
 	ld a, $4
 	cp c
-	jr nz, .asm_76831
-.asm_76858
+	jr nz, .loop
+.invalid_sfx
 	ret
 
 Func_76859: ; 76859 (1d:6859)
@@ -2193,7 +2193,7 @@ Func_769a9: ; 769a9 (1d:69a9)
 	add a
 	ld d, $0
 	ld e, a
-	ld hl, Data_76c72
+	ld hl, Pointers_76c72
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -2276,7 +2276,7 @@ Func_76a13: ; 76a13 (1d:6a13)
 	ld [$c1d3], a
 	ld [$c103], a
 	ld a, $80
-	ld [$c102], a
+	ld [wSFXIndex], a
 	ret
 
 Func_76a20: ; 76a20 (1d:6a20)

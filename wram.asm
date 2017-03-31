@@ -9,9 +9,22 @@ SECTION "Audio RAM 1", WRAM0 [$c020]
 wc020:: ds $e0 ; c020
 
 SECTION "Audio RAM 2", WRAM0 [$c100]
-wc100:: ds $1 ; c100
+wSongIndex:: ds $1 ; c100
 wAudioROMBank:: ds $1 ; c101
-	ds $fe
+wSFXIndex:: ds $1 ; c102
+	ds $12
+
+wChannelPointers::
+wChannel1Pointer:: dw ; c115
+wChannel2Pointer:: dw ; c117
+wChannel3Pointer:: dw ; c119
+wChannel4Pointer:: dw ; c11b
+
+wChannelStartPointers::
+wChannel1StartPointer:: dw ; c11d
+wChannel2StartPointer:: dw ; c11f
+wChannel3StartPointer:: dw ; c121
+wChannel4StartPointer:: dw ; c123
 
 SECTION "LCD Interrupt", WRAM0 [$c200]
 wLCD:: ds $3 ; c200
