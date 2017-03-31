@@ -47775,7 +47775,16 @@ Func_20a3c: ; 20a3c (8:4a3c)
 	ret
 
 Data_20a54:
-	dr $20a54, $20ab0
+	dr $20a54, $20a63
+
+Data_20a63: ; 20a63
+	dr $20a63, $20a82
+
+Data_20a82: ; 20a82
+	dr $20a82, $20a91
+
+Data_20a91: ; 20a91
+	dr $20a91, $20ab0
 
 Func_20ab0:
 	push hl
@@ -47957,7 +47966,6 @@ Func_20be8: ; 20be8 (8:4be8)
 Func_20c33: ; 20c33 (8:4c33)
 	set_farcall_addrs_hli Func_fb42d
 	ld a, [wOAM04XCoord]
-.asm_20c41
 	inc a
 	call FarCall
 	callba_hli Func_54af8
@@ -47967,7 +47975,6 @@ Func_20c33: ; 20c33 (8:4c33)
 	ld hl, $8000
 	jp Func_20c8e
 
-.asm_20c5f
 Func_20c61: ; 20c61 (8:4c61)
 	call GetHLAtSPPlusParam8
 	db $2e
@@ -48004,7 +48011,10 @@ Data_20c99:
 	db "<HIRA>を つかいますか?<KATA>", $00
 
 Data_20ca5:
-	dr $20ca5, $20d21
+	dr $20ca5, $20cb4
+
+Data_20cb4: ; 20cb4
+	dr $20cb4, $20d21
 
 Func_20d21: ; 20d21 (8:4d21)
 	push hl
@@ -53572,9 +53582,9 @@ Func_231ab: ; 231ab (8:71ab)
 	ld hl, $88e0
 	call FarRequestVideoData
 	set_farcall_addrs_hli Func_1445e
-	ld c, $8
-	ld de, $4ca5
-	ld hl, $4cb4
+	ld c, BANK(Data_20ca5)
+	ld de, Data_20ca5
+	ld hl, Data_20cb4
 	call FarCall
 	ld a, l
 	and h
@@ -53988,9 +53998,9 @@ Func_234c2: ; 234c2 (8:74c2)
 	call Func_3ca1
 	pop bc
 	set_farcall_addrs_hli Func_1445e
-	ld c, $8
-	ld de, $4a54
-	ld hl, $4a63
+	ld c, BANK(Data_20a54)
+	ld de, Data_20a54
+	ld hl, Data_20a63
 	call FarCall
 	call WriteHLToSPPlusParam8
 	db $48
@@ -54048,9 +54058,9 @@ Func_2354e: ; 2354e (8:754e)
 
 Func_23557: ; 23557 (8:7557)
 	set_farcall_addrs_hli Func_1445e
-	ld c, $8
-	ld de, $4a82
-	ld hl, $4a91
+	ld c, BANK(Data_20a82)
+	ld de, Data_20a82
+	ld hl, Data_20a91
 	call FarCall
 	ld c, l
 	ld b, h
@@ -63035,7 +63045,46 @@ Func_30000:
 	ret
 
 Data_30001:
-	dr $30001, $30151
+	dr $30001, $30020
+
+Data_30020: ; 30020
+	dr $30020, $3002f
+
+Data_3002f: ; 3002f
+	dr $3002f, $3004e
+
+Data_3004e: ; 3004e
+	dr $3004e, $3005d
+
+Data_3005d: ; 3005d
+	dr $3005d, $3007c
+
+Data_3007c: ; 3007c
+	dr $3007c, $3008b
+
+Data_3008b: ; 3008b
+	dr $3008b, $300aa
+
+Data_300aa: ; 300aa
+	dr $300aa, $300b9
+
+Data_300b9: ; 300b9
+	dr $300b9, $300d8
+
+Data_300d8: ; 300d8
+	dr $300d8, $300e7
+
+Data_300e7: ; 300e7
+	dr $300e7, $30106
+
+Data_30106: ; 30106
+	dr $30106, $30115
+
+Data_30115: ; 30115
+	dr $30115, $30142
+
+Data_30142: ; 30142
+	dr $30142, $30151
 
 Data_30151:
 	dr $30151, $301bd
@@ -63529,9 +63578,9 @@ Func_305f4: ; 305f4 (c:45f4)
 	call FarCall
 	push hl
 	set_farcall_addrs_hli Func_1445e
-	ld c, $c
-	ld de, $4142
-	ld hl, $4115
+	ld c, BANK(Data_30142)
+	ld de, Data_30142
+	ld hl, Data_30115
 	call FarCall
 	push de
 	push hl
@@ -69730,17 +69779,17 @@ Func_331b6: ; 331b6 (c:71b6)
 	cp $3
 	jp nz, Func_331e6
 	set_farcall_addrs_hli Func_1445e
-	ld c, $16
-	ld de, $4c3a
-	ld hl, $4c01
+	ld c, BANK(Data_58c3a)
+	ld de, Data_58c3a
+	ld hl, Data_58c01
 	call FarCall
 	jp Func_331fc
 
 Func_331e6: ; 331e6 (c:71e6)
 	set_farcall_addrs_hli Func_1445e
-	ld c, $16
-	ld de, $4c96
-	ld hl, $4c49
+	ld c, BANK(Data_58c96)
+	ld de, Data_58c96
+	ld hl, Data_58c49
 	call FarCall
 Func_331fc: ; 331fc (c:71fc)
 	call Func_3aa8
@@ -69772,9 +69821,9 @@ Func_3321d: ; 3321d (c:721d)
 	pop bc
 	pop bc
 	set_farcall_addrs_hli Func_1445e
-	ld c, $c
-	ld de, $4020
-	ld hl, $4001
+	ld c, BANK(Data_30020)
+	ld de, Data_30020
+	ld hl, Data_30001
 	call FarCall
 	pop hl
 	push hl
@@ -69807,9 +69856,9 @@ Func_3321d: ; 3321d (c:721d)
 
 Func_33294: ; 33294 (c:7294)
 	set_farcall_addrs_hli Func_1445e
-	ld c, $c
-	ld de, $404e
-	ld hl, $402f
+	ld c, BANK(Data_3004e)
+	ld de, Data_3004e
+	ld hl, Data_3002f
 	call FarCall
 Func_332aa: ; 332aa (c:72aa)
 	ret
@@ -69835,17 +69884,17 @@ Func_332ab: ; 332ab (c:72ab)
 	or a
 	jp nz, Func_332f6
 	set_farcall_addrs_hli Func_1445e
-	ld c, $c
-	ld de, $407c
-	ld hl, $405d
+	ld c, BANK(Data_3007c)
+	ld de, Data_3007c
+	ld hl, Data_3005d
 	call FarCall
 	jp Func_3330c
 
 Func_332f6: ; 332f6 (c:72f6)
 	set_farcall_addrs_hli Func_1445e
-	ld c, $c
-	ld de, $40aa
-	ld hl, $408b
+	ld c, BANK(Data_300aa)
+	ld de, Data_300aa
+	ld hl, Data_3008b
 	call FarCall
 Func_3330c: ; 3330c (c:730c)
 	call Func_2009
@@ -69872,17 +69921,17 @@ Func_33339: ; 33339 (c:7339)
 	or a
 	jp nz, Func_3335b
 	set_farcall_addrs_hli Func_1445e
-	ld c, $c
-	ld de, $40d8
-	ld hl, $40b9
+	ld c, BANK(Data_300d8)
+	ld de, Data_300d8
+	ld hl, Data_300b9
 	call FarCall
 	jp Func_33371
 
 Func_3335b: ; 3335b (c:735b)
 	set_farcall_addrs_hli Func_1445e
-	ld c, $c
-	ld de, $4106
-	ld hl, $40e7
+	ld c, BANK(Data_30106)
+	ld de, Data_30106
+	ld hl, Data_300e7
 	call FarCall
 Func_33371: ; 33371 (c:7371)
 	call Func_2009
@@ -70124,9 +70173,9 @@ Func_33524:
 
 Func_33555: ; 33555 (c:7555)
 	set_farcall_addrs_hli Func_1445e
-	ld c, $16
-	ld de, $4cc4
-	ld hl, $4ca5
+	ld c, BANK(Data_58cc4)
+	ld de, Data_58cc4
+	ld hl, Data_58ca5
 	call FarCall
 Func_3356b: ; 3356b (c:756b)
 	call Func_3af6
@@ -71594,7 +71643,16 @@ Func_4c000:
 	ret
 
 Data_4c001:
-	dr $4c001, $4c0ac
+	dr $4c001, $4c06f
+
+Data_4c06f: ; 4c06f
+	dr $4c06f, $4c07e
+
+Data_4c07e: ; 4c07e
+	dr $4c07e, $4c09d
+
+Data_4c09d: ; 4c09d
+	dr $4c09d, $4c0ac
 
 Func_4c0ac: ; 4c0ac (13:40ac)
 	ld l, $12
@@ -71914,9 +71972,9 @@ Func_4c369: ; 4c369 (13:4369)
 	call PlaceStringDEatCoordHL
 	call Func_4c0b9
 	set_farcall_addrs_hli Func_1445e
-	ld c, $13
-	ld de, $406f
-	ld hl, $4001
+	ld c, BANK(Data_4c06f)
+	ld de, Data_4c06f
+	ld hl, Data_4c001
 	call FarCall
 	jp Func_4c3bc
 
@@ -71960,9 +72018,9 @@ Func_4c3de: ; 4c3de (13:43de)
 	ld [wOAM01Attrs], a
 	callba_hli Func_17470
 	set_farcall_addrs_hli Func_1445e
-	ld c, $16
-	ld de, $4d4e
-	ld hl, $4d2f
+	ld c, BANK(Data_58d4e)
+	ld de, Data_58d4e
+	ld hl, Data_58d2f
 	call FarCall
 	callba_hli Func_17488
 	call Func_4c21e
@@ -72821,9 +72879,9 @@ Func_4cc47: ; 4cc47 (13:4c47)
 	jp nz, Func_4cc4f
 Func_4cc4f: ; 4cc4f (13:4c4f)
 	set_farcall_addrs_hli Func_1445e
-	ld c, $13
-	ld de, $409d
-	ld hl, $407e
+	ld c, BANK(Data_4c09d)
+	ld de, Data_4c09d
+	ld hl, Data_4c07e
 	call FarCall
 	call WriteHLToSPPlus8
 	ld a, [wOAM06XCoord]
@@ -79590,7 +79648,22 @@ Func_50000:
 	ret
 
 Data_50001:
-	dr $50001, $50185
+	dr $50001, $50020
+
+Data_50020: ; 50020
+	dr $50020, $500b9
+
+Data_500b9: ; 500b9
+	dr $500b9, $500d8
+
+Data_500d8: ; 500d8
+	dr $500d8, $500e7
+
+Data_500e7: ; 500e7
+	dr $500e7, $50148
+
+Data_50148: ; 50148
+	dr $50148, $50185
 
 Func_50185: ; 50185 (14:4185)
 	push hl
@@ -79624,8 +79697,8 @@ Func_5019a:
 	and $7f
 	ld [wOAM02YCoord], a
 	set_farcall_addrs_hli Func_1445e
-	ld c, $14
-	ld de, $4020
+	ld c, BANK(Data_50020)
+	ld de, Data_50020
 	ld hl, Data_50001
 	call FarCall
 	ret
@@ -80691,9 +80764,9 @@ Data_508cf:
 
 Func_508d2:
 	set_farcall_addrs_hli Func_1445e
-	ld c, $14
-	ld de, $40d8
-	ld hl, $40b9
+	ld c, BANK(Data_500d8)
+	ld de, Data_500d8
+	ld hl, Data_500b9
 	jp FarCall
 
 Func_508e8:
@@ -82779,8 +82852,288 @@ Func_518e3: ; 518e3 (14:58e3)
 	add sp, $3a
 	ret
 
-Func_5190c: ; $5190c
-	dr $5190c, $51bf3
+Func_5190c: ; 5190c (14:590c)
+	set_farcall_addrs_hli Func_1445e
+	ld c, BANK(Data_50148)
+	ld de, Data_50148
+	ld hl, Data_500e7
+	call FarCall
+	ret
+
+Func_51923:
+	ld c, l
+	ld b, h
+	push bc
+	callba_hli Func_17488
+	call Func_2097
+	set_farcall_addrs_hli Func_81cf
+	pop bc
+	ld hl, $5
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	add hl, de
+	inc hl
+	inc hl
+	ld c, l
+	ld e, $0
+	xor a
+	call FarCall
+	ld hl, -1
+	ret
+
+Func_51961:
+	ld a, $7
+	ld [$c790], a
+	ret
+
+Data_51967:
+	dr $51967, $51975
+
+Func_51975:
+	ld a, $6
+	ld [$c790], a
+	ld a, $b
+	ld [$c78c], a
+	xor a
+Func_51980: ; 51980 (14:5980)
+	cp $e
+	jp nc, Func_519a7
+	push af
+	set_farcall_addrs_hli Func_a98b
+	pop af
+	push af
+	ld e, a
+	ld d, $0
+	ld hl, Data_51967
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld e, $1
+	call FarCall
+	pop af
+	inc a
+	jp Func_51980
+
+Func_519a7: ; 519a7 (14:59a7)
+	set_farcall_addrs_hli Func_5a149
+	ld c, $2
+	ld e, $1
+	ld a, $12
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $4
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $5
+	call FarCall
+	ret
+
+Data_519dc:
+	dr $519dc, $519ea
+
+Func_519ea:
+	ld a, $5
+	ld [$c790], a
+	xor a
+Func_519f0: ; 519f0 (14:59f0)
+	cp $e
+	jp nc, Func_51a17
+	push af
+	set_farcall_addrs_hli Func_a98b
+	pop af
+	push af
+	ld e, a
+	ld d, $0
+	ld hl, Data_519dc
+	add hl, de
+.asm_51a0a
+	ld l, [hl]
+	ld h, $0
+	ld e, $1
+	call FarCall
+	pop af
+	inc a
+	jp Func_519f0
+
+Func_51a17: ; 51a17 (14:5a17)
+	set_farcall_addrs_hli Func_5a149
+	ld c, $2
+	ld e, $1
+	ld a, $13
+	call FarCall
+	set_farcall_addrs_hli Func_5a149
+	ld c, $0
+	ld e, $1
+	ld a, $3
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $6
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $7
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $8
+	call FarCall
+	ret
+
+Data_51a70:
+	dr $51a70, $51a81
+
+Func_51a81:
+	ld a, $4
+	ld [$c790], a
+	ld a, $7
+	ld [$c78d], a
+	xor a
+Func_51a8c: ; 51a8c (14:5a8c)
+	cp $11
+	jp nc, Func_51ab3
+	push af
+	set_farcall_addrs_hli Func_a98b
+	pop af
+	push af
+	ld e, a
+	ld d, $0
+	ld hl, Data_51a70
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld e, $1
+	call FarCall
+	pop af
+	inc a
+	jp Func_51a8c
+
+Func_51ab3: ; 51ab3 (14:5ab3)
+	set_farcall_addrs_hli Func_5a149
+	ld c, $0
+	ld e, $1
+	ld a, $4
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $9
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $10
+	call FarCall
+	ret
+
+Data_51ae8:
+	dr $51ae8, $51aec
+
+Data_51aec:
+	dr $51aec, $51aef
+
+Func_51aef:
+	ld a, $1
+	ld [$c78d], a
+	ld a, $3
+	ld [$c790], a
+	xor a
+Func_51afa: ; 51afa (14:5afa)
+	cp $4
+	jp nc, Func_51b21
+	push af
+	set_farcall_addrs_hli Func_a98b
+	pop af
+	push af
+	ld e, a
+	ld d, $0
+	ld hl, Data_51ae8
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld e, $1
+	call FarCall
+	pop af
+	inc a
+	jp Func_51afa
+
+Func_51b21: ; 51b21 (14:5b21)
+	xor a
+Func_51b22: ; 51b22 (14:5b22)
+	cp $3
+	jp nc, Func_51b49
+	push af
+	set_farcall_addrs_hli Func_5a149
+	pop af
+	push af
+	ld e, a
+	ld d, $0
+	ld hl, Data_51aec
+	add hl, de
+	ld a, [hl]
+	ld e, $1
+	ld c, $2
+	call FarCall
+	pop af
+	inc a
+	jp Func_51b22
+
+Func_51b49: ; 51b49 (14:5b49)
+	set_farcall_addrs_hli Func_e2780
+	ld a, $a
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $b
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $11
+	call FarCall
+	ret
+
+Data_51b7a:
+	dr $51b7a, $51b81
+
+Func_51b81:
+	ld a, $2
+	ld [$c790], a
+	xor a
+Func_51b87: ; 51b87 (14:5b87)
+	cp $7
+	jp nc, Func_51bae
+	push af
+	set_farcall_addrs_hli Func_a98b
+	pop af
+	push af
+	ld e, a
+	ld d, $0
+	ld hl, Data_51b7a
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld e, $1
+	call FarCall
+	pop af
+	inc a
+	jp Func_51b87
+
+Func_51bae: ; 51bae (14:5bae)
+	set_farcall_addrs_hli Func_e2780
+	ld a, $c
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $e
+	call FarCall
+	set_farcall_addrs_hli Func_e2780
+	ld a, $f
+	call FarCall
+	ret
+
+Data_51bdf:
+	dr $51bdf, $51bf3
 
 Func_51bf3: ; $51bf3
 	dr $51bf3, $524b6
@@ -82873,7 +83226,31 @@ Func_57c4a: ; 57c4a
 	dr $57c4a, $58000
 
 SECTION "Bank 16", ROMX, BANK [$16]
-	dr $58000, $58df9
+	dr $58000, $58c01
+
+Data_58c01: ; 58c01
+	dr $58c01, $58c3a
+
+Data_58c3a: ; 58c3a
+	dr $58c3a, $58c49
+
+Data_58c49: ; 58c49
+	dr $58c49, $58c96
+
+Data_58c96: ; 58c96
+	dr $58c96, $58ca5
+
+Data_58ca5: ; 58ca5
+	dr $58ca5, $58cc4
+
+Data_58cc4: ; 58cc4
+	dr $58cc4, $58d2f
+
+Data_58d2f: ; 58d2f
+	dr $58d2f, $58d4e
+
+Data_58d4e: ; 58d4e
+	dr $58d4e, $58df9
 
 Func_58df9:
 	dr $58df9, $59087
