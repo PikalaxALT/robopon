@@ -3,7 +3,7 @@ Func_022c: ; 22c (0:022c)
 	jr asm_0253
 
 Func_0230: ; 230 (0:0230)
-	ld l, Func_70003_1c % $100
+	ld l, UpdateSound_1c % $100
 	jr asm_0253
 
 Func_0234: ; 234 (0:0234)

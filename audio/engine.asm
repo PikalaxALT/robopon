@@ -2,8 +2,8 @@ audio_engine: MACRO
 Func_70000_\1::
 	jp Func_70088_\1
 
-Func_70003_\1:: ; 70003 (1c:4003)
-	jp Func_700f4_\1
+UpdateSound_\1:: ; 70003 (1c:4003)
+	jp UpdateSound__\1
 
 Func_70006_\1:: ; 70006 (1c:4006)
 	jp Func_70021_\1
@@ -168,9 +168,9 @@ Func_70088_\1: ; 70088 (1c:4088)
 	jr nz, .asm_700ed
 	ret
 
-Func_700f4_\1: ; 700f4 (1c:40f4)
-	call Func_702af_\1
-	call Func_70127_\1
+UpdateSound__\1: ; 700f4 (1c:40f4)
+	call DeletedFunc702af_\1
+	call PlayAudio_\1
 	ld hl, Func_76803
 	call AudioEngineFarCall
 	ld a, [wAudioROMBank]
@@ -178,21 +178,21 @@ Func_700f4_\1: ; 700f4 (1c:40f4)
 	ld [HuC3RomBank], a
 	ld a, [$c172]
 	cp $0
-	jr z, .asm_70114
+	jr z, .play_channels
 	call Func_70976_\1
-	jr .asm_70120
+	jr .done
 
-.asm_70114
-	call Func_702b0_\1
-	call Func_70315_\1
-	call Func_7037a_\1
-	call Func_703d9_\1
-.asm_70120
+.play_channels
+	call PlayChannel1_\1
+	call PlayChannel2_\1
+	call PlayChannel3_\1
+	call PlayChannel4_\1
+.done
 	call Func_7086f_\1
 	call Func_709a7_\1
 	ret
 
-Func_70127_\1: ; 70127 (1c:4127)
+PlayAudio_\1: ; 70127 (1c:4127)
 	ld a, [wSongIndex]
 	rla
 	jr c, .already_started_song
@@ -385,10 +385,10 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [$c172], a
 	ret
 
-Func_702af_\1: ; 702af (1c:42af)
+DeletedFunc702af_\1: ; 702af (1c:42af)
 	ret
 
-Func_702b0_\1: ; 702b0 (1c:42b0)
+PlayChannel1_\1: ; 702b0 (1c:42b0)
 	ld a, [$c10d]
 	or a
 	jr z, .asm_70305
@@ -442,7 +442,7 @@ Func_702b0_\1: ; 702b0 (1c:42b0)
 .asm_70314
 	ret
 
-Func_70315_\1: ; 70315 (1c:4315)
+PlayChannel2_\1: ; 70315 (1c:4315)
 	ld a, [$c10e]
 	or a
 	jr z, .asm_7036a
@@ -496,7 +496,7 @@ Func_70315_\1: ; 70315 (1c:4315)
 .asm_70379
 	ret
 
-Func_7037a_\1: ; 7037a (1c:437a)
+PlayChannel3_\1: ; 7037a (1c:437a)
 	ld a, [$c10f]
 	or a
 	jr z, .asm_703c9
@@ -546,7 +546,7 @@ Func_7037a_\1: ; 7037a (1c:437a)
 .asm_703d8
 	ret
 
-Func_703d9_\1: ; 703d9 (1c:43d9)
+PlayChannel4_\1: ; 703d9 (1c:43d9)
 	ld a, [$c110]
 	or a
 	jr z, .asm_7040b
@@ -587,6 +587,8 @@ Func_703d9_\1: ; 703d9 (1c:43d9)
 	ret
 
 AudioCommandProcessor_\1: ; 7041f (1c:441f)
+	; hl = song pointer
+	; bc = which channel
 	ld a, [hli]
 	push hl
 	push af

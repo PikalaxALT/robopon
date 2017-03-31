@@ -1686,7 +1686,7 @@ TimerInterrupt:
 	inc a
 	ld [wTimerCounter + 1], a
 .increment_frame_counter
-	call Func_1a94
+	call UpdateSound
 	call Func_2a49
 	ld a, [wc208]
 	or a
@@ -2571,7 +2571,7 @@ Func_1a1f:
 	add sp, $6
 	ret
 
-Func_1a70:
+CallAudioEngine1C:
 	ld h, a
 	ld a, [wVideoTransferRequestFlags]
 	bit 0, a
@@ -2598,16 +2598,16 @@ Func_1a70:
 
 Func_1a90: ; 1a90 (0:1a90)
 	ld l, Func_70000_1c % $100
-	jr Func_1a70
+	jr CallAudioEngine1C
 
-Func_1a94: ; 1a94 (0:1a94)
+UpdateSound: ; 1a94 (0:1a94)
 	ld a, [hROMBank]
 	ld [wVideoTransferRequestBank], a
 	ld a, [wVideoTransferRequestFlags]
 	set 1, a
 	ld [wVideoTransferRequestFlags], a
-	ld l, Func_70003_1c % $100
-	call Func_1a70
+	ld l, UpdateSound_1c % $100
+	call CallAudioEngine1C
 	ld a, [wVideoTransferRequestFlags]
 	res 1, a
 	ld [wVideoTransferRequestFlags], a
@@ -2616,46 +2616,46 @@ Func_1a94: ; 1a94 (0:1a94)
 Func_1aaf: ; 1aaf (0:1aaf)
 	ld l, Func_70006_1c % $100
 	ld h, a
-	jr Func_1a70
+	jr CallAudioEngine1C
 
 Func_1ab4: ; 1ab4 (0:1ab4)
 	ld l, Func_70009_1c % $100
 	ld h, a
-	jr Func_1a70
+	jr CallAudioEngine1C
 
 Func_1ab9:
 	ld l, Func_7000c_1c % $100
 	ld h, a
-	jr Func_1a70
+	jr CallAudioEngine1C
 
 Func_1abe:
 	ld l, Func_7000f_1c % $100
-	call Func_1a70
+	call CallAudioEngine1C
 	ld a, h
 	ret
 
 Func_1ac5:
 	ld l, Func_70012_1c % $100
-	call Func_1a70
+	call CallAudioEngine1C
 	ld a, h
 	ret
 
 Func_1acc:
 	ld l, Func_70015_1c % $100
-	jr Func_1a70
+	jr CallAudioEngine1C
 
 Func_1ad0:
 	ld l, Func_70018_1c % $100
 	ld h, a
-	jr Func_1a70
+	jr CallAudioEngine1C
 
 Func_1ad5:
 	ld l, Func_7001b_1c % $100
-	jr Func_1a70
+	jr CallAudioEngine1C
 
 Func_1ad9:
 	ld l, Func_7001e_1c % $100
-	jr Func_1a70
+	jr CallAudioEngine1C
 
 Func_1add:
 	di
