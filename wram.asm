@@ -26,6 +26,14 @@ wChannel2StartPointer:: dw ; c11f
 wChannel3StartPointer:: dw ; c121
 wChannel4StartPointer:: dw ; c123
 
+	ds 10
+
+wChannelOctaves::
+wChannel1Octave:: db ; c12f
+wChannel2Octave:: db ; c130
+wChannel3Octave:: db ; c131
+wChannel4Octave:: db ; c132
+
 SECTION "LCD Interrupt", WRAM0 [$c200]
 wLCD:: ds $3 ; c200
 

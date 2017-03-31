@@ -610,25 +610,25 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 
 .pointers_70437
 	dw Func_705a3_\1
-	dw Func_705ae_\1
-	dw Func_705ae_\1
-	dw Func_705ae_\1
-	dw Func_705ae_\1
-	dw Func_705ae_\1
-	dw Func_705ae_\1
-	dw Func_705c6_\1
-	dw Func_705ce_\1
+	dw MusicCommand_Octave_\1
+	dw MusicCommand_Octave_\1
+	dw MusicCommand_Octave_\1
+	dw MusicCommand_Octave_\1
+	dw MusicCommand_Octave_\1
+	dw MusicCommand_Octave_\1
+	dw AudioCommand_OctaveUp_\1
+	dw AudioCommand_OctaveDown_\1
 	dw Func_705d6_\1
 	dw Func_706fd_\1
 	dw Func_706fd_\1
 	dw Func_705df_\1
-	dw Func_705fa_\1
-	dw Func_70608_\1
-	dw Func_70614_\1
-	dw Func_70629_\1
-	dw Func_70643_\1
-	dw Func_7064a_\1
-	dw Func_70661_\1
+	dw AudioCommand_SetStartPointer_\1
+	dw AudioCommand_JumpStartPointer_\1
+	dw AudioCommand_SetLoop_\1
+	dw AudioCommand_DoLoop_\1
+	dw AudioCommand_JumpChannel_\1
+	dw AudioCommand_CallChannel_\1
+	dw AudioCommand_RetChannel_\1
 	dw Func_70672_\1
 	dw Func_7067f_\1
 	dw Func_7068c_\1
@@ -764,7 +764,7 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 
 .asm_70525
 	push af
-	ld hl, $c12f
+	ld hl, wChannelOctaves
 	add hl, bc
 	ld a, [hl]
 	ld d, a
@@ -821,7 +821,7 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	add hl, bc
 	add hl, bc
 	push hl
-	ld hl, $c12f
+	ld hl, wChannelOctaves
 	add hl, bc
 	ld e, [hl]
 	ld d, $0
@@ -863,44 +863,44 @@ Func_705a3_\1: ; 705a3 (1c:45a3)
 	ld hl, $c14f
 	add hl, bc
 	ld [hl], a
-	jp Func_70719_\1
+	jp NextAudioCommand_\1
 
-Func_705ae_\1: ; 705ae (1c:45ae)
+MusicCommand_Octave_\1: ; 705ae (1c:45ae)
 	and $7
 	dec a
-	ld hl, $c12f
+	ld hl, wChannelOctaves
 	add hl, bc
 	push af
 	ld a, c
 	cp $2
-	jr nz, .asm_705c1
+	jr nz, .not_ch2
 	pop af
 	inc a
 	ld [hl], a
-	jp Func_70719_\1
+	jp NextAudioCommand_\1
 
-.asm_705c1
+.not_ch2
 	pop af
 	ld [hl], a
-	jp Func_70719_\1
+	jp NextAudioCommand_\1
 
-Func_705c6_\1: ; 705c6 (1c:45c6)
-	ld hl, $c12f
+AudioCommand_OctaveUp_\1: ; 705c6 (1c:45c6)
+	ld hl, wChannelOctaves
 	add hl, bc
 	inc [hl]
-	jp Func_70719_\1
+	jp NextAudioCommand_\1
 
-Func_705ce_\1: ; 705ce (1c:45ce)
-	ld hl, $c12f
+AudioCommand_OctaveDown_\1: ; 705ce (1c:45ce)
+	ld hl, wChannelOctaves
 	add hl, bc
 	dec [hl]
-	jp Func_70719_\1
+	jp NextAudioCommand_\1
 
 Func_705d6_\1: ; 705d6 (1c:45d6)
 	ld hl, $c111
 	add hl, bc
 	ld [hl], $80
-	jp Func_70719_\1
+	jp NextAudioCommand_\1
 
 Func_705df_\1: ; 705df (1c:45df)
 	pop hl
@@ -924,9 +924,9 @@ Func_705df_\1: ; 705df (1c:45df)
 	or d
 	ld [hl], a
 	pop bc
-	jp Func_70719_\1
+	jp NextAudioCommand_\1
 
-Func_705fa_\1: ; 705fa (1c:45fa)
+AudioCommand_SetStartPointer_\1: ; 705fa (1c:45fa)
 	pop de
 	push de
 	dec de
@@ -936,9 +936,9 @@ Func_705fa_\1: ; 705fa (1c:45fa)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	jp Func_70719_\1
+	jp NextAudioCommand_\1
 
-Func_70608_\1: ; 70608 (1c:4608)
+AudioCommand_JumpStartPointer_\1: ; 70608 (1c:4608)
 	pop hl
 	ld hl, wChannelStartPointers
 	add hl, bc
@@ -948,12 +948,12 @@ Func_70608_\1: ; 70608 (1c:4608)
 	ld l, a
 	jp AudioCommandProcessor_\1
 
-Func_70614_\1: ; 70614 (1c:4614)
+AudioCommand_SetLoop_\1: ; 70614 (1c:4614)
 	pop de
 	ld a, [de]
 	inc de
 	push af
-	call Func_70705_\1
+	call AudioCommand_GetChannelStackPointer_\1
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -962,15 +962,15 @@ Func_70614_\1: ; 70614 (1c:4614)
 	ld [hl], a
 	inc hl
 	push de
-	call Func_7070e_\1
-	jp Func_70719_\1
+	call AudioCommand_PushLoopAddress_\1
+	jp NextAudioCommand_\1
 
-Func_70629_\1: ; 70629 (1c:4629)
-	call Func_70705_\1
+AudioCommand_DoLoop_\1: ; 70629 (1c:4629)
+	call AudioCommand_GetChannelStackPointer_\1
 	dec hl
 	ld a, [hl]
 	dec a
-	jr z, .asm_7063b
+	jr z, .done_loop
 	ld [hld], a
 	ld d, [hl]
 	dec hl
@@ -980,21 +980,21 @@ Func_70629_\1: ; 70629 (1c:4629)
 	ld l, e
 	jp AudioCommandProcessor_\1
 
-.asm_7063b
+.done_loop
 	dec hl
 	dec hl
-	call Func_7070e_\1
-	jp Func_70719_\1
+	call AudioCommand_PushLoopAddress_\1
+	jp NextAudioCommand_\1
 
-Func_70643_\1: ; 70643 (1c:4643)
+AudioCommand_JumpChannel_\1: ; 70643 (1c:4643)
 	pop hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	jp AudioCommandProcessor_\1
 
-Func_7064a_\1: ; 7064a (1c:464a)
-	call Func_70705_\1
+AudioCommand_CallChannel_\1: ; 7064a (1c:464a)
+	call AudioCommand_GetChannelStackPointer_\1
 	pop de
 	ld a, e
 	ld [hli], a
@@ -1008,12 +1008,12 @@ Func_7064a_\1: ; 7064a (1c:464a)
 	ld e, b
 	ld b, $0
 	push de
-	call Func_7070e_\1
-	jp Func_70719_\1
+	call AudioCommand_PushLoopAddress_\1
+	jp NextAudioCommand_\1
 
-Func_70661_\1: ; 70661 (1c:4661)
+AudioCommand_RetChannel_\1: ; 70661 (1c:4661)
 	pop de
-	call Func_70705_\1
+	call AudioCommand_GetChannelStackPointer_\1
 	dec hl
 	ld a, [hld]
 	ld e, [hl]
@@ -1021,8 +1021,8 @@ Func_70661_\1: ; 70661 (1c:4661)
 	inc de
 	inc de
 	push de
-	call Func_7070e_\1
-	jp Func_70719_\1
+	call AudioCommand_PushLoopAddress_\1
+	jp NextAudioCommand_\1
 
 Func_70672_\1: ; 70672 (1c:4672)
 	pop de
@@ -1145,7 +1145,7 @@ Func_706fd_\1: ; 706fd (1c:46fd)
 	pop hl
 	ret
 
-Func_70705_\1: ; 70705 (1c:4705)
+AudioCommand_GetChannelStackPointer_\1: ; 70705 (1c:4705)
 	ld hl, $c173
 	add hl, bc
 	add hl, bc
@@ -1154,7 +1154,7 @@ Func_70705_\1: ; 70705 (1c:4705)
 	ld l, a
 	ret
 
-Func_7070e_\1: ; 7070e (1c:470e)
+AudioCommand_PushLoopAddress_\1: ; 7070e (1c:470e)
 	ld d, h
 	ld e, l
 	ld hl, $c173
@@ -1165,7 +1165,7 @@ Func_7070e_\1: ; 7070e (1c:470e)
 	ld [hl], d
 	ret
 
-Func_70719_\1: ; 70719 (1c:4719)
+NextAudioCommand_\1: ; 70719 (1c:4719)
 	pop hl
 	jp AudioCommandProcessor_\1
 
@@ -1670,7 +1670,7 @@ Func_709ce_\1: ; 709ce (1c:49ce)
 	ld [$c041], a
 	ld a, [$c12c]
 	ld [$c042], a
-	ld hl, $c12f
+	ld hl, wChannelOctaves
 	ld de, $c043
 	ld a, $4
 	call Func_70c0a_\1
@@ -1779,7 +1779,7 @@ Func_70af3_\1: ; 70af3 (1c:4af3)
 	ld a, [$c042]
 	ld [$c12c], a
 	ld hl, $c043
-	ld de, $c12f
+	ld de, wChannelOctaves
 	ld a, $4
 	call Func_70c0a_\1
 	ld hl, $c047
