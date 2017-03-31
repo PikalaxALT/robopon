@@ -299,8 +299,8 @@ Pointers_01e0:
 	dw NullPredef
 	dw Func_0296
 	dw Func_022c
-	dw Func_0230
-	dw Func_0234
+	dw UpdateSoundPredef
+	dw StartSongPredef
 	dw Func_0238
 	dw Func_0241
 	dw Func_0245
@@ -321,7 +321,7 @@ Func_021c: ; 21c (0:021c)
 	push hl
 	ld a, [hFF99]
 	bit 2, a
-	call nz, Func_0230
+	call nz, UpdateSoundPredef
 	pop hl
 	pop de
 	pop bc
@@ -2615,7 +2615,7 @@ UpdateSound: ; 1a94 (0:1a94)
 	ret
 
 Func_1aaf: ; 1aaf (0:1aaf)
-	ld l, Func_70006_1c % $100
+	ld l, StartSong_1c % $100
 	ld h, a
 	jr CallAudioEngine1C
 
@@ -96817,7 +96817,7 @@ Func_7c19f: ; 7c19f (1f:419f)
 	jr z, .asm_7c1aa
 	predef Func_024d
 .asm_7c1aa
-	predef Func_0230
+	predef UpdateSoundPredef
 	pop hl
 	pop de
 	pop bc

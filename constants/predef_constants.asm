@@ -26,8 +26,8 @@ predef_const: MACRO
 	predef_const NullPredef_6
 	predef_const Func_0296 ; 10
 	predef_const Func_022c
-	predef_const Func_0230
-	predef_const Func_0234
+	predef_const UpdateSoundPredef
+	predef_const StartSongPredef
 	predef_const Func_0238
 	predef_const Func_0241
 	predef_const Func_0245

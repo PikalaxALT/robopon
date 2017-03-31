@@ -2,12 +2,12 @@ Func_022c: ; 22c (0:022c)
 	ld l, Func_70000_1c % $100
 	jr asm_0253
 
-Func_0230: ; 230 (0:0230)
+UpdateSoundPredef: ; 230 (0:0230)
 	ld l, UpdateSound_1c % $100
 	jr asm_0253
 
-Func_0234: ; 234 (0:0234)
-	ld l, Func_70006_1c % $100
+StartSongPredef: ; 234 (0:0234)
+	ld l, StartSong_1c % $100
 	jr asm_0253
 
 Func_0238: ; 238 (0:0238)

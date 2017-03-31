@@ -5,8 +5,8 @@ Func_70000_\1::
 UpdateSound_\1:: ; 70003 (1c:4003)
 	jp UpdateSound__\1
 
-Func_70006_\1:: ; 70006 (1c:4006)
-	jp Func_70021_\1
+StartSong_\1:: ; 70006 (1c:4006)
+	jp StartSong__\1
 
 Func_70009_\1:: ; 70009 (1c:4009)
 	jp Func_70038_\1
@@ -32,18 +32,18 @@ Func_7001b_\1:: ; 7001b (1c:401b)
 Func_7001e_\1:: ; 7001e (1c:401e)
 	jp Func_709c4_\1
 
-Func_70021_\1: ; 70021 (1c:4021)
+StartSong__\1: ; 70021 (1c:4021)
 	push hl
-	ld hl, Data_7129b_\1
+	ld hl, NumSongs_\1
 	cp [hl]
-	jr nc, .asm_70036
+	jr nc, .invalid
 	ld [wSongIndex], a
 	xor a
 	ld [$c10b], a
 	ld [$c16f], a
 	dec a
 	ld [$c104], a
-.asm_70036
+.invalid
 	pop hl
 	ret
 
@@ -53,21 +53,21 @@ Func_70038_\1: ; 70038 (1c:4038)
 	ld b, $0
 	ld c, a
 	or a
-	jr z, .asm_7004e
+	jr z, .load
 	ld hl, Data_7122e_\1
 	add hl, bc
 	ld b, [hl]
 	ld a, [$c103]
 	or a
-	jr z, .asm_7004e
+	jr z, .load
 	cp b
-	jr c, .asm_70056
-.asm_7004e
+	jr c, .done
+.load
 	ld a, c
 	ld [wSFXIndex], a
 	ld a, b
 	ld [$c103], a
-.asm_70056
+.done
 	pop hl
 	pop bc
 	ret
@@ -1855,6 +1855,413 @@ Func_70c0a_\1: ; 70c0a (1c:4c0a)
 	dec c
 	jr nz, .asm_70c0b
 	ret
+
+
+Data_70c12_\1: ; $70c12
+	dw $c17b
+
+Data_70c14_\1: ; $70c14
+	dw $c187
+
+Data_70c16_\1: ; $70c16
+	dw $c193
+
+Data_70c18_\1: ; $70c18
+	dw $c19f
+
+Data_70c1a_\1: ; $70c1a
+	db   0
+	db  24
+	db  48
+	db  72
+	db  96
+	db 120
+	db 144
+	db 168
+
+Data_70c22_\1: ; $70c22
+	dw $002c
+	dw $009c
+	dw $0106
+	dw $016b
+	dw $01c9
+	dw $0222
+	dw $0278
+	dw $02c6
+	dw $0312
+	dw $0358
+	dw $039b
+	dw $03da
+	dw $0416
+	dw $044e
+	dw $0483
+	dw $04b5
+	dw $04e5
+	dw $0511
+	dw $053c
+	dw $0563
+	dw $0589
+	dw $05ac
+	dw $05cd
+	dw $05ed
+	dw $060b
+	dw $0628
+	dw $0642
+	dw $065b
+	dw $0672
+	dw $0689
+	dw $069e
+	dw $06b2
+	dw $06c4
+	dw $06d6
+	dw $06e7
+	dw $06f6
+	dw $0705
+	dw $0714
+	dw $0721
+	dw $072d
+	dw $0739
+	dw $0744
+	dw $074f
+	dw $0759
+	dw $0762
+	dw $076b
+	dw $0773
+	dw $077b
+	dw $0783
+	dw $078a
+	dw $0790
+	dw $0797
+	dw $079d
+	dw $07a2
+	dw $07a7
+	dw $07ac
+	dw $07b1
+	dw $07b6
+	dw $07ba
+	dw $07be
+	dw $07c1
+	dw $07c5
+	dw $07c8
+	dw $07cb
+	dw $07ce
+	dw $07d1
+	dw $07d4
+	dw $07d6
+	dw $07d9
+	dw $07db
+	dw $07dd
+	dw $07df
+	dw $07e1
+	dw $07e3
+	dw $07e4
+	dw $07e5
+	dw $07e7
+	dw $07e8
+	dw $07ea
+	dw $07eb
+	dw $07ec
+	dw $07ed
+	dw $07ee
+	dw $07ef
+	dw $07f0
+
+Data_70ccc_\1: ; $70ccc
+	dw Data_70cf4_\1
+	dw Data_70d04_\1
+	dw Data_70d14_\1
+	dw Data_70d24_\1
+	dw Data_70d34_\1
+	dw Data_70d44_\1
+	dw Data_70d54_\1
+	dw Data_70d64_\1
+	dw Data_70da4_\1
+	dw Data_70db4_\1
+	dw Data_70dc4_\1
+	dw Data_70dd4_\1
+	dw Data_70d84_\1
+	dw Data_70d84_\1
+	dw Data_70d94_\1
+	dw Data_70d84_\1
+	dw Data_70d84_\1
+	dw Data_70d84_\1
+	dw Data_70d84_\1
+	dw Data_70d74_\1
+
+Data_70cf4_\1: ; 70cf4
+	dr $70cf4, $70d04
+
+Data_70d04_\1: ; 70d04
+	dr $70d04, $70d14
+
+Data_70d14_\1: ; 70d14
+	dr $70d14, $70d24
+
+Data_70d24_\1: ; 70d24
+	dr $70d24, $70d34
+
+Data_70d34_\1: ; 70d34
+	dr $70d34, $70d44
+
+Data_70d44_\1: ; 70d44
+	dr $70d44, $70d54
+
+Data_70d54_\1: ; 70d54
+	dr $70d54, $70d64
+
+Data_70d64_\1: ; 70d64
+	dr $70d64, $70d74
+
+Data_70d74_\1: ; 70d74
+	dr $70d74, $70d84
+
+Data_70d84_\1: ; 70d84
+	dr $70d84, $70d94
+
+Data_70d94_\1: ; 70d94
+	dr $70d94, $70da4
+
+Data_70da4_\1: ; 70da4
+	dr $70da4, $70db4
+
+Data_70db4_\1: ; 70db4
+	dr $70db4, $70dc4
+
+Data_70dc4_\1: ; 70dc4
+	dr $70dc4, $70dd4
+
+Data_70dd4_\1: ; 70dd4
+	dr $70dd4, $70de4
+
+Data_70de4_\1: ; $70de4
+	dw Data_70e52_\1
+	dw Data_70e59_\1
+	dw Data_70e60_\1
+	dw Data_70e69_\1
+	dw Data_70e72_\1
+	dw Data_70e7b_\1
+	dw Data_70e85_\1
+	dw Data_70e8f_\1
+	dw Data_70e97_\1
+	dw Data_70e9f_\1
+	dw Data_70ec1_\1
+	dw Data_70ec7_\1
+	dw Data_70ee4_\1
+	dw Data_70eeb_\1
+	dw Data_70ef2_\1
+	dw Data_70efc_\1
+	dw Data_70f06_\1
+	dw Data_70f10_\1
+	dw Data_70f1a_\1
+	dw Data_70f21_\1
+	dw Data_70f28_\1
+	dw Data_70f2f_\1
+	dw Data_70f49_\1
+	dw Data_70f54_\1
+	dw Data_70f74_\1
+	dw Data_70f8c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+	dw Data_70e4c_\1
+
+Data_70e4c_\1: ; 70e4c
+	dr $70e4c, $70e52
+
+Data_70e52_\1: ; 70e52
+	dr $70e52, $70e59
+
+Data_70e59_\1: ; 70e59
+	dr $70e59, $70e60
+
+Data_70e60_\1: ; 70e60
+	dr $70e60, $70e69
+
+Data_70e69_\1: ; 70e69
+	dr $70e69, $70e72
+
+Data_70e72_\1: ; 70e72
+	dr $70e72, $70e7b
+
+Data_70e7b_\1: ; 70e7b
+	dr $70e7b, $70e85
+
+Data_70e85_\1: ; 70e85
+	dr $70e85, $70e8f
+
+Data_70e8f_\1: ; 70e8f
+	dr $70e8f, $70e97
+
+Data_70e97_\1: ; 70e97
+	dr $70e97, $70e9f
+
+Data_70e9f_\1: ; 70e9f
+	dr $70e9f, $70ec1
+
+Data_70ec1_\1: ; 70ec1
+	dr $70ec1, $70ec7
+
+Data_70ec7_\1: ; 70ec7
+	dr $70ec7, $70ee4
+
+Data_70ee4_\1: ; 70ee4
+	dr $70ee4, $70eeb
+
+Data_70eeb_\1: ; 70eeb
+	dr $70eeb, $70ef2
+
+Data_70ef2_\1: ; 70ef2
+	dr $70ef2, $70efc
+
+Data_70efc_\1: ; 70efc
+	dr $70efc, $70f06
+
+Data_70f06_\1: ; 70f06
+	dr $70f06, $70f10
+
+Data_70f10_\1: ; 70f10
+	dr $70f10, $70f1a
+
+Data_70f1a_\1: ; 70f1a
+	dr $70f1a, $70f21
+
+Data_70f21_\1: ; 70f21
+	dr $70f21, $70f28
+
+Data_70f28_\1: ; 70f28
+	dr $70f28, $70f2f
+
+Data_70f2f_\1: ; 70f2f
+	dr $70f2f, $70f49
+
+Data_70f49_\1: ; 70f49
+	dr $70f49, $70f54
+
+Data_70f54_\1: ; 70f54
+	dr $70f54, $70f74
+
+Data_70f74_\1: ; 70f74
+	dr $70f74, $70f8c
+
+Data_70f8c_\1: ; 70f8c
+	dr $70f8c, $70fa4
+
+Data_70fa4_\1: ; $70fa4
+	dw Data_70fce_\1
+	dw Data_70fd1_\1
+	dw Data_70fe3_\1
+	dw Data_70ffd_\1
+	dw Data_71055_\1
+	dw Data_71070_\1
+	dw Data_71079_\1
+	dw Data_71090_\1
+	dw Data_710ae_\1
+	dw Data_710be_\1
+	dw Data_710d5_\1
+	dw Data_710f6_\1
+	dw Data_71106_\1
+	dw Data_71112_\1
+	dw Data_71166_\1
+	dw Data_71181_\1
+	dw Data_711d5_\1
+	dw Data_711ec_\1
+	dw Data_711f6_\1
+	dw Data_7120e_\1
+	dw Data_71220_\1
+
+Data_70fce_\1: ; 70fce
+	dr $70fce, $70fd1
+
+Data_70fd1_\1: ; 70fd1
+	dr $70fd1, $70fe3
+
+Data_70fe3_\1: ; 70fe3
+	dr $70fe3, $70ffd
+
+Data_70ffd_\1: ; 70ffd
+	dr $70ffd, $71055
+
+Data_71055_\1: ; 71055
+	dr $71055, $71070
+
+Data_71070_\1: ; 71070
+	dr $71070, $71079
+
+Data_71079_\1: ; 71079
+	dr $71079, $71090
+
+Data_71090_\1: ; 71090
+	dr $71090, $710ae
+
+Data_710ae_\1: ; 710ae
+	dr $710ae, $710be
+
+Data_710be_\1: ; 710be
+	dr $710be, $710d5
+
+Data_710d5_\1: ; 710d5
+	dr $710d5, $710f6
+
+Data_710f6_\1: ; 710f6
+	dr $710f6, $71106
+
+Data_71106_\1: ; 71106
+	dr $71106, $71112
+
+Data_71112_\1: ; 71112
+	dr $71112, $71166
+
+Data_71166_\1: ; 71166
+	dr $71166, $71181
+
+Data_71181_\1: ; 71181
+	dr $71181, $711d5
+
+Data_711d5_\1: ; 711d5
+	dr $711d5, $711ec
+
+Data_711ec_\1: ; 711ec
+	dr $711ec, $711f6
+
+Data_711f6_\1: ; 711f6
+	dr $711f6, $7120e
+
+Data_7120e_\1: ; 7120e
+	dr $7120e, $71220
+
+Data_71220_\1: ; 71220
+	dr $71220, $7122e
+
+Data_7122e_\1: ; $7122e
+	db $0
+	REPT 108
+	db $0a
+	ENDR
+
+NumSongs_\1: ; $7129b
+	db 29
 ENDM
 
 SECTION "Audio Engine", ROMX [$4000], BANK [$1c]

@@ -1,3 +1,4 @@
+SECTION "SFX Data", ROMX [$6a37], BANK [$1d]
 MaxSFXIndex:
 	db $6c
 
