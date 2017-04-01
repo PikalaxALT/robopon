@@ -149,6 +149,11 @@ callba_hli: MACRO
 	call FarCall
 	ENDM
 
+jpba_hli: MACRO
+	set_farcall_addrs_hli \1
+	jp FarCall
+	ENDM
+
 ctxt: MACRO
 	fail "ctxt must be passed through textcomp.py"
 	ENDM
