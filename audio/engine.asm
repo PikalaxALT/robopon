@@ -606,7 +606,7 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	ld h, d
 	ld l, e
 	pop af
-	jp [hl]
+	jp hl
 
 .pointers_70437
 	dw Func_705a3_\1
@@ -2393,7 +2393,7 @@ Func_76894: ; 76894 (1d:6894)
 	ld d, [hl]
 	ld h, d
 	ld l, e
-	jp [hl]
+	jp hl
 
 Pointers_768ab: ; 768ab
 	dw Func_768ce

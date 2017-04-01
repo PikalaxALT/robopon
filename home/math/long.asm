@@ -686,7 +686,7 @@ compare_stack_longs
 	push hl
 	pop de
 	pop hl
-	jp [hl]
+	jp hl
 
 CompareLong: ; 35af (0:35af)
 	ld a, [de]

@@ -179,7 +179,7 @@ StackCopyS80:
 	push hl
 	pop de
 	pop hl
-	jp [hl]
+	jp hl
 
 RetrieveS80FromStack:
 	pop bc
