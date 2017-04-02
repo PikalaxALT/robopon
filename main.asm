@@ -2642,11 +2642,11 @@ Func_1ac5: ; 1ac5
 	ret
 
 Func_1acc: ; 1acc
-	ld l, Func_70015_1c % $100
+	ld l, ToggleMusic_1c % $100
 	jr CallAudioEngine1C
 
 Func_1ad0: ; 1ad0
-	ld l, Func_70018_1c % $100
+	ld l, SetVolume_1c % $100
 	ld h, a
 	jr CallAudioEngine1C
 
@@ -15716,7 +15716,7 @@ Func_9efa: ; 9efa (2:5efa)
 	dw $c824
 	add hl, de
 	call WriteHalfWordTo
-	dw $c91d
+	dw wc91d
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -98377,7 +98377,86 @@ Func_61276: ; 61276 (18:5276)
 	ret
 
 Data_61288: ; 61288
-	dr $61288, $612f4
+	RGB 29, 22, 14
+	RGB 24, 07, 07
+
+	RGB 29, 10, 00
+	RGB 15, 05, 00
+
+	RGB 31, 10, 10
+	RGB 31, 00, 00
+
+	RGB 10, 16, 30
+	RGB 02, 00, 23
+
+	RGB 24, 13, 10
+	RGB 13, 05, 06
+
+	RGB 00, 21, 00
+	RGB 00, 12, 00
+
+	RGB 15, 15, 15
+	RGB 09, 09, 09
+
+	RGB 10, 20, 00
+	RGB 00, 11, 00
+
+	RGB 30, 08, 23
+	RGB 18, 05, 00
+
+	RGB 26, 08, 05
+	RGB 13, 05, 00
+
+	RGB 00, 31, 00
+	RGB 00, 14, 00
+
+	RGB 14, 20, 30
+	RGB 09, 00, 30
+
+	RGB 31, 31, 00
+	RGB 16, 16, 00
+
+	RGB 18, 10, 04
+	RGB 12, 05, 05
+
+	RGB 28, 00, 31
+	RGB 16, 00, 16
+
+	RGB 23, 12, 09
+	RGB 12, 04, 05
+
+	RGB 20, 10, 02
+	RGB 09, 05, 00
+
+	RGB 24, 00, 31
+	RGB 14, 00, 21
+
+	RGB 24, 14, 00
+	RGB 17, 07, 00
+
+	RGB 13, 13, 13
+	RGB 07, 07, 07
+
+	RGB 17, 17, 17
+	RGB 11, 11, 11
+
+	RGB 08, 14, 28
+	RGB 00, 00, 21
+
+	RGB 00, 19, 00
+	RGB 00, 10, 00
+
+	RGB 29, 00, 31
+	RGB 14, 05, 20
+
+	RGB 06, 12, 26
+	RGB 00, 00, 19
+
+	RGB 17, 17, 17
+	RGB 07, 07, 07
+
+	RGB 30, 21, 00
+	RGB 14, 07, 00
 
 Func_612f4: ; 612f4
 	push af
@@ -98388,27 +98467,27 @@ Func_612f6: ; 612f6 (18:52f6)
 	jp nz, Func_612f6
 	ld hl, $7fff
 	call WriteHalfWordTo
-	dw $c8b4
+	dw wCGB_BGPalsBuffer + 3 * 8
 	call WriteHalfWordTo
-	dw $c8ac
+	dw wCGB_BGPalsBuffer + 2 * 8
 	call WriteHalfWordTo
-	dw $c89c
+	dw wCGB_BGPalsBuffer
 	ld hl, $0
 	call WriteHalfWordTo
-	dw $c8ba
+	dw wCGB_BGPalsBuffer + 3 * 8 + 6
 	call WriteHalfWordTo
-	dw $c8b2
+	dw wCGB_BGPalsBuffer + 2 * 8 + 6
 	call WriteHalfWordTo
-	dw $c8a2
+	dw wCGB_BGPalsBuffer + 6
 	ld a, [$c2fa]
 	cp $3
 	jp z, Func_6135a
 	ld hl, $7fff
 	call WriteHalfWordTo
-	dw $c8a4
+	dw wCGB_BGPalsBuffer + 1 * 8
 	ld hl, $0
 	call WriteHalfWordTo
-	dw $c8aa
+	dw wCGB_BGPalsBuffer + 1 * 8 + 6
 	xor a
 Func_6133b: ; 6133b (18:533b)
 	cp $2
@@ -98424,7 +98503,7 @@ Func_6133b: ; 6133b (18:533b)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	ld de, $c8a6
+	ld de, wCGB_BGPalsBuffer + 1 * 8 + 2
 	add hl, de
 	ld [hl], c
 	inc hl
@@ -98482,7 +98561,7 @@ Func_6137b: ; 6137b (18:537b)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	ld de, $c8ae
+	ld de, wCGB_BGPalsBuffer + 2 * 8 + 2
 	add hl, de
 	ld [hl], c
 	inc hl
@@ -98517,7 +98596,7 @@ Func_613a8: ; 613a8 (18:53a8)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	ld de, $c8b6
+	ld de, wCGB_BGPalsBuffer + 3 * 8 + 2
 	add hl, de
 	ld [hl], c
 	inc hl
@@ -98577,7 +98656,7 @@ Func_61424: ; 61424 (18:5424)
 	push hl
 	pop de
 	pop hl
-	ld hl, $5416
+	ld hl, Data_61416
 	ld bc, $e
 	call MemCopy
 	pop bc
@@ -101340,10 +101419,46 @@ Func_62822: ; 62822 (18:6822)
 	ret
 
 Data_62825: ; 62825
-	dr $62825, $62845
+	RGB 31, 31, 31
+	RGB 29, 22, 14
+	RGB 24, 07, 07
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 00
+	RGB 20, 20, 00
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 00, 31, 31
+	RGB 00, 00, 31
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 00, 00
+	RGB 20, 00, 00
+	RGB 00, 00, 00
 
 Data_62845: ; 62845
-	dr $62845, $62865
+	RGB 31, 31, 31
+	RGB 29, 22, 14
+	RGB 24, 07, 07
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 31, 00
+	RGB 20, 20, 00
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 00, 31, 31
+	RGB 00, 00, 31
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 00, 00
+	RGB 20, 00, 00
+	RGB 00, 00, 00
 
 Func_62865: ; 62865 (18:6865)
 	ld a, [wSystemType]
@@ -101357,11 +101472,11 @@ Func_62870: ; 62870 (18:6870)
 	jp nz, Func_62870
 	ld bc, $20
 	ld de, Data_62825
-	ld hl, $c8bc
+	ld hl, wCGB_BGPalsBuffer + 4 * 8
 	call CopyFromDEtoHL
 	ld bc, $20
 	ld de, Data_62845
-	ld hl, $c8fc
+	ld hl, wCGB_OBPalsBuffer + 4 * 8
 	call CopyFromDEtoHL
 	call WaitVideoTransfer
 	ld a, [wNextVBlankFlags]

@@ -5,14 +5,209 @@ wTimer:: ds $3 ; c000
 wSerial:: ds $3 ; c003
 wVBlank:: ds $1a ; c006
 
-SECTION "Audio RAM 1", WRAM0 [$c020]
-wc020:: ds $e0 ; c020
+SECTION "Audio RAM Backup", WRAM0 [$c020]
+wBackupSongIndex:: db ; c020
+wBackupAudioROMBank:: db ; c021
+wBackupGlobalDuty:: db ; c022
 
-SECTION "Audio RAM 2", WRAM0 [$c100]
-wSongIndex:: ds $1 ; c100
-wAudioROMBank:: ds $1 ; c101
-wSFXIndex:: ds $1 ; c102
-	ds $12
+wBackupChannelNR1s::
+wBackupChannel1NR1:: db ; c023
+wBackupChannel2NR1:: db ; c024
+wBackupChannel3NR1:: db ; c025
+wBackupChannel4NR1:: db ; c026
+
+wBackupc10a:: db ; c027
+wBackupc10b:: db ; c028
+
+wBackupChannelActiveFlags::
+wBackupChannel1ActiveFlag:: db ; c029
+wBackupChannel2ActiveFlag:: db ; c02a
+wBackupChannel3ActiveFlag:: db ; c02b
+wBackupChannel4ActiveFlag:: db ; c02c
+
+wBackupChannelNoteStates::
+wBackupChannel1NoteState:: db ; c02d
+wBackupChannel2NoteState:: db ; c02e
+wBackupChannel3NoteState:: db ; c02f
+wBackupChannel4NoteState:: db ; c030
+
+wBackupChannelPointers::
+wBackupChannel1Pointer:: dw ; c031
+wBackupChannel2Pointer:: dw ; c033
+wBackupChannel3Pointer:: dw ; c035
+wBackupChannel4Pointer:: dw ; c037
+
+wBackupChannelStartPointers::
+wBackupChannel1StartPointer:: dw ; c039
+wBackupChannel2StartPointer:: dw ; c03b
+wBackupChannel3StartPointer:: dw ; c03d
+wBackupChannel4StartPointer:: dw ; c03f
+
+wBackupc12b:: ds $2 ; c041
+
+wBackupChannelOctaves::
+wBackupChannel1Octave:: db ; c043
+wBackupChannel2Octave:: db ; c044
+wBackupChannel3Octave:: db ; c045
+wBackupChannel4Octave:: db ; c046
+
+wBackupChannelUnknownC133s::
+wBackupChannel1UnknownC133:: db ; c047
+wBackupChannel2UnknownC133:: db ; c048
+wBackupChannel3UnknownC133:: db ; c049
+wBackupChannel4UnknownC133:: db ; c04a
+
+wBackupChannelUnknownC137s::
+wBackupChannel1UnknownC137:: db ; c04b
+wBackupChannel2UnknownC137:: db ; c04c
+wBackupChannel3UnknownC137:: db ; c04d
+wBackupChannel4UnknownC137:: db ; c04e
+
+wBackupChannelNoteDurations::
+wBackupChannel1NoteDuration:: db ; c04f
+wBackupChannel2NoteDuration:: db ; c050
+wBackupChannel3NoteDuration:: db ; c051
+wBackupChannel4NoteDuration:: db ; c052
+
+wBackupChannelUnknownC13Fs::
+wBackupChannel1UnknownC13F:: db
+wBackupChannel2UnknownC13F:: db
+wBackupChannel3UnknownC13F:: db
+wBackupChannel4UnknownC13F:: db
+
+wBackupChannelUnknownC143s::
+wBackupChannel1UnknownC143:: db
+wBackupChannel2UnknownC143:: db
+wBackupChannel3UnknownC143:: db
+wBackupChannel4UnknownC143:: db
+
+wBackupChannelUnknownC147s::
+wBackupChannel1UnknownC147:: db
+wBackupChannel2UnknownC147:: db
+wBackupChannel3UnknownC147:: db
+wBackupChannel4UnknownC147:: db
+
+wBackupChannelUnknownC14Bs::
+wBackupChannel1UnknownC14B:: db
+wBackupChannel2UnknownC14B:: db
+wBackupChannel3UnknownC14B:: db
+wBackupChannel4UnknownC14B:: db
+
+wBackupChannelUnknownC14Fs::
+wBackupChannel1UnknownC14F:: db
+wBackupChannel2UnknownC14F:: db
+wBackupChannel3UnknownC14F:: db
+wBackupChannel4UnknownC14F:: db
+
+wBackupChannelUnknownC157s::
+wBackupChannel1UnknownC157:: db
+wBackupChannel2UnknownC157:: db
+wBackupChannel3UnknownC157:: db
+wBackupChannel4UnknownC157:: db
+
+wBackupChannelUnknownC15Fs::
+wBackupChannel1UnknownC15F:: db
+wBackupChannel2UnknownC15F:: db
+wBackupChannel3UnknownC15F:: db
+wBackupChannel4UnknownC15F:: db
+
+wBackupNR12:: db
+wBackupNR22:: db
+wBackupNR32:: db
+
+wBackupChannelFrequencyOffsets::
+wBackupChannel1FrequencyOffset:: db
+wBackupChannel2FrequencyOffset:: db
+wBackupChannel3FrequencyOffset:: db
+
+wBackupc16d:: dw
+wBackupc16f:: db
+
+wBackupChannelStackPointers::
+wBackupChannel1StackPointer:: dw
+wBackupChannel2StackPointer:: dw
+wBackupChannel3StackPointer:: dw
+wBackupChannel4StackPointer:: dw
+
+wBackupChannel1Stack:: ds $c
+wBackupChannel2Stack:: ds $c
+wBackupChannel3Stack:: ds $c
+wBackupChannel4Stack:: ds $c
+
+wBackupChannelUnknownC1ABs::
+wBackupChannel1UnknownC1AB:: db
+wBackupChannel2UnknownC1AB:: db
+wBackupChannel3UnknownC1AB:: db
+wBackupChannel4UnknownC1AB:: db
+
+wBackupChannelUnknownC1AFs::
+wBackupChannel1UnknownC1AF:: db
+wBackupChannel2UnknownC1AF:: db
+wBackupChannel3UnknownC1AF:: db
+wBackupChannel4UnknownC1AF:: db
+
+wBackupChannelUnknownC1B3s::
+wBackupChannel1UnknownC1B3:: db
+wBackupChannel2UnknownC1B3:: db
+wBackupChannel3UnknownC1B3:: db
+wBackupChannel4UnknownC1B3:: db
+
+wBackupChannelUnknownC1B7s::
+wBackupChannel1UnknownC1B7:: dw
+wBackupChannel2UnknownC1B7:: dw
+wBackupChannel3UnknownC1B7:: dw
+wBackupChannel4UnknownC1B7:: dw
+
+wBackupChannelLoopCounters::
+wBackupChannel1LoopCounter:: db
+wBackupChannel2LoopCounter:: db
+wBackupChannel3LoopCounter:: db
+wBackupChannel4LoopCounter:: db
+
+wBackupChannelLoopReturnPointers::
+wBackupChannel1LoopReturnPointer:: dw
+wBackupChannel2LoopReturnPointer:: dw
+wBackupChannel3LoopReturnPointer:: dw
+wBackupChannel4LoopReturnPointer:: dw
+
+wBackupChannelSFXPointers::
+wBackupChannel1SFXPointer:: dw
+wBackupChannel2SFXPointer:: dw
+wBackupChannel3SFXPointer:: dw
+wBackupChannel4SFXPointer:: dw
+
+wBackupSFXActive2:: db
+wBackupSFXChannelFlags2:: db
+
+SECTION "Audio RAM", WRAM0 [$c100]
+wSongIndex:: db ; c100
+wAudioROMBank:: db ; c101
+wSFXIndex:: db ; c102
+wSFXActive:: db ; c103
+wGlobalDuty:: db ; c104
+wc105:: db ; c105
+
+wChannelNR1s::
+wChannel1NR1:: db ; c106
+wChannel2NR1:: db ; c107
+wChannel3NR1:: db ; c108
+wChannel4NR1:: db ; c109
+
+wc10a:: db ; c10a
+wc10b:: db ; c10b
+wSFXChannelFlags:: db ; c10c
+
+wChannelActiveFlags::
+wChannel1ActiveFlag:: db ; c10d
+wChannel2ActiveFlag:: db ; c10e
+wChannel3ActiveFlag:: db ; c10f
+wChannel4ActiveFlag:: db ; c110
+
+wChannelNoteStates::
+wChannel1NoteState:: db ; c111
+wChannel2NoteState:: db ; c112
+wChannel3NoteState:: db ; c113
+wChannel4NoteState:: db ; c114
 
 wChannelPointers::
 wChannel1Pointer:: dw ; c115
@@ -26,13 +221,167 @@ wChannel2StartPointer:: dw ; c11f
 wChannel3StartPointer:: dw ; c121
 wChannel4StartPointer:: dw ; c123
 
-	ds 10
+wChannelFrequencies::
+wChannel1Frequency:: dw ; c125
+wChannel2Frequency:: dw ; c127
+wChannel3Frequency:: dw ; c129
+
+wc12b:: ds $4 ; c12b
 
 wChannelOctaves::
 wChannel1Octave:: db ; c12f
 wChannel2Octave:: db ; c130
 wChannel3Octave:: db ; c131
 wChannel4Octave:: db ; c132
+
+wChannelUnknownC133s::
+wChannel1UnknownC133:: db ; c133
+wChannel2UnknownC133:: db ; c134
+wChannel3UnknownC133:: db ; c135
+wChannel4UnknownC133:: db ; c136
+
+wChannelUnknownC137s::
+wChannel1UnknownC137:: db ; c137
+wChannel2UnknownC137:: db ; c138
+wChannel3UnknownC137:: db ; c139
+wChannel4UnknownC137:: db ; c13a
+
+wChannelNoteDurations::
+wChannel1NoteDuration:: db ; c13b
+wChannel2NoteDuration:: db ; c13c
+wChannel3NoteDuration:: db ; c13d
+wChannel4NoteDuration:: db ; c13e
+
+wChannelUnknownC13Fs::
+wChannel1UnknownC13F:: db ; c13f
+wChannel2UnknownC13F:: db ; c140
+wChannel3UnknownC13F:: db ; c141
+wChannel4UnknownC13F:: db ; c142
+
+wChannelUnknownC143s::
+wChannel1UnknownC143:: db ; c143
+wChannel2UnknownC143:: db ; c144
+wChannel3UnknownC143:: db ; c145
+wChannel4UnknownC143:: db ; c146
+
+wChannelUnknownC147s::
+wChannel1UnknownC147:: db ; c147
+wChannel2UnknownC147:: db ; c148
+wChannel3UnknownC147:: db ; c149
+wChannel4UnknownC147:: db ; c14a
+
+wChannelUnknownC14Bs::
+wChannel1UnknownC14B:: db ; c14b
+wChannel2UnknownC14B:: db ; c14c
+wChannel3UnknownC14B:: db ; c14d
+wChannel4UnknownC14B:: db ; c14e
+
+wChannelUnknownC14Fs::
+wChannel1UnknownC14F:: db ; c14f
+wChannel2UnknownC14F:: db ; c150
+wChannel3UnknownC14F:: db ; c151
+wChannel4UnknownC14F:: db ; c152
+
+wChannelUnknownC153s::
+wChannel1UnknownC153:: db ; c153
+wChannel2UnknownC153:: db ; c154
+wChannel3UnknownC153:: db ; c155
+wChannel4UnknownC153:: db ; c156
+
+wChannelUnknownC157s::
+wChannel1UnknownC157:: db ; c157
+wChannel2UnknownC157:: db ; c158
+wChannel3UnknownC157:: db ; c159
+wChannel4UnknownC157:: db ; c15a
+
+wChannelUnknownC15Bs::
+wChannel1UnknownC15B:: db ; c15b
+wChannel2UnknownC15B:: db ; c15c
+wChannel3UnknownC15B:: db ; c15d
+wChannel4UnknownC15B:: db ; c15e
+
+wChannelUnknownC15Fs::
+wChannel1UnknownC15F:: db ; c15f
+wChannel2UnknownC15F:: db ; c160
+wChannel3UnknownC15F:: db ; c161
+wChannel4UnknownC15F:: db ; c162
+
+wChannelUnknownC163s::
+wChannel1UnknownC163:: db ; c163
+wChannel2UnknownC163:: db ; c164
+wChannel3UnknownC163:: db ; c165
+wChannel4UnknownC163:: db ; c166
+
+wNR12:: db ; c167
+wNR22:: db ; c168
+wNR32:: db ; c169
+
+wChannelFrequencyOffsets::
+wChannel1FrequencyOffset:: db ; c16a
+wChannel2FrequencyOffset:: db ; c16b
+wChannel3FrequencyOffset:: db ; c16c
+
+wc16d:: dw ; c16d
+wc16f:: db ; c16f
+wc170:: db ; c170
+wVolume:: db ; c171
+wMusicPaused:: db ; c172
+
+wChannelStackPointers::
+wChannel1StackPointer:: dw ; c173
+wChannel2StackPointer:: dw ; c175
+wChannel3StackPointer:: dw ; c177
+wChannel4StackPointer:: dw ; c179
+
+wChannel1Stack:: ds $c ; c17b
+wChannel2Stack:: ds $c ; c187
+wChannel3Stack:: ds $c ; c193
+wChannel4Stack:: ds $c ; c19f
+
+wChannelUnknownC1ABs::
+wChannel1UnknownC1AB:: db ; c1ab
+wChannel2UnknownC1AB:: db ; c1ac
+wChannel3UnknownC1AB:: db ; c1ad
+wChannel4UnknownC1AB:: db ; c1ae
+
+wChannelUnknownC1AFs::
+wChannel1UnknownC1AF:: db ; c1af
+wChannel2UnknownC1AF:: db ; c1b0
+wChannel3UnknownC1AF:: db ; c1b1
+wChannel4UnknownC1AF:: db ; c1b2
+
+wChannelUnknownC1B3s::
+wChannel1UnknownC1B3:: db ; c1b3
+wChannel2UnknownC1B3:: db ; c1b4
+wChannel3UnknownC1B3:: db ; c1b5
+wChannel4UnknownC1B3:: db ; c1b6
+
+wChannelUnknownC1B7s::
+wChannel1UnknownC1B7:: dw ; c1b7
+wChannel2UnknownC1B7:: dw ; c1b9
+wChannel3UnknownC1B7:: dw ; c1bb
+wChannel4UnknownC1B7:: dw ; c1bd
+
+wChannelLoopCounters::
+wChannel1LoopCounter:: db ; c1bf
+wChannel2LoopCounter:: db ; c1c0
+wChannel3LoopCounter:: db ; c1c1
+wChannel4LoopCounter:: db ; c1c2
+
+wChannelLoopReturnPointers::
+wChannel1LoopReturnPointer:: dw ; c1c3
+wChannel2LoopReturnPointer:: dw ; c1c5
+wChannel3LoopReturnPointer:: dw ; c1c7
+wChannel4LoopReturnPointer:: dw ; c1c9
+
+wChannelSFXPointers::
+wChannel1SFXPointer:: dw ; c1cb
+wChannel2SFXPointer:: dw ; c1cd
+wChannel3SFXPointer:: dw ; c1cf
+wChannel4SFXPointer:: dw ; c1d1
+
+wSFXActive2:: db ; c1d3
+wSFXChannelFlags2:: db ; c1d4
 
 SECTION "LCD Interrupt", WRAM0 [$c200]
 wLCD:: ds $3 ; c200
@@ -226,6 +575,7 @@ wVBlankTransferFlags:: ; c91c
 ; bit 0: push wVBlankMetaTileTransferQueue0
 	ds $1
 
+wc91d:: ; c91d
 	ds $2
 
 wVBlankMetaTileTransferQueue0TileSource:: dw ; c91f

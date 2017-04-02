@@ -30,11 +30,11 @@ Func_0249: ; 249 (0:0249)
 	jr asm_0253
 
 Func_024d: ; 24d (0:024d)
-	ld l, Func_70015_1c % $100
+	ld l, ToggleMusic_1c % $100
 	jr asm_0253
 
 Func_0251: ; 251 (0:0251)
-	ld l, Func_70018_1c % $100
+	ld l, SetVolume_1c % $100
 asm_0253
 	ld h, Func_70000_1c / $100
 	push af
