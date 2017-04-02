@@ -95172,7 +95172,85 @@ Data_58d2f: ; 58d2f
 	dr $58d2f, $58d4e
 
 Data_58d4e: ; 58d4e
-	dr $58d4e, $58df9
+	dr $58d4e, $58d5d
+
+Func_58d5d:
+	push af
+	ld a, [wFarCallDestBank]
+	ld l, a
+	push hl
+	set_farcall_addrs_hli Func_61deb
+	pop hl
+	pop af
+	push hl
+	call FarCall
+	pop hl
+	ld a, l
+	ld [wFarCallDestBank], a
+	ret
+
+Func_58d7a:
+	push hl
+	ld a, [wFarCallDestBank]
+	push af
+	set_farcall_addrs_hli Func_61e5b
+	pop af
+	pop hl
+	push af
+	call FarCall
+	pop af
+	ld [wFarCallDestBank], a
+	ret
+
+Pointers_58d95:
+	dw Data_58dad
+	dw Data_58db5
+	dw Data_58dbb
+	dw Data_58dc2
+	dw Data_58dc7
+	dw Data_58dcc
+	dw Data_58dd2
+	dw Data_58dda
+	dw Data_58de0
+	dw Data_58de5
+	dw Data_58deb
+	dw Data_58df4
+
+Data_58dad:
+	db "<HIRA>おひつしﾞ<KATA>", $00
+
+Data_58db5:
+	db "<HIRA>おうし<KATA>", $00
+
+Data_58dbb:
+	db "<HIRA>ふたこﾞ<KATA>", $00
+
+Data_58dc2:
+	db "<HIRA>かに<KATA>", $00
+
+Data_58dc7:
+	db "<HIRA>しし<KATA>", $00
+
+Data_58dcc:
+	db "<HIRA>おとめ<KATA>", $00
+
+Data_58dd2:
+	db "<HIRA>てんひﾞん<KATA>", $00
+
+Data_58dda:
+	db "<HIRA>さそり<KATA>", $00
+
+Data_58de0:
+	db "<HIRA>いて<KATA>", $00
+
+Data_58de5:
+	db "<HIRA>やきﾞ<KATA>", $00
+
+Data_58deb:
+	db "<HIRA>みすﾞかﾞめ<KATA>", $00
+
+Data_58df4:
+	db "<HIRA>うお<KATA>", $00
 
 Func_58df9: ; 58df9
 	dr $58df9, $59087
@@ -95184,7 +95262,57 @@ Func_5a0e0: ; 5a0e0
 	dr $5a0e0, $5a149
 
 Func_5a149: ; 5a149
-	dr $5a149, $5c000
+	dr $5a149, $5bfb3
+
+Data_5bfb3:
+	db "???", $00
+
+Data_5bfb7:
+	db ":LV", $00
+
+Data_5bfbb:
+	db " ", $00
+
+Data_5bfbd:
+	db "E", $00
+
+Data_5bfbf:
+	db "/", $00
+
+Data_5bfc1:
+	db "/", $00
+
+Data_5bfc3:
+	db "<HIRA>こうけﾞき<KATA>", $00
+
+Data_5bfcb:
+	db "<HIRA>ほﾞうきﾞょ<KATA>", $00
+
+Data_5bfd4:
+	db "<HIRA>すはﾞやさ<KATA>", $00
+
+Data_5bfdc:
+	db "タイフﾟ:", $00
+
+Data_5bfe2:
+	db "CPU:"
+	TX_CALL
+	db $00
+
+Data_5bfe9:
+	db "E×P:"
+	TX_UNUM
+	db $00
+
+Data_5bff1:
+	db "E×P:"
+	TX_UNUM
+	db $00
+
+Data_5bff9:
+	db "<HIRA>あと<KATA>"
+	TX_SNUM
+	db $00
 
 SECTION "Bank 17", ROMX, BANK [$17]
 	dr $5c000, $5c0b2
