@@ -95252,8 +95252,323 @@ Data_58deb:
 Data_58df4:
 	db "<HIRA>うお<KATA>", $00
 
-Func_58df9: ; 58df9
-	dr $58df9, $59087
+Func_58df9: ; 58df9 (16:4df9)
+	add sp, -$1a
+	ld hl, sp+$5
+	ld [hl], $4
+	ld e, $9
+	push de
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $90
+	call FarCall
+	ld c, l
+	ld b, h
+	push bc
+	ld de, $1009
+	ld hl, $409
+	call Func_2124
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	push af
+	ld hl, $c980
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$c
+	ld bc, $5
+	call FarCopyVideoData
+	ld a, [$c987]
+	ld l, a
+	push hl
+	ld hl, sp+$8
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $c989
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$c
+	ld [hl], $0
+	xor a
+Func_58e5b: ; 58e5b (16:4e5b)
+	cp $4
+	jp nc, Func_58e84
+	push af
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $c9b8
+	add hl, de
+	ld a, [hl]
+	or a
+	jp z, Func_58e7f
+	ld hl, sp+$e
+	ld a, [hl]
+	inc a
+	ld hl, sp+$e
+	ld [hl], a
+Func_58e7f: ; 58e7f (16:4e7f)
+	pop af
+	inc a
+	jp Func_58e5b
+
+Func_58e84: ; 58e84 (16:4e84)
+	pop hl
+	pop af
+	pop bc
+	pop de
+	push bc
+	push hl
+	push de
+	call GetSRAMBank
+	callba_hli Func_7cd1
+	ld hl, sp+$a
+	add [hl]
+	ld hl, sp+$a
+	ld [hl], a
+	set_farcall_addrs_hli Func_17e95
+	pop de
+	push de
+	ld hl, sp+$b
+	ld a, [hl]
+	ld l, e
+	ld h, a
+	ld e, $10
+	ld c, $9
+	call FarCall
+	set_farcall_addrs_hli Func_16019
+	pop de
+	push de
+	ld hl, sp+$c
+	ld c, l
+	ld b, h
+	ld d, $0
+	inc de
+	ld hl, sp+$b
+	ld l, [hl]
+	ld h, $0
+	inc hl
+	call FarCall
+	ld hl, Data_58fe6
+	push hl
+	call PlaceString
+	pop bc
+	pop de
+	pop hl
+	push de
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_58d95
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_58fef
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop de
+	push de
+	ld d, $0
+	inc de
+	inc de
+	inc de
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc h
+	add hl, de
+	ld de, Data_58ff2
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$8
+	ld c, [hl]
+	ld b, $0
+	ld de, $3
+	ld hl, -1
+	call Func_2230
+	ld hl, Data_59000
+	push hl
+	call PlaceString
+	pop bc
+	pop de
+	push de
+	ld a, e
+	add $5
+	ld e, a
+	ld hl, sp+$9
+	ld a, [hl]
+	inc a
+	call SetStringStartState
+	ld hl, sp+$4
+	call PutLongFromHLOnStack
+	ld hl, Data_59005
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	call ReadHalfWordAt
+	dw wOAM24Attrs
+	push hl
+	call ReadHalfWordAt
+	dw wOAM24XCoord
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, $e1e
+	push hl
+	call StackDivideLongSigned
+	pop hl
+	pop af
+	pop de
+	push hl
+	ld a, e
+	add $7
+	ld e, a
+	ld hl, sp+$9
+	ld a, [hl]
+	inc a
+	call SetStringStartState
+	ld hl, Data_59013
+	push hl
+	call PlaceString
+	pop bc
+	pop hl
+	push hl
+	ld de, $3c
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+	ld de, $203
+	ld hl, -1
+	call Func_2230
+	ld hl, Data_5901f
+	push hl
+	call PlaceString
+	pop bc
+	pop hl
+	ld de, $3c
+	call DivideHLByDESigned
+	ld c, e
+	ld b, d
+	ld de, $202
+	ld hl, -1
+	call Func_2230
+	ld l, $9
+	push hl
+	ld c, $10
+	ld e, $9
+	ld a, $4
+	call Func_3bc5
+	pop bc
+	pop bc
+Func_58fa9: ; 58fa9 (16:4fa9)
+	push bc
+	call Func_24e9
+	pop bc
+	cp $10
+	jp nz, Func_58fb7
+	xor a
+	jp Func_58fd1
+
+Func_58fb7: ; 58fb7 (16:4fb7)
+	cp $20
+	jp nz, Func_58fce
+	push bc
+	ld a, $ff
+	push af
+	ld de, $1009
+	ld hl, $409
+	call Func_2323
+	pop af
+	pop bc
+	jp Func_58fd1
+
+Func_58fce: ; 58fce (16:4fce)
+	jp Func_58fa9
+
+Func_58fd1: ; 58fd1 (16:4fd1)
+	push af
+	push bc
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	pop af
+	add sp, $1a
+	ret
+
+Data_58fe6:
+	db "<HIRA>しゃちょう<KATA> ", $00
+
+Data_58fef:
+	TX_CALL
+	db $00
+
+Data_58ff2:
+	db "ロホﾞホﾟン<HIRA>のかすﾞ<KATA> ", $00
+
+Data_59000:
+	db "<HIRA>たい<KATA>", $00
+
+Data_59005:
+	db "<HIRA>しょしﾞきん<KATA> "
+	TX_UNUM
+	db "G", $00
+
+Data_59013:
+	db "フﾟレイ<HIRA>しﾞかん<KATA> ", $00
+
+Data_5901f:
+	db ":", $00
+
+Pointers_59021:
+	dw Data_59025
+	dw $0000
+
+Data_59025:
+	db "チッフﾟ<HIRA>をこうしんしました<KATA>", $00
+
+Pointers_59035:
+	dw Data_59039
+	dw $0000
+
+Data_59039:
+	db "<HIRA>おかねかﾞ たりないよ<KATA>", $00
+
+Pointers_59047:
+	dw Data_5904b
+	dw $0000
+
+Data_5904b:
+	db "<HIRA>これいしﾞょう こうしんてﾞきないよ<KATA>", $00
+
+Pointers_59060:
+	dw Data_59064
+	dw $0000
+
+Data_59064:
+	db "スクラッフﾟ<HIRA>に なっているよ<KATA>", $00
+
+Data_59075:
+	dr $59075, $59087
 
 Func_59087: ; 59087
 	dr $59087, $5a0e0
