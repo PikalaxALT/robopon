@@ -57,11 +57,11 @@ wBackupChannel2UnknownC133:: db ; c048
 wBackupChannel3UnknownC133:: db ; c049
 wBackupChannel4UnknownC133:: db ; c04a
 
-wBackupChannelUnknownC137s::
-wBackupChannel1UnknownC137:: db ; c04b
-wBackupChannel2UnknownC137:: db ; c04c
-wBackupChannel3UnknownC137:: db ; c04d
-wBackupChannel4UnknownC137:: db ; c04e
+wBackupChannelNotesPlaying::
+wBackupChannel1NotePlaying:: db ; c04b
+wBackupChannel2NotePlaying:: db ; c04c
+wBackupChannel3NotePlaying:: db ; c04d
+wBackupChannel4NotePlaying:: db ; c04e
 
 wBackupChannelNoteDurations::
 wBackupChannel1NoteDuration:: db ; c04f
@@ -81,23 +81,23 @@ wBackupChannel2UnknownC143:: db
 wBackupChannel3UnknownC143:: db
 wBackupChannel4UnknownC143:: db
 
-wBackupChannelUnknownC147s::
-wBackupChannel1UnknownC147:: db
-wBackupChannel2UnknownC147:: db
-wBackupChannel3UnknownC147:: db
-wBackupChannel4UnknownC147:: db
+wBackupChannelNR2s::
+wBackupChannel1NR2:: db
+wBackupChannel2NR2:: db
+wBackupChannel3NR2:: db
+wBackupChannel4NR2:: db
 
-wBackupChannelUnknownC14Bs::
-wBackupChannel1UnknownC14B:: db
-wBackupChannel2UnknownC14B:: db
-wBackupChannel3UnknownC14B:: db
-wBackupChannel4UnknownC14B:: db
+wBackupChannelKeySignatures::
+wBackupChannel1KeySignature:: db
+wBackupChannel2KeySignature:: db
+wBackupChannel3KeySignature:: db
+wBackupChannel4KeySignature:: db
 
-wBackupChannelUnknownC14Fs::
-wBackupChannel1UnknownC14F:: db
-wBackupChannel2UnknownC14F:: db
-wBackupChannel3UnknownC14F:: db
-wBackupChannel4UnknownC14F:: db
+wBackupChannelTemposs::
+wBackupChannel1Tempos:: db
+wBackupChannel2Tempos:: db
+wBackupChannel3Tempos:: db
+wBackupChannel4Tempos:: db
 
 wBackupChannelUnknownC157s::
 wBackupChannel1UnknownC157:: db
@@ -120,7 +120,7 @@ wBackupChannel1FrequencyOffset:: db
 wBackupChannel2FrequencyOffset:: db
 wBackupChannel3FrequencyOffset:: db
 
-wBackupc16d:: dw
+wBackupNoiseSamplePointer:: dw
 wBackupc16f:: db
 
 wBackupChannelStackPointers::
@@ -226,7 +226,7 @@ wChannel1Frequency:: dw ; c125
 wChannel2Frequency:: dw ; c127
 wChannel3Frequency:: dw ; c129
 
-wc12b:: ds $4 ; c12b
+wNoiseSampleHeader:: ds $4 ; c12b
 
 wChannelOctaves::
 wChannel1Octave:: db ; c12f
@@ -240,11 +240,11 @@ wChannel2UnknownC133:: db ; c134
 wChannel3UnknownC133:: db ; c135
 wChannel4UnknownC133:: db ; c136
 
-wChannelUnknownC137s::
-wChannel1UnknownC137:: db ; c137
-wChannel2UnknownC137:: db ; c138
-wChannel3UnknownC137:: db ; c139
-wChannel4UnknownC137:: db ; c13a
+wChannelNotesPlaying::
+wChannel1NotePlaying:: db ; c137
+wChannel2NotePlaying:: db ; c138
+wChannel3NotePlaying:: db ; c139
+wChannel4NotePlaying:: db ; c13a
 
 wChannelNoteDurations::
 wChannel1NoteDuration:: db ; c13b
@@ -264,23 +264,23 @@ wChannel2UnknownC143:: db ; c144
 wChannel3UnknownC143:: db ; c145
 wChannel4UnknownC143:: db ; c146
 
-wChannelUnknownC147s::
-wChannel1UnknownC147:: db ; c147
-wChannel2UnknownC147:: db ; c148
-wChannel3UnknownC147:: db ; c149
-wChannel4UnknownC147:: db ; c14a
+wChannelNR2s::
+wChannel1NR2:: db ; c147
+wChannel2NR2:: db ; c148
+wChannel3NR2:: db ; c149
+wChannel4NR2:: db ; c14a
 
-wChannelUnknownC14Bs::
-wChannel1UnknownC14B:: db ; c14b
-wChannel2UnknownC14B:: db ; c14c
-wChannel3UnknownC14B:: db ; c14d
-wChannel4UnknownC14B:: db ; c14e
+wChannelKeySignatures::
+wChannel1KeySignature:: db ; c14b
+wChannel2KeySignature:: db ; c14c
+wChannel3KeySignature:: db ; c14d
+wChannel4KeySignature:: db ; c14e
 
-wChannelUnknownC14Fs::
-wChannel1UnknownC14F:: db ; c14f
-wChannel2UnknownC14F:: db ; c150
-wChannel3UnknownC14F:: db ; c151
-wChannel4UnknownC14F:: db ; c152
+wChannelTemposs::
+wChannel1Tempos:: db ; c14f
+wChannel2Tempos:: db ; c150
+wChannel3Tempos:: db ; c151
+wChannel4Tempos:: db ; c152
 
 wChannelUnknownC153s::
 wChannel1UnknownC153:: db ; c153
@@ -321,7 +321,7 @@ wChannel1FrequencyOffset:: db ; c16a
 wChannel2FrequencyOffset:: db ; c16b
 wChannel3FrequencyOffset:: db ; c16c
 
-wc16d:: dw ; c16d
+wNoiseSamplePointer:: dw ; c16d
 wc16f:: db ; c16f
 wc170:: db ; c170
 wVolume:: db ; c171

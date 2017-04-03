@@ -1,10 +1,15 @@
 INCLUDE "macros/enum.asm"
+INCLUDE "macros/audio.asm"
 
 tree_text_pointer: MACRO
 	dw (BANK(\2) - BANK(\1)) << 14 | (\2 & $3fff)
 	ENDM
 
 CallPredef EQUS "$08"
+
+dn: MACRO
+	db ((\1 & $f) << 4) | (\2 & $f)
+	ENDM
 
 dbw: MACRO
 	db \1

@@ -147,7 +147,7 @@ Func_70088_\1: ; 70088 (1c:4088)
 	ld hl, wChannelUnknownC133s
 	add hl, bc
 	ld [hl], d
-	ld hl, wChannelUnknownC14Bs
+	ld hl, wChannelKeySignatures
 	add hl, bc
 	ld [hl], d
 	ld hl, wChannelUnknownC13Fs
@@ -296,13 +296,13 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [wChannel1FrequencyOffset], a
 	ld [wChannel1UnknownC13F], a
 	ld [wChannel1UnknownC15F], a
-	ld [wChannel1UnknownC14B], a
+	ld [wChannel1KeySignature], a
 	ld a, [Data_70c12_\1]
 	ld [wChannel1StackPointer], a
 	ld a, [Data_70c12_\1 + 1]
 	ld [wChannel1StackPointer + 1], a
 	ld a, $8
-	ld [wChannel1UnknownC147], a
+	ld [wChannel1NR2], a
 .not_ch1
 	rr e
 	jr nc, .not_ch2
@@ -322,13 +322,13 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [wChannel2FrequencyOffset], a
 	ld [wChannel2UnknownC13F], a
 	ld [wChannel2UnknownC15F], a
-	ld [wChannel2UnknownC14B], a
+	ld [wChannel2KeySignature], a
 	ld a, [Data_70c14_\1]
 	ld [wChannel2StackPointer], a
 	ld a, [Data_70c14_\1 + 1]
 	ld [wChannel2StackPointer + 1], a
 	ld a, $8
-	ld [wChannel2UnknownC147], a
+	ld [wChannel2NR2], a
 .not_ch2
 	rr e
 	jr nc, .not_ch3
@@ -348,13 +348,13 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [wChannel3FrequencyOffset], a
 	ld [wChannel3UnknownC13F], a
 	ld [wChannel3UnknownC15F], a
-	ld [wChannel3UnknownC14B], a
+	ld [wChannel3KeySignature], a
 	ld a, [Data_70c16_\1]
 	ld [wChannel3StackPointer], a
 	ld a, [Data_70c16_\1 + 1]
 	ld [wChannel3StackPointer + 1], a
 	ld a, $40
-	ld [wChannel3UnknownC147], a
+	ld [wChannel3NR2], a
 .not_ch3
 	rr e
 	jr nc, .not_ch4
@@ -373,13 +373,13 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [wChannel4NoteState], a
 	ld [wChannel4UnknownC13F], a
 	ld [wChannel4UnknownC15F], a
-	ld [wChannel4UnknownC14B], a
+	ld [wChannel4KeySignature], a
 	ld a, [Data_70c18_\1]
 	ld [wChannel4StackPointer], a
 	ld a, [Data_70c18_\1 + 1]
 	ld [wChannel4StackPointer + 1], a
 	ld a, $40
-	ld [wChannel4UnknownC147], a
+	ld [wChannel4NR2], a
 .not_ch4
 	xor a
 	ld [wMusicPaused], a
@@ -392,26 +392,26 @@ PlayChannel1_\1: ; 702b0 (1c:42b0)
 	ld a, [wChannel1ActiveFlag]
 	or a
 	jr z, .channel_switched_off
-	ld a, [wChannel1UnknownC137]
+	ld a, [wChannel1NotePlaying]
 	cp $0
-	jr z, .asm_702df
+	jr z, .skip
 	ld a, [wChannel1UnknownC143]
 	dec a
 	ld [wChannel1UnknownC143], a
-	jr nz, .asm_702df
+	jr nz, .skip
 	ld a, [wChannel1NoteDuration]
 	cp $1
-	jr z, .asm_702df
+	jr z, .skip
 	ld a, [wSFXChannelFlags]
 	bit 0, a
-	jr nz, .asm_702df
+	jr nz, .skip
 	ld hl, rNR12
-	ld a, [wChannel1UnknownC147]
+	ld a, [wChannel1NR2]
 	ld [hli], a
 	inc hl
 	ld a, $80
 	ld [hl], a
-.asm_702df
+.skip
 	ld a, [wChannel1NoteDuration]
 	dec a
 	ld [wChannel1NoteDuration], a
@@ -421,11 +421,11 @@ PlayChannel1_\1: ; 702b0 (1c:42b0)
 	ld a, [wChannelPointers]
 	ld l, a
 	ld bc, $0
-	call AudioCommandProcessor_\1
+	call MusicCommandProcessor_\1
 	ld a, [wChannel1ActiveFlag]
 	or a
 	jr z, .channel_switched_off
-	call Func_7071d_\1
+	call Channel1_PlayNote_\1
 .skip_audio_command_processor
 	ld a, $0
 	call UpdateChannelNoise_\1
@@ -446,7 +446,7 @@ PlayChannel2_\1: ; 70315 (1c:4315)
 	ld a, [wChannel2ActiveFlag]
 	or a
 	jr z, .channel_switched_off
-	ld a, [wChannel2UnknownC137]
+	ld a, [wChannel2NotePlaying]
 	cp $0
 	jr z, .skip
 	ld a, [wChannel2UnknownC143]
@@ -460,7 +460,7 @@ PlayChannel2_\1: ; 70315 (1c:4315)
 	bit 1, a
 	jr nz, .skip
 	ld hl, rNR22
-	ld a, [wChannel2UnknownC147]
+	ld a, [wChannel2NR2]
 	ld [hli], a
 	inc hl
 	ld a, $80
@@ -475,11 +475,11 @@ PlayChannel2_\1: ; 70315 (1c:4315)
 	ld a, [wChannel2Pointer]
 	ld l, a
 	ld bc, $1
-	call AudioCommandProcessor_\1
+	call MusicCommandProcessor_\1
 	ld a, [wChannel2ActiveFlag]
 	or a
 	jr z, .channel_switched_off
-	call Func_70763_\1
+	call Channel2_PlayNote_\1
 .skip_command_processor
 	ld a, $1
 	call UpdateChannelNoise_\1
@@ -500,22 +500,22 @@ PlayChannel3_\1: ; 7037a (1c:437a)
 	ld a, [wChannel3ActiveFlag]
 	or a
 	jr z, .channel_switched_off
-	ld a, [wChannel3UnknownC137]
+	ld a, [wChannel3NotePlaying]
 	cp $0
-	jr z, .asm_703a3
+	jr z, .skip
 	ld a, [wChannel3UnknownC143]
 	dec a
 	ld [wChannel3UnknownC143], a
-	jr nz, .asm_703a3
+	jr nz, .skip
 	ld a, [wSFXChannelFlags]
 	bit 2, a
-	jr nz, .asm_703a3
+	jr nz, .skip
 	ld a, [wChannel3NoteDuration]
 	cp $1
-	jr z, .asm_703a3
-	ld a, [wChannel3UnknownC147]
+	jr z, .skip
+	ld a, [wChannel3NR2]
 	ld [rNR32], a
-.asm_703a3
+.skip
 	ld a, [wChannel3NoteDuration]
 	dec a
 	ld [wChannel3NoteDuration], a
@@ -525,11 +525,11 @@ PlayChannel3_\1: ; 7037a (1c:437a)
 	ld a, [wChannel3Pointer]
 	ld l, a
 	ld bc, $2
-	call AudioCommandProcessor_\1
+	call MusicCommandProcessor_\1
 	ld a, [wChannel3ActiveFlag]
 	or a
 	jr z, .channel_switched_off
-	call Func_707a5_\1
+	call Channel3_PlayNote_\1
 .skip_command_processor
 	ld a, $2
 	call UpdateChannelNoise_\1
@@ -549,44 +549,44 @@ PlayChannel3_\1: ; 7037a (1c:437a)
 PlayChannel4_\1: ; 703d9 (1c:43d9)
 	ld a, [wChannel4ActiveFlag]
 	or a
-	jr z, .asm_7040b
+	jr z, .channel_switched_off
 	ld a, [wChannel4NoteDuration]
 	dec a
 	ld [wChannel4NoteDuration], a
-	jr nz, .asm_70401
+	jr nz, .note_not_done
 	ld a, [wChannel4Pointer + 1]
 	ld h, a
 	ld a, [wChannel4Pointer]
 	ld l, a
 	ld bc, $3
-	call AudioCommandProcessor_\1
+	call MusicCommandProcessor_\1
 	ld a, [wChannel4ActiveFlag]
 	or a
-	jr z, .asm_7040b
-	call Func_70813_\1
-	jr .asm_7041e
+	jr z, .channel_switched_off
+	call PlayNoiseHeaderCh4_\1
+	jr .quit
 
-.asm_70401
+.note_not_done
 	ld a, [wc16f]
 	or a
-	jr z, .asm_7041e
-	call Func_70842_\1
+	jr z, .quit
+	call PlayNextNoiseSample_\1
 	ret
 
-.asm_7040b
+.channel_switched_off
 	ld a, [wSFXChannelFlags]
 	bit 3, a
-	jr nz, .asm_7041e
+	jr nz, .quit
 	xor a
 	ld [wc16f], a
 	ld a, $8
 	ld [rNR42], a
 	swap a
 	ld [rNR44], a
-.asm_7041e
+.quit
 	ret
 
-AudioCommandProcessor_\1: ; 7041f (1c:441f)
+MusicCommandProcessor_\1: ; 7041f (1c:441f)
 	; hl = song pointer
 	; bc = which channel
 	ld a, [hli]
@@ -609,58 +609,58 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	jp hl
 
 .pointers_70437
-	dw Func_705a3_\1
+	dw MusicCommand_Tempo_\1 ; d0
 	dw MusicCommand_Octave_\1
 	dw MusicCommand_Octave_\1
 	dw MusicCommand_Octave_\1
 	dw MusicCommand_Octave_\1
 	dw MusicCommand_Octave_\1
 	dw MusicCommand_Octave_\1
-	dw AudioCommand_OctaveUp_\1
-	dw AudioCommand_OctaveDown_\1
-	dw AudioCommand_MuteChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_Duty_\1
-	dw AudioCommand_SetStartPointer_\1
-	dw AudioCommand_JumpStartPointer_\1
-	dw AudioCommand_SetLoop_\1
-	dw AudioCommand_DoLoop_\1
-	dw AudioCommand_JumpChannel_\1
-	dw AudioCommand_CallChannel_\1
-	dw AudioCommand_RetChannel_\1
-	dw Func_70672_\1
-	dw Func_7067f_\1
-	dw Func_7068c_\1
-	dw Func_70699_\1
-	dw Func_706a9_\1
-	dw Func_706b6_\1
-	dw Func_706c3_\1
-	dw Func_706d5_\1
-	dw Func_706e2_\1
-	dw Func_706ef_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
-	dw AudioCommand_StopChannel_\1
+	dw MusicCommand_OctaveUp_\1
+	dw MusicCommand_OctaveDown_\1 ; d8
+	dw MusicCommand_MuteChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_DutyCycle_\1
+	dw MusicCommand_SetStartPointer_\1
+	dw MusicCommand_JumpStartPointer_\1
+	dw MusicCommand_SetLoop_\1
+	dw MusicCommand_DoLoop_\1 ; e0
+	dw MusicCommand_JumpChannel_\1
+	dw MusicCommand_CallChannel_\1
+	dw MusicCommand_RetChannel_\1
+	dw MusicCommand_FreqOffset_\1
+	dw MusicCommand_SetNRx1_\1
+	dw MusicCommand_SetNRx2_\1
+	dw MusicCommand_NoiseSample_\1
+	dw MusicCommand_SetC13F_\1 ; e8
+	dw MusicCommand_SetNRx2_2_\1
+	dw MusicCommand_SetC153andC157_\1
+	dw MusicCommand_SetC15F_\1
+	dw MusicCommand_KeyChange_\1
+	dw MusicCommand_KeyChangeRelative_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
+	dw MusicCommand_StopChannel_\1
 
 .note
 	push af
-	ld a, [hl]
+	ld a, [hl] ; peek ahead
 	ld e, a
 	ld hl, wChannelNoteStates
 	add hl, bc
@@ -685,7 +685,7 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 .skip
 	pop af
 	push de
-	ld hl, wChannelUnknownC14Fs
+	ld hl, wChannelTemposs
 	add hl, bc
 	ld d, [hl]
 	and $f
@@ -697,11 +697,11 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	ld d, e
 .no_rotate_regs
 	ld e, a
-.loop
+.shift_left
 	dec d
 	jr z, .done
 	add e
-	jr .loop
+	jr .shift_left
 
 .done
 	ld hl, wChannelNoteDurations
@@ -710,9 +710,9 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	pop de
 	ld d, a
 	ld a, e
-	cp $d9
+	cp $d9 ; mute_channel
 	ld a, d
-	jr z, .asm_70506
+	jr z, .set_c143
 	ld e, a
 	ld hl, wChannelUnknownC13Fs
 	add hl, bc
@@ -720,16 +720,17 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	cp $8
 	ld d, a
 	ld a, e
-	jr z, .asm_70506
+	jr z, .set_c143
 	push hl
 	push bc
 	ld b, $0
 	ld c, a
 	ld hl, $0
-.asm_704f3
+	; no checks for d==0
+.add_n_times
 	add hl, bc
 	dec d
-	jr nz, .asm_704f3
+	jr nz, .add_n_times
 	srl h
 	rr l
 	srl h
@@ -739,30 +740,30 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	ld a, l
 	pop bc
 	pop hl
-.asm_70506
+.set_c143
 	ld hl, wChannelUnknownC143s
 	add hl, bc
 	ld [hl], a
 	pop af
 	and $f0
-	ld hl, wChannelUnknownC137s
+	ld hl, wChannelNotesPlaying
 	add hl, bc
 	ld [hl], a
 	or a
-	jr nz, .asm_70519
-	jp Func_70599_\1
+	jr nz, .get_pitch
+	jp .update_channel_pointer
 
-.asm_70519
+.get_pitch
 	swap a
 	dec a
 	ld h, a
 	ld a, $3
 	cp c
 	ld a, h
-	jr z, .asm_70525
-	jr .asm_7056f
+	jr z, .channel_4
+	jr .not_channel_4
 
-.asm_70525
+.channel_4
 	push af
 	ld hl, wChannelOctaves
 	add hl, bc
@@ -792,7 +793,7 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	and $77
 	or d
 	ld [wGlobalDuty], a
-	ld de, wc12b
+	ld de, wNoiseSampleHeader
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -809,14 +810,14 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	ld b, $0
 	ld a, l
 	ld d, h
-	ld hl, wc16d
+	ld hl, wNoiseSamplePointer
 	ld [hli], a
 	ld [hl], d
 	ld a, $1
 	ld [wc16f], a
-	jr Func_70599_\1
+	jr .update_channel_pointer
 
-.asm_7056f
+.not_channel_4
 	ld hl, wChannelFrequencies
 	add hl, bc
 	add hl, bc
@@ -825,18 +826,18 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	add hl, bc
 	ld e, [hl]
 	ld d, $0
-	ld hl, Data_70c1a_\1
+	ld hl, CNotes_\1
 	add hl, de
 	add a
 	ld e, [hl]
 	add e
-	ld hl, wChannelUnknownC14Bs
+	ld hl, wChannelKeySignatures
 	add hl, bc
 	ld e, [hl]
 	add e
 	add e
 	ld e, a
-	ld hl, Data_70c22_\1
+	ld hl, FrequencyTable_\1
 	add hl, de
 	ld a, [hli]
 	ld e, a
@@ -846,7 +847,7 @@ AudioCommandProcessor_\1: ; 7041f (1c:441f)
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-Func_70599_\1: ; 70599 (1c:4599)
+.update_channel_pointer
 	pop de
 	ld hl, wChannelPointers
 	add hl, bc
@@ -856,14 +857,14 @@ Func_70599_\1: ; 70599 (1c:4599)
 	ld [hl], d
 	ret
 
-Func_705a3_\1: ; 705a3 (1c:45a3)
+MusicCommand_Tempo_\1: ; 705a3 (1c:45a3)
 	pop hl
 	ld a, [hli]
 	push hl
-	ld hl, wChannelUnknownC14Fs
+	ld hl, wChannelTemposs
 	add hl, bc
 	ld [hl], a
-	jp NextAudioCommand_\1
+	jp NextMusicCommand_\1
 
 MusicCommand_Octave_\1: ; 705ae (1c:45ae)
 	and $7
@@ -873,36 +874,36 @@ MusicCommand_Octave_\1: ; 705ae (1c:45ae)
 	push af
 	ld a, c
 	cp $2
-	jr nz, .not_ch2
+	jr nz, .not_ch3
 	pop af
 	inc a
 	ld [hl], a
-	jp NextAudioCommand_\1
+	jp NextMusicCommand_\1
 
-.not_ch2
+.not_ch3
 	pop af
 	ld [hl], a
-	jp NextAudioCommand_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_OctaveUp_\1: ; 705c6 (1c:45c6)
+MusicCommand_OctaveUp_\1: ; 705c6 (1c:45c6)
 	ld hl, wChannelOctaves
 	add hl, bc
 	inc [hl]
-	jp NextAudioCommand_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_OctaveDown_\1: ; 705ce (1c:45ce)
+MusicCommand_OctaveDown_\1: ; 705ce (1c:45ce)
 	ld hl, wChannelOctaves
 	add hl, bc
 	dec [hl]
-	jp NextAudioCommand_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_MuteChannel_\1: ; 705d6 (1c:45d6)
+MusicCommand_MuteChannel_\1: ; 705d6 (1c:45d6)
 	ld hl, wChannelNoteStates
 	add hl, bc
 	ld [hl], $80
-	jp NextAudioCommand_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_Duty_\1: ; 705df (1c:45df)
+MusicCommand_DutyCycle_\1: ; 705df (1c:45df)
 	pop hl
 	ld a, [hli]
 	push hl
@@ -924,9 +925,9 @@ AudioCommand_Duty_\1: ; 705df (1c:45df)
 	or d
 	ld [hl], a
 	pop bc
-	jp NextAudioCommand_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_SetStartPointer_\1: ; 705fa (1c:45fa)
+MusicCommand_SetStartPointer_\1: ; 705fa (1c:45fa)
 	pop de
 	push de
 	dec de
@@ -936,9 +937,9 @@ AudioCommand_SetStartPointer_\1: ; 705fa (1c:45fa)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	jp NextAudioCommand_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_JumpStartPointer_\1: ; 70608 (1c:4608)
+MusicCommand_JumpStartPointer_\1: ; 70608 (1c:4608)
 	pop hl
 	ld hl, wChannelStartPointers
 	add hl, bc
@@ -946,14 +947,14 @@ AudioCommand_JumpStartPointer_\1: ; 70608 (1c:4608)
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-AudioCommand_SetLoop_\1: ; 70614 (1c:4614)
+MusicCommand_SetLoop_\1: ; 70614 (1c:4614)
 	pop de
 	ld a, [de]
 	inc de
 	push af
-	call AudioCommand_GetChannelStackPointer_\1
+	call MusicCommand_GetChannelStackPointer_\1
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -962,11 +963,11 @@ AudioCommand_SetLoop_\1: ; 70614 (1c:4614)
 	ld [hl], a
 	inc hl
 	push de
-	call AudioCommand_PushLoopAddress_\1
-	jp NextAudioCommand_\1
+	call MusicCommand_UpdateStackPointer_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_DoLoop_\1: ; 70629 (1c:4629)
-	call AudioCommand_GetChannelStackPointer_\1
+MusicCommand_DoLoop_\1: ; 70629 (1c:4629)
+	call MusicCommand_GetChannelStackPointer_\1
 	dec hl
 	ld a, [hl]
 	dec a
@@ -978,23 +979,23 @@ AudioCommand_DoLoop_\1: ; 70629 (1c:4629)
 	pop hl
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
 .done_loop
 	dec hl
 	dec hl
-	call AudioCommand_PushLoopAddress_\1
-	jp NextAudioCommand_\1
+	call MusicCommand_UpdateStackPointer_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_JumpChannel_\1: ; 70643 (1c:4643)
+MusicCommand_JumpChannel_\1: ; 70643 (1c:4643)
 	pop hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-AudioCommand_CallChannel_\1: ; 7064a (1c:464a)
-	call AudioCommand_GetChannelStackPointer_\1
+MusicCommand_CallChannel_\1: ; 7064a (1c:464a)
+	call MusicCommand_GetChannelStackPointer_\1
 	pop de
 	ld a, e
 	ld [hli], a
@@ -1008,12 +1009,12 @@ AudioCommand_CallChannel_\1: ; 7064a (1c:464a)
 	ld e, b
 	ld b, $0
 	push de
-	call AudioCommand_PushLoopAddress_\1
-	jp NextAudioCommand_\1
+	call MusicCommand_UpdateStackPointer_\1
+	jp NextMusicCommand_\1
 
-AudioCommand_RetChannel_\1: ; 70661 (1c:4661)
+MusicCommand_RetChannel_\1: ; 70661 (1c:4661)
 	pop de
-	call AudioCommand_GetChannelStackPointer_\1
+	call MusicCommand_GetChannelStackPointer_\1
 	dec hl
 	ld a, [hld]
 	ld e, [hl]
@@ -1021,10 +1022,10 @@ AudioCommand_RetChannel_\1: ; 70661 (1c:4661)
 	inc de
 	inc de
 	push de
-	call AudioCommand_PushLoopAddress_\1
-	jp NextAudioCommand_\1
+	call MusicCommand_UpdateStackPointer_\1
+	jp NextMusicCommand_\1
 
-Func_70672_\1: ; 70672 (1c:4672)
+MusicCommand_FreqOffset_\1: ; 70672 (1c:4672)
 	pop de
 	ld a, [de]
 	inc de
@@ -1033,9 +1034,9 @@ Func_70672_\1: ; 70672 (1c:4672)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_7067f_\1: ; 7067f (1c:467f)
+MusicCommand_SetNRx1_\1: ; 7067f (1c:467f)
 	pop de
 	ld a, [de]
 	inc de
@@ -1044,9 +1045,9 @@ Func_7067f_\1: ; 7067f (1c:467f)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_7068c_\1: ; 7068c (1c:468c)
+MusicCommand_SetNRx2_\1: ; 7068c (1c:468c)
 	pop de
 	ld a, [de]
 	inc de
@@ -1055,9 +1056,9 @@ Func_7068c_\1: ; 7068c (1c:468c)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_70699_\1: ; 70699 (1c:4699)
+MusicCommand_NoiseSample_\1: ; 70699 (1c:4699)
 	pop de
 	ld a, [de]
 	inc de
@@ -1066,9 +1067,9 @@ Func_70699_\1: ; 70699 (1c:4699)
 	ld [wc10b], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_706a9_\1: ; 706a9 (1c:46a9)
+MusicCommand_SetC13F_\1: ; 706a9 (1c:46a9)
 	pop de
 	ld a, [de]
 	inc de
@@ -1077,20 +1078,20 @@ Func_706a9_\1: ; 706a9 (1c:46a9)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_706b6_\1: ; 706b6 (1c:46b6)
+MusicCommand_SetNRx2_2_\1: ; 706b6 (1c:46b6)
 	pop de
 	ld a, [de]
 	inc de
-	ld hl, wChannelUnknownC147s
+	ld hl, wChannelNR2s
 	add hl, bc
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_706c3_\1: ; 706c3 (1c:46c3)
+MusicCommand_SetC153andC157_\1: ; 706c3 (1c:46c3)
 	pop de
 	ld a, [de]
 	inc de
@@ -1102,9 +1103,9 @@ Func_706c3_\1: ; 706c3 (1c:46c3)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_706d5_\1: ; 706d5 (1c:46d5)
+MusicCommand_SetC15F_\1: ; 706d5 (1c:46d5)
 	pop de
 	ld a, [de]
 	inc de
@@ -1113,39 +1114,39 @@ Func_706d5_\1: ; 706d5 (1c:46d5)
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_706e2_\1: ; 706e2 (1c:46e2)
+MusicCommand_KeyChange_\1: ; 706e2 (1c:46e2)
 	pop de
 	ld a, [de]
 	inc de
-	ld hl, wChannelUnknownC14Bs
+	ld hl, wChannelKeySignatures
 	add hl, bc
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_706ef_\1: ; 706ef (1c:46ef)
+MusicCommand_KeyChangeRelative_\1: ; 706ef (1c:46ef)
 	pop de
 	ld a, [de]
 	inc de
-	ld hl, wChannelUnknownC14Bs
+	ld hl, wChannelKeySignatures
 	add hl, bc
 	add [hl]
 	ld [hl], a
 	ld h, d
 	ld l, e
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-AudioCommand_StopChannel_\1: ; 706fd (1c:46fd)
+MusicCommand_StopChannel_\1: ; 706fd (1c:46fd)
 	ld hl, wChannelActiveFlags
 	add hl, bc
 	ld [hl], $0
 	pop hl
 	ret
 
-AudioCommand_GetChannelStackPointer_\1: ; 70705 (1c:4705)
+MusicCommand_GetChannelStackPointer_\1: ; 70705 (1c:4705)
 	ld hl, wChannelStackPointers
 	add hl, bc
 	add hl, bc
@@ -1154,7 +1155,7 @@ AudioCommand_GetChannelStackPointer_\1: ; 70705 (1c:4705)
 	ld l, a
 	ret
 
-AudioCommand_PushLoopAddress_\1: ; 7070e (1c:470e)
+MusicCommand_UpdateStackPointer_\1: ; 7070e (1c:470e)
 	ld d, h
 	ld e, l
 	ld hl, wChannelStackPointers
@@ -1165,17 +1166,17 @@ AudioCommand_PushLoopAddress_\1: ; 7070e (1c:470e)
 	ld [hl], d
 	ret
 
-NextAudioCommand_\1: ; 70719 (1c:4719)
+NextMusicCommand_\1: ; 70719 (1c:4719)
 	pop hl
-	jp AudioCommandProcessor_\1
+	jp MusicCommandProcessor_\1
 
-Func_7071d_\1: ; 7071d (1c:471d)
+Channel1_PlayNote_\1: ; 7071d (1c:471d)
 	ld a, [wSFXChannelFlags]
 	bit 0, a
 	jr nz, .dont_play_note
-	ld a, [wChannel1UnknownC137]
+	ld a, [wChannel1NotePlaying]
 	cp $0
-	jr z, .asm_70753
+	jr z, .rest
 	ld d, $0
 	ld hl, wChannelNoteStates
 	ld a, [hl]
@@ -1198,7 +1199,7 @@ Func_7071d_\1: ; 7071d (1c:471d)
 .dont_play_note
 	ret
 
-.asm_70753
+.rest
 	ld hl, wChannel1NoteState
 	ld [hl], $0
 	ld hl, rNR12
@@ -1209,11 +1210,11 @@ Func_7071d_\1: ; 7071d (1c:471d)
 	ld [hl], a
 	ret
 
-Func_70763_\1: ; 70763 (1c:4763)
+Channel2_PlayNote_\1: ; 70763 (1c:4763)
 	ld a, [wSFXChannelFlags]
 	bit 1, a
 	jr nz, .asm_70794
-	ld a, [wChannel2UnknownC137]
+	ld a, [wChannel2NotePlaying]
 	cp $0
 	jr z, .asm_70795
 	ld d, $0
@@ -1247,7 +1248,7 @@ Func_70763_\1: ; 70763 (1c:4763)
 	ld [hl], a
 	ret
 
-Func_707a5_\1: ; 707a5 (1c:47a5)
+Channel3_PlayNote_\1: ; 707a5 (1c:47a5)
 	ld a, [wSFXChannelFlags]
 	bit 2, a
 	jr nz, .asm_707e9
@@ -1260,7 +1261,7 @@ Func_707a5_\1: ; 707a5 (1c:47a5)
 	call Func_707f3_\1
 	ld d, $80
 .skip_wave_copy
-	ld a, [wChannel3UnknownC137]
+	ld a, [wChannel3NotePlaying]
 	cp $0
 	jr z, .asm_707ea
 	ld hl, wChannel3NoteState
@@ -1317,15 +1318,15 @@ Func_707f3_\1: ; 707f3 (1c:47f3)
 	ld [wc10b], a
 	ret
 
-Func_70813_\1: ; 70813 (1c:4813)
+PlayNoiseHeaderCh4_\1: ; 70813 (1c:4813)
 	ld a, [wSFXChannelFlags]
 	bit 3, a
 	jr nz, .no_ch4_sfx
-	ld a, [wChannel4UnknownC137]
+	ld a, [wChannel4NotePlaying]
 	cp $0
-	jr z, asm_70833_\1
+	jr z, noiseSampleEndedCh4_\1
 	ld de, rNR41
-	ld hl, wc12b
+	ld hl, wNoiseSampleHeader
 	ld a, [hli]
 	ld [de], a
 	inc e
@@ -1340,7 +1341,7 @@ Func_70813_\1: ; 70813 (1c:4813)
 .no_ch4_sfx
 	ret
 
-asm_70833_\1
+noiseSampleEndedCh4_\1
 	xor a
 	ld [wc16f], a
 	ld hl, rNR42
@@ -1351,31 +1352,31 @@ asm_70833_\1
 	ld [hl], a
 	ret
 
-Func_70842_\1: ; 70842 (1c:4842)
+PlayNextNoiseSample_\1: ; 70842 (1c:4842)
 	ld a, [wSFXChannelFlags]
 	bit 3, a
-	jr z, .asm_7084f
+	jr z, .check_c16d
 	xor a
 	ld [wc16f], a
-	jr .asm_70862
+	jr .quit
 
-.asm_7084f
-	ld hl, wc16d
+.check_c16d
+	ld hl, wNoiseSamplePointer
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
 	ld a, [de]
 	cp $ff
-	jr nz, .asm_7085c
-	jr asm_70833_\1
+	jr nz, .read
+	jr noiseSampleEndedCh4_\1
 
-.asm_7085c
+.read
 	ld [rNR43], a
 	inc de
 	ld a, d
 	ld [hld], a
 	ld [hl], e
-.asm_70862
+.quit
 	ret
 
 UpdateChannelNoise_\1: ; 70863 (1c:4863)
@@ -1666,9 +1667,9 @@ BackUpMusicData_\1: ; 709ce (1c:49ce)
 	ld de, wBackupChannelStartPointers
 	ld a, $8
 	call AudioEngine_CopyBytes_\1
-	ld a, [wc12b]
+	ld a, [wNoiseSampleHeader]
 	ld [wBackupc12b], a
-	ld a, [wc12b + 1]
+	ld a, [wNoiseSampleHeader + 1]
 	ld [wBackupc12b + 1], a
 	ld hl, wChannelOctaves
 	ld de, wBackupChannelOctaves
@@ -1678,8 +1679,8 @@ BackUpMusicData_\1: ; 709ce (1c:49ce)
 	ld de, wBackupChannelUnknownC133s
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
-	ld hl, wChannelUnknownC137s
-	ld de, wBackupChannelUnknownC137s
+	ld hl, wChannelNotesPlaying
+	ld de, wBackupChannelNotesPlaying
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
 	ld hl, wChannelNoteDurations
@@ -1694,16 +1695,16 @@ BackUpMusicData_\1: ; 709ce (1c:49ce)
 	ld de, wBackupChannelUnknownC143s
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
-	ld hl, wChannelUnknownC147s
-	ld de, wBackupChannelUnknownC147s
+	ld hl, wChannelNR2s
+	ld de, wBackupChannelNR2s
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
-	ld hl, wChannelUnknownC14Bs
-	ld de, wBackupChannelUnknownC14Bs
+	ld hl, wChannelKeySignatures
+	ld de, wBackupChannelKeySignatures
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
-	ld hl, wChannelUnknownC14Fs
-	ld de, wBackupChannelUnknownC14Fs
+	ld hl, wChannelTemposs
+	ld de, wBackupChannelTemposs
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
 	ld hl, wChannelUnknownC157s
@@ -1727,8 +1728,8 @@ BackUpMusicData_\1: ; 709ce (1c:49ce)
 	ld de, wBackupChannelFrequencyOffsets
 	ld a, $3
 	call AudioEngine_CopyBytes_\1
-	ld hl, wc16d
-	ld de, wBackupc16d
+	ld hl, wNoiseSamplePointer
+	ld de, wBackupNoiseSamplePointer
 	ld a, $2
 	call AudioEngine_CopyBytes_\1
 	ld a, $0
@@ -1775,9 +1776,9 @@ RestoreMusicData_\1: ; 70af3 (1c:4af3)
 	ld a, $8
 	call AudioEngine_CopyBytes_\1
 	ld a, [wBackupc12b]
-	ld [wc12b], a
+	ld [wNoiseSampleHeader], a
 	ld a, [wBackupc12b + 1]
-	ld [wc12b + 1], a
+	ld [wNoiseSampleHeader + 1], a
 	ld hl, wBackupChannelOctaves
 	ld de, wChannelOctaves
 	ld a, $4
@@ -1786,8 +1787,8 @@ RestoreMusicData_\1: ; 70af3 (1c:4af3)
 	ld de, wChannelUnknownC133s
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
-	ld hl, wBackupChannelUnknownC137s
-	ld de, wChannelUnknownC137s
+	ld hl, wBackupChannelNotesPlaying
+	ld de, wChannelNotesPlaying
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
 	ld hl, wBackupChannelNoteDurations
@@ -1802,16 +1803,16 @@ RestoreMusicData_\1: ; 70af3 (1c:4af3)
 	ld de, wChannelUnknownC143s
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
-	ld hl, wBackupChannelUnknownC147s
-	ld de, wChannelUnknownC147s
+	ld hl, wBackupChannelNR2s
+	ld de, wChannelNR2s
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
-	ld hl, wBackupChannelUnknownC14Bs
-	ld de, wChannelUnknownC14Bs
+	ld hl, wBackupChannelKeySignatures
+	ld de, wChannelKeySignatures
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
-	ld hl, wBackupChannelUnknownC14Fs
-	ld de, wChannelUnknownC14Fs
+	ld hl, wBackupChannelTemposs
+	ld de, wChannelTemposs
 	ld a, $4
 	call AudioEngine_CopyBytes_\1
 	ld hl, wBackupChannelUnknownC157s
@@ -1830,8 +1831,8 @@ RestoreMusicData_\1: ; 70af3 (1c:4af3)
 	ld de, wChannelFrequencyOffsets
 	ld a, $3
 	call AudioEngine_CopyBytes_\1
-	ld hl, wBackupc16d
-	ld de, wc16d
+	ld hl, wBackupNoiseSamplePointer
+	ld de, wNoiseSamplePointer
 	ld a, $2
 	call AudioEngine_CopyBytes_\1
 	ld a, [wBackupc16f]
@@ -1869,7 +1870,7 @@ Data_70c16_\1: ; 70c16
 Data_70c18_\1: ; 70c18
 	dw wChannel4Stack
 
-Data_70c1a_\1: ; 70c1a
+CNotes_\1: ; 70c1a
 	db   0
 	db  24
 	db  48
@@ -1879,91 +1880,35 @@ Data_70c1a_\1: ; 70c1a
 	db 144
 	db 168
 
-Data_70c22_\1: ; 70c22
-	dw $002c
-	dw $009c
-	dw $0106
-	dw $016b
-	dw $01c9
-	dw $0222
-	dw $0278
-	dw $02c6
-	dw $0312
-	dw $0358
-	dw $039b
-	dw $03da
-	dw $0416
-	dw $044e
-	dw $0483
-	dw $04b5
-	dw $04e5
-	dw $0511
-	dw $053c
-	dw $0563
-	dw $0589
-	dw $05ac
-	dw $05cd
-	dw $05ed
-	dw $060b
-	dw $0628
-	dw $0642
-	dw $065b
-	dw $0672
-	dw $0689
-	dw $069e
-	dw $06b2
-	dw $06c4
-	dw $06d6
-	dw $06e7
-	dw $06f6
-	dw $0705
-	dw $0714
-	dw $0721
-	dw $072d
-	dw $0739
-	dw $0744
-	dw $074f
-	dw $0759
-	dw $0762
-	dw $076b
-	dw $0773
-	dw $077b
-	dw $0783
-	dw $078a
-	dw $0790
-	dw $0797
-	dw $079d
-	dw $07a2
-	dw $07a7
-	dw $07ac
-	dw $07b1
-	dw $07b6
-	dw $07ba
-	dw $07be
-	dw $07c1
-	dw $07c5
-	dw $07c8
-	dw $07cb
-	dw $07ce
-	dw $07d1
-	dw $07d4
-	dw $07d6
-	dw $07d9
-	dw $07db
-	dw $07dd
-	dw $07df
-	dw $07e1
-	dw $07e3
-	dw $07e4
-	dw $07e5
-	dw $07e7
-	dw $07e8
-	dw $07ea
-	dw $07eb
-	dw $07ec
-	dw $07ed
-	dw $07ee
-	dw $07ef
+FrequencyTable_\1: ; 70c22
+	dw $002c, $009c, $0106, $016b
+	dw $01c9, $0222, $0278, $02c6
+	dw $0312, $0358, $039b, $03da
+
+	dw $0416, $044e, $0483, $04b5
+	dw $04e5, $0511, $053c, $0563
+	dw $0589, $05ac, $05cd, $05ed
+
+	dw $060b, $0628, $0642, $065b
+	dw $0672, $0689, $069e, $06b2
+	dw $06c4, $06d6, $06e7, $06f6
+
+	dw $0705, $0714, $0721, $072d
+	dw $0739, $0744, $074f, $0759
+	dw $0762, $076b, $0773, $077b
+
+	dw $0783, $078a, $0790, $0797
+	dw $079d, $07a2, $07a7, $07ac
+	dw $07b1, $07b6, $07ba, $07be
+
+	dw $07c1, $07c5, $07c8, $07cb
+	dw $07ce, $07d1, $07d4, $07d6
+	dw $07d9, $07db, $07dd, $07df
+
+	dw $07e1, $07e3, $07e4, $07e5
+	dw $07e7, $07e8, $07ea, $07eb
+	dw $07ec, $07ed, $07ee, $07ef
+
 	dw $07f0
 
 Data_70ccc_\1: ; 70ccc
@@ -2034,139 +1979,336 @@ Data_70dd4_\1: ; 70dd4
 	dr $70dd4, $70de4
 
 Data_70de4_\1: ; 70de4
-	dw Data_70e52_\1
-	dw Data_70e59_\1
-	dw Data_70e60_\1
-	dw Data_70e69_\1
-	dw Data_70e72_\1
-	dw Data_70e7b_\1
-	dw Data_70e85_\1
-	dw Data_70e8f_\1
-	dw Data_70e97_\1
-	dw Data_70e9f_\1
-	dw Data_70ec1_\1
-	dw Data_70ec7_\1
-	dw Data_70ee4_\1
-	dw Data_70eeb_\1
-	dw Data_70ef2_\1
-	dw Data_70efc_\1
-	dw Data_70f06_\1
-	dw Data_70f10_\1
-	dw Data_70f1a_\1
-	dw Data_70f21_\1
-	dw Data_70f28_\1
-	dw Data_70f2f_\1
-	dw Data_70f49_\1
-	dw Data_70f54_\1
-	dw Data_70f74_\1
-	dw Data_70f8c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
-	dw Data_70e4c_\1
+	dw Data_70e52_\1, Data_70e59_\1, Data_70e60_\1, Data_70e69_\1
+	dw Data_70e72_\1, Data_70e7b_\1, Data_70e85_\1, Data_70e8f_\1
+	dw Data_70e97_\1, Data_70e9f_\1, Data_70ec1_\1, Data_70ec7_\1
+	dw Data_70ee4_\1, Data_70eeb_\1, Data_70ef2_\1, Data_70efc_\1
+	dw Data_70f06_\1, Data_70f10_\1, Data_70f1a_\1, Data_70f21_\1
+	dw Data_70f28_\1, Data_70f2f_\1, Data_70f49_\1, Data_70f54_\1
+	dw Data_70f74_\1, Data_70f8c_\1, Data_70e4c_\1, Data_70e4c_\1
+	dw Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1
+	dw Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1
+	dw Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1
+	dw Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1
+	dw Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1
+	dw Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1
 
 Data_70e4c_\1: ; 70e4c
-	dr $70e4c, $70e52
+	db $00
+	db $ed, $02, $c0, $48
+	db $4e
 
 Data_70e52_\1: ; 70e52
-	dr $70e52, $70e59
+	db $88
+	db $f7, $b2, $c0, $48
+	db $4f
+	db $ff
 
 Data_70e59_\1: ; 70e59
-	dr $70e59, $70e60
+	db $88
+	db $f7, $82, $c0, $48
+	db $4f
+	db $ff
 
 Data_70e60_\1: ; 70e60
-	dr $70e60, $70e69
+	db $88
+	db $00, $a1, $80, $06
+	db $04
+	db $06
+	db $04
+	db $ff
 
 Data_70e69_\1: ; 70e69
-	dr $70e69, $70e72
+	db $88
+	db $00, $81, $80, $06
+	db $04
+	db $06
+	db $04
+	db $ff
 
 Data_70e72_\1: ; 70e72
-	dr $70e72, $70e7b
+	db $88
+	db $00, $61, $80, $06
+	db $04
+	db $06
+	db $04
+	db $ff
 
 Data_70e7b_\1: ; 70e7b
-	dr $70e7b, $70e85
+	db $88
+	db $00, $c1, $80, $06
+	db $04
+	db $06
+	db $04
+	db $04
+	db $ff
 
 Data_70e85_\1: ; 70e85
-	dr $70e85, $70e8f
+	db $88
+	db $f7, $e1, $c0, $02
+	db $01
+	db $01
+	db $01
+	db $01
+	db $ff
 
 Data_70e8f_\1: ; 70e8f
-	dr $70e8f, $70e97
+	db $88
+	db $f7, $b1, $c0, $02
+	db $01
+	db $01
+	db $ff
 
 Data_70e97_\1: ; 70e97
-	dr $70e97, $70e9f
+	db $88
+	db $f7, $91, $c0, $02
+	db $01
+	db $01
+	db $ff
 
 Data_70e9f_\1: ; 70e9f
-	dr $70e9f, $70ec1
+	db $88
+	db $00, $b3, $80, $02
+	db $00
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $ff
 
 Data_70ec1_\1: ; 70ec1
-	dr $70ec1, $70ec7
+	db $88
+	db $1e, $91, $80, $3d
+	db $ff
 
 Data_70ec7_\1: ; 70ec7
-	dr $70ec7, $70ee4
+	db $88
+	db $00, $c3, $80, $02
+	db $00
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $ff
 
 Data_70ee4_\1: ; 70ee4
-	dr $70ee4, $70eeb
+	db $88
+	db $1e, $f1, $c0, $36
+	db $47
+	db $ff
 
 Data_70eeb_\1: ; 70eeb
-	dr $70eeb, $70ef2
+	db $88
+	db $32, $f1, $c0, $36
+	db $47
+	db $ff
 
 Data_70ef2_\1: ; 70ef2
-	dr $70ef2, $70efc
+	db $88
+	db $f5, $d1, $c0, $d8
+	db $22
+	db $11
+	db $06
+	db $04
+	db $ff
 
 Data_70efc_\1: ; 70efc
-	dr $70efc, $70f06
+	db $88
+	db $f7, $b1, $c0, $d8
+	db $22
+	db $11
+	db $06
+	db $04
+	db $ff
 
 Data_70f06_\1: ; 70f06
-	dr $70f06, $70f10
+	db $88
+	db $f7, $91, $c0, $d8
+	db $06
+	db $04
+	db $06
+	db $06
+	db $ff
 
 Data_70f10_\1: ; 70f10
-	dr $70f10, $70f1a
+	db $88
+	db $f7, $f1, $c0, $d8
+	db $33
+	db $22
+	db $11
+	db $06
+	db $ff
 
 Data_70f1a_\1: ; 70f1a
-	dr $70f1a, $70f21
+	db $88
+	db $00, $d1, $80, $02
+	db $01
+	db $ff
 
 Data_70f21_\1: ; 70f21
-	dr $70f21, $70f28
+	db $88
+	db $00, $a1, $80, $02
+	db $01
+	db $ff
 
 Data_70f28_\1: ; 70f28
-	dr $70f28, $70f2f
+	db $88
+	db $00, $71, $b0, $02
+	db $01
+	db $ff
 
 Data_70f2f_\1: ; 70f2f
-	dr $70f2f, $70f49
+	db $88
+	db $00, $a3, $c0, $fd
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $ff
 
 Data_70f49_\1: ; 70f49
-	dr $70f49, $70f54
+	db $88
+	db $00, $b4, $80, $46
+	db $06
+	db $04
+	db $00
+	db $04
+	db $02
+	db $ff
 
 Data_70f54_\1: ; 70f54
-	dr $70f54, $70f74
+	db $88
+	db $00, $a1, $80, $46
+	db $07
+	db $05
+	db $00
+	db $00
+	db $03
+	db $03
+	db $00
+	db $00
+	db $02
+	db $02
+	db $00
+	db $00
+	db $02
+	db $02
+	db $00
+	db $00
+	db $01
+	db $01
+	db $00
+	db $00
+	db $01
+	db $01
+	db $00
+	db $00
+	db $01
+	db $01
+	db $ff
 
 Data_70f74_\1: ; 70f74
-	dr $70f74, $70f8c
+	db $88
+	db $00, $c2, $80, $48
+	db $0b
+	db $0a
+	db $09
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $ff
 
 Data_70f8c_\1: ; 70f8c
-	dr $70f8c, $70fa4
+	db $88
+	db $00, $72, $80, $48
+	db $0b
+	db $0a
+	db $09
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $0b
+	db $0a
+	db $ff
 
 Data_70fa4_\1: ; 70fa4
 	dw Data_70fce_\1
