@@ -26,11 +26,11 @@ ToggleMusic_\1:: ; 70015 (1c:4015)
 SetVolume_\1:: ; 70018 (1c:4018)
 	jp SetVolume__\1
 
-Func_7001b_\1:: ; 7001b (1c:401b)
-	jp Func_709ba_\1
+BackUpMusicData_\1:: ; 7001b (1c:401b)
+	jp BackUpMusicData__\1
 
-Func_7001e_\1:: ; 7001e (1c:401e)
-	jp Func_709c4_\1
+RestoreMusicData_\1:: ; 7001e (1c:401e)
+	jp RestoreMusicData__\1
 
 StartSong__\1: ; 70021 (1c:4021)
 	push hl
@@ -179,7 +179,7 @@ UpdateSound__\1: ; 700f4 (1c:40f4)
 	ld a, [wMusicPaused]
 	cp $0
 	jr z, .play_channels
-	call Func_70976_\1
+	call MusicChannelsOff_\1
 	jr .done
 
 .play_channels
@@ -196,7 +196,7 @@ PlayAudio_\1: ; 70127 (1c:4127)
 	ld a, [wSongIndex]
 	rla
 	jr c, .already_started_song
-	call Func_70156_\1
+	call MusicChannelsOff2_\1
 	ld a, [wSongIndex]
 	call PlaySong_\1
 	ld a, [wSongIndex]
@@ -215,7 +215,7 @@ PlayAudio_\1: ; 70127 (1c:4127)
 .already_started_sfx
 	ret
 
-Func_70156_\1: ; 70156 (1c:4156)
+MusicChannelsOff2_\1: ; 70156 (1c:4156)
 	ld a, [wSFXChannelFlags]
 	ld d, a
 	xor a
@@ -1577,7 +1577,7 @@ ApplyPitchOffset_\1: ; 7095d (1c:495d)
 	ld d, a
 	ret
 
-Func_70976_\1: ; 70976 (1c:4976)
+MusicChannelsOff_\1: ; 70976 (1c:4976)
 	ld a, [wSFXChannelFlags]
 	ld d, a
 	bit 0, d
@@ -1624,19 +1624,19 @@ CheckSongPlaying_\1: ; 709a7 (1c:49a7)
 	ld [wSongIndex], a
 	ret
 
-Func_709ba_\1: ; 709ba (1c:49ba)
-	call Func_70976_\1
-	call BackUpMusicData_\1
-	call Func_70156_\1
+BackUpMusicData__\1: ; 709ba (1c:49ba)
+	call MusicChannelsOff_\1
+	call BackUpMusicData___\1
+	call MusicChannelsOff2_\1
 	ret
 
-Func_709c4_\1: ; 709c4 (1c:49c4)
-	call Func_70976_\1
-	call Func_70156_\1
-	call RestoreMusicData_\1
+RestoreMusicData__\1: ; 709c4 (1c:49c4)
+	call MusicChannelsOff_\1
+	call MusicChannelsOff2_\1
+	call RestoreMusicData___\1
 	ret
 
-BackUpMusicData_\1: ; 709ce (1c:49ce)
+BackUpMusicData___\1: ; 709ce (1c:49ce)
 	ld a, [wSongIndex]
 	ld [wBackupSongIndex], a
 	ld a, [wAudioROMBank]
@@ -1744,7 +1744,7 @@ BackUpMusicData_\1: ; 709ce (1c:49ce)
 	call AudioEngine_CopyBytes_\1
 	ret
 
-RestoreMusicData_\1: ; 70af3 (1c:4af3)
+RestoreMusicData___\1: ; 70af3 (1c:4af3)
 	ld a, [wBackupSongIndex]
 	ld [wSongIndex], a
 	ld a, [wBackupAudioROMBank]

@@ -158,7 +158,7 @@ const_value = $4b
 	predef_const Func_7dde6 ; c0
 	predef_const Func_7de0c
 	predef_const Func_7ea15
-	predef_const Func_7ceaf
+	predef_const FrameDelayPredef_7ceaf
 	predef_const Func_7d8c8
 	predef_const Func_7d6cc
 	predef_const Func_7d738
@@ -216,6 +216,6 @@ const_value = $4b
 	predef_const Func_7c17e_25
 	predef_const Func_7c586
 	predef_const Func_7ca3c
-	predef_const Func_7cdf6
-	predef_const Func_7ce7d
+	predef_const CopyToVRAMPredef
+	predef_const CopyFromVRAMPredef
 	predef_const Func_7ce36

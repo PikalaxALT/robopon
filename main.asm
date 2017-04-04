@@ -209,7 +209,7 @@ CopyPredef:
 	and $e0
 	cp $80
 	jr nz, .copy
-	predef Func_7ce7d
+	predef CopyFromVRAMPredef
 	ret
 
 .copy
@@ -227,7 +227,7 @@ CopyPredef:
 	or a
 .loop1
 	push af
-	predef Func_7cdf6
+	predef CopyToVRAMPredef
 	pop af
 	push af
 	jr nz, .okay
@@ -1611,7 +1611,7 @@ Data_0cae: ; 0cae
 	dr $cae, $cbb
 
 Func_0cbb: ; cbb (0:0cbb)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac8d
 	jr asm_0cf7
 
@@ -1620,38 +1620,38 @@ Func_0cc1: ; cc1 (0:0cc1)
 	ld de, $ce00
 	ld hl, $c800
 	ld c, $1
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7aca4
 	jr asm_0cf7
 
 Func_0cd2: ; cd2 (0:0cd2)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac16
 	jr asm_0cf7
 
 Func_0cd8: ; 0cd8
 	hlcoord 8, 12, wAttrMap
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac62
 	jr asm_0cf7
 
 Func_0ce1: ; ce1 (0:0ce1)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7acd3
 	jr asm_0cf7
 
 Func_0ce7: ; ce7 (0:0ce7)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac56
 	jr asm_0cf7
 
 Func_0ced: ; ced (0:0ced)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac37
 	jr asm_0cf7
 
 Func_0cf3: ; cf3 (0:0cf3)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac2a
 asm_0cf7
 	push af
@@ -2650,12 +2650,12 @@ Func_1ad0: ; 1ad0
 	ld h, a
 	jr CallAudioEngine1C
 
-Func_1ad5: ; 1ad5
-	ld l, Func_7001b_1c % $100
+BackUpMusicData: ; 1ad5
+	ld l, BackUpMusicData_1c % $100
 	jr CallAudioEngine1C
 
-Func_1ad9: ; 1ad9
-	ld l, Func_7001e_1c % $100
+RestoreMusicData: ; 1ad9
+	ld l, RestoreMusicData_1c % $100
 	jr CallAudioEngine1C
 
 Func_1add: ; 1add
@@ -5158,7 +5158,7 @@ Func_2bea: ; 2bea (0:2bea)
 	add hl, sp
 	ld bc, $509
 	call LeftShiftArbitrarySize
-	ld hl, Bank_000c
+	ld hl, $c
 	add hl, sp
 	push de
 	push hl
@@ -5666,7 +5666,7 @@ Func_2e66: ; 2e66 (0:2e66)
 	push hl
 	pop de
 	pop hl
-	ld hl, Bank_000e
+	ld hl, $e
 	add hl, sp
 	ld c, $8
 Func_2e7c: ; 2e7c (0:2e7c)
@@ -5690,7 +5690,7 @@ Func_2e7c: ; 2e7c (0:2e7c)
 	push de
 	push hl
 	ld c, $ff
-	ld hl, Bank_000c
+	ld hl, $c
 	add hl, sp
 	push de
 	push hl
@@ -6112,7 +6112,7 @@ Func_30db: ; 30db (0:30db)
 	call Func_3106
 	pop de
 	pop bc
-	ld hl, Bank_000c
+	ld hl, $c
 	add hl, sp
 	ld sp, hl
 	push de
@@ -103179,7 +103179,7 @@ Func_78358: ; 78358
 	ret
 
 Func_7835f: ; 7835f (1e:435f)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7aa8e
 	ld a, [$ce00]
 	push af
@@ -103190,7 +103190,7 @@ Func_7835f: ; 7835f (1e:435f)
 	ret
 
 Func_78370: ; 78370 (1e:4370)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac8d
 	jr asm_783ac
 
@@ -103200,40 +103200,40 @@ Func_78376: ; 78376 (1e:4376)
 	ld d, h
 	ld e, l
 	ld c, $1
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7aca4
 	jr asm_783ac
 
 Func_78384: ; 78384 (1e:4384)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac16
 	jr asm_783ac
 
 Func_7838a: ; 7838a (1e:438a)
 	hlcoord 8, 12, wAttrMap
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac62
 	jr asm_783ac
 
 Func_78393: ; 78393 (1e:4393)
 	decoord 12, 17
 Func_78396: ; 78396 (1e:4396)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7acd3
 	jr asm_783ac
 
 Func_7839c: ; 7839c (1e:439c)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac56
 	jr asm_783ac
 
 Func_783a2: ; 783a2 (1e:43a2)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac37
 	jr asm_783ac
 
 Func_783a8: ; 783a8 (1e:43a8)
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	predef Func_7ac2a
 asm_783ac
 	push af
@@ -104978,7 +104978,7 @@ Func_7a071: ; 7a071
 	call Func_79f89
 	ld a, $1
 	predef Func_7c19f
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	call Func_7a11d
 	jr c, .asm_7a0b0
 	hlcoord 12, 17
@@ -105016,7 +105016,7 @@ Func_7a0ba: ; 7a0ba
 .asm_7a0c9
 	ld a, $11
 	call Func_79f89
-	predef Func_7ceaf
+	predef FrameDelayPredef_7ceaf
 	ld de, Data_7a61d
 	hlcoord 5, 10, wAttrMap
 	ld bc, $a
@@ -109122,7 +109122,7 @@ Pointers_7c000: ; 7c000
 	dw Func_7dde6
 	dw Func_7de0c
 	dw Func_7ea15
-	dw Func_7ceaf
+	dw FrameDelayPredef_7ceaf
 	dw Func_7d8c8
 	dw Func_7d6cc
 	dw Func_7d738
@@ -109180,8 +109180,8 @@ Pointers_7c000: ; 7c000
 	dw Func_7c17e
 	dw Func_7c586
 	dw Func_7ca3c
-	dw Func_7cdf6
-	dw Func_7ce7d
+	dw CopyToVRAMPredef
+	dw CopyFromVRAMPredef
 	dw Func_7ce36
 
 Func_7c100: ; 7c100 (1f:4100)
@@ -111418,7 +111418,7 @@ Func_7cdee: ; 7cdee (1f:4dee)
 
 asm_7cdf5
 	halt
-Func_7cdf6: ; 7cdf6 (1f:4df6)
+CopyToVRAMPredef: ; 7cdf6 (1f:4df6)
 	ld a, [hFF89]
 	ld b, a
 	ld a, $c8
@@ -111510,7 +111510,7 @@ Func_7ce36: ; 7ce36 (1f:4e36)
 	ld b, a
 	add a
 	add b
-	ld bc, Func_7d11d
+	ld bc, HBlankCopyRoutine
 	add c
 	ld [hl], a
 	ld a, $0
@@ -111526,19 +111526,19 @@ Func_7ce36: ; 7ce36 (1f:4e36)
 	pop bc
 	ret
 
-Func_7ce7d: ; 7ce7d (1f:4e7d)
+CopyFromVRAMPredef: ; 7ce7d (1f:4e7d)
 	ld a, b
 	or a
-.asm_7ce7f
+.loop
 	push af
 	call Func_7ce16
 	pop af
 	push af
-	jr nz, .asm_7ce8b
+	jr nz, .continue
 	ld a, b
 	cp c
-	jr nc, .asm_7ceab
-.asm_7ce8b
+	jr nc, .done
+.continue
 	push bc
 	push hl
 	push de
@@ -111565,17 +111565,18 @@ Func_7ce7d: ; 7ce7d (1f:4e7d)
 	sbc $0
 	ld b, a
 	pop hl
-	jr .asm_7ce7f
+	jr .loop
 
-.asm_7ceab
+.done
 	pop af
 	call Func_7ceb8
-Func_7ceaf: ; 7ceaf (1f:4eaf)
+FrameDelayPredef_7ceaf: ; 7ceaf (1f:4eaf)
+.loop
 	ei
 	halt
 	ld a, [hFF89]
 	or a
-	jr nz, Func_7ceaf
+	jr nz, .loop
 	ret
 
 asm_7ceb7
@@ -111678,7 +111679,7 @@ Func_7d096: ; 7d096
 	ld [hFF88], a
 	ret
 
-Func_7d11d: ; 7d11d
+HBlankCopyRoutine: ; 7d11d
 	REPT 64
 	ld a, [de]
 	inc e
@@ -113102,7 +113103,7 @@ Func_7d8d7: ; 7d8d7 (1f:58d7)
 	and $80
 	ret z
 	ei
-	call Func_7ceaf
+	call FrameDelayPredef_7ceaf
 	call Func_7d8e5
 	ei
 	ret
