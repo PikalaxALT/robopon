@@ -14959,7 +14959,7 @@ Music_767d2:
 	note F_, 1
 	note __, 4
 	note D#, 1
-	end_channel2
+	sfx_end
 
 Music_767dd:
 	note G_, 1

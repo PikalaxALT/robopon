@@ -2539,15 +2539,15 @@ SFXCommandProcessor: ; 76894 (1d:6894)
 	jp hl
 
 Pointers_768ab: ; 768ab
-	dw SFXCommand_0
-	dw SFXCommand_1
-	dw SFXCommand_2
+	dw SFXCommand_Frq
+	dw SFXCommand_Env
+	dw SFXCommand_Duty
 	dw SFXCommand_StartLoop
 	dw SFXCommand_EndLoop
-	dw SFXCommand_5
-	dw SFXCommand_6
-	dw SFXCommand_7
-	dw SFXCommand_8
+	dw SFXCommand_SetC1AF
+	dw SFXCommand_SetC1B3
+	dw SFXCommand_Wave
+	dw SFXCommand_DutyCycle
 	dw SFXCommand_DoNothing
 	dw SFXCommand_DoNothing
 	dw SFXCommand_DoNothing
@@ -2559,7 +2559,7 @@ Pointers_768ab: ; 768ab
 SFXCommand_DoNothing: ; Data_7768cb
 	jp SFXCommandProcessor
 
-SFXCommand_0: ; 768ce (1d:68ce)
+SFXCommand_Frq: ; 768ce (1d:68ce)
 	ld d, a
 	pop hl
 	ld a, [hli]
@@ -2596,7 +2596,7 @@ FinishSFXCommands: ; 768f0 (1d:68f0)
 	ld [hl], d
 	ret
 
-SFXCommand_1: ; 768f9 (1d:68f9)
+SFXCommand_Env: ; 768f9 (1d:68f9)
 	ld hl, wChannelUnknownC1ABs
 	add hl, bc
 	ld a, $80
@@ -2616,7 +2616,7 @@ SFXCommand_1: ; 768f9 (1d:68f9)
 	pop hl
 	jp SFXCommandProcessor
 
-SFXCommand_2: ; 76912 (1d:6912)
+SFXCommand_Duty: ; 76912 (1d:6912)
 	swap a
 	ld e, a
 	ld hl, rNR11
@@ -2667,7 +2667,7 @@ SFXCommand_EndLoop: ; 76938 (1d:6938)
 	pop hl
 	jp SFXCommandProcessor
 
-SFXCommand_5: ; 76951 (1d:6951)
+SFXCommand_SetC1AF: ; 76951 (1d:6951)
 	ld hl, wChannelUnknownC1AFs
 	add hl, bc
 	ld e, l
@@ -2677,7 +2677,7 @@ SFXCommand_5: ; 76951 (1d:6951)
 	ld [de], a
 	jp SFXCommandProcessor
 
-SFXCommand_6: ; 7695d (1d:695d)
+SFXCommand_SetC1B3: ; 7695d (1d:695d)
 	call ApplySFXPitchOffset
 	ld hl, wChannelUnknownC1B3s
 	add hl, bc
@@ -2741,7 +2741,7 @@ ApplySFXPitchOffset: ; 7696e (1d:696e)
 .bail
 	ret
 
-SFXCommand_7: ; 769a9 (1d:69a9)
+SFXCommand_Wave: ; 769a9 (1d:69a9)
 	add a
 	ld d, $0
 	ld e, a
@@ -2770,7 +2770,7 @@ SFXCommand_7: ; 769a9 (1d:69a9)
 	pop hl
 	jp SFXCommandProcessor
 
-SFXCommand_8: ; 769d4 (1d:69d4)
+SFXCommand_DutyCycle: ; 769d4 (1d:69d4)
 	pop hl
 	ld a, [hli]
 	push hl

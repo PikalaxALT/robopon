@@ -131,10 +131,48 @@ keyrel: MACRO
 	db \1
 	ENDM
 
-end_channel2: MACRO
-	db $f0
-	ENDM
-
 end_channel: MACRO
 	db $ff
+	ENDM
+
+
+sfx_frq: MACRO
+	dn $0, \1
+	db \2
+	ENDM
+
+sfx_env: MACRO
+	db $10, \1
+	ENDM
+
+sfx_duty: MACRO
+	dn $2, \1
+	ENDM
+
+sfx_startloop: MACRO
+	db $30, \1
+	ENDM
+
+sfx_endloop: MACRO
+	db $40
+	ENDM
+
+sfx_setc1af: MACRO
+	db $50, \1
+	ENDM
+
+sfx_setc1b3: MACRO
+	db $60, \1
+	ENDM
+
+sfx_wave: MACRO
+	dn $7, \1
+	ENDM
+
+sfx_dutycycle: MACRO
+	db $80, \1
+	ENDM
+
+sfx_end: MACRO
+	db $f0
 	ENDM
