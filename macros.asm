@@ -191,3 +191,14 @@ TX_SNUM EQUS "db $25, $64"
 TX_LITERAL EQUS "db $25, $6c,"
 TX_UNUM EQUS "db $25, $6c, $64"
 TX_CALL EQUS "db $25, $73"
+
+write_hl_to: MACRO
+	call WriteHalfWordTo
+	dw \1
+	ENDM
+
+read_hl_from: MACRO
+	call ReadHalfWordAt
+	dw \1
+	ENDM
+

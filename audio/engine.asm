@@ -14,11 +14,11 @@ Func_70009_\1:: ; 70009 (1c:4009)
 Func_7000c_\1:: ; 7000c (1c:400c)
 	jp Func_70059_\1
 
-Func_7000f_\1:: ; 7000f (1c:400f)
-	jp Func_7005d_\1
+CheckSongFinished_\1:: ; 7000f (1c:400f)
+	jp CheckSongFinished__\1
 
-Func_70012_\1:: ; 70012 (1c:4012)
-	jp Func_70067_\1
+CheckSFXFinished_\1:: ; 70012 (1c:4012)
+	jp CheckSFXFinished__\1
 
 ToggleMusic_\1:: ; 70015 (1c:4015)
 	jp ToggleMusic__\1
@@ -76,7 +76,7 @@ Func_70059_\1: ; 70059 (1c:4059)
 	ld [wc170], a
 	ret
 
-Func_7005d_\1: ; 7005d (1c:405d)
+CheckSongFinished__\1: ; 7005d (1c:405d)
 	ld a, [wSongIndex]
 	cp $80
 	ld a, $1
@@ -84,7 +84,7 @@ Func_7005d_\1: ; 7005d (1c:405d)
 	xor a
 	ret
 
-Func_70067_\1: ; 70067 (1c:4067)
+CheckSFXFinished__\1: ; 70067 (1c:4067)
 	ld a, [wSFXIndex]
 	cp $80
 	ld a, $1
