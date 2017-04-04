@@ -22,11 +22,11 @@ Func_0241: ; 241 (0:0241)
 	jr asm_0253
 
 Func_0245: ; 245 (0:0245)
-	ld l, Func_7000f_1c % $100
+	ld l, CheckSongFinished_1c % $100
 	jr asm_0253
 
 Func_0249: ; 249 (0:0249)
-	ld l, Func_70012_1c % $100
+	ld l, CheckSFXFinished_1c % $100
 	jr asm_0253
 
 Func_024d: ; 24d (0:024d)

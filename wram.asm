@@ -462,7 +462,8 @@ wc2e8:: ds $1 ; c2e8
 	ds $1
 
 wVideoTransferRequestFlags:: ds $1 ; c2ea
-	ds $2
+wc2eb:: db ; c2eb
+wc2ec:: db ; c2ec
 wVideoTransferRequestBank:: ds $1 ; c2ed
 	ds $d
 wSystemType:: ; c2fb
@@ -562,6 +563,13 @@ SECTION "Tile Map", WRAM0 [$c4a0]
 wTileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 wAttrMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 
+SECTION "Overworld RAM", WRAM0 [$c770]
+wc770:: ; c770
+	ds $4e
+
+wMapMusic:: db ; c7be
+	ds $
+
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 wCGB_BGPalsBuffer:: ; c89c
 	ds 8 * 8
@@ -585,6 +593,9 @@ wVBlankMetaTileTransferQueue0Dest:: dw ; c923
 wVBlankMetaTileTransferQueue1TileSource:: dw ; c925
 wVBlankMetaTileTransferQueue1AttrSource:: dw ; c927
 wVBlankMetaTileTransferQueue1Dest:: dw ; c929
+
+SECTION "OverworldMap", WRAM0 [$d508]
+	ds 17 * 20
 
 SECTION "Stack", WRAM0 [$d810]
 wStackBottom:: ds $7f0 ; d810

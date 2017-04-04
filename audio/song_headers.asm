@@ -6,8 +6,8 @@ SongBanks_1c: ; 7129c
 	db BANK(SongHeader_712fd)
 	db BANK(SongHeader_71306)
 	db BANK(SongHeader_7130f)
-	db BANK(SongHeader_71318)
-	db BANK(SongHeader_71321)
+	db BANK(SongHeader_TrainerVictory)
+	db BANK(SongHeader_TrainerBattle)
 	db BANK(SongHeader_7132a)
 	db BANK(SongHeader_71333)
 	db BANK(SongHeader_7133c)
@@ -37,8 +37,8 @@ SongPointers_1c: ; 712b9
 	dw SongHeader_712fd
 	dw SongHeader_71306
 	dw SongHeader_7130f
-	dw SongHeader_71318
-	dw SongHeader_71321
+	dw SongHeader_TrainerVictory
+	dw SongHeader_TrainerBattle
 	dw SongHeader_7132a
 	dw SongHeader_71333
 	dw SongHeader_7133c
@@ -67,149 +67,149 @@ SongHeader_712f3: ; 712f3
 
 SongHeader_712f4: ; 712f4
 	db %1111
-	dw Song712f4_Ch0
-	dw Song712f4_Ch1
-	dw Song712f4_Ch2
-	dw Song712f4_Ch3
+	dw Song_712f4_Ch0
+	dw Song_712f4_Ch1
+	dw Song_712f4_Ch2
+	dw Song_712f4_Ch3
 
 SongHeader_712fd: ; 712fd
 	db %1111
-	dw Song712fd_Ch0
-	dw Song712fd_Ch1
-	dw Song712fd_Ch2
-	dw Song712fd_Ch3
+	dw Song_712fd_Ch0
+	dw Song_712fd_Ch1
+	dw Song_712fd_Ch2
+	dw Song_712fd_Ch3
 
 SongHeader_71306: ; 71306
 	db %1111
-	dw Song71306_Ch0
-	dw Song71306_Ch1
-	dw Song71306_Ch2
-	dw Song71306_Ch3
+	dw Song_71306_Ch0
+	dw Song_71306_Ch1
+	dw Song_71306_Ch2
+	dw Song_71306_Ch3
 
 SongHeader_7130f: ; 7130f
 	db %1111
-	dw Song7130f_Ch0
-	dw Song7130f_Ch1
-	dw Song7130f_Ch2
-	dw Song7130f_Ch3
+	dw Song_7130f_Ch0
+	dw Song_7130f_Ch1
+	dw Song_7130f_Ch2
+	dw Song_7130f_Ch3
 
-SongHeader_71318: ; 71318
+SongHeader_TrainerVictory: ; 71318
 	db %1111
-	dw Song71318_Ch0
-	dw Song71318_Ch1
-	dw Song71318_Ch2
-	dw Song71318_Ch3
+	dw Song_TrainerVictory_Ch0
+	dw Song_TrainerVictory_Ch1
+	dw Song_TrainerVictory_Ch2
+	dw Song_TrainerVictory_Ch3
 
-SongHeader_71321: ; 71321
+SongHeader_TrainerBattle: ; 71321
 	db %1111
-	dw Song71321_Ch0
-	dw Song71321_Ch1
-	dw Song71321_Ch2
-	dw Song71321_Ch3
+	dw Song_TrainerBattle_Ch0
+	dw Song_TrainerBattle_Ch1
+	dw Song_TrainerBattle_Ch2
+	dw Song_TrainerBattle_Ch3
 
 SongHeader_7132a: ; 7132a
 	db %1111
-	dw Song7132a_Ch0
-	dw Song7132a_Ch1
-	dw Song7132a_Ch2
-	dw Song7132a_Ch3
+	dw Song_7132a_Ch0
+	dw Song_7132a_Ch1
+	dw Song_7132a_Ch2
+	dw Song_7132a_Ch3
 
 SongHeader_71333: ; 71333
 	db %1111
-	dw Song71333_Ch0
-	dw Song71333_Ch1
-	dw Song71333_Ch2
-	dw Song71333_Ch3
+	dw Song_71333_Ch0
+	dw Song_71333_Ch1
+	dw Song_71333_Ch2
+	dw Song_71333_Ch3
 
 SongHeader_7133c: ; 7133c
 	db %1111
-	dw Song7133c_Ch0
-	dw Song7133c_Ch1
-	dw Song7133c_Ch2
-	dw Song7133c_Ch3
+	dw Song_7133c_Ch0
+	dw Song_7133c_Ch1
+	dw Song_7133c_Ch2
+	dw Song_7133c_Ch3
 
 SongHeader_71345: ; 71345
 	db %1111
-	dw Song71345_Ch0
-	dw Song71345_Ch1
-	dw Song71345_Ch2
-	dw Song71345_Ch3
+	dw Song_71345_Ch0
+	dw Song_71345_Ch1
+	dw Song_71345_Ch2
+	dw Song_71345_Ch3
 
 	ds $36
 
 SongHeader_71384: ; 71384
 	db %1111
-	dw Song71384_Ch0
-	dw Song71384_Ch1
-	dw Song71384_Ch2
-	dw Song71384_Ch3
+	dw Song_71384_Ch0
+	dw Song_71384_Ch1
+	dw Song_71384_Ch2
+	dw Song_71384_Ch3
 
 SongHeader_7138d: ; 7138d
 	db %1111
-	dw Song7138d_Ch0
-	dw Song7138d_Ch1
-	dw Song7138d_Ch2
-	dw Song7138d_Ch3
+	dw Song_7138d_Ch0
+	dw Song_7138d_Ch1
+	dw Song_7138d_Ch2
+	dw Song_7138d_Ch3
 
 SongHeader_71396: ; 71396
 	db %1111
-	dw Song71396_Ch0
-	dw Song71396_Ch1
-	dw Song71396_Ch2
-	dw Song71396_Ch3
+	dw Song_71396_Ch0
+	dw Song_71396_Ch1
+	dw Song_71396_Ch2
+	dw Song_71396_Ch3
 
 SongHeader_7139f: ; 7139f
 	db %1111
-	dw Song7139f_Ch0
-	dw Song7139f_Ch1
-	dw Song7139f_Ch2
-	dw Song7139f_Ch3
+	dw Song_7139f_Ch0
+	dw Song_7139f_Ch1
+	dw Song_7139f_Ch2
+	dw Song_7139f_Ch3
 
 SongHeader_713a8: ; 713a8
 	db %1111
-	dw Song713a8_Ch0
-	dw Song713a8_Ch1
-	dw Song713a8_Ch2
-	dw Song713a8_Ch3
+	dw Song_713a8_Ch0
+	dw Song_713a8_Ch1
+	dw Song_713a8_Ch2
+	dw Song_713a8_Ch3
 
 SongHeader_713b1: ; 713b1
 	db %1111
-	dw Song713b1_Ch0
-	dw Song713b1_Ch1
-	dw Song713b1_Ch2
-	dw Song713b1_Ch3
+	dw Song_713b1_Ch0
+	dw Song_713b1_Ch1
+	dw Song_713b1_Ch2
+	dw Song_713b1_Ch3
 
 SongHeader_713ba: ; 713ba
 	db %1111
-	dw Song713ba_Ch0
-	dw Song713ba_Ch1
-	dw Song713ba_Ch2
-	dw Song713ba_Ch3
+	dw Song_713ba_Ch0
+	dw Song_713ba_Ch1
+	dw Song_713ba_Ch2
+	dw Song_713ba_Ch3
 
 SongHeader_713c3: ; 713c3
 	db %1111
-	dw Song713c3_Ch0
-	dw Song713c3_Ch1
-	dw Song713c3_Ch2
-	dw Song713c3_Ch3
+	dw Song_713c3_Ch0
+	dw Song_713c3_Ch1
+	dw Song_713c3_Ch2
+	dw Song_713c3_Ch3
 
 SongHeader_713cc: ; 713cc
 	db %1111
-	dw Song713cc_Ch0
-	dw Song713cc_Ch1
-	dw Song713cc_Ch2
-	dw Song713cc_Ch3
+	dw Song_713cc_Ch0
+	dw Song_713cc_Ch1
+	dw Song_713cc_Ch2
+	dw Song_713cc_Ch3
 
 	ds $12
 
 SongHeader_713e7: ; 713e7
 	db %1111
-	dw Song713e7_Ch0
-	dw Song713e7_Ch1
-	dw Song713e7_Ch2
-	dw Song713e7_Ch3
+	dw Song_713e7_Ch0
+	dw Song_713e7_Ch1
+	dw Song_713e7_Ch2
+	dw Song_713e7_Ch3
 
-Song712f4_Ch0: ; 713f0
+Song_712f4_Ch0: ; 713f0
 	tempo $5
 	set_nrx1 $c0
 	set_background_nrx2 $88
@@ -405,7 +405,7 @@ Music_714c2:
 	octave_up
 	doinfloop
 
-Song712f4_Ch1: ; 714df
+Song_712f4_Ch1: ; 714df
 	tempo $5
 	set_nrx1 $c0
 	set_background_nrx2 $a7
@@ -637,7 +637,7 @@ Music_715a4:
 	note B_, 2
 	retchannel
 
-Song712f4_Ch2: ; 715dc
+Song_712f4_Ch2: ; 715dc
 	tempo $5
 	noise $3
 	set_foreground_nrx2 $0
@@ -808,7 +808,7 @@ Music_71678:
 	tempo $5
 	retchannel
 
-Song712f4_Ch3: ; 71694
+Song_712f4_Ch3: ; 71694
 	tempo $5
 	octave 1
 	note __, 8
@@ -900,7 +900,7 @@ Music_716e8:
 	doloop
 	doinfloop
 
-Song712fd_Ch0: ; 716ee
+Song_712fd_Ch0: ; 716ee
 	tempo $6
 	set_nrx1 $80
 	set_background_nrx2 $98
@@ -1172,7 +1172,7 @@ Music_717d5:
 	note C_, 2
 	retchannel
 
-Song712fd_Ch1: ; 7180e
+Song_712fd_Ch1: ; 7180e
 	tempo $6
 	set_nrx1 $40
 	set_background_nrx2 $87
@@ -1611,7 +1611,7 @@ Music_719a3:
 	note B_, 1
 	retchannel
 
-Song712fd_Ch2: ; 719d0
+Song_712fd_Ch2: ; 719d0
 	tempo $6
 	noise $1
 	set_foreground_nrx2 $0
@@ -1791,7 +1791,7 @@ Music_71a82:
 	octave_down
 	retchannel
 
-Song712fd_Ch3: ; 71a8f
+Song_712fd_Ch3: ; 71a8f
 	tempo $6
 	octave 1
 	setloop $f
@@ -1864,7 +1864,7 @@ Music_71acd:
 	doloop
 	doinfloop
 
-Song71306_Ch0: ; 71ad7
+Song_71306_Ch0: ; 71ad7
 	tempo $7
 	set_nrx1 $40
 	set_background_nrx2 $88
@@ -2158,7 +2158,7 @@ Music_71c30:
 	note G#, 4
 	retchannel
 
-Song71306_Ch1: ; 71c38
+Song_71306_Ch1: ; 71c38
 	tempo $7
 	set_nrx1 $80
 	set_background_nrx2 $97
@@ -2389,7 +2389,7 @@ Music_71d1e:
 	note E_, 1
 	retchannel
 
-Song71306_Ch2: ; 71d2f
+Song_71306_Ch2: ; 71d2f
 	tempo $7
 	noise $2
 	set_foreground_nrx2 $0
@@ -2591,7 +2591,7 @@ Music_71e00:
 	note C#, 2
 	retchannel
 
-Song71306_Ch3: ; 71e0f
+Song_71306_Ch3: ; 71e0f
 	tempo $7
 	octave 1
 	setloop $2
@@ -2689,7 +2689,7 @@ Music_71e6e:
 	doloop
 	retchannel
 
-Song7130f_Ch0: ; 71e78
+Song_7130f_Ch0: ; 71e78
 	tempo $6
 	set_nrx1 $40
 	set_background_nrx2 $a8
@@ -2832,7 +2832,7 @@ Music_71f0e:
 	doloop
 	retchannel
 
-Song7130f_Ch1: ; 71f23
+Song_7130f_Ch1: ; 71f23
 	tempo $3
 	set_nrx1 $c0
 	set_background_nrx2 $76
@@ -3041,7 +3041,7 @@ Music_7200e:
 	octave_down
 	retchannel
 
-Song7130f_Ch2: ; 72015
+Song_7130f_Ch2: ; 72015
 	tempo $6
 	noise $c
 	set_foreground_nrx2 $0
@@ -3216,7 +3216,7 @@ Music_720c4:
 	octave_down
 	retchannel
 
-Song7130f_Ch3: ; 720e0
+Song_7130f_Ch3: ; 720e0
 	tempo $3
 	octave 1
 	callchannel Music_7210b
@@ -3287,7 +3287,7 @@ Music_72126:
 	doloop
 	retchannel
 
-Song71318_Ch0: ; 7212b
+Song_TrainerVictory_Ch0: ; 7212b
 	tempo $6
 	set_nrx1 $80
 	set_background_nrx2 $a8
@@ -3358,7 +3358,7 @@ Song71318_Ch0: ; 7212b
 	note __, 2
 	doinfloop
 
-Song71318_Ch1: ; 72178
+Song_TrainerVictory_Ch1: ; 72178
 	tempo $6
 	set_nrx1 $c0
 	set_background_nrx2 $75
@@ -3512,7 +3512,7 @@ Music_72203:
 	note E_, 1
 	retchannel
 
-Song71318_Ch2: ; 72218
+Song_TrainerVictory_Ch2: ; 72218
 	tempo $6
 	noise $3
 	set_foreground_nrx2 $ea
@@ -3684,7 +3684,7 @@ Song71318_Ch2: ; 72218
 	note A_, 2
 	doinfloop
 
-Song71318_Ch3: ; 722c8
+Song_TrainerVictory_Ch3: ; 722c8
 	tempo $6
 	octave 1
 	callchannel Music_72304
@@ -3746,7 +3746,7 @@ Music_72304:
 	note D_, 1
 	retchannel
 
-Song71321_Ch0: ; 7230d
+Song_TrainerBattle_Ch0: ; 7230d
 	tempo $3
 	set_nrx1 $40
 	set_background_nrx2 $a6
@@ -3884,7 +3884,7 @@ Music_7236f:
 	octave_down
 	retchannel
 
-Song71321_Ch1: ; 723b1
+Song_TrainerBattle_Ch1: ; 723b1
 	tempo $3
 	set_nrx1 $c0
 	set_background_nrx2 $a7
@@ -4053,7 +4053,7 @@ Music_72468:
 	note __, 4
 	retchannel
 
-Song71321_Ch2: ; 7247b
+Song_TrainerBattle_Ch2: ; 7247b
 	tempo $3
 	noise $1
 	set_foreground_nrx2 $ea
@@ -4201,7 +4201,7 @@ Music_72513:
 	note __, 4
 	retchannel
 
-Song71321_Ch3: ; 72526
+Song_TrainerBattle_Ch3: ; 72526
 	tempo $3
 	octave 1
 	setloop $8
@@ -4281,7 +4281,7 @@ Music_72567:
 	doloop
 	doinfloop
 
-Song7132a_Ch0: ; 7257a
+Song_7132a_Ch0: ; 7257a
 	tempo $4
 	set_nrx1 $c0
 	set_background_nrx2 $b4
@@ -4377,7 +4377,7 @@ Music_725d8:
 	note __, 5
 	retchannel
 
-Song7132a_Ch1: ; 725e8
+Song_7132a_Ch1: ; 725e8
 	tempo $4
 	set_nrx1 $c0
 	set_background_nrx2 $97
@@ -4596,7 +4596,7 @@ Music_725f3:
 	note B_, 4
 	doinfloop
 
-Song7132a_Ch2: ; 726c5
+Song_7132a_Ch2: ; 726c5
 	tempo $4
 	noise $8
 	set_foreground_nrx2 $30
@@ -4806,7 +4806,7 @@ Music_726f3:
 	note D#, 4
 	doinfloop
 
-Song7132a_Ch3: ; 727a0
+Song_7132a_Ch3: ; 727a0
 	tempo $4
 	octave 1
 	setloop $4
@@ -4846,7 +4846,7 @@ Music_727ba:
 	note F_, 4
 	retchannel
 
-Song71333_Ch0: ; 727c9
+Song_71333_Ch0: ; 727c9
 	tempo $5
 	set_nrx1 $c0
 	set_background_nrx2 $d6
@@ -4929,7 +4929,7 @@ Music_72824:
 	note B_, 3
 	retchannel
 
-Song71333_Ch1: ; 72833
+Song_71333_Ch1: ; 72833
 	tempo $5
 	set_nrx1 $c0
 	set_background_nrx2 $96
@@ -5049,7 +5049,7 @@ Music_728b9:
 	note F_, 3
 	retchannel
 
-Song71333_Ch2: ; 728c7
+Song_71333_Ch2: ; 728c7
 	tempo $5
 	noise $8
 	set_foreground_nrx2 $0
@@ -5275,7 +5275,7 @@ Music_7298e:
 	octave_down
 	retchannel
 
-Song71333_Ch3: ; 729e6
+Song_71333_Ch3: ; 729e6
 	tempo $5
 	octave 2
 	setloop $c
@@ -5338,7 +5338,7 @@ Music_72a05:
 	note D_, 1
 	doinfloop
 
-Song7133c_Ch0: ; 72a24
+Song_7133c_Ch0: ; 72a24
 	tempo $7
 	set_nrx1 $0
 	set_background_nrx2 $b8
@@ -5503,7 +5503,7 @@ Music_72aca:
 	octave_down
 	retchannel
 
-Song7133c_Ch1: ; 72aff
+Song_7133c_Ch1: ; 72aff
 	tempo $7
 	set_nrx1 $40
 	set_background_nrx2 $98
@@ -5689,7 +5689,7 @@ Music_72bd2:
 	note F_, 4
 	retchannel
 
-Song7133c_Ch2: ; 72be8
+Song_7133c_Ch2: ; 72be8
 	tempo $7
 	noise $b
 	set_foreground_nrx2 $ea
@@ -5843,7 +5843,7 @@ Music_72c75:
 	octave_down
 	retchannel
 
-Song7133c_Ch3: ; 72c8c
+Song_7133c_Ch3: ; 72c8c
 	tempo $7
 	octave 2
 	setloop $4
@@ -5934,7 +5934,7 @@ Music_72cd7:
 	note E_, 1
 	retchannel
 
-Song71345_Ch0: ; 72ce8
+Song_71345_Ch0: ; 72ce8
 	tempo $12
 	set_nrx1 $c0
 	set_background_nrx2 $5b
@@ -5996,7 +5996,7 @@ Music_72cfa:
 	note __, 6
 	doinfloop
 
-Song71345_Ch1: ; 72d2c
+Song_71345_Ch1: ; 72d2c
 	tempo $9
 	set_nrx1 $80
 	set_background_nrx2 $93
@@ -6181,7 +6181,7 @@ Music_72def:
 	note D_, 1
 	retchannel
 
-Song71345_Ch2: ; 72e1a
+Song_71345_Ch2: ; 72e1a
 	tempo $9
 	noise $5
 	set_foreground_nrx2 $0
@@ -6406,7 +6406,7 @@ Music_72f3d:
 	note D_, 2
 	retchannel
 
-Song71345_Ch3: ; 72f42
+Song_71345_Ch3: ; 72f42
 	tempo $3
 	octave 1
 	tempo $24
@@ -6432,7 +6432,7 @@ Music_72f4d:
 	doloop
 	doinfloop
 
-Song71384_Ch0: ; 72f5c
+Song_71384_Ch0: ; 72f5c
 	tempo $7
 	set_nrx1 $80
 	set_background_nrx2 $a7
@@ -6525,7 +6525,7 @@ Music_72fac:
 	set_background_nrx2 $a7
 	retchannel
 
-Song71384_Ch1: ; 72fc7
+Song_71384_Ch1: ; 72fc7
 	tempo $7
 	set_nrx1 $40
 	set_background_nrx2 $a5
@@ -6786,7 +6786,7 @@ Music_730a6:
 	set_background_nrx2 $a5
 	retchannel
 
-Song71384_Ch2: ; 730f9
+Song_71384_Ch2: ; 730f9
 	tempo $7
 	noise $1
 	set_foreground_nrx2 $ea
@@ -6979,7 +6979,7 @@ Music_731b5:
 	note E_, 2
 	retchannel
 
-Song71384_Ch3: ; 731c3
+Song_71384_Ch3: ; 731c3
 	tempo $7
 	octave 1
 	setloop $8
@@ -7064,7 +7064,7 @@ Music_7321a:
 	note F#, 1
 	retchannel
 
-Song7138d_Ch0: ; 73223
+Song_7138d_Ch0: ; 73223
 	tempo $e
 	set_nrx1 $c0
 	set_background_nrx2 $b7
@@ -7180,7 +7180,7 @@ Music_732a3:
 	note F_, 1
 	retchannel
 
-Song7138d_Ch1: ; 732bd
+Song_7138d_Ch1: ; 732bd
 	tempo $7
 	set_nrx1 $40
 	set_background_nrx2 $a8
@@ -7477,7 +7477,7 @@ Music_733f1:
 	note G_, 1
 	retchannel
 
-Song7138d_Ch2: ; 7342b
+Song_7138d_Ch2: ; 7342b
 	tempo $7
 	noise $a
 	set_foreground_nrx2 $ea
@@ -7664,7 +7664,7 @@ Music_734f1:
 	note A_, 6
 	retchannel
 
-Song7138d_Ch3: ; 73506
+Song_7138d_Ch3: ; 73506
 	tempo $7
 	octave 1
 	setloop $8
@@ -7724,7 +7724,7 @@ Music_73522:
 	note __, 6
 	doinfloop
 
-Song71396_Ch0: ; 73541
+Song_71396_Ch0: ; 73541
 	tempo $6
 	set_nrx1 $c0
 	set_background_nrx2 $a8
@@ -7855,7 +7855,7 @@ Song71396_Ch0: ; 73541
 	note F#, 8
 	doinfloop
 
-Song71396_Ch1: ; 735d2
+Song_71396_Ch1: ; 735d2
 	tempo $6
 	set_nrx1 $40
 	set_background_nrx2 $94
@@ -8215,7 +8215,7 @@ Music_73724:
 	note G_, 1
 	retchannel
 
-Song71396_Ch2: ; 7373d
+Song_71396_Ch2: ; 7373d
 	tempo $6
 	noise $9
 	set_foreground_nrx2 $0
@@ -8417,7 +8417,7 @@ Music_7381b:
 	note G_, 2
 	retchannel
 
-Song71396_Ch3: ; 73826
+Song_71396_Ch3: ; 73826
 	tempo $6
 	octave 1
 	setloop $2
@@ -8521,7 +8521,7 @@ Music_7388b:
 	note C#, 1
 	retchannel
 
-Song7139f_Ch0: ; 7389b
+Song_7139f_Ch0: ; 7389b
 	tempo $6
 	set_nrx1 $40
 	set_background_nrx2 $f7
@@ -8693,7 +8693,7 @@ Music_7392b:
 	note D_, 3
 	retchannel
 
-Song7139f_Ch1: ; 7395c
+Song_7139f_Ch1: ; 7395c
 	tempo $6
 	set_nrx1 $80
 	set_background_nrx2 $86
@@ -8986,7 +8986,7 @@ Music_739aa:
 	octave_up
 	doinfloop
 
-Song7139f_Ch2: ; 73aac
+Song_7139f_Ch2: ; 73aac
 	tempo $6
 	noise $2
 	set_foreground_nrx2 $0
@@ -9132,7 +9132,7 @@ Music_73af9:
 	octave_down
 	retchannel
 
-Song7139f_Ch3: ; 73b42
+Song_7139f_Ch3: ; 73b42
 	tempo $6
 	octave 1
 	setloop $2
@@ -9243,7 +9243,7 @@ Music_73bad:
 	note D_, 1
 	retchannel
 
-Song713a8_Ch0: ; 73bb2
+Song_713a8_Ch0: ; 73bb2
 	tempo $6
 	set_nrx1 $c0
 	set_background_nrx2 $b7
@@ -9271,7 +9271,7 @@ Song713a8_Ch0: ; 73bb2
 	note G_, 4
 	end_channel
 
-Song713a8_Ch1: ; 73bd7
+Song_713a8_Ch1: ; 73bd7
 	tempo $6
 	set_nrx1 $40
 	set_background_nrx2 $a7
@@ -9311,7 +9311,7 @@ Song713a8_Ch1: ; 73bd7
 	note E_, 4
 	end_channel
 
-Song713a8_Ch2: ; 73c06
+Song_713a8_Ch2: ; 73c06
 	tempo $6
 	noise $1
 	set_foreground_nrx2 $0
@@ -9348,7 +9348,7 @@ Song713a8_Ch2: ; 73c06
 	note E_, 3
 	end_channel
 
-Song713a8_Ch3: ; 73c31
+Song_713a8_Ch3: ; 73c31
 	tempo $3
 	octave 1
 	note D_, 2
@@ -9376,7 +9376,7 @@ Song713a8_Ch3: ; 73c31
 	note D_, 1
 	end_channel
 
-Song713b1_Ch0: ; 73c4c
+Song_713b1_Ch0: ; 73c4c
 	tempo $10
 	set_nrx1 $c0
 	set_background_nrx2 $7a
@@ -9398,7 +9398,7 @@ Song713b1_Ch0: ; 73c4c
 	note E_, 4
 	end_channel
 
-Song713b1_Ch1: ; 73c68
+Song_713b1_Ch1: ; 73c68
 	tempo $4
 	set_nrx1 $80
 	set_background_nrx2 $71
@@ -9466,7 +9466,7 @@ Song713b1_Ch1: ; 73c68
 	note C#, 8
 	end_channel
 
-Song713b1_Ch2: ; 73cb3
+Song_713b1_Ch2: ; 73cb3
 	tempo $4
 	noise $9
 	set_foreground_nrx2 $0
@@ -9507,13 +9507,13 @@ Song713b1_Ch2: ; 73cb3
 	note A_, 8
 	end_channel
 
-Song713b1_Ch3: ; 73ce1
+Song_713b1_Ch3: ; 73ce1
 	tempo $1e
 	octave 1
 	note __, 1
 	end_channel
 
-Song713ba_Ch0: ; 73ce6
+Song_713ba_Ch0: ; 73ce6
 	tempo $7
 	set_nrx1 $80
 	set_background_nrx2 $ba
@@ -9543,7 +9543,7 @@ Song713ba_Ch0: ; 73ce6
 	note G_, 8
 	end_channel
 
-Song713ba_Ch1: ; 73d09
+Song_713ba_Ch1: ; 73d09
 	tempo $7
 	set_nrx1 $c0
 	set_background_nrx2 $8a
@@ -9575,7 +9575,7 @@ Song713ba_Ch1: ; 73d09
 	note E_, 8
 	end_channel
 
-Song713ba_Ch2: ; 73d2e
+Song_713ba_Ch2: ; 73d2e
 	tempo $7
 	noise $e
 	set_foreground_nrx2 $0
@@ -9607,7 +9607,7 @@ Song713ba_Ch2: ; 73d2e
 	note C_, 8
 	end_channel
 
-Song713ba_Ch3: ; 73d53
+Song_713ba_Ch3: ; 73d53
 	tempo $7
 	octave 1
 	note D#, 1
@@ -9633,7 +9633,7 @@ Song713ba_Ch3: ; 73d53
 	note C_, 1
 	end_channel
 
-Song713c3_Ch0: ; 73d6c
+Song_713c3_Ch0: ; 73d6c
 	tempo $b
 	set_nrx1 $40
 	set_background_nrx2 $b7
@@ -9666,7 +9666,7 @@ Song713c3_Ch0: ; 73d6c
 	note D_, 4
 	end_channel
 
-Song713c3_Ch1: ; 73d92
+Song_713c3_Ch1: ; 73d92
 	tempo $b
 	set_nrx1 $80
 	set_background_nrx2 $79
@@ -9697,7 +9697,7 @@ Song713c3_Ch1: ; 73d92
 	note F_, 4
 	end_channel
 
-Song713c3_Ch2: ; 73db6
+Song_713c3_Ch2: ; 73db6
 	tempo $b
 	noise $e
 	set_foreground_nrx2 $0
@@ -9725,7 +9725,7 @@ Song713c3_Ch2: ; 73db6
 	note G_, 2
 	end_channel
 
-Song713c3_Ch3: ; 73dd6
+Song_713c3_Ch3: ; 73dd6
 	tempo $b
 	octave 1
 	note C_, 1
@@ -9745,7 +9745,7 @@ Song713c3_Ch3: ; 73dd6
 	note F_, 1
 	end_channel
 
-Song713cc_Ch0: ; 73de9
+Song_713cc_Ch0: ; 73de9
 	tempo $6
 	set_nrx1 $40
 	set_background_nrx2 $b8
@@ -9779,7 +9779,7 @@ Song713cc_Ch0: ; 73de9
 	note A_, 10
 	end_channel
 
-Song713cc_Ch1: ; 73e0f
+Song_713cc_Ch1: ; 73e0f
 	tempo $6
 	set_nrx1 $80
 	set_background_nrx2 $98
@@ -9814,7 +9814,7 @@ Song713cc_Ch1: ; 73e0f
 	note C_, 10
 	end_channel
 
-Song713cc_Ch2: ; 73e36
+Song_713cc_Ch2: ; 73e36
 	tempo $6
 	noise $1
 	set_foreground_nrx2 $0
@@ -9847,7 +9847,7 @@ Song713cc_Ch2: ; 73e36
 	note D#, 10
 	end_channel
 
-Song713cc_Ch3: ; 73e5b
+Song_713cc_Ch3: ; 73e5b
 	tempo $6
 	octave 1
 	note C_, 1
@@ -9875,7 +9875,7 @@ Song713cc_Ch3: ; 73e5b
 	note F_, 1
 	end_channel
 
-Song713e7_Ch0: ; 73e76
+Song_713e7_Ch0: ; 73e76
 	tempo $8
 	set_nrx1 $40
 	set_background_nrx2 $69
@@ -9904,7 +9904,7 @@ Song713e7_Ch0: ; 73e76
 	note G_, 4
 	end_channel
 
-Song713e7_Ch1: ; 73e9c
+Song_713e7_Ch1: ; 73e9c
 	tempo $8
 	set_nrx1 $80
 	set_background_nrx2 $72
@@ -9948,7 +9948,7 @@ Song713e7_Ch1: ; 73e9c
 	note G_, 4
 	end_channel
 
-Song713e7_Ch2: ; 73ecd
+Song_713e7_Ch2: ; 73ecd
 	tempo $8
 	noise $5
 	set_foreground_nrx2 $0
@@ -9979,7 +9979,7 @@ Song713e7_Ch2: ; 73ecd
 	note B_, 6
 	end_channel
 
-Song713e7_Ch3: ; 73ef0
+Song_713e7_Ch3: ; 73ef0
 	tempo $8
 	octave 1
 	setloop $2
@@ -10031,8 +10031,8 @@ SongBanks_1d: ; 7529c
 	db BANK(SongHeader_712fd)
 	db BANK(SongHeader_71306)
 	db BANK(SongHeader_7130f)
-	db BANK(SongHeader_71318)
-	db BANK(SongHeader_71321)
+	db BANK(SongHeader_TrainerVictory)
+	db BANK(SongHeader_TrainerBattle)
 	db BANK(SongHeader_7132a)
 	db BANK(SongHeader_71333)
 	db BANK(SongHeader_7133c)
@@ -10094,65 +10094,65 @@ SongHeader_752f3: ; 752f3
 
 SongHeader_7534e: ; 7534e
 	db %1111
-	dw Song7534e_Ch0
-	dw Song7534e_Ch1
-	dw Song7534e_Ch2
-	dw Song7534e_Ch3
+	dw Song_7534e_Ch0
+	dw Song_7534e_Ch1
+	dw Song_7534e_Ch2
+	dw Song_7534e_Ch3
 
 SongHeader_75357: ; 75357
 	db %1111
-	dw Song75357_Ch0
-	dw Song75357_Ch1
-	dw Song75357_Ch2
-	dw Song75357_Ch3
+	dw Song_75357_Ch0
+	dw Song_75357_Ch1
+	dw Song_75357_Ch2
+	dw Song_75357_Ch3
 
 SongHeader_75360: ; 75360
 	db %1111
-	dw Song75360_Ch0
-	dw Song75360_Ch1
-	dw Song75360_Ch2
-	dw Song75360_Ch3
+	dw Song_75360_Ch0
+	dw Song_75360_Ch1
+	dw Song_75360_Ch2
+	dw Song_75360_Ch3
 
 SongHeader_75369: ; 75369
 	db %1111
-	dw Song75369_Ch0
-	dw Song75369_Ch1
-	dw Song75369_Ch2
-	dw Song75369_Ch3
+	dw Song_75369_Ch0
+	dw Song_75369_Ch1
+	dw Song_75369_Ch2
+	dw Song_75369_Ch3
 
 SongHeader_75372: ; 75372
 	db %1111
-	dw Song75372_Ch0
-	dw Song75372_Ch1
-	dw Song75372_Ch2
-	dw Song75372_Ch3
+	dw Song_75372_Ch0
+	dw Song_75372_Ch1
+	dw Song_75372_Ch2
+	dw Song_75372_Ch3
 
 SongHeader_7537b: ; 7537b
 	db %1111
-	dw Song7537b_Ch0
-	dw Song7537b_Ch1
-	dw Song7537b_Ch2
-	dw Song7537b_Ch3
+	dw Song_7537b_Ch0
+	dw Song_7537b_Ch1
+	dw Song_7537b_Ch2
+	dw Song_7537b_Ch3
 
 	ds $51
 
 SongHeader_753d5: ; 753d5
 	db %1111
-	dw Song753d5_Ch0
-	dw Song753d5_Ch1
-	dw Song753d5_Ch2
-	dw Song753d5_Ch3
+	dw Song_753d5_Ch0
+	dw Song_753d5_Ch1
+	dw Song_753d5_Ch2
+	dw Song_753d5_Ch3
 
 SongHeader_753de: ; 753de
 	db %1111
-	dw Song753de_Ch0
-	dw Song753de_Ch1
-	dw Song753de_Ch2
-	dw Song753de_Ch3
+	dw Song_753de_Ch0
+	dw Song_753de_Ch1
+	dw Song_753de_Ch2
+	dw Song_753de_Ch3
 
 	ds $9
 
-Song7534e_Ch0: ; 753f0
+Song_7534e_Ch0: ; 753f0
 	tempo $f
 	set_nrx1 $c0
 	set_background_nrx2 $97
@@ -10296,7 +10296,7 @@ Music_7547a:
 	octave_down
 	retchannel
 
-Song7534e_Ch1: ; 75489
+Song_7534e_Ch1: ; 75489
 	tempo $f
 	set_nrx1 $80
 	set_background_nrx2 $77
@@ -10436,7 +10436,7 @@ Music_75502:
 	note E_, 1
 	retchannel
 
-Song7534e_Ch2: ; 75522
+Song_7534e_Ch2: ; 75522
 	tempo $f
 	noise $4
 	set_foreground_nrx2 $0
@@ -10548,7 +10548,7 @@ Music_7558c:
 	octave_up
 	retchannel
 
-Song7534e_Ch3: ; 75599
+Song_7534e_Ch3: ; 75599
 	tempo $f
 	octave 1
 	setloop $3
@@ -10646,7 +10646,7 @@ Music_755dc:
 	note F_, 1
 	doinfloop
 
-Song75357_Ch0: ; 755fa
+Song_75357_Ch0: ; 755fa
 	tempo $7
 	set_nrx1 $c0
 	set_background_nrx2 $a7
@@ -10802,7 +10802,7 @@ Music_75684:
 	octave_down
 	retchannel
 
-Song75357_Ch1: ; 7569c
+Song_75357_Ch1: ; 7569c
 	tempo $7
 	set_nrx1 $c0
 	set_background_nrx2 $c3
@@ -10982,7 +10982,7 @@ Music_75747:
 	note A_, 1
 	retchannel
 
-Song75357_Ch2: ; 75758
+Song_75357_Ch2: ; 75758
 	tempo $7
 	noise $a
 	set_foreground_nrx2 $0
@@ -11256,7 +11256,7 @@ Music_75869:
 	doloop
 	retchannel
 
-Song75357_Ch3: ; 75870
+Song_75357_Ch3: ; 75870
 	tempo $7
 	octave 1
 	setloop $7
@@ -11329,7 +11329,7 @@ Music_758b9:
 	note D_, 1
 	retchannel
 
-Song75360_Ch0: ; 758c0
+Song_75360_Ch0: ; 758c0
 	set_nrx1 $c0
 	set_background_nrx2 $a8
 	dutycycle $11
@@ -11682,7 +11682,7 @@ Music_75923:
 	note F_, 5
 	doinfloop
 
-Song75360_Ch1: ; 75a26
+Song_75360_Ch1: ; 75a26
 	tempo $5
 	set_nrx1 $80
 	set_background_nrx2 $78
@@ -11880,7 +11880,7 @@ Music_75a59:
 	note G#, 4
 	doinfloop
 
-Song75360_Ch2: ; 75af2
+Song_75360_Ch2: ; 75af2
 	tempo $5
 	noise $1
 	set_foreground_nrx2 $0
@@ -12117,7 +12117,7 @@ Music_75be5:
 	doloop
 	retchannel
 
-Song75360_Ch3: ; 75bef
+Song_75360_Ch3: ; 75bef
 	tempo $5
 	octave 1
 	setloop $7
@@ -12397,7 +12397,7 @@ Music_75cd7:
 	note D_, 1
 	doinfloop
 
-Song75369_Ch0: ; 75d0e
+Song_75369_Ch0: ; 75d0e
 	tempo $6
 	set_nrx1 $40
 	set_background_nrx2 $98
@@ -12521,7 +12521,7 @@ Song75369_Ch0: ; 75d0e
 	octave_up
 	doinfloop
 
-Song75369_Ch1: ; 75d95
+Song_75369_Ch1: ; 75d95
 	tempo $6
 	set_nrx1 $80
 	set_background_nrx2 $67
@@ -13054,7 +13054,7 @@ Music_75f70:
 	octave_up
 	doinfloop
 
-Song75369_Ch2: ; 75fb2
+Song_75369_Ch2: ; 75fb2
 	tempo $6
 	noise $2
 	set_foreground_nrx2 $0
@@ -13303,7 +13303,7 @@ Music_76089:
 	octave_down
 	doinfloop
 
-Song75369_Ch3: ; 760b2
+Song_75369_Ch3: ; 760b2
 	tempo $6
 	octave 1
 	setloop $8
@@ -13400,7 +13400,7 @@ Music_760e2:
 	note F_, 1
 	doinfloop
 
-Song75372_Ch0: ; 76112
+Song_75372_Ch0: ; 76112
 	tempo $b
 	set_nrx1 $c0
 	set_background_nrx2 $f4
@@ -13595,7 +13595,7 @@ Music_761c9:
 	octave_down
 	retchannel
 
-Song75372_Ch1: ; 761fd
+Song_75372_Ch1: ; 761fd
 	tempo $b
 	set_nrx1 $80
 	set_background_nrx2 $d1
@@ -13786,7 +13786,7 @@ Music_762d2:
 	set_background_nrx2 $a5
 	retchannel
 
-Song75372_Ch2: ; 762ea
+Song_75372_Ch2: ; 762ea
 	tempo $b
 	noise $8
 	set_foreground_nrx2 $40
@@ -13904,7 +13904,7 @@ Music_76346:
 	note __, 8
 	doinfloop
 
-Song75372_Ch3: ; 76371
+Song_75372_Ch3: ; 76371
 	tempo $b
 	octave 1
 	setloop $4
@@ -13962,7 +13962,7 @@ Music_7639f:
 	note G#, 1
 	retchannel
 
-Song7537b_Ch0: ; 763ac
+Song_7537b_Ch0: ; 763ac
 	tempo $3
 	set_nrx1 $c0
 	set_background_nrx2 $b6
@@ -14047,7 +14047,7 @@ Song7537b_Ch0: ; 763ac
 	octave_up
 	doinfloop
 
-Song7537b_Ch1: ; 76407
+Song_7537b_Ch1: ; 76407
 	tempo $3
 	set_nrx1 $40
 	set_background_nrx2 $87
@@ -14163,7 +14163,7 @@ Music_7647a:
 	octave_up
 	doinfloop
 
-Song7537b_Ch2: ; 7647f
+Song_7537b_Ch2: ; 7647f
 	tempo $9
 	noise $1
 	set_foreground_nrx2 $ea
@@ -14229,7 +14229,7 @@ Music_764be:
 	note E_, 1
 	retchannel
 
-Song7537b_Ch3: ; 764c9
+Song_7537b_Ch3: ; 764c9
 	tempo $3
 	octave 1
 	setloop $5
@@ -14267,7 +14267,7 @@ Music_764e9:
 	note G#, 1
 	retchannel
 
-Song753d5_Ch0: ; 764f2
+Song_753d5_Ch0: ; 764f2
 	tempo $7
 	set_nrx1 $40
 	set_background_nrx2 $c7
@@ -14304,7 +14304,7 @@ Song753d5_Ch0: ; 764f2
 	note G#, 4
 	end_channel
 
-Song753d5_Ch1: ; 76522
+Song_753d5_Ch1: ; 76522
 	tempo $7
 	set_nrx1 $80
 	set_background_nrx2 $66
@@ -14343,7 +14343,7 @@ Song753d5_Ch1: ; 76522
 	note D_, 4
 	end_channel
 
-Song753d5_Ch2: ; 7654f
+Song_753d5_Ch2: ; 7654f
 	tempo $7
 	noise $a
 	set_foreground_nrx2 $0
@@ -14375,7 +14375,7 @@ Song753d5_Ch2: ; 7654f
 	note B_, 6
 	end_channel
 
-Song753d5_Ch3: ; 76573
+Song_753d5_Ch3: ; 76573
 	tempo $7
 	octave 1
 	setloop $3
@@ -14398,7 +14398,7 @@ Music_76578:
 	note C_, 1
 	end_channel
 
-Song753de_Ch0: ; 76589
+Song_753de_Ch0: ; 76589
 	tempo $4
 	set_nrx1 $80
 	set_background_nrx2 $b7
@@ -14448,7 +14448,7 @@ Song753de_Ch0: ; 76589
 	note G_, 8
 	end_channel
 
-Song753de_Ch1: ; 765c0
+Song_753de_Ch1: ; 765c0
 	tempo $4
 	set_nrx1 $c0
 	set_background_nrx2 $b7
@@ -14495,7 +14495,7 @@ Music_765d1:
 	note G_, 8
 	end_channel
 
-Song753de_Ch2: ; 765f4
+Song_753de_Ch2: ; 765f4
 	tempo $4
 	noise $1
 	set_foreground_nrx2 $0
@@ -14554,7 +14554,7 @@ Song753de_Ch2: ; 765f4
 	note G_, 8
 	end_channel
 
-Song753de_Ch3: ; 76634
+Song_753de_Ch3: ; 76634
 	tempo $4
 	octave 1
 	setloop $2
@@ -14959,7 +14959,7 @@ Music_767d2:
 	note F_, 1
 	note __, 4
 	note D#, 1
-	end_channel2
+	sfx_end
 
 Music_767dd:
 	note G_, 1

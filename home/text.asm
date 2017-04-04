@@ -90,17 +90,17 @@ Coord2AttrMap:
 	jr nz, .asm_14f7
 	ret
 
-Func_14fc: ; 14fc
-	ld [$c2eb], a
+StartMapMusic: ; 14fc
+	ld [wc2eb], a
 	jp Func_1aaf
 
 Func_1502: ; 1502
-	ld [$c2ec], a
+	ld [wc2ec], a
 	jp Func_1ab4
 
 Func_1508: ; 1508
 	xor a
-	jr Func_14fc
+	jr StartMapMusic
 
 Func_150b: ; 150b
 	xor a
