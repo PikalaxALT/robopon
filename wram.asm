@@ -185,7 +185,7 @@ wAudioROMBank:: db ; c101
 wSFXIndex:: db ; c102
 wSFXActive:: db ; c103
 wGlobalDuty:: db ; c104
-wc105:: db ; c105
+wSFXGlobalDuty:: db ; c105
 
 wChannelNR1s::
 wChannel1NR1:: db ; c106

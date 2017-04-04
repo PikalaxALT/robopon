@@ -157,7 +157,7 @@ Func_70088_\1: ; 70088 (1c:4088)
 	ld a, c
 	cp $4
 	jr nz, .loop
-	ld hl, Data_70c12_\1
+	ld hl, ChannelStackPointerResets_\1
 	ld bc, wChannelStackPointers
 	ld d, $8
 .copy
@@ -171,7 +171,7 @@ Func_70088_\1: ; 70088 (1c:4088)
 UpdateSound__\1: ; 700f4 (1c:40f4)
 	call DeletedFunc702af_\1
 	call PlayAudio_\1
-	ld hl, Func_76803
+	ld hl, UpdateSFX
 	call AudioEngineFarCall
 	ld a, [wAudioROMBank]
 	ld [hROMBank], a
@@ -297,9 +297,9 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [wChannel1UnknownC13F], a
 	ld [wChannel1UnknownC15F], a
 	ld [wChannel1KeySignature], a
-	ld a, [Data_70c12_\1]
+	ld a, [Channel1StackPointerReset_\1]
 	ld [wChannel1StackPointer], a
-	ld a, [Data_70c12_\1 + 1]
+	ld a, [Channel1StackPointerReset_\1 + 1]
 	ld [wChannel1StackPointer + 1], a
 	ld a, $8
 	ld [wChannel1NR2], a
@@ -323,9 +323,9 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [wChannel2UnknownC13F], a
 	ld [wChannel2UnknownC15F], a
 	ld [wChannel2KeySignature], a
-	ld a, [Data_70c14_\1]
+	ld a, [Channel2StackPointerReset_\1]
 	ld [wChannel2StackPointer], a
-	ld a, [Data_70c14_\1 + 1]
+	ld a, [Channel2StackPointerReset_\1 + 1]
 	ld [wChannel2StackPointer + 1], a
 	ld a, $8
 	ld [wChannel2NR2], a
@@ -349,9 +349,9 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [wChannel3UnknownC13F], a
 	ld [wChannel3UnknownC15F], a
 	ld [wChannel3KeySignature], a
-	ld a, [Data_70c16_\1]
+	ld a, [Channel3StackPointerReset_\1]
 	ld [wChannel3StackPointer], a
-	ld a, [Data_70c16_\1 + 1]
+	ld a, [Channel3StackPointerReset_\1 + 1]
 	ld [wChannel3StackPointer + 1], a
 	ld a, $40
 	ld [wChannel3NR2], a
@@ -374,9 +374,9 @@ PlaySong_\1: ; 70197 (1c:4197)
 	ld [wChannel4UnknownC13F], a
 	ld [wChannel4UnknownC15F], a
 	ld [wChannel4KeySignature], a
-	ld a, [Data_70c18_\1]
+	ld a, [Channel4StackPointerReset_\1]
 	ld [wChannel4StackPointer], a
-	ld a, [Data_70c18_\1 + 1]
+	ld a, [Channel4StackPointerReset_\1 + 1]
 	ld [wChannel4StackPointer + 1], a
 	ld a, $40
 	ld [wChannel4NR2], a
@@ -1858,16 +1858,17 @@ AudioEngine_CopyBytes_\1: ; 70c0a (1c:4c0a)
 	ret
 
 
-Data_70c12_\1: ; 70c12
+ChannelStackPointerResets_\1: ; 70c12
+Channel1StackPointerReset_\1: ; 70c12
 	dw wChannel1Stack
 
-Data_70c14_\1: ; 70c14
+Channel2StackPointerReset_\1: ; 70c14
 	dw wChannel2Stack
 
-Data_70c16_\1: ; 70c16
+Channel3StackPointerReset_\1: ; 70c16
 	dw wChannel3Stack
 
-Data_70c18_\1: ; 70c18
+Channel4StackPointerReset_\1: ; 70c18
 	dw wChannel4Stack
 
 CNotes_\1: ; 70c1a
@@ -2416,8 +2417,8 @@ SECTION "Audio Engine 3", ROMX [$6800], BANK [$1d]
 PlaySFX:
 	jp PlaySFX_
 
-Func_76803: ; 76803
-	jp Func_76859
+UpdateSFX: ; 76803
+	jp UpdateSFX_
 
 PlaySFX_: ; 76806 (1d:6806)
 	ld hl, MaxSFXIndex
@@ -2429,7 +2430,7 @@ PlaySFX_: ; 76806 (1d:6806)
 	ld a, [wSFXActive2]
 	or a
 	jr z, .skip
-	call Func_76a20
+	call ResetSFXChannelRegisters
 .skip
 	ld a, $1
 	ld [wSFXActive2], a
@@ -2475,11 +2476,11 @@ PlaySFX_: ; 76806 (1d:6806)
 .invalid_sfx
 	ret
 
-Func_76859: ; 76859 (1d:6859)
+UpdateSFX_: ; 76859 (1d:6859)
 	ld a, [wSFXChannelFlags]
 	or a
 	jr nz, .no_sfx
-	call Func_76a13
+	call ResetSFXVariables
 	ret
 
 .no_sfx
@@ -2500,7 +2501,7 @@ Func_76859: ; 76859 (1d:6859)
 	dec a
 	jr z, .process_command
 	ld [hl], a
-	call Func_7696e
+	call ApplySFXPitchOffset
 	jr .skip_command_processing
 
 .process_command
@@ -2538,27 +2539,27 @@ SFXCommandProcessor: ; 76894 (1d:6894)
 	jp hl
 
 Pointers_768ab: ; 768ab
-	dw Func_768ce
-	dw Func_768f9
-	dw Func_76912
+	dw SFXCommand_0
+	dw SFXCommand_1
+	dw SFXCommand_2
 	dw SFXCommand_StartLoop
 	dw SFXCommand_EndLoop
-	dw Func_76951
-	dw Func_7695d
-	dw Func_769a9
-	dw Func_769d4
-	dw Func_768cb
-	dw Func_768cb
-	dw Func_768cb
-	dw Func_768cb
-	dw Func_768cb
-	dw Func_768cb
-	dw Func_769f0
+	dw SFXCommand_5
+	dw SFXCommand_6
+	dw SFXCommand_7
+	dw SFXCommand_8
+	dw SFXCommand_DoNothing
+	dw SFXCommand_DoNothing
+	dw SFXCommand_DoNothing
+	dw SFXCommand_DoNothing
+	dw SFXCommand_DoNothing
+	dw SFXCommand_DoNothing
+	dw SFXCommand_EndChannel
 
-Func_768cb: ; Data_7768cb
+SFXCommand_DoNothing: ; Data_7768cb
 	jp SFXCommandProcessor
 
-Func_768ce: ; 768ce (1d:68ce)
+SFXCommand_0: ; 768ce (1d:68ce)
 	ld d, a
 	pop hl
 	ld a, [hli]
@@ -2586,7 +2587,7 @@ Func_768ce: ; 768ce (1d:68ce)
 	ld [hli], a
 	ld [hl], d
 	pop de
-Func_768f0: ; 768f0 (1d:68f0)
+FinishSFXCommands: ; 768f0 (1d:68f0)
 	ld hl, wChannelSFXPointers
 	add hl, bc
 	add hl, bc
@@ -2595,7 +2596,7 @@ Func_768f0: ; 768f0 (1d:68f0)
 	ld [hl], d
 	ret
 
-Func_768f9: ; 768f9 (1d:68f9)
+SFXCommand_1: ; 768f9 (1d:68f9)
 	ld hl, wChannelUnknownC1ABs
 	add hl, bc
 	ld a, $80
@@ -2615,7 +2616,7 @@ Func_768f9: ; 768f9 (1d:68f9)
 	pop hl
 	jp SFXCommandProcessor
 
-Func_76912: ; 76912 (1d:6912)
+SFXCommand_2: ; 76912 (1d:6912)
 	swap a
 	ld e, a
 	ld hl, rNR11
@@ -2651,7 +2652,7 @@ SFXCommand_EndLoop: ; 76938 (1d:6938)
 	add hl, bc
 	ld a, [hl]
 	dec a
-	jr z, .asm_7694d
+	jr z, .loop_over
 	ld [hl], a
 	ld hl, wChannelLoopReturnPointers
 	add hl, bc
@@ -2662,11 +2663,11 @@ SFXCommand_EndLoop: ; 76938 (1d:6938)
 	pop de
 	jp SFXCommandProcessor
 
-.asm_7694d
+.loop_over
 	pop hl
 	jp SFXCommandProcessor
 
-Func_76951: ; 76951 (1d:6951)
+SFXCommand_5: ; 76951 (1d:6951)
 	ld hl, wChannelUnknownC1AFs
 	add hl, bc
 	ld e, l
@@ -2676,8 +2677,8 @@ Func_76951: ; 76951 (1d:6951)
 	ld [de], a
 	jp SFXCommandProcessor
 
-Func_7695d: ; 7695d (1d:695d)
-	call Func_7696e
+SFXCommand_6: ; 7695d (1d:695d)
+	call ApplySFXPitchOffset
 	ld hl, wChannelUnknownC1B3s
 	add hl, bc
 	ld e, l
@@ -2687,19 +2688,19 @@ Func_7695d: ; 7695d (1d:695d)
 	ld [de], a
 	ld e, l
 	ld d, h
-	jp Func_768f0
+	jp FinishSFXCommands
 
-Func_7696e: ; 7696e (1d:696e)
+ApplySFXPitchOffset: ; 7696e (1d:696e)
 	ld hl, wChannelUnknownC1AFs
 	add hl, bc
 	ld a, [hl]
 	or a
-	jr z, .asm_769a8
+	jr z, .bail
 	ld hl, wChannelUnknownC1B7s
 	add hl, bc
 	add hl, bc
 	bit 7, a
-	jr z, .asm_7698b
+	jr z, .positive
 	xor $ff
 	inc a
 	ld d, a
@@ -2709,9 +2710,9 @@ Func_7696e: ; 7696e (1d:696e)
 	ld e, a
 	ld a, [hl]
 	sbc b
-	jr .asm_76992
+	jr .done
 
-.asm_7698b
+.positive
 	ld d, a
 	ld a, [hl]
 	add d
@@ -2719,7 +2720,7 @@ Func_7696e: ; 7696e (1d:696e)
 	ld e, a
 	ld a, [hl]
 	adc b
-.asm_76992
+.done
 	ld [hl], a
 	ld hl, wChannelUnknownC1ABs
 	add hl, bc
@@ -2737,14 +2738,14 @@ Func_7696e: ; 7696e (1d:696e)
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-.asm_769a8
+.bail
 	ret
 
-Func_769a9: ; 769a9 (1d:69a9)
+SFXCommand_7: ; 769a9 (1d:69a9)
 	add a
 	ld d, $0
 	ld e, a
-	ld hl, Pointers_76c72
+	ld hl, SFXWaveSamples
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -2753,14 +2754,14 @@ Func_769a9: ; 769a9 (1d:69a9)
 	ld [rNR30], a
 	ld b, d
 	ld de, rWave_0
-.asm_769bc
+.loop
 	ld a, [hli]
 	ld [de], a
 	inc de
 	inc b
 	ld a, b
 	cp $10
-	jr nz, .asm_769bc
+	jr nz, .loop
 	ld a, $1
 	ld [wc10b], a
 	ld a, $80
@@ -2769,23 +2770,23 @@ Func_769a9: ; 769a9 (1d:69a9)
 	pop hl
 	jp SFXCommandProcessor
 
-Func_769d4: ; 769d4 (1d:69d4)
+SFXCommand_8: ; 769d4 (1d:69d4)
 	pop hl
 	ld a, [hli]
 	push hl
 	push bc
 	inc c
 	ld e, $ee
-.load
+.loop
 	dec c
 	jr z, .set
 	rlca
 	rlc e
-	jr .load
+	jr .loop
 
 .set
 	ld d, a
-	ld hl, wc105
+	ld hl, wSFXGlobalDuty
 	ld a, [hl]
 	and e
 	or d
@@ -2794,7 +2795,7 @@ Func_769d4: ; 769d4 (1d:69d4)
 	pop hl
 	jp SFXCommandProcessor
 
-Func_769f0: ; 769f0 (1d:69f0)
+SFXCommand_EndChannel: ; 769f0 (1d:69f0)
 	ld e, c
 	inc e
 	ld a, $7f
@@ -2822,7 +2823,7 @@ Func_769f0: ; 769f0 (1d:69f0)
 	pop hl
 	ret
 
-Func_76a13: ; 76a13 (1d:6a13)
+ResetSFXVariables: ; 76a13 (1d:6a13)
 	xor a
 	ld [wSFXActive2], a
 	ld [wSFXActive], a
@@ -2830,7 +2831,7 @@ Func_76a13: ; 76a13 (1d:6a13)
 	ld [wSFXIndex], a
 	ret
 
-Func_76a20: ; 76a20 (1d:6a20)
+ResetSFXChannelRegisters: ; 76a20 (1d:6a20)
 	ld a, $8
 	ld a, [rNR12]
 	ld a, [rNR22]
