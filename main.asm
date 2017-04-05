@@ -93411,7 +93411,13 @@ Func_5c000:
 	ret
 
 Data_5c001:
-	dr $5c001, $5c027
+	dr $5c001, $5c009
+
+Data_5c009:
+	dr $5c009, $5c011
+
+Data_5c011:
+	dr $5c011, $5c027
 
 Func_5c027:
 	push hl
@@ -94388,41 +94394,1628 @@ Func_5c691: ; 5c691 (17:4691)
 	add sp, $3a
 	ret
 
-Func_5c694: ; 5c694
-	dr $5c694, $5c6e3
+Func_5c694: ; 5c694 (17:4694)
+	push hl
+	add sp, -$18
+	read_hl_from_sp_plus $1a
+	ld de, $c
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_5c6aa
+	ld a, $e
+	jp Func_5c6e0
 
-Func_5c6e3: ; 5c6e3
-	dr $5c6e3, $5c732
+Func_5c6aa: ; 5c6aa (17:46aa)
+	read_hl_from_sp_plus $1a
+	ld de, $22
+	add hl, de
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_5c011
+	add hl, de
+	ld l, [hl]
+	inc l
+	dec l
+	jp z, Func_5c6c3
+	ld a, l
+	jp Func_5c6e0
 
-Func_5c732: ; 5c732
-	dr $5c732, $5c796
+Func_5c6c3: ; 5c6c3 (17:46c3)
+	read_hl_from_sp_plus $1a
+	ld de, $b
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$0
+	call Func_241f
+	read_hl_from_sp_plus $15
+	ld a, l
+	and $80
+	jp z, Func_5c6dd
+	ld l, $0
+Func_5c6dd: ; 5c6dd (17:46dd)
+	ld a, l
+	and $f
+Func_5c6e0: ; 5c6e0 (17:46e0)
+	add sp, $1a
+	ret
 
-Func_5c796: ; 5c796
-	dr $5c796, $5cdb0
+Func_5c6e3: ; 5c6e3 (17:46e3)
+	push hl
+	add sp, -$18
+	read_hl_from_sp_plus $1a
+	ld de, $18
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_5c6f9
+	ld a, $e
+	jp Func_5c72f
 
-Func_5cdb0: ; 5cdb0
-	dr $5cdb0, $5cf1d
+Func_5c6f9: ; 5c6f9 (17:46f9)
+	read_hl_from_sp_plus $1a
+	ld de, $2e
+	add hl, de
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_5c011
+	add hl, de
+	ld l, [hl]
+	inc l
+	dec l
+	jp z, Func_5c712
+	ld a, l
+	jp Func_5c72f
 
-Func_5cf1d: ; 5cf1d
-	dr $5cf1d, $5cf85
+Func_5c712: ; 5c712 (17:4712)
+	read_hl_from_sp_plus $1a
+	ld de, $17
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$0
+	call Func_241f
+	read_hl_from_sp_plus $15
+	ld a, l
+	and $80
+	jp z, Func_5c72c
+	ld l, $0
+Func_5c72c: ; 5c72c (17:472c)
+	ld a, l
+	and $f
+Func_5c72f: ; 5c72f (17:472f)
+	add sp, $1a
+	ret
 
-Func_5cf85: ; 5cf85
-	dr $5cf85, $5d02d
+Func_5c732: ; 5c732 (17:4732)
+	ld c, l
+	ld l, h
+	ld a, e
+	and $80
+	jp z, Func_5c73d
+	jp Func_5c73e
 
-Func_5d02d: ; 5d02d
-	dr $5d02d, $5d096
+Func_5c73d: ; 5c73d (17:473d)
+	ld l, c
+Func_5c73e: ; 5c73e (17:473e)
+	ld a, e
+	and $7f
+	cp $3
+	jp z, Func_5c78a
+	cp $2
+	jp z, Func_5c776
+	cp $1
+	jp z, Func_5c768
+	or a
+	jp nz, Func_5c795
+	ld a, l
+	rrca
+	rrca
+	rrca
+	rrca
+	and $f
+	and $7
+	ld e, a
+	ld d, $0
+	ld hl, Data_5c001
+	add hl, de
+	ld a, [hl]
+	jp Func_5c795
 
-Func_5d096: ; 5d096
-	dr $5d096, $5d107
+Func_5c768: ; 5c768 (17:4768)
+	ld a, l
+	and $7
+	ld e, a
+	ld d, $0
+	ld hl, Data_5c001
+	add hl, de
+	ld a, [hl]
+	jp Func_5c795
 
-Func_5d107: ; 5d107
-	dr $5d107, $5d10d
+Func_5c776: ; 5c776 (17:4776)
+	ld a, l
+	rrca
+	rrca
+	rrca
+	rrca
+	and $f
+	and $7
+	ld e, a
+	ld d, $0
+	ld hl, Data_5c009
+	add hl, de
+	ld a, [hl]
+	jp Func_5c795
 
-Func_5d10d: ; 5d10d
-	dr $5d10d, $5d113
+Func_5c78a: ; 5c78a (17:478a)
+	ld a, l
+	and $7
+	ld e, a
+	ld d, $0
+	ld hl, Data_5c009
+	add hl, de
+	ld a, [hl]
+Func_5c795: ; 5c795 (17:4795)
+	ret
 
-Func_5d113: ; 5d113
-	dr $5d113, $5d184
+Func_5c796: ; 5c796 (17:4796)
+	add sp, -$4e
+	push af
+	ld hl, sp+$4e
+	ld [hl], $0
+	read_hl_from wc2e6
+	ld de, $16
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	or a
+	jp nz, Func_5c7b3
+	ld hl, $0
+	jp Func_5c7b6
+
+Func_5c7b3: ; 5c7b3 (17:47b3)
+	ld hl, $2f
+Func_5c7b6: ; 5c7b6 (17:47b6)
+	add hl, de
+	write_hl_to_sp_plus $42
+	read_hl_from wc2e6
+	ld de, $16
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	xor $1
+	jp nz, Func_5c7d2
+	ld hl, $0
+	jp Func_5c7d5
+
+Func_5c7d2: ; 5c7d2 (17:47d2)
+	ld hl, $2f
+Func_5c7d5: ; 5c7d5 (17:47d5)
+	add hl, de
+	write_hl_to_sp_plus $40
+	pop af
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld c, l
+	ld b, h
+	read_hl_from wc2e6
+	ld de, $1c
+	add hl, de
+	add hl, bc
+	write_hl_to_sp_plus $44
+	ld l, a
+	ld h, $0
+	ld a, l
+	xor $1
+	ld l, a
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld c, l
+	ld b, h
+	read_hl_from wc2e6
+	ld de, $1c
+	add hl, de
+	add hl, bc
+	write_hl_to_sp_plus $42
+	read_hl_from_sp_plus $44
+	ld de, $5e
+	add hl, de
+	ld a, [hl]
+	or a
+	jp z, Func_5c82f
+	jp Func_5cdad
+
+Func_5c82f: ; 5c82f (17:482f)
+	read_hl_from_sp_plus $40
+	ld de, $17
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$24
+	call Func_241f
+	read_hl_from_sp_plus $39
+	write_hl_to_sp_plus $4c
+	push hl
+	read_hl_from_sp_plus $46
+	ld de, $67
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	read_hl_from_sp_plus $44
+	ld de, $5f
+	add hl, de
+	ld a, [hl]
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	push hl
+	read_hl_from_sp_plus $46
+	pop de
+	add hl, de
+	ld c, l
+	ld b, h
+	push af
+	ld a, [bc]
+	cp $fe
+	jp z, Func_5c877
+	or a
+	jp nz, Func_5c8e2
+	jp Func_5c991
+
+Func_5c877: ; 5c877 (17:4877)
+	push bc
+	ld l, c
+	ld h, b
+	inc hl
+	ld c, [hl]
+	ld b, $0
+	read_hl_from_sp_plus $48
+	ld de, $23
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	dec a
+	ld e, a
+	ld hl, sp+$17
+	call Func_248f
+	ld hl, sp+$1c
+	ld a, [hl]
+	ld hl, sp+$50
+	ld [hl], a
+	read_hl_from_sp_plus $25
+	write_hl_to_sp_plus $50
+	pop bc
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld a, [hl]
+	and $4
+	jp z, Func_5c8df
+	read_hl_from_sp_plus $46
+	ld de, $71
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, b
+	inc hl
+	ld b, [hl]
+	ld hl, $1
+	call LeftShiftHL
+	ld a, e
+	and l
+	ld l, a
+	ld a, d
+	and h
+	ld h, a
+	ld a, l
+	or h
+	jp z, Func_5c8dc
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld a, [hl]
+	or $8
+	ld [hl], a
+	inc hl
+	jp Func_5c8df
+
+Func_5c8dc: ; 5c8dc (17:48dc)
+	jp Func_5c913
+
+Func_5c8df: ; 5c8df (17:48df)
+	jp Func_5c991
+
+Func_5c8e2: ; 5c8e2 (17:48e2)
+	ld a, $19
+	ld [wFarCallDestBank], a
+	ld a, [bc]
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, GFX_64c7d
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$2
+	ld bc, $13
+	call FarCopyVideoData
+	ld hl, sp+$14
+	ld a, [hl]
+	ld hl, sp+$4e
+	ld [hl], a
+	read_hl_from_sp_plus $10
+	write_hl_to_sp_plus $4e
+Func_5c913: ; 5c913 (17:4913)
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld a, [hl]
+	and $4
+	jp z, Func_5c991
+	read_hl_from_sp_plus $46
+	ld de, $71
+	add hl, de
+	ld a, [hl]
+	and $f0
+	ld e, a
+	inc hl
+	ld d, $0
+	push de
+	push hl
+	pop de
+	pop hl
+	ld b, $4
+	call RightShiftHL
+	ld a, l
+	or h
+	jp z, Func_5c976
+	read_hl_from_sp_plus $46
+	ld de, $71
+	add hl, de
+	ld a, [hl]
+	and $f0
+	ld e, a
+	inc hl
+	ld d, $0
+	push de
+	push hl
+	pop de
+	pop hl
+	ld b, $4
+	call RightShiftHL
+	dec hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$4e
+	ld l, [hl]
+	ld h, $0
+	call CompareHLtoDE
+	jp nz, Func_5c976
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld a, [hl]
+	or $8
+	ld [hl], a
+	inc hl
+	jp Func_5c991
+
+Func_5c976: ; 5c976 (17:4976)
+	read_hl_from_sp_plus $46
+	ld de, $71
+	add hl, de
+	ld a, [hl]
+	and $8
+	jp z, Func_5c991
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld a, [hl]
+	or $8
+	ld [hl], a
+	inc hl
+Func_5c991: ; 5c991 (17:4991)
+	read_hl_from_sp_plus $46
+	ld de, $64
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	read_hl_from_sp_plus $44
+	ld de, $64
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call CompareHLtoBC
+	jp nc, Func_5c9b4
+	ld bc, $46
+	jp Func_5c9ea
+
+Func_5c9b4: ; 5c9b4 (17:49b4)
+	ld hl, sp+$46
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $44
+	ld de, $64
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	read_hl_from_sp_plus $48
+	ld de, $64
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	call Func_2617
+	ld hl, sp+$46
+	ld c, l
+	ld b, h
+	ld de, $46
+	ld hl, sp+$46
+	call Func_1a1f
+	ld hl, sp+$47
+	ld l, [hl]
+	ld h, $0
+	ld c, l
+	ld b, h
+Func_5c9ea: ; 5c9ea (17:49ea)
+	pop af
+	read_hl_from_sp_plus $44
+	ld de, $4e
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	add hl, bc
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $44
+	ld de, $75
+	add hl, de
+	ld a, [hl]
+	cp $5
+	jp nz, Func_5ca1b
+	ld l, c
+	ld h, b
+	ld de, $2
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+Func_5ca1b: ; 5ca1b (17:4a1b)
+	push bc
+	read_hl_from_sp_plus $44
+	ld de, $71
+	add hl, de
+	ld a, [hl]
+	and $1
+	jp z, Func_5cb18
+	read_hl_from_sp_plus $44
+	ld de, $71
+	add hl, de
+	inc hl
+	ld a, [hl]
+	and $2
+	jp z, Func_5caaa
+	ld hl, sp+$4e
+	ld a, [hl]
+	cp $1
+	jp z, Func_5ca57
+	cp $5
+	jp nz, Func_5caa7
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld de, $2
+	call MultiplyPointerByDE
+	jp Func_5caa7
+
+Func_5ca57: ; 5ca57 (17:4a57)
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld de, $2
+	call DividePointerByDESigned
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	ld de, $2
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld a, [hl]
+	add c
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_5caa7
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld de, $1
+	ld [hl], e
+	inc hl
+	ld [hl], d
+Func_5caa7: ; 5caa7 (17:4aa7)
+	jp Func_5cb18
+
+Func_5caaa: ; 5caaa (17:4aaa)
+	ld hl, sp+$4e
+	ld a, [hl]
+	cp $5
+	jp z, Func_5cac8
+	cp $1
+	jp nz, Func_5cb18
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld de, $2
+	call MultiplyPointerByDE
+	jp Func_5cb18
+
+Func_5cac8: ; 5cac8 (17:4ac8)
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld de, $2
+	call DividePointerByDESigned
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	ld de, $2
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld a, [hl]
+	add c
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc b
+	ld [hl], a
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_5cb18
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld de, $1
+	ld [hl], e
+	inc hl
+	ld [hl], d
+Func_5cb18: ; 5cb18 (17:4b18)
+	read_hl_from_sp_plus $44
+	ld de, $62
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	read_hl_from_sp_plus $46
+	ld de, $60
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, e
+	sub c
+	ld l, a
+	ld a, d
+	sbc b
+	ld h, a
+	write_hl_to_sp_plus $4c
+	read_hl_from_sp_plus $42
+	ld de, $13
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	read_hl_from_sp_plus $4c
+	call CompareHLtoBC
+	jp nc, Func_5cb5c
+	read_hl_from_sp_plus $42
+	ld de, $13
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	write_hl_to_sp_plus $4c
+Func_5cb5c: ; 5cb5c (17:4b5c)
+	read_hl_from_sp_plus $42
+	ld de, $13
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $3
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $4c
+	call CompareHLtoBC
+	jp c, Func_5cb9d
+	read_hl_from_sp_plus $46
+	ld de, $5f
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_5cb9d
+	read_hl_from_sp_plus $42
+	ld de, $13
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, $3
+	call DivideHLByDESigned
+	write_hl_to_sp_plus $4c
+Func_5cb9d: ; 5cb9d (17:4b9d)
+	read_hl_from_sp_plus $4c
+	add hl, hl
+	ld de, $3
+	call DivideHLByDESigned
+	push hl
+	read_hl_from_sp_plus $4e
+	ld de, $3
+	call DivideHLByDESigned
+	inc hl
+	ld a, l
+	call Func_5c04f
+	ld l, a
+	ld h, $0
+	pop de
+	add hl, de
+	inc hl
+	write_hl_to_sp_plus $4c
+	ld hl, sp+$46
+	ld c, l
+	ld b, h
+	ld hl, sp+$4e
+	ld l, [hl]
+	push hl
+	read_hl_from_sp_plus $42
+	ld de, $2c
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	call Func_5c06f
+	read_hl_from_sp_plus $46
+	ld de, $c7
+	add hl, de
+	ld [hl], a
+	ld hl, sp+$46
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $4c
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$46
+	call Func_1a1f
+	ld hl, sp+$46
+	ld a, [hl]
+	ld hl, sp+$47
+	ld l, [hl]
+	ld h, a
+	write_hl_to_sp_plus $4c
+	ld a, l
+	or h
+	jp nz, Func_5cc0e
+	ld hl, $1
+	write_hl_to_sp_plus $4c
+Func_5cc0e: ; 5cc0e (17:4c0e)
+	pop bc
+	read_hl_from_sp_plus $42
+	ld de, $6f
+	add hl, de
+	ld a, [hl]
+	and $40
+	jp z, Func_5cc20
+	ld bc, $0
+Func_5cc20: ; 5cc20 (17:4c20)
+	read_hl_from_sp_plus $4c
+	ld a, l
+	and $80
+	jp z, Func_5cd02
+	read_hl_from_sp_plus $4c
+	ld a, l
+	and $7f
+	ld l, a
+	ld h, $0
+	ld a, l
+	sub $1e
+	or h
+	jp z, Func_5ccef
+	ld a, l
+	sub $19
+	or h
+	jp z, Func_5ccd9
+	ld a, l
+	sub $17
+	or h
+	jp z, Func_5ccc6
+	ld a, l
+	sub $18
+	or h
+	jp nz, Func_5ccff
+	push bc
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	ld b, $4
+	call RightShiftHL
+	ld a, l
+	and $3
+	ld l, a
+	ld h, $0
+	ld a, l
+	cp $3
+	jp z, Func_5cca9
+	cp $1
+	jp z, Func_5cca9
+	cp $2
+	jp z, Func_5cca0
+	or a
+	jp nz, Func_5ccc2
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld a, [hl]
+	and $cf
+	ld e, a
+	inc hl
+	ld d, [hl]
+	ld a, e
+	or $10
+	ld c, a
+	ld b, d
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	jp Func_5ccc2
+
+Func_5cca0: ; 5cca0 (17:4ca0)
+	read_hl_from_sp_plus $4c
+	add hl, hl
+	write_hl_to_sp_plus $4c
+Func_5cca9: ; 5cca9 (17:4ca9)
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld a, [hl]
+	and $cf
+	ld c, a
+	inc hl
+	ld b, [hl]
+	read_hl_from_sp_plus $46
+	ld de, $6f
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+Func_5ccc2: ; 5ccc2 (17:4cc2)
+	pop bc
+	jp Func_5ccff
+
+Func_5ccc6: ; 5ccc6 (17:4cc6)
+	push bc
+	read_hl_from_sp_plus $4c
+	ld de, $a
+	call DivideHLByDESigned
+	write_hl_to_sp_plus $4c
+	pop bc
+	jp Func_5ccff
+
+Func_5ccd9: ; 5ccd9 (17:4cd9)
+	read_hl_from_sp_plus $4a
+	add hl, hl
+	write_hl_to_sp_plus $4a
+	ld l, c
+	ld h, b
+	ld de, $2
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+	jp Func_5ccff
+
+Func_5ccef: ; 5ccef (17:4cef)
+	push bc
+	read_hl_from_sp_plus $4c
+	ld de, $2
+	call DivideHLByDESigned
+	write_hl_to_sp_plus $4c
+	pop bc
+Func_5ccff: ; 5ccff (17:4cff)
+	jp Func_5cd16
+
+Func_5cd02: ; 5cd02 (17:4d02)
+	read_hl_from_sp_plus $4c
+	ld a, l
+	and $f
+	ld l, a
+	ld h, $0
+	ld a, l
+	sub $d
+	or h
+	jp nz, Func_5cd16
+	ld bc, $64
+Func_5cd16: ; 5cd16 (17:4d16)
+	push bc
+	read_hl_from_sp_plus $44
+	ld de, $5e
+	add hl, de
+	ld a, [hl]
+	cp $4
+	jp nz, Func_5cd33
+	read_hl_from_sp_plus $4c
+	ld de, $2
+	call DivideHLByDESigned
+	write_hl_to_sp_plus $4c
+Func_5cd33: ; 5cd33 (17:4d33)
+	pop bc
+	read_hl_from_sp_plus $42
+	ld de, $5e
+	add hl, de
+	ld a, [hl]
+	cp $5
+	jp nz, Func_5cd4c
+	ld l, c
+	ld h, b
+	ld de, $2
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+Func_5cd4c: ; 5cd4c (17:4d4c)
+	ld hl, sp+$4c
+	ld a, [hl]
+	read_hl_from_sp_plus $44
+	ld de, $66
+	add hl, de
+	ld [hl], a
+	read_hl_from_sp_plus $4c
+	push hl
+	read_hl_from_sp_plus $46
+	ld de, $69
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld e, c
+	ld d, b
+	ld hl, $0
+	call CompareHLtoDE
+	jp c, Func_5cd7a
+	ld bc, $1
+	jp Func_5cd7a
+
+Func_5cd7a: ; 5cd7a (17:4d7a)
+	read_hl_from_sp_plus $44
+	ld de, $6b
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	read_hl_from_sp_plus $4a
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $0
+	call CompareHLtoDE
+	jp c, Func_5cd9c
+	ld bc, $1
+	jp Func_5cda2
+
+Func_5cd9c: ; 5cd9c (17:4d9c)
+	read_hl_from_sp_plus $4a
+	ld c, l
+	ld b, h
+Func_5cda2: ; 5cda2 (17:4da2)
+	read_hl_from_sp_plus $44
+	ld de, $6d
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+Func_5cdad: ; 5cdad (17:4dad)
+	add sp, $4e
+	ret
+
+Func_5cdb0: ; 5cdb0 (17:4db0)
+	push bc
+	push bc
+	push bc
+	read_hl_from wc2e6
+	ld de, $1c
+	add hl, de
+	ld c, l
+	ld b, h
+	ld hl, $60
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus6
+	ld hl, $62
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus4
+	ld hl, $64
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	pop de
+	push hl
+	read_hl_from wc2e6
+	ld de, $1c5
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	jp nz, Func_5cdf0
+	jp Func_5cf19
+
+Func_5cdf0: ; 5cdf0 (17:4df0)
+	push bc
+	cp $8
+	jp z, Func_5ce98
+	cp $7
+	jp z, Func_5ce8e
+	cp $6
+	jp z, Func_5ce79
+	cp $5
+	jp z, Func_5ce6a
+	cp $4
+	jp z, Func_5ce60
+	cp $3
+	jp z, Func_5ce4b
+	cp $2
+	jp z, Func_5ce3c
+	cp $1
+	jp z, Func_5ce32
+	or a
+	jp nz, Func_5cea4
+	call GetHLAtSPPlus8
+	ld de, $2
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus8
+	add hl, bc
+	call WriteHLToSPPlus8
+	jp Func_5cea4
+
+Func_5ce32: ; 5ce32 (17:4e32)
+	call GetHLAtSPPlus8
+	add hl, hl
+	call WriteHLToSPPlus8
+	jp Func_5cea4
+
+Func_5ce3c: ; 5ce3c (17:4e3c)
+	call GetHLAtSPPlus8
+	ld de, $2
+	call DivideHLByDESigned
+	call WriteHLToSPPlus8
+	jp Func_5cea4
+
+Func_5ce4b: ; 5ce4b (17:4e4b)
+	call GetHLAtSPPlus6
+	ld de, $2
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus6
+	add hl, bc
+	call WriteHLToSPPlus6
+	jp Func_5cea4
+
+Func_5ce60: ; 5ce60 (17:4e60)
+	call GetHLAtSPPlus6
+	add hl, hl
+	call WriteHLToSPPlus6
+	jp Func_5cea4
+
+Func_5ce6a: ; 5ce6a (17:4e6a)
+	call GetHLAtSPPlus6
+	ld de, $2
+	call DivideHLByDESigned
+	call WriteHLToSPPlus6
+	jp Func_5cea4
+
+Func_5ce79: ; 5ce79 (17:4e79)
+	call GetHLAtSPPlus4
+	ld de, $2
+	call DivideHLByDESigned
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus4
+	add hl, bc
+	call WriteHLToSPPlus4
+	jp Func_5cea4
+
+Func_5ce8e: ; 5ce8e (17:4e8e)
+	call GetHLAtSPPlus4
+	add hl, hl
+	call WriteHLToSPPlus4
+	jp Func_5cea4
+
+Func_5ce98: ; 5ce98 (17:4e98)
+	call GetHLAtSPPlus4
+	ld de, $2
+	call DivideHLByDESigned
+	call WriteHLToSPPlus4
+Func_5cea4: ; 5cea4 (17:4ea4)
+	call GetHLAtSPPlus8
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $0
+	call CompareHLtoDE
+	jp c, Func_5ceba
+	ld hl, $1
+	call WriteHLToSPPlus8
+Func_5ceba: ; 5ceba (17:4eba)
+	call GetHLAtSPPlus6
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $0
+	call CompareHLtoDE
+	jp c, Func_5ced0
+	ld hl, $1
+	call WriteHLToSPPlus6
+Func_5ced0: ; 5ced0 (17:4ed0)
+	call GetHLAtSPPlus4
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $0
+	call CompareHLtoDE
+	jp c, Func_5cee6
+	ld hl, $1
+	call WriteHLToSPPlus4
+Func_5cee6: ; 5cee6 (17:4ee6)
+	pop bc
+	ld hl, $5e
+	add hl, bc
+	ld a, [hl]
+	or a
+	jp nz, Func_5cefe
+	call GetHLAtSPPlus6
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $60
+	add hl, bc
+	ld [hl], e
+	inc hl
+	ld [hl], d
+Func_5cefe: ; 5cefe (17:4efe)
+	call GetHLAtSPPlus4
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $62
+	add hl, bc
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	pop hl
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $64
+	add hl, bc
+	ld [hl], e
+	inc hl
+	ld [hl], d
+Func_5cf19: ; 5cf19 (17:4f19)
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_5cf1d: ; 5cf1d (17:4f1d)
+	push bc
+	read_hl_from wc2e6
+	ld de, $1c6
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	pop de
+	push hl
+	ld c, $0
+Func_5cf2f: ; 5cf2f (17:4f2f)
+	ld a, c
+	cp $a
+	jp nc, Func_5cf73
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	push hl
+	call GetHLAtSPPlus4
+	ld de, $17
+	add hl, de
+	pop de
+	add hl, de
+	push hl
+	call GetHLAtSPPlus4
+	inc hl
+	inc hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld [hl], $0
+	inc c
+	jp Func_5cf2f
+
+Func_5cf73: ; 5cf73 (17:4f73)
+	pop hl
+	push hl
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	pop hl
+	push hl
+	ld de, $16
+	add hl, de
+	ld [hl], $0
+	pop bc
+	ret
+
+Func_5cf85: ; 5cf85 (17:4f85)
+	push hl
+	push de
+	add sp, -$20
+	read_hl_from wc2e6
+	ld de, $1c6
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	write_hl_to_sp_plus $20
+	read_hl_from_sp_plus $20
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_5cfb7
+	read_hl_from_sp_plus $20
+	inc hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	read_hl_from_sp_plus $20
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	jp Func_5d00a
+
+Func_5cfb7: ; 5cfb7 (17:4fb7)
+	ld hl, sp+$20
+	ld c, [hl]
+	read_hl_from_sp_plus $24
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$0
+	call FarCopyUntilNull
+	read_hl_from_sp_plus $20
+	ld de, $16
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	push hl
+	read_hl_from_sp_plus $22
+	inc hl
+	inc hl
+	pop de
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	call FindFirstNonzero
+	push hl
+	ld hl, sp+$2
+	call FindFirstNonzero
+	pop de
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $12
+	call CompareHLtoDE
+	jp nc, Func_5d00a
+	ld hl, sp+$20
+	ld l, [hl]
+	push hl
+	read_hl_from_sp_plus $26
+	pop de
+	call Func_5d02d
+	jp Func_5d02a
+
+Func_5d00a: ; 5d00a (17:500a)
+	ld hl, sp+$20
+	ld c, [hl]
+	read_hl_from_sp_plus $24
+	push hl
+	read_hl_from_sp_plus $22
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push hl
+	pop de
+	pop hl
+	pop de
+	call FarCopyUntilNull
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $20
+	ld [hl], c
+	inc hl
+	ld [hl], b
+Func_5d02a: ; 5d02a (17:502a)
+	add sp, $24
+	ret
+
+Func_5d02d: ; 5d02d (17:502d)
+	push hl
+	push de
+	read_hl_from wc2e6
+	ld de, $1c6
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	ld l, c
+	ld h, b
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_5d052
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, b
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	jp Func_5d07e
+
+Func_5d052: ; 5d052 (17:5052)
+	push bc
+	ld hl, $16
+	add hl, bc
+	ld a, $1
+	add [hl]
+	ld [hl], a
+	cp $9
+	jp c, Func_5d068
+	ld e, $0
+	ld hl, Data_5d084
+	call Func_2a3e
+Func_5d068: ; 5d068 (17:5068)
+	pop bc
+	ld hl, $16
+	add hl, bc
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, c
+	ld d, b
+	inc de
+	inc de
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, b
+	ld [hl], e
+	inc hl
+	ld [hl], d
+Func_5d07e: ; 5d07e (17:507e)
+	pop de
+	pop hl
+	call Func_5cf85
+	ret
+
+Data_5d084:
+	db "ハﾞトル メッセーシﾞ オーハﾞー", $00
+
+Func_5d096: ; 5d096 (17:5096)
+	push bc
+	push af
+	read_hl_from wc2e6
+	ld de, $1c6
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus4
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	call GetHLAtSPPlus4
+	ld de, $16
+	add hl, de
+	ld a, $1
+	add [hl]
+	ld [hl], a
+	ld l, a
+	ld h, $0
+	add hl, hl
+	push hl
+	call GetHLAtSPPlus6
+	inc hl
+	inc hl
+	pop de
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	set_farcall_addrs_hli Func_60621
+	pop af
+	ld l, a
+	ld h, $0
+	ld h, l
+	ld l, $0
+	add hl, hl
+	add hl, hl
+	ld de, $109
+	add hl, de
+	ld c, l
+	ld b, h
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $10e
+	call FarCall
+	call Func_5cf1d
+	pop bc
+	ret
+
+Func_5d107: ; 5d107 (17:5107)
+	ld a, $2
+	call Func_5d096
+	ret
+
+Func_5d10d: ; 5d10d (17:510d)
+	ld a, $3
+	call Func_5d096
+	ret
+
+Func_5d113: ; 5d113 (17:5113)
+	read_hl_from wc2e6
+	ld de, $16
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $5e
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	push de
+	ld hl, $8
+	add hl, de
+	ld a, [hl]
+	and $4
+	jp nz, Func_5d151
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	read_hl_from wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $105
+	call FarCall
+Func_5d151: ; 5d151 (17:5151)
+	pop de
+	ld hl, $9
+	add hl, de
+	ld a, [hl]
+	and $4
+	jp nz, Func_5d183
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	read_hl_from wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $40
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $b05
+	call FarCall
+Func_5d183: ; 5d183 (17:5183)
+	ret
 
 Func_5d184: ; 5d184
 	dr $5d184, $5e504
