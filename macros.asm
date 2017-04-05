@@ -202,3 +202,23 @@ read_hl_from: MACRO
 	dw \1
 	ENDM
 
+read_hl_from_sp_plus: MACRO
+IF \1 >= $100
+	call GetHLAtSPPlusParam16
+	dw \1
+ELSE
+	call GetHLAtSPPlusParam8
+	db \1
+ENDC
+ENDM
+
+write_hl_to_sp_plus: MACRO
+IF \1 >= $100
+	call WriteHLToSPPlusParam16
+	dw \1
+ELSE
+	call WriteHLToSPPlusParam8
+	db \1
+ENDC
+ENDM
+

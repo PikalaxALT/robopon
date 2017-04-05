@@ -3789,8 +3789,7 @@ Func_236f: ; 236f
 	ld bc, 47
 	ld hl, sp+$0
 	push hl
-	call GetHLAtSPPlusParam8
-	db $f2
+	read_hl_from_sp_plus $f2
 	pop de
 	call CopyFromDEtoHL
 	jp .Done
@@ -3802,8 +3801,7 @@ Func_236f: ; 236f
 	ld a, BANK(PoncotsBaseStats)
 	call BankSwitch
 	ld hl, PoncotsBaseStats
-	call WriteHLToSPPlusParam8
-	db $f1
+	write_hl_to_sp_plus $f1
 	pop af
 	pop de
 	push af
@@ -3817,14 +3815,12 @@ Func_236f: ; 236f
 	add hl, hl
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $f3
+	read_hl_from_sp_plus $f3
 	add hl, bc
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $f3
+	read_hl_from_sp_plus $f3
 	add hl, bc
 	pop de
 	ld bc, 5 * 47
@@ -3843,8 +3839,7 @@ Func_236f: ; 236f
 	ld hl, sp+$2
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $f4
+	read_hl_from_sp_plus $f4
 	pop de
 	ld bc, 47
 	call CopyFromDEtoHL
@@ -3868,8 +3863,7 @@ Func_241f: ; 241f
 	ld a, BANK(Data_64390)
 	call BankSwitch
 	ld hl, Data_64390
-	call WriteHLToSPPlusParam8
-	db $c6
+	write_hl_to_sp_plus $c6
 	pop af
 	pop de
 	push af
@@ -3883,14 +3877,12 @@ Func_241f: ; 241f
 	add hl, hl
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $c8
+	read_hl_from_sp_plus $c8
 	add hl, bc
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $c8
+	read_hl_from_sp_plus $c8
 	add hl, bc
 	pop de
 	ld bc, $c0
@@ -3918,8 +3910,7 @@ Func_241f: ; 241f
 	ld hl, sp+$2
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $c8
+	read_hl_from_sp_plus $c8
 	pop de
 	ld bc, $18
 	call CopyFromDEtoHL
@@ -4085,8 +4076,7 @@ Func_256f: ; 256f (0:256f)
 	ld hl, sp+$b
 	ld [hl], a
 Func_2578: ; 2578 (0:2578)
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $fff8
 	add hl, de
 	inc h
@@ -4099,12 +4089,10 @@ Func_2578: ; 2578 (0:2578)
 	inc hl
 	call WriteHLToSPPlusParam8
 	db $f
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $fff8
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 	inc c
 	jp Func_25a4
 
@@ -4115,8 +4103,7 @@ Func_25a4: ; 25a4 (0:25a4)
 	jp Func_2578
 
 Func_25a7: ; 25a7 (0:25a7)
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld a, l
 	or h
 	jp z, Func_25eb
@@ -4124,17 +4111,14 @@ Func_25a7: ; 25a7 (0:25a7)
 	push bc
 	ld hl, sp+$d
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld [hl], a
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $10
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld h, $0
 	add hl, hl
 	add hl, hl
@@ -4929,8 +4913,7 @@ Func_2aab: ; 2aab (0:2aab)
 	pop bc
 	push af
 Func_2ab3: ; 2ab3 (0:2ab3)
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	push de
 	push hl
 	pop de
@@ -4941,8 +4924,7 @@ Func_2ab3: ; 2ab3 (0:2ab3)
 	push bc
 	xor a
 	call Func_6b22
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $10
 	call CompareHLtoDE
 	jp c, Func_2add
@@ -4951,8 +4933,7 @@ Func_2ab3: ; 2ab3 (0:2ab3)
 	jp Func_2ae5
 
 Func_2add: ; 2add (0:2add)
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld e, l
 	ld hl, sp+$14
 	ld [hl], e
@@ -4963,8 +4944,7 @@ Func_2ae5: ; 2ae5 (0:2ae5)
 	ld hl, sp+$14
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	push de
 	push hl
 	pop de
@@ -5026,22 +5006,18 @@ Func_2b49: ; 2b49 (0:2b49)
 	ld hl, sp+$14
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld a, l
 	sub c
 	ld l, a
 	ld a, h
 	sbc b
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $18
-	call GetHLAtSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $18
+	read_hl_from_sp_plus $1a
 	ld de, $10
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
 	pop bc
 	jp Func_2ab3
 
@@ -8727,11 +8703,9 @@ Func_6b94: ; 6b94
 	jp nz, Func_6e0d
 
 macro_6b94: MACRO
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	push hl
-	call GetHLAtSPPlusParam8
-	db \1 + 2
+	read_hl_from_sp_plus \1 + 2
 	pop de
 	add hl, de
 	call WriteHLToSPPlusParam8
@@ -8775,8 +8749,7 @@ Func_6c53: ; 6c53 (1:6c53)
 	jp Func_6e0d
 
 Func_6c91: ; 6c91 (1:6c91)
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	ld e, l
 	ld hl, [sp+$18]
 	ld [hl], e
@@ -8862,13 +8835,11 @@ Func_6e1b: ; 6e1b
 	jp Func_6eb4
 
 Func_6e6f: ; 6e6f (1:6e6f)
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	jp Func_6eb4
 
 Func_6e76: ; 6e76 (1:6e76)
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	jp Func_6eb4
 
 Func_6e7d: ; 6e7d (1:6e7d)
@@ -8878,33 +8849,27 @@ Func_6e7d: ; 6e7d (1:6e7d)
 	jp Func_6eb4
 
 Func_6e85: ; 6e85 (1:6e85)
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	jp Func_6eb4
 
 Func_6e8c: ; 6e8c (1:6e8c)
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	jp Func_6eb4
 
 Func_6e93: ; 6e93 (1:6e93)
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	jp Func_6eb4
 
 Func_6e9a: ; 6e9a (1:6e9a)
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	jp Func_6eb4
 
 Func_6ea1: ; 6ea1 (1:6ea1)
-	call GetHLAtSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $1d
 	jp Func_6eb4
 
 Func_6ea8: ; 6ea8 (1:6ea8)
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	jp Func_6eb4
 
 Func_6eaf: ; 6eaf (1:6eaf)
@@ -8959,74 +8924,55 @@ Func_6ebf: ; 6ebf
 	or a
 	jp nz, Func_6f6d
 .asm_6f00
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $10
 	jp Func_6f6d
 
 Func_6f0d: ; 6f0d (1:6f0d)
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $14
 	jp Func_6f6d
 
 Func_6f18: ; 6f18 (1:6f18)
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $18
 	jp Func_6f6d
 
 Func_6f23: ; 6f23 (1:6f23)
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	ld e, l
 	ld hl, sp+$18
 	ld [hl], e
 	jp Func_6f6d
 
 Func_6f2e: ; 6f2e (1:6f2e)
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $12
 	jp Func_6f6d
 
 Func_6f39: ; 6f39 (1:6f39)
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $16
 	jp Func_6f6d
 
 Func_6f44: ; 6f44 (1:6f44)
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $1b
 	jp Func_6f6d
 
 Func_6f4f: ; 6f4f (1:6f4f)
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $1d
 	jp Func_6f6d
 
 Func_6f5a: ; 6f5a (1:6f5a)
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $1f
 	jp Func_6f6d
 
 Func_6f65: ; 6f65 (1:6f65)
-	call GetHLAtSPPlusParam8
-	db $28
-	call WriteHLToSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $28
+	write_hl_to_sp_plus $21
 Func_6f6d: ; 6f6d (1:6f6d)
 	pop hl
 	ld a, l
@@ -9537,11 +9483,9 @@ Func_72ac: ; 72ac (1:72ac)
 	call Func_6fb7
 	call WriteHLToSPPlus8
 Func_72d0: ; 72d0 (1:72d0)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	write_hl_to $c320
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	write_hl_to $c322
 	xor a
 	ld [wOAM07Attrs], a
@@ -9591,11 +9535,9 @@ Func_7331: ; 7331 (1:7331)
 	jp Func_72ac
 
 Func_733d: ; 733d (1:733d)
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	pop de
 	call Func_6b11
 	push de
@@ -9702,19 +9644,15 @@ Func_73d8: ; 73d8 (1:73d8)
 	call Func_6fb7
 	call WriteHLToSPPlus9
 Func_73f9: ; 73f9 (1:73f9)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	pop de
 	call Func_6b11
 	write_hl_to $c324
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	write_hl_to $c320
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	write_hl_to $c322
 	xor a
 	ld [wOAM07Attrs], a
@@ -9769,11 +9707,9 @@ Func_746b: ; 746b (1:746b)
 
 Func_747b: ; 747b (1:747b)
 	push bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	pop de
 	call Func_6b11
 	xor a
@@ -10070,11 +10006,9 @@ Func_7642: ; 7642 (1:7642)
 	pop hl
 Func_7658: ; 7658 (1:7658)
 	push de
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	pop de
 	call Func_6b11
 	write_hl_to $c324
@@ -10112,11 +10046,9 @@ Func_768e: ; 768e (1:768e)
 
 Func_769c: ; 769c (1:769c)
 	push de
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	call WriteHLToSPPlus8
 	pop hl
 Func_76aa: ; 76aa (1:76aa)
@@ -10150,11 +10082,9 @@ Func_76aa: ; 76aa (1:76aa)
 	ld e, a
 	ld a, c
 	call Func_74da
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	pop de
 	call Func_6b11
 	ld l, $3c
@@ -11005,8 +10935,7 @@ Func_7bcc: ; 7bcc (1:7bcc)
 	ld de, $7
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	pop de
 	pop bc
 	call Func_667d
@@ -11046,8 +10975,7 @@ Func_7c3d: ; 7c3d (1:7c3d)
 	ld de, $7
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	pop de
 	pop bc
 	call Func_667d
@@ -11286,8 +11214,7 @@ Func_7db0: ; 7db0 (1:7db0)
 	push hl
 	ld hl, sp+$4
 	push hl
-	call GetHLAtSPPlusParam8
-	db $48
+	read_hl_from_sp_plus $48
 	pop de
 	ld bc, $23
 	call MemCopy
@@ -11474,8 +11401,7 @@ Func_7ea4: ; 7ea4 (1:7ea4)
 	ld bc, $40
 	ld hl, sp+$6
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4a
+	read_hl_from_sp_plus $4a
 	pop de
 	call CopyFromDEtoHL
 	pop hl
@@ -11485,12 +11411,10 @@ Func_7ea4: ; 7ea4 (1:7ea4)
 	add hl, bc
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	ld de, $40
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $46
+	write_hl_to_sp_plus $46
 	pop hl
 	pop af
 	inc a
@@ -11511,8 +11435,7 @@ Func_7eee: ; 7eee (1:7eee)
 	ld bc, $11
 	ld hl, sp+$0
 	push hl
-	call GetHLAtSPPlusParam8
-	db $44
+	read_hl_from_sp_plus $44
 	pop de
 	call CopyFromDEtoHL
 	add sp, $42
@@ -11665,17 +11588,13 @@ Func_804c: ; 804c (2:404c)
 	ld bc, $b
 	call MemCopy
 	ld hl, sp+$52
-	call WriteHLToSPPlusParam8
-	db $5e
+	write_hl_to_sp_plus $5e
 	ld hl, sp+$48
-	call WriteHLToSPPlusParam8
-	db $60
+	write_hl_to_sp_plus $60
 	ld hl, sp+$3b
-	call WriteHLToSPPlusParam8
-	db $62
+	write_hl_to_sp_plus $62
 	ld hl, sp+$30
-	call WriteHLToSPPlusParam8
-	db $64
+	write_hl_to_sp_plus $64
 	ld hl, sp+$11
 	push de
 	push hl
@@ -11691,19 +11610,15 @@ Func_804c: ; 804c (2:404c)
 	ld hl, $0
 	call WriteHLToSPPlus5
 	ld hl, -1
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	ld hl, $4
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 	ld hl, $4
 	call WriteHLToSPPlus9
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 	ld hl, sp+$5c
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	set_farcall_addrs_hli Func_174ab
 	ld hl, sp+$0
 	call FarCall
@@ -12169,8 +12084,7 @@ Func_854b: ; 854b (2:454b)
 	pop bc
 	read_hl_from $c85b
 	push hl
-	call GetHLAtSPPlusParam8
-	db $63
+	read_hl_from_sp_plus $63
 	pop de
 	call FarDecompressVideoData
 	read_hl_from $c85b
@@ -17540,13 +17454,10 @@ Func_aa5d: ; aa5d (2:6a5d)
 	ld a, [hl]
 	cp $c
 	jp nz, Func_ab15
-	call GetHLAtSPPlusParam8
-	db $4a
-	call WriteHLToSPPlusParam8
-	db $43
+	read_hl_from_sp_plus $4a
+	write_hl_to_sp_plus $43
 	ld hl, -1
-	call WriteHLToSPPlusParam8
-	db $45
+	write_hl_to_sp_plus $45
 	ld hl, sp+$5
 	push de
 	push hl
@@ -17633,10 +17544,8 @@ Func_ab15: ; ab15 (2:6b15)
 	ld e, $14
 	ld hl, $d
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $4c
-	call WriteHLToSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $4c
+	write_hl_to_sp_plus $45
 	ld l, $0
 	push hl
 	ld l, $12
@@ -19611,8 +19520,7 @@ Func_b845: ; b845 (2:7845)
 	ld [hl], a
 	ld l, a
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $2e
+	write_hl_to_sp_plus $2e
 	ld hl, sp+$29
 	ld [hl], $0
 Func_b876: ; b876 (2:7876)
@@ -19686,11 +19594,9 @@ Func_b880: ; b880 (2:7880)
 	ld hl, sp+$3c
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $30
+	read_hl_from_sp_plus $30
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $30
+	write_hl_to_sp_plus $30
 	pop bc
 	push bc
 	ld a, [$c784]
@@ -19703,11 +19609,9 @@ Func_b880: ; b880 (2:7880)
 	ld hl, sp+$3c
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $30
+	read_hl_from_sp_plus $30
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $30
+	write_hl_to_sp_plus $30
 Func_b915: ; b915 (2:7915)
 	pop bc
 	jp Func_b969
@@ -19775,8 +19679,7 @@ Func_b96d: ; b96d (2:796d)
 	or a
 	jp nz, Func_b98b
 	set_farcall_addrs_hli Func_dd67
-	call GetHLAtSPPlusParam8
-	db $30
+	read_hl_from_sp_plus $30
 	ld a, l
 	call FarCall
 	ld hl, sp+$2c
@@ -19917,8 +19820,7 @@ Func_ba47: ; ba47
 	pop af
 	ld [wFarCallDestBank], a
 	ld bc, $29
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
 	read_hl_from wc2e6
 	ld de, $16
@@ -20125,8 +20027,7 @@ Func_bbee: ; bbee (2:7bee)
 	push de
 	push af
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $24
+	read_hl_from_sp_plus $24
 	push de
 	push hl
 	pop de
@@ -20177,8 +20078,7 @@ Func_bc6d: ; bc6d
 	push de
 	push af
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	push de
 	push hl
 	pop de
@@ -20228,8 +20128,7 @@ Func_bce5: ; bce5
 	push de
 	push af
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	push de
 	push hl
 	pop de
@@ -20279,8 +20178,7 @@ Func_bd5d: ; bd5d
 	push de
 	push af
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	push de
 	push hl
 	pop de
@@ -20330,8 +20228,7 @@ Func_bdd5: ; bdd5
 	push de
 	push af
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	push de
 	push hl
 	pop de
@@ -20899,25 +20796,20 @@ Func_c8fe: ; c8fe
 	ld bc, $8
 	call MemCopy
 	ld hl, sp+$29
-	call WriteHLToSPPlusParam8
-	db $25
+	write_hl_to_sp_plus $25
 	ld hl, sp+$48
 .asm_c917
-	call WriteHLToSPPlusParam8
-	db $27
+	write_hl_to_sp_plus $27
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $29
+	write_hl_to_sp_plus $29
 	ld hl, sp+$f
 	call Func_c812
 	ld hl, sp+$f
 	push hl
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	pop de
 	call LiteralStringInTree
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	call Func_292b
 	ld e, a
 	push de
@@ -20983,21 +20875,18 @@ Func_c985: ; c985 (3:4985)
 	add hl, bc
 	ld de, $c9b8
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 	ld hl, sp+$c
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $e
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld de, $c
 	add hl, de
 	ld e, [hl]
@@ -21044,8 +20933,7 @@ Func_c9e8: ; c9e8 (3:49e8)
 	inc hl
 	ld d, [hl]
 	push de
-	call GetHLAtSPPlusParam8
-	db $2b
+	read_hl_from_sp_plus $2b
 	pop de
 	call CopyUntilNull
 	ld c, l
@@ -22010,8 +21898,7 @@ Func_d1e1: ; d1e1 (3:51e1)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 	call GetHLAtSPPlus4
 	ld de, $18
 	add hl, de
@@ -22025,10 +21912,8 @@ Func_d1e1: ; d1e1 (3:51e1)
 	ld a, b
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $12
-	call GetHLAtSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
+	read_hl_from_sp_plus $12
 	push de
 	push hl
 	pop de
@@ -22037,16 +21922,13 @@ Func_d1e1: ; d1e1 (3:51e1)
 	call CompareHLtoDE
 	jp c, Func_d221
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 Func_d221: ; d221 (3:5221)
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld e, h
 	ld hl, sp+$a
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld e, l
 	ld hl, sp+$b
 	ld [hl], e
@@ -22066,16 +21948,14 @@ Func_d221: ; d221 (3:5221)
 	ld hl, sp+$2
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	ld de, $30
 	call Func_2617
 Func_d252: ; d252 (3:5252)
 	ld hl, sp+$12
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	push de
 	push hl
 	pop de
@@ -22184,11 +22064,9 @@ Func_d300: ; d300 (3:5300)
 	ld hl, sp+$12
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	pop de
 	call Func_2617
 	ld hl, sp+$12
@@ -22215,8 +22093,7 @@ Func_d329: ; d329 (3:5329)
 	ld a, [hl]
 	call Func_d18e
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	push hl
 	call GetHLAtSPPlus4
 	ld de, $18
@@ -22271,8 +22148,7 @@ Func_d384: ; d384 (3:5384)
 	ld a, [hl]
 	call Func_3ca1
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	push de
 	push hl
 	pop de
@@ -22327,8 +22203,7 @@ Func_d3d8: ; d3d8 (3:53d8)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 	call GetHLAtSPPlus4
 	ld de, $18
 	add hl, de
@@ -22339,28 +22214,21 @@ Func_d3d8: ; d3d8 (3:53d8)
 	ld l, c
 	ld h, b
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $12
-	call GetHLAtSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
+	read_hl_from_sp_plus $12
 	push hl
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_d415
-	call GetHLAtSPPlusParam8
-	db $10
-	call WriteHLToSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $10
+	write_hl_to_sp_plus $12
 Func_d415: ; d415 (3:5415)
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld e, h
 	ld hl, sp+$a
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld e, l
 	ld hl, sp+$b
 	ld [hl], e
@@ -22380,16 +22248,14 @@ Func_d415: ; d415 (3:5415)
 	ld hl, sp+$2
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	ld de, $30
 	call Func_2617
 Func_d446: ; d446 (3:5446)
 	ld hl, sp+$12
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	push de
 	push hl
 	pop de
@@ -22498,11 +22364,9 @@ Func_d4f4: ; d4f4 (3:54f4)
 	ld hl, sp+$12
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	pop de
 	call Func_2617
 	ld hl, sp+$12
@@ -22529,8 +22393,7 @@ Func_d51d: ; d51d (3:551d)
 	ld a, [hl]
 	call Func_d18e
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	push hl
 	call GetHLAtSPPlus4
 	ld de, $18
@@ -22585,8 +22448,7 @@ Func_d578: ; d578 (3:5578)
 	ld a, [hl]
 	call Func_3ca1
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	push de
 	push hl
 	pop de
@@ -23877,8 +23739,7 @@ Func_de92: ; de92 (3:5e92)
 	add hl, hl
 	add hl, hl
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	ld c, l
@@ -23886,8 +23747,7 @@ Func_de92: ; de92 (3:5e92)
 	jp Func_ded3
 
 Func_dec0: ; dec0 (3:5ec0)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push de
 	push hl
 	pop de
@@ -23914,8 +23774,7 @@ Func_ded3: ; ded3 (3:5ed3)
 .asm_dee4
 	ld bc, $0
 Func_dee7: ; dee7 (3:5ee7)
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	inc hl
 	ld [hl], c
 	pop bc
@@ -25815,13 +25674,11 @@ Func_eb3b: ; eb3b (3:6b3b)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld b, $5
 	call LeftShiftPointer
 	pop af
@@ -25842,8 +25699,7 @@ Func_eb3b: ; eb3b (3:6b3b)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -25851,8 +25707,7 @@ Func_eb3b: ; eb3b (3:6b3b)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld b, $5
 	call LeftShiftPointer
 	pop bc
@@ -25873,8 +25728,7 @@ Func_eb3b: ; eb3b (3:6b3b)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -25882,12 +25736,10 @@ Func_eb3b: ; eb3b (3:6b3b)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	inc hl
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 	pop de
 	inc de
 	inc de
@@ -25999,13 +25851,11 @@ Func_ec40: ; ec40 (3:6c40)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld b, $5
 	call LeftShiftPointer
 	pop af
@@ -26026,8 +25876,7 @@ Func_ec40: ; ec40 (3:6c40)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -26035,8 +25884,7 @@ Func_ec40: ; ec40 (3:6c40)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld b, $5
 	call LeftShiftPointer
 	pop bc
@@ -26057,8 +25905,7 @@ Func_ec40: ; ec40 (3:6c40)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -26066,12 +25913,10 @@ Func_ec40: ; ec40 (3:6c40)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	inc hl
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 	pop de
 	inc de
 	inc de
@@ -26194,13 +26039,11 @@ Func_ed5e: ; ed5e (3:6d5e)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld b, $5
 	call LeftShiftPointer
 	pop af
@@ -26221,8 +26064,7 @@ Func_ed5e: ; ed5e (3:6d5e)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -26230,8 +26072,7 @@ Func_ed5e: ; ed5e (3:6d5e)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld b, $5
 	call LeftShiftPointer
 	pop bc
@@ -26252,8 +26093,7 @@ Func_ed5e: ; ed5e (3:6d5e)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -26261,12 +26101,10 @@ Func_ed5e: ; ed5e (3:6d5e)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	inc hl
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 	pop de
 	inc de
 	inc de
@@ -26376,13 +26214,11 @@ Func_ee61: ; ee61 (3:6e61)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld b, $5
 	call LeftShiftPointer
 	pop af
@@ -27221,11 +27057,9 @@ Func_f496: ; f496 (3:7496)
 	pop hl
 	add hl, bc
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	pop de
 	add hl, de
 	pop de
@@ -27689,8 +27523,7 @@ Func_f771: ; f771
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $e4
+	write_hl_to_sp_plus $e4
 	ld hl, sp+$0
 	push de
 	push hl
@@ -27760,26 +27593,22 @@ Func_f7c3: ; f7c3 (3:77c3)
 Func_f7fd: ; f7fd (3:77fd)
 	pop af
 	call GetSRAMBank
-	call GetHLAtSPPlusParam8
-	db $e4
+	read_hl_from_sp_plus $e4
 	ld de, $b
 	add hl, de
 	ld c, l
 	ld b, h
 	push bc
-	call GetHLAtSPPlusParam8
-	db $e6
+	read_hl_from_sp_plus $e6
 	ld de, $5
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $e6
+	read_hl_from_sp_plus $e6
 	ld de, $6
 	add hl, de
 	ld e, [hl]
 	call Func_e015
-	call GetHLAtSPPlusParam8
-	db $e6
+	read_hl_from_sp_plus $e6
 	ld de, $27
 	add hl, de
 	ld a, [hl]
@@ -27804,8 +27633,7 @@ Func_f7fd: ; f7fd (3:77fd)
 	call Func_c896
 	ld hl, $e7
 	add hl, sp
-	call WriteHLToSPPlusParam8
-	db $e3
+	write_hl_to_sp_plus $e3
 	ld hl, $e3
 	add hl, sp
 	ld [hl], $0
@@ -27871,8 +27699,7 @@ Func_f86a: ; f86a (3:786a)
 	ld hl, sp+$2b
 	ld a, [hl]
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $e3
+	read_hl_from_sp_plus $e3
 	ld [hl], a
 	ld hl, $e3
 	add hl, sp
@@ -27924,19 +27751,16 @@ Func_f906: ; f906 (3:7906)
 	ld hl, $e3
 	add hl, sp
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $e3
+	read_hl_from_sp_plus $e3
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $e3
+	write_hl_to_sp_plus $e3
 	jp Func_f86a
 
 Func_f91d: ; f91d (3:791d)
 	xor a
 	pop bc
 Func_f91f: ; f91f (3:791f)
-	call GetHLAtSPPlusParam8
-	db $e4
+	read_hl_from_sp_plus $e4
 	inc hl
 	inc hl
 	inc hl
@@ -27954,8 +27778,7 @@ Func_f91f: ; f91f (3:791f)
 	ld hl, sp+$2d
 	ld a, [hl]
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $e5
+	read_hl_from_sp_plus $e5
 	ld [hl], a
 	ld hl, sp+$35
 	push de
@@ -27985,11 +27808,9 @@ Func_f91f: ; f91f (3:791f)
 	add hl, bc
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $e1
+	read_hl_from_sp_plus $e1
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $e1
+	write_hl_to_sp_plus $e1
 	jp Func_f91f
 
 Func_f980: ; f980 (3:7980)
@@ -28121,8 +27942,7 @@ Func_fa45: ; fa45 (3:7a45)
 	xor a
 	call Func_3bc5
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $e4
+	read_hl_from_sp_plus $e4
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -28159,10 +27979,8 @@ Func_fa81: ; fa81 (3:7a81)
 	ld d, [hl]
 	ld hl, Predef
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $32
-	call GetHLAtSPPlusParam8
-	db $32
+	write_hl_to_sp_plus $32
+	read_hl_from_sp_plus $32
 	ld de, $b
 	add hl, de
 	ld c, l
@@ -28176,17 +27994,14 @@ Func_fa81: ; fa81 (3:7a81)
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $32
-	call GetHLAtSPPlusParam8
-	db $34
+	write_hl_to_sp_plus $32
+	read_hl_from_sp_plus $34
 	ld [hl], $10
 	read_hl_from wc2e6
 	ld de, $1aa
 	add hl, de
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	inc hl
 	inc hl
 	inc hl
@@ -28195,8 +28010,7 @@ Func_fa81: ; fa81 (3:7a81)
 	cp $1
 	jp c, Func_fb2d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $27
 	add hl, de
 	ld a, [hl]
@@ -28211,26 +28025,22 @@ Func_faeb: ; faeb (3:7aeb)
 	call StartMapMusic
 Func_faf0: ; faf0 (3:7af0)
 	call Func_f771
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld de, $9
 	add hl, de
 	ld [hl], $3
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld de, $8
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $5
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$27
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $6
 	add hl, de
 	ld e, [hl]
@@ -28238,8 +28048,7 @@ Func_faf0: ; faf0 (3:7af0)
 	ld [hl], e
 	ld hl, sp+$2f
 	ld [hl], $1
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld [hl], $2
 	pop hl
 	jp Func_fb64
@@ -28249,19 +28058,16 @@ Func_fb2d: ; fb2d (3:7b2d)
 	call StartMapMusic
 	ld hl, sp+$2d
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $32
+	read_hl_from_sp_plus $32
 	ld de, $9
 	add hl, de
 	ld [hl], $0
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $32
+	read_hl_from_sp_plus $32
 	ld de, $8
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld de, $5
 	add hl, de
 	ld e, [hl]
@@ -28271,14 +28077,12 @@ Func_fb2d: ; fb2d (3:7b2d)
 	ld [hl], $ff
 	ld l, $1
 	push hl
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld [hl], $0
 	pop hl
 Func_fb64: ; fb64 (3:7b64)
 	push hl
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld de, $7
 	add hl, de
 	ld [hl], $0
@@ -28296,8 +28100,7 @@ Func_fb64: ; fb64 (3:7b64)
 	pop af
 	and $1
 	jp z, Func_fb90
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld a, $4
 	or [hl]
 	ld [hl], a
@@ -28313,8 +28116,7 @@ Func_fb95: ; fb95 (3:7b95)
 	push hl
 	push af
 	push bc
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	inc hl
 	push de
 	push hl
@@ -28401,8 +28203,7 @@ Func_fc20: ; fc20 (3:7c20)
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $30
+	write_hl_to_sp_plus $30
 	ld hl, sp+$2c
 	ld [hl], $0
 Func_fc31: ; fc31 (3:7c31)
@@ -28445,22 +28246,19 @@ Func_fc31: ; fc31 (3:7c31)
 	add hl, hl
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $32
+	read_hl_from_sp_plus $32
 	ld de, $82
 	add hl, de
 	pop de
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $32
+	read_hl_from_sp_plus $32
 	ld de, $71
 	add hl, de
 	pop de
 	ld bc, $11
 	call MemCopy
-	call GetHLAtSPPlusParam8
-	db $30
+	read_hl_from_sp_plus $30
 	ld de, $75
 	add hl, de
 	ld a, [hl]
@@ -28532,8 +28330,7 @@ Func_fcef: ; fcef (3:7cef)
 	pop hl
 	call FarCall
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	push de
 	push hl
 	pop de
@@ -28549,14 +28346,12 @@ Func_fd22: ; fd22 (3:7d22)
 
 Func_fd26: ; fd26 (3:7d26)
 	push bc
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $b
 	add hl, de
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	inc hl
 	push de
 	push hl
@@ -28572,16 +28367,14 @@ Func_fd26: ; fd26 (3:7d26)
 	ld b, c
 	ld a, $1
 	call LeftShiftA
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	or [hl]
 	ld [hl], a
 	read_hl_from wc2e6
 	ld de, $e2
 	add hl, de
 	ld [hl], c
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $7
 	add hl, de
 	ld [hl], c
@@ -28593,28 +28386,23 @@ Func_fd26: ; fd26 (3:7d26)
 	pop de
 	ld a, e
 	call GetSRAMBank
-	call GetHLAtSPPlusParam8
-	db $32
+	read_hl_from_sp_plus $32
 	ld de, $7
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $27
-	call GetHLAtSPPlusParam8
-	db $32
+	write_hl_to_sp_plus $27
+	read_hl_from_sp_plus $32
 	ld de, $9
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $29
-	call GetHLAtSPPlusParam8
-	db $32
+	write_hl_to_sp_plus $29
+	read_hl_from_sp_plus $32
 	inc hl
 	inc hl
 	inc hl
@@ -30464,11 +30252,9 @@ Func_10d15: ; 10d15 (4:4d15)
 
 Func_10d19: ; 10d19 (4:4d19)
 	ld hl, $2
-	call WriteHLToSPPlusParam8
-	db $18
+	write_hl_to_sp_plus $18
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
 	ld hl, $0
 Func_10d2a: ; 10d2a (4:4d2a)
 	ld hl, $0
@@ -30483,11 +30269,9 @@ Func_10d2d: ; 10d2d (4:4d2d)
 	jp Func_10d2d
 
 Func_10d3f: ; 10d3f (4:4d3f)
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $18
+	write_hl_to_sp_plus $18
 	ld hl, sp+$0
 	ld a, [hl]
 	or a
@@ -30500,23 +30284,18 @@ Func_10d57: ; 10d57 (4:4d57)
 	ld hl, sp+$1
 	call Func_10efa
 Func_10d5c: ; 10d5c (4:4d5c)
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $1a
-	call GetHLAtSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
+	read_hl_from_sp_plus $1a
 	ld a, l
 	sub $4
 	or h
 	jp nz, Func_10d77
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
 Func_10d77: ; 10d77 (4:4d77)
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	push hl
 	ld hl, sp+$11
 	ld l, [hl]
@@ -30524,29 +30303,23 @@ Func_10d77: ; 10d77 (4:4d77)
 	ld hl, sp+$9
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	pop de
 	call Func_12029
 	pop bc
 	pop bc
 	pop bc
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus7
@@ -30561,8 +30334,7 @@ Func_10d77: ; 10d77 (4:4d77)
 	ld a, [hl]
 	cp $ff
 	jp z, Func_10dd3
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld c, l
 	ld b, h
 	ld e, $4
@@ -30572,8 +30344,7 @@ Func_10d77: ; 10d77 (4:4d77)
 	jp Func_10dfd
 
 Func_10dd3: ; 10dd3 (4:4dd3)
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $a
 	call DivideHLByDESigned
 	push de
@@ -30583,8 +30354,7 @@ Func_10dd3: ; 10dd3 (4:4dd3)
 	ld hl, $63
 	call CompareHLtoDE
 	jp nc, Func_10dfa
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld c, l
 	ld b, h
 	ld e, $4
@@ -31475,20 +31245,17 @@ Func_115af: ; 115af (4:55af)
 	ld a, [hl]
 	cp $23
 	jp nc, Func_11609
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $5
 	add hl, de
 	ld [hl], $4
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	inc hl
 	inc hl
 	inc hl
 	inc hl
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $6
 	add hl, de
 	ld [hl], $1
@@ -31499,15 +31266,13 @@ Func_11609: ; 11609 (4:5609)
 	ld a, [hl]
 	cp $41
 	jp nc, Func_11628
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	inc hl
 	inc hl
 	inc hl
 	inc hl
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $6
 	add hl, de
 	ld [hl], $1
@@ -31533,8 +31298,7 @@ Func_11632: ; 11632 (4:5632)
 	jp nc, Func_11654
 	ld a, c
 	add $32
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $6
 	add hl, de
 	ld [hl], a
@@ -31545,8 +31309,7 @@ Func_11654: ; 11654 (4:5654)
 	jp Func_11632
 
 Func_11658: ; 11658 (4:5658)
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $9
 	add hl, de
 	ld a, [hl]
@@ -31561,8 +31324,7 @@ Func_11658: ; 11658 (4:5658)
 	cp $11
 	jp nz, Func_1168b
 Func_11676: ; 11676 (4:5676)
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $9
 	add hl, de
 	ld [hl], $0
@@ -31580,8 +31342,7 @@ Func_1168e: ; 1168e (4:568e)
 	call Func_10001
 	ld hl, sp+$1e
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $8
 	add hl, de
 	ld e, [hl]
@@ -31626,8 +31387,7 @@ Func_1168e: ; 1168e (4:568e)
 	ld hl, sp+$1c
 	cp [hl]
 	jp nc, Func_116e3
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	inc hl
 	inc hl
 	inc hl
@@ -31674,8 +31434,7 @@ Func_116e3: ; 116e3 (4:56e3)
 	ld hl, sp+$1c
 	cp [hl]
 	jp nc, Func_11722
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	inc hl
 	inc hl
 	inc hl
@@ -31723,8 +31482,7 @@ Func_11722: ; 11722 (4:5722)
 	ld hl, sp+$1c
 	cp [hl]
 	jp nc, Func_11762
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	inc hl
 	inc hl
 	inc hl
@@ -31773,8 +31531,7 @@ Func_11762: ; 11762 (4:5762)
 	ld hl, sp+$1c
 	cp [hl]
 	jp nc, Func_117a3
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	inc hl
 	inc hl
 	inc hl
@@ -31817,8 +31574,7 @@ Func_117a3: ; 117a3 (4:57a3)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_117db
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $5
 	add hl, de
 	ld [hl], $4
@@ -31859,8 +31615,7 @@ Func_117db: ; 117db (4:57db)
 	ld a, [hl]
 	cp $2
 	jp nz, Func_11813
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $5
 	add hl, de
 	ld [hl], $8
@@ -31901,15 +31656,13 @@ Func_11813: ; 11813 (4:5813)
 	ld a, [hl]
 	cp $3
 	jp nz, Func_1185a
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	inc hl
 	inc hl
 	inc hl
 	inc hl
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	ld de, $9
 	add hl, de
 	ld [hl], $1
@@ -31936,8 +31689,7 @@ Func_11872: ; 11872 (4:5872)
 	ld hl, Data_1185d
 	ld bc, $15
 	call MemCopy
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $9
 	add hl, de
 	ld a, [hl]
@@ -31952,8 +31704,7 @@ Func_11872: ; 11872 (4:5872)
 	cp $11
 	jp nz, Func_118b8
 Func_118a3: ; 118a3 (4:58a3)
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $9
 	add hl, de
 	ld [hl], $0
@@ -31969,8 +31720,7 @@ Func_118b8: ; 118b8 (4:58b8)
 Func_118bb: ; 118bb (4:58bb)
 	ld a, $64
 	call Func_10001
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $8
 	add hl, de
 	ld e, [hl]
@@ -32013,8 +31763,7 @@ Func_118bb: ; 118bb (4:58bb)
 	ld hl, sp+$15
 	cp [hl]
 	jp nc, Func_1190a
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	inc hl
 	inc hl
 	inc hl
@@ -32061,8 +31810,7 @@ Func_1190a: ; 1190a (4:590a)
 	ld hl, sp+$15
 	cp [hl]
 	jp nc, Func_11948
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	inc hl
 	inc hl
 	inc hl
@@ -32111,8 +31859,7 @@ Func_11948: ; 11948 (4:5948)
 	ld hl, sp+$15
 	cp [hl]
 	jp nc, Func_11988
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	inc hl
 	inc hl
 	inc hl
@@ -32160,8 +31907,7 @@ Func_11988: ; 11988 (4:5988)
 	ld hl, sp+$15
 	cp [hl]
 	jp nc, Func_119c7
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	inc hl
 	inc hl
 	inc hl
@@ -32204,8 +31950,7 @@ Func_119c7: ; 119c7 (4:59c7)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_119ff
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $5
 	add hl, de
 	ld [hl], $4
@@ -32246,8 +31991,7 @@ Func_119ff: ; 119ff (4:59ff)
 	ld a, [hl]
 	cp $2
 	jp nz, Func_11a37
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $5
 	add hl, de
 	ld [hl], $8
@@ -32288,15 +32032,13 @@ Func_11a37: ; 11a37 (4:5a37)
 	ld a, [hl]
 	cp $3
 	jp nz, Func_11a7e
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	inc hl
 	inc hl
 	inc hl
 	inc hl
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $9
 	add hl, de
 	ld [hl], $1
@@ -32884,38 +32626,32 @@ Func_11e6b: ; 11e6b (4:5e6b)
 	set_farcall_addrs_hli Func_da835
 	xor a
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $8
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	inc hl
 	inc hl
 	ld de, $8
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $9
 	add hl, de
 	ld [hl], $0
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $6
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $5
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	inc hl
 	inc hl
 	inc hl
@@ -32926,8 +32662,7 @@ Func_11e6b: ; 11e6b (4:5e6b)
 	add hl, bc
 	ld a, [hl]
 	dec a
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld de, $8
 	add hl, de
 	ld [hl], a
@@ -33022,37 +32757,32 @@ Func_11f5b: ; 11f5b (4:5f5b)
 	inc hl
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	inc hl
 	inc hl
 	inc hl
 	inc hl
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	inc hl
 	inc hl
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	inc hl
 	inc hl
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -33136,23 +32866,19 @@ Func_12029: ; 12029 (4:6029)
 	ld hl, Data_12025
 	ld bc, $4
 	call MemCopy
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $8
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $10
+	write_hl_to_sp_plus $10
 	pop bc
 	ld hl, $8
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $10
+	write_hl_to_sp_plus $10
 	pop de
 	ld hl, $10
 	add hl, de
 	call WriteHLToSPPlus8
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $10
 	add hl, de
 	call WriteHLToSPPlus10
@@ -33201,8 +32927,7 @@ Func_1209f: ; 1209f (4:609f)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $10
+	write_hl_to_sp_plus $10
 	set_farcall_addrs_hli Func_da839
 	ld hl, sp+$1c
 	ld l, [hl]
@@ -33217,13 +32942,11 @@ Func_1209f: ; 1209f (4:609f)
 	add hl, de
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	ld a, l
 	call GetHLAtSPPlus8
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld h, l
 	ld l, $0
 	pop de
@@ -33242,8 +32965,7 @@ Func_1209f: ; 1209f (4:609f)
 	ld h, $0
 	ld de, $24
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 	set_farcall_addrs_hli Func_da839
 	ld hl, sp+$1c
 	ld l, [hl]
@@ -33258,13 +32980,11 @@ Func_1209f: ; 1209f (4:609f)
 	add hl, de
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld a, l
 	call GetHLAtSPPlus10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	ld h, l
 	ld l, $0
 	pop de
@@ -34369,13 +34089,11 @@ Func_12982: ; 12982 (4:6982)
 	push bc
 	push bc
 	push de
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld e, h
 	ld hl, sp+$7
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld e, l
 	ld hl, sp+$8
 	ld [hl], e
@@ -35371,8 +35089,7 @@ Func_1307a: ; 1307a (4:707a)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $42
+	write_hl_to_sp_plus $42
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -35381,85 +35098,70 @@ Func_1307a: ; 1307a (4:707a)
 	ld d, [hl]
 	ld hl, $2f
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $40
-	call GetHLAtSPPlusParam8
-	db $42
+	write_hl_to_sp_plus $40
+	read_hl_from_sp_plus $42
 	ld de, $13
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$49
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $40
+	read_hl_from_sp_plus $40
 	ld de, $13
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$4a
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $42
+	read_hl_from_sp_plus $42
 	ld de, $23
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $3c
-	call GetHLAtSPPlusParam8
-	db $40
+	write_hl_to_sp_plus $3c
+	read_hl_from_sp_plus $40
 	ld de, $23
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $3e
-	call GetHLAtSPPlusParam8
-	db $42
+	write_hl_to_sp_plus $3e
+	read_hl_from_sp_plus $42
 	ld de, $25
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $38
-	call GetHLAtSPPlusParam8
-	db $40
+	write_hl_to_sp_plus $38
+	read_hl_from_sp_plus $40
 	ld de, $25
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $3a
-	call GetHLAtSPPlusParam8
-	db $42
+	write_hl_to_sp_plus $3a
+	read_hl_from_sp_plus $42
 	ld de, $17
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$34
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $40
+	read_hl_from_sp_plus $40
 	ld de, $17
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$35
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $42
+	read_hl_from_sp_plus $42
 	ld de, $2e
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$47
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $40
+	read_hl_from_sp_plus $40
 	ld de, $2e
 	add hl, de
 	ld e, [hl]
@@ -35761,11 +35463,9 @@ Func_13282: ; 13282 (4:7282)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $3e
+	read_hl_from_sp_plus $3e
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $3e
+	write_hl_to_sp_plus $3e
 	ld hl, sp+$43
 	ld e, [hl]
 	ld d, $0
@@ -35775,42 +35475,34 @@ Func_13282: ; 13282 (4:7282)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $3c
-	call GetHLAtSPPlusParam8
-	db $38
+	write_hl_to_sp_plus $3c
+	read_hl_from_sp_plus $38
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $3e
+	read_hl_from_sp_plus $3e
 	ld a, l
 	sub c
 	ld c, a
 	ld a, h
 	sbc b
 	ld b, a
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $3a
+	read_hl_from_sp_plus $3a
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	ld a, l
 	sub c
 	ld c, a
 	ld a, h
 	sbc b
 	ld b, a
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
 	ld [hl], c
@@ -35820,8 +35512,7 @@ Func_13282: ; 13282 (4:7282)
 Func_13319: ; 13319 (4:7319)
 	cp $2
 	jp nc, Func_1334b
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -35837,8 +35528,7 @@ Func_13319: ; 13319 (4:7319)
 	dec d
 	bit 7, d
 	jr z, .asm_13347
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -35874,8 +35564,7 @@ Func_1334b: ; 1334b (4:734b)
 	inc hl
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $44
+	read_hl_from_sp_plus $44
 	ld de, $2c
 	add hl, de
 	ld e, [hl]
@@ -35890,8 +35579,7 @@ Func_1334b: ; 1334b (4:734b)
 	ld hl, sp+$0
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -35902,23 +35590,20 @@ Func_1334b: ; 1334b (4:734b)
 	ld hl, sp+$0
 	ld h, [hl]
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld [hl], c
 	inc hl
 	ld [hl], b
 	ld hl, $0
 	call CompareHLtoBC
 	jp c, Func_133b0
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld de, $1
 	ld [hl], e
 	inc hl
 	ld [hl], d
 Func_133b0: ; 133b0 (4:73b0)
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -35953,8 +35638,7 @@ Func_133b0: ; 133b0 (4:73b0)
 	add hl, hl
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	pop de
 	ld a, [hl]
 	add e
@@ -35982,8 +35666,7 @@ Func_133ee: ; 133ee (4:73ee)
 	inc hl
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $42
+	read_hl_from_sp_plus $42
 	ld de, $2c
 	add hl, de
 	ld e, [hl]
@@ -35998,8 +35681,7 @@ Func_133ee: ; 133ee (4:73ee)
 	ld hl, sp+$0
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
 	ld e, [hl]
@@ -36012,8 +35694,7 @@ Func_133ee: ; 133ee (4:73ee)
 	ld hl, sp+$0
 	ld h, [hl]
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
 	ld [hl], c
@@ -36022,8 +35703,7 @@ Func_133ee: ; 133ee (4:73ee)
 	ld hl, $0
 	call CompareHLtoBC
 	jp c, Func_13459
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
 	ld de, $1
@@ -36031,8 +35711,7 @@ Func_133ee: ; 133ee (4:73ee)
 	inc hl
 	ld [hl], d
 Func_13459: ; 13459 (4:7459)
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
 	ld e, [hl]
@@ -36069,8 +35748,7 @@ Func_13459: ; 13459 (4:7459)
 	add hl, hl
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	inc hl
 	inc hl
 	pop de
@@ -36087,8 +35765,7 @@ Func_1349d: ; 1349d (4:749d)
 	ld a, c
 	cp $2
 	jp nc, Func_134d3
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -36103,8 +35780,7 @@ Func_1349d: ; 1349d (4:749d)
 	ld hl, $3e7
 	call CompareHLtoDE
 	jp nc, Func_134cf
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -36150,8 +35826,7 @@ Func_134e1: ; 134e1 (4:74e1)
 	jp z, Func_1351d
 	cp $16
 	jp nz, Func_13572
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -36167,8 +35842,7 @@ Func_134e1: ; 134e1 (4:74e1)
 	jp Func_13572
 
 Func_1351d: ; 1351d (4:751d)
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -36184,8 +35858,7 @@ Func_1351d: ; 1351d (4:751d)
 	jp Func_13572
 
 Func_13533: ; 13533 (4:7533)
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -36201,8 +35874,7 @@ Func_13533: ; 13533 (4:7533)
 	jp Func_13572
 
 Func_13549: ; 13549 (4:7549)
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -36218,8 +35890,7 @@ Func_13549: ; 13549 (4:7549)
 	jp Func_13572
 
 Func_1355f: ; 1355f (4:755f)
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	push de
 	push hl
 	pop de
@@ -36253,20 +35924,17 @@ Func_13578: ; 13578 (4:7578)
 	inc c
 	dec c
 	jp nz, Func_135af
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	inc hl
 	inc hl
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	inc hl
 	inc hl
 	ld de, $0
@@ -36276,20 +35944,17 @@ Func_13578: ; 13578 (4:7578)
 	jp Func_135c9
 
 Func_135af: ; 135af (4:75af)
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	inc hl
 	inc hl
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	ld de, $0
 	ld [hl], e
 	inc hl
@@ -36304,8 +35969,7 @@ Func_135ce: ; 135ce (4:75ce)
 	ld e, $10
 	ld a, $1
 	call SetStringStartState
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -36320,8 +35984,7 @@ Func_135ce: ; 135ce (4:75ce)
 	jp Func_135fe
 
 .asm_135ed
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -36336,8 +35999,7 @@ Func_135fe: ; 135fe (4:75fe)
 	ld e, $10
 	ld a, $b
 	call SetStringStartState
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
 	ld e, [hl]
@@ -36355,8 +36017,7 @@ Func_135fe: ; 135fe (4:75fe)
 	jp Func_13632
 
 .asm_1361f
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
 	ld e, [hl]
@@ -36525,75 +36186,55 @@ Func_14028: ; 14028 (5:4028)
 	push hl
 	push de
 	ld hl, sp+$19
-	call WriteHLToSPPlusParam8
-	db $0b
-	call GetHLAtSPPlusParam8
-	db $3c
+	write_hl_to_sp_plus $0b
+	read_hl_from_sp_plus $3c
 	ld l, h
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $0f
-	call GetHLAtSPPlusParam8
-	db $3c
+	write_hl_to_sp_plus $0f
+	read_hl_from_sp_plus $3c
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $0d
-	call GetHLAtSPPlusParam8
-	db $3e
+	write_hl_to_sp_plus $0d
+	read_hl_from_sp_plus $3e
 	ld l, h
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $15
-	call GetHLAtSPPlusParam8
-	db $3e
+	write_hl_to_sp_plus $15
+	read_hl_from_sp_plus $3e
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $13
-	call GetHLAtSPPlusParam8
-	db $40
+	write_hl_to_sp_plus $13
+	read_hl_from_sp_plus $40
 	ld l, h
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 	pop hl
-	call WriteHLToSPPlusParam8
-	db $17
+	write_hl_to_sp_plus $17
 	ld l, c
 	ld h, b
-	call WriteHLToSPPlusParam8
-	db $15
-	call GetHLAtSPPlusParam8
-	db $3e
+	write_hl_to_sp_plus $15
+	read_hl_from_sp_plus $3e
 	ld c, l
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld a, l
 	inc a
 	or h
 	jp nz, Func_1408f
 	ld hl, -1
-	call WriteHLToSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $13
 Func_1408f: ; 1408f (5:408f)
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld a, l
 	inc a
 	or h
 	jp nz, Func_140a0
 	ld hl, -1
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 Func_140a0: ; 140a0 (5:40a0)
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld a, l
 	inc a
 	or h
 	jp nz, Func_140b1
 	ld hl, -1
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 Func_140b1: ; 140b1 (5:40b1)
 	read_hl_from wc2e6
 	ld de, $1c
@@ -36688,8 +36329,7 @@ Func_140b1: ; 140b1 (5:40b1)
 	jp nz, Func_14366
 Func_14180: ; 14180 (5:4180)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	ld hl, $0
 Func_1418a: ; 1418a (5:418a)
 	ld de, $4
@@ -36712,11 +36352,9 @@ Func_1418a: ; 1418a (5:418a)
 	ld a, [hl]
 	or a
 	jp z, Func_141b1
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 Func_141b1: ; 141b1 (5:41b1)
 	pop hl
 	inc hl
@@ -36732,22 +36370,19 @@ Func_141b9: ; 141b9 (5:41b9)
 	callba_hli Func_7cd1
 	ld l, a
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	jp Func_14366
 
 Func_141d9: ; 141d9 (5:41d9)
 	ld hl, $ca6c
 	ld l, [hl]
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	jp Func_14366
 
 Func_141e6: ; 141e6 (5:41e6)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	ld bc, $0
 Func_141f0: ; 141f0 (5:41f0)
 	ld l, c
@@ -36763,11 +36398,9 @@ Func_141f0: ; 141f0 (5:41f0)
 	ld a, [hl]
 	or a
 	jp z, Func_14213
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	jp Func_14216
 
 Func_14213: ; 14213 (5:4213)
@@ -36784,22 +36417,19 @@ Func_1421d: ; 1421d (5:421d)
 	ld hl, $c9a2
 	ld l, [hl]
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	jp Func_14366
 
 Func_1422a: ; 1422a (5:422a)
 	ld hl, $c9b7
 	ld l, [hl]
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	jp Func_14366
 
 Func_14237: ; 14237 (5:4237)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	ld hl, $0
 	call WriteHLToSPPlus6
 Func_14244: ; 14244 (5:4244)
@@ -36832,11 +36462,9 @@ Func_14244: ; 14244 (5:4244)
 	ld a, [hl]
 	or a
 	jp z, Func_1427d
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 Func_1427d: ; 1427d (5:427d)
 	call GetHLAtSPPlus6
 	inc hl
@@ -36848,8 +36476,7 @@ Func_14287: ; 14287 (5:4287)
 
 Func_1428a: ; 1428a (5:428a)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	ld bc, $0
 Func_14294: ; 14294 (5:4294)
 	ld l, c
@@ -36862,11 +36489,9 @@ Func_14294: ; 14294 (5:4294)
 	ld a, [hl]
 	or a
 	jp z, Func_142b4
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	jp Func_142b7
 
 Func_142b4: ; 142b4 (5:42b4)
@@ -36881,8 +36506,7 @@ Func_142bb: ; 142bb (5:42bb)
 
 Func_142be: ; 142be (5:42be)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	ld bc, $0
 Func_142c8: ; 142c8 (5:42c8)
 	ld l, c
@@ -36895,11 +36519,9 @@ Func_142c8: ; 142c8 (5:42c8)
 	ld a, [hl]
 	or a
 	jp z, Func_142e8
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	jp Func_142eb
 
 Func_142e8: ; 142e8 (5:42e8)
@@ -36917,8 +36539,7 @@ Func_142f2: ; 142f2 (5:42f2)
 	ld a, [hl]
 	call GetSRAMBank
 	ld hl, $1
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	ld bc, $0
 Func_14302: ; 14302 (5:4302)
 	ld l, c
@@ -36948,11 +36569,9 @@ Func_14302: ; 14302 (5:4302)
 	ld a, [hl]
 	or a
 	jp z, Func_14336
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 Func_14336: ; 14336 (5:4336)
 	inc bc
 	jp Func_14302
@@ -36968,14 +36587,12 @@ Func_1433d: ; 1433d (5:433d)
 	ld l, [hl]
 	ld h, $0
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	jp Func_14359
 
 Func_14352: ; 14352 (5:4352)
 	ld hl, $7
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 Func_14359: ; 14359 (5:4359)
 	jp Func_14366
 
@@ -36983,8 +36600,7 @@ Func_1435c: ; 1435c (5:435c)
 	ld hl, $c78c
 	ld l, [hl]
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 Func_14366: ; 14366 (5:4366)
 	ld hl, sp+$3e
 	ld a, [hl]
@@ -37124,17 +36740,14 @@ Func_1445e: ; 1445e
 	ld hl, sp+$10
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld h, l
 	ld l, $0
 	add hl, bc
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld h, l
 	ld l, $0
 	pop de
@@ -37148,15 +36761,12 @@ Func_1445e: ; 1445e
 	pop de
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	pop de
 	call Func_14028
 	pop bc
@@ -38788,10 +38398,8 @@ Func_1503d: ; 1503d (5:503d)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $4c
-	call GetHLAtSPPlusParam8
-	db $4c
+	write_hl_to_sp_plus $4c
+	read_hl_from_sp_plus $4c
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -38819,43 +38427,37 @@ Func_1503d: ; 1503d (5:503d)
 	inc hl
 	inc hl
 	ld c, [hl]
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
 	inc hl
 	ld e, [hl]
 	ld hl, sp+$47
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld de, $b
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld de, $9
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$46
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld de, $5
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$45
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	ld de, $d
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $45
+	write_hl_to_sp_plus $45
 	pop af
 	ld e, a
 	ld hl, sp+$49
@@ -38864,14 +38466,12 @@ Func_1503d: ; 1503d (5:503d)
 	ld l, [hl]
 	ld h, a
 	call Func_17e95
-	call GetHLAtSPPlusParam8
-	db $4c
+	read_hl_from_sp_plus $4c
 	call Func_17863
 	ld hl, sp+$45
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $4c
+	read_hl_from_sp_plus $4c
 	ld de, $b
 	add hl, de
 	ld [hl], c
@@ -38887,8 +38487,7 @@ Func_1503d: ; 1503d (5:503d)
 	inc a
 	ld hl, sp+$46
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $4c
+	read_hl_from_sp_plus $4c
 	ld e, [hl]
 	ld hl, sp+$45
 	ld a, [hl]
@@ -38915,8 +38514,7 @@ Func_150eb: ; 150eb (5:50eb)
 	pop af
 	push af
 	push de
-	call GetHLAtSPPlusParam8
-	db $47
+	read_hl_from_sp_plus $47
 	push de
 	push hl
 	pop de
@@ -38989,8 +38587,7 @@ Func_15152: ; 15152 (5:5152)
 	pop bc
 	push bc
 	push de
-	call GetHLAtSPPlusParam8
-	db $47
+	read_hl_from_sp_plus $47
 	push de
 	push hl
 	pop de
@@ -39541,28 +39138,23 @@ Func_1564a: ; 1564a (5:564a)
 	ld a, $3
 	call Func_16007
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $c98e
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $1a
-	call GetHLAtSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
+	read_hl_from_sp_plus $1a
 	ld a, l
 	and $3f
 	ld l, a
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
 	ld a, c
 	call GetSRAMBank
 	ld hl, sp+$15
 	ld [hl], $1
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld c, l
 	ld b, h
 	ld a, c
@@ -39570,8 +39162,7 @@ Func_1564a: ; 1564a (5:564a)
 	inc a
 	jp nz, Func_15703
 	ld bc, -1
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld e, l
 	ld hl, sp+$0
 	call Func_157c5
@@ -39591,8 +39182,7 @@ Func_156af: ; 156af (5:56af)
 	jp nc, Func_156f9
 	push af
 	push bc
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld e, l
 	ld hl, sp+$4
 	call Func_157c5
@@ -39635,8 +39225,7 @@ Func_156ec: ; 156ec (5:56ec)
 
 Func_156f9: ; 156f9 (5:56f9)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $18
+	write_hl_to_sp_plus $18
 	jp Func_15780
 
 Func_15703: ; 15703 (5:5703)
@@ -39655,8 +39244,7 @@ Func_15714: ; 15714 (5:5714)
 	jp nc, Func_15769
 	push af
 	push bc
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld e, l
 	ld hl, sp+$4
 	call Func_157c5
@@ -39713,8 +39301,7 @@ Func_15769: ; 15769 (5:5769)
 	jp nz, Func_15776
 	ld l, c
 	ld h, b
-	call WriteHLToSPPlusParam8
-	db $18
+	write_hl_to_sp_plus $18
 Func_15776: ; 15776 (5:5776)
 	ld hl, sp+$14
 	ld a, [hl]
@@ -39725,8 +39312,7 @@ Func_15776: ; 15776 (5:5776)
 	jp Func_15707
 
 Func_15780: ; 15780 (5:5780)
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, Data_15399 - 1
 	add hl, de
 	ld e, [hl]
@@ -39742,14 +39328,12 @@ Func_15780: ; 15780 (5:5780)
 	push hl
 	call PlaceString
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld a, l
 	jp Func_157b3
 
 Func_157aa: ; 157aa (5:57aa)
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, Data_15399 - 1
 	add hl, de
 	ld a, [hl]
@@ -40110,16 +39694,13 @@ Func_1598d: ; 1598d (5:598d)
 
 Func_15a0e: ; 15a0e (5:5a0e)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $39
+	write_hl_to_sp_plus $39
 Func_15a15: ; 15a15 (5:5a15)
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $3
 	call CompareHLtoDE
 	jp nc, Func_15a64
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	push de
 	push hl
 	pop de
@@ -40129,8 +39710,7 @@ Func_15a15: ; 15a15 (5:5a15)
 	ld a, [hl]
 	or a
 	jp z, Func_15a58
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	add hl, hl
 	add hl, hl
 	ld e, l
@@ -40146,8 +39726,7 @@ Func_15a15: ; 15a15 (5:5a15)
 	add hl, de
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	add hl, hl
 	inc hl
 	inc hl
@@ -40159,11 +39738,9 @@ Func_15a15: ; 15a15 (5:5a15)
 	ld hl, $c
 	call Func_16019
 Func_15a58: ; 15a58 (5:5a58)
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $39
+	write_hl_to_sp_plus $39
 	jp Func_15a15
 
 Func_15a64: ; 15a64 (5:5a64)
@@ -40222,13 +39799,11 @@ Func_15ad6: ; 15ad6 (5:5ad6)
 	push de
 	add sp, -$6c
 	push bc
-	call GetHLAtSPPlusParam8
-	db $72
+	read_hl_from_sp_plus $72
 	ld de, Init
 	call DivideHLByDESigned
 	ld c, l
-	call GetHLAtSPPlusParam8
-	db $72
+	read_hl_from_sp_plus $72
 	push de
 	push hl
 	pop de
@@ -40272,8 +39847,7 @@ Func_15ad6: ; 15ad6 (5:5ad6)
 	add hl, de
 	ld de, Data_64093
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $6e
+	write_hl_to_sp_plus $6e
 	jp Func_15bcb
 
 Func_15b3b: ; 15b3b (5:5b3b)
@@ -40290,8 +39864,7 @@ Func_15b3b: ; 15b3b (5:5b3b)
 	add hl, bc
 	ld de, Data_64c90
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $6e
+	write_hl_to_sp_plus $6e
 	jp Func_15bcb
 
 Func_15b52: ; 15b52 (5:5b52)
@@ -40299,8 +39872,7 @@ Func_15b52: ; 15b52 (5:5b52)
 	ld hl, sp+$54
 	call Func_241f
 	ld hl, sp+$5d
-	call WriteHLToSPPlusParam8
-	db $6e
+	write_hl_to_sp_plus $6e
 	jp Func_15bcb
 
 Func_15b61: ; 15b61 (5:5b61)
@@ -40308,8 +39880,7 @@ Func_15b61: ; 15b61 (5:5b61)
 	ld hl, sp+$54
 	call Func_241f
 	ld hl, sp+$54
-	call WriteHLToSPPlusParam8
-	db $6e
+	write_hl_to_sp_plus $6e
 	jp Func_15bcb
 
 Func_15b70: ; 15b70 (5:5b70)
@@ -40325,8 +39896,7 @@ Func_15b70: ; 15b70 (5:5b70)
 	add hl, bc
 	ld de, Func_157c5
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $6e
+	write_hl_to_sp_plus $6e
 	jp Func_15bcb
 
 Func_15b86: ; 15b86 (5:5b86)
@@ -40345,8 +39915,7 @@ Func_15b86: ; 15b86 (5:5b86)
 	ld de, $c9b8
 	add hl, de
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $6e
+	write_hl_to_sp_plus $6e
 	jp Func_15bcb
 
 Func_15b9f: ; 15b9f (5:5b9f)
@@ -40354,8 +39923,7 @@ Func_15b9f: ; 15b9f (5:5b9f)
 	ld hl, sp+$25
 	call Func_236f
 	ld hl, sp+$32
-	call WriteHLToSPPlusParam8
-	db $6e
+	write_hl_to_sp_plus $6e
 	jp Func_15bcb
 
 Func_15bae: ; 15bae (5:5bae)
@@ -40370,16 +39938,13 @@ Func_15bae: ; 15bae (5:5bae)
 	pop hl
 	call FarCall
 	ld hl, sp+$3
-	call WriteHLToSPPlusParam8
-	db $6e
+	write_hl_to_sp_plus $6e
 Func_15bcb: ; 15bcb (5:5bcb)
 	pop bc
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $6c
+	read_hl_from_sp_plus $6c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $70
+	read_hl_from_sp_plus $70
 	pop de
 	call FarCopyVideoData
 	add sp, $70
@@ -41053,11 +40618,9 @@ Func_16019: ; 16019 (5:6019)
 	ld hl, sp+$0
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $20
+	read_hl_from_sp_plus $20
 	push hl
-	call GetHLAtSPPlusParam8
-	db $24
+	read_hl_from_sp_plus $24
 	pop de
 	call Func_173a1
 	add sp, $22
@@ -41303,8 +40866,7 @@ Func_16128: ; 16128 (5:6128)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	pop hl
 	push hl
 	ld de, $7
@@ -41389,8 +40951,7 @@ Func_16204: ; 16204 (5:6204)
 Func_1620c: ; 1620c (5:620c)
 	ld c, $0
 Func_1620e: ; 1620e (5:620e)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push de
 	push hl
 	pop de
@@ -41400,8 +40961,7 @@ Func_1620e: ; 1620e (5:620e)
 	call CompareHLtoDE
 	jp nc, Func_16281
 	push bc
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld e, c
 	ld d, $0
 	call CompareHLtoDE
@@ -41462,13 +41022,11 @@ Func_1627c: ; 1627c (5:627c)
 	jp Func_1620e
 
 Func_16281: ; 16281 (5:6281)
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld de, $14
 	call CompareHLtoDE
 	jp c, Func_162bb
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push de
 	push hl
 	pop de
@@ -41480,8 +41038,7 @@ Func_16281: ; 16281 (5:6281)
 	ld c, [hl]
 	ld b, $0
 	inc bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	add hl, hl
 	ld de, -$28
 	add hl, de
@@ -41494,8 +41051,7 @@ Func_16281: ; 16281 (5:6281)
 	jp Func_162f9
 
 Func_162bb: ; 162bb (5:62bb)
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld de, $17
 	call CompareHLtoDE
 	jp c, Func_162e5
@@ -41504,8 +41060,7 @@ Func_162bb: ; 162bb (5:62bb)
 	ld b, $0
 	inc bc
 	inc bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	add hl, hl
 	ld de, -$28
 	add hl, de
@@ -41522,8 +41077,7 @@ Func_162e5: ; 162e5 (5:62e5)
 	ld c, [hl]
 	ld b, $0
 	inc bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	add hl, hl
 	add hl, bc
 	ld e, l
@@ -41540,8 +41094,7 @@ Func_162f9: ; 162f9 (5:62f9)
 	pop bc
 	pop bc
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
@@ -41575,8 +41128,7 @@ Func_162f9: ; 162f9 (5:62f9)
 	pop de
 	call SetStringStartState
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
 	call GetHLAtSPPlus8
 	pop de
@@ -41638,10 +41190,8 @@ Func_16377: ; 16377 (5:6377)
 	ld hl, sp+$6
 	ld [hl], $0
 	pop hl
-	call WriteHLToSPPlusParam8
-	db $15
-	call GetHLAtSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $15
+	read_hl_from_sp_plus $15
 	inc hl
 	inc hl
 	inc hl
@@ -41649,30 +41199,24 @@ Func_16377: ; 16377 (5:6377)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $13
-	call GetHLAtSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $13
+	read_hl_from_sp_plus $15
 	ld de, $9
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $11
-	call GetHLAtSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $11
+	read_hl_from_sp_plus $15
 	ld de, $5
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0f
-	call GetHLAtSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $0f
+	read_hl_from_sp_plus $15
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -41680,8 +41224,7 @@ Func_16377: ; 16377 (5:6377)
 	ld a, [de]
 	ld hl, sp+$c
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -41690,8 +41233,7 @@ Func_16377: ; 16377 (5:6377)
 	ld a, [de]
 	ld hl, sp+$b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -41701,8 +41243,7 @@ Func_16377: ; 16377 (5:6377)
 	ld a, [de]
 	ld hl, sp+$a
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -41713,18 +41254,15 @@ Func_16377: ; 16377 (5:6377)
 	ld a, [de]
 	ld hl, sp+$9
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $d
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$7
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push hl
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	ld de, $7
 	add hl, de
 	ld e, [hl]
@@ -41737,22 +41275,18 @@ Func_16377: ; 16377 (5:6377)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_16427
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $7
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 Func_16427: ; 16427 (5:6427)
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	push hl
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	ld de, $b
 	add hl, de
 	pop de
@@ -41851,35 +41385,28 @@ Func_164a3: ; 164a3 (5:64a3)
 	ld a, e
 	or d
 	jp nz, Func_16645
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $14
 	call CompareHLtoDE
 	jp nc, Func_16507
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 	inc h
 	dec h
 	bit 7, h
 	jr z, .asm_16504
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $11
-	call GetHLAtSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $11
+	read_hl_from_sp_plus $0d
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	inc h
 	dec h
 	bit 7, h
 	jr z, .asm_16500
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	jp .asm_16504
 
 .asm_16500
@@ -41889,13 +41416,11 @@ Func_164a3: ; 164a3 (5:64a3)
 	jp Func_16555
 
 Func_16507: ; 16507 (5:6507)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $17
 	call CompareHLtoDE
 	jp nc, Func_16531
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push de
 	push hl
 	pop de
@@ -41903,17 +41428,14 @@ Func_16507: ; 16507 (5:6507)
 	ld hl, $14
 	call CompareHLtoDE
 	jp nc, Func_1652e
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 Func_1652e: ; 1652e (5:652e)
 	jp Func_16555
 
 Func_16531: ; 16531 (5:6531)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld a, l
 	sub $17
 	or h
@@ -41923,56 +41445,42 @@ Func_16531: ; 16531 (5:6531)
 	ld h, $0
 	ld de, $14
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 	jp Func_16555
 
 Func_1654c: ; 1654c (5:654c)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 Func_16555: ; 16555 (5:6555)
 	jp Func_16645
 
 Func_16558: ; 16558 (5:6558)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $14
 	call CompareHLtoDE
 	jp nc, Func_165c1
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	push hl
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $13
 	pop de
 	call CompareHLtoDE
 	jp c, Func_165be
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $11
-	call GetHLAtSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $11
+	read_hl_from_sp_plus $0d
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0d
-	call GetHLAtSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0d
+	read_hl_from_sp_plus $0f
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	pop de
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $7
 	add hl, de
 	ld e, [hl]
@@ -41985,11 +41493,9 @@ Func_16558: ; 16558 (5:6558)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_165ba
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	jp Func_165be
 
 Func_165ba: ; 165ba (5:65ba)
@@ -41999,8 +41505,7 @@ Func_165be: ; 165be (5:65be)
 	jp Func_1660d
 
 Func_165c1: ; 165c1 (5:65c1)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $17
 	call CompareHLtoDE
 	jp nc, Func_165f9
@@ -42010,55 +41515,45 @@ Func_165c1: ; 165c1 (5:65c1)
 	ld de, $14
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_165ef
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 	jp Func_165f6
 
 Func_165ef: ; 165ef (5:65ef)
 	ld hl, $17
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 Func_165f6: ; 165f6 (5:65f6)
 	jp Func_1660d
 
 Func_165f9: ; 165f9 (5:65f9)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld a, l
 	sub $17
 	or h
 	jp nz, Func_1660d
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 Func_1660d: ; 1660d (5:660d)
 	jp Func_16645
 
 Func_16610: ; 16610 (5:6610)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $14
 	call CompareHLtoDE
 	jp nc, Func_16624
 	ld hl, $14
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 Func_16624: ; 16624 (5:6624)
 	jp Func_16645
 
 Func_16627: ; 16627 (5:6627)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $14
 	call CompareHLtoDE
 	jp c, Func_16645
@@ -42066,16 +41561,13 @@ Func_16627: ; 16627 (5:6627)
 	cp $1
 	jp c, Func_16645
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 	ld hl, sp+$2
 	ld [hl], $4
 Func_16645: ; 16645 (5:6645)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	inc hl
 	inc hl
 	inc hl
@@ -42083,11 +41575,9 @@ Func_16645: ; 16645 (5:6645)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $5
 	add hl, de
 	pop de
@@ -42169,8 +41659,7 @@ Func_16645: ; 16645 (5:6645)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld c, l
 	ld hl, sp+$b
 	ld a, [hl]
@@ -42194,11 +41683,9 @@ Func_166f2: ; 166f2 (5:66f2)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push hl
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	pop de
 	add hl, de
 	dec hl
@@ -42206,8 +41693,7 @@ Func_166f2: ; 166f2 (5:66f2)
 	ld hl, sp+$d
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	add hl, hl
 	add hl, bc
 	dec hl
@@ -42218,18 +41704,15 @@ Func_166f2: ; 166f2 (5:66f2)
 	pop bc
 	call Func_171ab
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $7
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	pop de
 	add hl, de
 	call CompareHLtoBC
@@ -42242,8 +41725,7 @@ Func_16742: ; 16742 (5:6742)
 	ld a, [hl]
 	call GetSRAMBank
 Func_16748: ; 16748 (5:6748)
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	call Func_16128
 	ld l, $12
 	push hl
@@ -42286,43 +41768,35 @@ Func_16777: ; 16777 (5:6777)
 	ld de, $1c
 	add hl, de
 	pop hl
-	call WriteHLToSPPlusParam8
-	db $0e
-	call GetHLAtSPPlusParam8
-	db $0e
+	write_hl_to_sp_plus $0e
+	read_hl_from_sp_plus $0e
 	inc hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $10
-	call GetHLAtSPPlusParam8
-	db $10
+	write_hl_to_sp_plus $10
+	read_hl_from_sp_plus $10
 	ld e, [hl]
 	ld hl, sp+$9
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	inc hl
 	ld e, [hl]
 	ld hl, sp+$8
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	inc hl
 	inc hl
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	inc hl
 	inc hl
 	inc hl
 	ld a, [hl]
 	push af
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	inc hl
 	inc hl
 	inc hl
@@ -42331,15 +41805,13 @@ Func_16777: ; 16777 (5:6777)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus8
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $b
 	add hl, de
 	ld l, [hl]
 	inc hl
 	ld h, [hl]
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $5
 	add hl, de
 	ld a, [hl]
@@ -42347,8 +41819,7 @@ Func_16777: ; 16777 (5:6777)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus6
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $7
 	add hl, de
 	ld c, [hl]
@@ -42357,8 +41828,7 @@ Func_16777: ; 16777 (5:6777)
 	pop af
 	push af
 	push bc
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld de, $d
 	add hl, de
 	ld e, [hl]
@@ -42383,8 +41853,7 @@ Func_1681b: ; 1681b (5:681b)
 	ld hl, sp+$e
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $9
 	add hl, de
 	ld [hl], c
@@ -42412,20 +41881,17 @@ Func_16841: ; 16841 (5:6841)
 	jp nz, Func_16866
 	ld a, $ff
 	ld [wOAM04XCoord], a
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	call Func_16128
 	jp Func_1686d
 
 Func_16866: ; 16866 (5:6866)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	call Func_17863
 Func_1686d: ; 1686d (5:686d)
 	call GetHLAtSPPlus4
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	ld de, $b
 	add hl, de
 	pop de
@@ -42488,8 +41954,7 @@ Func_168e9: ; 168e9 (5:68e9)
 	jp Func_16ce3
 
 Func_168fc: ; 168fc (5:68fc)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $7
 	add hl, de
 	ld a, [$ca6c]
@@ -42528,8 +41993,7 @@ Func_16926: ; 16926 (5:6926)
 	ld a, [hl]
 	cp $9
 	jp z, Func_1694e
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	call Func_15388
 	call Func_16d1a
 	jp Func_1695d
@@ -42624,8 +42088,7 @@ Func_169e0: ; 169e0 (5:69e0)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_16a02
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	call Func_15388
 Func_16a02: ; 16a02 (5:6a02)
 	ld hl, sp+$4
@@ -42637,16 +42100,14 @@ Func_16a02: ; 16a02 (5:6a02)
 	jp Func_16ce3
 
 Func_16a13: ; 16a13 (5:6a13)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $b
 	add hl, de
 	ld de, -1
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	inc hl
 	inc hl
 	inc hl
@@ -42686,8 +42147,7 @@ Func_16a5c: ; 16a5c (5:6a5c)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetSRAMBank
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -42715,8 +42175,7 @@ Func_16a8f: ; 16a8f (5:6a8f)
 	jp Func_16b21
 
 Func_16a92: ; 16a92 (5:6a92)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $7
 	add hl, de
 	ld de, $96
@@ -42737,8 +42196,7 @@ Func_16aa4: ; 16aa4 (5:6aa4)
 	call FarCall
 	cp $1
 	jp nz, Func_16ad5
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $7
 	add hl, de
 	ld de, $a8
@@ -42762,8 +42220,7 @@ Func_16ae2: ; 16ae2 (5:6ae2)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetSRAMBank
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -42856,8 +42313,7 @@ Func_16b5b: ; 16b5b (5:6b5b)
 	jp z, Func_16bab
 	cp $1
 	jp nz, Func_16cd4
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	call Func_15388
 	set_farcall_addrs_hli Func_5712f
 	pop hl
@@ -42885,8 +42341,7 @@ Func_16bab: ; 16bab (5:6bab)
 	jp Func_16ce3
 
 Func_16bd0: ; 16bd0 (5:6bd0)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	inc hl
 	inc hl
 	inc hl
@@ -42895,11 +42350,9 @@ Func_16bd0: ; 16bd0 (5:6bd0)
 	inc hl
 	or [hl]
 	jp nz, Func_16bf4
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	call Func_16128
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $b
 	add hl, de
 	ld de, $14
@@ -42910,8 +42363,7 @@ Func_16bf4: ; 16bf4 (5:6bf4)
 	jp Func_16cd4
 
 Func_16bf7: ; 16bf7 (5:6bf7)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	call Func_15388
 	set_farcall_addrs_hli Func_56abf
 	pop hl
@@ -43108,10 +42560,8 @@ Func_16d8e: ; 16d8e
 	ld hl, sp+$6
 	ld [hl], $0
 	pop hl
-	call WriteHLToSPPlusParam8
-	db $12
-	call GetHLAtSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
+	read_hl_from_sp_plus $12
 	inc hl
 	inc hl
 	inc hl
@@ -43119,30 +42569,24 @@ Func_16d8e: ; 16d8e
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $10
-	call GetHLAtSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $10
+	read_hl_from_sp_plus $12
 	ld de, $9
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0e
-	call GetHLAtSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $0e
+	read_hl_from_sp_plus $12
 	ld de, $5
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0c
-	call GetHLAtSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $0c
+	read_hl_from_sp_plus $12
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -43150,8 +42594,7 @@ Func_16d8e: ; 16d8e
 	ld a, [de]
 	ld hl, sp+$9
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -43160,8 +42603,7 @@ Func_16d8e: ; 16d8e
 	ld a, [de]
 	ld hl, sp+$8
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -43171,8 +42613,7 @@ Func_16d8e: ; 16d8e
 	ld a, [de]
 	ld hl, sp+$7
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -43183,18 +42624,15 @@ Func_16d8e: ; 16d8e
 	ld a, [de]
 	ld hl, sp+$6
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $d
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$5
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld de, $7
 	add hl, de
 	ld e, [hl]
@@ -43207,24 +42645,20 @@ Func_16d8e: ; 16d8e
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_16e3e
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $7
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0e
+	write_hl_to_sp_plus $0e
 Func_16e3e: ; 16e3e (5:6e3e)
 	ld a, [hSRAMBank]
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld de, $b
 	add hl, de
 	pop de
@@ -43240,30 +42674,24 @@ Func_16e3e: ; 16e3e (5:6e3e)
 	ld a, e
 	or d
 	jp nz, Func_16eee
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $10
+	write_hl_to_sp_plus $10
 	inc h
 	dec h
 	bit 7, h
 	jr z, .asm_16e92
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $10
-	call GetHLAtSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $10
+	read_hl_from_sp_plus $0c
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	inc h
 	dec h
 	bit 7, h
 	jr z, .asm_16e8e
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	jp .asm_16e92
 
 .asm_16e8e
@@ -43273,37 +42701,27 @@ Func_16e3e: ; 16e3e (5:6e3e)
 	jp Func_16eee
 
 Func_16e95: ; 16e95 (5:6e95)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 	pop de
 	call CompareHLtoDE
 	jp c, Func_16eee
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $10
-	call GetHLAtSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $10
+	read_hl_from_sp_plus $0c
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0c
-	call GetHLAtSPPlusParam8
-	db $0e
+	write_hl_to_sp_plus $0c
+	read_hl_from_sp_plus $0e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	pop de
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld de, $7
 	add hl, de
 	ld e, [hl]
@@ -43316,22 +42734,18 @@ Func_16e95: ; 16e95 (5:6e95)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_16eea
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	jp Func_16eee
 
 Func_16eea: ; 16eea (5:6eea)
 	ld hl, sp+$4
 	ld [hl], $2
 Func_16eee: ; 16eee (5:6eee)
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	inc hl
 	inc hl
 	inc hl
@@ -43339,11 +42753,9 @@ Func_16eee: ; 16eee (5:6eee)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld de, $5
 	add hl, de
 	pop de
@@ -43429,8 +42841,7 @@ Func_16f7e: ; 16f7e (5:6f7e)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld c, l
 	ld hl, sp+$a
 	ld a, [hl]
@@ -43449,11 +42860,9 @@ Func_16fa5: ; 16fa5 (5:6fa5)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	dec hl
@@ -43461,8 +42870,7 @@ Func_16fa5: ; 16fa5 (5:6fa5)
 	ld hl, sp+$c
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	add hl, hl
 	add hl, bc
 	dec hl
@@ -43473,18 +42881,15 @@ Func_16fa5: ; 16fa5 (5:6fa5)
 	pop bc
 	call Func_171ab
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $7
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	pop de
 	add hl, de
 	call CompareHLtoBC
@@ -43519,8 +42924,7 @@ Func_17003: ; 17003 (5:7003)
 	set_farcall_addrs_hli Func_5712f
 	call GetHLAtSPPlus10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	call FarCall
@@ -43530,8 +42934,7 @@ Func_17039: ; 17039 (5:7039)
 	set_farcall_addrs_hli Func_56abf
 	call GetHLAtSPPlus10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	call FarCall
@@ -43540,8 +42943,7 @@ Func_17039: ; 17039 (5:7039)
 Func_17054: ; 17054 (5:7054)
 	call GetHLAtSPPlus10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	ld a, l
@@ -43552,8 +42954,7 @@ Func_17065: ; 17065 (5:7065)
 	set_farcall_addrs_hli Func_569d9
 	call GetHLAtSPPlus10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	call FarCall
@@ -43566,8 +42967,7 @@ Func_17080: ; 17080 (5:7080)
 	ld c, a
 	call GetHLAtSPPlus10
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	ld de, $ca44
@@ -43593,21 +42993,18 @@ Func_17080: ; 17080 (5:7080)
 	ld hl, $101
 	call FarCall
 Func_170c4: ; 170c4 (5:70c4)
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	call Func_17863
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $1a
 	jp nz, Func_170ef
 	set_farcall_addrs_hli Func_681bd
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld c, l
 	call GetHLAtSPPlus10
 	ld a, l
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld e, l
 	call FarCall
 Func_170ef: ; 170ef (5:70ef)
@@ -43616,8 +43013,7 @@ Func_170ef: ; 170ef (5:70ef)
 	jp z, Func_17195
 	ld c, $0
 Func_170f9: ; 170f9 (5:70f9)
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	ld de, $9
 	add hl, de
 	ld e, [hl]
@@ -43627,8 +43023,7 @@ Func_170f9: ; 170f9 (5:70f9)
 	ld h, $0
 	call CompareHLtoDE
 	jp nc, Func_17195
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	ld de, $5
 	add hl, de
 	ld e, [hl]
@@ -43643,8 +43038,7 @@ Func_170f9: ; 170f9 (5:70f9)
 	call CompareHLtoDE
 	jp nz, Func_1715d
 	push bc
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	inc hl
 	inc hl
 	inc hl
@@ -43679,8 +43073,7 @@ Func_17159: ; 17159 (5:7159)
 	jp Func_17191
 
 Func_1715d: ; 1715d (5:715d)
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	inc hl
 	inc hl
 	inc hl
@@ -44803,8 +44196,7 @@ Func_17863: ; 17863 (5:7863)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	call GetHLAtSPPlus4
 	ld de, $7
 	add hl, de
@@ -44862,8 +44254,7 @@ Func_178e5: ; 178e5 (5:78e5)
 	pop bc
 	call GetHLAtSPPlus8
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	pop de
 	call CompareHLtoDE
 	jp z, Func_17965
@@ -44897,8 +44288,7 @@ Func_178e5: ; 178e5 (5:78e5)
 	call SetStringStartState
 	call GetHLAtSPPlus8
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
 	call GetHLAtSPPlus10
 	pop de
@@ -45007,16 +44397,14 @@ Func_179c5: ; 179c5 (5:79c5)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld a, l
 	sub c
 	ld l, a
 	ld a, h
 	sbc b
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	pop bc
 	inc c
 	jp Func_179c5
@@ -45027,11 +44415,9 @@ Func_179c5: ; 179c5 (5:79c5)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	pop bc
 	pop de
 	ld a, c
@@ -46696,16 +46082,14 @@ Func_2064c: ; 2064c (8:464c)
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $40
+	write_hl_to_sp_plus $40
 	ld hl, $17
 	add hl, bc
 	ld e, [hl]
 	ld hl, sp+$26
 	call Func_241f
 	pop af
-	call GetHLAtSPPlusParam8
-	db $3e
+	read_hl_from_sp_plus $3e
 	push de
 	push hl
 	pop de
@@ -46720,16 +46104,14 @@ Func_2064c: ; 2064c (8:464c)
 	jp z, Func_20692
 	or a
 	jp nz, Func_206ae
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	jp Func_206d5
 
 Func_20692: ; 20692 (8:4692)
 	inc hl
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $3e
+	read_hl_from_sp_plus $3e
 	ld de, $23
 	add hl, de
 	add hl, bc
@@ -46738,8 +46120,7 @@ Func_20692: ; 20692 (8:4692)
 	ld e, a
 	ld hl, sp+$13
 	call Func_248f
-	call GetHLAtSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $21
 	jp Func_206d5
 
 Func_206ae: ; 206ae (8:46ae)
@@ -46767,8 +46148,7 @@ Func_206ae: ; 206ae (8:46ae)
 	ld hl, sp+$0
 	ld bc, $13
 	call FarCopyVideoData
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 Func_206d5: ; 206d5 (8:46d5)
 	ld a, l
 	and $80
@@ -46851,8 +46231,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	push hl
 	add sp, -$34
 	xor a
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	inc hl
 	inc hl
 	inc hl
@@ -46860,8 +46239,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $34
+	write_hl_to_sp_plus $34
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -46915,8 +46293,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	ld [wFarCallDestBank], a
 	pop bc
 	push bc
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	push de
 	push hl
 	pop de
@@ -46951,8 +46328,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	pop bc
 	pop bc
 	push bc
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	add hl, hl
 	push de
 	push hl
@@ -46973,8 +46349,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	ld de, Data_2095b
 	ld hl, $b10
 	call PlaceStringDEatCoordHL
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld a, l
 	call Func_2064c
 	ld l, a
@@ -46994,8 +46369,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	call PlaceString
 	pop bc
 	set_farcall_addrs_hli Func_56d87
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld e, l
 	ld hl, sp+$2
 	call FarCall
@@ -47014,13 +46388,11 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	ld hl, $10f
 	call PlaceStringDEatCoordHL
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld de, $7
 	call CompareHLtoDE
 	jp nc, .no_more_moves
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	add hl, hl
 	add hl, hl
 	inc hl
@@ -47095,11 +46467,9 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	call Func_3ca1
 	pop bc
 .finish
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	push hl
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $b
 	add hl, de
 	pop de
@@ -47318,8 +46688,7 @@ Func_20ab0: ; 20ab0
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $32
+	write_hl_to_sp_plus $32
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -47338,14 +46707,12 @@ Func_20ab0: ; 20ab0
 	pop hl
 	push de
 	call FarCall
-	call WriteHLToSPPlusParam8
-	db $30
+	write_hl_to_sp_plus $30
 	ld a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	call GetHLAtSPPlusParam8
-	db $32
+	read_hl_from_sp_plus $32
 	ld de, $ca44
 	add hl, de
 	ld e, [hl]
@@ -47462,8 +46829,7 @@ Func_20be8: ; 20be8 (8:4be8)
 	jp z, Func_20c61
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $3
-	call GetHLAtSPPlusParam8
-	db $30
+	read_hl_from_sp_plus $30
 	ld de, $c6
 	add hl, de
 	ld e, [hl]
@@ -47494,8 +46860,7 @@ Func_20c33: ; 20c33 (8:4c33)
 	jp Func_20c8e
 
 Func_20c61: ; 20c61 (8:4c61)
-	call GetHLAtSPPlusParam8
-	db $2e
+	read_hl_from_sp_plus $2e
 	jp Func_20c8e
 
 Func_20c68: ; 20c68 (8:4c68)
@@ -49005,8 +48370,7 @@ Func_216e2: ; 216e2 (8:56e2)
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $0e
+	write_hl_to_sp_plus $0e
 	ld hl, sp+$6
 	push de
 	push hl
@@ -49086,8 +48450,7 @@ Func_21744: ; 21744 (8:5744)
 	add hl, bc
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $b
 	add hl, de
 	add hl, bc
@@ -49252,8 +48615,7 @@ Func_21820: ; 21820 (8:5820)
 	ld b, a
 	ld a, $1
 	call LeftShiftA
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	or [hl]
 	ld [hl], a
 	pop af
@@ -49794,13 +49156,11 @@ Func_21bf5: ; 21bf5
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam16
-	dw $0113
+	write_hl_to_sp_plus $0113
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	call WriteHLToSPPlusParam16
-	dw $0111
+	write_hl_to_sp_plus $0111
 	read_hl_from wc2e6
 	ld de, $1c5
 	add hl, de
@@ -49948,8 +49308,7 @@ Func_21cde: ; 21cde (8:5cde)
 	add hl, sp
 	ld a, [hl]
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $2b
+	read_hl_from_sp_plus $2b
 	ld c, l
 	ld b, h
 	ld hl, sp+$c
@@ -50116,26 +49475,22 @@ Func_21de0: ; 21de0 (8:5de0)
 	ld hl, sp+$2
 	call Func_236f
 	call GetHLAtSPPlus7
-	call WriteHLToSPPlusParam8
-	db $33
+	write_hl_to_sp_plus $33
 	pop bc
 	ld a, [wc2e8 + 1]
-	call GetHLAtSPPlusParam16
-	dw $0111
+	read_hl_from_sp_plus $0111
 	ld de, $c6
 	add hl, de
 	cp [hl]
 	jp nz, Func_21e63
-	call GetHLAtSPPlusParam16
-	dw $0113
+	read_hl_from_sp_plus $0113
 	ld de, $29
 	add hl, de
 	ld [hl], c
 	inc hl
 	ld [hl], b
 Func_21e63: ; 21e63 (8:5e63)
-	call GetHLAtSPPlusParam8
-	db $31
+	read_hl_from_sp_plus $31
 	push de
 	push hl
 	pop de
@@ -50147,11 +49502,9 @@ Func_21e63: ; 21e63 (8:5e63)
 	jp Func_21f1c
 
 Func_21e76: ; 21e76 (8:5e76)
-	call GetHLAtSPPlusParam8
-	db $31
+	read_hl_from_sp_plus $31
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $0115
+	read_hl_from_sp_plus $0115
 	ld de, $29
 	add hl, de
 	pop de
@@ -50165,8 +49518,7 @@ Func_21e76: ; 21e76 (8:5e76)
 	ld de, $900
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $33
+	read_hl_from_sp_plus $33
 	pop de
 	call FarCall
 	set_farcall_addrs_hli Func_6b55
@@ -50588,8 +49940,7 @@ Func_2212e: ; 2212e
 	ld b, h
 	ld hl, $b
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $e3
+	write_hl_to_sp_plus $e3
 	read_hl_from wc2e6
 	ld de, $1c5
 	add hl, de
@@ -50607,48 +49958,39 @@ Func_2212e: ; 2212e
 	ld c, $1
 Func_22166: ; 22166 (8:6166)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $e1
+	write_hl_to_sp_plus $e1
 	xor a
 Func_2216e: ; 2216e (8:616e)
 	cp c
 	jp nc, Func_22196
 	push bc
-	call GetHLAtSPPlusParam8
-	db $e7
+	read_hl_from_sp_plus $e7
 	inc hl
 	inc hl
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $e3
+	read_hl_from_sp_plus $e3
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $e3
+	write_hl_to_sp_plus $e3
 	inc a
-	call GetHLAtSPPlusParam8
-	db $e7
+	read_hl_from_sp_plus $e7
 	ld de, $7
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $e7
+	write_hl_to_sp_plus $e7
 	pop bc
 	jp Func_2216e
 
 Func_22196: ; 22196 (8:6196)
-	call GetHLAtSPPlusParam8
-	db $e1
+	read_hl_from_sp_plus $e1
 	push hl
-	call GetHLAtSPPlusParam8
-	db $ea
+	read_hl_from_sp_plus $ea
 	ld de, $b
 	add hl, de
 	ld l, [hl]
 	ld h, $0
 	pop de
 	call MultiplyHLbyDE
-	call WriteHLToSPPlusParam8
-	db $e3
+	write_hl_to_sp_plus $e3
 	pop af
 	cp $e
 	jp z, Func_221e2
@@ -50656,37 +49998,29 @@ Func_22196: ; 22196 (8:6196)
 	jp z, Func_221d6
 	cp $c
 	jp nz, Func_221f0
-	call GetHLAtSPPlusParam8
-	db $e1
+	read_hl_from_sp_plus $e1
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $e1
+	read_hl_from_sp_plus $e1
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $e1
+	write_hl_to_sp_plus $e1
 	jp Func_221f0
 
 Func_221d6: ; 221d6 (8:61d6)
-	call GetHLAtSPPlusParam8
-	db $e1
+	read_hl_from_sp_plus $e1
 	add hl, hl
-	call WriteHLToSPPlusParam8
-	db $e1
+	write_hl_to_sp_plus $e1
 	jp Func_221f0
 
 Func_221e2: ; 221e2 (8:61e2)
-	call GetHLAtSPPlusParam8
-	db $e1
+	read_hl_from_sp_plus $e1
 	ld de, $2
 	call DivideHLByDESigned
-	call WriteHLToSPPlusParam8
-	db $e1
+	write_hl_to_sp_plus $e1
 Func_221f0: ; 221f0 (8:61f0)
-	call GetHLAtSPPlusParam8
-	db $e1
+	read_hl_from_sp_plus $e1
 	push de
 	push hl
 	pop de
@@ -50695,13 +50029,11 @@ Func_221f0: ; 221f0 (8:61f0)
 	call CompareHLtoDE
 	jp c, Func_2220b
 	ld hl, $1
-	call WriteHLToSPPlusParam8
-	db $e1
+	write_hl_to_sp_plus $e1
 	jp Func_22223
 
 Func_2220b: ; 2220b (8:620b)
-	call GetHLAtSPPlusParam8
-	db $e1
+	read_hl_from_sp_plus $e1
 	push de
 	push hl
 	pop de
@@ -50710,8 +50042,7 @@ Func_2220b: ; 2220b (8:620b)
 	call CompareHLtoDE
 	jp nc, Func_22223
 	ld hl, 9990
-	call WriteHLToSPPlusParam8
-	db $e1
+	write_hl_to_sp_plus $e1
 Func_22223: ; 22223 (8:6223)
 	xor a
 Func_22224: ; 22224 (8:6224)
@@ -50776,8 +50107,7 @@ Func_22250: ; 22250 (8:6250)
 	inc hl
 	ld d, [hl]
 	push de
-	call GetHLAtSPPlusParam8
-	db $e3
+	read_hl_from_sp_plus $e3
 	pop de
 	call Func_20d35
 	ld de, Text_20104
@@ -50792,8 +50122,7 @@ Func_22250: ; 22250 (8:6250)
 	call Func_203fa
 	push hl
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e5
+	read_hl_from_sp_plus $e5
 	ld bc, $0
 	inc h
 	dec h
@@ -50985,10 +50314,8 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	call WriteHLToSPPlusParam16
-	dw $011f
-	call GetHLAtSPPlusParam16
-	dw $011f
+	write_hl_to_sp_plus $011f
+	read_hl_from_sp_plus $011f
 	ld de, $b
 	add hl, de
 	ld c, l
@@ -50999,8 +50326,7 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld a, [hl]
 	push af
 	ld hl, $0
-	call WriteHLToSPPlusParam16
-	dw $011e
+	write_hl_to_sp_plus $011e
 	xor a
 Func_223f1: ; 223f1 (8:63f1)
 	cp $a
@@ -51040,8 +50366,7 @@ Func_223f1: ; 223f1 (8:63f1)
 
 Func_2241d: ; 2241d (8:641d)
 	xor a
-	call GetHLAtSPPlusParam16
-	dw $0121
+	read_hl_from_sp_plus $0121
 	inc hl
 	inc hl
 	inc hl
@@ -51099,11 +50424,9 @@ Func_22461: ; 22461 (8:6461)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam16
-	dw $0124
+	read_hl_from_sp_plus $0124
 	add hl, bc
-	call WriteHLToSPPlusParam16
-	dw $0124
+	write_hl_to_sp_plus $0124
 	pop de
 	inc e
 	pop bc
@@ -51122,34 +50445,27 @@ Func_2248c: ; 2248c (8:648c)
 	jp z, Func_224b7
 	cp $f
 	jp nz, Func_224d5
-	call GetHLAtSPPlusParam16
-	dw $011c
+	read_hl_from_sp_plus $011c
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam16
-	dw $011c
+	read_hl_from_sp_plus $011c
 	add hl, bc
-	call WriteHLToSPPlusParam16
-	dw $011c
+	write_hl_to_sp_plus $011c
 	jp Func_224d5
 
 Func_224b7: ; 224b7 (8:64b7)
-	call GetHLAtSPPlusParam16
-	dw $011c
+	read_hl_from_sp_plus $011c
 	add hl, hl
-	call WriteHLToSPPlusParam16
-	dw $011c
+	write_hl_to_sp_plus $011c
 	jp Func_224d5
 
 Func_224c5: ; 224c5 (8:64c5)
-	call GetHLAtSPPlusParam16
-	dw $011c
+	read_hl_from_sp_plus $011c
 	ld de, $2
 	call DivideHLByDESigned
-	call WriteHLToSPPlusParam16
-	dw $011c
+	write_hl_to_sp_plus $011c
 Func_224d5: ; 224d5 (8:64d5)
 	ld c, $0
 	ld hl, $138
@@ -51172,8 +50488,7 @@ Func_224dc: ; 224dc (8:64dc)
 	pop hl
 	call FarCall
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $d6
+	read_hl_from_sp_plus $d6
 	ld a, l
 	or h
 	jp z, Func_2250f
@@ -51189,8 +50504,7 @@ Func_22512: ; 22512 (8:6512)
 	ld b, c
 	ld a, $1
 	call LeftShiftA
-	call GetHLAtSPPlusParam16
-	dw $011f
+	read_hl_from_sp_plus $011f
 	and [hl]
 	jp z, Func_22536
 	ld hl, $138
@@ -51217,18 +50531,15 @@ Func_2253a: ; 2253a (8:653a)
 	ld l, [hl]
 	ld h, $0
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $011e
+	read_hl_from_sp_plus $011e
 	pop de
 	call DivideHLByDESigned
-	call WriteHLToSPPlusParam16
-	dw $011c
+	write_hl_to_sp_plus $011c
 	ld a, l
 	or h
 	jp nz, Func_2255d
 	ld hl, $1
-	call WriteHLToSPPlusParam16
-	dw $011c
+	write_hl_to_sp_plus $011c
 Func_2255d: ; 2255d (8:655d)
 	ld e, $0
 Func_2255f: ; 2255f (8:655f)
@@ -51241,8 +50552,7 @@ Func_2255f: ; 2255f (8:655f)
 	ld hl, $11e
 	add hl, sp
 	ld [hl], $0
-	call GetHLAtSPPlusParam16
-	dw $011e
+	read_hl_from_sp_plus $011e
 	ld c, l
 	ld b, h
 	pop de
@@ -51342,11 +50652,9 @@ Func_225a8: ; 225a8 (8:65a8)
 	add hl, sp
 	call Func_203fa
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $e0
+	read_hl_from_sp_plus $e0
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $e0
+	write_hl_to_sp_plus $e0
 	ld hl, $ca
 	add hl, sp
 	ld a, [hl]
@@ -51362,11 +50670,9 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld hl, $ed
 	add hl, sp
 	call FarCall
-	call GetHLAtSPPlusParam16
-	dw $0109
+	read_hl_from_sp_plus $0109
 	push hl
-	call GetHLAtSPPlusParam8
-	db $dc
+	read_hl_from_sp_plus $dc
 	pop de
 	ld a, l
 	sub e
@@ -51374,13 +50680,10 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $da
-	call GetHLAtSPPlusParam16
-	dw $010d
+	write_hl_to_sp_plus $da
+	read_hl_from_sp_plus $010d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e0
+	read_hl_from_sp_plus $e0
 	pop de
 	ld a, l
 	sub e
@@ -51388,13 +50691,10 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $de
-	call GetHLAtSPPlusParam16
-	dw $0112
+	write_hl_to_sp_plus $de
+	read_hl_from_sp_plus $0112
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e5
+	read_hl_from_sp_plus $e5
 	pop de
 	ld a, l
 	sub e
@@ -51402,13 +50702,10 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $e3
-	call GetHLAtSPPlusParam16
-	dw $0116
+	write_hl_to_sp_plus $e3
+	read_hl_from_sp_plus $0116
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e9
+	read_hl_from_sp_plus $e9
 	pop de
 	ld a, l
 	sub e
@@ -51416,13 +50713,10 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $e7
-	call GetHLAtSPPlusParam16
-	dw $0114
+	write_hl_to_sp_plus $e7
+	read_hl_from_sp_plus $0114
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e7
+	read_hl_from_sp_plus $e7
 	pop de
 	ld a, l
 	sub e
@@ -51430,8 +50724,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $e5
+	write_hl_to_sp_plus $e5
 	ld de, $0
 	ld hl, $f2
 	add hl, sp
@@ -51443,8 +50736,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	call Func_270a
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $e0
+	read_hl_from_sp_plus $e0
 	ld a, l
 	sub c
 	ld a, h
@@ -51488,8 +50780,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	call CopyUntilNull
 	pop bc
 Func_22701: ; 22701 (8:6701)
-	call GetHLAtSPPlusParam8
-	db $e0
+	read_hl_from_sp_plus $e0
 	ld a, l
 	sub c
 	ld a, h
@@ -51565,16 +50856,14 @@ Func_22701: ; 22701 (8:6701)
 	add hl, sp
 	ld [hl], $0
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $e0
+	read_hl_from_sp_plus $e0
 	ld a, l
 	sub c
 	ld l, a
 	ld a, h
 	sbc b
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $e0
+	write_hl_to_sp_plus $e0
 	ld de, $0
 	ld hl, $f2
 	add hl, sp
@@ -51617,15 +50906,12 @@ Func_22701: ; 22701 (8:6701)
 	add hl, sp
 	call FarCall
 Func_227d3: ; 227d3 (8:67d3)
-	call GetHLAtSPPlusParam16
-	dw $0109
+	read_hl_from_sp_plus $0109
 	push hl
-	call GetHLAtSPPlusParam8
-	db $dc
+	read_hl_from_sp_plus $dc
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $da
+	write_hl_to_sp_plus $da
 	push de
 	push hl
 	pop de
@@ -51634,18 +50920,14 @@ Func_227d3: ; 227d3 (8:67d3)
 	call CompareHLtoDE
 	jp nc, Func_227f7
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $da
+	write_hl_to_sp_plus $da
 Func_227f7: ; 227f7 (8:67f7)
-	call GetHLAtSPPlusParam16
-	dw $010d
+	read_hl_from_sp_plus $010d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e0
+	read_hl_from_sp_plus $e0
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $de
+	write_hl_to_sp_plus $de
 	push de
 	push hl
 	pop de
@@ -51654,18 +50936,14 @@ Func_227f7: ; 227f7 (8:67f7)
 	call CompareHLtoDE
 	jp nc, Func_2281b
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $de
+	write_hl_to_sp_plus $de
 Func_2281b: ; 2281b (8:681b)
-	call GetHLAtSPPlusParam16
-	dw $0112
+	read_hl_from_sp_plus $0112
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e5
+	read_hl_from_sp_plus $e5
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $e3
+	write_hl_to_sp_plus $e3
 	push de
 	push hl
 	pop de
@@ -51674,18 +50952,14 @@ Func_2281b: ; 2281b (8:681b)
 	call CompareHLtoDE
 	jp nc, Func_2283f
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $e3
+	write_hl_to_sp_plus $e3
 Func_2283f: ; 2283f (8:683f)
-	call GetHLAtSPPlusParam16
-	dw $0116
+	read_hl_from_sp_plus $0116
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e9
+	read_hl_from_sp_plus $e9
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $e7
+	write_hl_to_sp_plus $e7
 	push de
 	push hl
 	pop de
@@ -51694,18 +50968,14 @@ Func_2283f: ; 2283f (8:683f)
 	call CompareHLtoDE
 	jp nc, Func_22863
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $e7
+	write_hl_to_sp_plus $e7
 Func_22863: ; 22863 (8:6863)
-	call GetHLAtSPPlusParam16
-	dw $0114
+	read_hl_from_sp_plus $0114
 	push hl
-	call GetHLAtSPPlusParam8
-	db $e7
+	read_hl_from_sp_plus $e7
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $e5
+	write_hl_to_sp_plus $e5
 	push de
 	push hl
 	pop de
@@ -51714,22 +50984,17 @@ Func_22863: ; 22863 (8:6863)
 	call CompareHLtoDE
 	jp nc, Func_22887
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $e5
+	write_hl_to_sp_plus $e5
 Func_22887: ; 22887 (8:6887)
 	ld hl, $11e
 	add hl, sp
 	ld a, [hl]
 	or a
 	jp z, Func_228a0
-	call GetHLAtSPPlusParam8
-	db $da
-	call WriteHLToSPPlusParam8
-	db $d8
-	call GetHLAtSPPlusParam8
-	db $de
-	call WriteHLToSPPlusParam8
-	db $dc
+	read_hl_from_sp_plus $da
+	write_hl_to_sp_plus $d8
+	read_hl_from_sp_plus $de
+	write_hl_to_sp_plus $dc
 Func_228a0: ; 228a0 (8:68a0)
 	set_farcall_addrs_hli Func_6b74
 	pop de
@@ -51767,8 +51032,7 @@ Func_228d3: ; 228d3
 	read_hl_from wc2e6
 	ld de, $e4
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $f0
+	write_hl_to_sp_plus $f0
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
@@ -51781,10 +51045,8 @@ Func_228d3: ; 228d3
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $f0
-	call GetHLAtSPPlusParam8
-	db $f2
+	write_hl_to_sp_plus $f0
+	read_hl_from_sp_plus $f2
 	ld de, $c6
 	add hl, de
 	ld l, [hl]
@@ -51799,8 +51061,7 @@ Func_228d3: ; 228d3
 	add hl, bc
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $f0
+	read_hl_from_sp_plus $f0
 	ld de, $b
 	add hl, de
 	add hl, bc
@@ -51814,8 +51075,7 @@ Func_228d3: ; 228d3
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $ee
+	write_hl_to_sp_plus $ee
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -51824,21 +51084,18 @@ Func_228d3: ; 228d3
 	ld d, [hl]
 	ld hl, $2f
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $ec
+	write_hl_to_sp_plus $ec
 	ld hl, $d2
 	add hl, sp
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $ec
+	read_hl_from_sp_plus $ec
 	ld de, $18
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $cc
+	write_hl_to_sp_plus $cc
 	xor a
 Func_22962: ; 22962 (8:6962)
 	cp $a
@@ -51889,8 +51146,7 @@ Func_2298e: ; 2298e (8:698e)
 	ld hl, $d4
 	add hl, sp
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $ee
+	read_hl_from_sp_plus $ee
 	ld de, $9
 	add hl, de
 	ld a, [hl]
@@ -51906,16 +51162,14 @@ Func_229b9: ; 229b9 (8:69b9)
 	add hl, sp
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $ec
+	read_hl_from_sp_plus $ec
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	call GetHLAtSPPlusParam8
-	db $ee
+	read_hl_from_sp_plus $ee
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -51942,10 +51196,8 @@ Func_229b9: ; 229b9 (8:69b9)
 	add hl, sp
 	ld l, [hl]
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $ce
-	call GetHLAtSPPlusParam8
-	db $ce
+	write_hl_to_sp_plus $ce
+	read_hl_from_sp_plus $ce
 	ld de, $64
 	ld a, e
 	sub l
@@ -51953,24 +51205,20 @@ Func_229b9: ; 229b9 (8:69b9)
 	ld a, d
 	sbc h
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $ce
-	call GetHLAtSPPlusParam8
-	db $ec
+	write_hl_to_sp_plus $ce
+	read_hl_from_sp_plus $ec
 	ld de, $13
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $ce
+	read_hl_from_sp_plus $ce
 	ld a, l
 	sub c
 	ld l, a
 	ld a, h
 	sbc b
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $ce
+	write_hl_to_sp_plus $ce
 	ld hl, $d4
 	add hl, sp
 	ld l, [hl]
@@ -51981,13 +51229,10 @@ Func_229b9: ; 229b9 (8:69b9)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $ce
+	read_hl_from_sp_plus $ce
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $ce
-	call GetHLAtSPPlusParam8
-	db $ce
+	write_hl_to_sp_plus $ce
+	read_hl_from_sp_plus $ce
 	push de
 	push hl
 	pop de
@@ -51996,11 +51241,9 @@ Func_229b9: ; 229b9 (8:69b9)
 	call CompareHLtoDE
 	jp c, Func_22a57
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $ce
+	write_hl_to_sp_plus $ce
 Func_22a57: ; 22a57 (8:6a57)
-	call GetHLAtSPPlusParam8
-	db $f2
+	read_hl_from_sp_plus $f2
 	ld de, $71
 	add hl, de
 	ld a, [hl]
@@ -52017,24 +51260,20 @@ Func_22a57: ; 22a57 (8:6a57)
 	ld a, l
 	or h
 	jp z, Func_22a83
-	call GetHLAtSPPlusParam8
-	db $ce
+	read_hl_from_sp_plus $ce
 	ld de, $32
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $ce
+	write_hl_to_sp_plus $ce
 	jp Func_22acd
 
 Func_22a83: ; 22a83 (8:6a83)
-	call GetHLAtSPPlusParam8
-	db $f2
+	read_hl_from_sp_plus $f2
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	or a
 	jp z, Func_22acd
-	call GetHLAtSPPlusParam8
-	db $f2
+	read_hl_from_sp_plus $f2
 	ld de, $75
 	add hl, de
 	ld a, [hl]
@@ -52042,33 +51281,26 @@ Func_22a83: ; 22a83 (8:6a83)
 	jp z, Func_22ab2
 	cp $7
 	jp nz, Func_22ac1
-	call GetHLAtSPPlusParam8
-	db $ce
+	read_hl_from_sp_plus $ce
 	ld de, $1e
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $ce
+	write_hl_to_sp_plus $ce
 	jp Func_22acd
 
 Func_22ab2: ; 22ab2 (8:6ab2)
-	call GetHLAtSPPlusParam8
-	db $ce
+	read_hl_from_sp_plus $ce
 	ld de, $14
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $ce
+	write_hl_to_sp_plus $ce
 	jp Func_22acd
 
 Func_22ac1: ; 22ac1 (8:6ac1)
-	call GetHLAtSPPlusParam8
-	db $ce
+	read_hl_from_sp_plus $ce
 	ld de, $a
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $ce
+	write_hl_to_sp_plus $ce
 Func_22acd: ; 22acd (8:6acd)
-	call GetHLAtSPPlusParam8
-	db $ce
+	read_hl_from_sp_plus $ce
 	push hl
 	ld a, $64
 	call Func_2034d
@@ -52081,8 +51313,7 @@ Func_22acd: ; 22acd (8:6acd)
 	add hl, sp
 	ld [hl], $1
 Func_22ae7: ; 22ae7 (8:6ae7)
-	call GetHLAtSPPlusParam8
-	db $ec
+	read_hl_from_sp_plus $ec
 	ld de, $d
 	add hl, de
 	push hl
@@ -52121,8 +51352,7 @@ Func_22ae7: ; 22ae7 (8:6ae7)
 	jp z, Func_22b6f
 	or a
 	jp nz, Func_22baa
-	call GetHLAtSPPlusParam8
-	db $ee
+	read_hl_from_sp_plus $ee
 	ld de, $9
 	add hl, de
 	ld a, $4
@@ -52225,8 +51455,7 @@ Func_22bc3: ; 22bc3 (8:6bc3)
 	ld hl, $d2
 	add hl, sp
 	ld c, [hl]
-	call GetHLAtSPPlusParam8
-	db $ca
+	read_hl_from_sp_plus $ca
 	push de
 	push hl
 	pop de
@@ -52245,8 +51474,7 @@ Func_22bfe: ; 22bfe (8:6bfe)
 	ld hl, $d2
 	add hl, sp
 	ld c, [hl]
-	call GetHLAtSPPlusParam8
-	db $ca
+	read_hl_from_sp_plus $ca
 	push hl
 	ld hl, $d3
 	add hl, sp
@@ -52292,8 +51520,7 @@ Func_22c2a: ; 22c2a (8:6c2a)
 	ld hl, $d2
 	add hl, sp
 	ld c, [hl]
-	call GetHLAtSPPlusParam8
-	db $ca
+	read_hl_from_sp_plus $ca
 	push hl
 	ld hl, $d3
 	add hl, sp
@@ -52570,8 +51797,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $16
+	write_hl_to_sp_plus $16
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -52579,8 +51805,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 	ld hl, sp+$f
 	ld a, [wOAM04XCoord]
 	inc a
@@ -52595,8 +51820,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	ld a, [hl]
 	and $4
 	jp z, Func_23137
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $c6
 	add hl, de
 	ld l, [hl]
@@ -52609,16 +51833,14 @@ Func_22e48: ; 22e48 (8:6e48)
 	add hl, hl
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $82
 	add hl, de
 	pop de
 	add hl, de
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $71
 	add hl, de
 	ld e, c
@@ -52636,16 +51858,13 @@ Func_22e48: ; 22e48 (8:6e48)
 	add hl, hl
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $82
 	add hl, de
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $14
-	call GetHLAtSPPlusParam8
-	db $14
+	write_hl_to_sp_plus $14
+	read_hl_from_sp_plus $14
 	inc hl
 	inc hl
 	inc hl
@@ -52654,8 +51873,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	ld hl, sp+$d
 	ld [hl], e
 	set_farcall_addrs_hli Func_6b55
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $c
 	add hl, de
 	push de
@@ -52665,8 +51883,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	ld a, [wc2e8 + 1]
 	call FarCall
 	set_farcall_addrs_hli Func_5c6e3
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	call FarCall
 	ld c, a
 	ld hl, sp+$f
@@ -52717,8 +51934,7 @@ Func_22f68: ; 22f68 (8:6f68)
 	jp nz, Func_22f7b
 	ld hl, sp+$d
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	call Func_22d63
 Func_22f7b: ; 22f7b (8:6f7b)
 	jp Func_23064
@@ -52756,8 +51972,7 @@ Func_22fa4: ; 22fa4 (8:6fa4)
 	ld hl, sp+$d
 	ld [hl], $0
 Func_22fb0: ; 22fb0 (8:6fb0)
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld a, [hl]
 	and $f7
 	ld [hl], a
@@ -52769,8 +51984,7 @@ Func_22fb0: ; 22fb0 (8:6fb0)
 Func_22fc0: ; 22fc0 (8:6fc0)
 	ld hl, sp+$d
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	call Func_22d63
 	jp Func_23064
 
@@ -52821,8 +52035,7 @@ Func_2300b: ; 2300b (8:700b)
 	jp nz, Func_2301e
 	ld hl, sp+$d
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	call Func_22d63
 Func_2301e: ; 2301e (8:701e)
 	jp Func_23064
@@ -52835,13 +52048,11 @@ Func_23021: ; 23021 (8:7021)
 	push bc
 	ld hl, sp+$f
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	call Func_22db3
 	pop bc
 Func_23036: ; 23036 (8:7036)
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld a, [hl]
 	and $f7
 	ld [hl], a
@@ -52855,8 +52066,7 @@ Func_23036: ; 23036 (8:7036)
 Func_23049: ; 23049 (8:7049)
 	ld hl, sp+$d
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	call Func_22d63
 	ld hl, sp+$e
 	ld [hl], $1
@@ -52875,18 +52085,15 @@ Func_23064: ; 23064 (8:7064)
 	ld a, [hl]
 	or a
 	jp z, Func_230ad
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $71
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	pop de
 	ld bc, $11
 	call MemCopy
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $71
 	add hl, de
 	ld [hl], $0
@@ -52894,11 +52101,9 @@ Func_23064: ; 23064 (8:7064)
 	set_farcall_addrs_hli Func_673ff
 	xor a
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	push hl
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $71
 	add hl, de
 	pop de
@@ -52907,15 +52112,13 @@ Func_23064: ; 23064 (8:7064)
 Func_230ad: ; 230ad (8:70ad)
 	ld hl, sp+$d
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	inc hl
 	inc hl
 	inc hl
 	inc hl
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $c6
 	add hl, de
 	ld l, [hl]
@@ -52928,16 +52131,14 @@ Func_230ad: ; 230ad (8:70ad)
 	add hl, hl
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $82
 	add hl, de
 	pop de
 	add hl, de
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $71
 	add hl, de
 	push de
@@ -52949,13 +52150,11 @@ Func_230ad: ; 230ad (8:70ad)
 	ld bc, $11
 	call MemCopy
 	set_farcall_addrs_hli Func_6b55
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $c6
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 .asm_23104
 	ld de, $c
 	add hl, de
@@ -52965,14 +52164,12 @@ Func_230ad: ; 230ad (8:70ad)
 	pop hl
 	call FarCall
 .asm_2310f
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $75
 .asm_23114
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -53126,18 +52323,15 @@ Func_2328f: ; 2328f (8:728f)
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $51
+	write_hl_to_sp_plus $51
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4f
+	write_hl_to_sp_plus $4f
 	read_hl_from wc2e6
 	ld de, $e4
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4d
+	write_hl_to_sp_plus $4d
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -53145,8 +52339,7 @@ Func_2328f: ; 2328f (8:728f)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $4b
+	write_hl_to_sp_plus $4b
 	set_farcall_addrs_hli Func_613fc
 	read_hl_from wc2e6
 	ld de, $1c8
@@ -53172,15 +52365,13 @@ Func_23303: ; 23303 (8:7303)
 	ld [hl], a
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $3
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $c6
 	add hl, de
 	ld e, [hl]
 	xor a
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $c6
 	add hl, de
 	ld l, [hl]
@@ -53193,15 +52384,13 @@ Func_23303: ; 23303 (8:7303)
 	add hl, hl
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $51
+	read_hl_from_sp_plus $51
 	ld de, $82
 	add hl, de
 	pop de
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $51
+	read_hl_from_sp_plus $51
 	ld de, $71
 	add hl, de
 	pop de
@@ -53214,8 +52403,7 @@ Func_23357: ; 23357 (8:7357)
 	ld a, c
 	cp $2
 	jp nc, Func_2339b
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $6f
 	add hl, de
 	ld a, [hl]
@@ -53229,8 +52417,7 @@ Func_23357: ; 23357 (8:7357)
 	call FarCall
 	pop bc
 Func_2337e: ; 2337e (8:737e)
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $6f
 	add hl, de
 	ld a, [hl]
@@ -53238,20 +52425,17 @@ Func_2337e: ; 2337e (8:737e)
 	ld [hl], a
 	inc hl
 	inc c
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $c8
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4f
+	write_hl_to_sp_plus $4f
 	jp Func_23357
 
 Func_2339b: ; 2339b (8:739b)
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4f
+	write_hl_to_sp_plus $4f
 	call Func_20398
 	xor a
 Func_233ac: ; 233ac (8:73ac)
@@ -53290,15 +52474,13 @@ Func_233ac: ; 233ac (8:73ac)
 	jp Func_233ac
 
 Func_233d6: ; 233d6 (8:73d6)
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $75
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$0
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $6f
 	add hl, de
 	ld e, [hl]
@@ -53370,8 +52552,7 @@ Func_23412: ; 23412 (8:7412)
 	ld a, [hl]
 	cp $18
 	jp z, Func_2346f
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $5e
 	add hl, de
 	ld [hl], $ff
@@ -53379,14 +52560,12 @@ Func_2346f: ; 2346f (8:746f)
 	jp Func_23486
 
 Func_23472: ; 23472 (8:7472)
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $5f
 	add hl, de
 	ld [hl], $0
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $5e
 	add hl, de
 	ld [hl], a
@@ -53396,8 +52575,7 @@ Func_23486: ; 23486 (8:7486)
 Func_23489: ; 23489 (8:7489)
 	ld hl, sp+$45
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $4b
+	read_hl_from_sp_plus $4b
 	ld de, $d
 	add hl, de
 	push hl
@@ -53446,16 +52624,13 @@ Func_234c2: ; 234c2 (8:74c2)
 	ld de, Data_20a54
 	ld hl, Data_20a63
 	call FarCall
-	call WriteHLToSPPlusParam8
-	db $48
-	call GetHLAtSPPlusParam8
-	db $48
+	write_hl_to_sp_plus $48
+	read_hl_from_sp_plus $48
 	ld a, l
 	and h
 	inc a
 	jp nz, Func_23508
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $5e
 	add hl, de
 	ld [hl], $ff
@@ -53466,8 +52641,7 @@ Func_23508: ; 23508 (8:7508)
 	ld hl, $d
 	call Func_2036d
 	ld bc, -1
-	call GetHLAtSPPlusParam8
-	db $48
+	read_hl_from_sp_plus $48
 	ld a, l
 	cp $5
 	jp z, Func_235eb
@@ -53586,11 +52760,9 @@ Func_235ee: ; 235ee (8:75ee)
 	jp Func_23352
 
 Func_235fc: ; 235fc (8:75fc)
-	call GetHLAtSPPlusParam8
-	db $48
+	read_hl_from_sp_plus $48
 	ld a, l
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $5e
 	add hl, de
 	ld [hl], a
@@ -53606,24 +52778,21 @@ Func_235fc: ; 235fc (8:75fc)
 	jp z, Func_23633
 	or a
 	jp nz, Func_23654
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $5f
 	add hl, de
 	ld [hl], c
 	jp Func_23654
 
 Func_23633: ; 23633 (8:7633)
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $5f
 	add hl, de
 	ld [hl], c
 	jp Func_23654
 
 Func_2363f: ; 2363f (8:763f)
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $5f
 	add hl, de
 	ld a, [wc2e8 + 1]
@@ -53653,8 +52822,7 @@ Func_2366e: ; 2366e (8:766e)
 	call Func_2035e
 	call Func_21441
 Func_23677: ; 23677 (8:7677)
-	call GetHLAtSPPlusParam8
-	db $51
+	read_hl_from_sp_plus $51
 	ld de, $7
 	add hl, de
 	ld [hl], $0
@@ -53666,8 +52834,7 @@ Func_23677: ; 23677 (8:7677)
 Func_23696: ; 23696 (8:7696)
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $3
-	call GetHLAtSPPlusParam8
-	db $4f
+	read_hl_from_sp_plus $4f
 	ld de, $c6
 	add hl, de
 	ld e, [hl]
@@ -53681,8 +52848,7 @@ Func_23696: ; 23696 (8:7696)
 	jp nz, Func_236d9
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $6
-	call GetHLAtSPPlusParam8
-	db $4d
+	read_hl_from_sp_plus $4d
 	ld de, $c6
 	add hl, de
 	ld e, [hl]
@@ -53691,8 +52857,7 @@ Func_23696: ; 23696 (8:7696)
 Func_236d9: ; 236d9 (8:76d9)
 	ld hl, sp+$0
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $51
+	read_hl_from_sp_plus $51
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -53758,8 +52923,7 @@ Func_23747: ; 23747 (8:7747)
 	set_farcall_addrs_hli Func_6b55
 	pop af
 	push af
-	call GetHLAtSPPlusParam8
-	db $4d
+	read_hl_from_sp_plus $4d
 	ld de, $c
 	add hl, de
 	push de
@@ -53767,16 +52931,14 @@ Func_23747: ; 23747 (8:7747)
 	pop de
 	pop hl
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $4d
+	read_hl_from_sp_plus $4d
 	ld de, $18
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
 	jp nz, Func_23784
-	call GetHLAtSPPlusParam8
-	db $4d
+	read_hl_from_sp_plus $4d
 .asm_2377b
 	ld de, $22
 	add hl, de
@@ -53784,8 +52946,7 @@ Func_23747: ; 23747 (8:7747)
 	jp Func_2378e
 
 Func_23784: ; 23784 (8:7784)
-	call GetHLAtSPPlusParam8
-	db $4d
+	read_hl_from_sp_plus $4d
 	ld de, $22
 	add hl, de
 	ld [hl], $0
@@ -53793,8 +52954,7 @@ Func_2378e: ; 2378e (8:778e)
 	set_farcall_addrs_hli Func_6b74
 	pop af
 	push af
-	call GetHLAtSPPlusParam8
-	db $4d
+	read_hl_from_sp_plus $4d
 	ld de, $c
 	add hl, de
 	push de
@@ -55202,8 +54362,7 @@ Func_247e8: ; 247e8 (9:47e8)
 	ld hl, $2f
 Func_247eb: ; 247eb (9:47eb)
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $13
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
@@ -55226,31 +54385,26 @@ Func_247eb: ; 247eb (9:47eb)
 	ld de, $1c
 	add hl, de
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $11
-	call GetHLAtSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $11
+	read_hl_from_sp_plus $13
 	call Func_24749
 	call Func_24001
 	ld hl, sp+$14
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
 	call Func_24010
 	ld hl, Text_24069
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
 	ld a, [hl]
 	and $3
 	jp z, Func_2486e
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
@@ -55272,15 +54426,13 @@ Func_2485e: ; 2485e (9:485e)
 	ld hl, Text_2417a
 	call Func_24010
 Func_2486e: ; 2486e (9:486e)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	or a
 	jp z, Func_248a9
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld l, [hl]
@@ -55305,16 +54457,14 @@ Func_2486e: ; 2486e (9:486e)
 	ld hl, sp+$14
 	ld [hl], $1
 Func_248a9: ; 248a9 (9:48a9)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
 	ld a, [hl]
 	and $4
 	jp nz, Func_248c7
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $74
 	add hl, de
 	ld a, $a
@@ -55333,8 +54483,7 @@ Func_248c7: ; 248c7 (9:48c7)
 	jp nc, Func_248f1
 	ld hl, Text_24233
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
@@ -55356,16 +54505,14 @@ Func_24901: ; 24901 (9:4901)
 	call Func_24001
 	ld hl, sp+$14
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
 	call Func_24010
 	ld hl, Text_24069
 	call Func_24010
 	ld bc, $0
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld a, [hl]
@@ -55377,8 +54524,7 @@ Func_24901: ; 24901 (9:4901)
 	jp z, Func_24985
 	cp $8
 	jp nz, Func_24b00
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $13
 	add hl, de
 	ld l, [hl]
@@ -55419,8 +54565,7 @@ Func_24985: ; 24985 (9:4985)
 	ld hl, sp+$b
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -55480,8 +54625,7 @@ Func_249ea: ; 249ea (9:49ea)
 	call Func_24010
 	ld hl, Text_24225
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $73
 	add hl, de
 	ld a, [hl]
@@ -55492,8 +54636,7 @@ Func_249ea: ; 249ea (9:49ea)
 	and $f
 	ld c, a
 	push bc
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $76
 	add hl, de
 	push hl
@@ -55568,14 +54711,12 @@ Func_24a7a: ; 24a7a (9:4a7a)
 	call Func_24010
 	ld hl, Text_2422d
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $73
 	add hl, de
 	ld c, [hl]
 	push bc
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $76
 	add hl, de
 	push hl
@@ -55657,8 +54798,7 @@ Func_24b0b: ; 24b0b (9:4b0b)
 	call Func_24620
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $18
 	add hl, de
 	ld [hl], c
@@ -55686,8 +54826,7 @@ Func_24b0b: ; 24b0b (9:4b0b)
 	jp Func_24bd4
 
 Func_24b4d: ; 24b4d (9:4b4d)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
@@ -55698,8 +54837,7 @@ Func_24b4d: ; 24b4d (9:4b4d)
 	cp $4
 	jp nz, Func_24bc2
 	call Func_24001
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -55712,8 +54850,7 @@ Func_24b4d: ; 24b4d (9:4b4d)
 
 Func_24b85: ; 24b85 (9:4b85)
 	call Func_24001
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -55726,8 +54863,7 @@ Func_24b85: ; 24b85 (9:4b85)
 
 Func_24ba5: ; 24ba5 (9:4ba5)
 	call Func_24001
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -55800,8 +54936,7 @@ Func_24c2f: ; 24c2f (9:4c2f)
 	ld hl, $2f
 Func_24c32: ; 24c32 (9:4c32)
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $37
+	write_hl_to_sp_plus $37
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -55823,14 +54958,11 @@ Func_24c32: ; 24c32 (9:4c32)
 	ld de, $1c
 	add hl, de
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $34
-	call GetHLAtSPPlusParam8
-	db $37
+	write_hl_to_sp_plus $34
+	read_hl_from_sp_plus $37
 	call Func_24749
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld de, $75
 	add hl, de
 	ld a, [hl]
@@ -55838,15 +54970,13 @@ Func_24c32: ; 24c32 (9:4c32)
 	jp nz, Func_24ccc
 	push bc
 	call Func_24001
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $d
 	add hl, de
 	call Func_24010
 	ld hl, Text_24069
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $75
 	add hl, de
 	ld l, [hl]
@@ -55863,13 +54993,11 @@ Func_24c32: ; 24c32 (9:4c32)
 	pop hl
 	call Func_24023
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld de, $75
 	add hl, de
 	ld [hl], c
-	call GetHLAtSPPlusParam8
-	db $37
+	read_hl_from_sp_plus $37
 	ld de, $22
 	add hl, de
 	ld [hl], c
@@ -55931,8 +55059,7 @@ Func_24d18: ; 24d18 (9:4d18)
 	ld hl, $2f
 Func_24d1b: ; 24d1b (9:4d1b)
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $39
+	write_hl_to_sp_plus $39
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -55954,17 +55081,14 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	ld de, $1c
 	add hl, de
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $36
-	call GetHLAtSPPlusParam8
-	db $36
+	write_hl_to_sp_plus $36
+	read_hl_from_sp_plus $36
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $9
 	jp nz, Func_24daf
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $23
 	add hl, de
 	ld a, [hl]
@@ -55973,16 +55097,14 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	ld l, a
 	add hl, hl
 	push hl
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $60
 	add hl, de
 	pop de
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $25
 	add hl, de
 	ld e, [hl]
@@ -55996,15 +55118,13 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $62
 	add hl, de
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $27
 	add hl, de
 	ld e, [hl]
@@ -56018,8 +55138,7 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $64
 	add hl, de
 	ld [hl], c
@@ -56028,21 +55147,18 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	jp Func_25025
 
 Func_24daf: ; 24daf (9:4daf)
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $17
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$17
 	call Func_241f
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $2e
 	add hl, de
 	ld a, [hl]
 	push af
-	call GetHLAtSPPlusParam8
-	db $3b
+	read_hl_from_sp_plus $3b
 	ld de, $25
 	add hl, de
 	ld e, [hl]
@@ -56059,8 +55175,7 @@ Func_24daf: ; 24daf (9:4daf)
 	call Func_24779
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $62
 	add hl, de
 	ld [hl], c
@@ -56069,8 +55184,7 @@ Func_24daf: ; 24daf (9:4daf)
 	ld hl, sp+$32
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $76
 	add hl, de
 	ld l, [hl]
@@ -56080,8 +55194,7 @@ Func_24daf: ; 24daf (9:4daf)
 	ld hl, sp+$32
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $3b
+	read_hl_from_sp_plus $3b
 	ld de, $25
 	add hl, de
 	ld e, [hl]
@@ -56089,8 +55202,7 @@ Func_24daf: ; 24daf (9:4daf)
 	ld d, [hl]
 	ld hl, sp+$32
 	call Func_1a1f
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $73
 	add hl, de
 	ld a, [hl]
@@ -56101,8 +55213,7 @@ Func_24daf: ; 24daf (9:4daf)
 	ld hl, sp+$32
 	ld h, [hl]
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $62
 	add hl, de
 	ld a, [hl]
@@ -56115,8 +55226,7 @@ Func_24daf: ; 24daf (9:4daf)
 	jp Func_24e60
 
 Func_24e3c: ; 24e3c (9:4e3c)
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $73
 	add hl, de
 	ld a, [hl]
@@ -56127,8 +55237,7 @@ Func_24e3c: ; 24e3c (9:4e3c)
 	ld hl, sp+$32
 	ld h, [hl]
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $62
 	add hl, de
 	ld a, [hl]
@@ -56139,15 +55248,13 @@ Func_24e3c: ; 24e3c (9:4e3c)
 	sbc b
 	ld [hl], a
 Func_24e60: ; 24e60 (9:4e60)
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $77
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $62
 	add hl, de
 	ld a, [hl]
@@ -56159,8 +55266,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	ld [hl], a
 	pop af
 	push af
-	call GetHLAtSPPlusParam8
-	db $3b
+	read_hl_from_sp_plus $3b
 	ld de, $27
 	add hl, de
 	ld e, [hl]
@@ -56177,8 +55283,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	call Func_24779
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $64
 	add hl, de
 	ld [hl], c
@@ -56187,8 +55292,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	ld hl, sp+$32
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $7c
 	add hl, de
 	ld l, [hl]
@@ -56198,8 +55302,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	ld hl, sp+$32
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $3b
+	read_hl_from_sp_plus $3b
 	ld de, $27
 	add hl, de
 	ld e, [hl]
@@ -56207,8 +55310,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	ld d, [hl]
 	ld hl, sp+$32
 	call Func_1a1f
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $73
 	add hl, de
 	ld a, [hl]
@@ -56219,8 +55321,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	ld hl, sp+$32
 	ld h, [hl]
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $64
 	add hl, de
 	ld a, [hl]
@@ -56233,8 +55334,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	jp Func_24f15
 
 Func_24ef1: ; 24ef1 (9:4ef1)
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $73
 	add hl, de
 	ld a, [hl]
@@ -56245,8 +55345,7 @@ Func_24ef1: ; 24ef1 (9:4ef1)
 	ld hl, sp+$32
 	ld h, [hl]
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $64
 	add hl, de
 	ld a, [hl]
@@ -56257,15 +55356,13 @@ Func_24ef1: ; 24ef1 (9:4ef1)
 	sbc b
 	ld [hl], a
 Func_24f15: ; 24f15 (9:4f15)
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $7d
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $64
 	add hl, de
 	ld a, [hl]
@@ -56275,16 +55372,14 @@ Func_24f15: ; 24f15 (9:4f15)
 	ld a, [hl]
 	adc b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $5f
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$31
 	ld [hl], e
 	pop af
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $23
 	add hl, de
 	ld e, [hl]
@@ -56301,23 +55396,20 @@ Func_24f15: ; 24f15 (9:4f15)
 	call Func_24779
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	or a
 	jp z, Func_24f71
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $fe
 	jp nz, Func_25025
 Func_24f71: ; 24f71 (9:4f71)
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $3e
 	add hl, de
 	push de
@@ -56336,8 +55428,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	ld h, b
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $60
 	add hl, de
 	pop de
@@ -56347,8 +55438,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	ld hl, sp+$30
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $79
 	add hl, de
 	ld l, [hl]
@@ -56358,8 +55448,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	ld hl, sp+$30
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $39
+	read_hl_from_sp_plus $39
 	ld de, $23
 	add hl, de
 	ld e, [hl]
@@ -56367,8 +55456,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	ld d, [hl]
 	ld hl, sp+$30
 	call Func_1a1f
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $73
 	add hl, de
 	ld a, [hl]
@@ -56379,8 +55467,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	ld hl, sp+$30
 	ld h, [hl]
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $60
 	add hl, de
 	ld a, [hl]
@@ -56393,8 +55480,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	jp Func_2500b
 
 Func_24fe7: ; 24fe7 (9:4fe7)
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $73
 	add hl, de
 	ld a, [hl]
@@ -56405,8 +55491,7 @@ Func_24fe7: ; 24fe7 (9:4fe7)
 	ld hl, sp+$30
 	ld h, [hl]
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $60
 	add hl, de
 	ld a, [hl]
@@ -56417,15 +55502,13 @@ Func_24fe7: ; 24fe7 (9:4fe7)
 	sbc b
 	ld [hl], a
 Func_2500b: ; 2500b (9:500b)
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $7a
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $60
 	add hl, de
 	ld a, [hl]
@@ -56446,8 +55529,7 @@ Func_25029: ; 25029 (9:5029)
 	ld hl, sp+$36
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $23
 	add hl, de
 	add hl, bc
@@ -56457,8 +55539,7 @@ Func_25029: ; 25029 (9:5029)
 	ld hl, sp+$36
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $23
 	add hl, de
 	add hl, bc
@@ -56467,13 +55548,11 @@ Func_25029: ; 25029 (9:5029)
 	ld e, a
 	ld hl, sp+$6
 	call Func_248f
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld a, l
 	and $80
 	jp z, Func_25114
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld a, l
 	and $7f
 	ld l, a
@@ -56481,8 +55560,7 @@ Func_25029: ; 25029 (9:5029)
 	ld a, l
 	cp $2b
 	jp nz, Func_25114
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld de, $100
 	call DivideHLByDESigned
 	ld a, l
@@ -56492,14 +55570,12 @@ Func_25029: ; 25029 (9:5029)
 	jp z, Func_250bb
 	or a
 	jp nz, Func_25114
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
 	ld hl, sp+$38
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $20
 	add hl, de
 	add hl, bc
@@ -56509,8 +55585,7 @@ Func_25029: ; 25029 (9:5029)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $62
 	add hl, de
 	ld a, [hl]
@@ -56523,14 +55598,12 @@ Func_25029: ; 25029 (9:5029)
 	jp Func_25114
 
 Func_250bb: ; 250bb (9:50bb)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
 	ld hl, sp+$38
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $20
 	add hl, de
 	add hl, bc
@@ -56540,8 +55613,7 @@ Func_250bb: ; 250bb (9:50bb)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $60
 	add hl, de
 	ld a, [hl]
@@ -56554,14 +55626,12 @@ Func_250bb: ; 250bb (9:50bb)
 	jp Func_25114
 
 Func_250e9: ; 250e9 (9:50e9)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push hl
 	ld hl, sp+$38
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld de, $20
 	add hl, de
 	add hl, bc
@@ -56571,8 +55641,7 @@ Func_250e9: ; 250e9 (9:50e9)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $64
 	add hl, de
 	ld a, [hl]
@@ -56591,8 +55660,7 @@ Func_25114: ; 25114 (9:5114)
 	jp Func_25029
 
 Func_2511e: ; 2511e (9:511e)
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $60
 	add hl, de
 	ld e, [hl]
@@ -56601,8 +55669,7 @@ Func_2511e: ; 2511e (9:511e)
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_25140
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $60
 	add hl, de
 	ld de, $1
@@ -56610,8 +55677,7 @@ Func_2511e: ; 2511e (9:511e)
 	inc hl
 	ld [hl], d
 Func_25140: ; 25140 (9:5140)
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $62
 	add hl, de
 	ld e, [hl]
@@ -56620,8 +55686,7 @@ Func_25140: ; 25140 (9:5140)
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_25162
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $62
 	add hl, de
 	ld de, $1
@@ -56629,8 +55694,7 @@ Func_25140: ; 25140 (9:5140)
 	inc hl
 	ld [hl], d
 Func_25162: ; 25162 (9:5162)
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $64
 	add hl, de
 	ld e, [hl]
@@ -56639,8 +55703,7 @@ Func_25162: ; 25162 (9:5162)
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_25184
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $64
 	add hl, de
 	ld de, $1
@@ -56789,15 +55852,13 @@ Func_2520c: ; 2520c (9:520c)
 	add hl, de
 	add hl, bc
 	call WriteHLToSPPlus7
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	call Func_24749
 	ld hl, sp+$4
 	ld [hl], a
 	call Func_24001
 	xor a
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld de, $d
 	add hl, de
 	call Func_24010
@@ -56943,8 +56004,7 @@ Func_25363: ; 25363 (9:5363)
 	ld de, $75
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -57076,16 +56136,13 @@ Func_2543f: ; 2543f (9:543f)
 	push af
 	push de
 	add sp, -$18
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $18
-	call GetHLAtSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $18
+	read_hl_from_sp_plus $1a
 	inc hl
 	inc hl
 	inc hl
@@ -57094,20 +56151,17 @@ Func_2543f: ; 2543f (9:543f)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $16
+	write_hl_to_sp_plus $16
 	ld c, $0
 	push bc
 	xor a
 	call Func_24001
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $d
 	add hl, de
 	call Func_24010
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $6f
 	add hl, de
 	ld e, [hl]
@@ -57131,8 +56185,7 @@ Func_2543f: ; 2543f (9:543f)
 	jp Func_254a7
 
 Func_25497: ; 25497 (9:5497)
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $6f
 	add hl, de
 	ld a, [hl]
@@ -57170,14 +56223,12 @@ Func_254e0: ; 254e0 (9:54e0)
 	call Func_24010
 Func_254e6: ; 254e6 (9:54e6)
 	call Func_24036
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $d
 	add hl, de
 	call Func_24010
 Func_254f4: ; 254f4 (9:54f4)
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
@@ -57187,14 +56238,12 @@ Func_254f4: ; 254f4 (9:54f4)
 	jp nz, Func_25662
 	ld hl, Text_24247
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld de, $17
 	add hl, de
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	ld de, $12
 	add hl, de
 	pop de
@@ -57208,8 +56257,7 @@ Func_254f4: ; 254f4 (9:54f4)
 	jp Func_25662
 
 Func_25532: ; 25532 (9:5532)
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $5f
 	add hl, de
 	ld a, [hl]
@@ -57218,8 +56266,7 @@ Func_25532: ; 25532 (9:5532)
 	add hl, hl
 	add hl, hl
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	pop de
 	add hl, de
 	ld c, l
@@ -57240,29 +56287,25 @@ Func_25532: ; 25532 (9:5532)
 	call Func_24023
 	ld hl, Text_24067
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $17
 	add hl, de
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld de, $12
 	add hl, de
 	pop de
 	call Func_241f
 	call Func_24036
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $6f
 	add hl, de
 	ld a, [hl]
 	and $8
 	jp nz, Func_2564d
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $4e
 	add hl, de
 	ld a, [hl]
@@ -57273,8 +56316,7 @@ Func_25532: ; 25532 (9:5532)
 	jp z, Func_255c4
 	or a
 	jp nz, Func_25604
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $29
 	add hl, de
 	ld e, [hl]
@@ -57285,8 +56327,7 @@ Func_25532: ; 25532 (9:5532)
 
 Func_255c4: ; 255c4 (9:55c4)
 	push bc
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	ld de, $29
 	add hl, de
 	ld e, [hl]
@@ -57297,8 +56338,7 @@ Func_255c4: ; 255c4 (9:55c4)
 	inc hl
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $23
 	add hl, de
 	add hl, bc
@@ -57306,14 +56346,12 @@ Func_255c4: ; 255c4 (9:55c4)
 	dec a
 	ld l, a
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	ld de, $2a
 	add hl, de
 	pop de
 	call Func_248f
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $3a
 	add hl, de
 	ld e, [hl]
@@ -57341,8 +56379,7 @@ Func_25604: ; 25604 (9:5604)
 	ld de, GFX_64c7d
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	ld de, $3b
 	add hl, de
 	pop de
@@ -57353,8 +56390,7 @@ Func_2562c: ; 2562c (9:562c)
 	cp $3
 	jp nc, Func_2564a
 	push af
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	ld de, $49
 	add hl, de
 	ld e, a
@@ -57380,39 +56416,33 @@ Func_2564d: ; 2564d (9:564d)
 	call Func_24010
 	call Func_24045
 Func_25662: ; 25662 (9:5662)
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $66
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $e
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $67
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $8
 	add hl, de
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $69
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $a
 	add hl, de
 	ld [hl], c
@@ -57501,51 +56531,41 @@ Func_2570e: ; 2570e (9:570e)
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $27
-	call GetHLAtSPPlusParam8
-	db $2a
+	write_hl_to_sp_plus $27
+	read_hl_from_sp_plus $2a
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $25
-	call GetHLAtSPPlusParam8
-	db $2a
+	write_hl_to_sp_plus $25
+	read_hl_from_sp_plus $2a
 	inc hl
 	inc hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $23
-	call GetHLAtSPPlusParam8
-	db $2a
+	write_hl_to_sp_plus $23
+	read_hl_from_sp_plus $2a
 	ld de, $6
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $21
-	call GetHLAtSPPlusParam8
-	db $2a
+	write_hl_to_sp_plus $21
+	read_hl_from_sp_plus $2a
 	ld de, $e
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$1e
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	ld de, $a
 	add hl, de
 	ld c, [hl]
 	push bc
-	call GetHLAtSPPlusParam8
-	db $2c
+	read_hl_from_sp_plus $2c
 	inc hl
 	inc hl
 	ld e, [hl]
@@ -57557,8 +56577,7 @@ Func_2570e: ; 2570e (9:570e)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $20
+	write_hl_to_sp_plus $20
 	ld hl, sp+$1d
 	ld [hl], $1
 	xor a
@@ -57566,8 +56585,7 @@ Func_2570e: ; 2570e (9:570e)
 	ld [hl], $0
 	call Func_24001
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $6f
 	add hl, de
 	ld e, [hl]
@@ -57593,8 +56611,7 @@ Func_257ab: ; 257ab (9:57ab)
 	ld a, c
 	and $80
 	jp z, Func_257c4
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
@@ -57618,8 +56635,7 @@ Func_257c4: ; 257c4 (9:57c4)
 	cp $25
 	jp nz, Func_25813
 Func_257e0: ; 257e0 (9:57e0)
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	push de
 	push hl
 	pop de
@@ -57630,8 +56646,7 @@ Func_257e0: ; 257e0 (9:57e0)
 	jp Func_25c7e
 
 Func_257f1: ; 257f1 (9:57f1)
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	push de
 	push hl
 	pop de
@@ -57642,8 +56657,7 @@ Func_257f1: ; 257f1 (9:57f1)
 	jp Func_25c7e
 
 Func_25802: ; 25802 (9:5802)
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	push de
 	push hl
 	pop de
@@ -57654,15 +56668,13 @@ Func_25802: ; 25802 (9:5802)
 	jp Func_25c7e
 
 Func_25813: ; 25813 (9:5813)
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $fe
 	jp nz, Func_25881
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $60
 	add hl, de
 	ld e, [hl]
@@ -57680,8 +56692,7 @@ Func_25813: ; 25813 (9:5813)
 	ld l, a
 	ld h, $0
 	push hl
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	ld de, $60
 	add hl, de
 	ld e, [hl]
@@ -57723,8 +56734,7 @@ Func_2587e: ; 2587e (9:587e)
 	jp Func_25c7e
 
 Func_25881: ; 25881 (9:5881)
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $6d
 	add hl, de
 	ld a, [hl]
@@ -57732,20 +56742,17 @@ Func_25881: ; 25881 (9:5881)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus6
-	call GetHLAtSPPlusParam8
-	db $23
+	read_hl_from_sp_plus $23
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	or a
 	jp nz, Func_25a7b
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld a, l
 	and $80
 	jp z, Func_25a7b
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld a, l
 	and $7f
 	ld l, a
@@ -57762,8 +56769,7 @@ Func_25881: ; 25881 (9:5881)
 	sub $1d
 	or h
 	jp nz, Func_25a75
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld e, h
 	ld d, $0
 	ld hl, sp+$1e
@@ -57783,8 +56789,7 @@ Func_25881: ; 25881 (9:5881)
 	call Func_24759
 	ld hl, sp+$6
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $21
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -57825,8 +56830,7 @@ Func_25941: ; 25941 (9:5941)
 	jp Func_25a78
 
 Func_25944: ; 25944 (9:5944)
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld e, h
 	ld d, $0
 	ld hl, sp+$1e
@@ -57863,8 +56867,7 @@ Func_25984: ; 25984 (9:5984)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $6d
 	add hl, de
 	ld [hl], c
@@ -57894,8 +56897,7 @@ Func_259a4: ; 259a4 (9:59a4)
 	call Func_24010
 	ld hl, sp+$0
 	push hl
-	call GetHLAtSPPlusParam8
-	db $20
+	read_hl_from_sp_plus $20
 	ld e, $81
 	call Func_2478b
 	ld l, a
@@ -57949,8 +56951,7 @@ Func_25a06: ; 25a06 (9:5a06)
 	call Func_24010
 	call GetHLAtSPPlus6
 	push hl
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	ld de, $6d
 	add hl, de
 	pop de
@@ -58004,16 +57005,14 @@ Func_25a78: ; 25a78 (9:5a78)
 	jp Func_25b71
 
 Func_25a7b: ; 25a7b (9:5a7b)
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $6f
 	add hl, de
 	ld a, [hl]
 	or $80
 	ld [hl], a
 	inc hl
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $6d
 	add hl, de
 	ld a, [hl]
@@ -58021,8 +57020,7 @@ Func_25a7b: ; 25a7b (9:5a7b)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus6
-	call GetHLAtSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $21
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -58054,8 +57052,7 @@ Func_25ab0: ; 25ab0 (9:5ab0)
 	jp nz, Func_25b19
 	call GetHLAtSPPlus6
 	push hl
-	call GetHLAtSPPlusParam8
-	db $23
+	read_hl_from_sp_plus $23
 	ld de, $1c
 	add hl, de
 	pop de
@@ -58068,8 +57065,7 @@ Func_25ab0: ; 25ab0 (9:5ab0)
 	ld [hl], a
 	ld hl, sp+$1b
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $21
 	ld de, $1c
 	add hl, de
 	ld e, [hl]
@@ -58079,8 +57075,7 @@ Func_25ab0: ; 25ab0 (9:5ab0)
 	dec d
 	bit 7, d
 	jr z, .asm_25b16
-	call GetHLAtSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $21
 	ld de, $1c
 	add hl, de
 	ld de, $0
@@ -58130,8 +57125,7 @@ Func_25b48: ; 25b48 (9:5b48)
 	ld a, l
 	or h
 	jp nz, Func_25b71
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	push de
 	push hl
 	pop de
@@ -58140,8 +57134,7 @@ Func_25b48: ; 25b48 (9:5b48)
 	ld a, [hl]
 	call Func_26bab
 Func_25b71: ; 25b71 (9:5b71)
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -58150,20 +57143,17 @@ Func_25b71: ; 25b71 (9:5b71)
 	jp Func_25c7e
 
 Func_25b81: ; 25b81 (9:5b81)
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	ld de, $11
 	add hl, de
 	ld a, [hl]
 	or a
 	jp nz, Func_25c7e
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	ld de, $11
 	add hl, de
 	ld [hl], $1
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $5f
 	add hl, de
 	ld a, [hl]
@@ -58177,8 +57167,7 @@ Func_25b81: ; 25b81 (9:5b81)
 	ld a, [hl]
 	or a
 	jp nz, Func_25bec
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
@@ -58191,8 +57180,7 @@ Func_25b81: ; 25b81 (9:5b81)
 	jp Func_25be9
 
 Func_25bcf: ; 25bcf (9:5bcf)
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
@@ -58206,8 +57194,7 @@ Func_25be9: ; 25be9 (9:5be9)
 	jp Func_25c22
 
 Func_25bec: ; 25bec (9:5bec)
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
@@ -58220,8 +57207,7 @@ Func_25bec: ; 25bec (9:5bec)
 	jp Func_25c22
 
 Func_25c08: ; 25c08 (9:5c08)
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
@@ -58232,15 +57218,13 @@ Func_25c08: ; 25c08 (9:5c08)
 	ld hl, Text_245b8
 	call Func_24023
 Func_25c22: ; 25c22 (9:5c22)
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
 	or a
 	jp z, Func_25c3d
-	call GetHLAtSPPlusParam8
-	db $25
+	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
@@ -58249,8 +57233,7 @@ Func_25c22: ; 25c22 (9:5c22)
 Func_25c3d: ; 25c3d (9:5c3d)
 	call Func_24036
 Func_25c40: ; 25c40 (9:5c40)
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	push de
 	push hl
 	pop de
@@ -58258,13 +57241,11 @@ Func_25c40: ; 25c40 (9:5c40)
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_2639a
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	ld de, $8
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	ld de, $9
 	add hl, de
 	or [hl]
@@ -58272,8 +57253,7 @@ Func_25c40: ; 25c40 (9:5c40)
 	jp Func_25c7e
 
 Func_25c66: ; 25c66 (9:5c66)
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	push de
 	push hl
 	pop de
@@ -58281,8 +57261,7 @@ Func_25c66: ; 25c66 (9:5c66)
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_25c81
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	ld de, $11
 	add hl, de
 	ld [hl], $0
@@ -58296,13 +57275,11 @@ Func_25c81: ; 25c81 (9:5c81)
 	add sp, -$54
 	ld hl, sp+$4
 	push hl
-	call GetHLAtSPPlusParam8
-	db $58
+	read_hl_from_sp_plus $58
 	pop de
 	ld bc, $4f
 	call MemCopy
-	call GetHLAtSPPlusParam8
-	db $56
+	read_hl_from_sp_plus $56
 	ld de, $6
 	add hl, de
 	ld a, [hl]
@@ -58310,8 +57287,7 @@ Func_25c81: ; 25c81 (9:5c81)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus10
-	call GetHLAtSPPlusParam8
-	db $56
+	read_hl_from_sp_plus $56
 	inc hl
 	inc hl
 	inc hl
@@ -58320,10 +57296,8 @@ Func_25c81: ; 25c81 (9:5c81)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0c
-	call GetHLAtSPPlusParam8
-	db $56
+	write_hl_to_sp_plus $0c
+	read_hl_from_sp_plus $56
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -58333,8 +57307,7 @@ Func_25c81: ; 25c81 (9:5c81)
 	call WriteHLToSPPlus6
 	pop de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $56
+	read_hl_from_sp_plus $56
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -58387,8 +57360,7 @@ Func_25d08: ; 25d08 (9:5d08)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0e
+	write_hl_to_sp_plus $0e
 	pop hl
 	push hl
 	ld de, $69
@@ -58397,8 +57369,7 @@ Func_25d08: ; 25d08 (9:5d08)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $10
+	write_hl_to_sp_plus $10
 	call WriteHLToSPPlus4
 	call GetHLAtSPPlus4
 	ld e, $81
@@ -58435,8 +57406,7 @@ Func_25d3d: ; 25d3d (9:5d3d)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $15
 	pop hl
 	push hl
 	ld de, $6d
@@ -58547,8 +57517,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $13
 	pop de
 	push de
 	push de
@@ -58561,8 +57530,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 	pop de
 	push de
 	push de
@@ -58577,8 +57545,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	pop de
 	push de
 	ld hl, $6
@@ -58587,8 +57554,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	pop de
 	ld hl, $c
 	add hl, de
@@ -58609,8 +57575,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	call WriteHLToSPPlus7
 	ld hl, sp+$4
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld de, $d
 	add hl, de
 	call Func_24010
@@ -58630,8 +57595,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	cp $d
 	jp nz, Func_25f9c
 Func_25e90: ; 25e90 (9:5e90)
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
@@ -58688,8 +57652,7 @@ Func_25e90: ; 25e90 (9:5e90)
 	jp nc, Func_25f0b
 	ld hl, sp+$4
 	ld [hl], $3
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
@@ -58735,21 +57698,18 @@ Func_25f12: ; 25f12 (9:5f12)
 	pop af
 	cp [hl]
 	jp nc, Func_25f95
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $1
 	jp nc, Func_25f95
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld [hl], $1
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -58761,13 +57721,11 @@ Func_25f12: ; 25f12 (9:5f12)
 	ld bc, Data_245c8
 	add hl, bc
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $74
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $73
 	add hl, de
 	ld [hl], $7
@@ -58786,21 +57744,18 @@ Func_25f9c: ; 25f9c (9:5f9c)
 	ld a, [hl]
 	cp $a
 	jp nz, Func_26008
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	or a
 	jp nz, Func_26005
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld [hl], $a
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -58808,8 +57763,7 @@ Func_25f9c: ; 25f9c (9:5f9c)
 	ld [hl], $64
 	ld hl, sp+$4
 	ld [hl], $5
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $74
 	add hl, de
 	ld [hl], $64
@@ -59116,16 +58070,14 @@ Func_261ed: ; 261ed (9:61ed)
 	ld hl, sp+$2
 	cp [hl]
 	jp nc, Func_26261
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$0
 	cp [hl]
 	jp nc, Func_26261
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $71
 	add hl, de
 	inc hl
@@ -59167,8 +58119,7 @@ Func_26265: ; 26265 (9:6265)
 	jp Func_26394
 
 Func_26292: ; 26292 (9:6292)
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -59203,8 +58154,7 @@ Func_262d1: ; 262d1 (9:62d1)
 
 Func_262e0: ; 262e0 (9:62e0)
 	call Func_24036
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -59239,8 +58189,7 @@ Func_2631e: ; 2631e (9:631e)
 	ld a, [hl]
 	cp $b
 	jp nz, Func_26336
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $71
 	add hl, de
 	inc hl
@@ -59250,8 +58199,7 @@ Func_2631e: ; 2631e (9:631e)
 	jp Func_26343
 
 Func_26336: ; 26336 (9:6336)
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $71
 	add hl, de
 	inc hl
@@ -59264,22 +58212,19 @@ Func_26343: ; 26343 (9:6343)
 Func_26346: ; 26346 (9:6346)
 	ld hl, sp+$1
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $74
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$0
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld de, $22
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$0
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $75
 	add hl, de
 	ld [hl], a
@@ -59290,8 +58235,7 @@ Func_26346: ; 26346 (9:6346)
 	ld hl, sp+$7
 	ld a, [hl]
 	and $f0
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $73
 	add hl, de
 	ld [hl], a
@@ -59541,8 +58485,7 @@ Func_264f1: ; 264f1
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $1f
+	write_hl_to_sp_plus $1f
 	pop de
 	push bc
 	ld hl, $a
@@ -59612,8 +58555,7 @@ Func_26570: ; 26570 (9:6570)
 	ld hl, sp+$14
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $1d
 	ld de, $6d
 	add hl, de
 	ld e, [hl]
@@ -59672,8 +58614,7 @@ Func_265d0: ; 265d0
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $1e
+	write_hl_to_sp_plus $1e
 	pop de
 	ld hl, $a
 	add hl, de
@@ -59712,8 +58653,7 @@ Func_265d0: ; 265d0
 	ld hl, sp+$14
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	ld de, $6d
 	add hl, de
 	ld e, [hl]
@@ -59785,8 +58725,7 @@ Func_26675: ; 26675 (9:6675)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 	pop de
 	push de
 	push bc
@@ -59800,8 +58739,7 @@ Func_26675: ; 26675 (9:6675)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -59903,8 +58841,7 @@ Func_26759: ; 26759 (9:6759)
 	call Func_2465a
 	call GetHLAtSPPlus3
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -60107,8 +59044,7 @@ Func_268b9: ; 268b9
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $1b
+	write_hl_to_sp_plus $1b
 	pop de
 	push de
 	push de
@@ -60121,8 +59057,7 @@ Func_268b9: ; 268b9
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $19
+	write_hl_to_sp_plus $19
 	pop de
 	ld hl, $a
 	add hl, de
@@ -60144,8 +59079,7 @@ Func_268b9: ; 268b9
 	jp Func_269f4
 
 Func_268f8: ; 268f8 (9:68f8)
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	ld de, $6f
 	add hl, de
 	ld e, [hl]
@@ -60170,15 +59104,13 @@ Func_2691a: ; 2691a (9:691a)
 	ld a, c
 	cp $3
 	jp nc, Func_26972
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	ld de, $71
 	add hl, de
 	ld a, [hl]
 	and $8
 	jp nz, Func_2695c
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	ld de, $71
 	add hl, de
 	ld e, [hl]
@@ -60196,8 +59128,7 @@ Func_2691a: ; 2691a (9:691a)
 	ld a, l
 	or h
 	jp nz, Func_2695c
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	ld de, $23
 	add hl, de
 	ld e, c
@@ -60245,8 +59176,7 @@ Func_2697c: ; 2697c (9:697c)
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	ld de, $23
 	add hl, de
 	add hl, bc
@@ -60255,8 +59185,7 @@ Func_2697c: ; 2697c (9:697c)
 	ld e, a
 	ld hl, sp+$0
 	call Func_248f
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -60280,8 +59209,7 @@ Func_2697c: ; 2697c (9:697c)
 	ld hl, $1
 	call LeftShiftHL
 	push hl
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld de, $71
 	add hl, de
 	pop de
@@ -60664,8 +59592,7 @@ Func_26c02: ; 26c02 (9:6c02)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $20
+	write_hl_to_sp_plus $20
 	pop hl
 	ld e, [hl]
 	inc hl
@@ -60691,8 +59618,7 @@ Func_26c02: ; 26c02 (9:6c02)
 	ld hl, sp+$18
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -60705,8 +59631,7 @@ Func_26c02: ; 26c02 (9:6c02)
 	ld hl, sp+$19
 	ld l, [hl]
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $18
+	write_hl_to_sp_plus $18
 	push de
 	push hl
 	pop de
@@ -60715,11 +59640,9 @@ Func_26c02: ; 26c02 (9:6c02)
 	call CompareHLtoDE
 	jp c, Func_26c6a
 	ld hl, $1
-	call WriteHLToSPPlusParam8
-	db $18
+	write_hl_to_sp_plus $18
 Func_26c6a: ; 26c6a (9:6c6a)
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $4
 	call DivideHLByDESigned
 	inc hl
@@ -60728,8 +59651,7 @@ Func_26c6a: ; 26c6a (9:6c6a)
 	ld l, a
 	ld h, $0
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld e, l
 	ld d, h
 	add hl, hl
@@ -60739,8 +59661,7 @@ Func_26c6a: ; 26c6a (9:6c6a)
 	pop de
 	add hl, de
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $18
+	write_hl_to_sp_plus $18
 	ld hl, sp+$2
 	push de
 	push hl
@@ -60756,8 +59677,7 @@ Func_26c6a: ; 26c6a (9:6c6a)
 	call Func_24010
 	ld hl, sp+$2
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	pop de
 	call Func_24744
 	ld hl, sp+$2
@@ -60766,8 +59686,7 @@ Func_26c6a: ; 26c6a (9:6c6a)
 	call Func_24010
 	call Func_24045
 	pop af
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	push de
 	push hl
 	pop de
@@ -61136,8 +60055,7 @@ Func_26ee8: ; 26ee8
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
 	pop de
 	push de
 	ld hl, $6
@@ -61146,8 +60064,7 @@ Func_26ee8: ; 26ee8
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $18
+	write_hl_to_sp_plus $18
 	pop de
 	ld hl, sp+$19
 	ld a, [hl]
@@ -61161,14 +60078,12 @@ Func_26ee8: ; 26ee8
 	ld a, [hl]
 	cp $1
 	jp z, Func_26fa4
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $13
 	add hl, de
 	ld e, [hl]
@@ -61200,15 +60115,13 @@ asm_26f53
 	ld l, c
 	ld h, b
 	call Func_24744
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	ld de, $d
 	add hl, de
 	call Func_24023
 	ld hl, Text_24520
 	call Func_24010
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld de, $d
 	add hl, de
 	call Func_24010
@@ -61385,8 +60298,7 @@ Func_27063: ; 27063 (9:7063)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $54
+	write_hl_to_sp_plus $54
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -61395,8 +60307,7 @@ Func_27063: ; 27063 (9:7063)
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $52
+	write_hl_to_sp_plus $52
 	ld hl, sp+$4f
 	ld [hl], $1
 	ld c, $0
@@ -61506,8 +60417,7 @@ Func_2711e: ; 2711e (9:711e)
 	cp $fd
 	jp nz, Func_27187
 	ld hl, $195
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	ld hl, sp+$0
 	push de
 	push hl
@@ -61516,32 +60426,28 @@ Func_2711e: ; 2711e (9:711e)
 	ld hl, sp+$57
 	ld a, [hl]
 	call Func_26675
-	call GetHLAtSPPlusParam8
-	db $54
+	read_hl_from_sp_plus $54
 	ld de, $18
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
 	jp nz, Func_2716a
-	call GetHLAtSPPlusParam8
-	db $52
+	read_hl_from_sp_plus $52
 	ld de, $7
 	add hl, de
 	ld a, $1
 	or [hl]
 	ld [hl], a
 Func_2716a: ; 2716a (9:716a)
-	call GetHLAtSPPlusParam8
-	db $54
+	read_hl_from_sp_plus $54
 	ld de, $47
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
 	jp nz, Func_27184
-	call GetHLAtSPPlusParam8
-	db $52
+	read_hl_from_sp_plus $52
 	ld de, $7
 	add hl, de
 	ld a, $2
@@ -61573,13 +60479,11 @@ Func_27187: ; 27187 (9:7187)
 	ld hl, sp+$14
 	call Func_241f
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	ld a, l
 	and $80
 	jp z, Func_271c1
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	ld a, l
 	and $7f
 	ld l, a
@@ -61648,8 +60552,7 @@ Func_27229: ; 27229 (9:7229)
 	ld a, [hl]
 	or a
 	jp nz, Func_27250
-	call GetHLAtSPPlusParam8
-	db $54
+	read_hl_from_sp_plus $54
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -61714,32 +60617,28 @@ Func_27298: ; 27298 (9:7298)
 	ld a, [hl]
 	call Func_25dd5
 Func_272a4: ; 272a4 (9:72a4)
-	call GetHLAtSPPlusParam8
-	db $56
+	read_hl_from_sp_plus $56
 	ld de, $18
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
 	jp nz, Func_272be
-	call GetHLAtSPPlusParam8
-	db $54
+	read_hl_from_sp_plus $54
 	ld de, $7
 	add hl, de
 	ld a, $1
 	or [hl]
 	ld [hl], a
 Func_272be: ; 272be (9:72be)
-	call GetHLAtSPPlusParam8
-	db $56
+	read_hl_from_sp_plus $56
 	ld de, $47
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
 	jp nz, Func_272d8
-	call GetHLAtSPPlusParam8
-	db $54
+	read_hl_from_sp_plus $54
 	ld de, $7
 	add hl, de
 	ld a, $2
@@ -61747,8 +60646,7 @@ Func_272be: ; 272be (9:72be)
 	ld [hl], a
 Func_272d8: ; 272d8 (9:72d8)
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $52
+	read_hl_from_sp_plus $52
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -61803,8 +60701,7 @@ Func_2732e: ; 2732e (9:732e)
 	call MultiplyHLbyDE
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0f
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -61826,8 +60723,7 @@ Func_27357: ; 27357 (9:7357)
 	call MultiplyHLbyDE
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
@@ -61850,8 +60746,7 @@ Func_27357: ; 27357 (9:7357)
 	ld de, $1c
 	add hl, de
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
@@ -61878,13 +60773,11 @@ Func_27357: ; 27357 (9:7357)
 	add hl, de
 	add hl, bc
 	call WriteHLToSPPlus9
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld de, $13
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $13
 	add hl, de
 	cp [hl]
@@ -61897,15 +60790,13 @@ Func_273c6: ; 273c6 (9:73c6)
 	ld hl, sp+$0
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld de, $13
 	add hl, de
 	ld l, [hl]
 	ld h, $0
 	push hl
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld de, $13
 	add hl, de
 	ld l, [hl]
@@ -61923,8 +60814,7 @@ Func_273c6: ; 273c6 (9:73c6)
 	ld hl, sp+$4
 	ld [hl], a
 Func_273f7: ; 273f7 (9:73f7)
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld de, $64
 	add hl, de
 	ld c, [hl]
@@ -61957,8 +60847,7 @@ Func_2741e: ; 2741e (9:741e)
 	inc hl
 	ld d, [hl]
 	push de
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld de, $64
 	add hl, de
 	ld e, [hl]
@@ -61993,8 +60882,7 @@ Func_27455: ; 27455 (9:7455)
 	ld hl, sp+$4
 	ld [hl], a
 Func_27467: ; 27467 (9:7467)
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $d
 	add hl, de
 	call Func_24010
@@ -62490,8 +61378,7 @@ Func_30289: ; 30289 (c:4289)
 	push af
 	push de
 	push bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld c, l
 	ld b, h
 	ld hl, sp+$8
@@ -62514,8 +61401,7 @@ Func_30289: ; 30289 (c:4289)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -62539,8 +61425,7 @@ Func_302ce: ; 302ce (c:42ce)
 	push af
 	push de
 	push bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld c, l
 	ld b, h
 	ld hl, sp+$8
@@ -62563,8 +61448,7 @@ Func_302ce: ; 302ce (c:42ce)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -62713,8 +61597,7 @@ Func_30393: ; 30393 (c:4393)
 	ld de, $1405
 	ld hl, $d
 	call FarCall
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	set_farcall_addrs_hli Func_93370
 	ld hl, sp+$6
 	call FarCall
@@ -62889,8 +61772,7 @@ Func_30519: ; 30519 (c:4519)
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli Func_daa40
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	call FarCall
 	set_farcall_addrs_hli Func_17c57
 	pop hl
@@ -63040,16 +61922,14 @@ Func_30676: ; 30676 (c:4676)
 	inc hl
 	ld b, [hl]
 	push bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld de, $7
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
 	push bc
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $d
 	add hl, de
 	ld e, [hl]
@@ -63074,8 +61954,7 @@ Func_306db: ; 306db (c:46db)
 	ld hl, sp+$9
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld de, $9
 	add hl, de
 	ld [hl], c
@@ -63484,38 +62363,31 @@ Func_309da: ; 309da
 	ld hl, sp+$6
 	ld [hl], $0
 	pop hl
-	call WriteHLToSPPlusParam8
-	db $13
-	call GetHLAtSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $13
+	read_hl_from_sp_plus $13
 	inc hl
 	inc hl
 	inc hl
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $9
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $11
-	call GetHLAtSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $11
+	read_hl_from_sp_plus $13
 	ld de, $5
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0f
-	call GetHLAtSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $0f
+	read_hl_from_sp_plus $13
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -63523,8 +62395,7 @@ Func_309da: ; 309da
 	ld a, [de]
 	ld hl, sp+$a
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -63533,8 +62404,7 @@ Func_309da: ; 309da
 	ld a, [de]
 	ld hl, sp+$9
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -63544,8 +62414,7 @@ Func_309da: ; 309da
 	ld a, [de]
 	ld hl, sp+$8
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -63556,18 +62425,15 @@ Func_309da: ; 309da
 	ld a, [de]
 	ld hl, sp+$7
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$5
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $7
 	add hl, de
 	ld e, [hl]
@@ -63580,22 +62446,19 @@ Func_309da: ; 309da
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_30a85
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $7
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $11
+	write_hl_to_sp_plus $11
 Func_30a85: ; 30a85 (c:4a85)
 	ld hl, sp+$6
 	ld a, [hSRAMBank]
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $b
 	add hl, de
 	ld [hl], c
@@ -63615,18 +62478,15 @@ Func_30a85: ; 30a85 (c:4a85)
 	bit 7, b
 	jr z, .asm_30ac8
 	ld bc, $0
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	inc h
 	dec h
 	bit 7, h
 	jr z, .asm_30ac4
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	jp .asm_30ac8
 
 .asm_30ac4
@@ -63636,8 +62496,7 @@ Func_30a85: ; 30a85 (c:4a85)
 	jp Func_30b1e
 
 Func_30acb: ; 30acb (c:4acb)
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	push de
 	push hl
 	pop de
@@ -63647,26 +62506,20 @@ Func_30acb: ; 30acb (c:4acb)
 	ld h, b
 	call CompareHLtoDE
 	jp c, Func_30b1e
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	dec hl
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $0d
-	call GetHLAtSPPlusParam8
-	db $0f
+	write_hl_to_sp_plus $0d
+	read_hl_from_sp_plus $0f
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	pop de
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld de, $7
 	add hl, de
 	ld e, [hl]
@@ -63679,11 +62532,9 @@ Func_30acb: ; 30acb (c:4acb)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_30b1a
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $0d
+	write_hl_to_sp_plus $0d
 	jp Func_30b1e
 
 Func_30b1a: ; 30b1a (c:4b1a)
@@ -63691,19 +62542,16 @@ Func_30b1a: ; 30b1a (c:4b1a)
 	ld [hl], $2
 Func_30b1e: ; 30b1e (c:4b1e)
 	push bc
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	inc hl
 	inc hl
 	inc hl
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $5
 	add hl, de
 	pop de
@@ -63781,8 +62629,7 @@ Func_30b1e: ; 30b1e (c:4b1e)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	ld c, l
 	ld hl, sp+$b
 	ld a, [hl]
@@ -63793,10 +62640,8 @@ Func_30b1e: ; 30b1e (c:4b1e)
 	add $2
 	call Func_308da
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $0f
-	call WriteHLToSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0f
+	write_hl_to_sp_plus $0d
 	call GetHLAtSPPlus4
 	ld [hl], $8a
 	jp Func_30c2c
@@ -63805,11 +62650,9 @@ Func_30bd3: ; 30bd3 (c:4bd3)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	push hl
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	pop de
 	add hl, de
 	dec hl
@@ -63817,8 +62660,7 @@ Func_30bd3: ; 30bd3 (c:4bd3)
 	ld hl, sp+$d
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	add hl, hl
 	add hl, bc
 	dec hl
@@ -63829,28 +62671,22 @@ Func_30bd3: ; 30bd3 (c:4bd3)
 	pop bc
 	call Func_308da
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push hl
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	pop de
 	add hl, de
 	dec hl
-	call WriteHLToSPPlusParam8
-	db $0d
-	call GetHLAtSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $0d
+	read_hl_from_sp_plus $13
 	ld de, $7
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push hl
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	pop de
 	add hl, de
 	call CompareHLtoBC
@@ -63864,8 +62700,7 @@ Func_30c2c: ; 30c2c (c:4c2c)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	pop de
 	call Func_30dfd
 	ld l, $12
@@ -63879,8 +62714,7 @@ Func_30c2c: ; 30c2c (c:4c2c)
 
 Func_30c4d: ; 30c4d (c:4c4d)
 	set_farcall_addrs_hli Func_17863
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	call FarCall
 Func_30c5f: ; 30c5f (c:4c5f)
 	pop bc
@@ -63895,8 +62729,7 @@ Func_30c5f: ; 30c5f (c:4c5f)
 	call Func_30313
 	set_farcall_addrs_hli Func_61133
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	add hl, bc
 	push hl
 	ld hl, $c2f8
@@ -64164,8 +62997,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	jp z, Func_30ea5
 	cp $32
 	jp nz, Func_30fe0
-	call GetHLAtSPPlusParam8
-	db $3a
+	read_hl_from_sp_plus $3a
 	push hl
 	ld hl, $c2f8
 	ld l, [hl]
@@ -64202,8 +63034,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	ld hl, sp+$2b
 	ld bc, $d
 	call FarCopyVideoData
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld a, [wOAM23XCoord]
 	cp $1
 	jp nz, Func_30e86
@@ -64237,8 +63068,7 @@ Func_30ea5: ; 30ea5 (c:4ea5)
 	jp z, Func_30ed2
 	cp $34
 	jp nz, Func_30edd
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	push hl
 	ld hl, $c2f8
 	ld l, [hl]
@@ -64258,8 +63088,7 @@ Func_30ea5: ; 30ea5 (c:4ea5)
 	jp Func_30edd
 
 Func_30ed2: ; 30ed2 (c:4ed2)
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	ld de, $c98e
 	add hl, de
 	ld a, [hl]
@@ -64288,8 +63117,7 @@ Func_30edd: ; 30edd (c:4edd)
 	ld bc, $11
 	call FarCopyVideoData
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $2c
+	read_hl_from_sp_plus $2c
 	push de
 	push hl
 	pop de
@@ -64341,8 +63169,7 @@ Func_30f3f: ; 30f3f (c:4f3f)
 	jp Func_30fe0
 
 Func_30f5d: ; 30f5d (c:4f5d)
-	call GetHLAtSPPlusParam8
-	db $3a
+	read_hl_from_sp_plus $3a
 	push hl
 	ld hl, $c2f8
 	ld l, [hl]
@@ -64360,8 +63187,7 @@ Func_30f5d: ; 30f5d (c:4f5d)
 	ld e, c
 	ld hl, sp+$2
 	call Func_241f
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld a, [wOAM23XCoord]
 	cp $1
 	jp nz, Func_30f8f
@@ -64387,16 +63213,14 @@ Func_30f98: ; 30f98 (c:4f98)
 	jp Func_30fe0
 
 Func_30fae: ; 30fae (c:4fae)
-	call GetHLAtSPPlusParam8
-	db $3a
+	read_hl_from_sp_plus $3a
 	ld de, $c9a3
 	add hl, de
 	ld c, [hl]
 	ld e, c
 	ld hl, sp+$2
 	call Func_241f
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	add hl, hl
 	ld e, l
 	ld d, h
@@ -64468,8 +63292,7 @@ Data_3102f: ; 3102f
 Func_3103d: ; 3103d
 	push hl
 	add sp, -$3c
-	call GetHLAtSPPlusParam8
-	db $3e
+	read_hl_from_sp_plus $3e
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -64548,8 +63371,7 @@ Func_3103d: ; 3103d
 	call FarCopyVideoData
 	pop af
 	call GetSRAMBank
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld a, l
 	or h
 	jp nz, Func_310d5
@@ -64559,8 +63381,7 @@ Func_3103d: ; 3103d
 	jp Func_31299
 
 Func_310d5: ; 310d5 (c:50d5)
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld bc, $0
 	inc h
 	dec h
@@ -64578,8 +63399,7 @@ Func_310d5: ; 310d5 (c:50d5)
 	ld hl, sp+$3a
 	call PutLongFromStackToHL
 	set_farcall_addrs_hli Func_14db8
-	call GetHLAtSPPlusParam8
-	db $3e
+	read_hl_from_sp_plus $3e
 	call FarCall
 	ld a, [wVideoTransferRequestBank + 9]
 	cp $ff
@@ -64592,8 +63412,7 @@ Func_31116: ; 31116 (c:5116)
 	jp Func_31299
 
 Func_3111c: ; 3111c (c:511c)
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld bc, $0
 	inc h
 	dec h
@@ -64669,8 +63488,7 @@ Func_31154: ; 31154 (c:5154)
 	ld hl, sp+$1a
 	ld bc, $11
 	call FarCopyVideoData
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	ld bc, $0
 	inc h
 	dec h
@@ -64721,8 +63539,7 @@ Func_311e9: ; 311e9 (c:51e9)
 	ld e, [hl]
 	ld hl, sp+$2
 	call Func_241f
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld bc, $0
 	inc h
 	dec h
@@ -64782,8 +63599,7 @@ Func_3122e: ; 3122e (c:522e)
 Func_31277: ; 31277 (c:5277)
 	ld hl, sp+$36
 	call PutLongFromHLOnStack
-	call GetHLAtSPPlusParam8
-	db $42
+	read_hl_from_sp_plus $42
 	ld c, l
 	ld b, h
 	ld hl, sp+$3e
@@ -64867,8 +63683,7 @@ Func_312c7: ; 312c7 (c:52c7)
 	ld e, $9
 	ld hl, $b0d
 	call Func_30313
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld bc, $0
 	inc h
 	dec h
@@ -65556,8 +64371,7 @@ Func_3178a: ; 3178a (c:578a)
 	call PlaceStringDEatCoordHL
 	pop af
 	push af
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
@@ -65580,8 +64394,7 @@ Func_3178a: ; 3178a (c:578a)
 	pop bc
 	pop bc
 	pop af
-	call GetHLAtSPPlusParam8
-	db $38
+	read_hl_from_sp_plus $38
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
@@ -66149,8 +64962,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $43
+	read_hl_from_sp_plus $43
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -66176,8 +64988,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $47
+	read_hl_from_sp_plus $47
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -66203,8 +65014,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -66224,8 +65034,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $52
+	read_hl_from_sp_plus $52
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -66244,8 +65053,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -67152,13 +65960,10 @@ Func_322ed: ; 322ed (c:62ed)
 	ld hl, sp+$2a
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $1f
-	call GetHLAtSPPlusParam8
-	db $1f
+	write_hl_to_sp_plus $1f
+	read_hl_from_sp_plus $1f
 	push de
 	push hl
 	pop de
@@ -67167,8 +65972,7 @@ Func_322ed: ; 322ed (c:62ed)
 	call CompareHLtoDE
 	jp nc, Func_3239e
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $1f
+	write_hl_to_sp_plus $1f
 Func_3239e: ; 3239e (c:639e)
 	jp Func_32483
 
@@ -67176,13 +65980,10 @@ Func_323a1: ; 323a1 (c:63a1)
 	ld hl, sp+$2a
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $21
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $21
-	call GetHLAtSPPlusParam8
-	db $21
+	write_hl_to_sp_plus $21
+	read_hl_from_sp_plus $21
 	push de
 	push hl
 	pop de
@@ -67191,19 +65992,15 @@ Func_323a1: ; 323a1 (c:63a1)
 	call CompareHLtoDE
 	jp nc, Func_323c7
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $21
+	write_hl_to_sp_plus $21
 Func_323c7: ; 323c7 (c:63c7)
 	ld hl, sp+$2a
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $23
+	read_hl_from_sp_plus $23
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $23
-	call GetHLAtSPPlusParam8
-	db $23
+	write_hl_to_sp_plus $23
+	read_hl_from_sp_plus $23
 	push de
 	push hl
 	pop de
@@ -67212,8 +66009,7 @@ Func_323c7: ; 323c7 (c:63c7)
 	call CompareHLtoDE
 	jp nc, Func_323ed
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $23
+	write_hl_to_sp_plus $23
 Func_323ed: ; 323ed (c:63ed)
 	jp Func_32483
 
@@ -67221,13 +66017,10 @@ Func_323f0: ; 323f0 (c:63f0)
 	ld hl, sp+$2a
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $16
+	read_hl_from_sp_plus $16
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $16
-	call GetHLAtSPPlusParam8
-	db $16
+	write_hl_to_sp_plus $16
+	read_hl_from_sp_plus $16
 	push de
 	push hl
 	pop de
@@ -67236,19 +66029,15 @@ Func_323f0: ; 323f0 (c:63f0)
 	call CompareHLtoDE
 	jp nc, Func_32416
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $16
+	write_hl_to_sp_plus $16
 Func_32416: ; 32416 (c:6416)
 	ld hl, sp+$2a
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $1a
-	call GetHLAtSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
+	read_hl_from_sp_plus $1a
 	push de
 	push hl
 	pop de
@@ -67257,8 +66046,7 @@ Func_32416: ; 32416 (c:6416)
 	call CompareHLtoDE
 	jp nc, Func_3243c
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $1a
+	write_hl_to_sp_plus $1a
 Func_3243c: ; 3243c (c:643c)
 	ld hl, sp+$2a
 	ld a, [hl]
@@ -67286,27 +66074,23 @@ Func_32460: ; 32460 (c:6460)
 	jp Func_3243c
 
 Func_32463: ; 32463 (c:6463)
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	ld a, l
 	and $f0
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $28
+	write_hl_to_sp_plus $28
 	ld hl, sp+$2a
 	ld c, [hl]
 	ld b, $0
 	inc bc
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	ld a, l
 	or c
 	ld l, a
 	ld a, h
 	or b
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $28
+	write_hl_to_sp_plus $28
 Func_32483: ; 32483 (c:6483)
 	pop de
 	inc de
@@ -67358,8 +66142,7 @@ Func_324c1: ; 324c1 (c:64c1)
 	push bc
 	push de
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $10
+	write_hl_to_sp_plus $10
 	xor a
 	pop de
 Func_324d3: ; 324d3 (c:64d3)
@@ -67377,11 +66160,9 @@ Func_324d3: ; 324d3 (c:64d3)
 	ld h, $0
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $12
+	write_hl_to_sp_plus $12
 	pop de
 	inc de
 	pop af
@@ -67389,20 +66170,16 @@ Func_324d3: ; 324d3 (c:64d3)
 	jp Func_324d3
 
 Func_324f5: ; 324f5 (c:64f5)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld de, $3e8
 	call DivideHLByDESigned
-	call WriteHLToSPPlusParam8
-	db $0c
-	call GetHLAtSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
+	read_hl_from_sp_plus $0c
 	ld de, $3e8
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	ld a, l
 	sub c
 	ld l, a
@@ -67461,20 +66238,16 @@ Func_324f5: ; 324f5 (c:64f5)
 	ld b, h
 	call GetHLAtSPPlus8
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	pop de
 	add hl, de
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $0e
-	call GetHLAtSPPlusParam8
-	db $0e
+	write_hl_to_sp_plus $0e
+	read_hl_from_sp_plus $0e
 	ld de, $a
 	call CompareHLtoDE
 	jp nc, Func_3258d
@@ -67551,11 +66324,9 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $20
+	read_hl_from_sp_plus $20
 	push hl
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	pop de
 	ld a, l
 	sub e
@@ -67563,13 +66334,10 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $43
-	call GetHLAtSPPlusParam8
-	db $24
+	write_hl_to_sp_plus $43
+	read_hl_from_sp_plus $24
 	push hl
-	call GetHLAtSPPlusParam8
-	db $49
+	read_hl_from_sp_plus $49
 	pop de
 	ld a, l
 	sub e
@@ -67577,13 +66345,10 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $47
-	call GetHLAtSPPlusParam8
-	db $29
+	write_hl_to_sp_plus $47
+	read_hl_from_sp_plus $29
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	pop de
 	ld a, l
 	sub e
@@ -67591,13 +66356,10 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $4c
-	call GetHLAtSPPlusParam8
-	db $2d
+	write_hl_to_sp_plus $4c
+	read_hl_from_sp_plus $2d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $52
+	read_hl_from_sp_plus $52
 	pop de
 	ld a, l
 	sub e
@@ -67605,13 +66367,10 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $50
-	call GetHLAtSPPlusParam8
-	db $2b
+	write_hl_to_sp_plus $50
+	read_hl_from_sp_plus $2b
 	push hl
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	pop de
 	ld a, l
 	sub e
@@ -67619,8 +66378,7 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $4e
+	write_hl_to_sp_plus $4e
 	pop de
 	pop af
 	push de
@@ -67686,59 +66444,42 @@ Func_326fe: ; 326fe (c:66fe)
 	pop af
 	ld hl, sp+$31
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $43
+	read_hl_from_sp_plus $43
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $41
-	call GetHLAtSPPlusParam8
-	db $22
+	write_hl_to_sp_plus $41
+	read_hl_from_sp_plus $22
 	push hl
-	call GetHLAtSPPlusParam8
-	db $47
+	read_hl_from_sp_plus $47
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $45
-	call GetHLAtSPPlusParam8
-	db $27
+	write_hl_to_sp_plus $45
+	read_hl_from_sp_plus $27
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4c
+	read_hl_from_sp_plus $4c
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4a
-	call GetHLAtSPPlusParam8
-	db $2b
+	write_hl_to_sp_plus $4a
+	read_hl_from_sp_plus $2b
 	push hl
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4e
-	call GetHLAtSPPlusParam8
-	db $29
+	write_hl_to_sp_plus $4e
+	read_hl_from_sp_plus $29
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4c
+	write_hl_to_sp_plus $4c
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $50
+	write_hl_to_sp_plus $50
 	pop de
 	ld hl, sp+$51
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $3f
+	read_hl_from_sp_plus $3f
 	push de
 	push hl
 	pop de
@@ -67747,11 +66488,9 @@ Func_326fe: ; 326fe (c:66fe)
 	call CompareHLtoDE
 	jp nc, Func_32770
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $3f
+	write_hl_to_sp_plus $3f
 Func_32770: ; 32770 (c:6770)
-	call GetHLAtSPPlusParam8
-	db $43
+	read_hl_from_sp_plus $43
 	push de
 	push hl
 	pop de
@@ -67760,37 +66499,27 @@ Func_32770: ; 32770 (c:6770)
 	call CompareHLtoDE
 	jp nc, Func_32788
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $43
+	write_hl_to_sp_plus $43
 Func_32788: ; 32788 (c:6788)
-	call GetHLAtSPPlusParam8
-	db $3d
+	read_hl_from_sp_plus $3d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $41
+	read_hl_from_sp_plus $41
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_327a0
-	call GetHLAtSPPlusParam8
-	db $3f
-	call WriteHLToSPPlusParam8
-	db $3d
+	read_hl_from_sp_plus $3f
+	write_hl_to_sp_plus $3d
 Func_327a0: ; 327a0 (c:67a0)
-	call GetHLAtSPPlusParam8
-	db $41
+	read_hl_from_sp_plus $41
 	push hl
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_327b8
-	call GetHLAtSPPlusParam8
-	db $43
-	call WriteHLToSPPlusParam8
-	db $41
+	read_hl_from_sp_plus $43
+	write_hl_to_sp_plus $41
 Func_327b8: ; 327b8 (c:67b8)
-	call GetHLAtSPPlusParam8
-	db $48
+	read_hl_from_sp_plus $48
 	push de
 	push hl
 	pop de
@@ -67799,11 +66528,9 @@ Func_327b8: ; 327b8 (c:67b8)
 	call CompareHLtoDE
 	jp nc, Func_327d0
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $48
+	write_hl_to_sp_plus $48
 Func_327d0: ; 327d0 (c:67d0)
-	call GetHLAtSPPlusParam8
-	db $4a
+	read_hl_from_sp_plus $4a
 	push de
 	push hl
 	pop de
@@ -67812,11 +66539,9 @@ Func_327d0: ; 327d0 (c:67d0)
 	call CompareHLtoDE
 	jp nc, Func_327e8
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $4a
+	write_hl_to_sp_plus $4a
 Func_327e8: ; 327e8 (c:67e8)
-	call GetHLAtSPPlusParam8
-	db $4c
+	read_hl_from_sp_plus $4c
 	push de
 	push hl
 	pop de
@@ -67825,8 +66550,7 @@ Func_327e8: ; 327e8 (c:67e8)
 	call CompareHLtoDE
 	jp nc, Func_32800
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $4c
+	write_hl_to_sp_plus $4c
 Func_32800: ; 32800 (c:6800)
 	ld hl, sp+$4e
 	ld a, [hl]
@@ -68089,35 +66813,28 @@ Func_3297b: ; 3297b (c:697b)
 	ld a, [wOAM23XCoord]
 	cp $1
 	jp nz, Func_329c5
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld de, $2
 	call DivideHLByDESigned
-	call WriteHLToSPPlusParam8
-	db $19
+	write_hl_to_sp_plus $19
 	jp Func_329e1
 
 Func_329c5: ; 329c5 (c:69c5)
 	ld a, [wOAM23XCoord]
 	cp $2
 	jp nz, Func_329d9
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	add hl, hl
-	call WriteHLToSPPlusParam8
-	db $19
+	write_hl_to_sp_plus $19
 	jp Func_329e1
 
 Func_329d9: ; 329d9 (c:69d9)
-	call GetHLAtSPPlusParam8
-	db $0f
-	call WriteHLToSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $0f
+	write_hl_to_sp_plus $19
 Func_329e1: ; 329e1 (c:69e1)
 	ld hl, sp+$13
 	call PutLongFromHLOnStack
-	call GetHLAtSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $1d
 	ld bc, $0
 	inc h
 	dec h
@@ -68165,8 +66882,7 @@ Func_32a2d: ; 32a2d (c:6a2d)
 Func_32a37: ; 32a37
 	push hl
 	add sp, -$16
-	call GetHLAtSPPlusParam8
-	db $18
+	read_hl_from_sp_plus $18
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -68260,8 +66976,7 @@ Func_32abe: ; 32abe (c:6abe)
 	ld [wVideoTransferRequestBank + 9], a
 Func_32ac2: ; 32ac2 (c:6ac2)
 	set_farcall_addrs_hli Func_14db8
-	call GetHLAtSPPlusParam8
-	db $1a
+	read_hl_from_sp_plus $1a
 	call FarCall
 	pop bc
 	ld a, [wVideoTransferRequestBank + 9]
@@ -68276,8 +66991,7 @@ Func_32ae4: ; 32ae4 (c:6ae4)
 
 Func_32aea: ; 32aea (c:6aea)
 	push bc
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	ld bc, $0
 	inc h
 	dec h
@@ -68580,8 +67294,7 @@ Func_32ceb: ; 32ceb (c:6ceb)
 	ld a, [hl]
 	cp $34
 	jp nz, Func_32d3f
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	ld bc, $0
 	inc h
 	dec h
@@ -68616,8 +67329,7 @@ Func_32ceb: ; 32ceb (c:6ceb)
 	jp Func_32d5f
 
 Func_32d3f: ; 32d3f (c:6d3f)
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	ld bc, $0
 	inc h
 	dec h
@@ -70955,15 +69667,13 @@ Data_33f63: ; 33f63
 Func_33f72: ; 33f72 (c:7f72)
 	push hl
 	add sp, -$e
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	ld de, $5
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	inc hl
 	inc hl
 	inc hl
@@ -71009,8 +69719,7 @@ Func_33f72: ; 33f72 (c:7f72)
 	pop hl
 	ld a, l
 	call GetSRAMBank
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	ld a, l
 	or h
 	jp nz, Func_33fdc
@@ -73130,8 +71839,7 @@ Func_4d32b: ; 4d32b (13:532b)
 	ld a, [hl]
 	or a
 	jp nz, Func_4d390
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -73150,8 +71858,7 @@ Func_4d32b: ; 4d32b (13:532b)
 	ld de, 999
 	call CompareHLtoDE
 	jp nc, Func_4d386
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -73176,8 +71883,7 @@ Func_4d386: ; 4d386 (13:5386)
 	jp Func_4d3d0
 
 Func_4d390: ; 4d390 (13:5390)
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -73196,8 +71902,7 @@ Func_4d390: ; 4d390 (13:5390)
 	ld de, 999
 	call CompareHLtoDE
 	jp nc, Func_4d3c9
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -73231,8 +71936,7 @@ Func_4d3d4: ; 4d3d4 (13:53d4)
 	cp $1
 	jp nz, Func_4d423
 	push de
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -73251,8 +71955,7 @@ Func_4d3d4: ; 4d3d4 (13:53d4)
 	ld de, 999
 	call CompareHLtoDE
 	jp nc, Func_4d418
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -73279,8 +71982,7 @@ Func_4d418: ; 4d418 (13:5418)
 
 Func_4d423: ; 4d423 (13:5423)
 	push de
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -73299,8 +72001,7 @@ Func_4d423: ; 4d423 (13:5423)
 	ld de, 999
 	call CompareHLtoDE
 	jp nc, Func_4d45d
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -73505,8 +72206,7 @@ Func_4d595: ; 4d595 (13:5595)
 	pop bc
 	pop af
 	push af
-	call GetHLAtSPPlusParam8
-	db $90
+	read_hl_from_sp_plus $90
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -73999,8 +72699,7 @@ Func_4d978: ; 4d978 (13:5978)
 	pop bc
 	pop af
 	push af
-	call GetHLAtSPPlusParam8
-	db $88
+	read_hl_from_sp_plus $88
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -78865,14 +77564,10 @@ Func_4fe2b: ; 4fe2b (13:7e2b)
 	ld a, [hl]
 	or a
 	jp nz, Func_4fea0
-	call GetHLAtSPPlusParam8
-	db $12
-	call WriteHLToSPPlusParam8
-	db $10
-	call GetHLAtSPPlusParam8
-	db $16
-	call WriteHLToSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $12
+	write_hl_to_sp_plus $10
+	read_hl_from_sp_plus $16
+	write_hl_to_sp_plus $14
 	ld hl, sp+$18
 	ld [hl], $0
 	set_farcall_addrs_hli Func_6b74
@@ -80525,17 +79220,14 @@ Func_50b55: ; 50b55
 	call Func_3ca1
 	pop bc
 	pop hl
-	call WriteHLToSPPlusParam8
-	db $19
-	call GetHLAtSPPlusParam8
-	db $19
+	write_hl_to_sp_plus $19
+	read_hl_from_sp_plus $19
 	ld de, $5
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	inc hl
 	inc hl
 	inc hl
@@ -80546,8 +79238,7 @@ Func_50b55: ; 50b55
 	add hl, bc
 	pop de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld de, $d
 	add hl, de
 	ld e, [hl]
@@ -80623,8 +79314,7 @@ Func_50c24: ; 50c24 (14:4c24)
 	ld a, l
 	or h
 	jp nz, Func_50ccc
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -80654,8 +79344,7 @@ Func_50c9d: ; 50c9d (14:4c9d)
 	ld e, $1
 	call FarCall
 Func_50cb1: ; 50cb1 (14:4cb1)
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	inc hl
 	inc hl
 	inc hl
@@ -80663,8 +79352,7 @@ Func_50cb1: ; 50cb1 (14:4cb1)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	ld de, $5
 	add hl, de
 	ld de, $0
@@ -82058,23 +80746,20 @@ Func_5178a: ; 5178a
 	push hl
 	add sp, -$38
 	xor a
-	call GetHLAtSPPlusParam8
-	db $3a
+	read_hl_from_sp_plus $3a
 	ld de, $d
 	add hl, de
 	ld e, [hl]
 	push de
 	ld hl, sp+$2
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	ld de, $5
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	inc hl
 	inc hl
 	inc hl
@@ -82181,8 +80866,7 @@ Func_51882: ; 51882 (14:5882)
 	ld hl, $110
 	call FarCall
 Func_51898: ; 51898 (14:5898)
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	inc hl
 	inc hl
 	inc hl
@@ -82190,16 +80874,14 @@ Func_51898: ; 51898 (14:5898)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	ld de, $5
 	add hl, de
 	ld de, $0
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -82830,20 +81512,16 @@ Func_51ea4: ; 51ea4
 	push hl
 	push hl
 	ld hl, -1
-	call WriteHLToSPPlusParam8
-	db $21
+	write_hl_to_sp_plus $21
 	pop hl
-	call WriteHLToSPPlusParam8
-	db $21
-	call GetHLAtSPPlusParam8
-	db $21
+	write_hl_to_sp_plus $21
+	read_hl_from_sp_plus $21
 	ld de, $5
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $21
 	inc hl
 	inc hl
 	inc hl
@@ -82854,8 +81532,7 @@ Func_51ea4: ; 51ea4
 	add hl, bc
 	ld c, l
 	push bc
-	call GetHLAtSPPlusParam8
-	db $23
+	read_hl_from_sp_plus $23
 	ld de, $d
 	add hl, de
 	ld a, [hl]
@@ -82870,10 +81547,8 @@ Func_51ea4: ; 51ea4
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $64
 	call FarCall
-	call WriteHLToSPPlusParam8
-	db $21
-	call GetHLAtSPPlusParam8
-	db $21
+	write_hl_to_sp_plus $21
+	read_hl_from_sp_plus $21
 	ld c, l
 	ld b, h
 	ld de, $1405
@@ -82925,19 +81600,16 @@ Func_51ea4: ; 51ea4
 	ld de, Pointers_51e56
 	ld hl, $10e
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld c, l
 	ld b, h
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
 	set_farcall_addrs_hli Func_17c57
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	jp Func_522ac
 
 Func_51fa4: ; 51fa4 (14:5fa4)
@@ -82951,19 +81623,16 @@ Func_51fa4: ; 51fa4 (14:5fa4)
 	ld de, Pointers_51e56
 	ld hl, $10e
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld c, l
 	ld b, h
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
 	set_farcall_addrs_hli Func_17c57
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	jp Func_522ac
 
 Func_51fee: ; 51fee (14:5fee)
@@ -83020,19 +81689,16 @@ Func_5200b: ; 5200b (14:600b)
 	ld de, Pointers_51e6e
 	ld hl, $10e
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld c, l
 	ld b, h
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
 	set_farcall_addrs_hli Func_17c57
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	jp Func_522ac
 
 Func_5208b: ; 5208b (14:608b)
@@ -83046,19 +81712,16 @@ Func_5208b: ; 5208b (14:608b)
 	ld de, Pointers_51e6e
 	ld hl, $10e
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld c, l
 	ld b, h
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
 	set_farcall_addrs_hli Func_17c57
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	jp Func_522ac
 
 Func_520d5: ; 520d5 (14:60d5)
@@ -83089,8 +81752,7 @@ Func_520ef: ; 520ef (14:60ef)
 	call Func_3ca1
 	pop bc
 	set_farcall_addrs_hli Func_14db8
-	call GetHLAtSPPlusParam8
-	db $21
+	read_hl_from_sp_plus $21
 	call FarCall
 	pop hl
 	pop de
@@ -83101,8 +81763,7 @@ Func_520ef: ; 520ef (14:60ef)
 	jp nz, Func_52130
 Func_52126: ; 52126 (14:6126)
 	ld hl, $4000
-	call WriteHLToSPPlusParam8
-	db $1b
+	write_hl_to_sp_plus $1b
 	jp Func_52287
 
 Func_52130: ; 52130 (14:6130)
@@ -83132,8 +81793,7 @@ Func_52164: ; 52164 (14:6164)
 	call FarCall
 Func_5216f: ; 5216f (14:616f)
 	ld hl, $4000
-	call WriteHLToSPPlusParam8
-	db $1b
+	write_hl_to_sp_plus $1b
 	jp Func_52287
 
 Func_52179: ; 52179 (14:6179)
@@ -83189,8 +81849,7 @@ Func_521da: ; 521da (14:61da)
 	ld hl, wVideoTransferRequestBank + 9
 	sub [hl]
 	jp nz, Func_52217
-	call GetHLAtSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $1d
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -83201,8 +81860,7 @@ Func_521da: ; 521da (14:61da)
 	sbc $0
 	ld [hl], a
 Func_52217: ; 52217 (14:6217)
-	call GetHLAtSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $1d
 	inc hl
 	inc hl
 	inc hl
@@ -83210,8 +81868,7 @@ Func_52217: ; 52217 (14:6217)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call GetHLAtSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $1d
 	ld de, $5
 	add hl, de
 	ld de, $0
@@ -83247,22 +81904,18 @@ Func_52275: ; 52275 (14:6275)
 	call FarCall
 Func_52280: ; 52280 (14:6280)
 	ld hl, $8000
-	call WriteHLToSPPlusParam8
-	db $1b
+	write_hl_to_sp_plus $1b
 Func_52287: ; 52287 (14:6287)
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	ld c, l
 	ld b, h
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
 	set_farcall_addrs_hli Func_17c57
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 Func_522ac: ; 522ac (14:62ac)
 	push de
 	push hl
@@ -83529,17 +82182,14 @@ Func_524b6: ; 524b6 (14:64b6)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $95
-	call GetHLAtSPPlusParam8
-	db $95
+	write_hl_to_sp_plus $95
+	read_hl_from_sp_plus $95
 	ld de, $5
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $95
+	read_hl_from_sp_plus $95
 	inc hl
 	inc hl
 	inc hl
@@ -83551,8 +82201,7 @@ Func_524b6: ; 524b6 (14:64b6)
 	ld a, l
 	ld hl, sp+$c
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $95
+	read_hl_from_sp_plus $95
 	ld de, $d
 	add hl, de
 	ld l, [hl]
@@ -83561,10 +82210,8 @@ Func_524b6: ; 524b6 (14:64b6)
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $168
 	call FarCall
-	call WriteHLToSPPlusParam8
-	db $15
-	call GetHLAtSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $15
+	read_hl_from_sp_plus $15
 	ld c, l
 	ld b, h
 	ld de, $1412
@@ -83619,8 +82266,7 @@ Func_524b6: ; 524b6 (14:64b6)
 	call PlaceString
 	pop bc
 Func_52591: ; 52591 (14:6591)
-	call GetHLAtSPPlusParam8
-	db $91
+	read_hl_from_sp_plus $91
 	ld a, l
 	push af
 	ld hl, sp+$74
@@ -83629,8 +82275,7 @@ Func_52591: ; 52591 (14:6591)
 	ld e, a
 	ld hl, sp+$45
 	call Func_236f
-	call GetHLAtSPPlusParam8
-	db $4a
+	read_hl_from_sp_plus $4a
 	push hl
 	ld hl, sp+$4c
 	ld l, [hl]
@@ -83645,11 +82290,9 @@ Func_52591: ; 52591 (14:6591)
 	add hl, bc
 	ld de, $6ea7
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $15
 	ld c, $19
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	push de
 	push hl
 	pop de
@@ -83677,8 +82320,7 @@ Func_52591: ; 52591 (14:6591)
 	ld de, -1
 	ld hl, -1
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $98
+	read_hl_from_sp_plus $98
 	ld a, l
 	and $f
 	ld l, a
@@ -83690,11 +82332,9 @@ Func_52591: ; 52591 (14:6591)
 	add hl, de
 	ld de, $6ef6
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $15
 	ld c, $19
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	push de
 	push hl
 	pop de
@@ -83770,11 +82410,9 @@ Func_52591: ; 52591 (14:6591)
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $400
 	call FarCall
-	call WriteHLToSPPlusParam8
-	db $1f
+	write_hl_to_sp_plus $1f
 	set_farcall_addrs_hli Func_7e8a
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	push de
 	push hl
 	pop de
@@ -83783,11 +82421,9 @@ Func_52591: ; 52591 (14:6591)
 	ld a, [hl]
 	add $55
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $1b
+	write_hl_to_sp_plus $1b
 	ld bc, $0
 	ld hl, sp+$15
 	ld [hl], $0
@@ -83796,8 +82432,7 @@ Func_526e4: ; 526e4 (14:66e4)
 	ld a, [hl]
 	cp $40
 	jp nc, Func_5270e
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	ld a, [hl]
 	or a
 	jp nz, Func_526fb
@@ -83811,19 +82446,16 @@ Func_526fb: ; 526fb (14:66fb)
 	inc a
 	ld hl, sp+$15
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $1b
+	write_hl_to_sp_plus $1b
 	jp Func_526e4
 
 Func_5270e: ; 5270e (14:670e)
 	push bc
 	set_farcall_addrs_hli FixAndLoadPoncotPicWithTilemap
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	ld de, $41
 	add hl, de
 	push de
@@ -83833,15 +82465,13 @@ Func_5270e: ; 5270e (14:670e)
 	ld hl, $89b0
 	call FarCall
 	call WaitVideoTransfer
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	ld e, [hl]
 	ld hl, sp+$14
 	ld [hl], e
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	inc hl
 	push de
 	push hl
@@ -83851,8 +82481,7 @@ Func_5270e: ; 5270e (14:670e)
 	call FarCall
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_17c57
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	call FarCall
 	jp Func_527db
 
@@ -83860,11 +82489,9 @@ Func_5276c: ; 5276c (14:676c)
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $400
 	call FarCall
-	call WriteHLToSPPlusParam8
-	db $1f
+	write_hl_to_sp_plus $1f
 	ld bc, $89b0
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	push de
 	push hl
 	pop de
@@ -83876,8 +82503,7 @@ Func_5276c: ; 5276c (14:676c)
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	push de
 	push hl
 	pop de
@@ -83886,8 +82512,7 @@ Func_5276c: ; 5276c (14:676c)
 	call FarCall
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_17c57
-	call GetHLAtSPPlusParam8
-	db $1f
+	read_hl_from_sp_plus $1f
 	call FarCall
 	set_farcall_addrs_hli Func_615be
 	ld hl, sp+$7a
@@ -83906,24 +82531,20 @@ Func_527db: ; 527db (14:67db)
 	call Func_1fbe
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_57cf7
-	call GetHLAtSPPlusParam8
-	db $8a
+	read_hl_from_sp_plus $8a
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $88
+	read_hl_from_sp_plus $88
 	push de
 	push hl
 	pop de
 	pop hl
 	ld hl, $10d
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $8c
+	read_hl_from_sp_plus $8c
 	push de
 	push hl
 	pop de
@@ -83933,8 +82554,7 @@ Func_527db: ; 527db (14:67db)
 	ld de, Data_52ad4
 	ld hl, $10f
 	call PlaceStringDEatCoordHL
-	call GetHLAtSPPlusParam8
-	db $88
+	read_hl_from_sp_plus $88
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -83944,15 +82564,13 @@ Func_527db: ; 527db (14:67db)
 	push hl
 	call PlaceString
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $8a
+	read_hl_from_sp_plus $8a
 	ld c, l
 	ld b, h
 	ld de, $103
 	ld hl, -1
 	call Func_2230
-	call GetHLAtSPPlusParam8
-	db $8c
+	read_hl_from_sp_plus $8c
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -83962,8 +82580,7 @@ Func_527db: ; 527db (14:67db)
 	push hl
 	call PlaceString
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $8e
+	read_hl_from_sp_plus $8e
 	ld c, l
 	ld b, h
 	ld de, $103
@@ -83972,8 +82589,7 @@ Func_527db: ; 527db (14:67db)
 	pop bc
 	pop af
 	push bc
-	call GetHLAtSPPlusParam8
-	db $91
+	read_hl_from_sp_plus $91
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -83995,8 +82611,7 @@ Func_528a5: ; 528a5 (14:68a5)
 	ld hl, $100c
 	call Func_2230
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $91
+	read_hl_from_sp_plus $91
 	ld e, c
 	ld d, $0
 	add hl, de
@@ -84020,8 +82635,7 @@ Func_528d2: ; 528d2 (14:68d2)
 	ld hl, sp+$e
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam8
-	db $93
+	read_hl_from_sp_plus $93
 	add hl, bc
 	push de
 	push hl
@@ -84075,8 +82689,7 @@ Func_52940: ; 52940 (14:6940)
 	ld bc, $0
 	push bc
 	push hl
-	call GetHLAtSPPlusParam8
-	db $90
+	read_hl_from_sp_plus $90
 	ld bc, $0
 	push bc
 	push hl
@@ -84089,8 +82702,7 @@ Func_5295a: ; 5295a (14:695a)
 	call SetStringStartState
 	ld hl, sp+$a
 	call PutLongFromHLOnStack
-	call GetHLAtSPPlusParam8
-	db $90
+	read_hl_from_sp_plus $90
 	ld bc, $0
 	push bc
 	push hl
@@ -84232,16 +82844,14 @@ Func_52a86: ; 52a86 (14:6a86)
 	xor a
 	call Func_3ca1
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	ld c, l
 	ld b, h
 	ld de, $1412
 	ld hl, $0
 	call Func_2323
 	set_farcall_addrs_hli Func_17c57
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	call FarCall
 	call Func_1f7b
 	ld hl, sp+$9
@@ -86975,8 +85585,7 @@ Func_54782:
 	add sp, -$54
 	ld c, $0
 Func_54787: ; 54787 (15:4787)
-	call GetHLAtSPPlusParam8
-	db $56
+	read_hl_from_sp_plus $56
 	ld de, $7
 	add hl, de
 	ld e, [hl]
@@ -87089,13 +85698,11 @@ Func_54846:
 	push hl
 	add sp, -$38
 	push de
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	ld e, h
 	ld hl, sp+$2
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $3c
+	read_hl_from_sp_plus $3c
 	ld a, l
 	push af
 	set_farcall_addrs_hli Func_6b55
@@ -87176,8 +85783,7 @@ Func_54846:
 	add hl, de
 	ld de, Data_54972
 	call PlaceStringDEatCoordHL
-	call GetHLAtSPPlusParam8
-	db $27
+	read_hl_from_sp_plus $27
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -87187,8 +85793,7 @@ Func_54846:
 	push hl
 	call PlaceString
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $29
+	read_hl_from_sp_plus $29
 	ld c, l
 	ld b, h
 	ld de, $103
@@ -87208,8 +85813,7 @@ Func_54846:
 	add hl, de
 	ld de, Data_54977
 	call PlaceStringDEatCoordHL
-	call GetHLAtSPPlusParam8
-	db $29
+	read_hl_from_sp_plus $29
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -87219,8 +85823,7 @@ Func_54846:
 	push hl
 	call PlaceString
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $2b
+	read_hl_from_sp_plus $2b
 	ld c, l
 	ld b, h
 	ld de, $103
@@ -87505,8 +86108,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $0b
+	write_hl_to_sp_plus $0b
 	ld hl, wc2e8 + 1
 	ld l, [hl]
 	ld h, $0
@@ -87743,8 +86345,7 @@ Func_54c78: ; 54c78 (15:4c78)
 	ld c, $0
 	call GetHLAtSPPlus7
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	pop de
 	call Func_5512e
 	jp Func_54da5
@@ -87752,8 +86353,7 @@ Func_54c78: ; 54c78 (15:4c78)
 Func_54cbd: ; 54cbd (15:4cbd)
 	read_hl_from wOAM04VTile
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	ld de, $3e7
 	ld a, e
 	sub l
@@ -87800,8 +86400,7 @@ Func_54d12: ; 54d12 (15:4d12)
 	ld c, $1
 	call GetHLAtSPPlus5
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	pop de
 	call Func_5512e
 	jp Func_54da5
@@ -87816,11 +86415,9 @@ Func_54d34: ; 54d34 (15:4d34)
 Func_54d37: ; 54d37 (15:4d37)
 	read_hl_from wOAM04VTile
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	pop de
 	ld a, l
 	sub e
@@ -87831,11 +86428,9 @@ Func_54d37: ; 54d37 (15:4d37)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_54d69
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	pop de
 	ld a, l
 	sub e
@@ -87875,8 +86470,7 @@ Func_54d97: ; 54d97 (15:4d97)
 	ld c, $0
 	call GetHLAtSPPlus7
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0d
+	read_hl_from_sp_plus $0d
 	pop de
 	call Func_5512e
 Func_54da5: ; 54da5 (15:4da5)
@@ -88097,11 +86691,9 @@ Func_54f0e: ; 54f0e (15:4f0e)
 	call FarCall
 	ld hl, sp+$53
 	ld c, [hl]
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $43
+	read_hl_from_sp_plus $43
 	pop de
 	ld a, l
 	sub e
@@ -88109,13 +86701,10 @@ Func_54f0e: ; 54f0e (15:4f0e)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $41
-	call GetHLAtSPPlusParam8
-	db $22
+	write_hl_to_sp_plus $41
+	read_hl_from_sp_plus $22
 	push hl
-	call GetHLAtSPPlusParam8
-	db $47
+	read_hl_from_sp_plus $47
 	pop de
 	ld a, l
 	sub e
@@ -88123,13 +86712,10 @@ Func_54f0e: ; 54f0e (15:4f0e)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $45
-	call GetHLAtSPPlusParam8
-	db $27
+	write_hl_to_sp_plus $45
+	read_hl_from_sp_plus $27
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4c
+	read_hl_from_sp_plus $4c
 	pop de
 	ld a, l
 	sub e
@@ -88137,13 +86723,10 @@ Func_54f0e: ; 54f0e (15:4f0e)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $4a
-	call GetHLAtSPPlusParam8
-	db $2b
+	write_hl_to_sp_plus $4a
+	read_hl_from_sp_plus $2b
 	push hl
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	pop de
 	ld a, l
 	sub e
@@ -88151,13 +86734,10 @@ Func_54f0e: ; 54f0e (15:4f0e)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $4e
-	call GetHLAtSPPlusParam8
-	db $29
+	write_hl_to_sp_plus $4e
+	read_hl_from_sp_plus $29
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	pop de
 	ld a, l
 	sub e
@@ -88165,8 +86745,7 @@ Func_54f0e: ; 54f0e (15:4f0e)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $4c
+	write_hl_to_sp_plus $4c
 	pop af
 	push bc
 	push af
@@ -88215,59 +86794,42 @@ Func_55012: ; 55012 (15:5012)
 	pop af
 	ld hl, sp+$31
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $43
+	read_hl_from_sp_plus $43
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $41
-	call GetHLAtSPPlusParam8
-	db $22
+	write_hl_to_sp_plus $41
+	read_hl_from_sp_plus $22
 	push hl
-	call GetHLAtSPPlusParam8
-	db $47
+	read_hl_from_sp_plus $47
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $45
-	call GetHLAtSPPlusParam8
-	db $27
+	write_hl_to_sp_plus $45
+	read_hl_from_sp_plus $27
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4c
+	read_hl_from_sp_plus $4c
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4a
-	call GetHLAtSPPlusParam8
-	db $2b
+	write_hl_to_sp_plus $4a
+	read_hl_from_sp_plus $2b
 	push hl
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4e
-	call GetHLAtSPPlusParam8
-	db $29
+	write_hl_to_sp_plus $4e
+	read_hl_from_sp_plus $29
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4e
+	read_hl_from_sp_plus $4e
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $4c
+	write_hl_to_sp_plus $4c
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $50
+	write_hl_to_sp_plus $50
 	pop bc
 	ld hl, sp+$51
 	ld [hl], c
-	call GetHLAtSPPlusParam8
-	db $3f
+	read_hl_from_sp_plus $3f
 	push de
 	push hl
 	pop de
@@ -88276,11 +86838,9 @@ Func_55012: ; 55012 (15:5012)
 	call CompareHLtoDE
 	jp nc, Func_55084
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $3f
+	write_hl_to_sp_plus $3f
 Func_55084: ; 55084 (15:5084)
-	call GetHLAtSPPlusParam8
-	db $43
+	read_hl_from_sp_plus $43
 	push de
 	push hl
 	pop de
@@ -88289,11 +86849,9 @@ Func_55084: ; 55084 (15:5084)
 	call CompareHLtoDE
 	jp nc, Func_5509c
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $43
+	write_hl_to_sp_plus $43
 Func_5509c: ; 5509c (15:509c)
-	call GetHLAtSPPlusParam8
-	db $48
+	read_hl_from_sp_plus $48
 	push de
 	push hl
 	pop de
@@ -88302,11 +86860,9 @@ Func_5509c: ; 5509c (15:509c)
 	call CompareHLtoDE
 	jp nc, Func_550b4
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $48
+	write_hl_to_sp_plus $48
 Func_550b4: ; 550b4 (15:50b4)
-	call GetHLAtSPPlusParam8
-	db $4c
+	read_hl_from_sp_plus $4c
 	push de
 	push hl
 	pop de
@@ -88315,11 +86871,9 @@ Func_550b4: ; 550b4 (15:50b4)
 	call CompareHLtoDE
 	jp nc, Func_550cc
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $4c
+	write_hl_to_sp_plus $4c
 Func_550cc: ; 550cc (15:50cc)
-	call GetHLAtSPPlusParam8
-	db $4a
+	read_hl_from_sp_plus $4a
 	push de
 	push hl
 	pop de
@@ -88328,34 +86882,25 @@ Func_550cc: ; 550cc (15:50cc)
 	call CompareHLtoDE
 	jp nc, Func_550e4
 	ld hl, $3e7
-	call WriteHLToSPPlusParam8
-	db $4a
+	write_hl_to_sp_plus $4a
 Func_550e4: ; 550e4 (15:50e4)
-	call GetHLAtSPPlusParam8
-	db $3d
+	read_hl_from_sp_plus $3d
 	push hl
-	call GetHLAtSPPlusParam8
-	db $41
+	read_hl_from_sp_plus $41
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_550fc
-	call GetHLAtSPPlusParam8
-	db $3f
-	call WriteHLToSPPlusParam8
-	db $3d
+	read_hl_from_sp_plus $3f
+	write_hl_to_sp_plus $3d
 Func_550fc: ; 550fc (15:50fc)
-	call GetHLAtSPPlusParam8
-	db $41
+	read_hl_from_sp_plus $41
 	push hl
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_55114
-	call GetHLAtSPPlusParam8
-	db $43
-	call WriteHLToSPPlusParam8
-	db $41
+	read_hl_from_sp_plus $43
+	write_hl_to_sp_plus $41
 Func_55114: ; 55114 (15:5114)
 	set_farcall_addrs_hli Func_6b74
 	ld hl, sp+$2f
@@ -89322,8 +87867,7 @@ Func_5582b: ; 5582b (15:582b)
 	ld a, $3
 	call Func_57e7b
 	push af
-	call GetHLAtSPPlusParam16
-	dw $03aa
+	read_hl_from_sp_plus $03aa
 	ld a, l
 	and $f
 	ld l, a
@@ -89532,24 +88076,20 @@ Func_55a26: ; 55a26 (15:5a26)
 	call Func_55723
 	call Func_1fbe
 	call WaitVideoTransfer
-	call GetHLAtSPPlusParam16
-	dw $0396
+	read_hl_from_sp_plus $0396
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam16
-	dw $0394
+	read_hl_from_sp_plus $0394
 	push de
 	push hl
 	pop de
 	pop hl
 	ld hl, $10b
 	call Func_57cf7
-	call GetHLAtSPPlusParam16
-	dw $039a
+	read_hl_from_sp_plus $039a
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam16
-	dw $0398
+	read_hl_from_sp_plus $0398
 	push de
 	push hl
 	pop de
@@ -89559,8 +88099,7 @@ Func_55a26: ; 55a26 (15:5a26)
 	ld de, Data_55c13
 	ld hl, $10f
 	call PlaceStringDEatCoordHL
-	call GetHLAtSPPlusParam16
-	dw $0394
+	read_hl_from_sp_plus $0394
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -89570,15 +88109,13 @@ Func_55a26: ; 55a26 (15:5a26)
 	push hl
 	call PlaceString
 	pop bc
-	call GetHLAtSPPlusParam16
-	dw $0396
+	read_hl_from_sp_plus $0396
 	ld c, l
 	ld b, h
 	ld de, $103
 	ld hl, -1
 	call Func_2230
-	call GetHLAtSPPlusParam16
-	dw $0398
+	read_hl_from_sp_plus $0398
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -89588,8 +88125,7 @@ Func_55a26: ; 55a26 (15:5a26)
 	push hl
 	call PlaceString
 	pop bc
-	call GetHLAtSPPlusParam16
-	dw $039a
+	read_hl_from_sp_plus $039a
 	ld c, l
 	ld b, h
 	ld de, $103
@@ -89599,8 +88135,7 @@ Func_55a26: ; 55a26 (15:5a26)
 	add hl, sp
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam16
-	dw $039f
+	read_hl_from_sp_plus $039f
 	add hl, bc
 	push de
 	push hl
@@ -89623,8 +88158,7 @@ Func_55ae2: ; 55ae2 (15:5ae2)
 	add hl, sp
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam16
-	dw $03a1
+	read_hl_from_sp_plus $03a1
 	add hl, bc
 	push de
 	push hl
@@ -89647,8 +88181,7 @@ Func_55b13: ; 55b13 (15:5b13)
 	add hl, sp
 	ld c, [hl]
 	ld b, $0
-	call GetHLAtSPPlusParam16
-	dw $03a3
+	read_hl_from_sp_plus $03a3
 	add hl, bc
 	push de
 	push hl
@@ -89705,8 +88238,7 @@ Func_55b8a: ; 55b8a (15:5b8a)
 	ld bc, $0
 	push bc
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $03a0
+	read_hl_from_sp_plus $03a0
 	ld bc, $0
 	push bc
 	push hl
@@ -89719,8 +88251,7 @@ Func_55ba5: ; 55ba5 (15:5ba5)
 	call SetStringStartState
 	ld hl, sp+$6
 	call PutLongFromHLOnStack
-	call GetHLAtSPPlusParam16
-	dw $03a0
+	read_hl_from_sp_plus $03a0
 	ld bc, $0
 	push bc
 	push hl
@@ -90004,15 +88535,12 @@ Func_55dd6: ; 55dd6 (15:5dd6)
 	push hl
 	add sp, -$24
 	push de
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	push hl
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	ld [hl], $81
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $2a
+	write_hl_to_sp_plus $2a
 	set_farcall_addrs_hli Func_7dfc
 	pop hl
 	pop de
@@ -90030,8 +88558,7 @@ Func_55dd6: ; 55dd6 (15:5dd6)
 	jp nc, Func_55e49
 	set_farcall_addrs_hli Func_17975
 	ld c, $1
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	push de
 	push hl
 	pop de
@@ -90040,30 +88567,23 @@ Func_55dd6: ; 55dd6 (15:5dd6)
 	ld l, [hl]
 	ld h, $0
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $28
-	call GetHLAtSPPlusParam8
-	db $28
+	write_hl_to_sp_plus $28
+	read_hl_from_sp_plus $28
 	ld [hl], $90
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $28
-	call GetHLAtSPPlusParam8
-	db $28
+	write_hl_to_sp_plus $28
+	read_hl_from_sp_plus $28
 	ld [hl], $90
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $28
+	write_hl_to_sp_plus $28
 	jp Func_55e7b
 
 Func_55e49: ; 55e49 (15:5e49)
 	set_farcall_addrs_hli Func_17975
 	ld c, $2
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	push de
 	push hl
 	pop de
@@ -90072,24 +88592,19 @@ Func_55e49: ; 55e49 (15:5e49)
 	ld l, [hl]
 	ld h, $0
 	call FarCall
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	inc hl
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $28
-	call GetHLAtSPPlusParam8
-	db $28
+	write_hl_to_sp_plus $28
+	read_hl_from_sp_plus $28
 	ld [hl], $90
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $28
+	write_hl_to_sp_plus $28
 Func_55e7b: ; 55e7b (15:5e7b)
 	ld bc, $6
 	ld hl, sp+$3
 	push hl
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	pop de
 	call CopyFromDEtoHL
 	pop hl
@@ -90097,16 +88612,13 @@ Func_55e7b: ; 55e7b (15:5e7b)
 	ld c, l
 	ld b, h
 	push bc
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	call FindFirstNonzero
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $28
+	write_hl_to_sp_plus $28
 	pop bc
 Func_55ea3: ; 55ea3 (15:5ea3)
 	ld l, c
@@ -90114,21 +88626,17 @@ Func_55ea3: ; 55ea3 (15:5ea3)
 	ld de, $a
 	call CompareHLtoDE
 	jp nc, Func_55ebd
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	ld [hl], $90
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $26
+	write_hl_to_sp_plus $26
 	inc bc
 	jp Func_55ea3
 
 Func_55ebd: ; 55ebd (15:5ebd)
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	push de
 	push hl
 	pop de
@@ -91277,8 +89785,7 @@ Func_56732: ; 56732 (15:6732)
 	dec e
 	ld hl, sp+$3e
 	call Func_236f
-	call GetHLAtSPPlusParam8
-	db $43
+	read_hl_from_sp_plus $43
 	pop de
 	pop af
 	push de
@@ -91586,8 +90093,7 @@ Func_569d9: ; 569d9 (15:69d9)
 	ld a, $3
 	call Func_57e7b
 	push af
-	call GetHLAtSPPlusParam8
-	db $20
+	read_hl_from_sp_plus $20
 	ld de, $c9a3
 	add hl, de
 	ld e, [hl]
@@ -91700,16 +90206,13 @@ Func_56abf: ; 56abf (15:6abf)
 	ld a, $3
 	call Func_57e7b
 	push af
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	ld de, $c9a3
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $1c
-	call GetHLAtSPPlusParam8
-	db $1c
+	write_hl_to_sp_plus $1c
+	read_hl_from_sp_plus $1c
 	ld e, l
 	ld hl, sp+$2
 	call Func_241f
@@ -91794,8 +90297,7 @@ Func_56ba1: ; 56ba1 (15:6ba1)
 	push de
 	add sp, -$3e
 	push bc
-	call GetHLAtSPPlusParam8
-	db $44
+	read_hl_from_sp_plus $44
 	push hl
 	read_hl_from wc2e6
 	ld de, $16
@@ -91803,8 +90305,7 @@ Func_56ba1: ; 56ba1 (15:6ba1)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam8
-	db $44
+	read_hl_from_sp_plus $44
 	ld a, l
 	or h
 	jp nz, Func_56bc6
@@ -91824,8 +90325,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	ld e, [hl]
 	ld hl, sp+$2a
 	call Func_241f
-	call GetHLAtSPPlusParam8
-	db $44
+	read_hl_from_sp_plus $44
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -91864,12 +90364,10 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	jp z, Func_56c23
 	or a
 	jp nz, Func_56c8f
-	call GetHLAtSPPlusParam8
-	db $44
+	read_hl_from_sp_plus $44
 	ld de, Data_56b9c
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
 Func_56c23: ; 56c23 (15:6c23)
@@ -91901,40 +90399,32 @@ Func_56c23: ; 56c23 (15:6c23)
 	jp nz, Func_56c6d
 	ld hl, sp+$17
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 	ld hl, sp+$32
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 	jp Func_56c8c
 
 Func_56c6d: ; 56c6d (15:6c6d)
 	ld hl, sp+$31
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 	ld hl, sp+$17
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	dec hl
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 Func_56c8c: ; 56c8c (15:6c8c)
 	jp Func_56d4b
 
@@ -92008,12 +90498,10 @@ Func_56c8f: ; 56c8f (15:6c8f)
 Func_56cf1: ; 56cf1 (15:6cf1)
 	ld hl, sp+$4
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
 Func_56d03: ; 56d03 (15:6d03)
@@ -92023,40 +90511,32 @@ Func_56d03: ; 56d03 (15:6d03)
 	jp nz, Func_56d2c
 	ld hl, sp+$4
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 	ld hl, sp+$32
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
 Func_56d2c: ; 56d2c (15:6d2c)
 	ld hl, sp+$31
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 	ld hl, sp+$4
 	push hl
-	call GetHLAtSPPlusParam8
-	db $46
+	read_hl_from_sp_plus $46
 	dec hl
 	pop de
 	call CopyUntilNull
-	call WriteHLToSPPlusParam8
-	db $44
+	write_hl_to_sp_plus $44
 Func_56d4b: ; 56d4b (15:6d4b)
 	pop hl
 	call FindFirstNonzero
@@ -92071,21 +90551,17 @@ Func_56d58: ; 56d58 (15:6d58)
 	ld de, $8
 	call CompareHLtoDE
 	jp nc, Func_56d72
-	call GetHLAtSPPlusParam8
-	db $42
+	read_hl_from_sp_plus $42
 	ld [hl], $90
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $42
+	write_hl_to_sp_plus $42
 	inc bc
 	jp Func_56d58
 
 Func_56d72: ; 56d72 (15:6d72)
-	call GetHLAtSPPlusParam8
-	db $42
+	read_hl_from_sp_plus $42
 	ld [hl], $0
-	call GetHLAtSPPlusParam8
-	db $42
+	read_hl_from_sp_plus $42
 	push de
 	push hl
 	pop de
@@ -92196,8 +90672,7 @@ Func_56e45: ; 56e45 (15:6e45)
 	ld a, $2
 	call GetSRAMBank_ReadOnly
 	ld bc, $400
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push de
 	push hl
 	pop de
@@ -92209,8 +90684,7 @@ Func_56e45: ; 56e45 (15:6e45)
 	ld bc, $400
 	ld hl, sp+$c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	pop de
 	call CopyFromDEtoHL
 	pop bc
@@ -92234,8 +90708,7 @@ Func_56e8a: ; 56e8a (15:6e8a)
 	call GetSRAMBank_ReadOnly
 	pop bc
 	push bc
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	push de
 	push hl
 	pop de
@@ -92505,8 +90978,7 @@ Func_5712f: ; 5712f (15:712f)
 	ld a, $3
 	call Func_57e7b
 	ld c, a
-	call GetHLAtSPPlusParam8
-	db $14
+	read_hl_from_sp_plus $14
 	ld de, $c98e
 	add hl, de
 	ld a, [hl]
@@ -92570,8 +91042,7 @@ Func_5712f: ; 5712f (15:712f)
 	ld hl, $509
 	call Func_2230
 	pop af
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
@@ -92593,15 +91064,13 @@ Func_571bf:
 	push de
 	add sp, -$18
 	push bc
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	ld de, Init
 	call DivideHLByDESigned
 	ld a, l
 	ld hl, sp+$16
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $1e
+	read_hl_from_sp_plus $1e
 	push de
 	push hl
 	pop de
@@ -93657,8 +92126,7 @@ Func_578e9:
 	ld e, c
 	ld hl, sp+$6
 	call Func_236f
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	dec hl
 	ld e, l
 	ld hl, sp+$35
@@ -94199,8 +92667,7 @@ Func_57cf7: ; 57cf7 (15:7cf7)
 	ld b, h
 	call GetHLAtSPPlus8
 	push hl
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	pop de
 	call Func_2617
 	ld hl, sp+$2
@@ -94251,13 +92718,11 @@ Func_57d4a: ; 57d4a (15:7d4a)
 	push bc
 	push de
 	push bc
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $100
 	call DivideHLByDESigned
 	ld a, l
-	call GetHLAtSPPlusParam8
-	db $12
+	read_hl_from_sp_plus $12
 	ld de, $100
 	call DivideHLByDESigned
 	ld a, e
@@ -94354,16 +92819,14 @@ Func_57df1: ; 57df1 (15:7df1)
 	ld bc, $901
 	ld hl, sp+$2
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	call FarCall
 	call WaitVideoTransfer
 	jp Func_57e2d
 
 Func_57e16: ; 57e16 (15:7e16)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	call Coord2TileMap
 	ld c, l
 	ld b, h
@@ -94946,8 +93409,324 @@ Data_5bff9:
 SECTION "Bank 17", ROMX, BANK [$17]
 	dr $5c000, $5c0b2
 
-Func_5c0b2: ; 5c0b2
-	dr $5c0b2, $5c328
+Func_5c0b2: ; 5c0b2 (17:40b2)
+	push af
+	push de
+	ld hl, -$354
+	add hl, sp
+	ld sp, hl
+	ld a, [hSRAMBank]
+	ld e, a
+	ld hl, $354
+	add hl, sp
+	ld a, [hl]
+	cp $aa
+	jp c, Func_5c25a
+	ld hl, $354
+	add hl, sp
+	ld a, [hl]
+	cp $ae
+	jp nc, Func_5c25a
+	ld hl, $357
+	add hl, sp
+	ld a, [hl]
+	or a
+	jp nz, Func_5c197
+	push de
+	ld hl, $356
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	ld de, $351
+	call MultiplyHLbyDE
+	ld de, $7ed5
+	add hl, de
+	push hl
+	ld a, $2
+	call GetSRAMBank_ReadOnly
+	pop hl
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	inc de
+	ld hl, sp+$4
+	ld bc, $350
+	call CopyFromDEtoHL
+	pop hl
+	push hl
+	inc hl
+	ld c, l
+	ld b, h
+	ld hl, $0
+	write_hl_to_sp_plus $356
+	xor a
+Func_5c10e: ; 5c10e (17:410e)
+	cp $40
+	jp nc, Func_5c12d
+	push af
+	ld a, [bc]
+	or a
+	jp nz, Func_5c127
+	read_hl_from_sp_plus $358
+	ld de, $10
+	add hl, de
+	write_hl_to_sp_plus $358
+Func_5c127: ; 5c127 (17:4127)
+	pop af
+	inc a
+	inc bc
+	jp Func_5c10e
+
+Func_5c12d: ; 5c12d (17:412d)
+	set_farcall_addrs_hli FixAndLoadPoncotPicWithTilemap
+	read_hl_from_sp_plus $356
+	ld c, l
+	ld b, h
+	ld hl, sp+$44
+	push hl
+	ld hl, $35d
+	add hl, sp
+	ld a, [hl]
+	or a
+	jp nz, Func_5c151
+	ld hl, $0
+	jp Func_5c154
+
+Func_5c151: ; 5c151 (17:4151)
+	ld hl, $310
+Func_5c154: ; 5c154 (17:4154)
+	ld de, $89b0
+	add hl, de
+	pop de
+	call FarCall
+	call WaitVideoTransfer
+	pop hl
+	ld a, [hl]
+	ld hl, $356
+	add hl, sp
+	ld [hl], a
+	pop de
+	ld a, e
+	call GetSRAMBank
+	ld bc, $40
+	ld hl, sp+$0
+	push hl
+	read_hl_from wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $359
+	add hl, sp
+	ld a, [hl]
+	or a
+	jp nz, Func_5c18c
+	ld hl, $0
+	jp Func_5c18f
+
+Func_5c18c: ; 5c18c (17:418c)
+	ld hl, $40
+Func_5c18f: ; 5c18f (17:418f)
+	add hl, de
+	pop de
+	call CopyFromDEtoHL
+	jp Func_5c240
+
+Func_5c197: ; 5c197 (17:4197)
+	read_hl_from wc2e6
+	ld de, $1a
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	push de
+	push hl
+	pop de
+	pop hl
+	inc hl
+	ld c, l
+	ld b, h
+	ld hl, $0
+	write_hl_to_sp_plus $354
+	xor a
+Func_5c1b4: ; 5c1b4 (17:41b4)
+	cp $40
+	jp nc, Func_5c1d3
+	push af
+	ld a, [bc]
+	or a
+	jp nz, Func_5c1cd
+	read_hl_from_sp_plus $356
+	ld de, $10
+	add hl, de
+	write_hl_to_sp_plus $356
+Func_5c1cd: ; 5c1cd (17:41cd)
+	pop af
+	inc a
+	inc bc
+	jp Func_5c1b4
+
+Func_5c1d3: ; 5c1d3 (17:41d3)
+	pop de
+	push de
+	inc de
+	ld hl, sp+$2
+	ld bc, $350
+	call CopyFromDEtoHL
+	set_farcall_addrs_hli FixAndLoadPoncotPicWithTilemap
+	read_hl_from_sp_plus $354
+	ld c, l
+	ld b, h
+	ld hl, sp+$42
+	push hl
+	ld hl, $35b
+	add hl, sp
+	ld a, [hl]
+	or a
+	jp nz, Func_5c202
+	ld hl, $0
+	jp Func_5c205
+
+Func_5c202: ; 5c202 (17:4202)
+	ld hl, $310
+Func_5c205: ; 5c205 (17:4205)
+	ld de, $89b0
+	add hl, de
+	pop de
+	call FarCall
+	call WaitVideoTransfer
+	pop de
+	ld a, [de]
+	ld hl, $354
+	add hl, sp
+	ld [hl], a
+	ld bc, $40
+	ld hl, sp+$0
+	push hl
+	read_hl_from wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $359
+	add hl, sp
+	ld a, [hl]
+	or a
+	jp nz, Func_5c238
+	ld hl, $0
+	jp Func_5c23b
+
+Func_5c238: ; 5c238 (17:4238)
+	ld hl, $40
+Func_5c23b: ; 5c23b (17:423b)
+	add hl, de
+	pop de
+	call CopyFromDEtoHL
+Func_5c240: ; 5c240 (17:4240)
+	ld hl, $354
+	add hl, sp
+	ld a, [hl]
+	ld hl, $357
+	add hl, sp
+	ld c, [hl]
+	ld b, $0
+	read_hl_from wc2e6
+	ld de, $1c8
+	add hl, de
+	add hl, bc
+	ld [hl], a
+	jp Func_5c300
+
+Func_5c25a: ; 5c25a (17:425a)
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $400
+	call FarCall
+	write_hl_to_sp_plus $354
+	ld hl, $357
+	add hl, sp
+	ld a, [hl]
+	or a
+	jp nz, Func_5c27f
+	ld hl, $0
+	jp Func_5c282
+
+Func_5c27f: ; 5c27f (17:427f)
+	ld hl, $310
+Func_5c282: ; 5c282 (17:4282)
+	ld de, $89b0
+	add hl, de
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $354
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $354
+	add hl, sp
+	ld a, [hl]
+	call DecompressRequestRoboponPic
+	ld bc, $40
+	read_hl_from_sp_plus $354
+	push hl
+	read_hl_from wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $359
+	add hl, sp
+	ld a, [hl]
+	or a
+	jp nz, Func_5c2bd
+	ld hl, $0
+	jp Func_5c2c0
+
+Func_5c2bd: ; 5c2bd (17:42bd)
+	ld hl, $40
+Func_5c2c0: ; 5c2c0 (17:42c0)
+	add hl, de
+	pop de
+	call CopyFromDEtoHL
+	call WaitVideoTransfer
+	set_farcall_addrs_hli Func_17c57
+	read_hl_from_sp_plus $354
+	call FarCall
+	set_farcall_addrs_hli Func_615be
+	ld hl, $354
+	add hl, sp
+	ld a, [hl]
+	call FarCall
+	ld hl, $357
+	add hl, sp
+	ld c, [hl]
+	ld b, $0
+	read_hl_from wc2e6
+	ld de, $1c8
+	add hl, de
+	add hl, bc
+	ld [hl], a
+Func_5c300: ; 5c300 (17:4300)
+	set_farcall_addrs_hli Func_613fc
+	read_hl_from wc2e6
+	ld de, $1c8
+	add hl, de
+	ld a, [hl]
+	read_hl_from wc2e6
+	ld de, $1c9
+	add hl, de
+	ld e, [hl]
+	call FarCall
+	ld hl, $358
+	add hl, sp
+	ld sp, hl
+	ret
 
 Func_5c328: ; 5c328
 	dr $5c328, $5c386
@@ -95307,8 +94086,7 @@ Func_6020a: ; 6020a (18:420a)
 	and $2
 	jp z, Func_6037e
 	ld hl, sp+$7e
-	call WriteHLToSPPlusParam8
-	db $7d
+	write_hl_to_sp_plus $7d
 	ld c, $0
 Func_60268: ; 60268 (18:4268)
 	ld a, c
@@ -95379,8 +94157,7 @@ Func_60268: ; 60268 (18:4268)
 	ld hl, sp+$30
 	ld a, [hl]
 	call FarCall
-	call GetHLAtSPPlusParam8
-	ld a, a
+	read_hl_from_sp_plus $7f
 	ld [hl], a
 	ld hl, sp+$5b
 	push de
@@ -95440,8 +94217,7 @@ Func_60302: ; 60302 (18:4302)
 	ld hl, sp+$30
 	ld a, [hl]
 	call FarCall
-	call GetHLAtSPPlusParam8
-	ld a, a
+	read_hl_from_sp_plus $7f
 	inc hl
 	inc hl
 	inc hl
@@ -95471,11 +94247,9 @@ Func_60302: ; 60302 (18:4302)
 	pop bc
 Func_6036e: ; 6036e (18:436e)
 	inc c
-	call GetHLAtSPPlusParam8
-	db $7d
+	read_hl_from_sp_plus $7d
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $7d
+	write_hl_to_sp_plus $7d
 	jp Func_60268
 
 Func_6037b: ; 6037b (18:437b)
@@ -95483,8 +94257,7 @@ Func_6037b: ; 6037b (18:437b)
 
 Func_6037e: ; 6037e (18:437e)
 	ld hl, sp+$7e
-	call WriteHLToSPPlusParam8
-	db $7d
+	write_hl_to_sp_plus $7d
 	ld c, $0
 Func_60386: ; 60386 (18:4386)
 	ld a, c
@@ -95525,8 +94298,7 @@ Func_60386: ; 60386 (18:4386)
 	ld hl, sp+$30
 	ld a, [hl]
 	call FarCall
-	call GetHLAtSPPlusParam8
-	ld a, a
+	read_hl_from_sp_plus $7f
 	inc hl
 	inc hl
 	inc hl
@@ -95620,8 +94392,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	ld hl, sp+$30
 	ld a, [hl]
 	call FarCall
-	call GetHLAtSPPlusParam8
-	ld a, a
+	read_hl_from_sp_plus $7f
 	ld [hl], a
 	ld hl, sp+$5b
 	push de
@@ -95647,11 +94418,9 @@ Func_603f8: ; 603f8 (18:43f8)
 	pop bc
 Func_6048c: ; 6048c (18:448c)
 	inc c
-	call GetHLAtSPPlusParam8
-	db $7d
+	read_hl_from_sp_plus $7d
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $7d
+	write_hl_to_sp_plus $7d
 	jp Func_60386
 
 Func_60499: ; 60499 (18:4499)
@@ -95901,15 +94670,12 @@ Func_60621: ; 60621
 	ld hl, sp+$48
 	ld [hl], $0
 	read_hl_from Data_6061f
-	call WriteHLToSPPlusParam8
-	db $46
-	call GetHLAtSPPlusParam8
-	db $52
+	write_hl_to_sp_plus $46
+	read_hl_from_sp_plus $52
 	ld e, h
 	ld hl, sp+$47
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $52
+	read_hl_from_sp_plus $52
 	ld e, l
 	ld hl, sp+$46
 	ld [hl], e
@@ -95957,8 +94723,7 @@ Func_60621: ; 60621
 	cp $2
 	jp nz, .put_ffff_on_stack
 	push de
-	call GetHLAtSPPlusParam8
-	db $50
+	read_hl_from_sp_plus $50
 	ld c, l
 	ld b, h
 	ld hl, sp+$41
@@ -95994,12 +94759,10 @@ Func_60621: ; 60621
 	ld a, [hl]
 	ld [wFarCallDestBank], a
 	ld bc, $2
-	call GetHLAtSPPlusParam8
-	db $52
+	read_hl_from_sp_plus $52
 	inc hl
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $52
+	write_hl_to_sp_plus $52
 	dec hl
 	dec hl
 	push de
@@ -96022,8 +94785,7 @@ Func_60621: ; 60621
 	push bc
 	ld hl, sp+$45
 	ld c, [hl]
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	push de
 	push hl
 	pop de
@@ -96035,8 +94797,7 @@ Func_60621: ; 60621
 
 .one
 	push bc
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	push de
 	push hl
 	pop de
@@ -96062,8 +94823,7 @@ Func_60621: ; 60621
 .next
 	push bc
 	ld hl, sp+$4
-	call WriteHLToSPPlusParam8
-	db $45
+	write_hl_to_sp_plus $45
 	ld hl, sp+$4c
 	ld a, [hl]
 	or a
@@ -96075,12 +94835,10 @@ Func_60621: ; 60621
 	jp .asm_607dc
 
 .stack_manip: ; 60744 (18:4744)
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	ld a, [hl]
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $45
+	write_hl_to_sp_plus $45
 	ld hl, sp+$46
 	ld [hl], a
 	ld hl, sp+$46
@@ -96106,8 +94864,7 @@ Func_60621: ; 60621
 	jp .asm_607d9
 
 .asm_60775: ; 60775 (18:4775)
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	ld e, [hl]
 	ld hl, sp+$46
 	ld [hl], e
@@ -96124,11 +94881,9 @@ Func_60621: ; 60621
 	push hl
 	call PlaceString
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $45
+	write_hl_to_sp_plus $45
 .asm_6079d: ; 6079d (18:479d)
 	ld l, $2
 	push hl
@@ -96157,8 +94912,7 @@ Func_60621: ; 60621
 	jp z, .asm_607d9
 	ld hl, sp+$4c
 	ld [hl], $1
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	push hl
 	call PlaceString
 	pop bc
@@ -96182,16 +94936,14 @@ Func_60621: ; 60621
 	ld a, [hl]
 	ld [wFarCallDestBank], a
 	ld bc, $2
-	call GetHLAtSPPlusParam8
-	db $52
+	read_hl_from_sp_plus $52
 	push de
 	push hl
 	pop de
 	pop hl
 	ld hl, sp+$43
 	call FarCopyVideoData
-	call GetHLAtSPPlusParam8
-	db $45
+	read_hl_from_sp_plus $45
 	ld a, l
 	or h
 	jp nz, .asm_6080d
@@ -96541,8 +95293,7 @@ Func_60a20: ; 60a20 (18:4a20)
 	ld hl, $2f
 Func_60a23: ; 60a23 (18:4a23)
 	add hl, de
-	call WriteHLToSPPlusParam16
-	dw $357
+	write_hl_to_sp_plus $357
 	pop bc
 	push bc
 	ld a, c
@@ -96579,29 +95330,25 @@ Func_60a23: ; 60a23 (18:4a23)
 	dec a
 	ld l, a
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $359
+	read_hl_from_sp_plus $359
 	pop de
 	call Func_236f
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $359
+	read_hl_from_sp_plus $359
 	ld de, $c
 	add hl, de
 	pop de
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli Func_5c6e3
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	call FarCall
 	call GetHLAtSPPlus4
 	ld de, $75
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -96612,20 +95359,17 @@ Func_60abb: ; 60abb (18:4abb)
 	add hl, sp
 	ld l, [hl]
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $359
+	read_hl_from_sp_plus $359
 	pop de
 	call Func_6095c
 	set_farcall_addrs_hli Func_5c6e3
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	call FarCall
 	call GetHLAtSPPlus4
 	ld de, $75
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -96647,15 +95391,13 @@ Func_60af2: ; 60af2 (18:4af2)
 	dec a
 	ld l, a
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $359
+	read_hl_from_sp_plus $359
 	pop de
 	call Func_236f
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $359
+	read_hl_from_sp_plus $359
 	ld de, $c
 	add hl, de
 	pop de
@@ -96664,8 +95406,7 @@ Func_60af2: ; 60af2 (18:4af2)
 	ld de, $75
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -96673,8 +95414,7 @@ Func_60af2: ; 60af2 (18:4af2)
 
 Func_60b42: ; 60b42 (18:4b42)
 	ld bc, $23
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $c
 	add hl, de
 	push de
@@ -96724,8 +95464,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	dec a
 	ld l, a
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $359
+	read_hl_from_sp_plus $359
 	pop de
 	call Func_6095c
 	call GetHLAtSPPlus4
@@ -96756,8 +95495,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	ld de, $75
 	add hl, de
 	ld a, [hl]
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -96779,8 +95517,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $18
 	add hl, de
 	ld [hl], c
@@ -96806,8 +95543,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $1a
 	add hl, de
 	ld [hl], c
@@ -96833,16 +95569,14 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	inc hl
 	inc hl
 	ld a, [hl]
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $13
 	add hl, de
 	ld [hl], a
 	jp Func_60d8c
 
 Func_60c66: ; 60c66 (18:4c66)
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $18
 	add hl, de
 	ld c, [hl]
@@ -96866,8 +95600,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $1a
 	add hl, de
 	ld c, [hl]
@@ -96893,8 +95626,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $13
 	add hl, de
 	ld a, [hl]
@@ -96918,8 +95650,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	inc hl
 	inc hl
 	ld [hl], a
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $c
 	add hl, de
 	ld a, [hl]
@@ -96959,35 +95690,30 @@ Func_60d07: ; 60d07 (18:4d07)
 	dec a
 	ld l, a
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $359
+	read_hl_from_sp_plus $359
 	pop de
 	call Func_236f
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
-	call GetHLAtSPPlusParam16
-	dw $359
+	read_hl_from_sp_plus $359
 	ld de, $c
 	add hl, de
 	pop de
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli Func_5c6e3
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	call FarCall
 	call GetHLAtSPPlus4
 	ld de, $75
 	add hl, de
 	ld [hl], a
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $22
 	add hl, de
 	ld [hl], a
 	ld c, $1
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	push de
 	push hl
 	pop de
@@ -96998,8 +95724,7 @@ Func_60d07: ; 60d07 (18:4d07)
 
 Func_60d7b: ; 60d7b (18:4d7b)
 	ld c, $1
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	push de
 	push hl
 	pop de
@@ -97027,8 +95752,7 @@ Func_60da5: ; 60da5 (18:4da5)
 	add hl, sp
 	ld a, [hl]
 	call FarCall
-	call GetHLAtSPPlusParam16
-	dw $357
+	read_hl_from_sp_plus $357
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -97286,8 +96010,7 @@ Func_60f92: ; 60f92 (18:4f92)
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	call WriteHLToSPPlusParam8
-	inc [hl]
+	write_hl_to_sp_plus $34
 	ld hl, sp+$6
 	ld [hl], $0
 Func_60fa3: ; 60fa3 (18:4fa3)
@@ -97330,22 +96053,19 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	add hl, hl
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $82
 	add hl, de
 	pop de
 	add hl, de
 	push hl
-	call GetHLAtSPPlusParam8
-	db $36
+	read_hl_from_sp_plus $36
 	ld de, $71
 	add hl, de
 	pop de
 	ld bc, $11
 	call MemCopy
-	call GetHLAtSPPlusParam8
-	db $34
+	read_hl_from_sp_plus $34
 	ld de, $75
 	add hl, de
 	ld a, [hl]
@@ -97520,11 +96240,9 @@ Func_61133: ; 61133
 	push de
 	ld a, $1
 	ld hl, -1
-	call WriteHLToSPPlusParam8
-	db $45
+	write_hl_to_sp_plus $45
 	pop hl
-	call WriteHLToSPPlusParam8
-	db $41
+	write_hl_to_sp_plus $41
 Func_61145: ; 61145 (18:5145)
 	or a
 	jp z, Func_61179
@@ -97539,16 +96257,13 @@ Func_61145: ; 61145 (18:5145)
 	push af
 	ld hl, sp+$2
 	push hl
-	call GetHLAtSPPlusParam8
-	db $4a
+	read_hl_from_sp_plus $4a
 	pop de
 	call PlaceStringDEatCoordHL
-	call GetHLAtSPPlusParam8
-	db $48
+	read_hl_from_sp_plus $48
 	inc hl
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $48
+	write_hl_to_sp_plus $48
 	pop af
 	jp Func_61145
 
@@ -97659,7 +96374,7 @@ Func_61248: ; 61248 (18:5248)
 Func_61276: ; 61276 (18:5276)
 	ld hl, $0
 	call WriteHLToSPPlusParam8
-	rrca
+	db $f
 	ld de, $f
 	ld hl, sp+$0
 	call Func_2b83
@@ -98136,8 +96851,7 @@ Func_61634: ; 61634 (18:5634)
 	add hl, hl
 	add hl, hl
 	push hl
-	call GetHLAtSPPlusParam8
-	db $10
+	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
 	ld c, l
@@ -98145,8 +96859,7 @@ Func_61634: ; 61634 (18:5634)
 	jp Func_61675
 
 Func_61662: ; 61662 (18:5662)
-	call GetHLAtSPPlusParam8
-	db $0e
+	read_hl_from_sp_plus $0e
 	push de
 	push hl
 	pop de
@@ -98173,8 +96886,7 @@ Func_61675: ; 61675 (18:5675)
 .asm_61686
 	ld bc, $0
 Func_61689: ; 61689 (18:5689)
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	inc hl
 	ld [hl], c
 	pop bc
@@ -98314,11 +97026,9 @@ Func_6172c: ; 6172c (18:572c)
 	or a
 	jp nz, Func_6178d
 	ld hl, $2
-	call WriteHLToSPPlusParam8
-	db $26
+	write_hl_to_sp_plus $26
 	ld hl, $703
-	call WriteHLToSPPlusParam8
-	db $24
+	write_hl_to_sp_plus $24
 	ld hl, sp+$27
 	ld [hl], $1
 	xor a
@@ -98326,11 +97036,9 @@ Func_6172c: ; 6172c (18:572c)
 
 Func_6178d: ; 6178d (18:578d)
 	ld hl, $b02
-	call WriteHLToSPPlusParam8
-	db $26
+	write_hl_to_sp_plus $26
 	ld hl, $1203
-	call WriteHLToSPPlusParam8
-	db $24
+	write_hl_to_sp_plus $24
 	ld a, $b
 Func_6179d: ; 6179d (18:579d)
 	push af
@@ -98360,21 +97068,17 @@ Func_617ba: ; 617ba (18:57ba)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $26
+	write_hl_to_sp_plus $26
 	ld hl, $18
 	add hl, bc
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $24
-	call GetHLAtSPPlusParam8
-	db $2e
+	write_hl_to_sp_plus $24
+	read_hl_from_sp_plus $2e
 	push hl
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	pop de
 	ld a, l
 	sub e
@@ -98382,10 +97086,8 @@ Func_617ba: ; 617ba (18:57ba)
 	ld a, h
 	sbc d
 	ld h, a
-	call WriteHLToSPPlusParam8
-	db $22
-	call GetHLAtSPPlusParam8
-	db $22
+	write_hl_to_sp_plus $22
+	read_hl_from_sp_plus $22
 	push de
 	push hl
 	pop de
@@ -98394,17 +97096,14 @@ Func_617ba: ; 617ba (18:57ba)
 	call CompareHLtoDE
 	jp c, Func_61802
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $22
+	write_hl_to_sp_plus $22
 Func_61802: ; 61802 (18:5802)
 	ld hl, sp+$19
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	push hl
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	pop de
 	call Func_2617
 	ld hl, sp+$19
@@ -98429,11 +97128,9 @@ Func_6182e: ; 6182e (18:582e)
 	ld hl, sp+$17
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $28
+	read_hl_from_sp_plus $28
 	push hl
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	pop de
 	call Func_2617
 	ld hl, sp+$17
@@ -98456,15 +97153,13 @@ Func_6185e: ; 6185e (18:585e)
 	ld a, [hl]
 	ld hl, sp+$21
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	ld de, $100
 	call DivideHLByDESigned
 	ld a, l
 	ld hl, sp+$1b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	ld e, l
 	ld hl, sp+$1c
 	ld [hl], e
@@ -98490,11 +97185,9 @@ Func_6185e: ; 6185e (18:585e)
 	sbc d
 	ld h, a
 	push hl
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	push hl
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	pop de
 	ld a, l
 	sub e
@@ -98519,8 +97212,7 @@ Func_618b1: ; 618b1 (18:58b1)
 	ld l, e
 	ld h, a
 	push hl
-	call GetHLAtSPPlusParam8
-	db $2e
+	read_hl_from_sp_plus $2e
 	pop de
 	call Func_63c5f
 	ld hl, sp+$1a
@@ -98540,8 +97232,7 @@ Func_618b1: ; 618b1 (18:58b1)
 	ld h, [hl]
 	ld d, h
 	push de
-	call GetHLAtSPPlusParam8
-	db $2e
+	read_hl_from_sp_plus $2e
 	inc h
 	inc hl
 	pop de
@@ -98550,12 +97241,10 @@ Func_618eb: ; 618eb (18:58eb)
 	ld a, [$c2cd]
 	xor $1
 	ld [$c2cd], a
-	call GetHLAtSPPlusParam8
-	db $2c
+	read_hl_from_sp_plus $2c
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $2a
+	read_hl_from_sp_plus $2a
 	push de
 	push hl
 	pop de
@@ -98659,8 +97348,7 @@ Func_619a5: ; 619a5 (18:59a5)
 	ld a, [hl]
 	or a
 	jp nz, Func_619c1
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	push de
 	push hl
 	pop de
@@ -98677,19 +97365,16 @@ Func_619c1: ; 619c1 (18:59c1)
 	ld h, [hl]
 	ld d, h
 	push de
-	call GetHLAtSPPlusParam8
-	db $2c
+	read_hl_from_sp_plus $2c
 	pop de
 	call Func_63c5f
 	ld hl, sp+$2b
 	ld a, [hl]
 	or a
 	jp z, Func_619e7
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	push hl
-	call GetHLAtSPPlusParam8
-	db $2c
+	read_hl_from_sp_plus $2c
 	inc h
 	inc hl
 	pop de
@@ -98697,8 +97382,7 @@ Func_619c1: ; 619c1 (18:59c1)
 Func_619e7: ; 619e7 (18:59e7)
 	call WaitVideoTransfer
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $20
+	read_hl_from_sp_plus $20
 	push de
 	push hl
 	pop de
@@ -98729,8 +97413,7 @@ Func_61a25: ; 61a25 (18:5a25)
 	ld hl, wLastVBlankFlags
 	cp [hl]
 	jp nz, Func_61a25
-	call GetHLAtSPPlusParam8
-	db $1c
+	read_hl_from_sp_plus $1c
 	push de
 	push hl
 	pop de
@@ -98765,11 +97448,9 @@ Func_61a3e: ; 61a3e
 	or a
 	jp nz, Func_61a78
 	ld hl, $2
-	call WriteHLToSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $15
 	ld hl, $703
-	call WriteHLToSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $13
 	ld hl, sp+$15
 	ld [hl], $1
 	xor a
@@ -98777,11 +97458,9 @@ Func_61a3e: ; 61a3e
 
 Func_61a78: ; 61a78 (18:5a78)
 	ld hl, $b02
-	call WriteHLToSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $15
 	ld hl, $1203
-	call WriteHLToSPPlusParam8
-	db $13
+	write_hl_to_sp_plus $13
 	ld a, $b
 Func_61a88: ; 61a88 (18:5a88)
 	push af
@@ -98811,46 +97490,35 @@ Func_61aa5: ; 61aa5 (18:5aa5)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $15
 	ld hl, $18
 	add hl, bc
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	call WriteHLToSPPlusParam8
-	db $13
-	call GetHLAtSPPlusParam8
-	db $1c
+	write_hl_to_sp_plus $13
+	read_hl_from_sp_plus $1c
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db $11
-	call GetHLAtSPPlusParam8
-	db $15
+	write_hl_to_sp_plus $11
+	read_hl_from_sp_plus $15
 	push hl
-	call GetHLAtSPPlusParam8
-	db $13
+	read_hl_from_sp_plus $13
 	pop de
 	call CompareHLtoDE
 	jp c, Func_61ae8
-	call GetHLAtSPPlusParam8
-	db $15
-	call WriteHLToSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $15
+	write_hl_to_sp_plus $11
 Func_61ae8: ; 61ae8 (18:5ae8)
 	ld hl, sp+$a
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	pop de
 	call Func_2617
 	ld hl, sp+$a
@@ -98875,11 +97543,9 @@ Func_61b14: ; 61b14 (18:5b14)
 	ld hl, sp+$8
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	push hl
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	pop de
 	call Func_2617
 	ld hl, sp+$8
@@ -98902,15 +97568,13 @@ Func_61b44: ; 61b44 (18:5b44)
 	ld a, [hl]
 	ld hl, sp+$10
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld de, $100
 	call DivideHLByDESigned
 	ld a, l
 	ld hl, sp+$c
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $15
+	read_hl_from_sp_plus $15
 	ld e, l
 	ld hl, sp+$d
 	ld [hl], e
@@ -98936,11 +97600,9 @@ Func_61b44: ; 61b44 (18:5b44)
 	sbc d
 	ld h, a
 	push hl
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	push hl
-	call GetHLAtSPPlusParam8
-	db $17
+	read_hl_from_sp_plus $17
 	pop de
 	ld a, l
 	sub e
@@ -98963,8 +97625,7 @@ Func_61b92: ; 61b92 (18:5b92)
 	ld l, e
 	ld h, a
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $1d
 	pop de
 	call Func_63c5f
 	ld hl, sp+$b
@@ -98984,8 +97645,7 @@ Func_61b92: ; 61b92 (18:5b92)
 	ld h, [hl]
 	ld d, h
 	push de
-	call GetHLAtSPPlusParam8
-	db $1d
+	read_hl_from_sp_plus $1d
 	inc h
 	inc hl
 	pop de
@@ -98994,12 +97654,10 @@ Func_61bcc: ; 61bcc (18:5bcc)
 	ld a, [$c2cd]
 	xor $1
 	ld [$c2cd], a
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $19
+	read_hl_from_sp_plus $19
 	push de
 	push hl
 	pop de
@@ -99041,8 +97699,7 @@ Func_61c21: ; 61c21 (18:5c21)
 	ld a, [hl]
 	or a
 	jp nz, Func_61c3d
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push de
 	push hl
 	pop de
@@ -99059,19 +97716,16 @@ Func_61c3d: ; 61c3d (18:5c3d)
 	ld h, [hl]
 	ld d, h
 	push de
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	pop de
 	call Func_63c5f
 	ld hl, sp+$19
 	ld a, [hl]
 	or a
 	jp z, Func_61c63
-	call GetHLAtSPPlusParam8
-	db $11
+	read_hl_from_sp_plus $11
 	push hl
-	call GetHLAtSPPlusParam8
-	db $1b
+	read_hl_from_sp_plus $1b
 	inc h
 	inc hl
 	pop de
@@ -99079,8 +97733,7 @@ Func_61c3d: ; 61c3d (18:5c3d)
 Func_61c63: ; 61c63 (18:5c63)
 	call WaitVideoTransfer
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $0f
+	read_hl_from_sp_plus $0f
 	push de
 	push hl
 	pop de
@@ -99097,8 +97750,7 @@ Func_61c63: ; 61c63 (18:5c63)
 	ld c, $8
 	call Func_3ca1
 	pop bc
-	call GetHLAtSPPlusParam8
-	db $0b
+	read_hl_from_sp_plus $0b
 	push de
 	push hl
 	pop de
@@ -99685,16 +98337,13 @@ Func_620d5: ; 620d5
 	add hl, de
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $40
+	read_hl_from_sp_plus $40
 	ld e, h
 	ld hl, sp+$36
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $40
+	read_hl_from_sp_plus $40
 	ld h, $0
-	call WriteHLToSPPlusParam8
-	db $40
+	write_hl_to_sp_plus $40
 	ld a, l
 	ld hl, sp+$35
 	ld [hl], a
@@ -99861,8 +98510,7 @@ Func_6218f: ; 6218f (18:618f)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $22
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -99872,8 +98520,7 @@ Func_6218f: ; 6218f (18:618f)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	call GetHLAtSPPlusParam8
-	db $40
+	read_hl_from_sp_plus $40
 	push hl
 	call GetHLAtSPPlus10
 	ld de, $c
@@ -99891,8 +98538,7 @@ Func_6218f: ; 6218f (18:618f)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $26
+	read_hl_from_sp_plus $26
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -99917,8 +98563,7 @@ Func_6218f: ; 6218f (18:618f)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $2d
+	read_hl_from_sp_plus $2d
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -99937,8 +98582,7 @@ Func_6218f: ; 6218f (18:618f)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $31
+	read_hl_from_sp_plus $31
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -99957,8 +98601,7 @@ Func_6218f: ; 6218f (18:618f)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	call GetHLAtSPPlusParam8
-	db $2f
+	read_hl_from_sp_plus $2f
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -100052,13 +98695,10 @@ Func_622e9: ; 622e9 (18:62e9)
 	ld a, [hl]
 	ld hl, sp+$1b
 	ld [hl], a
-	call GetHLAtSPPlusParam8
-	db $40
-	call WriteHLToSPPlusParam8
-	db $22
+	read_hl_from_sp_plus $40
+	write_hl_to_sp_plus $22
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $33
+	write_hl_to_sp_plus $33
 	set_farcall_addrs_hli Func_7db0
 	ld hl, sp+$14
 	push de
@@ -100322,8 +98962,7 @@ Func_6256a: ; 6256a (18:656a)
 	ld hl, $10e
 	call Func_6011c
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 	jp Func_625bd
 
 Func_6259a: ; 6259a (18:659a)
@@ -100339,11 +98978,9 @@ Func_6259a: ; 6259a (18:659a)
 
 Func_625ab: ; 625ab (18:65ab)
 	callba_hli Func_1482e
-	call WriteHLToSPPlusParam8
-	db $0c
+	write_hl_to_sp_plus $0c
 Func_625bd: ; 625bd (18:65bd)
-	call GetHLAtSPPlusParam8
-	db $0c
+	read_hl_from_sp_plus $0c
 	ld a, l
 	or h
 	jp nz, Func_626ff
@@ -100411,8 +99048,7 @@ Func_625bd: ; 625bd (18:65bd)
 
 Func_6264f: ; 6264f (18:664f)
 	ld hl, $2
-	call WriteHLToSPPlusParam8
-	db $0e
+	write_hl_to_sp_plus $0e
 Func_62656: ; 62656 (18:6656)
 	ld hl, sp+$e
 	ld a, [hl]
