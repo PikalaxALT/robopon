@@ -106652,7 +106652,8 @@ Func_63eea: ; 63eea (18:7eea)
 	jr nz, Func_63eea
 	ret
 
-SECTION "Bank 19", ROMX, BANK [$19]
+SECTION "Bank 19", ROMX [$4000], BANK [$19]
+Data_64000:
 	dr $64000, $64093
 
 Data_64093: ; 64093
@@ -106679,7 +106680,11 @@ Data_66efb: ; 66efb
 	dr $66efb, $66f73
 
 GFX_66f73: ; 66f73
-	dr $66f73, $673ff
+	dr $66f73, $67060
+	
+SECTION "Bank 19 2", ROMX [$7187], BANK [$19]
+Func_67187:
+	dr $67187, $673ff
 
 Func_673ff: ; 673ff
 	dr $673ff, $679e5
