@@ -3,7 +3,8 @@ INCLUDE "includes.asm"
 SECTION "WRAM0", WRAM0
 wTimer:: ds $3 ; c000
 wSerial:: ds $3 ; c003
-wVBlank:: ds $1a ; c006
+wVBlank:: ds $16 ; c006
+wc01c:: db ; c01c
 
 SECTION "Audio RAM Backup", WRAM0 [$c020]
 wBackupSongIndex:: db ; c020
