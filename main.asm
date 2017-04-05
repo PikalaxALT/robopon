@@ -3985,7 +3985,7 @@ Func_24bb
 	pop bc
 	ret
 
-Func_24e9: ; 24e9 (0:24e9)
+CheckButton: ; 24e9 (0:24e9)
 	call NextOverworldFrame
 	ld l, a
 	inc l
@@ -4834,7 +4834,7 @@ Func_29cb: ; 29cb (0:29cb)
 	and $1
 	jp nz, Func_2a2e
 Func_2a26: ; 2a26 (0:2a26)
-	call Func_24e9
+	call CheckButton
 	and $30
 	jp z, Func_2a26
 Func_2a2e: ; 2a2e (0:2a2e)
@@ -17563,8 +17563,8 @@ Func_ab15: ; ab15 (2:6b15)
 	push bc
 	ld a, c
 	and $1
-	jp z, Func_ab86
-	set_farcall_addrs_hli Func_60621
+	jp z, .print_text
+	set_farcall_addrs_hli PrintMapText
 	ld bc, $1603
 	ld hl, sp+$45
 	push de
@@ -17576,10 +17576,10 @@ Func_ab15: ; ab15 (2:6b15)
 	ld h, $0
 	inc h
 	call FarCall
-	jp Func_aba2
+	jp .done_text
 
-Func_ab86: ; ab86 (2:6b86)
-	set_farcall_addrs_hli Func_c868
+.print_text
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $c3
 	ld hl, sp+$45
 	push de
@@ -17591,30 +17591,30 @@ Func_ab86: ; ab86 (2:6b86)
 	ld h, $0
 	inc h
 	call FarCall
-Func_aba2: ; aba2 (2:6ba2)
+.done_text
 	pop bc
 	pop hl
 	push bc
 	ld a, c
 	and $1
-	jp z, Func_abd0
+	jp z, .no_delay
 	xor a
-Func_abac: ; abac (2:6bac)
+.delay10
 	cp $a
-	jp nc, Func_abba
+	jp nc, .done_delay
 	push af
 	call NextOverworldFrame
 	pop af
 	inc a
-	jp Func_abac
+	jp .delay10
 
-Func_abba: ; abba (2:6bba)
+.done_delay
 	callba_hli Func_1482e
 	ld a, l
 	cp $ff
-	jp nz, Func_abd0
+	jp nz, .no_delay
 	ld l, $1
-Func_abd0: ; abd0 (2:6bd0)
+.no_delay
 	pop bc
 	pop de
 	push hl
@@ -20700,7 +20700,7 @@ DelayFrames_NoHalt: ; c85d (3:485d)
 	jp nz, .loop
 	ret
 
-Func_c868: ; c868 (3:4868)
+PrintMapText_: ; c868 (3:4868)
 ; h - x coordinate
 ; l - y coordinate
 ; de - string pointer table
@@ -20710,7 +20710,7 @@ Func_c868: ; c868 (3:4868)
 	push hl
 	push de
 	push bc
-	set_farcall_addrs_hli Func_60621
+	set_farcall_addrs_hli PrintMapText
 	pop bc
 	; transfer the high bits of c to b
 	ld a, c
@@ -27959,7 +27959,7 @@ Func_fa45: ; fa45 (3:7a45)
 	pop de
 	pop hl
 	ld hl, $10e
-	call Func_c868
+	call PrintMapText_
 	ld hl, $ee
 	add hl, sp
 	ld sp, hl
@@ -29039,7 +29039,7 @@ Func_103b5: ; 103b5 (4:43b5)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $4
 	ld hl, sp+$a
 	push de
@@ -30752,7 +30752,7 @@ Func_11002: ; 11002 (4:5002)
 	cp $3c
 	jp nc, Func_11048
 	push bc
-	call Func_24e9
+	call CheckButton
 	ld l, a
 	ld h, $0
 	pop bc
@@ -30808,7 +30808,7 @@ Func_1105b: ; 1105b (4:505b)
 	cp $a
 	jp nc, Func_11087
 	push af
-	call Func_24e9
+	call CheckButton
 	ld l, a
 	ld h, $0
 	ld a, l
@@ -33332,7 +33332,7 @@ Func_124d0: ; 124d0 (4:64d0)
 	ld a, [hl]
 	or a
 	jp nz, Func_12573
-	call Func_24e9
+	call CheckButton
 	ld l, a
 	ld h, $0
 	ld a, l
@@ -39757,7 +39757,7 @@ Func_15a64: ; 15a64 (5:5a64)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $5
 	ld hl, sp+$0
 	push de
@@ -43751,7 +43751,7 @@ Func_17597: ; 17597 (5:7597)
 	ld b, h
 Func_175e1: ; 175e1 (5:75e1)
 	push bc
-	call Func_24e9
+	call CheckButton
 	ld l, a
 	pop bc
 	ld a, l
@@ -44475,7 +44475,7 @@ Func_17a39: ; 17a39 (5:7a39)
 
 Func_17a44: ; 17a44 (5:7a44)
 	call NextOverworldFrame
-	call Func_24e9
+	call CheckButton
 	ld l, a
 	ld h, $0
 	ld a, l
@@ -44786,7 +44786,7 @@ Func_17aba: ; 17aba (5:7aba)
 	call Func_3ca1
 	pop bc
 .crash_wait
-	call Func_24e9
+	call CheckButton
 	or a
 	jp z, .crash_wait
 	set_farcall_addrs_hli Func_bf431
@@ -45646,7 +45646,7 @@ Func_203a3: ; 203a3 (8:43a3)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $a8
 	call GetHLAtSPPlus6
 	push de
@@ -46568,7 +46568,7 @@ Func_209bb: ; 209bb (8:49bb)
 	call Func_2801
 	push hl
 	call Func_20398
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $a8
 	ld de, Pointers_202ea
 	ld hl, $10e
@@ -46731,7 +46731,7 @@ Func_20ab0: ; 20ab0
 	and $2
 	jp nz, Func_20b38
 	call Func_20398
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $a8
 	ld de, Pointers_20199
 	ld hl, $10e
@@ -46752,7 +46752,7 @@ Func_20b38: ; 20b38 (8:4b38)
 	cp $48
 	jp nz, Func_20b67
 	call Func_20398
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $a8
 	ld de, Pointers_20199
 	ld hl, $10e
@@ -46778,7 +46778,7 @@ Func_20b67: ; 20b67 (8:4b67)
 	jp nz, Func_20ba3
 Func_20b87: ; 20b87 (8:4b87)
 	call Func_20398
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $a8
 	ld de, Pointers_201b1
 	ld hl, $10e
@@ -52201,7 +52201,7 @@ Func_23159: ; 23159
 	or a
 	jp z, Func_23184
 	call Func_20398
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $8
 	ld de, Pointers_2313a
 	ld hl, $10e
@@ -52729,7 +52729,7 @@ Func_235b3: ; 235b3 (8:75b3)
 	jp z, Func_235df
 	push bc
 	call Func_20398
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $8
 	ld de, Pointers_2326e
 	ld hl, $10e
@@ -52904,7 +52904,7 @@ Func_2372b: ; 2372b (8:772b)
 	call CheckSongFinished
 	or a
 	jp z, .done
-	call Func_24e9
+	call CheckButton
 	and $30
 	jp z, .loop
 .done
@@ -64757,7 +64757,7 @@ Func_31af1: ; 31af1
 	ld e, $14
 	ld hl, $d
 	call Func_30313
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $c
 	ld hl, sp+$2
 	push de
@@ -65631,7 +65631,7 @@ Func_320d8: ; 320d8
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $c
 	ld de, Pointers_3207b
 	ld hl, $10e
@@ -65790,7 +65790,7 @@ Func_32241: ; 32241 (c:6241)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	pop de
 	inc e
 	dec e
@@ -67715,7 +67715,7 @@ Func_3304d: ; 3304d (c:704d)
 	xor a
 	call Func_3bc5
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	pop af
 	pop hl
 	cp $8
@@ -69634,7 +69634,7 @@ Func_33efa: ; 33efa (c:7efa)
 	ld e, $14
 	ld hl, $d
 	call FarCall
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $c
 	ld de, Pointers_33da8
 	ld hl, $10e
@@ -69873,7 +69873,7 @@ Func_4c1cf: ; 4c1cf (13:41cf)
 	ld hl, $d
 	call Func_4c0d3
 	call Func_4c0b9
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld de, $40e8
 	ld hl, $10e
@@ -70399,7 +70399,7 @@ Func_4c68a: ; 4c68a
 	ld a, l
 	cp $1
 	jp nz, Func_4c6f5
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld de, Pointers_4c5f6
 	ld hl, $10e
@@ -70413,7 +70413,7 @@ Func_4c6f5: ; 4c6f5 (13:46f5)
 	ld hl, $d
 	call Func_4c0d3
 	call Func_4c0b9
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld de, Pointers_4c677
 	ld hl, $10e
@@ -70786,7 +70786,7 @@ Func_4ca74: ; 4ca74 (13:4a74)
 	call Func_3ca1
 	pop bc
 Func_4ca9e: ; 4ca9e (13:4a9e)
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	pop af
 	cp $a
 	jp z, Func_4cb59
@@ -70956,7 +70956,7 @@ Func_4cc09: ; 4cc09 (13:4c09)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld hl, sp+$0
 	push de
@@ -75850,7 +75850,7 @@ Func_4eebc: ; 4eebc (13:6ebc)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld hl, sp+$0
 	push de
@@ -75924,7 +75924,7 @@ Func_4ef35: ; 4ef35
 	ld hl, $1
 	call FarCall
 	call Func_4c0b9
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld de, Pointers_4ef28
 	ld hl, $110
@@ -76043,7 +76043,7 @@ Func_4f076: ; 4f076 (13:7076)
 	ld hl, $1
 	call FarCall
 	call Func_4c0b9
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld de, Pointers_4f040
 	ld hl, $110
@@ -76489,7 +76489,7 @@ Func_4f437: ; 4f437 (13:7437)
 	ld hl, $1
 	call FarCall
 	call Func_4c0b9
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld de, Pointers_4f12c
 	ld hl, $110
@@ -76740,7 +76740,7 @@ Func_4f6a3: ; 4f6a3 (13:76a3)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld de, Pointers_4f688
 	ld hl, $10e
@@ -77107,7 +77107,7 @@ Func_4f9ce: ; 4f9ce (13:79ce)
 	call PlaceString
 	pop bc
 	call Func_4c0b9
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld de, Pointers_4f8a6
 	ld hl, $110
@@ -78361,7 +78361,7 @@ Func_5053b: ; 5053b
 	ld e, $14
 	ld hl, $d
 	call Func_50185
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $14
 	ld de, Pointers_5052d
 	ld hl, $10e
@@ -79118,7 +79118,7 @@ Func_50a86: ; 50a86 (14:4a86)
 	ld e, $14
 	ld hl, $d
 	call Func_50185
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $14
 	ld de, Pointers_5098e
 	ld hl, $10e
@@ -80172,7 +80172,7 @@ Func_512e1: ; 512e1 (14:52e1)
 	ld e, $14
 	ld hl, $d
 	call Func_50185
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	pop hl
 	pop af
 	push hl
@@ -80851,7 +80851,7 @@ Func_5182a: ; 5182a (14:582a)
 	ld a, e
 	cp $15
 	jp nz, Func_51882
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $14
 	ld de, Pointers_5177e
 	ld hl, $110
@@ -80859,7 +80859,7 @@ Func_5182a: ; 5182a (14:582a)
 	jp Func_51898
 
 Func_51882: ; 51882 (14:5882)
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $14
 	ld de, Pointers_51747
 	ld hl, $110
@@ -80896,7 +80896,7 @@ Func_518c7: ; 518c7 (14:58c7)
 	ld a, e
 	cp $15
 	jp nz, Func_518e3
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $14
 	ld de, Pointers_51758
 	ld hl, $10e
@@ -81594,7 +81594,7 @@ Func_51ea4: ; 51ea4
 	jp z, Func_51fa4
 	cp $63
 	jp nz, Func_51fee
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_51e56)
 	ld de, Pointers_51e56
 	ld hl, $10e
@@ -81617,7 +81617,7 @@ Func_51fa4: ; 51fa4 (14:5fa4)
 	call Func_50da3
 	cp $50
 	jp nz, Func_51fee
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_51e56)
 	ld de, Pointers_51e56
 	ld hl, $10e
@@ -81683,7 +81683,7 @@ Func_5200b: ; 5200b (14:600b)
 	jp z, Func_5208b
 	cp $63
 	jp nz, Func_520d5
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_51e6e)
 	ld de, Pointers_51e6e
 	ld hl, $10e
@@ -81706,7 +81706,7 @@ Func_5208b: ; 5208b (14:608b)
 	call Func_50da3
 	cp $14
 	jp nz, Func_520d5
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_51e6e)
 	ld de, Pointers_51e6e
 	ld hl, $10e
@@ -81774,7 +81774,7 @@ Func_52130: ; 52130 (14:6130)
 	ld e, $14
 	ld hl, $d
 	call Func_50185
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $2
@@ -81885,7 +81885,7 @@ Func_52217: ; 52217 (14:6217)
 	ld de, $e
 	ld hl, $1
 	call FarCall
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $2
@@ -81995,7 +81995,7 @@ Func_52326: ; 52326
 	ld e, $14
 	ld hl, $d
 	call Func_50185
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_52305)
 	ld de, Pointers_52305
 	ld hl, $10e
@@ -82015,7 +82015,7 @@ Func_52395: ; 52395 (14:6395)
 	ld e, $14
 	ld hl, $d
 	call Func_50185
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_522e1)
 	ld de, Pointers_522e1
 	ld hl, $10e
@@ -83187,7 +83187,7 @@ Func_52cdc: ; 52cdc (14:6cdc)
 	ld e, $14
 	ld hl, $d
 	call Func_50185
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_52bad)
 	ld de, Pointers_52bad
 	ld hl, $10e
@@ -83510,7 +83510,7 @@ Func_52f49: ; 52f49 (14:6f49)
 	jp Func_52f83
 
 Func_52f66: ; 52f66 (14:6f66)
-	call Func_24e9
+	call CheckButton
 	ld l, a
 	ld a, l
 	and $10
@@ -85429,7 +85429,7 @@ Func_53cb4: ; 53cb4 (14:7cb4)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_53c6c)
 	ld de, Pointers_53c6c
 	ld hl, $10e
@@ -85498,7 +85498,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	jp z, Func_53dd3
 	or a
 	jp nz, Func_53dec
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_53c10)
 	ld de, Pointers_53c10
 	ld hl, $10e
@@ -85506,7 +85506,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	jp Func_53e02
 
 Func_53dd3: ; 53dd3 (14:7dd3)
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_53c4b)
 	ld de, Pointers_53c4b
 	ld hl, $10e
@@ -85514,7 +85514,7 @@ Func_53dd3: ; 53dd3 (14:7dd3)
 	jp Func_53e02
 
 Func_53dec: ; 53dec (14:7dec)
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_53c2a)
 	ld de, Pointers_53c2a
 	ld hl, $10e
@@ -86029,7 +86029,7 @@ Func_54a6c:
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	pop af
 	cp $3
 	jp z, Func_54adf
@@ -86617,7 +86617,7 @@ Func_54e67: ; 54e67 (15:4e67)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_54aeb)
 	ld de, Pointers_54aeb
 	ld hl, $110
@@ -87244,7 +87244,7 @@ Func_5539a: ; 5539a (15:539a)
 	ld hl, $0
 	call Func_57e52
 	pop bc
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	pop hl
 	pop af
 	push hl
@@ -87750,7 +87750,7 @@ Func_5575d: ; 5575d (15:575d)
 	ld a, $3
 	call Func_57e7b
 	push af
-	ld hl, Func_0388
+	ld hl, $388
 	add hl, sp
 	ld a, [hl]
 	dec a
@@ -87951,7 +87951,7 @@ Func_5582b: ; 5582b (15:582b)
 	cp $af
 	jp nc, Func_559c2
 	push de
-	ld hl, Func_0388
+	ld hl, $388
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
@@ -88039,7 +88039,7 @@ Func_559c2: ; 559c2 (15:59c2)
 	push hl
 	pop de
 	pop hl
-	ld hl, Func_0388
+	ld hl, $388
 	add hl, sp
 	ld a, [hl]
 	dec a
@@ -93258,7 +93258,7 @@ Func_58e84: ; 58e84 (16:4e84)
 	pop bc
 Func_58fa9: ; 58fa9 (16:4fa9)
 	push bc
-	call Func_24e9
+	call CheckButton
 	pop bc
 	cp $10
 	jp nz, Func_58fb7
@@ -95925,7 +95925,7 @@ Func_5d096: ; 5d096 (17:5096)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	set_farcall_addrs_hli Func_60621
+	set_farcall_addrs_hli PrintMapText
 	pop af
 	ld l, a
 	ld h, $0
@@ -98032,7 +98032,7 @@ Func_5df3c: ; 5df3c (17:5f3c)
 	ld e, $14
 	ld hl, $d
 	call Func_5d885
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	ld c, $17
 	ld de, Pointers_5dde1
 	ld hl, $10e
@@ -98572,7 +98572,7 @@ Func_5e398: ; 5e398 (17:6398)
 	ld e, $14
 	ld hl, $d
 	call Func_5d885
-	set_farcall_addrs_hli Func_c868
+	set_farcall_addrs_hli PrintMapText_
 	read_hl_from_sp_plus $29
 	ld de, $d
 	add hl, de
@@ -99745,7 +99745,7 @@ Func_5ec8d: ; 5ec8d (17:6c8d)
 Func_5ec98: ; 5ec98 (17:6c98)
 	ret
 
-Func_5dc99:
+Func_5ec99:
 	push af
 	ld a, e
 	and $f
@@ -99952,7 +99952,7 @@ StartCursorBlinking: ; 60075 (18:4075)
 	xor a
 	ld [wTimerCounter], a
 .loop
-	call Func_24e9
+	call CheckButton
 	ld e, a
 	inc e
 	dec e
@@ -100018,7 +100018,7 @@ Func_6011c: ; 6011c (18:411c)
 	push hl
 	push de
 	push bc
-	set_farcall_addrs_hli Func_60621 ; same bank
+	set_farcall_addrs_hli PrintMapText ; same bank
 	pop bc
 	ld a, c
 	and $e0
@@ -100724,369 +100724,7 @@ Func_605fc: ; 605fc (18:45fc)
 Data_60619: ; 60619
 	db " <HIRA>かﾞ<KATA>", $00
 
-Data_6061f: ; 6061f
-	dw $0000
-
-Func_60621: ; 60621
-; h - x coordinate
-; l - y coordinate
-; de - string pointer table
-; c - bank
-; b - flags
-	push hl
-	push de
-	add sp, -$4c
-	push bc
-	ld hl, sp+$4c
-	ld [hl], $0
-	ld hl, sp+$4b
-	ld [hl], $1
-	ld hl, sp+$4a
-	ld [hl], $0
-	ld hl, sp+$49
-	ld [hl], $0
-	ld hl, sp+$48
-	ld [hl], $0
-	read_hl_from Data_6061f
-	write_hl_to_sp_plus $46
-	read_hl_from_sp_plus $52
-	ld e, h
-	ld hl, sp+$47
-	ld [hl], e
-	read_hl_from_sp_plus $52
-	ld e, l
-	ld hl, sp+$46
-	ld [hl], e
-	ld hl, sp+$43
-	ld [hl], c
-	ld l, b
-	ld h, $0
-	ld a, l
-	and $3
-	ld l, a
-	ld h, $0
-	ld e, l
-	push de
-	ld a, b
-	and $4
-	jp nz, .bit_2_set
-	ld hl, sp+$4c
-	ld [hl], $1
-.bit_2_set
-	ld a, b
-	and $8
-	jp z, .bit_3_unset
-	ld hl, sp+$4b
-	ld a, $1
-	ld [hl], a
-	ld hl, sp+$4a
-	ld [hl], a
-.bit_3_unset
-	ld a, b
-	and $10
-	jp z, .bit_4_unset
-	ld hl, sp+$4a
-	ld [hl], $1
-.bit_4_unset
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	pop de
-	pop bc
-	ld a, e
-	cp $2
-	jp nz, .put_ffff_on_stack
-	push de
-	read_hl_from_sp_plus $50
-	ld c, l
-	ld b, h
-	ld hl, sp+$41
-	ld de, -1
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	pop de
-.put_ffff_on_stack
-	push bc
-	push de
-	ld hl, sp+$48
-	ld e, [hl]
-	ld hl, sp+$49
-	ld a, [hl]
-	call SetStringStartState
-	pop de
-	push de
-	ld a, e
-	cp $1
-	jp z, .do_copy
-	or a
-	jp nz, .no_copy
-.do_copy
-	ld hl, sp+$45
-	ld a, [hl]
-	ld [wFarCallDestBank], a
-	ld bc, $2
-	read_hl_from_sp_plus $52
-	inc hl
-	inc hl
-	write_hl_to_sp_plus $52
-	dec hl
-	dec hl
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$43
-	call FarCopyVideoData
-.no_copy
-	pop de
-	pop bc
-	push de
-	ld a, e
-	cp $2
-	jp z, .two
-	cp $1
-	jp z, .one
-	or a
-	jp nz, .next
-	push bc
-	ld hl, sp+$45
-	ld c, [hl]
-	read_hl_from_sp_plus $45
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$4
-	call FarCopyUntilNull
-	pop bc
-	jp .next
-
-.one
-	push bc
-	read_hl_from_sp_plus $45
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$4
-	call LiteralStringInTree
-	pop bc
-	jp .next
-
-.two
-	push bc
-	ld hl, sp+$4
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, b
-	call PrintCharacterFromTree
-	ld hl, sp+$4d
-	ld [hl], a
-	pop bc
-.next
-	push bc
-	ld hl, sp+$4
-	write_hl_to_sp_plus $45
-	ld hl, sp+$4c
-	ld a, [hl]
-	or a
-	jp z, .stack_manip
-	ld hl, sp+$4
-	push hl
-	call PlaceString
-	pop bc
-	jp .asm_607dc
-
-.stack_manip: ; 60744 (18:4744)
-	read_hl_from_sp_plus $45
-	ld a, [hl]
-	inc hl
-	write_hl_to_sp_plus $45
-	ld hl, sp+$46
-	ld [hl], a
-	ld hl, sp+$46
-	ld a, [hl]
-	or a
-	jp nz, .asm_6075b
-	jp .asm_607dc
-
-.asm_6075b: ; 6075b (18:475b)
-	ld hl, sp+$46
-	push hl
-	call PlaceString
-	pop bc
-	ld hl, sp+$46
-	ld a, [hl]
-	cp $28
-	jp z, .asm_60772
-	ld hl, sp+$46
-	ld a, [hl]
-	cp $29
-	jp nz, .asm_60775
-.asm_60772: ; 60772 (18:4772)
-	jp .asm_607d9
-
-.asm_60775: ; 60775 (18:4775)
-	read_hl_from_sp_plus $45
-	ld e, [hl]
-	ld hl, sp+$46
-	ld [hl], e
-	ld hl, sp+$46
-	ld a, [hl]
-	cp $de
-	jp z, .asm_6078d
-	ld hl, sp+$46
-	ld a, [hl]
-	cp $df
-	jp nz, .asm_6079d
-.asm_6078d: ; 6078d (18:478d)
-	ld hl, sp+$46
-	push hl
-	call PlaceString
-	pop bc
-	read_hl_from_sp_plus $45
-	inc hl
-	write_hl_to_sp_plus $45
-.asm_6079d: ; 6079d (18:479d)
-	ld l, $2
-	push hl
-	ld c, $2
-	ld hl, sp+$4a
-	ld a, [hl]
-	dec a
-	ld e, a
-	ld a, [wStringDestX]
-	dec a
-	call Func_3bc5
-	pop bc
-	ld l, $2
-	push hl
-	ld c, $2
-	ld hl, sp+$4a
-	ld a, [hl]
-	dec a
-	ld e, a
-	ld a, [wStringDestX]
-	dec a
-	call Func_3bc5
-	pop bc
-	call Func_24e9
-	and $30
-	jp z, .asm_607d9
-	ld hl, sp+$4c
-	ld [hl], $1
-	read_hl_from_sp_plus $45
-	push hl
-	call PlaceString
-	pop bc
-	jp .asm_607dc
-
-.asm_607d9: ; 607d9 (18:47d9)
-	jp .stack_manip
-
-.asm_607dc: ; 607dc (18:47dc)
-	pop bc
-	pop de
-	push bc
-	push de
-	ld a, e
-	cp $1
-	jp z, .asm_607ea
-	or a
-	jp nz, .asm_6080d
-.asm_607ea: ; 607ea (18:47ea)
-	ld hl, sp+$45
-	ld a, [hl]
-	ld [wFarCallDestBank], a
-	ld bc, $2
-	read_hl_from_sp_plus $52
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$43
-	call FarCopyVideoData
-	read_hl_from_sp_plus $45
-	ld a, l
-	or h
-	jp nz, .asm_6080d
-	ld hl, sp+$4d
-	ld [hl], $0
-.asm_6080d: ; 6080d (18:480d)
-	pop de
-	pop bc
-	ld hl, sp+$49
-	ld a, [hl]
-	or a
-	jp nz, .asm_60819
-	jp .asm_60857
-
-.asm_60819: ; 60819 (18:4819)
-	push bc
-	push de
-	ld hl, sp+$48
-	ld a, [hl]
-	cp $10
-	jp nz, .asm_6084a
-	ld hl, sp+$4e
-	ld a, [hl]
-	ld hl, sp+$4b
-	add [hl]
-	call StartCursorBlinking
-	ld hl, sp+$4e
-	ld [hl], $80
-	ld hl, sp+$48
-	ld [hl], $c
-	ld c, $5
-	ld e, $14
-	ld hl, $d
-	call Func_600f4
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-.asm_6084a: ; 6084a (18:484a)
-	ld hl, sp+$48
-	ld a, [hl]
-	add $2
-	ld hl, sp+$48
-	ld [hl], a
-	pop de
-	pop bc
-	jp .put_ffff_on_stack
-
-.asm_60857: ; 60857 (18:4857)
-	ld hl, sp+$4a
-	ld a, [hl]
-	ld hl, sp+$46
-	add [hl]
-	call StartCursorBlinking
-	push af
-.asm_60861: ; 60861 (18:4861)
-	call Func_24e9
-	or a
-	jp nz, .asm_60861
-	pop af
-	add sp, $50
-	ret
+INCLUDE "engine/map_text_18.asm"
 
 Func_6086c: ; 6086c (18:486c)
 	push hl
@@ -104173,7 +103811,7 @@ Func_61ef0: ; 61ef0 (18:5ef0)
 	ld hl, $8000
 	ret
 
-Func_61ef3: ; 61ef3
+Func_61ef4: ; 61ef3
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -107846,13 +107484,145 @@ Func_68000:
 	ret
 
 Data_68001:
-	dr $68001, $6810b
+	dr $68001, $680d3
 
-Func_6810b: ; 6810b
-	dr $6810b, $681a6
+Func_680d3:
+	push hl
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	ret
 
-Func_681a6: ; 681a6
-	dr $681a6, $681bd
+Func_680e4: ; 680e4 (1a:40e4)
+	push af
+	push de
+	set_farcall_addrs_hli Func_16007
+	pop de
+	pop af
+	jp FarCall
+
+Func_680f6:
+	push hl
+	push de
+	push bc
+	set_farcall_addrs_hli Func_17e95
+	pop bc
+	pop de
+	pop hl
+	call FarCall
+	ret
+
+Func_6810b: ; 6810b (1a:410b)
+	push de
+	add sp, -$48
+	push af
+	ld de, $19
+	ld a, $3
+	call Func_680e4
+	ld e, a
+	push de
+	ld hl, wc2e8 + 1
+	ld l, [hl]
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $c9b8
+	add hl, de
+	ld c, [hl]
+	pop de
+	pop af
+	push de
+	ld e, a
+	ld d, $0
+	ld hl, $c9a3
+	add hl, de
+	ld a, [hl]
+	push af
+	ld e, c
+	dec e
+	ld hl, sp+$1c
+	call Func_236f
+	pop af
+	ld e, a
+	ld hl, sp+$2
+	call Func_241f
+	ld hl, sp+$1f
+	ld l, [hl]
+	pop de
+	push hl
+	ld hl, sp+$a
+	ld a, [hl]
+	push af
+	ld a, e
+	call GetSRAMBank
+	set_farcall_addrs_hli Func_5ec99
+	pop af
+	pop hl
+	ld e, a
+	ld a, l
+	call FarCall
+	cp $1
+	jp nz, Func_68187
+	ld hl, sp+$48
+	ld a, [hl]
+	or a
+	jp nz, Func_6817f
+	ld hl, Data_681a2
+	push hl
+	call PlaceString
+	pop bc
+	jp Func_68184
+
+Func_6817f: ; 6817f (1a:417f)
+	ld a, $1
+	jp Func_6819f
+
+Func_68184: ; 68184 (1a:4184)
+	jp Func_6819e
+
+Func_68187: ; 68187 (1a:4187)
+	ld hl, sp+$48
+	ld a, [hl]
+	or a
+	jp nz, Func_68199
+	ld hl, Data_681a4
+	push hl
+	call PlaceString
+	pop bc
+	jp Func_6819e
+
+Func_68199: ; 68199 (1a:4199)
+	ld a, $ff
+	jp Func_6819f
+
+Func_6819e: ; 6819e (1a:419e)
+	xor a
+Func_6819f: ; 6819f (1a:419f)
+	add sp, $4a
+	ret
+
+Data_681a2:
+	db "c", $00
+
+Data_681a4:
+	db "×", $00
+
+Func_681a6: ; 681a6 (1a:41a6)
+	ld a, [wFarCallDestBank]
+	push af
+	callba_hli Func_61ef4
+	pop af
+	ld [wFarCallDestBank], a
+	ret
 
 Func_681bd: ; 681bd
 	dr $681bd, $69436
