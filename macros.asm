@@ -222,3 +222,9 @@ ELSE
 ENDC
 ENDM
 
+walle: MACRO ; meme
+	rept \1
+	nop
+	ENDR
+	ENDM
+
