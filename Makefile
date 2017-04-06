@@ -1,6 +1,6 @@
 PYTHON := python2.7
 PYTHON3 := python3
-MD5 := md5sum -c --quiet
+MD5 := md5sum -c
 POKETOOLS := extras/pokemontools
 
 RZ       := $(PYTHON) rz.py compress
