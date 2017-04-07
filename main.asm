@@ -110758,7 +110758,7 @@ Func_69646: ; 69646 (1a:5646)
 	pop bc
 	ret
 
-Func_69651:
+Func_6965b:
 	ld de, $19
 	ld a, $3
 	call Func_680e4
@@ -123382,32 +123382,1417 @@ Func_6ef0a: ; 6ef0a (1b:6f0a)
 	pop bc
 	ret
 
-Func_6ef0d: ; 6ef0d
-	dr $6ef0d, $6ef7f
+Func_6ef0d: ; 6ef0d (1b:6f0d)
+	ld hl, -$352
+	add hl, sp
+	ld sp, hl
+	push af
+	ld a, [hSRAMBank]
+	ld l, a
+	push hl
+	set_farcall_addrs_hli Func_7e8a
+	pop hl
+	pop af
+	push hl
+	push af
+	add $55
+	ld hl, sp+$4
+	push de
+	push hl
+	pop de
+	pop hl
+	call FarCall
+	set_farcall_addrs_hli Func_7766
+	ld c, $1
+	ld hl, sp+$4
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $351
+	call FarCall
+	ld a, $1
+	call GetSRAMBank_ReadOnly
+	set_farcall_addrs_hli Func_7766
+	pop af
+	ld l, a
+	ld h, $0
+	ld de, $2f
+	call MultiplyHLbyDE
+	debgcoord 31, 21
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2f
+	ld c, $1
+	call FarCall
+	pop hl
+	ld a, l
+	call GetSRAMBank
+	ld hl, $352
+	add hl, sp
+	ld sp, hl
+	ret
 
-Func_6ef7f: ; 6ef7f
-	dr $6ef7f, $6f1eb
+Func_6ef7f: ; 6ef7f (1b:6f7f)
+	ld hl, -$380
+	add hl, sp
+	ld sp, hl
+	push af
+	set_farcall_addrs_hli Func_7748
+	ld c, $1
+	ld hl, sp+$31
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $351
+	call FarCall
+	set_farcall_addrs_hli Func_7f14
+	pop af
+	push af
+	add $55
+	ld hl, sp+$31
+	push de
+	push hl
+	pop de
+	pop hl
+	call FarCall
+	set_farcall_addrs_hli Func_7748
+	ld c, $1
+	ld hl, sp+$2
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2f
+	call FarCall
+	pop af
+	push af
+	ld hl, sp+$e
+	ld [hl], a
+	set_farcall_addrs_hli Func_fb0db
+	pop af
+	push af
+	add $55
+	ld e, a
+	ld hl, sp+$2
+	call FarCall
+	pop af
+	ld hl, $380
+	add hl, sp
+	ld sp, hl
+	ret
 
-Func_6f1eb:
-	dr $6f1eb, $6f43b
+Func_6eff0:
+	add sp, -$30
+	push af
+	push de
+	ld hl, sp+$33
+	ld a, [hSRAMBank]
+	ld [hl], a
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $351
+	call FarCall
+	ld c, l
+	ld b, h
+	push bc
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $351
+	call FarCall
+	pop bc
+	pop de
+	pop af
+	inc e
+	dec e
+	jp nz, Func_6f0f7
+	push bc
+	push hl
+	push af
+	set_farcall_addrs_hli Func_7e8a
+	pop af
+	pop hl
+	pop bc
+	push af
+	push hl
+	push bc
+	ld e, c
+	ld d, b
+	add $55
+	call FarCall
+	set_farcall_addrs_hli Func_7766
+	pop bc
+	push bc
+	ld e, c
+	ld d, b
+	ld hl, $351
+	ld c, $1
+	call FarCall
+	set_farcall_addrs_hli Func_7748
+	pop bc
+	pop hl
+	push bc
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $351
+	ld c, $1
+	call FarCall
+	ld a, $1
+	call GetSRAMBank_ReadOnly
+	set_farcall_addrs_hli Func_7766
+	pop hl
+	pop bc
+	pop af
+	push bc
+	push hl
+	push af
+	ld l, a
+	ld h, $0
+	ld de, $2f
+	call MultiplyHLbyDE
+	debgcoord 31, 21
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2f
+	ld c, $1
+	call FarCall
+	ld hl, sp+$35
+	ld a, [hl]
+	call GetSRAMBank
+	set_farcall_addrs_hli Func_7748
+	ld c, $1
+	ld hl, sp+$6
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2f
+	call FarCall
+	pop af
+	push af
+	ld hl, sp+$12
+	ld [hl], a
+	set_farcall_addrs_hli Func_7f14
+	pop af
+	pop hl
+	push hl
+	push af
+	push de
+	push hl
+	pop de
+	pop hl
+	add $55
+	call FarCall
+	set_farcall_addrs_hli Func_fb0db
+	pop af
+	add $55
+	ld e, a
+	ld hl, sp+$4
+	call FarCall
+	pop hl
+	pop bc
+	jp Func_6f1c5
 
-Func_6f43b: ; 6f43b
-	dr $6f43b, $6f512
+Func_6f0f7: ; 6f0f7 (1b:70f7)
+	push bc
+	push hl
+	push af
+	set_farcall_addrs_hli Func_7e8a
+	pop af
+	pop hl
+	pop bc
+	push af
+	push bc
+	push hl
+	ld e, c
+	ld d, b
+	add $55
+	call FarCall
+	set_farcall_addrs_hli Func_7748
+	pop hl
+	pop bc
+	push hl
+	push bc
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $351
+	ld c, $1
+	call FarCall
+	set_farcall_addrs_hli Func_7766
+	pop bc
+	push bc
+	ld e, c
+	ld d, b
+	ld hl, $351
+	ld c, $1
+	call FarCall
+	set_farcall_addrs_hli Func_7748
+	ld c, $1
+	ld hl, sp+$6
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2f
+	call FarCall
+	pop bc
+	pop hl
+	pop af
+	push bc
+	push hl
+	push af
+	ld hl, sp+$12
+	ld [hl], a
+	ld a, $1
+	call GetSRAMBank_ReadOnly
+	set_farcall_addrs_hli Func_7766
+	pop af
+	push af
+	ld l, a
+	ld h, $0
+	ld de, $2f
+	call MultiplyHLbyDE
+	debgcoord 31, 21
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $2f
+	ld c, $1
+	call FarCall
+	ld hl, sp+$35
+	ld a, [hl]
+	call GetSRAMBank
+	set_farcall_addrs_hli Func_7f14
+	pop af
+	pop hl
+	push hl
+	push af
+	push de
+	push hl
+	pop de
+	pop hl
+	add $55
+	call FarCall
+	set_farcall_addrs_hli Func_fb0db
+	pop af
+	add $55
+	ld e, a
+	ld hl, sp+$4
+	call FarCall
+	pop hl
+	pop bc
+Func_6f1c5: ; 6f1c5 (1b:71c5)
+	push hl
+	push bc
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	ld hl, sp+$c
+	ld a, [hl]
+	add sp, $30
+	ret
 
-Func_6f512: ; 6f512
-	dr $6f512, $6f6de
+Func_6f1eb: ; 6f1eb (1b:71eb)
+	push de
+	add sp, -$54
+	push af
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, wOAM11Attrs
+	add hl, de
+	ld de, $12
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$54
+	ld [hl], $0
+	ld c, e
+	ld b, d
+	push bc
+	set_farcall_addrs_hli Func_7dfc
+	pop bc
+	pop af
+	push af
+	push bc
+	ld hl, sp+$58
+	ld c, [hl]
+	ld b, $0
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, wOAM11Attrs
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	ld hl, sp+$33
+	push de
+	push hl
+	pop de
+	pop hl
+	call FarCall
+	pop bc
+	ld hl, sp+$38
+	ld a, [hl]
+	cp $63
+	jp c, Func_6f244
+	ld bc, $0
+Func_6f244: ; 6f244 (1b:7244)
+	read_hl_from_sp_plus $47
+	add hl, bc
+	write_hl_to_sp_plus $47
+	ld hl, sp+$31
+	ld a, [hl]
+	dec a
+	ld e, a
+	ld hl, sp+$2
+	call Func_236f
+	set_farcall_addrs_hli Func_dbe2
+	ld hl, sp+$38
+	ld e, [hl]
+	ld hl, sp+$2
+	call FarCall
+	read_hl_from_sp_plus $1e
+	push hl
+	read_hl_from_sp_plus $43
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $41
+	read_hl_from_sp_plus $22
+	push hl
+	read_hl_from_sp_plus $47
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $45
+	read_hl_from_sp_plus $27
+	push hl
+	read_hl_from_sp_plus $4c
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $4a
+	read_hl_from_sp_plus $2b
+	push hl
+	read_hl_from_sp_plus $50
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $4e
+	read_hl_from_sp_plus $29
+	push hl
+	read_hl_from_sp_plus $4e
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $4c
+	ld de, $0
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$38
+	ld l, [hl]
+	ld h, a
+	call Func_270a
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $47
+	ld a, l
+	sub c
+	ld a, h
+	sbc b
+	jp c, Func_6f34c
+Func_6f2e8: ; 6f2e8 (1b:72e8)
+	read_hl_from_sp_plus $47
+	ld a, l
+	sub c
+	ld a, h
+	sbc b
+	jp c, Func_6f329
+	ld hl, sp+$38
+	ld a, [hl]
+	cp $63
+	jp nc, Func_6f329
+	ld hl, sp+$38
+	ld a, [hl]
+	inc a
+	ld hl, sp+$38
+	ld [hl], a
+	ld hl, sp+$54
+	ld a, [hl]
+	inc a
+	ld hl, sp+$54
+	ld [hl], a
+	read_hl_from_sp_plus $47
+	ld a, l
+	sub c
+	ld l, a
+	ld a, h
+	sbc b
+	ld h, a
+	write_hl_to_sp_plus $47
+	ld de, $0
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$38
+	ld l, [hl]
+	ld h, a
+	call Func_270a
+	ld c, l
+	ld b, h
+	jp Func_6f32c
 
-Func_6f6de: ; 6f6de
-	dr $6f6de, $6f785
+Func_6f329: ; 6f329 (1b:7329)
+	jp Func_6f32f
 
-Func_6f785:
-	dr $6f785, $6f962
+Func_6f32c: ; 6f32c (1b:732c)
+	jp Func_6f2e8
 
-Func_6f962: ; 6f962
-	dr $6f962, $6faba
+Func_6f32f: ; 6f32f (1b:732f)
+	ld hl, sp+$31
+	ld a, [hl]
+	dec a
+	ld e, a
+	ld hl, sp+$2
+	call Func_236f
+	set_farcall_addrs_hli Func_dbe2
+	ld hl, sp+$38
+	ld e, [hl]
+	ld hl, sp+$2
+	call FarCall
+Func_6f34c: ; 6f34c (1b:734c)
+	read_hl_from_sp_plus $1e
+	push hl
+	read_hl_from_sp_plus $43
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $41
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $3e7
+	call CompareHLtoDE
+	jp nc, Func_6f36f
+	ld hl, $3e7
+	write_hl_to_sp_plus $41
+Func_6f36f: ; 6f36f (1b:736f)
+	read_hl_from_sp_plus $22
+	push hl
+	read_hl_from_sp_plus $47
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $45
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $3e7
+	call CompareHLtoDE
+	jp nc, Func_6f392
+	ld hl, $3e7
+	write_hl_to_sp_plus $45
+Func_6f392: ; 6f392 (1b:7392)
+	read_hl_from_sp_plus $27
+	push hl
+	read_hl_from_sp_plus $4c
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $4a
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $3e7
+	call CompareHLtoDE
+	jp nc, Func_6f3b5
+	ld hl, $3e7
+	write_hl_to_sp_plus $4a
+Func_6f3b5: ; 6f3b5 (1b:73b5)
+	read_hl_from_sp_plus $2b
+	push hl
+	read_hl_from_sp_plus $50
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $4e
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $3e7
+	call CompareHLtoDE
+	jp nc, Func_6f3d8
+	ld hl, $3e7
+	write_hl_to_sp_plus $4e
+Func_6f3d8: ; 6f3d8 (1b:73d8)
+	read_hl_from_sp_plus $29
+	push hl
+	read_hl_from_sp_plus $4e
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $4c
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $3e7
+	call CompareHLtoDE
+	jp nc, Func_6f3fb
+	ld hl, $3e7
+	write_hl_to_sp_plus $4c
+Func_6f3fb: ; 6f3fb (1b:73fb)
+	read_hl_from_sp_plus $41
+	write_hl_to_sp_plus $3f
+	read_hl_from_sp_plus $45
+	write_hl_to_sp_plus $43
+	set_farcall_addrs_hli Func_7db0
+	pop af
+	ld hl, sp+$54
+	ld c, [hl]
+	ld b, $0
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, wOAM11Attrs
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	ld hl, sp+$2f
+	push de
+	push hl
+	pop de
+	pop hl
+	call FarCall
+	ld hl, sp+$52
+	ld a, [hl]
+	add sp, $56
+	ret
 
-Func_6faba: ; 6faba
-	dr $6faba, $6fb54
+Func_6f43b: ; 6f43b (1b:743b)
+	push af
+	push bc
+	ld hl, sp+$1
+	ld [hl], $0
+Func_6f441: ; 6f441 (1b:7441)
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $3
+	jp nc, Func_6f4bb
+	ld hl, sp+$1
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, wOAM11Attrs
+	add hl, de
+	ld de, $10
+	add hl, de
+	ld a, [hl]
+	cp $1
+	jp nz, Func_6f4b1
+	ld hl, sp+$0
+	ld [hl], $0
+Func_6f467: ; 6f467 (1b:7467)
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $4
+	jp nc, Func_6f4b1
+	ld hl, sp+$3
+	ld a, [hl]
+	ld hl, sp+$0
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$1
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, wOAM11Attrs
+	add hl, de
+	add hl, bc
+	cp [hl]
+	jp nc, Func_6f4a7
+	ld hl, sp+$0
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$1
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld de, wOAM11Attrs
+	add hl, de
+	add hl, bc
+	ld e, $1
+	ld a, [hl]
+	sub e
+	ld [hl], a
+Func_6f4a7: ; 6f4a7 (1b:74a7)
+	ld hl, sp+$0
+	ld a, [hl]
+	inc a
+	ld hl, sp+$0
+	ld [hl], a
+	jp Func_6f467
+
+Func_6f4b1: ; 6f4b1 (1b:74b1)
+	ld hl, sp+$1
+	ld a, [hl]
+	inc a
+	ld hl, sp+$1
+	ld [hl], a
+	jp Func_6f441
+
+Func_6f4bb: ; 6f4bb (1b:74bb)
+	pop bc
+	pop bc
+	ret
+
+Pointers_6f4be:
+	dw Data_6f4c4
+	dw Data_6f4cf
+	dw $0000
+
+Data_6f4c4:
+	db "<HIRA>ちょっとまってな<KATA>$"
+
+Data_6f4cf:
+	db "<HIRA>ちょちょいっと なおすさぁ<KATA>$"
+
+Pointers_6f4df:
+	dw Data_6f4e3
+	dw $0000
+
+Data_6f4e3:
+	db "<HIRA>そうかい またおいてﾞ<KATA>$"
+
+Pointers_6f4f1:
+	dw Data_6f4f7
+	dw Data_6f500
+	dw $0000
+
+Data_6f4f7:
+	db "<HIRA>おまたせっ<KATA>!$"
+
+Data_6f500:
+	db "<HIRA>かんへﾟきに なおしといたよ<KATA>!$"
+
+Func_6f512: ; 6f512 (1b:7512)
+	ld a, $3
+	ld [wOAM26VTile], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $c8
+	call FarCall
+	push de
+	push hl
+	pop de
+	pop hl
+	push de
+	ld c, e
+	ld b, d
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call Func_2124
+	pop de
+	push de
+	ld hl, $64
+	add hl, de
+	ld c, l
+	ld b, h
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call Func_2152
+	ld a, $2
+	ld [wOAM26VTile], a
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	ld de, Data_6f6d0
+	ld hl, $10e
+	call PlaceStringDEatCoordHL
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld a, $2
+	ld [wOAM26VTile], a
+	callba_hli Func_1482e
+	push hl
+	ld a, $2
+	ld [wOAM26VTile], a
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	pop hl
+	ld a, l
+	or h
+	jp nz, Func_6f66f
+	set_farcall_addrs_hli PrintMapText_
+	ld c, BANK(Pointers_6f4be)
+	ld de, Pointers_6f4be
+	ld hl, $10e
+	call FarCall
+	callba_hli Func_6965b
+	xor a
+	call StartMapMusic
+	ld a, $16
+	call StartMapMusic
+	set_farcall_addrs_hli Func_9a6aa
+	ld c, $2
+	ld e, $2
+	ld a, $8
+	call FarCall
+	callba_hli Func_9a84a
+	ld a, $3
+	ld [wOAM26VTile], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	set_farcall_addrs_hli PrintMapText_
+	ld c, BANK(Pointers_6f4f1)
+	ld de, Pointers_6f4f1
+	ld hl, $10e
+	call FarCall
+	ld a, $c
+	call StartMapMusic
+	jp Func_6f685
+
+Func_6f66f: ; 6f66f (1b:766f)
+	set_farcall_addrs_hli PrintMapText_
+	ld c, BANK(Pointers_6f4df)
+	ld de, Pointers_6f4df
+	ld hl, $10e
+	call FarCall
+Func_6f685: ; 6f685 (1b:7685)
+	ld a, $3
+	ld [wOAM26VTile], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	pop de
+	push de
+	ld c, e
+	ld b, d
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call Func_21ca
+	pop de
+	push de
+	ld hl, $64
+	add hl, de
+	ld c, l
+	ld b, h
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call Func_21f8
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	ret
+
+Data_6f6d0:
+	db "<HIRA>しゅうりしてゆくかい<KATA>?$"
+
+Func_6f6de: ; 6f6de (1b:76de)
+	push af
+	inc e
+	dec e
+	jp nz, Func_6f74d
+	set_farcall_addrs_hli Func_4ec2b
+	ld e, $0
+	ld hl, sp+$1
+	ld a, [hl]
+	call FarCall
+	cp $ff
+	jp nz, Func_6f74a
+	set_farcall_addrs_hli Func_4ec2b
+	ld e, $2
+	ld hl, sp+$1
+	ld a, [hl]
+	call FarCall
+	cp $ff
+	jp nz, Func_6f737
+	xor a
+	call Func_6f785
+	or a
+	jp nz, Func_6f732
+	set_farcall_addrs_hli Func_4ec2b
+	ld e, $0
+	ld hl, sp+$1
+	ld a, [hl]
+	call FarCall
+	jp Func_6f760
+
+Func_6f732: ; 6f732 (1b:7732)
+	ld a, $ff
+	jp Func_6f760
+
+Func_6f737: ; 6f737 (1b:7737)
+	callba_hli Func_fb205
+	ld a, $1
+	jp Func_6f760
+
+Func_6f74a: ; 6f74a (1b:774a)
+	jp Func_6f760
+
+Func_6f74d: ; 6f74d (1b:774d)
+	push de
+	set_farcall_addrs_hli Func_4ec2b
+	pop de
+	ld hl, sp+$1
+	ld a, [hl]
+	call FarCall
+Func_6f760: ; 6f760 (1b:7760)
+	pop bc
+	ret
+
+Pointers_6f762:
+	dw Data_6f768
+	dw Data_6f776
+	dw $0000
+
+Data_6f768:
+	db "<HIRA>そうこもいっはﾟいてﾞ<KATA>$"
+
+Data_6f776:
+	db "<HIRA>これいしﾞょうもてないよ<KATA>$"
+
+Func_6f785: ; 6f785 (1b:7785)
+	push af
+	ld a, $1
+	ld [wOAM26VTile], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	set_farcall_addrs_hli Func_17aba
+	ld hl, $c8
+	call FarCall
+	push de
+	push hl
+	pop de
+	pop hl
+	push de
+	ld c, e
+	ld b, d
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call Func_2124
+	pop de
+	push de
+	ld hl, $64
+	add hl, de
+	ld c, l
+	ld b, h
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call Func_2152
+	ld a, $2
+	ld [wOAM26VTile], a
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	set_farcall_addrs_hli Func_da901
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call FarCall
+	push hl
+	set_farcall_addrs_hli PrintMapText_
+	ld bc, BANK(Pointers_6f762)
+	ld de, Pointers_6f762
+	ld hl, $10e
+	call FarCall
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	ld e, $e
+	ld a, $1
+	call SetStringStartState
+	ld de, Data_6f95b
+	ld hl, $10e
+	call PlaceStringDEatCoordHL
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	callba_hli Func_1482e
+	ld c, l
+	ld b, h
+	pop hl
+	pop de
+	push bc
+	ld a, c
+	or b
+	jp nz, Func_6f906
+	push de
+	callba_hli Func_17470
+	call Func_3aa8
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_6f886
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_6f89a
+Func_6f886: ; 6f886 (1b:7886)
+	set_farcall_addrs_hli Func_61424
+	ld c, $1
+	ld e, $1
+	ld a, $1
+	call FarCall
+Func_6f89a: ; 6f89a (1b:789a)
+	call Func_3af6
+	ld hl, sp+$5
+	ld a, [hl]
+	cp $1
+	jp z, Func_6f8ba
+	or a
+	jp nz, Func_6f8c8
+	callba_hli Func_1535c
+	jp Func_6f8c8
+
+Func_6f8ba: ; 6f8ba (1b:78ba)
+	callba_hli Func_1491a
+Func_6f8c8: ; 6f8c8 (1b:78c8)
+	callba_hli Func_17488
+	set_farcall_addrs_hli Func_8ba8
+	xor a
+	call FarCall
+	ld a, $3
+	ld [wOAM26VTile], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	pop de
+	jp Func_6f947
+
+Func_6f906: ; 6f906 (1b:7906)
+	push hl
+	push de
+	ld a, $2
+	ld [wOAM26VTile], a
+	ld c, e
+	ld b, d
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call Func_21ca
+	pop de
+	push de
+	ld hl, $64
+	add hl, de
+	ld c, l
+	ld b, h
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call Func_21f8
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	set_farcall_addrs_hli Func_daa40
+	pop de
+	pop hl
+	push de
+	call FarCall
+	pop de
+Func_6f947: ; 6f947 (1b:7947)
+	push de
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	pop bc
+	ld a, c
+	pop bc
+	ret
+
+Data_6f95b:
+	db "<HIRA>すてる?<KATA>$"
+
+Func_6f962: ; 6f962 (1b:7962)
+	add sp, -$52
+	set_farcall_addrs_hli Func_6b55
+	ld hl, sp+$2f
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, [wc2e8 + 1]
+	call FarCall
+	ld hl, sp+$2f
+	ld a, [hl]
+	dec a
+	ld e, a
+	ld hl, sp+$0
+	call Func_236f
+	set_farcall_addrs_hli Func_dbe2
+	ld hl, sp+$36
+	ld e, [hl]
+	ld hl, sp+$0
+	call FarCall
+	read_hl_from_sp_plus $1c
+	push hl
+	read_hl_from_sp_plus $41
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $3f
+	read_hl_from_sp_plus $20
+	push hl
+	read_hl_from_sp_plus $45
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $43
+	read_hl_from_sp_plus $25
+	push hl
+	read_hl_from_sp_plus $4a
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $48
+	read_hl_from_sp_plus $29
+	push hl
+	read_hl_from_sp_plus $4e
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $4c
+	read_hl_from_sp_plus $27
+	push hl
+	read_hl_from_sp_plus $4c
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	write_hl_to_sp_plus $4a
+	ld hl, sp+$36
+	ld a, [hl]
+	inc a
+	ld hl, sp+$36
+	ld [hl], a
+	ld hl, sp+$2f
+	ld a, [hl]
+	dec a
+	ld e, a
+	ld hl, sp+$0
+	call Func_236f
+	set_farcall_addrs_hli Func_dbe2
+	ld hl, sp+$36
+	ld e, [hl]
+	ld hl, sp+$0
+	call FarCall
+	read_hl_from_sp_plus $1c
+	push hl
+	read_hl_from_sp_plus $41
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $3f
+	read_hl_from_sp_plus $20
+	push hl
+	read_hl_from_sp_plus $45
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $43
+	read_hl_from_sp_plus $25
+	push hl
+	read_hl_from_sp_plus $4a
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $48
+	read_hl_from_sp_plus $29
+	push hl
+	read_hl_from_sp_plus $4e
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $4c
+	read_hl_from_sp_plus $27
+	push hl
+	read_hl_from_sp_plus $4c
+	pop de
+	add hl, de
+	write_hl_to_sp_plus $4a
+	read_hl_from_sp_plus $3f
+	write_hl_to_sp_plus $3d
+	read_hl_from_sp_plus $43
+	write_hl_to_sp_plus $41
+	set_farcall_addrs_hli Func_6b74
+	ld hl, sp+$2f
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, [wc2e8 + 1]
+	call FarCall
+	ld hl, sp+$36
+	ld c, [hl]
+	ld b, $0
+	ld hl, wc2e8 + 1
+	ld l, [hl]
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, $502
+	add hl, de
+	ld de, $103
+	call Func_2230
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	add sp, $52
+	ret
+
+Func_6faba: ; 6faba (1b:7aba)
+	push af
+	call Func_3aa8
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_6face
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_6fae2
+Func_6face: ; 6face (1b:7ace)
+	set_farcall_addrs_hli Func_61424
+	ld c, $1
+	ld e, $1
+	ld a, $1
+	call FarCall
+Func_6fae2: ; 6fae2 (1b:7ae2)
+	ld a, $3
+	ld [wOAM26VTile], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	set_farcall_addrs_hli Func_17e95
+	ld c, $3
+	ld e, $a
+	ld hl, $506
+	call FarCall
+	ld e, $7
+	ld a, $6
+	call SetStringStartState
+	pop af
+	or a
+	jp nz, Func_6fb1f
+	ld hl, Data_6fb43
+	push hl
+	call PlaceString
+	pop bc
+	jp Func_6fb27
+
+Func_6fb1f: ; 6fb1f (1b:7b1f)
+	ld hl, Data_6fb4c
+	push hl
+	call PlaceString
+	pop bc
+Func_6fb27: ; 6fb27 (1b:7b27)
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	xor a
+Func_6fb34: ; 6fb34 (1b:7b34)
+	cp $3c
+	jp nc, Func_6fb42
+	push af
+	call NextOverworldFrame
+	pop af
+	inc a
+	jp Func_6fb34
+
+Func_6fb42: ; 6fb42 (1b:7b42)
+	ret
+
+Data_6fb43:
+	db "<HIRA>あなたのかち<KATA>$"
+
+Data_6fb4c:
+	db "<HIRA>あなたのまけ<KATA>$"
 
 SECTION "Bank 1e", ROMX, BANK [$1e]
 Data_78000: ; 78000
@@ -138133,7 +139518,13 @@ SECTION "Bank 26", ROMX, BANK [$26]
 	dr $98000, $9a41d
 
 Func_9a41d: ; 9a41d
-	dr $9a41d, $9a8c3
+	dr $9a41d, $9a6aa
+
+Func_9a6aa:
+	dr $9a6aa, $9a84a
+
+Func_9a84a:
+	dr $9a84a, $9a8c3
 
 Func_9a8c3: ; 9a8c3
 	dr $9a8c3, $9b251
@@ -138324,7 +139715,10 @@ GFX_e4000: ; e4000
 	dr $e4000, $e8000
 
 SECTION "Bank 3e 2", ROMX [$6fb2], BANK [$3e]
-	dr $fafb2, $fb205
+	dr $fafb2, $fb0db
+
+Func_fb0db:
+	dr $fb0db, $fb205
 
 Func_fb205:
 	dr $fb205, $fb2ed
