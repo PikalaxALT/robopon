@@ -1,11 +1,11 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 
-SECTION "rst $00", HOME [$00]
+SECTION "rst $00", ROM0 [$00]
 Serial_:
 	jp Func_0388
 
-SECTION "rst $08", HOME [$08]
+SECTION "rst $08", ROM0 [$08]
 	jp Predef
 
 Bank_000b: ; 000b
@@ -19,7 +19,7 @@ Bank_000e: ; 000e
 Bank_000f: ; 000f
 	db BANK(Pointers_7c000)
 
-SECTION "rst $10", HOME [$10]
+SECTION "rst $10", ROM0 [$10]
 	jp Func_00c9
 Byte_0013: ; 0013
 	db $01
@@ -28,28 +28,28 @@ Byte_0014: ; 0014
 Pointer_0015: ; 0015
 	dbw $01, $a1f0
 
-SECTION "rst $20", HOME [$20]
+SECTION "rst $20", ROM0 [$20]
 BankSwitch_0020: ; 0020
 	ld [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
 
-SECTION "VBlankInt", HOME [$40]
+SECTION "VBlankInt", ROM0 [$40]
 	jp wVBlank
 
-SECTION "HBlankInt", HOME [$48]
+SECTION "HBlankInt", ROM0 [$48]
 	jp wLCD
 
-SECTION "TimerInt", HOME [$50]
+SECTION "TimerInt", ROM0 [$50]
 	jp wTimer
 Timer_:
 	jp Func_021c
 
-SECTION "SerialInt", HOME [$58]
+SECTION "SerialInt", ROM0 [$58]
 	jp wSerial
 
 
-SECTION "High Home", HOME [$68]
+SECTION "High Home", ROM0 [$68]
 Predef: ; 68 (0:0068)
 	add sp, -$5
 	push af
@@ -179,15 +179,15 @@ BankSwitch_00f7: ; f7 (0:00f7)
 	ld [HuC3RomBank], a
 	ret
 
-SECTION "Init", HOME [$100]
+SECTION "Init", ROM0 [$100]
 Init:
 	nop
 	jp Start
 
-SECTION "Header", HOME [$104]
+SECTION "Header", ROM0 [$104]
 	ds $150 - $104
 
-SECTION "Home", HOME [$150]
+SECTION "Home", ROM0 [$150]
 Func_0150: ; 0150
 	ld a, [Bank_000b]
 	ld [hROMBank], a
@@ -279,7 +279,7 @@ CopyPredef:
 NullPredef:
 	ret
 
-SECTION "01e0", HOME [$1e0]
+SECTION "01e0", ROM0 [$1e0]
 Pointers_01e0: ; 01e0
 	dw Func_00e9
 	dw Func_0150
@@ -361,7 +361,7 @@ Func_0296: ; 296 (0:0296)
 	predef Func_7b133
 	jp Func_0300
 
-SECTION "02fd", HOME [$2fd]
+SECTION "02fd", ROM0 [$2fd]
 Func_02fd: ; 2fd (0:02fd)
 	jp Func_0309
 
@@ -627,7 +627,7 @@ FillMemory:
 	jr nz, .asm_0487
 	ret
 
-SECTION "0500", HOME [$500]
+SECTION "0500", ROM0 [$500]
 Func_0500: ; 0500
 	ld sp, wStackTop
 	di
@@ -1662,7 +1662,7 @@ asm_0cf7
 Data_0cfc: ; 0cfc
 	dr $cfc, $d3a
 
-SECTION "0e00", HOME [$e00]
+SECTION "0e00", ROM0 [$e00]
 INCLUDE "home/vblank.asm"
 
 TimerInterrupt:
@@ -2963,7 +2963,7 @@ DisableJoypadInt:
 	res 3, [hl]
 	ret
 
-SECTION "1d00", HOME [$1d00]
+SECTION "1d00", ROM0 [$1d00]
 INCLUDE "home/crash.asm"
 
 Func_1db9: ; 1db9
@@ -6841,7 +6841,7 @@ GetAndResetJoyHeld:
 	ld a, l
 	ret
 
-SECTION "3f80", HOME [$3f80]
+SECTION "3f80", ROM0 [$3f80]
 AudioEngineFarCall::
 	push af
 	ld a, $1d
@@ -6858,7 +6858,7 @@ AudioEngineFarCall::
 	ld [HuC3RomBank], a
 	ret
 
-SECTION "3fe0", HOME [$3fe0]
+SECTION "3fe0", ROM0 [$3fe0]
 Func_3fe0: ; 3fe0
 	push af
 	ld a, $14
@@ -139461,19 +139461,19 @@ SECTION "Bank 20", ROMX, BANK [$20]
 	dr $80000, $8208c
 
 Func_8208c: ; 8208c
-	dr $8208c, $84000
+	dr $8208c, $83f39
 
 SECTION "Bank 21", ROMX, BANK [$21]
-	dr $84000, $88000
+	dr $84000, $87ee4
 
 SECTION "Bank 22", ROMX, BANK [$22]
-	dr $88000, $8c000
+	dr $88000, $8b7c9
 
 SECTION "Bank 23", ROMX, BANK [$23]
 	dr $8c000, $8d4d8
 
 Func_8d4d8: ; 8d4d8
-	dr $8d4d8, $90000
+	dr $8d4d8, $8e8cd
 
 SECTION "Bank 24", ROMX, BANK [$24]
 	dr $90000, $932bd
@@ -139503,7 +139503,7 @@ Func_93b87: ; 93b87
 	dr $93b87, $93c0c
 
 Func_93c0c: ; 93c0c
-	dr $93c0c, $94000
+	dr $93c0c, $93d34
 
 SECTION "Bank 25", ROMX, BANK [$25]
 	dr $94000, $95c14
@@ -139512,7 +139512,7 @@ Func_95c14: ; 95c14
 	dr $95c14, $95c79
 
 Func_95c79: ; 95c79
-	dr $95c79, $98000
+	dr $95c79, $974a7
 
 SECTION "Bank 26", ROMX, BANK [$26]
 	dr $98000, $9a41d
@@ -139533,48 +139533,48 @@ Func_9b251: ; 9b251
 	dr $9b251, $9b326
 
 Func_9b326: ; 9b326
-	dr $9b326, $9c000
+	dr $9b326, $9b74a
 
 SECTION "Bank 27", ROMX, BANK [$27]
-	dr $9c000, $a0000
+	dr $9c000, $9f672
 
 SECTION "Bank 28", ROMX, BANK [$28]
 IF DEF(SUN)
 	dr $a0000, $a3c17
 
 Func_a3c17: ; a3c17
-	dr $a3c17, $a4000
+	dr $a3c17, $a3f5e
 ENDC
 IF DEF(STAR)
 	dr $a0000, $a3c5d
 
 Func_a3c17: ; a3c17
-	dr $a3c5d, $a4000
+	dr $a3c5d, $a3fa4
 ENDC
 
 SECTION "Bank 29", ROMX, BANK [$29]
 	dr $a4000, $a517c
 
 Func_a517c: ; a517c
-	dr $a517c, $a8000
+	dr $a517c, $a6add
 
 SECTION "Bank 2a", ROMX, BANK [$2a]
 	dr $a8000, $abb74
 
 Func_abb74: ; abb74
-	dr $abb74, $ac000
+	dr $abb74, $abf9c
 
 SECTION "Bank 2b", ROMX, BANK [$2b]
-	dr $ac000, $b0000
+	dr $ac000, $af539
 
 SECTION "Bank 2c", ROMX, BANK [$2c]
-	dr $b0000, $b4000
+	dr $b0000, $b3fd0
 
 SECTION "Bank 2d", ROMX, BANK [$2d]
-	dr $b4000, $b8000
+	dr $b4000, $b7e47
 
 SECTION "Bank 2e", ROMX, BANK [$2e]
-	dr $b8000, $bc000
+	dr $b8000, $bb71a
 
 SECTION "Bank 2f", ROMX, BANK [$2f]
 	dr $bc000, $bd6fa
@@ -139586,7 +139586,7 @@ Func_bf214: ; bf214
 	dr $bf214, $bf431
 
 Func_bf431: ; bf431
-	dr $bf431, $c0000
+	dr $bf431, $bf73b
 
 SECTION "Bank 30", ROMX, BANK [$30]
 GFX_c0000: ; c0000
