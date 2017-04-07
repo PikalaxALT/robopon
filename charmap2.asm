@@ -1,6 +1,7 @@
-	char_def 1
+	char_def
 
-	defchar "0"
+	defchar "$" ; terminator
+	defchar "0" ; 00
 	defchar "1"
 	defchar "2"
 	defchar "3"
@@ -16,7 +17,7 @@
 	defchar "ぅ"
 	defchar "ぇ"
 	defchar "ぉ"
-	defchar "ゃ"
+	defchar "ゃ" ; 10
 	defchar "ゅ"
 	defchar "ょ"
 	defchar "っ"
@@ -32,7 +33,7 @@
 	defchar "け"
 	defchar "こ"
 	defchar "さ"
-	defchar "し"
+	defchar "し" ; 20
 	defchar "す"
 	defchar "せ"
 	defchar "そ"
@@ -48,7 +49,7 @@
 	defchar "の"
 	defchar "は"
 	defchar "ひ"
-	defchar "ふ"
+	defchar "ふ" ; 30
 	defchar "へ"
 	defchar "ほ"
 	defchar "ま"
@@ -64,7 +65,7 @@
 	defchar "る"
 	defchar "れ"
 	defchar "ろ"
-	defchar "わ"
+	defchar "わ" ; 40
 	defchar "ん"
 	defchar "@"
 	defchar "@"
@@ -80,7 +81,7 @@
 	defchar "ッ"
 	defchar "ア"
 	defchar "イ"
-	defchar "ウ"
+	defchar "ウ" ; 50
 	defchar "エ"
 	defchar "オ"
 	defchar "カ"
@@ -95,7 +96,7 @@
 	defchar "ソ"
 	defchar "タ"
 	defchar "チ"
-	defchar "ツ"
+	defchar "ツ" ; 60
 	defchar "テ"
 	defchar "ト"
 	defchar "ナ"
@@ -112,7 +113,7 @@
 	defchar "ミ"
 	defchar "ム"
 	defchar "メ"
-	defchar "モ"
+	defchar "モ" ; 70
 	defchar "ヤ"
 	defchar "ユ"
 	defchar "ヨ"
@@ -128,7 +129,7 @@
 	defchar "/"
 	defchar ":"
 	defchar "×"
-	defchar "L"
+	defchar "L" ; 80
 	defchar "p"
 	defchar "@"
 	defchar "@"
@@ -144,7 +145,7 @@
 	defchar "G"
 	defchar "@"
 	defchar " "
-	defchar "R"
+	defchar "R" ; 90
 	defchar "@"
 	defchar "@"
 	defchar "@"
@@ -160,7 +161,7 @@
 	defchar "@"
 	defchar "@"
 	defchar "@"
-	defchar "が"
+	defchar "が" ; a0
 	defchar "ぎ"
 	defchar "ぐ"
 	defchar "げ"
@@ -176,7 +177,7 @@
 	defchar "で"
 	defchar "ど"
 	defchar "ば"
-	defchar "び"
+	defchar "び" ; b0
 	defchar "ぶ"
 	defchar "べ"
 	defchar "ぼ"
@@ -192,7 +193,7 @@
 	defchar "@"
 	defchar "@"
 	defchar "@"
-	defchar "ガ"
+	defchar "ガ" ; c0
 	defchar "ギ"
 	defchar "グ"
 	defchar "ゲ"
@@ -208,7 +209,7 @@
 	defchar "デ"
 	defchar "ド"
 	defchar "バ"
-	defchar "ビ"
+	defchar "ビ" ; d0
 	defchar "ブ"
 	defchar "ベ"
 	defchar "ボ"

@@ -1,5 +1,5 @@
 
-
+charmap "$", $00
 charmap "…", $23
 charmap "<SPEC>", $25
 charmap "×", $2a
