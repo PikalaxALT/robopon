@@ -1,5 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
+INCLUDE "macros/bank20.asm"
 
 SECTION "rst $00", ROM0 [$00]
 Serial_:
@@ -139454,2318 +139455,7 @@ Data_7f875: ; 7f875
 	dr $7f875, $80000
 
 SECTION "Bank 20", ROMX, BANK [$20]
-Func_80000:
-	jpba_hli Func_50d85
-
-Func_8000e:
-	jpba_hli Func_50d09
-
-Func_8001c: ; 8001c (20:401c)
-	callba_hli Func_ae4d
-	ret
-
-Func_8002b: ; 8002b (20:402b)
-	callba_hli Func_aca6
-	ret
-
-Func_8003a: ; 8003a (20:403a)
-	push hl
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	xor a
-Func_80042: ; 80042 (20:4042)
-	cp e
-	jp nc, Func_8007d
-	push de
-	push af
-	ld l, a
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $12
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$4
-	ld bc, $b
-	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_acc8
-	ld hl, sp+$4
-	call FarCall
-	pop af
-	inc a
-	pop de
-	jp Func_80042
-
-Func_8007d: ; 8007d (20:407d)
-	add sp, $e
-	ret
-
-Func_80080: ; 80080 (20:4080)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_a60f
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_80095: ; 80095 (20:4095)
-	push af
-	push de
-	set_farcall_addrs_hli Func_a6d8
-	pop de
-	pop af
-	call FarCall
-	ld a, [rLCDC]
-	and $80
-	jp z, Func_800b7
-	call NextOverworldFrame
-	call NextOverworldFrame
-	call NextOverworldFrame
-Func_800b7: ; 800b7 (20:40b7)
-	ret
-
-Func_800b8:
-	push af
-	set_farcall_addrs_hli Func_50b19
-	pop af
-	jp FarCall
-
-Func_800c8:
-	push af
-	push de
-	ld hl, sp+$0
-	ld a, [hl]
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld [hl], a
-	pop bc
-	pop bc
-	ret
-
-Func_800e9:
-	push af
-	push de
-	set_farcall_addrs_hli Func_9a39e
-	pop de
-	pop af
-	jp FarCall
-
-Func_800fb: ; 800fb (20:40fb)
-	push hl
-	add sp, -$e
-	xor a
-Func_800ff: ; 800ff (20:40ff)
-	cp e
-	jp nc, Func_8013a
-	push de
-	push af
-	ld l, a
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $14
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$4
-	ld bc, $e
-	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_a2eb
-	ld hl, sp+$4
-	call FarCall
-	pop af
-	inc a
-	pop de
-	jp Func_800ff
-
-Func_8013a: ; 8013a (20:413a)
-	add sp, $10
-	ret
-
-Func_8013d: ; 8013d (20:413d)
-	push af
-	push de
-	set_farcall_addrs_hli Func_a444
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_80150: ; 80150 (20:4150)
-	push af
-	push de
-	set_farcall_addrs_hli Func_a580
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_80163:
-	push hl
-	push de
-	set_farcall_addrs_hli Func_a5a4
-	pop de
-	pop hl
-	call FarCall
-	ret
-
-Func_80176: ; 80176 (20:4176)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_9a6aa
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_8018b: ; 8018b (20:418b)
-	callba_hli Func_da4fc
-	callba_hli Func_9a87c
-	ld a, [wLCDC]
-	or $3
-	ld [wLCDC], a
-	ld a, [wNextVBlankFlags]
-	or $6
-	ld [wNextVBlankFlags], a
-	ret
-
-Func_801b8:
-	callba_hli Func_da4fc
-	callba_hli Func_9a87c
-	ret
-
-Func_801d5: ; 801d5 (20:41d5)
-	callba_hli Func_9a84a
-	ret
-
-Func_801e4: ; 801e4 (20:41e4)
-	push af
-	push de
-	set_farcall_addrs_hli Func_9a897
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_801f7: ; 801f7 (20:41f7)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_b01b
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_8020c: ; 8020c (20:420c)
-	callba_hli Func_b3ab
-	ret
-
-Func_8021b: ; 8021b (20:421b)
-	push af
-	callba_hli Func_da4dc
-	callba_hli Func_d9f55
-	set_farcall_addrs_hli Func_58d5d
-	pop af
-	call FarCall
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	ret
-
-Func_80257:
-	callba_hli Func_14d93
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	ret
-
-Func_80275:
-	ld a, $3
-	ld [wOAM26VTile], a
-	callba_hli Func_14ca9
-	ret
-
-Func_80289:
-	callba_hli Func_17470
-	callba_hli Func_14940
-	callba_hli Func_17488
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	ret
-
-Func_802c3:
-	callba_hli Func_6f512
-	callba_hli Func_8f44
-	ret
-
-Func_802e0:
-	callba_hli Func_6965b
-	ret
-
-Func_802ef:
-	push bc
-	push hl
-	ld hl, sp+$2
-	ld [hl], $1
-	pop hl
-	ld a, [$c793]
-	or a
-	jp z, Func_8030d
-	ld a, [$c793]
-	cp $1
-	jp z, Func_8030d
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_80341
-Func_8030d: ; 8030d (20:430d)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bc6d
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_802ef)
-	call FarCall
-	or a
-	jp z, Func_80332
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_80341
-
-Func_80332: ; 80332 (20:4332)
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_80341: ; 80341 (20:4341)
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_80347:
-	push bc
-	push hl
-	ld hl, sp+$2
-	ld [hl], $1
-	pop hl
-	ld a, [$c793]
-	or a
-	jp z, Func_80364
-	ld a, [$c793]
-	cp $1
-	jp z, Func_80364
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_80398
-Func_80364: ; 80364 (20:4364)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bd5d
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_80347)
-	call FarCall
-	or a
-	jp z, Func_80389
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_80398
-
-Func_80389: ; 80389 (20:4389)
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_80398: ; 80398 (20:4398)
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_8039e:
-	push bc
-	push hl
-	ld hl, sp+$2
-	ld [hl], $1
-	pop hl
-	ld a, [$c793]
-	or a
-	jp z, Func_803bb
-	ld a, [$c793]
-	cp $1
-	jp z, Func_803bb
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_803ef
-Func_803bb: ; 803bb (20:43bb)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bce5
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_8039e)
-	call FarCall
-	or a
-	jp z, Func_803e0
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_803ef
-
-Func_803e0: ; 803e0 (20:43e0)
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_803ef: ; 803ef (20:43ef)
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_803f5:
-	push bc
-	push hl
-	ld hl, sp+$2
-	ld [hl], $1
-	pop hl
-	ld a, [$c793]
-	or a
-	jp z, Func_80412
-	ld a, [$c793]
-	cp $1
-	jp z, Func_80412
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_80446
-Func_80412: ; 80412 (20:4412)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bdd5
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_803f5)
-	call FarCall
-	or a
-	jp z, Func_80437
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_80446
-
-Func_80437: ; 80437 (20:4437)
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_80446: ; 80446 (20:4446)
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_8044b: ; 8044b (20:444b)
-	push af
-	set_farcall_addrs_hli Func_b3ef
-	pop af
-	call FarCall
-	ret
-
-Func_8045c:
-	callba_hli Func_14b44
-	callba_hli Func_8f44
-	ret
-
-Func_80479:
-	callba_hli Func_53c88
-	ret
-
-Func_80488:
-	push hl
-	set_farcall_addrs_hli Func_6e1b
-	pop hl
-	jp FarCall
-
-Func_80498: ; 80498 (20:4498)
-	push hl
-	set_farcall_addrs_hli Func_ac24
-	pop hl
-	call FarCall
-	ret
-
-Func_804a9: ; 804a9 (20:44a9)
-	push hl
-	set_farcall_addrs_hli Func_ac2c
-	pop hl
-	call FarCall
-	ret
-
-Func_804ba: ; 804ba (20:44ba)
-	push hl
-	set_farcall_addrs_hli Func_ac94
-	pop hl
-	jp FarCall
-
-Func_804ca: ; 804ca (20:44ca)
-	push hl
-	set_farcall_addrs_hli Func_ac9d
-	pop hl
-	jp FarCall
-
-Func_804da:
-	push hl
-	set_farcall_addrs_hli Func_17aba
-	ld hl, $154
-	call FarCall
-	ld c, l
-	ld b, h
-	pop hl
-	push bc
-	ld e, l
-	ld d, h
-	ld l, c
-	ld h, b
-	call CopyUntilNull
-	set_farcall_addrs_hli Func_ac35
-	pop bc
-	push bc
-	ld l, c
-	ld h, b
-	call FarCall
-	set_farcall_addrs_hli Func_17c57
-	pop hl
-	call FarCall
-	ret
-
-Func_80519: ; 80519 (20:4519)
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	push hl
-	push de
-	set_farcall_addrs_hli Func_17aba
-	ld hl, $154
-	call FarCall
-	ld c, l
-	ld b, h
-	pop de
-	push bc
-	ld l, c
-	ld h, b
-	call CopyUntilNull
-	pop bc
-	pop hl
-	push bc
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$2
-	call CopyUntilNull
-	set_farcall_addrs_hli Func_ac36
-	pop bc
-	push bc
-	ld e, c
-	ld d, b
-	ld hl, sp+$2
-	call FarCall
-	set_farcall_addrs_hli Func_17c57
-	pop hl
-	call FarCall
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_8056f:
-	push hl
-	set_farcall_addrs_hli Func_17aba
-	ld hl, $154
-	call FarCall
-	ld c, l
-	ld b, h
-	pop hl
-	push bc
-	ld e, l
-	ld d, h
-	ld l, c
-	ld h, b
-	call CopyUntilNull
-	set_farcall_addrs_hli Func_ac9b
-	pop bc
-	push bc
-	ld l, c
-	ld h, b
-	call FarCall
-	pop bc
-	push af
-	push bc
-	set_farcall_addrs_hli Func_17c57
-	pop hl
-	call FarCall
-	pop af
-	ret
-
-Func_805b2: ; 805b2 (20:45b2)
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	push hl
-	push de
-	set_farcall_addrs_hli Func_17aba
-	ld hl, $154
-	call FarCall
-	ld c, l
-	ld b, h
-	pop de
-	push bc
-	ld l, c
-	ld h, b
-	call CopyUntilNull
-	pop bc
-	pop hl
-	push bc
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$2
-	call CopyUntilNull
-	set_farcall_addrs_hli Func_aca4
-	pop bc
-	push bc
-	ld e, c
-	ld d, b
-	ld hl, sp+$2
-	call FarCall
-	pop bc
-	push af
-	push bc
-	set_farcall_addrs_hli Func_17c57
-	pop hl
-	call FarCall
-	pop af
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_8060c:
-	callba_hli Func_ac37
-	ret
-
-Func_8061b: ; 8061b (20:461b)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_a98b
-	pop de
-	pop hl
-	call FarCall
-	ret
-
-Func_8062e: ; 8062e (20:462e)
-	push hl
-	set_farcall_addrs_hli Func_aa36
-	pop hl
-	jp FarCall
-
-Func_8063e: ; 8063e (20:463e)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_b400
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_80653: ; 80653 (20:4653)
-	push af
-	set_farcall_addrs_hli Func_b52c
-	pop af
-	call FarCall
-	ret
-
-Func_80664: ; 80664 (20:4664)
-	push af
-	push de
-	set_farcall_addrs_hli Func_b530
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_80677: ; 80677 (20:4677)
-	push af
-	set_farcall_addrs_hli Func_b58e
-	pop af
-	call FarCall
-	ret
-
-Func_80688: ; 80688 (20:4688)
-	call Func_801f7
-	call Func_8020c
-	ret
-
-Func_8068f: ; 8068f (20:468f)
-	push hl
-	set_farcall_addrs_hli Func_b5db
-	pop hl
-	call FarCall
-	ret
-
-Func_806a0:
-	push de
-	ld [$c2f8], a
-	set_farcall_addrs_hli Func_30348
-	pop de
-	push de
-	ld a, e
-	call FarCall
-	pop de
-	ld a, e
-	cp $3
-	jp c, Func_806ce
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	jp Func_806dc
-
-Func_806ce: ; 806ce (20:46ce)
-	callba_hli Func_8f44
-Func_806dc: ; 806dc (20:46dc)
-	ret
-
-Func_806dd:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_80796
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_80095
-	ld hl, $c8
-	call Func_8062e
-	or a
-	jp nz, Func_80732
-	ld hl, $36d
-	call Func_804a9
-	ld e, $1
-	ld hl, $c8
-	call Func_8061b
-	jp Func_80796
-
-Func_80732: ; 80732 (20:4732)
-	pop hl
-	push hl
-	ld l, [hl]
-	ld h, $0
-	ld de, $8
-	call DivideHLByDESigned
-	ld de, wMapMusic + 7
-	add hl, de
-	ld c, [hl]
-	pop hl
-	push hl
-	ld a, [hl]
-	and $7
-	ld b, a
-	ld a, $1
-	call LeftShiftA
-	and c
-	jp z, Func_8075a
-	ld hl, $374
-	call Func_804a9
-	jp Func_80796
-
-Func_8075a: ; 8075a (20:475a)
-	ld hl, $36e
-	call Func_804ca
-	or a
-	jp nz, Func_80796
-	set_farcall_addrs_hli Func_9ace0
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld c, [hl]
-	pop hl
-	push hl
-	ld a, [hl]
-	pop hl
-	push hl
-	inc hl
-	ld e, [hl]
-	call FarCall
-	cp $2
-	jp nz, Func_8078c
-	ld hl, $371
-	call Func_80498
-	jp Func_80796
-
-Func_8078c: ; 8078c (20:478c)
-	or a
-	jp nz, Func_80796
-	ld hl, $47c
-	call Func_80498
-Func_80796: ; 80796 (20:4796)
-	pop bc
-	pop bc
-	ret
-
-Func_80799:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_8085c
-	push bc
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$5
-	ld a, [hl]
-	call Func_80095
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld e, [hl]
-	ld hl, sp+$2
-	ld [hl], e
-Func_807e7: ; 807e7 (20:47e7)
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, sp+$2
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hl]
-	inc hl
-	or [hl]
-	jp nz, Func_8081a
-	ld hl, sp+$2
-	ld [hl], $fe
-	jp Func_8081d
-
-Func_8081a: ; 8081a (20:481a)
-	jp Func_80828
-
-Func_8081d: ; 8081d (20:481d)
-	ld hl, sp+$2
-	ld a, [hl]
-	add $2
-	ld hl, sp+$2
-	ld [hl], a
-	jp Func_807e7
-
-Func_80828: ; 80828 (20:4828)
-	pop bc
-	ld hl, sp+$0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	inc hl
-	inc hl
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, sp+$0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, bc
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call Func_80519
-	ld hl, sp+$0
-	ld a, [hl]
-	add $2
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld [hl], a
-Func_8085c: ; 8085c (20:485c)
-	pop bc
-	pop bc
-	ret
-
-Func_8085f:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_808f9
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_80095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld c, [hl]
-Func_808ad: ; 808ad (20:48ad)
-	pop hl
-	push hl
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hl]
-	inc hl
-	and [hl]
-	inc a
-	jp nz, Func_808c4
-	ld c, $ff
-	jp Func_808c7
-
-Func_808c4: ; 808c4 (20:48c4)
-	jp Func_808cb
-
-Func_808c7: ; 808c7 (20:48c7)
-	inc c
-	jp Func_808ad
-
-Func_808cb: ; 808cb (20:48cb)
-	push bc
-	call GetHLAtSPPlus4
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_80498
-	pop bc
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld e, c
-	inc e
-	ld [hl], e
-Func_808f9: ; 808f9 (20:48f9)
-	pop bc
-	pop bc
-	ret
-
-Func_808fc:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_80996
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_80095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld c, [hl]
-Func_8094a: ; 8094a (20:494a)
-	pop hl
-	push hl
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hl]
-	inc hl
-	and [hl]
-	inc a
-	jp nz, Func_80961
-	ld c, $ff
-	jp Func_80964
-
-Func_80961: ; 80961 (20:4961)
-	jp Func_80968
-
-Func_80964: ; 80964 (20:4964)
-	inc c
-	jp Func_8094a
-
-Func_80968: ; 80968 (20:4968)
-	push bc
-	call GetHLAtSPPlus4
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_804a9
-	pop bc
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld e, c
-	inc e
-	ld [hl], e
-Func_80996: ; 80996 (20:4996)
-	pop bc
-	pop bc
-	ret
-
-Func_80999:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_80a79
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_80095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld a, [hl]
-	cp $1
-	jp z, Func_80a5d
-	or a
-	jp nz, Func_80a79
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus4
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	call Func_805b2
-	or a
-	jp nz, Func_80a3e
-	pop hl
-	push hl
-	ld de, $6
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	call Func_80519
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld [hl], $1
-	jp Func_80a5a
-
-Func_80a3e: ; 80a3e (20:4a3e)
-	pop hl
-	push hl
-	ld de, $a
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus4
-	ld de, $8
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	call Func_80519
-Func_80a5a: ; 80a5a (20:4a5a)
-	jp Func_80a79
-
-Func_80a5d: ; 80a5d (20:4a5d)
-	pop hl
-	push hl
-	ld de, $6
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	call Func_80519
-Func_80a79: ; 80a79 (20:4a79)
-	pop bc
-	pop bc
-	ret
-
-Func_80a7c:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_80b2a
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_80095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld a, [hl]
-	cp $1
-	jp z, Func_80b1c
-	or a
-	jp nz, Func_80b2a
-	pop hl
-	push hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_804ba
-	or a
-	jp nz, Func_80b09
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_80498
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld [hl], $1
-	jp Func_80b19
-
-Func_80b09: ; 80b09 (20:4b09)
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_80498
-Func_80b19: ; 80b19 (20:4b19)
-	jp Func_80b2a
-
-Func_80b1c: ; 80b1c (20:4b1c)
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_80498
-Func_80b2a: ; 80b2a (20:4b2a)
-	pop bc
-	pop bc
-	ret
-
-Func_80b2d:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_80bdb
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_80095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld a, [hl]
-	cp $1
-	jp z, Func_80bcd
-	or a
-	jp nz, Func_80bdb
-	pop hl
-	push hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_804ca
-	or a
-	jp nz, Func_80bba
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_804a9
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld [hl], $1
-	jp Func_80bca
-
-Func_80bba: ; 80bba (20:4bba)
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_804a9
-Func_80bca: ; 80bca (20:4bca)
-	jp Func_80bdb
-
-Func_80bcd: ; 80bcd (20:4bcd)
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_804a9
-Func_80bdb: ; 80bdb (20:4bdb)
-	pop bc
-	pop bc
-	ret
-
-Func_80bde:
-	push af
-	ld hl, sp+$1
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	inc hl
-	inc hl
-	ld a, [hl]
-	ld [$c846], a
-	ld hl, sp+$1
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	ld [$c847], a
-	ld a, $ff
-	ld [$c848], a
-	ld a, $ff
-	ld [$c849], a
-	ld a, [$c838]
-	cp $3
-	jp z, Func_80c5a
-	cp $2
-	jp z, Func_80c50
-	cp $1
-	jp z, Func_80c46
-	or a
-	jp nz, Func_80c61
-	ld a, [$c847]
-	dec a
-	ld [$c847], a
-	jp Func_80c61
-
-Func_80c46: ; 80c46 (20:4c46)
-	ld a, [$c846]
-	inc a
-	ld [$c846], a
-	jp Func_80c61
-
-Func_80c50: ; 80c50 (20:4c50)
-	ld a, [$c847]
-	inc a
-	ld [$c847], a
-	jp Func_80c61
-
-Func_80c5a: ; 80c5a (20:4c5a)
-	ld a, [$c846]
-	dec a
-	ld [$c846], a
-Func_80c61: ; 80c61 (20:4c61)
-	set_farcall_addrs_hli Func_9f87
-	ld c, $1
-	ld a, [$c847]
-	ld e, a
-	ld a, [$c846]
-	call FarCall
-	or a
-	jp nz, Func_80c91
-	ld a, $33
-	call Func_1502
-	ld bc, $c846
-	ld e, $20
-	ld hl, sp+$1
-	ld a, [hl]
-	call Func_801f7
-	ld a, $1
-	jp Func_80c92
-
-Func_80c91: ; 80c91 (20:4c91)
-	xor a
-Func_80c92: ; 80c92 (20:4c92)
-	pop bc
-	ret
-
-Func_80c94: ; 80c94 (20:4c94)
-	push af
-	set_farcall_addrs_hli Func_e2780
-	pop af
-	call FarCall
-	ret
-
-Func_80ca5:
-	push af
-	set_farcall_addrs_hli Func_e2829
-	pop af
-	jp FarCall
-
-Func_80cb5:
-	push af
-	set_farcall_addrs_hli Func_e2807
-	pop af
-	call FarCall
-	ret
-
-Func_80cc6: ; 80cc6 (20:4cc6)
-	push af
-	set_farcall_addrs_hli Func_be77
-	pop af
-	call FarCall
-	ret
-
-Func_80cd7:
-	push af
-	set_farcall_addrs_hli Func_dd67
-	pop af
-	jp FarCall
-
-Func_80ce7: ; 80ce7 (20:4ce7)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_9b262
-	pop de
-	pop hl
-	ld c, e
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_80ce7)
-	call FarCall
-	ret
-
-Func_80d01: ; 80d01 (20:4d01)
-	push af
-	ld a, [$c793]
-	or a
-	jp z, Func_80d11
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_80d22
-Func_80d11: ; 80d11 (20:4d11)
-	set_farcall_addrs_hli Func_b785
-	ld hl, sp+$1
-	ld a, [hl]
-	call FarCall
-Func_80d22: ; 80d22 (20:4d22)
-	pop bc
-	ret
-
-Func_80d24: ; 80d24 (20:4d24)
-	ld a, [$c793]
-	or a
-	jp z, Func_80d33
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_80d4c
-Func_80d33: ; 80d33 (20:4d33)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_b7fd
-	pop de
-	pop hl
-	ld c, e
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_80d24)
-	call FarCall
-Func_80d4c: ; 80d4c (20:4d4c)
-	ret
-
-Func_80d4d:
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_5a0e0
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_80d62:
-	push af
-	push de
-	set_farcall_addrs_hli Func_4ed5d
-	pop de
-	pop af
-	jp FarCall
-
-Func_80d74:
-	push af
-	push de
-	set_farcall_addrs_hli Func_6af0d
-	pop de
-	pop af
-	inc a
-	jp FarCall
-
-Func_80d87: ; 80d87 (20:4d87)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_31af1
-	pop bc
-	pop de
-	pop af
-	jp FarCall
-
-Func_80d9b: ; 80d9b (20:4d9b)
-	push hl
-	set_farcall_addrs_hli Func_e3714
-	pop hl
-	push hl
-	ld de, $5
-	add hl, de
-	ld c, [hl]
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld h, [hl]
-	ld b, h
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	ld l, [hl]
-	ld h, a
-	push hl
-	call GetHLAtSPPlus4
-	ld a, [hl]
-	call GetHLAtSPPlus4
-	inc hl
-	ld l, [hl]
-	ld h, a
-	pop de
-	call FarCall
-	pop bc
-	ret
-
-Func_80dd3: ; 80dd3 (20:4dd3)
-	ld a, [$c793]
-	or a
-	jp z, Func_80de2
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_80dfd
-Func_80de2: ; 80de2 (20:4de2)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bbee
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_80dd3)
-	call FarCall
-	ld l, a
-Func_80dfd: ; 80dfd (20:4dfd)
-	ld a, l
-	ret
-
-Func_80dff: ; 80dff (20:4dff)
-	push de
-	push af
-	push bc
-	set_farcall_addrs_hli Func_af7a
-	pop bc
-	pop af
-	ld hl, sp+$4
-	ld l, [hl]
-	ld h, c
-	ld e, l
-	ld d, h
-	ld hl, sp+$0
-	ld l, [hl]
-	ld h, a
-	call FarCall
-	pop bc
-	ret
-
-Func_80e1e: ; 80e1e (20:4e1e)
-	push af
-	push de
-	set_farcall_addrs_hli Func_943f
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_80e31:
-	push hl
-	push de
-	set_farcall_addrs_hli Func_6b94
-	pop de
-	pop hl
-	call FarCall
-	ret
-
-Func_80e44:
-	set_farcall_addrs_hli Func_9f64
-	ld a, [$c2d9]
-	add $4
-	ld e, a
-	ld a, [$c2d8]
-	add $5
-	jp FarCall
-
-Func_80e5d:
-	push af
-	set_farcall_addrs_hli Func_e1f2d
-	pop af
-	jp FarCall
-
-Func_80e6d:
-	push af
-	set_farcall_addrs_hli Func_6aad4
-	pop af
-	jp FarCall
-
-Func_80e7d:
-	push af
-	set_farcall_addrs_hli Func_6ab29
-	pop af
-	jp FarCall
-
-Func_80e8d:
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_e1513
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_80ea2: ; 80ea2 (20:4ea2)
-	callba_hli Func_9d3e
-	ret
-
-Func_80eb1: ; 80eb1 (20:4eb1)
-	callba_hli Func_9d4d
-	ret
-
-Func_80ec0:
-	call Func_3aa8
-	set_farcall_addrs_hli Func_14771
-	ld a, $7
-	call FarCall
-	push hl
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	pop hl
-	ld a, l
-	ret
-
-Func_80ee6: ; 80ee6 (20:4ee6)
-	push af
-	ld a, [wMapMusic]
-	ld hl, sp+$1
-	cp [hl]
-	jp z, Func_80efc
-	ld hl, sp+$1
-	ld a, [hl]
-	call StartMapMusic
-	ld hl, sp+$1
-	ld a, [hl]
-	ld [wMapMusic], a
-Func_80efc: ; 80efc (20:4efc)
-	pop bc
-	ret
-
-Func_80efe: ; 80efe (20:4efe)
-	call Func_1502
-	ret
-
-Func_80f02: ; 80f02 (20:4f02)
-	callba_hli Func_8f44
-	ret
-
-Func_80f11: ; 80f11 (20:4f11)
-	push hl
-	set_farcall_addrs_hli Func_bf39
-	pop de
-	ld a, BANK(Func_80f11)
-	call FarCall
-	ret
-
-Func_80f24:
-	push de
-	push bc
-	push af
-	set_farcall_addrs_hli Func_e3619
-	pop af
-	ld hl, sp+$6
-	ld c, [hl]
-	ld hl, sp+$0
-	ld e, [hl]
-	ld hl, sp+$2
-	ld l, [hl]
-	ld h, a
-	call FarCall
-	pop bc
-	pop bc
-	ret
-
-Func_80f43:
-	push af
-	set_farcall_addrs_hli Func_bf46
-	pop af
-	call FarCall
-	ret
-
-Func_80f54:
-	callba_hli Func_b65f
-	ret
-
-Func_80f63:
-	callba_hli Func_b6f2
-	ret
-
-Func_80f72:
-	push hl
-	set_farcall_addrs_hli Func_9a1bb
-	pop hl
-	call FarCall
-	ret
-
-Func_80f83:
-	push hl
-	set_farcall_addrs_hli Func_9a28c
-	pop hl
-	call FarCall
-	ret
-
-Func_80f94:
-	push hl
-	set_farcall_addrs_hli Func_93370
-	pop hl
-	call FarCall
-	ret
-
-Func_80fa5:
-	push hl
-	add sp, -$66
-	set_farcall_addrs_hli Func_1c11
-	ld hl, sp+$0
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $66
-	call FarCall
-	set_farcall_addrs_hli Func_1c27
-	ld hl, sp+$0
-	push hl
-	read_hl_from_sp_plus $6a
-	pop de
-	call FarCall
-	push de
-	push hl
-	pop de
-	pop hl
-	add sp, $68
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-Func_80fe0:
-	push af
-	set_farcall_addrs_hli Func_333ba
-	pop af
-	call FarCall
-	ret
-
-Func_80ff1: ; 80ff1 (20:4ff1)
-	push af
-	ld l, $0
-Func_80ff4: ; 80ff4 (20:4ff4)
-	ld a, l
-	cp $8
-	jp nc, Func_81018
-	push hl
-	xor a
-Func_80ffc: ; 80ffc (20:4ffc)
-	ld hl, sp+$3
-	cp [hl]
-	jp nc, Func_8100b
-	push af
-	call NextOverworldFrame
-	pop af
-	inc a
-	jp Func_80ffc
-
-Func_8100b: ; 8100b (20:500b)
-	pop hl
-	push hl
-	ld a, $7
-	sub l
-	call SetVolume
-	pop hl
-	inc l
-	jp Func_80ff4
-
-Func_81018: ; 81018 (20:5018)
-	pop bc
-	ret
-
-Func_8101a: ; 8101a (20:501a)
-	push af
-	xor a
-Func_8101c: ; 8101c (20:501c)
-	cp $8
-	jp nc, Func_8103c
-	push af
-	xor a
-Func_81023: ; 81023 (20:5023)
-	ld hl, sp+$3
-	cp [hl]
-	jp nc, Func_81032
-	push af
-	call NextOverworldFrame
-	pop af
-	inc a
-	jp Func_81023
-
-Func_81032: ; 81032 (20:5032)
-	pop af
-	push af
-	call SetVolume
-	pop af
-	inc a
-	jp Func_8101c
-
-Func_8103c: ; 8103c (20:503c)
-	pop bc
-	ret
-
-Func_8103e:
-	push af
-	set_farcall_addrs_hli Func_6ae47
-	pop af
-	call FarCall
-	ret
-
-Func_8104f:
-	callba_hli Func_6ac44
-	cp $ff
-	jp nz, Func_81071
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_81071: ; 81071 (20:5071)
-	ret
-
-Func_81072:
-	callba_hli Func_6b31a
-	ret
-
-Func_81081:
-	push hl
-	push de
-	set_farcall_addrs_hli Func_c796a
-	pop de
-	pop hl
-	call FarCall
-	ret
-
-Func_81094:
-	callba_hli Func_53b6e
-	ret
-
-Func_810a3:
-	push af
-	set_farcall_addrs_hli Func_fb55f
-	pop af
-	call FarCall
-	ret
+	lib_bank_20 20
 
 Data_810b4:
 	dr $810b4, $810f6
@@ -141800,180 +139490,180 @@ Data_81265: ; 81265
 Data_81273: ; 81273
 	dr $81273, $81281
 
-Func_81281:
-	call Func_81427
-	ld hl, Func_81427
-	call Func_80f11
+Func_81281_20:
+	call Func_81427_20
+	ld hl, Func_81427_20
+	call Func_80f11_20
 	ld e, $4
 	ld hl, Data_81101
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $2
-	call Func_80c94
+	call Func_80c94_20
 	ld a, $d
-	call Func_80c94
+	call Func_80c94_20
 	ld a, $1
 	ld [$c7e2], a
 	xor a
 	ld [$c791], a
 	ld e, $6
 	ld hl, Data_810b4
-	call Func_8003a
+	call Func_8003a_20
 	ld a, $1
-	call Func_80cc6
+	call Func_80cc6_20
 	ld a, [$c793]
 	or a
-	jp z, Func_812c9
+	jp z, Func_812c9_20
 	ld a, [$c793]
 	cp $2
-	jp z, Func_812c9
+	jp z, Func_812c9_20
 	ld a, [$c793]
 	cp $3
-	jp nz, Func_813ff
-Func_812c9: ; 812c9 (20:52c9)
+	jp nz, Func_813ff_20
+Func_812c9_20: ; 812c9 (20:52c9)
 	ld hl, $c
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_812ec
+	jp nz, Func_812ec_20
 	ld e, $3
 	ld hl, Data_8113f
-	call Func_800fb
-	call Func_8001c
-	call Func_814c1
+	call Func_800fb_20
+	call Func_8001c_20
+	call Func_814c1_20
 	ld e, $1
 	ld hl, $c
-	call Func_8061b
-	jp Func_813fc
+	call Func_8061b_20
+	jp Func_813fc_20
 
-Func_812ec: ; 812ec (20:52ec)
+Func_812ec_20: ; 812ec (20:52ec)
 	ld hl, $2
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp z, Func_81300
+	jp z, Func_81300_20
 	ld hl, $3
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_8137b
-Func_81300: ; 81300 (20:5300)
+	jp nz, Func_8137b_20
+Func_81300_20: ; 81300 (20:5300)
 	ld e, $6
 	ld hl, Data_81169
-	call Func_800fb
+	call Func_800fb_20
 	ld hl, $2
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
-	jp nz, Func_8133b
+	jp nz, Func_8133b_20
 	ld hl, $3
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
-	jp nz, Func_8132e
+	jp nz, Func_8132e_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld e, $0
 	ld a, $2
-	call Func_8013d
-	jp Func_81334
+	call Func_8013d_20
+	jp Func_81334_20
 
-Func_8132e: ; 8132e (20:532e)
+Func_8132e_20: ; 8132e (20:532e)
 	ld e, $2
 	xor a
-	call Func_80095
-Func_81334: ; 81334 (20:5334)
+	call Func_80095_20
+Func_81334_20: ; 81334 (20:5334)
 	ld e, $0
 	ld a, $1
-	call Func_8013d
-Func_8133b: ; 8133b (20:533b)
+	call Func_8013d_20
+Func_8133b_20: ; 8133b (20:533b)
 	ld hl, $3
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
-	jp nz, Func_8137b
+	jp nz, Func_8137b_20
 	ld hl, $4
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
-	jp z, Func_8135c
+	jp z, Func_8135c_20
 	ld hl, $2
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
-	jp nz, Func_8136d
-Func_8135c: ; 8135c (20:535c)
+	jp nz, Func_8136d_20
+Func_8135c_20: ; 8135c (20:535c)
 	ld e, $0
 	ld a, $3
-	call Func_8013d
+	call Func_8013d_20
 	ld e, $0
 	ld a, $5
-	call Func_8013d
-	jp Func_81374
+	call Func_8013d_20
+	jp Func_81374_20
 
-Func_8136d: ; 8136d (20:536d)
+Func_8136d_20: ; 8136d (20:536d)
 	ld e, $3
 	ld a, $3
-	call Func_80095
-Func_81374: ; 81374 (20:5374)
+	call Func_80095_20
+Func_81374_20: ; 81374 (20:5374)
 	ld e, $0
 	ld a, $4
-	call Func_8013d
-Func_8137b: ; 8137b (20:537b)
+	call Func_8013d_20
+Func_8137b_20: ; 8137b (20:537b)
 	ld e, $6
 	ld hl, Data_811bd
-	call Func_800fb
+	call Func_800fb_20
 	ld hl, $21
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
-	jp nz, Func_813ba
+	jp nz, Func_813ba_20
 	ld hl, $46
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_813ba
+	jp nz, Func_813ba_20
 	ld e, $4
 	ld hl, Data_8122d
-	call Func_800fb
+	call Func_800fb_20
 	ld a, [$c790]
 	or a
-	jp z, Func_813b7
+	jp z, Func_813b7_20
 	ld a, [$c790]
 	cp $7
-	jp nc, Func_813b7
+	jp nc, Func_813b7_20
 	ld de, Data_8113b
 	ld a, $7
-	call Func_80150
-Func_813b7: ; 813b7 (20:53b7)
-	jp Func_813c2
+	call Func_80150_20
+Func_813b7_20: ; 813b7 (20:53b7)
+	jp Func_813c2_20
 
-Func_813ba: ; 813ba (20:53ba)
+Func_813ba_20: ; 813ba (20:53ba)
 	ld e, $2
 	ld hl, Data_81211
-	call Func_800fb
-Func_813c2: ; 813c2 (20:53c2)
+	call Func_800fb_20
+Func_813c2_20: ; 813c2 (20:53c2)
 	ld a, [$c790]
 	or a
-	jp z, Func_813ec
+	jp z, Func_813ec_20
 	ld a, [$c790]
 	cp $7
-	jp nc, Func_813ec
+	jp nc, Func_813ec_20
 	ld e, $1
 	ld hl, Data_810f6
-	call Func_8003a
+	call Func_8003a_20
 	ld de, Data_8113b
 	ld a, $7
-	call Func_80150
+	call Func_80150_20
 	ld e, $1
 	ld hl, Data_81273
-	call Func_800fb
-	jp Func_813f4
+	call Func_800fb_20
+	jp Func_813f4_20
 
-Func_813ec: ; 813ec (20:53ec)
+Func_813ec_20: ; 813ec (20:53ec)
 	ld e, $1
 	ld hl, Data_81265
-	call Func_800fb
-Func_813f4: ; 813f4 (20:53f4)
+	call Func_800fb_20
+Func_813f4_20: ; 813f4 (20:53f4)
 	ld a, $3
-	call Func_80ee6
-	call Func_8001c
-Func_813fc: ; 813fc (20:53fc)
-	jp Func_81402
+	call Func_80ee6_20
+	call Func_8001c_20
+Func_813fc_20: ; 813fc (20:53fc)
+	jp Func_81402_20
 
-Func_813ff: ; 813ff (20:53ff)
-	call Func_8001c
-Func_81402: ; 81402 (20:5402)
+Func_813ff_20: ; 813ff (20:53ff)
+	call Func_8001c_20
+Func_81402_20: ; 81402 (20:5402)
 	ret
 
 Data_81403:
@@ -141994,59 +139684,59 @@ Data_8141b:
 Data_81421:
 	dr $81421, $81427
 
-Func_81427: ; 81427 (20:5427)
+Func_81427_20: ; 81427 (20:5427)
 	ld a, [$c78c]
 	cp $5
-	jp c, Func_81449
+	jp c, Func_81449_20
 	ld a, [$c78c]
 	cp $a
-	jp nc, Func_81449
+	jp nc, Func_81449_20
 	ld hl, Data_81409
-	call Func_80d9b
+	call Func_80d9b_20
 	ld hl, Data_81403
-	call Func_80d9b
-	call Func_80f02
-	jp Func_81490
+	call Func_80d9b_20
+	call Func_80f02_20
+	jp Func_81490_20
 
-Func_81449: ; 81449 (20:5449)
+Func_81449_20: ; 81449 (20:5449)
 	ld a, [$c78c]
 	cp $a
-	jp c, Func_8146b
+	jp c, Func_8146b_20
 	ld a, [$c78c]
 	cp $f
-	jp nc, Func_8146b
+	jp nc, Func_8146b_20
 	ld hl, Data_8140f
-	call Func_80d9b
+	call Func_80d9b_20
 	ld hl, Data_81403
-	call Func_80d9b
-	call Func_80f02
-	jp Func_81490
+	call Func_80d9b_20
+	call Func_80f02_20
+	jp Func_81490_20
 
-Func_8146b: ; 8146b (20:546b)
+Func_8146b_20: ; 8146b (20:546b)
 	ld a, [$c78c]
 	cp $f
-	jp c, Func_81490
+	jp c, Func_81490_20
 	ld a, [$c78c]
 	cp $15
-	jp nc, Func_81490
+	jp nc, Func_81490_20
 	ld hl, Data_8141b
-	call Func_80d9b
+	call Func_80d9b_20
 	ld hl, Data_81415
-	call Func_80d9b
+	call Func_80d9b_20
 	ld hl, Data_81403
-	call Func_80d9b
-	call Func_80f02
-Func_81490: ; 81490 (20:5490)
+	call Func_80d9b_20
+	call Func_80f02_20
+Func_81490_20: ; 81490 (20:5490)
 	ld a, [$c790]
 	or a
-	jp z, Func_814a8
+	jp z, Func_814a8_20
 	ld a, [$c790]
 	cp $7
-	jp nc, Func_814a8
+	jp nc, Func_814a8_20
 	ld hl, Data_81421
-	call Func_80d9b
-	call Func_80f02
-Func_814a8: ; 814a8 (20:54a8)
+	call Func_80d9b_20
+	call Func_80f02_20
+Func_814a8_20: ; 814a8 (20:54a8)
 	ret
 
 Data_814a9:
@@ -142058,117 +139748,117 @@ Data_814b3:
 Data_814bb:
 	dr $814bb, $814c1
 
-Func_814c1: ; 814c1 (20:54c1)
+Func_814c1_20: ; 814c1 (20:54c1)
 	ld a, $4
-	call Func_80ee6
+	call Func_80ee6_20
 	ld c, $1
 	ld de, Data_814a9
 	ld a, BANK(Data_814a9)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	xor a
-	call Func_80677
+	call Func_80677_20
 	ld c, $1
 	ld e, $1
 	ld a, $20
-	call Func_80176
+	call Func_80176_20
 	ld e, $0
 	ld a, $1
-	call Func_8013d
+	call Func_8013d_20
 	ld e, $0
 	ld a, $2
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $36
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $1e
-	call Func_8068f
-	call Func_801d5
+	call Func_8068f_20
+	call Func_801d5_20
 	ld c, $1
 	ld e, $2
 	ld a, $20
-	call Func_80176
+	call Func_80176_20
 	ld a, $36
-	call Func_80efe
-	call Func_801d5
+	call Func_80efe_20
+	call Func_801d5_20
 	ld a, $39
-	call Func_80efe
+	call Func_80efe_20
 	ld a, $f
-	call Func_80ff1
+	call Func_80ff1_20
 	xor a
-	call Func_80ee6
-	call Func_8018b
+	call Func_80ee6_20
+	call Func_8018b_20
 	ld hl, $a
-	call Func_804a9
+	call Func_804a9_20
 	ld a, $1
-	call Func_8101a
+	call Func_8101a_20
 	ld a, $3
-	call Func_80ee6
+	call Func_80ee6_20
 	ld c, $1
 	ld e, $2
 	ld a, $1
-	call Func_80176
+	call Func_80176_20
 	ld e, $0
 	xor a
-	call Func_8013d
-	call Func_801d5
+	call Func_8013d_20
+	call Func_801d5_20
 	ld hl, $3c
-	call Func_8068f
+	call Func_8068f_20
 	ld e, $1
 	xor a
-	call Func_8013d
-	call Func_8018b
+	call Func_8013d_20
+	call Func_8018b_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld hl, $b
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $c
-	call Func_80498
+	call Func_80498_20
 	xor a
-	call Func_8021b
+	call Func_8021b_20
 	ld hl, $d
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $e
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $3c
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $1
 	ld e, $1
 	ld a, $5
-	call Func_80176
+	call Func_80176_20
 	ld e, $d
 	ld a, $15
-	call Func_801e4
+	call Func_801e4_20
 	ld a, $28
-	call Func_80efe
-	call Func_801d5
+	call Func_80efe_20
+	call Func_801d5_20
 	ld hl, $1e
-	call Func_8068f
-	call Func_8018b
+	call Func_8068f_20
+	call Func_8018b_20
 	ld hl, $f
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_814bb
 	ld e, BANK(Data_814bb)
 	xor a
-	call Func_801f7
+	call Func_801f7_20
 	ld c, $1
 	ld de, Data_814b3
 	ld a, BANK(Data_814b3)
-	call Func_8063e
+	call Func_8063e_20
 	ret
 
 Data_815d0:
@@ -142183,131 +139873,131 @@ Data_815ff: ; 815ff
 Data_81603: ; 81603
 	dr $81603, $81607
 
-Func_81607:
+Func_81607_20:
 	ld a, e
 	or a
-	jp nz, Func_8171a
+	jp nz, Func_8171a_20
 	ld hl, $2
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_81704
+	jp nz, Func_81704_20
 	ld a, [$c838]
 	cp $1
-	jp nz, Func_8162b
+	jp nz, Func_8162b_20
 	ld c, $0
 	ld de, Data_815f9
 	ld a, BANK(Data_815f9)
-	call Func_8063e
-	jp Func_81635
+	call Func_8063e_20
+	jp Func_81635_20
 
-Func_8162b: ; 8162b (20:562b)
+Func_8162b_20: ; 8162b (20:562b)
 	ld c, $0
 	ld de, Data_815ff
 	ld a, BANK(Data_815ff)
-	call Func_8063e
-Func_81635: ; 81635 (20:5635)
+	call Func_8063e_20
+Func_81635_20: ; 81635 (20:5635)
 	xor a
-	call Func_80677
+	call Func_80677_20
 	ld a, $a
-	call Func_80ff1
+	call Func_80ff1_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	ld a, $1
-	call Func_80095
+	call Func_80095_20
 	ld a, $1
-	call Func_8101a
+	call Func_8101a_20
 	ld a, $1a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld hl, $16
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $17
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $18
-	call Func_804ba
+	call Func_804ba_20
 	or a
-	jp nz, Func_816da
+	jp nz, Func_816da_20
 	ld de, Data_8171b
 	ld hl, Data_815d0
-	call Func_80dd3
+	call Func_80dd3_20
 	or a
-	jp nz, Func_8167f
-	jp Func_8171a
+	jp nz, Func_8167f_20
+	jp Func_8171a_20
 
-Func_8167f: ; 8167f (20:567f)
+Func_8167f_20: ; 8167f (20:567f)
 	ld hl, $19
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_81603
 	ld e, BANK(Data_81603)
 	ld a, $1
-	call Func_801f7
+	call Func_801f7_20
 	ld a, $2e
-	call Func_80efe
-	call Func_8020c
+	call Func_80efe_20
+	call Func_8020c_20
 	ld e, $0
 	ld a, $1
-	call Func_8013d
+	call Func_8013d_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $3
-	call Func_80ee6
+	call Func_80ee6_20
 	ld hl, $3
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_816cc
+	jp nz, Func_816cc_20
 	ld hl, $1b
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $1c
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $1d
-	call Func_804a9
-	jp Func_816cf
+	call Func_804a9_20
+	jp Func_816cf_20
 
-Func_816cc: ; 816cc (20:56cc)
-	call Func_8172f
-Func_816cf: ; 816cf (20:56cf)
+Func_816cc_20: ; 816cc (20:56cc)
+	call Func_8172f_20
+Func_816cf_20: ; 816cf (20:56cf)
 	ld e, $1
 	ld hl, $2
-	call Func_8061b
-	jp Func_81701
+	call Func_8061b_20
+	jp Func_81701_20
 
-Func_816da: ; 816da (20:56da)
+Func_816da_20: ; 816da (20:56da)
 	ld a, $69
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $1a
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	ld a, $1
-	call Func_80095
+	call Func_80095_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $3
-	call Func_80ee6
-Func_81701: ; 81701 (20:5701)
-	jp Func_8171a
+	call Func_80ee6_20
+Func_81701_20: ; 81701 (20:5701)
+	jp Func_8171a_20
 
-Func_81704: ; 81704 (20:5704)
+Func_81704_20: ; 81704 (20:5704)
 	ld hl, $3
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_81717
+	jp nz, Func_81717_20
 	ld hl, $1f
-	call Func_804a9
-	jp Func_8171a
+	call Func_804a9_20
+	jp Func_8171a_20
 
-Func_81717: ; 81717 (20:5717)
-	call Func_8172f
-Func_8171a: ; 8171a (20:571a)
+Func_81717_20: ; 81717 (20:5717)
+	call Func_8172f_20
+Func_8171a_20: ; 8171a (20:571a)
 	ret
 
 Data_8171b:
@@ -142322,72 +140012,72 @@ Data_81727: ; 81727
 Data_8172b: ; 8172b
 	dr $8172b, $8172f
 
-Func_8172f: ; 8172f (20:572f)
+Func_8172f_20: ; 8172f (20:572f)
 	ld hl, $4
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_817c9
+	jp nz, Func_817c9_20
 	ld c, $e
 	ld e, $c
 	ld a, $3
-	call Func_80080
+	call Func_80080_20
 	ld hl, $21
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $22
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $19
-	call Func_80ee6
+	call Func_80ee6_20
 	ld bc, Data_81727
 	ld e, BANK(Data_81727)
 	ld a, $3
-	call Func_801f7
-	call Func_8020c
+	call Func_801f7_20
+	call Func_8020c_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $1
 	ld de, Data_81723
 	ld a, BANK(Data_81723)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld a, $2
-	call Func_80677
+	call Func_80677_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $3
-	call Func_80ee6
+	call Func_80ee6_20
 	ld hl, $17d
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2a
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2b
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2c
-	call Func_804a9
+	call Func_804a9_20
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	ld bc, Data_8172b
 	ld e, BANK(Data_8172b)
 	ld a, $3
-	call Func_801f7
-	call Func_8020c
+	call Func_801f7_20
+	call Func_8020c_20
 	ld e, $0
 	ld a, $3
-	call Func_8013d
+	call Func_8013d_20
 	ld e, $1
 	ld hl, $4
-	call Func_8061b
-	jp Func_817d3
+	call Func_8061b_20
+	jp Func_817d3_20
 
-Func_817c9: ; 817c9 (20:57c9)
+Func_817c9_20: ; 817c9 (20:57c9)
 	xor a
-	call Func_8044b
+	call Func_8044b_20
 	ld hl, $3bf
-	call Func_804a9
-Func_817d3: ; 817d3 (20:57d3)
+	call Func_804a9_20
+Func_817d3_20: ; 817d3 (20:57d3)
 	ret
 
 Data_817d4:
@@ -142405,152 +140095,152 @@ Data_81805: ; 81805
 Data_8180d: ; 8180d
 	dr $8180d, $81811
 
-Func_81811:
+Func_81811_20:
 	ld a, e
 	or a
-	jp nz, Func_81966
+	jp nz, Func_81966_20
 	ld hl, $3
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_8193b
+	jp nz, Func_8193b_20
 	ld c, $1
 	ld de, Data_8180d
 	ld a, BANK(Data_8180d)
-	call Func_8063e
+	call Func_8063e_20
 	ld a, $1
-	call Func_80677
+	call Func_80677_20
 	ld a, $a
-	call Func_80ff1
+	call Func_80ff1_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld e, $3
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $3
 	ld a, $4
-	call Func_80095
+	call Func_80095_20
 	ld a, $1
-	call Func_8101a
+	call Func_8101a_20
 	ld a, $1a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld hl, $23
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $24
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $25
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $18
-	call Func_804ba
+	call Func_804ba_20
 	or a
-	jp nz, Func_81910
+	jp nz, Func_81910_20
 	ld de, Data_81967
 	ld hl, Data_817d4
-	call Func_80dd3
+	call Func_80dd3_20
 	or a
-	jp nz, Func_8187c
-	jp Func_81966
+	jp nz, Func_8187c_20
+	jp Func_81966_20
 
-Func_8187c: ; 8187c (20:587c)
+Func_8187c_20: ; 8187c (20:587c)
 	ld hl, $27
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_817fd
 	ld e, BANK(Data_817fd)
 	ld a, $4
-	call Func_801f7
+	call Func_801f7_20
 	ld a, $2e
-	call Func_80efe
-	call Func_8020c
+	call Func_80efe_20
+	call Func_8020c_20
 	ld e, $0
 	ld a, $4
-	call Func_8013d
+	call Func_8013d_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $3
-	call Func_80ee6
+	call Func_80ee6_20
 	ld hl, $2
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_818b7
+	jp nz, Func_818b7_20
 	ld hl, $28
-	call Func_804a9
-	jp Func_81905
+	call Func_804a9_20
+	jp Func_81905_20
 
-Func_818b7: ; 818b7 (20:58b7)
+Func_818b7_20: ; 818b7 (20:58b7)
 	ld c, $1
 	ld de, Data_81801
 	ld a, BANK(Data_81801)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld a, $1
-	call Func_80677
+	call Func_80677_20
 	ld hl, $29
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2a
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2b
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2c
-	call Func_804a9
+	call Func_804a9_20
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	ld bc, Data_81805
 	ld e, BANK(Data_81805)
 	ld a, $3
-	call Func_80688
+	call Func_80688_20
 	ld a, $2
-	call Func_80677
-	call Func_8020c
+	call Func_80677_20
+	call Func_8020c_20
 	ld e, $0
 	ld a, $3
-	call Func_8013d
+	call Func_8013d_20
 	ld e, $0
 	xor a
-	call Func_8013d
-Func_81905: ; 81905 (20:5905)
+	call Func_8013d_20
+Func_81905_20: ; 81905 (20:5905)
 	ld e, $1
 	ld hl, $3
-	call Func_8061b
-	jp Func_81938
+	call Func_8061b_20
+	jp Func_81938_20
 
-Func_81910: ; 81910 (20:5910)
+Func_81910_20: ; 81910 (20:5910)
 	ld a, $69
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $26
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld e, $2
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	ld a, $4
-	call Func_80095
+	call Func_80095_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $3
-	call Func_80ee6
-Func_81938: ; 81938 (20:5938)
-	jp Func_81966
+	call Func_80ee6_20
+Func_81938_20: ; 81938 (20:5938)
+	jp Func_81966_20
 
-Func_8193b: ; 8193b (20:593b)
+Func_8193b_20: ; 8193b (20:593b)
 	ld hl, $2
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_8194e
+	jp nz, Func_8194e_20
 	ld hl, $28
-	call Func_804a9
-	jp Func_81966
+	call Func_804a9_20
+	jp Func_81966_20
 
-Func_8194e: ; 8194e (20:594e)
+Func_8194e_20: ; 8194e (20:594e)
 	ld hl, $29
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2a
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2b
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $2c
-	call Func_804a9
-Func_81966: ; 81966 (20:5966)
+	call Func_804a9_20
+Func_81966_20: ; 81966 (20:5966)
 	ret
 
 Data_81967:
@@ -142559,134 +140249,134 @@ Data_81967:
 Data_8196f: ; 8196f
 	dr $8196f, $81973
 
-Func_81973:
+Func_81973_20:
 	push de
 	ld hl, $3
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_819aa
+	jp nz, Func_819aa_20
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $2
-	jp nz, Func_819aa
+	jp nz, Func_819aa_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld hl, $1d
-	call Func_804a9
+	call Func_804a9_20
 	ld a, $1
-	call Func_80677
+	call Func_80677_20
 	ld c, $1
 	ld de, Data_8196f
 	ld a, BANK(Data_8196f)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld e, $2
 	xor a
-	call Func_80095
-Func_819aa: ; 819aa (20:59aa)
+	call Func_80095_20
+Func_819aa_20: ; 819aa (20:59aa)
 	pop bc
 	ret
 
 Data_819ac:
 	dr $819ac, $819b0
 
-Func_819b0:
+Func_819b0_20:
 	push de
 	ld hl, $2
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_819e8
+	jp nz, Func_819e8_20
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $2
-	jp nz, Func_819e8
+	jp nz, Func_819e8_20
 	ld e, $2
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld hl, $28
-	call Func_804a9
+	call Func_804a9_20
 	xor a
-	call Func_80677
+	call Func_80677_20
 	ld c, $1
 	ld de, Data_819ac
 	ld a, BANK(Data_819ac)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld e, $3
 	ld a, $3
-	call Func_80095
-Func_819e8: ; 819e8 (20:59e8)
+	call Func_80095_20
+Func_819e8_20: ; 819e8 (20:59e8)
 	pop bc
 	ret
 
-Func_819ea:
+Func_819ea_20:
 	ld a, e
 	cp $1
-	jp nz, Func_81a21
+	jp nz, Func_81a21_20
 	ld a, [$c838]
 	cp $1
-	jp z, Func_819fb
-	jp Func_81a21
+	jp z, Func_819fb_20
+	jp Func_81a21_20
 
-Func_819fb: ; 819fb (20:59fb)
+Func_819fb_20: ; 819fb (20:59fb)
 	ld l, $7
 	push hl
 	ld c, $0
 	ld e, $4
 	ld a, $20
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	ld a, $1
 	ld [$c7e9], a
 	ld a, $7
 	ld [$c7ea], a
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	ld a, $8
 	ld [$c7db], a
 	ld a, $8
 	ld [$c7dc], a
-Func_81a21: ; 81a21 (20:5a21)
+Func_81a21_20: ; 81a21 (20:5a21)
 	ret
 
-Func_81a22:
+Func_81a22_20:
 	ld a, e
 	cp $1
-	jp nz, Func_81a59
+	jp nz, Func_81a59_20
 	ld a, [$c838]
 	cp $1
-	jp z, Func_81a33
-	jp Func_81a59
+	jp z, Func_81a33_20
+	jp Func_81a59_20
 
-Func_81a33: ; 81a33 (20:5a33)
+Func_81a33_20: ; 81a33 (20:5a33)
 	ld l, $7
 	push hl
 	ld c, $0
 	ld e, $4
 	ld a, $20
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	ld a, $1
 	ld [$c7e9], a
 	ld a, $7
 	ld [$c7ea], a
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	ld a, $8
 	ld [$c7db], a
 	ld a, $f
 	ld [$c7dc], a
-Func_81a59: ; 81a59 (20:5a59)
+Func_81a59_20: ; 81a59 (20:5a59)
 	ret
 
-Func_81a5a:
+Func_81a5a_20:
 	ld a, e
 	cp $2
-	jp nz, Func_81a65
+	jp nz, Func_81a65_20
 	ld a, $6
 	ld [$c78a], a
-Func_81a65: ; 81a65 (20:5a65)
+Func_81a65_20: ; 81a65 (20:5a65)
 	ret
 
 Data_81a66:
@@ -142698,53 +140388,53 @@ Data_81a84: ; 81a84
 Data_81abc: ; 81abc
 	dr $81abc, $81ac1
 
-Func_81ac1:
+Func_81ac1_20:
 	ld e, $2
 	ld hl, Data_81a66
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_81abc
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, [$c793]
 	or a
-	jp z, Func_81ae8
+	jp z, Func_81ae8_20
 	ld a, [$c793]
 	cp $2
-	jp z, Func_81ae8
+	jp z, Func_81ae8_20
 	ld a, [$c793]
 	cp $3
-	jp nz, Func_81b20
-Func_81ae8: ; 81ae8 (20:5ae8)
+	jp nz, Func_81b20_20
+Func_81ae8_20: ; 81ae8 (20:5ae8)
 	ld hl, $b
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_81b15
+	jp nz, Func_81b15_20
 	ld e, $4
 	ld hl, Data_81a84
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $2
-	call Func_80677
+	call Func_80677_20
 	ld a, $11
-	call Func_80ee6
-	call Func_8001c
-	call Func_81b45
+	call Func_80ee6_20
+	call Func_8001c_20
+	call Func_81b45_20
 	ld e, $1
 	ld hl, $b
-	call Func_8061b
-	jp Func_81b1d
+	call Func_8061b_20
+	jp Func_81b1d_20
 
-Func_81b15: ; 81b15 (20:5b15)
+Func_81b15_20: ; 81b15 (20:5b15)
 	ld a, $11
-	call Func_80ee6
-	call Func_8001c
-Func_81b1d: ; 81b1d (20:5b1d)
-	jp Func_81b28
+	call Func_80ee6_20
+	call Func_8001c_20
+Func_81b1d_20: ; 81b1d (20:5b1d)
+	jp Func_81b28_20
 
-Func_81b20: ; 81b20 (20:5b20)
+Func_81b20_20: ; 81b20 (20:5b20)
 	ld a, $11
-	call Func_80ee6
-	call Func_8001c
-Func_81b28: ; 81b28 (20:5b28)
+	call Func_80ee6_20
+	call Func_8001c_20
+Func_81b28_20: ; 81b28 (20:5b28)
 	ret
 
 Data_81b29:
@@ -142765,154 +140455,154 @@ Data_81b39: ; 81b39
 Data_81b3d: ; 81b3d
 	dr $81b3d, $81b45
 
-Func_81b45: ; 81b45 (20:5b45)
+Func_81b45_20: ; 81b45 (20:5b45)
 	ld a, $3
-	call Func_80677
+	call Func_80677_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld e, $1
 	ld a, $3
-	call Func_80e1e
+	call Func_80e1e_20
 	ld e, $1
 	ld a, $3
-	call Func_80e1e
+	call Func_80e1e_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld bc, Data_81b29
 	ld e, BANK(Data_81b29)
 	xor a
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld hl, $4
-	call Func_804a9
+	call Func_804a9_20
 	ld e, $1
 	ld a, $1
-	call Func_80095
+	call Func_80095_20
 	ld hl, $5
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_81b2d
 	ld e, BANK(Data_81b2d)
 	ld a, $1
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld bc, Data_81b31
 	ld e, BANK(Data_81b31)
 	ld a, $1
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld a, $2
-	call Func_80677
+	call Func_80677_20
 	ld e, $0
 	ld a, $1
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $34
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $3c
-	call Func_8068f
+	call Func_8068f_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $3
-	call Func_80677
+	call Func_80677_20
 	ld hl, $6
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_81b2d
 	ld e, BANK(Data_81b2d)
 	xor a
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld bc, Data_81b31
 	ld e, BANK(Data_81b31)
 	xor a
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $34
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $2
-	call Func_80677
+	call Func_80677_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $34
-	call Func_80efe
+	call Func_80efe_20
 	ld bc, Data_81b2d
 	ld e, BANK(Data_81b2d)
 	xor a
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld a, $3
-	call Func_80677
+	call Func_80677_20
 	ld hl, $7
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_81b31
 	ld e, BANK(Data_81b31)
 	xor a
-	call Func_80688
+	call Func_80688_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $34
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld e, $1
 	ld a, $1
-	call Func_80e1e
+	call Func_80e1e_20
 	ld e, $1
 	ld a, $1
-	call Func_80e1e
+	call Func_80e1e_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $f
-	call Func_80ff1
+	call Func_80ff1_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld c, $1
 	ld de, Data_81b35
 	ld a, BANK(Data_81b35)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld a, $2
-	call Func_80677
+	call Func_80677_20
 	ld hl, $8
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $1
 	ld de, Data_81b39
 	ld a, BANK(Data_81b39)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld hl, $9
-	call Func_80498
+	call Func_80498_20
 	ld c, $1
 	ld de, Data_81b3d
 	ld a, BANK(Data_81b3d)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld a, $1
-	call Func_8101a
+	call Func_8101a_20
 	ret
 
 Data_81cb4:
@@ -142933,88 +140623,88 @@ Data_81d40: ; 81d40
 Data_81d4e: ; 81d4e
 	dr $81d4e, $81d6a
 
-Func_81d6a:
+Func_81d6a_20:
 	xor a
 	ld [$c793], a
 	ld e, $1
 	ld hl, Data_81cb4
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_81cbf
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, [$c793]
 	or a
-	jp z, Func_81d95
+	jp z, Func_81d95_20
 	ld a, [$c793]
 	cp $2
-	jp z, Func_81d95
+	jp z, Func_81d95_20
 	ld a, [$c793]
 	cp $3
-	jp nz, Func_81df9
-Func_81d95: ; 81d95 (20:5d95)
+	jp nz, Func_81df9_20
+Func_81d95_20: ; 81d95 (20:5d95)
 	ld a, [$c7df]
 	cp $1a
-	jp nz, Func_81db2
+	jp nz, Func_81db2_20
 	ld a, [$c7e0]
 	or a
-	jp nz, Func_81db2
+	jp nz, Func_81db2_20
 	ld e, $1
 	ld hl, Data_81d40
-	call Func_800fb
-	call Func_81f41
-	jp Func_81df6
+	call Func_800fb_20
+	call Func_81f41_20
+	jp Func_81df6_20
 
-Func_81db2: ; 81db2 (20:5db2)
+Func_81db2_20: ; 81db2 (20:5db2)
 	ld e, $1
 	ld hl, Data_81cb4
-	call Func_8003a
+	call Func_8003a_20
 	ld hl, $a
-	call Func_8062e
+	call Func_8062e_20
 	or a
-	jp nz, Func_81de6
+	jp nz, Func_81de6_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	xor a
-	call Func_80653
+	call Func_80653_20
 	ld e, $5
 	ld a, $3
-	call Func_80664
-	call Func_81e2b
+	call Func_80664_20
+	call Func_81e2b_20
 	ld e, $1
 	ld hl, $a
-	call Func_8061b
+	call Func_8061b_20
 	ld a, $1
 	ld [$c78c], a
-	jp Func_81df6
+	jp Func_81df6_20
 
-Func_81de6: ; 81de6 (20:5de6)
+Func_81de6_20: ; 81de6 (20:5de6)
 	ld e, $3
 	ld hl, Data_81cd0
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $11
-	call Func_80ee6
-	call Func_8001c
-Func_81df6: ; 81df6 (20:5df6)
-	jp Func_81e22
+	call Func_80ee6_20
+	call Func_8001c_20
+Func_81df6_20: ; 81df6 (20:5df6)
+	jp Func_81e22_20
 
-Func_81df9: ; 81df9 (20:5df9)
+Func_81df9_20: ; 81df9 (20:5df9)
 	ld e, $3
 	ld hl, Data_81cd0
-	call Func_800fb
+	call Func_800fb_20
 	ld e, $5
 	ld hl, Data_81cfa
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $5
-	call Func_80d01
+	call Func_80d01_20
 	ld e, $2
 	ld hl, Data_81d4e
-	call Func_80d24
+	call Func_80d24_20
 	ld a, $11
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	xor a
 	ld [$c793], a
-Func_81e22: ; 81e22 (20:5e22)
+Func_81e22_20: ; 81e22 (20:5e22)
 	ret
 
 Data_81e23:
@@ -143023,101 +140713,101 @@ Data_81e23:
 Data_81e27: ; 81e27
 	dr $81e27, $81e2b
 
-Func_81e2b: ; 81e2b (20:5e2b)
+Func_81e2b_20: ; 81e2b (20:5e2b)
 	ld c, $6
 	ld e, $1
 	ld a, $1f
-	call Func_80176
-	call Func_8001c
-	call Func_801d5
+	call Func_80176_20
+	call Func_8001c_20
+	call Func_801d5_20
 	ld a, $67
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $3c
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $66
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $34
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $35
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
-	call Func_80ea2
+	call Func_8068f_20
+	call Func_80ea2_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $38
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $36
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $3a
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
-	call Func_80eb1
+	call Func_8068f_20
+	call Func_80eb1_20
 	ld c, $6
 	ld e, $2
 	ld a, $1f
-	call Func_80176
-	call Func_801d5
+	call Func_80176_20
+	call Func_801d5_20
 	ld hl, $2
-	call Func_80498
+	call Func_80498_20
 	ld c, $1
 	ld e, $4
 	ld a, $1f
-	call Func_80176
+	call Func_80176_20
 	ld hl, $2d
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $1
 	ld de, Data_81e23
 	ld a, BANK(Data_81e23)
-	call Func_8063e
-	call Func_801d5
+	call Func_8063e_20
+	call Func_801d5_20
 	ld a, $3b
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $3c
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
-	call Func_80ea2
+	call Func_8068f_20
+	call Func_80ea2_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $39
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $3a
 	call Func_1502
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld hl, $1e
-	call Func_8068f
-	call Func_80eb1
+	call Func_8068f_20
+	call Func_80eb1_20
 	ld hl, $1
-	call Func_8068f
+	call Func_8068f_20
 	ld hl, $3
-	call Func_80498
+	call Func_80498_20
 	ld a, $1
-	call Func_80653
+	call Func_80653_20
 	ld hl, $1
-	call Func_8068f
-	call Func_8018b
+	call Func_8068f_20
+	call Func_8018b_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $1
 	ld de, Data_81e27
 	ld a, BANK(Data_81e27)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ret
 
 Data_81f2d:
@@ -143132,126 +140822,126 @@ Data_81f37: ; 81f37
 Data_81f3d: ; 81f3d
 	dr $81f3d, $81f41
 
-Func_81f41: ; 81f41 (20:5f41)
+Func_81f41_20: ; 81f41 (20:5f41)
 	ld bc, $0
-Func_81f44: ; 81f44 (20:5f44)
+Func_81f44_20: ; 81f44 (20:5f44)
 	ld l, c
 	ld h, b
 	ld de, $fa
 	call CompareHLtoDE
-	jp nc, Func_81f63
+	jp nc, Func_81f63_20
 	ld hl, $0
-Func_81f52: ; 81f52 (20:5f52)
+Func_81f52_20: ; 81f52 (20:5f52)
 	ld de, $fa
 	call CompareHLtoDE
-	jp nc, Func_81f5f
+	jp nc, Func_81f5f_20
 	inc hl
-	jp Func_81f52
+	jp Func_81f52_20
 
-Func_81f5f: ; 81f5f (20:5f5f)
+Func_81f5f_20: ; 81f5f (20:5f5f)
 	inc bc
-	jp Func_81f44
+	jp Func_81f44_20
 
-Func_81f63: ; 81f63 (20:5f63)
+Func_81f63_20: ; 81f63 (20:5f63)
 	ld a, $67
-	call Func_80efe
+	call Func_80efe_20
 	ld bc, $0
-Func_81f6b: ; 81f6b (20:5f6b)
+Func_81f6b_20: ; 81f6b (20:5f6b)
 	ld l, c
 	ld h, b
 	ld de, $96
 	call CompareHLtoDE
-	jp nc, Func_81f8a
+	jp nc, Func_81f8a_20
 	ld hl, $0
-Func_81f79: ; 81f79 (20:5f79)
+Func_81f79_20: ; 81f79 (20:5f79)
 	ld de, $96
 	call CompareHLtoDE
-	jp nc, Func_81f86
+	jp nc, Func_81f86_20
 	inc hl
-	jp Func_81f79
+	jp Func_81f79_20
 
-Func_81f86: ; 81f86 (20:5f86)
+Func_81f86_20: ; 81f86 (20:5f86)
 	inc bc
-	jp Func_81f6b
+	jp Func_81f6b_20
 
-Func_81f8a: ; 81f8a (20:5f8a)
-	call Func_8002b
+Func_81f8a_20: ; 81f8a (20:5f8a)
+	call Func_8002b_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	xor a
-	call Func_80653
+	call Func_80653_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld c, $8
 	ld e, $1
 	ld a, $1f
-	call Func_80176
-	call Func_8001c
-	call Func_801d5
+	call Func_80176_20
+	call Func_8001c_20
+	call Func_801d5_20
 	ld hl, $3c
-	call Func_8068f
+	call Func_8068f_20
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	ld e, $1
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld bc, Data_81f2d
 	ld e, BANK(Data_81f2d)
 	xor a
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld hl, $14d
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_81f33
 	ld e, BANK(Data_81f33)
 	xor a
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld c, $1
 	ld e, $4
 	ld a, $1f
-	call Func_80176
+	call Func_80176_20
 	ld hl, $2d
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $1
 	ld de, Data_81f37
 	ld a, BANK(Data_81f37)
-	call Func_8063e
-	call Func_801d5
+	call Func_8063e_20
+	call Func_801d5_20
 	xor a
-	call Func_80677
+	call Func_80677_20
 	ld a, $1
-	call Func_80653
+	call Func_80653_20
 	ld hl, $1
-	call Func_8068f
-	call Func_8018b
+	call Func_8068f_20
+	call Func_8018b_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld hl, $14e
-	call Func_80498
+	call Func_80498_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $1
 	ld de, Data_81f3d
 	ld a, BANK(Data_81f3d)
-	call Func_8063e
+	call Func_8063e_20
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $1a
 	push hl
 	ld c, $f
 	ld e, $a
 	ld a, $19
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	ret
 
@@ -143262,7 +140952,7 @@ Func_82049: ; 82049 (20:6049)
 	cp $14
 	jp nc, Func_82057
 	push af
-	call Func_80c94
+	call Func_80c94_20
 	pop af
 	inc a
 	jp Func_82049
@@ -143273,17 +140963,17 @@ Func_82057: ; 82057 (20:6057)
 	cp $2
 	jp nz, Func_82078
 	xor a
-	call Func_80653
+	call Func_80653_20
 	ld c, $32
 	ld e, $0
 	ld a, $1e
-	call Func_80d87
+	call Func_80d87_20
 	ld l, $1a
 	push hl
 	ld c, $f
 	ld e, $a
 	ld a, $19
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 Func_82078: ; 82078 (20:6078)
 	ret
@@ -143295,8 +140985,8 @@ Func_82079:
 	ld c, $6
 	ld e, $1
 	ld a, $2b
-	call Func_80176
-	call Func_801d5
+	call Func_80176_20
+	call Func_801d5_20
 Func_8208b: ; 8208b (20:608b)
 	ret
 
@@ -143338,217 +141028,217 @@ Func_8208c: ; 8208c (20:608c)
 	or a
 	jp nz, Func_8225c
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $7
 	push hl
 	ld c, $2b
 	ld e, $0
 	ld a, $3
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_820fa: ; 820fa (20:60fa)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $13
 	push hl
 	ld c, $d
 	ld e, $0
 	ld a, $3
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_8210f: ; 8210f (20:610f)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $16
 	push hl
 	ld c, $5
 	ld e, $0
 	ld a, $5
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_82124: ; 82124 (20:6124)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $7
 	push hl
 	ld c, $10
 	ld e, $0
 	ld a, $5
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_82139: ; 82139 (20:6139)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $a
 	push hl
 	ld c, $a
 	ld e, $0
 	ld a, $8
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_8214e: ; 8214e (20:614e)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $e
 	push hl
 	ld c, $6
 	ld e, $0
 	ld a, $2
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_82163: ; 82163 (20:6163)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $2d
 	push hl
 	ld c, $5
 	ld e, $0
 	ld a, $9
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_82178: ; 82178 (20:6178)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $14
 	push hl
 	ld c, $11
 	ld e, $0
 	ld a, $15
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_8218d: ; 8218d (20:618d)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $10
 	push hl
 	ld c, $7
 	ld e, $0
 	ld a, $18
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_821a2: ; 821a2 (20:61a2)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $5
 	push hl
 	ld c, $7
 	ld e, $0
 	ld a, $1c
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_821b7: ; 821b7 (20:61b7)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $7
 	push hl
 	ld c, $9
 	ld e, $0
 	ld a, $1b
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_821cc: ; 821cc (20:61cc)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $4
 	push hl
 	ld c, $6
 	ld e, $1
 	ld a, $1d
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_821e1: ; 821e1 (20:61e1)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $6
 	push hl
 	ld c, $7
 	ld e, $0
 	ld a, $1a
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_821f6: ; 821f6 (20:61f6)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $a
 	push hl
 	ld c, $10
 	ld e, $0
 	ld a, $6
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_8220b: ; 8220b (20:620b)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $17
 	push hl
 	ld c, $13
 	ld e, $16
 	ld a, $13
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_82220: ; 82220 (20:6220)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $4
 	push hl
 	ld c, $a
 	ld e, $1
 	ld a, $1d
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_82235: ; 82235 (20:6235)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $4
 	push hl
 	ld c, $e
 	ld e, $1
 	ld a, $1d
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 	jp Func_8225c
 
 Func_8224a: ; 8224a (20:624a)
 	ld a, $5a
-	call Func_80efe
+	call Func_80efe_20
 	ld l, $14
 	push hl
 	ld c, $5
 	ld e, $a
 	ld a, $12
-	call Func_80dff
+	call Func_80dff_20
 	pop bc
 Func_8225c: ; 8225c (20:625c)
 	ret
@@ -143561,14 +141251,14 @@ Func_82286:
 	or a
 	jp nz, Func_822ae
 	ld hl, $18
-	call Func_804ba
+	call Func_804ba_20
 	or a
 	jp nz, Func_822ae
 	xor a
 	ld [$c793], a
 	ld de, Data_822af
 	ld hl, Data_8225d
-	call Func_80dd3
+	call Func_80dd3_20
 	or a
 	jp nz, Func_822a9
 	jp Func_822ae
@@ -143590,14 +141280,14 @@ Func_822dd:
 	or a
 	jp nz, Func_82305
 	ld hl, $18
-	call Func_804ba
+	call Func_804ba_20
 	or a
 	jp nz, Func_82305
 	xor a
 	ld [$c793], a
 	ld de, Data_82306
 	ld hl, Data_822b4
-	call Func_80dd3
+	call Func_80dd3_20
 	or a
 	jp nz, Func_82300
 	jp Func_82305
@@ -143619,14 +141309,14 @@ Func_82335:
 	or a
 	jp nz, Func_8235d
 	ld hl, $18
-	call Func_804ba
+	call Func_804ba_20
 	or a
 	jp nz, Func_8235d
 	xor a
 	ld [$c793], a
 	ld de, Data_8235e
 	ld hl, Data_8230c
-	call Func_80dd3
+	call Func_80dd3_20
 	or a
 	jp nz, Func_82358
 	jp Func_8235d
@@ -143648,14 +141338,14 @@ Func_8238b:
 	or a
 	jp nz, Func_823b3
 	ld hl, $18
-	call Func_804ba
+	call Func_804ba_20
 	or a
 	jp nz, Func_823b3
 	xor a
 	ld [$c793], a
 	ld de, Data_823b4
 	ld hl, Data_82362
-	call Func_80dd3
+	call Func_80dd3_20
 	or a
 	jp nz, Func_823ae
 	jp Func_823b3
@@ -143678,20 +141368,20 @@ Data_823d4: ; 823d4
 Func_8240c:
 	ld e, $2
 	ld hl, Data_823ba
-	call Func_8003a
+	call Func_8003a_20
 	ld a, [$c790]
 	cp $4
 	jp z, Func_8242b
 	ld e, $4
 	ld hl, Data_823d4
-	call Func_800fb
+	call Func_800fb_20
 	ld e, $0
 	ld a, $3
-	call Func_8013d
+	call Func_8013d_20
 Func_8242b: ; 8242b (20:642b)
 	ld a, $11
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ret
 
 Data_82434:
@@ -143708,7 +141398,7 @@ Func_82446:
 	or a
 	jp nz, Func_82592
 	ld hl, $c6
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_82562
 	ld a, [$c838]
@@ -143722,22 +141412,22 @@ Func_82464: ; 82464 (20:6464)
 	ld c, $1
 	ld de, Data_8243a
 	ld a, BANK(Data_8243a)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	xor a
-	call Func_80677
+	call Func_80677_20
 	jp Func_82489
 
 Func_82478: ; 82478 (20:6478)
 	ld c, $1
 	ld de, Data_82434
 	ld a, BANK(Data_82434)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	xor a
-	call Func_80677
+	call Func_80677_20
 Func_82489: ; 82489 (20:6489)
-	call Func_8000e
+	call Func_8000e_20
 	cp $b
 	jp z, Func_824c3
 	cp $7
@@ -143792,89 +141482,89 @@ IF DEF(STAR)
 ENDC
 Func_824ca: ; 824ca (20:64ca)
 	push af
-	call Func_800b8
+	call Func_800b8_20
 	ld e, a
 	ld a, $3
-	call Func_800c8
+	call Func_800c8_20
 	ld hl, $3fa
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld e, $1
 	ld a, $3
-	call Func_8013d
+	call Func_8013d_20
 	ld e, $3
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $3
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	ld a, $3
-	call Func_80095
+	call Func_80095_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld bc, Data_82440
 	ld e, BANK(Data_82440)
 	ld a, $3
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $0
 	ld a, $3
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $2a
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $3f9
-	call Func_80498
+	call Func_80498_20
 	pop af
 	ld e, $0
 	ld c, $5
-	call Func_80d87
+	call Func_80d87_20
 	cp $ff
 	jp nz, Func_82551
 Func_82551: ; 82551 (20:6551)
 	ld hl, $3fb
-	call Func_804a9
+	call Func_804a9_20
 	ld e, $1
 	ld hl, $c6
-	call Func_8061b
+	call Func_8061b_20
 	jp Func_82592
 
 Func_82562: ; 82562 (20:6562)
 	xor a
-	call Func_8044b
-	call Func_802e0
+	call Func_8044b_20
+	call Func_802e0_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $16
-	call Func_80ee6
+	call Func_80ee6_20
 	ld c, $1
 	ld e, $2
 	ld a, $8
-	call Func_80176
-	call Func_801d5
-	call Func_8018b
+	call Func_80176_20
+	call Func_801d5_20
+	call Func_8018b_20
 	ld hl, $322
-	call Func_80498
+	call Func_80498_20
 	ld hl, $15a
-	call Func_804a9
+	call Func_804a9_20
 	ld a, $11
-	call Func_80ee6
+	call Func_80ee6_20
 Func_82592: ; 82592 (20:6592)
 	ret
 
@@ -143890,7 +141580,7 @@ Data_825be: ; 825be
 Func_825cc:
 	ld e, $1
 	ld hl, Data_82593
-	call Func_8003a
+	call Func_8003a_20
 	ld a, [$c793]
 	or a
 	jp z, Func_825eb
@@ -143904,17 +141594,17 @@ Func_825cc:
 Func_825eb: ; 825eb (20:65eb)
 	ld e, $2
 	ld hl, Data_825a2
-	call Func_800fb
+	call Func_800fb_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 Func_825f9: ; 825f9 (20:65f9)
 	ld hl, $2
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
 	jp nz, Func_8261f
 	ld hl, $3
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
 	jp nz, Func_8261f
 	ld a, [$c790]
@@ -143922,11 +141612,11 @@ Func_825f9: ; 825f9 (20:65f9)
 	jp z, Func_8261f
 	ld e, $1
 	ld hl, Data_825be
-	call Func_800fb
+	call Func_800fb_20
 Func_8261f: ; 8261f (20:661f)
 	ld a, $11
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ret
 
 Func_82628:
@@ -143934,114 +141624,114 @@ Func_82628:
 	or a
 	jp nz, Func_8271b
 	ld hl, $d5
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_82715
 	ld a, $5e
-	call Func_80efe
+	call Func_80efe_20
 	ld c, $2
 	ld e, $2
 	ld a, $8
-	call Func_80176
+	call Func_80176_20
 	ld e, $2
 	ld a, $4
-	call Func_801e4
-	call Func_801d5
-	call Func_8018b
+	call Func_801e4_20
+	call Func_801d5_20
+	call Func_8018b_20
 	ld a, $28
-	call Func_80efe
+	call Func_80efe_20
 	ld e, $1
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $60
-	call Func_80efe
+	call Func_80efe_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld a, $f
-	call Func_80ff1
+	call Func_80ff1_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $1
-	call Func_8101a
+	call Func_8101a_20
 	ld a, $14
-	call Func_80ee6
+	call Func_80ee6_20
 	xor a
-	call Func_8044b
+	call Func_8044b_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $b
 	ld e, $a
 	ld a, $9
-	call Func_80e8d
+	call Func_80e8d_20
 	ld e, $1
 	ld hl, $d5
-	call Func_8061b
+	call Func_8061b_20
 	ld a, $60
-	call Func_80efe
+	call Func_80efe_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	xor a
-	call Func_8044b
+	call Func_8044b_20
 	ld a, $f
-	call Func_80ff1
+	call Func_80ff1_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $1
-	call Func_8101a
+	call Func_8101a_20
 	ld a, $11
-	call Func_80ee6
+	call Func_80ee6_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	jp Func_8271b
 
 Func_82715: ; 82715 (20:6715)
 	ld hl, $15c
-	call Func_80498
+	call Func_80498_20
 Func_8271b: ; 8271b (20:671b)
 	ret
 
@@ -144060,15 +141750,15 @@ Data_8279b: ; 8279b
 Func_827a9:
 	call Func_82866
 	ld hl, Func_82866
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $1
 	ld [$c7de], a
 	ld e, $6
 	ld hl, Data_8271c
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_8275e
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, [$c793]
 	or a
 	jp z, Func_827de
@@ -144081,9 +141771,9 @@ Func_827a9:
 Func_827de: ; 827de (20:67de)
 	ld e, $4
 	ld hl, Data_82763
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, [$c7df]
 	cp $20
 	jp nz, Func_82811
@@ -144092,46 +141782,46 @@ Func_827de: ; 827de (20:67de)
 	jp nz, Func_82811
 	ld e, $0
 	ld a, $1
-	call Func_8013d
-	call Func_8001c
+	call Func_8013d_20
+	call Func_8001c_20
 	ld hl, $3dc
-	call Func_80f72
+	call Func_80f72_20
 	call Func_829dd
 	jp Func_8283c
 
 Func_82811: ; 82811 (20:6811)
 	ld hl, $d
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_8282c
-	call Func_8001c
+	call Func_8001c_20
 	call Func_82894
 	ld e, $1
 	ld hl, $d
-	call Func_8061b
+	call Func_8061b_20
 	jp Func_8283c
 
 Func_8282c: ; 8282c (20:682c)
 	ld e, $0
 	ld a, $1
-	call Func_8013d
-	call Func_8001c
+	call Func_8013d_20
+	call Func_8001c_20
 	ld hl, $3dc
-	call Func_80f72
+	call Func_80f72_20
 Func_8283c: ; 8283c (20:683c)
 	jp Func_82859
 
 Func_8283f: ; 8283f (20:683f)
 	ld e, $4
 	ld hl, Data_82763
-	call Func_800fb
+	call Func_800fb_20
 	ld e, $1
 	ld hl, Data_8279b
-	call Func_800fb
+	call Func_800fb_20
 	ld e, $0
 	ld a, $1
-	call Func_8013d
-	call Func_8001c
+	call Func_8013d_20
+	call Func_8001c_20
 Func_82859: ; 82859 (20:6859)
 	ret
 
@@ -144146,15 +141836,15 @@ Func_82866: ; 82866 (20:6866)
 	cp $2
 	jp nc, Func_82874
 	ld hl, Data_8285a
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82874: ; 82874 (20:6874)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_82882
 	ld hl, Data_82860
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82882: ; 82882 (20:6882)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_82886:
@@ -144170,25 +141860,25 @@ Func_82894: ; 82894 (20:6894)
 	ld bc, Data_82886
 	ld e, BANK(Data_82886)
 	ld a, $1
-	call Func_801f7
+	call Func_801f7_20
 	ld c, $1
 	ld de, Data_8288a
 	ld a, BANK(Data_8288a)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld hl, $10
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $11
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_82890
 	ld e, BANK(Data_82890)
 	ld a, $1
-	call Func_801f7
+	call Func_801f7_20
 	ld c, $3
 	ld de, Data_82890
 	ld a, BANK(Data_82890)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ret
 
 Data_828cf:
@@ -144210,72 +141900,72 @@ Func_828df:
 	ld bc, Data_828cf
 	ld e, BANK(Data_828cf)
 	ld a, $2
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $2
 	ld a, $2
-	call Func_80095
+	call Func_80095_20
 	ld hl, $32
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
 	jp nz, Func_82967
 	ld hl, $3ed
-	call Func_804ca
+	call Func_804ca_20
 	or a
 	jp nz, Func_82940
 	ld hl, $486
-	call Func_804a9
+	call Func_804a9_20
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $2
 	ld a, $2
-	call Func_80095
+	call Func_80095_20
 	ld c, $1
 	ld de, Data_828db
 	ld a, BANK(Data_828db)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld e, $0
 	ld hl, $f8
-	call Func_8061b
+	call Func_8061b_20
 	jp Func_82964
 
 Func_82940: ; 82940 (20:6940)
 	ld hl, $482
-	call Func_804a9
+	call Func_804a9_20
 	ld c, $1
 	ld de, Data_828d7
 	ld a, BANK(Data_828d7)
-	call Func_8063e
+	call Func_8063e_20
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $2
 	ld a, $2
-	call Func_80095
+	call Func_80095_20
 Func_82964: ; 82964 (20:6964)
 	jp Func_8298b
 
 Func_82967: ; 82967 (20:6967)
 	ld hl, FillMemory
-	call Func_804a9
+	call Func_804a9_20
 	ld c, $1
 	ld de, Data_828d7
 	ld a, BANK(Data_828d7)
-	call Func_8063e
+	call Func_8063e_20
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	call Func_80688
-	call Func_8020c
+	call Func_80688_20
+	call Func_8020c_20
 	ld e, $2
 	ld a, $2
-	call Func_80095
+	call Func_80095_20
 Func_8298b: ; 8298b (20:698b)
 	ret
 
@@ -144284,8 +141974,8 @@ Func_8298c:
 	or a
 	jp nz, Func_8299a
 	ld hl, $2a6
-	call Func_804a9
-	call Func_8045c
+	call Func_804a9_20
+	call Func_8045c_20
 Func_8299a: ; 8299a (20:699a)
 	ret
 
@@ -144294,7 +141984,7 @@ Func_8299b:
 	or a
 	jp nz, Func_829d0
 	ld a, $5
-	call Func_8044b
+	call Func_8044b_20
 	ld a, [$c78c]
 	inc a
 	ld [$c78c], a
@@ -144321,17 +142011,17 @@ Data_829d9: ; 829d9
 
 Func_829dd: ; 829dd (20:69dd)
 	ld hl, $f8
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, .asm_829fc
 	ld c, $1
 	ld de, Data_829d9
 	ld a, BANK(Data_829d9)
-	call Func_8063e
-	call Func_8020c
+	call Func_8063e_20
+	call Func_8020c_20
 	ld e, $1
 	ld hl, $f8
-	call Func_8061b
+	call Func_8061b_20
 .asm_829fc
 	ret
 
@@ -144342,25 +142032,25 @@ Func_829fd:
 	jp nz, Func_82ab6
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b
+	call Func_8044b_20
 	ld hl, $114
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_82ab0
 	ld a, $10
-	call Func_80e5d
+	call Func_80e5d_20
 	or a
 	jp z, Func_82a9b
 	ld hl, $497
-	call Func_804ba
+	call Func_804ba_20
 	or a
 	jp nz, Func_82a92
 	ld a, $2b
-	call Func_80efe
+	call Func_80efe_20
 	ld c, $1
 	ld e, $1
 	ld a, $10
-	call Func_80d4d
+	call Func_80d4d_20
 	ld a, [$c79c]
 	or a
 	jp nz, Func_82a43
@@ -144382,37 +142072,37 @@ Func_82a52: ; 82a52 (20:6a52)
 	ld [$c79c], a
 Func_82a59: ; 82a59 (20:6a59)
 	ld hl, $498
-	call Func_80498
+	call Func_80498_20
 	ld a, [$c79c]
 	cp $9
 	jp c, Func_82a8f
 	ld hl, $499
-	call Func_80498
+	call Func_80498_20
 	ld a, $2a
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $49a
-	call Func_80498
+	call Func_80498_20
 	ld c, $0
 	ld e, $1
 	ld a, $18
-	call Func_80d4d
+	call Func_80d4d_20
 	ld e, $1
 	ld hl, $114
-	call Func_8061b
+	call Func_8061b_20
 	ld hl, $4a8
-	call Func_80498
+	call Func_80498_20
 Func_82a8f: ; 82a8f (20:6a8f)
 	jp Func_82a98
 
 Func_82a92: ; 82a92 (20:6a92)
 	ld hl, $496
-	call Func_80498
+	call Func_80498_20
 Func_82a98: ; 82a98 (20:6a98)
 	jp Func_82aad
 
 Func_82a9b: ; 82a9b (20:6a9b)
 	ld hl, $3ec
-	call Func_80498
+	call Func_80498_20
 	ld a, [$c79c]
 	or a
 	jp nz, Func_82aad
@@ -144423,7 +142113,7 @@ Func_82aad: ; 82aad (20:6aad)
 
 Func_82ab0: ; 82ab0 (20:6ab0)
 	ld hl, $49c
-	call Func_80498
+	call Func_80498_20
 Func_82ab6: ; 82ab6 (20:6ab6)
 	pop bc
 	ret
@@ -144437,24 +142127,24 @@ Data_82ad9: ; 82ad9
 Func_82b03:
 	call Func_82ba1
 	ld hl, Func_82ba1
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $2
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_82ab8
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $3
 	ld hl, Data_82ad9
-	call Func_800fb
+	call Func_800fb_20
 	ld a, [$c78c]
 	cp $a
 	jp nc, Func_82b39
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld e, $0
 	ld a, $2
-	call Func_8013d
+	call Func_8013d_20
 	jp Func_82b48
 
 Func_82b39: ; 82b39 (20:6b39)
@@ -144463,13 +142153,13 @@ Func_82b39: ; 82b39 (20:6b39)
 	jp nc, Func_82b48
 	ld e, $0
 	ld a, $2
-	call Func_8013d
+	call Func_8013d_20
 Func_82b48: ; 82b48 (20:6b48)
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3c9
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Func_82b57:
@@ -144478,7 +142168,7 @@ Func_82b57:
 	or a
 	jp nz, Func_82b93
 	ld a, $c
-	call Func_80ee6
+	call Func_80ee6_20
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $2
@@ -144489,22 +142179,22 @@ Func_82b57:
 	jp nz, Func_82b8e
 	ld e, $0
 	ld a, $b
-	call Func_806a0
+	call Func_806a0_20
 	jp Func_82b8e
 
 Func_82b7d: ; 82b7d (20:6b7d)
 	ld e, $0
 	ld a, $a
-	call Func_806a0
+	call Func_806a0_20
 	jp Func_82b8e
 
 Func_82b87: ; 82b87 (20:6b87)
 	ld e, $0
 	ld a, $c
-	call Func_806a0
+	call Func_806a0_20
 Func_82b8e: ; 82b8e (20:6b8e)
 	ld a, $b
-	call Func_80ee6
+	call Func_80ee6_20
 Func_82b93: ; 82b93 (20:6b93)
 	pop bc
 	ret
@@ -144520,15 +142210,15 @@ Func_82ba1: ; 82ba1 (20:6ba1)
 	cp $3
 	jp nc, Func_82baf
 	ld hl, Data_82b95
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82baf: ; 82baf (20:6baf)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_82bbd
 	ld hl, Data_82b9b
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82bbd: ; 82bbd (20:6bbd)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_82bc1:
@@ -144546,34 +142236,34 @@ Data_82c28: ; 82c28
 Func_82c44:
 	call Func_82d22
 	ld hl, Func_82d22
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $3
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_82bc1
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $2
 	ld hl, Data_82be2
-	call Func_800fb
+	call Func_800fb_20
 	ld a, [$c78c]
 	cp $a
 	jp c, Func_82c72
 	ld e, $3
 	ld hl, Data_82bfe
-	call Func_800fb
+	call Func_800fb_20
 Func_82c72: ; 82c72 (20:6c72)
 	ld a, [$c78c]
 	cp $f
 	jp c, Func_82c82
 	ld e, $2
 	ld hl, Data_82c28
-	call Func_800fb
+	call Func_800fb_20
 Func_82c82: ; 82c82 (20:6c82)
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3ca
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Func_82c91:
@@ -144600,15 +142290,15 @@ Func_82caa: ; 82caa (20:6caa)
 	push hl
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_8044b
+	call Func_8044b_20
 	ld a, $c
-	call Func_80ee6
+	call Func_80ee6_20
 	pop hl
 	ld a, l
 	ld e, $2
-	call Func_806a0
+	call Func_806a0_20
 	ld a, $b
-	call Func_80ee6
+	call Func_80ee6_20
 Func_82cc7: ; 82cc7 (20:6cc7)
 	pop bc
 	ret
@@ -144649,15 +142339,15 @@ Func_82ce8: ; 82ce8 (20:6ce8)
 Func_82cfd: ; 82cfd (20:6cfd)
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_8044b
+	call Func_8044b_20
 	ld a, $c
-	call Func_80ee6
+	call Func_80ee6_20
 	pop hl
 	ld a, l
 	ld e, $1
-	call Func_806a0
+	call Func_806a0_20
 	ld a, $b
-	call Func_80ee6
+	call Func_80ee6_20
 Func_82d14: ; 82d14 (20:6d14)
 	pop bc
 	ret
@@ -144673,15 +142363,15 @@ Func_82d22: ; 82d22 (20:6d22)
 	cp $4
 	jp nc, Func_82d30
 	ld hl, Data_82d16
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82d30: ; 82d30 (20:6d30)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_82d3e
 	ld hl, Data_82d1c
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82d3e: ; 82d3e (20:6d3e)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_82d42:
@@ -144693,20 +142383,20 @@ Data_82d63: ; 82d63
 Func_82d7f:
 	call Func_82e00
 	ld hl, Func_82e00
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $4
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_82d42
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $2
 	ld hl, Data_82d63
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3cb
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Func_82dac:
@@ -144716,16 +142406,16 @@ Func_82dac:
 	jp nz, Func_82dce
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b
+	call Func_8044b_20
 	ld hl, $362
-	call Func_804a9
+	call Func_804a9_20
 	ld a, $c
-	call Func_80ee6
+	call Func_80ee6_20
 	ld e, $3
 	xor a
-	call Func_806a0
+	call Func_806a0_20
 	ld a, $b
-	call Func_80ee6
+	call Func_80ee6_20
 Func_82dce: ; 82dce (20:6dce)
 	pop bc
 	ret
@@ -144737,16 +142427,16 @@ Func_82dd0:
 	jp nz, Func_82df2
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b
+	call Func_8044b_20
 	ld hl, $362
-	call Func_804a9
+	call Func_804a9_20
 	ld a, $c
-	call Func_80ee6
+	call Func_80ee6_20
 	ld e, $4
 	xor a
-	call Func_806a0
+	call Func_806a0_20
 	ld a, $b
-	call Func_80ee6
+	call Func_80ee6_20
 Func_82df2: ; 82df2 (20:6df2)
 	pop bc
 	ret
@@ -144762,15 +142452,15 @@ Func_82e00: ; 82e00 (20:6e00)
 	cp $5
 	jp nc, Func_82e0e
 	ld hl, Data_82df4
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82e0e: ; 82e0e (20:6e0e)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_82e1c
 	ld hl, Data_82dfa
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82e1c: ; 82e1c (20:6e1c)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_82e20:
@@ -144787,29 +142477,29 @@ Func_82e72:
 	ld c, $8
 	ld e, $4
 	xor a
-	call Func_80f24
+	call Func_80f24_20
 	pop bc
 	call Func_82ec2
 	ld hl, Func_82ec2
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $5
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_82e20
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_82e41
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $1
-	call Func_80d01
+	call Func_80d01_20
 	ld e, $3
 	ld hl, Data_82e46
-	call Func_80d24
+	call Func_80d24_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3cc
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_82eb6:
@@ -144823,15 +142513,15 @@ Func_82ec2: ; 82ec2 (20:6ec2)
 	cp $6
 	jp nc, Func_82ed0
 	ld hl, Data_82eb6
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82ed0: ; 82ed0 (20:6ed0)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_82ede
 	ld hl, Data_82ebc
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82ede: ; 82ede (20:6ede)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_82ee2:
@@ -144843,20 +142533,20 @@ Data_82f03: ; 82f03
 Func_82f08:
 	call Func_82f41
 	ld hl, Func_82f41
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $6
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_82ee2
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_82f03
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3cd
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_82f35:
@@ -144870,15 +142560,15 @@ Func_82f41:
 	cp $7
 	jp nc, Func_82f4f
 	ld hl, Data_82f35
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82f4f: ; 82f4f (20:6f4f)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_82f5d
 	ld hl, Data_82f3b
-	call Func_80d9b
+	call Func_80d9b_20
 Func_82f5d: ; 82f5d (20:6f5d)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_82f61:
@@ -144893,17 +142583,17 @@ Data_82f8c: ; 82f8c
 Func_82fa8:
 	call Func_83006
 	ld hl, Func_83006
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $7
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_82f61
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $2
 	ld hl, Data_82f82
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $11
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, [$c793]
 	or a
 	jp z, Func_82fe2
@@ -144916,14 +142606,14 @@ Func_82fa8:
 Func_82fe2: ; 82fe2 (20:6fe2)
 	ld e, $2
 	ld hl, Data_82f8c
-	call Func_800fb
+	call Func_800fb_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 Func_82ff0: ; 82ff0 (20:6ff0)
-	call Func_8001c
+	call Func_8001c_20
 	ld hl, $3ce
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_82ffa:
@@ -144937,15 +142627,15 @@ Func_83006: ; 83006 (20:7006)
 	cp $8
 	jp nc, Func_83014
 	ld hl, Data_82ffa
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83014: ; 83014 (20:7014)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83022
 	ld hl, Data_83000
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83022: ; 83022 (20:7022)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Func_83026:
@@ -144953,114 +142643,114 @@ Func_83026:
 	or a
 	jp nz, Func_83119
 	ld hl, $d7
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83113
 	ld a, $5e
-	call Func_80efe
+	call Func_80efe_20
 	ld c, $2
 	ld e, $2
 	ld a, $8
-	call Func_80176
+	call Func_80176_20
 	ld e, $2
 	ld a, $3
-	call Func_801e4
-	call Func_801d5
-	call Func_8018b
+	call Func_801e4_20
+	call Func_801d5_20
+	call Func_8018b_20
 	ld a, $28
-	call Func_80efe
+	call Func_80efe_20
 	ld e, $1
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $60
-	call Func_80efe
+	call Func_80efe_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld a, $f
-	call Func_80ff1
+	call Func_80ff1_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $1
-	call Func_8101a
+	call Func_8101a_20
 	ld a, $14
-	call Func_80ee6
+	call Func_80ee6_20
 	xor a
-	call Func_8044b
+	call Func_8044b_20
 	ld hl, $1e
-	call Func_8068f
+	call Func_8068f_20
 	ld c, $c
 	ld e, $17
 	ld a, $15
-	call Func_80e8d
+	call Func_80e8d_20
 	ld e, $1
 	ld hl, $d7
-	call Func_8061b
+	call Func_8061b_20
 	ld a, $60
-	call Func_80efe
+	call Func_80efe_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $3
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $0
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $1
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld e, $2
 	xor a
-	call Func_80095
+	call Func_80095_20
 	ld a, $f
-	call Func_80ff1
+	call Func_80ff1_20
 	xor a
-	call Func_80ee6
+	call Func_80ee6_20
 	ld a, $1
-	call Func_8101a
+	call Func_8101a_20
 	ld a, $11
-	call Func_80ee6
+	call Func_80ee6_20
 	xor a
-	call Func_8044b
+	call Func_8044b_20
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 	jp Func_83119
 
 Func_83113: ; 83113 (20:7113)
 	ld hl, $15c
-	call Func_80498
+	call Func_80498_20
 Func_83119: ; 83119 (20:7119)
 	ret
 
@@ -145073,20 +142763,20 @@ Data_8313f: ; 8313f
 Func_83169:
 	call Func_831a2
 	ld hl, Func_831a2
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $8
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8311a
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $3
 	ld hl, Data_8313f
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3cf
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_83196:
@@ -145100,15 +142790,15 @@ Func_831a2: ; 831a2 (20:71a2)
 	cp $9
 	jp nc, Func_831b0
 	ld hl, Data_83196
-	call Func_80d9b
+	call Func_80d9b_20
 Func_831b0: ; 831b0 (20:71b0)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_831be
 	ld hl, Data_8319c
-	call Func_80d9b
+	call Func_80d9b_20
 Func_831be: ; 831be (20:71be)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Func_831c2:
@@ -145118,8 +142808,8 @@ Func_831c2:
 	jp nz, Func_831d1
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b
-	call Func_8104f
+	call Func_8044b_20
+	call Func_8104f_20
 Func_831d1: ; 831d1 (20:71d1)
 	pop bc
 	ret
@@ -145131,8 +142821,8 @@ Func_831d3:
 	jp nz, Func_831e2
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b
-	call Func_81072
+	call Func_8044b_20
+	call Func_81072_20
 Func_831e2: ; 831e2 (20:71e2)
 	pop bc
 	ret
@@ -145146,20 +142836,20 @@ Data_83205: ; 83205
 Func_83213:
 	call Func_8324c
 	ld hl, Func_8324c
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $9
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_831e4
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_83205
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3d0
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_83240:
@@ -145173,15 +142863,15 @@ Func_8324c: ; 8324c (20:724c)
 	cp $a
 	jp nc, Func_8325a
 	ld hl, Data_83240
-	call Func_80d9b
+	call Func_80d9b_20
 Func_8325a: ; 8325a (20:725a)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83268
 	ld hl, Data_83246
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83268: ; 83268 (20:7268)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Func_8326c:
@@ -145191,71 +142881,71 @@ Func_8326c:
 	jp nz, Func_83318
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b
+	call Func_8044b_20
 	ld hl, $9c
-	call Func_804ba
+	call Func_804ba_20
 	or a
 	jp nz, Func_832d4
 	ld hl, $391
-	call Func_80498
+	call Func_80498_20
 	ld a, $1
-	call Func_8021b
+	call Func_8021b_20
 	ld hl, $108
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_832cb
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_832cb
 	ld hl, $114
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_832cb
 	ld hl, $49d
-	call Func_80498
+	call Func_80498_20
 	ld a, $2a
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $49e
-	call Func_80498
+	call Func_80498_20
 	ld c, $0
 	ld e, $1
 	ld a, $10
-	call Func_80d4d
+	call Func_80d4d_20
 	ld e, $1
 	ld hl, $108
-	call Func_8061b
+	call Func_8061b_20
 Func_832cb: ; 832cb (20:72cb)
 	ld hl, $33c
-	call Func_80498
+	call Func_80498_20
 	jp Func_83318
 
 Func_832d4: ; 832d4 (20:72d4)
 	ld hl, $392
-	call Func_80498
+	call Func_80498_20
 	ld hl, $108
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83318
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_83318
 	ld hl, $114
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83318
 	ld hl, $49d
-	call Func_80498
+	call Func_80498_20
 	ld a, $2a
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $49e
-	call Func_80498
+	call Func_80498_20
 	ld c, $0
 	ld e, $1
 	ld a, $10
-	call Func_80d4d
+	call Func_80d4d_20
 	ld e, $1
 	ld hl, $108
-	call Func_8061b
+	call Func_8061b_20
 Func_83318: ; 83318 (20:7318)
 	pop bc
 	ret
@@ -145269,20 +142959,20 @@ Data_8333b: ; 8333b
 Func_83340:
 	call Func_83379
 	ld hl, Func_83379
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $a
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8331a
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_8333b
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, Func_03d1
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_8336d:
@@ -145296,15 +142986,15 @@ Func_83379:
 	cp $b
 	jp nc, Func_83387
 	ld hl, Data_8336d
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83387: ; 83387 (20:7387)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83395
 	ld hl, Data_83373
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83395: ; 83395 (20:7395)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_83399:
@@ -145313,17 +143003,17 @@ Data_83399:
 Func_833ba:
 	call Func_833eb
 	ld hl, Func_833eb
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $b
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83399
-	call Func_8003a
+	call Func_8003a_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3d2
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_833df:
@@ -145337,15 +143027,15 @@ Func_833eb:
 	cp $c
 	jp nc, Func_833f9
 	ld hl, Data_833df
-	call Func_80d9b
+	call Func_80d9b_20
 Func_833f9: ; 833f9 (20:73f9)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83407
 	ld hl, Data_833e5
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83407: ; 83407 (20:7407)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_8340b:
@@ -145357,20 +143047,20 @@ Data_8342c: ; 8342c
 Func_83431:
 	call Func_8346a
 	ld hl, Func_8346a
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $c
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8340b
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_8342c
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, Func_03d3
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_8345e:
@@ -145384,15 +143074,15 @@ Func_8346a:
 	cp $d
 	jp nc, Func_83478
 	ld hl, Data_8345e
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83478: ; 83478 (20:7478)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83486
 	ld hl, Data_83464
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83486: ; 83486 (20:7486)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_8348a:
@@ -145404,20 +143094,20 @@ Data_834af: ; 834af
 Func_834bd:
 	call Func_834f6
 	ld hl, Func_834f6
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $d
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8348a
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_834af
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3d4
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_834ea:
@@ -145431,15 +143121,15 @@ Func_834f6: ; 834f6 (20:74f6)
 	cp $e
 	jp nc, Func_83504
 	ld hl, Data_834ea
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83504: ; 83504 (20:7504)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83512
 	ld hl, Data_834f0
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83512: ; 83512 (20:7512)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_83516:
@@ -145448,17 +143138,17 @@ Data_83516:
 Func_83537:
 	call Func_83568
 	ld hl, Func_83568
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $e
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83516
-	call Func_8003a
+	call Func_8003a_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, GetSRAMBank
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_8355c:
@@ -145472,15 +143162,15 @@ Func_83568:
 	cp $f
 	jp nc, Func_83576
 	ld hl, Data_8355c
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83576: ; 83576 (20:7576)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83584
 	ld hl, Data_83562
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83584: ; 83584 (20:7584)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_83588:
@@ -145492,20 +143182,20 @@ Data_835a9: ; 835a9
 Func_835ae:
 	call Func_835e7
 	ld hl, Func_835e7
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $f
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83588
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_835a9
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3d6
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_835db:
@@ -145519,15 +143209,15 @@ Func_835e7: ; 835e7 (20:75e7)
 	cp $10
 	jp nc, Func_835f5
 	ld hl, Data_835db
-	call Func_80d9b
+	call Func_80d9b_20
 Func_835f5: ; 835f5 (20:75f5)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83603
 	ld hl, Data_835e1
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83603: ; 83603 (20:7603)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_83607:
@@ -145539,20 +143229,20 @@ Data_83628: ; 83628
 Func_83632:
 	call Func_8366b
 	ld hl, Func_8366b
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $10
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83607
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $2
 	ld hl, Data_83628
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3d7
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_8365f:
@@ -145566,15 +143256,15 @@ Func_8366b:
 	cp $11
 	jp nc, Func_83679
 	ld hl, Data_8365f
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83679: ; 83679 (20:7679)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83687
 	ld hl, Data_83665
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83687: ; 83687 (20:7687)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_8368b:
@@ -145586,20 +143276,20 @@ Data_836ac: ; 836ac
 Func_836b1:
 	call Func_836ea
 	ld hl, Func_836ea
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $11
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8368b
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_836ac
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3d8
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_836de:
@@ -145613,15 +143303,15 @@ Func_836ea: ; 836ea (20:76ea)
 	cp $12
 	jp nc, Func_836f8
 	ld hl, Data_836de
-	call Func_80d9b
+	call Func_80d9b_20
 Func_836f8: ; 836f8 (20:76f8)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83706
 	ld hl, Data_836e4
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83706: ; 83706 (20:7706)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_8370a:
@@ -145633,20 +143323,20 @@ Data_8372b: ; 8372b
 Func_83730:
 	call Func_83769
 	ld hl, Func_83769
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $12
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8370a
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_8372b
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3d9
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_8375d:
@@ -145660,15 +143350,15 @@ Func_83769: ; 83769 (20:7769)
 	cp $13
 	jp nc, Func_83777
 	ld hl, Data_8375d
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83777: ; 83777 (20:7777)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_83785
 	ld hl, Data_83763
-	call Func_80d9b
+	call Func_80d9b_20
 Func_83785: ; 83785 (20:7785)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_83789:
@@ -145677,17 +143367,17 @@ Data_83789:
 Func_837aa:
 	call Func_837db
 	ld hl, Func_837db
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $13
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83789
-	call Func_8003a
+	call Func_8003a_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3da
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_837cf:
@@ -145701,15 +143391,15 @@ Func_837db:
 	cp $14
 	jp nc, Func_837e9
 	ld hl, Data_837cf
-	call Func_80d9b
+	call Func_80d9b_20
 Func_837e9: ; 837e9 (20:77e9)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_837f7
 	ld hl, Data_837d5
-	call Func_80d9b
+	call Func_80d9b_20
 Func_837f7: ; 837f7 (20:77f7)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_837fb:
@@ -145721,20 +143411,20 @@ Data_83811: ; 83811
 Func_83816:
 	call Func_8384f
 	ld hl, Func_8384f
-	call Func_80f11
+	call Func_80f11_20
 	ld a, $14
 	ld [$c7de], a
 	ld e, $2
 	ld hl, Data_837fb
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $1
 	ld hl, Data_83811
-	call Func_80ce7
+	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6
-	call Func_8001c
+	call Func_80ee6_20
+	call Func_8001c_20
 	ld hl, $3db
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_83843:
@@ -145748,15 +143438,15 @@ Func_8384f:
 	cp $15
 	jp nc, Func_8385d
 	ld hl, Data_83843
-	call Func_80d9b
+	call Func_80d9b_20
 Func_8385d: ; 8385d (20:785d)
 	ld a, [$c78c]
 	cp $5
 	jp nc, Func_8386b
 	ld hl, Data_83849
-	call Func_80d9b
+	call Func_80d9b_20
 Func_8386b: ; 8386b (20:786b)
-	call Func_80f02
+	call Func_80f02_20
 	ret
 
 Data_8386f:
@@ -145771,20 +143461,20 @@ Data_83894: ; 83894
 Func_838a2:
 	call Func_838f0
 	ld hl, Func_838f0
-	call Func_80f11
+	call Func_80f11_20
 	xor a
 	ld [$c7de], a
 	ld e, $2
 	ld hl, Data_8386f
-	call Func_8003a
+	call Func_8003a_20
 	ld e, $3
 	ld hl, Data_83885
-	call Func_80ce7
+	call Func_80ce7_20
 	ld e, $1
 	ld hl, Data_83894
-	call Func_800fb
+	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6
+	call Func_80ee6_20
 	call Func_83e56
 	ld [$c7a4], a
 	ld a, [$c7a4]
@@ -145792,11 +143482,11 @@ Func_838a2:
 	jp nz, Func_838e0
 	ld e, $0
 	xor a
-	call Func_8013d
+	call Func_8013d_20
 Func_838e0: ; 838e0 (20:78e0)
-	call Func_8001c
+	call Func_8001c_20
 	ld hl, $3c8
-	call Func_80f72
+	call Func_80f72_20
 	ret
 
 Data_838ea: ; 838ea
@@ -145807,8 +143497,8 @@ Func_838f0: ; 838f0 (20:78f0)
 	cp $5
 	jp nc, Func_83901
 	ld hl, Data_838ea
-	call Func_80d9b
-	call Func_80f02
+	call Func_80d9b_20
+	call Func_80f02_20
 Func_83901: ; 83901 (20:7901)
 	ret
 
@@ -145845,16 +143535,16 @@ Data_83a1f:
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
-	call Func_8044b
+	call Func_8044b_20
 	ld hl, $58
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83a5e
 	ld hl, $29d
-	call Func_804a9
+	call Func_804a9_20
 	ld e, $1
 	ld hl, $58
-	call Func_8061b
+	call Func_8061b_20
 	jp Func_83e48
 
 Func_83a5e: ; 83a5e (20:7a5e)
@@ -145865,14 +143555,14 @@ Func_83a5e: ; 83a5e (20:7a5e)
 	cp $ff
 	jp nz, Func_83a7b
 	ld hl, $48b
-	call Func_804a9
+	call Func_804a9_20
 	xor a
 	ld [$c79d], a
 	jp Func_83b6e
 
 Func_83a7b: ; 83a7b (20:7a7b)
 	ld hl, $100
-	call Func_804a9
+	call Func_804a9_20
 	ld a, [$c78c]
 	inc a
 	ld [$c78c], a
@@ -145894,80 +143584,80 @@ Func_83a7b: ; 83a7b (20:7a7b)
 	cp $a
 	jp nz, Func_83b6e
 	ld hl, $110
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83adb
 	ld a, $5c
-	call Func_80efe
+	call Func_80efe_20
 	ld hl, $78
-	call Func_8068f
+	call Func_8068f_20
 	ld hl, $484
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, $485
-	call Func_804a9
+	call Func_804a9_20
 	ld e, $1
 	ld hl, $110
-	call Func_8061b
+	call Func_8061b_20
 Func_83adb: ; 83adb (20:7adb)
 	ld hl, $106
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83af3
 	ld hl, $493
-	call Func_80f72
+	call Func_80f72_20
 	ld e, $1
 	ld hl, $106
-	call Func_8061b
+	call Func_8061b_20
 Func_83af3: ; 83af3 (20:7af3)
 	ld hl, $105
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83b0b
 	ld hl, $494
-	call Func_80f72
+	call Func_80f72_20
 	ld e, $1
 	ld hl, $105
-	call Func_8061b
+	call Func_8061b_20
 Func_83b0b: ; 83b0b (20:7b0b)
 	ld hl, $104
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83b23
 	ld hl, $48f
-	call Func_80f72
+	call Func_80f72_20
 	ld e, $1
 	ld hl, $104
-	call Func_8061b
+	call Func_8061b_20
 Func_83b23: ; 83b23 (20:7b23)
 	ld hl, $103
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83b3b
 	ld hl, $492
-	call Func_80f72
+	call Func_80f72_20
 	ld e, $1
 	ld hl, $103
-	call Func_8061b
+	call Func_8061b_20
 Func_83b3b: ; 83b3b (20:7b3b)
 	ld hl, $102
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83b53
 	ld hl, $491
-	call Func_80f72
+	call Func_80f72_20
 	ld e, $1
 	ld hl, $102
-	call Func_8061b
+	call Func_8061b_20
 Func_83b53: ; 83b53 (20:7b53)
 	ld hl, $101
-	call Func_8062e
+	call Func_8062e_20
 	or a
 	jp nz, Func_83b6b
 	ld hl, $490
-	call Func_80f72
+	call Func_80f72_20
 	ld e, $1
 	ld hl, $101
-	call Func_8061b
+	call Func_8061b_20
 Func_83b6b: ; 83b6b (20:7b6b)
 	jp Func_83b6e
 
@@ -145979,16 +143669,16 @@ Func_83b71: ; 83b71 (20:7b71)
 	cp $14
 	jp nz, Func_83b96
 	ld hl, $e7
-	call Func_8062e
+	call Func_8062e_20
 	cp $1
 	jp nz, Func_83b8d
 	ld hl, $2a5
-	call Func_804a9
+	call Func_804a9_20
 	jp Func_83b93
 
 Func_83b8d: ; 83b8d (20:7b8d)
 	ld hl, $456
-	call Func_804a9
+	call Func_804a9_20
 Func_83b93: ; 83b93 (20:7b93)
 	jp Func_83e48
 
@@ -146033,11 +143723,11 @@ Func_83b96: ; 83b96 (20:7b96)
 	call CompareStackLongs_Signed
 	jp c, Func_83e42
 	ld hl, $29e
-	call Func_804ca
+	call Func_804ca_20
 	or a
 	jp nz, Func_83e39
 	ld a, $3
-	call Func_80cd7
+	call Func_80cd7_20
 	cp $2
 	jp z, Func_83c48
 	cp $1
@@ -146045,7 +143735,7 @@ Func_83b96: ; 83b96 (20:7b96)
 	or a
 	jp nz, Func_83c6f
 	ld hl, $2a1
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -146070,7 +143760,7 @@ Func_83b96: ; 83b96 (20:7b96)
 
 Func_83c1e: ; 83c1e (20:7c1e)
 	ld hl, $2a2
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -146099,7 +143789,7 @@ Func_83c1e: ; 83c1e (20:7c1e)
 
 Func_83c48: ; 83c48 (20:7c48)
 	ld hl, $2a3
-	call Func_804a9
+	call Func_804a9_20
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -146191,7 +143881,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	pop hl
 	call FarCall
 	ld hl, $2a4
-	call Func_804a9
+	call Func_804a9_20
 	ld a, [$c2d8]
 	cp $3
 	jp nz, Func_83d45
@@ -146203,9 +143893,9 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
-	call Func_80688
+	call Func_80688_20
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	jp Func_83d57
 
 Func_83d45: ; 83d45 (20:7d45)
@@ -146214,17 +143904,17 @@ Func_83d45: ; 83d45 (20:7d45)
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
-	call Func_80688
+	call Func_80688_20
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 Func_83d57: ; 83d57 (20:7d57)
 	ld e, $0
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
-	call Func_8013d
+	call Func_8013d_20
 	ld a, $2e
-	call Func_80efe
+	call Func_80efe_20
 	push hl
 	push hl
 	ld hl, sp+$f
@@ -146236,7 +143926,7 @@ Func_83d57: ; 83d57 (20:7d57)
 	pop bc
 	pop bc
 	ld hl, sp+$2
-	call Func_80f94
+	call Func_80f94_20
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
@@ -146333,13 +144023,13 @@ Func_83dd5: ; 83dd5 (20:7dd5)
 
 Func_83e39: ; 83e39 (20:7e39)
 	ld hl, $2a0
-	call Func_804a9
+	call Func_804a9_20
 Func_83e3f: ; 83e3f (20:7e3f)
 	jp Func_83e48
 
 Func_83e42: ; 83e42 (20:7e42)
 	ld hl, $29f
-	call Func_804a9
+	call Func_804a9_20
 Func_83e48: ; 83e48 (20:7e48)
 	ld hl, $130
 	add hl, sp
@@ -146360,7 +144050,7 @@ Func_83e56: ; 83e56 (20:7e56)
 	cp $1
 	jp nz, Func_83f33
 	ld hl, sp+$6
-	call Func_80f94
+	call Func_80f94_20
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -146482,2318 +144172,7 @@ Func_83f35: ; 83f35 (20:7f35)
 	ret
 
 SECTION "Bank 21", ROMX, BANK [$21]
-Func_84000:
-	jpba_hli Func_50d85
-
-Func_8400e:
-	jpba_hli Func_50d09
-
-Func_8401c: ; 8401c (21:401c)
-	callba_hli Func_ae4d
-	ret
-
-Func_8402b: ; 8402b (21:402b)
-	callba_hli Func_aca6
-	ret
-
-Func_8403a: ; 8403a (21:403a)
-	push hl
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	xor a
-Func_84042: ; 84042 (21:4042)
-	cp e
-	jp nc, Func_8407d
-	push de
-	push af
-	ld l, a
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $12
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$4
-	ld bc, $b
-	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_acc8
-	ld hl, sp+$4
-	call FarCall
-	pop af
-	inc a
-	pop de
-	jp Func_84042
-
-Func_8407d: ; 8407d (21:407d)
-	add sp, $e
-	ret
-
-Func_84080: ; 84080 (21:4080)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_a60f
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_84095: ; 84095 (21:4095)
-	push af
-	push de
-	set_farcall_addrs_hli Func_a6d8
-	pop de
-	pop af
-	call FarCall
-	ld a, [rLCDC]
-	and $80
-	jp z, Func_840b7
-	call NextOverworldFrame
-	call NextOverworldFrame
-	call NextOverworldFrame
-Func_840b7: ; 840b7 (21:40b7)
-	ret
-
-Func_840b8:
-	push af
-	set_farcall_addrs_hli Func_50b19
-	pop af
-	jp FarCall
-
-Func_840c8:
-	push af
-	push de
-	ld hl, sp+$0
-	ld a, [hl]
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld [hl], a
-	pop bc
-	pop bc
-	ret
-
-Func_840e9: ; 840e9 (21:40e9)
-	push af
-	push de
-	set_farcall_addrs_hli Func_9a39e
-	pop de
-	pop af
-	jp FarCall
-
-Func_840fb: ; 840fb (21:40fb)
-	push hl
-	add sp, -$e
-	xor a
-Func_840ff: ; 840ff (21:40ff)
-	cp e
-	jp nc, Func_8413a
-	push de
-	push af
-	ld l, a
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $14
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$4
-	ld bc, $e
-	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_a2eb
-	ld hl, sp+$4
-	call FarCall
-	pop af
-	inc a
-	pop de
-	jp Func_840ff
-
-Func_8413a: ; 8413a (21:413a)
-	add sp, $10
-	ret
-
-Func_8413d: ; 8413d (21:413d)
-	push af
-	push de
-	set_farcall_addrs_hli Func_a444
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_84150: ; 84150 (21:4150)
-	push af
-	push de
-	set_farcall_addrs_hli Func_a580
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_84163:
-	push hl
-	push de
-	set_farcall_addrs_hli Func_a5a4
-	pop de
-	pop hl
-	call FarCall
-	ret
-
-Func_84176: ; 84176 (21:4176)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_9a6aa
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_8418b: ; 8418b (21:418b)
-	callba_hli Func_da4fc
-	callba_hli Func_9a87c
-	ld a, [wLCDC]
-	or $3
-	ld [wLCDC], a
-	ld a, [wNextVBlankFlags]
-	or $6
-	ld [wNextVBlankFlags], a
-	ret
-
-Func_841b8:
-	callba_hli Func_da4fc
-	callba_hli Func_9a87c
-	ret
-
-Func_841d5: ; 841d5 (21:41d5)
-	callba_hli Func_9a84a
-	ret
-
-Func_841e4: ; 841e4 (21:41e4)
-	push af
-	push de
-	set_farcall_addrs_hli Func_9a897
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_841f7: ; 841f7 (21:41f7)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_b01b
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_8420c: ; 8420c (21:420c)
-	callba_hli Func_b3ab
-	ret
-
-Func_8421b:
-	push af
-	callba_hli Func_da4dc
-	callba_hli Func_d9f55
-	set_farcall_addrs_hli Func_58d5d
-	pop af
-	call FarCall
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	ret
-
-Func_84257:
-	callba_hli Func_14d93
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	ret
-
-Func_84275:
-	ld a, $3
-	ld [wOAM26VTile], a
-	callba_hli Func_14ca9
-	ret
-
-Func_84289:
-	callba_hli Func_17470
-	callba_hli Func_14940
-	callba_hli Func_17488
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	ret
-
-Func_842b3:
-	callba_hli Func_6f512
-	callba_hli Func_8f44
-	ret
-
-Func_842e0: ; 842e0 (21:42e0)
-	callba_hli Func_6965b
-	ret
-
-Func_842ef:
-	push bc
-	push hl
-	ld hl, sp+$2
-	ld [hl], $1
-	pop hl
-	ld a, [$c793]
-	or a
-	jp z, Func_8430d
-	ld a, [$c793]
-	cp $1
-	jp z, Func_8430d
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_84341
-Func_8430d: ; 8430d (21:430d)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bc6d
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_842ef)
-	call FarCall
-	or a
-	jp z, Func_84332
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_84341
-
-Func_84332: ; 84332 (21:4332)
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_84341: ; 84341 (21:4341)
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_84346:
-	push bc
-	push hl
-	ld hl, sp+$2
-	ld [hl], $1
-	pop hl
-	ld a, [$c793]
-	or a
-	jp z, Func_84364
-	ld a, [$c793]
-	cp $1
-	jp z, Func_84364
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_84398
-Func_84364: ; 84364 (21:4364)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bd5d
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_84346)
-	call FarCall
-	or a
-	jp z, Func_84389
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_84398
-
-Func_84389: ; 84389 (21:4389)
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_84398: ; 84398 (21:4398)
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_8539d:
-	push bc
-	push hl
-	ld hl, sp+$2
-	ld [hl], $1
-	pop hl
-	ld a, [$c793]
-	or a
-	jp z, Func_843bb
-	ld a, [$c793]
-	cp $1
-	jp z, Func_843bb
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_843ef
-Func_843bb: ; 843bb (21:43bb)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bce5
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_8539d)
-	call FarCall
-	or a
-	jp z, Func_843e0
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_843ef
-
-Func_843e0: ; 843e0 (21:43e0)
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_843ef: ; 843ef (21:43ef)
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_843f4:
-	push bc
-	push hl
-	ld hl, sp+$2
-	ld [hl], $1
-	pop hl
-	ld a, [$c793]
-	or a
-	jp z, Func_84412
-	ld a, [$c793]
-	cp $1
-	jp z, Func_84412
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_84446
-Func_84412: ; 84412 (21:4412)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bdd5
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_843f4)
-	call FarCall
-	or a
-	jp z, Func_84437
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_84446
-
-Func_84437: ; 84437 (21:4437)
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_84446: ; 84446 (21:4446)
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_8444b: ; 8444b (21:444b)
-	push af
-	set_farcall_addrs_hli Func_b3ef
-	pop af
-	call FarCall
-	ret
-
-Func_8445c:
-	callba_hli Func_14b44
-	callba_hli Func_8f44
-	ret
-
-Func_84479:
-	callba_hli Func_53c88
-	ret
-
-Func_84488:
-	push hl
-	set_farcall_addrs_hli Func_6e1b
-	pop hl
-	jp FarCall
-
-Func_84498: ; 84498 (21:4498)
-	push hl
-	set_farcall_addrs_hli Func_ac24
-	pop hl
-	call FarCall
-	ret
-
-Func_844a9: ; 844a9 (21:44a9)
-	push hl
-	set_farcall_addrs_hli Func_ac2c
-	pop hl
-	call FarCall
-	ret
-
-Func_844ba: ; 844ba (21:44ba)
-	push hl
-	set_farcall_addrs_hli Func_ac94
-	pop hl
-	jp FarCall
-
-Func_844ca: ; 844ca (21:44ca)
-	push hl
-	set_farcall_addrs_hli Func_ac9d
-	pop hl
-	jp FarCall
-
-Func_844da:
-	push hl
-	set_farcall_addrs_hli Func_17aba
-	ld hl, $154
-	call FarCall
-	ld c, l
-	ld b, h
-	pop hl
-	push bc
-	ld e, l
-	ld d, h
-	ld l, c
-	ld h, b
-	call CopyUntilNull
-	set_farcall_addrs_hli Func_ac35
-	pop bc
-	push bc
-	ld l, c
-	ld h, b
-	call FarCall
-	set_farcall_addrs_hli Func_17c57
-	pop hl
-	call FarCall
-	ret
-
-Func_84519: ; 84519 (21:4519)
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	push hl
-	push de
-	set_farcall_addrs_hli Func_17aba
-	ld hl, $154
-	call FarCall
-	ld c, l
-	ld b, h
-	pop de
-	push bc
-	ld l, c
-	ld h, b
-	call CopyUntilNull
-	pop bc
-	pop hl
-	push bc
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$2
-	call CopyUntilNull
-	set_farcall_addrs_hli Func_ac36
-	pop bc
-	push bc
-	ld e, c
-	ld d, b
-	ld hl, sp+$2
-	call FarCall
-	set_farcall_addrs_hli Func_17c57
-	pop hl
-	call FarCall
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_8456f:
-	push hl
-	set_farcall_addrs_hli Func_17aba
-	ld hl, $154
-	call FarCall
-	ld c, l
-	ld b, h
-	pop hl
-	push bc
-	ld e, l
-	ld d, h
-	ld l, c
-	ld h, b
-	call CopyUntilNull
-	set_farcall_addrs_hli Func_ac9b
-	pop bc
-	push bc
-	ld l, c
-	ld h, b
-	call FarCall
-	pop bc
-	push af
-	push bc
-	set_farcall_addrs_hli Func_17c57
-	pop hl
-	call FarCall
-	pop af
-	ret
-
-Func_845b2: ; 845b2 (21:45b2)
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	push hl
-	push de
-	set_farcall_addrs_hli Func_17aba
-	ld hl, $154
-	call FarCall
-	ld c, l
-	ld b, h
-	pop de
-	push bc
-	ld l, c
-	ld h, b
-	call CopyUntilNull
-	pop bc
-	pop hl
-	push bc
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, sp+$2
-	call CopyUntilNull
-	set_farcall_addrs_hli Func_aca4
-	pop bc
-	push bc
-	ld e, c
-	ld d, b
-	ld hl, sp+$2
-	call FarCall
-	pop bc
-	push af
-	push bc
-	set_farcall_addrs_hli Func_17c57
-	pop hl
-	call FarCall
-	pop af
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_8460c:
-	callba_hli Func_ac37
-	ret
-
-Func_8461b: ; 8461b (21:461b)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_a98b
-	pop de
-	pop hl
-	call FarCall
-	ret
-
-Func_8462e: ; 8462e (21:462e)
-	push hl
-	set_farcall_addrs_hli Func_aa36
-	pop hl
-	jp FarCall
-
-Func_8463e: ; 8463e (21:463e)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_b400
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_84653: ; 84653 (21:4653)
-	push af
-	set_farcall_addrs_hli Func_b52c
-	pop af
-	call FarCall
-	ret
-
-Func_84664:
-	push af
-	push de
-	set_farcall_addrs_hli Func_b530
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_84677: ; 84677 (21:4677)
-	push af
-	set_farcall_addrs_hli Func_b58e
-	pop af
-	call FarCall
-	ret
-
-Func_84688: ; 84688 (21:4688)
-	call Func_841f7
-	call Func_8420c
-	ret
-
-Func_8468f: ; 8468f (21:468f)
-	push hl
-	set_farcall_addrs_hli Func_b5db
-	pop hl
-	call FarCall
-	ret
-
-Func_846a0:
-	push de
-	ld [$c2f8], a
-	set_farcall_addrs_hli Func_30348
-	pop de
-	push de
-	ld a, e
-	call FarCall
-	pop de
-	ld a, e
-	cp $3
-	jp c, Func_846ce
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	jp Func_846dc
-
-Func_846ce: ; 846ce (21:46ce)
-	callba_hli Func_8f44
-Func_846dc: ; 846dc (21:46dc)
-	ret
-
-Func_846dd:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_84796
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_84095
-	ld hl, $c8
-	call Func_8462e
-	or a
-	jp nz, Func_84732
-	ld hl, $36d
-	call Func_844a9
-	ld e, $1
-	ld hl, $c8
-	call Func_8461b
-	jp Func_84796
-
-Func_84732: ; 84732 (21:4732)
-	pop hl
-	push hl
-	ld l, [hl]
-	ld h, $0
-	ld de, $8
-	call DivideHLByDESigned
-	ld de, wMapMusic + 7
-	add hl, de
-	ld c, [hl]
-	pop hl
-	push hl
-	ld a, [hl]
-	and $7
-	ld b, a
-	ld a, $1
-	call LeftShiftA
-	and c
-	jp z, Func_8475a
-	ld hl, $374
-	call Func_844a9
-	jp Func_84796
-
-Func_8475a: ; 8475a (21:475a)
-	ld hl, $36e
-	call Func_844ca
-	or a
-	jp nz, Func_84796
-	set_farcall_addrs_hli Func_9ace0
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld c, [hl]
-	pop hl
-	push hl
-	ld a, [hl]
-	pop hl
-	push hl
-	inc hl
-	ld e, [hl]
-	call FarCall
-	cp $2
-	jp nz, Func_8478c
-	ld hl, $371
-	call Func_84498
-	jp Func_84796
-
-Func_8478c: ; 8478c (21:478c)
-	or a
-	jp nz, Func_84796
-	ld hl, $47c
-	call Func_84498
-Func_84796: ; 84796 (21:4796)
-	pop bc
-	pop bc
-	ret
-
-Func_84799:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_8485c
-	push bc
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$5
-	ld a, [hl]
-	call Func_84095
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld e, [hl]
-	ld hl, sp+$2
-	ld [hl], e
-Func_847e7: ; 847e7 (21:47e7)
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, sp+$2
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hl]
-	inc hl
-	or [hl]
-	jp nz, Func_8481a
-	ld hl, sp+$2
-	ld [hl], $fe
-	jp Func_8481d
-
-Func_8481a: ; 8481a (21:481a)
-	jp Func_84828
-
-Func_8481d: ; 8481d (21:481d)
-	ld hl, sp+$2
-	ld a, [hl]
-	add $2
-	ld hl, sp+$2
-	ld [hl], a
-	jp Func_847e7
-
-Func_84828: ; 84828 (21:4828)
-	pop bc
-	ld hl, sp+$0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	inc hl
-	inc hl
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, sp+$0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, bc
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call Func_84519
-	ld hl, sp+$0
-	ld a, [hl]
-	add $2
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld [hl], a
-Func_8485c: ; 8485c (21:485c)
-	pop bc
-	pop bc
-	ret
-
-Func_8485f:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_848f9
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_84095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld c, [hl]
-Func_848ad: ; 848ad (21:48ad)
-	pop hl
-	push hl
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hl]
-	inc hl
-	and [hl]
-	inc a
-	jp nz, Func_848c4
-	ld c, $ff
-	jp Func_848c7
-
-Func_848c4: ; 848c4 (21:48c4)
-	jp Func_848cb
-
-Func_848c7: ; 848c7 (21:48c7)
-	inc c
-	jp Func_848ad
-
-Func_848cb: ; 848cb (21:48cb)
-	push bc
-	call GetHLAtSPPlus4
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_84498
-	pop bc
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld e, c
-	inc e
-	ld [hl], e
-Func_848f9: ; 848f9 (21:48f9)
-	pop bc
-	pop bc
-	ret
-
-Func_848fc:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_84996
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_84095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld c, [hl]
-Func_8494a: ; 8494a (21:494a)
-	pop hl
-	push hl
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hl]
-	inc hl
-	and [hl]
-	inc a
-	jp nz, Func_84961
-	ld c, $ff
-	jp Func_84964
-
-Func_84961: ; 84961 (21:4961)
-	jp Func_84968
-
-Func_84964: ; 84964 (21:4964)
-	inc c
-	jp Func_8494a
-
-Func_84968: ; 84968 (21:4968)
-	push bc
-	call GetHLAtSPPlus4
-	push de
-	push hl
-	pop de
-	pop hl
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_844a9
-	pop bc
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld e, c
-	inc e
-	ld [hl], e
-Func_84996: ; 84996 (21:4996)
-	pop bc
-	pop bc
-	ret
-
-Func_84999:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_84a79
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_84095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld a, [hl]
-	cp $1
-	jp z, Func_84a5d
-	or a
-	jp nz, Func_84a79
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus4
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	call Func_845b2
-	or a
-	jp nz, Func_84a3e
-	pop hl
-	push hl
-	ld de, $6
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	call Func_84519
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld [hl], $1
-	jp Func_84a5a
-
-Func_84a3e: ; 84a3e (21:4a3e)
-	pop hl
-	push hl
-	ld de, $a
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus4
-	ld de, $8
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	call Func_84519
-Func_84a5a: ; 84a5a (21:4a5a)
-	jp Func_84a79
-
-Func_84a5d: ; 84a5d (21:4a5d)
-	pop hl
-	push hl
-	ld de, $6
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	pop de
-	call Func_84519
-Func_84a79: ; 84a79 (21:4a79)
-	pop bc
-	pop bc
-	ret
-
-Func_84a7c:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_84b2a
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_84095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld a, [hl]
-	cp $1
-	jp z, Func_84b1c
-	or a
-	jp nz, Func_84b2a
-	pop hl
-	push hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_844ba
-	or a
-	jp nz, Func_84b09
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_84498
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld [hl], $1
-	jp Func_84b19
-
-Func_84b09: ; 84b09 (21:4b09)
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_84498
-Func_84b19: ; 84b19 (21:4b19)
-	jp Func_84b2a
-
-Func_84b1c: ; 84b1c (21:4b1c)
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_84498
-Func_84b2a: ; 84b2a (21:4b2a)
-	pop bc
-	pop bc
-	ret
-
-Func_84b2d:
-	push af
-	push bc
-	push de
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	ld de, $c
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	pop de
-	ld a, e
-	or a
-	jp nz, Func_84bdb
-	ld a, [$c838]
-	add $2
-	and $3
-	ld e, a
-	ld hl, sp+$3
-	ld a, [hl]
-	call Func_84095
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld a, [hl]
-	cp $1
-	jp z, Func_84bcd
-	or a
-	jp nz, Func_84bdb
-	pop hl
-	push hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_844ca
-	or a
-	jp nz, Func_84bba
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_844a9
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c776
-	add hl, de
-	inc hl
-	inc hl
-	ld [hl], $1
-	jp Func_84bca
-
-Func_84bba: ; 84bba (21:4bba)
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_844a9
-Func_84bca: ; 84bca (21:4bca)
-	jp Func_84bdb
-
-Func_84bcd: ; 84bcd (21:4bcd)
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
-	call Func_844a9
-Func_84bdb: ; 84bdb (21:4bdb)
-	pop bc
-	pop bc
-	ret
-
-Func_84bde: ; 84bde (21:4bde)
-	push af
-	ld hl, sp+$1
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	inc hl
-	inc hl
-	ld a, [hl]
-	ld [$c846], a
-	ld hl, sp+$1
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
-	read_hl_from $c774
-	add hl, de
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	ld [$c847], a
-	ld a, $ff
-	ld [$c848], a
-	ld a, $ff
-	ld [$c849], a
-	ld a, [$c838]
-	cp $3
-	jp z, Func_84c5a
-	cp $2
-	jp z, Func_84c50
-	cp $1
-	jp z, Func_84c46
-	or a
-	jp nz, Func_84c61
-	ld a, [$c847]
-	dec a
-	ld [$c847], a
-	jp Func_84c61
-
-Func_84c46: ; 84c46 (21:4c46)
-	ld a, [$c846]
-	inc a
-	ld [$c846], a
-	jp Func_84c61
-
-Func_84c50: ; 84c50 (21:4c50)
-	ld a, [$c847]
-	inc a
-	ld [$c847], a
-	jp Func_84c61
-
-Func_84c5a: ; 84c5a (21:4c5a)
-	ld a, [$c846]
-	dec a
-	ld [$c846], a
-Func_84c61: ; 84c61 (21:4c61)
-	set_farcall_addrs_hli Func_9f87
-	ld c, $1
-	ld a, [$c847]
-	ld e, a
-	ld a, [$c846]
-	call FarCall
-	or a
-	jp nz, Func_84c91
-	ld a, $33
-	call Func_1502
-	ld bc, $c846
-	ld e, $21
-	ld hl, sp+$1
-	ld a, [hl]
-	call Func_841f7
-	ld a, $1
-	jp Func_84c92
-
-Func_84c91: ; 84c91 (21:4c91)
-	xor a
-Func_84c92: ; 84c92 (21:4c92)
-	pop bc
-	ret
-
-Func_84c94: ; 84c94 (21:4c94)
-	push af
-	set_farcall_addrs_hli Func_e2780
-	pop af
-	call FarCall
-	ret
-
-Func_84ca5:
-	push af
-	set_farcall_addrs_hli Func_e2829
-	pop af
-	jp FarCall
-
-Func_84cb5:
-	push af
-	set_farcall_addrs_hli Func_e2807
-	pop af
-	call FarCall
-	ret
-
-Func_84cc6: ; 84cc6 (21:4cc6)
-	push af
-	set_farcall_addrs_hli Func_be77
-	pop af
-	call FarCall
-	ret
-
-Func_84cd7:
-	push af
-	set_farcall_addrs_hli Func_dd67
-	pop af
-	jp FarCall
-
-Func_84ce7: ; 84ce7 (21:4ce7)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_9b262
-	pop de
-	pop hl
-	ld c, e
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_84ce7)
-	call FarCall
-	ret
-
-Func_84d01: ; 84d01 (21:4d01)
-	push af
-	ld a, [$c793]
-	or a
-	jp z, Func_84d11
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_84d22
-Func_84d11: ; 84d11 (21:4d11)
-	set_farcall_addrs_hli Func_b785
-	ld hl, sp+$1
-	ld a, [hl]
-	call FarCall
-Func_84d22: ; 84d22 (21:4d22)
-	pop bc
-	ret
-
-Func_84d24: ; 84d24 (21:4d24)
-	ld a, [$c793]
-	or a
-	jp z, Func_84d33
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_84d4c
-Func_84d33: ; 84d33 (21:4d33)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_b7fd
-	pop de
-	pop hl
-	ld c, e
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_84d24)
-	call FarCall
-Func_84d4c: ; 84d4c (21:4d4c)
-	ret
-
-Func_84d4d: ; 84d4d (21:4d4d)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_5a0e0
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_84d62:
-	push af
-	push de
-	set_farcall_addrs_hli Func_4ed5d
-	pop de
-	pop af
-	jp FarCall
-
-Func_84d74: ; 84d74 (21:4d74)
-	push af
-	push de
-	set_farcall_addrs_hli Func_6af0d
-	pop de
-	pop af
-	inc a
-	jp FarCall
-
-Func_84d87:
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_31af1
-	pop bc
-	pop de
-	pop af
-	jp FarCall
-
-Func_84d9b: ; 84d9b (21:4d9b)
-	push hl
-	set_farcall_addrs_hli Func_e3714
-	pop hl
-	push hl
-	ld de, $5
-	add hl, de
-	ld c, [hl]
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld h, [hl]
-	ld b, h
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	ld l, [hl]
-	ld h, a
-	push hl
-	call GetHLAtSPPlus4
-	ld a, [hl]
-	call GetHLAtSPPlus4
-	inc hl
-	ld l, [hl]
-	ld h, a
-	pop de
-	call FarCall
-	pop bc
-	ret
-
-Func_84dd3: ; 84dd3 (21:4dd3)
-	ld a, [$c793]
-	or a
-	jp z, Func_84de2
-	ld a, [$c793]
-	cp $3
-	jp nz, Func_84dfd
-Func_84de2: ; 84de2 (21:4de2)
-	push hl
-	push de
-	set_farcall_addrs_hli Func_bbee
-	pop de
-	pop hl
-	ld c, e
-	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
-	ld a, BANK(Func_84dd3)
-	call FarCall
-	ld l, a
-Func_84dfd: ; 84dfd (21:4dfd)
-	ld a, l
-	ret
-
-Func_84dff: ; 84dff (21:4dff)
-	push de
-	push af
-	push bc
-	set_farcall_addrs_hli Func_af7a
-	pop bc
-	pop af
-	ld hl, sp+$4
-	ld l, [hl]
-	ld h, c
-	ld e, l
-	ld d, h
-	ld hl, sp+$0
-	ld l, [hl]
-	ld h, a
-	call FarCall
-	pop bc
-	ret
-
-Func_84e1e:
-	push af
-	push de
-	set_farcall_addrs_hli Func_943f
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_84e31:
-	push hl
-	push de
-	set_farcall_addrs_hli Func_6b94
-	pop de
-	pop hl
-	call FarCall
-	ret
-
-Func_84e44:
-	set_farcall_addrs_hli Func_9f64
-	ld a, [$c2d9]
-	add $4
-	ld e, a
-	ld a, [$c2d8]
-	add $5
-	jp FarCall
-
-Func_84e5d: ; 84e5d (21:4e5d)
-	push af
-	set_farcall_addrs_hli Func_e1f2d
-	pop af
-	jp FarCall
-
-Func_84e6d: ; 84e6d (21:4e6d)
-	push af
-	set_farcall_addrs_hli Func_6aad4
-	pop af
-	jp FarCall
-
-Func_84e7d:
-	push af
-	set_farcall_addrs_hli Func_6ab29
-	pop af
-	jp FarCall
-
-Func_84e8d: ; 84e8d (21:4e8d)
-	push af
-	push de
-	push bc
-	set_farcall_addrs_hli Func_e1513
-	pop bc
-	pop de
-	pop af
-	call FarCall
-	ret
-
-Func_84ea2: ; 84ea2 (21:4ea2)
-	callba_hli Func_9d3e
-	ret
-
-Func_84eb1: ; 84eb1 (21:4eb1)
-	callba_hli Func_9d4d
-	ret
-
-Func_84ec0:
-	call Func_3aa8
-	set_farcall_addrs_hli Func_14771
-	ld a, $7
-	call FarCall
-	push hl
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-	pop hl
-	ld a, l
-	ret
-
-Func_84ee6: ; 84ee6 (21:4ee6)
-	push af
-	ld a, [wMapMusic]
-	ld hl, sp+$1
-	cp [hl]
-	jp z, Func_84efc
-	ld hl, sp+$1
-	ld a, [hl]
-	call StartMapMusic
-	ld hl, sp+$1
-	ld a, [hl]
-	ld [wMapMusic], a
-Func_84efc: ; 84efc (21:4efc)
-	pop bc
-	ret
-
-Func_84efe: ; 84efe (21:4efe)
-	call Func_1502
-	ret
-
-Func_84f02: ; 84f02 (21:4f02)
-	callba_hli Func_8f44
-	ret
-
-Func_84f11: ; 84f11 (21:4f11)
-	push hl
-	set_farcall_addrs_hli Func_bf39
-	pop de
-	ld a, BANK(Func_84f11)
-	call FarCall
-	ret
-
-Func_84f24: ; 84f24 (21:4f24)
-	push de
-	push bc
-	push af
-	set_farcall_addrs_hli Func_e3619
-	pop af
-	ld hl, sp+$6
-	ld c, [hl]
-	ld hl, sp+$0
-	ld e, [hl]
-	ld hl, sp+$2
-	ld l, [hl]
-	ld h, a
-	call FarCall
-	pop bc
-	pop bc
-	ret
-
-Func_84f43:
-	push af
-	set_farcall_addrs_hli Func_bf46
-	pop af
-	call FarCall
-	ret
-
-Func_84f54:
-	callba_hli Func_b65f
-	ret
-
-Func_84f63:
-	callba_hli Func_b6f2
-	ret
-
-Func_84f72: ; 84f72 (21:4f72)
-	push hl
-	set_farcall_addrs_hli Func_9a1bb
-	pop hl
-	call FarCall
-	ret
-
-Func_84f83:
-	push hl
-	set_farcall_addrs_hli Func_9a28c
-	pop hl
-	call FarCall
-	ret
-
-Func_84f94: ; 84f94 (21:4f94)
-	push hl
-	set_farcall_addrs_hli Func_93370
-	pop hl
-	call FarCall
-	ret
-
-Func_84fa5:
-	push hl
-	add sp, -$66
-	set_farcall_addrs_hli Func_1c11
-	ld hl, sp+$0
-	push de
-	push hl
-	pop de
-	pop hl
-	ld hl, $66
-	call FarCall
-	set_farcall_addrs_hli Func_1c27
-	ld hl, sp+$0
-	push hl
-	read_hl_from_sp_plus $6a
-	pop de
-	call FarCall
-	push de
-	push hl
-	pop de
-	pop hl
-	add sp, $68
-	push de
-	push hl
-	pop de
-	pop hl
-	ret
-
-Func_84fe0:
-	push af
-	set_farcall_addrs_hli Func_333ba
-	pop af
-	call FarCall
-	ret
-
-Func_84ff1: ; 84ff1 (21:4ff1)
-	push af
-	ld l, $0
-Func_84ff4: ; 84ff4 (21:4ff4)
-	ld a, l
-	cp $8
-	jp nc, Func_85018
-	push hl
-	xor a
-Func_84ffc: ; 84ffc (21:4ffc)
-	ld hl, sp+$3
-	cp [hl]
-	jp nc, Func_8500b
-	push af
-	call NextOverworldFrame
-	pop af
-	inc a
-	jp Func_84ffc
-
-Func_8500b: ; 8500b (21:500b)
-	pop hl
-	push hl
-	ld a, $7
-	sub l
-	call SetVolume
-	pop hl
-	inc l
-	jp Func_84ff4
-
-Func_85018: ; 85018 (21:5018)
-	pop bc
-	ret
-
-Func_8501a: ; 8501a (21:501a)
-	push af
-	xor a
-Func_8501c: ; 8501c (21:501c)
-	cp $8
-	jp nc, Func_8503c
-	push af
-	xor a
-Func_85023: ; 85023 (21:5023)
-	ld hl, sp+$3
-	cp [hl]
-	jp nc, Func_85032
-	push af
-	call NextOverworldFrame
-	pop af
-	inc a
-	jp Func_85023
-
-Func_85032: ; 85032 (21:5032)
-	pop af
-	push af
-	call SetVolume
-	pop af
-	inc a
-	jp Func_8501c
-
-Func_8503c: ; 8503c (21:503c)
-	pop bc
-	ret
-
-Func_8503e:
-	push af
-	set_farcall_addrs_hli Func_6ae47
-	pop af
-	call FarCall
-	ret
-
-Func_8504f:
-	callba_hli Func_6ac44
-	cp $ff
-	jp nz, Func_85071
-	set_farcall_addrs_hli Func_8ba8
-	xor a
-	call FarCall
-Func_85071: ; 85071 (21:5071)
-	ret
-
-Func_85072:
-	callba_hli Func_6b31a
-	ret
-
-Func_85081:
-	push hl
-	push de
-	set_farcall_addrs_hli Func_c796a
-	pop de
-	pop hl
-	call FarCall
-	ret
-
-Func_85094:
-	callba_hli Func_53b6e
-	ret
-
-Func_850a3:
-	push af
-	set_farcall_addrs_hli Func_fb55f
-	pop af
-	call FarCall
-	ret
+	lib_bank_20 21
 
 Data_850b4:
 	dr $850b4, $850fa
@@ -148804,12 +144183,12 @@ Data_850fa: ; 850fa
 Data_85140: ; 85140
 	dr $85140, $85178
 
-Func_85178:
+Func_81178_21:
 	push bc
 	push bc
 	push bc
 	ld hl, sp+$0
-	call Func_84f94
+	call Func_80f94_21
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -148826,103 +144205,103 @@ Func_85178:
 	ld bc, $474
 	ld de, $168
 	call CompareHLtoDE
-	jp c, Func_851a9
+	jp c, Func_811a9_21
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp c, Func_851b4
-Func_851a9: ; 851a9 (21:51a9)
+	jp c, Func_811b4_21
+Func_811a9_21: ; 851a9 (21:51a9)
 	ld e, $1
 	ld hl, $38
-	call Func_8461b
-	jp Func_851bc
+	call Func_8061b_21
+	jp Func_811bc_21
 
-Func_851b4: ; 851b4 (21:51b4)
+Func_811b4_21: ; 851b4 (21:51b4)
 	ld e, $0
 	ld hl, $38
-	call Func_8461b
-Func_851bc: ; 851bc (21:51bc)
+	call Func_8061b_21
+Func_811bc_21: ; 851bc (21:51bc)
 	ld e, $6
 	ld hl, Data_850b4
-	call Func_8403a
+	call Func_8003a_21
 	ld a, $1
-	call Func_84cc6
+	call Func_80cc6_21
 	ld a, $2
 	ld [$c7e2], a
 	ld hl, $32
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_851fe
+	jp nz, Func_811fe_21
 	ld e, $5
 	ld hl, Data_850fa
-	call Func_840fb
+	call Func_800fb_21
 	ld e, $4
 	ld hl, Data_85140
-	call Func_840fb
+	call Func_800fb_21
 	ld a, $3
-	call Func_84ee6
-	call Func_8401c
-	call Func_852ac
+	call Func_80ee6_21
+	call Func_8001c_21
+	call Func_812ac_21
 	ld e, $1
 	ld hl, $32
-	call Func_8461b
-	jp Func_85270
+	call Func_8061b_21
+	jp Func_81270_21
 
-Func_851fe: ; 851fe (21:51fe)
+Func_811fe_21: ; 851fe (21:51fe)
 	ld hl, $5
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp z, Func_85212
+	jp z, Func_81212_21
 	ld hl, $6
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85260
-Func_85212: ; 85212 (21:5212)
+	jp nz, Func_81260_21
+Func_81212_21: ; 85212 (21:5212)
 	ld e, $5
 	ld hl, Data_850fa
-	call Func_840fb
+	call Func_800fb_21
 	ld a, $3
-	call Func_84ee6
+	call Func_80ee6_21
 	ld e, $0
 	ld a, $2
-	call Func_8413d
+	call Func_8013d_21
 	ld hl, $5
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_8523a
+	jp nz, Func_8123a_21
 	ld e, $0
 	xor a
-	call Func_8413d
-	jp Func_85242
+	call Func_8013d_21
+	jp Func_81242_21
 
-Func_8523a: ; 8523a (21:523a)
+Func_8123a_21: ; 8523a (21:523a)
 	ld c, $a
 	ld e, $1f
 	xor a
-	call Func_84080
-Func_85242: ; 85242 (21:5242)
+	call Func_80080_21
+Func_81242_21: ; 85242 (21:5242)
 	ld hl, $6
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85257
+	jp nz, Func_81257_21
 	ld e, $0
 	ld a, $1
-	call Func_8413d
-	jp Func_85260
+	call Func_8013d_21
+	jp Func_81260_21
 
-Func_85257: ; 85257 (21:5257)
+Func_81257_21: ; 85257 (21:5257)
 	ld c, $a
 	ld e, $20
 	ld a, $1
-	call Func_84080
-Func_85260: ; 85260 (21:5260)
+	call Func_80080_21
+Func_81260_21: ; 85260 (21:5260)
 	ld a, $3
-	call Func_84ee6
+	call Func_80ee6_21
 	ld e, $4
 	ld hl, Data_85140
-	call Func_840fb
-	call Func_8401c
-Func_85270: ; 85270 (21:5270)
+	call Func_800fb_21
+	call Func_8001c_21
+Func_81270_21: ; 85270 (21:5270)
 	pop bc
 	pop bc
 	pop bc
@@ -148961,174 +144340,174 @@ Data_8529c: ; 8529c
 Data_852a4: ; 852a4
 	dr $852a4, $852ac
 
-Func_852ac: ; 852ac (21:52ac)
+Func_812ac_21: ; 852ac (21:52ac)
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld c, $1
 	ld e, $1
 	ld a, $5
-	call Func_84176
+	call Func_80176_21
 	ld e, $f
 	ld a, $17
-	call Func_841e4
+	call Func_801e4_21
 	ld a, $28
-	call Func_84efe
-	call Func_841d5
+	call Func_80efe_21
+	call Func_801d5_21
 	ld hl, $3c
-	call Func_8468f
-	call Func_8418b
+	call Func_8068f_21
+	call Func_8018b_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $1a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld bc, Data_85274
 	ld e, BANK(Data_85274)
 	xor a
-	call Func_841f7
+	call Func_801f7_21
 	ld bc, Data_85278
 	ld e, BANK(Data_85278)
 	ld a, $1
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $2f
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $30
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $31
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $32
-	call Func_844a9
+	call Func_804a9_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $33
-	call Func_844a9
+	call Func_804a9_21
 	ld a, $18
-	call Func_84ee6
+	call Func_80ee6_21
 	ld e, $0
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $0
 	ld a, $1
-	call Func_84095
+	call Func_80095_21
 	ld bc, Data_8527c
 	ld e, BANK(Data_8527c)
 	ld a, $2
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld a, $33
-	call Func_84efe
+	call Func_80efe_21
 	ld bc, Data_85286
 	ld e, BANK(Data_85286)
 	ld a, $1
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $1
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $3
 	ld a, $1
-	call Func_84095
+	call Func_80095_21
 	ld bc, Data_8528a
 	ld e, BANK(Data_8528a)
 	ld a, $2
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $2
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	ld a, $1
-	call Func_84095
+	call Func_80095_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $1
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $34
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $35
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $36
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $37
-	call Func_844a9
+	call Func_804a9_21
 	ld a, $a
-	call Func_84ff1
+	call Func_80ff1_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $1
-	call Func_8501a
+	call Func_8101a_21
 	ld a, $18
-	call Func_84ee6
+	call Func_80ee6_21
 	ld bc, Data_85292
 	ld e, BANK(Data_85292)
 	ld a, $2
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	ld a, $2
-	call Func_8413d
+	call Func_8013d_21
 	ld bc, Data_85280
 	ld e, BANK(Data_85280)
 	xor a
-	call Func_841f7
+	call Func_801f7_21
 	ld bc, Data_8528e
 	ld e, BANK(Data_8528e)
 	ld a, $1
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld a, $33
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $3
 	ld a, $1
-	call Func_84095
+	call Func_80095_21
 	ld c, $1
 	ld de, Data_85298
 	ld a, BANK(Data_85298)
-	call Func_8463e
+	call Func_8063e_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld a, $2e
-	call Func_84efe
-	call Func_8420c
+	call Func_80efe_21
+	call Func_8020c_21
 	ld e, $2
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	ld a, $1
-	call Func_84095
+	call Func_80095_21
 	ld bc, Data_8529c
 	ld e, BANK(Data_8529c)
 	xor a
-	call Func_841f7
+	call Func_801f7_21
 	ld bc, Data_852a4
 	ld e, BANK(Data_852a4)
 	ld a, $1
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld a, $1
-	call Func_84677
+	call Func_80677_21
 	ld e, $2
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	ld a, $1
-	call Func_84095
+	call Func_80095_21
 	ld a, $5c
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $78
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $484
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $483
-	call Func_844a9
+	call Func_804a9_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $3
-	call Func_84ee6
+	call Func_80ee6_21
 	ret
 
 Data_85450:
@@ -149143,97 +144522,97 @@ Data_854a2: ; 854a2
 Data_854a6: ; 854a6
 	dr $854a6, $854aa
 
-Func_854aa:
+Func_814aa_21:
 	push af
 	ld a, e
 	or a
-	jp nz, Func_85570
+	jp nz, Func_81570_21
 	ld hl, $14
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_854c8
+	jp nz, Func_814c8_21
 	ld a, $69
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $44
-	call Func_844a9
-	jp Func_85570
+	call Func_804a9_21
+	jp Func_81570_21
 
-Func_854c8: ; 854c8 (21:54c8)
+Func_814c8_21: ; 854c8 (21:54c8)
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
-	jp nz, Func_8551c
+	jp nz, Func_8151c_21
 	ld hl, $45
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld de, Data_85572
 	ld hl, Data_85450
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_854eb
-	jp Func_85570
+	jp nz, Func_814eb_21
+	jp Func_81570_21
 
-Func_854eb: ; 854eb (21:54eb)
+Func_814eb_21: ; 854eb (21:54eb)
 	ld bc, Data_854a2
 	ld e, BANK(Data_854a2)
 	xor a
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	xor a
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $5
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $6
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85519
+	jp nz, Func_81519_21
 	ld a, $2
-	call Func_84c94
+	call Func_80c94_21
 	ld a, $d
-	call Func_84c94
-Func_85519: ; 85519 (21:5519)
-	jp Func_85570
+	call Func_80c94_21
+Func_81519_21: ; 85519 (21:5519)
+	jp Func_81570_21
 
-Func_8551c: ; 8551c (21:551c)
+Func_8151c_21: ; 8551c (21:551c)
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $1
-	jp nz, Func_85570
+	jp nz, Func_81570_21
 	ld hl, $46
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld de, Data_8557a
 	ld hl, Data_85479
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_85540
-	jp Func_85570
+	jp nz, Func_81540_21
+	jp Func_81570_21
 
-Func_85540: ; 85540 (21:5540)
+Func_81540_21: ; 85540 (21:5540)
 	ld bc, Data_854a6
 	ld e, BANK(Data_854a6)
 	ld a, $1
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	ld a, $1
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $6
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $5
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85570
+	jp nz, Func_81570_21
 	ld a, $2
-	call Func_84c94
+	call Func_80c94_21
 	ld a, $d
-	call Func_84c94
-Func_85570: ; 85570 (21:5570)
+	call Func_80c94_21
+Func_81570_21: ; 85570 (21:5570)
 	pop bc
 	ret
 
@@ -149255,126 +144634,126 @@ Data_855d4: ; 855d4
 Data_855d8: ; 855d8
 	dr $855d8, $855dc
 
-Func_855dc:
+Func_815dc_21:
 	push af
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
 	ld a, e
 	cp $2
-	jp nz, Func_856d9
+	jp nz, Func_816d9_21
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
-	jp nz, Func_8560d
+	jp nz, Func_8160d_21
 	ld hl, $6
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_8560a
+	jp nz, Func_8160a_21
 	ld e, $3
 	ld a, $1
-	call Func_84095
+	call Func_80095_21
 	ld a, $1
-	call Func_84677
+	call Func_80677_21
 	ld hl, sp+$0
 	ld [hl], $1
-Func_8560a: ; 8560a (21:560a)
-	jp Func_8562e
+Func_8160a_21: ; 8560a (21:560a)
+	jp Func_8162e_21
 
-Func_8560d: ; 8560d (21:560d)
+Func_8160d_21: ; 8560d (21:560d)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $4
-	jp nz, Func_8562e
+	jp nz, Func_8162e_21
 	ld hl, $5
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_8562e
+	jp nz, Func_8162e_21
 	ld e, $1
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld a, $3
-	call Func_84677
+	call Func_80677_21
 	ld hl, sp+$0
 	ld [hl], $1
-Func_8562e: ; 8562e (21:562e)
+Func_8162e_21: ; 8562e (21:562e)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $1
-	jp nz, Func_856d9
+	jp nz, Func_816d9_21
 	ld hl, $47
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
-	jp nz, Func_8568d
+	jp nz, Func_8168d_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld de, Data_856dc
 	ld hl, Data_855ab
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_8565a
-	jp Func_856d9
+	jp nz, Func_8165a_21
+	jp Func_816d9_21
 
-Func_8565a: ; 8565a (21:565a)
+Func_8165a_21: ; 8565a (21:565a)
 	ld bc, Data_855d8
 	ld e, BANK(Data_855d8)
 	ld a, $1
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	ld a, $1
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $6
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $5
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_8568a
+	jp nz, Func_8168a_21
 	ld a, $2
-	call Func_84c94
+	call Func_80c94_21
 	ld a, $d
-	call Func_84c94
-Func_8568a: ; 8568a (21:568a)
-	jp Func_856d9
+	call Func_80c94_21
+Func_8168a_21: ; 8568a (21:568a)
+	jp Func_816d9_21
 
-Func_8568d: ; 8568d (21:568d)
+Func_8168d_21: ; 8568d (21:568d)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $4
-	jp nz, Func_856d9
+	jp nz, Func_816d9_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld de, Data_856e4
 	ld hl, Data_85582
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_856ab
-	jp Func_856d9
+	jp nz, Func_816ab_21
+	jp Func_816d9_21
 
-Func_856ab: ; 856ab (21:56ab)
+Func_816ab_21: ; 856ab (21:56ab)
 	ld bc, Data_855d4
 	ld e, BANK(Data_855d4)
 	xor a
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	xor a
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $5
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $6
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_856d9
+	jp nz, Func_816d9_21
 	ld a, $2
-	call Func_84c94
+	call Func_80c94_21
 	ld a, $d
-	call Func_84c94
-Func_856d9: ; 856d9 (21:56d9)
+	call Func_80c94_21
+Func_816d9_21: ; 856d9 (21:56d9)
 	pop bc
 	pop bc
 	ret
@@ -149397,109 +144776,109 @@ Data_8573e: ; 8573e
 Data_85742: ; 85742
 	dr $85742, $85746
 
-Func_85746:
+Func_81746_21:
 	push af
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
 	ld a, e
 	cp $2
-	jp nz, Func_8581b
+	jp nz, Func_8181b_21
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $2
-	jp nz, Func_85777
+	jp nz, Func_81777_21
 	ld hl, $6
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85774
+	jp nz, Func_81774_21
 	ld e, $3
 	ld a, $1
-	call Func_84095
+	call Func_80095_21
 	ld a, $1
-	call Func_84677
+	call Func_80677_21
 	ld hl, sp+$0
 	ld [hl], $1
-Func_85774: ; 85774 (21:5774)
-	jp Func_85798
+Func_81774_21: ; 85774 (21:5774)
+	jp Func_81798_21
 
-Func_85777: ; 85777 (21:5777)
+Func_81777_21: ; 85777 (21:5777)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
-	jp nz, Func_85798
+	jp nz, Func_81798_21
 	ld hl, $5
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85798
+	jp nz, Func_81798_21
 	ld e, $1
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld a, $3
-	call Func_84677
+	call Func_80677_21
 	ld hl, sp+$0
 	ld [hl], $1
-Func_85798: ; 85798 (21:5798)
+Func_81798_21: ; 85798 (21:5798)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $1
-	jp nz, Func_8581b
+	jp nz, Func_8181b_21
 	ld hl, $47
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $2
-	jp nz, Func_857e3
+	jp nz, Func_817e3_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld de, Data_8581e
 	ld hl, Data_85715
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_857c4
-	jp Func_8581b
+	jp nz, Func_817c4_21
+	jp Func_8181b_21
 
-Func_857c4: ; 857c4 (21:57c4)
+Func_817c4_21: ; 857c4 (21:57c4)
 	ld bc, Data_85742
 	ld e, BANK(Data_85742)
 	ld a, $1
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	ld a, $1
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $6
-	call Func_8461b
-	jp Func_8581b
+	call Func_8061b_21
+	jp Func_8181b_21
 
-Func_857e3: ; 857e3 (21:57e3)
+Func_817e3_21: ; 857e3 (21:57e3)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
-	jp nz, Func_8581b
+	jp nz, Func_8181b_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld de, Data_85826
 	ld hl, Data_856ec
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_85801
-	jp Func_8581b
+	jp nz, Func_81801_21
+	jp Func_8181b_21
 
-Func_85801: ; 85801 (21:5801)
+Func_81801_21: ; 85801 (21:5801)
 	ld bc, Data_8573e
 	ld e, BANK(Data_8573e)
 	xor a
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	xor a
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $5
-	call Func_8461b
-Func_8581b: ; 8581b (21:581b)
+	call Func_8061b_21
+Func_8181b_21: ; 8581b (21:581b)
 	pop bc
 	pop bc
 	ret
@@ -149513,113 +144892,113 @@ Data_85826:
 Data_8582e:
 	dr $8582e, $85832
 
-Func_85832:
+Func_81832_21:
 	ld a, e
 	or a
-	jp nz, Func_858cf
+	jp nz, Func_818cf_21
 	ld a, $f
-	call Func_84e6d
+	call Func_80e6d_21
 	cp $ff
-	jp nz, Func_8585f
+	jp nz, Func_8185f_21
 	ld a, $41
-	call Func_84e6d
+	call Func_80e6d_21
 	cp $ff
-	jp nz, Func_8585f
+	jp nz, Func_8185f_21
 	ld a, $50
-	call Func_84e6d
+	call Func_80e6d_21
 	cp $ff
-	jp nz, Func_8585f
+	jp nz, Func_8185f_21
 	ld a, $64
-	call Func_84e6d
+	call Func_80e6d_21
 	cp $ff
-	jp z, Func_858c9
-Func_8585f: ; 8585f (21:585f)
+	jp z, Func_818c9_21
+Func_8185f_21: ; 8585f (21:585f)
 	ld a, [$c790]
 	or a
-	jp z, Func_858c0
+	jp z, Func_818c0_21
 	ld a, [$c790]
 	cp $6
-	jp nc, Func_858c0
+	jp nc, Func_818c0_21
 	ld hl, $32d
-	call Func_844ba
+	call Func_804ba_21
 	or a
-	jp nz, Func_858bd
+	jp nz, Func_818bd_21
 	ld c, $1
 	ld de, Data_8582e
 	ld a, BANK(Data_8582e)
-	call Func_8463e
-	call Func_8420c
+	call Func_8063e_21
+	call Func_8020c_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $a
-	call Func_84ee6
+	call Func_80ee6_21
 	xor a
-	call Func_84653
+	call Func_80653_21
 	ld c, $1
 	ld e, $1
 	ld a, $b
-	call Func_84176
+	call Func_80176_21
 	ld a, $44
-	call Func_84efe
-	call Func_841d5
-	call Func_8418b
+	call Func_80efe_21
+	call Func_801d5_21
+	call Func_8018b_21
 	ld a, $4
-	call Func_84cc6
+	call Func_80cc6_21
 	ld a, $1
-	call Func_84677
+	call Func_80677_21
 	ld l, $b
 	push hl
 	ld c, $25
 	ld e, $0
 	ld a, $1e
-	call Func_84dff
+	call Func_80dff_21
 	pop bc
-Func_858bd: ; 858bd (21:58bd)
-	jp Func_858c6
+Func_818bd_21: ; 858bd (21:58bd)
+	jp Func_818c6_21
 
-Func_858c0: ; 858c0 (21:58c0)
+Func_818c0_21: ; 858c0 (21:58c0)
 	ld hl, $377
-	call Func_84498
-Func_858c6: ; 858c6 (21:58c6)
-	jp Func_858cf
+	call Func_80498_21
+Func_818c6_21: ; 858c6 (21:58c6)
+	jp Func_818cf_21
 
-Func_858c9: ; 858c9 (21:58c9)
+Func_818c9_21: ; 858c9 (21:58c9)
 	ld hl, $376
-	call Func_84498
-Func_858cf: ; 858cf (21:58cf)
+	call Func_80498_21
+Func_818cf_21: ; 858cf (21:58cf)
 	ret
 
 Data_858d0:
 	dr $858d0, $858f9
 
-Func_858f9:
+Func_818f9_21:
 	push af
 	ld a, e
 	or a
-	jp nz, Func_8592e
+	jp nz, Func_8192e_21
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $1d8
-	call Func_844ba
+	call Func_804ba_21
 	or a
-	jp nz, Func_85928
+	jp nz, Func_81928_21
 	ld de, Data_85930
 	ld hl, Data_858d0
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_8591f
-	jp Func_8592e
+	jp nz, Func_8191f_21
+	jp Func_8192e_21
 
-Func_8591f: ; 8591f (21:591f)
+Func_8191f_21: ; 8591f (21:591f)
 	ld hl, $2e5
-	call Func_84498
-	jp Func_8592e
+	call Func_80498_21
+	jp Func_8192e_21
 
-Func_85928: ; 85928 (21:5928)
+Func_81928_21: ; 85928 (21:5928)
 	ld hl, $2e4
-	call Func_84498
-Func_8592e: ; 8592e (21:592e)
+	call Func_80498_21
+Func_8192e_21: ; 8592e (21:592e)
 	pop bc
 	ret
 
@@ -149641,12 +145020,12 @@ Data_859c9: ; 859c9
 Data_85a0f: ; 85a0f
 	dr $85a0f, $85a1d
 
-Func_85a1d:
+Func_81a1d_21:
 	push bc
 	push bc
 	push bc
 	ld hl, sp+$0
-	call Func_84f94
+	call Func_80f94_21
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -149663,92 +145042,92 @@ Func_85a1d:
 	ld bc, $474
 	ld de, $168
 	call CompareHLtoDE
-	jp c, Func_85a4e
+	jp c, Func_81a4e_21
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp c, Func_85a59
-Func_85a4e: ; 85a4e (21:5a4e)
+	jp c, Func_81a59_21
+Func_81a4e_21: ; 85a4e (21:5a4e)
 	ld e, $1
 	ld hl, $38
-	call Func_8461b
-	jp Func_85a61
+	call Func_8061b_21
+	jp Func_81a61_21
 
-Func_85a59: ; 85a59 (21:5a59)
+Func_81a59_21: ; 85a59 (21:5a59)
 	ld e, $0
 	ld hl, $38
-	call Func_8461b
-Func_85a61: ; 85a61 (21:5a61)
+	call Func_8061b_21
+Func_81a61_21: ; 85a61 (21:5a61)
 	ld a, $1
 	ld [$c7de], a
 	ld e, $5
 	ld hl, Data_85992
-	call Func_8403a
+	call Func_8003a_21
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85aaf
+	jp nz, Func_81aaf_21
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85aaf
+	jp nz, Func_81aaf_21
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_85938
-	call Func_84d24
+	call Func_80d24_21
 	ld a, $8
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85aa8
+	jp nz, Func_81aa8_21
 	ld a, $1
 	ld [$c7da], a
-	jp Func_85aac
+	jp Func_81aac_21
 
-Func_85aa8: ; 85aa8 (21:5aa8)
+Func_81aa8_21: ; 85aa8 (21:5aa8)
 	xor a
 	ld [$c7da], a
-Func_85aac: ; 85aac (21:5aac)
-	jp Func_85abc
+Func_81aac_21: ; 85aac (21:5aac)
+	jp Func_81abc_21
 
-Func_85aaf: ; 85aaf (21:5aaf)
+Func_81aaf_21: ; 85aaf (21:5aaf)
 	ld e, $5
 	ld hl, Data_859c9
-	call Func_840fb
+	call Func_800fb_21
 	ld a, $11
-	call Func_84ee6
-Func_85abc: ; 85abc (21:5abc)
+	call Func_80ee6_21
+Func_81abc_21: ; 85abc (21:5abc)
 	ld a, [$c797]
 	cp $7
-	jp c, Func_85afc
+	jp c, Func_81afc_21
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85ada
+	jp nz, Func_81ada_21
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp z, Func_85afc
-Func_85ada: ; 85ada (21:5ada)
+	jp z, Func_81afc_21
+Func_81ada_21: ; 85ada (21:5ada)
 	ld e, $0
 	ld a, $4
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, Data_85a0f
-	call Func_840fb
+	call Func_800fb_21
 	ld hl, $14
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85afc
+	jp nz, Func_81afc_21
 	ld de, Data_8598e
 	ld a, $5
-	call Func_84150
-Func_85afc: ; 85afc (21:5afc)
-	call Func_8401c
+	call Func_80150_21
+Func_81afc_21: ; 85afc (21:5afc)
+	call Func_8001c_21
 	ld hl, $2c4
-	call Func_84f72
+	call Func_80f72_21
 	pop bc
 	pop bc
 	pop bc
@@ -149757,37 +145136,37 @@ Func_85afc: ; 85afc (21:5afc)
 Data_85b09:
 	dr $85b09, $85b17
 
-Func_85b17:
+Func_81b17_21:
 	push af
 	ld a, e
 	or a
-	jp nz, Func_85b6d
+	jp nz, Func_81b6d_21
 	ld hl, $c0
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85b52
+	jp nz, Func_81b52_21
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $38
-	call Func_844a9
+	call Func_804a9_21
 	ld a, $2a
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $479
-	call Func_84498
+	call Func_80498_21
 	ld c, $0
 	ld e, $1
 	ld a, $17
-	call Func_84d4d
+	call Func_80d4d_21
 	ld e, $1
 	ld hl, $c0
-	call Func_8461b
-	jp Func_85b6d
+	call Func_8061b_21
+	jp Func_81b6d_21
 
-Func_85b52: ; 85b52 (21:5b52)
+Func_81b52_21: ; 85b52 (21:5b52)
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $c797
 	ld l, [hl]
 	ld h, $0
@@ -149801,76 +145180,76 @@ Func_85b52: ; 85b52 (21:5b52)
 	push hl
 	pop de
 	pop hl
-	call Func_84498
-Func_85b6d: ; 85b6d (21:5b6d)
+	call Func_80498_21
+Func_81b6d_21: ; 85b6d (21:5b6d)
 	pop bc
 	ret
 
 Data_85b6f:
 	dr $85b6f, $85b98
 
-Func_85b98:
+Func_81b98_21:
 	push af
 	ld a, e
 	or a
-	jp nz, Func_85c1a
+	jp nz, Func_81c1a_21
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $c0
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85c14
+	jp nz, Func_81c14_21
 	ld hl, $64
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85c0b
+	jp nz, Func_81c0b_21
 	ld hl, $39
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
-	jp nz, Func_85c02
+	jp nz, Func_81c02_21
 	ld de, Data_85c1c
 	ld hl, Data_85b6f
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_85bd9
-	jp Func_85c1a
+	jp nz, Func_81bd9_21
+	jp Func_81c1a_21
 
-Func_85bd9: ; 85bd9 (21:5bd9)
+Func_81bd9_21: ; 85bd9 (21:5bd9)
 	ld e, $1
 	ld hl, $64
-	call Func_8461b
+	call Func_8061b_21
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $342
-	call Func_84498
+	call Func_80498_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $3a
-	call Func_844a9
-	jp Func_85c08
+	call Func_804a9_21
+	jp Func_81c08_21
 
-Func_85c02: ; 85c02 (21:5c02)
+Func_81c02_21: ; 85c02 (21:5c02)
 	ld hl, $3b
-	call Func_844a9
-Func_85c08: ; 85c08 (21:5c08)
-	jp Func_85c11
+	call Func_804a9_21
+Func_81c08_21: ; 85c08 (21:5c08)
+	jp Func_81c11_21
 
-Func_85c0b: ; 85c0b (21:5c0b)
+Func_81c0b_21: ; 85c0b (21:5c0b)
 	ld hl, $168
-	call Func_844a9
-Func_85c11: ; 85c11 (21:5c11)
-	jp Func_85c1a
+	call Func_804a9_21
+Func_81c11_21: ; 85c11 (21:5c11)
+	jp Func_81c1a_21
 
-Func_85c14: ; 85c14 (21:5c14)
+Func_81c14_21: ; 85c14 (21:5c14)
 	ld hl, $478
-	call Func_84498
-Func_85c1a: ; 85c1a (21:5c1a)
+	call Func_80498_21
+Func_81c1a_21: ; 85c1a (21:5c1a)
 	pop bc
 	ret
 
@@ -149889,12 +145268,12 @@ Data_85c82: ; 85c82
 Data_85c98: ; 85c98
 	dr $85c98, $85cde
 
-Func_85cde:
+Func_81cde_21:
 	push bc
 	push bc
 	push bc
 	ld hl, sp+$0
-	call Func_84f94
+	call Func_80f94_21
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -149911,77 +145290,77 @@ Func_85cde:
 	ld bc, $474
 	ld de, $168
 	call CompareHLtoDE
-	jp c, Func_85d0f
+	jp c, Func_81d0f_21
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp c, Func_85d1a
-Func_85d0f: ; 85d0f (21:5d0f)
+	jp c, Func_81d1a_21
+Func_81d0f_21: ; 85d0f (21:5d0f)
 	ld e, $1
 	ld hl, $38
-	call Func_8461b
-	jp Func_85d22
+	call Func_8061b_21
+	jp Func_81d22_21
 
-Func_85d1a: ; 85d1a (21:5d1a)
+Func_81d1a_21: ; 85d1a (21:5d1a)
 	ld e, $0
 	ld hl, $38
-	call Func_8461b
-Func_85d22: ; 85d22 (21:5d22)
+	call Func_8061b_21
+Func_81d22_21: ; 85d22 (21:5d22)
 	ld a, $7
 	ld [$c7de], a
 	ld e, $2
 	ld hl, Data_85c82
-	call Func_8403a
+	call Func_8003a_21
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85d70
+	jp nz, Func_81d70_21
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85d70
+	jp nz, Func_81d70_21
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_85c28
-	call Func_84d24
+	call Func_80d24_21
 	ld a, $8
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85d69
+	jp nz, Func_81d69_21
 	ld a, $1
 	ld [$c7da], a
-	jp Func_85d6d
+	jp Func_81d6d_21
 
-Func_85d69: ; 85d69 (21:5d69)
+Func_81d69_21: ; 85d69 (21:5d69)
 	xor a
 	ld [$c7da], a
-Func_85d6d: ; 85d6d (21:5d6d)
-	jp Func_85d7d
+Func_81d6d_21: ; 85d6d (21:5d6d)
+	jp Func_81d7d_21
 
-Func_85d70: ; 85d70 (21:5d70)
+Func_81d70_21: ; 85d70 (21:5d70)
 	ld e, $5
 	ld hl, Data_85c98
-	call Func_840fb
+	call Func_800fb_21
 	ld a, $11
-	call Func_84ee6
-Func_85d7d: ; 85d7d (21:5d7d)
+	call Func_80ee6_21
+Func_81d7d_21: ; 85d7d (21:5d7d)
 	ld hl, $14
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85d97
+	jp nz, Func_81d97_21
 	ld a, [$c797]
 	cp $7
-	jp nz, Func_85d97
+	jp nz, Func_81d97_21
 	ld de, Data_85c7e
 	ld a, $3
-	call Func_84150
-Func_85d97: ; 85d97 (21:5d97)
-	call Func_8401c
+	call Func_80150_21
+Func_81d97_21: ; 85d97 (21:5d97)
+	call Func_8001c_21
 	ld hl, $2ca
-	call Func_84f72
+	call Func_80f72_21
 	pop bc
 	pop bc
 	pop bc
@@ -149990,77 +145369,77 @@ Func_85d97: ; 85d97 (21:5d97)
 Data_85da4:
 	dr $85da4, $85dcd
 
-Func_85dcd:
+Func_81dcd_21:
 	push af
 	ld a, e
 	or a
-	jp nz, Func_85e60
+	jp nz, Func_81e60_21
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $c0
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
-	jp nz, Func_85e5a
+	jp nz, Func_81e5a_21
 	ld a, [$c797]
 	cp $6
-	jp c, Func_85e51
+	jp c, Func_81e51_21
 	ld hl, $6a
-	call Func_8462e
+	call Func_8062e_21
 	or a
-	jp nz, Func_85e48
+	jp nz, Func_81e48_21
 	ld hl, $221
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
-	jp nz, Func_85e3f
+	jp nz, Func_81e3f_21
 	ld de, Data_85e62
 	ld hl, Data_85da4
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
-	jp nz, Func_85e16
-	jp Func_85e60
+	jp nz, Func_81e16_21
+	jp Func_81e60_21
 
-Func_85e16: ; 85e16 (21:5e16)
+Func_81e16_21: ; 85e16 (21:5e16)
 	ld e, $1
 	ld hl, $6a
-	call Func_8461b
+	call Func_8061b_21
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $342
-	call Func_84498
+	call Func_80498_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $222
-	call Func_844a9
-	jp Func_85e45
+	call Func_804a9_21
+	jp Func_81e45_21
 
-Func_85e3f: ; 85e3f (21:5e3f)
+Func_81e3f_21: ; 85e3f (21:5e3f)
 	ld hl, $25e
-	call Func_844a9
-Func_85e45: ; 85e45 (21:5e45)
-	jp Func_85e4e
+	call Func_804a9_21
+Func_81e45_21: ; 85e45 (21:5e45)
+	jp Func_81e4e_21
 
-Func_85e48: ; 85e48 (21:5e48)
+Func_81e48_21: ; 85e48 (21:5e48)
 	ld hl, $170
-	call Func_844a9
-Func_85e4e: ; 85e4e (21:5e4e)
-	jp Func_85e57
+	call Func_804a9_21
+Func_81e4e_21: ; 85e4e (21:5e4e)
+	jp Func_81e57_21
 
-Func_85e51: ; 85e51 (21:5e51)
+Func_81e51_21: ; 85e51 (21:5e51)
 	ld hl, $220
-	call Func_844a9
-Func_85e57: ; 85e57 (21:5e57)
-	jp Func_85e60
+	call Func_804a9_21
+Func_81e57_21: ; 85e57 (21:5e57)
+	jp Func_81e60_21
 
-Func_85e5a: ; 85e5a (21:5e5a)
+Func_81e5a_21: ; 85e5a (21:5e5a)
 	ld hl, $478
-	call Func_84498
-Func_85e60: ; 85e60 (21:5e60)
+	call Func_80498_21
+Func_81e60_21: ; 85e60 (21:5e60)
 	pop bc
 	ret
 
@@ -150082,12 +145461,12 @@ Data_85f26: ; 85f26
 Data_85f42: ; 85f42
 	dr $85f42, $85f6c
 
-Func_85f6c:
+Func_81f6c_21:
 	push bc
 	push bc
 	push bc
 	ld hl, sp+$0
-	call Func_84f94
+	call Func_80f94_21
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -150104,56 +145483,56 @@ Func_85f6c:
 	ld bc, $474
 	ld de, $168
 	call CompareHLtoDE
-	jp c, Func_85f9d
+	jp c, Func_81f9d_21
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp c, Func_85fa8
-Func_85f9d: ; 85f9d (21:5f9d)
+	jp c, Func_81fa8_21
+Func_81f9d_21: ; 85f9d (21:5f9d)
 	ld e, $1
 	ld hl, $38
-	call Func_8461b
-	jp Func_85fb0
+	call Func_8061b_21
+	jp Func_81fb0_21
 
-Func_85fa8: ; 85fa8 (21:5fa8)
+Func_81fa8_21: ; 85fa8 (21:5fa8)
 	ld e, $0
 	ld hl, $38
-	call Func_8461b
-Func_85fb0: ; 85fb0 (21:5fb0)
+	call Func_8061b_21
+Func_81fb0_21: ; 85fb0 (21:5fb0)
 	ld a, [$c798]
 	or a
-	jp nz, Func_85fd8
+	jp nz, Func_81fd8_21
 	ld a, [$c2d8]
 	cp $5
-	jp nz, Func_85fc9
+	jp nz, Func_81fc9_21
 	ld a, [$c7de]
 	inc a
 	ld [$c7de], a
-	jp Func_85fd8
+	jp Func_81fd8_21
 
-Func_85fc9: ; 85fc9 (21:5fc9)
+Func_81fc9_21: ; 85fc9 (21:5fc9)
 	ld a, [$c2d8]
 	cp $4
-	jp nz, Func_85fd8
+	jp nz, Func_81fd8_21
 	ld a, [$c7de]
 	dec a
 	ld [$c7de], a
-Func_85fd8: ; 85fd8 (21:5fd8)
+Func_81fd8_21: ; 85fd8 (21:5fd8)
 	ld e, $3
 	ld hl, Data_85f05
-	call Func_8403a
+	call Func_8003a_21
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86014
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86014
 	ld a, $8
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_8600d
 	ld a, $1
@@ -150168,61 +145547,61 @@ Func_86011: ; 86011 (21:6011)
 
 Func_86014: ; 86014 (21:6014)
 	ld a, $11
-	call Func_84ee6
+	call Func_80ee6_21
 Func_86019: ; 86019 (21:6019)
-	call Func_8401c
+	call Func_8001c_21
 	ld a, [$c7de]
 	cp $5
 	jp z, Func_86060
 	cp $3
 	jp nz, Func_86094
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_8604f
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_8604f
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_85e6d
-	call Func_84d24
+	call Func_80d24_21
 	jp Func_86057
 
 Func_8604f: ; 8604f (21:604f)
 	ld e, $2
 	ld hl, Data_85f26
-	call Func_840fb
+	call Func_800fb_21
 Func_86057: ; 86057 (21:6057)
 	ld hl, $2c6
-	call Func_84f72
+	call Func_80f72_21
 	jp Func_86094
 
 Func_86060: ; 86060 (21:6060)
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86086
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86086
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_85eb3
-	call Func_84d24
+	call Func_80d24_21
 	jp Func_8608e
 
 Func_86086: ; 86086 (21:6086)
 	ld e, $3
 	ld hl, Data_85f42
-	call Func_840fb
+	call Func_800fb_21
 Func_8608e: ; 8608e (21:608e)
 	ld hl, $2c8
-	call Func_84f72
+	call Func_80f72_21
 Func_86094: ; 86094 (21:6094)
 	pop bc
 	pop bc
@@ -150239,24 +145618,24 @@ Func_860c1:
 	jp nz, Func_86143
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $c0
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_8613d
 	ld hl, $66
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_86134
 	ld hl, $40
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_8612b
 	ld de, Data_86145
 	ld hl, Data_86098
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_86102
 	jp Func_86143
@@ -150264,35 +145643,35 @@ Func_860c1:
 Func_86102: ; 86102 (21:6102)
 	ld e, $1
 	ld hl, $66
-	call Func_8461b
+	call Func_8061b_21
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $342
-	call Func_84498
+	call Func_80498_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $41
-	call Func_844a9
+	call Func_804a9_21
 	jp Func_86131
 
 Func_8612b: ; 8612b (21:612b)
 	ld hl, $42
-	call Func_844a9
+	call Func_804a9_21
 Func_86131: ; 86131 (21:6131)
 	jp Func_8613a
 
 Func_86134: ; 86134 (21:6134)
 	ld hl, $16d
-	call Func_844a9
+	call Func_804a9_21
 Func_8613a: ; 8613a (21:613a)
 	jp Func_86143
 
 Func_8613d: ; 8613d (21:613d)
 	ld hl, $478
-	call Func_84498
+	call Func_80498_21
 Func_86143: ; 86143 (21:6143)
 	pop bc
 	ret
@@ -150310,24 +145689,24 @@ Func_8617b:
 	jp nz, Func_861fd
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $c0
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_861f7
 	ld hl, $68
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_861ee
 	ld hl, $21a
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_861e5
 	ld de, Data_861ff
 	ld hl, Data_86152
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_861bc
 	jp Func_861fd
@@ -150335,35 +145714,35 @@ Func_8617b:
 Func_861bc: ; 861bc (21:61bc)
 	ld e, $1
 	ld hl, $68
-	call Func_8461b
+	call Func_8061b_21
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $342
-	call Func_84498
+	call Func_80498_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $21b
-	call Func_844a9
+	call Func_804a9_21
 	jp Func_861eb
 
 Func_861e5: ; 861e5 (21:61e5)
 	ld hl, Func_021c
-	call Func_844a9
+	call Func_804a9_21
 Func_861eb: ; 861eb (21:61eb)
 	jp Func_861f4
 
 Func_861ee: ; 861ee (21:61ee)
 	ld hl, $179
-	call Func_844a9
+	call Func_804a9_21
 Func_861f4: ; 861f4 (21:61f4)
 	jp Func_861fd
 
 Func_861f7: ; 861f7 (21:61f7)
 	ld hl, $478
-	call Func_84498
+	call Func_80498_21
 Func_861fd: ; 861fd (21:61fd)
 	pop bc
 	ret
@@ -150403,7 +145782,7 @@ Func_863fb:
 	push bc
 	push bc
 	ld hl, sp+$0
-	call Func_84f94
+	call Func_80f94_21
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -150428,13 +145807,13 @@ Func_863fb:
 Func_8642c: ; 8642c (21:642c)
 	ld e, $1
 	ld hl, $38
-	call Func_8461b
+	call Func_8061b_21
 	jp Func_8643f
 
 Func_86437: ; 86437 (21:6437)
 	ld e, $0
 	ld hl, $38
-	call Func_8461b
+	call Func_8061b_21
 Func_8643f: ; 8643f (21:643f)
 	ld a, [$c798]
 	or a
@@ -150456,17 +145835,17 @@ Func_86458: ; 86458 (21:6458)
 	ld [$c7de], a
 Func_86467: ; 86467 (21:6467)
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_8649b
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_8649b
 	ld a, $8
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_86494
 	ld a, $1
@@ -150481,7 +145860,7 @@ Func_86498: ; 86498 (21:6498)
 
 Func_8649b: ; 8649b (21:649b)
 	ld a, $11
-	call Func_84ee6
+	call Func_80ee6_21
 Func_864a0: ; 864a0 (21:64a0)
 	ld a, [$c7de]
 	cp $6
@@ -150492,88 +145871,88 @@ Func_864a0: ; 864a0 (21:64a0)
 	jp nz, Func_86575
 	ld e, $3
 	ld hl, Data_862fe
-	call Func_8403a
+	call Func_8003a_21
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_864e0
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_864e0
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_8620c
-	call Func_84d24
+	call Func_80d24_21
 	jp Func_864e8
 
 Func_864e0: ; 864e0 (21:64e0)
 	ld e, $3
 	ld hl, Data_86361
-	call Func_840fb
+	call Func_800fb_21
 Func_864e8: ; 864e8 (21:64e8)
-	call Func_8401c
+	call Func_8001c_21
 	ld hl, $2c5
-	call Func_84f72
+	call Func_80f72_21
 	jp Func_86575
 
 Func_864f4: ; 864f4 (21:64f4)
 	ld e, $3
 	ld hl, Data_8631f
-	call Func_8403a
+	call Func_8003a_21
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86522
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86522
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_86252
-	call Func_84d24
+	call Func_80d24_21
 	jp Func_8652a
 
 Func_86522: ; 86522 (21:6522)
 	ld e, $4
 	ld hl, Data_8638b
-	call Func_840fb
+	call Func_800fb_21
 Func_8652a: ; 8652a (21:652a)
-	call Func_8401c
+	call Func_8001c_21
 	ld hl, $2c7
-	call Func_84f72
+	call Func_80f72_21
 	jp Func_86575
 
 Func_86536: ; 86536 (21:6536)
 	ld e, $3
 	ld hl, Data_86340
-	call Func_8403a
+	call Func_8003a_21
 	ld hl, $38
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86564
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86564
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_86298
-	call Func_84d24
+	call Func_80d24_21
 	jp Func_8656c
 
 Func_86564: ; 86564 (21:6564)
 	ld e, $4
 	ld hl, Data_863c3
-	call Func_840fb
+	call Func_800fb_21
 Func_8656c: ; 8656c (21:656c)
-	call Func_8401c
+	call Func_8001c_21
 	ld hl, $2c9
-	call Func_84f72
+	call Func_80f72_21
 Func_86575: ; 86575 (21:6575)
 	pop bc
 	pop bc
@@ -150587,61 +145966,61 @@ Func_86579:
 	jp nz, Func_865fa
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $14
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_865f4
 	ld hl, $c5
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_865eb
 	ld a, $3b
-	call Func_84e5d
+	call Func_80e5d_21
 	cp $1
 	jp nz, Func_865e2
 	ld hl, $161
-	call Func_844ca
+	call Func_804ca_21
 	or a
 	jp nz, Func_865be
 	ld hl, $162
-	call Func_844a9
+	call Func_804a9_21
 	ld e, $1
 	ld hl, $c5
-	call Func_8461b
+	call Func_8061b_21
 	jp Func_865df
 
 Func_865be: ; 865be (21:65be)
 	ld hl, $164
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $3f5
-	call Func_84498
+	call Func_80498_21
 	ld e, $0
 	ld a, $7f
-	call Func_84d74
+	call Func_80d74_21
 	ld hl, $3f6
-	call Func_844a9
+	call Func_804a9_21
 	ld e, $1
 	ld hl, $c5
-	call Func_8461b
+	call Func_8061b_21
 Func_865df: ; 865df (21:65df)
 	jp Func_865e8
 
 Func_865e2: ; 865e2 (21:65e2)
 	ld hl, $160
-	call Func_844a9
+	call Func_804a9_21
 Func_865e8: ; 865e8 (21:65e8)
 	jp Func_865f1
 
 Func_865eb: ; 865eb (21:65eb)
 	ld hl, $16e
-	call Func_84498
+	call Func_80498_21
 Func_865f1: ; 865f1 (21:65f1)
 	jp Func_865fa
 
 Func_865f4: ; 865f4 (21:65f4)
 	ld hl, $16e
-	call Func_84498
+	call Func_80498_21
 Func_865fa: ; 865fa (21:65fa)
 	pop bc
 	ret
@@ -150656,24 +146035,24 @@ Func_86625:
 	jp nz, Func_866a7
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $c0
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_866a1
 	ld hl, $65
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_86698
 	ld hl, $3d
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_8668f
 	ld de, Data_866a9
 	ld hl, Data_865fc
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_86666
 	jp Func_866a7
@@ -150681,35 +146060,35 @@ Func_86625:
 Func_86666: ; 86666 (21:6666)
 	ld e, $1
 	ld hl, $65
-	call Func_8461b
+	call Func_8061b_21
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $342
-	call Func_84498
+	call Func_80498_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $3e
-	call Func_844a9
+	call Func_804a9_21
 	jp Func_86695
 
 Func_8668f: ; 8668f (21:668f)
 	ld hl, $3f
-	call Func_844a9
+	call Func_804a9_21
 Func_86695: ; 86695 (21:6695)
 	jp Func_8669e
 
 Func_86698: ; 86698 (21:6698)
 	ld hl, $16a
-	call Func_844a9
+	call Func_804a9_21
 Func_8669e: ; 8669e (21:669e)
 	jp Func_866a7
 
 Func_866a1: ; 866a1 (21:66a1)
 	ld hl, $478
-	call Func_84498
+	call Func_80498_21
 Func_866a7: ; 866a7 (21:66a7)
 	pop bc
 	ret
@@ -150727,24 +146106,24 @@ Func_866df:
 	jp nz, Func_86761
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $c0
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_8675b
 	ld hl, $67
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_86752
 	ld hl, $43
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_86749
 	ld de, Data_86763
 	ld hl, Data_866b6
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_86720
 	jp Func_86761
@@ -150752,35 +146131,35 @@ Func_866df:
 Func_86720: ; 86720 (21:6720)
 	ld e, $1
 	ld hl, $67
-	call Func_8461b
+	call Func_8061b_21
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $342
-	call Func_84498
+	call Func_80498_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $217
-	call Func_844a9
+	call Func_804a9_21
 	jp Func_8674f
 
 Func_86749: ; 86749 (21:6749)
 	ld hl, $219
-	call Func_844a9
+	call Func_804a9_21
 Func_8674f: ; 8674f (21:674f)
 	jp Func_86758
 
 Func_86752: ; 86752 (21:6752)
 	ld hl, $176
-	call Func_844a9
+	call Func_804a9_21
 Func_86758: ; 86758 (21:6758)
 	jp Func_86761
 
 Func_8675b: ; 8675b (21:675b)
 	ld hl, $478
-	call Func_84498
+	call Func_80498_21
 Func_86761: ; 86761 (21:6761)
 	pop bc
 	ret
@@ -150798,24 +146177,24 @@ Func_86799:
 	jp nz, Func_8681b
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $c0
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_86815
 	ld hl, $69
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_8680c
 	ld hl, $21d
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_86803
 	ld de, Data_8681d
 	ld hl, Data_86770
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_867da
 	jp Func_8681b
@@ -150823,35 +146202,35 @@ Func_86799:
 Func_867da: ; 867da (21:67da)
 	ld e, $1
 	ld hl, $69
-	call Func_8461b
+	call Func_8061b_21
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $342
-	call Func_84498
+	call Func_80498_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $21e
-	call Func_844a9
+	call Func_804a9_21
 	jp Func_86809
 
 Func_86803: ; 86803 (21:6803)
 	ld hl, $21f
-	call Func_844a9
+	call Func_804a9_21
 Func_86809: ; 86809 (21:6809)
 	jp Func_86812
 
 Func_8680c: ; 8680c (21:680c)
 	ld hl, $16f
-	call Func_844a9
+	call Func_804a9_21
 Func_86812: ; 86812 (21:6812)
 	jp Func_8681b
 
 Func_86815: ; 86815 (21:6815)
 	ld hl, $478
-	call Func_84498
+	call Func_80498_21
 Func_8681b: ; 8681b (21:681b)
 	pop bc
 	ret
@@ -150874,39 +146253,39 @@ Func_8688a:
 	ld c, $1
 	ld e, $6
 	ld a, $2
-	call Func_84f24
+	call Func_80f24_21
 	pop bc
 	ld l, $1
 	push hl
 	ld c, $1
 	ld e, $6
 	ld a, $f
-	call Func_84f24
+	call Func_80f24_21
 	pop bc
 	ld e, $2
 	ld hl, Data_8686e
-	call Func_840fb
+	call Func_800fb_21
 	ld e, $0
 	xor a
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, Data_8682b
-	call Func_8403a
+	call Func_8003a_21
 	ld hl, $7
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_868d5
 	ld e, $4
 	ld hl, Data_86836
-	call Func_840fb
-	call Func_8401c
+	call Func_800fb_21
+	call Func_8001c_21
 	call Func_86943
 	jp Func_868dd
 
 Func_868d5: ; 868d5 (21:68d5)
 	ld a, $7
-	call Func_84ee6
-	call Func_8401c
+	call Func_80ee6_21
+	call Func_8001c_21
 Func_868dd: ; 868dd (21:68dd)
 	ret
 
@@ -150951,158 +146330,158 @@ Data_8693f: ; 8693f
 
 Func_86943: ; 86943 (21:6943)
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $1
-	call Func_84ee6
-	call Func_8420c
+	call Func_80ee6_21
+	call Func_8020c_21
 	ld c, $1
 	ld de, Data_86907
 	ld a, BANK(Data_86907)
-	call Func_8463e
-	call Func_8420c
+	call Func_8063e_21
+	call Func_8020c_21
 	xor a
-	call Func_84677
+	call Func_80677_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
-	call Func_84176
+	call Func_80176_21
 	ld a, $68
-	call Func_84efe
-	call Func_841d5
+	call Func_80efe_21
+	call Func_801d5_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
-	call Func_84176
+	call Func_80176_21
 	ld a, $68
-	call Func_84efe
-	call Func_841d5
+	call Func_80efe_21
+	call Func_801d5_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
-	call Func_84176
+	call Func_80176_21
 	ld a, $68
-	call Func_84efe
-	call Func_841d5
+	call Func_80efe_21
+	call Func_801d5_21
 	ld hl, $48
-	call Func_844a9
+	call Func_804a9_21
 	ld bc, Data_8690f
 	ld e, BANK(Data_8690f)
 	ld a, $3
-	call Func_841f7
+	call Func_801f7_21
 	ld bc, Data_86913
 	ld e, BANK(Data_86913)
 	ld a, $4
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $3
 	ld a, $2
-	call Func_84095
+	call Func_80095_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $1a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $49
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $4a
-	call Func_844a9
+	call Func_804a9_21
 	ld e, $2
 	ld a, $2
-	call Func_84095
+	call Func_80095_21
 	ld hl, $4b
-	call Func_844a9
+	call Func_804a9_21
 	ld de, Data_86ac4
 	ld hl, Data_868de
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_869e7
 	ret
 
 Func_869e7: ; 869e7 (21:69e7)
 	ld a, $69
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $4c
-	call Func_844a9
+	call Func_804a9_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $18
-	call Func_84ee6
+	call Func_80ee6_21
 	ld bc, Data_86917
 	ld e, BANK(Data_86917)
 	ld a, $2
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld a, $1
-	call Func_84677
+	call Func_80677_21
 	ld bc, Data_8691f
 	ld e, BANK(Data_8691f)
 	ld a, $2
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	ld a, $2
-	call Func_8413d
+	call Func_8013d_21
 	xor a
-	call Func_84677
+	call Func_80677_21
 	ld bc, Data_86923
 	ld e, BANK(Data_86923)
 	ld a, $3
-	call Func_84688
+	call Func_80688_21
 	ld bc, Data_86927
 	ld e, BANK(Data_86927)
 	ld a, $4
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld bc, Data_8692d
 	ld e, BANK(Data_8692d)
 	ld a, $3
-	call Func_841f7
+	call Func_801f7_21
 	ld bc, Data_86931
 	ld e, BANK(Data_86931)
 	ld a, $4
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld a, $3
-	call Func_84677
+	call Func_80677_21
 	ld bc, Data_86935
 	ld e, BANK(Data_86935)
 	ld a, $3
-	call Func_841f7
+	call Func_801f7_21
 	ld bc, Data_8693b
 	ld e, BANK(Data_8693b)
 	ld a, $4
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $0
 	ld a, $3
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $0
 	ld a, $4
-	call Func_8413d
+	call Func_8013d_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $7
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld bc, Data_8693f
 	ld e, BANK(Data_8693f)
 	ld a, $5
-	call Func_84688
-	call Func_8420c
+	call Func_80688_21
+	call Func_8020c_21
 	ld e, $2
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	xor a
-	call Func_84677
+	call Func_80677_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld hl, $345
-	call Func_844a9
+	call Func_804a9_21
 	ld e, $1
 	ld hl, $7
-	call Func_8461b
+	call Func_8061b_21
 	ld a, $8
 	ld [$c790], a
 	ret
@@ -151116,30 +146495,30 @@ Func_86ac9:
 	jp nz, Func_86b0c
 	ld e, $1
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 	ld e, $0
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 	ld e, $3
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld e, $3
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 	ld e, $0
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 	ld e, $1
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	ld a, $5
-	call Func_84095
+	call Func_80095_21
 Func_86b0c: ; 86b0c (21:6b0c)
 	ret
 
@@ -151148,114 +146527,114 @@ Func_86b0d:
 	or a
 	jp nz, Func_86c00
 	ld hl, $d6
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_86bfa
 	ld a, $5e
-	call Func_84efe
+	call Func_80efe_21
 	ld c, $2
 	ld e, $2
 	ld a, $8
-	call Func_84176
+	call Func_80176_21
 	ld e, $4
 	ld a, $e
-	call Func_841e4
-	call Func_841d5
-	call Func_8418b
+	call Func_801e4_21
+	call Func_801d5_21
+	call Func_8018b_21
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $1
 	xor a
-	call Func_8413d
+	call Func_8013d_21
 	ld a, $60
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $3
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $0
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $1
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $3
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $0
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $1
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld a, $f
-	call Func_84ff1
+	call Func_80ff1_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $1
-	call Func_8501a
+	call Func_8101a_21
 	ld a, $14
-	call Func_84ee6
+	call Func_80ee6_21
 	xor a
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $1e
-	call Func_8468f
+	call Func_8068f_21
 	ld c, $8
 	ld e, $7
 	ld a, $6
-	call Func_84e8d
+	call Func_80e8d_21
 	ld e, $1
 	ld hl, $d6
-	call Func_8461b
+	call Func_8061b_21
 	ld a, $60
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $3
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $0
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $1
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $3
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $0
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $1
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld e, $2
 	xor a
-	call Func_84095
+	call Func_80095_21
 	ld a, $f
-	call Func_84ff1
+	call Func_80ff1_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $1
-	call Func_8501a
+	call Func_8101a_21
 	ld a, $7
-	call Func_84ee6
+	call Func_80ee6_21
 	xor a
-	call Func_8444b
+	call Func_8044b_21
 	ld e, $0
 	xor a
-	call Func_8413d
+	call Func_8013d_21
 	jp Func_86c00
 
 Func_86bfa: ; 86bfa (21:6bfa)
 	ld hl, $15c
-	call Func_84498
+	call Func_80498_21
 Func_86c00: ; 86c00 (21:6c00)
 	ret
 
@@ -151283,29 +146662,29 @@ Func_86ffa:
 	ld a, $4
 	ld [$c7e2], a
 	ld a, $4
-	call Func_84c94
+	call Func_80c94_21
 	call Func_870fa
 	ld hl, Func_870fa
-	call Func_84f11
+	call Func_80f11_21
 	ld e, $b
 	ld hl, Data_86c01
-	call Func_8403a
+	call Func_8003a_21
 	ld a, $5
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $2d
 	ld hl, Data_86d84
-	call Func_84d24
+	call Func_80d24_21
 	ld hl, $1
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_8703a
 	ld e, $12
 	ld hl, Data_86c7a
-	call Func_84ce7
+	call Func_80ce7_21
 Func_8703a: ; 8703a (21:703a)
 	ld e, $a
 	ld hl, Data_86cf8
-	call Func_840fb
+	call Func_800fb_21
 	ld a, [$c790]
 	or a
 	jp z, Func_8706e
@@ -151314,22 +146693,22 @@ Func_8703a: ; 8703a (21:703a)
 	jp nc, Func_8706e
 	ld de, Data_86cf0
 	xor a
-	call Func_84150
+	call Func_80150_21
 	ld de, Data_86cf4
 	ld a, $1
-	call Func_84150
+	call Func_80150_21
 	ld e, $0
 	ld a, $8
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $0
 	ld a, $9
-	call Func_8413d
+	call Func_8013d_21
 Func_8706e: ; 8706e (21:706e)
 	ld a, $3
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $1
-	call Func_84cc6
-	call Func_8401c
+	call Func_80cc6_21
+	call Func_8001c_21
 	ret
 
 Data_8707c:
@@ -151343,7 +146722,7 @@ Data_87088: ; 87088
 
 Func_870fa: ; 870fa (21:70fa)
 	ld hl, $1
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87122
 	xor a
@@ -151360,13 +146739,13 @@ Func_87105: ; 87105 (21:7105)
 	add hl, de
 	ld de, Data_87088
 	add hl, de
-	call Func_84d9b
+	call Func_80d9b_21
 	pop af
 	inc a
 	jp Func_87105
 
 Func_8711f: ; 8711f (21:711f)
-	call Func_84f02
+	call Func_80f02_21
 Func_87122: ; 87122 (21:7122)
 	ld a, [$c790]
 	or a
@@ -151375,10 +146754,10 @@ Func_87122: ; 87122 (21:7122)
 	cp $7
 	jp nc, Func_87140
 	ld hl, Data_8707c
-	call Func_84d9b
+	call Func_80d9b_21
 	ld hl, Data_87082
-	call Func_84d9b
-	call Func_84f02
+	call Func_80d9b_21
+	call Func_80f02_21
 Func_87140: ; 87140 (21:7140)
 	ret
 
@@ -151387,16 +146766,16 @@ Func_87141:
 	or a
 	jp nz, Func_87163
 	ld a, $5
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $1d5
-	call Func_84498
+	call Func_80498_21
 	ld hl, $f0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87163
 	ld e, $1
 	ld hl, $f0
-	call Func_8461b
+	call Func_8061b_21
 Func_87163: ; 87163 (21:7163)
 	ret
 
@@ -151415,46 +146794,46 @@ Data_871d4: ; 871d4
 Func_871fe:
 	ld e, $3
 	ld hl, Data_87164
-	call Func_8403a
+	call Func_8003a_21
 	ld a, $8
-	call Func_84ee6
+	call Func_80ee6_21
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_8723b
 	ld a, $1
 	ld [$c7da], a
-	call Func_8401c
+	call Func_8001c_21
 	ld hl, $2d
-	call Func_844a9
+	call Func_804a9_21
 	call Func_8737a
 	ld hl, $f0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87238
 	ld e, $1
 	ld hl, $f0
-	call Func_8461b
+	call Func_8061b_21
 Func_87238: ; 87238 (21:7238)
 	jp Func_87265
 
 Func_8723b: ; 8723b (21:723b)
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_8718a
-	call Func_84d24
+	call Func_80d24_21
 	ld e, $1
 	ld hl, Data_87185
-	call Func_84ce7
+	call Func_80ce7_21
 	ld e, $3
 	ld hl, Data_871d4
-	call Func_840fb
+	call Func_800fb_21
 	xor a
 	ld [$c7da], a
-	call Func_8401c
+	call Func_8001c_21
 	ld hl, $2d5
-	call Func_84f72
+	call Func_80f72_21
 Func_87265: ; 87265 (21:7265)
 	ret
 
@@ -151468,20 +146847,20 @@ Func_8728f:
 	jp nz, Func_872e5
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $6c
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_872df
 	ld hl, $256
-	call Func_84498
+	call Func_80498_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_872d6
 	ld de, Data_872e7
 	ld hl, Data_87266
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_872c5
 	jp Func_872e5
@@ -151489,20 +146868,20 @@ Func_8728f:
 Func_872c5: ; 872c5 (21:72c5)
 	ld e, $1
 	ld hl, $6c
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $257
-	call Func_84498
+	call Func_80498_21
 	jp Func_872dc
 
 Func_872d6: ; 872d6 (21:72d6)
 	ld hl, $257
-	call Func_84498
+	call Func_80498_21
 Func_872dc: ; 872dc (21:72dc)
 	jp Func_872e5
 
 Func_872df: ; 872df (21:72df)
 	ld hl, $257
-	call Func_84498
+	call Func_80498_21
 Func_872e5: ; 872e5 (21:72e5)
 	pop bc
 	ret
@@ -151520,20 +146899,20 @@ Func_87317:
 	jp nz, Func_8736d
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $6d
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87367
 	ld hl, $254
-	call Func_84498
+	call Func_80498_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_8735e
 	ld de, Data_8736f
 	ld hl, Data_872ee
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_8734d
 	jp Func_8736d
@@ -151541,20 +146920,20 @@ Func_87317:
 Func_8734d: ; 8734d (21:734d)
 	ld e, $1
 	ld hl, $6d
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $255
-	call Func_84498
+	call Func_80498_21
 	jp Func_87364
 
 Func_8735e: ; 8735e (21:735e)
 	ld hl, $255
-	call Func_84498
+	call Func_80498_21
 Func_87364: ; 87364 (21:7364)
 	jp Func_8736d
 
 Func_87367: ; 87367 (21:7367)
 	ld hl, $25c
-	call Func_84498
+	call Func_80498_21
 Func_8736d: ; 8736d (21:736d)
 	pop bc
 	ret
@@ -151569,8 +146948,8 @@ Func_8737a: ; 8737a (21:737a)
 	ld c, $1
 	ld de, Data_87376
 	ld a, BANK(Data_87376)
-	call Func_8463e
-	call Func_8420c
+	call Func_8063e_21
+	call Func_8020c_21
 	ret
 
 Data_87388:
@@ -151588,20 +146967,20 @@ Data_87423: ; 87423
 Func_8744d:
 	ld e, $3
 	ld hl, Data_87388
-	call Func_8403a
+	call Func_8003a_21
 	ld e, $2
 	ld hl, Data_873a9
-	call Func_84ce7
+	call Func_80ce7_21
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $8
 	ld hl, Data_873b3
-	call Func_84d24
+	call Func_80d24_21
 	ld e, $3
 	ld hl, Data_87423
-	call Func_840fb
+	call Func_800fb_21
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87484
 	ld a, $1
@@ -151613,31 +146992,31 @@ Func_87484: ; 87484 (21:7484)
 	ld [$c7da], a
 Func_87488: ; 87488 (21:7488)
 	ld a, $8
-	call Func_84ee6
-	call Func_8401c
+	call Func_80ee6_21
+	call Func_8001c_21
 	ld hl, $2d6
-	call Func_84f72
+	call Func_80f72_21
 	ret
 
 Func_87497:
 	ld a, e
 	or a
 	jp nz, Func_874c2
-	call Func_842e0
+	call Func_802e0_21
 	xor a
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $16
-	call Func_84ee6
+	call Func_80ee6_21
 	ld c, $1
 	ld e, $2
 	ld a, $8
-	call Func_84176
-	call Func_841d5
-	call Func_8418b
+	call Func_80176_21
+	call Func_801d5_21
+	call Func_8018b_21
 	ld hl, $322
-	call Func_84498
+	call Func_80498_21
 	ld a, $8
-	call Func_84ee6
+	call Func_80ee6_21
 Func_874c2: ; 874c2 (21:74c2)
 	ret
 
@@ -151651,20 +147030,20 @@ Func_874ec:
 	jp nz, Func_87542
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $6e
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_8753c
 	ld hl, $25a
-	call Func_84498
+	call Func_80498_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_87533
 	ld de, Data_87544
 	ld hl, Data_874c3
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_87522
 	jp Func_87542
@@ -151672,20 +147051,20 @@ Func_874ec:
 Func_87522: ; 87522 (21:7522)
 	ld e, $1
 	ld hl, $6e
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $25b
-	call Func_84498
+	call Func_80498_21
 	jp Func_87539
 
 Func_87533: ; 87533 (21:7533)
 	ld hl, $25b
-	call Func_84498
+	call Func_80498_21
 Func_87539: ; 87539 (21:7539)
 	jp Func_87542
 
 Func_8753c: ; 8753c (21:753c)
 	ld hl, $25c
-	call Func_84498
+	call Func_80498_21
 Func_87542: ; 87542 (21:7542)
 	pop bc
 	ret
@@ -151703,20 +147082,20 @@ Func_87574
 	jp nz, Func_8763c
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $6f
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87602
 	ld hl, $252
-	call Func_84498
+	call Func_80498_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_875f9
 	ld de, Data_8763e
 	ld hl, Data_8754b
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_875aa
 	jp Func_8763c
@@ -151724,66 +147103,66 @@ Func_87574
 Func_875aa: ; 875aa (21:75aa)
 	ld e, $1
 	ld hl, $6f
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $109
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_875f0
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_875f0
 	ld hl, $114
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_875f0
 	ld hl, $49d
-	call Func_84498
+	call Func_80498_21
 	ld a, $2a
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $49e
-	call Func_84498
+	call Func_80498_21
 	ld c, $0
 	ld e, $1
 	ld a, $10
-	call Func_84d4d
+	call Func_80d4d_21
 	ld e, $1
 	ld hl, $109
-	call Func_8461b
+	call Func_8061b_21
 Func_875f0: ; 875f0 (21:75f0)
 	ld hl, $253
-	call Func_84498
+	call Func_80498_21
 	jp Func_875ff
 
 Func_875f9: ; 875f9 (21:75f9)
 	ld hl, $250
-	call Func_84498
+	call Func_80498_21
 Func_875ff: ; 875ff (21:75ff)
 	jp Func_8763c
 
 Func_87602: ; 87602 (21:7602)
 	ld hl, $109
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87636
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_87636
 	ld hl, $49d
-	call Func_84498
+	call Func_80498_21
 	ld a, $2a
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $49e
-	call Func_84498
+	call Func_80498_21
 	ld c, $0
 	ld e, $1
 	ld a, $10
-	call Func_84d4d
+	call Func_80d4d_21
 	ld e, $1
 	ld hl, $109
-	call Func_8461b
+	call Func_8061b_21
 Func_87636: ; 87636 (21:7636)
 	ld hl, $257
-	call Func_84498
+	call Func_80498_21
 Func_8763c: ; 8763c (21:763c)
 	pop bc
 	ret
@@ -151794,16 +147173,16 @@ Data_8763e:
 Func_87648: ; 87648 (21:7648)
 	ld e, $0
 	ld hl, $18
-	call Func_8461b
+	call Func_8061b_21
 	ld e, $0
 	ld hl, $19
-	call Func_8461b
+	call Func_8061b_21
 	ld e, $0
 	ld hl, $1a
-	call Func_8461b
+	call Func_8061b_21
 	ld e, $0
 	ld hl, $4b
-	call Func_8461b
+	call Func_8061b_21
 	ret
 
 Data_87669:
@@ -151826,77 +147205,77 @@ Data_87785: ; 87785
 
 Func_877cb:
 	ld hl, $51
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_877f5
 	ld hl, $4c
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_877f5
 	call Func_87648
 	ld e, $4
 	ld hl, Data_87669
-	call Func_8403a
+	call Func_8003a_21
 	ld e, $4
 	ld hl, Data_87731
-	call Func_840fb
+	call Func_800fb_21
 	jp Func_87828
 
 Func_877f5: ; 877f5 (21:77f5)
 	ld hl, $51
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87820
 	ld hl, $4c
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87820
 	call Func_87648
 	ld e, $4
 	ld hl, Data_87669
-	call Func_8403a
+	call Func_8003a_21
 	ld e, $2
 	ld hl, Data_87769
-	call Func_840fb
+	call Func_800fb_21
 	jp Func_87828
 
 Func_87820: ; 87820 (21:7820)
 	ld e, $4
 	ld hl, Data_87695
-	call Func_8403a
+	call Func_8003a_21
 Func_87828: ; 87828 (21:7828)
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $8
 	ld hl, Data_876c1
-	call Func_84d24
+	call Func_80d24_21
 	ld e, $5
 	ld hl, Data_87785
-	call Func_840fb
+	call Func_800fb_21
 	ld a, $8
-	call Func_84ee6
+	call Func_80ee6_21
 	ld a, $4
 	ld [$c7e2], a
 	ld a, [$c78a]
 	cp $3
 	jp nz, Func_8786b
 	ld hl, $fb
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_8785f
 	call Func_87b87
 	jp Func_87868
 
 Func_8785f: ; 8785f (21:785f)
-	call Func_8401c
+	call Func_8001c_21
 	ld hl, $2d7
-	call Func_84f72
+	call Func_80f72_21
 Func_87868: ; 87868 (21:7868)
 	jp Func_8788a
 
 Func_8786b: ; 8786b (21:786b)
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_8787d
 	ld a, $1
@@ -151907,9 +147286,9 @@ Func_8787d: ; 8787d (21:787d)
 	xor a
 	ld [$c7da], a
 Func_87881: ; 87881 (21:7881)
-	call Func_8401c
+	call Func_8001c_21
 	ld hl, $2d7
-	call Func_84f72
+	call Func_80f72_21
 Func_8788a: ; 8788a (21:788a)
 	ret
 
@@ -151922,7 +147301,7 @@ Func_8788b:
 	jp nz, Func_878ef
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_84bde
+	call Func_80bde_21
 	cp $1
 	jp nz, Func_878a7
 	ld a, $1
@@ -151934,28 +147313,28 @@ Func_878aa: ; 878aa (21:78aa)
 	ld e, $4
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_840e9
+	call Func_800e9_21
 	or a
 	jp z, Func_878ef
 	ld a, $2b
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $18
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $19
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_878ef
 	ld hl, $1a
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_878ef
 	ld hl, $4b
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_878ef
 	call Func_87c03
@@ -151972,7 +147351,7 @@ Func_878f1:
 	jp nz, Func_87955
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_84bde
+	call Func_80bde_21
 	cp $1
 	jp nz, Func_8790d
 	ld a, $1
@@ -151984,28 +147363,28 @@ Func_87910: ; 87910 (21:7910)
 	ld e, $4
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_840e9
+	call Func_800e9_21
 	or a
 	jp z, Func_87955
 	ld a, $2b
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $19
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $18
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87955
 	ld hl, $1a
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87955
 	ld hl, $4b
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87955
 	call Func_87c03
@@ -152022,7 +147401,7 @@ Func_87957:
 	jp nz, Func_879bb
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_84bde
+	call Func_80bde_21
 	cp $1
 	jp nz, Func_87973
 	ld a, $1
@@ -152034,28 +147413,28 @@ Func_87976: ; 87976 (21:7976)
 	ld e, $4
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_840e9
+	call Func_800e9_21
 	or a
 	jp z, Func_879bb
 	ld a, $2b
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $1a
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $18
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_879bb
 	ld hl, $19
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_879bb
 	ld hl, $4b
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_879bb
 	call Func_87c03
@@ -152072,7 +147451,7 @@ Func_879bd:
 	jp nz, Func_87a21
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_84bde
+	call Func_80bde_21
 	cp $1
 	jp nz, Func_879d9
 	ld a, $1
@@ -152084,28 +147463,28 @@ Func_879dc: ; 879dc (21:79dc)
 	ld e, $4
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_840e9
+	call Func_800e9_21
 	or a
 	jp z, Func_87a21
 	ld a, $2b
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $4b
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $18
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87a21
 	ld hl, $19
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87a21
 	ld hl, $1a
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87a21
 	call Func_87c03
@@ -152122,7 +147501,7 @@ Func_87a23:
 	jp nz, Func_87a71
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_84bde
+	call Func_80bde_21
 	cp $1
 	jp nz, Func_87a3f
 	ld a, $1
@@ -152134,20 +147513,20 @@ Func_87a42: ; 87a42 (21:7a42)
 	ld e, $2
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_840e9
+	call Func_800e9_21
 	or a
 	jp z, Func_87a71
 	ld a, $2b
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $18
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $19
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87a71
 	call Func_87c03
@@ -152164,7 +147543,7 @@ Func_87a73:
 	jp nz, Func_87ac1
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_84bde
+	call Func_80bde_21
 	cp $1
 	jp nz, Func_87a8f
 	ld a, $1
@@ -152176,20 +147555,20 @@ Func_87a92: ; 87a92 (21:7a92)
 	ld e, $2
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_840e9
+	call Func_800e9_21
 	or a
 	jp z, Func_87ac1
 	ld a, $2b
-	call Func_84efe
+	call Func_80efe_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8413d
+	call Func_8013d_21
 	ld e, $1
 	ld hl, $19
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $18
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87ac1
 	call Func_87c03
@@ -152208,31 +147587,31 @@ Func_87ac3:
 	cp $7
 	jp nc, Func_87ae0
 	ld hl, $3dd
-	call Func_84498
+	call Func_80498_21
 	jp Func_87b13
 
 Func_87ae0: ; 87ae0 (21:7ae0)
 	ld hl, $59
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87b00
 	ld e, $1
 	ld hl, $59
-	call Func_8461b
+	call Func_8061b_21
 	ld a, $32
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $35b
-	call Func_84498
+	call Func_80498_21
 	jp Func_87b13
 
 Func_87b00: ; 87b00 (21:7b00)
 	ld e, $0
 	ld hl, $59
-	call Func_8461b
+	call Func_8061b_21
 	ld a, $28
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $35c
-	call Func_84498
+	call Func_80498_21
 Func_87b13: ; 87b13 (21:7b13)
 	ret
 
@@ -152247,11 +147626,11 @@ Func_87b14:
 
 Func_87b23: ; 87b23 (21:7b23)
 	ld hl, $59
-	call Func_8462e
+	call Func_8062e_21
 	cp $1
 	jp nz, Func_87b37
 	ld hl, $283
-	call Func_84498
+	call Func_80498_21
 	jp Func_87b86
 
 Func_87b37: ; 87b37 (21:7b37)
@@ -152262,40 +147641,40 @@ Func_87b37: ; 87b37 (21:7b37)
 	cp $7
 	jp nc, Func_87b4f
 	ld hl, $283
-	call Func_84498
+	call Func_80498_21
 	jp Func_87b86
 
 Func_87b4f: ; 87b4f (21:7b4f)
 	ld a, $4
 	ld [$c78a], a
 	xor a
-	call Func_84653
+	call Func_80653_21
 	ld c, $1
 	ld e, $1
 	ld a, $9
-	call Func_84176
+	call Func_80176_21
 	ld a, $5a
-	call Func_84efe
-	call Func_841d5
-	call Func_8418b
+	call Func_80efe_21
+	call Func_801d5_21
+	call Func_8018b_21
 	ld a, $2
-	call Func_84677
+	call Func_80677_21
 	ld e, $0
 	ld hl, $fa
-	call Func_8461b
+	call Func_8061b_21
 	ld l, $3
 	push hl
 	ld c, $3
 	ld e, $3
 	ld a, $20
-	call Func_84dff
+	call Func_80dff_21
 	pop bc
 Func_87b86: ; 87b86 (21:7b86)
 	ret
 
 Func_87b87: ; 87b87 (21:7b87)
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87b99
 	ld a, $1
@@ -152307,27 +147686,27 @@ Func_87b99: ; 87b99 (21:7b99)
 	ld [$c7da], a
 Func_87b9d: ; 87b9d (21:7b9d)
 	xor a
-	call Func_84653
+	call Func_80653_21
 	ld a, $2
-	call Func_84677
-	call Func_8401c
+	call Func_80677_21
+	call Func_8001c_21
 	ld hl, $2d7
-	call Func_84f72
+	call Func_80f72_21
 	ld c, $1
 	ld e, $2
 	ld a, $9
-	call Func_84176
+	call Func_80176_21
 	ld a, $37
-	call Func_84efe
-	call Func_841d5
+	call Func_80efe_21
+	call Func_801d5_21
 	ld a, $1
-	call Func_84653
+	call Func_80653_21
 	ld hl, $1
-	call Func_8468f
-	call Func_8418b
+	call Func_8068f_21
+	call Func_8018b_21
 	ld e, $1
 	ld hl, $fb
-	call Func_8461b
+	call Func_8061b_21
 	ret
 
 Data_87bd7:
@@ -152336,21 +147715,21 @@ Data_87bd7:
 Func_87c03: ; 87c03 (21:7c03)
 	ld e, $1
 	ld hl, $4c
-	call Func_8461b
-	call Func_8402b
+	call Func_8061b_21
+	call Func_8002b_21
 	ld e, $4
 	ld hl, Data_87bd7
-	call Func_8403a
-	call Func_84ea2
+	call Func_8003a_21
+	call Func_80ea2_21
 	ld a, $64
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $3c
-	call Func_8468f
+	call Func_8068f_21
 	ld a, $64
-	call Func_84efe
+	call Func_80efe_21
 	ld hl, $3c
-	call Func_8468f
-	call Func_84eb1
+	call Func_8068f_21
+	call Func_80eb1_21
 	ret
 
 Data_87c33:
@@ -152363,20 +147742,20 @@ Func_87c5c:
 	jp nz, Func_87cb2
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $70
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87cac
 	ld hl, $24e
-	call Func_84498
+	call Func_80498_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_87ca3
 	ld de, Data_87cb4
 	ld hl, Data_87c33
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_87c92
 	jp Func_87cb2
@@ -152384,20 +147763,20 @@ Func_87c5c:
 Func_87c92: ; 87c92 (21:7c92)
 	ld e, $1
 	ld hl, $70
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $24f
-	call Func_84498
+	call Func_80498_21
 	jp Func_87ca9
 
 Func_87ca3: ; 87ca3 (21:7ca3)
 	ld hl, $253
-	call Func_84498
+	call Func_80498_21
 Func_87ca9: ; 87ca9 (21:7ca9)
 	jp Func_87cb2
 
 Func_87cac: ; 87cac (21:7cac)
 	ld hl, $24e
-	call Func_84498
+	call Func_80498_21
 Func_87cb2: ; 87cb2 (21:7cb2)
 	pop bc
 	ret
@@ -152415,20 +147794,20 @@ Func_87ce5:
 	jp nz, Func_87d3b
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $71
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87d35
 	ld hl, $258
-	call Func_84498
+	call Func_80498_21
 	ld hl, $32c
-	call Func_844ba
+	call Func_804ba_21
 	or a
 	jp nz, Func_87d2c
 	ld de, Data_87d3d
 	ld hl, Data_87cbc
-	call Func_84dd3
+	call Func_80dd3_21
 	or a
 	jp nz, Func_87d1b
 	jp Func_87d3b
@@ -152436,20 +147815,20 @@ Func_87ce5:
 Func_87d1b: ; 87d1b (21:7d1b)
 	ld e, $1
 	ld hl, $71
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $259
-	call Func_84498
+	call Func_80498_21
 	jp Func_87d32
 
 Func_87d2c: ; 87d2c (21:7d2c)
 	ld hl, $258
-	call Func_84498
+	call Func_80498_21
 Func_87d32: ; 87d32 (21:7d32)
 	jp Func_87d3b
 
 Func_87d35: ; 87d35 (21:7d35)
 	ld hl, $258
-	call Func_84498
+	call Func_80498_21
 Func_87d3b: ; 87d3b (21:7d3b)
 	pop bc
 	ret
@@ -152469,14 +147848,14 @@ Data_87d7a: ; 87d7a
 Func_87d88:
 	ld e, $1
 	ld hl, Data_87d45
-	call Func_8403a
+	call Func_8003a_21
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $3
 	ld hl, Data_87d50
-	call Func_84d24
+	call Func_80d24_21
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87daf
 	ld a, $1
@@ -152489,12 +147868,12 @@ Func_87daf: ; 87daf (21:7daf)
 Func_87db3: ; 87db3 (21:7db3)
 	ld e, $1
 	ld hl, Data_87d7a
-	call Func_840fb
+	call Func_800fb_21
 	ld a, $8
-	call Func_84ee6
-	call Func_8401c
+	call Func_80ee6_21
+	call Func_8001c_21
 	ld hl, $2d8
-	call Func_84f72
+	call Func_80f72_21
 	ret
 
 Func_87dca:
@@ -152504,49 +147883,49 @@ Func_87dca:
 	jp nz, Func_87e32
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8444b
+	call Func_8044b_21
 	ld hl, $51
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87e2c
 	ld hl, $74
-	call Func_844a9
+	call Func_804a9_21
 	ld a, $b
-	call Func_84e5d
+	call Func_80e5d_21
 	cp $1
 	jp nz, Func_87e23
 	ld hl, $75
-	call Func_844a9
+	call Func_804a9_21
 	ld hl, $76
-	call Func_844ca
+	call Func_804ca_21
 	or a
 	jp nz, Func_87e1a
 	ld c, $1
 	ld e, $1
 	ld a, $b
-	call Func_84d4d
+	call Func_80d4d_21
 	ld e, $1
 	ld hl, $51
-	call Func_8461b
+	call Func_8061b_21
 	ld hl, $78
-	call Func_844a9
+	call Func_804a9_21
 	jp Func_87e20
 
 Func_87e1a: ; 87e1a (21:7e1a)
 	ld hl, $77
-	call Func_844a9
+	call Func_804a9_21
 Func_87e20: ; 87e20 (21:7e20)
 	jp Func_87e29
 
 Func_87e23: ; 87e23 (21:7e23)
 	ld hl, $75
-	call Func_844a9
+	call Func_804a9_21
 Func_87e29: ; 87e29 (21:7e29)
 	jp Func_87e32
 
 Func_87e2c: ; 87e2c (21:7e2c)
 	ld hl, $79
-	call Func_844a9
+	call Func_804a9_21
 Func_87e32: ; 87e32 (21:7e32)
 	pop bc
 	ret
@@ -152563,14 +147942,14 @@ Data_87e94: ; 87e94
 Func_87ea2:
 	ld e, $2
 	ld hl, Data_87e34
-	call Func_8403a
+	call Func_8003a_21
 	ld a, $3
-	call Func_84d01
+	call Func_80d01_21
 	ld e, $5
 	ld hl, Data_87e4a
-	call Func_84d24
+	call Func_80d24_21
 	ld hl, $0
-	call Func_8462e
+	call Func_8062e_21
 	or a
 	jp nz, Func_87ec9
 	ld a, $1
@@ -152583,25 +147962,34 @@ Func_87ec9: ; 87ec9 (21:7ec9)
 Func_87ecd: ; 87ecd (21:7ecd)
 	ld e, $1
 	ld hl, Data_87e94
-	call Func_840fb
+	call Func_800fb_21
 	ld a, $8
-	call Func_84ee6
-	call Func_8401c
+	call Func_80ee6_21
+	call Func_8001c_21
 	ld hl, $2d8
-	call Func_84f72
+	call Func_80f72_21
 	ret
 
 SECTION "Bank 22", ROMX, BANK [$22]
-	dr $88000, $8b7c9
+	lib_bank_20 22
+
+Data_890b4:
+	dr $890b4, $8b7c9
 
 SECTION "Bank 23", ROMX, BANK [$23]
-	dr $8c000, $8d4d8
+	lib_bank_20 23
+
+Data_8d0b4:
+	dr $8d0b4, $8d4d8
 
 Func_8d4d8: ; 8d4d8
 	dr $8d4d8, $8e8cd
 
 SECTION "Bank 24", ROMX, BANK [$24]
-	dr $90000, $932bd
+	lib_bank_20 24
+
+Data_910b4:
+	dr $910b4, $932bd
 
 Func_932bd: ; 932bd
 	dr $932bd, $93370
@@ -152631,7 +148019,10 @@ Func_93c0c: ; 93c0c
 	dr $93c0c, $93d34
 
 SECTION "Bank 25", ROMX, BANK [$25]
-	dr $94000, $95c14
+	lib_bank_20 25
+
+Data_950b4:
+	dr $950b4, $95c14
 
 Func_95c14: ; 95c14
 	dr $95c14, $95c79
@@ -152640,7 +148031,10 @@ Func_95c79: ; 95c79
 	dr $95c79, $974a7
 
 SECTION "Bank 26", ROMX, BANK [$26]
-	dr $98000, $9a1bb
+	lib_bank_20 26
+
+Data_990b4:
+	dr $990b4, $9a1bb
 
 Func_9a1bb: ; 9a1bb
 	dr $9a1bb, $9a28c
@@ -152682,45 +148076,69 @@ Func_9b326: ; 9b326
 	dr $9b326, $9b74a
 
 SECTION "Bank 27", ROMX, BANK [$27]
-	dr $9c000, $9f672
+	lib_bank_20 27
+
+Data_9d0b4
+	dr $9d0b4, $9f672
 
 SECTION "Bank 28", ROMX, BANK [$28]
+	lib_bank_20 28
+
+Data_a10b4:
 IF DEF(SUN)
-	dr $a0000, $a3c17
+	dr $a10b4, $a3c17
 
 Func_a3c17: ; a3c17
 	dr $a3c17, $a3f5e
 ENDC
 IF DEF(STAR)
-	dr $a0000, $a3c5d
+	dr $a10b4, $a3c5d
 
 Func_a3c17: ; a3c17
 	dr $a3c5d, $a3fa4
 ENDC
 
 SECTION "Bank 29", ROMX, BANK [$29]
-	dr $a4000, $a517c
+	lib_bank_20 29
+
+Data_a50b4:
+	dr $a50b4, $a517c
 
 Func_a517c: ; a517c
 	dr $a517c, $a6add
 
 SECTION "Bank 2a", ROMX, BANK [$2a]
-	dr $a8000, $abb74
+	lib_bank_20 2a
+
+Data_a90b4:
+	dr $a90b4, $abb74
 
 Func_abb74: ; abb74
 	dr $abb74, $abf9c
 
 SECTION "Bank 2b", ROMX, BANK [$2b]
-	dr $ac000, $af539
+	lib_bank_20 2b
+
+Data_ad0b4:
+	dr $ad0b4, $af539
 
 SECTION "Bank 2c", ROMX, BANK [$2c]
-	dr $b0000, $b3fd0
+	lib_bank_20 2c
+
+Data_b10b4:
+	dr $b10b4, $b3fd0
 
 SECTION "Bank 2d", ROMX, BANK [$2d]
-	dr $b4000, $b7e47
+	lib_bank_20 2d
+
+Data_b50b4:
+	dr $b50b4, $b7e47
 
 SECTION "Bank 2e", ROMX, BANK [$2e]
-	dr $b8000, $bb71a
+	lib_bank_20 2e
+
+Data_b90b4:
+	dr $b90b4, $bb71a
 
 SECTION "Bank 2f", ROMX, BANK [$2f]
 	dr $bc000, $bd6fa
