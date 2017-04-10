@@ -4681,31 +4681,31 @@ Func_81cf: ; 81cf (2:41cf)
 	push bc
 	ld a, [wSystemType]
 	cp $11
-	jp nz, Func_81ea
+	jp nz, .not_cgb
 	set_farcall_addrs_hli Func_c7759
 	ld e, $0
 	xor a
 	call FarCall
-Func_81ea: ; 81ea (2:41ea)
+.not_cgb
 	pop bc
 	inc c
 	dec c
-	jp nz, Func_8264
+	jp nz, .skip
 	call Func_1db9
 	ld bc, $28
-Func_81f6: ; 81f6 (2:41f6)
+.loop
 	ld l, c
 	ld h, b
 	ld de, $34
 	call CompareHLtoDE
-	jp nc, Func_820b
+	jp nc, .okay
 	ld hl, $c789
 	add hl, bc
 	ld [hl], $ff
 	inc bc
-	jp Func_81f6
+	jp .loop
 
-Func_820b: ; 820b (2:420b)
+.okay
 	xor a
 	ld [wOAM06YCoord], a
 	ld a, $1
@@ -4728,21 +4728,21 @@ Func_820b: ; 820b (2:420b)
 	ld [$c7ec], a
 	callba_hli Func_4fef1
 	callba_hli Func_93c0c
-	jp Func_831f
+	jp .continue
 
-Func_8264: ; 8264 (2:4264)
+.skip
 	ld a, c
 	cp $1
-	jp nz, Func_82a9
+	jp nz, .not_map_1
 	callba_hli Func_56fc2
 	callba_hli Func_4fef1
 	callba_hli Func_93c0c
 	callba_hli Func_9a8c3
 	xor a
 	ld [wMapMusic], a
-	jp Func_831f
+	jp .continue
 
-Func_82a9: ; 82a9 (2:42a9)
+.not_map_1
 	push bc
 	callba_hli Func_238c8
 	ld de, Data_840f
@@ -4762,19 +4762,19 @@ Func_82a9: ; 82a9 (2:42a9)
 	ld a, $1
 	ld [$c7e2], a
 	ld bc, $28
-Func_82e5: ; 82e5 (2:42e5)
+.loop2
 	ld l, c
 	ld h, b
 	ld de, $34
 	call CompareHLtoDE
-	jp nc, Func_82fa
+	jp nc, .okay2
 	ld hl, $c789
 	add hl, bc
 	ld [hl], $ff
 	inc bc
-	jp Func_82e5
+	jp .loop2
 
-Func_82fa: ; 82fa (2:42fa)
+.okay2
 	xor a
 	ld [wOAM06YCoord], a
 	ld a, $ff
@@ -4790,13 +4790,13 @@ Func_82fa: ; 82fa (2:42fa)
 	ld [$c7eb], a
 	ld a, $2
 	ld [$c7ec], a
-Func_831f: ; 831f (2:431f)
+.continue
 	ld a, $ff
 	ld [$c838], a
-Func_8324: ; 8324 (2:4324)
+.loop3
 	ld a, [$c7eb]
 	cp $ff
-	jp nz, Func_83d1
+	jp nz, .okay3
 	call Func_b6f2
 	call Func_3aa8
 	callba_hli Func_d9f68
@@ -4821,27 +4821,27 @@ Func_8324: ; 8324 (2:4324)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $9
-	jp nz, Func_8391
+	jp nz, .no_lookup_Data_81c3
 	ld hl, $44
 	call Func_aa36
 	cp $1
-	jp nz, Func_8391
+	jp nz, .no_lookup_Data_81c3
 	ld bc, Data_81c3
-	jp Func_83ba
+	jp .do_trigger
 
-Func_8391: ; 8391 (2:4391)
+.no_lookup_Data_81c3
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $e
-	jp nz, Func_83aa
+	jp nz, .lookup_Data_8151
 	ld hl, $1c
 	call Func_aa36
 	cp $1
-	jp nz, Func_83aa
+	jp nz, .lookup_Data_8151
 	ld bc, Data_81c9
-	jp Func_83ba
+	jp .do_trigger
 
-Func_83aa: ; 83aa (2:43aa)
+.lookup_Data_8151
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
@@ -4854,25 +4854,24 @@ Func_83aa: ; 83aa (2:43aa)
 	add hl, de
 	ld c, l
 	ld b, h
-Func_83ba: ; 83ba (2:43ba)
+.do_trigger
 	ld de, $5e
-Func_83bd: ; 83bd (2:43bd)
-	ld hl, $63
+.loop4
+	ld hl, $5e + 5
 	call CompareHLtoDE
-	jp c, Func_83d1
-	ld hl, $c789
+	jp c, .okay3
+	ld hl, $c7e7 - $5e
 	add hl, de
 	ld a, [bc]
 	inc bc
 	ld [hl], a
 	inc de
-	jp Func_83bd
+	jp .loop4
 
-Func_83d1: ; 83d1 (2:43d1)
+.okay3
 	xor a
 	ld [wVBlankTransferFlags], a
 	ld c, $0
-.asm_83d6
 	ld a, [$c7ec]
 	ld e, a
 	ld a, [$c7eb]
@@ -4880,7 +4879,6 @@ Func_83d1: ; 83d1 (2:43d1)
 	xor a
 	ld [$c7da], a
 	set_farcall_addrs_hli Func_daa72
-.asm_83ef
 	ld a, [$c7ec]
 	ld e, a
 	ld a, [$c7eb]
@@ -4889,11 +4887,11 @@ Func_83d1: ; 83d1 (2:43d1)
 	ld [$c798], a
 	ld a, [$c84a]
 	cp $1
-	jp nz, Func_8409
-	call Func_90e9
-Func_8409: ; 8409 (2:4409)
+	jp nz, .skip_HandleMap
+	call HandleMap
+.skip_HandleMap
 	call Func_8df1
-	jp Func_8324
+	jp .loop3
 
 Data_840f: ; 840f
 	db "<HIRA>なう ろーてﾞぃんくﾞ<KATA>$"
@@ -4908,6 +4906,13 @@ Data_84f9: ; 84f9
 	dr $84f9, $854b
 
 Func_854b: ; 854b (2:454b)
+macro_854b: MACRO
+	read_hl_from \1
+	call Func_be5d
+	ld hl, $0
+	write_hl_to \1
+	ENDM
+	
 	push af
 	push de
 	add sp, -$62
@@ -4961,38 +4966,14 @@ Func_854b: ; 854b (2:454b)
 	jp .okay
 
 .c_is_zero
-	read_hl_from $c824
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c824
-	read_hl_from $c822
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c822
-	read_hl_from $c826
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c826
-	read_hl_from $c828
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c828
-	read_hl_from $c82c
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c82c
-	read_hl_from $c82e
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c82e
-	read_hl_from $c82a
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c82a
-	read_hl_from $c85d
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c85d
+	macro_854b $c824
+	macro_854b $c822
+	macro_854b $c826
+	macro_854b $c828
+	macro_854b $c82c
+	macro_854b $c82e
+	macro_854b $c82a
+	macro_854b $c85d
 .okay
 	set_farcall_addrs_hli Func_c7ae6
 	ld hl, sp+$64
@@ -5995,123 +5976,28 @@ Func_8dc8: ; 8dc8
 	ret
 
 Func_8df1: ; 8df1 (2:4df1)
-	read_hl_from $c85d
+macro_8df1: MACRO
+	read_hl_from \1
 	ld a, l
 	or h
-	jp z, Func_8e0b
-	read_hl_from $c85d
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c85d
-Func_8e0b: ; 8e0b (2:4e0b)
-	read_hl_from $c824
-	ld a, l
-	or h
-	jp z, Func_8e25
-	read_hl_from $c824
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c824
-Func_8e25: ; 8e25 (2:4e25)
-	read_hl_from $c822
-	ld a, l
-	or h
-	jp z, Func_8e3f
-	read_hl_from $c822
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c822
-Func_8e3f: ; 8e3f (2:4e3f)
-	read_hl_from $c826
-	ld a, l
-	or h
-	jp z, Func_8e59
-	read_hl_from $c826
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c826
-Func_8e59: ; 8e59 (2:4e59)
-	read_hl_from $c828
-	ld a, l
-	or h
-	jp z, Func_8e73
-	read_hl_from $c828
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c828
-Func_8e73: ; 8e73 (2:4e73)
-	read_hl_from $c830
-	ld a, l
-	or h
-	jp z, Func_8e8d
-	read_hl_from $c830
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c830
-Func_8e8d: ; 8e8d (2:4e8d)
-	read_hl_from $c82a
-	ld a, l
-	or h
-	jp z, Func_8ea7
-	read_hl_from $c82a
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c82a
-Func_8ea7: ; 8ea7 (2:4ea7)
-	read_hl_from $c82c
-	ld a, l
-	or h
-	jp z, Func_8ec1
-	read_hl_from $c82c
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c82c
-Func_8ec1: ; 8ec1 (2:4ec1)
-	read_hl_from $c82e
-	ld a, l
-	or h
-	jp z, Func_8edb
-	read_hl_from $c82e
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c82e
-Func_8edb: ; 8edb (2:4edb)
-	read_hl_from $c77a
-	ld a, l
-	or h
-	jp z, Func_8ef5
-	read_hl_from $c77a
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c77a
-Func_8ef5: ; 8ef5 (2:4ef5)
-	read_hl_from $c778
-	ld a, l
-	or h
-	jp z, Func_8f0f
-	read_hl_from $c778
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c778
-Func_8f0f: ; 8f0f (2:4f0f)
-	read_hl_from $c774
-	ld a, l
-	or h
-	jp z, Func_8f29
-	read_hl_from $c774
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c774
-Func_8f29: ; 8f29 (2:4f29)
-	read_hl_from $c776
-	ld a, l
-	or h
-	jp z, Func_8f43
-	read_hl_from $c776
-	call Func_be5d
-	ld hl, $0
-	write_hl_to $c776
-Func_8f43: ; 8f43 (2:4f43)
+	jp z, .okay_\@
+	macro_854b \1
+.okay_\@
+	ENDM
+
+	macro_8df1 $c85d
+	macro_8df1 $c824
+	macro_8df1 $c822
+	macro_8df1 $c826
+	macro_8df1 $c828
+	macro_8df1 $c830
+	macro_8df1 $c82a
+	macro_8df1 $c82c
+	macro_8df1 $c82e
+	macro_8df1 $c77a
+	macro_8df1 $c778
+	macro_8df1 $c774
+	macro_8df1 $c776
 	ret
 
 Func_8f44:: ; 8f44 (2:4f44)
@@ -6362,7 +6248,7 @@ Func_90e6: ; 90e6 (2:50e6)
 	add sp, $30
 	ret
 
-Func_90e9: ; 90e9 (2:50e9)
+HandleMap: ; 90e9 (2:50e9)
 	add sp, -$10
 	ld a, $ff
 	ld [$c839], a
@@ -11598,7 +11484,7 @@ Func_b3ef:: ; b3ef
 
 Func_b400:: ; b400 (2:7400)
 	call Func_b41d
-	call Func_90e9
+	call HandleMap
 	ret
 
 Func_b407: ; b407 (2:7407)
@@ -113802,10 +113688,247 @@ Func_c7759: ; c7759
 	dr $c7759, $c796a
 
 Func_c796a:: ; c796a
-	dr $c796a, $c7ae6
+	dr $c796a, $c79b1
 
-Func_c7ae6:: ; c7ae6
-	dr $c7ae6, $c7bd0
+Data_c79b1: ; c79b1
+	dr $c79b1, $c79cf
+
+Data_c79cf: ; c79cf
+	dr $c79cf, $c79d1
+
+Data_c79d1: ; c79d1
+	dr $c79d1, $c79d8
+
+Data_c79d8: ; c79d8
+	dr $c79d8, $c79e0
+
+Data_c79e0: ; c79e0
+	dr $c79e0, $c79e2
+
+Data_c79e2: ; c79e2
+	dr $c79e2, $c79ed
+
+Data_c79ed: ; c79ed
+	dr $c79ed, $c79ef
+
+Data_c79ef: ; c79ef
+	dr $c79ef, $c79f1
+
+Data_c79f1: ; c79f1
+	dr $c79f1, $c79f4
+
+Data_c79f4: ; c79f4
+	dr $c79f4, $c79fa
+
+Data_c79fa: ; c79fa
+	dr $c79fa, $c79fb
+
+Data_c79fb: ; c79fb
+	dr $c79fb, $c79fd
+
+Data_c79fd: ; c79fd
+	dr $c79fd, $c7a02
+
+Data_c7a02: ; c7a02
+	dr $c7a02, $c7a03
+
+Data_c7a03: ; c7a03
+	dr $c7a03, $c7a04
+
+Data_c7a04: ; c7a04
+	dr $c7a04, $c7a11
+
+Data_c7a11: ; c7a11
+	dr $c7a11, $c7a1d
+
+Data_c7a1d: ; c7a1d
+	dr $c7a1d, $c7a32
+
+Data_c7a32: ; c7a32
+	dr $c7a32, $c7a35
+
+Data_c7a35: ; c7a35
+	dr $c7a35, $c7a42
+
+Data_c7a42: ; c7a42
+	dr $c7a42, $c7a45
+
+Data_c7a45: ; c7a45
+	dr $c7a45, $c7a47
+
+Data_c7a47: ; c7a47
+	dr $c7a47, $c7a56
+
+Data_c7a56: ; c7a56
+	dr $c7a56, $c7a5f
+
+Data_c7a5f: ; c7a5f
+	dr $c7a5f, $c7a61
+
+Data_c7a61: ; c7a61
+	dr $c7a61, $c7a6e
+
+Data_c7a6e: ; c7a6e
+	dr $c7a6e, $c7a71
+
+Data_c7a71: ; c7a71
+	dr $c7a71, $c7a83
+
+Data_c7a83: ; c7a83
+	dr $c7a83, $c7a93
+
+Data_c7a93: ; c7a93
+	dr $c7a93, $c7a97
+
+Data_c7a97: ; c7a97
+	dr $c7a97, $c7aa4
+
+Pointers_c7aa4:
+	dw Data_c79b1
+	dw Data_c79cf
+	dw Data_c79d1
+	dw Data_c79d8
+	dw Data_c79e0
+	dw Data_c79e2
+	dw Data_c79ed
+	dw Data_c79ef
+	dw Data_c79f1
+	dw Data_c79f4
+	dw Data_c79fa
+	dw Data_c79fb
+	dw Data_c79fd
+	dw Data_c7a02
+	dw Data_c7a03
+	dw $0000
+	dw $0000
+	dw Data_c7a04
+	dw Data_c7a11
+	dw Data_c7a1d
+	dw Data_c7a32
+	dw Data_c7a35
+	dw Data_c7a42
+	dw Data_c7a45
+	dw Data_c7a47
+	dw Data_c7a56
+	dw Data_c7a5f
+	dw Data_c7a61
+	dw Data_c7a6e
+	dw Data_c7a71
+	dw Data_c7a83
+	dw Data_c7a93
+	dw Data_c7a97
+
+Func_c7ae6:: ; c7ae6 (31:7ae6)
+	push af
+	push de
+	push bc
+	push bc
+	ld hl, $0
+	call WriteHLToSPPlus3
+	ld c, $0
+.loop
+	ld a, c
+	ld hl, sp+$7
+	cp [hl]
+	jp nc, .okay
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_c7aa4
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, .next
+	ld hl, sp+$0
+	ld [hl], $0
+.loop2
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_c7aa4
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	jp z, .next
+	call GetHLAtSPPlus3
+	inc hl
+	call WriteHLToSPPlus3
+	ld hl, sp+$0
+	ld a, [hl]
+	inc a
+	ld hl, sp+$0
+	ld [hl], a
+	jp .loop2
+
+.next
+	inc c
+	jp .loop
+
+.okay
+	ld c, $0
+.loop3
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_c7aa4
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	jp z, .nope
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_c7aa4
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	ld hl, sp+$4
+	cp [hl]
+	jp nz, .next2
+	call GetHLAtSPPlus3
+	ld e, c
+	ld d, $0
+	add hl, de
+	call WriteHLToSPPlus3
+	call GetHLAtSPPlus3
+	jp .done
+
+.next2
+	inc c
+	jp .loop3
+
+.nope
+	ld hl, -1
+.done
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_c7b84:
+	dr $c7b84, $c7bd0
 
 Func_c7bd0: ; c7bd0
 	dr $c7bd0, $c8000
