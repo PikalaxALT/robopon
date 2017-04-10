@@ -426,7 +426,8 @@ wDecompresLiteralCopyOffsetHi:: ds $1 ; c22c
 	ds $8
 
 wPoncotPicAlignment:: ds $1 ; c235
-	ds $3
+	ds $1
+wRNGState:: dw ; c237
 
 video_transfer_queue: MACRO
 \1::

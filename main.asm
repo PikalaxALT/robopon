@@ -4468,7 +4468,7 @@ Func_27e0: ; 27e0 (0:27e0)
 	call GetSRAMBank
 	ret
 
-Func_27f5: ; 27f5
+ClearSprites: ; 27f5
 	ld bc, $a0
 	ld e, $0
 	ld hl, wOAMBuffer2
@@ -6443,7 +6443,7 @@ Func_3aa8: ; 3aa8 (0:3aa8)
 
 Func_3aae: ; 3aae (0:3aae)
 	push af
-	call Func_27f5
+	call ClearSprites
 	ld l, $12
 	push hl
 	ld c, $14
@@ -6942,7 +6942,7 @@ Func_4064: ; 4064 (1:4064)
 	ld [rIF], a
 	ei
 	ld a, $d
-	ld [$c237], a
+	ld [wRNGState], a
 	ld a, $4
 	ld [$c24d], a
 	xor a
@@ -20495,22 +20495,308 @@ Data_c009: ; c009
 	dr $c009, $c016
 
 Data_c016: ; c016
-	dr $c016, $c5dd
+	dr $c016, $c024
 
-Data_c5dd: ; c5dd
-	dr $c5dd, $c6e1
+Data_c024: ; c024
+	dr $c024, $c038
+
+Data_c038: ; c038
+	dr $c038, $c047
+
+Data_c047: ; c047
+	dr $c047, $c05e
+
+Data_c05e: ; c05e
+	dr $c05e, $c075
+
+Data_c075: ; c075
+	dr $c075, $c08c
+
+Data_c08c: ; c08c
+	dr $c08c, $c0aa
+
+Data_c0aa: ; c0aa
+	dr $c0aa, $c0b5
+
+Data_c0b5: ; c0b5
+	dr $c0b5, $c0c0
+
+Data_c0c0: ; c0c0
+	dr $c0c0, $c0cb
+
+Data_c0cb: ; c0cb
+	dr $c0cb, $c0dd
+
+Data_c0dd: ; c0dd
+	dr $c0dd, $c0ee
+
+Data_c0ee: ; c0ee
+	dr $c0ee, $c0ff
+
+Data_c0ff: ; c0ff
+	dr $c0ff, $c109
+
+Data_c109: ; c109
+	dr $c109, $c110
+
+Data_c110: ; c110
+	dr $c110, $c121
+
+Data_c121: ; c121
+	dr $c121, $c130
+
+Data_c130: ; c130
+	dr $c130, $c158
+
+Data_c158: ; c158
+	dr $c158, $c181
+
+Data_c181: ; c181
+	dr $c181, $c1b1
+
+Data_c1b1: ; c1b1
+	dr $c1b1, $c1d1
+
+Data_c1d1: ; c1d1
+	dr $c1d1, $c1db
+
+Data_c1db: ; c1db
+	dr $c1db, $c1ed
+
+Data_c1ed: ; c1ed
+	dr $c1ed, $c1fb
+
+Data_c1fb: ; c1fb
+	dr $c1fb, $c207
+
+Data_c207: ; c207
+	dr $c207, $c20c
+
+Data_c20c: ; c20c
+	dr $c20c, $c213
+
+Data_c213: ; c213
+	dr $c213, $c21f
+
+Data_c21f: ; c21f
+	dr $c21f, $c22d
+
+Data_c22d: ; c22d
+	dr $c22d, $c239
+
+Data_c239: ; c239
+	dr $c239, $c245
+
+Data_c245: ; c245
+	dr $c245, $c251
+
+Data_c251: ; c251
+	dr $c251, $c25d
+
+Data_c25d: ; c25d
+	dr $c25d, $c26a
+
+Data_c26a: ; c26a
+	dr $c26a, $c29e
+
+Data_c29e: ; c29e
+	dr $c29e, $c2aa
+
+Data_c2aa: ; c2aa
+	dr $c2aa, $c2b4
+
+Data_c2b4: ; c2b4
+	dr $c2b4, $c2c3
+
+Data_c2c3: ; c2c3
+	dr $c2c3, $c2d2
+
+Data_c2d2: ; c2d2
+	dr $c2d2, $c2e2
+
+Data_c2e2: ; c2e2
+	dr $c2e2, $c2f1
+
+Data_c2f1: ; c2f1
+	dr $c2f1, $c2fe
+
+Data_c2fe: ; c2fe
+	dr $c2fe, $c316
+
+Data_c316: ; c316
+	dr $c316, $c323
+
+Data_c323: ; c323
+	dr $c323, $c33c
+
+Data_c33c: ; c33c
+	dr $c33c, $c350
+
+Data_c350: ; c350
+	dr $c350, $c362
+
+Data_c362: ; c362
+	dr $c362, $c373
+
+Data_c373: ; c373
+	dr $c373, $c382
+
+Data_c382: ; c382
+	dr $c382, $c396
+
+Data_c396: ; c396
+	dr $c396, $c3e8
+
+Data_c3e8: ; c3e8
+	dr $c3e8, $c3fa
+
+Data_c3fa: ; c3fa
+	dr $c3fa, $c40c
+
+Data_c40c: ; c40c
+	dr $c40c, $c420
+
+Data_c420: ; c420
+	dr $c420, $c468
+
+Data_c468: ; c468
+	dr $c468, $c47f
+
+Data_c47f: ; c47f
+	dr $c47f, $c494
+
+Data_c494: ; c494
+	dr $c494, $c4c7
+
+Data_c4c7: ; c4c7
+	dr $c4c7, $c4fc
+
+Data_c4fc: ; c4fc
+	dr $c4fc, $c506
+
+Data_c506: ; c506
+	dr $c506, $c529
+
+Data_c529: ; c529
+	dr $c529, $c53d
+
+Data_c53d: ; c53d
+	dr $c53d, $c558
+
+Data_c558: ; c558
+	dr $c558, $c591
+
+Data_c591: ; c591
+	dr $c591, $c5cb
+
+Data_c5cb: ; c5cb
+	dr $c5cb, $c5f5
+
+Data_c5f5: ; c5f5
+	dr $c5f5, $c626
+
+Data_c626: ; c626
+	dr $c626, $c63f
+
+Data_c63f: ; c63f
+	dr $c63f, $c646
+
+Data_c646: ; c646
+	dr $c646, $c657
+
+Data_c657: ; c657
+	dr $c657, $c65d
+
+Data_c65d: ; c65d
+	dr $c65d, $c663
+
+Data_c663: ; c663
+	dr $c663, $c669
+
+Data_c669: ; c5dd
+	dw Data_c121
+	dw Data_c130
+	dw Data_c158
+	dw Data_c181
+	dw Data_c1b1
+	dw Data_c1d1
+	dw Data_c1db
+	dw Data_c1ed
+	dw Data_c1fb
+	dw Data_c207
+	dw Data_c20c
+	dw Data_c213
+	dw Data_c21f
+	dw Data_c22d
+	dw Data_c239
+	dw Data_c245
+	dw Data_c251
+	dw Data_c25d
+	dw Data_c26a
+	dw Data_c29e
+	dw Data_c2aa
+	dw Data_c2b4
+	dw Data_c2c3
+	dw Data_c2d2
+	dw Data_c2e2
+	dw Data_c2f1
+	dw Data_c2fe
+	dw Data_c316
+	dw Data_c323
+	dw Data_c33c
+	dw Data_c350
+	dw Data_c362
+	dw Data_c373
+	dw Data_c382
+	dw Data_c396
+	dw $0000
+	dw Data_c3e8
+	dw Data_c3fa
+	dw Data_c40c
+	dw Data_c420
+	dw Data_c468
+	dw Data_c47f
+	dw Data_c494
+	dw Data_c4c7
+	dw $0000
+	dw Data_c4fc
+	dw Data_c506
+	dw Data_c529
+	dw Data_c53d
+	dw Data_c558
+	dw Data_c591
+	dw Data_c5cb
+	dw Data_c5f5
+	dw Data_c626
+	dw Data_c63f
+	dw Data_c646
+	dw Data_c657
+	dw Data_c65d
+	dw Data_c663
+	dw Data_c001
 
 Data_c6e1: ; c6e1
-	dr $c6e1, $c6eb
+	dw Data_c0dd
+	dw Data_c0ee
+	dw Data_c0ff
+	dw Data_c109
+	dw Data_c110
 
 Data_c6eb: ; c6eb
-	dr $c6eb, $c6ed
+	dw Data_c024
 
 Data_c6ed: ; c6ed
-	dr $c6ed, $c6fd
+	dw Data_c047
+	dw Data_c05e
+	dw Data_c075
+	dw Data_c08c
+	dw Data_c0aa
+	dw Data_c0b5
+	dw Data_c0c0
+	dw Data_c0cb
 
 Data_c6fd: ; c6fd
-	dr $c6fd, $c6ff
+	dw Data_c038
 
 Func_c6ff: ; c6ff (3:46ff)
 	set_farcall_addrs_hli Func_667d
@@ -21440,7 +21726,7 @@ Func_cea1: ; cea1 (3:4ea1)
 	ld a, [$c2cd]
 	xor $1
 	call Func_cdc0
-	call Func_27f5
+	call ClearSprites
 	ld a, [wNextVBlankFlags]
 	or $2
 	ld [wNextVBlankFlags], a
@@ -22899,7 +23185,7 @@ Func_d8ca: ; d8ca (3:58ca)
 	jp Func_d938
 
 Func_d8cd: ; d8cd (3:58cd)
-	call Func_27f5
+	call ClearSprites
 	ld a, [$c2cd]
 	xor $1
 	ld [$c2cd], a
@@ -23362,7 +23648,7 @@ Data_dc2a: ; dc2a
 
 Func_dc2c: ; dc2c (3:5c2c)
 	push hl
-	call Func_27f5
+	call ClearSprites
 	ld a, [wNextVBlankFlags]
 	or $2
 	ld [wNextVBlankFlags], a
@@ -23389,7 +23675,7 @@ Func_dc2c: ; dc2c (3:5c2c)
 	call Func_f723
 	pop hl
 	call Func_f723
-	call Func_27f5
+	call ClearSprites
 	callba_hli Func_5d113
 	ld hl, Data_dc2a
 	call Func_f723
@@ -23449,7 +23735,7 @@ Func_dcf3: ; dcf3 (3:5cf3)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, Data_c5dd
+	ld de, Data_c669 - 2 * $46
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -23522,7 +23808,7 @@ Func_dd5a: ; dd5a
 	ret
 
 Data_dd63: ; dd63
-	ds $4
+	dlong 0
 
 RandomRange: ; dd67 (3:5d67)
 ; Updates the RNG and returns a random byte less than a.
@@ -23539,7 +23825,7 @@ RandomRange: ; dd67 (3:5d67)
 	ld hl, Data_dd63
 	ld bc, $4
 	call MemCopy
-	read_hl_from $c237
+	read_hl_from wRNGState
 	ld de, $6d
 	call MultiplyHLbyDE
 	ld de, $3fd
@@ -23547,14 +23833,14 @@ RandomRange: ; dd67 (3:5d67)
 	ld a, h
 	and $7f
 	ld h, a
-	write_hl_to $c237
-	read_hl_from $c237
+	write_hl_to wRNGState
+	read_hl_from wRNGState
 	ld de, $100
 	call DivideHLByDESigned
 	ld a, l
 	ld hl, sp+$4
 	ld [hl], a
-	read_hl_from $c237
+	read_hl_from wRNGState
 	ld de, $100
 	call DivideHLByDESigned
 	ld hl, sp+$5
@@ -24158,7 +24444,7 @@ Func_e15d: ; e15d (3:615d)
 	or $10
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
-	call Func_27f5
+	call ClearSprites
 	ld a, [wNextVBlankFlags]
 	or $2
 	ld [wNextVBlankFlags], a
@@ -25036,7 +25322,7 @@ Func_e784: ; e784 (3:6784)
 
 Func_e787: ; e787
 	push hl
-	call Func_27f5
+	call ClearSprites
 	pop hl
 	ret
 
@@ -26555,7 +26841,7 @@ Func_f15a: ; f15a (3:715a)
 	set_farcall_addrs_hli Func_17c57
 	pop hl
 	call FarCall
-	call Func_27f5
+	call ClearSprites
 	ld a, [wNextVBlankFlags]
 	or $2
 	ld [wNextVBlankFlags], a
@@ -27803,7 +28089,7 @@ Func_f91f: ; f91f (3:791f)
 	jp Func_f91f
 
 Func_f980: ; f980 (3:7980)
-	call Func_27f5
+	call ClearSprites
 	ld hl, $e5
 	add hl, sp
 	push de
@@ -27966,7 +28252,7 @@ Func_fa81: ; fa81 (3:7a81)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, $48
+	ld hl, $68
 	add hl, de
 	write_hl_to_sp_plus $32
 	read_hl_from_sp_plus $32
@@ -100504,7 +100790,7 @@ Func_6048c: ; 6048c (18:448c)
 	jp Func_60386
 
 Func_60499: ; 60499 (18:4499)
-	call Func_27f5
+	call ClearSprites
 	ld hl, sp+$7e
 	push de
 	push hl
@@ -119300,7 +119586,7 @@ Func_6d641: ; 6d641 (1b:5641)
 	ld de, $1f1f
 	ld hl, $0
 	call FarCall
-	call Func_27f5
+	call ClearSprites
 	ld a, [$c2cd]
 	or a
 	jp nz, Func_6d67e
@@ -122842,7 +123128,7 @@ Func_6eb36: ; 6eb36 (1b:6b36)
 	ld hl, $8ab0
 	ld bc, $30
 	call FarRequestVideoData
-	call Func_27f5
+	call ClearSprites
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -148313,8 +148599,17 @@ Func_fbd5e: ; fbd5e
 	dr $fbd5e, $fbfcd
 
 SECTION "Bank 3f", ROMX, BANK [$3f]
+	dr $fc000, $fc081
+
+TitleScreenRandom: ; fc081
+	push af
+	set_farcall_addrs_hli RandomRange
+	pop af
+	call FarCall
+	ret
+
 IF DEF(SUN)
-	dr $fc000, $fd213
+	dr $fc092, $fd213
 
 Func_fd213: ; fd213
 	dr $fd213, $fd314
@@ -148326,7 +148621,7 @@ Func_fe102: ; fe102
 	dr $fe102, $100000
 ENDC
 IF DEF(STAR)
-	dr $fc000, $fd211
+	dr $fc092, $fd211
 
 Func_fd213: ; fd213
 	dr $fd211, $fd312
