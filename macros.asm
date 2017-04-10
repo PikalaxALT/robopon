@@ -228,3 +228,16 @@ walle: MACRO ; meme
 	ENDR
 	ENDM
 
+reg8swap: MACRO
+	ld a, \1
+	ld \1, \2
+	ld \2, a
+	ENDM
+
+reg16swap: MACRO
+	push \1
+	push \2
+	pop \1
+	pop \2
+	ENDM
+

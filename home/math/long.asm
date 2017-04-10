@@ -36,10 +36,7 @@ BitwiseXorLongsFromStack:
 	ld hl, $6
 	add hl, sp
 BitwiseXorLongs:
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
 	ld a, [de]
@@ -63,10 +60,7 @@ BitwiseXorLongs:
 	dec de
 	dec de
 	dec de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop bc
 	pop af
 	pop af
@@ -77,10 +71,7 @@ BitwiseOrLongsFromStack:
 	ld hl, $6
 	add hl, sp
 BitwiseOrLongs:
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
 	ld a, [de]
@@ -104,10 +95,7 @@ BitwiseOrLongs:
 	dec de
 	dec de
 	dec de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop bc
 	pop af
 	pop af
@@ -118,10 +106,7 @@ BitwiseAndLongsFromStack: ; 3343 (0:3343)
 	ld hl, $6
 	add hl, sp
 BitwiseAndLongs:
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
 	ld a, [de]
@@ -145,10 +130,7 @@ BitwiseAndLongs:
 	dec de
 	dec de
 	dec de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop bc
 	pop af
 	pop af
@@ -337,10 +319,7 @@ DivideLongSigned: ; 3428 (0:3428)
 	push af
 	call AbsoluteValueLong
 	pop af
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $5
 	add hl, sp
 	xor [hl]
@@ -351,10 +330,7 @@ DivideLongSigned: ; 3428 (0:3428)
 	dec hl
 	or a
 	call AbsoluteValueLong
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call DivideLong
 	pop af
 	call AbsoluteValueLong
@@ -563,10 +539,7 @@ SubtractLongsFromStack:
 	ld hl, $6
 	add hl, sp
 SubtractLongs:
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
 	ld a, [de]
@@ -590,10 +563,7 @@ SubtractLongs:
 	dec de
 	dec de
 	dec de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop bc
 	pop af
 	pop af
@@ -604,10 +574,7 @@ AddLongsFromStack:
 	ld hl, $6
 	add hl, sp
 AddLongs: ; 3553 (0:3553)
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
 	ld a, [de]
@@ -631,10 +598,7 @@ AddLongs: ; 3553 (0:3553)
 	dec de
 	dec de
 	dec de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop bc
 	pop af
 	pop af
@@ -647,20 +611,14 @@ CompareStackLongs_Signed: ; 3579 (0:3579)
 ; takes into account sign of each
 	ld hl, $9
 	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $5
 	add hl, sp
 	ld a, [de]
 	xor [hl]
 	bit 7, a
 	jp z, compare_stack_longs
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	jp compare_stack_longs
 
 CompareStackLongs: ; 3593 (0:3593)
@@ -668,10 +626,7 @@ CompareStackLongs: ; 3593 (0:3593)
 ; return c if de < hl
 	ld hl, $9
 	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $5
 	add hl, sp
 compare_stack_longs
@@ -682,10 +637,7 @@ compare_stack_longs
 	add hl, sp
 	pop af
 	ld sp, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	jp hl
 
 CompareLong: ; 35af (0:35af)

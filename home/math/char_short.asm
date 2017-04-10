@@ -54,22 +54,13 @@ RightShiftPointer:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call RightShiftHL
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld [hl], d
 	dec hl
 	ld [hl], e
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop de
 	ret
 
@@ -103,22 +94,13 @@ LeftShiftPointer:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call LeftShiftHL
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld [hl], d
 	dec hl
 	ld [hl], e
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop de
 	ret
 
@@ -165,18 +147,12 @@ DividePointerByDESigned: ; *s16
 	ld h, [hl]
 	ld l, a
 	call DivideHLByDESigned
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop hl
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ret
 
 DividePointerByDE: ; *u16
@@ -186,18 +162,12 @@ DividePointerByDE: ; *u16
 	ld h, [hl]
 	ld l, a
 	call DivideHLbyDE
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop hl
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ret
 
 DivideAbyB: ; 36af (0:36af)
@@ -230,28 +200,16 @@ DivideHLByDESigned: ; 36c6 (0:36c6)
 	xor d
 	push af
 	call .AbsoluteValueHL
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call .AbsoluteValueHL
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call DivideHLbyDE
 	pop af
 	call .CorrectSignOfHL
 	pop af
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call .CorrectSignOfHL
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ret
 
 .CorrectSignOfHL
@@ -284,25 +242,16 @@ DivideHLbyDE: ; 3706 (0:3706)
 ; returns quotient hl and remainder de
 	ld b, d
 	ld c, e
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $0
 	ld a, $10
 .loop
 	push af
 	add hl, hl
 	xor a
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	adc l
 	sub c
 	ld l, a
@@ -317,10 +266,7 @@ DivideHLbyDE: ; 3706 (0:3706)
 	pop af
 	dec a
 	jp nz, .loop
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ret
 
 MultiplyAbyB:
@@ -349,17 +295,11 @@ MultiplyPointerByDE:
 	ld l, a
 	call MultiplyHLbyDE
 	pop de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ret
 
 MultiplyHLbyDE: ; 3759 (0:3759)
@@ -370,15 +310,9 @@ MultiplyHLbyDE: ; 3759 (0:3759)
 	ld a, $10
 .loop
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	jp nc, .next
 	add hl, bc
 .next

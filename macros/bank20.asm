@@ -42,10 +42,7 @@ Func_80042_\1: ; 80042 (20:4042)
 	ld b, h
 	read_hl_from_sp_plus $12
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$4
 	ld bc, $b
 	call CopyFromDEtoHL
@@ -111,10 +108,7 @@ Func_800c8_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld [hl], a
@@ -154,10 +148,7 @@ Func_800ff_\1: ; 800ff (20:40ff)
 	ld b, h
 	read_hl_from_sp_plus $14
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$4
 	ld bc, $e
 	call CopyFromDEtoHL
@@ -321,10 +312,7 @@ Func_8030d_\1: ; 8030d (20:430d)
 	pop hl
 	ld c, e
 	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, BANK(Func_802ef_\1)
 	call FarCall
 	or a
@@ -366,10 +354,7 @@ Func_80364_\1: ; 80364 (20:4364)
 	pop hl
 	ld c, e
 	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, BANK(Func_80347_\1)
 	call FarCall
 	or a
@@ -411,10 +396,7 @@ Func_803bb_\1: ; 803bb (20:43bb)
 	pop hl
 	ld c, e
 	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, BANK(Func_8039e_\1)
 	call FarCall
 	or a
@@ -456,10 +438,7 @@ Func_80412_\1: ; 80412 (20:4412)
 	pop hl
 	ld c, e
 	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, BANK(Func_803f5_\1)
 	call FarCall
 	or a
@@ -572,10 +551,7 @@ Func_80519_\1: ; 80519 (20:4519)
 	pop bc
 	pop hl
 	push bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$2
 	call CopyUntilNull
 	set_farcall_addrs_hli Func_ac36
@@ -645,10 +621,7 @@ Func_805b2_\1: ; 805b2 (20:45b2)
 	pop bc
 	pop hl
 	push bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$2
 	call CopyUntilNull
 	set_farcall_addrs_hli Func_aca4
@@ -775,10 +748,7 @@ Func_806dd_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld de, $c
@@ -884,10 +854,7 @@ Func_80799_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld de, $c
@@ -912,10 +879,7 @@ Func_80799_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -936,10 +900,7 @@ Func_807e7_\1: ; 807e7 (20:47e7)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld de, $c
@@ -1001,10 +962,7 @@ Func_80828_\1: ; 80828 (20:4828)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1031,10 +989,7 @@ Func_8085f_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld de, $c
@@ -1060,10 +1015,7 @@ Func_8085f_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1072,10 +1024,7 @@ Func_8085f_\1:
 Func_808ad_\1: ; 808ad (20:48ad)
 	pop hl
 	push hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1098,10 +1047,7 @@ Func_808c7_\1: ; 808c7 (20:48c7)
 Func_808cb_\1: ; 808cb (20:48cb)
 	push bc
 	call GetHLAtSPPlus4
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1109,10 +1055,7 @@ Func_808cb_\1: ; 808cb (20:48cb)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_80498_\1
 	pop bc
 	ld hl, sp+$3
@@ -1120,10 +1063,7 @@ Func_808cb_\1: ; 808cb (20:48cb)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1152,10 +1092,7 @@ Func_808fc_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld de, $c
@@ -1181,10 +1118,7 @@ Func_808fc_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1193,10 +1127,7 @@ Func_808fc_\1:
 Func_8094a_\1: ; 8094a (20:494a)
 	pop hl
 	push hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1219,10 +1150,7 @@ Func_80964_\1: ; 80964 (20:4964)
 Func_80968_\1: ; 80968 (20:4968)
 	push bc
 	call GetHLAtSPPlus4
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1230,10 +1158,7 @@ Func_80968_\1: ; 80968 (20:4968)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_804a9_\1
 	pop bc
 	ld hl, sp+$3
@@ -1241,10 +1166,7 @@ Func_80968_\1: ; 80968 (20:4968)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1273,10 +1195,7 @@ Func_80999_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld de, $c
@@ -1302,10 +1221,7 @@ Func_80999_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1327,10 +1243,7 @@ Func_80999_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop de
 	call Func_805b2_\1
 	or a
@@ -1351,10 +1264,7 @@ Func_80999_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop de
 	call Func_80519_\1
 	ld hl, sp+$3
@@ -1362,10 +1272,7 @@ Func_80999_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1388,10 +1295,7 @@ Func_80a3e_\1: ; 80a3e (20:4a3e)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop de
 	call Func_80519_\1
 Func_80a5a_\1: ; 80a5a (20:4a5a)
@@ -1414,10 +1318,7 @@ Func_80a5d_\1: ; 80a5d (20:4a5d)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop de
 	call Func_80519_\1
 Func_80a79_\1: ; 80a79 (20:4a79)
@@ -1441,10 +1342,7 @@ Func_80a7c_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld de, $c
@@ -1470,10 +1368,7 @@ Func_80a7c_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1488,10 +1383,7 @@ Func_80a7c_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_804ba_\1
 	or a
 	jp nz, Func_80b09_\1
@@ -1502,20 +1394,14 @@ Func_80a7c_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_80498_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1533,10 +1419,7 @@ Func_80b09_\1: ; 80b09 (20:4b09)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_80498_\1
 Func_80b19_\1: ; 80b19 (20:4b19)
 	jp Func_80b2a_\1
@@ -1549,10 +1432,7 @@ Func_80b1c_\1: ; 80b1c (20:4b1c)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_80498_\1
 Func_80b2a_\1: ; 80b2a (20:4b2a)
 	pop bc
@@ -1575,10 +1455,7 @@ Func_80b2d_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	ld de, $c
@@ -1604,10 +1481,7 @@ Func_80b2d_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1622,10 +1496,7 @@ Func_80b2d_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_804ca_\1
 	or a
 	jp nz, Func_80bba_\1
@@ -1636,20 +1507,14 @@ Func_80b2d_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_804a9_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c776
 	add hl, de
 	inc hl
@@ -1667,10 +1532,7 @@ Func_80bba_\1: ; 80bba (20:4bba)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_804a9_\1
 Func_80bca_\1: ; 80bca (20:4bca)
 	jp Func_80bdb_\1
@@ -1683,10 +1545,7 @@ Func_80bcd_\1: ; 80bcd (20:4bcd)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	call Func_804a9_\1
 Func_80bdb_\1: ; 80bdb (20:4bdb)
 	pop bc
@@ -1707,10 +1566,7 @@ Func_80bde_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	inc hl
@@ -1729,10 +1585,7 @@ Func_80bde_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from $c774
 	add hl, de
 	inc hl
@@ -1839,10 +1692,7 @@ Func_80ce7_\1: ; 80ce7 (20:4ce7)
 	pop de
 	pop hl
 	ld c, e
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, BANK(Func_80ce7_\1)
 	call FarCall
 	ret
@@ -1878,10 +1728,7 @@ Func_80d33_\1: ; 80d33 (20:4d33)
 	pop de
 	pop hl
 	ld c, e
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, BANK(Func_80d24_\1)
 	call FarCall
 Func_80d4c_\1: ; 80d4c (20:4d4c)
@@ -1980,10 +1827,7 @@ Func_80de2_\1: ; 80de2 (20:4de2)
 	pop hl
 	ld c, e
 	ld b, d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, BANK(Func_80dd3_\1)
 	call FarCall
 	ld l, a
@@ -2178,10 +2022,7 @@ Func_80fa5_\1:
 	add sp, -$66
 	set_farcall_addrs_hli Func_1c11
 	ld hl, sp+$0
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $66
 	call FarCall
 	set_farcall_addrs_hli Func_1c27
@@ -2190,15 +2031,9 @@ Func_80fa5_\1:
 	read_hl_from_sp_plus $6a
 	pop de
 	call FarCall
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	add sp, $68
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ret
 
 Func_80fe0_\1:

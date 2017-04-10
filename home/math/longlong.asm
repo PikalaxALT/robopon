@@ -118,10 +118,7 @@ SubtractArbitrarySize: ; 3230 (0:3230)
 	push hl
 	push de
 	push bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	and a
 .loop
 	ld a, [de]
@@ -140,10 +137,7 @@ AddArbitrarySize: ; 3245 (0:3245)
 	push hl
 	push de
 	push bc
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	and a
 .loop
 	ld a, [de]
@@ -160,10 +154,7 @@ AddArbitrarySize: ; 3245 (0:3245)
 
 StackCopyS80:
 	pop hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, -10
 	add hl, sp
 	ld sp, hl
@@ -175,10 +166,7 @@ StackCopyS80:
 	inc hl
 	dec c
 	jp nz, .loop
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	jp hl
 
 RetrieveS80FromStack:
