@@ -23525,6 +23525,9 @@ Data_dd63: ; dd63
 	ds $4
 
 RandomRange: ; dd67 (3:5d67)
+; Updates the RNG and returns a random byte less than a.
+; The RNG is a 15-bit integer seeded at 0x000d.
+; The update function is state = (state * 0x6d + 0x3fd) & 0x7fff.
 	push bc
 	push bc
 	push af
