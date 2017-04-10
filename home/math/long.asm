@@ -1,4 +1,4 @@
-PutLongFromStackToHL: ; 32d1 (0:32d1)
+PutLongFromStackToHL:: ; 32d1 (0:32d1)
 	pop bc
 	pop de
 	ld [hl], e
@@ -15,7 +15,7 @@ PutLongFromStackToHL: ; 32d1 (0:32d1)
 	push bc
 	ret
 
-PutLongFromHLOnStack: ; 32e0 (0:32e0)
+PutLongFromHLOnStack:: ; 32e0 (0:32e0)
 	pop bc
 	inc hl
 	inc hl
@@ -32,10 +32,10 @@ PutLongFromHLOnStack: ; 32e0 (0:32e0)
 	push bc
 	ret
 
-BitwiseXorLongsFromStack:
+BitwiseXorLongsFromStack::
 	ld hl, $6
 	add hl, sp
-BitwiseXorLongs:
+BitwiseXorLongs::
 	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
@@ -67,10 +67,10 @@ BitwiseXorLongs:
 	push bc
 	ret
 
-BitwiseOrLongsFromStack:
+BitwiseOrLongsFromStack::
 	ld hl, $6
 	add hl, sp
-BitwiseOrLongs:
+BitwiseOrLongs::
 	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
@@ -102,10 +102,10 @@ BitwiseOrLongs:
 	push bc
 	ret
 
-BitwiseAndLongsFromStack: ; 3343 (0:3343)
+BitwiseAndLongsFromStack:: ; 3343 (0:3343)
 	ld hl, $6
 	add hl, sp
-BitwiseAndLongs:
+BitwiseAndLongs::
 	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
@@ -137,10 +137,10 @@ BitwiseAndLongs:
 	push bc
 	ret
 
-ComplementLongFromStack:
+ComplementLongFromStack::
 	ld hl, $2
 	add hl, sp
-ComplementLong:
+ComplementLong::
 	ld a, [hl]
 	cpl
 	ld [hl], a
@@ -158,10 +158,10 @@ ComplementLong:
 	ld [hl], a
 	ret
 
-LeftShiftLongFromStack:
+LeftShiftLongFromStack::
 	ld hl, $2
 	add hl, sp
-LeftShiftLong:
+LeftShiftLong::
 	ld a, b
 	ld c, [hl]
 	inc hl
@@ -211,10 +211,10 @@ LeftShiftLong:
 	ld [hl], c
 	ret
 
-RightShiftLongFromStack:
+RightShiftLongFromStack::
 	ld hl, $2
 	add hl, sp
-RightShiftLong: ; 33bd (0:33bd)
+RightShiftLong:: ; 33bd (0:33bd)
 	ld a, b
 	ld c, [hl]
 	inc hl
@@ -265,7 +265,7 @@ RightShiftLong: ; 33bd (0:33bd)
 	ld [hl], c
 	ret
 
-StackDivideLongSigned_KeepRemainder: ; 33f2 (0:33f2)
+StackDivideLongSigned_KeepRemainder:: ; 33f2 (0:33f2)
 	ld hl, $6
 	add hl, sp
 	push hl
@@ -305,10 +305,10 @@ StackDivideLongSigned_KeepRemainder: ; 33f2 (0:33f2)
 	push bc
 	ret
 
-StackDivideLongSigned: ; 3424 (0:3424)
+StackDivideLongSigned:: ; 3424 (0:3424)
 	ld hl, $6
 	add hl, sp
-DivideLongSigned: ; 3428 (0:3428)
+DivideLongSigned:: ; 3428 (0:3428)
 	push hl
 	inc hl
 	inc hl
@@ -340,7 +340,7 @@ DivideLongSigned: ; 3428 (0:3428)
 	push bc
 	ret
 
-StackDivideLong_KeepRemainder:
+StackDivideLong_KeepRemainder::
 	ld hl, $6
 	add hl, sp
 	push af
@@ -361,7 +361,7 @@ StackDivideLong_KeepRemainder:
 	push bc
 	ret
 
-DivideLong: ; 346d (0:346d)
+DivideLong:: ; 346d (0:346d)
 ; remainder bcde
 	ld bc, $0
 	ld d, b
@@ -433,10 +433,10 @@ DivideLong: ; 346d (0:346d)
 	jp nz, .loop
 	ret
 
-DivideLongsFromStack:
+DivideLongsFromStack::
 	ld hl, $6
 	add hl, sp
-DivideLongs:
+DivideLongs::
 	push af
 	call DivideLong
 	pop af
@@ -446,10 +446,10 @@ DivideLongs:
 	push bc
 	ret
 
-MultiplyLongsFromStack: ; 34c7 (0:34c7)
+MultiplyLongsFromStack:: ; 34c7 (0:34c7)
 	ld hl, $6
 	add hl, sp
-MultiplyLongs:
+MultiplyLongs::
 	ld bc, $0
 	ld d, b
 	ld e, b
@@ -535,10 +535,10 @@ MultiplyLongs:
 	push bc
 	ret
 
-SubtractLongsFromStack:
+SubtractLongsFromStack::
 	ld hl, $6
 	add hl, sp
-SubtractLongs:
+SubtractLongs::
 	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
@@ -570,10 +570,10 @@ SubtractLongs:
 	push bc
 	ret
 
-AddLongsFromStack:
+AddLongsFromStack::
 	ld hl, $6
 	add hl, sp
-AddLongs: ; 3553 (0:3553)
+AddLongs:: ; 3553 (0:3553)
 	reg16swap de, hl
 	ld hl, $2
 	add hl, sp
@@ -605,7 +605,7 @@ AddLongs: ; 3553 (0:3553)
 	push bc
 	ret
 
-CompareStackLongs_Signed: ; 3579 (0:3579)
+CompareStackLongs_Signed:: ; 3579 (0:3579)
 ; compare de=[sp+9] with hl=[sp+5]
 ; return c if de < hl
 ; takes into account sign of each
@@ -621,7 +621,7 @@ CompareStackLongs_Signed: ; 3579 (0:3579)
 	reg16swap de, hl
 	jp compare_stack_longs
 
-CompareStackLongs: ; 3593 (0:3593)
+CompareStackLongs:: ; 3593 (0:3593)
 ; compare de=[sp+9] with hl=[sp+5]
 ; return c if de < hl
 	ld hl, $9
@@ -640,7 +640,7 @@ compare_stack_longs
 	reg16swap de, hl
 	jp hl
 
-CompareLong: ; 35af (0:35af)
+CompareLong:: ; 35af (0:35af)
 	ld a, [de]
 	cp [hl]
 	ret nz
@@ -660,7 +660,7 @@ CompareLong: ; 35af (0:35af)
 	cp [hl]
 	ret
 
-AbsoluteValueLong: ; 35c1 (0:35c1)
+AbsoluteValueLong:: ; 35c1 (0:35c1)
 	push af
 	and $80
 	jp nz, .negate_long
@@ -672,11 +672,11 @@ AbsoluteValueLong: ; 35c1 (0:35c1)
 	call NegateLongHL
 	ret
 
-NegateLongOnStack: ; 35ce (0:35ce)
+NegateLongOnStack:: ; 35ce (0:35ce)
 ; take negative of long
 	ld hl, $2
 	add hl, sp
-NegateLongHL: ; 35d2 (0:35d2)
+NegateLongHL:: ; 35d2 (0:35d2)
 	xor a
 	sub [hl]
 	ld [hl], a

@@ -1,4 +1,4 @@
-PoncotsBaseStats:
+PoncotsBaseStats::
 	dw PoncotsBaseStatsGroup00 - PoncotsBaseStats
 	dw PoncotsBaseStatsGroup01 - PoncotsBaseStats
 	dw PoncotsBaseStatsGroup02 - PoncotsBaseStats

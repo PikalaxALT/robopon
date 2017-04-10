@@ -1,4 +1,4 @@
-LeftShiftArbitrarySize: ; 31b4 (0:31b4)
+LeftShiftArbitrarySize:: ; 31b4 (0:31b4)
 	push hl
 	push de
 	push bc
@@ -48,7 +48,7 @@ LeftShiftArbitrarySize: ; 31b4 (0:31b4)
 	pop hl
 	ret
 
-RightShiftArbitrarySize: ; 31ea (0:31ea)
+RightShiftArbitrarySize:: ; 31ea (0:31ea)
 	push hl
 	push de
 	push bc
@@ -96,7 +96,7 @@ RightShiftArbitrarySize: ; 31ea (0:31ea)
 	pop hl
 	ret
 
-IncrementArbitrarySize: ; 321e (0:321e)
+IncrementArbitrarySize:: ; 321e (0:321e)
 	push hl
 	push bc
 	inc c
@@ -114,7 +114,7 @@ IncrementArbitrarySize: ; 321e (0:321e)
 	pop hl
 	ret
 
-SubtractArbitrarySize: ; 3230 (0:3230)
+SubtractArbitrarySize:: ; 3230 (0:3230)
 	push hl
 	push de
 	push bc
@@ -133,7 +133,7 @@ SubtractArbitrarySize: ; 3230 (0:3230)
 	pop hl
 	ret
 
-AddArbitrarySize: ; 3245 (0:3245)
+AddArbitrarySize:: ; 3245 (0:3245)
 	push hl
 	push de
 	push bc
@@ -152,7 +152,7 @@ AddArbitrarySize: ; 3245 (0:3245)
 	pop hl
 	ret
 
-StackCopyS80:
+StackCopyS80::
 	pop hl
 	reg16swap de, hl
 	ld hl, -10
@@ -169,7 +169,7 @@ StackCopyS80:
 	reg16swap de, hl
 	jp hl
 
-RetrieveS80FromStack:
+RetrieveS80FromStack::
 	pop bc
 	ld a, $5
 .loop
@@ -185,7 +185,7 @@ RetrieveS80FromStack:
 	add hl, bc
 	ret
 
-RetrieveS64FromStack:
+RetrieveS64FromStack::
 	pop bc
 	ld a, $4
 .loop
@@ -201,12 +201,12 @@ RetrieveS64FromStack:
 	add hl, bc
 	ret
 
-PutS64OnStack:
+PutS64OnStack::
 	ld bc, $8
 	ld a, $4
 	jp putLongOrUltraLongOnStack
 
-PutS80OnStack:
+PutS80OnStack::
 	ld bc, $a
 	ld a, $5
 putLongOrUltraLongOnStack

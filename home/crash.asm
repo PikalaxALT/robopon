@@ -1,4 +1,4 @@
-Crash: ; 1d00 (0:1d00)
+Crash:: ; 1d00 (0:1d00)
 	push de
 	push bc
 	push hl
@@ -60,23 +60,23 @@ Crash: ; 1d00 (0:1d00)
 	pop bc
 	jp @ - 1 ; better luck next time
 
-Data_1d8d: ; 1d8d
+Data_1d8d:: ; 1d8d
 	db "<HIRA>あれ<KATA> ?$"
 
-Data_1d94: ; 1d94
+Data_1d94:: ; 1d94
 	db "<HIRA>てﾞんけﾞんきってね<KATA>!$"
 
-Data_1da2: ; 1da2
+Data_1da2:: ; 1da2
 	db "スタック:"
 	TX_SNUM
 	db "$"
 
-Data_1daa: ; 1daa
+Data_1daa:: ; 1daa
 	db "ロム:"
 	TX_SNUM
 	db "$"
 
-Data_1db0: ; 1db0
+Data_1db0:: ; 1db0
 	db "アトﾞレス:"
 	TX_SNUM
 	db "$"

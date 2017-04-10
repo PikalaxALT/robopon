@@ -1,4 +1,4 @@
-VBlank:
+VBlank::
 	push af
 	push hl
 	ld l, $ff

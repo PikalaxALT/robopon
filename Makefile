@@ -16,6 +16,8 @@ objs := \
 	gfx.o \
 	audio.o \
 	text.o \
+	maps.o \
+	home.o \
 	main.o
 
 sun_objs := $(objs:.o=_sun.o)

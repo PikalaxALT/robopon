@@ -1,4 +1,4 @@
-CompareHLtoBC: ; 35f8 (0:35f8)
+CompareHLtoBC:: ; 35f8 (0:35f8)
 ; signed
 ;     z: hl = bc
 ;     c: hl < bc
@@ -19,7 +19,7 @@ CompareHLtoBC: ; 35f8 (0:35f8)
 	cp c
 	ret
 
-CompareHLtoDE: ; 3608 (0:3608)
+CompareHLtoDE:: ; 3608 (0:3608)
 ; signed
 ;     z: hl = de
 ;     c: hl < de
@@ -40,7 +40,7 @@ CompareHLtoDE: ; 3608 (0:3608)
 	cp e
 	ret
 
-RightShiftA:
+RightShiftA::
 	inc b
 .loop
 	dec b
@@ -49,7 +49,7 @@ RightShiftA:
 	rra
 	jp .loop
 
-RightShiftPointer:
+RightShiftPointer::
 	push de
 	ld e, [hl]
 	inc hl
@@ -64,7 +64,7 @@ RightShiftPointer:
 	pop de
 	ret
 
-RightShiftHL: ; 3638 (0:3638)
+RightShiftHL:: ; 3638 (0:3638)
 ; hl >>= b
 	inc b
 .loop
@@ -79,7 +79,7 @@ RightShiftHL: ; 3638 (0:3638)
 	ld l, a
 	jp .loop
 
-LeftShiftA:
+LeftShiftA::
 ; a <<= b
 	inc b
 .loop
@@ -88,7 +88,7 @@ LeftShiftA:
 	add a
 	jp .loop
 
-LeftShiftPointer:
+LeftShiftPointer::
 ; * hl >>= b
 	push de
 	ld e, [hl]
@@ -104,7 +104,7 @@ LeftShiftPointer:
 	pop de
 	ret
 
-LeftShiftHL: ; 3664 (0:3664)
+LeftShiftHL:: ; 3664 (0:3664)
 ; hl >>= b
 	inc b
 .loop
@@ -113,7 +113,7 @@ LeftShiftHL: ; 3664 (0:3664)
 	add hl, hl
 	jp .loop
 
-ModuloPointerByDESigned: ; *s16
+ModuloPointerByDESigned:: ; *s16
 ; * hl %= de
 	push hl
 	ld a, [hl]
@@ -127,7 +127,7 @@ ModuloPointerByDESigned: ; *s16
 	ld [hl], d
 	ret
 
-ModuloPointerByDE: ; *u16
+ModuloPointerByDE:: ; *u16
 	push hl
 	ld a, [hl]
 	inc hl
@@ -140,7 +140,7 @@ ModuloPointerByDE: ; *u16
 	ld [hl], d
 	ret
 
-DividePointerByDESigned: ; *s16
+DividePointerByDESigned:: ; *s16
 	push hl
 	ld a, [hl]
 	inc hl
@@ -155,7 +155,7 @@ DividePointerByDESigned: ; *s16
 	reg16swap de, hl
 	ret
 
-DividePointerByDE: ; *u16
+DividePointerByDE:: ; *u16
 	push hl
 	ld a, [hl]
 	inc hl
@@ -170,7 +170,7 @@ DividePointerByDE: ; *u16
 	reg16swap de, hl
 	ret
 
-DivideAbyB: ; 36af (0:36af)
+DivideAbyB:: ; 36af (0:36af)
 ; dividend a, divisor b
 ; returns quotient a, remainder b
 	push hl
@@ -193,7 +193,7 @@ DivideAbyB: ; 36af (0:36af)
 	pop hl
 	ret
 
-DivideHLByDESigned: ; 36c6 (0:36c6)
+DivideHLByDESigned:: ; 36c6 (0:36c6)
 	ld a, h
 	or a
 	push af
@@ -228,7 +228,7 @@ DivideHLByDESigned: ; 36c6 (0:36c6)
 	ld a, h
 	and $80
 	ret z
-NegativeHL:
+NegativeHL::
 	dec hl
 	ld a, l
 	cpl
@@ -238,7 +238,7 @@ NegativeHL:
 	ld h, a
 	ret
 
-DivideHLbyDE: ; 3706 (0:3706)
+DivideHLbyDE:: ; 3706 (0:3706)
 ; returns quotient hl and remainder de
 	ld b, d
 	ld c, e
@@ -269,7 +269,7 @@ DivideHLbyDE: ; 3706 (0:3706)
 	reg16swap de, hl
 	ret
 
-MultiplyAbyB:
+MultiplyAbyB::
 ; a *= b
 	push hl
 	ld h, a
@@ -286,7 +286,7 @@ MultiplyAbyB:
 	pop hl
 	ret
 
-MultiplyPointerByDE:
+MultiplyPointerByDE::
 ; Store [hl] * de at hl
 	push hl
 	ld a, [hl]
@@ -302,7 +302,7 @@ MultiplyPointerByDE:
 	reg16swap de, hl
 	ret
 
-MultiplyHLbyDE: ; 3759 (0:3759)
+MultiplyHLbyDE:: ; 3759 (0:3759)
 ; hl *= de
 	ld b, h
 	ld c, l

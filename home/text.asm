@@ -29,7 +29,7 @@ LiteralStringInTree:: ; 1494 (0:1494)
 	call BankSwitch
 	ret
 
-CheckVideoTransferQueue: ; 14bf (0:14bf)
+CheckVideoTransferQueue:: ; 14bf (0:14bf)
 ; looks for the first occupied entry in wVideoTransferQueue
 ; returns nz if an entry was found
 	ld c, $4
@@ -49,14 +49,14 @@ CheckVideoTransferQueue: ; 14bf (0:14bf)
 .found
 	ret
 
-WaitVideoTransfer: ; 14d4 (0:14d4)
+WaitVideoTransfer:: ; 14d4 (0:14d4)
 ; blocks until wVideoTransferQueue is empty
 .loop
 	call CheckVideoTransferQueue
 	jr nz, .loop
 	ret
 
-Coord2TileMap: ; 14da (0:14da)
+Coord2TileMap:: ; 14da (0:14da)
 ; h = x
 ; l = y
 ; return hl = pointer
@@ -73,7 +73,7 @@ Coord2TileMap: ; 14da (0:14da)
 	jr nz, .asm_14e6
 	ret
 
-Coord2AttrMap:
+Coord2AttrMap::
 ; h = x
 ; l = y
 ; return hl = pointer
@@ -90,23 +90,23 @@ Coord2AttrMap:
 	jr nz, .asm_14f7
 	ret
 
-StartMapMusic: ; 14fc
+StartMapMusic:: ; 14fc
 	ld [wc2eb], a
 	jp Func_1aaf
 
-Func_1502: ; 1502
+Func_1502:: ; 1502
 	ld [wc2ec], a
 	jp Func_1ab4
 
-Func_1508: ; 1508
+Func_1508:: ; 1508
 	xor a
 	jr StartMapMusic
 
-Func_150b: ; 150b
+Func_150b:: ; 150b
 	xor a
 	jr Func_1502
 
-PlaceString: ; 150e (0:150e)
+PlaceString:: ; 150e (0:150e)
 ; source: on stack
 ; dest: screen at (wStringDestX, wStringDestY)
 ; additional arugments on stack, if applicable
@@ -124,14 +124,14 @@ PlaceString: ; 150e (0:150e)
 	ld c, l
 	ld b, h
 	pop hl
-PlaceNextCharacter:
+PlaceNextCharacter::
 	ld a, [de]
 	inc de
 	or a
 	jr nz, CheckDict
 	ret
 
-CheckDict:
+CheckDict::
 	cp $25
 	jp z, .SpecialCharacter
 	cp $28
@@ -355,7 +355,7 @@ CheckDict:
 	pop de
 	jp PlaceNextCharacter
 
-PrintCharacterFromTree:
+PrintCharacterFromTree::
 	ld a, [hROMBank]
 	push af
 	ld a, BANK(TextTreeBitstreams)

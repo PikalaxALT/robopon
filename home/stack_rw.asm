@@ -1,36 +1,36 @@
-WriteHLToSPPlus10: ; 3773 (0:3773)
+WriteHLToSPPlus10:: ; 3773 (0:3773)
 	ld de, $a
 	jp WriteHLToSPPlusDE
 
-WriteHLToSPPlus9:
+WriteHLToSPPlus9::
 	ld de, $9
 	jp WriteHLToSPPlusDE
 
-WriteHLToSPPlus8: ; 377f (0:377f)
+WriteHLToSPPlus8:: ; 377f (0:377f)
 	ld de, $8
 	jp WriteHLToSPPlusDE
 
-WriteHLToSPPlus7:
+WriteHLToSPPlus7::
 	ld de, $7
 	jp WriteHLToSPPlusDE
 
-WriteHLToSPPlus6: ; 378b (0:378b)
+WriteHLToSPPlus6:: ; 378b (0:378b)
 	ld de, $6
 	jp WriteHLToSPPlusDE
 
-WriteHLToSPPlus5: ; 3791 (0:3791)
+WriteHLToSPPlus5:: ; 3791 (0:3791)
 	ld de, $5
 	jp WriteHLToSPPlusDE
 
-WriteHLToSPPlus4: ; 3797 (0:3797)
+WriteHLToSPPlus4:: ; 3797 (0:3797)
 	ld de, $4
 	jp WriteHLToSPPlusDE
 
-WriteHLToSPPlus3:
+WriteHLToSPPlus3::
 	ld de, $3
 	jp WriteHLToSPPlusDE
 
-WriteHLToSPPlusParam16:
+WriteHLToSPPlusParam16::
 	push af
 	push de
 	push hl
@@ -68,7 +68,7 @@ WriteHLToSPPlusParam16:
 	ld l, e
 	pop de
 	pop af
-WriteHLToSPPlusDE: ; 37c7 (0:37c7)
+WriteHLToSPPlusDE:: ; 37c7 (0:37c7)
 	; write the previous value of hl at sp + param
 	reg16swap de, hl
 	add hl, sp
@@ -78,7 +78,7 @@ WriteHLToSPPlusDE: ; 37c7 (0:37c7)
 	reg16swap de, hl
 	ret
 
-WriteHLToSPPlusParam8: ; 37d4 (0:37d4)
+WriteHLToSPPlusParam8:: ; 37d4 (0:37d4)
 	push af
 	push de
 	push hl
@@ -124,39 +124,39 @@ WriteHLToSPPlusParam8: ; 37d4 (0:37d4)
 	reg16swap de, hl
 	ret
 
-GetHLAtSPPlus10: ; 3805 (0:3805)
+GetHLAtSPPlus10:: ; 3805 (0:3805)
 	ld hl, $a
 	jp GetHLAtSPPlusHL
 
-GetHLAtSPPlus9:
+GetHLAtSPPlus9::
 	ld hl, $9
 	jp GetHLAtSPPlusHL
 
-GetHLAtSPPlus8: ; 3811 (0:3811)
+GetHLAtSPPlus8:: ; 3811 (0:3811)
 	ld hl, $8
 	jp GetHLAtSPPlusHL
 
-GetHLAtSPPlus7:
+GetHLAtSPPlus7::
 	ld hl, $7
 	jp GetHLAtSPPlusHL
 
-GetHLAtSPPlus6: ; 381d (0:381d)
+GetHLAtSPPlus6:: ; 381d (0:381d)
 	ld hl, $6
 	jp GetHLAtSPPlusHL
 
-GetHLAtSPPlus5: ; 3823 (0:3823)
+GetHLAtSPPlus5:: ; 3823 (0:3823)
 	ld hl, $5
 	jp GetHLAtSPPlusHL
 
-GetHLAtSPPlus4: ; 3829 (0:3829)
+GetHLAtSPPlus4:: ; 3829 (0:3829)
 	ld hl, $4
 	jp GetHLAtSPPlusHL
 
-GetHLAtSPPlus3:
+GetHLAtSPPlus3::
 	ld hl, $3
 	jp GetHLAtSPPlusHL
 
-GetHLAtSPPlusParam16:
+GetHLAtSPPlusParam16::
 	pop hl
 	ld e, [hl]
 	inc hl
@@ -164,7 +164,7 @@ GetHLAtSPPlusParam16:
 	inc hl
 	push hl
 	reg16swap de, hl
-GetHLAtSPPlusHL: ; 383f (0:383f)
+GetHLAtSPPlusHL:: ; 383f (0:383f)
 	add hl, sp
 	ld e, [hl]
 	inc hl
@@ -172,7 +172,7 @@ GetHLAtSPPlusHL: ; 383f (0:383f)
 	reg16swap de, hl
 	ret
 
-GetHLAtSPPlusParam8: ; 3848 (0:3848)
+GetHLAtSPPlusParam8:: ; 3848 (0:3848)
 	pop hl
 	ld e, [hl]
 	inc hl
@@ -186,7 +186,7 @@ GetHLAtSPPlusParam8: ; 3848 (0:3848)
 	ld l, e
 	ret
 
-WriteHalfWordTo: ; 3855 (0:3855)
+WriteHalfWordTo:: ; 3855 (0:3855)
 ; s16 *dest
 ; s16 hl
 ; preserves registers
@@ -225,7 +225,7 @@ WriteHalfWordTo: ; 3855 (0:3855)
 	pop af
 	ret
 
-ReadHalfWordAt: ; 3875 (0:3875)
+ReadHalfWordAt:: ; 3875 (0:3875)
 ; s16 *dest
 ; preserves registers except hl
 	push af
