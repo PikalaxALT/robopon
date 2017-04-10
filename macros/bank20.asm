@@ -1828,7 +1828,7 @@ Func_80cc6_\1: ; 80cc6 (20:4cc6)
 
 Func_80cd7_\1:
 	push af
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	pop af
 	jp FarCall
 

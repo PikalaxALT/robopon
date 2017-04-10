@@ -2479,9 +2479,9 @@ Func_1a06: ; 1a06
 	inc e
 	ld b, h
 	ld c, l
-	jr .asm_1a19
+	jr .handleLoop
 
-.asm_1a0b
+.loop
 	ld a, [hl]
 	srl a
 	ld [hli], a
@@ -2492,14 +2492,14 @@ Func_1a06: ; 1a06
 	rr a
 	ld [hli], a
 	rr [hl]
-.asm_1a19
+.handleLoop
 	ld l, c
 	ld h, b
 	dec e
-	jr nz, .asm_1a0b
+	jr nz, .loop
 	ret
 
-Func_1a1f: ; 1a1f
+MultiplyULongAtHLByUShortDE: ; 1a1f
 	push bc
 	ld c, l
 	ld b, h
@@ -2518,8 +2518,7 @@ Func_1a1f: ; 1a1f
 	ld c, l
 	ld b, h
 	push de
-	call GetHLAtSPPlusParam8
-	db $8
+	read_hl_from_sp_plus $8
 	pop de
 	xor a
 	ld [hli], a
@@ -2532,44 +2531,44 @@ Func_1a1f: ; 1a1f
 	ld a, h
 	ld h, b
 	ld b, a
-.asm_1a44
+.main_loop
 	ld a, e
 	or d
-	jr z, .asm_1a6d
+	jr z, .done
 	srl d
 	rr e
 	push de
-	jr nc, .asm_1a5e
+	jr nc, .next
 	ccf
 	push bc
 	push hl
 	ld e, $4
-.asm_1a54
+.add_loop
 	ld a, [bc]
 	adc [hl]
 	ld [bc], a
 	dec bc
 	dec hl
 	dec e
-	jr nz, .asm_1a54
+	jr nz, .add_loop
 	pop hl
 	pop bc
-.asm_1a5e
+.next
 	push hl
 	ld e, $4
 	scf
 	ccf
-.asm_1a63
+.rotate_left
 	ld a, [hl]
 	rla
 	ld [hld], a
 	dec e
-	jr nz, .asm_1a63
+	jr nz, .rotate_left
 	pop hl
 	pop de
-	jr .asm_1a44
+	jr .main_loop
 
-.asm_1a6d
+.done
 	add sp, $6
 	ret
 
@@ -2704,7 +2703,7 @@ Func_1b28: ; 1b28 (0:1b28)
 	cp $11
 	jr z, .asm_1b52
 	di
-	predef Func_7e225
+	predef RTCUpdatePredef
 	ei
 	ld a, [wc01c]
 	cp $10
@@ -2715,7 +2714,7 @@ Func_1b28: ; 1b28 (0:1b28)
 
 .asm_1b52
 	di
-	predef Func_7e225
+	predef RTCUpdatePredef
 	ei
 	ld a, $1
 	ld [wc01c], a
@@ -3286,8 +3285,7 @@ Func_20e9: ; 20e9 (0:20e9)
 	cp [hl]
 	jp nc, Func_2101
 	push af
-	call GetHLAtSPPlusParam8
-	db $c
+	read_hl_from_sp_plus $c
 	ld a, [hl]
 	inc hl
 	call WriteHLToSPPlusParam8
@@ -3312,8 +3310,7 @@ Func_2101: ; 2101 (0:2101)
 	ld a, h
 	sbc b
 	ld b, a
-	call GetHLAtSPPlusParam8
-	db $c
+	read_hl_from_sp_plus $c
 	add hl, bc
 	call WriteHLToSPPlusParam8
 	db $c
@@ -3416,8 +3413,7 @@ Func_218f: ; 218f (0:218f)
 	push af
 	ld a, [bc]
 	inc bc
-	call GetHLAtSPPlusParam8
-	db $c
+	read_hl_from_sp_plus $c
 	ld [hl], a
 	inc hl
 	call WriteHLToSPPlusParam8
@@ -3440,8 +3436,7 @@ Func_21a7: ; 21a7 (0:21a7)
 	ld a, h
 	sbc b
 	ld b, a
-	call GetHLAtSPPlusParam8
-	db $c
+	read_hl_from_sp_plus $c
 	add hl, bc
 	call WriteHLToSPPlusParam8
 	db $c
@@ -3533,8 +3528,7 @@ Func_2230: ; 2230
 	push bc
 	push bc
 	push de
-	call GetHLAtSPPlusParam8
-	db $c
+	read_hl_from_sp_plus $c
 	ld a, l
 	and h
 	inc a
@@ -3548,13 +3542,11 @@ Func_2230: ; 2230
 	jp Func_225f
 
 Func_224f: ; 224f (0:224f)
-	call GetHLAtSPPlusParam8
-	db $c
+	read_hl_from_sp_plus $c
 	ld e, h
 	ld hl, sp+$4
 	ld [hl], e
-	call GetHLAtSPPlusParam8
-	db $c
+	read_hl_from_sp_plus $c
 	ld e, l
 	ld hl, sp+$3
 	ld [hl], e
@@ -4084,8 +4076,7 @@ Func_2578: ; 2578 (0:2578)
 	dec h
 	bit 7, h
 	jr nz, .asm_25a1
-	call GetHLAtSPPlusParam8
-	db $f
+	read_hl_from_sp_plus $f
 	ld [hl], $92
 	inc hl
 	call WriteHLToSPPlusParam8
@@ -4146,8 +4137,7 @@ Func_25eb: ; 25eb (0:25eb)
 	ld a, c
 	cp $6
 	jp nc, Func_2600
-	call GetHLAtSPPlusParam8
-	db $f
+	read_hl_from_sp_plus $f
 	ld [hl], $93
 	inc hl
 	call WriteHLToSPPlusParam8
@@ -4527,8 +4517,7 @@ Func_2801: ; 2801 (0:2801)
 	inc bc
 	call GetHLAtSPPlus8
 	push hl
-	call GetHLAtSPPlusParam8
-	db $c
+	read_hl_from_sp_plus $c
 	pop de
 	call Func_2124
 	pop bc
@@ -8712,8 +8701,7 @@ macro_6b94: MACRO
 	add hl, de
 	call WriteHLToSPPlusParam8
 	db \1
-	call GetHLAtSPPlusParam8
-	db \1
+	read_hl_from_sp_plus \1
 	push de
 	push hl
 	pop de
@@ -8727,8 +8715,7 @@ macro_6b94: MACRO
 	jp .done
 
 .check_negative
-	call GetHLAtSPPlusParam8
-	db \1
+	read_hl_from_sp_plus \1
 	inc h
 	dec h
 	bit 7, h
@@ -8832,8 +8819,7 @@ Func_6e1b: ; 6e1b
 	jp z, Func_6e6f
 	or a
 	jp nz, Func_6eb4
-	call GetHLAtSPPlusParam8
-	db $e
+	read_hl_from_sp_plus $e
 	jp Func_6eb4
 
 Func_6e6f: ; 6e6f (1:6e6f)
@@ -9127,7 +9113,7 @@ Func_7061: ; 7061 (1:7061)
 	or a
 	jp nz, Func_7090
 	push de
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	ld a, $64
 	call FarCall
 	cp $46
@@ -19503,7 +19489,7 @@ Func_b832: ; b832 (2:7832)
 
 Func_b845: ; b845 (2:7845)
 	push bc
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	ld a, $ff
 	call FarCall
 	ld hl, sp+$2c
@@ -19679,7 +19665,7 @@ Func_b96d: ; b96d (2:796d)
 	ld a, [hl]
 	or a
 	jp nz, Func_b98b
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	read_hl_from_sp_plus $30
 	ld a, l
 	call FarCall
@@ -19749,7 +19735,7 @@ Func_b9e9: ; b9e9 (2:79e9)
 	ld hl, sp+$34
 	cp [hl]
 	jp nc, Func_ba11
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	ld hl, sp+$34
 	ld a, [hl]
 	ld hl, sp+$33
@@ -20916,7 +20902,7 @@ Func_c985: ; c985 (3:4985)
 
 Func_c9de: ; c9de (3:49de)
 	ld a, $2
-	call Func_dd67
+	call RandomRange
 	add $2
 	ld hl, sp+$12
 	ld [hl], a
@@ -21971,7 +21957,7 @@ Func_d252: ; d252 (3:5252)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$12
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$13
 	ld e, [hl]
 	ld hl, sp+$14
@@ -22074,7 +22060,7 @@ Func_d300: ; d300 (3:5300)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$12
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$13
 	ld e, [hl]
 	ld hl, sp+$14
@@ -22271,7 +22257,7 @@ Func_d446: ; d446 (3:5446)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$12
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$13
 	ld e, [hl]
 	ld hl, sp+$14
@@ -22374,7 +22360,7 @@ Func_d4f4: ; d4f4 (3:54f4)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$12
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$13
 	ld e, [hl]
 	ld hl, sp+$14
@@ -22686,7 +22672,7 @@ Func_d6e2: ; d6e2 (3:56e2)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$2
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$3
 	ld c, [hl]
 	ld hl, sp+$4
@@ -23531,14 +23517,14 @@ Func_dd47: ; dd47
 
 Func_dd5a: ; dd5a
 	ld a, $64
-	call Func_dd67
+	call RandomRange
 	ld hl, $4000
 	ret
 
 Data_dd63: ; dd63
 	ds $4
 
-Func_dd67: ; dd67 (3:5d67)
+RandomRange: ; dd67 (3:5d67)
 	push bc
 	push bc
 	push af
@@ -23578,7 +23564,7 @@ Func_dd67: ; dd67 (3:5d67)
 	ld e, a
 	ld d, $0
 	ld hl, sp+$0
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$1
 	ld a, [hl]
 	pop bc
@@ -24412,7 +24398,7 @@ Func_e39a: ; e39a
 	ld de, Data_e342
 	add hl, de
 	pop de
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$0
 	ld a, [hl]
 	ld hl, sp+$1
@@ -27977,7 +27963,7 @@ Func_fa81: ; fa81 (3:7a81)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, Predef
+	ld hl, $48
 	add hl, de
 	write_hl_to_sp_plus $32
 	read_hl_from_sp_plus $32
@@ -28498,7 +28484,7 @@ Func_10000: ; 10000
 
 Func_10001: ; 10001
 	push af
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	pop af
 	jp FarCall
 
@@ -35584,7 +35570,7 @@ Func_1334b: ; 1334b (4:734b)
 	inc hl
 	ld d, [hl]
 	ld hl, sp+$0
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$1
 	ld c, [hl]
 	ld hl, sp+$0
@@ -35688,7 +35674,7 @@ Func_133ee: ; 133ee (4:73ee)
 	inc hl
 	ld d, [hl]
 	ld hl, sp+$0
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$1
 	ld c, [hl]
 	ld hl, sp+$0
@@ -39474,18 +39460,15 @@ Func_15887: ; 15887 (5:5887)
 	pop bc
 	ret
 
-Data_1588f: ; 1588f
-	sub l
-	ld e, b
-	xor [hl]
-	ld e, b
-	nop
-	nop
+Pointers_1588f:
+	dw Data_15895
+	dw Data_158ae
+	dw $0000
 
-Data_15895: ; 15895
+Data_15895:
 	db "フﾞート<HIRA>そﾞくは<KATA> ソフト<HIRA>の つけかえかﾞ<KATA>$"
 
-Data_158ae: ; 158ae
+Data_158ae:
 	db "<HIRA>てﾞきないよ<KATA>$"
 
 Func_158b7: ; 158b7
@@ -39496,7 +39479,7 @@ Func_158b7: ; 158b7
 	push hl
 	pop de
 	pop hl
-	ld hl, Data_1588f
+	ld hl, Pointers_1588f
 	ld bc, $6
 	call MemCopy
 	ld de, $19
@@ -45579,7 +45562,7 @@ Func_2034b: ; 2034b (8:434b)
 
 Func_2034d: ; 2034d (8:434d)
 	push af
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	pop af
 	call FarCall
 	ret
@@ -47032,7 +47015,7 @@ Func_20da8: ; 20da8 (8:4da8)
 	ld b, h
 	ld de, $64
 	ld hl, sp+$2
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$2
 	ld a, [hl]
 	ld hl, sp+$3
@@ -47205,7 +47188,7 @@ Func_20e75: ; 20e75 (8:4e75)
 	ld b, h
 	ld de, $64
 	ld hl, sp+$0
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	call GetHLAtSPPlus10
 	inc hl
 	inc hl
@@ -51188,7 +51171,7 @@ Func_229b9: ; 229b9 (8:69b9)
 	ld de, $64
 	ld hl, $ce
 	add hl, sp
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, $ce
 	add hl, sp
 	ld a, [hl]
@@ -54105,7 +54088,7 @@ Func_245ec: ; 245ec
 
 Func_24600: ; 24600 (9:4600)
 	push af
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	pop af
 	call FarCall
 	ret
@@ -54572,7 +54555,7 @@ Func_24985: ; 24985 (9:4985)
 	inc hl
 	ld d, [hl]
 	ld hl, Data_2479d
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$b
 	ld a, [hl]
 	ld hl, sp+$c
@@ -55201,7 +55184,7 @@ Func_24daf: ; 24daf (9:4daf)
 	inc hl
 	ld d, [hl]
 	ld hl, sp+$32
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	read_hl_from_sp_plus $38
 	ld de, $73
 	add hl, de
@@ -55309,7 +55292,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	inc hl
 	ld d, [hl]
 	ld hl, sp+$32
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	read_hl_from_sp_plus $38
 	ld de, $73
 	add hl, de
@@ -55455,7 +55438,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	inc hl
 	ld d, [hl]
 	ld hl, sp+$30
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	read_hl_from_sp_plus $36
 	ld de, $73
 	add hl, de
@@ -56914,7 +56897,7 @@ Func_259a4: ; 259a4 (9:59a4)
 	pop de
 	pop hl
 	ld hl, sp+$0
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$1
 	ld c, [hl]
 	ld hl, sp+$0
@@ -58562,7 +58545,7 @@ Func_26570: ; 26570 (9:6570)
 	inc hl
 	ld d, [hl]
 	ld hl, Data_264ed
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$14
 	ld a, [hl]
 	ld hl, sp+$15
@@ -58660,7 +58643,7 @@ Func_265d0: ; 265d0
 	inc hl
 	ld d, [hl]
 	ld hl, sp+$14
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$14
 	ld a, [hl]
 	ld hl, sp+$15
@@ -59625,7 +59608,7 @@ Func_26c02: ; 26c02 (9:6c02)
 	inc hl
 	ld d, [hl]
 	ld hl, sp+$18
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$18
 	ld a, [hl]
 	ld hl, sp+$19
@@ -60808,7 +60791,7 @@ Func_273c6: ; 273c6 (9:73c6)
 	ld b, h
 	ld de, $46
 	ld hl, sp+$0
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$1
 	ld a, [hl]
 	ld hl, sp+$4
@@ -60864,7 +60847,7 @@ Func_2741e: ; 2741e (9:741e)
 	ld b, h
 	ld de, $1e
 	ld hl, sp+$0
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$4
 	ld a, [hl]
 	ld hl, sp+$1
@@ -71435,7 +71418,7 @@ Func_4cf91: ; 4cf91 (13:4f91)
 	pop hl
 	ld hl, $1
 	call Func_4c1f6
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	ld a, $5
 	call FarCall
 	ld hl, sp+$8
@@ -76623,7 +76606,7 @@ Func_4f591: ; 4f591
 	jp z, Func_4f5dc
 	cp $46
 	jp nz, Func_4f5f8
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	ld a, $6
 	call FarCall
 	ld l, a
@@ -76634,7 +76617,7 @@ Func_4f591: ; 4f591
 	jp Func_4f5f8
 
 Func_4f5dc: ; 4f5dc (13:75dc)
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	ld a, $6
 	call FarCall
 	ld l, a
@@ -76656,7 +76639,7 @@ Func_4f5f8: ; 4f5f8 (13:75f8)
 	cp $43
 	jp nz, Func_4f655
 Func_4f613: ; 4f613 (13:7613)
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	ld a, $5
 	call FarCall
 	ld l, a
@@ -92675,7 +92658,7 @@ Func_57cf7: ; 57cf7 (15:7cf7)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$2
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$3
 	ld c, [hl]
 	ld hl, sp+$4
@@ -93456,7 +93439,7 @@ Func_5c03b:
 
 Func_5c04f: ; 5c04f (17:404f)
 	push af
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	pop af
 	call FarCall
 	ret
@@ -94920,7 +94903,7 @@ Func_5c9b4: ; 5c9b4 (17:49b4)
 	ld b, h
 	ld de, $46
 	ld hl, sp+$46
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$47
 	ld l, [hl]
 	ld h, $0
@@ -95203,7 +95186,7 @@ Func_5cb9d: ; 5cb9d (17:4b9d)
 	pop de
 	pop hl
 	ld hl, sp+$46
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$46
 	ld a, [hl]
 	ld hl, sp+$47
@@ -102843,7 +102826,7 @@ Func_61802: ; 61802 (18:5802)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$19
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$1b
 	ld a, [hl]
 	and $80
@@ -102870,7 +102853,7 @@ Func_6182e: ; 6182e (18:582e)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$17
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$19
 	ld a, [hl]
 	and $80
@@ -103258,7 +103241,7 @@ Func_61ae8: ; 61ae8 (18:5ae8)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$a
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$c
 	ld a, [hl]
 	and $80
@@ -103285,7 +103268,7 @@ Func_61b14: ; 61b14 (18:5b14)
 	ld b, h
 	ld de, $30
 	ld hl, sp+$8
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$a
 	ld a, [hl]
 	and $80
@@ -116249,7 +116232,7 @@ Func_6c000:
 
 Func_6c001:
 	push af
-	set_farcall_addrs_hli Func_dd67
+	set_farcall_addrs_hli RandomRange
 	pop af
 	jp FarCall
 
@@ -118371,7 +118354,7 @@ Func_6cf4b: ; 6cf4b (1b:4f4b)
 	pop de
 	pop hl
 	ld hl, sp+$78
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$78
 	ld l, [hl]
 	ld h, $0
@@ -118434,7 +118417,7 @@ Func_6cfb8: ; 6cfb8 (1b:4fb8)
 	pop de
 	pop hl
 	ld hl, sp+$76
-	call Func_1a1f
+	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$76
 	ld l, [hl]
 	ld h, $0
@@ -131116,7 +131099,7 @@ Pointers_7c000: ; 7c000
 	dw Func_7e32f
 	dw Func_7e4f4
 	dw Func_7e523
-	dw Func_7e225
+	dw RTCUpdatePredef
 	dw Func_7c17e
 	dw Func_7d4e0
 	dw Func_7d3c9
@@ -136941,7 +136924,7 @@ Func_7e205: ; 7e205 (1f:6205)
 	pop af
 	ret
 
-Func_7e225: ; 7e225 (1f:6225)
+RTCUpdatePredef: ; 7e225 (1f:6225)
 	ld a, [wc01c]
 	rlca
 	ret c
