@@ -692,9 +692,7 @@ MusicCommandProcessor_\1: ; 7041f (1c:441f)
 	inc a
 	cp d
 	jr nc, .no_rotate_regs
-	ld e, a
-	ld a, d
-	ld d, e
+		reg8rot e, a, d
 .no_rotate_regs
 	ld e, a
 .shift_left

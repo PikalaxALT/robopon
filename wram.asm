@@ -560,6 +560,7 @@ wOAMBuffer2:: ; c400
 	oam_ram wOAM2_25
 	oam_ram wOAM2_26
 	oam_ram wOAM2_27
+wOAMBuffer2End::
 
 SECTION "Tile Map", WRAM0 [$c4a0]
 wTileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT

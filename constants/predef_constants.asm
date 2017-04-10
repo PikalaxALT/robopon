@@ -8,7 +8,7 @@ predef_const: MACRO
 	ENDM
 
 	const_def
-	predef_const Func_00e9 ; 00
+	predef_const InitCartIRMode ; 00
 	predef_const Func_0150
 	predef_const CopyPredef
 	predef_const Func_7af00

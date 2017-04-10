@@ -2525,8 +2525,8 @@ MultiplyULongAtHLByUShortDE: ; 1a1f
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
-	reg8swap l, c
-	reg8swap h, b
+	reg8rot a, l, c
+	reg8rot a, h, b
 .main_loop
 	ld a, e
 	or d
@@ -7718,12 +7718,8 @@ ENDR
 	ld d, h
 	ld bc, $7
 	add hl, bc
-	ld c, l
-	ld l, e
-	ld e, c
-	ld c, h
-	ld h, d
-	ld d, c
+	reg8rot c, l, e
+	reg8rot c, h, d
 	ld c, $8
 .loop2
 	push hl
@@ -17207,6 +17203,7 @@ Func_acbc: ; acbc (2:6cbc)
 	ret
 
 Func_acc8: ; acc8
+; arguments: 11-byte struct on stack
 	push hl
 	push bc
 	call GetHLAtSPPlus4
@@ -17229,22 +17226,22 @@ Func_acc8: ; acc8
 	pop de
 	push hl
 	xor a
-Func_acf0: ; acf0 (2:6cf0)
+.loop
 	call GetHLAtSPPlus4
 	inc hl
 	inc hl
 	inc hl
 	cp [hl]
-	jp nc, Func_ad28
+	jp nc, .done
 	push af
 	ld c, $0
-Func_acfd: ; acfd (2:6cfd)
+.loop2
 	ld a, c
 	call GetHLAtSPPlus6
 	inc hl
 	inc hl
 	cp [hl]
-	jp nc, Func_ad16
+	jp nc, .next
 	call GetHLAtSPPlus4
 	ld e, c
 	ld d, $0
@@ -17253,9 +17250,9 @@ Func_acfd: ; acfd (2:6cfd)
 	or [hl]
 	ld [hl], a
 	inc c
-	jp Func_acfd
+	jp .loop2
 
-Func_ad16: ; ad16 (2:6d16)
+.next
 	call GetHLAtSPPlus4
 	ld a, [$c2d6]
 	ld e, a
@@ -17264,9 +17261,9 @@ Func_ad16: ; ad16 (2:6d16)
 	call WriteHLToSPPlus4
 	pop af
 	inc a
-	jp Func_acf0
+	jp .loop
 
-Func_ad28: ; ad28 (2:6d28)
+.done
 	call GetHLAtSPPlus4
 	push hl
 	ld hl, $c77c
@@ -102028,9 +102025,7 @@ asm_62d4b
 	add hl, bc
 	ld a, [hl]
 	or e
-	ld e, a
-	ld a, c
-	ld c, e
+	reg8rot e, a, c
 	ld b, d
 	pop de
 	pop hl
@@ -124713,7 +124708,7 @@ Func_7af96: ; 7af96 (1e:6f96)
 	push bc
 	push hl
 	ld c, a
-	reg8swap d, e
+	reg8rot a, d, e
 	ld b, $1
 	ld hl, $c3e0
 	predef Func_026c
@@ -128914,8 +128909,8 @@ Func_7ccf1: ; 7ccf1 (1f:4cf1)
 	inc hl
 	ld b, [hl]
 	inc hl
-	reg8swap l, e
-	reg8swap h, d
+	reg8rot a, l, e
+	reg8rot a, h, d
 	ld a, b
 	bit 4, c
 	jp z, Func_7cd44
@@ -129483,21 +129478,23 @@ Func_7d1e4: ; 7d1e4 (1f:51e4)
 	ld d, [hl]
 	inc l
 	ld h, a
-	reg8swap l, c
+	ld a, l
+	ld l, c
+	ld c, a
 	ret
 
 Func_7d25a: ; 7d25a (1f:525a)
 	ld b, $8
-.asm_7d25c
+.loop
 	add hl, hl
 	ld a, h
 	sub c
-	jr c, .asm_7d263
+	jr c, .next
 	ld h, a
 	inc l
-.asm_7d263
+.next
 	dec b
-	jr nz, .asm_7d25c
+	jr nz, .loop
 	ret
 
 Func_7d267: ; 7d267 (1f:5267)
@@ -129751,8 +129748,8 @@ Func_7d34e: ; 7d34e (1f:534e)
 	jr nc, .asm_7d37a
 	call Func_7d382
 .asm_7d37a
-	reg8swap l, e
-	reg8swap h, d
+	reg8rot a, l, e
+	reg8rot a, h, d
 asm_7d380
 	pop af
 	ret nc
@@ -129974,8 +129971,8 @@ Func_7d45e: ; 7d45e (1f:545e)
 Func_7d486: ; 7d486 (1f:5486)
 	ld [hl], $20
 	inc hl
-	reg8swap l, e
-	reg8swap h, d
+	reg8rot a, l, e
+	reg8rot a, h, d
 	ld a, $20
 	bit 7, h
 	jr z, asm_7d49e
@@ -130040,8 +130037,8 @@ Func_7d4d1: ; 7d4d1 (1f:54d1)
 Func_7d4e0: ; 7d4e0 (1f:54e0)
 	ld [hl], $20
 	inc hl
-	reg8swap l, e
-	reg8swap h, d
+	reg8rot a, l, e
+	reg8rot a, h, d
 	ld a, $20
 	bit 7, b
 	jr z, .asm_7d50b
@@ -130171,8 +130168,8 @@ Func_7d574: ; 7d574 (1f:5574)
 	ret
 
 Func_7d5a6: ; 7d5a6 (1f:55a6)
-	reg8swap l, e
-	reg8swap h, d
+	reg8rot a, l, e
+	reg8rot a, h, d
 	push de
 	ld a, h
 	call Func_7d5bb
@@ -132851,8 +132848,8 @@ Func_7e373: ; 7e373 (1f:6373)
 	ld d, a
 	ld hl, $16d
 	call Func_7d32e
-	reg8swap l, e
-	reg8swap h, d
+	reg8rot a, l, e
+	reg8rot a, h, d
 	ld bc, $784
 	add hl, bc
 	push hl
@@ -134198,8 +134195,8 @@ Func_7eb09: ; 7eb09 (1f:6b09)
 	adc [hl]
 	ld d, a
 	inc hl
-	reg8swap d, h
-	reg8swap e, l
+	reg8rot a, d, h
+	reg8rot a, e, l
 	jr asm_7eafb
 
 Func_7eb37: ; 7eb37 (1f:6b37)
@@ -138104,9 +138101,10 @@ Data_82e41: ; 82e41
 	dr $82e41, $82e46
 
 Data_82e46: ; 82e46
-	dr $82e46, $82e72
+	dr $82e46, $82e70
 
-Func_82e72:
+Func_82e70:
+	ld l, $0
 	push hl
 	ld c, $8
 	ld e, $4
@@ -143563,22 +143561,85 @@ Data_890b4:
 	dr $890b4, $89161
 
 Func_89161:
-	dr $89161, $8b7c9
+	dr $89161, $8966d
+
+Func_8966d: ; 8966d
+	dr $8966d, $89a75
+
+Func_89a75: ; 89a75
+	dr $89a75, $89c58
+
+Func_89c58: ; 89c58
+	dr $89c58, $89eaf
+
+Func_89eaf: ; 89eaf
+	dr $89eaf, $8a1f3
+
+Func_8a1f3: ; 8a1f3
+	dr $8a1f3, $8a69b
+
+Func_8a69b: ; 8a69b
+	dr $8a69b, $8aa33
+
+Func_8aa33: ; 8aa33
+	dr $8aa33, $8af07
+
+Func_8af07: ; 8af07
+	dr $8af07, $8afc4
+
+Func_8afc4: ; 8afc4
+	dr $8afc4, $8b49c
+
+Func_8b49c: ; 8b49c
+	dr $8b49c, $8b65a
+
+Func_8b65a: ; 8b65a
+	dr $8b65a, $8b7c9
 
 SECTION "Bank 23", ROMX, BANK [$23]
 	lib_bank_20 23
 
 Data_8d0b4:
-	dr $8d0b4, $8d4d8
+	dr $8d0b4, $8d256
+
+Func_8d256: ; 8d256
+	dr $8d256, $8d4d8
 
 Func_8d4d8: ; 8d4d8
-	dr $8d4d8, $8e8cd
+	dr $8d4d8, $8deaa
+
+Func_8deaa: ; 8deaa
+	dr $8deaa, $8e5dc
+
+Func_8e5dc: ; 8e5dc
+	dr $8e5dc, $8e8cd
 
 SECTION "Bank 24", ROMX, BANK [$24]
 	lib_bank_20 24
 
 Data_910b4:
-	dr $910b4, $932bd
+	dr $910b4, $91189
+
+Func_91189: ; 91189
+	dr $91189, $91856
+
+Func_91856: ; 91856
+	dr $91856, $920c3
+
+Func_920c3: ; 920c3
+	dr $920c3, $92965
+
+Func_92965: ; 92965
+	dr $92965, $92aab
+
+Func_92aab: ; 92aab
+	dr $92aab, $92c92
+
+Func_92c92: ; 92c92
+	dr $92c92, $92e02
+
+Func_92e02: ; 92e02
+	dr $92e02, $932bd
 
 Func_932bd: ; 932bd
 	dr $932bd, $93370
@@ -143611,19 +143672,79 @@ SECTION "Bank 25", ROMX, BANK [$25]
 	lib_bank_20 25
 
 Data_950b4:
-	dr $950b4, $95c14
+	dr $950b4, $951a3
+
+Func_951a3: ; 951a3
+	dr $951a3, $957b0
+
+Func_957b0: ; 957b0
+	dr $957b0, $95817
+
+Func_95817: ; 95817
+	dr $95817, $958c2
+
+Func_958c2: ; 958c2
+	dr $958c2, $95c14
 
 Func_95c14: ; 95c14
 	dr $95c14, $95c79
 
 Func_95c79: ; 95c79
-	dr $95c79, $974a7
+	dr $95c79, $96dbb
+
+Func_96dbb: ; 96dbb
+	dr $96dbb, $96e97
+
+Func_96e97: ; 96e97
+	dr $96e97, $971d6
+
+Func_971d6: ; 971d6
+	dr $971d6, $97486
+
+Func_97486: ; 97486
+	dr $97486, $974a7
 
 SECTION "Bank 26", ROMX, BANK [$26]
 	lib_bank_20 26
 
 Data_990b4:
-	dr $990b4, $9a1bb
+	dr $990b4, $9a168
+
+Func_9a168: ; 9a168
+	dr $9a168, $9a169
+
+Func_9a169: ; 9a169
+	dr $9a169, $9a16a
+
+Func_9a16a: ; 9a16a
+	dr $9a16a, $9a16b
+
+Func_9a16b: ; 9a16b
+	dr $9a16b, $9a16c
+
+Func_9a16c: ; 9a16c
+	dr $9a16c, $9a16d
+
+Func_9a16d: ; 9a16d
+	dr $9a16d, $9a16e
+
+Func_9a16e: ; 9a16e
+	dr $9a16e, $9a16f
+
+Func_9a16f: ; 9a16f
+	dr $9a16f, $9a170
+
+Func_9a170: ; 9a170
+	dr $9a170, $9a171
+
+Func_9a171: ; 9a171
+	dr $9a171, $9a172
+
+Func_9a172: ; 9a172
+	dr $9a172, $9a173
+
+Func_9a173: ; 9a173
+	dr $9a173, $9a1bb
 
 Func_9a1bb: ; 9a1bb
 	dr $9a1bb, $9a28c
@@ -143668,66 +143789,408 @@ SECTION "Bank 27", ROMX, BANK [$27]
 	lib_bank_20 27
 
 Data_9d0b4
-	dr $9d0b4, $9f672
+	dr $9d0b4, $9d1cb
+
+Func_9d1cb: ; 9d1cb
+	dr $9d1cb, $9dcf6
+
+Func_9dcf6: ; 9dcf6
+	dr $9dcf6, $9e052
+
+Func_9e052: ; 9e052
+	dr $9e052, $9e0f9
+
+Func_9e0f9: ; 9e0f9
+	dr $9e0f9, $9e194
+
+Func_9e194: ; 9e194
+	dr $9e194, $9e23a
+
+Func_9e23a: ; 9e23a
+	dr $9e23a, $9e2cf
+
+Func_9e2cf: ; 9e2cf
+	dr $9e2cf, $9e4d8
+
+Func_9e4d8: ; 9e4d8
+	dr $9e4d8, $9e95e
+
+Func_9e95e: ; 9e95e
+	dr $9e95e, $9ea24
+
+Func_9ea24: ; 9ea24
+	dr $9ea24, $9eec4
+
+Func_9eec4: ; 9eec4
+	dr $9eec4, $9ef0f
+
+Func_9ef0f: ; 9ef0f
+	dr $9ef0f, $9ef10
+
+Func_9ef10: ; 9ef10
+	dr $9ef10, $9ef8d
+
+Func_9ef8d: ; 9ef8d
+	dr $9ef8d, $9f137
+
+Func_9f137: ; 9f137
+	dr $9f137, $9f1c9
+
+Func_9f1c9: ; 9f1c9
+	dr $9f1c9, $9f338
+
+Func_9f338: ; 9f338
+	dr $9f338, $9f43f
+
+Func_9f43f: ; 9f43f
+	dr $9f43f, $9f5a0
+
+Func_9f5a0: ; 9f5a0
+	dr $9f5a0, $9f5e1
+
+Func_9f5e1: ; 9f5e1
+	dr $9f5e1, $9f672
 
 SECTION "Bank 28", ROMX, BANK [$28]
 	lib_bank_20 28
 
 Data_a10b4:
+	dr $a10b4, $a11de
+
+Func_a11de: ; a11de
+	dr $a11de, $a167b
+
+Func_a167b: ; a167b
+	dr $a167b, $a1e57
+
+Func_a1e57: ; a1e57
+	dr $a1e57, $a2271
+
+Func_a2271: ; a2271
+	dr $a2271, $a268b
+
+Func_a268b: ; a268b
+	dr $a268b, $a2aa5
+
+Func_a2aa5: ; a2aa5
 IF DEF(SUN)
-	dr $a10b4, $a3c17
+	dr $a2aa5, $a2ebf
+
+Func_a2ebf: ; a2ebf
+	dr $a2ebf, $a30cd
+
+Func_a30cd: ; a30cd
+	dr $a30cd, $a32cf
+
+Func_a32cf: ; a32cf
+	dr $a32cf, $a34d1
+
+Func_a34d1: ; a34d1
+	dr $a34d1, $a36ec
+
+Func_a36ec: ; a36ec
+	dr $a36ec, $a3788
+
+Func_a3788: ; a3788
+	dr $a3788, $a3789
+
+Func_a3789: ; a3789
+	dr $a3789, $a378a
+
+Func_a378a: ; a378a
+	dr $a378a, $a388c
+
+Func_a388c: ; a388c
+	dr $a388c, $a3b2f
+
+Func_a3b2f: ; a3b2f
+	dr $a3b2f, $a3bc8
+
+Func_a3bc8: ; a3bc8
+	dr $a3bc8, $a3c17
 
 Func_a3c17: ; a3c17
-	dr $a3c17, $a3f5e
+	dr $a3c17, $a3dc4
+
+Func_a3dc4: ; a3dc4
+	dr $a3dc4, $a3f5e
 ENDC
 IF DEF(STAR)
-	dr $a10b4, $a3c5d
+	dr $a2aa5, $a2f05
+
+Func_a2ebf: ; a2f05
+	dr $a2f05, $a3113
+
+Func_a30cd: ; a3113
+	dr $a3113, $a3315
+
+Func_a32cf: ; a3315
+	dr $a3315, $a3517
+
+Func_a34d1: ; a3517
+	dr $a3517, $a3732
+
+Func_a36ec: ; a3732
+	dr $a3732, $a37ce
+
+Func_a3788: ; a37ce
+	dr $a37ce, $a37cf
+
+Func_a3789: ; a37cf
+	dr $a37cf, $a37d0
+
+Func_a378a: ; a37d0
+	dr $a37d0, $a38d2
+
+Func_a388c: ; a38d2
+	dr $a38d2, $a3b75
+
+Func_a3b2f: ; a3b75
+	dr $a3b75, $a3c0e
+
+Func_a3bc8: ; a3c0e
+	dr $a3c0e, $a3c5d
 
 Func_a3c17: ; a3c17
-	dr $a3c5d, $a3fa4
+	dr $a3c5d, $a3e0a
+
+Func_a3dc4: ; a3e0a
+	dr $a3e0a, $a3fa4
 ENDC
 
 SECTION "Bank 29", ROMX, BANK [$29]
 	lib_bank_20 29
 
 Data_a50b4:
-	dr $a50b4, $a517c
+	dr $a50b4, $a5126
+
+Func_a5126: ; a5126
+	dr $a5126, $a517c
 
 Func_a517c: ; a517c
-	dr $a517c, $a6add
+	dr $a517c, $a544c
+
+Func_a544c: ; a544c
+	dr $a544c, $a6882
+
+Func_a6882: ; a6882
+	dr $a6882, $a6add
 
 SECTION "Bank 2a", ROMX, BANK [$2a]
 	lib_bank_20 2a
 
 Data_a90b4:
-	dr $a90b4, $abb74
+	dr $a90b4, $a922b
+
+Func_a922b: ; a922b
+	dr $a922b, $a973e
+
+Func_a973e: ; a973e
+	dr $a973e, $a97f3
+
+Func_a97f3: ; a97f3
+	dr $a97f3, $a98a2
+
+Func_a98a2: ; a98a2
+	dr $a98a2, $a9957
+
+Func_a9957: ; a9957
+	dr $a9957, $a9a0c
+
+Func_a9a0c: ; a9a0c
+	dr $a9a0c, $a9ac1
+
+Func_a9ac1: ; a9ac1
+	dr $a9ac1, $a9b7b
+
+Func_a9b7b: ; a9b7b
+	dr $a9b7b, $a9c3d
+
+Func_a9c3d: ; a9c3d
+	dr $a9c3d, $a9cfa
+
+Func_a9cfa: ; a9cfa
+	dr $a9cfa, $a9db4
+
+Func_a9db4: ; a9db4
+	dr $a9db4, $a9e71
+
+Func_a9e71: ; a9e71
+	dr $a9e71, $a9f2b
+
+Func_a9f2b: ; a9f2b
+	dr $a9f2b, $aa083
+
+Func_aa083: ; aa083
+	dr $aa083, $aa218
+
+Func_aa218: ; aa218
+	dr $aa218, $aa5cb
+
+Func_aa5cb: ; aa5cb
+	dr $aa5cb, $aac19
+
+Func_aac19: ; aac19
+	dr $aac19, $aaed3
+
+Func_aaed3: ; aaed3
+	dr $aaed3, $ab199
+
+Func_ab199: ; ab199
+	dr $ab199, $ab46b
+
+Func_ab46b: ; ab46b
+	dr $ab46b, $ab7cc
+
+Func_ab7cc: ; ab7cc
+	dr $ab7cc, $abb74
 
 Func_abb74: ; abb74
-	dr $abb74, $abf9c
+	dr $abb74, $abf90
+
+Func_abf90: ; abf90
+	dr $abf90, $abf9c
 
 SECTION "Bank 2b", ROMX, BANK [$2b]
 	lib_bank_20 2b
 
 Data_ad0b4:
-	dr $ad0b4, $af539
+	dr $ad0b4, $ad122
+
+Func_ad122: ; ad122
+	dr $ad122, $ae48b
+
+Func_ae48b: ; ae48b
+	dr $ae48b, $ae6ea
+
+Func_ae6ea: ; ae6ea
+	dr $ae6ea, $ae8e7
+
+Func_ae8e7: ; ae8e7
+	dr $ae8e7, $ae97d
+
+Func_ae97d: ; ae97d
+	dr $ae97d, $aea1b
+
+Func_aea1b: ; aea1b
+	dr $aea1b, $aeae1
+
+Func_aeae1: ; aeae1
+	dr $aeae1, $aeb98
+
+Func_aeb98: ; aeb98
+	dr $aeb98, $aed4a
+
+Func_aed4a: ; aed4a
+	dr $aed4a, $aedf8
+
+Func_aedf8: ; aedf8
+	dr $aedf8, $af01b
+
+Func_af01b: ; af01b
+	dr $af01b, $af29a
+
+Func_af29a: ; af29a
+	dr $af29a, $af3e9
+
+Func_af3e9: ; af3e9
+	dr $af3e9, $af539
 
 SECTION "Bank 2c", ROMX, BANK [$2c]
 	lib_bank_20 2c
 
 Data_b10b4:
-	dr $b10b4, $b3fd0
+	dr $b10b4, $b10ea
+
+Func_b10ea: ; b10ea
+	dr $b10ea, $b138f
+
+Func_b138f: ; b138f
+	dr $b138f, $b3fd0
 
 SECTION "Bank 2d", ROMX, BANK [$2d]
 	lib_bank_20 2d
 
 Data_b50b4:
-	dr $b50b4, $b7e47
+	dr $b50b4, $b5152
+
+Func_b5152: ; b5152
+	dr $b5152, $b5215
+
+Func_b5215: ; b5215
+	dr $b5215, $b52d3
+
+Func_b52d3: ; b52d3
+	dr $b52d3, $b5391
+
+Func_b5391: ; b5391
+	dr $b5391, $b5452
+
+Func_b5452: ; b5452
+	dr $b5452, $b568e
+
+Func_b568e: ; b568e
+	dr $b568e, $b576c
+
+Func_b576c: ; b576c
+	dr $b576c, $b584a
+
+Func_b584a: ; b584a
+	dr $b584a, $b5939
+
+Func_b5939: ; b5939
+	dr $b5939, $b5ae8
+
+Func_b5ae8: ; b5ae8
+	dr $b5ae8, $b5bbb
+
+Func_b5bbb: ; b5bbb
+	dr $b5bbb, $b5c99
+
+Func_b5c99: ; b5c99
+	dr $b5c99, $b5d6c
+
+Func_b5d6c: ; b5d6c
+	dr $b5d6c, $b5e4a
+
+Func_b5e4a: ; b5e4a
+	dr $b5e4a, $b5fbe
+
+Func_b5fbe: ; b5fbe
+	dr $b5fbe, $b790a
+
+Func_b790a: ; b790a
+	dr $b790a, $b79f8
+
+Func_b79f8: ; b79f8
+	dr $b79f8, $b7a64
+
+Func_b7a64: ; b7a64
+	dr $b7a64, $b7e47
 
 SECTION "Bank 2e", ROMX, BANK [$2e]
 	lib_bank_20 2e
 
 Data_b90b4:
-	dr $b90b4, $bb71a
+	dr $b90b4, $b93f1
+
+Func_b93f1: ; b93f1
+	dr $b93f1, $b9bbe
+
+Func_b9bbe: ; b9bbe
+	dr $b9bbe, $ba46c
+
+Func_ba46c: ; ba46c
+	dr $ba46c, $ba7e9
+
+Func_ba7e9: ; ba7e9
+	dr $ba7e9, $bb17a
+
+Func_bb17a: ; bb17a
+	dr $bb17a, $bb44e
+
+Func_bb44e: ; bb44e
+	dr $bb44e, $bb71a
 
 SECTION "Bank 2f", ROMX, BANK [$2f]
 	dr $bc000, $bd6fa
@@ -143767,16 +144230,115 @@ Func_c7bd0: ; c7bd0
 	dr $c7bd0, $c8000
 
 SECTION "Bank 32", ROMX, BANK [$32]
-	dr $c8000, $cc000
+	lib_bank_20 32
+
+Data_c90b4:
+	dr $c90b4, $c916d
+
+Func_c916d: ; c916d
+	dr $c916d, $c93a1
+
+Func_c93a1: ; c93a1
+	dr $c93a1, $c980d
+
+Func_c980d: ; c980d
+	dr $c980d, $c9d95
+
+Func_c9d95: ; c9d95
+	dr $c9d95, $ca379
+
+Func_ca379: ; ca379
+	dr $ca379, $ca8dd
+
+Func_ca8dd: ; ca8dd
+	dr $ca8dd, $cb099
+
+Func_cb099: ; cb099
+	dr $cb099, $cb2ef
+
+Func_cb2ef: ; cb2ef
+	dr $cb2ef, $cb4c5
+
+Func_cb4c5: ; cb4c5
+	dr $cb4c5, $cb6d3
+
+Func_cb6d3: ; cb6d3
+	dr $cb6d3, $cb8d6
+
+Func_cb8d6: ; cb8d6
+	dr $cb8d6, $cba6d
+
+Func_cba6d: ; cba6d
+	dr $cba6d, $cc000
 
 SECTION "Bank 33", ROMX, BANK [$33]
-	dr $cc000, $d0000
+	lib_bank_20 33
+
+Data_cd0b4:
+	dr $cd0b4, $cd533
+
+Func_cd533: ; cd533
+	dr $cd533, $cdabd
+
+Func_cdabd: ; cdabd
+	dr $cdabd, $cdfc4
+
+Func_cdfc4: ; cdfc4
+	dr $cdfc4, $ceacc
+
+Func_ceacc: ; ceacc
+	dr $ceacc, $cf14d
+
+Func_cf14d: ; cf14d
+	dr $cf14d, $d0000
 
 SECTION "Bank 34", ROMX, BANK [$34]
-	dr $d0000, $d18ba
+	lib_bank_20 34
+
+Data_d10b4:
+	dr $d10b4, $d11ef
+
+Func_d11ef: ; d11ef
+	dr $d11ef, $d153f
+
+Func_d153f: ; d153f
+	dr $d153f, $d18ba
 
 Func_d18ba: ; d18ba
-	dr $d18ba, $d4000
+	dr $d18ba, $d1aff
+
+Func_d1aff: ; d1aff
+	dr $d1aff, $d1ec5
+
+Func_d1ec5: ; d1ec5
+	dr $d1ec5, $d21fc
+
+Func_d21fc: ; d21fc
+	dr $d21fc, $d259b
+
+Func_d259b: ; d259b
+	dr $d259b, $d293a
+
+Func_d293a: ; d293a
+	dr $d293a, $d2c2a
+
+Func_d2c2a: ; d2c2a
+	dr $d2c2a, $d2e9d
+
+Func_d2e9d: ; d2e9d
+	dr $d2e9d, $d3312
+
+Func_d3312: ; d3312
+	dr $d3312, $d367a
+
+Func_d367a: ; d367a
+	dr $d367a, $d392b
+
+Func_d392b: ; d392b
+	dr $d392b, $d3ceb
+
+Func_d3ceb: ; d3ceb
+	dr $d3ceb, $d4000
 
 SECTION "Bank 35", ROMX, BANK [$35]
 GFX_d4000: ; d4000
@@ -143791,8 +144353,16 @@ OverworldAttrMaps: ; d93e8
 Func_d9f38: ; d9f38
 	dr $d9f38, $d9f55
 
-Func_d9f55: ; d9f55
-	dr $d9f55, $d9f68
+Func_d9f55: ; d9f55 (36:5f55)
+	di
+	ld a, [wLCDC]
+	or $3
+	ld [wLCDC], a
+	ld a, [wNextVBlankFlags]
+	or $6
+	ld [wNextVBlankFlags], a
+	ei
+	ret
 
 Func_d9f68: ; d9f68
 	dr $d9f68, $d9f74
@@ -143806,8 +144376,40 @@ Func_da07a: ; da07a
 Func_da093: ; da093
 	dr $da093, $da4dc
 
-Func_da4dc: ; da4dc
-	dr $da4dc, $da4fc
+
+; void Func_da4dc (void) {
+;   char * (hl = wOAMBuffer2)
+;   while (hl < wOAMBuffer2End) {
+;     *(hl++) = 0xff;
+;     *(hl++) = 0xff;
+;     *(hl++) = 0xff;
+;     *(hl++) = 0xff;
+;   }
+; }
+Func_da4dc: ; da4dc (36:64dc)
+	ld hl, wOAMBuffer2
+.loop
+	ld a, l
+	sub wOAMBuffer2End % $100
+	ld a, h
+	sbc wOAMBuffer2End / $100
+	jp nc, .done
+	ld a, $ff
+	ld [hl], a
+	inc hl
+	ld a, $ff
+	ld [hl], a
+	inc hl
+	ld a, $ff
+	ld [hl], a
+	inc hl
+	ld a, $ff
+	ld [hl], a
+	inc hl
+	jp .loop
+
+.done
+	ret
 
 Func_da4fc: ; da4fc
 	dr $da4fc, $da729
@@ -143827,8 +144429,258 @@ Func_da901: ; da901
 Func_daa40: ; daa40
 	dr $daa40, $daa72
 
-Func_daa72: ; daa72
-	dr $daa72, $dc000
+Func_daa72: ; daa72 (36:6a72)
+	push af
+	push de
+	set_farcall_addrs_hli Func_c7ae6
+	pop de
+	pop af
+	call FarCall
+	ld c, l
+	ld b, h
+	ld l, c
+	ld h, b
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, Pointers_daaad
+	add hl, de
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	ld l, c
+	ld h, b
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, Pointers_daaad
+	add hl, de
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	write_hl_to wFarCallDestAddr
+	call FarCall
+	ret
+
+Func_daaac:
+	ret
+
+Pointers_daaad:
+	dba Func_81281
+	dba Func_81ac1
+	dba Func_81d6a
+	dba Func_8240c
+	dba Func_825cc
+	dba Func_827a9
+	dba Func_82b03
+	dba Func_82c44
+	dba Func_82d7f
+	dba Func_82e70
+	dba Func_82f08
+	dba Func_82fa8
+	dba Func_83169
+	dba Func_83213
+	dba Func_83340
+	dba Func_833ba
+	dba Func_83431
+	dba Func_834bd
+	dba Func_83537
+	dba Func_835ae
+	dba Func_83632
+	dba Func_836b1
+	dba Func_83730
+	dba Func_837aa
+	dba Func_83816
+	dba Func_838a2
+	dba Func_957b0
+	dba Func_95817
+	dba Func_958c2
+	dba Func_8d256
+	dba Func_85178
+	dba Func_85a1d
+	dba Func_85cde
+	dba Func_85f6c
+	dba Func_863fb
+	dba Func_8688a
+	dba Func_86ffa
+	dba Func_871fe
+	dba Func_8744d
+	dba Func_877cb
+	dba Func_87d88
+	dba Func_87ea2
+	dba Func_8b65a
+	dba Func_89161
+	dba Func_8966d
+	dba Func_89a75
+	dba Func_89c58
+	dba Func_89eaf
+	dba Func_8a1f3
+	dba Func_8a69b
+	dba Func_8aa33
+	dba Func_8af07
+	dba Func_8afc4
+	dba Func_8b49c
+	dba Func_8e5dc
+	dba Func_8deaa
+	dba Func_91189
+	dba Func_91856
+	dba Func_920c3
+	dba Func_92965
+	dba Func_92aab
+	dba Func_92c92
+	dba Func_92e02
+	dba Func_951a3
+	dba Func_96dbb
+	dba Func_96e97
+	dba Func_971d6
+	dba Func_97486
+	dba Func_9a168
+	dba Func_9a169
+	dba Func_9a16a
+	dba Func_9a16b
+	dba Func_9a16c
+	dba Func_9a16d
+	dba Func_9a16e
+	dba Func_9a16f
+	dba Func_9a170
+	dba Func_9a171
+	dba Func_9a172
+	dba Func_9a173
+	dba Func_9d1cb
+	dba Func_9dcf6
+	dba Func_9e052
+	dba Func_9e0f9
+	dba Func_9e194
+	dba Func_9e23a
+	dba Func_9e2cf
+	dba Func_9e4d8
+	dba Func_9e95e
+	dba Func_9ea24
+	dba Func_9eec4
+	dba Func_9ef0f
+	dba Func_9ef10
+	dba Func_9ef8d
+	dba Func_9f137
+	dba Func_9f1c9
+	dba Func_9f338
+	dba Func_9f43f
+	dba Func_9f5a0
+	dba Func_9f5e1
+	dba Func_a30cd
+	dba Func_a32cf
+	dba Func_a34d1
+	dba Func_a36ec
+	dba Func_a3788
+	dba Func_a3789
+	dba Func_a378a
+	dba Func_a388c
+	dba Func_a3b2f
+	dba Func_a3bc8
+	dba Func_a3dc4
+	dba Func_a11de
+	dba Func_a167b
+	dba Func_c916d
+	dba Func_c93a1
+	dba Func_c980d
+	dba Func_c9d95
+	dba Func_ca379
+	dba Func_ca8dd
+	dba Func_cb099
+	dba Func_cb2ef
+	dba Func_cb4c5
+	dba Func_cb6d3
+	dba Func_cb8d6
+	dba Func_cba6d
+	dba Func_a5126
+	dba Func_a544c
+	dba Func_a6882
+	dba Func_a922b
+	dba Func_a973e
+	dba Func_a97f3
+	dba Func_a98a2
+	dba Func_a9957
+	dba Func_a9a0c
+	dba Func_a9ac1
+	dba Func_a9b7b
+	dba Func_a9c3d
+	dba Func_a9cfa
+	dba Func_a9db4
+	dba Func_a9e71
+	dba Func_a9f2b
+	dba Func_aa083
+	dba Func_aa218
+	dba Func_aa5cb
+	dba Func_aac19
+	dba Func_aaed3
+	dba Func_ab199
+	dba Func_ab46b
+	dba Func_ab7cc
+	dba Func_abf90
+	dba Func_ad122
+	dba Func_ae48b
+	dba Func_ae6ea
+	dba Func_ae8e7
+	dba Func_ae97d
+	dba Func_aea1b
+	dba Func_aeae1
+	dba Func_aeb98
+	dba Func_aed4a
+	dba Func_aedf8
+	dba Func_af01b
+	dba Func_af29a
+	dba Func_af3e9
+	dba Func_b10ea
+	dba Func_b138f
+	dba Func_d11ef
+	dba Func_d153f
+	dba Func_d1aff
+	dba Func_d1ec5
+	dba Func_d21fc
+	dba Func_d259b
+	dba Func_d293a
+	dba Func_a1e57
+	dba Func_a2271
+	dba Func_a268b
+	dba Func_a2aa5
+	dba Func_a2ebf
+	dba Func_cd533
+	dba Func_cdabd
+	dba Func_cdfc4
+	dba Func_ceacc
+	dba Func_cf14d
+	dba Func_b5152
+	dba Func_b5215
+	dba Func_b52d3
+	dba Func_b5391
+	dba Func_b5452
+	dba Func_b568e
+	dba Func_b576c
+	dba Func_b584a
+	dba Func_b5939
+	dba Func_b5ae8
+	dba Func_b5bbb
+	dba Func_b5c99
+	dba Func_b5d6c
+	dba Func_b5e4a
+	dba Func_b5fbe
+	dba Func_b790a
+	dba Func_b79f8
+	dba Func_b7a64
+	dba Func_b93f1
+	dba Func_b9bbe
+	dba Func_ba46c
+	dba Func_ba7e9
+	dba Func_bb17a
+	dba Func_bb44e
+	dba Func_d2c2a
+	dba Func_d2e9d
+	dba Func_d3312
+	dba Func_d367a
+	dba Func_d392b
+	dba Func_d3ceb
 
 SECTION "Bank 37", ROMX, BANK [$37]
 	dr $dc000, $e0000

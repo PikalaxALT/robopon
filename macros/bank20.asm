@@ -22,11 +22,12 @@ Func_8003a_\1: ; 8003a (20:403a)
 	push bc
 	push bc
 	xor a
-Func_80042_\1: ; 80042 (20:4042)
+.loop
 	cp e
-	jp nc, Func_8007d_\1
+	jp nc, .done
 	push de
 	push af
+	; bc = a * 11
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -52,9 +53,9 @@ Func_80042_\1: ; 80042 (20:4042)
 	pop af
 	inc a
 	pop de
-	jp Func_80042_\1
+	jp .loop
 
-Func_8007d_\1: ; 8007d (20:407d)
+.done
 	add sp, $e
 	ret
 

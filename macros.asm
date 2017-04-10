@@ -228,10 +228,10 @@ walle: MACRO ; meme
 	ENDR
 	ENDM
 
-reg8swap: MACRO
-	ld a, \1
+reg8rot: MACRO
 	ld \1, \2
-	ld \2, a
+	ld \2, \3
+	ld \3, \1
 	ENDM
 
 reg16swap: MACRO
