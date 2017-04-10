@@ -167,7 +167,7 @@ Func_00c9: ; c9 (0:00c9)
 	pop af
 	ret
 
-Func_00e9: ; 00e9
+InitCartIRMode: ; 00e9
 	xor a
 	ld [hSRAMBank], a
 	inc a
@@ -282,7 +282,7 @@ NullPredef:
 
 SECTION "01e0", ROM0 [$1e0]
 Pointers_01e0: ; 01e0
-	dw Func_00e9
+	dw InitCartIRMode
 	dw Func_0150
 	dw CopyPredef
 	dw Func_7af00
@@ -355,7 +355,7 @@ Func_026c: ; 26c (0:026c)
 Func_028e: ; 028e
 	di
 	ld sp, wStackTop
-	predef Func_00e9
+	predef InitCartIRMode
 	predef Func_7b1e1
 Func_0296: ; 296 (0:0296)
 	ld hl, Func_0296
@@ -393,7 +393,7 @@ Func_030a: ; 30a (0:030a)
 	jr nz, .asm_030d
 	di
 	ld sp, wStackTop
-	predef Func_00e9
+	predef InitCartIRMode
 	call Func_1a90
 Start: ; 323 (0:0323)
 	di
@@ -427,7 +427,7 @@ Func_0331: ; 331 (0:0331)
 	di
 	ld sp, wStackTop
 	push af
-	predef Func_00e9
+	predef InitCartIRMode
 	predef Func_022c
 	ld a, BANK(Func_63141)
 	call BankSwitch
@@ -632,7 +632,7 @@ SECTION "0500", ROM0 [$500]
 Func_0500: ; 0500
 	ld sp, wStackTop
 	di
-	predef Func_00e9
+	predef InitCartIRMode
 	ld a, $7
 	Coorda 16, 3, wAttrMap
 	ld a, $ff
@@ -2654,14 +2654,14 @@ RestoreMusicData: ; 1ad9
 	ld l, RestoreMusicData_1c % $100
 	jr CallAudioEngine1C
 
-Func_1add: ; 1add
+GBKiss: ; 1add
 	di
 	xor a
 	ld [rIF], a
 	ld [rIE], a
 	ld a, $0
 	call GetSRAMBank
-	ld a, BANK(Func_1add)
+	ld a, BANK(GBKiss)
 	call BankSwitch
 	ld sp, wStackTop
 	ld a, $e4
@@ -2669,7 +2669,7 @@ Func_1add: ; 1add
 	ld [rOBP0], a
 	ld a, $1b
 	ld [rOBP1], a
-	predef Func_00e9
+	predef InitCartIRMode
 	predef Func_7b21d
 	jp @ - 1 ; better luck next time
 
@@ -51695,7 +51695,7 @@ Func_23a05: ; 23a05 (8:7a05)
 	callba_hli Func_17488
 	call Func_2097
 	call Func_2380f
-	call Func_1add
+	call GBKiss
 	jp Func_23a64
 
 Func_23a31: ; 23a31 (8:7a31)
@@ -51777,7 +51777,7 @@ Func_23afe: ; 23afe (8:7afe)
 	callba_hli Func_17488
 	call Func_2097
 	call Func_2380f
-	call Func_1add
+	call GBKiss
 	jp Func_23b5d
 
 Func_23b2a: ; 23b2a (8:7b2a)
