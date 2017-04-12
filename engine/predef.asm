@@ -5411,7 +5411,7 @@ asm_7b98e
 	ld a, [hFFA2]
 	ld d, a
 	call Func_7bdbb
-	call Func_7bb02
+	call GetWordAtFFA6
 	ld a, [hFFA5]
 	ld c, a
 	ld b, $0
@@ -5459,7 +5459,7 @@ asm_7b9c0
 	push af
 	ld c, a
 	ld b, $0
-	call Func_7bb02
+	call GetWordAtFFA6
 	add hl, bc
 	ld [hl], e
 	pop af
@@ -5596,7 +5596,7 @@ Func_7ba84:: ; 7ba84 (1e:7a84)
 	bit 4, a
 	jr z, .asm_7baac
 	ld b, $0
-	call Func_7bb02
+	call GetWordAtFFA6
 	add hl, bc
 	ld e, [hl]
 	call Func_7bdc7
@@ -5665,7 +5665,7 @@ Func_7ba84:: ; 7ba84 (1e:7a84)
 	ld [hFFB4], a
 	ret
 
-Func_7bb02:: ; 7bb02 (1e:7b02)
+GetWordAtFFA6:: ; 7bb02 (1e:7b02)
 	ld hl, hFFA6
 	ld a, [hli]
 	ld h, [hl]

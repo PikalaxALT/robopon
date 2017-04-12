@@ -9305,7 +9305,7 @@ Func_da901:: ; da901
 Func_daa40:: ; daa40
 	dr $daa40, $daa72
 
-Func_daa72:: ; daa72 (36:6a72)
+EnterMap:: ; daa72 (36:6a72)
 	push af
 	push de
 	set_farcall_addrs_hli Func_c7ae6
