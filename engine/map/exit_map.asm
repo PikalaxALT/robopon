@@ -29,7 +29,7 @@ macro_854b: MACRO
 	push bc
 	inc c
 	dec c
-	jp nz, .c_is_zero
+	jp nz, .c_not_zero
 	ld hl, $0
 	write_hl_to $c85d
 	ld hl, $0
@@ -58,7 +58,7 @@ macro_854b: MACRO
 	ld [$c84a], a
 	jp .okay
 
-.c_is_zero
+.c_not_zero
 	macro_854b $c824
 	macro_854b $c822
 	macro_854b $c826

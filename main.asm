@@ -27974,7 +27974,7 @@ Func_1445e: ; 1445e
 	ret
 
 Func_144bd: ; 144bd
-	ld l, $15
+	ld l, BANK(Data_54001)
 	push hl
 	ld hl, $600
 	push hl
@@ -27984,7 +27984,7 @@ Func_144bd: ; 144bd
 	push hl
 	ld bc, $44f7
 	ld de, $0
-	ld hl, $4001
+	ld hl, Data_54001
 	call Func_14028
 	pop bc
 	pop bc
@@ -27993,7 +27993,7 @@ Func_144bd: ; 144bd
 	ret
 
 Func_144dd: ; 144dd (5:44dd)
-	ld l, $15
+	ld l, BANK(Data_54020)
 	push hl
 	ld hl, $81e
 	push hl
@@ -28003,7 +28003,7 @@ Func_144dd: ; 144dd (5:44dd)
 	push hl
 	ld bc, $4548
 	ld de, $0
-	ld hl, $4020
+	ld hl, Data_54020
 	call Func_14028
 	pop bc
 	pop bc
@@ -28073,7 +28073,7 @@ Func_1458e: ; 1458e (5:458e)
 	inc c
 	dec c
 	jp nz, Func_145b5
-	ld l, $15
+	ld l, BANK(Data_5403f)
 	push hl
 	ld hl, $502
 	push hl
@@ -28083,7 +28083,7 @@ Func_1458e: ; 1458e (5:458e)
 	push hl
 	ld bc, $45a5
 	ld de, $0
-	ld hl, $403f
+	ld hl, Data_5403f
 	call Func_14028
 	pop bc
 	pop bc
@@ -28092,7 +28092,7 @@ Func_1458e: ; 1458e (5:458e)
 	jp Func_145ec
 
 Func_145b5: ; 145b5 (5:45b5)
-	ld l, $15
+	ld l, BANK(Data_5405e)
 	push hl
 	ld e, c
 	ld d, $0
@@ -28123,7 +28123,7 @@ Func_145b5: ; 145b5 (5:45b5)
 	push hl
 	ld bc, $45a5
 	ld de, $0
-	ld hl, $405e
+	ld hl, Data_5405e
 	call Func_14028
 	pop bc
 	pop bc
@@ -28152,7 +28152,7 @@ Func_14615: ; 14615 (5:4615)
 	inc c
 	dec c
 	jp nz, Func_1463c
-	ld l, $15
+	ld l, BANK(Data_5407d)
 	push hl
 	ld hl, $402
 	push hl
@@ -28162,7 +28162,7 @@ Func_14615: ; 14615 (5:4615)
 	push hl
 	ld bc, $45e4
 	ld de, $0
-	ld hl, $407d
+	ld hl, Data_5407d
 	call Func_14028
 	pop bc
 	pop bc
@@ -28171,7 +28171,7 @@ Func_14615: ; 14615 (5:4615)
 	jp Func_14673
 
 Func_1463c: ; 1463c (5:463c)
-	ld l, $15
+	ld l, BANK(Data_5409c)
 	push hl
 	ld e, c
 	ld d, $0
@@ -28202,7 +28202,7 @@ Func_1463c: ; 1463c (5:463c)
 	push hl
 	ld bc, $45e4
 	ld de, $0
-	ld hl, $409c
+	ld hl, Data_5409c
 	call Func_14028
 	pop bc
 	pop bc
@@ -28282,7 +28282,7 @@ Func_1472c: ; 1472c (5:472c)
 	cp [hl]
 	jp nz, Func_1472c
 	call Func_17470
-	ld l, $15
+	ld l, BANK(Data_540da)
 	push hl
 	ld hl, $702
 	push hl
@@ -28292,7 +28292,7 @@ Func_1472c: ; 1472c (5:472c)
 	push hl
 	ld bc, $4614
 	ld de, -1
-	ld hl, $40da
+	ld hl, Data_540da
 	call Func_14028
 	pop bc
 	pop bc
@@ -28373,7 +28373,7 @@ Func_147e7: ; 147e7 (5:47e7)
 
 Func_147e8: ; 147e8
 	call Func_1fbe
-	ld l, $15
+	ld l, BANK(Data_540f9)
 	push hl
 	ld hl, $17
 	push hl
@@ -28383,7 +28383,7 @@ Func_147e8: ; 147e8
 	push hl
 	ld bc, $11
 	ld de, $0
-	ld hl, $40f9
+	ld hl, Data_540f9
 	call Func_14028
 	pop bc
 	pop bc
@@ -28393,7 +28393,7 @@ Func_147e8: ; 147e8
 	ret
 
 Func_1480e: ; 1480e
-	ld l, $15
+	ld l, BANK(Data_541b3)
 	push hl
 	ld hl, $200
 	push hl
@@ -28403,7 +28403,7 @@ Func_1480e: ; 1480e
 	push hl
 	ld bc, $46af
 	ld de, $0
-	ld hl, $41b3
+	ld hl, Data_541b3
 	call Func_14028
 	pop bc
 	pop bc
@@ -28412,7 +28412,7 @@ Func_1480e: ; 1480e
 	ret
 
 Func_1482e: ; 1482e (5:482e)
-	ld l, $15
+	ld l, BANK(Data_541d2)
 	push hl
 	ld hl, $200
 	push hl
@@ -28422,7 +28422,7 @@ Func_1482e: ; 1482e (5:482e)
 	push hl
 	ld bc, $46c1
 	ld de, $0
-	ld hl, $41d2
+	ld hl, Data_541d2
 	call Func_14028
 	pop bc
 	pop bc
@@ -28431,7 +28431,7 @@ Func_1482e: ; 1482e (5:482e)
 	ret
 
 Func_1484e: ; 1484e
-	ld l, $15
+	ld l, BANK(Data_541f1)
 	push hl
 	ld hl, $200
 	push hl
@@ -28441,7 +28441,7 @@ Func_1484e: ; 1484e
 	push hl
 	ld bc, $46d0
 	ld de, $0
-	ld hl, $41f1
+	ld hl, Data_541f1
 	call Func_14028
 	pop bc
 	pop bc
@@ -28450,7 +28450,7 @@ Func_1484e: ; 1484e
 	ret
 
 Func_1486e: ; 1486e
-	ld l, $15
+	ld l, BANK(Data_54118)
 	push hl
 	ld hl, $300
 	push hl
@@ -28460,7 +28460,7 @@ Func_1486e: ; 1486e
 	push hl
 	ld bc, $464c
 	ld de, $0
-	ld hl, $4118
+	ld hl, Data_54118
 	call Func_14028
 	pop bc
 	pop bc
@@ -28469,7 +28469,7 @@ Func_1486e: ; 1486e
 	ret
 
 Func_1488e: ; 1488e
-	ld l, $15
+	ld l, BANK(Data_540bb)
 	push hl
 	ld hl, $3
 	push hl
@@ -28479,7 +28479,7 @@ Func_1488e: ; 1488e
 	push hl
 	ld bc, $0
 	ld de, -1
-	ld hl, $40bb
+	ld hl, Data_540bb
 	call Func_14028
 	pop bc
 	pop bc
@@ -28488,7 +28488,7 @@ Func_1488e: ; 1488e
 	ret
 
 Func_148ae: ; 148ae
-	ld l, $15
+	ld l, BANK(Data_54137)
 	push hl
 	ld hl, $302
 	push hl
@@ -28498,7 +28498,7 @@ Func_148ae: ; 148ae
 	push hl
 	ld bc, $4686
 	ld de, $0
-	ld hl, $4137
+	ld hl, Data_54137
 	call Func_14028
 	pop bc
 	pop bc
@@ -28508,7 +28508,7 @@ Func_148ae: ; 148ae
 
 Func_148ce: ; 148ce
 	call Func_1fbe
-	ld l, $15
+	ld l, BANK(Data_54156)
 	push hl
 	ld hl, $6
 	push hl
@@ -28518,7 +28518,7 @@ Func_148ce: ; 148ce
 	push hl
 	ld bc, $2
 	ld de, -1
-	ld hl, $4156
+	ld hl, Data_54156
 	call Func_14028
 	pop bc
 	pop bc
@@ -28529,7 +28529,7 @@ Func_148ce: ; 148ce
 
 Func_148f4: ; 148f4
 	call Func_1fbe
-	ld l, $15
+	ld l, BANK(Data_54175)
 	push hl
 	ld hl, $24
 	push hl
@@ -28539,7 +28539,7 @@ Func_148f4: ; 148f4
 	push hl
 	ld bc, $5
 	ld de, -1
-	ld hl, $4175
+	ld hl, Data_54175
 	call Func_14028
 	pop bc
 	pop bc
@@ -28550,7 +28550,7 @@ Func_148f4: ; 148f4
 
 Func_1491a: ; 1491a
 	call Func_1fbe
-	ld l, $15
+	ld l, BANK(Data_54194)
 	push hl
 	ld hl, $7
 	push hl
@@ -28560,7 +28560,7 @@ Func_1491a: ; 1491a
 	push hl
 	ld bc, $2
 	ld de, -1
-	ld hl, $4194
+	ld hl, Data_54194
 	call Func_14028
 	pop bc
 	pop bc
@@ -28570,7 +28570,7 @@ Func_1491a: ; 1491a
 	ret
 
 Func_14940:: ; 14940
-	ld l, $15
+	ld l, BANK(Data_5428c)
 	push hl
 	ld hl, $402
 	push hl
@@ -28580,7 +28580,7 @@ Func_14940:: ; 14940
 	push hl
 	ld bc, $46e0
 	ld de, $0
-	ld hl, $428c
+	ld hl, Data_5428c
 	call Func_14028
 	pop bc
 	pop bc
@@ -28589,7 +28589,7 @@ Func_14940:: ; 14940
 	ret
 
 Func_14960: ; 14960
-	ld l, $15
+	ld l, BANK(Data_566a9)
 	push hl
 	ld hl, $302
 	push hl
@@ -28599,7 +28599,7 @@ Func_14960: ; 14960
 	push hl
 	ld bc, $66c8
 	ld de, $0
-	ld hl, $66a9
+	ld hl, Data_566a9
 	call Func_14028
 	pop bc
 	pop bc
@@ -28608,7 +28608,7 @@ Func_14960: ; 14960
 	ret
 
 Func_14980: ; 14980
-	ld l, $15
+	ld l, BANK(Data_543a2)
 	push hl
 	ld hl, $21
 	push hl
@@ -28618,7 +28618,7 @@ Func_14980: ; 14980
 	push hl
 	ld bc, $0
 	ld de, -1
-	ld hl, $43a2
+	ld hl, Data_543a2
 	call Func_14028
 	pop bc
 	pop bc
@@ -28701,7 +28701,7 @@ Func_14a31: ; 14a31 (5:4a31)
 	ld a, [hl]
 	ld [wOAM27XCoord], a
 	call Func_1fbe
-	ld l, $15
+	ld l, BANK(Data_543c1)
 	push hl
 	ld hl, $961e
 	push hl
@@ -28711,7 +28711,7 @@ Func_14a31: ; 14a31 (5:4a31)
 	push hl
 	ld bc, $6
 	ld de, -1
-	ld hl, $43c1
+	ld hl, Data_543c1
 	call Func_14028
 	pop bc
 	pop bc
@@ -28722,7 +28722,7 @@ Func_14a31: ; 14a31 (5:4a31)
 	ret
 
 Func_14a64: ; 14a64
-	ld l, $15
+	ld l, BANK(Data_543e0)
 	push hl
 	ld hl, $1e
 	push hl
@@ -28732,7 +28732,7 @@ Func_14a64: ; 14a64
 	push hl
 	ld bc, $0
 	ld de, -1
-	ld hl, $43e0
+	ld hl, Data_543e0
 	call Func_14028
 	pop bc
 	pop bc
@@ -28741,7 +28741,7 @@ Func_14a64: ; 14a64
 	ret
 
 Func_14a84: ; 14a84
-	ld l, $15
+	ld l, BANK(Data_542ca)
 	push hl
 	ld hl, $9
 	push hl
@@ -28751,7 +28751,7 @@ Func_14a84: ; 14a84
 	push hl
 	ld bc, $7
 	ld de, $0
-	ld hl, $42ca
+	ld hl, Data_542ca
 	call Func_14028
 	pop bc
 	pop bc
@@ -28760,7 +28760,7 @@ Func_14a84: ; 14a84
 	ret
 
 Func_14aa4: ; 14aa4
-	ld l, $15
+	ld l, BANK(Data_542ab)
 	push hl
 	ld hl, $10
 	push hl
@@ -28770,7 +28770,7 @@ Func_14aa4: ; 14aa4
 	push hl
 	ld bc, $d
 	ld de, $0
-	ld hl, $42ab
+	ld hl, Data_542ab
 	call Func_14028
 	pop bc
 	pop bc
@@ -28779,7 +28779,7 @@ Func_14aa4: ; 14aa4
 	ret
 
 Func_14ac4: ; 14ac4
-	ld l, $15
+	ld l, BANK(Data_542e9)
 	push hl
 	ld hl, $a
 	push hl
@@ -28789,7 +28789,7 @@ Func_14ac4: ; 14ac4
 	push hl
 	ld bc, $9
 	ld de, $0
-	ld hl, $42e9
+	ld hl, Data_542e9
 	call Func_14028
 	pop bc
 	pop bc
@@ -28798,7 +28798,7 @@ Func_14ac4: ; 14ac4
 	ret
 
 Func_14ae4: ; 14ae4
-	ld l, $15
+	ld l, BANK(Data_54308)
 	push hl
 	ld hl, $11
 	push hl
@@ -28808,7 +28808,7 @@ Func_14ae4: ; 14ae4
 	push hl
 	ld bc, $e
 	ld de, $0
-	ld hl, $4308
+	ld hl, Data_54308
 	call Func_14028
 	pop bc
 	pop bc
@@ -28817,7 +28817,7 @@ Func_14ae4: ; 14ae4
 	ret
 
 Func_14b04: ; 14b04
-	ld l, $15
+	ld l, BANK(Data_54327)
 	push hl
 	ld hl, $b
 	push hl
@@ -28827,7 +28827,7 @@ Func_14b04: ; 14b04
 	push hl
 	ld bc, $a
 	ld de, $0
-	ld hl, $4327
+	ld hl, Data_54327
 	call Func_14028
 	pop bc
 	pop bc
@@ -28836,7 +28836,7 @@ Func_14b04: ; 14b04
 	ret
 
 Func_14b24: ; 14b24
-	ld l, $15
+	ld l, BANK(Data_54346)
 	push hl
 	ld hl, $c
 	push hl
@@ -28846,7 +28846,7 @@ Func_14b24: ; 14b24
 	push hl
 	ld bc, $b
 	ld de, $0
-	ld hl, $4346
+	ld hl, Data_54346
 	call Func_14028
 	pop bc
 	pop bc
@@ -28908,7 +28908,7 @@ Func_14b44:: ; 14b44
 	cp $ff
 	jp nz, Func_14be6
 Func_14bc4: ; 14bc4 (5:4bc4)
-	ld l, $15
+	ld l, BANK(Data_5441e)
 	push hl
 	ld hl, $200
 	push hl
@@ -28918,7 +28918,7 @@ Func_14bc4: ; 14bc4 (5:4bc4)
 	push hl
 	ld bc, $46fd
 	ld de, $0
-	ld hl, $441e
+	ld hl, Data_5441e
 	call Func_14028
 	pop bc
 	pop bc
@@ -28927,7 +28927,7 @@ Func_14bc4: ; 14bc4 (5:4bc4)
 	jp Func_14c05
 
 Func_14be6: ; 14be6 (5:4be6)
-	ld l, $15
+	ld l, BANK(Data_543ff)
 	push hl
 	ld hl, Func_0300
 	push hl
@@ -28937,7 +28937,7 @@ Func_14be6: ; 14be6 (5:4be6)
 	push hl
 	ld bc, $46fd
 	ld de, $0
-	ld hl, $43ff
+	ld hl, Data_543ff
 	call Func_14028
 	pop bc
 	pop bc
@@ -28980,7 +28980,7 @@ Func_14c05: ; 14c05 (5:4c05)
 
 Func_14c55: ; 14c55
 	call Func_17470
-	ld l, $15
+	ld l, BANK(Data_5443d)
 	push hl
 	ld hl, $151f
 	push hl
@@ -28990,7 +28990,7 @@ Func_14c55: ; 14c55
 	push hl
 	ld bc, $c
 	ld de, -1
-	ld hl, $443d
+	ld hl, Data_5443d
 	call Func_14028
 	pop bc
 	pop bc
@@ -29001,7 +29001,7 @@ Func_14c55: ; 14c55
 	ret
 
 Func_14c89: ; 14c89
-	ld l, $15
+	ld l, BANK(Data_5445c)
 	push hl
 	ld hl, $61e
 	push hl
@@ -29011,7 +29011,7 @@ Func_14c89: ; 14c89
 	push hl
 	ld bc, $4727
 	ld de, $0
-	ld hl, $445c
+	ld hl, Data_5445c
 	call Func_14028
 	pop bc
 	pop bc
@@ -29052,7 +29052,7 @@ Func_14ca9:: ; 14ca9
 	ld de, $1405
 	ld hl, $d
 	call Func_2152
-	ld l, $15
+	ld l, BANK(Data_5447b)
 	push hl
 	ld hl, $18
 	push hl
@@ -29062,7 +29062,7 @@ Func_14ca9:: ; 14ca9
 	push hl
 	ld bc, $0
 	ld de, $0
-	ld hl, $447b
+	ld hl, Data_5447b
 	call Func_14028
 	pop bc
 	pop bc
@@ -29111,7 +29111,7 @@ Func_14d48: ; 14d48 (5:4d48)
 Func_14d4a: ; 14d4a (5:4d4a)
 	or a
 	jp nz, Func_14d70
-	ld l, $15
+	ld l, BANK(Data_5449a)
 	push hl
 	ld hl, $381b
 	push hl
@@ -29121,7 +29121,7 @@ Func_14d4a: ; 14d4a (5:4d4a)
 	push hl
 	ld bc, $13
 	ld de, -1
-	ld hl, $449a
+	ld hl, Data_5449a
 	call Func_14028
 	pop bc
 	pop bc
@@ -29130,7 +29130,7 @@ Func_14d4a: ; 14d4a (5:4d4a)
 	jp Func_14d8f
 
 Func_14d70: ; 14d70 (5:4d70)
-	ld l, $15
+	ld l, BANK(Data_5449a)
 	push hl
 	ld hl, $381b
 	push hl
@@ -29140,7 +29140,7 @@ Func_14d70: ; 14d70 (5:4d70)
 	push hl
 	ld bc, $19
 	ld de, -1
-	ld hl, $449a
+	ld hl, Data_5449a
 	call Func_14028
 	pop bc
 	pop bc
@@ -29151,7 +29151,7 @@ Func_14d8f: ; 14d8f (5:4d8f)
 	ret
 
 Func_14d93:: ; 14d93 (5:4d93)
-	ld l, $15
+	ld l, BANK(Data_544b9)
 	push hl
 	ld hl, $1b
 	push hl
@@ -29161,7 +29161,7 @@ Func_14d93:: ; 14d93 (5:4d93)
 	push hl
 	ld bc, $14
 	ld de, -1
-	ld hl, $44b9
+	ld hl, Data_544b9
 	call Func_14028
 	pop bc
 	pop bc
@@ -29359,7 +29359,7 @@ Func_14edb: ; 14edb (5:4edb)
 	call GetSRAMBank
 	call Func_1fbe
 	pop de
-	ld l, $15
+	ld l, BANK(Data_544d8)
 	push hl
 	ld hl, $0
 	push hl
@@ -29374,7 +29374,7 @@ Func_14edb: ; 14edb (5:4edb)
 	ld c, e
 	ld b, $0
 	ld de, $0
-	ld hl, $44d8
+	ld hl, Data_544d8
 	call Func_14028
 	pop bc
 	pop bc
@@ -29999,7 +29999,7 @@ Func_152db: ; 152db
 	ret
 
 Func_152e4: ; 152e4
-	ld l, $15
+	ld l, BANK(Data_54210)
 	push hl
 	ld hl, $302
 	push hl
@@ -30009,7 +30009,7 @@ Func_152e4: ; 152e4
 	push hl
 	ld bc, $4660
 	ld de, $0
-	ld hl, $4210
+	ld hl, Data_54210
 	call Func_14028
 	pop bc
 	pop bc
@@ -30020,7 +30020,7 @@ Func_152e4: ; 152e4
 Func_15304: ; 15304
 	call Func_1fbe
 	call Func_1f30
-	ld l, $15
+	ld l, BANK(Data_5422f)
 	push hl
 	ld hl, $4
 	push hl
@@ -30030,7 +30030,7 @@ Func_15304: ; 15304
 	push hl
 	ld bc, $1
 	ld de, -1
-	ld hl, $422f
+	ld hl, Data_5422f
 	call Func_14028
 	pop bc
 	pop bc
@@ -30043,7 +30043,7 @@ Func_15304: ; 15304
 Func_15330: ; 15330
 	call Func_1fbe
 	call Func_1f30
-	ld l, $15
+	ld l, BANK(Data_5424e)
 	push hl
 	ld hl, $5
 	push hl
@@ -30053,7 +30053,7 @@ Func_15330: ; 15330
 	push hl
 	ld bc, $3
 	ld de, -1
-	ld hl, $424e
+	ld hl, Data_5424e
 	call Func_14028
 	pop bc
 	pop bc
@@ -30066,7 +30066,7 @@ Func_15330: ; 15330
 Func_1535c: ; 1535c
 	call Func_1fbe
 	call Func_1f30
-	ld l, $15
+	ld l, BANK(Data_5426d)
 	push hl
 	ld hl, $4
 	push hl
@@ -30076,7 +30076,7 @@ Func_1535c: ; 1535c
 	push hl
 	ld bc, $1
 	ld de, -1
-	ld hl, $426d
+	ld hl, Data_5426d
 	call Func_14028
 	pop bc
 	pop bc
@@ -43312,6 +43312,7 @@ Func_23a68: ; 23a68
 	jp z, Func_23ac8
 	or a
 	jp nz, Func_23b5d
+	; New Game
 	call Func_1db9
 	callba_hli Func_17488
 	call Func_2097
@@ -74654,8 +74655,89 @@ SECTION "Bank 15", ROMX, BANK [$15]
 Func_54000:
 	ret
 
-Data_54001:
-	dr $54001, $54365
+Data_54001: ; 54001
+	dr $54001, $54020
+
+Data_54020: ; 54020
+	dr $54020, $5403f
+
+Data_5403f: ; 5403f
+	dr $5403f, $5405e
+
+Data_5405e: ; 5405e
+	dr $5405e, $5407d
+
+Data_5407d: ; 5407d
+	dr $5407d, $5409c
+
+Data_5409c: ; 5409c
+	dr $5409c, $540bb
+
+Data_540bb: ; 540bb
+	dr $540bb, $540da
+
+Data_540da: ; 540da
+	dr $540da, $540f9
+
+Data_540f9: ; 540f9
+	dr $540f9, $54118
+
+Data_54118: ; 54118
+	dr $54118, $54137
+
+Data_54137: ; 54137
+	dr $54137, $54156
+
+Data_54156: ; 54156
+	dr $54156, $54175
+
+Data_54175: ; 54175
+	dr $54175, $54194
+
+Data_54194: ; 54194
+	dr $54194, $541b3
+
+Data_541b3: ; 541b3
+	dr $541b3, $541d2
+
+Data_541d2: ; 541d2
+	dr $541d2, $541f1
+
+Data_541f1: ; 541f1
+	dr $541f1, $54210
+
+Data_54210: ; 54210
+	dr $54210, $5422f
+
+Data_5422f: ; 5422f
+	dr $5422f, $5424e
+
+Data_5424e: ; 5424e
+	dr $5424e, $5426d
+
+Data_5426d: ; 5426d
+	dr $5426d, $5428c
+
+Data_5428c: ; 5428c
+	dr $5428c, $542ab
+
+Data_542ab: ; 542ab
+	dr $542ab, $542ca
+
+Data_542ca: ; 542ca
+	dr $542ca, $542e9
+
+Data_542e9: ; 542e9
+	dr $542e9, $54308
+
+Data_54308: ; 54308
+	dr $54308, $54327
+
+Data_54327: ; 54327
+	dr $54327, $54346
+
+Data_54346: ; 54346
+	dr $54346, $54365
 
 Data_54365: ; 54365
 	dr $54365, $54384
@@ -74664,7 +74746,40 @@ Data_54384: ; 54384
 	dr $54384, $54393
 
 Data_54393: ; 54393
-	dr $54393, $54767
+	dr $54393, $543a2
+
+Data_543a2: ; 543a2
+	dr $543a2, $543c1
+
+Data_543c1: ; 543c1
+	dr $543c1, $543e0
+
+Data_543e0: ; 543e0
+	dr $543e0, $543ff
+
+Data_543ff: ; 543ff
+	dr $543ff, $5441e
+
+Data_5441e: ; 5441e
+	dr $5441e, $5443d
+
+Data_5443d: ; 5443d
+	dr $5443d, $5445c
+
+Data_5445c: ; 5445c
+	dr $5445c, $5447b
+
+Data_5447b: ; 5447b
+	dr $5447b, $5449a
+
+Data_5449a: ; 5449a
+	dr $5449a, $544b9
+
+Data_544b9: ; 544b9
+	dr $544b9, $544d8
+
+Data_544d8: ; 544d8
+	dr $544d8, $54767
 
 Func_54767: ; 54767 (15:4767)
 	push hl

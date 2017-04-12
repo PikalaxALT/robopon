@@ -39,7 +39,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	pop bc
 	inc c
 	dec c
-	jp nz, .skip
+	jp nz, .not_new_game
 	call Func_1db9
 	ld bc, $c7b1 - $c789
 .loop
@@ -47,14 +47,14 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld h, b
 	ld de, $c7bd - $c789
 	call CompareHLtoDE
-	jp nc, .okay
+	jp nc, .new_game
 	ld hl, $c789
 	add hl, bc
 	ld [hl], $ff
 	inc bc
 	jp .loop
 
-.okay
+.new_game
 	xor a
 	ld [wOAM06YCoord], a
 	ld a, $1
@@ -79,7 +79,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	callba_hli Func_93c0c
 	jp .continue
 
-.skip
+.not_new_game
 	ld a, c
 	cp $1
 	jp nz, .not_map_1
