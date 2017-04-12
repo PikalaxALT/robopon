@@ -68,7 +68,7 @@ macro_854b: MACRO
 	macro_854b $c82a
 	macro_854b $c85d
 .okay
-	set_farcall_addrs_hli Func_c7ae6
+	set_farcall_addrs_hli GetMapTriggerIndex
 	ld hl, sp+$64
 	ld e, [hl]
 	ld hl, sp+$67
