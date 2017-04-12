@@ -1060,10 +1060,10 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	call FarCall
 	ld hl, $2a4
 	call Func_804a9_20
-	ld a, [$c2d8]
+	ld a, [wMapX]
 	cp $3
 	jp nz, Func_83d45
-	ld a, [$c2d9]
+	ld a, [wMapY]
 	cp $1
 	jp nz, Func_83d45
 	ld bc, Data_83a17
@@ -2656,7 +2656,7 @@ Func_85fb0: ; 85fb0 (21:5fb0)
 	ld a, [$c798]
 	or a
 	jp nz, Func_85fd8
-	ld a, [$c2d8]
+	ld a, [wMapX]
 	cp $5
 	jp nz, Func_85fc9
 	ld a, [$c7de]
@@ -2665,7 +2665,7 @@ Func_85fb0: ; 85fb0 (21:5fb0)
 	jp Func_85fd8
 
 Func_85fc9: ; 85fc9 (21:5fc9)
-	ld a, [$c2d8]
+	ld a, [wMapX]
 	cp $4
 	jp nz, Func_85fd8
 	ld a, [$c7de]
@@ -2969,7 +2969,7 @@ Func_8643f: ; 8643f (21:643f)
 	ld a, [$c798]
 	or a
 	jp nz, Func_86467
-	ld a, [$c2d8]
+	ld a, [wMapX]
 	cp $5
 	jp nz, Func_86458
 	ld a, [$c7de]
@@ -2978,7 +2978,7 @@ Func_8643f: ; 8643f (21:643f)
 	jp Func_86467
 
 Func_86458: ; 86458 (21:6458)
-	ld a, [$c2d8]
+	ld a, [wMapX]
 	cp $4
 	jp nz, Func_86467
 	ld a, [$c7de]

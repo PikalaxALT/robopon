@@ -455,7 +455,13 @@ wKana:: ; c255
 ; ff: hiragana
 	ds $1
 
-	ds $8a
+	ds $80
+
+wMapWidth:: db ; c2d6
+	db
+wMapX:: db ; c2d8
+wMapY:: db ; c2d9
+	ds $6
 
 wc2e0:: ds $1 ; c2e0
 	ds $5
@@ -568,10 +574,23 @@ wAttrMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 
 SECTION "Overworld RAM", WRAM0 [$c770]
 wc770:: ; c770
-	ds $4e
+	ds $11
+
+wRandomEncounterRate:: db ; c781
+	ds $1
+wRandomEncounterCooldown:: db ; c783
+	ds $3a
 
 wMapMusic:: db ; c7be
-	ds $
+	ds $a0
+
+wPlayerMapX:: db ; c85f
+wPlayerMapY:: db ; c860
+	ds 4
+wPlayerStandingTileOffset:: dw ; c865
+	ds $15
+wPlayerMovementRate:: db ; c87c
+wLastStepSucceeded:: db ; c87d
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 wCGB_BGPalsBuffer:: ; c89c
@@ -586,8 +605,7 @@ wVBlankTransferFlags:: ; c91c
 ; bit 0: push wVBlankMetaTileTransferQueue0
 	ds $1
 
-wc91d:: ; c91d
-	ds $2
+wc91d:: dw ; c91d
 
 wVBlankMetaTileTransferQueue0TileSource:: dw ; c91f
 wVBlankMetaTileTransferQueue0AttrSource:: dw ; c921

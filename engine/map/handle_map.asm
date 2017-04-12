@@ -113,7 +113,7 @@ Func_91ba: ; 91ba (2:51ba)
 	ld a, [$c838]
 	ld e, a
 	ld a, $2
-	call Func_a783
+	call CheckObjectCollision
 	ld a, [$c84a]
 	or a
 	jp nz, Func_91db
@@ -318,13 +318,13 @@ Func_9371: ; 9371 (2:5371)
 	ld hl, sp+$f
 	ld a, [$c7ea]
 	ld [hl], a
-	ld a, [$c85f]
+	ld a, [wPlayerMapX]
 	ld [$c7e7], a
-	ld a, [$c860]
+	ld a, [wPlayerMapY]
 	ld [$c7e8], a
-	ld a, [$c85f]
+	ld a, [wPlayerMapX]
 	ld [$c7e9], a
-	ld a, [$c860]
+	ld a, [wPlayerMapY]
 	ld [$c7ea], a
 	callba_hli Func_14675
 	pop de
@@ -341,19 +341,19 @@ Func_93ba: ; 93ba (2:53ba)
 Func_93c0: ; 93c0 (2:53c0)
 	ld a, e
 	cp $ff
-	jp nz, Func_93cd
+	jp nz, .step
 	ld hl, sp+$e
 	ld [hl], $ff
 	jp Func_90fe
 
-Func_93cd: ; 93cd (2:53cd)
+.step
 	ld e, $0
 	ld a, [$c838]
-	call Func_943f
+	call HandlePlayerStep
 	ld a, [$c838]
 	ld e, a
 	xor a
-	call Func_a783
+	call CheckObjectCollision
 	ld a, [$c84a]
 	or a
 	jp nz, Func_93e7
@@ -366,7 +366,7 @@ Func_93e7: ; 93e7 (2:53e7)
 	jp Func_9413
 
 Func_93f2: ; 93f2 (2:53f2)
-	call Func_b821
+	call RollRandomEncounter
 	cp $1
 	jp z, Func_9409
 	cp $ff

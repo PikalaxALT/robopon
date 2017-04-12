@@ -1629,7 +1629,7 @@ Func_80c5a_\1: ; 80c5a (20:4c5a)
 	dec a
 	ld [$c846], a
 Func_80c61_\1: ; 80c61 (20:4c61)
-	set_farcall_addrs_hli Func_9f87
+	set_farcall_addrs_hli CheckBackgroundCollision
 	ld c, $1
 	ld a, [$c847]
 	ld e, a
@@ -1858,7 +1858,7 @@ Func_80dff_\1: ; 80dff (20:4dff)
 Func_80e1e_\1: ; 80e1e (20:4e1e)
 	push af
 	push de
-	set_farcall_addrs_hli Func_943f
+	set_farcall_addrs_hli HandlePlayerStep
 	pop de
 	pop af
 	call FarCall
@@ -1875,10 +1875,10 @@ Func_80e31_\1:
 
 Func_80e44_\1:
 	set_farcall_addrs_hli Func_9f64
-	ld a, [$c2d9]
+	ld a, [wMapY]
 	add $4
 	ld e, a
-	ld a, [$c2d8]
+	ld a, [wMapX]
 	add $5
 	jp FarCall
 

@@ -250,7 +250,7 @@ Func_87ca: ; 87ca (2:47ca)
 	inc c
 	dec c
 	jp nz, Func_8827
-	ld hl, $c2d6
+	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
 	ld a, [$c2d7]
@@ -259,7 +259,7 @@ Func_87ca: ; 87ca (2:47ca)
 	call MultiplyHLbyDE
 	call Func_be4d
 	write_hl_to $c830
-	ld hl, $c2d6
+	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
 	ld a, [$c2d7]
@@ -364,7 +364,7 @@ Func_88f8: ; 88f8 (2:48f8)
 Func_891c: ; 891c (2:491c)
 	call Func_8ccf
 	call Func_bfaf
-	ld hl, $c2d6
+	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -382,7 +382,7 @@ Func_891c: ; 891c (2:491c)
 	ld de, hPushOAM + 5
 	add hl, de
 	write_hl_to $c868
-	ld hl, $c2d6
+	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -393,7 +393,7 @@ Func_891c: ; 891c (2:491c)
 	ld de, hPushOAM + 5
 	add hl, de
 	write_hl_to $c86e
-	ld hl, $c2d6
+	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -411,7 +411,7 @@ Func_891c: ; 891c (2:491c)
 	ld de, hPushOAM + 4
 	add hl, de
 	write_hl_to $c86c
-	ld hl, $c2d6
+	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
 	ld e, l
