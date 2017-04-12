@@ -112230,8 +112230,122 @@ Func_e3507: ; e3507
 Func_e3619:: ; e3619
 	dr $e3619, $e3714
 
-Func_e3714:: ; e3714
-	dr $e3714, $e4000
+Func_e3714:: ; e3714 (38:7714)
+	push hl
+	push bc
+	push bc
+	push bc
+	push bc
+	push de
+	read_hl_from_sp_plus $c
+	ld e, h
+	ld hl, sp+$8
+	ld [hl], e
+	read_hl_from_sp_plus $c
+	pop de
+	push hl
+	ld hl, sp+$7
+	ld [hl], d
+	ld hl, sp+$6
+	ld [hl], b
+	ld a, c
+	pop hl
+	push de
+	push af
+	ld e, l
+	ld d, $0
+	ld hl, $c2d6
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	push de
+	push hl
+	pop de
+	pop hl
+	read_hl_from $c828
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$a
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	call WriteHLToSPPlus8
+	pop af
+	ld e, a
+	ld d, $0
+	ld hl, $c2d6
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	push de
+	push hl
+	pop de
+	pop hl
+	read_hl_from $c828
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	call WriteHLToSPPlus4
+	xor a
+	pop de
+.outer: ; e377b (38:777b)
+	cp e
+	jp nc, .quit
+	push de
+	push af
+	ld c, $0
+.inner: ; e3783 (38:7783)
+	ld a, c
+	ld hl, sp+$9
+	cp [hl]
+	jp nc, .next
+	call GetHLAtSPPlus8
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld a, [hl]
+	call GetHLAtSPPlus6
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld [hl], a
+	inc c
+	jp .inner
+
+.next: ; e379e (38:779e)
+	call GetHLAtSPPlus8
+	ld a, [$c2d6]
+	ld e, a
+	ld d, $0
+	add hl, de
+	call WriteHLToSPPlus8
+	call GetHLAtSPPlus6
+	ld a, [$c2d6]
+	ld e, a
+	ld d, $0
+	add hl, de
+	call WriteHLToSPPlus6
+	pop af
+	inc a
+	pop de
+	jp .outer
+
+.quit: ; e37be (38:77be)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
 
 SECTION "Bank 39", ROMX, BANK [$39]
 GFX_e4000: ; e4000

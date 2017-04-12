@@ -1,0 +1,47 @@
+
+Data_82ee2:
+	dr $82ee2, $82f03
+
+Data_82f03: ; 82f03
+	dr $82f03, $82f08
+
+Func_82f08:
+	call Func_82f41
+	ld hl, Func_82f41
+	call Func_80f11_20
+	ld a, $6
+	ld [$c7de], a
+	ld e, $3
+	ld hl, Data_82ee2
+	call Func_8003a_20
+	ld e, $1
+	ld hl, Data_82f03
+	call Func_80ce7_20
+	ld a, $b
+	call Func_80ee6_20
+	call Func_8001c_20
+	ld hl, $3cd
+	call Func_80f72_20
+	ret
+
+Data_82f35:
+	dr $82f35, $82f3b
+
+Data_82f3b: ; 82f3b
+	dr $82f3b, $82f41
+
+Func_82f41:
+	ld a, [$c78c]
+	cp $7
+	jp nc, Func_82f4f
+	ld hl, Data_82f35
+	call Func_80d9b_20
+Func_82f4f: ; 82f4f (20:6f4f)
+	ld a, [$c78c]
+	cp $5
+	jp nc, Func_82f5d
+	ld hl, Data_82f3b
+	call Func_80d9b_20
+Func_82f5d: ; 82f5d (20:6f5d)
+	call Func_80f02_20
+	ret
