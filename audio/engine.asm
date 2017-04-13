@@ -1,6 +1,6 @@
 audio_engine: MACRO
-Func_70000_\1::
-	jp Func_70088_\1
+SoundOff_\1::
+	jp SoundOff__\1
 
 UpdateSound_\1:: ; 70003 (1c:4003)
 	jp UpdateSound__\1
@@ -8,11 +8,11 @@ UpdateSound_\1:: ; 70003 (1c:4003)
 StartSong_\1:: ; 70006 (1c:4006)
 	jp StartSong__\1
 
-Func_70009_\1:: ; 70009 (1c:4009)
-	jp Func_70038_\1
+StartSFX_\1:: ; 70009 (1c:4009)
+	jp StartSFX__\1
 
-Func_7000c_\1:: ; 7000c (1c:400c)
-	jp Func_70059_\1
+SelectChannels_\1:: ; 7000c (1c:400c)
+	jp SelectChannels__\1
 
 CheckSongFinished_\1:: ; 7000f (1c:400f)
 	jp CheckSongFinished__\1
@@ -47,7 +47,7 @@ StartSong__\1: ; 70021 (1c:4021)
 	pop hl
 	ret
 
-Func_70038_\1: ; 70038 (1c:4038)
+StartSFX__\1: ; 70038 (1c:4038)
 	push bc
 	push hl
 	ld b, $0
@@ -72,8 +72,8 @@ Func_70038_\1: ; 70038 (1c:4038)
 	pop bc
 	ret
 
-Func_70059_\1: ; 70059 (1c:4059)
-	ld [wc170], a
+SelectChannels__\1: ; 70059 (1c:4059)
+	ld [wSoundOutputFlags], a
 	ret
 
 CheckSongFinished__\1: ; 7005d (1c:405d)
@@ -110,7 +110,7 @@ SetVolume__\1: ; 7007a (1c:407a)
 	pop bc
 	ret
 
-Func_70088_\1: ; 70088 (1c:4088)
+SoundOff__\1: ; 70088 (1c:4088)
 	xor a
 	ld [rNR52], a
 	ld a, $80
@@ -119,7 +119,7 @@ Func_70088_\1: ; 70088 (1c:4088)
 	ld [rNR50], a
 	ld a, $ff
 	ld [rNR51], a
-	ld a, BANK(Func_70088_1c)
+	ld a, BANK(SoundOff__1c)
 	ld [wAudioROMBank], a
 	ld a, $80
 	ld [wSongIndex], a
@@ -131,7 +131,7 @@ Func_70088_\1: ; 70088 (1c:4088)
 	ld [wSFXActive2], a
 	ld [wc10b], a
 	ld [wc16f], a
-	ld [wc170], a
+	ld [wSoundOutputFlags], a
 	ld [wMusicPaused], a
 	dec a
 	ld [wGlobalDuty], a
@@ -1410,7 +1410,7 @@ Func_7086f_\1: ; 7086f (1c:486f)
 	or d
 .asm_70891
 	ld d, a
-	ld a, [wc170]
+	ld a, [wSoundOutputFlags]
 	xor $ff
 	and $f
 	ld e, a

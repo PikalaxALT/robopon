@@ -90,21 +90,21 @@ Coord2AttrMap::
 	jr nz, .asm_14f7
 	ret
 
-StartMapMusic:: ; 14fc
-	ld [wc2eb], a
-	jp Func_1aaf
+OverworldPlaySong:: ; 14fc
+	ld [wSongCurrentlyPlaying], a
+	jp StartSong
 
-Func_1502:: ; 1502
-	ld [wc2ec], a
-	jp Func_1ab4
+OverworldPlaySFX:: ; 1502
+	ld [wSFXCurrentlyPlaying], a
+	jp StartSFX
 
-Func_1508:: ; 1508
+OverworldStopMusic:: ; 1508
 	xor a
-	jr StartMapMusic
+	jr OverworldPlaySong
 
-Func_150b:: ; 150b
+OverworldStopSFX:: ; 150b
 	xor a
-	jr Func_1502
+	jr OverworldPlaySFX
 
 PlaceString:: ; 150e (0:150e)
 ; source: on stack

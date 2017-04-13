@@ -5077,12 +5077,12 @@ Func_8bdc: ; 8bdc (2:4bdc)
 
 Func_8c16: ; 8c16 (2:4c16)
 	call Func_8ccf
-	ld a, [wc2eb]
+	ld a, [wSongCurrentlyPlaying]
 	ld hl, wMapMusic
 	cp [hl]
 	jp z, Func_8c29
 	ld a, [wMapMusic]
-	call StartMapMusic
+	call OverworldPlaySong
 Func_8c29: ; 8c29 (2:4c29)
 	ld a, [$c7da]
 	or a
@@ -8419,7 +8419,7 @@ Func_ad6f: ; ad6f (2:6d6f)
 	ld a, [hl]
 	ld [$c7ec], a
 	ld a, $2e
-	call Func_1502
+	call OverworldPlaySFX
 	xor a
 	ld [$c84a], a
 	ld a, $1
@@ -9892,7 +9892,7 @@ Func_ba47: ; ba47
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, Predef
+	ld hl, $68
 	add hl, de
 	pop de
 	call FarCopyVideoData
@@ -9902,7 +9902,7 @@ Func_ba47: ; ba47
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, Predef
+	ld hl, $68
 	add hl, de
 	call WriteHLToSPPlus9
 	pop bc
@@ -10004,7 +10004,7 @@ Func_bb37: ; bb37
 	ld a, $1c
 	ld [wMapMusic], a
 	ld a, [wMapMusic]
-	call StartMapMusic
+	call OverworldPlaySong
 	ld c, $2
 	ld e, $e
 	ld hl, $3e7
@@ -10052,7 +10052,7 @@ Func_bba9: ; bba9 (2:7ba9)
 	ld a, $1c
 	ld [wMapMusic], a
 	ld a, [wMapMusic]
-	call StartMapMusic
+	call OverworldPlaySong
 	ld a, $2
 	ld [$c838], a
 	ld a, $1
@@ -10085,53 +10085,7 @@ Func_bbe7: ; bbe7 (2:7be7)
 Func_bbed: ; bbed (2:7bed)
 	ret
 
-Func_bbee:: ; bbee (2:7bee)
-	push bc
-	add sp, -$1e
-	push de
-	push af
-	ld c, a
-	read_hl_from_sp_plus $24
-	reg16swap de, hl
-	ld hl, sp+$4
-	call FarCopyUntilNull
-	pop af
-	pop de
-	ld hl, sp+$0
-	ld c, l
-	ld b, h
-	call Func_ba47
-	callba_hli Func_fa81
-	callba_hli Func_62865
-	callba_hli Func_2328f
-	callba_hli Func_cced
-	xor a
-	ld [$c2fa], a
-	ld a, $1
-	call Func_bf4a
-	push af
-	or a
-	jp z, Func_bc5a
-	ld e, $0
-	ld a, $1
-	call Func_bb37
-	jp Func_bc5e
-
-Func_bc5a: ; bc5a (2:7c5a)
-	xor a
-	call Func_8ba8
-Func_bc5e: ; bc5e (2:7c5e)
-	pop af
-	cp $1
-	jp nz, Func_bc68
-	xor a
-	jp Func_bc6a
-
-Func_bc68: ; bc68 (2:7c68)
-	ld a, $1
-Func_bc6a: ; bc6a (2:7c6a)
-	add sp, $20
-	ret
+INCLUDE "battle/wild_battle.asm"
 
 Func_bc6d:: ; bc6d
 	push bc
@@ -13731,55 +13685,7 @@ Func_dd5a: ; dd5a
 	ld hl, $4000
 	ret
 
-Data_dd63: ; dd63
-	dlong 0
-
-RandomRange:: ; dd67 (3:5d67)
-; Updates the RNG and returns a random byte less than a.
-; The RNG is a 15-bit integer seeded at 0x000d.
-; The update function is state = (state * 0x6d + 0x3fd) & 0x7fff.
-	push bc
-	push bc
-	push af
-	ld hl, sp+$2
-	reg16swap de, hl
-	ld hl, Data_dd63
-	ld bc, $4
-	call MemCopy
-	read_hl_from wRNGState
-	ld de, $6d
-	call MultiplyHLbyDE
-	ld de, $3fd
-	add hl, de
-	ld a, h
-	and $7f
-	ld h, a
-	write_hl_to wRNGState
-	read_hl_from wRNGState
-	ld de, $100
-	call DivideHLByDESigned
-	ld a, l
-	ld hl, sp+$4
-	ld [hl], a
-	read_hl_from wRNGState
-	ld de, $100
-	call DivideHLByDESigned
-	ld hl, sp+$5
-	ld [hl], e
-	pop af
-	ld hl, sp+$0
-	ld c, l
-	ld b, h
-	add a
-	ld e, a
-	ld d, $0
-	ld hl, sp+$0
-	call MultiplyULongAtHLByUShortDE
-	ld hl, sp+$1
-	ld a, [hl]
-	pop bc
-	pop bc
-	ret
+INCLUDE "engine/random.asm"
 
 Func_ddc2: ; ddc2
 	push hl
@@ -17418,7 +17324,7 @@ Func_f612: ; f612
 	inc hl
 	pop de
 	push hl
-	call Func_1502
+	call OverworldPlaySFX
 	pop hl
 	push hl
 	pop bc
@@ -17438,7 +17344,7 @@ Func_f62d: ; f62d
 	inc hl
 	pop de
 	push hl
-	call StartMapMusic
+	call OverworldPlaySong
 	pop hl
 	push hl
 	pop bc
@@ -17715,8 +17621,8 @@ Func_f7fd: ; f7fd (3:77fd)
 	call CheckSongFinished
 	or a
 	jp nz, .loop
-	ld a, $6
-	call StartMapMusic
+	ld a, SONG_TRAINER_BATTLE
+	call OverworldPlaySong
 .skip_music
 	call Func_3aa8
 	set_farcall_addrs_hli Func_61424
@@ -18045,7 +17951,7 @@ Func_fa45: ; fa45 (3:7a45)
 String_fa7b: ; fa7b
 	db " <HIRA>かﾞ<KATA>$"
 
-Func_fa81: ; fa81 (3:7a81)
+BattleIntro: ; fa81 (3:7a81)
 	add sp, -$32
 	read_hl_from wc2e6
 	ld de, $16
@@ -18092,13 +17998,13 @@ Func_fa81: ; fa81 (3:7a81)
 	ld a, [hl]
 	or a
 	jp nz, Func_faeb
-	ld a, $6
-	call StartMapMusic
+	ld a, SONG_TRAINER_BATTLE
+	call OverworldPlaySong
 	jp Func_faf0
 
 Func_faeb: ; faeb (3:7aeb)
-	ld a, $15
-	call StartMapMusic
+	ld a, SONG_GYM_LEADER_BATTLE
+	call OverworldPlaySong
 Func_faf0: ; faf0 (3:7af0)
 	call Func_f771
 	read_hl_from_sp_plus $34
@@ -18130,8 +18036,8 @@ Func_faf0: ; faf0 (3:7af0)
 	jp Func_fb64
 
 Func_fb2d: ; fb2d (3:7b2d)
-	ld a, $4
-	call StartMapMusic
+	ld a, SONG_WILD_BATTLE
+	call OverworldPlaySong
 	ld hl, sp+$2d
 	ld [hl], $0
 	read_hl_from_sp_plus $32
@@ -18948,8 +18854,8 @@ Func_1028b: ; 1028b
 	call MemCopy
 	ld a, $2
 	ld [$c2fa], a
-	ld a, $4
-	call StartMapMusic
+	ld a, SONG_WILD_BATTLE
+	call OverworldPlaySong
 	pop de
 	pop bc
 	push de
@@ -19912,7 +19818,7 @@ Func_10ae1: ; 10ae1 (4:4ae1)
 Func_10ae6: ; 10ae6 (4:4ae6)
 	push hl
 	ld a, $d
-	call StartMapMusic
+	call OverworldPlaySong
 	pop hl
 	pop de
 	pop bc
@@ -22922,7 +22828,7 @@ Func_122b8: ; 122b8 (4:62b8)
 	push hl
 	callba_hli Func_62865
 	ld a, $f
-	call StartMapMusic
+	call OverworldPlaySong
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -39543,7 +39449,7 @@ Func_22701: ; 22701 (8:6701)
 
 .music
 	ld a, $17
-	call StartMapMusic
+	call OverworldPlaySong
 .loop
 	call CheckSongFinished
 	or a
@@ -40197,8 +40103,8 @@ Func_22cd0: ; 22cd0
 	call Func_20d3a
 	cp $ff
 	jp nz, Func_22d2b
-	ld a, $5
-	call StartMapMusic
+	ld a, SONG_VICTORY
+	call OverworldPlaySong
 	read_hl_from wc2e6
 	ld de, $1c4
 	add hl, de
@@ -40909,657 +40815,7 @@ Func_2320d: ; 2320d (8:720d)
 	pop hl
 	ret
 
-Pointers_2326e: ; 2326e
-	dw Data_23274
-	dw Data_23284
-	dw $0000
-
-Data_23274: ; 23274
-	db "<HIRA>つうしん<KATA>ハﾞトル<HIRA>てﾞは<KATA>$"
-
-Data_23284: ; 23284
-	db "<HIRA>にけﾞられない<KATA>!$"
-
-Func_2328f: ; 2328f (8:728f)
-	add sp, -$52
-	read_hl_from wc2e6
-	ld de, $16
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $5e
-	add hl, de
-	write_hl_to_sp_plus $51
-	read_hl_from wc2e6
-	ld de, $1c
-	add hl, de
-	write_hl_to_sp_plus $4f
-	read_hl_from wc2e6
-	ld de, $e4
-	add hl, de
-	write_hl_to_sp_plus $4d
-	read_hl_from wc2e6
-	ld de, $16
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	write_hl_to_sp_plus $4b
-	set_farcall_addrs_hli Func_613fc
-	read_hl_from wc2e6
-	ld de, $1c8
-	add hl, de
-	ld a, [hl]
-	read_hl_from wc2e6
-	ld de, $1c9
-	add hl, de
-	ld e, [hl]
-	call FarCall
-Func_232f2: ; 232f2 (8:72f2)
-	read_hl_from wc2e6
-	ld de, $1c4
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_23303
-	call Func_20318
-Func_23303: ; 23303 (8:7303)
-	ld a, $64
-	call Func_2034d
-	ld hl, sp+$48
-	ld [hl], a
-	set_farcall_addrs_hli Func_dbf5
-	ld c, $3
-	read_hl_from_sp_plus $4f
-	ld de, $c6
-	add hl, de
-	ld e, [hl]
-	xor a
-	call FarCall
-	read_hl_from_sp_plus $4f
-	ld de, $c6
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	push hl
-	read_hl_from_sp_plus $51
-	ld de, $82
-	add hl, de
-	pop de
-	add hl, de
-	push hl
-	read_hl_from_sp_plus $51
-	ld de, $71
-	add hl, de
-	pop de
-	ld bc, $11
-	call MemCopy
-Func_23352: ; 23352 (8:7352)
-	call Func_21160
-	ld c, $0
-Func_23357: ; 23357 (8:7357)
-	ld a, c
-	cp $2
-	jp nc, Func_2339b
-	read_hl_from_sp_plus $4f
-	ld de, $6f
-	add hl, de
-	ld a, [hl]
-	and $4
-	jp z, Func_2337e
-	push bc
-	set_farcall_addrs_hli Func_673ff
-	pop bc
-	push bc
-	ld a, c
-	call FarCall
-	pop bc
-Func_2337e: ; 2337e (8:737e)
-	read_hl_from_sp_plus $4f
-	ld de, $6f
-	add hl, de
-	ld a, [hl]
-	and $f3
-	ld [hl], a
-	inc hl
-	inc c
-	read_hl_from_sp_plus $4f
-	ld de, $c8
-	add hl, de
-	write_hl_to_sp_plus $4f
-	jp Func_23357
-
-Func_2339b: ; 2339b (8:739b)
-	read_hl_from wc2e6
-	ld de, $1c
-	add hl, de
-	write_hl_to_sp_plus $4f
-	call Func_20398
-	xor a
-Func_233ac: ; 233ac (8:73ac)
-	cp $4
-	jp nc, Func_233d6
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	reg16swap de, hl
-	ld hl, sp+$1
-	add hl, de
-	push hl
-	ld l, a
-	ld h, $0
-	add hl, hl
-	reg16swap de, hl
-	ld hl, sp+$3f
-	add hl, de
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc a
-	jp Func_233ac
-
-Func_233d6: ; 233d6 (8:73d6)
-	read_hl_from_sp_plus $4f
-	ld de, $75
-	add hl, de
-	ld e, [hl]
-	ld hl, sp+$0
-	ld [hl], e
-	read_hl_from_sp_plus $4f
-	ld de, $6f
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	ld b, $4
-	call RightShiftHL
-	ld a, l
-	and $3
-	jp z, Func_23400
-	ld hl, sp+$0
-	ld [hl], $18
-Func_23400: ; 23400 (8:7400)
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $18
-	jp z, Func_23489
-	cp $9
-	jp z, Func_23412
-	cp $a
-	jp nz, Func_234c2
-Func_23412: ; 23412 (8:7412)
-	ld hl, sp+$45
-	ld [hl], $0
-	ld c, BANK(Text_2414b)
-	ld hl, sp+$45
-	ld a, [hl]
-	inc a
-	ld hl, sp+$45
-	ld [hl], a
-	dec a
-	ld l, a
-	ld h, $0
-	add hl, hl
-	reg16swap de, hl
-	ld hl, sp+$3d
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld de, Text_2414b
-	call FarCopyUntilNull
-	ld de, Text_24069
-	ld c, BANK(Text_24069)
-	call FarCopyUntilNull
-	ld de, Text_24150
-	ld c, BANK(Text_24150)
-	call FarCopyUntilNull
-	ld de, Text_2416e
-	ld c, BANK(Text_2416e)
-	call FarCopyUntilNull
-	ld hl, sp+$45
-	ld e, [hl]
-	ld hl, sp+$3d
-	call Func_203a3
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $9
-	jp z, Func_23472
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $18
-	jp z, Func_2346f
-	read_hl_from_sp_plus $4f
-	ld de, $5e
-	add hl, de
-	ld [hl], $ff
-Func_2346f: ; 2346f (8:746f)
-	jp Func_23486
-
-Func_23472: ; 23472 (8:7472)
-	read_hl_from_sp_plus $4f
-	ld de, $5f
-	add hl, de
-	ld [hl], $0
-	ld a, [hl]
-	read_hl_from_sp_plus $4f
-	ld de, $5e
-	add hl, de
-	ld [hl], a
-Func_23486: ; 23486 (8:7486)
-	jp Func_23654
-
-Func_23489: ; 23489 (8:7489)
-	ld hl, sp+$45
-	ld [hl], $0
-	read_hl_from_sp_plus $4b
-	ld de, $d
-	add hl, de
-	push hl
-	ld hl, sp+$47
-	ld a, [hl]
-	inc a
-	ld hl, sp+$47
-	ld [hl], a
-	dec a
-	ld l, a
-	ld h, $0
-	add hl, hl
-	reg16swap de, hl
-	ld hl, sp+$3f
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	pop de
-	call CopyUntilNull
-	ld de, Text_201b7
-	call CopyUntilNull
-	ld hl, sp+$45
-	ld e, [hl]
-	ld hl, sp+$3d
-	call Func_203a3
-	jp Func_23654
-
-Func_234c2: ; 234c2 (8:74c2)
-	ld de, Data_237b5
-	ld hl, $10e
-	call PlaceStringDEatCoordHL
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	set_farcall_addrs_hli Func_1445e
-	ld c, BANK(Data_20a54)
-	ld de, Data_20a54
-	ld hl, Data_20a63
-	call FarCall
-	write_hl_to_sp_plus $48
-	read_hl_from_sp_plus $48
-	ld a, l
-	and h
-	inc a
-	jp nz, Func_23508
-	read_hl_from_sp_plus $4f
-	ld de, $5e
-	add hl, de
-	ld [hl], $ff
-	jp Func_23654
-
-Func_23508: ; 23508 (8:7508)
-	ld de, $1311
-	ld hl, $d
-	call Func_2036d
-	ld bc, -1
-	read_hl_from_sp_plus $48
-	ld a, l
-	cp $5
-	jp z, Func_235eb
-	cp $4
-	jp z, Func_235e5
-	cp $3
-	jp z, Func_235b3
-	cp $1
-	jp z, Func_2357a
-	cp $2
-	jp z, Func_23572
-	or a
-	jp nz, Func_235ee
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $7
-	jp z, Func_2354e
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $8
-	jp nz, Func_23557
-	ld hl, sp+$48
-	ld a, [hl]
-	cp $3c
-	jp nc, Func_23557
-Func_2354e: ; 2354e (8:754e)
-	push bc
-	xor a
-	call Func_218e2
-	pop bc
-	jp Func_2356f
-
-Func_23557: ; 23557 (8:7557)
-	set_farcall_addrs_hli Func_1445e
-	ld c, BANK(Data_20a82)
-	ld de, Data_20a82
-	ld hl, Data_20a91
-	call FarCall
-	ld c, l
-	ld b, h
-Func_2356f: ; 2356f (8:756f)
-	jp Func_235ee
-
-Func_23572: ; 23572 (8:7572)
-	call Func_23159
-	ld c, l
-	ld b, h
-	jp Func_235ee
-
-Func_2357a: ; 2357a (8:757a)
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $7
-	jp z, Func_23592
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $8
-	jp nz, Func_2359c
-	ld hl, sp+$48
-	ld a, [hl]
-	cp $3c
-	jp nc, Func_2359c
-Func_23592: ; 23592 (8:7592)
-	push bc
-	ld a, $2
-	call Func_218e2
-	pop bc
-	jp Func_235b0
-
-Func_2359c: ; 2359c (8:759c)
-	set_farcall_addrs_hli Func_5e504
-	ld de, $0
-	xor a
-	call FarCall
-	ld c, l
-	ld b, h
-Func_235b0: ; 235b0 (8:75b0)
-	jp Func_235ee
-
-Func_235b3: ; 235b3 (8:75b3)
-	read_hl_from wc2e6
-	ld de, $1c4
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_235df
-	push bc
-	call Func_20398
-	set_farcall_addrs_hli PrintMapText_
-	ld c, BANK(Pointers_2326e)
-	ld de, Pointers_2326e
-	ld hl, $10e
-	call FarCall
-	pop bc
-	jp Func_235e2
-
-Func_235df: ; 235df (8:75df)
-	ld bc, $0
-Func_235e2: ; 235e2 (8:75e2)
-	jp Func_235ee
-
-Func_235e5: ; 235e5 (8:75e5)
-	ld bc, $0
-	jp Func_235ee
-
-Func_235eb: ; 235eb (8:75eb)
-	ld bc, $0
-Func_235ee: ; 235ee (8:75ee)
-	push bc
-	call Func_21160
-	pop bc
-	ld a, c
-	and b
-	inc a
-	jp nz, Func_235fc
-	jp Func_23352
-
-Func_235fc: ; 235fc (8:75fc)
-	read_hl_from_sp_plus $48
-	ld a, l
-	read_hl_from_sp_plus $4f
-	ld de, $5e
-	add hl, de
-	ld [hl], a
-	cp $5
-	jp z, Func_23654
-	cp $4
-	jp z, Func_23651
-	cp $3
-	jp z, Func_2364e
-	cp $1
-	jp z, Func_2363f
-	cp $2
-	jp z, Func_23633
-	or a
-	jp nz, Func_23654
-	read_hl_from_sp_plus $4f
-	ld de, $5f
-	add hl, de
-	ld [hl], c
-	jp Func_23654
-
-Func_23633: ; 23633 (8:7633)
-	read_hl_from_sp_plus $4f
-	ld de, $5f
-	add hl, de
-	ld [hl], c
-	jp Func_23654
-
-Func_2363f: ; 2363f (8:763f)
-	read_hl_from_sp_plus $4f
-	ld de, $5f
-	add hl, de
-	ld a, [wc2e8 + 1]
-	ld [hl], a
-	jp Func_23654
-
-Func_2364e: ; 2364e (8:764e)
-	jp Func_23654
-
-Func_23651: ; 23651 (8:7651)
-	jp Func_23654
-
-Func_23654: ; 23654 (8:7654)
-	read_hl_from wc2e6
-	ld de, $1c4
-	add hl, de
-	ld a, [hl]
-	or a
-	jp nz, Func_2366e
-	call Func_20fd5
-	call Func_216e2
-	call Func_21593
-	jp Func_23677
-
-Func_2366e: ; 2366e (8:766e)
-	call Func_21593
-	call Func_2035e
-	call Func_21441
-Func_23677: ; 23677 (8:7677)
-	read_hl_from_sp_plus $51
-	ld de, $7
-	add hl, de
-	ld [hl], $0
-	callba_hli Func_27750
-	or a
-	jp nz, Func_23696
-	jp Func_232f2
-
-Func_23696: ; 23696 (8:7696)
-	set_farcall_addrs_hli Func_dbf5
-	ld c, $3
-	read_hl_from_sp_plus $4f
-	ld de, $c6
-	add hl, de
-	ld e, [hl]
-	xor a
-	call FarCall
-	read_hl_from wc2e6
-	ld de, $1c4
-	add hl, de
-	ld a, [hl]
-	or a
-	jp nz, Func_236d9
-	set_farcall_addrs_hli Func_dbf5
-	ld c, $6
-	read_hl_from_sp_plus $4d
-	ld de, $c6
-	add hl, de
-	ld e, [hl]
-	ld a, $1
-	call FarCall
-Func_236d9: ; 236d9 (8:76d9)
-	ld hl, sp+$0
-	ld [hl], $0
-	read_hl_from_sp_plus $51
-	ld de, $7
-	add hl, de
-	ld a, [hl]
-	and $c
-	jp z, Func_236ee
-	jp Func_23746
-
-Func_236ee: ; 236ee (8:76ee)
-	read_hl_from wc2e6
-	ld de, $1c4
-	add hl, de
-	ld a, [hl]
-	or a
-	jp nz, Func_23717
-	call Func_21b0d
-	or a
-	jp z, Func_2370a
-	ld hl, sp+$0
-	ld [hl], $1
-	jp Func_23746
-
-Func_2370a: ; 2370a (8:770a)
-	call Func_22cd0
-	or a
-	jp nz, Func_23714
-	jp Func_232f2
-
-Func_23714: ; 23714 (8:7714)
-	jp Func_23746
-
-Func_23717: ; 23717 (8:7717)
-	call Func_2193a
-	cp $2
-	jp z, Func_23742
-	cp $1
-	jp z, Func_2372b
-	or a
-	jp nz, Func_23746
-	jp Func_232f2
-
-Func_2372b: ; 2372b (8:772b)
-	ld a, $5
-	call StartMapMusic
-.loop
-	call CheckSongFinished
-	or a
-	jp z, .done
-	call CheckButton
-	and $30
-	jp z, .loop
-.done
-	jp Func_23746
-
-Func_23742: ; 23742 (8:7742)
-	ld hl, sp+$0
-	ld [hl], $1
-Func_23746: ; 23746 (8:7746)
-	xor a
-Func_23747: ; 23747 (8:7747)
-	cp $4
-	jp nc, Func_237af
-	push af
-	set_farcall_addrs_hli Func_6b55
-	pop af
-	push af
-	read_hl_from_sp_plus $4d
-	ld de, $c
-	add hl, de
-	reg16swap de, hl
-	call FarCall
-	read_hl_from_sp_plus $4d
-	ld de, $18
-	add hl, de
-	ld a, [hl]
-	inc hl
-	or [hl]
-	jp nz, Func_23784
-	read_hl_from_sp_plus $4d
-.asm_2377b
-	ld de, $22
-	add hl, de
-	ld [hl], $e
-	jp Func_2378e
-
-Func_23784: ; 23784 (8:7784)
-	read_hl_from_sp_plus $4d
-	ld de, $22
-	add hl, de
-	ld [hl], $0
-Func_2378e: ; 2378e (8:778e)
-	set_farcall_addrs_hli Func_6b74
-	pop af
-	push af
-	read_hl_from_sp_plus $4d
-	ld de, $c
-	add hl, de
-	reg16swap de, hl
-	call FarCall
-	pop af
-	inc a
-	jp Func_23747
-
-Func_237af: ; 237af (8:77af)
-	ld hl, sp+$0
-	ld a, [hl]
-	add sp, $52
-	ret
-
-Data_237b5: ; 237b5
-	db "<HIRA>とﾞうする?<KATA>$"
+INCLUDE "battle/core.asm"
 
 Func_237be: ; 237be
 	set_farcall_addrs_hli Func_6183
@@ -42791,7 +42047,7 @@ Func_246c2: ; 246c2 (9:46c2)
 Func_246c5: ; 246c5 (9:46c5)
 	push de
 	ld a, $2d
-	call Func_1502
+	call OverworldPlaySFX
 	set_farcall_addrs_hli Func_dd47
 	ld hl, sp+$5
 	ld a, [hl]
@@ -59674,7 +58930,7 @@ Data_4d1d4: ; 4d1d4
 
 Func_4d1e1: ; 4d1e1 (13:51e1)
 	push af
-	ld a, [wc2eb]
+	ld a, [wSongCurrentlyPlaying]
 	ld e, a
 	pop af
 	push de
@@ -59738,7 +58994,7 @@ Func_4d27c: ; 4d27c (13:527c)
 	pop de
 	push hl
 	ld a, e
-	call StartMapMusic
+	call OverworldPlaySong
 	pop hl
 	ld a, l
 	ret
@@ -64813,7 +64069,7 @@ Func_4f8ec: ; 4f8ec (13:78ec)
 	push de
 	ld a, $1
 	call FarCall
-	ld a, [wc2eb]
+	ld a, [wSongCurrentlyPlaying]
 	push af
 	call Func_3aa8
 	set_farcall_addrs_hli Func_61424
@@ -64837,7 +64093,7 @@ Func_4f978: ; 4f978 (13:7978)
 	call Func_2b7d
 Func_4f981: ; 4f981 (13:7981)
 	pop af
-	call StartMapMusic
+	call OverworldPlaySong
 	set_farcall_addrs_hli Func_16007
 	ld de, $19
 	ld a, $3
@@ -87360,7 +86616,7 @@ Func_601c5: ; 601c5
 	ret
 
 Func_601d4: ; 601d4 (18:41d4)
-	callba_hli Func_2328f
+	callba_hli DoBattle
 	ret
 
 Data_601e3: ; 601e3
@@ -88734,7 +87990,7 @@ Func_60e81: ; 60e81
 	ld hl, $5e
 	add hl, de
 	push hl
-	ld a, [wc2eb]
+	ld a, [wSongCurrentlyPlaying]
 	ld e, a
 	push de
 	ld hl, sp+$6
@@ -88819,14 +88075,14 @@ Func_60f30: ; 60f30 (18:4f30)
 
 Func_60f51: ; 60f51 (18:4f51)
 	ld a, $4
-	call StartMapMusic
+	call OverworldPlaySong
 	pop af
 	jp Func_60f61
 
 Func_60f5a: ; 60f5a (18:4f5a)
 	push af
 	ld a, $6
-	call StartMapMusic
+	call OverworldPlaySong
 	pop af
 Func_60f61: ; 60f61 (18:4f61)
 	push af
@@ -89054,7 +88310,7 @@ Func_610df: ; 610df (18:50df)
 Func_6112a: ; 6112a (18:512a)
 	pop de
 	ld a, e
-	call StartMapMusic
+	call OverworldPlaySong
 	pop af
 	add sp, $2e
 	ret
@@ -89972,7 +89228,7 @@ Func_6185e: ; 6185e (18:585e)
 	pop de
 	call Func_2617
 	ld a, $5d
-	call Func_1502
+	call OverworldPlaySFX
 	pop af
 	ld e, a
 Func_618b1: ; 618b1 (18:58b1)
@@ -90819,7 +90075,7 @@ Func_61eda: ; 61eda (18:5eda)
 
 Func_61eeb: ; 61eeb (18:5eeb)
 	ld a, $3
-	call StartMapMusic
+	call OverworldPlaySong
 Func_61ef0: ; 61ef0 (18:5ef0)
 	ld hl, $8000
 	ret
@@ -92079,13 +91335,13 @@ Data_62845: ; 62845
 Func_62865: ; 62865 (18:6865)
 	ld a, [wSystemType]
 	cp $11
-	jp z, Func_62870
-	jp Func_628a3
+	jp z, .wait1
+	jp .not_cgb
 
-Func_62870: ; 62870 (18:6870)
+.wait1
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_62870
+	jp nz, .wait1
 	ld bc, $20
 	ld de, Data_62825
 	ld hl, wCGB_BGPalsBuffer + 4 * 8
@@ -92098,11 +91354,11 @@ Func_62870: ; 62870 (18:6870)
 	ld a, [wNextVBlankFlags]
 	or $40
 	ld [wNextVBlankFlags], a
-Func_6289b: ; 6289b (18:689b)
+.wait2
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_6289b
-Func_628a3: ; 628a3 (18:68a3)
+	jp nz, .wait2
+.not_cgb
 	ret
 
 Data_628a4: ; 628a4
@@ -92159,7 +91415,7 @@ Func_62ce4:: ; 62ce4 (18:6ce4)
 	ret
 
 Func_62d2c: ; 62d2c (18:6d2c)
-	ld de, Func_0245
+	ld de, CheckSongFinishedPredef
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
 	ld a, $20
@@ -92173,7 +91429,7 @@ Func_62d37: ; 62d37 (18:6d37)
 	jr asm_62d4b
 
 Func_62d42: ; 62d42 (18:6d42)
-	ld de, Func_0245
+	ld de, CheckSongFinishedPredef
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
 	ld a, $40
@@ -92284,7 +91540,7 @@ asm_62d4b
 	ret
 
 Func_62de6: ; 62de6 (18:6de6)
-	ld de, Func_0245
+	ld de, CheckSongFinishedPredef
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
 	ld a, $20
@@ -92298,7 +91554,7 @@ Func_62df1: ; 62df1 (18:6df1)
 	jr asm_62e05
 
 Func_62dfc: ; 62dfc (18:6dfc)
-	ld de, Func_0245
+	ld de, CheckSongFinishedPredef
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
 	ld a, $40
@@ -95079,7 +94335,7 @@ Func_683be: ; 683be (1a:43be)
 	ld [$c7e2], a
 Func_68402: ; 68402 (1a:4402)
 	call Func_2009
-	ld a, [wc2eb]
+	ld a, [wSongCurrentlyPlaying]
 	callba_hli Func_e220d
 	ld l, a
 	push hl
@@ -98827,7 +98083,7 @@ Data_69ed2:
 Func_69ee5: ; 69ee5 (1a:5ee5)
 	push hl
 	ld a, $b
-	call StartMapMusic
+	call OverworldPlaySong
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -99069,7 +98325,7 @@ Func_6a0e9: ; 6a0e9 (1a:60e9)
 	call Func_3ca1
 	pop bc
 	xor a
-	call StartMapMusic
+	call OverworldPlaySong
 	set_farcall_addrs_hli Func_52d58
 	ld hl, sp+$11
 	call FarCall
@@ -103620,7 +102876,7 @@ Func_6c600: ; 6c600 (1b:4600)
 Func_6c610: ; 6c610 (1b:4610)
 	push de
 	ld a, $10
-	call StartMapMusic
+	call OverworldPlaySong
 	call Func_3aa8
 	set_farcall_addrs_hli Func_17aba
 	ld hl, $80
@@ -105461,7 +104717,7 @@ Func_6d3f5: ; 6d3f5 (1b:53f5)
 	ld a, e
 	call Func_6e77b
 	ld a, $e
-	call StartMapMusic
+	call OverworldPlaySong
 	pop de
 	push de
 	ld a, e
@@ -108896,7 +108152,7 @@ Func_6ebed: ; 6ebed (1b:6bed)
 	ld l, a
 	push hl
 	ld a, $e
-	call StartMapMusic
+	call OverworldPlaySong
 	pop hl
 	pop bc
 	push bc
@@ -110134,9 +109390,9 @@ Func_6f512:: ; 6f512 (1b:7512)
 	call FarCall
 	callba_hli Func_6965b
 	xor a
-	call StartMapMusic
+	call OverworldPlaySong
 	ld a, $16
-	call StartMapMusic
+	call OverworldPlaySong
 	set_farcall_addrs_hli Func_9a6aa
 	ld c, $2
 	ld e, $2
@@ -110170,7 +109426,7 @@ Func_6f512:: ; 6f512 (1b:7512)
 	ld hl, $10e
 	call FarCall
 	ld a, $c
-	call StartMapMusic
+	call OverworldPlaySong
 	jp Func_6f685
 
 Func_6f66f: ; 6f66f (1b:766f)

@@ -25,15 +25,15 @@ predef_const: MACRO
 	predef_const NullPredef_5
 	predef_const NullPredef_6
 	predef_const Func_0296 ; 10
-	predef_const Func_022c
+	predef_const SoundOffPredef
 	predef_const UpdateSoundPredef
 	predef_const StartSongPredef
-	predef_const Func_0238
-	predef_const Func_0241
-	predef_const Func_0245
-	predef_const Func_0249
-	predef_const Func_024d
-	predef_const Func_0251
+	predef_const StartSFXPredef
+	predef_const SelectChannelsPredef
+	predef_const CheckSongFinishedPredef
+	predef_const CheckSFXFinishedPredef
+	predef_const ToggleMusicPredef
+	predef_const SetVolumePredef
 	predef_const Func_0218
 	predef_const Func_026c ; 1b
 

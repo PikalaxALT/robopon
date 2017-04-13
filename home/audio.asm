@@ -1,42 +1,42 @@
-Func_022c:: ; 22c (0:022c)
-	ld l, Func_70000_1c % $100
-	jr asm_0253
+SoundOffPredef:: ; 22c (0:022c)
+	ld l, SoundOff_1c % $100
+	jr callMusicEngine_predef
 
 UpdateSoundPredef:: ; 230 (0:0230)
 	ld l, UpdateSound_1c % $100
-	jr asm_0253
+	jr callMusicEngine_predef
 
 StartSongPredef:: ; 234 (0:0234)
 	ld l, StartSong_1c % $100
-	jr asm_0253
+	jr callMusicEngine_predef
 
-Func_0238:: ; 238 (0:0238)
+StartSFXPredef:: ; 238 (0:0238)
 	cp 60
 	ret c
 	sub 20
-	ld l, Func_70009_1c % $100
-	jr asm_0253
+	ld l, StartSFX_1c % $100
+	jr callMusicEngine_predef
 
-Func_0241:: ; 241 (0:0241)
-	ld l, Func_7000c_1c % $100
-	jr asm_0253
+SelectChannelsPredef:: ; 241 (0:0241)
+	ld l, SelectChannels_1c % $100
+	jr callMusicEngine_predef
 
-Func_0245:: ; 245 (0:0245)
+CheckSongFinishedPredef:: ; 245 (0:0245)
 	ld l, CheckSongFinished_1c % $100
-	jr asm_0253
+	jr callMusicEngine_predef
 
-Func_0249:: ; 249 (0:0249)
+CheckSFXFinishedPredef:: ; 249 (0:0249)
 	ld l, CheckSFXFinished_1c % $100
-	jr asm_0253
+	jr callMusicEngine_predef
 
-Func_024d:: ; 24d (0:024d)
+ToggleMusicPredef:: ; 24d (0:024d)
 	ld l, ToggleMusic_1c % $100
-	jr asm_0253
+	jr callMusicEngine_predef
 
-Func_0251:: ; 251 (0:0251)
+SetVolumePredef:: ; 251 (0:0251)
 	ld l, SetVolume_1c % $100
-asm_0253
-	ld h, Func_70000_1c / $100
+callMusicEngine_predef
+	ld h, SoundOff_1c / $100
 	push af
 	call .Bank1CCall
 	pop hl
@@ -50,7 +50,7 @@ asm_0253
 	ld a, [hROMBank]
 	ld hl, sp+$7
 	ld [hl], a
-	ld a, BANK(Func_70000_1c)
+	ld a, BANK(SoundOff_1c)
 .BankSwitchBack
 	call BankSwitch_0020
 	pop af

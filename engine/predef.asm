@@ -2144,7 +2144,7 @@ Func_79fb7:: ; 79fb7
 
 .asm_7a002
 	call Func_79ee7
-	predef Func_022c
+	predef SoundOffPredef
 	ld hl, $400
 	predef Func_7e064
 	call Func_7a14f
@@ -2152,7 +2152,7 @@ Func_79fb7:: ; 79fb7
 	call Func_79f15
 	ld hl, $404
 	predef Func_7e064
-	predef Func_022c
+	predef SoundOffPredef
 	predef Func_7e0d2
 	jr .asm_79fca
 
@@ -4735,7 +4735,7 @@ Func_7b21d:: ; 7b21d (1e:721d)
 asm_7b220
 	predef Func_0150
 Func_7b222:: ; 7b222 (1e:7222)
-	predef Func_022c
+	predef SoundOffPredef
 	predef Func_7b848
 	ld a, $a4
 	ld bc, $102
@@ -6545,10 +6545,10 @@ Func_7c19f:: ; 7c19f (1f:419f)
 	push de
 	push hl
 	ld c, a
-	predef Func_024d
+	predef ToggleMusicPredef
 	cp c
 	jr z, .asm_7c1aa
-	predef Func_024d
+	predef ToggleMusicPredef
 .asm_7c1aa
 	predef UpdateSoundPredef
 	pop hl

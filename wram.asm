@@ -324,7 +324,7 @@ wChannel3FrequencyOffset:: db ; c16c
 
 wNoiseSamplePointer:: dw ; c16d
 wc16f:: db ; c16f
-wc170:: db ; c170
+wSoundOutputFlags:: db ; c170
 wVolume:: db ; c171
 wMusicPaused:: db ; c172
 
@@ -470,8 +470,8 @@ wc2e8:: ds $1 ; c2e8
 	ds $1
 
 wVideoTransferRequestFlags:: ds $1 ; c2ea
-wc2eb:: db ; c2eb
-wc2ec:: db ; c2ec
+wSongCurrentlyPlaying:: db ; c2eb
+wSFXCurrentlyPlaying:: db ; c2ec
 wVideoTransferRequestBank:: ds $1 ; c2ed
 	ds $d
 wSystemType:: ; c2fb

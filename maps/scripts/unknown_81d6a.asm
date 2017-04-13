@@ -118,30 +118,30 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	ld hl, $3c
 	call Func_8068f_20
 	ld a, $66
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	ld a, $34
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	ld a, $35
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	call Func_80ea2_20
 	ld hl, $1e
 	call Func_8068f_20
 	ld a, $38
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	ld a, $36
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	ld a, $3a
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	call Func_80eb1_20
@@ -164,22 +164,22 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	call Func_8063e_20
 	call Func_801d5_20
 	ld a, $3b
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	ld a, $3c
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	call Func_80ea2_20
 	ld hl, $1e
 	call Func_8068f_20
 	ld a, $39
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	ld a, $3a
-	call Func_1502
+	call OverworldPlaySFX
 	ld hl, $1e
 	call Func_8068f_20
 	ld hl, $1e

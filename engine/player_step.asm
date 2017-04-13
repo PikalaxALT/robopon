@@ -225,7 +225,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	cp $1
 	jr z, .asm_95a8
 	ld a, $33
-	call Func_1502
+	call OverworldPlaySFX
 	jr .asm_95a8
 
 .asm_95a3

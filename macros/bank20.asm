@@ -1638,7 +1638,7 @@ Func_80c61_\1: ; 80c61 (20:4c61)
 	or a
 	jp nz, Func_80c91_\1
 	ld a, $33
-	call Func_1502
+	call OverworldPlaySFX
 	ld bc, $c846
 	ld e, BANK(Func_80bde_\1)
 	ld hl, sp+$1
@@ -1823,7 +1823,7 @@ Func_80dd3_\1: ; 80dd3 (20:4dd3)
 Func_80de2_\1: ; 80de2 (20:4de2)
 	push hl
 	push de
-	set_farcall_addrs_hli Func_bbee
+	set_farcall_addrs_hli StartBattle
 	pop de
 	pop hl
 	ld c, e
@@ -1940,7 +1940,7 @@ Func_80ee6_\1: ; 80ee6 (20:4ee6)
 	jp z, Func_80efc_\1
 	ld hl, sp+$1
 	ld a, [hl]
-	call StartMapMusic
+	call OverworldPlaySong
 	ld hl, sp+$1
 	ld a, [hl]
 	ld [wMapMusic], a
@@ -1949,7 +1949,7 @@ Func_80efc_\1: ; 80efc (20:4efc)
 	ret
 
 Func_80efe_\1: ; 80efe (20:4efe)
-	call Func_1502
+	call OverworldPlaySFX
 	ret
 
 Func_80f02_\1: ; 80f02 (20:4f02)

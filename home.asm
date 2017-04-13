@@ -252,15 +252,15 @@ Pointers_01e0:: ; 01e0
 	dw NullPredef
 	dw NullPredef
 	dw Func_0296
-	dw Func_022c
+	dw SoundOffPredef
 	dw UpdateSoundPredef
 	dw StartSongPredef
-	dw Func_0238
-	dw Func_0241
-	dw Func_0245
-	dw Func_0249
-	dw Func_024d
-	dw Func_0251
+	dw StartSFXPredef
+	dw SelectChannelsPredef
+	dw CheckSongFinishedPredef
+	dw CheckSFXFinishedPredef
+	dw ToggleMusicPredef
+	dw SetVolumePredef
 	dw Func_0218
 	dw Func_026c
 
@@ -347,7 +347,7 @@ Func_030a:: ; 30a (0:030a)
 	di
 	ld sp, wStackTop
 	predef InitCartIRMode
-	call Func_1a90
+	call SoundOff
 Start:: ; 323 (0:0323)
 	di
 	ld sp, wStackTop
@@ -381,7 +381,7 @@ Func_0331:: ; 331 (0:0331)
 	ld sp, wStackTop
 	push af
 	predef InitCartIRMode
-	predef Func_022c
+	predef SoundOffPredef
 	ld a, BANK(Func_63141)
 	call BankSwitch
 	pop af
@@ -410,7 +410,7 @@ Func_0388:: ; 388 (0:0388)
 	ld a, $3
 	call GetSRAMBank
 	call Func_4064
-	call Func_1a90
+	call SoundOff
 	ld a, BANK(Func_4000)
 	call BankSwitch
 	jp Func_4000
@@ -425,7 +425,7 @@ Func_03a4:: ; 3a4 (0:03a4)
 	ld a, $3
 	call GetSRAMBank
 	call Func_4064
-	call Func_1a90
+	call SoundOff
 	ld a, $ff
 	ld [wc213], a
 	ld a, BANK(Func_4000)
@@ -2532,12 +2532,12 @@ CallAudioEngine1C::
 .asm_1a7a
 	ld a, [hROMBank]
 	push af
-	ld a, BANK(Func_70000_1c)
+	ld a, BANK(SoundOff_1c)
 	call BankSwitch
 	ld a, h
 	ld de, .Return
 	push de
-	ld h, Func_70000_1c / $100
+	ld h, SoundOff_1c / $100
 	push hl
 	ret
 
@@ -2546,8 +2546,8 @@ CallAudioEngine1C::
 	pop af
 	jp BankSwitch
 
-Func_1a90:: ; 1a90 (0:1a90)
-	ld l, Func_70000_1c % $100
+SoundOff:: ; 1a90 (0:1a90)
+	ld l, SoundOff_1c % $100
 	jr CallAudioEngine1C
 
 UpdateSound:: ; 1a94 (0:1a94)
@@ -2563,18 +2563,18 @@ UpdateSound:: ; 1a94 (0:1a94)
 	ld [wVideoTransferRequestFlags], a
 	ret
 
-Func_1aaf:: ; 1aaf (0:1aaf)
+StartSong:: ; 1aaf (0:1aaf)
 	ld l, StartSong_1c % $100
 	ld h, a
 	jr CallAudioEngine1C
 
-Func_1ab4:: ; 1ab4 (0:1ab4)
-	ld l, Func_70009_1c % $100
+StartSFX:: ; 1ab4 (0:1ab4)
+	ld l, StartSFX_1c % $100
 	ld h, a
 	jr CallAudioEngine1C
 
-Func_1ab9:: ; 1ab9
-	ld l, Func_7000c_1c % $100
+SelectChannels:: ; 1ab9
+	ld l, SelectChannels_1c % $100
 	ld h, a
 	jr CallAudioEngine1C
 

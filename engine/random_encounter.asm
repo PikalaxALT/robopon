@@ -297,7 +297,7 @@ Func_ba13: ; ba13 (2:7a13)
 	ld hl, sp+$0
 	reg16swap de, hl
 	xor a
-	call Func_bbee
+	call StartBattle
 	jp Func_ba44
 
 Func_ba42: ; ba42 (2:7a42)
