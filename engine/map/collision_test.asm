@@ -46,7 +46,7 @@ Func_9fb3: ; 9fb3 (2:5fb3)
 	ld d, $0
 	call MultiplyHLbyDE
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	ld a, [wPlayerMapX]
 	ld e, a
@@ -111,7 +111,7 @@ Func_a03a: ; a03a (2:603a)
 	ld [hl], a
 	read_hl_from wPlayerStandingTileOffset
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	ld e, [hl]
 	pop bc
@@ -181,7 +181,7 @@ Func_a0a9: ; a0a9 (2:60a9)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld c, l
 	ld b, h
@@ -206,7 +206,7 @@ Func_a0de: ; a0de (2:60de)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl

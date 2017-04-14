@@ -13,7 +13,7 @@ Func_8002b_\1: ; 8002b (20:402b)
 	callba_hli Func_aca6
 	ret
 
-Func_8003a_\1: ; 8003a (20:403a)
+LoadMapObjects_\1: ; 8003a (20:403a)
 	push hl
 	push bc
 	push bc
@@ -47,7 +47,7 @@ Func_8003a_\1: ; 8003a (20:403a)
 	ld hl, sp+$4
 	ld bc, $b
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_acc8
+	set_farcall_addrs_hli LoadMapObject
 	ld hl, sp+$4
 	call FarCall
 	pop af
@@ -110,7 +110,7 @@ Func_800c8_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld [hl], a
 	pop bc
@@ -750,7 +750,7 @@ Func_806dd_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -856,7 +856,7 @@ Func_80799_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -881,7 +881,7 @@ Func_80799_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -902,7 +902,7 @@ Func_807e7_\1: ; 807e7 (20:47e7)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -964,7 +964,7 @@ Func_80828_\1: ; 80828 (20:4828)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -991,7 +991,7 @@ Func_8085f_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -1017,7 +1017,7 @@ Func_8085f_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1065,7 +1065,7 @@ Func_808cb_\1: ; 808cb (20:48cb)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1094,7 +1094,7 @@ Func_808fc_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -1120,7 +1120,7 @@ Func_808fc_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1168,7 +1168,7 @@ Func_80968_\1: ; 80968 (20:4968)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1197,7 +1197,7 @@ Func_80999_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -1223,7 +1223,7 @@ Func_80999_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1274,7 +1274,7 @@ Func_80999_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1344,7 +1344,7 @@ Func_80a7c_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -1370,7 +1370,7 @@ Func_80a7c_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1403,7 +1403,7 @@ Func_80a7c_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1457,7 +1457,7 @@ Func_80b2d_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -1483,7 +1483,7 @@ Func_80b2d_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1516,7 +1516,7 @@ Func_80b2d_\1:
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -1568,7 +1568,7 @@ Func_80bde_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	inc hl
 	inc hl
@@ -1587,7 +1587,7 @@ Func_80bde_\1:
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	inc hl
 	inc hl

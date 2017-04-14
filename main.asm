@@ -5058,7 +5058,7 @@ Func_8bdc: ; 8bdc (2:4bdc)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $6
 	add hl, de
@@ -5332,14 +5332,14 @@ macro_8df1: MACRO
 	macro_8df1 $c822
 	macro_8df1 $c826
 	macro_8df1 $c828
-	macro_8df1 $c830
+	macro_8df1 wMapCollisionPointer
 	macro_8df1 $c82a
 	macro_8df1 $c82c
 	macro_8df1 $c82e
-	macro_8df1 $c77a
+	macro_8df1 wMapObjectsPointer
 	macro_8df1 $c778
-	macro_8df1 $c774
-	macro_8df1 $c776
+	macro_8df1 wObjectStructPointer
+	macro_8df1 wc776
 	ret
 
 Func_8f44:: ; 8f44 (2:4f44)
@@ -5703,7 +5703,7 @@ Func_9a49: ; 9a49 (2:5a49)
 	ld [$c888], a
 	xor a
 	ld [$c889], a
-	ld hl, $c774
+	ld hl, wObjectStructPointer
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -5712,7 +5712,7 @@ Func_9a49: ; 9a49 (2:5a49)
 	ld [$c88a], a
 	ld a, d
 	ld [$c88b], a
-	ld hl, $c776
+	ld hl, wc776
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -6619,10 +6619,10 @@ Func_a24c: ; a24c (2:624c)
 	ld [$c773], a
 	ld hl, $118
 	call Func_be4d
-	write_hl_to $c774
+	write_hl_to wObjectStructPointer
 	ld hl, $50
 	call Func_be4d
-	write_hl_to $c776
+	write_hl_to wc776
 	ret
 
 Func_a26c: ; a26c (2:626c)
@@ -6743,7 +6743,7 @@ Func_a2fd: ; a2fd (2:62fd)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	pop de
 	ld bc, $e
@@ -6754,7 +6754,7 @@ Func_a2fd: ; a2fd (2:62fd)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	ld c, l
 	ld b, h
@@ -6772,7 +6772,7 @@ Func_a2fd: ; a2fd (2:62fd)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	call WriteHLToSPPlus6
 	pop bc
@@ -6874,7 +6874,7 @@ Func_a3e0: ; a3e0 (2:63e0)
 	ld h, $0
 	call MultiplyHLbyDE
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$3
@@ -6957,7 +6957,7 @@ Func_a460: ; a460 (2:6460)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -6973,7 +6973,7 @@ Func_a460: ; a460 (2:6460)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -7000,7 +7000,7 @@ Func_a4a0: ; a4a0 (2:64a0)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	reg16swap de, hl
 	ld l, e
@@ -7037,7 +7037,7 @@ Func_a4a0: ; a4a0 (2:64a0)
 	ld h, $0
 	call MultiplyHLbyDE
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$3
@@ -7156,7 +7156,7 @@ Func_a580:: ; a580
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -7192,7 +7192,7 @@ Func_a5ab: ; a5ab (2:65ab)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -7217,7 +7217,7 @@ Func_a5ab: ; a5ab (2:65ab)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -7262,7 +7262,7 @@ Func_a61b: ; a61b (2:661b)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	reg16swap de, hl
 	ld l, e
@@ -7299,7 +7299,7 @@ Func_a61b: ; a61b (2:661b)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	inc hl
@@ -7316,7 +7316,7 @@ Func_a61b: ; a61b (2:661b)
 	ld h, $0
 	call MultiplyHLbyDE
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$3
@@ -7340,7 +7340,7 @@ Func_a61b: ; a61b (2:661b)
 	ld h, $0
 	call MultiplyHLbyDE
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -7403,7 +7403,7 @@ Func_a6f9: ; a6f9 (2:66f9)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	ld c, l
 	ld b, h
@@ -7460,7 +7460,7 @@ Func_a75c: ; a75c (2:675c)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	ld d, [hl]
 	ld hl, sp+$7
@@ -7476,315 +7476,7 @@ Func_a77e: ; a77e (2:677e)
 	pop bc
 	ret
 
-CheckObjectCollision: ; a783 (2:6783)
-	ld [$c88b], a
-	ld a, e
-	ld [$c88c], a
-	ld a, [$c83c]
-	ld b, a
-	ld a, [$c83d]
-	or b
-	jr z, .asm_a797
-	ld a, $1
-	ret
-
-.asm_a797
-	ld a, $1
-	ld [$c888], a
-	ld a, [wPlayerMapX]
-	ld [$c889], a
-	ld a, [wPlayerMapY]
-	ld [$c88a], a
-	ld a, [wPlayerStandingTileOffset]
-	ld l, a
-	ld a, [wPlayerStandingTileOffset + 1]
-	ld h, a
-	ld c, l
-	ld b, h
-	ld a, [$c830]
-	ld l, a
-	ld a, [$c831]
-	ld h, a
-	add hl, bc
-	ld a, [wMapWidth]
-	ld c, a
-	ld b, $0
-	ld a, [$c88b]
-	cp $1
-	jr z, .asm_a7ce
-	cp $2
-	jr z, .asm_a7ce
-	jr .asm_a80c
-
-.asm_a7ce
-	ld a, [$c88c]
-	or a
-	jr z, .asm_a7df
-	dec a
-	jr z, .asm_a7ee
-	dec a
-	jr z, .asm_a7f8
-	dec a
-	jr z, .asm_a802
-	jr .asm_a80c
-
-.asm_a7df
-	ld a, l
-	sub c
-	ld l, a
-	ld a, h
-	sbc b
-	ld h, a
-	ld a, [$c88a]
-	dec a
-	ld [$c88a], a
-	jr .asm_a80c
-
-.asm_a7ee
-	inc hl
-	ld a, [$c889]
-	inc a
-	ld [$c889], a
-	jr .asm_a80c
-
-.asm_a7f8
-	add hl, bc
-	ld a, [$c88a]
-	inc a
-	ld [$c88a], a
-	jr .asm_a80c
-
-.asm_a802
-	dec hl
-	ld a, [$c889]
-	dec a
-	ld [$c889], a
-	jr .asm_a80c
-
-.asm_a80c
-	ld a, [hl]
-	and $7
-	jr nz, .asm_a814
-	ld a, $1
-	ret
-
-.asm_a814
-	ld hl, $c774
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, e
-	ld [$c88e], a
-	ld a, d
-	ld [$c88f], a
-	ld hl, $c776
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, e
-	ld [$c890], a
-	ld a, d
-	ld [$c891], a
-	xor a
-	ld [$c88d], a
-Func_a836: ; a836 (2:6836)
-	ld a, [$c772]
-	ld b, a
-	ld a, [$c88d]
-	cp b
-	jp nc, Func_a97f
-	ld a, [$c84a]
-	or a
-	jp z, Func_a97f
-	ld a, [$c890]
-	ld l, a
-	ld a, [$c891]
-	ld h, a
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	or a
-	jp z, Func_a94d
-	ld a, [$c88e]
-	ld l, a
-	ld a, [$c88f]
-	ld h, a
-	ld bc, $a
-	add hl, bc
-	ld a, [$c88b]
-	or a
-	jr z, .asm_a870
-	cp $2
-	jr z, .asm_a870
-	jr .asm_a879
-
-.asm_a870
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	dec hl
-	dec hl
-	or b
-	jp z, Func_a94d
-.asm_a879
-	dec hl
-	dec hl
-	dec hl
-	dec hl
-	dec hl
-	dec hl
-	dec hl
-	dec hl
-	ld a, [$c889]
-	bit 7, a
-	jp nz, Func_a94d
-	cp [hl]
-	jp c, Func_a94d
-	ld c, a
-	ld a, [hl]
-	ld b, a
-	inc hl
-	inc hl
-	ld a, [hl]
-	add b
-	inc c
-	cp c
-	jp c, Func_a94d
-	dec hl
-	ld a, [$c88a]
-	bit 7, a
-	jp nz, Func_a94d
-	cp [hl]
-	jp c, Func_a94d
-	ld c, a
-	ld a, [hl]
-	ld b, a
-	inc hl
-	inc hl
-	ld a, [hl]
-	add b
-	inc c
-	cp c
-	jp c, Func_a94d
-	ld a, [$c88b]
-	or a
-	jr z, .asm_a8c3
-	cp $1
-	jr z, .asm_a8de
-	cp $2
-	jr z, .asm_a928
-	jp Func_a94d
-
-.asm_a8c3
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hli]
-	ld [wFarCallDestBank], a
-	ld a, [hli]
-	ld [wFarCallDestAddr], a
-	ld a, [hli]
-	ld [wFarCallDestAddr + 1], a
-	ld e, $2
-	ld a, [$c88d]
-	call FarCall
-	jp Func_a94d
-
-.asm_a8de
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hli]
-	cp $0
-	jr nz, .asm_a8f5
-	ld a, [$c83c]
-	ld b, a
-	ld a, [$c83d]
-	or b
-	jr nz, .asm_a8f5
-	ld a, $0
-	ld [$c888], a
-.asm_a8f5
-	inc hl
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	or b
-	jr z, .asm_a925
-	ld a, $0
-	ld [$c7c4], a
-	dec hl
-	dec hl
-	dec hl
-	ld a, [hli]
-	ld [wFarCallDestBank], a
-	ld a, [hli]
-	ld [wFarCallDestAddr], a
-	ld a, [hli]
-	ld [wFarCallDestAddr + 1], a
-	ld a, $1
-	ld e, a
-	ld a, [$c88d]
-	call FarCall
-	ld a, [$c7c4]
-	cp $1
-	jr nz, .asm_a925
-	ld a, $1
-	ld [$c888], a
-.asm_a925
-	jp Func_a94d
-
-.asm_a928
-	ld a, $0
-	ld [$c7c4], a
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hli]
-	ld [wFarCallDestBank], a
-	ld a, [hli]
-	ld [wFarCallDestAddr], a
-	ld a, [hli]
-	ld [wFarCallDestAddr + 1], a
-	ld e, $0
-	ld a, [$c88d]
-	call FarCall
-	ld a, [$c7c4]
-	cp $1
-	jp z, Func_a97f
-Func_a94d: ; a94d (2:694d)
-	ld a, [$c88e]
-	ld l, a
-	ld a, [$c88f]
-	ld h, a
-	ld bc, $e
-	add hl, bc
-	ld a, l
-	ld [$c88e], a
-	ld a, h
-	ld [$c88f], a
-	ld a, [$c890]
-	ld l, a
-	ld a, [$c891]
-	ld h, a
-	ld bc, $4
-	add hl, bc
-	ld a, l
-	ld [$c890], a
-	ld a, h
-	ld [$c891], a
-	ld a, [$c88d]
-	inc a
-	ld [$c88d], a
-	jp nz, Func_a836
-Func_a97f: ; a97f (2:697f)
-	ld a, [$c888]
-	ret
+INCLUDE "engine/check_collision.asm"
 
 Data_a983: ; a983
 	db $01
@@ -8203,20 +7895,20 @@ Func_aca4:: ; aca4
 
 Func_aca6:: ; aca6 (2:6ca6)
 	xor a
-	ld [$c77c], a
-	read_hl_from $c77a
+	ld [wNumObjectsInMap], a
+	read_hl_from wMapObjectsPointer
 	ld a, l
 	or h
 	jp z, Func_acbc
-	read_hl_from $c77a
+	read_hl_from wMapObjectsPointer
 	call Func_be5d
 Func_acbc: ; acbc (2:6cbc)
 	ld hl, $dc
 	call Func_be4d
-	write_hl_to $c77a
+	write_hl_to wMapObjectsPointer
 	ret
 
-Func_acc8:: ; acc8
+LoadMapObject:: ; acc8
 ; arguments: 11-byte struct on stack
 	push hl
 	push bc
@@ -8229,7 +7921,7 @@ Func_acc8:: ; acc8
 	ld h, $0
 	call MultiplyHLbyDE
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	ld c, l
 	ld b, h
@@ -8280,7 +7972,7 @@ Func_acc8:: ; acc8
 .done
 	call GetHLAtSPPlus4
 	push hl
-	ld hl, $c77c
+	ld hl, wNumObjectsInMap
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -8293,14 +7985,14 @@ Func_acc8:: ; acc8
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c77a
+	read_hl_from wMapObjectsPointer
 	add hl, de
 	pop de
 	ld bc, $b
 	call CopyFromDEtoHL
-	ld a, [$c77c]
+	ld a, [wNumObjectsInMap]
 	inc a
-	ld [$c77c], a
+	ld [wNumObjectsInMap], a
 	pop bc
 	pop bc
 	ret
@@ -8308,7 +8000,7 @@ Func_acc8:: ; acc8
 Func_ad56: ; ad56 (2:6d56)
 	read_hl_from wPlayerStandingTileOffset
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	ld a, [hl]
 	and $80
@@ -8320,7 +8012,7 @@ Func_ad6d: ; ad6d (2:6d6d)
 	ld c, $0
 Func_ad6f: ; ad6f (2:6d6f)
 	ld a, c
-	ld hl, $c77c
+	ld hl, wNumObjectsInMap
 	cp [hl]
 	jp nc, Func_ae3b
 	push bc
@@ -8336,7 +8028,7 @@ Func_ad6f: ; ad6f (2:6d6f)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c77a
+	read_hl_from wMapObjectsPointer
 	add hl, de
 	reg16swap de, hl
 	ld a, [de]
@@ -8748,7 +8440,7 @@ Func_b065: ; b065 (2:7065)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	call WriteHLToSPPlus4
 	call GetHLAtSPPlus4
@@ -8763,7 +8455,7 @@ Func_b065: ; b065 (2:7065)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	inc hl
 	ld [hl], $0
@@ -8900,7 +8592,7 @@ Func_b17d: ; b17d (2:717d)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c774
+	read_hl_from wObjectStructPointer
 	add hl, de
 	call WriteHLToSPPlus4
 	ld hl, sp+$e
@@ -8909,7 +8601,7 @@ Func_b17d: ; b17d (2:717d)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c776
+	read_hl_from wc776
 	add hl, de
 	ld c, l
 	ld b, h
@@ -8974,7 +8666,7 @@ Func_b17d: ; b17d (2:717d)
 	ld d, $0
 	call MultiplyHLbyDE
 	reg16swap de, hl
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$f
@@ -34280,8 +33972,24 @@ GFX_18000: ; 18000
 	dr $18000, $1bfcf
 
 SECTION "Bank 07", ROMX, BANK [$07]
-GFX_1c000: ; 1c000
-	dr $1c000, $1e7ec
+Pointers_1c000: ; 1c000
+	dbw BANK(Data_1c018) - BANK(Pointers_1c000), Data_1c018
+	dbw BANK(Data_1c4fe) - BANK(Pointers_1c000), Data_1c4fe
+	dbw BANK(Data_1c9e0) - BANK(Pointers_1c000), Data_1c9e0
+	dbw BANK(Data_1ce64) - BANK(Pointers_1c000), Data_1ce64
+	dbw BANK(Data_1d352) - BANK(Pointers_1c000), Data_1d352
+	dbw BANK(Data_1d90f) - BANK(Pointers_1c000), Data_1d90f
+	dbw BANK(Data_1dda1) - BANK(Pointers_1c000), Data_1dda1
+	dbw BANK(Data_1e2bf) - BANK(Pointers_1c000), Data_1e2bf
+
+Data_1c018: INCBIN "maps/unknown_1c018/unknown_1c018.bin.rz"
+Data_1c4fe: INCBIN "maps/unknown_1c018/unknown_1c4fe.bin.rz"
+Data_1c9e0: INCBIN "maps/unknown_1c018/unknown_1c9e0.bin.rz"
+Data_1ce64: INCBIN "maps/unknown_1c018/unknown_1ce64.bin.rz"
+Data_1d352: INCBIN "maps/unknown_1c018/unknown_1d352.bin.rz"
+Data_1d90f: INCBIN "maps/unknown_1c018/unknown_1d90f.bin.rz"
+Data_1dda1: INCBIN "maps/unknown_1c018/unknown_1dda1.bin.rz"
+Data_1e2bf: INCBIN "maps/unknown_1c018/unknown_1e2bf.bin.rz"
 
 SECTION "Bank 08", ROMX [$4000], BANK [$08]
 INCLUDE "charmap2.asm"

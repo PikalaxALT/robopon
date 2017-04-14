@@ -7,7 +7,7 @@ Data_823d4: ; 823d4
 Func_8240c:
 	ld e, $2
 	ld hl, Data_823ba
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld a, [$c790]
 	cp $4
 	jp z, Func_8242b

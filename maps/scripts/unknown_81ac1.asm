@@ -10,7 +10,7 @@ Data_81abc: ; 81abc
 Func_81ac1:
 	ld e, $2
 	ld hl, Data_81a66
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_81abc
 	call Func_80ce7_20

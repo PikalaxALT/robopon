@@ -574,7 +574,15 @@ wAttrMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
 
 SECTION "Overworld RAM", WRAM0 [$c770]
 wc770:: ; c770
-	ds $11
+	ds $4
+
+wObjectStructPointer:: dw ; c774
+wc776:: dw ; c776
+	ds $2
+
+wMapObjectsPointer:: dw ; c77a
+wNumObjectsInMap:: db ; c77c
+	ds $4
 
 wRandomEncounterRate:: db ; c781
 	ds $1
@@ -582,7 +590,10 @@ wRandomEncounterCooldown:: db ; c783
 	ds $3a
 
 wMapMusic:: db ; c7be
-	ds $a0
+	ds $71
+
+wMapCollisionPointer:: dw ; c830
+	ds $2d
 
 wPlayerMapX:: db ; c85f
 wPlayerMapY:: db ; c860
@@ -591,6 +602,16 @@ wPlayerStandingTileOffset:: dw ; c865
 	ds $15
 wPlayerMovementRate:: db ; c87c
 wLastStepSucceeded:: db ; c87d
+	ds $a
+
+wCheckCollisionReturnFlag:: db ; c888
+wCheckCollisionX:: db ; c889
+wCheckCollisionY:: db ; c88a
+wCheckCollisionFlag:: db ; c88b
+wCheckCollisionFacingDirection:: db ; c88c
+wCheckCollisionObjectCounter:: db ; c88d
+wCheckCollisionObjectStructPointer:: dw ; c88e
+wCheckCollision
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 wCGB_BGPalsBuffer:: ; c89c

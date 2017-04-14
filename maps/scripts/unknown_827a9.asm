@@ -18,7 +18,7 @@ Func_827a9:
 	ld [$c7de], a
 	ld e, $6
 	ld hl, Data_8271c
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_8275e
 	call Func_80ce7_20

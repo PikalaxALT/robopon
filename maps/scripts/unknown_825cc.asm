@@ -10,7 +10,7 @@ Data_825be: ; 825be
 Func_825cc:
 	ld e, $1
 	ld hl, Data_82593
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld a, [$c793]
 	or a
 	jp z, Func_825eb

@@ -1,5 +1,5 @@
 Data_81cb4:
-	dr $81cb4, $81cbf
+	db $07, $02, $01, $01, $00, $01, $07, $02, $07, $03, $2e
 
 Data_81cbf: ; 81cbf
 	dr $81cbf, $81cd0
@@ -21,7 +21,7 @@ Func_81d6a:
 	ld [$c793], a
 	ld e, $1
 	ld hl, Data_81cb4
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_81cbf
 	call Func_80ce7_20
@@ -50,7 +50,7 @@ Func_81d95: ; 81d95 (20:5d95)
 Func_81db2: ; 81db2 (20:5db2)
 	ld e, $1
 	ld hl, Data_81cb4
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld hl, $a
 	call Func_8062e_20
 	or a

@@ -48,7 +48,7 @@ Func_81281:
 	ld [$c791], a
 	ld e, $6
 	ld hl, Data_810b4
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld a, $1
 	call Func_80cc6_20
 	ld a, [$c793]
@@ -182,7 +182,7 @@ Func_813c2: ; 813c2 (20:53c2)
 	jp nc, Func_813ec
 	ld e, $1
 	ld hl, Data_810f6
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld de, Data_8113b
 	ld a, $7
 	call Func_80150_20

@@ -33,7 +33,7 @@ macro_854b: MACRO
 	ld hl, $0
 	write_hl_to $c85d
 	ld hl, $0
-	write_hl_to $c830
+	write_hl_to wMapCollisionPointer
 	write_hl_to $c82e
 	write_hl_to $c82c
 	write_hl_to $c828
@@ -41,13 +41,13 @@ macro_854b: MACRO
 	write_hl_to $c822
 	write_hl_to $c824
 	ld hl, $0
-	write_hl_to $c77a
+	write_hl_to wMapObjectsPointer
 	ld hl, $0
 	write_hl_to $c778
 	ld hl, $0
-	write_hl_to $c774
+	write_hl_to wObjectStructPointer
 	ld hl, $0
-	write_hl_to $c776
+	write_hl_to wc776
 	ld hl, $0
 	write_hl_to $c82a
 	xor a
@@ -108,7 +108,7 @@ macro_854b: MACRO
 	ld hl, sp+$5d
 	ld a, [hl]
 	call Func_8d2a
-	ld a, BANK(GFX_1c000)
+	ld a, BANK(Pointers_1c000)
 	ld [wFarCallDestBank], a
 	ld bc, $3
 	ld hl, sp+$5d
@@ -124,7 +124,7 @@ macro_854b: MACRO
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, GFX_1c000
+	ld de, Pointers_1c000
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$5e
@@ -135,7 +135,7 @@ macro_854b: MACRO
 	write_hl_to $c85b
 	ld hl, sp+$60
 	ld a, [hl]
-	add BANK(GFX_1c000)
+	add BANK(Pointers_1c000)
 	ld [wFarCallDestBank], a
 	pop bc
 	read_hl_from $c85b
@@ -258,7 +258,7 @@ Func_87ca: ; 87ca (2:47ca)
 	ld d, $0
 	call MultiplyHLbyDE
 	call Func_be4d
-	write_hl_to $c830
+	write_hl_to wMapCollisionPointer
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
@@ -269,7 +269,7 @@ Func_87ca: ; 87ca (2:47ca)
 	ld c, l
 	ld b, h
 	ld e, $0
-	read_hl_from $c830
+	read_hl_from wMapCollisionPointer
 	call FillMemory
 Func_8827: ; 8827 (2:4827)
 	ld a, [$c7e8]

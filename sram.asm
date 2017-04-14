@@ -1,2 +1,13 @@
 INCLUDE "includes.asm"
 
+SECTION "SRAM0", SRAM, BANK [0]
+
+SECTION "SRAM1", SRAM, BANK [1]
+
+SECTION "SRAM2", SRAM, BANK [2]
+
+SECTION "SRAM3", SRAM, BANK [3]
+	ds $32c
+
+sMapObjects:: ds 11 * 15 ; a32c
+

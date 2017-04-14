@@ -22,7 +22,7 @@ Func_82e70:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_82e20
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_82e41
 	call Func_80ce7_20

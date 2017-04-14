@@ -40,7 +40,7 @@ Func_83213:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_831e4
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_83205
 	call Func_800fb_20
@@ -163,7 +163,7 @@ Func_83340:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8331a
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_8333b
 	call Func_80ce7_20
@@ -207,7 +207,7 @@ Func_833ba:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83399
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld a, $b
 	call Func_80ee6_20
 	call Func_8001c_20
@@ -251,7 +251,7 @@ Func_83431:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8340b
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_8342c
 	call Func_80ce7_20
@@ -298,7 +298,7 @@ Func_834bd:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8348a
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_834af
 	call Func_800fb_20
@@ -342,7 +342,7 @@ Func_83537:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83516
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld a, $b
 	call Func_80ee6_20
 	call Func_8001c_20
@@ -386,7 +386,7 @@ Func_835ae:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83588
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_835a9
 	call Func_80ce7_20
@@ -433,7 +433,7 @@ Func_83632:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83607
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $2
 	ld hl, Data_83628
 	call Func_80ce7_20
@@ -480,7 +480,7 @@ Func_836b1:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8368b
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_836ac
 	call Func_80ce7_20
@@ -527,7 +527,7 @@ Func_83730:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_8370a
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_8372b
 	call Func_80ce7_20
@@ -571,7 +571,7 @@ Func_837aa:
 	ld [$c7de], a
 	ld e, $3
 	ld hl, Data_83789
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld a, $b
 	call Func_80ee6_20
 	call Func_8001c_20
@@ -615,7 +615,7 @@ Func_83816:
 	ld [$c7de], a
 	ld e, $2
 	ld hl, Data_837fb
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_83811
 	call Func_80ce7_20
@@ -665,7 +665,7 @@ Func_838a2:
 	ld [$c7de], a
 	ld e, $2
 	ld hl, Data_8386f
-	call Func_8003a_20
+	call LoadMapObjects_20
 	ld e, $3
 	ld hl, Data_83885
 	call Func_80ce7_20
@@ -1389,7 +1389,7 @@ Func_851b4: ; 851b4 (21:51b4)
 Func_851bc: ; 851bc (21:51bc)
 	ld e, $6
 	ld hl, Data_850b4
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld a, $1
 	call Func_80cc6_21
 	ld a, $2
@@ -2225,7 +2225,7 @@ Func_85a61: ; 85a61 (21:5a61)
 	ld [$c7de], a
 	ld e, $5
 	ld hl, Data_85992
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld hl, $38
 	call Func_8062e_21
 	cp $1
@@ -2467,7 +2467,7 @@ Func_85d22: ; 85d22 (21:5d22)
 	ld [$c7de], a
 	ld e, $2
 	ld hl, Data_85c82
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld hl, $38
 	call Func_8062e_21
 	cp $1
@@ -2674,7 +2674,7 @@ Func_85fc9: ; 85fc9 (21:5fc9)
 Func_85fd8: ; 85fd8 (21:5fd8)
 	ld e, $3
 	ld hl, Data_85f05
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld hl, $38
 	call Func_8062e_21
 	cp $1
@@ -3022,7 +3022,7 @@ Func_864a0: ; 864a0 (21:64a0)
 	jp nz, Func_86575
 	ld e, $3
 	ld hl, Data_862fe
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld hl, $38
 	call Func_8062e_21
 	cp $1
@@ -3051,7 +3051,7 @@ Func_864e8: ; 864e8 (21:64e8)
 Func_864f4: ; 864f4 (21:64f4)
 	ld e, $3
 	ld hl, Data_8631f
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld hl, $38
 	call Func_8062e_21
 	cp $1
@@ -3080,7 +3080,7 @@ Func_8652a: ; 8652a (21:652a)
 Func_86536: ; 86536 (21:6536)
 	ld e, $3
 	ld hl, Data_86340
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld hl, $38
 	call Func_8062e_21
 	cp $1
@@ -3421,7 +3421,7 @@ Func_8688a:
 	call Func_8013d_21
 	ld e, $1
 	ld hl, Data_8682b
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld hl, $7
 	call Func_8062e_21
 	or a
@@ -3819,7 +3819,7 @@ Func_86ffa:
 	call Func_80f11_21
 	ld e, $b
 	ld hl, Data_86c01
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld a, $5
 	call Func_80d01_21
 	ld e, $2d
@@ -3945,7 +3945,7 @@ Data_871d4: ; 871d4
 Func_871fe:
 	ld e, $3
 	ld hl, Data_87164
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld a, $8
 	call Func_80ee6_21
 	ld hl, $0
@@ -4118,7 +4118,7 @@ Data_87423: ; 87423
 Func_8744d:
 	ld e, $3
 	ld hl, Data_87388
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld e, $2
 	ld hl, Data_873a9
 	call Func_80ce7_21
@@ -4366,7 +4366,7 @@ Func_877cb:
 	call Func_87648
 	ld e, $4
 	ld hl, Data_87669
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld e, $4
 	ld hl, Data_87731
 	call Func_800fb_21
@@ -4384,7 +4384,7 @@ Func_877f5: ; 877f5 (21:77f5)
 	call Func_87648
 	ld e, $4
 	ld hl, Data_87669
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld e, $2
 	ld hl, Data_87769
 	call Func_800fb_21
@@ -4393,7 +4393,7 @@ Func_877f5: ; 877f5 (21:77f5)
 Func_87820: ; 87820 (21:7820)
 	ld e, $4
 	ld hl, Data_87695
-	call Func_8003a_21
+	call LoadMapObjects_21
 Func_87828: ; 87828 (21:7828)
 	ld a, $3
 	call Func_80d01_21
@@ -4870,7 +4870,7 @@ Func_87c03: ; 87c03 (21:7c03)
 	call Func_8002b_21
 	ld e, $4
 	ld hl, Data_87bd7
-	call Func_8003a_21
+	call LoadMapObjects_21
 	call Func_80ea2_21
 	ld a, $64
 	call Func_80efe_21
@@ -4999,7 +4999,7 @@ Data_87d7a: ; 87d7a
 Func_87d88:
 	ld e, $1
 	ld hl, Data_87d45
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld a, $3
 	call Func_80d01_21
 	ld e, $3
@@ -5093,7 +5093,7 @@ Data_87e94: ; 87e94
 Func_87ea2:
 	ld e, $2
 	ld hl, Data_87e34
-	call Func_8003a_21
+	call LoadMapObjects_21
 	ld a, $3
 	call Func_80d01_21
 	ld e, $5
