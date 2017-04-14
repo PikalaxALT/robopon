@@ -37,7 +37,7 @@ Func_82c72: ; 82c72 (20:6c72)
 	call Func_800fb_20
 Func_82c82: ; 82c82 (20:6c82)
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3ca
 	call Func_80f72_20
@@ -69,13 +69,13 @@ Func_82caa: ; 82caa (20:6caa)
 	ld a, [hl]
 	call Func_8044b_20
 	ld a, $c
-	call Func_80ee6_20
+	call PlayMusic_20
 	pop hl
 	ld a, l
 	ld e, $2
 	call Func_806a0_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 Func_82cc7: ; 82cc7 (20:6cc7)
 	pop bc
 	ret
@@ -118,13 +118,13 @@ Func_82cfd: ; 82cfd (20:6cfd)
 	ld a, [hl]
 	call Func_8044b_20
 	ld a, $c
-	call Func_80ee6_20
+	call PlayMusic_20
 	pop hl
 	ld a, l
 	ld e, $1
 	call Func_806a0_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 Func_82d14: ; 82d14 (20:6d14)
 	pop bc
 	ret

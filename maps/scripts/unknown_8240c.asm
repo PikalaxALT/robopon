@@ -19,7 +19,7 @@ Func_8240c:
 	call Func_8013d_20
 Func_8242b: ; 8242b (20:642b)
 	ld a, $11
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ret
 
@@ -40,7 +40,7 @@ Func_82446:
 	call Func_8062e_20
 	or a
 	jp nz, Func_82562
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	cp $1
 	jp z, Func_82464
 	or a
@@ -51,20 +51,20 @@ Func_82464: ; 82464 (20:6464)
 	ld c, $1
 	ld de, Data_8243a
 	ld a, BANK(Data_8243a)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	call Func_8020c_20
 	xor a
-	call Func_80677_20
+	call PlayerFace_20
 	jp Func_82489
 
 Func_82478: ; 82478 (20:6478)
 	ld c, $1
 	ld de, Data_82434
 	ld a, BANK(Data_82434)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	call Func_8020c_20
 	xor a
-	call Func_80677_20
+	call PlayerFace_20
 Func_82489: ; 82489 (20:6489)
 	call Func_8000e_20
 	cp $b
@@ -126,7 +126,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld a, $3
 	call Func_800c8_20
 	ld hl, $3fa
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, $1e
 	call Func_8068f_20
 	ld e, $1
@@ -134,28 +134,28 @@ Func_824ca: ; 824ca (20:64ca)
 	call Func_8013d_20
 	ld e, $3
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $0
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $1
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $2
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $3
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $0
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $1
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $2
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld hl, $1e
 	call Func_8068f_20
 	ld bc, Data_82440
@@ -167,7 +167,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld a, $3
 	call Func_8013d_20
 	ld a, $2a
-	call Func_80efe_20
+	call PlaySFX_20
 	ld hl, $3f9
 	call Func_80498_20
 	pop af
@@ -178,7 +178,7 @@ Func_824ca: ; 824ca (20:64ca)
 	jp nz, Func_82551
 Func_82551: ; 82551 (20:6551)
 	ld hl, $3fb
-	call Func_804a9_20
+	call PrintText_20
 	ld e, $1
 	ld hl, $c6
 	call Func_8061b_20
@@ -189,9 +189,9 @@ Func_82562: ; 82562 (20:6562)
 	call Func_8044b_20
 	call Func_802e0_20
 	xor a
-	call Func_80ee6_20
+	call PlayMusic_20
 	ld a, $16
-	call Func_80ee6_20
+	call PlayMusic_20
 	ld c, $1
 	ld e, $2
 	ld a, $8
@@ -201,8 +201,8 @@ Func_82562: ; 82562 (20:6562)
 	ld hl, $322
 	call Func_80498_20
 	ld hl, $15a
-	call Func_804a9_20
+	call PrintText_20
 	ld a, $11
-	call Func_80ee6_20
+	call PlayMusic_20
 Func_82592: ; 82592 (20:6592)
 	ret

@@ -36,7 +36,7 @@ Func_82b39: ; 82b39 (20:6b39)
 	call Func_8013d_20
 Func_82b48: ; 82b48 (20:6b48)
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3c9
 	call Func_80f72_20
@@ -48,7 +48,7 @@ Func_82b57:
 	or a
 	jp nz, Func_82b93
 	ld a, $c
-	call Func_80ee6_20
+	call PlayMusic_20
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $2
@@ -74,7 +74,7 @@ Func_82b87: ; 82b87 (20:6b87)
 	call Func_806a0_20
 Func_82b8e: ; 82b8e (20:6b8e)
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 Func_82b93: ; 82b93 (20:6b93)
 	pop bc
 	ret

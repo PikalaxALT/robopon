@@ -45,7 +45,7 @@ Func_83213:
 	ld hl, Data_83205
 	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3d0
 	call Func_80f72_20
@@ -82,7 +82,7 @@ Func_8326c:
 	ld a, [hl]
 	call Func_8044b_20
 	ld hl, $9c
-	call Func_804ba_20
+	call PrintTextWithYesNoBox_20
 	or a
 	jp nz, Func_832d4
 	ld hl, $391
@@ -103,7 +103,7 @@ Func_8326c:
 	ld hl, $49d
 	call Func_80498_20
 	ld a, $2a
-	call Func_80efe_20
+	call PlaySFX_20
 	ld hl, $49e
 	call Func_80498_20
 	ld c, $0
@@ -135,7 +135,7 @@ Func_832d4: ; 832d4 (20:72d4)
 	ld hl, $49d
 	call Func_80498_20
 	ld a, $2a
-	call Func_80efe_20
+	call PlaySFX_20
 	ld hl, $49e
 	call Func_80498_20
 	ld c, $0
@@ -168,7 +168,7 @@ Func_83340:
 	ld hl, Data_8333b
 	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, Func_03d1
 	call Func_80f72_20
@@ -209,7 +209,7 @@ Func_833ba:
 	ld hl, Data_83399
 	call LoadMapObjects_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3d2
 	call Func_80f72_20
@@ -256,7 +256,7 @@ Func_83431:
 	ld hl, Data_8342c
 	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, Func_03d3
 	call Func_80f72_20
@@ -303,7 +303,7 @@ Func_834bd:
 	ld hl, Data_834af
 	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3d4
 	call Func_80f72_20
@@ -344,7 +344,7 @@ Func_83537:
 	ld hl, Data_83516
 	call LoadMapObjects_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, GetSRAMBank
 	call Func_80f72_20
@@ -391,7 +391,7 @@ Func_835ae:
 	ld hl, Data_835a9
 	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3d6
 	call Func_80f72_20
@@ -438,7 +438,7 @@ Func_83632:
 	ld hl, Data_83628
 	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3d7
 	call Func_80f72_20
@@ -485,7 +485,7 @@ Func_836b1:
 	ld hl, Data_836ac
 	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3d8
 	call Func_80f72_20
@@ -532,7 +532,7 @@ Func_83730:
 	ld hl, Data_8372b
 	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3d9
 	call Func_80f72_20
@@ -573,7 +573,7 @@ Func_837aa:
 	ld hl, Data_83789
 	call LoadMapObjects_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3da
 	call Func_80f72_20
@@ -620,7 +620,7 @@ Func_83816:
 	ld hl, Data_83811
 	call Func_80ce7_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3db
 	call Func_80f72_20
@@ -673,7 +673,7 @@ Func_838a2:
 	ld hl, Data_83894
 	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_83e56
 	ld [$c7a4], a
 	ld a, [$c7a4]
@@ -737,7 +737,7 @@ Data_83a1f:
 	or a
 	jp nz, Func_83a5e
 	ld hl, $29d
-	call Func_804a9_20
+	call PrintText_20
 	ld e, $1
 	ld hl, $58
 	call Func_8061b_20
@@ -751,14 +751,14 @@ Func_83a5e: ; 83a5e (20:7a5e)
 	cp $ff
 	jp nz, Func_83a7b
 	ld hl, $48b
-	call Func_804a9_20
+	call PrintText_20
 	xor a
 	ld [$c79d], a
 	jp Func_83b6e
 
 Func_83a7b: ; 83a7b (20:7a7b)
 	ld hl, $100
-	call Func_804a9_20
+	call PrintText_20
 	ld a, [$c78c]
 	inc a
 	ld [$c78c], a
@@ -784,13 +784,13 @@ Func_83a7b: ; 83a7b (20:7a7b)
 	or a
 	jp nz, Func_83adb
 	ld a, $5c
-	call Func_80efe_20
+	call PlaySFX_20
 	ld hl, $78
 	call Func_8068f_20
 	ld hl, $484
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, $485
-	call Func_804a9_20
+	call PrintText_20
 	ld e, $1
 	ld hl, $110
 	call Func_8061b_20
@@ -869,12 +869,12 @@ Func_83b71: ; 83b71 (20:7b71)
 	cp $1
 	jp nz, Func_83b8d
 	ld hl, $2a5
-	call Func_804a9_20
+	call PrintText_20
 	jp Func_83b93
 
 Func_83b8d: ; 83b8d (20:7b8d)
 	ld hl, $456
-	call Func_804a9_20
+	call PrintText_20
 Func_83b93: ; 83b93 (20:7b93)
 	jp Func_83e48
 
@@ -928,7 +928,7 @@ Func_83b96: ; 83b96 (20:7b96)
 	or a
 	jp nz, Func_83c6f
 	ld hl, $2a1
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -950,7 +950,7 @@ Func_83b96: ; 83b96 (20:7b96)
 
 Func_83c1e: ; 83c1e (20:7c1e)
 	ld hl, $2a2
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -976,7 +976,7 @@ Func_83c1e: ; 83c1e (20:7c1e)
 
 Func_83c48: ; 83c48 (20:7c48)
 	ld hl, $2a3
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -1059,7 +1059,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	pop hl
 	call FarCall
 	ld hl, $2a4
-	call Func_804a9_20
+	call PrintText_20
 	ld a, [wMapX]
 	cp $3
 	jp nz, Func_83d45
@@ -1073,7 +1073,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	ld a, [hl]
 	call Func_80688_20
 	ld a, $2e
-	call Func_80efe_20
+	call PlaySFX_20
 	jp Func_83d57
 
 Func_83d45: ; 83d45 (20:7d45)
@@ -1084,7 +1084,7 @@ Func_83d45: ; 83d45 (20:7d45)
 	ld a, [hl]
 	call Func_80688_20
 	ld a, $2e
-	call Func_80efe_20
+	call PlaySFX_20
 Func_83d57: ; 83d57 (20:7d57)
 	ld e, $0
 	ld hl, $12f
@@ -1092,7 +1092,7 @@ Func_83d57: ; 83d57 (20:7d57)
 	ld a, [hl]
 	call Func_8013d_20
 	ld a, $2e
-	call Func_80efe_20
+	call PlaySFX_20
 	push hl
 	push hl
 	ld hl, sp+$f
@@ -1198,13 +1198,13 @@ Func_83dd5: ; 83dd5 (20:7dd5)
 
 Func_83e39: ; 83e39 (20:7e39)
 	ld hl, $2a0
-	call Func_804a9_20
+	call PrintText_20
 Func_83e3f: ; 83e3f (20:7e3f)
 	jp Func_83e48
 
 Func_83e42: ; 83e42 (20:7e42)
 	ld hl, $29f
-	call Func_804a9_20
+	call PrintText_20
 Func_83e48: ; 83e48 (20:7e48)
 	ld hl, $130
 	add hl, sp
@@ -1405,7 +1405,7 @@ Func_851bc: ; 851bc (21:51bc)
 	ld hl, Data_85140
 	call Func_800fb_21
 	ld a, $3
-	call Func_80ee6_21
+	call PlayMusic_21
 	call Func_8001c_21
 	call Func_852ac
 	ld e, $1
@@ -1427,7 +1427,7 @@ Func_85212: ; 85212 (21:5212)
 	ld hl, Data_850fa
 	call Func_800fb_21
 	ld a, $3
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld e, $0
 	ld a, $2
 	call Func_8013d_21
@@ -1462,7 +1462,7 @@ Func_85257: ; 85257 (21:5257)
 	call Func_80080_21
 Func_85260: ; 85260 (21:5260)
 	ld a, $3
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld e, $4
 	ld hl, Data_85140
 	call Func_800fb_21
@@ -1517,15 +1517,15 @@ Func_852ac: ; 852ac (21:52ac)
 	ld a, $17
 	call Func_801e4_21
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	call Func_801d5_21
 	ld hl, $3c
 	call Func_8068f_21
 	call Func_8018b_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $1a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld bc, Data_85274
 	ld e, BANK(Data_85274)
 	xor a
@@ -1538,32 +1538,32 @@ Func_852ac: ; 852ac (21:52ac)
 	ld hl, $3c
 	call Func_8068f_21
 	ld hl, $2f
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $30
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $31
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $32
-	call Func_804a9_21
+	call PrintText_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $33
-	call Func_804a9_21
+	call PrintText_21
 	ld a, $18
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld e, $0
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $0
 	ld a, $1
-	call Func_80095_21
+	call SpriteFace_21
 	ld bc, Data_8527c
 	ld e, BANK(Data_8527c)
 	ld a, $2
 	call Func_80688_21
 	call Func_8020c_21
 	ld a, $33
-	call Func_80efe_21
+	call PlaySFX_21
 	ld bc, Data_85286
 	ld e, BANK(Data_85286)
 	ld a, $1
@@ -1571,10 +1571,10 @@ Func_852ac: ; 852ac (21:52ac)
 	call Func_8020c_21
 	ld e, $1
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $3
 	ld a, $1
-	call Func_80095_21
+	call SpriteFace_21
 	ld bc, Data_8528a
 	ld e, BANK(Data_8528a)
 	ld a, $2
@@ -1582,32 +1582,32 @@ Func_852ac: ; 852ac (21:52ac)
 	call Func_8020c_21
 	ld e, $2
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	ld a, $1
-	call Func_80095_21
+	call SpriteFace_21
 	ld hl, $3c
 	call Func_8068f_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $1
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $34
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $35
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $36
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $37
-	call Func_804a9_21
+	call PrintText_21
 	ld a, $a
-	call Func_80ff1_21
+	call FadeOutAudio_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $1
-	call Func_8101a_21
+	call FadeInAudio_21
 	ld a, $18
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld bc, Data_85292
 	ld e, BANK(Data_85292)
 	ld a, $2
@@ -1626,25 +1626,25 @@ Func_852ac: ; 852ac (21:52ac)
 	call Func_80688_21
 	call Func_8020c_21
 	ld a, $33
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $3
 	ld a, $1
-	call Func_80095_21
+	call SpriteFace_21
 	ld c, $1
 	ld de, Data_85298
 	ld a, BANK(Data_85298)
-	call Func_8063e_21
+	call ApplyMovementData_21
 	ld hl, $1e
 	call Func_8068f_21
 	ld a, $2e
-	call Func_80efe_21
+	call PlaySFX_21
 	call Func_8020c_21
 	ld e, $2
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	ld a, $1
-	call Func_80095_21
+	call SpriteFace_21
 	ld bc, Data_8529c
 	ld e, BANK(Data_8529c)
 	xor a
@@ -1655,25 +1655,25 @@ Func_852ac: ; 852ac (21:52ac)
 	call Func_80688_21
 	call Func_8020c_21
 	ld a, $1
-	call Func_80677_21
+	call PlayerFace_21
 	ld e, $2
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	ld a, $1
-	call Func_80095_21
+	call SpriteFace_21
 	ld a, $5c
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $78
 	call Func_8068f_21
 	ld hl, $484
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $483
-	call Func_804a9_21
+	call PrintText_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $3
-	call Func_80ee6_21
+	call PlayMusic_21
 	ret
 
 Data_85450:
@@ -1698,9 +1698,9 @@ Func_854aa:
 	or a
 	jp nz, Func_854c8
 	ld a, $69
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $44
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_85570
 
 Func_854c8: ; 854c8 (21:54c8)
@@ -1709,12 +1709,12 @@ Func_854c8: ; 854c8 (21:54c8)
 	or a
 	jp nz, Func_8551c
 	ld hl, $45
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $1e
 	call Func_8068f_21
 	ld de, Data_85572
 	ld hl, Data_85450
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_854eb
 	jp Func_85570
@@ -1748,12 +1748,12 @@ Func_8551c: ; 8551c (21:551c)
 	cp $1
 	jp nz, Func_85570
 	ld hl, $46
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $1e
 	call Func_8068f_21
 	ld de, Data_8557a
 	ld hl, Data_85479
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_85540
 	jp Func_85570
@@ -1818,9 +1818,9 @@ Func_855dc:
 	jp nz, Func_8560a
 	ld e, $3
 	ld a, $1
-	call Func_80095_21
+	call SpriteFace_21
 	ld a, $1
-	call Func_80677_21
+	call PlayerFace_21
 	ld hl, sp+$0
 	ld [hl], $1
 Func_8560a: ; 8560a (21:560a)
@@ -1837,9 +1837,9 @@ Func_8560d: ; 8560d (21:560d)
 	jp nz, Func_8562e
 	ld e, $1
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld a, $3
-	call Func_80677_21
+	call PlayerFace_21
 	ld hl, sp+$0
 	ld [hl], $1
 Func_8562e: ; 8562e (21:562e)
@@ -1848,7 +1848,7 @@ Func_8562e: ; 8562e (21:562e)
 	cp $1
 	jp nz, Func_856d9
 	ld hl, $47
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
@@ -1857,7 +1857,7 @@ Func_8562e: ; 8562e (21:562e)
 	call Func_8068f_21
 	ld de, Data_856dc
 	ld hl, Data_855ab
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_8565a
 	jp Func_856d9
@@ -1894,7 +1894,7 @@ Func_8568d: ; 8568d (21:568d)
 	call Func_8068f_21
 	ld de, Data_856e4
 	ld hl, Data_85582
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_856ab
 	jp Func_856d9
@@ -1960,9 +1960,9 @@ Func_85746:
 	jp nz, Func_85774
 	ld e, $3
 	ld a, $1
-	call Func_80095_21
+	call SpriteFace_21
 	ld a, $1
-	call Func_80677_21
+	call PlayerFace_21
 	ld hl, sp+$0
 	ld [hl], $1
 Func_85774: ; 85774 (21:5774)
@@ -1979,9 +1979,9 @@ Func_85777: ; 85777 (21:5777)
 	jp nz, Func_85798
 	ld e, $1
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld a, $3
-	call Func_80677_21
+	call PlayerFace_21
 	ld hl, sp+$0
 	ld [hl], $1
 Func_85798: ; 85798 (21:5798)
@@ -1990,7 +1990,7 @@ Func_85798: ; 85798 (21:5798)
 	cp $1
 	jp nz, Func_8581b
 	ld hl, $47
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $2
@@ -1999,7 +1999,7 @@ Func_85798: ; 85798 (21:5798)
 	call Func_8068f_21
 	ld de, Data_8581e
 	ld hl, Data_85715
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_857c4
 	jp Func_8581b
@@ -2027,7 +2027,7 @@ Func_857e3: ; 857e3 (21:57e3)
 	call Func_8068f_21
 	ld de, Data_85826
 	ld hl, Data_856ec
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_85801
 	jp Func_8581b
@@ -2086,18 +2086,18 @@ Func_8585f: ; 8585f (21:585f)
 	cp $6
 	jp nc, Func_858c0
 	ld hl, $32d
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_858bd
 	ld c, $1
 	ld de, Data_8582e
 	ld a, BANK(Data_8582e)
-	call Func_8063e_21
+	call ApplyMovementData_21
 	call Func_8020c_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $a
-	call Func_80ee6_21
+	call PlayMusic_21
 	xor a
 	call Func_80653_21
 	ld c, $1
@@ -2105,13 +2105,13 @@ Func_8585f: ; 8585f (21:585f)
 	ld a, $b
 	call Func_80176_21
 	ld a, $44
-	call Func_80efe_21
+	call PlaySFX_21
 	call Func_801d5_21
 	call Func_8018b_21
 	ld a, $4
 	call Func_80cc6_21
 	ld a, $1
-	call Func_80677_21
+	call PlayerFace_21
 	ld l, $b
 	push hl
 	ld c, $25
@@ -2146,12 +2146,12 @@ Func_858f9:
 	ld a, [hl]
 	call Func_8044b_21
 	ld hl, $1d8
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_85928
 	ld de, Data_85930
 	ld hl, Data_858d0
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_8591f
 	jp Func_8592e
@@ -2240,7 +2240,7 @@ Func_85a61: ; 85a61 (21:5a61)
 	ld hl, Data_85938
 	call Func_80d24_21
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $0
 	call Func_8062e_21
 	or a
@@ -2260,7 +2260,7 @@ Func_85aaf: ; 85aaf (21:5aaf)
 	ld hl, Data_859c9
 	call Func_800fb_21
 	ld a, $11
-	call Func_80ee6_21
+	call PlayMusic_21
 Func_85abc: ; 85abc (21:5abc)
 	ld a, [$c797]
 	cp $7
@@ -2312,9 +2312,9 @@ Func_85b17:
 	ld a, [hl]
 	call Func_8044b_21
 	ld hl, $38
-	call Func_804a9_21
+	call PrintText_21
 	ld a, $2a
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $479
 	call Func_80498_21
 	ld c, $0
@@ -2365,14 +2365,14 @@ Func_85b98:
 	or a
 	jp nz, Func_85c0b
 	ld hl, $39
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_85c02
 	ld de, Data_85c1c
 	ld hl, Data_85b6f
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_85bd9
 	jp Func_85c1a
@@ -2385,24 +2385,24 @@ Func_85bd9: ; 85bd9 (21:5bd9)
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $342
 	call Func_80498_21
 	ld hl, $3c
 	call Func_8068f_21
 	ld hl, $3a
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_85c08
 
 Func_85c02: ; 85c02 (21:5c02)
 	ld hl, $3b
-	call Func_804a9_21
+	call PrintText_21
 Func_85c08: ; 85c08 (21:5c08)
 	jp Func_85c11
 
 Func_85c0b: ; 85c0b (21:5c0b)
 	ld hl, $168
-	call Func_804a9_21
+	call PrintText_21
 Func_85c11: ; 85c11 (21:5c11)
 	jp Func_85c1a
 
@@ -2482,7 +2482,7 @@ Func_85d22: ; 85d22 (21:5d22)
 	ld hl, Data_85c28
 	call Func_80d24_21
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $0
 	call Func_8062e_21
 	or a
@@ -2502,7 +2502,7 @@ Func_85d70: ; 85d70 (21:5d70)
 	ld hl, Data_85c98
 	call Func_800fb_21
 	ld a, $11
-	call Func_80ee6_21
+	call PlayMusic_21
 Func_85d7d: ; 85d7d (21:5d7d)
 	ld hl, $14
 	call Func_8062e_21
@@ -2546,14 +2546,14 @@ Func_85dcd:
 	or a
 	jp nz, Func_85e48
 	ld hl, $221
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_85e3f
 	ld de, Data_85e62
 	ld hl, Data_85da4
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_85e16
 	jp Func_85e60
@@ -2566,30 +2566,30 @@ Func_85e16: ; 85e16 (21:5e16)
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $342
 	call Func_80498_21
 	ld hl, $3c
 	call Func_8068f_21
 	ld hl, $222
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_85e45
 
 Func_85e3f: ; 85e3f (21:5e3f)
 	ld hl, $25e
-	call Func_804a9_21
+	call PrintText_21
 Func_85e45: ; 85e45 (21:5e45)
 	jp Func_85e4e
 
 Func_85e48: ; 85e48 (21:5e48)
 	ld hl, $170
-	call Func_804a9_21
+	call PrintText_21
 Func_85e4e: ; 85e4e (21:5e4e)
 	jp Func_85e57
 
 Func_85e51: ; 85e51 (21:5e51)
 	ld hl, $220
-	call Func_804a9_21
+	call PrintText_21
 Func_85e57: ; 85e57 (21:5e57)
 	jp Func_85e60
 
@@ -2684,7 +2684,7 @@ Func_85fd8: ; 85fd8 (21:5fd8)
 	cp $1
 	jp nz, Func_86014
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $0
 	call Func_8062e_21
 	or a
@@ -2701,7 +2701,7 @@ Func_86011: ; 86011 (21:6011)
 
 Func_86014: ; 86014 (21:6014)
 	ld a, $11
-	call Func_80ee6_21
+	call PlayMusic_21
 Func_86019: ; 86019 (21:6019)
 	call Func_8001c_21
 	ld a, [$c7de]
@@ -2782,14 +2782,14 @@ Func_860c1:
 	or a
 	jp nz, Func_86134
 	ld hl, $40
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_8612b
 	ld de, Data_86145
 	ld hl, Data_86098
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_86102
 	jp Func_86143
@@ -2802,24 +2802,24 @@ Func_86102: ; 86102 (21:6102)
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $342
 	call Func_80498_21
 	ld hl, $3c
 	call Func_8068f_21
 	ld hl, $41
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_86131
 
 Func_8612b: ; 8612b (21:612b)
 	ld hl, $42
-	call Func_804a9_21
+	call PrintText_21
 Func_86131: ; 86131 (21:6131)
 	jp Func_8613a
 
 Func_86134: ; 86134 (21:6134)
 	ld hl, $16d
-	call Func_804a9_21
+	call PrintText_21
 Func_8613a: ; 8613a (21:613a)
 	jp Func_86143
 
@@ -2853,14 +2853,14 @@ Func_8617b:
 	or a
 	jp nz, Func_861ee
 	ld hl, $21a
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_861e5
 	ld de, Data_861ff
 	ld hl, Data_86152
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_861bc
 	jp Func_861fd
@@ -2873,24 +2873,24 @@ Func_861bc: ; 861bc (21:61bc)
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $342
 	call Func_80498_21
 	ld hl, $3c
 	call Func_8068f_21
 	ld hl, $21b
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_861eb
 
 Func_861e5: ; 861e5 (21:61e5)
 	ld hl, Func_021c
-	call Func_804a9_21
+	call PrintText_21
 Func_861eb: ; 861eb (21:61eb)
 	jp Func_861f4
 
 Func_861ee: ; 861ee (21:61ee)
 	ld hl, $179
-	call Func_804a9_21
+	call PrintText_21
 Func_861f4: ; 861f4 (21:61f4)
 	jp Func_861fd
 
@@ -2994,7 +2994,7 @@ Func_86467: ; 86467 (21:6467)
 	cp $1
 	jp nz, Func_8649b
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $0
 	call Func_8062e_21
 	or a
@@ -3011,7 +3011,7 @@ Func_86498: ; 86498 (21:6498)
 
 Func_8649b: ; 8649b (21:649b)
 	ld a, $11
-	call Func_80ee6_21
+	call PlayMusic_21
 Func_864a0: ; 864a0 (21:64a0)
 	ld a, [$c7de]
 	cp $6
@@ -3135,7 +3135,7 @@ Func_86579:
 	or a
 	jp nz, Func_865be
 	ld hl, $162
-	call Func_804a9_21
+	call PrintText_21
 	ld e, $1
 	ld hl, $c5
 	call Func_8061b_21
@@ -3143,14 +3143,14 @@ Func_86579:
 
 Func_865be: ; 865be (21:65be)
 	ld hl, $164
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $3f5
 	call Func_80498_21
 	ld e, $0
 	ld a, $7f
 	call Func_80d74_21
 	ld hl, $3f6
-	call Func_804a9_21
+	call PrintText_21
 	ld e, $1
 	ld hl, $c5
 	call Func_8061b_21
@@ -3159,7 +3159,7 @@ Func_865df: ; 865df (21:65df)
 
 Func_865e2: ; 865e2 (21:65e2)
 	ld hl, $160
-	call Func_804a9_21
+	call PrintText_21
 Func_865e8: ; 865e8 (21:65e8)
 	jp Func_865f1
 
@@ -3196,14 +3196,14 @@ Func_86625:
 	or a
 	jp nz, Func_86698
 	ld hl, $3d
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_8668f
 	ld de, Data_866a9
 	ld hl, Data_865fc
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_86666
 	jp Func_866a7
@@ -3216,24 +3216,24 @@ Func_86666: ; 86666 (21:6666)
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $342
 	call Func_80498_21
 	ld hl, $3c
 	call Func_8068f_21
 	ld hl, $3e
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_86695
 
 Func_8668f: ; 8668f (21:668f)
 	ld hl, $3f
-	call Func_804a9_21
+	call PrintText_21
 Func_86695: ; 86695 (21:6695)
 	jp Func_8669e
 
 Func_86698: ; 86698 (21:6698)
 	ld hl, $16a
-	call Func_804a9_21
+	call PrintText_21
 Func_8669e: ; 8669e (21:669e)
 	jp Func_866a7
 
@@ -3267,14 +3267,14 @@ Func_866df:
 	or a
 	jp nz, Func_86752
 	ld hl, $43
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_86749
 	ld de, Data_86763
 	ld hl, Data_866b6
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_86720
 	jp Func_86761
@@ -3287,24 +3287,24 @@ Func_86720: ; 86720 (21:6720)
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $342
 	call Func_80498_21
 	ld hl, $3c
 	call Func_8068f_21
 	ld hl, $217
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_8674f
 
 Func_86749: ; 86749 (21:6749)
 	ld hl, $219
-	call Func_804a9_21
+	call PrintText_21
 Func_8674f: ; 8674f (21:674f)
 	jp Func_86758
 
 Func_86752: ; 86752 (21:6752)
 	ld hl, $176
-	call Func_804a9_21
+	call PrintText_21
 Func_86758: ; 86758 (21:6758)
 	jp Func_86761
 
@@ -3338,14 +3338,14 @@ Func_86799:
 	or a
 	jp nz, Func_8680c
 	ld hl, $21d
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_86803
 	ld de, Data_8681d
 	ld hl, Data_86770
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_867da
 	jp Func_8681b
@@ -3358,24 +3358,24 @@ Func_867da: ; 867da (21:67da)
 	inc a
 	ld [$c797], a
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $342
 	call Func_80498_21
 	ld hl, $3c
 	call Func_8068f_21
 	ld hl, $21e
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_86809
 
 Func_86803: ; 86803 (21:6803)
 	ld hl, $21f
-	call Func_804a9_21
+	call PrintText_21
 Func_86809: ; 86809 (21:6809)
 	jp Func_86812
 
 Func_8680c: ; 8680c (21:680c)
 	ld hl, $16f
-	call Func_804a9_21
+	call PrintText_21
 Func_86812: ; 86812 (21:6812)
 	jp Func_8681b
 
@@ -3435,7 +3435,7 @@ Func_8688a:
 
 Func_868d5: ; 868d5 (21:68d5)
 	ld a, $7
-	call Func_80ee6_21
+	call PlayMusic_21
 	call Func_8001c_21
 Func_868dd: ; 868dd (21:68dd)
 	ret
@@ -3481,40 +3481,40 @@ Data_8693f: ; 8693f
 
 Func_86943: ; 86943 (21:6943)
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $1
-	call Func_80ee6_21
+	call PlayMusic_21
 	call Func_8020c_21
 	ld c, $1
 	ld de, Data_86907
 	ld a, BANK(Data_86907)
-	call Func_8063e_21
+	call ApplyMovementData_21
 	call Func_8020c_21
 	xor a
-	call Func_80677_21
+	call PlayerFace_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
 	call Func_80176_21
 	ld a, $68
-	call Func_80efe_21
+	call PlaySFX_21
 	call Func_801d5_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
 	call Func_80176_21
 	ld a, $68
-	call Func_80efe_21
+	call PlaySFX_21
 	call Func_801d5_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
 	call Func_80176_21
 	ld a, $68
-	call Func_80efe_21
+	call PlaySFX_21
 	call Func_801d5_21
 	ld hl, $48
-	call Func_804a9_21
+	call PrintText_21
 	ld bc, Data_8690f
 	ld e, BANK(Data_8690f)
 	ld a, $3
@@ -3526,43 +3526,43 @@ Func_86943: ; 86943 (21:6943)
 	call Func_8020c_21
 	ld e, $3
 	ld a, $2
-	call Func_80095_21
+	call SpriteFace_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $1a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $49
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $4a
-	call Func_804a9_21
+	call PrintText_21
 	ld e, $2
 	ld a, $2
-	call Func_80095_21
+	call SpriteFace_21
 	ld hl, $4b
-	call Func_804a9_21
+	call PrintText_21
 	ld de, Data_86ac4
 	ld hl, Data_868de
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_869e7
 	ret
 
 Func_869e7: ; 869e7 (21:69e7)
 	ld a, $69
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $4c
-	call Func_804a9_21
+	call PrintText_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $18
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld bc, Data_86917
 	ld e, BANK(Data_86917)
 	ld a, $2
 	call Func_80688_21
 	call Func_8020c_21
 	ld a, $1
-	call Func_80677_21
+	call PlayerFace_21
 	ld bc, Data_8691f
 	ld e, BANK(Data_8691f)
 	ld a, $2
@@ -3572,7 +3572,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld a, $2
 	call Func_8013d_21
 	xor a
-	call Func_80677_21
+	call PlayerFace_21
 	ld bc, Data_86923
 	ld e, BANK(Data_86923)
 	ld a, $3
@@ -3592,7 +3592,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	call Func_80688_21
 	call Func_8020c_21
 	ld a, $3
-	call Func_80677_21
+	call PlayerFace_21
 	ld bc, Data_86935
 	ld e, BANK(Data_86935)
 	ld a, $3
@@ -3609,9 +3609,9 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld a, $4
 	call Func_8013d_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $7
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $1e
 	call Func_8068f_21
 	ld bc, Data_8693f
@@ -3621,15 +3621,15 @@ Func_869e7: ; 869e7 (21:69e7)
 	call Func_8020c_21
 	ld e, $2
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 	ld hl, $1e
 	call Func_8068f_21
 	xor a
-	call Func_80677_21
+	call PlayerFace_21
 	ld hl, $1e
 	call Func_8068f_21
 	ld hl, $345
-	call Func_804a9_21
+	call PrintText_21
 	ld e, $1
 	ld hl, $7
 	call Func_8061b_21
@@ -3646,30 +3646,30 @@ Func_86ac9:
 	jp nz, Func_86b0c
 	ld e, $1
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $0
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $3
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 	ld hl, $1e
 	call Func_8068f_21
 	ld e, $3
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $0
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $1
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	ld a, $5
-	call Func_80095_21
+	call SpriteFace_21
 Func_86b0c: ; 86b0c (21:6b0c)
 	ret
 
@@ -3682,7 +3682,7 @@ Func_86b0d:
 	or a
 	jp nz, Func_86bfa
 	ld a, $5e
-	call Func_80efe_21
+	call PlaySFX_21
 	ld c, $2
 	ld e, $2
 	ld a, $8
@@ -3693,44 +3693,44 @@ Func_86b0d:
 	call Func_801d5_21
 	call Func_8018b_21
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $1
 	xor a
 	call Func_8013d_21
 	ld a, $60
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $3
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $0
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $1
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $3
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $0
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $1
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld a, $f
-	call Func_80ff1_21
+	call FadeOutAudio_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $1
-	call Func_8101a_21
+	call FadeInAudio_21
 	ld a, $14
-	call Func_80ee6_21
+	call PlayMusic_21
 	xor a
 	call Func_8044b_21
 	ld hl, $1e
@@ -3743,39 +3743,39 @@ Func_86b0d:
 	ld hl, $d6
 	call Func_8061b_21
 	ld a, $60
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $3
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $0
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $1
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $3
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $0
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $1
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld e, $2
 	xor a
-	call Func_80095_21
+	call SpriteFace_21
 	ld a, $f
-	call Func_80ff1_21
+	call FadeOutAudio_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $1
-	call Func_8101a_21
+	call FadeInAudio_21
 	ld a, $7
-	call Func_80ee6_21
+	call PlayMusic_21
 	xor a
 	call Func_8044b_21
 	ld e, $0
@@ -3856,7 +3856,7 @@ Func_8703a: ; 8703a (21:703a)
 	call Func_8013d_21
 Func_8706e: ; 8706e (21:706e)
 	ld a, $3
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $1
 	call Func_80cc6_21
 	call Func_8001c_21
@@ -3947,7 +3947,7 @@ Func_871fe:
 	ld hl, Data_87164
 	call LoadMapObjects_21
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld hl, $0
 	call Func_8062e_21
 	or a
@@ -3956,7 +3956,7 @@ Func_871fe:
 	ld [$c7da], a
 	call Func_8001c_21
 	ld hl, $2d
-	call Func_804a9_21
+	call PrintText_21
 	call Func_8737a
 	ld hl, $f0
 	call Func_8062e_21
@@ -4006,12 +4006,12 @@ Func_8728f:
 	ld hl, $256
 	call Func_80498_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_872d6
 	ld de, Data_872e7
 	ld hl, Data_87266
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_872c5
 	jp Func_872e5
@@ -4058,12 +4058,12 @@ Func_87317:
 	ld hl, $254
 	call Func_80498_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_8735e
 	ld de, Data_8736f
 	ld hl, Data_872ee
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_8734d
 	jp Func_8736d
@@ -4099,7 +4099,7 @@ Func_8737a: ; 8737a (21:737a)
 	ld c, $1
 	ld de, Data_87376
 	ld a, BANK(Data_87376)
-	call Func_8063e_21
+	call ApplyMovementData_21
 	call Func_8020c_21
 	ret
 
@@ -4143,7 +4143,7 @@ Func_87484: ; 87484 (21:7484)
 	ld [$c7da], a
 Func_87488: ; 87488 (21:7488)
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	call Func_8001c_21
 	ld hl, $2d6
 	call Func_80f72_21
@@ -4155,9 +4155,9 @@ Func_87497:
 	jp nz, Func_874c2
 	call Func_802e0_21
 	xor a
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $16
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld c, $1
 	ld e, $2
 	ld a, $8
@@ -4167,7 +4167,7 @@ Func_87497:
 	ld hl, $322
 	call Func_80498_21
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 Func_874c2: ; 874c2 (21:74c2)
 	ret
 
@@ -4189,12 +4189,12 @@ Func_874ec:
 	ld hl, $25a
 	call Func_80498_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_87533
 	ld de, Data_87544
 	ld hl, Data_874c3
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_87522
 	jp Func_87542
@@ -4241,12 +4241,12 @@ Func_87574
 	ld hl, $252
 	call Func_80498_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_875f9
 	ld de, Data_8763e
 	ld hl, Data_8754b
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_875aa
 	jp Func_8763c
@@ -4269,7 +4269,7 @@ Func_875aa: ; 875aa (21:75aa)
 	ld hl, $49d
 	call Func_80498_21
 	ld a, $2a
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $49e
 	call Func_80498_21
 	ld c, $0
@@ -4301,7 +4301,7 @@ Func_87602: ; 87602 (21:7602)
 	ld hl, $49d
 	call Func_80498_21
 	ld a, $2a
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $49e
 	call Func_80498_21
 	ld c, $0
@@ -4404,7 +4404,7 @@ Func_87828: ; 87828 (21:7828)
 	ld hl, Data_87785
 	call Func_800fb_21
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	ld a, $4
 	ld [$c7e2], a
 	ld a, [$c78a]
@@ -4468,7 +4468,7 @@ Func_878aa: ; 878aa (21:78aa)
 	or a
 	jp z, Func_878ef
 	ld a, $2b
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4518,7 +4518,7 @@ Func_87910: ; 87910 (21:7910)
 	or a
 	jp z, Func_87955
 	ld a, $2b
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4568,7 +4568,7 @@ Func_87976: ; 87976 (21:7976)
 	or a
 	jp z, Func_879bb
 	ld a, $2b
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4618,7 +4618,7 @@ Func_879dc: ; 879dc (21:79dc)
 	or a
 	jp z, Func_87a21
 	ld a, $2b
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4668,7 +4668,7 @@ Func_87a42: ; 87a42 (21:7a42)
 	or a
 	jp z, Func_87a71
 	ld a, $2b
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4710,7 +4710,7 @@ Func_87a92: ; 87a92 (21:7a92)
 	or a
 	jp z, Func_87ac1
 	ld a, $2b
-	call Func_80efe_21
+	call PlaySFX_21
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4750,7 +4750,7 @@ Func_87ae0: ; 87ae0 (21:7ae0)
 	ld hl, $59
 	call Func_8061b_21
 	ld a, $32
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $35b
 	call Func_80498_21
 	jp Func_87b13
@@ -4760,7 +4760,7 @@ Func_87b00: ; 87b00 (21:7b00)
 	ld hl, $59
 	call Func_8061b_21
 	ld a, $28
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $35c
 	call Func_80498_21
 Func_87b13: ; 87b13 (21:7b13)
@@ -4770,7 +4770,7 @@ Func_87b14:
 	ld a, e
 	or a
 	jp nz, Func_87b86
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	or a
 	jp z, Func_87b23
 	jp Func_87b86
@@ -4805,11 +4805,11 @@ Func_87b4f: ; 87b4f (21:7b4f)
 	ld a, $9
 	call Func_80176_21
 	ld a, $5a
-	call Func_80efe_21
+	call PlaySFX_21
 	call Func_801d5_21
 	call Func_8018b_21
 	ld a, $2
-	call Func_80677_21
+	call PlayerFace_21
 	ld e, $0
 	ld hl, $fa
 	call Func_8061b_21
@@ -4839,7 +4839,7 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	xor a
 	call Func_80653_21
 	ld a, $2
-	call Func_80677_21
+	call PlayerFace_21
 	call Func_8001c_21
 	ld hl, $2d7
 	call Func_80f72_21
@@ -4848,7 +4848,7 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	ld a, $9
 	call Func_80176_21
 	ld a, $37
-	call Func_80efe_21
+	call PlaySFX_21
 	call Func_801d5_21
 	ld a, $1
 	call Func_80653_21
@@ -4873,11 +4873,11 @@ Func_87c03: ; 87c03 (21:7c03)
 	call LoadMapObjects_21
 	call Func_80ea2_21
 	ld a, $64
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $3c
 	call Func_8068f_21
 	ld a, $64
-	call Func_80efe_21
+	call PlaySFX_21
 	ld hl, $3c
 	call Func_8068f_21
 	call Func_80eb1_21
@@ -4901,12 +4901,12 @@ Func_87c5c:
 	ld hl, $24e
 	call Func_80498_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_87ca3
 	ld de, Data_87cb4
 	ld hl, Data_87c33
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_87c92
 	jp Func_87cb2
@@ -4953,12 +4953,12 @@ Func_87ce5:
 	ld hl, $258
 	call Func_80498_21
 	ld hl, $32c
-	call Func_804ba_21
+	call PrintTextWithYesNoBox_21
 	or a
 	jp nz, Func_87d2c
 	ld de, Data_87d3d
 	ld hl, Data_87cbc
-	call Func_80dd3_21
+	call ScriptedBattle_21
 	or a
 	jp nz, Func_87d1b
 	jp Func_87d3b
@@ -5021,7 +5021,7 @@ Func_87db3: ; 87db3 (21:7db3)
 	ld hl, Data_87d7a
 	call Func_800fb_21
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	call Func_8001c_21
 	ld hl, $2d8
 	call Func_80f72_21
@@ -5040,13 +5040,13 @@ Func_87dca:
 	or a
 	jp nz, Func_87e2c
 	ld hl, $74
-	call Func_804a9_21
+	call PrintText_21
 	ld a, $b
 	call Func_80e5d_21
 	cp $1
 	jp nz, Func_87e23
 	ld hl, $75
-	call Func_804a9_21
+	call PrintText_21
 	ld hl, $76
 	call Func_804ca_21
 	or a
@@ -5059,24 +5059,24 @@ Func_87dca:
 	ld hl, $51
 	call Func_8061b_21
 	ld hl, $78
-	call Func_804a9_21
+	call PrintText_21
 	jp Func_87e20
 
 Func_87e1a: ; 87e1a (21:7e1a)
 	ld hl, $77
-	call Func_804a9_21
+	call PrintText_21
 Func_87e20: ; 87e20 (21:7e20)
 	jp Func_87e29
 
 Func_87e23: ; 87e23 (21:7e23)
 	ld hl, $75
-	call Func_804a9_21
+	call PrintText_21
 Func_87e29: ; 87e29 (21:7e29)
 	jp Func_87e32
 
 Func_87e2c: ; 87e2c (21:7e2c)
 	ld hl, $79
-	call Func_804a9_21
+	call PrintText_21
 Func_87e32: ; 87e32 (21:7e32)
 	pop bc
 	ret
@@ -5115,7 +5115,7 @@ Func_87ecd: ; 87ecd (21:7ecd)
 	ld hl, Data_87e94
 	call Func_800fb_21
 	ld a, $8
-	call Func_80ee6_21
+	call PlayMusic_21
 	call Func_8001c_21
 	ld hl, $2d8
 	call Func_80f72_21

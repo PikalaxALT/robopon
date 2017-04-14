@@ -2952,7 +2952,7 @@ Func_1db9:: ; 1db9
 	call GetSRAMBank
 	ld bc, $32
 	ld e, $0
-	ld hl, $c7ed
+	ld hl, wEventFlags
 	call FillMemory
 	ld bc, $64
 	ld e, $0

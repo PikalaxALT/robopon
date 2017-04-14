@@ -36,7 +36,7 @@ Func_827de: ; 827de (20:67de)
 	ld hl, Data_82763
 	call Func_800fb_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	ld a, [$c7df]
 	cp $20
 	jp nz, Func_82811
@@ -127,12 +127,12 @@ Func_82894: ; 82894 (20:6894)
 	ld c, $1
 	ld de, Data_8288a
 	ld a, BANK(Data_8288a)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	call Func_8020c_20
 	ld hl, $10
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, $11
-	call Func_804a9_20
+	call PrintText_20
 	ld bc, Data_82890
 	ld e, BANK(Data_82890)
 	ld a, $1
@@ -140,7 +140,7 @@ Func_82894: ; 82894 (20:6894)
 	ld c, $3
 	ld de, Data_82890
 	ld a, BANK(Data_82890)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	call Func_8020c_20
 	ret
 
@@ -167,7 +167,7 @@ Func_828df:
 	call Func_8020c_20
 	ld e, $2
 	ld a, $2
-	call Func_80095_20
+	call SpriteFace_20
 	ld hl, $32
 	call Func_8062e_20
 	cp $1
@@ -177,7 +177,7 @@ Func_828df:
 	or a
 	jp nz, Func_82940
 	ld hl, $486
-	call Func_804a9_20
+	call PrintText_20
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
@@ -185,11 +185,11 @@ Func_828df:
 	call Func_8020c_20
 	ld e, $2
 	ld a, $2
-	call Func_80095_20
+	call SpriteFace_20
 	ld c, $1
 	ld de, Data_828db
 	ld a, BANK(Data_828db)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	call Func_8020c_20
 	ld e, $0
 	ld hl, $f8
@@ -198,11 +198,11 @@ Func_828df:
 
 Func_82940: ; 82940 (20:6940)
 	ld hl, $482
-	call Func_804a9_20
+	call PrintText_20
 	ld c, $1
 	ld de, Data_828d7
 	ld a, BANK(Data_828d7)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
@@ -210,17 +210,17 @@ Func_82940: ; 82940 (20:6940)
 	call Func_8020c_20
 	ld e, $2
 	ld a, $2
-	call Func_80095_20
+	call SpriteFace_20
 Func_82964: ; 82964 (20:6964)
 	jp Func_8298b
 
 Func_82967: ; 82967 (20:6967)
 	ld hl, FillMemory
-	call Func_804a9_20
+	call PrintText_20
 	ld c, $1
 	ld de, Data_828d7
 	ld a, BANK(Data_828d7)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
@@ -228,7 +228,7 @@ Func_82967: ; 82967 (20:6967)
 	call Func_8020c_20
 	ld e, $2
 	ld a, $2
-	call Func_80095_20
+	call SpriteFace_20
 Func_8298b: ; 8298b (20:698b)
 	ret
 
@@ -237,7 +237,7 @@ Func_8298c:
 	or a
 	jp nz, Func_8299a
 	ld hl, $2a6
-	call Func_804a9_20
+	call PrintText_20
 	call Func_8045c_20
 Func_8299a: ; 8299a (20:699a)
 	ret
@@ -280,7 +280,7 @@ Func_829dd: ; 829dd (20:69dd)
 	ld c, $1
 	ld de, Data_829d9
 	ld a, BANK(Data_829d9)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	call Func_8020c_20
 	ld e, $1
 	ld hl, $f8
@@ -305,11 +305,11 @@ Func_829fd:
 	or a
 	jp z, Func_82a9b
 	ld hl, $497
-	call Func_804ba_20
+	call PrintTextWithYesNoBox_20
 	or a
 	jp nz, Func_82a92
 	ld a, $2b
-	call Func_80efe_20
+	call PlaySFX_20
 	ld c, $1
 	ld e, $1
 	ld a, $10
@@ -342,7 +342,7 @@ Func_82a59: ; 82a59 (20:6a59)
 	ld hl, $499
 	call Func_80498_20
 	ld a, $2a
-	call Func_80efe_20
+	call PlaySFX_20
 	ld hl, $49a
 	call Func_80498_20
 	ld c, $0

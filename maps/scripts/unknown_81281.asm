@@ -107,7 +107,7 @@ Func_81300: ; 81300 (20:5300)
 Func_8132e: ; 8132e (20:532e)
 	ld e, $2
 	xor a
-	call Func_80095_20
+	call SpriteFace_20
 Func_81334: ; 81334 (20:5334)
 	ld e, $0
 	ld a, $1
@@ -137,7 +137,7 @@ Func_8135c: ; 8135c (20:535c)
 Func_8136d: ; 8136d (20:536d)
 	ld e, $3
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 Func_81374: ; 81374 (20:5374)
 	ld e, $0
 	ld a, $4
@@ -197,7 +197,7 @@ Func_813ec: ; 813ec (20:53ec)
 	call Func_800fb_20
 Func_813f4: ; 813f4 (20:53f4)
 	ld a, $3
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 Func_813fc: ; 813fc (20:53fc)
 	jp Func_81402
@@ -291,14 +291,14 @@ Data_814bb:
 
 Func_814c1: ; 814c1 (20:54c1)
 	ld a, $4
-	call Func_80ee6_20
+	call PlayMusic_20
 	ld c, $1
 	ld de, Data_814a9
 	ld a, BANK(Data_814a9)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	call Func_8020c_20
 	xor a
-	call Func_80677_20
+	call PlayerFace_20
 	ld c, $1
 	ld e, $1
 	ld a, $20
@@ -310,7 +310,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld a, $2
 	call Func_8013d_20
 	ld a, $36
-	call Func_80efe_20
+	call PlaySFX_20
 	ld hl, $1e
 	call Func_8068f_20
 	call Func_801d5_20
@@ -319,21 +319,21 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld a, $20
 	call Func_80176_20
 	ld a, $36
-	call Func_80efe_20
+	call PlaySFX_20
 	call Func_801d5_20
 	ld a, $39
-	call Func_80efe_20
+	call PlaySFX_20
 	ld a, $f
-	call Func_80ff1_20
+	call FadeOutAudio_20
 	xor a
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8018b_20
 	ld hl, $a
-	call Func_804a9_20
+	call PrintText_20
 	ld a, $1
-	call Func_8101a_20
+	call FadeInAudio_20
 	ld a, $3
-	call Func_80ee6_20
+	call PlayMusic_20
 	ld c, $1
 	ld e, $2
 	ld a, $1
@@ -350,31 +350,31 @@ Func_814c1: ; 814c1 (20:54c1)
 	call Func_8018b_20
 	ld e, $0
 	xor a
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $1
 	xor a
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $2
 	xor a
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $3
 	xor a
-	call Func_80095_20
+	call SpriteFace_20
 	ld e, $2
 	xor a
-	call Func_80095_20
+	call SpriteFace_20
 	ld hl, $1e
 	call Func_8068f_20
 	ld hl, $b
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, $c
 	call Func_80498_20
 	xor a
 	call Func_8021b_20
 	ld hl, $d
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, $e
-	call Func_804a9_20
+	call PrintText_20
 	ld hl, $3c
 	call Func_8068f_20
 	ld c, $1
@@ -385,13 +385,13 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld a, $15
 	call Func_801e4_20
 	ld a, $28
-	call Func_80efe_20
+	call PlaySFX_20
 	call Func_801d5_20
 	ld hl, $1e
 	call Func_8068f_20
 	call Func_8018b_20
 	ld hl, $f
-	call Func_804a9_20
+	call PrintText_20
 	ld bc, Data_814bb
 	ld e, BANK(Data_814bb)
 	xor a
@@ -399,5 +399,5 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld c, $1
 	ld de, Data_814b3
 	ld a, BANK(Data_814b3)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	ret

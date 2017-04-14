@@ -21,7 +21,7 @@ Func_82fa8:
 	ld hl, Data_82f82
 	call Func_80ce7_20
 	ld a, $11
-	call Func_80ee6_20
+	call PlayMusic_20
 	ld a, [$c793]
 	or a
 	jp z, Func_82fe2

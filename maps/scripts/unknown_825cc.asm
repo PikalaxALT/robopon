@@ -45,6 +45,6 @@ Func_825f9: ; 825f9 (20:65f9)
 	call Func_800fb_20
 Func_8261f: ; 8261f (20:661f)
 	ld a, $11
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ret

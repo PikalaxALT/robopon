@@ -120,7 +120,7 @@ Func_a055: ; a055 (2:6055)
 	ld a, [hl]
 	and $80
 	jp nz, Func_a09f
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	cp $3
 	jp z, Func_a094
 	cp $2

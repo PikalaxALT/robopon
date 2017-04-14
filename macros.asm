@@ -1,7 +1,9 @@
 INCLUDE "macros/enum.asm"
 INCLUDE "macros/audio.asm"
+INCLUDE "macros/event.asm"
 
 tree_text_pointer: MACRO
+\2_Pointer::
 	dw (BANK(\2) - BANK(\1)) << 14 | (\2 & $3fff)
 	ENDM
 

@@ -13,19 +13,19 @@ Func_819b0:
 	jp nz, Func_819e8
 	ld e, $2
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 	ld hl, $28
-	call Func_804a9_20
+	call PrintText_20
 	xor a
-	call Func_80677_20
+	call PlayerFace_20
 	ld c, $1
 	ld de, Data_819ac
 	ld a, BANK(Data_819ac)
-	call Func_8063e_20
+	call ApplyMovementData_20
 	call Func_8020c_20
 	ld e, $3
 	ld a, $3
-	call Func_80095_20
+	call SpriteFace_20
 Func_819e8: ; 819e8 (20:59e8)
 	pop bc
 	ret
@@ -34,7 +34,7 @@ Func_819ea:
 	ld a, e
 	cp $1
 	jp nz, Func_81a21
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	cp $1
 	jp z, Func_819fb
 	jp Func_81a21
@@ -52,7 +52,7 @@ Func_819fb: ; 819fb (20:59fb)
 	ld a, $7
 	ld [$c7ea], a
 	ld a, $2e
-	call Func_80efe_20
+	call PlaySFX_20
 	ld a, $8
 	ld [$c7db], a
 	ld a, $8
@@ -64,7 +64,7 @@ Func_81a22:
 	ld a, e
 	cp $1
 	jp nz, Func_81a59
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	cp $1
 	jp z, Func_81a33
 	jp Func_81a59
@@ -82,7 +82,7 @@ Func_81a33: ; 81a33 (20:5a33)
 	ld a, $7
 	ld [$c7ea], a
 	ld a, $2e
-	call Func_80efe_20
+	call PlaySFX_20
 	ld a, $8
 	ld [$c7db], a
 	ld a, $f

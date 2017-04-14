@@ -141,7 +141,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld [$c7ec], a
 .continue
 	ld a, $ff
-	ld [$c838], a
+	ld [wPlayerFacing], a
 .loop3
 	ld a, [$c7eb]
 	cp $ff
@@ -172,7 +172,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	cp $9
 	jp nz, .no_lookup_Data_81c3
 	ld hl, $44
-	call Func_aa36
+	call CheckEventFlag
 	cp $1
 	jp nz, .no_lookup_Data_81c3
 	ld bc, Data_81c3
@@ -184,7 +184,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	cp $e
 	jp nz, .lookup_Data_8151
 	ld hl, $1c
-	call Func_aa36
+	call CheckEventFlag
 	cp $1
 	jp nz, .lookup_Data_8151
 	ld bc, Data_81c9

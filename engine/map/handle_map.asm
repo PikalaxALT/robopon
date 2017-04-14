@@ -4,7 +4,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld [$c839], a
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	ld hl, sp+$e
 	ld [hl], $ff
@@ -40,7 +40,7 @@ Func_9134: ; 9134 (2:5134)
 	and $4
 	jp z, Func_9146
 	xor a
-	ld [$c838], a
+	ld [wPlayerFacing], a
 	ld e, a
 	jp Func_918e
 
@@ -50,7 +50,7 @@ Func_9146: ; 9146 (2:5146)
 	and $8
 	jp z, Func_9157
 	ld a, $2
-	ld [$c838], a
+	ld [wPlayerFacing], a
 	ld e, a
 	jp Func_918e
 
@@ -60,7 +60,7 @@ Func_9157: ; 9157 (2:5157)
 	and $2
 	jp z, Func_9168
 	ld a, $3
-	ld [$c838], a
+	ld [wPlayerFacing], a
 	ld e, a
 	jp Func_918e
 
@@ -70,28 +70,28 @@ Func_9168: ; 9168 (2:5168)
 	and $1
 	jp z, Func_9179
 	ld a, $1
-	ld [$c838], a
+	ld [wPlayerFacing], a
 	ld e, a
 	jp Func_918e
 
 Func_9179: ; 9179 (2:5179)
 	push de
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	ld [$c839], a
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	call Func_b150
 	pop de
 Func_918e: ; 918e (2:518e)
 	push de
 	ld a, [$c839]
-	ld hl, $c838
+	ld hl, wPlayerFacing
 	cp [hl]
 	jp z, Func_91ba
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9d80
 	ld a, [wLCDC]
 	or $3
@@ -100,7 +100,7 @@ Func_918e: ; 918e (2:518e)
 	or $6
 	ld [wNextVBlankFlags], a
 	call Func_8ccf
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	ld [$c839], a
 Func_91ba: ; 91ba (2:51ba)
 	call Func_8dc8
@@ -110,10 +110,10 @@ Func_91ba: ; 91ba (2:51ba)
 	and $10
 	jp z, Func_91f0
 	ld e, $4
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	ld e, a
 	ld a, $2
-	call CheckObjectCollision
+	call CheckFacingObject
 	ld a, [$c84a]
 	or a
 	jp nz, Func_91db
@@ -348,12 +348,12 @@ Func_93c0: ; 93c0 (2:53c0)
 
 .step
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call HandlePlayerStep
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	ld e, a
 	xor a
-	call CheckObjectCollision
+	call CheckFacingObject
 	ld a, [$c84a]
 	or a
 	jp nz, Func_93e7

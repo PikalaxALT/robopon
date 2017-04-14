@@ -341,7 +341,7 @@ Func_88df: ; 88df (2:48df)
 	ld [$c839], a
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	call NextOverworldFrame
 Func_88f8: ; 88f8 (2:48f8)
@@ -355,12 +355,12 @@ Func_88f8: ; 88f8 (2:48f8)
 	ld a, [$c7e7]
 	call Func_b377
 	pop bc
-	ld [$c838], a
-	ld a, [$c838]
+	ld [wPlayerFacing], a
+	ld a, [wPlayerFacing]
 	cp $ff
 	jp nz, Func_891c
 	ld a, $2
-	ld [$c838], a
+	ld [wPlayerFacing], a
 Func_891c: ; 891c (2:491c)
 	call Func_8ccf
 	call Func_bfaf

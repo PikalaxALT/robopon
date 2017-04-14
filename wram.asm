@@ -590,10 +590,16 @@ wRandomEncounterCooldown:: db ; c783
 	ds $3a
 
 wMapMusic:: db ; c7be
-	ds $71
+	ds $2e
+
+wEventFlags:: ; c7ed
+	ds $43
 
 wMapCollisionPointer:: dw ; c830
-	ds $2d
+	ds $6
+
+wPlayerFacing:: db ; c838
+	ds $26
 
 wPlayerMapX:: db ; c85f
 wPlayerMapY:: db ; c860

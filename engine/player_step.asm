@@ -27,10 +27,10 @@ HandlePlayerStep:: ; 943f (2:543f)
 	push bc
 	push de
 	push hl
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	ld e, a
 	ld a, $1
-	call CheckObjectCollision
+	call CheckFacingObject
 	pop hl
 	pop de
 	pop bc
@@ -44,7 +44,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	jr nz, .asm_94ae
 	push bc
 	push de
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	ld e, $0
 	call Func_9d80
 	pop de

@@ -22,3 +22,8 @@
 	const SONG_13
 	const SONG_14
 	const SONG_GYM_LEADER_BATTLE
+	const SONG_16
+	const SONG_17
+	const SONG_18
+	const SONG_19
+	const SONG_ENCOUNTER_EVIL

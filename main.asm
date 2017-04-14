@@ -5067,7 +5067,7 @@ Func_8bdc: ; 8bdc (2:4bdc)
 	ld e, a
 	ld hl, sp+$0
 	ld a, [hl]
-	call Func_a6d8
+	call ChangePersonFacing
 	ld hl, sp+$0
 	ld a, [hl]
 	inc a
@@ -5096,13 +5096,13 @@ Func_8c29: ; 8c29 (2:4c29)
 	jp nz, Func_8c57
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	jp Func_8c5f
 
 Func_8c57: ; 8c57 (2:4c57)
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9d80
 Func_8c5f: ; 8c5f (2:4c5f)
 	call Func_b65f
@@ -5118,13 +5118,13 @@ Func_8c65: ; 8c65 (2:4c65)
 	jp nz, Func_8c8c
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	jp Func_8c94
 
 Func_8c8c: ; 8c8c (2:4c8c)
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9d80
 Func_8c94: ; 8c94 (2:4c94)
 	ld a, [wSystemType]
@@ -5153,14 +5153,14 @@ Data_8ccb: ; 8ccb
 Func_8ccf: ; 8ccf (2:4ccf)
 	call Func_bfaf
 	ld hl, Data_8ccb
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	cp $ff
 	jp nz, Func_8ce3
 	ld de, $2
 	jp Func_8ce9
 
 Func_8ce3: ; 8ce3 (2:4ce3)
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	ld e, a
 	ld d, $0
 Func_8ce9: ; 8ce9 (2:4ce9)
@@ -6144,7 +6144,7 @@ Func_9d80: ; 9d80 (2:5d80)
 	ld a, [$c84b]
 	cp $1
 	jr nz, .asm_9d8f
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	pop hl
 	jr .asm_9d91
 
@@ -6984,7 +6984,7 @@ Func_a460: ; a460 (2:6460)
 	jp nz, Func_a4a0
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 Func_a4a0: ; a4a0 (2:64a0)
 	ld hl, sp+$7
@@ -7362,9 +7362,9 @@ Func_a6d1: ; a6d1 (2:66d1)
 	ret
 
 Data_a6d4: ; a6d4
-	dr $a6d4, $a6d8
+	db $18, $0c, $00, $0c
 
-Func_a6d8:: ; a6d8 (2:66d8)
+ChangePersonFacing:: ; a6d8 (2:66d8)
 	push af
 	push bc
 	push bc
@@ -7418,7 +7418,7 @@ Func_a6f9: ; a6f9 (2:66f9)
 	jp nz, Func_a730
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 Func_a730: ; a730 (2:6730)
 	pop de
@@ -7477,421 +7477,8 @@ Func_a77e: ; a77e (2:677e)
 	ret
 
 INCLUDE "engine/check_collision.asm"
-
-Data_a983: ; a983
-	db $01
-	db $02
-	db $04
-	db $08
-	db $10
-	db $20
-	db $40
-	db $80
-
-Func_a98b:: ; a98b
-	push hl
-	push de
-	call GetHLAtSPPlus4
-	ld a, l
-	sub $7
-	or h
-	jp nz, Func_a9b9
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $1
-	jp nz, Func_a9b9
-	call GetHLAtSPPlus4
-	call Func_aa36
-	or a
-	jp nz, Func_a9b9
-	set_farcall_addrs_hli Func_93941
-	ld a, $2
-	call FarCall
-Func_a9b9: ; a9b9 (2:69b9)
-	call GetHLAtSPPlus4
-	ld a, l
-	sub $b9
-	or h
-	jp nz, Func_a9e5
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $1
-	jp nz, Func_a9e5
-	call GetHLAtSPPlus4
-	call Func_aa36
-	or a
-	jp nz, Func_a9e5
-	set_farcall_addrs_hli Func_93941
-	ld a, $3
-	call FarCall
-Func_a9e5: ; a9e5 (2:69e5)
-	ld hl, sp+$0
-	ld a, [hl]
-	or a
-	jp z, Func_aa13
-	cp $1
-	jp nz, Func_aa33
-	call GetHLAtSPPlus4
-	ld a, l
-	and $7
-	ld e, a
-	ld d, $0
-	ld hl, Data_a983
-	add hl, de
-	ld a, [hl]
-	push af
-	call GetHLAtSPPlus6
-	ld de, $8
-	call DivideHLByDESigned
-	ld de, $c7ed
-	add hl, de
-	pop af
-	or [hl]
-	ld [hl], a
-	jp Func_aa33
-
-Func_aa13: ; aa13 (2:6a13)
-	call GetHLAtSPPlus4
-	ld a, l
-	and $7
-	ld e, a
-	ld d, $0
-	ld hl, Data_a983
-	add hl, de
-	ld a, [hl]
-	cpl
-	push af
-	call GetHLAtSPPlus6
-	ld de, $8
-	call DivideHLByDESigned
-	ld de, $c7ed
-	add hl, de
-	pop af
-	and [hl]
-	ld [hl], a
-Func_aa33: ; aa33 (2:6a33)
-	pop bc
-	pop bc
-	ret
-
-Func_aa36:: ; aa36 (2:6a36)
-	push hl
-	pop hl
-	push hl
-	ld de, $8
-	call DivideHLByDESigned
-	ld de, $c7ed
-	add hl, de
-	ld c, [hl]
-	pop hl
-	push hl
-	ld a, l
-	and $7
-	ld e, a
-	ld d, $0
-	ld hl, Data_a983
-	add hl, de
-	ld a, [hl]
-	and c
-	jp z, Func_aa5a
-	ld a, $1
-	jp Func_aa5b
-
-Func_aa5a: ; aa5a (2:6a5a)
-	xor a
-Func_aa5b: ; aa5b (2:6a5b)
-	pop bc
-	ret
-
-Func_aa5d: ; aa5d (2:6a5d)
-	push hl
-	push de
-	add sp, -$44
-	push bc
-	ld a, $3
-	ld [wOAM26VTile], a
-	ld l, $d
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	ld hl, $0
-	call WriteHLToSPPlus4
-	ld hl, sp+$46
-	ld a, [hl]
-	cp $c
-	jp nz, Func_ab15
-	read_hl_from_sp_plus $4a
-	write_hl_to_sp_plus $43
-	ld hl, -1
-	write_hl_to_sp_plus $45
-	ld hl, sp+$5
-	reg16swap de, hl
-	ld hl, sp+$41
-	call PrintCharacterFromTree
-	ld hl, sp+$4
-	ld [hl], $0
-	ld c, $0
-Func_aaa1: ; aaa1 (2:6aa1)
-	ld e, c
-	ld d, $0
-	ld hl, sp+$5
-	add hl, de
-	ld a, [hl]
-	or a
-	jp nz, Func_aaaf
-	jp Func_aad8
-
-Func_aaaf: ; aaaf (2:6aaf)
-	ld e, c
-	ld d, $0
-	ld hl, sp+$5
-	add hl, de
-	ld a, [hl]
-	cp $df
-	jp z, Func_aaca
-	cp $de
-	jp z, Func_aaca
-	cp $29
-	jp z, Func_aaca
-	cp $28
-	jp nz, Func_aacd
-Func_aaca: ; aaca (2:6aca)
-	jp Func_aad4
-
-Func_aacd: ; aacd (2:6acd)
-	ld hl, sp+$4
-	ld a, [hl]
-	inc a
-	ld hl, sp+$4
-	ld [hl], a
-Func_aad4: ; aad4 (2:6ad4)
-	inc c
-	jp Func_aaa1
-
-Func_aad8: ; aad8 (2:6ad8)
-	set_farcall_addrs_hli Func_da901
-	ld hl, sp+$4
-	ld l, [hl]
-	ld h, $0
-	ld h, l
-	ld l, $0
-	ld de, $203
-	add hl, de
-	reg16swap de, hl
-	ld hl, $b
-	call FarCall
-	call WriteHLToSPPlus4
-	set_farcall_addrs_hli Func_17e95
-	ld c, $3
-	ld hl, sp+$4
-	ld a, [hl]
-	add $2
-	ld e, a
-	ld hl, $b
-	call FarCall
-Func_ab15: ; ab15 (2:6b15)
-	set_farcall_addrs_hli Func_da901
-	ld de, $1405
-	ld hl, $d
-	call FarCall
-	reg16swap de, hl
-	push de
-	set_farcall_addrs_hli Func_17e95
-	ld c, $5
-	ld e, $14
-	ld hl, $d
-	call FarCall
-	read_hl_from_sp_plus $4c
-	write_hl_to_sp_plus $45
-	ld l, $0
-	push hl
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3bc5
-	pop bc
-	pop hl
-	pop de
-	pop bc
-	push de
-	push hl
-	push bc
-	ld a, c
-	and $1
-	jp z, .print_text
-	set_farcall_addrs_hli PrintMapText
-	ld bc, $1603
-	ld hl, sp+$45
-	reg16swap de, hl
-	ld hl, sp+$4a
-	ld l, [hl]
-	ld h, $0
-	inc h
-	call FarCall
-	jp .done_text
-
-.print_text
-	set_farcall_addrs_hli PrintMapText_
-	ld c, $c3
-	ld hl, sp+$45
-	reg16swap de, hl
-	ld hl, sp+$4a
-	ld l, [hl]
-	ld h, $0
-	inc h
-	call FarCall
-.done_text
-	pop bc
-	pop hl
-	push bc
-	ld a, c
-	and $1
-	jp z, .no_delay
-	xor a
-.delay10
-	cp $a
-	jp nc, .done_delay
-	push af
-	call NextOverworldFrame
-	pop af
-	inc a
-	jp .delay10
-
-.done_delay
-	callba_hli Func_1482e
-	ld a, l
-	cp $ff
-	jp nz, .no_delay
-	ld l, $1
-.no_delay
-	pop bc
-	pop de
-	push hl
-	push de
-	ld a, c
-	and $2
-	jp nz, Func_abdd
-	call Func_8f44
-Func_abdd: ; abdd (2:6bdd)
-	call GetHLAtSPPlus6
-	ld a, l
-	or h
-	jp z, Func_abf6
-	set_farcall_addrs_hli Func_daa40
-	call GetHLAtSPPlus6
-	call FarCall
-Func_abf6: ; abf6 (2:6bf6)
-	pop de
-	ld a, e
-	or d
-	jp z, Func_ac0c
-	push de
-	set_farcall_addrs_hli Func_daa40
-	pop hl
-	call FarCall
-Func_ac0c: ; ac0c (2:6c0c)
-	ld a, [wLCDC]
-	or $3
-	ld [wLCDC], a
-	ld a, [wNextVBlankFlags]
-	or $6
-	ld [wNextVBlankFlags], a
-	call NextOverworldFrame
-	pop hl
-	ld a, l
-	add sp, $48
-	ret
-
-Func_ac24:: ; ac24
-	ld e, $e
-	ld c, $0
-	call Func_aa5d
-	ret
-
-Func_ac2c:: ; ac2c
-	ld e, $c
-	ld c, $0
-	call Func_aa5d
-	ret
-
-Func_ac34: ; ac34
-	ret
-
-Func_ac35:: ; ac35
-	ret
-
-Func_ac36:: ; ac36
-	ret
-
-Func_ac37:: ; ac37
-	ld a, $8a
-	ld [wBlinkerOffTile], a
-	set_farcall_addrs_hli Func_60001
-	ld c, $0
-	ld e, $10
-	ld a, $12
-	call FarCall
-Func_ac50: ; ac50 (2:6c50)
-	call GetJoyPressed
-	ld l, a
-	ld a, l
-	and $10
-	jp z, Func_ac5d
-	jp Func_ac69
-
-Func_ac5d: ; ac5d (2:6c5d)
-	ld a, l
-	and $20
-	jp z, Func_ac66
-	jp Func_ac69
-
-Func_ac66: ; ac66 (2:6c66)
-	jp Func_ac50
-
-Func_ac69: ; ac69 (2:6c69)
-	call GetJoyPressed
-	ld l, a
-	ld a, l
-	and $10
-	jp z, Func_ac76
-	jp Func_ac69
-
-Func_ac76: ; ac76 (2:6c76)
-	ld a, l
-	and $20
-	jp z, Func_ac7f
-	jp Func_ac69
-
-Func_ac7f: ; ac7f (2:6c7f)
-	set_farcall_addrs_hli Func_60001
-	ld c, $1
-	ld e, $10
-	ld a, $12
-	call FarCall
-	ret
-
-Func_ac94:: ; ac94
-	ld e, $e
-	ld c, $1
-	jp Func_aa5d
-
-Func_ac9b:: ; ac9b
-	xor a
-	ret
-
-Func_ac9d:: ; ac9d
-	ld e, $c
-	ld c, $1
-	jp Func_aa5d
-
-Func_aca4:: ; aca4
-	xor a
-	ret
+INCLUDE "engine/event_flags.asm"
+INCLUDE "engine/map/text.asm"
 
 Func_aca6:: ; aca6 (2:6ca6)
 	xor a
@@ -8243,7 +7830,7 @@ Func_aef5: ; aef5 (2:6ef5)
 	call Func_bbc8
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	call Func_b65f
 	jp Func_af68
@@ -8254,7 +7841,7 @@ Func_af33: ; af33 (2:6f33)
 	call Func_bbc8
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	set_farcall_addrs_hli Func_c7bd0
 	ld a, [$c867]
@@ -8547,7 +8134,7 @@ Func_b140: ; b140 (2:7140)
 	jp z, Func_b14d
 	ld hl, sp+$b
 	ld a, [hl]
-	call Func_a6d8
+	call ChangePersonFacing
 Func_b14d: ; b14d (2:714d)
 	add sp, $c
 	ret
@@ -8866,7 +8453,7 @@ Func_b32a: ; b32a (2:732a)
 	ld e, [hl]
 	ld hl, sp+$e
 	ld a, [hl]
-	call Func_a6d8
+	call ChangePersonFacing
 Func_b359: ; b359 (2:7359)
 	ld hl, sp+$b
 	ld a, [hl]
@@ -8932,7 +8519,7 @@ Func_b3ab:: ; b3ab (2:73ab)
 	call NextOverworldFrame
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	call Func_b150
 	ld c, $0
@@ -8973,13 +8560,13 @@ Func_b3ee: ; b3ee (2:73ee)
 
 Func_b3ef:: ; b3ef
 	push af
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	add $2
 	and $3
 	ld e, a
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_a6d8
+	call ChangePersonFacing
 	pop bc
 	ret
 
@@ -9050,7 +8637,7 @@ Func_b44d: ; b44d (2:744d)
 	ld a, [$c858]
 	cp $1
 	jp nz, Func_b4b3
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	cp $3
 	jp z, Func_b4af
 	cp $2
@@ -9232,7 +8819,7 @@ Func_b58e:: ; b58e
 	ld bc, $c0
 	call RequestVideoData
 	pop af
-	ld [$c838], a
+	ld [wPlayerFacing], a
 	ld [$c839], a
 	call Func_bfaf
 	pop bc
@@ -9242,26 +8829,26 @@ Func_b58e:: ; b58e
 Func_b5db:: ; b5db
 	push hl
 	ld bc, $0
-Func_b5df: ; b5df (2:75df)
+.loop
 	pop hl
 	push hl
 	reg16swap de, hl
 	ld l, c
 	ld h, b
 	call CompareHLtoDE
-	jp nc, Func_b603
+	jp nc, .done
 	push bc
 	call NextOverworldFrame
 	ld c, $0
 	ld e, $0
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	call Func_9a49
 	call Func_b150
 	pop bc
 	inc bc
-	jp Func_b5df
+	jp .loop
 
-Func_b603: ; b603 (2:7603)
+.done
 	pop bc
 	ret
 
@@ -9700,9 +9287,9 @@ Func_bb37: ; bb37
 	ld c, $2
 	ld e, $e
 	ld hl, $3e7
-	call Func_aa5d
+	call DrawTextBoxAndOverworldText
 	ld a, $2
-	ld [$c838], a
+	ld [wPlayerFacing], a
 	ld a, $1
 	ld [$c7e2], a
 	ld de, $100d
@@ -9746,7 +9333,7 @@ Func_bba9: ; bba9 (2:7ba9)
 	ld a, [wMapMusic]
 	call OverworldPlaySong
 	ld a, $2
-	ld [$c838], a
+	ld [wPlayerFacing], a
 	ld a, $1
 	ld [$c7e2], a
 	ld de, $100d
@@ -9811,7 +9398,7 @@ Func_bc6d:: ; bc6d
 	ld c, $3
 	ld e, $e
 	ld hl, $7ce
-	call Func_aa5d
+	call DrawTextBoxAndOverworldText
 	cp $1
 	jp nz, Func_bcd1
 	ld e, $1
@@ -9858,7 +9445,7 @@ Func_bce5:: ; bce5
 	ld c, $3
 	ld e, $e
 	ld hl, $7ce
-	call Func_aa5d
+	call DrawTextBoxAndOverworldText
 	cp $1
 	jp nz, Func_bd49
 	ld e, $2
@@ -9905,7 +9492,7 @@ Func_bd5d:: ; bd5d
 	ld c, $3
 	ld e, $e
 	ld hl, $7ce
-	call Func_aa5d
+	call DrawTextBoxAndOverworldText
 	cp $1
 	jp nz, Func_bdc1
 	ld e, $3
@@ -9952,7 +9539,7 @@ Func_bdd5:: ; bdd5
 	ld c, $3
 	ld e, $e
 	ld hl, $7ce
-	call Func_aa5d
+	call DrawTextBoxAndOverworldText
 	cp $1
 	jp nz, Func_be39
 	ld e, $4
@@ -10035,7 +9622,7 @@ Func_bea1: ; bea1 (2:7ea1)
 	read_hl_from $c82a
 	ld bc, $240
 	call FarCopyVideoData
-	ld hl, $c838
+	ld hl, wPlayerFacing
 	ld l, [hl]
 	ld h, $0
 	ld de, Data_be73
@@ -10159,7 +9746,7 @@ Func_bf9c: ; bf9c (2:7f9c)
 	dec c
 	jp nz, Func_bfab
 	ld a, $ff
-	ld [$c838], a
+	ld [wPlayerFacing], a
 	ld a, $1
 	jp Func_bfac
 
@@ -40670,7 +40257,7 @@ Func_238c8: ; 238c8 (8:78c8)
 	call FarCopyVideoData
 	ld bc, $32
 	ld de, $ca9d
-	ld hl, $c7ed
+	ld hl, wEventFlags
 	call CopyFromDEtoHL
 	ld bc, $64
 	ld de, $cacf
@@ -77276,7 +76863,7 @@ Func_56e8a: ; 56e8a (15:6e8a)
 	pop de
 	call CopyFromDEtoHL
 	ld bc, $32
-	ld de, $c7ed
+	ld de, wEventFlags
 	ld hl, $ca9d
 	call CopyFromDEtoHL
 	ld bc, $64
@@ -77442,7 +77029,7 @@ Func_5702e: ; 5702e (15:702e)
 	call CopyFromDEtoHL
 	ld bc, $32
 	ld de, $ca9d
-	ld hl, $c7ed
+	ld hl, wEventFlags
 	call CopyFromDEtoHL
 	ld bc, $64
 	ld de, $cacf
@@ -94127,7 +93714,7 @@ Func_68457: ; 68457 (1a:4457)
 	ld a, [hl]
 	cp $e
 	jp nz, Func_684dc
-	set_farcall_addrs_hli Func_aa36
+	set_farcall_addrs_hli CheckEventFlag
 	ld a, $44
 	call FarCall
 	cp $1
@@ -94142,14 +93729,14 @@ Func_684dc: ; 684dc (1a:44dc)
 	ld a, [hl]
 	cp $c
 	jp nz, Func_68516
-	set_farcall_addrs_hli Func_aa36
+	set_farcall_addrs_hli CheckEventFlag
 	ld a, $35
 	call FarCall
 	cp $1
 	jp nz, Func_68516
 	ld hl, sp+$1f
 	ld [hl], $14
-	set_farcall_addrs_hli Func_aa36
+	set_farcall_addrs_hli CheckEventFlag
 	ld a, $23
 	call FarCall
 	cp $1
@@ -96241,7 +95828,7 @@ Func_69399: ; 69399 (1a:5399)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_693e7
-	ld a, $39
+	ld a, BANK(GFX_e4000)
 	ld [wFarCallDestBank], a
 	pop hl
 	push hl
@@ -96282,7 +95869,7 @@ Func_693e4: ; 693e4 (1a:53e4)
 	jp Func_69422
 
 Func_693e7: ; 693e7 (1a:53e7)
-	ld a, $6
+	ld a, BANK(GFX_18000)
 	ld [wFarCallDestBank], a
 	pop hl
 	push hl
@@ -96349,7 +95936,7 @@ Func_69436: ; 69436 (1a:5436)
 	reg16swap de, hl
 	ld l, c
 	ld h, b
-	ld bc, Func_0150
+	ld bc, $150
 	call FarRequestVideoData
 	read_hl_from wOAM23VTile
 	call Func_680d3

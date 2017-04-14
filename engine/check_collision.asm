@@ -1,4 +1,4 @@
-CheckObjectCollision: ; a783 (2:6783)
+CheckFacingObject: ; a783 (2:6783)
 ; a: flag
 ; e: direction facing
 	ld [wCheckCollisionFlag], a

@@ -32,7 +32,7 @@ Func_82e70:
 	ld hl, Data_82e46
 	call Func_80d24_20
 	ld a, $b
-	call Func_80ee6_20
+	call PlayMusic_20
 	call Func_8001c_20
 	ld hl, $3cc
 	call Func_80f72_20

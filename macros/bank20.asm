@@ -70,20 +70,20 @@ Func_80080_\1: ; 80080 (20:4080)
 	call FarCall
 	ret
 
-Func_80095_\1: ; 80095 (20:4095)
+SpriteFace_\1: ; 80095 (20:4095)
 	push af
 	push de
-	set_farcall_addrs_hli Func_a6d8
+	set_farcall_addrs_hli ChangePersonFacing
 	pop de
 	pop af
 	call FarCall
 	ld a, [rLCDC]
 	and $80
-	jp z, Func_800b7_\1
+	jp z, .skip
 	call NextOverworldFrame
 	call NextOverworldFrame
 	call NextOverworldFrame
-Func_800b7_\1: ; 800b7 (20:40b7)
+.skip
 	ret
 
 Func_800b8_\1:
@@ -487,16 +487,16 @@ Func_80498_\1: ; 80498 (20:4498)
 	call FarCall
 	ret
 
-Func_804a9_\1: ; 804a9 (20:44a9)
+PrintText_\1: ; 804a9 (20:44a9)
 	push hl
-	set_farcall_addrs_hli Func_ac2c
+	set_farcall_addrs_hli PrintOverworldTextIndex
 	pop hl
 	call FarCall
 	ret
 
-Func_804ba_\1: ; 804ba (20:44ba)
+PrintTextWithYesNoBox_\1: ; 804ba (20:44ba)
 	push hl
-	set_farcall_addrs_hli Func_ac94
+	set_farcall_addrs_hli PrintOverworldTextIndexWithYesNoBox
 	pop hl
 	jp FarCall
 
@@ -661,11 +661,11 @@ Func_8061b_\1: ; 8061b (20:461b)
 
 Func_8062e_\1: ; 8062e (20:462e)
 	push hl
-	set_farcall_addrs_hli Func_aa36
+	set_farcall_addrs_hli CheckEventFlag
 	pop hl
 	jp FarCall
 
-Func_8063e_\1: ; 8063e (20:463e)
+ApplyMovementData_\1: ; 8063e (20:463e)
 	push af
 	push de
 	push bc
@@ -692,7 +692,7 @@ Func_80664_\1: ; 80664 (20:4664)
 	call FarCall
 	ret
 
-Func_80677_\1: ; 80677 (20:4677)
+PlayerFace_\1: ; 80677 (20:4677)
 	push af
 	set_farcall_addrs_hli Func_b58e
 	pop af
@@ -763,19 +763,19 @@ Func_806dd_\1:
 	ld a, e
 	or a
 	jp nz, Func_80796_\1
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	add $2
 	and $3
 	ld e, a
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_80095_\1
+	call SpriteFace_\1
 	ld hl, $c8
 	call Func_8062e_\1
 	or a
 	jp nz, Func_80732_\1
 	ld hl, $36d
-	call Func_804a9_\1
+	call PrintText_\1
 	ld e, $1
 	ld hl, $c8
 	call Func_8061b_\1
@@ -801,7 +801,7 @@ Func_80732_\1: ; 80732 (20:4732)
 	and c
 	jp z, Func_8075a_\1
 	ld hl, $374
-	call Func_804a9_\1
+	call PrintText_\1
 	jp Func_80796_\1
 
 Func_8075a_\1: ; 8075a (20:475a)
@@ -868,13 +868,13 @@ Func_80799_\1:
 	or a
 	jp nz, Func_8085c_\1
 	push bc
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	add $2
 	and $3
 	ld e, a
 	ld hl, sp+$5
 	ld a, [hl]
-	call Func_80095_\1
+	call SpriteFace_\1
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
@@ -1004,13 +1004,13 @@ Func_8085f_\1:
 	ld a, e
 	or a
 	jp nz, Func_808f9_\1
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	add $2
 	and $3
 	ld e, a
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_80095_\1
+	call SpriteFace_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1107,13 +1107,13 @@ Func_808fc_\1:
 	ld a, e
 	or a
 	jp nz, Func_80996_\1
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	add $2
 	and $3
 	ld e, a
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_80095_\1
+	call SpriteFace_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1160,7 +1160,7 @@ Func_80968_\1: ; 80968 (20:4968)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_804a9_\1
+	call PrintText_\1
 	pop bc
 	ld hl, sp+$3
 	ld l, [hl]
@@ -1210,13 +1210,13 @@ Func_80999_\1:
 	ld a, e
 	or a
 	jp nz, Func_80a79_\1
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	add $2
 	and $3
 	ld e, a
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_80095_\1
+	call SpriteFace_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1357,13 +1357,13 @@ Func_80a7c_\1:
 	ld a, e
 	or a
 	jp nz, Func_80b2a_\1
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	add $2
 	and $3
 	ld e, a
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_80095_\1
+	call SpriteFace_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1385,7 +1385,7 @@ Func_80a7c_\1:
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_804ba_\1
+	call PrintTextWithYesNoBox_\1
 	or a
 	jp nz, Func_80b09_\1
 	pop hl
@@ -1470,13 +1470,13 @@ Func_80b2d_\1:
 	ld a, e
 	or a
 	jp nz, Func_80bdb_\1
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	add $2
 	and $3
 	ld e, a
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_80095_\1
+	call SpriteFace_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1509,7 +1509,7 @@ Func_80b2d_\1:
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_804a9_\1
+	call PrintText_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1534,7 +1534,7 @@ Func_80bba_\1: ; 80bba (20:4bba)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_804a9_\1
+	call PrintText_\1
 Func_80bca_\1: ; 80bca (20:4bca)
 	jp Func_80bdb_\1
 
@@ -1547,7 +1547,7 @@ Func_80bcd_\1: ; 80bcd (20:4bcd)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_804a9_\1
+	call PrintText_\1
 Func_80bdb_\1: ; 80bdb (20:4bdb)
 	pop bc
 	pop bc
@@ -1598,7 +1598,7 @@ Func_80bde_\1:
 	ld [$c848], a
 	ld a, $ff
 	ld [$c849], a
-	ld a, [$c838]
+	ld a, [wPlayerFacing]
 	cp $3
 	jp z, Func_80c5a_\1
 	cp $2
@@ -1813,7 +1813,7 @@ Func_80d9b_\1: ; 80d9b (20:4d9b)
 	pop bc
 	ret
 
-Func_80dd3_\1: ; 80dd3 (20:4dd3)
+ScriptedBattle_\1: ; 80dd3 (20:4dd3)
 	ld a, [$c793]
 	or a
 	jp z, Func_80de2_\1
@@ -1829,7 +1829,7 @@ Func_80de2_\1: ; 80de2 (20:4de2)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(Func_80dd3_\1)
+	ld a, BANK(ScriptedBattle_\1)
 	call FarCall
 	ld l, a
 Func_80dfd_\1: ; 80dfd (20:4dfd)
@@ -1932,23 +1932,23 @@ Func_80ec0_\1:
 	ld a, l
 	ret
 
-Func_80ee6_\1: ; 80ee6 (20:4ee6)
+PlayMusic_\1: ; 80ee6 (20:4ee6)
 	push af
 	ld a, [wMapMusic]
 	ld hl, sp+$1
 	cp [hl]
-	jp z, Func_80efc_\1
+	jp z, .nope
 	ld hl, sp+$1
 	ld a, [hl]
 	call OverworldPlaySong
 	ld hl, sp+$1
 	ld a, [hl]
 	ld [wMapMusic], a
-Func_80efc_\1: ; 80efc (20:4efc)
+.nope
 	pop bc
 	ret
 
-Func_80efe_\1: ; 80efe (20:4efe)
+PlaySFX_\1: ; 80efe (20:4efe)
 	call OverworldPlaySFX
 	ret
 
@@ -2044,26 +2044,27 @@ Func_80fe0_\1:
 	call FarCall
 	ret
 
-Func_80ff1_\1: ; 80ff1 (20:4ff1)
+FadeOutAudio_\1: ; 80ff1 (20:4ff1)
+; a = frames per tick (8 ticks total)
 	push af
 	ld l, $0
-Func_80ff4_\1: ; 80ff4 (20:4ff4)
+.loop
 	ld a, l
 	cp $8
-	jp nc, Func_81018_\1
+	jp nc, .done
 	push hl
 	xor a
-Func_80ffc_\1: ; 80ffc (20:4ffc)
+.wait
 	ld hl, sp+$3
 	cp [hl]
-	jp nc, Func_8100b_\1
+	jp nc, .next
 	push af
 	call NextOverworldFrame
 	pop af
 	inc a
-	jp Func_80ffc_\1
+	jp .wait
 
-Func_8100b_\1: ; 8100b (20:500b)
+.next
 	pop hl
 	push hl
 	ld a, $7
@@ -2071,39 +2072,40 @@ Func_8100b_\1: ; 8100b (20:500b)
 	call SetVolume
 	pop hl
 	inc l
-	jp Func_80ff4_\1
+	jp .loop
 
-Func_81018_\1: ; 81018 (20:5018)
+.done
 	pop bc
 	ret
 
-Func_8101a_\1: ; 8101a (20:501a)
+FadeInAudio_\1: ; 8101a (20:501a)
+; a = frames per tick (8 ticks total)
 	push af
 	xor a
-Func_8101c_\1: ; 8101c (20:501c)
+.loop
 	cp $8
-	jp nc, Func_8103c_\1
+	jp nc, .done
 	push af
 	xor a
-Func_81023_\1: ; 81023 (20:5023)
+.wait
 	ld hl, sp+$3
 	cp [hl]
-	jp nc, Func_81032_\1
+	jp nc, .next
 	push af
 	call NextOverworldFrame
 	pop af
 	inc a
-	jp Func_81023_\1
+	jp .wait
 
-Func_81032_\1: ; 81032 (20:5032)
+.next
 	pop af
 	push af
 	call SetVolume
 	pop af
 	inc a
-	jp Func_8101c_\1
+	jp .loop
 
-Func_8103c_\1: ; 8103c (20:503c)
+.done
 	pop bc
 	ret
 
