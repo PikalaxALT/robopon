@@ -526,7 +526,7 @@ Func_804da_\1:
 	ld l, c
 	ld h, b
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ret
@@ -562,7 +562,7 @@ Func_80519_\1: ; 80519 (20:4519)
 	ld d, b
 	ld hl, sp+$2
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop bc
@@ -595,7 +595,7 @@ Func_8056f_\1:
 	pop bc
 	push af
 	push bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop af
@@ -635,7 +635,7 @@ Func_805b2_\1: ; 805b2 (20:45b2)
 	pop bc
 	push af
 	push bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop af

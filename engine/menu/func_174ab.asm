@@ -585,7 +585,7 @@ Func_174ab: ; 174ab (5:74ab)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_17c57
+	call DeallocateMemory
 .quit
 	pop hl
 	pop bc

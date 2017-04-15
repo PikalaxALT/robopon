@@ -3099,7 +3099,7 @@ Func_1f7b:: ; 1f7b
 	ld hl, $88f0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from $c30e
 	call FarCall
 	ld hl, $0
@@ -3147,7 +3147,7 @@ Func_2009:: ; 2009
 	ld hl, $8cc0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from $c2f2
 	call FarCall
 	ld hl, HuC3SRamMode
@@ -3195,7 +3195,7 @@ Func_2097:: ; 2097
 	ld hl, $8fa0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from $c2f2
 	call FarCall
 	ld hl, $0
@@ -4560,7 +4560,7 @@ Func_2887:: ; 2887 (0:2887)
 	ld a, [hl]
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop af

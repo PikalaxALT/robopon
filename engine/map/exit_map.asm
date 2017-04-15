@@ -1,7 +1,7 @@
 ExitMap: ; 854b (2:454b)
 macro_854b: MACRO
 	read_hl_from \1
-	call Func_be5d
+	call DeallocateMemory_Bank02
 	ld hl, $0
 	write_hl_to \1
 	ENDM
@@ -240,11 +240,11 @@ Func_87ca: ; 87ca (2:47ca)
 	ld bc, $80
 	call CopyFromDEtoHL
 	read_hl_from $c842
-	call Func_be5d
+	call DeallocateMemory_Bank02
 	read_hl_from $c844
-	call Func_be5d
+	call DeallocateMemory_Bank02
 	read_hl_from $c85b
-	call Func_be5d
+	call DeallocateMemory_Bank02
 	pop bc
 	push bc
 	inc c
@@ -331,7 +331,7 @@ Func_8894: ; 8894 (2:4894)
 	or h
 	jp z, Func_88df
 	read_hl_from $c82e
-	call Func_be5d
+	call DeallocateMemory_Bank02
 Func_88df: ; 88df (2:48df)
 	pop bc
 	ld a, c

@@ -7488,7 +7488,7 @@ Func_aca6:: ; aca6 (2:6ca6)
 	or h
 	jp z, Func_acbc
 	read_hl_from wWarpDataPointer
-	call Func_be5d
+	call DeallocateMemory_Bank02
 Func_acbc: ; acbc (2:6cbc)
 	ld hl, $dc
 	call AllocateMemory_Bank02
@@ -9561,9 +9561,9 @@ AllocateMemory_Bank02: ; be4d (2:7e4d)
 	pop hl
 	jp FarCall
 
-Func_be5d: ; be5d (2:7e5d)
+DeallocateMemory_Bank02: ; be5d (2:7e5d)
 	push hl
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ret
@@ -10789,7 +10789,7 @@ Func_cced: ; cced (3:4ced)
 	ld a, l
 	or h
 	jp z, Func_cd99
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -10798,7 +10798,7 @@ Func_cced: ; cced (3:4ced)
 	ld d, [hl]
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from wc2e6
 	ld de, $18
 	add hl, de
@@ -10807,7 +10807,7 @@ Func_cced: ; cced (3:4ced)
 	ld d, [hl]
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from wc2e6
 	ld de, $1c6
 	add hl, de
@@ -10823,7 +10823,7 @@ Func_cced: ; cced (3:4ced)
 	inc hl
 	or [hl]
 	jp z, Func_cd7e
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from wc2e6
 	ld de, $1a
 	add hl, de
@@ -10833,7 +10833,7 @@ Func_cced: ; cced (3:4ced)
 	reg16swap de, hl
 	call FarCall
 Func_cd7e: ; cd7e (3:4d7e)
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from wc2e6
 	call FarCall
 	ld hl, $0
@@ -15867,7 +15867,7 @@ Func_f149: ; f149 (3:7149)
 	jp Func_f122
 
 Func_f15a: ; f15a (3:715a)
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	call ClearSprites
@@ -19275,7 +19275,7 @@ Func_10c0a: ; 10c0a (4:4c0a)
 	ld de, $605
 	ld hl, $705
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ld hl, sp+$0
@@ -26706,7 +26706,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	ld [wOAM26VTile], a
 	call Func_1400e
 	pop hl
-	call Func_17c57
+	call DeallocateMemory
 	set_farcall_addrs_hli Func_daa40
 	pop hl
 	call FarCall
@@ -26832,7 +26832,7 @@ Func_14ca9:: ; 14ca9
 	call Func_3ca1
 	pop bc
 	pop hl
-	call Func_17c57
+	call DeallocateMemory
 	pop hl
 	ld a, l
 	and h
@@ -27250,7 +27250,7 @@ Func_14fde: ; 14fde (5:4fde)
 	call Func_2323
 Func_14ffa: ; 14ffa (5:4ffa)
 	pop hl
-	call Func_17c57
+	call DeallocateMemory
 	pop hl
 	pop bc
 	ret
@@ -28005,7 +28005,7 @@ Func_1563b: ; 1563b (5:563b)
 
 Func_1563e: ; 1563e (5:563e)
 	call GetHLAtSPPlus4
-	call Func_17c57
+	call DeallocateMemory
 	ld hl, $8000
 	pop bc
 	pop bc
@@ -32714,448 +32714,7 @@ Func_17ab6: ; 17ab6 (5:7ab6)
 	ld [wc2e0], a
 	ret
 
-AllocateMemory:: ; 17aba (5:7aba)
-	push hl
-	push bc
-	call GetHLAtSPPlus4
-	reg16swap de, hl
-	ld hl, $0
-	call CompareHLtoDE
-	jp c, .okay
-	ld hl, $0
-	jp .done
-
-.okay
-	call GetHLAtSPPlus4
-	ld de, $f
-	add hl, de
-	ld de, $10
-	call DivideHLByDESigned
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	call WriteHLToSPPlus4
-	read_hl_from $c2de
-	pop de
-	push hl
-.loop
-	pop hl
-	push hl
-	ld a, l
-	or h
-	jp z, .crash
-	ld a, [wc2e0]
-	cp $1
-	jp nz, .okay2
-	pop hl
-	push hl
-	ld a, l
-	sub $c000 % $100
-	ld a, h
-	sbc $c000 / $100
-	jp nc, .okay2
-	jp .next
-
-.okay2
-	ld a, [wc2e0]
-	cp $2
-	jp nz, .okay_3
-	pop hl
-	push hl
-	ld a, l
-	sub $c000 % $100
-	ld a, h
-	sbc $c000 / $100
-	jp c, .okay_3
-	jp .next
-
-.okay_3
-	pop hl
-	push hl
-	ld a, [hl]
-	cp $55
-	jp nz, .next
-	call GetHLAtSPPlus4
-	push hl
-	call GetHLAtSPPlus4
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	pop de
-	call CompareHLtoDE
-	jp c, .next
-	pop hl
-	push hl
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	call GetHLAtSPPlus4
-	ld de, $a
-	add hl, de
-	call CompareHLtoBC
-	jp nc, .set_aa
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	push bc
-	call GetHLAtSPPlus4
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	call GetHLAtSPPlus6
-	ld a, c
-	sub l
-	ld l, a
-	ld a, b
-	sbc h
-	ld h, a
-	ld de, hPushOAM + 6
-	add hl, de
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus4
-	ld [hl], $aa
-	call GetHLAtSPPlus6
-	push hl
-	call GetHLAtSPPlus6
-	inc hl
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	call GetHLAtSPPlus6
-	push hl
-	call GetHLAtSPPlus6
-	pop de
-	add hl, de
-	ld de, $5
-	add hl, de
-	push hl
-	call GetHLAtSPPlus6
-	inc hl
-	inc hl
-	inc hl
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld [hl], $55
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	inc hl
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	pop bc
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	jp .finish
-
-.set_aa
-	pop hl
-	push hl
-	ld [hl], $aa
-.finish
-	read_hl_from $c2dc
-	inc hl
-	write_hl_to $c2dc
-	pop hl
-	push hl
-	ld de, $5
-	add hl, de
-	jp .done
-
-.next
-	pop hl
-	push hl
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	pop de
-	push hl
-	jp .loop
-
-.crash
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	call Func_3aa8
-	ld e, $1
-	xor a
-	call SetStringStartState
-	ld hl, Data_17c44
-	push hl
-	call PlaceString
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-.crash_wait
-	call CheckButton
-	or a
-	jp z, .crash_wait
-	set_farcall_addrs_hli Func_bf431
-	ld hl, -1
-	call FarCall
-	set_farcall_addrs_hli Func_bf431
-	call GetHLAtSPPlus4
-	call FarCall
-	jp @ - 1 ; better luck next time
-
-.done
-	pop bc
-	pop bc
-	ret
-
-Data_17c44: ; 17c44
-	db "ケﾞットハﾞッファー ヌル エラー$" ; GET BUFFER FULL ERROR
-
-Func_17c56: ; 17c56
-	ret
-
-Func_17c57:: ; 17c57 (5:7c57)
-	push hl
-	push bc
-	push bc
-	call GetHLAtSPPlus6
-	ld a, l
-	or h
-	jp z, Func_17d77
-	read_hl_from $c2dc
-	dec hl
-	write_hl_to $c2dc
-	call GetHLAtSPPlus6
-	ld de, hPushOAM + 6
-	add hl, de
-	call WriteHLToSPPlus4
-	call GetHLAtSPPlus4
-	ld a, [hl]
-	cp $aa
-	jp nz, Func_17d77
-	call GetHLAtSPPlus4
-	ld [hl], $55
-	read_hl_from $c2de
-	ld c, l
-	ld b, h
-Func_17c8c: ; 17c8c (5:7c8c)
-	ld a, c
-	or b
-	jp z, Func_17cc9
-	push bc
-	call GetHLAtSPPlus6
-	call WriteHLToSPPlus4
-	call GetHLAtSPPlus6
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	call GetHLAtSPPlus4
-	add hl, bc
-	call WriteHLToSPPlus4
-	call GetHLAtSPPlus4
-	ld de, $5
-	add hl, de
-	call WriteHLToSPPlus4
-	pop bc
-	pop hl
-	push hl
-	ld e, c
-	ld d, b
-	call CompareHLtoDE
-	jp nz, Func_17cbe
-	jp Func_17cc9
-
-Func_17cbe: ; 17cbe (5:7cbe)
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	jp Func_17c8c
-
-Func_17cc9: ; 17cc9 (5:7cc9)
-	ld a, c
-	or b
-	jp z, Func_17cfc
-	ld a, [bc]
-	cp $55
-	jp nz, Func_17cfc
-	push bc
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	call GetHLAtSPPlus6
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	pop hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $5
-	add hl, de
-	push hl
-	call GetHLAtSPPlus6
-	inc hl
-	pop de
-	ld a, [hl]
-	add e
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	adc d
-	ld [hl], a
-Func_17cfc: ; 17cfc (5:7cfc)
-	read_hl_from $c2de
-	ld c, l
-	ld b, h
-Func_17d03: ; 17d03 (5:7d03)
-	ld a, c
-	or b
-	jp z, Func_17d42
-	push bc
-	ld l, c
-	ld h, b
-	call WriteHLToSPPlus4
-	ld l, c
-	ld h, b
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	call GetHLAtSPPlus4
-	add hl, bc
-	call WriteHLToSPPlus4
-	call GetHLAtSPPlus4
-	ld de, $5
-	add hl, de
-	call WriteHLToSPPlus4
-	pop bc
-	call GetHLAtSPPlus4
-	push hl
-	call GetHLAtSPPlus4
-	pop de
-	call CompareHLtoDE
-	jp nz, Func_17d37
-	jp Func_17d42
-
-Func_17d37: ; 17d37 (5:7d37)
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	jp Func_17d03
-
-Func_17d42: ; 17d42 (5:7d42)
-	ld a, c
-	or b
-	jp z, Func_17d77
-	ld a, [bc]
-	cp $55
-	jp nz, Func_17d77
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	call GetHLAtSPPlus4
-	inc hl
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $5
-	add hl, de
-	reg16swap de, hl
-	ld l, c
-	ld h, b
-	inc hl
-	ld a, [hl]
-	add e
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	adc d
-	ld [hl], a
-Func_17d77: ; 17d77 (5:7d77)
-	pop bc
-	pop bc
-	pop bc
-	ret
+INCLUDE "engine/malloc.asm"
 
 Func_17d7b: ; 17d7b
 	push bc
@@ -48588,7 +48147,7 @@ Func_30519: ; 30519 (c:4519)
 	set_farcall_addrs_hli Func_daa40
 	read_hl_from_sp_plus $0b
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop hl
@@ -54145,7 +53704,7 @@ Func_32e6f: ; 32e6f (c:6e6f)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop hl
@@ -54496,7 +54055,7 @@ Func_3312f: ; 3312f (c:712f)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ret
@@ -54593,7 +54152,7 @@ Func_3321d: ; 3321d (c:721d)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	jp Func_332aa
@@ -61125,7 +60684,7 @@ Func_4e6fd: ; 4e6fd (13:66fd)
 	ld hl, $4
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	push hl
 	call FarCall
@@ -64642,7 +64201,7 @@ Func_504e1: ; 504e1 (14:44e1)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ld hl, -1
@@ -64722,7 +64281,7 @@ Func_505dc: ; 505dc (14:45dc)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ret
@@ -65491,7 +65050,7 @@ Func_50af6: ; 50af6 (14:4af6)
 	ld hl, wOAM25VTile
 	add hl, de
 	ld [hl], $0
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	call GetHLAtSPPlus4
 	call FarCall
 	pop hl
@@ -65695,7 +65254,7 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ld hl, $8000
@@ -66419,7 +65978,7 @@ Func_51239: ; 51239 (14:5239)
 	ld a, [hl]
 	cp $ff
 	jp z, Func_51252
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	call GetHLAtSPPlus6
 	call FarCall
 Func_51252: ; 51252 (14:5252)
@@ -66555,7 +66114,7 @@ Func_51385: ; 51385 (14:5385)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ret
@@ -66785,7 +66344,7 @@ Func_514ae: ; 514ae (14:54ae)
 	or b
 	jp z, Func_5153f
 	push hl
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ld hl, $4000
@@ -66818,10 +66377,10 @@ Func_5153f: ; 5153f (14:553f)
 	ld de, $1412
 	ld hl, $0
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop bc
 	pop hl
 	push bc
@@ -66909,7 +66468,7 @@ Func_515fd: ; 515fd (14:55fd)
 	ld bc, $8000
 Func_51644: ; 51644 (14:5644)
 	push bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop bc
 	pop de
 	push bc
@@ -67210,7 +66769,7 @@ Func_518e3: ; 518e3 (14:58e3)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	add sp, $3a
@@ -67947,7 +67506,7 @@ Func_51ea4: ; 51ea4
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -67970,7 +67529,7 @@ Func_51fa4: ; 51fa4 (14:5fa4)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -68036,7 +67595,7 @@ Func_5200b: ; 5200b (14:600b)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -68059,7 +67618,7 @@ Func_5208b: ; 5208b (14:608b)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -68253,7 +67812,7 @@ Func_52287: ; 52287 (14:6287)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -68373,7 +67932,7 @@ Func_523c5: ; 523c5 (14:63c5)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ld hl, sp+$0
@@ -68788,7 +68347,7 @@ Func_5270e: ; 5270e (14:670e)
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $1f
 	call FarCall
 	jp Func_527db
@@ -68813,7 +68372,7 @@ Func_5276c: ; 5276c (14:676c)
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $1f
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -69128,7 +68687,7 @@ Func_52a86: ; 52a86 (14:6a86)
 	ld de, $1412
 	ld hl, $0
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $13
 	call FarCall
 	call Func_1f7b
@@ -69472,7 +69031,7 @@ Func_52cdc: ; 52cdc (14:6cdc)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop bc
@@ -71590,7 +71149,7 @@ Func_53b6e::
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop hl
@@ -74351,7 +73910,7 @@ Func_559c2: ; 559c2 (15:59c2)
 	ld c, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -78956,7 +78515,7 @@ Func_57e30: ; 57e30 (15:7e30)
 
 Func_57e41: ; 57e41 (15:7e41)
 	push hl
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ret
@@ -79395,7 +78954,7 @@ Func_58fce: ; 58fce (16:4fce)
 Func_58fd1: ; 58fd1 (16:4fd1)
 	push af
 	push bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop af
@@ -79860,7 +79419,7 @@ Func_5c2c0: ; 5c2c0 (17:42c0)
 	pop de
 	call CopyFromDEtoHL
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $354
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -83759,7 +83318,7 @@ Func_5dd7d: ; 5dd7d (17:5d7d)
 	ld l, [hl]
 	ld h, a
 	call Func_21ca
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop af
@@ -85544,13 +85103,13 @@ Func_5ec15: ; 5ec15 (17:6c15)
 	call Func_1f7b
 	call Func_2009
 Func_5ec1b: ; 5ec1b (17:6c1b)
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	call GetHLAtSPPlus4
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	call GetHLAtSPPlus6
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	call GetHLAtSPPlus8
 	call FarCall
 	pop hl
@@ -87624,7 +87183,7 @@ Func_610df: ; 610df (18:50df)
 	inc hl
 	ld d, [hl]
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop af
 	push af
 	ld l, a
@@ -90491,7 +90050,7 @@ Func_626ff: ; 626ff (18:66ff)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	call GetHLAtSPPlus10
@@ -93180,7 +92739,7 @@ Data_680c4:
 
 Func_680d3:
 	push hl
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ret
@@ -101879,7 +101438,7 @@ Func_6c2d8: ; 6c2d8 (1b:42d8)
 	ld a, [hl]
 	cp $4
 	jp c, Func_6c304
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	push hl
 	call FarCall
@@ -101901,7 +101460,7 @@ Func_6c304: ; 6c304 (1b:4304)
 	ld a, l
 	or h
 	jp z, Func_6c342
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	push hl
 	call FarCall
@@ -101987,7 +101546,7 @@ Func_6c3a2: ; 6c3a2 (1b:43a2)
 	jp Func_6c304
 
 Func_6c3fe: ; 6c3fe (1b:43fe)
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	push hl
 	call FarCall
@@ -102416,7 +101975,7 @@ Func_6c78d: ; 6c78d (1b:478d)
 	ld bc, $80
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	read_hl_from_sp_plus $15
 	call FarCall
 	read_hl_from_sp_plus $13
@@ -108214,10 +107773,10 @@ Func_6f0f7: ; 6f0f7 (1b:70f7)
 Func_6f1c5: ; 6f1c5 (1b:71c5)
 	push hl
 	push bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ld hl, sp+$c
@@ -108803,7 +108362,7 @@ Func_6f685: ; 6f685 (1b:7685)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	ret
@@ -109042,7 +108601,7 @@ Func_6f906: ; 6f906 (1b:7906)
 	pop de
 Func_6f947: ; 6f947 (1b:7947)
 	push de
-	set_farcall_addrs_hli Func_17c57
+	set_farcall_addrs_hli DeallocateMemory
 	pop hl
 	call FarCall
 	pop bc
