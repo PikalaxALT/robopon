@@ -461,9 +461,11 @@ wMapWidth:: db ; c2d6
 wMapHeight:: db ; c2d7
 wMapX:: db ; c2d8
 wMapY:: db ; c2d9
-	ds $6
+	ds $2
 
-wc2e0:: ds $1 ; c2e0
+wMemoryAllocationNumBlocks:: dw ; c2dc
+wMemoryAllocationPointer:: dw ; c2de
+wMemoryAllocationMode:: ds $1 ; c2e0
 	ds $5
 wc2e6:: ds $2 ; c2e6
 wc2e8:: ds $1 ; c2e8

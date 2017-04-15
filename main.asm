@@ -10849,7 +10849,7 @@ Func_cda9: ; cda9
 	call DisableHBlank
 	xor a
 	ld [rSCX], a
-	ld [wc2e0 + 4], a
+	ld [wMemoryAllocationMode + 4], a
 	ld a, [wLCDC]
 	ld [rLCDC], a
 	ld a, [wNextVBlankFlags]
@@ -10974,7 +10974,7 @@ Func_cea1: ; cea1 (3:4ea1)
 
 Func_ced9: ; ced9
 	ld a, [wBlinkerOffTile]
-	ld [wc2e0 + 4], a
+	ld [wMemoryAllocationMode + 4], a
 	ret
 
 Data_cee0: ; cee0
@@ -11049,7 +11049,7 @@ Func_cf49: ; cf49 (3:4f49)
 	ld [wVBlankCallbackRAMBank], a
 	ld hl, Func_ced9
 	write_hl_to wVBlankCallbackAddress
-	ld a, [wc2e0 + 4]
+	ld a, [wMemoryAllocationMode + 4]
 	ld [wBlinkerOffTile], a
 	ld a, [wNextVBlankFlags]
 	or $80
@@ -11166,15 +11166,15 @@ Func_d030: ; d030
 	ld hl, $a0
 	call WriteHLToSPPlus4
 	ld a, $1
-	ld [wc2e0 + 1], a
+	ld [wMemoryAllocationMode + 1], a
 	ld a, $27
-	ld [wc2e0 + 2], a
+	ld [wMemoryAllocationMode + 2], a
 	ld a, $67
-	ld [wc2e0 + 3], a
+	ld [wMemoryAllocationMode + 3], a
 	xor a
-	ld [wc2e0 + 4], a
+	ld [wMemoryAllocationMode + 4], a
 	xor a
-	ld [wc2e0 + 5], a
+	ld [wMemoryAllocationMode + 5], a
 	ld a, [wLCDC]
 	or $6
 	ld [wLCDC], a
@@ -12832,11 +12832,11 @@ Func_dc2c: ; dc2c (3:5c2c)
 	ld a, $28
 	ld [rLYC], a
 	xor a
-	ld [wc2e0 + 1], a
+	ld [wMemoryAllocationMode + 1], a
 	ld a, $28
-	ld [wc2e0 + 2], a
+	ld [wMemoryAllocationMode + 2], a
 	ld a, $69
-	ld [wc2e0 + 3], a
+	ld [wMemoryAllocationMode + 3], a
 	call EnableHBlank
 	call DelayFrames_NoHalt
 	call WaitVideoTransfer
@@ -32705,13 +32705,13 @@ Func_17a67:: ; 17a67 (5:7a67)
 	inc hl
 	ld [hl], d
 	xor a
-	ld [wc2e0], a
+	ld [wMemoryAllocationMode], a
 	ld hl, $0
-	write_hl_to $c2dc
+	write_hl_to wMemoryAllocationNumBlocks
 	ret
 
 Func_17ab6: ; 17ab6 (5:7ab6)
-	ld [wc2e0], a
+	ld [wMemoryAllocationMode], a
 	ret
 
 INCLUDE "engine/malloc.asm"
@@ -32820,7 +32820,7 @@ Func_17e0c: ; 17e0c (5:7e0c)
 	call SetStringStartState
 	call GetHLAtSPPlus8
 	push hl
-	read_hl_from $c2dc
+	read_hl_from wMemoryAllocationNumBlocks
 	push hl
 	ld hl, Data_17e6c
 	push hl
@@ -63097,11 +63097,11 @@ Func_4fac6: ; 4fac6 (13:7ac6)
 	ld a, $28
 	ld [rLYC], a
 	xor a
-	ld [wc2e0 + 1], a
+	ld [wMemoryAllocationMode + 1], a
 	xor a
-	ld [wc2e0 + 2], a
+	ld [wMemoryAllocationMode + 2], a
 	ld a, $91
-	ld [wc2e0 + 3], a
+	ld [wMemoryAllocationMode + 3], a
 	call EnableHBlank
 	call Func_4fabb
 	call WaitVideoTransfer
@@ -101709,11 +101709,11 @@ Func_6c546:
 	ld a, $28
 	ld [rLYC], a
 	xor a
-	ld [wc2e0 + 1], a
+	ld [wMemoryAllocationMode + 1], a
 	xor a
-	ld [wc2e0 + 2], a
+	ld [wMemoryAllocationMode + 2], a
 	ld a, $91
-	ld [wc2e0 + 3], a
+	ld [wMemoryAllocationMode + 3], a
 	call EnableHBlank
 	call Func_6c011
 	call WaitVideoTransfer
@@ -106324,16 +106324,16 @@ Func_6e6d4: ; 6e6d4 (1b:66d4)
 	or a
 	jp nz, Func_6e6f0
 	ld a, [bc]
-	ld hl, wc2e0 + 5
+	ld hl, wMemoryAllocationMode + 5
 	add [hl]
-	ld [wc2e0 + 5], a
+	ld [wMemoryAllocationMode + 5], a
 	jp Func_6e6f0
 
 Func_6e6e8: ; 6e6e8 (1b:66e8)
 	ld a, [bc]
-	ld hl, wc2e0 + 4
+	ld hl, wMemoryAllocationMode + 4
 	add [hl]
-	ld [wc2e0 + 4], a
+	ld [wMemoryAllocationMode + 4], a
 Func_6e6f0: ; 6e6f0 (1b:66f0)
 	ld a, [de]
 	cp $21
@@ -106419,16 +106419,16 @@ Func_6e75a: ; 6e75a (1b:675a)
 	or a
 	jp nz, Func_6e76c
 	ld a, [bc]
-	ld hl, wc2e0 + 5
+	ld hl, wMemoryAllocationMode + 5
 	add [hl]
-	ld [wc2e0 + 5], a
+	ld [wMemoryAllocationMode + 5], a
 	jp Func_6e774
 
 Func_6e76c: ; 6e76c (1b:676c)
 	ld a, [bc]
-	ld hl, wc2e0 + 4
+	ld hl, wMemoryAllocationMode + 4
 	add [hl]
-	ld [wc2e0 + 4], a
+	ld [wMemoryAllocationMode + 4], a
 Func_6e774: ; 6e774 (1b:6774)
 	ld hl, sp+$4
 	ld l, [hl]
@@ -106530,15 +106530,15 @@ Func_6e81f: ; 6e81f (1b:681f)
 	ld [wNextVBlankFlags], a
 	call Func_6c011
 	ld a, $1
-	ld [wc2e0 + 1], a
+	ld [wMemoryAllocationMode + 1], a
 	ld a, $48
-	ld [wc2e0 + 2], a
+	ld [wMemoryAllocationMode + 2], a
 	ld a, $90
-	ld [wc2e0 + 3], a
+	ld [wMemoryAllocationMode + 3], a
 	xor a
-	ld [wc2e0 + 4], a
+	ld [wMemoryAllocationMode + 4], a
 	xor a
-	ld [wc2e0 + 5], a
+	ld [wMemoryAllocationMode + 5], a
 	call Func_6c011
 	ld a, [wLCDC]
 	or $2
@@ -108841,16 +108841,447 @@ Data_6fb4c:
 INCLUDE "engine/predef.asm"
 
 SECTION "Bank 2f", ROMX, BANK [$2f]
-	dr $bc000, $bd6fa
+	dr $bc000, $bc49b
+
+Func_bc49b: ; bc49b
+	dr $bc49b, $bd6fa
 
 Func_bd6fa:: ; bd6fa
 	dr $bd6fa, $bf214
 
 Func_bf214: ; bf214
-	dr $bf214, $bf431
+	dr $bf214, $bf397
 
-Func_bf431: ; bf431
-	dr $bf431, $bf73b
+Func_bf397: ; bf397
+	dr $bf397, $bf431
+
+Func_bf431: ; bf431 (2f:7431)
+	push hl
+	ld hl, -$148
+	add hl, sp
+	ld sp, hl
+	ld hl, $148
+	add hl, sp
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	push hl
+	ld hl, $0
+	call WriteHLToSPPlus9
+	ld hl, rIE
+	call WriteHLToSPPlus7
+	ld hl, sp+$4
+	ld a, [wBGP]
+	ld [hl], a
+	pop hl
+	ld a, l
+	and h
+	inc a
+	jp nz, Func_bf599
+	read_hl_from wMemoryAllocationPointer
+	pop de
+	push hl
+Func_bf460: ; bf460 (2f:7460)
+	pop hl
+	push hl
+	ld a, l
+	or h
+	jp z, Func_bf583
+	ld hl, sp+$7
+	ld [hl], $0
+	pop hl
+	push hl
+	ld a, [hl]
+	cp $aa
+	jp z, Func_bf4d8
+	pop hl
+	push hl
+	ld a, [hl]
+	cp $55
+	jp z, Func_bf4d8
+Func_bf47b: ; bf47b (2f:747b)
+	call Func_3aa8
+	ld a, $1
+	ld [wFarCallDestBank], a
+	ld bc, $800
+	ld de, GFX_4122
+	ld hl, $9000
+	call FarRequestVideoData
+	ld e, $1
+	xor a
+	call SetStringStartState
+	call GetHLAtSPPlus7
+	push hl
+	ld hl, Data_bf707
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	ld e, $3
+	xor a
+	call SetStringStartState
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bf714
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	ld e, $5
+	xor a
+	call SetStringStartState
+	pop hl
+	push hl
+	push hl
+	ld hl, Data_bf71b
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+Func_bf4d5: ; bf4d5 (2f:74d5)
+	jp Func_bf4d5
+
+Func_bf4d8: ; bf4d8 (2f:74d8)
+	ld hl, sp+$7
+	ld [hl], $1
+	pop hl
+	push hl
+	ld a, l
+	sub $0
+	ld a, h
+	sbc $a0
+	jp c, Func_bf4f4
+	pop hl
+	push hl
+	xor a
+	sub l
+	ld a, $c0
+	sbc h
+	jp c, Func_bf4f4
+	jp Func_bf517
+
+Func_bf4f4: ; bf4f4 (2f:74f4)
+	ld hl, sp+$7
+	ld [hl], $2
+	pop hl
+	push hl
+	ld a, l
+	sub $0
+	ld a, h
+	sbc $ce
+	jp c, Func_bf510
+	pop hl
+	push hl
+	xor a
+	sub l
+	ld a, $d8
+	sbc h
+	jp c, Func_bf510
+	jp Func_bf517
+
+Func_bf510: ; bf510 (2f:7510)
+	ld hl, sp+$7
+	ld [hl], $3
+	jp Func_bf47b
+
+Func_bf517: ; bf517 (2f:7517)
+	ld hl, sp+$7
+	ld [hl], $4
+	call GetHLAtSPPlus5
+	ld a, l
+	and h
+	inc a
+	jp z, Func_bf535
+	pop hl
+	push hl
+	push hl
+	call GetHLAtSPPlus7
+	pop de
+	ld a, l
+	sub e
+	ld a, h
+	sbc d
+	jp c, Func_bf535
+	jp Func_bf47b
+
+Func_bf535: ; bf535 (2f:7535)
+	pop hl
+	push hl
+	call WriteHLToSPPlus5
+	pop hl
+	push hl
+	ld a, [hl]
+	cp $55
+	jp nz, Func_bf55b
+	pop hl
+	push hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus7
+	call CompareHLtoBC
+	jp nc, Func_bf55b
+	pop hl
+	push hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus7
+Func_bf55b: ; bf55b (2f:755b)
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, e
+	cp $2
+	jp nz, Func_bf575
+	ld a, d
+	cp $a0
+	jp nz, Func_bf575
+	ld hl, -1
+	call WriteHLToSPPlus5
+Func_bf575: ; bf575 (2f:7575)
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	pop de
+	push hl
+	jp Func_bf460
+
+Func_bf583: ; bf583 (2f:7583)
+	ld hl, sp+$7
+	ld [hl], $5
+	call GetHLAtSPPlus7
+	ld de, $400
+	call CompareHLtoDE
+	jp nc, Func_bf596
+	jp Func_bf47b
+
+Func_bf596: ; bf596 (2f:7596)
+	jp Func_bf701
+
+Func_bf599: ; bf599 (2f:7599)
+	push hl
+	ld a, [rLCDC]
+	ld [wLCDC], a
+	ld c, a
+	push bc
+	ld a, [wLCDC]
+	or $81
+	ld [wLCDC], a
+	ld a, [wLCDC]
+	ld [rLCDC], a
+	ld a, c
+	and $8
+	jp nz, Func_bf5b8
+	xor a
+	jp Func_bf5ba
+
+Func_bf5b8: ; bf5b8 (2f:75b8)
+	ld a, $1
+Func_bf5ba: ; bf5ba (2f:75ba)
+	push af
+	ld hl, sp+$e
+	ld a, [rIE]
+	ld [hl], a
+	ld a, [rIE]
+	and $fd
+	ld [rIE], a
+	ld a, [rIE]
+	or $1
+	ld [rIE], a
+	ld a, [hSRAMBank]
+	ld e, a
+	push de
+	ld a, $3
+	call GetSRAMBank
+	ld bc, $a0
+	ld de, wOAMBuffer2
+	ld hl, $b1
+	add hl, sp
+	call CopyFromDEtoHL
+	call ClearSprites
+	ld a, $e8
+	ld [wBGP], a
+	ld a, [wNextVBlankFlags]
+	or $22
+	ld [wNextVBlankFlags], a
+	call Func_bc49b
+	ld bc, $50
+	ld de, wOAMBuffer2End
+	ld hl, sp+$61
+	call CopyFromDEtoHL
+	set_farcall_addrs_hli Func_62a3
+	pop de
+	pop af
+	push de
+	push af
+	ld l, a
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	ld de, $1303
+	ld bc, $0
+	call FarCall
+	call WaitVideoTransfer
+	ld bc, $50
+	decoord 0, 0
+	ld hl, sp+$11
+	call CopyFromDEtoHL
+	ld bc, $50
+	ld e, $8f
+	hlcoord 0, 0
+	call FillMemory
+	ld e, $1
+	xor a
+	call SetStringStartState
+	pop af
+	pop de
+	pop bc
+	pop hl
+	push bc
+	push de
+	push af
+	push hl
+	ld hl, Data_bf724
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	call Func_bf397
+	push hl
+	ld e, $3
+	xor a
+	call SetStringStartState
+	pop hl
+	push hl
+	ld hl, Data_bf730
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	set_farcall_addrs_hli Func_62a3
+	pop af
+	push af
+	ld l, a
+	ld h, $0
+	inc h
+	inc h
+	ld de, $1303
+	ld bc, $0
+	call FarCall
+Func_bf680: ; bf680 (2f:7680)
+	call CheckButton
+	and $30
+	jp z, Func_bf680
+	ld bc, $50
+	ld hl, sp+$f
+	push de
+	push hl
+	pop de
+	pop hl
+	hlcoord 0, 0
+	call CopyFromDEtoHL
+	set_farcall_addrs_hli Func_62a3
+	pop af
+	ld l, a
+	ld h, $0
+	inc h
+	inc h
+	ld de, $1303
+	ld bc, $0
+	call FarCall
+	call WaitVideoTransfer
+	ld bc, $50
+	ld hl, sp+$5d
+	push de
+	push hl
+	pop de
+	pop hl
+	hlcoord 0, 0
+	call CopyFromDEtoHL
+	ld bc, $a0
+	ld hl, $ad
+	add hl, sp
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, wOAM2_00YCoord
+	call CopyFromDEtoHL
+	ld hl, sp+$6
+	ld a, [hl]
+	ld [wBGP], a
+	ld a, [wNextVBlankFlags]
+	or $22
+	ld [wNextVBlankFlags], a
+	call Func_bc49b
+	pop de
+	ld a, e
+	call GetSRAMBank
+	pop bc
+	ld a, c
+	ld [rLCDC], a
+	ld [wLCDC], a
+	ld hl, sp+$8
+	ld a, [hl]
+	ld [rIE], a
+	set_farcall_addrs_hli AllocateMemory
+Func_bf701: ; bf701 (2f:7701)
+	ld hl, $14a
+	add hl, sp
+	ld sp, hl
+	ret
+
+Data_bf707:
+	db "ハﾞッファ エラー:"
+	TX_SNUM
+	db "$"
+
+Data_bf714:
+	db "エラー:"
+	TX_SNUM
+	db "$"
+
+Data_bf71b:
+	db "アトﾞレス:"
+	TX_SNUM
+	db "$"
+
+Data_bf724:
+	db "ケﾞットサイスﾞ:"
+	TX_SNUM
+	db "$"
+
+Data_bf730:
+	db "ノコリサイスﾞ:"
+	TX_SNUM
+	db "$"
 
 SECTION "Bank 30", ROMX, BANK [$30]
 GFX_c0000: ; c0000

@@ -10,6 +10,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	jp .done
 
 .okay
+	; round size up to nearest 16
 	call GetHLAtSPPlus4
 	ld de, $f
 	add hl, de
@@ -29,7 +30,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	ld a, l
 	or h
 	jp z, .crash
-	ld a, [wc2e0]
+	ld a, [wMemoryAllocationMode]
 	cp $1
 	jp nz, .okay2
 	pop hl
@@ -42,7 +43,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	jp .next
 
 .okay2
-	ld a, [wc2e0]
+	ld a, [wMemoryAllocationMode]
 	cp $2
 	jp nz, .okay_3
 	pop hl
@@ -103,7 +104,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	ld a, b
 	sbc h
 	ld h, a
-	ld de, hPushOAM + 6
+	ld de, -5
 	add hl, de
 	ld c, l
 	ld b, h
@@ -177,9 +178,9 @@ AllocateMemory:: ; 17aba (5:7aba)
 	push hl
 	ld [hl], $aa
 .finish
-	read_hl_from $c2dc
+	read_hl_from wMemoryAllocationNumBlocks
 	inc hl
-	write_hl_to $c2dc
+	write_hl_to wMemoryAllocationNumBlocks
 	pop hl
 	push hl
 	ld de, $5
@@ -254,9 +255,9 @@ DeallocateMemory:: ; 17c57 (5:7c57)
 	ld a, l
 	or h
 	jp z, Func_17d77
-	read_hl_from $c2dc
+	read_hl_from wMemoryAllocationNumBlocks
 	dec hl
-	write_hl_to $c2dc
+	write_hl_to wMemoryAllocationNumBlocks
 	call GetHLAtSPPlus6
 	ld de, hPushOAM + 6
 	add hl, de
