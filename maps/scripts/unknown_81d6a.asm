@@ -35,10 +35,10 @@ Func_81d6a:
 	cp $3
 	jp nz, Func_81df9
 Func_81d95: ; 81d95 (20:5d95)
-	ld a, [$c7df]
+	ld a, [wBackupMapGroup]
 	cp $1a
 	jp nz, Func_81db2
-	ld a, [$c7e0]
+	ld a, [wBackupMapNumber]
 	or a
 	jp nz, Func_81db2
 	ld e, $1

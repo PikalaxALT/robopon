@@ -133,6 +133,7 @@ def compress(infile, outfile, length=0x4000, print_dump=False):
                          'Given size %d, got size %d' %
                          (len(source_data), written_length))
     outfile.write(bytes(output))
+    outfile.flush()
 
 
 def decompress(infile, outfile, start=0, length=0x4000, print_dump=False):
@@ -212,6 +213,7 @@ def decompress(infile, outfile, start=0, length=0x4000, print_dump=False):
                          'Expected size %d, got %d' % 
                          (length, len(unpacked)))
     outfile.write(bytes(unpacked))
+    outfile.flush()
     return infile.tell() - start - (bitmask == 0x80)
 
 if __name__ == '__main__':

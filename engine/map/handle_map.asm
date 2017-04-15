@@ -307,25 +307,25 @@ Func_930d: ; 930d (2:530d)
 	call FarCall
 Func_9371: ; 9371 (2:5371)
 	ld hl, sp+$c
-	ld a, [$c7e7]
+	ld a, [wSpawnX]
 	ld [hl], a
 	ld hl, sp+$d
-	ld a, [$c7e8]
+	ld a, [wSpawnY]
 	ld [hl], a
 	ld hl, sp+$e
-	ld a, [$c7e9]
+	ld a, [wc7e9]
 	ld [hl], a
 	ld hl, sp+$f
-	ld a, [$c7ea]
+	ld a, [wc7ea]
 	ld [hl], a
 	ld a, [wPlayerMapX]
-	ld [$c7e7], a
+	ld [wSpawnX], a
 	ld a, [wPlayerMapY]
-	ld [$c7e8], a
+	ld [wSpawnY], a
 	ld a, [wPlayerMapX]
-	ld [$c7e9], a
+	ld [wc7e9], a
 	ld a, [wPlayerMapY]
-	ld [$c7ea], a
+	ld [wc7ea], a
 	callba_hli Func_14675
 	pop de
 	ld a, [$c84a]
@@ -360,7 +360,7 @@ Func_93c0: ; 93c0 (2:53c0)
 	jp Func_9413
 
 Func_93e7: ; 93e7 (2:53e7)
-	call Func_ad56
+	call CheckWarpTile
 	cp $1
 	jp nz, Func_93f2
 	jp Func_9413

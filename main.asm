@@ -5207,12 +5207,12 @@ Func_8d0c: ; 8d0c (2:4d0c)
 	pop bc
 	ret
 
-Func_8d2a: ; 8d2a (2:4d2a)
+LoadBlockData: ; 8d2a (2:4d2a)
 	push bc
 	push bc
 	push bc
 	push af
-	ld a, BANK(GFX_28000)
+	ld a, BANK(BlockDataHeaders)
 	ld [wFarCallDestBank], a
 	pop af
 	push af
@@ -5223,7 +5223,7 @@ Func_8d2a: ; 8d2a (2:4d2a)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, GFX_28000
+	ld de, BlockDataHeaders
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -5247,7 +5247,7 @@ Func_8d2a: ; 8d2a (2:4d2a)
 	write_hl_to $c828
 	ld hl, sp+$4
 	ld a, [hl]
-	add BANK(GFX_28000)
+	add BANK(BlockDataHeaders)
 	ld [wFarCallDestBank], a
 	pop hl
 	push hl
@@ -5336,7 +5336,7 @@ macro_8df1: MACRO
 	macro_8df1 $c82a
 	macro_8df1 $c82c
 	macro_8df1 $c82e
-	macro_8df1 wMapObjectsPointer
+	macro_8df1 wWarpDataPointer
 	macro_8df1 $c778
 	macro_8df1 wObjectStructPointer
 	macro_8df1 wc776
@@ -7482,17 +7482,17 @@ INCLUDE "engine/map/text.asm"
 
 Func_aca6:: ; aca6 (2:6ca6)
 	xor a
-	ld [wNumObjectsInMap], a
-	read_hl_from wMapObjectsPointer
+	ld [wNumWarps], a
+	read_hl_from wWarpDataPointer
 	ld a, l
 	or h
 	jp z, Func_acbc
-	read_hl_from wMapObjectsPointer
+	read_hl_from wWarpDataPointer
 	call Func_be5d
 Func_acbc: ; acbc (2:6cbc)
 	ld hl, $dc
 	call Func_be4d
-	write_hl_to wMapObjectsPointer
+	write_hl_to wWarpDataPointer
 	ret
 
 LoadMapObject:: ; acc8
@@ -7559,7 +7559,7 @@ LoadMapObject:: ; acc8
 .done
 	call GetHLAtSPPlus4
 	push hl
-	ld hl, wNumObjectsInMap
+	ld hl, wNumWarps
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -7572,36 +7572,36 @@ LoadMapObject:: ; acc8
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from wMapObjectsPointer
+	read_hl_from wWarpDataPointer
 	add hl, de
 	pop de
 	ld bc, $b
 	call CopyFromDEtoHL
-	ld a, [wNumObjectsInMap]
+	ld a, [wNumWarps]
 	inc a
-	ld [wNumObjectsInMap], a
+	ld [wNumWarps], a
 	pop bc
 	pop bc
 	ret
 
-Func_ad56: ; ad56 (2:6d56)
+CheckWarpTile: ; ad56 (2:6d56)
 	read_hl_from wPlayerStandingTileOffset
 	reg16swap de, hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
 	ld a, [hl]
 	and $80
-	jp nz, Func_ad6d
+	jp nz, .getWarp
 	xor a
 	ret
 
-Func_ad6d: ; ad6d (2:6d6d)
+.getWarp: ; ad6d (2:6d6d)
 	ld c, $0
-Func_ad6f: ; ad6f (2:6d6f)
+.loop: ; ad6f (2:6d6f)
 	ld a, c
-	ld hl, wNumObjectsInMap
+	ld hl, wNumWarps
 	cp [hl]
-	jp nc, Func_ae3b
+	jp nc, .noWarp
 	push bc
 	ld l, c
 	ld h, $0
@@ -7615,76 +7615,76 @@ Func_ad6f: ; ad6f (2:6d6f)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from wMapObjectsPointer
+	read_hl_from wWarpDataPointer
 	add hl, de
 	reg16swap de, hl
 	ld a, [de]
-	ld [$c861], a
+	ld [wCurWarpMinX], a
 	ld l, e
 	ld h, d
 	inc hl
 	ld a, [hl]
-	ld [$c862], a
+	ld [wCurWarpMinY], a
 	ld l, e
 	ld h, d
 	inc hl
 	inc hl
 	ld a, [hl]
-	ld [$c863], a
+	ld [wCurWarpHDim], a
 	ld l, e
 	ld h, d
 	inc hl
 	inc hl
 	inc hl
 	ld a, [hl]
-	ld [$c864], a
+	ld [wCurWarpVDim], a
 	pop bc
 	ld a, [wPlayerMapX]
-	ld hl, $c861
+	ld hl, wCurWarpMinX
 	cp [hl]
-	jp c, Func_ae37
-	ld a, [$c861]
-	ld hl, $c863
+	jp c, .nextWarp
+	ld a, [wCurWarpMinX]
+	ld hl, wCurWarpHDim
 	add [hl]
 	ld l, a
 	ld a, [wPlayerMapX]
 	cp l
-	jp nc, Func_ae37
+	jp nc, .nextWarp
 	ld a, [wPlayerMapY]
-	ld hl, $c862
+	ld hl, wCurWarpMinY
 	cp [hl]
-	jp c, Func_ae37
-	ld a, [$c862]
-	ld hl, $c864
+	jp c, .nextWarp
+	ld a, [wCurWarpMinY]
+	ld hl, wCurWarpVDim
 	add [hl]
 	ld l, a
 	ld a, [wPlayerMapY]
 	cp l
-	jp nc, Func_ae37
-	ld a, [$c7eb]
-	ld [$c7df], a
-	ld a, [$c7ec]
-	ld [$c7e0], a
+	jp nc, .nextWarp
+	ld a, [wMapGroup]
+	ld [wBackupMapGroup], a
+	ld a, [wMapNumber]
+	ld [wBackupMapNumber], a
 	ld a, [wPlayerMapX]
-	ld [$c7db], a
+	ld [wBackupMapX], a
 	ld a, [wPlayerMapY]
-	ld [$c7dc], a
+	ld [wBackupMapY], a
 	ld hl, $6
 	add hl, de
 	ld a, [hl]
-	ld [$c7e7], a
+	ld [wSpawnX], a
 	ld hl, $7
 	add hl, de
 	ld a, [hl]
-	ld [$c7e8], a
+	ld [wSpawnY], a
 	ld hl, $8
 	add hl, de
 	ld a, [hl]
-	ld [$c7e9], a
+	ld [wc7e9], a
 	ld hl, $9
 	add hl, de
 	ld a, [hl]
-	ld [$c7ea], a
+	ld [wc7ea], a
 	ld l, e
 	ld h, d
 	inc hl
@@ -7692,11 +7692,11 @@ Func_ad6f: ; ad6f (2:6d6f)
 	inc hl
 	inc hl
 	ld a, [hl]
-	ld [$c7eb], a
+	ld [wMapGroup], a
 	ld hl, $5
 	add hl, de
 	ld a, [hl]
-	ld [$c7ec], a
+	ld [wMapNumber], a
 	ld a, $2e
 	call OverworldPlaySFX
 	xor a
@@ -7704,11 +7704,11 @@ Func_ad6f: ; ad6f (2:6d6f)
 	ld a, $1
 	ret
 
-Func_ae37: ; ae37 (2:6e37)
+.nextWarp: ; ae37 (2:6e37)
 	inc c
-	jp Func_ad6f
+	jp .loop
 
-Func_ae3b: ; ae3b (2:6e3b)
+.noWarp: ; ae3b (2:6e3b)
 	xor a
 	ret
 
@@ -7806,16 +7806,16 @@ Func_aeaa: ; aeaa (2:6eaa)
 	write_hl_to wPlayerStandingTileOffset
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [$c7e9], a
+	ld [wc7e9], a
 	ld hl, sp+$0
 	ld a, [hl]
-	ld [$c7ea], a
+	ld [wc7ea], a
 Func_aef5: ; aef5 (2:6ef5)
 	ld hl, sp+$3
-	ld a, [$c7e9]
+	ld a, [wc7e9]
 	ld [hl], a
 	ld hl, sp+$4
-	ld a, [$c7ea]
+	ld a, [wc7ea]
 	ld [hl], a
 	ld hl, sp+$6
 	ld a, $ff
@@ -7874,25 +7874,25 @@ Func_af7a:: ; af7a
 	pop de
 	push af
 	ld c, d
-	ld a, [$c7eb]
-	ld [$c7df], a
-	ld a, [$c7ec]
-	ld [$c7e0], a
+	ld a, [wMapGroup]
+	ld [wBackupMapGroup], a
+	ld a, [wMapNumber]
+	ld [wBackupMapNumber], a
 	ld a, [wPlayerMapX]
-	ld [$c7db], a
+	ld [wBackupMapX], a
 	ld a, [wPlayerMapY]
-	ld [$c7dc], a
+	ld [wBackupMapY], a
 	ld a, c
-	ld [$c7e9], a
-	ld [$c7e7], a
+	ld [wc7e9], a
+	ld [wSpawnX], a
 	ld a, e
-	ld [$c7ea], a
-	ld [$c7e8], a
+	ld [wc7ea], a
+	ld [wSpawnY], a
 	ld hl, sp+$2
 	ld a, [hl]
-	ld [$c7eb], a
+	ld [wMapGroup], a
 	pop af
-	ld [$c7ec], a
+	ld [wMapNumber], a
 	ld a, c
 	add $fb
 	ld [wMapX], a
@@ -8736,12 +8736,13 @@ Func_b52c:: ; b52c (2:752c)
 	ld [$c841], a
 	ret
 
-Func_b530:: ; b530 (2:7530)
+SpawnPlayerAt:: ; b530 (2:7530)
+; spawn player at (a, e)
 	push af
-	add $fb
+	add -5
 	ld [wMapX], a
 	ld a, e
-	add $fc
+	add -4
 	ld [wMapY], a
 	pop af
 	ld [wPlayerMapX], a
@@ -25517,7 +25518,7 @@ Func_1433a: ; 1433a (5:433a)
 	jp Func_14366
 
 Func_1433d: ; 1433d (5:433d)
-	ld a, [$c7df]
+	ld a, [wBackupMapGroup]
 	or a
 	jp nz, Func_14352
 	ld hl, $c78c
@@ -48137,13 +48138,6 @@ Func_27780: ; 27780 (9:7780)
 	pop bc
 	ret
 
-SECTION "Bank 0a", ROMX, BANK [$0a]
-GFX_28000: ; 28000
-	dr $28000, $2bfe4
-
-SECTION "Bank 0b", ROMX, BANK [$0b]
-	dr $2c000, $2eeb2
-
 SECTION "Bank 0c", ROMX [$4000], BANK [$0c]
 Func_30000: ; 30000
 	ret
@@ -56608,13 +56602,13 @@ Func_4c2a3: ; 4c2a3 (13:42a3)
 	or h
 	jp nz, Func_4c304
 	ld a, [wPlayerMapX]
-	ld [$c7e7], a
+	ld [wSpawnX], a
 	ld a, [wPlayerMapY]
-	ld [$c7e8], a
+	ld [wSpawnY], a
 	ld a, [wPlayerMapX]
-	ld [$c7e9], a
+	ld [wc7e9], a
 	ld a, [wPlayerMapY]
-	ld [$c7ea], a
+	ld [wc7ea], a
 	callba_hli Func_56d9b
 Func_4c304: ; 4c304 (13:4304)
 	pop hl
@@ -62279,10 +62273,10 @@ Func_4ef35: ; 4ef35
 	push af
 	add sp, -$1e
 	ld l, $0
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $16
 	jp nz, Func_4f01a
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	or a
 	jp nz, Func_4f01a
 	ld a, [wMapX]
@@ -62393,10 +62387,10 @@ Func_4f04d: ; 4f04d
 	push af
 	add sp, -$1e
 	ld l, $0
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $1d
 	jp nz, Func_4f076
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1
 	jp nz, Func_4f076
 	ld a, [wMapX]
@@ -62502,10 +62496,10 @@ Func_4f139: ; 4f139
 	cp $2b
 	jp nz, Func_4f437
 Func_4f160: ; 4f160 (13:7160)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $1
 	jp nz, Func_4f195
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	or a
 	jp nz, Func_4f195
 	ld a, [wMapX]
@@ -62527,10 +62521,10 @@ Func_4f195: ; 4f195 (13:7195)
 	jp Func_4f437
 
 Func_4f198: ; 4f198 (13:7198)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $13
 	jp nz, Func_4f1eb
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $27
 	jp nz, Func_4f1eb
 	ld a, [wMapX]
@@ -62567,10 +62561,10 @@ Func_4f1eb: ; 4f1eb (13:71eb)
 	jp Func_4f437
 
 Func_4f1ee: ; 4f1ee (13:71ee)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $19
 	jp nz, Func_4f210
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $a
 	jp nz, Func_4f210
 	ld a, [wMapX]
@@ -62584,7 +62578,7 @@ Func_4f210: ; 4f210 (13:7210)
 	jp Func_4f437
 
 Func_4f213: ; 4f213 (13:7213)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $1e
 	jp z, Func_4f423
 	cp $1d
@@ -62611,10 +62605,10 @@ Func_4f213: ; 4f213 (13:7213)
 	jp z, Func_4f26e
 	cp $3
 	jp nz, Func_4f437
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $a
 	jp c, Func_4f26b
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $10
 	jp nc, Func_4f26b
 	ld c, $0
@@ -62623,7 +62617,7 @@ Func_4f26b: ; 4f26b (13:726b)
 	jp Func_4f437
 
 Func_4f26e: ; 4f26e (13:726e)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1
 	jp nz, Func_4f27a
 	ld c, $1
@@ -62632,10 +62626,10 @@ Func_4f27a: ; 4f27a (13:727a)
 	jp Func_4f437
 
 Func_4f27d: ; 4f27d (13:727d)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $14
 	jp c, Func_4f294
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $16
 	jp nc, Func_4f294
 	ld c, $2
@@ -62643,10 +62637,10 @@ Func_4f27d: ; 4f27d (13:727d)
 	jp Func_4f2a8
 
 Func_4f294: ; 4f294 (13:7294)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1e
 	jp c, Func_4f2a8
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $25
 	jp nc, Func_4f2a8
 	ld c, $3
@@ -62655,13 +62649,13 @@ Func_4f2a8: ; 4f2a8 (13:72a8)
 	jp Func_4f437
 
 Func_4f2ab: ; 4f2ab (13:72ab)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1
 	jp nz, Func_4f2d2
-	ld a, [$c7e0]
+	ld a, [wBackupMapNumber]
 	or a
 	jp nz, Func_4f2d2
-	ld a, [$c7df]
+	ld a, [wBackupMapGroup]
 	cp $8
 	jp z, Func_4f2ce
 	cp $6
@@ -62677,7 +62671,7 @@ Func_4f2d2: ; 4f2d2 (13:72d2)
 	jp Func_4f437
 
 Func_4f2d5: ; 4f2d5 (13:72d5)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $3
 	jp z, Func_4f2ee
 	cp $2
@@ -62695,10 +62689,10 @@ Func_4f2f2: ; 4f2f2 (13:72f2)
 	jp Func_4f437
 
 Func_4f2f5: ; 4f2f5 (13:72f5)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $a
 	jp c, Func_4f309
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $13
 	jp nc, Func_4f309
 	ld c, $11
@@ -62707,20 +62701,20 @@ Func_4f309: ; 4f309 (13:7309)
 	jp Func_4f437
 
 Func_4f30c: ; 4f30c (13:730c)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $b
 	jp z, Func_4f334
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1e
 	jp c, Func_4f324
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $22
 	jp c, Func_4f334
 Func_4f324: ; 4f324 (13:7324)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $25
 	jp c, Func_4f33b
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $28
 	jp nc, Func_4f33b
 Func_4f334: ; 4f334 (13:7334)
@@ -62729,22 +62723,22 @@ Func_4f334: ; 4f334 (13:7334)
 	jp Func_4f36f
 
 Func_4f33b: ; 4f33b (13:733b)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $2
 	jp z, Func_4f36b
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $3
 	jp z, Func_4f36b
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $a
 	jp z, Func_4f36b
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $14
 	jp z, Func_4f36b
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $16
 	jp z, Func_4f36b
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $28
 	jp nz, Func_4f36f
 Func_4f36b: ; 4f36b (13:736b)
@@ -62754,17 +62748,17 @@ Func_4f36f: ; 4f36f (13:736f)
 	jp Func_4f437
 
 Func_4f372: ; 4f372 (13:7372)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $a
 	jp c, Func_4f382
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $f
 	jp c, Func_4f392
 Func_4f382: ; 4f382 (13:7382)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $14
 	jp c, Func_4f396
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1a
 	jp nc, Func_4f396
 Func_4f392: ; 4f392 (13:7392)
@@ -62774,10 +62768,10 @@ Func_4f396: ; 4f396 (13:7396)
 	jp Func_4f437
 
 Func_4f399: ; 4f399 (13:7399)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $a
 	jp c, Func_4f3ad
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $17
 	jp nc, Func_4f3ad
 	ld c, $8
@@ -62786,10 +62780,10 @@ Func_4f3ad: ; 4f3ad (13:73ad)
 	jp Func_4f437
 
 Func_4f3b0: ; 4f3b0 (13:73b0)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $2
 	jp c, Func_4f3c4
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $6
 	jp nc, Func_4f3c4
 	ld c, $9
@@ -62798,10 +62792,10 @@ Func_4f3c4: ; 4f3c4 (13:73c4)
 	jp Func_4f437
 
 Func_4f3c7: ; 4f3c7 (13:73c7)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1
 	jp c, Func_4f3db
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $c
 	jp nc, Func_4f3db
 	ld c, $a
@@ -62810,10 +62804,10 @@ Func_4f3db: ; 4f3db (13:73db)
 	jp Func_4f437
 
 Func_4f3de: ; 4f3de (13:73de)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $a
 	jp c, Func_4f3f5
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $f
 	jp nc, Func_4f3f5
 	ld c, $b
@@ -62821,10 +62815,10 @@ Func_4f3de: ; 4f3de (13:73de)
 	jp Func_4f420
 
 Func_4f3f5: ; 4f3f5 (13:73f5)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $14
 	jp c, Func_4f40c
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $19
 	jp nc, Func_4f40c
 	ld c, $f
@@ -62832,10 +62826,10 @@ Func_4f3f5: ; 4f3f5 (13:73f5)
 	jp Func_4f420
 
 Func_4f40c: ; 4f40c (13:740c)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1e
 	jp c, Func_4f420
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $23
 	jp nc, Func_4f420
 	ld c, $10
@@ -62844,10 +62838,10 @@ Func_4f420: ; 4f420 (13:7420)
 	jp Func_4f437
 
 Func_4f423: ; 4f423 (13:7423)
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $4
 	jp c, Func_4f437
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $e
 	jp nc, Func_4f437
 	ld c, $c
@@ -66112,10 +66106,10 @@ Func_50fa8: ; 50fa8 (14:4fa8)
 	ld a, l
 	cp $1f
 	jp nz, Func_51006
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $9
 	jp nz, Func_51003
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	or a
 	jp nz, Func_51003
 	set_farcall_addrs_hli Func_6ab29
@@ -66156,17 +66150,17 @@ Func_5100d: ; 5100d (14:500d)
 	cp $7e
 	jp nz, Func_510e3
 Func_5101f: ; 5101f (14:501f)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $9
 	jp nz, Func_5102e
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	or a
 	jp z, Func_5103d
 Func_5102e: ; 5102e (14:502e)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $1b
 	jp nz, Func_510e0
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	or a
 	jp nz, Func_510e0
 Func_5103d: ; 5103d (14:503d)
@@ -66268,35 +66262,35 @@ Func_510ea: ; 510ea (14:50ea)
 	cp $64
 	jp nz, Func_5122e
 Func_51102: ; 51102 (14:5102)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $1e
 	jp nz, Func_51111
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	or a
 	jp z, Func_51149
 Func_51111: ; 51111 (14:5111)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $1e
 	jp nz, Func_51121
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $1
 	jp z, Func_51149
 Func_51121: ; 51121 (14:5121)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $1e
 	jp nz, Func_51131
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $2
 	jp z, Func_51149
 Func_51131: ; 51131 (14:5131)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $1e
 	jp nz, Func_51141
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	cp $3
 	jp z, Func_51149
 Func_51141: ; 51141 (14:5141)
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $c
 	jp nz, Func_51227
 Func_51149: ; 51149 (14:5149)

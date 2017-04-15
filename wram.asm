@@ -580,8 +580,8 @@ wObjectStructPointer:: dw ; c774
 wc776:: dw ; c776
 	ds $2
 
-wMapObjectsPointer:: dw ; c77a
-wNumObjectsInMap:: db ; c77c
+wWarpDataPointer:: dw ; c77a
+wNumWarps:: db ; c77c
 	ds $4
 
 wRandomEncounterRate:: db ; c781
@@ -590,8 +590,21 @@ wRandomEncounterCooldown:: db ; c783
 	ds $3a
 
 wMapMusic:: db ; c7be
-	ds $2e
+	ds $1c
 
+wBackupMapX:: db ; c7db
+wBackupMapY:: db ; c7dc
+	ds $2
+wBackupMapGroup:: db ; c7df
+wBackupMapNumber:: db ; c7e0
+	ds $6
+
+wSpawnX:: db ; c7e7
+wSpawnY:: db ; c7e8
+wc7e9:: db ; c7e9
+wc7ea:: db ; c7ea
+wMapGroup:: db ; c7eb
+wMapNumber:: db ; c7ec
 wEventFlags:: ; c7ed
 	ds $43
 
@@ -607,7 +620,10 @@ wc852:: dw ; c852
 
 wPlayerMapX:: db ; c85f
 wPlayerMapY:: db ; c860
-	ds 4
+wCurWarpMinX:: db ; c861
+wCurWarpMinY:: db ; c862
+wCurWarpHDim:: db ; c863
+wCurWarpVDim:: db ; c864
 wPlayerStandingTileOffset:: dw ; c865
 	ds $15
 wPlayerMovementRate:: db ; c87c

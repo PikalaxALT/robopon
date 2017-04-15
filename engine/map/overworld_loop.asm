@@ -63,18 +63,18 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, $1
 	call FarCall
 	ld a, $ff
-	ld [$c7e0], a
-	ld [$c7df], a
+	ld [wBackupMapNumber], a
+	ld [wBackupMapGroup], a
 	ld a, $3
-	ld [$c7e9], a
-	ld [$c7e7], a
+	ld [wc7e9], a
+	ld [wSpawnX], a
 	ld a, $5
-	ld [$c7ea], a
-	ld [$c7e8], a
+	ld [wc7ea], a
+	ld [wSpawnY], a
 	xor a
-	ld [$c7eb], a
+	ld [wMapGroup], a
 	ld a, $2
-	ld [$c7ec], a
+	ld [wMapNumber], a
 	callba_hli Func_4fef1
 	callba_hli Func_93c0c
 	jp .continue
@@ -127,23 +127,23 @@ OverworldLoop: ; 81cf (2:41cf)
 	xor a
 	ld [wOAM06YCoord], a
 	ld a, $ff
-	ld [$c7e0], a
-	ld [$c7df], a
+	ld [wBackupMapNumber], a
+	ld [wBackupMapGroup], a
 	ld a, $3
-	ld [$c7e9], a
-	ld [$c7e7], a
+	ld [wc7e9], a
+	ld [wSpawnX], a
 	ld a, $5
-	ld [$c7ea], a
-	ld [$c7e8], a
+	ld [wc7ea], a
+	ld [wSpawnY], a
 	xor a
-	ld [$c7eb], a
+	ld [wMapGroup], a
 	ld a, $2
-	ld [$c7ec], a
+	ld [wMapNumber], a
 .continue
 	ld a, $ff
 	ld [wPlayerFacing], a
 .loop3
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	cp $ff
 	jp nz, .okay3
 	call Func_b6f2
@@ -164,9 +164,9 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld hl, sp+$0
 	ld [hl], a
 	ld a, $ff
-	ld [$c7df], a
+	ld [wBackupMapGroup], a
 	ld a, $ff
-	ld [$c7e0], a
+	ld [wBackupMapNumber], a
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $9
@@ -204,9 +204,9 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld c, l
 	ld b, h
 .do_trigger
-	ld de, $c7e7 - $c789
+	ld de, wSpawnX - $c789
 .loop4
-	ld hl, $c7ec - $c789
+	ld hl, wMapNumber - $c789
 	call CompareHLtoDE
 	jp c, .okay3
 	ld hl, $c789
@@ -221,16 +221,16 @@ OverworldLoop: ; 81cf (2:41cf)
 	xor a
 	ld [wVBlankTransferFlags], a
 	ld c, $0
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	ld e, a
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	call ExitMap
 	xor a
 	ld [$c7da], a
 	set_farcall_addrs_hli EnterMap
-	ld a, [$c7ec]
+	ld a, [wMapNumber]
 	ld e, a
-	ld a, [$c7eb]
+	ld a, [wMapGroup]
 	call FarCall
 	xor a
 	ld [$c798], a

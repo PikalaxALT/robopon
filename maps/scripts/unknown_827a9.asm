@@ -36,10 +36,10 @@ Func_827de: ; 827de (20:67de)
 	ld hl, Data_82763
 	call Func_800fb_20
 	playmusic $b
-	ld a, [$c7df]
+	ld a, [wBackupMapGroup]
 	cp $20
 	jp nz, Func_82811
-	ld a, [$c7e0]
+	ld a, [wBackupMapNumber]
 	cp $5
 	jp nz, Func_82811
 	ld e, $0

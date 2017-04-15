@@ -2,6 +2,8 @@ INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 INCLUDE "macros/bank20.asm"
 
+INCLUDE "maps/block_data.asm"
+
 SECTION "Bank 20", ROMX, BANK [$20]
 	lib_bank_20 20
 
@@ -4882,11 +4884,246 @@ Func_9a172: ; 9a172
 Func_9a173: ; 9a173
 	dr $9a173, $9a1bb
 
-Func_9a1bb: ; 9a1bb
-	dr $9a1bb, $9a28c
+Func_9a1bb: ; 9a1bb (26:61bb)
+	push hl
+	add sp, -$40
+	ld hl, sp+$40
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	write_hl_to_sp_plus $3f
+	ld hl, -1
+	write_hl_to_sp_plus $41
+	ld a, $3
+	ld [wOAM26VTile], a
+	call Func_9a377
+	call Func_9a391
+	ld hl, sp+$1
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$3d
+	call PrintCharacterFromTree
+	ld hl, sp+$1
+	call Func_292b
+	add $2
+	ld l, a
+	push hl
+	ld a, $14
+	sub l
+	ld b, $2
+	call DivideAbyB
+	push af
+	ld a, $2
+	ld [wOAM26VTile], a
+	set_farcall_addrs_hli Func_da901
+	pop af
+	pop hl
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	inc hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld l, a
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	call FarCall
+	push hl
+	ld c, $5
+	ld hl, sp+$3
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $ff04
+	call Func_2951
+	push hl
+	ld hl, sp+$4
+	ld [hl], $0
+Func_9a236: ; 9a236 (26:6236)
+	ld hl, sp+$4
+	ld a, [hl]
+	cp $3c
+	jp nc, Func_9a25d
+	call NextOverworldFrame
+	ld hl, sp+$4
+	ld a, [hl]
+	cp $10
+	jp c, Func_9a253
+	call GetJoyPressed
+	or a
+	jp z, Func_9a253
+	jp Func_9a25d
 
-Func_9a28c: ; 9a28c
-	dr $9a28c, $9a39e
+Func_9a253: ; 9a253 (26:6253)
+	ld hl, sp+$4
+	ld a, [hl]
+	inc a
+	ld hl, sp+$4
+	ld [hl], a
+	jp Func_9a236
+
+Func_9a25d: ; 9a25d (26:625d)
+	callba_hli Func_8f44
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	set_farcall_addrs_hli Func_daa40
+	pop hl
+	call FarCall
+	add sp, $42
+	ret
+
+Func_9a28c: ; 9a28c (26:628c)
+	push hl
+	add sp, -$3e
+	ld a, $3
+	ld [wOAM26VTile], a
+	call Func_9a377
+	call Func_9a391
+	ld de, Data_9a36c
+	ld hl, sp+$1
+	call CopyUntilNull
+	ld hl, sp+$0
+	ld [hl], $0
+	ld hl, sp+$0
+	ld a, [hl]
+	or a
+	jp nz, Func_9a2bc
+	read_hl_from_sp_plus $40
+	ld de, $64
+	call DivideHLByDESigned
+	ld a, l
+	or h
+	jp z, Func_9a2e4
+Func_9a2bc: ; 9a2bc (26:62bc)
+	read_hl_from_sp_plus $40
+	ld de, $64
+	call DivideHLByDESigned
+	ld de, $30
+	add hl, de
+	ld a, l
+	ld hl, sp+$5
+	ld [hl], a
+	read_hl_from_sp_plus $40
+	ld de, $64
+	call DivideHLByDESigned
+	push de
+	push hl
+	pop de
+	pop hl
+	write_hl_to_sp_plus $40
+	ld hl, sp+$0
+	ld [hl], $1
+Func_9a2e4: ; 9a2e4 (26:62e4)
+	ld hl, sp+$0
+	ld a, [hl]
+	or a
+	jp nz, Func_9a2fa
+	read_hl_from_sp_plus $40
+	ld de, $a
+	call DivideHLByDESigned
+	ld a, l
+	or h
+	jp z, Func_9a322
+Func_9a2fa: ; 9a2fa (26:62fa)
+	read_hl_from_sp_plus $40
+	ld de, $a
+	call DivideHLByDESigned
+	ld de, $30
+	add hl, de
+	ld a, l
+	ld hl, sp+$6
+	ld [hl], a
+	read_hl_from_sp_plus $40
+	ld de, $a
+	call DivideHLByDESigned
+	push de
+	push hl
+	pop de
+	pop hl
+	write_hl_to_sp_plus $40
+	ld hl, sp+$0
+	ld [hl], $1
+Func_9a322: ; 9a322 (26:6322)
+	read_hl_from_sp_plus $40
+	ld de, $30
+	add hl, de
+	ld e, l
+	ld hl, sp+$7
+	ld [hl], e
+	ld c, $5
+.asm_9a32f
+	ld hl, sp+$1
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $ff04
+	call Func_2951
+	push hl
+	xor a
+Func_9a33e: ; 9a33e (26:633e)
+	cp $3c
+	jp nc, Func_9a34c
+	push af
+	call NextOverworldFrame
+	pop af
+	inc a
+	jp Func_9a33e
+
+Func_9a34c: ; 9a34c (26:634c)
+	callba_hli Func_8f44
+	set_farcall_addrs_hli Func_17c57
+	pop hl
+	call FarCall
+	add sp, $40
+	ret
+
+Data_9a36c:
+	db "<HIRA>ちか   0かい<KATA>$"
+
+Func_9a377: ; 9a377 (26:6377)
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ret
+
+Func_9a384:
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ret
+
+Func_9a391: ; 9a391 (26:6391)
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	ret
 
 Func_9a39e: ; 9a39e
 	dr $9a39e, $9a41d

@@ -41,7 +41,7 @@ macro_854b: MACRO
 	write_hl_to $c822
 	write_hl_to $c824
 	ld hl, $0
-	write_hl_to wMapObjectsPointer
+	write_hl_to wWarpDataPointer
 	ld hl, $0
 	write_hl_to $c778
 	ld hl, $0
@@ -107,7 +107,7 @@ macro_854b: MACRO
 	ld [$c859], a
 	ld hl, sp+$5d
 	ld a, [hl]
-	call Func_8d2a
+	call LoadBlockData
 	ld a, BANK(Pointers_1c000)
 	ld [wFarCallDestBank], a
 	ld bc, $3
@@ -272,10 +272,10 @@ Func_87ca: ; 87ca (2:47ca)
 	read_hl_from wMapCollisionPointer
 	call FillMemory
 Func_8827: ; 8827 (2:4827)
-	ld a, [$c7e8]
+	ld a, [wSpawnY]
 	ld e, a
-	ld a, [$c7e7]
-	call Func_b530
+	ld a, [wSpawnX]
+	call SpawnPlayerAt
 	xor a
 	call Func_be77
 	ld hl, sp+$5d
@@ -345,14 +345,14 @@ Func_88df: ; 88df (2:48df)
 	call Func_9a49
 	call NextOverworldFrame
 Func_88f8: ; 88f8 (2:48f8)
-	ld a, [$c7ea]
+	ld a, [wc7ea]
 	ld l, a
 	push hl
-	ld a, [$c7e9]
+	ld a, [wc7e9]
 	ld c, a
-	ld a, [$c7e8]
+	ld a, [wSpawnY]
 	ld e, a
-	ld a, [$c7e7]
+	ld a, [wSpawnX]
 	call Func_b377
 	pop bc
 	ld [wPlayerFacing], a

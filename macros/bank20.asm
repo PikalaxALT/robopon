@@ -686,7 +686,7 @@ Func_80653_\1: ; 80653 (20:4653)
 Func_80664_\1: ; 80664 (20:4664)
 	push af
 	push de
-	set_farcall_addrs_hli Func_b530
+	set_farcall_addrs_hli SpawnPlayerAt
 	pop de
 	pop af
 	call FarCall

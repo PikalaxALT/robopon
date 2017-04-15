@@ -46,14 +46,14 @@ Func_819fb: ; 819fb (20:59fb)
 	call Func_80dff_20
 	pop bc
 	ld a, $1
-	ld [$c7e9], a
+	ld [wc7e9], a
 	ld a, $7
-	ld [$c7ea], a
+	ld [wc7ea], a
 	playsfx $2e
 	ld a, $8
-	ld [$c7db], a
+	ld [wBackupMapX], a
 	ld a, $8
-	ld [$c7dc], a
+	ld [wBackupMapY], a
 Func_81a21: ; 81a21 (20:5a21)
 	ret
 
@@ -75,14 +75,14 @@ Func_81a33: ; 81a33 (20:5a33)
 	call Func_80dff_20
 	pop bc
 	ld a, $1
-	ld [$c7e9], a
+	ld [wc7e9], a
 	ld a, $7
-	ld [$c7ea], a
+	ld [wc7ea], a
 	playsfx $2e
 	ld a, $8
-	ld [$c7db], a
+	ld [wBackupMapX], a
 	ld a, $f
-	ld [$c7dc], a
+	ld [wBackupMapY], a
 Func_81a59: ; 81a59 (20:5a59)
 	ret
 
