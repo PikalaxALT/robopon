@@ -367,8 +367,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	call ScriptSleep_20
 	ld hl, $b
 	call PrintTextWithNPCName_20
-	ld hl, $c
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_3914e
 	xor a
 	call Func_8021b_20
 	ld hl, $d

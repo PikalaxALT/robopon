@@ -109,7 +109,6 @@ Func_83026:
 	jp Func_83119
 
 Func_83113: ; 83113 (20:7113)
-	ld hl, $15c
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_3f79e
 Func_83119: ; 83119 (20:7119)
 	ret

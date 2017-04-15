@@ -168,8 +168,7 @@ Func_824ca: ; 824ca (20:64ca)
 	call Func_8013d_20
 	ld a, $2a
 	call PlaySFX_20
-	ld hl, $3f9
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_3f665
 	pop af
 	ld e, $0
 	ld c, $5
@@ -198,8 +197,7 @@ Func_82562: ; 82562 (20:6562)
 	call Func_80176_20
 	call Func_801d5_20
 	call Func_8018b_20
-	ld hl, $322
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_46e0b
 	ld hl, $15a
 	call PrintTextWithNPCName_20
 	ld a, $11

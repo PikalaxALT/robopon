@@ -213,8 +213,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, BANK(Data_81b39)
 	call ApplyMovementData_20
 	call Func_8020c_20
-	ld hl, $9
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_390d1
 	ld c, $1
 	ld de, Data_81b3d
 	ld a, BANK(Data_81b3d)

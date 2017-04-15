@@ -332,17 +332,14 @@ Func_82a52: ; 82a52 (20:6a52)
 	inc a
 	ld [$c79c], a
 Func_82a59: ; 82a59 (20:6a59)
-	ld hl, $498
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45f3d
 	ld a, [$c79c]
 	cp $9
 	jp c, Func_82a8f
-	ld hl, $499
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45f56
 	ld a, $2a
 	call PlaySFX_20
-	ld hl, $49a
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45f88
 	ld c, $0
 	ld e, $1
 	ld a, $18
@@ -350,20 +347,17 @@ Func_82a59: ; 82a59 (20:6a59)
 	ld e, $1
 	ld hl, $114
 	call EventFlagAction_20
-	ld hl, $4a8
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45f98
 Func_82a8f: ; 82a8f (20:6a8f)
 	jp Func_82a98
 
 Func_82a92: ; 82a92 (20:6a92)
-	ld hl, $496
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45f1d
 Func_82a98: ; 82a98 (20:6a98)
 	jp Func_82aad
 
 Func_82a9b: ; 82a9b (20:6a9b)
-	ld hl, $3ec
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45ee8
 	ld a, [$c79c]
 	or a
 	jp nz, Func_82aad
@@ -373,8 +367,7 @@ Func_82aad: ; 82aad (20:6aad)
 	jp Func_82ab6
 
 Func_82ab0: ; 82ab0 (20:6ab0)
-	ld hl, $49c
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45fd7
 Func_82ab6: ; 82ab6 (20:6ab6)
 	pop bc
 	ret

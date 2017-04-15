@@ -1,6 +1,6 @@
 writetext: MACRO
 	ld hl, (\1_Pointer - TextTreeBitstreams) / 2
-	call PrintText_20
+	call PrintTextStandard_20
 	ENDM
 
 writenpctext: MACRO

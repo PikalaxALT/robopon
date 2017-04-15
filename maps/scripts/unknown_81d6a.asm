@@ -150,8 +150,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	ld a, $1f
 	call Func_80176_20
 	call Func_801d5_20
-	ld hl, $2
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_38fae
 	ld c, $1
 	ld e, $4
 	ld a, $1f
@@ -187,8 +186,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	call Func_80eb1_20
 	ld hl, $1
 	call ScriptSleep_20
-	ld hl, $3
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_38fbd
 	ld a, $1
 	call Func_80653_20
 	ld hl, $1
@@ -318,8 +316,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	call Func_8018b_20
 	ld hl, $1e
 	call ScriptSleep_20
-	ld hl, $14e
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_3ecd6
 	ld hl, $1e
 	call ScriptSleep_20
 	ld c, $1

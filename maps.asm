@@ -91,8 +91,7 @@ Func_8326c:
 	writetext_yesorno TreeBitstreamText_4600d
 	or a
 	jp nz, Func_832d4
-	ld hl, $391
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_46031
 	ld a, $1
 	call Func_8021b_20
 	ld hl, $108
@@ -106,12 +105,10 @@ Func_8326c:
 	call CheckEventFlag_20
 	or a
 	jp nz, Func_832cb
-	ld hl, $49d
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45fec
 	ld a, $2a
 	call PlaySFX_20
-	ld hl, $49e
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
 	ld a, $10
@@ -120,13 +117,11 @@ Func_8326c:
 	ld hl, $108
 	call EventFlagAction_20
 Func_832cb: ; 832cb (20:72cb)
-	ld hl, $33c
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_4604f
 	jp Func_83318
 
 Func_832d4: ; 832d4 (20:72d4)
-	ld hl, $392
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_46040
 	ld hl, $108
 	call CheckEventFlag_20
 	or a
@@ -138,12 +133,10 @@ Func_832d4: ; 832d4 (20:72d4)
 	call CheckEventFlag_20
 	or a
 	jp nz, Func_83318
-	ld hl, $49d
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45fec
 	ld a, $2a
 	call PlaySFX_20
-	ld hl, $49e
-	call PrintTextStandard_20
+	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
 	ld a, $10
@@ -2127,14 +2120,12 @@ Func_858bd: ; 858bd (21:58bd)
 	jp Func_858c6
 
 Func_858c0: ; 858c0 (21:58c0)
-	ld hl, $377
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_470f0
 Func_858c6: ; 858c6 (21:58c6)
 	jp Func_858cf
 
 Func_858c9: ; 858c9 (21:58c9)
-	ld hl, $376
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_470d8
 Func_858cf: ; 858cf (21:58cf)
 	ret
 
@@ -2160,13 +2151,11 @@ Func_858f9:
 	jp Func_8592e
 
 Func_8591f: ; 8591f (21:591f)
-	ld hl, $2e5
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_47319
 	jp Func_8592e
 
 Func_85928: ; 85928 (21:5928)
-	ld hl, $2e4
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_47306
 Func_8592e: ; 8592e (21:592e)
 	pop bc
 	ret
@@ -2318,8 +2307,7 @@ Func_85b17:
 	call PrintTextWithNPCName_21
 	ld a, $2a
 	call PlaySFX_21
-	ld hl, $479
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_39d70
 	ld c, $0
 	ld e, $1
 	ld a, $17
@@ -2388,8 +2376,7 @@ Func_85bd9: ; 85bd9 (21:5bd9)
 	ld [$c797], a
 	ld a, $28
 	call PlaySFX_21
-	ld hl, $342
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a272
 	ld hl, $3c
 	call ScriptSleep_21
 	ld hl, $3a
@@ -2409,8 +2396,7 @@ Func_85c11: ; 85c11 (21:5c11)
 	jp Func_85c1a
 
 Func_85c14: ; 85c14 (21:5c14)
-	ld hl, $478
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a27f
 Func_85c1a: ; 85c1a (21:5c1a)
 	pop bc
 	ret
@@ -2568,8 +2554,7 @@ Func_85e16: ; 85e16 (21:5e16)
 	ld [$c797], a
 	ld a, $28
 	call PlaySFX_21
-	ld hl, $342
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a272
 	ld hl, $3c
 	call ScriptSleep_21
 	ld hl, $222
@@ -2595,8 +2580,7 @@ Func_85e57: ; 85e57 (21:5e57)
 	jp Func_85e60
 
 Func_85e5a: ; 85e5a (21:5e5a)
-	ld hl, $478
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a27f
 Func_85e60: ; 85e60 (21:5e60)
 	pop bc
 	ret
@@ -2803,8 +2787,7 @@ Func_86102: ; 86102 (21:6102)
 	ld [$c797], a
 	ld a, $28
 	call PlaySFX_21
-	ld hl, $342
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a272
 	ld hl, $3c
 	call ScriptSleep_21
 	ld hl, $41
@@ -2824,8 +2807,7 @@ Func_8613a: ; 8613a (21:613a)
 	jp Func_86143
 
 Func_8613d: ; 8613d (21:613d)
-	ld hl, $478
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a27f
 Func_86143: ; 86143 (21:6143)
 	pop bc
 	ret
@@ -2873,8 +2855,7 @@ Func_861bc: ; 861bc (21:61bc)
 	ld [$c797], a
 	ld a, $28
 	call PlaySFX_21
-	ld hl, $342
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a272
 	ld hl, $3c
 	call ScriptSleep_21
 	ld hl, $21b
@@ -2894,8 +2875,7 @@ Func_861f4: ; 861f4 (21:61f4)
 	jp Func_861fd
 
 Func_861f7: ; 861f7 (21:61f7)
-	ld hl, $478
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a27f
 Func_861fd: ; 861fd (21:61fd)
 	pop bc
 	ret
@@ -3142,8 +3122,7 @@ Func_86579:
 Func_865be: ; 865be (21:65be)
 	ld hl, $164
 	call PrintTextWithNPCName_21
-	ld hl, $3f5
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3f8f1
 	ld e, $0
 	ld a, $7f
 	call Func_80d74_21
@@ -3162,14 +3141,12 @@ Func_865e8: ; 865e8 (21:65e8)
 	jp Func_865f1
 
 Func_865eb: ; 865eb (21:65eb)
-	ld hl, $16e
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3fa6b
 Func_865f1: ; 865f1 (21:65f1)
 	jp Func_865fa
 
 Func_865f4: ; 865f4 (21:65f4)
-	ld hl, $16e
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3fa6b
 Func_865fa: ; 865fa (21:65fa)
 	pop bc
 	ret
@@ -3214,8 +3191,7 @@ Func_86666: ; 86666 (21:6666)
 	ld [$c797], a
 	ld a, $28
 	call PlaySFX_21
-	ld hl, $342
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a272
 	ld hl, $3c
 	call ScriptSleep_21
 	ld hl, $3e
@@ -3235,8 +3211,7 @@ Func_8669e: ; 8669e (21:669e)
 	jp Func_866a7
 
 Func_866a1: ; 866a1 (21:66a1)
-	ld hl, $478
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a27f
 Func_866a7: ; 866a7 (21:66a7)
 	pop bc
 	ret
@@ -3284,8 +3259,7 @@ Func_86720: ; 86720 (21:6720)
 	ld [$c797], a
 	ld a, $28
 	call PlaySFX_21
-	ld hl, $342
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a272
 	ld hl, $3c
 	call ScriptSleep_21
 	ld hl, $217
@@ -3305,8 +3279,7 @@ Func_86758: ; 86758 (21:6758)
 	jp Func_86761
 
 Func_8675b: ; 8675b (21:675b)
-	ld hl, $478
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a27f
 Func_86761: ; 86761 (21:6761)
 	pop bc
 	ret
@@ -3354,8 +3327,7 @@ Func_867da: ; 867da (21:67da)
 	ld [$c797], a
 	ld a, $28
 	call PlaySFX_21
-	ld hl, $342
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a272
 	ld hl, $3c
 	call ScriptSleep_21
 	ld hl, $21e
@@ -3375,8 +3347,7 @@ Func_86812: ; 86812 (21:6812)
 	jp Func_8681b
 
 Func_86815: ; 86815 (21:6815)
-	ld hl, $478
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3a27f
 Func_8681b: ; 8681b (21:681b)
 	pop bc
 	ret
@@ -3779,8 +3750,7 @@ Func_86b0d:
 	jp Func_86c00
 
 Func_86bfa: ; 86bfa (21:6bfa)
-	ld hl, $15c
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_3f79e
 Func_86c00: ; 86c00 (21:6c00)
 	ret
 
@@ -3913,8 +3883,7 @@ Func_87141:
 	jp nz, Func_87163
 	ld a, $5
 	call Func_8044b_21
-	ld hl, $1d5
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_414b4
 	ld hl, $f0
 	call CheckEventFlag_21
 	or a
@@ -3998,8 +3967,7 @@ Func_8728f:
 	call CheckEventFlag_21
 	or a
 	jp nz, Func_872df
-	ld hl, $256
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bb7
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_872d6
@@ -4014,19 +3982,16 @@ Func_872c5: ; 872c5 (21:72c5)
 	ld e, $1
 	ld hl, $6c
 	call EventFlagAction_21
-	ld hl, $257
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bc8
 	jp Func_872dc
 
 Func_872d6: ; 872d6 (21:72d6)
-	ld hl, $257
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bc8
 Func_872dc: ; 872dc (21:72dc)
 	jp Func_872e5
 
 Func_872df: ; 872df (21:72df)
-	ld hl, $257
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bc8
 Func_872e5: ; 872e5 (21:72e5)
 	pop bc
 	ret
@@ -4049,8 +4014,7 @@ Func_87317:
 	call CheckEventFlag_21
 	or a
 	jp nz, Func_87367
-	ld hl, $254
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42ba0
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_8735e
@@ -4065,19 +4029,16 @@ Func_8734d: ; 8734d (21:734d)
 	ld e, $1
 	ld hl, $6d
 	call EventFlagAction_21
-	ld hl, $255
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42baa
 	jp Func_87364
 
 Func_8735e: ; 8735e (21:735e)
-	ld hl, $255
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42baa
 Func_87364: ; 87364 (21:7364)
 	jp Func_8736d
 
 Func_87367: ; 87367 (21:7367)
-	ld hl, $25c
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42c09
 Func_8736d: ; 8736d (21:736d)
 	pop bc
 	ret
@@ -4157,8 +4118,7 @@ Func_87497:
 	call Func_80176_21
 	call Func_801d5_21
 	call Func_8018b_21
-	ld hl, $322
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_46e0b
 	ld a, SONG_CAVE
 	call PlayMusic_21
 Func_874c2: ; 874c2 (21:74c2)
@@ -4179,8 +4139,7 @@ Func_874ec:
 	call CheckEventFlag_21
 	or a
 	jp nz, Func_8753c
-	ld hl, $25a
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42be8
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_87533
@@ -4195,19 +4154,16 @@ Func_87522: ; 87522 (21:7522)
 	ld e, $1
 	ld hl, $6e
 	call EventFlagAction_21
-	ld hl, $25b
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bf7
 	jp Func_87539
 
 Func_87533: ; 87533 (21:7533)
-	ld hl, $25b
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bf7
 Func_87539: ; 87539 (21:7539)
 	jp Func_87542
 
 Func_8753c: ; 8753c (21:753c)
-	ld hl, $25c
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42c09
 Func_87542: ; 87542 (21:7542)
 	pop bc
 	ret
@@ -4230,8 +4186,7 @@ Func_87574
 	call CheckEventFlag_21
 	or a
 	jp nz, Func_87602
-	ld hl, $252
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42b8f
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_875f9
@@ -4257,12 +4212,10 @@ Func_875aa: ; 875aa (21:75aa)
 	call CheckEventFlag_21
 	or a
 	jp nz, Func_875f0
-	ld hl, $49d
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_45fec
 	ld a, $2a
 	call PlaySFX_21
-	ld hl, $49e
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
 	ld a, $10
@@ -4271,13 +4224,11 @@ Func_875aa: ; 875aa (21:75aa)
 	ld hl, $109
 	call EventFlagAction_21
 Func_875f0: ; 875f0 (21:75f0)
-	ld hl, $253
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42b98
 	jp Func_875ff
 
 Func_875f9: ; 875f9 (21:75f9)
-	ld hl, $250
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42b7b
 Func_875ff: ; 875ff (21:75ff)
 	jp Func_8763c
 
@@ -4289,12 +4240,10 @@ Func_87602: ; 87602 (21:7602)
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_87636
-	ld hl, $49d
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_45fec
 	ld a, $2a
 	call PlaySFX_21
-	ld hl, $49e
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
 	ld a, $10
@@ -4303,8 +4252,7 @@ Func_87602: ; 87602 (21:7602)
 	ld hl, $109
 	call EventFlagAction_21
 Func_87636: ; 87636 (21:7636)
-	ld hl, $257
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bc8
 Func_8763c: ; 8763c (21:763c)
 	pop bc
 	ret
@@ -4728,8 +4676,7 @@ Func_87ac3:
 	ld a, [$c790]
 	cp $7
 	jp nc, Func_87ae0
-	ld hl, $3dd
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_47041
 	jp Func_87b13
 
 Func_87ae0: ; 87ae0 (21:7ae0)
@@ -4742,8 +4689,7 @@ Func_87ae0: ; 87ae0 (21:7ae0)
 	call EventFlagAction_21
 	ld a, $32
 	call PlaySFX_21
-	ld hl, $35b
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_47029
 	jp Func_87b13
 
 Func_87b00: ; 87b00 (21:7b00)
@@ -4752,8 +4698,7 @@ Func_87b00: ; 87b00 (21:7b00)
 	call EventFlagAction_21
 	ld a, $28
 	call PlaySFX_21
-	ld hl, $35c
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_4701b
 Func_87b13: ; 87b13 (21:7b13)
 	ret
 
@@ -4771,8 +4716,7 @@ Func_87b23: ; 87b23 (21:7b23)
 	call CheckEventFlag_21
 	cp $1
 	jp nz, Func_87b37
-	ld hl, $283
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_47037
 	jp Func_87b86
 
 Func_87b37: ; 87b37 (21:7b37)
@@ -4782,8 +4726,7 @@ Func_87b37: ; 87b37 (21:7b37)
 	ld a, [$c790]
 	cp $7
 	jp nc, Func_87b4f
-	ld hl, $283
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_47037
 	jp Func_87b86
 
 Func_87b4f: ; 87b4f (21:7b4f)
@@ -4889,8 +4832,7 @@ Func_87c5c:
 	call CheckEventFlag_21
 	or a
 	jp nz, Func_87cac
-	ld hl, $24e
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42b4c
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_87ca3
@@ -4905,19 +4847,16 @@ Func_87c92: ; 87c92 (21:7c92)
 	ld e, $1
 	ld hl, $70
 	call EventFlagAction_21
-	ld hl, $24f
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42b64
 	jp Func_87ca9
 
 Func_87ca3: ; 87ca3 (21:7ca3)
-	ld hl, $253
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42b98
 Func_87ca9: ; 87ca9 (21:7ca9)
 	jp Func_87cb2
 
 Func_87cac: ; 87cac (21:7cac)
-	ld hl, $24e
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42b4c
 Func_87cb2: ; 87cb2 (21:7cb2)
 	pop bc
 	ret
@@ -4940,8 +4879,7 @@ Func_87ce5:
 	call CheckEventFlag_21
 	or a
 	jp nz, Func_87d35
-	ld hl, $258
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bd2
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_87d2c
@@ -4956,19 +4894,16 @@ Func_87d1b: ; 87d1b (21:7d1b)
 	ld e, $1
 	ld hl, $71
 	call EventFlagAction_21
-	ld hl, $259
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bdd
 	jp Func_87d32
 
 Func_87d2c: ; 87d2c (21:7d2c)
-	ld hl, $258
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bd2
 Func_87d32: ; 87d32 (21:7d32)
 	jp Func_87d3b
 
 Func_87d35: ; 87d35 (21:7d35)
-	ld hl, $258
-	call PrintTextStandard_21
+	writetext TreeBitstreamText_42bd2
 Func_87d3b: ; 87d3b (21:7d3b)
 	pop bc
 	ret
