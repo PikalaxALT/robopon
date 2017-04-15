@@ -582,7 +582,7 @@ wObjectStructPointer:: dw ; c774
 wc776:: dw ; c776
 	ds $2
 
-wWarpDataPointer:: dw ; c77a
+wMapObjectsAndWarpDataPointer:: dw ; c77a
 wNumWarps:: db ; c77c
 	ds $4
 
@@ -621,8 +621,10 @@ wPlayerFacing:: db ; c838
 
 wc851:: db ; c851
 wc852:: dw ; c852
-	ds $b
+	ds $7
 
+wc85b:: dw ; c85b
+	ds $2
 wPlayerMapX:: db ; c85f
 wPlayerMapY:: db ; c860
 wCurWarpMinX:: db ; c861

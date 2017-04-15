@@ -349,7 +349,7 @@ Pointers_c7aa4:
 	dw Data_c7a93
 	dw Data_c7a97
 
-GetMapTriggerIndex:: ; c7ae6 (31:7ae6)
+GroupAndNumberToLinearIndex:: ; c7ae6 (31:7ae6)
 ; args: a, e
 ; sum([len(xx) for xx in Pointers_c7aa4[:a]]) + Pointers_c7aa4[a].index(e) \
 ;     if e in Pointers_c7aa4[a] else 0xffff

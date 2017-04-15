@@ -4977,7 +4977,7 @@ Func_9a253: ; 9a253 (26:6253)
 
 Func_9a25d: ; 9a25d (26:625d)
 	callba_hli Func_8f44
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli Func_daa40
@@ -5086,7 +5086,7 @@ Func_9a33e: ; 9a33e (26:633e)
 
 Func_9a34c: ; 9a34c (26:634c)
 	callba_hli Func_8f44
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	add sp, $40
@@ -5708,16 +5708,6 @@ Func_da07a:: ; da07a
 Func_da093:: ; da093
 	dr $da093, $da4dc
 
-
-; void Func_da4dc (void) {
-;   char * (hl = wOAMBuffer2)
-;   while (hl < wOAMBuffer2End) {
-;     *(hl++) = 0xff;
-;     *(hl++) = 0xff;
-;     *(hl++) = 0xff;
-;     *(hl++) = 0xff;
-;   }
-; }
 Func_da4dc:: ; da4dc (36:64dc)
 	ld hl, wOAMBuffer2
 .loop

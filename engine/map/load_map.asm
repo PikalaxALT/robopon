@@ -1,7 +1,234 @@
-ExitMap: ; 854b (2:454b)
-macro_854b: MACRO
+macro_841d: MACRO
+	db (\1 << 3) | \2
+	ENDM
+
+Data_841d: ; 841d
+	macro_841d  4, 5
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 10, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 7
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 17, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 12, 7
+	macro_841d  7, 5
+	macro_841d  7, 5
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 7
+	macro_841d  6, 6
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 16, 0
+	macro_841d  9, 6
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d  6, 5
+	macro_841d  6, 6
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d  6, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 11, 0
+	macro_841d  2, 3
+	macro_841d  1, 6
+	macro_841d  1, 7
+	macro_841d  1, 4
+	macro_841d  1, 4
+	macro_841d  0, 5
+	macro_841d  0, 4
+	macro_841d  0, 2
+	macro_841d  0, 4
+	macro_841d  0, 4
+	macro_841d  0, 4
+	macro_841d  0, 4
+	macro_841d  0, 4
+	macro_841d  0, 4
+	macro_841d  0, 4
+	macro_841d  0, 4
+	macro_841d  0, 4
+	macro_841d  4, 2
+	macro_841d  9, 7
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d  5, 6
+	macro_841d  5, 0
+	macro_841d  5, 0
+	macro_841d  5, 6
+	macro_841d  5, 0
+	macro_841d  5, 0
+	macro_841d  5, 0
+	macro_841d  5, 7
+	macro_841d  5, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d  2, 5
+	macro_841d 11, 4
+	macro_841d  2, 3
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d 16, 0
+	macro_841d  4, 5
+	macro_841d 11, 4
+	macro_841d  1, 5
+	macro_841d  4, 5
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d  3, 1
+	macro_841d  3, 1
+	macro_841d 13, 3
+	macro_841d 13, 3
+	macro_841d 13, 3
+	macro_841d 13, 3
+	macro_841d 13, 1
+	macro_841d 13, 1
+	macro_841d  8, 1
+	macro_841d  6, 6
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d  4, 6
+	macro_841d  9, 3
+	macro_841d  7, 5
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 0
+	macro_841d 13, 7
+	macro_841d 13, 7
+	macro_841d 13, 7
+	macro_841d 13, 7
+	macro_841d 13, 7
+	macro_841d 11, 4
+	macro_841d 13, 7
+	macro_841d 13, 7
+	macro_841d 13, 7
+	macro_841d 13, 7
+	macro_841d  1, 0
+	macro_841d  1, 0
+	macro_841d  1, 0
+	macro_841d  1, 0
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  8, 4
+	macro_841d  9, 3
+	macro_841d  4, 2
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 11, 4
+	macro_841d 18, 4
+	macro_841d 12, 4
+	macro_841d 14, 4
+	macro_841d 15, 4
+	macro_841d 11, 4
+	macro_841d  4, 2
+	macro_841d  4, 5
+
+Data_84f1: ; 84f1
+	db $0f, $00, $00, $15, $2f, $0a, $0f, $3e
+
+Data_84f9: ; 84f9
+	dr $84f9, $854b
+
+PreloadNextMap: ; 854b (2:454b)
+; a = map group
+; e = map number
+; c = flag
+del: MACRO
 	read_hl_from \1
-	call DeallocateMemory_Bank02
+	call FreeMemory_Bank02
 	ld hl, $0
 	write_hl_to \1
 	ENDM
@@ -41,7 +268,7 @@ macro_854b: MACRO
 	write_hl_to $c822
 	write_hl_to $c824
 	ld hl, $0
-	write_hl_to wWarpDataPointer
+	write_hl_to wMapObjectsAndWarpDataPointer
 	ld hl, $0
 	write_hl_to $c778
 	ld hl, $0
@@ -59,16 +286,16 @@ macro_854b: MACRO
 	jp .okay
 
 .c_not_zero
-	macro_854b $c824
-	macro_854b $c822
-	macro_854b $c826
-	macro_854b wBlockdataPointer
-	macro_854b $c82c
-	macro_854b $c82e
-	macro_854b $c82a
-	macro_854b $c85d
+	del $c824
+	del $c822
+	del $c826
+	del wBlockdataPointer
+	del $c82c
+	del $c82e
+	del $c82a
+	del $c85d
 .okay
-	set_farcall_addrs_hli GetMapTriggerIndex
+	set_farcall_addrs_hli GroupAndNumberToLinearIndex
 	ld hl, sp+$64
 	ld e, [hl]
 	ld hl, sp+$67
@@ -132,18 +359,18 @@ macro_854b: MACRO
 	ld hl, $728
 	push hl
 	call AllocateMemory_Bank02
-	write_hl_to $c85b
+	write_hl_to wc85b
 	ld hl, sp+$60
 	ld a, [hl]
 	add BANK(Pointers_1c000)
 	ld [wFarCallDestBank], a
 	pop bc
-	read_hl_from $c85b
+	read_hl_from wc85b
 	push hl
 	read_hl_from_sp_plus $63
 	pop de
 	call FarDecompressVideoData
-	read_hl_from $c85b
+	read_hl_from wc85b
 	ld de, $2a8
 	add hl, de
 	reg16swap de, hl
@@ -240,11 +467,11 @@ Func_87ca: ; 87ca (2:47ca)
 	ld bc, $80
 	call CopyFromDEtoHL
 	read_hl_from $c842
-	call DeallocateMemory_Bank02
+	call FreeMemory_Bank02
 	read_hl_from $c844
-	call DeallocateMemory_Bank02
-	read_hl_from $c85b
-	call DeallocateMemory_Bank02
+	call FreeMemory_Bank02
+	read_hl_from wc85b
+	call FreeMemory_Bank02
 	pop bc
 	push bc
 	inc c
@@ -303,10 +530,10 @@ Func_8827: ; 8827 (2:4827)
 	push bc
 	inc c
 	dec c
-	jp nz, Func_8894
+	jp nz, .dont_delete
 	call Func_a24c
 	call Func_aff1
-	call Func_aca6
+	call DeleteMapObjectsAndWarps
 	call Func_b773
 	call Func_b407
 	call Func_9d31
@@ -314,7 +541,7 @@ Func_8827: ; 8827 (2:4827)
 	ld a, $ff
 	call Func_bf46
 	callba_hli Func_9b251
-Func_8894: ; 8894 (2:4894)
+.dont_delete
 	ld a, $1
 	call Func_b52c
 	callba_hli Func_da07a
@@ -331,7 +558,7 @@ Func_8894: ; 8894 (2:4894)
 	or h
 	jp z, Func_88df
 	read_hl_from $c82e
-	call DeallocateMemory_Bank02
+	call FreeMemory_Bank02
 Func_88df: ; 88df (2:48df)
 	pop bc
 	ld a, c

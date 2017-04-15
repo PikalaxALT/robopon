@@ -224,7 +224,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, [wMapNumber]
 	ld e, a
 	ld a, [wMapGroup]
-	call ExitMap
+	call PreloadNextMap
 	xor a
 	ld [$c7da], a
 	set_farcall_addrs_hli EnterMap

@@ -247,7 +247,7 @@ Data_17c44: ; 17c44
 Func_17c56: ; 17c56
 	ret
 
-DeallocateMemory:: ; 17c57 (5:7c57)
+FreeMemory:: ; 17c57 (5:7c57)
 	push hl
 	push bc
 	push bc

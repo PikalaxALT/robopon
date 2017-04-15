@@ -4668,26 +4668,15 @@ Func_8150: ; 8150
 	ret
 
 INCLUDE "engine/map/overworld_loop.asm"
-
-Data_841d: ; 841d
-	dr $841d, $84f1
-
-Data_84f1: ; 84f1
-	dr $84f1, $84f9
-
-Data_84f9: ; 84f9
-	dr $84f9, $854b
-
-
-INCLUDE "engine/map/exit_map.asm"
+INCLUDE "engine/map/load_map.asm"
 
 Func_898a: ; 898a (2:498a)
 	push bc
 	push de
 	push hl
-	ld a, [$c85b]
+	ld a, [wc85b]
 	ld l, a
-	ld a, [$c85c]
+	ld a, [wc85b + 1]
 	ld h, a
 	ld bc, $2a8
 	add hl, bc
@@ -4752,9 +4741,9 @@ Func_89ab: ; 89ab (2:49ab)
 	ld [hl], a
 	ld h, b
 	ld l, c
-	ld a, [$c85b]
+	ld a, [wc85b]
 	ld c, a
-	ld a, [$c85c]
+	ld a, [wc85b + 1]
 	ld b, a
 	add hl, hl
 	add hl, bc
@@ -4779,11 +4768,11 @@ Func_89ab: ; 89ab (2:49ab)
 	ld a, [wSystemType]
 	cp $11
 	jr nz, .asm_8a37
-	ld a, BANK(GFX_e4000)
+	ld a, BANK(MapTiles_CGB)
 	jr .asm_8a39
 
 .asm_8a37
-	ld a, BANK(GFX_18000)
+	ld a, BANK(MapTiles_SGB_DMG)
 .asm_8a39
 	ld [wFarCallDestBank], a
 	ld h, b
@@ -4792,7 +4781,7 @@ Func_89ab: ; 89ab (2:49ab)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, GFX_18000
+	ld de, MapTiles_SGB_DMG
 	add hl, de
 	ld d, h
 	ld e, l
@@ -4816,9 +4805,9 @@ Func_89ab: ; 89ab (2:49ab)
 	ld h, b
 	ld l, c
 	add hl, hl
-	ld a, [$c85b]
+	ld a, [wc85b]
 	ld e, a
-	ld a, [$c85c]
+	ld a, [wc85b + 1]
 	ld d, a
 	add hl, de
 	ld a, [hli]
@@ -4871,9 +4860,9 @@ Func_8aa2: ; 8aa2 (2:4aa2)
 	ld [$c88f], a
 	ld h, b
 	ld l, c
-	ld a, [$c85b]
+	ld a, [wc85b]
 	ld c, a
-	ld a, [$c85c]
+	ld a, [wc85b + 1]
 	ld b, a
 	add hl, hl
 	add hl, bc
@@ -4956,14 +4945,14 @@ Func_8b33: ; 8b33 (2:4b33)
 	cp $11
 	jp nz, Func_8b7e
 	push bc
-	ld a, BANK(GFX_e4000)
+	ld a, BANK(MapTiles_CGB)
 	ld [wFarCallDestBank], a
 	reg16swap de, hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, GFX_e4000
+	ld de, MapTiles_CGB
 	add hl, de
 	push hl
 	ld l, c
@@ -4982,14 +4971,14 @@ Func_8b33: ; 8b33 (2:4b33)
 
 Func_8b7e: ; 8b7e (2:4b7e)
 	push bc
-	ld a, BANK(GFX_18000)
+	ld a, BANK(MapTiles_SGB_DMG)
 	ld [wFarCallDestBank], a
 	reg16swap de, hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, GFX_18000
+	ld de, MapTiles_SGB_DMG
 	add hl, de
 	push hl
 	ld l, c
@@ -5318,28 +5307,28 @@ Func_8dc8: ; 8dc8
 	ret
 
 Func_8df1: ; 8df1 (2:4df1)
-macro_8df1: MACRO
+del_if_defined: MACRO
 	read_hl_from \1
 	ld a, l
 	or h
 	jp z, .okay_\@
-	macro_854b \1
+	del \1
 .okay_\@
 	ENDM
 
-	macro_8df1 $c85d
-	macro_8df1 $c824
-	macro_8df1 $c822
-	macro_8df1 $c826
-	macro_8df1 wBlockdataPointer
-	macro_8df1 wMapCollisionPointer
-	macro_8df1 $c82a
-	macro_8df1 $c82c
-	macro_8df1 $c82e
-	macro_8df1 wWarpDataPointer
-	macro_8df1 $c778
-	macro_8df1 wObjectStructPointer
-	macro_8df1 wc776
+	del_if_defined $c85d
+	del_if_defined $c824
+	del_if_defined $c822
+	del_if_defined $c826
+	del_if_defined wBlockdataPointer
+	del_if_defined wMapCollisionPointer
+	del_if_defined $c82a
+	del_if_defined $c82c
+	del_if_defined $c82e
+	del_if_defined wMapObjectsAndWarpDataPointer
+	del_if_defined $c778
+	del_if_defined wObjectStructPointer
+	del_if_defined wc776
 	ret
 
 Func_8f44:: ; 8f44 (2:4f44)
@@ -6533,7 +6522,7 @@ Func_a1ad: ; a1ad (2:61ad)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld a, BANK(GFX_18000)
+	ld a, BANK(MapTiles_SGB_DMG)
 	ld [wFarCallDestBank], a
 	add hl, hl
 	add hl, hl
@@ -7480,23 +7469,23 @@ INCLUDE "engine/check_collision.asm"
 INCLUDE "engine/event_flags.asm"
 INCLUDE "engine/map/text.asm"
 
-Func_aca6:: ; aca6 (2:6ca6)
+DeleteMapObjectsAndWarps:: ; aca6 (2:6ca6)
 	xor a
 	ld [wNumWarps], a
-	read_hl_from wWarpDataPointer
+	read_hl_from wMapObjectsAndWarpDataPointer
 	ld a, l
 	or h
-	jp z, Func_acbc
-	read_hl_from wWarpDataPointer
-	call DeallocateMemory_Bank02
-Func_acbc: ; acbc (2:6cbc)
-	ld hl, $dc
+	jp z, .unallocated
+	read_hl_from wMapObjectsAndWarpDataPointer
+	call FreeMemory_Bank02
+.unallocated
+	ld hl, 20 * 11
 	call AllocateMemory_Bank02
-	write_hl_to wWarpDataPointer
+	write_hl_to wMapObjectsAndWarpDataPointer
 	ret
 
 LoadMapObject:: ; acc8
-; arguments: 11-byte struct on stack
+; arguments: 11-byte struct at hl
 	push hl
 	push bc
 	call GetHLAtSPPlus4
@@ -7572,7 +7561,7 @@ LoadMapObject:: ; acc8
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from wWarpDataPointer
+	read_hl_from wMapObjectsAndWarpDataPointer
 	add hl, de
 	pop de
 	ld bc, $b
@@ -7615,7 +7604,7 @@ CheckWarpTile: ; ad56 (2:6d56)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from wWarpDataPointer
+	read_hl_from wMapObjectsAndWarpDataPointer
 	add hl, de
 	reg16swap de, hl
 	ld a, [de]
@@ -9561,9 +9550,9 @@ AllocateMemory_Bank02: ; be4d (2:7e4d)
 	pop hl
 	jp FarCall
 
-DeallocateMemory_Bank02: ; be5d (2:7e5d)
+FreeMemory_Bank02: ; be5d (2:7e5d)
 	push hl
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ret
@@ -10789,7 +10778,7 @@ Func_cced: ; cced (3:4ced)
 	ld a, l
 	or h
 	jp z, Func_cd99
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -10798,7 +10787,7 @@ Func_cced: ; cced (3:4ced)
 	ld d, [hl]
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from wc2e6
 	ld de, $18
 	add hl, de
@@ -10807,7 +10796,7 @@ Func_cced: ; cced (3:4ced)
 	ld d, [hl]
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from wc2e6
 	ld de, $1c6
 	add hl, de
@@ -10823,7 +10812,7 @@ Func_cced: ; cced (3:4ced)
 	inc hl
 	or [hl]
 	jp z, Func_cd7e
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from wc2e6
 	ld de, $1a
 	add hl, de
@@ -10833,7 +10822,7 @@ Func_cced: ; cced (3:4ced)
 	reg16swap de, hl
 	call FarCall
 Func_cd7e: ; cd7e (3:4d7e)
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from wc2e6
 	call FarCall
 	ld hl, $0
@@ -15867,7 +15856,7 @@ Func_f149: ; f149 (3:7149)
 	jp Func_f122
 
 Func_f15a: ; f15a (3:715a)
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	call ClearSprites
@@ -19275,7 +19264,7 @@ Func_10c0a: ; 10c0a (4:4c0a)
 	ld de, $605
 	ld hl, $705
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ld hl, sp+$0
@@ -26706,7 +26695,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	ld [wOAM26VTile], a
 	call Func_1400e
 	pop hl
-	call DeallocateMemory
+	call FreeMemory
 	set_farcall_addrs_hli Func_daa40
 	pop hl
 	call FarCall
@@ -26832,7 +26821,7 @@ Func_14ca9:: ; 14ca9
 	call Func_3ca1
 	pop bc
 	pop hl
-	call DeallocateMemory
+	call FreeMemory
 	pop hl
 	ld a, l
 	and h
@@ -27250,7 +27239,7 @@ Func_14fde: ; 14fde (5:4fde)
 	call Func_2323
 Func_14ffa: ; 14ffa (5:4ffa)
 	pop hl
-	call DeallocateMemory
+	call FreeMemory
 	pop hl
 	pop bc
 	ret
@@ -28005,7 +27994,7 @@ Func_1563b: ; 1563b (5:563b)
 
 Func_1563e: ; 1563e (5:563e)
 	call GetHLAtSPPlus4
-	call DeallocateMemory
+	call FreeMemory
 	ld hl, $8000
 	pop bc
 	pop bc
@@ -33115,8 +33104,7 @@ Func_17ef7: ; 17ef7 (5:7ef7)
 	ret
 
 SECTION "Bank 06", ROMX, BANK [$06]
-GFX_18000: ; 18000
-	dr $18000, $1bfcf
+MapTiles_SGB_DMG: INCBIN "gfx/tiles/dmg_sgb.2bpp" ; 18000
 
 SECTION "Bank 07", ROMX, BANK [$07]
 Pointers_1c000: ; 1c000
@@ -48147,7 +48135,7 @@ Func_30519: ; 30519 (c:4519)
 	set_farcall_addrs_hli Func_daa40
 	read_hl_from_sp_plus $0b
 	call FarCall
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	pop hl
@@ -53704,7 +53692,7 @@ Func_32e6f: ; 32e6f (c:6e6f)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	pop hl
@@ -54055,7 +54043,7 @@ Func_3312f: ; 3312f (c:712f)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ret
@@ -54152,7 +54140,7 @@ Func_3321d: ; 3321d (c:721d)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	jp Func_332aa
@@ -60684,7 +60672,7 @@ Func_4e6fd: ; 4e6fd (13:66fd)
 	ld hl, $4
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	push hl
 	call FarCall
@@ -64201,7 +64189,7 @@ Func_504e1: ; 504e1 (14:44e1)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ld hl, -1
@@ -64281,7 +64269,7 @@ Func_505dc: ; 505dc (14:45dc)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ret
@@ -65050,7 +65038,7 @@ Func_50af6: ; 50af6 (14:4af6)
 	ld hl, wOAM25VTile
 	add hl, de
 	ld [hl], $0
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	call GetHLAtSPPlus4
 	call FarCall
 	pop hl
@@ -65254,7 +65242,7 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ld hl, $8000
@@ -65978,7 +65966,7 @@ Func_51239: ; 51239 (14:5239)
 	ld a, [hl]
 	cp $ff
 	jp z, Func_51252
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	call GetHLAtSPPlus6
 	call FarCall
 Func_51252: ; 51252 (14:5252)
@@ -66114,7 +66102,7 @@ Func_51385: ; 51385 (14:5385)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ret
@@ -66344,7 +66332,7 @@ Func_514ae: ; 514ae (14:54ae)
 	or b
 	jp z, Func_5153f
 	push hl
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ld hl, $4000
@@ -66377,10 +66365,10 @@ Func_5153f: ; 5153f (14:553f)
 	ld de, $1412
 	ld hl, $0
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop bc
 	pop hl
 	push bc
@@ -66468,7 +66456,7 @@ Func_515fd: ; 515fd (14:55fd)
 	ld bc, $8000
 Func_51644: ; 51644 (14:5644)
 	push bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop bc
 	pop de
 	push bc
@@ -66769,7 +66757,7 @@ Func_518e3: ; 518e3 (14:58e3)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	add sp, $3a
@@ -67506,7 +67494,7 @@ Func_51ea4: ; 51ea4
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -67529,7 +67517,7 @@ Func_51fa4: ; 51fa4 (14:5fa4)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -67595,7 +67583,7 @@ Func_5200b: ; 5200b (14:600b)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -67618,7 +67606,7 @@ Func_5208b: ; 5208b (14:608b)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -67812,7 +67800,7 @@ Func_52287: ; 52287 (14:6287)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -67932,7 +67920,7 @@ Func_523c5: ; 523c5 (14:63c5)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ld hl, sp+$0
@@ -68347,7 +68335,7 @@ Func_5270e: ; 5270e (14:670e)
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $1f
 	call FarCall
 	jp Func_527db
@@ -68372,7 +68360,7 @@ Func_5276c: ; 5276c (14:676c)
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $1f
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -68687,7 +68675,7 @@ Func_52a86: ; 52a86 (14:6a86)
 	ld de, $1412
 	ld hl, $0
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $13
 	call FarCall
 	call Func_1f7b
@@ -69031,7 +69019,7 @@ Func_52cdc: ; 52cdc (14:6cdc)
 	ld de, $1405
 	ld hl, $d
 	call Func_2323
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	pop bc
@@ -71149,7 +71137,7 @@ Func_53b6e::
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	pop hl
@@ -73910,7 +73898,7 @@ Func_559c2: ; 559c2 (15:59c2)
 	ld c, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -78515,7 +78503,7 @@ Func_57e30: ; 57e30 (15:7e30)
 
 Func_57e41: ; 57e41 (15:7e41)
 	push hl
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ret
@@ -78954,7 +78942,7 @@ Func_58fce: ; 58fce (16:4fce)
 Func_58fd1: ; 58fd1 (16:4fd1)
 	push af
 	push bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	pop af
@@ -79419,7 +79407,7 @@ Func_5c2c0: ; 5c2c0 (17:42c0)
 	pop de
 	call CopyFromDEtoHL
 	call WaitVideoTransfer
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $354
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -83318,7 +83306,7 @@ Func_5dd7d: ; 5dd7d (17:5d7d)
 	ld l, [hl]
 	ld h, a
 	call Func_21ca
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	pop af
@@ -85103,13 +85091,13 @@ Func_5ec15: ; 5ec15 (17:6c15)
 	call Func_1f7b
 	call Func_2009
 Func_5ec1b: ; 5ec1b (17:6c1b)
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	call GetHLAtSPPlus4
 	call FarCall
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	call GetHLAtSPPlus6
 	call FarCall
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	call GetHLAtSPPlus8
 	call FarCall
 	pop hl
@@ -87183,7 +87171,7 @@ Func_610df: ; 610df (18:50df)
 	inc hl
 	ld d, [hl]
 	call FarCall
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop af
 	push af
 	ld l, a
@@ -90050,7 +90038,7 @@ Func_626ff: ; 626ff (18:66ff)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	call GetHLAtSPPlus10
@@ -92739,7 +92727,7 @@ Data_680c4:
 
 Func_680d3:
 	push hl
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ret
@@ -95427,7 +95415,7 @@ Func_69399: ; 69399 (1a:5399)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_693e7
-	ld a, BANK(GFX_e4000)
+	ld a, BANK(MapTiles_CGB)
 	ld [wFarCallDestBank], a
 	pop hl
 	push hl
@@ -95439,7 +95427,7 @@ Func_69399: ; 69399 (1a:5399)
 	push bc
 	ld l, c
 	ld h, b
-	ld de, GFX_e4000
+	ld de, MapTiles_CGB
 	ld bc, $10
 	call FarRequestVideoData
 	pop bc
@@ -95456,7 +95444,7 @@ Func_693c7: ; 693c7 (1a:53c7)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, GFX_e4000
+	ld de, MapTiles_CGB
 	add hl, de
 	reg16swap de, hl
 	ld l, c
@@ -95468,7 +95456,7 @@ Func_693e4: ; 693e4 (1a:53e4)
 	jp Func_69422
 
 Func_693e7: ; 693e7 (1a:53e7)
-	ld a, BANK(GFX_18000)
+	ld a, BANK(MapTiles_SGB_DMG)
 	ld [wFarCallDestBank], a
 	pop hl
 	push hl
@@ -95480,7 +95468,7 @@ Func_693e7: ; 693e7 (1a:53e7)
 	push bc
 	ld l, c
 	ld h, b
-	ld de, GFX_18000
+	ld de, MapTiles_SGB_DMG
 	ld bc, $10
 	call FarRequestVideoData
 	pop bc
@@ -95497,7 +95485,7 @@ Func_69405: ; 69405 (1a:5405)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, GFX_18000
+	ld de, MapTiles_SGB_DMG
 	add hl, de
 	reg16swap de, hl
 	ld l, c
@@ -101438,7 +101426,7 @@ Func_6c2d8: ; 6c2d8 (1b:42d8)
 	ld a, [hl]
 	cp $4
 	jp c, Func_6c304
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	push hl
 	call FarCall
@@ -101460,7 +101448,7 @@ Func_6c304: ; 6c304 (1b:4304)
 	ld a, l
 	or h
 	jp z, Func_6c342
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	push hl
 	call FarCall
@@ -101546,7 +101534,7 @@ Func_6c3a2: ; 6c3a2 (1b:43a2)
 	jp Func_6c304
 
 Func_6c3fe: ; 6c3fe (1b:43fe)
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	push hl
 	call FarCall
@@ -101975,7 +101963,7 @@ Func_6c78d: ; 6c78d (1b:478d)
 	ld bc, $80
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $15
 	call FarCall
 	read_hl_from_sp_plus $13
@@ -106928,13 +106916,13 @@ Func_6eb1f: ; 6eb1f (1b:6b1f)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_6eb31
-	ld a, BANK(GFX_e4000)
-	ld de, GFX_e4000
+	ld a, BANK(MapTiles_CGB)
+	ld de, MapTiles_CGB
 	jp Func_6eb36
 
 Func_6eb31: ; 6eb31 (1b:6b31)
-	ld a, BANK(GFX_18000)
-	ld de, GFX_18000
+	ld a, BANK(MapTiles_SGB_DMG)
+	ld de, MapTiles_SGB_DMG
 Func_6eb36: ; 6eb36 (1b:6b36)
 	push af
 	push de
@@ -107773,10 +107761,10 @@ Func_6f0f7: ; 6f0f7 (1b:70f7)
 Func_6f1c5: ; 6f1c5 (1b:71c5)
 	push hl
 	push bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ld hl, sp+$c
@@ -108362,7 +108350,7 @@ Func_6f685: ; 6f685 (1b:7685)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	ret
@@ -108601,7 +108589,7 @@ Func_6f906: ; 6f906 (1b:7906)
 	pop de
 Func_6f947: ; 6f947 (1b:7947)
 	push de
-	set_farcall_addrs_hli DeallocateMemory
+	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
 	pop bc
@@ -109480,8 +109468,7 @@ Func_e3714:: ; e3714 (38:7714)
 	ret
 
 SECTION "Bank 39", ROMX, BANK [$39]
-GFX_e4000: ; e4000
-	dr $e4000, $e8000
+MapTiles_CGB: INCBIN "gfx/tiles/cgb.2bpp" ; e4000
 
 SECTION "Bank 3e 2", ROMX [$6fb2], BANK [$3e]
 	dr $fafb2, $fb0db
