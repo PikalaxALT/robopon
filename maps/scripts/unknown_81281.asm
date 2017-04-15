@@ -61,8 +61,7 @@ Func_81281:
 	cp $3
 	jp nz, Func_813ff
 Func_812c9: ; 812c9 (20:52c9)
-	ld hl, $c
-	call CheckEventFlag_20
+	checkevent $c
 	or a
 	jp nz, Func_812ec
 	ld e, $3
@@ -76,24 +75,20 @@ Func_812c9: ; 812c9 (20:52c9)
 	jp Func_813fc
 
 Func_812ec: ; 812ec (20:52ec)
-	ld hl, $2
-	call CheckEventFlag_20
+	checkevent $2
 	or a
 	jp z, Func_81300
-	ld hl, $3
-	call CheckEventFlag_20
+	checkevent $3
 	or a
 	jp nz, Func_8137b
 Func_81300: ; 81300 (20:5300)
 	ld e, $6
 	ld hl, Data_81169
 	call Func_800fb_20
-	ld hl, $2
-	call CheckEventFlag_20
+	checkevent $2
 	cp $1
 	jp nz, Func_8133b
-	ld hl, $3
-	call CheckEventFlag_20
+	checkevent $3
 	cp $1
 	jp nz, Func_8132e
 	ld e, $0
@@ -113,16 +108,13 @@ Func_81334: ; 81334 (20:5334)
 	ld a, $1
 	call Func_8013d_20
 Func_8133b: ; 8133b (20:533b)
-	ld hl, $3
-	call CheckEventFlag_20
+	checkevent $3
 	cp $1
 	jp nz, Func_8137b
-	ld hl, $4
-	call CheckEventFlag_20
+	checkevent $4
 	cp $1
 	jp z, Func_8135c
-	ld hl, $2
-	call CheckEventFlag_20
+	checkevent $2
 	cp $1
 	jp nz, Func_8136d
 Func_8135c: ; 8135c (20:535c)
@@ -146,12 +138,10 @@ Func_8137b: ; 8137b (20:537b)
 	ld e, $6
 	ld hl, Data_811bd
 	call Func_800fb_20
-	ld hl, $21
-	call CheckEventFlag_20
+	checkevent $21
 	cp $1
 	jp nz, Func_813ba
-	ld hl, $46
-	call CheckEventFlag_20
+	checkevent $46
 	or a
 	jp nz, Func_813ba
 	ld e, $4
@@ -196,8 +186,7 @@ Func_813ec: ; 813ec (20:53ec)
 	ld hl, Data_81265
 	call Func_800fb_20
 Func_813f4: ; 813f4 (20:53f4)
-	ld a, $3
-	call PlayMusic_20
+	playmusic $3
 	call Func_8001c_20
 Func_813fc: ; 813fc (20:53fc)
 	jp Func_81402
@@ -290,8 +279,7 @@ Data_814bb:
 	dr $814bb, $814c1
 
 Func_814c1: ; 814c1 (20:54c1)
-	ld a, $4
-	call PlayMusic_20
+	playmusic $4
 	ld c, $1
 	ld de, Data_814a9
 	ld a, BANK(Data_814a9)
@@ -309,31 +297,24 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld e, $0
 	ld a, $2
 	call Func_8013d_20
-	ld a, $36
-	call PlaySFX_20
-	ld hl, $1e
-	call ScriptSleep_20
+	playsfx $36
+	script_sleep $1e
 	call Func_801d5_20
 	ld c, $1
 	ld e, $2
 	ld a, $20
 	call Func_80176_20
-	ld a, $36
-	call PlaySFX_20
+	playsfx $36
 	call Func_801d5_20
-	ld a, $39
-	call PlaySFX_20
+	playsfx $39
 	ld a, $f
 	call FadeOutAudio_20
-	xor a
-	call PlayMusic_20
+	playmusic SONG_NONE
 	call Func_8018b_20
-	ld hl, $a
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_390e8
 	ld a, $1
 	call FadeInAudio_20
-	ld a, $3
-	call PlayMusic_20
+	playmusic $3
 	ld c, $1
 	ld e, $2
 	ld a, $1
@@ -342,8 +323,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	xor a
 	call Func_8013d_20
 	call Func_801d5_20
-	ld hl, $3c
-	call ScriptSleep_20
+	script_sleep $3c
 	ld e, $1
 	xor a
 	call Func_8013d_20
@@ -363,19 +343,14 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld e, $2
 	xor a
 	call SpriteFace_20
-	ld hl, $1e
-	call ScriptSleep_20
-	ld hl, $b
-	call PrintTextWithNPCName_20
+	script_sleep $1e
+	writenpctext TreeBitstreamText_3911a
 	writetext TreeBitstreamText_3914e
 	xor a
 	call Func_8021b_20
-	ld hl, $d
-	call PrintTextWithNPCName_20
-	ld hl, $e
-	call PrintTextWithNPCName_20
-	ld hl, $3c
-	call ScriptSleep_20
+	writenpctext TreeBitstreamText_39167
+	writenpctext TreeBitstreamText_3917e
+	script_sleep $3c
 	ld c, $1
 	ld e, $1
 	ld a, $5
@@ -383,14 +358,11 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld e, $d
 	ld a, $15
 	call Func_801e4_20
-	ld a, $28
-	call PlaySFX_20
+	playsfx $28
 	call Func_801d5_20
-	ld hl, $1e
-	call ScriptSleep_20
+	script_sleep $1e
 	call Func_8018b_20
-	ld hl, $f
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_391fd
 	ld bc, Data_814bb
 	ld e, BANK(Data_814bb)
 	xor a

@@ -29,12 +29,10 @@ Func_825eb: ; 825eb (20:65eb)
 	xor a
 	call Func_8013d_20
 Func_825f9: ; 825f9 (20:65f9)
-	ld hl, $2
-	call CheckEventFlag_20
+	checkevent $2
 	cp $1
 	jp nz, Func_8261f
-	ld hl, $3
-	call CheckEventFlag_20
+	checkevent $3
 	cp $1
 	jp nz, Func_8261f
 	ld a, [$c790]
@@ -44,7 +42,6 @@ Func_825f9: ; 825f9 (20:65f9)
 	ld hl, Data_825be
 	call Func_800fb_20
 Func_8261f: ; 8261f (20:661f)
-	ld a, $11
-	call PlayMusic_20
+	playmusic $11
 	call Func_8001c_20
 	ret

@@ -3,8 +3,7 @@ Data_819ac:
 
 Func_819b0:
 	push de
-	ld hl, $2
-	call CheckEventFlag_20
+	checkevent $2
 	or a
 	jp nz, Func_819e8
 	ld hl, sp+$0
@@ -14,8 +13,7 @@ Func_819b0:
 	ld e, $2
 	ld a, $3
 	call SpriteFace_20
-	ld hl, $28
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_39889
 	xor a
 	call PlayerFace_20
 	ld c, $1
@@ -51,8 +49,7 @@ Func_819fb: ; 819fb (20:59fb)
 	ld [$c7e9], a
 	ld a, $7
 	ld [$c7ea], a
-	ld a, $2e
-	call PlaySFX_20
+	playsfx $2e
 	ld a, $8
 	ld [$c7db], a
 	ld a, $8
@@ -81,8 +78,7 @@ Func_81a33: ; 81a33 (20:5a33)
 	ld [$c7e9], a
 	ld a, $7
 	ld [$c7ea], a
-	ld a, $2e
-	call PlaySFX_20
+	playsfx $2e
 	ld a, $8
 	ld [$c7db], a
 	ld a, $f

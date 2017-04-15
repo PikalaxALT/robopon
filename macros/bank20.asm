@@ -770,8 +770,7 @@ Func_806dd_\1:
 	ld hl, sp+$3
 	ld a, [hl]
 	call SpriteFace_\1
-	ld hl, $c8
-	call CheckEventFlag_\1
+	checkevent $c8
 	or a
 	jp nz, Func_80732_\1
 	ld hl, $36d

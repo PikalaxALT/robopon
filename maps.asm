@@ -51,8 +51,7 @@ Func_83213:
 	ld e, $1
 	ld hl, Data_83205
 	call Func_800fb_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d0
 	call Func_80f72_20
@@ -94,20 +93,17 @@ Func_8326c:
 	writetext TreeBitstreamText_46031
 	ld a, $1
 	call Func_8021b_20
-	ld hl, $108
-	call CheckEventFlag_20
+	checkevent $108
 	or a
 	jp nz, Func_832cb
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_832cb
-	ld hl, $114
-	call CheckEventFlag_20
+	checkevent $114
 	or a
 	jp nz, Func_832cb
 	writetext TreeBitstreamText_45fec
-	ld a, $2a
-	call PlaySFX_20
+	playsfx $2a
 	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
@@ -122,20 +118,17 @@ Func_832cb: ; 832cb (20:72cb)
 
 Func_832d4: ; 832d4 (20:72d4)
 	writetext TreeBitstreamText_46040
-	ld hl, $108
-	call CheckEventFlag_20
+	checkevent $108
 	or a
 	jp nz, Func_83318
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_83318
-	ld hl, $114
-	call CheckEventFlag_20
+	checkevent $114
 	or a
 	jp nz, Func_83318
 	writetext TreeBitstreamText_45fec
-	ld a, $2a
-	call PlaySFX_20
+	playsfx $2a
 	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
@@ -166,8 +159,7 @@ Func_83340:
 	ld e, $1
 	ld hl, Data_8333b
 	call Func_80ce7_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, Func_03d1
 	call Func_80f72_20
@@ -207,8 +199,7 @@ Func_833ba:
 	ld e, $3
 	ld hl, Data_83399
 	call LoadMapObjects_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d2
 	call Func_80f72_20
@@ -254,8 +245,7 @@ Func_83431:
 	ld e, $1
 	ld hl, Data_8342c
 	call Func_80ce7_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, Func_03d3
 	call Func_80f72_20
@@ -301,8 +291,7 @@ Func_834bd:
 	ld e, $1
 	ld hl, Data_834af
 	call Func_800fb_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d4
 	call Func_80f72_20
@@ -342,8 +331,7 @@ Func_83537:
 	ld e, $3
 	ld hl, Data_83516
 	call LoadMapObjects_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, GetSRAMBank
 	call Func_80f72_20
@@ -389,8 +377,7 @@ Func_835ae:
 	ld e, $1
 	ld hl, Data_835a9
 	call Func_80ce7_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d6
 	call Func_80f72_20
@@ -436,8 +423,7 @@ Func_83632:
 	ld e, $2
 	ld hl, Data_83628
 	call Func_80ce7_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d7
 	call Func_80f72_20
@@ -483,8 +469,7 @@ Func_836b1:
 	ld e, $1
 	ld hl, Data_836ac
 	call Func_80ce7_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d8
 	call Func_80f72_20
@@ -530,8 +515,7 @@ Func_83730:
 	ld e, $1
 	ld hl, Data_8372b
 	call Func_80ce7_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d9
 	call Func_80f72_20
@@ -571,8 +555,7 @@ Func_837aa:
 	ld e, $3
 	ld hl, Data_83789
 	call LoadMapObjects_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3da
 	call Func_80f72_20
@@ -618,8 +601,7 @@ Func_83816:
 	ld e, $1
 	ld hl, Data_83811
 	call Func_80ce7_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3db
 	call Func_80f72_20
@@ -671,8 +653,7 @@ Func_838a2:
 	ld e, $1
 	ld hl, Data_83894
 	call Func_800fb_20
-	ld a, SONG_SHOP
-	call PlayMusic_20
+	playmusic SONG_SHOP
 	call Func_83e56
 	ld [$c7a4], a
 	ld a, [$c7a4]
@@ -731,12 +712,10 @@ Data_83a1f:
 	add hl, sp
 	ld a, [hl]
 	call Func_8044b_20
-	ld hl, $58
-	call CheckEventFlag_20
+	checkevent $58
 	or a
 	jp nz, Func_83a5e
-	ld hl, $29d
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45c80
 	ld e, $1
 	ld hl, $58
 	call EventFlagAction_20
@@ -749,15 +728,13 @@ Func_83a5e: ; 83a5e (20:7a5e)
 	ld a, [$c7a4]
 	cp $ff
 	jp nz, Func_83a7b
-	ld hl, $48b
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_47e30
 	xor a
 	ld [$c79d], a
 	jp Func_83b6e
 
 Func_83a7b: ; 83a7b (20:7a7b)
-	ld hl, $100
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45e29
 	ld a, [$c78c]
 	inc a
 	ld [$c78c], a
@@ -778,24 +755,18 @@ Func_83a7b: ; 83a7b (20:7a7b)
 	jp z, Func_83adb
 	cp $a
 	jp nz, Func_83b6e
-	ld hl, $110
-	call CheckEventFlag_20
+	checkevent $110
 	or a
 	jp nz, Func_83adb
-	ld a, $5c
-	call PlaySFX_20
-	ld hl, $78
-	call ScriptSleep_20
-	ld hl, $484
-	call PrintTextWithNPCName_20
-	ld hl, $485
-	call PrintTextWithNPCName_20
+	playsfx $5c
+	script_sleep $78
+	writenpctext TreeBitstreamText_39c6c
+	writenpctext TreeBitstreamText_39c82
 	ld e, $1
 	ld hl, $110
 	call EventFlagAction_20
 Func_83adb: ; 83adb (20:7adb)
-	ld hl, $106
-	call CheckEventFlag_20
+	checkevent $106
 	or a
 	jp nz, Func_83af3
 	ld hl, $493
@@ -804,8 +775,7 @@ Func_83adb: ; 83adb (20:7adb)
 	ld hl, $106
 	call EventFlagAction_20
 Func_83af3: ; 83af3 (20:7af3)
-	ld hl, $105
-	call CheckEventFlag_20
+	checkevent $105
 	or a
 	jp nz, Func_83b0b
 	ld hl, $494
@@ -814,8 +784,7 @@ Func_83af3: ; 83af3 (20:7af3)
 	ld hl, $105
 	call EventFlagAction_20
 Func_83b0b: ; 83b0b (20:7b0b)
-	ld hl, $104
-	call CheckEventFlag_20
+	checkevent $104
 	or a
 	jp nz, Func_83b23
 	ld hl, $48f
@@ -824,8 +793,7 @@ Func_83b0b: ; 83b0b (20:7b0b)
 	ld hl, $104
 	call EventFlagAction_20
 Func_83b23: ; 83b23 (20:7b23)
-	ld hl, $103
-	call CheckEventFlag_20
+	checkevent $103
 	or a
 	jp nz, Func_83b3b
 	ld hl, $492
@@ -834,8 +802,7 @@ Func_83b23: ; 83b23 (20:7b23)
 	ld hl, $103
 	call EventFlagAction_20
 Func_83b3b: ; 83b3b (20:7b3b)
-	ld hl, $102
-	call CheckEventFlag_20
+	checkevent $102
 	or a
 	jp nz, Func_83b53
 	ld hl, $491
@@ -844,8 +811,7 @@ Func_83b3b: ; 83b3b (20:7b3b)
 	ld hl, $102
 	call EventFlagAction_20
 Func_83b53: ; 83b53 (20:7b53)
-	ld hl, $101
-	call CheckEventFlag_20
+	checkevent $101
 	or a
 	jp nz, Func_83b6b
 	ld hl, $490
@@ -863,17 +829,14 @@ Func_83b71: ; 83b71 (20:7b71)
 	ld a, [$c78c]
 	cp $14
 	jp nz, Func_83b96
-	ld hl, $e7
-	call CheckEventFlag_20
+	checkevent $e7
 	cp $1
 	jp nz, Func_83b8d
-	ld hl, $2a5
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45db0
 	jp Func_83b93
 
 Func_83b8d: ; 83b8d (20:7b8d)
-	ld hl, $456
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45dff
 Func_83b93: ; 83b93 (20:7b93)
 	jp Func_83e48
 
@@ -925,8 +888,7 @@ Func_83b96: ; 83b96 (20:7b96)
 	jp z, Func_83c1e
 	or a
 	jp nz, Func_83c6f
-	ld hl, $2a1
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45d1c
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -947,8 +909,7 @@ Func_83b96: ; 83b96 (20:7b96)
 	jp Func_83c6f
 
 Func_83c1e: ; 83c1e (20:7c1e)
-	ld hl, $2a2
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45d3d
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -973,8 +934,7 @@ Func_83c1e: ; 83c1e (20:7c1e)
 	jp Func_83c6f
 
 Func_83c48: ; 83c48 (20:7c48)
-	ld hl, $2a3
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45d61
 	ld hl, sp+$b
 	push hl
 	ld hl, $c78c
@@ -1056,8 +1016,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	set_farcall_addrs_hli Func_daa40
 	pop hl
 	call FarCall
-	ld hl, $2a4
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45d82
 	ld a, [wMapX]
 	cp $3
 	jp nz, Func_83d45
@@ -1070,8 +1029,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	add hl, sp
 	ld a, [hl]
 	call Func_80688_20
-	ld a, $2e
-	call PlaySFX_20
+	playsfx $2e
 	jp Func_83d57
 
 Func_83d45: ; 83d45 (20:7d45)
@@ -1081,16 +1039,14 @@ Func_83d45: ; 83d45 (20:7d45)
 	add hl, sp
 	ld a, [hl]
 	call Func_80688_20
-	ld a, $2e
-	call PlaySFX_20
+	playsfx $2e
 Func_83d57: ; 83d57 (20:7d57)
 	ld e, $0
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
 	call Func_8013d_20
-	ld a, $2e
-	call PlaySFX_20
+	playsfx $2e
 	push hl
 	push hl
 	ld hl, sp+$f
@@ -1195,14 +1151,12 @@ Func_83dd5: ; 83dd5 (20:7dd5)
 	jp Func_83e3f
 
 Func_83e39: ; 83e39 (20:7e39)
-	ld hl, $2a0
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45cff
 Func_83e3f: ; 83e3f (20:7e3f)
 	jp Func_83e48
 
 Func_83e42: ; 83e42 (20:7e42)
-	ld hl, $29f
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45cd8
 Func_83e48: ; 83e48 (20:7e48)
 	ld hl, $130
 	add hl, sp
@@ -1392,8 +1346,7 @@ Func_851bc: ; 851bc (21:51bc)
 	call Func_80cc6_21
 	ld a, $2
 	ld [$c7e2], a
-	ld hl, $32
-	call CheckEventFlag_21
+	checkevent $32
 	or a
 	jp nz, Func_851fe
 	ld e, $5
@@ -1402,8 +1355,7 @@ Func_851bc: ; 851bc (21:51bc)
 	ld e, $4
 	ld hl, Data_85140
 	call Func_800fb_21
-	ld a, SONG_TOWN1
-	call PlayMusic_21
+	playmusic SONG_TOWN1
 	call Func_8001c_21
 	call Func_852ac
 	ld e, $1
@@ -1412,25 +1364,21 @@ Func_851bc: ; 851bc (21:51bc)
 	jp Func_85270
 
 Func_851fe: ; 851fe (21:51fe)
-	ld hl, $5
-	call CheckEventFlag_21
+	checkevent $5
 	or a
 	jp z, Func_85212
-	ld hl, $6
-	call CheckEventFlag_21
+	checkevent $6
 	or a
 	jp nz, Func_85260
 Func_85212: ; 85212 (21:5212)
 	ld e, $5
 	ld hl, Data_850fa
 	call Func_800fb_21
-	ld a, SONG_TOWN1
-	call PlayMusic_21
+	playmusic SONG_TOWN1
 	ld e, $0
 	ld a, $2
 	call Func_8013d_21
-	ld hl, $5
-	call CheckEventFlag_21
+	checkevent $5
 	cp $1
 	jp nz, Func_8523a
 	ld e, $0
@@ -1444,8 +1392,7 @@ Func_8523a: ; 8523a (21:523a)
 	xor a
 	call Func_80080_21
 Func_85242: ; 85242 (21:5242)
-	ld hl, $6
-	call CheckEventFlag_21
+	checkevent $6
 	cp $1
 	jp nz, Func_85257
 	ld e, $0
@@ -1459,8 +1406,7 @@ Func_85257: ; 85257 (21:5257)
 	ld a, $1
 	call Func_80080_21
 Func_85260: ; 85260 (21:5260)
-	ld a, SONG_TOWN1
-	call PlayMusic_21
+	playmusic SONG_TOWN1
 	ld e, $4
 	ld hl, Data_85140
 	call Func_800fb_21
@@ -1505,8 +1451,7 @@ Data_852a4: ; 852a4
 	dr $852a4, $852ac
 
 Func_852ac: ; 852ac (21:52ac)
-	ld hl, $3c
-	call ScriptSleep_21
+	script_sleep $3c
 	ld c, $1
 	ld e, $1
 	ld a, $5
@@ -1514,16 +1459,12 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, $f
 	ld a, $17
 	call Func_801e4_21
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	call Func_801d5_21
-	ld hl, $3c
-	call ScriptSleep_21
+	script_sleep $3c
 	call Func_8018b_21
-	xor a
-	call PlayMusic_21
-	ld a, SONG_ENCOUNTER_EVIL
-	call PlayMusic_21
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	ld bc, Data_85274
 	ld e, BANK(Data_85274)
 	xor a
@@ -1533,22 +1474,14 @@ Func_852ac: ; 852ac (21:52ac)
 	ld a, $1
 	call Func_80688_21
 	call Func_8020c_21
-	ld hl, $3c
-	call ScriptSleep_21
-	ld hl, $2f
-	call PrintTextWithNPCName_21
-	ld hl, $30
-	call PrintTextWithNPCName_21
-	ld hl, $31
-	call PrintTextWithNPCName_21
-	ld hl, $32
-	call PrintTextWithNPCName_21
-	xor a
-	call PlayMusic_21
-	ld hl, $33
-	call PrintTextWithNPCName_21
-	ld a, SONG_18
-	call PlayMusic_21
+	script_sleep $3c
+	writenpctext TreeBitstreamText_399f1
+	writenpctext TreeBitstreamText_39a27
+	writenpctext TreeBitstreamText_39a42
+	writenpctext TreeBitstreamText_39a5f
+	playmusic SONG_NONE
+	writenpctext TreeBitstreamText_39a7b
+	playmusic SONG_18
 	ld e, $0
 	xor a
 	call SpriteFace_21
@@ -1560,8 +1493,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld a, $2
 	call Func_80688_21
 	call Func_8020c_21
-	ld a, $33
-	call PlaySFX_21
+	playsfx $33
 	ld bc, Data_85286
 	ld e, BANK(Data_85286)
 	ld a, $1
@@ -1584,28 +1516,19 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, $2
 	ld a, $1
 	call SpriteFace_21
-	ld hl, $3c
-	call ScriptSleep_21
-	xor a
-	call PlayMusic_21
-	ld a, SONG_TITLE
-	call PlayMusic_21
-	ld hl, $34
-	call PrintTextWithNPCName_21
-	ld hl, $35
-	call PrintTextWithNPCName_21
-	ld hl, $36
-	call PrintTextWithNPCName_21
-	ld hl, $37
-	call PrintTextWithNPCName_21
+	script_sleep $3c
+	playmusic SONG_NONE
+	playmusic SONG_TITLE
+	writenpctext TreeBitstreamText_39a8f
+	writenpctext TreeBitstreamText_39b0b
+	writenpctext TreeBitstreamText_39b45
+	writenpctext TreeBitstreamText_39ba9
 	ld a, $a
 	call FadeOutAudio_21
-	xor a
-	call PlayMusic_21
+	playmusic SONG_NONE
 	ld a, $1
 	call FadeInAudio_21
-	ld a, SONG_18
-	call PlayMusic_21
+	playmusic SONG_18
 	ld bc, Data_85292
 	ld e, BANK(Data_85292)
 	ld a, $2
@@ -1623,8 +1546,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld a, $1
 	call Func_80688_21
 	call Func_8020c_21
-	ld a, $33
-	call PlaySFX_21
+	playsfx $33
 	ld e, $3
 	ld a, $1
 	call SpriteFace_21
@@ -1632,10 +1554,8 @@ Func_852ac: ; 852ac (21:52ac)
 	ld de, Data_85298
 	ld a, BANK(Data_85298)
 	call ApplyMovementData_21
-	ld hl, $1e
-	call ScriptSleep_21
-	ld a, $2e
-	call PlaySFX_21
+	script_sleep $1e
+	playsfx $2e
 	call Func_8020c_21
 	ld e, $2
 	xor a
@@ -1660,18 +1580,12 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, $2
 	ld a, $1
 	call SpriteFace_21
-	ld a, $5c
-	call PlaySFX_21
-	ld hl, $78
-	call ScriptSleep_21
-	ld hl, $484
-	call PrintTextWithNPCName_21
-	ld hl, $483
-	call PrintTextWithNPCName_21
-	xor a
-	call PlayMusic_21
-	ld a, SONG_TOWN1
-	call PlayMusic_21
+	playsfx $5c
+	script_sleep $78
+	writenpctext TreeBitstreamText_39c6c
+	writenpctext TreeBitstreamText_39c19
+	playmusic SONG_NONE
+	playmusic SONG_TOWN1
 	ret
 
 Data_85450:
@@ -1691,14 +1605,11 @@ Func_854aa:
 	ld a, e
 	or a
 	jp nz, Func_85570
-	ld hl, $14
-	call CheckEventFlag_21
+	checkevent $14
 	or a
 	jp nz, Func_854c8
-	ld a, $69
-	call PlaySFX_21
-	ld hl, $44
-	call PrintTextWithNPCName_21
+	playsfx $69
+	writenpctext TreeBitstreamText_3a2e2
 	jp Func_85570
 
 Func_854c8: ; 854c8 (21:54c8)
@@ -1706,13 +1617,9 @@ Func_854c8: ; 854c8 (21:54c8)
 	ld a, [hl]
 	or a
 	jp nz, Func_8551c
-	ld hl, $45
-	call PrintTextWithNPCName_21
-	ld hl, $1e
-	call ScriptSleep_21
-	ld de, Data_85572
-	ld hl, Data_85450
-	call ScriptedBattle_21
+	writenpctext TreeBitstreamText_3a308
+	script_sleep $1e
+	startbattle Data_85572, Data_85450
 	or a
 	jp nz, Func_854eb
 	jp Func_85570
@@ -1729,8 +1636,7 @@ Func_854eb: ; 854eb (21:54eb)
 	ld e, $1
 	ld hl, $5
 	call EventFlagAction_21
-	ld hl, $6
-	call CheckEventFlag_21
+	checkevent $6
 	or a
 	jp nz, Func_85519
 	ld a, $2
@@ -1745,13 +1651,9 @@ Func_8551c: ; 8551c (21:551c)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_85570
-	ld hl, $46
-	call PrintTextWithNPCName_21
-	ld hl, $1e
-	call ScriptSleep_21
-	ld de, Data_8557a
-	ld hl, Data_85479
-	call ScriptedBattle_21
+	writenpctext TreeBitstreamText_3a349
+	script_sleep $1e
+	startbattle Data_8557a, Data_85479
 	or a
 	jp nz, Func_85540
 	jp Func_85570
@@ -1768,8 +1670,7 @@ Func_85540: ; 85540 (21:5540)
 	ld e, $1
 	ld hl, $6
 	call EventFlagAction_21
-	ld hl, $5
-	call CheckEventFlag_21
+	checkevent $5
 	or a
 	jp nz, Func_85570
 	ld a, $2
@@ -1810,8 +1711,7 @@ Func_855dc:
 	ld a, [hl]
 	cp $3
 	jp nz, Func_8560d
-	ld hl, $6
-	call CheckEventFlag_21
+	checkevent $6
 	or a
 	jp nz, Func_8560a
 	ld e, $3
@@ -1829,8 +1729,7 @@ Func_8560d: ; 8560d (21:560d)
 	ld a, [hl]
 	cp $4
 	jp nz, Func_8562e
-	ld hl, $5
-	call CheckEventFlag_21
+	checkevent $5
 	or a
 	jp nz, Func_8562e
 	ld e, $1
@@ -1845,17 +1744,13 @@ Func_8562e: ; 8562e (21:562e)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_856d9
-	ld hl, $47
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a368
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
 	jp nz, Func_8568d
-	ld hl, $1e
-	call ScriptSleep_21
-	ld de, Data_856dc
-	ld hl, Data_855ab
-	call ScriptedBattle_21
+	script_sleep $1e
+	startbattle Data_856dc, Data_855ab
 	or a
 	jp nz, Func_8565a
 	jp Func_856d9
@@ -1872,8 +1767,7 @@ Func_8565a: ; 8565a (21:565a)
 	ld e, $1
 	ld hl, $6
 	call EventFlagAction_21
-	ld hl, $5
-	call CheckEventFlag_21
+	checkevent $5
 	or a
 	jp nz, Func_8568a
 	ld a, $2
@@ -1888,11 +1782,8 @@ Func_8568d: ; 8568d (21:568d)
 	ld a, [hl]
 	cp $4
 	jp nz, Func_856d9
-	ld hl, $1e
-	call ScriptSleep_21
-	ld de, Data_856e4
-	ld hl, Data_85582
-	call ScriptedBattle_21
+	script_sleep $1e
+	startbattle Data_856e4, Data_85582
 	or a
 	jp nz, Func_856ab
 	jp Func_856d9
@@ -1909,8 +1800,7 @@ Func_856ab: ; 856ab (21:56ab)
 	ld e, $1
 	ld hl, $5
 	call EventFlagAction_21
-	ld hl, $6
-	call CheckEventFlag_21
+	checkevent $6
 	or a
 	jp nz, Func_856d9
 	ld a, $2
@@ -1952,8 +1842,7 @@ Func_85746:
 	ld a, [hl]
 	cp $2
 	jp nz, Func_85777
-	ld hl, $6
-	call CheckEventFlag_21
+	checkevent $6
 	or a
 	jp nz, Func_85774
 	ld e, $3
@@ -1971,8 +1860,7 @@ Func_85777: ; 85777 (21:5777)
 	ld a, [hl]
 	cp $3
 	jp nz, Func_85798
-	ld hl, $5
-	call CheckEventFlag_21
+	checkevent $5
 	or a
 	jp nz, Func_85798
 	ld e, $1
@@ -1987,17 +1875,13 @@ Func_85798: ; 85798 (21:5798)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_8581b
-	ld hl, $47
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a368
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $2
 	jp nz, Func_857e3
-	ld hl, $1e
-	call ScriptSleep_21
-	ld de, Data_8581e
-	ld hl, Data_85715
-	call ScriptedBattle_21
+	script_sleep $1e
+	startbattle Data_8581e, Data_85715
 	or a
 	jp nz, Func_857c4
 	jp Func_8581b
@@ -2021,11 +1905,8 @@ Func_857e3: ; 857e3 (21:57e3)
 	ld a, [hl]
 	cp $3
 	jp nz, Func_8581b
-	ld hl, $1e
-	call ScriptSleep_21
-	ld de, Data_85826
-	ld hl, Data_856ec
-	call ScriptedBattle_21
+	script_sleep $1e
+	startbattle Data_85826, Data_856ec
 	or a
 	jp nz, Func_85801
 	jp Func_8581b
@@ -2091,18 +1972,15 @@ Func_8585f: ; 8585f (21:585f)
 	ld a, BANK(Data_8582e)
 	call ApplyMovementData_21
 	call Func_8020c_21
-	xor a
-	call PlayMusic_21
-	ld a, SONG_0A
-	call PlayMusic_21
+	playmusic SONG_NONE
+	playmusic SONG_0A
 	xor a
 	call Func_80653_21
 	ld c, $1
 	ld e, $1
 	ld a, $b
 	call Func_80176_21
-	ld a, $44
-	call PlaySFX_21
+	playsfx $44
 	call Func_801d5_21
 	call Func_8018b_21
 	ld a, $4
@@ -2143,9 +2021,7 @@ Func_858f9:
 	writetext_yesorno TreeBitstreamText_472f0
 	or a
 	jp nz, Func_85928
-	ld de, Data_85930
-	ld hl, Data_858d0
-	call ScriptedBattle_21
+	startbattle Data_85930, Data_858d0
 	or a
 	jp nz, Func_8591f
 	jp Func_8592e
@@ -2218,12 +2094,10 @@ Func_85a61: ; 85a61 (21:5a61)
 	ld e, $5
 	ld hl, Data_85992
 	call LoadMapObjects_21
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_85aaf
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_85aaf
 	ld a, $3
@@ -2231,10 +2105,8 @@ Func_85a61: ; 85a61 (21:5a61)
 	ld e, $5
 	ld hl, Data_85938
 	call Func_80d24_21
-	ld a, SONG_CAVE
-	call PlayMusic_21
-	ld hl, $0
-	call CheckEventFlag_21
+	playmusic SONG_CAVE
+	checkevent $0
 	or a
 	jp nz, Func_85aa8
 	ld a, $1
@@ -2251,18 +2123,15 @@ Func_85aaf: ; 85aaf (21:5aaf)
 	ld e, $5
 	ld hl, Data_859c9
 	call Func_800fb_21
-	ld a, SONG_11
-	call PlayMusic_21
+	playmusic SONG_11
 Func_85abc: ; 85abc (21:5abc)
 	ld a, [$c797]
 	cp $7
 	jp c, Func_85afc
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_85ada
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp z, Func_85afc
 Func_85ada: ; 85ada (21:5ada)
@@ -2272,8 +2141,7 @@ Func_85ada: ; 85ada (21:5ada)
 	ld e, $1
 	ld hl, Data_85a0f
 	call Func_800fb_21
-	ld hl, $14
-	call CheckEventFlag_21
+	checkevent $14
 	cp $1
 	jp nz, Func_85afc
 	ld de, Data_8598e
@@ -2289,24 +2157,27 @@ Func_85afc: ; 85afc (21:5afc)
 	ret
 
 Data_85b09:
-	dr $85b09, $85b17
+	dtext_tree_pointer TreeBitstreamText_39d7e
+	dtext_tree_pointer TreeBitstreamText_39d95
+	dtext_tree_pointer TreeBitstreamText_39dac
+	dtext_tree_pointer TreeBitstreamText_39dc3
+	dtext_tree_pointer TreeBitstreamText_39dda
+	dtext_tree_pointer TreeBitstreamText_39df1
+	dtext_tree_pointer TreeBitstreamText_39e08
 
 Func_85b17:
 	push af
 	ld a, e
 	or a
 	jp nz, Func_85b6d
-	ld hl, $c0
-	call CheckEventFlag_21
+	checkevent $c0
 	or a
 	jp nz, Func_85b52
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $38
-	call PrintTextWithNPCName_21
-	ld a, $2a
-	call PlaySFX_21
+	writenpctext TreeBitstreamText_39cd9
+	playsfx $2a
 	writetext TreeBitstreamText_39d70
 	ld c, $0
 	ld e, $1
@@ -2347,22 +2218,17 @@ Func_85b98:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $c0
-	call CheckEventFlag_21
+	checkevent $c0
 	cp $1
 	jp nz, Func_85c14
-	ld hl, $64
-	call CheckEventFlag_21
+	checkevent $64
 	or a
 	jp nz, Func_85c0b
-	ld hl, $39
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39eb7
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_85c02
-	ld de, Data_85c1c
-	ld hl, Data_85b6f
-	call ScriptedBattle_21
+	startbattle Data_85c1c, Data_85b6f
 	or a
 	jp nz, Func_85bd9
 	jp Func_85c1a
@@ -2374,24 +2240,19 @@ Func_85bd9: ; 85bd9 (21:5bd9)
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	writetext TreeBitstreamText_3a272
-	ld hl, $3c
-	call ScriptSleep_21
-	ld hl, $3a
-	call PrintTextWithNPCName_21
+	script_sleep $3c
+	writenpctext TreeBitstreamText_39ed3
 	jp Func_85c08
 
 Func_85c02: ; 85c02 (21:5c02)
-	ld hl, $3b
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39ef3
 Func_85c08: ; 85c08 (21:5c08)
 	jp Func_85c11
 
 Func_85c0b: ; 85c0b (21:5c0b)
-	ld hl, $168
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39f09
 Func_85c11: ; 85c11 (21:5c11)
 	jp Func_85c1a
 
@@ -2456,12 +2317,10 @@ Func_85d22: ; 85d22 (21:5d22)
 	ld e, $2
 	ld hl, Data_85c82
 	call LoadMapObjects_21
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_85d70
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_85d70
 	ld a, $3
@@ -2469,10 +2328,8 @@ Func_85d22: ; 85d22 (21:5d22)
 	ld e, $5
 	ld hl, Data_85c28
 	call Func_80d24_21
-	ld a, SONG_CAVE
-	call PlayMusic_21
-	ld hl, $0
-	call CheckEventFlag_21
+	playmusic SONG_CAVE
+	checkevent $0
 	or a
 	jp nz, Func_85d69
 	ld a, $1
@@ -2489,11 +2346,9 @@ Func_85d70: ; 85d70 (21:5d70)
 	ld e, $5
 	ld hl, Data_85c98
 	call Func_800fb_21
-	ld a, SONG_11
-	call PlayMusic_21
+	playmusic SONG_11
 Func_85d7d: ; 85d7d (21:5d7d)
-	ld hl, $14
-	call CheckEventFlag_21
+	checkevent $14
 	or a
 	jp nz, Func_85d97
 	ld a, [$c797]
@@ -2522,25 +2377,20 @@ Func_85dcd:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $c0
-	call CheckEventFlag_21
+	checkevent $c0
 	cp $1
 	jp nz, Func_85e5a
 	ld a, [$c797]
 	cp $6
 	jp c, Func_85e51
-	ld hl, $6a
-	call CheckEventFlag_21
+	checkevent $6a
 	or a
 	jp nz, Func_85e48
-	ld hl, $221
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a1de
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_85e3f
-	ld de, Data_85e62
-	ld hl, Data_85da4
-	call ScriptedBattle_21
+	startbattle Data_85e62, Data_85da4
 	or a
 	jp nz, Func_85e16
 	jp Func_85e60
@@ -2552,30 +2402,24 @@ Func_85e16: ; 85e16 (21:5e16)
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	writetext TreeBitstreamText_3a272
-	ld hl, $3c
-	call ScriptSleep_21
-	ld hl, $222
-	call PrintTextWithNPCName_21
+	script_sleep $3c
+	writenpctext TreeBitstreamText_3a202
 	jp Func_85e45
 
 Func_85e3f: ; 85e3f (21:5e3f)
-	ld hl, $25e
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a215
 Func_85e45: ; 85e45 (21:5e45)
 	jp Func_85e4e
 
 Func_85e48: ; 85e48 (21:5e48)
-	ld hl, $170
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a22e
 Func_85e4e: ; 85e4e (21:5e4e)
 	jp Func_85e57
 
 Func_85e51: ; 85e51 (21:5e51)
-	ld hl, $220
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a1b9
 Func_85e57: ; 85e57 (21:5e57)
 	jp Func_85e60
 
@@ -2660,18 +2504,14 @@ Func_85fd8: ; 85fd8 (21:5fd8)
 	ld e, $3
 	ld hl, Data_85f05
 	call LoadMapObjects_21
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_86014
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_86014
-	ld a, SONG_CAVE
-	call PlayMusic_21
-	ld hl, $0
-	call CheckEventFlag_21
+	playmusic SONG_CAVE
+	checkevent $0
 	or a
 	jp nz, Func_8600d
 	ld a, $1
@@ -2685,8 +2525,7 @@ Func_86011: ; 86011 (21:6011)
 	jp Func_86019
 
 Func_86014: ; 86014 (21:6014)
-	ld a, SONG_11
-	call PlayMusic_21
+	playmusic SONG_11
 Func_86019: ; 86019 (21:6019)
 	call Func_8001c_21
 	ld a, [$c7de]
@@ -2694,12 +2533,10 @@ Func_86019: ; 86019 (21:6019)
 	jp z, Func_86060
 	cp $3
 	jp nz, Func_86094
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_8604f
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_8604f
 	ld a, $3
@@ -2719,12 +2556,10 @@ Func_86057: ; 86057 (21:6057)
 	jp Func_86094
 
 Func_86060: ; 86060 (21:6060)
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_86086
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_86086
 	ld a, $3
@@ -2758,22 +2593,17 @@ Func_860c1:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $c0
-	call CheckEventFlag_21
+	checkevent $c0
 	cp $1
 	jp nz, Func_8613d
-	ld hl, $66
-	call CheckEventFlag_21
+	checkevent $66
 	or a
 	jp nz, Func_86134
-	ld hl, $40
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a00a
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_8612b
-	ld de, Data_86145
-	ld hl, Data_86098
-	call ScriptedBattle_21
+	startbattle Data_86145, Data_86098
 	or a
 	jp nz, Func_86102
 	jp Func_86143
@@ -2785,24 +2615,19 @@ Func_86102: ; 86102 (21:6102)
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	writetext TreeBitstreamText_3a272
-	ld hl, $3c
-	call ScriptSleep_21
-	ld hl, $41
-	call PrintTextWithNPCName_21
+	script_sleep $3c
+	writenpctext TreeBitstreamText_3a024
 	jp Func_86131
 
 Func_8612b: ; 8612b (21:612b)
-	ld hl, $42
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a03a
 Func_86131: ; 86131 (21:6131)
 	jp Func_8613a
 
 Func_86134: ; 86134 (21:6134)
-	ld hl, $16d
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a04b
 Func_8613a: ; 8613a (21:613a)
 	jp Func_86143
 
@@ -2826,22 +2651,17 @@ Func_8617b:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $c0
-	call CheckEventFlag_21
+	checkevent $c0
 	cp $1
 	jp nz, Func_861f7
-	ld hl, $68
-	call CheckEventFlag_21
+	checkevent $68
 	or a
 	jp nz, Func_861ee
-	ld hl, $21a
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a138
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_861e5
-	ld de, Data_861ff
-	ld hl, Data_86152
-	call ScriptedBattle_21
+	startbattle Data_861ff, Data_86152
 	or a
 	jp nz, Func_861bc
 	jp Func_861fd
@@ -2853,24 +2673,19 @@ Func_861bc: ; 861bc (21:61bc)
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	writetext TreeBitstreamText_3a272
-	ld hl, $3c
-	call ScriptSleep_21
-	ld hl, $21b
-	call PrintTextWithNPCName_21
+	script_sleep $3c
+	writenpctext TreeBitstreamText_3a151
 	jp Func_861eb
 
 Func_861e5: ; 861e5 (21:61e5)
-	ld hl, Func_021c
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a167
 Func_861eb: ; 861eb (21:61eb)
 	jp Func_861f4
 
 Func_861ee: ; 861ee (21:61ee)
-	ld hl, $179
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a184
 Func_861f4: ; 861f4 (21:61f4)
 	jp Func_861fd
 
@@ -2964,18 +2779,14 @@ Func_86458: ; 86458 (21:6458)
 	inc a
 	ld [$c7de], a
 Func_86467: ; 86467 (21:6467)
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_8649b
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_8649b
-	ld a, SONG_CAVE
-	call PlayMusic_21
-	ld hl, $0
-	call CheckEventFlag_21
+	playmusic SONG_CAVE
+	checkevent $0
 	or a
 	jp nz, Func_86494
 	ld a, $1
@@ -2989,8 +2800,7 @@ Func_86498: ; 86498 (21:6498)
 	jp Func_864a0
 
 Func_8649b: ; 8649b (21:649b)
-	ld a, SONG_11
-	call PlayMusic_21
+	playmusic SONG_11
 Func_864a0: ; 864a0 (21:64a0)
 	ld a, [$c7de]
 	cp $6
@@ -3002,12 +2812,10 @@ Func_864a0: ; 864a0 (21:64a0)
 	ld e, $3
 	ld hl, Data_862fe
 	call LoadMapObjects_21
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_864e0
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_864e0
 	ld a, $3
@@ -3031,12 +2839,10 @@ Func_864f4: ; 864f4 (21:64f4)
 	ld e, $3
 	ld hl, Data_8631f
 	call LoadMapObjects_21
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_86522
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_86522
 	ld a, $3
@@ -3060,12 +2866,10 @@ Func_86536: ; 86536 (21:6536)
 	ld e, $3
 	ld hl, Data_86340
 	call LoadMapObjects_21
-	ld hl, $38
-	call CheckEventFlag_21
+	checkevent $38
 	cp $1
 	jp nz, Func_86564
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	cp $1
 	jp nz, Func_86564
 	ld a, $3
@@ -3097,12 +2901,10 @@ Func_86579:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $14
-	call CheckEventFlag_21
+	checkevent $14
 	or a
 	jp nz, Func_865f4
-	ld hl, $c5
-	call CheckEventFlag_21
+	checkevent $c5
 	or a
 	jp nz, Func_865eb
 	ld a, $3b
@@ -3112,22 +2914,19 @@ Func_86579:
 	writenpctext_yesorno TreeBitstreamText_3f7e8
 	or a
 	jp nz, Func_865be
-	ld hl, $162
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3f85e
 	ld e, $1
 	ld hl, $c5
 	call EventFlagAction_21
 	jp Func_865df
 
 Func_865be: ; 865be (21:65be)
-	ld hl, $164
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3f8cd
 	writetext TreeBitstreamText_3f8f1
 	ld e, $0
 	ld a, $7f
 	call Func_80d74_21
-	ld hl, $3f6
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3f901
 	ld e, $1
 	ld hl, $c5
 	call EventFlagAction_21
@@ -3135,8 +2934,7 @@ Func_865df: ; 865df (21:65df)
 	jp Func_865e8
 
 Func_865e2: ; 865e2 (21:65e2)
-	ld hl, $160
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3f7ae
 Func_865e8: ; 865e8 (21:65e8)
 	jp Func_865f1
 
@@ -3162,22 +2960,17 @@ Func_86625:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $c0
-	call CheckEventFlag_21
+	checkevent $c0
 	cp $1
 	jp nz, Func_866a1
-	ld hl, $65
-	call CheckEventFlag_21
+	checkevent $65
 	or a
 	jp nz, Func_86698
-	ld hl, $3d
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39f37
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_8668f
-	ld de, Data_866a9
-	ld hl, Data_865fc
-	call ScriptedBattle_21
+	startbattle Data_866a9, Data_865fc
 	or a
 	jp nz, Func_86666
 	jp Func_866a7
@@ -3189,24 +2982,19 @@ Func_86666: ; 86666 (21:6666)
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	writetext TreeBitstreamText_3a272
-	ld hl, $3c
-	call ScriptSleep_21
-	ld hl, $3e
-	call PrintTextWithNPCName_21
+	script_sleep $3c
+	writenpctext TreeBitstreamText_39f4e
 	jp Func_86695
 
 Func_8668f: ; 8668f (21:668f)
-	ld hl, $3f
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39f5f
 Func_86695: ; 86695 (21:6695)
 	jp Func_8669e
 
 Func_86698: ; 86698 (21:6698)
-	ld hl, $16a
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39f70
 Func_8669e: ; 8669e (21:669e)
 	jp Func_866a7
 
@@ -3230,22 +3018,17 @@ Func_866df:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $c0
-	call CheckEventFlag_21
+	checkevent $c0
 	cp $1
 	jp nz, Func_8675b
-	ld hl, $67
-	call CheckEventFlag_21
+	checkevent $67
 	or a
 	jp nz, Func_86752
-	ld hl, $43
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a097
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_86749
-	ld de, Data_86763
-	ld hl, Data_866b6
-	call ScriptedBattle_21
+	startbattle Data_86763, Data_866b6
 	or a
 	jp nz, Func_86720
 	jp Func_86761
@@ -3257,24 +3040,19 @@ Func_86720: ; 86720 (21:6720)
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	writetext TreeBitstreamText_3a272
-	ld hl, $3c
-	call ScriptSleep_21
-	ld hl, $217
-	call PrintTextWithNPCName_21
+	script_sleep $3c
+	writenpctext TreeBitstreamText_3a0b1
 	jp Func_8674f
 
 Func_86749: ; 86749 (21:6749)
-	ld hl, $219
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a0c9
 Func_8674f: ; 8674f (21:674f)
 	jp Func_86758
 
 Func_86752: ; 86752 (21:6752)
-	ld hl, $176
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a0e1
 Func_86758: ; 86758 (21:6758)
 	jp Func_86761
 
@@ -3298,22 +3076,17 @@ Func_86799:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $c0
-	call CheckEventFlag_21
+	checkevent $c0
 	cp $1
 	jp nz, Func_86815
-	ld hl, $69
-	call CheckEventFlag_21
+	checkevent $69
 	or a
 	jp nz, Func_8680c
-	ld hl, $21d
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39fb2
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_86803
-	ld de, Data_8681d
-	ld hl, Data_86770
-	call ScriptedBattle_21
+	startbattle Data_8681d, Data_86770
 	or a
 	jp nz, Func_867da
 	jp Func_8681b
@@ -3325,24 +3098,19 @@ Func_867da: ; 867da (21:67da)
 	ld a, [$c797]
 	inc a
 	ld [$c797], a
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	writetext TreeBitstreamText_3a272
-	ld hl, $3c
-	call ScriptSleep_21
-	ld hl, $21e
-	call PrintTextWithNPCName_21
+	script_sleep $3c
+	writenpctext TreeBitstreamText_39fc7
 	jp Func_86809
 
 Func_86803: ; 86803 (21:6803)
-	ld hl, $21f
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39fd9
 Func_86809: ; 86809 (21:6809)
 	jp Func_86812
 
 Func_8680c: ; 8680c (21:680c)
-	ld hl, $16f
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_39fe7
 Func_86812: ; 86812 (21:6812)
 	jp Func_8681b
 
@@ -3388,8 +3156,7 @@ Func_8688a:
 	ld e, $1
 	ld hl, Data_8682b
 	call LoadMapObjects_21
-	ld hl, $7
-	call CheckEventFlag_21
+	checkevent $7
 	or a
 	jp nz, Func_868d5
 	ld e, $4
@@ -3400,8 +3167,7 @@ Func_8688a:
 	jp Func_868dd
 
 Func_868d5: ; 868d5 (21:68d5)
-	ld a, SONG_TOWN2
-	call PlayMusic_21
+	playmusic SONG_TOWN2
 	call Func_8001c_21
 Func_868dd: ; 868dd (21:68dd)
 	ret
@@ -3446,10 +3212,8 @@ Data_8693f: ; 8693f
 	dr $8693f, $86943
 
 Func_86943: ; 86943 (21:6943)
-	xor a
-	call PlayMusic_21
-	ld a, SONG_TITLE
-	call PlayMusic_21
+	playmusic SONG_NONE
+	playmusic SONG_TITLE
 	call Func_8020c_21
 	ld c, $1
 	ld de, Data_86907
@@ -3462,25 +3226,21 @@ Func_86943: ; 86943 (21:6943)
 	ld e, $1
 	ld a, $7
 	call Func_80176_21
-	ld a, $68
-	call PlaySFX_21
+	playsfx $68
 	call Func_801d5_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
 	call Func_80176_21
-	ld a, $68
-	call PlaySFX_21
+	playsfx $68
 	call Func_801d5_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
 	call Func_80176_21
-	ld a, $68
-	call PlaySFX_21
+	playsfx $68
 	call Func_801d5_21
-	ld hl, $48
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a38a
 	ld bc, Data_8690f
 	ld e, BANK(Data_8690f)
 	ld a, $3
@@ -3493,35 +3253,24 @@ Func_86943: ; 86943 (21:6943)
 	ld e, $3
 	ld a, $2
 	call SpriteFace_21
-	xor a
-	call PlayMusic_21
-	ld a, SONG_ENCOUNTER_EVIL
-	call PlayMusic_21
-	ld hl, $49
-	call PrintTextWithNPCName_21
-	ld hl, $4a
-	call PrintTextWithNPCName_21
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
+	writenpctext TreeBitstreamText_3a3ac
+	writenpctext TreeBitstreamText_3a3c2
 	ld e, $2
 	ld a, $2
 	call SpriteFace_21
-	ld hl, $4b
-	call PrintTextWithNPCName_21
-	ld de, Data_86ac4
-	ld hl, Data_868de
-	call ScriptedBattle_21
+	writenpctext TreeBitstreamText_3a3dc
+	startbattle Data_86ac4, Data_868de
 	or a
 	jp nz, Func_869e7
 	ret
 
 Func_869e7: ; 869e7 (21:69e7)
-	ld a, $69
-	call PlaySFX_21
-	ld hl, $4c
-	call PrintTextWithNPCName_21
-	xor a
-	call PlayMusic_21
-	ld a, SONG_18
-	call PlayMusic_21
+	playsfx $69
+	writenpctext TreeBitstreamText_3a420
+	playmusic SONG_NONE
+	playmusic SONG_18
 	ld bc, Data_86917
 	ld e, BANK(Data_86917)
 	ld a, $2
@@ -3574,12 +3323,9 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, $0
 	ld a, $4
 	call Func_8013d_21
-	xor a
-	call PlayMusic_21
-	ld a, SONG_TOWN2
-	call PlayMusic_21
-	ld hl, $1e
-	call ScriptSleep_21
+	playmusic SONG_NONE
+	playmusic SONG_TOWN2
+	script_sleep $1e
 	ld bc, Data_8693f
 	ld e, BANK(Data_8693f)
 	ld a, $5
@@ -3588,14 +3334,11 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, $2
 	ld a, $5
 	call SpriteFace_21
-	ld hl, $1e
-	call ScriptSleep_21
+	script_sleep $1e
 	xor a
 	call PlayerFace_21
-	ld hl, $1e
-	call ScriptSleep_21
-	ld hl, $345
-	call PrintTextWithNPCName_21
+	script_sleep $1e
+	writenpctext TreeBitstreamText_3a481
 	ld e, $1
 	ld hl, $7
 	call EventFlagAction_21
@@ -3622,8 +3365,7 @@ Func_86ac9:
 	ld e, $2
 	ld a, $5
 	call SpriteFace_21
-	ld hl, $1e
-	call ScriptSleep_21
+	script_sleep $1e
 	ld e, $3
 	ld a, $5
 	call SpriteFace_21
@@ -3643,12 +3385,10 @@ Func_86b0d:
 	ld a, e
 	or a
 	jp nz, Func_86c00
-	ld hl, $d6
-	call CheckEventFlag_21
+	checkevent $d6
 	or a
 	jp nz, Func_86bfa
-	ld a, $5e
-	call PlaySFX_21
+	playsfx $5e
 	ld c, $2
 	ld e, $2
 	ld a, $8
@@ -3658,13 +3398,11 @@ Func_86b0d:
 	call Func_801e4_21
 	call Func_801d5_21
 	call Func_8018b_21
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	ld e, $1
 	xor a
 	call Func_8013d_21
-	ld a, $60
-	call PlaySFX_21
+	playsfx $60
 	ld e, $3
 	xor a
 	call SpriteFace_21
@@ -3691,16 +3429,13 @@ Func_86b0d:
 	call SpriteFace_21
 	ld a, $f
 	call FadeOutAudio_21
-	xor a
-	call PlayMusic_21
+	playmusic SONG_NONE
 	ld a, $1
 	call FadeInAudio_21
-	ld a, SONG_14
-	call PlayMusic_21
+	playmusic SONG_14
 	xor a
 	call Func_8044b_21
-	ld hl, $1e
-	call ScriptSleep_21
+	script_sleep $1e
 	ld c, $8
 	ld e, $7
 	ld a, $6
@@ -3708,8 +3443,7 @@ Func_86b0d:
 	ld e, $1
 	ld hl, $d6
 	call EventFlagAction_21
-	ld a, $60
-	call PlaySFX_21
+	playsfx $60
 	ld e, $3
 	xor a
 	call SpriteFace_21
@@ -3736,12 +3470,10 @@ Func_86b0d:
 	call SpriteFace_21
 	ld a, $f
 	call FadeOutAudio_21
-	xor a
-	call PlayMusic_21
+	playmusic SONG_NONE
 	ld a, $1
 	call FadeInAudio_21
-	ld a, SONG_TOWN2
-	call PlayMusic_21
+	playmusic SONG_TOWN2
 	xor a
 	call Func_8044b_21
 	ld e, $0
@@ -3790,8 +3522,7 @@ Func_86ffa:
 	ld e, $2d
 	ld hl, Data_86d84
 	call Func_80d24_21
-	ld hl, $1
-	call CheckEventFlag_21
+	checkevent $1
 	cp $1
 	jp nz, Func_8703a
 	ld e, $12
@@ -3820,8 +3551,7 @@ Func_8703a: ; 8703a (21:703a)
 	ld a, $9
 	call Func_8013d_21
 Func_8706e: ; 8706e (21:706e)
-	ld a, SONG_TOWN1
-	call PlayMusic_21
+	playmusic SONG_TOWN1
 	ld a, $1
 	call Func_80cc6_21
 	call Func_8001c_21
@@ -3837,8 +3567,7 @@ Data_87088: ; 87088
 	dr $87088, $870fa
 
 Func_870fa: ; 870fa (21:70fa)
-	ld hl, $1
-	call CheckEventFlag_21
+	checkevent $1
 	or a
 	jp nz, Func_87122
 	xor a
@@ -3884,8 +3613,7 @@ Func_87141:
 	ld a, $5
 	call Func_8044b_21
 	writetext TreeBitstreamText_414b4
-	ld hl, $f0
-	call CheckEventFlag_21
+	checkevent $f0
 	or a
 	jp nz, Func_87163
 	ld e, $1
@@ -3910,20 +3638,16 @@ Func_871fe:
 	ld e, $3
 	ld hl, Data_87164
 	call LoadMapObjects_21
-	ld a, SONG_CAVE
-	call PlayMusic_21
-	ld hl, $0
-	call CheckEventFlag_21
+	playmusic SONG_CAVE
+	checkevent $0
 	or a
 	jp nz, Func_8723b
 	ld a, $1
 	ld [$c7da], a
 	call Func_8001c_21
-	ld hl, $2d
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3a89f
 	call Func_8737a
-	ld hl, $f0
-	call CheckEventFlag_21
+	checkevent $f0
 	or a
 	jp nz, Func_87238
 	ld e, $1
@@ -3963,17 +3687,14 @@ Func_8728f:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $6c
-	call CheckEventFlag_21
+	checkevent $6c
 	or a
 	jp nz, Func_872df
 	writetext TreeBitstreamText_42bb7
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_872d6
-	ld de, Data_872e7
-	ld hl, Data_87266
-	call ScriptedBattle_21
+	startbattle Data_872e7, Data_87266
 	or a
 	jp nz, Func_872c5
 	jp Func_872e5
@@ -4010,17 +3731,14 @@ Func_87317:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $6d
-	call CheckEventFlag_21
+	checkevent $6d
 	or a
 	jp nz, Func_87367
 	writetext TreeBitstreamText_42ba0
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_8735e
-	ld de, Data_8736f
-	ld hl, Data_872ee
-	call ScriptedBattle_21
+	startbattle Data_8736f, Data_872ee
 	or a
 	jp nz, Func_8734d
 	jp Func_8736d
@@ -4084,8 +3802,7 @@ Func_8744d:
 	ld e, $3
 	ld hl, Data_87423
 	call Func_800fb_21
-	ld hl, $0
-	call CheckEventFlag_21
+	checkevent $0
 	or a
 	jp nz, Func_87484
 	ld a, $1
@@ -4096,8 +3813,7 @@ Func_87484: ; 87484 (21:7484)
 	xor a
 	ld [$c7da], a
 Func_87488: ; 87488 (21:7488)
-	ld a, SONG_CAVE
-	call PlayMusic_21
+	playmusic SONG_CAVE
 	call Func_8001c_21
 	ld hl, $2d6
 	call Func_80f72_21
@@ -4108,10 +3824,8 @@ Func_87497:
 	or a
 	jp nz, Func_874c2
 	call Func_802e0_21
-	xor a
-	call PlayMusic_21
-	ld a, SONG_16
-	call PlayMusic_21
+	playmusic SONG_NONE
+	playmusic SONG_16
 	ld c, $1
 	ld e, $2
 	ld a, $8
@@ -4119,8 +3833,7 @@ Func_87497:
 	call Func_801d5_21
 	call Func_8018b_21
 	writetext TreeBitstreamText_46e0b
-	ld a, SONG_CAVE
-	call PlayMusic_21
+	playmusic SONG_CAVE
 Func_874c2: ; 874c2 (21:74c2)
 	ret
 
@@ -4135,17 +3848,14 @@ Func_874ec:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $6e
-	call CheckEventFlag_21
+	checkevent $6e
 	or a
 	jp nz, Func_8753c
 	writetext TreeBitstreamText_42be8
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_87533
-	ld de, Data_87544
-	ld hl, Data_874c3
-	call ScriptedBattle_21
+	startbattle Data_87544, Data_874c3
 	or a
 	jp nz, Func_87522
 	jp Func_87542
@@ -4182,17 +3892,14 @@ Func_87574
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $6f
-	call CheckEventFlag_21
+	checkevent $6f
 	or a
 	jp nz, Func_87602
 	writetext TreeBitstreamText_42b8f
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_875f9
-	ld de, Data_8763e
-	ld hl, Data_8754b
-	call ScriptedBattle_21
+	startbattle Data_8763e, Data_8754b
 	or a
 	jp nz, Func_875aa
 	jp Func_8763c
@@ -4201,20 +3908,17 @@ Func_875aa: ; 875aa (21:75aa)
 	ld e, $1
 	ld hl, $6f
 	call EventFlagAction_21
-	ld hl, $109
-	call CheckEventFlag_21
+	checkevent $109
 	or a
 	jp nz, Func_875f0
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_875f0
-	ld hl, $114
-	call CheckEventFlag_21
+	checkevent $114
 	or a
 	jp nz, Func_875f0
 	writetext TreeBitstreamText_45fec
-	ld a, $2a
-	call PlaySFX_21
+	playsfx $2a
 	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
@@ -4233,16 +3937,14 @@ Func_875ff: ; 875ff (21:75ff)
 	jp Func_8763c
 
 Func_87602: ; 87602 (21:7602)
-	ld hl, $109
-	call CheckEventFlag_21
+	checkevent $109
 	or a
 	jp nz, Func_87636
 	ld a, [$c79c]
 	cp $1
 	jp c, Func_87636
 	writetext TreeBitstreamText_45fec
-	ld a, $2a
-	call PlaySFX_21
+	playsfx $2a
 	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
@@ -4294,12 +3996,10 @@ Data_87785: ; 87785
 	dr $87785, $877cb
 
 Func_877cb:
-	ld hl, $51
-	call CheckEventFlag_21
+	checkevent $51
 	or a
 	jp nz, Func_877f5
-	ld hl, $4c
-	call CheckEventFlag_21
+	checkevent $4c
 	or a
 	jp nz, Func_877f5
 	call Func_87648
@@ -4312,12 +4012,10 @@ Func_877cb:
 	jp Func_87828
 
 Func_877f5: ; 877f5 (21:77f5)
-	ld hl, $51
-	call CheckEventFlag_21
+	checkevent $51
 	cp $1
 	jp nz, Func_87820
-	ld hl, $4c
-	call CheckEventFlag_21
+	checkevent $4c
 	or a
 	jp nz, Func_87820
 	call Func_87648
@@ -4342,15 +4040,13 @@ Func_87828: ; 87828 (21:7828)
 	ld e, $5
 	ld hl, Data_87785
 	call Func_800fb_21
-	ld a, SONG_CAVE
-	call PlayMusic_21
+	playmusic SONG_CAVE
 	ld a, $4
 	ld [$c7e2], a
 	ld a, [$c78a]
 	cp $3
 	jp nz, Func_8786b
-	ld hl, $fb
-	call CheckEventFlag_21
+	checkevent $fb
 	or a
 	jp nz, Func_8785f
 	call Func_87b87
@@ -4364,8 +4060,7 @@ Func_87868: ; 87868 (21:7868)
 	jp Func_8788a
 
 Func_8786b: ; 8786b (21:786b)
-	ld hl, $0
-	call CheckEventFlag_21
+	checkevent $0
 	or a
 	jp nz, Func_8787d
 	ld a, $1
@@ -4406,8 +4101,7 @@ Func_878aa: ; 878aa (21:78aa)
 	call Func_800e9_21
 	or a
 	jp z, Func_878ef
-	ld a, $2b
-	call PlaySFX_21
+	playsfx $2b
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4415,16 +4109,13 @@ Func_878aa: ; 878aa (21:78aa)
 	ld e, $1
 	ld hl, $18
 	call EventFlagAction_21
-	ld hl, $19
-	call CheckEventFlag_21
+	checkevent $19
 	cp $1
 	jp nz, Func_878ef
-	ld hl, $1a
-	call CheckEventFlag_21
+	checkevent $1a
 	cp $1
 	jp nz, Func_878ef
-	ld hl, $4b
-	call CheckEventFlag_21
+	checkevent $4b
 	cp $1
 	jp nz, Func_878ef
 	call Func_87c03
@@ -4456,8 +4147,7 @@ Func_87910: ; 87910 (21:7910)
 	call Func_800e9_21
 	or a
 	jp z, Func_87955
-	ld a, $2b
-	call PlaySFX_21
+	playsfx $2b
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4465,16 +4155,13 @@ Func_87910: ; 87910 (21:7910)
 	ld e, $1
 	ld hl, $19
 	call EventFlagAction_21
-	ld hl, $18
-	call CheckEventFlag_21
+	checkevent $18
 	cp $1
 	jp nz, Func_87955
-	ld hl, $1a
-	call CheckEventFlag_21
+	checkevent $1a
 	cp $1
 	jp nz, Func_87955
-	ld hl, $4b
-	call CheckEventFlag_21
+	checkevent $4b
 	cp $1
 	jp nz, Func_87955
 	call Func_87c03
@@ -4506,8 +4193,7 @@ Func_87976: ; 87976 (21:7976)
 	call Func_800e9_21
 	or a
 	jp z, Func_879bb
-	ld a, $2b
-	call PlaySFX_21
+	playsfx $2b
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4515,16 +4201,13 @@ Func_87976: ; 87976 (21:7976)
 	ld e, $1
 	ld hl, $1a
 	call EventFlagAction_21
-	ld hl, $18
-	call CheckEventFlag_21
+	checkevent $18
 	cp $1
 	jp nz, Func_879bb
-	ld hl, $19
-	call CheckEventFlag_21
+	checkevent $19
 	cp $1
 	jp nz, Func_879bb
-	ld hl, $4b
-	call CheckEventFlag_21
+	checkevent $4b
 	cp $1
 	jp nz, Func_879bb
 	call Func_87c03
@@ -4556,8 +4239,7 @@ Func_879dc: ; 879dc (21:79dc)
 	call Func_800e9_21
 	or a
 	jp z, Func_87a21
-	ld a, $2b
-	call PlaySFX_21
+	playsfx $2b
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4565,16 +4247,13 @@ Func_879dc: ; 879dc (21:79dc)
 	ld e, $1
 	ld hl, $4b
 	call EventFlagAction_21
-	ld hl, $18
-	call CheckEventFlag_21
+	checkevent $18
 	cp $1
 	jp nz, Func_87a21
-	ld hl, $19
-	call CheckEventFlag_21
+	checkevent $19
 	cp $1
 	jp nz, Func_87a21
-	ld hl, $1a
-	call CheckEventFlag_21
+	checkevent $1a
 	cp $1
 	jp nz, Func_87a21
 	call Func_87c03
@@ -4606,8 +4285,7 @@ Func_87a42: ; 87a42 (21:7a42)
 	call Func_800e9_21
 	or a
 	jp z, Func_87a71
-	ld a, $2b
-	call PlaySFX_21
+	playsfx $2b
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4615,8 +4293,7 @@ Func_87a42: ; 87a42 (21:7a42)
 	ld e, $1
 	ld hl, $18
 	call EventFlagAction_21
-	ld hl, $19
-	call CheckEventFlag_21
+	checkevent $19
 	cp $1
 	jp nz, Func_87a71
 	call Func_87c03
@@ -4648,8 +4325,7 @@ Func_87a92: ; 87a92 (21:7a92)
 	call Func_800e9_21
 	or a
 	jp z, Func_87ac1
-	ld a, $2b
-	call PlaySFX_21
+	playsfx $2b
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -4657,8 +4333,7 @@ Func_87a92: ; 87a92 (21:7a92)
 	ld e, $1
 	ld hl, $19
 	call EventFlagAction_21
-	ld hl, $18
-	call CheckEventFlag_21
+	checkevent $18
 	cp $1
 	jp nz, Func_87ac1
 	call Func_87c03
@@ -4680,15 +4355,13 @@ Func_87ac3:
 	jp Func_87b13
 
 Func_87ae0: ; 87ae0 (21:7ae0)
-	ld hl, $59
-	call CheckEventFlag_21
+	checkevent $59
 	or a
 	jp nz, Func_87b00
 	ld e, $1
 	ld hl, $59
 	call EventFlagAction_21
-	ld a, $32
-	call PlaySFX_21
+	playsfx $32
 	writetext TreeBitstreamText_47029
 	jp Func_87b13
 
@@ -4696,8 +4369,7 @@ Func_87b00: ; 87b00 (21:7b00)
 	ld e, $0
 	ld hl, $59
 	call EventFlagAction_21
-	ld a, $28
-	call PlaySFX_21
+	playsfx $28
 	writetext TreeBitstreamText_4701b
 Func_87b13: ; 87b13 (21:7b13)
 	ret
@@ -4712,8 +4384,7 @@ Func_87b14:
 	jp Func_87b86
 
 Func_87b23: ; 87b23 (21:7b23)
-	ld hl, $59
-	call CheckEventFlag_21
+	checkevent $59
 	cp $1
 	jp nz, Func_87b37
 	writetext TreeBitstreamText_47037
@@ -4738,8 +4409,7 @@ Func_87b4f: ; 87b4f (21:7b4f)
 	ld e, $1
 	ld a, $9
 	call Func_80176_21
-	ld a, $5a
-	call PlaySFX_21
+	playsfx $5a
 	call Func_801d5_21
 	call Func_8018b_21
 	ld a, $2
@@ -4758,8 +4428,7 @@ Func_87b86: ; 87b86 (21:7b86)
 	ret
 
 Func_87b87: ; 87b87 (21:7b87)
-	ld hl, $0
-	call CheckEventFlag_21
+	checkevent $0
 	or a
 	jp nz, Func_87b99
 	ld a, $1
@@ -4781,13 +4450,11 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	ld e, $2
 	ld a, $9
 	call Func_80176_21
-	ld a, $37
-	call PlaySFX_21
+	playsfx $37
 	call Func_801d5_21
 	ld a, $1
 	call Func_80653_21
-	ld hl, $1
-	call ScriptSleep_21
+	script_sleep $1
 	call Func_8018b_21
 	ld e, $1
 	ld hl, $fb
@@ -4806,14 +4473,10 @@ Func_87c03: ; 87c03 (21:7c03)
 	ld hl, Data_87bd7
 	call LoadMapObjects_21
 	call Func_80ea2_21
-	ld a, $64
-	call PlaySFX_21
-	ld hl, $3c
-	call ScriptSleep_21
-	ld a, $64
-	call PlaySFX_21
-	ld hl, $3c
-	call ScriptSleep_21
+	playsfx $64
+	script_sleep $3c
+	playsfx $64
+	script_sleep $3c
 	call Func_80eb1_21
 	ret
 
@@ -4828,17 +4491,14 @@ Func_87c5c:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $70
-	call CheckEventFlag_21
+	checkevent $70
 	or a
 	jp nz, Func_87cac
 	writetext TreeBitstreamText_42b4c
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_87ca3
-	ld de, Data_87cb4
-	ld hl, Data_87c33
-	call ScriptedBattle_21
+	startbattle Data_87cb4, Data_87c33
 	or a
 	jp nz, Func_87c92
 	jp Func_87cb2
@@ -4875,17 +4535,14 @@ Func_87ce5:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $71
-	call CheckEventFlag_21
+	checkevent $71
 	or a
 	jp nz, Func_87d35
 	writetext TreeBitstreamText_42bd2
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_87d2c
-	ld de, Data_87d3d
-	ld hl, Data_87cbc
-	call ScriptedBattle_21
+	startbattle Data_87d3d, Data_87cbc
 	or a
 	jp nz, Func_87d1b
 	jp Func_87d3b
@@ -4929,8 +4586,7 @@ Func_87d88:
 	ld e, $3
 	ld hl, Data_87d50
 	call Func_80d24_21
-	ld hl, $0
-	call CheckEventFlag_21
+	checkevent $0
 	or a
 	jp nz, Func_87daf
 	ld a, $1
@@ -4944,8 +4600,7 @@ Func_87db3: ; 87db3 (21:7db3)
 	ld e, $1
 	ld hl, Data_87d7a
 	call Func_800fb_21
-	ld a, SONG_CAVE
-	call PlayMusic_21
+	playmusic SONG_CAVE
 	call Func_8001c_21
 	ld hl, $2d8
 	call Func_80f72_21
@@ -4959,18 +4614,15 @@ Func_87dca:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $51
-	call CheckEventFlag_21
+	checkevent $51
 	or a
 	jp nz, Func_87e2c
-	ld hl, $74
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3ae6a
 	ld a, $b
 	call Func_80e5d_21
 	cp $1
 	jp nz, Func_87e23
-	ld hl, $75
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3aea4
 	writenpctext_yesorno TreeBitstreamText_3aef1
 	or a
 	jp nz, Func_87e1a
@@ -4981,25 +4633,21 @@ Func_87dca:
 	ld e, $1
 	ld hl, $51
 	call EventFlagAction_21
-	ld hl, $78
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3af20
 	jp Func_87e20
 
 Func_87e1a: ; 87e1a (21:7e1a)
-	ld hl, $77
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3af00
 Func_87e20: ; 87e20 (21:7e20)
 	jp Func_87e29
 
 Func_87e23: ; 87e23 (21:7e23)
-	ld hl, $75
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3aea4
 Func_87e29: ; 87e29 (21:7e29)
 	jp Func_87e32
 
 Func_87e2c: ; 87e2c (21:7e2c)
-	ld hl, $79
-	call PrintTextWithNPCName_21
+	writenpctext TreeBitstreamText_3af3a
 Func_87e32: ; 87e32 (21:7e32)
 	pop bc
 	ret
@@ -5022,8 +4670,7 @@ Func_87ea2:
 	ld e, $5
 	ld hl, Data_87e4a
 	call Func_80d24_21
-	ld hl, $0
-	call CheckEventFlag_21
+	checkevent $0
 	or a
 	jp nz, Func_87ec9
 	ld a, $1
@@ -5037,8 +4684,7 @@ Func_87ecd: ; 87ecd (21:7ecd)
 	ld e, $1
 	ld hl, Data_87e94
 	call Func_800fb_21
-	ld a, SONG_CAVE
-	call PlayMusic_21
+	playmusic SONG_CAVE
 	call Func_8001c_21
 	ld hl, $2d8
 	call Func_80f72_21

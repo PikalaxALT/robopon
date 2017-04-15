@@ -17,8 +17,7 @@ Func_81811:
 	ld a, e
 	or a
 	jp nz, Func_81966
-	ld hl, $3
-	call CheckEventFlag_20
+	checkevent $3
 	or a
 	jp nz, Func_8193b
 	ld c, $1
@@ -29,8 +28,7 @@ Func_81811:
 	call PlayerFace_20
 	ld a, $a
 	call FadeOutAudio_20
-	xor a
-	call PlayMusic_20
+	playmusic SONG_NONE
 	ld e, $3
 	ld a, $3
 	call SpriteFace_20
@@ -39,47 +37,35 @@ Func_81811:
 	call SpriteFace_20
 	ld a, $1
 	call FadeInAudio_20
-	ld a, $1a
-	call PlayMusic_20
-	ld hl, $23
-	call PrintTextWithNPCName_20
-	ld hl, $24
-	call PrintTextWithNPCName_20
-	ld hl, $25
-	call PrintTextWithNPCName_20
+	playmusic $1a
+	writenpctext TreeBitstreamText_397f7
+	writenpctext TreeBitstreamText_3981d
+	writenpctext TreeBitstreamText_39839
 	writetext_yesorno TreeBitstreamText_396ec
 	or a
 	jp nz, Func_81910
-	ld de, Data_81967
-	ld hl, Data_817d4
-	call ScriptedBattle_20
+	startbattle Data_81967, Data_817d4
 	or a
 	jp nz, Func_8187c
 	jp Func_81966
 
 Func_8187c: ; 8187c (20:587c)
-	ld hl, $27
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_3985c
 	ld bc, Data_817fd
 	ld e, BANK(Data_817fd)
 	ld a, $4
 	call Func_801f7_20
-	ld a, $2e
-	call PlaySFX_20
+	playsfx $2e
 	call Func_8020c_20
 	ld e, $0
 	ld a, $4
 	call Func_8013d_20
-	xor a
-	call PlayMusic_20
-	ld a, $3
-	call PlayMusic_20
-	ld hl, $2
-	call CheckEventFlag_20
+	playmusic SONG_NONE
+	playmusic $3
+	checkevent $2
 	or a
 	jp nz, Func_818b7
-	ld hl, $28
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_39889
 	jp Func_81905
 
 Func_818b7: ; 818b7 (20:58b7)
@@ -90,16 +76,11 @@ Func_818b7: ; 818b7 (20:58b7)
 	call Func_8020c_20
 	ld a, $1
 	call PlayerFace_20
-	ld hl, $29
-	call PrintTextWithNPCName_20
-	ld hl, $2a
-	call PrintTextWithNPCName_20
-	ld hl, $2b
-	call PrintTextWithNPCName_20
-	ld hl, $2c
-	call PrintTextWithNPCName_20
-	ld a, $2e
-	call PlaySFX_20
+	writenpctext TreeBitstreamText_398ba
+	writenpctext TreeBitstreamText_398e4
+	writenpctext TreeBitstreamText_39944
+	writenpctext TreeBitstreamText_39953
+	playsfx $2e
 	ld bc, Data_81805
 	ld e, BANK(Data_81805)
 	ld a, $3
@@ -120,43 +101,32 @@ Func_81905: ; 81905 (20:5905)
 	jp Func_81938
 
 Func_81910: ; 81910 (20:5910)
-	ld a, $69
-	call PlaySFX_20
-	ld hl, $26
-	call PrintTextWithNPCName_20
-	ld hl, $1e
-	call ScriptSleep_20
+	playsfx $69
+	writenpctext TreeBitstreamText_39847
+	script_sleep $1e
 	ld e, $2
 	ld a, $3
 	call SpriteFace_20
 	ld e, $0
 	ld a, $4
 	call SpriteFace_20
-	xor a
-	call PlayMusic_20
-	ld a, $3
-	call PlayMusic_20
+	playmusic SONG_NONE
+	playmusic $3
 Func_81938: ; 81938 (20:5938)
 	jp Func_81966
 
 Func_8193b: ; 8193b (20:593b)
-	ld hl, $2
-	call CheckEventFlag_20
+	checkevent $2
 	or a
 	jp nz, Func_8194e
-	ld hl, $28
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_39889
 	jp Func_81966
 
 Func_8194e: ; 8194e (20:594e)
-	ld hl, $29
-	call PrintTextWithNPCName_20
-	ld hl, $2a
-	call PrintTextWithNPCName_20
-	ld hl, $2b
-	call PrintTextWithNPCName_20
-	ld hl, $2c
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_398ba
+	writenpctext TreeBitstreamText_398e4
+	writenpctext TreeBitstreamText_39944
+	writenpctext TreeBitstreamText_39953
 Func_81966: ; 81966 (20:5966)
 	ret
 

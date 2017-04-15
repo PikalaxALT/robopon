@@ -10,9 +10,7 @@ Func_822dd:
 	jp nz, Func_82305
 	xor a
 	ld [$c793], a
-	ld de, Data_82306
-	ld hl, Data_822b4
-	call ScriptedBattle_20
+	startbattle Data_82306, Data_822b4
 	or a
 	jp nz, Func_82300
 	jp Func_82305

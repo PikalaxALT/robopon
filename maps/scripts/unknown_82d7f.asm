@@ -16,8 +16,7 @@ Func_82d7f:
 	ld e, $2
 	ld hl, Data_82d63
 	call Func_800fb_20
-	ld a, $b
-	call PlayMusic_20
+	playmusic $b
 	call Func_8001c_20
 	ld hl, $3cb
 	call Func_80f72_20
@@ -31,15 +30,12 @@ Func_82dac:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_20
-	ld hl, $362
-	call PrintTextWithNPCName_20
-	ld a, $c
-	call PlayMusic_20
+	writenpctext TreeBitstreamText_470a2
+	playmusic $c
 	ld e, $3
 	xor a
 	call Func_806a0_20
-	ld a, $b
-	call PlayMusic_20
+	playmusic $b
 Func_82dce: ; 82dce (20:6dce)
 	pop bc
 	ret
@@ -52,15 +48,12 @@ Func_82dd0:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_20
-	ld hl, $362
-	call PrintTextWithNPCName_20
-	ld a, $c
-	call PlayMusic_20
+	writenpctext TreeBitstreamText_470a2
+	playmusic $c
 	ld e, $4
 	xor a
 	call Func_806a0_20
-	ld a, $b
-	call PlayMusic_20
+	playmusic $b
 Func_82df2: ; 82df2 (20:6df2)
 	pop bc
 	ret

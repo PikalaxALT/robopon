@@ -16,8 +16,7 @@ Func_83169:
 	ld e, $3
 	ld hl, Data_8313f
 	call Func_800fb_20
-	ld a, $b
-	call PlayMusic_20
+	playmusic $b
 	call Func_8001c_20
 	ld hl, $3cf
 	call Func_80f72_20

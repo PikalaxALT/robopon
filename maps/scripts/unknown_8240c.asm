@@ -18,8 +18,7 @@ Func_8240c:
 	ld a, $3
 	call Func_8013d_20
 Func_8242b: ; 8242b (20:642b)
-	ld a, $11
-	call PlayMusic_20
+	playmusic $11
 	call Func_8001c_20
 	ret
 
@@ -36,8 +35,7 @@ Func_82446:
 	ld a, e
 	or a
 	jp nz, Func_82592
-	ld hl, $c6
-	call CheckEventFlag_20
+	checkevent $c6
 	or a
 	jp nz, Func_82562
 	ld a, [wPlayerFacing]
@@ -125,10 +123,8 @@ Func_824ca: ; 824ca (20:64ca)
 	ld e, a
 	ld a, $3
 	call Func_800c8_20
-	ld hl, $3fa
-	call PrintTextWithNPCName_20
-	ld hl, $1e
-	call ScriptSleep_20
+	writenpctext TreeBitstreamText_3f60f
+	script_sleep $1e
 	ld e, $1
 	ld a, $3
 	call Func_8013d_20
@@ -156,8 +152,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld e, $2
 	ld a, $3
 	call SpriteFace_20
-	ld hl, $1e
-	call ScriptSleep_20
+	script_sleep $1e
 	ld bc, Data_82440
 	ld e, BANK(Data_82440)
 	ld a, $3
@@ -166,8 +161,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld e, $0
 	ld a, $3
 	call Func_8013d_20
-	ld a, $2a
-	call PlaySFX_20
+	playsfx $2a
 	writetext TreeBitstreamText_3f665
 	pop af
 	ld e, $0
@@ -176,8 +170,7 @@ Func_824ca: ; 824ca (20:64ca)
 	cp $ff
 	jp nz, Func_82551
 Func_82551: ; 82551 (20:6551)
-	ld hl, $3fb
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_3f679
 	ld e, $1
 	ld hl, $c6
 	call EventFlagAction_20
@@ -187,10 +180,8 @@ Func_82562: ; 82562 (20:6562)
 	xor a
 	call Func_8044b_20
 	call Func_802e0_20
-	xor a
-	call PlayMusic_20
-	ld a, $16
-	call PlayMusic_20
+	playmusic SONG_NONE
+	playmusic $16
 	ld c, $1
 	ld e, $2
 	ld a, $8
@@ -198,9 +189,7 @@ Func_82562: ; 82562 (20:6562)
 	call Func_801d5_20
 	call Func_8018b_20
 	writetext TreeBitstreamText_46e0b
-	ld hl, $15a
-	call PrintTextWithNPCName_20
-	ld a, $11
-	call PlayMusic_20
+	writenpctext TreeBitstreamText_3f5d5
+	playmusic $11
 Func_82592: ; 82592 (20:6592)
 	ret

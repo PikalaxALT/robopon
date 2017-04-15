@@ -7,6 +7,10 @@ tree_text_pointer: MACRO
 	dw (BANK(\2) - BANK(\1)) << 14 | (\2 & $3fff)
 	ENDM
 
+dtext_tree_pointer: MACRO
+	dw (\1_Pointer - TextTreeBitstreams) / 2
+	ENDM
+
 CallPredef EQUS "$08"
 
 dn: MACRO

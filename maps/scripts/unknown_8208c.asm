@@ -35,8 +35,7 @@ Func_8208c:: ; 8208c (20:608c)
 	jp z, Func_820fa
 	or a
 	jp nz, Func_8225c
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $7
 	push hl
 	ld c, $2b
@@ -47,8 +46,7 @@ Func_8208c:: ; 8208c (20:608c)
 	jp Func_8225c
 
 Func_820fa: ; 820fa (20:60fa)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $13
 	push hl
 	ld c, $d
@@ -59,8 +57,7 @@ Func_820fa: ; 820fa (20:60fa)
 	jp Func_8225c
 
 Func_8210f: ; 8210f (20:610f)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $16
 	push hl
 	ld c, $5
@@ -71,8 +68,7 @@ Func_8210f: ; 8210f (20:610f)
 	jp Func_8225c
 
 Func_82124: ; 82124 (20:6124)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $7
 	push hl
 	ld c, $10
@@ -83,8 +79,7 @@ Func_82124: ; 82124 (20:6124)
 	jp Func_8225c
 
 Func_82139: ; 82139 (20:6139)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $a
 	push hl
 	ld c, $a
@@ -95,8 +90,7 @@ Func_82139: ; 82139 (20:6139)
 	jp Func_8225c
 
 Func_8214e: ; 8214e (20:614e)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $e
 	push hl
 	ld c, $6
@@ -107,8 +101,7 @@ Func_8214e: ; 8214e (20:614e)
 	jp Func_8225c
 
 Func_82163: ; 82163 (20:6163)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $2d
 	push hl
 	ld c, $5
@@ -119,8 +112,7 @@ Func_82163: ; 82163 (20:6163)
 	jp Func_8225c
 
 Func_82178: ; 82178 (20:6178)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $14
 	push hl
 	ld c, $11
@@ -131,8 +123,7 @@ Func_82178: ; 82178 (20:6178)
 	jp Func_8225c
 
 Func_8218d: ; 8218d (20:618d)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $10
 	push hl
 	ld c, $7
@@ -143,8 +134,7 @@ Func_8218d: ; 8218d (20:618d)
 	jp Func_8225c
 
 Func_821a2: ; 821a2 (20:61a2)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $5
 	push hl
 	ld c, $7
@@ -155,8 +145,7 @@ Func_821a2: ; 821a2 (20:61a2)
 	jp Func_8225c
 
 Func_821b7: ; 821b7 (20:61b7)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $7
 	push hl
 	ld c, $9
@@ -167,8 +156,7 @@ Func_821b7: ; 821b7 (20:61b7)
 	jp Func_8225c
 
 Func_821cc: ; 821cc (20:61cc)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $4
 	push hl
 	ld c, $6
@@ -179,8 +167,7 @@ Func_821cc: ; 821cc (20:61cc)
 	jp Func_8225c
 
 Func_821e1: ; 821e1 (20:61e1)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $6
 	push hl
 	ld c, $7
@@ -191,8 +178,7 @@ Func_821e1: ; 821e1 (20:61e1)
 	jp Func_8225c
 
 Func_821f6: ; 821f6 (20:61f6)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $a
 	push hl
 	ld c, $10
@@ -203,8 +189,7 @@ Func_821f6: ; 821f6 (20:61f6)
 	jp Func_8225c
 
 Func_8220b: ; 8220b (20:620b)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $17
 	push hl
 	ld c, $13
@@ -215,8 +200,7 @@ Func_8220b: ; 8220b (20:620b)
 	jp Func_8225c
 
 Func_82220: ; 82220 (20:6220)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $4
 	push hl
 	ld c, $a
@@ -227,8 +211,7 @@ Func_82220: ; 82220 (20:6220)
 	jp Func_8225c
 
 Func_82235: ; 82235 (20:6235)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $4
 	push hl
 	ld c, $e
@@ -239,8 +222,7 @@ Func_82235: ; 82235 (20:6235)
 	jp Func_8225c
 
 Func_8224a: ; 8224a (20:624a)
-	ld a, $5a
-	call PlaySFX_20
+	playsfx $5a
 	ld l, $14
 	push hl
 	ld c, $5

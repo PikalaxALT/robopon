@@ -35,8 +35,7 @@ Func_827de: ; 827de (20:67de)
 	ld e, $4
 	ld hl, Data_82763
 	call Func_800fb_20
-	ld a, $b
-	call PlayMusic_20
+	playmusic $b
 	ld a, [$c7df]
 	cp $20
 	jp nz, Func_82811
@@ -53,8 +52,7 @@ Func_827de: ; 827de (20:67de)
 	jp Func_8283c
 
 Func_82811: ; 82811 (20:6811)
-	ld hl, $d
-	call CheckEventFlag_20
+	checkevent $d
 	or a
 	jp nz, Func_8282c
 	call Func_8001c_20
@@ -129,10 +127,8 @@ Func_82894: ; 82894 (20:6894)
 	ld a, BANK(Data_8288a)
 	call ApplyMovementData_20
 	call Func_8020c_20
-	ld hl, $10
-	call PrintTextWithNPCName_20
-	ld hl, $11
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_39235
+	writenpctext TreeBitstreamText_39257
 	ld bc, Data_82890
 	ld e, BANK(Data_82890)
 	ld a, $1
@@ -168,15 +164,13 @@ Func_828df:
 	ld e, $2
 	ld a, $2
 	call SpriteFace_20
-	ld hl, $32
-	call CheckEventFlag_20
+	checkevent $32
 	cp $1
 	jp nz, Func_82967
 	writenpctext_yesorno TreeBitstreamText_45e91
 	or a
 	jp nz, Func_82940
-	ld hl, $486
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45eaa
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
@@ -196,8 +190,7 @@ Func_828df:
 	jp Func_82964
 
 Func_82940: ; 82940 (20:6940)
-	ld hl, $482
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45ebc
 	ld c, $1
 	ld de, Data_828d7
 	ld a, BANK(Data_828d7)
@@ -235,8 +228,7 @@ Func_8298c:
 	ld a, e
 	or a
 	jp nz, Func_8299a
-	ld hl, $2a6
-	call PrintTextWithNPCName_20
+	writenpctext TreeBitstreamText_45e48
 	call Func_8045c_20
 Func_8299a: ; 8299a (20:699a)
 	ret
@@ -272,8 +264,7 @@ Data_829d9: ; 829d9
 	dr $829d9, $829dd
 
 Func_829dd: ; 829dd (20:69dd)
-	ld hl, $f8
-	call CheckEventFlag_20
+	checkevent $f8
 	or a
 	jp nz, .asm_829fc
 	ld c, $1
@@ -295,8 +286,7 @@ Func_829fd:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_20
-	ld hl, $114
-	call CheckEventFlag_20
+	checkevent $114
 	or a
 	jp nz, Func_82ab0
 	ld a, $10
@@ -306,8 +296,7 @@ Func_829fd:
 	writetext_yesorno TreeBitstreamText_45f28
 	or a
 	jp nz, Func_82a92
-	ld a, $2b
-	call PlaySFX_20
+	playsfx $2b
 	ld c, $1
 	ld e, $1
 	ld a, $10
@@ -337,8 +326,7 @@ Func_82a59: ; 82a59 (20:6a59)
 	cp $9
 	jp c, Func_82a8f
 	writetext TreeBitstreamText_45f56
-	ld a, $2a
-	call PlaySFX_20
+	playsfx $2a
 	writetext TreeBitstreamText_45f88
 	ld c, $0
 	ld e, $1
