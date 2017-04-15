@@ -458,7 +458,7 @@ wKana:: ; c255
 	ds $80
 
 wMapWidth:: db ; c2d6
-	db
+wMapHeight:: db ; c2d7
 wMapX:: db ; c2d8
 wMapY:: db ; c2d9
 	ds $6
@@ -606,7 +606,10 @@ wc7ea:: db ; c7ea
 wMapGroup:: db ; c7eb
 wMapNumber:: db ; c7ec
 wEventFlags:: ; c7ed
-	ds $43
+	ds $3b
+
+wBlockdataPointer:: dw ; c828
+	ds $6
 
 wMapCollisionPointer:: dw ; c830
 	ds $6

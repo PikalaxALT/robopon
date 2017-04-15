@@ -36,7 +36,7 @@ macro_854b: MACRO
 	write_hl_to wMapCollisionPointer
 	write_hl_to $c82e
 	write_hl_to $c82c
-	write_hl_to $c828
+	write_hl_to wBlockdataPointer
 	write_hl_to $c826
 	write_hl_to $c822
 	write_hl_to $c824
@@ -62,7 +62,7 @@ macro_854b: MACRO
 	macro_854b $c824
 	macro_854b $c822
 	macro_854b $c826
-	macro_854b $c828
+	macro_854b wBlockdataPointer
 	macro_854b $c82c
 	macro_854b $c82e
 	macro_854b $c82a
@@ -78,19 +78,19 @@ macro_854b: MACRO
 	ld hl, sp+$5d
 	ld [hl], a
 	ld hl, $200
-	call Func_be4d
+	call AllocateMemory_Bank02
 	write_hl_to $c824
 	ld hl, $200
-	call Func_be4d
+	call AllocateMemory_Bank02
 	write_hl_to $c822
 	ld hl, $80
-	call Func_be4d
+	call AllocateMemory_Bank02
 	write_hl_to $c826
 	ld hl, $80
-	call Func_be4d
+	call AllocateMemory_Bank02
 	write_hl_to $c844
 	ld hl, $e0
-	call Func_be4d
+	call AllocateMemory_Bank02
 	write_hl_to $c85d
 	ld hl, sp+$5d
 	ld e, [hl]
@@ -131,7 +131,7 @@ macro_854b: MACRO
 	call FarCopyVideoData
 	ld hl, $728
 	push hl
-	call Func_be4d
+	call AllocateMemory_Bank02
 	write_hl_to $c85b
 	ld hl, sp+$60
 	ld a, [hl]
@@ -151,7 +151,7 @@ macro_854b: MACRO
 	add hl, de
 	push hl
 	ld hl, $154
-	call Func_be4d
+	call AllocateMemory_Bank02
 	write_hl_to $c842
 	ld bc, $154
 	ld e, $ff
@@ -253,16 +253,16 @@ Func_87ca: ; 87ca (2:47ca)
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
-	ld a, [$c2d7]
+	ld a, [wMapHeight]
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
-	call Func_be4d
+	call AllocateMemory_Bank02
 	write_hl_to wMapCollisionPointer
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
-	ld a, [$c2d7]
+	ld a, [wMapHeight]
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE

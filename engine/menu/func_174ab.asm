@@ -55,7 +55,7 @@ Func_174ab: ; 174ab (5:74ab)
 	ld h, $0
 	call MultiplyHLbyDE
 	add hl, hl
-	call Func_17aba
+	call AllocateMemory
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus10

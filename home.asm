@@ -3064,7 +3064,7 @@ Func_1f30:: ; 1f30
 	ld a, l
 	or h
 	jp nz, Func_1f7a
-	set_farcall_addrs_hli Func_17aba
+	set_farcall_addrs_hli AllocateMemory
 	ld hl, $100
 	call FarCall
 	write_hl_to $c30e
@@ -3112,7 +3112,7 @@ Func_1fbe:: ; 1fbe
 	ld a, l
 	or h
 	jp nz, Func_2008
-	set_farcall_addrs_hli Func_17aba
+	set_farcall_addrs_hli AllocateMemory
 	ld hl, $1ba
 	call FarCall
 	write_hl_to $c2f2
@@ -3160,7 +3160,7 @@ Func_204c:: ; 204c
 	ld a, l
 	or h
 	jp nz, Func_2096
-	set_farcall_addrs_hli Func_17aba
+	set_farcall_addrs_hli AllocateMemory
 	ld hl, $50
 	call FarCall
 	write_hl_to $c2f2
@@ -4411,7 +4411,7 @@ Func_2801:: ; 2801 (0:2801)
 	push de
 	ld a, $3
 	call GetSRAMBank
-	set_farcall_addrs_hli Func_17aba
+	set_farcall_addrs_hli AllocateMemory
 	pop de
 	push de
 	reg16swap de, hl

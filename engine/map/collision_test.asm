@@ -20,7 +20,7 @@ CheckBackgroundCollision:: ; 9f87 (2:5f87)
 	jp nc, Func_9fae
 	ld hl, sp+$8
 	ld a, [hl]
-	ld hl, $c2d7
+	ld hl, wMapHeight
 	cp [hl]
 	jp c, Func_9fb3
 Func_9fae: ; 9fae (2:5fae)
