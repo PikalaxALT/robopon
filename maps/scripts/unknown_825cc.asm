@@ -30,11 +30,11 @@ Func_825eb: ; 825eb (20:65eb)
 	call Func_8013d_20
 Func_825f9: ; 825f9 (20:65f9)
 	ld hl, $2
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp nz, Func_8261f
 	ld hl, $3
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp nz, Func_8261f
 	ld a, [$c790]

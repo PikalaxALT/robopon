@@ -8,7 +8,7 @@ Data_a983: ; a983
 	db $40
 	db $80
 
-Func_a98b:: ; a98b
+EventFlagAction:: ; a98b
 	push hl
 	push de
 	call GetHLAtSPPlus4

@@ -25,7 +25,7 @@ Func_81ac1:
 	jp nz, Func_81b20
 Func_81ae8: ; 81ae8 (20:5ae8)
 	ld hl, $b
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_81b15
 	ld e, $4
@@ -39,7 +39,7 @@ Func_81ae8: ; 81ae8 (20:5ae8)
 	call Func_81b45
 	ld e, $1
 	ld hl, $b
-	call Func_8061b_20
+	call EventFlagAction_20
 	jp Func_81b1d
 
 Func_81b15: ; 81b15 (20:5b15)
@@ -78,7 +78,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call PlayerFace_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld e, $1
 	ld a, $3
 	call Func_80e1e_20
@@ -86,19 +86,19 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call Func_80e1e_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld bc, Data_81b29
 	ld e, BANK(Data_81b29)
 	xor a
 	call Func_80688_20
 	call Func_8020c_20
 	ld hl, $4
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld e, $1
 	ld a, $1
 	call SpriteFace_20
 	ld hl, $5
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld bc, Data_81b2d
 	ld e, BANK(Data_81b2d)
 	ld a, $1
@@ -123,16 +123,16 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $34
 	call PlaySFX_20
 	ld hl, $3c
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld e, $1
 	xor a
 	call SpriteFace_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld a, $3
 	call PlayerFace_20
 	ld hl, $6
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld bc, Data_81b2d
 	ld e, BANK(Data_81b2d)
 	xor a
@@ -149,11 +149,11 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $34
 	call PlaySFX_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld a, $2
 	call PlayerFace_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld e, $0
 	xor a
 	call SpriteFace_20
@@ -173,7 +173,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call PlayerFace_20
 	ld hl, $7
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld bc, Data_81b31
 	ld e, BANK(Data_81b31)
 	xor a
@@ -184,7 +184,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $34
 	call PlaySFX_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld e, $1
 	ld a, $1
 	call Func_80e1e_20
@@ -192,7 +192,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $1
 	call Func_80e1e_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld a, $f
 	call FadeOutAudio_20
 	xor a
@@ -205,16 +205,16 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $2
 	call PlayerFace_20
 	ld hl, $8
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld c, $1
 	ld de, Data_81b39
 	ld a, BANK(Data_81b39)
 	call ApplyMovementData_20
 	call Func_8020c_20
 	ld hl, $9
-	call Func_80498_20
+	call PrintTextStandard_20
 	ld c, $1
 	ld de, Data_81b3d
 	ld a, BANK(Data_81b3d)

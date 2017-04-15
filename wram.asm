@@ -599,7 +599,11 @@ wMapCollisionPointer:: dw ; c830
 	ds $6
 
 wPlayerFacing:: db ; c838
-	ds $26
+	ds $18
+
+wc851:: db ; c851
+wc852:: dw ; c852
+	ds $b
 
 wPlayerMapX:: db ; c85f
 wPlayerMapY:: db ; c860

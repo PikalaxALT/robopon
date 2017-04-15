@@ -15,7 +15,7 @@ Func_81607:
 	or a
 	jp nz, Func_8171a
 	ld hl, $2
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_81704
 	ld a, [wPlayerFacing]
@@ -49,8 +49,8 @@ Func_81635: ; 81635 (20:5635)
 	call FadeInAudio_20
 	ld a, SONG_ENCOUNTER_EVIL
 	call PlayMusic_20
-	writetext TreeBitstreamText_3969a
-	writetext TreeBitstreamText_396d0
+	writenpctext TreeBitstreamText_3969a
+	writenpctext TreeBitstreamText_396d0
 	writetext_yesorno TreeBitstreamText_396ec
 	or a
 	jp nz, Func_816da
@@ -63,7 +63,7 @@ Func_81635: ; 81635 (20:5635)
 
 .won
 	ld hl, $19
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld bc, Data_81603
 	ld e, BANK(Data_81603)
 	ld a, $1
@@ -75,18 +75,18 @@ Func_81635: ; 81635 (20:5635)
 	ld a, $1
 	call Func_8013d_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	xor a
 	call PlayMusic_20
 	ld a, SONG_TOWN1
 	call PlayMusic_20
 	ld hl, $3
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_816cc
-	writetext TreeBitstreamText_3972e
-	writetext TreeBitstreamText_39760
-	writetext TreeBitstreamText_3976c
+	writenpctext TreeBitstreamText_3972e
+	writenpctext TreeBitstreamText_39760
+	writenpctext TreeBitstreamText_3976c
 	jp Func_816cf
 
 Func_816cc: ; 816cc (20:56cc)
@@ -94,15 +94,15 @@ Func_816cc: ; 816cc (20:56cc)
 Func_816cf: ; 816cf (20:56cf)
 	ld e, $1
 	ld hl, $2
-	call Func_8061b_20
+	call EventFlagAction_20
 	jp Func_81701
 
 Func_816da: ; 816da (20:56da)
 	ld a, $69
 	call PlaySFX_20
-	writetext TreeBitstreamText_39718
+	writenpctext TreeBitstreamText_39718
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld e, FACE_LEFT
 	xor a
 	call SpriteFace_20
@@ -118,11 +118,11 @@ Func_81701: ; 81701 (20:5701)
 
 Func_81704: ; 81704 (20:5704)
 	ld hl, $3
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_81717
 	ld hl, $1f
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	jp Func_8171a
 
 Func_81717: ; 81717 (20:5717)
@@ -144,7 +144,7 @@ Data_8172b: ; 8172b
 
 Func_8172f: ; 8172f (20:572f)
 	ld hl, $4
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_817c9
 	ld c, $e
@@ -152,11 +152,11 @@ Func_8172f: ; 8172f (20:572f)
 	ld a, $3
 	call Func_80080_20
 	ld hl, $21
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $22
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld a, $19
 	call PlayMusic_20
 	ld bc, Data_81727
@@ -165,7 +165,7 @@ Func_8172f: ; 8172f (20:572f)
 	call Func_801f7_20
 	call Func_8020c_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld c, $1
 	ld de, Data_81723
 	ld a, BANK(Data_81723)
@@ -174,19 +174,19 @@ Func_8172f: ; 8172f (20:572f)
 	ld a, $2
 	call PlayerFace_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	xor a
 	call PlayMusic_20
 	ld a, $3
 	call PlayMusic_20
 	ld hl, $17d
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2a
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2b
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2c
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld a, $2e
 	call PlaySFX_20
 	ld bc, Data_8172b
@@ -199,14 +199,14 @@ Func_8172f: ; 8172f (20:572f)
 	call Func_8013d_20
 	ld e, $1
 	ld hl, $4
-	call Func_8061b_20
+	call EventFlagAction_20
 	jp Func_817d3
 
 Func_817c9: ; 817c9 (20:57c9)
 	xor a
 	call Func_8044b_20
 	ld hl, $3bf
-	call PrintText_20
+	call PrintTextWithNPCName_20
 Func_817d3: ; 817d3 (20:57d3)
 	ret
 

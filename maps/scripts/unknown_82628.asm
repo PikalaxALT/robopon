@@ -3,7 +3,7 @@ Func_82628:
 	or a
 	jp nz, Func_8271b
 	ld hl, $d5
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_82715
 	ld a, $5e
@@ -59,14 +59,14 @@ Func_82628:
 	xor a
 	call Func_8044b_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld c, $b
 	ld e, $a
 	ld a, $9
 	call Func_80e8d_20
 	ld e, $1
 	ld hl, $d5
-	call Func_8061b_20
+	call EventFlagAction_20
 	ld a, $60
 	call PlaySFX_20
 	ld e, $3
@@ -110,7 +110,7 @@ Func_82628:
 
 Func_82715: ; 82715 (20:6715)
 	ld hl, $15c
-	call Func_80498_20
+	call PrintTextStandard_20
 Func_8271b: ; 8271b (20:671b)
 	ret
 

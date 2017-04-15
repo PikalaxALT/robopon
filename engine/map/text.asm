@@ -204,13 +204,13 @@ Func_ac0c: ; ac0c (2:6c0c)
 	add sp, $48
 	ret
 
-Func_ac24:: ; ac24
+PrintOverworldTextIndexUnadorned:: ; ac24
 	ld e, $e
 	ld c, $0
 	call DrawTextBoxAndOverworldText
 	ret
 
-PrintOverworldTextIndex:: ; ac2c
+PrintOverworldTextIndexWithNPCName:: ; ac2c
 	ld e, $c
 	ld c, $0
 	call DrawTextBoxAndOverworldText
@@ -281,7 +281,7 @@ Func_ac9b:: ; ac9b
 	xor a
 	ret
 
-Func_ac9d:: ; ac9d
+PrintOverworldTextIndexWithNPCNameAndYesNoBox:: ; ac9d
 	ld e, $c
 	ld c, $1
 	jp DrawTextBoxAndOverworldText

@@ -9682,15 +9682,15 @@ Func_bf1f: ; bf1f
 
 Func_bf2c: ; bf2c (2:7f2c)
 	xor a
-	ld [$c851], a
+	ld [wc851], a
 	ld hl, $0
-	write_hl_to $c852
+	write_hl_to wc852
 	ret
 
 Func_bf39:: ; bf39
-	ld [$c851], a
+	ld [wc851], a
 	reg16swap de, hl
-	write_hl_to $c852
+	write_hl_to wc852
 	ret
 
 Func_bf46:: ; bf46 (2:7f46)
@@ -67268,7 +67268,20 @@ Func_51961: ; 51961
 	ret
 
 Data_51967: ; 51967
-	dr $51967, $51975
+	db $01
+	db $1f
+	db $3c
+	db $6b
+	db $73
+	db $86
+	db $80
+	db $81
+	db $82
+	db $83
+	db $84
+	db $85
+	db $59
+	db $63
 
 Func_51975: ; 51975
 	ld a, $6
@@ -67276,11 +67289,11 @@ Func_51975: ; 51975
 	ld a, $b
 	ld [$c78c], a
 	xor a
-Func_51980: ; 51980 (14:5980)
+.loop
 	cp $e
-	jp nc, Func_519a7
+	jp nc, .done
 	push af
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	pop af
 	push af
 	ld e, a
@@ -67293,9 +67306,9 @@ Func_51980: ; 51980 (14:5980)
 	call FarCall
 	pop af
 	inc a
-	jp Func_51980
+	jp .loop
 
-Func_519a7: ; 519a7 (14:59a7)
+.done
 	set_farcall_addrs_hli Func_5a149
 	ld c, $2
 	ld e, $1
@@ -67310,33 +67323,45 @@ Func_519a7: ; 519a7 (14:59a7)
 	ret
 
 Data_519dc: ; 519dc
-	dr $519dc, $519ea
+	db $08
+	db $15
+	db $20
+	db $28
+	db $29
+	db $2a
+	db $2b
+	db $2c
+	db $36
+	db $37
+	db $39
+	db $47
+	db $88
+	db $8d
 
 Func_519ea: ; 519ea
 	ld a, $5
 	ld [$c790], a
 	xor a
-Func_519f0: ; 519f0 (14:59f0)
+.loop
 	cp $e
-	jp nc, Func_51a17
+	jp nc, .done
 	push af
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	pop af
 	push af
 	ld e, a
 	ld d, $0
 	ld hl, Data_519dc
 	add hl, de
-.asm_51a0a
 	ld l, [hl]
 	ld h, $0
 	ld e, $1
 	call FarCall
 	pop af
 	inc a
-	jp Func_519f0
+	jp .loop
 
-Func_51a17: ; 51a17 (14:5a17)
+.done
 	set_farcall_addrs_hli Func_5a149
 	ld c, $2
 	ld e, $1
@@ -67359,7 +67384,23 @@ Func_51a17: ; 51a17 (14:5a17)
 	ret
 
 Data_51a70: ; 51a70
-	dr $51a70, $51a81
+	db $21
+	db $3b
+	db $3d
+	db $3e
+	db $3f
+	db $40
+	db $41
+	db $95
+	db $9a
+	db $9f
+	db $a4
+	db $a9
+	db $aa
+	db $ab
+	db $ac
+	db $ad
+	db $ae
 
 Func_51a81: ; 51a81
 	ld a, $4
@@ -67367,11 +67408,11 @@ Func_51a81: ; 51a81
 	ld a, $7
 	ld [$c78d], a
 	xor a
-Func_51a8c: ; 51a8c (14:5a8c)
+.loop
 	cp $11
-	jp nc, Func_51ab3
+	jp nc, .done
 	push af
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	pop af
 	push af
 	ld e, a
@@ -67384,9 +67425,9 @@ Func_51a8c: ; 51a8c (14:5a8c)
 	call FarCall
 	pop af
 	inc a
-	jp Func_51a8c
+	jp .loop
 
-Func_51ab3: ; 51ab3 (14:5ab3)
+.done
 	set_farcall_addrs_hli Func_5a149
 	ld c, $0
 	ld e, $1
@@ -67401,10 +67442,15 @@ Func_51ab3: ; 51ab3 (14:5ab3)
 	ret
 
 Data_51ae8: ; 51ae8
-	dr $51ae8, $51aec
+	db $44
+	db $22
+	db $46
+	db $c2
 
 Data_51aec: ; 51aec
-	dr $51aec, $51aef
+	db $2a
+	db $22
+	db $05
 
 Func_51aef: ; 51aef
 	ld a, $1
@@ -67412,11 +67458,11 @@ Func_51aef: ; 51aef
 	ld a, $3
 	ld [$c790], a
 	xor a
-Func_51afa: ; 51afa (14:5afa)
+.loop
 	cp $4
-	jp nc, Func_51b21
+	jp nc, .done
 	push af
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	pop af
 	push af
 	ld e, a
@@ -67429,13 +67475,13 @@ Func_51afa: ; 51afa (14:5afa)
 	call FarCall
 	pop af
 	inc a
-	jp Func_51afa
+	jp .loop
 
-Func_51b21: ; 51b21 (14:5b21)
+.done
 	xor a
-Func_51b22: ; 51b22 (14:5b22)
+.loop2
 	cp $3
-	jp nc, Func_51b49
+	jp nc, .done2
 	push af
 	set_farcall_addrs_hli Func_5a149
 	pop af
@@ -67450,9 +67496,9 @@ Func_51b22: ; 51b22 (14:5b22)
 	call FarCall
 	pop af
 	inc a
-	jp Func_51b22
+	jp .loop2
 
-Func_51b49: ; 51b49 (14:5b49)
+.done2
 	set_farcall_addrs_hli Func_e2780
 	ld a, $a
 	call FarCall
@@ -67475,7 +67521,7 @@ Func_51b87: ; 51b87 (14:5b87)
 	cp $7
 	jp nc, Func_51bae
 	push af
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	pop af
 	push af
 	ld e, a
@@ -67591,7 +67637,7 @@ Func_51c91: ; 51c91 (14:5c91)
 	cp $10
 	jp nc, Func_51cb8
 	push af
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	pop af
 	push af
 	ld e, a
@@ -71402,7 +71448,7 @@ Func_53aac: ; 53aac (14:7aac)
 	ld a, [hl]
 	cp $96
 	jp nz, Func_53aeb
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	ld e, $1
 	ld hl, $f3
 	call FarCall
@@ -71418,7 +71464,7 @@ Func_53aee: ; 53aee (14:7aee)
 	ld a, [hl]
 	cp $a8
 	jp nz, Func_53b11
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	ld e, $1
 	ld hl, $f4
 	call FarCall

@@ -480,16 +480,16 @@ Func_80488_\1:
 	pop hl
 	jp FarCall
 
-Func_80498_\1: ; 80498 (20:4498)
+PrintTextStandard_\1: ; 80498 (20:4498)
 	push hl
-	set_farcall_addrs_hli Func_ac24
+	set_farcall_addrs_hli PrintOverworldTextIndexUnadorned
 	pop hl
 	call FarCall
 	ret
 
-PrintText_\1: ; 804a9 (20:44a9)
+PrintTextWithNPCName_\1: ; 804a9 (20:44a9)
 	push hl
-	set_farcall_addrs_hli PrintOverworldTextIndex
+	set_farcall_addrs_hli PrintOverworldTextIndexWithNPCName
 	pop hl
 	call FarCall
 	ret
@@ -500,9 +500,9 @@ PrintTextWithYesNoBox_\1: ; 804ba (20:44ba)
 	pop hl
 	jp FarCall
 
-Func_804ca_\1: ; 804ca (20:44ca)
+PrintTextWithNPCNameAndYesNoBox_\1: ; 804ca (20:44ca)
 	push hl
-	set_farcall_addrs_hli Func_ac9d
+	set_farcall_addrs_hli PrintOverworldTextIndexWithNPCNameAndYesNoBox
 	pop hl
 	jp FarCall
 
@@ -650,16 +650,16 @@ Func_8060c_\1:
 	callba_hli Func_ac37
 	ret
 
-Func_8061b_\1: ; 8061b (20:461b)
+EventFlagAction_\1: ; 8061b (20:461b)
 	push hl
 	push de
-	set_farcall_addrs_hli Func_a98b
+	set_farcall_addrs_hli EventFlagAction
 	pop de
 	pop hl
 	call FarCall
 	ret
 
-Func_8062e_\1: ; 8062e (20:462e)
+CheckEventFlag_\1: ; 8062e (20:462e)
 	push hl
 	set_farcall_addrs_hli CheckEventFlag
 	pop hl
@@ -704,7 +704,7 @@ Func_80688_\1: ; 80688 (20:4688)
 	call Func_8020c_\1
 	ret
 
-Func_8068f_\1: ; 8068f (20:468f)
+ScriptSleep_\1: ; 8068f (20:468f)
 	push hl
 	set_farcall_addrs_hli Func_b5db
 	pop hl
@@ -771,14 +771,14 @@ Func_806dd_\1:
 	ld a, [hl]
 	call SpriteFace_\1
 	ld hl, $c8
-	call Func_8062e_\1
+	call CheckEventFlag_\1
 	or a
 	jp nz, Func_80732_\1
 	ld hl, $36d
-	call PrintText_\1
+	call PrintTextWithNPCName_\1
 	ld e, $1
 	ld hl, $c8
-	call Func_8061b_\1
+	call EventFlagAction_\1
 	jp Func_80796_\1
 
 Func_80732_\1: ; 80732 (20:4732)
@@ -801,12 +801,12 @@ Func_80732_\1: ; 80732 (20:4732)
 	and c
 	jp z, Func_8075a_\1
 	ld hl, $374
-	call PrintText_\1
+	call PrintTextWithNPCName_\1
 	jp Func_80796_\1
 
 Func_8075a_\1: ; 8075a (20:475a)
 	ld hl, $36e
-	call Func_804ca_\1
+	call PrintTextWithNPCNameAndYesNoBox_\1
 	or a
 	jp nz, Func_80796_\1
 	set_farcall_addrs_hli Func_9ace0
@@ -826,14 +826,14 @@ Func_8075a_\1: ; 8075a (20:475a)
 	cp $2
 	jp nz, Func_8078c_\1
 	ld hl, $371
-	call Func_80498_\1
+	call PrintTextStandard_\1
 	jp Func_80796_\1
 
 Func_8078c_\1: ; 8078c (20:478c)
 	or a
 	jp nz, Func_80796_\1
 	ld hl, $47c
-	call Func_80498_\1
+	call PrintTextStandard_\1
 Func_80796_\1: ; 80796 (20:4796)
 	pop bc
 	pop bc
@@ -1057,7 +1057,7 @@ Func_808cb_\1: ; 808cb (20:48cb)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_80498_\1
+	call PrintTextStandard_\1
 	pop bc
 	ld hl, sp+$3
 	ld l, [hl]
@@ -1160,7 +1160,7 @@ Func_80968_\1: ; 80968 (20:4968)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call PrintText_\1
+	call PrintTextWithNPCName_\1
 	pop bc
 	ld hl, sp+$3
 	ld l, [hl]
@@ -1396,7 +1396,7 @@ Func_80a7c_\1:
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_80498_\1
+	call PrintTextStandard_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1421,7 +1421,7 @@ Func_80b09_\1: ; 80b09 (20:4b09)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_80498_\1
+	call PrintTextStandard_\1
 Func_80b19_\1: ; 80b19 (20:4b19)
 	jp Func_80b2a_\1
 
@@ -1434,7 +1434,7 @@ Func_80b1c_\1: ; 80b1c (20:4b1c)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_80498_\1
+	call PrintTextStandard_\1
 Func_80b2a_\1: ; 80b2a (20:4b2a)
 	pop bc
 	pop bc
@@ -1498,7 +1498,7 @@ Func_80b2d_\1:
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_804ca_\1
+	call PrintTextWithNPCNameAndYesNoBox_\1
 	or a
 	jp nz, Func_80bba_\1
 	pop hl
@@ -1509,7 +1509,7 @@ Func_80b2d_\1:
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call PrintText_\1
+	call PrintTextWithNPCName_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1534,7 +1534,7 @@ Func_80bba_\1: ; 80bba (20:4bba)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call PrintText_\1
+	call PrintTextWithNPCName_\1
 Func_80bca_\1: ; 80bca (20:4bca)
 	jp Func_80bdb_\1
 
@@ -1547,7 +1547,7 @@ Func_80bcd_\1: ; 80bcd (20:4bcd)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call PrintText_\1
+	call PrintTextWithNPCName_\1
 Func_80bdb_\1: ; 80bdb (20:4bdb)
 	pop bc
 	pop bc

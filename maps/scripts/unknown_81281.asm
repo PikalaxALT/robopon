@@ -62,7 +62,7 @@ Func_81281:
 	jp nz, Func_813ff
 Func_812c9: ; 812c9 (20:52c9)
 	ld hl, $c
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_812ec
 	ld e, $3
@@ -72,16 +72,16 @@ Func_812c9: ; 812c9 (20:52c9)
 	call Func_814c1
 	ld e, $1
 	ld hl, $c
-	call Func_8061b_20
+	call EventFlagAction_20
 	jp Func_813fc
 
 Func_812ec: ; 812ec (20:52ec)
 	ld hl, $2
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp z, Func_81300
 	ld hl, $3
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_8137b
 Func_81300: ; 81300 (20:5300)
@@ -89,11 +89,11 @@ Func_81300: ; 81300 (20:5300)
 	ld hl, Data_81169
 	call Func_800fb_20
 	ld hl, $2
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp nz, Func_8133b
 	ld hl, $3
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp nz, Func_8132e
 	ld e, $0
@@ -114,15 +114,15 @@ Func_81334: ; 81334 (20:5334)
 	call Func_8013d_20
 Func_8133b: ; 8133b (20:533b)
 	ld hl, $3
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp nz, Func_8137b
 	ld hl, $4
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp z, Func_8135c
 	ld hl, $2
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp nz, Func_8136d
 Func_8135c: ; 8135c (20:535c)
@@ -147,11 +147,11 @@ Func_8137b: ; 8137b (20:537b)
 	ld hl, Data_811bd
 	call Func_800fb_20
 	ld hl, $21
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp nz, Func_813ba
 	ld hl, $46
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_813ba
 	ld e, $4
@@ -312,7 +312,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld a, $36
 	call PlaySFX_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	call Func_801d5_20
 	ld c, $1
 	ld e, $2
@@ -329,7 +329,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	call PlayMusic_20
 	call Func_8018b_20
 	ld hl, $a
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld a, $1
 	call FadeInAudio_20
 	ld a, $3
@@ -343,7 +343,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	call Func_8013d_20
 	call Func_801d5_20
 	ld hl, $3c
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld e, $1
 	xor a
 	call Func_8013d_20
@@ -364,19 +364,19 @@ Func_814c1: ; 814c1 (20:54c1)
 	xor a
 	call SpriteFace_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld hl, $b
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $c
-	call Func_80498_20
+	call PrintTextStandard_20
 	xor a
 	call Func_8021b_20
 	ld hl, $d
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $e
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $3c
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld c, $1
 	ld e, $1
 	ld a, $5
@@ -388,10 +388,10 @@ Func_814c1: ; 814c1 (20:54c1)
 	call PlaySFX_20
 	call Func_801d5_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	call Func_8018b_20
 	ld hl, $f
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld bc, Data_814bb
 	ld e, BANK(Data_814bb)
 	xor a

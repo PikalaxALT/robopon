@@ -18,7 +18,7 @@ Func_81811:
 	or a
 	jp nz, Func_81966
 	ld hl, $3
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_8193b
 	ld c, $1
@@ -42,13 +42,12 @@ Func_81811:
 	ld a, $1a
 	call PlayMusic_20
 	ld hl, $23
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $24
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $25
-	call PrintText_20
-	ld hl, $18
-	call PrintTextWithYesNoBox_20
+	call PrintTextWithNPCName_20
+	writetext_yesorno TreeBitstreamText_396ec
 	or a
 	jp nz, Func_81910
 	ld de, Data_81967
@@ -60,7 +59,7 @@ Func_81811:
 
 Func_8187c: ; 8187c (20:587c)
 	ld hl, $27
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld bc, Data_817fd
 	ld e, BANK(Data_817fd)
 	ld a, $4
@@ -76,11 +75,11 @@ Func_8187c: ; 8187c (20:587c)
 	ld a, $3
 	call PlayMusic_20
 	ld hl, $2
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_818b7
 	ld hl, $28
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	jp Func_81905
 
 Func_818b7: ; 818b7 (20:58b7)
@@ -92,13 +91,13 @@ Func_818b7: ; 818b7 (20:58b7)
 	ld a, $1
 	call PlayerFace_20
 	ld hl, $29
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2a
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2b
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2c
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld a, $2e
 	call PlaySFX_20
 	ld bc, Data_81805
@@ -117,16 +116,16 @@ Func_818b7: ; 818b7 (20:58b7)
 Func_81905: ; 81905 (20:5905)
 	ld e, $1
 	ld hl, $3
-	call Func_8061b_20
+	call EventFlagAction_20
 	jp Func_81938
 
 Func_81910: ; 81910 (20:5910)
 	ld a, $69
 	call PlaySFX_20
 	ld hl, $26
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $1e
-	call Func_8068f_20
+	call ScriptSleep_20
 	ld e, $2
 	ld a, $3
 	call SpriteFace_20
@@ -142,22 +141,22 @@ Func_81938: ; 81938 (20:5938)
 
 Func_8193b: ; 8193b (20:593b)
 	ld hl, $2
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_8194e
 	ld hl, $28
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	jp Func_81966
 
 Func_8194e: ; 8194e (20:594e)
 	ld hl, $29
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2a
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2b
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $2c
-	call PrintText_20
+	call PrintTextWithNPCName_20
 Func_81966: ; 81966 (20:5966)
 	ret
 

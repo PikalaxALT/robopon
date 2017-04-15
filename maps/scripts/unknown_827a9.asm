@@ -54,14 +54,14 @@ Func_827de: ; 827de (20:67de)
 
 Func_82811: ; 82811 (20:6811)
 	ld hl, $d
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_8282c
 	call Func_8001c_20
 	call Func_82894
 	ld e, $1
 	ld hl, $d
-	call Func_8061b_20
+	call EventFlagAction_20
 	jp Func_8283c
 
 Func_8282c: ; 8282c (20:682c)
@@ -130,9 +130,9 @@ Func_82894: ; 82894 (20:6894)
 	call ApplyMovementData_20
 	call Func_8020c_20
 	ld hl, $10
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld hl, $11
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld bc, Data_82890
 	ld e, BANK(Data_82890)
 	ld a, $1
@@ -169,15 +169,14 @@ Func_828df:
 	ld a, $2
 	call SpriteFace_20
 	ld hl, $32
-	call Func_8062e_20
+	call CheckEventFlag_20
 	cp $1
 	jp nz, Func_82967
-	ld hl, $3ed
-	call Func_804ca_20
+	writenpctext_yesorno TreeBitstreamText_45e91
 	or a
 	jp nz, Func_82940
 	ld hl, $486
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
@@ -193,12 +192,12 @@ Func_828df:
 	call Func_8020c_20
 	ld e, $0
 	ld hl, $f8
-	call Func_8061b_20
+	call EventFlagAction_20
 	jp Func_82964
 
 Func_82940: ; 82940 (20:6940)
 	ld hl, $482
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld c, $1
 	ld de, Data_828d7
 	ld a, BANK(Data_828d7)
@@ -216,7 +215,7 @@ Func_82964: ; 82964 (20:6964)
 
 Func_82967: ; 82967 (20:6967)
 	ld hl, FillMemory
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld c, $1
 	ld de, Data_828d7
 	ld a, BANK(Data_828d7)
@@ -237,7 +236,7 @@ Func_8298c:
 	or a
 	jp nz, Func_8299a
 	ld hl, $2a6
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	call Func_8045c_20
 Func_8299a: ; 8299a (20:699a)
 	ret
@@ -274,7 +273,7 @@ Data_829d9: ; 829d9
 
 Func_829dd: ; 829dd (20:69dd)
 	ld hl, $f8
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, .asm_829fc
 	ld c, $1
@@ -284,7 +283,7 @@ Func_829dd: ; 829dd (20:69dd)
 	call Func_8020c_20
 	ld e, $1
 	ld hl, $f8
-	call Func_8061b_20
+	call EventFlagAction_20
 .asm_829fc
 	ret
 
@@ -297,15 +296,14 @@ Func_829fd:
 	ld a, [hl]
 	call Func_8044b_20
 	ld hl, $114
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_82ab0
 	ld a, $10
 	call Func_80e5d_20
 	or a
 	jp z, Func_82a9b
-	ld hl, $497
-	call PrintTextWithYesNoBox_20
+	writetext_yesorno TreeBitstreamText_45f28
 	or a
 	jp nz, Func_82a92
 	ld a, $2b
@@ -335,37 +333,37 @@ Func_82a52: ; 82a52 (20:6a52)
 	ld [$c79c], a
 Func_82a59: ; 82a59 (20:6a59)
 	ld hl, $498
-	call Func_80498_20
+	call PrintTextStandard_20
 	ld a, [$c79c]
 	cp $9
 	jp c, Func_82a8f
 	ld hl, $499
-	call Func_80498_20
+	call PrintTextStandard_20
 	ld a, $2a
 	call PlaySFX_20
 	ld hl, $49a
-	call Func_80498_20
+	call PrintTextStandard_20
 	ld c, $0
 	ld e, $1
 	ld a, $18
 	call Func_80d4d_20
 	ld e, $1
 	ld hl, $114
-	call Func_8061b_20
+	call EventFlagAction_20
 	ld hl, $4a8
-	call Func_80498_20
+	call PrintTextStandard_20
 Func_82a8f: ; 82a8f (20:6a8f)
 	jp Func_82a98
 
 Func_82a92: ; 82a92 (20:6a92)
 	ld hl, $496
-	call Func_80498_20
+	call PrintTextStandard_20
 Func_82a98: ; 82a98 (20:6a98)
 	jp Func_82aad
 
 Func_82a9b: ; 82a9b (20:6a9b)
 	ld hl, $3ec
-	call Func_80498_20
+	call PrintTextStandard_20
 	ld a, [$c79c]
 	or a
 	jp nz, Func_82aad
@@ -376,7 +374,7 @@ Func_82aad: ; 82aad (20:6aad)
 
 Func_82ab0: ; 82ab0 (20:6ab0)
 	ld hl, $49c
-	call Func_80498_20
+	call PrintTextStandard_20
 Func_82ab6: ; 82ab6 (20:6ab6)
 	pop bc
 	ret

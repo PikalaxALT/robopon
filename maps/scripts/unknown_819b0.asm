@@ -4,7 +4,7 @@ Data_819ac:
 Func_819b0:
 	push de
 	ld hl, $2
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_819e8
 	ld hl, sp+$0
@@ -15,7 +15,7 @@ Func_819b0:
 	ld a, $3
 	call SpriteFace_20
 	ld hl, $28
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	xor a
 	call PlayerFace_20
 	ld c, $1

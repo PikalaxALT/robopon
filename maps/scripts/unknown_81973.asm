@@ -4,7 +4,7 @@ Data_8196f: ; 8196f
 Func_81973:
 	push de
 	ld hl, $3
-	call Func_8062e_20
+	call CheckEventFlag_20
 	or a
 	jp nz, Func_819aa
 	ld hl, sp+$0
@@ -15,7 +15,7 @@ Func_81973:
 	xor a
 	call SpriteFace_20
 	ld hl, $1d
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld a, $1
 	call PlayerFace_20
 	ld c, $1

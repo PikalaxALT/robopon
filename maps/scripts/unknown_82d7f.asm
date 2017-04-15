@@ -32,7 +32,7 @@ Func_82dac:
 	ld a, [hl]
 	call Func_8044b_20
 	ld hl, $362
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld a, $c
 	call PlayMusic_20
 	ld e, $3
@@ -53,7 +53,7 @@ Func_82dd0:
 	ld a, [hl]
 	call Func_8044b_20
 	ld hl, $362
-	call PrintText_20
+	call PrintTextWithNPCName_20
 	ld a, $c
 	call PlayMusic_20
 	ld e, $4
