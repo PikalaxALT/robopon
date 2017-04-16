@@ -107249,10 +107249,7 @@ Func_bf680: ; bf680 (2f:7680)
 	jp z, Func_bf680
 	ld bc, $50
 	ld hl, sp+$f
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	hlcoord 0, 0
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli Func_62a3
@@ -107267,19 +107264,13 @@ Func_bf680: ; bf680 (2f:7680)
 	call WaitVideoTransfer
 	ld bc, $50
 	ld hl, sp+$5d
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	hlcoord 0, 0
 	call CopyFromDEtoHL
 	ld bc, $a0
 	ld hl, $ad
 	add hl, sp
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, wOAM2_00YCoord
 	call CopyFromDEtoHL
 	ld hl, sp+$6
@@ -107336,8 +107327,67 @@ GFX_c0000: ; c0000
 	dr $c0000, $c4000
 
 SECTION "Bank 31", ROMX, BANK [$31]
-Data_c4000:: ; c4000
-	dr $c4000, $c5b26
+emote_header: MACRO
+	dw \2 - \1, (\3 << 4) + 2
+	ENDM
+
+Emotes_c4000::
+	dw $0, $0
+	emote_header Emotes_c4000, GFX_c4070, $19
+	emote_header Emotes_c4000, GFX_c4129, $15
+	emote_header Emotes_c4000, GFX_c419d, $1d
+	emote_header Emotes_c4000, GFX_c4256, $20
+	emote_header Emotes_c4000, GFX_c4320, $13
+	emote_header Emotes_c4000, GFX_c4362, $13
+	emote_header Emotes_c4000, GFX_c43a6, $11
+	emote_header Emotes_c4000, GFX_c43b5, $12
+	emote_header Emotes_c4000, GFX_c43ce, $1b
+	emote_header Emotes_c4000, GFX_c44f3, $14
+	emote_header Emotes_c4000, GFX_c454f, $1a
+	emote_header Emotes_c4000, GFX_c4606, $13
+	emote_header Emotes_c4000, GFX_c4635, $40
+	emote_header Emotes_c4000, GFX_c48e1, $21
+	emote_header Emotes_c4000, GFX_c4a57, $32
+	emote_header Emotes_c4000, GFX_c4bb8, $14
+	emote_header Emotes_c4000, GFX_c4c35, $15
+	emote_header Emotes_c4000, GFX_c4cc7, $37
+	emote_header Emotes_c4000, GFX_c4ebd, $18
+	emote_header Emotes_c4000, GFX_c4f94, $3a
+	emote_header Emotes_c4000, GFX_c5226, $3a
+	emote_header Emotes_c4000, GFX_c54b8, $15
+	emote_header Emotes_c4000, GFX_c552a, $36
+	emote_header Emotes_c4000, GFX_c5789, $17
+	emote_header Emotes_c4000, GFX_c57f9, $32
+	emote_header Emotes_c4000, GFX_c5929, $1e
+	emote_header Emotes_c4000, GFX_c5a38, $1d
+
+GFX_c4070: INCBIN "gfx/emotes/emote_c4070.emote.rz"
+GFX_c4129: INCBIN "gfx/emotes/emote_c4129.emote.rz"
+GFX_c419d: INCBIN "gfx/emotes/emote_c419d.emote.rz"
+GFX_c4256: INCBIN "gfx/emotes/emote_c4256.emote.rz"
+GFX_c4320: INCBIN "gfx/emotes/emote_c4320.emote.rz"
+GFX_c4362: INCBIN "gfx/emotes/emote_c4362.emote.rz"
+GFX_c43a6: INCBIN "gfx/emotes/emote_c43a6.emote.rz"
+GFX_c43b5: INCBIN "gfx/emotes/emote_c43b5.emote.rz"
+GFX_c43ce: INCBIN "gfx/emotes/emote_c43ce.emote.rz"
+GFX_c44f3: INCBIN "gfx/emotes/emote_c44f3.emote.rz"
+GFX_c454f: INCBIN "gfx/emotes/emote_c454f.emote.rz"
+GFX_c4606: INCBIN "gfx/emotes/emote_c4606.emote.rz"
+GFX_c4635: INCBIN "gfx/emotes/emote_c4635.emote.rz"
+GFX_c48e1: INCBIN "gfx/emotes/emote_c48e1.emote.rz"
+GFX_c4a57: INCBIN "gfx/emotes/emote_c4a57.emote.rz"
+GFX_c4bb8: INCBIN "gfx/emotes/emote_c4bb8.emote.rz"
+GFX_c4c35: INCBIN "gfx/emotes/emote_c4c35.emote.rz"
+GFX_c4cc7: INCBIN "gfx/emotes/emote_c4cc7.emote.rz"
+GFX_c4ebd: INCBIN "gfx/emotes/emote_c4ebd.emote.rz"
+GFX_c4f94: INCBIN "gfx/emotes/emote_c4f94.emote.rz"
+GFX_c5226: INCBIN "gfx/emotes/emote_c5226.emote.rz"
+GFX_c54b8: INCBIN "gfx/emotes/emote_c54b8.emote.rz"
+GFX_c552a: INCBIN "gfx/emotes/emote_c552a.emote.rz"
+GFX_c5789: INCBIN "gfx/emotes/emote_c5789.emote.rz"
+GFX_c57f9: INCBIN "gfx/emotes/emote_c57f9.emote.rz"
+GFX_c5929: INCBIN "gfx/emotes/emote_c5929.emote.rz"
+GFX_c5a38: INCBIN "gfx/emotes/emote_c5a38.emote.rz"
 
 Data_c5b26:: ; c5b26
 	dr $c5b26, $c7109
@@ -107442,16 +107492,10 @@ Func_e3714:: ; e3714 (38:7714)
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$a
 	ld l, [hl]
 	ld h, $0
@@ -107464,16 +107508,10 @@ Func_e3714:: ; e3714 (38:7714)
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0

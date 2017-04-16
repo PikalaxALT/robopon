@@ -4903,10 +4903,7 @@ Func_9a1bb: ; 9a1bb (26:61bb)
 	call Func_9a377
 	call Func_9a391
 	ld hl, sp+$1
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$3d
 	call PrintCharacterFromTree
 	ld hl, sp+$1
@@ -4930,10 +4927,7 @@ Func_9a1bb: ; 9a1bb (26:61bb)
 	inc hl
 	inc hl
 	inc hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld l, a
 	ld h, $0
 	ld h, l
@@ -4946,10 +4940,7 @@ Func_9a1bb: ; 9a1bb (26:61bb)
 	push hl
 	ld c, $5
 	ld hl, sp+$3
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $ff04
 	call Func_2951
 	push hl
@@ -5023,10 +5014,7 @@ Func_9a2bc: ; 9a2bc (26:62bc)
 	read_hl_from_sp_plus $40
 	ld de, $64
 	call DivideHLByDESigned
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	write_hl_to_sp_plus $40
 	ld hl, sp+$0
 	ld [hl], $1
@@ -5053,10 +5041,7 @@ Func_9a2fa: ; 9a2fa (26:62fa)
 	read_hl_from_sp_plus $40
 	ld de, $a
 	call DivideHLByDESigned
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	write_hl_to_sp_plus $40
 	ld hl, sp+$0
 	ld [hl], $1
@@ -5070,10 +5055,7 @@ Func_9a322: ; 9a322 (26:6322)
 	ld c, $5
 .asm_9a32f
 	ld hl, sp+$1
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $ff04
 	call Func_2951
 	push hl
@@ -5179,15 +5161,15 @@ Func_9a6c7: ; 9a6c7 (26:66c7)
 	jp nc, Func_9a780
 	push de
 	push bc
-	set_farcall_addrs_hli Func_da545
+	set_farcall_addrs_hli LoadEmoteGFX
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
 	ld hl, Data_9a5f6
 	add hl, de
 	ld c, [hl]
-	ld de, Data_c4000
-	ld a, BANK(Data_c4000)
+	ld de, Emotes_c4000
+	ld a, BANK(Emotes_c4000)
 	call FarCall
 	set_farcall_addrs_hli Func_da5db
 	ld hl, sp+$5
@@ -5266,7 +5248,7 @@ Func_9a780: ; 9a780 (26:6780)
 	add $df
 	ld hl, sp+$5
 	ld [hl], a
-	set_farcall_addrs_hli Func_da545
+	set_farcall_addrs_hli LoadEmoteGFX
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
@@ -5987,8 +5969,86 @@ Func_da4dc:: ; da4dc (36:64dc)
 Func_da4fc:: ; da4fc
 	dr $da4fc, $da545
 
-Func_da545: ; da545
-	dr $da545, $da5db
+LoadEmoteGFX: ; da545 (36:6545)
+	push de
+	push bc
+	push bc
+	push bc
+	push bc
+	push af
+	ld [wFarCallDestBank], a
+	read_hl_from_sp_plus $c
+	reg16swap de, hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$6
+	ld bc, $4
+	call FarCopyVideoData
+	set_farcall_addrs_hli AllocateMemory
+	call GetHLAtSPPlus10
+	call FarCall
+	call WriteHLToSPPlus4
+	pop af
+	ld [wFarCallDestBank], a
+	call GetHLAtSPPlus8
+	ld c, l
+	ld b, h
+	pop hl
+	push hl
+	push hl
+	call GetHLAtSPPlus8
+	push hl
+	read_hl_from_sp_plus $e
+	pop de
+	add hl, de
+	pop de
+	call FarDecompressVideoData
+	ld hl, $c263
+	ld l, [hl]
+	ld h, $0
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus4
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, $8000
+	add hl, de
+	call WriteHLToSPPlus4
+	pop hl
+	push hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	call RequestVideoData
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	push hl
+	call FarCall
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
 
 Func_da5db: ; da5db
 	dr $da5db, $da729

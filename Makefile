@@ -5,6 +5,7 @@ POKETOOLS := extras/pokemontools
 
 RZ       := $(PYTHON) rz.py compress
 TM       := $(PYTHON) tm2bpp.py furl
+EMOTE    := $(PYTHON) emote.py pack
 2bpp     := $(PYTHON) gfx.py 2bpp
 1bpp     := $(PYTHON) gfx.py 1bpp
 includes := $(PYTHON) scan_includes.py
@@ -62,6 +63,9 @@ clean: tidy
 
 %.tm2bpp: %.2bpp
 	$(TM) $< $@
+
+%.emote: %_*.2bpp
+	$(EMOTE) $<
 
 %.rz: %
 	$(RZ) $< $@
