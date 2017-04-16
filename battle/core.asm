@@ -393,7 +393,7 @@ Func_23592: ; 23592 (8:7592)
 	jp Func_235b0
 
 Func_2359c: ; 2359c (8:759c)
-	set_farcall_addrs_hli Func_5e504
+	set_farcall_addrs_hli DisplayPartyMenu
 	ld de, $0
 	xor a
 	call FarCall

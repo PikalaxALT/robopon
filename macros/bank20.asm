@@ -1920,7 +1920,7 @@ Func_80eb1_\1: ; 80eb1 (20:4eb1)
 
 Func_80ec0_\1:
 	call Func_3aa8
-	set_farcall_addrs_hli Func_14771
+	set_farcall_addrs_hli DisplayPartyMenu_
 	ld a, $7
 	call FarCall
 	push hl

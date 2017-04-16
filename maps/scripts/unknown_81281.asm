@@ -279,7 +279,7 @@ Data_814bb:
 	dr $814bb, $814c1
 
 Func_814c1: ; 814c1 (20:54c1)
-	playmusic $4
+	playmusic SONG_WILD_BATTLE
 	ld c, $1
 	ld de, Data_814a9
 	ld a, BANK(Data_814a9)
