@@ -4669,260 +4669,7 @@ Func_8150: ; 8150
 
 INCLUDE "engine/map/overworld_loop.asm"
 INCLUDE "engine/map/load_map.asm"
-
-Func_898a: ; 898a (2:498a)
-	push bc
-	push de
-	push hl
-	ld a, [wc85b]
-	ld l, a
-	ld a, [wc85b + 1]
-	ld h, a
-	ld bc, $2a8
-	add hl, bc
-	ld a, l
-	ld [$c88c], a
-	ld a, h
-	ld [$c88d], a
-	xor a
-	ld [$c889], a
-	ld [$c890], a
-	ld [$c891], a
-Func_89ab: ; 89ab (2:49ab)
-	ld a, [$c890]
-	ld l, a
-	ld a, [$c891]
-	ld h, a
-	ld bc, $200
-	ld a, h
-	cp b
-	jr c, .asm_89bf
-	ld a, l
-	cp c
-	jp nc, Func_8b2c
-.asm_89bf
-	push hl
-	srl h
-	rr l
-	srl h
-	rr l
-	ld a, [$c844]
-	ld c, a
-	ld a, [$c845]
-	ld b, a
-	add hl, bc
-	ld a, [hl]
-	cp $1
-	pop hl
-	jp nz, Func_8aa2
-	ld a, [$c88c]
-	ld c, a
-	ld a, [$c88d]
-	ld b, a
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld c, a
-	ld [$c88e], a
-	ld a, [hli]
-	ld b, a
-	ld [$c88f], a
-	ld a, [$c842]
-	ld l, a
-	ld a, [$c843]
-	ld h, a
-	add hl, bc
-	ld a, [hl]
-	cp $ff
-	jr nz, .asm_8a65
-	ld a, [$c889]
-	cp $70
-	jp nc, Func_8b2c
-	ld [hl], a
-	ld h, b
-	ld l, c
-	ld a, [wc85b]
-	ld c, a
-	ld a, [wc85b + 1]
-	ld b, a
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld c, a
-	ld [$c88e], a
-	ld a, [hli]
-	ld b, a
-	ld [$c88f], a
-	ld a, [$c889]
-	ld l, a
-	ld h, $0
-	add hl, hl
-	ld a, [$c85d]
-	ld e, a
-	ld a, [$c85e]
-	ld d, a
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld a, [wSystemType]
-	cp $11
-	jr nz, .asm_8a37
-	ld a, BANK(MapTiles_CGB)
-	jr .asm_8a39
-
-.asm_8a37
-	ld a, BANK(MapTiles_SGB_DMG)
-.asm_8a39
-	ld [wFarCallDestBank], a
-	ld h, b
-	ld l, c
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, MapTiles_SGB_DMG
-	add hl, de
-	ld d, h
-	ld e, l
-	ld a, [$c889]
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld bc, $8900
-	add hl, bc
-	ld bc, $10
-	call FarCopyVideoData
-	ld a, [$c889]
-	inc a
-	ld [$c889], a
-	jr .asm_8a7b
-
-.asm_8a65
-	ld h, b
-	ld l, c
-	add hl, hl
-	ld a, [wc85b]
-	ld e, a
-	ld a, [wc85b + 1]
-	ld d, a
-	add hl, de
-	ld a, [hli]
-	ld c, a
-	ld [$c88e], a
-	ld a, [hli]
-	ld b, a
-	ld [$c88f], a
-.asm_8a7b
-	ld a, [$c890]
-	ld l, a
-	ld a, [$c891]
-	ld h, a
-	add hl, hl
-	ld a, [$c88c]
-	ld e, a
-	ld a, [$c88d]
-	ld d, a
-	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [$c842]
-	ld l, a
-	ld a, [$c843]
-	ld h, a
-	add hl, de
-	ld a, [hl]
-	add $90
-	ld [$c88b], a
-	jr asm_8ad9
-
-Func_8aa2: ; 8aa2 (2:4aa2)
-	ld a, [$c890]
-	ld l, a
-	ld a, [$c891]
-	ld h, a
-	ld a, [$c88c]
-	ld c, a
-	ld a, [$c88d]
-	ld b, a
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld c, a
-	ld [$c88e], a
-	ld a, [hli]
-	ld b, a
-	ld [$c88f], a
-	ld h, b
-	ld l, c
-	ld a, [wc85b]
-	ld c, a
-	ld a, [wc85b + 1]
-	ld b, a
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld c, a
-	ld [$c88e], a
-	ld a, [hli]
-	ld b, a
-	ld [$c88f], a
-	ld a, $fe
-	ld a, [$c88b]
-asm_8ad9
-	ld a, [$c890]
-	ld c, a
-	ld a, [$c891]
-	ld b, a
-	ld a, [$c822]
-	ld l, a
-	ld a, [$c823]
-	ld h, a
-	add hl, bc
-	ld a, [$c88b]
-	ld [hl], a
-	ld a, BANK(OverworldAttrMaps)
-	ld [wFarCallDestBank], a
-	ld a, [$c88e]
-	ld l, a
-	ld a, [$c88f]
-	ld h, a
-	ld bc, OverworldAttrMaps
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld a, [$c890]
-	ld c, a
-	ld a, [$c891]
-	ld b, a
-	ld a, [$c824]
-	ld l, a
-	ld a, [$c825]
-	ld h, a
-	add hl, bc
-	ld bc, $1
-	call FarCopyVideoData
-	ld a, [$c890]
-	ld c, a
-	ld a, [$c891]
-	ld b, a
-	inc bc
-	ld a, c
-	ld [$c890], a
-	ld a, b
-	ld [$c891], a
-	jp Func_89ab
-
-Func_8b2c: ; 8b2c (2:4b2c)
-	pop hl
-	pop de
-	pop bc
-	ret
+INCLUDE "engine/map/load_tiles.asm"
 
 Func_8b30: ; 8b30 (2:4b30)
 	ld bc, $0
@@ -4936,7 +4683,7 @@ Func_8b33: ; 8b33 (2:4b33)
 	ld h, b
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c85d
+	read_hl_from wc85d
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -5179,9 +4926,9 @@ Func_8d0c: ; 8d0c (2:4d0c)
 	ld a, [hli]
 	ld c, a
 	push hl
-	ld a, [$c844]
+	ld a, [wc844]
 	ld l, a
-	ld a, [$c845]
+	ld a, [wc844 + 1]
 	ld h, a
 	add hl, bc
 	ld a, $1
@@ -5249,7 +4996,7 @@ LoadBlockData: ; 8d2a (2:4d2a)
 	call FarDecompressVideoData
 	ld bc, $80
 	ld e, $0
-	read_hl_from $c844
+	read_hl_from wc844
 	call FillMemory
 	read_hl_from wBlockdataPointer
 	ld c, l
@@ -5265,14 +5012,14 @@ LoadBlockData: ; 8d2a (2:4d2a)
 	jp z, Func_8dbd
 	cp $8f
 	jp z, Func_8dbd
-	read_hl_from $c844
+	read_hl_from wc844
 	ld a, [$c859]
 	ld e, a
 	ld d, $0
 	add hl, de
 	ld [hl], $1
 Func_8dbd: ; 8dbd (2:4dbd)
-	read_hl_from $c844
+	read_hl_from wc844
 	ld [hl], $1
 	pop bc
 	pop bc
@@ -5316,9 +5063,9 @@ del_if_defined: MACRO
 .okay_\@
 	ENDM
 
-	del_if_defined $c85d
-	del_if_defined $c824
-	del_if_defined $c822
+	del_if_defined wc85d
+	del_if_defined wc824
+	del_if_defined wc822
 	del_if_defined $c826
 	del_if_defined wBlockdataPointer
 	del_if_defined wMapCollisionPointer
@@ -6379,7 +6126,7 @@ Func_9ed1: ; 9ed1 (2:5ed1)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c822
+	read_hl_from wc822
 	add hl, de
 	pop bc
 	ret
@@ -6406,7 +6153,7 @@ Func_9efa: ; 9efa (2:5efa)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c824
+	read_hl_from wc824
 	add hl, de
 	write_hl_to wc91d
 	ld l, a
@@ -6414,7 +6161,7 @@ Func_9efa: ; 9efa (2:5efa)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c822
+	read_hl_from wc822
 	add hl, de
 	ret
 
@@ -6443,7 +6190,7 @@ Func_9f3b: ; 9f3b (2:5f3b)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c824
+	read_hl_from wc824
 	add hl, de
 	pop bc
 	ret
@@ -6492,7 +6239,7 @@ Func_a184: ; a184 (2:6184)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c822
+	read_hl_from wc822
 	add hl, de
 	ld a, [hl]
 	add $70
@@ -6514,7 +6261,7 @@ Func_a1ad: ; a1ad (2:61ad)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c822
+	read_hl_from wc822
 	add hl, de
 	ld e, c
 	ld d, $0
@@ -10637,7 +10384,7 @@ Func_cb4a: ; cb4a (3:4b4a)
 	ld a, l
 	or h
 	jp nz, Func_cc0b
-	set_farcall_addrs_hli Func_17ab6
+	set_farcall_addrs_hli SetAllocationMode
 	ld a, $2
 	call FarCall
 	set_farcall_addrs_hli AllocateMemory
@@ -10691,7 +10438,7 @@ Func_cb4a: ; cb4a (3:4b4a)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	set_farcall_addrs_hli Func_17ab6
+	set_farcall_addrs_hli SetAllocationMode
 	xor a
 	call FarCall
 Func_cc0b: ; cc0b (3:4c0b)
@@ -10702,7 +10449,7 @@ Func_cc0c: ; cc0c
 	ld a, l
 	or h
 	jp nz, Func_ccec
-	set_farcall_addrs_hli Func_17ab6
+	set_farcall_addrs_hli SetAllocationMode
 	ld a, $2
 	call FarCall
 	set_farcall_addrs_hli AllocateMemory
@@ -10767,7 +10514,7 @@ Func_cc0c: ; cc0c
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	set_farcall_addrs_hli Func_17ab6
+	set_farcall_addrs_hli SetAllocationMode
 	xor a
 	call FarCall
 Func_ccec: ; ccec (3:4cec)
@@ -32649,234 +32396,7 @@ Func_17a63: ; 17a63 (5:7a63)
 Func_17a66: ; 17a66 (5:7a66)
 	ret
 
-Func_17a67:: ; 17a67 (5:7a67)
-	write_hl_to $c2de
-	read_hl_from $c2de
-	ld c, l
-	ld b, h
-	ld a, $55
-	ld [bc], a
-	ld hl, -5
-	add hl, de
-	reg16swap de, hl
-	ld l, c
-	ld h, b
-	inc hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	inc hl
-	ld de, $a002
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ld bc, $a002
-	ld a, $55
-	ld [bc], a
-	ld l, c
-	ld h, b
-	inc hl
-	ld de, $1ffd
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	inc hl
-	ld de, $0
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	xor a
-	ld [wMemoryAllocationMode], a
-	ld hl, $0
-	write_hl_to wMemoryAllocationNumBlocks
-	ret
-
-Func_17ab6: ; 17ab6 (5:7ab6)
-	ld [wMemoryAllocationMode], a
-	ret
-
 INCLUDE "engine/malloc.asm"
-
-Func_17d7b: ; 17d7b
-	push bc
-	push bc
-	push bc
-	push bc
-	read_hl_from $c2de
-	call WriteHLToSPPlus8
-	ld hl, $0
-	call WriteHLToSPPlus6
-	ld bc, $0
-	ld l, c
-	ld h, b
-	call WriteHLToSPPlus4
-	ld hl, $0
-	pop de
-	push hl
-Func_17d9a: ; 17d9a (5:7d9a)
-	call GetHLAtSPPlus8
-	ld a, l
-	or h
-	jp z, Func_17e0c
-	call GetHLAtSPPlus8
-	ld a, [hl]
-	cp $55
-	jp nz, Func_17df5
-	call GetHLAtSPPlus8
-	ld a, l
-	sub $0
-	ld a, h
-	sbc $c0
-	jp c, Func_17dca
-	push bc
-	call GetHLAtSPPlus10
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	call GetHLAtSPPlus6
-	add hl, bc
-	call WriteHLToSPPlus6
-	pop bc
-	jp Func_17dd5
-
-Func_17dca: ; 17dca (5:7dca)
-	call GetHLAtSPPlus8
-	inc hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	add hl, bc
-	ld c, l
-	ld b, h
-Func_17dd5: ; 17dd5 (5:7dd5)
-	push bc
-	call GetHLAtSPPlus10
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	call GetHLAtSPPlus4
-	call CompareHLtoBC
-	jp nc, Func_17df1
-	call GetHLAtSPPlus10
-	inc hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-Func_17df1: ; 17df1 (5:7df1)
-	pop bc
-	jp Func_17dfc
-
-Func_17df5: ; 17df5 (5:7df5)
-	call GetHLAtSPPlus6
-	inc hl
-	call WriteHLToSPPlus6
-Func_17dfc: ; 17dfc (5:7dfc)
-	call GetHLAtSPPlus8
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus8
-	jp Func_17d9a
-
-Func_17e0c: ; 17e0c (5:7e0c)
-	push bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	ld e, $0
-	xor a
-	call SetStringStartState
-	call GetHLAtSPPlus8
-	push hl
-	read_hl_from wMemoryAllocationNumBlocks
-	push hl
-	ld hl, Data_17e6c
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	ld e, $2
-	xor a
-.asm_17e36
-	call SetStringStartState
-	pop bc
-	push bc
-	call GetHLAtSPPlus6
-	push hl
-	ld hl, Data_17e77
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	ld e, $4
-	xor a
-	call SetStringStartState
-	pop hl
-	push hl
-	push hl
-	ld hl, Data_17e88
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Data_17e6c: ; 17e6c
-	db "カウント "
-	TX_SNUM
-	db " "
-	TX_SNUM
-	db "$"
-
-Data_17e77: ; 17e77
-	db "ナイフﾞ "
-	TX_SNUM
-	db " カﾞイフﾞ "
-	TX_SNUM
-	db "$"
-
-Data_17e88: ; 17e88
-	db "サイタﾞイ "
-	TX_SNUM
-	db "$"
-
-Func_17e91: ; 17e91 (5:7e91)
-	call Func_17d7b
-	ret
 
 Func_17e95:: ; 17e95 (5:7e95)
 	push bc

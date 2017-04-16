@@ -608,7 +608,11 @@ wc7ea:: db ; c7ea
 wMapGroup:: db ; c7eb
 wMapNumber:: db ; c7ec
 wEventFlags:: ; c7ed
-	ds $3b
+	ds $35
+	
+wc822:: dw ; c822
+wc824:: dw ; c824
+	ds $2
 
 wBlockdataPointer:: dw ; c828
 	ds $6
@@ -617,14 +621,18 @@ wMapCollisionPointer:: dw ; c830
 	ds $6
 
 wPlayerFacing:: db ; c838
-	ds $18
+	ds $9
+
+wc842:: dw ; c842
+wc844:: dw ; c844
+	ds $b
 
 wc851:: db ; c851
 wc852:: dw ; c852
 	ds $7
 
-wc85b:: dw ; c85b
-	ds $2
+wTilesetPointer:: dw ; c85b
+wc85d:: dw ; c85d
 wPlayerMapX:: db ; c85f
 wPlayerMapY:: db ; c860
 wCurWarpMinX:: db ; c861
@@ -637,6 +645,15 @@ wPlayerMovementRate:: db ; c87c
 wLastStepSucceeded:: db ; c87d
 	ds $a
 
+wc888:: db ; c888
+wLoadTilesBlockCounter:: db ; c889
+wc88a:: db ; c88a
+wc88b:: db ; c88b
+wLoadTilesSourcePointer:: dw ; c88c
+wc88e:: dw ; c88e
+wLoadTilesTileCounter:: dw ; c890
+	ds wc888 - @
+
 wCheckCollisionReturnFlag:: db ; c888
 wCheckCollisionX:: db ; c889
 wCheckCollisionY:: db ; c88a
@@ -644,7 +661,6 @@ wCheckCollisionFlag:: db ; c88b
 wCheckCollisionFacingDirection:: db ; c88c
 wCheckCollisionObjectCounter:: db ; c88d
 wCheckCollisionObjectStructPointer:: dw ; c88e
-wCheckCollision
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 wCGB_BGPalsBuffer:: ; c89c
@@ -669,8 +685,9 @@ wVBlankMetaTileTransferQueue1TileSource:: dw ; c925
 wVBlankMetaTileTransferQueue1AttrSource:: dw ; c927
 wVBlankMetaTileTransferQueue1Dest:: dw ; c929
 
-SECTION "OverworldMap", WRAM0 [$d508]
-	ds 17 * 20
+SECTION "Allocatable Memory", WRAM0 [$ce10]
+wAllocatableBlock0:: alloc_block wce10 ; ce10
+	ds $900 - 5
 
 SECTION "Stack", WRAM0 [$d810]
 wStackBottom:: ds $7f0 ; d810

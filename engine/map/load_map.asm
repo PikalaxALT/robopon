@@ -258,15 +258,15 @@ del: MACRO
 	dec c
 	jp nz, .c_not_zero
 	ld hl, $0
-	write_hl_to $c85d
+	write_hl_to wc85d
 	ld hl, $0
 	write_hl_to wMapCollisionPointer
 	write_hl_to $c82e
 	write_hl_to $c82c
 	write_hl_to wBlockdataPointer
 	write_hl_to $c826
-	write_hl_to $c822
-	write_hl_to $c824
+	write_hl_to wc822
+	write_hl_to wc824
 	ld hl, $0
 	write_hl_to wMapObjectsAndWarpDataPointer
 	ld hl, $0
@@ -286,14 +286,14 @@ del: MACRO
 	jp .okay
 
 .c_not_zero
-	del $c824
-	del $c822
+	del wc824
+	del wc822
 	del $c826
 	del wBlockdataPointer
 	del $c82c
 	del $c82e
 	del $c82a
-	del $c85d
+	del wc85d
 .okay
 	set_farcall_addrs_hli GroupAndNumberToLinearIndex
 	ld hl, sp+$64
@@ -306,19 +306,19 @@ del: MACRO
 	ld [hl], a
 	ld hl, $200
 	call AllocateMemory_Bank02
-	write_hl_to $c824
+	write_hl_to wc824
 	ld hl, $200
 	call AllocateMemory_Bank02
-	write_hl_to $c822
+	write_hl_to wc822
 	ld hl, $80
 	call AllocateMemory_Bank02
 	write_hl_to $c826
 	ld hl, $80
 	call AllocateMemory_Bank02
-	write_hl_to $c844
+	write_hl_to wc844
 	ld hl, $e0
 	call AllocateMemory_Bank02
-	write_hl_to $c85d
+	write_hl_to wc85d
 	ld hl, sp+$5d
 	ld e, [hl]
 	ld d, $0
@@ -359,18 +359,18 @@ del: MACRO
 	ld hl, $728
 	push hl
 	call AllocateMemory_Bank02
-	write_hl_to wc85b
+	write_hl_to wTilesetPointer
 	ld hl, sp+$60
 	ld a, [hl]
 	add BANK(Pointers_1c000)
 	ld [wFarCallDestBank], a
 	pop bc
-	read_hl_from wc85b
+	read_hl_from wTilesetPointer
 	push hl
 	read_hl_from_sp_plus $63
 	pop de
 	call FarDecompressVideoData
-	read_hl_from wc85b
+	read_hl_from wTilesetPointer
 	ld de, $2a8
 	add hl, de
 	reg16swap de, hl
@@ -379,10 +379,10 @@ del: MACRO
 	push hl
 	ld hl, $154
 	call AllocateMemory_Bank02
-	write_hl_to $c842
+	write_hl_to wc842
 	ld bc, $154
 	ld e, $ff
-	read_hl_from $c842
+	read_hl_from wc842
 	call FillMemory
 	ld a, [$c7da]
 	or a
@@ -442,7 +442,7 @@ Func_87a4: ; 87a4 (2:47a4)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	read_hl_from $c844
+	read_hl_from wc844
 	add hl, de
 	ld [hl], $1
 	jp Func_87b9
@@ -453,7 +453,7 @@ Func_87b4: ; 87b4 (2:47b4)
 	jp Func_8769
 
 Func_87b9: ; 87b9 (2:47b9)
-	call Func_898a
+	call LoadMapTiles
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $ff
@@ -466,11 +466,11 @@ Func_87ca: ; 87ca (2:47ca)
 	read_hl_from $c826
 	ld bc, $80
 	call CopyFromDEtoHL
-	read_hl_from $c842
+	read_hl_from wc842
 	call FreeMemory_Bank02
-	read_hl_from $c844
+	read_hl_from wc844
 	call FreeMemory_Bank02
-	read_hl_from wc85b
+	read_hl_from wTilesetPointer
 	call FreeMemory_Bank02
 	pop bc
 	push bc

@@ -2974,9 +2974,9 @@ Func_1db9:: ; 1db9
 
 Func_1e4d:: ; 1e4d (0:1e4d)
 	call Func_3aa8
-	set_farcall_addrs_hli Func_17a67
+	set_farcall_addrs_hli InitAllocatableMemoryBlocks
 	ld de, $900
-	ld hl, $ce10
+	ld hl, wAllocatableBlock0
 	call FarCall
 	call Func_1db9
 	xor a
