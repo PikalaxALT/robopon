@@ -103,7 +103,7 @@ Func_918e: ; 918e (2:518e)
 	ld a, [wPlayerFacing]
 	ld [$c839], a
 Func_91ba: ; 91ba (2:51ba)
-	call Func_8dc8
+	call ShowEmote_
 	pop de
 	ld hl, sp+$e
 	ld a, [hl]
@@ -290,7 +290,7 @@ Func_930d: ; 930d (2:530d)
 	ld [wNextVBlankFlags], a
 	ei
 	call Func_bfaf
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, $e4
 	ld [wOBP0], a
 	ld [wBGP], a
@@ -336,7 +336,7 @@ Func_9371: ; 9371 (2:5371)
 Func_93ba: ; 93ba (2:53ba)
 	push de
 	xor a
-	call Func_8ba8
+	call FadeInMap
 	pop de
 Func_93c0: ; 93c0 (2:53c0)
 	ld a, e

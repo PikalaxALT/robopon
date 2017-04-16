@@ -9,10 +9,10 @@ Func_83026:
 	ld c, $2
 	ld e, $2
 	ld a, $8
-	call Func_80176_20
+	call LoadEmote_20
 	ld e, $2
 	ld a, $3
-	call Func_801e4_20
+	call ShowEmote_20
 	call Func_801d5_20
 	call Func_8018b_20
 	playsfx $28

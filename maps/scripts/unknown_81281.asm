@@ -290,7 +290,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld c, $1
 	ld e, $1
 	ld a, $20
-	call Func_80176_20
+	call LoadEmote_20
 	ld e, $0
 	ld a, $1
 	call Func_8013d_20
@@ -303,7 +303,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld c, $1
 	ld e, $2
 	ld a, $20
-	call Func_80176_20
+	call LoadEmote_20
 	playsfx $36
 	call Func_801d5_20
 	playsfx $39
@@ -318,7 +318,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld c, $1
 	ld e, $2
 	ld a, $1
-	call Func_80176_20
+	call LoadEmote_20
 	ld e, $0
 	xor a
 	call Func_8013d_20
@@ -347,17 +347,17 @@ Func_814c1: ; 814c1 (20:54c1)
 	writenpctext TreeBitstreamText_3911a
 	writetext TreeBitstreamText_3914e
 	xor a
-	call Func_8021b_20
+	call NamingScreen_20
 	writenpctext TreeBitstreamText_39167
 	writenpctext TreeBitstreamText_3917e
 	script_sleep $3c
 	ld c, $1
 	ld e, $1
 	ld a, $5
-	call Func_80176_20
+	call LoadEmote_20
 	ld e, $d
 	ld a, $15
-	call Func_801e4_20
+	call ShowEmote_20
 	playsfx $28
 	call Func_801d5_20
 	script_sleep $1e

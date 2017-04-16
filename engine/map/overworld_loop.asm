@@ -147,7 +147,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	cp $ff
 	jp nz, .okay3
 	call Func_b6f2
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	callba_hli Func_d9f68
 	ld a, [wLCDC]
 	or $3

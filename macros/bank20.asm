@@ -192,11 +192,11 @@ Func_80163_\1:
 	call FarCall
 	ret
 
-Func_80176_\1: ; 80176 (20:4176)
+LoadEmote_\1: ; 80176 (20:4176)
 	push af
 	push de
 	push bc
-	set_farcall_addrs_hli Func_9a6aa
+	set_farcall_addrs_hli LoadEmote
 	pop bc
 	pop de
 	pop af
@@ -223,10 +223,10 @@ Func_801d5_\1: ; 801d5 (20:41d5)
 	callba_hli Func_9a84a
 	ret
 
-Func_801e4_\1: ; 801e4 (20:41e4)
+ShowEmote_\1: ; 801e4 (20:41e4)
 	push af
 	push de
-	set_farcall_addrs_hli Func_9a897
+	set_farcall_addrs_hli ShowEmote
 	pop de
 	pop af
 	call FarCall
@@ -247,21 +247,21 @@ Func_8020c_\1: ; 8020c (20:420c)
 	callba_hli Func_b3ab
 	ret
 
-Func_8021b_\1: ; 8021b (20:421b)
+NamingScreen_\1: ; 8021b (20:421b)
 	push af
 	callba_hli Func_da4dc
 	callba_hli Func_d9f55
-	set_farcall_addrs_hli Func_58d5d
+	set_farcall_addrs_hli NamingScreen__
 	pop af
 	call FarCall
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	ret
 
 Func_80257_\1:
 	callba_hli Func_14d93
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	ret
@@ -276,7 +276,7 @@ Func_80289_\1:
 	callba_hli Func_17470
 	callba_hli Func_14940
 	callba_hli Func_17488
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	ret
@@ -323,7 +323,7 @@ Func_8030d_\1: ; 8030d (20:430d)
 	jp Func_80341_\1
 
 Func_80332_\1: ; 80332 (20:4332)
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 Func_80341_\1: ; 80341 (20:4341)
@@ -365,7 +365,7 @@ Func_80364_\1: ; 80364 (20:4364)
 	jp Func_80398_\1
 
 Func_80389_\1: ; 80389 (20:4389)
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 Func_80398_\1: ; 80398 (20:4398)
@@ -407,7 +407,7 @@ Func_803bb_\1: ; 803bb (20:43bb)
 	jp Func_803ef_\1
 
 Func_803e0_\1: ; 803e0 (20:43e0)
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 Func_803ef_\1: ; 803ef (20:43ef)
@@ -449,7 +449,7 @@ Func_80412_\1: ; 80412 (20:4412)
 	jp Func_80446_\1
 
 Func_80437_\1: ; 80437 (20:4437)
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 Func_80446_\1: ; 80446 (20:4446)
@@ -723,7 +723,7 @@ Func_806a0_\1:
 	ld a, e
 	cp $3
 	jp c, Func_806ce_\1
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	jp Func_806dc_\1
@@ -1919,12 +1919,12 @@ Func_80eb1_\1: ; 80eb1 (20:4eb1)
 	ret
 
 Func_80ec0_\1:
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli DisplayPartyMenu_
 	ld a, $7
 	call FarCall
 	push hl
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	pop hl
@@ -2119,7 +2119,7 @@ Func_8104f_\1:
 	callba_hli Func_6ac44
 	cp $ff
 	jp nz, Func_81071_\1
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 Func_81071_\1: ; 81071 (20:5071)

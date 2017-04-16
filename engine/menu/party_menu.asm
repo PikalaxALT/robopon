@@ -18,7 +18,7 @@ DisplayPartyMenu: ; 5e504 (17:6504)
 	ld hl, Data_5e4f6
 	ld bc, $e
 	call MemCopy
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $2f
 	call FarCall
@@ -827,7 +827,7 @@ Func_5eb43: ; 5eb43 (17:6b43)
 	or h
 	jp z, Func_5eb5a
 Func_5eb57: ; 5eb57 (17:6b57)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 Func_5eb5a: ; 5eb5a (17:6b5a)
 	ld hl, sp+$4f
 	ld a, [hl]

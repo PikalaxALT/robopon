@@ -1,4 +1,4 @@
-Func_174ab: ; 174ab (5:74ab)
+HandleMenu: ; 174ab (5:74ab)
 	push hl
 	push bc
 	push bc

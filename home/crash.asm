@@ -14,7 +14,7 @@ Crash:: ; 1d00 (0:1d00)
 	ld hl, wLastVBlankFlags
 	cp [hl]
 	jp nz, .wait
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld de, Data_1d8d
 	lb hl, 0, 1
 	call PlaceStringDEatCoordHL

@@ -106,7 +106,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	ld c, $6
 	ld e, $1
 	ld a, $1f
-	call Func_80176_20
+	call LoadEmote_20
 	call Func_8001c_20
 	call Func_801d5_20
 	playsfx $67
@@ -135,13 +135,13 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	ld c, $6
 	ld e, $2
 	ld a, $1f
-	call Func_80176_20
+	call LoadEmote_20
 	call Func_801d5_20
 	writetext TreeBitstreamText_38fae
 	ld c, $1
 	ld e, $4
 	ld a, $1f
-	call Func_80176_20
+	call LoadEmote_20
 	script_sleep $2d
 	ld c, $1
 	ld de, Data_81e23
@@ -242,7 +242,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld c, $8
 	ld e, $1
 	ld a, $1f
-	call Func_80176_20
+	call LoadEmote_20
 	call Func_8001c_20
 	call Func_801d5_20
 	script_sleep $3c
@@ -271,7 +271,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld c, $1
 	ld e, $4
 	ld a, $1f
-	call Func_80176_20
+	call LoadEmote_20
 	script_sleep $2d
 	ld c, $1
 	ld de, Data_81f37

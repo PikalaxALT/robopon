@@ -185,7 +185,7 @@ Func_82562: ; 82562 (20:6562)
 	ld c, $1
 	ld e, $2
 	ld a, $8
-	call Func_80176_20
+	call LoadEmote_20
 	call Func_801d5_20
 	call Func_8018b_20
 	writetext TreeBitstreamText_46e0b

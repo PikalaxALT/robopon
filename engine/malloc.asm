@@ -263,7 +263,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	xor a
 	call Func_3afc
 	pop bc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld e, $1
 	xor a
 	call SetStringStartState

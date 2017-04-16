@@ -94,7 +94,7 @@ Func_8326c:
 	jp nz, Func_832d4
 	writetext TreeBitstreamText_46031
 	ld a, $1
-	call Func_8021b_20
+	call NamingScreen_20
 	checkevent $108
 	or a
 	jp nz, Func_832cb
@@ -1457,10 +1457,10 @@ Func_852ac: ; 852ac (21:52ac)
 	ld c, $1
 	ld e, $1
 	ld a, $5
-	call Func_80176_21
+	call LoadEmote_21
 	ld e, $f
 	ld a, $17
-	call Func_801e4_21
+	call ShowEmote_21
 	playsfx $28
 	call Func_801d5_21
 	script_sleep $3c
@@ -1981,7 +1981,7 @@ Func_8585f: ; 8585f (21:585f)
 	ld c, $1
 	ld e, $1
 	ld a, $b
-	call Func_80176_21
+	call LoadEmote_21
 	playsfx $44
 	call Func_801d5_21
 	call Func_8018b_21
@@ -3227,19 +3227,19 @@ Func_86943: ; 86943 (21:6943)
 	ld c, $1
 	ld e, $1
 	ld a, $7
-	call Func_80176_21
+	call LoadEmote_21
 	playsfx $68
 	call Func_801d5_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
-	call Func_80176_21
+	call LoadEmote_21
 	playsfx $68
 	call Func_801d5_21
 	ld c, $1
 	ld e, $1
 	ld a, $7
-	call Func_80176_21
+	call LoadEmote_21
 	playsfx $68
 	call Func_801d5_21
 	writenpctext TreeBitstreamText_3a38a
@@ -3394,10 +3394,10 @@ Func_86b0d:
 	ld c, $2
 	ld e, $2
 	ld a, $8
-	call Func_80176_21
+	call LoadEmote_21
 	ld e, $4
 	ld a, $e
-	call Func_801e4_21
+	call ShowEmote_21
 	call Func_801d5_21
 	call Func_8018b_21
 	playsfx $28
@@ -3831,7 +3831,7 @@ Func_87497:
 	ld c, $1
 	ld e, $2
 	ld a, $8
-	call Func_80176_21
+	call LoadEmote_21
 	call Func_801d5_21
 	call Func_8018b_21
 	writetext TreeBitstreamText_46e0b
@@ -4410,7 +4410,7 @@ Func_87b4f: ; 87b4f (21:7b4f)
 	ld c, $1
 	ld e, $1
 	ld a, $9
-	call Func_80176_21
+	call LoadEmote_21
 	playsfx $5a
 	call Func_801d5_21
 	call Func_8018b_21
@@ -4451,7 +4451,7 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	ld c, $1
 	ld e, $2
 	ld a, $9
-	call Func_80176_21
+	call LoadEmote_21
 	playsfx $37
 	call Func_801d5_21
 	ld a, $1
@@ -4882,7 +4882,10 @@ Func_9a172: ; 9a172
 	dr $9a172, $9a173
 
 Func_9a173: ; 9a173
-	dr $9a173, $9a1bb
+	dr $9a173, $9a1aa
+
+Func_9a1aa: ; 9a1aa
+	dr $9a1aa, $9a1bb
 
 Func_9a1bb: ; 9a1bb (26:61bb)
 	push hl
@@ -5129,10 +5132,232 @@ Func_9a39e: ; 9a39e
 	dr $9a39e, $9a41d
 
 Func_9a41d:: ; 9a41d
-	dr $9a41d, $9a6aa
+	dr $9a41d, $9a5f6
 
-Func_9a6aa::
-	dr $9a6aa, $9a84a
+Data_9a5f6: ; 9a5f6
+	dr $9a5f6, $9a618
+
+Data_9a618: ; 9a618
+	dr $9a618, $9a623
+
+Data_9a623: ; 9a623
+	dr $9a623, $9a645
+
+Data_9a645: ; 9a645
+	dr $9a645, $9a650
+
+Data_9a650: ; 9a650
+	dr $9a650, $9a672
+
+Data_9a672: ; 9a672
+	dr $9a672, $9a67d
+
+Data_9a67d: ; 9a67d
+	dr $9a67d, $9a69f
+
+Data_9a69f: ; 9a69f
+	dr $9a69f, $9a6aa
+
+LoadEmote:: ; 9a6aa (26:66aa)
+	push af
+	push de
+	push bc
+	read_hl_from $c82e
+	ld a, l
+	or h
+	jp z, Func_9a6c7
+	read_hl_from $c82e
+	call Func_9a1aa
+	ld hl, $0
+	write_hl_to $c82e
+Func_9a6c7: ; 9a6c7 (26:66c7)
+	pop bc
+	pop de
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $22
+	jp nc, Func_9a780
+	push de
+	push bc
+	set_farcall_addrs_hli Func_da545
+	ld hl, sp+$5
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a5f6
+	add hl, de
+	ld c, [hl]
+	ld de, Data_c4000
+	ld a, BANK(Data_c4000)
+	call FarCall
+	set_farcall_addrs_hli Func_da5db
+	ld hl, sp+$5
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a623
+	add hl, de
+	ld c, [hl]
+	ld de, Data_c5b26
+	ld a, BANK(Data_c5b26)
+	call FarCall
+	write_hl_to $c82e
+	set_farcall_addrs_hli Func_d9f7e
+	pop bc
+	pop de
+	ld l, c
+	ld h, $0
+	ld h, l
+	ld l, $0
+	ld c, l
+	ld b, h
+	ld d, $0
+	read_hl_from $c82e
+	call FarCall
+	ld hl, sp+$1
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a650
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_9a75a
+	ld hl, sp+$1
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a67d
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_9a75a
+	ld a, [wPlayerMapY]
+	ld e, a
+	ld a, [wPlayerMapX]
+	call ShowEmote
+	jp Func_9a771
+
+Func_9a75a: ; 9a75a (26:675a)
+	ld hl, sp+$1
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a650
+	add hl, de
+	ld a, [hl]
+	ld hl, sp+$1
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a67d
+	add hl, de
+	ld e, [hl]
+	call ShowEmote
+Func_9a771: ; 9a771 (26:6771)
+	ld l, $50
+	push hl
+	ld c, $50
+	ld e, $0
+	xor a
+	call Func_9a8b1
+	pop bc
+	jp Func_9a834
+
+Func_9a780: ; 9a780 (26:6780)
+	push de
+	push bc
+	ld hl, sp+$5
+	ld a, [hl]
+	add $df
+	ld hl, sp+$5
+	ld [hl], a
+	set_farcall_addrs_hli Func_da545
+	ld hl, sp+$5
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a618
+	add hl, de
+	ld c, [hl]
+	ld de, Data_b2418
+	ld a, BANK(Data_b2418)
+	call FarCall
+	set_farcall_addrs_hli Func_da5db
+	ld hl, sp+$5
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a645
+	add hl, de
+	ld c, [hl]
+	ld de, Data_b3607
+	ld a, BANK(Data_b3607)
+	call FarCall
+	write_hl_to $c82e
+	set_farcall_addrs_hli Func_d9f7e
+	pop bc
+	pop de
+	ld l, c
+	ld h, $0
+	ld h, l
+	ld l, $0
+	ld c, l
+	ld b, h
+	ld d, $0
+	read_hl_from $c82e
+	call FarCall
+	ld hl, sp+$1
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a672
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_9a811
+	ld hl, sp+$1
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a69f
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_9a811
+	ld a, [wPlayerMapY]
+	ld e, a
+	ld a, [wPlayerMapX]
+	call ShowEmote
+	jp Func_9a828
+
+Func_9a811: ; 9a811 (26:6811)
+	ld hl, sp+$1
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a672
+	add hl, de
+	ld a, [hl]
+	ld hl, sp+$1
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_9a69f
+	add hl, de
+	ld e, [hl]
+	call ShowEmote
+Func_9a828: ; 9a828 (26:6828)
+	ld l, $50
+	push hl
+	ld c, $50
+	ld e, $0
+	xor a
+	call Func_9a8b1
+	pop bc
+Func_9a834: ; 9a834 (26:6834)
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $c
+	jp z, Func_9a844
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $12
+	jp nz, Func_9a848
+Func_9a844: ; 9a844 (26:6844)
+	xor a
+	ld [wc852 + 8], a
+Func_9a848: ; 9a848 (26:6848)
+	pop bc
+	ret
 
 Func_9a84a::
 	dr $9a84a, $9a87c
@@ -5140,8 +5365,25 @@ Func_9a84a::
 Func_9a87c: ; 9a87c
 	dr $9a87c, $9a897
 
-Func_9a897: ; 9a897
-	dr $9a897, $9a8c3
+ShowEmote: ; 9a897
+	add -5
+	ld [wMapCollisionPointer + 2], a
+	ld a, e
+	add -4
+	ld [wMapCollisionPointer + 3], a
+	callba_hli ShowEmote_
+	ret
+
+Func_9a8b1:
+	ld [wMapCollisionPointer + 4], a
+	ld a, e
+	ld [wMapCollisionPointer + 5], a
+	ld a, c
+	ld [wMapCollisionPointer + 6], a
+	ld hl, sp+$2
+	ld a, [hl]
+	ld [wMapCollisionPointer + 7], a
+	ret
 
 Func_9a8c3:: ; 9a8c3
 	dr $9a8c3, $9ace0
@@ -5479,7 +5721,13 @@ Func_b10ea: ; b10ea
 	dr $b10ea, $b138f
 
 Func_b138f: ; b138f
-	dr $b138f, $b3fd0
+	dr $b138f, $b2418
+
+Data_b2418: ; b2418
+	dr $b2418, $b3607
+
+Data_b3607: ; b3607
+	dr $b3607, $b3fd0
 
 SECTION "Bank 2d", ROMX, BANK [$2d]
 	lib_bank_20 2d
@@ -5700,7 +5948,10 @@ Func_d9f68:: ; d9f68
 	dr $d9f68, $d9f74
 
 Func_d9f74:: ; d9f74
-	dr $d9f74, $da07a
+	dr $d9f74, $d9f7e
+
+Func_d9f7e: ; d9f7e
+	dr $d9f7e, $da07a
 
 Func_da07a:: ; da07a
 	dr $da07a, $da093
@@ -5734,7 +5985,13 @@ Func_da4dc:: ; da4dc (36:64dc)
 	ret
 
 Func_da4fc:: ; da4fc
-	dr $da4fc, $da729
+	dr $da4fc, $da545
+
+Func_da545: ; da545
+	dr $da545, $da5db
+
+Func_da5db: ; da5db
+	dr $da5db, $da729
 
 Func_da729:: ; da729
 	dr $da729, $da835

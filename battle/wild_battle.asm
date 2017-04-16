@@ -32,7 +32,7 @@ StartBattle:: ; bbee (2:7bee)
 
 Func_bc5a: ; bc5a (2:7c5a)
 	xor a
-	call Func_8ba8
+	call FadeInMap
 Func_bc5e: ; bc5e (2:7c5e)
 	pop af
 	cp $1

@@ -4613,7 +4613,7 @@ Func_804c: ; 804c (2:404c)
 	write_hl_to_sp_plus $11
 	ld hl, sp+$5c
 	write_hl_to_sp_plus $0f
-	set_farcall_addrs_hli Func_174ab
+	set_farcall_addrs_hli HandleMenu
 	ld hl, sp+$0
 	call FarCall
 	add sp, $64
@@ -4747,7 +4747,7 @@ Func_8ba3: ; 8ba3 (2:4ba3)
 Func_8ba7: ; 8ba7 (2:4ba7)
 	ret
 
-Func_8ba8:: ; 8ba8
+FadeInMap:: ; 8ba8
 	push af
 	push bc
 	call Func_b6f2
@@ -5026,7 +5026,7 @@ Func_8dbd: ; 8dbd (2:4dbd)
 	pop bc
 	ret
 
-Func_8dc8: ; 8dc8
+ShowEmote_:: ; 8dc8
 	ld a, $50
 	ld hl, wSCX
 	sub [hl]
@@ -8515,7 +8515,7 @@ SpawnPlayerAt:: ; b530 (2:7530)
 	or $10
 	ld [wNextVBlankFlags], a
 	ei
-	call Func_8dc8
+	call ShowEmote_
 	call Func_8f44
 	ret
 
@@ -13275,7 +13275,7 @@ Func_e15d: ; e15d (3:615d)
 	pop de
 	ld a, $1
 	call Func_dc0a
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, $e4
 	ld [wOBP0], a
 	ld [wBGP], a
@@ -16640,7 +16640,7 @@ Func_f7fd: ; f7fd (3:77fd)
 	ld a, SONG_TRAINER_BATTLE
 	call OverworldPlaySong
 .skip_music
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
 	ld e, $1
@@ -17490,7 +17490,7 @@ Func_10011: ; 10011 (4:4011)
 	xor a
 	call Func_3afc
 	pop bc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_17e95
 	ld c, $a
 	ld e, $a
@@ -18135,7 +18135,7 @@ Func_104c9: ; 104c9 (4:44c9)
 	call FarCall
 	xor a
 	ld [$c2fa], a
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_104ef
@@ -21278,7 +21278,7 @@ Func_11cfb: ; 11cfb (4:5cfb)
 	xor a
 	call Func_3afc
 	pop bc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_17e95
 	ld c, $12
 	ld e, $14
@@ -21668,7 +21668,7 @@ Func_11fda: ; 11fda (4:5fda)
 	xor a
 	ld [$c2fa], a
 Func_12021: ; 12021 (4:6021)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ret
 
 Data_12025: ; 12025
@@ -21949,7 +21949,7 @@ Func_12352: ; 12352 (4:6352)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -22605,7 +22605,7 @@ Func_127fa: ; 127fa (4:67fa)
 
 Func_127fe: ; 127fe (4:67fe)
 	push de
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	pop de
 	push de
 	ld a, e
@@ -22622,7 +22622,7 @@ Func_12815: ; 12815 (4:6815)
 
 Func_12818: ; 12818 (4:6818)
 	push de
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	pop de
 	ld a, e
 	add sp, $50
@@ -23216,7 +23216,7 @@ Func_12acb: ; 12acb (4:6acb)
 	ret
 
 Func_12b93: ; 12b93 (4:6b93)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_12ba6
@@ -23318,7 +23318,7 @@ Func_12ca4: ; 12ca4 (4:6ca4)
 	push de
 	push bc
 	push bc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_12cbb
@@ -23533,7 +23533,7 @@ Func_12e14: ; 12e14 (4:6e14)
 	xor a
 	call Func_3afc
 	pop bc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	call Func_2009
 	ld a, [wSystemType]
 	cp $11
@@ -24855,543 +24855,7 @@ Func_1401b: ; 1401b
 	pop bc
 	ret
 
-Func_14028: ; 14028 (5:4028)
-	push hl
-	add sp, -$32
-	ld hl, sp+$32
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	push hl
-	push de
-	ld hl, sp+$19
-	write_hl_to_sp_plus $0b
-	read_hl_from_sp_plus $3c
-	ld l, h
-	ld h, $0
-	write_hl_to_sp_plus $0f
-	read_hl_from_sp_plus $3c
-	ld h, $0
-	write_hl_to_sp_plus $0d
-	read_hl_from_sp_plus $3e
-	ld l, h
-	ld h, $0
-	write_hl_to_sp_plus $15
-	read_hl_from_sp_plus $3e
-	ld h, $0
-	write_hl_to_sp_plus $13
-	read_hl_from_sp_plus $40
-	ld l, h
-	ld h, $0
-	write_hl_to_sp_plus $11
-	pop hl
-	write_hl_to_sp_plus $17
-	ld l, c
-	ld h, b
-	write_hl_to_sp_plus $15
-	read_hl_from_sp_plus $3e
-	ld c, l
-	read_hl_from_sp_plus $13
-	ld a, l
-	inc a
-	or h
-	jp nz, Func_1408f
-	ld hl, -1
-	write_hl_to_sp_plus $13
-Func_1408f: ; 1408f (5:408f)
-	read_hl_from_sp_plus $0b
-	ld a, l
-	inc a
-	or h
-	jp nz, Func_140a0
-	ld hl, -1
-	write_hl_to_sp_plus $0b
-Func_140a0: ; 140a0 (5:40a0)
-	read_hl_from_sp_plus $0d
-	ld a, l
-	inc a
-	or h
-	jp nz, Func_140b1
-	ld hl, -1
-	write_hl_to_sp_plus $0d
-Func_140b1: ; 140b1 (5:40b1)
-	read_hl_from wc2e6
-	ld de, $1c
-	add hl, de
-	call WriteHLToSPPlus4
-	ld hl, sp+$3e
-	ld a, [hl]
-	ld [wFarCallDestBank], a
-	ld hl, sp+$6
-	ld [hl], a
-	pop hl
-	push bc
-	reg16swap de, hl
-	ld hl, sp+$17
-	ld bc, $1f
-	call FarCopyVideoData
-	pop bc
-	ld a, c
-	cp $3
-	jp c, Func_1436d
-	push bc
-	ld de, $19
-	ld a, $3
-	call Func_16007
-	ld hl, sp+$3e
-	ld [hl], a
-	pop bc
-	push bc
-	ld a, c
-	cp $1f
-	jp z, Func_1435c
-	cp $18
-	jp z, Func_1433d
-	cp $25
-	jp z, Func_142f2
-	cp $d
-	jp z, Func_142f2
-	cp $c
-	jp z, Func_142be
-	cp $b
-	jp z, Func_1428a
-	cp $8
-	jp z, Func_14237
-	cp $21
-	jp z, Func_1422a
-	cp $16
-	jp z, Func_1422a
-	cp $a
-	jp z, Func_1422a
-	cp $24
-	jp z, Func_1422a
-	cp $7
-	jp z, Func_1422a
-	cp $6
-	jp z, Func_1422a
-	cp $15
-	jp z, Func_1421d
-	cp $9
-	jp z, Func_1421d
-	cp $5
-	jp z, Func_1421d
-	cp $4
-	jp z, Func_1421d
-	cp $11
-	jp z, Func_141e6
-	cp $12
-	jp z, Func_141d9
-	cp $10
-	jp z, Func_141d9
-	cp $3
-	jp z, Func_141d9
-	cp $26
-	jp z, Func_141b9
-	cp $20
-	jp z, Func_141b9
-	cp $1d
-	jp z, Func_141b9
-	cp $17
-	jp z, Func_141b9
-	cp $23
-	jp z, Func_14180
-	cp $22
-	jp z, Func_14180
-	cp $1c
-	jp z, Func_14180
-	cp $14
-	jp z, Func_14180
-	cp $13
-	jp nz, Func_14366
-Func_14180: ; 14180 (5:4180)
-	ld hl, $0
-	write_hl_to_sp_plus $0f
-	ld hl, $0
-Func_1418a: ; 1418a (5:418a)
-	ld de, $4
-	call CompareHLtoDE
-	jp nc, Func_141b6
-	push hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, $c9b8
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_141b1
-	read_hl_from_sp_plus $11
-	inc hl
-	write_hl_to_sp_plus $11
-Func_141b1: ; 141b1 (5:41b1)
-	pop hl
-	inc hl
-	jp Func_1418a
-
-Func_141b6: ; 141b6 (5:41b6)
-	jp Func_14366
-
-Func_141b9: ; 141b9 (5:41b9)
-	ld de, $19
-	ld a, $2
-	call Func_16007
-	callba_hli Func_7cd1
-	ld l, a
-	ld h, $0
-	write_hl_to_sp_plus $0f
-	jp Func_14366
-
-Func_141d9: ; 141d9 (5:41d9)
-	ld hl, $ca6c
-	ld l, [hl]
-	ld h, $0
-	write_hl_to_sp_plus $0f
-	jp Func_14366
-
-Func_141e6: ; 141e6 (5:41e6)
-	ld hl, $0
-	write_hl_to_sp_plus $0f
-	ld bc, $0
-Func_141f0: ; 141f0 (5:41f0)
-	ld l, c
-	ld h, b
-	ld de, $50
-	call CompareHLtoDE
-	jp nc, Func_1421a
-	ld l, c
-	ld h, b
-	add hl, hl
-	ld de, $cb94
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_14213
-	read_hl_from_sp_plus $0f
-	inc hl
-	write_hl_to_sp_plus $0f
-	jp Func_14216
-
-Func_14213: ; 14213 (5:4213)
-	jp Func_1421a
-
-Func_14216: ; 14216 (5:4216)
-	inc bc
-	jp Func_141f0
-
-Func_1421a: ; 1421a (5:421a)
-	jp Func_14366
-
-Func_1421d: ; 1421d (5:421d)
-	ld hl, $c9a2
-	ld l, [hl]
-	ld h, $0
-	write_hl_to_sp_plus $0f
-	jp Func_14366
-
-Func_1422a: ; 1422a (5:422a)
-	ld hl, $c9b7
-	ld l, [hl]
-	ld h, $0
-	write_hl_to_sp_plus $0f
-	jp Func_14366
-
-Func_14237: ; 14237 (5:4237)
-	ld hl, $0
-	write_hl_to_sp_plus $0f
-	ld hl, $0
-	call WriteHLToSPPlus6
-Func_14244: ; 14244 (5:4244)
-	call GetHLAtSPPlus6
-	ld de, $3
-	call CompareHLtoDE
-	jp nc, Func_14287
-	ld hl, wc2e8 + 1
-	ld l, [hl]
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, $c9b8
-	add hl, de
-	ld de, $8
-	add hl, de
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus6
-	add hl, bc
-	ld a, [hl]
-	or a
-	jp z, Func_1427d
-	read_hl_from_sp_plus $0f
-	inc hl
-	write_hl_to_sp_plus $0f
-Func_1427d: ; 1427d (5:427d)
-	call GetHLAtSPPlus6
-	inc hl
-	call WriteHLToSPPlus6
-	jp Func_14244
-
-Func_14287: ; 14287 (5:4287)
-	jp Func_14366
-
-Func_1428a: ; 1428a (5:428a)
-	ld hl, $0
-	write_hl_to_sp_plus $0f
-	ld bc, $0
-Func_14294: ; 14294 (5:4294)
-	ld l, c
-	ld h, b
-	ld de, $fa
-	call CompareHLtoDE
-	jp nc, Func_142bb
-	ld hl, $cd10
-	add hl, bc
-	ld a, [hl]
-	or a
-	jp z, Func_142b4
-	read_hl_from_sp_plus $0f
-	inc hl
-	write_hl_to_sp_plus $0f
-	jp Func_142b7
-
-Func_142b4: ; 142b4 (5:42b4)
-	jp Func_142bb
-
-Func_142b7: ; 142b7 (5:42b7)
-	inc bc
-	jp Func_14294
-
-Func_142bb: ; 142bb (5:42bb)
-	jp Func_14366
-
-Func_142be: ; 142be (5:42be)
-	ld hl, $0
-	write_hl_to_sp_plus $0f
-	ld bc, $0
-Func_142c8: ; 142c8 (5:42c8)
-	ld l, c
-	ld h, b
-	ld de, $dc
-	call CompareHLtoDE
-	jp nc, Func_142ef
-	ld hl, $cc34
-	add hl, bc
-	ld a, [hl]
-	or a
-	jp z, Func_142e8
-	read_hl_from_sp_plus $0f
-	inc hl
-	write_hl_to_sp_plus $0f
-	jp Func_142eb
-
-Func_142e8: ; 142e8 (5:42e8)
-	jp Func_142ef
-
-Func_142eb: ; 142eb (5:42eb)
-	inc bc
-	jp Func_142c8
-
-Func_142ef: ; 142ef (5:42ef)
-	jp Func_14366
-
-Func_142f2: ; 142f2 (5:42f2)
-	ld hl, sp+$3e
-	ld a, [hl]
-	call GetSRAMBank
-	ld hl, $1
-	write_hl_to_sp_plus $0f
-	ld bc, $0
-Func_14302: ; 14302 (5:4302)
-	ld l, c
-	ld h, b
-	ld de, $8
-	call CompareHLtoDE
-	jp nc, Func_1433a
-	ld l, c
-	ld h, b
-	ld de, $7
-	call CompareHLtoDE
-	jp nc, Func_14336
-	call GetHLAtSPPlus4
-	reg16swap de, hl
-	ld l, c
-	ld h, b
-	add hl, hl
-	add hl, hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_14336
-	read_hl_from_sp_plus $0f
-	inc hl
-	write_hl_to_sp_plus $0f
-Func_14336: ; 14336 (5:4336)
-	inc bc
-	jp Func_14302
-
-Func_1433a: ; 1433a (5:433a)
-	jp Func_14366
-
-Func_1433d: ; 1433d (5:433d)
-	ld a, [wBackupMapGroup]
-	or a
-	jp nz, Func_14352
-	ld hl, $c78c
-	ld l, [hl]
-	ld h, $0
-	inc hl
-	write_hl_to_sp_plus $0f
-	jp Func_14359
-
-Func_14352: ; 14352 (5:4352)
-	ld hl, $7
-	write_hl_to_sp_plus $0f
-Func_14359: ; 14359 (5:4359)
-	jp Func_14366
-
-Func_1435c: ; 1435c (5:435c)
-	ld hl, $c78c
-	ld l, [hl]
-	ld h, $0
-	write_hl_to_sp_plus $0f
-Func_14366: ; 14366 (5:4366)
-	ld hl, sp+$3e
-	ld a, [hl]
-	call GetSRAMBank
-	pop bc
-Func_1436d: ; 1436d (5:436d)
-	push bc
-	ld a, c
-	cp $24
-	jp z, Func_143e3
-	cp $22
-	jp z, Func_143e3
-	cp $21
-	jp z, Func_143e3
-	cp $1e
-	jp z, Func_143e3
-	cp $1b
-	jp z, Func_143e3
-	cp $14
-	jp z, Func_143e3
-	cp $13
-	jp z, Func_143e3
-	cp $d
-	jp z, Func_143e3
-	cp $5
-	jp z, Func_143e3
-	cp $26
-	jp z, Func_143dd
-	cp $20
-	jp z, Func_143dd
-	cp $1f
-	jp z, Func_143dd
-	cp $1d
-	jp z, Func_143dd
-	cp $11
-	jp z, Func_143dd
-	cp $10
-	jp z, Func_143dd
-	cp $e
-	jp z, Func_143dd
-	cp $8
-	jp z, Func_143dd
-	cp $7
-	jp z, Func_143dd
-	cp $6
-	jp z, Func_143dd
-	cp $4
-	jp z, Func_143dd
-	cp $3
-	jp z, Func_143dd
-	cp $2
-	jp nz, Func_143e6
-Func_143dd: ; 143dd (5:43dd)
-	call Func_3af6
-	jp Func_143e6
-
-Func_143e3: ; 143e3 (5:43e3)
-	call Func_3aa8
-Func_143e6: ; 143e6 (5:43e6)
-	pop bc
-	push bc
-	ld a, c
-	cp $1
-	jp nz, Func_143f6
-Func_143ee: ; 143ee (5:43ee)
-	ld hl, sp+$6
-	call Func_174ab
-	jp Func_143ee
-
-Func_143f6: ; 143f6 (5:43f6)
-	ld hl, sp+$6
-	call Func_174ab
-	pop bc
-	push hl
-	ld a, c
-	cp $1a
-	jp z, Func_1444f
-	cp $1b
-	jp z, Func_1444f
-	cp $d
-	jp z, Func_1444f
-	cp $22
-	jp z, Func_1444f
-	cp $13
-	jp z, Func_1444f
-	cp $24
-	jp z, Func_14449
-	cp $1f
-	jp z, Func_14449
-	cp $14
-	jp z, Func_14449
-	cp $11
-	jp z, Func_14449
-	cp $10
-	jp z, Func_14449
-	cp $e
-	jp z, Func_14449
-	cp $8
-	jp z, Func_14449
-	cp $7
-	jp z, Func_14449
-	cp $5
-	jp z, Func_14449
-	cp $4
-	jp nz, Func_14452
-Func_14449: ; 14449 (5:4449)
-	call Func_3af6
-	jp Func_14452
-
-Func_1444f: ; 1444f (5:444f)
-	call Func_3aa8
-Func_14452: ; 14452 (5:4452)
-	pop hl
-	reg16swap de, hl
-	add sp, $34
-	reg16swap de, hl
-	ret
+INCLUDE "engine/menu/menu.asm"
 
 Func_1445e: ; 1445e
 	push hl
@@ -25436,7 +24900,7 @@ Func_1445e: ; 1445e
 	push hl
 	read_hl_from_sp_plus $1c
 	pop de
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25458,7 +24922,7 @@ Func_144bd: ; 144bd
 	ld bc, $44f7
 	ld de, $0
 	ld hl, Data_54001
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25477,7 +24941,7 @@ Func_144dd: ; 144dd (5:44dd)
 	ld bc, $4548
 	ld de, $0
 	ld hl, Data_54020
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25557,7 +25021,7 @@ Func_1458e: ; 1458e (5:458e)
 	ld bc, $45a5
 	ld de, $0
 	ld hl, Data_5403f
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25597,7 +25061,7 @@ Func_145b5: ; 145b5 (5:45b5)
 	ld bc, $45a5
 	ld de, $0
 	ld hl, Data_5405e
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25636,7 +25100,7 @@ Func_14615: ; 14615 (5:4615)
 	ld bc, $45e4
 	ld de, $0
 	ld hl, Data_5407d
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25676,7 +25140,7 @@ Func_1463c: ; 1463c (5:463c)
 	ld bc, $45e4
 	ld de, $0
 	ld hl, Data_5409c
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25686,7 +25150,7 @@ Func_14673: ; 14673 (5:4673)
 	ret
 
 Func_14675: ; 14675 (5:4675)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_6183
 	ld a, [wLCDC]
 	and $7f
@@ -25766,7 +25230,7 @@ Func_1472c: ; 1472c (5:472c)
 	ld bc, $4614
 	ld de, -1
 	ld hl, Data_540da
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25857,7 +25321,7 @@ Func_147e8: ; 147e8
 	ld bc, $11
 	ld de, $0
 	ld hl, Data_540f9
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25877,7 +25341,7 @@ Func_1480e: ; 1480e
 	ld bc, $46af
 	ld de, $0
 	ld hl, Data_541b3
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25896,7 +25360,7 @@ Func_1482e: ; 1482e (5:482e)
 	ld bc, $46c1
 	ld de, $0
 	ld hl, Data_541d2
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25915,7 +25379,7 @@ Func_1484e: ; 1484e
 	ld bc, $46d0
 	ld de, $0
 	ld hl, Data_541f1
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25934,7 +25398,7 @@ Func_1486e: ; 1486e
 	ld bc, $464c
 	ld de, $0
 	ld hl, Data_54118
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25953,7 +25417,7 @@ Func_1488e: ; 1488e
 	ld bc, $0
 	ld de, -1
 	ld hl, Data_540bb
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25972,7 +25436,7 @@ Func_148ae: ; 148ae
 	ld bc, $4686
 	ld de, $0
 	ld hl, Data_54137
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -25992,7 +25456,7 @@ Func_148ce: ; 148ce
 	ld bc, $2
 	ld de, -1
 	ld hl, Data_54156
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26013,7 +25477,7 @@ Func_148f4: ; 148f4
 	ld bc, $5
 	ld de, -1
 	ld hl, Data_54175
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26034,7 +25498,7 @@ Func_1491a: ; 1491a
 	ld bc, $2
 	ld de, -1
 	ld hl, Data_54194
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26054,7 +25518,7 @@ Func_14940:: ; 14940
 	ld bc, $46e0
 	ld de, $0
 	ld hl, Data_5428c
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26073,7 +25537,7 @@ Func_14960: ; 14960
 	ld bc, $66c8
 	ld de, $0
 	ld hl, Data_566a9
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26092,12 +25556,12 @@ Func_14980: ; 14980
 	ld bc, $0
 	ld de, -1
 	ld hl, Data_543a2
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
 	pop bc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_149b2
@@ -26185,7 +25649,7 @@ Func_14a31: ; 14a31 (5:4a31)
 	ld bc, $6
 	ld de, -1
 	ld hl, Data_543c1
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26206,7 +25670,7 @@ Func_14a64: ; 14a64
 	ld bc, $0
 	ld de, -1
 	ld hl, Data_543e0
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26225,7 +25689,7 @@ Func_14a84: ; 14a84
 	ld bc, $7
 	ld de, $0
 	ld hl, Data_542ca
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26244,7 +25708,7 @@ Func_14aa4: ; 14aa4
 	ld bc, $d
 	ld de, $0
 	ld hl, Data_542ab
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26263,7 +25727,7 @@ Func_14ac4: ; 14ac4
 	ld bc, $9
 	ld de, $0
 	ld hl, Data_542e9
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26282,7 +25746,7 @@ Func_14ae4: ; 14ae4
 	ld bc, $e
 	ld de, $0
 	ld hl, Data_54308
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26301,7 +25765,7 @@ Func_14b04: ; 14b04
 	ld bc, $a
 	ld de, $0
 	ld hl, Data_54327
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26320,7 +25784,7 @@ Func_14b24: ; 14b24
 	ld bc, $b
 	ld de, $0
 	ld hl, Data_54346
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26392,7 +25856,7 @@ Func_14bc4: ; 14bc4 (5:4bc4)
 	ld bc, $46fd
 	ld de, $0
 	ld hl, Data_5441e
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26411,7 +25875,7 @@ Func_14be6: ; 14be6 (5:4be6)
 	ld bc, $46fd
 	ld de, $0
 	ld hl, Data_543ff
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26464,7 +25928,7 @@ Func_14c55: ; 14c55
 	ld bc, $c
 	ld de, -1
 	ld hl, Data_5443d
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26485,7 +25949,7 @@ Func_14c89: ; 14c89
 	ld bc, $4727
 	ld de, $0
 	ld hl, Data_5445c
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26536,7 +26000,7 @@ Func_14ca9:: ; 14ca9
 	ld bc, $0
 	ld de, $0
 	ld hl, Data_5447b
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26581,7 +26045,7 @@ Func_14d48: ; 14d48 (5:4d48)
 	ld a, l
 	ret
 
-Func_14d4a: ; 14d4a (5:4d4a)
+NamingScreen: ; 14d4a (5:4d4a)
 	or a
 	jp nz, Func_14d70
 	ld l, BANK(Data_5449a)
@@ -26595,7 +26059,7 @@ Func_14d4a: ; 14d4a (5:4d4a)
 	ld bc, $13
 	ld de, -1
 	ld hl, Data_5449a
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26614,7 +26078,7 @@ Func_14d70: ; 14d70 (5:4d70)
 	ld bc, $19
 	ld de, -1
 	ld hl, Data_5449a
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26635,7 +26099,7 @@ Func_14d93:: ; 14d93 (5:4d93)
 	ld bc, $14
 	ld de, -1
 	ld hl, Data_544b9
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -26848,7 +26312,7 @@ Func_14edb: ; 14edb (5:4edb)
 	ld b, $0
 	ld de, $0
 	ld hl, Data_544d8
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -27461,7 +26925,7 @@ Func_152bd: ; 152bd
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld hl, -1
 	ret
 
@@ -27483,7 +26947,7 @@ Func_152e4: ; 152e4
 	ld bc, $4660
 	ld de, $0
 	ld hl, Data_54210
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -27504,7 +26968,7 @@ Func_15304: ; 15304
 	ld bc, $1
 	ld de, -1
 	ld hl, Data_5422f
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -27527,7 +26991,7 @@ Func_15330: ; 15330
 	ld bc, $3
 	ld de, -1
 	ld hl, Data_5424e
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -27550,7 +27014,7 @@ Func_1535c: ; 1535c
 	ld bc, $1
 	ld de, -1
 	ld hl, Data_5426d
-	call Func_14028
+	call Menu
 	pop bc
 	pop bc
 	pop bc
@@ -32021,7 +31485,7 @@ Func_17470:: ; 17470 (5:7470)
 	ret
 
 Func_17488:: ; 17488 (5:7488)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	call WaitVideoTransfer
 	ld a, BANK(GFX_4a02)
 	ld [wFarCallDestBank], a
@@ -34002,7 +33466,7 @@ Func_20be8: ; 20be8 (8:4be8)
 	ld e, [hl]
 	xor a
 	call FarCall
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli DisplayPartyMenu_
 	ld a, $8
 	call FarCall
@@ -38377,7 +37841,7 @@ Func_22bfe: ; 22bfe (8:6bfe)
 	jp Func_22cb6
 
 Func_22c2a: ; 22c2a (8:6c2a)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
 	ld e, $1
@@ -39087,7 +38551,7 @@ Func_23159: ; 23159
 	ret
 
 Func_23184: ; 23184 (8:7184)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_23197
@@ -39124,7 +38588,7 @@ Func_231ab: ; 231ab (8:71ab)
 	inc hl
 Func_231e5: ; 231e5 (8:71e5)
 	push hl
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_231f9
@@ -39420,7 +38884,7 @@ Func_239cf: ; 239cf (8:79cf)
 	jp Func_23a64
 
 Func_23a05: ; 23a05 (8:7a05)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	call Func_237be
 	ld l, $12
 	push hl
@@ -39503,7 +38967,7 @@ Func_23ac8: ; 23ac8 (8:7ac8)
 	jp Func_23b5d
 
 Func_23afe: ; 23afe (8:7afe)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	call Func_237be
 	ld l, $12
 	push hl
@@ -50591,7 +50055,7 @@ Func_31af1:: ; 31af1
 	xor a
 	call Func_3ca1
 	pop bc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld l, $12
 	push hl
 	ld c, $14
@@ -50605,7 +50069,7 @@ Func_31af1:: ; 31af1
 	ld hl, sp+$7
 	ld a, [hl]
 	call Func_31bbe
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	ld a, $1
@@ -53570,7 +53034,7 @@ Func_3312f: ; 3312f (c:712f)
 
 Func_3318e: ; 3318e (c:718e)
 	push af
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_331a2
@@ -53603,7 +53067,7 @@ Func_331e6: ; 331e6 (c:71e6)
 	ld hl, Data_58c49
 	call FarCall
 Func_331fc: ; 331fc (c:71fc)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	call Func_2009
 	callba_hli Func_17488
 	ld l, $12
@@ -55689,7 +55153,7 @@ Data_4c318: ; 4c318
 	db "<HIRA>きろくしますか<KATA>?$"
 
 Func_4c323: ; 4c323 (13:4323)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_4c355
@@ -55944,7 +55408,7 @@ Func_4c58c: ; 4c58c (13:458c)
 	ld a, [hl]
 	cp $4
 	jp nz, Func_4c5c1
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, $1
 	jp Func_4c5dd
 
@@ -55957,12 +55421,12 @@ Func_4c5c1: ; 4c5c1 (13:45c1)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_4c5d9
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, $1
 	jp Func_4c5dd
 
 Func_4c5d9: ; 4c5d9 (13:45d9)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	xor a
 Func_4c5dd: ; 4c5dd (13:45dd)
 	pop bc
@@ -56290,7 +55754,7 @@ Func_4c8c6: ; 4c8c6 (13:48c6)
 	jp Func_4c8f7
 
 Func_4c8e6: ; 4c8e6 (13:48e6)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld hl, -1
 	jp Func_4c8f7
 
@@ -56537,7 +56001,7 @@ Func_4cb85: ; 4cb85
 	ld de, wOAM23XCoord
 	ld hl, $1
 	call FarCall
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld hl, -1
 	ret
 
@@ -57071,7 +56535,7 @@ Func_4cfdd: ; 4cfdd (13:4fdd)
 	call Func_4c1f6
 Func_4cff9: ; 4cff9 (13:4ff9)
 	call Func_4c0ac
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld e, $0
 	ld hl, sp+$6
 	call Func_4d84e
@@ -57101,7 +56565,7 @@ Func_4d040: ; 4d040 (13:5040)
 	cp $3
 	jp nc, Func_4d12a
 	callba_hli Func_cc0c
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_4d069
@@ -57214,7 +56678,7 @@ Func_4d120: ; 4d120 (13:5120)
 	jp Func_4d040
 
 Func_4d12a: ; 4d12a (13:512a)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	callba_hli Func_cc0c
 	ld c, $0
 Func_4d13d: ; 4d13d (13:513d)
@@ -57255,7 +56719,7 @@ Func_4d168: ; 4d168 (13:5168)
 	callba_hli Func_56d9b
 	callba_hli WaitAorBButtonOverworld_17a44
 	call Func_4c21e
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_4d1b3
@@ -57365,7 +56829,7 @@ Func_4d299: ; 4d299 (13:5299)
 	ld sp, hl
 	push de
 	call Func_4c0ac
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_4d2b6
@@ -60888,7 +60352,7 @@ Func_4eb71: ; 4eb71
 	ld [$c987], a
 	ld a, e
 	call GetSRAMBank
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_4ec03
@@ -62414,7 +61878,7 @@ Func_4f8ec: ; 4f8ec (13:78ec)
 	ld bc, $19
 	call MemCopy
 	callba_hli Func_cb4a
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_dc0a
 	ld hl, sp+$73
 	ld e, [hl]
@@ -62427,7 +61891,7 @@ Func_4f8ec: ; 4f8ec (13:78ec)
 	call FarCall
 	ld a, [wSongCurrentlyPlaying]
 	push af
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
 	ld e, $1
@@ -62554,7 +62018,7 @@ Func_4f9ce: ; 4f9ce (13:79ce)
 	ld hl, $110
 	call FarCall
 	call Func_4c0ac
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_4fa8a
@@ -67616,7 +67080,7 @@ Func_524b6: ; 524b6 (14:64b6)
 	ld de, $1412
 	ld hl, $0
 	call Func_2124
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	call Func_1f30
 	ld c, $8
 	ld e, $c
@@ -68164,7 +67628,7 @@ Func_52a2e: ; 52a2e (14:6a2e)
 	ld hl, sp+$9
 	ld [hl], $0
 Func_52a51: ; 52a51 (14:6a51)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_52a72
@@ -68675,7 +68139,7 @@ Func_52df8: ; 52df8 (14:6df8)
 	push bc
 	push bc
 	push hl
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	call Func_1fbe
 	ld l, $12
 	push hl
@@ -69069,7 +68533,7 @@ Func_5301d: ; 5301d (14:701d)
 	ld hl, sp+$2
 	call FarCall
 Func_530b2: ; 530b2 (14:70b2)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	call Func_2009
 	pop bc
 	pop bc
@@ -70702,14 +70166,14 @@ Data_53c70:
 
 Func_53c88::
 	add sp, -$52
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli DisplayPartyMenu_
 	xor a
 	call FarCall
 	ld a, l
 	cp $5
 	jp c, Func_53cb4
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	jp Func_53e49
@@ -70750,7 +70214,7 @@ Func_53cb4: ; 53cb4 (14:7cb4)
 	ld de, Pointers_53c6c
 	ld hl, $10e
 	call FarCall
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	jp Func_53e49
@@ -70783,7 +70247,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	ld a, $1
 	call FarCall
 	push af
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	ld a, $3
@@ -72946,7 +72410,7 @@ Func_555ef: ; 555ef (15:55ef)
 Func_55600: ; 55600 (15:5600)
 	callba_hli Func_69b86
 Func_5560e: ; 5560e (15:560e)
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	ld a, $1
 	call FarCall
 	ld a, $2
@@ -73109,7 +72573,7 @@ Func_5575d: ; 5575d (15:575d)
 	reg16swap de, hl
 	ld a, [wOAM04YCoord]
 	call FarCall
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld hl, $8
 	push hl
 	ld bc, $c
@@ -77397,7 +76861,7 @@ Func_579a5: ; 579a5 (15:79a5)
 	xor a
 	call Func_3afc
 	pop bc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld hl, $400
 	call Func_57e30
 	pop bc
@@ -77606,7 +77070,7 @@ Func_57b62: ; 57b62 (15:7b62)
 	pop bc
 	ld hl, $0
 	call Func_57ec5
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
 	ld e, $1
@@ -77736,7 +77200,7 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	call Func_3afc
 	pop bc
 	callba_hli Func_da4dc
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld l, $12
 	push hl
 	ld c, $14
@@ -78136,12 +77600,12 @@ Data_58d2f: ; 58d2f
 Data_58d4e: ; 58d4e
 	dr $58d4e, $58d5d
 
-Func_58d5d::
+NamingScreen__::
 	push af
 	ld a, [wFarCallDestBank]
 	ld l, a
 	push hl
-	set_farcall_addrs_hli Func_61deb
+	set_farcall_addrs_hli NamingScreen_
 	pop hl
 	pop af
 	push hl
@@ -84130,7 +83594,7 @@ Func_6020a: ; 6020a (18:420a)
 	ld e, $c5
 	ld a, $c5
 	call Func_60109
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -87448,40 +86912,40 @@ Func_61dd8: ; 61dd8 (18:5dd8)
 	pop bc
 	ret
 
-Func_61deb: ; 61deb
+NamingScreen_: ; 61deb
 	push af
-Func_61dec: ; 61dec (18:5dec)
+.loop
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $1
-	jp nz, Func_61e1c
-	call Func_3aa8
+	jp nz, .not_eq_1
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli DisplayPartyMenu_
 	xor a
 	call FarCall
 	reg16swap de, hl
 	ld hl, $3
 	call CompareHLtoDE
-	jp c, Func_61e19
+	jp c, .next_
 	ld a, e
 	and d
 	inc a
-	jp nz, Func_61e1c
-Func_61e19: ; 61e19 (18:5e19)
-	jp Func_61e59
+	jp nz, .not_eq_1
+.next_
+	jp .quit
 
-Func_61e1c: ; 61e1c (18:5e1c)
-	set_farcall_addrs_hli Func_14d4a
+.not_eq_1
+	set_farcall_addrs_hli NamingScreen
 	ld hl, sp+$1
 	ld a, [hl]
 	call FarCall
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $1
-	jp nz, Func_61e38
-	jp Func_61e59
+	jp nz, .not_eq_1_
+	jp .quit
 
-Func_61e38: ; 61e38 (18:5e38)
+.not_eq_1_
 	set_farcall_addrs_hli Func_14d93
 	ld hl, $0
 	call FarCall
@@ -87489,13 +86953,13 @@ Func_61e38: ; 61e38 (18:5e38)
 	ld a, e
 	dec a
 	or d
-	jp z, Func_61e56
-	jp Func_61e59
+	jp z, .next
+	jp .quit
 
-Func_61e56: ; 61e56 (18:5e56)
-	jp Func_61dec
+.next
+	jp .loop
 
-Func_61e59: ; 61e59 (18:5e59)
+.quit
 	pop bc
 	ret
 
@@ -91717,7 +91181,7 @@ Func_68346:
 	ld a, [wOAM20Attrs]
 	cp $ff
 	jp nz, Func_6835a
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld hl, -1
 	jp Func_683a4
 
@@ -91806,7 +91270,7 @@ Func_683be: ; 683be (1a:43be)
 	ld de, Pointers_683a6
 	ld hl, $10e
 	call FarCall
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [$c7e2]
 	push af
 	ld a, $1
@@ -91824,7 +91288,7 @@ Func_68402: ; 68402 (1a:4402)
 	call FarCall
 	ld a, l
 	push af
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	pop af
 	pop hl
 	or a
@@ -92403,7 +91867,7 @@ Func_6882c: ; 6882c (1a:482c)
 	ld e, $c
 	ld a, $d
 	call FarCall
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	xor a
 	jp Func_68883
 
@@ -97155,7 +96619,7 @@ Func_6abf7: ; 6abf7 (1a:6bf7)
 	jp Func_6ac27
 
 Func_6ac0b: ; 6ac0b (1a:6c0b)
-	set_farcall_addrs_hli Func_58d5d
+	set_farcall_addrs_hli NamingScreen__
 	ld a, $1
 	call FarCall
 	jp Func_6ac27
@@ -97184,7 +96648,7 @@ Func_6ac44:: ; 6ac44 (1a:6c44)
 	call Func_6ad7c
 	or a
 	jp nz, Func_6acc5
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_6ac63
@@ -100355,7 +99819,7 @@ Func_6c610: ; 6c610 (1b:4610)
 	push de
 	ld a, $10
 	call OverworldPlaySong
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $80
 	call FarCall
@@ -100500,7 +99964,7 @@ Func_6c769: ; 6c769 (1b:4769)
 	ld hl, sp+$c
 	ld [hl], a
 Func_6c770: ; 6c770 (1b:4770)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	pop de
 	ld hl, sp+$b
 	ld a, [hl]
@@ -102178,7 +101642,7 @@ Func_6d3c7: ; 6d3c7 (1b:53c7)
 	ld e, $0
 Func_6d3d7: ; 6d3d7 (1b:53d7)
 	push de
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	xor a
 	ld [wSCX2], a
 	ld [wSCX], a
@@ -102358,7 +101822,7 @@ Func_6d54a: ; 6d54a (1b:554a)
 
 Func_6d556: ; 6d556 (1b:5556)
 	push de
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -102392,7 +101856,7 @@ Func_6d596: ; 6d596 (1b:5596)
 
 Func_6d599: ; 6d599 (1b:5599)
 	push de
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_107d7
 	pop de
 	push de
@@ -104528,7 +103992,7 @@ Func_6e403: ; 6e403 (1b:6403)
 	ld [wNextVBlankFlags], a
 	call Func_6c011
 	call Func_6d641
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld hl, sp+$2d
 	ld a, [hl]
 	cp $1
@@ -106871,7 +106335,7 @@ Func_6f512:: ; 6f512 (1b:7512)
 	call OverworldPlaySong
 	ld a, $16
 	call OverworldPlaySong
-	set_farcall_addrs_hli Func_9a6aa
+	set_farcall_addrs_hli LoadEmote
 	ld c, $2
 	ld e, $2
 	ld a, $8
@@ -107101,7 +106565,7 @@ Func_6f785: ; 6f785 (1b:7785)
 	jp nz, Func_6f906
 	push de
 	callba_hli Func_17470
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_6f886
@@ -107129,7 +106593,7 @@ Func_6f8ba: ; 6f8ba (1b:78ba)
 	callba_hli Func_1491a
 Func_6f8c8: ; 6f8c8 (1b:78c8)
 	callba_hli Func_17488
-	set_farcall_addrs_hli Func_8ba8
+	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
 	ld a, $3
@@ -107350,7 +106814,7 @@ Func_6f962: ; 6f962 (1b:7962)
 
 Func_6faba: ; 6faba (1b:7aba)
 	push af
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_6face
@@ -107485,7 +106949,7 @@ Func_bf460: ; bf460 (2f:7460)
 	cp $55
 	jp z, Func_bf4d8
 Func_bf47b: ; bf47b (2f:747b)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $800
@@ -107872,7 +107336,11 @@ GFX_c0000: ; c0000
 	dr $c0000, $c4000
 
 SECTION "Bank 31", ROMX, BANK [$31]
-	dr $c4000, $c7109
+Data_c4000:: ; c4000
+	dr $c4000, $c5b26
+
+Data_c5b26:: ; c5b26
+	dr $c5b26, $c7109
 
 Func_c7109:: ; c7109
 	dr $c7109, $c7551

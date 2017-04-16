@@ -2973,7 +2973,7 @@ Func_1db9:: ; 1db9
 	ret
 
 Func_1e4d:: ; 1e4d (0:1e4d)
-	call Func_3aa8
+	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli InitAllocatableMemoryBlocks
 	ld de, $900
 	ld hl, wAllocatableBlock0
@@ -6220,12 +6220,12 @@ SetStringStartState:: ; 3a83 (0:3a83)
 	write_hl_to $c261
 	ret
 
-Func_3aa8:: ; 3aa8 (0:3aa8)
+FillVisibleAreaWithBlankTile:: ; 3aa8 (0:3aa8)
 	ld a, $8f ; blank tile
-	call Func_3aae
+	call FillVisibleAreaWithTile
 	ret
 
-Func_3aae:: ; 3aae (0:3aae)
+FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	push af
 	call ClearSprites
 	ld l, $12
@@ -6265,7 +6265,7 @@ Func_3aae:: ; 3aae (0:3aae)
 
 Func_3af6:: ; 3af6
 	ld a, $8e
-	call Func_3aae
+	call FillVisibleAreaWithTile
 	ret
 
 Func_3afc:: ; 3afc (0:3afc)

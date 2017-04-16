@@ -612,7 +612,7 @@ Func_9844: ; 9844 (2:5844)
 	push bc
 	push hl
 	call NextOverworldFrame
-	call Func_8dc8
+	call ShowEmote_
 	pop hl
 	pop bc
 	ld a, [wLastStepSucceeded]
