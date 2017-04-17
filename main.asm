@@ -6361,7 +6361,7 @@ Func_a24c: ; a24c (2:624c)
 	write_hl_to wc776
 	ret
 
-Func_a26c: ; a26c (2:626c)
+LoadSpriteGFX: ; a26c (2:626c)
 	push hl
 	push de
 	push bc
@@ -6370,7 +6370,7 @@ Func_a26c: ; a26c (2:626c)
 	ld a, l
 	cp $1a
 	jp nc, Func_a296
-	ld a, $35
+	ld a, BANK(GFX_d4000)
 	ld [wFarCallDestBank], a
 	ld h, $0
 	add hl, hl
@@ -6385,7 +6385,7 @@ Func_a26c: ; a26c (2:626c)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, $4000
+	ld de, GFX_d4000
 	add hl, de
 	call WriteHLToSPPlus4
 	jp Func_a2b0
@@ -6406,7 +6406,7 @@ Func_a296: ; a296 (2:6296)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, $580
+	ld de, GFX_c0000 - $1a * $240
 	add hl, de
 	call WriteHLToSPPlus4
 Func_a2b0: ; a2b0 (2:62b0)
@@ -6548,7 +6548,7 @@ Func_a2fd: ; a2fd (2:62fd)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, a
-	call Func_a26c
+	call LoadSpriteGFX
 	pop bc
 	ld a, [$c773]
 	ld [bc], a
@@ -7203,7 +7203,7 @@ Func_a75c: ; a75c (2:675c)
 	ld l, [hl]
 	ld h, d
 	pop de
-	call Func_a26c
+	call LoadSpriteGFX
 	call Func_bfaf
 Func_a77e: ; a77e (2:677e)
 	pop bc
@@ -16834,7 +16834,7 @@ Func_f991: ; f991 (3:7991)
 	cp $ff
 	jp z, Func_f9cc
 	push de
-	set_farcall_addrs_hli Func_a26c
+	set_farcall_addrs_hli LoadSpriteGFX
 	pop de
 	push de
 	ld a, [de]
@@ -21435,7 +21435,7 @@ Func_11e1f: ; 11e1f (4:5e1f)
 	add a
 	add d
 	push af
-	set_farcall_addrs_hli Func_a26c
+	set_farcall_addrs_hli LoadSpriteGFX
 	pop af
 	pop hl
 	ld h, a
@@ -70544,7 +70544,7 @@ Func_54787: ; 54787 (15:4787)
 	push hl
 	ld a, $c
 	push af
-	set_farcall_addrs_hli Func_a26c
+	set_farcall_addrs_hli LoadSpriteGFX
 	pop af
 	pop hl
 	ld c, a
@@ -80837,7 +80837,7 @@ Func_5d363: ; 5d363 (17:5363)
 	push hl
 	ld a, $c
 	push af
-	set_farcall_addrs_hli Func_a26c
+	set_farcall_addrs_hli LoadSpriteGFX
 	pop af
 	pop hl
 	ld c, a
@@ -83922,7 +83922,7 @@ Func_604a6: ; 604a6 (18:44a6)
 	cp $ff
 	jp z, Func_604e1
 	push de
-	set_farcall_addrs_hli Func_a26c
+	set_farcall_addrs_hli LoadSpriteGFX
 	pop de
 	push de
 	ld a, [de]
@@ -105106,7 +105106,7 @@ Func_6ebed: ; 6ebed (1b:6bed)
 	add a
 	add d
 	push af
-	set_farcall_addrs_hli Func_a26c
+	set_farcall_addrs_hli LoadSpriteGFX
 	pop af
 	pop hl
 	ld h, a
@@ -107323,8 +107323,32 @@ Data_bf730:
 	db "$"
 
 SECTION "Bank 30", ROMX, BANK [$30]
-GFX_c0000: ; c0000
-	dr $c0000, $c4000
+GFX_c0000: INCBIN "gfx/sprites/c0000.2bpp" ; c0000
+GFX_c0240: INCBIN "gfx/sprites/c0240.2bpp" ; c0240
+GFX_c0480: INCBIN "gfx/sprites/c0480.2bpp" ; c0480
+GFX_c06c0: INCBIN "gfx/sprites/c06c0.2bpp" ; c06c0
+GFX_c0900: INCBIN "gfx/sprites/c0900.2bpp" ; c0900
+GFX_c0b40: INCBIN "gfx/sprites/c0b40.2bpp" ; c0b40
+GFX_c0d80: INCBIN "gfx/sprites/c0d80.2bpp" ; c0d80
+GFX_c0fc0: INCBIN "gfx/sprites/c0fc0.2bpp" ; c0fc0
+GFX_c1200: INCBIN "gfx/sprites/c1200.2bpp" ; c1200
+GFX_c1440: INCBIN "gfx/sprites/c1440.2bpp" ; c1440
+GFX_c1680: INCBIN "gfx/sprites/c1680.2bpp" ; c1680
+GFX_c18c0: INCBIN "gfx/sprites/c18c0.2bpp" ; c18c0
+GFX_c1b00: INCBIN "gfx/sprites/c1b00.2bpp" ; c1b00
+GFX_c1d40: INCBIN "gfx/sprites/c1d40.2bpp" ; c1d40
+GFX_c1f80: INCBIN "gfx/sprites/c1f80.2bpp" ; c1f80
+GFX_c21c0: INCBIN "gfx/sprites/c21c0.2bpp" ; c21c0
+GFX_c2400: INCBIN "gfx/sprites/c2400.2bpp" ; c2400
+GFX_c2640: INCBIN "gfx/sprites/c2640.2bpp" ; c2640
+GFX_c2880: INCBIN "gfx/sprites/c2880.2bpp" ; c2880
+GFX_c2ac0: INCBIN "gfx/sprites/c2ac0.2bpp" ; c2ac0
+GFX_c2d00: INCBIN "gfx/sprites/c2d00.2bpp" ; c2d00
+GFX_c2f40: INCBIN "gfx/sprites/c2f40.2bpp" ; c2f40
+GFX_c3180: INCBIN "gfx/sprites/c3180.2bpp" ; c3180
+GFX_c33c0: INCBIN "gfx/sprites/c33c0.2bpp" ; c33c0
+GFX_c3600: INCBIN "gfx/sprites/c3600.2bpp" ; c3600
+GFX_c3840: INCBIN "gfx/sprites/c3840.2bpp" ; c3840
 
 SECTION "Bank 31", ROMX, BANK [$31]
 Emotes_c4000::
@@ -107479,8 +107503,32 @@ Func_c7bd0: ; c7bd0
 	dr $c7bd0, $c8000
 
 SECTION "Bank 35", ROMX, BANK [$35]
-GFX_d4000: ; d4000
-	dr $d4000, $d8000
+GFX_d4000: INCBIN "gfx/sprites/d4000.2bpp" ; d4000
+GFX_d4240: INCBIN "gfx/sprites/d4240.2bpp" ; d4240
+GFX_d4480: INCBIN "gfx/sprites/d4480.2bpp" ; d4480
+GFX_d46c0: INCBIN "gfx/sprites/d46c0.2bpp" ; d46c0
+GFX_d4900: INCBIN "gfx/sprites/d4900.2bpp" ; d4900
+GFX_d4b40: INCBIN "gfx/sprites/d4b40.2bpp" ; d4b40
+GFX_d4d80: INCBIN "gfx/sprites/d4d80.2bpp" ; d4d80
+GFX_d4fc0: INCBIN "gfx/sprites/d4fc0.2bpp" ; d4fc0
+GFX_d5200: INCBIN "gfx/sprites/d5200.2bpp" ; d5200
+GFX_d5440: INCBIN "gfx/sprites/d5440.2bpp" ; d5440
+GFX_d5680: INCBIN "gfx/sprites/d5680.2bpp" ; d5680
+GFX_d58c0: INCBIN "gfx/sprites/d58c0.2bpp" ; d58c0
+GFX_d5b00: INCBIN "gfx/sprites/d5b00.2bpp" ; d5b00
+GFX_d5d40: INCBIN "gfx/sprites/d5d40.2bpp" ; d5d40
+GFX_d5f80: INCBIN "gfx/sprites/d5f80.2bpp" ; d5f80
+GFX_d61c0: INCBIN "gfx/sprites/d61c0.2bpp" ; d61c0
+GFX_d6400: INCBIN "gfx/sprites/d6400.2bpp" ; d6400
+GFX_d6640: INCBIN "gfx/sprites/d6640.2bpp" ; d6640
+GFX_d6880: INCBIN "gfx/sprites/d6880.2bpp" ; d6880
+GFX_d6ac0: INCBIN "gfx/sprites/d6ac0.2bpp" ; d6ac0
+GFX_d6d00: INCBIN "gfx/sprites/d6d00.2bpp" ; d6d00
+GFX_d6f40: INCBIN "gfx/sprites/d6f40.2bpp" ; d6f40
+GFX_d7180: INCBIN "gfx/sprites/d7180.2bpp" ; d7180
+GFX_d73c0: INCBIN "gfx/sprites/d73c0.2bpp" ; d73c0
+GFX_d7600: INCBIN "gfx/sprites/d7600.2bpp" ; d7600
+GFX_d7840: INCBIN "gfx/sprites/d7840.2bpp" ; d7840
 
 SECTION "Bank 37", ROMX, BANK [$37]
 	dr $dc000, $e0000
