@@ -5132,13 +5132,17 @@ Data_9a650: ; 9a650
 	dr $9a650, $9a672
 
 Data_9a672: ; 9a672
-	dr $9a672, $9a67d
+REPT 11
+	db $00
+ENDR
 
 Data_9a67d: ; 9a67d
 	dr $9a67d, $9a69f
 
 Data_9a69f: ; 9a69f
-	dr $9a69f, $9a6aa
+REPT 11
+	db $00
+ENDR
 
 LoadEmote:: ; 9a6aa (26:66aa)
 	push af
@@ -5245,7 +5249,7 @@ Func_9a780: ; 9a780 (26:6780)
 	push bc
 	ld hl, sp+$5
 	ld a, [hl]
-	add $df
+	add -$21
 	ld hl, sp+$5
 	ld [hl], a
 	set_farcall_addrs_hli LoadEmoteGFX
@@ -5288,7 +5292,7 @@ Func_9a780: ; 9a780 (26:6780)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_9a811
+	jp nz, .not_over_player
 	ld hl, sp+$1
 	ld e, [hl]
 	ld d, $0
@@ -5296,14 +5300,14 @@ Func_9a780: ; 9a780 (26:6780)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_9a811
+	jp nz, .not_over_player
 	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wPlayerMapX]
 	call ShowEmote
-	jp Func_9a828
+	jp .done_show_emote
 
-Func_9a811: ; 9a811 (26:6811)
+.not_over_player
 	ld hl, sp+$1
 	ld e, [hl]
 	ld d, $0
@@ -5317,7 +5321,7 @@ Func_9a811: ; 9a811 (26:6811)
 	add hl, de
 	ld e, [hl]
 	call ShowEmote
-Func_9a828: ; 9a828 (26:6828)
+.done_show_emote
 	ld l, $50
 	push hl
 	ld c, $50
@@ -5951,8 +5955,187 @@ Func_d9f68:: ; d9f68
 Func_d9f74:: ; d9f74
 	dr $d9f74, $d9f7e
 
-Func_d9f7e: ; d9f7e
-	dr $d9f7e, $da07a
+Func_d9f7e: ; d9f7e (36:5f7e)
+	; void Func_d9f7e (char b, char c, short de, char * hl) {
+	push bc
+	push de
+	push hl
+	ld hl, sp+$5
+	ld [hl], b
+	ld hl, sp+$4
+	ld [hl], c
+	pop hl
+	; short * wc265 = hl;
+	write_hl_to $c265
+	; short * wc267 = *wc265;
+	read_hl_from $c265
+	write_hl_to $c267
+	; short * wc269 = (*wc265 + 0x20);
+	read_hl_from $c265
+	ld de, $20
+	add hl, de
+	write_hl_to $c269
+	; char * wc85a = 0x10;
+	ld a, $10
+	ld [$c85a], a
+	; char i;
+	ld c, $0
+	pop de
+.loop
+	; for (i=0; i<0x10; i++) {
+	ld a, c
+	cp $10
+	jp nc, .quit
+	; if (!((1 << i) & de)) {
+	push de
+	ld b, c
+	ld hl, $1
+	call LeftShiftHL
+	ld a, e
+	and l
+	ld l, a
+	ld a, d
+	and h
+	ld h, a
+	ld a, l
+	or h
+	jp nz, .asm_d9fd7
+	; *wc26b[i] = 0;
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $c26b
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	; }
+	jp .next
+
+.asm_d9fd7
+	; else if (!(*wc267[i])) {
+	ld l, c
+	ld h, $0
+	add hl, hl
+	reg16swap de, hl
+	read_hl_from $c267
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, .asm_d9ffc
+	; *wc26b[i] = 0;
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $c26b
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	; }
+	jp .next
+
+.asm_d9ffc
+	; else {
+	; *wc267[i] + *wc265 = *wc26b[i];
+	ld l, c
+	ld h, $0
+	add hl, hl
+	reg16swap de, hl
+	read_hl_from $c267
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	read_hl_from $c265
+	add hl, de
+	push hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $c26b
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	; *wc28b[i] = *(*wc26b[i])[1];
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $c26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, $c28b
+	add hl, de
+	ld [hl], a
+	; *wc29b[i] = *(*wc26b[i])[2];
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $c26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, $c29b
+	add hl, de
+	ld [hl], a
+	; *wc2ab[i] = *(*wc26b[i])[3];
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, $c26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, $c2ab
+	add hl, de
+	ld [hl], a
+	; *wc2bb[i] = b;
+	ld hl, sp+$3
+	ld a, [hl]
+	ld e, c
+	ld d, $0
+	ld hl, $c2bb
+	add hl, de
+	ld [hl], a
+	; *wc2f4 = c;
+	ld hl, sp+$2
+	ld a, [hl]
+	ld [$c2f4], a
+	; }
+.next
+	; }
+	inc c
+	pop de
+	jp .loop
+
+.quit
+	; }
+	pop bc
+	ret
 
 Func_da07a:: ; da07a
 	dr $da07a, $da093
@@ -6069,8 +6252,53 @@ LoadEmoteGFX: ; da545 (36:6545)
 	pop bc
 	ret
 
-Func_da5db: ; da5db
-	dr $da5db, $da729
+Func_da5db: ; da5db (36:65db)
+	push de
+	push bc
+	push bc
+	push bc
+	push af
+	ld [wFarCallDestBank], a
+	call GetHLAtSPPlus10
+	reg16swap de, hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$4
+	ld bc, $4
+	call FarCopyVideoData
+	set_farcall_addrs_hli AllocateMemory
+	call GetHLAtSPPlus8
+	call FarCall
+	call WriteHLToSPPlus4
+	pop af
+	ld [wFarCallDestBank], a
+	call GetHLAtSPPlus6
+	ld c, l
+	ld b, h
+	pop hl
+	push hl
+	push hl
+	call GetHLAtSPPlus6
+	push hl
+	read_hl_from_sp_plus $c
+	pop de
+	add hl, de
+	pop de
+	call FarDecompressVideoData
+	pop hl
+	push hl
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_da631:
+	dr $da631, $da729
 
 Func_da729:: ; da729
 	dr $da729, $da835
