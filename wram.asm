@@ -455,7 +455,21 @@ wKana:: ; c255
 ; ff: hiragana
 	ds $1
 
-	ds $80
+	ds $d
+
+wc263:: db ; c263
+wNumSpritesLoaded:: db ; c264
+wc265:: dw ; c265
+wc267:: dw ; c267
+wc269:: dw ; c269
+wc26b:: ds 2 * 16 ; c26b
+wc28b:: ds 16 ; c28b
+wc29b:: ds 16 ; c29b
+wc2ab:: ds 16 ; c2ab
+wc2bb:: ds 16 ; c2bb
+wc2cb:: db ; c2cb
+wc2cc:: db ; c2cc
+	ds $9
 
 wMapWidth:: db ; c2d6
 wMapHeight:: db ; c2d7
@@ -475,7 +489,10 @@ wVideoTransferRequestFlags:: ds $1 ; c2ea
 wSongCurrentlyPlaying:: db ; c2eb
 wSFXCurrentlyPlaying:: db ; c2ec
 wVideoTransferRequestBank:: ds $1 ; c2ed
-	ds $d
+	ds $6
+
+wc2f4:: db
+	ds $6
 wSystemType:: ; c2fb
 
 SECTION "OAM Buffer", WRAM0 [$c300]
@@ -629,8 +646,9 @@ wc844:: dw ; c844
 
 wc851:: db ; c851
 wc852:: dw ; c852
-	ds $7
+	ds $6
 
+wc85a:: db ; c85a
 wTilesetPointer:: dw ; c85b
 wc85d:: dw ; c85d
 wPlayerMapX:: db ; c85f

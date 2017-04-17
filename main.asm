@@ -5038,7 +5038,7 @@ ShowEmote_:: ; 8dc8
 	add a
 	add l
 	add $10
-	ld [$c2cb], a
+	ld [wc2cb], a
 	ld a, $50
 	ld hl, wSCY
 	sub [hl]
@@ -5050,7 +5050,7 @@ ShowEmote_:: ; 8dc8
 	add a
 	add l
 	add $8
-	ld [$c2cc], a
+	ld [wc2cc], a
 	ret
 
 Func_8df1: ; 8df1 (2:4df1)
@@ -107329,33 +107329,33 @@ GFX_c0000: ; c0000
 SECTION "Bank 31", ROMX, BANK [$31]
 Emotes_c4000::
 	dw $0, $0
-	emote_header Emotes_c4000, GFX_c4070, $19
-	emote_header Emotes_c4000, GFX_c4129, $15
-	emote_header Emotes_c4000, GFX_c419d, $1d
-	emote_header Emotes_c4000, GFX_c4256, $20
-	emote_header Emotes_c4000, GFX_c4320, $13
-	emote_header Emotes_c4000, GFX_c4362, $13
-	emote_header Emotes_c4000, GFX_c43a6, $11
-	emote_header Emotes_c4000, GFX_c43b5, $12
-	emote_header Emotes_c4000, GFX_c43ce, $1b
-	emote_header Emotes_c4000, GFX_c44f3, $14
-	emote_header Emotes_c4000, GFX_c454f, $1a
-	emote_header Emotes_c4000, GFX_c4606, $13
-	emote_header Emotes_c4000, GFX_c4635, $40
-	emote_header Emotes_c4000, GFX_c48e1, $21
-	emote_header Emotes_c4000, GFX_c4a57, $32
-	emote_header Emotes_c4000, GFX_c4bb8, $14
-	emote_header Emotes_c4000, GFX_c4c35, $15
-	emote_header Emotes_c4000, GFX_c4cc7, $37
-	emote_header Emotes_c4000, GFX_c4ebd, $18
-	emote_header Emotes_c4000, GFX_c4f94, $3a
-	emote_header Emotes_c4000, GFX_c5226, $3a
-	emote_header Emotes_c4000, GFX_c54b8, $15
-	emote_header Emotes_c4000, GFX_c552a, $36
-	emote_header Emotes_c4000, GFX_c5789, $17
-	emote_header Emotes_c4000, GFX_c57f9, $32
-	emote_header Emotes_c4000, GFX_c5929, $1e
-	emote_header Emotes_c4000, GFX_c5a38, $1d
+	emote_header Emotes_c4000, GFX_c4070, $192
+	emote_header Emotes_c4000, GFX_c4129, $152
+	emote_header Emotes_c4000, GFX_c419d, $1d2
+	emote_header Emotes_c4000, GFX_c4256, $202
+	emote_header Emotes_c4000, GFX_c4320, $132
+	emote_header Emotes_c4000, GFX_c4362, $132
+	emote_header Emotes_c4000, GFX_c43a6, $112
+	emote_header Emotes_c4000, GFX_c43b5, $122
+	emote_header Emotes_c4000, GFX_c43ce, $1b2
+	emote_header Emotes_c4000, GFX_c44f3, $142
+	emote_header Emotes_c4000, GFX_c454f, $1a2
+	emote_header Emotes_c4000, GFX_c4606, $132
+	emote_header Emotes_c4000, GFX_c4635, $402
+	emote_header Emotes_c4000, GFX_c48e1, $212
+	emote_header Emotes_c4000, GFX_c4a57, $322
+	emote_header Emotes_c4000, GFX_c4bb8, $142
+	emote_header Emotes_c4000, GFX_c4c35, $152
+	emote_header Emotes_c4000, GFX_c4cc7, $372
+	emote_header Emotes_c4000, GFX_c4ebd, $182
+	emote_header Emotes_c4000, GFX_c4f94, $3a2
+	emote_header Emotes_c4000, GFX_c5226, $3a2
+	emote_header Emotes_c4000, GFX_c54b8, $152
+	emote_header Emotes_c4000, GFX_c552a, $362
+	emote_header Emotes_c4000, GFX_c5789, $172
+	emote_header Emotes_c4000, GFX_c57f9, $322
+	emote_header Emotes_c4000, GFX_c5929, $1e2
+	emote_header Emotes_c4000, GFX_c5a38, $1d2
 
 GFX_c4070: INCBIN "gfx/emotes/emote_c4070.emote.rz"
 GFX_c4129: INCBIN "gfx/emotes/emote_c4129.emote.rz"
@@ -107385,8 +107385,78 @@ GFX_c57f9: INCBIN "gfx/emotes/emote_c57f9.emote.rz"
 GFX_c5929: INCBIN "gfx/emotes/emote_c5929.emote.rz"
 GFX_c5a38: INCBIN "gfx/emotes/emote_c5a38.emote.rz"
 
-Data_c5b26:: ; c5b26
-	dr $c5b26, $c7109
+EmoteAttrs_c5b26:: ; c5b26
+	dw $0, $0
+	emote_header EmoteAttrs_c5b26, Data_c5bae, $8e
+	emote_header EmoteAttrs_c5b26, Data_c5be0, $77
+	emote_header EmoteAttrs_c5b26, Data_c5c00, $d4
+	emote_header EmoteAttrs_c5b26, Data_c5c4b, $148
+	emote_header EmoteAttrs_c5b26, Data_c5cec, $6c
+	emote_header EmoteAttrs_c5b26, Data_c5d05, $6c
+	emote_header EmoteAttrs_c5b26, Data_c5d1e, $16f
+	emote_header EmoteAttrs_c5b26, Data_c5de6, $168
+	emote_header EmoteAttrs_c5b26, Data_c5ea7, $ac
+	emote_header EmoteAttrs_c5b26, Data_c5ef2, $1e6
+	emote_header EmoteAttrs_c5b26, Data_c5fd6, $136
+	emote_header EmoteAttrs_c5b26, Data_c6064, $cf
+	emote_header EmoteAttrs_c5b26, Data_c60c2, $54a
+	emote_header EmoteAttrs_c5b26, Data_c61e5, $640
+	emote_header EmoteAttrs_c5b26, Data_c6328, $480
+	emote_header EmoteAttrs_c5b26, Data_c6449, $260
+	emote_header EmoteAttrs_c5b26, Data_c6574, $309
+	emote_header EmoteAttrs_c5b26, Data_c6682, $424
+	emote_header EmoteAttrs_c5b26, Data_c6876, $ca
+	emote_header EmoteAttrs_c5b26, Data_c68d1, $124
+	emote_header EmoteAttrs_c5b26, Data_c6960, $1d8
+	emote_header EmoteAttrs_c5b26, Data_c6a70, $176
+	emote_header EmoteAttrs_c5b26, Data_c6afd, $134
+	emote_header EmoteAttrs_c5b26, Data_c6b47, $19e
+	emote_header EmoteAttrs_c5b26, Data_c6bbd, $14e
+	emote_header EmoteAttrs_c5b26, Data_c6c4d, $4ee
+	emote_header EmoteAttrs_c5b26, Data_c6cea, $bb
+	emote_header EmoteAttrs_c5b26, Data_c6d2f, $167
+	emote_header EmoteAttrs_c5b26, Data_c6ddd, $fc
+	emote_header EmoteAttrs_c5b26, Data_c6e47, $8f
+	emote_header EmoteAttrs_c5b26, Data_c6e78, $116
+	emote_header EmoteAttrs_c5b26, Data_c6ef0, $279
+	emote_header EmoteAttrs_c5b26, Data_c6fff, $26a
+
+Data_c5bae: INCBIN "gfx/emotes/emote_c5bae.emoteattrs.rz" ; c5bae
+Data_c5be0: INCBIN "gfx/emotes/emote_c5be0.emoteattrs.rz" ; c5be0
+Data_c5c00: INCBIN "gfx/emotes/emote_c5c00.emoteattrs.rz" ; c5c00
+Data_c5c4b: INCBIN "gfx/emotes/emote_c5c4b.emoteattrs.rz" ; c5c4b
+Data_c5cec: INCBIN "gfx/emotes/emote_c5cec.emoteattrs.rz" ; c5cec
+Data_c5d05: INCBIN "gfx/emotes/emote_c5d05.emoteattrs.rz" ; c5d05
+Data_c5d1e: INCBIN "gfx/emotes/emote_c5d1e.emoteattrs.rz" ; c5d1e
+Data_c5de6: INCBIN "gfx/emotes/emote_c5de6.emoteattrs.rz" ; c5de6
+Data_c5ea7: INCBIN "gfx/emotes/emote_c5ea7.emoteattrs.rz" ; c5ea7
+Data_c5ef2: INCBIN "gfx/emotes/emote_c5ef2.emoteattrs.rz" ; c5ef2
+Data_c5fd6: INCBIN "gfx/emotes/emote_c5fd6.emoteattrs.rz" ; c5fd6
+Data_c6064: INCBIN "gfx/emotes/emote_c6064.emoteattrs.rz" ; c6064
+Data_c60c2: INCBIN "gfx/emotes/emote_c60c2.emoteattrs.rz" ; c60c2
+Data_c61e5: INCBIN "gfx/emotes/emote_c61e5.emoteattrs.rz" ; c61e5
+Data_c6328: INCBIN "gfx/emotes/emote_c6328.emoteattrs.rz" ; c6328
+Data_c6449: INCBIN "gfx/emotes/emote_c6449.emoteattrs.rz" ; c6449
+Data_c6574: INCBIN "gfx/emotes/emote_c6574.emoteattrs.rz" ; c6574
+Data_c6682: INCBIN "gfx/emotes/emote_c6682.emoteattrs.rz" ; c6682
+Data_c6876: INCBIN "gfx/emotes/emote_c6876.emoteattrs.rz" ; c6876
+Data_c68d1: INCBIN "gfx/emotes/emote_c68d1.emoteattrs.rz" ; c68d1
+Data_c6960: INCBIN "gfx/emotes/emote_c6960.emoteattrs.rz" ; c6960
+Data_c6a70: INCBIN "gfx/emotes/emote_c6a70.emoteattrs.rz" ; c6a70
+Data_c6afd: INCBIN "gfx/emotes/emote_c6afd.emoteattrs.rz" ; c6afd
+Data_c6b47: INCBIN "gfx/emotes/emote_c6b47.emoteattrs.rz" ; c6b47
+Data_c6bbd: INCBIN "gfx/emotes/emote_c6bbd.emoteattrs.rz" ; c6bbd
+Data_c6c4d: INCBIN "gfx/emotes/emote_c6c4d.emoteattrs.rz" ; c6c4d
+Data_c6cea: INCBIN "gfx/emotes/emote_c6cea.emoteattrs.rz" ; c6cea
+Data_c6d2f: INCBIN "gfx/emotes/emote_c6d2f.emoteattrs.rz" ; c6d2f
+Data_c6ddd: INCBIN "gfx/emotes/emote_c6ddd.emoteattrs.rz" ; c6ddd
+Data_c6e47: INCBIN "gfx/emotes/emote_c6e47.emoteattrs.rz" ; c6e47
+Data_c6e78: INCBIN "gfx/emotes/emote_c6e78.emoteattrs.rz" ; c6e78
+Data_c6ef0: INCBIN "gfx/emotes/emote_c6ef0.emoteattrs.rz" ; c6ef0
+Data_c6fff: INCBIN "gfx/emotes/emote_c6fff.emoteattrs.rz" ; c6fff
+
+Func_c70e8: ; c70e8
+	dr $c70e8, $c7109
 
 Func_c7109:: ; c7109
 	dr $c7109, $c7551

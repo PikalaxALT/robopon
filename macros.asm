@@ -13,7 +13,7 @@ dtext_tree_pointer: MACRO
 	ENDM
 
 emote_header: MACRO
-	dw \2 - \1, (\3 << 4) + 2
+	dw \2 - \1, \3
 	ENDM
 
 CallPredef EQUS "$08"

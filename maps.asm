@@ -5175,15 +5175,15 @@ Func_9a6c7: ; 9a6c7 (26:66c7)
 	ld de, Emotes_c4000
 	ld a, BANK(Emotes_c4000)
 	call FarCall
-	set_farcall_addrs_hli Func_da5db
+	set_farcall_addrs_hli DecompressEmoteAttrs
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
 	ld hl, Data_9a623
 	add hl, de
 	ld c, [hl]
-	ld de, Data_c5b26
-	ld a, BANK(Data_c5b26)
+	ld de, EmoteAttrs_c5b26
+	ld a, BANK(EmoteAttrs_c5b26)
 	call FarCall
 	write_hl_to $c82e
 	set_farcall_addrs_hli Func_d9f7e
@@ -5262,15 +5262,15 @@ Func_9a780: ; 9a780 (26:6780)
 	ld de, Emotes_b2418
 	ld a, BANK(Emotes_b2418)
 	call FarCall
-	set_farcall_addrs_hli Func_da5db
+	set_farcall_addrs_hli DecompressEmoteAttrs
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
 	ld hl, Data_9a645
 	add hl, de
 	ld c, [hl]
-	ld de, Data_b3607
-	ld a, BANK(Data_b3607)
+	ld de, EmoteAttrs_b3607
+	ld a, BANK(EmoteAttrs_b3607)
 	call FarCall
 	write_hl_to $c82e
 	set_farcall_addrs_hli Func_d9f7e
@@ -5711,15 +5711,15 @@ Func_b138f: ; b138f
 
 Emotes_b2418: ; b2418
 	dw $0, $0
-	emote_header Emotes_b2418, GFX_b2440, $3e
-	emote_header Emotes_b2418, GFX_b2720, $3f
-	emote_header Emotes_b2418, GFX_b2a29, $33
-	emote_header Emotes_b2418, GFX_b2b7a, $34
-	emote_header Emotes_b2418, GFX_b2d1b, $38
-	emote_header Emotes_b2418, GFX_b2f5c, $3e
-	emote_header Emotes_b2418, GFX_b31f3, $20
-	emote_header Emotes_b2418, GFX_b32dd, $1f
-	emote_header Emotes_b2418, GFX_b348c, $22
+	emote_header Emotes_b2418, GFX_b2440, $3e2
+	emote_header Emotes_b2418, GFX_b2720, $3f2
+	emote_header Emotes_b2418, GFX_b2a29, $332
+	emote_header Emotes_b2418, GFX_b2b7a, $342
+	emote_header Emotes_b2418, GFX_b2d1b, $382
+	emote_header Emotes_b2418, GFX_b2f5c, $3e2
+	emote_header Emotes_b2418, GFX_b31f3, $202
+	emote_header Emotes_b2418, GFX_b32dd, $1f2
+	emote_header Emotes_b2418, GFX_b348c, $222
 
 GFX_b2440:: INCBIN "gfx/emotes/emote_b2440.emote.rz"
 GFX_b2720:: INCBIN "gfx/emotes/emote_b2720.emote.rz"
@@ -5731,8 +5731,29 @@ GFX_b31f3:: INCBIN "gfx/emotes/emote_b31f3.emote.rz"
 GFX_b32dd:: INCBIN "gfx/emotes/emote_b32dd.emote.rz"
 GFX_b348c:: INCBIN "gfx/emotes/emote_b348c.emote.rz"
 
-Data_b3607: ; b3607
-	dr $b3607, $b3fd0
+EmoteAttrs_b3607: ; b3607
+	dw $0, $0
+	emote_header EmoteAttrs_b3607, Data_b3633, $367
+	emote_header EmoteAttrs_b3607, Data_b376f, $352
+	emote_header EmoteAttrs_b3607, Data_b3884, $8f8
+	emote_header EmoteAttrs_b3607, Data_b39da, $b25
+	emote_header EmoteAttrs_b3607, Data_b3c0b, $278
+	emote_header EmoteAttrs_b3607, Data_b3cd5, $ac
+	emote_header EmoteAttrs_b3607, Data_b3d24, $2f9
+	emote_header EmoteAttrs_b3607, Data_b3e2b, $148
+	emote_header EmoteAttrs_b3607, Data_b3ecb, $111
+	emote_header EmoteAttrs_b3607, Data_b3f35, $18c
+
+Data_b3633: INCBIN "gfx/emotes/emote_b3633.emoteattrs.rz" ; b3633
+Data_b376f: INCBIN "gfx/emotes/emote_b376f.emoteattrs.rz" ; b376f
+Data_b3884: INCBIN "gfx/emotes/emote_b3884.emoteattrs.rz" ; b3884
+Data_b39da: INCBIN "gfx/emotes/emote_b39da.emoteattrs.rz" ; b39da
+Data_b3c0b: INCBIN "gfx/emotes/emote_b3c0b.emoteattrs.rz" ; b3c0b
+Data_b3cd5: INCBIN "gfx/emotes/emote_b3cd5.emoteattrs.rz" ; b3cd5
+Data_b3d24: INCBIN "gfx/emotes/emote_b3d24.emoteattrs.rz" ; b3d24
+Data_b3e2b: INCBIN "gfx/emotes/emote_b3e2b.emoteattrs.rz" ; b3e2b
+Data_b3ecb: INCBIN "gfx/emotes/emote_b3ecb.emoteattrs.rz" ; b3ecb
+Data_b3f35: INCBIN "gfx/emotes/emote_b3f35.emoteattrs.rz" ; b3f35
 
 SECTION "Bank 2d", ROMX, BANK [$2d]
 	lib_bank_20 2d
@@ -5965,19 +5986,25 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld hl, sp+$4
 	ld [hl], c
 	pop hl
+	; extern short wc26b[16];
+	; extern char wc28b[16];
+	; extern char wc29b[16];
+	; extern char wc2ab[16];
+	; extern char wc2bb[16];
+	; extern char * wc2f4;
 	; short * wc265 = hl;
-	write_hl_to $c265
+	write_hl_to wc265
 	; short * wc267 = *wc265;
-	read_hl_from $c265
-	write_hl_to $c267
+	read_hl_from wc265
+	write_hl_to wc267
 	; short * wc269 = (*wc265 + 0x20);
-	read_hl_from $c265
+	read_hl_from wc265
 	ld de, $20
 	add hl, de
-	write_hl_to $c269
+	write_hl_to wc269
 	; char * wc85a = 0x10;
 	ld a, $10
-	ld [$c85a], a
+	ld [wc85a], a
 	; char i;
 	ld c, $0
 	pop de
@@ -6004,7 +6031,7 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $c26b
+	ld de, wc26b
 	add hl, de
 	ld de, $0
 	ld [hl], e
@@ -6019,7 +6046,7 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld h, $0
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c267
+	read_hl_from wc267
 	add hl, de
 	ld a, [hl]
 	inc hl
@@ -6029,7 +6056,7 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $c26b
+	ld de, wc26b
 	add hl, de
 	ld de, $0
 	ld [hl], e
@@ -6040,23 +6067,23 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 
 .asm_d9ffc
 	; else {
-	; *wc267[i] + *wc265 = *wc26b[i];
+	; *wc26b[i] = *(*wc267)[i] + *wc265;
 	ld l, c
 	ld h, $0
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c267
+	read_hl_from wc267
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	read_hl_from $c265
+	read_hl_from wc265
 	add hl, de
 	push hl
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $c26b
+	ld de, wc26b
 	add hl, de
 	pop de
 	ld [hl], e
@@ -6066,7 +6093,7 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $c26b
+	ld de, wc26b
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -6075,14 +6102,14 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld a, [de]
 	ld e, c
 	ld d, $0
-	ld hl, $c28b
+	ld hl, wc28b
 	add hl, de
 	ld [hl], a
 	; *wc29b[i] = *(*wc26b[i])[2];
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $c26b
+	ld de, wc26b
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -6092,14 +6119,14 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld a, [de]
 	ld e, c
 	ld d, $0
-	ld hl, $c29b
+	ld hl, wc29b
 	add hl, de
 	ld [hl], a
 	; *wc2ab[i] = *(*wc26b[i])[3];
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $c26b
+	ld de, wc26b
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -6110,7 +6137,7 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld a, [de]
 	ld e, c
 	ld d, $0
-	ld hl, $c2ab
+	ld hl, wc2ab
 	add hl, de
 	ld [hl], a
 	; *wc2bb[i] = b;
@@ -6118,13 +6145,13 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $c2bb
+	ld hl, wc2bb
 	add hl, de
 	ld [hl], a
 	; *wc2f4 = c;
 	ld hl, sp+$2
 	ld a, [hl]
-	ld [$c2f4], a
+	ld [wc2f4], a
 	; }
 .next
 	; }
@@ -6209,7 +6236,7 @@ LoadEmoteGFX: ; da545 (36:6545)
 	add hl, de
 	pop de
 	call FarDecompressVideoData
-	ld hl, $c263
+	ld hl, wc263
 	ld l, [hl]
 	ld h, $0
 	call WriteHLToSPPlus4
@@ -6252,7 +6279,7 @@ LoadEmoteGFX: ; da545 (36:6545)
 	pop bc
 	ret
 
-Func_da5db: ; da5db (36:65db)
+DecompressEmoteAttrs: ; da5db (36:65db)
 	push de
 	push bc
 	push bc
