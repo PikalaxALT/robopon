@@ -5255,8 +5255,8 @@ Func_9a780: ; 9a780 (26:6780)
 	ld hl, Data_9a618
 	add hl, de
 	ld c, [hl]
-	ld de, Data_b2418
-	ld a, BANK(Data_b2418)
+	ld de, Emotes_b2418
+	ld a, BANK(Emotes_b2418)
 	call FarCall
 	set_farcall_addrs_hli Func_da5db
 	ld hl, sp+$5
@@ -5705,8 +5705,27 @@ Func_b10ea: ; b10ea
 Func_b138f: ; b138f
 	dr $b138f, $b2418
 
-Data_b2418: ; b2418
-	dr $b2418, $b3607
+Emotes_b2418: ; b2418
+	dw $0, $0
+	emote_header Emotes_b2418, GFX_b2440, $3e
+	emote_header Emotes_b2418, GFX_b2720, $3f
+	emote_header Emotes_b2418, GFX_b2a29, $33
+	emote_header Emotes_b2418, GFX_b2b7a, $34
+	emote_header Emotes_b2418, GFX_b2d1b, $38
+	emote_header Emotes_b2418, GFX_b2f5c, $3e
+	emote_header Emotes_b2418, GFX_b31f3, $20
+	emote_header Emotes_b2418, GFX_b32dd, $1f
+	emote_header Emotes_b2418, GFX_b348c, $22
+
+GFX_b2440:: INCBIN "gfx/emotes/emote_b2440.emote.rz"
+GFX_b2720:: INCBIN "gfx/emotes/emote_b2720.emote.rz"
+GFX_b2a29:: INCBIN "gfx/emotes/emote_b2a29.emote.rz"
+GFX_b2b7a:: INCBIN "gfx/emotes/emote_b2b7a.emote.rz"
+GFX_b2d1b:: INCBIN "gfx/emotes/emote_b2d1b.emote.rz"
+GFX_b2f5c:: INCBIN "gfx/emotes/emote_b2f5c.emote.rz"
+GFX_b31f3:: INCBIN "gfx/emotes/emote_b31f3.emote.rz"
+GFX_b32dd:: INCBIN "gfx/emotes/emote_b32dd.emote.rz"
+GFX_b348c:: INCBIN "gfx/emotes/emote_b348c.emote.rz"
 
 Data_b3607: ; b3607
 	dr $b3607, $b3fd0

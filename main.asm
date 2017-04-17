@@ -107327,10 +107327,6 @@ GFX_c0000: ; c0000
 	dr $c0000, $c4000
 
 SECTION "Bank 31", ROMX, BANK [$31]
-emote_header: MACRO
-	dw \2 - \1, (\3 << 4) + 2
-	ENDM
-
 Emotes_c4000::
 	dw $0, $0
 	emote_header Emotes_c4000, GFX_c4070, $19

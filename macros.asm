@@ -12,6 +12,10 @@ dtext_tree_pointer: MACRO
 	dw (\1_Pointer - TextTreeBitstreams) / 2
 	ENDM
 
+emote_header: MACRO
+	dw \2 - \1, (\3 << 4) + 2
+	ENDM
+
 CallPredef EQUS "$08"
 
 dn: MACRO
