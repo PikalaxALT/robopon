@@ -4,9 +4,9 @@ CheckFacingObject: ; a783 (2:6783)
 	ld [wCheckCollisionFlag], a
 	ld a, e
 	ld [wCheckCollisionFacingDirection], a
-	ld a, [$c83c]
+	ld a, [wc83c]
 	ld b, a
-	ld a, [$c83d]
+	ld a, [wc83c + 1]
 	or b
 	jr z, .okay
 	ld a, $1
@@ -225,9 +225,9 @@ CheckFacingObject: ; a783 (2:6783)
 	ld a, [hli]
 	cp $0
 	jr nz, .check_call
-	ld a, [$c83c]
+	ld a, [wc83c]
 	ld b, a
-	ld a, [$c83c + 1]
+	ld a, [wc83c + 1]
 	or b
 	jr nz, .check_call
 	ld a, $0

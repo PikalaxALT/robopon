@@ -1,7 +1,7 @@
 HandleMap: ; 90e9 (2:50e9)
 	add sp, -$10
 	ld a, $ff
-	ld [$c839], a
+	ld [wc839], a
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
@@ -21,7 +21,7 @@ Func_9111: ; 9111 (2:5111)
 	call Func_b44d
 	ld hl, sp+$e
 	ld [hl], a
-	read_hl_from $c83c
+	read_hl_from wc83c
 	ld a, l
 	or h
 	jp z, Func_9134
@@ -30,7 +30,7 @@ Func_9111: ; 9111 (2:5111)
 	cp $ff
 	jp nz, Func_9134
 	ld hl, $0
-	write_hl_to $c83c
+	write_hl_to wc83c
 	jp Func_9413
 
 Func_9134: ; 9134 (2:5134)
@@ -77,7 +77,7 @@ Func_9168: ; 9168 (2:5168)
 Func_9179: ; 9179 (2:5179)
 	push de
 	ld a, [wPlayerFacing]
-	ld [$c839], a
+	ld [wc839], a
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
@@ -86,7 +86,7 @@ Func_9179: ; 9179 (2:5179)
 	pop de
 Func_918e: ; 918e (2:518e)
 	push de
-	ld a, [$c839]
+	ld a, [wc839]
 	ld hl, wPlayerFacing
 	cp [hl]
 	jp z, Func_91ba
@@ -101,7 +101,7 @@ Func_918e: ; 918e (2:518e)
 	ld [wNextVBlankFlags], a
 	call Func_8ccf
 	ld a, [wPlayerFacing]
-	ld [$c839], a
+	ld [wc839], a
 Func_91ba: ; 91ba (2:51ba)
 	call ShowEmote_
 	pop de
@@ -303,7 +303,7 @@ Func_930d: ; 930d (2:530d)
 	ei
 	call Func_bfaf
 	set_farcall_addrs_hli Func_c7bd0
-	ld a, [$c867]
+	ld a, [wc867]
 	call FarCall
 Func_9371: ; 9371 (2:5371)
 	ld hl, sp+$c

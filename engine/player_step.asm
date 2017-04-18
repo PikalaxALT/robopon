@@ -5,14 +5,14 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld b, a
 	ld c, e
 	push af
-	ld a, [$c86c]
-	ld [$c872], a
-	ld a, [$c86d]
-	ld [$c873], a
-	ld a, [$c86a]
-	ld [$c870], a
-	ld a, [$c86b]
-	ld [$c871], a
+	ld a, [wc86c]
+	ld [wc872], a
+	ld a, [wc86c + 1]
+	ld [wc873], a
+	ld a, [wc86a]
+	ld [wc870], a
+	ld a, [wc86a + 1]
+	ld [wc871], a
 	ld a, $1
 	ld [wLastStepSucceeded], a
 	pop af
@@ -127,10 +127,10 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld a, $2
 .asm_950a
 	ld [wPlayerMovementRate], a
-	ld a, [$c858]
+	ld a, [wc858]
 	cp $0
 	jr nz, .asm_952e
-	ld a, [$c857]
+	ld a, [wc857]
 	cp $ff
 	jr z, .asm_952e
 	push bc
@@ -139,11 +139,11 @@ HandlePlayerStep:: ; 943f (2:543f)
 	pop de
 	pop bc
 	ld h, a
-	ld a, [$c857]
+	ld a, [wc857]
 	cp h
 	jr nz, .asm_952e
 	ld a, $1
-	ld [$c858], a
+	ld [wc858], a
 .asm_952e
 	ld a, c
 	cp $1
@@ -215,9 +215,9 @@ HandlePlayerStep:: ; 943f (2:543f)
 	cp $1
 	jr z, .asm_95a3
 	push hl
-	ld a, [$c83c]
+	ld a, [wc83c]
 	ld l, a
-	ld a, [$c83d]
+	ld a, [wc83c + 1]
 	or l
 	pop hl
 	jr nz, .asm_95a3
@@ -279,10 +279,10 @@ Func_95aa: ; 95aa (2:55aa)
 	jp nc, Func_9670
 	push bc
 	push hl
-	ld a, [$c868]
+	ld a, [wc868]
 	add c
 	ld l, a
-	ld a, [$c869]
+	ld a, [wc868 + 1]
 	adc $0
 	ld h, a
 	ld a, [wMapY]
@@ -354,9 +354,9 @@ Func_9670: ; 9670 (2:5670)
 Func_9678: ; 9678 (2:5678)
 	push bc
 	push hl
-	ld a, [$c870]
+	ld a, [wc870]
 	ld l, a
-	ld a, [$c871]
+	ld a, [wc871]
 	adc $0
 	ld h, a
 	push hl
@@ -366,9 +366,9 @@ Func_9678: ; 9678 (2:5678)
 	ld d, $0
 	add hl, de
 	ld a, l
-	ld [$c870], a
+	ld [wc870], a
 	ld a, h
-	ld [$c871], a
+	ld [wc871], a
 	pop de
 	pop hl
 	ld a, [wMapY]
@@ -442,10 +442,10 @@ Func_9716: ; 9716 (2:5716)
 	jp nc, Func_979f
 	push bc
 	push hl
-	ld a, [$c86e]
+	ld a, [wc86e]
 	add c
 	ld l, a
-	ld a, [$c86f]
+	ld a, [wc86e + 1]
 	adc $0
 	ld h, a
 	ld a, [wMapY]
@@ -517,9 +517,9 @@ Func_979f: ; 979f (2:579f)
 Func_97a7: ; 97a7 (2:57a7)
 	push bc
 	push hl
-	ld a, [$c872]
+	ld a, [wc872]
 	ld l, a
-	ld a, [$c873]
+	ld a, [wc873]
 	adc $0
 	ld h, a
 	push hl
@@ -529,9 +529,9 @@ Func_97a7: ; 97a7 (2:57a7)
 	ld d, $0
 	add hl, de
 	ld a, l
-	ld [$c872], a
+	ld [wc872], a
 	ld a, h
-	ld [$c873], a
+	ld [wc873], a
 	pop de
 	pop hl
 	ld a, [wMapY]
@@ -690,7 +690,7 @@ Func_9844: ; 9844 (2:5844)
 .asm_98ee
 	ld a, c
 	inc a
-	ld [$c83a], a
+	ld [wc83a], a
 Func_98f3: ; 98f3 (2:58f3)
 	push bc
 	push de
@@ -810,7 +810,7 @@ Func_9900: ; 9900 (2:5900)
 	ld [wPlayerMapX], a
 .asm_99b7
 	xor a
-	ld [$c83a], a
+	ld [wc83a], a
 .skip_step_vector
 	push bc
 	push hl
@@ -830,7 +830,7 @@ Func_9900: ; 9900 (2:5900)
 	cp $0
 	jr nz, Func_99de
 	xor a
-	ld [$c858], a
+	ld [wc858], a
 Func_99de: ; 99de (2:59de)
 	pop hl
 	pop de

@@ -655,20 +655,31 @@ wc770:: ; c770
 	char wc81f ; c81f
 	char wc820 ; c820
 	char wc821 ; c821
+
 	short wc822 ; c822
 	short wc824 ; c824
 	short wc826 ; c826
 	short wBlockdataPointer ; c828
 	short wc82a ; c82a
 	short wc82c ; c82c
-	ds $2
-
+	short wc82e ; c82e
 	short wMapCollisionPointer ; c830
-	ds $6
 
+	char wc832 ; c832
+	char wc833 ; c833
+	char wc834 ; c834
+	char wc835 ; c835
+	char wc836 ; c836
+	char wc837 ; c837
 	char wPlayerFacing ; c838
-	ds $9
-
+	char wc839 ; c839
+	char wc83a ; c83a
+	char wc83b ; c83b
+	short wc83c ; c83c
+	char wc83e ; c83e
+	char wc83f ; c83f
+	char wc840 ; c840
+	char wc841 ; c841
 	short wc842 ; c842
 	short wc844 ; c844
 	char wc846 ; c846
@@ -684,8 +695,11 @@ wc770:: ; c770
 	char wc850 ; c850
 	char wc851 ; c851
 	short wc852 ; c852
-	ds $6
+	ds $3
 
+	char wc857 ; c857
+	char wc858 ; c858
+	char wc859 ; c859
 	char wc85a ; c85a
 	short wTilesetPointer ; c85b
 	short wc85d ; c85d
@@ -696,7 +710,16 @@ wc770:: ; c770
 	char wCurWarpHDim ; c863
 	char wCurWarpVDim ; c864
 	short wPlayerStandingTileOffset ; c865
-	ds $15
+	char wc867 ; c867
+	short wc868 ; c868
+	short wc86a ; c86a
+	short wc86c ; c86c
+	short wc86e ; c86e
+	char wc870 ; c870
+	char wc871 ; c871
+	char wc872 ; c872
+	char wc873 ; c873
+	ds $8
 	char wPlayerMovementRate ; c87c
 	char wLastStepSucceeded ; c87d
 	ds $a

@@ -4867,7 +4867,7 @@ Func_8c94: ; 8c94 (2:4c94)
 	cp $11
 	jp z, Func_8cc1
 	set_farcall_addrs_hli Func_c7bd0
-	ld a, [$c867]
+	ld a, [wc867]
 	call FarCall
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
@@ -5013,7 +5013,7 @@ LoadBlockData: ; 8d2a (2:4d2a)
 	cp $8f
 	jp z, Func_8dbd
 	read_hl_from wc844
-	ld a, [$c859]
+	ld a, [wc859]
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -5031,7 +5031,7 @@ ShowEmote_:: ; 8dc8
 	ld hl, wSCX
 	sub [hl]
 	ld l, a
-	ld a, [$c832]
+	ld a, [wc832]
 	add a
 	add a
 	add a
@@ -5043,7 +5043,7 @@ ShowEmote_:: ; 8dc8
 	ld hl, wSCY
 	sub [hl]
 	ld l, a
-	ld a, [$c833]
+	ld a, [wc833]
 	add a
 	add a
 	add a
@@ -5071,7 +5071,7 @@ del_if_defined: MACRO
 	del_if_defined wMapCollisionPointer
 	del_if_defined wc82a
 	del_if_defined wc82c
-	del_if_defined $c82e
+	del_if_defined wc82e
 	del_if_defined wMapObjectsAndWarpDataPointer
 	del_if_defined wc778
 	del_if_defined wObjectStructPointer
@@ -5640,7 +5640,7 @@ Func_9a49: ; 9a49 (2:5a49)
 	jr .asm_9b99
 
 .asm_9b99
-	ld a, [$c83a]
+	ld a, [wc83a]
 	ld b, a
 	ld a, [$c891]
 	or a
@@ -5771,7 +5771,7 @@ Func_9a49: ; 9a49 (2:5a49)
 	ld hl, sp+$0
 	call FarCall
 	ld e, $0
-	read_hl_from $c82e
+	read_hl_from wc82e
 	ld a, l
 	or h
 	jp nz, .asm_9cbc
@@ -5781,28 +5781,28 @@ Func_9a49: ; 9a49 (2:5a49)
 	jp .finish
 
 .asm_9cbc: ; 9cbc (2:5cbc)
-	ld a, [$c834]
-	ld hl, $c836
+	ld a, [wc834]
+	ld hl, wc836
 	add [hl]
 	add $7
 	ld hl, wPlayerMapX
 	cp [hl]
 	jp c, .asm_9d0e
-	ld a, [$c834]
+	ld a, [wc834]
 	add $6
 	ld l, a
 	ld a, [wPlayerMapX]
 	add $a
 	cp l
 	jp c, .asm_9d0e
-	ld a, [$c835]
-	ld hl, $c837
+	ld a, [wc835]
+	ld hl, wc837
 	add [hl]
 	add $6
 	ld hl, wPlayerMapY
 	cp [hl]
 	jp c, .asm_9d0e
-	ld a, [$c835]
+	ld a, [wc835]
 	add $5
 	ld l, a
 	ld a, [wPlayerMapY]
@@ -5889,8 +5889,8 @@ Func_9d80: ; 9d80 (2:5d80)
 	pop hl
 .asm_9d91
 	push af
-	ld a, [$c841]
-	ld a, [$c841]
+	ld a, [wc841]
+	ld a, [wc841]
 	or a
 	jp z, Func_9ea0
 	ld a, e
@@ -5899,7 +5899,7 @@ Func_9d80: ; 9d80 (2:5d80)
 	xor a
 	ld [wc821], a
 .asm_9da4
-	ld a, [$c858]
+	ld a, [wc858]
 	cp $1
 	jr nz, .asm_9db0
 	xor a
@@ -7364,7 +7364,7 @@ Func_af33: ; af33 (2:6f33)
 	ld a, [wPlayerFacing]
 	call Func_9a49
 	set_farcall_addrs_hli Func_c7bd0
-	ld a, [$c867]
+	ld a, [wc867]
 	call FarCall
 	ld e, $fe
 	ld a, $fe
@@ -8097,12 +8097,12 @@ Func_b400:: ; b400 (2:7400)
 
 Func_b407: ; b407 (2:7407)
 	ld hl, $0
-	write_hl_to $c83c
+	write_hl_to wc83c
 	xor a
-	ld [$c840], a
-	ld [$c83f], a
-	ld [$c83e], a
-	ld [$c83b], a
+	ld [wc840], a
+	ld [wc83f], a
+	ld [wc83e], a
+	ld [wc83b], a
 	ret
 
 Func_b41d: ; b41d (2:741d)
@@ -8115,18 +8115,18 @@ Func_b41d: ; b41d (2:741d)
 	ld bc, $2
 	call FarCopyVideoData
 	pop af
-	ld [$c83b], a
+	ld [wc83b], a
 	pop hl
-	write_hl_to $c83c
+	write_hl_to wc83c
 	pop bc
 	ld a, c
-	ld [$c83e], a
+	ld [wc83e], a
 	ld hl, sp+$0
 	ld a, [hl]
-	ld [$c83f], a
+	ld [wc83f], a
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [$c840], a
+	ld [wc840], a
 	pop bc
 	ret
 
@@ -8142,7 +8142,7 @@ Func_b44d: ; b44d (2:744d)
 	ld hl, Data_b449
 	ld bc, $4
 	call MemCopy
-	read_hl_from $c83c
+	read_hl_from wc83c
 	ld a, l
 	or h
 	jp nz, Func_b4bd
@@ -8151,10 +8151,10 @@ Func_b44d: ; b44d (2:744d)
 	ld [hl], a
 	ld hl, $0
 	call Func_9f4c
-	ld hl, $c857
+	ld hl, wc857
 	cp [hl]
 	jp nz, Func_b4b6
-	ld a, [$c858]
+	ld a, [wc858]
 	cp $1
 	jp nz, Func_b4b3
 	ld a, [wPlayerFacing]
@@ -8188,15 +8188,15 @@ Func_b4b3: ; b4b3 (2:74b3)
 
 Func_b4b6: ; b4b6 (2:74b6)
 	xor a
-	ld [$c858], a
+	ld [wc858], a
 Func_b4ba: ; b4ba (2:74ba)
 	jp Func_b525
 
 Func_b4bd: ; b4bd (2:74bd)
-	ld a, [$c840]
+	ld a, [wc840]
 	ld l, a
 	push hl
-	ld a, [$c83f]
+	ld a, [wc83f]
 	ld c, a
 	ld a, [wPlayerMapY]
 	ld e, a
@@ -8207,24 +8207,24 @@ Func_b4bd: ; b4bd (2:74bd)
 	ld [hl], a
 	cp $ff
 	jp nz, Func_b519
-	read_hl_from $c83c
+	read_hl_from wc83c
 	inc hl
 	inc hl
-	write_hl_to $c83c
-	ld a, [$c83b]
+	write_hl_to wc83c
+	ld a, [wc83b]
 	ld [wFarCallDestBank], a
 	ld bc, $2
-	read_hl_from $c83c
+	read_hl_from wc83c
 	reg16swap de, hl
 	ld hl, sp+$4
 	call FarCopyVideoData
 	ld hl, sp+$4
 	ld a, [hl]
-	ld [$c83f], a
+	ld [wc83f], a
 	ld hl, sp+$5
 	ld a, [hl]
-	ld [$c840], a
-	ld a, [$c83f]
+	ld [wc840], a
+	ld a, [wc83f]
 	cp $ff
 	jp nz, Func_b515
 	ld a, $ff
@@ -8253,7 +8253,7 @@ Func_b528: ; b528 (2:7528)
 	ret
 
 Func_b52c:: ; b52c (2:752c)
-	ld [$c841], a
+	ld [wc841], a
 	ret
 
 SpawnPlayerAt:: ; b530 (2:7530)
@@ -8341,7 +8341,7 @@ Func_b58e:: ; b58e
 	call RequestVideoData
 	pop af
 	ld [wPlayerFacing], a
-	ld [$c839], a
+	ld [wc839], a
 	call Func_bfaf
 	pop bc
 	pop bc
@@ -8430,7 +8430,7 @@ Func_b65f:: ; b65f (2:765f)
 
 Func_b67c: ; b67c (2:767c)
 	set_farcall_addrs_hli Func_c7bd0
-	ld a, [$c867]
+	ld a, [wc867]
 	call FarCall
 	set_farcall_addrs_hli Func_61424
 	ld c, $0
@@ -9215,7 +9215,7 @@ Func_bf39:: ; bf39
 	ret
 
 Func_bf46:: ; bf46 (2:7f46)
-	ld [$c857], a
+	ld [wc857], a
 	ret
 
 Func_bf4a: ; bf4a (2:7f4a)

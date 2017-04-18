@@ -1,6 +1,6 @@
 RollRandomEncounter: ; b821 (2:7821)
 	add sp, -$3c
-	read_hl_from $c83c
+	read_hl_from wc83c
 	ld a, l
 	or h
 	jp z, Func_b832

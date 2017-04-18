@@ -5148,14 +5148,14 @@ LoadEmote:: ; 9a6aa (26:66aa)
 	push af
 	push de
 	push bc
-	read_hl_from $c82e
+	read_hl_from wc82e
 	ld a, l
 	or h
 	jp z, Func_9a6c7
-	read_hl_from $c82e
+	read_hl_from wc82e
 	call Func_9a1aa
 	ld hl, $0
-	write_hl_to $c82e
+	write_hl_to wc82e
 Func_9a6c7: ; 9a6c7 (26:66c7)
 	pop bc
 	pop de
@@ -5185,7 +5185,7 @@ Func_9a6c7: ; 9a6c7 (26:66c7)
 	ld de, EmoteAttrs_c5b26
 	ld a, BANK(EmoteAttrs_c5b26)
 	call FarCall
-	write_hl_to $c82e
+	write_hl_to wc82e
 	set_farcall_addrs_hli Func_d9f7e
 	pop bc
 	pop de
@@ -5196,7 +5196,7 @@ Func_9a6c7: ; 9a6c7 (26:66c7)
 	ld c, l
 	ld b, h
 	ld d, $0
-	read_hl_from $c82e
+	read_hl_from wc82e
 	call FarCall
 	ld hl, sp+$1
 	ld e, [hl]
@@ -5272,7 +5272,7 @@ Func_9a780: ; 9a780 (26:6780)
 	ld de, EmoteAttrs_b3607
 	ld a, BANK(EmoteAttrs_b3607)
 	call FarCall
-	write_hl_to $c82e
+	write_hl_to wc82e
 	set_farcall_addrs_hli Func_d9f7e
 	pop bc
 	pop de
@@ -5283,7 +5283,7 @@ Func_9a780: ; 9a780 (26:6780)
 	ld c, l
 	ld b, h
 	ld d, $0
-	read_hl_from $c82e
+	read_hl_from wc82e
 	call FarCall
 	ld hl, sp+$1
 	ld e, [hl]

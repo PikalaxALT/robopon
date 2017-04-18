@@ -261,7 +261,7 @@ del: MACRO
 	write_hl_to wc85d
 	ld hl, $0
 	write_hl_to wMapCollisionPointer
-	write_hl_to $c82e
+	write_hl_to wc82e
 	write_hl_to wc82c
 	write_hl_to wBlockdataPointer
 	write_hl_to wc826
@@ -291,7 +291,7 @@ del: MACRO
 	del wc826
 	del wBlockdataPointer
 	del wc82c
-	del $c82e
+	del wc82e
 	del wc82a
 	del wc85d
 .okay
@@ -331,7 +331,7 @@ del: MACRO
 	ld hl, sp+$55
 	add hl, de
 	ld a, [hl]
-	ld [$c859], a
+	ld [wc859], a
 	ld hl, sp+$5d
 	ld a, [hl]
 	call LoadBlockData
@@ -513,19 +513,19 @@ Func_8827: ; 8827 (2:4827)
 	ld a, [hl]
 	ld b, $8
 	call DivideAbyB
-	ld [$c867], a
+	ld [wc867], a
 	xor a
-	ld [$c837], a
-	ld [$c836], a
-	ld [$c835], a
-	ld [$c834], a
-	ld [$c833], a
-	ld [$c832], a
+	ld [wc837], a
+	ld [wc836], a
+	ld [wc835], a
+	ld [wc834], a
+	ld [wc833], a
+	ld [wc832], a
 	ld [$c821], a
 	xor a
-	ld [$c83a], a
+	ld [wc83a], a
 	xor a
-	ld [$c858], a
+	ld [wc858], a
 	pop bc
 	push bc
 	inc c
@@ -553,11 +553,11 @@ Func_8827: ; 8827 (2:4827)
 	ld hl, sp+$5e
 	call FarCall
 	callba_hli Func_da4fc
-	read_hl_from $c82e
+	read_hl_from wc82e
 	ld a, l
 	or h
 	jp z, Func_88df
-	read_hl_from $c82e
+	read_hl_from wc82e
 	call FreeMemory_Bank02
 Func_88df: ; 88df (2:48df)
 	pop bc
@@ -565,7 +565,7 @@ Func_88df: ; 88df (2:48df)
 	cp $1
 	jp nz, Func_88f8
 	ld a, $ff
-	ld [$c839], a
+	ld [wc839], a
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
@@ -608,7 +608,7 @@ Func_891c: ; 891c (2:491c)
 	inc hl
 	ld de, hPushOAM + 5
 	add hl, de
-	write_hl_to $c868
+	write_hl_to wc868
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
@@ -619,7 +619,7 @@ Func_891c: ; 891c (2:491c)
 	add hl, de
 	ld de, hPushOAM + 5
 	add hl, de
-	write_hl_to $c86e
+	write_hl_to wc86e
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
@@ -637,7 +637,7 @@ Func_891c: ; 891c (2:491c)
 	inc hl
 	ld de, hPushOAM + 4
 	add hl, de
-	write_hl_to $c86c
+	write_hl_to wc86c
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
@@ -655,6 +655,6 @@ Func_891c: ; 891c (2:491c)
 	inc hl
 	ld de, $6
 	add hl, de
-	write_hl_to $c86a
+	write_hl_to wc86a
 	add sp, $66
 	ret
