@@ -56,7 +56,7 @@ OverworldLoop: ; 81cf (2:41cf)
 
 .new_game
 	xor a
-	ld [$c318], a
+	ld [wc318], a
 	ld a, $1
 	ld [wc7e2], a
 	set_farcall_addrs_hli Func_e2780
@@ -125,7 +125,7 @@ OverworldLoop: ; 81cf (2:41cf)
 
 .okay2
 	xor a
-	ld [$c318], a
+	ld [wc318], a
 	ld a, $ff
 	ld [wBackupMapNumber], a
 	ld [wBackupMapGroup], a

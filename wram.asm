@@ -489,12 +489,94 @@ wVideoTransferQueue:: ; c239
 	char wc2fa ; c2fa
 	char wSystemType ; c2fb
 
-SECTION "OAM Buffer", WRAM0 [$c300]
-wc300:: ds $9 ; c300
-wPlayerName:: ds $5 ; c309
+SECTION "OAM Buffer at boot only", WRAM0 [$c300]
+	char wc300 ; c300
+	char wc301 ; c301
+	char wc302 ; c302
+	char wc303 ; c303
+	char wc304 ; c304
+	char wc305 ; c305
+	char wc306 ; c306
+	char wc307 ; c307
+	char wc308 ; c308
+	array wPlayerName, 5, 1, 1 ; c309
 	short wc30e ; c30e
+	char wc310 ; c310
+	char wc311 ; c311
+	short wc312 ; c312
+	short wc314 ; c314
+	char wc316 ; c316
+	char wc317 ; c317
+	char wc318 ; c318
+	char wc319 ; c319
+	char wc31a ; c31a
+	char wc31b ; c31b
+	char wc31c ; c31c
+	char wc31d ; c31d
+	char wc31e ; c31e
+	char wc31f ; c31f
+	short wc320 ; c320
+	short wc322 ; c322
+	short wc324 ; c324
+	char wc326 ; c326
+	array wc327, 32, 1, 1 ; c327
+	array wc347, 3, 20, 1 ; c347
+	array wc383, 4, 1, 1 ; c383
+	char wc387 ; c387
+	char wc388 ; c388
+	char wc389 ; c389
+	char wc38a ; c38a
+	char wc38b ; c38b
+	char wc38c ; c38c
+	char wc38d ; c38d
+	short wc38e ; c38e
+	ds $1
+	short wc391 ; c391
+	short wc393 ; c393
+	char wc395 ; c395
+	array wc396, 4, 1, 1 ; c396
+	char wc39a ; c39a
+	char wc39b ; c39b
+	char wc39c ; c39c
+	char wc39d ; c39d
+	char wc39e ; c39e
+	char wc39f ; c39f
+	array wc3a0, 16, 1, 1 ; c3a0
+	short wc3b0 ; c3b0
+	short wc3b2 ; c3b2
+	char wc3b4 ; c3b4
+	
+	char wc3b5 ; c3b5
+	char wc3b6 ; c3b6
+	short wc3b7 ; c3b7
+	char wc3b9 ; c3b9
+	char wc3ba ; c3ba
+	char wc3bb ; c3bb
+	char wc3bc ; c3bc
+	char wc3bd ; c3bd
+	array wc3be, 5, 1, 2 ; c3be
+	short wc3c8 ; c3c8
 
-SECTION "OAM Buffer 2", WRAM0 [$c400]
+	short wc3ca ; c3ca
+	char wc3cc ; c3cc
+	char wc3cd ; c3cd
+	char wc3ce ; c3ce
+	char wc3cf ; c3cf
+	char wc3d0 ; c3d0
+	char wc3d1 ; c3d1
+	char wc3d2 ; c3d2
+	char wc3d3 ; c3d3
+	ds $c
+	short wc3e0 ; c3e0
+	short wc3e2 ; c3e2
+	short wc3e4 ; c3e4
+	short wc3e6 ; c3e6
+	short wc3e8 ; c3e8
+	short wc3ea ; c3ea
+	short wc3ec ; c3ec
+	short wc3ee ; c3ee
+
+SECTION "OAM Buffer", WRAM0 [$c400]
 wOAMBuffer:: ; c400
 	oam_ram wOAM00
 	oam_ram wOAM01

@@ -172,7 +172,7 @@ Func_5e647: ; 5e647 (17:6647)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $c396
+	ld hl, wc396
 	add hl, de
 	ld [hl], a
 	inc c
@@ -304,7 +304,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	push hl
 	push bc
 	ld a, [wc2e8 + 1]
-	ld [$c310], a
+	ld [wc310], a
 	ld hl, wc2e8 + 1
 	ld l, [hl]
 	ld h, $0
@@ -475,7 +475,7 @@ Func_5e89f: ; 5e89f (17:689f)
 	ld hl, sp+$48
 	ld e, [hl]
 	ld d, $0
-	ld hl, $c396
+	ld hl, wc396
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$48
@@ -655,7 +655,7 @@ Func_5e9f7: ; 5e9f7 (17:69f7)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $c396
+	ld hl, wc396
 	add hl, de
 	ld [hl], a
 	inc c
@@ -709,7 +709,7 @@ Func_5ea5d: ; 5ea5d (17:6a5d)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $c396
+	ld hl, wc396
 	add hl, de
 	ld [hl], a
 	inc c
@@ -776,7 +776,7 @@ Func_5eade: ; 5eade (17:6ade)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $c396
+	ld hl, wc396
 	add hl, de
 	ld [hl], a
 	inc c

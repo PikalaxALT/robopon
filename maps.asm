@@ -975,7 +975,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	ld hl, $0
 	write_hl_to_sp_plus $31
 	ld a, $1
-	ld [$c39a], a
+	ld [wc39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -994,7 +994,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	call FarCall
 	push hl
 	ld a, $2
-	ld [$c39a], a
+	ld [wc39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -4899,7 +4899,7 @@ Func_9a1bb: ; 9a1bb (26:61bb)
 	ld hl, -1
 	write_hl_to_sp_plus $41
 	ld a, $3
-	ld [$c39a], a
+	ld [wc39a], a
 	call Func_9a377
 	call Func_9a391
 	ld hl, sp+$1
@@ -4917,7 +4917,7 @@ Func_9a1bb: ; 9a1bb (26:61bb)
 	call DivideAbyB
 	push af
 	ld a, $2
-	ld [$c39a], a
+	ld [wc39a], a
 	set_farcall_addrs_hli Func_da901
 	pop af
 	pop hl
@@ -4984,7 +4984,7 @@ Func_9a28c: ; 9a28c (26:628c)
 	push hl
 	add sp, -$3e
 	ld a, $3
-	ld [$c39a], a
+	ld [wc39a], a
 	call Func_9a377
 	call Func_9a391
 	ld de, Data_9a36c

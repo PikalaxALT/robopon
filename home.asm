@@ -527,14 +527,14 @@ FarCall::
 
 Func_0451:: ; 0451
 	push bc
-	ld a, [$c39e]
+	ld a, [wc39e]
 	push af
 	xor a
-	ld [$c39e], a
+	ld [wc39e], a
 	call NextOverworldFrame
 	ld c, a
 	pop af
-	ld [$c39e], a
+	ld [wc39e], a
 	ld a, c
 	pop bc
 	ret
@@ -1700,15 +1700,15 @@ Func_1069:: ; 1069
 	push af
 	push hl
 	ld a, [rSB]
-	ld [$c31c], a
+	ld [wc31c], a
 	ld a, $1
-	ld [$c31a], a
-	ld a, [$c31b]
+	ld [wc31a], a
+	ld a, [wc31b]
 	ld [rSB], a
-	ld a, [$c31d]
+	ld a, [wc31d]
 	ld [rSC], a
 	ld hl, Pointers_1090
-	ld a, [$c31e]
+	ld a, [wc31e]
 	add a
 	add l
 	ld l, a
@@ -1740,7 +1740,7 @@ Func_10a6:: ; 10a6
 
 Func_10a9:: ; 10a9
 	ld a, $2
-	ld [$c31e], a
+	ld [wc31e], a
 	pop hl
 .asm_10af
 	pop af
@@ -1748,131 +1748,131 @@ Func_10a9:: ; 10a9
 
 Func_10b1:: ; 10b1
 	ld a, $6
-	ld [$c31e], a
+	ld [wc31e], a
 	pop hl
 	pop af
 	reti
 
 Func_10b9:: ; 10b9
-	ld a, [$c31c]
+	ld a, [wc31c]
 	cp $a0
 	jr nz, .asm_10c9
 	ld a, $b0
 	ld [rSB], a
 	ld a, $9
-	ld [$c31e], a
+	ld [wc31e], a
 .asm_10c9
 	pop hl
 	pop af
 	reti
 
 Func_10cc:: ; 10cc
-	ld a, [$c322]
+	ld a, [wc322]
 	ld l, a
-	ld a, [$c323]
+	ld a, [wc322 + 1]
 	ld h, a
-	ld a, [$c31c]
+	ld a, [wc31c]
 	ld [hli], a
 	ld a, l
-	ld [$c322], a
+	ld [wc322], a
 	ld a, h
-	ld [$c323], a
-	ld a, [$c320]
+	ld [wc322 + 1], a
+	ld a, [wc320]
 	ld l, a
-	ld a, [$c321]
+	ld a, [wc320 + 1]
 	ld h, a
 	dec hl
 	ld a, l
-	ld [$c320], a
+	ld [wc320], a
 	ld a, h
-	ld [$c321], a
+	ld [wc320 + 1], a
 	or l
 	jr nz, .asm_10f9
 	ld a, $3
-	ld [$c31e], a
+	ld [wc31e], a
 .asm_10f9
 	pop hl
 	pop af
 	reti
 
 Func_10fc:: ; 10fc
-	ld a, [$c31c]
-	ld [$c324], a
+	ld a, [wc31c]
+	ld [wc324], a
 	ld a, $4
-	ld [$c31e], a
+	ld [wc31e], a
 	pop hl
 	pop af
 	reti
 
 Func_110a:: ; 110a
 	ld a, $1
-	ld [$c31f], a
-	ld a, [$c31c]
-	ld [$c325], a
+	ld [wc31f], a
+	ld a, [wc31c]
+	ld [wc324 + 1], a
 	ld a, $0
-	ld [$c31e], a
+	ld [wc31e], a
 	pop hl
 	pop af
 	reti
 
 Func_111d:: ; 111d
-	ld a, [$c31c]
+	ld a, [wc31c]
 	cp $a2
 	jr nz, .asm_112d
 	ld a, $b2
 	ld [rSB], a
 	ld a, $6
-	ld [$c31e], a
+	ld [wc31e], a
 .asm_112d
 	pop hl
 	pop af
 	reti
 
 Func_1130:: ; 1130
-	ld a, [$c322]
+	ld a, [wc322]
 	ld l, a
-	ld a, [$c323]
+	ld a, [wc322 + 1]
 	ld h, a
 	ld a, [hli]
 	ld [rSB], a
 	ld a, l
-	ld [$c322], a
+	ld [wc322], a
 	ld a, h
-	ld [$c323], a
-	ld a, [$c320]
+	ld [wc322 + 1], a
+	ld a, [wc320]
 	ld l, a
-	ld a, [$c321]
+	ld a, [wc320 + 1]
 	ld h, a
 	dec hl
 	ld a, l
-	ld [$c320], a
+	ld [wc320], a
 	ld a, h
-	ld [$c321], a
+	ld [wc320 + 1], a
 	or l
 	jr nz, .asm_115c
 	ld a, $7
-	ld [$c31e], a
+	ld [wc31e], a
 .asm_115c
 	pop hl
 	pop af
 	reti
 
 Func_115f:: ; 115f
-	ld a, [$c324]
+	ld a, [wc324]
 	ld [rSB], a
 	ld a, $8
-	ld [$c31e], a
+	ld [wc31e], a
 	pop hl
 	pop af
 	reti
 
 Func_116c:: ; 116c
 	ld a, $1
-	ld [$c31f], a
-	ld a, [$c325]
+	ld [wc31f], a
+	ld a, [wc324 + 1]
 	ld [rSB], a
 	ld a, $0
-	ld [$c31e], a
+	ld [wc31e], a
 	pop hl
 	pop af
 	reti
@@ -2638,7 +2638,7 @@ Func_1b01:: ; 1b01
 	jp Func_4060
 
 Func_1b28:: ; 1b28 (0:1b28)
-	ld a, [$c39e]
+	ld a, [wc39e]
 	or a
 	ret z
 	push bc
@@ -2804,7 +2804,7 @@ Func_1c3b:: ; 1c3b
 	predef Func_7aa8e
 	jr c, .asm_1c53
 	xor a
-	ld [$c326], a
+	ld [wc326], a
 .asm_1c4a
 	pop bc
 	call ApplyVBlankCallbackEnableFlag
@@ -2814,7 +2814,7 @@ Func_1c3b:: ; 1c3b
 
 .asm_1c53
 	ld a, $80
-	ld [$c326], a
+	ld [wc326], a
 	jr .asm_1c4a
 
 Func_1c5a:: ; 1c5a
@@ -2960,12 +2960,12 @@ Func_1db9:: ; 1db9
 	call FillMemory
 	ld bc, $3c
 	ld e, $0
-	ld hl, $c347
+	ld hl, wc347
 	call FillMemory
 	ld hl, $0
-	write_hl_to $c391
+	write_hl_to wc391
 	ld hl, $0
-	write_hl_to $c393
+	write_hl_to wc393
 	ld bc, $5
 	ld e, $0
 	ld hl, wPlayerName
@@ -2980,7 +2980,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	call FarCall
 	call Func_1db9
 	xor a
-	ld [$c39a], a
+	ld [wc39a], a
 	xor a
 	ld [wVBlankTransferFlags], a
 	xor a
@@ -2999,7 +2999,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	ld hl, $c938
 	call FillMemory
 	ld a, $1
-	ld [$c39e], a
+	ld [wc39e], a
 Func_1ea8:: ; 1ea8 (0:1ea8)
 	ld a, [wc01c]
 	cp $11
@@ -3055,7 +3055,7 @@ Func_1f25:: ; 1f25 (0:1f25)
 	ld a, $1
 Func_1f27:: ; 1f27 (0:1f27)
 	ld a, $ff
-	ld [$c39b], a
+	ld [wc39b], a
 	call Func_144fd
 	ret
 
@@ -4548,7 +4548,7 @@ Func_2887:: ; 2887 (0:2887)
 	ld h, a
 	call Func_21f8
 	ld a, $2
-	ld [$c39a], a
+	ld [wc39a], a
 	ld hl, sp+$4
 	ld l, [hl]
 	push hl
@@ -4676,7 +4676,7 @@ Func_29a6:: ; 29a6 (0:29a6)
 Func_29cb:: ; 29cb (0:29cb)
 	push de
 	ld a, $2
-	ld [$c39a], a
+	ld [wc39a], a
 	set_farcall_addrs_hli Func_c7109
 	pop de
 	push de
@@ -4758,15 +4758,15 @@ Func_2a49:: ; 2a49 (0:2a49)
 	push hl
 	ld hl, $1
 	push hl
-	ld hl, $c391
+	ld hl, wc391
 	call AddLongs
 	call PutLongFromHLOnStack
 	call CompareStackLongs_Signed
 	jp nc, Func_2a78
 	ld hl, $5ba0
-	write_hl_to $c391
+	write_hl_to wc391
 	ld hl, $676
-	write_hl_to $c393
+	write_hl_to wc393
 Func_2a78:: ; 2a78 (0:2a78)
 	ret
 
@@ -6248,7 +6248,7 @@ FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	hlcoord 0, 0, wAttrMap
 	call FillMemory
 	ld a, $2
-	ld [$c39a], a
+	ld [wc39a], a
 .not_cgb
 	ld l, $12
 	push hl
@@ -6324,7 +6324,7 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_3bc0
-	ld a, [$c39a]
+	ld a, [wc39a]
 	or a
 	jp z, Func_3bc0
 	ld a, [rVBK]
@@ -6373,9 +6373,9 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
-	ld a, [$c39a]
+	ld a, [wc39a]
 	dec a
-	ld [$c39a], a
+	ld [wc39a], a
 Func_3bc0:: ; 3bc0 (0:3bc0)
 	pop bc
 	pop bc
@@ -6440,7 +6440,7 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, .skip_vbank1
-	ld a, [$c39a]
+	ld a, [wc39a]
 	or a
 	jp z, .skip_vbank1
 	ld a, [rVBK]
@@ -6489,9 +6489,9 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
-	ld a, [$c39a]
+	ld a, [wc39a]
 	dec a
-	ld [$c39a], a
+	ld [wc39a], a
 .skip_vbank1
 	ld a, [$c2cd]
 	or a
