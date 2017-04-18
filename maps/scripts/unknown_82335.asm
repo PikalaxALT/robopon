@@ -9,7 +9,7 @@ Func_82335:
 	or a
 	jp nz, Func_8235d
 	xor a
-	ld [$c793], a
+	ld [wc793], a
 	startbattle Data_8235e, Data_8230c
 	or a
 	jp nz, Func_82358
@@ -17,7 +17,7 @@ Func_82335:
 
 Func_82358: ; 82358 (20:6358)
 	ld a, $1
-	ld [$c793], a
+	ld [wc793], a
 Func_8235d: ; 8235d (20:635d)
 	ret
 

@@ -364,14 +364,14 @@ Func_5e72d: ; 5e72d (17:672d)
 	ld [hl], a
 	callba_hli Func_5575d
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	set_farcall_addrs_hli Func_1445e
 	ld c, BANK(Data_54384)
 	ld de, Data_54384
 	ld hl, Data_54365
 	call FarCall
 	ld a, $1
-	ld [$c2fa], a
+	ld [wc2fa], a
 	pop bc
 	pop hl
 	push bc
@@ -884,7 +884,7 @@ Func_5ebab: ; 5ebab (17:6bab)
 	ld e, a
 	ld a, $1
 	call FarCall
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	cp $2
 	jp z, Func_5ebfe
 	callba_hli Func_d767

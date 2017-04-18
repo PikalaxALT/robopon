@@ -402,7 +402,7 @@ Func_1433d: ; 1433d (5:433d)
 	ld a, [wBackupMapGroup]
 	or a
 	jp nz, Func_14352
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	inc hl
@@ -416,7 +416,7 @@ Func_14359: ; 14359 (5:4359)
 	jp Func_14366
 
 Func_1435c: ; 1435c (5:435c)
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	write_hl_to_sp_plus $0f

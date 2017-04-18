@@ -19,7 +19,7 @@ StartBattle:: ; bbee (2:7bee)
 	callba_hli DoBattle
 	callba_hli Func_cced
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	ld a, $1
 	call Func_bf4a
 	push af

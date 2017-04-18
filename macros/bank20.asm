@@ -296,13 +296,13 @@ Func_802ef_\1:
 	ld hl, sp+$2
 	ld [hl], $1
 	pop hl
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_8030d_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $1
 	jp z, Func_8030d_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_80341_\1
 Func_8030d_\1: ; 8030d (20:430d)
@@ -338,13 +338,13 @@ Func_80347_\1:
 	ld hl, sp+$2
 	ld [hl], $1
 	pop hl
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_80364_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $1
 	jp z, Func_80364_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_80398_\1
 Func_80364_\1: ; 80364 (20:4364)
@@ -380,13 +380,13 @@ Func_8039e_\1:
 	ld hl, sp+$2
 	ld [hl], $1
 	pop hl
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_803bb_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $1
 	jp z, Func_803bb_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_803ef_\1
 Func_803bb_\1: ; 803bb (20:43bb)
@@ -422,13 +422,13 @@ Func_803f5_\1:
 	ld hl, sp+$2
 	ld [hl], $1
 	pop hl
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_80412_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $1
 	jp z, Func_80412_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_80446_\1
 Func_80412_\1: ; 80412 (20:4412)
@@ -1572,7 +1572,7 @@ Func_80bde_\1:
 	inc hl
 	inc hl
 	ld a, [hl]
-	ld [$c846], a
+	ld [wc846], a
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
@@ -1592,11 +1592,11 @@ Func_80bde_\1:
 	inc hl
 	inc hl
 	ld a, [hl]
-	ld [$c847], a
+	ld [wc847], a
 	ld a, $ff
-	ld [$c848], a
+	ld [wc848], a
 	ld a, $ff
-	ld [$c849], a
+	ld [wc849], a
 	ld a, [wPlayerFacing]
 	cp $3
 	jp z, Func_80c5a_\1
@@ -1606,39 +1606,39 @@ Func_80bde_\1:
 	jp z, Func_80c46_\1
 	or a
 	jp nz, Func_80c61_\1
-	ld a, [$c847]
+	ld a, [wc847]
 	dec a
-	ld [$c847], a
+	ld [wc847], a
 	jp Func_80c61_\1
 
 Func_80c46_\1: ; 80c46 (20:4c46)
-	ld a, [$c846]
+	ld a, [wc846]
 	inc a
-	ld [$c846], a
+	ld [wc846], a
 	jp Func_80c61_\1
 
 Func_80c50_\1: ; 80c50 (20:4c50)
-	ld a, [$c847]
+	ld a, [wc847]
 	inc a
-	ld [$c847], a
+	ld [wc847], a
 	jp Func_80c61_\1
 
 Func_80c5a_\1: ; 80c5a (20:4c5a)
-	ld a, [$c846]
+	ld a, [wc846]
 	dec a
-	ld [$c846], a
+	ld [wc846], a
 Func_80c61_\1: ; 80c61 (20:4c61)
 	set_farcall_addrs_hli CheckBackgroundCollision
 	ld c, $1
-	ld a, [$c847]
+	ld a, [wc847]
 	ld e, a
-	ld a, [$c846]
+	ld a, [wc846]
 	call FarCall
 	or a
 	jp nz, Func_80c91_\1
 	ld a, $33
 	call OverworldPlaySFX
-	ld bc, $c846
+	ld bc, wc846
 	ld e, BANK(Func_80bde_\1)
 	ld hl, sp+$1
 	ld a, [hl]
@@ -1699,10 +1699,10 @@ Func_80ce7_\1: ; 80ce7 (20:4ce7)
 
 Func_80d01_\1: ; 80d01 (20:4d01)
 	push af
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_80d11_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_80d22_\1
 Func_80d11_\1: ; 80d11 (20:4d11)
@@ -1715,10 +1715,10 @@ Func_80d22_\1: ; 80d22 (20:4d22)
 	ret
 
 Func_80d24_\1: ; 80d24 (20:4d24)
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_80d33_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_80d4c_\1
 Func_80d33_\1: ; 80d33 (20:4d33)
@@ -1813,10 +1813,10 @@ Func_80d9b_\1: ; 80d9b (20:4d9b)
 	ret
 
 ScriptedBattle_\1: ; 80dd3 (20:4dd3)
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_80de2_\1
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_80dfd_\1
 Func_80de2_\1: ; 80de2 (20:4de2)

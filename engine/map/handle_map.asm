@@ -9,7 +9,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld hl, sp+$e
 	ld [hl], $ff
 Func_90fe: ; 90fe (2:50fe)
-	ld a, [$c84a]
+	ld a, [wc84a]
 	cp $1
 	jp nz, Func_9413
 	ld hl, sp+$e
@@ -114,7 +114,7 @@ Func_91ba: ; 91ba (2:51ba)
 	ld e, a
 	ld a, $2
 	call CheckFacingObject
-	ld a, [$c84a]
+	ld a, [wc84a]
 	or a
 	jp nz, Func_91db
 	jp Func_9413
@@ -328,7 +328,7 @@ Func_9371: ; 9371 (2:5371)
 	ld [wc7ea], a
 	callba_hli Func_14675
 	pop de
-	ld a, [$c84a]
+	ld a, [wc84a]
 	or a
 	jp nz, Func_93ba
 	jp Func_9413
@@ -354,7 +354,7 @@ Func_93c0: ; 93c0 (2:53c0)
 	ld e, a
 	xor a
 	call CheckFacingObject
-	ld a, [$c84a]
+	ld a, [wc84a]
 	or a
 	jp nz, Func_93e7
 	jp Func_9413

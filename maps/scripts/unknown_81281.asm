@@ -45,19 +45,19 @@ Func_81281:
 	ld a, $1
 	ld [$c7e2], a
 	xor a
-	ld [$c791], a
+	ld [wc791], a
 	ld e, $6
 	ld hl, Data_810b4
 	call LoadMapObjects_20
 	ld a, $1
 	call Func_80cc6_20
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_812c9
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $2
 	jp z, Func_812c9
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_813ff
 Func_812c9: ; 812c9 (20:52c9)
@@ -147,10 +147,10 @@ Func_8137b: ; 8137b (20:537b)
 	ld e, $4
 	ld hl, Data_8122d
 	call Func_800fb_20
-	ld a, [$c790]
+	ld a, [wc790]
 	or a
 	jp z, Func_813b7
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $7
 	jp nc, Func_813b7
 	ld de, Data_8113b
@@ -164,10 +164,10 @@ Func_813ba: ; 813ba (20:53ba)
 	ld hl, Data_81211
 	call Func_800fb_20
 Func_813c2: ; 813c2 (20:53c2)
-	ld a, [$c790]
+	ld a, [wc790]
 	or a
 	jp z, Func_813ec
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $7
 	jp nc, Func_813ec
 	ld e, $1
@@ -215,10 +215,10 @@ Data_81421:
 	dr $81421, $81427
 
 Func_81427: ; 81427 (20:5427)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp c, Func_81449
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $a
 	jp nc, Func_81449
 	ld hl, Data_81409
@@ -229,10 +229,10 @@ Func_81427: ; 81427 (20:5427)
 	jp Func_81490
 
 Func_81449: ; 81449 (20:5449)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $a
 	jp c, Func_8146b
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $f
 	jp nc, Func_8146b
 	ld hl, Data_8140f
@@ -243,10 +243,10 @@ Func_81449: ; 81449 (20:5449)
 	jp Func_81490
 
 Func_8146b: ; 8146b (20:546b)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $f
 	jp c, Func_81490
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $15
 	jp nc, Func_81490
 	ld hl, Data_8141b
@@ -257,10 +257,10 @@ Func_8146b: ; 8146b (20:546b)
 	call Func_80d9b_20
 	call Func_80f02_20
 Func_81490: ; 81490 (20:5490)
-	ld a, [$c790]
+	ld a, [wc790]
 	or a
 	jp z, Func_814a8
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $7
 	jp nc, Func_814a8
 	ld hl, Data_81421

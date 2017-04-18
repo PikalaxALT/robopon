@@ -2956,7 +2956,7 @@ Func_1db9:: ; 1db9
 	call FillMemory
 	ld bc, $64
 	ld e, $0
-	ld hl, $c789
+	ld hl, wc789
 	call FillMemory
 	ld bc, $3c
 	ld e, $0

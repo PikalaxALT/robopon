@@ -39,7 +39,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	xor a
 	ld [wLastStepSucceeded], a
 .asm_9487
-	ld a, [$c84a]
+	ld a, [wc84a]
 	or a
 	jr nz, .asm_94ae
 	push bc
@@ -154,7 +154,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 .asm_9536
 	ld a, $1
 .asm_9538
-	ld [$c84b], a
+	ld [wc84b], a
 	ld a, [wSCX]
 	srl a
 	srl a
@@ -634,12 +634,12 @@ Func_9844: ; 9844 (2:5844)
 	sub e
 	ld [wSCY], a
 	ld [wSCY2], a
-	ld a, [$c84b]
+	ld a, [wc84b]
 	cp $1
 	jr nz, .asm_98ee
-	ld a, [$c84d]
+	ld a, [wc84d]
 	inc a
-	ld [$c84d], a
+	ld [wc84d], a
 	jr .asm_98ee
 
 .asm_9894
@@ -649,12 +649,12 @@ Func_9844: ; 9844 (2:5844)
 	add e
 	ld [wSCX], a
 	ld [wSCX2], a
-	ld a, [$c84b]
+	ld a, [wc84b]
 	cp $1
 	jr nz, .asm_98ee
-	ld a, [$c84c]
+	ld a, [wc84c]
 	dec a
-	ld [$c84c], a
+	ld [wc84c], a
 	jr .asm_98ee
 
 .asm_98b2
@@ -664,12 +664,12 @@ Func_9844: ; 9844 (2:5844)
 	add e
 	ld [wSCY], a
 	ld [wSCY2], a
-	ld a, [$c84b]
+	ld a, [wc84b]
 	cp $1
 	jr nz, .asm_98ee
-	ld a, [$c84d]
+	ld a, [wc84d]
 	dec a
-	ld [$c84d], a
+	ld [wc84d], a
 	jr .asm_98ee
 
 .asm_98d0
@@ -679,12 +679,12 @@ Func_9844: ; 9844 (2:5844)
 	sub e
 	ld [wSCX], a
 	ld [wSCX2], a
-	ld a, [$c84b]
+	ld a, [wc84b]
 	cp $1
 	jr nz, .asm_98ee
-	ld a, [$c84c]
+	ld a, [wc84c]
 	inc a
-	ld [$c84c], a
+	ld [wc84c], a
 	jr .asm_98ee
 
 .asm_98ee

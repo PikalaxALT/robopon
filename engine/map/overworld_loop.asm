@@ -41,14 +41,14 @@ OverworldLoop: ; 81cf (2:41cf)
 	dec c
 	jp nz, .not_new_game
 	call Func_1db9
-	ld bc, $c7b1 - $c789
+	ld bc, wc7b1 - wc789
 .loop
 	ld l, c
 	ld h, b
-	ld de, $c7bd - $c789
+	ld de, wc7bd - wc789
 	call CompareHLtoDE
 	jp nc, .new_game
-	ld hl, $c789
+	ld hl, wc789
 	add hl, bc
 	ld [hl], $ff
 	inc bc
@@ -110,14 +110,14 @@ OverworldLoop: ; 81cf (2:41cf)
 	call FarCall
 	ld a, $1
 	ld [$c7e2], a
-	ld bc, $c7b1 - $c789
+	ld bc, wc7b1 - wc789
 .loop2
 	ld l, c
 	ld h, b
-	ld de, $c7bd - $c789
+	ld de, wc7bd - wc789
 	call CompareHLtoDE
 	jp nc, .okay2
-	ld hl, $c789
+	ld hl, wc789
 	add hl, bc
 	ld [hl], $ff
 	inc bc
@@ -204,12 +204,12 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld c, l
 	ld b, h
 .do_trigger
-	ld de, wSpawnX - $c789
+	ld de, wSpawnX - wc789
 .loop4
-	ld hl, wMapNumber - $c789
+	ld hl, wMapNumber - wc789
 	call CompareHLtoDE
 	jp c, .okay3
-	ld hl, $c789
+	ld hl, wc789
 	add hl, de
 	ld a, [bc]
 	inc bc
@@ -233,8 +233,8 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, [wMapGroup]
 	call FarCall
 	xor a
-	ld [$c798], a
-	ld a, [$c84a]
+	ld [wc798], a
+	ld a, [wc84a]
 	cp $1
 	jp nz, .skip_HandleMap
 	call HandleMap

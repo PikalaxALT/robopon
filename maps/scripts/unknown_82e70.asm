@@ -44,13 +44,13 @@ Data_82ebc: ; 82ebc
 	dr $82ebc, $82ec2
 
 Func_82ec2: ; 82ec2 (20:6ec2)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $6
 	jp nc, Func_82ed0
 	ld hl, Data_82eb6
 	call Func_80d9b_20
 Func_82ed0: ; 82ed0 (20:6ed0)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_82ede
 	ld hl, Data_82ebc

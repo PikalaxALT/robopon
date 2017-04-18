@@ -16,7 +16,7 @@ Func_82b03:
 	ld e, $3
 	ld hl, Data_82ad9
 	call Func_800fb_20
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $a
 	jp nc, Func_82b39
 	ld e, $0
@@ -28,7 +28,7 @@ Func_82b03:
 	jp Func_82b48
 
 Func_82b39: ; 82b39 (20:6b39)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $f
 	jp nc, Func_82b48
 	ld e, $0
@@ -83,13 +83,13 @@ Data_82b9b: ; 82b9b
 	dr $82b9b, $82ba1
 
 Func_82ba1: ; 82ba1 (20:6ba1)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $3
 	jp nc, Func_82baf
 	ld hl, Data_82b95
 	call Func_80d9b_20
 Func_82baf: ; 82baf (20:6baf)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_82bbd
 	ld hl, Data_82b9b

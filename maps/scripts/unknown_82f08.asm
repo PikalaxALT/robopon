@@ -30,13 +30,13 @@ Data_82f3b: ; 82f3b
 	dr $82f3b, $82f41
 
 Func_82f41:
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $7
 	jp nc, Func_82f4f
 	ld hl, Data_82f35
 	call Func_80d9b_20
 Func_82f4f: ; 82f4f (20:6f4f)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_82f5d
 	ld hl, Data_82f3b

@@ -66,13 +66,13 @@ Data_83246: ; 83246
 	dr $83246, $8324c
 
 Func_8324c: ; 8324c (20:724c)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $a
 	jp nc, Func_8325a
 	ld hl, Data_83240
 	call Func_80d9b_20
 Func_8325a: ; 8325a (20:725a)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83268
 	ld hl, Data_83246
@@ -98,7 +98,7 @@ Func_8326c:
 	checkevent $108
 	or a
 	jp nz, Func_832cb
-	ld a, [$c79c]
+	ld a, [wc79c]
 	cp $1
 	jp c, Func_832cb
 	checkevent $114
@@ -123,7 +123,7 @@ Func_832d4: ; 832d4 (20:72d4)
 	checkevent $108
 	or a
 	jp nz, Func_83318
-	ld a, [$c79c]
+	ld a, [wc79c]
 	cp $1
 	jp c, Func_83318
 	checkevent $114
@@ -174,13 +174,13 @@ Data_83373: ; 83373
 	dr $83373, $83379
 
 Func_83379:
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $b
 	jp nc, Func_83387
 	ld hl, Data_8336d
 	call Func_80d9b_20
 Func_83387: ; 83387 (20:7387)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83395
 	ld hl, Data_83373
@@ -214,13 +214,13 @@ Data_833e5: ; 833e5
 	dr $833e5, $833eb
 
 Func_833eb:
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $c
 	jp nc, Func_833f9
 	ld hl, Data_833df
 	call Func_80d9b_20
 Func_833f9: ; 833f9 (20:73f9)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83407
 	ld hl, Data_833e5
@@ -260,13 +260,13 @@ Data_83464: ; 83464
 	dr $83464, $8346a
 
 Func_8346a:
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $d
 	jp nc, Func_83478
 	ld hl, Data_8345e
 	call Func_80d9b_20
 Func_83478: ; 83478 (20:7478)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83486
 	ld hl, Data_83464
@@ -306,13 +306,13 @@ Data_834f0: ; 834f0
 	dr $834f0, $834f6
 
 Func_834f6: ; 834f6 (20:74f6)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $e
 	jp nc, Func_83504
 	ld hl, Data_834ea
 	call Func_80d9b_20
 Func_83504: ; 83504 (20:7504)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83512
 	ld hl, Data_834f0
@@ -346,13 +346,13 @@ Data_83562: ; 83562
 	dr $83562, $83568
 
 Func_83568:
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $f
 	jp nc, Func_83576
 	ld hl, Data_8355c
 	call Func_80d9b_20
 Func_83576: ; 83576 (20:7576)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83584
 	ld hl, Data_83562
@@ -392,13 +392,13 @@ Data_835e1: ; 835e1
 	dr $835e1, $835e7
 
 Func_835e7: ; 835e7 (20:75e7)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $10
 	jp nc, Func_835f5
 	ld hl, Data_835db
 	call Func_80d9b_20
 Func_835f5: ; 835f5 (20:75f5)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83603
 	ld hl, Data_835e1
@@ -438,13 +438,13 @@ Data_83665: ; 83665
 	dr $83665, $8366b
 
 Func_8366b:
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $11
 	jp nc, Func_83679
 	ld hl, Data_8365f
 	call Func_80d9b_20
 Func_83679: ; 83679 (20:7679)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83687
 	ld hl, Data_83665
@@ -484,13 +484,13 @@ Data_836e4: ; 836e4
 	dr $836e4, $836ea
 
 Func_836ea: ; 836ea (20:76ea)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $12
 	jp nc, Func_836f8
 	ld hl, Data_836de
 	call Func_80d9b_20
 Func_836f8: ; 836f8 (20:76f8)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83706
 	ld hl, Data_836e4
@@ -530,13 +530,13 @@ Data_83763: ; 83763
 	dr $83763, $83769
 
 Func_83769: ; 83769 (20:7769)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $13
 	jp nc, Func_83777
 	ld hl, Data_8375d
 	call Func_80d9b_20
 Func_83777: ; 83777 (20:7777)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83785
 	ld hl, Data_83763
@@ -570,13 +570,13 @@ Data_837d5: ; 837d5
 	dr $837d5, $837db
 
 Func_837db:
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $14
 	jp nc, Func_837e9
 	ld hl, Data_837cf
 	call Func_80d9b_20
 Func_837e9: ; 837e9 (20:77e9)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_837f7
 	ld hl, Data_837d5
@@ -616,13 +616,13 @@ Data_83849: ; 83849
 	dr $83849, $8384f
 
 Func_8384f:
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $15
 	jp nc, Func_8385d
 	ld hl, Data_83843
 	call Func_80d9b_20
 Func_8385d: ; 8385d (20:785d)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_8386b
 	ld hl, Data_83849
@@ -657,8 +657,8 @@ Func_838a2:
 	call Func_800fb_20
 	playmusic SONG_SHOP
 	call Func_83e56
-	ld [$c7a4], a
-	ld a, [$c7a4]
+	ld [wc7a4], a
+	ld a, [wc7a4]
 	cp $1
 	jp nz, Func_838e0
 	ld e, $0
@@ -674,7 +674,7 @@ Data_838ea: ; 838ea
 	dr $838ea, $838f0
 
 Func_838f0: ; 838f0 (20:78f0)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83901
 	ld hl, Data_838ea
@@ -724,25 +724,25 @@ Data_83a1f:
 	jp Func_83e48
 
 Func_83a5e: ; 83a5e (20:7a5e)
-	ld a, [$c79d]
+	ld a, [wc79d]
 	cp $1
 	jp nz, Func_83b71
-	ld a, [$c7a4]
+	ld a, [wc7a4]
 	cp $ff
 	jp nz, Func_83a7b
 	writenpctext TreeBitstreamText_47e30
 	xor a
-	ld [$c79d], a
+	ld [wc79d], a
 	jp Func_83b6e
 
 Func_83a7b: ; 83a7b (20:7a7b)
 	writenpctext TreeBitstreamText_45e29
-	ld a, [$c78c]
+	ld a, [wc78c]
 	inc a
-	ld [$c78c], a
+	ld [wc78c], a
 	xor a
-	ld [$c79d], a
-	ld a, [$c78c]
+	ld [wc79d], a
+	ld a, [wc78c]
 	cp $2
 	jp z, Func_83b53
 	cp $3
@@ -828,7 +828,7 @@ Func_83b6e: ; 83b6e (20:7b6e)
 	jp Func_83e48
 
 Func_83b71: ; 83b71 (20:7b71)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $14
 	jp nz, Func_83b96
 	checkevent $e7
@@ -856,7 +856,7 @@ Func_83b96: ; 83b96 (20:7b96)
 	call PutLongFromStackToHL
 	ld hl, sp+$7
 	push hl
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -893,7 +893,7 @@ Func_83b96: ; 83b96 (20:7b96)
 	writenpctext TreeBitstreamText_45d1c
 	ld hl, sp+$b
 	push hl
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -914,7 +914,7 @@ Func_83c1e: ; 83c1e (20:7c1e)
 	writenpctext TreeBitstreamText_45d3d
 	ld hl, sp+$b
 	push hl
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -939,7 +939,7 @@ Func_83c48: ; 83c48 (20:7c48)
 	writenpctext TreeBitstreamText_45d61
 	ld hl, sp+$b
 	push hl
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -1084,7 +1084,7 @@ Func_83d57: ; 83d57 (20:7d57)
 	call FarCall
 	call WriteHLToSPPlus4
 	pop bc
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	ld de, Data_839ff
@@ -1131,22 +1131,22 @@ Func_83dd5: ; 83dd5 (20:7dd5)
 	ld hl, sp+$6
 	ld [hl], e
 	ld a, $1
-	ld [$c79d], a
+	ld [wc79d], a
 	ld hl, sp+$2
 	ld a, [hl]
-	ld [$c79e], a
+	ld [wc79e], a
 	ld hl, sp+$3
 	ld a, [hl]
-	ld [$c79f], a
+	ld [wc79f], a
 	ld hl, sp+$4
 	ld a, [hl]
-	ld [$c7a0], a
+	ld [wc7a0], a
 	ld hl, sp+$5
 	ld a, [hl]
-	ld [$c7a1], a
+	ld [wc7a1], a
 	ld hl, sp+$6
 	ld a, [hl]
-	ld [$c7a2], a
+	ld [wc7a2], a
 	set_farcall_addrs_hli Func_93941
 	ld a, $4
 	call FarCall
@@ -1175,7 +1175,7 @@ Func_83e56: ; 83e56 (20:7e56)
 	push bc
 	push bc
 	push bc
-	ld a, [$c79d]
+	ld a, [wc79d]
 	cp $1
 	jp nz, Func_83f33
 	ld hl, sp+$6
@@ -1200,22 +1200,22 @@ Func_83e56: ; 83e56 (20:7e56)
 	ld a, [hl]
 	call FarCall
 	push hl
-	ld hl, $c7a1
+	ld hl, wc7a1
 	ld l, [hl]
 	ld h, $0
 	ld de, $3c
 	call MultiplyHLbyDE
-	ld a, [$c7a2]
+	ld a, [wc7a2]
 	ld e, a
 	ld d, $0
 	add hl, de
 	call WriteHLToSPPlus6
 	set_farcall_addrs_hli Func_93883
-	ld a, [$c7a0]
+	ld a, [wc7a0]
 	ld c, a
-	ld a, [$c79f]
+	ld a, [wc79f]
 	ld e, a
-	ld a, [$c79e]
+	ld a, [wc79e]
 	call FarCall
 	reg16swap de, hl
 	ld c, $0
@@ -1960,10 +1960,10 @@ Func_85832:
 	cp $ff
 	jp z, Func_858c9
 Func_8585f: ; 8585f (21:585f)
-	ld a, [$c790]
+	ld a, [wc790]
 	or a
 	jp z, Func_858c0
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $6
 	jp nc, Func_858c0
 	writetext_yesorno TreeBitstreamText_46f30
@@ -2127,7 +2127,7 @@ Func_85aaf: ; 85aaf (21:5aaf)
 	call Func_800fb_21
 	playmusic SONG_11
 Func_85abc: ; 85abc (21:5abc)
-	ld a, [$c797]
+	ld a, [wc797]
 	cp $7
 	jp c, Func_85afc
 	checkevent $38
@@ -2194,7 +2194,7 @@ Func_85b52: ; 85b52 (21:5b52)
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_21
-	ld hl, $c797
+	ld hl, wc797
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -2239,9 +2239,9 @@ Func_85bd9: ; 85bd9 (21:5bd9)
 	ld e, $1
 	ld hl, $64
 	call EventFlagAction_21
-	ld a, [$c797]
+	ld a, [wc797]
 	inc a
-	ld [$c797], a
+	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
 	script_sleep $3c
@@ -2353,7 +2353,7 @@ Func_85d7d: ; 85d7d (21:5d7d)
 	checkevent $14
 	or a
 	jp nz, Func_85d97
-	ld a, [$c797]
+	ld a, [wc797]
 	cp $7
 	jp nz, Func_85d97
 	ld de, Data_85c7e
@@ -2382,7 +2382,7 @@ Func_85dcd:
 	checkevent $c0
 	cp $1
 	jp nz, Func_85e5a
-	ld a, [$c797]
+	ld a, [wc797]
 	cp $6
 	jp c, Func_85e51
 	checkevent $6a
@@ -2401,9 +2401,9 @@ Func_85e16: ; 85e16 (21:5e16)
 	ld e, $1
 	ld hl, $6a
 	call EventFlagAction_21
-	ld a, [$c797]
+	ld a, [wc797]
 	inc a
-	ld [$c797], a
+	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
 	script_sleep $3c
@@ -2484,7 +2484,7 @@ Func_85fa8: ; 85fa8 (21:5fa8)
 	ld hl, $38
 	call EventFlagAction_21
 Func_85fb0: ; 85fb0 (21:5fb0)
-	ld a, [$c798]
+	ld a, [wc798]
 	or a
 	jp nz, Func_85fd8
 	ld a, [wMapX]
@@ -2614,9 +2614,9 @@ Func_86102: ; 86102 (21:6102)
 	ld e, $1
 	ld hl, $66
 	call EventFlagAction_21
-	ld a, [$c797]
+	ld a, [wc797]
 	inc a
-	ld [$c797], a
+	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
 	script_sleep $3c
@@ -2672,9 +2672,9 @@ Func_861bc: ; 861bc (21:61bc)
 	ld e, $1
 	ld hl, $68
 	call EventFlagAction_21
-	ld a, [$c797]
+	ld a, [wc797]
 	inc a
-	ld [$c797], a
+	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
 	script_sleep $3c
@@ -2762,7 +2762,7 @@ Func_86437: ; 86437 (21:6437)
 	ld hl, $38
 	call EventFlagAction_21
 Func_8643f: ; 8643f (21:643f)
-	ld a, [$c798]
+	ld a, [wc798]
 	or a
 	jp nz, Func_86467
 	ld a, [wMapX]
@@ -2981,9 +2981,9 @@ Func_86666: ; 86666 (21:6666)
 	ld e, $1
 	ld hl, $65
 	call EventFlagAction_21
-	ld a, [$c797]
+	ld a, [wc797]
 	inc a
-	ld [$c797], a
+	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
 	script_sleep $3c
@@ -3039,9 +3039,9 @@ Func_86720: ; 86720 (21:6720)
 	ld e, $1
 	ld hl, $67
 	call EventFlagAction_21
-	ld a, [$c797]
+	ld a, [wc797]
 	inc a
-	ld [$c797], a
+	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
 	script_sleep $3c
@@ -3097,9 +3097,9 @@ Func_867da: ; 867da (21:67da)
 	ld e, $1
 	ld hl, $69
 	call EventFlagAction_21
-	ld a, [$c797]
+	ld a, [wc797]
 	inc a
-	ld [$c797], a
+	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
 	script_sleep $3c
@@ -3345,7 +3345,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld hl, $7
 	call EventFlagAction_21
 	ld a, $8
-	ld [$c790], a
+	ld [wc790], a
 	ret
 
 Data_86ac4:
@@ -3508,7 +3508,7 @@ Data_86d84: ; 86d84
 
 Func_86ffa:
 	ld a, $2
-	ld [$c789], a
+	ld [wc789], a
 	ld a, $4
 	ld [$c7e2], a
 	ld a, $4
@@ -3534,10 +3534,10 @@ Func_8703a: ; 8703a (21:703a)
 	ld e, $a
 	ld hl, Data_86cf8
 	call Func_800fb_21
-	ld a, [$c790]
+	ld a, [wc790]
 	or a
 	jp z, Func_8706e
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $7
 	jp nc, Func_8706e
 	ld de, Data_86cf0
@@ -3594,10 +3594,10 @@ Func_87105: ; 87105 (21:7105)
 Func_8711f: ; 8711f (21:711f)
 	call Func_80f02_21
 Func_87122: ; 87122 (21:7122)
-	ld a, [$c790]
+	ld a, [wc790]
 	or a
 	jp z, Func_87140
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $7
 	jp nc, Func_87140
 	ld hl, Data_8707c
@@ -3913,7 +3913,7 @@ Func_875aa: ; 875aa (21:75aa)
 	checkevent $109
 	or a
 	jp nz, Func_875f0
-	ld a, [$c79c]
+	ld a, [wc79c]
 	cp $1
 	jp c, Func_875f0
 	checkevent $114
@@ -3942,7 +3942,7 @@ Func_87602: ; 87602 (21:7602)
 	checkevent $109
 	or a
 	jp nz, Func_87636
-	ld a, [$c79c]
+	ld a, [wc79c]
 	cp $1
 	jp c, Func_87636
 	writetext TreeBitstreamText_45fec
@@ -4347,10 +4347,10 @@ Func_87ac3:
 	ld a, e
 	or a
 	jp nz, Func_87b13
-	ld a, [$c790]
+	ld a, [wc790]
 	or a
 	jp z, Func_87ae0
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $7
 	jp nc, Func_87ae0
 	writetext TreeBitstreamText_47041
@@ -4393,10 +4393,10 @@ Func_87b23: ; 87b23 (21:7b23)
 	jp Func_87b86
 
 Func_87b37: ; 87b37 (21:7b37)
-	ld a, [$c790]
+	ld a, [wc790]
 	or a
 	jp z, Func_87b4f
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $7
 	jp nc, Func_87b4f
 	writetext TreeBitstreamText_47037

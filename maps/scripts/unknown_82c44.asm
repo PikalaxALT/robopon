@@ -22,14 +22,14 @@ Func_82c44:
 	ld e, $2
 	ld hl, Data_82be2
 	call Func_800fb_20
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $a
 	jp c, Func_82c72
 	ld e, $3
 	ld hl, Data_82bfe
 	call Func_800fb_20
 Func_82c72: ; 82c72 (20:6c72)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $f
 	jp c, Func_82c82
 	ld e, $2
@@ -131,13 +131,13 @@ Data_82d1c: ; 82d1c
 	dr $82d1c, $82d22
 
 Func_82d22: ; 82d22 (20:6d22)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $4
 	jp nc, Func_82d30
 	ld hl, Data_82d16
 	call Func_80d9b_20
 Func_82d30: ; 82d30 (20:6d30)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_82d3e
 	ld hl, Data_82d1c

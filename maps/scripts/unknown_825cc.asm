@@ -11,14 +11,14 @@ Func_825cc:
 	ld e, $1
 	ld hl, Data_82593
 	call LoadMapObjects_20
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_825eb
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $1
 	jp z, Func_825eb
 .asm_825e3
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $2
 	jp nz, Func_825f9
 Func_825eb: ; 825eb (20:65eb)
@@ -35,7 +35,7 @@ Func_825f9: ; 825f9 (20:65f9)
 	checkevent $3
 	cp $1
 	jp nz, Func_8261f
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $4
 	jp z, Func_8261f
 	ld e, $1

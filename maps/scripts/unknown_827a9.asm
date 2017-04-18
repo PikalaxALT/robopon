@@ -22,13 +22,13 @@ Func_827a9:
 	ld e, $1
 	ld hl, Data_8275e
 	call Func_80ce7_20
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_827de
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $2
 	jp z, Func_827de
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_8283f
 Func_827de: ; 827de (20:67de)
@@ -93,13 +93,13 @@ Data_82860: ; 82860
 	dr $82860, $82866
 
 Func_82866: ; 82866 (20:6866)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $2
 	jp nc, Func_82874
 	ld hl, Data_8285a
 	call Func_80d9b_20
 Func_82874: ; 82874 (20:6874)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_82882
 	ld hl, Data_82860
@@ -239,17 +239,17 @@ Func_8299b:
 	jp nz, Func_829d0
 	ld a, $5
 	call Func_8044b_20
-	ld a, [$c78c]
+	ld a, [wc78c]
 	inc a
-	ld [$c78c], a
-	ld a, [$c78c]
+	ld [wc78c], a
+	ld a, [wc78c]
 	cp $15
 	jp nz, Func_829b9
 	ld a, $1
-	ld [$c78c], a
+	ld [wc78c], a
 Func_829b9: ; 829b9 (20:69b9)
 	set_farcall_addrs_hli Func_bd6fa
-	ld a, [$c78c]
+	ld a, [wc78c]
 	ld e, a
 	ld d, $0
 	ld hl, Data_829d1
@@ -301,28 +301,28 @@ Func_829fd:
 	ld e, $1
 	ld a, $10
 	call Func_80d4d_20
-	ld a, [$c79c]
+	ld a, [wc79c]
 	or a
 	jp nz, Func_82a43
 	ld a, $2
-	ld [$c79c], a
+	ld [wc79c], a
 	jp Func_82a59
 
 Func_82a43: ; 82a43 (20:6a43)
-	ld a, [$c79c]
+	ld a, [wc79c]
 	or a
 	jp nz, Func_82a52
 	ld a, $2
-	ld [$c79c], a
+	ld [wc79c], a
 	jp Func_82a59
 
 Func_82a52: ; 82a52 (20:6a52)
-	ld a, [$c79c]
+	ld a, [wc79c]
 	inc a
-	ld [$c79c], a
+	ld [wc79c], a
 Func_82a59: ; 82a59 (20:6a59)
 	writetext TreeBitstreamText_45f3d
-	ld a, [$c79c]
+	ld a, [wc79c]
 	cp $9
 	jp c, Func_82a8f
 	writetext TreeBitstreamText_45f56
@@ -346,11 +346,11 @@ Func_82a98: ; 82a98 (20:6a98)
 
 Func_82a9b: ; 82a9b (20:6a9b)
 	writetext TreeBitstreamText_45ee8
-	ld a, [$c79c]
+	ld a, [wc79c]
 	or a
 	jp nz, Func_82aad
 	ld a, $1
-	ld [$c79c], a
+	ld [wc79c], a
 Func_82aad: ; 82aad (20:6aad)
 	jp Func_82ab6
 

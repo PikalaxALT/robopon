@@ -4,385 +4,385 @@ SECTION "WRAM0", WRAM0
 wTimer:: ds $3 ; c000
 wSerial:: ds $3 ; c003
 wVBlank:: ds $16 ; c006
-wc01c:: db ; c01c
+	char wc01c ; c01c
 
 SECTION "Audio RAM Backup", WRAM0 [$c020]
-wBackupSongIndex:: db ; c020
-wBackupAudioROMBank:: db ; c021
-wBackupGlobalDuty:: db ; c022
+	char wBackupSongIndex ; c020
+	char wBackupAudioROMBank ; c021
+	char wBackupGlobalDuty ; c022
 
 wBackupChannelNR1s::
-wBackupChannel1NR1:: db ; c023
-wBackupChannel2NR1:: db ; c024
-wBackupChannel3NR1:: db ; c025
-wBackupChannel4NR1:: db ; c026
+	char wBackupChannel1NR1 ; c023
+	char wBackupChannel2NR1 ; c024
+	char wBackupChannel3NR1 ; c025
+	char wBackupChannel4NR1 ; c026
 
-wBackupc10a:: db ; c027
-wBackupc10b:: db ; c028
+	char wBackupc10a ; c027
+	char wBackupc10b ; c028
 
 wBackupChannelActiveFlags::
-wBackupChannel1ActiveFlag:: db ; c029
-wBackupChannel2ActiveFlag:: db ; c02a
-wBackupChannel3ActiveFlag:: db ; c02b
-wBackupChannel4ActiveFlag:: db ; c02c
+	char wBackupChannel1ActiveFlag ; c029
+	char wBackupChannel2ActiveFlag ; c02a
+	char wBackupChannel3ActiveFlag ; c02b
+	char wBackupChannel4ActiveFlag ; c02c
 
 wBackupChannelNoteStates::
-wBackupChannel1NoteState:: db ; c02d
-wBackupChannel2NoteState:: db ; c02e
-wBackupChannel3NoteState:: db ; c02f
-wBackupChannel4NoteState:: db ; c030
+	char wBackupChannel1NoteState ; c02d
+	char wBackupChannel2NoteState ; c02e
+	char wBackupChannel3NoteState ; c02f
+	char wBackupChannel4NoteState ; c030
 
 wBackupChannelPointers::
-wBackupChannel1Pointer:: dw ; c031
-wBackupChannel2Pointer:: dw ; c033
-wBackupChannel3Pointer:: dw ; c035
-wBackupChannel4Pointer:: dw ; c037
+	short wBackupChannel1Pointer ; c031
+	short wBackupChannel2Pointer ; c033
+	short wBackupChannel3Pointer ; c035
+	short wBackupChannel4Pointer ; c037
 
 wBackupChannelStartPointers::
-wBackupChannel1StartPointer:: dw ; c039
-wBackupChannel2StartPointer:: dw ; c03b
-wBackupChannel3StartPointer:: dw ; c03d
-wBackupChannel4StartPointer:: dw ; c03f
+	short wBackupChannel1StartPointer ; c039
+	short wBackupChannel2StartPointer ; c03b
+	short wBackupChannel3StartPointer ; c03d
+	short wBackupChannel4StartPointer ; c03f
 
-wBackupc12b:: ds $2 ; c041
+	short wBackupc12b ; c041
 
 wBackupChannelOctaves::
-wBackupChannel1Octave:: db ; c043
-wBackupChannel2Octave:: db ; c044
-wBackupChannel3Octave:: db ; c045
-wBackupChannel4Octave:: db ; c046
+	char wBackupChannel1Octave ; c043
+	char wBackupChannel2Octave ; c044
+	char wBackupChannel3Octave ; c045
+	char wBackupChannel4Octave ; c046
 
 wBackupChannelUnknownC133s::
-wBackupChannel1UnknownC133:: db ; c047
-wBackupChannel2UnknownC133:: db ; c048
-wBackupChannel3UnknownC133:: db ; c049
-wBackupChannel4UnknownC133:: db ; c04a
+	char wBackupChannel1UnknownC133 ; c047
+	char wBackupChannel2UnknownC133 ; c048
+	char wBackupChannel3UnknownC133 ; c049
+	char wBackupChannel4UnknownC133 ; c04a
 
 wBackupChannelNotesPlaying::
-wBackupChannel1NotePlaying:: db ; c04b
-wBackupChannel2NotePlaying:: db ; c04c
-wBackupChannel3NotePlaying:: db ; c04d
-wBackupChannel4NotePlaying:: db ; c04e
+	char wBackupChannel1NotePlaying ; c04b
+	char wBackupChannel2NotePlaying ; c04c
+	char wBackupChannel3NotePlaying ; c04d
+	char wBackupChannel4NotePlaying ; c04e
 
 wBackupChannelNoteDurations::
-wBackupChannel1NoteDuration:: db ; c04f
-wBackupChannel2NoteDuration:: db ; c050
-wBackupChannel3NoteDuration:: db ; c051
-wBackupChannel4NoteDuration:: db ; c052
+	char wBackupChannel1NoteDuration ; c04f
+	char wBackupChannel2NoteDuration ; c050
+	char wBackupChannel3NoteDuration ; c051
+	char wBackupChannel4NoteDuration ; c052
 
 wBackupChannelUnknownC13Fs::
-wBackupChannel1UnknownC13F:: db
-wBackupChannel2UnknownC13F:: db
-wBackupChannel3UnknownC13F:: db
-wBackupChannel4UnknownC13F:: db
+	char wBackupChannel1UnknownC13F
+	char wBackupChannel2UnknownC13F
+	char wBackupChannel3UnknownC13F
+	char wBackupChannel4UnknownC13F
 
 wBackupChannelUnknownC143s::
-wBackupChannel1UnknownC143:: db
-wBackupChannel2UnknownC143:: db
-wBackupChannel3UnknownC143:: db
-wBackupChannel4UnknownC143:: db
+	char wBackupChannel1UnknownC143
+	char wBackupChannel2UnknownC143
+	char wBackupChannel3UnknownC143
+	char wBackupChannel4UnknownC143
 
 wBackupChannelNR2s::
-wBackupChannel1NR2:: db
-wBackupChannel2NR2:: db
-wBackupChannel3NR2:: db
-wBackupChannel4NR2:: db
+	char wBackupChannel1NR2
+	char wBackupChannel2NR2
+	char wBackupChannel3NR2
+	char wBackupChannel4NR2
 
 wBackupChannelKeySignatures::
-wBackupChannel1KeySignature:: db
-wBackupChannel2KeySignature:: db
-wBackupChannel3KeySignature:: db
-wBackupChannel4KeySignature:: db
+	char wBackupChannel1KeySignature
+	char wBackupChannel2KeySignature
+	char wBackupChannel3KeySignature
+	char wBackupChannel4KeySignature
 
 wBackupChannelTemposs::
-wBackupChannel1Tempos:: db
-wBackupChannel2Tempos:: db
-wBackupChannel3Tempos:: db
-wBackupChannel4Tempos:: db
+	char wBackupChannel1Tempos
+	char wBackupChannel2Tempos
+	char wBackupChannel3Tempos
+	char wBackupChannel4Tempos
 
 wBackupChannelUnknownC157s::
-wBackupChannel1UnknownC157:: db
-wBackupChannel2UnknownC157:: db
-wBackupChannel3UnknownC157:: db
-wBackupChannel4UnknownC157:: db
+	char wBackupChannel1UnknownC157
+	char wBackupChannel2UnknownC157
+	char wBackupChannel3UnknownC157
+	char wBackupChannel4UnknownC157
 
 wBackupChannelUnknownC15Fs::
-wBackupChannel1UnknownC15F:: db
-wBackupChannel2UnknownC15F:: db
-wBackupChannel3UnknownC15F:: db
-wBackupChannel4UnknownC15F:: db
+	char wBackupChannel1UnknownC15F
+	char wBackupChannel2UnknownC15F
+	char wBackupChannel3UnknownC15F
+	char wBackupChannel4UnknownC15F
 
-wBackupNR12:: db
-wBackupNR22:: db
-wBackupNR32:: db
+	char wBackupNR12
+	char wBackupNR22
+	char wBackupNR32
 
 wBackupChannelFrequencyOffsets::
-wBackupChannel1FrequencyOffset:: db
-wBackupChannel2FrequencyOffset:: db
-wBackupChannel3FrequencyOffset:: db
+	char wBackupChannel1FrequencyOffset
+	char wBackupChannel2FrequencyOffset
+	char wBackupChannel3FrequencyOffset
 
-wBackupNoiseSamplePointer:: dw
-wBackupc16f:: db
+	short wBackupNoiseSamplePointer
+	char wBackupc16f
 
 wBackupChannelStackPointers::
-wBackupChannel1StackPointer:: dw
-wBackupChannel2StackPointer:: dw
-wBackupChannel3StackPointer:: dw
-wBackupChannel4StackPointer:: dw
+	short wBackupChannel1StackPointer
+	short wBackupChannel2StackPointer
+	short wBackupChannel3StackPointer
+	short wBackupChannel4StackPointer
 
-wBackupChannel1Stack:: ds $c
-wBackupChannel2Stack:: ds $c
-wBackupChannel3Stack:: ds $c
-wBackupChannel4Stack:: ds $c
+	array wBackupChannel1Stack, 6, 1, 2
+	array wBackupChannel2Stack, 6, 1, 2
+	array wBackupChannel3Stack, 6, 1, 2
+	array wBackupChannel4Stack, 6, 1, 2
 
 wBackupChannelUnknownC1ABs::
-wBackupChannel1UnknownC1AB:: db
-wBackupChannel2UnknownC1AB:: db
-wBackupChannel3UnknownC1AB:: db
-wBackupChannel4UnknownC1AB:: db
+	char wBackupChannel1UnknownC1AB
+	char wBackupChannel2UnknownC1AB
+	char wBackupChannel3UnknownC1AB
+	char wBackupChannel4UnknownC1AB
 
 wBackupChannelUnknownC1AFs::
-wBackupChannel1UnknownC1AF:: db
-wBackupChannel2UnknownC1AF:: db
-wBackupChannel3UnknownC1AF:: db
-wBackupChannel4UnknownC1AF:: db
+	char wBackupChannel1UnknownC1AF
+	char wBackupChannel2UnknownC1AF
+	char wBackupChannel3UnknownC1AF
+	char wBackupChannel4UnknownC1AF
 
 wBackupChannelUnknownC1B3s::
-wBackupChannel1UnknownC1B3:: db
-wBackupChannel2UnknownC1B3:: db
-wBackupChannel3UnknownC1B3:: db
-wBackupChannel4UnknownC1B3:: db
+	char wBackupChannel1UnknownC1B3
+	char wBackupChannel2UnknownC1B3
+	char wBackupChannel3UnknownC1B3
+	char wBackupChannel4UnknownC1B3
 
 wBackupChannelUnknownC1B7s::
-wBackupChannel1UnknownC1B7:: dw
-wBackupChannel2UnknownC1B7:: dw
-wBackupChannel3UnknownC1B7:: dw
-wBackupChannel4UnknownC1B7:: dw
+	short wBackupChannel1UnknownC1B7
+	short wBackupChannel2UnknownC1B7
+	short wBackupChannel3UnknownC1B7
+	short wBackupChannel4UnknownC1B7
 
 wBackupChannelLoopCounters::
-wBackupChannel1LoopCounter:: db
-wBackupChannel2LoopCounter:: db
-wBackupChannel3LoopCounter:: db
-wBackupChannel4LoopCounter:: db
+	char wBackupChannel1LoopCounter
+	char wBackupChannel2LoopCounter
+	char wBackupChannel3LoopCounter
+	char wBackupChannel4LoopCounter
 
 wBackupChannelLoopReturnPointers::
-wBackupChannel1LoopReturnPointer:: dw
-wBackupChannel2LoopReturnPointer:: dw
-wBackupChannel3LoopReturnPointer:: dw
-wBackupChannel4LoopReturnPointer:: dw
+	short wBackupChannel1LoopReturnPointer
+	short wBackupChannel2LoopReturnPointer
+	short wBackupChannel3LoopReturnPointer
+	short wBackupChannel4LoopReturnPointer
 
 wBackupChannelSFXPointers::
-wBackupChannel1SFXPointer:: dw
-wBackupChannel2SFXPointer:: dw
-wBackupChannel3SFXPointer:: dw
-wBackupChannel4SFXPointer:: dw
+	short wBackupChannel1SFXPointer
+	short wBackupChannel2SFXPointer
+	short wBackupChannel3SFXPointer
+	short wBackupChannel4SFXPointer
 
-wBackupSFXActive2:: db
-wBackupSFXChannelFlags2:: db
+	char wBackupSFXActive2
+	char wBackupSFXChannelFlags2
 
 SECTION "Audio RAM", WRAM0 [$c100]
-wSongIndex:: db ; c100
-wAudioROMBank:: db ; c101
-wSFXIndex:: db ; c102
-wSFXActive:: db ; c103
-wGlobalDuty:: db ; c104
-wSFXGlobalDuty:: db ; c105
+	char wSongIndex ; c100
+	char wAudioROMBank ; c101
+	char wSFXIndex ; c102
+	char wSFXActive ; c103
+	char wGlobalDuty ; c104
+	char wSFXGlobalDuty ; c105
 
 wChannelNR1s::
-wChannel1NR1:: db ; c106
-wChannel2NR1:: db ; c107
-wChannel3NR1:: db ; c108
-wChannel4NR1:: db ; c109
+	char wChannel1NR1 ; c106
+	char wChannel2NR1 ; c107
+	char wChannel3NR1 ; c108
+	char wChannel4NR1 ; c109
 
-wc10a:: db ; c10a
-wc10b:: db ; c10b
-wSFXChannelFlags:: db ; c10c
+	char wc10a ; c10a
+	char wc10b ; c10b
+	char wSFXChannelFlags ; c10c
 
 wChannelActiveFlags::
-wChannel1ActiveFlag:: db ; c10d
-wChannel2ActiveFlag:: db ; c10e
-wChannel3ActiveFlag:: db ; c10f
-wChannel4ActiveFlag:: db ; c110
+	char wChannel1ActiveFlag ; c10d
+	char wChannel2ActiveFlag ; c10e
+	char wChannel3ActiveFlag ; c10f
+	char wChannel4ActiveFlag ; c110
 
 wChannelNoteStates::
-wChannel1NoteState:: db ; c111
-wChannel2NoteState:: db ; c112
-wChannel3NoteState:: db ; c113
-wChannel4NoteState:: db ; c114
+	char wChannel1NoteState ; c111
+	char wChannel2NoteState ; c112
+	char wChannel3NoteState ; c113
+	char wChannel4NoteState ; c114
 
 wChannelPointers::
-wChannel1Pointer:: dw ; c115
-wChannel2Pointer:: dw ; c117
-wChannel3Pointer:: dw ; c119
-wChannel4Pointer:: dw ; c11b
+	short wChannel1Pointer ; c115
+	short wChannel2Pointer ; c117
+	short wChannel3Pointer ; c119
+	short wChannel4Pointer ; c11b
 
 wChannelStartPointers::
-wChannel1StartPointer:: dw ; c11d
-wChannel2StartPointer:: dw ; c11f
-wChannel3StartPointer:: dw ; c121
-wChannel4StartPointer:: dw ; c123
+	short wChannel1StartPointer ; c11d
+	short wChannel2StartPointer ; c11f
+	short wChannel3StartPointer ; c121
+	short wChannel4StartPointer ; c123
 
 wChannelFrequencies::
-wChannel1Frequency:: dw ; c125
-wChannel2Frequency:: dw ; c127
-wChannel3Frequency:: dw ; c129
+	short wChannel1Frequency ; c125
+	short wChannel2Frequency ; c127
+	short wChannel3Frequency ; c129
 
 wNoiseSampleHeader:: ds $4 ; c12b
 
 wChannelOctaves::
-wChannel1Octave:: db ; c12f
-wChannel2Octave:: db ; c130
-wChannel3Octave:: db ; c131
-wChannel4Octave:: db ; c132
+	char wChannel1Octave ; c12f
+	char wChannel2Octave ; c130
+	char wChannel3Octave ; c131
+	char wChannel4Octave ; c132
 
 wChannelUnknownC133s::
-wChannel1UnknownC133:: db ; c133
-wChannel2UnknownC133:: db ; c134
-wChannel3UnknownC133:: db ; c135
-wChannel4UnknownC133:: db ; c136
+	char wChannel1UnknownC133 ; c133
+	char wChannel2UnknownC133 ; c134
+	char wChannel3UnknownC133 ; c135
+	char wChannel4UnknownC133 ; c136
 
 wChannelNotesPlaying::
-wChannel1NotePlaying:: db ; c137
-wChannel2NotePlaying:: db ; c138
-wChannel3NotePlaying:: db ; c139
-wChannel4NotePlaying:: db ; c13a
+	char wChannel1NotePlaying ; c137
+	char wChannel2NotePlaying ; c138
+	char wChannel3NotePlaying ; c139
+	char wChannel4NotePlaying ; c13a
 
 wChannelNoteDurations::
-wChannel1NoteDuration:: db ; c13b
-wChannel2NoteDuration:: db ; c13c
-wChannel3NoteDuration:: db ; c13d
-wChannel4NoteDuration:: db ; c13e
+	char wChannel1NoteDuration ; c13b
+	char wChannel2NoteDuration ; c13c
+	char wChannel3NoteDuration ; c13d
+	char wChannel4NoteDuration ; c13e
 
 wChannelUnknownC13Fs::
-wChannel1UnknownC13F:: db ; c13f
-wChannel2UnknownC13F:: db ; c140
-wChannel3UnknownC13F:: db ; c141
-wChannel4UnknownC13F:: db ; c142
+	char wChannel1UnknownC13F ; c13f
+	char wChannel2UnknownC13F ; c140
+	char wChannel3UnknownC13F ; c141
+	char wChannel4UnknownC13F ; c142
 
 wChannelUnknownC143s::
-wChannel1UnknownC143:: db ; c143
-wChannel2UnknownC143:: db ; c144
-wChannel3UnknownC143:: db ; c145
-wChannel4UnknownC143:: db ; c146
+	char wChannel1UnknownC143 ; c143
+	char wChannel2UnknownC143 ; c144
+	char wChannel3UnknownC143 ; c145
+	char wChannel4UnknownC143 ; c146
 
 wChannelNR2s::
-wChannel1NR2:: db ; c147
-wChannel2NR2:: db ; c148
-wChannel3NR2:: db ; c149
-wChannel4NR2:: db ; c14a
+	char wChannel1NR2 ; c147
+	char wChannel2NR2 ; c148
+	char wChannel3NR2 ; c149
+	char wChannel4NR2 ; c14a
 
 wChannelKeySignatures::
-wChannel1KeySignature:: db ; c14b
-wChannel2KeySignature:: db ; c14c
-wChannel3KeySignature:: db ; c14d
-wChannel4KeySignature:: db ; c14e
+	char wChannel1KeySignature ; c14b
+	char wChannel2KeySignature ; c14c
+	char wChannel3KeySignature ; c14d
+	char wChannel4KeySignature ; c14e
 
 wChannelTemposs::
-wChannel1Tempos:: db ; c14f
-wChannel2Tempos:: db ; c150
-wChannel3Tempos:: db ; c151
-wChannel4Tempos:: db ; c152
+	char wChannel1Tempos ; c14f
+	char wChannel2Tempos ; c150
+	char wChannel3Tempos ; c151
+	char wChannel4Tempos ; c152
 
 wChannelUnknownC153s::
-wChannel1UnknownC153:: db ; c153
-wChannel2UnknownC153:: db ; c154
-wChannel3UnknownC153:: db ; c155
-wChannel4UnknownC153:: db ; c156
+	char wChannel1UnknownC153 ; c153
+	char wChannel2UnknownC153 ; c154
+	char wChannel3UnknownC153 ; c155
+	char wChannel4UnknownC153 ; c156
 
 wChannelUnknownC157s::
-wChannel1UnknownC157:: db ; c157
-wChannel2UnknownC157:: db ; c158
-wChannel3UnknownC157:: db ; c159
-wChannel4UnknownC157:: db ; c15a
+	char wChannel1UnknownC157 ; c157
+	char wChannel2UnknownC157 ; c158
+	char wChannel3UnknownC157 ; c159
+	char wChannel4UnknownC157 ; c15a
 
 wChannelUnknownC15Bs::
-wChannel1UnknownC15B:: db ; c15b
-wChannel2UnknownC15B:: db ; c15c
-wChannel3UnknownC15B:: db ; c15d
-wChannel4UnknownC15B:: db ; c15e
+	char wChannel1UnknownC15B ; c15b
+	char wChannel2UnknownC15B ; c15c
+	char wChannel3UnknownC15B ; c15d
+	char wChannel4UnknownC15B ; c15e
 
 wChannelUnknownC15Fs::
-wChannel1UnknownC15F:: db ; c15f
-wChannel2UnknownC15F:: db ; c160
-wChannel3UnknownC15F:: db ; c161
-wChannel4UnknownC15F:: db ; c162
+	char wChannel1UnknownC15F ; c15f
+	char wChannel2UnknownC15F ; c160
+	char wChannel3UnknownC15F ; c161
+	char wChannel4UnknownC15F ; c162
 
 wChannelUnknownC163s::
-wChannel1UnknownC163:: db ; c163
-wChannel2UnknownC163:: db ; c164
-wChannel3UnknownC163:: db ; c165
-wChannel4UnknownC163:: db ; c166
+	char wChannel1UnknownC163 ; c163
+	char wChannel2UnknownC163 ; c164
+	char wChannel3UnknownC163 ; c165
+	char wChannel4UnknownC163 ; c166
 
-wNR12:: db ; c167
-wNR22:: db ; c168
-wNR32:: db ; c169
+	char wNR12 ; c167
+	char wNR22 ; c168
+	char wNR32 ; c169
 
 wChannelFrequencyOffsets::
-wChannel1FrequencyOffset:: db ; c16a
-wChannel2FrequencyOffset:: db ; c16b
-wChannel3FrequencyOffset:: db ; c16c
+	char wChannel1FrequencyOffset ; c16a
+	char wChannel2FrequencyOffset ; c16b
+	char wChannel3FrequencyOffset ; c16c
 
-wNoiseSamplePointer:: dw ; c16d
-wc16f:: db ; c16f
-wSoundOutputFlags:: db ; c170
-wVolume:: db ; c171
-wMusicPaused:: db ; c172
+	short wNoiseSamplePointer ; c16d
+	char wc16f ; c16f
+	char wSoundOutputFlags ; c170
+	char wVolume ; c171
+	char wMusicPaused ; c172
 
 wChannelStackPointers::
-wChannel1StackPointer:: dw ; c173
-wChannel2StackPointer:: dw ; c175
-wChannel3StackPointer:: dw ; c177
-wChannel4StackPointer:: dw ; c179
+	short wChannel1StackPointer ; c173
+	short wChannel2StackPointer ; c175
+	short wChannel3StackPointer ; c177
+	short wChannel4StackPointer ; c179
 
-wChannel1Stack:: ds $c ; c17b
-wChannel2Stack:: ds $c ; c187
-wChannel3Stack:: ds $c ; c193
-wChannel4Stack:: ds $c ; c19f
+	array wChannel1Stack, 6, 1, 2 ; c17b
+	array wChannel2Stack, 6, 1, 2 ; c187
+	array wChannel3Stack, 6, 1, 2 ; c193
+	array wChannel4Stack, 6, 1, 2 ; c19f
 
 wChannelUnknownC1ABs::
-wChannel1UnknownC1AB:: db ; c1ab
-wChannel2UnknownC1AB:: db ; c1ac
-wChannel3UnknownC1AB:: db ; c1ad
-wChannel4UnknownC1AB:: db ; c1ae
+	char wChannel1UnknownC1AB ; c1ab
+	char wChannel2UnknownC1AB ; c1ac
+	char wChannel3UnknownC1AB ; c1ad
+	char wChannel4UnknownC1AB ; c1ae
 
 wChannelUnknownC1AFs::
-wChannel1UnknownC1AF:: db ; c1af
-wChannel2UnknownC1AF:: db ; c1b0
-wChannel3UnknownC1AF:: db ; c1b1
-wChannel4UnknownC1AF:: db ; c1b2
+	char wChannel1UnknownC1AF ; c1af
+	char wChannel2UnknownC1AF ; c1b0
+	char wChannel3UnknownC1AF ; c1b1
+	char wChannel4UnknownC1AF ; c1b2
 
 wChannelUnknownC1B3s::
-wChannel1UnknownC1B3:: db ; c1b3
-wChannel2UnknownC1B3:: db ; c1b4
-wChannel3UnknownC1B3:: db ; c1b5
-wChannel4UnknownC1B3:: db ; c1b6
+	char wChannel1UnknownC1B3 ; c1b3
+	char wChannel2UnknownC1B3 ; c1b4
+	char wChannel3UnknownC1B3 ; c1b5
+	char wChannel4UnknownC1B3 ; c1b6
 
 wChannelUnknownC1B7s::
-wChannel1UnknownC1B7:: dw ; c1b7
-wChannel2UnknownC1B7:: dw ; c1b9
-wChannel3UnknownC1B7:: dw ; c1bb
-wChannel4UnknownC1B7:: dw ; c1bd
+	short wChannel1UnknownC1B7 ; c1b7
+	short wChannel2UnknownC1B7 ; c1b9
+	short wChannel3UnknownC1B7 ; c1bb
+	short wChannel4UnknownC1B7 ; c1bd
 
 wChannelLoopCounters::
-wChannel1LoopCounter:: db ; c1bf
-wChannel2LoopCounter:: db ; c1c0
-wChannel3LoopCounter:: db ; c1c1
-wChannel4LoopCounter:: db ; c1c2
+	char wChannel1LoopCounter ; c1bf
+	char wChannel2LoopCounter ; c1c0
+	char wChannel3LoopCounter ; c1c1
+	char wChannel4LoopCounter ; c1c2
 
 wChannelLoopReturnPointers::
-wChannel1LoopReturnPointer:: dw ; c1c3
-wChannel2LoopReturnPointer:: dw ; c1c5
-wChannel3LoopReturnPointer:: dw ; c1c7
-wChannel4LoopReturnPointer:: dw ; c1c9
+	short wChannel1LoopReturnPointer ; c1c3
+	short wChannel2LoopReturnPointer ; c1c5
+	short wChannel3LoopReturnPointer ; c1c7
+	short wChannel4LoopReturnPointer ; c1c9
 
 wChannelSFXPointers::
-wChannel1SFXPointer:: dw ; c1cb
-wChannel2SFXPointer:: dw ; c1cd
-wChannel3SFXPointer:: dw ; c1cf
-wChannel4SFXPointer:: dw ; c1d1
+	short wChannel1SFXPointer ; c1cb
+	short wChannel2SFXPointer ; c1cd
+	short wChannel3SFXPointer ; c1cf
+	short wChannel4SFXPointer ; c1d1
 
-wSFXActive2:: db ; c1d3
-wSFXChannelFlags2:: db ; c1d4
+	char wSFXActive2 ; c1d3
+	char wSFXChannelFlags2 ; c1d4
 
 SECTION "LCD Interrupt", WRAM0 [$c200]
 wLCD:: ds $3 ; c200
@@ -395,46 +395,39 @@ wLCD:: ds $3 ; c200
 ; bit 2: push LCDC
 ; bit 1: push OAM
 ; bit 0: handle video transfer request
-wNextVBlankFlags:: ds $1 ; c203
-wLastVBlankFlags:: ds $1 ; c204
-wJoyPressed:: ds $1 ; c205
-wJoyLast:: ds $1 ; c206
-wJoyHeld:: ds $1 ; c207
-wc208:: ds $1 ; c208
-wTextBlinkerFrameCounter:: ds $1 ; c209
-wTimerCounter:: ds $2 ; c20a
-wSCX:: ds $1 ; c20c
-wSCX2:: ds $1 ; c20d
-wSCY:: ds $1 ; c20e
-wSCY2:: ds $2 ; c20f
-wLCDC:: ds $1 ; c211
-wFarCallSavedA:: ds $1 ; c212
+	char wNextVBlankFlags ; c203
+	char wLastVBlankFlags ; c204
+	char wJoyPressed ; c205
+	char wJoyLast ; c206
+	char wJoyHeld ; c207
+	char wc208 ; c208
+	char wTextBlinkerFrameCounter ; c209
+	short wTimerCounter ; c20a
+	char wSCX ; c20c
+	char wSCX2 ; c20d
+	char wSCY ; c20e
+	short wSCY2 ; c20f
+	char wLCDC ; c211
+	char wFarCallSavedA ; c212
 wc213:: ds $5 ; c213
-wFarCallSavedHL:: ds $2 ; c218
-wFarCallDestBank:: ds $1 ; c21a
-wFarCallDestAddr:: ds $2 ; c21b
-wBGP:: ds $1 ; c21d
-wOBP0:: ds $1 ; c21e
-wOBP1:: ds $1 ; c21f
+	short wFarCallSavedHL ; c218
+	char wFarCallDestBank ; c21a
+	short wFarCallDestAddr ; c21b
+	char wBGP ; c21d
+	char wOBP0 ; c21e
+	char wOBP1 ; c21f
 	ds $4
-wVBlankCallbackROMBank:: ds $1 ; c224
-wVBlankCallbackRAMBank:: ds $1 ; c225
-wVBlankCallbackAddress:: ds $2 ; c226
-wDecompressEndAddress:: ds $2 ; c228
-wDecompressLiteralCopySize:: ds $2 ; c22a
-wDecompresLiteralCopyOffsetHi:: ds $1 ; c22c
+	char wVBlankCallbackROMBank ; c224
+	char wVBlankCallbackRAMBank ; c225
+	short wVBlankCallbackAddress ; c226
+	short wDecompressEndAddress ; c228
+	short wDecompressLiteralCopySize ; c22a
+	char wDecompresLiteralCopyOffsetHi ; c22c
 	ds $8
 
-wPoncotPicAlignment:: ds $1 ; c235
+	char wPoncotPicAlignment ; c235
 	ds $1
-wRNGState:: dw ; c237
-
-video_transfer_queue: MACRO
-\1::
-\1TilesRemaining:: ds 1
-\1Source:: ds 2
-\1Dest:: ds 2
-ENDM
+	short wRNGState ; c237
 
 wVideoTransferQueue:: ; c239
 	video_transfer_queue wVideoTransferQueueEntry1 ; c239
@@ -442,58 +435,59 @@ wVideoTransferQueue:: ; c239
 	video_transfer_queue wVideoTransferQueueEntry3 ; c243
 	video_transfer_queue wVideoTransferQueueEntry4 ; c248
 
-wc24d:: ds $1 ; c24d
-wBlinkerX:: ds $1 ; c24e
-wBlinkerY:: ds $1 ; c24f
-wBlinkerTile:: ds $1 ; c250
-wBlinkerOffTile:: ds $1 ; c251
-wStringDestX:: ds $1 ; c252
-wStringDestY:: ds $1 ; c253
+	char wc24d ; c24d
+	char wBlinkerX ; c24e
+	char wBlinkerY ; c24f
+	char wBlinkerTile ; c250
+	char wBlinkerOffTile ; c251
+	char wStringDestX ; c252
+	char wStringDestY ; c253
 	ds $1
-wKana:: ; c255
+	char wKana ; c255
 ; 00: katakana
 ; ff: hiragana
-	ds $1
 
 	ds $d
 
-wc263:: db ; c263
-wNumSpritesLoaded:: db ; c264
-wc265:: dw ; c265
-wc267:: dw ; c267
-wc269:: dw ; c269
-wc26b:: ds 2 * 16 ; c26b
-wc28b:: ds 16 ; c28b
-wc29b:: ds 16 ; c29b
-wc2ab:: ds 16 ; c2ab
-wc2bb:: ds 16 ; c2bb
-wc2cb:: db ; c2cb
-wc2cc:: db ; c2cc
+	char wc263 ; c263
+	char wNumSpritesLoaded ; c264
+	short wc265 ; c265
+	short wc267 ; c267
+	short wc269 ; c269
+	array wc26b, 1, 16, 2 ; c26b
+	array wc28b, 1, 16, 1 ; c28b
+	array wc29b, 1, 16, 1 ; c29b
+	array wc2ab, 1, 16, 1 ; c2ab
+	array wc2bb, 1, 16, 1 ; c2bb
+	char wc2cb ; c2cb
+	char wc2cc ; c2cc
 	ds $9
 
-wMapWidth:: db ; c2d6
-wMapHeight:: db ; c2d7
-wMapX:: db ; c2d8
-wMapY:: db ; c2d9
+	char wMapWidth ; c2d6
+	char wMapHeight ; c2d7
+	char wMapX ; c2d8
+	char wMapY ; c2d9
 	ds $2
 
-wMemoryAllocationNumBlocks:: dw ; c2dc
-wMemoryAllocationPointer:: dw ; c2de
-wMemoryAllocationMode:: ds $1 ; c2e0
+	short wMemoryAllocationNumBlocks ; c2dc
+	short wMemoryAllocationPointer ; c2de
+	char wMemoryAllocationMode ; c2e0
 	ds $5
-wc2e6:: ds $2 ; c2e6
-wc2e8:: ds $1 ; c2e8
+	short wc2e6 ; c2e6
+	char wc2e8 ; c2e8
 	ds $1
 
-wVideoTransferRequestFlags:: ds $1 ; c2ea
-wSongCurrentlyPlaying:: db ; c2eb
-wSFXCurrentlyPlaying:: db ; c2ec
-wVideoTransferRequestBank:: ds $1 ; c2ed
+	char wVideoTransferRequestFlags ; c2ea
+	char wSongCurrentlyPlaying ; c2eb
+	char wSFXCurrentlyPlaying ; c2ec
+	char wVideoTransferRequestBank ; c2ed
 	ds $6
 
-wc2f4:: db
-	ds $6
-wSystemType:: ; c2fb
+	char wc2f4
+	ds $5
+
+	char wc2fa ; c2fa
+	char wSystemType ; c2fb
 
 SECTION "OAM Buffer", WRAM0 [$c300]
 wOAMBuffer:: ; c300
@@ -588,123 +582,164 @@ wOAMBuffer2:: ; c400
 wOAMBuffer2End::
 
 SECTION "Tile Map", WRAM0 [$c4a0]
-wTileMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
-wAttrMap:: ds SCREEN_WIDTH * SCREEN_HEIGHT
+	array wTileMap, SCREEN_WIDTH, SCREEN_HEIGHT, 1
+	array wAttrMap, SCREEN_WIDTH, SCREEN_HEIGHT, 1
 
 SECTION "Overworld RAM", WRAM0 [$c770]
 wc770:: ; c770
-	ds $4
-
-wObjectStructPointer:: dw ; c774
-wc776:: dw ; c776
 	ds $2
 
-wMapObjectsAndWarpDataPointer:: dw ; c77a
-wNumWarps:: db ; c77c
-	ds $4
+	char wc772 ; c772
+	char wc773 ; c773
+	short wObjectStructPointer ; c774
+	short wc776 ; c776
+	short wc778 ; c778
+	short wMapObjectsAndWarpDataPointer ; c77a
+	char wNumWarps ; c77c
+	char wc77d ; c77d
+	short wc77e ; c77e
+	char wc780 ; c780
+	char wRandomEncounterRate ; c781
+	char wc782 ; c782
+	char wRandomEncounterCooldown ; c783
+	char wc784 ; c784
+	ds $4 ; c785
 
-wRandomEncounterRate:: db ; c781
+	char wc789 ; c789
+	char wc78a ; c78a
 	ds $1
-wRandomEncounterCooldown:: db ; c783
-	ds $3a
-
-wMapMusic:: db ; c7be
+	char wc78c ; c78c
+	char wc78d ; c78d
+	ds $2
+	char wc790 ; c790
+	char wc791 ; c791
+	ds $1
+	char wc793 ; c793
+	ds $3
+	char wc797 ; c797
+	char wc798 ; c798
+	char wc799 ; c799
+	ds $2
+	char wc79c ; c79c
+	char wc79d ; c79d
+	char wc79e ; c79e
+	char wc79f ; c79f
+	char wc7a0 ; c7a0
+	char wc7a1 ; c7a1
+	char wc7a2 ; c7a2
+	ds $1
+	char wc7a4 ; c7a4
+	char wc7a5 ; c7a5
+	ds $b
+	array wc7b1, $c, $1, $1
+	char wc7bd ; c7bd
+	char wMapMusic ; c7be
 	ds $1c
 
-wBackupMapX:: db ; c7db
-wBackupMapY:: db ; c7dc
+	char wBackupMapX ; c7db
+	char wBackupMapY ; c7dc
 	ds $2
-wBackupMapGroup:: db ; c7df
-wBackupMapNumber:: db ; c7e0
+	char wBackupMapGroup ; c7df
+	char wBackupMapNumber ; c7e0
 	ds $6
 
-wSpawnX:: db ; c7e7
-wSpawnY:: db ; c7e8
-wc7e9:: db ; c7e9
-wc7ea:: db ; c7ea
-wMapGroup:: db ; c7eb
-wMapNumber:: db ; c7ec
-wEventFlags:: ; c7ed
-	ds $35
-	
-wc822:: dw ; c822
-wc824:: dw ; c824
+	char wSpawnX ; c7e7
+	char wSpawnY ; c7e8
+	char wc7e9 ; c7e9
+	char wc7ea ; c7ea
+	char wMapGroup ; c7eb
+	char wMapNumber ; c7ec
+
+	bitfield wEventFlags, 400 ; c7ed
+
+	char wc81f ; c81f
+	char wc820 ; c820
+	char wc821 ; c821
+	short wc822 ; c822
+	short wc824 ; c824
+	short wc826 ; c826
+	short wBlockdataPointer ; c828
+	short wc82a ; c82a
+	short wc82c ; c82c
 	ds $2
 
-wBlockdataPointer:: dw ; c828
+	short wMapCollisionPointer ; c830
 	ds $6
 
-wMapCollisionPointer:: dw ; c830
-	ds $6
-
-wPlayerFacing:: db ; c838
+	char wPlayerFacing ; c838
 	ds $9
 
-wc842:: dw ; c842
-wc844:: dw ; c844
-	ds $b
-
-wc851:: db ; c851
-wc852:: dw ; c852
+	short wc842 ; c842
+	short wc844 ; c844
+	char wc846 ; c846
+	char wc847 ; c847
+	char wc848 ; c848
+	char wc849 ; c849
+	char wc84a ; c84a
+	char wc84b ; c84b
+	char wc84c ; c84c
+	char wc84d ; c84d
+	char wc84e ; c84e
+	char wc84f ; c84f
+	char wc850 ; c850
+	char wc851 ; c851
+	short wc852 ; c852
 	ds $6
 
-wc85a:: db ; c85a
-wTilesetPointer:: dw ; c85b
-wc85d:: dw ; c85d
-wPlayerMapX:: db ; c85f
-wPlayerMapY:: db ; c860
-wCurWarpMinX:: db ; c861
-wCurWarpMinY:: db ; c862
-wCurWarpHDim:: db ; c863
-wCurWarpVDim:: db ; c864
-wPlayerStandingTileOffset:: dw ; c865
+	char wc85a ; c85a
+	short wTilesetPointer ; c85b
+	short wc85d ; c85d
+	char wPlayerMapX ; c85f
+	char wPlayerMapY ; c860
+	char wCurWarpMinX ; c861
+	char wCurWarpMinY ; c862
+	char wCurWarpHDim ; c863
+	char wCurWarpVDim ; c864
+	short wPlayerStandingTileOffset ; c865
 	ds $15
-wPlayerMovementRate:: db ; c87c
-wLastStepSucceeded:: db ; c87d
+	char wPlayerMovementRate ; c87c
+	char wLastStepSucceeded ; c87d
 	ds $a
 
-wc888:: db ; c888
-wLoadTilesBlockCounter:: db ; c889
-wc88a:: db ; c88a
-wc88b:: db ; c88b
-wLoadTilesSourcePointer:: dw ; c88c
-wc88e:: dw ; c88e
-wLoadTilesTileCounter:: dw ; c890
+	char wc888 ; c888
+	char wLoadTilesBlockCounter ; c889
+	char wc88a ; c88a
+	char wc88b ; c88b
+	short wLoadTilesSourcePointer ; c88c
+	short wc88e ; c88e
+	short wLoadTilesTileCounter ; c890
 	ds wc888 - @
 
-wCheckCollisionReturnFlag:: db ; c888
-wCheckCollisionX:: db ; c889
-wCheckCollisionY:: db ; c88a
-wCheckCollisionFlag:: db ; c88b
-wCheckCollisionFacingDirection:: db ; c88c
-wCheckCollisionObjectCounter:: db ; c88d
-wCheckCollisionObjectStructPointer:: dw ; c88e
+	char wCheckCollisionReturnFlag ; c888
+	char wCheckCollisionX ; c889
+	char wCheckCollisionY ; c88a
+	char wCheckCollisionFlag ; c88b
+	char wCheckCollisionFacingDirection ; c88c
+	char wCheckCollisionObjectCounter ; c88d
+	short wCheckCollisionObjectStructPointer ; c88e
+	short wCheckCollision_c890 ; c890
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
-wCGB_BGPalsBuffer:: ; c89c
-	ds 8 * 8
+	array wCGB_BGPalsBuffer, $8, $8, $1 ; c89c
+	array wCGB_OBPalsBuffer, $8, $8, $1 ; c8dc
 
-wCGB_OBPalsBuffer:: ; c8dc
-	ds 8 * 8
-
-wVBlankTransferFlags:: ; c91c
+	bitfield wVBlankTransferFlags, 8 ; c91c
 ; ==0: push CGB palettes
 ; bit 1: push wVBlankMetaTileTransferQueue1
 ; bit 0: push wVBlankMetaTileTransferQueue0
-	ds $1
 
-wc91d:: dw ; c91d
+	short wc91d ; c91d
 
-wVBlankMetaTileTransferQueue0TileSource:: dw ; c91f
-wVBlankMetaTileTransferQueue0AttrSource:: dw ; c921
-wVBlankMetaTileTransferQueue0Dest:: dw ; c923
+	short wVBlankMetaTileTransferQueue0TileSource ; c91f
+	short wVBlankMetaTileTransferQueue0AttrSource ; c921
+	short wVBlankMetaTileTransferQueue0Dest ; c923
 
-wVBlankMetaTileTransferQueue1TileSource:: dw ; c925
-wVBlankMetaTileTransferQueue1AttrSource:: dw ; c927
-wVBlankMetaTileTransferQueue1Dest:: dw ; c929
+	short wVBlankMetaTileTransferQueue1TileSource ; c925
+	short wVBlankMetaTileTransferQueue1AttrSource ; c927
+	short wVBlankMetaTileTransferQueue1Dest ; c929
 
 SECTION "Allocatable Memory", WRAM0 [$ce10]
-wAllocatableBlock0:: alloc_block wce10 ; ce10
+	alloc_block wAllocatableBlock0 ; ce10
 	ds $900 - 5
 
 SECTION "Stack", WRAM0 [$d810]

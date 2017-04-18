@@ -18,20 +18,20 @@ Data_81d4e: ; 81d4e
 
 Func_81d6a:
 	xor a
-	ld [$c793], a
+	ld [wc793], a
 	ld e, $1
 	ld hl, Data_81cb4
 	call LoadMapObjects_20
 	ld e, $1
 	ld hl, Data_81cbf
 	call Func_80ce7_20
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_81d95
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $2
 	jp z, Func_81d95
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_81df9
 Func_81d95: ; 81d95 (20:5d95)
@@ -65,7 +65,7 @@ Func_81db2: ; 81db2 (20:5db2)
 	ld hl, $a
 	call EventFlagAction_20
 	ld a, $1
-	ld [$c78c], a
+	ld [wc78c], a
 	jp Func_81df6
 
 Func_81de6: ; 81de6 (20:5de6)
@@ -92,7 +92,7 @@ Func_81df9: ; 81df9 (20:5df9)
 	playmusic $11
 	call Func_8001c_20
 	xor a
-	ld [$c793], a
+	ld [wc793], a
 Func_81e22: ; 81e22 (20:5e22)
 	ret
 

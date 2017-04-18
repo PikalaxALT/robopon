@@ -165,7 +165,7 @@ Func_a09f: ; a09f (2:609f)
 Func_a0a9: ; a0a9 (2:60a9)
 	ld hl, sp+$6
 	ld a, [hl]
-	ld hl, $c772
+	ld hl, wc772
 	cp [hl]
 	jp nc, Func_a15e
 	ld hl, sp+$6
@@ -290,7 +290,7 @@ Func_a15e: ; a15e (2:615e)
 	ld hl, sp+$1
 	ld e, [hl]
 	ld d, $0
-	read_hl_from $c826
+	read_hl_from wc826
 	add hl, de
 	ld a, [hl]
 	and $1

@@ -14,13 +14,13 @@ Func_81ac1:
 	ld e, $1
 	ld hl, Data_81abc
 	call Func_80ce7_20
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_81ae8
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $2
 	jp z, Func_81ae8
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $3
 	jp nz, Func_81b20
 Func_81ae8: ; 81ae8 (20:5ae8)

@@ -8,7 +8,7 @@ Func_8240c:
 	ld e, $2
 	ld hl, Data_823ba
 	call LoadMapObjects_20
-	ld a, [$c790]
+	ld a, [wc790]
 	cp $4
 	jp z, Func_8242b
 	ld e, $4

@@ -4778,7 +4778,7 @@ FadeInMap:: ; 8ba8
 Func_8bdc: ; 8bdc (2:4bdc)
 	ld hl, sp+$0
 	ld a, [hl]
-	ld hl, $c772
+	ld hl, wc772
 	cp [hl]
 	jp nc, Func_8c16
 	ld hl, sp+$0
@@ -4908,7 +4908,7 @@ Func_8ce9: ; 8ce9 (2:4ce9)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c82a
+	read_hl_from wc82a
 	add hl, de
 	reg16swap de, hl
 	ld hl, $8000
@@ -5066,14 +5066,14 @@ del_if_defined: MACRO
 	del_if_defined wc85d
 	del_if_defined wc824
 	del_if_defined wc822
-	del_if_defined $c826
+	del_if_defined wc826
 	del_if_defined wBlockdataPointer
 	del_if_defined wMapCollisionPointer
-	del_if_defined $c82a
-	del_if_defined $c82c
+	del_if_defined wc82a
+	del_if_defined wc82c
 	del_if_defined $c82e
 	del_if_defined wMapObjectsAndWarpDataPointer
-	del_if_defined $c778
+	del_if_defined wc778
 	del_if_defined wObjectStructPointer
 	del_if_defined wc776
 	ret
@@ -5458,7 +5458,7 @@ Func_9a49: ; 9a49 (2:5a49)
 	ld a, d
 	ld [$c88d], a
 .loop: ; 9a86 (2:5a86)
-	ld a, [$c772]
+	ld a, [wc772]
 	ld b, a
 	ld a, [$c889]
 	cp b
@@ -5728,21 +5728,21 @@ Func_9a49: ; 9a49 (2:5a49)
 	jp .loop
 
 .done: ; 9c36 (2:5c36)
-	ld a, [$c84e]
+	ld a, [wc84e]
 	cp $1
 	jp nz, .skip_multiply
-	ld a, [$c850]
+	ld a, [wc850]
 	inc a
-	ld [$c850], a
+	ld [wc850], a
 	dec a
 	cp $5
 	jp c, .skip_multiply
 	ld a, [wSCY]
-	ld hl, $c84f
+	ld hl, wc84f
 	add [hl]
 	ld [wSCY], a
 	ld a, [wSCY2]
-	ld hl, $c84f
+	ld hl, wc84f
 	add [hl]
 	ld [wSCY2], a
 	di
@@ -5750,12 +5750,12 @@ Func_9a49: ; 9a49 (2:5a49)
 	or $10
 	ld [wNextVBlankFlags], a
 	ei
-	ld a, [$c84f]
+	ld a, [wc84f]
 	ld b, $ff
 	call MultiplyAbyB
-	ld [$c84f], a
+	ld [wc84f], a
 	xor a
-	ld [$c850], a
+	ld [wc850], a
 .skip_multiply: ; 9c78 (2:5c78)
 	call Func_a1fa
 	pop de
@@ -5832,32 +5832,32 @@ Func_9a49: ; 9a49 (2:5a49)
 
 Func_9d31: ; 9d31 (2:5d31)
 	xor a
-	ld [$c84e], a
+	ld [wc84e], a
 	xor a
-	ld [$c84f], a
+	ld [wc84f], a
 	xor a
-	ld [$c850], a
+	ld [wc850], a
 	ret
 
 Func_9d3e:: ; 9d3e
 	ld a, $1
-	ld [$c84e], a
+	ld [wc84e], a
 	ld a, $2
-	ld [$c84f], a
+	ld [wc84f], a
 	xor a
-	ld [$c850], a
+	ld [wc850], a
 	ret
 
 Func_9d4d:: ; 9d4d
-	ld a, [$c84f]
+	ld a, [wc84f]
 	cp $2
 	jp z, Func_9d73
 	ld a, [wSCY]
-	ld hl, $c84f
+	ld hl, wc84f
 	add [hl]
 	ld [wSCY], a
 	ld a, [wSCY2]
-	ld hl, $c84f
+	ld hl, wc84f
 	add [hl]
 	ld [wSCY2], a
 	di
@@ -5867,17 +5867,17 @@ Func_9d4d:: ; 9d4d
 	ei
 Func_9d73: ; 9d73 (2:5d73)
 	xor a
-	ld [$c84f], a
+	ld [wc84f], a
 	xor a
-	ld [$c84e], a
+	ld [wc84e], a
 	xor a
-	ld [$c850], a
+	ld [wc850], a
 	ret
 
 Func_9d80: ; 9d80 (2:5d80)
 	push hl
 	ld h, a
-	ld a, [$c84b]
+	ld a, [wc84b]
 	cp $1
 	jr nz, .asm_9d8f
 	ld a, [wPlayerFacing]
@@ -5897,16 +5897,16 @@ Func_9d80: ; 9d80 (2:5d80)
 	or a
 	jr nz, .asm_9da4
 	xor a
-	ld [$c821], a
+	ld [wc821], a
 .asm_9da4
 	ld a, [$c858]
 	cp $1
 	jr nz, .asm_9db0
 	xor a
-	ld [$c821], a
+	ld [wc821], a
 	ld e, a
 .asm_9db0
-	ld a, [$c821]
+	ld a, [wc821]
 	srl a
 	srl a
 	srl a
@@ -5919,15 +5919,15 @@ Func_9d80: ; 9d80 (2:5d80)
 	ld b, a
 	ld hl, wOAM2_00YCoord
 	lb de, $58, $4c
-	ld a, [$c84b]
+	ld a, [wc84b]
 	cp $1
 	jr nz, .asm_9de1
 	ld d, $58
-	ld a, [$c84c]
+	ld a, [wc84c]
 	add d
 	ld d, a
 	ld e, $4c
-	ld a, [$c84d]
+	ld a, [wc84d]
 	add e
 	ld e, a
 	ld b, $0
@@ -5967,7 +5967,7 @@ Func_9d80: ; 9d80 (2:5d80)
 	call Func_9f4c
 	pop bc
 	push af
-	ld hl, $c826
+	ld hl, wc826
 	ld a, [hli]
 	ld e, a
 	ld a, [hl]
@@ -6004,9 +6004,9 @@ Func_9d80: ; 9d80 (2:5d80)
 	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld a, [$c821]
+	ld a, [wc821]
 	inc a
-	ld [$c821], a
+	ld [wc821], a
 	ret
 
 .asm_9e41
@@ -6045,7 +6045,7 @@ Func_9d80: ; 9d80 (2:5d80)
 	call Func_9f4c
 	pop bc
 	push af
-	ld hl, $c826
+	ld hl, wc826
 	ld a, [hli]
 	ld e, a
 	ld a, [hl]
@@ -6082,9 +6082,9 @@ Func_9d80: ; 9d80 (2:5d80)
 	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld a, [$c821]
+	ld a, [wc821]
 	inc a
-	ld [$c821], a
+	ld [wc821], a
 	ret
 
 Func_9ea0: ; 9ea0 (2:5ea0)
@@ -6243,12 +6243,12 @@ Func_a184: ; a184 (2:6184)
 	add hl, de
 	ld a, [hl]
 	add $70
-	ld [$c81f], a
+	ld [wc81f], a
 	xor a
-	ld [$c820], a
+	ld [wc820], a
 	ld hl, $30
 	call AllocateMemory_Bank02
-	write_hl_to $c82c
+	write_hl_to wc82c
 	ld c, $0
 Func_a1ad: ; a1ad (2:61ad)
 	ld a, c
@@ -6285,7 +6285,7 @@ Func_a1ad: ; a1ad (2:61ad)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c82c
+	read_hl_from wc82c
 	add hl, de
 	pop de
 	ld bc, $10
@@ -6299,27 +6299,27 @@ Func_a1f8: ; a1f8 (2:61f8)
 	ret
 
 Func_a1fa: ; a1fa (2:61fa)
-	ld a, [$c81f]
+	ld a, [wc81f]
 	cp $ff
 	jp nz, Func_a203
 	ret
 
 Func_a203: ; a203 (2:6203)
-	ld a, [$c820]
+	ld a, [wc820]
 	inc a
-	ld [$c820], a
+	ld [wc820], a
 	cp $18
 	jp nz, Func_a213
 	xor a
-	ld [$c820], a
+	ld [wc820], a
 Func_a213: ; a213 (2:6213)
-	ld a, [$c820]
+	ld a, [wc820]
 	and $7
 	jp z, Func_a21c
 	ret
 
 Func_a21c: ; a21c (2:621c)
-	ld a, [$c820]
+	ld a, [wc820]
 	rrca
 	rrca
 	rrca
@@ -6331,10 +6331,10 @@ Func_a21c: ; a21c (2:621c)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c82c
+	read_hl_from wc82c
 	add hl, de
 	push hl
-	ld hl, $c81f
+	ld hl, wc81f
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -6350,9 +6350,9 @@ Func_a21c: ; a21c (2:621c)
 
 Func_a24c: ; a24c (2:624c)
 	xor a
-	ld [$c772], a
+	ld [wc772], a
 	ld a, $10
-	ld [$c773], a
+	ld [wc773], a
 	ld hl, $118
 	call AllocateMemory_Bank02
 	write_hl_to wObjectStructPointer
@@ -6449,223 +6449,7 @@ Func_a2b0: ; a2b0 (2:62b0)
 	pop bc
 	ret
 
-Data_a2e7: ; a2e7
-	dr $a2e7, $a2eb
-
-Func_a2eb:: ; a2eb
-	push hl
-	push bc
-	push bc
-	push bc
-	ld a, [$c772]
-	cp $14
-	jp c, Func_a2fd
-	ld hl, -1
-	jp Func_a43f
-
-Func_a2fd: ; a2fd (2:62fd)
-	call GetHLAtSPPlus8
-	push hl
-	ld hl, $c772
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	reg16swap de, hl
-	read_hl_from wObjectStructPointer
-	add hl, de
-	pop de
-	ld bc, $e
-	call CopyFromDEtoHL
-	ld hl, $c772
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	reg16swap de, hl
-	read_hl_from wc776
-	add hl, de
-	ld c, l
-	ld b, h
-	push bc
-	ld hl, $c772
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	reg16swap de, hl
-	read_hl_from wObjectStructPointer
-	add hl, de
-	call WriteHLToSPPlus6
-	pop bc
-	ld a, $ff
-	ld [bc], a
-	ld l, c
-	ld h, b
-	inc hl
-	ld [hl], $0
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	ld [hl], $0
-	call GetHLAtSPPlus4
-	ld a, [hl]
-	ld hl, sp+$4
-	ld [hl], a
-	cp $ff
-	jp z, Func_a39c
-	call GetHLAtSPPlus4
-	ld de, $6
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld hl, Data_a2e7
-	add hl, de
-	ld a, [hl]
-	call GetHLAtSPPlus4
-	inc hl
-	ld l, [hl]
-	push hl
-	push bc
-	ld c, l
-	ld e, a
-	ld a, [$c773]
-	ld hl, sp+$8
-	ld l, [hl]
-	ld h, a
-	call LoadSpriteGFX
-	pop bc
-	ld a, [$c773]
-	ld [bc], a
-	pop hl
-	ld a, [$c773]
-	add l
-	ld [$c773], a
-Func_a39c: ; a39c (2:639c)
-	ld l, c
-	ld h, b
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], $1
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	ld e, [hl]
-	ld hl, sp+$1
-	ld [hl], e
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	ld c, [hl]
-	call GetHLAtSPPlus4
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld e, [hl]
-	ld hl, sp+$0
-	ld [hl], e
-	call GetHLAtSPPlus4
-	ld de, $5
-	add hl, de
-	ld l, [hl]
-	push hl
-	ld hl, sp+$2
-	ld a, [hl]
-	cp $64
-	jp nz, Func_a3d5
-	ld hl, sp+$2
-	ld a, [wMapWidth]
-	ld [hl], a
-Func_a3d5: ; a3d5 (2:63d5)
-	pop hl
-	ld a, l
-	cp $64
-	jp nz, Func_a3e0
-	ld a, [wMapHeight]
-	ld l, a
-Func_a3e0: ; a3e0 (2:63e0)
-	push hl
-	ld e, c
-	ld d, $0
-	ld hl, wMapWidth
-	ld l, [hl]
-	ld h, $0
-	call MultiplyHLbyDE
-	reg16swap de, hl
-	read_hl_from wMapCollisionPointer
-	add hl, de
-	reg16swap de, hl
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, de
-	reg16swap de, hl
-	xor a
-	pop hl
-Func_a407: ; a407 (2:6407)
-	cp l
-	jp nc, Func_a438
-	push hl
-	push af
-	push de
-	ld c, $0
-Func_a410: ; a410 (2:6410)
-	ld a, c
-	ld hl, sp+$6
-	cp [hl]
-	jp nc, Func_a426
-	ld a, [de]
-	inc a
-	and $7
-	ld l, a
-	ld a, [de]
-	and $f8
-	add l
-	ld [de], a
-	inc de
-	inc c
-	jp Func_a410
-
-Func_a426: ; a426 (2:6426)
-	pop de
-	ld hl, wMapWidth
-	ld l, [hl]
-	ld h, $0
-	add hl, de
-	reg16swap de, hl
-	pop af
-	inc a
-	pop hl
-	jp Func_a407
-
-Func_a438: ; a438 (2:6438)
-	ld a, [$c772]
-	inc a
-	ld [$c772], a
-Func_a43f: ; a43f (2:643f)
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
+INCLUDE "engine/map/load_sprites.asm"
 
 Func_a444:: ; a444
 	push af
@@ -6681,7 +6465,7 @@ Func_a444:: ; a444
 	ld [hl], a
 	ld hl, sp+$7
 	ld a, [hl]
-	ld hl, $c772
+	ld hl, wc772
 	cp [hl]
 	jp c, Func_a460
 	jp Func_a57b
@@ -6912,7 +6696,7 @@ Func_a5a4:: ; a5a4
 Func_a5ab: ; a5ab (2:65ab)
 	ld hl, sp+$0
 	ld a, [hl]
-	ld hl, $c772
+	ld hl, wc772
 	cp [hl]
 	jp nc, Func_a60b
 	ld hl, sp+$0
@@ -6978,7 +6762,7 @@ Func_a60b: ; a60b (2:660b)
 Func_a60f:: ; a60f
 	push de
 	push bc
-	ld hl, $c772
+	ld hl, wc772
 	cp [hl]
 	jp c, Func_a61b
 	jp Func_a6d1
@@ -7436,7 +7220,7 @@ CheckWarpTile: ; ad56 (2:6d56)
 	ld a, $2e
 	call OverworldPlaySFX
 	xor a
-	ld [$c84a], a
+	ld [wc84a], a
 	ld a, $1
 	ret
 
@@ -7652,7 +7436,7 @@ Func_af7a:: ; af7a
 	add hl, de
 	write_hl_to wPlayerStandingTileOffset
 	xor a
-	ld [$c84a], a
+	ld [wc84a], a
 	pop bc
 	pop bc
 	ret
@@ -7660,7 +7444,7 @@ Func_af7a:: ; af7a
 Func_aff1: ; aff1 (2:6ff1)
 	ld hl, $c
 	call AllocateMemory_Bank02
-	write_hl_to $c778
+	write_hl_to wc778
 	xor a
 Func_affd: ; affd (2:6ffd)
 	cp $2
@@ -7673,7 +7457,7 @@ Func_affd: ; affd (2:6ffd)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from $c778
+	read_hl_from wc778
 	add hl, de
 	ld [hl], $ff
 	inc a
@@ -7705,7 +7489,7 @@ Func_b025: ; b025 (2:7025)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from $c778
+	read_hl_from wc778
 	add hl, de
 	call WriteHLToSPPlus4
 	call GetHLAtSPPlus4
@@ -7858,7 +7642,7 @@ Func_b109: ; b109 (2:7109)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from $c778
+	read_hl_from wc778
 	add hl, de
 	ld [hl], $ff
 	jp Func_b14d
@@ -7890,7 +7674,7 @@ Func_b153: ; b153 (2:7153)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from $c778
+	read_hl_from wc778
 	add hl, de
 	call WriteHLToSPPlus6
 	call GetHLAtSPPlus6
@@ -8271,7 +8055,7 @@ Func_b3bd: ; b3bd (2:73bd)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from $c778
+	read_hl_from wc778
 	add hl, de
 	ld a, [hl]
 	cp $ff
@@ -8544,7 +8328,7 @@ Func_b58e:: ; b58e
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c82a
+	read_hl_from wc82a
 	add hl, de
 	push hl
 	ld e, $0
@@ -8790,13 +8574,13 @@ Func_b772: ; b772 (2:7772)
 
 Func_b773: ; b773 (2:7773)
 	xor a
-	ld [$c780], a
+	ld [wc780], a
 	xor a
 	ld [wRandomEncounterRate], a
 	ld a, $3
 	ld [wRandomEncounterCooldown], a
 	xor a
-	ld [$c784], a
+	ld [wc784], a
 	ret
 
 Func_b785:: ; b785
@@ -8811,13 +8595,13 @@ Func_b785:: ; b785
 	ld a, [hl]
 	ld b, $2
 	call DivideAbyB
-	ld [$c7bd], a
-	ld a, [$c7bd]
+	ld [wc7bd], a
+	ld a, [wc7bd]
 	cp $c
 	jp nc, Func_b7f2
 	ld e, a
 	ld d, $0
-	ld hl, $c7b1
+	ld hl, wc7b1
 	add hl, de
 	ld a, [hl]
 	cp $14
@@ -8857,7 +8641,7 @@ Func_b7ec: ; b7ec (2:77ec)
 Func_b7f2: ; b7f2 (2:77f2)
 	ld hl, sp+$7
 	ld a, [hl]
-	ld [$c782], a
+	ld [wc782], a
 	pop bc
 	pop bc
 	pop bc
@@ -8865,15 +8649,15 @@ Func_b7f2: ; b7f2 (2:77f2)
 	ret
 
 Func_b7fd:: ; b7fd
-	ld [$c77d], a
+	ld [wc77d], a
 	reg16swap de, hl
-	write_hl_to $c77e
+	write_hl_to wc77e
 	ld a, c
-	ld [$c780], a
+	ld [wc780], a
 	set_farcall_addrs_hli Func_e1f2d
 	ld a, $11
 	call FarCall
-	ld [$c784], a
+	ld [wc784], a
 	ret
 
 INCLUDE "engine/random_encounter.asm"
@@ -8893,9 +8677,9 @@ Func_ba47: ; ba47
 	ld a, [hl]
 	ld b, $2
 	call DivideAbyB
-	ld [$c7bd], a
+	ld [wc7bd], a
 	ld a, $1
-	ld [$c2fa], a
+	ld [wc2fa], a
 	callba_hli Func_cb4a
 	pop af
 	ld [wFarCallDestBank], a
@@ -9121,7 +8905,7 @@ Func_bc6d:: ; bc6d
 	ld b, h
 	call Func_ba47
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	xor a
 	ld [$c7c4], a
 	set_farcall_addrs_hli Func_10abf
@@ -9168,7 +8952,7 @@ Func_bce5:: ; bce5
 	ld b, h
 	call Func_ba47
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	xor a
 	ld [$c7c4], a
 	set_farcall_addrs_hli Func_6c5bb
@@ -9215,7 +8999,7 @@ Func_bd5d:: ; bd5d
 	ld b, h
 	call Func_ba47
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	xor a
 	ld [$c7c4], a
 	set_farcall_addrs_hli Func_1228e
@@ -9262,7 +9046,7 @@ Func_bdd5:: ; bdd5
 	ld b, h
 	call Func_ba47
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	xor a
 	ld [$c7c4], a
 	set_farcall_addrs_hli Func_6d395
@@ -9319,7 +9103,7 @@ Func_be77:: ; be77 (2:7e77)
 	jp nz, Func_be95
 	reg16swap de, hl
 	call AllocateMemory_Bank02
-	write_hl_to $c82a
+	write_hl_to wc82a
 	ld hl, sp+$1
 	ld [hl], $1
 	jp Func_bea1
@@ -9356,7 +9140,7 @@ Func_bea1: ; bea1 (2:7ea1)
 	ld de, GFX_d4000
 	add hl, de
 	reg16swap de, hl
-	read_hl_from $c82a
+	read_hl_from wc82a
 	ld bc, $240
 	call FarCopyVideoData
 	ld hl, wPlayerFacing
@@ -9371,7 +9155,7 @@ Func_bea1: ; bea1 (2:7ea1)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from $c82a
+	read_hl_from wc82a
 	add hl, de
 	push hl
 	call Func_bfaf
@@ -17289,10 +17073,10 @@ Func_fc31: ; fc31 (3:7c31)
 Func_fccb: ; fccb (3:7ccb)
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld hl, $c7bd
+	ld hl, wc7bd
 	ld l, [hl]
 	ld h, $0
-	ld de, $c7b1
+	ld de, wc7b1
 	add hl, de
 	ld a, [hl]
 	pop de
@@ -17869,7 +17653,7 @@ Func_1028b: ; 1028b
 	ld bc, $4
 	call MemCopy
 	ld a, $2
-	ld [$c2fa], a
+	ld [wc2fa], a
 	ld a, SONG_WILD_BATTLE
 	call OverworldPlaySong
 	pop de
@@ -17945,10 +17729,10 @@ Func_10342: ; 10342 (4:4342)
 	push hl
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld hl, $c7bd
+	ld hl, wc7bd
 	ld l, [hl]
 	ld h, $0
-	ld de, $c7b1
+	ld de, wc7b1
 	add hl, de
 	ld a, [hl]
 	pop hl
@@ -18134,7 +17918,7 @@ Func_104c9: ; 104c9 (4:44c9)
 	xor a
 	call FarCall
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
@@ -18609,11 +18393,11 @@ Func_10935: ; 10935 (4:4935)
 	cp $1
 	jp z, Func_1095a
 	ld a, $2
-	ld [$c2fa], a
+	ld [wc2fa], a
 	callba_hli Func_222b7
 .asm_1094b
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 Func_1095a: ; 1095a (4:495a)
 	pop bc
 	ret
@@ -21663,10 +21447,10 @@ Func_11fda: ; 11fda (4:5fda)
 	dec e
 	jp nz, Func_12021
 	ld a, $2
-	ld [$c2fa], a
+	ld [wc2fa], a
 	callba_hli Func_222b7
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 Func_12021: ; 12021 (4:6021)
 	call FillVisibleAreaWithBlankTile
 	ret
@@ -26383,7 +26167,7 @@ Func_14f0e: ; 14f0e
 	call FarCall
 	ld a, $ff
 	ld [wOAM26Attrs], a
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	or a
 	jp nz, Func_14fc5
 	ld a, [wOAM05Attrs]
@@ -26437,7 +26221,7 @@ Func_14fde: ; 14fde (5:4fde)
 	pop de
 	push bc
 	push de
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	or a
 	jp nz, Func_14ffa
 	ld a, [wOAM05Attrs]
@@ -36656,7 +36440,7 @@ Func_22329: ; 22329 (8:6329)
 	ld hl, Data_222b2
 	add hl, de
 	ld c, [hl]
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	cp $2
 	jp nz, Func_2234d
 	push bc
@@ -38793,7 +38577,7 @@ Func_238c8: ; 238c8 (8:78c8)
 	call CopyFromDEtoHL
 	ld bc, $64
 	ld de, $cacf
-	ld hl, $c789
+	ld hl, wc789
 	call CopyFromDEtoHL
 	ld bc, $3c
 	ld de, $cb58
@@ -46953,15 +46737,15 @@ Func_30393: ; 30393 (c:4393)
 	ld a, [hl]
 	ld b, $2
 	call DivideAbyB
-	ld [$c7bd], a
+	ld [wc7bd], a
 	ld a, $ff
-	ld a, [$c7bd]
+	ld a, [wc7bd]
 	cp $c
 	jp nc, Func_30454
-	ld hl, $c7bd
+	ld hl, wc7bd
 	ld l, [hl]
 	ld h, $0
-	ld de, $c7b1
+	ld de, wc7b1
 	add hl, de
 	ld a, [hl]
 	cp $15
@@ -61044,7 +60828,7 @@ Func_4f160: ; 4f160 (13:7160)
 	ld a, [wMapY]
 	cp $11
 	jp nz, Func_4f195
-	ld a, [$c78d]
+	ld a, [wc78d]
 	cp $2
 	jp c, Func_4f195
 	ld e, $1
@@ -61064,7 +60848,7 @@ Func_4f198: ; 4f198 (13:7198)
 	ld a, [wMapY]
 	cp $16
 	jp nz, Func_4f1c4
-	ld a, [$c799]
+	ld a, [wc799]
 	or a
 	jp nz, Func_4f1c4
 	ld e, $1
@@ -61074,7 +60858,7 @@ Func_4f1c4: ; 4f1c4 (13:71c4)
 	ld a, [wMapY]
 	cp $11
 	jp nz, Func_4f1d9
-	ld a, [$c799]
+	ld a, [wc799]
 	cp $1
 	jp nz, Func_4f1d9
 	ld e, $1
@@ -61084,7 +60868,7 @@ Func_4f1d9: ; 4f1d9 (13:71d9)
 	ld a, [wMapY]
 	cp $c
 	jp nz, Func_4f1eb
-	ld a, [$c799]
+	ld a, [wc799]
 	cp $2
 	jp nz, Func_4f1eb
 	ld e, $1
@@ -61462,40 +61246,40 @@ Func_4f50d: ; 4f50d (13:750d)
 	jp z, Func_4f532
 	cp $2b
 	jp nz, Func_4f569
-	ld a, [$c78d]
+	ld a, [wc78d]
 	cp $2
 	jp c, Func_4f52f
-	ld a, [$c78d]
+	ld a, [wc78d]
 	dec a
-	ld [$c78d], a
+	ld [wc78d], a
 Func_4f52f: ; 4f52f (13:752f)
 	jp Func_4f569
 
 Func_4f532: ; 4f532 (13:7532)
-	ld a, [$c78d]
+	ld a, [wc78d]
 	cp $2
 	jp nz, Func_4f544
-	ld a, [$c78d]
+	ld a, [wc78d]
 	dec a
-	ld [$c78d], a
+	ld [wc78d], a
 	jp Func_4f566
 
 Func_4f544: ; 4f544 (13:7544)
-	ld a, [$c78d]
+	ld a, [wc78d]
 	cp $3
 	jp c, Func_4f557
-	ld a, [$c78d]
+	ld a, [wc78d]
 	add $fe
-	ld [$c78d], a
+	ld [wc78d], a
 	jp Func_4f566
 
 Func_4f557: ; 4f557 (13:7557)
-	ld a, [$c78d]
+	ld a, [wc78d]
 	cp $2
 	jp c, Func_4f566
-	ld a, [$c78d]
+	ld a, [wc78d]
 	dec a
-	ld [$c78d], a
+	ld [wc78d], a
 Func_4f566: ; 4f566 (13:7566)
 	jp Func_4f569
 
@@ -65789,7 +65573,7 @@ Func_51923: ; 51923
 
 Func_51961: ; 51961
 	ld a, $7
-	ld [$c790], a
+	ld [wc790], a
 	ret
 
 Data_51967: ; 51967
@@ -65810,9 +65594,9 @@ Data_51967: ; 51967
 
 Func_51975: ; 51975
 	ld a, $6
-	ld [$c790], a
+	ld [wc790], a
 	ld a, $b
-	ld [$c78c], a
+	ld [wc78c], a
 	xor a
 .loop
 	cp $e
@@ -65865,7 +65649,7 @@ Data_519dc: ; 519dc
 
 Func_519ea: ; 519ea
 	ld a, $5
-	ld [$c790], a
+	ld [wc790], a
 	xor a
 .loop
 	cp $e
@@ -65929,9 +65713,9 @@ Data_51a70: ; 51a70
 
 Func_51a81: ; 51a81
 	ld a, $4
-	ld [$c790], a
+	ld [wc790], a
 	ld a, $7
-	ld [$c78d], a
+	ld [wc78d], a
 	xor a
 .loop
 	cp $11
@@ -65979,9 +65763,9 @@ Data_51aec: ; 51aec
 
 Func_51aef: ; 51aef
 	ld a, $1
-	ld [$c78d], a
+	ld [wc78d], a
 	ld a, $3
-	ld [$c790], a
+	ld [wc790], a
 	xor a
 .loop
 	cp $4
@@ -66040,7 +65824,7 @@ Data_51b7a: ; 51b7a
 
 Func_51b81: ; 51b81
 	ld a, $2
-	ld [$c790], a
+	ld [wc790], a
 	xor a
 Func_51b87: ; 51b87 (14:5b87)
 	cp $7
@@ -71366,7 +71150,7 @@ Func_54db3: ; 54db3 (15:4db3)
 	ld a, $3
 	call Func_57e7b
 	push af
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	cp $1
 	jp nz, Func_54e04
 	set_farcall_addrs_hli Func_5c694
@@ -75270,7 +75054,7 @@ Func_56d4b: ; 56d4b (15:6d4b)
 	call FindFirstNonzero
 	ld c, l
 	ld b, h
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	or a
 	jp nz, Func_56d72
 Func_56d58: ; 56d58 (15:6d58)
@@ -75438,7 +75222,7 @@ Func_56e8a: ; 56e8a (15:6e8a)
 	ld hl, $ca9d
 	call CopyFromDEtoHL
 	ld bc, $64
-	ld de, $c789
+	ld de, wc789
 	ld hl, $cacf
 	call CopyFromDEtoHL
 	ld bc, $3c
@@ -75604,7 +75388,7 @@ Func_5702e: ; 5702e (15:702e)
 	call CopyFromDEtoHL
 	ld bc, $64
 	ld de, $cacf
-	ld hl, $c789
+	ld hl, wc789
 	call CopyFromDEtoHL
 	ld bc, $3c
 	ld de, $cb58
@@ -75661,7 +75445,7 @@ Func_5711b: ; 5711b (15:711b)
 
 Func_57123: ; 57123 (15:7123)
 	ld a, $1
-	ld [$c798], a
+	ld [wc798], a
 	xor a
 Func_57129: ; 57129 (15:7129)
 	ld hl, $404
@@ -76131,7 +75915,7 @@ Func_57447: ; 57447 (15:7447)
 	add e
 	ld hl, sp+$8
 	ld [hl], a
-	ld a, [$c790]
+	ld a, [wc790]
 	pop hl
 	push af
 	push hl
@@ -76194,10 +75978,10 @@ Func_574ce: ; 574ce (15:74ce)
 	ld de, Data_57655
 	ld hl, $b01
 	call PlaceStringDEatCoordHL
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $a
 	jp nc, Func_57522
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -76209,7 +75993,7 @@ Func_574ce: ; 574ce (15:74ce)
 	jp Func_57532
 
 Func_57522: ; 57522 (15:7522)
-	ld hl, $c78c
+	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -82750,11 +82534,11 @@ Func_5e174: ; 5e174 (17:6174)
 	ld a, [wc2e8 + 1]
 	ld [wOAM04YCoord], a
 	callba_hli Func_5575d
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	ld c, a
 	push bc
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	set_farcall_addrs_hli Func_1445e
 	ld c, BANK(Data_54384)
 	ld de, Data_54384
@@ -82762,7 +82546,7 @@ Func_5e174: ; 5e174 (17:6174)
 	call FarCall
 	pop bc
 	ld a, c
-	ld [$c2fa], a
+	ld [wc2fa], a
 	read_hl_from_sp_plus $5a
 	call Func_5de14
 	ld hl, $4000
@@ -82818,17 +82602,17 @@ Func_5e226: ; 5e226 (17:6226)
 	ld a, [wc2e8 + 1]
 	ld [wOAM04YCoord], a
 	callba_hli Func_5575d
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	ld c, a
 	push bc
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	set_farcall_addrs_hli Func_56b35
 	xor a
 	call FarCall
 	pop bc
 	ld a, c
-	ld [$c2fa], a
+	ld [wc2fa], a
 	read_hl_from_sp_plus $5a
 	call Func_5de14
 	ld hl, $4000
@@ -85029,7 +84813,7 @@ Func_60f5a: ; 60f5a (18:4f5a)
 Func_60f61: ; 60f61 (18:4f61)
 	push af
 	ld a, $1
-	ld [$c2fa], a
+	ld [wc2fa], a
 	ld a, [wOAM06XCoord]
 	cp $81
 	jp nz, Func_60f7d
@@ -85212,7 +84996,7 @@ Func_610d1: ; 610d1 (18:50d1)
 	push af
 	push de
 	xor a
-	ld [$c2fa], a
+	ld [wc2fa], a
 	xor a
 Func_610df: ; 610df (18:50df)
 	cp $4
@@ -85483,7 +85267,7 @@ Func_612f6: ; 612f6 (18:52f6)
 	write_hl_to wCGB_BGPalsBuffer + 3 * 8 + 6
 	write_hl_to wCGB_BGPalsBuffer + 2 * 8 + 6
 	write_hl_to wCGB_BGPalsBuffer + 6
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	cp $3
 	jp z, Func_6135a
 	ld hl, $7fff
@@ -85606,7 +85390,7 @@ Func_613d3: ; 613d3 (18:53d3)
 	ld de, wCGB_BGPalsBuffer
 	ld hl, wCGB_OBPalsBuffer
 	call CopyFromDEtoHL
-	ld a, [$c2fa]
+	ld a, [wc2fa]
 	cp $4
 	jp z, Func_613fa
 	call WaitVideoTransfer
@@ -92825,7 +92609,7 @@ Func_68f92:
 	push bc
 	push bc
 	push hl
-	ld a, [$c78c]
+	ld a, [wc78c]
 	ld b, $7
 	call DivideAbyB
 	ld l, a
@@ -92880,10 +92664,10 @@ Func_68f92:
 	call Func_3afc
 	pop bc
 	pop hl
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $6
 	jp nc, Func_68ff4
-	ld a, [$c78c]
+	ld a, [wc78c]
 	add a
 	add $3
 	ld l, a
@@ -92907,7 +92691,7 @@ Func_68ff4: ; 68ff4 (1a:4ff4)
 	jp nz, Func_6904d
 	ld c, $0
 Func_69013: ; 69013 (1a:5013)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp c
 	jp c, Func_6904a
 	ld hl, sp+$6
@@ -93037,7 +92821,7 @@ Func_690c0: ; 690c0 (1a:50c0)
 	add e
 	ld hl, sp+$4
 	add [hl]
-	ld hl, $c78c
+	ld hl, wc78c
 	cp [hl]
 	jp nz, Func_690d4
 	jp Func_690de
@@ -93058,7 +92842,7 @@ Func_690de: ; 690de (1a:50de)
 Func_690e3: ; 690e3 (1a:50e3)
 	pop hl
 	call Func_6912c
-	ld a, [$c78c]
+	ld a, [wc78c]
 	ld c, a
 	ld b, $0
 	ld de, $2
@@ -93110,7 +92894,7 @@ Func_6912c: ; 6912c (1a:512c)
 	call MemCopy
 	pop hl
 	write_hl_to_sp_plus $11
-	ld a, [$c78c]
+	ld a, [wc78c]
 	ld b, $7
 	call DivideAbyB
 	ld l, a
@@ -93315,10 +93099,10 @@ Func_69284: ; 69284 (1a:5284)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	ld a, [$c78c]
+	ld a, [wc78c]
 	ld c, a
 	push bc
-	ld a, [$c78c]
+	ld a, [wc78c]
 	ld b, $7
 	call DivideAbyB
 	pop bc
@@ -93702,7 +93486,7 @@ Func_69563: ; 69563 (1a:5563)
 	ret
 
 Func_69581: ; 69581 (1a:5581)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_6958f
 	call Func_69593
@@ -93794,7 +93578,7 @@ Func_695fb: ; 695fb (1a:55fb)
 Func_69609: ; 69609 (1a:5609)
 	ld hl, Data_6949c
 	call Func_6935a
-	ld a, [$c78c]
+	ld a, [wc78c]
 	ld b, $5
 	call DivideAbyB
 	push af

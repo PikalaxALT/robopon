@@ -21,13 +21,13 @@ Func_82fa8:
 	ld hl, Data_82f82
 	call Func_80ce7_20
 	playmusic $11
-	ld a, [$c793]
+	ld a, [wc793]
 	or a
 	jp z, Func_82fe2
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $1
 	jp z, Func_82fe2
-	ld a, [$c793]
+	ld a, [wc793]
 	cp $2
 	jp nz, Func_82ff0
 Func_82fe2: ; 82fe2 (20:6fe2)
@@ -50,13 +50,13 @@ Data_83000: ; 83000
 	dr $83000, $83006
 
 Func_83006: ; 83006 (20:7006)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $8
 	jp nc, Func_83014
 	ld hl, Data_82ffa
 	call Func_80d9b_20
 Func_83014: ; 83014 (20:7014)
-	ld a, [$c78c]
+	ld a, [wc78c]
 	cp $5
 	jp nc, Func_83022
 	ld hl, Data_83000

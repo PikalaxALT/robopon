@@ -108,23 +108,23 @@ CheckFacingObject: ; a783 (2:6783)
 	ld a, [hli]
 	ld d, a
 	ld a, e
-	ld [$c890], a
+	ld [wCheckCollision_c890], a
 	ld a, d
-	ld [$c890 + 1], a
+	ld [wCheckCollision_c890 + 1], a
 	xor a
 	ld [wCheckCollisionObjectCounter], a
 .loop: ; a836 (2:6836)
-	ld a, [$c772]
+	ld a, [wc772]
 	ld b, a
 	ld a, [wCheckCollisionObjectCounter]
 	cp b
 	jp nc, .done
-	ld a, [$c84a]
+	ld a, [wc84a]
 	or a
 	jp z, .done
-	ld a, [$c890]
+	ld a, [wCheckCollision_c890]
 	ld l, a
-	ld a, [$c890 + 1]
+	ld a, [wCheckCollision_c890 + 1]
 	ld h, a
 	inc hl
 	inc hl
@@ -134,7 +134,7 @@ CheckFacingObject: ; a783 (2:6783)
 	jp z, .next
 	ld a, [wCheckCollisionObjectStructPointer]
 	ld l, a
-	ld a, [$c88f]
+	ld a, [wCheckCollisionObjectStructPointer + 1]
 	ld h, a
 	ld bc, $a
 	add hl, bc
@@ -292,16 +292,16 @@ CheckFacingObject: ; a783 (2:6783)
 	ld [wCheckCollisionObjectStructPointer], a
 	ld a, h
 	ld [wCheckCollisionObjectStructPointer + 1], a
-	ld a, [$c890]
+	ld a, [wCheckCollision_c890]
 	ld l, a
-	ld a, [$c890 + 1]
+	ld a, [wCheckCollision_c890 + 1]
 	ld h, a
 	ld bc, $4
 	add hl, bc
 	ld a, l
-	ld [$c890], a
+	ld [wCheckCollision_c890], a
 	ld a, h
-	ld [$c890 + 1], a
+	ld [wCheckCollision_c890 + 1], a
 	ld a, [wCheckCollisionObjectCounter]
 	inc a
 	ld [wCheckCollisionObjectCounter], a

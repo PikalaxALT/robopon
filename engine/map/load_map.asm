@@ -262,37 +262,37 @@ del: MACRO
 	ld hl, $0
 	write_hl_to wMapCollisionPointer
 	write_hl_to $c82e
-	write_hl_to $c82c
+	write_hl_to wc82c
 	write_hl_to wBlockdataPointer
-	write_hl_to $c826
+	write_hl_to wc826
 	write_hl_to wc822
 	write_hl_to wc824
 	ld hl, $0
 	write_hl_to wMapObjectsAndWarpDataPointer
 	ld hl, $0
-	write_hl_to $c778
+	write_hl_to wc778
 	ld hl, $0
 	write_hl_to wObjectStructPointer
 	ld hl, $0
 	write_hl_to wc776
 	ld hl, $0
-	write_hl_to $c82a
+	write_hl_to wc82a
 	xor a
-	ld [$c84d], a
-	ld [$c84c], a
-	ld [$c84b], a
+	ld [wc84d], a
+	ld [wc84c], a
+	ld [wc84b], a
 	ld a, $1
-	ld [$c84a], a
+	ld [wc84a], a
 	jp .okay
 
 .c_not_zero
 	del wc824
 	del wc822
-	del $c826
+	del wc826
 	del wBlockdataPointer
-	del $c82c
+	del wc82c
 	del $c82e
-	del $c82a
+	del wc82a
 	del wc85d
 .okay
 	set_farcall_addrs_hli GroupAndNumberToLinearIndex
@@ -312,7 +312,7 @@ del: MACRO
 	write_hl_to wc822
 	ld hl, $80
 	call AllocateMemory_Bank02
-	write_hl_to $c826
+	write_hl_to wc826
 	ld hl, $80
 	call AllocateMemory_Bank02
 	write_hl_to wc844
@@ -400,7 +400,7 @@ Func_8752: ; 8752 (2:4752)
 	call Func_bbc8
 Func_875d: ; 875d (2:475d)
 	ld a, $ff
-	ld [$c81f], a
+	ld [wc81f], a
 	ld hl, sp+$4
 	ld [hl], $ff
 	ld bc, $0
@@ -463,7 +463,7 @@ Func_87b9: ; 87b9 (2:47b9)
 	call Func_a184
 Func_87ca: ; 87ca (2:47ca)
 	pop de
-	read_hl_from $c826
+	read_hl_from wc826
 	ld bc, $80
 	call CopyFromDEtoHL
 	read_hl_from wc842

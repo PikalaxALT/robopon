@@ -48,11 +48,11 @@ Func_b876: ; b876 (2:7876)
 	ld c, $0
 Func_b880: ; b880 (2:7880)
 	ld a, c
-	ld hl, $c780
+	ld hl, wc780
 	cp [hl]
 	jp nc, Func_b96d
 	push bc
-	ld a, [$c77d]
+	ld a, [wc77d]
 	ld [wFarCallDestBank], a
 	ld l, c
 	ld h, $0
@@ -66,7 +66,7 @@ Func_b880: ; b880 (2:7880)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from $c77e
+	read_hl_from wc77e
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$30
@@ -110,10 +110,10 @@ Func_b880: ; b880 (2:7880)
 	write_hl_to_sp_plus $30
 	pop bc
 	push bc
-	ld a, [$c784]
+	ld a, [wc784]
 	or a
 	jp z, Func_b915
-	ld a, [$c780]
+	ld a, [wc780]
 	dec a
 	cp c
 	jp nz, Func_b915
@@ -128,10 +128,10 @@ Func_b915: ; b915 (2:7915)
 	jp Func_b969
 
 Func_b919: ; b919 (2:7919)
-	ld a, [$c784]
+	ld a, [wc784]
 	or a
 	jp z, Func_b946
-	ld a, [$c780]
+	ld a, [wc780]
 	dec a
 	cp c
 	jp nz, Func_b946
@@ -205,7 +205,7 @@ Func_b98b: ; b98b (2:798b)
 	jp Func_b876
 
 Func_b996: ; b996 (2:7996)
-	ld a, [$c780]
+	ld a, [wc780]
 	cp c
 	jp z, Func_ba42
 	ld a, $3
