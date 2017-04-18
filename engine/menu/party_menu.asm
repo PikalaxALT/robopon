@@ -172,7 +172,7 @@ Func_5e647: ; 5e647 (17:6647)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], a
 	inc c
@@ -198,7 +198,7 @@ Func_5e663: ; 5e663 (17:6663)
 	ld hl, sp+$38
 	write_hl_to_sp_plus $37
 	xor a
-	ld [wOAM25XCoord], a
+	ld [$c395], a
 	ld hl, sp+$29
 	reg16swap de, hl
 	ld hl, sp+$a
@@ -241,7 +241,7 @@ Func_5e6ac: ; 5e6ac (17:66ac)
 	ld hl, sp+$3a
 	write_hl_to_sp_plus $39
 	xor a
-	ld [wOAM25XCoord], a
+	ld [$c395], a
 	pop de
 	pop bc
 Func_5e6eb: ; 5e6eb (17:66eb)
@@ -304,7 +304,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	push hl
 	push bc
 	ld a, [wc2e8 + 1]
-	ld [wOAM04YCoord], a
+	ld [$c310], a
 	ld hl, wc2e8 + 1
 	ld l, [hl]
 	ld h, $0
@@ -475,7 +475,7 @@ Func_5e89f: ; 5e89f (17:689f)
 	ld hl, sp+$48
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$48
@@ -512,7 +512,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	ld hl, sp+$36
 	write_hl_to_sp_plus $35
 	xor a
-	ld [wOAM25XCoord], a
+	ld [$c395], a
 	ld hl, sp+$27
 	reg16swap de, hl
 	ld hl, sp+$8
@@ -655,7 +655,7 @@ Func_5e9f7: ; 5e9f7 (17:69f7)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], a
 	inc c
@@ -686,7 +686,7 @@ Func_5ea13: ; 5ea13 (17:6a13)
 	ld hl, sp+$38
 	write_hl_to_sp_plus $37
 	xor a
-	ld [wOAM25XCoord], a
+	ld [$c395], a
 	ld hl, sp+$29
 	reg16swap de, hl
 	ld hl, sp+$a
@@ -709,7 +709,7 @@ Func_5ea5d: ; 5ea5d (17:6a5d)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], a
 	inc c
@@ -752,7 +752,7 @@ Func_5ea9c: ; 5ea9c (17:6a9c)
 	ld hl, sp+$36
 	write_hl_to_sp_plus $35
 	xor a
-	ld [wOAM25XCoord], a
+	ld [$c395], a
 	ld hl, sp+$27
 	reg16swap de, hl
 	ld hl, sp+$8
@@ -776,7 +776,7 @@ Func_5eade: ; 5eade (17:6ade)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], a
 	inc c
@@ -809,7 +809,7 @@ Func_5eafa: ; 5eafa (17:6afa)
 	ld hl, sp+$38
 	write_hl_to_sp_plus $37
 	xor a
-	ld [wOAM25XCoord], a
+	ld [$c395], a
 	ld hl, sp+$29
 	reg16swap de, hl
 	ld hl, sp+$a

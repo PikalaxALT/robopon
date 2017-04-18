@@ -217,14 +217,14 @@ Func_781ab:: ; 781ab (1e:41ab)
 	call Func_7892c
 .asm_781f1
 	hlcoord 16, 4
-	ld de, $c400
+	ld de, wOAMBuffer
 	ld bc, $100
 	predef Func_7cc9a
 	ld a, b
 	or c
 	jr z, .asm_7820a
 	hlcoord 8, 12, wAttrMap
-	ld de, $c400
+	ld de, wOAMBuffer
 	predef Func_7cca9
 	jr .asm_781f1
 
@@ -557,13 +557,13 @@ Func_78440:: ; 78440 (1e:4440)
 	predef Func_7d918
 	ld hl, Data_78510
 	predef Func_7af96
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	lb de, $ff, $46
 	ld bc, $a
 	predef Func_7c577
 	xor a
-	ld [wOAM2_02VTile], a
-	ld hl, $c400
+	ld [wOAM02VTile], a
+	ld hl, wOAMBuffer
 	call Func_785dd
 	ld hl, $15c
 	predef Func_7d918
@@ -576,7 +576,7 @@ Func_78440:: ; 78440 (1e:4440)
 	predef Func_7c577
 	pop de
 	pop bc
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	predef Func_7d4e0
 	ld hl, $c404
 	predef Func_7af96
@@ -623,7 +623,7 @@ Func_78526:: ; 78526 (1e:4526)
 	jr z, .asm_7853a
 	inc de
 .asm_7853a
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	predef Func_7d486
 	ld hl, $d01
 	predef Func_7d905
@@ -650,7 +650,7 @@ Func_78526:: ; 78526 (1e:4526)
 	ld b, $0
 	ld e, l
 	ld d, h
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	push hl
 	push bc
 	predef CopyPredef
@@ -660,7 +660,7 @@ Func_78526:: ; 78526 (1e:4526)
 	ld [hl], $0
 	ld hl, $400
 	predef Func_7d905
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	predef Func_7af96
 	pop de
 	bit 0, d
@@ -668,7 +668,7 @@ Func_78526:: ; 78526 (1e:4526)
 	call Func_78934
 	ld hl, $d02
 	predef Func_7d905
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -689,7 +689,7 @@ Func_78526:: ; 78526 (1e:4526)
 	ld bc, $a
 	predef CopyPredef
 	xor a
-	ld [wOAM2_0eYCoord], a
+	ld [wOAM0eYCoord], a
 	ld hl, $c42e
 	call Func_785dd
 	pop hl
@@ -764,7 +764,7 @@ Func_785ec:: ; 785ec (1e:45ec)
 .asm_7861c
 	ld de, Data_78038
 .asm_7861f
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld bc, $10
 	push hl
 	predef CopyPredef
@@ -1264,7 +1264,7 @@ Func_78934:: ; 78934 (1e:4934)
 	jr z, .asm_7894a
 	call Func_78929
 	hlcoord 16, 4
-	ld de, $c400
+	ld de, wOAMBuffer
 	ld bc, $2e
 	predef Func_7cc9a
 	ret
@@ -1284,7 +1284,7 @@ Func_78934:: ; 78934 (1e:4934)
 	add hl, de
 	ld d, h
 	ld e, l
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld bc, $2e
 	predef CopyPredef
 	ret
@@ -1361,7 +1361,7 @@ Func_78997:: ; 78997 (1e:4997)
 	ld bc, $e02
 	predef Func_7be3e
 	ld de, Data_79d33
-	ld bc, $c400
+	ld bc, wOAMBuffer
 	predef Func_7ad4e
 	ld de, $8000
 	ld bc, $380
@@ -1409,7 +1409,7 @@ Func_78a36:: ; 78a36 (1e:4a36)
 	push hl
 	push af
 	push af
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld e, $0
 	ld bc, $11
 	predef Func_7d5e7
@@ -1447,10 +1447,10 @@ Func_78a36:: ; 78a36 (1e:4a36)
 	ld b, $0
 	ld e, l
 	ld d, h
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	predef CopyPredef
 .asm_78a7c
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	predef Func_7af96
 	ld a, $e
 	predef Func_7d9f9
@@ -1578,7 +1578,7 @@ Func_78b36:: ; 78b36 (1e:4b36)
 	ld e, c
 Func_78b45:: ; 78b45 (1e:4b45)
 	ld d, $0
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	predef Func_7d486
 	ld hl, $c403
 	predef Func_7af96
@@ -1608,7 +1608,7 @@ Func_78b5e:: ; 78b5e (1e:4b5e)
 	ld e, a
 	ld d, $0
 	push af
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	predef Func_7d486
 	pop af
 	ld hl, Data_78c8a
@@ -1841,7 +1841,7 @@ Func_79033:: ; 79033 (1e:5033)
 	ld de, $310
 	predef Func_7dc58
 	ld de, Data_790b2
-	ld bc, $c400
+	ld bc, wOAMBuffer
 	predef Func_7ad4e
 	ld de, $9000
 	ld bc, $800
@@ -2304,18 +2304,18 @@ Func_7a114:: ; 7a114 (1e:6114)
 
 Func_7a11d:: ; 7a11d (1e:611d)
 	hlcoord 5, 10, wAttrMap
-	ld de, $c400
+	ld de, wOAMBuffer
 	ld bc, $a
 	predef Func_7ac8d
 	jr c, .asm_7a146
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld de, Data_7a61d
 	ld bc, $a
 	predef Func_7af75
 	or a
 	jr nz, .asm_7a149
 	inc a
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld [hl], a
 	decoord 5, 10, wAttrMap
 	ld bc, $a
@@ -2614,13 +2614,13 @@ Func_7a627:: ; 7a627 (1e:6627)
 	call Func_7a651
 Func_7a62a:: ; 7a62a (1e:662a)
 	decoord 16, 4
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld bc, $100
 	predef CopyPredef
 	decoord 5, 7, wAttrMap
 	call Func_7a65c
 	call Func_7a651
-	ld de, $c400
+	ld de, wOAMBuffer
 	hlcoord 16, 4
 	ld bc, $100
 	predef CopyPredef
@@ -3326,13 +3326,13 @@ Func_7aae8:: ; 7aae8 (1e:6ae8)
 
 Func_7aaf3:: ; 7aaf3 (1e:6af3)
 	call Func_7ad13
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	call Func_7aa53
 	ret c
 	call Func_7aa87
 	call Func_7ad13
 	hlcoord 16, 4
-	ld de, wOAM2_00YCoord
+	ld de, wOAM00YCoord
 	predef Func_7afe6
 asm_7ab0b
 	call Func_7aa82
@@ -3370,7 +3370,7 @@ Func_7ab3b:: ; 7ab3b (1e:6b3b)
 	call Func_7aad3
 	pop bc
 	ret c
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	jp Func_7aa3e
 
 Func_7ab4f:: ; 7ab4f (1e:6b4f)
@@ -3382,12 +3382,12 @@ Func_7ab4f:: ; 7ab4f (1e:6b4f)
 	inc b
 .asm_7ab59
 	hlcoord 16, 4
-	ld de, wOAM2_00YCoord
+	ld de, wOAM00YCoord
 	jp Func_7aa87
 
 Func_7ab62:: ; 7ab62 (1e:6b62)
 	call Func_7ad13
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	call Func_7aa53
 	ret c
 	call Func_7ab4f
@@ -3424,7 +3424,7 @@ Func_7aba1:: ; 7aba1 (1e:6ba1)
 	push af
 	call Func_7ad13
 	call Func_7ac00
-	ld de, wOAM2_00YCoord
+	ld de, wOAM00YCoord
 	call Func_7aa87
 	push de
 	push bc
@@ -3459,7 +3459,7 @@ Func_7abd7:: ; 7abd7 (1e:6bd7)
 	ld a, [hSRAMBank]
 	push af
 	call Func_7ad13
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	push hl
 	push de
 	push bc
@@ -3862,7 +3862,7 @@ Func_7addf:: ; 7addf (1e:6ddf)
 	ld bc, $c
 	add hl, bc
 	ld c, [hl]
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	xor a
 	ld [hli], a
 	ld [hld], a
@@ -3871,16 +3871,16 @@ Func_7addf:: ; 7addf (1e:6ddf)
 	call Func_7b148
 	pop bc
 	jr c, .asm_7ae26
-	ld a, [wOAM2_02XCoord]
+	ld a, [wOAM02XCoord]
 	ld b, a
 	bit 4, b
 	jr z, .asm_7adef
-	ld a, [wOAM2_03YCoord]
+	ld a, [wOAM03YCoord]
 	cp c
 	jr nz, .asm_7adef
 	ld de, $d
 	add hl, de
-	ld a, [wOAM2_02Attrs]
+	ld a, [wOAM02Attrs]
 	sub $61
 	bit 3, b
 	jr z, .asm_7ae13
@@ -4386,24 +4386,24 @@ Func_7b056:: ; 7b056 (1e:7056)
 	hlcoord 16, 4
 	ld bc, $ff
 	predef CopyPredef
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	xor a
 	ld [hli], a
 	ld [hld], a
 .asm_7b066
 	call Func_7b148
 	jr c, .asm_7b0aa
-	ld a, [wOAM2_02XCoord]
+	ld a, [wOAM02XCoord]
 	and $4
 	jr z, .asm_7b066
-	ld a, [wOAM2_03YCoord]
+	ld a, [wOAM03YCoord]
 	and $7f
 	ld b, a
 	aCoord 8, 5
 	and $7f
 	cp b
 	jr nz, .asm_7b066
-	ld a, [wOAM2_02VTile]
+	ld a, [wOAM02VTile]
 	or a
 	jr z, .asm_7b08d
 	ld b, a
@@ -4411,10 +4411,10 @@ Func_7b056:: ; 7b056 (1e:7056)
 	cp b
 	jr nz, .asm_7b066
 .asm_7b08d
-	ld a, [wOAM2_00VTile]
+	ld a, [wOAM00VTile]
 	cp $ff
 	jr z, .asm_7b0a5
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	call Func_7b113
 	predef Func_7c586
 	ld d, h
@@ -4501,7 +4501,7 @@ asm_7b0f7
 	ret
 
 Func_7b108:: ; 7b108 (1e:7108)
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	ld d, b
 	ld e, c
 	ld bc, $ff
@@ -4743,7 +4743,7 @@ Func_7b222:: ; 7b222 (1e:7222)
 	ld h, $0
 	predef Func_7d753
 	ld de, Data_7b2e2
-	ld bc, wOAM2_00YCoord
+	ld bc, wOAM00YCoord
 	predef Func_7ad4e
 	decoord 12, 17
 	ld bc, $8f0
@@ -4835,7 +4835,7 @@ Func_7b25b:: ; 7b25b (1e:725b)
 	push bc
 	ld e, l
 	ld d, h
-	ld bc, wOAM2_00YCoord
+	ld bc, wOAM00YCoord
 	predef Func_7ad4e
 	pop bc
 	pop hl
@@ -13626,7 +13626,7 @@ Func_7ea15:: ; 7ea15 (1f:6a15)
 	jr z, .asm_7eabd
 	call Func_7eb86
 	push bc
-	ld de, $c400
+	ld de, wOAMBuffer
 	ld a, l
 	sub e
 	ld c, a
@@ -13664,7 +13664,7 @@ Func_7ea15:: ; 7ea15 (1f:6a15)
 Func_7eaca:: ; 7eaca (1f:6aca)
 	ld hl, sp+$9
 	call Func_7ebd9
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	call Func_7ebe9
 	push hl
 	ld hl, sp+$6
@@ -13679,7 +13679,7 @@ Func_7eaca:: ; 7eaca (1f:6aca)
 	call Func_7ed05
 asm_7eae5
 	push bc
-	ld de, $c400
+	ld de, wOAMBuffer
 	ld a, l
 	sub e
 	ld c, a
@@ -13761,7 +13761,7 @@ Func_7eb37:: ; 7eb37 (1f:6b37)
 Func_7eb44:: ; 7eb44 (1f:6b44)
 	ld hl, sp+$b
 	call Func_7ebd9
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	call Func_7edc6
 	push hl
 	ld hl, sp+$6
@@ -13810,7 +13810,7 @@ Func_7eb61:: ; 7eb61 (1f:6b61)
 	ret
 
 Func_7eb86:: ; 7eb86 (1f:6b86)
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	call Func_7eb61
 	bit 0, b
 	jr z, .asm_7ebaa

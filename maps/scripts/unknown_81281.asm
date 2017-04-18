@@ -43,7 +43,7 @@ Func_81281:
 	ld a, $d
 	call Func_80c94_20
 	ld a, $1
-	ld [$c7e2], a
+	ld [wc7e2], a
 	xor a
 	ld [wc791], a
 	ld e, $6

@@ -46,7 +46,7 @@ Func_83213:
 	ld hl, Func_8324c
 	call Func_80f11_20
 	ld a, $9
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_831e4
 	call LoadMapObjects_20
@@ -154,7 +154,7 @@ Func_83340:
 	ld hl, Func_83379
 	call Func_80f11_20
 	ld a, $a
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_8331a
 	call LoadMapObjects_20
@@ -197,7 +197,7 @@ Func_833ba:
 	ld hl, Func_833eb
 	call Func_80f11_20
 	ld a, $b
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_83399
 	call LoadMapObjects_20
@@ -240,7 +240,7 @@ Func_83431:
 	ld hl, Func_8346a
 	call Func_80f11_20
 	ld a, $c
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_8340b
 	call LoadMapObjects_20
@@ -286,7 +286,7 @@ Func_834bd:
 	ld hl, Func_834f6
 	call Func_80f11_20
 	ld a, $d
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_8348a
 	call LoadMapObjects_20
@@ -329,7 +329,7 @@ Func_83537:
 	ld hl, Func_83568
 	call Func_80f11_20
 	ld a, $e
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_83516
 	call LoadMapObjects_20
@@ -372,7 +372,7 @@ Func_835ae:
 	ld hl, Func_835e7
 	call Func_80f11_20
 	ld a, $f
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_83588
 	call LoadMapObjects_20
@@ -418,7 +418,7 @@ Func_83632:
 	ld hl, Func_8366b
 	call Func_80f11_20
 	ld a, $10
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_83607
 	call LoadMapObjects_20
@@ -464,7 +464,7 @@ Func_836b1:
 	ld hl, Func_836ea
 	call Func_80f11_20
 	ld a, $11
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_8368b
 	call LoadMapObjects_20
@@ -510,7 +510,7 @@ Func_83730:
 	ld hl, Func_83769
 	call Func_80f11_20
 	ld a, $12
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_8370a
 	call LoadMapObjects_20
@@ -553,7 +553,7 @@ Func_837aa:
 	ld hl, Func_837db
 	call Func_80f11_20
 	ld a, $13
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_83789
 	call LoadMapObjects_20
@@ -596,7 +596,7 @@ Func_83816:
 	ld hl, Func_8384f
 	call Func_80f11_20
 	ld a, $14
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $2
 	ld hl, Data_837fb
 	call LoadMapObjects_20
@@ -645,7 +645,7 @@ Func_838a2:
 	ld hl, Func_838f0
 	call Func_80f11_20
 	xor a
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $2
 	ld hl, Data_8386f
 	call LoadMapObjects_20
@@ -975,7 +975,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	ld hl, $0
 	write_hl_to_sp_plus $31
 	ld a, $1
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -994,7 +994,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	call FarCall
 	push hl
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -1347,7 +1347,7 @@ Func_851bc: ; 851bc (21:51bc)
 	ld a, $1
 	call Func_80cc6_21
 	ld a, $2
-	ld [$c7e2], a
+	ld [wc7e2], a
 	checkevent $32
 	or a
 	jp nz, Func_851fe
@@ -2092,7 +2092,7 @@ Func_85a59: ; 85a59 (21:5a59)
 	call EventFlagAction_21
 Func_85a61: ; 85a61 (21:5a61)
 	ld a, $1
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $5
 	ld hl, Data_85992
 	call LoadMapObjects_21
@@ -2112,12 +2112,12 @@ Func_85a61: ; 85a61 (21:5a61)
 	or a
 	jp nz, Func_85aa8
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_85aac
 
 Func_85aa8: ; 85aa8 (21:5aa8)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_85aac: ; 85aac (21:5aac)
 	jp Func_85abc
 
@@ -2315,7 +2315,7 @@ Func_85d1a: ; 85d1a (21:5d1a)
 	call EventFlagAction_21
 Func_85d22: ; 85d22 (21:5d22)
 	ld a, $7
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $2
 	ld hl, Data_85c82
 	call LoadMapObjects_21
@@ -2335,12 +2335,12 @@ Func_85d22: ; 85d22 (21:5d22)
 	or a
 	jp nz, Func_85d69
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_85d6d
 
 Func_85d69: ; 85d69 (21:5d69)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_85d6d: ; 85d6d (21:5d6d)
 	jp Func_85d7d
 
@@ -2490,18 +2490,18 @@ Func_85fb0: ; 85fb0 (21:5fb0)
 	ld a, [wMapX]
 	cp $5
 	jp nz, Func_85fc9
-	ld a, [$c7de]
+	ld a, [wc7de]
 	inc a
-	ld [$c7de], a
+	ld [wc7de], a
 	jp Func_85fd8
 
 Func_85fc9: ; 85fc9 (21:5fc9)
 	ld a, [wMapX]
 	cp $4
 	jp nz, Func_85fd8
-	ld a, [$c7de]
+	ld a, [wc7de]
 	dec a
-	ld [$c7de], a
+	ld [wc7de], a
 Func_85fd8: ; 85fd8 (21:5fd8)
 	ld e, $3
 	ld hl, Data_85f05
@@ -2517,12 +2517,12 @@ Func_85fd8: ; 85fd8 (21:5fd8)
 	or a
 	jp nz, Func_8600d
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_86011
 
 Func_8600d: ; 8600d (21:600d)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_86011: ; 86011 (21:6011)
 	jp Func_86019
 
@@ -2530,7 +2530,7 @@ Func_86014: ; 86014 (21:6014)
 	playmusic SONG_11
 Func_86019: ; 86019 (21:6019)
 	call Func_8001c_21
-	ld a, [$c7de]
+	ld a, [wc7de]
 	cp $5
 	jp z, Func_86060
 	cp $3
@@ -2768,18 +2768,18 @@ Func_8643f: ; 8643f (21:643f)
 	ld a, [wMapX]
 	cp $5
 	jp nz, Func_86458
-	ld a, [$c7de]
+	ld a, [wc7de]
 	dec a
-	ld [$c7de], a
+	ld [wc7de], a
 	jp Func_86467
 
 Func_86458: ; 86458 (21:6458)
 	ld a, [wMapX]
 	cp $4
 	jp nz, Func_86467
-	ld a, [$c7de]
+	ld a, [wc7de]
 	inc a
-	ld [$c7de], a
+	ld [wc7de], a
 Func_86467: ; 86467 (21:6467)
 	checkevent $38
 	cp $1
@@ -2792,19 +2792,19 @@ Func_86467: ; 86467 (21:6467)
 	or a
 	jp nz, Func_86494
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_86498
 
 Func_86494: ; 86494 (21:6494)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_86498: ; 86498 (21:6498)
 	jp Func_864a0
 
 Func_8649b: ; 8649b (21:649b)
 	playmusic SONG_11
 Func_864a0: ; 864a0 (21:64a0)
-	ld a, [$c7de]
+	ld a, [wc7de]
 	cp $6
 	jp z, Func_86536
 	cp $4
@@ -3510,7 +3510,7 @@ Func_86ffa:
 	ld a, $2
 	ld [wc789], a
 	ld a, $4
-	ld [$c7e2], a
+	ld [wc7e2], a
 	ld a, $4
 	call Func_80c94_21
 	call Func_870fa
@@ -3645,7 +3645,7 @@ Func_871fe:
 	or a
 	jp nz, Func_8723b
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	call Func_8001c_21
 	writenpctext TreeBitstreamText_3a89f
 	call Func_8737a
@@ -3671,7 +3671,7 @@ Func_8723b: ; 8723b (21:723b)
 	ld hl, Data_871d4
 	call Func_800fb_21
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 	call Func_8001c_21
 	ld hl, $2d5
 	call Func_80f72_21
@@ -3808,12 +3808,12 @@ Func_8744d:
 	or a
 	jp nz, Func_87484
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_87488
 
 Func_87484: ; 87484 (21:7484)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_87488: ; 87488 (21:7488)
 	playmusic SONG_CAVE
 	call Func_8001c_21
@@ -4044,7 +4044,7 @@ Func_87828: ; 87828 (21:7828)
 	call Func_800fb_21
 	playmusic SONG_CAVE
 	ld a, $4
-	ld [$c7e2], a
+	ld [wc7e2], a
 	ld a, [$c78a]
 	cp $3
 	jp nz, Func_8786b
@@ -4066,12 +4066,12 @@ Func_8786b: ; 8786b (21:786b)
 	or a
 	jp nz, Func_8787d
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_87881
 
 Func_8787d: ; 8787d (21:787d)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_87881: ; 87881 (21:7881)
 	call Func_8001c_21
 	ld hl, $2d7
@@ -4434,12 +4434,12 @@ Func_87b87: ; 87b87 (21:7b87)
 	or a
 	jp nz, Func_87b99
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_87b9d
 
 Func_87b99: ; 87b99 (21:7b99)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_87b9d: ; 87b9d (21:7b9d)
 	xor a
 	call Func_80653_21
@@ -4592,12 +4592,12 @@ Func_87d88:
 	or a
 	jp nz, Func_87daf
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_87db3
 
 Func_87daf: ; 87daf (21:7daf)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_87db3: ; 87db3 (21:7db3)
 	ld e, $1
 	ld hl, Data_87d7a
@@ -4676,12 +4676,12 @@ Func_87ea2:
 	or a
 	jp nz, Func_87ec9
 	ld a, $1
-	ld [$c7da], a
+	ld [wc7da], a
 	jp Func_87ecd
 
 Func_87ec9: ; 87ec9 (21:7ec9)
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 Func_87ecd: ; 87ecd (21:7ecd)
 	ld e, $1
 	ld hl, Data_87e94
@@ -4899,7 +4899,7 @@ Func_9a1bb: ; 9a1bb (26:61bb)
 	ld hl, -1
 	write_hl_to_sp_plus $41
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call Func_9a377
 	call Func_9a391
 	ld hl, sp+$1
@@ -4917,7 +4917,7 @@ Func_9a1bb: ; 9a1bb (26:61bb)
 	call DivideAbyB
 	push af
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	set_farcall_addrs_hli Func_da901
 	pop af
 	pop hl
@@ -4984,7 +4984,7 @@ Func_9a28c: ; 9a28c (26:628c)
 	push hl
 	add sp, -$3e
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call Func_9a377
 	call Func_9a391
 	ld de, Data_9a36c
@@ -6171,12 +6171,12 @@ Func_da093:: ; da093
 	dr $da093, $da4dc
 
 Func_da4dc:: ; da4dc (36:64dc)
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 .loop
 	ld a, l
-	sub wOAMBuffer2End % $100
+	sub wOAMBufferEnd % $100
 	ld a, h
-	sbc wOAMBuffer2End / $100
+	sbc wOAMBufferEnd / $100
 	jp nc, .done
 	ld a, $ff
 	ld [hl], a

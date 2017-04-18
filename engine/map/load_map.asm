@@ -250,7 +250,7 @@ del: MACRO
 	ld bc, $52
 	call MemCopy
 	xor a
-	ld [$c7a5], a
+	ld [wc7a5], a
 	pop bc
 
 	push bc
@@ -384,7 +384,7 @@ del: MACRO
 	ld e, $ff
 	read_hl_from wc842
 	call FillMemory
-	ld a, [$c7da]
+	ld a, [wc7da]
 	or a
 	jp nz, Func_8752
 	call Func_b6f2
@@ -521,7 +521,7 @@ Func_8827: ; 8827 (2:4827)
 	ld [wc834], a
 	ld [wc833], a
 	ld [wc832], a
-	ld [$c821], a
+	ld [wc821], a
 	xor a
 	ld [wc83a], a
 	xor a

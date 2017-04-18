@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 
-SECTION "Bank 01", ROMX, BANK [$01]
+SECTION "Bank 01", ROMX, BANK [$1]
 Func_4000:: ; 4000
 	ld a, $0
 	call Func_6169
@@ -103,7 +103,7 @@ Func_40c8: ; 40c8
 
 FillToStackBottomWithWillTestString: ; 40cb (1:40cb)
 	ld hl, sp+$0
-	ld de, wOAM2_0aYCoord
+	ld de, wOAM0aYCoord
 	ld a, l
 	sub e
 	ld c, a
@@ -1599,7 +1599,7 @@ Func_6a77: ; 6a77
 	ld a, [wLCDC]
 	res 2, a
 	call Func_6183
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	ld b, $8
 	ld d, $0
 .asm_6aa0
@@ -1634,7 +1634,7 @@ Func_6a77: ; 6a77
 	set 1, a
 	ld [wNextVBlankFlags], a
 	call Func_6294
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	ld c, $28
 .asm_6ad4
 	ld a, [hl]
@@ -1656,7 +1656,7 @@ Func_6a77: ; 6a77
 	jr nz, .asm_6ad4
 	dec b
 	jr nz, .asm_6ac4
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	ld e, $0
 	ld bc, $a0
 	call FillMemory
@@ -2143,21 +2143,21 @@ Func_6fe0: ; 6fe0
 	ld l, a
 	push hl
 	xor a
-	ld [wOAM27VTile], a
+	ld [$c39e], a
 	ld a, $3
 	call GetSRAMBank
 	call DisableJoypadInt
 	ld hl, Func_1069
 	write_hl_to wSerial + 1
 	xor a
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	xor a
 .asm_7005
-	ld [wOAM06Attrs], a
-	ld [wOAM07XCoord], a
+	ld [$c31b], a
+	ld [$c31d], a
 	ld [rSC], a
 	xor a
-	ld [wOAM06XCoord], a
+	ld [$c319], a
 	ld e, $5
 	ld hl, Data_71f0
 	call Func_2a3e
@@ -2188,11 +2188,11 @@ Func_7038: ; 7038 (1:7038)
 	or a
 	jp nz, Func_70bc
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	ld a, $dd
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	ld a, $80
-	ld [wOAM07XCoord], a
+	ld [$c31d], a
 	ld a, [wTextBlinkerFrameCounter]
 	ld l, a
 Func_7051: ; 7051 (1:7051)
@@ -2200,11 +2200,11 @@ Func_7051: ; 7051 (1:7051)
 	xor l
 	and $2
 	jp nz, Func_7061
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_7051
 Func_7061: ; 7061 (1:7061)
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp nz, Func_7090
 	push de
@@ -2214,9 +2214,9 @@ Func_7061: ; 7061 (1:7061)
 	cp $46
 	jp nc, Func_708c
 	ld a, $fe
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	ld a, $1
-	ld [wOAM07XCoord], a
+	ld [$c31d], a
 	ld hl, sp+$6
 	ld [hl], $1
 Func_708c: ; 708c (1:708c)
@@ -2225,7 +2225,7 @@ Func_708c: ; 708c (1:708c)
 
 Func_7090: ; 7090 (1:7090)
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	ld a, [wTextBlinkerFrameCounter]
 	ld l, a
 Func_7098: ; 7098 (1:7098)
@@ -2233,14 +2233,14 @@ Func_7098: ; 7098 (1:7098)
 	xor l
 	and $2
 	jp nz, Func_70a8
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_7098
 Func_70a8: ; 70a8 (1:70a8)
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $fe
 	jp nz, Func_70b9
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_70b9
 	ld e, $80
@@ -2250,11 +2250,11 @@ Func_70b9: ; 70b9 (1:70b9)
 Func_70bc: ; 70bc (1:70bc)
 	push de
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	ld a, $fe
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	ld a, $1
-	ld [wOAM07XCoord], a
+	ld [$c31d], a
 	ld a, $81
 	ld [rSC], a
 	ld l, $0
@@ -2263,17 +2263,17 @@ Func_70d1: ; 70d1 (1:70d1)
 	cp $3
 	jp nc, Func_70fa
 Func_70d7: ; 70d7 (1:70d7)
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_70d7
 	push hl
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	call NextOverworldFrame
 	ld a, $81
 	ld [rSC], a
 	pop hl
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $dd
 	jp z, Func_70f6
 	jp Func_70fa
@@ -2287,7 +2287,7 @@ Func_70fa: ; 70fa (1:70fa)
 	ld a, l
 	cp $3
 	jp c, Func_710e
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $dd
 	jp nz, Func_710e
 	ld e, $81
@@ -2295,9 +2295,9 @@ Func_70fa: ; 70fa (1:70fa)
 
 Func_710e: ; 710e (1:710e)
 	ld a, $dd
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	xor a
-	ld [wOAM07XCoord], a
+	ld [$c31d], a
 	ld hl, sp+$4
 	ld [hl], $0
 Func_711b: ; 711b (1:711b)
@@ -2311,27 +2311,27 @@ Func_711e: ; 711e (1:711e)
 	jp nz, Func_7161
 	push hl
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	xor a
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	ld a, $1
-	ld [wOAM07XCoord], a
+	ld [$c31d], a
 	ld a, $81
 	ld [rSC], a
 Func_7137: ; 7137 (1:7137)
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_7137
 	ld a, $81
 	ld [rSC], a
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 Func_7146: ; 7146 (1:7146)
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_7146
 	ld a, $1
-	ld [wOAM27VTile], a
+	ld [$c39e], a
 	ld l, c
 	ld h, b
 	call Func_2887
@@ -2354,12 +2354,12 @@ Func_716c: ; 716c (1:716c)
 	cp $f
 	jp nc, Func_718a
 Func_7172: ; 7172 (1:7172)
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_7172
 	push hl
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	call NextOverworldFrame
 	ld a, $81
 	ld [rSC], a
@@ -2371,7 +2371,7 @@ Func_718a: ; 718a (1:718a)
 	pop bc
 	pop de
 	pop hl
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $dd
 	jp z, Func_7198
 	jp Func_701d
@@ -2379,7 +2379,7 @@ Func_718a: ; 718a (1:718a)
 Func_7198: ; 7198 (1:7198)
 	push hl
 	ld a, $81
-	ld [wOAM06XCoord], a
+	ld [$c319], a
 	ld l, c
 	ld h, b
 	call Func_2887
@@ -2390,7 +2390,7 @@ Func_71a7: ; 71a7 (1:71a7)
 	push hl
 	push de
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	ld e, $0
 Func_71af: ; 71af (1:71af)
 	ld a, e
@@ -2409,10 +2409,10 @@ Func_71b9: ; 71b9 (1:71b9)
 Func_71c4: ; 71c4 (1:71c4)
 	pop de
 	pop hl
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $fe
 	jp nz, Func_71d5
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp nz, Func_71d8
 Func_71d5: ; 71d5 (1:71d5)
@@ -2421,7 +2421,7 @@ Func_71d5: ; 71d5 (1:71d5)
 Func_71d8: ; 71d8 (1:71d8)
 	push hl
 	ld a, $80
-	ld [wOAM06XCoord], a
+	ld [$c319], a
 	ld l, c
 	ld h, b
 	call Func_2887
@@ -2430,7 +2430,7 @@ Func_71e4: ; 71e4 (1:71e4)
 	ld a, l
 	call GetSRAMBank
 	ld a, $1
-	ld [wOAM27VTile], a
+	ld [$c39e], a
 	xor a
 Func_71ee: ; 71ee (1:71ee)
 	pop bc
@@ -2465,16 +2465,16 @@ Func_7218: ; 7218 (1:7218)
 Func_721a: ; 721a (1:721a)
 	xor a
 	ld [wTimerCounter], a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 Func_7221: ; 7221 (1:7221)
 	ld a, [wTimerCounter]
 	cp $b4
 	jp nc, Func_7230
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_7221
 Func_7230: ; 7230 (1:7230)
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	ret
 
 Func_7234: ; 7234 (1:7234)
@@ -2482,7 +2482,7 @@ Func_7234: ; 7234 (1:7234)
 	push hl
 	call DisableJoypadInt
 	xor a
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	ld a, $81
 	ld [rSC], a
 Func_7243: ; 7243 (1:7243)
@@ -2551,9 +2551,9 @@ Func_72ac: ; 72ac (1:72ac)
 	ld de, $0
 	push de
 	xor a
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	xor a
-	ld [wOAM07Attrs], a
+	ld [$c31f], a
 	ld hl, sp+$5
 	ld a, [hl]
 	or a
@@ -2566,16 +2566,16 @@ Func_72ac: ; 72ac (1:72ac)
 	call Func_6fb7
 	call WriteHLToSPPlus8
 Func_72d0: ; 72d0 (1:72d0)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	write_hl_to $c320
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	write_hl_to $c322
 	xor a
-	ld [wOAM07Attrs], a
+	ld [$c31f], a
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	ld a, $1
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	xor a
 	ld [wTimerCounter], a
 	pop de
@@ -2583,15 +2583,15 @@ Func_72f4: ; 72f4 (1:72f4)
 	ld a, [wTimerCounter]
 	cp $b4
 	jp nc, Func_731e
-	ld a, [wOAM07Attrs]
+	ld a, [$c31f]
 	or a
 	jp nz, Func_731e
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_731b
 	xor a
-	ld [wOAM06VTile], a
-	ld a, [wOAM07VTile]
+	ld [$c31a], a
+	ld a, [$c31e]
 	cp $2
 	jp c, Func_731b
 	inc de
@@ -2601,7 +2601,7 @@ Func_731b: ; 731b (1:731b)
 	jp Func_72f4
 
 Func_731e: ; 731e (1:731e)
-	ld a, [wOAM07Attrs]
+	ld a, [$c31f]
 	or a
 	jp nz, Func_733d
 	ld hl, sp+$3
@@ -2618,9 +2618,9 @@ Func_7331: ; 7331 (1:7331)
 	jp Func_72ac
 
 Func_733d: ; 733d (1:733d)
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	pop de
 	call Func_6b11
 	reg16swap de, hl
@@ -2628,10 +2628,10 @@ Func_733d: ; 733d (1:733d)
 	call CompareHLtoDE
 	jp z, Func_7376
 	ld a, $d0
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	call Func_721a
 	ld a, $dd
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	call GetHLAtSPPlus6
 	call Func_7234
 	call WriteHLToSPPlus6
@@ -2641,7 +2641,7 @@ Func_733d: ; 733d (1:733d)
 
 Func_7376: ; 7376
 	ld a, $c0
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	call Func_721a
 	or a
 	jp z, Func_7386
@@ -2649,7 +2649,7 @@ Func_7376: ; 7376
 	ld [hl], $1
 Func_7386: ; 7386 (1:7386)
 	ld a, $dd
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	ld hl, sp+$2
 	ld a, [hl]
 	or a
@@ -2711,9 +2711,9 @@ Func_73d8: ; 73d8 (1:73d8)
 	ld de, $0
 	push de
 	xor a
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	xor a
-	ld [wOAM07Attrs], a
+	ld [$c31f], a
 	inc l
 	dec l
 	jp z, Func_73f9
@@ -2724,22 +2724,22 @@ Func_73d8: ; 73d8 (1:73d8)
 	call Func_6fb7
 	call WriteHLToSPPlus9
 Func_73f9: ; 73f9 (1:73f9)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	pop de
 	call Func_6b11
 	write_hl_to $c324
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	write_hl_to $c320
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	write_hl_to $c322
 	xor a
-	ld [wOAM07Attrs], a
+	ld [$c31f], a
 	ld a, $5
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	xor a
 	ld [wTimerCounter], a
 	pop de
@@ -2747,15 +2747,15 @@ Func_742f: ; 742f (1:742f)
 	ld a, [wTimerCounter]
 	cp $b4
 	jp nc, Func_7459
-	ld a, [wOAM07Attrs]
+	ld a, [$c31f]
 	or a
 	jp nz, Func_7459
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_7456
 	xor a
-	ld [wOAM06VTile], a
-	ld a, [wOAM07VTile]
+	ld [$c31a], a
+	ld a, [$c31e]
 	cp $6
 	jp c, Func_7456
 	inc de
@@ -2766,7 +2766,7 @@ Func_7456: ; 7456 (1:7456)
 
 Func_7459: ; 7459 (1:7459)
 	pop bc
-	ld a, [wOAM07Attrs]
+	ld a, [$c31f]
 	or a
 	jp nz, Func_747b
 	ld l, $1
@@ -2787,9 +2787,9 @@ Func_746b: ; 746b (1:746b)
 
 Func_747b: ; 747b (1:747b)
 	push bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	pop de
 	call Func_6b11
 	xor a
@@ -2798,7 +2798,7 @@ Func_748d: ; 748d (1:748d)
 	ld a, [wTimerCounter]
 	cp $5
 	jp nc, Func_74a7
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $c0
 	jp nz, Func_74a4
 	ld hl, sp+$4
@@ -2848,11 +2848,11 @@ Func_74da: ; 74da (1:74da)
 	ld a, e
 	ld [rSB], a
 	xor a
-	ld [wOAM06VTile], a
+	ld [$c31a], a
 	ld a, $81
 	ld [rSC], a
 Func_74e6: ; 74e6 (1:74e6)
-	ld a, [wOAM06VTile]
+	ld a, [$c31a]
 	or a
 	jp z, Func_74e6
 	pop af
@@ -2922,7 +2922,7 @@ Func_7541: ; 7541 (1:7541)
 	ld a, [hl]
 	call Func_74da
 	pop hl
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $b2
 	jp nz, Func_755b
 	jp Func_755f
@@ -2932,7 +2932,7 @@ Func_755b: ; 755b (1:755b)
 	jp Func_7541
 
 Func_755f: ; 755f (1:755f)
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $b2
 	jp z, Func_756c
 	ld a, $1
@@ -2956,7 +2956,7 @@ Func_7576: ; 7576 (1:7576)
 	ld a, [hl]
 	call Func_74da
 	pop bc
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	ld [bc], a
 	pop de
 	dec de
@@ -2968,14 +2968,14 @@ Func_7594: ; 7594 (1:7594)
 	ld hl, sp+$4
 	ld a, [hl]
 	call Func_74da
-	ld a, [wOAM07YCoord]
-	ld [wOAM09YCoord], a
+	ld a, [$c31c]
+	ld [$c324], a
 	ld e, $0
 	ld hl, sp+$4
 	ld a, [hl]
 	call Func_74da
-	ld a, [wOAM07YCoord]
-	ld [wOAM09XCoord], a
+	ld a, [$c31c]
+	ld [$c325], a
 	call GetHLAtSPPlus10
 	push hl
 	call GetHLAtSPPlus10
@@ -3077,9 +3077,9 @@ Func_7642: ; 7642 (1:7642)
 	reg16swap de, hl
 Func_7658: ; 7658 (1:7658)
 	push de
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	pop de
 	call Func_6b11
 	write_hl_to $c324
@@ -3098,7 +3098,7 @@ Func_7670: ; 7670 (1:7670)
 	call Func_74da
 	pop bc
 	pop hl
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $b0
 	jp nz, Func_768a
 	jp Func_768e
@@ -3109,7 +3109,7 @@ Func_768a: ; 768a (1:768a)
 
 Func_768e: ; 768e (1:768e)
 	pop de
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $b0
 	jp z, Func_769c
 	ld a, $1
@@ -3117,9 +3117,9 @@ Func_768e: ; 768e (1:768e)
 
 Func_769c: ; 769c (1:769c)
 	push de
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	call WriteHLToSPPlus8
 	pop hl
 Func_76aa: ; 76aa (1:76aa)
@@ -3143,19 +3143,19 @@ Func_76aa: ; 76aa (1:76aa)
 
 .asm_76c5
 	push bc
-	ld a, [wOAM09YCoord]
+	ld a, [$c324]
 	ld e, a
 	ld a, c
 	call Func_74da
 	pop bc
 	push bc
-	ld a, [wOAM09XCoord]
+	ld a, [$c325]
 	ld e, a
 	ld a, c
 	call Func_74da
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	pop de
 	call Func_6b11
 	ld l, $3c
@@ -3171,7 +3171,7 @@ Func_76e8: ; 76e8 (1:76e8)
 	call Func_74da
 	pop bc
 	pop hl
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $c0
 	jp nz, Func_7706
 	ld hl, sp+$6
@@ -3225,8 +3225,8 @@ Func_773c: ; 773c (1:773c)
 
 Func_7748: ; 7748
 	xor a
-	ld [wOAM27VTile], a
-	ld a, [wOAM06XCoord]
+	ld [$c39e], a
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_775b
 	call Func_7507
@@ -3238,14 +3238,14 @@ Func_775b: ; 775b (1:775b)
 	ld l, a
 Func_775f: ; 775f (1:775f)
 	ld a, $1
-	ld [wOAM27VTile], a
+	ld [$c39e], a
 	ld a, l
 	ret
 
 Func_7766: ; 7766
 	xor a
-	ld [wOAM27VTile], a
-	ld a, [wOAM06XCoord]
+	ld [$c39e], a
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_7779
 	call Func_7618
@@ -3257,7 +3257,7 @@ Func_7779: ; 7779 (1:7779)
 	ld l, a
 Func_777d: ; 777d (1:777d)
 	ld a, $1
-	ld [wOAM27VTile], a
+	ld [$c39e], a
 	ld a, l
 	ret
 
@@ -3306,11 +3306,11 @@ Func_77c7: ; 77c7 (1:77c7)
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
-	ld a, [wOAM09VTile]
+	ld a, [$c326]
 	cp $80
 	jp nz, Func_782a
 	ld de, Data_7784
-	ld hl, wOAM09Attrs
+	ld hl, $c327
 	call CopyUntilNull
 	call Func_1c78
 	or a
@@ -3322,8 +3322,8 @@ Func_77c7: ; 77c7 (1:77c7)
 	ld [hl], a
 Func_77ec: ; 77ec (1:77ec)
 	ld c, $15
-	ld de, wOAM09Attrs
-	ld hl, wOAM09Attrs
+	ld de, $c327
+	ld hl, $c327
 	call Func_1c5a
 	or a
 	jp z, Func_7803
@@ -3333,7 +3333,7 @@ Func_77ec: ; 77ec (1:77ec)
 	ld hl, sp+$0
 	ld [hl], a
 Func_7803: ; 7803 (1:7803)
-	ld de, wOAM09Attrs
+	ld de, $c327
 	ld hl, Data_7784
 	call Func_7798
 	or a
@@ -3357,8 +3357,8 @@ Func_7827: ; 7827 (1:7827)
 
 Func_782a: ; 782a (1:782a)
 	ld c, $15
-	ld de, wOAM09Attrs
-	ld hl, wOAM09Attrs
+	ld de, $c327
+	ld hl, $c327
 	call Func_1c5a
 	or a
 	jp z, Func_7841
@@ -3377,7 +3377,7 @@ Func_7841: ; 7841 (1:7841)
 	ld hl, sp+$0
 	ld [hl], a
 Func_7850: ; 7850 (1:7850)
-	ld de, wOAM09Attrs
+	ld de, $c327
 	ld hl, Data_7784
 	call Func_7798
 	or a
@@ -3389,7 +3389,7 @@ Func_7850: ; 7850 (1:7850)
 	ld [hl], a
 Func_7865: ; 7865 (1:7865)
 	ld de, Data_7784
-	ld hl, wOAM09Attrs
+	ld hl, $c327
 	call CopyUntilNull
 	call Func_1c78
 	or a
@@ -3437,8 +3437,8 @@ Func_78b4: ; 78b4 (1:78b4)
 Func_78bb: ; 78bb (1:78bb)
 	ld hl, sp+$0
 	ld c, [hl]
-	ld de, wOAM09Attrs
-	ld hl, wOAM09Attrs
+	ld de, $c327
+	ld hl, $c327
 	call Func_1c5a
 	or a
 	jp z, Func_78d0
@@ -3457,7 +3457,7 @@ Func_78dc: ; 78dc (1:78dc)
 	ld c, [hl]
 	ld b, $0
 	call GetHLAtSPPlus4
-	ld de, wOAM09Attrs
+	ld de, $c327
 	call CopyFromDEtoHL
 	ld hl, sp+$0
 	ld c, [hl]
@@ -3521,7 +3521,7 @@ Func_7948: ; 7948 (1:7948)
 	ld b, $0
 	call GetHLAtSPPlus4
 	reg16swap de, hl
-	ld hl, wOAM09Attrs
+	ld hl, $c327
 	call CopyFromDEtoHL
 	call Func_1c78
 	or a
@@ -3977,12 +3977,12 @@ Func_7bcc: ; 7bcc (1:7bcc)
 	ld de, $7
 	add hl, de
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	pop de
 	pop bc
 	call Func_667d
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	jp Func_7c85
 
 Func_7c3d: ; 7c3d (1:7c3d)
@@ -4017,7 +4017,7 @@ Func_7c3d: ; 7c3d (1:7c3d)
 	ld de, $7
 	add hl, de
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	pop de
 	pop bc
 	call Func_667d
@@ -4543,7 +4543,7 @@ Func_7f73: ; 7f73 (1:7f73)
 	add sp, $40
 	ret
 
-SECTION "Bank 02", ROMX, BANK [$02]
+SECTION "Bank 02", ROMX, BANK [$2]
 Func_8000: ; 8000
 	ret
 
@@ -4604,15 +4604,15 @@ Func_804c: ; 804c (2:404c)
 	ld hl, $0
 	call WriteHLToSPPlus5
 	ld hl, -1
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	ld hl, $4
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	ld hl, $4
 	call WriteHLToSPPlus9
 	ld hl, $0
 	write_hl_to_sp_plus $11
 	ld hl, sp+$5c
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	set_farcall_addrs_hli HandleMenu
 	ld hl, sp+$0
 	call FarCall
@@ -4820,7 +4820,7 @@ Func_8c16: ; 8c16 (2:4c16)
 	ld a, [wMapMusic]
 	call OverworldPlaySong
 Func_8c29: ; 8c29 (2:4c29)
-	ld a, [$c7da]
+	ld a, [wc7da]
 	or a
 	jp nz, Func_8c65
 	callba_hli Func_9a41d
@@ -5427,408 +5427,7 @@ Func_9a47: ; 9a47 (2:5a47)
 	xor a
 	ret
 
-Func_9a49: ; 9a49 (2:5a49)
-	push bc
-	push af
-	push de
-	ld [$c891], a
-	set_farcall_addrs_hli Func_da835
-	ld a, $4
-	call FarCall
-	ld a, $4
-	ld [$c888], a
-	xor a
-	ld [$c889], a
-	ld hl, wObjectStructPointer
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, e
-	ld [$c88a], a
-	ld a, d
-	ld [$c88b], a
-	ld hl, wc776
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, e
-	ld [$c88c], a
-	ld a, d
-	ld [$c88d], a
-.loop: ; 9a86 (2:5a86)
-	ld a, [wc772]
-	ld b, a
-	ld a, [$c889]
-	cp b
-	jp nc, .done
-	ld a, [$c88a]
-	ld l, a
-	ld a, [$c88b]
-	ld h, a
-	ld a, [hl]
-	cp $ff
-	jp z, .next
-	ld a, [$c88c]
-	ld l, a
-	ld a, [$c88d]
-	ld h, a
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	or a
-	jp z, .next
-	ld a, [$c88a]
-	ld l, a
-	ld a, [$c88b]
-	ld h, a
-	inc hl
-	inc hl
-	ld a, [hl]
-	add $7
-	ld b, a
-	ld a, [wPlayerMapX]
-	cp b
-	jp nc, .next
-	ld a, [hl]
-	add $5
-	ld b, a
-	ld a, [wPlayerMapX]
-	add $a
-	cp b
-	jp c, .next
-	inc hl
-	ld a, [hl]
-	add $6
-	ld b, a
-	ld a, [wPlayerMapY]
-	cp b
-	jp nc, .next
-	ld a, [hl]
-	add $4
-	ld b, a
-	ld a, [wPlayerMapY]
-	add $a
-	cp b
-	jp c, .next
-	dec hl
-	dec hl
-	ld a, [hl]
-	cp $4
-	jr z, .asm_9b1d
-	push hl
-	ld a, [$c88c]
-	ld l, a
-	ld a, [$c88d]
-	ld h, a
-	inc hl
-	ld a, [hl]
-	srl a
-	srl a
-	srl a
-	ld [$c88e], a
-	pop hl
-	cp $1
-	jr nz, .asm_9b21
-	inc hl
-	ld a, [hl]
-	ld b, a
-	inc hl
-	ld a, [hl]
-	dec hl
-	dec hl
-	add b
-	and $1
-	jr nz, .asm_9b21
-	ld a, $2
-	ld [$c88e], a
-	jr .asm_9b21
-
-.asm_9b1d
-	xor a
-	ld [$c88e], a
-.asm_9b21
-	inc hl
-	ld a, [hl]
-	ld b, a
-	ld a, [wMapX]
-	sub b
-	add a
-	add a
-	add a
-	add a
-	ld b, a
-	ld a, $8
-	sub b
-	ld [$c88f], a
-	inc hl
-	ld a, [hl]
-	ld b, a
-	ld a, [wMapY]
-	sub b
-	add a
-	add a
-	add a
-	add a
-	ld b, a
-	ld a, $10
-	sub b
-	ld b, a
-	dec hl
-	dec hl
-	dec hl
-	ld a, [hl]
-	cp $1d
-	jr z, .asm_9b4f
-	dec b
-	dec b
-	dec b
-	dec b
-.asm_9b4f
-	ld a, b
-	ld [$c890], a
-	push hl
-	ld a, [$c88c]
-	ld l, a
-	ld a, [$c88d]
-	ld h, a
-	inc hl
-	ld a, [hl]
-	ld b, a
-	pop hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	or a
-	jr z, .asm_9b75
-	dec a
-	jr z, .asm_9b7e
-	dec a
-	jr z, .asm_9b87
-	dec a
-	jr z, .asm_9b90
-	jr .asm_9b99
-
-.asm_9b75
-	ld a, [$c890]
-	sub b
-	ld [$c890], a
-	jr .asm_9b99
-
-.asm_9b7e
-	ld a, [$c88f]
-	add b
-	ld [$c88f], a
-	jr .asm_9b99
-
-.asm_9b87
-	ld a, [$c890]
-	add b
-	ld [$c890], a
-	jr .asm_9b99
-
-.asm_9b90
-	ld a, [$c88f]
-	sub b
-	ld [$c88f], a
-	jr .asm_9b99
-
-.asm_9b99
-	ld a, [wc83a]
-	ld b, a
-	ld a, [$c891]
-	or a
-	jr z, .asm_9bae
-	dec a
-	jr z, .asm_9bb7
-	dec a
-	jr z, .asm_9bc0
-	dec a
-	jr z, .asm_9bc9
-	jr .asm_9bd2
-
-.asm_9bae
-	ld a, [$c890]
-	add b
-	ld [$c890], a
-	jr .asm_9bd2
-
-.asm_9bb7
-	ld a, [$c88f]
-	sub b
-	ld [$c88f], a
-	jr .asm_9bd2
-
-.asm_9bc0
-	ld a, [$c890]
-	sub b
-	ld [$c890], a
-	jr .asm_9bd2
-
-.asm_9bc9
-	ld a, [$c88f]
-	add b
-	ld [$c88f], a
-	jr .asm_9bd2
-
-.asm_9bd2
-	push hl
-	set_farcall_addrs_hli Func_da839
-	pop hl
-	ld a, [hl]
-	ld b, a
-	ld a, [$c88e]
-	ld c, a
-	ld a, [$c88f]
-	ld d, a
-	ld a, [$c890]
-	ld e, a
-	push hl
-	ld a, [$c88c]
-	ld l, a
-	ld a, [$c88d]
-	ld h, a
-	ld a, [hl]
-	pop hl
-	call FarCall
-	ld a, [$c888]
-	ld b, $4
-	add b
-	ld [$c888], a
-.next: ; 9c04 (2:5c04)
-	ld a, [$c889]
-	inc a
-	ld [$c889], a
-	ld a, [$c88a]
-	ld l, a
-	ld a, [$c88b]
-	ld h, a
-	ld bc, $e
-	add hl, bc
-	ld a, l
-	ld [$c88a], a
-	ld a, h
-	ld [$c88b], a
-	ld a, [$c88c]
-	ld l, a
-	ld a, [$c88d]
-	ld h, a
-	ld bc, $4
-	add hl, bc
-	ld a, l
-	ld [$c88c], a
-	ld a, h
-	ld [$c88d], a
-	jp .loop
-
-.done: ; 9c36 (2:5c36)
-	ld a, [wc84e]
-	cp $1
-	jp nz, .skip_multiply
-	ld a, [wc850]
-	inc a
-	ld [wc850], a
-	dec a
-	cp $5
-	jp c, .skip_multiply
-	ld a, [wSCY]
-	ld hl, wc84f
-	add [hl]
-	ld [wSCY], a
-	ld a, [wSCY2]
-	ld hl, wc84f
-	add [hl]
-	ld [wSCY2], a
-	di
-	ld a, [wNextVBlankFlags]
-	or $10
-	ld [wNextVBlankFlags], a
-	ei
-	ld a, [wc84f]
-	ld b, $ff
-	call MultiplyAbyB
-	ld [wc84f], a
-	xor a
-	ld [wc850], a
-.skip_multiply: ; 9c78 (2:5c78)
-	call Func_a1fa
-	pop de
-	pop af
-	call Func_9d80
-	ld hl, sp+$0
-	ld [hl], $40
-	read_hl_from $c888
-	ld a, l
-	ld hl, sp+$1
-	ld [hl], a
-	set_farcall_addrs_hli Func_d9f74
-	ld hl, sp+$0
-	call FarCall
-	ld e, $0
-	read_hl_from wc82e
-	ld a, l
-	or h
-	jp nz, .asm_9cbc
-	push de
-	callba_hli Func_da4fc
-	pop de
-	jp .finish
-
-.asm_9cbc: ; 9cbc (2:5cbc)
-	ld a, [wc834]
-	ld hl, wc836
-	add [hl]
-	add $7
-	ld hl, wPlayerMapX
-	cp [hl]
-	jp c, .asm_9d0e
-	ld a, [wc834]
-	add $6
-	ld l, a
-	ld a, [wPlayerMapX]
-	add $a
-	cp l
-	jp c, .asm_9d0e
-	ld a, [wc835]
-	ld hl, wc837
-	add [hl]
-	add $6
-	ld hl, wPlayerMapY
-	cp [hl]
-	jp c, .asm_9d0e
-	ld a, [wc835]
-	add $5
-	ld l, a
-	ld a, [wPlayerMapY]
-	add $9
-	cp l
-	jp c, .asm_9d0e
-	set_farcall_addrs_hli Func_da093
-	ld a, $1
-	call FarCall
-	ld e, a
-	jp .finish
-
-.asm_9d0e: ; 9d0e (2:5d0e)
-	push de
-	callba_hli Func_da4fc
-	pop de
-.finish: ; 9d1e (2:5d1e)
-	ld a, [wLCDC]
-	or $3
-	ld [wLCDC], a
-	ld a, [wNextVBlankFlags]
-	or $6
-	ld [wNextVBlankFlags], a
-	ld a, e
-	pop bc
-	ret
+INCLUDE "engine/map/func_94a9.asm"
 
 Func_9d31: ; 9d31 (2:5d31)
 	xor a
@@ -5917,7 +5516,7 @@ Func_9d80: ; 9d80 (2:5d80)
 	add hl, bc
 	ld a, [hl]
 	ld b, a
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	lb de, $58, $4c
 	ld a, [wc84b]
 	cp $1
@@ -6089,7 +5688,7 @@ Func_9d80: ; 9d80 (2:5d80)
 
 Func_9ea0: ; 9ea0 (2:5ea0)
 	pop af
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	ld b, $10
 	ld a, $ff
 .asm_9ea8
@@ -6882,7 +6481,7 @@ Func_a6d1: ; a6d1 (2:66d1)
 	ret
 
 Data_a6d4: ; a6d4
-	db $18, $0c, $00, $0c
+	db $18, $c, $0, $c
 
 ChangePersonFacing:: ; a6d8 (2:66d8)
 	push af
@@ -7342,7 +6941,7 @@ Func_aef5: ; aef5 (2:6ef5)
 	ld [hl], a
 	ld hl, sp+$5
 	ld [hl], a
-	ld a, [$c7da]
+	ld a, [wc7da]
 	or a
 	jp nz, Func_af33
 	callba_hli Func_9a41d
@@ -8684,7 +8283,7 @@ Func_ba47: ; ba47
 	pop af
 	ld [wFarCallDestBank], a
 	ld bc, $29
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
 	read_hl_from wc2e6
 	ld de, $16
@@ -8812,7 +8411,7 @@ Func_bb37: ; bb37
 	ld a, $2
 	ld [wPlayerFacing], a
 	ld a, $1
-	ld [$c7e2], a
+	ld [wc7e2], a
 	ld de, $100d
 	ld hl, $0
 	call Func_af7a
@@ -8856,7 +8455,7 @@ Func_bba9: ; bba9 (2:7ba9)
 	ld a, $2
 	ld [wPlayerFacing], a
 	ld a, $1
-	ld [$c7e2], a
+	ld [wc7e2], a
 	ld de, $100d
 	ld hl, $0
 	call Func_af7a
@@ -8907,7 +8506,7 @@ Func_bc6d:: ; bc6d
 	xor a
 	ld [wc2fa], a
 	xor a
-	ld [$c7c4], a
+	ld [wc7c4], a
 	set_farcall_addrs_hli Func_10abf
 	xor a
 	call FarCall
@@ -8926,7 +8525,7 @@ Func_bc6d:: ; bc6d
 	xor a
 	call Func_bb37
 	ld a, $1
-	ld [$c7c4], a
+	ld [wc7c4], a
 Func_bcd1: ; bcd1 (2:7cd1)
 	callba_hli Func_cced
 	ld hl, sp+$0
@@ -8954,7 +8553,7 @@ Func_bce5:: ; bce5
 	xor a
 	ld [wc2fa], a
 	xor a
-	ld [$c7c4], a
+	ld [wc7c4], a
 	set_farcall_addrs_hli Func_6c5bb
 	xor a
 	call FarCall
@@ -8973,7 +8572,7 @@ Func_bce5:: ; bce5
 	xor a
 	call Func_bb37
 	ld a, $1
-	ld [$c7c4], a
+	ld [wc7c4], a
 Func_bd49: ; bd49 (2:7d49)
 	callba_hli Func_cced
 	ld hl, sp+$0
@@ -9001,7 +8600,7 @@ Func_bd5d:: ; bd5d
 	xor a
 	ld [wc2fa], a
 	xor a
-	ld [$c7c4], a
+	ld [wc7c4], a
 	set_farcall_addrs_hli Func_1228e
 	xor a
 	call FarCall
@@ -9020,7 +8619,7 @@ Func_bd5d:: ; bd5d
 	xor a
 	call Func_bb37
 	ld a, $1
-	ld [$c7c4], a
+	ld [wc7c4], a
 Func_bdc1: ; bdc1 (2:7dc1)
 	callba_hli Func_cced
 	ld hl, sp+$0
@@ -9048,7 +8647,7 @@ Func_bdd5:: ; bdd5
 	xor a
 	ld [wc2fa], a
 	xor a
-	ld [$c7c4], a
+	ld [wc7c4], a
 	set_farcall_addrs_hli Func_6d395
 	xor a
 	call FarCall
@@ -9067,7 +8666,7 @@ Func_bdd5:: ; bdd5
 	xor a
 	call Func_bb37
 	ld a, $1
-	ld [$c7c4], a
+	ld [wc7c4], a
 Func_be39: ; be39 (2:7e39)
 	callba_hli Func_cced
 	ld hl, sp+$0
@@ -9109,7 +8708,7 @@ Func_be77:: ; be77 (2:7e77)
 	jp Func_bea1
 
 Func_be95: ; be95 (2:7e95)
-	ld a, [$c7e1]
+	ld a, [wc7e1]
 	ld hl, sp+$1
 	cp [hl]
 	jp nz, Func_bea1
@@ -9166,7 +8765,7 @@ Func_bea1: ; bea1 (2:7ea1)
 	call Func_bfaf
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [$c7e1], a
+	ld [wc7e1], a
 Func_bf03: ; bf03 (2:7f03)
 	pop bc
 	ret
@@ -9285,7 +8884,7 @@ Func_bfaf: ; bfaf (2:7faf)
 Func_bfb9: ; bfb9 (2:7fb9)
 	ret
 
-SECTION "Bank 03", ROMX, BANK [$03]
+SECTION "Bank 03", ROMX, BANK [$3]
 Func_c000: ; c000
 	ret
 
@@ -9550,7 +9149,7 @@ Data_c669: ; c5dd
 	dw Data_c373
 	dw Data_c382
 	dw Data_c396
-	dw $0000
+	dw $0
 	dw Data_c3e8
 	dw Data_c3fa
 	dw Data_c40c
@@ -9559,7 +9158,7 @@ Data_c669: ; c5dd
 	dw Data_c47f
 	dw Data_c494
 	dw Data_c4c7
-	dw $0000
+	dw $0
 	dw Data_c4fc
 	dw Data_c506
 	dw Data_c529
@@ -9669,7 +9268,7 @@ Func_c79d: ; c79d (3:479d)
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
 	ld a, $1
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -10482,7 +10081,7 @@ Func_cea1: ; cea1 (3:4ea1)
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
 	ld a, $1
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -12565,7 +12164,7 @@ Func_de2c: ; de2c (3:5e2c)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld [hl], e
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	call WriteHLToSPPlus6
 	call GetHLAtSPPlus8
 	ld de, $8
@@ -12643,7 +12242,7 @@ Func_de92: ; de92 (3:5e92)
 	jp Func_ded3
 
 Func_dec0: ; dec0 (3:5ec0)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	reg16swap de, hl
 	ld hl, sp+$9
 	ld l, [hl]
@@ -12667,7 +12266,7 @@ Func_ded3: ; ded3 (3:5ed3)
 .asm_dee4
 	ld bc, $0
 Func_dee7: ; dee7 (3:5ee7)
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	inc hl
 	ld [hl], c
 	pop bc
@@ -13109,24 +12708,24 @@ Func_e20d: ; e20d (3:620d)
 
 Data_e233: ; e233
 	db $22, $22, $22, $21, $13, $22
-	db $24, $31, $22, $02, $22, $22
-	db $21, $42, $04, $22, $22, $22
+	db $24, $31, $22, $2, $22, $22
+	db $21, $42, $4, $22, $22, $22
 	db $23, $24, $42, $22, $12, $21
 	db $21, $21, $44, $22, $22, $44
 	db $22, $12, $44, $22, $23, $10
 	db $22, $22, $22, $42, $21, $11
-	db $22, $22, $22, $23, $02, $22
+	db $22, $22, $22, $23, $2, $22
 	db $22, $22, $22, $20, $32, $22
-	db $12, $22, $22, $22, $22, $04
+	db $12, $22, $22, $22, $22, $4
 	db $12, $22, $22, $22, $24, $20
 	db $12, $22, $12, $22, $20, $22
 
 Data_e27b: ; e27b
-	db $00, $02, $00, $00
-	db $00, $01, $80, $00
-	db $00, $01, $00, $00
-	db $00, $00, $80, $00
-	db $00, $00, $40, $00
+	db $0, $2, $0, $0
+	db $0, $1, $80, $0
+	db $0, $1, $0, $0
+	db $0, $0, $80, $0
+	db $0, $0, $40, $0
 
 Func_e28f: ; e28f
 	push hl
@@ -13251,28 +12850,28 @@ Func_e339: ; e339 (3:6339)
 	ret
 
 Data_e342: ; e342
-	db $00, $00, $00, $00
-	db $00, $00, $99, $99
-	db $00, $00, $c0, $00
-	db $00, $00, $e6, $66
-	db $00, $01, $01, $0c
-	db $00, $01, $33, $33
-	db $00, $01, $01, $59
-	db $00, $01, $80, $00
-	db $00, $00, $80, $00
-	db $00, $00, $99, $99
-	db $00, $00, $b3, $33
-	db $00, $00, $cc, $cc
-	db $00, $00, $e6, $66
-	db $00, $01, $00, $00
-	db $00, $01, $19, $99
-	db $00, $01, $33, $33
-	db $00, $01, $4c, $cc
-	db $00, $01, $66, $66
-	db $00, $01, $80, $00
-	db $00, $01, $99, $99
-	db $00, $01, $b3, $33
-	db $00, $01, $cc, $cc
+	db $0, $0, $0, $0
+	db $0, $0, $99, $99
+	db $0, $0, $c0, $0
+	db $0, $0, $e6, $66
+	db $0, $1, $1, $c
+	db $0, $1, $33, $33
+	db $0, $1, $1, $59
+	db $0, $1, $80, $0
+	db $0, $0, $80, $0
+	db $0, $0, $99, $99
+	db $0, $0, $b3, $33
+	db $0, $0, $cc, $cc
+	db $0, $0, $e6, $66
+	db $0, $1, $0, $0
+	db $0, $1, $19, $99
+	db $0, $1, $33, $33
+	db $0, $1, $4c, $cc
+	db $0, $1, $66, $66
+	db $0, $1, $80, $0
+	db $0, $1, $99, $99
+	db $0, $1, $b3, $33
+	db $0, $1, $cc, $cc
 
 Func_e39a: ; e39a
 	push de
@@ -13304,7 +12903,7 @@ Func_e39a: ; e39a
 Func_e3bd: ; e3bd
 	push hl
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -13738,7 +13337,7 @@ Func_e608: ; e608 (3:6608)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	reg16swap de, hl
 	ld hl, sp+$6
 	ld [hl], $0
@@ -14528,11 +14127,11 @@ Func_eb3b: ; eb3b (3:6b3b)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld b, $5
 	call LeftShiftPointer
 	pop af
@@ -14553,7 +14152,7 @@ Func_eb3b: ; eb3b (3:6b3b)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -14561,7 +14160,7 @@ Func_eb3b: ; eb3b (3:6b3b)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld b, $5
 	call LeftShiftPointer
 	pop bc
@@ -14582,7 +14181,7 @@ Func_eb3b: ; eb3b (3:6b3b)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -14590,10 +14189,10 @@ Func_eb3b: ; eb3b (3:6b3b)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	inc hl
 	inc hl
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	pop de
 	inc de
 	inc de
@@ -14699,11 +14298,11 @@ Func_ec40: ; ec40 (3:6c40)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld b, $5
 	call LeftShiftPointer
 	pop af
@@ -14724,7 +14323,7 @@ Func_ec40: ; ec40 (3:6c40)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -14732,7 +14331,7 @@ Func_ec40: ; ec40 (3:6c40)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld b, $5
 	call LeftShiftPointer
 	pop bc
@@ -14753,7 +14352,7 @@ Func_ec40: ; ec40 (3:6c40)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -14761,10 +14360,10 @@ Func_ec40: ; ec40 (3:6c40)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	inc hl
 	inc hl
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	pop de
 	inc de
 	inc de
@@ -14878,11 +14477,11 @@ Func_ed5e: ; ed5e (3:6d5e)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld b, $5
 	call LeftShiftPointer
 	pop af
@@ -14903,7 +14502,7 @@ Func_ed5e: ; ed5e (3:6d5e)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -14911,7 +14510,7 @@ Func_ed5e: ; ed5e (3:6d5e)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld b, $5
 	call LeftShiftPointer
 	pop bc
@@ -14932,7 +14531,7 @@ Func_ed5e: ; ed5e (3:6d5e)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld a, [hl]
 	or c
 	ld [hl], a
@@ -14940,10 +14539,10 @@ Func_ed5e: ; ed5e (3:6d5e)
 	ld a, [hl]
 	or b
 	ld [hl], a
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	inc hl
 	inc hl
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	pop de
 	inc de
 	inc de
@@ -15047,11 +14646,11 @@ Func_ee61: ; ee61 (3:6e61)
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld b, $5
 	call LeftShiftPointer
 	pop af
@@ -15878,9 +15477,9 @@ Func_f496: ; f496 (3:7496)
 	reg16swap de, hl
 	add hl, bc
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	pop de
 	add hl, de
 	pop de
@@ -16133,7 +15732,7 @@ Func_f612: ; f612
 Func_f627: ; f627
 	ld a, [hl]
 	inc hl
-	ld [wOAM06YCoord], a
+	ld [$c318], a
 	ret
 
 Func_f62d: ; f62d
@@ -16233,7 +15832,7 @@ Data_f6d1: ; f6d1
 	db "     $"
 
 Pointers_f6d7: ; f6d7
-	dw $0000
+	dw $0
 	dw Func_e3bd
 	dw Func_e3d1
 	dw Func_e4d1
@@ -17256,7 +16855,7 @@ Func_fdf1: ; fdf1
 Func_fdf2: ; fdf2
 	ret
 
-SECTION "Bank 04", ROMX, BANK [$04]
+SECTION "Bank 04", ROMX, BANK [$4]
 Func_10000: ; 10000
 	ret
 
@@ -17960,7 +17559,7 @@ Func_1052e: ; 1052e (4:452e)
 	push bc
 	ld hl, sp+$0
 	ld [hl], $ff
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_1054c
 	ld c, $0
@@ -18033,7 +17632,7 @@ Func_105cc: ; 105cc (4:45cc)
 Func_105ce: ; 105ce
 	push af
 	call Func_1052e
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_105e8
 	read_hl_from wc2e6
@@ -18056,13 +17655,13 @@ Func_105f3: ; 105f3 (4:45f3)
 	jp z, Func_1063b
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $7
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	ld e, a
 	xor a
 	call FarCall
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $8
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	ld e, a
 	ld a, $1
 	call FarCall
@@ -18079,13 +17678,13 @@ Func_1063b: ; 1063b (4:463b)
 	jp nz, Func_1067b
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $8
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	ld e, a
 	xor a
 	call FarCall
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $7
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	ld e, a
 	ld a, $1
 	call FarCall
@@ -18098,13 +17697,13 @@ Func_1063b: ; 1063b (4:463b)
 Func_1067b: ; 1067b (4:467b)
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $8
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	ld e, a
 	ld a, $1
 	call FarCall
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $7
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	ld e, a
 	xor a
 	call FarCall
@@ -18199,10 +17798,10 @@ Func_107b8: ; 107b8
 	ret
 
 Data_107c7: ; 107c7
-	db $21, $01, $03, $1a, $04, $01, $0b, $08
+	db $21, $1, $3, $1a, $4, $1, $b, $8
 
 Data_107cf: ; 107cf
-	db $21, $01, $03, $1f, $04, $01, $0b, $08
+	db $21, $1, $3, $1f, $4, $1, $b, $8
 
 Func_107d7: ; 107d7
 	push af
@@ -18212,7 +17811,7 @@ Func_107d7: ; 107d7
 	push bc
 	ld hl, sp+$7
 	ld a, [hl]
-	ld [wOAM05VTile], a
+	ld [$c316], a
 	ld a, [wSystemType]
 	cp $1
 	jp z, Func_107f2
@@ -18245,7 +17844,7 @@ Func_10819: ; 10819 (4:4819)
 Func_1082a: ; 1082a (4:482a)
 	call WaitVideoTransfer
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -18961,18 +18560,18 @@ Func_10d77: ; 10d77 (4:4d77)
 	read_hl_from_sp_plus $15
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	push hl
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	pop de
 	call Func_12029
 	pop bc
 	pop bc
 	pop bc
 	pop bc
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	push hl
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus7
@@ -21234,32 +20833,32 @@ Func_11e6b: ; 11e6b (4:5e6b)
 	set_farcall_addrs_hli Func_da835
 	xor a
 	call FarCall
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $8
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	inc hl
 	inc hl
 	ld de, $8
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $9
 	add hl, de
 	ld [hl], $0
 	ld a, [hl]
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $6
 	add hl, de
 	ld [hl], a
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $5
 	add hl, de
 	ld [hl], a
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	inc hl
 	inc hl
 	inc hl
@@ -21270,7 +20869,7 @@ Func_11e6b: ; 11e6b (4:5e6b)
 	add hl, bc
 	ld a, [hl]
 	dec a
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld de, $8
 	add hl, de
 	ld [hl], a
@@ -21365,21 +20964,21 @@ Func_11f5b: ; 11f5b (4:5f5b)
 	inc hl
 	ld l, [hl]
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	inc hl
 	inc hl
 	inc hl
 	inc hl
 	ld l, [hl]
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	inc hl
 	inc hl
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
@@ -21412,7 +21011,7 @@ Func_11f5b: ; 11f5b (4:5f5b)
 	call FarCall
 	call WaitVideoTransfer
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 Func_11fc9: ; 11fc9 (4:5fc9)
 	ld l, $12
 	push hl
@@ -21438,7 +21037,7 @@ Func_11fda: ; 11fda (4:5fda)
 	or $6
 	ld [wNextVBlankFlags], a
 	ld a, $3
-	ld [wOAM05VTile], a
+	ld [$c316], a
 	pop af
 	pop de
 	or a
@@ -21456,7 +21055,7 @@ Func_12021: ; 12021 (4:6021)
 	ret
 
 Data_12025: ; 12025
-	db $00, $0c, $18, $0c
+	db $0, $c, $18, $c
 
 Func_12029: ; 12029 (4:6029)
 	push hl
@@ -21548,7 +21147,7 @@ Func_1209f: ; 1209f (4:609f)
 	ld a, l
 	call GetHLAtSPPlus8
 	push hl
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld h, l
 	ld l, $0
 	pop de
@@ -21691,7 +21290,7 @@ Func_1230c: ; 1230c (4:630c)
 	call FarCall
 	call WaitVideoTransfer
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 Func_12352: ; 12352 (4:6352)
 	ld l, $12
 	push hl
@@ -22652,11 +22251,11 @@ Func_12982: ; 12982 (4:6982)
 	push bc
 	push bc
 	push de
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld e, h
 	ld hl, sp+$7
 	ld [hl], e
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld e, l
 	ld hl, sp+$8
 	ld [hl], e
@@ -23169,7 +22768,7 @@ Func_12d16: ; 12d16 (4:6d16)
 	call FarCall
 	call WaitVideoTransfer
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 Func_12d40: ; 12d40 (4:6d40)
 	ld l, $12
 	push hl
@@ -24605,7 +24204,7 @@ Func_13726: ; 13726 (4:7726)
 	add sp, $1e
 	ret
 
-SECTION "Bank 05", ROMX, BANK [$05]
+SECTION "Bank 05", ROMX, BANK [$5]
 Func_14000: ; 14000
 	ret
 
@@ -24656,14 +24255,14 @@ Func_1445e: ; 1445e
 	ld hl, sp+$10
 	ld c, [hl]
 	ld b, $0
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld h, l
 	ld l, $0
 	add hl, bc
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld h, l
 	ld l, $0
 	pop de
@@ -25019,11 +24618,11 @@ Func_1472c: ; 1472c (5:472c)
 	pop bc
 	pop bc
 	pop bc
-	ld a, [wOAM05Attrs]
+	ld a, [$c317]
 	or a
 	jp z, Func_14763
 	xor a
-	ld [wOAM05Attrs], a
+	ld [$c317], a
 Func_14763: ; 14763 (5:4763)
 	call Func_17488
 	ret
@@ -25043,10 +24642,10 @@ Data_14767: ; 14767
 DisplayPartyMenu_:: ; 14771 (5:4771)
 	push af
 	xor a
-	ld [wOAM26XCoord], a
-	ld [wOAM26YCoord], a
-	ld [wOAM25Attrs], a
-	ld [wOAM25VTile], a
+	ld [$c399], a
+	ld [$c398], a
+	ld [$c397], a
+	ld [$c396], a
 	pop af
 	cp $1
 	jp z, Func_147d4
@@ -25081,7 +24680,7 @@ Func_147b1: ; 147b1 (5:47b1)
 	ld a, $6
 	call FarCall
 	ld a, l
-	ld [wOAM04YCoord], a
+	ld [$c310], a
 	jp Func_147e7
 
 Func_147d4: ; 147d4 (5:47d4)
@@ -25417,10 +25016,10 @@ Func_14a2c: ; 14a2c (5:4a2c)
 Func_14a31: ; 14a31 (5:4a31)
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wOAM27YCoord], a
+	ld [$c39c], a
 	ld hl, sp+$0
 	ld a, [hl]
-	ld [wOAM27XCoord], a
+	ld [$c39d], a
 	call Func_1fbe
 	ld l, BANK(Data_543c1)
 	push hl
@@ -25577,7 +25176,7 @@ Func_14b24: ; 14b24
 
 Func_14b44:: ; 14b44
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -25687,7 +25286,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	ld hl, $d
 	call Func_21f8
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call Func_1400e
 	pop hl
 	call FreeMemory
@@ -25790,7 +25389,7 @@ Func_14ca9:: ; 14ca9
 	pop bc
 	pop bc
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	pop de
 	push hl
 	push de
@@ -25822,7 +25421,7 @@ Func_14ca9:: ; 14ca9
 	and h
 	inc a
 	jp nz, Func_14d48
-	ld hl, $c7de
+	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 Func_14d48: ; 14d48 (5:4d48)
@@ -26166,11 +25765,11 @@ Func_14f0e: ; 14f0e
 	ld a, e
 	call FarCall
 	ld a, $ff
-	ld [wOAM26Attrs], a
+	ld [$c39b], a
 	ld a, [wc2fa]
 	or a
 	jp nz, Func_14fc5
-	ld a, [wOAM05Attrs]
+	ld a, [$c317]
 	or a
 	jp nz, Func_14fc5
 	ld de, $19
@@ -26224,7 +25823,7 @@ Func_14fde: ; 14fde (5:4fde)
 	ld a, [wc2fa]
 	or a
 	jp nz, Func_14ffa
-	ld a, [wOAM05Attrs]
+	ld a, [$c317]
 	or a
 	jp nz, Func_14ffa
 	ld c, e
@@ -26270,7 +25869,7 @@ Func_15001: ; 15001 (5:5001)
 	push af
 	call Func_1503d
 	ld a, $1
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	pop af
 	pop bc
 	ld l, a
@@ -26669,7 +26268,7 @@ Func_15281: ; 15281
 Func_15297: ; 15297
 	push hl
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call Func_14001
 	call Func_1400e
 	pop bc
@@ -27327,7 +26926,7 @@ Func_15887: ; 15887 (5:5887)
 Pointers_1588f:
 	dw Data_15895
 	dw Data_158ae
-	dw $0000
+	dw $0
 
 Data_15895:
 	db "フﾞート<HIRA>そﾞくは<KATA> ソフト<HIRA>の つけかえかﾞ<KATA>$"
@@ -27815,7 +27414,7 @@ Func_15bde: ; 15bde
 	ld l, a
 	add hl, bc
 	ld a, l
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -27872,7 +27471,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld de, $17
 	call CompareHLtoDE
 	jp nc, Func_15e9c
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	cp $ff
 	jp z, Func_15df5
 	call Func_15ff9
@@ -27883,7 +27482,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	call Func_16007
 	ld hl, sp+$4
 	ld [hl], a
-	ld hl, wOAM04XCoord
+	ld hl, $c311
 	ld l, [hl]
 	ld h, $0
 	ld de, $c98e
@@ -28038,7 +27637,7 @@ Func_15d29: ; 15d29 (5:5d29)
 	call GetSRAMBank
 	set_farcall_addrs_hli Func_4ec2b
 	ld e, $1
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	call FarCall
 	ld hl, sp+$1
 	ld a, [hl]
@@ -28082,7 +27681,7 @@ Func_15db0: ; 15db0 (5:5db0)
 	inc hl
 	ld [hl], d
 	ld a, $ff
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	ld hl, $8000
 	jp Func_15fe4
 
@@ -28151,7 +27750,7 @@ Func_15df5: ; 15df5 (5:5df5)
 	ld hl, $ffec
 	add hl, de
 	ld a, l
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	ld a, $2
 	call Func_15fe9
 	or a
@@ -28173,7 +27772,7 @@ Func_15e59: ; 15e59 (5:5e59)
 	ld [hl], a
 Func_15e6d: ; 15e6d (5:5e6d)
 	ld a, $ff
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -28194,7 +27793,7 @@ Func_15e6d: ; 15e6d (5:5e6d)
 
 Func_15e91: ; 15e91 (5:5e91)
 	ld a, $ff
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 Func_15e96: ; 15e96 (5:5e96)
 	ld hl, $4000
 	jp Func_15fe4
@@ -28366,7 +27965,7 @@ Func_15f9b: ; 15f9b (5:5f9b)
 	inc hl
 	ld [hl], d
 	ld a, $ff
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	ld hl, $8000
 	jp Func_15fe4
 
@@ -28376,7 +27975,7 @@ Func_15fc5: ; 15fc5 (5:5fc5)
 
 Func_15fcb: ; 15fcb (5:5fcb)
 	ld a, [wc2e8 + 1]
-	ld [wOAM04YCoord], a
+	ld [$c310], a
 	set_farcall_addrs_hli Func_56b35
 	ld a, $1
 	call FarCall
@@ -28665,7 +28264,7 @@ Func_16128: ; 16128 (5:6128)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	pop hl
 	push hl
 	ld de, $7
@@ -28747,14 +28346,14 @@ Func_16204: ; 16204 (5:6204)
 Func_1620c: ; 1620c (5:620c)
 	ld c, $0
 Func_1620e: ; 1620e (5:620e)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	reg16swap de, hl
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
 	jp nc, Func_16281
 	push bc
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld e, c
 	ld d, $0
 	call CompareHLtoDE
@@ -28785,7 +28384,7 @@ Func_1624a: ; 1624a (5:624a)
 	ld e, c
 	ld d, $0
 	add hl, de
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	ld e, a
 	ld d, $0
 	call CompareHLtoDE
@@ -28815,11 +28414,11 @@ Func_1627c: ; 1627c (5:627c)
 	jp Func_1620e
 
 Func_16281: ; 16281 (5:6281)
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld de, $14
 	call CompareHLtoDE
 	jp c, Func_162bb
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	reg16swap de, hl
 	ld hl, $16
 	call CompareHLtoDE
@@ -28828,7 +28427,7 @@ Func_16281: ; 16281 (5:6281)
 	ld c, [hl]
 	ld b, $0
 	inc bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	add hl, hl
 	ld de, -$28
 	add hl, de
@@ -28841,7 +28440,7 @@ Func_16281: ; 16281 (5:6281)
 	jp Func_162f9
 
 Func_162bb: ; 162bb (5:62bb)
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld de, $17
 	call CompareHLtoDE
 	jp c, Func_162e5
@@ -28850,7 +28449,7 @@ Func_162bb: ; 162bb (5:62bb)
 	ld b, $0
 	inc bc
 	inc bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	add hl, hl
 	ld de, -$28
 	add hl, de
@@ -28867,7 +28466,7 @@ Func_162e5: ; 162e5 (5:62e5)
 	ld c, [hl]
 	ld b, $0
 	inc bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	add hl, hl
 	add hl, bc
 	ld e, l
@@ -28884,7 +28483,7 @@ Func_162f9: ; 162f9 (5:62f9)
 	pop bc
 	pop bc
 	pop bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
@@ -28918,7 +28517,7 @@ Func_162f9: ; 162f9 (5:62f9)
 	pop de
 	call SetStringStartState
 	pop bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
 	call GetHLAtSPPlus8
 	pop de
@@ -29005,7 +28604,7 @@ Func_16377: ; 16377 (5:6377)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	read_hl_from_sp_plus $15
 	inc hl
 	ld e, [hl]
@@ -29182,15 +28781,15 @@ Func_164a3: ; 164a3 (5:64a3)
 	jr z, .asm_16504
 	ld hl, $0
 	write_hl_to_sp_plus $11
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	dec hl
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	inc h
 	dec h
 	bit 7, h
 	jr z, .asm_16500
 	ld hl, $0
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	jp .asm_16504
 
 .asm_16500
@@ -29241,7 +28840,7 @@ Func_16558: ; 16558 (5:6558)
 	ld de, $14
 	call CompareHLtoDE
 	jp nc, Func_165c1
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	push hl
 	read_hl_from_sp_plus $13
 	inc hl
@@ -29249,15 +28848,15 @@ Func_16558: ; 16558 (5:6558)
 	pop de
 	call CompareHLtoDE
 	jp c, Func_165be
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	dec hl
 	write_hl_to_sp_plus $11
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	inc hl
-	write_hl_to_sp_plus $0d
-	read_hl_from_sp_plus $0f
+	write_hl_to_sp_plus $d
+	read_hl_from_sp_plus $f
 	push hl
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	pop de
 	add hl, de
 	push hl
@@ -29271,9 +28870,9 @@ Func_16558: ; 16558 (5:6558)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_165ba
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	dec hl
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	jp Func_165be
 
 Func_165ba: ; 165ba (5:65ba)
@@ -29353,7 +28952,7 @@ Func_16645: ; 16645 (5:6645)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	push hl
 	read_hl_from_sp_plus $15
 	ld de, $5
@@ -29437,7 +29036,7 @@ Func_16645: ; 16645 (5:6645)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld c, l
 	ld hl, sp+$b
 	ld a, [hl]
@@ -29488,9 +29087,9 @@ Func_166f2: ; 166f2 (5:66f2)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	push hl
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	pop de
 	add hl, de
 	call CompareHLtoBC
@@ -29540,8 +29139,8 @@ Func_16777: ; 16777 (5:6777)
 	ld de, $1c
 	add hl, de
 	pop hl
-	write_hl_to_sp_plus $0e
-	read_hl_from_sp_plus $0e
+	write_hl_to_sp_plus $e
+	read_hl_from_sp_plus $e
 	inc hl
 	ld a, [hl]
 	inc hl
@@ -29652,13 +29251,13 @@ Func_16841: ; 16841 (5:6841)
 	cp $3
 	jp nz, Func_16866
 	ld a, $ff
-	ld [wOAM04XCoord], a
-	read_hl_from_sp_plus $0e
+	ld [$c311], a
+	read_hl_from_sp_plus $e
 	call Func_16128
 	jp Func_1686d
 
 Func_16866: ; 16866 (5:6866)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	call Func_17863
 Func_1686d: ; 1686d (5:686d)
 	call GetHLAtSPPlus4
@@ -29726,7 +29325,7 @@ Func_168e9: ; 168e9 (5:68e9)
 	jp Func_16ce3
 
 Func_168fc: ; 168fc (5:68fc)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
 	ld a, [$ca6c]
@@ -29765,7 +29364,7 @@ Func_16926: ; 16926 (5:6926)
 	ld a, [hl]
 	cp $9
 	jp z, Func_1694e
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	call Func_15388
 	call Func_16d1a
 	jp Func_1695d
@@ -29860,7 +29459,7 @@ Func_169e0: ; 169e0 (5:69e0)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_16a02
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	call Func_15388
 Func_16a02: ; 16a02 (5:6a02)
 	ld hl, sp+$4
@@ -29872,14 +29471,14 @@ Func_16a02: ; 16a02 (5:6a02)
 	jp Func_16ce3
 
 Func_16a13: ; 16a13 (5:6a13)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $b
 	add hl, de
 	ld de, -1
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	inc hl
 	inc hl
 	inc hl
@@ -29919,7 +29518,7 @@ Func_16a5c: ; 16a5c (5:6a5c)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetSRAMBank
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -29947,7 +29546,7 @@ Func_16a8f: ; 16a8f (5:6a8f)
 	jp Func_16b21
 
 Func_16a92: ; 16a92 (5:6a92)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
 	ld de, $96
@@ -29968,7 +29567,7 @@ Func_16aa4: ; 16aa4 (5:6aa4)
 	call FarCall
 	cp $1
 	jp nz, Func_16ad5
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
 	ld de, $a8
@@ -29992,7 +29591,7 @@ Func_16ae2: ; 16ae2 (5:6ae2)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetSRAMBank
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
 	ld a, [hl]
@@ -30085,7 +29684,7 @@ Func_16b5b: ; 16b5b (5:6b5b)
 	jp z, Func_16bab
 	cp $1
 	jp nz, Func_16cd4
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	call Func_15388
 	set_farcall_addrs_hli Func_5712f
 	pop hl
@@ -30113,7 +29712,7 @@ Func_16bab: ; 16bab (5:6bab)
 	jp Func_16ce3
 
 Func_16bd0: ; 16bd0 (5:6bd0)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	inc hl
 	inc hl
 	inc hl
@@ -30122,9 +29721,9 @@ Func_16bd0: ; 16bd0 (5:6bd0)
 	inc hl
 	or [hl]
 	jp nz, Func_16bf4
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	call Func_16128
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $b
 	add hl, de
 	ld de, $14
@@ -30135,7 +29734,7 @@ Func_16bf4: ; 16bf4 (5:6bf4)
 	jp Func_16cd4
 
 Func_16bf7: ; 16bf7 (5:6bf7)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	call Func_15388
 	set_farcall_addrs_hli Func_56abf
 	pop hl
@@ -30340,7 +29939,7 @@ Func_16d8e: ; 16d8e
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0e
+	write_hl_to_sp_plus $e
 	read_hl_from_sp_plus $12
 	ld de, $5
 	add hl, de
@@ -30348,7 +29947,7 @@ Func_16d8e: ; 16d8e
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	read_hl_from_sp_plus $12
 	inc hl
 	ld e, [hl]
@@ -30393,7 +29992,7 @@ Func_16d8e: ; 16d8e
 	ld e, [hl]
 	ld hl, sp+$5
 	ld [hl], e
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
 	read_hl_from_sp_plus $14
 	ld de, $7
@@ -30412,7 +30011,7 @@ Func_16d8e: ; 16d8e
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0e
+	write_hl_to_sp_plus $e
 Func_16e3e: ; 16e3e (5:6e3e)
 	ld a, [hSRAMBank]
 	ld c, a
@@ -30443,15 +30042,15 @@ Func_16e3e: ; 16e3e (5:6e3e)
 	jr z, .asm_16e92
 	ld hl, $0
 	write_hl_to_sp_plus $10
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	dec hl
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	inc h
 	dec h
 	bit 7, h
 	jr z, .asm_16e8e
 	ld hl, $0
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	jp .asm_16e92
 
 .asm_16e8e
@@ -30461,7 +30060,7 @@ Func_16e3e: ; 16e3e (5:6e3e)
 	jp Func_16eee
 
 Func_16e95: ; 16e95 (5:6e95)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
 	read_hl_from_sp_plus $12
 	inc hl
@@ -30469,15 +30068,15 @@ Func_16e95: ; 16e95 (5:6e95)
 	pop de
 	call CompareHLtoDE
 	jp c, Func_16eee
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	dec hl
 	write_hl_to_sp_plus $10
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	inc hl
-	write_hl_to_sp_plus $0c
-	read_hl_from_sp_plus $0e
+	write_hl_to_sp_plus $c
+	read_hl_from_sp_plus $e
 	push hl
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	pop de
 	add hl, de
 	push hl
@@ -30491,9 +30090,9 @@ Func_16e95: ; 16e95 (5:6e95)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_16eea
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	dec hl
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	jp Func_16eee
 
 Func_16eea: ; 16eea (5:6eea)
@@ -30510,7 +30109,7 @@ Func_16eee: ; 16eee (5:6eee)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
 	read_hl_from_sp_plus $14
 	ld de, $5
@@ -30598,7 +30197,7 @@ Func_16f7e: ; 16f7e (5:6f7e)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld c, l
 	ld hl, sp+$a
 	ld a, [hl]
@@ -30644,9 +30243,9 @@ Func_16fa5: ; 16fa5 (5:6fa5)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	pop de
 	add hl, de
 	call CompareHLtoBC
@@ -30754,15 +30353,15 @@ Func_170c4: ; 170c4 (5:70c4)
 	cp $1a
 	jp nz, Func_170ef
 	set_farcall_addrs_hli Func_681bd
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld c, l
 	call GetHLAtSPPlus10
 	ld a, l
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld e, l
 	call FarCall
 Func_170ef: ; 170ef (5:70ef)
-	ld a, [wOAM26Attrs]
+	ld a, [$c39b]
 	cp $ff
 	jp z, Func_17195
 	ld c, $0
@@ -30786,7 +30385,7 @@ Func_170f9: ; 170f9 (5:70f9)
 	ld l, c
 	ld h, $0
 	add hl, de
-	ld a, [wOAM26Attrs]
+	ld a, [$c39b]
 	ld e, a
 	ld d, $0
 	call CompareHLtoDE
@@ -31019,7 +30618,7 @@ Func_172ec: ; 172ec (5:72ec)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -31046,7 +30645,7 @@ Func_17312: ; 17312 (5:7312)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -31076,7 +30675,7 @@ Func_17348: ; 17348 (5:7348)
 Func_17352: ; 17352 (5:7352)
 	pop de
 	push de
-	ld a, [wOAM26Attrs]
+	ld a, [$c39b]
 	ld hl, sp+$22
 	cp [hl]
 	jp nz, Func_17371
@@ -31218,7 +30817,7 @@ Func_17429: ; 17429 (5:7429)
 	call Func_3bc5
 	pop bc
 	ld a, $ff
-	ld [wOAM26Attrs], a
+	ld [$c39b], a
 	pop bc
 	pop bc
 	ret
@@ -31227,7 +30826,7 @@ Data_1743d: ; 1743d
 	db " $"
 
 Func_1743f: ; 1743f
-	ld a, [wOAM26Attrs]
+	ld a, [$c39b]
 	cp $ff
 	jp z, Func_17450
 	call Func_173c4
@@ -31240,7 +30839,7 @@ Func_17453: ; 17453 (5:7453)
 	ret
 
 Func_17454: ; 17454
-	ld a, [wOAM26Attrs]
+	ld a, [$c39b]
 	cp $ff
 	jp z, Func_17465
 	call Func_173c4
@@ -31345,7 +30944,7 @@ Func_17863: ; 17863 (5:7863)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	call GetHLAtSPPlus4
 	ld de, $7
 	add hl, de
@@ -31403,7 +31002,7 @@ Func_178e5: ; 178e5 (5:78e5)
 	pop bc
 	call GetHLAtSPPlus8
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	pop de
 	call CompareHLtoDE
 	jp z, Func_17965
@@ -31437,7 +31036,7 @@ Func_178e5: ; 178e5 (5:78e5)
 	call SetStringStartState
 	call GetHLAtSPPlus8
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
 	call GetHLAtSPPlus10
 	pop de
@@ -31546,14 +31145,14 @@ Func_179c5: ; 179c5 (5:79c5)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld a, l
 	sub c
 	ld l, a
 	ld a, h
 	sbc b
 	ld h, a
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	pop bc
 	inc c
 	jp Func_179c5
@@ -31564,9 +31163,9 @@ Func_179c5: ; 179c5 (5:79c5)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	add hl, bc
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	pop bc
 	pop de
 	ld a, c
@@ -31871,10 +31470,10 @@ Func_17ef7: ; 17ef7 (5:7ef7)
 	jr nz, .asm_17f83
 	ret
 
-SECTION "Bank 06", ROMX, BANK [$06]
+SECTION "Bank 06", ROMX, BANK [$6]
 MapTiles_SGB_DMG: INCBIN "gfx/tiles/dmg_sgb.2bpp" ; 18000
 
-SECTION "Bank 07", ROMX, BANK [$07]
+SECTION "Bank 07", ROMX, BANK [$7]
 Pointers_1c000: ; 1c000
 	dbw BANK(Data_1c018) - BANK(Pointers_1c000), Data_1c018
 	dbw BANK(Data_1c4fe) - BANK(Pointers_1c000), Data_1c4fe
@@ -31894,7 +31493,7 @@ Data_1d90f: INCBIN "maps/unknown_1c018/unknown_1d90f.bin.rz"
 Data_1dda1: INCBIN "maps/unknown_1c018/unknown_1dda1.bin.rz"
 Data_1e2bf: INCBIN "maps/unknown_1c018/unknown_1e2bf.bin.rz"
 
-SECTION "Bank 08", ROMX [$4000], BANK [$08]
+SECTION "Bank 08", ROMX [$4000], BANK [$8]
 INCLUDE "charmap2.asm"
 Func_20000: ; 20000
 	ret
@@ -31971,7 +31570,7 @@ Text_20191: ; 20191
 Pointers_20199: ; 20199
 	dw Text_2018c
 	dw Text_20191
-	dw $0000
+	dw $0
 
 Text_2019f: ; 2019f
 	db "ひとのものを$"
@@ -31982,7 +31581,7 @@ Text_201a6: ; 201a6
 Pointers_201b1: ; 201b1
 	dw Text_2019f
 	dw Text_201a6
-	dw $0000
+	dw $0
 
 Text_201b7: ; 201b7
 	db "は まだ がまんしている!$"
@@ -32000,9 +31599,9 @@ Text_202e3: ; 202e3
 Pointers_202ea: ; 202ea
 	dw Text_202d7
 	dw Text_202e3
-	dw $0000
+	dw $0
 
-SECTION "Bank 8 part 2", ROMX [$42f0], BANK [$08]
+SECTION "Bank 8 part 2", ROMX [$42f0], BANK [$8]
 INCLUDE "charmap.asm"
 
 Func_202f0: ; 202f0 (8:42f0)
@@ -32602,7 +32201,7 @@ Func_206ae: ; 206ae (8:46ae)
 	ld hl, sp+$0
 	ld bc, $13
 	call FarCopyVideoData
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 Func_206d5: ; 206d5 (8:46d5)
 	ld a, l
 	and $80
@@ -32893,7 +32492,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	cp $11
 	jp nz, .not_cgb
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 .not_cgb
 	ld l, $7
 	push hl
@@ -33237,7 +32836,7 @@ Func_20be8: ; 20be8 (8:4be8)
 	ld hl, sp+$2b
 	ld a, [hl]
 	dec a
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	ld hl, sp+$28
 	ld a, [hl]
 	and $4
@@ -33264,7 +32863,7 @@ Func_20be8: ; 20be8 (8:4be8)
 
 Func_20c33: ; 20c33 (8:4c33)
 	set_farcall_addrs_hli Func_fb42d
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	inc a
 	call FarCall
 	callba_hli Func_54af8
@@ -34021,7 +33620,7 @@ Func_211e1: ; 211e1 (8:51e1)
 	cp $11
 	jp nz, Func_211ee
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 Func_211ee: ; 211ee (8:51ee)
 	ld l, $12
 	push hl
@@ -34731,7 +34330,7 @@ Func_216e2: ; 216e2 (8:56e2)
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	write_hl_to_sp_plus $0e
+	write_hl_to_sp_plus $e
 	ld hl, sp+$6
 	reg16swap de, hl
 	ld hl, Data_216dc
@@ -34802,7 +34401,7 @@ Func_21744: ; 21744 (8:5744)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $b
 	add hl, de
 	add hl, bc
@@ -34952,7 +34551,7 @@ Func_21820: ; 21820 (8:5820)
 	ld b, a
 	ld a, $1
 	call LeftShiftA
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	or [hl]
 	ld [hl], a
 	pop af
@@ -35460,11 +35059,11 @@ Func_21bf5: ; 21bf5
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0113
+	write_hl_to_sp_plus $113
 	read_hl_from wc2e6
 	ld de, $1c
 	add hl, de
-	write_hl_to_sp_plus $0111
+	write_hl_to_sp_plus $111
 	read_hl_from wc2e6
 	ld de, $1c5
 	add hl, de
@@ -35752,12 +35351,12 @@ Func_21de0: ; 21de0 (8:5de0)
 	write_hl_to_sp_plus $33
 	pop bc
 	ld a, [wc2e8 + 1]
-	read_hl_from_sp_plus $0111
+	read_hl_from_sp_plus $111
 	ld de, $c6
 	add hl, de
 	cp [hl]
 	jp nz, Func_21e63
-	read_hl_from_sp_plus $0113
+	read_hl_from_sp_plus $113
 	ld de, $29
 	add hl, de
 	ld [hl], c
@@ -35775,7 +35374,7 @@ Func_21e63: ; 21e63 (8:5e63)
 Func_21e76: ; 21e76 (8:5e76)
 	read_hl_from_sp_plus $31
 	push hl
-	read_hl_from_sp_plus $0115
+	read_hl_from_sp_plus $115
 	ld de, $29
 	add hl, de
 	pop de
@@ -36531,8 +36130,8 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	write_hl_to_sp_plus $011f
-	read_hl_from_sp_plus $011f
+	write_hl_to_sp_plus $11f
+	read_hl_from_sp_plus $11f
 	ld de, $b
 	add hl, de
 	ld c, l
@@ -36543,7 +36142,7 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld a, [hl]
 	push af
 	ld hl, $0
-	write_hl_to_sp_plus $011e
+	write_hl_to_sp_plus $11e
 	xor a
 Func_223f1: ; 223f1 (8:63f1)
 	cp $a
@@ -36577,7 +36176,7 @@ Func_223f1: ; 223f1 (8:63f1)
 
 Func_2241d: ; 2241d (8:641d)
 	xor a
-	read_hl_from_sp_plus $0121
+	read_hl_from_sp_plus $121
 	inc hl
 	inc hl
 	inc hl
@@ -36635,9 +36234,9 @@ Func_22461: ; 22461 (8:6461)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0124
+	read_hl_from_sp_plus $124
 	add hl, bc
-	write_hl_to_sp_plus $0124
+	write_hl_to_sp_plus $124
 	pop de
 	inc e
 	pop bc
@@ -36656,27 +36255,27 @@ Func_2248c: ; 2248c (8:648c)
 	jp z, Func_224b7
 	cp $f
 	jp nz, Func_224d5
-	read_hl_from_sp_plus $011c
+	read_hl_from_sp_plus $11c
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $011c
+	read_hl_from_sp_plus $11c
 	add hl, bc
-	write_hl_to_sp_plus $011c
+	write_hl_to_sp_plus $11c
 	jp Func_224d5
 
 Func_224b7: ; 224b7 (8:64b7)
-	read_hl_from_sp_plus $011c
+	read_hl_from_sp_plus $11c
 	add hl, hl
-	write_hl_to_sp_plus $011c
+	write_hl_to_sp_plus $11c
 	jp Func_224d5
 
 Func_224c5: ; 224c5 (8:64c5)
-	read_hl_from_sp_plus $011c
+	read_hl_from_sp_plus $11c
 	ld de, $2
 	call DivideHLByDESigned
-	write_hl_to_sp_plus $011c
+	write_hl_to_sp_plus $11c
 Func_224d5: ; 224d5 (8:64d5)
 	ld c, $0
 	ld hl, $138
@@ -36712,7 +36311,7 @@ Func_22512: ; 22512 (8:6512)
 	ld b, c
 	ld a, $1
 	call LeftShiftA
-	read_hl_from_sp_plus $011f
+	read_hl_from_sp_plus $11f
 	and [hl]
 	jp z, Func_22536
 	ld hl, $138
@@ -36739,15 +36338,15 @@ Func_2253a: ; 2253a (8:653a)
 	ld l, [hl]
 	ld h, $0
 	push hl
-	read_hl_from_sp_plus $011e
+	read_hl_from_sp_plus $11e
 	pop de
 	call DivideHLByDESigned
-	write_hl_to_sp_plus $011c
+	write_hl_to_sp_plus $11c
 	ld a, l
 	or h
 	jp nz, Func_2255d
 	ld hl, $1
-	write_hl_to_sp_plus $011c
+	write_hl_to_sp_plus $11c
 Func_2255d: ; 2255d (8:655d)
 	ld e, $0
 Func_2255f: ; 2255f (8:655f)
@@ -36760,7 +36359,7 @@ Func_2255f: ; 2255f (8:655f)
 	ld hl, $11e
 	add hl, sp
 	ld [hl], $0
-	read_hl_from_sp_plus $011e
+	read_hl_from_sp_plus $11e
 	ld c, l
 	ld b, h
 	pop de
@@ -36869,7 +36468,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld hl, $ed
 	add hl, sp
 	call FarCall
-	read_hl_from_sp_plus $0109
+	read_hl_from_sp_plus $109
 	push hl
 	read_hl_from_sp_plus $dc
 	pop de
@@ -36880,7 +36479,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	sbc d
 	ld h, a
 	write_hl_to_sp_plus $da
-	read_hl_from_sp_plus $010d
+	read_hl_from_sp_plus $10d
 	push hl
 	read_hl_from_sp_plus $e0
 	pop de
@@ -36891,7 +36490,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	sbc d
 	ld h, a
 	write_hl_to_sp_plus $de
-	read_hl_from_sp_plus $0112
+	read_hl_from_sp_plus $112
 	push hl
 	read_hl_from_sp_plus $e5
 	pop de
@@ -36902,7 +36501,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	sbc d
 	ld h, a
 	write_hl_to_sp_plus $e3
-	read_hl_from_sp_plus $0116
+	read_hl_from_sp_plus $116
 	push hl
 	read_hl_from_sp_plus $e9
 	pop de
@@ -36913,7 +36512,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	sbc d
 	ld h, a
 	write_hl_to_sp_plus $e7
-	read_hl_from_sp_plus $0114
+	read_hl_from_sp_plus $114
 	push hl
 	read_hl_from_sp_plus $e7
 	pop de
@@ -37087,7 +36686,7 @@ Func_22701: ; 22701 (8:6701)
 	add hl, sp
 	call FarCall
 Func_227d3: ; 227d3 (8:67d3)
-	read_hl_from_sp_plus $0109
+	read_hl_from_sp_plus $109
 	push hl
 	read_hl_from_sp_plus $dc
 	pop de
@@ -37100,7 +36699,7 @@ Func_227d3: ; 227d3 (8:67d3)
 	ld hl, $3e7
 	write_hl_to_sp_plus $da
 Func_227f7: ; 227f7 (8:67f7)
-	read_hl_from_sp_plus $010d
+	read_hl_from_sp_plus $10d
 	push hl
 	read_hl_from_sp_plus $e0
 	pop de
@@ -37113,7 +36712,7 @@ Func_227f7: ; 227f7 (8:67f7)
 	ld hl, $3e7
 	write_hl_to_sp_plus $de
 Func_2281b: ; 2281b (8:681b)
-	read_hl_from_sp_plus $0112
+	read_hl_from_sp_plus $112
 	push hl
 	read_hl_from_sp_plus $e5
 	pop de
@@ -37126,7 +36725,7 @@ Func_2281b: ; 2281b (8:681b)
 	ld hl, $3e7
 	write_hl_to_sp_plus $e3
 Func_2283f: ; 2283f (8:683f)
-	read_hl_from_sp_plus $0116
+	read_hl_from_sp_plus $116
 	push hl
 	read_hl_from_sp_plus $e9
 	pop de
@@ -37139,7 +36738,7 @@ Func_2283f: ; 2283f (8:683f)
 	ld hl, $3e7
 	write_hl_to_sp_plus $e7
 Func_22863: ; 22863 (8:6863)
-	read_hl_from_sp_plus $0114
+	read_hl_from_sp_plus $114
 	push hl
 	read_hl_from_sp_plus $e7
 	pop de
@@ -37635,12 +37234,12 @@ Func_22c2a: ; 22c2a (8:6c2a)
 	ld de, $1c8
 	add hl, de
 	ld a, [hl]
-	ld [wOAM01Attrs], a
+	ld [$c307], a
 	read_hl_from wc2e6
 	ld de, $1c9
 	add hl, de
 	ld a, [hl]
-	ld [wOAM02YCoord], a
+	ld [$c308], a
 	callba_hli Func_52d1f
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
@@ -37648,9 +37247,9 @@ Func_22c2a: ; 22c2a (8:6c2a)
 	ld a, $2
 	call FarCall
 	set_farcall_addrs_hli Func_613fc
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	ld e, a
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	call FarCall
 	set_farcall_addrs_hli Func_620d5
 	ld hl, $d2
@@ -37940,12 +37539,12 @@ Func_22e48: ; 22e48 (8:6e48)
 	ld l, a
 	write_hl_to_sp_plus $12
 	ld hl, sp+$f
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	inc a
 	ld [hl], a
 	ld hl, sp+$e
 	ld [hl], $0
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	ld e, a
 	ld hl, sp+$0
 	call Func_24bb
@@ -38300,7 +37899,7 @@ Func_230ad: ; 230ad (8:70ad)
 	set_farcall_addrs_hli Func_5a149
 	ld c, $1
 	ld e, $1
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	inc a
 	call FarCall
 Func_23137: ; 23137 (8:7137)
@@ -38310,7 +37909,7 @@ Func_23137: ; 23137 (8:7137)
 Pointers_2313a: ; 2313a
 	dw Data_23140
 	dw Data_23150
-	dw $0000
+	dw $0
 
 Data_23140: ; 23140
 	db "<HIRA>つうしん<KATA>ハﾞトル<HIRA>てﾞは<KATA>$"
@@ -38366,7 +37965,7 @@ Func_231ab: ; 231ab (8:71ab)
 	inc a
 	jp z, Func_231e5
 	call Func_22e48
-	ld hl, wOAM04XCoord
+	ld hl, $c311
 	ld l, [hl]
 	ld h, $0
 	inc hl
@@ -38581,15 +38180,15 @@ Func_238c8: ; 238c8 (8:78c8)
 	call CopyFromDEtoHL
 	ld bc, $3c
 	ld de, $cb58
-	ld hl, wOAM11Attrs
+	ld hl, $c347
 	call CopyFromDEtoHL
 	read_hl_from $cb3b
-	write_hl_to wOAM24XCoord
+	write_hl_to $c391
 	read_hl_from $cb3d
-	write_hl_to wOAM24Attrs
+	write_hl_to $c393
 	ld bc, $5
 	ld de, $c980
-	ld hl, wOAM02XCoord
+	ld hl, wPlayerName
 	call CopyFromDEtoHL
 	ret
 
@@ -38777,7 +38376,7 @@ Func_23b5d: ; 23b5d (8:7b5d)
 	ld hl, $8000
 	ret
 
-SECTION "Bank 09", ROMX, BANK [$09]
+SECTION "Bank 09", ROMX, BANK [$9]
 INCLUDE "charmap2.asm"
 Func_24000: ; 24000
 	ret
@@ -39529,7 +39128,7 @@ Pointers_245c4: ; 245c4
 	dw Text_245b3
 	dw Text_245b8
 
-SECTION "Bank 9 part 2", ROMX [$45c8], BANK [$09]
+SECTION "Bank 9 part 2", ROMX [$45c8], BANK [$9]
 INCLUDE "charmap.asm"
 Data_245c8: ; 245c8
 	dr $245c8, $245d0
@@ -39768,7 +39367,7 @@ Func_2478b: ; 2478b (9:478b)
 	jp FarCall
 
 Data_2479d: ; 2479d
-	db $00, $00, $26, $66
+	db $0, $0, $26, $66
 
 Func_247a1: ; 247a1 (9:47a1)
 	add sp, -$16
@@ -40985,7 +40584,7 @@ Func_25029: ; 25029 (9:5029)
 	jp z, Func_250bb
 	or a
 	jp nz, Func_25114
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
 	ld hl, sp+$38
 	ld c, [hl]
@@ -41013,7 +40612,7 @@ Func_25029: ; 25029 (9:5029)
 	jp Func_25114
 
 Func_250bb: ; 250bb (9:50bb)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
 	ld hl, sp+$38
 	ld c, [hl]
@@ -41041,7 +40640,7 @@ Func_250bb: ; 250bb (9:50bb)
 	jp Func_25114
 
 Func_250e9: ; 250e9 (9:50e9)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	push hl
 	ld hl, sp+$38
 	ld c, [hl]
@@ -41267,13 +40866,13 @@ Func_2520c: ; 2520c (9:520c)
 	add hl, de
 	add hl, bc
 	call WriteHLToSPPlus7
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	call Func_24749
 	ld hl, sp+$4
 	ld [hl], a
 	call Func_24001
 	xor a
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld de, $d
 	add hl, de
 	call Func_24010
@@ -41416,7 +41015,7 @@ Func_25363: ; 25363 (9:5363)
 	ld de, $75
 	add hl, de
 	ld [hl], a
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -42636,7 +42235,7 @@ Func_25c81: ; 25c81 (9:5c81)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	read_hl_from_sp_plus $56
 	inc hl
 	inc hl
@@ -42700,7 +42299,7 @@ Func_25d08: ; 25d08 (9:5d08)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0e
+	write_hl_to_sp_plus $e
 	pop hl
 	push hl
 	ld de, $69
@@ -42867,7 +42466,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	pop de
 	push de
 	ld hl, $6
@@ -42876,7 +42475,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	pop de
 	ld hl, $c
 	add hl, de
@@ -42897,7 +42496,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	call WriteHLToSPPlus7
 	ld hl, sp+$4
 	ld [hl], $0
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld de, $d
 	add hl, de
 	call Func_24010
@@ -43028,7 +42627,7 @@ Func_25f12: ; 25f12 (9:5f12)
 	add hl, de
 	ld [hl], $1
 	ld a, [hl]
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -43074,7 +42673,7 @@ Func_25f9c: ; 25f9c (9:5f9c)
 	add hl, de
 	ld [hl], $a
 	ld a, [hl]
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld de, $22
 	add hl, de
 	ld [hl], a
@@ -43380,14 +42979,14 @@ Func_261ed: ; 261ed (9:61ed)
 	ld hl, sp+$2
 	cp [hl]
 	jp nc, Func_26261
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$0
 	cp [hl]
 	jp nc, Func_26261
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $71
 	add hl, de
 	inc hl
@@ -43429,7 +43028,7 @@ Func_26265: ; 26265 (9:6265)
 	jp Func_26394
 
 Func_26292: ; 26292 (9:6292)
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -43461,7 +43060,7 @@ Func_262d1: ; 262d1 (9:62d1)
 
 Func_262e0: ; 262e0 (9:62e0)
 	call Func_24036
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld de, $d
 	add hl, de
 	call Func_24023
@@ -43493,7 +43092,7 @@ Func_2631e: ; 2631e (9:631e)
 	ld a, [hl]
 	cp $b
 	jp nz, Func_26336
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $71
 	add hl, de
 	inc hl
@@ -43503,7 +43102,7 @@ Func_2631e: ; 2631e (9:631e)
 	jp Func_26343
 
 Func_26336: ; 26336 (9:6336)
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $71
 	add hl, de
 	inc hl
@@ -43516,19 +43115,19 @@ Func_26343: ; 26343 (9:6343)
 Func_26346: ; 26346 (9:6346)
 	ld hl, sp+$1
 	ld a, [hl]
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $74
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$0
 	ld a, [hl]
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld de, $22
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$0
 	ld a, [hl]
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $75
 	add hl, de
 	ld [hl], a
@@ -43539,7 +43138,7 @@ Func_26346: ; 26346 (9:6346)
 	ld hl, sp+$7
 	ld a, [hl]
 	and $f0
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $73
 	add hl, de
 	ld [hl], a
@@ -43999,7 +43598,7 @@ Func_26675: ; 26675 (9:6675)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	pop de
 	push de
 	push bc
@@ -44010,7 +43609,7 @@ Func_26675: ; 26675 (9:6675)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -44109,7 +43708,7 @@ Func_26759: ; 26759 (9:6759)
 	call Func_2465a
 	call GetHLAtSPPlus3
 	push hl
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -45060,7 +44659,7 @@ Func_26dd4: ; 26dd4 (9:6dd4)
 	ret
 
 Data_26dd7: ; 26dd7
-	db $00
+	db $0
 
 Func_26dd8: ; 26dd8
 	push af
@@ -45583,7 +45182,7 @@ Func_2711e: ; 2711e (9:711e)
 	cp $fd
 	jp nz, Func_27187
 	ld hl, $195
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld hl, sp+$57
@@ -45852,7 +45451,7 @@ Func_2732e: ; 2732e (9:732e)
 	call MultiplyHLbyDE
 	pop de
 	add hl, de
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	read_hl_from wc2e6
 	ld de, $16
 	add hl, de
@@ -45874,7 +45473,7 @@ Func_27357: ; 27357 (9:7357)
 	call MultiplyHLbyDE
 	pop de
 	add hl, de
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
@@ -45897,7 +45496,7 @@ Func_27357: ; 27357 (9:7357)
 	ld de, $1c
 	add hl, de
 	add hl, bc
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
@@ -45924,11 +45523,11 @@ Func_27357: ; 27357 (9:7357)
 	add hl, de
 	add hl, bc
 	call WriteHLToSPPlus9
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld de, $13
 	add hl, de
 	ld a, [hl]
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $13
 	add hl, de
 	cp [hl]
@@ -45941,7 +45540,7 @@ Func_273c6: ; 273c6 (9:73c6)
 	ld hl, sp+$0
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld de, $13
 	add hl, de
 	ld l, [hl]
@@ -45965,7 +45564,7 @@ Func_273c6: ; 273c6 (9:73c6)
 	ld hl, sp+$4
 	ld [hl], a
 Func_273f7: ; 273f7 (9:73f7)
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld de, $64
 	add hl, de
 	ld c, [hl]
@@ -45998,7 +45597,7 @@ Func_2741e: ; 2741e (9:741e)
 	inc hl
 	ld d, [hl]
 	push de
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld de, $64
 	add hl, de
 	ld e, [hl]
@@ -46030,7 +45629,7 @@ Func_27455: ; 27455 (9:7455)
 	ld hl, sp+$4
 	ld [hl], a
 Func_27467: ; 27467 (9:7467)
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $d
 	add hl, de
 	call Func_24010
@@ -46453,7 +46052,7 @@ Func_27780: ; 27780 (9:7780)
 	pop bc
 	ret
 
-SECTION "Bank 0c", ROMX [$4000], BANK [$0c]
+SECTION "Bank 0c", ROMX [$4000], BANK [$c]
 Func_30000: ; 30000
 	ret
 
@@ -46508,12 +46107,12 @@ Data_301bd: ; 301bd
 Data_30223: ; 30223
 	dr $30223, $30283
 
-SECTION "Bank 0c part 2", ROMX [$4289], BANK [$0c]
+SECTION "Bank 0c part 2", ROMX [$4289], BANK [$c]
 Func_30289: ; 30289 (c:4289)
 	push af
 	push de
 	push bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld c, l
 	ld b, h
 	ld hl, sp+$8
@@ -46536,7 +46135,7 @@ Func_30289: ; 30289 (c:4289)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -46560,7 +46159,7 @@ Func_302ce: ; 302ce (c:42ce)
 	push af
 	push de
 	push bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld c, l
 	ld b, h
 	ld hl, sp+$8
@@ -46583,7 +46182,7 @@ Func_302ce: ; 302ce (c:42ce)
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	add hl, bc
 	ld c, l
 	ld b, h
@@ -46649,7 +46248,7 @@ Func_30348:: ; 30348 (c:4348)
 	cp $11
 	jp nz, Func_3035a
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 Func_3035a: ; 3035a (c:435a)
 	ld l, $12
 	push hl
@@ -46729,7 +46328,7 @@ Func_30393: ; 30393 (c:4393)
 	ld de, $1405
 	ld hl, $d
 	call FarCall
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	set_farcall_addrs_hli Func_93370
 	ld hl, sp+$6
 	call FarCall
@@ -46751,19 +46350,19 @@ Func_30393: ; 30393 (c:4393)
 	cp $15
 	jp nz, Func_30443
 	ld a, $1
-	ld [wOAM23XCoord], a
+	ld [$c38d], a
 	jp Func_30454
 
 Func_30443: ; 30443 (c:4443)
 	cp $17
 	jp nz, Func_30450
 	ld a, $2
-	ld [wOAM23XCoord], a
+	ld [$c38d], a
 	jp Func_30454
 
 Func_30450: ; 30450 (c:4450)
 	xor a
-	ld [wOAM23XCoord], a
+	ld [$c38d], a
 Func_30454: ; 30454 (c:4454)
 	ld hl, sp+$d
 	ld a, [hl]
@@ -46861,7 +46460,7 @@ Func_30519: ; 30519 (c:4519)
 	ld a, $6
 	call Func_3304d
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	pop bc
 	pop de
 	push bc
@@ -46901,7 +46500,7 @@ Func_30519: ; 30519 (c:4519)
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli Func_daa40
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	call FarCall
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -46965,7 +46564,7 @@ Func_305eb: ; 305eb (c:45eb)
 	call PlaceStringDEatCoordHL
 Func_305f4: ; 305f4 (c:45f4)
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -47045,14 +46644,14 @@ Func_30676: ; 30676 (c:4676)
 	inc hl
 	ld b, [hl]
 	push bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld de, $7
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
 	push bc
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $d
 	add hl, de
 	ld e, [hl]
@@ -47077,7 +46676,7 @@ Func_306db: ; 306db (c:46db)
 	ld hl, sp+$9
 	ld c, [hl]
 	ld b, $0
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld de, $9
 	add hl, de
 	ld [hl], c
@@ -47283,7 +46882,7 @@ Func_30803: ; 30803 (c:4803)
 	call FarCall
 Func_30851: ; 30851 (c:4851)
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -47302,7 +46901,7 @@ Func_30869: ; 30869 (c:4869)
 	push de
 	push af
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	pop af
 	call GetSRAMBank
 	pop de
@@ -47506,7 +47105,7 @@ Func_309da: ; 309da
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	read_hl_from_sp_plus $13
 	inc hl
 	ld e, [hl]
@@ -47595,15 +47194,15 @@ Func_30a85: ; 30a85 (c:4a85)
 	bit 7, b
 	jr z, .asm_30ac8
 	ld bc, $0
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	dec hl
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	inc h
 	dec h
 	bit 7, h
 	jr z, .asm_30ac4
 	ld hl, $0
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	jp .asm_30ac8
 
 .asm_30ac4
@@ -47613,23 +47212,23 @@ Func_30a85: ; 30a85 (c:4a85)
 	jp Func_30b1e
 
 Func_30acb: ; 30acb (c:4acb)
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	reg16swap de, hl
 	inc bc
 	ld l, c
 	ld h, b
 	call CompareHLtoDE
 	jp c, Func_30b1e
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	dec hl
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	inc hl
-	write_hl_to_sp_plus $0d
-	read_hl_from_sp_plus $0f
+	write_hl_to_sp_plus $d
+	read_hl_from_sp_plus $f
 	push hl
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	pop de
 	add hl, de
 	push hl
@@ -47643,9 +47242,9 @@ Func_30acb: ; 30acb (c:4acb)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_30b1a
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	dec hl
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	jp Func_30b1e
 
 Func_30b1a: ; 30b1a (c:4b1a)
@@ -47660,7 +47259,7 @@ Func_30b1e: ; 30b1e (c:4b1e)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	push hl
 	read_hl_from_sp_plus $15
 	ld de, $5
@@ -47751,8 +47350,8 @@ Func_30b1e: ; 30b1e (c:4b1e)
 	add $2
 	call Func_308da
 	pop bc
-	read_hl_from_sp_plus $0f
-	write_hl_to_sp_plus $0d
+	read_hl_from_sp_plus $f
+	write_hl_to_sp_plus $d
 	call GetHLAtSPPlus4
 	ld [hl], $8a
 	jp Func_30c2c
@@ -47788,7 +47387,7 @@ Func_30bd3: ; 30bd3 (c:4bd3)
 	pop de
 	add hl, de
 	dec hl
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	read_hl_from_sp_plus $13
 	ld de, $7
 	add hl, de
@@ -47811,7 +47410,7 @@ Func_30c2c: ; 30c2c (c:4c2c)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	pop de
 	call Func_30dfd
 	ld l, $12
@@ -47840,7 +47439,7 @@ Func_30c5f: ; 30c5f (c:4c5f)
 	call Func_30313
 	set_farcall_addrs_hli Func_61133
 	pop bc
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	add hl, bc
 	push hl
 	ld hl, $c2f8
@@ -48131,7 +47730,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	ld bc, $d
 	call FarCopyVideoData
 	read_hl_from_sp_plus $38
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_30e86
 	ld de, $2
@@ -48139,7 +47738,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	jp Func_30e8f
 
 Func_30e86: ; 30e86 (c:4e86)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $2
 	jp nz, Func_30e8f
 	add hl, hl
@@ -48230,7 +47829,7 @@ Func_30f1c: ; 30f1c (c:4f1c)
 	jp Func_30f3f
 
 Func_30f25: ; 30f25 (c:4f25)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_30f36
 	ld de, $2
@@ -48238,7 +47837,7 @@ Func_30f25: ; 30f25 (c:4f25)
 	jp Func_30f3f
 
 Func_30f36: ; 30f36 (c:4f36)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $2
 	jp nz, Func_30f3f
 	add hl, hl
@@ -48278,7 +47877,7 @@ Func_30f5d: ; 30f5d (c:4f5d)
 	ld hl, sp+$2
 	call Func_241f
 	read_hl_from_sp_plus $19
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_30f8f
 	ld de, $2
@@ -48286,7 +47885,7 @@ Func_30f5d: ; 30f5d (c:4f5d)
 	jp Func_30f98
 
 Func_30f8f: ; 30f8f (c:4f8f)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $2
 	jp nz, Func_30f98
 	add hl, hl
@@ -48758,7 +48357,7 @@ Func_312c7: ; 312c7 (c:52c7)
 	ld e, $9
 	ld hl, $b0d
 	call Func_30313
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld bc, $0
 	inc h
 	dec h
@@ -48783,7 +48382,7 @@ Func_312c7: ; 312c7 (c:52c7)
 	call MultiplyLongsFromStack
 	ld hl, sp+$11
 	call PutLongFromStackToHL
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_31345
 	ld hl, $0
@@ -48795,7 +48394,7 @@ Func_312c7: ; 312c7 (c:52c7)
 	jp Func_3135a
 
 Func_31345: ; 31345 (c:5345)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $2
 	jp nz, Func_3135a
 	ld hl, $0
@@ -49759,7 +49358,7 @@ Data_31ac4: ; 31ac4
 Data_31aca: ; 31aca
 	dw Data_31ad0
 	dw Data_31ae2
-	dw $0000
+	dw $0
 
 Data_31ad0: ; 31ad0
 	db "<HIRA>そうこかﾞ いっはﾟいなのてﾞ<KATA>$"
@@ -49803,7 +49402,7 @@ Func_31af1:: ; 31af1
 	jp nz, Func_31bb9
 	push bc
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -49819,7 +49418,7 @@ Func_31af1:: ; 31af1
 	call Func_3bc5
 	pop bc
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -49831,7 +49430,7 @@ Func_31af1:: ; 31af1
 	ld hl, $10e
 	call FarCall
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $5
 	push hl
 	ld c, $14
@@ -50614,7 +50213,7 @@ Func_32079: ; 32079 (c:6079)
 
 Pointers_3207b: ; 3207b
 	dw Data_3207f
-	dw $0000
+	dw $0
 
 Data_3207f: ; 3207f
 	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は<KATA> <HIRA>えらへﾞないよ<KATA>$"
@@ -50622,7 +50221,7 @@ Data_3207f: ; 3207f
 Pointers_32097: ; 32097
 	dw Data_3209d
 	dw Data_320ac
-	dw $0000
+	dw $0
 
 Data_3209d: ; 3209d
 	db "リモコン<HIRA>の しﾞゅしんに<KATA>$"
@@ -50633,7 +50232,7 @@ Data_320ac: ; 320ac
 Pointers_320b8: ; 320b8
 	dw Data_320be
 	dw Data_320cd
-	dw $0000
+	dw $0
 
 Data_320be: ; 320be
 	db "リモコン<HIRA>の しﾞゅしんに<KATA>$"
@@ -50664,7 +50263,7 @@ Func_320d8: ; 320d8
 	cp $1
 	jp nz, Func_3214e
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -50695,7 +50294,7 @@ Func_3214e: ; 3214e (c:614e)
 	ld a, $f
 	call Func_3202e
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -50811,7 +50410,7 @@ Func_3222e: ; 3222e (c:622e)
 Func_32241: ; 32241 (c:6241)
 	push de
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -51182,16 +50781,16 @@ Func_324d3: ; 324d3 (c:64d3)
 	jp Func_324d3
 
 Func_324f5: ; 324f5 (c:64f5)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld de, $3e8
 	call DivideHLByDESigned
-	write_hl_to_sp_plus $0c
-	read_hl_from_sp_plus $0c
+	write_hl_to_sp_plus $c
+	read_hl_from_sp_plus $c
 	ld de, $3e8
 	call MultiplyHLbyDE
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	ld a, l
 	sub c
 	ld l, a
@@ -51250,7 +50849,7 @@ Func_324f5: ; 324f5 (c:64f5)
 	ld b, h
 	call GetHLAtSPPlus8
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	push hl
 	read_hl_from_sp_plus $10
 	pop de
@@ -51258,8 +50857,8 @@ Func_324f5: ; 324f5 (c:64f5)
 	pop de
 	add hl, de
 	add hl, bc
-	write_hl_to_sp_plus $0e
-	read_hl_from_sp_plus $0e
+	write_hl_to_sp_plus $e
+	read_hl_from_sp_plus $e
 	ld de, $a
 	call CompareHLtoDE
 	jp nc, Func_3258d
@@ -51795,26 +51394,26 @@ Func_3297b: ; 3297b (c:697b)
 	ld hl, sp+$2
 	ld bc, $d
 	call FarCopyVideoData
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_329c5
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld de, $2
 	call DivideHLByDESigned
 	write_hl_to_sp_plus $19
 	jp Func_329e1
 
 Func_329c5: ; 329c5 (c:69c5)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $2
 	jp nz, Func_329d9
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	add hl, hl
 	write_hl_to_sp_plus $19
 	jp Func_329e1
 
 Func_329d9: ; 329d9 (c:69d9)
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	write_hl_to_sp_plus $19
 Func_329e1: ; 329e1 (c:69e1)
 	ld hl, sp+$13
@@ -51973,7 +51572,7 @@ Func_32ae4: ; 32ae4 (c:6ae4)
 
 Func_32aea: ; 32aea (c:6aea)
 	push bc
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	ld bc, $0
 	inc h
 	dec h
@@ -52003,7 +51602,7 @@ Func_32aea: ; 32aea (c:6aea)
 	call MultiplyLongsFromStack
 	ld hl, sp+$17
 	call PutLongFromStackToHL
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_32b38
 	ld hl, $0
@@ -52015,7 +51614,7 @@ Func_32aea: ; 32aea (c:6aea)
 	jp Func_32b4d
 
 Func_32b38: ; 32b38 (c:6b38)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $2
 	jp nz, Func_32b4d
 	ld hl, $0
@@ -52317,7 +51916,7 @@ Func_32d3f: ; 32d3f (c:6d3f)
 	ld hl, sp+$31
 	call PutLongFromStackToHL
 Func_32d5f: ; 32d5f (c:6d5f)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_32d77
 	ld hl, $0
@@ -52329,7 +51928,7 @@ Func_32d5f: ; 32d5f (c:6d5f)
 	jp Func_32d8c
 
 Func_32d77: ; 32d77 (c:6d77)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $2
 	jp nz, Func_32d8c
 	ld hl, $0
@@ -52409,7 +52008,7 @@ Func_32df4: ; 32df4 (c:6df4)
 Func_32e21: ; 32e21 (c:6e21)
 	push de
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $10
 	push hl
 	ld c, $14
@@ -52452,7 +52051,7 @@ Func_32e5f: ; 32e5f (c:6e5f)
 Func_32e6f: ; 32e6f (c:6e6f)
 	push de
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $10
 	push hl
 	ld c, $14
@@ -52587,21 +52186,21 @@ Data_32f7a: ; 32f7a
 
 Pointers_32f83: ; 32f83
 	dw Data_32f87
-	dw $0000
+	dw $0
 
 Data_32f87: ; 32f87
 	db "<HIRA>おかねかﾞたりないよ<KATA>$"
 
 Pointers_32f94: ; 32f94
 	dw Data_32f98
-	dw $0000
+	dw $0
 
 Data_32f98: ; 32f98
 	db "<HIRA>これいしﾞょう かえないよ<KATA>$"
 
 Pointers_32fa8: ; 32fa8
 	dw Data_32fac
-	dw $0000
+	dw $0
 
 Data_32fac: ; 32fac
 	db "<HIRA>とﾞうもありかﾞとう<KATA>$"
@@ -52609,7 +52208,7 @@ Data_32fac: ; 32fac
 Pointers_32fb9: ; 32fb9
 	dw Data_32fbf
 	dw Data_32fcc
-	dw $0000
+	dw $0
 
 Data_32fbf: ; 32fbf
 	db "<HIRA>とﾞうもありかﾞとう<KATA>$"
@@ -52619,7 +52218,7 @@ Data_32fcc: ; 32fcc
 
 Pointers_32fd9: ; 32fd9
 	dw Data_32fdd
-	dw $0000
+	dw $0
 
 Data_32fdd: ; 32fdd
 	db "<HIRA>ほかのものは かうかい<KATA>?$"
@@ -52627,7 +52226,7 @@ Data_32fdd: ; 32fdd
 Pointers_32fec: ; 32fec
 	dw Data_32ff2
 	dw Data_32fff
-	dw $0000
+	dw $0
 
 Data_32ff2: ; 32ff2
 	db "<HIRA>とﾞうもありかﾞとう<KATA>$"
@@ -52637,7 +52236,7 @@ Data_32fff: ; 32fff
 
 Pointers_3300c: ; 3300c
 	dw Data_33010
-	dw $0000
+	dw $0
 
 Data_33010: ; 33010
 	db "<HIRA>ほかのものは うるかい<KATA>?$"
@@ -52645,7 +52244,7 @@ Data_33010: ; 33010
 Pointers_3301f: ; 3301f
 	dw Data_33025
 	dw Data_33032
-	dw $0000
+	dw $0
 
 Data_33025: ; 33025
 	db "<HIRA>とﾞうもありかﾞとう<KATA>$"
@@ -52655,7 +52254,7 @@ Data_33032: ; 33032
 
 Pointers_3303a: ; 3303a
 	dw Data_3303e
-	dw $0000
+	dw $0
 
 Data_3303e: ; 3303e
 	db "<HIRA>それは うっちゃたﾞめ<KATA>!$"
@@ -52803,7 +52402,7 @@ Func_3312f: ; 3312f (c:712f)
 	pop bc
 	pop bc
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -52900,7 +52499,7 @@ Func_3321d: ; 3321d (c:721d)
 	ld hl, $d
 	call Func_30313
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -53294,14 +52893,14 @@ Func_335f7: ; 335f7 (c:75f7)
 	ld [hl], a
 	ld e, c
 	ld d, $0
-	ld hl, wOAM00XCoord
+	ld hl, $c301
 	add hl, de
 	ld a, [hl]
 	cp $ff
 	jp z, Func_337a9
 	ld e, c
 	ld d, $0
-	ld hl, wOAM00XCoord
+	ld hl, $c301
 	add hl, de
 	ld a, [hl]
 	cp $23
@@ -53648,7 +53247,7 @@ Func_3383d: ; 3383d (c:783d)
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM02XCoord
+	ld hl, wPlayerName
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$8
@@ -54391,7 +53990,7 @@ Data_33da6: ; 33da6
 
 Pointers_33da8: ; 33da8
 	dw Data_33dac
-	dw $0000
+	dw $0
 
 Data_33dac: ; 33dac
 	db "<HIRA>すてちゃ<KATA>タﾞメ!$"
@@ -54447,7 +54046,7 @@ Func_33db7: ; 33db7 (c:7db7)
 	call Func_3ca1
 	pop bc
 	ld a, $ff
-	ld [wOAM26Attrs], a
+	ld [$c39b], a
 	set_farcall_addrs_hli Func_14db8
 	call GetHLAtSPPlus3
 	call FarCall
@@ -54644,7 +54243,7 @@ Func_33f72: ; 33f72 (c:7f72)
 	pop hl
 	ld a, l
 	call GetSRAMBank
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld a, l
 	or h
 	jp nz, Func_33fdc
@@ -54658,7 +54257,7 @@ Func_33fdf: ; 33fdf (c:7fdf)
 	add sp, $10
 	ret
 
-SECTION "Bank 0d", ROMX, BANK [$0d]
+SECTION "Bank 0d", ROMX, BANK [$d]
 	dr $34000, $37ec0
 
 SECTION "Bank 13", ROMX, BANK [$13]
@@ -54723,7 +54322,7 @@ Data_4c0e8: ; 4c0e8
 
 Func_4c12c: ; 4c12c
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call Func_4c0b9
 	call Func_4c2a3
 	or a
@@ -54744,7 +54343,7 @@ Func_4c12c: ; 4c12c
 	call Func_4c4b3
 Func_4c176: ; 4c176 (13:4176)
 	call Func_4c323
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $ff
 	jp z, Func_4c197
 	call Func_4c3de
@@ -54766,17 +54365,17 @@ Func_4c19a: ; 4c19a (13:419a)
 
 Func_4c19d: ; 4c19d (13:419d)
 	xor a
-	ld [wOAM06Attrs], a
+	ld [$c31b], a
 	xor a
-	ld [wOAM06XCoord], a
+	ld [$c319], a
 	call DisableJoypadInt
 	ld a, $81
 	ld [rSC], a
 	ld e, $0
 Func_4c1ae: ; 4c1ae (13:41ae)
-	read_hl_from wOAM24Attrs
+	read_hl_from $c393
 	push hl
-	read_hl_from wOAM24XCoord
+	read_hl_from $c391
 	pop af
 	ld a, e
 	cp l
@@ -54831,7 +54430,7 @@ Func_4c21e: ; 4c21e (13:421e)
 	push bc
 	ld hl, sp+$0
 	ld [hl], $ff
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4c23c
 	ld c, $1
@@ -54854,7 +54453,7 @@ Func_4c24a: ; 4c24a (13:424a)
 Func_4c24c: ; 4c24c
 	push af
 	push bc
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4c275
 	ld c, $1
@@ -54898,7 +54497,7 @@ Func_4c2a0: ; 4c2a0 (13:42a0)
 
 Func_4c2a3: ; 4c2a3 (13:42a3)
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call Func_4c0ac
 	ld c, $5
 	ld e, $14
@@ -54964,7 +54563,7 @@ Func_4c369: ; 4c369 (13:4369)
 	ld e, $14
 	ld hl, $d
 	call Func_4c0d3
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4c3ac
 	ld de, Data_4c3be
@@ -55003,7 +54602,7 @@ Data_4c3c7: ; 4c3c7
 	db "<HIRA>とﾞの<KATA>モートﾞ<HIRA>てﾞ あそひﾞますか<KATA>?$"
 
 Func_4c3de: ; 4c3de (13:43de)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $5
 	jp z, Func_4c48a
 	cp $4
@@ -55017,8 +54616,8 @@ Func_4c3de: ; 4c3de (13:43de)
 	cp $3
 	jp nz, Func_4c493
 	ld a, $ff
-	ld [wOAM02YCoord], a
-	ld [wOAM01Attrs], a
+	ld [$c308], a
+	ld [$c307], a
 	callba_hli Func_17470
 	set_farcall_addrs_hli Func_1445e
 	ld c, BANK(Data_58d4e)
@@ -55069,7 +54668,7 @@ Func_4c4b0: ; 4c4b0 (13:44b0)
 
 Func_4c4b3: ; 4c4b3 (13:44b3)
 	push bc
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4c4ca
 	ld c, $1
@@ -55120,7 +54719,7 @@ Func_4c4f8: ; 4c4f8 (13:44f8)
 	call FarCall
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wOAM23XCoord], a
+	ld [$c38d], a
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $4
@@ -55229,7 +54828,7 @@ Pointers_4c5f6: ; 4c5f6
 	dw Data_4c635
 	dw Data_4c64e
 	dw Data_4c662
-	dw $0000
+	dw $0
 
 Data_4c604: ; 4c604
 	db "タイトルマッチ<HIRA>てﾞは<KATA>$"
@@ -55251,7 +54850,7 @@ Data_4c662: ; 4c662
 
 Pointers_4c677: ; 4c677
 	dw Data_4c67b
-	dw $0000
+	dw $0
 
 Data_4c67b: ; 4c67b
 	db "ヘﾞルト<HIRA>かﾞ ありません<KATA>$"
@@ -55484,7 +55083,7 @@ Func_4c859: ; 4c859 (13:4859)
 	jp nz, Func_4c8ef
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wOAM23XCoord], a
+	ld [$c38d], a
 	set_farcall_addrs_hli Func_7766
 	ld c, $0
 	ld hl, sp+$1
@@ -55577,7 +55176,7 @@ Data_4c95b: ; 4c95b
 Pointers_4c965: ; 4c965
 	dw Data_4c96b
 	dw Data_4c984
-	dw $0000
+	dw $0
 
 Data_4c96b: ; 4c96b
 	db "ハﾟーティー<HIRA>に 4たい<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>$"
@@ -55588,7 +55187,7 @@ Data_4c984: ; 4c984
 Pointers_4c992: ; 4c992
 	dw Data_4c998
 	dw Data_4c9b3
-	dw $0000
+	dw $0
 
 Data_4c998: ; 4c998
 	db "ハﾟーティー<HIRA>に 1たいしか<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>$"
@@ -55599,7 +55198,7 @@ Data_4c9b3: ; 4c9b3
 Pointers_4c9c3: ; 4c9c3
 	dw Data_4c9c9
 	dw Data_4c9df
-	dw $0000
+	dw $0
 
 Data_4c9c9: ; 4c9c9
 	db "<HIRA>あいての<KATA> ロホﾞホﾟン<HIRA>かﾞ 4たい<KATA>$"
@@ -55610,7 +55209,7 @@ Data_4c9df: ; 4c9df
 Pointers_4c9ee: ; 4c9ee
 	dw Data_4c9f4
 	dw Data_4ca0a
-	dw $0000
+	dw $0
 
 Data_4c9f4: ; 4c9f4
 	db "<HIRA>あいての<KATA> ロホﾞホﾟン<HIRA>かﾞ 1たい<KATA>$"
@@ -55621,7 +55220,7 @@ Data_4ca0a: ; 4ca0a
 Pointers_4ca1b: ; 4ca1b
 	dw Data_4ca21
 	dw Data_4ca30
-	dw $0000
+	dw $0
 
 Data_4ca21: ; 4ca21
 	db "<HIRA>その<KATA> ロホﾞホﾟン<HIRA>は<KATA>$"
@@ -55631,14 +55230,14 @@ Data_4ca30: ; 4ca30
 
 Pointers_4ca3a: ; 4ca3a
 	dw Data_4ca3e
-	dw $0000
+	dw $0
 
 Data_4ca3e: ; 4ca3e
 	db "<HIRA>あけﾞたよ<KATA>$"
 
 Pointers_4ca46: ; 4ca46
 	dw Data_4ca4a
-	dw $0000
+	dw $0
 
 Data_4ca4a: ; 4ca4a
 	db "<HIRA>もらったよ<KATA>$"
@@ -55646,7 +55245,7 @@ Data_4ca4a: ; 4ca4a
 Pointers_4ca52: ; 4ca52
 	dw Data_4ca58
 	dw Data_4ca6b
-	dw $0000
+	dw $0
 
 Data_4ca58: ; 4ca58
 	db "<HIRA>たたかえる<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>$"
@@ -55779,10 +55378,10 @@ Data_4cb6e: ; 4cb6e
 
 Func_4cb85: ; 4cb85
 	ld a, $ff
-	ld [wOAM23XCoord], a
+	ld [$c38d], a
 	set_farcall_addrs_hli Func_7766
 	ld c, $0
-	ld de, wOAM23XCoord
+	ld de, $c38d
 	ld hl, $1
 	call FarCall
 	call FillVisibleAreaWithBlankTile
@@ -55791,7 +55390,7 @@ Func_4cb85: ; 4cb85
 
 Pointers_4cba7: ; 4cba7
 	dw Data_4cbab
-	dw $0000
+	dw $0
 
 Data_4cbab: ; 4cbab
 	db "スクラッフﾟ<HIRA>に なっているよ<KATA>$"
@@ -55853,7 +55452,7 @@ Func_4cc44: ; 4cc44 (13:4c44)
 	jp Func_4cbcf
 
 Func_4cc47: ; 4cc47 (13:4c47)
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_4cc4f
 Func_4cc4f: ; 4cc4f (13:4c4f)
@@ -55863,7 +55462,7 @@ Func_4cc4f: ; 4cc4f (13:4c4f)
 	ld hl, Data_4c07e
 	call FarCall
 	call WriteHLToSPPlus8
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4cc8f
 	ld c, $1
@@ -56282,7 +55881,7 @@ Func_4cf91: ; 4cf91 (13:4f91)
 	push bc
 	call Func_4c0ac
 	call Func_4c0b9
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4cfdd
 	ld hl, sp+$b
@@ -56324,10 +55923,10 @@ Func_4cff9: ; 4cff9 (13:4ff9)
 	ld hl, sp+$6
 	call Func_4d84e
 	ld hl, sp+$0
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	ld [hl], a
 	ld hl, sp+$1
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	ld [hl], a
 	call Func_4c0b9
 	callba_hli Func_cced
@@ -56364,7 +55963,7 @@ Func_4d069: ; 4d069 (13:5069)
 	call FarCall
 Func_4d07d: ; 4d07d (13:507d)
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call Func_4c0ac
 	ld c, $3
 	ld e, $a
@@ -56407,7 +56006,7 @@ Func_4d0ba: ; 4d0ba (13:50ba)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM01Attrs
+	ld hl, $c307
 	add hl, de
 	cp [hl]
 	jp z, Func_4d0e1
@@ -56418,7 +56017,7 @@ Func_4d0ba: ; 4d0ba (13:50ba)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM01Attrs
+	ld hl, $c307
 	add hl, de
 	ld [hl], a
 Func_4d0e1: ; 4d0e1 (13:50e1)
@@ -56476,7 +56075,7 @@ Func_4d13d: ; 4d13d (13:513d)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM01Attrs
+	ld hl, $c307
 	add hl, de
 	cp [hl]
 	jp z, Func_4d164
@@ -56487,7 +56086,7 @@ Func_4d13d: ; 4d13d (13:513d)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM01Attrs
+	ld hl, $c307
 	add hl, de
 	ld [hl], a
 Func_4d164: ; 4d164 (13:5164)
@@ -56549,16 +56148,16 @@ Func_4d1e1: ; 4d1e1 (13:51e1)
 	or a
 	jp nz, Func_4d27c
 	set_farcall_addrs_hli Func_60e81
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d21d
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	call FarCall
 	ld l, a
 	jp Func_4d230
 
 Func_4d21d: ; 4d21d (13:521d)
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	call FarCall
 	ld l, a
 	inc l
@@ -56627,13 +56226,13 @@ Func_4d2b6: ; 4d2b6 (13:52b6)
 	ld a, $1
 	call FarCall
 Func_4d2ca: ; 4d2ca (13:52ca)
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d2ec
 	set_farcall_addrs_hli Func_6b55
 	ld hl, sp+$67
 	reg16swap de, hl
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	call FarCall
 	jp Func_4d303
 
@@ -56641,7 +56240,7 @@ Func_4d2ec: ; 4d2ec (13:52ec)
 	set_farcall_addrs_hli Func_6b55
 	ld hl, sp+$44
 	reg16swap de, hl
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	call FarCall
 Func_4d303: ; 4d303 (13:5303)
 	set_farcall_addrs_hli Func_16007
@@ -56670,7 +56269,7 @@ Func_4d32b: ; 4d32b (13:532b)
 	ld a, [hl]
 	cp $ff
 	jp z, Func_4d465
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d3d4
 	push de
@@ -56874,7 +56473,7 @@ Func_4d47c: ; 4d47c (13:547c)
 Func_4d47e: ; 4d47e (13:547e)
 	push hl
 	call Func_4c21e
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d4ce
 	ld c, $1
@@ -56941,7 +56540,7 @@ Func_4d50f: ; 4d50f (13:550f)
 	ld hl, sp+$28
 	ld bc, $6
 	call CopyFromDEtoHL
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d55b
 	set_farcall_addrs_hli Func_16019
@@ -57035,7 +56634,7 @@ Func_4d5e4: ; 4d5e4 (13:55e4)
 	ld hl, Data_4d285
 	call Func_2b7d
 Func_4d5ed: ; 4d5ed (13:55ed)
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d621
 	set_farcall_addrs_hli Func_dc0a
@@ -57115,7 +56714,7 @@ Func_4d698: ; 4d698 (13:5698)
 	ld a, [hl]
 	or a
 	jp nz, Func_4d6ba
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp z, Func_4d6cb
 Func_4d6ba: ; 4d6ba (13:56ba)
@@ -57125,7 +56724,7 @@ Func_4d6ba: ; 4d6ba (13:56ba)
 	ld a, [hl]
 	or a
 	jp z, Func_4d6ee
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp z, Func_4d6ee
 Func_4d6cb: ; 4d6cb (13:56cb)
@@ -57175,10 +56774,10 @@ Func_4d70e: ; 4d70e (13:570e)
 
 Func_4d713: ; 4d713 (13:5713)
 	pop hl
-	ld a, [wOAM23XCoord]
+	ld a, [$c38d]
 	cp $1
 	jp nz, Func_4d769
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d745
 	push hl
@@ -57326,7 +56925,7 @@ Func_4d84e: ; 4d84e (13:584e)
 	add hl, sp
 	ld sp, hl
 	callba_hli Func_cc0c
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d891
 	set_farcall_addrs_hli Func_6b55
@@ -57340,7 +56939,7 @@ Func_4d84e: ; 4d84e (13:584e)
 	ld hl, sp+$0
 	ld [hl], a
 	ld a, [wc2e8 + 1]
-	ld [wOAM01Attrs], a
+	ld [$c307], a
 	jp Func_4d8b5
 
 Func_4d891: ; 4d891 (13:5891)
@@ -57355,18 +56954,18 @@ Func_4d891: ; 4d891 (13:5891)
 	ld hl, sp+$1
 	ld [hl], a
 	ld a, [wc2e8 + 1]
-	ld [wOAM02YCoord], a
+	ld [$c308], a
 Func_4d8b5: ; 4d8b5 (13:58b5)
 	call Func_4c21e
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4d905
 	ld c, $1
-	ld de, wOAM02YCoord
+	ld de, $c308
 	ld hl, $1
 	call Func_4c1f6
 	ld c, $1
-	ld de, wOAM01Attrs
+	ld de, $c307
 	ld hl, $1
 	call Func_4c20a
 	ld c, $1
@@ -57393,11 +56992,11 @@ Func_4d8b5: ; 4d8b5 (13:58b5)
 
 Func_4d905: ; 4d905 (13:5905)
 	ld c, $1
-	ld de, wOAM02YCoord
+	ld de, $c308
 	ld hl, $1
 	call Func_4c20a
 	ld c, $1
-	ld de, wOAM01Attrs
+	ld de, $c307
 	ld hl, $1
 	call Func_4c1f6
 	ld c, $1
@@ -57495,7 +57094,7 @@ Func_4d9c7: ; 4d9c7 (13:59c7)
 	ld hl, Data_4d846
 	call Func_2b7d
 Func_4d9d9: ; 4d9d9 (13:59d9)
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4da2e
 	set_farcall_addrs_hli Func_16019
@@ -57589,7 +57188,7 @@ Func_4dad5: ; 4dad5 (13:5ad5)
 	ld sp, hl
 	ld a, [hSRAMBank]
 	ld c, a
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4db69
 	push de
@@ -57785,7 +57384,7 @@ Func_4dc29: ; 4dc29 (13:5c29)
 	ld [hl], $ff
 	ld e, a
 	ld d, $0
-	ld hl, wOAM00XCoord
+	ld hl, $c301
 	add hl, de
 	ld [hl], $ff
 	inc a
@@ -57795,7 +57394,7 @@ Func_4dc44: ; 4dc44 (13:5c44)
 	xor a
 	ld [$c2f7], a
 	xor a
-	ld [wOAM01VTile], a
+	ld [$c306], a
 	xor a
 	ld [$c2f9], a
 	ld l, $12
@@ -58833,7 +58432,7 @@ Func_4e272: ; 4e272 (13:6272)
 	jp nz, Func_4e2e0
 Func_4e283: ; 4e283 (13:6283)
 	push bc
-	ld a, [wOAM01VTile]
+	ld a, [$c306]
 	cp $1
 	jp c, Func_4e2cc
 	ld hl, $c2f7
@@ -58863,10 +58462,10 @@ Func_4e283: ; 4e283 (13:6283)
 	pop bc
 	call GetHLAtSPPlus5
 	ld a, l
-	ld hl, wOAM01VTile
+	ld hl, $c306
 	ld l, [hl]
 	ld h, $0
-	ld de, wOAMBuffer
+	ld de, wc300
 	add hl, de
 	ld [hl], a
 Func_4e2cc: ; 4e2cc (13:62cc)
@@ -58938,9 +58537,9 @@ Func_4e2f3: ; 4e2f3 (13:62f3)
 	ld a, [$c2f7]
 	inc a
 	ld [$c2f7], a
-	ld a, [wOAM01VTile]
+	ld a, [$c306]
 	inc a
-	ld [wOAM01VTile], a
+	ld [$c306], a
 	call GetHLAtSPPlus6
 	ld de, $4
 	call Func_4e008
@@ -58963,9 +58562,9 @@ Func_4e35f: ; 4e35f (13:635f)
 	ld a, [$c2f7]
 	inc a
 	ld [$c2f7], a
-	ld a, [wOAM01VTile]
+	ld a, [$c306]
 	inc a
-	ld [wOAM01VTile], a
+	ld [$c306], a
 	ld e, $11
 	ld a, [$c2f7]
 	add $b
@@ -59056,12 +58655,12 @@ Func_4e3f3: ; 4e3f3 (13:63f3)
 	ld [hl], $ff
 	ld e, c
 	ld d, $0
-	ld hl, wOAM00YCoord
+	ld hl, $c300
 	add hl, de
 	ld [hl], $ff
-	ld a, [wOAM01VTile]
+	ld a, [$c306]
 	dec a
-	ld [wOAM01VTile], a
+	ld [$c306], a
 	jp Func_4e4dd
 
 Func_4e43e: ; 4e43e (13:643e)
@@ -59080,9 +58679,9 @@ Func_4e43e: ; 4e43e (13:643e)
 	ld a, [$c2f7]
 	dec a
 	ld [$c2f7], a
-	ld a, [wOAM01VTile]
+	ld a, [$c306]
 	dec a
-	ld [wOAM01VTile], a
+	ld [$c306], a
 	pop bc
 	ld e, c
 	ld d, $0
@@ -59111,9 +58710,9 @@ Func_4e47a: ; 4e47a (13:647a)
 	ld a, [$c2f7]
 	dec a
 	ld [$c2f7], a
-	ld a, [wOAM01VTile]
+	ld a, [$c306]
 	dec a
-	ld [wOAM01VTile], a
+	ld [$c306], a
 	ld e, $10
 	ld a, [$c2f7]
 	add $b
@@ -59128,10 +58727,10 @@ Func_4e47a: ; 4e47a (13:647a)
 	ld de, wSystemType + 1
 	add hl, de
 	ld [hl], $ff
-	ld hl, wOAM01VTile
+	ld hl, $c306
 	ld l, [hl]
 	ld h, $0
-	ld de, wOAM00XCoord
+	ld de, $c301
 	add hl, de
 	ld [hl], $ff
 	ld e, $11
@@ -60523,7 +60122,7 @@ Func_4eeaa: ; 4eeaa (13:6eaa)
 
 Pointers_4eead: ; 4eead
 	dw Data_4eeb1
-	dw $0000
+	dw $0
 
 Data_4eeb1: ; 4eeb1
 	db "<HIRA>それはつかえない<KATA>$"
@@ -60573,13 +60172,13 @@ Func_4ef0b: ; 4ef0b
 	inc a
 	call FarCall
 	pop af
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	call Func_4f6dc
 	ret
 
 Pointers_4ef28: ; 4ef28
 	dw Data_4ef2c
-	dw $0000
+	dw $0
 
 Data_4ef2c: ; 4ef2c
 	db "<HIRA>を つかった<KATA>$"
@@ -60670,7 +60269,7 @@ Func_4f00d: ; 4f00d (13:700d)
 	call FarCall
 Func_4f012: ; 4f012 (13:7012)
 	ld a, $1
-	ld [wOAM05Attrs], a
+	ld [$c317], a
 	jp Func_4f03d
 
 Func_4f01a: ; 4f01a (13:701a)
@@ -60680,7 +60279,7 @@ Func_4f01a: ; 4f01a (13:701a)
 	call Func_4f6a3
 	ld hl, sp+$1f
 	ld a, [hl]
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	set_farcall_addrs_hli Func_fb42d
 	ld hl, sp+$1f
 	ld a, [hl]
@@ -60693,7 +60292,7 @@ Func_4f03d: ; 4f03d (13:703d)
 
 Pointers_4f040: ; 4f040
 	dw Data_4f044
-	dw $0000
+	dw $0
 
 Data_4f044: ; 4f044
 	db "<HIRA>を つかった<KATA>$"
@@ -60773,7 +60372,7 @@ Func_4f10b: ; 4f10b (13:710b)
 	call FarCall
 Func_4f11b: ; 4f11b (13:711b)
 	ld a, $1
-	ld [wOAM05Attrs], a
+	ld [$c317], a
 	jp Func_4f129
 
 Func_4f123: ; 4f123 (13:7123)
@@ -60786,7 +60385,7 @@ Func_4f129: ; 4f129 (13:7129)
 
 Pointers_4f12c: ; 4f12c
 	dw Data_4f130
-	dw $0000
+	dw $0
 
 Data_4f130: ; 4f130
 	db "<HIRA>を つかった<KATA>$"
@@ -61209,7 +60808,7 @@ Func_4f437: ; 4f437 (13:7437)
 	jp nz, Func_4f4ce
 	callba_hli Func_abb74
 	ld a, $1
-	ld [wOAM05Attrs], a
+	ld [$c317], a
 	jp Func_4f58e
 
 Func_4f4ce: ; 4f4ce (13:74ce)
@@ -61223,7 +60822,7 @@ Func_4f4ce: ; 4f4ce (13:74ce)
 	ld a, c
 	call FarCall
 	ld a, $1
-	ld [wOAM05Attrs], a
+	ld [$c317], a
 	jp Func_4f58e
 
 Func_4f4ef: ; 4f4ef (13:74ef)
@@ -61233,7 +60832,7 @@ Func_4f4ef: ; 4f4ef (13:74ef)
 	jp nz, Func_4f50d
 	callba_hli Func_a3c17
 	ld a, $1
-	ld [wOAM05Attrs], a
+	ld [$c317], a
 	jp Func_4f58e
 
 Func_4f50d: ; 4f50d (13:750d)
@@ -61290,7 +60889,7 @@ Func_4f569: ; 4f569 (13:7569)
 	inc a
 	call FarCall
 	ld a, $1
-	ld [wOAM05Attrs], a
+	ld [$c317], a
 	jp Func_4f58e
 
 Func_4f583: ; 4f583 (13:7583)
@@ -61309,13 +60908,13 @@ Func_4f591: ; 4f591
 	call Func_4f6a3
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	xor a
-	ld [wOAM05VTile], a
+	ld [$c316], a
 	ld hl, $0
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 	ld hl, $0
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 	ld hl, sp+$1
 	ld a, [hl]
 	inc a
@@ -61330,7 +60929,7 @@ Func_4f591: ; 4f591
 	ld h, $0
 	ld de, $5
 	add hl, de
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 	jp Func_4f5f8
 
 Func_4f5dc: ; 4f5dc (13:75dc)
@@ -61341,7 +60940,7 @@ Func_4f5dc: ; 4f5dc (13:75dc)
 	ld h, $0
 	ld de, $5
 	add hl, de
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 Func_4f5f8: ; 4f5f8 (13:75f8)
 	call Func_4f6dc
 	cp $ff
@@ -61373,7 +60972,7 @@ Func_4f613: ; 4f613 (13:7613)
 	ld h, $0
 	ld h, l
 	ld l, $0
-	ld de, wOAMBuffer2
+	ld de, wOAMBuffer
 	add hl, de
 	ld a, [wc2e8 + 1]
 	ld e, a
@@ -61400,13 +60999,13 @@ Func_4f657: ; 4f657
 Func_4f669: ; 4f669 (13:7669)
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wOAM04XCoord], a
+	ld [$c311], a
 	xor a
-	ld [wOAM05VTile], a
+	ld [$c316], a
 	ld hl, $0
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 	ld hl, $0
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 	call Func_4f6dc
 Func_4f686: ; 4f686 (13:7686)
 	pop bc
@@ -61414,7 +61013,7 @@ Func_4f686: ; 4f686 (13:7686)
 
 Pointers_4f688: ; 4f688
 	dw Data_4f68c
-	dw $0000
+	dw $0
 
 Data_4f68c: ; 4f68c
 	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>に つかいますか<KATA>?$"
@@ -61455,7 +61054,7 @@ Func_4f6dc: ; 4f6dc (13:76dc)
 	set_farcall_addrs_hli Func_5a149
 	ld c, $1
 	ld e, $1
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	inc a
 	call FarCall
 	call Func_3af6
@@ -61633,7 +61232,7 @@ Func_4f850: ; 4f850
 
 Pointers_4f8a6: ; 4f8a6
 	dw Data_4f8aa
-	dw $0000
+	dw $0
 
 Data_4f8aa: ; 4f8aa
 	db "<HIRA>しんかした<KATA>$"
@@ -61838,7 +61437,7 @@ Func_4fac6: ; 4fac6 (13:7ac6)
 	push hl
 	ld bc, $a0
 	ld e, $0
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	call FillMemory
 	ld a, [wNextVBlankFlags]
 	or $2
@@ -61870,7 +61469,7 @@ Func_4fac6: ; 4fac6 (13:7ac6)
 	call FarCall
 	ld bc, $a0
 	ld e, $0
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	call FillMemory
 	call DisableHBlank
 	ld a, [wLCDC]
@@ -61884,7 +61483,7 @@ Func_4fac6: ; 4fac6 (13:7ac6)
 	ret
 
 Func_4fb46: ; 4fb46 (13:7b46)
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4fb54
 	call Func_4fb58
@@ -62280,7 +61879,7 @@ Data_4fed4: ; 4fed4
 	db "<HIRA>えらんてﾞいるよ<KATA>$"
 
 Func_4fedf: ; 4fedf (13:7edf)
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_4feed
 	call Func_4fd2f
@@ -62433,12 +62032,12 @@ Func_5019a: ; 5019a
 	pop hl
 	ld a, l
 	and $1
-	ld [wOAM01Attrs], a
+	ld [$c307], a
 	ld a, l
 	and $2
 	rrca
 	and $7f
-	ld [wOAM02YCoord], a
+	ld [$c308], a
 	set_farcall_addrs_hli Func_1445e
 	ld c, BANK(Data_50020)
 	ld de, Data_50020
@@ -62728,7 +62327,7 @@ Func_50380: ; 50380 (14:4380)
 	ld bc, $0
 .asm_5038a
 	ld a, c
-	ld [wOAM01Attrs], a
+	ld [$c307], a
 	jp Func_503a8
 
 Func_50391: ; 50391 (14:4391)
@@ -62745,7 +62344,7 @@ Func_503a0: ; 503a0 (14:43a0)
 	dec hl
 	dec hl
 	ld a, l
-	ld [wOAM02YCoord], a
+	ld [$c308], a
 Func_503a8: ; 503a8 (14:43a8)
 	jp Func_5043a
 
@@ -62767,7 +62366,7 @@ Func_503b6: ; 503b6 (14:43b6)
 	ld bc, $1
 Func_503c5: ; 503c5 (14:43c5)
 	ld a, c
-	ld [wOAM01Attrs], a
+	ld [$c307], a
 	jp Func_503e3
 
 Func_503cc: ; 503cc (14:43cc)
@@ -62784,7 +62383,7 @@ Func_503db: ; 503db (14:43db)
 	dec hl
 	dec hl
 	ld a, l
-	ld [wOAM02YCoord], a
+	ld [$c308], a
 Func_503e3: ; 503e3 (14:43e3)
 	jp Func_5043a
 
@@ -62798,8 +62397,8 @@ Func_503e6: ; 503e6 (14:43e6)
 	jp nz, Func_5040d
 Func_503f1: ; 503f1 (14:43f1)
 	ld a, c
-	ld [wOAM01Attrs], a
-	ld a, [wOAM02YCoord]
+	ld [$c307], a
+	ld a, [$c308]
 	or a
 	jp nz, Func_50402
 	ld bc, $2
@@ -62813,7 +62412,7 @@ Func_50405: ; 50405 (14:4405)
 	dec hl
 	dec hl
 	ld a, l
-	ld [wOAM02YCoord], a
+	ld [$c308], a
 Func_5040d: ; 5040d (14:440d)
 	jp Func_5043a
 
@@ -62832,8 +62431,8 @@ Func_5041e: ; 5041e (14:441e)
 	dec hl
 	dec hl
 	ld a, l
-	ld [wOAM02YCoord], a
-	ld a, [wOAM01Attrs]
+	ld [$c308], a
+	ld a, [$c307]
 	or a
 	jp nz, Func_50433
 	ld bc, $0
@@ -62843,7 +62442,7 @@ Func_50433: ; 50433 (14:4433)
 	ld bc, $1
 Func_50436: ; 50436 (14:4436)
 	ld a, c
-	ld [wOAM01Attrs], a
+	ld [$c307], a
 Func_5043a: ; 5043a (14:443a)
 	push bc
 	call GetHLAtSPPlus4
@@ -62900,20 +62499,20 @@ Func_5047f: ; 5047f
 	ld hl, $d
 	call Func_2124
 	ld l, $0
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	or a
 	jp nz, Func_504b1
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	or a
 	jp nz, Func_504b1
 	ld l, $0
 	jp Func_504e1
 
 Func_504b1: ; 504b1 (14:44b1)
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	or a
 	jp nz, Func_504c7
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	cp $1
 	jp nz, Func_504c7
 	ld a, l
@@ -62922,10 +62521,10 @@ Func_504b1: ; 504b1 (14:44b1)
 	jp Func_504e1
 
 Func_504c7: ; 504c7 (14:44c7)
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	cp $1
 	jp nz, Func_504dd
-	ld a, [wOAM02YCoord]
+	ld a, [$c308]
 	or a
 	jp nz, Func_504dd
 	ld a, l
@@ -62965,7 +62564,7 @@ Func_504e1: ; 504e1 (14:44e1)
 
 Pointers_5052d: ; 5052d
 	dw Data_50531
-	dw $0000
+	dw $0
 
 Data_50531: ; 50531
 	db "セーフﾞ<HIRA>したよ<KATA>$"
@@ -63590,7 +63189,7 @@ Func_50961: ; 50961 (14:4961)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $0
 	ld hl, $5
@@ -63611,7 +63210,7 @@ Data_5098c: ; 5098c
 Pointers_5098e: ; 5098e
 	dw Data_50994
 	dw Data_509a4
-	dw $0000
+	dw $0
 	
 Data_50994: ; 50994
 	db "<HIRA>おなしﾞ<KATA>ロホﾞホﾟン<HIRA>は<KATA>$"
@@ -63631,7 +63230,7 @@ Func_509b3: ; 509b3
 	inc hl
 	inc hl
 	ld a, [hl]
-	ld [wOAM04YCoord], a
+	ld [$c310], a
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $64
 	call FarCall
@@ -63714,7 +63313,7 @@ Func_50a11: ; 50a11 (14:4a11)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $0
 	ld hl, $5
@@ -63722,7 +63321,7 @@ Func_50a11: ; 50a11 (14:4a11)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $0
 	ld hl, $5
@@ -63803,7 +63402,7 @@ Func_50af6: ; 50af6 (14:4af6)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $0
 	set_farcall_addrs_hli FreeMemory
@@ -64409,7 +64008,7 @@ Func_50f58: ; 50f58 (14:4f58)
 	call FarCall
 Func_50fa8: ; 50fa8 (14:4fa8)
 	pop hl
-	ld a, [$c7e1]
+	ld a, [wc7e1]
 	cp $1
 	jp z, Func_510ea
 	cp $4
@@ -64748,28 +64347,28 @@ Func_51252: ; 51252 (14:5252)
 
 Pointers_5125a: ; 5125a
 	dw Data_5125e
-	dw $0000
+	dw $0
 
 Data_5125e: ; 5125e
 	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は はけん されているよ<KATA>$"
 
 Pointers_51277: ; 51277
 	dw Data_5127b
-	dw $0000
+	dw $0
 
 Data_5127b: ; 5127b
 	db "ハﾟーティー<HIRA>かﾞ いっはﾟいたﾞよ<KATA>$"
 
 Pointers_5128f: ; 5128f
 	dw Data_51293
-	dw $0000
+	dw $0
 
 Data_51293: ; 51293
 	db "<HIRA>こうかんしたよ<KATA>$"
 
 Pointers_5129d: ; 5129d
 	dw Data_512a1
-	dw $0000
+	dw $0
 
 Data_512a1: ; 512a1
 	db "<HIRA>ひきたﾞしたよ<KATA>$"
@@ -64777,7 +64376,7 @@ Data_512a1: ; 512a1
 Pointers_512ab: ; 512ab
 	dw Data_512b1
 	dw Data_512c4
-	dw $0000
+	dw $0
 
 Data_512b1: ; 512b1
 	db "<HIRA>たたかえる<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>$"
@@ -64787,7 +64386,7 @@ Data_512c4: ; 512c4
 
 Pointers_512cd: ; 512cd
 	dw Data_512d1
-	dw $0000
+	dw $0
 
 Data_512d1: ; 512d1
 	db "<HIRA>そいつは えらへﾞないよ<KATA>!$"
@@ -64925,7 +64524,7 @@ Func_513d6: ; 513d6 (14:53d6)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -64947,7 +64546,7 @@ Func_513fa: ; 513fa (14:53fa)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld e, c
 	ld d, $0
@@ -65335,7 +64934,7 @@ Func_516e6: ; 516e6 (14:56e6)
 
 Pointers_51747: ; 51747
 	dw Data_5174b
-	dw $0000
+	dw $0
 
 Data_5174b: ; 5174b
 	db "<HIRA>を ひきたﾞしました<KATA>$"
@@ -65343,7 +64942,7 @@ Data_5174b: ; 5174b
 Pointers_51758: ; 51758
 	dw Data_5175e
 	dw Data_51772
-	dw $0000
+	dw $0
 
 Data_5175e: ; 5175e
 	db "<HIRA>これいしﾞょう<KATA> ハﾟーティー<HIRA>に<KATA>$"
@@ -65353,7 +64952,7 @@ Data_51772: ; 51772
 
 Pointers_5177e: ; 5177e
 	dw Data_51782
-	dw $0000
+	dw $0
 
 Data_51782: ; 51782
 	db "<HIRA>を すてた<KATA>$"
@@ -65577,7 +65176,7 @@ Func_51961: ; 51961
 	ret
 
 Data_51967: ; 51967
-	db $01
+	db $1
 	db $1f
 	db $3c
 	db $6b
@@ -65632,7 +65231,7 @@ Func_51975: ; 51975
 	ret
 
 Data_519dc: ; 519dc
-	db $08
+	db $8
 	db $15
 	db $20
 	db $28
@@ -65759,7 +65358,7 @@ Data_51ae8: ; 51ae8
 Data_51aec: ; 51aec
 	db $2a
 	db $22
-	db $05
+	db $5
 
 Func_51aef: ; 51aef
 	ld a, $1
@@ -66130,28 +65729,28 @@ Func_51e55: ; 51e55 (14:5e55)
 
 Pointers_51e56: ; 51e56
 	dw Data_51e5a
-	dw $0000
+	dw $0
 
 Data_51e5a: ; 51e5a
 	db "<HIRA>これいしﾞょう ほかんてﾞきないよ<KATA>$"
 
 Pointers_51e6e: ; 51e6e
 	dw Data_51e72
-	dw $0000
+	dw $0
 
 Data_51e72: ; 51e72
 	db "<HIRA>これいしﾞょう ひきたﾞせないよ<KATA>$"
 
 Pointers_51e85: ; 51e85
 	dw Data_51e89
-	dw $0000
+	dw $0
 
 Data_51e89: ; 51e89
 	db "<HIRA>を ほかんしたよ<KATA>$"
 
 Pointers_51e94: ; 51e94
 	dw Data_51e98
-	dw $0000
+	dw $0
 
 Data_51e98: ; 51e98
 	db "<HIRA>を ひきたﾞしたよ<KATA>$"
@@ -66590,7 +66189,7 @@ Data_522d1: ; 522d1
 Pointers_522e1: ; 522e1
 	dw Data_522e7
 	dw Data_522fa
-	dw $0000
+	dw $0
 
 Data_522e7: ; 522e7
 	db "<HIRA>もちものかﾞ いっはﾟいなのてﾞ<KATA>$"
@@ -66601,7 +66200,7 @@ Data_522fa: ; 522fa
 Pointers_52305: ; 52305
 	dw Data_5230b
 	dw Data_5231a
-	dw $0000
+	dw $0
 
 Data_5230b: ; 5230b
 	db "<HIRA>これいしﾞょう そうこに<KATA>$"
@@ -67538,7 +67137,7 @@ Func_52b4f:
 	ld hl, $4000
 	call WriteHLToSPPlus4
 	pop bc
-	ld a, [wOAM26Attrs]
+	ld a, [$c39b]
 	cp $ff
 	jp nz, Func_52b7d
 	ld hl, $5
@@ -67557,7 +67156,7 @@ Func_52b4f:
 	ld l, a
 	add hl, de
 	ld a, l
-	ld [wOAM26Attrs], a
+	ld [$c39b], a
 	ld hl, $8000
 	pop de
 	push hl
@@ -67579,7 +67178,7 @@ Func_52b7d: ; 52b7d (14:6b7d)
 	ld h, [hl]
 	ld l, a
 	add hl, de
-	ld a, [wOAM26Attrs]
+	ld a, [$c39b]
 	ld e, a
 	ld d, $0
 	call CompareHLtoDE
@@ -67588,7 +67187,7 @@ Func_52b7d: ; 52b7d (14:6b7d)
 	ld h, b
 	call Func_52bbb
 	ld a, $ff
-	ld [wOAM26Attrs], a
+	ld [$c39b], a
 	ld hl, $8000
 	pop de
 	push hl
@@ -67600,7 +67199,7 @@ Func_52ba9: ; 52ba9 (14:6ba9)
 
 Pointers_52bad:
 	dw Data_52bb1
-	dw $0000
+	dw $0
 
 Data_52bb1:
 	db "<HIRA>こうかんしたよ<KATA>$"
@@ -67676,7 +67275,7 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	add hl, de
 	ld a, [hl]
 	push af
-	ld hl, wOAM26Attrs
+	ld hl, $c39b
 	ld l, [hl]
 	ld h, $0
 	ld de, $ca44
@@ -67688,7 +67287,7 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	ld hl, $ca44
 	add hl, de
 	ld [hl], a
-	ld hl, wOAM26Attrs
+	ld hl, $c39b
 	ld l, [hl]
 	ld h, $0
 	ld de, $ca58
@@ -67700,14 +67299,14 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	ld hl, $ca58
 	add hl, de
 	ld [hl], a
-	ld hl, wOAM26Attrs
+	ld hl, $c39b
 	ld l, [hl]
 	ld h, $0
 	ld de, $ca44
 	add hl, de
 	ld [hl], c
 	pop af
-	ld hl, wOAM26Attrs
+	ld hl, $c39b
 	ld l, [hl]
 	ld h, $0
 	ld de, $ca58
@@ -67722,7 +67321,7 @@ Func_52c85: ; 52c85 (14:6c85)
 	ld hl, $c98e
 	add hl, de
 	ld c, [hl]
-	ld hl, wOAM26Attrs
+	ld hl, $c39b
 	ld l, [hl]
 	ld h, $0
 	ld de, $c98e
@@ -67734,7 +67333,7 @@ Func_52c85: ; 52c85 (14:6c85)
 	ld hl, $c98e
 	add hl, de
 	ld [hl], a
-	ld hl, wOAM26Attrs
+	ld hl, $c39b
 	ld l, [hl]
 	ld h, $0
 	ld de, $c98e
@@ -67749,7 +67348,7 @@ Func_52cb2: ; 52cb2 (14:6cb2)
 	ld hl, $c9a3
 	add hl, de
 	ld c, [hl]
-	ld hl, wOAM26Attrs
+	ld hl, $c39b
 	ld l, [hl]
 	ld h, $0
 	ld de, $c9a3
@@ -67761,7 +67360,7 @@ Func_52cb2: ; 52cb2 (14:6cb2)
 	ld hl, $c9a3
 	add hl, de
 	ld [hl], a
-	ld hl, wOAM26Attrs
+	ld hl, $c39b
 	ld l, [hl]
 	ld h, $0
 	ld de, $c9a3
@@ -68293,23 +67892,23 @@ Func_5301d: ; 5301d (14:701d)
 	add [hl]
 	ld hl, sp+$4
 	ld [hl], a
-	ld a, [wOAM00XCoord]
+	ld a, [$c301]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wOAM00VTile
+	ld hl, $c302
 	add [hl]
 	ld hl, sp+$5
 	ld [hl], a
-	ld a, [wOAM00Attrs]
+	ld a, [$c303]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wOAM01YCoord
+	ld hl, $c304
 	add [hl]
 	ld hl, sp+$6
 	ld [hl], a
@@ -68665,32 +68264,32 @@ Func_53327: ; 53327 (14:7327)
 	ld a, [hl]
 	ld b, $a
 	call DivideAbyB
-	ld [wOAM00XCoord], a
+	ld [$c301], a
 	ld hl, sp+$3
 	ld a, [hl]
 	ld b, $a
 	call DivideAbyB
 	ld a, b
-	ld [wOAM00VTile], a
+	ld [$c302], a
 	ld hl, sp+$4
 	ld a, [hl]
 	ld b, $a
 	call DivideAbyB
-	ld [wOAM00Attrs], a
+	ld [$c303], a
 	ld hl, sp+$4
 	ld a, [hl]
 	ld b, $a
 	call DivideAbyB
 	ld a, b
-	ld [wOAM01YCoord], a
+	ld [$c304], a
 	ld e, $9
 	ld a, $7
 	call SetStringStartState
-	ld hl, wOAM00VTile
+	ld hl, $c302
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wOAM00XCoord
+	ld hl, $c301
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -68703,11 +68302,11 @@ Func_53327: ; 53327 (14:7327)
 	ld e, $9
 	ld a, $a
 	call SetStringStartState
-	ld hl, wOAM01YCoord
+	ld hl, $c304
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wOAM00Attrs
+	ld hl, $c303
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -69151,7 +68750,7 @@ Func_5366b: ; 5366b (14:766b)
 	jp z, Func_536ac
 	or a
 	jp nz, Func_536d5
-	ld a, [wOAM00VTile]
+	ld a, [$c302]
 	cp $4
 	jp nc, Func_53693
 	ld hl, sp+$0
@@ -69160,7 +68759,7 @@ Func_5366b: ; 5366b (14:766b)
 	jp Func_536a9
 
 Func_53693: ; 53693 (14:7693)
-	ld a, [wOAM00VTile]
+	ld a, [$c302]
 	or a
 	jp nz, Func_536a3
 	ld hl, sp+$0
@@ -69176,7 +68775,7 @@ Func_536a9: ; 536a9 (14:76a9)
 	jp Func_536d5
 
 Func_536ac: ; 536ac (14:76ac)
-	ld a, [wOAM00XCoord]
+	ld a, [$c301]
 	cp $2
 	jp nz, Func_536bd
 	ld hl, sp+$0
@@ -69220,7 +68819,7 @@ Func_536d5: ; 536d5 (14:76d5)
 	ld hl, $c2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wOAM00XCoord
+	ld de, $c301
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$0
@@ -69229,7 +68828,7 @@ Func_536d5: ; 536d5 (14:76d5)
 	ld hl, $c2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wOAM00XCoord
+	ld de, $c301
 	add hl, de
 	ld [hl], c
 	jp Func_5371b
@@ -69238,7 +68837,7 @@ Func_5370d: ; 5370d (14:770d)
 	ld hl, $c2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wOAM00XCoord
+	ld de, $c301
 	add hl, de
 	ld a, $1
 	add [hl]
@@ -69250,7 +68849,7 @@ Func_5371e: ; 5371e (14:771e)
 	ld hl, $c2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wOAM00XCoord
+	ld de, $c301
 	add hl, de
 	ld a, [hl]
 	cp c
@@ -69260,7 +68859,7 @@ Func_5371e: ; 5371e (14:771e)
 	ld hl, $c2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wOAM00XCoord
+	ld de, $c301
 	add hl, de
 	ld [hl], a
 	jp Func_5374d
@@ -69269,7 +68868,7 @@ Func_5373e: ; 5373e (14:773e)
 	ld hl, $c2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wOAM00XCoord
+	ld de, $c301
 	add hl, de
 	ld e, $1
 	ld a, [hl]
@@ -69299,11 +68898,11 @@ Func_53771: ; 53771 (14:7771)
 	ld e, $9
 	ld a, $7
 	call SetStringStartState
-	ld hl, wOAM00VTile
+	ld hl, $c302
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wOAM00XCoord
+	ld hl, $c301
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -69316,11 +68915,11 @@ Func_53771: ; 53771 (14:7771)
 	ld e, $9
 	ld a, $a
 	call SetStringStartState
-	ld hl, wOAM01YCoord
+	ld hl, $c304
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wOAM00Attrs
+	ld hl, $c303
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -69841,7 +69440,7 @@ Func_53b5d: ; 53b5d (14:7b5d)
 
 Func_53b6e::
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -69880,7 +69479,7 @@ Func_53b6e::
 	call FarCall
 	ld l, a
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	pop de
 	push hl
 	push de
@@ -69914,7 +69513,7 @@ Func_53b6e::
 
 Pointers_53c10:
 	dw Data_53c14
-	dw $0000
+	dw $0
 
 Data_53c14:
 	db "<HIRA>とﾞうやら せいこうした みたいしﾞゃ<KATA>$"
@@ -69922,7 +69521,7 @@ Data_53c14:
 Pointers_53c2a:
 	dw Data_53c30
 	dw Data_53c3f
-	dw $0000
+	dw $0
 
 Data_53c30:
 	db "リモコン<HIRA>の しﾞゅしんに<KATA>$"
@@ -69933,7 +69532,7 @@ Data_53c3f:
 Pointers_53c4b:
 	dw Data_53c51
 	dw Data_53c5f
-	dw $0000
+	dw $0
 
 Data_53c51:
 	db "<HIRA>なんしﾞゃ やめるのか<KATA>$"
@@ -69943,7 +69542,7 @@ Data_53c5f:
 
 Pointers_53c6c:
 	dw Data_53c70
-	dw $0000
+	dw $0
 
 Data_53c70:
 	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は<KATA> <HIRA>えらへﾞないよ<KATA>$"
@@ -70035,7 +69634,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	xor a
 	call FarCall
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -70642,21 +70241,21 @@ Func_54a0c: ; 54a0c (15:4a0c)
 
 Pointers_54a13:
 	dw Data_54a17
-	dw $0000
+	dw $0
 
 Data_54a17:
 	db "スクラッフﾟ<HIRA>に なっているよ<KATA>$"
 
 Pointers_54a28:
 	dw Data_54a2c
-	dw $0000
+	dw $0
 
 Data_54a2c:
 	db "スクラッフﾟ<HIRA>しﾞゃないよ<KATA>$"
 
 Pointers_54a3b:
 	dw Data_54a3f
-	dw $0000
+	dw $0
 
 Data_54a3f:
 	db "<HIRA>しんか しないよ<KATA>$"
@@ -70664,7 +70263,7 @@ Data_54a3f:
 Pointers_54a4a:
 	dw Data_54a50
 	dw Data_54a63
-	dw $0000
+	dw $0
 
 Data_54a50:
 	db "<HIRA>これいしﾞょう<KATA> レヘﾞルアッフﾟ$"
@@ -70735,7 +70334,7 @@ Func_54aea: ; 54aea (15:4aea)
 
 Pointers_54aeb:
 	dw Data_54aef
-	dw $0000
+	dw $0
 
 Data_54aef:
 	db "<HIRA>を つかった<KATA>$"
@@ -70773,7 +70372,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	ld hl, wc2e8 + 1
 	ld l, [hl]
 	ld h, $0
@@ -70906,7 +70505,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	ld c, $a
 	ld hl, sp+$23
 	push hl
-	ld hl, wOAM04XCoord
+	ld hl, $c311
 	ld l, [hl]
 	ld h, $0
 	ld de, $400
@@ -70919,7 +70518,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	call GetSRAMBank
 	pop bc
 	pop hl
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	cp $4a
 	jp nz, Func_54c22
 	push bc
@@ -70940,7 +70539,7 @@ Func_54c1f: ; 54c1f (15:4c1f)
 	jp Func_54c3a
 
 Func_54c22: ; 54c22 (15:4c22)
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	cp $49
 	jp nz, Func_54c3a
 	ld a, l
@@ -70956,7 +70555,7 @@ Func_54c3a: ; 54c3a (15:4c3a)
 	ld a, l
 	or h
 	jp nz, Func_54c60
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	inc a
 	cp $42
 	jp z, Func_54c50
@@ -70975,7 +70574,7 @@ Func_54c5d: ; 54c5d (15:4c5d)
 	jp Func_54c78
 
 Func_54c60: ; 54c60 (15:4c60)
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	inc a
 	cp $42
 	jp z, Func_54c6e
@@ -70989,7 +70588,7 @@ Func_54c6e: ; 54c6e (15:4c6e)
 
 Func_54c78: ; 54c78 (15:4c78)
 	push bc
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	inc a
 	cp $4b
 	jp z, Func_54d34
@@ -71004,21 +70603,21 @@ Func_54c78: ; 54c78 (15:4c78)
 	call GetHLAtSPPlus9
 	ld de, $2
 	call DivideHLByDESigned
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 	ld hl, $0
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 	ld c, $0
 	call GetHLAtSPPlus7
 	push hl
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	pop de
 	call Func_5512e
 	jp Func_54da5
 
 Func_54cbd: ; 54cbd (15:4cbd)
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	push hl
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld de, $3e7
 	ld a, e
 	sub l
@@ -71037,9 +70636,9 @@ Func_54cbd: ; 54cbd (15:4cbd)
 	ld a, d
 	sbc h
 	ld h, a
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 Func_54ce8: ; 54ce8 (15:4ce8)
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	push hl
 	call GetHLAtSPPlus7
 	ld de, $3e7
@@ -71060,12 +70659,12 @@ Func_54ce8: ; 54ce8 (15:4ce8)
 	ld a, d
 	sbc h
 	ld h, a
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 Func_54d12: ; 54d12 (15:4d12)
 	ld c, $1
 	call GetHLAtSPPlus5
 	push hl
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	pop de
 	call Func_5512e
 	jp Func_54da5
@@ -71078,11 +70677,11 @@ Func_54d34: ; 54d34 (15:4d34)
 	jp Func_54da5
 
 Func_54d37: ; 54d37 (15:4d37)
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	push hl
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	push hl
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	pop de
 	ld a, l
 	sub e
@@ -71093,9 +70692,9 @@ Func_54d37: ; 54d37 (15:4d37)
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_54d69
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	push hl
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	pop de
 	ld a, l
 	sub e
@@ -71103,9 +70702,9 @@ Func_54d37: ; 54d37 (15:4d37)
 	ld a, h
 	sbc d
 	ld h, a
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 Func_54d69: ; 54d69 (15:4d69)
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	push hl
 	call GetHLAtSPPlus9
 	push hl
@@ -71130,16 +70729,16 @@ Func_54d69: ; 54d69 (15:4d69)
 	ld a, h
 	sbc d
 	ld h, a
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 Func_54d97: ; 54d97 (15:4d97)
 	ld c, $0
 	call GetHLAtSPPlus7
 	push hl
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	pop de
 	call Func_5512e
 Func_54da5: ; 54da5 (15:4da5)
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	inc a
 	cp $42
 	jp z, Func_54db3
@@ -71289,7 +70888,7 @@ Func_54e67: ; 54e67 (15:4e67)
 	ld hl, $110
 	call FarCall
 	pop bc
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	cp $4a
 	jp nz, Func_54ee1
 	push bc
@@ -71559,12 +71158,12 @@ Func_5512e: ; 5512e (15:512e)
 	push de
 	push bc
 Func_55131: ; 55131 (15:5131)
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	reg16swap de, hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_551a7
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	ld de, $64
 	call CompareHLtoDE
 	jp c, Func_5516c
@@ -71572,14 +71171,14 @@ Func_55131: ; 55131 (15:5131)
 	ld de, $64
 	add hl, de
 	call WriteHLToSPPlus6
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	ld de, hBGP
 	add hl, de
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 	jp Func_551a7
 
 Func_5516c: ; 5516c (15:516c)
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	ld de, $a
 	call CompareHLtoDE
 	jp c, Func_55195
@@ -71587,26 +71186,26 @@ Func_5516c: ; 5516c (15:516c)
 	ld de, $a
 	add hl, de
 	call WriteHLToSPPlus6
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	ld de, hPushOAM + 1
 	add hl, de
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 	jp Func_551a7
 
 Func_55195: ; 55195 (15:5195)
 	call GetHLAtSPPlus6
 	inc hl
 	call WriteHLToSPPlus6
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	dec hl
-	write_hl_to wOAM04VTile
+	write_hl_to $c312
 Func_551a7: ; 551a7 (15:51a7)
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	reg16swap de, hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_5521d
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	ld de, $64
 	call CompareHLtoDE
 	jp c, Func_551e2
@@ -71614,14 +71213,14 @@ Func_551a7: ; 551a7 (15:51a7)
 	ld de, $64
 	add hl, de
 	call WriteHLToSPPlus4
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	ld de, hBGP
 	add hl, de
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 	jp Func_5521d
 
 Func_551e2: ; 551e2 (15:51e2)
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	ld de, $a
 	call CompareHLtoDE
 	jp c, Func_5520b
@@ -71629,19 +71228,19 @@ Func_551e2: ; 551e2 (15:51e2)
 	ld de, $a
 	add hl, de
 	call WriteHLToSPPlus4
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	ld de, hPushOAM + 1
 	add hl, de
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 	jp Func_5521d
 
 Func_5520b: ; 5520b (15:520b)
 	call GetHLAtSPPlus4
 	inc hl
 	call WriteHLToSPPlus4
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	dec hl
-	write_hl_to wOAM05YCoord
+	write_hl_to $c314
 Func_5521d: ; 5521d (15:521d)
 	push bc
 	ld a, c
@@ -71688,11 +71287,11 @@ Func_5521d: ; 5521d (15:521d)
 	call Func_3bc5
 	pop bc
 	pop bc
-	read_hl_from wOAM04VTile
+	read_hl_from $c312
 	ld a, l
 	or h
 	jp nz, Func_5527c
-	read_hl_from wOAM05YCoord
+	read_hl_from $c314
 	ld a, l
 	or h
 	jp nz, Func_5527c
@@ -71823,7 +71422,7 @@ Func_5531c:
 Pointers_55320:
 	dw Data_55326
 	dw Data_55334
-	dw $0000
+	dw $0
 
 Data_55326:
 	db "<HIRA>おいおい! ひとりてﾞ<KATA>$"
@@ -71833,7 +71432,7 @@ Data_55334:
 
 Pointers_55342:
 	dw Data_55346
-	dw $0000
+	dw $0
 
 Data_55346:
 	db "<HIRA>そうこかﾞ いっはﾟいたﾞよ<KATA>$"
@@ -71841,7 +71440,7 @@ Data_55346:
 Pointers_55357:
 	dw Data_5535d
 	dw Data_55370
-	dw $0000
+	dw $0
 
 Data_5535d:
 	db "<HIRA>たたかえる<KATA> ろほﾞほﾟん<HIRA>かﾞ<KATA>$"
@@ -71851,14 +71450,14 @@ Data_55370:
 
 Pointers_55379:
 	dw Data_5537d
-	dw $0000
+	dw $0
 
 Data_5537d:
 	db "<HIRA>ほかんしたよ<KATA>$"
 
 Pointers_55386:
 	dw Data_5538a
-	dw $0000
+	dw $0
 
 Data_5538a:
 	db "<HIRA>そいつは えらへﾞないよ<KATA>!$"
@@ -72198,7 +71797,7 @@ Func_5560e: ; 5560e (15:560e)
 	ld a, $1
 	call FarCall
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld hl, $8000
 	ret
 
@@ -72300,7 +71899,7 @@ Func_556f7: ; 556f7 (15:56f7)
 	pop de
 	push hl
 Func_5570a: ; 5570a (15:570a)
-	ld a, [wOAM05Attrs]
+	ld a, [$c317]
 	or a
 	jp nz, Func_55716
 	pop hl
@@ -72330,7 +71929,7 @@ Func_55723: ; 55723 (15:5723)
 	ld hl, $2
 	call FarCall
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	jp .quit
 
 .dmg_or_sgb
@@ -72355,7 +71954,7 @@ Func_5575d: ; 5575d (15:575d)
 	ld hl, $386
 	add hl, sp
 	reg16swap de, hl
-	ld a, [wOAM04YCoord]
+	ld a, [$c310]
 	call FarCall
 	call FillVisibleAreaWithBlankTile
 	ld hl, $8
@@ -72391,7 +71990,7 @@ Func_5575d: ; 5575d (15:575d)
 	ld hl, $3ab
 	add hl, sp
 	call Func_236f
-	ld hl, wOAM04YCoord
+	ld hl, $c310
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -72419,7 +72018,7 @@ Func_5575d: ; 5575d (15:575d)
 	add hl, sp
 	ld c, l
 	ld b, h
-	ld a, [wOAM04YCoord]
+	ld a, [$c310]
 	ld e, a
 	ld a, $3
 	call Func_57ea2
@@ -72496,7 +72095,7 @@ Func_5582b: ; 5582b (15:582b)
 	ld a, $3
 	call Func_57e7b
 	push af
-	read_hl_from_sp_plus $03aa
+	read_hl_from_sp_plus $3aa
 	ld a, l
 	and $f
 	ld l, a
@@ -72684,24 +72283,24 @@ Func_55a26: ; 55a26 (15:5a26)
 	call Func_55723
 	call Func_1fbe
 	call WaitVideoTransfer
-	read_hl_from_sp_plus $0396
+	read_hl_from_sp_plus $396
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0394
+	read_hl_from_sp_plus $394
 	reg16swap de, hl
 	ld hl, $10b
 	call Func_57cf7
-	read_hl_from_sp_plus $039a
+	read_hl_from_sp_plus $39a
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $0398
+	read_hl_from_sp_plus $398
 	reg16swap de, hl
 	ld hl, $10f
 	call Func_57cf7
 	ld de, Data_55c13
 	ld hl, $10f
 	call PlaceStringDEatCoordHL
-	read_hl_from_sp_plus $0394
+	read_hl_from_sp_plus $394
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -72711,13 +72310,13 @@ Func_55a26: ; 55a26 (15:5a26)
 	push hl
 	call PlaceString
 	pop bc
-	read_hl_from_sp_plus $0396
+	read_hl_from_sp_plus $396
 	ld c, l
 	ld b, h
 	ld de, $103
 	ld hl, -1
 	call Func_2230
-	read_hl_from_sp_plus $0398
+	read_hl_from_sp_plus $398
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -72727,7 +72326,7 @@ Func_55a26: ; 55a26 (15:5a26)
 	push hl
 	call PlaceString
 	pop bc
-	read_hl_from_sp_plus $039a
+	read_hl_from_sp_plus $39a
 	ld c, l
 	ld b, h
 	ld de, $103
@@ -72737,7 +72336,7 @@ Func_55a26: ; 55a26 (15:5a26)
 	add hl, sp
 	ld c, [hl]
 	ld b, $0
-	read_hl_from_sp_plus $039f
+	read_hl_from_sp_plus $39f
 	add hl, bc
 	reg16swap de, hl
 	ld hl, $3e7
@@ -72757,7 +72356,7 @@ Func_55ae2: ; 55ae2 (15:5ae2)
 	add hl, sp
 	ld c, [hl]
 	ld b, $0
-	read_hl_from_sp_plus $03a1
+	read_hl_from_sp_plus $3a1
 	add hl, bc
 	reg16swap de, hl
 	ld hl, $3e7
@@ -72777,7 +72376,7 @@ Func_55b13: ; 55b13 (15:5b13)
 	add hl, sp
 	ld c, [hl]
 	ld b, $0
-	read_hl_from_sp_plus $03a3
+	read_hl_from_sp_plus $3a3
 	add hl, bc
 	reg16swap de, hl
 	ld hl, $3e7
@@ -72822,7 +72421,7 @@ Func_55b8a: ; 55b8a (15:5b8a)
 	ld bc, $0
 	push bc
 	push hl
-	read_hl_from_sp_plus $03a0
+	read_hl_from_sp_plus $3a0
 	ld bc, $0
 	push bc
 	push hl
@@ -72835,7 +72434,7 @@ Func_55ba5: ; 55ba5 (15:5ba5)
 	call SetStringStartState
 	ld hl, sp+$6
 	call PutLongFromHLOnStack
-	read_hl_from_sp_plus $03a0
+	read_hl_from_sp_plus $3a0
 	ld bc, $0
 	push bc
 	push hl
@@ -72974,7 +72573,7 @@ Func_55ca8: ; 55ca8 (15:5ca8)
 	call FarCall
 Func_55cb9: ; 55cb9 (15:5cb9)
 	pop de
-	ld a, [wOAM05Attrs]
+	ld a, [$c317]
 	or a
 	jp nz, Func_55cd7
 	push de
@@ -74280,7 +73879,7 @@ Func_56732: ; 56732 (15:6732)
 	ld a, $3
 	call Func_57e7b
 	push af
-	ld hl, wOAM04YCoord
+	ld hl, $c310
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -74300,7 +73899,7 @@ Func_56732: ; 56732 (15:6732)
 	add hl, de
 	ld e, [hl]
 	push de
-	ld hl, wOAM04YCoord
+	ld hl, $c310
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -74332,7 +73931,7 @@ Func_56732: ; 56732 (15:6732)
 	ld hl, sp+$c
 	ld c, l
 	ld b, h
-	ld a, [wOAM04YCoord]
+	ld a, [$c310]
 	ld e, a
 	ld a, $3
 	call Func_57ea2
@@ -74364,7 +73963,7 @@ Func_567d1: ; 567d1 (15:67d1)
 	ld a, $3
 	call Func_57e7b
 	push af
-	ld hl, wOAM04YCoord
+	ld hl, $c310
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -74406,17 +74005,17 @@ Func_567d1: ; 567d1 (15:67d1)
 	push af
 	set_farcall_addrs_hli Func_16104
 	ld e, $0
-	ld a, [wOAM04YCoord]
+	ld a, [$c310]
 	call FarCall
 	ld hl, sp+$7
 	ld [hl], a
 	ld e, $1
-	ld a, [wOAM04YCoord]
+	ld a, [$c310]
 	call FarCall
 	ld hl, sp+$8
 	ld [hl], a
 	ld e, $2
-	ld a, [wOAM04YCoord]
+	ld a, [$c310]
 	call FarCall
 	ld hl, sp+$9
 	ld [hl], a
@@ -74798,7 +74397,7 @@ Func_56b35: ; 56b35 (15:6b35)
 	callba_hli Func_cb4a
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $0
-	ld a, [wOAM04YCoord]
+	ld a, [$c310]
 	ld e, a
 	xor a
 	call FarCall
@@ -75095,7 +74694,7 @@ Func_56d9b: ; 56d9b (15:6d9b)
 	add hl, sp
 	ld sp, hl
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -75172,7 +74771,7 @@ Func_56e45: ; 56e45 (15:6e45)
 	ld a, $2
 	call GetSRAMBank_ReadOnly
 	ld bc, $400
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	reg16swap de, hl
 	ld hl, sp+$c
 	call CopyFromDEtoHL
@@ -75181,7 +74780,7 @@ Func_56e45: ; 56e45 (15:6e45)
 	ld bc, $400
 	ld hl, sp+$c
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	pop de
 	call CopyFromDEtoHL
 	pop bc
@@ -75205,7 +74804,7 @@ Func_56e8a: ; 56e8a (15:6e8a)
 	call GetSRAMBank_ReadOnly
 	pop bc
 	push bc
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	reg16swap de, hl
 	ld hl, sp+$c
 	call CopyFromDEtoHL
@@ -75226,12 +74825,12 @@ Func_56e8a: ; 56e8a (15:6e8a)
 	ld hl, $cacf
 	call CopyFromDEtoHL
 	ld bc, $3c
-	ld de, wOAM11Attrs
+	ld de, $c347
 	ld hl, $cb58
 	call CopyFromDEtoHL
-	read_hl_from wOAM24XCoord
+	read_hl_from $c391
 	write_hl_to $cb3b
-	read_hl_from wOAM24Attrs
+	read_hl_from $c393
 	write_hl_to $cb3d
 	ld de, wPlayerName
 	ld hl, $c980
@@ -75392,14 +74991,14 @@ Func_5702e: ; 5702e (15:702e)
 	call CopyFromDEtoHL
 	ld bc, $3c
 	ld de, $cb58
-	ld hl, wOAM11Attrs
+	ld hl, $c347
 	call CopyFromDEtoHL
 	read_hl_from $cb3b
-	write_hl_to wOAM24XCoord
+	write_hl_to $c391
 	read_hl_from $cb3d
-	write_hl_to wOAM24Attrs
+	write_hl_to $c393
 	ld de, $c980
-	ld hl, wOAM02XCoord
+	ld hl, wPlayerName
 	call CopyUntilNull
 	ld a, $1
 	call GetSRAMBank_ReadOnly
@@ -75521,7 +75120,7 @@ Func_5712f: ; 5712f (15:712f)
 	ld hl, $509
 	call Func_2230
 	pop af
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
@@ -76092,9 +75691,9 @@ Func_575b5: ; 575b5 (15:75b5)
 	call PlaceString
 	pop bc
 	pop bc
-	read_hl_from wOAM24Attrs
+	read_hl_from $c393
 	push hl
-	read_hl_from wOAM24XCoord
+	read_hl_from $c391
 	push hl
 	ld hl, $0
 	push hl
@@ -76431,7 +76030,7 @@ Func_57840: ; 57840 (15:7840)
 	ld de, Data_57871
 	ld hl, $d01
 	call PlaceStringDEatCoordHL
-	ld a, [wOAM27YCoord]
+	ld a, [$c39c]
 	ld c, a
 	ld b, $0
 	ld de, $3
@@ -76440,7 +76039,7 @@ Func_57840: ; 57840 (15:7840)
 	ld de, Data_5787b
 	ld hl, $d04
 	call PlaceStringDEatCoordHL
-	ld a, [wOAM27XCoord]
+	ld a, [$c39d]
 	ld c, a
 	ld b, $0
 	ld de, $3
@@ -77095,7 +76694,7 @@ Func_57cf7: ; 57cf7 (15:7cf7)
 	ld b, h
 	call GetHLAtSPPlus8
 	push hl
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	pop de
 	call Func_2617
 	ld hl, sp+$2
@@ -77248,7 +76847,7 @@ Func_57df1: ; 57df1 (15:7df1)
 	jp Func_57e2d
 
 Func_57e16: ; 57e16 (15:7e16)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	call Coord2TileMap
 	ld c, l
 	ld b, h
@@ -77629,9 +77228,9 @@ Func_58e84: ; 58e84 (16:4e84)
 	pop bc
 	pop bc
 	pop bc
-	read_hl_from wOAM24Attrs
+	read_hl_from $c393
 	push hl
-	read_hl_from wOAM24XCoord
+	read_hl_from $c391
 	push hl
 	ld hl, $0
 	push hl
@@ -77743,28 +77342,28 @@ Data_5901f:
 
 Pointers_59021:
 	dw Data_59025
-	dw $0000
+	dw $0
 
 Data_59025:
 	db "チッフﾟ<HIRA>をこうしんしました<KATA>$"
 
 Pointers_59035:
 	dw Data_59039
-	dw $0000
+	dw $0
 
 Data_59039:
 	db "<HIRA>おかねかﾞ たりないよ<KATA>$"
 
 Pointers_59047:
 	dw Data_5904b
-	dw $0000
+	dw $0
 
 Data_5904b:
 	db "<HIRA>これいしﾞょう こうしんてﾞきないよ<KATA>$"
 
 Pointers_59060:
 	dw Data_59064
-	dw $0000
+	dw $0
 
 Data_59064:
 	db "スクラッフﾟ<HIRA>に なっているよ<KATA>$"
@@ -81143,7 +80742,7 @@ Func_5d730: ; 5d730 (17:5730)
 	ret
 
 Data_5d735:
-	db $00, $00, $00, $00
+	db $0, $0, $0, $0
 
 Func_5d739: ; 5d739 (17:5739)
 	push bc
@@ -81214,7 +80813,7 @@ Func_5d779: ; 5d779 (17:5779)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], a
 	inc c
@@ -81538,7 +81137,7 @@ Func_5d9ae: ; 5d9ae (17:59ae)
 	ld h, b
 	call Func_5d89a
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -81613,7 +81212,7 @@ Func_5da2b: ; 5da2b (17:5a2b)
 	push hl
 	ld e, c
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $0
 	pop hl
@@ -81708,7 +81307,7 @@ Func_5daa7: ; 5daa7 (17:5aa7)
 	ld hl, sp+$24
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $1
 Func_5daf2: ; 5daf2 (17:5af2)
@@ -81718,7 +81317,7 @@ Func_5daf5: ; 5daf5 (17:5af5)
 	ld hl, sp+$24
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $1
 Func_5db00: ; 5db00 (17:5b00)
@@ -82088,7 +81687,7 @@ Pointers_5dde1:
 	dw Data_5dde7
 Pointers_5dde3:
 	dw Data_5ddfe
-	dw $0000
+	dw $0
 
 Data_5dde7:
 	db "Aホﾞタン<HIRA>てﾞ<KATA>ステータス<HIRA>かﾞみれるよ<KATA>$"
@@ -82298,7 +81897,7 @@ Func_5df3c: ; 5df3c (17:5f3c)
 	ld [hl], $1
 Func_5df96: ; 5df96 (17:5f96)
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -82325,9 +81924,9 @@ Data_5dfe8:
 	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>につかう<KATA>?$"
 
 Func_5dffb:
-	ld a, [wOAM25XCoord]
+	ld a, [$c395]
 	inc a
-	ld [wOAM25XCoord], a
+	ld [$c395], a
 	cp $14
 	jp nc, Func_5e00b
 	ld hl, $4000
@@ -82335,8 +81934,8 @@ Func_5dffb:
 
 Func_5e00b: ; 5e00b (17:600b)
 	xor a
-	ld [wOAM25XCoord], a
-	ld de, wOAM25VTile
+	ld [$c395], a
+	ld de, $c396
 	call Func_5d684
 	ld a, [wNextVBlankFlags]
 	or $2
@@ -82454,7 +82053,7 @@ Func_5e021: ; 5e021 (17:6021)
 	or a
 	jp nz, Func_5e0f1
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $1
 	push hl
 	ld c, $1
@@ -82532,7 +82131,7 @@ Func_5e171: ; 5e171 (17:6171)
 
 Func_5e174: ; 5e174 (17:6174)
 	ld a, [wc2e8 + 1]
-	ld [wOAM04YCoord], a
+	ld [$c310], a
 	callba_hli Func_5575d
 	ld a, [wc2fa]
 	ld c, a
@@ -82600,7 +82199,7 @@ Func_5e223: ; 5e223 (17:6223)
 
 Func_5e226: ; 5e226 (17:6226)
 	ld a, [wc2e8 + 1]
-	ld [wOAM04YCoord], a
+	ld [$c310], a
 	callba_hli Func_5575d
 	ld a, [wc2fa]
 	ld c, a
@@ -82633,7 +82232,7 @@ Data_5e271:
 
 Pointers_5e274:
 	dw Data_5e278
-	dw $0000
+	dw $0
 
 Data_5e278:
 	db "<HIRA>こうかんしたよ<KATA>$"
@@ -82641,7 +82240,7 @@ Data_5e278:
 Pointers_5e282:
 	dw Data_5e288
 	dw Data_5e298
-	dw $0000
+	dw $0
 
 Data_5e288:
 	db "<HIRA>おなしﾞ<KATA>ロホﾞホﾟン<HIRA>は<KATA>$"
@@ -82776,7 +82375,7 @@ Func_5e334: ; 5e334 (17:6334)
 	add hl, de
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $1
 	ld hl, sp+$24
@@ -84814,7 +84413,7 @@ Func_60f61: ; 60f61 (18:4f61)
 	push af
 	ld a, $1
 	ld [wc2fa], a
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_60f7d
 	read_hl_from wc2e6
@@ -85473,7 +85072,7 @@ Func_61424:: ; 61424 (18:5424)
 	ld hl, $d
 	call FarCall
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -85555,7 +85154,7 @@ Func_615ce: ; 615ce (18:55ce)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld [hl], e
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	call WriteHLToSPPlus6
 	call GetHLAtSPPlus8
 	ld de, $8
@@ -85633,7 +85232,7 @@ Func_61634: ; 61634 (18:5634)
 	jp Func_61675
 
 Func_61662: ; 61662 (18:5662)
-	read_hl_from_sp_plus $0e
+	read_hl_from_sp_plus $e
 	reg16swap de, hl
 	ld hl, sp+$9
 	ld l, [hl]
@@ -85657,7 +85256,7 @@ Func_61675: ; 61675 (18:5675)
 .asm_61686
 	ld bc, $0
 Func_61689: ; 61689 (18:5689)
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	inc hl
 	ld [hl], c
 	pop bc
@@ -86462,7 +86061,7 @@ Func_61c3d: ; 61c3d (18:5c3d)
 Func_61c63: ; 61c63 (18:5c63)
 	call WaitVideoTransfer
 	pop bc
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	reg16swap de, hl
 	ld hl, $18
 	add hl, bc
@@ -86476,7 +86075,7 @@ Func_61c63: ; 61c63 (18:5c63)
 	ld c, $8
 	call Func_3ca1
 	pop bc
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	reg16swap de, hl
 	add sp, $18
 	reg16swap de, hl
@@ -86514,7 +86113,7 @@ Func_61c90: ; 61c90
 	pop af
 	ld e, a
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $0
 Func_61cc6: ; 61cc6 (18:5cc6)
@@ -86541,7 +86140,7 @@ Func_61cc6: ; 61cc6 (18:5cc6)
 	push af
 	ld e, a
 	ld d, $0
-	ld hl, wOAM25VTile
+	ld hl, $c396
 	add hl, de
 	ld [hl], $1
 	call GetHLAtSPPlus4
@@ -86868,7 +86467,7 @@ Func_61f66: ; 61f66 (18:5f66)
 	ld hl, sp+$4
 	add [hl]
 	ld d, $0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	cp [hl]
 	jp nz, Func_61f9e
@@ -87561,13 +87160,13 @@ Func_62478: ; 62478 (18:6478)
 	ret
 
 Data_62482: ; 62482
-	dw Data_62486, $0000
+	dw Data_62486, $0
 
 Data_62486: ; 62486
 	db "<HIRA>RAMかﾞたりないよ<KATA>$"
 
 Data_62493: ; 62493
-	dw Data_62497, $0000
+	dw Data_62497, $0
 
 Data_62497: ; 62497
 	db "ソフト<HIRA>かﾞ いっはﾟいてﾞ はすﾞせません<KATA>$"
@@ -87624,7 +87223,7 @@ Func_6251c: ; 6251c (18:651c)
 	push af
 	set_farcall_addrs_hli Func_5601b
 	ld c, $1
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	ld e, a
 	ld hl, sp+$11
 	call FarCall
@@ -87661,7 +87260,7 @@ Func_6256a: ; 6256a (18:656a)
 	ld hl, $10e
 	call Func_6011c
 	ld hl, $0
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 	jp Func_625bd
 
 Func_6259a: ; 6259a (18:659a)
@@ -87674,9 +87273,9 @@ Func_6259a: ; 6259a (18:659a)
 
 Func_625ab: ; 625ab (18:65ab)
 	callba_hli Func_1482e
-	write_hl_to_sp_plus $0c
+	write_hl_to_sp_plus $c
 Func_625bd: ; 625bd (18:65bd)
-	read_hl_from_sp_plus $0c
+	read_hl_from_sp_plus $c
 	ld a, l
 	or h
 	jp nz, Func_626ff
@@ -87709,7 +87308,7 @@ Func_625bd: ; 625bd (18:65bd)
 	add hl, de
 	ld de, $8
 	add hl, de
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -87741,7 +87340,7 @@ Func_625bd: ; 625bd (18:65bd)
 
 Func_6264f: ; 6264f (18:664f)
 	ld hl, $2
-	write_hl_to_sp_plus $0e
+	write_hl_to_sp_plus $e
 Func_62656: ; 62656 (18:6656)
 	ld hl, sp+$e
 	ld a, [hl]
@@ -87765,13 +87364,13 @@ Func_62656: ; 62656 (18:6656)
 	add hl, de
 	ld de, $8
 	add hl, de
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	ld e, a
 	ld d, $0
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$10
-	ld a, [wOAM04XCoord]
+	ld a, [$c311]
 	ld [hl], a
 Func_62685: ; 62685 (18:6685)
 	ld hl, sp+$10
@@ -87946,7 +87545,7 @@ Func_62793: ; 62793 (18:6793)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -87973,7 +87572,7 @@ Func_627b9: ; 627b9 (18:67b9)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -90759,7 +90358,7 @@ Func_681f5: ; 681f5 (1a:41f5)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -90786,7 +90385,7 @@ Func_6821b: ; 6821b (1a:421b)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld c, [hl]
@@ -90831,7 +90430,7 @@ Func_68270: ; 68270 (1a:4270)
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld c, [hl]
 	ld b, $0
@@ -90845,7 +90444,7 @@ Func_68270: ; 68270 (1a:4270)
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld [hl], $ff
 	ld hl, sp+$2
@@ -90860,13 +90459,13 @@ Func_682a4: ; 682a4 (1a:42a4)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM21YCoord
+	ld hl, $c384
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$0
@@ -90878,7 +90477,7 @@ Func_682a4: ; 682a4 (1a:42a4)
 
 Func_682ca: ; 682ca (1a:42ca)
 	ld a, $ff
-	ld [wOAM21VTile], a
+	ld [$c386], a
 	ld hl, $4000
 	jp Func_68341
 
@@ -90901,7 +90500,7 @@ Func_682e3: ; 682e3 (1a:42e3)
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld a, [hl]
 	cp $ff
@@ -90915,7 +90514,7 @@ Func_682e3: ; 682e3 (1a:42e3)
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$2
@@ -90962,7 +90561,7 @@ Func_68346:
 	push bc
 	pop de
 	push hl
-	ld a, [wOAM20Attrs]
+	ld a, [$c383]
 	cp $ff
 	jp nz, Func_6835a
 	call FillVisibleAreaWithBlankTile
@@ -90976,12 +90575,12 @@ Func_6835d: ; 6835d (1a:435d)
 	dec d
 	bit 7, d
 	jr nz, Func_683a4
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld a, [hl]
 	cp $ff
 	jp z, Func_683a0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld [hl], $ff
 	pop hl
@@ -91025,7 +90624,7 @@ Func_683a4: ; 683a4 (1a:43a4)
 
 Pointers_683a6:
 	dw Data_683aa
-	dw $0000
+	dw $0
 
 Data_683aa:
 	db "<HIRA>はけんする ちいきを えらんてﾞね<KATA>$"
@@ -91055,10 +90654,10 @@ Func_683be: ; 683be (1a:43be)
 	ld hl, $10e
 	call FarCall
 	call FillVisibleAreaWithBlankTile
-	ld a, [$c7e2]
+	ld a, [wc7e2]
 	push af
 	ld a, $1
-	ld [$c7e2], a
+	ld [wc7e2], a
 Func_68402: ; 68402 (1a:4402)
 	call Func_2009
 	ld a, [wSongCurrentlyPlaying]
@@ -91087,7 +90686,7 @@ Func_68441: ; 68441 (1a:4441)
 
 Func_68444: ; 68444 (1a:4444)
 	pop af
-	ld [$c7e2], a
+	ld [wc7e2], a
 	ld a, l
 	call Func_68457
 	or a
@@ -91209,7 +90808,7 @@ Func_68546: ; 68546 (1a:4546)
 	push af
 	ld e, a
 	ld d, $0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -91270,7 +90869,7 @@ Func_68580: ; 68580 (1a:4580)
 	ld a, l
 	or h
 	jp nz, Func_685f7
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91280,7 +90879,7 @@ Func_68580: ; 68580 (1a:4580)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $9
 	add hl, de
@@ -91288,7 +90887,7 @@ Func_68580: ; 68580 (1a:4580)
 	jp Func_6860e
 
 Func_685f7: ; 685f7 (1a:45f7)
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91298,7 +90897,7 @@ Func_685f7: ; 685f7 (1a:45f7)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $9
 	add hl, de
@@ -91310,7 +90909,7 @@ Func_6860e: ; 6860e (1a:460e)
 	call Func_6bbf3
 	call Func_3af6
 	call Func_68ac3
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91320,12 +90919,12 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
 	ld [hl], $1
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91335,11 +90934,11 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
-	ld a, [wOAM20Attrs]
+	ld a, [$c383]
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91349,12 +90948,12 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	inc hl
-	ld a, [wOAM21YCoord]
+	ld a, [$c384]
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91364,13 +90963,13 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	inc hl
 	inc hl
-	ld a, [wOAM21XCoord]
+	ld a, [$c385]
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91380,14 +90979,14 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	inc hl
 	inc hl
 	inc hl
-	ld a, [wOAM21VTile]
+	ld a, [$c386]
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91397,15 +90996,15 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	inc hl
 	inc hl
 	inc hl
 	inc hl
-	ld a, [wOAM22YCoord]
+	ld a, [$c388]
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91415,13 +91014,13 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $5
 	add hl, de
-	ld a, [wOAM22XCoord]
+	ld a, [$c389]
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91431,13 +91030,13 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $6
 	add hl, de
-	ld a, [wOAM22VTile]
+	ld a, [$c38a]
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91447,13 +91046,13 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $7
 	add hl, de
-	ld a, [wOAM22Attrs]
+	ld a, [$c38b]
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91463,15 +91062,15 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $8
 	add hl, de
-	ld a, [wOAM23YCoord]
+	ld a, [$c38c]
 	ld [hl], a
 	ld hl, sp+$1f
 	ld a, [hl]
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91481,12 +91080,12 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $11
 	add hl, de
 	ld [hl], a
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91496,12 +91095,12 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $e
 	add hl, de
 	ld [hl], $0
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -91511,7 +91110,7 @@ Func_6860e: ; 6860e (1a:460e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -91527,10 +91126,10 @@ Func_6860e: ; 6860e (1a:460e)
 	ld e, $8
 	ld a, $6
 	call SetStringStartState
-	ld a, [wOAM22YCoord]
+	ld a, [$c388]
 	cp $a
 	jp nc, Func_68794
-	ld hl, wOAM22XCoord
+	ld hl, $c389
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -91542,7 +91141,7 @@ Func_6860e: ; 6860e (1a:460e)
 	jp Func_687a4
 
 Func_68794: ; 68794 (1a:4794)
-	ld hl, wOAM22XCoord
+	ld hl, $c389
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -91552,10 +91151,10 @@ Func_68794: ; 68794 (1a:4794)
 	pop bc
 	pop bc
 Func_687a4: ; 687a4 (1a:47a4)
-	ld a, [wOAM22VTile]
+	ld a, [$c38a]
 	cp $a
 	jp nc, Func_687bf
-	ld hl, wOAM22VTile
+	ld hl, $c38a
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -91567,7 +91166,7 @@ Func_687a4: ; 687a4 (1a:47a4)
 	jp Func_687cf
 
 Func_687bf: ; 687bf (1a:47bf)
-	ld hl, wOAM22VTile
+	ld hl, $c38a
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -91580,10 +91179,10 @@ Func_687cf: ; 687cf (1a:47cf)
 	ld e, $a
 	ld a, $6
 	call SetStringStartState
-	ld a, [wOAM22Attrs]
+	ld a, [$c38b]
 	cp $a
 	jp nc, Func_687f1
-	ld hl, wOAM22Attrs
+	ld hl, $c38b
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -91595,7 +91194,7 @@ Func_687cf: ; 687cf (1a:47cf)
 	jp Func_68801
 
 Func_687f1: ; 687f1 (1a:47f1)
-	ld hl, wOAM22Attrs
+	ld hl, $c38b
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -91605,10 +91204,10 @@ Func_687f1: ; 687f1 (1a:47f1)
 	pop bc
 	pop bc
 Func_68801: ; 68801 (1a:4801)
-	ld a, [wOAM23YCoord]
+	ld a, [$c38c]
 	cp $a
 	jp nc, Func_6881c
-	ld hl, wOAM23YCoord
+	ld hl, $c38c
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -91620,7 +91219,7 @@ Func_68801: ; 68801 (1a:4801)
 	jp Func_6882c
 
 Func_6881c: ; 6881c (1a:481c)
-	ld hl, wOAM23YCoord
+	ld hl, $c38c
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -91824,12 +91423,12 @@ Func_689db: ; 689db (1a:49db)
 Func_689f0: ; 689f0 (1a:49f0)
 	add sp, -$14
 	push af
-	ld a, [$c7e2]
+	ld a, [wc7e2]
 	ld l, a
 	pop af
 	push hl
 	inc a
-	ld [$c7e2], a
+	ld [wc7e2], a
 	set_farcall_addrs_hli Func_e26e0
 	ld hl, sp+$2
 	call FarCall
@@ -91845,7 +91444,7 @@ Func_689f0: ; 689f0 (1a:49f0)
 	pop bc
 	pop hl
 	ld a, l
-	ld [$c7e2], a
+	ld [wc7e2], a
 	add sp, $14
 	ret
 
@@ -91999,7 +91598,7 @@ Func_68b5b: ; 68b5b (1a:4b5b)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wOAM22YCoord
+	ld hl, $c388
 	add hl, de
 	ld [hl], a
 	inc c
@@ -92247,7 +91846,7 @@ Func_68ce2:
 	add d
 	ld hl, wSystemType + 2
 	add [hl]
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -92257,7 +91856,7 @@ Func_68ce2:
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $7
 	add hl, de
@@ -92270,7 +91869,7 @@ Func_68ce2:
 	add d
 	ld hl, wSystemType + 4
 	add [hl]
-	ld hl, wOAM21Attrs
+	ld hl, $c387
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -92280,7 +91879,7 @@ Func_68ce2:
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -92295,107 +91894,107 @@ Func_68d2a:
 Pointers_68d2e:
 	dw Data_68dac
 	dw Data_68db4
-	dw $0000
+	dw $0
 
 Pointers_68d34:
 	dw Data_68dba
 	dw Data_68dc0
-	dw $0000
+	dw $0
 
 Pointers_68d3a:
 	dw Data_68dc7
 	dw Data_68dcd
-	dw $0000
+	dw $0
 
 Pointers_68d40:
 	dw Data_68dd5
 	dw Data_68ddb
-	dw $0000
+	dw $0
 
 Pointers_68d46:
 	dw Data_68de3
 	dw Data_68de9
-	dw $0000
+	dw $0
 
 Pointers_68d4c:
 	dw Data_68df4
 	dw Data_68dfa
-	dw $0000
+	dw $0
 
 Pointers_68d52:
 	dw Data_68dfe
 	dw Data_68e04
-	dw $0000
+	dw $0
 
 Pointers_68d58:
 	dw Data_68e08
 	dw Data_68e0e
-	dw $0000
+	dw $0
 
 Pointers_68d5e:
 	dw Data_68e16
 	dw Data_68e1c
-	dw $0000
+	dw $0
 
 Pointers_68d64:
 	dw Data_68e25
 	dw Data_68e2b
-	dw $0000
+	dw $0
 
 Pointers_68d6a:
 	dw Data_68e37
 	dw Data_68e3e
-	dw $0000
+	dw $0
 
 Pointers_68d70:
 	dw Data_68e47
 	dw Data_68e4e
-	dw $0000
+	dw $0
 
 Pointers_68d76:
 	dw Data_68e57
 	dw Data_68e5e
-	dw $0000
+	dw $0
 
 Pointers_68d7c:
 	dw Data_68e67
 	dw Data_68e6e
-	dw $0000
+	dw $0
 
 Pointers_68d82:
 	dw Data_68e72
 	dw Data_68e79
-	dw $0000
+	dw $0
 
 Pointers_68d88:
 	dw Data_68e85
 	dw Data_68e8c
-	dw $0000
+	dw $0
 
 Pointers_68d8e:
 	dw Data_68e97
 	dw Data_68e9e
-	dw $0000
+	dw $0
 
 Pointers_68d94:
 	dw Data_68ea6
 	dw Data_68ead
-	dw $0000
+	dw $0
 
 Pointers_68d9a:
 	dw Data_68eb6
 	dw Data_68ebd
-	dw $0000
+	dw $0
 
 Pointers_68da0:
 	dw Data_68ec7
 	dw Data_68ece
-	dw $0000
+	dw $0
 
 Pointers_68da6:
 	dw Data_68ed9
 	dw Data_68ee0
-	dw $0000
+	dw $0
 
 Data_68dac:
 	db "<HIRA>ちか1かい<KATA>$"
@@ -93230,7 +92829,7 @@ Func_6935a:
 	push bc
 	call WaitVideoTransfer
 	pop bc
-	read_hl_from wOAM23VTile
+	read_hl_from $c38e
 	ld a, l
 	or h
 	jp nz, Func_69431
@@ -93238,14 +92837,14 @@ Func_6935a:
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, Func_0150
 	call FarCall
-	write_hl_to wOAM23VTile
+	write_hl_to $c38e
 	ld a, $6
 	ld [wFarCallDestBank], a
 	pop bc
 	push bc
 	ld e, c
 	ld d, b
-	read_hl_from wOAM23VTile
+	read_hl_from $c38e
 	ld bc, Func_0150
 	call FarRequestVideoData
 	pop bc
@@ -93357,22 +92956,22 @@ Func_69431: ; 69431 (1a:5431)
 
 Func_69436: ; 69436 (1a:5436)
 	ld bc, $8a00
-	read_hl_from wOAM23VTile
+	read_hl_from $c38e
 	ld a, l
 	or h
 	jp z, Func_69469
 	ld a, $6
 	ld [wFarCallDestBank], a
-	read_hl_from wOAM23VTile
+	read_hl_from $c38e
 	reg16swap de, hl
 	ld l, c
 	ld h, b
 	ld bc, $150
 	call FarRequestVideoData
-	read_hl_from wOAM23VTile
+	read_hl_from $c38e
 	call Func_680d3
 	ld hl, $0
-	write_hl_to wOAM23VTile
+	write_hl_to $c38e
 Func_69469: ; 69469 (1a:5469)
 	ret
 
@@ -93810,7 +93409,7 @@ Func_696f3:
 	ld l, a
 	write_hl_to_sp_plus $f
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -94511,7 +94110,7 @@ Func_69c7d:
 	inc hl
 	ld b, [hl]
 	ld a, c
-	ld [wOAM01Attrs], a
+	ld [$c307], a
 	pop hl
 	ld a, c
 	sub $2
@@ -94919,14 +94518,14 @@ Func_69f86: ; 69f86 (1a:5f86)
 
 Pointers_69f88:
 	dw Data_69f8c
-	dw $0000
+	dw $0
 
 Data_69f8c:
 	db "<HIRA>つうしん<KATA> エラー$"
 
 Pointers_69f97:
 	dw Data_69f9b
-	dw $0000
+	dw $0
 
 Data_69f9b:
 	db "モートﾞ<HIRA>かﾞ ちかﾞうよ<KATA>$"
@@ -94934,7 +94533,7 @@ Data_69f9b:
 Pointers_69faa:
 	dw Data_69fb0
 	dw Data_69fc3
-	dw $0000
+	dw $0
 
 Data_69fb0:
 	db "ハﾟーティー<HIRA>かﾞ いなくなるから<KATA>$"
@@ -94945,7 +94544,7 @@ Data_69fc3:
 Pointers_69fce:
 	dw Data_69fd4
 	dw Data_69fe5
-	dw $0000
+	dw $0
 
 Data_69fd4:
 	db "<HIRA>あいての<KATA>ハﾟーティー<HIRA>かﾞ<KATA>$"
@@ -94956,7 +94555,7 @@ Data_69fe5:
 Pointers_69ff7:
 	dw Data_69ffd
 	dw Data_6a00e
-	dw $0000
+	dw $0
 
 Data_69ffd:
 	db "<HIRA>あいての<KATA>ハﾟーティー<HIRA>かﾞ<KATA>$"
@@ -94967,7 +94566,7 @@ Data_6a00e:
 Pointers_6a023:
 	dw Data_6a029
 	dw Data_6a03e
-	dw $0000
+	dw $0
 
 Data_6a029:
 	db "ハﾟーティー<HIRA>かﾞ いっはﾟいなのてﾞ<KATA>$"
@@ -94978,7 +94577,7 @@ Data_6a03e:
 Pointers_6a047:
 	dw Data_6a04d
 	dw Data_6a05b
-	dw $0000
+	dw $0
 
 Data_6a04d:
 	db "<HIRA>この<KATA>ロホﾞホﾟン<HIRA>は<KATA>$"
@@ -94989,7 +94588,7 @@ Data_6a05b:
 Pointers_6a068:
 	dw Data_6a06e
 	dw Data_6a07c
-	dw $0000
+	dw $0
 
 Data_6a06e:
 	db "<HIRA>この<KATA>ロホﾞホﾟン<HIRA>は<KATA>$"
@@ -95000,7 +94599,7 @@ Data_6a07c:
 Pointers_6a087:
 	dw Data_6a08d
 	dw Data_6a09b
-	dw $0000
+	dw $0
 
 Data_6a08d:
 	db "<HIRA>この<KATA>ロホﾞホﾟン<HIRA>は<KATA>$"
@@ -95011,7 +94610,7 @@ Data_6a09b:
 Pointers_6a0a4:
 	dw Data_6a0aa
 	dw Data_6a0bb
-	dw $0000
+	dw $0
 
 Data_6a0aa:
 	db "<HIRA>いきてる<KATA>ロホﾞホﾟン<HIRA>かﾞ<KATA>$"
@@ -95021,14 +94620,14 @@ Data_6a0bb:
 
 Pointers_6a0c4:
 	dw Data_6a0c8
-	dw $0000
+	dw $0
 
 Data_6a0c8:
 	db "<HIRA>もらえないよ<KATA>$"
 
 Pointers_6a0d1:
 	dw Data_6a0d5
-	dw $0000
+	dw $0
 
 Data_6a0d5:
 	db "<HIRA>せいしﾞょうに しゅうりょうしたよ<KATA>$"
@@ -95121,7 +94720,7 @@ Func_6a141: ; 6a141 (1a:6141)
 	xor a
 	call Func_3bc5
 	pop bc
-	ld a, [wOAM09VTile]
+	ld a, [$c326]
 	cp $80
 	jp nz, Func_6a1cb
 	call NextOverworldFrame
@@ -95140,7 +94739,7 @@ Func_6a1c8: ; 6a1c8 (1a:61c8)
 	call CheckButton
 Func_6a1cb: ; 6a1cb (1a:61cb)
 	ld hl, sp+$a
-	ld a, [wOAM01Attrs]
+	ld a, [$c307]
 	inc a
 	add a
 	add a
@@ -95239,7 +94838,7 @@ Func_6a26a: ; 6a26a (1a:626a)
 	ld hl, sp+$2
 	ld a, [hl]
 	call GetSRAMBank
-	ld a, [wOAM09VTile]
+	ld a, [$c326]
 	cp $80
 	jp nz, Func_6a353
 	ld c, $0
@@ -95489,7 +95088,7 @@ Func_6a477: ; 6a477 (1a:6477)
 	jp z, Func_6a7ee
 	cp $10
 	jp nz, Func_6aa6d
-	ld a, [wOAM09VTile]
+	ld a, [$c326]
 	cp $80
 	jp nz, Func_6a62a
 	ld hl, sp+$8
@@ -96420,7 +96019,7 @@ Func_6ac27: ; 6ac27 (1a:6c27)
 
 Pointers_6ac2b:
 	dw Data_6ac2f
-	dw $0000
+	dw $0
 
 Data_6ac2f:
 	db "<HIRA>これいしﾞょう はけん てﾞきないよ<KATA>$"
@@ -96454,7 +96053,7 @@ Func_6ac89: ; 6ac89 (1a:6c89)
 	jp nc, Func_6ac9b
 	ld e, a
 	ld d, $0
-	ld hl, wOAM20Attrs
+	ld hl, $c383
 	add hl, de
 	ld [hl], $ff
 	inc a
@@ -96472,7 +96071,7 @@ Func_6ac9b: ; 6ac9b (1a:6c9b)
 
 Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -96516,7 +96115,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld hl, $10e
 	call FarCall
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -96572,7 +96171,7 @@ Func_6ad7e: ; 6ad7e (1a:6d7e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -96580,7 +96179,7 @@ Func_6ad7e: ; 6ad7e (1a:6d7e)
 	or a
 	jp nz, Func_6ada2
 	ld a, c
-	ld [wOAM21Attrs], a
+	ld [$c387], a
 	jp Func_6ada6
 
 Func_6ada2: ; 6ada2 (1a:6da2)
@@ -97295,7 +96894,7 @@ Func_6b31a:: ; 6b31a (1a:731a)
 	call FarCall
 	call WriteHLToSPPlus4
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -97344,7 +96943,7 @@ Func_6b376: ; 6b376 (1a:7376)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -97371,7 +96970,7 @@ Func_6b376: ; 6b376 (1a:7376)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -97394,7 +96993,7 @@ Func_6b3cb: ; 6b3cb (1a:73cb)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -97418,7 +97017,7 @@ Func_6b3e9: ; 6b3e9 (1a:73e9)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $a
 	add hl, de
@@ -97440,7 +97039,7 @@ Func_6b40c: ; 6b40c (1a:740c)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $e
 	add hl, de
@@ -97455,7 +97054,7 @@ Func_6b40c: ; 6b40c (1a:740c)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -97509,7 +97108,7 @@ Func_6b46e: ; 6b46e (1a:746e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -97539,7 +97138,7 @@ Func_6b4aa: ; 6b4aa (1a:74aa)
 
 Func_6b4ae: ; 6b4ae (1a:74ae)
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call GetHLAtSPPlus4
 	ld c, l
 	ld b, h
@@ -97582,7 +97181,7 @@ Func_6b4e8: ; 6b4e8 (1a:74e8)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $a
 	add hl, de
@@ -97599,7 +97198,7 @@ Func_6b4e8: ; 6b4e8 (1a:74e8)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $b
 	add hl, de
@@ -97616,7 +97215,7 @@ Func_6b4e8: ; 6b4e8 (1a:74e8)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -97633,7 +97232,7 @@ Func_6b4e8: ; 6b4e8 (1a:74e8)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $d
 	add hl, de
@@ -97663,7 +97262,7 @@ Func_6b55d: ; 6b55d (1a:755d)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $a
 	add hl, de
@@ -97685,7 +97284,7 @@ Func_6b55d: ; 6b55d (1a:755d)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -97708,7 +97307,7 @@ Func_6b55d: ; 6b55d (1a:755d)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -97755,7 +97354,7 @@ Func_6b607: ; 6b607 (1a:7607)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $a
 	add hl, de
@@ -97791,7 +97390,7 @@ Func_6b607: ; 6b607 (1a:7607)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld e, c
 	ld d, $0
@@ -97868,7 +97467,7 @@ Func_6b6d4: ; 6b6d4 (1a:76d4)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -97891,7 +97490,7 @@ Func_6b6d4: ; 6b6d4 (1a:76d4)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -97923,7 +97522,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $e
 	add hl, de
@@ -97950,7 +97549,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld l, [hl]
 	ld h, $0
@@ -97973,7 +97572,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $e
 	add hl, de
@@ -97997,7 +97596,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -98023,7 +97622,7 @@ Func_6b7f6: ; 6b7f6 (1a:77f6)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -98050,7 +97649,7 @@ Func_6b81d: ; 6b81d (1a:781d)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -98107,7 +97706,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	ld a, $7
 	call Func_6bbf3
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	read_hl_from_sp_plus $64
 	ld c, l
 	ld b, h
@@ -98139,7 +97738,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $e
 	add hl, de
@@ -98162,7 +97761,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -98189,7 +97788,7 @@ Func_6b939: ; 6b939 (1a:7939)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -98216,7 +97815,7 @@ Func_6b96d: ; 6b96d (1a:796d)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -98239,7 +97838,7 @@ Func_6b99e: ; 6b99e (1a:799e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -98254,7 +97853,7 @@ Func_6b99e: ; 6b99e (1a:799e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $e
 	add hl, de
@@ -98269,7 +97868,7 @@ Func_6b99e: ; 6b99e (1a:799e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $f
 	add hl, de
@@ -98288,7 +97887,7 @@ Func_6b9e1: ; 6b9e1 (1a:79e1)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $a
 	add hl, de
@@ -98317,7 +97916,7 @@ Data_6ba1c:
 Pointers_6ba20:
 	dw Data_6ba26
 	dw Data_6ba37
-	dw $0000
+	dw $0
 
 Data_6ba26:
 	db "<HIRA>はけんした<KATA>ハﾟーティー<HIRA>は<KATA>$"
@@ -98328,7 +97927,7 @@ Data_6ba37:
 Pointers_6ba44:
 	dw Data_6ba4a
 	dw Data_6ba5b
-	dw $0000
+	dw $0
 
 Data_6ba4a:
 	db "<HIRA>はけんした<KATA>ハﾟーティー<HIRA>は<KATA>$"
@@ -98341,7 +97940,7 @@ Pointers_6ba6e:
 	dw Data_6ba89
 	dw Data_6ba99
 	dw Data_6baac
-	dw $0000
+	dw $0
 
 Data_6ba78:
 	db "<HIRA>はけんした<KATA>ハﾟーティー<HIRA>は<KATA>$"
@@ -98357,14 +97956,14 @@ Data_6baac:
 
 Pointers_6babf:
 	dw Data_6bac3
-	dw $0000
+	dw $0
 
 Data_6bac3:
 	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は はけん されているよ<KATA>$"
 
 Pointers_6badc:
 	dw Data_6bae0
-	dw $0000
+	dw $0
 
 Data_6bae0:
 	db "<HIRA>あかﾞったよ<KATA>$"
@@ -98374,7 +97973,7 @@ Pointers_6bae9:
 	dw Data_6bb08
 	dw Data_6bb20
 	dw Data_6bb2e
-	dw $0000
+	dw $0
 
 Data_6baf3:
 	db "<HIRA>こんかいの はけんてﾞ<KATA>レヘﾞル<HIRA>の<KATA>$"
@@ -98391,7 +97990,7 @@ Data_6bb2e:
 Pointers_6bb3e:
 	dw Data_6bb44
 	dw Data_6bb56
-	dw $0000
+	dw $0
 
 Data_6bb44:
 	db "<HIRA>そうそう たひﾞのとちゅうてﾞ<KATA>$"
@@ -98401,7 +98000,7 @@ Data_6bb56:
 
 Pointers_6bb69:
 	dw Data_6bb6d
-	dw $0000
+	dw $0
 
 Data_6bb6d:
 	db "<HIRA>みつけてきた<KATA>$"
@@ -98409,7 +98008,7 @@ Data_6bb6d:
 Pointers_6bb76:
 	dw Data_6bb7c
 	dw Data_6bb8f
-	dw $0000
+	dw $0
 
 Data_6bb7c:
 	db "<HIRA>はけんしている<KATA>ハﾟーティー<HIRA>は<KATA>$"
@@ -98419,14 +98018,14 @@ Data_6bb8f:
 
 Pointers_6bb96:
 	dw Data_6bb9a
-	dw $0000
+	dw $0
 
 Data_6bb9a:
 	db "<HIRA>かえってきてるよ<KATA>$"
 
 Pointers_6bba5:
 	dw Data_6bba9
-	dw $0000
+	dw $0
 
 Data_6bba9:
 	db "<HIRA>くみめの<KATA> ハﾟーティー$"
@@ -98434,7 +98033,7 @@ Data_6bba9:
 Pointers_6bbb7:
 	dw Data_6bbbd
 	dw Data_6bbd1
-	dw $0000
+	dw $0
 
 Data_6bbbd:
 	db "<HIRA>はけんにたﾞすときに たいりょくを<KATA>$"
@@ -98444,7 +98043,7 @@ Data_6bbd1:
 
 Pointers_6bbdf:
 	dw Data_6bbe3
-	dw $0000
+	dw $0
 
 Data_6bbe3:
 	db "<HIRA>いっはﾟいなのてﾞ すてた<KATA>$"
@@ -98457,7 +98056,7 @@ Func_6bbf3: ; 6bbf3 (1a:7bf3)
 	cp $7
 	jp z, Func_6bc1a
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -98545,7 +98144,7 @@ Func_6bcab: ; 6bcab (1a:7cab)
 	cp $3
 	jp nz, Func_6bce8
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -98708,7 +98307,7 @@ Func_6bdfa: ; 6bdfa (1a:7dfa)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $6
 	add hl, de
@@ -98723,7 +98322,7 @@ Func_6bdfa: ; 6bdfa (1a:7dfa)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	inc hl
 	inc hl
@@ -98740,7 +98339,7 @@ Func_6bdfa: ; 6bdfa (1a:7dfa)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $5
 	add hl, de
@@ -98758,7 +98357,7 @@ Func_6bdfa: ; 6bdfa (1a:7dfa)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $7
 	add hl, de
@@ -98778,7 +98377,7 @@ Func_6bdfa: ; 6bdfa (1a:7dfa)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -98904,7 +98503,7 @@ Func_6c044:
 	push bc
 	ld hl, sp+$0
 	ld [hl], $ff
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_6c062
 	ld c, $0
@@ -99319,7 +98918,7 @@ Func_6c342: ; 6c342 (1b:4342)
 	cp $ff
 	jp nz, Func_6c3a2
 Func_6c37e: ; 6c37e (1b:437e)
-	ld a, [wOAM05VTile]
+	ld a, [$c316]
 	or a
 	jp nz, Func_6c391
 	ld de, $8
@@ -99328,7 +98927,7 @@ Func_6c37e: ; 6c37e (1b:437e)
 	jp Func_6c3a2
 
 Func_6c391: ; 6c391 (1b:4391)
-	ld a, [wOAM05VTile]
+	ld a, [$c316]
 	cp $1
 	jp nz, Func_6c3a2
 	ld de, $8
@@ -99336,7 +98935,7 @@ Func_6c391: ; 6c391 (1b:4391)
 	call Func_2b7d
 Func_6c3a2: ; 6c3a2 (1b:43a2)
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -99526,7 +99125,7 @@ Func_6c546:
 	push hl
 	ld bc, $a0
 	ld e, $0
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	call FillMemory
 	ld a, [wNextVBlankFlags]
 	or $2
@@ -99554,7 +99153,7 @@ Func_6c546:
 	call FarCall
 	ld bc, $a0
 	ld e, $0
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	call FillMemory
 	call DisableHBlank
 	ld a, [wLCDC]
@@ -101352,7 +100951,7 @@ Func_6d2eb: ; 6d2eb (1b:52eb)
 	ld a, $1
 	call Func_6d350
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -101987,7 +101586,7 @@ Func_6d880: ; 6d880 (1b:5880)
 	jp nz, Func_6d8c1
 	ld hl, sp+$6
 	ld [hl], $ff
-	ld a, [wOAM06XCoord]
+	ld a, [$c319]
 	cp $81
 	jp nz, Func_6d8b3
 	ld c, $2
@@ -105052,29 +104651,29 @@ Func_6ed49: ; 6ed49 (1b:6d49)
 	ld l, $18
 Func_6ed4b: ; 6ed4b (1b:6d4b)
 	ld a, $38
-	ld [wOAM2_18YCoord], a
+	ld [wOAM18YCoord], a
 	ld a, $50
-	ld [wOAM2_18XCoord], a
+	ld [wOAM18XCoord], a
 	ld a, l
-	ld [wOAM2_18VTile], a
+	ld [wOAM18VTile], a
 	xor a
-	ld [wOAM2_18Attrs], a
+	ld [wOAM18Attrs], a
 	ld a, $38
-	ld [wOAM2_19YCoord], a
+	ld [wOAM19YCoord], a
 	ld a, $58
-	ld [wOAM2_19XCoord], a
+	ld [wOAM19XCoord], a
 	ld a, l
 	inc a
-	ld [wOAM2_19VTile], a
+	ld [wOAM19VTile], a
 	xor a
-	ld [wOAM2_19Attrs], a
+	ld [wOAM19Attrs], a
 	jp Func_6ed7b
 
 Func_6ed73: ; 6ed73 (1b:6d73)
 	xor a
-	ld [wOAM2_18YCoord], a
+	ld [wOAM18YCoord], a
 	xor a
-	ld [wOAM2_19YCoord], a
+	ld [wOAM19YCoord], a
 Func_6ed7b: ; 6ed7b (1b:6d7b)
 	ld hl, sp+$8
 	ld a, [hl]
@@ -105091,29 +104690,29 @@ Func_6ed90: ; 6ed90 (1b:6d90)
 	ld l, $1c
 Func_6ed92: ; 6ed92 (1b:6d92)
 	ld a, $88
-	ld [wOAM2_1aYCoord], a
+	ld [wOAM1aYCoord], a
 	ld a, $50
-	ld [wOAM2_1aXCoord], a
+	ld [wOAM1aXCoord], a
 	ld a, l
-	ld [wOAM2_1aVTile], a
+	ld [wOAM1aVTile], a
 	xor a
-	ld [wOAM2_1aAttrs], a
+	ld [wOAM1aAttrs], a
 	ld a, $88
-	ld [wOAM2_1bYCoord], a
+	ld [wOAM1bYCoord], a
 	ld a, $58
-	ld [wOAM2_1bXCoord], a
+	ld [wOAM1bXCoord], a
 	ld a, l
 	inc a
-	ld [wOAM2_1bVTile], a
+	ld [wOAM1bVTile], a
 	xor a
-	ld [wOAM2_1bAttrs], a
+	ld [wOAM1bAttrs], a
 	jp Func_6edc2
 
 Func_6edba: ; 6edba (1b:6dba)
 	xor a
-	ld [wOAM2_1aYCoord], a
+	ld [wOAM1aYCoord], a
 	xor a
-	ld [wOAM2_1bYCoord], a
+	ld [wOAM1bYCoord], a
 Func_6edc2: ; 6edc2 (1b:6dc2)
 	pop bc
 	pop bc
@@ -105629,7 +105228,7 @@ Func_6f1eb: ; 6f1eb (1b:71eb)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $12
 	add hl, de
@@ -105658,7 +105257,7 @@ Func_6f1eb: ; 6f1eb (1b:71eb)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -105898,7 +105497,7 @@ Func_6f3fb: ; 6f3fb (1b:73fb)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -105930,7 +105529,7 @@ Func_6f441: ; 6f441 (1b:7441)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -105959,7 +105558,7 @@ Func_6f467: ; 6f467 (1b:7467)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	cp [hl]
@@ -105977,7 +105576,7 @@ Func_6f467: ; 6f467 (1b:7467)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wOAM11Attrs
+	ld de, $c347
 	add hl, de
 	add hl, bc
 	ld e, $1
@@ -106008,7 +105607,7 @@ Func_6f4bb: ; 6f4bb (1b:74bb)
 Pointers_6f4be:
 	dw Data_6f4c4
 	dw Data_6f4cf
-	dw $0000
+	dw $0
 
 Data_6f4c4:
 	db "<HIRA>ちょっとまってな<KATA>$"
@@ -106018,7 +105617,7 @@ Data_6f4cf:
 
 Pointers_6f4df:
 	dw Data_6f4e3
-	dw $0000
+	dw $0
 
 Data_6f4e3:
 	db "<HIRA>そうかい またおいてﾞ<KATA>$"
@@ -106026,7 +105625,7 @@ Data_6f4e3:
 Pointers_6f4f1:
 	dw Data_6f4f7
 	dw Data_6f500
-	dw $0000
+	dw $0
 
 Data_6f4f7:
 	db "<HIRA>おまたせっ<KATA>!$"
@@ -106036,7 +105635,7 @@ Data_6f500:
 
 Func_6f512:: ; 6f512 (1b:7512)
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -106071,7 +105670,7 @@ Func_6f512:: ; 6f512 (1b:7512)
 	ld hl, $d
 	call Func_2152
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -106088,11 +105687,11 @@ Func_6f512:: ; 6f512 (1b:7512)
 	call Func_3ca1
 	pop bc
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	callba_hli Func_1482e
 	push hl
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -106126,7 +105725,7 @@ Func_6f512:: ; 6f512 (1b:7512)
 	call FarCall
 	callba_hli Func_9a84a
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -106163,7 +105762,7 @@ Func_6f66f: ; 6f66f (1b:766f)
 	call FarCall
 Func_6f685: ; 6f685 (1b:7685)
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -106258,7 +105857,7 @@ Func_6f760: ; 6f760 (1b:7760)
 Pointers_6f762:
 	dw Data_6f768
 	dw Data_6f776
-	dw $0000
+	dw $0
 
 Data_6f768:
 	db "<HIRA>そうこもいっはﾟいてﾞ<KATA>$"
@@ -106269,7 +105868,7 @@ Data_6f776:
 Func_6f785: ; 6f785 (1b:7785)
 	push af
 	ld a, $1
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -106297,7 +105896,7 @@ Func_6f785: ; 6f785 (1b:7785)
 	ld hl, $d
 	call Func_2152
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -106381,7 +105980,7 @@ Func_6f8c8: ; 6f8c8 (1b:78c8)
 	xor a
 	call FarCall
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -106403,7 +106002,7 @@ Func_6f906: ; 6f906 (1b:7906)
 	push hl
 	push de
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld c, e
 	ld b, d
 	ld de, PutOnVideoTransferQueue
@@ -106613,7 +106212,7 @@ Func_6face: ; 6face (1b:7ace)
 	call FarCall
 Func_6fae2: ; 6fae2 (1b:7ae2)
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -106951,7 +106550,7 @@ Func_bf5ba: ; bf5ba (2f:75ba)
 	ld a, $3
 	call GetSRAMBank
 	ld bc, $a0
-	ld de, wOAMBuffer2
+	ld de, wOAMBuffer
 	ld hl, $b1
 	add hl, sp
 	call CopyFromDEtoHL
@@ -106963,7 +106562,7 @@ Func_bf5ba: ; bf5ba (2f:75ba)
 	ld [wNextVBlankFlags], a
 	call Func_bc49b
 	ld bc, $50
-	ld de, wOAMBuffer2End
+	ld de, wOAMBufferEnd
 	ld hl, sp+$61
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli Func_62a3
@@ -107055,7 +106654,7 @@ Func_bf680: ; bf680 (2f:7680)
 	ld hl, $ad
 	add hl, sp
 	reg16swap de, hl
-	ld hl, wOAM2_00YCoord
+	ld hl, wOAM00YCoord
 	call CopyFromDEtoHL
 	ld hl, sp+$6
 	ld a, [hl]

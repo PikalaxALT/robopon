@@ -134,7 +134,7 @@ Func_91f0: ; 91f0 (2:51f0)
 	ld hl, $0
 	push hl
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	call Func_bf05
 	call Func_bf12
 	pop hl
@@ -251,7 +251,7 @@ Func_92d4: ; 92d4 (2:52d4)
 	pop bc
 Func_92e3: ; 92e3 (2:52e3)
 	ld a, $1
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $3
 	push hl
 	ld c, $14
@@ -276,7 +276,7 @@ Func_930d: ; 930d (2:530d)
 	jp z, Func_93c0
 	push de
 	callba_hli Func_da4dc
-	ld a, [$c7da]
+	ld a, [wc7da]
 	or a
 	jp z, Func_9371
 	xor a

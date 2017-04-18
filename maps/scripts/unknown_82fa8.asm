@@ -13,7 +13,7 @@ Func_82fa8:
 	ld hl, Func_83006
 	call Func_80f11_20
 	ld a, $7
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_82f61
 	call LoadMapObjects_20

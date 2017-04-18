@@ -8,11 +8,11 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld a, [wc86c]
 	ld [wc872], a
 	ld a, [wc86c + 1]
-	ld [wc873], a
+	ld [wc872 + 1], a
 	ld a, [wc86a]
 	ld [wc870], a
 	ld a, [wc86a + 1]
-	ld [wc871], a
+	ld [wc870 + 1], a
 	ld a, $1
 	ld [wLastStepSucceeded], a
 	pop af
@@ -115,7 +115,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 .asm_94f9
 
 ; check player state
-	ld a, [$c7e1]
+	ld a, [wc7e1]
 	cp $2
 	jr z, .asm_9508
 	cp $3
@@ -356,7 +356,7 @@ Func_9678: ; 9678 (2:5678)
 	push hl
 	ld a, [wc870]
 	ld l, a
-	ld a, [wc871]
+	ld a, [wc870 + 1]
 	adc $0
 	ld h, a
 	push hl
@@ -368,7 +368,7 @@ Func_9678: ; 9678 (2:5678)
 	ld a, l
 	ld [wc870], a
 	ld a, h
-	ld [wc871], a
+	ld [wc870 + 1], a
 	pop de
 	pop hl
 	ld a, [wMapY]
@@ -519,7 +519,7 @@ Func_97a7: ; 97a7 (2:57a7)
 	push hl
 	ld a, [wc872]
 	ld l, a
-	ld a, [wc873]
+	ld a, [wc872 + 1]
 	adc $0
 	ld h, a
 	push hl
@@ -531,7 +531,7 @@ Func_97a7: ; 97a7 (2:57a7)
 	ld a, l
 	ld [wc872], a
 	ld a, h
-	ld [wc873], a
+	ld [wc872 + 1], a
 	pop de
 	pop hl
 	ld a, [wMapY]

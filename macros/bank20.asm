@@ -268,7 +268,7 @@ Func_80257_\1:
 
 Func_80275_\1:
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	callba_hli Func_14ca9
 	ret
 

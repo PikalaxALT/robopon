@@ -504,11 +504,11 @@ HandleMenu: ; 174ab (5:74ab)
 	and [hl]
 	inc a
 	jp z, .quit
-	ld a, [wOAM05Attrs]
+	ld a, [$c317]
 	or a
 	jp nz, .skip_1784c
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld hl, sp+$4
 	ld l, [hl]
 	push hl

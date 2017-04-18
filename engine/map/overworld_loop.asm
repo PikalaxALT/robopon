@@ -56,9 +56,9 @@ OverworldLoop: ; 81cf (2:41cf)
 
 .new_game
 	xor a
-	ld [wOAM06YCoord], a
+	ld [$c318], a
 	ld a, $1
-	ld [$c7e2], a
+	ld [wc7e2], a
 	set_farcall_addrs_hli Func_e2780
 	ld a, $1
 	call FarCall
@@ -109,7 +109,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, c
 	call FarCall
 	ld a, $1
-	ld [$c7e2], a
+	ld [wc7e2], a
 	ld bc, wc7b1 - wc789
 .loop2
 	ld l, c
@@ -125,7 +125,7 @@ OverworldLoop: ; 81cf (2:41cf)
 
 .okay2
 	xor a
-	ld [wOAM06YCoord], a
+	ld [$c318], a
 	ld a, $ff
 	ld [wBackupMapNumber], a
 	ld [wBackupMapGroup], a
@@ -226,7 +226,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, [wMapGroup]
 	call PreloadNextMap
 	xor a
-	ld [$c7da], a
+	ld [wc7da], a
 	set_farcall_addrs_hli EnterMap
 	ld a, [wMapNumber]
 	ld e, a

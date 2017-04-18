@@ -490,7 +490,12 @@ wVideoTransferQueue:: ; c239
 	char wSystemType ; c2fb
 
 SECTION "OAM Buffer", WRAM0 [$c300]
-wOAMBuffer:: ; c300
+wc300:: ds $9 ; c300
+wPlayerName:: ds $5 ; c309
+	short wc30e ; c30e
+
+SECTION "OAM Buffer 2", WRAM0 [$c400]
+wOAMBuffer:: ; c400
 	oam_ram wOAM00
 	oam_ram wOAM01
 	oam_ram wOAM02
@@ -531,55 +536,7 @@ wOAMBuffer:: ; c300
 	oam_ram wOAM25
 	oam_ram wOAM26
 	oam_ram wOAM27
-
-	ds wOAMBuffer - @
-
-wc300:: ds $9
-wPlayerName:: ds $4
-
-SECTION "OAM Buffer 2", WRAM0 [$c400]
-wOAMBuffer2:: ; c400
-	oam_ram wOAM2_00
-	oam_ram wOAM2_01
-	oam_ram wOAM2_02
-	oam_ram wOAM2_03
-	oam_ram wOAM2_04
-	oam_ram wOAM2_05
-	oam_ram wOAM2_06
-	oam_ram wOAM2_07
-	oam_ram wOAM2_08
-	oam_ram wOAM2_09
-	oam_ram wOAM2_0a
-	oam_ram wOAM2_0b
-	oam_ram wOAM2_0c
-	oam_ram wOAM2_0d
-	oam_ram wOAM2_0e
-	oam_ram wOAM2_0f
-	oam_ram wOAM2_10
-	oam_ram wOAM2_11
-	oam_ram wOAM2_12
-	oam_ram wOAM2_13
-	oam_ram wOAM2_14
-	oam_ram wOAM2_15
-	oam_ram wOAM2_16
-	oam_ram wOAM2_17
-	oam_ram wOAM2_18
-	oam_ram wOAM2_19
-	oam_ram wOAM2_1a
-	oam_ram wOAM2_1b
-	oam_ram wOAM2_1c
-	oam_ram wOAM2_1d
-	oam_ram wOAM2_1e
-	oam_ram wOAM2_1f
-	oam_ram wOAM2_20
-	oam_ram wOAM2_21
-	oam_ram wOAM2_22
-	oam_ram wOAM2_23
-	oam_ram wOAM2_24
-	oam_ram wOAM2_25
-	oam_ram wOAM2_26
-	oam_ram wOAM2_27
-wOAMBuffer2End::
+wOAMBufferEnd::
 
 SECTION "Tile Map", WRAM0 [$c4a0]
 	array wTileMap, SCREEN_WIDTH, SCREEN_HEIGHT, 1
@@ -634,14 +591,20 @@ wc770:: ; c770
 	array wc7b1, $c, $1, $1
 	char wc7bd ; c7bd
 	char wMapMusic ; c7be
-	ds $1c
+	ds $5
+	char wc7c4 ; c7c4
+	ds $15
 
+	char wc7da ; c7da
 	char wBackupMapX ; c7db
 	char wBackupMapY ; c7dc
-	ds $2
+	ds $1
+	char wc7de ; c7de
 	char wBackupMapGroup ; c7df
 	char wBackupMapNumber ; c7e0
-	ds $6
+	char wc7e1 ; c7e1
+	char wc7e2 ; c7e2
+	ds $4
 
 	char wSpawnX ; c7e7
 	char wSpawnY ; c7e8
@@ -715,10 +678,8 @@ wc770:: ; c770
 	short wc86a ; c86a
 	short wc86c ; c86c
 	short wc86e ; c86e
-	char wc870 ; c870
-	char wc871 ; c871
-	char wc872 ; c872
-	char wc873 ; c873
+	short wc870 ; c870
+	short wc872 ; c872
 	ds $8
 	char wPlayerMovementRate ; c87c
 	char wLastStepSucceeded ; c87d
@@ -741,6 +702,16 @@ wc770:: ; c770
 	char wCheckCollisionObjectCounter ; c88d
 	short wCheckCollisionObjectStructPointer ; c88e
 	short wCheckCollision_c890 ; c890
+	ds wCheckCollisionReturnFlag - @
+
+	char wFunc94a9_c888 ; c888
+	char wFunc94a9_c889 ; c889
+	short wFunc94a9_c88a ; c88a
+	short wFunc94a9_c88c ; c88c
+	char wFunc94a9_c88e ; c88e
+	char wFunc94a9_c88f ; c88f
+	char wFunc94a9_c890 ; c890
+	char wFunc94a9_c891 ; c891
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 	array wCGB_BGPalsBuffer, $8, $8, $1 ; c89c

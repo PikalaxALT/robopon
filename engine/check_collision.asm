@@ -240,7 +240,7 @@ CheckFacingObject: ; a783 (2:6783)
 	or b
 	jr z, .no_collision_here
 	ld a, $0
-	ld [$c7c4], a
+	ld [wc7c4], a
 	dec hl
 	dec hl
 	dec hl
@@ -254,7 +254,7 @@ CheckFacingObject: ; a783 (2:6783)
 	ld e, a
 	ld a, [wCheckCollisionObjectCounter]
 	call FarCall
-	ld a, [$c7c4]
+	ld a, [wc7c4]
 	cp $1
 	jr nz, .no_collision_here
 	ld a, $1
@@ -264,7 +264,7 @@ CheckFacingObject: ; a783 (2:6783)
 
 .call_function
 	ld a, $0
-	ld [$c7c4], a
+	ld [wc7c4], a
 	inc hl
 	inc hl
 	inc hl
@@ -278,7 +278,7 @@ CheckFacingObject: ; a783 (2:6783)
 	ld e, $0
 	ld a, [wCheckCollisionObjectCounter]
 	call FarCall
-	ld a, [$c7c4]
+	ld a, [wc7c4]
 	cp $1
 	jp z, .done
 .next

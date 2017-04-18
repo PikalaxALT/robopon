@@ -6,7 +6,7 @@ DrawTextBoxAndOverworldText: ; aa5d (2:6a5d)
 	add sp, -$44
 	push bc
 	ld a, $3
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld l, $d
 	push hl
 	ld c, $14

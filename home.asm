@@ -527,14 +527,14 @@ FarCall::
 
 Func_0451:: ; 0451
 	push bc
-	ld a, [wOAM27VTile]
+	ld a, [$c39e]
 	push af
 	xor a
-	ld [wOAM27VTile], a
+	ld [$c39e], a
 	call NextOverworldFrame
 	ld c, a
 	pop af
-	ld [wOAM27VTile], a
+	ld [$c39e], a
 	ld a, c
 	pop bc
 	ret
@@ -1700,15 +1700,15 @@ Func_1069:: ; 1069
 	push af
 	push hl
 	ld a, [rSB]
-	ld [wOAM07YCoord], a
+	ld [$c31c], a
 	ld a, $1
-	ld [wOAM06VTile], a
-	ld a, [wOAM06Attrs]
+	ld [$c31a], a
+	ld a, [$c31b]
 	ld [rSB], a
-	ld a, [wOAM07XCoord]
+	ld a, [$c31d]
 	ld [rSC], a
 	ld hl, Pointers_1090
-	ld a, [wOAM07VTile]
+	ld a, [$c31e]
 	add a
 	add l
 	ld l, a
@@ -1740,7 +1740,7 @@ Func_10a6:: ; 10a6
 
 Func_10a9:: ; 10a9
 	ld a, $2
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	pop hl
 .asm_10af
 	pop af
@@ -1748,131 +1748,131 @@ Func_10a9:: ; 10a9
 
 Func_10b1:: ; 10b1
 	ld a, $6
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	pop hl
 	pop af
 	reti
 
 Func_10b9:: ; 10b9
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $a0
 	jr nz, .asm_10c9
 	ld a, $b0
 	ld [rSB], a
 	ld a, $9
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 .asm_10c9
 	pop hl
 	pop af
 	reti
 
 Func_10cc:: ; 10cc
-	ld a, [wOAM08VTile]
+	ld a, [$c322]
 	ld l, a
-	ld a, [wOAM08Attrs]
+	ld a, [$c323]
 	ld h, a
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	ld [hli], a
 	ld a, l
-	ld [wOAM08VTile], a
+	ld [$c322], a
 	ld a, h
-	ld [wOAM08Attrs], a
-	ld a, [wOAM08YCoord]
+	ld [$c323], a
+	ld a, [$c320]
 	ld l, a
-	ld a, [wOAM08XCoord]
+	ld a, [$c321]
 	ld h, a
 	dec hl
 	ld a, l
-	ld [wOAM08YCoord], a
+	ld [$c320], a
 	ld a, h
-	ld [wOAM08XCoord], a
+	ld [$c321], a
 	or l
 	jr nz, .asm_10f9
 	ld a, $3
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 .asm_10f9
 	pop hl
 	pop af
 	reti
 
 Func_10fc:: ; 10fc
-	ld a, [wOAM07YCoord]
-	ld [wOAM09YCoord], a
+	ld a, [$c31c]
+	ld [$c324], a
 	ld a, $4
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	pop hl
 	pop af
 	reti
 
 Func_110a:: ; 110a
 	ld a, $1
-	ld [wOAM07Attrs], a
-	ld a, [wOAM07YCoord]
-	ld [wOAM09XCoord], a
+	ld [$c31f], a
+	ld a, [$c31c]
+	ld [$c325], a
 	ld a, $0
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	pop hl
 	pop af
 	reti
 
 Func_111d:: ; 111d
-	ld a, [wOAM07YCoord]
+	ld a, [$c31c]
 	cp $a2
 	jr nz, .asm_112d
 	ld a, $b2
 	ld [rSB], a
 	ld a, $6
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 .asm_112d
 	pop hl
 	pop af
 	reti
 
 Func_1130:: ; 1130
-	ld a, [wOAM08VTile]
+	ld a, [$c322]
 	ld l, a
-	ld a, [wOAM08Attrs]
+	ld a, [$c323]
 	ld h, a
 	ld a, [hli]
 	ld [rSB], a
 	ld a, l
-	ld [wOAM08VTile], a
+	ld [$c322], a
 	ld a, h
-	ld [wOAM08Attrs], a
-	ld a, [wOAM08YCoord]
+	ld [$c323], a
+	ld a, [$c320]
 	ld l, a
-	ld a, [wOAM08XCoord]
+	ld a, [$c321]
 	ld h, a
 	dec hl
 	ld a, l
-	ld [wOAM08YCoord], a
+	ld [$c320], a
 	ld a, h
-	ld [wOAM08XCoord], a
+	ld [$c321], a
 	or l
 	jr nz, .asm_115c
 	ld a, $7
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 .asm_115c
 	pop hl
 	pop af
 	reti
 
 Func_115f:: ; 115f
-	ld a, [wOAM09YCoord]
+	ld a, [$c324]
 	ld [rSB], a
 	ld a, $8
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	pop hl
 	pop af
 	reti
 
 Func_116c:: ; 116c
 	ld a, $1
-	ld [wOAM07Attrs], a
-	ld a, [wOAM09XCoord]
+	ld [$c31f], a
+	ld a, [$c325]
 	ld [rSB], a
 	ld a, $0
-	ld [wOAM07VTile], a
+	ld [$c31e], a
 	pop hl
 	pop af
 	reti
@@ -2638,7 +2638,7 @@ Func_1b01:: ; 1b01
 	jp Func_4060
 
 Func_1b28:: ; 1b28 (0:1b28)
-	ld a, [wOAM27VTile]
+	ld a, [$c39e]
 	or a
 	ret z
 	push bc
@@ -2804,7 +2804,7 @@ Func_1c3b:: ; 1c3b
 	predef Func_7aa8e
 	jr c, .asm_1c53
 	xor a
-	ld [wOAM09VTile], a
+	ld [$c326], a
 .asm_1c4a
 	pop bc
 	call ApplyVBlankCallbackEnableFlag
@@ -2814,7 +2814,7 @@ Func_1c3b:: ; 1c3b
 
 .asm_1c53
 	ld a, $80
-	ld [wOAM09VTile], a
+	ld [$c326], a
 	jr .asm_1c4a
 
 Func_1c5a:: ; 1c5a
@@ -2968,7 +2968,7 @@ Func_1db9:: ; 1db9
 	write_hl_to $c393
 	ld bc, $5
 	ld e, $0
-	ld hl, wOAM02XCoord
+	ld hl, wPlayerName
 	call FillMemory
 	ret
 
@@ -2980,7 +2980,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	call FarCall
 	call Func_1db9
 	xor a
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	xor a
 	ld [wVBlankTransferFlags], a
 	xor a
@@ -2999,7 +2999,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	ld hl, $c938
 	call FillMemory
 	ld a, $1
-	ld [wOAM27VTile], a
+	ld [$c39e], a
 Func_1ea8:: ; 1ea8 (0:1ea8)
 	ld a, [wc01c]
 	cp $11
@@ -3055,7 +3055,7 @@ Func_1f25:: ; 1f25 (0:1f25)
 	ld a, $1
 Func_1f27:: ; 1f27 (0:1f27)
 	ld a, $ff
-	ld [wOAM26Attrs], a
+	ld [$c39b], a
 	call Func_144fd
 	ret
 
@@ -4390,7 +4390,7 @@ Func_27e0:: ; 27e0 (0:27e0)
 ClearSprites:: ; 27f5
 	ld bc, $a0
 	ld e, $0
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	call FillMemory
 	ret
 
@@ -4548,7 +4548,7 @@ Func_2887:: ; 2887 (0:2887)
 	ld h, a
 	call Func_21f8
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	ld hl, sp+$4
 	ld l, [hl]
 	push hl
@@ -4676,7 +4676,7 @@ Func_29a6:: ; 29a6 (0:29a6)
 Func_29cb:: ; 29cb (0:29cb)
 	push de
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 	set_farcall_addrs_hli Func_c7109
 	pop de
 	push de
@@ -4758,7 +4758,7 @@ Func_2a49:: ; 2a49 (0:2a49)
 	push hl
 	ld hl, $1
 	push hl
-	ld hl, wOAM24XCoord
+	ld hl, $c391
 	call AddLongs
 	call PutLongFromHLOnStack
 	call CompareStackLongs_Signed
@@ -4975,7 +4975,7 @@ Func_2bc6:: ; 2bc6 (0:2bc6)
 	jp Func_2bea
 
 Func_2bd7:: ; 2bd7 (0:2bd7)
-	ld hl, wOAMBuffer2
+	ld hl, wOAMBuffer
 	add hl, bc
 	reg16swap de, hl
 	inc de
@@ -6248,7 +6248,7 @@ FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	hlcoord 0, 0, wAttrMap
 	call FillMemory
 	ld a, $2
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 .not_cgb
 	ld l, $12
 	push hl
@@ -6324,7 +6324,7 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_3bc0
-	ld a, [wOAM26VTile]
+	ld a, [$c39a]
 	or a
 	jp z, Func_3bc0
 	ld a, [rVBK]
@@ -6373,9 +6373,9 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
-	ld a, [wOAM26VTile]
+	ld a, [$c39a]
 	dec a
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 Func_3bc0:: ; 3bc0 (0:3bc0)
 	pop bc
 	pop bc
@@ -6440,7 +6440,7 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, .skip_vbank1
-	ld a, [wOAM26VTile]
+	ld a, [$c39a]
 	or a
 	jp z, .skip_vbank1
 	ld a, [rVBK]
@@ -6489,9 +6489,9 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
-	ld a, [wOAM26VTile]
+	ld a, [$c39a]
 	dec a
-	ld [wOAM26VTile], a
+	ld [$c39a], a
 .skip_vbank1
 	ld a, [$c2cd]
 	or a

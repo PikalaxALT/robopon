@@ -9,7 +9,7 @@ Func_83169:
 	ld hl, Func_831a2
 	call Func_80f11_20
 	ld a, $8
-	ld [$c7de], a
+	ld [wc7de], a
 	ld e, $3
 	ld hl, Data_8311a
 	call LoadMapObjects_20
