@@ -1200,7 +1200,7 @@ Func_0a18:: ; a18 (0:0a18)
 	ld e, l
 	ld d, h
 	push bc
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld b, $0
 	push hl
 	predef CopyPredef
@@ -1362,7 +1362,7 @@ Func_0aee:: ; aee (0:0aee)
 	ld e, l
 	ld d, h
 	push bc
-	ld hl, $c400
+	ld hl, wOAMBuffer
 	ld b, $0
 	push hl
 	predef CopyPredef
@@ -2915,38 +2915,38 @@ DisableJoypadInt::
 SECTION "1d00", ROM0 [$1d00]
 INCLUDE "home/crash.asm"
 
-Func_1db9:: ; 1db9
+NewSaveFileInWRam:: ; 1db9
 	ld a, [hSRAMBank]
 	push af
-	ld a, $3
+	ld a, BANK(sAllocatableBlock1)
 	call GetSRAMBank
-	ld bc, $214
+	ld bc, sSaveBlock1End - sSaveBlock1
 	ld e, $0
-	ld hl, $c980
+	ld hl, wSaveBlock1
 	call FillMemory
-	ld a, $2
+	ld a, BANK(sBoxes)
 	call GetSRAMBank
-	ld bc, $1298
+	ld bc, sSavedBoxesEnd - sSavedBoxes
 	ld e, $0
-	ld hl, $a007
+	ld hl, sBoxes
 	call FillMemory
-	ld a, $3
+	ld a, BANK(sAllocatableBlock1)
 	call GetSRAMBank
 	ld bc, $a0
 	ld e, $0
-	ld hl, $cb94
+	ld hl, wSaveBlock2
 	call FillMemory
-	ld a, $3
+	ld a, BANK(sAllocatableBlock1)
 	call GetSRAMBank
 	ld bc, $dc
 	ld e, $0
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	call FillMemory
-	ld a, $3
+	ld a, BANK(sAllocatableBlock1)
 	call GetSRAMBank
 	ld bc, $fa
 	ld e, $0
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	call FillMemory
 	pop af
 	call GetSRAMBank
@@ -2978,7 +2978,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	ld de, $900
 	ld hl, wAllocatableBlock0
 	call FarCall
-	call Func_1db9
+	call NewSaveFileInWRam
 	xor a
 	ld [wc39a], a
 	xor a
@@ -3978,7 +3978,7 @@ Func_2515:: ; 2515
 	call WriteHLToSPPlusParam8
 	db $f
 	ld c, $0
-	ld a, [$c2cd]
+	ld a, [wc2cd]
 	or a
 	jp nz, Func_256d
 	ld e, $0
@@ -6274,7 +6274,7 @@ Func_3afc:: ; 3afc (0:3afc)
 	push bc
 	push bc
 	ld hl, sp+$1
-	ld a, [$c2cd]
+	ld a, [wc2cd]
 	or a
 	jp nz, Func_3b0d
 	xor a
@@ -6391,7 +6391,7 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	ld hl, sp+$1
 	ld [hl], $2
 	ld hl, sp+$0
-	ld a, [$c2cd]
+	ld a, [wc2cd]
 	or a
 	jp nz, .zero
 	ld a, $1
@@ -6493,7 +6493,7 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	dec a
 	ld [wc39a], a
 .skip_vbank1
-	ld a, [$c2cd]
+	ld a, [wc2cd]
 	or a
 	jp nz, .zero_2
 	ld a, $1
@@ -6557,7 +6557,7 @@ ToggleBGMapSelect:: ; 3cb8 (0:3cb8)
 
 .done
 	pop af
-	ld [$c2cd], a
+	ld [wc2cd], a
 	ret
 
 FindFirstNonzero:: ; 3cf2 (0:3cf2)

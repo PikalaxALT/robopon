@@ -476,7 +476,7 @@ Func_2363f: ; 2363f (8:763f)
 	read_hl_from_sp_plus $4f
 	ld de, $5f
 	add hl, de
-	ld a, [wc2e8 + 1]
+	ld a, [wc2e9]
 	ld [hl], a
 	jp Func_23654
 

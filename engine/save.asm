@@ -1,3 +1,9 @@
+Pointers_56d8e:
+	dw Data_56d90
+
+Data_56d90:
+	db "<HIRA>ちょっとまってね<KATA>$" ; Please wait...
+
 SaveGame: ; 56d9b (15:6d9b)
 	ld hl, -$404
 	add hl, sp
@@ -347,7 +353,7 @@ LoadGame: ; 56fc2 (15:6fc2)
 	cp $ff
 	jp nz, .okay
 .not_equal
-	call Func_1db9
+	call NewSaveFileInWRam
 	ld a, $ff
 	jp .quit
 

@@ -259,7 +259,7 @@ Func_14244: ; 14244 (5:4244)
 	ld de, $3
 	call CompareHLtoDE
 	jp nc, Func_14287
-	ld hl, wc2e8 + 1
+	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
 	ld e, l

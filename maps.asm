@@ -4320,7 +4320,7 @@ Func_8788b:
 	cp $1
 	jp nz, Func_878a7
 	ld a, $1
-	ld [wMapMusic + 6], a
+	ld [wc7c4], a
 Func_878a7: ; 878a7 (21:78a7)
 	jp Func_878ef
 
@@ -4366,7 +4366,7 @@ Func_878f1:
 	cp $1
 	jp nz, Func_8790d
 	ld a, $1
-	ld [wMapMusic + 6], a
+	ld [wc7c4], a
 Func_8790d: ; 8790d (21:790d)
 	jp Func_87955
 
@@ -4412,7 +4412,7 @@ Func_87957:
 	cp $1
 	jp nz, Func_87973
 	ld a, $1
-	ld [wMapMusic + 6], a
+	ld [wc7c4], a
 Func_87973: ; 87973 (21:7973)
 	jp Func_879bb
 
@@ -4458,7 +4458,7 @@ Func_879bd:
 	cp $1
 	jp nz, Func_879d9
 	ld a, $1
-	ld [wMapMusic + 6], a
+	ld [wc7c4], a
 Func_879d9: ; 879d9 (21:79d9)
 	jp Func_87a21
 
@@ -4504,7 +4504,7 @@ Func_87a23:
 	cp $1
 	jp nz, Func_87a3f
 	ld a, $1
-	ld [wMapMusic + 6], a
+	ld [wc7c4], a
 Func_87a3f: ; 87a3f (21:7a3f)
 	jp Func_87a71
 
@@ -4544,7 +4544,7 @@ Func_87a73:
 	cp $1
 	jp nz, Func_87a8f
 	ld a, $1
-	ld [wMapMusic + 6], a
+	ld [wc7c4], a
 Func_87a8f: ; 87a8f (21:7a8f)
 	jp Func_87ac1
 
@@ -5132,12 +5132,12 @@ Func_933ea: ; 933ea (24:73ea)
 	add a
 	add a
 	add $20
-	ld [wc872 + 4], a
-	ld a, [wc872 + 2]
+	ld [wc876], a
+	ld a, [wc874]
 	ld l, a
-	ld a, [wc872 + 3]
+	ld a, [wc874 + 1]
 	ld h, a
-	ld a, [wc872 + 4]
+	ld a, [wc876]
 	ld c, a
 	ld b, $8
 	ld a, [hSRAMBank]
@@ -5914,7 +5914,7 @@ Func_9a834: ; 9a834 (26:6834)
 	jp nz, Func_9a848
 Func_9a844: ; 9a844 (26:6844)
 	xor a
-	ld [wc852 + 8], a
+	ld [wc85a], a
 Func_9a848: ; 9a848 (26:6848)
 	pop bc
 	ret
@@ -5927,22 +5927,22 @@ Func_9a87c: ; 9a87c
 
 ShowEmote: ; 9a897
 	add -5
-	ld [wMapCollisionPointer + 2], a
+	ld [wc832], a
 	ld a, e
 	add -4
-	ld [wMapCollisionPointer + 3], a
+	ld [wc833], a
 	callba_hli ShowEmote_
 	ret
 
 Func_9a8b1:
-	ld [wMapCollisionPointer + 4], a
+	ld [wc834], a
 	ld a, e
-	ld [wMapCollisionPointer + 5], a
+	ld [wc835], a
 	ld a, c
-	ld [wMapCollisionPointer + 6], a
+	ld [wc836], a
 	ld hl, sp+$2
 	ld a, [hl]
-	ld [wMapCollisionPointer + 7], a
+	ld [wc837], a
 	ret
 
 Func_9a8c3:: ; 9a8c3

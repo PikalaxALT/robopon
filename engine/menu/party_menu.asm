@@ -198,7 +198,7 @@ Func_5e663: ; 5e663 (17:6663)
 	ld hl, sp+$38
 	write_hl_to_sp_plus $37
 	xor a
-	ld [$c395], a
+	ld [wc395], a
 	ld hl, sp+$29
 	reg16swap de, hl
 	ld hl, sp+$a
@@ -241,7 +241,7 @@ Func_5e6ac: ; 5e6ac (17:66ac)
 	ld hl, sp+$3a
 	write_hl_to_sp_plus $39
 	xor a
-	ld [$c395], a
+	ld [wc395], a
 	pop de
 	pop bc
 Func_5e6eb: ; 5e6eb (17:66eb)
@@ -303,9 +303,9 @@ Func_5e72d: ; 5e72d (17:672d)
 	pop bc
 	push hl
 	push bc
-	ld a, [wc2e8 + 1]
+	ld a, [wc2e9]
 	ld [wc310], a
-	ld hl, wc2e8 + 1
+	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -332,14 +332,14 @@ Func_5e72d: ; 5e72d (17:672d)
 	call FillMemory
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $0
-	ld a, [wc2e8 + 1]
+	ld a, [wc2e9]
 	ld e, a
 	xor a
 	call FarCall
 	pop af
 	pop bc
 	push bc
-	ld hl, wc2e8 + 1
+	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
 	ld e, l
@@ -512,7 +512,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	ld hl, sp+$36
 	write_hl_to_sp_plus $35
 	xor a
-	ld [$c395], a
+	ld [wc395], a
 	ld hl, sp+$27
 	reg16swap de, hl
 	ld hl, sp+$8
@@ -524,7 +524,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	inc a
 	jp z, Func_5e9f0
 	set_farcall_addrs_hli Func_6e1b
-	ld hl, wc2e8 + 1
+	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
 	ld de, $900
@@ -534,7 +534,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	set_farcall_addrs_hli Func_6b55
 	call GetHLAtSPPlus6
 	reg16swap de, hl
-	ld a, [wc2e8 + 1]
+	ld a, [wc2e9]
 	call FarCall
 	call GetHLAtSPPlus6
 	ld a, [hl]
@@ -547,7 +547,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	ld hl, sp+$49
 	ld [hl], $3
 	ld hl, sp+$48
-	ld a, [wc2e8 + 1]
+	ld a, [wc2e9]
 	add a
 	add a
 	inc a
@@ -686,7 +686,7 @@ Func_5ea13: ; 5ea13 (17:6a13)
 	ld hl, sp+$38
 	write_hl_to_sp_plus $37
 	xor a
-	ld [$c395], a
+	ld [wc395], a
 	ld hl, sp+$29
 	reg16swap de, hl
 	ld hl, sp+$a
@@ -752,7 +752,7 @@ Func_5ea9c: ; 5ea9c (17:6a9c)
 	ld hl, sp+$36
 	write_hl_to_sp_plus $35
 	xor a
-	ld [$c395], a
+	ld [wc395], a
 	ld hl, sp+$27
 	reg16swap de, hl
 	ld hl, sp+$8
@@ -809,7 +809,7 @@ Func_5eafa: ; 5eafa (17:6afa)
 	ld hl, sp+$38
 	write_hl_to_sp_plus $37
 	xor a
-	ld [$c395], a
+	ld [wc395], a
 	ld hl, sp+$29
 	reg16swap de, hl
 	ld hl, sp+$a

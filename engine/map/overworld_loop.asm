@@ -26,6 +26,7 @@ Data_81c9: ; 81c9
 	db $07, $0c, $07, $0b, $1a, $00
 
 OverworldLoop: ; 81cf (2:41cf)
+; c: 1 if continuing from a previous save
 	push bc
 	push bc
 	ld a, [wSystemType]
@@ -40,7 +41,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	inc c
 	dec c
 	jp nz, .not_new_game
-	call Func_1db9
+	call NewSaveFileInWRam
 	ld bc, wc7b1 - wc789
 .loop
 	ld l, c

@@ -406,10 +406,12 @@ wLCD:: ds $3 ; c200
 	char wSCX ; c20c
 	char wSCX2 ; c20d
 	char wSCY ; c20e
-	short wSCY2 ; c20f
+	char wSCY2 ; c20f
+	char wBGMapHi ; c210
 	char wLCDC ; c211
 	char wFarCallSavedA ; c212
-wc213:: ds $5 ; c213
+	char wc213 ; c213
+	ds $4
 	short wFarCallSavedHL ; c218
 	char wFarCallDestBank ; c21a
 	short wFarCallDestAddr ; c21b
@@ -423,8 +425,13 @@ wc213:: ds $5 ; c213
 	short wDecompressEndAddress ; c228
 	short wDecompressLiteralCopySize ; c22a
 	char wDecompresLiteralCopyOffsetHi ; c22c
-	ds $8
-
+	ds $1
+	short wc22e ; c22e
+	char wc230 ; c230
+	char wc231 ; c231
+	char wc232 ; c232
+	char wc233 ; c233
+	ds $1
 	char wPoncotPicAlignment ; c235
 	ds $1
 	short wRNGState ; c237
@@ -461,7 +468,8 @@ wVideoTransferQueue:: ; c239
 	array wc2bb, 1, 16, 1 ; c2bb
 	char wc2cb ; c2cb
 	char wc2cc ; c2cc
-	ds $9
+	char wc2cd ; c2cd
+	ds $8
 
 	char wMapWidth ; c2d6
 	char wMapHeight ; c2d7
@@ -472,22 +480,33 @@ wVideoTransferQueue:: ; c239
 	short wMemoryAllocationNumBlocks ; c2dc
 	short wMemoryAllocationPointer ; c2de
 	char wMemoryAllocationMode ; c2e0
-	ds $5
+	char wc2e1 ; c2e1
+	short wc2e2 ; c2e2
+	short wc2e4 ; c2e4
 	short wc2e6 ; c2e6
 	char wc2e8 ; c2e8
-	ds $1
+	char wc2e9 ; c2e9
 
 	char wVideoTransferRequestFlags ; c2ea
 	char wSongCurrentlyPlaying ; c2eb
 	char wSFXCurrentlyPlaying ; c2ec
 	char wVideoTransferRequestBank ; c2ed
-	ds $6
-
+	char wc2ee ; c2ee
+	char wc2ef ; c2ef
+	char wc2f0 ; c2f0
+	char wc2f1 ; c2f1
+	char wc2f2 ; c2f2
+	char wc2f3 ; c2f3
 	char wc2f4
-	ds $5
-
+	ds $1
+	char wc2f6 ; c2f6
+	ds $3
 	char wc2fa ; c2fa
 	char wSystemType ; c2fb
+	char wc2fc ; c2fc
+	char wc2fd ; c2fd
+	char wc2fe ; c2fe
+	char wc2ff ; c2ff
 
 SECTION "OAM Buffer at boot only", WRAM0 [$c300]
 	char wc300 ; c300
@@ -679,7 +698,8 @@ wc770:: ; c770
 	char wMapMusic ; c7be
 	ds $5
 	char wc7c4 ; c7c4
-	ds $15
+	char wc7c5 ; c7c5
+	ds $14
 
 	char wc7da ; c7da
 	char wBackupMapX ; c7db
@@ -700,6 +720,7 @@ wc770:: ; c770
 	char wMapNumber ; c7ec
 
 	bitfield wEventFlags, 400 ; c7ed
+wEventFlagsEnd::
 
 	char wc81f ; c81f
 	char wc820 ; c820
@@ -767,7 +788,9 @@ wc770:: ; c770
 	short wc870 ; c870
 	short wc872 ; c872
 	short wc874 ; c874
-	ds $6
+	char wc876 ; c876
+	ds $5
+
 	char wPlayerMovementRate ; c87c
 	char wLastStepSucceeded ; c87d
 	ds $a
@@ -836,6 +859,8 @@ wSaveBlock4:: ds $fa  ; cd10
 wSaveScratchEnd:: ; ce0a
 
 	short wCheckSum ; ce0a
+	ds $3
+	char wce0f ; ce0f
 
 SECTION "Allocatable Memory", WRAM0 [$ce10]
 	alloc_block wAllocatableBlock0 ; ce10

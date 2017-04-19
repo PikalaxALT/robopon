@@ -787,7 +787,7 @@ Func_80732_\1: ; 80732 (20:4732)
 	ld h, $0
 	ld de, $8
 	call DivideHLByDESigned
-	ld de, wMapMusic + 7
+	ld de, wc7c5
 	add hl, de
 	ld c, [hl]
 	pop hl

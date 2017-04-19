@@ -364,7 +364,7 @@ Func_782b6:: ; 782b6
 	jp Func_7810e
 
 Func_782f5:: ; 782f5 (1e:42f5)
-	ld [$ce0f], a
+	ld [wce0f], a
 	ld hl, $ce00
 	ld de, Data_78018
 	ld bc, $f
@@ -578,7 +578,7 @@ Func_78440:: ; 78440 (1e:4440)
 	pop bc
 	ld hl, wOAMBuffer
 	predef Func_7d4e0
-	ld hl, $c404
+	ld hl, wOAM01YCoord
 	predef Func_7af96
 .asm_78489
 	predef DelayFrame
@@ -627,7 +627,7 @@ Func_78526:: ; 78526 (1e:4526)
 	predef Func_7d486
 	ld hl, $d01
 	predef Func_7d905
-	ld hl, $c401
+	ld hl, wOAM00XCoord
 	predef Func_7af96
 	pop hl
 	aCoord 18, 4
@@ -674,10 +674,10 @@ Func_78526:: ; 78526 (1e:4526)
 	ld d, [hl]
 	inc hl
 	push hl
-	ld hl, $c42e
+	ld hl, wOAM0bVTile
 	ld bc, $0
 	predef Func_7d4e0
-	ld hl, $c434
+	ld hl, wOAM0dYCoord
 	predef Func_7af96
 	pop de
 	ld hl, $505
@@ -685,12 +685,12 @@ Func_78526:: ; 78526 (1e:4526)
 	push hl
 	push de
 	predef Func_7d905
-	ld hl, $c42e
+	ld hl, wOAM0bVTile
 	ld bc, $a
 	predef CopyPredef
 	xor a
 	ld [wOAM0eYCoord], a
-	ld hl, $c42e
+	ld hl, wOAM0bVTile
 	call Func_785dd
 	pop hl
 	ld bc, $a
@@ -704,9 +704,9 @@ Func_78526:: ; 78526 (1e:4526)
 	ld e, a
 	ld d, $0
 	predef Func_7d905
-	ld hl, $c42e
+	ld hl, wOAM0bVTile
 	predef Func_7d486
-	ld hl, $c431
+	ld hl, wOAM0cXCoord
 	predef Func_7af96
 	pop de
 	pop hl
@@ -799,7 +799,7 @@ Func_78632:: ; 78632 (1e:4632)
 	ld a, [$ce00]
 	or a
 	jp nz, Func_78741
-	ld a, [$ce0f]
+	ld a, [wce0f]
 	push af
 	ld a, $1
 	call Func_78376
@@ -1580,7 +1580,7 @@ Func_78b45:: ; 78b45 (1e:4b45)
 	ld d, $0
 	ld hl, wOAMBuffer
 	predef Func_7d486
-	ld hl, $c403
+	ld hl, wOAM00Attrs
 	predef Func_7af96
 	ret
 
@@ -9641,7 +9641,7 @@ Func_7d4e0:: ; 7d4e0 (1f:54e0)
 	pop bc
 	ld bc, $fc18
 	call Func_7d4d1
-	ld bc, hBGP
+	ld bc, $ff9c
 	call Func_7d4d1
 	ld bc, $fff6
 	call Func_7d4d1

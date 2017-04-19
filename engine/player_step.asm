@@ -253,7 +253,7 @@ Func_95aa: ; 95aa (2:55aa)
 	add hl, hl
 	add hl, hl
 	add hl, bc
-	ld a, [$c2cd]
+	ld a, [wc2cd]
 	cp $0
 	jr z, .asm_95d2
 	bcbgcoord 0, 0, vWindowMap
