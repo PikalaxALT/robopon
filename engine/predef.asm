@@ -2399,7 +2399,7 @@ Pointers_7a1a1:: ; 7a1a1
 	dw Data_7a1de
 	dw Data_7a1f4
 	dw Data_7a216
-	dw Data_7a239
+	dw SaveGameSignature9
 	dw Data_7a252
 	dw Data_7a26f
 	dw Data_7a29c
@@ -2428,7 +2428,7 @@ Data_7a1f4:: ; 7a1f4
 Data_7a216:: ; 7a216
 	dr $7a216, $7a239
 
-Data_7a239:: ; 7a239
+SaveGameSignature9:: ; 7a239
 	dr $7a239, $7a252
 
 Data_7a252:: ; 7a252
@@ -3301,7 +3301,7 @@ Pointers_7aab9:: ; 7aab9
 	dw Func_7ab97
 	dw Func_7aba1
 	dw Func_7ab62
-	dw Func_7abc8
+	dw StoreSaveChecksum8
 	dw Func_7abd7
 
 Func_7aad3:: ; 7aad3 (1e:6ad3)
@@ -3443,11 +3443,11 @@ Func_7aba1:: ; 7aba1 (1e:6ba1)
 	pop af
 	jp Func_7a8a9
 
-Func_7abc8:: ; 7abc8 (1e:6bc8)
+StoreSaveChecksum8:: ; 7abc8 (1e:6bc8)
 	call Func_7ad13
 	ld l, e
 	ld h, d
-Func_7abcd:: ; 7abcd (1e:6bcd)
+StoreSaveChecksumd:: ; 7abcd (1e:6bcd)
 	call Func_7aa53
 	jr c, .asm_7abd6
 	sub b
@@ -3463,7 +3463,7 @@ Func_7abd7:: ; 7abd7 (1e:6bd7)
 	push hl
 	push de
 	push bc
-	call Func_7abcd
+	call StoreSaveChecksumd
 	pop bc
 	pop hl
 	pop de

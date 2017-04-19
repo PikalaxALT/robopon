@@ -499,6 +499,8 @@ SECTION "OAM Buffer at boot only", WRAM0 [$c300]
 	char wc306 ; c306
 	char wc307 ; c307
 	char wc308 ; c308
+
+
 	array wPlayerName, 5, 1, 1 ; c309
 	short wc30e ; c30e
 	char wc310 ; c310
@@ -520,6 +522,8 @@ SECTION "OAM Buffer at boot only", WRAM0 [$c300]
 	short wc324 ; c324
 	char wc326 ; c326
 	array wc327, 32, 1, 1 ; c327
+
+
 	array wc347, 3, 20, 1 ; c347
 	array wc383, 4, 1, 1 ; c383
 	char wc387 ; c387
@@ -822,6 +826,16 @@ SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 	short wc934 ; c934
 	array wc936, 2, 1, 1 ; c936
 	array wc938, 9, 8, 1 ; c938
+
+SECTION "Save Game Scratch", WRAM0 [$c980]
+wSaveScratch::
+wSaveBlock1:: ds $214 ; c980
+wSaveBlock2:: ds $a0  ; cb94
+wSaveBlock3:: ds $dc  ; cc34
+wSaveBlock4:: ds $fa  ; cd10
+wSaveScratchEnd:: ; ce0a
+
+	short wCheckSum ; ce0a
 
 SECTION "Allocatable Memory", WRAM0 [$ce10]
 	alloc_block wAllocatableBlock0 ; ce10

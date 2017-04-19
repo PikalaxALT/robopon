@@ -83,7 +83,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, c
 	cp $1
 	jp nz, .not_map_1
-	callba_hli Func_56fc2
+	callba_hli LoadGame
 	callba_hli Func_4fef1
 	callba_hli Func_93c0c
 	callba_hli Func_9a8c3
@@ -93,7 +93,7 @@ OverworldLoop: ; 81cf (2:41cf)
 
 .not_map_1
 	push bc
-	callba_hli Func_238c8
+	callba_hli LoadDebugSaveState
 	ld de, Data_840f
 	lb hl, 5, 7
 	call PlaceStringDEatCoordHL

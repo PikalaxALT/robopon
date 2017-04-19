@@ -1670,11 +1670,11 @@ Func_6a77: ; 6a77
 	set 2, a
 	jp Func_6183
 
-Func_6b11: ; 6b11
+CalcChecksum: ; 6b11
 	xor a
 	ld c, a
 	ld b, a
-.asm_6b14
+.loop
 	ld a, [hl]
 	add c
 	ld c, a
@@ -1684,7 +1684,7 @@ Func_6b11: ; 6b11
 	dec de
 	ld a, e
 	or d
-	jr nz, .asm_6b14
+	jr nz, .loop
 	ld l, c
 	ld h, b
 	ret
@@ -2622,7 +2622,7 @@ Func_733d: ; 733d (1:733d)
 	push hl
 	read_hl_from_sp_plus $c
 	pop de
-	call Func_6b11
+	call CalcChecksum
 	reg16swap de, hl
 	read_hl_from wc324
 	call CompareHLtoDE
@@ -2728,7 +2728,7 @@ Func_73f9: ; 73f9 (1:73f9)
 	push hl
 	read_hl_from_sp_plus $e
 	pop de
-	call Func_6b11
+	call CalcChecksum
 	write_hl_to wc324
 	read_hl_from_sp_plus $e
 	write_hl_to wc320
@@ -2791,7 +2791,7 @@ Func_747b: ; 747b (1:747b)
 	push hl
 	read_hl_from_sp_plus $c
 	pop de
-	call Func_6b11
+	call CalcChecksum
 	xor a
 	ld [wTimerCounter], a
 Func_748d: ; 748d (1:748d)
@@ -2980,7 +2980,7 @@ Func_7594: ; 7594 (1:7594)
 	push hl
 	call GetHLAtSPPlus10
 	pop de
-	call Func_6b11
+	call CalcChecksum
 	reg16swap de, hl
 	read_hl_from wc324
 	call CompareHLtoDE
@@ -3081,7 +3081,7 @@ Func_7658: ; 7658 (1:7658)
 	push hl
 	read_hl_from_sp_plus $e
 	pop de
-	call Func_6b11
+	call CalcChecksum
 	write_hl_to wc324
 	ld l, $64
 	pop de
@@ -3157,7 +3157,7 @@ Func_76aa: ; 76aa (1:76aa)
 	push hl
 	read_hl_from_sp_plus $e
 	pop de
-	call Func_6b11
+	call CalcChecksum
 	ld l, $3c
 	pop bc
 Func_76e8: ; 76e8 (1:76e8)
@@ -3557,233 +3557,7 @@ Func_7987: ; 7987 (1:7987)
 	pop bc
 	ret
 
-Data_798b: ; 798b
-	dr $798b, $7995
-
-Data_7995: ; 7995
-	dr $7995, $79a9
-
-Data_79a9: ; 79a9
-	dr $79a9, $79b3
-
-Func_79b3:: ; 79b3 (1:79b3)
-	push af
-	push bc
-	ld a, [hSRAMBank]
-	push af
-	ld hl, $0
-	call WriteHLToSPPlus4
-	xor a
-Func_79bf: ; 79bf (1:79bf)
-	cp $5
-	jp nc, Func_7a1a
-	push af
-	ld hl, sp+$7
-	ld l, [hl]
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_798b
-	add hl, de
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld a, [hl]
-	call GetSRAMBank_ReadOnly
-	pop af
-	push af
-	ld l, a
-	ld h, $0
-	add hl, hl
-	ld de, Data_79a9
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	ld hl, sp+$9
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_7995
-	add hl, de
-	reg16swap de, hl
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	pop de
-	call Func_6b11
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus6
-	add hl, bc
-	call WriteHLToSPPlus6
-	pop af
-	inc a
-	jp Func_79bf
-
-Func_7a1a: ; 7a1a (1:7a1a)
-	pop af
-	call GetSRAMBank
-	pop hl
-	push hl
-	pop bc
-	pop bc
-	ret
-
-Data_7a23: ; 7a23
-	db "Robopon$"
-
-Func_7a2b:: ; 7a2b (1:7a2b)
-	push bc
-	ld a, [hSRAMBank]
-	push af
-	ld hl, sp+$2
-	ld [hl], $0
-	ld a, $2
-	call GetSRAMBank_ReadOnly
-	ld c, $0
-Func_7a3a: ; 7a3a (1:7a3a)
-	ld a, c
-	cp $7
-	jp nc, Func_7a5e
-	ld e, c
-	ld d, $0
-	ld hl, Data_7a23
-	add hl, de
-	ld a, [hl]
-	ld e, c
-	ld d, $0
-	ld hl, $a000
-	add hl, de
-	cp [hl]
-	jp z, Func_7a5a
-	ld hl, sp+$2
-	ld [hl], $ff
-	jp Func_7a5e
-
-Func_7a5a: ; 7a5a (1:7a5a)
-	inc c
-	jp Func_7a3a
-
-Func_7a5e: ; 7a5e (1:7a5e)
-	ld a, $1
-	call GetSRAMBank_ReadOnly
-	ld c, $0
-Func_7a65: ; 7a65 (1:7a65)
-	ld a, c
-	cp $7
-	jp nc, Func_7a89
-	ld e, c
-	ld d, $0
-	ld hl, Data_7a23
-	add hl, de
-	ld a, [hl]
-	ld e, c
-	ld d, $0
-	ld hl, $bae0
-	add hl, de
-	cp [hl]
-	jp z, Func_7a85
-	ld hl, sp+$2
-	ld [hl], $ff
-	jp Func_7a89
-
-Func_7a85: ; 7a85 (1:7a85)
-	inc c
-	jp Func_7a65
-
-Func_7a89: ; 7a89 (1:7a89)
-	pop af
-	call GetSRAMBank
-	ld hl, sp+$0
-	ld a, [hl]
-	pop bc
-	ret
-
-Func_7a92: ; 7a92
-	ld a, [hSRAMBank]
-	push af
-	ld a, $2
-	call GetSRAMBank
-	ld bc, $7
-	ld de, Data_7a23
-	ld hl, $a000
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank
-	ld bc, $7
-	ld de, Data_7a23
-	ld hl, $bae0
-	call CopyFromDEtoHL
-	pop af
-	call GetSRAMBank
-	ret
-
-Func_7abc: ; 7abc
-	ld a, [hSRAMBank]
-	push af
-	inc e
-	dec e
-	jp nz, Func_7ad3
-	push hl
-	ld a, $3
-	call GetSRAMBank
-	pop hl
-	write_hl_to $ce0a
-	jp Func_7adf
-
-Func_7ad3: ; 7ad3 (1:7ad3)
-	push hl
-	ld a, $1
-	call GetSRAMBank
-	pop hl
-	write_hl_to $ba22
-Func_7adf: ; 7adf
-	pop af
-	call GetSRAMBank
-	ret
-
-Func_7ae4:: ; 7ae4 (1:7ae4)
-	push af
-	ld a, [hSRAMBank]
-	ld e, a
-	pop af
-	push de
-	or a
-	jp nz, Func_7afb
-	ld a, $3
-	call GetSRAMBank_ReadOnly
-	call ReadHalfWordAt
-	ld a, [bc]
-	adc $c3
-	dec b
-	ld a, e
-Func_7afb: ; 7afb (1:7afb)
-	ld a, $1
-	call GetSRAMBank_ReadOnly
-	call ReadHalfWordAt
-	ld [hli], a
-	cp d
-	pop de
-	push hl
-	ld a, e
-	call GetSRAMBank
-	pop hl
-	ret
+INCLUDE "engine/validate_save.asm"
 
 Func_7b0d: ; 7b0d
 	push hl
@@ -24259,16 +24033,16 @@ Func_144fd:: ; 144fd (5:44fd)
 	ld [wc213], a
 Func_1451a: ; 1451a (5:451a)
 	push bc
-	set_farcall_addrs_hli Func_79b3
+	set_farcall_addrs_hli CalcSaveChecksum
 	ld a, $1
 	call FarCall
 	push hl
-	set_farcall_addrs_hli Func_7ae4
+	set_farcall_addrs_hli GetSaveChecksum
 	ld a, $1
 	call FarCall
 	reg16swap de, hl
 	push de
-	set_farcall_addrs_hli Func_7a2b
+	set_farcall_addrs_hli ValidateSaveGameSignature
 	pop de
 	pop hl
 	call CompareHLtoDE
@@ -38074,11 +37848,11 @@ Func_238c3: ; 238c3 (8:78c3)
 Func_238c7: ; 238c7 (8:78c7)
 	ret
 
-Func_238c8: ; 238c8 (8:78c8)
-	ld a, BANK(GFX_66f73)
+LoadDebugSaveState: ; 238c8 (8:78c8)
+	ld a, BANK(DebugSaveState)
 	ld [wFarCallDestBank], a
 	ld bc, $214
-	ld de, GFX_66f73
+	ld de, DebugSaveState
 	ld hl, $c980
 	call FarCopyVideoData
 	ld bc, $32
@@ -38141,7 +37915,7 @@ Func_2391e: ; 2391e
 	jp z, Func_239a5
 	or a
 	jp nz, Func_23a64
-	callba_hli Func_56fc2
+	callba_hli LoadGame
 	cp $ff
 	jp z, Func_239a2
 	callba_hli Func_58df9
@@ -38194,7 +37968,7 @@ Func_23a05: ; 23a05 (8:7a05)
 	jp Func_23a64
 
 Func_23a31: ; 23a31 (8:7a31)
-	call Func_238c8
+	call LoadDebugSaveState
 	callba_hli Func_17488
 	call Func_2097
 	callba_hli Func_144bd
@@ -38277,7 +38051,7 @@ Func_23afe: ; 23afe (8:7afe)
 	jp Func_23b5d
 
 Func_23b2a: ; 23b2a (8:7b2a)
-	call Func_238c8
+	call LoadDebugSaveState
 	callba_hli Func_17488
 	call Func_2097
 	callba_hli Func_144bd
@@ -54434,7 +54208,7 @@ Func_4c2a3: ; 4c2a3 (13:42a3)
 	ld [wc7e9], a
 	ld a, [wPlayerMapY]
 	ld [wc7ea], a
-	callba_hli Func_56d9b
+	callba_hli SaveGame
 Func_4c304: ; 4c304 (13:4304)
 	pop hl
 	ld a, l
@@ -56010,7 +55784,7 @@ Func_4d168: ; 4d168 (13:5168)
 	ld hl, sp+$6
 	call Func_4d299
 	callba_hli Func_cced
-	callba_hli Func_56d9b
+	callba_hli SaveGame
 	callba_hli WaitAorBButtonOverworld_17a44
 	call Func_4c21e
 	call FillVisibleAreaWithBlankTile
@@ -61590,7 +61364,7 @@ Func_4fc38: ; 4fc38 (13:7c38)
 	ld e, $1
 	ld a, [wc2e8 + 1]
 	call FarCall
-	callba_hli Func_56d9b
+	callba_hli SaveGame
 	ld a, $8
 	call Func_4ca74
 	jp Func_4fd2c
@@ -61606,7 +61380,7 @@ Func_4fd01: ; 4fd01 (13:7d01)
 	ld e, $1
 	ld a, [wc2e8 + 1]
 	call FarCall
-	callba_hli Func_56d9b
+	callba_hli SaveGame
 	ld a, $8
 	call Func_4ca74
 	jp Func_4fd2c
@@ -61776,7 +61550,7 @@ Func_4fea0: ; 4fea0 (13:7ea0)
 Func_4feaa: ; 4feaa (13:7eaa)
 	pop af
 	call GetSRAMBank
-	callba_hli Func_56d9b
+	callba_hli SaveGame
 	ld a, $9
 	call Func_4ca74
 Func_4fec1: ; 4fec1 (13:7ec1)
@@ -62515,7 +62289,7 @@ Func_5053b: ; 5053b
 	ld a, l
 	or h
 	jp nz, Func_505dc
-	callba_hli Func_56d9b
+	callba_hli SaveGame
 	ld l, $5
 	push hl
 	ld c, $14
@@ -65379,10 +65153,10 @@ Func_51bf3: ; 51bf3 (14:5bf3)
 	ld [$c980], a
 	xor a
 	ld [$c981], a
-	ld a, BANK(GFX_66f73)
+	ld a, BANK(DebugSaveState)
 	ld [wFarCallDestBank], a
 	ld bc, $214
-	ld de, GFX_66f73
+	ld de, DebugSaveState
 	ld hl, $c980
 	call FarCopyVideoData
 	xor a
@@ -74600,368 +74374,7 @@ Pointers_56d8e:
 Data_56d90:
 	db "<HIRA>ちょっとまってね<KATA>$"
 
-Func_56d9b: ; 56d9b (15:6d9b)
-	ld hl, -$404
-	add hl, sp
-	ld sp, hl
-	ld a, $3
-	ld [wc39a], a
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	set_farcall_addrs_hli Func_da901
-	ld de, $b03
-	ld hl, $507
-	call FarCall
-	push hl
-	ld c, $5
-	read_hl_from Pointers_56d8e
-	reg16swap de, hl
-	ld hl, $ff07
-	call Func_2951
-	push hl
-	callba_hli Func_4fef1
-	xor a
-Func_56df3: ; 56df3 (15:6df3)
-	cp $9
-	jp nc, Func_56e21
-	push af
-	set_farcall_addrs_hli Func_933c1
-	pop af
-	push af
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, wc938
-	add hl, de
-	reg16swap de, hl
-	ld l, a
-	ld h, $0
-	inc hl
-	inc hl
-	call FarCall
-	pop af
-	inc a
-	jp Func_56df3
-
-Func_56e21: ; 56e21 (15:6e21)
-	ld a, [hSRAMBank]
-	push af
-	ld bc, $1298
-	ld hl, $a007
-	call WriteHLToSPPlus10
-	ld hl, $a300
-	call WriteHLToSPPlus8
-Func_56e33: ; 56e33 (15:6e33)
-	ld e, c
-	ld d, b
-	dec d
-	dec d
-	dec d
-	dec d
-	ld hl, $0
-	call CompareHLtoDE
-	jp c, Func_56e45
-	jp Func_56e8a
-
-Func_56e45: ; 56e45 (15:6e45)
-	push bc
-	ld a, $2
-	call GetSRAMBank_ReadOnly
-	ld bc, $400
-	read_hl_from_sp_plus $c
-	reg16swap de, hl
-	ld hl, sp+$c
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank
-	ld bc, $400
-	ld hl, sp+$c
-	push hl
-	read_hl_from_sp_plus $c
-	pop de
-	call CopyFromDEtoHL
-	pop bc
-	dec b
-	dec b
-	dec b
-	dec b
-	call GetHLAtSPPlus10
-	ld de, $400
-	add hl, de
-	call WriteHLToSPPlus10
-	call GetHLAtSPPlus8
-	ld de, $400
-	add hl, de
-	call WriteHLToSPPlus8
-	jp Func_56e33
-
-Func_56e8a: ; 56e8a (15:6e8a)
-	push bc
-	ld a, $2
-	call GetSRAMBank_ReadOnly
-	pop bc
-	push bc
-	read_hl_from_sp_plus $c
-	reg16swap de, hl
-	ld hl, sp+$c
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank
-	pop bc
-	ld hl, sp+$a
-	push hl
-	call GetHLAtSPPlus10
-	pop de
-	call CopyFromDEtoHL
-	ld bc, $32
-	ld de, wEventFlags
-	ld hl, $ca9d
-	call CopyFromDEtoHL
-	ld bc, $64
-	ld de, wc789
-	ld hl, $cacf
-	call CopyFromDEtoHL
-	ld bc, $3c
-	ld de, wc347
-	ld hl, $cb58
-	call CopyFromDEtoHL
-	read_hl_from wc391
-	write_hl_to $cb3b
-	read_hl_from wc393
-	write_hl_to $cb3d
-	ld de, wPlayerName
-	ld hl, $c980
-	call CopyUntilNull
-	ld a, $1
-	call GetSRAMBank
-	ld bc, $214
-	ld de, $c980
-	ld hl, $b598
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank
-	ld bc, $a0
-	ld de, $cb94
-	ld hl, $b7ac
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank
-	ld bc, $dc
-	ld de, $cc34
-	ld hl, $b84c
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank
-	ld bc, $fa
-	ld de, $cd10
-	ld hl, $b928
-	call CopyFromDEtoHL
-	pop af
-	call GetSRAMBank
-	set_farcall_addrs_hli Func_79b3
-	xor a
-	call FarCall
-	push hl
-	set_farcall_addrs_hli Func_7abc
-	pop hl
-	push hl
-	ld e, $1
-	call FarCall
-	set_farcall_addrs_hli Func_79b3
-	ld a, $1
-	call FarCall
-	reg16swap de, hl
-	push de
-	callba_hli Func_7a92
-	set_farcall_addrs_hli Func_7a2b
-	pop de
-	pop hl
-	call CompareHLtoDE
-	jp nz, Func_56f98
-	call FarCall
-	cp $ff
-	jp nz, Func_56fa0
-Func_56f98: ; 56f98 (15:6f98)
-	ld e, $0
-	ld hl, Data_56fb9
-	call Func_2a3e
-Func_56fa0: ; 56fa0 (15:6fa0)
-	pop hl
-	call Func_2887
-	set_farcall_addrs_hli Func_daa40
-	pop hl
-	call FarCall
-	ld hl, $404
-	add hl, sp
-	ld sp, hl
-	ret
-
-Data_56fb9:
-	db "セーフﾞ エラー$"
-
-Func_56fc2: ; 56fc2 (15:6fc2)
-	ld hl, -$404
-	add hl, sp
-	ld sp, hl
-	ld a, [hSRAMBank]
-	push af
-	ld bc, $1298
-	ld hl, $a300
-	call WriteHLToSPPlus6
-	ld hl, $a007
-	call WriteHLToSPPlus4
-Func_56fd9: ; 56fd9 (15:6fd9)
-	ld e, c
-	ld d, b
-	dec d
-	dec d
-	dec d
-	dec d
-	ld hl, $0
-	call CompareHLtoDE
-	jp c, Func_56feb
-	jp Func_5702e
-
-Func_56feb: ; 56feb (15:6feb)
-	push bc
-	ld a, $1
-	call GetSRAMBank_ReadOnly
-	ld bc, $400
-	call GetHLAtSPPlus8
-	reg16swap de, hl
-	ld hl, sp+$8
-	call CopyFromDEtoHL
-	ld a, $2
-	call GetSRAMBank
-	ld bc, $400
-	ld hl, sp+$8
-	push hl
-	call GetHLAtSPPlus8
-	pop de
-	call CopyFromDEtoHL
-	pop bc
-	dec b
-	dec b
-	dec b
-	dec b
-	call GetHLAtSPPlus6
-	ld de, $400
-	add hl, de
-	call WriteHLToSPPlus6
-	call GetHLAtSPPlus4
-	ld de, $400
-	add hl, de
-	call WriteHLToSPPlus4
-	jp Func_56fd9
-
-Func_5702e: ; 5702e (15:702e)
-	push bc
-	ld a, $1
-	call GetSRAMBank_ReadOnly
-	pop bc
-	push bc
-	call GetHLAtSPPlus8
-	reg16swap de, hl
-	ld hl, sp+$8
-	call CopyFromDEtoHL
-	ld a, $2
-	call GetSRAMBank
-	pop bc
-	ld hl, sp+$6
-	push hl
-	call GetHLAtSPPlus6
-	pop de
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank_ReadOnly
-	ld bc, $214
-	ld de, $b598
-	ld hl, $c980
-	call CopyFromDEtoHL
-	ld bc, $32
-	ld de, $ca9d
-	ld hl, wEventFlags
-	call CopyFromDEtoHL
-	ld bc, $64
-	ld de, $cacf
-	ld hl, wc789
-	call CopyFromDEtoHL
-	ld bc, $3c
-	ld de, $cb58
-	ld hl, wc347
-	call CopyFromDEtoHL
-	read_hl_from $cb3b
-	write_hl_to wc391
-	read_hl_from $cb3d
-	write_hl_to wc393
-	ld de, $c980
-	ld hl, wPlayerName
-	call CopyUntilNull
-	ld a, $1
-	call GetSRAMBank_ReadOnly
-	ld bc, $a0
-	ld de, $b7ac
-	ld hl, $cb94
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank_ReadOnly
-	ld bc, $dc
-	ld de, $b84c
-	ld hl, $cc34
-	call CopyFromDEtoHL
-	ld a, $1
-	call GetSRAMBank_ReadOnly
-	ld bc, $fa
-	ld de, $b928
-	ld hl, $cd10
-	call CopyFromDEtoHL
-	pop af
-	call GetSRAMBank
-	set_farcall_addrs_hli Func_79b3
-	xor a
-	call FarCall
-	push hl
-	set_farcall_addrs_hli Func_7ae4
-	ld a, $1
-	call FarCall
-	reg16swap de, hl
-	push de
-	set_farcall_addrs_hli Func_7a2b
-	pop de
-	pop hl
-	call CompareHLtoDE
-	jp nz, Func_5711b
-	call FarCall
-	cp $ff
-	jp nz, Func_57123
-Func_5711b: ; 5711b (15:711b)
-	call Func_1db9
-	ld a, $ff
-	jp Func_57129
-
-Func_57123: ; 57123 (15:7123)
-	ld a, $1
-	ld [wc798], a
-	xor a
-Func_57129: ; 57129 (15:7129)
-	ld hl, $404
-	add hl, sp
-	ld sp, hl
-	ret
+INCLUDE "engine/save.asm"
 
 Func_5712f: ; 5712f (15:712f)
 	push hl
@@ -88786,125 +88199,9 @@ Data_657c5:: ; 657c5
 	dr $657c5, $65bc8
 
 INCLUDE "data/base_stats.asm"
+INCLUDE "text/types.asm"
 
-Text_66ea7:
-	db "アーム$$$$"
-
-Text_66eae:
-	db "アーム$$$$"
-
-Text_66eb5:
-	db "アーム$$$$"
-
-Text_66ebc:
-	db "アーム$$$$"
-
-Text_66ec3:
-	db "アーム$$$$"
-
-Text_66eca:
-	db "アーム$$$$"
-
-Text_66ed1:
-	db "アーム$$$$"
-
-Text_66ed8:
-	db "アーム$$$$"
-
-Text_66edf:
-	db "ムーブ$$$$"
-
-Text_66ee6:
-	db "ムーブ$$$$"
-
-Text_66eed:
-	db "ムーブ$$$$"
-
-Text_66ef4:
-	db "ブート$$$$"
-
-Text_66efb:
-	db "ノーマル$"
-
-Text_66f00:
-	db "ほのお$$"
-
-Text_66f05:
-	db "みず$$$"
-
-Text_66f0a:
-	db "かぜ$$$"
-
-Text_66f0f:
-	db "つち$$$"
-
-Text_66f14:
-	db "かみなり$"
-
-Text_66f19:
-	db "こおり$$"
-
-Text_66f1e:
-	db "せい$$$"
-
-Text_66f23:
-	db "じゃ$$$"
-
-Text_66f28:
-	db "りく$$$"
-
-Text_66f2d:
-	db "うみ$$$"
-
-Text_66f32:
-	db "そら$$$"
-
-Text_66f37:
-	db "ふつう$"
-
-Text_66f3b:
-	db "いのり$"
-
-Text_66f3f:
-	db "のろい$"
-
-Text_66f43:
-	db "ねつ$$"
-
-Text_66f47:
-	db "バグ$$"
-
-Text_66f4b:
-	db "のうむ$"
-
-Text_66f4f:
-	db "むし$$"
-
-Text_66f53:
-	db "ていし$"
-
-Text_66f57:
-	db "サビ$$"
-
-Text_66f5b:
-	db "???$"
-
-Text_66f5f:
-	db "!!!$"
-
-Text_66f63:
-	db " $$$"
-
-Text_66f67:
-	db " $$$"
-
-Text_66f6b:
-	db " $$$"
-
-Text_66f6f:
-	db "ふのう$"
-
-GFX_66f73: ; 66f73
+DebugSaveState: ; 66f73
 	dr $66f73, $67187 ; $214 bytes
 	
 SECTION "Bank 19 2", ROMX [$7187], BANK [$19]
@@ -95702,7 +94999,7 @@ Func_6aa4b: ; 6aa4b (1a:6a4b)
 	ld a, [hl]
 	call Func_69f65
 Func_6aa6d: ; 6aa6d (1a:6a6d)
-	callba_hli Func_56d9b
+	callba_hli SaveGame
 	ld hl, Pointers_6a0d1
 	call Func_69ee5
 	ld hl, -1

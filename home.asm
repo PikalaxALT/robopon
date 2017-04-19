@@ -3033,16 +3033,16 @@ Func_1ec2:: ; 1ec2 (0:1ec2)
 	ld e, $0
 	xor a
 	call SetStringStartState
-	set_farcall_addrs_hli Func_79b3
+	set_farcall_addrs_hli CalcSaveChecksum
 	ld a, $1
 	call FarCall
 	push hl
-	set_farcall_addrs_hli Func_7ae4
+	set_farcall_addrs_hli GetSaveChecksum
 	ld a, $1
 	call FarCall
 	reg16swap de, hl
 	push de
-	set_farcall_addrs_hli Func_7a2b
+	set_farcall_addrs_hli ValidateSaveGameSignature
 	xor a
 	pop de
 	pop hl
