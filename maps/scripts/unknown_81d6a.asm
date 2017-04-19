@@ -14,7 +14,8 @@ Data_81d40: ; 81d40
 	dr $81d40, $81d4e
 
 Data_81d4e: ; 81d4e
-	dr $81d4e, $81d6a
+	wildbot $00, $00, $06, $06, $2a, $0a, $0b, $63, $01, $02, $03, $01, $0a
+	wildbot $00, $00, $06, $06, $2a, $0a, $0b, $13, $04, $05, $06, $01, $0a
 
 Func_81d6a:
 	xor a
@@ -86,10 +87,8 @@ Func_81df9: ; 81df9 (20:5df9)
 	call Func_800fb_20
 	ld a, $5
 	call Func_80d01_20
-	ld e, $2
-	ld hl, Data_81d4e
-	call Func_80d24_20
-	playmusic $11
+	loadwilds $2, Data_81d4e
+	playmusic SONG_11
 	call Func_8001c_20
 	xor a
 	ld [wc793], a

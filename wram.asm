@@ -635,9 +635,9 @@ wc770:: ; c770
 	short wc778 ; c778
 	short wMapObjectsAndWarpDataPointer ; c77a
 	char wNumWarps ; c77c
-	char wc77d ; c77d
-	short wc77e ; c77e
-	char wc780 ; c780
+	char wRandomEncounterTableBank ; c77d
+	short wRandomEncounterTableAddr ; c77e
+	char wRandomEncounterTableLength ; c780
 	char wRandomEncounterRate ; c781
 	char wc782 ; c782
 	char wRandomEncounterCooldown ; c783
@@ -762,7 +762,8 @@ wc770:: ; c770
 	short wc86e ; c86e
 	short wc870 ; c870
 	short wc872 ; c872
-	ds $8
+	short wc874 ; c874
+	ds $6
 	char wPlayerMovementRate ; c87c
 	char wLastStepSucceeded ; c87d
 	ds $a
@@ -813,6 +814,14 @@ SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 	short wVBlankMetaTileTransferQueue1TileSource ; c925
 	short wVBlankMetaTileTransferQueue1AttrSource ; c927
 	short wVBlankMetaTileTransferQueue1Dest ; c929
+	char wc92b ; c92b
+	short wc92c ; c92c
+	short wc92e ; c92e
+	short wc930 ; c930
+	short wc932 ; c932
+	short wc934 ; c934
+	array wc936, 2, 1, 1 ; c936
+	array wc938, 9, 8, 1 ; c938
 
 SECTION "Allocatable Memory", WRAM0 [$ce10]
 	alloc_block wAllocatableBlock0 ; ce10

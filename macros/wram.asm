@@ -6,6 +6,10 @@ short: MACRO
 \1:: dw
 ENDM
 
+long: MACRO
+\1:: ds $4
+ENDM
+
 array: MACRO
 \1::
 	ds \2 * \3 * \4

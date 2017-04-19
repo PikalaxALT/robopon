@@ -2650,7 +2650,7 @@ Func_1b28:: ; 1b28 (0:1b28)
 	push af
 	ld a, [wc01c]
 	cp $11
-	jr z, .asm_1b52
+	jr z, .cgb
 	di
 	predef RTCUpdatePredef
 	ei
@@ -2661,42 +2661,42 @@ Func_1b28:: ; 1b28 (0:1b28)
 	ld [wc01c], a
 	jp .done
 
-.asm_1b52
+.cgb
 	di
 	predef RTCUpdatePredef
 	ei
 	ld a, $1
 	ld [wc01c], a
 	ld a, e
-	ld [$c930], a
+	ld [wc930], a
 	ld a, d
-	ld [$c931], a
-	ld a, [$c92e]
+	ld [wc930 + 1], a
+	ld a, [wc92e]
 	ld e, a
 	ld a, c
-	ld [$c92c], a
+	ld [wc92c], a
 	ld a, b
-	ld [$c92d], a
+	ld [wc92c + 1], a
 	ld a, l
-	ld [$c92e], a
+	ld [wc92e], a
 	ld a, h
-	ld [$c92f], a
+	ld [wc92e + 1], a
 	ld a, e
 	cp l
 	jr z, .done
-	ld a, [$c933]
+	ld a, [wc932 + 1]
 	cp b
 	jr c, .disable_vblank
 	jr nz, .done
-	ld a, [$c932]
+	ld a, [wc932]
 	cp c
 	jr c, .disable_vblank
 	jr nz, .done
-	ld a, [$c935]
+	ld a, [wc934 + 1]
 	cp h
 	jr c, .disable_vblank
 	jr nz, .done
-	ld a, [$c934]
+	ld a, [wc934]
 	cp l
 	jr c, .disable_vblank
 	jr nz, .done
@@ -2707,7 +2707,7 @@ Func_1b28:: ; 1b28 (0:1b28)
 	and $fe
 	ld [rIE], a
 	ei
-	ld hl, $c936
+	ld hl, wc936
 	ld c, $26
 	ld b, $2
 	predef Func_7e497
@@ -2984,7 +2984,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	xor a
 	ld [wVBlankTransferFlags], a
 	xor a
-	ld [$c92b], a
+	ld [wc92b], a
 	set_farcall_addrs_hli Func_613fc
 	ld e, $0
 	xor a
@@ -3021,7 +3021,7 @@ Func_1ec2:: ; 1ec2 (0:1ec2)
 	jp nc, .next
 	ld e, a
 	ld d, $0
-	ld hl, $c932
+	ld hl, wc932
 	add hl, de
 	ld [hl], $ff
 	inc a

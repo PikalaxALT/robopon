@@ -1714,24 +1714,24 @@ Func_80d22_\1: ; 80d22 (20:4d22)
 	pop bc
 	ret
 
-Func_80d24_\1: ; 80d24 (20:4d24)
+LoadEncounters_\1: ; 80d24 (20:4d24)
 	ld a, [wc793]
 	or a
-	jp z, Func_80d33_\1
+	jp z, .okay
 	ld a, [wc793]
 	cp $3
-	jp nz, Func_80d4c_\1
-Func_80d33_\1: ; 80d33 (20:4d33)
+	jp nz, .quit
+.okay
 	push hl
 	push de
-	set_farcall_addrs_hli Func_b7fd
+	set_farcall_addrs_hli LoadEncounterTable
 	pop de
 	pop hl
 	ld c, e
 	reg16swap de, hl
-	ld a, BANK(Func_80d24_\1)
+	ld a, BANK(LoadEncounters_\1)
 	call FarCall
-Func_80d4c_\1: ; 80d4c (20:4d4c)
+.quit
 	ret
 
 Func_80d4d_\1:

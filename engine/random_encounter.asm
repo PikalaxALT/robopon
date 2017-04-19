@@ -1,23 +1,111 @@
+Func_b773: ; b773 (2:7773)
+	xor a
+	ld [wRandomEncounterTableLength], a
+	xor a
+	ld [wRandomEncounterRate], a
+	ld a, $3
+	ld [wRandomEncounterCooldown], a
+	xor a
+	ld [wc784], a
+	ret
+
+Func_b785:: ; b785
+	push af
+	push bc
+	push bc
+	push bc
+	set_farcall_addrs_hli Func_93370
+	ld hl, sp+$0
+	call FarCall
+	ld hl, sp+$3
+	ld a, [hl]
+	ld b, $2
+	call DivideAbyB
+	ld [wc7bd], a
+	ld a, [wc7bd]
+	cp $c
+	jp nc, Func_b7f2
+	ld e, a
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld a, [hl]
+	cp $14
+	jp z, Func_b7e5
+	cp $13
+	jp z, Func_b7d4
+	cp $12
+	jp nz, Func_b7ec
+	ld hl, sp+$7
+	ld a, [hl]
+	ld b, $5
+	call DivideAbyB
+	ld hl, sp+$7
+	add [hl]
+	ld [wRandomEncounterRate], a
+	jp Func_b7f2
+
+Func_b7d4: ; b7d4 (2:77d4)
+	ld hl, sp+$7
+	ld a, [hl]
+	ld b, $2
+	call DivideAbyB
+	ld hl, sp+$7
+	add [hl]
+	ld [wRandomEncounterRate], a
+	jp Func_b7f2
+
+Func_b7e5: ; b7e5 (2:77e5)
+	xor a
+	ld [wRandomEncounterRate], a
+	jp Func_b7f2
+
+Func_b7ec: ; b7ec (2:77ec)
+	ld hl, sp+$7
+	ld a, [hl]
+	ld [wRandomEncounterRate], a
+Func_b7f2: ; b7f2 (2:77f2)
+	ld hl, sp+$7
+	ld a, [hl]
+	ld [wc782], a
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+LoadEncounterTable:: ; b7fd
+	ld [wRandomEncounterTableBank], a
+	reg16swap de, hl
+	write_hl_to wRandomEncounterTableAddr
+	ld a, c
+	ld [wRandomEncounterTableLength], a
+	set_farcall_addrs_hli Func_e1f2d
+	ld a, $11
+	call FarCall
+	ld [wc784], a
+	ret
+
 RollRandomEncounter: ; b821 (2:7821)
 	add sp, -$3c
 	read_hl_from wc83c
 	ld a, l
 	or h
-	jp z, Func_b832
+	jp z, .check_cooldown
 	ld a, $ff
-	jp Func_ba44
+	jp .quit
 
-Func_b832: ; b832 (2:7832)
+.check_cooldown
 	ld a, [wRandomEncounterCooldown]
 	or a
-	jp z, Func_b845
+	jp z, .roll
 	ld a, [wRandomEncounterCooldown]
 	dec a
 	ld [wRandomEncounterCooldown], a
 	ld a, $ff
-	jp Func_ba44
+	jp .quit
 
-Func_b845: ; b845 (2:7845)
+.roll
 	push bc
 	set_farcall_addrs_hli RandomRange
 	ld a, $ff
@@ -29,7 +117,7 @@ Func_b845: ; b845 (2:7845)
 	ld a, [hl]
 	ld hl, wRandomEncounterRate
 	cp [hl]
-	jp nc, Func_ba42
+	jp nc, .roll_failed
 	ld hl, sp+$2a
 	xor a
 	ld [hl], a
@@ -40,19 +128,19 @@ Func_b845: ; b845 (2:7845)
 	write_hl_to_sp_plus $2e
 	ld hl, sp+$29
 	ld [hl], $0
-Func_b876: ; b876 (2:7876)
+.loop
 	ld hl, sp+$29
 	ld a, [hl]
 	cp $2
-	jp nc, Func_b996
+	jp nc, .check_2
 	ld c, $0
-Func_b880: ; b880 (2:7880)
+.loop2
 	ld a, c
-	ld hl, wc780
+	ld hl, wRandomEncounterTableLength
 	cp [hl]
-	jp nc, Func_b96d
+	jp nc, .next
 	push bc
-	ld a, [wc77d]
+	ld a, [wRandomEncounterTableBank]
 	ld [wFarCallDestBank], a
 	ld l, c
 	ld h, $0
@@ -66,17 +154,19 @@ Func_b880: ; b880 (2:7880)
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
-	read_hl_from wc77e
+	read_hl_from wRandomEncounterTableAddr
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$30
 	ld bc, $e
 	call FarCopyVideoData
 	pop bc
+
+	; coord check
 	ld a, [wPlayerMapX]
 	ld hl, sp+$2e
 	cp [hl]
-	jp c, Func_b969
+	jp c, .next2
 	ld hl, sp+$2e
 	ld a, [hl]
 	ld hl, sp+$30
@@ -84,11 +174,11 @@ Func_b880: ; b880 (2:7880)
 	ld l, a
 	ld a, [wPlayerMapX]
 	cp l
-	jp nc, Func_b969
+	jp nc, .next2
 	ld a, [wPlayerMapY]
 	ld hl, sp+$2f
 	cp [hl]
-	jp c, Func_b969
+	jp c, .next2
 	ld hl, sp+$2f
 	ld a, [hl]
 	ld hl, sp+$31
@@ -96,50 +186,54 @@ Func_b880: ; b880 (2:7880)
 	ld l, a
 	ld a, [wPlayerMapY]
 	cp l
-	jp nc, Func_b969
+	jp nc, .next2
+
 	ld hl, sp+$29
 	ld a, [hl]
 	or a
-	jp nz, Func_b919
-	push bc
-	ld hl, sp+$3c
-	ld c, [hl]
-	ld b, $0
-	read_hl_from_sp_plus $30
-	add hl, bc
-	write_hl_to_sp_plus $30
-	pop bc
-	push bc
-	ld a, [wc784]
-	or a
-	jp z, Func_b915
-	ld a, [wc780]
-	dec a
-	cp c
-	jp nz, Func_b915
-	ld hl, sp+$3c
-	ld c, [hl]
-	ld b, $0
-	read_hl_from_sp_plus $30
-	add hl, bc
-	write_hl_to_sp_plus $30
-Func_b915: ; b915 (2:7915)
-	pop bc
-	jp Func_b969
+	jp nz, .asm_b919
 
-Func_b919: ; b919 (2:7919)
+	push bc
+	ld hl, sp+$3c
+	ld c, [hl]
+	ld b, $0
+	read_hl_from_sp_plus $30
+	add hl, bc
+	write_hl_to_sp_plus $30
+	pop bc
+
+	push bc
 	ld a, [wc784]
 	or a
-	jp z, Func_b946
-	ld a, [wc780]
+	jp z, .asm_b915
+	ld a, [wRandomEncounterTableLength]
 	dec a
 	cp c
-	jp nz, Func_b946
+	jp nz, .asm_b915
+	ld hl, sp+$3c
+	ld c, [hl]
+	ld b, $0
+	read_hl_from_sp_plus $30
+	add hl, bc
+	write_hl_to_sp_plus $30
+.asm_b915
+	pop bc
+	jp .next2
+
+.asm_b919
+	ld a, [wc784]
+	or a
+	jp z, .asm_b946
+	ld a, [wRandomEncounterTableLength]
+	dec a
+	cp c
+	jp nz, .asm_b946
+
 	ld hl, sp+$2a
 	ld a, [hl]
 	ld hl, sp+$2b
 	cp [hl]
-	jp c, Func_b943
+	jp c, .asm_b943
 	ld hl, sp+$3a
 	ld a, [hl]
 	add a
@@ -149,18 +243,18 @@ Func_b919: ; b919 (2:7919)
 	ld hl, sp+$2a
 	ld a, [hl]
 	cp e
-	jp nc, Func_b943
-	jp Func_b96d
+	jp nc, .asm_b943
+	jp .next
 
-Func_b943: ; b943 (2:7943)
-	jp Func_b960
+.asm_b943
+	jp .asm_b960
 
-Func_b946: ; b946 (2:7946)
+.asm_b946
 	ld hl, sp+$2a
 	ld a, [hl]
 	ld hl, sp+$2b
 	cp [hl]
-	jp c, Func_b960
+	jp c, .asm_b960
 	ld hl, sp+$2b
 	ld a, [hl]
 	ld hl, sp+$3a
@@ -169,45 +263,45 @@ Func_b946: ; b946 (2:7946)
 	ld hl, sp+$2a
 	ld a, [hl]
 	cp e
-	jp nc, Func_b960
-	jp Func_b96d
+	jp nc, .asm_b960
+	jp .next
 
-Func_b960: ; b960 (2:7960)
+.asm_b960
 	ld hl, sp+$2b
 	ld a, [hl]
 	ld hl, sp+$3a
 	add [hl]
 	ld hl, sp+$2b
 	ld [hl], a
-Func_b969: ; b969 (2:7969)
+.next2
 	inc c
-	jp Func_b880
+	jp .loop2
 
-Func_b96d: ; b96d (2:796d)
+.next
 	push bc
 	ld hl, sp+$2b
 	ld a, [hl]
 	or a
-	jp nz, Func_b98b
+	jp nz, .skip_roll
 	set_farcall_addrs_hli RandomRange
 	read_hl_from_sp_plus $30
 	ld a, l
 	call FarCall
 	ld hl, sp+$2c
 	ld [hl], a
-Func_b98b: ; b98b (2:798b)
+.skip_roll
 	ld hl, sp+$2b
 	ld a, [hl]
 	inc a
 	ld hl, sp+$2b
 	ld [hl], a
 	pop bc
-	jp Func_b876
+	jp .loop
 
-Func_b996: ; b996 (2:7996)
-	ld a, [wc780]
+.check_2
+	ld a, [wRandomEncounterTableLength]
 	cp c
-	jp z, Func_ba42
+	jp z, .roll_failed
 	ld a, $3
 	ld [wRandomEncounterCooldown], a
 	ld hl, sp+$0
@@ -238,18 +332,18 @@ Func_b996: ; b996 (2:7996)
 	ld hl, sp+$32
 	ld a, [hl]
 	cp $1
-	jp nz, Func_b9e2
+	jp nz, .asm_b9e2
 	ld hl, sp+$b
 	ld [hl], $1
-	jp Func_b9e9
+	jp .asm_b9e9
 
-Func_b9e2: ; b9e2 (2:79e2)
+.asm_b9e2
 	ld hl, sp+$32
 	ld a, [hl]
 	dec a
 	ld hl, sp+$b
 	ld [hl], a
-Func_b9e9: ; b9e9 (2:79e9)
+.asm_b9e9
 	ld hl, sp+$39
 	ld a, [hl]
 	ld hl, sp+$c
@@ -258,7 +352,7 @@ Func_b9e9: ; b9e9 (2:79e9)
 	ld a, [hl]
 	ld hl, sp+$34
 	cp [hl]
-	jp nc, Func_ba11
+	jp nc, .asm_ba11
 	set_farcall_addrs_hli RandomRange
 	ld hl, sp+$34
 	ld a, [hl]
@@ -267,11 +361,11 @@ Func_b9e9: ; b9e9 (2:79e9)
 	inc a
 	call FarCall
 	ld e, a
-	jp Func_ba13
+	jp .asm_ba13
 
-Func_ba11: ; ba11 (2:7a11)
+.asm_ba11
 	ld e, $1
-Func_ba13: ; ba13 (2:7a13)
+.asm_ba13
 	ld hl, sp+$33
 	ld a, [hl]
 	add e
@@ -298,10 +392,10 @@ Func_ba13: ; ba13 (2:7a13)
 	reg16swap de, hl
 	xor a
 	call StartBattle
-	jp Func_ba44
+	jp .quit
 
-Func_ba42: ; ba42 (2:7a42)
+.roll_failed
 	ld a, $ff
-Func_ba44: ; ba44 (2:7a44)
+.quit
 	add sp, $3c
 	ret

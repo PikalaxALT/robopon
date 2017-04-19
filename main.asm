@@ -8170,94 +8170,6 @@ Func_b764: ; b764 (2:7764)
 Func_b772: ; b772 (2:7772)
 	ret
 
-Func_b773: ; b773 (2:7773)
-	xor a
-	ld [wc780], a
-	xor a
-	ld [wRandomEncounterRate], a
-	ld a, $3
-	ld [wRandomEncounterCooldown], a
-	xor a
-	ld [wc784], a
-	ret
-
-Func_b785:: ; b785
-	push af
-	push bc
-	push bc
-	push bc
-	set_farcall_addrs_hli Func_93370
-	ld hl, sp+$0
-	call FarCall
-	ld hl, sp+$3
-	ld a, [hl]
-	ld b, $2
-	call DivideAbyB
-	ld [wc7bd], a
-	ld a, [wc7bd]
-	cp $c
-	jp nc, Func_b7f2
-	ld e, a
-	ld d, $0
-	ld hl, wc7b1
-	add hl, de
-	ld a, [hl]
-	cp $14
-	jp z, Func_b7e5
-	cp $13
-	jp z, Func_b7d4
-	cp $12
-	jp nz, Func_b7ec
-	ld hl, sp+$7
-	ld a, [hl]
-	ld b, $5
-	call DivideAbyB
-	ld hl, sp+$7
-	add [hl]
-	ld [wRandomEncounterRate], a
-	jp Func_b7f2
-
-Func_b7d4: ; b7d4 (2:77d4)
-	ld hl, sp+$7
-	ld a, [hl]
-	ld b, $2
-	call DivideAbyB
-	ld hl, sp+$7
-	add [hl]
-	ld [wRandomEncounterRate], a
-	jp Func_b7f2
-
-Func_b7e5: ; b7e5 (2:77e5)
-	xor a
-	ld [wRandomEncounterRate], a
-	jp Func_b7f2
-
-Func_b7ec: ; b7ec (2:77ec)
-	ld hl, sp+$7
-	ld a, [hl]
-	ld [wRandomEncounterRate], a
-Func_b7f2: ; b7f2 (2:77f2)
-	ld hl, sp+$7
-	ld a, [hl]
-	ld [wc782], a
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_b7fd:: ; b7fd
-	ld [wc77d], a
-	reg16swap de, hl
-	write_hl_to wc77e
-	ld a, c
-	ld [wc780], a
-	set_farcall_addrs_hli Func_e1f2d
-	ld a, $11
-	call FarCall
-	ld [wc784], a
-	ret
-
 INCLUDE "engine/random_encounter.asm"
 
 Func_ba47: ; ba47
@@ -27995,7 +27907,7 @@ Func_15fe9: ; 15fe9 (5:5fe9)
 Func_15ff9: ; 15ff9 (5:5ff9)
 	jpba_hli Func_623d0
 
-Func_16007: ; 16007 (5:6007)
+Func_16007:: ; 16007 (5:6007)
 	push de
 	push af
 	ld a, [hSRAMBank]
@@ -74733,7 +74645,7 @@ Func_56df3: ; 56df3 (15:6df3)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, $c938
+	ld de, wc938
 	add hl, de
 	reg16swap de, hl
 	ld l, a

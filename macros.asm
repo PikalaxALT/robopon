@@ -1,6 +1,7 @@
 INCLUDE "macros/enum.asm"
 INCLUDE "macros/audio.asm"
 INCLUDE "macros/wram.asm"
+INCLUDE "macros/map.asm"
 INCLUDE "macros/event.asm"
 
 tree_text_pointer: MACRO

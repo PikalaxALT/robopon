@@ -51,3 +51,9 @@ startbattle: MACRO
 	ld hl, \2
 	call ScriptedBattle_20
 	ENDM
+
+loadwilds: MACRO
+	ld e, \1
+	ld hl, \2
+	call LoadEncounters_20
+	ENDM

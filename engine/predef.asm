@@ -9358,10 +9358,11 @@ Func_7d3bc:: ; 7d3bc (1f:53bc)
 	ret
 
 Func_7d3c9:: ; 7d3c9 (1f:53c9)
+.loop
 	call Func_7d3d0
 	ret c
 	ld [hli], a
-	jr Func_7d3c9
+	jr .loop
 
 Func_7d3d0:: ; 7d3d0 (1f:53d0)
 	ld c, $0

@@ -5,7 +5,9 @@ Data_82e41: ; 82e41
 	dr $82e41, $82e46
 
 Data_82e46: ; 82e46
-	dr $82e46, $82e70
+	wildbot $00, $01, $0a, $09, $7b, $05, $0a, $2e, $17, $05, $1e, $01, $08
+	wildbot $00, $01, $0a, $09, $7c, $05, $0a, $7f, $02, $05, $00, $01, $04
+	wildbot $00, $01, $0a, $09, $92, $05, $0a, $0d, $0e, $13, $00, $01, $02
 
 Func_82e70:
 	ld l, $0
@@ -28,9 +30,7 @@ Func_82e70:
 	call Func_80ce7_20
 	ld a, $1
 	call Func_80d01_20
-	ld e, $3
-	ld hl, Data_82e46
-	call Func_80d24_20
+	loadwilds $3, Data_82e46
 	playmusic $b
 	call Func_8001c_20
 	ld hl, $3cc

@@ -2042,7 +2042,23 @@ Data_85930:
 	db "<HIRA>おんなのこ<KATA>$"
 
 Data_85938:
-	dr $85938, $8598e
+IF DEF(SUN)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $31, $05, $07, $7e, $06, $1e, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $95, $06, $08, $7e, $07, $12, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $09, $04, $06, $7e, $0f, $00, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $94, $07, $09, $7e, $07, $07, $00, $0a, $02
+ENDC
+IF DEF(STAR)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $63, $05, $07, $7e, $02, $03, $00, $09, $08
+	wildbot $00, $02, $0c, $0b, $94, $06, $08, $7e, $07, $07, $00, $08, $06
+	wildbot $00, $02, $0c, $0b, $0c, $04, $06, $7e, $05, $19, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $95, $07, $09, $7e, $07, $12, $00, $0a, $02
+ENDC
+
+Data_8597e:
+	dr $8597e, $8598e
 
 Data_8598e: ; 8598e
 	dr $8598e, $85992
@@ -2104,9 +2120,7 @@ Func_85a61: ; 85a61 (21:5a61)
 	jp nz, Func_85aaf
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_85938
-	call Func_80d24_21
+	loadwilds $5, Data_85938
 	playmusic SONG_CAVE
 	checkevent $0
 	or a
@@ -2268,7 +2282,23 @@ Data_85c1c:
 	dr $85c1c, $85c28
 
 Data_85c28: ; 85c28
-	dr $85c28, $85c7e
+IF DEF(SUN)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $31, $05, $07, $7e, $06, $1e, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $95, $06, $08, $7e, $07, $12, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $09, $04, $06, $7e, $0f, $00, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $94, $07, $09, $7e, $07, $07, $00, $0a, $02
+ENDC
+IF DEF(STAR)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $63, $05, $07, $77, $02, $03, $00, $08, $04
+	wildbot $00, $02, $0c, $0b, $94, $06, $08, $7e, $07, $07, $00, $08, $02
+	wildbot $00, $02, $0c, $0b, $0c, $04, $06, $77, $05, $19, $00, $01, $0a
+	wildbot $00, $02, $0c, $0b, $95, $07, $09, $7e, $07, $12, $00, $0a, $06
+ENDC
+
+Data_85c6e:
+	dr $85c6e, $85c7e
 
 Data_85c7e: ; 85c7e
 	dr $85c7e, $85c82
@@ -2327,9 +2357,7 @@ Func_85d22: ; 85d22 (21:5d22)
 	jp nz, Func_85d70
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_85c28
-	call Func_80d24_21
+	loadwilds $5, Data_85c28
 	playmusic SONG_CAVE
 	checkevent $0
 	or a
@@ -2434,11 +2462,40 @@ Func_85e60: ; 85e60 (21:5e60)
 Data_85e62:
 	db "<HIRA>りかの せんせい<KATA>$"
 
-Data_85e6d:
-	dr $85e6d, $85eb3
+Data_85e6d: ; 85e6d
+IF DEF(SUN)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $31, $05, $07, $7e, $06, $1e, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $95, $06, $08, $7e, $07, $12, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $09, $04, $06, $7e, $0f, $00, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $94, $07, $09, $7e, $07, $07, $00, $0a, $02
+ENDC
+IF DEF(STAR)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $63, $05, $07, $77, $02, $03, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $94, $06, $08, $7e, $07, $07, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $0c, $04, $06, $77, $05, $19, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $95, $07, $09, $7e, $07, $12, $00, $0a, $02
+ENDC
 
 Data_85eb3: ; 85eb3
-	dr $85eb3, $85f05
+IF DEF(SUN)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $31, $05, $07, $7e, $06, $1e, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $95, $06, $08, $7e, $07, $12, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $09, $04, $06, $7e, $0f, $00, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $94, $07, $09, $7e, $07, $07, $00, $0a, $02
+ENDC
+IF DEF(STAR)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $63, $05, $07, $77, $02, $03, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $94, $06, $08, $7e, $07, $07, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $0c, $04, $06, $77, $05, $19, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $95, $07, $09, $7e, $07, $12, $00, $0a, $02
+ENDC
+
+Data_85ef9:
+	dr $85ef9, $85f05
 
 Data_85f05: ; 85f05
 	dr $85f05, $85f26
@@ -2543,9 +2600,7 @@ Func_86019: ; 86019 (21:6019)
 	jp nz, Func_8604f
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_85e6d
-	call Func_80d24_21
+	loadwilds $5, Data_85e6d
 	jp Func_86057
 
 Func_8604f: ; 8604f (21:604f)
@@ -2566,9 +2621,7 @@ Func_86060: ; 86060 (21:6060)
 	jp nz, Func_86086
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_85eb3
-	call Func_80d24_21
+	loadwilds $5, Data_85eb3
 	jp Func_8608e
 
 Func_86086: ; 86086 (21:6086)
@@ -2700,14 +2753,56 @@ Func_861fd: ; 861fd (21:61fd)
 Data_861ff:
 	db "<HIRA>しゃかいの せんせい<KATA>$"
 
-Data_8620c:
-	dr $8620c, $86252
+Data_8620c: ; 8620c
+IF DEF(SUN)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $31, $05, $07, $7e, $06, $1e, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $95, $06, $08, $7e, $07, $12, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $09, $04, $06, $7e, $0f, $00, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $94, $07, $09, $7e, $07, $07, $00, $0a, $02
+ENDC
+IF DEF(STAR)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $63, $05, $07, $77, $02, $03, $00, $08, $04
+	wildbot $00, $02, $0c, $0b, $94, $06, $08, $7e, $07, $07, $00, $08, $02
+	wildbot $00, $02, $0c, $0b, $0c, $04, $06, $77, $05, $19, $00, $01, $0a
+	wildbot $00, $02, $0c, $0b, $95, $07, $09, $7e, $07, $12, $00, $09, $06
+ENDC
 
 Data_86252: ; 86252
-	dr $86252, $86298
+IF DEF(SUN)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $31, $05, $07, $7e, $06, $1e, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $95, $06, $08, $7e, $07, $12, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $09, $04, $06, $7e, $0f, $00, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $94, $07, $09, $7e, $07, $07, $00, $0a, $02
+ENDC
+IF DEF(STAR)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $63, $05, $07, $77, $02, $03, $00, $08, $04
+	wildbot $00, $02, $0c, $0b, $94, $06, $08, $7e, $07, $07, $00, $08, $02
+	wildbot $00, $02, $0c, $0b, $0c, $04, $06, $77, $05, $19, $00, $01, $0a
+	wildbot $00, $02, $0c, $0b, $95, $07, $09, $7e, $07, $12, $00, $09, $06
+ENDC
 
 Data_86298: ; 86298
-	dr $86298, $862fe
+IF DEF(SUN)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $31, $05, $07, $7e, $06, $1e, $00, $08, $08
+	wildbot $00, $02, $0c, $0b, $95, $06, $08, $7e, $07, $12, $00, $09, $06
+	wildbot $00, $02, $0c, $0b, $09, $04, $06, $7e, $0f, $00, $00, $01, $04
+	wildbot $00, $02, $0c, $0b, $94, $07, $09, $7e, $07, $07, $00, $0a, $02
+ENDC
+IF DEF(STAR)
+	wildbot $00, $02, $0c, $0b, $43, $05, $07, $7e, $07, $00, $00, $08, $0a
+	wildbot $00, $02, $0c, $0b, $63, $05, $07, $77, $02, $03, $00, $08, $04
+	wildbot $00, $02, $0c, $0b, $94, $06, $08, $7e, $07, $07, $00, $08, $02
+	wildbot $00, $02, $0c, $0b, $0c, $04, $06, $77, $05, $19, $00, $01, $0a
+	wildbot $00, $02, $0c, $0b, $95, $07, $09, $7e, $07, $12, $00, $09, $06
+ENDC
+
+Data_862de:
+	dr $862de, $862fe
 
 Data_862fe: ; 862fe
 	dr $862fe, $8631f
@@ -2822,9 +2917,7 @@ Func_864a0: ; 864a0 (21:64a0)
 	jp nz, Func_864e0
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_8620c
-	call Func_80d24_21
+	loadwilds $5, Data_8620c
 	jp Func_864e8
 
 Func_864e0: ; 864e0 (21:64e0)
@@ -2849,9 +2942,7 @@ Func_864f4: ; 864f4 (21:64f4)
 	jp nz, Func_86522
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_86252
-	call Func_80d24_21
+	loadwilds $5, Data_86252
 	jp Func_8652a
 
 Func_86522: ; 86522 (21:6522)
@@ -2876,9 +2967,7 @@ Func_86536: ; 86536 (21:6536)
 	jp nz, Func_86564
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_86298
-	call Func_80d24_21
+	loadwilds $5, Data_86298
 	jp Func_8656c
 
 Func_86564: ; 86564 (21:6564)
@@ -3504,7 +3593,100 @@ Data_86cf8: ; 86cf8
 	dr $86cf8, $86d84
 
 Data_86d84: ; 86d84
-	dr $86d84, $86ffa
+IF DEF(SUN)
+	wildbot $05, $14, $04, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $05, $14, $04, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $05, $14, $04, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $05, $14, $04, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $05, $14, $04, $03, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+	wildbot $09, $15, $04, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $09, $15, $04, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $09, $15, $04, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $09, $15, $04, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $09, $15, $04, $03, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+	wildbot $0d, $16, $04, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $0d, $16, $04, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $0d, $16, $04, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $0d, $16, $04, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $0d, $16, $04, $03, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+	wildbot $11, $17, $04, $02, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $11, $17, $04, $02, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $11, $17, $04, $02, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $11, $17, $04, $02, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $11, $17, $04, $02, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+	wildbot $15, $16, $02, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $15, $16, $02, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $15, $16, $02, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $15, $16, $02, $03, $40, $0a, $0c, $0c, $02, $00, $00, $02, $05
+	wildbot $15, $16, $02, $03, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+	wildbot $17, $15, $03, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $17, $15, $03, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $17, $15, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $17, $15, $03, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $17, $15, $03, $03, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+	wildbot $1a, $14, $03, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $1a, $14, $03, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $1a, $14, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $1a, $14, $03, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $1a, $14, $03, $03, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+	wildbot $1d, $13, $03, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $1d, $13, $03, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $1d, $13, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $1d, $13, $03, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $1d, $13, $03, $03, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+	wildbot $20, $12, $02, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $20, $12, $02, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $20, $12, $02, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $20, $12, $02, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $20, $12, $02, $03, $69, $08, $0a, $7f, $05, $00, $00, $08, $04
+ENDC
+IF DEF(STAR)
+	wildbot $05, $14, $04, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $05, $14, $04, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $05, $14, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $05, $14, $04, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $05, $14, $04, $03, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+	wildbot $09, $15, $04, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $09, $15, $04, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $09, $15, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $09, $15, $04, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $09, $15, $04, $03, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+	wildbot $0d, $16, $04, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $0d, $16, $04, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $0d, $16, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $0d, $16, $04, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $0d, $16, $04, $03, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+	wildbot $11, $17, $04, $02, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $11, $17, $04, $02, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $11, $17, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $11, $17, $04, $02, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $11, $17, $04, $02, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+	wildbot $15, $16, $02, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $15, $16, $02, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $15, $16, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $15, $16, $02, $03, $40, $0a, $0c, $0c, $02, $00, $00, $02, $05
+	wildbot $15, $16, $02, $03, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+	wildbot $17, $15, $03, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $17, $15, $03, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $17, $15, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $17, $15, $03, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $17, $15, $03, $03, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+	wildbot $1a, $14, $03, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $1a, $14, $03, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $1a, $14, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $1a, $14, $03, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $1a, $14, $03, $03, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+	wildbot $1d, $13, $03, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $1d, $13, $03, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $1d, $13, $03, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $1d, $13, $03, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $1d, $13, $03, $03, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+	wildbot $20, $12, $02, $03, $49, $0a, $0c, $01, $02, $00, $00, $02, $0a
+	wildbot $20, $12, $02, $03, $43, $09, $0b, $7f, $06, $00, $00, $08, $09
+	wildbot $20, $12, $02, $03, $84, $0c, $0e, $0c, $14, $00, $00, $0a, $06
+	wildbot $20, $12, $02, $03, $40, $0a, $0c, $7f, $02, $00, $00, $02, $05
+	wildbot $20, $12, $02, $03, $66, $08, $0a, $7b, $06, $00, $00, $08, $04
+ENDC
 
 Func_86ffa:
 	ld a, $2
@@ -3521,9 +3703,7 @@ Func_86ffa:
 	call LoadMapObjects_21
 	ld a, $5
 	call Func_80d01_21
-	ld e, $2d
-	ld hl, Data_86d84
-	call Func_80d24_21
+	loadwilds $2d, Data_86d84
 	checkevent $1
 	cp $1
 	jp nz, Func_8703a
@@ -3631,7 +3811,23 @@ Data_87185: ; 87185
 	dr $87185, $8718a
 
 Data_8718a: ; 8718a
-	dr $8718a, $871d4
+IF DEF(SUN)
+	wildbot $00, $03, $10, $10, $05, $09, $0b, $2d, $01, $06, $00, $08, $0a
+	wildbot $00, $03, $10, $10, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $00, $03, $10, $10, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $00, $03, $10, $10, $23, $0c, $0e, $4f, $1e, $1e, $00, $0a, $06
+	wildbot $00, $03, $10, $10, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+ENDC
+IF DEF(STAR)
+	wildbot $00, $03, $10, $10, $46, $09, $0b, $78, $14, $14, $00, $08, $0a
+	wildbot $00, $03, $10, $10, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $00, $03, $10, $10, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $00, $03, $10, $10, $25, $0c, $0e, $79, $18, $18, $00, $0a, $06
+	wildbot $00, $03, $10, $10, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+ENDC
+
+Data_871d0
+	dr $871d0, $871d4
 
 Data_871d4: ; 871d4
 	dr $871d4, $871fe
@@ -3661,9 +3857,7 @@ Func_87238: ; 87238 (21:7238)
 Func_8723b: ; 8723b (21:723b)
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_8718a
-	call Func_80d24_21
+	loadwilds $5, Data_8718a
 	ld e, $1
 	ld hl, Data_87185
 	call Func_80ce7_21
@@ -3784,7 +3978,26 @@ Data_873a9: ; 873a9
 	dr $873a9, $873b3
 
 Data_873b3: ; 873b3
-	dr $873b3, $87423
+IF DEF(SUN)
+	wildbot $05, $03, $08, $10, $05, $09, $0b, $2d, $01, $06, $00, $08, $0a
+	wildbot $05, $03, $08, $10, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $05, $03, $08, $10, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $05, $03, $08, $10, $23, $0c, $0e, $4f, $1e, $1e, $00, $0a, $06
+	wildbot $05, $03, $08, $10, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+	wildbot $00, $03, $05, $09, $05, $09, $0b, $2d, $01, $06, $00, $08, $0a
+	wildbot $00, $03, $05, $09, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $00, $03, $05, $09, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+ENDC
+IF DEF(STAR)
+	wildbot $05, $03, $08, $10, $46, $09, $0b, $78, $14, $14, $00, $08, $0a
+	wildbot $05, $03, $08, $10, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $05, $03, $08, $10, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $05, $03, $08, $10, $25, $0c, $0e, $79, $18, $18, $00, $0a, $06
+	wildbot $05, $03, $08, $10, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+	wildbot $00, $03, $05, $09, $46, $09, $0b, $78, $14, $14, $00, $08, $0a
+	wildbot $00, $03, $05, $09, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $00, $03, $05, $09, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+ENDC
 
 Data_87423: ; 87423
 	dr $87423, $8744d
@@ -3798,9 +4011,7 @@ Func_8744d:
 	call Func_80ce7_21
 	ld a, $3
 	call Func_80d01_21
-	ld e, $8
-	ld hl, Data_873b3
-	call Func_80d24_21
+	loadwilds $8, Data_873b3
 	ld e, $3
 	ld hl, Data_87423
 	call Func_800fb_21
@@ -3986,7 +4197,26 @@ Data_87695: ; 87695
 	dr $87695, $876c1
 
 Data_876c1: ; 876c1
-	dr $876c1, $87731
+IF DEF(SUN)
+	wildbot $00, $04, $18, $0a, $05, $09, $0b, $2d, $01, $06, $00, $08, $0a
+	wildbot $00, $04, $18, $0a, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $00, $04, $18, $0a, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $00, $04, $18, $0a, $23, $0c, $0e, $4f, $1e, $1e, $00, $0a, $06
+	wildbot $00, $04, $18, $0a, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+	wildbot $14, $0e, $05, $06, $05, $09, $0b, $2e, $01, $06, $00, $08, $0a
+	wildbot $14, $0e, $05, $06, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $14, $0e, $05, $06, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+ENDC
+IF DEF(STAR)
+	wildbot $00, $04, $18, $0a, $46, $09, $0b, $78, $14, $14, $00, $08, $0a
+	wildbot $00, $04, $18, $0a, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $00, $04, $18, $0a, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $00, $04, $18, $0a, $25, $0c, $0e, $79, $18, $18, $00, $0a, $06
+	wildbot $00, $04, $18, $0a, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+	wildbot $14, $0e, $05, $06, $46, $09, $0b, $78, $14, $14, $00, $08, $0a
+	wildbot $14, $0e, $05, $06, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $14, $0e, $05, $06, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+ENDC
 
 Data_87731: ; 87731
 	dr $87731, $87769
@@ -4036,9 +4266,7 @@ Func_87820: ; 87820 (21:7820)
 Func_87828: ; 87828 (21:7828)
 	ld a, $3
 	call Func_80d01_21
-	ld e, $8
-	ld hl, Data_876c1
-	call Func_80d24_21
+	loadwilds $8, Data_876c1
 	ld e, $5
 	ld hl, Data_87785
 	call Func_800fb_21
@@ -4574,7 +4802,16 @@ Data_87d45:
 	dr $87d45, $87d50
 
 Data_87d50: ; 87d50
-	dr $87d50, $87d7a
+IF DEF(SUN)
+	wildbot $05, $03, $0f, $06, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $05, $03, $0f, $06, $23, $0c, $0e, $4f, $1e, $1e, $00, $0a, $06
+	wildbot $05, $03, $0f, $06, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+ENDC
+IF DEF(STAR)
+	wildbot $05, $03, $0f, $06, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $05, $03, $0f, $06, $25, $0c, $0e, $79, $18, $18, $00, $0a, $06
+	wildbot $05, $03, $0f, $06, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+ENDC
 
 Data_87d7a: ; 87d7a
 	dr $87d7a, $87d88
@@ -4585,9 +4822,7 @@ Func_87d88:
 	call LoadMapObjects_21
 	ld a, $3
 	call Func_80d01_21
-	ld e, $3
-	ld hl, Data_87d50
-	call Func_80d24_21
+	loadwilds $3, Data_87d50
 	checkevent $0
 	or a
 	jp nz, Func_87daf
@@ -4658,7 +4893,23 @@ Data_87e34:
 	dr $87e34, $87e4a
 
 Data_87e4a: ; 87e4a
-	dr $87e4a, $87e94
+IF DEF(SUN)
+	wildbot $05, $03, $0f, $09, $05, $09, $0b, $2d, $01, $06, $00, $08, $0a
+	wildbot $05, $03, $0f, $09, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $05, $03, $0f, $09, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $05, $03, $0f, $09, $23, $0c, $0e, $4f, $1e, $1e, $00, $0a, $06
+	wildbot $05, $03, $0f, $09, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+ENDC
+IF DEF(STAR)
+	wildbot $05, $03, $0f, $09, $46, $09, $0b, $78, $14, $14, $00, $08, $0a
+	wildbot $05, $03, $0f, $09, $48, $0a, $0c, $7f, $14, $0d, $1e, $02, $09
+	wildbot $05, $03, $0f, $09, $49, $0b, $0d, $02, $02, $02, $02, $02, $08
+	wildbot $05, $03, $0f, $09, $25, $0c, $0e, $79, $18, $18, $00, $0a, $06
+	wildbot $05, $03, $0f, $09, $6a, $0e, $10, $7f, $03, $0c, $00, $0b, $02
+ENDC
+
+Data_87e90:
+	dr $87e90, $87e94
 
 Data_87e94: ; 87e94
 	dr $87e94, $87ea2
@@ -4669,9 +4920,7 @@ Func_87ea2:
 	call LoadMapObjects_21
 	ld a, $3
 	call Func_80d01_21
-	ld e, $5
-	ld hl, Data_87e4a
-	call Func_80d24_21
+	loadwilds $5, Data_87e4a
 	checkevent $0
 	or a
 	jp nz, Func_87ec9
@@ -4780,13 +5029,338 @@ Func_92e02: ; 92e02
 	dr $92e02, $932bd
 
 Func_932bd:: ; 932bd
-	dr $932bd, $93370
+	dr $932bd, $93364
 
-Func_93370:: ; 93370
-	dr $93370, $933c1
+Func_93364: ; 93364 (24:7364)
+	read_hl_from wc930
+	ret
 
-Func_933c1::
-	dr $933c1, $935a8
+Func_9336a: ; 9336a (24:736a)
+	read_hl_from wc92c
+	ret
+
+Func_93370:: ; 93370 (24:7370)
+	push hl
+	pop hl
+	push hl
+	push de
+	push hl
+	pop de
+	pop hl
+	read_hl_from wc930
+	call Func_93792
+	read_hl_from wc92e
+	ld de, $3c
+	call DivideHLByDESigned
+	ld a, l
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], a
+	read_hl_from wc92e
+	ld de, $3c
+	call DivideHLByDESigned
+	ld a, e
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], a
+	pop bc
+	ret
+
+Func_933a6:
+	push hl
+	ld a, [wc92c]
+	ld [hl], a
+	inc hl
+	ld a, [wc92c + 1]
+	ld [hl], a
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	ld a, [wc92e]
+	ld [hl], a
+	pop hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [wc92e + 1]
+	ld [hl], a
+	ret
+
+Func_933c1:: ; 933c1 (24:73c1)
+	push hl
+	push de
+	ld hl, $7
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_933d8
+	reg16swap de, hl
+	ld e, $0
+	ld bc, $8
+	call FillMemory
+Func_933d8: ; 933d8 (24:73d8)
+	pop de
+	pop hl
+	push hl
+	ld a, l
+	sub $a
+	or h
+	jp nz, Func_933ea
+	ld l, e
+	ld h, d
+	inc hl
+	inc hl
+	ld a, $8
+	or [hl]
+	ld [hl], a
+Func_933ea: ; 933ea (24:73ea)
+	ld a, [wc01c]
+	reg16swap de, hl
+	write_hl_to wc874
+	pop hl
+	push af
+	ld a, l
+	add a
+	add a
+	add a
+	add $20
+	ld [wc872 + 4], a
+	ld a, [wc872 + 2]
+	ld l, a
+	ld a, [wc872 + 3]
+	ld h, a
+	ld a, [wc872 + 4]
+	ld c, a
+	ld b, $8
+	ld a, [hSRAMBank]
+	push af
+	predef Func_7e497
+	pop af
+	call GetSRAMBank
+	pop af
+	or a
+	jp z, Func_93429
+	ld a, [wc01c]
+	or a
+	jp nz, Func_93429
+	ld a, $1
+	ld [wc01c], a
+Func_93429: ; 93429 (24:7429)
+	ret
+
+Func_9342a::
+	push hl
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	read_hl_from_sp_plus $c
+	ld de, $7
+	add hl, de
+	ld a, [hl]
+	or a
+	jp nz, Func_93468
+	read_hl_from_sp_plus $c
+	ld de, $5
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld c, l
+	ld b, h
+	push bc
+	ld bc, $8
+	read_hl_from_sp_plus $e
+	ld e, $0
+	call FillMemory
+	pop bc
+	read_hl_from_sp_plus $c
+	reg16swap de, hl
+	ld l, c
+	ld h, b
+	call Func_935a8
+	jp Func_935a5
+
+Func_93468: ; 93468 (24:7468)
+	set_farcall_addrs_hli Func_16007
+	ld de, $19
+	ld a, $3
+	call FarCall
+	ld l, a
+	ld a, [$ca9c]
+	and $2
+	push af
+	ld a, l
+	call GetSRAMBank
+	pop af
+	or a
+	jp z, Func_934b6
+	read_hl_from_sp_plus $c
+	ld de, $5
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld c, l
+	ld b, h
+	push bc
+	ld bc, $8
+	read_hl_from_sp_plus $e
+	ld e, $0
+	call FillMemory
+	pop bc
+	read_hl_from_sp_plus $c
+	reg16swap de, hl
+	ld l, c
+	ld h, b
+	call Func_935a8
+	jp Func_935a5
+
+Func_934b6: ; 934b6 (24:74b6)
+	call Func_9336a
+	push hl
+	call Func_93364
+	push hl
+	read_hl_from_sp_plus $10
+	inc hl
+	inc hl
+	ld c, [hl]
+	read_hl_from_sp_plus $10
+	ld a, [hl]
+	read_hl_from_sp_plus $10
+	inc hl
+	ld e, [hl]
+	call Func_93883
+	pop de
+	ld a, l
+	sub e
+	ld l, a
+	ld a, h
+	sbc d
+	ld h, a
+	pop de
+	add hl, de
+	reg16swap de, hl
+	push de
+	read_hl_from_sp_plus $e
+	inc hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	ld de, $3c
+	call MultiplyHLbyDE
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $e
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	add hl, bc
+	reg16swap de, hl
+	push de
+	ld a, e
+	and $f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$5
+	ld [hl], e
+	pop de
+	ld l, e
+	ld h, d
+	ld b, $4
+	call RightShiftHL
+	ld a, l
+	and $f
+	ld c, a
+	ld b, $0
+	ld hl, sp+$4
+	ld [hl], c
+	ld e, d
+	ld d, $0
+	ld a, e
+	and $f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$5
+	ld [hl], e
+	pop de
+	push de
+	ld a, e
+	and $f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$6
+	ld [hl], e
+	pop de
+	ld l, e
+	ld h, d
+	ld b, $4
+	call RightShiftHL
+	ld a, l
+	and $f
+	ld c, a
+	ld b, $0
+	ld hl, sp+$5
+	ld [hl], c
+	ld e, d
+	ld d, $0
+	ld a, e
+	and $f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$6
+	ld [hl], e
+	read_hl_from_sp_plus $c
+	ld de, $6
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$7
+	ld [hl], e
+	read_hl_from_sp_plus $c
+	ld de, $7
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$8
+	ld [hl], e
+	read_hl_from_sp_plus $c
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	cp $2
+	jp nc, Func_9357b
+	jp Func_935a5
+
+Func_9357b: ; 9357b (24:757b)
+	ld bc, $8
+	ld hl, sp+$1
+	push hl
+	read_hl_from_sp_plus $e
+	ld de, $5
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, wc938 - 2 * 8
+	add hl, de
+	pop de
+	call CopyFromDEtoHL
+	callba_hli Func_93c0c
+Func_935a5: ; 935a5 (24:75a5)
+	add sp, $c
+	ret
 
 Func_935a8:: ; 935a8
 	dr $935a8, $93792
