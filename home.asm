@@ -695,12 +695,12 @@ Data_059c:: ; 059c
 
 Data_065e:: ; 065e
 	db "  めにゅー", $0f, "を せんたくして", $0e, $00
-	db " $"
+	db " ", $00
 	db $0f, "START/Aを おしてくたﾞさい", $0e, $00
 	db $00
 
 Data_0686:: ; 0686
-	db "--------$"
+	db "--------", $00
 
 Func_068f:: ; 68f (0:068f)
 	call Func_07a2
@@ -795,7 +795,7 @@ BitIndexToMask:: ; 739 (0:0739)
 	ret
 
 Data_0743:: ; 0743
-	db " $"
+	db " ", $00
 	db "はﾟすわーとﾞ", $0f, "を にゅうりょくして ", $0e, $00
 	db $0f, "STARTを おしてくたﾞさい  ", $0e, $00
 	db $00
@@ -857,7 +857,7 @@ Func_07a2:: ; 7a2 (0:07a2)
 	ret
 
 Data_07e7:: ; 07e7
-	db "GB KISS  MINI GAME$"
+	db "GB KISS  MINI GAME", $00
 
 Data_07fa:: ; 07fa
 	dr $7fa, $83b
@@ -1880,18 +1880,18 @@ Func_116c:: ; 116c
 LCDInterrupt::
 	push af
 	push bc
-	ld a, [$c2e1]
+	ld a, [wc2e1]
 	or a
 	jr nz, .asm_11ab
 	ld a, [rLYC]
 	ld c, a
-	ld a, [$c2e2]
+	ld a, [wc2e2]
 	cp c
 	jr nz, .asm_119d
 	ld a, [rLCDC]
 	set 1, a
 	ld [rLCDC], a
-	ld a, [$c2e3]
+	ld a, [wc2e3]
 	ld [rLYC], a
 	pop bc
 	pop af
@@ -1901,7 +1901,7 @@ LCDInterrupt::
 	ld a, [rLCDC]
 	res 1, a
 	ld [rLCDC], a
-	ld a, [$c2e2]
+	ld a, [wc2e2]
 	ld [rLYC], a
 	pop bc
 	pop af
@@ -1910,21 +1910,21 @@ LCDInterrupt::
 .asm_11ab
 	ld a, [rLYC]
 	ld c, a
-	ld a, [$c2e2]
+	ld a, [wc2e2]
 	cp c
 	jr nz, .asm_11c1
-	ld a, [$c2e4]
+	ld a, [wc2e4]
 	ld [rSCX], a
-	ld a, [$c2e3]
+	ld a, [wc2e3]
 	ld [rLYC], a
 	pop bc
 	pop af
 	reti
 
 .asm_11c1
-	ld a, [$c2e5]
+	ld a, [wc2e5]
 	ld [rSCX], a
-	ld a, [$c2e2]
+	ld a, [wc2e2]
 	ld [rLYC], a
 	pop bc
 	pop af
@@ -1934,7 +1934,7 @@ HandleVideoTransferRequest:: ; 11ce (0:11ce)
 	push bc
 	push de
 	xor a
-	ld [$c236], a
+	ld [wc236], a
 	ld c, $4
 	ld hl, wVideoTransferQueue
 .asm_11d9
@@ -1942,11 +1942,11 @@ HandleVideoTransferRequest:: ; 11ce (0:11ce)
 	ld b, a
 	or a
 	jr z, .asm_1200
-	ld a, [$c236]
+	ld a, [wc236]
 	add b
 	cp $41
 	jr nc, .asm_120b
-	ld [$c236], a
+	ld [wc236], a
 	push bc
 	xor a
 	ld [hli], a
@@ -3593,17 +3593,17 @@ Func_22fe:: ; 22fe (0:22fe)
 
 Data_2304:: ; 2304
 	TX_SNUM
-	db "$"
+	db $00
 
 Data_2307:: ; 2307
-	db "0$"
+	db "0", $00
 
 Data_2309:: ; 2309
-	db " $"
+	db " ", $00
 
 Data_230b:: ; 230b
 	TX_SNUM
-	db "$"
+	db $00
 
 PlaceStringDEatCoordHL:: ; 230e (0:230e)
 	push de

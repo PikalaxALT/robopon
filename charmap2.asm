@@ -1,6 +1,5 @@
-	char_def
+	char_def 1
 
-	defchar "$" ; terminator
 	defchar "0" ; 00
 	defchar "1"
 	defchar "2"

@@ -180,6 +180,10 @@ wBackupChannelSFXPointers::
 	char wBackupSFXActive2
 	char wBackupSFXChannelFlags2
 
+SECTION "High WRAM", WRAM0 [$c0f8]
+	char wc0f8 ; c0f8
+	char wc0f9 ; c0f9
+
 SECTION "Audio RAM", WRAM0 [$c100]
 	char wSongIndex ; c100
 	char wAudioROMBank ; c101
@@ -433,7 +437,7 @@ wLCD:: ds $3 ; c200
 	char wc233 ; c233
 	ds $1
 	char wPoncotPicAlignment ; c235
-	ds $1
+	char wc236 ; c236
 	short wRNGState ; c237
 
 wVideoTransferQueue:: ; c239
@@ -481,8 +485,10 @@ wVideoTransferQueue:: ; c239
 	short wMemoryAllocationPointer ; c2de
 	char wMemoryAllocationMode ; c2e0
 	char wc2e1 ; c2e1
-	short wc2e2 ; c2e2
-	short wc2e4 ; c2e4
+	char wc2e2 ; c2e2
+	char wc2e3 ; c2e3
+	char wc2e4 ; c2e4
+	char wc2e5 ; c2e5
 	short wc2e6 ; c2e6
 	char wc2e8 ; c2e8
 	char wc2e9 ; c2e9
@@ -500,7 +506,9 @@ wVideoTransferQueue:: ; c239
 	char wc2f4
 	ds $1
 	char wc2f6 ; c2f6
-	ds $3
+	char wc2f7 ; c2f7
+	char wc2f8 ; c2f8
+	char wc2f9 ; c2f9
 	char wc2fa ; c2fa
 	char wSystemType ; c2fb
 	char wc2fc ; c2fc

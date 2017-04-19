@@ -296,7 +296,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	ret
 
 Data_17c44: ; 17c44
-	db "ケﾞットハﾞッファー ヌル エラー$" ; GET BUFFER FULL ERROR
+	db "ケﾞットハﾞッファー ヌル エラー", $00 ; GET BUFFER FULL ERROR
 
 Func_17c56: ; 17c56
 	ret
@@ -651,19 +651,19 @@ Data_17e6c: ; 17e6c
 	TX_SNUM
 	db " "
 	TX_SNUM
-	db "$"
+	db $00
 
 Data_17e77: ; 17e77
 	db "ナイフﾞ "
 	TX_SNUM
 	db " カﾞイフﾞ "
 	TX_SNUM
-	db "$"
+	db $00
 
 Data_17e88: ; 17e88
 	db "サイタﾞイ "
 	TX_SNUM
-	db "$"
+	db $00
 
 Func_17e91: ; 17e91 (5:7e91)
 	call Func_17d7b

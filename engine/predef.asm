@@ -577,7 +577,7 @@ Func_78440:: ; 78440 (1e:4440)
 	pop de
 	pop bc
 	ld hl, wOAMBuffer
-	predef Func_7d4e0
+	predef PrintNumLongPredef
 	ld hl, wOAM01YCoord
 	predef Func_7af96
 .asm_78489
@@ -624,7 +624,7 @@ Func_78526:: ; 78526 (1e:4526)
 	inc de
 .asm_7853a
 	ld hl, wOAMBuffer
-	predef Func_7d486
+	predef PrintNumShortPredef
 	ld hl, $d01
 	predef Func_7d905
 	ld hl, wOAM00XCoord
@@ -676,7 +676,7 @@ Func_78526:: ; 78526 (1e:4526)
 	push hl
 	ld hl, wOAM0bVTile
 	ld bc, $0
-	predef Func_7d4e0
+	predef PrintNumLongPredef
 	ld hl, wOAM0dYCoord
 	predef Func_7af96
 	pop de
@@ -705,7 +705,7 @@ Func_78526:: ; 78526 (1e:4526)
 	ld d, $0
 	predef Func_7d905
 	ld hl, wOAM0bVTile
-	predef Func_7d486
+	predef PrintNumShortPredef
 	ld hl, wOAM0cXCoord
 	predef Func_7af96
 	pop de
@@ -1579,7 +1579,7 @@ Func_78b36:: ; 78b36 (1e:4b36)
 Func_78b45:: ; 78b45 (1e:4b45)
 	ld d, $0
 	ld hl, wOAMBuffer
-	predef Func_7d486
+	predef PrintNumShortPredef
 	ld hl, wOAM00Attrs
 	predef Func_7af96
 	ret
@@ -1609,12 +1609,12 @@ Func_78b5e:: ; 78b5e (1e:4b5e)
 	ld d, $0
 	push af
 	ld hl, wOAMBuffer
-	predef Func_7d486
+	predef PrintNumShortPredef
 	pop af
 	ld hl, Data_78c8a
 	or a
 	jr z, .asm_78b85
-	ld hl, $c404
+	ld hl, wOAM01YCoord
 	predef Func_7af96
 	ld hl, Data_78c77
 .asm_78b85
@@ -3175,7 +3175,7 @@ Func_7aa0c:: ; 7aa0c (1e:6a0c)
 	call Func_7a8f7
 	ld a, $75
 	call Func_7a8f7
-	ld hl, $c0f8
+	ld hl, wc0f8
 	ld c, $8
 	jp Func_7aa3e
 
@@ -3188,7 +3188,7 @@ asm_7aa23
 	call Func_7a937
 	cp $75
 	jr nz, asm_7aa23
-	ld hl, $c0f8
+	ld hl, wc0f8
 	ld c, $8
 	jp Func_7aa53
 
@@ -3263,7 +3263,7 @@ Func_7aa8e:: ; 7aa8e (1e:6a8e)
 	call asm_7aa23
 	jr c, .asm_7aaa8
 	jr nz, .asm_7aa91
-	ld hl, $c0f9
+	ld hl, wc0f9
 	ld a, [hl]
 	ld hl, Pointers_7aab9
 	cp $d
@@ -3308,7 +3308,7 @@ Func_7aad3:: ; 7aad3 (1e:6ad3)
 	call Func_7acfa
 	call Func_7a9b7
 	ret c
-	ld hl, $c0f8
+	ld hl, wc0f8
 	ld c, $8
 	jp Func_7aa3e
 
@@ -3502,7 +3502,7 @@ Func_7ac00:: ; 7ac00 (1e:6c00)
 Func_7ac16:: ; 7ac16 (1e:6c16)
 	call Func_7aa68
 	ld a, $0
-	ld [$c0f9], a
+	ld [wc0f9], a
 	call Func_7aa0c
 	jr asm_7ac76
 
@@ -3566,7 +3566,7 @@ asm_7ac76
 Func_7ac7c:: ; 7ac7c (1e:6c7c)
 	call Func_7a9e0
 	jr c, asm_7ac76
-	ld hl, $c0f8
+	ld hl, wc0f8
 	ld c, $8
 	jp Func_7aa53
 
@@ -3652,7 +3652,7 @@ Func_7acfa:: ; 7acfa (1e:6cfa)
 	push de
 	push hl
 	push af
-	ld hl, $c0f8
+	ld hl, wc0f8
 	pop de
 	ld [hl], e
 	inc hl
@@ -3674,7 +3674,7 @@ Func_7acfa:: ; 7acfa (1e:6cfa)
 	ret
 
 Func_7ad13:: ; 7ad13 (1e:6d13)
-	ld hl, $c0f8
+	ld hl, wc0f8
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -6323,11 +6323,11 @@ Pointers_7c000:: ; 7c000
 	dw Func_7e523
 	dw RTCUpdatePredef
 	dw Func_7c17e
-	dw Func_7d4e0
-	dw Func_7d3c9
-	dw Func_7d3f9
-	dw Func_7d486
-	dw Func_7d5a6
+	dw PrintNumLongPredef
+	dw HexToIntPredef
+	dw StrToIntPredef
+	dw PrintNumShortPredef
+	dw PrintHexShortPredef
 	dw Func_7d5da
 	dw Func_7d5e7
 	dw Func_7db91
@@ -9357,22 +9357,22 @@ Func_7d3bc:: ; 7d3bc (1f:53bc)
 	ld [wc3b4], a
 	ret
 
-Func_7d3c9:: ; 7d3c9 (1f:53c9)
+HexToIntPredef:: ; 7d3c9 (1f:53c9)
 .loop
-	call Func_7d3d0
+	call .ConvertAndLoadChar
 	ret c
 	ld [hli], a
 	jr .loop
 
-Func_7d3d0:: ; 7d3d0 (1f:53d0)
+.ConvertAndLoadChar:
 	ld c, $0
 	ld a, [de]
-	call Func_7d3e7
+	call .ConvertChar
 	ret c
 	ld c, a
 	inc de
 	ld a, [de]
-	call Func_7d3e7
+	call .ConvertChar
 	ret c
 	inc de
 	ld b, a
@@ -9384,45 +9384,45 @@ Func_7d3d0:: ; 7d3d0 (1f:53d0)
 	or b
 	ret
 
-Func_7d3e7:: ; 7d3e7 (1f:53e7)
-	or $20
-	sub $30
+.ConvertChar:
+	or " "
+	sub "0"
 	ret c
-	cp $a
+	cp 10
 	ccf
 	ret nc
-	sub $27
-	cp $a
+	sub "A" - 10 - $10
+	cp 10
 	ret c
 	cp $10
 	ccf
 	ret
 
-Func_7d3f9:: ; 7d3f9 (1f:53f9)
+StrToIntPredef:: ; 7d3f9 (1f:53f9)
 	ld e, l
 	ld d, h
-.asm_7d3fb
+.leading_space_loop
 	ld a, [de]
 	inc de
-	cp $20
-	jr z, .asm_7d3fb
-	cp $27
-	jr z, asm_7d42d
-	cp $24
-	jr z, asm_7d425
-	cp $2b
-	jr z, Func_7d412
-	cp $2d
-	jr z, asm_7d41a
+	cp " "
+	jr z, .leading_space_loop
+	cp "'"
+	jr z, .apostrophe
+	cp "$"
+	jr z, .dollar_sign
+	cp "+"
+	jr z, .plus
+	cp "-"
+	jr z, .minus
 	dec de
-Func_7d412:: ; 7d412
-	call Func_7d43b
+.plus
+	call .ParsePositiveNumber
 	ret nc
 	ld hl, $0
 	ret
 
-asm_7d41a
-	call Func_7d412
+.minus
+	call .plus
 	ld a, h
 	cpl
 	ld h, a
@@ -9432,38 +9432,38 @@ asm_7d41a
 	inc hl
 	ret
 
-asm_7d425
-	call Func_7d45e
+.dollar_sign
+	call .ParseHexidecimalNumber
 	ret nc
 	ld hl, $0
 	ret
 
-asm_7d42d
+.apostrophe
 	ld hl, $0
-.asm_7d430
+.find_trailing_apostrophe
 	ld a, [de]
 	or a
 	ret z
-	cp $27
+	cp "'"
 	ret z
 	ld h, l
 	ld l, a
 	inc de
-	jr .asm_7d430
+	jr .find_trailing_apostrophe
 
-Func_7d43b:: ; 7d43b (1f:543b)
+.ParsePositiveNumber:
 	ld hl, $0
-.asm_7d43e
+.positive_number_loop
 	ld a, [de]
 	or a
 	ret z
-	cp $30
+	cp "0"
 	ccf
 	ret nc
-	cp $3a
+	cp "9" + 1
 	ret nc
 	inc de
-	sub $30
+	sub "0"
 	ld c, l
 	ld b, h
 	add hl, hl
@@ -9479,29 +9479,29 @@ Func_7d43b:: ; 7d43b (1f:543b)
 	ld a, h
 	adc $0
 	ld h, a
-	jr nc, .asm_7d43e
+	jr nc, .positive_number_loop
 	ret
 
-Func_7d45e:: ; 7d45e (1f:545e)
+.ParseHexidecimalNumber:
 	ld hl, $0
-.asm_7d461
+.hex_loop
 	ld a, [de]
 	or a
 	ret z
-	sub $30
+	sub "0"
 	ccf
 	ret nc
-	cp $a
-	jr c, .asm_7d479
-	add $30
+	cp 10
+	jr c, .decimal
+	add "0"
 	and $df
-	sub $37
-	cp $a
+	sub "A" - 10
+	cp 10
 	ccf
 	ret nc
 	cp $10
 	ret nc
-.asm_7d479
+.decimal
 	add hl, hl
 	ret c
 	add hl, hl
@@ -9513,17 +9513,16 @@ Func_7d45e:: ; 7d45e (1f:545e)
 	add l
 	ld l, a
 	inc de
-	jr .asm_7d461
+	jr .hex_loop
 
-Func_7d486:: ; 7d486 (1f:5486)
-	ld [hl], $20
+PrintNumShortPredef:: ; 7d486 (1f:5486)
+	ld [hl], " "
 	inc hl
 	reg8rot a, l, e
 	reg8rot a, h, d
-	ld a, $20
+	ld a, " "
 	bit 7, h
-	jr z, asm_7d49e
-Func_7d494:: ; 7d494 (1f:5494)
+	jr z, .asm_7d49e
 	ld a, h
 	cpl
 	ld h, a
@@ -9531,20 +9530,20 @@ Func_7d494:: ; 7d494 (1f:5494)
 	cpl
 	ld l, a
 	inc hl
-	ld a, $2d
-asm_7d49e
+	ld a, "-"
+.asm_7d49e
 	push af
 	push de
-	ld bc, $d8f0
-	call Func_7d4d1
-	ld bc, $fc18
-	call Func_7d4d1
-	ld bc, hBGP
-	call Func_7d4d1
-	ld bc, $fff6
-	call Func_7d4d1
+	ld bc, -10000
+	call GetDigitShort
+	ld bc, -1000
+	call GetDigitShort
+	ld bc, -100
+	call GetDigitShort
+	ld bc, -10
+	call GetDigitShort
 	ld a, l
-	add $30
+	add "0"
 	ld [de], a
 	inc de
 	xor a
@@ -9553,9 +9552,9 @@ asm_7d49e
 	ld b, $4
 .asm_7d4c2
 	ld a, [hl]
-	cp $30
+	cp "0"
 	jr nz, .asm_7d4cd
-	ld [hl], $20
+	ld [hl], " "
 	inc hl
 	dec b
 	jr nz, .asm_7d4c2
@@ -9565,12 +9564,12 @@ asm_7d49e
 	ld [hl], a
 	ret
 
-Func_7d4d1:: ; 7d4d1 (1f:54d1)
-	ld a, $2f
-.asm_7d4d3
+GetDigitShort:: ; 7d4d1 (1f:54d1)
+	ld a, "0" - 1
+.loop
 	inc a
 	add hl, bc
-	jr c, .asm_7d4d3
+	jr c, .loop
 	ld [de], a
 	inc de
 	ld a, l
@@ -9581,14 +9580,14 @@ Func_7d4d1:: ; 7d4d1 (1f:54d1)
 	ld h, a
 	ret
 
-Func_7d4e0:: ; 7d4e0 (1f:54e0)
-	ld [hl], $20
+PrintNumLongPredef:: ; 7d4e0 (1f:54e0)
+	ld [hl], " "
 	inc hl
 	reg8rot a, l, e
 	reg8rot a, h, d
-	ld a, $20
+	ld a, " "
 	bit 7, b
-	jr z, .asm_7d50b
+	jr z, .positive
 	ld a, b
 	cpl
 	ld b, a
@@ -9611,66 +9610,66 @@ Func_7d4e0:: ; 7d4e0 (1f:54e0)
 	ld a, $0
 	adc b
 	ld b, a
-	ld a, $2d
-.asm_7d50b
+	ld a, "-"
+.positive
 	push af
 	push de
 	push bc
 	push hl
 	push de
-	ld de, $c465
-	ld bc, $3600
-	call Func_7d574
-	ld de, $fa0a
-	ld bc, $1f00
-	call Func_7d574
-	ld de, $ff67
-	ld bc, $6980
-	call Func_7d574
-	ld de, $fff0
-	ld bc, $bdc0
-	call Func_7d574
-	ld de, $fffe
-	ld bc, $7960
-	call Func_7d574
-	ld de, $ffff
-	ld bc, $d8f0
-	call Func_7d574
+	ld de, (-1000000000) >> 16
+	ld bc, (-1000000000) & $ffff
+	call .GetDigitLong
+	ld de, (-100000000) >> 16
+	ld bc, (-100000000) & $ffff
+	call .GetDigitLong
+	ld de, (-10000000) >> 16
+	ld bc, (-10000000) & $ffff
+	call .GetDigitLong
+	ld de, (-1000000) >> 16
+	ld bc, (-1000000) & $ffff
+	call .GetDigitLong
+	ld de, (-100000) >> 16
+	ld bc, (-100000) & $ffff
+	call .GetDigitLong
+	ld de, (-10000) >> 16
+	ld bc, (-10000) & $ffff
+	call .GetDigitLong
 	pop de
 	pop hl
 	pop bc
-	ld bc, $fc18
-	call Func_7d4d1
-	ld bc, $ff9c
-	call Func_7d4d1
-	ld bc, $fff6
-	call Func_7d4d1
+	ld bc, (-1000) & $ffff
+	call GetDigitShort
+	ld bc, (-100) & $ffff
+	call GetDigitShort
+	ld bc, (-10) & $ffff
+	call GetDigitShort
 	ld a, l
-	add $30
+	add "0"
 	ld [de], a
 	inc de
 	xor a
 	ld [de], a
 	pop hl
 	ld b, $9
-.asm_7d565
+.find_nonzero_leader
 	ld a, [hl]
-	cp $30
-	jr nz, .asm_7d570
-	ld [hl], $20
+	cp "0"
+	jr nz, .break
+	ld [hl], " "
 	inc hl
 	dec b
-	jr nz, .asm_7d565
-.asm_7d570
+	jr nz, .find_nonzero_leader
+.break
 	dec hl
 	pop af
 	ld [hl], a
 	ret
 
-Func_7d574:: ; 7d574 (1f:5574)
-	ld a, $2f
+.GetDigitLong: ; 7d574 (1f:5574)
+	ld a, "0" - 1
 	push af
-.asm_7d577
+.loop
 	ld hl, sp+$1
 	inc [hl]
 	ld hl, sp+$6
@@ -9686,7 +9685,7 @@ Func_7d574:: ; 7d574 (1f:5574)
 	ld a, [hl]
 	adc d
 	ld [hl], a
-	jr c, .asm_7d577
+	jr c, .loop
 	pop af
 	ld hl, sp+$2
 	push de
@@ -9714,14 +9713,14 @@ Func_7d574:: ; 7d574 (1f:5574)
 	ld [hl], a
 	ret
 
-Func_7d5a6:: ; 7d5a6 (1f:55a6)
+PrintHexShortPredef:: ; 7d5a6 (1f:55a6)
 	reg8rot a, l, e
 	reg8rot a, h, d
 	push de
 	ld a, h
-	call Func_7d5bb
+	call .PrintHexChar
 	ld a, l
-	call Func_7d5bb
+	call .PrintHexChar
 	xor a
 	ld [de], a
 	pop hl
@@ -9729,31 +9728,31 @@ Func_7d5a6:: ; 7d5a6 (1f:55a6)
 	inc hl
 	ret
 
-Func_7d5bb:: ; 7d5bb (1f:55bb)
+.PrintHexChar:
 	push af
 	and $f0
 	rrca
 	rrca
 	rrca
 	rrca
-	call Func_7d5d0
+	call .GetHexChar
 	ld [de], a
 	inc de
 	pop af
 	and $f
-	call Func_7d5d0
+	call .GetHexChar
 	ld [de], a
 	inc de
 	ret
 
-Func_7d5d0:: ; 7d5d0 (1f:55d0)
-	cp $a
-	jr nc, .asm_7d5d7
-	add $30
+.GetHexChar:
+	cp 10
+	jr nc, .high_hex
+	add "0"
 	ret
 
-.asm_7d5d7
-	add $37
+.high_hex
+	add "A" - 10
 	ret
 
 Func_7d5da:: ; 7d5da (1f:55da)
@@ -11749,7 +11748,7 @@ Func_7dff6:: ; 7dff6 (1f:5ff6)
 	ld bc, $20
 	predef CopyPredef
 	ld a, [Bank_000f]
-	ld [$c00b], a
+	ld [wVBlank + 5], a
 	ld de, Func_7e05a
 	ld hl, hPushOAM
 	ld bc, $a

@@ -123,11 +123,11 @@ const_value = $4b
 	predef_const Func_7e523
 	predef_const RTCUpdatePredef
 	predef_const Func_7c17e
-	predef_const Func_7d4e0 ; a0
-	predef_const Func_7d3c9
-	predef_const Func_7d3f9
-	predef_const Func_7d486
-	predef_const Func_7d5a6
+	predef_const PrintNumLongPredef ; a0
+	predef_const HexToIntPredef
+	predef_const StrToIntPredef
+	predef_const PrintNumShortPredef
+	predef_const PrintHexShortPredef
 	predef_const Func_7d5da
 	predef_const Func_7d5e7
 	predef_const Func_7db91

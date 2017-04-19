@@ -14,7 +14,7 @@ Byte_000d:: ; 000d
 Bank_000e:: ; 000e
 	db BANK(Pointers_78096)
 Bank_000f:: ; 000f
-	db BANK(Pointers_7c000)
+	db BANK(Pointers_7c000) ; BANK(VBlank2)
 
 SECTION "rst $10", ROM0 [$10]
 	jp Func_00c9
