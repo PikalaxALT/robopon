@@ -1,6 +1,3 @@
-[submodule "master"]
-	path = master
-	url = git@github.com:pret/pokemon-reverse-engineering-tools
 [submodule "extras"]
 	path = extras
 	url = https://github.com/pret/pokemon-reverse-engineering-tools
