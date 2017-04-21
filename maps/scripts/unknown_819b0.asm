@@ -91,6 +91,6 @@ Func_81a5a:
 	cp $2
 	jp nz, Func_81a65
 	ld a, $6
-	ld [$c78a], a
+	ld [wc78a], a
 Func_81a65: ; 81a65 (20:5a65)
 	ret

@@ -1737,7 +1737,7 @@ Func_6b4b:: ; 6b4b (1:6b4b)
 Func_6b54: ; 6b54
 	ret
 
-Func_6b55: ; 6b55 (1:6b55)
+GetRobotInParty: ; 6b55 (1:6b55)
 	push de
 	pop hl
 	push hl
@@ -1755,7 +1755,7 @@ Func_6b55: ; 6b55 (1:6b55)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -1778,7 +1778,7 @@ Func_6b74: ; 6b74 (1:6b74)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	push hl
 	call GetHLAtSPPlus4
@@ -1798,7 +1798,7 @@ Func_6b94:: ; 6b94
 	ld a, l
 	ld hl, sp+$4
 	reg16swap de, hl
-	call Func_6b55
+	call GetRobotInParty
 	pop af
 	cp $9
 	jp z, Func_6dd2
@@ -1914,7 +1914,7 @@ Func_6e1b:: ; 6e1b
 	ld a, e
 	ld hl, sp+$2
 	reg16swap de, hl
-	call Func_6b55
+	call GetRobotInParty
 	pop af
 	cp $b
 	jp z, Func_6eaf
@@ -1999,7 +1999,7 @@ Func_6ebf: ; 6ebf
 	ld a, l
 	ld hl, sp+$4
 	reg16swap de, hl
-	call Func_6b55
+	call GetRobotInParty
 	pop af
 	cp $9
 	jp z, Func_6f65
@@ -4128,7 +4128,7 @@ Func_7e56: ; 7e56
 	ld a, e
 	ld hl, sp+$2
 	reg16swap de, hl
-	call Func_6b55
+	call GetRobotInParty
 	pop af
 	ld hl, sp+$0
 	reg16swap de, hl
@@ -8512,7 +8512,7 @@ Func_bf50: ; bf50 (2:7f50)
 	jp nc, Func_bf9c
 	push bc
 	push de
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop de
 	push de
 	ld a, e
@@ -9032,7 +9032,7 @@ Func_c82b: ; c82b
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	inc hl
 	push hl
@@ -9170,7 +9170,7 @@ Func_c8fe: ; c8fe
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	ld hl, sp+$12
 	ld [hl], $0
 Func_c94f: ; c94f (3:494f)
@@ -9221,7 +9221,7 @@ Func_c985: ; c985 (3:4985)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	write_hl_to_sp_plus $12
 	ld hl, sp+$c
@@ -15668,7 +15668,7 @@ Func_f7c3: ; f7c3 (3:77c3)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -15754,7 +15754,7 @@ Func_f86a: ; f86a (3:786a)
 	ld e, a
 	dec e
 	ld hl, sp+$26
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_6adb3
 	ld hl, $e3
 	add hl, sp
@@ -15846,7 +15846,7 @@ Func_f91f: ; f91f (3:791f)
 	ld a, [bc]
 	ld e, a
 	ld hl, sp+$28
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_6adb3
 	ld hl, sp+$53
 	ld e, [hl]
@@ -16157,7 +16157,7 @@ Func_fb64: ; fb64 (3:7b64)
 	push de
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld a, [$ca9c]
+	ld a, [wca9c]
 	pop de
 	push de
 	push af
@@ -16236,7 +16236,7 @@ Func_fb95: ; fb95 (3:7b95)
 	ld h, $0
 	ld de, $8
 	call DivideHLByDESigned
-	ld de, $ca70
+	ld de, wSaveScratchDexSeenFlags
 	add hl, de
 	push hl
 	ld a, [hl]
@@ -16284,7 +16284,7 @@ Func_fc31: ; fc31 (3:7c31)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -16379,7 +16379,7 @@ Func_fcef: ; fcef (3:7cef)
 	cp $4
 	jp nc, Func_fd26
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop bc
 	push bc
 	ld a, c
@@ -17779,7 +17779,7 @@ Func_109e3: ; 109e3 (4:49e3)
 	ld a, [hl]
 	ld hl, sp+$18
 	ld [hl], a
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -18017,7 +18017,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	ld b, h
 	ld de, $605
 	ld hl, $705
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld hl, sp+$1d
 	ld a, [hl]
 	or a
@@ -23987,7 +23987,7 @@ Func_144bd: ; 144bd
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $44f7
+	ld bc, Data_544f7
 	ld de, $0
 	ld hl, Data_54001
 	call Menu
@@ -24006,7 +24006,7 @@ Func_144dd: ; 144dd (5:44dd)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $4548
+	ld bc, Data_54548
 	ld de, $0
 	ld hl, Data_54020
 	call Menu
@@ -24086,7 +24086,7 @@ Func_1458e: ; 1458e (5:458e)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $45a5
+	ld bc, Data_545a5
 	ld de, $0
 	ld hl, Data_5403f
 	call Menu
@@ -24126,7 +24126,7 @@ Func_145b5: ; 145b5 (5:45b5)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $45a5
+	ld bc, Data_545a5
 	ld de, $0
 	ld hl, Data_5405e
 	call Menu
@@ -24165,7 +24165,7 @@ Func_14615: ; 14615 (5:4615)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $45e4
+	ld bc, Data_545e4
 	ld de, $0
 	ld hl, Data_5407d
 	call Menu
@@ -24205,7 +24205,7 @@ Func_1463c: ; 1463c (5:463c)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $45e4
+	ld bc, Data_545e4
 	ld de, $0
 	ld hl, Data_5409c
 	call Menu
@@ -24295,7 +24295,7 @@ Func_1472c: ; 1472c (5:472c)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $4614
+	ld bc, Data_54614
 	ld de, -1
 	ld hl, Data_540da
 	call Menu
@@ -24406,7 +24406,7 @@ Func_1480e: ; 1480e
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $46af
+	ld bc, Data_546af
 	ld de, $0
 	ld hl, Data_541b3
 	call Menu
@@ -24425,7 +24425,7 @@ Func_1482e: ; 1482e (5:482e)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $46c1
+	ld bc, Data_546c1
 	ld de, $0
 	ld hl, Data_541d2
 	call Menu
@@ -24444,7 +24444,7 @@ Func_1484e: ; 1484e
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $46d0
+	ld bc, Data_546d0
 	ld de, $0
 	ld hl, Data_541f1
 	call Menu
@@ -24463,7 +24463,7 @@ Func_1486e: ; 1486e
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $464c
+	ld bc, Data_5464c
 	ld de, $0
 	ld hl, Data_54118
 	call Menu
@@ -24501,7 +24501,7 @@ Func_148ae: ; 148ae
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $4686
+	ld bc, Data_54686
 	ld de, $0
 	ld hl, Data_54137
 	call Menu
@@ -24583,7 +24583,7 @@ Func_14940:: ; 14940
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $46e0
+	ld bc, Data_546e0
 	ld de, $0
 	ld hl, Data_5428c
 	call Menu
@@ -24884,7 +24884,7 @@ Func_14b44:: ; 14b44
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -24893,7 +24893,7 @@ Func_14b44:: ; 14b44
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2152
+	call BackUpAttrMapRectangle
 	set_farcall_addrs_hli Func_da901
 	ld de, $b05
 	ld hl, $900
@@ -24921,7 +24921,7 @@ Func_14bc4: ; 14bc4 (5:4bc4)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $46fd
+	ld bc, Data_546fd
 	ld de, $0
 	ld hl, Data_5441e
 	call Menu
@@ -24940,7 +24940,7 @@ Func_14be6: ; 14be6 (5:4be6)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $46fd
+	ld bc, Data_546fd
 	ld de, $0
 	ld hl, Data_543ff
 	call Menu
@@ -24960,7 +24960,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -24969,7 +24969,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld a, $2
 	ld [wc39a], a
 	call Func_1400e
@@ -25014,7 +25014,7 @@ Func_14c89: ; 14c89
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $4727
+	ld bc, Data_54727
 	ld de, $0
 	ld hl, Data_5445c
 	call Menu
@@ -25047,7 +25047,7 @@ Func_14ca9:: ; 14ca9
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -25056,7 +25056,7 @@ Func_14ca9:: ; 14ca9
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2152
+	call BackUpAttrMapRectangle
 	ld l, BANK(Data_5447b)
 	push hl
 	ld hl, $18
@@ -25082,7 +25082,7 @@ Func_14ca9:: ; 14ca9
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -25091,7 +25091,7 @@ Func_14ca9:: ; 14ca9
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld l, $5
 	push hl
 	ld c, $14
@@ -25207,7 +25207,7 @@ Func_14db8: ; 14db8
 	push de
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	pop de
 	push de
 	push af
@@ -25234,7 +25234,7 @@ Func_14e0b: ; 14e0b (5:4e0b)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	inc hl
 	ld a, [hl]
@@ -25248,31 +25248,31 @@ Func_14e20: ; 14e20 (5:4e20)
 	ld de, $14
 	call CompareHLtoDE
 	jp nc, Func_14e65
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, bc
 	ld a, [hl]
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	cp [hl]
 	jp nz, Func_14e61
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, bc
 	ld a, [hl]
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	inc hl
 	add [hl]
 	cp $64
 	jp c, Func_14e61
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, bc
 	ld a, $63
 	sub [hl]
@@ -25290,7 +25290,7 @@ Func_14e68: ; 14e68 (5:4e68)
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$4
@@ -25306,27 +25306,27 @@ Func_14e7b: ; 14e7b (5:4e7b)
 	ld l, c
 	ld h, b
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	cp [hl]
 	jp nz, Func_14ec4
 	ld l, c
 	ld h, b
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	inc hl
 	ld a, [hl]
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	add [hl]
 	cp $64
@@ -25334,7 +25334,7 @@ Func_14e7b: ; 14e7b (5:4e7b)
 	ld l, c
 	ld h, b
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	inc hl
 	ld a, $63
@@ -25353,7 +25353,7 @@ Func_14ecb: ; 14ecb (5:4ecb)
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$4
@@ -25410,7 +25410,7 @@ Func_14f0e: ; 14f0e
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop de
 	pop bc
 	pop hl
@@ -25459,12 +25459,12 @@ Func_14f0e: ; 14f0e
 	jp nz, Func_14fc5
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld c, a
 	call GetHLAtSPPlus4
 	ld de, $7
 	add hl, de
-	ld a, [$ca6c]
+	ld a, [wSaveScratchca6c]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -26012,7 +26012,7 @@ Func_152e4: ; 152e4
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, $4660
+	ld bc, Data_54660
 	ld de, $0
 	ld hl, Data_54210
 	call Menu
@@ -26104,6 +26104,7 @@ Data_15399: ; 15399
 Data_153c6: ; 153c6
 	dr $153c6, $1551f
 
+Func_1551f:
 	push bc
 	push bc
 	push hl
@@ -26147,11 +26148,11 @@ Data_153c6: ; 153c6
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	xor a
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld c, a
 	pop hl
 	push hl
@@ -26237,7 +26238,7 @@ Func_155f9: ; 155f9 (5:55f9)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	ld l, $5
 	push hl
 	ld c, $14
@@ -26258,7 +26259,7 @@ Func_15619: ; 15619 (5:5619)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	ld l, $5
 	push hl
 	ld c, $14
@@ -26285,7 +26286,7 @@ Func_1564a: ; 1564a (5:564a)
 	add sp, -$16
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld c, a
 	read_hl_from_sp_plus $1a
 	ld de, $c98e
@@ -26629,7 +26630,7 @@ Func_158b7: ; 158b7
 	call MemCopy
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld l, a
 	pop af
 	push hl
@@ -26653,7 +26654,7 @@ Func_158b7: ; 158b7
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -26674,7 +26675,7 @@ Func_158b7: ; 158b7
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $9
 	add hl, de
@@ -26695,7 +26696,7 @@ Func_158b7: ; 158b7
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $a
 	add hl, de
@@ -26716,7 +26717,7 @@ Func_158b7: ; 158b7
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	pop hl
@@ -26766,7 +26767,7 @@ Func_1598d: ; 1598d (5:598d)
 	ld e, a
 	dec e
 	ld hl, sp+$6
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$b
 	ld a, [hl]
 	push af
@@ -27022,7 +27023,7 @@ Func_15b86: ; 15b86 (5:5b86)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	inc hl
 	write_hl_to_sp_plus $6e
@@ -27031,7 +27032,7 @@ Func_15b86: ; 15b86 (5:5b86)
 Func_15b9f: ; 15b9f (5:5b9f)
 	ld e, l
 	ld hl, sp+$25
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$32
 	write_hl_to_sp_plus $6e
 	jp Func_15bcb
@@ -27164,7 +27165,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld [hl], a
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld hl, sp+$4
 	ld [hl], a
 	ld hl, wc311
@@ -27191,7 +27192,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -27224,7 +27225,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -27300,7 +27301,7 @@ Func_15d29: ; 15d29 (5:5d29)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -27382,7 +27383,7 @@ Func_15de5: ; 15de5 (5:5de5)
 Func_15df5: ; 15df5 (5:5df5)
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld hl, sp+$4
 	ld [hl], a
 	ld hl, wc2e9
@@ -27399,7 +27400,7 @@ Func_15df5: ; 15df5 (5:5df5)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -27499,7 +27500,7 @@ Func_15e9c: ; 15e9c (5:5e9c)
 	jp nz, Func_15fc5
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld hl, sp+$4
 	ld [hl], a
 	ld hl, sp+$0
@@ -27523,7 +27524,7 @@ Func_15ec2: ; 15ec2 (5:5ec2)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -27574,7 +27575,7 @@ Func_15f34: ; 15f34 (5:5f34)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -27602,7 +27603,7 @@ Func_15f5c: ; 15f5c (5:5f5c)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -27681,7 +27682,7 @@ Func_15fe9: ; 15fe9 (5:5fe9)
 Func_15ff9: ; 15ff9 (5:5ff9)
 	jpba_hli Func_623d0
 
-Func_16007:: ; 16007 (5:6007)
+GetBanks:: ; 16007 (5:6007)
 	push de
 	push af
 	ld a, [hSRAMBank]
@@ -27867,7 +27868,7 @@ Func_16104: ; 16104 (5:6104)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -28366,7 +28367,7 @@ Func_16427: ; 16427 (5:6427)
 	ld [hl], d
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld hl, sp+$8
 	ld [hl], a
 	ld hl, sp+$6
@@ -28395,7 +28396,7 @@ Func_16450: ; 16450 (5:6450)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -28956,7 +28957,7 @@ Func_1686d: ; 1686d (5:686d)
 	ld [hl], d
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld hl, sp+$b
 	ld [hl], a
 	ld hl, sp+$4
@@ -29000,7 +29001,7 @@ Func_1686d: ; 1686d (5:686d)
 	or a
 	jp nz, Func_16b21
 Func_168e9: ; 168e9 (5:68e9)
-	ld a, [$ca6c]
+	ld a, [wSaveScratchca6c]
 	or a
 	jp nz, Func_168fc
 	ld hl, sp+$b
@@ -29013,7 +29014,7 @@ Func_168fc: ; 168fc (5:68fc)
 	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
-	ld a, [$ca6c]
+	ld a, [wSaveScratchca6c]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -29022,7 +29023,7 @@ Func_168fc: ; 168fc (5:68fc)
 	jp Func_16b21
 
 Func_16910: ; 16910 (5:6910)
-	ld a, [$cb94]
+	ld a, [wSaveBlock2]
 	or a
 	jp nz, Func_16923
 	ld hl, sp+$b
@@ -29473,7 +29474,7 @@ Func_16c78: ; 16c78 (5:6c78)
 Func_16c8e: ; 16c8e (5:6c8e)
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld hl, sp+$b
 	ld [hl], a
 	pop hl
@@ -29482,7 +29483,7 @@ Func_16c8e: ; 16c8e (5:6c8e)
 	call GetHLAtSPPlus6
 	pop de
 	add hl, de
-	ld de, $ca44
+	ld de, wca44
 	add hl, de
 	ld a, [hl]
 	push af
@@ -30004,14 +30005,14 @@ Func_17065: ; 17065 (5:7065)
 Func_17080: ; 17080 (5:7080)
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld c, a
 	call GetHLAtSPPlus10
 	push hl
 	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
-	ld de, $ca44
+	ld de, wca44
 	add hl, de
 	ld a, [hl]
 	push af
@@ -32418,7 +32419,7 @@ Func_20ab0: ; 20ab0
 	ld a, $3
 	call GetSRAMBank_ReadOnly
 	read_hl_from_sp_plus $32
-	ld de, $ca44
+	ld de, wca44
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2f
@@ -34371,7 +34372,7 @@ Func_2193a: ; 2193a
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	ld c, $0
 Func_21988: ; 21988 (8:5988)
 	ld a, c
@@ -34503,7 +34504,7 @@ Func_21a51: ; 21a51 (8:5a51)
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	ld c, $0
 Func_21a6d: ; 21a6d (8:5a6d)
 	ld a, c
@@ -34635,7 +34636,7 @@ Func_21b0d: ; 21b0d
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	ld c, $0
 Func_21b54: ; 21b54 (8:5b54)
 	ld a, c
@@ -34871,7 +34872,7 @@ Func_21cde: ; 21cde (8:5cde)
 	ld a, [hl]
 	cp $4
 	jp nc, Func_21d47
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$c
 	reg16swap de, hl
 	ld hl, $10e
@@ -34894,7 +34895,7 @@ Func_21d11: ; 21d11 (8:5d11)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	pop bc
 	ld hl, sp+$2
 	ld a, [hl]
@@ -35021,7 +35022,7 @@ Func_21de0: ; 21de0 (8:5de0)
 	ld c, l
 	ld b, h
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$e
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -35031,7 +35032,7 @@ Func_21de0: ; 21de0 (8:5de0)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	call GetHLAtSPPlus7
 	write_hl_to_sp_plus $33
 	pop bc
@@ -35076,7 +35077,7 @@ Func_21e76: ; 21e76 (8:5e76)
 	read_hl_from_sp_plus $33
 	pop de
 	call FarCall
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$c
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -35883,7 +35884,7 @@ Func_22430: ; 22430 (8:6430)
 	ld e, a
 	ld hl, $f3
 	add hl, sp
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, $f8
 	add hl, sp
 	ld a, [hl]
@@ -35971,7 +35972,7 @@ Func_224dc: ; 224dc (8:64dc)
 	cp $4
 	jp nc, Func_2253a
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop bc
 	push bc
 	ld a, c
@@ -36050,7 +36051,7 @@ Func_2255f: ; 2255f (8:655f)
 	pop de
 	push bc
 	push de
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop de
 	push de
 	ld d, $0
@@ -36145,7 +36146,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld e, a
 	ld hl, $ed
 	add hl, sp
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, $d1
 	add hl, sp
@@ -36362,7 +36363,7 @@ Func_22701: ; 22701 (8:6701)
 	ld e, a
 	ld hl, $ed
 	add hl, sp
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, $d1
 	add hl, sp
@@ -37289,7 +37290,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	ld e, [hl]
 	ld hl, sp+$d
 	ld [hl], e
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	read_hl_from_sp_plus $12
 	ld de, $c
 	add hl, de
@@ -37560,7 +37561,7 @@ Func_230ad: ; 230ad (8:70ad)
 	ld h, b
 	ld bc, $11
 	call MemCopy
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	read_hl_from_sp_plus $16
 	ld de, $c6
 	add hl, de
@@ -45810,7 +45811,7 @@ Func_30289: ; 30289 (c:4289)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, a
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
@@ -45834,7 +45835,7 @@ Func_30289: ; 30289 (c:4289)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, a
-	call Func_2152
+	call BackUpAttrMapRectangle
 	pop bc
 	pop bc
 	pop bc
@@ -45857,7 +45858,7 @@ Func_302ce: ; 302ce (c:42ce)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, a
-	call Func_21ca
+	call RestoreTileMapRectangle
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
@@ -45881,7 +45882,7 @@ Func_302ce: ; 302ce (c:42ce)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, a
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	pop bc
 	pop bc
 	pop bc
@@ -46392,7 +46393,7 @@ Func_306db: ; 306db (c:46db)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -46416,7 +46417,7 @@ Func_306db: ; 306db (c:46db)
 	jp z, Func_3075b
 	cp $33
 	jp nz, Func_30786
-	ld a, [$ca6c]
+	ld a, [wSaveScratchca6c]
 	cp $1
 	jp nc, Func_30758
 	ld a, e
@@ -47310,7 +47311,7 @@ Func_30da7: ; 30da7 (c:4da7)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld a, [hl]
 	dec a
@@ -47358,7 +47359,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	add sp, -$36
 	push bc
 	push de
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -47708,7 +47709,7 @@ Func_3103d: ; 3103d
 	cp $33
 	jp nz, Func_31154
 	push hl
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -47716,7 +47717,7 @@ Func_3103d: ; 3103d
 	push af
 	ld e, l
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld a, [hl]
 	dec a
@@ -47818,7 +47819,7 @@ Func_3111c: ; 3111c (c:511c)
 Func_31154: ; 31154 (c:5154)
 	push hl
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, BANK(Data_64093)
 	ld a, $3
 	call FarCall
@@ -48015,7 +48016,7 @@ Func_312a4: ; 312a4
 	dec hl
 Func_312c7: ; 312c7 (c:52c7)
 	push hl
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -48260,7 +48261,7 @@ Func_31475: ; 31475
 Func_3149e: ; 3149e
 	push de
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -48453,7 +48454,7 @@ Func_3160c: ; 3160c (c:560c)
 	ld e, $1
 	call FarCall
 Func_3161f: ; 3161f (c:561f)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -48470,7 +48471,7 @@ Func_3161f: ; 3161f (c:561f)
 	call GetHLAtSPPlus8
 	ld de, $7
 	add hl, de
-	ld a, [$ca6c]
+	ld a, [wSaveScratchca6c]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -48629,7 +48630,7 @@ Func_3175f: ; 3175f
 	add sp, -$3e
 	push de
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -49153,7 +49154,7 @@ Func_31bbe: ; 31bbe (c:5bbe)
 	add sp, -$58
 	push de
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -49199,7 +49200,7 @@ Func_31c03: ; 31c03 (c:5c03)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -49237,7 +49238,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	dec a
 	ld e, a
 	ld hl, sp+$29
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$5d
 	ld a, [hl]
 	ld hl, sp+$5a
@@ -49254,7 +49255,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$35
@@ -49273,7 +49274,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -49292,7 +49293,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	call WriteHLToSPPlus6
 	pop bc
@@ -49442,7 +49443,7 @@ Func_31d7a: ; 31d7a (c:5d7a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$56
@@ -49466,7 +49467,7 @@ Func_31d95: ; 31d95 (c:5d95)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -49487,7 +49488,7 @@ Func_31d95: ; 31d95 (c:5d95)
 	add hl, bc
 	ld de, $23
 	add hl, de
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -49509,7 +49510,7 @@ Func_31d95: ; 31d95 (c:5d95)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -49530,7 +49531,7 @@ Func_31d95: ; 31d95 (c:5d95)
 	add hl, bc
 	ld de, $23
 	add hl, de
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld [hl], $0
 Func_31e12: ; 31e12 (c:5e12)
@@ -49569,7 +49570,7 @@ Func_31e24: ; 31e24 (c:5e24)
 	dec a
 	ld e, a
 	ld hl, sp+$29
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_6086c
 	pop bc
 	push bc
@@ -49610,7 +49611,7 @@ Func_31e84: ; 31e84 (c:5e84)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$56
@@ -49634,7 +49635,7 @@ Func_31eb7: ; 31eb7 (c:5eb7)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -49655,7 +49656,7 @@ Func_31eb7: ; 31eb7 (c:5eb7)
 	add hl, bc
 	ld de, $23
 	add hl, de
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -49677,7 +49678,7 @@ Func_31eb7: ; 31eb7 (c:5eb7)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -49698,7 +49699,7 @@ Func_31eb7: ; 31eb7 (c:5eb7)
 	add hl, bc
 	ld de, $23
 	add hl, de
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld [hl], $0
 Func_31f34: ; 31f34 (c:5f34)
@@ -49741,7 +49742,7 @@ Func_31f4e: ; 31f4e (c:5f4e)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -49935,7 +49936,7 @@ Func_320d8: ; 320d8
 	ld a, [hl]
 	cp $2
 	jp z, Func_3214e
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -50167,7 +50168,7 @@ IF DEF(STAR)
 .okay
 ENDC
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$4
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -50598,7 +50599,7 @@ Func_325ce: ; 325ce (c:65ce)
 Func_325d5: ; 325d5 (c:65d5)
 	add sp, -$52
 	push af
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$31
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -50608,7 +50609,7 @@ Func_325d5: ; 325d5 (c:65d5)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$53
 	ld e, [hl]
 	push de
@@ -50679,7 +50680,7 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld e, a
 	dec e
 	ld hl, sp+$4
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_4f8ec
 	pop af
 	push af
@@ -50846,7 +50847,7 @@ Func_32800: ; 32800 (c:6800)
 Func_32822: ; 32822 (c:6822)
 	push hl
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -50953,7 +50954,7 @@ Func_328c4: ; 328c4 (c:68c4)
 	push de
 	ld hl, sp+$19
 	ld [hl], $ff
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -50965,12 +50966,12 @@ Func_328c4: ; 328c4 (c:68c4)
 	ld c, $0
 Func_328e8: ; 328e8 (c:68e8)
 	ld a, c
-	ld hl, $ca6c
+	ld hl, wSaveScratchca6c
 	cp [hl]
 	jp nc, Func_32916
 	ld e, c
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$1d
@@ -50978,7 +50979,7 @@ Func_328e8: ; 328e8 (c:68e8)
 	jp nz, Func_32912
 	ld e, c
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld a, $63
 	sub [hl]
@@ -50997,7 +50998,7 @@ Func_32916: ; 32916 (c:6916)
 	ld a, [hl]
 	cp $ff
 	jp nz, Func_3292e
-	ld a, [$ca6c]
+	ld a, [wSaveScratchca6c]
 	cp $14
 	jp nc, Func_3292e
 	ld hl, sp+$1a
@@ -51021,14 +51022,14 @@ Func_3293d: ; 3293d (c:693d)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	cp [hl]
 	jp nz, Func_32968
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	inc hl
 	ld a, $63
@@ -51495,7 +51496,7 @@ Func_32c7d: ; 32c7d (c:6c7d)
 	ld hl, sp+$33
 	ld [hl], e
 Func_32c96: ; 32c96 (c:6c96)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -52074,7 +52075,7 @@ Func_3312f: ; 3312f (c:712f)
 	call Func_30289
 	pop bc
 	pop bc
-	callba_hli Func_6f512
+	callba_hli AskRepairRobots
 	pop hl
 	push hl
 	push hl
@@ -52309,7 +52310,7 @@ Data_333b3: ; 333b3
 
 Func_333ba:: ; 333ba
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -52328,7 +52329,7 @@ Func_333ba:: ; 333ba
 Func_333e0: ; 333e0
 	add sp, -$4e
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -52348,7 +52349,7 @@ Func_333e0: ; 333e0
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $1d
 	add hl, de
@@ -52371,13 +52372,13 @@ Func_333e0: ; 333e0
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	ld e, a
 	dec e
 	ld hl, sp+$4
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	call GetHLAtSPPlus9
 	reg16swap de, hl
 	pop hl
@@ -52895,7 +52896,7 @@ Func_3380c: ; 3380c (c:780c)
 	jp Func_338ef
 
 Func_3381e: ; 3381e (c:781e)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -52973,7 +52974,7 @@ Func_3387c: ; 3387c (c:787c)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	inc hl
 	reg16swap de, hl
@@ -53004,7 +53005,7 @@ Func_338b8: ; 338b8 (c:78b8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $1f
 	add hl, de
@@ -53469,7 +53470,7 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	ld hl, -$8e
 	add hl, sp
 	ld sp, hl
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -53488,7 +53489,7 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $b
 	add hl, de
@@ -53517,7 +53518,7 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	push af
@@ -53536,7 +53537,7 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	ld e, a
 	dec e
 	ld hl, sp+$60
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld a, BANK(Text_66ea7)
 	ld [wFarCallDestBank], a
 	ld hl, sp+$65
@@ -53766,14 +53767,14 @@ Func_33db7: ; 33db7 (c:7db7)
 	ld a, l
 	or h
 	jp nz, Func_33ef7
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld l, [hl]
 	push hl
@@ -53786,7 +53787,7 @@ Func_33db7: ; 33db7 (c:7db7)
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld a, [hl]
 	pop de
@@ -53896,7 +53897,7 @@ Func_33f72: ; 33f72 (c:7f72)
 	add hl, bc
 	ld a, l
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -53905,7 +53906,7 @@ Func_33f72: ; 33f72 (c:7f72)
 	push hl
 	ld e, a
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld a, [hl]
 	ld l, a
@@ -54363,7 +54364,7 @@ Func_4c4b3: ; 4c4b3 (13:44b3)
 	jp Func_4c4f6
 
 Func_4c4ca: ; 4c4ca (13:44ca)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -54416,7 +54417,7 @@ Func_4c4f8: ; 4c4f8 (13:44f8)
 Func_4c54a: ; 4c54a (13:454a)
 	ld hl, sp+$0
 	ld [hl], $0
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -54439,7 +54440,7 @@ Func_4c563: ; 4c563 (13:4563)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -54568,7 +54569,7 @@ Func_4c68a: ; 4c68a
 	ld a, [hl]
 	cp $1
 	jp nz, Func_4c726
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -54695,7 +54696,7 @@ Func_4c7df: ; 4c7df (13:47df)
 	push de
 	ld hl, sp+$2
 	ld [hl], $0
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -54718,7 +54719,7 @@ Func_4c7f9: ; 4c7f9 (13:47f9)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -55914,7 +55915,7 @@ Func_4d2ca: ; 4d2ca (13:52ca)
 	ld a, [wc319]
 	cp $81
 	jp nz, Func_4d2ec
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$67
 	reg16swap de, hl
 	ld a, [wc307]
@@ -55922,13 +55923,13 @@ Func_4d2ca: ; 4d2ca (13:52ca)
 	jp Func_4d303
 
 Func_4d2ec: ; 4d2ec (13:52ec)
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$44
 	reg16swap de, hl
 	ld a, [wc308]
 	call FarCall
 Func_4d303: ; 4d303 (13:5303)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -56556,7 +56557,7 @@ Data_4d7ce: ; 4d7ce
 Func_4d7d6: ; 4d7d6 (13:57d6)
 	push de
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -56613,7 +56614,7 @@ Func_4d84e: ; 4d84e (13:584e)
 	ld a, [wc319]
 	cp $81
 	jp nz, Func_4d891
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$61
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -56628,7 +56629,7 @@ Func_4d84e: ; 4d84e (13:584e)
 	jp Func_4d8b5
 
 Func_4d891: ; 4d891 (13:5891)
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$3e
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -58596,7 +58597,7 @@ Func_4e58b: ; 4e58b
 	inc hl
 	ld a, [hl]
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -59392,7 +59393,7 @@ Func_4eb71: ; 4eb71
 	or h
 	jp nz, Func_4ec1d
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -59405,7 +59406,7 @@ Func_4eb71: ; 4eb71
 	add d
 	ld hl, wc2fd
 	add [hl]
-	ld [$c985], a
+	ld [wSaveScratchBirthMonth], a
 	ld a, [wc2fe]
 	add a
 	ld d, a
@@ -59414,7 +59415,7 @@ Func_4eb71: ; 4eb71
 	add d
 	ld hl, wc2ff
 	add [hl]
-	ld [$c986], a
+	ld [wSaveScratchBirthDay], a
 	pop bc
 	ld a, c
 	ld [$c987], a
@@ -59449,7 +59450,7 @@ Func_4ec2b: ; 4ec2b (13:6c2b)
 	push af
 	push bc
 	push de
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -59535,7 +59536,7 @@ Func_4ecbb: ; 4ecbb (13:6cbb)
 
 Func_4eccc: ; 4eccc (13:6ccc)
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -59572,7 +59573,7 @@ Func_4ed0a: ; 4ed0a (13:6d0a)
 
 Func_4ed0e: ; 4ed0e (13:6d0e)
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -59632,7 +59633,7 @@ Func_4ed70: ; 4ed70 (13:6d70)
 	push de
 	ld hl, sp+$2
 	ld [hl], $ff
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -59725,7 +59726,7 @@ Func_4ee10: ; 4ee10 (13:6e10)
 
 Func_4ee21: ; 4ee21 (13:6e21)
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -59762,7 +59763,7 @@ Func_4ee5f: ; 4ee5f (13:6e5f)
 
 Func_4ee63: ; 4ee63 (13:6e63)
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -60834,7 +60835,7 @@ Pointers_4f713: ; 4f713
 
 Func_4f800: ; 4f800 (13:7800)
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -60843,7 +60844,7 @@ Func_4f800: ; 4f800 (13:7800)
 	push hl
 	ld e, a
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld c, [hl]
 	pop hl
@@ -60883,7 +60884,7 @@ Func_4f800: ; 4f800 (13:7800)
 Func_4f850: ; 4f850
 	add sp, -$1e
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -60982,7 +60983,7 @@ Func_4f978: ; 4f978 (13:7978)
 Func_4f981: ; 4f981 (13:7981)
 	pop af
 	call OverworldPlaySong
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -61008,7 +61009,7 @@ Func_4f99d: ; 4f99d (13:799d)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	dec a
@@ -61181,7 +61182,7 @@ Func_4fb57: ; 4fb57 (13:7b57)
 
 Func_4fb58: ; 4fb58 (13:7b58)
 	add sp, -$2c
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -61213,7 +61214,7 @@ Func_4fb72: ; 4fb72 (13:7b72)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -61232,7 +61233,7 @@ Func_4fb72: ; 4fb72 (13:7b72)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -61324,7 +61325,7 @@ Func_4fc38: ; 4fc38 (13:7c38)
 	ld a, [hl]
 	cp $4
 	jp nc, Func_4fd2c
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -61484,7 +61485,7 @@ Func_4fe0e: ; 4fe0e (13:7e0e)
 	inc e
 	dec e
 	jp nz, Func_4fec1
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -61510,7 +61511,7 @@ Func_4fe2b: ; 4fe2b (13:7e2b)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -61580,12 +61581,12 @@ Func_4fef1: ; 4fef1 (13:7ef1)
 	push bc
 	push bc
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [$ca9c]
+	ld a, [wca9c]
 	and $2
 	push af
 	ld a, l
@@ -61704,12 +61705,12 @@ Func_50185: ; 50185 (14:4185)
 	ret
 
 Func_5019a: ; 5019a
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	ld e, a
-	ld a, [$ca9c]
+	ld a, [wca9c]
 	ld l, a
 	push hl
 	ld a, e
@@ -62182,7 +62183,7 @@ Func_5047f: ; 5047f
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld l, $0
 	ld a, [wc307]
 	or a
@@ -62223,14 +62224,14 @@ Func_504dd: ; 504dd (14:44dd)
 	ld l, a
 Func_504e1: ; 504e1 (14:44e1)
 	push hl
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	ld e, a
 	pop hl
 	ld a, l
-	ld [$ca9c], a
+	ld [wca9c], a
 	ld a, e
 	call GetSRAMBank
 	callba_hli Func_4fef1
@@ -62263,7 +62264,7 @@ Func_5053b: ; 5053b
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld l, $5
 	push hl
 	ld c, $14
@@ -62925,7 +62926,7 @@ Func_509b3: ; 509b3
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop bc
 	pop hl
 	ld a, [wc2f6]
@@ -63100,7 +63101,7 @@ Func_50af6: ; 50af6 (14:4af6)
 Func_50b19:: ; 50b19
 	add sp, -$30
 	push af
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63110,7 +63111,7 @@ Func_50b19:: ; 50b19
 	ld e, a
 	dec e
 	ld hl, sp+$2
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	pop hl
 	ld a, l
 	call GetSRAMBank
@@ -63179,7 +63180,7 @@ Func_50b55: ; 50b55
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld l, $5
 	push hl
 	ld c, $14
@@ -63191,7 +63192,7 @@ Func_50b55: ; 50b55
 	ld e, $14
 	ld hl, $d
 	call Func_50185
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63307,7 +63308,7 @@ Data_50cf6: ; 50cf6
 	db "<HIRA>を すてても よろしいてﾞすか<KATA>?", $00
 
 Func_50d09:: ; 50d09
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63321,7 +63322,7 @@ Func_50d09:: ; 50d09
 
 Func_50d27: ; 50d27 (14:4d27)
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63349,7 +63350,7 @@ Func_50d44: ; 50d44 (14:4d44)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -63381,7 +63382,7 @@ Func_50d7c: ; 50d7c (14:4d7c)
 	ret
 
 Func_50d85:: ; 50d85
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63407,7 +63408,7 @@ Func_50da3: ; 50da3
 	jp z, Func_50dfe
 	or a
 	jp nz, Func_50ebc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63420,7 +63421,7 @@ Func_50dd4: ; 50dd4 (14:4dd4)
 	jp nc, Func_50dfa
 	ld e, c
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$5
@@ -63428,7 +63429,7 @@ Func_50dd4: ; 50dd4 (14:4dd4)
 	jp nz, Func_50df6
 	ld e, c
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -63444,7 +63445,7 @@ Func_50dfa: ; 50dfa (14:4dfa)
 	jp Func_50ebc
 
 Func_50dfe: ; 50dfe (14:4dfe)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63458,7 +63459,7 @@ Func_50e15: ; 50e15 (14:4e15)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$5
@@ -63467,7 +63468,7 @@ Func_50e15: ; 50e15 (14:4e15)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	inc hl
 	ld e, [hl]
@@ -63484,7 +63485,7 @@ Func_50e3e: ; 50e3e (14:4e3e)
 	jp Func_50ebc
 
 Func_50e42: ; 50e42 (14:4e42)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63497,7 +63498,7 @@ Func_50e59: ; 50e59 (14:4e59)
 	jp nc, Func_50e7c
 	ld e, c
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld a, [hl]
 	or a
@@ -63521,7 +63522,7 @@ Func_50e7c: ; 50e7c (14:4e7c)
 	jp Func_50ebc
 
 Func_50e80: ; 50e80 (14:4e80)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63535,7 +63536,7 @@ Func_50e97: ; 50e97 (14:4e97)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	ld a, [hl]
 	or a
@@ -63574,7 +63575,7 @@ Func_50ec6: ; 50ec6
 	jp z, Func_50f14
 	cp $2
 	jp nz, Func_50f4f
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63611,7 +63612,7 @@ Func_50f10: ; 50f10 (14:4f10)
 	jp Func_50f4f
 
 Func_50f14: ; 50f14 (14:4f14)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -63671,7 +63672,7 @@ Func_50f58: ; 50f58 (14:4f58)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld l, [hl]
 	push hl
@@ -64086,7 +64087,7 @@ Func_512e1: ; 512e1 (14:52e1)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -64258,7 +64259,7 @@ Func_51429: ; 51429 (14:5429)
 	jp Func_513d6
 
 Func_51433: ; 51433 (14:5433)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -64290,7 +64291,7 @@ Func_5144b: ; 5144b (14:544b)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -64309,7 +64310,7 @@ Func_5144b: ; 5144b (14:544b)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -64349,7 +64350,7 @@ Func_514ae: ; 514ae (14:54ae)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -64400,7 +64401,7 @@ Func_5153f: ; 5153f (14:553f)
 	ld b, h
 	ld de, $1412
 	ld hl, $0
-	call Func_2124
+	call BackUpTileMapRectangle
 	set_farcall_addrs_hli DisplayPartyMenu_
 	xor a
 	call FarCall
@@ -64595,7 +64596,7 @@ Func_516e6: ; 516e6 (14:56e6)
 	ld hl, sp+$27
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop de
 	pop af
 	push af
@@ -64677,7 +64678,7 @@ Func_5178a: ; 5178a
 	push bc
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	set_farcall_addrs_hli Func_7dfc
 	pop bc
 	pop hl
@@ -65493,7 +65494,7 @@ Func_51ea4: ; 51ea4
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -65507,21 +65508,21 @@ Func_51ea4: ; 51ea4
 	cp $d
 	jp nz, Func_520ef
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	pop bc
 	ld e, c
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
 	ld [hl], e
 	ld e, c
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$1
@@ -65593,7 +65594,7 @@ Func_51fee: ; 51fee (14:5fee)
 
 Func_5200b: ; 5200b (14:600b)
 	push bc
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -65601,7 +65602,7 @@ Func_5200b: ; 5200b (14:600b)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -65609,7 +65610,7 @@ Func_5200b: ; 5200b (14:600b)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	inc hl
 	ld e, [hl]
@@ -65758,14 +65759,14 @@ Func_52179: ; 52179 (14:6179)
 	ld a, [hl]
 	cp $2
 	jp nz, Func_521c7
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	jp Func_521da
 
 Func_521c7: ; 521c7 (14:61c7)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -65906,7 +65907,7 @@ Func_52326: ; 52326
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld l, $5
 	push hl
 	ld c, $14
@@ -66147,7 +66148,7 @@ Func_524b6: ; 524b6 (14:64b6)
 	ld b, h
 	ld de, $1412
 	ld hl, $0
-	call Func_2124
+	call BackUpTileMapRectangle
 	call FillVisibleAreaWithBlankTile
 	call Func_1f30
 	ld c, $8
@@ -66199,7 +66200,7 @@ Func_52591: ; 52591 (14:6591)
 	dec a
 	ld e, a
 	ld hl, sp+$45
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	read_hl_from_sp_plus $4a
 	push hl
 	ld hl, sp+$4c
@@ -66931,8 +66932,8 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
-	set_farcall_addrs_hli Func_16007
+	call BackUpTileMapRectangle
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -66950,51 +66951,51 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld c, [hl]
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld a, [hl]
 	push af
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, $ca44
+	ld de, wca44
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld [hl], a
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, $ca58
+	ld de, wca58
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld [hl], a
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, $ca44
+	ld de, wca44
 	add hl, de
 	ld [hl], c
 	pop af
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, $ca58
+	ld de, wca58
 	add hl, de
 	ld [hl], a
 	jp Func_52cdc
@@ -67091,7 +67092,7 @@ Func_52d1f: ; 52d1f (14:6d1f)
 
 Func_52d58: ; 52d58 (14:6d58)
 	push hl
-	ld bc, $c9b8
+	ld bc, wSaveScratchParty
 	pop hl
 	push hl
 	inc hl
@@ -68921,207 +68922,7 @@ Data_539fd:
 Data_53a06:
 	db "<HIRA>うお  <KATA>", $00
 
-Func_53a0d: ; 53a0d (14:7a0d)
-	push bc
-	push bc
-	cp $ab
-	jp c, Func_53a1c
-	cp $af
-	jp nc, Func_53a1c
-	jp Func_53b1b
-
-Func_53a1c: ; 53a1c (14:7a1c)
-	push de
-	push af
-	set_farcall_addrs_hli Func_16007
-	ld de, $19
-	ld a, $3
-	call FarCall
-	ld hl, sp+$7
-	ld [hl], a
-	pop af
-	push af
-	dec a
-	ld b, $8
-	call DivideAbyB
-	ld hl, sp+$6
-	ld [hl], a
-	pop af
-	dec a
-	and $7
-	ld l, a
-	pop de
-	push hl
-	push de
-	inc e
-	dec e
-	jp nz, Func_53a59
-	ld hl, sp+$6
-	ld e, [hl]
-	ld d, $0
-	ld hl, $ca70
-	add hl, de
-	ld c, [hl]
-	jp Func_53a63
-
-Func_53a59: ; 53a59 (14:7a59)
-	ld hl, sp+$6
-	ld e, [hl]
-	ld d, $0
-	ld hl, $ca86
-	add hl, de
-	ld c, [hl]
-Func_53a63: ; 53a63 (14:7a63)
-	pop de
-	pop hl
-	ld a, c
-	ld b, l
-	call RightShiftA
-	and $1
-	cp $1
-	jp nz, Func_53a7a
-	ld hl, sp+$3
-	ld a, [hl]
-	call GetSRAMBank
-	jp Func_53b1b
-
-Func_53a7a: ; 53a7a (14:7a7a)
-	ld b, l
-	ld a, $1
-	call LeftShiftA
-	or c
-	ld c, a
-	inc e
-	dec e
-	jp nz, Func_53a94
-	ld hl, sp+$2
-	ld e, [hl]
-	ld d, $0
-	ld hl, $ca70
-	add hl, de
-	ld [hl], c
-	jp Func_53a9e
-
-Func_53a94: ; 53a94 (14:7a94)
-	ld hl, sp+$2
-	ld e, [hl]
-	ld d, $0
-	ld hl, $ca86
-	add hl, de
-	ld [hl], c
-Func_53a9e: ; 53a9e (14:7a9e)
-	ld hl, sp+$3
-	ld a, [hl]
-	call GetSRAMBank
-	ld hl, sp+$1
-	ld [hl], $0
-	ld hl, sp+$0
-	ld [hl], $0
-Func_53aac: ; 53aac (14:7aac)
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $a8
-	jp nc, Func_53b1b
-	ld e, $1
-	ld hl, sp+$0
-	ld a, [hl]
-	call Func_53b1e
-	cp $1
-	jp nz, Func_53b11
-	ld hl, sp+$1
-	ld a, [hl]
-	inc a
-	ld hl, sp+$1
-	ld [hl], a
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $95
-	jp nz, Func_53aee
-	ld hl, sp+$1
-	ld a, [hl]
-	cp $96
-	jp nz, Func_53aeb
-	set_farcall_addrs_hli EventFlagAction
-	ld e, $1
-	ld hl, $f3
-	call FarCall
-Func_53aeb: ; 53aeb (14:7aeb)
-	jp Func_53b11
-
-Func_53aee: ; 53aee (14:7aee)
-	ld hl, sp+$0
-	ld a, [hl]
-	cp $a7
-	jp nz, Func_53b11
-	ld hl, sp+$1
-	ld a, [hl]
-	cp $a8
-	jp nz, Func_53b11
-	set_farcall_addrs_hli EventFlagAction
-	ld e, $1
-	ld hl, $f4
-	call FarCall
-Func_53b11: ; 53b11 (14:7b11)
-	ld hl, sp+$0
-	ld a, [hl]
-	inc a
-	ld hl, sp+$0
-	ld [hl], a
-	jp Func_53aac
-
-Func_53b1b: ; 53b1b (14:7b1b)
-	pop bc
-	pop bc
-	ret
-
-Func_53b1e: ; 53b1e (14:7b1e)
-	push bc
-	push de
-	push af
-	set_farcall_addrs_hli Func_16007
-	ld de, $19
-	ld a, $3
-	call FarCall
-	ld hl, sp+$4
-	ld [hl], a
-	pop af
-	push af
-	ld b, $8
-	call DivideAbyB
-	ld l, a
-	pop af
-	and $7
-	ld c, a
-	pop de
-	push bc
-	inc e
-	dec e
-	jp nz, Func_53b55
-	ld e, l
-	ld d, $0
-	ld hl, $ca70
-	add hl, de
-	ld a, [hl]
-	jp Func_53b5d
-
-Func_53b55: ; 53b55 (14:7b55)
-	ld e, l
-	ld d, $0
-	ld hl, $ca86
-	add hl, de
-	ld a, [hl]
-Func_53b5d: ; 53b5d (14:7b5d)
-	push af
-	ld hl, sp+$4
-	ld a, [hl]
-	call GetSRAMBank
-	pop af
-	pop bc
-	ld b, c
-	call RightShiftA
-	and $1
-	pop bc
-	ret
+INCLUDE "engine/robodex/flags.asm"
 
 Func_53b6e::
 	ld a, $3
@@ -69149,7 +68950,7 @@ Func_53b6e::
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -69158,7 +68959,7 @@ Func_53b6e::
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2152
+	call BackUpAttrMapRectangle
 	set_farcall_addrs_hli Func_320d8
 	ld a, $2
 	call FarCall
@@ -69172,7 +68973,7 @@ Func_53b6e::
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -69181,7 +68982,7 @@ Func_53b6e::
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld l, $12
 	push hl
 	ld c, $14
@@ -69247,7 +69048,7 @@ Func_53c88::
 	jp Func_53e49
 
 Func_53cb4: ; 53cb4 (14:7cb4)
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -69288,7 +69089,7 @@ Func_53cb4: ; 53cb4 (14:7cb4)
 	jp Func_53e49
 
 Func_53d22: ; 53d22 (14:7d22)
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -69298,7 +69099,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	ld e, a
 	dec e
 	ld hl, sp+$23
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$28
 	ld a, [hl]
 	push af
@@ -69365,7 +69166,7 @@ Func_53dec: ; 53dec (14:7dec)
 	ld hl, $10e
 	call FarCall
 Func_53e02: ; 53e02 (14:7e02)
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -69375,7 +69176,7 @@ Func_53e02: ; 53e02 (14:7e02)
 	ld e, a
 	dec e
 	ld hl, sp+$23
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$28
 	ld a, [hl]
 	push af
@@ -69397,91 +69198,381 @@ Func_54000:
 	ret
 
 Data_54001: ; 54001
-	dr $54001, $54020
+	db 0, 0
+	db 11, 13
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_58d7a
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54020: ; 54020
-	dr $54020, $5403f
+	db 0, 0
+	db 12, 17
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_6ab70
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5403f: ; 5403f
-	dr $5403f, $5405e
+	db 4, 3
+	db 11, 11
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_2391e
+	dba Func_1746c
+	dbw 5, 0
+	dbw 5, 0
+	dba Func_dd5a
+	dbw 0, 0
 
 Data_5405e: ; 5405e
-	dr $5405e, $5407d
+	db 4, 4
+	db 11, 9
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_2391e
+	dba Func_1746c
+	dbw 5, 0
+	dbw 5, 0
+	dba Func_dd5a
+	dbw 0, 0
 
 Data_5407d: ; 5407d
-	dr $5407d, $5409c
+	db 4, 4
+	db 11, 9
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_23a68
+	dba Func_1746c
+	dbw 5, 0
+	dbw 5, 0
+	dba Func_dd5a
+	dbw 0, 0
 
 Data_5409c: ; 5409c
-	dr $5409c, $540bb
+	db 4, 5
+	db 11, 7
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_23a68
+	dba Func_1746c
+	dbw 5, 0
+	dbw 5, 0
+	dba Func_dd5a
+	dbw 0, 0
 
 Data_540bb: ; 540bb
-	dr $540bb, $540da
+	db 0, 3
+	db 15, 10
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_14f0e
+	dba Func_17454
+	dba Func_523f2
+	dba Func_52475
+	dbw 5, 0
+	dba Func_52b4f
 
 Data_540da: ; 540da
-	dr $540da, $540f9
+	db 13, 0
+	db 7, 15
+	dba Func_56694
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_55627
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_540f9: ; 540f9
-	dr $540f9, $54118
+	db 7, 0
+	db 13, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_513a2
+	dba Func_1743f
+	dba Func_16038
+	dba Func_160c2
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54118: ; 54118
-	dr $54118, $54137
+	db 10, 5
+	db 7, 7
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_55c41
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54137: ; 54137
-	dr $54137, $54156
+	db 0, 0
+	db 11, 7
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_55ce2
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54156: ; 54156
-	dr $54156, $54175
+	db 10, 0
+	db 10, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dbw 5, 0
+	dba Func_17454
+	dba Func_523f2
+	dba Func_52475
+	dbw 5, 0
+	dba Func_52b4f
 
 Data_54175: ; 54175
-	dr $54175, $54194
+	db 9, 0
+	db 11, 10
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_6af9d
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54194: ; 54194
-	dr $54194, $541b3
+	db 10, 0
+	db 10, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_50b55
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_541b3: ; 541b3
-	dr $541b3, $541d2
+	db 0, 9
+	db 7, 5
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_561cf
+	dbw 5, 0
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_541d2: ; 541d2
-	dr $541d2, $541f1
+	db 14, 13
+	db 6, 5
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_15281
+	dba Func_15297
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_541f1: ; 541f1
-	dr $541f1, $54210
+	db 11, 8
+	db 6, 5
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_15281
+	dba Func_15297
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54210: ; 54210
-	dr $54210, $5422f
+	db 0, 0
+	db 11, 7
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_55d5c
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5422f: ; 5422f
-	dr $5422f, $5424e
+	db 10, 0
+	db 10, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_1551f
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 5, 0
+	dba Func_52b4f
 
 Data_5424e: ; 5424e
-	dr $5424e, $5426d
+	db 0, 2
+	db 10, 10
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16377
+	dba Func_15bde
+	dba Func_1743f
+	dba Func_16038
+	dba Func_160c2
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5426d: ; 5426d
-	dr $5426d, $5428c
+	db 10, 0
+	db 10, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_50b55
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5428c: ; 5428c
-	dr $5428c, $542ab
+	db 0, 0
+	db 7, 9
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_5616f
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_542ab: ; 542ab
-	dr $542ab, $542ca
+	db 0, 3
+	db 15, 10
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_51ea4
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_542ca: ; 542ca
-	dr $542ca, $542e9
+	db 7, 0
+	db 10, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_562ec
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_542e9: ; 542e9
-	dr $542e9, $54308
+	db 7, 0
+	db 10, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_562ec
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54308: ; 54308
-	dr $54308, $54327
+	db 0, 3
+	db 15, 10
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_51ea4
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54327: ; 54327
-	dr $54327, $54346
+	db 7, 0
+	db 10, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_562ec
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54346: ; 54346
-	dr $54346, $54365
+	db 7, 0
+	db 10, 14
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_562ec
+	dba Func_1743f
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54365: ; 54365
-	dr $54365, $54384
+	db 8, 10
+	db 12, 8
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_1743f
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_54384: ; 54384
 	dr $54384, $54393
@@ -69490,37 +69581,189 @@ Data_54393: ; 54393
 	dr $54393, $543a2
 
 Data_543a2: ; 543a2
-	dr $543a2, $543c1
+	db 10, 0
+	db 10, 14
+	dba Func_573a4
+	dbw 5, 0
+	dbw 5, 0
+	dba Func_1743f
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_543c1: ; 543c1
-	dr $543c1, $543e0
+	db 0, 0
+	db 13, 18
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_578e9
+	dba Func_17454
+	dba Func_16038
+	dba Func_160c2
+	dbw 0, 0
+	dbw 0, 0
 
 Data_543e0: ; 543e0
-	dr $543e0, $543ff
+	db 10, 0
+	db 10, 14
+	dba Func_69902
+	dbw 5, 0
+	dbw 5, 0
+	dba Func_17454
+	dba Func_17454
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_543ff: ; 543ff
-	dr $543ff, $5441e
+	db 9, 0
+	db 11, 7
+	dba Func_696f3
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_555b6
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5441e: ; 5441e
-	dr $5441e, $5443d
+	db 9, 0
+	db 11, 5
+	dba Func_696f3
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_555b6
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5443d: ; 5443d
-	dr $5443d, $5445c
+	db 9, 0
+	db 11, 15
+	dba Func_68f92
+	dbw 5, 0
+	dba Func_69284
+	dba Func_68eeb
+	dba Func_1743f
+	dba Func_6934e
+	dba Func_69354
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5445c: ; 5445c
-	dr $5445c, $5447b
+	db 9, 0
+	db 11, 13
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_30328
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5447b: ; 5447b
-	dr $5447b, $5449a
+	db 0, 0
+	db 5, 12
+	dba Func_fb783
+	dbw 5, 0
+	dba Func_fb7f9
+	dba Func_fb8e9
+	dba Func_1743f
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5449a: ; 5449a
-	dr $5449a, $544b9
+	db 0, 2
+	db 20, 13
+	dba Func_4dbef
+	dbw 5, 0
+	dba Func_4e008
+	dba Func_4e1d3
+	dba Func_4e3a8
+	dba Func_4e175
+	dba Func_4e1a4
+	dbw 0, 0
+	dbw 0, 0
 
 Data_544b9: ; 544b9
-	dr $544b9, $544d8
+	db 10, 0
+	db 10, 6
+	dba Func_4e58b
+	dbw 5, 0
+	dba Func_4e813
+	dba Func_4eb71
+	dba Func_fb18e
+	dba Func_4e175
+	dba Func_4e1a4
+	dbw 0, 0
+	dbw 0, 0
 
 Data_544d8: ; 544d8
-	dr $544d8, $54767
+	db 15, 9
+	db 4, 4
+	dba Func_338f5
+	dbw 5, 0
+	dba Func_33a1f
+	dba Func_1743f
+	dba Func_152db
+	dba Func_33bb9
+	dba Func_33bc4
+	dbw 0, 0
+	dbw 0, 0
+
+Data_544f7: ; 544f7
+	dr $544f7, $54548
+
+Data_54548:
+	dr $54548, $545a5
+
+Data_545a5:: ; 545a5
+	dr $545a5, $545e4
+
+Data_545e4:: ; 545e4
+	dr $545e4, $54614
+
+Data_54614:: ; 54614
+	dr $54614, $5464c
+
+Data_5464c:: ; 5464c
+	dr $5464c, $54660
+
+Data_54660:: ; 54660
+	dr $54660, $54686
+
+Data_54686:: ; 54686
+	dr $54686, $546af
+
+Data_546af:: ; 546af
+	dr $546af, $546c1
+
+Data_546c1:: ; 546c1
+	dr $546c1, $546d0
+
+Data_546d0:: ; 546d0
+	dr $546d0, $546e0
+
+Data_546e0:: ; 546e0
+	dr $546e0, $546fd
+
+Data_546fd:: ; 546fd
+	dr $546fd, $54727
+
+Data_54727:: ; 54727
+	dr $54727, $54767
 
 Func_54767: ; 54767 (15:4767)
 	push hl
@@ -69551,7 +69794,7 @@ Func_54787: ; 54787 (15:4787)
 	call CompareHLtoDE
 	jp nc, Func_54826
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop bc
 	push bc
 	ld a, c
@@ -69577,13 +69820,13 @@ Func_54787: ; 54787 (15:4787)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	ld e, a
 	dec e
 	ld hl, sp+$27
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$2c
 	ld e, [hl]
 	pop af
@@ -69657,7 +69900,7 @@ Func_54846:
 	read_hl_from_sp_plus $3c
 	ld a, l
 	push af
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop af
 	pop de
 	push af
@@ -70049,7 +70292,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -70072,7 +70315,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $e
 	add hl, de
@@ -70095,7 +70338,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -70118,7 +70361,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $12
 	add hl, de
@@ -70141,7 +70384,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $16
 	add hl, de
@@ -70160,7 +70403,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $7
 	add hl, de
@@ -70182,7 +70425,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld c, [hl]
 	push bc
@@ -70452,7 +70695,7 @@ Func_54db3: ; 54db3 (15:4db3)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	call FarCall
 	ld hl, wc2e9
@@ -70469,7 +70712,7 @@ Func_54db3: ; 54db3 (15:4db3)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $16
 	add hl, de
@@ -70491,7 +70734,7 @@ Func_54e04: ; 54e04 (15:4e04)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $16
 	add hl, de
@@ -70514,7 +70757,7 @@ Func_54e1f: ; 54e1f (15:4e1f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $16
 	add hl, de
@@ -70595,7 +70838,7 @@ Func_54ee2: ; 54ee2 (15:4ee2)
 
 Func_54ee5: ; 54ee5 (15:4ee5)
 	add sp, -$52
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$2f
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -70605,7 +70848,7 @@ Func_54ee5: ; 54ee5 (15:4ee5)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$2
 	ld a, [hl]
 	add sp, $52
@@ -70613,7 +70856,7 @@ Func_54ee5: ; 54ee5 (15:4ee5)
 
 Func_54f0e: ; 54f0e (15:4f0e)
 	add sp, -$52
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$2f
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -70623,7 +70866,7 @@ Func_54f0e: ; 54f0e (15:4f0e)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$2
 	ld a, [hl]
 	push af
@@ -70695,7 +70938,7 @@ Func_54f0e: ; 54f0e (15:4f0e)
 	ld e, a
 	dec e
 	ld hl, sp+$4
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_53a0d
 	pop af
 	push af
@@ -71010,7 +71253,7 @@ Func_5527f: ; 5527f (15:527f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -71034,7 +71277,7 @@ Func_5527f: ; 5527f (15:527f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -71061,7 +71304,7 @@ Func_552d3: ; 552d3 (15:52d3)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $e
 	add hl, de
@@ -71085,7 +71328,7 @@ Func_552d3: ; 552d3 (15:52d3)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $12
 	add hl, de
@@ -71156,7 +71399,7 @@ Func_5539a: ; 5539a (15:539a)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld hl, $5
 	push hl
 	ld bc, $14
@@ -71279,7 +71522,7 @@ Func_55468: ; 55468 (15:5468)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -71298,7 +71541,7 @@ Func_55468: ; 55468 (15:5468)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -71635,7 +71878,7 @@ Func_5575d: ; 5575d (15:575d)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, $386
 	add hl, sp
 	reg16swap de, hl
@@ -71674,7 +71917,7 @@ Func_5575d: ; 5575d (15:575d)
 	ld e, a
 	ld hl, $3ab
 	add hl, sp
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, wc310
 	ld l, [hl]
 	ld h, $0
@@ -71689,7 +71932,7 @@ Func_5575d: ; 5575d (15:575d)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $b
 	add hl, de
@@ -72209,7 +72452,7 @@ Func_55c41:
 	ld b, d
 	ld de, $1412
 	ld hl, $0
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop de
 	pop hl
 	push de
@@ -72510,7 +72753,7 @@ Func_55ed2: ; 55ed2 (15:5ed2)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca44
+	ld hl, wca44
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -72522,7 +72765,7 @@ Func_55ef5: ; 55ef5 (15:5ef5)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -72578,7 +72821,7 @@ Func_55f3e: ; 55f3e (15:5f3e)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, $ca58
+	ld hl, wca58
 	add hl, de
 	ld l, [hl]
 	ld h, $0
@@ -72594,7 +72837,7 @@ Func_55f76: ; 55f76 (15:5f76)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	inc hl
 	ld l, [hl]
@@ -72727,7 +72970,7 @@ Func_56040: ; 56040 (15:6040)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -72952,7 +73195,7 @@ Func_561cf:
 	ld b, d
 	ld de, $1412
 	ld hl, $0
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop de
 	pop bc
 	ld hl, $d
@@ -73238,7 +73481,7 @@ Func_56423: ; 56423 (15:6423)
 	ld e, [hl]
 	ld hl, sp+$7
 	call Func_5601b
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -73281,7 +73524,7 @@ Func_56481: ; 56481 (15:6481)
 	ld e, [hl]
 	ld hl, sp+$7
 	call Func_55f95
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -73322,7 +73565,7 @@ Func_564dc: ; 564dc (15:64dc)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld l, $5
 	push hl
 	ld c, $14
@@ -73578,7 +73821,7 @@ Func_56732: ; 56732 (15:6732)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $1d
 	add hl, de
@@ -73598,13 +73841,13 @@ Func_56732: ; 56732 (15:6732)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	ld e, a
 	dec e
 	ld hl, sp+$3e
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	read_hl_from_sp_plus $43
 	pop de
 	pop af
@@ -73662,7 +73905,7 @@ Func_567d1: ; 567d1 (15:67d1)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $b
 	add hl, de
@@ -74732,11 +74975,9 @@ Func_57398: ; 57398 (15:7398)
 	ret
 
 Data_5739c:
-	dr $5739c, $573a2
+	dr $5739c, $573a4
 
-Func_573a2:
-	add hl, bc
-	rlca
+Func_573a4:
 	push hl
 	add sp, -$1a
 	ld hl, sp+$1a
@@ -74807,7 +75048,7 @@ Func_5741d: ; 5741d (15:741d)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -75249,7 +75490,7 @@ Func_57777: ; 57777 (15:7777)
 	pop af
 	ld e, a
 	ld d, $0
-	ld hl, $ca70
+	ld hl, wSaveScratchDexSeenFlags
 	add hl, de
 	ld a, [hl]
 	ld b, c
@@ -75465,7 +75706,7 @@ Func_578e9:
 	ld h, $0
 	ld de, $8
 	call DivideHLByDESigned
-	ld de, $ca70
+	ld de, wSaveScratchDexSeenFlags
 	add hl, de
 	ld a, [hl]
 	pop bc
@@ -75488,7 +75729,7 @@ Func_578e9:
 	push bc
 	ld e, c
 	ld hl, sp+$6
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	read_hl_from_sp_plus $34
 	dec hl
 	ld e, l
@@ -75529,7 +75770,7 @@ Func_578e9:
 	sub l
 	ld c, a
 	ld d, $0
-	ld hl, $ca86
+	ld hl, wSaveScratchDexCaughtFlags
 	add hl, de
 	ld a, [hl]
 	ld b, c
@@ -75929,7 +76170,7 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$6
@@ -75953,7 +76194,7 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	push hl
 	ld l, a
@@ -75969,7 +76210,7 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -75990,7 +76231,7 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -76220,7 +76461,7 @@ Func_57e52: ; 57e52 (15:7e52)
 Func_57e7b: ; 57e7b (15:7e7b)
 	push af
 	push de
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	pop de
 	pop af
 	jp FarCall
@@ -76393,8 +76634,8 @@ Func_58df9: ; 58df9 (16:4df9)
 	push bc
 	ld de, $1009
 	ld hl, $409
-	call Func_2124
-	set_farcall_addrs_hli Func_16007
+	call BackUpTileMapRectangle
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -76432,7 +76673,7 @@ Func_58e5b: ; 58e5b (16:4e5b)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -79496,12 +79737,12 @@ Func_5d35f: ; 5d35f (17:535f)
 	push af
 	add sp, -$54
 	xor a
-Func_5d363: ; 5d363 (17:5363)
+.loop
 	ld hl, sp+$55
 	cp [hl]
-	jp nc, Func_5d3d3
+	jp nc, .break
 	push af
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop af
 	push af
 	ld hl, sp+$2
@@ -79512,7 +79753,7 @@ Func_5d363: ; 5d363 (17:5363)
 	ld e, a
 	dec e
 	ld hl, sp+$25
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$2a
 	ld e, [hl]
 	push de
@@ -79551,9 +79792,9 @@ Func_5d363: ; 5d363 (17:5363)
 	call FarCall
 	pop af
 	inc a
-	jp Func_5d363
+	jp .loop
 
-Func_5d3d3: ; 5d3d3 (17:53d3)
+.break
 	add sp, $56
 	ret
 
@@ -79723,7 +79964,7 @@ Func_5d4a6:
 	ld e, l
 	ld hl, sp+$6a
 	ld [hl], e
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop af
 	pop bc
 	push af
@@ -79856,7 +80097,7 @@ Func_5d4a6:
 	dec a
 	ld e, a
 	ld hl, sp+$14
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$16
 	ld a, [hl]
 	or a
@@ -80604,7 +80845,7 @@ Func_5daa7: ; 5daa7 (17:5aa7)
 	ld c, l
 	ld b, h
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$2
 	reg16swap de, hl
 	ld hl, sp+$26
@@ -80671,7 +80912,7 @@ Func_5db1b: ; 5db1b (17:5b1b)
 	ld c, l
 	ld b, h
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$2
 	reg16swap de, hl
 	ld hl, sp+$27
@@ -80990,7 +81231,7 @@ Func_5dd7d: ; 5dd7d (17:5d7d)
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, a
-	call Func_21ca
+	call RestoreTileMapRectangle
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -81391,7 +81632,7 @@ Func_5e0f4: ; 5e0f4 (17:60f4)
 	ld c, l
 	ld b, h
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	call GetHLAtSPPlus4
 	ld a, l
 	ld hl, sp+$33
@@ -81417,7 +81658,7 @@ Func_5e132: ; 5e132 (17:6132)
 	jp Func_5e264
 
 Func_5e135: ; 5e135 (17:6135)
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop hl
 	push hl
 	ld a, l
@@ -81429,7 +81670,7 @@ Func_5e135: ; 5e135 (17:6135)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
@@ -81766,7 +82007,7 @@ Func_5e398: ; 5e398 (17:6398)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -81785,7 +82026,7 @@ Func_5e398: ; 5e398 (17:6398)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	push hl
 	ld hl, sp+$2
@@ -81802,7 +82043,7 @@ Func_5e398: ; 5e398 (17:6398)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -81821,7 +82062,7 @@ Func_5e398: ; 5e398 (17:6398)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$1
@@ -82335,7 +82576,7 @@ Func_60268: ; 60268 (18:4268)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -82365,7 +82606,7 @@ Func_60268: ; 60268 (18:4268)
 	ld e, a
 	dec e
 	ld hl, sp+$2b
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_6adb3
 	ld hl, sp+$79
 	ld e, [hl]
@@ -82416,7 +82657,7 @@ Func_60302: ; 60302 (18:4302)
 	ld e, a
 	dec e
 	ld hl, sp+$2b
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_6adb3
 	ld hl, sp+$79
 	ld e, [hl]
@@ -82488,7 +82729,7 @@ Func_60386: ; 60386 (18:4386)
 	ld e, a
 	dec e
 	ld hl, sp+$2b
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_6adb3
 	ld hl, sp+$79
 	ld e, [hl]
@@ -82543,7 +82784,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -82573,7 +82814,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	ld e, a
 	dec e
 	ld hl, sp+$2b
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_6adb3
 	ld hl, sp+$79
 	ld e, [hl]
@@ -82977,7 +83218,7 @@ Func_6095c: ; 6095c (18:495c)
 	push hl
 	call GetHLAtSPPlus8
 	pop de
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	pop hl
 	push hl
 	inc hl
@@ -83114,7 +83355,7 @@ Func_60a23: ; 60a23 (18:4a23)
 	jp z, Func_60abb
 	or a
 	jp nz, Func_60d8c
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$4
 	reg16swap de, hl
 	ld hl, $358
@@ -83128,7 +83369,7 @@ Func_60a23: ; 60a23 (18:4a23)
 	push hl
 	read_hl_from_sp_plus $359
 	pop de
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
@@ -83172,7 +83413,7 @@ Func_60abb: ; 60abb (18:4abb)
 	jp Func_60d8c
 
 Func_60af2: ; 60af2 (18:4af2)
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$4
 	reg16swap de, hl
 	ld hl, $358
@@ -83186,7 +83427,7 @@ Func_60af2: ; 60af2 (18:4af2)
 	push hl
 	read_hl_from_sp_plus $359
 	pop de
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
@@ -83462,7 +83703,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	jp Func_60d8c
 
 Func_60d07: ; 60d07 (18:4d07)
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$4
 	reg16swap de, hl
 	ld hl, $358
@@ -83476,7 +83717,7 @@ Func_60d07: ; 60d07 (18:4d07)
 	push hl
 	read_hl_from_sp_plus $359
 	pop de
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
@@ -83658,7 +83899,7 @@ Func_60e9e: ; 60e9e (18:4e9e)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
@@ -83688,7 +83929,7 @@ Func_60ef4: ; 60ef4 (18:4ef4)
 	cp $ff
 	jp z, Func_60f5a
 	push af
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop af
 	push af
 	ld hl, sp+$7
@@ -83773,7 +84014,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -83850,7 +84091,7 @@ Func_6103f: ; 6103f (18:503f)
 	cp $4
 	jp nc, Func_61076
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop bc
 	push bc
 	ld a, c
@@ -85995,7 +86236,7 @@ Func_620d5: ; 620d5
 	ld a, [hl]
 	ld hl, sp+$2
 	ld [hl], a
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -86030,7 +86271,7 @@ Func_6214b: ; 6214b (18:614b)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -86065,7 +86306,7 @@ Func_6218f: ; 6218f (18:618f)
 	dec a
 	ld e, a
 	ld hl, sp+$8
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$3c
 	ld a, [hl]
 	ld hl, sp+$3a
@@ -86082,7 +86323,7 @@ Func_6218f: ; 6218f (18:618f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$14
@@ -86101,7 +86342,7 @@ Func_6218f: ; 6218f (18:618f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	pop de
 	ld bc, $23
@@ -86120,7 +86361,7 @@ Func_6218f: ; 6218f (18:618f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	call WriteHLToSPPlus8
 	ld hl, sp+$37
@@ -86275,7 +86516,7 @@ Func_6218f: ; 6218f (18:618f)
 
 Func_622e9: ; 622e9 (18:62e9)
 	push de
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $2
 	call FarCall
@@ -86297,7 +86538,7 @@ Func_622e9: ; 622e9 (18:62e9)
 	dec a
 	ld e, a
 	ld hl, sp+$8
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_6086c
 	ld hl, sp+$37
 	ld e, [hl]
@@ -86374,7 +86615,7 @@ Func_623cd: ; 623cd (18:63cd)
 
 Func_623d0: ; 623d0
 	add sp, -$1c
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -86416,7 +86657,7 @@ Func_623d0: ; 623d0
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $b
 	add hl, de
@@ -86510,7 +86751,7 @@ Func_624af: ; 624af
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld l, $12
 	push hl
 	ld c, $14
@@ -86534,7 +86775,7 @@ Func_624af: ; 624af
 	jp Func_6256a
 
 Func_6251c: ; 6251c (18:651c)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -86603,7 +86844,7 @@ Func_625bd: ; 625bd (18:65bd)
 	jp nz, Func_626ff
 	ld hl, sp+$c
 	ld [hl], $0
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -86622,7 +86863,7 @@ Func_625bd: ; 625bd (18:65bd)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -86678,7 +86919,7 @@ Func_62656: ; 62656 (18:6656)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -86709,7 +86950,7 @@ Func_62685: ; 62685 (18:6685)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -86734,7 +86975,7 @@ Func_62685: ; 62685 (18:6685)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -86766,7 +87007,7 @@ Func_626e0: ; 626e0 (18:66e0)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $a
 .asm_626f6
@@ -86790,7 +87031,7 @@ Func_626ff: ; 626ff (18:66ff)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	ld l, $12
 	push hl
 	ld c, $14
@@ -89377,10 +89618,10 @@ Func_680d3:
 	call FarCall
 	ret
 
-Func_680e4: ; 680e4 (1a:40e4)
+GetBanks_1a: ; 680e4 (1a:40e4)
 	push af
 	push de
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	pop de
 	pop af
 	jp FarCall
@@ -89402,7 +89643,7 @@ Func_6810b: ; 6810b (1a:410b)
 	push af
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	ld e, a
 	push de
 	ld hl, wc2e9
@@ -89419,7 +89660,7 @@ Func_6810b: ; 6810b (1a:410b)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld c, [hl]
 	pop de
@@ -89434,7 +89675,7 @@ Func_6810b: ; 6810b (1a:410b)
 	ld e, c
 	dec e
 	ld hl, sp+$1c
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	pop af
 	ld e, a
 	ld hl, sp+$2
@@ -91351,7 +91592,7 @@ Func_68eeb:
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	ld l, $5
 	push hl
 	ld c, $14
@@ -92424,15 +92665,16 @@ Func_69646: ; 69646 (1a:5646)
 	pop bc
 	ret
 
-Func_6965b::
+RepairRobots::
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	push af
 	xor a
-Func_69665: ; 69665 (1a:5665)
+.loop
 	cp $4
-	jp nc, Func_696ee
+	jp nc, .quit
+
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -92446,14 +92688,16 @@ Func_69665: ; 69665 (1a:5665)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
+
 	ld de, $e
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
+
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -92467,14 +92711,16 @@ Func_69665: ; 69665 (1a:5665)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
+
 	ld de, $c
 	add hl, de
 	pop de
 	ld [hl], e
 	inc hl
 	ld [hl], d
+
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -92488,14 +92734,16 @@ Func_69665: ; 69665 (1a:5665)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
+
 	ld de, $12
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
+
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -92509,14 +92757,16 @@ Func_69665: ; 69665 (1a:5665)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
+
 	ld de, $10
 	add hl, de
 	pop de
 	ld [hl], e
 	inc hl
 	ld [hl], d
+
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -92530,15 +92780,16 @@ Func_69665: ; 69665 (1a:5665)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
+
 	ld de, $16
 	add hl, de
 	ld [hl], $0
 	inc a
-	jp Func_69665
+	jp .loop
 
-Func_696ee: ; 696ee (1a:56ee)
+.quit
 	pop af
 	call GetSRAMBank
 	ret
@@ -92776,7 +93027,7 @@ Func_69815: ; 69815 (1a:5815)
 Func_69878: ; 69878 (1a:5878)
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	push af
 	ld hl, $c980
 	reg16swap de, hl
@@ -92839,7 +93090,7 @@ Func_69902:
 	ld l, a
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	ld l, a
 	push hl
 	ld bc, $0
@@ -93473,7 +93724,7 @@ Func_69d74:
 	call PlaceStringDEatCoordHL
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	push af
 	ld hl, sp+$2
 	ld [hl], $0
@@ -93496,7 +93747,7 @@ Func_69ddb: ; 69ddb (1a:5ddb)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -93948,7 +94199,7 @@ Func_6a1cb: ; 6a1cb (1a:61cb)
 	add a
 	add a
 	ld [hl], a
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	read_hl_from_sp_plus $5d
 	inc hl
 	inc hl
@@ -93963,7 +94214,7 @@ Func_6a1cb: ; 6a1cb (1a:61cb)
 	ld [hl], a
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	ld hl, sp+$2
 	ld [hl], a
 	ld hl, sp+$0
@@ -93993,7 +94244,7 @@ Func_6a207: ; 6a207 (1a:6207)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -94012,7 +94263,7 @@ Func_6a207: ; 6a207 (1a:6207)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $c
 	add hl, de
@@ -95020,7 +95271,7 @@ Func_6aad4::
 	push bc
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	ld hl, sp+$0
 	ld [hl], a
 	ld hl, sp+$1
@@ -95046,7 +95297,7 @@ Func_6aae5: ; 6aae5 (1a:6ae5)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	cp [hl]
 	jp nz, Func_6ab14
@@ -95080,7 +95331,7 @@ Func_6ab29:: ; 6ab29 (1a:6b29)
 	push bc
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	push af
 	ld hl, sp+$2
 	ld [hl], $0
@@ -95105,7 +95356,7 @@ Func_6ab3a: ; 6ab3a (1a:6b3a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	cp [hl]
 	jp nz, Func_6ab61
@@ -95290,7 +95541,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld b, d
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -95299,7 +95550,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2152
+	call BackUpAttrMapRectangle
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -95331,7 +95582,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld b, d
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -95340,7 +95591,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld l, $12
 	push hl
 	ld c, $14
@@ -95528,7 +95779,7 @@ Func_6ae76: ; 6ae76 (1a:6e76)
 Func_6ae7b: ; 6ae7b (1a:6e7b)
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	ld e, a
 	ld a, $1
 	ld [$cb57], a
@@ -95538,7 +95789,7 @@ Func_6ae7b: ; 6ae7b (1a:6e7b)
 	write_hl_to $cb55
 	ld a, e
 	call GetSRAMBank
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$1
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -95562,7 +95813,7 @@ Func_6aed2: ; 6aed2 (1a:6ed2)
 	cp $4
 	jp nc, Func_6af0a
 	push de
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$3
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -95692,7 +95943,7 @@ Func_6af9d:
 	push bc
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop bc
 	pop de
 	push bc
@@ -95718,7 +95969,7 @@ Func_6af9d:
 	push de
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	pop de
 	push af
 	push de
@@ -95742,7 +95993,7 @@ Func_6af9d:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $b
 	add hl, de
@@ -95767,7 +96018,7 @@ Func_6af9d:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $b
 	add hl, de
@@ -95791,7 +96042,7 @@ Func_6af9d:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -95812,7 +96063,7 @@ Func_6af9d:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $9
 	add hl, de
@@ -95833,7 +96084,7 @@ Func_6af9d:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $a
 	add hl, de
@@ -95854,7 +96105,7 @@ Func_6af9d:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de
@@ -95873,7 +96124,7 @@ Func_6af9d:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $9
 	add hl, de
@@ -95892,7 +96143,7 @@ Func_6af9d:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $a
 	add hl, de
@@ -96116,7 +96367,7 @@ Func_6b31a:: ; 6b31a (1a:731a)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	call GetHLAtSPPlus4
 	ld de, $64
 	add hl, de
@@ -96124,7 +96375,7 @@ Func_6b31a:: ; 6b31a (1a:731a)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2152
+	call BackUpAttrMapRectangle
 	ld c, $0
 	ld hl, sp+$0
 	ld [hl], c
@@ -96346,7 +96597,7 @@ Func_6b4ae: ; 6b4ae (1a:74ae)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	call GetHLAtSPPlus4
 	ld de, $64
 	add hl, de
@@ -96354,7 +96605,7 @@ Func_6b4ae: ; 6b4ae (1a:74ae)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld l, $12
 	push hl
 	ld c, $14
@@ -96446,7 +96697,7 @@ Func_6b558: ; 6b558 (1a:7558)
 	push bc
 	ld hl, sp+$62
 	ld [hl], $0
-Func_6b55d: ; 6b55d (1a:755d)
+GetRobotInPartyd: ; 6b55d (1a:755d)
 	ld hl, sp+$62
 	ld a, [hl]
 	cp $4
@@ -96522,7 +96773,7 @@ Func_6b5e2: ; 6b5e2 (1a:75e2)
 	inc a
 	ld hl, sp+$62
 	ld [hl], a
-	jp Func_6b55d
+	jp GetRobotInPartyd
 
 Func_6b5ec: ; 6b5ec (1a:75ec)
 	pop bc
@@ -96761,7 +97012,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	call FarCall
 	ld de, $19
 	ld a, $3
-	call Func_680e4
+	call GetBanks_1a
 	push af
 	set_farcall_addrs_hli Func_15ad6
 	ld hl, sp+$67
@@ -96914,7 +97165,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	read_hl_from_sp_plus $64
 	ld de, $64
 	add hl, de
@@ -96922,7 +97173,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld l, $12
 	push hl
 	ld c, $14
@@ -97849,7 +98100,7 @@ Func_6c11d: ; 6c11d (1b:411d)
 	ld b, h
 	ld de, $1412
 	ld hl, $0
-	call Func_2124
+	call BackUpTileMapRectangle
 	call GetHLAtSPPlus4
 	ld de, $168
 	add hl, de
@@ -97857,7 +98108,7 @@ Func_6c11d: ; 6c11d (1b:411d)
 	ld b, h
 	ld de, $1412
 	ld hl, $0
-	call Func_2152
+	call BackUpAttrMapRectangle
 	pop af
 	cp $b
 	jp z, .set_equal_1
@@ -97979,7 +98230,7 @@ Func_6c240: ; 6c240 (1b:4240)
 	ld a, [hl]
 	cp $4
 	jp nc, Func_6c2a9
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$e
 	reg16swap de, hl
 	ld hl, $f9
@@ -98002,7 +98253,7 @@ Func_6c273: ; 6c273 (1b:4273)
 	dec a
 	ld e, a
 	ld hl, sp+$4
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	pop bc
 	ld hl, sp+$4
 	ld a, [hl]
@@ -98150,7 +98401,7 @@ Func_6c3a2: ; 6c3a2 (1b:43a2)
 	ld b, h
 	ld de, $1412
 	ld hl, $0
-	call Func_21ca
+	call RestoreTileMapRectangle
 	call GetHLAtSPPlus4
 	ld de, $168
 	add hl, de
@@ -98158,7 +98409,7 @@ Func_6c3a2: ; 6c3a2 (1b:43a2)
 	ld b, h
 	ld de, $1412
 	ld hl, $0
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -98208,7 +98459,7 @@ Func_6c3fe: ; 6c3fe (1b:43fe)
 	ld c, l
 	ld b, h
 	push bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$10
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -98218,7 +98469,7 @@ Func_6c3fe: ; 6c3fe (1b:43fe)
 	dec a
 	ld e, a
 	ld hl, sp+$4
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	call GetHLAtSPPlus9
 	reg16swap de, hl
 	pop bc
@@ -98245,7 +98496,7 @@ Func_6c491: ; 6c491 (1b:4491)
 
 Func_6c49d: ; 6c49d (1b:449d)
 	push de
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$10
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -99373,7 +99624,7 @@ Func_6cd14: ; 6cd14 (1b:4d14)
 	ld hl, $91
 	add hl, sp
 	ld [hl], a
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
@@ -104481,7 +104732,7 @@ Func_6f244: ; 6f244 (1b:7244)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$38
 	ld e, [hl]
@@ -104609,7 +104860,7 @@ Func_6f32f: ; 6f32f (1b:732f)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$38
 	ld e, [hl]
@@ -104806,202 +105057,7 @@ Func_6f4bb: ; 6f4bb (1b:74bb)
 	pop bc
 	ret
 
-Pointers_6f4be:
-	dw Data_6f4c4
-	dw Data_6f4cf
-	dw $0
-
-Data_6f4c4:
-	db "<HIRA>ちょっとまってな<KATA>", $00
-
-Data_6f4cf:
-	db "<HIRA>ちょちょいっと なおすさぁ<KATA>", $00
-
-Pointers_6f4df:
-	dw Data_6f4e3
-	dw $0
-
-Data_6f4e3:
-	db "<HIRA>そうかい またおいてﾞ<KATA>", $00
-
-Pointers_6f4f1:
-	dw Data_6f4f7
-	dw Data_6f500
-	dw $0
-
-Data_6f4f7:
-	db "<HIRA>おまたせっ<KATA>!", $00
-
-Data_6f500:
-	db "<HIRA>かんへﾟきに なおしといたよ<KATA>!", $00
-
-Func_6f512:: ; 6f512 (1b:7512)
-	ld a, $3
-	ld [wc39a], a
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $c8
-	call FarCall
-	reg16swap de, hl
-	push de
-	ld c, e
-	ld b, d
-	ld de, PutOnVideoTransferQueue
-	ld hl, $d
-	call Func_2124
-	pop de
-	push de
-	ld hl, $64
-	add hl, de
-	ld c, l
-	ld b, h
-	ld de, PutOnVideoTransferQueue
-	ld hl, $d
-	call Func_2152
-	ld a, $2
-	ld [wc39a], a
-	set_farcall_addrs_hli Func_17e95
-	ld c, $5
-	ld e, $14
-	ld hl, $d
-	call FarCall
-	ld de, Data_6f6d0
-	ld hl, $10e
-	call PlaceStringDEatCoordHL
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	ld a, $2
-	ld [wc39a], a
-	callba_hli Func_1482e
-	push hl
-	ld a, $2
-	ld [wc39a], a
-	set_farcall_addrs_hli Func_17e95
-	ld c, $5
-	ld e, $14
-	ld hl, $d
-	call FarCall
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	pop hl
-	ld a, l
-	or h
-	jp nz, Func_6f66f
-	set_farcall_addrs_hli PrintMapText_
-	ld c, BANK(Pointers_6f4be)
-	ld de, Pointers_6f4be
-	ld hl, $10e
-	call FarCall
-	callba_hli Func_6965b
-	xor a
-	call OverworldPlaySong
-	ld a, $16
-	call OverworldPlaySong
-	set_farcall_addrs_hli LoadEmote
-	ld c, $2
-	ld e, $2
-	ld a, $8
-	call FarCall
-	callba_hli Func_9a84a
-	ld a, $3
-	ld [wc39a], a
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	set_farcall_addrs_hli Func_17e95
-	ld c, $5
-	ld e, $14
-	ld hl, $d
-	call FarCall
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	set_farcall_addrs_hli PrintMapText_
-	ld c, BANK(Pointers_6f4f1)
-	ld de, Pointers_6f4f1
-	ld hl, $10e
-	call FarCall
-	ld a, $c
-	call OverworldPlaySong
-	jp Func_6f685
-
-Func_6f66f: ; 6f66f (1b:766f)
-	set_farcall_addrs_hli PrintMapText_
-	ld c, BANK(Pointers_6f4df)
-	ld de, Pointers_6f4df
-	ld hl, $10e
-	call FarCall
-Func_6f685: ; 6f685 (1b:7685)
-	ld a, $3
-	ld [wc39a], a
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	pop de
-	push de
-	ld c, e
-	ld b, d
-	ld de, PutOnVideoTransferQueue
-	ld hl, $d
-	call Func_21ca
-	pop de
-	push de
-	ld hl, $64
-	add hl, de
-	ld c, l
-	ld b, h
-	ld de, PutOnVideoTransferQueue
-	ld hl, $d
-	call Func_21f8
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	set_farcall_addrs_hli FreeMemory
-	pop hl
-	call FarCall
-	ret
-
-Data_6f6d0:
-	db "<HIRA>しゅうりしてゆくかい<KATA>?", $00
+INCLUDE "engine/std_scripts/heal.asm"
 
 Func_6f6de: ; 6f6de (1b:76de)
 	push af
@@ -105087,7 +105143,7 @@ Func_6f785: ; 6f785 (1b:7785)
 	ld b, d
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -105096,7 +105152,7 @@ Func_6f785: ; 6f785 (1b:7785)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2152
+	call BackUpAttrMapRectangle
 	ld a, $2
 	ld [wc39a], a
 	set_farcall_addrs_hli Func_17e95
@@ -105209,7 +105265,7 @@ Func_6f906: ; 6f906 (1b:7906)
 	ld b, d
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_21ca
+	call RestoreTileMapRectangle
 	pop de
 	push de
 	ld hl, $64
@@ -105218,7 +105274,7 @@ Func_6f906: ; 6f906 (1b:7906)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld l, $12
 	push hl
 	ld c, $14
@@ -105247,7 +105303,7 @@ Data_6f95b:
 
 Func_6f962: ; 6f962 (1b:7962)
 	add sp, -$52
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$2f
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -105257,7 +105313,7 @@ Func_6f962: ; 6f962 (1b:7962)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$36
 	ld e, [hl]
@@ -105328,7 +105384,7 @@ Func_6f962: ; 6f962 (1b:7962)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$36
 	ld e, [hl]
@@ -106275,7 +106331,10 @@ SECTION "Bank 3e 2", ROMX [$6fb2], BANK [$3e]
 	dr $fafb2, $fb0db
 
 Func_fb0db:
-	dr $fb0db, $fb205
+	dr $fb0db, $fb18e
+
+Func_fb18e:
+	dr $fb18e, $fb205
 
 Func_fb205:
 	dr $fb205, $fb2ed
@@ -106287,7 +106346,16 @@ Func_fb42d: ; fb42d
 	dr $fb42d, $fb55f
 
 Func_fb55f:: ; fb55f
-	dr $fb55f, $fba6f
+	dr $fb55f, $fb783
+
+Func_fb783:: ; fb783
+	dr $fb783, $fb7f9
+
+Func_fb7f9:: ; fb7f9
+	dr $fb7f9, $fb8e9
+
+Func_fb8e9:: ; fb8e9
+	dr $fb8e9, $fba6f
 
 Func_fba6f: ; fba6f
 	dr $fba6f, $fbbb5

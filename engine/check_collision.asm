@@ -1,5 +1,5 @@
 CheckFacingObject: ; a783 (2:6783)
-; a: flag
+; a: flag: (00 = ??, 01 = bonking, 02 = pressing a)
 ; e: direction facing
 	ld [wCheckCollisionFlag], a
 	ld a, e

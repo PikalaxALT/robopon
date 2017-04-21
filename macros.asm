@@ -238,3 +238,17 @@ reg16swap: MACRO
 	pop \1
 	pop \2
 	ENDM
+
+menu_header: MACRO
+	db \1, \2 ; (x, y) of top left corner
+	db \3, \4 ; width, height
+REPT 9
+IF \5 == $ff
+	dba \6 ; order: enter callback, exit callback, up/down, a, b, right, left, loop callback, select
+ELSE
+	dbw \5, \6
+ENDC
+	shift
+ENDR
+ENDM
+	

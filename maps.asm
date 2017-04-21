@@ -4036,9 +4036,9 @@ Func_87497:
 	ld a, e
 	or a
 	jp nz, Func_874c2
-	call Func_802e0_21
+	call RepairRobots_21
 	playmusic SONG_NONE
-	playmusic SONG_16
+	playmusic SONG_HEAL
 	ld c, $1
 	ld e, $2
 	ld a, $8
@@ -4273,7 +4273,7 @@ Func_87828: ; 87828 (21:7828)
 	playmusic SONG_CAVE
 	ld a, $4
 	ld [wc7e2], a
-	ld a, [$c78a]
+	ld a, [wc78a]
 	cp $3
 	jp nz, Func_8786b
 	checkevent $fb
@@ -4632,7 +4632,7 @@ Func_87b37: ; 87b37 (21:7b37)
 
 Func_87b4f: ; 87b4f (21:7b4f)
 	ld a, $4
-	ld [$c78a], a
+	ld [wc78a], a
 	xor a
 	call Func_80653_21
 	ld c, $1
@@ -5190,12 +5190,12 @@ Func_9342a::
 	jp Func_935a5
 
 Func_93468: ; 93468 (24:7468)
-	set_farcall_addrs_hli Func_16007
+	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [$ca9c]
+	ld a, [wca9c]
 	and $2
 	push af
 	ld a, l

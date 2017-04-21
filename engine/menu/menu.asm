@@ -83,7 +83,7 @@ Func_140b1: ; 140b1 (5:40b1)
 	push bc
 	ld de, $19
 	ld a, $3
-	call Func_16007
+	call GetBanks
 	ld hl, sp+$3e
 	ld [hl], a
 	pop bc
@@ -169,7 +169,7 @@ Func_1418a: ; 1418a (5:418a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -188,7 +188,7 @@ Func_141b6: ; 141b6 (5:41b6)
 Func_141b9: ; 141b9 (5:41b9)
 	ld de, $19
 	ld a, $2
-	call Func_16007
+	call GetBanks
 	callba_hli Func_7cd1
 	ld l, a
 	ld h, $0
@@ -196,7 +196,7 @@ Func_141b9: ; 141b9 (5:41b9)
 	jp Func_14366
 
 Func_141d9: ; 141d9 (5:41d9)
-	ld hl, $ca6c
+	ld hl, wSaveScratchca6c
 	ld l, [hl]
 	ld h, $0
 	write_hl_to_sp_plus $0f
@@ -215,7 +215,7 @@ Func_141f0: ; 141f0 (5:41f0)
 	ld l, c
 	ld h, b
 	add hl, hl
-	ld de, $cb94
+	ld de, wSaveBlock2
 	add hl, de
 	ld a, [hl]
 	or a
@@ -273,7 +273,7 @@ Func_14244: ; 14244 (5:4244)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld de, $8
 	add hl, de

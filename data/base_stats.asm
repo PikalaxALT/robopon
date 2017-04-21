@@ -1,4 +1,6 @@
 PoncotsBaseStats::
+; Base stats are compressed 5 robots at a time.
+
 	dw PoncotsBaseStatsGroup00 - PoncotsBaseStats
 	dw PoncotsBaseStatsGroup01 - PoncotsBaseStats
 	dw PoncotsBaseStatsGroup02 - PoncotsBaseStats

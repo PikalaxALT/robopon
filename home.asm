@@ -2996,7 +2996,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	call FarCall
 	ld bc, $48
 	ld e, $0
-	ld hl, $c938
+	ld hl, wc938
 	call FillMemory
 	ld a, $1
 	ld [wc39e], a
@@ -3060,20 +3060,20 @@ Func_1f27:: ; 1f27 (0:1f27)
 	ret
 
 Func_1f30:: ; 1f30
-	read_hl_from $c30e
+	read_hl_from wc30e
 	ld a, l
 	or h
 	jp nz, Func_1f7a
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $100
 	call FarCall
-	write_hl_to $c30e
+	write_hl_to wc30e
 	call WaitVideoTransfer
 	ld a, BANK(GFX_4a12)
 	ld [wFarCallDestBank], a
 	ld bc, $f0
 	ld de, $88f0
-	read_hl_from $c30e
+	read_hl_from wc30e
 	call FarRequestVideoData
 	ld a, BANK(GFX_4a12)
 	ld [wFarCallDestBank], a
@@ -3086,7 +3086,7 @@ Func_1f7a:: ; 1f7a (0:1f7a)
 	ret
 
 Func_1f7b:: ; 1f7b
-	read_hl_from $c30e
+	read_hl_from wc30e
 	ld a, l
 	or h
 	jp z, Func_1fbd
@@ -3094,16 +3094,16 @@ Func_1f7b:: ; 1f7b
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $f0
-	read_hl_from $c30e
+	read_hl_from wc30e
 	reg16swap de, hl
 	ld hl, $88f0
 	call FarRequestVideoData
 	call WaitVideoTransfer
 	set_farcall_addrs_hli FreeMemory
-	read_hl_from $c30e
+	read_hl_from wc30e
 	call FarCall
 	ld hl, $0
-	write_hl_to $c30e
+	write_hl_to wc30e
 Func_1fbd:: ; 1fbd (0:1fbd)
 	ret
 
@@ -3203,257 +3203,7 @@ Func_2097:: ; 2097
 Func_20d9:: ; 20d9 (0:20d9)
 	ret
 
-Func_20da:: ; 20da (0:20da)
-	push bc
-	ld a, h
-	ld a, l
-	ld hl, sp+$0
-	ld [hl], d
-	ld l, e
-	xor a
-Func_20e2:: ; 20e2 (0:20e2)
-	cp l
-	jp nc, Func_2122
-	push hl
-	push af
-	xor a
-Func_20e9:: ; 20e9 (0:20e9)
-	ld hl, sp+$4
-	cp [hl]
-	jp nc, Func_2101
-	push af
-	read_hl_from_sp_plus $c
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlusParam8
-	db $c
-	ld [bc], a
-	inc bc
-	pop af
-	inc a
-	jp Func_20e9
-
-Func_2101:: ; 2101 (0:2101)
-	pop af
-	push bc
-	push af
-	ld hl, sp+$6
-	ld c, [hl]
-	ld b, $0
-	ld hl, $14
-	ld a, l
-	sub c
-	ld c, a
-	ld a, h
-	sbc b
-	ld b, a
-	read_hl_from_sp_plus $c
-	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $c
-	pop af
-	inc a
-	pop bc
-	pop hl
-	jp Func_20e2
-
-Func_2122:: ; 2122 (0:2122)
-	pop bc
-	ret
-
-Func_2124:: ; 2124
-	push hl
-	push de
-	push bc
-	call GetHLAtSPPlus6
-	ld c, h
-	call GetHLAtSPPlus6
-	ld a, l
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	decoord 0, 0
-	add hl, de
-	ld e, c
-	ld d, $0
-	add hl, de
-	pop bc
-	push hl
-	call GetHLAtSPPlus4
-	push hl
-	call GetHLAtSPPlus8
-	pop de
-	call Func_20da
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_2152:: ; 2152
-	push hl
-	push de
-	push bc
-	call GetHLAtSPPlus6
-	ld c, h
-	call GetHLAtSPPlus6
-	ld a, l
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	decoord 0, 0, wAttrMap
-	add hl, de
-	ld e, c
-	ld d, $0
-	add hl, de
-	pop bc
-	push hl
-	call GetHLAtSPPlus4
-	push hl
-	call GetHLAtSPPlus8
-	pop de
-	call Func_20da
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_2180:: ; 2180 (0:2180)
-	push bc
-	ld a, h
-	ld a, l
-	ld hl, sp+$0
-	ld [hl], d
-	ld l, e
-	xor a
-Func_2188:: ; 2188 (0:2188)
-	cp l
-	jp nc, Func_21c8
-	push hl
-	push af
-	xor a
-Func_218f:: ; 218f (0:218f)
-	ld hl, sp+$4
-	cp [hl]
-	jp nc, Func_21a7
-	push af
-	ld a, [bc]
-	inc bc
-	read_hl_from_sp_plus $c
-	ld [hl], a
-	inc hl
-	call WriteHLToSPPlusParam8
-	db $c
-	pop af
-	inc a
-	jp Func_218f
-
-Func_21a7:: ; 21a7 (0:21a7)
-	pop af
-	push bc
-	push af
-	ld hl, sp+$6
-	ld c, [hl]
-	ld b, $0
-	ld hl, $14
-	ld a, l
-	sub c
-	ld c, a
-	ld a, h
-	sbc b
-	ld b, a
-	read_hl_from_sp_plus $c
-	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $c
-	pop af
-	inc a
-	pop bc
-	pop hl
-	jp Func_2188
-
-Func_21c8:: ; 21c8 (0:21c8)
-	pop bc
-	ret
-
-Func_21ca:: ; 21ca
-	push hl
-	push de
-	push bc
-	call GetHLAtSPPlus6
-	ld c, h
-	call GetHLAtSPPlus6
-	ld a, l
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	decoord 0, 0
-	add hl, de
-	ld e, c
-	ld d, $0
-	add hl, de
-	pop bc
-	push hl
-	call GetHLAtSPPlus4
-	push hl
-	call GetHLAtSPPlus8
-	pop de
-	call Func_2180
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_21f8:: ; 21f8
-	push hl
-	push de
-	push bc
-	call GetHLAtSPPlus6
-	ld c, h
-	call GetHLAtSPPlus6
-	ld a, l
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	decoord 0, 0, wAttrMap
-	add hl, de
-	ld e, c
-	ld d, $0
-	add hl, de
-	pop bc
-	push hl
-	call GetHLAtSPPlus4
-	push hl
-	call GetHLAtSPPlus8
-	pop de
-	call Func_2180
-	pop bc
-	pop bc
-	pop bc
-	ret
+INCLUDE "home/tilemap_backup.asm"
 
 Data_2226:: ; 2226
 	dr $2226, $2230
@@ -3664,7 +3414,7 @@ Func_2323:: ; 2323
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, a
-	call Func_21ca
+	call RestoreTileMapRectangle
 	pop de
 	ld l, e
 	push hl
@@ -3681,17 +3431,17 @@ Func_2323:: ; 2323
 	pop bc
 	ret
 
-Func_236f:: ; 236f
+GetRobotOrTrainerBaseStats:: ; 236f
 	; e: Poncots index
 	push hl
 	ld hl, -$ee
 	add hl, sp
 	ld sp, hl
 	ld a, e
-	cp $aa
+	cp NUM_ROBOTS
 	jp c, .PoncotsOrTrainer
 	ld a, e
-	cp $ae
+	cp NUM_ROBOTS + 4
 	jp nc, .PoncotsOrTrainer
 	push de
 	ld a, [hSRAMBank]
@@ -3705,7 +3455,7 @@ Func_236f:: ; 236f
 	ld h, $0
 	ld de, 47
 	call MultiplyHLbyDE
-	ld de, $ba24 - 47 * $aa
+	ld de, $ba24 - 47 * NUM_ROBOTS
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -4432,7 +4182,7 @@ Func_2801:: ; 2801 (0:2801)
 	push hl
 	read_hl_from_sp_plus $c
 	pop de
-	call Func_2124
+	call BackUpTileMapRectangle
 	pop bc
 	pop de
 	push bc
@@ -4449,7 +4199,7 @@ Func_2801:: ; 2801 (0:2801)
 	push hl
 	call GetHLAtSPPlus10
 	pop de
-	call Func_2152
+	call BackUpAttrMapRectangle
 	pop bc
 	pop af
 	push bc
@@ -4522,7 +4272,7 @@ Func_2887:: ; 2887 (0:2887)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, a
-	call Func_21ca
+	call RestoreTileMapRectangle
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
@@ -4546,7 +4296,7 @@ Func_2887:: ; 2887 (0:2887)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, a
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld a, $2
 	ld [wc39a], a
 	ld hl, sp+$4

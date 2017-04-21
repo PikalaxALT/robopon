@@ -52,7 +52,7 @@ Func_5e55c: ; 5e55c (17:655c)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $c9b8
+	ld de, wSaveScratchParty
 	add hl, de
 	ld a, [hl]
 	or a
@@ -413,7 +413,7 @@ Func_5e835: ; 5e835 (17:6835)
 	ld hl, sp+$49
 	cp [hl]
 	jp nc, Func_5e8bc
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	call GetHLAtSPPlus4
 	reg16swap de, hl
 	ld hl, sp+$48
@@ -426,7 +426,7 @@ Func_5e835: ; 5e835 (17:6835)
 	push hl
 	call GetHLAtSPPlus8
 	pop de
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	call GetHLAtSPPlus6
 	inc hl
 	inc hl
@@ -531,7 +531,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	add hl, de
 	call FarCall
 	write_hl_to_sp_plus $48
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	call GetHLAtSPPlus6
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -543,7 +543,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	push hl
 	call GetHLAtSPPlus10
 	pop de
-	call Func_236f
+	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$49
 	ld [hl], $3
 	ld hl, sp+$48

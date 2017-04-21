@@ -601,7 +601,7 @@ Func_23747: ; 23747 (8:7747)
 	cp $4
 	jp nc, Func_237af
 	push af
-	set_farcall_addrs_hli Func_6b55
+	set_farcall_addrs_hli GetRobotInParty
 	pop af
 	push af
 	read_hl_from_sp_plus $4d

@@ -281,13 +281,13 @@ Func_80289_\1:
 	call FarCall
 	ret
 
-Func_802c3_\1:
-	callba_hli Func_6f512
+AskRepairRobots_\1:
+	callba_hli AskRepairRobots
 	callba_hli Func_8f44
 	ret
 
-Func_802e0_\1:
-	callba_hli Func_6965b
+RepairRobots_\1:
+	callba_hli RepairRobots
 	ret
 
 Func_802ef_\1:

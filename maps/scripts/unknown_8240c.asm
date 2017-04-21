@@ -179,7 +179,7 @@ Func_82551: ; 82551 (20:6551)
 Func_82562: ; 82562 (20:6562)
 	xor a
 	call Func_8044b_20
-	call Func_802e0_20
+	call RepairRobots_20
 	playmusic SONG_NONE
 	playmusic $16
 	ld c, $1

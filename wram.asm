@@ -860,7 +860,23 @@ SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 
 SECTION "Save Game Scratch", WRAM0 [$c980]
 wSaveScratch::
-wSaveBlock1:: ds $214 ; c980
+wSaveBlock1::
+	array wSaveScratchPlayerName, 5, 1, 1 ; c980
+	char wSaveScratchBirthMonth ; c985
+	char wSaveScratchBirthDay ; c986
+	ds $31 ; c987
+	array wSaveScratchParty, 4, 35, 1 ; c9b8
+	array wca44, 20, 1, 1 ; ca44
+	array wca58, 20, 1, 1 ; ca58
+	char wSaveScratchca6c ; ca6c
+	ds $3
+	bitfield wSaveScratchDexSeenFlags, NUM_ROBOTS ; ca70
+	bitfield wSaveScratchDexCaughtFlags, NUM_ROBOTS ; ca86
+	char wca9c ; ca9c
+	bitfield wSaveScratchEventFlags, 400 ; ca9d
+	array wSaveScratchc789, 100, 1, 1 ; cacf
+	ds $25 ; cb33
+	array wSaveScratchc347, 3, 20, 1 ; cb58
 wSaveBlock2:: ds $a0  ; cb94
 wSaveBlock3:: ds $dc  ; cc34
 wSaveBlock4:: ds $fa  ; cd10
@@ -870,7 +886,7 @@ wSaveScratchEnd:: ; ce0a
 	ds $3
 	char wce0f ; ce0f
 
-SECTION "Allocatable Memory", WRAM0 [$ce10]
+; SECTION "Allocatable Memory", WRAM0 [$ce10]
 	alloc_block wAllocatableBlock0 ; ce10
 	ds $900 - 5
 

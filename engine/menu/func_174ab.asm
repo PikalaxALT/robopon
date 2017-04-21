@@ -2,6 +2,7 @@ HandleMenu: ; 174ab (5:74ab)
 	push hl
 	push bc
 	push bc
+
 	push bc
 	ld hl, -1
 	ld bc, $4000
@@ -12,19 +13,23 @@ HandleMenu: ; 174ab (5:74ab)
 	ld h, [hl]
 	ld l, a
 	pop de
+
 	push hl
 	pop hl
+
 	push hl
 	ld e, [hl]
 	ld hl, sp+$5
 	ld [hl], e
 	pop hl
+
 	push hl
 	inc hl
 	ld e, [hl]
 	ld hl, sp+$4
 	ld [hl], e
 	pop hl
+
 	push hl
 	inc hl
 	inc hl
@@ -32,6 +37,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld hl, sp+$3
 	ld [hl], e
 	pop hl
+
 	push hl
 	inc hl
 	inc hl
@@ -39,6 +45,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld e, [hl]
 	ld hl, sp+$2
 	ld [hl], e
+
 	call GetHLAtSPPlus8
 	ld de, $f
 	add hl, de
@@ -46,6 +53,7 @@ HandleMenu: ; 174ab (5:74ab)
 	inc hl
 	or [hl]
 	jp nz, .skip_17551
+
 	push bc
 	ld hl, sp+$4
 	ld e, [hl]
@@ -64,12 +72,14 @@ HandleMenu: ; 174ab (5:74ab)
 	ld [hl], c
 	inc hl
 	ld [hl], b
+
 	call GetHLAtSPPlus10
 	ld de, $f
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
+
 	ld hl, sp+$4
 	ld e, [hl]
 	ld hl, sp+$5
@@ -80,13 +90,15 @@ HandleMenu: ; 174ab (5:74ab)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, a
-	call Func_2124
+	call BackUpTileMapRectangle
+
 	call GetHLAtSPPlus10
 	ld de, $f
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+
 	push de
 	ld hl, sp+$6
 	ld e, [hl]
@@ -109,8 +121,9 @@ HandleMenu: ; 174ab (5:74ab)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, a
-	call Func_2152
+	call BackUpAttrMapRectangle
 	pop bc
+
 .skip_17551
 	pop hl
 	push hl
@@ -120,6 +133,7 @@ HandleMenu: ; 174ab (5:74ab)
 	inc hl
 	or [hl]
 	jp z, .skip_1757e
+
 	pop hl
 	push hl
 	inc hl
@@ -128,6 +142,7 @@ HandleMenu: ; 174ab (5:74ab)
 	inc hl
 	ld a, [hl]
 	ld [wFarCallDestBank], a
+
 	pop hl
 	push hl
 	ld de, $5
@@ -141,6 +156,7 @@ HandleMenu: ; 174ab (5:74ab)
 	call FarCall
 	ld c, l
 	ld b, h
+
 .skip_1757e
 	push bc
 	ld hl, sp+$4
@@ -148,6 +164,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld b, $2
 	call DivideAbyB
 	ld hl, $0
+	; clobbered
 	pop bc
 .loop
 	ld a, c
@@ -213,7 +230,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld l, a
 	pop bc
 	ld a, l
-	and $4
+	and D_UP
 	jp z, .check_down
 	push bc
 	ld bc, $0
@@ -247,7 +264,7 @@ HandleMenu: ; 174ab (5:74ab)
 
 .check_down
 	ld a, l
-	and $8
+	and D_DOWN
 	jp z, .check_right
 	push bc
 	ld bc, $1
@@ -281,7 +298,7 @@ HandleMenu: ; 174ab (5:74ab)
 
 .check_right
 	ld a, l
-	and $1
+	and D_RIGHT
 	jp z, .check_left
 	push bc
 	ld hl, $2
@@ -313,7 +330,7 @@ HandleMenu: ; 174ab (5:74ab)
 
 .check_left
 	ld a, l
-	and $2
+	and D_LEFT
 	jp z, .check_a_button
 	push bc
 	ld hl, $3
@@ -345,7 +362,7 @@ HandleMenu: ; 174ab (5:74ab)
 
 .check_a_button
 	ld a, l
-	and $10
+	and A_BUTTON
 	jp z, .check_select
 	; pressed a button
 	pop hl
@@ -380,7 +397,7 @@ HandleMenu: ; 174ab (5:74ab)
 
 .check_select
 	ld a, l
-	and $40
+	and SELECT
 	jp z, .check_b
 	pop hl
 	push hl
@@ -414,7 +431,7 @@ HandleMenu: ; 174ab (5:74ab)
 
 .check_b
 	ld a, l
-	and $20
+	and B_BUTTON
 	jp z, .next
 	pop hl
 	push hl
@@ -536,7 +553,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, a
-	call Func_21ca
+	call RestoreTileMapRectangle
 	call GetHLAtSPPlus10
 	ld de, $f
 	add hl, de
@@ -565,7 +582,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, a
-	call Func_21f8
+	call RestoreAttrMapRectangle
 	ld hl, sp+$4
 	ld l, [hl]
 	push hl

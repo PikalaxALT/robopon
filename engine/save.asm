@@ -148,7 +148,7 @@ SaveGame: ; 56d9b (15:6d9b)
 	read_hl_from wc393
 	write_hl_to wSaveBlock1 + $1bd
 	ld de, wPlayerName
-	ld hl, wSaveBlock1 + $0
+	ld hl, wSaveScratchPlayerName
 	call CopyUntilNull
 	ld a, $1
 	call GetSRAMBank
@@ -312,7 +312,7 @@ LoadGame: ; 56fc2 (15:6fc2)
 	write_hl_to wc391
 	read_hl_from wSaveBlock1 + $1bd
 	write_hl_to wc393
-	ld de, wSaveBlock1
+	ld de, wSaveScratchPlayerName
 	ld hl, wPlayerName
 	call CopyUntilNull
 	ld a, $1

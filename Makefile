@@ -58,6 +58,8 @@ clean: tidy
 %.tm: ;
 %.png: ;
 
+data/base_stats/%.bin: ;
+
 %.2bpp: %.png
 	$(2bpp) $<
 
