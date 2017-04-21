@@ -260,7 +260,9 @@ Func_14244: ; 14244 (5:4244)
 	call CompareHLtoDE
 	jp nc, Func_14287
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld c, l

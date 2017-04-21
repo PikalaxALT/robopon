@@ -1193,13 +1193,13 @@ PoncotNameCharacters:
 	db "わん@@をぁぃぅぇぉゃゅょっあい" ; 40-4f
 	db "うえおかきくけこさしすせそたちつ" ; 50-5f
 	db "てとなにぬねのはひふへほまみむめ" ; 60-6f
-	db "もやゆよらりるれろわん!?/:×" ; 70-7f
+	db "もやゆよらりるれろわん!?/:*" ; 70-7f
 	db "Lp@@@@@@@@@@@G@ " ; 80-8f
 	db "R@@@@@HPVE@@@@@@" ; 90-9f
 	db "かきくけこさしすせそたちつてとは" ; a0-af
 	db "ひふへほはひふへほ@@@@@@@" ; b0-bf
 	db "かきくけこさしすせそたちつてとは" ; c0-cf
-	db "ひふへほはひふへほうcABM…a" ; d0-df
+	db "ひふへほはひふへほうcABM#a" ; d0-df
 
 PoncotNameAttributes:
 ; bit 0: hiragana if set else katakana
@@ -1262,14 +1262,14 @@ ApplyPoncotNameCharmap:: ; 68b6 (1:68b6)
 	jr nz, .no_hira
 	bit 0, c
 	jr z, .no_hira
-	ld [hl], "<HIRA>"
+	ld [hl], "("
 	inc hl
 .no_hira
 	bit 0, b
 	jr z, .no_kata
 	bit 0, c
 	jr nz, .no_kata
-	ld [hl], "<KATA>"
+	ld [hl], ")"
 	inc hl
 .no_kata
 	ld [hli], a
@@ -1742,7 +1742,9 @@ GetRobotInParty: ; 6b55 (1:6b55)
 	pop hl
 	push hl
 	push hl
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call MemCopy
@@ -1751,7 +1753,9 @@ GetRobotInParty: ; 6b55 (1:6b55)
 
 Func_6b74: ; 6b74 (1:6b74)
 	push de
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	push hl
 	call GetHLAtSPPlus4
 	pop de
@@ -2095,7 +2099,7 @@ Func_6fb7: ; 6fb7 (1:6fb7)
 	jp Func_6f7b
 
 Data_6fc1: ; 6fc1
-	db "<HIRA>つうしん まち<KATA>", $00
+	db "(つうしん まち)", $00
 
 Func_6fcb: ; 6fcb (1:6fcb)
 	reg16swap de, hl
@@ -2103,7 +2107,7 @@ Func_6fcb: ; 6fcb (1:6fcb)
 	jp Func_6f7b
 
 Data_6fd5: ; 6fd5
-	db "<HIRA>つうしん <KATA>エラー", $00
+	db "(つうしん )エラー", $00
 
 Func_6fe0: ; 6fe0
 	push bc
@@ -2409,7 +2413,7 @@ Func_71ee: ; 71ee (1:71ee)
 	ret
 
 Data_71f0: ; 71f0
-	db "<HIRA>せつそﾞくちゅう<KATA>", $00
+	db "(せつそﾞくちゅう)", $00
 
 Func_71fb: ; 71fb (1:71fb)
 	push af
@@ -8991,7 +8995,9 @@ Func_c82b: ; c82b
 	ld a, $3
 	call GetSRAMBank_ReadOnly
 	ld hl, wc98d
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	inc hl
 	push hl
 	call GetHLAtSPPlus6
@@ -9081,19 +9087,19 @@ Pointers_c8c1: ; c8c1
 	dw Data_c8ed
 
 Data_c8cb: ; c8cb
-	db "<HIRA>たのんたﾞそﾞ<KATA>", $00
+	db "(たのんたﾞそﾞ)", $00
 
 Data_c8d5: ; c8d5
-	db "<HIRA>かﾞんはﾞれ<KATA>", $00
+	db "(かﾞんはﾞれ)", $00
 
 Data_c8de: ; c8de
-	db "<HIRA>いっけぇー<KATA>", $00
+	db "(いっけぇー)", $00
 
 Data_c8e6: ; c8e6
-	db "<HIRA>よしっ<KATA> ", $00
+	db "(よしっ) ", $00
 
 Data_c8ed
-	db " <HIRA>ゆけっ!!<KATA>", $00
+	db " (ゆけっ!!)", $00
 
 Data_c8f6: ; c8f6
 	dr $c8f6, $c8fe
@@ -9166,7 +9172,9 @@ Func_c976: ; c976 (3:4976)
 
 Func_c985: ; c985 (3:4985)
 	ld hl, wc98d
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	write_hl_to_sp_plus $12
 	ld hl, sp+$c
 	ld c, l
@@ -15599,7 +15607,9 @@ Func_f7c3: ; f7c3 (3:77c3)
 	ld hl, sp+$57
 	add hl, de
 	push hl
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call MemCopy
@@ -15963,7 +15973,7 @@ Func_fa45: ; fa45 (3:7a45)
 	ret
 
 String_fa7b: ; fa7b
-	db " <HIRA>かﾞ<KATA>", $00
+	db " (かﾞ)", $00
 
 BattleIntro: ; fa81 (3:7a81)
 	add sp, -$32
@@ -16201,7 +16211,9 @@ Func_fc20: ; fc20 (3:7c20)
 	ld [hl], $0
 Func_fc31: ; fc31 (3:7c31)
 	ld hl, sp+$2c
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_fccb
@@ -17359,7 +17371,7 @@ Func_10732: ; 10732 (4:4732)
 	ret
 
 Data_10734: ; 10734
-	db "<HIRA>てﾞはﾞっく<KATA>", $00
+	db "(てﾞはﾞっく)", $00
 
 Data_1073d: ; 1073d
 	dr $1073d, $10766
@@ -17603,16 +17615,16 @@ Func_1095a: ; 1095a (4:495a)
 	ret
 
 Data_1095c: ; 1095c
-	db "<HIRA>のしょうり<KATA>", $00
+	db "(のしょうり)", $00
 
 Data_10964: ; 10964
-	db "<HIRA>のしょうり<KATA>", $00
+	db "(のしょうり)", $00
 
 Data_1096c: ; 1096c
-	db "<HIRA>ひきわけ<KATA>", $00
+	db "(ひきわけ)", $00
 
 Data_10973: ; 10973
-	db "<HIRA>きろく<KATA>", $00
+	db "(きろく)", $00
 
 Data_10979: ; 10979
 	TX_SNUM
@@ -17623,7 +17635,7 @@ Data_1097e: ; 1097e
 
 Data_10983: ; 10983
 	TX_SNUM
-	db "<HIRA>とん<KATA>", $00
+	db "(とん)", $00
 
 Data_1098a: ; 1098a
 	dr $1098a, $10992
@@ -20221,13 +20233,13 @@ Data_11cc6: ; 11cc6
 	db $00
 
 Data_11cca: ; 11cca
-	db "<HIRA>あなたのかち<KATA>", $00
+	db "(あなたのかち)", $00
 
 Data_11cd3: ; 11cd3
-	db "<HIRA>あなたのまけ<KATA>", $00
+	db "(あなたのまけ)", $00
 
 Data_11cdc: ; 11cdc
-	db "<HIRA>ひきわけ<KATA>", $00
+	db "(ひきわけ)", $00
 
 Data_11ce3: ; 11ce3
 	db "タイムオーハﾞー", $00
@@ -21032,7 +21044,7 @@ Func_1242f: ; 1242f (4:642f)
 	ret
 
 Data_12436: ; 12436
-	db "<HIRA>ひきわけなのてﾞ もういちとﾞ<KATA>", $00
+	db "(ひきわけなのてﾞ もういちとﾞ)", $00
 
 Func_12448: ; 12448 (4:6448)
 	push af
@@ -21840,10 +21852,10 @@ Func_12972: ; 12972 (4:6972)
 	ret
 
 Data_12974: ; 12974
-	db "<HIRA>しﾞふﾞん<KATA>", $00
+	db "(しﾞふﾞん)", $00
 
 Data_1297c: ; 1297c
-	db "<HIRA>あいて<KATA>", $00
+	db "(あいて)", $00
 
 Func_12982: ; 12982 (4:6982)
 	push hl
@@ -22292,10 +22304,10 @@ Func_12bba: ; 12bba (4:6bba)
 	ret
 
 Data_12c88: ; 12c88
-	db "カートﾞ<HIRA>を えらんてﾞ<KATA>", $00
+	db "カートﾞ(を えらんてﾞ)", $00
 
 Data_12c96: ; 12c96
-	db "Aホﾞタン<HIRA>を おしてね<KATA>", $00
+	db "Aホﾞタン(を おしてね)", $00
 
 Func_12ca4: ; 12ca4 (4:6ca4)
 	push hl
@@ -23710,7 +23722,7 @@ Func_13632: ; 13632 (4:7632)
 	ret
 
 Data_13640: ; 13640
-	db "<HIRA>かいふく<KATA> 50", $00
+	db "(かいふく) 50", $00
 
 Data_1364a: ; 1364a
 	db "タﾞメーシﾞ "
@@ -23718,7 +23730,7 @@ Data_1364a: ; 1364a
 	db $00
 
 Data_13654: ; 13654
-	db "<HIRA>かいふく<KATA> 50", $00
+	db "(かいふく) 50", $00
 
 Data_1365e: ; 1365e
 	db "タﾞメーシﾞ "
@@ -26399,7 +26411,7 @@ Func_157b3: ; 157b3 (5:57b3)
 	ret
 
 Data_157b6: ; 157b6
-	db "<HIRA>てﾞ つかえるわさﾞ<KATA>", $00
+	db "(てﾞ つかえるわさﾞ)", $00
 
 Data_157c3: ; 157c3
 	db "^", $00
@@ -26531,10 +26543,10 @@ Pointers_1588f:
 	dw $0
 
 Data_15895:
-	db "フﾞート<HIRA>そﾞくは<KATA> ソフト<HIRA>の つけかえかﾞ<KATA>", $00
+	db "フﾞート(そﾞくは) ソフト(の つけかえかﾞ)", $00
 
 Data_158ae:
-	db "<HIRA>てﾞきないよ<KATA>", $00
+	db "(てﾞきないよ)", $00
 
 Func_158b7: ; 158b7
 	add sp, -$76
@@ -26557,28 +26569,36 @@ Func_158b7: ; 158b7
 	ld a, [hl]
 	and $3f
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$75
 	ld [hl], e
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $9
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$76
 	ld [hl], e
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $a
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$77
 	ld [hl], e
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	pop hl
 	push af
@@ -26754,19 +26774,19 @@ Data_15aa2: ; 15aa2
 	db "M", $00
 
 Data_15aa4: ; 15aa4
-	db "<HIRA>そうひﾞ<KATA>ソフト", $00
+	db "(そうひﾞ)ソフト", $00
 
 Data_15aae: ; 15aae
-	db "<HIRA>もちもの<KATA>ソフト", $00
+	db "(もちもの)ソフト", $00
 
 Data_15ab8: ; 15ab8
-	db "<HIRA>すへﾞてはすﾞす<KATA>", $00
+	db "(すへﾞてはすﾞす)", $00
 
 Data_15ac3: ; 15ac3
-	db "<HIRA>つかえる わさﾞ<KATA>", $00
+	db "(つかえる わさﾞ)", $00
 
 Data_15ace: ; 15ace
-	db "ソフト<HIRA>なし<KATA>", $00
+	db "ソフト(なし)", $00
 
 Func_15ad6: ; 15ad6 (5:5ad6)
 	push hl
@@ -27039,7 +27059,9 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld hl, sp+$1
 	ld [hl], $0
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld c, l
@@ -27058,7 +27080,9 @@ Func_15c59: ; 15c59 (5:5c59)
 	or a
 	jp z, Func_15d0b
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld c, l
@@ -27120,7 +27144,9 @@ Func_15d29: ; 15d29 (5:5d29)
 	ld hl, sp+$3
 	ld a, [hl]
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld c, l
@@ -27205,7 +27231,9 @@ Func_15df5: ; 15df5 (5:5df5)
 	ld hl, sp+$4
 	ld [hl], a
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld c, l
@@ -27315,7 +27343,9 @@ Func_15ec2: ; 15ec2 (5:5ec2)
 	cp $3
 	jp nc, Func_15f9b
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	reg16swap de, hl
@@ -27352,7 +27382,9 @@ Func_15ec2: ; 15ec2 (5:5ec2)
 
 Func_15f34: ; 15f34 (5:5f34)
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	reg16swap de, hl
@@ -27366,7 +27398,9 @@ Func_15f59: ; 15f59 (5:5f59)
 
 Func_15f5c: ; 15f5c (5:5f5c)
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	reg16swap de, hl
@@ -27617,7 +27651,9 @@ Func_16103: ; 16103 (5:6103)
 
 Func_16104: ; 16104 (5:6104)
 	push de
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	reg16swap de, hl
@@ -28131,7 +28167,9 @@ Func_16450: ; 16450 (5:6450)
 	cp $3
 	jp nc, Func_16497
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	reg16swap de, hl
@@ -29253,13 +29291,13 @@ Func_16ce3: ; 16ce3 (5:6ce3)
 	ret
 
 Data_16cee: ; 16cee
-	db "<HIRA>わさﾞ なし<KATA>", $00
+	db "(わさﾞ なし)", $00
 
 Data_16cf7: ; 16cf7
-	db "ロホﾞホﾟン <HIRA>なし<KATA>", $00
+	db "ロホﾞホﾟン (なし)", $00
 
 Data_16d03: ; 16d03
-	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>をさくしﾞょする<KATA>?", $00
+	db "(とﾞの)ロホﾞホﾟン(をさくしﾞょする)?", $00
 
 Func_16d1a: ; 16d1a (5:6d1a)
 	ld l, $12
@@ -29283,7 +29321,7 @@ Func_16d2d: ; 16d2d (5:6d2d)
 	ret
 
 Data_16d3d: ; 16d3d
-	db "アイテム <HIRA>なし<KATA>", $00
+	db "アイテム (なし)", $00
 
 Func_16d47: ; 16d47 (5:6d47)
 	push de
@@ -29305,7 +29343,7 @@ Func_16d47: ; 16d47 (5:6d47)
 	ret
 
 Data_16d61: ; 16d61
-	db "ハﾟーツ <HIRA>なし<KATA>", $00
+	db "ハﾟーツ (なし)", $00
 
 Func_16d6b: ; 16d6b (5:6d6b)
 	push de
@@ -29327,7 +29365,7 @@ Func_16d6b: ; 16d6b (5:6d6b)
 	ret
 
 Data_16d85: ; 16d85
-	db "ソフト <HIRA>なし<KATA>", $00
+	db "ソフト (なし)", $00
 
 Func_16d8e: ; 16d8e
 	push hl
@@ -31209,7 +31247,7 @@ Pointers_20441: ; 20441
 	dw Data_20470
 
 Data_2044d: ; 2044d
-	db "<HIRA>たたかう<KATA>", $00
+	db "(たたかう)", $00
 
 Data_20454: ; 20454
 	db "ロホﾞホﾟン", $00
@@ -31218,13 +31256,13 @@ Data_2045b: ; 2045b
 	db "アイテム", $00
 
 Data_20460: ; 20460
-	db "<HIRA>にけﾞる<KATA>", $00
+	db "(にけﾞる)", $00
 
 Data_20467: ; 20467
-	db "<HIRA>ほﾞうきﾞょ<KATA>", $00
+	db "(ほﾞうきﾞょ)", $00
 
 Data_20470: ; 20470
-	db "<HIRA>かいひ<KATA>", $00
+	db "(かいひ)", $00
 
 DrawBattleSelectionMenu: ; 20476 (8:4476)
 	push hl
@@ -31949,7 +31987,7 @@ Data_20959: ; 20959
 	db "P", $00
 
 Data_2095b: ; 2095b
-	db "<HIRA>こうか:<KATA>", $00
+	db "(こうか:)", $00
 
 Data_20962: ; 20962
 	TX_STACK
@@ -32319,7 +32357,7 @@ Func_20c8e: ; 20c8e (8:4c8e)
 	ret
 
 Data_20c99: ; 20c99
-	db "<HIRA>を つかいますか?<KATA>", $00
+	db "(を つかいますか?)", $00
 
 Data_20ca5: ; 20ca5
 	dr $20ca5, $20cb4
@@ -34878,7 +34916,7 @@ Func_21f1c: ; 21f1c (8:5f1c)
 	ret
 
 Data_21f22: ; 21f22
-	db "<HIRA>たへﾞさせますか?<KATA>", $00
+	db "(たへﾞさせますか?)", $00
 
 Func_21f2e: ; 21f2e
 	push af
@@ -37332,10 +37370,10 @@ Pointers_2313a: ; 2313a
 	dw $0
 
 Data_23140: ; 23140
-	db "<HIRA>つうしん<KATA>ハﾞトル<HIRA>てﾞは<KATA>", $00
+	db "(つうしん)ハﾞトル(てﾞは)", $00
 
 Data_23150: ; 23150
-	db "<HIRA>つかえない<KATA>!", $00
+	db "(つかえない)!", $00
 
 Func_23159: ; 23159
 	read_hl_from wc2e6
@@ -46015,16 +46053,16 @@ Func_305f4: ; 305f4 (c:45f4)
 	ret
 
 Data_3064a: ; 3064a
-	db "<HIRA>しょしﾞきん<KATA>", $00
+	db "(しょしﾞきん)", $00
 
 Data_30653: ; 30653
-	db "<HIRA>いらっしゃい<KATA>", $00
+	db "(いらっしゃい)", $00
 
 Data_3065c: ; 3065c
-	db "<HIRA>ようけんはなに<KATA>?", $00
+	db "(ようけんはなに)?", $00
 
 Data_30667: ; 30667
-	db "<HIRA>ほかにも ようかﾞある<KATA>?", $00
+	db "(ほかにも ようかﾞある)?", $00
 
 Func_30676: ; 30676 (c:4676)
 	push bc
@@ -46359,13 +46397,13 @@ Func_308a5: ; 308a5 (c:48a5)
 	ret
 
 Data_308c0: ; 308c0
-	db "アイテム<HIRA>なし<KATA>", $00
+	db "アイテム(なし)", $00
 
 Data_308c9: ; 308c9
-	db "ソフト<HIRA>なし<KATA>", $00
+	db "ソフト(なし)", $00
 
 Data_308d1: ; 308d1
-	db "ハﾟーツ<HIRA>なし<KATA>", $00
+	db "ハﾟーツ(なし)", $00
 
 Func_308da: ; 308da (c:48da)
 	push bc
@@ -47393,10 +47431,10 @@ Func_31024: ; 31024 (c:5024)
 	ret
 
 Data_31025: ; 31025
-	db "<HIRA>なにを かう<KATA>?", $00
+	db "(なにを かう)?", $00
 
 Data_3102f: ; 3102f
-	db "<HIRA>なにを うってくれる<KATA>?", $00
+	db "(なにを うってくれる)?", $00
 
 Func_3103d: ; 3103d
 	push hl
@@ -47939,7 +47977,7 @@ Func_31432: ; 31432 (c:5432)
 	ret
 
 Data_31435: ; 31435
-	db "<HIRA>ねたﾞん<KATA>", $00
+	db "(ねたﾞん)", $00
 
 Data_3143c: ; 3143c
 	db "     "
@@ -48064,13 +48102,13 @@ Data_31515: ; 31515
 	db "G", $00
 
 Data_3151a: ; 3151a
-	db "<HIRA>になります<KATA>", $00
+	db "(になります)", $00
 
 Data_31522: ; 31522
-	db "<HIRA>おもとめになりますか<KATA>?", $00
+	db "(おもとめになりますか)?", $00
 
 Data_31530: ; 31530
-	db "<HIRA>うりますか<KATA>?", $00
+	db "(うりますか)?", $00
 
 Func_31539: ; 31539 (c:5539)
 	push de
@@ -48358,7 +48396,7 @@ Func_31750: ; 31750 (c:5750)
 	ret
 
 Data_31756: ; 31756
-	db "<HIRA>しょしﾞきん<KATA>", $00
+	db "(しょしﾞきん)", $00
 
 Func_3175f: ; 3175f
 	add sp, -$3e
@@ -48596,7 +48634,7 @@ Data_31940: ; 31940
 	db "M", $00
 
 Data_31945: ; 31945
-	db "<HIRA>いりょく<KATA>", $00
+	db "(いりょく)", $00
 
 Data_3194c: ; 3194c
 	TX_STACK
@@ -48604,13 +48642,13 @@ Data_3194c: ; 3194c
 	db $00
 
 Data_31951: ; 31951
-	db "<HIRA>こうけﾞき<KATA>", $00
+	db "(こうけﾞき)", $00
 
 Data_31959: ; 31959
-	db "<HIRA>ほﾞうきﾞょ<KATA>", $00
+	db "(ほﾞうきﾞょ)", $00
 
 Data_31962: ; 31962
-	db "<HIRA>すはﾞやさ<KATA>", $00
+	db "(すはﾞやさ)", $00
 
 Data_3196a: ; 3196a
 	db "RAM:", $00
@@ -48619,13 +48657,13 @@ Data_3196f: ; 3196f
 	db "M", $00
 
 Data_31971: ; 31971
-	db "<HIRA>すへﾞての<KATA>アーム<HIRA>そﾞくかﾞ そうひﾞかのう<KATA>", $00
+	db "(すへﾞての)アーム(そﾞくかﾞ そうひﾞかのう)", $00
 
 Data_3198b: ; 3198b
-	db "<HIRA>すへﾞての<KATA>ムーフﾞ<HIRA>そﾞくかﾞ そうひﾞかのう<KATA>", $00
+	db "(すへﾞての)ムーフﾞ(そﾞくかﾞ そうひﾞかのう)", $00
 
 Data_319a6: ; 319a6
-	db "フﾞート<HIRA>そﾞくいかﾞいかﾞ そうひﾞかのう<KATA>", $00
+	db "フﾞート(そﾞくいかﾞいかﾞ そうひﾞかのう)", $00
 
 Func_319be: ; 319be (c:59be)
 	ld a, l
@@ -48781,10 +48819,10 @@ Data_31aca: ; 31aca
 	dw $0
 
 Data_31ad0: ; 31ad0
-	db "<HIRA>そうこかﾞ いっはﾟいなのてﾞ<KATA>", $00
+	db "(そうこかﾞ いっはﾟいなのてﾞ)", $00
 
 Data_31ae2: ; 31ae2
-	db "<HIRA>さくしﾞょしてくたﾞさい<KATA>", $00
+	db "(さくしﾞょしてくたﾞさい)", $00
 
 Func_31af1:: ; 31af1
 	push af
@@ -48921,7 +48959,9 @@ Func_31c03: ; 31c03 (c:5c03)
 	cp $4
 	jp nc, Func_31c35
 	ld hl, sp+$5a
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_31c2b
@@ -48962,17 +49002,23 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	ld hl, sp+$5d
 	ld a, [hl]
 	ld hl, sp+$5a
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld [hl], a
 	ld hl, sp+$35
 	push hl
 	ld hl, sp+$5c
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call CopyFromDEtoHL
 	ld hl, sp+$5a
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	call WriteHLToSPPlus6
 	pop bc
 	push bc
@@ -49108,7 +49154,9 @@ Func_31c4a: ; 31c4a (c:5c4a)
 Func_31d7a: ; 31d7a (c:5d7a)
 	push de
 	ld hl, sp+$5b
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld [hl], $0
 	ld hl, sp+$56
 	ld [hl], $0
@@ -49118,28 +49166,16 @@ Func_31d95: ; 31d95 (c:5d95)
 	cp $3
 	jp nc, Func_31e1c
 	ld hl, sp+$56
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_31e12
 	ld hl, sp+$56
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, $23
-	add hl, de
-	ld de, wSaveScratchParty
-	add hl, de
+	get_party_bot $23
 	reg16swap de, hl
 	ld hl, sp+$4
 	ld bc, $23
@@ -49147,28 +49183,16 @@ Func_31d95: ; 31d95 (c:5d95)
 	ld hl, sp+$4
 	push hl
 	ld hl, sp+$58
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call FarCopyVideoData
 	ld hl, sp+$56
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, $23
-	add hl, de
-	ld de, wSaveScratchParty
-	add hl, de
+	get_party_bot $23
 	ld [hl], $0
 Func_31e12: ; 31e12 (c:5e12)
 	ld hl, sp+$56
@@ -49234,7 +49258,9 @@ Func_31e84: ; 31e84 (c:5e84)
 	ld a, $3
 	call GetSRAMBank
 	ld hl, sp+$5b
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld [hl], $0
 	ld hl, sp+$56
 	ld [hl], $0
@@ -49244,28 +49270,16 @@ Func_31eb7: ; 31eb7 (c:5eb7)
 	cp $3
 	jp nc, Func_31f3e
 	ld hl, sp+$56
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_31f34
 	ld hl, sp+$56
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, $23
-	add hl, de
-	ld de, wSaveScratchParty
-	add hl, de
+	get_party_bot $23
 	reg16swap de, hl
 	ld hl, sp+$4
 	ld bc, $23
@@ -49273,28 +49287,16 @@ Func_31eb7: ; 31eb7 (c:5eb7)
 	ld hl, sp+$4
 	push hl
 	ld hl, sp+$58
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call FarCopyVideoData
 	ld hl, sp+$56
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, $23
-	add hl, de
-	ld de, wSaveScratchParty
-	add hl, de
+	get_party_bot $23
 	ld [hl], $0
 Func_31f34: ; 31f34 (c:5f34)
 	ld hl, sp+$56
@@ -49323,7 +49325,9 @@ Func_31f4e: ; 31f4e (c:5f4e)
 	cp $4
 	jp nc, Func_31fa5
 	ld hl, sp+$58
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_31f9b
@@ -49482,7 +49486,7 @@ Pointers_3207b: ; 3207b
 	dw $0
 
 Data_3207f: ; 3207f
-	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は<KATA> <HIRA>えらへﾞないよ<KATA>", $00
+	db "(その)ロホﾞホﾟン(は) (えらへﾞないよ)", $00
 
 Pointers_32097: ; 32097
 	dw Data_3209d
@@ -49490,10 +49494,10 @@ Pointers_32097: ; 32097
 	dw $0
 
 Data_3209d: ; 3209d
-	db "リモコン<HIRA>の しﾞゅしんに<KATA>", $00
+	db "リモコン(の しﾞゅしんに)", $00
 
 Data_320ac: ; 320ac
-	db "<HIRA>しっはﾟいしました<KATA>", $00
+	db "(しっはﾟいしました)", $00
 
 Pointers_320b8: ; 320b8
 	dw Data_320be
@@ -49501,10 +49505,10 @@ Pointers_320b8: ; 320b8
 	dw $0
 
 Data_320be: ; 320be
-	db "リモコン<HIRA>の しﾞゅしんに<KATA>", $00
+	db "リモコン(の しﾞゅしんに)", $00
 
 Data_320cd: ; 320cd
-	db "<HIRA>せいこうしました<KATA>", $00
+	db "(せいこうしました)", $00
 
 Func_320d8: ; 320d8
 	push af
@@ -49730,7 +49734,7 @@ Func_322a1: ; 322a1 (c:62a1)
 	ret
 
 Data_322a7: ; 322a7
-	db "リモコン<HIRA>の<KATA> ホﾞタン<HIRA>を おしてね<KATA>", $00
+	db "リモコン(の) ホﾞタン(を おしてね)", $00
 
 Data_322bc: ; 322bc
 	dr $322bc, $322ce
@@ -50998,7 +51002,7 @@ Func_32c1c: ; 32c1c (c:6c1c)
 	ret
 
 Data_32c27: ; 32c27
-	db "<HIRA>しょしﾞきん<KATA>", $00
+	db "(しょしﾞきん)", $00
 
 Func_32c30: ; 32c30
 	push hl
@@ -51448,28 +51452,28 @@ Func_32f6f: ; 32f6f (c:6f6f)
 	ret
 
 Data_32f7a: ; 32f7a
-	db "<HIRA>しょしﾞきん<KATA>", $00
+	db "(しょしﾞきん)", $00
 
 Pointers_32f83: ; 32f83
 	dw Data_32f87
 	dw $0
 
 Data_32f87: ; 32f87
-	db "<HIRA>おかねかﾞたりないよ<KATA>", $00
+	db "(おかねかﾞたりないよ)", $00
 
 Pointers_32f94: ; 32f94
 	dw Data_32f98
 	dw $0
 
 Data_32f98: ; 32f98
-	db "<HIRA>これいしﾞょう かえないよ<KATA>", $00
+	db "(これいしﾞょう かえないよ)", $00
 
 Pointers_32fa8: ; 32fa8
 	dw Data_32fac
 	dw $0
 
 Data_32fac: ; 32fac
-	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
+	db "(とﾞうもありかﾞとう)", $00
 
 Pointers_32fb9: ; 32fb9
 	dw Data_32fbf
@@ -51477,17 +51481,17 @@ Pointers_32fb9: ; 32fb9
 	dw $0
 
 Data_32fbf: ; 32fbf
-	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
+	db "(とﾞうもありかﾞとう)", $00
 
 Data_32fcc: ; 32fcc
-	db "<HIRA>ほかにも かうかい<KATA>?", $00
+	db "(ほかにも かうかい)?", $00
 
 Pointers_32fd9: ; 32fd9
 	dw Data_32fdd
 	dw $0
 
 Data_32fdd: ; 32fdd
-	db "<HIRA>ほかのものは かうかい<KATA>?", $00
+	db "(ほかのものは かうかい)?", $00
 
 Pointers_32fec: ; 32fec
 	dw Data_32ff2
@@ -51495,17 +51499,17 @@ Pointers_32fec: ; 32fec
 	dw $0
 
 Data_32ff2: ; 32ff2
-	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
+	db "(とﾞうもありかﾞとう)", $00
 
 Data_32fff: ; 32fff
-	db "<HIRA>ほかにも うるかい<KATA>?", $00
+	db "(ほかにも うるかい)?", $00
 
 Pointers_3300c: ; 3300c
 	dw Data_33010
 	dw $0
 
 Data_33010: ; 33010
-	db "<HIRA>ほかのものは うるかい<KATA>?", $00
+	db "(ほかのものは うるかい)?", $00
 
 Pointers_3301f: ; 3301f
 	dw Data_33025
@@ -51513,17 +51517,17 @@ Pointers_3301f: ; 3301f
 	dw $0
 
 Data_33025: ; 33025
-	db "<HIRA>とﾞうもありかﾞとう<KATA>", $00
+	db "(とﾞうもありかﾞとう)", $00
 
 Data_33032: ; 33032
-	db "<HIRA>またきてね<KATA>", $00
+	db "(またきてね)", $00
 
 Pointers_3303a: ; 3303a
 	dw Data_3303e
 	dw $0
 
 Data_3303e: ; 3303e
-	db "<HIRA>それは うっちゃたﾞめ<KATA>!", $00
+	db "(それは うっちゃたﾞめ)!", $00
 
 Func_3304d: ; 3304d (c:704d)
 	push hl
@@ -51883,7 +51887,7 @@ Func_33375: ; 33375
 	ret
 
 Data_333a6: ; 333a6
-	db "<HIRA>ひつよう<KATA>エネルキﾞー", $00
+	db "(ひつよう)エネルキﾞー", $00
 
 Data_333b3: ; 333b3
 	db "エネルキﾞー", $00
@@ -51916,7 +51920,9 @@ Func_333e0: ; 333e0
 	ld l, a
 	pop af
 	push hl
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	ld de, $1d
 	add hl, de
 	ld c, [hl]
@@ -51925,7 +51931,9 @@ Func_333e0: ; 333e0
 	pop hl
 	push bc
 	push hl
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	ld e, a
 	dec e
@@ -52025,16 +52033,16 @@ Data_334ee: ; 334ee
 	db "ヘ", $00
 
 Data_334f0: ; 334f0
-	db "<HIRA>しんか かのう<KATA>", $00
+	db "(しんか かのう)", $00
 
 Data_334fa: ; 334fa
-	db "<HIRA>しんか てﾞきないよ<KATA>", $00
+	db "(しんか てﾞきないよ)", $00
 
 Data_33507: ; 33507
-	db "エネルキﾞー <HIRA>ふﾞそくてﾞ<KATA>", $00
+	db "エネルキﾞー (ふﾞそくてﾞ)", $00
 
 Data_33517: ; 33517
-	db "<HIRA>しんか てﾞきないよ<KATA>", $00
+	db "(しんか てﾞきないよ)", $00
 
 Func_33524: ; 33524
 	ld c, l
@@ -52513,7 +52521,9 @@ Func_3387c: ; 3387c (c:787c)
 	add hl, de
 	ld a, [hl]
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	inc hl
 	reg16swap de, hl
 	ld hl, sp+$8
@@ -52530,7 +52540,9 @@ Func_3387c: ; 3387c (c:787c)
 
 Func_338b8: ; 338b8 (c:78b8)
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $1f
 	add hl, de
 	ld a, $1
@@ -53000,7 +53012,9 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	call FarCall
 	push af
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -53015,7 +53029,9 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	ld c, $2
 	call FarCall
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	push af
 	set_farcall_addrs_hli Func_15ad6
@@ -53150,19 +53166,19 @@ Data_33d73: ; 33d73
 	db ":", $00
 
 Data_33d75: ; 33d75
-	db "<HIRA>そうひﾞちゅうの<KATA>", $00
+	db "(そうひﾞちゅうの)", $00
 
 Data_33d80: ; 33d80
 	db "ハﾟーツ", $00
 
 Data_33d85: ; 33d85
-	db "<HIRA>こうけﾞき <KATA>", $00
+	db "(こうけﾞき )", $00
 
 Data_33d8e: ; 33d8e
-	db "<HIRA>ほﾞうきﾞょ <KATA>", $00
+	db "(ほﾞうきﾞょ )", $00
 
 Data_33d98: ; 33d98
-	db "<HIRA>すはﾞやさ <KATA>", $00
+	db "(すはﾞやさ )", $00
 
 Data_33da1: ; 33da1
 	db "RAM:", $00
@@ -53175,7 +53191,7 @@ Pointers_33da8: ; 33da8
 	dw $0
 
 Data_33dac: ; 33dac
-	db "<HIRA>すてちゃ<KATA>タﾞメ!", $00
+	db "(すてちゃ)タﾞメ!", $00
 
 Func_33db7: ; 33db7 (c:7db7)
 	push bc
@@ -53362,16 +53378,16 @@ Func_33f3d: ; 33f3d (c:7f3d)
 	ret
 
 Data_33f40: ; 33f40
-	db "<HIRA>すてる こすうを<KATA>", $00
+	db "(すてる こすうを)", $00
 
 Data_33f4b: ; 33f4b
-	db "<HIRA>にゅうりょくしてくたﾞさい<KATA>", $00
+	db "(にゅうりょくしてくたﾞさい)", $00
 
 Data_33f5b: ; 33f5b
-	db "<HIRA>ほんとうに<KATA>", $00
+	db "(ほんとうに)", $00
 
 Data_33f63: ; 33f63
-	db "<HIRA>すてても いいてﾞすか?<KATA>", $00
+	db "(すてても いいてﾞすか?)", $00
 
 Func_33f72: ; 33f72 (c:7f72)
 	push hl
@@ -53712,10 +53728,10 @@ Func_4c304: ; 4c304 (13:4304)
 	ret
 
 Data_4c307: ; 4c307
-	db "<HIRA>つうしんてﾞ あそふﾞまえに<KATA>", $00
+	db "(つうしんてﾞ あそふﾞまえに)", $00
 
 Data_4c318: ; 4c318
-	db "<HIRA>きろくしますか<KATA>?", $00
+	db "(きろくしますか)?", $00
 
 Func_4c323: ; 4c323 (13:4323)
 	call FillVisibleAreaWithBlankTile
@@ -53778,10 +53794,10 @@ Func_4c3bc: ; 4c3bc (13:43bc)
 	ret
 
 Data_4c3be: ; 4c3be
-	db "<HIRA>ほんしﾞつは<KATA>", $00
+	db "(ほんしﾞつは)", $00
 
 Data_4c3c7: ; 4c3c7
-	db "<HIRA>とﾞの<KATA>モートﾞ<HIRA>てﾞ あそひﾞますか<KATA>?", $00
+	db "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?", $00
 
 Func_4c3de: ; 4c3de (13:43de)
 	ld a, [wc38d]
@@ -53923,7 +53939,9 @@ Func_4c563: ; 4c563 (13:4563)
 	cp $4
 	jp nc, Func_4c58c
 	push af
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_4c587
@@ -53984,10 +54002,10 @@ Func_4c5dd: ; 4c5dd (13:45dd)
 	ret
 
 Data_4c5df: ; 4c5df
-	db "<HIRA>たたﾞいま<KATA>", $00
+	db "(たたﾞいま)", $00
 
 Data_4c5e7: ; 4c5e7
-	db "モートﾞ <HIRA>せんたくちゅう<KATA>", $00
+	db "モートﾞ (せんたくちゅう)", $00
 
 Pointers_4c5f6: ; 4c5f6
 	dw Data_4c604
@@ -53999,29 +54017,29 @@ Pointers_4c5f6: ; 4c5f6
 	dw $0
 
 Data_4c604: ; 4c604
-	db "タイトルマッチ<HIRA>てﾞは<KATA>", $00
+	db "タイトルマッチ(てﾞは)", $00
 
 Data_4c611: ; 4c611
-	db "ヘﾞルト<HIRA>をかけて たたかいます<KATA>", $00
+	db "ヘﾞルト(をかけて たたかいます)", $00
 
 Data_4c623: ; 4c623
-	db "<HIRA>かてはﾞ あいての もっている<KATA>", $00
+	db "(かてはﾞ あいての もっている)", $00
 
 Data_4c635: ; 4c635
-	db "ヘﾞルト<HIRA>を うはﾞうことかﾞ てﾞきますかﾞ<KATA>", $00
+	db "ヘﾞルト(を うはﾞうことかﾞ てﾞきますかﾞ)", $00
 
 Data_4c64e: ; 4c64e
-	db "<HIRA>まけると しﾞふﾞんの もっている<KATA>", $00
+	db "(まけると しﾞふﾞんの もっている)", $00
 
 Data_4c662: ; 4c662
-	db "ヘﾞルト<HIRA>を うはﾞわれて しまいます<KATA>", $00
+	db "ヘﾞルト(を うはﾞわれて しまいます)", $00
 
 Pointers_4c677: ; 4c677
 	dw Data_4c67b
 	dw $0
 
 Data_4c67b: ; 4c67b
-	db "ヘﾞルト<HIRA>かﾞ ありません<KATA>", $00
+	db "ヘﾞルト(かﾞ ありません)", $00
 
 Func_4c68a: ; 4c68a
 	push bc
@@ -54188,7 +54206,9 @@ Func_4c7f9: ; 4c7f9 (13:47f9)
 	cp $4
 	jp nc, Func_4c822
 	push af
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_4c81d
@@ -54304,28 +54324,28 @@ Func_4c8f7: ; 4c8f7 (13:48f7)
 	ret
 
 Data_4c8f9: ; 4c8f9
-	db "ロホﾞホﾟン<HIRA>こうかんてﾞ<KATA>", $00
+	db "ロホﾞホﾟン(こうかんてﾞ)", $00
 
 Data_4c908: ; 4c908
-	db "タイトルマッチ<HIRA>てﾞ<KATA>", $00
+	db "タイトルマッチ(てﾞ)", $00
 
 Data_4c914: ; 4c914
-	db "ノンタイトルマッチ<HIRA>てﾞ<KATA>", $00
+	db "ノンタイトルマッチ(てﾞ)", $00
 
 Data_4c922: ; 4c922
-	db "ハﾟーティーハﾞトル<HIRA>てﾞ<KATA>", $00
+	db "ハﾟーティーハﾞトル(てﾞ)", $00
 
 Data_4c931: ; 4c931
-	db "ロホﾞホﾟン<HIRA>あけﾞるてﾞ<KATA>", $00
+	db "ロホﾞホﾟン(あけﾞるてﾞ)", $00
 
 Data_4c940: ; 4c940
-	db "ロホﾞホﾟン<HIRA>もらうてﾞ<KATA>", $00
+	db "ロホﾞホﾟン(もらうてﾞ)", $00
 
 Data_4c94e: ; 4c94e
-	db "<HIRA>たいせん しますか<KATA>?", $00
+	db "(たいせん しますか)?", $00
 
 Data_4c95b: ; 4c95b
-	db "<HIRA>いいてﾞすか<KATA>?", $00
+	db "(いいてﾞすか)?", $00
 
 Pointers_4c965: ; 4c965
 	dw Data_4c96b
@@ -54333,10 +54353,10 @@ Pointers_4c965: ; 4c965
 	dw $0
 
 Data_4c96b: ; 4c96b
-	db "ハﾟーティー<HIRA>に 4たい<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
+	db "ハﾟーティー(に 4たい) ロホﾞホﾟン(かﾞ)", $00
 
 Data_4c984: ; 4c984
-	db "<HIRA>いるから もらえないよ<KATA>", $00
+	db "(いるから もらえないよ)", $00
 
 Pointers_4c992: ; 4c992
 	dw Data_4c998
@@ -54344,10 +54364,10 @@ Pointers_4c992: ; 4c992
 	dw $0
 
 Data_4c998: ; 4c998
-	db "ハﾟーティー<HIRA>に 1たいしか<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
+	db "ハﾟーティー(に 1たいしか) ロホﾞホﾟン(かﾞ)", $00
 
 Data_4c9b3: ; 4c9b3
-	db "<HIRA>いないから あけﾞれないよ<KATA>", $00
+	db "(いないから あけﾞれないよ)", $00
 
 Pointers_4c9c3: ; 4c9c3
 	dw Data_4c9c9
@@ -54355,10 +54375,10 @@ Pointers_4c9c3: ; 4c9c3
 	dw $0
 
 Data_4c9c9: ; 4c9c9
-	db "<HIRA>あいての<KATA> ロホﾞホﾟン<HIRA>かﾞ 4たい<KATA>", $00
+	db "(あいての) ロホﾞホﾟン(かﾞ 4たい)", $00
 
 Data_4c9df: ; 4c9df
-	db "<HIRA>いるから あけﾞれないよ<KATA>", $00
+	db "(いるから あけﾞれないよ)", $00
 
 Pointers_4c9ee: ; 4c9ee
 	dw Data_4c9f4
@@ -54366,10 +54386,10 @@ Pointers_4c9ee: ; 4c9ee
 	dw $0
 
 Data_4c9f4: ; 4c9f4
-	db "<HIRA>あいての<KATA> ロホﾞホﾟン<HIRA>かﾞ 1たい<KATA>", $00
+	db "(あいての) ロホﾞホﾟン(かﾞ 1たい)", $00
 
 Data_4ca0a: ; 4ca0a
-	db "<HIRA>しかいないから もらえないよ<KATA>", $00
+	db "(しかいないから もらえないよ)", $00
 
 Pointers_4ca1b: ; 4ca1b
 	dw Data_4ca21
@@ -54377,24 +54397,24 @@ Pointers_4ca1b: ; 4ca1b
 	dw $0
 
 Data_4ca21: ; 4ca21
-	db "<HIRA>その<KATA> ロホﾞホﾟン<HIRA>は<KATA>", $00
+	db "(その) ロホﾞホﾟン(は)", $00
 
 Data_4ca30: ; 4ca30
-	db "<HIRA>あけﾞれないよ<KATA>", $00
+	db "(あけﾞれないよ)", $00
 
 Pointers_4ca3a: ; 4ca3a
 	dw Data_4ca3e
 	dw $0
 
 Data_4ca3e: ; 4ca3e
-	db "<HIRA>あけﾞたよ<KATA>", $00
+	db "(あけﾞたよ)", $00
 
 Pointers_4ca46: ; 4ca46
 	dw Data_4ca4a
 	dw $0
 
 Data_4ca4a: ; 4ca4a
-	db "<HIRA>もらったよ<KATA>", $00
+	db "(もらったよ)", $00
 
 Pointers_4ca52: ; 4ca52
 	dw Data_4ca58
@@ -54402,10 +54422,10 @@ Pointers_4ca52: ; 4ca52
 	dw $0
 
 Data_4ca58: ; 4ca58
-	db "<HIRA>たたかえる<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
+	db "(たたかえる) ロホﾞホﾟン(かﾞ)", $00
 
 Data_4ca6b: ; 4ca6b
-	db "<HIRA>いなくなるよ<KATA>", $00
+	db "(いなくなるよ)", $00
 
 Func_4ca74: ; 4ca74 (13:4a74)
 	push af
@@ -54525,10 +54545,10 @@ Func_4cb64: ; 4cb64 (13:4b64)
 	ret
 
 Data_4cb65: ; 4cb65
-	db "<HIRA>ほんしﾞつは<KATA>", $00
+	db "(ほんしﾞつは)", $00
 
 Data_4cb6e: ; 4cb6e
-	db "<HIRA>とﾞの<KATA>モートﾞ<HIRA>てﾞ あそひﾞますか<KATA>?", $00
+	db "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?", $00
 
 Func_4cb85: ; 4cb85
 	ld a, $ff
@@ -54547,7 +54567,7 @@ Pointers_4cba7: ; 4cba7
 	dw $0
 
 Data_4cbab: ; 4cbab
-	db "スクラッフﾟ<HIRA>に なっているよ<KATA>", $00
+	db "スクラッフﾟ(に なっているよ)", $00
 
 Func_4cbbc: ; 4cbbc (13:4bbc)
 	push bc
@@ -54799,10 +54819,10 @@ Func_4cd88: ; 4cd88 (13:4d88)
 	ret
 
 Data_4cdb1: ; 4cdb1
-	db "<HIRA>たいせんする<KATA> ステーシﾞ<HIRA>を<KATA>", $00
+	db "(たいせんする) ステーシﾞ(を)", $00
 
 Data_4cdc3: ; 4cdc3
-	db "<HIRA>えらんてﾞくたﾞさい<KATA>", $00
+	db "(えらんてﾞくたﾞさい)", $00
 
 Pointers_4cdd0: ; 4cdd0
 	dw Data_4cde4
@@ -54819,34 +54839,34 @@ Pointers_4cdda: ; 4cdda
 	dw Data_4ce5c
 
 Data_4cde4: ; 4cde4
-	db "<HIRA>つうしﾞょうの<KATA>ハﾞトル<HIRA>てﾞ<KATA>", $00
+	db "(つうしﾞょうの)ハﾞトル(てﾞ)", $00
 
 Data_4cdf6: ; 4cdf6
-	db "<HIRA>ひきょりをきそう<KATA>", $00
+	db "(ひきょりをきそう)", $00
 
 Data_4ce01: ; 4ce01
-	db "タイム<HIRA>をきそう<KATA>", $00
+	db "タイム(をきそう)", $00
 
 Data_4ce0b: ; 4ce0b
-	db "<HIRA>かﾞんしﾞょうさをきそう<KATA>", $00
+	db "(かﾞんしﾞょうさをきそう)", $00
 
 Data_4ce1a: ; 4ce1a
-	db "<HIRA>はかいりょくをきそう<KATA>", $00
+	db "(はかいりょくをきそう)", $00
 
 Data_4ce27: ; 4ce27
-	db "<HIRA><HIRA>たいせんします<KATA>", $00
+	db "((たいせんします)", $00
 
 Data_4ce32: ; 4ce32
-	db "シﾞャンフﾟケﾞーム<HIRA>てﾞ<KATA>", $00
+	db "シﾞャンフﾟケﾞーム(てﾞ)", $00
 
 Data_4ce41: ; 4ce41
-	db "<HIRA>めいろ<KATA>ケﾞーム<HIRA>てﾞ<KATA>", $00
+	db "(めいろ)ケﾞーム(てﾞ)", $00
 
 Data_4ce4f: ; 4ce4f
-	db "カートﾞケﾞーム<HIRA>てﾞ<KATA>", $00
+	db "カートﾞケﾞーム(てﾞ)", $00
 
 Data_4ce5c: ; 4ce5c
-	db "ハﾟンチンクﾞケﾞーム<HIRA>てﾞ<KATA>", $00
+	db "ハﾟンチンクﾞケﾞーム(てﾞ)", $00
 
 Func_4ce6c: ; 4ce6c (13:4e6c)
 	push af
@@ -55281,9 +55301,9 @@ Func_4d1c7: ; 4d1c7 (13:51c7)
 	ret
 
 Data_4d1d4: ; 4d1d4
-	db "<HIRA>たﾞい<KATA>"
+	db "(たﾞい)"
 	TX_SNUM
-	db "<HIRA>しあい<KATA>", $00
+	db "(しあい)", $00
 
 Func_4d1e1: ; 4d1e1 (13:51e1)
 	push af
@@ -56003,24 +56023,24 @@ Func_4d769: ; 4d769 (13:5769)
 	ret
 
 Data_4d7ac: ; 4d7ac
-	db "<HIRA>たﾞい<KATA>"
+	db "(たﾞい)"
 	TX_SNUM
-	db "<HIRA>しあい<KATA> ", $00
+	db "(しあい) ", $00
 
 Data_4d7ba: ; 4d7ba
-	db "<HIRA>かち<KATA>", $00
+	db "(かち)", $00
 
 Data_4d7bf: ; 4d7bf
-	db "<HIRA>まけ<KATA>", $00
+	db "(まけ)", $00
 
 Data_4d7c4: ; 4d7c4
-	db "<HIRA>かち<KATA>", $00
+	db "(かち)", $00
 
 Data_4d7c9: ; 4d7c9
-	db "<HIRA>まけ<KATA>", $00
+	db "(まけ)", $00
 
 Data_4d7ce: ; 4d7ce
-	db "<HIRA>のしょうり<KATA>", $00
+	db "(のしょうり)", $00
 
 Func_4d7d6: ; 4d7d6 (13:57d6)
 	push de
@@ -56331,9 +56351,9 @@ Func_4da78: ; 4da78 (13:5a78)
 	ret
 
 Data_4dac7: ; 4dac7
-	db "<HIRA>たﾞい<KATA>"
+	db "(たﾞい)"
 	TX_SNUM
-	db "<HIRA>しあい<KATA> ", $00
+	db "(しあい) ", $00
 
 Func_4dad5: ; 4dad5 (13:5ad5)
 	push af
@@ -56627,13 +56647,13 @@ Func_4dc89: ; 4dc89 (13:5c89)
 	ret
 
 Data_4dcee: ; 4dcee
-	db "ホﾞク<HIRA>のなまえを きめて<KATA>ネ", $00
+	db "ホﾞク(のなまえを きめて)ネ", $00
 
 Data_4dcfe: ; 4dcfe
 	db "b___", $00
 
 Data_4dd03: ; 4dd03
-	db "ロホﾞホﾟン<HIRA>のなまえを きめて<KATA>ネ", $00
+	db "ロホﾞホﾟン(のなまえを きめて)ネ", $00
 
 Data_4dd16: ; 4dd16
 	db "b____", $00
@@ -56647,7 +56667,7 @@ Data_4dd1f: ; 4dd1f
 	db $00
 
 Data_4dd22: ; 4dd22
-	db "<HIRA>けってい<KATA>", $00
+	db "(けってい)", $00
 
 Pointers_4dd29: ; 4dd29
 	dw Data_4de01
@@ -56760,166 +56780,166 @@ Pointers_4dd29: ; 4dd29
 	dw Data_4df43
 
 Data_4de01: ; 4de01
-	db "<HIRA>あ<KATA>", $00
+	db "(あ)", $00
 
 Data_4de05: ; 4de05
-	db "<HIRA>い<KATA>", $00
+	db "(い)", $00
 
 Data_4de09: ; 4de09
-	db "<HIRA>う<KATA>", $00
+	db "(う)", $00
 
 Data_4de0d: ; 4de0d
-	db "<HIRA>え<KATA>", $00
+	db "(え)", $00
 
 Data_4de11: ; 4de11
-	db "<HIRA>お<KATA>", $00
+	db "(お)", $00
 
 Data_4de15: ; 4de15
-	db "<HIRA>ゃ<KATA>", $00
+	db "(ゃ)", $00
 
 Data_4de19: ; 4de19
-	db "<HIRA>か<KATA>", $00
+	db "(か)", $00
 
 Data_4de1d: ; 4de1d
-	db "<HIRA>き<KATA>", $00
+	db "(き)", $00
 
 Data_4de21: ; 4de21
-	db "<HIRA>く<KATA>", $00
+	db "(く)", $00
 
 Data_4de25: ; 4de25
-	db "<HIRA>け<KATA>", $00
+	db "(け)", $00
 
 Data_4de29: ; 4de29
-	db "<HIRA>こ<KATA>", $00
+	db "(こ)", $00
 
 Data_4de2d: ; 4de2d
-	db "<HIRA>ゅ<KATA>", $00
+	db "(ゅ)", $00
 
 Data_4de31: ; 4de31
-	db "<HIRA>さ<KATA>", $00
+	db "(さ)", $00
 
 Data_4de35: ; 4de35
-	db "<HIRA>し<KATA>", $00
+	db "(し)", $00
 
 Data_4de39: ; 4de39
-	db "<HIRA>す<KATA>", $00
+	db "(す)", $00
 
 Data_4de3d: ; 4de3d
-	db "<HIRA>せ<KATA>", $00
+	db "(せ)", $00
 
 Data_4de41: ; 4de41
-	db "<HIRA>そ<KATA>", $00
+	db "(そ)", $00
 
 Data_4de45: ; 4de45
-	db "<HIRA>ょ<KATA>", $00
+	db "(ょ)", $00
 
 Data_4de49: ; 4de49
-	db "<HIRA>た<KATA>", $00
+	db "(た)", $00
 
 Data_4de4d: ; 4de4d
-	db "<HIRA>ち<KATA>", $00
+	db "(ち)", $00
 
 Data_4de51: ; 4de51
-	db "<HIRA>つ<KATA>", $00
+	db "(つ)", $00
 
 Data_4de55: ; 4de55
-	db "<HIRA>て<KATA>", $00
+	db "(て)", $00
 
 Data_4de59: ; 4de59
-	db "<HIRA>と<KATA>", $00
+	db "(と)", $00
 
 Data_4de5d: ; 4de5d
-	db "<HIRA>っ<KATA>", $00
+	db "(っ)", $00
 
 Data_4de61: ; 4de61
-	db "<HIRA>な<KATA>", $00
+	db "(な)", $00
 
 Data_4de65: ; 4de65
-	db "<HIRA>に<KATA>", $00
+	db "(に)", $00
 
 Data_4de69: ; 4de69
-	db "<HIRA>ぬ<KATA>", $00
+	db "(ぬ)", $00
 
 Data_4de6d: ; 4de6d
-	db "<HIRA>ね<KATA>", $00
+	db "(ね)", $00
 
 Data_4de71: ; 4de71
-	db "<HIRA>の<KATA>", $00
+	db "(の)", $00
 
 Data_4de75: ; 4de75
-	db "<HIRA>ﾞ<KATA>", $00
+	db "(ﾞ)", $00
 
 Data_4de79: ; 4de79
-	db "<HIRA>は<KATA>", $00
+	db "(は)", $00
 
 Data_4de7d: ; 4de7d
-	db "<HIRA>ひ<KATA>", $00
+	db "(ひ)", $00
 
 Data_4de81: ; 4de81
-	db "<HIRA>ふ<KATA>", $00
+	db "(ふ)", $00
 
 Data_4de85: ; 4de85
-	db "<HIRA>へ<KATA>", $00
+	db "(へ)", $00
 
 Data_4de89: ; 4de89
-	db "<HIRA>ほ<KATA>", $00
+	db "(ほ)", $00
 
 Data_4de8d: ; 4de8d
-	db "<HIRA>ﾟ<KATA>", $00
+	db "(ﾟ)", $00
 
 Data_4de91: ; 4de91
-	db "<HIRA>ま<KATA>", $00
+	db "(ま)", $00
 
 Data_4de95: ; 4de95
-	db "<HIRA>み<KATA>", $00
+	db "(み)", $00
 
 Data_4de99: ; 4de99
-	db "<HIRA>む<KATA>", $00
+	db "(む)", $00
 
 Data_4de9d: ; 4de9d
-	db "<HIRA>め<KATA>", $00
+	db "(め)", $00
 
 Data_4dea1: ; 4dea1
-	db "<HIRA>も<KATA>", $00
+	db "(も)", $00
 
 Data_4dea5: ; 4dea5
-	db "<HIRA>-<KATA>", $00
+	db "(-)", $00
 
 Data_4dea9: ; 4dea9
-	db "<HIRA>や<KATA>", $00
+	db "(や)", $00
 
 Data_4dead: ; 4dead
-	db "<HIRA>ゆ<KATA>", $00
+	db "(ゆ)", $00
 
 Data_4deb1: ; 4deb1
-	db "<HIRA>よ<KATA>", $00
+	db "(よ)", $00
 
 Data_4deb5: ; 4deb5
-	db "<HIRA>わ<KATA>", $00
+	db "(わ)", $00
 
 Data_4deb9: ; 4deb9
-	db "<HIRA>を<KATA>", $00
+	db "(を)", $00
 
 Data_4debd: ; 4debd
-	db "<HIRA>ん<KATA>", $00
+	db "(ん)", $00
 
 Data_4dec1: ; 4dec1
-	db "<HIRA>ら<KATA>", $00
+	db "(ら)", $00
 
 Data_4dec5: ; 4dec5
-	db "<HIRA>り<KATA>", $00
+	db "(り)", $00
 
 Data_4dec9: ; 4dec9
-	db "<HIRA>る<KATA>", $00
+	db "(る)", $00
 
 Data_4decd: ; 4decd
-	db "<HIRA>れ<KATA>", $00
+	db "(れ)", $00
 
 Data_4ded1: ; 4ded1
-	db "<HIRA>ろ<KATA>", $00
+	db "(ろ)", $00
 
 Data_4ded5: ; 4ded5
-	db "<HIRA> <KATA>", $00
+	db "( )", $00
 
 Data_4ded9: ; 4ded9
 	db "ア", $00
@@ -57208,7 +57228,7 @@ Data_4dffc: ; 4dffc
 	db "カタカナ", $00
 
 Data_4e001: ; 4e001
-	db "<HIRA>かな  <KATA>", $00
+	db "(かな  )", $00
 
 Func_4e008: ; 4e008 (13:6008)
 	push bc
@@ -58211,22 +58231,22 @@ Func_4e6fd: ; 4e6fd (13:66fd)
 	ret
 
 Data_4e743: ; 4e743
-	db "<HIRA>なまえ<KATA>", $00
+	db "(なまえ)", $00
 
 Data_4e749: ; 4e749
-	db "<HIRA>たんしﾞょうひﾞ<KATA>", $00
+	db "(たんしﾞょうひﾞ)", $00
 
 Data_4e754: ; 4e754
-	db "<HIRA>せいさﾞ<KATA>", $00
+	db "(せいさﾞ)", $00
 
 Data_4e75b: ; 4e75b
-	db "ホﾞク<HIRA>の たんしﾞょうひﾞを きめて<KATA>ネ", $00
+	db "ホﾞク(の たんしﾞょうひﾞを きめて)ネ", $00
 
 Data_4e771: ; 4e771
-	db "<HIRA>かﾞつ<KATA>", $00
+	db "(かﾞつ)", $00
 
 Data_4e777: ; 4e777
-	db "<HIRA>にち<KATA>", $00
+	db "(にち)", $00
 
 Data_4e77c: ; 4e77c
 	db 11, 12
@@ -58912,7 +58932,7 @@ Func_4ec20: ; 4ec20 (13:6c20)
 	ret
 
 Data_4ec21: ; 4ec21
-	db "<HIRA>これてﾞいい<KATA>?", $00
+	db "(これてﾞいい)?", $00
 
 Func_4ec2b: ; 4ec2b (13:6c2b)
 	push af
@@ -59316,7 +59336,7 @@ Pointers_4f8a6: ; 4f8a6
 	dw $0
 
 Data_4f8aa: ; 4f8aa
-	db "<HIRA>しんかした<KATA>", $00
+	db "(しんかした)", $00
 
 Data_4f8b2: ; 4f8b2
 	dr $4f8b2, $4f8ba
@@ -59391,7 +59411,9 @@ Func_4f99d: ; 4f99d (13:799d)
 	cp $4
 	jp nc, Func_4f9ce
 	ld hl, sp+$36
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	dec a
 	ld hl, sp+$75
@@ -59488,10 +59510,10 @@ Func_4fa9e: ; 4fa9e (13:7a9e)
 	ret
 
 Data_4fab2: ; 4fab2
-	db "<HIRA>は<KATA> ", $00
+	db "(は) ", $00
 
 Data_4fab7: ; 4fab7
-	db "<HIRA>に<KATA>", $00
+	db "(に)", $00
 
 Func_4fabb: ; 4fabb (13:7abb)
 	ld a, [wNextVBlankFlags]
@@ -59582,12 +59604,16 @@ Func_4fb72: ; 4fb72 (13:7b72)
 	add hl, de
 	ld [hl], $ff
 	ld hl, sp+$29
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_4fbcb
 	ld hl, sp+$29
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $c
 	add hl, de
 	ld e, [hl]
@@ -59851,7 +59877,9 @@ Func_4fe2b: ; 4fe2b (13:7e2b)
 	cp $4
 	jp nc, Func_4feaa
 	ld hl, sp+$26
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_4fea0
@@ -59898,10 +59926,10 @@ Func_4fec1: ; 4fec1 (13:7ec1)
 	ret
 
 Data_4fec4: ; 4fec4
-	db "<HIRA>くれる<KATA> ロホﾞホﾟン<HIRA>を<KATA>", $00
+	db "(くれる) ロホﾞホﾟン(を)", $00
 
 Data_4fed4: ; 4fed4
-	db "<HIRA>えらんてﾞいるよ<KATA>", $00
+	db "(えらんてﾞいるよ)", $00
 
 Func_4fedf: ; 4fedf (13:7edf)
 	ld a, [wc319]
@@ -60592,7 +60620,7 @@ Pointers_5052d: ; 5052d
 	dw $0
 
 Data_50531: ; 50531
-	db "セーフﾞ<HIRA>したよ<KATA>", $00
+	db "セーフﾞ(したよ)", $00
 
 Func_5053b: ; 5053b
 	set_farcall_addrs_hli AllocateMemory
@@ -60667,7 +60695,7 @@ Func_505dc: ; 505dc (14:45dc)
 	ret
 
 Data_505f9: ; 505f9
-	db "セーフﾞ<HIRA>するよ<KATA>?", $00
+	db "セーフﾞ(するよ)?", $00
 
 Func_50604: ; 50604 (14:4604)
 	push bc
@@ -61238,10 +61266,10 @@ Pointers_5098e: ; 5098e
 	dw $0
 	
 Data_50994: ; 50994
-	db "<HIRA>おなしﾞ<KATA>ロホﾞホﾟン<HIRA>は<KATA>", $00
+	db "(おなしﾞ)ロホﾞホﾟン(は)", $00
 
 Data_509a4: ; 509a4
-	db "<HIRA>ならひﾞかえてﾞきません<KATA>", $00
+	db "(ならひﾞかえてﾞきません)", $00
 
 Func_509b3: ; 509b3
 	push bc
@@ -61644,7 +61672,7 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	ret
 
 Data_50cf6: ; 50cf6
-	db "<HIRA>を すてても よろしいてﾞすか<KATA>?", $00
+	db "(を すてても よろしいてﾞすか)?", $00
 
 Func_50d09:: ; 50d09
 	set_farcall_addrs_hli GetBanks
@@ -61676,7 +61704,9 @@ Func_50d44: ; 50d44 (14:4d44)
 	cp $4
 	jp nc, Func_50d7c
 	ld hl, sp+$2
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_50d6f
@@ -61984,7 +62014,9 @@ Func_50f58: ; 50f58 (14:4f58)
 	push bc
 	push bc
 	push bc
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	ld l, [hl]
 	push hl
 	ld hl, sp+$2
@@ -62347,28 +62379,28 @@ Pointers_5125a: ; 5125a
 	dw $0
 
 Data_5125e: ; 5125e
-	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は はけん されているよ<KATA>", $00
+	db "(その)ロホﾞホﾟン(は はけん されているよ)", $00
 
 Pointers_51277: ; 51277
 	dw Data_5127b
 	dw $0
 
 Data_5127b: ; 5127b
-	db "ハﾟーティー<HIRA>かﾞ いっはﾟいたﾞよ<KATA>", $00
+	db "ハﾟーティー(かﾞ いっはﾟいたﾞよ)", $00
 
 Pointers_5128f: ; 5128f
 	dw Data_51293
 	dw $0
 
 Data_51293: ; 51293
-	db "<HIRA>こうかんしたよ<KATA>", $00
+	db "(こうかんしたよ)", $00
 
 Pointers_5129d: ; 5129d
 	dw Data_512a1
 	dw $0
 
 Data_512a1: ; 512a1
-	db "<HIRA>ひきたﾞしたよ<KATA>", $00
+	db "(ひきたﾞしたよ)", $00
 
 Pointers_512ab: ; 512ab
 	dw Data_512b1
@@ -62376,17 +62408,17 @@ Pointers_512ab: ; 512ab
 	dw $0
 
 Data_512b1: ; 512b1
-	db "<HIRA>たたかえる<KATA> ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
+	db "(たたかえる) ロホﾞホﾟン(かﾞ)", $00
 
 Data_512c4: ; 512c4
-	db "<HIRA>いなくなるよ<KATA>", $00
+	db "(いなくなるよ)", $00
 
 Pointers_512cd: ; 512cd
 	dw Data_512d1
 	dw $0
 
 Data_512d1: ; 512d1
-	db "<HIRA>そいつは えらへﾞないよ<KATA>!", $00
+	db "(そいつは えらへﾞないよ)!", $00
 
 Func_512e1: ; 512e1 (14:52e1)
 	push af
@@ -62589,12 +62621,16 @@ Func_5144b: ; 5144b (14:544b)
 	add hl, de
 	ld [hl], $ff
 	ld hl, sp+$2
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_514a4
 	ld hl, sp+$2
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $c
 	add hl, de
 	ld e, [hl]
@@ -62863,10 +62899,10 @@ Func_516c3: ; 516c3 (14:56c3)
 	ret
 
 Data_516c8: ; 516c8
-	db "ハﾟーティー<HIRA>の<KATA> ロホﾞホﾟン<HIRA>と<KATA>", $00
+	db "ハﾟーティー(の) ロホﾞホﾟン(と)", $00
 
 Data_516dc: ; 516dc
-	db "<HIRA>こうかんする<KATA>?", $00
+	db "(こうかんする)?", $00
 
 Func_516e6: ; 516e6 (14:56e6)
 	add sp, -$46
@@ -62906,7 +62942,7 @@ Pointers_51747: ; 51747
 	dw $0
 
 Data_5174b: ; 5174b
-	db "<HIRA>を ひきたﾞしました<KATA>", $00
+	db "(を ひきたﾞしました)", $00
 
 Pointers_51758: ; 51758
 	dw Data_5175e
@@ -62914,17 +62950,17 @@ Pointers_51758: ; 51758
 	dw $0
 
 Data_5175e: ; 5175e
-	db "<HIRA>これいしﾞょう<KATA> ハﾟーティー<HIRA>に<KATA>", $00
+	db "(これいしﾞょう) ハﾟーティー(に)", $00
 
 Data_51772: ; 51772
-	db "<HIRA>ついかてﾞきないよ<KATA>", $00
+	db "(ついかてﾞきないよ)", $00
 
 Pointers_5177e: ; 5177e
 	dw Data_51782
 	dw $0
 
 Data_51782: ; 51782
-	db "<HIRA>を すてた<KATA>", $00
+	db "(を すてた)", $00
 
 Func_5178a: ; 5178a
 	push hl
@@ -63701,28 +63737,28 @@ Pointers_51e56: ; 51e56
 	dw $0
 
 Data_51e5a: ; 51e5a
-	db "<HIRA>これいしﾞょう ほかんてﾞきないよ<KATA>", $00
+	db "(これいしﾞょう ほかんてﾞきないよ)", $00
 
 Pointers_51e6e: ; 51e6e
 	dw Data_51e72
 	dw $0
 
 Data_51e72: ; 51e72
-	db "<HIRA>これいしﾞょう ひきたﾞせないよ<KATA>", $00
+	db "(これいしﾞょう ひきたﾞせないよ)", $00
 
 Pointers_51e85: ; 51e85
 	dw Data_51e89
 	dw $0
 
 Data_51e89: ; 51e89
-	db "<HIRA>を ほかんしたよ<KATA>", $00
+	db "(を ほかんしたよ)", $00
 
 Pointers_51e94: ; 51e94
 	dw Data_51e98
 	dw $0
 
 Data_51e98: ; 51e98
-	db "<HIRA>を ひきたﾞしたよ<KATA>", $00
+	db "(を ひきたﾞしたよ)", $00
 
 Func_51ea4: ; 51ea4
 	push hl
@@ -64147,13 +64183,13 @@ Func_522ac: ; 522ac (14:62ac)
 	ret
 
 Data_522b7: ; 522b7
-	db "<HIRA>ほかんする こすうを<KATA>", $00
+	db "(ほかんする こすうを)", $00
 
 Data_522c4: ; 522c4
-	db "<HIRA>ひきたﾞす こすうを<KATA>", $00
+	db "(ひきたﾞす こすうを)", $00
 
 Data_522d1: ; 522d1
-	db "<HIRA>にゅうりょくしてくたﾞさい<KATA>", $00
+	db "(にゅうりょくしてくたﾞさい)", $00
 
 Pointers_522e1: ; 522e1
 	dw Data_522e7
@@ -64161,10 +64197,10 @@ Pointers_522e1: ; 522e1
 	dw $0
 
 Data_522e7: ; 522e7
-	db "<HIRA>もちものかﾞ いっはﾟいなのてﾞ<KATA>", $00
+	db "(もちものかﾞ いっはﾟいなのてﾞ)", $00
 
 Data_522fa: ; 522fa
-	db "<HIRA>ひきたﾞせないよ<KATA>", $00
+	db "(ひきたﾞせないよ)", $00
 
 Pointers_52305: ; 52305
 	dw Data_5230b
@@ -64172,10 +64208,10 @@ Pointers_52305: ; 52305
 	dw $0
 
 Data_5230b: ; 5230b
-	db "<HIRA>これいしﾞょう そうこに<KATA>", $00
+	db "(これいしﾞょう そうこに)", $00
 
 Data_5231a: ; 5231a
-	db "<HIRA>ついかてﾞきないよ<KATA>", $00
+	db "(ついかてﾞきないよ)", $00
 
 Func_52326: ; 52326
 	push bc
@@ -65049,42 +65085,42 @@ Data_52ad8:
 	db "/", $00
 
 Data_52ada:
-	db "<HIRA>こうけﾞき<KATA>", $00
+	db "(こうけﾞき)", $00
 
 Data_52ae2:
-	db "<HIRA>ほﾞうきﾞょ<KATA>", $00
+	db "(ほﾞうきﾞょ)", $00
 
 Data_52aeb:
-	db "<HIRA>すはﾞやさ<KATA>", $00
+	db "(すはﾞやさ)", $00
 
 Data_52af3:
-	db "E×P:"
+	db "E*P:"
 	TX_UNUM
 	db $00
 
 Data_52afb:
-	db "<HIRA>あと<KATA>"
+	db "(あと)"
 	TX_SNUM
 	db $00
 
 Data_52b02:
-	db "<HIRA>しんかしない<KATA>", $00
+	db "(しんかしない)", $00
 
 Data_52b0b:
-	db "<HIRA>しんかする あと<KATA>", $00
+	db "(しんかする あと)", $00
 
 Data_52b16:
 	TX_SNUM
 	db $00
 
 Data_52b19:
-	db "<HIRA>ひかってる<KATA>", $00
+	db "(ひかってる)", $00
 
 Data_52b21:
-	db "<HIRA>さくしﾞょするかい<KATA>?", $00
+	db "(さくしﾞょするかい)?", $00
 
 Data_52b2e:
-	db "<HIRA>ひきたﾞすかい<KATA>?", $00
+	db "(ひきたﾞすかい)?", $00
 
 Func_52b39:
 	reg16swap de, hl
@@ -65171,7 +65207,7 @@ Pointers_52bad:
 	dw $0
 
 Data_52bb1:
-	db "<HIRA>こうかんしたよ<KATA>", $00
+	db "(こうかんしたよ)", $00
 
 Func_52bbb: ; 52bbb (14:6bbb)
 	push bc
@@ -65894,7 +65930,7 @@ Func_530b2: ; 530b2 (14:70b2)
 	ret
 
 Data_530bd:
-	db "<HIRA>せっていしゅうりょう<KATA>", $00
+	db "(せっていしゅうりょう)", $00
 
 Data_530ca:
 	TX_STACK
@@ -66029,16 +66065,16 @@ Func_53149: ; 53149 (14:7149)
 	ret
 
 Data_531c8:
-	db "<HIRA>せいれき ひつﾞけ しﾞかん を<KATA>", $00
+	db "(せいれき ひつﾞけ しﾞかん を)", $00
 
 Data_531db:
-	db "<HIRA>せっていしてくたﾞさい<KATA>", $00
+	db "(せっていしてくたﾞさい)", $00
 
 Data_531e9:
-	db "<HIRA>せいれき<KATA>", $00
+	db "(せいれき)", $00
 
 Data_531f0:
-	db "<HIRA>ねん<KATA>", $00
+	db "(ねん)", $00
 
 Data_531f5:
 	TX_SNUM
@@ -66191,13 +66227,13 @@ Func_53260: ; 53260 (14:7260)
 	ret
 
 Data_5330b:
-	db "<HIRA>ひつﾞけ<KATA>", $00
+	db "(ひつﾞけ)", $00
 
 Data_53312:
-	db "<HIRA>かﾞつ<KATA>", $00
+	db "(かﾞつ)", $00
 
 Data_53318:
-	db "<HIRA>にち<KATA>", $00
+	db "(にち)", $00
 
 Data_5331d:
 	TX_SNUM
@@ -66293,13 +66329,13 @@ Func_53327: ; 53327 (14:7327)
 	ret
 
 Data_533d4:
-	db "<HIRA>しﾞかん<KATA>", $00
+	db "(しﾞかん)", $00
 
 Data_533db:
 	db ":", $00
 
 Data_533dd:
-	db "<HIRA>にち<KATA>", $00
+	db "(にち)", $00
 
 Data_533e2:
 	TX_SNUM
@@ -67167,43 +67203,43 @@ Func_539ab: ; 539ab (14:79ab)
 	ret
 
 Data_539ac:
-	db "<HIRA>    <KATA>", $00
+	db "(    )", $00
 
 Data_539b3:
-	db "<HIRA>おひつしﾞ<KATA>", $00
+	db "(おひつしﾞ)", $00
 
 Data_539bb:
-	db "<HIRA>おうし <KATA>", $00
+	db "(おうし )", $00
 
 Data_539c2:
-	db "<HIRA>ふたこﾞ <KATA>", $00
+	db "(ふたこﾞ )", $00
 
 Data_539ca:
-	db "<HIRA>かに  <KATA>", $00
+	db "(かに  )", $00
 
 Data_539d1:
-	db "<HIRA>しし  <KATA>", $00
+	db "(しし  )", $00
 
 Data_539d8:
-	db "<HIRA>おとめ <KATA>", $00
+	db "(おとめ )", $00
 
 Data_539df:
-	db "<HIRA>てんひﾞん<KATA>", $00
+	db "(てんひﾞん)", $00
 
 Data_539e7:
-	db "<HIRA>さそり <KATA>", $00
+	db "(さそり )", $00
 
 Data_539ee:
-	db "<HIRA>いて  <KATA>", $00
+	db "(いて  )", $00
 
 Data_539f5:
-	db "<HIRA>やきﾞ  <KATA>", $00
+	db "(やきﾞ  )", $00
 
 Data_539fd:
-	db "<HIRA>みすﾞかﾞめ<KATA>", $00
+	db "(みすﾞかﾞめ)", $00
 
 Data_53a06:
-	db "<HIRA>うお  <KATA>", $00
+	db "(うお  )", $00
 
 INCLUDE "engine/robodex/flags.asm"
 
@@ -67285,7 +67321,7 @@ Pointers_53c10:
 	dw $0
 
 Data_53c14:
-	db "<HIRA>とﾞうやら せいこうした みたいしﾞゃ<KATA>", $00
+	db "(とﾞうやら せいこうした みたいしﾞゃ)", $00
 
 Pointers_53c2a:
 	dw Data_53c30
@@ -67293,10 +67329,10 @@ Pointers_53c2a:
 	dw $0
 
 Data_53c30:
-	db "リモコン<HIRA>の しﾞゅしんに<KATA>", $00
+	db "リモコン(の しﾞゅしんに)", $00
 
 Data_53c3f:
-	db "<HIRA>しっはﾟいしました<KATA>", $00
+	db "(しっはﾟいしました)", $00
 
 Pointers_53c4b:
 	dw Data_53c51
@@ -67304,17 +67340,17 @@ Pointers_53c4b:
 	dw $0
 
 Data_53c51:
-	db "<HIRA>なんしﾞゃ やめるのか<KATA>", $00
+	db "(なんしﾞゃ やめるのか)", $00
 
 Data_53c5f:
-	db "<HIRA>いくしﾞかﾞないのう<KATA>", $00
+	db "(いくしﾞかﾞないのう)", $00
 
 Pointers_53c6c:
 	dw Data_53c70
 	dw $0
 
 Data_53c70:
-	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は<KATA> <HIRA>えらへﾞないよ<KATA>", $00
+	db "(その)ロホﾞホﾟン(は) (えらへﾞないよ)", $00
 
 Func_53c88::
 	add sp, -$52
@@ -68090,7 +68126,9 @@ Func_54787: ; 54787 (15:4787)
 	pop bc
 	push bc
 	push af
-	get_party_bot c
+	ld l, c
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	ld e, a
 	dec e
@@ -68441,21 +68479,21 @@ Pointers_54a13:
 	dw $0
 
 Data_54a17:
-	db "スクラッフﾟ<HIRA>に なっているよ<KATA>", $00
+	db "スクラッフﾟ(に なっているよ)", $00
 
 Pointers_54a28:
 	dw Data_54a2c
 	dw $0
 
 Data_54a2c:
-	db "スクラッフﾟ<HIRA>しﾞゃないよ<KATA>", $00
+	db "スクラッフﾟ(しﾞゃないよ)", $00
 
 Pointers_54a3b:
 	dw Data_54a3f
 	dw $0
 
 Data_54a3f:
-	db "<HIRA>しんか しないよ<KATA>", $00
+	db "(しんか しないよ)", $00
 
 Pointers_54a4a:
 	dw Data_54a50
@@ -68463,10 +68501,10 @@ Pointers_54a4a:
 	dw $0
 
 Data_54a50:
-	db "<HIRA>これいしﾞょう<KATA> レヘﾞルアッフﾟ", $00
+	db "(これいしﾞょう) レヘﾞルアッフﾟ", $00
 
 Data_54a63:
-	db "<HIRA>てﾞきないよ<KATA>", $00
+	db "(てﾞきないよ)", $00
 
 Func_54a6c:
 	push af
@@ -68534,7 +68572,7 @@ Pointers_54aeb:
 	dw $0
 
 Data_54aef:
-	db "<HIRA>を つかった<KATA>", $00
+	db "(を つかった)", $00
 
 Func_54af8: ; 54af8 (15:4af8)
 	add sp, -$3c
@@ -68548,7 +68586,9 @@ Func_54af8: ; 54af8 (15:4af8)
 	call GetBanks_15
 	push af
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $c
 	add hl, de
 	ld a, [hl]
@@ -68557,7 +68597,9 @@ Func_54af8: ; 54af8 (15:4af8)
 	ld l, a
 	write_hl_to_sp_plus $b
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $e
 	add hl, de
 	ld a, [hl]
@@ -68566,7 +68608,9 @@ Func_54af8: ; 54af8 (15:4af8)
 	ld l, a
 	call WriteHLToSPPlus9
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $10
 	add hl, de
 	ld a, [hl]
@@ -68575,7 +68619,9 @@ Func_54af8: ; 54af8 (15:4af8)
 	ld l, a
 	call WriteHLToSPPlus7
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $12
 	add hl, de
 	ld a, [hl]
@@ -68584,12 +68630,16 @@ Func_54af8: ; 54af8 (15:4af8)
 	ld l, a
 	call WriteHLToSPPlus5
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $16
 	add hl, de
 	ld a, [hl]
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $7
 	add hl, de
 	ld l, [hl]
@@ -68597,7 +68647,9 @@ Func_54af8: ; 54af8 (15:4af8)
 	push hl
 	push af
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld c, [hl]
 	push bc
 	set_farcall_addrs_hli Func_15ad6
@@ -68853,10 +68905,14 @@ Func_54db3: ; 54db3 (15:4db3)
 	jp nz, Func_54e04
 	set_farcall_addrs_hli Func_5c694
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	call FarCall
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $16
 	add hl, de
 	ld [hl], a
@@ -68864,7 +68920,9 @@ Func_54db3: ; 54db3 (15:4db3)
 
 Func_54e04: ; 54e04 (15:4e04)
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $16
 	add hl, de
 	ld [hl], $0
@@ -68873,7 +68931,9 @@ Func_54e1f: ; 54e1f (15:4e1f)
 	call GetSRAMBank
 	set_farcall_addrs_hli Func_679e5
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $16
 	add hl, de
 	ld l, [hl]
@@ -69355,7 +69415,9 @@ Func_5527f: ; 5527f (15:527f)
 	call GetHLAtSPPlus6
 	push hl
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $c
 	add hl, de
 	pop de
@@ -69365,7 +69427,9 @@ Func_5527f: ; 5527f (15:527f)
 	call GetHLAtSPPlus4
 	push hl
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $10
 	add hl, de
 	pop de
@@ -69378,7 +69442,9 @@ Func_552d3: ; 552d3 (15:52d3)
 	call GetHLAtSPPlus6
 	push hl
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $e
 	add hl, de
 	pop de
@@ -69388,7 +69454,9 @@ Func_552d3: ; 552d3 (15:52d3)
 	call GetHLAtSPPlus4
 	push hl
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $12
 	add hl, de
 	pop de
@@ -69412,17 +69480,17 @@ Pointers_55320:
 	dw $0
 
 Data_55326:
-	db "<HIRA>おいおい! ひとりてﾞ<KATA>", $00
+	db "(おいおい! ひとりてﾞ)", $00
 
 Data_55334:
-	db "<HIRA>たひﾞするつもりかい<KATA>?", $00
+	db "(たひﾞするつもりかい)?", $00
 
 Pointers_55342:
 	dw Data_55346
 	dw $0
 
 Data_55346:
-	db "<HIRA>そうこかﾞ いっはﾟいたﾞよ<KATA>", $00
+	db "(そうこかﾞ いっはﾟいたﾞよ)", $00
 
 Pointers_55357:
 	dw Data_5535d
@@ -69430,24 +69498,24 @@ Pointers_55357:
 	dw $0
 
 Data_5535d:
-	db "<HIRA>たたかえる<KATA> ろほﾞほﾟん<HIRA>かﾞ<KATA>", $00
+	db "(たたかえる) ろほﾞほﾟん(かﾞ)", $00
 
 Data_55370:
-	db "<HIRA>いなくなるよ<KATA>", $00
+	db "(いなくなるよ)", $00
 
 Pointers_55379:
 	dw Data_5537d
 	dw $0
 
 Data_5537d:
-	db "<HIRA>ほかんしたよ<KATA>", $00
+	db "(ほかんしたよ)", $00
 
 Pointers_55386:
 	dw Data_5538a
 	dw $0
 
 Data_5538a:
-	db "<HIRA>そいつは えらへﾞないよ<KATA>!", $00
+	db "(そいつは えらへﾞないよ)!", $00
 
 Func_5539a: ; 5539a (15:539a)
 	push af
@@ -69568,12 +69636,16 @@ Func_55468: ; 55468 (15:5468)
 	add hl, de
 	ld [hl], $ff
 	ld hl, sp+$3
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_554c1
 	ld hl, sp+$3
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $c
 	add hl, de
 	ld e, [hl]
@@ -69950,7 +70022,9 @@ Func_5575d: ; 5575d (15:575d)
 	add hl, sp
 	call GetRobotOrTrainerBaseStats
 	ld hl, wc310
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -70441,21 +70515,21 @@ Data_55c17:
 	db "/", $00
 
 Data_55c19:
-	db "<HIRA>こうけﾞき<KATA>", $00
+	db "(こうけﾞき)", $00
 
 Data_55c21:
-	db "<HIRA>ほﾞうきﾞょ<KATA>", $00
+	db "(ほﾞうきﾞょ)", $00
 
 Data_55c2a:
-	db "<HIRA>すはﾞやさ<KATA>", $00
+	db "(すはﾞやさ)", $00
 
 Data_55c32:
-	db "E×P:"
+	db "E*P:"
 	TX_UNUM
 	db $00
 
 Data_55c3a:
-	db "<HIRA>あと<KATA>"
+	db "(あと)"
 	TX_SNUM
 	db $00
 
@@ -70974,7 +71048,9 @@ Func_56040: ; 56040 (15:6040)
 	push bc
 	push de
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	reg16swap de, hl
@@ -71132,7 +71208,7 @@ Func_5615c: ; 5615c (15:615c)
 	ret
 
 Data_56166:
-	db "<HIRA>のこり<KATA>RAM", $00
+	db "(のこり)RAM", $00
 
 Func_5616f:
 	ld c, l
@@ -71748,16 +71824,16 @@ Func_5664b: ; 5664b (15:664b)
 	ret
 
 Data_56656:
-	db "<HIRA>を ひきたﾞしたよ<KATA>", $00
+	db "(を ひきたﾞしたよ)", $00
 
 Data_56662:
-	db "<HIRA>を ほかんしたよ<KATA>", $00
+	db "(を ほかんしたよ)", $00
 
 Data_5666d:
-	db "<HIRA>これいしﾞょう ひきたﾞせないよ<KATA>", $00
+	db "(これいしﾞょう ひきたﾞせないよ)", $00
 
 Data_56680:
-	db "<HIRA>これいしﾞょう ほかんてﾞきないよ<KATA>", $00
+	db "(これいしﾞょう ほかんてﾞきないよ)", $00
 
 Func_56694:
 	push hl
@@ -71811,13 +71887,17 @@ Func_56732: ; 56732 (15:6732)
 	call GetBanks_15
 	push af
 	ld hl, wc310
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $1d
 	add hl, de
 	ld e, [hl]
 	push de
 	ld hl, wc310
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	ld e, a
 	dec e
@@ -71867,7 +71947,9 @@ Func_567d1: ; 567d1 (15:67d1)
 	call GetBanks_15
 	push af
 	ld hl, wc310
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -72071,20 +72153,20 @@ Data_56983:
 	db ":", $00
 
 Data_56985:
-	db "ソフト<HIRA>なし<KATA>", $00
+	db "ソフト(なし)", $00
 
 Data_5698d:
-	db "<HIRA>しんかしない<KATA>", $00
+	db "(しんかしない)", $00
 
 Data_56996:
-	db "<HIRA>しんかする あと<KATA>", $00
+	db "(しんかする あと)", $00
 
 Data_569a1:
 	TX_SNUM
 	db $00
 
 Data_569a4:
-	db "<HIRA>ひかってる<KATA>", $00
+	db "(ひかってる)", $00
 
 Data_569ac:
 	db "ハﾟーツ", $00
@@ -72093,19 +72175,19 @@ Data_569b1:
 	db "M", $00
 
 Data_569b3:
-	db "<HIRA>こうけﾞき <KATA>", $00
+	db "(こうけﾞき )", $00
 
 Data_569bc:
-	db "<HIRA>ほﾞうきﾞょ <KATA>", $00
+	db "(ほﾞうきﾞょ )", $00
 
 Data_569c6:
-	db "<HIRA>すはﾞやさ <KATA>", $00
+	db "(すはﾞやさ )", $00
 
 Data_569cf:
 	db "ソフト", $00
 
 Data_569d3:
-	db "<HIRA>わさﾞ<KATA>", $00
+	db "(わさﾞ)", $00
 
 Func_569d9: ; 569d9 (15:69d9)
 	push hl
@@ -72206,13 +72288,13 @@ Func_56a21: ; 56a21 (15:6a21)
 	ret
 
 Data_56a9c:
-	db "<HIRA>こうけﾞき <KATA>", $00
+	db "(こうけﾞき )", $00
 
 Data_56aa5:
-	db "<HIRA>ほﾞうきﾞょ <KATA>", $00
+	db "(ほﾞうきﾞょ )", $00
 
 Data_56aaf:
-	db "<HIRA>すはﾞやさ <KATA>", $00
+	db "(すはﾞやさ )", $00
 
 Data_56ab8:
 	db "RAM:", $00
@@ -73270,12 +73352,12 @@ Data_57655:
 Data_57659:
 	db "  "
 	TX_SNUM
-	db "<HIRA>かい<KATA>", $00
+	db "(かい)", $00
 
 Data_57662:
 	db " "
 	TX_SNUM
-	db "<HIRA>かい<KATA>", $00
+	db "(かい)", $00
 
 Data_5766a:
 	TX_CALL
@@ -73296,27 +73378,27 @@ Data_5767a:
 
 Data_57682:
 	TX_SNUM
-	db "<HIRA>に<KATA>", $00
+	db "(に)", $00
 
 Data_57688:
-	db "<HIRA>ちょうせんかのう<KATA>", $00
+	db "(ちょうせんかのう)", $00
 
 Data_57693:
-	db "<HIRA>しょしﾞきん<KATA> ", $00
+	db "(しょしﾞきん) ", $00
 
 Data_5769d:
 	TX_UNUM
 	db "G", $00
 
 Data_576a2:
-	db "ロホﾞホﾟン<HIRA>のかすﾞ<KATA> ", $00
+	db "ロホﾞホﾟン(のかすﾞ) ", $00
 
 Data_576b0:
 	TX_SNUM
 	db $00
 
 Data_576b3:
-	db "フﾟレイ<HIRA>しﾞかん<KATA> ", $00
+	db "フﾟレイ(しﾞかん) ", $00
 
 Data_576bf:
 	db ":", $00
@@ -73568,10 +73650,10 @@ Func_57840: ; 57840 (15:7840)
 	ret
 
 Data_57871:
-	db "<HIRA>みつけたかすﾞ<KATA>", $00
+	db "(みつけたかすﾞ)", $00
 
 Data_5787b:
-	db "<HIRA>つかまえたかすﾞ<KATA>", $00
+	db "(つかまえたかすﾞ)", $00
 
 Pointers_57886:
 	dw Data_5789e
@@ -73987,44 +74069,44 @@ Func_57b8e: ; 57b8e (15:7b8e)
 	ret
 
 Data_57b99:
-	db "<HIRA>ふﾞそﾞく<KATA>", $00
+	db "(ふﾞそﾞく)", $00
 
 Data_57ba1:
-	db "<HIRA>しんちょう<KATA>", $00
+	db "(しんちょう)", $00
 
 Data_57ba9:
-	db "<HIRA>たいしﾞゅう<KATA>", $00
+	db "(たいしﾞゅう)", $00
 
 Data_57bb2:
-	db "<HIRA>そﾞくせい<KATA>", $00
+	db "(そﾞくせい)", $00
 
 Data_57bba:
 	TX_CALL
 	db $00
 
 Data_57bbd:
-	db "<HIRA>しょう<KATA>", $00
+	db "(しょう)", $00
 
 Data_57bc3:
-	db "<HIRA>ちゅう<KATA>", $00
+	db "(ちゅう)", $00
 
 Data_57bc9:
-	db "<HIRA>たﾞい<KATA>", $00
+	db "(たﾞい)", $00
 
 Data_57bcf:
-	db "<HIRA>きょたﾞい<KATA>", $00
+	db "(きょたﾞい)", $00
 
 Data_57bd7:
-	db "<HIRA>かるい<KATA>", $00
+	db "(かるい)", $00
 
 Data_57bdd:
-	db "<HIRA>ふつう<KATA>", $00
+	db "(ふつう)", $00
 
 Data_57be3:
-	db "<HIRA>おもい<KATA>", $00
+	db "(おもい)", $00
 
 Data_57be9:
-	db "<HIRA>おもすきﾞ<KATA>", $00
+	db "(おもすきﾞ)", $00
 
 Func_57bf1: ; 57bf1 (15:7bf1)
 	push bc
@@ -74118,7 +74200,9 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	pop af
 	push hl
 	push af
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	reg16swap de, hl
 	ld hl, sp+$6
 	ld bc, $23
@@ -74128,16 +74212,22 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	pop de
 	push hl
 	push de
-	get_party_bot e
+	ld l, e
+	ld h, 0
+	get_party_bot
 	push hl
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call FarCopyVideoData
 	pop de
 	ld hl, sp+$2
 	push hl
-	get_party_bot e
+	ld l, e
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call FarCopyVideoData
@@ -74506,40 +74596,40 @@ Pointers_58d95:
 	dw Data_58df4
 
 Data_58dad:
-	db "<HIRA>おひつしﾞ<KATA>", $00
+	db "(おひつしﾞ)", $00
 
 Data_58db5:
-	db "<HIRA>おうし<KATA>", $00
+	db "(おうし)", $00
 
 Data_58dbb:
-	db "<HIRA>ふたこﾞ<KATA>", $00
+	db "(ふたこﾞ)", $00
 
 Data_58dc2:
-	db "<HIRA>かに<KATA>", $00
+	db "(かに)", $00
 
 Data_58dc7:
-	db "<HIRA>しし<KATA>", $00
+	db "(しし)", $00
 
 Data_58dcc:
-	db "<HIRA>おとめ<KATA>", $00
+	db "(おとめ)", $00
 
 Data_58dd2:
-	db "<HIRA>てんひﾞん<KATA>", $00
+	db "(てんひﾞん)", $00
 
 Data_58dda:
-	db "<HIRA>さそり<KATA>", $00
+	db "(さそり)", $00
 
 Data_58de0:
-	db "<HIRA>いて<KATA>", $00
+	db "(いて)", $00
 
 Data_58de5:
-	db "<HIRA>やきﾞ<KATA>", $00
+	db "(やきﾞ)", $00
 
 Data_58deb:
-	db "<HIRA>みすﾞかﾞめ<KATA>", $00
+	db "(みすﾞかﾞめ)", $00
 
 Data_58df4:
-	db "<HIRA>うお<KATA>", $00
+	db "(うお)", $00
 
 Func_58df9: ; 58df9 (16:4df9)
 	add sp, -$1a
@@ -74581,7 +74671,9 @@ Func_58e5b: ; 58e5b (16:4e5b)
 	cp $4
 	jp nc, Func_58e84
 	push af
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_58e7f
@@ -74783,25 +74875,25 @@ Func_58fd1: ; 58fd1 (16:4fd1)
 	ret
 
 Data_58fe6:
-	db "<HIRA>しゃちょう<KATA> ", $00
+	db "(しゃちょう) ", $00
 
 Data_58fef:
 	TX_CALL
 	db $00
 
 Data_58ff2:
-	db "ロホﾞホﾟン<HIRA>のかすﾞ<KATA> ", $00
+	db "ロホﾞホﾟン(のかすﾞ) ", $00
 
 Data_59000:
-	db "<HIRA>たい<KATA>", $00
+	db "(たい)", $00
 
 Data_59005:
-	db "<HIRA>しょしﾞきん<KATA> "
+	db "(しょしﾞきん) "
 	TX_UNUM
 	db "G", $00
 
 Data_59013:
-	db "フﾟレイ<HIRA>しﾞかん<KATA> ", $00
+	db "フﾟレイ(しﾞかん) ", $00
 
 Data_5901f:
 	db ":", $00
@@ -74811,28 +74903,28 @@ Pointers_59021:
 	dw $0
 
 Data_59025:
-	db "チッフﾟ<HIRA>をこうしんしました<KATA>", $00
+	db "チッフﾟ(をこうしんしました)", $00
 
 Pointers_59035:
 	dw Data_59039
 	dw $0
 
 Data_59039:
-	db "<HIRA>おかねかﾞ たりないよ<KATA>", $00
+	db "(おかねかﾞ たりないよ)", $00
 
 Pointers_59047:
 	dw Data_5904b
 	dw $0
 
 Data_5904b:
-	db "<HIRA>これいしﾞょう こうしんてﾞきないよ<KATA>", $00
+	db "(これいしﾞょう こうしんてﾞきないよ)", $00
 
 Pointers_59060:
 	dw Data_59064
 	dw $0
 
 Data_59064:
-	db "スクラッフﾟ<HIRA>に なっているよ<KATA>", $00
+	db "スクラッフﾟ(に なっているよ)", $00
 
 Data_59075:
 	db 2, 4, 8, 16, 32, 64
@@ -74891,21 +74983,27 @@ Func_590a8: ; 590a8 (16:50a8)
 	ld bc, $4
 	call MemCopy
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $22
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$4
 	ld [hl], e
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $7
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
 	ld [hl], e
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $c
 	add hl, de
 	ld e, [hl]
@@ -75183,12 +75281,16 @@ Func_59314: ; 59314 (16:5314)
 	ld a, [hl]
 	inc a
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $22
 	add hl, de
 	ld [hl], a
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $1f
 	add hl, de
 	ld a, $1f
@@ -75253,33 +75355,367 @@ Func_59457: ; 59457 (16:5457)
 	ret
 
 Data_5945a:
-	db "<HIRA>しょしﾞきん<KATA>", $00
+	db "(しょしﾞきん)", $00
 
 Data_59463:
 	TX_SNUM
 	db $00
 
 Data_59466:
-	db "チッフﾟ<HIRA>へ<KATA>", $00
+	db "チッフﾟ(へ)", $00
 
 Data_5946e:
 	TX_SNUM
 	db $00
 
 Data_59471:
-	db "00G <HIRA>ひつようてﾞす<KATA>", $00
+	db "00G (ひつようてﾞす)", $00
 
 Data_5947f:
-	db "チッフﾟ<HIRA>をこうしんしますか?<KATA>", $00
+	db "チッフﾟ(をこうしんしますか?)", $00
 
 Data_59490:
-	db "レヘﾞル<HIRA>ふﾞそく<KATA>", $00
+	db "レヘﾞル(ふﾞそく)", $00
 
 Data_5949b:
-	db "<HIRA>しょしﾞきん<KATA>", $00
+	db "(しょしﾞきん)", $00
 
-Func_594a4: ; 594a4
-	dr $594a4, $59724
+Func_594a4: ; 594a4 (16:54a4)
+	ld a, l
+	and h
+	inc a
+	jp z, Func_594af
+	ld e, l
+	ld a, h
+	call SetStringStartState
+Func_594af: ; 594af (16:54af)
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, $0
+	push hl
+	ld hl, $a
+	push hl
+	call CompareStackLongs_Signed
+	jp nc, Func_594d4
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, Data_59578
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	jp Func_59577
+
+Func_594d4: ; 594d4 (16:54d4)
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, $0
+	push hl
+	ld hl, $64
+	push hl
+	call CompareStackLongs_Signed
+	jp nc, Func_594f9
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, Data_59583
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	jp Func_59577
+
+Func_594f9: ; 594f9 (16:54f9)
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, $0
+	push hl
+	ld hl, $3e8
+	push hl
+	call CompareStackLongs_Signed
+	jp nc, Func_5951e
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, Data_5958d
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	jp Func_59577
+
+Func_5951e: ; 5951e (16:551e)
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, $0
+	push hl
+	ld hl, $2710
+	push hl
+	call CompareStackLongs_Signed
+	jp nc, Func_59543
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, Data_59596
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	jp Func_59577
+
+Func_59543: ; 59543 (16:5543)
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, $1
+	push hl
+	ld hl, $86a0
+	push hl
+	call CompareStackLongs_Signed
+	jp nc, Func_59568
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, Data_5959e
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	jp Func_59577
+
+Func_59568: ; 59568 (16:5568)
+	ld hl, sp+$2
+	call PutLongFromHLOnStack
+	ld hl, Data_595a5
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+Func_59577: ; 59577 (16:5577)
+	ret
+
+Data_59578:
+	db "      "
+	TX_UNUM
+	db "G", $00
+
+Data_59583:
+	db "     "
+	TX_UNUM
+	db "G", $00
+
+Data_5958d:
+	db "    "
+	TX_UNUM
+	db "G", $00
+
+Data_59596:
+	db "   "
+	TX_UNUM
+	db "G", $00
+
+Data_5959e:
+	db "  "
+	TX_UNUM
+	db "G", $00
+
+Data_595a5:
+	db " "
+	TX_UNUM
+	db "G", $00
+
+Func_595ab:
+	push hl
+	add sp, -$20
+	ld hl, sp+$20
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus4
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	ld hl, sp+$1
+	ld [hl], a
+	ld l, e
+	ld h, d
+	inc hl
+	ld a, [hl]
+	ld hl, sp+$0
+	ld [hl], a
+	ld l, e
+	ld h, d
+	inc hl
+	inc hl
+	ld l, [hl]
+	push hl
+	reg16swap de, hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	push af
+	call GetHLAtSPPlus8
+	ld de, $5
+	add hl, de
+	ld l, [hl]
+	inc hl
+	ld h, [hl]
+	call GetHLAtSPPlus8
+	ld de, $7
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus8
+	ld de, $d
+	add hl, de
+	ld a, [hl]
+	call GetHLAtSPPlus8
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	push de
+	push bc
+	read_hl_from_sp_plus $c
+	ld de, $9
+	add hl, de
+	ld e, c
+	ld d, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	set_farcall_addrs_hli Func_17e95
+	pop bc
+	pop de
+	pop af
+	pop hl
+	push de
+	push bc
+	ld c, a
+	ld e, l
+	ld hl, sp+$5
+	ld a, [hl]
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, a
+	call FarCall
+	call GetHLAtSPPlus8
+	inc hl
+	inc hl
+	inc hl
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus8
+	ld de, $b
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	set_farcall_addrs_hli GetBanks
+	ld de, $19
+	ld a, $3
+	call FarCall
+	ld e, a
+	ld hl, sp+$5
+	ld a, [hl]
+	add $2
+	ld hl, sp+$5
+	ld [hl], a
+	ld hl, sp+$4
+	ld a, [hl]
+	inc a
+	ld hl, sp+$4
+	ld [hl], a
+	xor a
+	pop bc
+Func_5966c: ; 5966c (16:566c)
+	cp c
+	jp nc, Func_596d7
+	push bc
+	push de
+	push af
+	set_farcall_addrs_hli Func_15ad6
+	pop af
+	pop de
+	push af
+	push de
+	ld hl, sp+$c
+	reg16swap de, hl
+	ld l, a
+	ld h, $0
+	inc h
+	inc h
+	inc h
+	ld c, $6
+	call FarCall
+	pop de
+	push de
+	ld a, e
+	call GetSRAMBank
+	set_farcall_addrs_hli Func_16019
+	ld hl, sp+$c
+	ld c, l
+	ld b, h
+	ld hl, sp+$8
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	call FarCall
+	set_farcall_addrs_hli GetBanks
+	ld de, $19
+	ld a, $3
+	call FarCall
+	ld hl, sp+$8
+	ld a, [hl]
+	add $2
+	ld hl, sp+$8
+	ld [hl], a
+	pop de
+	pop af
+	inc a
+	pop bc
+	jp Func_5966c
+
+Func_596d7: ; 596d7 (16:56d7)
+	ld a, e
+	call GetSRAMBank
+	set_farcall_addrs_hli Func_17863
+	call GetHLAtSPPlus6
+	call FarCall
+	callba_hli Func_33375
+	set_farcall_addrs_hli Func_333e0
+	pop de
+	ld a, e
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld hl, $4000
+	reg16swap de, hl
+	add sp, $22
+	reg16swap de, hl
+	ret
 
 Func_59724: ; 59724
 	dr $59724, $5a0e0
@@ -76108,7 +76544,9 @@ Func_5a759: ; 5a759 (16:6759)
 	cp $4
 	jp nc, Func_5a787
 	ld hl, sp+$28
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_5a77d
@@ -76232,10 +76670,10 @@ Func_5a855: ; 5a855 (16:6855)
 	ret
 
 Data_5a860:
-	db "<HIRA>ねたﾞん<KATA>", $00
+	db "(ねたﾞん)", $00
 
 Data_5a867:
-	db "<HIRA>しきん<KATA>", $00
+	db "(しきん)", $00
 
 Data_5a86d:
 	db "L "
@@ -76248,31 +76686,31 @@ Data_5a872:
 	db $00
 
 Data_5a876:
-	db "<HIRA>わかﾞ<KATA> <HIRA>けんきゅうしﾞょ<KATA>", $00
+	db "(わかﾞ) (けんきゅうしﾞょ)", $00
 
 Data_5a887:
-	db "<HIRA>しﾞまんの<KATA> ロホﾞホﾟン<HIRA>たﾞよ<KATA>", $00
+	db "(しﾞまんの) ロホﾞホﾟン(たﾞよ)", $00
 
 Pointers_5a89b:
 	dw Data_5a89f
 	dw $0000
 
 Data_5a89f:
-	db "<HIRA>これいしﾞょう<KATA> ロホﾞホﾟン<HIRA>は かえないよ<KATA>", $00
+	db "(これいしﾞょう) ロホﾞホﾟン(は かえないよ)", $00
 
 Pointers_5a8b9:
 	dw Data_5a8bd
 	dw $0000
 
 Data_5a8bd:
-	db "<HIRA>こﾞめん またﾞてﾞきてないんたﾞ<KATA>", $00
+	db "(こﾞめん またﾞてﾞきてないんたﾞ)", $00
 
 Pointers_5a8d1:
 	dw Data_5a8d5
 	dw $0000
 
 Data_5a8d5:
-	db "<HIRA>おかねかﾞ たりないよ<KATA>", $00
+	db "(おかねかﾞ たりないよ)", $00
 
 Pointers_5a8e3:
 	dw Data_5a8e9
@@ -76280,10 +76718,10 @@ Pointers_5a8e3:
 	dw $0000
 
 Data_5a8e9:
-	db "<HIRA>そうかい<KATA>", $00
+	db "(そうかい)", $00
 
 Data_5a8f0:
-	db "<HIRA>それは さﾞんねんたﾞね<KATA>", $00
+	db "(それは さﾞんねんたﾞね)", $00
 
 Pointers_5a8ff:
 	dw Data_5a905
@@ -76291,17 +76729,17 @@ Pointers_5a8ff:
 	dw $0000
 
 Data_5a905:
-	db "<HIRA>ありかﾞとう けんきゅうに やくたﾞつよ<KATA>", $00
+	db "(ありかﾞとう けんきゅうに やくたﾞつよ)", $00
 
 Data_5a91c:
-	db "<HIRA>ほかにも うってくれるかい?<KATA>", $00
+	db "(ほかにも うってくれるかい?)", $00
 
 Pointers_5a92d:
 	dw Data_5a931
 	dw $0000
 
 Data_5a931:
-	db "<HIRA>ありかﾞとう つくったかいかﾞ あったね<KATA>", $00
+	db "(ありかﾞとう つくったかいかﾞ あったね)", $00
 
 Pointers_5a948:
 	dw Data_5a94e
@@ -76309,10 +76747,10 @@ Pointers_5a948:
 	dw $0000
 
 Data_5a94e:
-	db "<HIRA>そうかい<KATA>", $00
+	db "(そうかい)", $00
 
 Data_5a955:
-	db "<HIRA>ほかにも ようはある?<KATA>", $00
+	db "(ほかにも ようはある?)", $00
 
 Func_5a963: ; 5a963 (16:6963)
 	push af
@@ -76702,7 +77140,7 @@ Func_5ac52: ; 5ac52 (16:6c52)
 	ret
 
 Data_5ac60:
-	db "<HIRA>かうかい?<KATA>", $00
+	db "(かうかい?)", $00
 
 Func_5ac68: ; 5ac68 (16:6c68)
 	add sp, -$24
@@ -76760,7 +77198,9 @@ Func_5acde: ; 5acde (16:6cde)
 	cp $4
 	jp nc, Func_5ad0c
 	ld hl, sp+$6
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_5ad02
@@ -76842,7 +77282,7 @@ Func_5adbe: ; 5adbe (16:6dbe)
 	ret
 
 Data_5adc1:
-	db "<HIRA>ひかりを あてるかい<KATA>", $00
+	db "(ひかりを あてるかい)", $00
 
 Func_5adce: ; 5adce (16:6dce)
 	ld l, $12
@@ -76946,7 +77386,9 @@ Func_5ae7e: ; 5ae7e (16:6e7e)
 	jp nc, Func_5aef0
 	ld hl, $10b
 	add hl, sp
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_5aee2
@@ -77339,16 +77781,16 @@ Func_5b196: ; 5b196 (16:7196)
 	ret
 
 Data_5b1c6:
-	db "<HIRA>しﾞふﾞん<KATA>", $00
+	db "(しﾞふﾞん)", $00
 
 Data_5b1ce:
-	db "<HIRA>あいて<KATA>", $00
+	db "(あいて)", $00
 
 Data_5b1d4:
-	db "<HIRA>こうかんしﾞっこう<KATA>", $00
+	db "(こうかんしﾞっこう)", $00
 
 Data_5b1e0:
-	db "<HIRA>こうかんちゅうし<KATA>", $00
+	db "(こうかんちゅうし)", $00
 
 Func_5b1eb: ; 5b1eb (16:71eb)
 	push bc
@@ -78104,7 +78546,7 @@ Func_5b83d: ; 5b83d (16:783d)
 	ret
 
 Data_5b848:
-	db "<HIRA>こうかんてﾞきないよ<KATA>", $00
+	db "(こうかんてﾞきないよ)", $00
 
 Func_5b855: ; 5b855 (16:7855)
 	push af
@@ -78202,21 +78644,21 @@ Pointers_5b91c:
 	dw $0000
 
 Data_5b920:
-	db "<HIRA>その<KATA>ロホﾞホﾟン <HIRA>は えらへﾞないよ<KATA>", $00
+	db "(その)ロホﾞホﾟン (は えらへﾞないよ)", $00
 
 Pointers_5b937:
 	dw Data_5b93b
 	dw $0000
 
 Data_5b93b:
-	db "ロホﾞホﾟン<HIRA>を えらんてﾞないよ<KATA>", $00
+	db "ロホﾞホﾟン(を えらんてﾞないよ)", $00
 
 Pointers_5b94e:
 	dw Data_5b952
 	dw $0000
 
 Data_5b952:
-	db "<HIRA>こうかんしたよ!<KATA>", $00
+	db "(こうかんしたよ!)", $00
 
 Func_5b95d: ; 5b95d (16:795d)
 	push af
@@ -78949,13 +79391,13 @@ Data_5bfc1:
 	db "/", $00
 
 Data_5bfc3:
-	db "<HIRA>こうけﾞき<KATA>", $00
+	db "(こうけﾞき)", $00
 
 Data_5bfcb:
-	db "<HIRA>ほﾞうきﾞょ<KATA>", $00
+	db "(ほﾞうきﾞょ)", $00
 
 Data_5bfd4:
-	db "<HIRA>すはﾞやさ<KATA>", $00
+	db "(すはﾞやさ)", $00
 
 Data_5bfdc:
 	db "タイフﾟ:", $00
@@ -78966,17 +79408,17 @@ Data_5bfe2:
 	db $00
 
 Data_5bfe9:
-	db "E×P:"
+	db "E*P:"
 	TX_UNUM
 	db $00
 
 Data_5bff1:
-	db "E×P:"
+	db "E*P:"
 	TX_UNUM
 	db $00
 
 Data_5bff9:
-	db "<HIRA>あと<KATA>"
+	db "(あと)"
 	TX_SNUM
 	db $00
 
@@ -82180,13 +82622,13 @@ Data_5d667:
 	db ":", $00
 
 Data_5d669:
-	db "<HIRA>ひかっている<KATA>", $00
+	db "(ひかっている)", $00
 
 Data_5d672:
 	db "エネ:", $00
 
 Data_5d676:
-	db "<HIRA>しんか しない<KATA>", $00
+	db "(しんか しない)", $00
 
 Data_5d680:
 	dr $5d680, $5d684
@@ -82577,7 +83019,7 @@ Pointers_5d90e:
 	dw Data_5d919
 
 Data_5d912:
-	db "<HIRA>こうかん<KATA>", $00
+	db "(こうかん)", $00
 
 Data_5d919:
 	db "ステータス", $00
@@ -82955,22 +83397,22 @@ Data_5db9e:
 	db "         ", $00
 
 Data_5dba8:
-	db "スクラッフﾟ<HIRA>に<KATA>", $00
+	db "スクラッフﾟ(に)", $00
 
 Data_5dbb2:
-	db "<HIRA>なっている<KATA>", $00
+	db "(なっている)", $00
 
 Data_5dbba:
-	db "<HIRA>そいつは<KATA>", $00
+	db "(そいつは)", $00
 
 Data_5dbc1:
-	db "<HIRA>たたかっている<KATA>", $00
+	db "(たたかっている)", $00
 
 Data_5dbcb:
-	db "<HIRA>そいつは<KATA>", $00
+	db "(そいつは)", $00
 
 Data_5dbd2:
-	db "<HIRA>こうかんてﾞきる<KATA>", $00
+	db "(こうかんてﾞきる)", $00
 
 Func_5dbdd:
 	push bc
@@ -83240,10 +83682,10 @@ Pointers_5dde3:
 	dw $0
 
 Data_5dde7:
-	db "Aホﾞタン<HIRA>てﾞ<KATA>ステータス<HIRA>かﾞみれるよ<KATA>", $00
+	db "Aホﾞタン(てﾞ)ステータス(かﾞみれるよ)", $00
 
 Data_5ddfe:
-	db "セレクトホﾞタン<HIRA>てﾞこうかんてﾞきるよ<KATA>", $00
+	db "セレクトホﾞタン(てﾞこうかんてﾞきるよ)", $00
 
 Func_5de14: ; 5de14 (17:5e14)
 	push hl
@@ -83459,19 +83901,19 @@ Func_5df96: ; 5df96 (17:5f96)
 	ret
 
 Data_5dfab:
-	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>に<KATA>", $00
+	db "(とﾞの)ロホﾞホﾟン(に)", $00
 
 Data_5dfba:
-	db "<HIRA>しますか<KATA>?", $00
+	db "(しますか)?", $00
 
 Data_5dfc2:
-	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>にする<KATA>?", $00
+	db "(とﾞの)ロホﾞホﾟン(にする)?", $00
 
 Data_5dfd4:
-	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>をあけﾞる<KATA>?", $00
+	db "(とﾞの)ロホﾞホﾟン(をあけﾞる)?", $00
 
 Data_5dfe8:
-	db "<HIRA>とﾞの<KATA>ロホﾞホﾟン<HIRA>につかう<KATA>?", $00
+	db "(とﾞの)ロホﾞホﾟン(につかう)?", $00
 
 Func_5dffb:
 	ld a, [wc395]
@@ -83785,7 +84227,7 @@ Pointers_5e274:
 	dw $0
 
 Data_5e278:
-	db "<HIRA>こうかんしたよ<KATA>", $00
+	db "(こうかんしたよ)", $00
 
 Pointers_5e282:
 	dw Data_5e288
@@ -83793,10 +84235,10 @@ Pointers_5e282:
 	dw $0
 
 Data_5e288:
-	db "<HIRA>おなしﾞ<KATA>ロホﾞホﾟン<HIRA>は<KATA>", $00
+	db "(おなしﾞ)ロホﾞホﾟン(は)", $00
 
 Data_5e298:
-	db "<HIRA>こうかんてﾞきないよ<KATA>", $00
+	db "(こうかんてﾞきないよ)", $00
 
 Func_5e2a5:
 	push hl
@@ -83985,20 +84427,28 @@ Func_5e398: ; 5e398 (17:6398)
 	push af
 	ld hl, sp+$3
 	push hl
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call MemCopy
 	pop af
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 	push hl
 	ld hl, sp+$2
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call MemCopy
 	ld hl, sp+$0
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	reg16swap de, hl
 	ld hl, sp+$1
 	ld bc, $23
@@ -84498,7 +84948,9 @@ Func_60268: ; 60268 (18:4268)
 	push bc
 	ld hl, sp+$5c
 	push hl
-	get_party_bot c
+	ld l, c
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call MemCopy
@@ -84692,7 +85144,9 @@ Func_603f8: ; 603f8 (18:43f8)
 	push bc
 	ld hl, sp+$5c
 	push hl
-	get_party_bot c
+	ld l, c
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call MemCopy
@@ -84953,7 +85407,7 @@ Func_605fc: ; 605fc (18:45fc)
 	ret
 
 Data_60619: ; 60619
-	db " <HIRA>かﾞ<KATA>", $00
+	db " (かﾞ)", $00
 
 INCLUDE "engine/map_text_18.asm"
 
@@ -85908,7 +86362,9 @@ Func_60f92: ; 60f92 (18:4f92)
 	ld [hl], $0
 Func_60fa3: ; 60fa3 (18:4fa3)
 	ld hl, sp+$6
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_6103d
@@ -87871,10 +88327,10 @@ Func_61ef4: ; 61ef3
 	ret
 
 Data_61f11: ; 61f11
-	db "<HIRA>はけんする<KATA> ロホﾞホﾟン<HIRA>を<KATA>", $00
+	db "(はけんする) ロホﾞホﾟン(を)", $00
 
 Data_61f23: ; 61f23
-	db "4<HIRA>たい えらんてﾞくたﾞさい<KATA>", $00
+	db "4(たい えらんてﾞくたﾞさい)", $00
 
 Func_61f34: ; 61f34
 	push af
@@ -88055,31 +88511,31 @@ Data_6206a: ; 6206a
 	db "RAM:", $00
 
 Data_6206f: ; 6206f
-	db "<HIRA>いりょく<KATA>", $00
+	db "(いりょく)", $00
 
 Data_62076: ; 62076
 	db "EP", $00
 
 Data_62079: ; 62079
-	db "<HIRA>こうけﾞき<KATA>   0", $00
+	db "(こうけﾞき)   0", $00
 
 Data_62085: ; 62085
-	db "<HIRA>ほﾞうきﾞょ<KATA>   0", $00
+	db "(ほﾞうきﾞょ)   0", $00
 
 Data_62092: ; 62092
-	db "<HIRA>すはﾞやさ<KATA>   0", $00
+	db "(すはﾞやさ)   0", $00
 
 Data_6209e: ; 6209e
 	db "RAM:  0M", $00
 
 Data_620a7: ; 620a7
-	db "<HIRA>こうけﾞき<KATA>   0", $00
+	db "(こうけﾞき)   0", $00
 
 Data_620b3: ; 620b3
-	db "<HIRA>ほﾞうきﾞょ<KATA>   0", $00
+	db "(ほﾞうきﾞょ)   0", $00
 
 Data_620c0: ; 620c0
-	db "<HIRA>すはﾞやさ<KATA>   0", $00
+	db "(すはﾞやさ)   0", $00
 
 Data_620cc: ; 620cc
 	db "RAM:  0M", $00
@@ -88151,7 +88607,9 @@ Func_6214b: ; 6214b (18:614b)
 	cp $4
 	jp nc, Func_6217d
 	ld hl, sp+$3a
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_62173
@@ -88189,17 +88647,23 @@ Func_6218f: ; 6218f (18:618f)
 	ld hl, sp+$3c
 	ld a, [hl]
 	ld hl, sp+$3a
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld [hl], a
 	ld hl, sp+$14
 	push hl
 	ld hl, sp+$3c
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	pop de
 	ld bc, $23
 	call CopyFromDEtoHL
 	ld hl, sp+$3a
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	call WriteHLToSPPlus8
 	ld hl, sp+$37
 	ld a, [hl]
@@ -88481,7 +88945,9 @@ Func_623d0: ; 623d0
 	ld hl, sp+$1d
 	ld [hl], a
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -88545,13 +89011,13 @@ Data_62482: ; 62482
 	dw Data_62486, $0
 
 Data_62486: ; 62486
-	db "<HIRA>RAMかﾞたりないよ<KATA>", $00
+	db "(RAMかﾞたりないよ)", $00
 
 Data_62493: ; 62493
 	dw Data_62497, $0
 
 Data_62497: ; 62497
-	db "ソフト<HIRA>かﾞ いっはﾟいてﾞ はすﾞせません<KATA>", $00
+	db "ソフト(かﾞ いっはﾟいてﾞ はすﾞせません)", $00
 
 Func_624af: ; 624af
 	push af
@@ -88673,7 +89139,9 @@ Func_625bd: ; 625bd (18:65bd)
 	call FarCall
 	push af
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld a, [wc311]
@@ -88715,7 +89183,9 @@ Func_62656: ; 62656 (18:6656)
 	or a
 	jp nz, Func_626fb
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld a, [wc311]
@@ -88732,7 +89202,9 @@ Func_62685: ; 62685 (18:6685)
 	cp $2
 	jp nc, Func_626e0
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	reg16swap de, hl
@@ -88743,7 +89215,9 @@ Func_62685: ; 62685 (18:6685)
 	add hl, de
 	ld a, [hl]
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	reg16swap de, hl
@@ -88761,7 +89235,9 @@ Func_62685: ; 62685 (18:6685)
 
 Func_626e0: ; 626e0 (18:66e0)
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $a
 .asm_626f6
 	add hl, de
@@ -88802,10 +89278,10 @@ Func_626ff: ; 626ff (18:66ff)
 	ret
 
 Data_6273a: ; 6273a
-	db "<HIRA>すへﾞてはすﾞして いいてﾞすか?<KATA>", $00
+	db "(すへﾞてはすﾞして いいてﾞすか?)", $00
 
 Data_6274e: ; 6274e
-	db "<HIRA>を はすﾞしますか?<KATA>", $00
+	db "(を はすﾞしますか?)", $00
 
 Func_6275b: ; 6275b
 	push bc
@@ -91312,7 +91788,9 @@ Func_6810b: ; 6810b (1a:410b)
 	ld e, a
 	push de
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld c, [hl]
 	pop de
 	pop af
@@ -91390,7 +91868,7 @@ Data_681a2:
 	db "c", $00
 
 Data_681a4:
-	db "×", $00
+	db "*", $00
 
 Func_681a6: ; 681a6 (1a:41a6)
 	ld a, [wFarCallDestBank]
@@ -91721,7 +92199,7 @@ Pointers_683a6:
 	dw $0
 
 Data_683aa:
-	db "<HIRA>はけんする ちいきを えらんてﾞね<KATA>", $00
+	db "(はけんする ちいきを えらんてﾞね)", $00
 
 Func_683be: ; 683be (1a:43be)
 	ld l, $12
@@ -92356,16 +92834,16 @@ Func_68883: ; 68883 (1a:4883)
 	ret
 
 Data_68886:
-	db "<HIRA>はけんちいき<KATA>", $00
+	db "(はけんちいき)", $00
 
 Data_6888f:
-	db "<HIRA>はけんしﾞかん<KATA>", $00
+	db "(はけんしﾞかん)", $00
 
 Data_68899:
-	db "<HIRA>はけん<KATA>ハﾟーティー", $00
+	db "(はけん)ハﾟーティー", $00
 
 Data_688a5:
-	db "<HIRA>これてﾞいい?<KATA>", $00
+	db "(これてﾞいい?)", $00
 
 Data_688af:
 	TX_SNUM
@@ -92376,28 +92854,28 @@ Data_688af:
 	db $00
 
 Data_688b9:
-	db "<HIRA>しﾞかんを しらせますか<KATA>?", $00
+	db "(しﾞかんを しらせますか)?", $00
 
 Data_688c9:
-	db "<HIRA>きかんしﾞかんは<KATA>", $00
+	db "(きかんしﾞかんは)", $00
 
 Data_688d4:
 	db " "
 	TX_SNUM
-	db "<HIRA>かﾞつ<KATA>", $00
+	db "(かﾞつ)", $00
 
 Data_688dd:
 	TX_SNUM
-	db "<HIRA>かﾞつ<KATA>", $00
+	db "(かﾞつ)", $00
 
 Data_688e5:
 	db " "
 	TX_SNUM
-	db "<HIRA>にち<KATA>", $00
+	db "(にち)", $00
 
 Data_688ed:
 	TX_SNUM
-	db "<HIRA>にち<KATA>", $00
+	db "(にち)", $00
 
 Data_688f4:
 	db " "
@@ -92418,7 +92896,7 @@ Data_68901:
 	db $00
 
 Data_68904:
-	db "<HIRA>たﾞよ<KATA>", $00
+	db "(たﾞよ)", $00
 
 Func_6890a: ; 6890a (1a:490a)
 	push hl
@@ -92595,13 +93073,13 @@ Func_68a2b:
 	ret
 
 Data_68a98:
-	db "<HIRA>はけんする しﾞかんを<KATA>", $00
+	db "(はけんする しﾞかんを)", $00
 
 Data_68aa6:
-	db "<HIRA>にゅうりょく してくたﾞさい<KATA>", $00
+	db "(にゅうりょく してくたﾞさい)", $00
 
 Data_68ab7:
-	db "<HIRA>はけんしﾞかん<KATA>", $00
+	db "(はけんしﾞかん)", $00
 
 Data_68ac1:
 	db ":", $00
@@ -93091,130 +93569,130 @@ Pointers_68da6:
 	dw $0
 
 Data_68dac:
-	db "<HIRA>ちか1かい<KATA>", $00
+	db "(ちか1かい)", $00
 
 Data_68db4:
-	db "<HIRA>そうこ<KATA>", $00
+	db "(そうこ)", $00
 
 Data_68dba:
-	db "<HIRA>1かい<KATA>", $00
+	db "(1かい)", $00
 
 Data_68dc0:
-	db "<HIRA>うけつけ<KATA>", $00
+	db "(うけつけ)", $00
 
 Data_68dc7:
-	db "<HIRA>2かい<KATA>", $00
+	db "(2かい)", $00
 
 Data_68dcd:
-	db "アイテム<HIRA>や<KATA>", $00
+	db "アイテム(や)", $00
 
 Data_68dd5:
-	db "<HIRA>3かい<KATA>", $00
+	db "(3かい)", $00
 
 Data_68ddb:
-	db "ハﾟーツ<HIRA>や<KATA>", $00
+	db "ハﾟーツ(や)", $00
 
 Data_68de3:
-	db "<HIRA>4かい<KATA>", $00
+	db "(4かい)", $00
 
 Data_68de9:
-	db "<HIRA>けんきゅうしﾞょ<KATA>", $00
+	db "(けんきゅうしﾞょ)", $00
 
 Data_68df4:
-	db "<HIRA>5かい<KATA>", $00
+	db "(5かい)", $00
 
 Data_68dfa:
 	db "トイレ", $00
 
 Data_68dfe:
-	db "<HIRA>6かい<KATA>", $00
+	db "(6かい)", $00
 
 Data_68e04:
 	db "ハﾞス", $00
 
 Data_68e08:
-	db "<HIRA>7かい<KATA>", $00
+	db "(7かい)", $00
 
 Data_68e0e:
-	db "<HIRA>こういしつ<KATA>", $00
+	db "(こういしつ)", $00
 
 Data_68e16:
-	db "<HIRA>8かい<KATA>", $00
+	db "(8かい)", $00
 
 Data_68e1c:
-	db "<HIRA>はけんしﾞょ<KATA>", $00
+	db "(はけんしﾞょ)", $00
 
 Data_68e25:
-	db "<HIRA>9かい<KATA>", $00
+	db "(9かい)", $00
 
 Data_68e2b:
 	db "レクリエーションルーム", $00
 
 Data_68e37:
-	db "<HIRA>10かい<KATA>", $00
+	db "(10かい)", $00
 
 Data_68e3e:
 	db "ケﾞームコーナー", $00
 
 Data_68e47:
-	db "<HIRA>11かい<KATA>", $00
+	db "(11かい)", $00
 
 Data_68e4e:
-	db "<HIRA>かいきﾞしつ<KATA>", $00
+	db "(かいきﾞしつ)", $00
 
 Data_68e57:
-	db "<HIRA>12かい<KATA>", $00
+	db "(12かい)", $00
 
 Data_68e5e:
 	db "リラックスルーム", $00
 
 Data_68e67:
-	db "<HIRA>13かい<KATA>", $00
+	db "(13かい)", $00
 
 Data_68e6e:
 	db "サウナ", $00
 
 Data_68e72:
-	db "<HIRA>14かい<KATA>", $00
+	db "(14かい)", $00
 
 Data_68e79:
 	db "カウンセリンクﾞルーム", $00
 
 Data_68e85:
-	db "<HIRA>15かい<KATA>", $00
+	db "(15かい)", $00
 
 Data_68e8c:
-	db "<HIRA>しちょうかくしつ<KATA>", $00
+	db "(しちょうかくしつ)", $00
 
 Data_68e97:
-	db "<HIRA>16かい<KATA>", $00
+	db "(16かい)", $00
 
 Data_68e9e:
-	db "<HIRA>あきへﾞや<KATA>", $00
+	db "(あきへﾞや)", $00
 
 Data_68ea6:
-	db "<HIRA>17かい<KATA>", $00
+	db "(17かい)", $00
 
 Data_68ead:
-	db "<HIRA>おうせつしつ<KATA>", $00
+	db "(おうせつしつ)", $00
 
 Data_68eb6:
-	db "<HIRA>18かい<KATA>", $00
+	db "(18かい)", $00
 
 Data_68ebd:
-	db "<HIRA>しゃちょうしつ<KATA>", $00
+	db "(しゃちょうしつ)", $00
 
 Data_68ec7:
-	db "<HIRA>19かい<KATA>", $00
+	db "(19かい)", $00
 
 Data_68ece:
-	db "<HIRA>てんしﾞしﾞょう<KATA>", $00
+	db "(てんしﾞしﾞょう)", $00
 
 Data_68ed9:
-	db "<HIRA>20かい<KATA>", $00
+	db "(20かい)", $00
 
 Data_68ee0:
-	db "<HIRA>てんほﾞうたﾞい<KATA>", $00
+	db "(てんほﾞうたﾞい)", $00
 
 Func_68eeb:
 	reg16swap de, hl
@@ -93560,13 +94038,13 @@ Func_690e3: ; 690e3 (1a:50e3)
 	ret
 
 Data_69114:
-	db "<HIRA>ちか<KATA>", $00
+	db "(ちか)", $00
 
 Data_69119:
-	db "<HIRA>ちか<KATA>", $00
+	db "(ちか)", $00
 
 Data_6911e:
-	db "<HIRA>かいたﾞて<KATA>", $00
+	db "(かいたﾞて)", $00
 
 Data_69126:
 	dr $69126, $6912c
@@ -94326,7 +94804,9 @@ RepairRobots::
 	cp $4
 	jp nc, .quit
 
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 
 	ld de, $e
 	add hl, de
@@ -94335,7 +94815,9 @@ RepairRobots::
 	ld d, [hl]
 	push de
 
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 
 	ld de, $c
 	add hl, de
@@ -94344,7 +94826,9 @@ RepairRobots::
 	inc hl
 	ld [hl], d
 
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 
 	ld de, $12
 	add hl, de
@@ -94353,7 +94837,9 @@ RepairRobots::
 	ld d, [hl]
 	push de
 
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 
 	ld de, $10
 	add hl, de
@@ -94362,7 +94848,9 @@ RepairRobots::
 	inc hl
 	ld [hl], d
 
-	get_party_bot a
+	ld l, a
+	ld h, 0
+	get_party_bot
 
 	ld de, $16
 	add hl, de
@@ -94656,10 +95144,10 @@ Data_698e5:
 	db $00
 
 Data_698e8:
-	db "<HIRA>しゃちょう<KATA>", $00
+	db "(しゃちょう)", $00
 
 Data_698f0:
-	db "<HIRA>こﾞようけんは なんてﾞすか<KATA>?", $00
+	db "(こﾞようけんは なんてﾞすか)?", $00
 
 Func_69902:
 	push hl
@@ -94963,7 +95451,7 @@ Func_69ae7: ; 69ae7 (1a:5ae7)
 	ret
 
 Data_69b31:
-	db "<HIRA>せいせきL<KATA>", $00
+	db "(せいせきL)", $00
 
 Data_69b39:
 	db "ハﾞトラー", $00
@@ -94981,19 +95469,19 @@ Data_69b56:
 	db "ハﾟンチャー", $00
 
 Data_69b5d:
-	db "<HIRA>かち<KATA>", $00
+	db "(かち)", $00
 
 Data_69b62:
-	db "<HIRA>まけ<KATA>", $00
+	db "(まけ)", $00
 
 Data_69b67:
-	db "<HIRA>おうしﾞゃにおくる<KATA> ヘﾞルト", $00
+	db "(おうしﾞゃにおくる) ヘﾞルト", $00
 
 Data_69b78:
 	db "p", $00
 
 Data_69b7a:
-	db "<HIRA>れんしょうちゅう<KATA>!", $00
+	db "(れんしょうちゅう)!", $00
 
 Func_69b86: ; 69b86 (1a:5b86)
 	callba_hli Func_17470
@@ -95078,19 +95566,19 @@ Func_69bb9:
 	ret
 
 Data_69c49:
-	db "<HIRA>こうかん<KATA>", $00
+	db "(こうかん)", $00
 
 Data_69c50:
-	db "<HIRA>あけﾞる<KATA>", $00
+	db "(あけﾞる)", $00
 
 Data_69c57:
-	db "<HIRA>もらう<KATA>", $00
+	db "(もらう)", $00
 
 Data_69c5d:
-	db "キッス<HIRA>てﾞ おこなう<KATA>", $00
+	db "キッス(てﾞ おこなう)", $00
 
 Data_69c6a:
-	db "モートﾞ<HIRA>を えらんてﾞくたﾞさい<KATA>", $00
+	db "モートﾞ(を えらんてﾞくたﾞさい)", $00
 
 Func_69c7d:
 	push bc
@@ -95315,7 +95803,9 @@ Func_69ddb: ; 69ddb (1a:5ddb)
 	cp $4
 	jp nc, Func_69e3b
 	ld hl, sp+$2
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_69e31
@@ -95423,7 +95913,7 @@ Func_69e88: ; 69e88 (1a:5e88)
 	ret
 
 Data_69ed2:
-	db "ロホﾞホﾟン<HIRA>を<KATA> <HIRA>えらんてﾞね<KATA>", $00
+	db "ロホﾞホﾟン(を) (えらんてﾞね)", $00
 
 Func_69ee5: ; 69ee5 (1a:5ee5)
 	push hl
@@ -95541,14 +96031,14 @@ Pointers_69f88:
 	dw $0
 
 Data_69f8c:
-	db "<HIRA>つうしん<KATA> エラー", $00
+	db "(つうしん) エラー", $00
 
 Pointers_69f97:
 	dw Data_69f9b
 	dw $0
 
 Data_69f9b:
-	db "モートﾞ<HIRA>かﾞ ちかﾞうよ<KATA>", $00
+	db "モートﾞ(かﾞ ちかﾞうよ)", $00
 
 Pointers_69faa:
 	dw Data_69fb0
@@ -95556,10 +96046,10 @@ Pointers_69faa:
 	dw $0
 
 Data_69fb0:
-	db "ハﾟーティー<HIRA>かﾞ いなくなるから<KATA>", $00
+	db "ハﾟーティー(かﾞ いなくなるから)", $00
 
 Data_69fc3:
-	db "<HIRA>あけﾞられないよ<KATA>", $00
+	db "(あけﾞられないよ)", $00
 
 Pointers_69fce:
 	dw Data_69fd4
@@ -95567,10 +96057,10 @@ Pointers_69fce:
 	dw $0
 
 Data_69fd4:
-	db "<HIRA>あいての<KATA>ハﾟーティー<HIRA>かﾞ<KATA>", $00
+	db "(あいての)ハﾟーティー(かﾞ)", $00
 
 Data_69fe5:
-	db "<HIRA>いなくなるのてﾞ もらえないよ<KATA>", $00
+	db "(いなくなるのてﾞ もらえないよ)", $00
 
 Pointers_69ff7:
 	dw Data_69ffd
@@ -95578,10 +96068,10 @@ Pointers_69ff7:
 	dw $0
 
 Data_69ffd:
-	db "<HIRA>あいての<KATA>ハﾟーティー<HIRA>かﾞ<KATA>", $00
+	db "(あいての)ハﾟーティー(かﾞ)", $00
 
 Data_6a00e:
-	db "<HIRA>いっはﾟいなのてﾞ あけﾞられないよ<KATA>", $00
+	db "(いっはﾟいなのてﾞ あけﾞられないよ)", $00
 
 Pointers_6a023:
 	dw Data_6a029
@@ -95589,10 +96079,10 @@ Pointers_6a023:
 	dw $0
 
 Data_6a029:
-	db "ハﾟーティー<HIRA>かﾞ いっはﾟいなのてﾞ<KATA>", $00
+	db "ハﾟーティー(かﾞ いっはﾟいなのてﾞ)", $00
 
 Data_6a03e:
-	db "<HIRA>もらえないよ<KATA>", $00
+	db "(もらえないよ)", $00
 
 Pointers_6a047:
 	dw Data_6a04d
@@ -95600,10 +96090,10 @@ Pointers_6a047:
 	dw $0
 
 Data_6a04d:
-	db "<HIRA>この<KATA>ロホﾞホﾟン<HIRA>は<KATA>", $00
+	db "(この)ロホﾞホﾟン(は)", $00
 
 Data_6a05b:
-	db "<HIRA>こうかんてﾞきないよ<KATA>", $00
+	db "(こうかんてﾞきないよ)", $00
 
 Pointers_6a068:
 	dw Data_6a06e
@@ -95611,10 +96101,10 @@ Pointers_6a068:
 	dw $0
 
 Data_6a06e:
-	db "<HIRA>この<KATA>ロホﾞホﾟン<HIRA>は<KATA>", $00
+	db "(この)ロホﾞホﾟン(は)", $00
 
 Data_6a07c:
-	db "<HIRA>あけﾞられないよ<KATA>", $00
+	db "(あけﾞられないよ)", $00
 
 Pointers_6a087:
 	dw Data_6a08d
@@ -95622,10 +96112,10 @@ Pointers_6a087:
 	dw $0
 
 Data_6a08d:
-	db "<HIRA>この<KATA>ロホﾞホﾟン<HIRA>は<KATA>", $00
+	db "(この)ロホﾞホﾟン(は)", $00
 
 Data_6a09b:
-	db "<HIRA>もらえないよ<KATA>", $00
+	db "(もらえないよ)", $00
 
 Pointers_6a0a4:
 	dw Data_6a0aa
@@ -95633,24 +96123,24 @@ Pointers_6a0a4:
 	dw $0
 
 Data_6a0aa:
-	db "<HIRA>いきてる<KATA>ロホﾞホﾟン<HIRA>かﾞ<KATA>", $00
+	db "(いきてる)ロホﾞホﾟン(かﾞ)", $00
 
 Data_6a0bb:
-	db "<HIRA>いなくなるよ<KATA>", $00
+	db "(いなくなるよ)", $00
 
 Pointers_6a0c4:
 	dw Data_6a0c8
 	dw $0
 
 Data_6a0c8:
-	db "<HIRA>もらえないよ<KATA>", $00
+	db "(もらえないよ)", $00
 
 Pointers_6a0d1:
 	dw Data_6a0d5
 	dw $0
 
 Data_6a0d5:
-	db "<HIRA>せいしﾞょうに しゅうりょうしたよ<KATA>", $00
+	db "(せいしﾞょうに しゅうりょうしたよ)", $00
 
 Func_6a0e9: ; 6a0e9 (1a:60e9)
 	push hl
@@ -95798,12 +96288,16 @@ Func_6a207: ; 6a207 (1a:6207)
 	add hl, de
 	ld [hl], $ff
 	ld hl, sp+$0
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_6a260
 	ld hl, sp+$0
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $c
 	add hl, de
 	ld e, [hl]
@@ -96794,16 +97288,16 @@ Func_6aa84: ; 6aa84 (1a:6a84)
 	ret
 
 Data_6aa8f:
-	db "ケﾞームホﾞーイ<HIRA>を ちかつﾞけて<KATA>", $00
+	db "ケﾞームホﾞーイ(を ちかつﾞけて)", $00
 
 Data_6aaa2:
-	db "<HIRA>とﾞちらかかﾞ<KATA> Bホﾞタン<HIRA>を おしてね<KATA>", $00
+	db "(とﾞちらかかﾞ) Bホﾞタン(を おしてね)", $00
 
 Data_6aaba:
-	db "<HIRA>ちゅうしするときは<KATA>", $00
+	db "(ちゅうしするときは)", $00
 
 Data_6aac6:
-	db "Bホﾞタン<HIRA>を おしてね<KATA>", $00
+	db "Bホﾞタン(を おしてね)", $00
 
 Func_6aad4::
 	push af
@@ -96823,7 +97317,9 @@ Func_6aae5: ; 6aae5 (1a:6ae5)
 	ld hl, sp+$3
 	ld a, [hl]
 	ld hl, sp+$1
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	cp [hl]
 	jp nz, Func_6ab14
 	ld hl, sp+$0
@@ -96868,7 +97364,9 @@ Func_6ab3a: ; 6ab3a (1a:6b3a)
 	push de
 	ld hl, sp+$7
 	ld a, [hl]
-	get_party_bot e
+	ld l, e
+	ld h, 0
+	get_party_bot
 	cp [hl]
 	jp nz, Func_6ab61
 	ld hl, sp+$4
@@ -96986,7 +97484,7 @@ Pointers_6ac2b:
 	dw $0
 
 Data_6ac2f:
-	db "<HIRA>これいしﾞょう はけん てﾞきないよ<KATA>", $00
+	db "(これいしﾞょう はけん てﾞきないよ)", $00
 
 Func_6ac44:: ; 6ac44 (1a:6c44)
 	push bc
@@ -97491,7 +97989,9 @@ Func_6af9d:
 	ld c, $0
 	call FarCall
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -97502,7 +98002,9 @@ Func_6af9d:
 	add hl, de
 	ld a, [hl]
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -97512,38 +98014,50 @@ Func_6af9d:
 	add hl, de
 	ld [hl], a
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$4
 	ld [hl], e
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $9
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$5
 	ld [hl], e
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $a
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$6
 	ld [hl], e
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $8
 	add hl, de
 	ld [hl], $0
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $9
 	add hl, de
 	ld [hl], $0
 	ld hl, wc2e9
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld de, $a
 	add hl, de
 	ld [hl], $0
@@ -97733,10 +98247,10 @@ Func_6b2f4: ; 6b2f4 (1a:72f4)
 	ret
 
 Data_6b2ff:
-	db "<HIRA>を そうひﾞしました<KATA>", $00
+	db "(を そうひﾞしました)", $00
 
 Data_6b30c:
-	db "<HIRA>そうひﾞ てﾞきません<KATA>", $00
+	db "(そうひﾞ てﾞきません)", $00
 
 Func_6b31a:: ; 6b31a (1a:731a)
 	push bc
@@ -98755,15 +99269,15 @@ Func_6ba04: ; 6ba04 (1a:7a04)
 	ret
 
 Data_6ba07:
-	db "<HIRA>は<KATA>レヘﾞル<HIRA>かﾞ<KATA>"
+	db "(は)レヘﾞル(かﾞ)"
 	TX_SNUM
 	db $00
 
 Data_6ba15:
-	db "<HIRA>たちは <KATA>", $00
+	db "(たちは )", $00
 
 Data_6ba1c:
-	db "<HIRA>を<KATA>", $00
+	db "(を)", $00
 
 Pointers_6ba20:
 	dw Data_6ba26
@@ -98771,10 +99285,10 @@ Pointers_6ba20:
 	dw $0
 
 Data_6ba26:
-	db "<HIRA>はけんした<KATA>ハﾟーティー<HIRA>は<KATA>", $00
+	db "(はけんした)ハﾟーティー(は)", $00
 
 Data_6ba37:
-	db "<HIRA>かえってきているよ!<KATA>", $00
+	db "(かえってきているよ!)", $00
 
 Pointers_6ba44:
 	dw Data_6ba4a
@@ -98782,10 +99296,10 @@ Pointers_6ba44:
 	dw $0
 
 Data_6ba4a:
-	db "<HIRA>はけんした<KATA>ハﾟーティー<HIRA>は<KATA>", $00
+	db "(はけんした)ハﾟーティー(は)", $00
 
 Data_6ba5b:
-	db "<HIRA>またﾞ かえってきて いないね…<KATA>", $00
+	db "(またﾞ かえってきて いないね#)", $00
 
 Pointers_6ba6e:
 	dw Data_6ba78
@@ -98795,30 +99309,30 @@ Pointers_6ba6e:
 	dw $0
 
 Data_6ba78:
-	db "<HIRA>はけんした<KATA>ハﾟーティー<HIRA>は<KATA>", $00
+	db "(はけんした)ハﾟーティー(は)", $00
 
 Data_6ba89:
-	db "<HIRA>かえってきてはいるけとﾞ…<KATA>", $00
+	db "(かえってきてはいるけとﾞ#)", $00
 
 Data_6ba99:
-	db "ホﾞロホﾞロ<HIRA>のしﾞょうたいたﾞね<KATA>", $00
+	db "ホﾞロホﾞロ(のしﾞょうたいたﾞね)", $00
 
 Data_6baac:
-	db "<HIRA>むりを させすきﾞしﾞゃないの?<KATA>", $00
+	db "(むりを させすきﾞしﾞゃないの?)", $00
 
 Pointers_6babf:
 	dw Data_6bac3
 	dw $0
 
 Data_6bac3:
-	db "<HIRA>その<KATA>ロホﾞホﾟン<HIRA>は はけん されているよ<KATA>", $00
+	db "(その)ロホﾞホﾟン(は はけん されているよ)", $00
 
 Pointers_6badc:
 	dw Data_6bae0
 	dw $0
 
 Data_6bae0:
-	db "<HIRA>あかﾞったよ<KATA>", $00
+	db "(あかﾞったよ)", $00
 
 Pointers_6bae9:
 	dw Data_6baf3
@@ -98828,16 +99342,16 @@ Pointers_6bae9:
 	dw $0
 
 Data_6baf3:
-	db "<HIRA>こんかいの はけんてﾞ<KATA>レヘﾞル<HIRA>の<KATA>", $00
+	db "(こんかいの はけんてﾞ)レヘﾞル(の)", $00
 
 Data_6bb08:
-	db "アッフﾟ<HIRA>した<KATA> ロホﾞホﾟン<HIRA>は いないね<KATA>", $00
+	db "アッフﾟ(した) ロホﾞホﾟン(は いないね)", $00
 
 Data_6bb20:
-	db "<HIRA>らくを させすきﾞても<KATA>", $00
+	db "(らくを させすきﾞても)", $00
 
 Data_6bb2e:
-	db "レヘﾞル<HIRA>は あかﾞらないよ<KATA>", $00
+	db "レヘﾞル(は あかﾞらないよ)", $00
 
 Pointers_6bb3e:
 	dw Data_6bb44
@@ -98845,17 +99359,17 @@ Pointers_6bb3e:
 	dw $0
 
 Data_6bb44:
-	db "<HIRA>そうそう たひﾞのとちゅうてﾞ<KATA>", $00
+	db "(そうそう たひﾞのとちゅうてﾞ)", $00
 
 Data_6bb56:
-	db "<HIRA>なにかを みつけてきたようたﾞね<KATA>", $00
+	db "(なにかを みつけてきたようたﾞね)", $00
 
 Pointers_6bb69:
 	dw Data_6bb6d
 	dw $0
 
 Data_6bb6d:
-	db "<HIRA>みつけてきた<KATA>", $00
+	db "(みつけてきた)", $00
 
 Pointers_6bb76:
 	dw Data_6bb7c
@@ -98863,24 +99377,24 @@ Pointers_6bb76:
 	dw $0
 
 Data_6bb7c:
-	db "<HIRA>はけんしている<KATA>ハﾟーティー<HIRA>は<KATA>", $00
+	db "(はけんしている)ハﾟーティー(は)", $00
 
 Data_6bb8f:
-	db "<HIRA>いないよ<KATA>", $00
+	db "(いないよ)", $00
 
 Pointers_6bb96:
 	dw Data_6bb9a
 	dw $0
 
 Data_6bb9a:
-	db "<HIRA>かえってきてるよ<KATA>", $00
+	db "(かえってきてるよ)", $00
 
 Pointers_6bba5:
 	dw Data_6bba9
 	dw $0
 
 Data_6bba9:
-	db "<HIRA>くみめの<KATA> ハﾟーティー", $00
+	db "(くみめの) ハﾟーティー", $00
 
 Pointers_6bbb7:
 	dw Data_6bbbd
@@ -98888,17 +99402,17 @@ Pointers_6bbb7:
 	dw $0
 
 Data_6bbbd:
-	db "<HIRA>はけんにたﾞすときに たいりょくを<KATA>", $00
+	db "(はけんにたﾞすときに たいりょくを)", $00
 
 Data_6bbd1:
-	db "<HIRA>かいふく させとくよ!<KATA>", $00
+	db "(かいふく させとくよ!)", $00
 
 Pointers_6bbdf:
 	dw Data_6bbe3
 	dw $0
 
 Data_6bbe3:
-	db "<HIRA>いっはﾟいなのてﾞ すてた<KATA>", $00
+	db "(いっはﾟいなのてﾞ すてた)", $00
 
 Func_6bbf3: ; 6bbf3 (1a:7bf3)
 	push de
@@ -99108,14 +99622,14 @@ Func_6bddd: ; 6bddd (1a:7ddd)
 	ret
 
 Data_6bdde:
-	db "<HIRA>はけんした<KATA> ハﾟーティー<HIRA>は "
+	db "(はけんした) ハﾟーティー(は "
 	TX_SNUM
-	db "くみ<KATA>", $00
+	db "くみ)", $00
 
 Data_6bdf5:
-	db "<HIRA>"
+	db "("
 	TX_SNUM
-	db "<KATA>", $00
+	db ")", $00
 
 Func_6bdfa: ; 6bdfa (1a:7dfa)
 	push af
@@ -99971,7 +100485,7 @@ Func_6c534: ; 6c534 (1b:4534)
 	ret
 
 Data_6c53a:
-	db "<HIRA>たへﾞさせますか?<KATA>", $00
+	db "(たへﾞさせますか?)", $00
 
 Func_6c546:
 	push hl
@@ -102170,7 +102684,7 @@ Func_6d62c: ; 6d62c (1b:562c)
 	ret
 
 Data_6d62f:
-	db "<HIRA>ひきわけなのてﾞ もういちとﾞ<KATA>", $00
+	db "(ひきわけなのてﾞ もういちとﾞ)", $00
 
 Func_6d641: ; 6d641 (1b:5641)
 	ld a, [wc2cd]
@@ -106517,10 +107031,10 @@ Pointers_6f762:
 	dw $0
 
 Data_6f768:
-	db "<HIRA>そうこもいっはﾟいてﾞ<KATA>", $00
+	db "(そうこもいっはﾟいてﾞ)", $00
 
 Data_6f776:
-	db "<HIRA>これいしﾞょうもてないよ<KATA>", $00
+	db "(これいしﾞょうもてないよ)", $00
 
 Func_6f785: ; 6f785 (1b:7785)
 	push af
@@ -106698,7 +107212,7 @@ Func_6f947: ; 6f947 (1b:7947)
 	ret
 
 Data_6f95b:
-	db "<HIRA>すてる?<KATA>", $00
+	db "(すてる?)", $00
 
 Func_6f962: ; 6f962 (1b:7962)
 	add sp, -$52
@@ -106921,10 +107435,10 @@ Func_6fb42: ; 6fb42 (1b:7b42)
 	ret
 
 Data_6fb43:
-	db "<HIRA>あなたのかち<KATA>", $00
+	db "(あなたのかち)", $00
 
 Data_6fb4c:
-	db "<HIRA>あなたのまけ<KATA>", $00
+	db "(あなたのまけ)", $00
 
 INCLUDE "engine/predef.asm"
 

@@ -127,7 +127,7 @@
 	defchar "?"
 	defchar "/"
 	defchar ":"
-	defchar "×"
+	defchar "*"
 	defchar "L" ; 80
 	defchar "p"
 	defchar "@"
@@ -222,5 +222,5 @@
 	defchar "A"
 	defchar "B"
 	defchar "M"
-	defchar "…"
+	defchar "#"
 	defchar "a"

@@ -4,17 +4,17 @@ Pointers_6f4be:
 	dw $0
 
 Data_6f4c4:
-	db "<HIRA>ちょっとまってな<KATA>", $00
+	db "(ちょっとまってな)", $00
 
 Data_6f4cf:
-	db "<HIRA>ちょちょいっと なおすさぁ<KATA>", $00
+	db "(ちょちょいっと なおすさぁ)", $00
 
 Pointers_6f4df:
 	dw Data_6f4e3
 	dw $0
 
 Data_6f4e3:
-	db "<HIRA>そうかい またおいてﾞ<KATA>", $00
+	db "(そうかい またおいてﾞ)", $00
 
 Pointers_6f4f1:
 	dw Data_6f4f7
@@ -22,10 +22,10 @@ Pointers_6f4f1:
 	dw $0
 
 Data_6f4f7:
-	db "<HIRA>おまたせっ<KATA>!", $00
+	db "(おまたせっ)!", $00
 
 Data_6f500:
-	db "<HIRA>かんへﾟきに なおしといたよ<KATA>!", $00
+	db "(かんへﾟきに なおしといたよ)!", $00
 
 AskRepairRobots:: ; 6f512 (1b:7512)
 	ld a, $3
@@ -193,4 +193,4 @@ Func_6f685: ; 6f685 (1b:7685)
 	ret
 
 Data_6f6d0:
-	db "<HIRA>しゅうりしてゆくかい<KATA>?", $00
+	db "(しゅうりしてゆくかい)?", $00

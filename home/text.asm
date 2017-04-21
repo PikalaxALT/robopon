@@ -20,7 +20,7 @@ LiteralStringInTree:: ; 1494 (0:1494)
 .done
 	bit 0, b
 	jr z, .bit_0_clear
-	ld a, "<KATA>"
+	ld a, ")"
 	ld [hli], a
 	xor a
 .bit_0_clear
@@ -592,7 +592,7 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits011101
 	; 011100
-	ld a, "…"
+	ld a, "#"
 	jp .queue_character
 
 .bits011101
@@ -733,14 +733,14 @@ PrintCharacterFromTree::
 	jp .queue_character
 
 .bits10101
-	ld a, "<HIRA>"
+	ld a, "("
 	jp .queue_character
 
 .bits1011
 	call .GetNextBit
 	jr c, .bits10111
 	; 10110
-	ld a, "<KATA>"
+	ld a, ")"
 	jp .queue_character
 
 .bits10111

@@ -1,11 +1,4 @@
 
-charmap "…", $23
-charmap "<SPEC>", $25
-charmap "×", $2a
-
-charmap "<HIRA>", $28
-charmap "<KATA>", $29
-
 	char_def $a6
 
 	defchar "を", "ヲ"

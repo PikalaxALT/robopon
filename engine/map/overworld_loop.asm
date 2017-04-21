@@ -244,4 +244,4 @@ OverworldLoop: ; 81cf (2:41cf)
 	jp .loop3
 
 Data_840f: ; 840f
-	db "<HIRA>なう ろーてﾞぃんくﾞ<KATA>", $00
+	db "(なう ろーてﾞぃんくﾞ)", $00

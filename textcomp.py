@@ -49,10 +49,11 @@ def textcomp(filename):
         if line.startswith('\ttree "'):
             treefname = line[7:-2]
             tree = pickle.load(open(treefname, 'rb'))
-            ctrlkata = get_path(tree, '<KATA>')
-            ctrlhira = get_path(tree, '<HIRA>')
+            ctrlhira = get_path(tree, '<HIRA>') or get_path(tree, '(')
+            ctrlkata = get_path(tree, '<KATA>') or get_path(tree, ')')
             ctrlterm = get_path(tree, '<TERM>')
             ctrlline = get_path(tree, '<NL>')
+            ctrlplater = get_path(tree, '<PLAYER>')
             ctrldaku = get_path(tree, 'ﾞ')
             ctrlhand = get_path(tree, 'ﾟ')
             continue

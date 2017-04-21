@@ -253,8 +253,6 @@ ENDR
 ENDM
 
 get_party_bot: MACRO
-	ld l, \1
-	ld h, $0
 	ld e, l
 	ld d, h
 	add hl, hl
@@ -266,6 +264,10 @@ get_party_bot: MACRO
 	add hl, hl
 	add hl, de
 	add hl, bc
+IF _NARG > 0
+	ld de, \1
+	add hl, de
+ENDC
 	ld de, wSaveScratchParty
 	add hl, de
 	ENDM

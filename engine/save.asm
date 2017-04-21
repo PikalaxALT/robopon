@@ -2,7 +2,7 @@ Pointers_56d8e:
 	dw Data_56d90
 
 Data_56d90:
-	db "<HIRA>ちょっとまってね<KATA>", $00 ; Please wait...
+	db "(ちょっとまってね)", $00 ; Please wait...
 
 SaveGame: ; 56d9b (15:6d9b)
 	ld hl, -$404

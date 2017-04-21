@@ -39,7 +39,9 @@ Func_5e55c: ; 5e55c (17:655c)
 	cp $4
 	jp nc, Func_5e58a
 	ld hl, sp+$4d
-	get_party_bot [hl]
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
 	ld a, [hl]
 	or a
 	jp nz, Func_5e580

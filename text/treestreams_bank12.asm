@@ -403,13 +403,13 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jp .done
 
 .asm_4bb52
-	ld a, "<HIRA>"
+	ld a, "("
 	jp .done
 
 .asm_4bb57
 	call .GetNextBit
 	jr c, .asm_4bb61
-	ld a, "<KATA>"
+	ld a, ")"
 	jp .done
 
 .asm_4bb61
