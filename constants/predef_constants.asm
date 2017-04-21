@@ -149,7 +149,7 @@ const_value = $4b
 	predef_const Func_7d8fc
 	predef_const Func_7d905
 	predef_const Func_7d9f9
-	predef_const Func_7d689
+	predef_const GetJUTFCharacter_1bpp
 	predef_const Func_7d93e
 	predef_const Func_7c100
 	predef_const Func_7d918

@@ -849,7 +849,7 @@ Func_83b96: ; 83b96 (20:7b96)
 	push hl
 	ld hl, $0
 	push hl
-	call Func_277c
+	call AdjustMoney
 	pop bc
 	pop bc
 	ld hl, sp+$f
@@ -1054,7 +1054,7 @@ Func_83d57: ; 83d57 (20:7d57)
 	ld hl, sp+$f
 	call PutLongFromHLOnStack
 	call NegateLongOnStack
-	call Func_277c
+	call AdjustMoney
 	pop bc
 	pop bc
 	pop bc

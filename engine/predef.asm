@@ -5953,7 +5953,7 @@ Func_7bdc7:: ; 7bdc7 (1e:7dc7)
 	push hl
 	ld a, [hFFB4]
 	ld c, a
-	predef Func_7d689
+	predef GetJUTFCharacter_1bpp
 	ld a, b
 	xor $80
 	ld h, $0
@@ -6349,7 +6349,7 @@ Pointers_7c000:: ; 7c000
 	dw Func_7d8fc
 	dw Func_7d905
 	dw Func_7d9f9
-	dw Func_7d689
+	dw GetJUTFCharacter_1bpp
 	dw Func_7d93e
 	dw Func_7c100
 	dw Func_7d918
@@ -8646,7 +8646,7 @@ Func_7cdee:: ; 7cdee (1f:4dee)
 	ld a, [de]
 	ld e, a
 	ld c, $3
-	jp Func_7d689
+	jp GetJUTFCharacter_1bpp
 
 asm_7cdf5
 	halt
@@ -9906,7 +9906,9 @@ Func_7d676:: ; 7d676 (1f:5676)
 	ld b, a
 	ret
 
-Func_7d689:: ; 7d689 (1f:5689)
+GetJUTFCharacter_1bpp:: ; 7d689 (1f:5689)
+; e: which character
+; c: flags
 	push bc
 	push de
 	push hl
@@ -9921,42 +9923,42 @@ Func_7d689:: ; 7d689 (1f:5689)
 	ld d, h
 	pop hl
 	ld b, $8
-.asm_7d69b
+.loop
 	ld a, $ff
 	bit 4, c
-	jr nz, .asm_7d6a9
+	jr nz, .check_bit_0_1
 	inc a
 	bit 0, c
-	jr z, .asm_7d6af
+	jr z, .load1
 	ld a, [de]
-	jr .asm_7d6af
+	jr .load1
 
-.asm_7d6a9
+.check_bit_0_1
 	bit 0, c
-	jr nz, .asm_7d6af
+	jr nz, .load1
 	ld a, [de]
 	cpl
-.asm_7d6af
+.load1
 	ld [hli], a
 	ld a, $ff
 	bit 5, c
-	jr nz, .asm_7d6be
+	jr nz, .check_bit_0_2
 	inc a
 	bit 1, c
-	jr z, .asm_7d6c4
+	jr z, .load2
 	ld a, [de]
-	jr .asm_7d6c4
+	jr .load2
 
-.asm_7d6be
+.check_bit_0_2
 	bit 0, c
-	jr nz, .asm_7d6c4
+	jr nz, .load2
 	ld a, [de]
 	cpl
-.asm_7d6c4
+.load2
 	ld [hli], a
 	inc de
 	dec b
-	jr nz, .asm_7d69b
+	jr nz, .loop
 	pop de
 	pop bc
 	ret
@@ -10107,7 +10109,7 @@ Func_7d753:: ; 7d753 (1f:5753)
 	push af
 	and $cc
 	or $3
-	call Func_7d79c
+	call LoadJUTFFont
 	pop af
 	and $20
 	ret nz
@@ -10122,7 +10124,7 @@ Func_7d78e:: ; 7d78e (1f:578e)
 	ld [rOBP1], a
 	ret
 
-Func_7d79c:: ; 7d79c (1f:579c)
+LoadJUTFFont:: ; 7d79c (1f:579c)
 	bit 7, a
 	jr nz, .asm_7d7cf
 	ld a, $3
@@ -10132,13 +10134,13 @@ Func_7d79c:: ; 7d79c (1f:579c)
 	ld hl, $8800
 	ld e, $80
 	ld bc, $3
-.asm_7d7b1
+.copyLoop
 	push bc
 	push de
 	push hl
 	ld hl, wc3e0
 	push hl
-	call Func_7d689
+	call GetJUTFCharacter_1bpp
 	pop de
 	pop hl
 	push hl
@@ -10151,7 +10153,7 @@ Func_7d79c:: ; 7d79c (1f:579c)
 	pop bc
 	inc e
 	dec b
-	jr nz, .asm_7d7b1
+	jr nz, .copyLoop
 	ret
 
 .asm_7d7cf
@@ -10201,13 +10203,13 @@ Func_7d79c:: ; 7d79c (1f:579c)
 	ld hl, $9340
 	ld e, $21
 	ld bc, $3f03
-.asm_7d818
+.copyLoop2
 	push bc
 	push de
 	push hl
 	ld hl, wc3e0
 	push hl
-	call Func_7d689
+	call GetJUTFCharacter_1bpp
 	pop de
 	pop hl
 	push hl
@@ -10221,7 +10223,7 @@ Func_7d79c:: ; 7d79c (1f:579c)
 	pop bc
 	inc e
 	dec b
-	jr nz, .asm_7d818
+	jr nz, .copyLoop2
 	ret
 
 Func_7d835:: ; 7d835 (1f:5835)
@@ -10454,7 +10456,7 @@ Func_7d983:: ; 7d983 (1f:5983)
 	ld c, a
 	ld hl, wc3e0
 	push hl
-	call Func_7d689
+	call GetJUTFCharacter_1bpp
 	pop hl
 Func_7d98c:: ; 7d98c (1f:598c)
 	push hl
@@ -14619,8 +14621,7 @@ Func_7ef16:: ; 7ef16 (1f:6f16)
 .asm_7efb4
 	ret
 
-Data_7efb5:: ; 7efb5
-	dr $7efb5, $7f7b5
+Data_7efb5:: INCBIN "gfx/font/7efb5.1bpp" ; 7efb5
 
 Data_7f7b5:: ; 7f7b5
 	dr $7f7b5, $7f845

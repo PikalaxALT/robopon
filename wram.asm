@@ -689,7 +689,8 @@ wc770:: ; c770
 	char wc797 ; c797
 	char wc798 ; c798
 	char wc799 ; c799
-	ds $2
+	char wc79a ; c79a
+	ds $1
 	char wc79c ; c79c
 	char wc79d ; c79d
 	char wc79e ; c79e
@@ -864,10 +865,17 @@ wSaveBlock1::
 	array wSaveScratchPlayerName, 5, 1, 1 ; c980
 	char wSaveScratchBirthMonth ; c985
 	char wSaveScratchBirthDay ; c986
-	ds $31 ; c987
+	char wc987 ; c987
+	ds $1
+	array SaveScratchMoney, 4, 1, 1 ; c989
+	char wc98d ; c98d
+	array wc98e, 20, 1, 1 ; c98e
+	char wc9a2 ; c9a2
+	array wc9a3, 20, 1, 1 ; c9a3
+	char wc9b7 ; c9b7
 	array wSaveScratchParty, 4, 35, 1 ; c9b8
-	array wca44, 20, 1, 1 ; ca44
-	array wca58, 20, 1, 1 ; ca58
+	array wSaveScratchBagItems, 20, 1, 1 ; ca44
+	array wSaveScratchBagItemQuantities, 20, 1, 1 ; ca58
 	char wSaveScratchca6c ; ca6c
 	ds $3
 	bitfield wSaveScratchDexSeenFlags, NUM_ROBOTS ; ca70
@@ -875,7 +883,14 @@ wSaveBlock1::
 	char wca9c ; ca9c
 	bitfield wSaveScratchEventFlags, 400 ; ca9d
 	array wSaveScratchc789, 100, 1, 1 ; cacf
-	ds $25 ; cb33
+	array wcb33, 8, 1, 1 ; cb33
+	short wcb3b ; cb3b
+	short wcb3d ; cb3d
+	array wcb3f, 5, 1, 2 ; cb3f
+	array wcb49, 5, 1, 2 ; cb49
+	short wcb53 ; cb53
+	short wcb55 ; cb55
+	char wcb57 ; cb57
 	array wSaveScratchc347, 3, 20, 1 ; cb58
 wSaveBlock2:: ds $a0  ; cb94
 wSaveBlock3:: ds $dc  ; cc34

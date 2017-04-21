@@ -236,14 +236,14 @@ Func_1421a: ; 1421a (5:421a)
 	jp Func_14366
 
 Func_1421d: ; 1421d (5:421d)
-	ld hl, $c9a2
+	ld hl, wc9a2
 	ld l, [hl]
 	ld h, $0
 	write_hl_to_sp_plus $0f
 	jp Func_14366
 
 Func_1422a: ; 1422a (5:422a)
-	ld hl, $c9b7
+	ld hl, wc9b7
 	ld l, [hl]
 	ld h, $0
 	write_hl_to_sp_plus $0f
@@ -260,21 +260,7 @@ Func_14244: ; 14244 (5:4244)
 	call CompareHLtoDE
 	jp nc, Func_14287
 	ld hl, wc2e9
-	ld l, [hl]
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, wSaveScratchParty
-	add hl, de
+	get_party_bot [hl]
 	ld de, $8
 	add hl, de
 	ld c, l

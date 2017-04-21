@@ -63,6 +63,9 @@ data/base_stats/%.bin: ;
 %.2bpp: %.png
 	$(2bpp) $<
 
+%.1bpp: %.png
+	$(1bpp) $<
+
 %.tm2bpp: %.2bpp
 	$(TM) $< $@
 

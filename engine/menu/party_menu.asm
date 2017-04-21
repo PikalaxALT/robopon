@@ -39,21 +39,7 @@ Func_5e55c: ; 5e55c (17:655c)
 	cp $4
 	jp nc, Func_5e58a
 	ld hl, sp+$4d
-	ld l, [hl]
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, wSaveScratchParty
-	add hl, de
+	get_party_bot [hl]
 	ld a, [hl]
 	or a
 	jp nz, Func_5e580

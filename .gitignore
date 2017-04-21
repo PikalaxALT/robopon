@@ -6,6 +6,7 @@
 *.tm
 *.2bpp
 *.ctf
+*.1bpp
 
 # precompiled python
 *.pyc

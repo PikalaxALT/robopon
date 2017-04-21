@@ -251,4 +251,21 @@ ENDC
 	shift
 ENDR
 ENDM
-	
+
+get_party_bot: MACRO
+	ld l, \1
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, wSaveScratchParty
+	add hl, de
+	ENDM

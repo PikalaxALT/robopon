@@ -4070,25 +4070,29 @@ Func_2761:: ; 2761 (0:2761)
 Func_2770:: ; 2770 (0:2770)
 	pop bc
 	pop hl
+
 	push hl
 	add hl, bc
 	pop de
+
 	push hl
 	pop hl
+
 	push hl
 	pop bc
+
 	pop bc
 	pop bc
 	ret
 
-Func_277c:: ; 277c
+AdjustMoney:: ; 277c
 	ld a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
 	ld hl, sp+$8
 	reg16swap de, hl
-	ld hl, $c989
+	ld hl, SaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$4
@@ -4129,7 +4133,7 @@ Func_27c0:: ; 27c0 (0:27c0)
 Func_27e0:: ; 27e0 (0:27e0)
 	ld a, $3
 	call GetSRAMBank
-	ld de, $c989
+	ld de, SaveScratchMoney
 	ld hl, sp+$8
 	ld bc, $4
 	call MemCopy
