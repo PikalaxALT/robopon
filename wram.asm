@@ -4,7 +4,11 @@ SECTION "WRAM0", WRAM0
 wTimer:: ds $3 ; c000
 wSerial:: ds $3 ; c003
 wVBlank:: ds $16 ; c006
-	char wc01c ; c01c
+	char wRTCTicker ; c01c
+	; Cycles from $00 to $05 in increments of $1,
+	; then from $05 to $11 in increments of $2,
+	; then back to $00.
+	; One increment per frame as described.
 
 SECTION "Audio RAM Backup", WRAM0 [$c020]
 	char wBackupSongIndex ; c020
@@ -497,10 +501,10 @@ wVideoTransferQueue:: ; c239
 	char wSongCurrentlyPlaying ; c2eb
 	char wSFXCurrentlyPlaying ; c2ec
 	char wVideoTransferRequestBank ; c2ed
-	char wc2ee ; c2ee
-	char wc2ef ; c2ef
-	char wc2f0 ; c2f0
-	char wc2f1 ; c2f1
+	char wTimeSetMillennia ; c2ee
+	char wTimeSetCenturies ; c2ef
+	char wTimeSetDecades ; c2f0
+	char wTimeSetYears ; c2f1
 	char wc2f2 ; c2f2
 	char wc2f3 ; c2f3
 	char wc2f4
@@ -511,22 +515,19 @@ wVideoTransferQueue:: ; c239
 	char wc2f9 ; c2f9
 	char wc2fa ; c2fa
 	char wSystemType ; c2fb
-	char wc2fc ; c2fc
-	char wc2fd ; c2fd
-	char wc2fe ; c2fe
-	char wc2ff ; c2ff
-
-SECTION "OAM Buffer at boot only", WRAM0 [$c300]
+	char wTimeSetMonthsTensDigit ; c2fc
+	char wTimeSetMonthsOnesDigit ; c2fd
+	char wTimeSetDaysTensDigit ; c2fe
+	char wTimeSetDaysOnesDigit ; c2ff
 	char wc300 ; c300
-	char wc301 ; c301
-	char wc302 ; c302
-	char wc303 ; c303
-	char wc304 ; c304
+	char wTimeSetHoursTensDigit ; c301
+	char wTimeSetHoursOnesDigit ; c302
+	char wTimeSetMinutesTensDigit ; c303
+	char wTimeSetMinutesOnesDigit ; c304
 	char wc305 ; c305
 	char wc306 ; c306
 	char wc307 ; c307
 	char wc308 ; c308
-
 
 	array wPlayerName, 5, 1, 1 ; c309
 	short wc30e ; c30e
@@ -574,8 +575,8 @@ SECTION "OAM Buffer at boot only", WRAM0 [$c300]
 	char wc39f ; c39f
 	array wc3a0, 16, 1, 1 ; c3a0
 	short wc3b0 ; c3b0
-	short wc3b2 ; c3b2
-	char wc3b4 ; c3b4
+	short wSTDLibRNGState ; c3b2
+	char wSTDLibRNGCount ; c3b4
 	
 	char wc3b5 ; c3b5
 	char wc3b6 ; c3b6
@@ -852,7 +853,7 @@ SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 	short wVBlankMetaTileTransferQueue1Dest ; c929
 	char wc92b ; c92b
 	short wc92c ; c92c
-	short wc92e ; c92e
+	short wMinutesSinceMidnight ; c92e
 	short wc930 ; c930
 	short wc932 ; c932
 	short wc934 ; c934

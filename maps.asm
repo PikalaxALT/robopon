@@ -5026,10 +5026,116 @@ Func_92c92: ; 92c92
 	dr $92c92, $92e02
 
 Func_92e02: ; 92e02
-	dr $92e02, $932bd
+	dr $92e02, $93097
 
-Func_932bd:: ; 932bd
-	dr $932bd, $93364
+CommonYearMonthLengths:
+	db 0
+	db 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+
+LeapYearMonthLengths:
+	db 0
+	db 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+
+Data_930b1:
+	dr $930b1, $932bd
+
+Func_932bd:: ; 932bd (24:72bd)
+	push hl
+	ld a, [wRTCTicker]
+	push af
+	call GetHLAtSPPlus4
+	inc hl
+	inc hl
+	ld c, [hl]
+	call GetHLAtSPPlus4
+	ld a, [hl]
+	call GetHLAtSPPlus4
+	inc hl
+	ld e, [hl]
+	call Func_93883
+	ld c, l
+	ld b, h
+	push bc
+	call GetHLAtSPPlus6
+	inc hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	ld de, $3c
+	call MultiplyHLbyDE
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus6
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	add hl, bc
+	push hl
+.loop
+	ld a, [wRTCTicker]
+	cp $1
+	jp z, .break
+	ld a, [wRTCTicker]
+	or a
+	jp nz, .delay
+	ld a, $1
+	ld [wRTCTicker], a
+.delay
+	call NextOverworldFrame
+	jp .loop
+
+.break
+	pop hl
+	pop bc
+	ld e, l
+	ld d, h
+	ld l, c
+	ld h, b
+	call Func_93d05
+	pop af
+	or a
+	jp z, .loop2
+	ld a, [wRTCTicker]
+	or a
+	jp nz, .loop2
+	ld a, $1
+	ld [wRTCTicker], a
+.loop2
+	ld a, [wRTCTicker]
+	cp $11
+	jp z, .break2
+	ld a, [wRTCTicker]
+	or a
+	jp nz, .delay2
+	ld a, $1
+	ld [wRTCTicker], a
+.delay2
+	call NextOverworldFrame
+	jp .loop2
+
+.break2
+	call NextOverworldFrame
+.loop3
+	ld a, [wRTCTicker]
+	cp $11
+	jp z, .break3
+	ld a, [wRTCTicker]
+	or a
+	jp nz, .delay3
+	ld a, $1
+	ld [wRTCTicker], a
+.delay3
+	call NextOverworldFrame
+	jp .loop3
+
+.break3
+	call NextOverworldFrame
+	pop bc
+	ret
 
 Func_93364: ; 93364 (24:7364)
 	read_hl_from wc930
@@ -5043,14 +5149,11 @@ Func_93370:: ; 93370 (24:7370)
 	push hl
 	pop hl
 	push hl
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from wc930
 	call Func_93792
-	read_hl_from wc92e
-	ld de, $3c
+	read_hl_from wMinutesSinceMidnight
+	ld de, 60
 	call DivideHLByDESigned
 	ld a, l
 	pop hl
@@ -5059,8 +5162,8 @@ Func_93370:: ; 93370 (24:7370)
 	inc hl
 	inc hl
 	ld [hl], a
-	read_hl_from wc92e
-	ld de, $3c
+	read_hl_from wMinutesSinceMidnight
+	ld de, 60
 	call DivideHLByDESigned
 	ld a, e
 	pop hl
@@ -5084,13 +5187,13 @@ Func_933a6:
 	push hl
 	inc hl
 	inc hl
-	ld a, [wc92e]
+	ld a, [wMinutesSinceMidnight]
 	ld [hl], a
 	pop hl
 	inc hl
 	inc hl
 	inc hl
-	ld a, [wc92e + 1]
+	ld a, [wMinutesSinceMidnight + 1]
 	ld [hl], a
 	ret
 
@@ -5122,7 +5225,7 @@ Func_933d8: ; 933d8 (24:73d8)
 	or [hl]
 	ld [hl], a
 Func_933ea: ; 933ea (24:73ea)
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	reg16swap de, hl
 	write_hl_to wc874
 	pop hl
@@ -5148,11 +5251,11 @@ Func_933ea: ; 933ea (24:73ea)
 	pop af
 	or a
 	jp z, Func_93429
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	or a
 	jp nz, Func_93429
 	ld a, $1
-	ld [wc01c], a
+	ld [wRTCTicker], a
 Func_93429: ; 93429 (24:7429)
 	ret
 
@@ -5363,13 +5466,214 @@ Func_935a5: ; 935a5 (24:75a5)
 	ret
 
 Func_935a8:: ; 935a8
-	dr $935a8, $93792
+	dr $935a8, $93630
 
-Func_93792:: ; 93792
-	dr $93792, $93883
+Data_93630:
+	dr $93630, $93792
+
+Func_93792:: ; 93792 (24:7792)
+	push hl
+	push bc
+	push bc
+	push de
+	call GetHLAtSPPlus8
+	ld de, $3c
+	add hl, de
+	call WriteHLToSPPlus8
+	ld hl, sp+$4
+	ld [hl], $0
+Func_937a4: ; 937a4 (24:77a4)
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Data_93630 + 2
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus8
+	ld a, l
+	sub c
+	ld a, h
+	sbc b
+	jp c, Func_937c5
+	ld hl, sp+$4
+	ld a, [hl]
+	inc a
+	ld hl, sp+$4
+	ld [hl], a
+	jp Func_937a4
+
+Func_937c5: ; 937c5 (24:77c5)
+	ld hl, sp+$4
+	ld a, [hl]
+	or a
+	jp z, Func_937e5
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Data_93630
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus8
+	ld a, l
+	sub c
+	ld l, a
+	ld a, h
+	sbc b
+	ld h, a
+	call WriteHLToSPPlus8
+Func_937e5: ; 937e5 (24:77e5)
+	ld hl, sp+$4
+	ld a, [hl]
+	or a
+	jp nz, Func_937f3
+	ld hl, sp+$3
+	ld [hl], $3
+	jp Func_937f7
+
+Func_937f3: ; 937f3 (24:77f3)
+	ld hl, sp+$3
+	ld [hl], $1
+Func_937f7: ; 937f7 (24:77f7)
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	ld de, 1924
+	add hl, de
+	call IsLeapYear
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	ld de, 1924
+	add hl, de
+	call IsLeapYear
+	ld hl, sp+$2
+	ld [hl], a
+Func_93812: ; 93812 (24:7812)
+	call GetHLAtSPPlus8
+	ld a, l
+	or h
+	jp z, Func_93867
+	ld hl, sp+$2
+	ld a, [hl]
+	cp $1
+	jp nz, Func_93833
+	ld hl, sp+$3
+	ld e, [hl]
+	ld d, $0
+	ld hl, LeapYearMonthLengths
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld c, l
+	ld b, h
+	jp Func_93841
+
+Func_93833: ; 93833 (24:7833)
+	ld hl, sp+$3
+	ld e, [hl]
+	ld d, $0
+	ld hl, CommonYearMonthLengths
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld c, l
+	ld b, h
+Func_93841: ; 93841 (24:7841)
+	call GetHLAtSPPlus8
+	ld a, l
+	sub c
+	ld a, h
+	sbc b
+	jp c, Func_93861
+	call GetHLAtSPPlus8
+	ld a, l
+	sub c
+	ld l, a
+	ld a, h
+	sbc b
+	ld h, a
+	call WriteHLToSPPlus8
+	ld hl, sp+$3
+	ld a, [hl]
+	inc a
+	ld hl, sp+$3
+	ld [hl], a
+	jp Func_93864
+
+Func_93861: ; 93861 (24:7861)
+	jp Func_93867
+
+Func_93864: ; 93864 (24:7864)
+	jp Func_93812
+
+Func_93867: ; 93867 (24:7867)
+	call GetHLAtSPPlus8
+	inc hl
+	ld c, l
+	pop de
+	ld hl, sp+$2
+	ld a, [hl]
+	ld [de], a
+	ld hl, sp+$1
+	ld a, [hl]
+	ld l, e
+	ld h, d
+	inc hl
+	ld [hl], a
+	push de
+	push hl
+	pop de
+	pop hl
+	inc hl
+	inc hl
+	ld [hl], c
+	pop bc
+	pop bc
+	pop bc
+	ret
 
 Func_93883:: ; 93883
-	dr $93883, $93941
+	dr $93883, $93911
+
+IsLeapYear: ; 93911 (24:7911)
+	push hl
+	pop hl
+	push hl
+	ld de, 4
+	call DivideHLByDESigned
+	ld a, e
+	or d
+	jp nz, Func_9392c
+	pop hl
+	push hl
+	ld de, 100
+	call DivideHLByDESigned
+	ld a, e
+	or d
+	jp nz, Func_93939
+Func_9392c: ; 9392c (24:792c)
+	pop hl
+	push hl
+	ld de, 400
+	call DivideHLByDESigned
+	ld a, e
+	or d
+	jp nz, Func_9393e
+Func_93939: ; 93939 (24:7939)
+	ld a, $1
+	jp Func_9393f
+
+Func_9393e: ; 9393e (24:793e)
+	xor a
+Func_9393f: ; 9393f (24:793f)
+	pop bc
+	ret
 
 Func_93941:: ; 93941
 	dr $93941, $93b87
@@ -5378,7 +5682,38 @@ Func_93b87:: ; 93b87
 	dr $93b87, $93c0c
 
 Func_93c0c:: ; 93c0c
-	dr $93c0c, $93d34
+	dr $93c0c, $93d05
+
+Func_93d05: ; 93d05 (24:7d05)
+	push bc
+	push de
+	push hl
+	call SuppressVBlankCallback
+	push bc
+	reg16swap hl, de
+	ld a, [hSRAMBank]
+	push af
+	push af
+	push bc
+	push de
+	push hl
+	predef Func_7e320
+	call NextOverworldFrame
+	call NextOverworldFrame
+	call NextOverworldFrame
+	pop hl
+	pop de
+	pop bc
+	pop af
+	predef Func_7e320
+	pop af
+	call GetSRAMBank
+	pop bc
+	call ApplyVBlankCallbackEnableFlag
+	pop hl
+	pop de
+	pop bc
+	ret
 
 SECTION "Bank 25", ROMX, BANK [$25]
 	lib_bank_20 25

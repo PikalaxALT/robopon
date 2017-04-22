@@ -84,7 +84,7 @@ Func_4064:: ; 4064 (1:4064)
 	ld a, $4
 	ld [wc24d], a
 	xor a
-	ld [wc01c], a
+	ld [wRTCTicker], a
 	ld a, $80
 	ld [rSC], a
 	ret
@@ -4636,7 +4636,7 @@ Data_8ccb: ; 8ccb
 	dr $8ccb, $8ccf
 
 Func_8ccf: ; 8ccf (2:4ccf)
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	ld hl, Data_8ccb
 	ld a, [wPlayerFacing]
 	cp $ff
@@ -4663,7 +4663,7 @@ Func_8ce9: ; 8ce9 (2:4ce9)
 	ld hl, $8000
 	ld bc, $c0
 	call RequestVideoData
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	ret
 
 Func_8d0c: ; 8d0c (2:4d0c)
@@ -4917,7 +4917,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 
 .next_row
 	push de
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	set_farcall_addrs_hli Func_6193
 	pop de
 	push de
@@ -4944,7 +4944,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	pop de
 	ld bc, $1801
 	call FarCall
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop de
 	inc e
 	jp .loop
@@ -5025,7 +5025,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 
 .attr_next_row
 	push de
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	set_farcall_addrs_hli Func_6193
 	pop de
 	push de
@@ -5052,7 +5052,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	pop de
 	ld bc, $1801
 	call FarCall
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop de
 	inc e
 	jp .attr_loop
@@ -5758,7 +5758,7 @@ Func_a296: ; a296 (2:6296)
 	add hl, de
 	call WriteHLToSPPlus4
 Func_a2b0: ; a2b0 (2:62b0)
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop bc
 	ld l, c
 	ld h, $0
@@ -5791,7 +5791,7 @@ Func_a2b0: ; a2b0 (2:62b0)
 	add hl, de
 	pop de
 	call FarRequestVideoData
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop bc
 	pop bc
 	pop bc
@@ -6336,7 +6336,7 @@ Func_a75c: ; a75c (2:675c)
 	ld h, d
 	pop de
 	call LoadSpriteGFX
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 Func_a77e: ; a77e (2:677e)
 	pop bc
 	pop bc
@@ -7682,7 +7682,7 @@ Func_b58e:: ; b58e
 	ld e, $0
 	ld c, $0
 	call Func_9a49
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop de
 	ld hl, $8000
 	ld bc, $c0
@@ -7690,7 +7690,7 @@ Func_b58e:: ; b58e
 	pop af
 	ld [wPlayerFacing], a
 	ld [wc839], a
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop bc
 	pop bc
 	ret
@@ -8418,12 +8418,12 @@ Func_bea1: ; bea1 (2:7ea1)
 	read_hl_from wc82a
 	add hl, de
 	push hl
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop de
 	ld hl, $8000
 	ld bc, $c0
 	call RequestVideoData
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	ld hl, sp+$1
 	ld a, [hl]
 	ld [wc7e1], a
@@ -8537,7 +8537,7 @@ Func_bfac: ; bfac (2:7fac)
 	add sp, $24
 	ret
 
-Func_bfaf: ; bfaf (2:7faf)
+Bank2_WaitVideoTransferIfLCDEnabled: ; bfaf (2:7faf)
 	ld a, [rLCDC]
 	and $80
 	jp z, Func_bfb9
@@ -37609,7 +37609,7 @@ Func_238ad: ; 238ad (8:78ad)
 	and $40
 	jp nz, Func_238ad
 Func_238b5: ; 238b5 (8:78b5)
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	cp $11
 	jp nc, Func_238c3
 	call NextOverworldFrame
@@ -37617,7 +37617,7 @@ Func_238b5: ; 238b5 (8:78b5)
 
 Func_238c3: ; 238c3 (8:78c3)
 	xor a
-	ld [wc01c], a
+	ld [wRTCTicker], a
 Func_238c7: ; 238c7 (8:78c7)
 	ret
 
@@ -52117,14 +52117,14 @@ Func_335f7: ; 335f7 (c:75f7)
 	jp nc, Func_337b3
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $ff
 	jp z, Func_337ac
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld e, [hl]
 	ld d, $0
@@ -52139,14 +52139,14 @@ Func_335f7: ; 335f7 (c:75f7)
 	ld [hl], a
 	ld e, c
 	ld d, $0
-	ld hl, wc301
+	ld hl, wTimeSetHoursTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $ff
 	jp z, Func_337a9
 	ld e, c
 	ld d, $0
-	ld hl, wc301
+	ld hl, wTimeSetHoursTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $23
@@ -52155,14 +52155,14 @@ Func_335f7: ; 335f7 (c:75f7)
 	jp nz, Func_337a9
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $6
 	jp c, Func_33667
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $b
@@ -52179,14 +52179,14 @@ Func_335f7: ; 335f7 (c:75f7)
 Func_33667: ; 33667 (c:7667)
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $c
 	jp c, Func_3368e
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $11
@@ -52203,14 +52203,14 @@ Func_33667: ; 33667 (c:7667)
 Func_3368e: ; 3368e (c:768e)
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $12
 	jp c, Func_336b5
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $17
@@ -52227,14 +52227,14 @@ Func_3368e: ; 3368e (c:768e)
 Func_336b5: ; 336b5 (c:76b5)
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $1e
 	jp c, Func_336dc
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $23
@@ -52251,14 +52251,14 @@ Func_336b5: ; 336b5 (c:76b5)
 Func_336dc: ; 336dc (c:76dc)
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $3c
 	jp c, Func_33703
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $41
@@ -52275,14 +52275,14 @@ Func_336dc: ; 336dc (c:76dc)
 Func_33703: ; 33703 (c:7703)
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $42
 	jp c, Func_3372a
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $47
@@ -52299,14 +52299,14 @@ Func_33703: ; 33703 (c:7703)
 Func_3372a: ; 3372a (c:772a)
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $48
 	jp c, Func_33751
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $4d
@@ -52323,14 +52323,14 @@ Func_3372a: ; 3372a (c:772a)
 Func_33751: ; 33751 (c:7751)
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $54
 	jp c, Func_33775
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $59
@@ -52348,14 +52348,14 @@ Func_33775: ; 33775 (c:7775)
 Func_33778: ; 33778 (c:7778)
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $1e
 	jp c, Func_3379f
 	ld e, c
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp $23
@@ -56553,12 +56553,12 @@ Func_4dc29: ; 4dc29 (13:5c29)
 	jp nc, Func_4dc44
 	ld e, a
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld [hl], $ff
 	ld e, a
 	ld d, $0
-	ld hl, wc301
+	ld hl, wTimeSetHoursTensDigit
 	add hl, de
 	ld [hl], $ff
 	inc a
@@ -57699,7 +57699,7 @@ Func_4e2f3: ; 4e2f3 (13:62f3)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld [hl], a
 	pop bc
@@ -57782,13 +57782,13 @@ Func_4e3bd: ; 4e3bd (13:63bd)
 	cp $4
 	jp nz, Func_4e3ed
 	ld a, $61
-	ld [wc2fc], a
+	ld [wTimeSetMonthsTensDigit], a
 	ld a, $5f
-	ld [wc2fd], a
+	ld [wTimeSetMonthsOnesDigit], a
 	ld a, $44
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 	ld a, $3f
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 	set_farcall_addrs_hli Func_335de
 	xor a
 	call FarCall
@@ -57898,13 +57898,13 @@ Func_4e47a: ; 4e47a (13:647a)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld [hl], $ff
 	ld hl, wc306
 	ld l, [hl]
 	ld h, $0
-	ld de, wc301
+	ld de, wTimeSetHoursTensDigit
 	add hl, de
 	ld [hl], $ff
 	ld e, $11
@@ -58149,13 +58149,13 @@ Func_4e58b: ; 4e58b
 	xor a
 	ld [wc2f7], a
 	xor a
-	ld [wc2fc], a
+	ld [wTimeSetMonthsTensDigit], a
 	ld a, $1
-	ld [wc2fd], a
+	ld [wTimeSetMonthsOnesDigit], a
 	xor a
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 	ld a, $1
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 	ld de, Data_4e771
 	ld hl, $d03
 	call PlaceStringDEatCoordHL
@@ -58316,7 +58316,7 @@ Func_4e7d3: ; 4e7d3 (13:67d3)
 	push hl
 	ld e, l
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld l, [hl]
 	ld h, $0
@@ -58357,23 +58357,23 @@ Func_4e813: ; 4e813 (13:6813)
 	ld hl, sp+$4
 	ld [hl], a
 	ld hl, $0
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	add [hl]
 	ld l, a
 	push hl
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	ld c, $0
 	pop hl
@@ -58395,7 +58395,7 @@ Func_4e813: ; 4e813 (13:6813)
 
 Func_4e863: ; 4e863 (13:6863)
 	push hl
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	cp $1
 	jp nz, Func_4e873
 	ld hl, sp+$7
@@ -58403,7 +58403,7 @@ Func_4e863: ; 4e863 (13:6863)
 	jp Func_4e880
 
 Func_4e873: ; 4e873 (13:6873)
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	or a
 	jp nz, Func_4e87c
 	ld c, $1
@@ -58460,7 +58460,7 @@ Func_4e8a9: ; 4e8a9 (13:68a9)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$5
@@ -58469,7 +58469,7 @@ Func_4e8a9: ; 4e8a9 (13:68a9)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld [hl], c
 	ld hl, sp+$5
@@ -58484,9 +58484,9 @@ Func_4e8a9: ; 4e8a9 (13:68a9)
 	jp nz, Func_4e8ff
 Func_4e8f6: ; 4e8f6 (13:68f6)
 	xor a
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 	ld a, $1
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 Func_4e8ff: ; 4e8ff (13:68ff)
 	jp Func_4e928
 
@@ -58494,7 +58494,7 @@ Func_4e902: ; 4e902 (13:6902)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, $1
 	add [hl]
@@ -58507,9 +58507,9 @@ Func_4e902: ; 4e902 (13:6902)
 	jp nz, Func_4e928
 Func_4e91f: ; 4e91f (13:691f)
 	xor a
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 	ld a, $1
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 Func_4e928: ; 4e928 (13:6928)
 	jp Func_4e9b5
 
@@ -58517,7 +58517,7 @@ Func_4e92b: ; 4e92b (13:692b)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp c
@@ -58527,7 +58527,7 @@ Func_4e92b: ; 4e92b (13:692b)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$5
@@ -58542,9 +58542,9 @@ Func_4e92b: ; 4e92b (13:692b)
 	jp nz, Func_4e967
 Func_4e95e: ; 4e95e (13:695e)
 	xor a
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 	ld a, $1
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 Func_4e967: ; 4e967 (13:6967)
 	jp Func_4e991
 
@@ -58552,7 +58552,7 @@ Func_4e96a: ; 4e96a (13:696a)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld e, $1
 	ld a, [hl]
@@ -58566,9 +58566,9 @@ Func_4e96a: ; 4e96a (13:696a)
 	jp nz, Func_4e991
 Func_4e988: ; 4e988 (13:6988)
 	xor a
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 	ld a, $1
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 Func_4e991: ; 4e991 (13:6991)
 	jp Func_4e9b5
 
@@ -58590,32 +58590,32 @@ Func_4e9a6: ; 4e9a6 (13:69a6)
 	dec a
 	ld [wc2f7], a
 Func_4e9b5: ; 4e9b5 (13:69b5)
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	add [hl]
 	cp $d
 	jp c, Func_4e9cd
 	xor a
-	ld [wc2fd], a
+	ld [wTimeSetMonthsOnesDigit], a
 	jp Func_4e9e1
 
 Func_4e9cd: ; 4e9cd (13:69cd)
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	add [hl]
 	jp nz, Func_4e9e1
 	ld a, $1
-	ld [wc2fd], a
+	ld [wTimeSetMonthsOnesDigit], a
 Func_4e9e1: ; 4e9e1 (13:69e1)
 	pop hl
 	ld a, l
@@ -58631,18 +58631,18 @@ Func_4e9e1: ; 4e9e1 (13:69e1)
 	cp $b
 	jp nz, Func_4ea12
 Func_4e9fa: ; 4e9fa (13:69fa)
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	cp $1f
 	jp c, Func_4ea0f
 	xor a
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 Func_4ea0f: ; 4ea0f (13:6a0f)
 	jp Func_4ead7
 
@@ -58654,7 +58654,7 @@ Func_4ea12: ; 4ea12 (13:6a12)
 	ld a, [hl]
 	cp $20
 	jp nz, Func_4eab9
-	ld hl, wc2ef
+	ld hl, wTimeSetCenturies
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -58670,7 +58670,7 @@ Func_4ea12: ; 4ea12 (13:6a12)
 	add hl, de
 	add hl, bc
 	push hl
-	ld hl, wc2ee
+	ld hl, wTimeSetMillennia
 	ld l, [hl]
 	ld h, $0
 	ld de, $3e8
@@ -58679,7 +58679,7 @@ Func_4ea12: ; 4ea12 (13:6a12)
 	add hl, de
 	ld c, l
 	ld b, h
-	ld hl, wc2f0
+	ld hl, wTimeSetDecades
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -58689,7 +58689,7 @@ Func_4ea12: ; 4ea12 (13:6a12)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld a, [wc2f1]
+	ld a, [wTimeSetYears]
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -58718,68 +58718,68 @@ Func_4ea73: ; 4ea73 (13:6a73)
 	or d
 	jp nz, Func_4ea9e
 Func_4ea80: ; 4ea80 (13:6a80)
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	cp $1e
 	jp c, Func_4ea9b
 	ld a, $9
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 	ld a, $2
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 Func_4ea9b: ; 4ea9b (13:6a9b)
 	jp Func_4eab9
 
 Func_4ea9e: ; 4ea9e (13:6a9e)
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	cp $1d
 	jp c, Func_4eab9
 	ld a, $8
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 	ld a, $2
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 Func_4eab9: ; 4eab9 (13:6ab9)
 	jp Func_4ead7
 
 Func_4eabc: ; 4eabc (13:6abc)
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	cp $20
 	jp c, Func_4ead7
 	ld a, $1
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 	ld a, $3
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 Func_4ead7: ; 4ead7 (13:6ad7)
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	jp nz, Func_4eaeb
 	ld a, $1
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 Func_4eaeb: ; 4eaeb (13:6aeb)
 	ld hl, sp+$2
 	ld a, [hl]
@@ -58788,11 +58788,11 @@ Func_4eaeb: ; 4eaeb (13:6aeb)
 	ld e, $5
 	ld a, $7
 	call SetStringStartState
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -58805,11 +58805,11 @@ Func_4eaeb: ; 4eaeb (13:6aeb)
 	ld e, $5
 	ld a, $c
 	call SetStringStartState
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wc2fe
+	ld hl, wTimeSetDaysTensDigit
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -58886,22 +58886,22 @@ Func_4eb71: ; 4eb71
 	ld a, $3
 	call FarCall
 	ld e, a
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	add [hl]
 	ld [wSaveScratchBirthMonth], a
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	ld [wSaveScratchBirthDay], a
 	pop bc
@@ -60025,19 +60025,49 @@ Data_50020: ; 50020
 	dr $50020, $5002f
 
 Data_5002f: ; 5002f
-	dr $5002f, $5004e
+	db 6, 0
+	db 8, 4
+	dba Func_531fe
+	dbw 5, 0
+	dba Func_5346b
+	dba Func_53667
+	dbw 5, 0
+	dba Func_5365b
+	dba Func_53661
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5004e: ; 5004e
 	dr $5004e, $5005d
 
 Data_5005d: ; 5005d
-	dr $5005d, $5007c
+	db 6, 4
+	db 11, 4
+	dba Func_5321e
+	dbw 5, 0
+	dba Func_4e813
+	dba Func_53667
+	dbw 5, 0
+	dba Func_4e175
+	dba Func_4e1a4
+	dbw 0, 0
+	dbw 0, 0
 
 Data_5007c: ; 5007c
 	dr $5007c, $5008b
 
 Data_5008b: ; 5008b
-	dr $5008b, $500aa
+	db 6, 8
+	db 7, 4
+	dba Func_5323f
+	dbw 5, 0
+	dba Func_5366b
+	dba Func_53667
+	dbw 5, 0
+	dba Func_537d0
+	dba Func_537d6
+	dbw 0, 0
+	dbw 0, 0
 
 Data_500aa: ; 500aa
 	dr $500aa, $500b9
@@ -64904,7 +64934,7 @@ Func_5295a: ; 5295a (14:695a)
 	push bc
 	push hl
 	call AddLongsFromStack
-	ld hl, $6af3
+	ld hl, Data_52af3
 	push hl
 	call PlaceString
 	pop bc
@@ -65521,1467 +65551,25 @@ Func_52def: ; 52def (14:6def)
 	pop bc
 	ret
 
-Func_52df8: ; 52df8 (14:6df8)
-	push bc
-	push bc
-	push bc
-	push bc
-	push hl
-	call FillVisibleAreaWithBlankTile
-	call Func_1fbe
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	ld de, Data_530bd
-	ld hl, $20c
-	call PlaceStringDEatCoordHL
-	ld a, $3
-	ld [wc2f7], a
-	call Func_530d4
-	xor a
-	ld [wc2f7], a
-	call Func_53260
-	call Func_53327
-	ld e, $1
-	ld a, $1
-	call SetStringStartState
-	ld hl, $8b
-	push hl
-	ld hl, Data_530ca
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	ld e, $0
-	pop hl
-Func_52e4d: ; 52e4d (14:6e4d)
-	push de
-	ld a, e
-	cp $3
-	jp z, Func_52f66
-	cp $2
-	jp z, Func_52f49
-	cp $1
-	jp z, Func_52f2c
-	or a
-	jp nz, Func_52f83
-	ld a, $3
-	ld [wc2f7], a
-	set_farcall_addrs_hli Func_1445e
-	ld c, BANK(Data_5004e)
-	ld de, Data_5004e
-	ld hl, Data_5002f
-	call FarCall
-	push hl
-	ld a, [wc2fc]
-	or a
-	jp nz, Func_52f28
-	ld a, [wc2fd]
-	cp $2
-	jp nz, Func_52f28
-	ld a, [wc2fe]
-	cp $2
-	jp nz, Func_52f28
-	ld a, [wc2ff]
-	cp $9
-	jp nz, Func_52f28
-	xor a
-	ld [wc2f7], a
-	ld hl, wc2ef
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push hl
-	ld hl, wc2ee
-	ld l, [hl]
-	ld h, $0
-	ld de, $3e8
-	call MultiplyHLbyDE
-	pop de
-	add hl, de
-	ld c, l
-	ld b, h
-	ld hl, wc2f0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld a, [wc2f1]
-	ld e, a
-	ld d, $0
-	add hl, de
-	call WriteHLToSPPlus6
-	call GetHLAtSPPlus6
-	ld de, $4
-	call DivideHLByDESigned
-	ld a, e
-	or d
-	jp nz, Func_52ef7
-	call GetHLAtSPPlus6
-	ld de, $64
-	call DivideHLByDESigned
-	ld a, e
-	or d
-	jp nz, Func_52f05
-Func_52ef7: ; 52ef7 (14:6ef7)
-	call GetHLAtSPPlus6
-	ld de, $190
-	call DivideHLByDESigned
-	ld a, e
-	or d
-	jp nz, Func_52f08
-Func_52f05: ; 52f05 (14:6f05)
-	jp Func_52f28
-
-Func_52f08: ; 52f08 (14:6f08)
-	ld e, $5
-	ld a, $d
-	call SetStringStartState
-	ld hl, Data_530cd
-	push hl
-	call PlaceString
-	pop bc
-	ld a, $8
-	ld [wc2ff], a
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-Func_52f28: ; 52f28 (14:6f28)
-	pop hl
-	jp Func_52f83
-
-Func_52f2c: ; 52f2c (14:6f2c)
-	xor a
-	ld [wc2f7], a
-	set_farcall_addrs_hli Func_1445e
-	ld c, BANK(Data_5007c)
-	ld de, Data_5007c
-	ld hl, Data_5005d
-	call FarCall
-	jp Func_52f83
-
-Func_52f49: ; 52f49 (14:6f49)
-	xor a
-	ld [wc2f7], a
-	set_farcall_addrs_hli Func_1445e
-	ld c, BANK(Data_500aa)
-	ld de, Data_500aa
-	ld hl, Data_5008b
-	call FarCall
-	jp Func_52f83
-
-Func_52f66: ; 52f66 (14:6f66)
-	call CheckButton
-	ld l, a
-	ld a, l
-	and $10
-	jp z, Func_52f75
-	ld l, $1
-	jp Func_52f83
-
-Func_52f75: ; 52f75 (14:6f75)
-	ld a, l
-	and $20
-	jp z, Func_52f80
-	ld l, $ff
-	jp Func_52f83
-
-Func_52f80: ; 52f80 (14:6f80)
-	jp Func_52f66
-
-Func_52f83: ; 52f83 (14:6f83)
-	pop de
-	push hl
-	push de
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	pop de
-	ld a, e
-	cp $3
-	jp nz, Func_52fa5
-	push de
-	ld e, $c
-	ld a, $1
-	call SetStringStartState
-	pop de
-	jp Func_52fb1
-
-Func_52fa5: ; 52fa5 (14:6fa5)
-	push de
-	ld a, e
-	add a
-	add a
-	inc a
-	ld e, a
-	ld a, $1
-	call SetStringStartState
-	pop de
-Func_52fb1: ; 52fb1 (14:6fb1)
-	push de
-	ld hl, Data_530cf
-	push hl
-	call PlaceString
-	pop bc
-	pop de
-	pop hl
-	ld a, l
-	cp $1
-	jp nz, Func_52fd2
-	ld a, e
-	cp $3
-	jp nc, Func_52fcc
-	inc e
-	jp Func_52fcf
-
-Func_52fcc: ; 52fcc (14:6fcc)
-	jp Func_5301d
-
-Func_52fcf: ; 52fcf (14:6fcf)
-	jp Func_52fdf
-
-Func_52fd2: ; 52fd2 (14:6fd2)
-	ld a, e
-	cp $1
-	jp c, Func_52fdc
-	dec e
-	jp Func_52fdf
-
-Func_52fdc: ; 52fdc (14:6fdc)
-	jp Func_5301d
-
-Func_52fdf: ; 52fdf (14:6fdf)
-	push hl
-	ld a, e
-	cp $3
-	jp nz, Func_52ff2
-	push de
-	ld e, $c
-	ld a, $1
-	call SetStringStartState
-	pop de
-	jp Func_52ffe
-
-Func_52ff2: ; 52ff2 (14:6ff2)
-	push de
-	ld a, e
-	add a
-	add a
-	inc a
-	ld e, a
-	ld a, $1
-	call SetStringStartState
-	pop de
-Func_52ffe: ; 52ffe (14:6ffe)
-	push de
-	ld hl, $8b
-	push hl
-	ld hl, Data_530d1
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	pop de
-	pop hl
-	jp Func_52e4d
-
-Func_5301d: ; 5301d (14:701d)
-	ld a, e
-	cp $3
-	jp nz, Func_530b2
-	ld hl, wc2ef
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push hl
-	ld hl, wc2ee
-	ld l, [hl]
-	ld h, $0
-	ld de, $3e8
-	call MultiplyHLbyDE
-	pop de
-	add hl, de
-	ld c, l
-	ld b, h
-	ld hl, wc2f0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld a, [wc2f1]
-	ld e, a
-	ld d, $0
-	add hl, de
-	reg16swap de, hl
-	ld hl, $f87c
-	add hl, de
-	ld a, l
-	ld hl, sp+$2
-	ld [hl], a
-	ld a, [wc2fc]
-	add a
-	ld d, a
-	add a
-	add a
-	add d
-	ld hl, wc2fd
-	add [hl]
-	ld hl, sp+$3
-	ld [hl], a
-	ld a, [wc2fe]
-	add a
-	ld d, a
-	add a
-	add a
-	add d
-.asm_5307d
-	ld hl, wc2ff
-	add [hl]
-	ld hl, sp+$4
-	ld [hl], a
-	ld a, [wc301]
-	add a
-	ld d, a
-	add a
-	add a
-	add d
-	ld hl, wc302
-	add [hl]
-	ld hl, sp+$5
-	ld [hl], a
-	ld a, [wc303]
-	add a
-	ld d, a
-	add a
-	add a
-	add d
-	ld hl, wc304
-	add [hl]
-	ld hl, sp+$6
-	ld [hl], a
-	set_farcall_addrs_hli Func_932bd
-	ld hl, sp+$2
-	call FarCall
-Func_530b2: ; 530b2 (14:70b2)
-	call FillVisibleAreaWithBlankTile
-	call Func_2009
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Data_530bd:
-	db "(せっていしゅうりょう)", $00
-
-Data_530ca:
-	TX_STACK
-	db $00
-
-Data_530cd:
-	db "8", $00
-
-Data_530cf:
-	db " ", $00
-
-Data_530d1:
-	TX_STACK
-	db $00
-
-Func_530d4: ; 530d4 (14:70d4)
-	push bc
-	push bc
-	push bc
-	set_farcall_addrs_hli Func_93370
-	ld hl, sp+$0
-	call FarCall
-	ld c, $4
-	ld e, $8
-	ld hl, $600
-	call Func_50185
-	ld c, $5
-	ld e, $14
-	ld hl, $d
-	call Func_50185
-	ld de, Data_531c8
-	ld hl, $10e
-	call PlaceStringDEatCoordHL
-	ld de, Data_531db
-	ld hl, $110
-	call PlaceStringDEatCoordHL
-	ld de, Data_531e9
-	ld hl, $201
-	call PlaceStringDEatCoordHL
-	ld de, Data_531f0
-	ld hl, $b01
-	call PlaceStringDEatCoordHL
-	ld hl, sp+$0
-	ld l, [hl]
-	ld h, $0
-	ld de, $784
-	add hl, de
-	ld c, l
-	ld b, h
-	ld l, c
-	ld h, b
-	ld de, 1950
-	call CompareHLtoDE
-	jp nc, Func_5313b
-	ld bc, 1950
-	jp Func_53149
-
-Func_5313b: ; 5313b (14:713b)
-	ld e, c
-	ld d, b
-	ld hl, $802
-	call CompareHLtoDE
-	jp nc, Func_53149
-	ld bc, $802
-Func_53149: ; 53149 (14:7149)
-	push bc
-	ld l, c
-	ld h, b
-	ld de, $3e8
-	call DivideHLByDESigned
-	ld a, l
-	ld [wc2ee], a
-	pop bc
-	push bc
-	ld l, c
-	ld h, b
-	ld de, $3e8
-	call DivideHLByDESigned
-	reg16swap de, hl
-	ld de, $64
-	call DivideHLByDESigned
-	ld a, l
-	ld [wc2ef], a
-	pop bc
-	push bc
-	ld l, c
-	ld h, b
-	ld de, $64
-	call DivideHLByDESigned
-	reg16swap de, hl
-	ld de, $a
-	call DivideHLByDESigned
-	ld a, l
-	ld [wc2f0], a
-	pop hl
-	ld de, $a
-	call DivideHLByDESigned
-	ld a, e
-	ld [wc2f1], a
-	ld e, $1
-	ld a, $7
-	call SetStringStartState
-	ld hl, wc2f1
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc2f0
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc2ef
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc2ee
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, Data_531f5
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	xor a
-	call Func_533f8
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Data_531c8:
-	db "(せいれき ひつﾞけ しﾞかん を)", $00
-
-Data_531db:
-	db "(せっていしてくたﾞさい)", $00
-
-Data_531e9:
-	db "(せいれき)", $00
-
-Data_531f0:
-	db "(ねん)", $00
-
-Data_531f5:
-	TX_SNUM
-	TX_SNUM
-	TX_SNUM
-	TX_SNUM
-	db $00
-
-Func_513fe:
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	xor a
-	call Func_533f8
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	ld hl, $4000
-	ret
-
-Func_5321e:
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	ld a, $1
-	call Func_533f8
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	ld hl, $4000
-	ret
-
-Func_5323f:
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	ld a, $2
-	call Func_533f8
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	ld hl, $4000
-	ret
-
-Func_53260: ; 53260 (14:7260)
-	push bc
-	push bc
-	push bc
-	ld c, $4
-	ld e, $b
-	ld hl, $604
-	call Func_50185
-	ld de, Data_5330b
-	ld hl, $205
-	call PlaceStringDEatCoordHL
-	ld de, Data_53312
-	ld hl, $905
-	call PlaceStringDEatCoordHL
-	ld de, Data_53318
-	ld hl, $e05
-	call PlaceStringDEatCoordHL
-	set_farcall_addrs_hli Func_93370
-	ld hl, sp+$0
-	call FarCall
-	ld hl, sp+$1
-	ld a, [hl]
-	push af
-	ld b, $a
-	call DivideAbyB
-	ld [wc2fc], a
-	pop af
-	ld b, $a
-	call DivideAbyB
-	ld a, b
-	ld [wc2fd], a
-	ld hl, sp+$2
-	ld a, [hl]
-	push af
-	ld b, $a
-	call DivideAbyB
-	ld [wc2fe], a
-	pop af
-	ld b, $a
-	call DivideAbyB
-	ld a, b
-	ld [wc2ff], a
-	ld e, $5
-	ld a, $7
-	call SetStringStartState
-	ld hl, wc2fd
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc2fc
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, Data_5331d
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	ld e, $5
-	ld a, $c
-	call SetStringStartState
-	ld hl, wc2ff
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc2fe
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, Data_53322
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	ld a, $1
-	call Func_533f8
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Data_5330b:
-	db "(ひつﾞけ)", $00
-
-Data_53312:
-	db "(かﾞつ)", $00
-
-Data_53318:
-	db "(にち)", $00
-
-Data_5331d:
-	TX_SNUM
-	TX_SNUM
-	db $00
-
-Data_53322:
-	TX_SNUM
-	TX_SNUM
-	db $00
-
-Func_53327: ; 53327 (14:7327)
-	push bc
-	push bc
-	push bc
-	ld c, $4
-	ld e, $7
-	ld hl, $608
-	call Func_50185
-	ld de, Data_533d4
-	ld hl, $209
-	call PlaceStringDEatCoordHL
-	ld de, Data_533db
-	ld hl, $909
-	call PlaceStringDEatCoordHL
-	ld de, Data_533dd
-	ld hl, $e05
-	call PlaceStringDEatCoordHL
-	set_farcall_addrs_hli Func_93370
-	ld hl, sp+$0
-	call FarCall
-	ld hl, sp+$3
-	ld a, [hl]
-	ld b, $a
-	call DivideAbyB
-	ld [wc301], a
-	ld hl, sp+$3
-	ld a, [hl]
-	ld b, $a
-	call DivideAbyB
-	ld a, b
-	ld [wc302], a
-	ld hl, sp+$4
-	ld a, [hl]
-	ld b, $a
-	call DivideAbyB
-	ld [wc303], a
-	ld hl, sp+$4
-	ld a, [hl]
-	ld b, $a
-	call DivideAbyB
-	ld a, b
-	ld [wc304], a
-	ld e, $9
-	ld a, $7
-	call SetStringStartState
-	ld hl, wc302
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc301
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, Data_533e2
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	ld e, $9
-	ld a, $a
-	call SetStringStartState
-	ld hl, wc304
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc303
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, Data_533e7
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	ld a, $2
-	call Func_533f8
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Data_533d4:
-	db "(しﾞかん)", $00
-
-Data_533db:
-	db ":", $00
-
-Data_533dd:
-	db "(にち)", $00
-
-Data_533e2:
-	TX_SNUM
-	TX_SNUM
-	db $00
-
-Data_533e7:
-	TX_SNUM
-	TX_SNUM
-	db $00
-
-Data_533ec:
-	db  7,  8,  9, 10
-	db  7,  8, 12, 13
-	db  7,  8, 10, 11
-
-Func_533f8: ; 533f8 (14:73f8)
-	push af
-	ld c, $0
-Func_533fb: ; 533fb (14:73fb)
-	ld a, c
-	cp $4
-	jp nc, Func_53465
-	ld a, [wc2f7]
-	cp c
-	jp nz, Func_53436
-	push bc
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld de, $73ec
-	add hl, de
-	ld e, c
-	ld d, $0
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld h, l
-	ld l, $0
-	inc hl
-	inc hl
-	reg16swap de, hl
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_53467
-	call PlaceStringDEatCoordHL
-	pop bc
-	jp Func_53461
-
-Func_53436: ; 53436 (14:7436)
-	push bc
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld de, Data_533ec
-	add hl, de
-	ld e, c
-	ld d, $0
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld h, l
-	ld l, $0
-	inc hl
-	inc hl
-	reg16swap de, hl
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_53469
-	call PlaceStringDEatCoordHL
-	pop bc
-Func_53461: ; 53461 (14:7461)
-	inc c
-	jp Func_533fb
-
-Func_53465: ; 53465 (14:7465)
-	pop bc
-	ret
-
-Data_53467:
-	db "b", $00
-
-Data_53469:
-	db "_", $00
-
-Func_5346b: ; 5346b (14:746b)
-	push bc
-	ld a, [wc2f7]
-	cp $3
-	jp z, Func_534bf
-	cp $2
-	jp z, Func_534a5
-	cp $1
-	jp z, Func_5348b
-	or a
-	jp nz, Func_534c5
-	ld c, $2
-	ld hl, sp+$0
-	ld [hl], $1
-	jp Func_534c5
-
-Func_5348b: ; 5348b (14:748b)
-	ld a, [wc2ee]
-	cp $2
-	jp nz, Func_5349c
-	ld c, $0
-	ld hl, sp+$0
-	ld [hl], $0
-	jp Func_534a2
-
-Func_5349c: ; 5349c (14:749c)
-	ld c, $9
-	ld hl, sp+$0
-	ld [hl], $9
-Func_534a2: ; 534a2 (14:74a2)
-	jp Func_534c5
-
-Func_534a5: ; 534a5 (14:74a5)
-	ld a, [wc2ef]
-	cp $9
-	jp nz, Func_534b6
-	ld c, $9
-	ld hl, sp+$0
-	ld [hl], $5
-	jp Func_534bc
-
-Func_534b6: ; 534b6 (14:74b6)
-	ld c, $9
-	ld hl, sp+$0
-	ld [hl], $0
-Func_534bc: ; 534bc (14:74bc)
-	jp Func_534c5
-
-Func_534bf: ; 534bf (14:74bf)
-	ld c, $9
-	ld hl, sp+$0
-	ld [hl], $0
-Func_534c5: ; 534c5 (14:74c5)
-	ld a, e
-	sub $3
-	or d
-	jp z, Func_53552
-	ld a, e
-	sub $2
-	or d
-	jp z, Func_53540
-	ld a, e
-	dec a
-	or d
-	jp z, Func_5350f
-	ld a, e
-	or d
-	jp nz, Func_53561
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc2ee
-	add hl, de
-	ld a, [hl]
-	cp c
-	jp nz, Func_534fe
-	ld hl, sp+$0
-	ld a, [hl]
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc2ee
-	add hl, de
-	ld [hl], a
-	jp Func_5350c
-
-Func_534fe: ; 534fe (14:74fe)
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc2ee
-	add hl, de
-	ld a, $1
-	add [hl]
-	ld [hl], a
-Func_5350c: ; 5350c (14:750c)
-	jp Func_53561
-
-Func_5350f: ; 5350f (14:750f)
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc2ee
-	add hl, de
-	ld a, [hl]
-	ld hl, sp+$0
-	cp [hl]
-	jp nz, Func_5352e
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc2ee
-	add hl, de
-	ld [hl], c
-	jp Func_5353d
-
-Func_5352e: ; 5352e (14:752e)
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc2ee
-	add hl, de
-	ld e, $1
-	ld a, [hl]
-	sub e
-	ld [hl], a
-Func_5353d: ; 5353d (14:753d)
-	jp Func_53561
-
-Func_53540: ; 53540 (14:7540)
-	ld a, [wc2f7]
-	cp $3
-	jp nc, Func_5354f
-	ld a, [wc2f7]
-	inc a
-	ld [wc2f7], a
-Func_5354f: ; 5354f (14:754f)
-	jp Func_53561
-
-Func_53552: ; 53552 (14:7552)
-	ld a, [wc2f7]
-	cp $1
-	jp c, Func_53561
-	ld a, [wc2f7]
-	dec a
-	ld [wc2f7], a
-Func_53561: ; 53561 (14:7561)
-	ld hl, wc2ef
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push hl
-	ld hl, wc2ee
-	ld l, [hl]
-	ld h, $0
-	ld de, $3e8
-	call MultiplyHLbyDE
-	pop de
-	add hl, de
-	ld c, l
-	ld b, h
-	ld hl, wc2f0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld a, [wc2f1]
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld de, $79e
-	call CompareHLtoDE
-	jp nc, Func_535b7
-	ld a, $1
-	ld [wc2ee], a
-	ld a, $9
-	ld [wc2ef], a
-	ld a, $5
-	ld [wc2f0], a
-	xor a
-	ld [wc2f1], a
-	jp Func_5360d
-
-Func_535b7: ; 535b7 (14:75b7)
-	ld hl, wc2ef
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	push hl
-	ld hl, wc2ee
-	ld l, [hl]
-	ld h, $0
-	ld de, $3e8
-	call MultiplyHLbyDE
-	pop de
-	add hl, de
-	ld c, l
-	ld b, h
-	ld hl, wc2f0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld a, [wc2f1]
-	ld e, a
-	ld d, $0
-	add hl, de
-	reg16swap de, hl
-	ld hl, $802
-	call CompareHLtoDE
-	jp nc, Func_5360d
-	ld a, $2
-	ld [wc2ee], a
-	xor a
-	ld [wc2ef], a
-	ld a, $5
-	ld [wc2f0], a
-	xor a
-	ld [wc2f1], a
-Func_5360d: ; 5360d (14:760d)
-	ld e, $1
-	ld a, $7
-	call SetStringStartState
-	ld hl, wc2f1
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc2f0
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc2ef
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc2ee
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, Data_53652
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	xor a
-	call Func_533f8
-	ld l, $2
-	push hl
-	ld c, $4
-	ld e, $1
-	ld a, $7
-	call Func_3bc5
-	pop bc
-	ld hl, $4000
-	pop bc
-	ret
-
-Data_53652:
-	TX_SNUM
-	TX_SNUM
-	TX_SNUM
-	TX_SNUM
-	db $00
-
-Func_5365b:
-	ld de, $2
-	jp Func_5346b
-
-Func_53661:
-	ld de, $3
-	jp Func_5346b
-
-Func_53667:
-	ld hl, $1
-	ret
-
-Func_5366b: ; 5366b (14:766b)
-	push bc
-	ld a, [wc2f7]
-	cp $3
-	jp z, Func_536cf
-	cp $2
-	jp z, Func_536c6
-	cp $1
-	jp z, Func_536ac
-	or a
-	jp nz, Func_536d5
-	ld a, [wc302]
-	cp $4
-	jp nc, Func_53693
-	ld hl, sp+$0
-	ld [hl], $2
-	ld c, $0
-	jp Func_536a9
-
-Func_53693: ; 53693 (14:7693)
-	ld a, [wc302]
-	or a
-	jp nz, Func_536a3
-	ld hl, sp+$0
-	ld [hl], $2
-	ld c, $1
-	jp Func_536a9
-
-Func_536a3: ; 536a3 (14:76a3)
-	ld hl, sp+$0
-	ld [hl], $1
-	ld c, $0
-Func_536a9: ; 536a9 (14:76a9)
-	jp Func_536d5
-
-Func_536ac: ; 536ac (14:76ac)
-	ld a, [wc301]
-	cp $2
-	jp nz, Func_536bd
-	ld hl, sp+$0
-	ld [hl], $3
-	ld c, $0
-	jp Func_536c3
-
-Func_536bd: ; 536bd (14:76bd)
-	ld hl, sp+$0
-	ld [hl], $9
-	ld c, $0
-Func_536c3: ; 536c3 (14:76c3)
-	jp Func_536d5
-
-Func_536c6: ; 536c6 (14:76c6)
-	ld hl, sp+$0
-	ld [hl], $5
-	ld c, $0
-	jp Func_536d5
-
-Func_536cf: ; 536cf (14:76cf)
-	ld hl, sp+$0
-	ld [hl], $9
-	ld c, $0
-Func_536d5: ; 536d5 (14:76d5)
-	ld a, e
-	sub $3
-	or d
-	jp z, Func_53762
-	ld a, e
-	sub $2
-	or d
-	jp z, Func_53750
-	ld a, e
-	dec a
-	or d
-	jp z, Func_5371e
-	ld a, e
-	or d
-	jp nz, Func_53771
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc301
-	add hl, de
-	ld a, [hl]
-	ld hl, sp+$0
-	cp [hl]
-	jp nz, Func_5370d
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc301
-	add hl, de
-	ld [hl], c
-	jp Func_5371b
-
-Func_5370d: ; 5370d (14:770d)
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc301
-	add hl, de
-	ld a, $1
-	add [hl]
-	ld [hl], a
-Func_5371b: ; 5371b (14:771b)
-	jp Func_53771
-
-Func_5371e: ; 5371e (14:771e)
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc301
-	add hl, de
-	ld a, [hl]
-	cp c
-	jp nz, Func_5373e
-	ld hl, sp+$0
-	ld a, [hl]
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc301
-	add hl, de
-	ld [hl], a
-	jp Func_5374d
-
-Func_5373e: ; 5373e (14:773e)
-	ld hl, wc2f7
-	ld l, [hl]
-	ld h, $0
-	ld de, wc301
-	add hl, de
-	ld e, $1
-	ld a, [hl]
-	sub e
-	ld [hl], a
-Func_5374d: ; 5374d (14:774d)
-	jp Func_53771
-
-Func_53750: ; 53750 (14:7750)
-	ld a, [wc2f7]
-	cp $3
-	jp nc, Func_5375f
-	ld a, [wc2f7]
-	inc a
-	ld [wc2f7], a
-Func_5375f: ; 5375f (14:775f)
-	jp Func_53771
-
-Func_53762: ; 53762 (14:7762)
-	ld a, [wc2f7]
-	cp $1
-	jp c, Func_53771
-	ld a, [wc2f7]
-	dec a
-	ld [wc2f7], a
-Func_53771: ; 53771 (14:7771)
-	ld e, $9
-	ld a, $7
-	call SetStringStartState
-	ld hl, wc302
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc301
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, Data_537c6
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	ld e, $9
-	ld a, $a
-	call SetStringStartState
-	ld hl, wc304
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, wc303
-	ld l, [hl]
-	ld h, $0
-	push hl
-	ld hl, Data_537cb
-	push hl
-	call PlaceString
-	pop bc
-	pop bc
-	pop bc
-	ld a, $2
-	call Func_533f8
-	ld l, $2
-	push hl
-	ld c, $5
-	ld e, $9
-	ld a, $7
-	call Func_3bc5
-	pop bc
-	ld hl, $4000
-	pop bc
-	ret
-
-Data_537c6:
-	TX_SNUM
-	TX_SNUM
-	db $00
-
-Data_537cb:
-	TX_SNUM
-	TX_SNUM
-	db $00
-
-Func_537d0:
-	ld de, $2
-	jp Func_5366b
-
-Func_537d6:
-	ld de, $3
-	jp Func_5366b
+INCLUDE "engine/time_set.asm"
 
 Func_537dc: ; 537dc (14:77dc)
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	add [hl]
 	ld e, a
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	ld l, e
 	ld h, $0
@@ -93520,19 +92108,19 @@ Func_68516: ; 68516 (1a:4516)
 	ld e, $8
 	ld a, $3
 	call SetStringStartState
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wc2fe
+	ld hl, wTimeSetDaysTensDigit
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	ld l, [hl]
 	ld h, $0
 	push hl
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	ld l, [hl]
 	ld h, $0
 	push hl
@@ -94227,11 +92815,11 @@ Func_68a2b:
 	xor a
 	ld [wc2f7], a
 	xor a
-	ld [wc2ff], a
-	ld [wc2fd], a
-	ld [wc2fc], a
+	ld [wTimeSetDaysOnesDigit], a
+	ld [wTimeSetMonthsOnesDigit], a
+	ld [wTimeSetMonthsTensDigit], a
 	ld a, $1
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 	call Func_68b7d
 	ld l, $12
 	push hl
@@ -94272,23 +92860,23 @@ Func_68ac3: ; 68ac3 (1a:4ac3)
 	ld a, [hl]
 	call FarCall
 	call WriteHLToSPPlus3
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	add [hl]
 	ld hl, sp+$0
 	ld [hl], a
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	ld e, a
 	ld hl, sp+$7
@@ -94410,7 +92998,7 @@ Func_68bc1: ; 68bc1 (1a:4bc1)
 	push hl
 	ld e, l
 	ld d, $0
-	ld hl, wc2fc
+	ld hl, wTimeSetMonthsTensDigit
 	add hl, de
 	ld l, [hl]
 	ld h, $0
@@ -94465,7 +93053,7 @@ Func_68c01: ; 68c01 (1a:4c01)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	cp c
@@ -94473,7 +93061,7 @@ Func_68c01: ; 68c01 (1a:4c01)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld [hl], $0
 	jp Func_68c46
@@ -94482,7 +93070,7 @@ Func_68c38: ; 68c38 (1a:4c38)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, $1
 	add [hl]
@@ -94494,7 +93082,7 @@ Func_68c49: ; 68c49 (1a:4c49)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld a, [hl]
 	or a
@@ -94502,7 +93090,7 @@ Func_68c49: ; 68c49 (1a:4c49)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld [hl], c
 	jp Func_68c75
@@ -94511,7 +93099,7 @@ Func_68c66: ; 68c66 (1a:4c66)
 	ld hl, wc2f7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc2fc
+	ld de, wTimeSetMonthsTensDigit
 	add hl, de
 	ld e, $1
 	ld a, [hl]
@@ -94538,26 +93126,26 @@ Func_68c8a: ; 68c8a (1a:4c8a)
 	dec a
 	ld [wc2f7], a
 Func_68c99: ; 68c99 (1a:4c99)
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	or a
 	jp nz, Func_68cc1
-	ld a, [wc2fd]
+	ld a, [wTimeSetMonthsOnesDigit]
 	or a
 	jp nz, Func_68cc1
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	cp $a
 	jp nc, Func_68cc1
 	ld a, $1
-	ld [wc2fe], a
+	ld [wTimeSetDaysTensDigit], a
 	xor a
-	ld [wc2ff], a
+	ld [wTimeSetDaysOnesDigit], a
 Func_68cc1: ; 68cc1 (1a:4cc1)
 	call Func_68b7d
 	ld l, $4
@@ -94581,13 +93169,13 @@ Func_68cdb:
 	ret
 
 Func_68ce2:
-	ld a, [wc2fc]
+	ld a, [wTimeSetMonthsTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2fd
+	ld hl, wTimeSetMonthsOnesDigit
 	add [hl]
 	ld hl, wc387
 	ld l, [hl]
@@ -94604,13 +93192,13 @@ Func_68ce2:
 	ld de, $7
 	add hl, de
 	ld [hl], a
-	ld a, [wc2fe]
+	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
 	add a
 	add a
 	add d
-	ld hl, wc2ff
+	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
 	ld hl, wc387
 	ld l, [hl]
@@ -108642,7 +107230,7 @@ Func_bf431: ; bf431 (2f:7431)
 	push hl
 	ld hl, $0
 	call WriteHLToSPPlus9
-	ld hl, rIE
+	ld hl, -1
 	call WriteHLToSPPlus7
 	ld hl, sp+$4
 	ld a, [wBGP]
@@ -109048,32 +107636,32 @@ Data_bf730:
 	db $00
 
 SECTION "Bank 30", ROMX, BANK [$30]
-GFX_c0000: INCBIN "gfx/sprites/c0000.2bpp" ; c0000
-GFX_c0240: INCBIN "gfx/sprites/c0240.2bpp" ; c0240
-GFX_c0480: INCBIN "gfx/sprites/c0480.2bpp" ; c0480
-GFX_c06c0: INCBIN "gfx/sprites/c06c0.2bpp" ; c06c0
-GFX_c0900: INCBIN "gfx/sprites/c0900.2bpp" ; c0900
-GFX_c0b40: INCBIN "gfx/sprites/c0b40.2bpp" ; c0b40
-GFX_c0d80: INCBIN "gfx/sprites/c0d80.2bpp" ; c0d80
-GFX_c0fc0: INCBIN "gfx/sprites/c0fc0.2bpp" ; c0fc0
-GFX_c1200: INCBIN "gfx/sprites/c1200.2bpp" ; c1200
-GFX_c1440: INCBIN "gfx/sprites/c1440.2bpp" ; c1440
-GFX_c1680: INCBIN "gfx/sprites/c1680.2bpp" ; c1680
-GFX_c18c0: INCBIN "gfx/sprites/c18c0.2bpp" ; c18c0
-GFX_c1b00: INCBIN "gfx/sprites/c1b00.2bpp" ; c1b00
-GFX_c1d40: INCBIN "gfx/sprites/c1d40.2bpp" ; c1d40
-GFX_c1f80: INCBIN "gfx/sprites/c1f80.2bpp" ; c1f80
-GFX_c21c0: INCBIN "gfx/sprites/c21c0.2bpp" ; c21c0
-GFX_c2400: INCBIN "gfx/sprites/c2400.2bpp" ; c2400
-GFX_c2640: INCBIN "gfx/sprites/c2640.2bpp" ; c2640
-GFX_c2880: INCBIN "gfx/sprites/c2880.2bpp" ; c2880
-GFX_c2ac0: INCBIN "gfx/sprites/c2ac0.2bpp" ; c2ac0
-GFX_c2d00: INCBIN "gfx/sprites/c2d00.2bpp" ; c2d00
-GFX_c2f40: INCBIN "gfx/sprites/c2f40.2bpp" ; c2f40
-GFX_c3180: INCBIN "gfx/sprites/c3180.2bpp" ; c3180
-GFX_c33c0: INCBIN "gfx/sprites/c33c0.2bpp" ; c33c0
-GFX_c3600: INCBIN "gfx/sprites/c3600.2bpp" ; c3600
-GFX_c3840: INCBIN "gfx/sprites/c3840.2bpp" ; c3840
+GFX_c0000: INCBIN "gfx/sprites/c0000.w16.2bpp" ; c0000
+GFX_c0240: INCBIN "gfx/sprites/c0240.w16.2bpp" ; c0240
+GFX_c0480: INCBIN "gfx/sprites/c0480.w16.2bpp" ; c0480
+GFX_c06c0: INCBIN "gfx/sprites/c06c0.w16.2bpp" ; c06c0
+GFX_c0900: INCBIN "gfx/sprites/c0900.w16.2bpp" ; c0900
+GFX_c0b40: INCBIN "gfx/sprites/c0b40.w16.2bpp" ; c0b40
+GFX_c0d80: INCBIN "gfx/sprites/c0d80.w16.2bpp" ; c0d80
+GFX_c0fc0: INCBIN "gfx/sprites/c0fc0.w16.2bpp" ; c0fc0
+GFX_c1200: INCBIN "gfx/sprites/c1200.w16.2bpp" ; c1200
+GFX_c1440: INCBIN "gfx/sprites/c1440.w16.2bpp" ; c1440
+GFX_c1680: INCBIN "gfx/sprites/c1680.w16.2bpp" ; c1680
+GFX_c18c0: INCBIN "gfx/sprites/c18c0.w16.2bpp" ; c18c0
+GFX_c1b00: INCBIN "gfx/sprites/c1b00.w16.2bpp" ; c1b00
+GFX_c1d40: INCBIN "gfx/sprites/c1d40.w16.2bpp" ; c1d40
+GFX_c1f80: INCBIN "gfx/sprites/c1f80.w16.2bpp" ; c1f80
+GFX_c21c0: INCBIN "gfx/sprites/c21c0.w16.2bpp" ; c21c0
+GFX_c2400: INCBIN "gfx/sprites/c2400.w16.2bpp" ; c2400
+GFX_c2640: INCBIN "gfx/sprites/c2640.w16.2bpp" ; c2640
+GFX_c2880: INCBIN "gfx/sprites/c2880.w16.2bpp" ; c2880
+GFX_c2ac0: INCBIN "gfx/sprites/c2ac0.w16.2bpp" ; c2ac0
+GFX_c2d00: INCBIN "gfx/sprites/c2d00.w16.2bpp" ; c2d00
+GFX_c2f40: INCBIN "gfx/sprites/c2f40.w16.2bpp" ; c2f40
+GFX_c3180: INCBIN "gfx/sprites/c3180.w16.2bpp" ; c3180
+GFX_c33c0: INCBIN "gfx/sprites/c33c0.w16.2bpp" ; c33c0
+GFX_c3600: INCBIN "gfx/sprites/c3600.w16.2bpp" ; c3600
+GFX_c3840: INCBIN "gfx/sprites/c3840.w16.2bpp" ; c3840
 
 SECTION "Bank 31", ROMX, BANK [$31]
 Emotes_c4000::
@@ -109225,38 +107813,35 @@ Data_c7b84:
 	dr $c7b84, $c7bd0
 
 Func_c7bd0: ; c7bd0
-	dr $c7bd0, $c8000
+	dr $c7bd0, $c7d1e
 
 SECTION "Bank 35", ROMX, BANK [$35]
-GFX_d4000: INCBIN "gfx/sprites/d4000.2bpp" ; d4000
-GFX_d4240: INCBIN "gfx/sprites/d4240.2bpp" ; d4240
-GFX_d4480: INCBIN "gfx/sprites/d4480.2bpp" ; d4480
-GFX_d46c0: INCBIN "gfx/sprites/d46c0.2bpp" ; d46c0
-GFX_d4900: INCBIN "gfx/sprites/d4900.2bpp" ; d4900
-GFX_d4b40: INCBIN "gfx/sprites/d4b40.2bpp" ; d4b40
-GFX_d4d80: INCBIN "gfx/sprites/d4d80.2bpp" ; d4d80
-GFX_d4fc0: INCBIN "gfx/sprites/d4fc0.2bpp" ; d4fc0
-GFX_d5200: INCBIN "gfx/sprites/d5200.2bpp" ; d5200
-GFX_d5440: INCBIN "gfx/sprites/d5440.2bpp" ; d5440
-GFX_d5680: INCBIN "gfx/sprites/d5680.2bpp" ; d5680
-GFX_d58c0: INCBIN "gfx/sprites/d58c0.2bpp" ; d58c0
-GFX_d5b00: INCBIN "gfx/sprites/d5b00.2bpp" ; d5b00
-GFX_d5d40: INCBIN "gfx/sprites/d5d40.2bpp" ; d5d40
-GFX_d5f80: INCBIN "gfx/sprites/d5f80.2bpp" ; d5f80
-GFX_d61c0: INCBIN "gfx/sprites/d61c0.2bpp" ; d61c0
-GFX_d6400: INCBIN "gfx/sprites/d6400.2bpp" ; d6400
-GFX_d6640: INCBIN "gfx/sprites/d6640.2bpp" ; d6640
-GFX_d6880: INCBIN "gfx/sprites/d6880.2bpp" ; d6880
-GFX_d6ac0: INCBIN "gfx/sprites/d6ac0.2bpp" ; d6ac0
-GFX_d6d00: INCBIN "gfx/sprites/d6d00.2bpp" ; d6d00
-GFX_d6f40: INCBIN "gfx/sprites/d6f40.2bpp" ; d6f40
-GFX_d7180: INCBIN "gfx/sprites/d7180.2bpp" ; d7180
-GFX_d73c0: INCBIN "gfx/sprites/d73c0.2bpp" ; d73c0
-GFX_d7600: INCBIN "gfx/sprites/d7600.2bpp" ; d7600
-GFX_d7840: INCBIN "gfx/sprites/d7840.2bpp" ; d7840
-
-SECTION "Bank 37", ROMX, BANK [$37]
-	dr $dc000, $e0000
+GFX_d4000: INCBIN "gfx/sprites/d4000.w16.2bpp" ; d4000
+GFX_d4240: INCBIN "gfx/sprites/d4240.w16.2bpp" ; d4240
+GFX_d4480: INCBIN "gfx/sprites/d4480.w16.2bpp" ; d4480
+GFX_d46c0: INCBIN "gfx/sprites/d46c0.w16.2bpp" ; d46c0
+GFX_d4900: INCBIN "gfx/sprites/d4900.w16.2bpp" ; d4900
+GFX_d4b40: INCBIN "gfx/sprites/d4b40.w16.2bpp" ; d4b40
+GFX_d4d80: INCBIN "gfx/sprites/d4d80.w16.2bpp" ; d4d80
+GFX_d4fc0: INCBIN "gfx/sprites/d4fc0.w16.2bpp" ; d4fc0
+GFX_d5200: INCBIN "gfx/sprites/d5200.w16.2bpp" ; d5200
+GFX_d5440: INCBIN "gfx/sprites/d5440.w16.2bpp" ; d5440
+GFX_d5680: INCBIN "gfx/sprites/d5680.w16.2bpp" ; d5680
+GFX_d58c0: INCBIN "gfx/sprites/d58c0.w16.2bpp" ; d58c0
+GFX_d5b00: INCBIN "gfx/sprites/d5b00.w16.2bpp" ; d5b00
+GFX_d5d40: INCBIN "gfx/sprites/d5d40.w16.2bpp" ; d5d40
+GFX_d5f80: INCBIN "gfx/sprites/d5f80.w16.2bpp" ; d5f80
+GFX_d61c0: INCBIN "gfx/sprites/d61c0.w16.2bpp" ; d61c0
+GFX_d6400: INCBIN "gfx/sprites/d6400.w16.2bpp" ; d6400
+GFX_d6640: INCBIN "gfx/sprites/d6640.w16.2bpp" ; d6640
+GFX_d6880: INCBIN "gfx/sprites/d6880.w16.2bpp" ; d6880
+GFX_d6ac0: INCBIN "gfx/sprites/d6ac0.w16.2bpp" ; d6ac0
+GFX_d6d00: INCBIN "gfx/sprites/d6d00.w16.2bpp" ; d6d00
+GFX_d6f40: INCBIN "gfx/sprites/d6f40.w16.2bpp" ; d6f40
+GFX_d7180: INCBIN "gfx/sprites/d7180.w16.2bpp" ; d7180
+GFX_d73c0: INCBIN "gfx/sprites/d73c0.w16.2bpp" ; d73c0
+GFX_d7600: INCBIN "gfx/sprites/d7600.w16.2bpp" ; d7600
+GFX_d7840: INCBIN "gfx/sprites/d7840.w16.2bpp" ; d7840
 
 SECTION "Bank 38", ROMX, BANK [$38]
 	dr $e0000, $e1513

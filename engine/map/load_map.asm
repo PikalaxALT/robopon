@@ -590,7 +590,7 @@ Func_88f8: ; 88f8 (2:48f8)
 	ld [wPlayerFacing], a
 Func_891c: ; 891c (2:491c)
 	call Func_8ccf
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0

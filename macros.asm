@@ -244,7 +244,16 @@ menu_header: MACRO
 	db \3, \4 ; width, height
 REPT 9
 IF \5 == $ff
-	dba \6 ; order: enter callback, exit callback, up/down, a, b, right, left, loop callback, select
+	dba \6
+	; enter callback
+	; exit callback
+	; up/down
+	; a
+	; b
+	; right
+	; left
+	; loop callback
+	; select
 ELSE
 	dbw \5, \6
 ENDC

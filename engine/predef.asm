@@ -369,7 +369,7 @@ Func_782f5:: ; 782f5 (1e:42f5)
 	ld de, Data_78018
 	ld bc, $f
 	predef CopyPredef
-	predef Func_7d391
+	predef RandomPredef
 	ld [$ce01], a
 	xor a
 	Coorda 16, 4
@@ -1170,9 +1170,9 @@ asm_788af
 	ld d, $0
 	ld hl, $1e
 	push hl
-	predef Func_7d322
+	predef DivideSignedShortAndOutputToC3B0Predef
 	pop de
-	predef Func_7d2e7
+	predef MultiplySignedShortPredef
 	ld a, l
 	pop hl
 	jr asm_788c4
@@ -6291,21 +6291,21 @@ Data_7bfeb:: ; 7bfeb
 
 SECTION "Bank 1f", ROMX, BANK [$1f]
 Pointers_7c000:: ; 7c000
-	dw Func_7d267
-	dw Func_7d26e
-	dw Func_7d275
-	dw Func_7d27c
-	dw Func_7d283
-	dw Func_7d2b3
-	dw Func_7d2c8
-	dw Func_7d2de
-	dw Func_7d2e0
-	dw Func_7d2e7
-	dw Func_7d322
-	dw Func_7d382
-	dw Func_7d38c
-	dw Func_7d3bc
-	dw Func_7d391
+	dw XorShortsPredef
+	dw OrShortsPredef
+	dw AndShortsPredef
+	dw CplShortPredef
+	dw CompareShortPredef
+	dw RightShiftShortPredef
+	dw LeftShiftShortPredef
+	dw AddShortsPredef
+	dw SubtractShortsPredef
+	dw MultiplySignedShortPredef
+	dw DivideSignedShortAndOutputToC3B0Predef
+	dw NegateShortPredef
+	dw AbsoluteValueShortPredef
+	dw SeedRNGPredef
+	dw RandomPredef
 	dw Func_7c96e
 	dw Func_7e1e8
 	dw Func_7e1c0
@@ -8060,9 +8060,9 @@ Func_7caa0:: ; 7caa0 (1f:4aa0)
 	inc hl
 	ld d, [hl]
 	ld hl, $a
-	predef Func_7d322
+	predef DivideSignedShortAndOutputToC3B0Predef
 	ld de, $a
-	predef Func_7d2e7
+	predef MultiplySignedShortPredef
 	ld e, l
 	ld d, h
 	ld hl, sp+$2
@@ -8664,7 +8664,7 @@ CopyToVRAMPredef:: ; 7cdf6 (1f:4df6)
 	add hl, hl
 	add hl, hl
 	ld c, $5
-	call Func_7d25a
+	call DivideShortByCharPredef
 	ld a, l
 	pop bc
 	pop hl
@@ -8690,7 +8690,7 @@ Func_7ce16:: ; 7ce16 (1f:4e16)
 	add hl, hl
 	add hl, hl
 	ld c, $6
-	call Func_7d25a
+	call DivideShortByCharPredef
 	ld a, l
 	pop bc
 	pop hl
@@ -9029,7 +9029,7 @@ Func_7d1e4:: ; 7d1e4 (1f:51e4)
 	ld c, a
 	ret
 
-Func_7d25a:: ; 7d25a (1f:525a)
+DivideShortByCharPredef:: ; 7d25a (1f:525a)
 	ld b, $8
 .loop
 	add hl, hl
@@ -9043,7 +9043,7 @@ Func_7d25a:: ; 7d25a (1f:525a)
 	jr nz, .loop
 	ret
 
-Func_7d267:: ; 7d267 (1f:5267)
+XorShortsPredef:: ; 7d267 (1f:5267)
 	ld a, h
 	xor d
 	ld h, a
@@ -9052,7 +9052,7 @@ Func_7d267:: ; 7d267 (1f:5267)
 	ld l, a
 	ret
 
-Func_7d26e:: ; 7d26e (1f:526e)
+OrShortsPredef:: ; 7d26e (1f:526e)
 	ld a, h
 	or d
 	ld h, a
@@ -9061,7 +9061,7 @@ Func_7d26e:: ; 7d26e (1f:526e)
 	ld l, a
 	ret
 
-Func_7d275:: ; 7d275 (1f:5275)
+AndShortsPredef:: ; 7d275 (1f:5275)
 	ld a, h
 	and d
 	ld h, a
@@ -9070,7 +9070,7 @@ Func_7d275:: ; 7d275 (1f:5275)
 	ld l, a
 	ret
 
-Func_7d27c:: ; 7d27c (1f:527c)
+CplShortPredef:: ; 7d27c (1f:527c)
 	ld a, h
 	cpl
 	ld h, a
@@ -9079,12 +9079,13 @@ Func_7d27c:: ; 7d27c (1f:527c)
 	ld l, a
 	ret
 
-Func_7d283:: ; 7d283 (1f:5283)
+CompareShortPredef:: ; 7d283 (1f:5283)
+; if de and hl have different signs, then b = (de < 0 ? 2 | 4)
 	ld a, d
 	xor h
 	rlca
 	ld a, d
-	jr c, .asm_7d295
+	jr c, .different_signs
 	ld a, e
 	sub l
 	ld l, a
@@ -9093,33 +9094,33 @@ Func_7d283:: ; 7d283 (1f:5283)
 	ld h, a
 	ld b, $1
 	or l
-	jr z, .asm_7d29c
+	jr z, .bit_mask
 	ld a, h
-.asm_7d295
+.different_signs
 	ld b, $2
 	rlca
-	jr c, .asm_7d29c
+	jr c, .bit_mask
 	ld b, $4
-.asm_7d29c
+.bit_mask
 	ld a, b
 	ld b, $0
 	ld hl, Data_7d2aa
 	add hl, bc
 	and [hl]
-	jr z, asm_7d2da
-	ld hl, $ffff
+	jr z, predefMath_returnZero
+	ld hl, -1
 	ret
 
 Data_7d2aa:: ; 7d2aa
-	dr $7d2aa, $7d2b3
+	db %110, %110, %101, %101, %011, %011, %100, %010, %001
 
-Func_7d2b3:: ; 7d2b3 (1f:52b3)
+RightShiftShortPredef:: ; 7d2b3 (1f:52b3)
 	ld a, h
 	or a
-	jr nz, asm_7d2da
+	jr nz, predefMath_returnZero
 	ld a, l
 	cp $10
-	jr nc, asm_7d2da
+	jr nc, predefMath_returnZero
 	ld l, e
 	ld h, d
 	or a
@@ -9131,13 +9132,13 @@ Func_7d2b3:: ; 7d2b3 (1f:52b3)
 	jr nz, .asm_7d2c0
 	ret
 
-Func_7d2c8:: ; 7d2c8 (1f:52c8)
+LeftShiftShortPredef:: ; 7d2c8 (1f:52c8)
 	ld a, h
 	or a
-	jr nz, asm_7d2da
+	jr nz, predefMath_returnZero
 	ld a, l
 	cp $10
-	jr nc, asm_7d2da
+	jr nc, predefMath_returnZero
 	ld l, e
 	ld h, d
 	or a
@@ -9148,15 +9149,15 @@ Func_7d2c8:: ; 7d2c8 (1f:52c8)
 	jr nz, .asm_7d2d5
 	ret
 
-asm_7d2da
+predefMath_returnZero
 	ld hl, $0
 	ret
 
-Func_7d2de:: ; 7d2de (1f:52de)
+AddShortsPredef:: ; 7d2de (1f:52de)
 	add hl, de
 	ret
 
-Func_7d2e0:: ; 7d2e0 (1f:52e0)
+SubtractShortsPredef:: ; 7d2e0 (1f:52e0)
 	ld a, e
 	sub l
 	ld l, a
@@ -9165,20 +9166,20 @@ Func_7d2e0:: ; 7d2e0 (1f:52e0)
 	ld h, a
 	ret
 
-Func_7d2e7:: ; 7d2e7 (1f:52e7)
+MultiplySignedShortPredef:: ; 7d2e7 (1f:52e7)
 	ld a, h
 	or l
 	ret z
 	ld a, d
 	or e
-	jr z, asm_7d2da
+	jr z, predefMath_returnZero
 	ld a, h
 	xor d
 	rlca
 	push af
 	ld a, d
 	rlca
-	jr nc, .asm_7d2fd
+	jr nc, .de_positive
 	ld a, d
 	cpl
 	ld d, a
@@ -9186,10 +9187,10 @@ Func_7d2e7:: ; 7d2e7 (1f:52e7)
 	cpl
 	ld e, a
 	inc de
-.asm_7d2fd
+.de_positive
 	ld a, h
 	rlca
-	jr nc, .asm_7d308
+	jr nc, .hl_positive
 	ld a, h
 	cpl
 	ld h, a
@@ -9197,35 +9198,35 @@ Func_7d2e7:: ; 7d2e7 (1f:52e7)
 	cpl
 	ld l, a
 	inc hl
-.asm_7d308
+.hl_positive
 	ld b, h
 	ld c, l
 	ld hl, $0
 	ld a, $10
-.asm_7d30f
+.loop
 	add hl, hl
 	rl c
 	rl b
-	jr nc, .asm_7d31d
+	jr nc, .next
 	add hl, de
-	jr nc, .asm_7d31d
+	jr nc, .next
 	inc c
-	jr nz, .asm_7d31d
+	jr nz, .next
 	inc b
-.asm_7d31d
+.next
 	dec a
-	jr nz, .asm_7d30f
-	jr asm_7d380
+	jr nz, .loop
+	jr predefMath_fixSign
 
-Func_7d322:: ; 7d322 (1f:5322)
-	call Func_7d34e
+DivideSignedShortAndOutputToC3B0Predef:: ; 7d322 (1f:5322)
+	call DivideSignedShortPredef
 	ld a, e
 	ld [wc3b0], a
 	ld a, d
 	ld [wc3b0 + 1], a
 	ret
 
-Func_7d32e:: ; 7d32e (1f:532e)
+DivideShortPredef:: ; 7d32e (1f:532e)
 	ld b, h
 	ld c, l
 	ld hl, $0
@@ -9252,7 +9253,7 @@ Func_7d32e:: ; 7d32e (1f:532e)
 	jr nz, .asm_7d335
 	ret
 
-Func_7d34e:: ; 7d34e (1f:534e)
+DivideSignedShortPredef:: ; 7d34e (1f:534e)
 	ld a, h
 	or l
 	jr nz, .asm_7d356
@@ -9289,17 +9290,17 @@ Func_7d34e:: ; 7d34e (1f:534e)
 	ld l, a
 	inc hl
 .asm_7d371
-	call Func_7d32e
+	call DivideShortPredef
 	pop af
 	jr nc, .asm_7d37a
-	call Func_7d382
+	call NegateShortPredef
 .asm_7d37a
 	reg8rot a, l, e
 	reg8rot a, h, d
-asm_7d380
+predefMath_fixSign
 	pop af
 	ret nc
-Func_7d382:: ; 7d382 (1f:5382)
+NegateShortPredef:: ; 7d382 (1f:5382)
 	ld a, h
 	cpl
 	ld h, a
@@ -9311,13 +9312,13 @@ Func_7d382:: ; 7d382 (1f:5382)
 	inc h
 	ret
 
-Func_7d38c:: ; 7d38c (1f:538c)
+AbsoluteValueShortPredef:: ; 7d38c (1f:538c)
 	bit 7, h
 	ret z
-	jr Func_7d382
+	jr NegateShortPredef
 
-Func_7d391:: ; 7d391 (1f:5391)
-	ld hl, wc3b2
+RandomPredef:: ; 7d391 (1f:5391)
+	ld hl, wSTDLibRNGState
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -9331,30 +9332,30 @@ Func_7d391:: ; 7d391 (1f:5391)
 	ld a, h
 	xor l
 	ld h, a
-	ld a, [wc3b4]
+	ld a, [wSTDLibRNGCount]
 	inc a
-	ld [wc3b4], a
+	ld [wSTDLibRNGCount], a
 	xor l
 	ld l, a
 	pop af
 	rl l
 	rl h
 	ld a, l
-	ld [wc3b2], a
+	ld [wSTDLibRNGState], a
 	ld a, h
-	ld [wc3b2 + 1], a
+	ld [wSTDLibRNGState + 1], a
 	xor l
 	ld l, a
 	ld h, $0
 	ret
 
-Func_7d3bc:: ; 7d3bc (1f:53bc)
+SeedRNGPredef:: ; 7d3bc (1f:53bc)
 	ld a, l
-	ld [wc3b2], a
+	ld [wSTDLibRNGState], a
 	ld a, h
-	ld [wc3b2 + 1], a
+	ld [wSTDLibRNGState + 1], a
 	xor a
-	ld [wc3b4], a
+	ld [wSTDLibRNGCount], a
 	ret
 
 HexToIntPredef:: ; 7d3c9 (1f:53c9)
@@ -9974,7 +9975,7 @@ Func_7d6cc:: ; 7d6cc (1f:56cc)
 	ld h, $0
 	ld d, h
 	ld e, c
-	predef Func_7d2e7
+	predef MultiplySignedShortPredef
 	ld b, l
 	pop af
 	call Func_7d738
@@ -11633,7 +11634,7 @@ Func_7df5e:: ; 7df5e (1f:5f5e)
 	add hl, hl
 	add hl, hl
 	ld c, $5
-	call Func_7d25a
+	call DivideShortByCharPredef
 	ld a, l
 	pop bc
 	pop hl
@@ -12064,7 +12065,7 @@ Func_7e1c3:: ; 7e1c3 (1f:61c3)
 	push hl
 	push af
 	ld hl, HuC3SRamMode
-	ld [hl], $d
+	ld [hl], SRAM_TOGGLE_LATCH
 	ld de, HuC3RTC
 .wait1
 	ld a, [de]
@@ -12078,7 +12079,7 @@ Func_7e1c3:: ; 7e1c3 (1f:61c3)
 	pop af
 	ld [de], a
 	nop
-	ld [hl], $d
+	ld [hl], SRAM_TOGGLE_LATCH
 	ld a, $fe
 	ld [de], a
 	nop
@@ -12095,7 +12096,7 @@ Func_7e1eb:: ; 7e1eb (1f:61eb)
 	push de
 	push hl
 	ld hl, HuC3SRamMode
-	ld [hl], $d
+	ld [hl], SRAM_TOGGLE_LATCH
 	ld de, HuC3RTC
 .wait1
 	ld a, [de]
@@ -12111,36 +12112,36 @@ Func_7e205:: ; 7e205 (1f:6205)
 	push af
 	push bc
 	push hl
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	or $80
-	ld [wc01c], a
+	ld [wRTCTicker], a
 .asm_7e210
 	call Func_7e22a
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	and $7f
 	jr z, .asm_7e21e
 	cp $10
 	jr c, .asm_7e210
 .asm_7e21e
-	ld [wc01c], a
+	ld [wRTCTicker], a
 	pop hl
 	pop bc
 	pop af
 	ret
 
 RTCUpdatePredef:: ; 7e225 (1f:6225)
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	rlca
 	ret c
 Func_7e22a:: ; 7e22a (1f:622a)
-	ld hl, wc01c
+	ld hl, wRTCTicker
 	ld a, [hl]
 	and $7f
 	ret z
 	cp $10
 	ret z
 	cp $11
-	jr z, .asm_7e282
+	jr z, .end_of_clock_cycle
 	ret nc
 	inc [hl]
 	dec a
@@ -12160,11 +12161,11 @@ Func_7e22a:: ; 7e22a (1f:622a)
 	add hl, bc
 	push hl
 	ld hl, $0
-	ld [hl], $d
+	ld [hl], SRAM_TOGGLE_LATCH
 	nop
 	ld a, [HuC3RTC]
 	bit 0, a
-	jr z, .asm_7e284
+	jr z, .rtc_not_working
 	ld [hl], $c
 	nop
 	ld a, [HuC3RTC]
@@ -12187,21 +12188,21 @@ Func_7e22a:: ; 7e22a (1f:622a)
 	pop af
 	ret z
 .asm_7e27a
-	ld hl, wc01c
+	ld hl, wRTCTicker
 	inc [hl]
 .asm_7e27e
 	ld a, $10
 	jr .asm_7e299
 
-.asm_7e282
-	jr .asm_7e2ba
+.end_of_clock_cycle
+	jr .quit
 
-.asm_7e284
+.rtc_not_working
 	pop bc
-.asm_7e285
+.rtc_not_ready
 	pop af
 	ld [hl], $0
-	ld hl, wc01c
+	ld hl, wRTCTicker
 	dec [hl]
 	ret
 
@@ -12220,27 +12221,27 @@ Func_7e22a:: ; 7e22a (1f:622a)
 .asm_7e299
 	push af
 	ld hl, HuC3SRamMode
-	ld [hl], $d
+	ld [hl], SRAM_TOGGLE_LATCH
 	ld bc, HuC3RTC
 	ld a, [bc]
 	bit 0, a
-	jr z, .asm_7e285
+	jr z, .rtc_not_ready
 	ld a, $c
-.asm_7e2a9
+.wait_12
 	dec a
-	jr nz, .asm_7e2a9
+	jr nz, .wait_12
 	ld [hl], $b
 	pop af
 	ld [bc], a
 	nop
-	ld [hl], $d
+	ld [hl], SRAM_TOGGLE_LATCH
 	ld a, $fe
 	ld [bc], a
 	nop
 	ld [hl], $0
 	ret
 
-.asm_7e2ba
+.quit
 	xor a
 	ld [hli], a
 asm_7e2bc
@@ -12268,7 +12269,7 @@ asm_7e2bc
 
 Func_7e2d8:: ; 7e2d8 (1f:62d8)
 	call Func_7e205
-	ld hl, wc01c
+	ld hl, wRTCTicker
 	ld a, [hli]
 	cp $10
 	jr z, asm_7e2bc
@@ -12384,7 +12385,7 @@ Func_7e373:: ; 7e373 (1f:6373)
 	ld e, a
 	push de
 	ld hl, $5b5
-	call Func_7d32e
+	call DivideShortPredef
 	ld l, e
 	ld h, d
 	pop de
@@ -12395,7 +12396,7 @@ Func_7e373:: ; 7e373 (1f:6373)
 	sbc h
 	ld d, a
 	ld hl, $16d
-	call Func_7d32e
+	call DivideShortPredef
 	reg8rot a, l, e
 	reg8rot a, h, d
 	ld bc, $784
@@ -12442,7 +12443,7 @@ Func_7e373:: ; 7e373 (1f:6373)
 	adc $0
 	ld d, a
 	ld hl, $7
-	call Func_7d32e
+	call DivideShortPredef
 	ld a, l
 	pop hl
 	ld [hli], a
@@ -12452,7 +12453,7 @@ Func_7e373:: ; 7e373 (1f:6373)
 	ld d, [hl]
 	ld e, a
 	ld hl, $2d0
-	call Func_7d32e
+	call DivideShortPredef
 	ld a, e
 	ld e, l
 	ld d, h
@@ -12460,7 +12461,7 @@ Func_7e373:: ; 7e373 (1f:6373)
 	ld [hli], a
 	push hl
 	ld hl, $3c
-	call Func_7d32e
+	call DivideShortPredef
 	ld a, l
 	pop hl
 	ld [hl], e
@@ -12480,7 +12481,7 @@ Func_7e40d:: ; 7e40d (1f:640d)
 	ld d, a
 	ld a, [hli]
 	push hl
-	ld hl, -$784
+	ld hl, -1924
 	add hl, de
 	cp $3
 	jr nc, .asm_7e41c
@@ -12488,12 +12489,12 @@ Func_7e40d:: ; 7e40d (1f:640d)
 .asm_7e41c
 	push af
 	push hl
-	ld de, $16d
-	call Func_7d2e7
+	ld de, 365
+	call MultiplySignedShortPredef
 	pop de
 	push hl
 	ld hl, $4
-	call Func_7d32e
+	call DivideShortPredef
 	pop hl
 	add hl, de
 	ld e, l
@@ -12553,7 +12554,7 @@ Func_7e44d:: ; 7e44d (1f:644d)
 	ld l, a
 	ld h, $0
 	ld de, $3c
-	call Func_7d2e7
+	call MultiplySignedShortPredef
 	pop de
 	ld a, [de]
 	ld e, a
@@ -12618,7 +12619,7 @@ Func_7e4aa:: ; 7e4aa (1f:64aa)
 	adc $0
 	ld d, a
 	ld hl, $7
-	call Func_7d34e
+	call DivideSignedShortPredef
 	pop hl
 	ld l, e
 	pop de

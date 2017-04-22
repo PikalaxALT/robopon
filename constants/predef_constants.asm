@@ -91,21 +91,21 @@ const_value = $4b
 	predef_const Func_7acd3
 	predef_const Func_7aca0
 	predef_const Func_7aca4
-	predef_const Func_7d267 ; 80
-	predef_const Func_7d26e
-	predef_const Func_7d275
-	predef_const Func_7d27c
-	predef_const Func_7d283
-	predef_const Func_7d2b3
-	predef_const Func_7d2c8
-	predef_const Func_7d2de
-	predef_const Func_7d2e0
-	predef_const Func_7d2e7
-	predef_const Func_7d322
-	predef_const Func_7d382
-	predef_const Func_7d38c
-	predef_const Func_7d3bc
-	predef_const Func_7d391
+	predef_const XorShortsPredef ; 80
+	predef_const OrShortsPredef
+	predef_const AndShortsPredef
+	predef_const CplShortPredef
+	predef_const CompareShortPredef
+	predef_const RightShiftShortPredef
+	predef_const LeftShiftShortPredef
+	predef_const AddShortsPredef
+	predef_const SubtractShortsPredef
+	predef_const MultiplySignedShortPredef
+	predef_const DivideSignedShortAndOutputToC3B0Predef
+	predef_const NegateShortPredef
+	predef_const AbsoluteValueShortPredef
+	predef_const SeedRNGPredef
+	predef_const RandomPredef
 	predef_const Func_7c96e
 	predef_const Func_7e1e8 ; 90
 	predef_const Func_7e1c0

@@ -553,7 +553,7 @@ NextOverworldFrame:: ; 465 (0:0465)
 	jr z, .loop
 	ld a, b
 	push af
-	call Func_1b28
+	call GetTime
 	pop af
 	pop bc
 	ret
@@ -2637,7 +2637,7 @@ Func_1b01:: ; 1b01
 	call BankSwitch
 	jp Func_4060
 
-Func_1b28:: ; 1b28 (0:1b28)
+GetTime:: ; 1b28 (0:1b28)
 	ld a, [wc39e]
 	or a
 	ret z
@@ -2648,17 +2648,17 @@ Func_1b28:: ; 1b28 (0:1b28)
 	push bc
 	ld a, [hSRAMBank]
 	push af
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	cp $11
 	jr z, .cgb
 	di
 	predef RTCUpdatePredef
 	ei
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	cp $10
 	jp nz, .done
 	ld a, $11
-	ld [wc01c], a
+	ld [wRTCTicker], a
 	jp .done
 
 .cgb
@@ -2666,21 +2666,21 @@ Func_1b28:: ; 1b28 (0:1b28)
 	predef RTCUpdatePredef
 	ei
 	ld a, $1
-	ld [wc01c], a
+	ld [wRTCTicker], a
 	ld a, e
 	ld [wc930], a
 	ld a, d
 	ld [wc930 + 1], a
-	ld a, [wc92e]
+	ld a, [wMinutesSinceMidnight]
 	ld e, a
 	ld a, c
 	ld [wc92c], a
 	ld a, b
 	ld [wc92c + 1], a
 	ld a, l
-	ld [wc92e], a
+	ld [wMinutesSinceMidnight], a
 	ld a, h
-	ld [wc92e + 1], a
+	ld [wMinutesSinceMidnight + 1], a
 	ld a, e
 	cp l
 	jr z, .done
@@ -3001,14 +3001,14 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	ld a, $1
 	ld [wc39e], a
 Func_1ea8:: ; 1ea8 (0:1ea8)
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	cp $11
 	jp z, Func_1ec2
-	ld a, [wc01c]
+	ld a, [wRTCTicker]
 	or a
 	jp nz, Func_1ebc
 	ld a, $1
-	ld [wc01c], a
+	ld [wRTCTicker], a
 Func_1ebc:: ; 1ebc (0:1ebc)
 	call NextOverworldFrame
 	jp Func_1ea8

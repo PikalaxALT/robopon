@@ -289,7 +289,7 @@ Func_930d: ; 930d (2:530d)
 	or $20
 	ld [wNextVBlankFlags], a
 	ei
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	call FillVisibleAreaWithBlankTile
 	ld a, $e4
 	ld [wOBP0], a
@@ -301,7 +301,7 @@ Func_930d: ; 930d (2:530d)
 	or $20
 	ld [wNextVBlankFlags], a
 	ei
-	call Func_bfaf
+	call Bank2_WaitVideoTransferIfLCDEnabled
 	set_farcall_addrs_hli Func_c7bd0
 	ld a, [wc867]
 	call FarCall
