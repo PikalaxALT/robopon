@@ -669,7 +669,7 @@ ApplyMovementData_\1: ; 8063e (20:463e)
 	push af
 	push de
 	push bc
-	set_farcall_addrs_hli Func_b400
+	set_farcall_addrs_hli StartMovement
 	pop bc
 	pop de
 	pop af

@@ -21,7 +21,7 @@ Func_9111: ; 9111 (2:5111)
 	call Func_b44d
 	ld hl, sp+$e
 	ld [hl], a
-	read_hl_from wc83c
+	read_hl_from wMovementDataAddr
 	ld a, l
 	or h
 	jp z, Func_9134
@@ -30,7 +30,7 @@ Func_9111: ; 9111 (2:5111)
 	cp $ff
 	jp nz, Func_9134
 	ld hl, $0
-	write_hl_to wc83c
+	write_hl_to wMovementDataAddr
 	jp Func_9413
 
 Func_9134: ; 9134 (2:5134)

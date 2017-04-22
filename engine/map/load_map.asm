@@ -535,7 +535,7 @@ Func_8827: ; 8827 (2:4827)
 	call Func_aff1
 	call DeleteMapObjectsAndWarps
 	call Func_b773
-	call Func_b407
+	call ClearMovementPointer
 	call Func_9d31
 	call Func_bf2c
 	ld a, $ff

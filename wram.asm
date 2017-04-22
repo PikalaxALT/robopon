@@ -754,11 +754,11 @@ wEventFlagsEnd::
 	char wPlayerFacing ; c838
 	char wc839 ; c839
 	char wc83a ; c83a
-	char wc83b ; c83b
-	short wc83c ; c83c
-	char wc83e ; c83e
-	char wc83f ; c83f
-	char wc840 ; c840
+	char wMovementDataBank ; c83b
+	short wMovementDataAddr ; c83c
+	char wMovementPerson ; c83e
+	char wMovementCurPathEndpointX ; c83f
+	char wMovementCurPathEndpointY ; c840
 	char wc841 ; c841
 	short wc842 ; c842
 	short wc844 ; c844

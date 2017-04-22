@@ -6722,7 +6722,7 @@ Func_af68: ; af68 (2:6f68)
 	ld hl, sp+$3
 	reg16swap de, hl
 	ld a, $2
-	call Func_b400
+	call StartMovement
 	pop bc
 	pop bc
 	pop bc
@@ -7260,7 +7260,7 @@ Func_b2a1: ; b2a1 (2:72a1)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to $c21b
+	write_hl_to wFarCallDestAddr
 	ld e, $3
 	ld hl, sp+$e
 	ld a, [hl]
@@ -7438,167 +7438,7 @@ Func_b3ef:: ; b3ef
 	pop bc
 	ret
 
-Func_b400:: ; b400 (2:7400)
-	call Func_b41d
-	call HandleMap
-	ret
-
-Func_b407: ; b407 (2:7407)
-	ld hl, $0
-	write_hl_to wc83c
-	xor a
-	ld [wc840], a
-	ld [wc83f], a
-	ld [wc83e], a
-	ld [wc83b], a
-	ret
-
-Func_b41d: ; b41d (2:741d)
-	push bc
-	push bc
-	push de
-	push af
-	ld [wFarCallDestBank], a
-	ld hl, sp+$6
-	ld bc, $2
-	call FarCopyVideoData
-	pop af
-	ld [wc83b], a
-	pop hl
-	write_hl_to wc83c
-	pop bc
-	ld a, c
-	ld [wc83e], a
-	ld hl, sp+$0
-	ld a, [hl]
-	ld [wc83f], a
-	ld hl, sp+$1
-	ld a, [hl]
-	ld [wc840], a
-	pop bc
-	ret
-
-Data_b449: ; b449
-	dr $b449, $b44d
-
-Func_b44d: ; b44d (2:744d)
-	push bc
-	push bc
-	push bc
-	ld hl, sp+$0
-	reg16swap de, hl
-	ld hl, Data_b449
-	ld bc, $4
-	call MemCopy
-	read_hl_from wc83c
-	ld a, l
-	or h
-	jp nz, Func_b4bd
-	call GetJoyPressed
-	ld hl, sp+$4
-	ld [hl], a
-	ld hl, $0
-	call Func_9f4c
-	ld hl, wc857
-	cp [hl]
-	jp nz, Func_b4b6
-	ld a, [wc858]
-	cp $1
-	jp nz, Func_b4b3
-	ld a, [wPlayerFacing]
-	cp $3
-	jp z, Func_b4af
-	cp $2
-	jp z, Func_b4a8
-	cp $1
-	jp z, Func_b4a1
-	or a
-	jp nz, Func_b4b3
-	ld hl, sp+$4
-	ld [hl], $4
-	jp Func_b4b3
-
-Func_b4a1: ; b4a1 (2:74a1)
-	ld hl, sp+$4
-	ld [hl], $1
-	jp Func_b4b3
-
-Func_b4a8: ; b4a8 (2:74a8)
-	ld hl, sp+$4
-	ld [hl], $8
-	jp Func_b4b3
-
-Func_b4af: ; b4af (2:74af)
-	ld hl, sp+$4
-	ld [hl], $2
-Func_b4b3: ; b4b3 (2:74b3)
-	jp Func_b4ba
-
-Func_b4b6: ; b4b6 (2:74b6)
-	xor a
-	ld [wc858], a
-Func_b4ba: ; b4ba (2:74ba)
-	jp Func_b525
-
-Func_b4bd: ; b4bd (2:74bd)
-	ld a, [wc840]
-	ld l, a
-	push hl
-	ld a, [wc83f]
-	ld c, a
-	ld a, [wPlayerMapY]
-	ld e, a
-	ld a, [wPlayerMapX]
-	call Func_b377
-	pop bc
-	ld hl, sp+$4
-	ld [hl], a
-	cp $ff
-	jp nz, Func_b519
-	read_hl_from wc83c
-	inc hl
-	inc hl
-	write_hl_to wc83c
-	ld a, [wc83b]
-	ld [wFarCallDestBank], a
-	ld bc, $2
-	read_hl_from wc83c
-	reg16swap de, hl
-	ld hl, sp+$4
-	call FarCopyVideoData
-	ld hl, sp+$4
-	ld a, [hl]
-	ld [wc83f], a
-	ld hl, sp+$5
-	ld a, [hl]
-	ld [wc840], a
-	ld a, [wc83f]
-	cp $ff
-	jp nz, Func_b515
-	ld a, $ff
-	jp Func_b528
-
-Func_b515: ; b515 (2:7515)
-	xor a
-	jp Func_b528
-
-Func_b519: ; b519 (2:7519)
-	ld hl, sp+$4
-	ld e, [hl]
-	ld d, $0
-	ld hl, sp+$0
-	add hl, de
-	ld a, [hl]
-	jp Func_b528
-
-Func_b525: ; b525 (2:7525)
-	ld hl, sp+$4
-	ld a, [hl]
-Func_b528: ; b528 (2:7528)
-	pop bc
-	pop bc
-	pop bc
-	ret
+INCLUDE "engine/map/scripted_movement.asm"
 
 Func_b52c:: ; b52c (2:752c)
 	ld [wc841], a
@@ -107661,7 +107501,6 @@ GFX_c2f40: INCBIN "gfx/sprites/c2f40.w16.2bpp" ; c2f40
 GFX_c3180: INCBIN "gfx/sprites/c3180.w16.2bpp" ; c3180
 GFX_c33c0: INCBIN "gfx/sprites/c33c0.w16.2bpp" ; c33c0
 GFX_c3600: INCBIN "gfx/sprites/c3600.w16.2bpp" ; c3600
-GFX_c3840: INCBIN "gfx/sprites/c3840.w16.2bpp" ; c3840
 
 SECTION "Bank 31", ROMX, BANK [$31]
 Emotes_c4000::

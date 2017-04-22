@@ -88,7 +88,7 @@ LoadEncounterTable:: ; b7fd
 
 RollRandomEncounter: ; b821 (2:7821)
 	add sp, -$3c
-	read_hl_from wc83c
+	read_hl_from wMovementDataAddr
 	ld a, l
 	or h
 	jp z, .check_cooldown

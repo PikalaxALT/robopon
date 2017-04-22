@@ -270,13 +270,22 @@ Func_814a8: ; 814a8 (20:54a8)
 	ret
 
 Data_814a9:
-	dr $814a9, $814b3
+	db $11, $17
+	db $0b, $17
+	db $0b, $0e
+	db $15, $0e
+	db $ff, $ff
 
 Data_814b3:
-	dr $814b3, $814bb
+	db $15, $0d
+	db $10, $0d
+	db $10, $0c
+	db $ff, $ff
 
 Data_814bb:
-	dr $814bb, $814c1
+	db $10, $0d
+	db $10, $0c
+	db $ff, $ff
 
 Func_814c1: ; 814c1 (20:54c1)
 	playmusic SONG_WILD_BATTLE

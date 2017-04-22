@@ -215,9 +215,9 @@ HandlePlayerStep:: ; 943f (2:543f)
 	cp $1
 	jr z, .asm_95a3
 	push hl
-	ld a, [wc83c]
+	ld a, [wMovementDataAddr]
 	ld l, a
-	ld a, [wc83c + 1]
+	ld a, [wMovementDataAddr + 1]
 	or l
 	pop hl
 	jr nz, .asm_95a3
