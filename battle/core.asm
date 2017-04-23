@@ -11,7 +11,7 @@ Data_23284: ; 23284
 
 DoBattle: ; 2328f (8:728f)
 	add sp, -$52
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -20,15 +20,15 @@ DoBattle: ; 2328f (8:728f)
 	ld hl, $5e
 	add hl, de
 	write_hl_to_sp_plus $51
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $4f
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	write_hl_to_sp_plus $4d
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -37,17 +37,17 @@ DoBattle: ; 2328f (8:728f)
 	ld l, a
 	write_hl_to_sp_plus $4b
 	set_farcall_addrs_hli Func_613fc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c8
 	add hl, de
 	ld a, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c9
 	add hl, de
 	ld e, [hl]
 	call FarCall
 BattleCoreLoop: ; 232f2 (8:72f2)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -128,7 +128,7 @@ Func_2337e: ; 2337e (8:737e)
 	jp Func_23357
 
 Func_2339b: ; 2339b (8:739b)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $4f
@@ -403,7 +403,7 @@ Func_235b0: ; 235b0 (8:75b0)
 	jp Func_235ee
 
 Func_235b3: ; 235b3 (8:75b3)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -487,7 +487,7 @@ Func_23651: ; 23651 (8:7651)
 	jp Func_23654
 
 Func_23654: ; 23654 (8:7654)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -521,7 +521,7 @@ Func_23696: ; 23696 (8:7696)
 	ld e, [hl]
 	xor a
 	call FarCall
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -547,7 +547,7 @@ Func_236d9: ; 236d9 (8:76d9)
 	jp Func_23746
 
 Func_236ee: ; 236ee (8:76ee)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]

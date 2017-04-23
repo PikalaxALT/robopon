@@ -493,7 +493,7 @@ wVideoTransferQueue:: ; c239
 	char wc2e3 ; c2e3
 	char wc2e4 ; c2e4
 	char wc2e5 ; c2e5
-	short wc2e6 ; c2e6
+	short wCurRobotPointer ; c2e6
 	char wc2e8 ; c2e8
 	char wc2e9 ; c2e9
 

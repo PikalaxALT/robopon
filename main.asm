@@ -1433,9 +1433,9 @@ BlinkTextCursor:
 	ret
 
 DoShakeProgram:
-	ld a, [wc2e6]
+	ld a, [wCurRobotPointer]
 	ld l, a
-	ld a, [wc2e6 + 1]
+	ld a, [wCurRobotPointer + 1]
 	ld h, a
 	ld de, $7
 	add hl, de
@@ -1463,9 +1463,9 @@ DoShakeProgram:
 	ret
 
 DoFlashProgram:
-	ld a, [wc2e6]
+	ld a, [wCurRobotPointer]
 	ld l, a
-	ld a, [wc2e6 + 1]
+	ld a, [wCurRobotPointer + 1]
 	ld h, a
 	ld a, [hli]
 	ld c, a
@@ -1490,9 +1490,9 @@ DoFlashProgram:
 	ret
 
 DoFadeProgram:
-	ld a, [wc2e6]
+	ld a, [wCurRobotPointer]
 	ld l, a
-	ld a, [wc2e6 + 1]
+	ld a, [wCurRobotPointer + 1]
 	ld h, a
 	ld a, [hli]
 	ld b, a
@@ -3778,7 +3778,7 @@ Func_7c85: ; 7c85 (1:7c85)
 Func_7c8a: ; 7c8a
 	push hl
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -7001,7 +7001,7 @@ Func_b14d: ; b14d (2:714d)
 	add sp, $c
 	ret
 
-Func_b150: ; b150 (2:7150)
+Func_b150:: ; b150 (2:7150)
 	add sp, -$e
 	xor a
 Func_b153: ; b153 (2:7153)
@@ -7774,13 +7774,13 @@ Func_ba47: ; ba47
 	ld [wc7bd], a
 	ld a, $1
 	ld [wc2fa], a
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	pop af
 	ld [wFarCallDestBank], a
 	ld bc, $29
 	read_hl_from_sp_plus $c
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -7790,7 +7790,7 @@ Func_ba47: ; ba47
 	add hl, de
 	pop de
 	call FarCopyVideoData
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -7991,7 +7991,7 @@ Func_bc6d:: ; bc6d
 	reg16swap de, hl
 	ld hl, sp+$5
 	call FarCopyUntilNull
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	pop af
 	pop de
 	ld hl, sp+$1
@@ -8022,7 +8022,7 @@ Func_bc6d:: ; bc6d
 	ld a, $1
 	ld [wc7c4], a
 Func_bcd1: ; bcd1 (2:7cd1)
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ld hl, sp+$0
 	ld a, [hl]
 	add sp, $22
@@ -8038,7 +8038,7 @@ Func_bce5:: ; bce5
 	reg16swap de, hl
 	ld hl, sp+$5
 	call FarCopyUntilNull
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	pop af
 	pop de
 	ld hl, sp+$1
@@ -8069,7 +8069,7 @@ Func_bce5:: ; bce5
 	ld a, $1
 	ld [wc7c4], a
 Func_bd49: ; bd49 (2:7d49)
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ld hl, sp+$0
 	ld a, [hl]
 	add sp, $22
@@ -8085,7 +8085,7 @@ Func_bd5d:: ; bd5d
 	reg16swap de, hl
 	ld hl, sp+$5
 	call FarCopyUntilNull
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	pop af
 	pop de
 	ld hl, sp+$1
@@ -8116,7 +8116,7 @@ Func_bd5d:: ; bd5d
 	ld a, $1
 	ld [wc7c4], a
 Func_bdc1: ; bdc1 (2:7dc1)
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ld hl, sp+$0
 	ld a, [hl]
 	add sp, $22
@@ -8132,7 +8132,7 @@ Func_bdd5:: ; bdd5
 	reg16swap de, hl
 	ld hl, sp+$5
 	call FarCopyUntilNull
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	pop af
 	pop de
 	ld hl, sp+$1
@@ -8163,7 +8163,7 @@ Func_bdd5:: ; bdd5
 	ld a, $1
 	ld [wc7c4], a
 Func_be39: ; be39 (2:7e39)
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ld hl, sp+$0
 	ld a, [hl]
 	add sp, $22
@@ -8781,7 +8781,7 @@ Func_c7ba: ; c7ba
 	call Func_c6ff
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -8791,7 +8791,7 @@ Func_c7ba: ; c7ba
 	call FarCall
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -9233,203 +9233,7 @@ Func_cb3c: ; cb3c (3:4b3c)
 	add sp, $68
 	ret
 
-Func_cb4a: ; cb4a (3:4b4a)
-	read_hl_from wc2e6
-	ld a, l
-	or h
-	jp nz, Func_cc0b
-	set_farcall_addrs_hli SetAllocationMode
-	ld a, $2
-	call FarCall
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $34a
-	call FarCall
-	write_hl_to wc2e6
-	ld bc, $34a
-	ld e, $0
-	read_hl_from wc2e6
-	call FillMemory
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $80
-	call FarCall
-	ld c, l
-	ld b, h
-	read_hl_from wc2e6
-	ld de, $18
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $91
-	call FarCall
-	ld c, l
-	ld b, h
-	read_hl_from wc2e6
-	ld de, $16
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld bc, $91
-	read_hl_from wc2e6
-	ld de, $16
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	ld e, $0
-	call FillMemory
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $df
-	call FarCall
-	ld c, l
-	ld b, h
-	read_hl_from wc2e6
-	ld de, $1c6
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	set_farcall_addrs_hli SetAllocationMode
-	xor a
-	call FarCall
-Func_cc0b: ; cc0b (3:4c0b)
-	ret
-
-Func_cc0c: ; cc0c
-	read_hl_from wc2e6
-	ld a, l
-	or h
-	jp nz, Func_ccec
-	set_farcall_addrs_hli SetAllocationMode
-	ld a, $2
-	call FarCall
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $34a
-	call FarCall
-	write_hl_to wc2e6
-	ld bc, $34a
-	ld e, $0
-	read_hl_from wc2e6
-	call FillMemory
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $80
-	call FarCall
-	ld c, l
-	ld b, h
-	read_hl_from wc2e6
-	ld de, $18
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $91
-	call FarCall
-	ld c, l
-	ld b, h
-	read_hl_from wc2e6
-	ld de, $16
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld bc, $91
-	read_hl_from wc2e6
-	ld de, $16
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	ld e, $0
-	call FillMemory
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $df
-	call FarCall
-	ld c, l
-	ld b, h
-	read_hl_from wc2e6
-	ld de, $1c6
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $351
-	call FarCall
-	ld c, l
-	ld b, h
-	read_hl_from wc2e6
-	ld de, $1a
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	set_farcall_addrs_hli SetAllocationMode
-	xor a
-	call FarCall
-Func_ccec: ; ccec (3:4cec)
-	ret
-
-Func_cced: ; cced (3:4ced)
-	read_hl_from wc2e6
-	ld a, l
-	or h
-	jp z, Func_cd99
-	set_farcall_addrs_hli FreeMemory
-	read_hl_from wc2e6
-	ld de, $16
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	call FarCall
-	set_farcall_addrs_hli FreeMemory
-	read_hl_from wc2e6
-	ld de, $18
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	call FarCall
-	set_farcall_addrs_hli FreeMemory
-	read_hl_from wc2e6
-	ld de, $1c6
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	call FarCall
-	read_hl_from wc2e6
-	ld de, $1a
-	add hl, de
-	ld a, [hl]
-	inc hl
-	or [hl]
-	jp z, Func_cd7e
-	set_farcall_addrs_hli FreeMemory
-	read_hl_from wc2e6
-	ld de, $1a
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	call FarCall
-Func_cd7e: ; cd7e (3:4d7e)
-	set_farcall_addrs_hli FreeMemory
-	read_hl_from wc2e6
-	call FarCall
-	ld hl, $0
-	write_hl_to wc2e6
-Func_cd99: ; cd99 (3:4d99)
-	ret
+INCLUDE "engine/allocate_monster_struct.asm"
 
 Func_cd9a: ; cd9a (3:4d9a)
 	callba_hli Func_bf214
@@ -9494,7 +9298,7 @@ Func_ce18: ; ce18 (3:4e18)
 	set_farcall_addrs_hli Func_7c8a
 	ld a, [wc2cd]
 	ld c, a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -9505,7 +9309,7 @@ Func_ce18: ; ce18 (3:4e18)
 	set_farcall_addrs_hli Func_7c8a
 	ld a, [wc2cd]
 	ld c, a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -9772,7 +9576,7 @@ Func_d030: ; d030
 	or $4
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], $0
@@ -9797,7 +9601,7 @@ Func_d030: ; d030
 	push hl
 	ld a, [wc2cd]
 	ld c, a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -9827,7 +9631,7 @@ Func_d0d5: ; d0d5 (3:50d5)
 	push hl
 	ld a, [wc2cd]
 	ld c, a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -9962,7 +9766,7 @@ Func_d1c1: ; d1c1 (3:51c1)
 	ld hl, sp+$19
 	ld [hl], $b
 Func_d1c5: ; d1c5 (3:51c5)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10077,7 +9881,7 @@ Func_d280: ; d280 (3:5280)
 	ld a, [hl]
 	or a
 	jp z, Func_d2ac
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10183,7 +9987,7 @@ Func_d329: ; d329 (3:5329)
 	ld a, [hl]
 	or a
 	jp z, Func_d365
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10249,7 +10053,7 @@ Func_d3b8: ; d3b8 (3:53b8)
 	ld hl, sp+$19
 	ld [hl], $b
 Func_d3bc: ; d3bc (3:53bc)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10362,7 +10166,7 @@ Func_d474: ; d474 (3:5474)
 	ld a, [hl]
 	or a
 	jp z, Func_d4a0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10468,7 +10272,7 @@ Func_d51d: ; d51d (3:551d)
 	ld a, [hl]
 	or a
 	jp z, Func_d559
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10531,7 +10335,7 @@ Func_d5a7: ; d5a7 (3:55a7)
 	ld [hl], $b
 Func_d5ab: ; d5ab (3:55ab)
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10635,7 +10439,7 @@ Func_d665: ; d665 (3:5665)
 	push af
 	or a
 	jp z, Func_d681
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10829,7 +10633,7 @@ Func_d7f5: ; d7f5 (3:57f5)
 	push bc
 	push bc
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -10890,7 +10694,7 @@ Func_d833: ; d833 (3:5833)
 	ld a, [de]
 	ld l, a
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -11009,7 +10813,7 @@ Func_d945: ; d945 (3:5945)
 	ld e, [hl]
 	xor a
 	call Func_dbf5
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -11033,7 +10837,7 @@ Func_d96d: ; d96d (3:596d)
 	ld e, [hl]
 	ld a, $1
 	call Func_dbf5
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -11047,14 +10851,14 @@ Func_d96d: ; d96d (3:596d)
 	jp Func_dacf
 
 Func_d99a: ; d99a (3:599a)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	and $2
 	jp z, Func_d9c5
 	ld c, $7
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e2
 	add hl, de
 	ld e, [hl]
@@ -11072,14 +10876,14 @@ Func_d9c5: ; d9c5 (3:59c5)
 	ld a, $1
 	call Func_dbf5
 	ld c, $7
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e2
 	add hl, de
 	ld e, [hl]
 	xor a
 	call Func_dbf5
 Func_d9de: ; d9de (3:59de)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -11092,7 +10896,7 @@ Func_d9de: ; d9de (3:59de)
 	jp Func_d8cd
 
 Func_d9f5: ; d9f5 (3:59f5)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -11105,7 +10909,7 @@ Func_d9f5: ; d9f5 (3:59f5)
 	jp Func_dacf
 
 Func_da0c: ; da0c (3:5a0c)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -11119,14 +10923,14 @@ Func_da0c: ; da0c (3:5a0c)
 	jp Func_dacf
 
 Func_da26: ; da26 (3:5a26)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	and $2
 	jp z, Func_da51
 	ld c, $7
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e2
 	add hl, de
 	ld e, [hl]
@@ -11144,14 +10948,14 @@ Func_da51: ; da51 (3:5a51)
 	ld a, $1
 	call Func_dbf5
 	ld c, $7
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e2
 	add hl, de
 	ld e, [hl]
 	xor a
 	call Func_dbf5
 Func_da6a: ; da6a (3:5a6a)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -11301,7 +11105,7 @@ Func_db5a: ; db5a (3:5b5a)
 
 Func_db78: ; db78 (3:5b78)
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -11453,7 +11257,7 @@ Func_dc2c: ; dc2c (3:5c2c)
 Func_dcaf: ; dcaf
 	push af
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -11475,7 +11279,7 @@ Func_dcd3: ; dcd3 (3:5cd3)
 Func_dcd6: ; dcd6 (3:5cd6)
 	ld hl, sp+$3
 	ld a, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -11506,7 +11310,7 @@ Func_dd07: ; dd07 (3:5d07)
 
 Func_dd0a: ; dd0a
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -11524,7 +11328,7 @@ Func_dd0a: ; dd0a
 	ret
 
 Func_dd29: ; dd29
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], $0
@@ -11541,7 +11345,7 @@ Func_dd29: ; dd29
 	ret
 
 Func_dd47: ; dd47
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -11629,7 +11433,7 @@ Func_de2c: ; de2c (3:5e2c)
 	push bc
 	push bc
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $15
 	add hl, de
 	ld e, [hl]
@@ -11842,7 +11646,7 @@ Func_df74: ; df74 (3:5f74)
 Func_df8b: ; df8b (3:5f8b)
 	push bc
 	ld bc, $80
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
@@ -11878,7 +11682,7 @@ Func_dfce: ; dfce (3:5fce)
 
 Func_dfd1: ; dfd1 (3:5fd1)
 	ld bc, $80
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
 	reg16swap de, hl
@@ -12405,7 +12209,7 @@ Func_e3d1: ; e3d1
 	call WriteHLToSPPlus6
 	ld hl, sp+$2
 	ld [hl], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -12420,13 +12224,13 @@ Func_e408: ; e408 (3:6408)
 	set_farcall_addrs_hli Func_7c8a
 	pop af
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld l, [hl]
@@ -12463,7 +12267,7 @@ Func_e408: ; e408 (3:6408)
 	add hl, hl
 	add hl, hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld l, [hl]
@@ -12478,7 +12282,7 @@ Func_e408: ; e408 (3:6408)
 	ld h, a
 	add hl, hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	pop de
@@ -12495,7 +12299,7 @@ Func_e408: ; e408 (3:6408)
 	add hl, hl
 	add hl, hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld l, [hl]
@@ -12510,7 +12314,7 @@ Func_e408: ; e408 (3:6408)
 	ld h, a
 	add hl, hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	pop de
@@ -12557,30 +12361,30 @@ Func_e4d1: ; e4d1 (3:64d1)
 	call WriteHLToSPPlus8
 	ld hl, sp+$5
 	ld [hl], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$5
 	ld a, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	xor [hl]
 	call Func_e4b4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $15
 	add hl, de
 	ld [hl], a
 	ld hl, $8000
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -12724,7 +12528,7 @@ Func_e5e1: ; e5e1 (3:65e1)
 	jp c, Func_e5ed
 	dec b
 Func_e5ed: ; e5ed (3:65ed)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -12759,7 +12563,7 @@ Func_e608: ; e608 (3:6608)
 	push bc
 	call GetHLAtSPPlus4
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -12775,7 +12579,7 @@ Func_e608: ; e608 (3:6608)
 	ld h, a
 	add hl, hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	pop de
@@ -12784,7 +12588,7 @@ Func_e608: ; e608 (3:6608)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -12800,7 +12604,7 @@ Func_e608: ; e608 (3:6608)
 	ld h, a
 	add hl, hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	pop de
@@ -12870,7 +12674,7 @@ Func_e6b7: ; e6b7
 	inc hl
 	push hl
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -12885,7 +12689,7 @@ Func_e6b7: ; e6b7
 	ld h, a
 	add hl, hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	pop de
@@ -12900,7 +12704,7 @@ Func_e6b7: ; e6b7
 	ld hl, sp+$4
 	ld [hl], a
 	pop af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -12915,7 +12719,7 @@ Func_e6b7: ; e6b7
 	ld h, a
 	add hl, hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	pop de
@@ -13011,7 +12815,7 @@ Func_e7b1: ; e7b1 (3:67b1)
 	inc hl
 	call WriteHLToSPPlus6
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -13027,12 +12831,12 @@ Func_e7b1: ; e7b1 (3:67b1)
 	inc hl
 	call WriteHLToSPPlus6
 Func_e7d5: ; e7d5 (3:67d5)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -13046,7 +12850,7 @@ Func_e7d5: ; e7d5 (3:67d5)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -13055,12 +12859,12 @@ Func_e7d5: ; e7d5 (3:67d5)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -13074,7 +12878,7 @@ Func_e7d5: ; e7d5 (3:67d5)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -13110,12 +12914,12 @@ Func_e862: ; e862 (3:6862)
 	pop hl
 	push hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -13129,7 +12933,7 @@ Func_e862: ; e862 (3:6862)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -13167,12 +12971,12 @@ Func_e8bf: ; e8bf (3:68bf)
 	inc hl
 	call WriteHLToSPPlus6
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -13186,7 +12990,7 @@ Func_e8bf: ; e8bf (3:68bf)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -13194,12 +12998,12 @@ Func_e8bf: ; e8bf (3:68bf)
 	inc hl
 	ld b, [hl]
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -13213,7 +13017,7 @@ Func_e8bf: ; e8bf (3:68bf)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -13253,12 +13057,12 @@ Func_e95b: ; e95b (3:695b)
 	pop hl
 	push hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -13272,7 +13076,7 @@ Func_e95b: ; e95b (3:695b)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -13288,7 +13092,7 @@ Func_e95b: ; e95b (3:695b)
 
 Func_e994: ; e994
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $15
 	add hl, de
 	ld a, $20
@@ -13355,7 +13159,7 @@ Func_ea05: ; ea05 (3:6a05)
 	pop de
 	push hl
 Func_ea15: ; ea15 (3:6a15)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -13385,12 +13189,12 @@ Func_ea32: ; ea32 (3:6a32)
 	push hl
 	call GetHLAtSPPlus4
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -13404,7 +13208,7 @@ Func_ea32: ; ea32 (3:6a32)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -13415,12 +13219,12 @@ Func_ea32: ; ea32 (3:6a32)
 	pop hl
 	push hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -13434,7 +13238,7 @@ Func_ea32: ; ea32 (3:6a32)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -13456,7 +13260,7 @@ Func_ea32: ; ea32 (3:6a32)
 
 Func_eab8: ; eab8
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $15
 	add hl, de
 	ld a, $40
@@ -13467,7 +13271,7 @@ Func_eab8: ; eab8
 
 Func_eac8: ; eac8
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $15
 	add hl, de
 	ld a, $80
@@ -13495,7 +13299,7 @@ Func_eae7: ; eae7 (3:6ae7)
 	push bc
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	inc hl
@@ -13527,12 +13331,12 @@ Func_eaf5: ; eaf5 (3:6af5)
 Func_eb15: ; eb15 (3:6b15)
 	inc hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
 	reg16swap de, hl
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $24a
 	add hl, de
 	call WriteHLToSPPlus7
@@ -13877,12 +13681,12 @@ Func_ed18: ; ed18 (3:6d18)
 Func_ed38: ; ed38 (3:6d38)
 	inc hl
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
 	reg16swap de, hl
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $2ca
 	add hl, de
 	call WriteHLToSPPlus7
@@ -14209,28 +14013,28 @@ Func_ef36: ; ef36
 	ret
 
 Func_ef3f: ; ef3f (3:6f3f)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	ld a, $1
 	add [hl]
 	ld [hl], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	cp [hl]
 	jp nc, Func_ef53
 	ret
 
 Func_ef53: ; ef53 (3:6f53)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	ld [hl], $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	ld a, [hl]
 	or a
 	jp nz, Func_ef80
 	ld bc, $80
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $24a
 	add hl, de
 	reg16swap de, hl
@@ -14240,14 +14044,14 @@ Func_ef53: ; ef53 (3:6f53)
 
 Func_ef80: ; ef80 (3:6f80)
 	ld bc, $80
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $2ca
 	add hl, de
 	reg16swap de, hl
 	ld hl, wCGB_BGPalsBuffer
 	call CopyFromDEtoHL
 Func_ef96: ; ef96 (3:6f96)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	ld a, $1
@@ -14266,12 +14070,12 @@ Func_efaa: ; efaa
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld [hl], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	ld [hl], $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	ld [hl], $0
@@ -14281,7 +14085,7 @@ Func_efaa: ; efaa
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	inc hl
@@ -14292,7 +14096,7 @@ Func_efaa: ; efaa
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	inc hl
@@ -14304,7 +14108,7 @@ Func_efaa: ; efaa
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $5
 	add hl, de
 	ld [hl], a
@@ -14314,7 +14118,7 @@ Func_efaa: ; efaa
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $6
 	add hl, de
 	ld [hl], a
@@ -14322,7 +14126,7 @@ Func_efaa: ; efaa
 	cp $11
 	jp nz, Func_f049
 	ld bc, $80
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
@@ -14373,7 +14177,7 @@ Func_f07c: ; f07c (3:707c)
 	and $40
 	jp nz, Func_f07c
 	ld bc, $80
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
 	reg16swap de, hl
@@ -14431,7 +14235,7 @@ Func_f0cf: ; f0cf (3:70cf)
 	push hl
 	push de
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld e, [hl]
@@ -14508,7 +14312,7 @@ Func_f19f: ; f19f
 
 Func_f1b6: ; f1b6
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $7
 	add hl, de
 	ld [hl], $0
@@ -14518,7 +14322,7 @@ Func_f1b6: ; f1b6
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $8
 	add hl, de
 	ld [hl], a
@@ -14528,7 +14332,7 @@ Func_f1b6: ; f1b6
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $9
 	add hl, de
 	ld [hl], a
@@ -14538,7 +14342,7 @@ Func_f1b6: ; f1b6
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $a
 	add hl, de
 	ld [hl], a
@@ -14576,7 +14380,7 @@ Func_f210: ; f210
 Func_f233: ; f233 (3:7233)
 	push bc
 	ld bc, wCGB_BGPalsBuffer
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $24a
 	add hl, de
 	pop de
@@ -14655,21 +14459,21 @@ Func_f29d: ; f29d
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld [hl], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	ld [hl], $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	ld [hl], $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	inc hl
 	ld [hl], $1
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	inc hl
@@ -14681,7 +14485,7 @@ Func_f29d: ; f29d
 	inc hl
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $5
 	add hl, de
 	ld [hl], a
@@ -14695,7 +14499,7 @@ Func_f29d: ; f29d
 	cp $11
 	jp nz, Func_f335
 	ld bc, $80
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
@@ -14731,7 +14535,7 @@ Func_f339: ; f339
 	jp nz, Func_f358
 	xor a
 	ld [wc2e8], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	inc hl
@@ -14745,7 +14549,7 @@ Func_f358: ; f358 (3:7358)
 	and $7f
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	inc hl
@@ -14759,7 +14563,7 @@ Func_f375: ; f375 (3:7375)
 
 Func_f377: ; f377
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	inc hl
@@ -14767,7 +14571,7 @@ Func_f377: ; f377
 	cp $ff
 	jp nz, Func_f395
 Func_f386: ; f386 (3:7386)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -14776,7 +14580,7 @@ Func_f386: ; f386 (3:7386)
 	jp Func_f386
 
 Func_f395: ; f395 (3:7395)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -14867,7 +14671,7 @@ Func_f40c: ; f40c (3:740c)
 	dec b
 Func_f418: ; f418 (3:7418)
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -14883,12 +14687,12 @@ Func_f418: ; f418 (3:7418)
 	inc hl
 	call WriteHLToSPPlus8
 Func_f434: ; f434 (3:7434)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -14902,7 +14706,7 @@ Func_f434: ; f434 (3:7434)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -14911,12 +14715,12 @@ Func_f434: ; f434 (3:7434)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus6
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -14930,7 +14734,7 @@ Func_f434: ; f434 (3:7434)
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -15006,12 +14810,12 @@ Func_f4f1: ; f4f1
 	inc hl
 	push hl
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -15025,7 +14829,7 @@ Func_f4f1: ; f4f1
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $d
 	add hl, de
 	add hl, bc
@@ -15033,12 +14837,12 @@ Func_f4f1: ; f4f1
 	inc hl
 	ld b, [hl]
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $c
 	add hl, de
 	ld l, [hl]
@@ -15052,7 +14856,7 @@ Func_f4f1: ; f4f1
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $11
 	add hl, de
 	add hl, bc
@@ -15394,7 +15198,7 @@ Func_f771: ; f771
 	ld hl, Data_f74a
 	ld bc, $8
 	call MemCopy
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -15811,7 +15615,7 @@ String_fa7b: ; fa7b
 
 BattleIntro: ; fa81 (3:7a81)
 	add sp, -$32
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -15826,7 +15630,7 @@ BattleIntro: ; fa81 (3:7a81)
 	ld c, l
 	ld b, h
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -15837,7 +15641,7 @@ BattleIntro: ; fa81 (3:7a81)
 	write_hl_to_sp_plus $32
 	read_hl_from_sp_plus $34
 	ld [hl], $10
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1aa
 	add hl, de
 	ld [hl], $0
@@ -15987,13 +15791,13 @@ Func_fb95: ; fb95 (3:7b95)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $166
 	add hl, de
 	pop de
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $155
 	add hl, de
 	pop de
@@ -16037,7 +15841,7 @@ Func_fb95: ; fb95 (3:7b95)
 	jp Func_fb95
 
 Func_fc20: ; fc20 (3:7c20)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $30
@@ -16087,7 +15891,7 @@ Func_fc31: ; fc31 (3:7c31)
 	ld de, $75
 	add hl, de
 	ld a, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -16097,7 +15901,7 @@ Func_fc31: ; fc31 (3:7c31)
 	add hl, de
 	ld [hl], a
 	set_farcall_addrs_hli Func_6b74
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -16131,7 +15935,7 @@ Func_fccb: ; fccb (3:7ccb)
 	ld a, e
 	call GetSRAMBank
 	pop af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c5
 	add hl, de
 	ld [hl], a
@@ -16183,7 +15987,7 @@ Func_fd26: ; fd26 (3:7d26)
 	read_hl_from_sp_plus $36
 	or [hl]
 	ld [hl], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e2
 	add hl, de
 	ld [hl], c
@@ -16675,7 +16479,7 @@ Func_1028b: ; 1028b
 	push bc
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -16684,7 +16488,7 @@ Func_1028b: ; 1028b
 	ld hl, $68
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -16707,12 +16511,12 @@ Func_1028b: ; 1028b
 	push de
 	ld a, $11
 	ld [bc], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1aa
 	add hl, de
 	ld [hl], $0
 	ld a, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e2
 	add hl, de
 	ld [hl], a
@@ -16786,7 +16590,7 @@ Func_10342: ; 10342 (4:4342)
 	ld a, l
 	call GetSRAMBank
 	pop af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c5
 	add hl, de
 	ld [hl], a
@@ -16915,7 +16719,7 @@ Func_10468: ; 10468 (4:4468)
 	jp Func_1040f
 
 Func_10472: ; 10472 (4:4472)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -17082,19 +16886,19 @@ Func_105ce: ; 105ce
 	ld a, [wc319]
 	cp $81
 	jp nz, Func_105e8
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld [hl], $3
 	jp Func_105f3
 
 Func_105e8: ; 105e8 (4:45e8)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld [hl], $1
 Func_105f3: ; 105f3 (4:45f3)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -17222,10 +17026,10 @@ Func_10766: ; 10766
 	ld hl, Data_1073d
 	ld bc, $29
 	call MemCopy
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	ld hl, sp+$29
 	call WriteHLToSPPlus3
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -17241,7 +17045,7 @@ Func_10766: ; 10766
 	ret
 
 Func_107b8: ; 107b8
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ret
 
 Data_107c7: ; 107c7
@@ -17312,7 +17116,7 @@ Func_1082a: ; 1082a (4:482a)
 	pop bc
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -17333,7 +17137,7 @@ Func_10876: ; 10876 (4:4876)
 	pop bc
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -17493,7 +17297,7 @@ Func_1099a: ; 1099a
 	pop af
 	or a
 	jp nz, Func_109cf
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -17502,7 +17306,7 @@ Func_1099a: ; 1099a
 	jp Func_109e3
 
 Func_109cf: ; 109cf (4:49cf)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -17735,7 +17539,7 @@ Func_10b57: ; 10b57 (4:4b57)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_10b85
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -17807,7 +17611,7 @@ Func_10be3: ; 10be3 (4:4be3)
 	jp Func_10c0a
 
 Func_10bed: ; 10bed (4:4bed)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -20166,20 +19970,20 @@ Func_11cfb: ; 11cfb (4:5cfb)
 	ld a, c
 	cp $1
 	jp nz, Func_11ddb
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	and $2
 	jp z, Func_11ddb
 Func_11db8: ; 11db8 (4:5db8)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -20191,14 +19995,14 @@ Func_11db8: ; 11db8 (4:5db8)
 	jp Func_11dfb
 
 Func_11ddb: ; 11ddb (4:5ddb)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -20367,7 +20171,7 @@ Func_11e6b: ; 11e6b (4:5e6b)
 	ld a, c
 	cp $1
 	jp nz, Func_11f42
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -20675,7 +20479,7 @@ Func_122b8: ; 122b8 (4:62b8)
 	callba_hli Func_62865
 	ld a, $f
 	call OverworldPlaySong
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -20683,7 +20487,7 @@ Func_122b8: ; 122b8 (4:62b8)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus6
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -20820,7 +20624,7 @@ Func_123d8: ; 123d8 (4:63d8)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_123fe
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -20945,7 +20749,7 @@ Func_1247f: ; 1247f (4:647f)
 	jp Func_124c2
 
 Func_124a8: ; 124a8 (4:64a8)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -22375,7 +22179,7 @@ Func_12e14: ; 12e14 (4:6e14)
 	call FarCall
 	call WaitVideoTransfer
 Func_12e48: ; 12e48 (4:6e48)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -22383,7 +22187,7 @@ Func_12e48: ; 12e48 (4:6e48)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus6
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -22424,7 +22228,7 @@ Func_12ebc: ; 12ebc (4:6ebc)
 Func_12ec5: ; 12ec5 (4:6ec5)
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -22434,7 +22238,7 @@ Func_12ec5: ; 12ec5 (4:6ec5)
 	call FarCall
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -22673,7 +22477,7 @@ Func_1307a: ; 1307a (4:707a)
 	push de
 	push bc
 	add sp, -$4c
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -22681,7 +22485,7 @@ Func_1307a: ; 1307a (4:707a)
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $42
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -23577,14 +23381,14 @@ Func_13668: ; 13668 (4:7668)
 	jp nz, .asm_13691
 	push af
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], $0
 	pop de
 	ld a, e
 	call Func_136cc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], $1
@@ -23594,12 +23398,12 @@ Func_13668: ; 13668 (4:7668)
 
 .asm_13691
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], $1
 	call Func_136cc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], $0
@@ -23629,7 +23433,7 @@ Func_136cc: ; 136cc (4:76cc)
 	or a
 	jp z, Func_13726
 	set_farcall_addrs_hli Func_dcaf
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -23641,7 +23445,7 @@ Func_136cc: ; 136cc (4:76cc)
 	ld e, [hl]
 	call FarCall
 	set_farcall_addrs_hli Func_dd0a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld a, [hl]
@@ -28427,7 +28231,7 @@ Func_16777: ; 16777 (5:6777)
 	ld h, [hl]
 	ld l, a
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	pop hl
@@ -30925,7 +30729,7 @@ Func_20318: ; 20318
 	push bc
 	ld hl, sp+$0
 	ld [hl], $ff
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -31429,13 +31233,13 @@ Func_20646: ; 20646
 Func_2064c: ; 2064c (8:464c)
 	add sp, -$3e
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $40
@@ -31587,14 +31391,14 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $34
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
@@ -31836,7 +31640,7 @@ Func_20965: ; 20965
 	push bc
 	push bc
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -31844,7 +31648,7 @@ Func_20965: ; 20965
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus5
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
@@ -31915,7 +31719,7 @@ Func_209e8: ; 209e8
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
@@ -32005,11 +31809,11 @@ Func_20ab0: ; 20ab0
 	ld h, [hl]
 	ld l, a
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $32
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -32224,7 +32028,7 @@ Func_20d3a: ; 20d3a (8:4d3a)
 	push bc
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -32234,7 +32038,7 @@ Func_20d3a: ; 20d3a (8:4d3a)
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	call WriteHLToSPPlus10
@@ -32272,7 +32076,7 @@ Func_20d7b: ; 20d7b (8:4d7b)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -32298,7 +32102,7 @@ Func_20da8: ; 20da8 (8:4da8)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -32318,7 +32122,7 @@ Func_20da8: ; 20da8 (8:4da8)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -32359,7 +32163,7 @@ Func_20e0c: ; 20e0c (8:4e0c)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -32432,7 +32236,7 @@ Func_20e75: ; 20e75 (8:4e75)
 	push bc
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -32441,11 +32245,11 @@ Func_20e75: ; 20e75 (8:4e75)
 	ld hl, $68
 	add hl, de
 	call WriteHLToSPPlus10
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	call WriteHLToSPPlus8
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -32472,7 +32276,7 @@ Func_20e75: ; 20e75 (8:4e75)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -32642,7 +32446,7 @@ Func_20fd5: ; 20fd5
 	push bc
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -32651,7 +32455,7 @@ Func_20fd5: ; 20fd5
 	ld hl, $68
 	add hl, de
 	call WriteHLToSPPlus7
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 .asm_20ff0
 	ld de, $e4
 	add hl, de
@@ -32728,7 +32532,7 @@ Func_21073: ; 21073 (8:5073)
 	jp Func_2114d
 
 Func_2107d: ; 2107d (8:507d)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -32738,7 +32542,7 @@ Func_2107d: ; 2107d (8:507d)
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -32934,16 +32738,16 @@ Func_211fb: ; 211fb (8:51fb)
 	push bc
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	call WriteHLToSPPlus8
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -32951,7 +32755,7 @@ Func_211fb: ; 211fb (8:51fb)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus6
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -32965,7 +32769,7 @@ Func_211fb: ; 211fb (8:51fb)
 	ld [hl], a
 	ld hl, sp+$0
 	ld [hl], $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -33073,7 +32877,7 @@ Func_212ff: ; 212ff (8:52ff)
 	cp $af
 	jp nc, Func_21332
 	ld c, $1
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -33133,7 +32937,7 @@ Func_2136f: ; 2136f (8:536f)
 	cp $af
 	jp nc, Func_213a2
 	ld c, $1
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -33222,16 +33026,16 @@ Func_2143c: ; 2143c (8:543c)
 Func_21441: ; 21441 (8:5441)
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -33346,7 +33150,7 @@ Func_21441: ; 21441 (8:5441)
 	call FarCall
 	pop bc
 Func_2152f: ; 2152f (8:552f)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -33404,7 +33208,7 @@ Func_21593: ; 21593
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -33442,12 +33246,12 @@ Func_215b7: ; 215b7 (8:55b7)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
 	call WriteHLToSPPlus9
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -33602,15 +33406,15 @@ Func_216e2: ; 216e2 (8:56e2)
 	push bc
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -33619,7 +33423,7 @@ Func_216e2: ; 216e2 (8:56e2)
 	ld hl, $5e
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -33950,7 +33754,7 @@ Func_2193a: ; 2193a
 	push bc
 	ld hl, sp+$2
 	ld [hl], $1
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -33960,12 +33764,12 @@ Func_2193a: ; 2193a
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -34202,7 +34006,7 @@ Func_21af8: ; 21af8 (8:5af8)
 	jp Func_21ad1
 
 Func_21afb: ; 21afb (8:5afb)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $142
 	add hl, de
 	ld [hl], $ff
@@ -34219,7 +34023,7 @@ Func_21b0d: ; 21b0d
 	push bc
 	ld hl, sp+$4
 	ld [hl], $1
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -34229,11 +34033,11 @@ Func_21b0d: ; 21b0d
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	pop de
@@ -34321,7 +34125,7 @@ Func_21bc1: ; 21bc1 (8:5bc1)
 	ret
 
 Func_21bc5: ; 21bc5 (8:5bc5)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
@@ -34349,7 +34153,7 @@ Func_21bf5: ; 21bf5
 	ld hl, -$114
 	add hl, sp
 	ld sp, hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -34357,11 +34161,11 @@ Func_21bf5: ; 21bf5
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $113
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $111
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c5
 	add hl, de
 	ld a, [hl]
@@ -35056,7 +34860,7 @@ Func_2212e: ; 2212e
 	ld hl, -$e4
 	add hl, sp
 	ld sp, hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -35069,7 +34873,7 @@ Func_2212e: ; 2212e
 	ld hl, $b
 	add hl, bc
 	write_hl_to_sp_plus $e3
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c5
 	add hl, de
 	ld a, [hl]
@@ -35261,7 +35065,7 @@ Data_222b2: ; 222b2
 Func_222b7: ; 222b7 (8:62b7)
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -35419,7 +35223,7 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld hl, -$13a
 	add hl, sp
 	ld sp, hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -35433,7 +35237,7 @@ Func_223b8: ; 223b8 (8:63b8)
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c5
 	add hl, de
 	ld a, [hl]
@@ -36088,15 +35892,15 @@ Func_228d3: ; 228d3
 	ld hl, -$f0
 	add hl, sp
 	ld sp, hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	write_hl_to_sp_plus $f0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -36126,7 +35930,7 @@ Func_228d3: ; 228d3
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -36135,7 +35939,7 @@ Func_228d3: ; 228d3
 	ld hl, $5e
 	add hl, de
 	write_hl_to_sp_plus $ee
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -36527,12 +36331,12 @@ Func_22c2a: ; 22c2a (8:6c2a)
 	ld e, $1
 	ld a, $1
 	call FarCall
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c8
 	add hl, de
 	ld a, [hl]
 	ld [wc307], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c9
 	add hl, de
 	ld a, [hl]
@@ -36563,7 +36367,7 @@ Func_22c2a: ; 22c2a (8:6c2a)
 	pop de
 	call FarCall
 Func_22cb6: ; 22cb6 (8:6cb6)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -36583,7 +36387,7 @@ Func_22cca: ; 22cca (8:6cca)
 Func_22cd0: ; 22cd0
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -36593,11 +36397,11 @@ Func_22cd0: ; 22cd0
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	pop de
@@ -36612,7 +36416,7 @@ Func_22cd0: ; 22cd0
 	jp nz, Func_22d2b
 	ld a, SONG_VICTORY
 	call OverworldPlaySong
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -36784,7 +36588,7 @@ Func_22db3: ; 22db3 (8:6db3)
 	ret
 
 Func_22e03: ; 22e03
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
 	reg16swap de, hl
@@ -36823,11 +36627,11 @@ Func_22e3e: ; 22e3e (8:6e3e)
 
 Func_22e48: ; 22e48 (8:6e48)
 	add sp, -$16
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $16
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -37215,7 +37019,7 @@ Data_23150: ; 23150
 	db "(つかえない)!", $0
 
 Func_23159: ; 23159
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -37295,7 +37099,7 @@ Func_2320d: ; 2320d (8:720d)
 	ld hl, $88e0
 	call FarRequestVideoData
 	set_farcall_addrs_hli Func_dc0a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -37310,7 +37114,7 @@ Func_2320d: ; 2320d (8:720d)
 	call FarCall
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_dc0a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -38505,7 +38309,7 @@ Func_2465a: ; 2465a (9:465a)
 Func_2466d: ; 2466d (9:466d)
 	push af
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -38515,7 +38319,7 @@ Func_2466d: ; 2466d (9:466d)
 	add hl, de
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -38678,7 +38482,7 @@ Func_247a1: ; 247a1 (9:47a1)
 	call Func_24600
 	ld hl, sp+$13
 	ld [hl], a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -38697,7 +38501,7 @@ Func_247c7: ; 247c7 (9:47c7)
 	ld a, [hl]
 	cp $2
 	jp nc, Func_24bd4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -38733,7 +38537,7 @@ Func_247eb: ; 247eb (9:47eb)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -39151,7 +38955,7 @@ Func_24b0b: ; 24b0b (9:4b0b)
 	ld hl, sp+$13
 	ld b, [hl]
 	call LeftShiftA
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -39224,7 +39028,7 @@ Func_24bc2: ; 24bc2 (9:4bc2)
 
 Func_24bd4: ; 24bd4 (9:4bd4)
 	call Func_24001
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -39257,7 +39061,7 @@ Func_24c10: ; 24c10 (9:4c10)
 	jp nc, Func_24cd6
 	push bc
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -39291,7 +39095,7 @@ Func_24c32: ; 24c32 (9:4c32)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -39358,7 +39162,7 @@ Func_24cd6: ; 24cd6 (9:4cd6)
 
 Func_24ce0: ; 24ce0 (9:4ce0)
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -39377,7 +39181,7 @@ Func_24cf9: ; 24cf9 (9:4cf9)
 	jp nc, Func_2518e
 	push bc
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -39411,7 +39215,7 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -40036,7 +39840,7 @@ Func_25184: ; 25184 (9:5184)
 	jp Func_24cf9
 
 Func_2518e: ; 2518e (9:518e)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -40044,7 +39848,7 @@ Func_2518e: ; 2518e (9:518e)
 	jp nz, Func_2519f
 	call Func_24bfc
 Func_2519f: ; 2519f (9:519f)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -40086,7 +39890,7 @@ Func_251d1: ; 251d1
 	push bc
 	xor a
 	ld c, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -40101,7 +39905,7 @@ Func_251ec: ; 251ec (9:51ec)
 	cp $2
 	jp nc, Func_253e9
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -40135,7 +39939,7 @@ Func_2520c: ; 2520c (9:520c)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -40163,7 +39967,7 @@ Func_2520c: ; 2520c (9:520c)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -40409,7 +40213,7 @@ Func_253f0: ; 253f0 (9:53f0)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -40827,7 +40631,7 @@ Func_2570e: ; 2570e (9:570e)
 	push af
 	push de
 	add sp, -$28
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -42500,7 +42304,7 @@ Func_263cb: ; 263cb (9:63cb)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -42512,7 +42316,7 @@ Func_263cb: ; 263cb (9:63cb)
 	push hl
 	ld hl, Text_24284
 	call Func_24010
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -42581,7 +42385,7 @@ Func_2645b: ; 2645b (9:645b)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -42593,7 +42397,7 @@ Func_2645b: ; 2645b (9:645b)
 	push hl
 	ld hl, Text_24284
 	call Func_24010
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -42912,7 +42716,7 @@ Func_26675: ; 26675 (9:6675)
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $b
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -43924,7 +43728,7 @@ Func_26d81: ; 26d81
 	ld l, a
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -44093,7 +43897,7 @@ Func_26ea8: ; 26ea8 (9:6ea8)
 	call Func_24023
 	ld a, $1
 	call Func_24054
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -44279,14 +44083,14 @@ Pointers_26fb0: ; 26fb0
 Func_26fe8: ; 26fe8 (9:6fe8)
 	push af
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -44358,7 +44162,7 @@ Func_27063: ; 27063 (9:7063)
 	push af
 	push de
 	add sp, -$54
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -44366,7 +44170,7 @@ Func_27063: ; 27063 (9:7063)
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $54
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -44397,7 +44201,7 @@ Func_27063: ; 27063 (9:7063)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -44423,12 +44227,12 @@ Func_27063: ; 27063 (9:7063)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
 	call WriteHLToSPPlus6
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -44450,7 +44254,7 @@ Func_270f6: ; 270f6 (9:70f6)
 	pop de
 	add hl, de
 	call WriteHLToSPPlus8
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -44718,7 +44522,7 @@ Func_272f0: ; 272f0 (9:72f0)
 	push af
 	push de
 	add sp, -$10
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -44732,7 +44536,7 @@ Func_272f0: ; 272f0 (9:72f0)
 	ld a, [hl]
 	or a
 	jp nz, Func_2747e
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -44754,7 +44558,7 @@ Func_2732e: ; 2732e (9:732e)
 	pop de
 	add hl, de
 	write_hl_to_sp_plus $f
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -44794,7 +44598,7 @@ Func_27357: ; 27357 (9:7357)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -44820,7 +44624,7 @@ Func_27357: ; 27357 (9:7357)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -44940,7 +44744,7 @@ Func_27467: ; 27467 (9:7467)
 	ld hl, Text_24284
 	call Func_24023
 Func_2747e: ; 2747e (9:747e)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -44993,7 +44797,7 @@ Func_274da: ; 274da (9:74da)
 	add sp, -$22
 	push af
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -45067,7 +44871,7 @@ Func_2757b: ; 2757b
 	push de
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -45085,7 +44889,7 @@ Func_27598: ; 27598 (9:7598)
 Func_2759b: ; 2759b (9:759b)
 	add hl, de
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -45113,7 +44917,7 @@ Func_2759b: ; 2759b (9:759b)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -45279,7 +45083,7 @@ Func_276f6: ; 276f6 (9:76f6)
 	jp Func_27737
 
 Func_27700: ; 27700 (9:7700)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -53675,12 +53479,12 @@ Func_4c43e: ; 4c43e (13:443e)
 	ret
 
 Func_4c442: ; 4c442 (13:4442)
-	callba_hli Func_cc0c
+	callba_hli AllocateMonsterStruct2
 	set_farcall_addrs_hli Func_60e81
 	ld a, $ff
 	call FarCall
 	push af
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	set_farcall_addrs_hli Func_6faba
 	pop af
 	call FarCall
@@ -54947,7 +54751,7 @@ Func_4cff9: ; 4cff9 (13:4ff9)
 	ld a, [wc308]
 	ld [hl], a
 	call Func_4c0b9
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 Func_4d023: ; 4d023 (13:5023)
 	callba_hli WaitAorBButtonOverworld_17a44
 	cp $10
@@ -54965,7 +54769,7 @@ Func_4d040: ; 4d040 (13:5040)
 	ld a, [hl]
 	cp $3
 	jp nc, Func_4d12a
-	callba_hli Func_cc0c
+	callba_hli AllocateMonsterStruct2
 	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
@@ -55056,7 +54860,7 @@ Func_4d0e5: ; 4d0e5 (13:50e5)
 	ld hl, sp+$2
 	add hl, de
 	ld [hl], a
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ld hl, sp+$5
 	ld a, [hl]
 	cp $1
@@ -55080,7 +54884,7 @@ Func_4d120: ; 4d120 (13:5120)
 
 Func_4d12a: ; 4d12a (13:512a)
 	call FillVisibleAreaWithBlankTile
-	callba_hli Func_cc0c
+	callba_hli AllocateMonsterStruct2
 	ld c, $0
 Func_4d13d: ; 4d13d (13:513d)
 	ld a, c
@@ -55116,7 +54920,7 @@ Func_4d168: ; 4d168 (13:5168)
 	reg16swap de, hl
 	ld hl, sp+$6
 	call Func_4d299
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	callba_hli SaveGame
 	callba_hli WaitAorBButtonOverworld_17a44
 	call Func_4c21e
@@ -55689,7 +55493,7 @@ Func_4d621: ; 4d621 (13:5621)
 Func_4d64a: ; 4d64a (13:564a)
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -55699,7 +55503,7 @@ Func_4d64a: ; 4d64a (13:564a)
 	call FarCall
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -55942,7 +55746,7 @@ Func_4d84e: ; 4d84e (13:584e)
 	ld hl, -$84
 	add hl, sp
 	ld sp, hl
-	callba_hli Func_cc0c
+	callba_hli AllocateMonsterStruct2
 	ld a, [wc319]
 	cp $81
 	jp nz, Func_4d891
@@ -56167,7 +55971,7 @@ Func_4da2e: ; 4da2e (13:5a2e)
 Func_4da78: ; 4da78 (13:5a78)
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -56177,7 +55981,7 @@ Func_4da78: ; 4da78 (13:5a78)
 	call FarCall
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -56259,7 +56063,7 @@ Func_4db31: ; 4db31 (13:5b31)
 	ld bc, $351
 	ld hl, sp+$0
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -56292,7 +56096,7 @@ Func_4db69: ; 4db69 (13:5b69)
 	ld bc, $351
 	ld hl, sp+$4
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -59205,7 +59009,7 @@ Func_4f8ec: ; 4f8ec (13:78ec)
 	ld hl, Data_4f8d3
 	ld bc, $19
 	call MemCopy
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_dc0a
 	ld hl, sp+$73
@@ -59349,7 +59153,7 @@ Func_4fa8a: ; 4fa8a (13:7a8a)
 	call FarCall
 Func_4fa9e: ; 4fa9e (13:7a9e)
 	call Func_4c0b9
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	add sp, $72
 	ret
 
@@ -59393,7 +59197,7 @@ Func_4fac6: ; 4fac6 (13:7ac6)
 	call EnableHBlank
 	call Func_4fabb
 	call WaitVideoTransfer
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], $0
@@ -70797,7 +70601,7 @@ Data_56b33:
 
 Func_56b35: ; 56b35 (15:6b35)
 	push af
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $0
 	ld a, [wc310]
@@ -70821,7 +70625,7 @@ Func_56b77: ; 56b77 (15:6b77)
 	ld hl, Data_54365
 	call FarCall
 Func_56b8d: ; 56b8d (15:6b8d)
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ret
 
 Data_56b9c:
@@ -70834,7 +70638,7 @@ Func_56ba1: ; 56ba1 (15:6ba1)
 	push bc
 	read_hl_from_sp_plus $44
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld c, [hl]
@@ -70873,7 +70677,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -79086,315 +78890,7 @@ Func_5c083:
 	call FarCall
 	ret
 
-Func_5c0b2: ; 5c0b2 (17:40b2)
-	push af
-	push de
-	ld hl, -$354
-	add hl, sp
-	ld sp, hl
-	ld a, [hSRAMBank]
-	ld e, a
-	ld hl, $354
-	add hl, sp
-	ld a, [hl]
-	cp $aa
-	jp c, Func_5c25a
-	ld hl, $354
-	add hl, sp
-	ld a, [hl]
-	cp $ae
-	jp nc, Func_5c25a
-	ld hl, $357
-	add hl, sp
-	ld a, [hl]
-	or a
-	jp nz, Func_5c197
-	push de
-	ld hl, $356
-	add hl, sp
-	ld l, [hl]
-	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
-	ld de, $7ed5
-	add hl, de
-	push hl
-	ld a, $2
-	call GetSRAMBank_ReadOnly
-	pop hl
-	push hl
-	reg16swap de, hl
-	inc de
-	ld hl, sp+$4
-	ld bc, $350
-	call CopyFromDEtoHL
-	pop hl
-	push hl
-	inc hl
-	ld c, l
-	ld b, h
-	ld hl, $0
-	write_hl_to_sp_plus $356
-	xor a
-Func_5c10e: ; 5c10e (17:410e)
-	cp $40
-	jp nc, Func_5c12d
-	push af
-	ld a, [bc]
-	or a
-	jp nz, Func_5c127
-	read_hl_from_sp_plus $358
-	ld de, $10
-	add hl, de
-	write_hl_to_sp_plus $358
-Func_5c127: ; 5c127 (17:4127)
-	pop af
-	inc a
-	inc bc
-	jp Func_5c10e
-
-Func_5c12d: ; 5c12d (17:412d)
-	set_farcall_addrs_hli FixAndLoadPoncotPicWithTilemap
-	read_hl_from_sp_plus $356
-	ld c, l
-	ld b, h
-	ld hl, sp+$44
-	push hl
-	ld hl, $35d
-	add hl, sp
-	ld a, [hl]
-	or a
-	jp nz, Func_5c151
-	ld hl, $0
-	jp Func_5c154
-
-Func_5c151: ; 5c151 (17:4151)
-	ld hl, $310
-Func_5c154: ; 5c154 (17:4154)
-	ld de, $89b0
-	add hl, de
-	pop de
-	call FarCall
-	call WaitVideoTransfer
-	pop hl
-	ld a, [hl]
-	ld hl, $356
-	add hl, sp
-	ld [hl], a
-	pop de
-	ld a, e
-	call GetSRAMBank
-	ld bc, $40
-	ld hl, sp+$0
-	push hl
-	read_hl_from wc2e6
-	ld de, $18
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $359
-	add hl, sp
-	ld a, [hl]
-	or a
-	jp nz, Func_5c18c
-	ld hl, $0
-	jp Func_5c18f
-
-Func_5c18c: ; 5c18c (17:418c)
-	ld hl, $40
-Func_5c18f: ; 5c18f (17:418f)
-	add hl, de
-	pop de
-	call CopyFromDEtoHL
-	jp Func_5c240
-
-Func_5c197: ; 5c197 (17:4197)
-	read_hl_from wc2e6
-	ld de, $1a
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	reg16swap de, hl
-	inc hl
-	ld c, l
-	ld b, h
-	ld hl, $0
-	write_hl_to_sp_plus $354
-	xor a
-Func_5c1b4: ; 5c1b4 (17:41b4)
-	cp $40
-	jp nc, Func_5c1d3
-	push af
-	ld a, [bc]
-	or a
-	jp nz, Func_5c1cd
-	read_hl_from_sp_plus $356
-	ld de, $10
-	add hl, de
-	write_hl_to_sp_plus $356
-Func_5c1cd: ; 5c1cd (17:41cd)
-	pop af
-	inc a
-	inc bc
-	jp Func_5c1b4
-
-Func_5c1d3: ; 5c1d3 (17:41d3)
-	pop de
-	push de
-	inc de
-	ld hl, sp+$2
-	ld bc, $350
-	call CopyFromDEtoHL
-	set_farcall_addrs_hli FixAndLoadPoncotPicWithTilemap
-	read_hl_from_sp_plus $354
-	ld c, l
-	ld b, h
-	ld hl, sp+$42
-	push hl
-	ld hl, $35b
-	add hl, sp
-	ld a, [hl]
-	or a
-	jp nz, Func_5c202
-	ld hl, $0
-	jp Func_5c205
-
-Func_5c202: ; 5c202 (17:4202)
-	ld hl, $310
-Func_5c205: ; 5c205 (17:4205)
-	ld de, $89b0
-	add hl, de
-	pop de
-	call FarCall
-	call WaitVideoTransfer
-	pop de
-	ld a, [de]
-	ld hl, $354
-	add hl, sp
-	ld [hl], a
-	ld bc, $40
-	ld hl, sp+$0
-	push hl
-	read_hl_from wc2e6
-	ld de, $18
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $359
-	add hl, sp
-	ld a, [hl]
-	or a
-	jp nz, Func_5c238
-	ld hl, $0
-	jp Func_5c23b
-
-Func_5c238: ; 5c238 (17:4238)
-	ld hl, $40
-Func_5c23b: ; 5c23b (17:423b)
-	add hl, de
-	pop de
-	call CopyFromDEtoHL
-Func_5c240: ; 5c240 (17:4240)
-	ld hl, $354
-	add hl, sp
-	ld a, [hl]
-	ld hl, $357
-	add hl, sp
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wc2e6
-	ld de, $1c8
-	add hl, de
-	add hl, bc
-	ld [hl], a
-	jp Func_5c300
-
-Func_5c25a: ; 5c25a (17:425a)
-	set_farcall_addrs_hli AllocateMemory
-	ld hl, $400
-	call FarCall
-	write_hl_to_sp_plus $354
-	ld hl, $357
-	add hl, sp
-	ld a, [hl]
-	or a
-	jp nz, Func_5c27f
-	ld hl, $0
-	jp Func_5c282
-
-Func_5c27f: ; 5c27f (17:427f)
-	ld hl, $310
-Func_5c282: ; 5c282 (17:4282)
-	ld de, $89b0
-	add hl, de
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $354
-	reg16swap de, hl
-	ld hl, $354
-	add hl, sp
-	ld a, [hl]
-	call DecompressRequestRoboponPic
-	ld bc, $40
-	read_hl_from_sp_plus $354
-	push hl
-	read_hl_from wc2e6
-	ld de, $18
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $359
-	add hl, sp
-	ld a, [hl]
-	or a
-	jp nz, Func_5c2bd
-	ld hl, $0
-	jp Func_5c2c0
-
-Func_5c2bd: ; 5c2bd (17:42bd)
-	ld hl, $40
-Func_5c2c0: ; 5c2c0 (17:42c0)
-	add hl, de
-	pop de
-	call CopyFromDEtoHL
-	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
-	read_hl_from_sp_plus $354
-	call FarCall
-	set_farcall_addrs_hli Func_615be
-	ld hl, $354
-	add hl, sp
-	ld a, [hl]
-	call FarCall
-	ld hl, $357
-	add hl, sp
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wc2e6
-	ld de, $1c8
-	add hl, de
-	add hl, bc
-	ld [hl], a
-Func_5c300: ; 5c300 (17:4300)
-	set_farcall_addrs_hli Func_613fc
-	read_hl_from wc2e6
-	ld de, $1c8
-	add hl, de
-	ld a, [hl]
-	read_hl_from wc2e6
-	ld de, $1c9
-	add hl, de
-	ld e, [hl]
-	call FarCall
-	ld hl, $358
-	add hl, sp
-	ld sp, hl
-	ret
+INCLUDE "engine/pics/load_pic.asm"
 
 Func_5c328: ; 5c328 (17:4328)
 	push af
@@ -79441,13 +78937,13 @@ Data_5c380:
 
 Func_5c386: ; 5c386 (17:4386)
 	add sp, -$3a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -79478,7 +78974,7 @@ Func_5c3a3: ; 5c3a3 (17:43a3)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -80117,7 +79613,7 @@ Func_5c796: ; 5c796 (17:4796)
 	push af
 	ld hl, sp+$4e
 	ld [hl], $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -80133,7 +79629,7 @@ Func_5c7b3: ; 5c7b3 (17:47b3)
 Func_5c7b6: ; 5c7b6 (17:47b6)
 	add hl, de
 	write_hl_to_sp_plus $42
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -80167,7 +79663,7 @@ Func_5c7d5: ; 5c7d5 (17:47d5)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -80192,7 +79688,7 @@ Func_5c7d5: ; 5c7d5 (17:47d5)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -80950,7 +80446,7 @@ Func_5cdb0: ; 5cdb0 (17:4db0)
 	push bc
 	push bc
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
@@ -80977,7 +80473,7 @@ Func_5cdb0: ; 5cdb0 (17:4db0)
 	ld l, a
 	pop de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c5
 	add hl, de
 	ld a, [hl]
@@ -81136,7 +80632,7 @@ Func_5cf19: ; 5cf19 (17:4f19)
 
 Func_5cf1d: ; 5cf1d (17:4f1d)
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c6
 	add hl, de
 	ld a, [hl]
@@ -81214,7 +80710,7 @@ Func_5cf85: ; 5cf85 (17:4f85)
 	push hl
 	push de
 	add sp, -$20
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c6
 	add hl, de
 	ld a, [hl]
@@ -81305,7 +80801,7 @@ Func_5d02a: ; 5d02a (17:502a)
 Func_5d02d: ; 5d02d (17:502d)
 	push hl
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c6
 	add hl, de
 	ld c, [hl]
@@ -81375,7 +80871,7 @@ Data_5d084:
 Func_5d096: ; 5d096 (17:5096)
 	push bc
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c6
 	add hl, de
 	ld a, [hl]
@@ -81441,7 +80937,7 @@ Func_5d10d: ; 5d10d (17:510d)
 	ret
 
 Func_5d113: ; 5d113 (17:5113)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -81458,7 +80954,7 @@ Func_5d113: ; 5d113 (17:5113)
 	jp nz, Func_5d151
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -81475,7 +80971,7 @@ Func_5d151: ; 5d151 (17:5151)
 	jp nz, Func_5d183
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -81495,7 +80991,7 @@ Func_5d184: ; 5d184 (17:5184)
 	xor a
 	pop af
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -81512,7 +81008,7 @@ Func_5d1a3: ; 5d1a3 (17:51a3)
 	add hl, de
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -81546,7 +81042,7 @@ Func_5d1c0: ; 5d1c0 (17:51c0)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -81571,7 +81067,7 @@ Func_5d1c0: ; 5d1c0 (17:51c0)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -82869,7 +82365,7 @@ Func_5da75: ; 5da75 (17:5a75)
 	cp $1
 	jp nz, Func_5db00
 Func_5daa7: ; 5daa7 (17:5aa7)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
@@ -82936,7 +82432,7 @@ Data_5db18:
 Func_5db1b: ; 5db1b (17:5b1b)
 	push af
 	add sp, -$24
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
@@ -83656,7 +83152,7 @@ Func_5e0f1: ; 5e0f1 (17:60f1)
 	jp Func_5e264
 
 Func_5e0f4: ; 5e0f4 (17:60f4)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l
@@ -84094,7 +83590,7 @@ Func_5e4bd: ; 5e4bd (17:64bd)
 INCLUDE "engine/menu/party_menu.asm"
 
 Func_5ec5e: ; 5ec5e (17:6c5e)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -84103,7 +83599,7 @@ Func_5ec5e: ; 5ec5e (17:6c5e)
 	jp Func_5ec98
 
 Func_5ec70: ; 5ec70 (17:6c70)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -84450,7 +83946,7 @@ Func_60181: ; 60181 (18:4181)
 	push bc
 	ld hl, sp+$0
 	ld [hl], $ff
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -84474,11 +83970,11 @@ Func_601b4: ; 601b4 (18:41b4)
 	ret
 
 Func_601b6: ; 601b6
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	ret
 
 Func_601c5: ; 601c5
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ret
 
 Func_601d4: ; 601d4 (18:41d4)
@@ -84523,7 +84019,7 @@ Func_6020a: ; 6020a (18:420a)
 	ld e, $14
 	ld hl, $d
 	call Func_600f4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -84930,7 +84426,7 @@ Func_60556: ; 60556 (18:4556)
 	xor a
 	call Func_3bc5
 	pop bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -85161,7 +84657,7 @@ Func_6095c: ; 6095c (18:495c)
 	push hl
 	push de
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -85268,12 +84764,12 @@ Func_609d3: ; 609d3 (18:49d3)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -85439,7 +84935,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -85495,7 +84991,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -85519,7 +85015,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -85545,7 +85041,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -85578,7 +85074,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -85602,7 +85098,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -85626,7 +85122,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -85650,7 +85146,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, hl
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ac
 	add hl, de
 	pop de
@@ -85799,7 +85295,7 @@ Func_60e24: ; 60e24 (18:4e24)
 	ld bc, $351
 	ld hl, sp+$2
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1a
 	add hl, de
 	ld e, [hl]
@@ -85823,7 +85319,7 @@ Data_60e77: ; 60e77
 Func_60e81: ; 60e81
 	add sp, -$2e
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -85933,14 +85429,14 @@ Func_60f61: ; 60f61 (18:4f61)
 	ld a, [wc319]
 	cp $81
 	jp nz, Func_60f7d
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld [hl], $3
 	jp Func_60f88
 
 Func_60f7d: ; 60f7d (18:4f7d)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld [hl], $1
@@ -85951,7 +85447,7 @@ Func_60f88: ; 60f88 (18:4f88)
 	jp nz, Func_60f92
 	call Func_6020a
 Func_60f92: ; 60f92 (18:4f92)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $34
@@ -86001,7 +85497,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	ld de, $75
 	add hl, de
 	ld a, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -86011,7 +85507,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	add hl, de
 	ld [hl], a
 	set_farcall_addrs_hli Func_6b74
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -86059,7 +85555,7 @@ Func_61072: ; 61072 (18:5072)
 
 Func_61076: ; 61076 (18:5076)
 	push bc
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $e2
 	add hl, de
 	ld [hl], c
@@ -86182,10 +85678,89 @@ Func_61179: ; 61179 (18:5179)
 Data_6117c: ; 6117c
 	dr $6117c, $6118b
 
-Data_6118b: ; 6118b
-	dr $6118b, $611f7
+Palettes_6118b: ; 6118b
+	RGB 29, 22, 14
+	RGB 24, 07, 07
 
-Func_611f7: ; 611f7
+	RGB 31, 20, 16
+	RGB 31, 09, 00
+
+	RGB 31, 18, 18
+	RGB 31, 00, 00
+
+	RGB 19, 19, 31
+	RGB 00, 00, 31
+
+	RGB 31, 27, 24
+	RGB 23, 15, 13
+
+	RGB 21, 29, 00
+	RGB 00, 20, 00
+
+	RGB 24, 24, 24
+	RGB 14, 14, 14
+
+	RGB 16, 25, 16
+	RGB 08, 19, 08
+
+	RGB 31, 21, 31
+	RGB 31, 00, 21
+
+	RGB 31, 16, 00
+	RGB 16, 09, 00
+
+	RGB 23, 31, 00
+	RGB 16, 20, 00
+
+	RGB 19, 28, 31
+	RGB 05, 18, 31
+
+	RGB 30, 30, 17
+	RGB 30, 21, 00
+
+	RGB 23, 19, 16
+	RGB 18, 12, 08
+
+	RGB 31, 20, 27
+	RGB 22, 09, 13
+
+	RGB 31, 28, 27
+	RGB 28, 20, 19
+
+	RGB 30, 22, 19
+	RGB 23, 12, 06
+
+	RGB 27, 21, 31
+	RGB 11, 09, 19
+
+	RGB 31, 27, 11
+	RGB 23, 17, 03
+
+	RGB 16, 16, 16
+	RGB 10, 10, 10
+
+	RGB 24, 25, 24
+	RGB 14, 15, 14
+
+	RGB 14, 18, 26
+	RGB 00, 00, 09
+
+	RGB 12, 21, 00
+	RGB 00, 14, 00
+
+	RGB 24, 18, 28
+	RGB 15, 09, 19
+
+	RGB 15, 15, 25
+	RGB 07, 07, 19
+
+	RGB 24, 26, 28
+	RGB 15, 15, 17
+
+	RGB 31, 27, 08
+	RGB 26, 14, 00
+
+LoadRobotPaletteSGB: ; 611f7
 	push af
 	add sp, -$10
 	push de
@@ -86205,7 +85780,7 @@ Func_61211: ; 61211 (18:5211)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	ld de, Data_6118b
+	ld de, Palettes_6118b
 	add hl, de
 	reg16swap de, hl
 	ld l, a
@@ -86241,7 +85816,7 @@ Func_61248: ; 61248 (18:5248)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	ld de, Data_6118b
+	ld de, Palettes_6118b
 	add hl, de
 	reg16swap de, hl
 	ld l, a
@@ -86274,7 +85849,7 @@ Func_61276: ; 61276 (18:5276)
 	add sp, $12
 	ret
 
-Data_61288: ; 61288
+RobotPicPalettes: ; 61288
 	RGB 29, 22, 14
 	RGB 24, 07, 07
 
@@ -86356,13 +85931,13 @@ Data_61288: ; 61288
 	RGB 30, 21, 00
 	RGB 14, 07, 00
 
-Func_612f4: ; 612f4
+LoadRobotPaletteCGB: ; 612f4
 	push af
 	push de
-Func_612f6: ; 612f6 (18:52f6)
+.wait0: ; 612f6 (18:52f6)
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_612f6
+	jp nz, .wait0
 	ld hl, $7fff
 	write_hl_to wCGB_BGPalsBuffer + 3 * 8
 	write_hl_to wCGB_BGPalsBuffer + 2 * 8
@@ -86373,19 +85948,19 @@ Func_612f6: ; 612f6 (18:52f6)
 	write_hl_to wCGB_BGPalsBuffer + 6
 	ld a, [wc2fa]
 	cp $3
-	jp z, Func_6135a
+	jp z, .bgpal0
 	ld hl, $7fff
 	write_hl_to wCGB_BGPalsBuffer + 1 * 8
 	ld hl, $0
 	write_hl_to wCGB_BGPalsBuffer + 1 * 8 + 6
 	xor a
-Func_6133b: ; 6133b (18:533b)
+.bgpal1_loop: ; 6133b (18:533b)
 	cp $2
-	jp nc, Func_6135a
+	jp nc, .bgpal0
 	ld l, a
 	ld h, $0
 	add hl, hl
-	ld de, Data_61288
+	ld de, RobotPicPalettes
 	add hl, de
 	ld c, [hl]
 	inc hl
@@ -86399,17 +85974,17 @@ Func_6133b: ; 6133b (18:533b)
 	inc hl
 	ld [hl], b
 	inc a
-	jp Func_6133b
+	jp .bgpal1_loop
 
-Func_6135a: ; 6135a (18:535a)
+.bgpal0: ; 6135a (18:535a)
 	xor a
-Func_6135b: ; 6135b (18:535b)
+.bgpal0_loop: ; 6135b (18:535b)
 	cp $2
-	jp nc, Func_6137a
+	jp nc, .bgpal2
 	ld l, a
 	ld h, $0
 	add hl, hl
-	ld de, Data_61288
+	ld de, RobotPicPalettes
 	add hl, de
 	ld c, [hl]
 	inc hl
@@ -86423,19 +85998,19 @@ Func_6135b: ; 6135b (18:535b)
 	inc hl
 	ld [hl], b
 	inc a
-	jp Func_6135b
+	jp .bgpal0_loop
 
-Func_6137a: ; 6137a (18:537a)
+.bgpal2: ; 6137a (18:537a)
 	xor a
-Func_6137b: ; 6137b (18:537b)
+.bgpal2_loop: ; 6137b (18:537b)
 	cp $2
-	jp nc, Func_613a6
+	jp nc, .bgpal3
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	ld de, Data_61288
+	ld de, RobotPicPalettes
 	add hl, de
 	reg16swap de, hl
 	ld l, a
@@ -86454,20 +86029,20 @@ Func_6137b: ; 6137b (18:537b)
 	inc hl
 	ld [hl], b
 	inc a
-	jp Func_6137b
+	jp .bgpal2_loop
 
-Func_613a6: ; 613a6 (18:53a6)
+.bgpal3: ; 613a6 (18:53a6)
 	xor a
 	pop de
-Func_613a8: ; 613a8 (18:53a8)
+.bgpal3_loop: ; 613a8 (18:53a8)
 	cp $2
-	jp nc, Func_613d3
+	jp nc, .to_obpals
 	push de
 	ld l, e
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	ld de, Data_61288
+	ld de, RobotPicPalettes
 	add hl, de
 	reg16swap de, hl
 	ld l, a
@@ -86487,25 +86062,25 @@ Func_613a8: ; 613a8 (18:53a8)
 	ld [hl], b
 	inc a
 	pop de
-	jp Func_613a8
+	jp .bgpal3_loop
 
-Func_613d3: ; 613d3 (18:53d3)
+.to_obpals: ; 613d3 (18:53d3)
 	ld bc, $40
 	ld de, wCGB_BGPalsBuffer
 	ld hl, wCGB_OBPalsBuffer
 	call CopyFromDEtoHL
 	ld a, [wc2fa]
 	cp $4
-	jp z, Func_613fa
+	jp z, .quit
 	call WaitVideoTransfer
 	ld a, [wNextVBlankFlags]
 	or $40
 	ld [wNextVBlankFlags], a
-Func_613f2: ; 613f2 (18:53f2)
+.wait: ; 613f2 (18:53f2)
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_613f2
-Func_613fa: ; 613fa (18:53fa)
+	jp nz, .wait
+.quit: ; 613fa (18:53fa)
 	pop bc
 	ret
 
@@ -86516,13 +86091,13 @@ Func_613fc:: ; 613fc (18:53fc)
 	jp nz, Func_6140e
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_612f4
+	call LoadRobotPaletteCGB
 	jp Func_61414
 
 Func_6140e: ; 6140e (18:540e)
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_611f7
+	call LoadRobotPaletteSGB
 Func_61414: ; 61414 (18:5414)
 	pop bc
 	ret
@@ -86653,7 +86228,7 @@ Func_615ce: ; 615ce (18:55ce)
 	push bc
 	push bc
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $15
 	add hl, de
 	ld e, [hl]
@@ -86821,7 +86396,7 @@ Func_616dd: ; 616dd ; DoDamage?
 	add sp, -$26
 	ld e, $2
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -86858,7 +86433,7 @@ Func_616dd: ; 616dd ; DoDamage?
 	jp nz, .waitLoop
 	ld hl, sp+$2b
 	ld a, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], a
@@ -86905,7 +86480,7 @@ Func_6178d: ; 6178d (18:578d)
 	ld a, $b
 Func_6179d: ; 6179d (18:579d)
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -87273,7 +86848,7 @@ Func_61a3e: ; 61a3e
 	add sp, -$14
 	ld e, $2
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -87306,7 +86881,7 @@ Func_61a78: ; 61a78 (18:5a78)
 	ld a, $b
 Func_61a88: ; 61a88 (18:5a88)
 	push af
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -88142,7 +87717,7 @@ Func_620d5: ; 620d5
 	push de
 	push bc
 	add sp, -$3a
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -89081,9 +88656,9 @@ Func_62ce4:: ; 62ce4 (18:6ce4)
 	ld a, [wNextVBlankFlags]
 	bit 6, a
 	ret nz
-	ld a, [wc2e6]
+	ld a, [wCurRobotPointer]
 	ld l, a
-	ld a, [wc2e6 + 1]
+	ld a, [wCurRobotPointer + 1]
 	ld h, a
 	ld a, [hli]
 	ld b, a
@@ -90547,7 +90122,7 @@ Func_673fb: ; 673fb (19:73fb)
 
 Func_673ff: ; 673ff (19:73ff)
 	add sp, -$40
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -90581,7 +90156,7 @@ Func_6741a: ; 6741a (19:741a)
 	add hl, bc
 	ld c, l
 	ld b, h
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	add hl, bc
@@ -99584,7 +99159,7 @@ Func_6c11d: ; 6c11d (1b:411d)
 	ld hl, -$114
 	add hl, sp
 	ld sp, hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -99592,11 +99167,11 @@ Func_6c11d: ; 6c11d (1b:411d)
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $113
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	write_hl_to_sp_plus $111
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c5
 	add hl, de
 	ld a, [hl]
@@ -100436,7 +100011,7 @@ Func_6c88f: ; 6c88f (1b:488f)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_6c8c1
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -100499,7 +100074,7 @@ Func_6c8cf: ; 6c8cf (1b:48cf)
 	jp Func_6c917
 
 Func_6c8fd: ; 6c8fd (1b:48fd)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -100809,14 +100384,14 @@ Func_6cb3b: ; 6cb3b (1b:4b3b)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_6cb78
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	and $2
 	jp z, Func_6cb78
 Func_6cb5d: ; 6cb5d (1b:4b5d)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -100835,7 +100410,7 @@ Func_6cb78: ; 6cb78 (1b:4b78)
 	add hl, sp
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -100917,7 +100492,7 @@ Func_6cbf3: ; 6cbf3 (1b:4bf3)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_6cc34
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -100928,7 +100503,7 @@ Func_6cc15: ; 6cc15 (1b:4c15)
 	add hl, sp
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -100941,7 +100516,7 @@ Func_6cc15: ; 6cc15 (1b:4c15)
 	jp Func_6cc4c
 
 Func_6cc34: ; 6cc34 (1b:4c34)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -101025,21 +100600,21 @@ Func_6cc8a: ; 6cc8a (1b:4c8a)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_6ccf4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	and $2
 	jp z, Func_6ccf4
 Func_6ccd1: ; 6ccd1 (1b:4cd1)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -101053,13 +100628,13 @@ Func_6ccd1: ; 6ccd1 (1b:4cd1)
 	jp Func_6cd14
 
 Func_6ccf4: ; 6ccf4 (1b:4cf4)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -101808,21 +101383,21 @@ Func_6d234: ; 6d234 (1b:5234)
 	jp z, Func_6d253
 	cp $1
 	jp nz, Func_6d276
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	and $2
 	jp z, Func_6d276
 Func_6d253: ; 6d253 (1b:5253)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -101836,13 +101411,13 @@ Func_6d253: ; 6d253 (1b:5253)
 	jp Func_6d296
 
 Func_6d276: ; 6d276 (1b:5276)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -101886,7 +101461,7 @@ Func_6d2e2: ; 6d2e2 (1b:52e2)
 Func_6d2eb: ; 6d2eb (1b:52eb)
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -101896,7 +101471,7 @@ Func_6d2eb: ; 6d2eb (1b:52eb)
 	call FarCall
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -102019,13 +101594,13 @@ Func_6d3f5: ; 6d3f5 (1b:53f5)
 	ld a, e
 	cp $1
 	jp nz, Func_6d4f3
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	and $2
 	jp z, Func_6d47f
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -102042,7 +101617,7 @@ Func_6d3f5: ; 6d3f5 (1b:53f5)
 	xor a
 	call FarCall
 	call WaitVideoTransfer
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -102065,7 +101640,7 @@ Func_6d3f5: ; 6d3f5 (1b:53f5)
 	jp Func_6d4f0
 
 Func_6d47f: ; 6d47f (1b:547f)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -102085,7 +101660,7 @@ Func_6d47f: ; 6d47f (1b:547f)
 	xor a
 	call FarCall
 	call WaitVideoTransfer
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -102121,7 +101696,7 @@ Func_6d4f0: ; 6d4f0 (1b:54f0)
 	jp Func_6d54a
 
 Func_6d4f3: ; 6d4f3 (1b:54f3)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -102138,7 +101713,7 @@ Func_6d4f3: ; 6d4f3 (1b:54f3)
 	xor a
 	call FarCall
 	call WaitVideoTransfer
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -102232,7 +101807,7 @@ Func_6d5dc: ; 6d5dc (1b:55dc)
 	ld a, e
 	cp $1
 	jp nz, Func_6d61c
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -102380,7 +101955,7 @@ Func_6d723: ; 6d723 (1b:5723)
 	jp Func_6d75b
 
 Func_6d739: ; 6d739 (1b:5739)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -104848,7 +104423,7 @@ Func_6e77b: ; 6e77b (1b:677b)
 	push hl
 	cp $1
 	jp nz, Func_6e7e0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
@@ -105382,13 +104957,13 @@ Func_6eb36: ; 6eb36 (1b:6b36)
 	ld bc, $30
 	call FarRequestVideoData
 	call ClearSprites
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -107199,27 +106774,963 @@ Data_c6ef0: INCBIN "gfx/emotes/emote_c6ef0.emoteattrs.rz" ; c6ef0
 Data_c6fff: INCBIN "gfx/emotes/emote_c6fff.emoteattrs.rz" ; c6fff
 
 Func_c70e8: ; c70e8
-	dr $c70e8, $c7109
+	push hl
+	set_farcall_addrs_hli AllocateMemory
+	pop hl
+	jp FarCall
 
-Func_c7109:: ; c7109
-	dr $c7109, $c7551
+Func_c70fb:
+	push hl
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	ret
 
-Func_c7551: ; c7551
-	dr $c7551, $c7759
+Func_c7109:: ; c7109 (31:7109)
+	push bc
+	push bc
+	push bc
+	ld c, h
+	ld a, l
+	ld hl, sp+$4
+	ld [hl], d
+	ld l, e
+	push hl
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 0, wAttrMap
+	add hl, de
+	ld e, c
+	ld d, $0
+	add hl, de
+	reg16swap de, hl
+	xor a
+	pop hl
+	pop bc
+Func_c712c: ; c712c (31:712c)
+	cp l
+	jp nc, Func_c715f
+	push hl
+	push af
+	push de
+	reg16swap de, hl
+	call WriteHLToSPPlus8
+	xor a
+Func_c713b: ; c713b (31:713b)
+	ld hl, sp+$8
+	cp [hl]
+	jp nc, Func_c7150
+	push af
+	ld a, c
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	pop af
+	inc a
+	jp Func_c713b
 
-Func_c7759: ; c7759
-	dr $c7759, $c796a
+Func_c7150: ; c7150 (31:7150)
+	pop de
+	ld hl, $14
+	add hl, de
+	reg16swap de, hl
+	pop af
+	inc a
+	pop hl
+	jp Func_c712c
 
-Func_c796a:: ; c796a
-	dr $c796a, $c79b1
+Func_c715f: ; c715f (31:715f)
+	pop bc
+	pop bc
+	ret
+
+Data_c7162:
+	dr $c7162, $c71a2
+
+Data_c71a2: ; c71a2
+	dr $c71a2, $c71e2
+
+Data_c71e2: ; c71e2
+	dr $c71e2, $c7222
+
+Data_c7222: ; c7222
+	dr $c7222, $c7262
+
+Data_c7262: ; c7262
+	dr $c7262, $c72a2
+
+Data_c72a2: ; c72a2
+	dr $c72a2, $c72e2
+
+Data_c72e2: ; c72e2
+	dr $c72e2, $c7362
+
+Data_c7362:
+	dr $c7362, $c74c4
+Data_c7362End:
+
+Func_c74c4:
+	push bc
+	ld bc, Data_c7362
+	ld hl, sp+$0
+	ld [hl], $0
+	ld de, $0
+Func_c74cf: ; c74cf (31:74cf)
+	ld a, e
+	sub (Data_c7362End - Data_c7362) % $100
+	ld a, d
+	sbc (Data_c7362End - Data_c7362) / $100
+	jp nc, Func_c74fc
+	ld a, [bc]
+	ld hl, wMapGroup
+	cp [hl]
+	jp nz, Func_c74f5
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [wMapNumber]
+	cp [hl]
+	jp nz, Func_c74f5
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	ld a, [hl]
+	ld hl, sp+$0
+	ld [hl], a
+	jp Func_c74fc
+
+Func_c74f5: ; c74f5 (31:74f5)
+	inc bc
+	inc bc
+	inc bc
+	inc de
+	jp Func_c74cf
+
+Func_c74fc: ; c74fc (31:74fc)
+	ld de, Data_c7162
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $6
+	jp z, Func_c7548
+	cp $5
+	jp z, Func_c7542
+	cp $4
+	jp z, Func_c753c
+	cp $3
+	jp z, Func_c7536
+	cp $2
+	jp z, Func_c7530
+	cp $1
+	jp z, Func_c752a
+	or a
+	jp nz, Func_c754b
+	ld de, Data_c7162
+	jp Func_c754b
+
+Func_c752a: ; c752a (31:752a)
+	ld de, Data_c71a2
+	jp Func_c754b
+
+Func_c7530: ; c7530 (31:7530)
+	ld de, Data_c71e2
+	jp Func_c754b
+
+Func_c7536: ; c7536 (31:7536)
+	ld de, Data_c7222
+	jp Func_c754b
+
+Func_c753c: ; c753c (31:753c)
+	ld de, Data_c7262
+	jp Func_c754b
+
+Func_c7542: ; c7542 (31:7542)
+	ld de, Data_c72a2
+	jp Func_c754b
+
+Func_c7548: ; c7548 (31:7548)
+	ld de, Data_c72e2
+Func_c754b: ; c754b (31:754b)
+	reg16swap de, hl
+	pop bc
+	ret
+
+Func_c7551: ; c7551 (31:7551)
+	push af
+	push bc
+	push bc
+	push bc
+	push de
+	call Func_c74c4
+	ld c, l
+	ld b, h
+	pop de
+	ld hl, sp+$7
+	ld a, [hl]
+	or a
+	jp nz, Func_c7650
+	ld a, e
+	cp $1
+	jp nz, Func_c7628
+	ld hl, $0
+	call WriteHLToSPPlus6
+Func_c756f: ; c756f (31:756f)
+	call GetHLAtSPPlus6
+	ld de, $40
+	call CompareHLtoDE
+	jp nc, Func_c7625
+	push bc
+	call GetHLAtSPPlus8
+	add hl, hl
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	ld b, $a
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$3
+	ld [hl], e
+	pop bc
+	push bc
+	call GetHLAtSPPlus8
+	add hl, hl
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	ld b, $5
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$2
+	ld [hl], e
+	pop bc
+	push bc
+	call GetHLAtSPPlus8
+	add hl, hl
+	add hl, bc
+	ld a, [hl]
+	and $1f
+	ld e, a
+	inc hl
+	ld d, $0
+	ld c, e
+	call GetHLAtSPPlus8
+	ld a, l
+	or h
+	jp z, Func_c75e8
+	push bc
+	ld hl, sp+$5
+	ld a, [hl]
+	ld b, $4
+	call DivideAbyB
+	ld hl, sp+$5
+	ld [hl], a
+	ld hl, sp+$4
+	ld a, [hl]
+	ld b, $4
+	call DivideAbyB
+	ld hl, sp+$4
+	ld [hl], a
+	pop bc
+	ld a, c
+	ld b, $8
+	call DivideAbyB
+	ld c, a
+Func_c75e8: ; c75e8 (31:75e8)
+	ld hl, sp+$2
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	add hl, hl
+	add hl, hl
+	ld a, l
+	or e
+	ld l, a
+	ld a, h
+	or d
+	ld h, a
+	ld e, c
+	ld d, $0
+	ld a, l
+	or e
+	ld c, a
+	ld a, h
+	or d
+	ld b, a
+	call GetHLAtSPPlus8
+	add hl, hl
+	ld de, wCGB_BGPalsBuffer
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	call GetHLAtSPPlus8
+	inc hl
+	call WriteHLToSPPlus8
+	pop bc
+	jp Func_c756f
+
+Func_c7625: ; c7625 (31:7625)
+	jp Func_c7633
+
+Func_c7628: ; c7628 (31:7628)
+	ld bc, $80
+	ld e, $ff
+	ld hl, wCGB_BGPalsBuffer
+	call FillMemory
+Func_c7633: ; c7633 (31:7633)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_c7633
+	di
+	ld a, [wNextVBlankFlags]
+	or $40
+	ld [wNextVBlankFlags], a
+	ei
+Func_c7645: ; c7645 (31:7645)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_c7645
+	jp Func_c7751
+
+Func_c7650: ; c7650 (31:7650)
+	ld hl, $0
+	call WriteHLToSPPlus4
+Func_c7656: ; c7656 (31:7656)
+	call GetHLAtSPPlus4
+	ld de, $6
+	call CompareHLtoDE
+	jp nc, Func_c7751
+	ld bc, $0
+Func_c7665: ; c7665 (31:7665)
+	ld hl, sp+$7
+	ld e, [hl]
+	ld d, $0
+	ld l, c
+	ld h, b
+	call CompareHLtoDE
+	jp nc, Func_c767b
+	push bc
+	call NextOverworldFrame
+	pop bc
+	inc bc
+	jp Func_c7665
+
+Func_c767b: ; c767b (31:767b)
+	ld hl, $0
+	call WriteHLToSPPlus6
+Func_c7681: ; c7681 (31:7681)
+	call GetHLAtSPPlus6
+	ld de, $40
+	call CompareHLtoDE
+	jp nc, Func_c772d
+	call GetHLAtSPPlus6
+	add hl, hl
+	ld de, wCGB_BGPalsBuffer
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	ld b, $a
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld l, a
+	ld h, $0
+	ld a, l
+	push af
+	call GetHLAtSPPlus8
+	add hl, hl
+	ld de, wCGB_BGPalsBuffer
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	ld b, $5
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld l, a
+	ld h, $0
+	ld e, l
+	pop af
+	push de
+	push af
+	call GetHLAtSPPlus10
+	add hl, hl
+	ld de, wCGB_BGPalsBuffer
+	add hl, de
+	ld a, [hl]
+	and $1f
+	ld e, a
+	inc hl
+	ld d, $0
+	ld c, e
+	call GetHLAtSPPlus8
+	ld de, $5
+	ld a, e
+	sub l
+	ld l, a
+	ld a, d
+	sbc h
+	ld h, a
+	ld b, l
+	ld a, $1f
+	call RightShiftA
+	ld l, a
+	pop af
+	or l
+	pop de
+	push af
+	ld a, e
+	or l
+	ld e, a
+	ld a, c
+	or l
+	ld c, a
+	pop af
+	ld l, e
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld l, a
+	ld h, $0
+	ld h, l
+	ld l, $0
+	add hl, hl
+	add hl, hl
+	ld a, l
+	or e
+	ld l, a
+	ld a, h
+	or d
+	ld h, a
+	ld e, c
+	ld d, $0
+	ld a, l
+	or e
+	ld c, a
+	ld a, h
+	or d
+	ld b, a
+	call GetHLAtSPPlus6
+	add hl, hl
+	ld de, wCGB_BGPalsBuffer
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	call GetHLAtSPPlus6
+	inc hl
+	call WriteHLToSPPlus6
+	jp Func_c7681
+
+Func_c772d: ; c772d (31:772d)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_c772d
+	di
+	ld a, [wNextVBlankFlags]
+	or $40
+	ld [wNextVBlankFlags], a
+	ei
+Func_c773f: ; c773f (31:773f)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_c773f
+	call GetHLAtSPPlus4
+	inc hl
+	call WriteHLToSPPlus4
+	jp Func_c7656
+
+Func_c7751: ; c7751 (31:7751)
+	call NextOverworldFrame
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_c7759: ; c7759 (31:7759)
+	push af
+	push bc
+	push bc
+	push bc
+	push de
+	call Func_c74c4
+	ld c, l
+	ld b, h
+	pop de
+	ld hl, sp+$7
+	ld a, [hl]
+	or a
+	jp nz, Func_c7858
+	ld a, e
+	cp $1
+	jp nz, Func_c7830
+	ld hl, $0
+	call WriteHLToSPPlus6
+Func_c7777: ; c7777 (31:7777)
+	call GetHLAtSPPlus6
+	ld de, $40
+	call CompareHLtoDE
+	jp nc, Func_c782d
+	push bc
+	call GetHLAtSPPlus8
+	add hl, hl
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	ld b, $a
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$3
+	ld [hl], e
+	pop bc
+	push bc
+	call GetHLAtSPPlus8
+	add hl, hl
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	ld b, $5
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$2
+	ld [hl], e
+	pop bc
+	push bc
+	call GetHLAtSPPlus8
+	add hl, hl
+	add hl, bc
+	ld a, [hl]
+	and $1f
+	ld e, a
+	inc hl
+	ld d, $0
+	ld c, e
+	call GetHLAtSPPlus8
+	ld a, l
+	or h
+	jp z, Func_c77f0
+	push bc
+	ld hl, sp+$5
+	ld a, [hl]
+	ld b, $4
+	call DivideAbyB
+	ld hl, sp+$5
+	ld [hl], a
+	ld hl, sp+$4
+	ld a, [hl]
+	ld b, $4
+	call DivideAbyB
+	ld hl, sp+$4
+	ld [hl], a
+	pop bc
+	ld a, c
+	ld b, $8
+	call DivideAbyB
+	ld c, a
+Func_c77f0: ; c77f0 (31:77f0)
+	ld hl, sp+$2
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	add hl, hl
+	add hl, hl
+	ld a, l
+	or e
+	ld l, a
+	ld a, h
+	or d
+	ld h, a
+	ld e, c
+	ld d, $0
+	ld a, l
+	or e
+	ld c, a
+	ld a, h
+	or d
+	ld b, a
+	call GetHLAtSPPlus8
+	add hl, hl
+	ld de, wCGB_BGPalsBuffer
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	call GetHLAtSPPlus8
+	inc hl
+	call WriteHLToSPPlus8
+	pop bc
+	jp Func_c7777
+
+Func_c782d: ; c782d (31:782d)
+	jp Func_c783b
+
+Func_c7830: ; c7830 (31:7830)
+	ld e, c
+	ld d, b
+	ld hl, wCGB_BGPalsBuffer
+	ld bc, $80
+	call CopyFromDEtoHL
+Func_c783b: ; c783b (31:783b)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_c783b
+	di
+	ld a, [wNextVBlankFlags]
+	or $40
+	ld [wNextVBlankFlags], a
+	ei
+Func_c784d: ; c784d (31:784d)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_c784d
+	jp Func_c7952
+
+Func_c7858: ; c7858 (31:7858)
+	ld hl, $0
+	call WriteHLToSPPlus4
+Func_c785e: ; c785e (31:785e)
+	call GetHLAtSPPlus4
+	ld de, $6
+	call CompareHLtoDE
+	jp nc, Func_c7952
+	push bc
+	ld bc, $0
+Func_c786e: ; c786e (31:786e)
+	ld hl, sp+$9
+	ld e, [hl]
+	ld d, $0
+	ld l, c
+	ld h, b
+	call CompareHLtoDE
+	jp nc, Func_c7884
+	push bc
+	call NextOverworldFrame
+	pop bc
+	inc bc
+	jp Func_c786e
+
+Func_c7884: ; c7884 (31:7884)
+	ld hl, $0
+	call WriteHLToSPPlus8
+	pop bc
+Func_c788b: ; c788b (31:788b)
+	call GetHLAtSPPlus6
+	ld de, $40
+	call CompareHLtoDE
+	jp nc, Func_c792c
+	push bc
+	call GetHLAtSPPlus8
+	add hl, hl
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	ld b, $a
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld l, a
+	ld h, $0
+	ld a, l
+	pop bc
+	push bc
+	push af
+	call GetHLAtSPPlus10
+	add hl, hl
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	ld b, $5
+	call RightShiftHL
+	ld a, l
+	and $1f
+	ld l, a
+	ld h, $0
+	ld e, l
+	pop af
+	pop bc
+	push bc
+	push de
+	push af
+	read_hl_from_sp_plus $c
+	add hl, hl
+	add hl, bc
+	ld a, [hl]
+	and $1f
+	ld e, a
+	inc hl
+	ld d, $0
+	ld c, e
+	ld a, $1f
+	call GetHLAtSPPlus10
+	ld b, l
+	call RightShiftA
+	ld l, a
+	pop af
+	or l
+	pop de
+	push af
+	ld a, e
+	or l
+	ld e, a
+	ld a, c
+	or l
+	ld c, a
+	pop af
+	ld l, e
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld l, a
+	ld h, $0
+	ld h, l
+	ld l, $0
+	add hl, hl
+	add hl, hl
+	ld a, l
+	or e
+	ld l, a
+	ld a, h
+	or d
+	ld h, a
+	ld e, c
+	ld d, $0
+	ld a, l
+	or e
+	ld c, a
+	ld a, h
+	or d
+	ld b, a
+	call GetHLAtSPPlus8
+	add hl, hl
+	ld de, wCGB_BGPalsBuffer
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	call GetHLAtSPPlus8
+	inc hl
+	call WriteHLToSPPlus8
+	pop bc
+	jp Func_c788b
+
+Func_c792c: ; c792c (31:792c)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_c792c
+	push bc
+	di
+	ld a, [wNextVBlankFlags]
+	or $40
+	ld [wNextVBlankFlags], a
+	ei
+Func_c793f: ; c793f (31:793f)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_c793f
+	call GetHLAtSPPlus6
+	inc hl
+	call WriteHLToSPPlus6
+	pop bc
+	jp Func_c785e
+
+Func_c7952: ; c7952 (31:7952)
+	call NextOverworldFrame
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_c795a:
+	dr $c795a, $c796a
+
+Func_c796a:: ; c796a (31:796a)
+	push hl
+	add sp, -$e
+	ld hl, sp+$e
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_c7983
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_c79ae
+Func_c7983: ; c7983 (31:7983)
+	push de
+	push hl
+	ld bc, $10
+	ld de, Data_c795a
+	ld hl, sp+$4
+	call CopyFromDEtoHL
+	pop hl
+	call WriteHLToSPPlus7
+	pop hl
+	call WriteHLToSPPlus7
+	ld hl, $3add
+	write_hl_to_sp_plus $b
+	ld hl, $1cf8
+	write_hl_to_sp_plus $d
+	ld de, $10
+	ld hl, sp+$0
+	call Func_2b83
+Func_c79ae: ; c79ae (31:79ae)
+	add sp, $10
+	ret
 
 INCLUDE "engine/triggers.asm"
 
 Data_c7b84:
-	dr $c7b84, $c7bd0
+	RGB 29, 22, 14
+	RGB 24, 07, 07
 
-Func_c7bd0: ; c7bd0
-	dr $c7bd0, $c7d1e
+	RGB 15, 15, 25
+	RGB 07, 07, 19
+
+	RGB 25, 15, 15
+	RGB 19, 07, 07
+
+	RGB 24, 18, 28
+	RGB 15, 09, 19
+
+	RGB 15, 25, 15
+	RGB 07, 19, 07
+
+	RGB 20, 23, 31
+	RGB 10, 14, 31
+
+	RGB 16, 16, 00
+	RGB 26, 17, 00
+
+	RGB 25, 28, 28
+	RGB 21, 21, 25
+
+	RGB 16, 14, 16
+	RGB 11, 09, 11
+
+	RGB 24, 25, 24
+	RGB 14, 15, 14
+
+	RGB 31, 22, 31
+	RGB 22, 09, 13
+
+	RGB 30, 23, 19
+	RGB 22, 12, 10
+
+	RGB 17, 22, 22
+	RGB 00, 13, 13
+
+	RGB 19, 13, 11
+	RGB 11, 05, 03
+
+	RGB 31, 28, 21
+	RGB 23, 14, 10
+
+	RGB 24, 27, 17
+	RGB 11, 14, 11
+
+	RGB 25, 19, 25
+	RGB 14, 10, 14
+
+	RGB 25, 15, 25
+	RGB 19, 07, 19
+
+	RGB 22, 19, 14
+	RGB 09, 05, 03
+
+Func_c7bd0: ; c7bd0 (31:7bd0)
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_c7b84
+	add hl, de
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_c7b84
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	reg16swap de, hl
+	pop de
+	call Func_c796a
+	ret
 
 SECTION "Bank 35", ROMX, BANK [$35]
 GFX_d4000: INCBIN "gfx/sprites/d4000.w16.2bpp" ; d4000
@@ -107250,13 +107761,742 @@ GFX_d7600: INCBIN "gfx/sprites/d7600.w16.2bpp" ; d7600
 GFX_d7840: INCBIN "gfx/sprites/d7840.w16.2bpp" ; d7840
 
 SECTION "Bank 38", ROMX, BANK [$38]
-	dr $e0000, $e1513
+Data_e0000:
+	dr $e0000, $e09c0
 
-Func_e1513:: ; e1513
-	dr $e1513, $e1aa9
+GFX_e09c0: INCBIN "gfx/misc/e09c0.2bpp"
+	dr $e10c0, $e1255
+
+Data_e1255: ; e1255
+	dr $e1255, $e1259
+
+Data_e1259: ; e1259
+	dr $e1259, $e127f
+
+Data_e127f: ; e127f
+	dr $e127f, $e129e
+
+Data_e129e: ; e129e
+	dr $e129e, $e12af
+
+Data_e12af: ; e12af
+	dr $e12af, $e12c0
+
+Data_e12c0: ; e12c0
+	dr $e12c0, $e1513
+
+Func_e1513:: ; e1513 (38:5513)
+	ld hl, -$86
+	add hl, sp
+	ld sp, hl
+	push bc
+	push de
+	push af
+	ld hl, $81
+	add hl, sp
+	reg16swap de, hl
+	ld hl, Data_e1255
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$7b
+	reg16swap de, hl
+	ld hl, Data_e1259
+	ld bc, $6
+	call MemCopy
+	ld hl, sp+$75
+	reg16swap de, hl
+	ld hl, Data_e127f
+	ld bc, $6
+	call MemCopy
+	ld hl, sp+$6f
+	reg16swap de, hl
+	ld hl, Data_e129e
+	ld bc, $6
+	call MemCopy
+	ld hl, sp+$6b
+	reg16swap de, hl
+	ld hl, Data_e12af
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$b
+	reg16swap de, hl
+	ld hl, Data_e12c0
+	ld bc, $60
+	call MemCopy
+	ld hl, sp+$9
+	ld [hl], $0
+	ld hl, sp+$a
+	ld [hl], $0
+	pop af
+	ld hl, sp+$4
+	ld [hl], a
+	pop de
+	ld hl, sp+$3
+	ld [hl], e
+	pop bc
+	ld hl, sp+$2
+	ld [hl], c
+	callba_hli Func_b6f2
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	call FillVisibleAreaWithBlankTile
+	set_farcall_addrs_hli Func_d9f74
+	ld hl, sp+$3
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	callba_hli AllocateMonsterStruct
+	set_farcall_addrs_hli Func_dc0a
+	ld e, $bb
+	xor a
+	call FarCall
+	ld c, $6
+	push bc
+	ld a, $2
+	push af
+	set_farcall_addrs_hli Func_7c8a
+	pop af
+	pop bc
+	read_hl_from wCurRobotPointer
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld h, c
+	ld l, a
+	ld c, $2
+	call FarCall
+	callba_hli FreeMonsterStruct
+	ld a, $2
+	ld [wc39a], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld a, [wSystemType]
+	cp $11
+	jp z, Func_e164a
+	callba_hli Func_b65f
+Func_e164a: ; e164a (38:564a)
+	ld e, $0
+	ld hl, sp+$75
+	call Func_e1d9c
+	ld e, $0
+	ld hl, sp+$6f
+	call Func_e1d9c
+	set_farcall_addrs_hli LoadEmote
+	ld c, $0
+	ld e, $f
+	ld a, $21
+	call FarCall
+	ld a, $1
+Func_e166e: ; e166e (38:566e)
+	cp $4
+	jp nc, Func_e1685
+	ld l, a
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	inc a
+	jp Func_e166e
+
+Func_e1685: ; e1685 (38:5685)
+	xor a
+	ld hl, $81
+	add hl, sp
+	ld [hl], $0
+	ld e, $ff
+Func_e168e: ; e168e (38:568e)
+	push de
+	call NextOverworldFrame
+	call CheckButton
+	ld l, a
+	pop de
+	push hl
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	cp e
+	jp z, Func_e1733
+	ld c, $1
+Func_e16a3: ; e16a3 (38:56a3)
+	ld a, c
+	cp $4
+	jp nc, Func_e172e
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	inc a
+	cp c
+	jp nz, Func_e171c
+	ld l, c
+	ld h, $0
+	add hl, hl
+	reg16swap de, hl
+	read_hl_from wc267
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	read_hl_from wc265
+	add hl, de
+	push hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, wc26bEnd
+	add hl, de
+	ld [hl], a
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, wc29b
+	add hl, de
+	ld [hl], a
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, wc2ab
+	add hl, de
+	ld [hl], a
+	jp Func_e172a
+
+Func_e171c: ; e171c (38:571c)
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+Func_e172a: ; e172a (38:572a)
+	inc c
+	jp Func_e16a3
+
+Func_e172e: ; e172e (38:572e)
+	ld hl, $83
+	add hl, sp
+	ld e, [hl]
+Func_e1733: ; e1733 (38:5733)
+	push de
+	set_farcall_addrs_hli Func_da093
+	ld a, $1
+	call FarCall
+	callba_hli Func_d9f55
+	pop de
+	pop hl
+	ld a, l
+	and $2
+	jp z, Func_e1772
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $1
+	jp c, Func_e176f
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	dec a
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e176f: ; e176f (38:576f)
+	jp Func_e179c
+
+Func_e1772: ; e1772 (38:5772)
+	ld a, l
+	and $1
+	jp z, Func_e1790
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $2
+	jp nc, Func_e178d
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e178d: ; e178d (38:578d)
+	jp Func_e179c
+
+Func_e1790: ; e1790 (38:5790)
+	ld a, l
+	and $10
+	jp z, Func_e179c
+	call NextOverworldFrame
+	jp Func_e179f
+
+Func_e179c: ; e179c (38:579c)
+	jp Func_e168e
+
+Func_e179f: ; e179f (38:579f)
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	ld hl, $80
+	add hl, sp
+	ld [hl], a
+	callba_hli Func_9a87c
+	callba_hli Func_b6f2
+	call FillVisibleAreaWithBlankTile
+	ld a, $38
+	ld [wFarCallDestBank], a
+	ld bc, $700
+	ld de, GFX_e09c0
+	ld hl, $8900
+	call FarRequestVideoData
+	ld hl, $83
+	add hl, sp
+	ld [hl], $0
+	ld hl, $82
+	add hl, sp
+	ld [hl], $17
+	ld l, $0
+	push hl
+	ld a, $c
+	push af
+	set_farcall_addrs_hli LoadSpriteGFX
+	pop af
+	pop hl
+	ld c, a
+	ld e, l
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	ld hl, $82
+	add hl, sp
+	ld l, [hl]
+	ld h, a
+	call FarCall
+	callba_hli Func_b65f
+	call FillVisibleAreaWithBlankTile
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ld hl, $80
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$0
+	add hl, de
+	ld c, [hl]
+	ld e, $6
+	ld a, $9
+	call Func_e1bb4
+	ld hl, $80
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld hl, sp+$5
+	add hl, de
+	ld e, $0
+	call Func_e1d9c
+	call FillVisibleAreaWithBlankTile
+	call Func_e1c97
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+Func_e1864: ; e1864 (38:5864)
+	ld e, $0
+	ld hl, sp+$65
+	call Func_e1d9c
+	ld hl, $81
+	add hl, sp
+	ld [hl], $0
+	ld e, $0
+Func_e1873: ; e1873 (38:5873)
+	push de
+	call NextOverworldFrame
+	call CheckButton
+	ld l, a
+	pop de
+	ld a, l
+	and $4
+	jp z, Func_e189b
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $6
+	jp c, Func_e1898
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	add $fa
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e1898: ; e1898 (38:5898)
+	jp Func_e1981
+
+Func_e189b: ; e189b (38:589b)
+	ld a, l
+	and $8
+	jp z, Func_e18ba
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $6
+	jp nc, Func_e18b7
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	add $6
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e18b7: ; e18b7 (38:58b7)
+	jp Func_e1981
+
+Func_e18ba: ; e18ba (38:58ba)
+	ld a, l
+	and $2
+	jp z, Func_e18d8
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $1
+	jp c, Func_e18d5
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	dec a
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e18d5: ; e18d5 (38:58d5)
+	jp Func_e1981
+
+Func_e18d8: ; e18d8 (38:58d8)
+	ld a, l
+	and $1
+	jp z, Func_e18f6
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $b
+	jp nc, Func_e18f3
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e18f3: ; e18f3 (38:58f3)
+	jp Func_e1981
+
+Func_e18f6: ; e18f6 (38:58f6)
+	ld a, l
+	and $10
+	jp z, Func_e1981
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$7f
+	ld [hl], e
+	ld hl, $80
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$0
+	add hl, de
+	ld a, [hl]
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld [hl], a
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	jp z, Func_e197e
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld l, [hl]
+	push hl
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	ld b, $6
+	call DivideAbyB
+	add a
+	ld d, a
+	add a
+	add d
+	add $3
+	ld l, a
+	push hl
+	ld hl, $85
+	add hl, sp
+	ld a, [hl]
+	ld b, $6
+	call DivideAbyB
+	ld a, b
+	ld d, a
+	add a
+	add d
+	inc a
+	pop de
+	pop bc
+	call Func_e1bb4
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+Func_e197e: ; e197e (38:597e)
+	jp Func_e1a0b
+
+Func_e1981: ; e1981 (38:5981)
+	push de
+	set_farcall_addrs_hli Func_da835
+	xor a
+	call FarCall
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	ld b, $6
+	call DivideAbyB
+	ld a, b
+	ld d, a
+	add a
+	add d
+	inc a
+	add a
+	add a
+	add a
+	add $c
+	ld hl, $87
+	add hl, sp
+	ld [hl], a
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	ld b, $6
+	call DivideAbyB
+	add a
+	ld d, a
+	add a
+	add d
+	add $3
+	add a
+	add a
+	add a
+	add $10
+	ld hl, $86
+	add hl, sp
+	ld [hl], a
+	set_farcall_addrs_hli Func_da839
+	pop de
+	push de
+	ld l, e
+	ld h, $0
+	ld b, $4
+	call RightShiftHL
+	reg16swap de, hl
+	ld hl, sp+$7d
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	ld hl, $86
+	add hl, sp
+	ld e, [hl]
+	ld hl, $87
+	add hl, sp
+	ld h, [hl]
+	ld d, h
+	xor a
+	call FarCall
+	pop de
+	inc e
+	ld a, e
+	and $3f
+	ld e, a
+	push de
+	callba_hli Func_d9f55
+	pop de
+	jp Func_e1873
+
+Func_e1a0b: ; e1a0b (38:5a0b)
+	callba_hli Func_da4dc
+	callba_hli Func_d9f55
+	ld e, $1
+	ld hl, sp+$69
+	call Func_e1d9c
+	callba_hli Func_1482e
+	ld a, l
+	or h
+	jp nz, Func_e1a44
+	jp Func_e1a65
+
+Func_e1a44: ; e1a44 (38:5a44)
+	ld hl, sp+$7f
+	ld a, [hl]
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld [hl], a
+	call Func_e1c97
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	jp Func_e1864
+
+Func_e1a65: ; e1a65 (38:5a65)
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld a, [hl]
+	cp $14
+	jp z, Func_e1a80
+	cp $13
+	jp z, Func_e1a80
+	cp $12
+	jp nz, Func_e1a91
+Func_e1a80: ; e1a80 (38:5a80)
+	set_farcall_addrs_hli Func_b785
+	ld a, [wc782]
+	call FarCall
+Func_e1a91: ; e1a91 (38:5a91)
+	call Func_e1aa9
+	set_farcall_addrs_hli FadeInMap
+	xor a
+	call FarCall
+	ld hl, $86
+	add hl, sp
+	ld sp, hl
+	ret
 
 Func_e1aa9: ; e1aa9
-	dr $e1aa9, $e1e83
+	dr $e1aa9, $e1bb4
+
+Func_e1bb4: ; e1bb4
+	dr $e1bb4, $e1c97
+
+Func_e1c97: ; e1c97
+	dr $e1c97, $e1d9c
+
+Func_e1d9c: ; e1d9c
+	dr $e1d9c, $e1e83
 
 Func_e1e83: ; e1e83
 	dr $e1e83, $e1f2d
@@ -107451,6 +108691,7 @@ TitleScreenRandom: ; fc081
 	call FarCall
 	ret
 
+Func_fc092:
 IF DEF(SUN)
 	dr $fc092, $fd213
 
@@ -107460,10 +108701,10 @@ Func_fd213:: ; fd213
 Func_fd314: ; fd314
 	dr $fd314, $fdf13
 
-Func_fdf13:
+Credits:
 	dr $fdf13, $fdf59
 
-Func_fdf59:
+Credits2:
 	dr $fdf59, $fe102
 
 Func_fe102:: ; fe102
@@ -107478,10 +108719,10 @@ Func_fd213:: ; fd213
 Func_fd314: ; fd314
 	dr $fd312, $fdf11
 
-Func_fdf13:
+Credits:
 	dr $fdf11, $fdf57
 
-Func_fdf59:
+Credits2:
 	dr $fdf57, $fe100
 
 Func_fe102:: ; fe102

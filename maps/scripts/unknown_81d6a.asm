@@ -88,7 +88,7 @@ Func_81df9: ; 81df9 (20:5df9)
 	ld a, $5
 	call Func_80d01_20
 	loadwilds $2, Data_81d4e
-	playmusic SONG_11
+	playmusic SONG_TOWN3
 	call Func_8001c_20
 	xor a
 	ld [wc793], a

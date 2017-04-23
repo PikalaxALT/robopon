@@ -515,10 +515,10 @@ Func_bc352: ; bc352 (2f:4352)
 	add sp, $e
 	ret
 
-Func_bc355: ; bc355 (2f:4355)
+DebugMenu_WaitButton: ; bc355 (2f:4355)
 	call CheckButton
 	or a
-	jp z, Func_bc355
+	jp z, DebugMenu_WaitButton
 	ret
 
 Func_bc35d: ; bc35d
@@ -562,7 +562,7 @@ Func_bc392: ; bc392 (2f:4392)
 	xor a
 	call Func_3bc5
 	pop bc
-	call Func_bc355
+	call DebugMenu_WaitButton
 	call Func_bc14e
 	ret
 
@@ -2386,7 +2386,7 @@ Func_bd096:
 	ret
 
 Func_bd097: ; bd097 (2f:5097)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -2930,7 +2930,7 @@ Func_bd424: ; bd424 (2f:5424)
 	jp z, Func_bd4d5
 	push de
 	call FillVisibleAreaWithBlankTile
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -3452,7 +3452,7 @@ Func_bd846: ; bd846 (2f:5846)
 	pop bc
 	ret
 
-Func_bd89d: ; bd89d (2f:589d)
+DebugMenu_GetJoypad: ; bd89d (2f:589d)
 	call NextOverworldFrame
 	ld l, a
 	xor a
@@ -3717,7 +3717,7 @@ Func_bd9ea: ; bd9ea (2f:59ea)
 	ld hl, sp+$0
 	ld [hl], $0
 Func_bda57: ; bda57 (2f:5a57)
-	call Func_bd89d
+	call DebugMenu_GetJoypad
 	or a
 	jp nz, Func_bda57
 	jp Func_bda84
@@ -3728,7 +3728,7 @@ Func_bda61: ; bda61 (2f:5a61)
 	ld hl, sp+$6
 	ld [hl], a
 Func_bda67: ; bda67 (2f:5a67)
-	call Func_bd89d
+	call DebugMenu_GetJoypad
 	or a
 	jp z, Func_bda80
 	ld hl, sp+$6
@@ -3752,7 +3752,7 @@ Func_bda87: ; bda87 (2f:5a87)
 	ld hl, sp+$0
 	ld [hl], $0
 Func_bda8b: ; bda8b (2f:5a8b)
-	call Func_bd89d
+	call DebugMenu_GetJoypad
 	ld c, a
 	inc c
 	dec c
@@ -5283,18 +5283,18 @@ Func_be6ab: ; be6ab (2f:66ab)
 	ld [hl], $0
 	ld a, $1
 	ld [wc2fa], a
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	callba_hli Func_62865
 	set_farcall_addrs_hli Func_bd6fa
 	ld de, $34a
 	ld hl, Data_be86e
 	call FarCall
 	set_farcall_addrs_hli Func_bd6fa
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $6
 	add hl, de
 	push hl
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
 	pop de
@@ -5308,7 +5308,7 @@ Func_be6ab: ; be6ab (2f:66ab)
 	call FarCall
 	ld hl, sp+$2a
 	call WriteHLToSPPlus4
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -5437,7 +5437,7 @@ Func_be852: ; be852 (2f:6852)
 	jp Func_be7ee
 
 Func_be855: ; be855 (2f:6855)
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	xor a
 	ld [wc2fa], a
 	xor a
@@ -5481,10 +5481,10 @@ Func_be8c0: ; be8c0 (2f:68c0)
 	call MemCopy
 	ld a, $1
 	ld [wc2fa], a
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	ld hl, sp+$29
 	call WriteHLToSPPlus3
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
@@ -5498,7 +5498,7 @@ Func_be8c0: ; be8c0 (2f:68c0)
 	call MemCopy
 	callba_hli BattleIntro
 	callba_hli DoBattle
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	xor a
 	ld [wc2fa], a
 	add sp, $38
@@ -5667,7 +5667,7 @@ Func_bea7d: ; bea7d (2f:6a7d)
 	ld hl, Data_bea77
 	ld bc, $6
 	call MemCopy
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	call ClearSprites
 	ld a, [wNextVBlankFlags]
 	or $2
@@ -5733,7 +5733,7 @@ Func_bea7d: ; bea7d (2f:6a7d)
 	set_farcall_addrs_hli Func_6183
 	pop af
 	call FarCall
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ld hl, $206
 	add hl, sp
 	ld sp, hl
@@ -5748,12 +5748,12 @@ Data_beb94:
 	db $0
 
 Func_beba0: ; beba0 (2f:6ba0)
-	callba_hli Func_cc0c
+	callba_hli AllocateMonsterStruct2
 	callba_hli Func_6fe0
 	set_farcall_addrs_hli Func_60e81
 	ld a, $1
 	call FarCall
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ret
 
 Func_bebdb: ; bebdb (2f:6bdb)
@@ -5832,8 +5832,8 @@ Data_bec5e:
 Func_bec61: ; bec61 (2f:6c61)
 	ld a, SONG_CREDITS
 	call OverworldPlaySong
-	callba_hli Func_fdf13
-	call Func_bc355
+	callba_hli Credits
+	call DebugMenu_WaitButton
 	ld a, $e4
 	ld [wOBP1], a
 	ld [wOBP0], a
@@ -5841,15 +5841,15 @@ Func_bec61: ; bec61 (2f:6c61)
 	ld a, [wNextVBlankFlags]
 	or $20
 	ld [wNextVBlankFlags], a
-Func_bec8a: ; bec8a (2f:6c8a)
+.wait: ; bec8a (2f:6c8a)
 	ld a, [wNextVBlankFlags]
 	ld hl, wLastVBlankFlags
 	cp [hl]
-	jp nz, Func_bec8a
-	call Func_bc355
+	jp nz, .wait
+	call DebugMenu_WaitButton
 	ld a, SONG_VICTORY
 	call OverworldPlaySong
-	callba_hli Func_fdf59
+	callba_hli Credits2
 	ret
 
 Data_becab:
@@ -5972,7 +5972,7 @@ Data_beda4:
 Data_bedb4:
 	dr $bedb4, $bedc4
 
-Func_bedc4: ; bedc4 (2f:6dc4)
+DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	add sp, -$24
 	ld hl, sp+$13
 	reg16swap de, hl
@@ -5991,7 +5991,7 @@ Func_bedc4: ; bedc4 (2f:6dc4)
 	xor a
 	ld a, $1
 	ld [wc2fa], a
-	callba_hli Func_cb4a
+	callba_hli AllocateMonsterStruct
 	ld a, $1
 	ld [wPoncotPicAlignment], a
 	call FillVisibleAreaWithBlankTile
@@ -6041,7 +6041,7 @@ Func_bee6f: ; bee6f (2f:6e6f)
 	ld hl, sp+$2
 	ld c, [hl]
 	ld b, $0
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c8
 	add hl, de
 	add hl, bc
@@ -6075,7 +6075,7 @@ Func_bee8a: ; bee8a (2f:6e8a)
 	call Func_2230
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
 	ld e, [hl]
@@ -6197,7 +6197,7 @@ Func_bef9a: ; bef9a (2f:6f9a)
 Func_befa5: ; befa5 (2f:6fa5)
 	xor a
 	ld [wPoncotPicAlignment], a
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	ld a, $1
 	ld [wc2fa], a
 	set_farcall_addrs_hli Func_61424
@@ -6640,7 +6640,7 @@ Func_bf348: ; bf348 (2f:7348)
 
 Func_bf350: ; bf350 (2f:7350)
 	push bc
-	call Func_bedc4
+	call DebugTest_SeeBattleChara
 	pop bc
 	jp Func_bf297
 

@@ -4536,48 +4536,48 @@ Func_2a79:: ; 2a79 (0:2a79)
 	push af
 	ld a, [rLCDC]
 	and $80
-	jp z, Func_2aab
+	jp z, .noNeedToWait
 	call WaitVideoTransfer
 	ld a, [wNextVBlankFlags]
 	and $8
-	jp z, Func_2aab
+	jp z, .noNeedToWait
 	ld a, [wNextVBlankFlags]
 	and $f7
 	ld [wNextVBlankFlags], a
-Func_2aa1:: ; 2aa1 (0:2aa1)
+.waitFrame
 	ld a, [wNextVBlankFlags]
 	ld hl, wLastVBlankFlags
 	cp [hl]
-	jp nz, Func_2aa1
-Func_2aab:: ; 2aab (0:2aab)
+	jp nz, .waitFrame
+.noNeedToWait
 	ld a, BANK(Func_6b22)
 	call BankSwitch
 	pop af
 	pop bc
 	push af
-Func_2ab3:: ; 2ab3 (0:2ab3)
+.loop
 	read_hl_from_sp_plus $16
 	reg16swap de, hl
 	ld hl, $0
 	call CompareHLtoDE
-	jp nc, Func_2b70
+	jp nc, .quit
 	push bc
 	xor a
 	call Func_6b22
 	read_hl_from_sp_plus $18
 	ld de, $10
 	call CompareHLtoDE
-	jp c, Func_2add
+	jp c, .continueIteration
 	ld hl, sp+$14
 	ld [hl], $10
-	jp Func_2ae5
+	jp .memBankSwitch
 
-Func_2add:: ; 2add (0:2add)
+.continueIteration
 	read_hl_from_sp_plus $18
 	ld e, l
 	ld hl, sp+$14
 	ld [hl], e
-Func_2ae5:: ; 2ae5 (0:2ae5)
+.memBankSwitch
 	ld hl, sp+$15
 	ld a, [hl]
 	call BankSwitch
@@ -4591,7 +4591,7 @@ Func_2ae5:: ; 2ae5 (0:2ae5)
 	ld hl, sp+$14
 	ld a, [hl]
 	cp $10
-	jp nc, Func_2b20
+	jp nc, .bankSwitch
 	ld hl, sp+$14
 	ld c, [hl]
 	ld b, $0
@@ -4609,14 +4609,14 @@ Func_2ae5:: ; 2ae5 (0:2ae5)
 	add hl, de
 	ld e, $0
 	call FillMemory
-Func_2b20:: ; 2b20 (0:2b20)
+.bankSwitch
 	ld a, BANK(Func_6b37)
 	call BankSwitch
 	ld a, $10
 	ld hl, sp+$4
-Func_2b29:: ; 2b29 (0:2b29)
+.loop2
 	cp $1
-	jp c, Func_2b3b
+	jp c, .break
 	push hl
 	push af
 	ld a, [hl]
@@ -4625,19 +4625,19 @@ Func_2b29:: ; 2b29 (0:2b29)
 	dec a
 	pop hl
 	inc hl
-	jp Func_2b29
+	jp .loop2
 
-Func_2b3b:: ; 2b3b (0:2b3b)
+.break
 	ld a, $20
 	call Func_6b22
-asm_2b3f
+.testValueOfC
 	pop bc
 	inc c
 	dec c
-	jp z, Func_2b49
-	jp Func_2b70
+	jp z, .next
+	jp .quit
 
-Func_2b49:: ; 2b49 (0:2b49)
+.next
 	push bc
 	call Func_6b4b
 	ld hl, sp+$14
@@ -4656,9 +4656,9 @@ Func_2b49:: ; 2b49 (0:2b49)
 	add hl, de
 	write_hl_to_sp_plus $1a
 	pop bc
-	jp Func_2ab3
+	jp .loop
 
-Func_2b70:: ; 2b70 (0:2b70)
+.quit
 	pop af
 	ld [wNextVBlankFlags], a
 	ld hl, sp+$11

@@ -61,7 +61,7 @@ Func_140a0: ; 140a0 (5:40a0)
 	ld hl, -1
 	write_hl_to_sp_plus $d
 Func_140b1: ; 140b1 (5:40b1)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	call WriteHLToSPPlus4

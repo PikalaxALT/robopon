@@ -1,4 +1,4 @@
-Func_9a49: ; 9a49 (2:5a49)
+Func_9a49:: ; 9a49 (2:5a49)
 	push bc
 	push af
 	push de

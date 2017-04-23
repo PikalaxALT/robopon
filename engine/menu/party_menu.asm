@@ -93,7 +93,7 @@ Func_5e5ce: ; 5e5ce (17:65ce)
 	ld a, $1
 	call FarCall
 Func_5e5e2: ; 5e5e2 (17:65e2)
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld a, [hl]
@@ -101,7 +101,7 @@ Func_5e5e2: ; 5e5e2 (17:65e2)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus10
-	read_hl_from wc2e6
+	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
 	ld c, l

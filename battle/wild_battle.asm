@@ -17,7 +17,7 @@ StartBattle:: ; bbee (2:7bee)
 	callba_hli BattleIntro
 	callba_hli Func_62865
 	callba_hli DoBattle
-	callba_hli Func_cced
+	callba_hli FreeMonsterStruct
 	xor a
 	ld [wc2fa], a
 	ld a, $1

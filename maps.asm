@@ -1483,7 +1483,7 @@ Func_852ac: ; 852ac (21:52ac)
 	writenpctext TreeBitstreamText_39a5f
 	playmusic SONG_NONE
 	writenpctext TreeBitstreamText_39a7b
-	playmusic SONG_18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	ld e, $0
 	xor a
 	call SpriteFace_21
@@ -1530,7 +1530,7 @@ Func_852ac: ; 852ac (21:52ac)
 	playmusic SONG_NONE
 	ld a, $1
 	call FadeInAudio_21
-	playmusic SONG_18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	ld bc, Data_85292
 	ld e, BANK(Data_85292)
 	ld a, $2
@@ -2139,7 +2139,7 @@ Func_85aaf: ; 85aaf (21:5aaf)
 	ld e, $5
 	ld hl, Data_859c9
 	call Func_800fb_21
-	playmusic SONG_11
+	playmusic SONG_TOWN3
 Func_85abc: ; 85abc (21:5abc)
 	ld a, [wc797]
 	cp $7
@@ -2376,7 +2376,7 @@ Func_85d70: ; 85d70 (21:5d70)
 	ld e, $5
 	ld hl, Data_85c98
 	call Func_800fb_21
-	playmusic SONG_11
+	playmusic SONG_TOWN3
 Func_85d7d: ; 85d7d (21:5d7d)
 	checkevent $14
 	or a
@@ -2584,7 +2584,7 @@ Func_86011: ; 86011 (21:6011)
 	jp Func_86019
 
 Func_86014: ; 86014 (21:6014)
-	playmusic SONG_11
+	playmusic SONG_TOWN3
 Func_86019: ; 86019 (21:6019)
 	call Func_8001c_21
 	ld a, [wc7de]
@@ -2897,7 +2897,7 @@ Func_86498: ; 86498 (21:6498)
 	jp Func_864a0
 
 Func_8649b: ; 8649b (21:649b)
-	playmusic SONG_11
+	playmusic SONG_TOWN3
 Func_864a0: ; 864a0 (21:64a0)
 	ld a, [wc7de]
 	cp $6
@@ -3361,7 +3361,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	playsfx $69
 	writenpctext TreeBitstreamText_3a420
 	playmusic SONG_NONE
-	playmusic SONG_18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	ld bc, Data_86917
 	ld e, BANK(Data_86917)
 	ld a, $2
@@ -6251,11 +6251,35 @@ Func_9a848: ; 9a848 (26:6848)
 	pop bc
 	ret
 
-Func_9a84a::
-	dr $9a84a, $9a87c
+Func_9a84a:: ; 9a84a (26:684a)
+	call NextOverworldFrame
+	set_farcall_addrs_hli Func_9a49
+	ld c, $0
+	ld e, $0
+	ld a, [wPlayerFacing]
+	call FarCall
+	cp $1
+	jp z, Func_9a86a
+	jp Func_9a87b
 
-Func_9a87c: ; 9a87c
-	dr $9a87c, $9a897
+Func_9a86a: ; 9a86a (26:686a)
+	callba_hli Func_b150
+	jp Func_9a84a
+
+Func_9a87b: ; 9a87b (26:687b)
+	ret
+
+Func_9a87c:: ; 9a87c (26:687c)
+	read_hl_from wc82e
+	ld a, l
+	or h
+	jp z, Func_9a896
+	read_hl_from wc82e
+	call Func_9a1aa
+	ld hl, $0
+	write_hl_to wc82e
+Func_9a896: ; 9a896 (26:6896)
+	ret
 
 ShowEmote: ; 9a897
 	add -5
