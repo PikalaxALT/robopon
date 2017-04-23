@@ -1,4 +1,4 @@
-SECTION "Bank 0a", ROMX, BANK [$0a]
+SECTION "Bank 0a", ROMX, BANK [$a]
 BlockDataHeaders:: ; 28000
 blockdataheader: MACRO
 	dbw BANK(\1) - BANK(BlockDataHeaders), \1
@@ -6,48 +6,48 @@ blockdataheader: MACRO
 	ENDM
 
 	blockdataheader BlockData_28424, $1d, $21
-	blockdataheader BlockData_284fe, $08, $08
-	blockdataheader BlockData_2852a, $08, $08
-	blockdataheader BlockData_2854f, $09, $0a
-	blockdataheader BlockData_28586, $09, $09
-	blockdataheader BlockData_285b8, $0f, $0f
-	blockdataheader BlockData_28616, $0a, $0b
-	blockdataheader BlockData_28654, $0a, $0b
-	blockdataheader BlockData_28691, $0a, $0b
-	blockdataheader BlockData_286d1, $0a, $0b
-	blockdataheader BlockData_286f9, $0a, $0b
-	blockdataheader BlockData_2871d, $0a, $0b
-	blockdataheader BlockData_28740, $0a, $0b
-	blockdataheader BlockData_28771, $0a, $0b
-	blockdataheader BlockData_287aa, $0a, $0b
-	blockdataheader BlockData_287d3, $0a, $0b
-	blockdataheader BlockData_28812, $0a, $0b
-	blockdataheader BlockData_28847, $0a, $0b
-	blockdataheader BlockData_28881, $0a, $0b
-	blockdataheader BlockData_288c0, $0a, $0b
-	blockdataheader BlockData_288e9, $0a, $0b
-	blockdataheader BlockData_2892a, $0a, $0b
-	blockdataheader BlockData_28963, $0a, $0b
-	blockdataheader BlockData_2899e, $0a, $0b
-	blockdataheader BlockData_289c2, $0a, $0b
-	blockdataheader BlockData_289e8, $0a, $0b
-	blockdataheader BlockData_28a19, $09, $09
-	blockdataheader BlockData_28a4c, $0c, $09
-	blockdataheader BlockData_28a79, $10, $0c
+	blockdataheader BlockData_284fe, $8, $8
+	blockdataheader BlockData_2852a, $8, $8
+	blockdataheader BlockData_2854f, $9, $a
+	blockdataheader BlockData_28586, $9, $9
+	blockdataheader BlockData_285b8, $f, $f
+	blockdataheader BlockData_28616, $a, $b
+	blockdataheader BlockData_28654, $a, $b
+	blockdataheader BlockData_28691, $a, $b
+	blockdataheader BlockData_286d1, $a, $b
+	blockdataheader BlockData_286f9, $a, $b
+	blockdataheader BlockData_2871d, $a, $b
+	blockdataheader BlockData_28740, $a, $b
+	blockdataheader BlockData_28771, $a, $b
+	blockdataheader BlockData_287aa, $a, $b
+	blockdataheader BlockData_287d3, $a, $b
+	blockdataheader BlockData_28812, $a, $b
+	blockdataheader BlockData_28847, $a, $b
+	blockdataheader BlockData_28881, $a, $b
+	blockdataheader BlockData_288c0, $a, $b
+	blockdataheader BlockData_288e9, $a, $b
+	blockdataheader BlockData_2892a, $a, $b
+	blockdataheader BlockData_28963, $a, $b
+	blockdataheader BlockData_2899e, $a, $b
+	blockdataheader BlockData_289c2, $a, $b
+	blockdataheader BlockData_289e8, $a, $b
+	blockdataheader BlockData_28a19, $9, $9
+	blockdataheader BlockData_28a4c, $c, $9
+	blockdataheader BlockData_28a79, $10, $c
 	blockdataheader BlockData_28ad1, $1c, $2e
 	blockdataheader BlockData_28c12, $18, $27
-	blockdataheader BlockData_28cee, $0d, $0c
-	blockdataheader BlockData_28d24, $0d, $0c
-	blockdataheader BlockData_28d56, $0d, $0c
-	blockdataheader BlockData_28d89, $0d, $0c
+	blockdataheader BlockData_28cee, $d, $c
+	blockdataheader BlockData_28d24, $d, $c
+	blockdataheader BlockData_28d56, $d, $c
+	blockdataheader BlockData_28d89, $d, $c
 	blockdataheader BlockData_28dbc, $16, $13
 	blockdataheader BlockData_28e49, $1e, $31
 	blockdataheader BlockData_28fb5, $13, $10
-	blockdataheader BlockData_2900b, $13, $0d
+	blockdataheader BlockData_2900b, $13, $d
 	blockdataheader BlockData_29070, $14, $19
 	blockdataheader BlockData_29102, $16, $18
 	blockdataheader BlockData_29166, $16, $18
-	blockdataheader BlockData_291d4, $0d, $09
+	blockdataheader BlockData_291d4, $d, $9
 	blockdataheader BlockData_29212, $14, $14
 	blockdataheader BlockData_2928c, $1e, $25
 	blockdataheader BlockData_293d2, $14, $14
@@ -61,20 +61,20 @@ blockdataheader: MACRO
 	blockdataheader BlockData_297e5, $14, $14
 	blockdataheader BlockData_29879, $18, $28
 	blockdataheader BlockData_29963, $18, $18
-	blockdataheader BlockData_299fe, $0f, $15
-	blockdataheader BlockData_29a64, $18, $09
+	blockdataheader BlockData_299fe, $f, $15
+	blockdataheader BlockData_29a64, $18, $9
 	blockdataheader BlockData_29a9c, $2f, $15
 	blockdataheader BlockData_29bc6, $1a, $12
 	blockdataheader BlockData_29c31, $1a, $26
 	blockdataheader BlockData_29cd9, $1e, $22
-	blockdataheader BlockData_29d8d, $07, $06
+	blockdataheader BlockData_29d8d, $7, $6
 	blockdataheader BlockData_29dac, $20, $28
 	blockdataheader BlockData_29e9e, $14, $18
 	blockdataheader BlockData_29f4a, $2d, $13
 	blockdataheader BlockData_2a03b, $14, $1e
-	blockdataheader BlockData_2a0ce, $10, $07
+	blockdataheader BlockData_2a0ce, $10, $7
 	blockdataheader BlockData_2a0ee, $1e, $2b
-	blockdataheader BlockData_2a202, $13, $09
+	blockdataheader BlockData_2a202, $13, $9
 	blockdataheader BlockData_2a236, $10, $10
 	blockdataheader BlockData_2a26f, $18, $18
 	blockdataheader BlockData_2a322, $18, $18
@@ -86,38 +86,38 @@ blockdataheader: MACRO
 	blockdataheader BlockData_2a89f, $16, $1f
 	blockdataheader BlockData_2a995, $16, $1b
 	blockdataheader BlockData_2aa7b, $21, $29
-	blockdataheader BlockData_2ab4e, $0c, $17
-	blockdataheader BlockData_2abc6, $16, $0b
+	blockdataheader BlockData_2ab4e, $c, $17
+	blockdataheader BlockData_2abc6, $16, $b
 	blockdataheader BlockData_2ac09, $14, $28
 	blockdataheader BlockData_2aca6, $14, $28
 	blockdataheader BlockData_2ad42, $14, $28
-	blockdataheader BlockData_2addb, $0f, $09
+	blockdataheader BlockData_2addb, $f, $9
 	blockdataheader BlockData_2ae0b, $16, $14
-	blockdataheader BlockData_2ae61, $0b, $08
-	blockdataheader BlockData_2ae7b, $0f, $09
-	blockdataheader BlockData_2aebf, $0b, $08
+	blockdataheader BlockData_2ae61, $b, $8
+	blockdataheader BlockData_2ae7b, $f, $9
+	blockdataheader BlockData_2aebf, $b, $8
 	blockdataheader BlockData_2aed8, $13, $16
 	blockdataheader BlockData_2af27, $1c, $11
-	blockdataheader BlockData_2af8c, $1b, $0b
+	blockdataheader BlockData_2af8c, $1b, $b
 	blockdataheader BlockData_2aff3, $20, $23
-	blockdataheader BlockData_2b109, $1e, $0e
+	blockdataheader BlockData_2b109, $1e, $e
 	blockdataheader BlockData_2b188, $1c, $15
 	blockdataheader BlockData_2b1fd, $28, $12
-	blockdataheader BlockData_2b2e2, $17, $0d
+	blockdataheader BlockData_2b2e2, $17, $d
 	blockdataheader BlockData_2b340, $22, $19
-	blockdataheader BlockData_2b3ff, $0e, $0e
-	blockdataheader BlockData_2b434, $0e, $10
-	blockdataheader BlockData_2b471, $0e, $10
-	blockdataheader BlockData_2b4ac, $18, $0d
-	blockdataheader BlockData_2b513, $0f, $0d
-	blockdataheader BlockData_2b538, $0f, $0d
-	blockdataheader BlockData_2b554, $0f, $0d
-	blockdataheader BlockData_2b589, $0f, $0d
-	blockdataheader BlockData_2b5bc, $0f, $0d
-	blockdataheader BlockData_2b5f9, $24, $0c
-	blockdataheader BlockData_2b667, $0d, $0b
+	blockdataheader BlockData_2b3ff, $e, $e
+	blockdataheader BlockData_2b434, $e, $10
+	blockdataheader BlockData_2b471, $e, $10
+	blockdataheader BlockData_2b4ac, $18, $d
+	blockdataheader BlockData_2b513, $f, $d
+	blockdataheader BlockData_2b538, $f, $d
+	blockdataheader BlockData_2b554, $f, $d
+	blockdataheader BlockData_2b589, $f, $d
+	blockdataheader BlockData_2b5bc, $f, $d
+	blockdataheader BlockData_2b5f9, $24, $c
+	blockdataheader BlockData_2b667, $d, $b
 	blockdataheader BlockData_2b6a7, $17, $1b
-	blockdataheader BlockData_2b78a, $0a, $0a
+	blockdataheader BlockData_2b78a, $a, $a
 	blockdataheader BlockData_2b7c3, $22, $23
 	blockdataheader BlockData_2b90c, $14, $14
 	blockdataheader BlockData_2b99a, $14, $14
@@ -131,10 +131,10 @@ blockdataheader: MACRO
 	blockdataheader BlockData_2be50, $14, $14
 	blockdataheader BlockData_2bec2, $14, $14
 	blockdataheader BlockData_2bf58, $19, $19
-	blockdataheader BlockData_2c000, $0d, $0d
+	blockdataheader BlockData_2c000, $d, $d
 	blockdataheader BlockData_2c059, $1f, $29
 	blockdataheader BlockData_2c159, $25, $25
-	blockdataheader BlockData_2c2b3, $1b, $0b
+	blockdataheader BlockData_2c2b3, $1b, $b
 	blockdataheader BlockData_2c2df, $12, $18
 	blockdataheader BlockData_2c33e, $1a, $12
 	blockdataheader BlockData_2c3ad, $15, $17
@@ -146,13 +146,13 @@ blockdataheader: MACRO
 	blockdataheader BlockData_2c60c, $15, $18
 	blockdataheader BlockData_2c679, $1b, $12
 	blockdataheader BlockData_2c6e3, $15, $18
-	blockdataheader BlockData_2c748, $0a, $07
+	blockdataheader BlockData_2c748, $a, $7
 	blockdataheader BlockData_2c76b, $1b, $11
 	blockdataheader BlockData_2c812, $22, $26
-	blockdataheader BlockData_2c965, $06, $13
-	blockdataheader BlockData_2c98d, $06, $13
-	blockdataheader BlockData_2c9b7, $1a, $0b
-	blockdataheader BlockData_2ca02, $1a, $0b
+	blockdataheader BlockData_2c965, $6, $13
+	blockdataheader BlockData_2c98d, $6, $13
+	blockdataheader BlockData_2c9b7, $1a, $b
+	blockdataheader BlockData_2ca02, $1a, $b
 	blockdataheader BlockData_2ca4a, $20, $20
 	blockdataheader BlockData_2cbb9, $20, $20
 	blockdataheader BlockData_2cd95, $12, $10
@@ -167,7 +167,7 @@ blockdataheader: MACRO
 	blockdataheader BlockData_2d2dd, $1b, $1d
 	blockdataheader BlockData_2d383, $14, $14
 	blockdataheader BlockData_2d40d, $1f, $13
-	blockdataheader BlockData_2d4d3, $17, $0b
+	blockdataheader BlockData_2d4d3, $17, $b
 	blockdataheader BlockData_2d521, $20, $10
 	blockdataheader BlockData_2d5a8, $1f, $22
 	blockdataheader BlockData_2d6b0, $25, $1f
@@ -191,32 +191,32 @@ blockdataheader: MACRO
 	blockdataheader BlockData_2e41c, $20, $30
 	blockdataheader BlockData_2e50e, $20, $30
 	blockdataheader BlockData_2e5f7, $20, $30
-	blockdataheader BlockData_2e70d, $10, $0f
-	blockdataheader BlockData_2e75d, $10, $0f
-	blockdataheader BlockData_2e7a9, $10, $0f
-	blockdataheader BlockData_2e7ff, $10, $0f
-	blockdataheader BlockData_2e852, $10, $0f
-	blockdataheader BlockData_2e8a6, $10, $0f
-	blockdataheader BlockData_2e8f7, $10, $0f
-	blockdataheader BlockData_2e948, $10, $0f
-	blockdataheader BlockData_2e98d, $10, $0f
-	blockdataheader BlockData_2e9db, $10, $0f
+	blockdataheader BlockData_2e70d, $10, $f
+	blockdataheader BlockData_2e75d, $10, $f
+	blockdataheader BlockData_2e7a9, $10, $f
+	blockdataheader BlockData_2e7ff, $10, $f
+	blockdataheader BlockData_2e852, $10, $f
+	blockdataheader BlockData_2e8a6, $10, $f
+	blockdataheader BlockData_2e8f7, $10, $f
+	blockdataheader BlockData_2e948, $10, $f
+	blockdataheader BlockData_2e98d, $10, $f
+	blockdataheader BlockData_2e9db, $10, $f
 	blockdataheader BlockData_2ea2a, $15, $18
 	blockdataheader BlockData_2eaa0, $20, $10
-	blockdataheader BlockData_2eae9, $0f, $12
-	blockdataheader BlockData_2eb70, $0f, $12
-	blockdataheader BlockData_2ebeb, $06, $08
-	blockdataheader BlockData_2ec12, $09, $0b
-	blockdataheader BlockData_2ec51, $0b, $0e
-	blockdataheader BlockData_2eca8, $09, $09
-	blockdataheader BlockData_2ece0, $09, $09
-	blockdataheader BlockData_2ed13, $0c, $0e
-	blockdataheader BlockData_2ed6a, $0d, $0e
-	blockdataheader BlockData_2edc6, $0a, $0c
-	blockdataheader BlockData_2ee0e, $0a, $0c
-	blockdataheader BlockData_2ee56, $07, $04
+	blockdataheader BlockData_2eae9, $f, $12
+	blockdataheader BlockData_2eb70, $f, $12
+	blockdataheader BlockData_2ebeb, $6, $8
+	blockdataheader BlockData_2ec12, $9, $b
+	blockdataheader BlockData_2ec51, $b, $e
+	blockdataheader BlockData_2eca8, $9, $9
+	blockdataheader BlockData_2ece0, $9, $9
+	blockdataheader BlockData_2ed13, $c, $e
+	blockdataheader BlockData_2ed6a, $d, $e
+	blockdataheader BlockData_2edc6, $a, $c
+	blockdataheader BlockData_2ee0e, $a, $c
+	blockdataheader BlockData_2ee56, $7, $4
 	blockdataheader BlockData_2ee6a, $1a, $10
-	blockdataheader BlockData_2eeae, $0a, $0a
+	blockdataheader BlockData_2eeae, $a, $a
 
 BlockData_28424: INCBIN "maps/block_data/blockdata_28424.blk.rz"
 BlockData_284fe: INCBIN "maps/block_data/blockdata_284fe.blk.rz"
@@ -345,7 +345,7 @@ BlockData_2be50: INCBIN "maps/block_data/blockdata_2be50.blk.rz"
 BlockData_2bec2: INCBIN "maps/block_data/blockdata_2bec2.blk.rz"
 BlockData_2bf58: INCBIN "maps/block_data/blockdata_2bf58.blk.rz"
 
-SECTION "Bank 0b", ROMX, BANK [$0b]
+SECTION "Bank 0b", ROMX, BANK [$b]
 BlockData_2c000: INCBIN "maps/block_data/blockdata_2c000.blk.rz"
 BlockData_2c059: INCBIN "maps/block_data/blockdata_2c059.blk.rz"
 BlockData_2c159: INCBIN "maps/block_data/blockdata_2c159.blk.rz"

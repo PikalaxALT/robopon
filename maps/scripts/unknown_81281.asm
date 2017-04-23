@@ -271,20 +271,20 @@ Func_814a8: ; 814a8 (20:54a8)
 
 Data_814a9:
 	db $11, $17
-	db $0b, $17
-	db $0b, $0e
-	db $15, $0e
+	db $b, $17
+	db $b, $e
+	db $15, $e
 	db $ff, $ff
 
 Data_814b3:
-	db $15, $0d
-	db $10, $0d
-	db $10, $0c
+	db $15, $d
+	db $10, $d
+	db $10, $c
 	db $ff, $ff
 
 Data_814bb:
-	db $10, $0d
-	db $10, $0c
+	db $10, $d
+	db $10, $c
 	db $ff, $ff
 
 Func_814c1: ; 814c1 (20:54c1)

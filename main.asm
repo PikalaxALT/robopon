@@ -128,7 +128,7 @@ FillToStackBottomWithWillTestString: ; 40cb (1:40cb)
 	ret
 
 .WillTestString:
-	db "WILL TEST", $00
+	db "WILL TEST", $0
 
 Func_40f4: ; 40f4 (1:40f4)
 	ld c, hPushOAM % $100
@@ -161,24 +161,18 @@ LoadFontGFX: ; 410c (1:410c)
 	call CopyFromDEtoHL
 	ret
 
-GFX_4122: INCBIN "gfx/misc/font.w128.t5.2bpp", $0, $7d0
-GFX_48f2: INCBIN "gfx/misc/font.w128.t5.2bpp", $7d0, $f0
-GFX_49e2: INCBIN "gfx/misc/font.w128.t5.2bpp", $8c0, $20
-GFX_4a02: INCBIN "gfx/misc/font.w128.t5.2bpp", $8e0, $10
-GFX_4a12:: INCBIN "gfx/misc/font.w128.t5.2bpp", $8f0, $80
-GFX_4a92: INCBIN "gfx/misc/font.w128.t5.2bpp", $970, $10
-GFX_4aa2: INCBIN "gfx/misc/font.w128.t5.2bpp", $980, $10
-GFX_4ab2: INCBIN "gfx/misc/font.w128.t5.2bpp", $990, $20
-GFX_4ad2: dr $4ad2, $4b22
-IF DEF(SUN)
-GFX_4b22:: dr $4b22, $4dd2
-GFX_4dd2: dr $4dd2, $4e02
-ENDC
-IF DEF(STAR)
-GFX_4b22:: dr $4b22, $4de2
-GFX_4dd2: dr $4de2, $4e02
-ENDC
-GFX_4e02:: dr $4e02, $6122
+GFX_4122: INCBIN "gfx/font/4122.2bpp", $0, $7d0
+GFX_48f2: INCBIN "gfx/font/4122.2bpp", $7d0, $f0
+GFX_49e2: INCBIN "gfx/font/4122.2bpp", $8c0, $20
+GFX_4a02: INCBIN "gfx/font/4122.2bpp", $8e0, $10
+GFX_4a12:: INCBIN "gfx/font/4122.2bpp", $8f0, $80
+GFX_4a92: INCBIN "gfx/font/4122.2bpp", $970, $10
+GFX_4aa2: INCBIN "gfx/font/4122.2bpp", $980, $10
+GFX_4ab2: INCBIN "gfx/font/4122.2bpp", $990, $20
+GFX_4ad2: INCBIN "gfx/font/4122.2bpp", $9b0, $50
+GFX_4b22:: INCBIN "gfx/font/4122.2bpp", $a00, $1c0
+GFX_4ce2: INCBIN "gfx/font/4122.2bpp", $bc0, $120
+GFX_4e02:: INCBIN "gfx/font/4122.2bpp", $ce0, $1320
 
 Func_6122: ; 6122 (1:6122)
 	or a
@@ -242,11 +236,11 @@ Func_6183: ; 6183
 	push af
 	ld a, [wLCDC]
 	bit 7, a
-	jr nz, .asm_618f
+	jr nz, .lcd_enabled
 	pop af
 	jp Func_617d
 
-.asm_618f
+.lcd_enabled
 	pop af
 	jp Func_6169
 
@@ -303,8 +297,8 @@ Func_61b8: ; 61b8 (1:61b8)
 	ld [wc230], a
 	add b
 	cp $21
-	jr nc, asm_620a
-Func_61f8: ; 61f8 (1:61f8)
+	jr nc, .exceeds_0x20
+.queue
 	ld a, [wc22e]
 	ld e, a
 	ld a, [wc230]
@@ -315,7 +309,7 @@ Func_61f8: ; 61f8 (1:61f8)
 	ld d, a
 	jp PutOnVideoTransferQueue
 
-asm_620a
+.exceeds_0x20
 	sub $20
 	ld c, a
 	ld a, b
@@ -323,7 +317,7 @@ asm_620a
 	ld b, a
 	push bc
 	push hl
-	call Func_61f8
+	call .queue
 	xor a
 	ld [wc230], a
 	pop hl
@@ -335,7 +329,7 @@ asm_620a
 	adc $0
 	ld h, a
 	ld b, c
-	jp Func_61f8
+	jp .queue
 
 Func_6226: ; 6226 (1:6226)
 	ld a, [wc233]
@@ -368,8 +362,8 @@ Func_6226: ; 6226 (1:6226)
 	ld [wc230], a
 	add b
 	cp $21
-	jr nc, asm_6278
-Func_6266: ; 6266 (1:6266)
+	jr nc, .exceeds_0x20
+.queue
 	ld a, [wc22e]
 	ld l, a
 	ld a, [wc230]
@@ -380,7 +374,7 @@ Func_6266: ; 6266 (1:6266)
 	ld h, a
 	jp PutOnVideoTransferQueue
 
-asm_6278
+.exceeds_0x20
 	sub $20
 	ld c, a
 	ld a, b
@@ -388,7 +382,7 @@ asm_6278
 	ld b, a
 	push bc
 	push de
-	call Func_6266
+	call .queue
 	xor a
 	ld [wc230], a
 	pop de
@@ -400,17 +394,17 @@ asm_6278
 	adc $0
 	ld d, a
 	ld b, c
-	jp Func_6266
+	jp .queue
 
 Func_6294: ; 6294 (1:6294)
 	push af
 	push bc
-.asm_6296
+.wait
 	ld a, [wNextVBlankFlags]
 	ld c, a
 	ld a, [wLastVBlankFlags]
 	cp c
-	jr nz, .asm_6296
+	jr nz, .wait
 	pop bc
 	pop af
 	ret
@@ -2099,7 +2093,7 @@ Func_6fb7: ; 6fb7 (1:6fb7)
 	jp Func_6f7b
 
 Data_6fc1: ; 6fc1
-	db "(つうしん まち)", $00
+	db "(つうしん まち)", $0
 
 Func_6fcb: ; 6fcb (1:6fcb)
 	reg16swap de, hl
@@ -2107,7 +2101,7 @@ Func_6fcb: ; 6fcb (1:6fcb)
 	jp Func_6f7b
 
 Data_6fd5: ; 6fd5
-	db "(つうしん )エラー", $00
+	db "(つうしん )エラー", $0
 
 Func_6fe0: ; 6fe0
 	push bc
@@ -2413,7 +2407,7 @@ Func_71ee: ; 71ee (1:71ee)
 	ret
 
 Data_71f0: ; 71f0
-	db "(せつそﾞくちゅう)", $00
+	db "(せつそﾞくちゅう)", $0
 
 Func_71fb: ; 71fb (1:71fb)
 	push af
@@ -3238,7 +3232,7 @@ Func_777d: ; 777d (1:777d)
 	ret
 
 Data_7784: ; 7784
-	db "ROBOPON IR TAKANORI", $00
+	db "ROBOPON IR TAKANORI", $0
 
 Func_7798: ; 7798 (1:7798)
 	push hl
@@ -5084,25 +5078,25 @@ Data_9416: ; 9416
 	TX_SNUM
 	db "/"
 	TX_SNUM
-	db " ", $00
+	db " ", $0
 
 Data_9420: ; 9420
 	db "0"
 	TX_SNUM
-	db ":", $00
+	db ":", $0
 
 Data_9425: ; 9425
 	TX_SNUM
-	db ":", $00
+	db ":", $0
 
 Data_9429: ; 9429
 	db "0"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_942d: ; 942d
 	TX_SNUM
-	db $00
+	db $0
 
 Func_9430: ; 9430
 	callba_hli Func_17e91
@@ -8927,19 +8921,19 @@ Pointers_c8c1: ; c8c1
 	dw Data_c8ed
 
 Data_c8cb: ; c8cb
-	db "(たのんたﾞそﾞ)", $00
+	db "(たのんたﾞそﾞ)", $0
 
 Data_c8d5: ; c8d5
-	db "(かﾞんはﾞれ)", $00
+	db "(かﾞんはﾞれ)", $0
 
 Data_c8de: ; c8de
-	db "(いっけぇー)", $00
+	db "(いっけぇー)", $0
 
 Data_c8e6: ; c8e6
-	db "(よしっ) ", $00
+	db "(よしっ) ", $0
 
 Data_c8ed
-	db " (ゆけっ!!)", $00
+	db " (ゆけっ!!)", $0
 
 Data_c8f6: ; c8f6
 	dr $c8f6, $c8fe
@@ -10774,22 +10768,22 @@ Func_d735: ; d735 (3:5735)
 	ret
 
 Data_d747: ; d747
-	db "         ", $00
+	db "         ", $0
 
 Data_d751: ; d751
-	db "        ", $00
+	db "        ", $0
 
 Data_d75a: ; d75a
 	TX_STACK
 	db "V"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_d760: ; d760
-	db " ", $00
+	db " ", $0
 
 Data_d762: ; d762
-	db "/   ", $00
+	db "/   ", $0
 
 Func_d767: ; d767
 	ld c, $5
@@ -15303,10 +15297,10 @@ Func_f6a8: ; f6a8 (3:76a8)
 	ret
 
 Data_f6cb: ; f6cb
-	db "キー マチ", $00
+	db "キー マチ", $0
 
 Data_f6d1: ; f6d1
-	db "     ", $00
+	db "     ", $0
 
 Pointers_f6d7: ; f6d7
 	dw $0
@@ -15813,7 +15807,7 @@ Func_fa45: ; fa45 (3:7a45)
 	ret
 
 String_fa7b: ; fa7b
-	db " (かﾞ)", $00
+	db " (かﾞ)", $0
 
 BattleIntro: ; fa81 (3:7a81)
 	add sp, -$32
@@ -16534,19 +16528,19 @@ Func_10190: ; 10190 (4:4190)
 
 Data_1019d: ; 1019d
 	TX_STACK
-	db $00
+	db $0
 
 Data_101a0: ; 101a0
-	db "スヒﾟータﾞー", $00 ; speeder
+	db "スヒﾟータﾞー", $0 ; speeder
 
 Data_101a8: ; 101a8
-	db "ハﾟンチャー", $00 ; puncher
+	db "ハﾟンチャー", $0 ; puncher
 
 Data_101af: ; 101af
-	db "シールタﾞー", $00 ; shielder
+	db "シールタﾞー", $0 ; shielder
 
 Data_101b6: ; 101b6
-	db "シﾞャンハﾟー", $00 ; jumper
+	db "シﾞャンハﾟー", $0 ; jumper
 
 Func_101be: ; 101be
 	push bc
@@ -17211,7 +17205,7 @@ Func_10732: ; 10732 (4:4732)
 	ret
 
 Data_10734: ; 10734
-	db "(てﾞはﾞっく)", $00
+	db "(てﾞはﾞっく)", $0
 
 Data_1073d: ; 1073d
 	dr $1073d, $10766
@@ -17455,27 +17449,27 @@ Func_1095a: ; 1095a (4:495a)
 	ret
 
 Data_1095c: ; 1095c
-	db "(のしょうり)", $00
+	db "(のしょうり)", $0
 
 Data_10964: ; 10964
-	db "(のしょうり)", $00
+	db "(のしょうり)", $0
 
 Data_1096c: ; 1096c
-	db "(ひきわけ)", $00
+	db "(ひきわけ)", $0
 
 Data_10973: ; 10973
-	db "(きろく)", $00
+	db "(きろく)", $0
 
 Data_10979: ; 10979
 	TX_SNUM
-	db "キロ", $00
+	db "キロ", $0
 
 Data_1097e: ; 1097e
-	db "メートル", $00
+	db "メートル", $0
 
 Data_10983: ; 10983
 	TX_SNUM
-	db "(とん)", $00
+	db "(とん)", $0
 
 Data_1098a: ; 1098a
 	dr $1098a, $10992
@@ -19858,27 +19852,27 @@ Func_11a9e: ; 11a9e (4:5a9e)
 Data_11b47: ; 11b47
 	TX_STACK
 	TX_STACK
-	db $00
+	db $0
 
 Data_11b4c: ; 11b4c
 	TX_STACK
 	TX_STACK
-	db $00
+	db $0
 
 Data_11b51: ; 11b51
 	TX_STACK
 	TX_STACK
-	db $00
+	db $0
 
 Data_11b56: ; 11b56
 	TX_STACK
 	TX_STACK
-	db $00
+	db $0
 
 Data_11b5b: ; 11b5b
 	TX_STACK
 	TX_STACK
-	db $00
+	db $0
 
 Func_11b60: ; 11b60 (4:5b60)
 	push af
@@ -20065,41 +20059,41 @@ Func_11cb2: ; 11cb2 (4:5cb2)
 	ret
 
 Data_11cc1: ; 11cc1
-	db "スタート", $00
+	db "スタート", $0
 
 Data_11cc6: ; 11cc6
 	db " "
 	TX_SNUM
-	db $00
+	db $0
 
 Data_11cca: ; 11cca
-	db "(あなたのかち)", $00
+	db "(あなたのかち)", $0
 
 Data_11cd3: ; 11cd3
-	db "(あなたのまけ)", $00
+	db "(あなたのまけ)", $0
 
 Data_11cdc: ; 11cdc
-	db "(ひきわけ)", $00
+	db "(ひきわけ)", $0
 
 Data_11ce3: ; 11ce3
-	db "タイムオーハﾞー", $00
+	db "タイムオーハﾞー", $0
 
 Data_11cec: ; 11cec
-	db "タイム", $00
+	db "タイム", $0
 
 Data_11cf0: ; 11cf0
 	TX_SNUM
-	db $00
+	db $0
 
 Data_11cf3: ; 11cf3
 	db " "
 	TX_SNUM
-	db $00
+	db $0
 
 Data_11cf7: ; 11cf7
 	db ":"
 	TX_SNUM
-	db $00
+	db $0
 
 Func_11cfb: ; 11cfb (4:5cfb)
 	push hl
@@ -20884,7 +20878,7 @@ Func_1242f: ; 1242f (4:642f)
 	ret
 
 Data_12436: ; 12436
-	db "(ひきわけなのてﾞ もういちとﾞ)", $00
+	db "(ひきわけなのてﾞ もういちとﾞ)", $0
 
 Func_12448: ; 12448 (4:6448)
 	push af
@@ -21692,10 +21686,10 @@ Func_12972: ; 12972 (4:6972)
 	ret
 
 Data_12974: ; 12974
-	db "(しﾞふﾞん)", $00
+	db "(しﾞふﾞん)", $0
 
 Data_1297c: ; 1297c
-	db "(あいて)", $00
+	db "(あいて)", $0
 
 Func_12982: ; 12982 (4:6982)
 	push hl
@@ -21919,7 +21913,7 @@ Func_12ab0: ; 12ab0 (4:6ab0)
 
 Data_12ac2: ; 12ac2
 	TX_CALL
-	db $00
+	db $0
 
 Data_12ac5: ; 12ac5
 	dr $12ac5, $12acb
@@ -22144,10 +22138,10 @@ Func_12bba: ; 12bba (4:6bba)
 	ret
 
 Data_12c88: ; 12c88
-	db "カートﾞ(を えらんてﾞ)", $00
+	db "カートﾞ(を えらんてﾞ)", $0
 
 Data_12c96: ; 12c96
-	db "Aホﾞタン(を おしてね)", $00
+	db "Aホﾞタン(を おしてね)", $0
 
 Func_12ca4: ; 12ca4 (4:6ca4)
 	push hl
@@ -22668,11 +22662,11 @@ Func_13071: ; 13071 (4:7071)
 
 Data_13074: ; 13074
 	TX_CALL
-	db $00
+	db $0
 
 Data_13077: ; 13077
 	TX_CALL
-	db $00
+	db $0
 
 Func_1307a: ; 1307a (4:707a)
 	push af
@@ -23562,20 +23556,20 @@ Func_13632: ; 13632 (4:7632)
 	ret
 
 Data_13640: ; 13640
-	db "(かいふく) 50", $00
+	db "(かいふく) 50", $0
 
 Data_1364a: ; 1364a
 	db "タﾞメーシﾞ "
 	TX_SNUM
-	db $00
+	db $0
 
 Data_13654: ; 13654
-	db "(かいふく) 50", $00
+	db "(かいふく) 50", $0
 
 Data_1365e: ; 1365e
 	db "タﾞメーシﾞ "
 	TX_SNUM
-	db $00
+	db $0
 
 Func_13668: ; 13668 (4:7668)
 	inc c
@@ -25564,11 +25558,11 @@ Func_151b9: ; 151b9 (5:51b9)
 
 Data_151bc: ; 151bc
 	TX_CALL
-	db $00
+	db $0
 
 Data_151bf: ; 151bf
 	TX_CALL
-	db $00
+	db $0
 
 Func_151c2: ; 151c2
 	push bc
@@ -26251,10 +26245,10 @@ Func_157b3: ; 157b3 (5:57b3)
 	ret
 
 Data_157b6: ; 157b6
-	db "(てﾞ つかえるわさﾞ)", $00
+	db "(てﾞ つかえるわさﾞ)", $0
 
 Data_157c3: ; 157c3
-	db "^", $00
+	db "^", $0
 
 Func_157c5: ; 157c5 (5:57c5)
 	push hl
@@ -26383,10 +26377,10 @@ Pointers_1588f:
 	dw $0
 
 Data_15895:
-	db "フﾞート(そﾞくは) ソフト(の つけかえかﾞ)", $00
+	db "フﾞート(そﾞくは) ソフト(の つけかえかﾞ)", $0
 
 Data_158ae:
-	db "(てﾞきないよ)", $00
+	db "(てﾞきないよ)", $0
 
 Func_158b7: ; 158b7
 	add sp, -$76
@@ -26611,22 +26605,22 @@ Func_15a9f: ; 15a9f (5:5a9f)
 	ret
 
 Data_15aa2: ; 15aa2
-	db "M", $00
+	db "M", $0
 
 Data_15aa4: ; 15aa4
-	db "(そうひﾞ)ソフト", $00
+	db "(そうひﾞ)ソフト", $0
 
 Data_15aae: ; 15aae
-	db "(もちもの)ソフト", $00
+	db "(もちもの)ソフト", $0
 
 Data_15ab8: ; 15ab8
-	db "(すへﾞてはすﾞす)", $00
+	db "(すへﾞてはすﾞす)", $0
 
 Data_15ac3: ; 15ac3
-	db "(つかえる わさﾞ)", $00
+	db "(つかえる わさﾞ)", $0
 
 Data_15ace: ; 15ace
-	db "ソフト(なし)", $00
+	db "ソフト(なし)", $0
 
 Func_15ad6: ; 15ad6 (5:5ad6)
 	push hl
@@ -27855,26 +27849,26 @@ Func_16364: ; 16364 (5:6364)
 	ret
 
 Data_16367: ; 16367
-	db " ", $00
+	db " ", $0
 
 Data_16369: ; 16369
 	TX_STACK
-	db $00
+	db $0
 
 Data_1636c: ; 1636c
 	TX_STACK
-	db $00
+	db $0
 
 Data_1636f: ; 1636f
 	TX_STACK
-	db $00
+	db $0
 
 Data_16372: ; 16372
 	TX_STACK
-	db $00
+	db $0
 
 Data_16375: ; 16375
-	db " ", $00
+	db " ", $0
 
 Func_16377: ; 16377 (5:6377)
 	push hl
@@ -29131,13 +29125,13 @@ Func_16ce3: ; 16ce3 (5:6ce3)
 	ret
 
 Data_16cee: ; 16cee
-	db "(わさﾞ なし)", $00
+	db "(わさﾞ なし)", $0
 
 Data_16cf7: ; 16cf7
-	db "ロホﾞホﾟン (なし)", $00
+	db "ロホﾞホﾟン (なし)", $0
 
 Data_16d03: ; 16d03
-	db "(とﾞの)ロホﾞホﾟン(をさくしﾞょする)?", $00
+	db "(とﾞの)ロホﾞホﾟン(をさくしﾞょする)?", $0
 
 Func_16d1a: ; 16d1a (5:6d1a)
 	ld l, $12
@@ -29161,7 +29155,7 @@ Func_16d2d: ; 16d2d (5:6d2d)
 	ret
 
 Data_16d3d: ; 16d3d
-	db "アイテム (なし)", $00
+	db "アイテム (なし)", $0
 
 Func_16d47: ; 16d47 (5:6d47)
 	push de
@@ -29183,7 +29177,7 @@ Func_16d47: ; 16d47 (5:6d47)
 	ret
 
 Data_16d61: ; 16d61
-	db "ハﾟーツ (なし)", $00
+	db "ハﾟーツ (なし)", $0
 
 Func_16d6b: ; 16d6b (5:6d6b)
 	push de
@@ -29205,7 +29199,7 @@ Func_16d6b: ; 16d6b (5:6d6b)
 	ret
 
 Data_16d85: ; 16d85
-	db "ソフト (なし)", $00
+	db "ソフト (なし)", $0
 
 Func_16d8e: ; 16d8e
 	push hl
@@ -29769,10 +29763,10 @@ Func_17195: ; 17195 (5:7195)
 
 Data_171a6: ; 171a6
 	TX_STACK
-	db $00
+	db $0
 
 Data_171a9: ; 171a9
-	db " ", $00
+	db " ", $0
 
 Func_171ab: ; 171ab (5:71ab)
 	push af
@@ -30013,7 +30007,7 @@ Func_1739b: ; 1739b (5:739b)
 
 Data_1739e: ; 1739e
 	TX_STACK
-	db $00
+	db $0
 
 Func_173a1: ; 173a1 (5:73a1)
 	push bc
@@ -30040,7 +30034,7 @@ Func_173b2: ; 173b2 (5:73b2)
 
 Data_173c1: ; 173c1
 	TX_CALL
-	db $00
+	db $0
 
 Func_173c4: ; 173c4 (5:73c4)
 	push bc
@@ -30121,7 +30115,7 @@ Func_17429: ; 17429 (5:7429)
 	ret
 
 Data_1743d: ; 1743d
-	db " ", $00
+	db " ", $0
 
 Func_1743f: ; 1743f
 	ld a, [wc39b]
@@ -30156,10 +30150,15 @@ Func_1746c: ; 1746c
 
 Func_17470:: ; 17470 (5:7470)
 	call WaitVideoTransfer
-	ld a, BANK(GFX_4dd2)
+	ld a, BANK(GFX_4ce2)
 	ld [wFarCallDestBank], a
 	ld bc, $10
-	ld de, GFX_4dd2
+IF DEF(SUN)
+	ld de, GFX_4ce2 + $f0
+ENDC
+IF DEF(STAR)
+	ld de, GFX_4ce2 + $100
+ENDC
 	ld hl, $88e0
 	call FarRequestVideoData
 	call WaitVideoTransfer
@@ -30365,18 +30364,18 @@ Func_17965: ; 17965 (5:7965)
 	ret
 
 Data_1796b: ; 1796b
-	db " ", $00
+	db " ", $0
 
 Data_1796d: ; 1796d
 	TX_STACK
-	db $00
+	db $0
 
 Data_17970: ; 17970
 	TX_STACK
-	db $00
+	db $0
 
 Data_17973: ; 17973
-	db " ", $00
+	db " ", $0
 
 Func_17975: ; 17975
 	push hl
@@ -30800,19 +30799,19 @@ Data_20001: ; 20001
 	dr $20001, $200fd
 
 Text_200fd: ; 200fd
-	db "エネだま", $00
+	db "エネだま", $0
 
 Text_20102: ; 20102
-	db "は", $00
+	db "は", $0
 
 Text_20104: ; 20104
-	db "G", $00
+	db "G", $0
 
 Text_20106: ; 20106
-	db "レベル", $00
+	db "レベル", $0
 
 Text_2010a: ; 2010a
-	db "の", $00
+	db "の", $0
 
 Pointers_2010c: ; 2010c
 	dw Text_200fd
@@ -30822,31 +30821,31 @@ Pointers_2010c: ; 2010c
 	dw Text_2010a
 
 Text_20116: ; 20116
-	db "を ひろった", $00
+	db "を ひろった", $0
 
 Text_2011d: ; 2011d
-	db "ひかっている", $00
+	db "ひかっている", $0
 
 Text_20124: ; 20124
-	db "しかし いっぱいなので すてた", $00
+	db "しかし いっぱいなので すてた", $0
 
 Text_20134: ; 20134
-	db "けいけんちが ふえた", $00
+	db "けいけんちが ふえた", $0
 
 Text_2013f: ; 2013f
-	db "に なった", $00
+	db "に なった", $0
 
 Text_20145: ; 20145
-	db "ほかくに せいこうした", $00
+	db "ほかくに せいこうした", $0
 
 Text_20151: ; 20151
-	db "ほかくに しっぱいした", $00
+	db "ほかくに しっぱいした", $0
 
 Text_2015d: ; 2015d
-	db "しかし だれもたべられない", $00
+	db "しかし だれもたべられない", $0
 
 Text_2016b: ; 2016b
-	db "そのコマンドは つかえません", $00
+	db "そのコマンドは つかえません", $0
 
 Pointers_2017a: ; 2017a
 	dw Text_20116
@@ -30860,10 +30859,10 @@ Pointers_2017a: ; 2017a
 	dw Text_2016b
 
 Text_2018c: ; 2018c
-	db "ここでは", $00
+	db "ここでは", $0
 
 Text_20191: ; 20191
-	db "しようできない", $00
+	db "しようできない", $0
 
 Pointers_20199: ; 20199
 	dw Text_2018c
@@ -30871,10 +30870,10 @@ Pointers_20199: ; 20199
 	dw $0
 
 Text_2019f: ; 2019f
-	db "ひとのものを", $00
+	db "ひとのものを", $0
 
 Text_201a6: ; 201a6
-	db "とっちゃいけないよ!", $00
+	db "とっちゃいけないよ!", $0
 
 Pointers_201b1: ; 201b1
 	dw Text_2019f
@@ -30882,17 +30881,17 @@ Pointers_201b1: ; 201b1
 	dw $0
 
 Text_201b7: ; 201b7
-	db "は まだ がまんしている!", $00
+	db "は まだ がまんしている!", $0
 
 Pointers_201c5: ; 201c5
 	dw Text_201b7
 
 INCLUDE "text/attack_categories.asm"
 Text_202d7: ; 202d7
-	db "エネルギー ポイントが", $00
+	db "エネルギー ポイントが", $0
 
 Text_202e3: ; 202e3
-	db "たりません!", $00
+	db "たりません!", $0
 
 Pointers_202ea: ; 202ea
 	dw Text_202d7
@@ -31087,22 +31086,22 @@ Pointers_20441: ; 20441
 	dw Data_20470
 
 Data_2044d: ; 2044d
-	db "(たたかう)", $00
+	db "(たたかう)", $0
 
 Data_20454: ; 20454
-	db "ロホﾞホﾟン", $00
+	db "ロホﾞホﾟン", $0
 
 Data_2045b: ; 2045b
-	db "アイテム", $00
+	db "アイテム", $0
 
 Data_20460: ; 20460
-	db "(にけﾞる)", $00
+	db "(にけﾞる)", $0
 
 Data_20467: ; 20467
-	db "(ほﾞうきﾞょ)", $00
+	db "(ほﾞうきﾞょ)", $0
 
 Data_20470: ; 20470
-	db "(かいひ)", $00
+	db "(かいひ)", $0
 
 DrawBattleSelectionMenu: ; 20476 (8:4476)
 	push hl
@@ -31292,18 +31291,18 @@ DrawBattleSelectionMenu: ; 20476 (8:4476)
 	ret
 
 Data_2058f: ; 2058f
-	db " ", $00
+	db " ", $0
 
 Data_20591: ; 20591
 	TX_STACK
-	db $00
+	db $0
 
 Data_20594: ; 20594
 	TX_STACK
-	db $00
+	db $0
 
 Data_20597: ; 20597
-	db " ", $00
+	db " ", $0
 
 Func_20599: ; 20599
 	push hl
@@ -31816,22 +31815,22 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	ret
 
 Data_2094f: ; 2094f
-	db "/", $00
+	db "/", $0
 
 Data_20951: ; 20951
 	db "タイフﾟ:"
 	TX_CALL
-	db $00
+	db $0
 
 Data_20959: ; 20959
-	db "P", $00
+	db "P", $0
 
 Data_2095b: ; 2095b
-	db "(こうか:)", $00
+	db "(こうか:)", $0
 
 Data_20962: ; 20962
 	TX_STACK
-	db $00
+	db $0
 
 Func_20965: ; 20965
 	push bc
@@ -32197,7 +32196,7 @@ Func_20c8e: ; 20c8e (8:4c8e)
 	ret
 
 Data_20c99: ; 20c99
-	db "(を つかいますか?)", $00
+	db "(を つかいますか?)", $0
 
 Data_20ca5: ; 20ca5
 	dr $20ca5, $20cb4
@@ -34756,7 +34755,7 @@ Func_21f1c: ; 21f1c (8:5f1c)
 	ret
 
 Data_21f22: ; 21f22
-	db "(たへﾞさせますか?)", $00
+	db "(たへﾞさせますか?)", $0
 
 Func_21f2e: ; 21f2e
 	push af
@@ -37210,10 +37209,10 @@ Pointers_2313a: ; 2313a
 	dw $0
 
 Data_23140: ; 23140
-	db "(つうしん)ハﾞトル(てﾞは)", $00
+	db "(つうしん)ハﾞトル(てﾞは)", $0
 
 Data_23150: ; 23150
-	db "(つかえない)!", $00
+	db "(つかえない)!", $0
 
 Func_23159: ; 23159
 	read_hl_from wc2e6
@@ -37247,10 +37246,15 @@ Func_23197: ; 23197 (8:7197)
 	call FarCall
 Func_231ab: ; 231ab (8:71ab)
 	call Func_1fbe
-	ld a, BANK(GFX_4dd2)
+	ld a, BANK(GFX_4ce2)
 	ld [wFarCallDestBank], a
 	ld bc, $10
-	ld de, GFX_4dd2
+IF DEF(SUN)
+	ld de, GFX_4ce2 + $f0
+ENDC
+IF DEF(STAR)
+	ld de, GFX_4ce2 + $100
+ENDC
 	ld hl, $88e0
 	call FarRequestVideoData
 	set_farcall_addrs_hli Func_1445e
@@ -37715,34 +37719,34 @@ Func_24054: ; 24054
 	ret
 
 Text_24065: ; 24065
-	db " ", $00
+	db " ", $0
 
 Text_24067: ; 24067
-	db "!", $00
+	db "!", $0
 
 Text_24069: ; 24069
-	db "は", $00
+	db "は", $0
 
 Text_2406b: ; 2406b
-	db "に", $00
+	db "に", $0
 
 Text_2406d: ; 2406d
-	db "が", $00
+	db "が", $0
 
 Text_2406f: ; 2406f
-	db "の", $00
+	db "の", $0
 
 Text_24071: ; 24071
-	db "を", $00
+	db "を", $0
 
 Text_24073: ; 24073
-	db "で", $00
+	db "で", $0
 
 Text_24075: ; 24075
-	db "/", $00
+	db "/", $0
 
 Text_24077: ; 24077
-	db "G", $00
+	db "G", $0
 
 Pointers_24079: ; 24079
 	dw Text_24065
@@ -37757,49 +37761,49 @@ Pointers_24079: ; 24079
 	dw Text_24077
 
 Text_2408d: ; 2408d
-	db " ", $00
+	db " ", $0
 
 Text_2408f: ; 2408f
-	db "いのり", $00
+	db "いのり", $0
 
 Text_24093: ; 24093
-	db "のろい", $00
+	db "のろい", $0
 
 Text_24097: ; 24097
-	db "ねつ", $00
+	db "ねつ", $0
 
 Text_2409a: ; 2409a
-	db "バグ", $00
+	db "バグ", $0
 
 Text_2409d: ; 2409d
-	db "のうむ", $00
+	db "のうむ", $0
 
 Text_240a1: ; 240a1
-	db "めいれいむし", $00
+	db "めいれいむし", $0
 
 Text_240a8: ; 240a8
-	db "ていし", $00
+	db "ていし", $0
 
 Text_240ac: ; 240ac
-	db "サビ", $00
+	db "サビ", $0
 
 Text_240af: ; 240af
-	db "ぼうそう", $00
+	db "ぼうそう", $0
 
 Text_240b4: ; 240b4
-	db "はんどう", $00
+	db "はんどう", $0
 
 Text_240b9: ; 240b9
-	db "みずびたし", $00
+	db "みずびたし", $0
 
 Text_240bf: ; 240bf
-	db "あぶらまみれ", $00
+	db "あぶらまみれ", $0
 
 Text_240c6: ; 240c6
-	db "バリヤ", $00
+	db "バリヤ", $0
 
 Text_240ca: ; 240ca
-	db "ふのう", $00
+	db "ふのう", $0
 
 Pointers_240ce: ; 240ce
 	dw Text_2408d
@@ -37819,37 +37823,37 @@ Pointers_240ce: ; 240ce
 	dw Text_240ca
 
 Text_240ec: ; 240ec
-	db "ぼうぎょ", $00
+	db "ぼうぎょ", $0
 
 Text_240f1: ; 240f1
-	db "こうげき", $00
+	db "こうげき", $0
 
 Text_240f6: ; 240f6
-	db "すばやさ", $00
+	db "すばやさ", $0
 
 Text_240fb: ; 240fb
-	db "めいちゅう", $00
+	db "めいちゅう", $0
 
 Text_24101: ; 24101
-	db "ポイント", $00
+	db "ポイント", $0
 
 Text_24106: ; 24106
-	db "エネルギー", $00
+	db "エネルギー", $0
 
 Text_2410c: ; 2410c
-	db "ヒット", $00
+	db "ヒット", $0
 
 Text_24110: ; 24110
-	db "こうげき", $00
+	db "こうげき", $0
 
 Text_24115: ; 24115
-	db "わざ", $00
+	db "わざ", $0
 
 Text_24118: ; 24118
-	db "はんどう", $00
+	db "はんどう", $0
 
 Text_2411d: ; 2411d
-	db "ばくはつ", $00
+	db "ばくはつ", $0
 
 Pointers_24122: ; 24122
 	dw Text_240ec
@@ -37865,22 +37869,22 @@ Pointers_24122: ; 24122
 	dw Text_2411d
 
 Text_24138: ; 24138
-	db "たたかう", $00
+	db "たたかう", $0
 
 Text_2413d: ; 2413d
-	db "アイテム", $00
+	db "アイテム", $0
 
 Text_24142: ; 24142
-	db "ロボポン", $00
+	db "ロボポン", $0
 
 Text_24147: ; 24147
-	db "にげる", $00
+	db "にげる", $0
 
 Text_2414b: ; 2414b
-	db "コマンド", $00
+	db "コマンド", $0
 
 Text_24150: ; 24150
-	db "すべて", $00
+	db "すべて", $0
 
 Pointers_24154: ; 24154
 	dw Text_24138
@@ -37891,76 +37895,76 @@ Pointers_24154: ; 24154
 	dw Text_24150
 
 Text_24160: ; 24160
-	db "あがった", $00
+	db "あがった", $0
 
 Text_24165: ; 24165
-	db "さがった", $00
+	db "さがった", $0
 
 Text_2416a: ; 2416a
-	db "うけた", $00
+	db "うけた", $0
 
 Text_2416e: ; 2416e
-	db "つかえません", $00
+	db "つかえません", $0
 
 Text_24175: ; 24175
-	db "はずれた", $00
+	db "はずれた", $0
 
 Text_2417a: ; 2417a
-	db "なっている", $00
+	db "なっている", $0
 
 Text_24180: ; 24180
-	db "なおった", $00
+	db "なおった", $0
 
 Text_24185: ; 24185
-	db "ふせいだ", $00
+	db "ふせいだ", $0
 
 Text_2418a: ; 2418a
-	db "すいとった", $00
+	db "すいとった", $0
 
 Text_24190: ; 24190
-	db "あたえた", $00
+	db "あたえた", $0
 
 Text_24195: ; 24195
-	db "ダメージ", $00
+	db "ダメージ", $0
 
 Text_2419a: ; 2419a
-	db "はんげきした", $00
+	db "はんげきした", $0
 
 Text_241a1: ; 241a1
-	db "ひろった", $00
+	db "ひろった", $0
 
 Text_241a6: ; 241a6
-	db "かけてきた", $00
+	db "かけてきた", $0
 
 Text_241ac: ; 241ac
-	db "かけている", $00
+	db "かけている", $0
 
 Text_241b2: ; 241b2
-	db "しっぱいした", $00
+	db "しっぱいした", $0
 
 Text_241b9: ; 241b9
-	db "になった", $00
+	db "になった", $0
 
 Text_241be: ; 241be
-	db "ダメージをうけとめた", $00
+	db "ダメージをうけとめた", $0
 
 Text_241c9: ; 241c9
-	db "にへった", $00
+	db "にへった", $0
 
 Text_241ce: ; 241ce
-	db "しようできなくなった", $00
+	db "しようできなくなった", $0
 
 Text_241d9: ; 241d9
-	db "の ばくははしっぱいした", $00
+	db "の ばくははしっぱいした", $0
 
 Text_241e6: ; 241e6
-	db "つかった", $00
+	db "つかった", $0
 
 Text_241eb: ; 241eb
-	db "スクラップ", $00
+	db "スクラップ", $0
 
 Text_241f1: ; 241f1
-	db "にした", $00
+	db "にした", $0
 
 Pointers_241f5: ; 241f5
 	dw Text_24160
@@ -37989,55 +37993,55 @@ Pointers_241f5: ; 241f5
 	dw Text_241f1
 
 Text_24225: ; 24225
-	db "えいきょうで ", $00
+	db "えいきょうで ", $0
 
 Text_2422d: ; 2422d
-	db "こうかで ", $00
+	db "こうかで ", $0
 
 Text_24233: ; 24233
-	db "のこうかが きれた", $00
+	db "のこうかが きれた", $0
 
 Text_2423d: ; 2423d
-	db "で まもられている", $00
+	db "で まもられている", $0
 
 Text_24247: ; 24247
-	db "は こんらんしている", $00
+	db "は こんらんしている", $0
 
 Text_24252: ; 24252
-	db "しかし ", $00
+	db "しかし ", $0
 
 Text_24257: ; 24257
-	db "で つつまれた", $00
+	db "で つつまれた", $0
 
 Text_2425f: ; 2425f
-	db "バリアにはねかえされた", $00
+	db "バリアにはねかえされた", $0
 
 Text_2426b: ; 2426b
-	db "さらに", $00
+	db "さらに", $0
 
 Text_2426f: ; 2426f
-	db "のこうかで", $00
+	db "のこうかで", $0
 
 Text_24275: ; 24275
-	db "HP", $00
+	db "HP", $0
 
 Text_24278: ; 24278
-	db "そのわざは", $00
+	db "そのわざは", $0
 
 Text_2427e: ; 2427e
-	db "ぞくせいは", $00
+	db "ぞくせいは", $0
 
 Text_24284: ; 24284
-	db "にげようとした", $00
+	db "にげようとした", $0
 
 Text_2428c: ; 2428c
-	db "しかし にげられなかった", $00
+	db "しかし にげられなかった", $0
 
 Text_24299: ; 24299
-	db "うまく にげた", $00
+	db "うまく にげた", $0
 
 Text_242a1: ; 242a1
-	db "ばくはつした", $00
+	db "ばくはつした", $0
 
 Pointers_242a8: ; 242a8
 	dw Text_24225
@@ -38059,40 +38063,40 @@ Pointers_242a8: ; 242a8
 	dw Text_242a1
 
 Text_242ca: ; 242ca
-	db "ノーマル", $00
+	db "ノーマル", $0
 
 Text_242cf: ; 242cf
-	db "ひ", $00
+	db "ひ", $0
 
 Text_242d1: ; 242d1
-	db "みず", $00
+	db "みず", $0
 
 Text_242d4: ; 242d4
-	db "かぜ", $00
+	db "かぜ", $0
 
 Text_242d7: ; 242d7
-	db "つち", $00
+	db "つち", $0
 
 Text_242da: ; 242da
-	db "かみなり", $00
+	db "かみなり", $0
 
 Text_242df: ; 242df
-	db "こおり", $00
+	db "こおり", $0
 
 Text_242e3: ; 242e3
-	db "せい", $00
+	db "せい", $0
 
 Text_242e6: ; 242e6
-	db "じゃ", $00
+	db "じゃ", $0
 
 Text_242e9: ; 242e9
-	db "りく", $00
+	db "りく", $0
 
 Text_242ec: ; 242ec
-	db "かい", $00
+	db "かい", $0
 
 Text_242ef: ; 242ef
-	db "くう", $00
+	db "くう", $0
 
 Pointers_242f2: ; 242f2
 	dw Text_242ca
@@ -38109,88 +38113,88 @@ Pointers_242f2: ; 242f2
 	dw Text_242ef
 
 Text_2430a: ; 2430a
-	db "こうか17", $00
+	db "こうか17", $0
 
 Text_24310: ; 24310
-	db "EP", $00
+	db "EP", $0
 
 Text_24313: ; 24313
-	db "ついかダメージ", $00
+	db "ついかダメージ", $0
 
 Text_2431b: ; 2431b
-	db "ごうげきのはんどうで", $00
+	db "ごうげきのはんどうで", $0
 
 Text_24326: ; 24326
-	db "じばくした", $00
+	db "じばくした", $0
 
 Text_2432c: ; 2432c
-	db "はんげき", $00
+	db "はんげき", $0
 
 Text_24331: ; 24331
-	db "いちげきひっさつ", $00
+	db "いちげきひっさつ", $0
 
 Text_2433a: ; 2433a
-	db "がまんしている", $00
+	db "がまんしている", $0
 
 Text_24342: ; 24342
-	db "してきた", $00
+	db "してきた", $0
 
 Text_24347: ; 24347
-	db "した", $00
+	db "した", $0
 
 Text_2434a: ; 2434a
-	db "27", $00
+	db "27", $0
 
 Text_2434d: ; 2434d
-	db "28", $00
+	db "28", $0
 
 Text_24350: ; 24350
-	db "はんてんかいふく", $00
+	db "はんてんかいふく", $0
 
 Text_24359: ; 24359
-	db "きゅうしゅう", $00
+	db "きゅうしゅう", $0
 
 Text_24360: ; 24360
-	db "HPかいふく", $00
+	db "HPかいふく", $0
 
 Text_24367: ; 24367
-	db "32", $00
+	db "32", $0
 
 Text_2436a: ; 2436a
-	db "ぼうぎょ", $00
+	db "ぼうぎょ", $0
 
 Text_2436f: ; 2436f
-	db "うけみ", $00
+	db "うけみ", $0
 
 Text_24373: ; 24373
-	db "35", $00
+	db "35", $0
 
 Text_24376: ; 24376
-	db "36", $00
+	db "36", $0
 
 Text_24379: ; 24379
-	db "37", $00
+	db "37", $0
 
 Text_2437c: ; 2437c
-	db "38", $00
+	db "38", $0
 
 Text_2437f: ; 2437f
-	db "れんぞくこうげき", $00
+	db "れんぞくこうげき", $0
 
 Text_24388: ; 24388
-	db "こうか40", $00
+	db "こうか40", $0
 
 Text_2438e: ; 2438e
-	db "こうか41", $00
+	db "こうか41", $0
 
 Text_24394: ; 24394
-	db "こうか42", $00
+	db "こうか42", $0
 
 Text_2439a: ; 2439a
-	db "こうか43", $00
+	db "こうか43", $0
 
 Text_243a0: ; 243a0
-	db "こうか44", $00
+	db "こうか44", $0
 
 Pointers_243a6: ; 243a6
 	dw Text_2430a
@@ -38223,16 +38227,16 @@ Pointers_243a6: ; 243a6
 	dw Text_243a0
 
 Text_243de: ; 243de
-	db "ていしじょうたいで うごけない!", $00
+	db "ていしじょうたいで うごけない!", $0
 
 Text_243ef: ; 243ef
-	db "ぼうぎょしている", $00
+	db "ぼうぎょしている", $0
 
 Text_243f8: ; 243f8
-	db "かいひしようとしている", $00
+	db "かいひしようとしている", $0
 
 Text_24404: ; 24404
-	db "なにもしない", $00
+	db "なにもしない", $0
 
 Pointers_2440b: ; 2440b
 	dw Text_243de
@@ -38241,68 +38245,68 @@ Pointers_2440b: ; 2440b
 	dw Text_24404
 
 Text_24413: ; 24413
-	db "こうげきの はんどうで", $00
+	db "こうげきの はんどうで", $0
 
 Text_2441f: ; 2441f
-	db "の ダメージ", $00
+	db "の ダメージ", $0
 
 Pointers_24426: ; 24426
 	dw Text_24413
 	dw Text_2441f
 
 Text_2442a: ; 2442a
-	db "しかし", $00
+	db "しかし", $0
 
 Text_2442e: ; 2442e
-	db "バリアに はねかえされた", $00
+	db "バリアに はねかえされた", $0
 
 Pointers_2443b: ; 2443b
 	dw Text_2442a
 	dw Text_2442e
 
 Text_2443f: ; 2443f
-	db "きゅうしょ にあたって", $00
+	db "きゅうしょ にあたって", $0
 
 Text_2444b: ; 2444b
-	db "いちげきひっさつ にした!", $00
+	db "いちげきひっさつ にした!", $0
 
 Pointers_24459: ; 24459
 	dw Text_2443f
 	dw Text_2444b
 
 Text_2445d: ; 2445d
-	db "は すべての わざの", $00
+	db "は すべての わざの", $0
 
 Text_24468: ; 24468
-	db "しようが できなくなった!", $00
+	db "しようが できなくなった!", $0
 
 Pointers_24476: ; 24476
 	dw Text_2445d
 	dw Text_24468
 
 Text_2447a: ; 2447a
-	db "きあい をいれた!", $00
+	db "きあい をいれた!", $0
 
 Pointers_24484: ; 24484
 	dw Text_2447a
 
 Text_24486: ; 24486
-	db "しようできなくなった!", $00
+	db "しようできなくなった!", $0
 
 Pointers_24492: ; 24492
 	dw Text_24486
 
 Text_24494: ; 24494
-	db "りく こうげき をふうじた!", $00
+	db "りく こうげき をふうじた!", $0
 
 Text_244a3: ; 244a3
-	db "うみ こうげき をふうじた!", $00
+	db "うみ こうげき をふうじた!", $0
 
 Text_244b2: ; 244b2
-	db "そら こうげき をふうじた!", $00
+	db "そら こうげき をふうじた!", $0
 
 Text_244c1: ; 244c1
-	db "ノーマル こうげき をふうじた!", $00
+	db "ノーマル こうげき をふうじた!", $0
 
 Pointers_244d2: ; 244d2
 	dw Text_24494
@@ -38311,28 +38315,28 @@ Pointers_244d2: ; 244d2
 	dw Text_244c1
 
 Text_244da: ; 244da
-	db "を ぬすんだ", $00
+	db "を ぬすんだ", $0
 
 Pointers_244e1: ; 244e1
 	dw Text_244da
 
 Text_244e3: ; 244e3
-	db "は ", $00
+	db "は ", $0
 
 Text_244e6: ; 244e6
-	db "を", $00
+	db "を", $0
 
 Text_244e8: ; 244e8
-	db "スキャニングした!", $00
+	db "スキャニングした!", $0
 
 Text_244f2: ; 244f2
-	db "の ぼうぎょぞくせいは", $00
+	db "の ぼうぎょぞくせいは", $0
 
 Text_244fe: ; 244fe
-	db "ヒットポイントの", $00
+	db "ヒットポイントの", $0
 
 Text_24507: ; 24507
-	db "じょうたいも わかった!", $00
+	db "じょうたいも わかった!", $0
 
 Pointers_24514: ; 24514
 	dw Text_244e3
@@ -38343,13 +38347,13 @@ Pointers_24514: ; 24514
 	dw Text_24507
 
 Text_24520: ; 24520
-	db "は ", $00
+	db "は ", $0
 
 Text_24523: ; 24523
-	db "から", $00
+	db "から", $0
 
 Text_24526: ; 24526
-	db "ゴールド ごうだつした!", $00
+	db "ゴールド ごうだつした!", $0
 
 Pointers_24533: ; 24533
 	dw Text_24520
@@ -38357,70 +38361,70 @@ Pointers_24533: ; 24533
 	dw Text_24526
 
 Text_24539: ; 24539
-	db "は ", $00
+	db "は ", $0
 
 Text_2453c: ; 2453c
-	db "れんぞくこうげき した!", $00
+	db "れんぞくこうげき した!", $0
 
 Pointers_24549: ; 24549
 	dw Text_24539
 	dw Text_2453c
 
 Text_2454d: ; 2454d
-	db "は ", $00
+	db "は ", $0
 
 Text_24550: ; 24550
-	db "せんせいこうげき した!", $00
+	db "せんせいこうげき した!", $0
 
 Pointers_2455d: ; 2455d
 	dw Text_2454d
 	dw Text_24550
 
 Text_24561: ; 24561
-	db "かけた", $00
+	db "かけた", $0
 
 Text_24565: ; 24565
-	db "かけてきた", $00
+	db "かけてきた", $0
 
 Pointers_2456b: ; 2456b
 	dw Text_24561
 	dw Text_24565
 
 Text_2456f: ; 2456f
-	db "よしっ!", $00
+	db "よしっ!", $0
 
 Text_24574: ; 24574
-	db "かなりきいたみたいだぞ", $00
+	db "かなりきいたみたいだぞ", $0
 
 Pointers_24580: ; 24580
 	dw Text_2456f
 	dw Text_24574
 
 Text_24584: ; 24584
-	db "しまった!", $00
+	db "しまった!", $0
 
 Text_2458a: ; 2458a
-	db "かなりやられたみたいだ", $00
+	db "かなりやられたみたいだ", $0
 
 Pointers_24596: ; 24596
 	dw Text_24584
 	dw Text_2458a
 
 Text_2459a: ; 2459a
-	db "しまった!", $00
+	db "しまった!", $0
 
 Text_245a0: ; 245a0
-	db "ぜんぜんきいていないみたいだ", $00
+	db "ぜんぜんきいていないみたいだ", $0
 
 Pointers_245af: ; 245af
 	dw Text_2459a
 	dw Text_245a0
 
 Text_245b3: ; 245b3
-	db "よしっ!", $00
+	db "よしっ!", $0
 
 Text_245b8: ; 245b8
-	db "ぜんぜんきいていないぞ", $00
+	db "ぜんぜんきいていないぞ", $0
 
 Pointers_245c4: ; 245c4
 	dw Text_245b3
@@ -45893,16 +45897,16 @@ Func_305f4: ; 305f4 (c:45f4)
 	ret
 
 Data_3064a: ; 3064a
-	db "(しょしﾞきん)", $00
+	db "(しょしﾞきん)", $0
 
 Data_30653: ; 30653
-	db "(いらっしゃい)", $00
+	db "(いらっしゃい)", $0
 
 Data_3065c: ; 3065c
-	db "(ようけんはなに)?", $00
+	db "(ようけんはなに)?", $0
 
 Data_30667: ; 30667
-	db "(ほかにも ようかﾞある)?", $00
+	db "(ほかにも ようかﾞある)?", $0
 
 Func_30676: ; 30676 (c:4676)
 	push bc
@@ -46237,13 +46241,13 @@ Func_308a5: ; 308a5 (c:48a5)
 	ret
 
 Data_308c0: ; 308c0
-	db "アイテム(なし)", $00
+	db "アイテム(なし)", $0
 
 Data_308c9: ; 308c9
-	db "ソフト(なし)", $00
+	db "ソフト(なし)", $0
 
 Data_308d1: ; 308d1
-	db "ハﾟーツ(なし)", $00
+	db "ハﾟーツ(なし)", $0
 
 Func_308da: ; 308da (c:48da)
 	push bc
@@ -47232,19 +47236,19 @@ Func_30fe0: ; 30fe0 (c:4fe0)
 	ret
 
 Data_30fe7: ; 30fe7
-	db "0G", $00
+	db "0G", $0
 
 Data_30fea: ; 30fea
-	db "    ", $00
+	db "    ", $0
 
 Data_30fef: ; 30fef
-	db "G", $00
+	db "G", $0
 
 Data_30ff1: ; 30ff1
-	db "00G", $00
+	db "00G", $0
 
 Data_30ff5: ; 30ff5
-	db "0G", $00
+	db "0G", $0
 
 Func_30ff8: ; 30ff8 (c:4ff8)
 	push af
@@ -47271,10 +47275,10 @@ Func_31024: ; 31024 (c:5024)
 	ret
 
 Data_31025: ; 31025
-	db "(なにを かう)?", $00
+	db "(なにを かう)?", $0
 
 Data_3102f: ; 3102f
-	db "(なにを うってくれる)?", $00
+	db "(なにを うってくれる)?", $0
 
 Func_3103d: ; 3103d
 	push hl
@@ -47817,36 +47821,36 @@ Func_31432: ; 31432 (c:5432)
 	ret
 
 Data_31435: ; 31435
-	db "(ねたﾞん)", $00
+	db "(ねたﾞん)", $0
 
 Data_3143c: ; 3143c
 	db "     "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_31446: ; 31446
 	db "    "
 	TX_UNUM
-	db "0G", $00
+	db "0G", $0
 
 Data_31450: ; 31450
 	db "   "
 	TX_UNUM
-	db "0G", $00
+	db "0G", $0
 
 Data_31459: ; 31459
 	db "  "
 	TX_UNUM
-	db "0G", $00
+	db "0G", $0
 
 Data_31461: ; 31461
 	db " "
 	TX_UNUM
-	db "0G", $00
+	db "0G", $0
 
 Data_31468: ; 31468
 	TX_UNUM
-	db "0G", $00
+	db "0G", $0
 
 Func_31475: ; 31475
 	ld l, $12
@@ -47939,16 +47943,16 @@ Func_31514: ; 31514 (c:5514)
 
 Data_31515: ; 31515
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_3151a: ; 3151a
-	db "(になります)", $00
+	db "(になります)", $0
 
 Data_31522: ; 31522
-	db "(おもとめになりますか)?", $00
+	db "(おもとめになりますか)?", $0
 
 Data_31530: ; 31530
-	db "(うりますか)?", $00
+	db "(うりますか)?", $0
 
 Func_31539: ; 31539 (c:5539)
 	push de
@@ -48236,7 +48240,7 @@ Func_31750: ; 31750 (c:5750)
 	ret
 
 Data_31756: ; 31756
-	db "(しょしﾞきん)", $00
+	db "(しょしﾞきん)", $0
 
 Func_3175f: ; 3175f
 	add sp, -$3e
@@ -48463,47 +48467,47 @@ Func_31932: ; 31932 (c:5932)
 	ret
 
 Data_31935: ; 31935
-	db "タイフﾟ:", $00
+	db "タイフﾟ:", $0
 
 Data_3193b: ; 3193b
-	db "RAM:", $00
+	db "RAM:", $0
 
 Data_31940: ; 31940
 	db " "
 	TX_SNUM
-	db "M", $00
+	db "M", $0
 
 Data_31945: ; 31945
-	db "(いりょく)", $00
+	db "(いりょく)", $0
 
 Data_3194c: ; 3194c
 	TX_STACK
 	TX_STACK
-	db $00
+	db $0
 
 Data_31951: ; 31951
-	db "(こうけﾞき)", $00
+	db "(こうけﾞき)", $0
 
 Data_31959: ; 31959
-	db "(ほﾞうきﾞょ)", $00
+	db "(ほﾞうきﾞょ)", $0
 
 Data_31962: ; 31962
-	db "(すはﾞやさ)", $00
+	db "(すはﾞやさ)", $0
 
 Data_3196a: ; 3196a
-	db "RAM:", $00
+	db "RAM:", $0
 
 Data_3196f: ; 3196f
-	db "M", $00
+	db "M", $0
 
 Data_31971: ; 31971
-	db "(すへﾞての)アーム(そﾞくかﾞ そうひﾞかのう)", $00
+	db "(すへﾞての)アーム(そﾞくかﾞ そうひﾞかのう)", $0
 
 Data_3198b: ; 3198b
-	db "(すへﾞての)ムーフﾞ(そﾞくかﾞ そうひﾞかのう)", $00
+	db "(すへﾞての)ムーフﾞ(そﾞくかﾞ そうひﾞかのう)", $0
 
 Data_319a6: ; 319a6
-	db "フﾞート(そﾞくいかﾞいかﾞ そうひﾞかのう)", $00
+	db "フﾞート(そﾞくいかﾞいかﾞ そうひﾞかのう)", $0
 
 Func_319be: ; 319be (c:59be)
 	ld a, l
@@ -48626,32 +48630,32 @@ Func_31a96: ; 31a96 (c:5a96)
 Data_31a97: ; 31a97
 	db "      "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_31aa2: ; 31aa2
 	db "     "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_31aac: ; 31aac
 	db "    "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_31ab5: ; 31ab5
 	db "   "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_31abd: ; 31abd
 	db "  "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_31ac4: ; 31ac4
 	db " "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_31aca: ; 31aca
 	dw Data_31ad0
@@ -48659,10 +48663,10 @@ Data_31aca: ; 31aca
 	dw $0
 
 Data_31ad0: ; 31ad0
-	db "(そうこかﾞ いっはﾟいなのてﾞ)", $00
+	db "(そうこかﾞ いっはﾟいなのてﾞ)", $0
 
 Data_31ae2: ; 31ae2
-	db "(さくしﾞょしてくたﾞさい)", $00
+	db "(さくしﾞょしてくたﾞさい)", $0
 
 Func_31af1:: ; 31af1
 	push af
@@ -49326,7 +49330,7 @@ Pointers_3207b: ; 3207b
 	dw $0
 
 Data_3207f: ; 3207f
-	db "(その)ロホﾞホﾟン(は) (えらへﾞないよ)", $00
+	db "(その)ロホﾞホﾟン(は) (えらへﾞないよ)", $0
 
 Pointers_32097: ; 32097
 	dw Data_3209d
@@ -49334,10 +49338,10 @@ Pointers_32097: ; 32097
 	dw $0
 
 Data_3209d: ; 3209d
-	db "リモコン(の しﾞゅしんに)", $00
+	db "リモコン(の しﾞゅしんに)", $0
 
 Data_320ac: ; 320ac
-	db "(しっはﾟいしました)", $00
+	db "(しっはﾟいしました)", $0
 
 Pointers_320b8: ; 320b8
 	dw Data_320be
@@ -49345,10 +49349,10 @@ Pointers_320b8: ; 320b8
 	dw $0
 
 Data_320be: ; 320be
-	db "リモコン(の しﾞゅしんに)", $00
+	db "リモコン(の しﾞゅしんに)", $0
 
 Data_320cd: ; 320cd
-	db "(せいこうしました)", $00
+	db "(せいこうしました)", $0
 
 Func_320d8: ; 320d8
 	push af
@@ -49574,7 +49578,7 @@ Func_322a1: ; 322a1 (c:62a1)
 	ret
 
 Data_322a7: ; 322a7
-	db "リモコン(の) ホﾞタン(を おしてね)", $00
+	db "リモコン(の) ホﾞタン(を おしてね)", $0
 
 Data_322bc: ; 322bc
 	dr $322bc, $322ce
@@ -50114,7 +50118,7 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld a, [hl]
 	dec a
 	call FarCall
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	ld a, l
 	or h
 	jp z, Func_326a5
@@ -50842,7 +50846,7 @@ Func_32c1c: ; 32c1c (c:6c1c)
 	ret
 
 Data_32c27: ; 32c27
-	db "(しょしﾞきん)", $00
+	db "(しょしﾞきん)", $0
 
 Func_32c30: ; 32c30
 	push hl
@@ -51292,28 +51296,28 @@ Func_32f6f: ; 32f6f (c:6f6f)
 	ret
 
 Data_32f7a: ; 32f7a
-	db "(しょしﾞきん)", $00
+	db "(しょしﾞきん)", $0
 
 Pointers_32f83: ; 32f83
 	dw Data_32f87
 	dw $0
 
 Data_32f87: ; 32f87
-	db "(おかねかﾞたりないよ)", $00
+	db "(おかねかﾞたりないよ)", $0
 
 Pointers_32f94: ; 32f94
 	dw Data_32f98
 	dw $0
 
 Data_32f98: ; 32f98
-	db "(これいしﾞょう かえないよ)", $00
+	db "(これいしﾞょう かえないよ)", $0
 
 Pointers_32fa8: ; 32fa8
 	dw Data_32fac
 	dw $0
 
 Data_32fac: ; 32fac
-	db "(とﾞうもありかﾞとう)", $00
+	db "(とﾞうもありかﾞとう)", $0
 
 Pointers_32fb9: ; 32fb9
 	dw Data_32fbf
@@ -51321,17 +51325,17 @@ Pointers_32fb9: ; 32fb9
 	dw $0
 
 Data_32fbf: ; 32fbf
-	db "(とﾞうもありかﾞとう)", $00
+	db "(とﾞうもありかﾞとう)", $0
 
 Data_32fcc: ; 32fcc
-	db "(ほかにも かうかい)?", $00
+	db "(ほかにも かうかい)?", $0
 
 Pointers_32fd9: ; 32fd9
 	dw Data_32fdd
 	dw $0
 
 Data_32fdd: ; 32fdd
-	db "(ほかのものは かうかい)?", $00
+	db "(ほかのものは かうかい)?", $0
 
 Pointers_32fec: ; 32fec
 	dw Data_32ff2
@@ -51339,17 +51343,17 @@ Pointers_32fec: ; 32fec
 	dw $0
 
 Data_32ff2: ; 32ff2
-	db "(とﾞうもありかﾞとう)", $00
+	db "(とﾞうもありかﾞとう)", $0
 
 Data_32fff: ; 32fff
-	db "(ほかにも うるかい)?", $00
+	db "(ほかにも うるかい)?", $0
 
 Pointers_3300c: ; 3300c
 	dw Data_33010
 	dw $0
 
 Data_33010: ; 33010
-	db "(ほかのものは うるかい)?", $00
+	db "(ほかのものは うるかい)?", $0
 
 Pointers_3301f: ; 3301f
 	dw Data_33025
@@ -51357,17 +51361,17 @@ Pointers_3301f: ; 3301f
 	dw $0
 
 Data_33025: ; 33025
-	db "(とﾞうもありかﾞとう)", $00
+	db "(とﾞうもありかﾞとう)", $0
 
 Data_33032: ; 33032
-	db "(またきてね)", $00
+	db "(またきてね)", $0
 
 Pointers_3303a: ; 3303a
 	dw Data_3303e
 	dw $0
 
 Data_3303e: ; 3303e
-	db "(それは うっちゃたﾞめ)!", $00
+	db "(それは うっちゃたﾞめ)!", $0
 
 Func_3304d: ; 3304d (c:704d)
 	push hl
@@ -51727,10 +51731,10 @@ Func_33375: ; 33375
 	ret
 
 Data_333a6: ; 333a6
-	db "(ひつよう)エネルキﾞー", $00
+	db "(ひつよう)エネルキﾞー", $0
 
 Data_333b3: ; 333b3
-	db "エネルキﾞー", $00
+	db "エネルキﾞー", $0
 
 Func_333ba:: ; 333ba
 	push af
@@ -51870,19 +51874,19 @@ Func_334d6: ; 334d6 (c:74d6)
 	ret
 
 Data_334ee: ; 334ee
-	db "ヘ", $00
+	db "ヘ", $0
 
 Data_334f0: ; 334f0
-	db "(しんか かのう)", $00
+	db "(しんか かのう)", $0
 
 Data_334fa: ; 334fa
-	db "(しんか てﾞきないよ)", $00
+	db "(しんか てﾞきないよ)", $0
 
 Data_33507: ; 33507
-	db "エネルキﾞー (ふﾞそくてﾞ)", $00
+	db "エネルキﾞー (ふﾞそくてﾞ)", $0
 
 Data_33517: ; 33517
-	db "(しんか てﾞきないよ)", $00
+	db "(しんか てﾞきないよ)", $0
 
 Func_33524: ; 33524
 	ld c, l
@@ -52600,16 +52604,16 @@ Func_33a03: ; 33a03 (c:7a03)
 	ret
 
 Data_33a17: ; 33a17
-	db "_", $00
+	db "_", $0
 
 Data_33a19: ; 33a19
-	db "b", $00
+	db "b", $0
 
 Data_33a1b: ; 33a1b
-	db "b", $00
+	db "b", $0
 
 Data_33a1d: ; 33a1d
-	db "_", $00
+	db "_", $0
 
 Func_33a1f: ; 33a1f
 	push bc
@@ -53003,35 +53007,35 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	ret
 
 Data_33d73: ; 33d73
-	db ":", $00
+	db ":", $0
 
 Data_33d75: ; 33d75
-	db "(そうひﾞちゅうの)", $00
+	db "(そうひﾞちゅうの)", $0
 
 Data_33d80: ; 33d80
-	db "ハﾟーツ", $00
+	db "ハﾟーツ", $0
 
 Data_33d85: ; 33d85
-	db "(こうけﾞき )", $00
+	db "(こうけﾞき )", $0
 
 Data_33d8e: ; 33d8e
-	db "(ほﾞうきﾞょ )", $00
+	db "(ほﾞうきﾞょ )", $0
 
 Data_33d98: ; 33d98
-	db "(すはﾞやさ )", $00
+	db "(すはﾞやさ )", $0
 
 Data_33da1: ; 33da1
-	db "RAM:", $00
+	db "RAM:", $0
 
 Data_33da6: ; 33da6
-	db "M", $00
+	db "M", $0
 
 Pointers_33da8: ; 33da8
 	dw Data_33dac
 	dw $0
 
 Data_33dac: ; 33dac
-	db "(すてちゃ)タﾞメ!", $00
+	db "(すてちゃ)タﾞメ!", $0
 
 Func_33db7: ; 33db7 (c:7db7)
 	push bc
@@ -53218,16 +53222,16 @@ Func_33f3d: ; 33f3d (c:7f3d)
 	ret
 
 Data_33f40: ; 33f40
-	db "(すてる こすうを)", $00
+	db "(すてる こすうを)", $0
 
 Data_33f4b: ; 33f4b
-	db "(にゅうりょくしてくたﾞさい)", $00
+	db "(にゅうりょくしてくたﾞさい)", $0
 
 Data_33f5b: ; 33f5b
-	db "(ほんとうに)", $00
+	db "(ほんとうに)", $0
 
 Data_33f63: ; 33f63
-	db "(すてても いいてﾞすか?)", $00
+	db "(すてても いいてﾞすか?)", $0
 
 Func_33f72: ; 33f72 (c:7f72)
 	push hl
@@ -53568,10 +53572,10 @@ Func_4c304: ; 4c304 (13:4304)
 	ret
 
 Data_4c307: ; 4c307
-	db "(つうしんてﾞ あそふﾞまえに)", $00
+	db "(つうしんてﾞ あそふﾞまえに)", $0
 
 Data_4c318: ; 4c318
-	db "(きろくしますか)?", $00
+	db "(きろくしますか)?", $0
 
 Func_4c323: ; 4c323 (13:4323)
 	call FillVisibleAreaWithBlankTile
@@ -53634,10 +53638,10 @@ Func_4c3bc: ; 4c3bc (13:43bc)
 	ret
 
 Data_4c3be: ; 4c3be
-	db "(ほんしﾞつは)", $00
+	db "(ほんしﾞつは)", $0
 
 Data_4c3c7: ; 4c3c7
-	db "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?", $00
+	db "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?", $0
 
 Func_4c3de: ; 4c3de (13:43de)
 	ld a, [wc38d]
@@ -53842,10 +53846,10 @@ Func_4c5dd: ; 4c5dd (13:45dd)
 	ret
 
 Data_4c5df: ; 4c5df
-	db "(たたﾞいま)", $00
+	db "(たたﾞいま)", $0
 
 Data_4c5e7: ; 4c5e7
-	db "モートﾞ (せんたくちゅう)", $00
+	db "モートﾞ (せんたくちゅう)", $0
 
 Pointers_4c5f6: ; 4c5f6
 	dw Data_4c604
@@ -53857,29 +53861,29 @@ Pointers_4c5f6: ; 4c5f6
 	dw $0
 
 Data_4c604: ; 4c604
-	db "タイトルマッチ(てﾞは)", $00
+	db "タイトルマッチ(てﾞは)", $0
 
 Data_4c611: ; 4c611
-	db "ヘﾞルト(をかけて たたかいます)", $00
+	db "ヘﾞルト(をかけて たたかいます)", $0
 
 Data_4c623: ; 4c623
-	db "(かてはﾞ あいての もっている)", $00
+	db "(かてはﾞ あいての もっている)", $0
 
 Data_4c635: ; 4c635
-	db "ヘﾞルト(を うはﾞうことかﾞ てﾞきますかﾞ)", $00
+	db "ヘﾞルト(を うはﾞうことかﾞ てﾞきますかﾞ)", $0
 
 Data_4c64e: ; 4c64e
-	db "(まけると しﾞふﾞんの もっている)", $00
+	db "(まけると しﾞふﾞんの もっている)", $0
 
 Data_4c662: ; 4c662
-	db "ヘﾞルト(を うはﾞわれて しまいます)", $00
+	db "ヘﾞルト(を うはﾞわれて しまいます)", $0
 
 Pointers_4c677: ; 4c677
 	dw Data_4c67b
 	dw $0
 
 Data_4c67b: ; 4c67b
-	db "ヘﾞルト(かﾞ ありません)", $00
+	db "ヘﾞルト(かﾞ ありません)", $0
 
 Func_4c68a: ; 4c68a
 	push bc
@@ -54164,28 +54168,28 @@ Func_4c8f7: ; 4c8f7 (13:48f7)
 	ret
 
 Data_4c8f9: ; 4c8f9
-	db "ロホﾞホﾟン(こうかんてﾞ)", $00
+	db "ロホﾞホﾟン(こうかんてﾞ)", $0
 
 Data_4c908: ; 4c908
-	db "タイトルマッチ(てﾞ)", $00
+	db "タイトルマッチ(てﾞ)", $0
 
 Data_4c914: ; 4c914
-	db "ノンタイトルマッチ(てﾞ)", $00
+	db "ノンタイトルマッチ(てﾞ)", $0
 
 Data_4c922: ; 4c922
-	db "ハﾟーティーハﾞトル(てﾞ)", $00
+	db "ハﾟーティーハﾞトル(てﾞ)", $0
 
 Data_4c931: ; 4c931
-	db "ロホﾞホﾟン(あけﾞるてﾞ)", $00
+	db "ロホﾞホﾟン(あけﾞるてﾞ)", $0
 
 Data_4c940: ; 4c940
-	db "ロホﾞホﾟン(もらうてﾞ)", $00
+	db "ロホﾞホﾟン(もらうてﾞ)", $0
 
 Data_4c94e: ; 4c94e
-	db "(たいせん しますか)?", $00
+	db "(たいせん しますか)?", $0
 
 Data_4c95b: ; 4c95b
-	db "(いいてﾞすか)?", $00
+	db "(いいてﾞすか)?", $0
 
 Pointers_4c965: ; 4c965
 	dw Data_4c96b
@@ -54193,10 +54197,10 @@ Pointers_4c965: ; 4c965
 	dw $0
 
 Data_4c96b: ; 4c96b
-	db "ハﾟーティー(に 4たい) ロホﾞホﾟン(かﾞ)", $00
+	db "ハﾟーティー(に 4たい) ロホﾞホﾟン(かﾞ)", $0
 
 Data_4c984: ; 4c984
-	db "(いるから もらえないよ)", $00
+	db "(いるから もらえないよ)", $0
 
 Pointers_4c992: ; 4c992
 	dw Data_4c998
@@ -54204,10 +54208,10 @@ Pointers_4c992: ; 4c992
 	dw $0
 
 Data_4c998: ; 4c998
-	db "ハﾟーティー(に 1たいしか) ロホﾞホﾟン(かﾞ)", $00
+	db "ハﾟーティー(に 1たいしか) ロホﾞホﾟン(かﾞ)", $0
 
 Data_4c9b3: ; 4c9b3
-	db "(いないから あけﾞれないよ)", $00
+	db "(いないから あけﾞれないよ)", $0
 
 Pointers_4c9c3: ; 4c9c3
 	dw Data_4c9c9
@@ -54215,10 +54219,10 @@ Pointers_4c9c3: ; 4c9c3
 	dw $0
 
 Data_4c9c9: ; 4c9c9
-	db "(あいての) ロホﾞホﾟン(かﾞ 4たい)", $00
+	db "(あいての) ロホﾞホﾟン(かﾞ 4たい)", $0
 
 Data_4c9df: ; 4c9df
-	db "(いるから あけﾞれないよ)", $00
+	db "(いるから あけﾞれないよ)", $0
 
 Pointers_4c9ee: ; 4c9ee
 	dw Data_4c9f4
@@ -54226,10 +54230,10 @@ Pointers_4c9ee: ; 4c9ee
 	dw $0
 
 Data_4c9f4: ; 4c9f4
-	db "(あいての) ロホﾞホﾟン(かﾞ 1たい)", $00
+	db "(あいての) ロホﾞホﾟン(かﾞ 1たい)", $0
 
 Data_4ca0a: ; 4ca0a
-	db "(しかいないから もらえないよ)", $00
+	db "(しかいないから もらえないよ)", $0
 
 Pointers_4ca1b: ; 4ca1b
 	dw Data_4ca21
@@ -54237,24 +54241,24 @@ Pointers_4ca1b: ; 4ca1b
 	dw $0
 
 Data_4ca21: ; 4ca21
-	db "(その) ロホﾞホﾟン(は)", $00
+	db "(その) ロホﾞホﾟン(は)", $0
 
 Data_4ca30: ; 4ca30
-	db "(あけﾞれないよ)", $00
+	db "(あけﾞれないよ)", $0
 
 Pointers_4ca3a: ; 4ca3a
 	dw Data_4ca3e
 	dw $0
 
 Data_4ca3e: ; 4ca3e
-	db "(あけﾞたよ)", $00
+	db "(あけﾞたよ)", $0
 
 Pointers_4ca46: ; 4ca46
 	dw Data_4ca4a
 	dw $0
 
 Data_4ca4a: ; 4ca4a
-	db "(もらったよ)", $00
+	db "(もらったよ)", $0
 
 Pointers_4ca52: ; 4ca52
 	dw Data_4ca58
@@ -54262,10 +54266,10 @@ Pointers_4ca52: ; 4ca52
 	dw $0
 
 Data_4ca58: ; 4ca58
-	db "(たたかえる) ロホﾞホﾟン(かﾞ)", $00
+	db "(たたかえる) ロホﾞホﾟン(かﾞ)", $0
 
 Data_4ca6b: ; 4ca6b
-	db "(いなくなるよ)", $00
+	db "(いなくなるよ)", $0
 
 Func_4ca74: ; 4ca74 (13:4a74)
 	push af
@@ -54385,10 +54389,10 @@ Func_4cb64: ; 4cb64 (13:4b64)
 	ret
 
 Data_4cb65: ; 4cb65
-	db "(ほんしﾞつは)", $00
+	db "(ほんしﾞつは)", $0
 
 Data_4cb6e: ; 4cb6e
-	db "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?", $00
+	db "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?", $0
 
 Func_4cb85: ; 4cb85
 	ld a, $ff
@@ -54407,7 +54411,7 @@ Pointers_4cba7: ; 4cba7
 	dw $0
 
 Data_4cbab: ; 4cbab
-	db "スクラッフﾟ(に なっているよ)", $00
+	db "スクラッフﾟ(に なっているよ)", $0
 
 Func_4cbbc: ; 4cbbc (13:4bbc)
 	push bc
@@ -54535,19 +54539,19 @@ Pointers_4cccb: ; 4cccb
 	dw Data_4ccf2
 
 Data_4ccd5: ; 4ccd5
-	db "ハﾞトラー", $00
+	db "ハﾞトラー", $0
 
 Data_4ccdb: ; 4ccdb
-	db "シﾞャンハﾟー", $00
+	db "シﾞャンハﾟー", $0
 
 Data_4cce3: ; 4cce3
-	db "スヒﾟータﾞー", $00
+	db "スヒﾟータﾞー", $0
 
 Data_4cceb: ; 4cceb
-	db "シールタﾞー", $00
+	db "シールタﾞー", $0
 
 Data_4ccf2: ; 4ccf2
-	db "ハﾟンチャー", $00
+	db "ハﾟンチャー", $0
 
 Func_4ccf9: ; 4ccf9
 	push bc
@@ -54659,10 +54663,10 @@ Func_4cd88: ; 4cd88 (13:4d88)
 	ret
 
 Data_4cdb1: ; 4cdb1
-	db "(たいせんする) ステーシﾞ(を)", $00
+	db "(たいせんする) ステーシﾞ(を)", $0
 
 Data_4cdc3: ; 4cdc3
-	db "(えらんてﾞくたﾞさい)", $00
+	db "(えらんてﾞくたﾞさい)", $0
 
 Pointers_4cdd0: ; 4cdd0
 	dw Data_4cde4
@@ -54679,34 +54683,34 @@ Pointers_4cdda: ; 4cdda
 	dw Data_4ce5c
 
 Data_4cde4: ; 4cde4
-	db "(つうしﾞょうの)ハﾞトル(てﾞ)", $00
+	db "(つうしﾞょうの)ハﾞトル(てﾞ)", $0
 
 Data_4cdf6: ; 4cdf6
-	db "(ひきょりをきそう)", $00
+	db "(ひきょりをきそう)", $0
 
 Data_4ce01: ; 4ce01
-	db "タイム(をきそう)", $00
+	db "タイム(をきそう)", $0
 
 Data_4ce0b: ; 4ce0b
-	db "(かﾞんしﾞょうさをきそう)", $00
+	db "(かﾞんしﾞょうさをきそう)", $0
 
 Data_4ce1a: ; 4ce1a
-	db "(はかいりょくをきそう)", $00
+	db "(はかいりょくをきそう)", $0
 
 Data_4ce27: ; 4ce27
-	db "((たいせんします)", $00
+	db "((たいせんします)", $0
 
 Data_4ce32: ; 4ce32
-	db "シﾞャンフﾟケﾞーム(てﾞ)", $00
+	db "シﾞャンフﾟケﾞーム(てﾞ)", $0
 
 Data_4ce41: ; 4ce41
-	db "(めいろ)ケﾞーム(てﾞ)", $00
+	db "(めいろ)ケﾞーム(てﾞ)", $0
 
 Data_4ce4f: ; 4ce4f
-	db "カートﾞケﾞーム(てﾞ)", $00
+	db "カートﾞケﾞーム(てﾞ)", $0
 
 Data_4ce5c: ; 4ce5c
-	db "ハﾟンチンクﾞケﾞーム(てﾞ)", $00
+	db "ハﾟンチンクﾞケﾞーム(てﾞ)", $0
 
 Func_4ce6c: ; 4ce6c (13:4e6c)
 	push af
@@ -55143,7 +55147,7 @@ Func_4d1c7: ; 4d1c7 (13:51c7)
 Data_4d1d4: ; 4d1d4
 	db "(たﾞい)"
 	TX_SNUM
-	db "(しあい)", $00
+	db "(しあい)", $0
 
 Func_4d1e1: ; 4d1e1 (13:51e1)
 	push af
@@ -55865,22 +55869,22 @@ Func_4d769: ; 4d769 (13:5769)
 Data_4d7ac: ; 4d7ac
 	db "(たﾞい)"
 	TX_SNUM
-	db "(しあい) ", $00
+	db "(しあい) ", $0
 
 Data_4d7ba: ; 4d7ba
-	db "(かち)", $00
+	db "(かち)", $0
 
 Data_4d7bf: ; 4d7bf
-	db "(まけ)", $00
+	db "(まけ)", $0
 
 Data_4d7c4: ; 4d7c4
-	db "(かち)", $00
+	db "(かち)", $0
 
 Data_4d7c9: ; 4d7c9
-	db "(まけ)", $00
+	db "(まけ)", $0
 
 Data_4d7ce: ; 4d7ce
-	db "(のしょうり)", $00
+	db "(のしょうり)", $0
 
 Func_4d7d6: ; 4d7d6 (13:57d6)
 	push de
@@ -56193,7 +56197,7 @@ Func_4da78: ; 4da78 (13:5a78)
 Data_4dac7: ; 4dac7
 	db "(たﾞい)"
 	TX_SNUM
-	db "(しあい) ", $00
+	db "(しあい) ", $0
 
 Func_4dad5: ; 4dad5 (13:5ad5)
 	push af
@@ -56487,27 +56491,27 @@ Func_4dc89: ; 4dc89 (13:5c89)
 	ret
 
 Data_4dcee: ; 4dcee
-	db "ホﾞク(のなまえを きめて)ネ", $00
+	db "ホﾞク(のなまえを きめて)ネ", $0
 
 Data_4dcfe: ; 4dcfe
-	db "b___", $00
+	db "b___", $0
 
 Data_4dd03: ; 4dd03
-	db "ロホﾞホﾟン(のなまえを きめて)ネ", $00
+	db "ロホﾞホﾟン(のなまえを きめて)ネ", $0
 
 Data_4dd16: ; 4dd16
-	db "b____", $00
+	db "b____", $0
 
 Data_4dd1c: ; 4dd1c
 	TX_STACK
-	db $00
+	db $0
 
 Data_4dd1f: ; 4dd1f
 	TX_STACK
-	db $00
+	db $0
 
 Data_4dd22: ; 4dd22
-	db "(けってい)", $00
+	db "(けってい)", $0
 
 Pointers_4dd29: ; 4dd29
 	dw Data_4de01
@@ -56620,328 +56624,328 @@ Pointers_4dd29: ; 4dd29
 	dw Data_4df43
 
 Data_4de01: ; 4de01
-	db "(あ)", $00
+	db "(あ)", $0
 
 Data_4de05: ; 4de05
-	db "(い)", $00
+	db "(い)", $0
 
 Data_4de09: ; 4de09
-	db "(う)", $00
+	db "(う)", $0
 
 Data_4de0d: ; 4de0d
-	db "(え)", $00
+	db "(え)", $0
 
 Data_4de11: ; 4de11
-	db "(お)", $00
+	db "(お)", $0
 
 Data_4de15: ; 4de15
-	db "(ゃ)", $00
+	db "(ゃ)", $0
 
 Data_4de19: ; 4de19
-	db "(か)", $00
+	db "(か)", $0
 
 Data_4de1d: ; 4de1d
-	db "(き)", $00
+	db "(き)", $0
 
 Data_4de21: ; 4de21
-	db "(く)", $00
+	db "(く)", $0
 
 Data_4de25: ; 4de25
-	db "(け)", $00
+	db "(け)", $0
 
 Data_4de29: ; 4de29
-	db "(こ)", $00
+	db "(こ)", $0
 
 Data_4de2d: ; 4de2d
-	db "(ゅ)", $00
+	db "(ゅ)", $0
 
 Data_4de31: ; 4de31
-	db "(さ)", $00
+	db "(さ)", $0
 
 Data_4de35: ; 4de35
-	db "(し)", $00
+	db "(し)", $0
 
 Data_4de39: ; 4de39
-	db "(す)", $00
+	db "(す)", $0
 
 Data_4de3d: ; 4de3d
-	db "(せ)", $00
+	db "(せ)", $0
 
 Data_4de41: ; 4de41
-	db "(そ)", $00
+	db "(そ)", $0
 
 Data_4de45: ; 4de45
-	db "(ょ)", $00
+	db "(ょ)", $0
 
 Data_4de49: ; 4de49
-	db "(た)", $00
+	db "(た)", $0
 
 Data_4de4d: ; 4de4d
-	db "(ち)", $00
+	db "(ち)", $0
 
 Data_4de51: ; 4de51
-	db "(つ)", $00
+	db "(つ)", $0
 
 Data_4de55: ; 4de55
-	db "(て)", $00
+	db "(て)", $0
 
 Data_4de59: ; 4de59
-	db "(と)", $00
+	db "(と)", $0
 
 Data_4de5d: ; 4de5d
-	db "(っ)", $00
+	db "(っ)", $0
 
 Data_4de61: ; 4de61
-	db "(な)", $00
+	db "(な)", $0
 
 Data_4de65: ; 4de65
-	db "(に)", $00
+	db "(に)", $0
 
 Data_4de69: ; 4de69
-	db "(ぬ)", $00
+	db "(ぬ)", $0
 
 Data_4de6d: ; 4de6d
-	db "(ね)", $00
+	db "(ね)", $0
 
 Data_4de71: ; 4de71
-	db "(の)", $00
+	db "(の)", $0
 
 Data_4de75: ; 4de75
-	db "(ﾞ)", $00
+	db "(ﾞ)", $0
 
 Data_4de79: ; 4de79
-	db "(は)", $00
+	db "(は)", $0
 
 Data_4de7d: ; 4de7d
-	db "(ひ)", $00
+	db "(ひ)", $0
 
 Data_4de81: ; 4de81
-	db "(ふ)", $00
+	db "(ふ)", $0
 
 Data_4de85: ; 4de85
-	db "(へ)", $00
+	db "(へ)", $0
 
 Data_4de89: ; 4de89
-	db "(ほ)", $00
+	db "(ほ)", $0
 
 Data_4de8d: ; 4de8d
-	db "(ﾟ)", $00
+	db "(ﾟ)", $0
 
 Data_4de91: ; 4de91
-	db "(ま)", $00
+	db "(ま)", $0
 
 Data_4de95: ; 4de95
-	db "(み)", $00
+	db "(み)", $0
 
 Data_4de99: ; 4de99
-	db "(む)", $00
+	db "(む)", $0
 
 Data_4de9d: ; 4de9d
-	db "(め)", $00
+	db "(め)", $0
 
 Data_4dea1: ; 4dea1
-	db "(も)", $00
+	db "(も)", $0
 
 Data_4dea5: ; 4dea5
-	db "(-)", $00
+	db "(-)", $0
 
 Data_4dea9: ; 4dea9
-	db "(や)", $00
+	db "(や)", $0
 
 Data_4dead: ; 4dead
-	db "(ゆ)", $00
+	db "(ゆ)", $0
 
 Data_4deb1: ; 4deb1
-	db "(よ)", $00
+	db "(よ)", $0
 
 Data_4deb5: ; 4deb5
-	db "(わ)", $00
+	db "(わ)", $0
 
 Data_4deb9: ; 4deb9
-	db "(を)", $00
+	db "(を)", $0
 
 Data_4debd: ; 4debd
-	db "(ん)", $00
+	db "(ん)", $0
 
 Data_4dec1: ; 4dec1
-	db "(ら)", $00
+	db "(ら)", $0
 
 Data_4dec5: ; 4dec5
-	db "(り)", $00
+	db "(り)", $0
 
 Data_4dec9: ; 4dec9
-	db "(る)", $00
+	db "(る)", $0
 
 Data_4decd: ; 4decd
-	db "(れ)", $00
+	db "(れ)", $0
 
 Data_4ded1: ; 4ded1
-	db "(ろ)", $00
+	db "(ろ)", $0
 
 Data_4ded5: ; 4ded5
-	db "( )", $00
+	db "( )", $0
 
 Data_4ded9: ; 4ded9
-	db "ア", $00
+	db "ア", $0
 
 Data_4dedb: ; 4dedb
-	db "イ", $00
+	db "イ", $0
 
 Data_4dedd: ; 4dedd
-	db "ウ", $00
+	db "ウ", $0
 
 Data_4dedf: ; 4dedf
-	db "エ", $00
+	db "エ", $0
 
 Data_4dee1: ; 4dee1
-	db "オ", $00
+	db "オ", $0
 
 Data_4dee3: ; 4dee3
-	db "ャ", $00
+	db "ャ", $0
 
 Data_4dee5: ; 4dee5
-	db "カ", $00
+	db "カ", $0
 
 Data_4dee7: ; 4dee7
-	db "キ", $00
+	db "キ", $0
 
 Data_4dee9: ; 4dee9
-	db "ク", $00
+	db "ク", $0
 
 Data_4deeb: ; 4deeb
-	db "ケ", $00
+	db "ケ", $0
 
 Data_4deed: ; 4deed
-	db "コ", $00
+	db "コ", $0
 
 Data_4deef: ; 4deef
-	db "ュ", $00
+	db "ュ", $0
 
 Data_4def1: ; 4def1
-	db "サ", $00
+	db "サ", $0
 
 Data_4def3: ; 4def3
-	db "シ", $00
+	db "シ", $0
 
 Data_4def5: ; 4def5
-	db "ス", $00
+	db "ス", $0
 
 Data_4def7: ; 4def7
-	db "セ", $00
+	db "セ", $0
 
 Data_4def9: ; 4def9
-	db "ソ", $00
+	db "ソ", $0
 
 Data_4defb: ; 4defb
-	db "ョ", $00
+	db "ョ", $0
 
 Data_4defd: ; 4defd
-	db "タ", $00
+	db "タ", $0
 
 Data_4deff: ; 4deff
-	db "チ", $00
+	db "チ", $0
 
 Data_4df01: ; 4df01
-	db "ツ", $00
+	db "ツ", $0
 
 Data_4df03: ; 4df03
-	db "テ", $00
+	db "テ", $0
 
 Data_4df05: ; 4df05
-	db "ト", $00
+	db "ト", $0
 
 Data_4df07: ; 4df07
-	db "ッ", $00
+	db "ッ", $0
 
 Data_4df09: ; 4df09
-	db "ナ", $00
+	db "ナ", $0
 
 Data_4df0b: ; 4df0b
-	db "ニ", $00
+	db "ニ", $0
 
 Data_4df0d: ; 4df0d
-	db "ヌ", $00
+	db "ヌ", $0
 
 Data_4df0f: ; 4df0f
-	db "ネ", $00
+	db "ネ", $0
 
 Data_4df11: ; 4df11
-	db "ノ", $00
+	db "ノ", $0
 
 Data_4df13: ; 4df13
-	db "ﾞ", $00
+	db "ﾞ", $0
 
 Data_4df15: ; 4df15
-	db "ハ", $00
+	db "ハ", $0
 
 Data_4df17: ; 4df17
-	db "ヒ", $00
+	db "ヒ", $0
 
 Data_4df19: ; 4df19
-	db "フ", $00
+	db "フ", $0
 
 Data_4df1b: ; 4df1b
-	db "ヘ", $00
+	db "ヘ", $0
 
 Data_4df1d: ; 4df1d
-	db "ホ", $00
+	db "ホ", $0
 
 Data_4df1f: ; 4df1f
-	db "ﾟ", $00
+	db "ﾟ", $0
 
 Data_4df21: ; 4df21
-	db "マ", $00
+	db "マ", $0
 
 Data_4df23: ; 4df23
-	db "ミ", $00
+	db "ミ", $0
 
 Data_4df25: ; 4df25
-	db "ム", $00
+	db "ム", $0
 
 Data_4df27: ; 4df27
-	db "メ", $00
+	db "メ", $0
 
 Data_4df29: ; 4df29
-	db "モ", $00
+	db "モ", $0
 
 Data_4df2b: ; 4df2b
-	db "-", $00
+	db "-", $0
 
 Data_4df2d: ; 4df2d
-	db "ヤ", $00
+	db "ヤ", $0
 
 Data_4df2f: ; 4df2f
-	db "ユ", $00
+	db "ユ", $0
 
 Data_4df31: ; 4df31
-	db "ヨ", $00
+	db "ヨ", $0
 
 Data_4df33: ; 4df33
-	db "ワ", $00
+	db "ワ", $0
 
 Data_4df35: ; 4df35
-	db "ヲ", $00
+	db "ヲ", $0
 
 Data_4df37: ; 4df37
-	db "ン", $00
+	db "ン", $0
 
 Data_4df39: ; 4df39
-	db "ラ", $00
+	db "ラ", $0
 
 Data_4df3b: ; 4df3b
-	db "リ", $00
+	db "リ", $0
 
 Data_4df3d: ; 4df3d
-	db "ル", $00
+	db "ル", $0
 
 Data_4df3f: ; 4df3f
-	db "レ", $00
+	db "レ", $0
 
 Data_4df41: ; 4df41
-	db "ロ", $00
+	db "ロ", $0
 
 Data_4df43: ; 4df43
-	db " ", $00
+	db " ", $0
 
 Func_4df45: ; 4df45 (13:5f45)
 	push af
@@ -57065,10 +57069,10 @@ Func_4dff8: ; 4dff8 (13:5ff8)
 	ret
 
 Data_4dffc: ; 4dffc
-	db "カタカナ", $00
+	db "カタカナ", $0
 
 Data_4e001: ; 4e001
-	db "(かな  )", $00
+	db "(かな  )", $0
 
 Func_4e008: ; 4e008 (13:6008)
 	push bc
@@ -57597,10 +57601,10 @@ Func_4e3a0: ; 4e3a0 (13:63a0)
 	ret
 
 Data_4e3a4: ; 4e3a4
-	db "_", $00
+	db "_", $0
 
 Data_4e3a6: ; 4e3a6
-	db "b", $00
+	db "b", $0
 
 Func_4e3a8: ; 4e3a8
 	reg16swap de, hl
@@ -57762,19 +57766,19 @@ Func_4e4e3: ; 4e4e3 (13:64e3)
 	ret
 
 Data_4e4e4: ; 4e4e4
-	db " ", $00
+	db " ", $0
 
 Data_4e4e6: ; 4e4e6
-	db " ", $00
+	db " ", $0
 
 Data_4e4e8: ; 4e4e8
-	db "_", $00
+	db "_", $0
 
 Data_4e4ea: ; 4e4ea
-	db " ", $00
+	db " ", $0
 
 Data_4e4ec: ; 4e4ec
-	db "b", $00
+	db "b", $0
 
 Func_4e4ee: ; 4e4ee (13:64ee)
 	push af
@@ -58071,22 +58075,22 @@ Func_4e6fd: ; 4e6fd (13:66fd)
 	ret
 
 Data_4e743: ; 4e743
-	db "(なまえ)", $00
+	db "(なまえ)", $0
 
 Data_4e749: ; 4e749
-	db "(たんしﾞょうひﾞ)", $00
+	db "(たんしﾞょうひﾞ)", $0
 
 Data_4e754: ; 4e754
-	db "(せいさﾞ)", $00
+	db "(せいさﾞ)", $0
 
 Data_4e75b: ; 4e75b
-	db "ホﾞク(の たんしﾞょうひﾞを きめて)ネ", $00
+	db "ホﾞク(の たんしﾞょうひﾞを きめて)ネ", $0
 
 Data_4e771: ; 4e771
-	db "(かﾞつ)", $00
+	db "(かﾞつ)", $0
 
 Data_4e777: ; 4e777
-	db "(にち)", $00
+	db "(にち)", $0
 
 Data_4e77c: ; 4e77c
 	db 11, 12
@@ -58177,14 +58181,14 @@ Func_4e7fb: ; 4e7fb (13:67fb)
 	ret
 
 Data_4e80c: ; 4e80c
-	db "b", $00
+	db "b", $0
 
 Data_4e80e: ; 4e80e
-	db "_", $00
+	db "_", $0
 
 Data_4e810: ; 4e810
 	TX_SNUM
-	db $00
+	db $0
 
 Func_4e813: ; 4e813 (13:6813)
 	push bc
@@ -58689,12 +58693,12 @@ Func_4eb61: ; 4eb61 (13:6b61)
 Data_4eb67: ; 4eb67
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Data_4eb6c: ; 4eb6c
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Func_4eb71: ; 4eb71
 	inc hl
@@ -58772,7 +58776,7 @@ Func_4ec20: ; 4ec20 (13:6c20)
 	ret
 
 Data_4ec21: ; 4ec21
-	db "(これてﾞいい)?", $00
+	db "(これてﾞいい)?", $0
 
 Func_4ec2b: ; 4ec2b (13:6c2b)
 	push af
@@ -59176,7 +59180,7 @@ Pointers_4f8a6: ; 4f8a6
 	dw $0
 
 Data_4f8aa: ; 4f8aa
-	db "(しんかした)", $00
+	db "(しんかした)", $0
 
 Data_4f8b2: ; 4f8b2
 	dr $4f8b2, $4f8ba
@@ -59350,10 +59354,10 @@ Func_4fa9e: ; 4fa9e (13:7a9e)
 	ret
 
 Data_4fab2: ; 4fab2
-	db "(は) ", $00
+	db "(は) ", $0
 
 Data_4fab7: ; 4fab7
-	db "(に)", $00
+	db "(に)", $0
 
 Func_4fabb: ; 4fabb (13:7abb)
 	ld a, [wNextVBlankFlags]
@@ -59766,10 +59770,10 @@ Func_4fec1: ; 4fec1 (13:7ec1)
 	ret
 
 Data_4fec4: ; 4fec4
-	db "(くれる) ロホﾞホﾟン(を)", $00
+	db "(くれる) ロホﾞホﾟン(を)", $0
 
 Data_4fed4: ; 4fed4
-	db "(えらんてﾞいるよ)", $00
+	db "(えらんてﾞいるよ)", $0
 
 Func_4fedf: ; 4fedf (13:7edf)
 	ld a, [wc319]
@@ -60178,34 +60182,34 @@ Func_50331: ; 50331 (14:4331)
 	ret
 
 Data_50337: ; 50337
-	db " ", $00
+	db " ", $0
 
 Data_50339: ; 50339
 	TX_STACK
-	db $00
+	db $0
 
 Data_5033c: ; 5033c
 	TX_STACK
-	db $00
+	db $0
 
 Data_5033f: ; 5033f
 	TX_STACK
-	db $00
+	db $0
 
 Data_50342: ; 50342
 	TX_STACK
-	db $00
+	db $0
 
 Data_50345: ; 50345
 	TX_STACK
-	db $00
+	db $0
 
 Data_50348: ; 50348
-	db " ", $00
+	db " ", $0
 
 Data_5034a: ; 5034a
 	TX_STACK
-	db $00
+	db $0
 
 Func_5034d: ; 5034d (14:434d)
 	push bc
@@ -60490,7 +60494,7 @@ Pointers_5052d: ; 5052d
 	dw $0
 
 Data_50531: ; 50531
-	db "セーフﾞ(したよ)", $00
+	db "セーフﾞ(したよ)", $0
 
 Func_5053b: ; 5053b
 	set_farcall_addrs_hli AllocateMemory
@@ -60565,7 +60569,7 @@ Func_505dc: ; 505dc (14:45dc)
 	ret
 
 Data_505f9: ; 505f9
-	db "セーフﾞ(するよ)?", $00
+	db "セーフﾞ(するよ)?", $0
 
 Func_50604: ; 50604 (14:4604)
 	push bc
@@ -60985,29 +60989,29 @@ Func_508bc: ; 508bc (14:48bc)
 	ret
 
 Data_508c0: ; 508c0
-	db " ", $00
+	db " ", $0
 
 Data_508c2: ; 508c2
 	TX_STACK
-	db $00
+	db $0
 
 Data_508c5: ; 508c5
 	TX_STACK
-	db $00
+	db $0
 
 Data_508c8: ; 508c8
-	db " ", $00
+	db " ", $0
 
 Data_508ca: ; 508ca
 	TX_STACK
-	db $00
+	db $0
 
 Data_508cd: ; 508cd
-	db " ", $00
+	db " ", $0
 
 Data_508cf: ; 508cf
 	TX_STACK
-	db $00
+	db $0
 
 Func_508d2: ; 508d2
 	set_farcall_addrs_hli Func_1445e
@@ -61125,10 +61129,10 @@ Func_50961: ; 50961 (14:4961)
 	ret
 
 Data_5098a: ; 5098a
-	db " ", $00
+	db " ", $0
 
 Data_5098c: ; 5098c
-	db " ", $00
+	db " ", $0
 
 Pointers_5098e: ; 5098e
 	dw Data_50994
@@ -61136,10 +61140,10 @@ Pointers_5098e: ; 5098e
 	dw $0
 	
 Data_50994: ; 50994
-	db "(おなしﾞ)ロホﾞホﾟン(は)", $00
+	db "(おなしﾞ)ロホﾞホﾟン(は)", $0
 
 Data_509a4: ; 509a4
-	db "(ならひﾞかえてﾞきません)", $00
+	db "(ならひﾞかえてﾞきません)", $0
 
 Func_509b3: ; 509b3
 	push bc
@@ -61542,7 +61546,7 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	ret
 
 Data_50cf6: ; 50cf6
-	db "(を すてても よろしいてﾞすか)?", $00
+	db "(を すてても よろしいてﾞすか)?", $0
 
 Func_50d09:: ; 50d09
 	set_farcall_addrs_hli GetBanks
@@ -62249,28 +62253,28 @@ Pointers_5125a: ; 5125a
 	dw $0
 
 Data_5125e: ; 5125e
-	db "(その)ロホﾞホﾟン(は はけん されているよ)", $00
+	db "(その)ロホﾞホﾟン(は はけん されているよ)", $0
 
 Pointers_51277: ; 51277
 	dw Data_5127b
 	dw $0
 
 Data_5127b: ; 5127b
-	db "ハﾟーティー(かﾞ いっはﾟいたﾞよ)", $00
+	db "ハﾟーティー(かﾞ いっはﾟいたﾞよ)", $0
 
 Pointers_5128f: ; 5128f
 	dw Data_51293
 	dw $0
 
 Data_51293: ; 51293
-	db "(こうかんしたよ)", $00
+	db "(こうかんしたよ)", $0
 
 Pointers_5129d: ; 5129d
 	dw Data_512a1
 	dw $0
 
 Data_512a1: ; 512a1
-	db "(ひきたﾞしたよ)", $00
+	db "(ひきたﾞしたよ)", $0
 
 Pointers_512ab: ; 512ab
 	dw Data_512b1
@@ -62278,17 +62282,17 @@ Pointers_512ab: ; 512ab
 	dw $0
 
 Data_512b1: ; 512b1
-	db "(たたかえる) ロホﾞホﾟン(かﾞ)", $00
+	db "(たたかえる) ロホﾞホﾟン(かﾞ)", $0
 
 Data_512c4: ; 512c4
-	db "(いなくなるよ)", $00
+	db "(いなくなるよ)", $0
 
 Pointers_512cd: ; 512cd
 	dw Data_512d1
 	dw $0
 
 Data_512d1: ; 512d1
-	db "(そいつは えらへﾞないよ)!", $00
+	db "(そいつは えらへﾞないよ)!", $0
 
 Func_512e1: ; 512e1 (14:52e1)
 	push af
@@ -62769,10 +62773,10 @@ Func_516c3: ; 516c3 (14:56c3)
 	ret
 
 Data_516c8: ; 516c8
-	db "ハﾟーティー(の) ロホﾞホﾟン(と)", $00
+	db "ハﾟーティー(の) ロホﾞホﾟン(と)", $0
 
 Data_516dc: ; 516dc
-	db "(こうかんする)?", $00
+	db "(こうかんする)?", $0
 
 Func_516e6: ; 516e6 (14:56e6)
 	add sp, -$46
@@ -62812,7 +62816,7 @@ Pointers_51747: ; 51747
 	dw $0
 
 Data_5174b: ; 5174b
-	db "(を ひきたﾞしました)", $00
+	db "(を ひきたﾞしました)", $0
 
 Pointers_51758: ; 51758
 	dw Data_5175e
@@ -62820,17 +62824,17 @@ Pointers_51758: ; 51758
 	dw $0
 
 Data_5175e: ; 5175e
-	db "(これいしﾞょう) ハﾟーティー(に)", $00
+	db "(これいしﾞょう) ハﾟーティー(に)", $0
 
 Data_51772: ; 51772
-	db "(ついかてﾞきないよ)", $00
+	db "(ついかてﾞきないよ)", $0
 
 Pointers_5177e: ; 5177e
 	dw Data_51782
 	dw $0
 
 Data_51782: ; 51782
-	db "(を すてた)", $00
+	db "(を すてた)", $0
 
 Func_5178a: ; 5178a
 	push hl
@@ -63607,28 +63611,28 @@ Pointers_51e56: ; 51e56
 	dw $0
 
 Data_51e5a: ; 51e5a
-	db "(これいしﾞょう ほかんてﾞきないよ)", $00
+	db "(これいしﾞょう ほかんてﾞきないよ)", $0
 
 Pointers_51e6e: ; 51e6e
 	dw Data_51e72
 	dw $0
 
 Data_51e72: ; 51e72
-	db "(これいしﾞょう ひきたﾞせないよ)", $00
+	db "(これいしﾞょう ひきたﾞせないよ)", $0
 
 Pointers_51e85: ; 51e85
 	dw Data_51e89
 	dw $0
 
 Data_51e89: ; 51e89
-	db "(を ほかんしたよ)", $00
+	db "(を ほかんしたよ)", $0
 
 Pointers_51e94: ; 51e94
 	dw Data_51e98
 	dw $0
 
 Data_51e98: ; 51e98
-	db "(を ひきたﾞしたよ)", $00
+	db "(を ひきたﾞしたよ)", $0
 
 Func_51ea4: ; 51ea4
 	push hl
@@ -64053,13 +64057,13 @@ Func_522ac: ; 522ac (14:62ac)
 	ret
 
 Data_522b7: ; 522b7
-	db "(ほかんする こすうを)", $00
+	db "(ほかんする こすうを)", $0
 
 Data_522c4: ; 522c4
-	db "(ひきたﾞす こすうを)", $00
+	db "(ひきたﾞす こすうを)", $0
 
 Data_522d1: ; 522d1
-	db "(にゅうりょくしてくたﾞさい)", $00
+	db "(にゅうりょくしてくたﾞさい)", $0
 
 Pointers_522e1: ; 522e1
 	dw Data_522e7
@@ -64067,10 +64071,10 @@ Pointers_522e1: ; 522e1
 	dw $0
 
 Data_522e7: ; 522e7
-	db "(もちものかﾞ いっはﾟいなのてﾞ)", $00
+	db "(もちものかﾞ いっはﾟいなのてﾞ)", $0
 
 Data_522fa: ; 522fa
-	db "(ひきたﾞせないよ)", $00
+	db "(ひきたﾞせないよ)", $0
 
 Pointers_52305: ; 52305
 	dw Data_5230b
@@ -64078,10 +64082,10 @@ Pointers_52305: ; 52305
 	dw $0
 
 Data_5230b: ; 5230b
-	db "(これいしﾞょう そうこに)", $00
+	db "(これいしﾞょう そうこに)", $0
 
 Data_5231a: ; 5231a
-	db "(ついかてﾞきないよ)", $00
+	db "(ついかてﾞきないよ)", $0
 
 Func_52326: ; 52326
 	push bc
@@ -64929,68 +64933,68 @@ Func_52a86: ; 52a86 (14:6a86)
 	ret
 
 Data_52abf:
-	db " ", $00
+	db " ", $0
 
 Data_52ac1:
-	db ":LV", $00
+	db ":LV", $0
 
 Data_52ac5:
-	db " ", $00
+	db " ", $0
 
 Data_52ac7:
-	db "タイフﾟ:", $00
+	db "タイフﾟ:", $0
 
 Data_52acd:
 	db "CPU:"
 	TX_CALL
-	db $00
+	db $0
 
 Data_52ad4:
-	db "E", $00
+	db "E", $0
 
 Data_52ad6:
-	db "/", $00
+	db "/", $0
 
 Data_52ad8:
-	db "/", $00
+	db "/", $0
 
 Data_52ada:
-	db "(こうけﾞき)", $00
+	db "(こうけﾞき)", $0
 
 Data_52ae2:
-	db "(ほﾞうきﾞょ)", $00
+	db "(ほﾞうきﾞょ)", $0
 
 Data_52aeb:
-	db "(すはﾞやさ)", $00
+	db "(すはﾞやさ)", $0
 
 Data_52af3:
 	db "E*P:"
 	TX_UNUM
-	db $00
+	db $0
 
 Data_52afb:
 	db "(あと)"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_52b02:
-	db "(しんかしない)", $00
+	db "(しんかしない)", $0
 
 Data_52b0b:
-	db "(しんかする あと)", $00
+	db "(しんかする あと)", $0
 
 Data_52b16:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_52b19:
-	db "(ひかってる)", $00
+	db "(ひかってる)", $0
 
 Data_52b21:
-	db "(さくしﾞょするかい)?", $00
+	db "(さくしﾞょするかい)?", $0
 
 Data_52b2e:
-	db "(ひきたﾞすかい)?", $00
+	db "(ひきたﾞすかい)?", $0
 
 Func_52b39:
 	reg16swap de, hl
@@ -65077,7 +65081,7 @@ Pointers_52bad:
 	dw $0
 
 Data_52bb1:
-	db "(こうかんしたよ)", $00
+	db "(こうかんしたよ)", $0
 
 Func_52bbb: ; 52bbb (14:6bbb)
 	push bc
@@ -65631,43 +65635,43 @@ Func_539ab: ; 539ab (14:79ab)
 	ret
 
 Data_539ac:
-	db "(    )", $00
+	db "(    )", $0
 
 Data_539b3:
-	db "(おひつしﾞ)", $00
+	db "(おひつしﾞ)", $0
 
 Data_539bb:
-	db "(おうし )", $00
+	db "(おうし )", $0
 
 Data_539c2:
-	db "(ふたこﾞ )", $00
+	db "(ふたこﾞ )", $0
 
 Data_539ca:
-	db "(かに  )", $00
+	db "(かに  )", $0
 
 Data_539d1:
-	db "(しし  )", $00
+	db "(しし  )", $0
 
 Data_539d8:
-	db "(おとめ )", $00
+	db "(おとめ )", $0
 
 Data_539df:
-	db "(てんひﾞん)", $00
+	db "(てんひﾞん)", $0
 
 Data_539e7:
-	db "(さそり )", $00
+	db "(さそり )", $0
 
 Data_539ee:
-	db "(いて  )", $00
+	db "(いて  )", $0
 
 Data_539f5:
-	db "(やきﾞ  )", $00
+	db "(やきﾞ  )", $0
 
 Data_539fd:
-	db "(みすﾞかﾞめ)", $00
+	db "(みすﾞかﾞめ)", $0
 
 Data_53a06:
-	db "(うお  )", $00
+	db "(うお  )", $0
 
 INCLUDE "engine/robodex/flags.asm"
 
@@ -65749,7 +65753,7 @@ Pointers_53c10:
 	dw $0
 
 Data_53c14:
-	db "(とﾞうやら せいこうした みたいしﾞゃ)", $00
+	db "(とﾞうやら せいこうした みたいしﾞゃ)", $0
 
 Pointers_53c2a:
 	dw Data_53c30
@@ -65757,10 +65761,10 @@ Pointers_53c2a:
 	dw $0
 
 Data_53c30:
-	db "リモコン(の しﾞゅしんに)", $00
+	db "リモコン(の しﾞゅしんに)", $0
 
 Data_53c3f:
-	db "(しっはﾟいしました)", $00
+	db "(しっはﾟいしました)", $0
 
 Pointers_53c4b:
 	dw Data_53c51
@@ -65768,17 +65772,17 @@ Pointers_53c4b:
 	dw $0
 
 Data_53c51:
-	db "(なんしﾞゃ やめるのか)", $00
+	db "(なんしﾞゃ やめるのか)", $0
 
 Data_53c5f:
-	db "(いくしﾞかﾞないのう)", $00
+	db "(いくしﾞかﾞないのう)", $0
 
 Pointers_53c6c:
 	dw Data_53c70
 	dw $0
 
 Data_53c70:
-	db "(その)ロホﾞホﾟン(は) (えらへﾞないよ)", $00
+	db "(その)ロホﾞホﾟン(は) (えらへﾞないよ)", $0
 
 Func_53c88::
 	add sp, -$52
@@ -66781,22 +66785,22 @@ Func_54846:
 	ret
 
 Data_54972:
-	db "Hp", $00
+	db "Hp", $0
 
 Data_54975:
-	db "/", $00
+	db "/", $0
 
 Data_54977:
-	db "Ep", $00
+	db "Ep", $0
 
 Data_5497a:
-	db "/", $00
+	db "/", $0
 
 Data_5497c:
-	db "LV", $00
+	db "LV", $0
 
 Data_5497f:
-	db ":", $00
+	db ":", $0
 
 Func_54981:
 	push bc
@@ -66907,21 +66911,21 @@ Pointers_54a13:
 	dw $0
 
 Data_54a17:
-	db "スクラッフﾟ(に なっているよ)", $00
+	db "スクラッフﾟ(に なっているよ)", $0
 
 Pointers_54a28:
 	dw Data_54a2c
 	dw $0
 
 Data_54a2c:
-	db "スクラッフﾟ(しﾞゃないよ)", $00
+	db "スクラッフﾟ(しﾞゃないよ)", $0
 
 Pointers_54a3b:
 	dw Data_54a3f
 	dw $0
 
 Data_54a3f:
-	db "(しんか しないよ)", $00
+	db "(しんか しないよ)", $0
 
 Pointers_54a4a:
 	dw Data_54a50
@@ -66929,10 +66933,10 @@ Pointers_54a4a:
 	dw $0
 
 Data_54a50:
-	db "(これいしﾞょう) レヘﾞルアッフﾟ", $00
+	db "(これいしﾞょう) レヘﾞルアッフﾟ", $0
 
 Data_54a63:
-	db "(てﾞきないよ)", $00
+	db "(てﾞきないよ)", $0
 
 Func_54a6c:
 	push af
@@ -67000,7 +67004,7 @@ Pointers_54aeb:
 	dw $0
 
 Data_54aef:
-	db "(を つかった)", $00
+	db "(を つかった)", $0
 
 Func_54af8: ; 54af8 (15:4af8)
 	add sp, -$3c
@@ -67908,17 +67912,17 @@ Pointers_55320:
 	dw $0
 
 Data_55326:
-	db "(おいおい! ひとりてﾞ)", $00
+	db "(おいおい! ひとりてﾞ)", $0
 
 Data_55334:
-	db "(たひﾞするつもりかい)?", $00
+	db "(たひﾞするつもりかい)?", $0
 
 Pointers_55342:
 	dw Data_55346
 	dw $0
 
 Data_55346:
-	db "(そうこかﾞ いっはﾟいたﾞよ)", $00
+	db "(そうこかﾞ いっはﾟいたﾞよ)", $0
 
 Pointers_55357:
 	dw Data_5535d
@@ -67926,24 +67930,24 @@ Pointers_55357:
 	dw $0
 
 Data_5535d:
-	db "(たたかえる) ろほﾞほﾟん(かﾞ)", $00
+	db "(たたかえる) ろほﾞほﾟん(かﾞ)", $0
 
 Data_55370:
-	db "(いなくなるよ)", $00
+	db "(いなくなるよ)", $0
 
 Pointers_55379:
 	dw Data_5537d
 	dw $0
 
 Data_5537d:
-	db "(ほかんしたよ)", $00
+	db "(ほかんしたよ)", $0
 
 Pointers_55386:
 	dw Data_5538a
 	dw $0
 
 Data_5538a:
-	db "(そいつは えらへﾞないよ)!", $00
+	db "(そいつは えらへﾞないよ)!", $0
 
 Func_5539a: ; 5539a (15:539a)
 	push af
@@ -68917,49 +68921,49 @@ Func_55ba5: ; 55ba5 (15:5ba5)
 	ret
 
 Data_55bfe:
-	db " ", $00
+	db " ", $0
 
 Data_55c00:
-	db ":LV", $00
+	db ":LV", $0
 
 Data_55c04:
-	db " ", $00
+	db " ", $0
 
 Data_55c06:
-	db "タイフﾟ:", $00
+	db "タイフﾟ:", $0
 
 Data_55c0c:
 	db "CPU:"
 	TX_CALL
-	db $00
+	db $0
 
 Data_55c13:
-	db "E", $00
+	db "E", $0
 
 Data_55c15:
-	db "/", $00
+	db "/", $0
 
 Data_55c17:
-	db "/", $00
+	db "/", $0
 
 Data_55c19:
-	db "(こうけﾞき)", $00
+	db "(こうけﾞき)", $0
 
 Data_55c21:
-	db "(ほﾞうきﾞょ)", $00
+	db "(ほﾞうきﾞょ)", $0
 
 Data_55c2a:
-	db "(すはﾞやさ)", $00
+	db "(すはﾞやさ)", $0
 
 Data_55c32:
 	db "E*P:"
 	TX_UNUM
-	db $00
+	db $0
 
 Data_55c3a:
 	db "(あと)"
 	TX_SNUM
-	db $00
+	db $0
 
 Func_55c41:
 	push hl
@@ -69636,7 +69640,7 @@ Func_5615c: ; 5615c (15:615c)
 	ret
 
 Data_56166:
-	db "(のこり)RAM", $00
+	db "(のこり)RAM", $0
 
 Func_5616f:
 	ld c, l
@@ -70252,16 +70256,16 @@ Func_5664b: ; 5664b (15:664b)
 	ret
 
 Data_56656:
-	db "(を ひきたﾞしたよ)", $00
+	db "(を ひきたﾞしたよ)", $0
 
 Data_56662:
-	db "(を ほかんしたよ)", $00
+	db "(を ほかんしたよ)", $0
 
 Data_5666d:
-	db "(これいしﾞょう ひきたﾞせないよ)", $00
+	db "(これいしﾞょう ひきたﾞせないよ)", $0
 
 Data_56680:
-	db "(これいしﾞょう ほかんてﾞきないよ)", $00
+	db "(これいしﾞょう ほかんてﾞきないよ)", $0
 
 Func_56694:
 	push hl
@@ -70575,47 +70579,47 @@ Func_56902: ; 56902 (15:6902)
 	ret
 
 Data_56981:
-	db " ", $00
+	db " ", $0
 
 Data_56983:
-	db ":", $00
+	db ":", $0
 
 Data_56985:
-	db "ソフト(なし)", $00
+	db "ソフト(なし)", $0
 
 Data_5698d:
-	db "(しんかしない)", $00
+	db "(しんかしない)", $0
 
 Data_56996:
-	db "(しんかする あと)", $00
+	db "(しんかする あと)", $0
 
 Data_569a1:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_569a4:
-	db "(ひかってる)", $00
+	db "(ひかってる)", $0
 
 Data_569ac:
-	db "ハﾟーツ", $00
+	db "ハﾟーツ", $0
 
 Data_569b1:
-	db "M", $00
+	db "M", $0
 
 Data_569b3:
-	db "(こうけﾞき )", $00
+	db "(こうけﾞき )", $0
 
 Data_569bc:
-	db "(ほﾞうきﾞょ )", $00
+	db "(ほﾞうきﾞょ )", $0
 
 Data_569c6:
-	db "(すはﾞやさ )", $00
+	db "(すはﾞやさ )", $0
 
 Data_569cf:
-	db "ソフト", $00
+	db "ソフト", $0
 
 Data_569d3:
-	db "(わさﾞ)", $00
+	db "(わさﾞ)", $0
 
 Func_569d9: ; 569d9 (15:69d9)
 	push hl
@@ -70716,19 +70720,19 @@ Func_56a21: ; 56a21 (15:6a21)
 	ret
 
 Data_56a9c:
-	db "(こうけﾞき )", $00
+	db "(こうけﾞき )", $0
 
 Data_56aa5:
-	db "(ほﾞうきﾞょ )", $00
+	db "(ほﾞうきﾞょ )", $0
 
 Data_56aaf:
-	db "(すはﾞやさ )", $00
+	db "(すはﾞやさ )", $0
 
 Data_56ab8:
-	db "RAM:", $00
+	db "RAM:", $0
 
 Data_56abd:
-	db "M", $00
+	db "M", $0
 
 Func_56abf: ; 56abf (15:6abf)
 	push hl
@@ -70789,7 +70793,7 @@ Func_56abf: ; 56abf (15:6abf)
 	ret
 
 Data_56b33:
-	db "M", $00
+	db "M", $0
 
 Func_56b35: ; 56b35 (15:6b35)
 	push af
@@ -71167,7 +71171,7 @@ Func_5712f: ; 5712f (15:712f)
 
 Data_571bb:
 	TX_SNUM
-	db "M", $00
+	db "M", $0
 
 Func_571bf:
 	push hl
@@ -71775,61 +71779,61 @@ Func_575b5: ; 575b5 (15:75b5)
 	ret
 
 Data_57655:
-	db "ヒﾞル", $00
+	db "ヒﾞル", $0
 
 Data_57659:
 	db "  "
 	TX_SNUM
-	db "(かい)", $00
+	db "(かい)", $0
 
 Data_57662:
 	db " "
 	TX_SNUM
-	db "(かい)", $00
+	db "(かい)", $0
 
 Data_5766a:
 	TX_CALL
-	db $00
+	db $0
 
 Data_5766d:
-	db "クﾞレイテスト", $00
+	db "クﾞレイテスト", $0
 
 Data_57675:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_57678:
-	db "?", $00
+	db "?", $0
 
 Data_5767a:
-	db "クﾞレイテスト", $00
+	db "クﾞレイテスト", $0
 
 Data_57682:
 	TX_SNUM
-	db "(に)", $00
+	db "(に)", $0
 
 Data_57688:
-	db "(ちょうせんかのう)", $00
+	db "(ちょうせんかのう)", $0
 
 Data_57693:
-	db "(しょしﾞきん) ", $00
+	db "(しょしﾞきん) ", $0
 
 Data_5769d:
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_576a2:
-	db "ロホﾞホﾟン(のかすﾞ) ", $00
+	db "ロホﾞホﾟン(のかすﾞ) ", $0
 
 Data_576b0:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_576b3:
-	db "フﾟレイ(しﾞかん) ", $00
+	db "フﾟレイ(しﾞかん) ", $0
 
 Data_576bf:
-	db ":", $00
+	db ":", $0
 
 Func_576c1: ; 576c1 (15:76c1)
 	push hl
@@ -72078,10 +72082,10 @@ Func_57840: ; 57840 (15:7840)
 	ret
 
 Data_57871:
-	db "(みつけたかすﾞ)", $00
+	db "(みつけたかすﾞ)", $0
 
 Data_5787b:
-	db "(つかまえたかすﾞ)", $00
+	db "(つかまえたかすﾞ)", $0
 
 Pointers_57886:
 	dw Data_5789e
@@ -72497,44 +72501,44 @@ Func_57b8e: ; 57b8e (15:7b8e)
 	ret
 
 Data_57b99:
-	db "(ふﾞそﾞく)", $00
+	db "(ふﾞそﾞく)", $0
 
 Data_57ba1:
-	db "(しんちょう)", $00
+	db "(しんちょう)", $0
 
 Data_57ba9:
-	db "(たいしﾞゅう)", $00
+	db "(たいしﾞゅう)", $0
 
 Data_57bb2:
-	db "(そﾞくせい)", $00
+	db "(そﾞくせい)", $0
 
 Data_57bba:
 	TX_CALL
-	db $00
+	db $0
 
 Data_57bbd:
-	db "(しょう)", $00
+	db "(しょう)", $0
 
 Data_57bc3:
-	db "(ちゅう)", $00
+	db "(ちゅう)", $0
 
 Data_57bc9:
-	db "(たﾞい)", $00
+	db "(たﾞい)", $0
 
 Data_57bcf:
-	db "(きょたﾞい)", $00
+	db "(きょたﾞい)", $0
 
 Data_57bd7:
-	db "(かるい)", $00
+	db "(かるい)", $0
 
 Data_57bdd:
-	db "(ふつう)", $00
+	db "(ふつう)", $0
 
 Data_57be3:
-	db "(おもい)", $00
+	db "(おもい)", $0
 
 Data_57be9:
-	db "(おもすきﾞ)", $00
+	db "(おもすきﾞ)", $0
 
 Func_57bf1: ; 57bf1 (15:7bf1)
 	push bc
@@ -72590,16 +72594,16 @@ Func_57c3d: ; 57c3d (15:7c3d)
 Data_57c3e:
 	db "00"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_57c43:
 	db "0"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_57c47:
 	TX_SNUM
-	db $00
+	db $0
 
 Func_57c4a: ; 57c4a (15:7c4a)
 	add sp, -$24
@@ -73024,40 +73028,40 @@ Pointers_58d95:
 	dw Data_58df4
 
 Data_58dad:
-	db "(おひつしﾞ)", $00
+	db "(おひつしﾞ)", $0
 
 Data_58db5:
-	db "(おうし)", $00
+	db "(おうし)", $0
 
 Data_58dbb:
-	db "(ふたこﾞ)", $00
+	db "(ふたこﾞ)", $0
 
 Data_58dc2:
-	db "(かに)", $00
+	db "(かに)", $0
 
 Data_58dc7:
-	db "(しし)", $00
+	db "(しし)", $0
 
 Data_58dcc:
-	db "(おとめ)", $00
+	db "(おとめ)", $0
 
 Data_58dd2:
-	db "(てんひﾞん)", $00
+	db "(てんひﾞん)", $0
 
 Data_58dda:
-	db "(さそり)", $00
+	db "(さそり)", $0
 
 Data_58de0:
-	db "(いて)", $00
+	db "(いて)", $0
 
 Data_58de5:
-	db "(やきﾞ)", $00
+	db "(やきﾞ)", $0
 
 Data_58deb:
-	db "(みすﾞかﾞめ)", $00
+	db "(みすﾞかﾞめ)", $0
 
 Data_58df4:
-	db "(うお)", $00
+	db "(うお)", $0
 
 Func_58df9: ; 58df9 (16:4df9)
 	add sp, -$1a
@@ -73303,56 +73307,56 @@ Func_58fd1: ; 58fd1 (16:4fd1)
 	ret
 
 Data_58fe6:
-	db "(しゃちょう) ", $00
+	db "(しゃちょう) ", $0
 
 Data_58fef:
 	TX_CALL
-	db $00
+	db $0
 
 Data_58ff2:
-	db "ロホﾞホﾟン(のかすﾞ) ", $00
+	db "ロホﾞホﾟン(のかすﾞ) ", $0
 
 Data_59000:
-	db "(たい)", $00
+	db "(たい)", $0
 
 Data_59005:
 	db "(しょしﾞきん) "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_59013:
-	db "フﾟレイ(しﾞかん) ", $00
+	db "フﾟレイ(しﾞかん) ", $0
 
 Data_5901f:
-	db ":", $00
+	db ":", $0
 
 Pointers_59021:
 	dw Data_59025
 	dw $0
 
 Data_59025:
-	db "チッフﾟ(をこうしんしました)", $00
+	db "チッフﾟ(をこうしんしました)", $0
 
 Pointers_59035:
 	dw Data_59039
 	dw $0
 
 Data_59039:
-	db "(おかねかﾞ たりないよ)", $00
+	db "(おかねかﾞ たりないよ)", $0
 
 Pointers_59047:
 	dw Data_5904b
 	dw $0
 
 Data_5904b:
-	db "(これいしﾞょう こうしんてﾞきないよ)", $00
+	db "(これいしﾞょう こうしんてﾞきないよ)", $0
 
 Pointers_59060:
 	dw Data_59064
 	dw $0
 
 Data_59064:
-	db "スクラッフﾟ(に なっているよ)", $00
+	db "スクラッフﾟ(に なっているよ)", $0
 
 Data_59075:
 	db 2, 4, 8, 16, 32, 64
@@ -73403,10 +73407,7 @@ Func_590a8: ; 590a8 (16:50a8)
 	call FarCall
 	push af
 	ld hl, sp+$5
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, SaveScratchMoney
 	ld bc, $4
 	call MemCopy
@@ -73441,10 +73442,7 @@ Func_590a8: ; 590a8 (16:50a8)
 	set_farcall_addrs_hli Func_15ad6
 	ld c, $6
 	ld hl, sp+$b
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
@@ -73783,30 +73781,30 @@ Func_59457: ; 59457 (16:5457)
 	ret
 
 Data_5945a:
-	db "(しょしﾞきん)", $00
+	db "(しょしﾞきん)", $0
 
 Data_59463:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_59466:
-	db "チッフﾟ(へ)", $00
+	db "チッフﾟ(へ)", $0
 
 Data_5946e:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_59471:
-	db "00G (ひつようてﾞす)", $00
+	db "00G (ひつようてﾞす)", $0
 
 Data_5947f:
-	db "チッフﾟ(をこうしんしますか?)", $00
+	db "チッフﾟ(をこうしんしますか?)", $0
 
 Data_59490:
-	db "レヘﾞル(ふﾞそく)", $00
+	db "レヘﾞル(ふﾞそく)", $0
 
 Data_5949b:
-	db "(しょしﾞきん)", $00
+	db "(しょしﾞきん)", $0
 
 Func_594a4: ; 594a4 (16:54a4)
 	ld a, l
@@ -73926,32 +73924,32 @@ Func_59577: ; 59577 (16:5577)
 Data_59578:
 	db "      "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_59583:
 	db "     "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_5958d:
 	db "    "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_59596:
 	db "   "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_5959e:
 	db "  "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Data_595a5:
 	db " "
 	TX_UNUM
-	db "G", $00
+	db "G", $0
 
 Func_595ab:
 	push hl
@@ -74726,44 +74724,44 @@ Func_59c25: ; 59c25 (16:5c25)
 
 Data_59c33:
 	TX_STACK
-	db $00
+	db $0
 
 Data_59c36:
-	db "V", $00
+	db "V", $0
 
 Data_59c38:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_59c3b:
-	db "(を) ", $00
+	db "(を) ", $0
 
 Data_59c40:
-	db "(に)", $00
+	db "(に)", $0
 
 Data_59c44:
-	db "(しんか させる?)", $00
+	db "(しんか させる?)", $0
 
 Pointers_59c4f:
 	dw Data_59c53
-	dw $0000
+	dw $0
 
 Data_59c53:
-	db "(これいしﾞょう とうし てﾞきないよ)", $00
+	db "(これいしﾞょう とうし てﾞきないよ)", $0
 
 Pointers_59c68:
 	dw Data_59c6c
-	dw $0000
+	dw $0
 
 Data_59c6c:
-	db "(おかねかﾞ たりないよ)", $00
+	db "(おかねかﾞ たりないよ)", $0
 
 Pointers_59c7a:
 	dw Data_59c7e
-	dw $0000
+	dw $0
 
 Data_59c7e:
-	db "(とうし しました)", $00
+	db "(とうし しました)", $0
 
 Func_59c89:
 	push bc
@@ -74958,21 +74956,21 @@ Func_59e3e: ; 59e3e (16:5e3e)
 	ret
 
 Data_59e42:
-	db "(しょしﾞきん)", $00
+	db "(しょしﾞきん)", $0
 
 Data_59e4b:
-	db "(とうし)レヘﾞル", $00
+	db "(とうし)レヘﾞル", $0
 
 Data_59e55:
 	db " "
 	TX_SNUM
-	db $00
+	db $0
 
 Data_59e59:
-	db "2000G (ひつようてﾞす)", $00
+	db "2000G (ひつようてﾞす)", $0
 
 Data_59e69:
-	db "(とうしを おこないますか)?", $00
+	db "(とうしを おこないますか)?", $0
 
 Func_59e79:
 	push hl
@@ -75258,10 +75256,10 @@ Func_5a0b8: ; 5a0b8 (16:60b8)
 
 Data_5a0c3:
 	TX_SNUM
-	db "コﾞールトﾞ(てﾞ)", $00
+	db "コﾞールトﾞ(てﾞ)", $0
 
 Data_5a0d0:
-	db "(かいとるけとﾞ いいかい)?", $00
+	db "(かいとるけとﾞ いいかい)?", $0
 
 Func_5a0e0:: ; 5a0e0 (16:60e0)
 	push af
@@ -75753,42 +75751,42 @@ Func_5a3e1:
 Data_5a3f8:
 	db $34, $40, $62, $7a, $47, $92, $90, $6b
 IF DEF(SUN)
-	db $17, $33, $2a, $30, $2d, $2e, $2f, $04
-	db $48, $3f, $62, $42, $40, $63, $41, $00
-	db $08, $0b, $65, $68, $09, $0c, $0e, $00
-	db $4b, $4c, $4d, $32, $91, $00, $00, $00
-	db $02, $12, $25, $8f, $00, $00, $00, $00
-	db $22, $1b, $18, $2a, $61, $05, $7d, $8d
+	db $17, $33, $2a, $30, $2d, $2e, $2f, $4
+	db $48, $3f, $62, $42, $40, $63, $41, $0
+	db $8, $b, $65, $68, $9, $c, $e, $0
+	db $4b, $4c, $4d, $32, $91, $0, $0, $0
+	db $2, $12, $25, $8f, $0, $0, $0, $0
+	db $22, $1b, $18, $2a, $61, $5, $7d, $8d
 ENDC
 IF DEF(STAR)
 	db $17, $33, $2a, $30, $5a, $5c, $6c, $45
-	db $48, $3f, $62, $42, $40, $63, $41, $00
-	db $09, $0c, $65, $68, $08, $0b, $0e, $00
-	db $4b, $4c, $4d, $32, $91, $00, $00, $00
-	db $57, $12, $25, $8f, $00, $00, $00, $00
+	db $48, $3f, $62, $42, $40, $63, $41, $0
+	db $9, $c, $65, $68, $8, $b, $e, $0
+	db $4b, $4c, $4d, $32, $91, $0, $0, $0
+	db $57, $12, $25, $8f, $0, $0, $0, $0
 	db $24, $1b, $18, $2a, $61, $46, $14, $8d
 ENDC
-	db $56, $4e, $23, $03, $79, $60, $27, $36
-	db $03, $00, $05, $00, $0a, $00, $0f, $00
-	db $14, $00, $1e, $00, $07, $00, $07, $00
+	db $56, $4e, $23, $3, $79, $60, $27, $36
+	db $3, $0, $5, $0, $a, $0, $f, $0
+	db $14, $0, $1e, $0, $7, $0, $7, $0
 
 Data_5a448:
-	db $08, $07, $06, $05, $04, $03, $02, $01
-	db $08, $07, $06, $05, $04, $03, $02, $01
-	db $07, $06, $05, $04, $03, $02, $01, $00
-	db $07, $06, $05, $04, $03, $02, $01, $00
-	db $05, $04, $03, $02, $01, $00, $00, $00
-	db $04, $03, $02, $01, $00, $00, $00, $00
-	db $08, $07, $06, $05, $04, $03, $02, $01
-	db $08, $07, $06, $05, $04, $03, $02, $01
-	db $01, $02, $03, $04, $05, $06, $07, $08
-	db $01, $02, $03, $04, $05, $06, $07, $08
-	db $00, $01, $02, $03, $04, $05, $06, $07
-	db $00, $01, $02, $03, $04, $05, $06, $07
-	db $00, $00, $00, $01, $02, $03, $04, $05
-	db $00, $00, $00, $00, $01, $02, $03, $04
-	db $01, $02, $03, $04, $05, $06, $07, $08
-	db $01, $02, $03, $04, $05, $06, $07, $08
+	db $8, $7, $6, $5, $4, $3, $2, $1
+	db $8, $7, $6, $5, $4, $3, $2, $1
+	db $7, $6, $5, $4, $3, $2, $1, $0
+	db $7, $6, $5, $4, $3, $2, $1, $0
+	db $5, $4, $3, $2, $1, $0, $0, $0
+	db $4, $3, $2, $1, $0, $0, $0, $0
+	db $8, $7, $6, $5, $4, $3, $2, $1
+	db $8, $7, $6, $5, $4, $3, $2, $1
+	db $1, $2, $3, $4, $5, $6, $7, $8
+	db $1, $2, $3, $4, $5, $6, $7, $8
+	db $0, $1, $2, $3, $4, $5, $6, $7
+	db $0, $1, $2, $3, $4, $5, $6, $7
+	db $0, $0, $0, $1, $2, $3, $4, $5
+	db $0, $0, $0, $0, $1, $2, $3, $4
+	db $1, $2, $3, $4, $5, $6, $7, $8
+	db $1, $2, $3, $4, $5, $6, $7, $8
 
 Func_5a4c8: ; 5a4c8 (16:64c8)
 	push hl
@@ -76269,87 +76267,87 @@ Func_5a855: ; 5a855 (16:6855)
 	ret
 
 Data_5a860:
-	db "(ねたﾞん)", $00
+	db "(ねたﾞん)", $0
 
 Data_5a867:
-	db "(しきん)", $00
+	db "(しきん)", $0
 
 Data_5a86d:
 	db "L "
 	TX_SNUM
-	db $00
+	db $0
 
 Data_5a872:
 	db "L"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_5a876:
-	db "(わかﾞ) (けんきゅうしﾞょ)", $00
+	db "(わかﾞ) (けんきゅうしﾞょ)", $0
 
 Data_5a887:
-	db "(しﾞまんの) ロホﾞホﾟン(たﾞよ)", $00
+	db "(しﾞまんの) ロホﾞホﾟン(たﾞよ)", $0
 
 Pointers_5a89b:
 	dw Data_5a89f
-	dw $0000
+	dw $0
 
 Data_5a89f:
-	db "(これいしﾞょう) ロホﾞホﾟン(は かえないよ)", $00
+	db "(これいしﾞょう) ロホﾞホﾟン(は かえないよ)", $0
 
 Pointers_5a8b9:
 	dw Data_5a8bd
-	dw $0000
+	dw $0
 
 Data_5a8bd:
-	db "(こﾞめん またﾞてﾞきてないんたﾞ)", $00
+	db "(こﾞめん またﾞてﾞきてないんたﾞ)", $0
 
 Pointers_5a8d1:
 	dw Data_5a8d5
-	dw $0000
+	dw $0
 
 Data_5a8d5:
-	db "(おかねかﾞ たりないよ)", $00
+	db "(おかねかﾞ たりないよ)", $0
 
 Pointers_5a8e3:
 	dw Data_5a8e9
 	dw Data_5a8f0
-	dw $0000
+	dw $0
 
 Data_5a8e9:
-	db "(そうかい)", $00
+	db "(そうかい)", $0
 
 Data_5a8f0:
-	db "(それは さﾞんねんたﾞね)", $00
+	db "(それは さﾞんねんたﾞね)", $0
 
 Pointers_5a8ff:
 	dw Data_5a905
 	dw Data_5a91c
-	dw $0000
+	dw $0
 
 Data_5a905:
-	db "(ありかﾞとう けんきゅうに やくたﾞつよ)", $00
+	db "(ありかﾞとう けんきゅうに やくたﾞつよ)", $0
 
 Data_5a91c:
-	db "(ほかにも うってくれるかい?)", $00
+	db "(ほかにも うってくれるかい?)", $0
 
 Pointers_5a92d:
 	dw Data_5a931
-	dw $0000
+	dw $0
 
 Data_5a931:
-	db "(ありかﾞとう つくったかいかﾞ あったね)", $00
+	db "(ありかﾞとう つくったかいかﾞ あったね)", $0
 
 Pointers_5a948:
 	dw Data_5a94e
 	dw Data_5a955
-	dw $0000
+	dw $0
 
 Data_5a94e:
-	db "(そうかい)", $00
+	db "(そうかい)", $0
 
 Data_5a955:
-	db "(ほかにも ようはある?)", $00
+	db "(ほかにも ようはある?)", $0
 
 Func_5a963: ; 5a963 (16:6963)
 	push af
@@ -76739,7 +76737,7 @@ Func_5ac52: ; 5ac52 (16:6c52)
 	ret
 
 Data_5ac60:
-	db "(かうかい?)", $00
+	db "(かうかい?)", $0
 
 Func_5ac68: ; 5ac68 (16:6c68)
 	add sp, -$24
@@ -76881,7 +76879,7 @@ Func_5adbe: ; 5adbe (16:6dbe)
 	ret
 
 Data_5adc1:
-	db "(ひかりを あてるかい)", $00
+	db "(ひかりを あてるかい)", $0
 
 Func_5adce: ; 5adce (16:6dce)
 	ld l, $12
@@ -77380,16 +77378,16 @@ Func_5b196: ; 5b196 (16:7196)
 	ret
 
 Data_5b1c6:
-	db "(しﾞふﾞん)", $00
+	db "(しﾞふﾞん)", $0
 
 Data_5b1ce:
-	db "(あいて)", $00
+	db "(あいて)", $0
 
 Data_5b1d4:
-	db "(こうかんしﾞっこう)", $00
+	db "(こうかんしﾞっこう)", $0
 
 Data_5b1e0:
-	db "(こうかんちゅうし)", $00
+	db "(こうかんちゅうし)", $0
 
 Func_5b1eb: ; 5b1eb (16:71eb)
 	push bc
@@ -77680,7 +77678,7 @@ Func_5b3b9: ; 5b3b9 (16:73b9)
 
 Data_5b3cb:
 	TX_STACK
-	db $00
+	db $0
 
 Func_5b3ce:
 	ld de, $2
@@ -78145,7 +78143,7 @@ Func_5b83d: ; 5b83d (16:783d)
 	ret
 
 Data_5b848:
-	db "(こうかんてﾞきないよ)", $00
+	db "(こうかんてﾞきないよ)", $0
 
 Func_5b855: ; 5b855 (16:7855)
 	push af
@@ -78236,28 +78234,28 @@ Func_5b918: ; 5b918 (16:7918)
 	ret
 
 Data_5b91a:
-	db " ", $00
+	db " ", $0
 
 Pointers_5b91c:
 	dw Data_5b920
-	dw $0000
+	dw $0
 
 Data_5b920:
-	db "(その)ロホﾞホﾟン (は えらへﾞないよ)", $00
+	db "(その)ロホﾞホﾟン (は えらへﾞないよ)", $0
 
 Pointers_5b937:
 	dw Data_5b93b
-	dw $0000
+	dw $0
 
 Data_5b93b:
-	db "ロホﾞホﾟン(を えらんてﾞないよ)", $00
+	db "ロホﾞホﾟン(を えらんてﾞないよ)", $0
 
 Pointers_5b94e:
 	dw Data_5b952
-	dw $0000
+	dw $0
 
 Data_5b952:
-	db "(こうかんしたよ!)", $00
+	db "(こうかんしたよ!)", $0
 
 Func_5b95d: ; 5b95d (16:795d)
 	push af
@@ -78972,54 +78970,54 @@ Func_5bf82: ; 5bf82 (16:7f82)
 	ret
 
 Data_5bfb3:
-	db "???", $00
+	db "???", $0
 
 Data_5bfb7:
-	db ":LV", $00
+	db ":LV", $0
 
 Data_5bfbb:
-	db " ", $00
+	db " ", $0
 
 Data_5bfbd:
-	db "E", $00
+	db "E", $0
 
 Data_5bfbf:
-	db "/", $00
+	db "/", $0
 
 Data_5bfc1:
-	db "/", $00
+	db "/", $0
 
 Data_5bfc3:
-	db "(こうけﾞき)", $00
+	db "(こうけﾞき)", $0
 
 Data_5bfcb:
-	db "(ほﾞうきﾞょ)", $00
+	db "(ほﾞうきﾞょ)", $0
 
 Data_5bfd4:
-	db "(すはﾞやさ)", $00
+	db "(すはﾞやさ)", $0
 
 Data_5bfdc:
-	db "タイフﾟ:", $00
+	db "タイフﾟ:", $0
 
 Data_5bfe2:
 	db "CPU:"
 	TX_CALL
-	db $00
+	db $0
 
 Data_5bfe9:
 	db "E*P:"
 	TX_UNUM
-	db $00
+	db $0
 
 Data_5bff1:
 	db "E*P:"
 	TX_UNUM
-	db $00
+	db $0
 
 Data_5bff9:
 	db "(あと)"
 	TX_SNUM
-	db $00
+	db $0
 
 SECTION "Bank 17", ROMX, BANK [$17]
 Func_5c000:
@@ -81372,7 +81370,7 @@ Func_5d07e: ; 5d07e (17:507e)
 	ret
 
 Data_5d084:
-	db "ハﾞトル メッセーシﾞ オーハﾞー", $00
+	db "ハﾞトル メッセーシﾞ オーハﾞー", $0
 
 Func_5d096: ; 5d096 (17:5096)
 	push bc
@@ -81972,7 +81970,7 @@ Func_5d4a2: ; 5d4a2 (17:54a2)
 	ret
 
 Data_5d4a4:
-	db " ", $00
+	db " ", $0
 
 Func_5d4a6:
 	push hl
@@ -82203,31 +82201,31 @@ Func_5d657: ; 5d657 (17:5657)
 	ret
 
 Data_5d65a:
-	db "Hp", $00
+	db "Hp", $0
 
 Data_5d65d:
-	db "/", $00
+	db "/", $0
 
 Data_5d65f:
-	db "Ep", $00
+	db "Ep", $0
 
 Data_5d662:
-	db "/", $00
+	db "/", $0
 
 Data_5d664:
-	db "LV", $00
+	db "LV", $0
 
 Data_5d667:
-	db ":", $00
+	db ":", $0
 
 Data_5d669:
-	db "(ひかっている)", $00
+	db "(ひかっている)", $0
 
 Data_5d672:
-	db "エネ:", $00
+	db "エネ:", $0
 
 Data_5d676:
-	db "(しんか しない)", $00
+	db "(しんか しない)", $0
 
 Data_5d680:
 	dr $5d680, $5d684
@@ -82606,22 +82604,22 @@ Func_5d8df: ; 5d8df (17:58df)
 	ret
 
 Data_5d909:
-	db " ", $00
+	db " ", $0
 
 
 Data_5d90b:
 	TX_STACK
-	db $00
+	db $0
 
 Pointers_5d90e:
 	dw Data_5d912
 	dw Data_5d919
 
 Data_5d912:
-	db "(こうかん)", $00
+	db "(こうかん)", $0
 
 Data_5d919:
-	db "ステータス", $00
+	db "ステータス", $0
 
 Func_5d91f:
 	push hl
@@ -82925,15 +82923,15 @@ Func_5db00: ; 5db00 (17:5b00)
 	ret
 
 Data_5db13:
-	db " ", $00
+	db " ", $0
 
 Data_5db15:
 	TX_STACK
-	db $00
+	db $0
 
 Data_5db18:
 	TX_STACK
-	db $00
+	db $0
 
 Func_5db1b: ; 5db1b (17:5b1b)
 	push af
@@ -82993,25 +82991,25 @@ Func_5db9b: ; 5db9b (17:5b9b)
 	ret
 
 Data_5db9e:
-	db "         ", $00
+	db "         ", $0
 
 Data_5dba8:
-	db "スクラッフﾟ(に)", $00
+	db "スクラッフﾟ(に)", $0
 
 Data_5dbb2:
-	db "(なっている)", $00
+	db "(なっている)", $0
 
 Data_5dbba:
-	db "(そいつは)", $00
+	db "(そいつは)", $0
 
 Data_5dbc1:
-	db "(たたかっている)", $00
+	db "(たたかっている)", $0
 
 Data_5dbcb:
-	db "(そいつは)", $00
+	db "(そいつは)", $0
 
 Data_5dbd2:
-	db "(こうかんてﾞきる)", $00
+	db "(こうかんてﾞきる)", $0
 
 Func_5dbdd:
 	push bc
@@ -83281,10 +83279,10 @@ Pointers_5dde3:
 	dw $0
 
 Data_5dde7:
-	db "Aホﾞタン(てﾞ)ステータス(かﾞみれるよ)", $00
+	db "Aホﾞタン(てﾞ)ステータス(かﾞみれるよ)", $0
 
 Data_5ddfe:
-	db "セレクトホﾞタン(てﾞこうかんてﾞきるよ)", $00
+	db "セレクトホﾞタン(てﾞこうかんてﾞきるよ)", $0
 
 Func_5de14: ; 5de14 (17:5e14)
 	push hl
@@ -83500,19 +83498,19 @@ Func_5df96: ; 5df96 (17:5f96)
 	ret
 
 Data_5dfab:
-	db "(とﾞの)ロホﾞホﾟン(に)", $00
+	db "(とﾞの)ロホﾞホﾟン(に)", $0
 
 Data_5dfba:
-	db "(しますか)?", $00
+	db "(しますか)?", $0
 
 Data_5dfc2:
-	db "(とﾞの)ロホﾞホﾟン(にする)?", $00
+	db "(とﾞの)ロホﾞホﾟン(にする)?", $0
 
 Data_5dfd4:
-	db "(とﾞの)ロホﾞホﾟン(をあけﾞる)?", $00
+	db "(とﾞの)ロホﾞホﾟン(をあけﾞる)?", $0
 
 Data_5dfe8:
-	db "(とﾞの)ロホﾞホﾟン(につかう)?", $00
+	db "(とﾞの)ロホﾞホﾟン(につかう)?", $0
 
 Func_5dffb:
 	ld a, [wc395]
@@ -83819,14 +83817,14 @@ Func_5e266: ; 5e266 (17:6266)
 
 Data_5e271:
 	TX_STACK
-	db $00
+	db $0
 
 Pointers_5e274:
 	dw Data_5e278
 	dw $0
 
 Data_5e278:
-	db "(こうかんしたよ)", $00
+	db "(こうかんしたよ)", $0
 
 Pointers_5e282:
 	dw Data_5e288
@@ -83834,10 +83832,10 @@ Pointers_5e282:
 	dw $0
 
 Data_5e288:
-	db "(おなしﾞ)ロホﾞホﾟン(は)", $00
+	db "(おなしﾞ)ロホﾞホﾟン(は)", $0
 
 Data_5e298:
-	db "(こうかんてﾞきないよ)", $00
+	db "(こうかんてﾞきないよ)", $0
 
 Func_5e2a5:
 	push hl
@@ -85006,7 +85004,7 @@ Func_605fc: ; 605fc (18:45fc)
 	ret
 
 Data_60619: ; 60619
-	db " (かﾞ)", $00
+	db " (かﾞ)", $0
 
 INCLUDE "engine/map_text_18.asm"
 
@@ -87699,15 +87697,15 @@ Func_61d23: ; 61d23 (18:5d23)
 	ret
 
 Data_61d32: ; 61d32
-	db " ", $00
+	db " ", $0
 
 Data_61d34: ; 61d34
 	TX_STACK
-	db $00
+	db $0
 
 Data_61d37: ; 61d37
 	TX_STACK
-	db $00
+	db $0
 
 Data_61d3a: ; 61d3a
 	dr $61d3a, $61d3e
@@ -87926,10 +87924,10 @@ Func_61ef4: ; 61ef3
 	ret
 
 Data_61f11: ; 61f11
-	db "(はけんする) ロホﾞホﾟン(を)", $00
+	db "(はけんする) ロホﾞホﾟン(を)", $0
 
 Data_61f23: ; 61f23
-	db "4(たい えらんてﾞくたﾞさい)", $00
+	db "4(たい えらんてﾞくたﾞさい)", $0
 
 Func_61f34: ; 61f34
 	push af
@@ -88019,11 +88017,11 @@ Func_61fae: ; 61fae (18:5fae)
 
 Data_61fb2: ; 61fb2
 	TX_STACK
-	db $00
+	db $0
 
 Data_61fb5: ; 61fb5
 	TX_STACK
-	db $00
+	db $0
 
 Func_61fb8: ; 61fb8
 	push hl
@@ -88107,37 +88105,37 @@ Func_62068: ; 62068 (18:6068)
 	ret
 
 Data_6206a: ; 6206a
-	db "RAM:", $00
+	db "RAM:", $0
 
 Data_6206f: ; 6206f
-	db "(いりょく)", $00
+	db "(いりょく)", $0
 
 Data_62076: ; 62076
-	db "EP", $00
+	db "EP", $0
 
 Data_62079: ; 62079
-	db "(こうけﾞき)   0", $00
+	db "(こうけﾞき)   0", $0
 
 Data_62085: ; 62085
-	db "(ほﾞうきﾞょ)   0", $00
+	db "(ほﾞうきﾞょ)   0", $0
 
 Data_62092: ; 62092
-	db "(すはﾞやさ)   0", $00
+	db "(すはﾞやさ)   0", $0
 
 Data_6209e: ; 6209e
-	db "RAM:  0M", $00
+	db "RAM:  0M", $0
 
 Data_620a7: ; 620a7
-	db "(こうけﾞき)   0", $00
+	db "(こうけﾞき)   0", $0
 
 Data_620b3: ; 620b3
-	db "(ほﾞうきﾞょ)   0", $00
+	db "(ほﾞうきﾞょ)   0", $0
 
 Data_620c0: ; 620c0
-	db "(すはﾞやさ)   0", $00
+	db "(すはﾞやさ)   0", $0
 
 Data_620cc: ; 620cc
-	db "RAM:  0M", $00
+	db "RAM:  0M", $0
 
 Func_620d5: ; 620d5
 	push hl
@@ -88610,13 +88608,13 @@ Data_62482: ; 62482
 	dw Data_62486, $0
 
 Data_62486: ; 62486
-	db "(RAMかﾞたりないよ)", $00
+	db "(RAMかﾞたりないよ)", $0
 
 Data_62493: ; 62493
 	dw Data_62497, $0
 
 Data_62497: ; 62497
-	db "ソフト(かﾞ いっはﾟいてﾞ はすﾞせません)", $00
+	db "ソフト(かﾞ いっはﾟいてﾞ はすﾞせません)", $0
 
 Func_624af: ; 624af
 	push af
@@ -88877,10 +88875,10 @@ Func_626ff: ; 626ff (18:66ff)
 	ret
 
 Data_6273a: ; 6273a
-	db "(すへﾞてはすﾞして いいてﾞすか?)", $00
+	db "(すへﾞてはすﾞして いいてﾞすか?)", $0
 
 Data_6274e: ; 6274e
-	db "(を はすﾞしますか?)", $00
+	db "(を はすﾞしますか?)", $0
 
 Func_6275b: ; 6275b
 	push bc
@@ -91464,10 +91462,10 @@ Func_6819f: ; 6819f (1a:419f)
 	ret
 
 Data_681a2:
-	db "c", $00
+	db "c", $0
 
 Data_681a4:
-	db "*", $00
+	db "*", $0
 
 Func_681a6: ; 681a6 (1a:41a6)
 	ld a, [wFarCallDestBank]
@@ -91798,7 +91796,7 @@ Pointers_683a6:
 	dw $0
 
 Data_683aa:
-	db "(はけんする ちいきを えらんてﾞね)", $00
+	db "(はけんする ちいきを えらんてﾞね)", $0
 
 Func_683be: ; 683be (1a:43be)
 	ld l, $12
@@ -92433,16 +92431,16 @@ Func_68883: ; 68883 (1a:4883)
 	ret
 
 Data_68886:
-	db "(はけんちいき)", $00
+	db "(はけんちいき)", $0
 
 Data_6888f:
-	db "(はけんしﾞかん)", $00
+	db "(はけんしﾞかん)", $0
 
 Data_68899:
-	db "(はけん)ハﾟーティー", $00
+	db "(はけん)ハﾟーティー", $0
 
 Data_688a5:
-	db "(これてﾞいい?)", $00
+	db "(これてﾞいい?)", $0
 
 Data_688af:
 	TX_SNUM
@@ -92450,52 +92448,52 @@ Data_688af:
 	db ":"
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Data_688b9:
-	db "(しﾞかんを しらせますか)?", $00
+	db "(しﾞかんを しらせますか)?", $0
 
 Data_688c9:
-	db "(きかんしﾞかんは)", $00
+	db "(きかんしﾞかんは)", $0
 
 Data_688d4:
 	db " "
 	TX_SNUM
-	db "(かﾞつ)", $00
+	db "(かﾞつ)", $0
 
 Data_688dd:
 	TX_SNUM
-	db "(かﾞつ)", $00
+	db "(かﾞつ)", $0
 
 Data_688e5:
 	db " "
 	TX_SNUM
-	db "(にち)", $00
+	db "(にち)", $0
 
 Data_688ed:
 	TX_SNUM
-	db "(にち)", $00
+	db "(にち)", $0
 
 Data_688f4:
 	db " "
 	TX_SNUM
-	db ":", $00
+	db ":", $0
 
 Data_688f9:
 	TX_SNUM
-	db ":", $00
+	db ":", $0
 
 Data_688fd:
 	db "0"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_68901:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_68904:
-	db "(たﾞよ)", $00
+	db "(たﾞよ)", $0
 
 Func_6890a: ; 6890a (1a:490a)
 	push hl
@@ -92621,7 +92619,7 @@ Func_689f0: ; 689f0 (1a:49f0)
 
 Data_68a28:
 	TX_CALL
-	db $00
+	db $0
 
 Func_68a2b:
 	call Func_1fbe
@@ -92672,16 +92670,16 @@ Func_68a2b:
 	ret
 
 Data_68a98:
-	db "(はけんする しﾞかんを)", $00
+	db "(はけんする しﾞかんを)", $0
 
 Data_68aa6:
-	db "(にゅうりょく してくたﾞさい)", $00
+	db "(にゅうりょく してくたﾞさい)", $0
 
 Data_68ab7:
-	db "(はけんしﾞかん)", $00
+	db "(はけんしﾞかん)", $0
 
 Data_68ac1:
-	db ":", $00
+	db ":", $0
 
 Func_68ac3: ; 68ac3 (1a:4ac3)
 	push bc
@@ -92856,14 +92854,14 @@ Func_68bea: ; 68bea (1a:4bea)
 	ret
 
 Data_68beb:
-	db "b", $00
+	db "b", $0
 
 Data_68bed:
-	db "_", $00
+	db "_", $0
 
 Data_68bef:
 	TX_SNUM
-	db $00
+	db $0
 
 Func_68bf2: ; 68bf2 (1a:4bf2)
 	ld a, [wc2f7]
@@ -93168,130 +93166,130 @@ Pointers_68da6:
 	dw $0
 
 Data_68dac:
-	db "(ちか1かい)", $00
+	db "(ちか1かい)", $0
 
 Data_68db4:
-	db "(そうこ)", $00
+	db "(そうこ)", $0
 
 Data_68dba:
-	db "(1かい)", $00
+	db "(1かい)", $0
 
 Data_68dc0:
-	db "(うけつけ)", $00
+	db "(うけつけ)", $0
 
 Data_68dc7:
-	db "(2かい)", $00
+	db "(2かい)", $0
 
 Data_68dcd:
-	db "アイテム(や)", $00
+	db "アイテム(や)", $0
 
 Data_68dd5:
-	db "(3かい)", $00
+	db "(3かい)", $0
 
 Data_68ddb:
-	db "ハﾟーツ(や)", $00
+	db "ハﾟーツ(や)", $0
 
 Data_68de3:
-	db "(4かい)", $00
+	db "(4かい)", $0
 
 Data_68de9:
-	db "(けんきゅうしﾞょ)", $00
+	db "(けんきゅうしﾞょ)", $0
 
 Data_68df4:
-	db "(5かい)", $00
+	db "(5かい)", $0
 
 Data_68dfa:
-	db "トイレ", $00
+	db "トイレ", $0
 
 Data_68dfe:
-	db "(6かい)", $00
+	db "(6かい)", $0
 
 Data_68e04:
-	db "ハﾞス", $00
+	db "ハﾞス", $0
 
 Data_68e08:
-	db "(7かい)", $00
+	db "(7かい)", $0
 
 Data_68e0e:
-	db "(こういしつ)", $00
+	db "(こういしつ)", $0
 
 Data_68e16:
-	db "(8かい)", $00
+	db "(8かい)", $0
 
 Data_68e1c:
-	db "(はけんしﾞょ)", $00
+	db "(はけんしﾞょ)", $0
 
 Data_68e25:
-	db "(9かい)", $00
+	db "(9かい)", $0
 
 Data_68e2b:
-	db "レクリエーションルーム", $00
+	db "レクリエーションルーム", $0
 
 Data_68e37:
-	db "(10かい)", $00
+	db "(10かい)", $0
 
 Data_68e3e:
-	db "ケﾞームコーナー", $00
+	db "ケﾞームコーナー", $0
 
 Data_68e47:
-	db "(11かい)", $00
+	db "(11かい)", $0
 
 Data_68e4e:
-	db "(かいきﾞしつ)", $00
+	db "(かいきﾞしつ)", $0
 
 Data_68e57:
-	db "(12かい)", $00
+	db "(12かい)", $0
 
 Data_68e5e:
-	db "リラックスルーム", $00
+	db "リラックスルーム", $0
 
 Data_68e67:
-	db "(13かい)", $00
+	db "(13かい)", $0
 
 Data_68e6e:
-	db "サウナ", $00
+	db "サウナ", $0
 
 Data_68e72:
-	db "(14かい)", $00
+	db "(14かい)", $0
 
 Data_68e79:
-	db "カウンセリンクﾞルーム", $00
+	db "カウンセリンクﾞルーム", $0
 
 Data_68e85:
-	db "(15かい)", $00
+	db "(15かい)", $0
 
 Data_68e8c:
-	db "(しちょうかくしつ)", $00
+	db "(しちょうかくしつ)", $0
 
 Data_68e97:
-	db "(16かい)", $00
+	db "(16かい)", $0
 
 Data_68e9e:
-	db "(あきへﾞや)", $00
+	db "(あきへﾞや)", $0
 
 Data_68ea6:
-	db "(17かい)", $00
+	db "(17かい)", $0
 
 Data_68ead:
-	db "(おうせつしつ)", $00
+	db "(おうせつしつ)", $0
 
 Data_68eb6:
-	db "(18かい)", $00
+	db "(18かい)", $0
 
 Data_68ebd:
-	db "(しゃちょうしつ)", $00
+	db "(しゃちょうしつ)", $0
 
 Data_68ec7:
-	db "(19かい)", $00
+	db "(19かい)", $0
 
 Data_68ece:
-	db "(てんしﾞしﾞょう)", $00
+	db "(てんしﾞしﾞょう)", $0
 
 Data_68ed9:
-	db "(20かい)", $00
+	db "(20かい)", $0
 
 Data_68ee0:
-	db "(てんほﾞうたﾞい)", $00
+	db "(てんほﾞうたﾞい)", $0
 
 Func_68eeb:
 	reg16swap de, hl
@@ -93637,13 +93635,13 @@ Func_690e3: ; 690e3 (1a:50e3)
 	ret
 
 Data_69114:
-	db "(ちか)", $00
+	db "(ちか)", $0
 
 Data_69119:
-	db "(ちか)", $00
+	db "(ちか)", $0
 
 Data_6911e:
-	db "(かいたﾞて)", $00
+	db "(かいたﾞて)", $0
 
 Data_69126:
 	dr $69126, $6912c
@@ -93837,14 +93835,14 @@ Func_69279: ; 69279 (1a:5279)
 
 Data_6927c:
 	TX_STACK
-	db $00
+	db $0
 
 Data_6927f:
-	db " ", $00
+	db " ", $0
 
 Data_69281:
 	TX_STACK
-	db $00
+	db $0
 
 Func_69284: ; 69284 (1a:5284)
 	push bc
@@ -94736,17 +94734,17 @@ Func_69878: ; 69878 (1a:5878)
 
 Data_698e2:
 	TX_CALL
-	db $00
+	db $0
 
 Data_698e5:
 	TX_CALL
-	db $00
+	db $0
 
 Data_698e8:
-	db "(しゃちょう)", $00
+	db "(しゃちょう)", $0
 
 Data_698f0:
-	db "(こﾞようけんは なんてﾞすか)?", $00
+	db "(こﾞようけんは なんてﾞすか)?", $0
 
 Func_69902:
 	push hl
@@ -95050,37 +95048,37 @@ Func_69ae7: ; 69ae7 (1a:5ae7)
 	ret
 
 Data_69b31:
-	db "(せいせきL)", $00
+	db "(せいせきL)", $0
 
 Data_69b39:
-	db "ハﾞトラー", $00
+	db "ハﾞトラー", $0
 
 Data_69b3f:
-	db "シﾞャンハﾟー", $00
+	db "シﾞャンハﾟー", $0
 
 Data_69b47:
-	db "スヒﾟータﾞー", $00
+	db "スヒﾟータﾞー", $0
 
 Data_69b4f:
-	db "シールタﾞー", $00
+	db "シールタﾞー", $0
 
 Data_69b56:
-	db "ハﾟンチャー", $00
+	db "ハﾟンチャー", $0
 
 Data_69b5d:
-	db "(かち)", $00
+	db "(かち)", $0
 
 Data_69b62:
-	db "(まけ)", $00
+	db "(まけ)", $0
 
 Data_69b67:
-	db "(おうしﾞゃにおくる) ヘﾞルト", $00
+	db "(おうしﾞゃにおくる) ヘﾞルト", $0
 
 Data_69b78:
-	db "p", $00
+	db "p", $0
 
 Data_69b7a:
-	db "(れんしょうちゅう)!", $00
+	db "(れんしょうちゅう)!", $0
 
 Func_69b86: ; 69b86 (1a:5b86)
 	callba_hli Func_17470
@@ -95165,19 +95163,19 @@ Func_69bb9:
 	ret
 
 Data_69c49:
-	db "(こうかん)", $00
+	db "(こうかん)", $0
 
 Data_69c50:
-	db "(あけﾞる)", $00
+	db "(あけﾞる)", $0
 
 Data_69c57:
-	db "(もらう)", $00
+	db "(もらう)", $0
 
 Data_69c5d:
-	db "キッス(てﾞ おこなう)", $00
+	db "キッス(てﾞ おこなう)", $0
 
 Data_69c6a:
-	db "モートﾞ(を えらんてﾞくたﾞさい)", $00
+	db "モートﾞ(を えらんてﾞくたﾞさい)", $0
 
 Func_69c7d:
 	push bc
@@ -95294,7 +95292,7 @@ Func_69d0a: ; 69d0a (1a:5d0a)
 
 Data_69d10:
 	TX_STACK
-	db $00
+	db $0
 
 Func_69d13: ; 69d13 (1a:5d13)
 	call Func_1fbe
@@ -95512,7 +95510,7 @@ Func_69e88: ; 69e88 (1a:5e88)
 	ret
 
 Data_69ed2:
-	db "ロホﾞホﾟン(を) (えらんてﾞね)", $00
+	db "ロホﾞホﾟン(を) (えらんてﾞね)", $0
 
 Func_69ee5: ; 69ee5 (1a:5ee5)
 	push hl
@@ -95630,14 +95628,14 @@ Pointers_69f88:
 	dw $0
 
 Data_69f8c:
-	db "(つうしん) エラー", $00
+	db "(つうしん) エラー", $0
 
 Pointers_69f97:
 	dw Data_69f9b
 	dw $0
 
 Data_69f9b:
-	db "モートﾞ(かﾞ ちかﾞうよ)", $00
+	db "モートﾞ(かﾞ ちかﾞうよ)", $0
 
 Pointers_69faa:
 	dw Data_69fb0
@@ -95645,10 +95643,10 @@ Pointers_69faa:
 	dw $0
 
 Data_69fb0:
-	db "ハﾟーティー(かﾞ いなくなるから)", $00
+	db "ハﾟーティー(かﾞ いなくなるから)", $0
 
 Data_69fc3:
-	db "(あけﾞられないよ)", $00
+	db "(あけﾞられないよ)", $0
 
 Pointers_69fce:
 	dw Data_69fd4
@@ -95656,10 +95654,10 @@ Pointers_69fce:
 	dw $0
 
 Data_69fd4:
-	db "(あいての)ハﾟーティー(かﾞ)", $00
+	db "(あいての)ハﾟーティー(かﾞ)", $0
 
 Data_69fe5:
-	db "(いなくなるのてﾞ もらえないよ)", $00
+	db "(いなくなるのてﾞ もらえないよ)", $0
 
 Pointers_69ff7:
 	dw Data_69ffd
@@ -95667,10 +95665,10 @@ Pointers_69ff7:
 	dw $0
 
 Data_69ffd:
-	db "(あいての)ハﾟーティー(かﾞ)", $00
+	db "(あいての)ハﾟーティー(かﾞ)", $0
 
 Data_6a00e:
-	db "(いっはﾟいなのてﾞ あけﾞられないよ)", $00
+	db "(いっはﾟいなのてﾞ あけﾞられないよ)", $0
 
 Pointers_6a023:
 	dw Data_6a029
@@ -95678,10 +95676,10 @@ Pointers_6a023:
 	dw $0
 
 Data_6a029:
-	db "ハﾟーティー(かﾞ いっはﾟいなのてﾞ)", $00
+	db "ハﾟーティー(かﾞ いっはﾟいなのてﾞ)", $0
 
 Data_6a03e:
-	db "(もらえないよ)", $00
+	db "(もらえないよ)", $0
 
 Pointers_6a047:
 	dw Data_6a04d
@@ -95689,10 +95687,10 @@ Pointers_6a047:
 	dw $0
 
 Data_6a04d:
-	db "(この)ロホﾞホﾟン(は)", $00
+	db "(この)ロホﾞホﾟン(は)", $0
 
 Data_6a05b:
-	db "(こうかんてﾞきないよ)", $00
+	db "(こうかんてﾞきないよ)", $0
 
 Pointers_6a068:
 	dw Data_6a06e
@@ -95700,10 +95698,10 @@ Pointers_6a068:
 	dw $0
 
 Data_6a06e:
-	db "(この)ロホﾞホﾟン(は)", $00
+	db "(この)ロホﾞホﾟン(は)", $0
 
 Data_6a07c:
-	db "(あけﾞられないよ)", $00
+	db "(あけﾞられないよ)", $0
 
 Pointers_6a087:
 	dw Data_6a08d
@@ -95711,10 +95709,10 @@ Pointers_6a087:
 	dw $0
 
 Data_6a08d:
-	db "(この)ロホﾞホﾟン(は)", $00
+	db "(この)ロホﾞホﾟン(は)", $0
 
 Data_6a09b:
-	db "(もらえないよ)", $00
+	db "(もらえないよ)", $0
 
 Pointers_6a0a4:
 	dw Data_6a0aa
@@ -95722,24 +95720,24 @@ Pointers_6a0a4:
 	dw $0
 
 Data_6a0aa:
-	db "(いきてる)ロホﾞホﾟン(かﾞ)", $00
+	db "(いきてる)ロホﾞホﾟン(かﾞ)", $0
 
 Data_6a0bb:
-	db "(いなくなるよ)", $00
+	db "(いなくなるよ)", $0
 
 Pointers_6a0c4:
 	dw Data_6a0c8
 	dw $0
 
 Data_6a0c8:
-	db "(もらえないよ)", $00
+	db "(もらえないよ)", $0
 
 Pointers_6a0d1:
 	dw Data_6a0d5
 	dw $0
 
 Data_6a0d5:
-	db "(せいしﾞょうに しゅうりょうしたよ)", $00
+	db "(せいしﾞょうに しゅうりょうしたよ)", $0
 
 Func_6a0e9: ; 6a0e9 (1a:60e9)
 	push hl
@@ -96887,16 +96885,16 @@ Func_6aa84: ; 6aa84 (1a:6a84)
 	ret
 
 Data_6aa8f:
-	db "ケﾞームホﾞーイ(を ちかつﾞけて)", $00
+	db "ケﾞームホﾞーイ(を ちかつﾞけて)", $0
 
 Data_6aaa2:
-	db "(とﾞちらかかﾞ) Bホﾞタン(を おしてね)", $00
+	db "(とﾞちらかかﾞ) Bホﾞタン(を おしてね)", $0
 
 Data_6aaba:
-	db "(ちゅうしするときは)", $00
+	db "(ちゅうしするときは)", $0
 
 Data_6aac6:
-	db "Bホﾞタン(を おしてね)", $00
+	db "Bホﾞタン(を おしてね)", $0
 
 Func_6aad4::
 	push af
@@ -97083,7 +97081,7 @@ Pointers_6ac2b:
 	dw $0
 
 Data_6ac2f:
-	db "(これいしﾞょう はけん てﾞきないよ)", $00
+	db "(これいしﾞょう はけん てﾞきないよ)", $0
 
 Func_6ac44:: ; 6ac44 (1a:6c44)
 	push bc
@@ -97846,10 +97844,10 @@ Func_6b2f4: ; 6b2f4 (1a:72f4)
 	ret
 
 Data_6b2ff:
-	db "(を そうひﾞしました)", $00
+	db "(を そうひﾞしました)", $0
 
 Data_6b30c:
-	db "(そうひﾞ てﾞきません)", $00
+	db "(そうひﾞ てﾞきません)", $0
 
 Func_6b31a:: ; 6b31a (1a:731a)
 	push bc
@@ -98870,13 +98868,13 @@ Func_6ba04: ; 6ba04 (1a:7a04)
 Data_6ba07:
 	db "(は)レヘﾞル(かﾞ)"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_6ba15:
-	db "(たちは )", $00
+	db "(たちは )", $0
 
 Data_6ba1c:
-	db "(を)", $00
+	db "(を)", $0
 
 Pointers_6ba20:
 	dw Data_6ba26
@@ -98884,10 +98882,10 @@ Pointers_6ba20:
 	dw $0
 
 Data_6ba26:
-	db "(はけんした)ハﾟーティー(は)", $00
+	db "(はけんした)ハﾟーティー(は)", $0
 
 Data_6ba37:
-	db "(かえってきているよ!)", $00
+	db "(かえってきているよ!)", $0
 
 Pointers_6ba44:
 	dw Data_6ba4a
@@ -98895,10 +98893,10 @@ Pointers_6ba44:
 	dw $0
 
 Data_6ba4a:
-	db "(はけんした)ハﾟーティー(は)", $00
+	db "(はけんした)ハﾟーティー(は)", $0
 
 Data_6ba5b:
-	db "(またﾞ かえってきて いないね#)", $00
+	db "(またﾞ かえってきて いないね#)", $0
 
 Pointers_6ba6e:
 	dw Data_6ba78
@@ -98908,30 +98906,30 @@ Pointers_6ba6e:
 	dw $0
 
 Data_6ba78:
-	db "(はけんした)ハﾟーティー(は)", $00
+	db "(はけんした)ハﾟーティー(は)", $0
 
 Data_6ba89:
-	db "(かえってきてはいるけとﾞ#)", $00
+	db "(かえってきてはいるけとﾞ#)", $0
 
 Data_6ba99:
-	db "ホﾞロホﾞロ(のしﾞょうたいたﾞね)", $00
+	db "ホﾞロホﾞロ(のしﾞょうたいたﾞね)", $0
 
 Data_6baac:
-	db "(むりを させすきﾞしﾞゃないの?)", $00
+	db "(むりを させすきﾞしﾞゃないの?)", $0
 
 Pointers_6babf:
 	dw Data_6bac3
 	dw $0
 
 Data_6bac3:
-	db "(その)ロホﾞホﾟン(は はけん されているよ)", $00
+	db "(その)ロホﾞホﾟン(は はけん されているよ)", $0
 
 Pointers_6badc:
 	dw Data_6bae0
 	dw $0
 
 Data_6bae0:
-	db "(あかﾞったよ)", $00
+	db "(あかﾞったよ)", $0
 
 Pointers_6bae9:
 	dw Data_6baf3
@@ -98941,16 +98939,16 @@ Pointers_6bae9:
 	dw $0
 
 Data_6baf3:
-	db "(こんかいの はけんてﾞ)レヘﾞル(の)", $00
+	db "(こんかいの はけんてﾞ)レヘﾞル(の)", $0
 
 Data_6bb08:
-	db "アッフﾟ(した) ロホﾞホﾟン(は いないね)", $00
+	db "アッフﾟ(した) ロホﾞホﾟン(は いないね)", $0
 
 Data_6bb20:
-	db "(らくを させすきﾞても)", $00
+	db "(らくを させすきﾞても)", $0
 
 Data_6bb2e:
-	db "レヘﾞル(は あかﾞらないよ)", $00
+	db "レヘﾞル(は あかﾞらないよ)", $0
 
 Pointers_6bb3e:
 	dw Data_6bb44
@@ -98958,17 +98956,17 @@ Pointers_6bb3e:
 	dw $0
 
 Data_6bb44:
-	db "(そうそう たひﾞのとちゅうてﾞ)", $00
+	db "(そうそう たひﾞのとちゅうてﾞ)", $0
 
 Data_6bb56:
-	db "(なにかを みつけてきたようたﾞね)", $00
+	db "(なにかを みつけてきたようたﾞね)", $0
 
 Pointers_6bb69:
 	dw Data_6bb6d
 	dw $0
 
 Data_6bb6d:
-	db "(みつけてきた)", $00
+	db "(みつけてきた)", $0
 
 Pointers_6bb76:
 	dw Data_6bb7c
@@ -98976,24 +98974,24 @@ Pointers_6bb76:
 	dw $0
 
 Data_6bb7c:
-	db "(はけんしている)ハﾟーティー(は)", $00
+	db "(はけんしている)ハﾟーティー(は)", $0
 
 Data_6bb8f:
-	db "(いないよ)", $00
+	db "(いないよ)", $0
 
 Pointers_6bb96:
 	dw Data_6bb9a
 	dw $0
 
 Data_6bb9a:
-	db "(かえってきてるよ)", $00
+	db "(かえってきてるよ)", $0
 
 Pointers_6bba5:
 	dw Data_6bba9
 	dw $0
 
 Data_6bba9:
-	db "(くみめの) ハﾟーティー", $00
+	db "(くみめの) ハﾟーティー", $0
 
 Pointers_6bbb7:
 	dw Data_6bbbd
@@ -99001,17 +98999,17 @@ Pointers_6bbb7:
 	dw $0
 
 Data_6bbbd:
-	db "(はけんにたﾞすときに たいりょくを)", $00
+	db "(はけんにたﾞすときに たいりょくを)", $0
 
 Data_6bbd1:
-	db "(かいふく させとくよ!)", $00
+	db "(かいふく させとくよ!)", $0
 
 Pointers_6bbdf:
 	dw Data_6bbe3
 	dw $0
 
 Data_6bbe3:
-	db "(いっはﾟいなのてﾞ すてた)", $00
+	db "(いっはﾟいなのてﾞ すてた)", $0
 
 Func_6bbf3: ; 6bbf3 (1a:7bf3)
 	push de
@@ -99223,12 +99221,12 @@ Func_6bddd: ; 6bddd (1a:7ddd)
 Data_6bdde:
 	db "(はけんした) ハﾟーティー(は "
 	TX_SNUM
-	db "くみ)", $00
+	db "くみ)", $0
 
 Data_6bdf5:
 	db "("
 	TX_SNUM
-	db ")", $00
+	db ")", $0
 
 Func_6bdfa: ; 6bdfa (1a:7dfa)
 	push af
@@ -100084,7 +100082,7 @@ Func_6c534: ; 6c534 (1b:4534)
 	ret
 
 Data_6c53a:
-	db "(たへﾞさせますか?)", $00
+	db "(たへﾞさせますか?)", $0
 
 Func_6c546:
 	push hl
@@ -101665,11 +101663,11 @@ Func_6d14d: ; 6d14d (1b:514d)
 
 Data_6d153:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_6d156:
 	TX_SNUM
-	db $00
+	db $0
 
 Data_6d159:
 	dr $6d159, $6d167
@@ -102283,7 +102281,7 @@ Func_6d62c: ; 6d62c (1b:562c)
 	ret
 
 Data_6d62f:
-	db "(ひきわけなのてﾞ もういちとﾞ)", $00
+	db "(ひきわけなのてﾞ もういちとﾞ)", $0
 
 Func_6d641: ; 6d641 (1b:5641)
 	ld a, [wc2cd]
@@ -106630,10 +106628,10 @@ Pointers_6f762:
 	dw $0
 
 Data_6f768:
-	db "(そうこもいっはﾟいてﾞ)", $00
+	db "(そうこもいっはﾟいてﾞ)", $0
 
 Data_6f776:
-	db "(これいしﾞょうもてないよ)", $00
+	db "(これいしﾞょうもてないよ)", $0
 
 Func_6f785: ; 6f785 (1b:7785)
 	push af
@@ -106811,7 +106809,7 @@ Func_6f947: ; 6f947 (1b:7947)
 	ret
 
 Data_6f95b:
-	db "(すてる?)", $00
+	db "(すてる?)", $0
 
 Func_6f962: ; 6f962 (1b:7962)
 	add sp, -$52
@@ -107034,18 +107032,3240 @@ Func_6fb42: ; 6fb42 (1b:7b42)
 	ret
 
 Data_6fb43:
-	db "(あなたのかち)", $00
+	db "(あなたのかち)", $0
 
 Data_6fb4c:
-	db "(あなたのまけ)", $00
+	db "(あなたのまけ)", $0
 
 INCLUDE "engine/predef.asm"
 
 SECTION "Bank 2f", ROMX, BANK [$2f]
-	dr $bc000, $bc49b
+Func_bc000:
+	ret
 
-Func_bc49b: ; bc49b
-	dr $bc49b, $bd6fa
+Func_bc001:
+	ret
+
+Func_bc002: ; bc002 (2f:4002)
+	call Func_bc000
+	ld c, $7
+	predef GetJUTFCharacter_1bpp
+	ret
+
+Func_bc00a:
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $0
+	ld de, $1311
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	call WaitVideoTransfer
+Func_bc029: ; bc029 (2f:4029)
+	call CheckButton
+	or a
+	jp z, Func_bc029
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $0
+	ld de, $1311
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	ld a, l
+	xor $1
+	ld l, a
+	ld h, l
+	ld l, $0
+	inc hl
+	inc hl
+	call FarCall
+	call WaitVideoTransfer
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $0
+	ld de, $1311
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	call WaitVideoTransfer
+	ret
+
+Func_bc076:
+	set_farcall_addrs_hli Func_667d
+	ld bc, $8f02
+	ld de, $1311
+	ld hl, $0
+	call FarCall
+	ret
+
+Data_bc08e:
+	dr $bc08e, $bc092
+
+Func_bc092: ; bc092 (2f:4092)
+	ld hl, -$340
+	add hl, sp
+	ld sp, hl
+	ld e, $a
+	ld l, $0
+	ld a, $61
+Func_bc09d: ; bc09d (2f:409d)
+	cp $7b
+	jp nc, Func_bc0c1
+	push hl
+	push de
+	push af
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld hl, sp+$6
+	add hl, de
+	add $a0
+	ld e, a
+	call Func_bc002
+	pop af
+	inc a
+	pop de
+	inc e
+	pop hl
+	inc l
+	jp Func_bc09d
+
+Func_bc0c1: ; bc0c1 (2f:40c1)
+	ld a, $41
+Func_bc0c3: ; bc0c3 (2f:40c3)
+	cp $5b
+	jp nc, Func_bc0e5
+	push hl
+	push de
+	push af
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld hl, sp+$6
+	add hl, de
+	ld e, a
+	call Func_bc002
+	pop af
+	inc a
+	pop de
+	inc e
+	pop hl
+	inc l
+	jp Func_bc0c3
+
+Func_bc0e5: ; bc0e5 (2f:40e5)
+	push de
+	ld bc, $340
+	ld hl, sp+$2
+	reg16swap de, hl
+	ld hl, $90a0
+	call RequestVideoData
+	call WaitVideoTransfer
+	pop de
+	push de
+	ld c, $0
+	xor a
+Func_bc0fd: ; bc0fd (2f:40fd)
+	cp $5
+	jp nc, Func_bc129
+	push bc
+	push de
+	push af
+	ld e, a
+	ld d, $0
+	ld hl, Data_bc08e
+	add hl, de
+	ld l, [hl]
+	push hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld hl, sp+$a
+	add hl, de
+	pop de
+	call Func_bc002
+	pop af
+	inc a
+	pop de
+	inc e
+	pop bc
+	inc c
+	jp Func_bc0fd
+
+Func_bc129: ; bc129 (2f:4129)
+	pop de
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	ld hl, sp+$0
+	push hl
+	ld l, e
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, $9000
+	add hl, de
+	pop de
+	call RequestVideoData
+	call WaitVideoTransfer
+	ld hl, $340
+	add hl, sp
+	ld sp, hl
+	ret
+
+Func_bc14e: ; bc14e (2f:414e)
+	ld a, $1
+	ld [wFarCallDestBank], a
+	ld bc, $800
+	ld de, GFX_4122
+	ld hl, $9000
+	call FarRequestVideoData
+	ret
+
+Func_bc160: ; bc160 (2f:4160)
+	call CheckButton
+	or a
+	jp nz, Func_bc160
+Func_bc167: ; bc167 (2f:4167)
+	call CheckButton
+	and $10
+	jp z, Func_bc167
+	ret
+
+Func_bc170: ; bc170 (2f:4170)
+	push bc
+	cp "a"
+	jp c, .checkCapital
+	cp "z" + 1
+	jp nc, .checkCapital
+	add $a9
+	ld hl, sp+$0
+	ld [hl], a
+	jp .placeDirectly
+
+.checkCapital: ; bc183 (2f:4183)
+	cp "A"
+	jp c, .checkLeftParenthesis
+	cp "Z" + 1
+	jp nc, .checkLeftParenthesis
+	add $e3
+	ld hl, sp+$0
+	ld [hl], a
+	jp .placeDirectly
+
+.checkLeftParenthesis: ; bc195 (2f:4195)
+	cp "["
+	jp nz, .checkRightParenthesis
+	ld hl, sp+$0
+	ld [hl], $3e
+	jp .placeDirectly
+
+.checkRightParenthesis: ; bc1a1 (2f:41a1)
+	cp "]"
+	jp nz, .checkColon
+	ld hl, sp+$0
+	ld [hl], $3f
+	jp .placeDirectly
+
+.checkColon: ; bc1ad (2f:41ad)
+	cp ":"
+	jp nz, .checkPeriod
+	ld hl, sp+$0
+	ld [hl], $40
+	jp .placeDirectly
+
+.checkPeriod: ; bc1b9 (2f:41b9)
+	cp "."
+	jp nz, .autoCharacter
+	ld hl, sp+$0
+	ld [hl], $41
+	jp .placeDirectly
+
+.autoCharacter: ; bc1c5 (2f:41c5)
+	ld l, a
+	ld h, $0
+	push hl
+	ld hl, Data_bc1f1
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	jp .quit
+
+.placeDirectly: ; bc1d5 (2f:41d5)
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call Coord2TileMap
+	reg16swap de, hl
+	ld hl, sp+$0
+	ld a, [hl]
+	ld [de], a
+	ld a, [wStringDestX]
+	inc a
+	ld [wStringDestX], a
+.quit: ; bc1ef (2f:41ef)
+	pop bc
+	ret
+
+Data_bc1f1:
+	TX_STACK
+	db $0
+
+Func_bc1f4: ; bc1f4 (2f:41f4)
+	push hl
+	push bc
+	push bc
+	ld hl, $0
+	pop de
+	push hl
+	call GetHLAtSPPlus6
+	call FindFirstNonzero
+	dec hl
+	ld c, l
+	ld b, h
+.loop: ; bc205 (2f:4205)
+	pop hl
+	push hl
+	ld e, c
+	ld d, b
+	call CompareHLtoDE
+	jp nc, .break
+	pop hl
+	push hl
+	push hl
+	call GetHLAtSPPlus8
+	pop de
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus6
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	push hl
+	push hl
+	call GetHLAtSPPlus8
+	pop de
+	add hl, de
+	ld [hl], a
+	call GetHLAtSPPlus4
+	ld a, l
+	call GetHLAtSPPlus6
+	add hl, bc
+	ld [hl], a
+	pop hl
+	push hl
+	inc hl
+	pop de
+	push hl
+	dec bc
+	jp .loop
+
+.break: ; bc23d (2f:423d)
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_bc241: ; bc241 (2f:4241)
+	push hl
+	push de
+	push bc
+	push bc
+	ld hl, $10
+	call WriteHLToSPPlus4
+	ld hl, sp+$1
+	ld [hl], $0
+.loop: ; bc24f (2f:424f)
+	call GetHLAtSPPlus4
+	push hl
+	call GetHLAtSPPlus10
+	pop de
+	call DivideHLbyDE
+	ld hl, sp+$0
+	ld [hl], e
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $a
+	jp nc, .more_than_10
+	ld hl, sp+$0
+	ld a, [hl]
+	add "0"
+	ld hl, sp+$0
+	ld [hl], a
+	jp .next
+
+.more_than_10: ; bc270 (2f:4270)
+	ld hl, sp+$0
+	ld a, [hl]
+	add "A" - 10
+	ld hl, sp+$0
+	ld [hl], a
+.next: ; bc278 (2f:4278)
+	ld hl, sp+$1
+	ld a, [hl]
+	inc a
+	ld hl, sp+$1
+	ld [hl], a
+	dec a
+	ld c, a
+	ld b, $0
+	call GetHLAtSPPlus6
+	add hl, bc
+	reg16swap de, hl
+	ld hl, sp+$0
+	ld a, [hl]
+	ld [de], a
+	call GetHLAtSPPlus4
+	push hl
+	call GetHLAtSPPlus10
+	pop de
+	call DivideHLbyDE
+	call WriteHLToSPPlus8
+	xor a
+	sub l
+	ld a, $0
+	sbc h
+	jp c, .loop
+	ld hl, sp+$1
+	ld c, [hl]
+	ld b, $0
+	call GetHLAtSPPlus6
+	add hl, bc
+	ld [hl], $0
+	call GetHLAtSPPlus6
+	call Func_bc1f4
+	call GetHLAtSPPlus6
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_bc2be: ; bc2be (2f:42be)
+	add sp, -$e
+	ld hl, sp+$12
+	write_hl_to_sp_plus $e
+	read_hl_from_sp_plus $12
+.nextCharacter
+	ld a, [hl]
+	or a
+	jp z, Func_bc352
+	ld a, [hl]
+	cp $a
+	jp nz, .not_newline
+	xor a
+	ld [wStringDestX], a
+	ld a, [wStringDestY]
+	inc a
+	ld [wStringDestY], a
+	jp .incrementPointer
+
+.not_newline: ; bc2e3 (2f:42e3)
+	ld a, [wStringDestX]
+	cp $12
+	jp c, .xCoordOnScreen
+	jp .incrementPointer
+
+.xCoordOnScreen: ; bc2ee (2f:42ee)
+	ld a, [hl]
+	cp $25
+	jp z, .specialCommand
+	push hl
+	ld a, [hl]
+	call Func_bc170
+	pop hl
+	jp .incrementPointer
+
+.specialCommand: ; bc2fd (2f:42fd)
+	inc hl
+	ld a, [hl]
+	cp $70
+	jp z, .printHex
+	cp $64
+	jp nz, .incrementPointer
+	push hl
+	ld hl, sp+$2
+	push hl
+	read_hl_from_sp_plus $12
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	inc hl
+	write_hl_to_sp_plus $12
+	ld l, c
+	ld h, b
+	pop de
+	ld bc, $a
+	call PrintNumSigned
+	ld hl, sp+$2
+	push hl
+	call PlaceString
+	pop bc
+	pop hl
+	jp .incrementPointer
+
+.printHex: ; bc32d (2f:432d)
+	push hl
+	ld hl, sp+$2
+	push hl
+	read_hl_from_sp_plus $12
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	inc hl
+	write_hl_to_sp_plus $12
+	ld l, c
+	ld h, b
+	pop de
+	ld bc, $10
+	call Func_bc241
+	ld hl, sp+$2
+	push hl
+	call Func_bc2be
+	pop bc
+	pop hl
+.incrementPointer: ; bc34e (2f:434e)
+	inc hl
+	jp .nextCharacter
+
+Func_bc352: ; bc352 (2f:4352)
+	add sp, $e
+	ret
+
+Func_bc355: ; bc355 (2f:4355)
+	call CheckButton
+	or a
+	jp z, Func_bc355
+	ret
+
+Func_bc35d: ; bc35d
+	call FillVisibleAreaWithBlankTile
+	call Func_bc092
+	ld hl, Data_bc3a5
+	push hl
+	call Func_bc2be
+	pop bc
+	ld hl, Data_bc3bd
+	push hl
+	call Func_bc2be
+	pop bc
+	xor a
+Func_bc374: ; bc374 (2f:4374)
+	cp $5
+	jp nc, Func_bc392
+	push af
+	ld l, a
+	ld h, $0
+	add hl, hl
+	push hl
+	ld l, a
+	ld h, $0
+	push hl
+	ld hl, Data_bc3c2
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop bc
+	pop af
+	inc a
+	jp Func_bc374
+
+Func_bc392: ; bc392 (2f:4392)
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_bc355
+	call Func_bc14e
+	ret
+
+Data_bc3a5:
+	db "abcdefghijkl", $a
+	db "ABCDEFGHI", $a, $0
+
+Data_bc3bd:
+	db "[]:", $a, $0
+
+Data_bc3c2:
+	db "No["
+	TX_SNUM
+	db "]:"
+	TX_SNUM
+	db $a, $0
+
+Func_bc3cd:
+	ld bc, $f
+	call CopyFromDEtoHL
+	ret
+
+Func_bc3d4:
+	ld bc, $1f
+	call CopyFromDEtoHL
+	ret
+
+Func_bc3db:
+	push de
+	push bc
+	push af
+	read_hl_from_sp_plus $10
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	read_hl_from_sp_plus $10
+	inc hl
+	inc hl
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	read_hl_from_sp_plus $10
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld de, -1
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, sp+$4
+	ld a, [hl]
+	ld hl, sp+$8
+	add [hl]
+	add $2
+	cp $12
+	jp c, Func_bc41b
+	ld hl, sp+$4
+	ld a, [hl]
+	add $2
+	ld l, a
+	ld a, $12
+	sub l
+	ld hl, sp+$8
+	ld [hl], a
+Func_bc41b: ; bc41b (2f:441b)
+	ld hl, sp+$8
+	ld c, [hl]
+	ld b, $0
+	read_hl_from_sp_plus $10
+	ld de, $6
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	ld hl, sp+$a
+	ld c, [hl]
+	ld b, $0
+	read_hl_from_sp_plus $10
+	ld de, $8
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	read_hl_from_sp_plus $e
+	push hl
+	read_hl_from_sp_plus $12
+	ld de, $a
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	pop af
+	read_hl_from_sp_plus $10
+	ld [hl], a
+	ld hl, sp+$2
+	ld a, [hl]
+	read_hl_from_sp_plus $10
+	inc hl
+	ld [hl], a
+	pop bc
+	read_hl_from_sp_plus $e
+	inc hl
+	inc hl
+	ld [hl], c
+	ld hl, sp+$4
+	ld a, [hl]
+	add $2
+	read_hl_from_sp_plus $e
+	inc hl
+	inc hl
+	inc hl
+	ld [hl], a
+	pop bc
+	ret
+
+Func_bc472:
+	push hl
+	push de
+	set_farcall_addrs_hli Func_1445e
+	pop de
+	pop hl
+	ld c, $2f
+	jp FarCall
+
+Func_bc486:
+	push hl
+	push de
+	push bc
+	set_farcall_addrs_hli Func_17e95
+	pop bc
+	pop de
+	pop hl
+	call FarCall
+	ret
+
+Func_bc49b: ; bc49b (2f:449b)
+	ld a, [wNextVBlankFlags]
+	ld hl, wLastVBlankFlags
+	cp [hl]
+	jp nz, Func_bc49b
+	ret
+
+Func_bc4a6:
+	push hl
+	push de
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, $3c
+	call FarCall
+	ld c, l
+	ld b, h
+	push bc
+	ld de, $1403
+	ld hl, $7
+	call BackUpTileMapRectangle
+	ld c, $3
+	ld e, $14
+	ld hl, $7
+	call Func_bc486
+	ld e, $8
+	ld a, $1
+	call SetStringStartState
+	pop bc
+	pop de
+	pop hl
+	push bc
+	push de
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	ld l, $3
+	push hl
+	ld c, $14
+	ld e, $7
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_bc160
+	pop bc
+	push bc
+	ld de, $1403
+	ld hl, $7
+	call RestoreTileMapRectangle
+	ld l, $3
+	push hl
+	ld c, $14
+	ld e, $7
+	xor a
+	call Func_3ca1
+	pop bc
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	ret
+
+Data_bc517:
+	dr $bc517, $bc540
+
+Data_bc540: ; bc540
+	dr $bc540, $bc671
+
+Data_bc671: ; bc671
+	dr $bc671, $bc71f
+
+Func_bc71f: ; bc71f (2f:471f)
+	push af
+	push de
+	ld hl, $d
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, Data_bc517
+	call CompareHLtoDE
+	jp z, Func_bc738
+	jp Func_bc773
+
+Func_bc738: ; bc738 (2f:4738)
+	push bc
+	ld hl, $d
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call FindFirstNonzero
+	ld c, l
+	ld hl, sp+$2
+	ld a, [hl]
+	inc a
+	ld e, a
+	ld hl, sp+$5
+	ld a, [hl]
+	add $2
+	add c
+	call SetStringStartState
+	pop bc
+	ld hl, $d
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bc776
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+Func_bc773: ; bc773 (2f:4773)
+	pop bc
+	pop bc
+	ret
+
+Data_bc776:
+	db ":"
+	TX_SNUM
+	db $0
+
+Func_bc77a: ; bc77a (2f:477a)
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	call Func_bc2be
+	pop bc
+	ret
+
+Func_bc788: ; bc788 (2f:4788)
+	push hl
+	push bc
+	push bc
+	call GetHLAtSPPlus6
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	ld hl, sp+$3
+	ld [hl], a
+	call GetHLAtSPPlus6
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$2
+	ld [hl], a
+	call GetHLAtSPPlus6
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	ld c, [hl]
+	push bc
+	call GetHLAtSPPlus8
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	push af
+	call GetHLAtSPPlus10
+	ld de, $9
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	read_hl_from_sp_plus $c
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus8
+	set_farcall_addrs_hli Func_667d
+	pop de
+	pop af
+	pop bc
+	push de
+	ld e, a
+	ld d, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	dec hl
+	dec hl
+	push hl
+	ld e, c
+	ld d, $0
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld h, l
+	ld l, $0
+	dec h
+	dec h
+	pop de
+	add hl, de
+	push hl
+	ld hl, sp+$6
+	ld e, [hl]
+	ld d, $0
+	inc de
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	inc h
+	add hl, de
+	pop de
+	ld bc, $8f02
+	call FarCall
+	ld c, $0
+	pop de
+Func_bc81b: ; bc81b (2f:481b)
+	ld l, c
+	ld h, $0
+	call CompareHLtoDE
+	jp nc, Func_bc874
+	push de
+	push bc
+	ld hl, sp+$6
+	ld a, [hl]
+	add c
+	inc a
+	ld e, a
+	ld hl, sp+$7
+	ld a, [hl]
+	add $2
+	call SetStringStartState
+	pop bc
+	push bc
+	call GetHLAtSPPlus10
+	ld de, $d
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	call GetHLAtSPPlus8
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld a, l
+	pop de
+	call Func_bc77a
+	pop bc
+	push bc
+	inc c
+	dec c
+	jp nz, Func_bc86e
+	call GetHLAtSPPlus6
+	ld a, l
+	or h
+	jp nz, Func_bc86e
+	call GetHLAtSPPlus10
+	ld c, l
+	ld b, h
+	ld hl, sp+$6
+	ld e, [hl]
+	ld hl, sp+$7
+	ld a, [hl]
+	call Func_bc71f
+Func_bc86e: ; bc86e (2f:486e)
+	pop bc
+	inc c
+	pop de
+	jp Func_bc81b
+
+Func_bc874: ; bc874 (2f:4874)
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_bc878:
+	push bc
+	push bc
+	ld c, l
+	ld b, h
+	push bc
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	ld hl, sp+$5
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$4
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	ld a, [hl]
+	push af
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	push hl
+	ld hl, $b
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus8
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	call FillVisibleAreaWithBlankTile
+	pop de
+	pop hl
+	pop af
+	push hl
+	push de
+	push af
+	ld c, l
+	ld e, a
+	ld hl, sp+$b
+	ld a, [hl]
+	ld hl, sp+$a
+	ld l, [hl]
+	ld h, a
+	call Func_bc486
+	pop af
+	pop de
+	pop hl
+	pop bc
+	push bc
+	push hl
+	push af
+	push de
+	ld l, c
+	ld h, b
+	call Func_bc788
+	call GetHLAtSPPlus10
+	ld a, l
+	and h
+	inc a
+	jp z, Func_bc8ff
+	ld hl, sp+$a
+	ld c, [hl]
+	ld b, $0
+	call GetHLAtSPPlus10
+	add hl, bc
+	inc hl
+	ld e, l
+	ld hl, sp+$b
+	ld a, [hl]
+	inc a
+	call SetStringStartState
+	ld a, $8f
+	call Func_bc170
+Func_bc8ff: ; bc8ff (2f:48ff)
+	pop de
+	push de
+	ld hl, sp+$a
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	inc hl
+	ld e, l
+	ld hl, sp+$b
+	ld a, [hl]
+	inc a
+	call SetStringStartState
+	ld a, $8b
+	call Func_bc170
+	pop de
+	pop af
+	pop hl
+	push de
+	push hl
+	ld c, a
+	ld hl, sp+$8
+	ld e, [hl]
+	ld hl, sp+$9
+	ld a, [hl]
+	call Func_3ca1
+	pop bc
+	pop de
+	pop bc
+	ld hl, $b
+	add hl, bc
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, $4000
+	pop bc
+	pop bc
+	ret
+
+Func_bc934:
+	push hl
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	ld hl, sp+$c
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	push de
+	write_hl_to_sp_plus $f
+	read_hl_from_sp_plus $f
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	ld hl, sp+$c
+	ld [hl], a
+	read_hl_from_sp_plus $f
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$b
+	ld [hl], a
+	read_hl_from_sp_plus $f
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$a
+	ld [hl], a
+	read_hl_from_sp_plus $f
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	push af
+	read_hl_from_sp_plus $11
+	ld de, $9
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	read_hl_from_sp_plus $11
+	ld de, $7
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	write_hl_to_sp_plus $c
+	read_hl_from_sp_plus $11
+	ld de, $b
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus10
+	read_hl_from_sp_plus $11
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus8
+	read_hl_from_sp_plus $11
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus6
+	pop af
+	pop de
+	push af
+	ld a, e
+	cp $1
+	jp z, Func_bc9f8
+	or a
+	jp nz, Func_bca2f
+	call GetHLAtSPPlus6
+	dec hl
+	call WriteHLToSPPlus6
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_bc9f5
+	ld hl, $0
+	call WriteHLToSPPlus6
+	call GetHLAtSPPlus4
+	dec hl
+	call WriteHLToSPPlus4
+	inc h
+	dec h
+	bit 7, h
+	jr z, .asm_bc9f5
+	ld hl, $0
+	call WriteHLToSPPlus4
+.asm_bc9f5
+	jp Func_bca2f
+
+Func_bc9f8: ; bc9f8 (2f:49f8)
+	call GetHLAtSPPlus6
+	inc hl
+	call WriteHLToSPPlus6
+	ld e, c
+	ld d, b
+	call CompareHLtoDE
+	jp c, Func_bca2f
+	ld l, c
+	ld h, b
+	dec hl
+	call WriteHLToSPPlus6
+	call GetHLAtSPPlus4
+	inc hl
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus10
+	push hl
+	call GetHLAtSPPlus8
+	push hl
+	call GetHLAtSPPlus8
+	pop de
+	add hl, de
+	pop de
+	call CompareHLtoDE
+	jp c, Func_bca2f
+	call GetHLAtSPPlus4
+	dec hl
+	call WriteHLToSPPlus4
+Func_bca2f: ; bca2f (2f:4a2f)
+	read_hl_from_sp_plus $f
+	ld de, $5
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus4
+	call CompareHLtoBC
+	jp z, Func_bca6b
+	call GetHLAtSPPlus4
+	push hl
+	read_hl_from_sp_plus $11
+	ld de, $5
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	read_hl_from_sp_plus $f
+	ld de, $b
+	add hl, de
+	ld de, -1
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	read_hl_from_sp_plus $f
+	call Func_bc788
+	jp Func_bcaa2
+
+Func_bca6b: ; bca6b (2f:4a6b)
+	call GetHLAtSPPlus8
+	ld a, l
+	and h
+	inc a
+	jp z, Func_bca8b
+	ld hl, sp+$b
+	ld c, [hl]
+	ld b, $0
+	call GetHLAtSPPlus8
+	add hl, bc
+	inc hl
+	ld e, l
+	ld hl, sp+$c
+	ld a, [hl]
+	inc a
+	call SetStringStartState
+	ld a, $8f
+	call Func_bc170
+Func_bca8b: ; bca8b (2f:4a8b)
+	ld hl, sp+$b
+	ld c, [hl]
+	ld b, $0
+	call GetHLAtSPPlus6
+	add hl, bc
+	inc hl
+	ld e, l
+	ld hl, sp+$c
+	ld a, [hl]
+	inc a
+	call SetStringStartState
+	ld a, $8b
+	call Func_bc170
+Func_bcaa2: ; bcaa2 (2f:4aa2)
+	call GetHLAtSPPlus6
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $f
+	ld de, $b
+	add hl, de
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	call GetHLAtSPPlus6
+	push hl
+	read_hl_from_sp_plus $11
+	inc hl
+	inc hl
+	inc hl
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	call GetHLAtSPPlus4
+	push hl
+	read_hl_from_sp_plus $11
+	ld de, $5
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	pop af
+	ld l, a
+	push hl
+	ld hl, sp+$a
+	ld c, [hl]
+	ld hl, sp+$b
+	ld e, [hl]
+	ld hl, sp+$c
+	ld a, [hl]
+	call Func_3ca1
+	pop bc
+	ld hl, $4000
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_bcaec:
+	dr $bcaec, $bcafb
+
+Data_bcafb:
+	dr $bcafb, $bcb1a
+
+Func_bcb1a:
+	push bc
+	ld c, l
+	ld b, h
+	push bc
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld a, [hl]
+	push af
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$5
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$4
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	pop af
+	push hl
+	push af
+	ld c, l
+	ld hl, sp+$6
+	ld e, [hl]
+	ld hl, sp+$7
+	ld l, [hl]
+	ld h, a
+	call Func_bc486
+	pop af
+	pop hl
+	pop bc
+	push hl
+	push af
+	push bc
+	ld l, c
+	ld h, b
+	call Func_bc788
+	pop bc
+	pop af
+	push af
+	ld hl, sp+$5
+	ld e, [hl]
+	call Func_bc71f
+	pop af
+	pop hl
+	push hl
+	ld hl, sp+$3
+	ld e, [hl]
+	ld hl, sp+$2
+	ld c, [hl]
+	call Func_3ca1
+	pop bc
+	ld hl, $4000
+	pop bc
+	ret
+
+Func_bcb7d:
+	push bc
+	push bc
+	push de
+	ld c, l
+	ld b, h
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	ld hl, sp+$4
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$3
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$2
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	pop de
+	push af
+	ld a, e
+	cp $1
+	jp z, Func_bcbba
+	or a
+	jp nz, Func_bcbc8
+Func_bcbba: ; bcbba (2f:4bba)
+	ld hl, $d
+	add hl, bc
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	inc hl
+	inc hl
+	ld a, $1
+	xor [hl]
+	ld [hl], a
+Func_bcbc8: ; bcbc8 (2f:4bc8)
+	ld hl, sp+$3
+	ld e, [hl]
+	ld hl, sp+$4
+	ld a, [hl]
+	call Func_bc71f
+	pop af
+	ld l, a
+	push hl
+	ld hl, sp+$2
+	ld c, [hl]
+	ld hl, sp+$3
+	ld e, [hl]
+	ld hl, sp+$4
+	ld a, [hl]
+	call Func_3ca1
+	pop bc
+Func_bcbe1: ; bcbe1 (2f:4be1)
+	call CheckButton
+	or a
+	jp nz, Func_bcbe1
+	ld hl, $4000
+	pop bc
+	pop bc
+	ret
+
+Data_bcbee:
+	dr $bcbee, $bcbfd
+
+Data_bcbfd:
+	dr $bcbfd, $bcc1c
+
+Func_bcc1c:
+	ret
+
+Func_bcc1d:
+	ret
+
+Func_bcc1e:
+	ret
+
+Func_bcc1f:
+	ret
+
+Func_bcc20:
+	ret
+
+Func_bcc21:
+	ret
+
+Func_bcc22:
+	ret
+
+Func_bcc23:
+	ret
+
+Func_bcc24:
+	ret
+
+Func_bcc25:
+	ret
+
+Func_bcc26:
+	ret
+
+Func_bcc27:
+	ret
+
+Func_bcc28:
+	ret
+
+Func_bcc29:
+	ret
+
+Func_bcc2a:
+	ret
+
+Func_bcc2b:
+	ret
+
+Func_bcc2c:
+	ret
+
+Func_bcc2d:
+	ret
+
+Func_bcc2e:
+	ret
+
+Func_bcc2f:
+	ret
+
+Func_bcc30:
+	ret
+
+Pointers_bcc31:
+	dw Func_bcc1c
+	dw Func_bcc1d
+	dw Func_bcc1e
+	dw Func_bcc1f
+	dw Func_bcc20
+	dw Func_bcc21
+	dw Func_bcc22
+	dw Func_bcc23
+	dw Func_bcc24
+	dw Func_bcc25
+	dw Func_bcc26
+	dw Func_bcc27
+	dw Func_bcc28
+	dw Func_bcc29
+	dw Func_bcc2a
+	dw Func_bcc2b
+	dw Func_bcc2c
+	dw Func_bcc2e
+	dw Func_bcc2f
+	dw Func_bcc30
+
+Func_bcc59: ; bcc59 (2f:4c59)
+	push hl
+	pop hl
+	push hl
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcda9
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	ld hl, Data_bcdb5
+	push hl
+	call Func_bc2be
+	pop bc
+	xor a
+Func_bcc72: ; bcc72 (2f:4c72)
+	cp $3
+	jp nc, Func_bcc95
+	push af
+	call GetHLAtSPPlus4
+	ld de, $8
+	add hl, de
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcdbb
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop af
+	inc a
+	jp Func_bcc72
+
+Func_bcc95: ; bcc95 (2f:4c95)
+	ld hl, Data_bcdc0
+	push hl
+	call Func_bc2be
+	pop bc
+	pop hl
+	push hl
+	ld de, $b
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcdc2
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $7
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcdcc
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $c
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bcdd6
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $e
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bcddd
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $10
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bcde8
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $12
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bcdef
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $14
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bcdf9
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $16
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bce01
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $17
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bce0a
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $19
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bce15
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $1b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bce22
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $1d
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bce2d
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $20
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bce3a
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $22
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bce4c
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_bcda9:
+	db "TypeNum:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bcdb5:
+	db "Soft:", $0
+
+Data_bcdbb:
+	db "["
+	TX_SNUM
+	db "]", $0
+
+Data_bcdc0:
+	db $a
+	db $0
+
+Data_bcdc2:
+	db "Parts:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bcdcc:
+	db "Level:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bcdd6:
+	db "Hp:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bcddd:
+	db "HppMax:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bcde8:
+	db "Ep:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bcdef:
+	db "EpMax:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bcdf9:
+	db "Exp:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bce01:
+	db "Mode:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bce0a:
+	db "AtackP:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bce15:
+	db "DefenceP:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bce22:
+	db "SpeedP:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bce2d:
+	db "EnedamaP:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bce3a:
+	db "DefenceType:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bce4c:
+	db "CPU:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bce54:
+	push hl
+	pop hl
+	push hl
+	ld de, $c
+	add hl, de
+	push hl
+	ld hl, sp+$2
+	push hl
+	ld hl, Data_bce80
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_bc160
+	call FillVisibleAreaWithBlankTile
+	pop hl
+	call Func_bcc59
+	pop bc
+	ret
+
+Data_bce80:
+	db "RSRM ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Func_bce93:
+	push hl
+	inc hl
+	inc hl
+	push hl
+	ld hl, Data_bceb1
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcebf
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	ret
+
+Data_bceb1:
+	db "ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bcebf:
+	db "sinnka:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bceca:
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	push hl
+	ld hl, Data_bceea
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, Data_bcef8
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	ret
+
+Data_bceea:
+	db "ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bcef8:
+	db "Enadama:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bcf04:
+	ret
+
+Func_bcf05:
+	push hl
+	pop hl
+	push hl
+	ld de, $5
+	add hl, de
+	push hl
+	ld hl, Data_bcf2b
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $5
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcf39
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_bcf2b:
+	db "ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bcf39:
+	db "Zokusei:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bcf45:
+	push hl
+	pop hl
+	push hl
+	ld de, $6
+	add hl, de
+	push hl
+	ld hl, Data_bcf6b
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $6
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcf79
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_bcf6b:
+	db "ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bcf79:
+	db "HpKeisu:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bcf85:
+	push hl
+	pop hl
+	push hl
+	ld de, $7
+	add hl, de
+	push hl
+	ld hl, Data_bcfab
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $7
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcfb9
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_bcfab:
+	db "ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bcfb9:
+	db "EpKeisu:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bcfc5:
+	push hl
+	pop hl
+	push hl
+	ld de, $8
+	add hl, de
+	push hl
+	ld hl, Data_bcfeb
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $8
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bcff9
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_bcfeb:
+	db "ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bcff9:
+	db "AtackPKeisu:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bd009:
+	push hl
+	pop hl
+	push hl
+	ld de, $9
+	add hl, de
+	push hl
+	ld hl, Data_bd02f
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $9
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bd03d
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_bd02f:
+	db "ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bd03d:
+	db "DefencePKeisu:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bd04f:
+	push hl
+	pop hl
+	push hl
+	ld de, $a
+	add hl, de
+	push hl
+	ld hl, Data_bd075
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop hl
+	push hl
+	ld de, $a
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bd083
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_bd075:
+	db "ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bd083:
+	db "SpeedPKeisu:"
+	TX_SNUM
+	db $a
+	db $0
+
+Func_bd093:
+	ret
+
+Func_bd094:
+	ret
+
+Func_bd095:
+	ret
+
+Func_bd096:
+	ret
+
+Func_bd097: ; bd097 (2f:5097)
+	read_hl_from wc2e6
+	ld de, $16
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $5e
+	add hl, de
+	reg16swap de, hl
+	push de
+	call FillVisibleAreaWithBlankTile
+	pop de
+	push de
+	push de
+	ld hl, Data_bd1a7
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop de
+	push de
+	ld a, [de]
+	ld l, a
+	ld h, $0
+	push hl
+	ld hl, Data_bd1b9
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop de
+	push de
+	reg16swap de, hl
+	inc hl
+	push hl
+	ld hl, Data_bd1c6
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop de
+	push de
+	reg16swap de, hl
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bd1d7
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop de
+	push de
+	reg16swap de, hl
+	inc hl
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bd1df
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	ld hl, Data_bd1e9
+	push hl
+	call Func_bc2be
+	pop bc
+	xor a
+	pop de
+Func_bd10f: ; bd10f (2f:510f)
+	cp $3
+	jp nc, Func_bd134
+	push de
+	push af
+	reg16swap de, hl
+	inc hl
+	inc hl
+	inc hl
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bd1f2
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop af
+	inc a
+	pop de
+	jp Func_bd10f
+
+Func_bd134: ; bd134 (2f:5134)
+	push de
+	ld hl, Data_bd1f7
+	push hl
+	call Func_bc2be
+	pop bc
+	pop de
+	push de
+	ld hl, $6
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bd1f9
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop de
+	push de
+	ld hl, $7
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bd203
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	ld hl, Data_bd211
+	push hl
+	call Func_bc2be
+	pop bc
+	xor a
+	pop de
+Func_bd16d: ; bd16d (2f:516d)
+	cp $2
+	jp nc, Func_bd18f
+	push de
+	push af
+	ld hl, $8
+	add hl, de
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	ld hl, Data_bd21f
+	push hl
+	call Func_bc2be
+	pop bc
+	pop bc
+	pop af
+	inc a
+	pop de
+	jp Func_bd16d
+
+Func_bd18f: ; bd18f (2f:518f)
+	ld hl, Data_bd224
+	push hl
+	call Func_bc2be
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_bc160
+	ret
+
+Data_bd1a7:
+	db "EBM ADDRESS:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bd1b9:
+	db "DispFlag:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bd1c6:
+	db "EBM.efbs2m:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bd1d7:
+	db "CPU:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bd1df:
+	db "Level:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bd1e9:
+	db "Soft[3]", $a
+	db $0
+
+Data_bd1f2:
+	db "["
+	TX_SNUM
+	db "]", $0
+
+Data_bd1f7:
+	db $a
+	db $0
+
+Data_bd1f9:
+	db "Parts:"
+	TX_SNUM
+	db $a
+	db $0
+
+Data_bd203:
+	db "EndFlag:0x"
+	TX_HNUM
+	db $a
+	db $0
+
+Data_bd211:
+	db "EnterFlag[2]", $a
+	db $0
+
+Data_bd21f:
+	db "["
+	TX_SNUM
+	db "]", $0
+
+Data_bd224:
+	db $a
+	db $0
+
+Pointers_bd226:
+	dw Func_bce54
+	dw Func_bce93
+	dw Func_bceca
+	dw Func_bcf04
+	dw Func_bcf05
+	dw Func_bcf45
+	dw Func_bcf85
+	dw Func_bcfc5
+	dw Func_bd009
+	dw Func_bd04f
+	dw Func_bd093
+	dw Func_bd094
+	dw Func_bd095
+	dw Func_bd096
+
+Func_bd242:
+	push hl
+	add sp, -$14
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, $168
+	call FarCall
+	push hl
+	decoord 0, 0
+	ld bc, $168
+	call CopyFromDEtoHL
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, $f
+	call FarCall
+	call WriteHLToSPPlus6
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, $1f
+	call FarCall
+	call WriteHLToSPPlus4
+	call FillVisibleAreaWithBlankTile
+	call Func_bc092
+	ld hl, sp+$6
+	ld de, Data_bc517
+	ld [hl], e
+	ld hl, Data_bc517
+	ld de, $100
+	call DivideHLByDESigned
+	ld a, l
+	ld hl, sp+$7
+	ld [hl], a
+	ld hl, sp+$8
+	ld [hl], $0
+	read_hl_from_sp_plus $18
+	ld e, l
+	ld hl, sp+$9
+	ld [hl], e
+	read_hl_from_sp_plus $18
+	ld de, $100
+	call DivideHLByDESigned
+	ld a, l
+	ld hl, sp+$a
+	ld [hl], a
+Func_bd2c7: ; bd2c7 (2f:52c7)
+	call GetHLAtSPPlus6
+	ld de, Data_bcaec
+	call Func_bc3cd
+	call GetHLAtSPPlus4
+	ld de, Data_bcafb
+	call Func_bc3d4
+	call GetHLAtSPPlus4
+	push hl
+	call GetHLAtSPPlus8
+	push hl
+	ld hl, -1
+	push hl
+	ld l, $6
+	push hl
+	ld l, $6
+	push hl
+	ld c, $8
+	ld e, $0
+	xor a
+	call Func_bc3db
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ld hl, sp+$6
+	push hl
+	call GetHLAtSPPlus8
+	ld de, $c
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	call GetHLAtSPPlus6
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	call Func_bc472
+	reg16swap de, hl
+	ld a, e
+	cp $3
+	jp z, Func_bd4eb
+	cp $2
+	jp z, Func_bd424
+	cp $1
+	jp z, Func_bd37b
+	or a
+	jp nz, Func_bd4f1
+	call GetHLAtSPPlus6
+	ld de, Data_bcbee
+	call Func_bc3cd
+	call GetHLAtSPPlus4
+	ld de, Data_bcbfd
+	call Func_bc3d4
+	call GetHLAtSPPlus4
+	push hl
+	call GetHLAtSPPlus8
+	push hl
+	ld hl, $0
+	push hl
+	ld l, $1
+	push hl
+	ld l, $1
+	push hl
+	ld c, $8
+	ld e, $a
+	ld a, $5
+	call Func_bc3db
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ld hl, sp+$6
+	push hl
+	call GetHLAtSPPlus8
+	ld de, $c
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	call GetHLAtSPPlus6
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	call Func_bc472
+	reg16swap de, hl
+	jp Func_bd2c7
+
+Func_bd37b: ; bd37b (2f:537b)
+	call GetHLAtSPPlus6
+	ld de, Data_bcaec
+	call Func_bc3cd
+	call GetHLAtSPPlus4
+	ld de, Data_bcafb
+	call Func_bc3d4
+	call GetHLAtSPPlus4
+	push hl
+	call GetHLAtSPPlus8
+	push hl
+	ld hl, -1
+	push hl
+	ld l, $14
+	push hl
+	ld l, $14
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_bc3db
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ld hl, sp+$6
+	push hl
+	call GetHLAtSPPlus8
+	ld de, $c
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, sp+$6
+	ld de, Data_bc540
+	ld [hl], e
+	ld hl, Data_bc540
+	ld de, $100
+	call DivideHLByDESigned
+	ld a, l
+	ld hl, sp+$7
+	ld [hl], a
+	call GetHLAtSPPlus6
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	call Func_bc472
+	reg16swap de, hl
+	ld a, e
+	and d
+	inc a
+	jp z, Func_bd40e
+	push de
+	call FillVisibleAreaWithBlankTile
+	pop de
+	ld hl, .return
+	push hl
+	reg16swap de, hl
+	add hl, hl
+	ld de, Pointers_bcc31
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld hl, sp+$c
+	ld a, [hl]
+	ret
+
+.return
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_bc160
+	jp Func_bd37b
+
+Func_bd40e: ; bd40e (2f:540e)
+	ld hl, sp+$6
+	ld de, Data_bc517
+	ld [hl], e
+	ld hl, Data_bc517
+	ld de, $100
+	call DivideHLByDESigned
+	ld a, l
+	ld hl, sp+$7
+	ld [hl], a
+	jp Func_bd2c7
+
+Func_bd424: ; bd424 (2f:5424)
+	call GetHLAtSPPlus6
+	ld de, Data_bcaec
+	call Func_bc3cd
+	call GetHLAtSPPlus4
+	ld de, Data_bcafb
+	call Func_bc3d4
+	call GetHLAtSPPlus4
+	push hl
+	call GetHLAtSPPlus8
+	push hl
+	ld hl, -1
+	push hl
+	ld l, $e
+	push hl
+	ld l, $e
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_bc3db
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ld hl, sp+$6
+	push hl
+	call GetHLAtSPPlus8
+	ld de, $c
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, sp+$6
+	ld de, Data_bc671
+	ld [hl], e
+	ld hl, Data_bc671
+	ld de, $100
+	call DivideHLByDESigned
+	ld a, l
+	ld hl, sp+$7
+	ld [hl], a
+	call GetHLAtSPPlus6
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	call Func_bc472
+	reg16swap de, hl
+	ld a, e
+	and d
+	inc a
+	jp z, Func_bd4d5
+	push de
+	call FillVisibleAreaWithBlankTile
+	read_hl_from wc2e6
+	ld de, $16
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$a
+	ld a, [hl]
+	or a
+	jp nz, Func_bd4a8
+	ld hl, $0
+	jp Func_bd4ab
+
+Func_bd4a8: ; bd4a8 (2f:54a8)
+	ld hl, $2f
+Func_bd4ab: ; bd4ab (2f:54ab)
+	add hl, de
+	ld c, l
+	ld b, h
+	pop de
+	ld hl, .return
+	push hl
+	reg16swap de, hl
+	add hl, hl
+	ld de, Pointers_bd226
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	ld l, c
+	ld h, b
+	ret
+
+.return
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_bc160
+	jp Func_bd424
+
+Func_bd4d5: ; bd4d5 (2f:54d5)
+	ld hl, sp+$6
+	ld de, Data_bc517
+	ld [hl], e
+	ld hl, Data_bc517
+	ld de, $100
+	call DivideHLByDESigned
+	ld a, l
+	ld hl, sp+$7
+	ld [hl], a
+	jp Func_bd2c7
+
+Func_bd4eb: ; bd4eb (2f:54eb)
+	call Func_bd097
+	jp Func_bd2c7
+
+Func_bd4f1: ; bd4f1 (2f:54f1)
+	call Func_bc14e
+	pop hl
+	push hl
+	reg16swap de, hl
+	hlcoord 0, 0
+	ld bc, $168
+	call CopyFromDEtoHL
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	set_farcall_addrs_hli FreeMemory
+	call GetHLAtSPPlus4
+	call FarCall
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	push hl
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	add sp, $16
+	ret
+
+Func_bd542:
+	push hl
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, $168
+	call FarCall
+	reg16swap de, hl
+	push de
+	reg16swap de, hl
+	ld de, wOAMBufferEnd
+	ld bc, $168
+	call CopyFromDEtoHL
+	call FillVisibleAreaWithBlankTile
+	call Func_bc092
+	pop de
+	pop hl
+	push de
+	call Func_bcc59
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_bc160
+	call Func_bc14e
+	pop de
+	push de
+	ld hl, wOAMBufferEnd
+	ld bc, $168
+	call CopyFromDEtoHL
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ret
+
+Func_bd5b7:
+	push hl
+	add sp, -$10
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, $168
+	call FarCall
+	reg16swap de, hl
+	push de
+	reg16swap de, hl
+	decoord 0, 0
+	ld bc, $168
+	call CopyFromDEtoHL
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, $f
+	call FarCall
+	ld c, l
+	ld b, h
+	push bc
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, $1f
+	call FarCall
+	push hl
+	call FillVisibleAreaWithBlankTile
+	call Func_bc092
+	pop hl
+	pop bc
+	push bc
+	push hl
+	ld l, c
+	ld h, b
+	ld de, Data_bcaec
+	call Func_bc3cd
+	pop hl
+	push hl
+	ld de, Data_bcafb
+	call Func_bc3d4
+	pop hl
+	pop bc
+	push hl
+	push bc
+	push hl
+	push bc
+	ld hl, -1
+	push hl
+	ld l, $e
+	push hl
+	ld l, $e
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_bc3db
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	push bc
+	ld hl, sp+$6
+	reg16swap de, hl
+	ld hl, $c
+	add hl, bc
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, sp+$6
+	ld de, Data_bc671
+	ld [hl], e
+	ld hl, Data_bc671
+	ld de, $100
+	call DivideHLByDESigned
+	ld a, l
+	ld hl, sp+$7
+	ld [hl], a
+	call FillVisibleAreaWithBlankTile
+	pop bc
+	pop hl
+Func_bd66d: ; bd66d (2f:566d)
+	push hl
+	push bc
+	ld e, c
+	ld d, b
+	call Func_bc472
+	reg16swap de, hl
+	pop bc
+	pop hl
+	ld a, e
+	and d
+	inc a
+	jp z, Func_bd6ac
+	push hl
+	push bc
+	ld hl, .return
+	push hl
+	reg16swap de, hl
+	add hl, hl
+	ld de, Pointers_bd226
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	read_hl_from_sp_plus $1c
+	ret
+
+.return
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_bc160
+	pop bc
+	pop hl
+	jp Func_bd66d
+
+Func_bd6ac: ; bd6ac (2f:56ac)
+	pop de
+	push hl
+	push bc
+	push de
+	call Func_bc14e
+	pop de
+	push de
+	hlcoord 0, 0
+	ld bc, $168
+	call CopyFromDEtoHL
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	add sp, $12
+	ret
 
 Func_bd6fa:: ; bd6fa
 	dr $bd6fa, $bf214
@@ -107056,7 +110276,7 @@ Func_bf214: ; bf214
 Func_bf397: ; bf397
 	dr $bf397, $bf431
 
-Func_bf431: ; bf431 (2f:7431)
+PrintMemoryAllocationErrorDetails: ; bf431 (2f:7431)
 	push hl
 	ld hl, -$148
 	add hl, sp
@@ -107453,27 +110673,27 @@ Func_bf701: ; bf701 (2f:7701)
 Data_bf707:
 	db "ハﾞッファ エラー:"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_bf714:
 	db "エラー:"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_bf71b:
 	db "アトﾞレス:"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_bf724:
 	db "ケﾞットサイスﾞ:"
 	TX_SNUM
-	db $00
+	db $0
 
 Data_bf730:
 	db "ノコリサイスﾞ:"
 	TX_SNUM
-	db $00
+	db $0
 
 SECTION "Bank 30", ROMX, BANK [$30]
 GFX_c0000: INCBIN "gfx/sprites/c0000.w16.2bpp" ; c0000

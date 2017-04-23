@@ -1,8 +1,8 @@
 Data_a983: ; a983
-	db $01
-	db $02
-	db $04
-	db $08
+	db $1
+	db $2
+	db $4
+	db $8
 	db $10
 	db $20
 	db $40

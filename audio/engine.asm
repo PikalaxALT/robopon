@@ -1880,35 +1880,35 @@ CNotes_\1: ; 70c1a
 	db 168
 
 FrequencyTable_\1: ; 70c22
-	dw $002c, $009c, $0106, $016b
-	dw $01c9, $0222, $0278, $02c6
-	dw $0312, $0358, $039b, $03da
+	dw $2c, $9c, $106, $16b
+	dw $1c9, $222, $278, $2c6
+	dw $312, $358, $39b, $3da
 
-	dw $0416, $044e, $0483, $04b5
-	dw $04e5, $0511, $053c, $0563
-	dw $0589, $05ac, $05cd, $05ed
+	dw $416, $44e, $483, $4b5
+	dw $4e5, $511, $53c, $563
+	dw $589, $5ac, $5cd, $5ed
 
-	dw $060b, $0628, $0642, $065b
-	dw $0672, $0689, $069e, $06b2
-	dw $06c4, $06d6, $06e7, $06f6
+	dw $60b, $628, $642, $65b
+	dw $672, $689, $69e, $6b2
+	dw $6c4, $6d6, $6e7, $6f6
 
-	dw $0705, $0714, $0721, $072d
-	dw $0739, $0744, $074f, $0759
-	dw $0762, $076b, $0773, $077b
+	dw $705, $714, $721, $72d
+	dw $739, $744, $74f, $759
+	dw $762, $76b, $773, $77b
 
-	dw $0783, $078a, $0790, $0797
-	dw $079d, $07a2, $07a7, $07ac
-	dw $07b1, $07b6, $07ba, $07be
+	dw $783, $78a, $790, $797
+	dw $79d, $7a2, $7a7, $7ac
+	dw $7b1, $7b6, $7ba, $7be
 
-	dw $07c1, $07c5, $07c8, $07cb
-	dw $07ce, $07d1, $07d4, $07d6
-	dw $07d9, $07db, $07dd, $07df
+	dw $7c1, $7c5, $7c8, $7cb
+	dw $7ce, $7d1, $7d4, $7d6
+	dw $7d9, $7db, $7dd, $7df
 
-	dw $07e1, $07e3, $07e4, $07e5
-	dw $07e7, $07e8, $07ea, $07eb
-	dw $07ec, $07ed, $07ee, $07ef
+	dw $7e1, $7e3, $7e4, $7e5
+	dw $7e7, $7e8, $7ea, $7eb
+	dw $7ec, $7ed, $7ee, $7ef
 
-	dw $07f0
+	dw $7f0
 
 Data_70ccc_\1: ; 70ccc
 	dw Data_70cf4_\1
@@ -1993,8 +1993,8 @@ Data_70de4_\1: ; 70de4
 	dw Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1, Data_70e4c_\1
 
 Data_70e4c_\1: ; 70e4c
-	db $00
-	db $ed, $02, $c0, $48
+	db $0
+	db $ed, $2, $c0, $48
 	db $4e
 
 Data_70e52_\1: ; 70e52
@@ -2011,91 +2011,91 @@ Data_70e59_\1: ; 70e59
 
 Data_70e60_\1: ; 70e60
 	db $88
-	db $00, $a1, $80, $06
-	db $04
-	db $06
-	db $04
+	db $0, $a1, $80, $6
+	db $4
+	db $6
+	db $4
 	db $ff
 
 Data_70e69_\1: ; 70e69
 	db $88
-	db $00, $81, $80, $06
-	db $04
-	db $06
-	db $04
+	db $0, $81, $80, $6
+	db $4
+	db $6
+	db $4
 	db $ff
 
 Data_70e72_\1: ; 70e72
 	db $88
-	db $00, $61, $80, $06
-	db $04
-	db $06
-	db $04
+	db $0, $61, $80, $6
+	db $4
+	db $6
+	db $4
 	db $ff
 
 Data_70e7b_\1: ; 70e7b
 	db $88
-	db $00, $c1, $80, $06
-	db $04
-	db $06
-	db $04
-	db $04
+	db $0, $c1, $80, $6
+	db $4
+	db $6
+	db $4
+	db $4
 	db $ff
 
 Data_70e85_\1: ; 70e85
 	db $88
-	db $f7, $e1, $c0, $02
-	db $01
-	db $01
-	db $01
-	db $01
+	db $f7, $e1, $c0, $2
+	db $1
+	db $1
+	db $1
+	db $1
 	db $ff
 
 Data_70e8f_\1: ; 70e8f
 	db $88
-	db $f7, $b1, $c0, $02
-	db $01
-	db $01
+	db $f7, $b1, $c0, $2
+	db $1
+	db $1
 	db $ff
 
 Data_70e97_\1: ; 70e97
 	db $88
-	db $f7, $91, $c0, $02
-	db $01
-	db $01
+	db $f7, $91, $c0, $2
+	db $1
+	db $1
 	db $ff
 
 Data_70e9f_\1: ; 70e9f
 	db $88
-	db $00, $b3, $80, $02
-	db $00
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
+	db $0, $b3, $80, $2
+	db $0
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
 	db $ff
 
 Data_70ec1_\1: ; 70ec1
@@ -2105,30 +2105,30 @@ Data_70ec1_\1: ; 70ec1
 
 Data_70ec7_\1: ; 70ec7
 	db $88
-	db $00, $c3, $80, $02
-	db $00
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
+	db $0, $c3, $80, $2
+	db $0
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
 	db $ff
 
 Data_70ee4_\1: ; 70ee4
@@ -2148,8 +2148,8 @@ Data_70ef2_\1: ; 70ef2
 	db $f5, $d1, $c0, $d8
 	db $22
 	db $11
-	db $06
-	db $04
+	db $6
+	db $4
 	db $ff
 
 Data_70efc_\1: ; 70efc
@@ -2157,17 +2157,17 @@ Data_70efc_\1: ; 70efc
 	db $f7, $b1, $c0, $d8
 	db $22
 	db $11
-	db $06
-	db $04
+	db $6
+	db $4
 	db $ff
 
 Data_70f06_\1: ; 70f06
 	db $88
 	db $f7, $91, $c0, $d8
-	db $06
-	db $04
-	db $06
-	db $06
+	db $6
+	db $4
+	db $6
+	db $6
 	db $ff
 
 Data_70f10_\1: ; 70f10
@@ -2176,137 +2176,137 @@ Data_70f10_\1: ; 70f10
 	db $33
 	db $22
 	db $11
-	db $06
+	db $6
 	db $ff
 
 Data_70f1a_\1: ; 70f1a
 	db $88
-	db $00, $d1, $80, $02
-	db $01
+	db $0, $d1, $80, $2
+	db $1
 	db $ff
 
 Data_70f21_\1: ; 70f21
 	db $88
-	db $00, $a1, $80, $02
-	db $01
+	db $0, $a1, $80, $2
+	db $1
 	db $ff
 
 Data_70f28_\1: ; 70f28
 	db $88
-	db $00, $71, $b0, $02
-	db $01
+	db $0, $71, $b0, $2
+	db $1
 	db $ff
 
 Data_70f2f_\1: ; 70f2f
 	db $88
-	db $00, $a3, $c0, $fd
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
-	db $01
+	db $0, $a3, $c0, $fd
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
+	db $1
 	db $ff
 
 Data_70f49_\1: ; 70f49
 	db $88
-	db $00, $b4, $80, $46
-	db $06
-	db $04
-	db $00
-	db $04
-	db $02
+	db $0, $b4, $80, $46
+	db $6
+	db $4
+	db $0
+	db $4
+	db $2
 	db $ff
 
 Data_70f54_\1: ; 70f54
 	db $88
-	db $00, $a1, $80, $46
-	db $07
-	db $05
-	db $00
-	db $00
-	db $03
-	db $03
-	db $00
-	db $00
-	db $02
-	db $02
-	db $00
-	db $00
-	db $02
-	db $02
-	db $00
-	db $00
-	db $01
-	db $01
-	db $00
-	db $00
-	db $01
-	db $01
-	db $00
-	db $00
-	db $01
-	db $01
+	db $0, $a1, $80, $46
+	db $7
+	db $5
+	db $0
+	db $0
+	db $3
+	db $3
+	db $0
+	db $0
+	db $2
+	db $2
+	db $0
+	db $0
+	db $2
+	db $2
+	db $0
+	db $0
+	db $1
+	db $1
+	db $0
+	db $0
+	db $1
+	db $1
+	db $0
+	db $0
+	db $1
+	db $1
 	db $ff
 
 Data_70f74_\1: ; 70f74
 	db $88
-	db $00, $c2, $80, $48
-	db $0b
-	db $0a
-	db $09
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
+	db $0, $c2, $80, $48
+	db $b
+	db $a
+	db $9
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
 	db $ff
 
 Data_70f8c_\1: ; 70f8c
 	db $88
-	db $00, $72, $80, $48
-	db $0b
-	db $0a
-	db $09
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
-	db $0b
-	db $0a
+	db $0, $72, $80, $48
+	db $b
+	db $a
+	db $9
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
+	db $b
+	db $a
 	db $ff
 
 Data_70fa4_\1: ; 70fa4
@@ -2398,7 +2398,7 @@ Data_71220_\1: ; 71220
 Data_7122e_\1: ; 7122e
 	db $0
 	REPT 108
-	db $0a
+	db $a
 	ENDR
 
 NumSongs_\1: ; 7129b

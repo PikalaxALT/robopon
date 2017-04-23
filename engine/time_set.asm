@@ -413,21 +413,21 @@ Func_530b2: ; 530b2 (14:70b2)
 	ret
 
 Data_530bd:
-	db "(せっていしゅうりょう)", $00
+	db "(せっていしゅうりょう)", $0
 
 Data_530ca:
 	TX_STACK
-	db $00
+	db $0
 
 Data_530cd:
-	db "8", $00
+	db "8", $0
 
 Data_530cf:
-	db " ", $00
+	db " ", $0
 
 Data_530d1:
 	TX_STACK
-	db $00
+	db $0
 
 Func_530d4: ; 530d4 (14:70d4)
 	push bc
@@ -548,23 +548,23 @@ Func_53149: ; 53149 (14:7149)
 	ret
 
 Data_531c8:
-	db "(せいれき ひつﾞけ しﾞかん を)", $00
+	db "(せいれき ひつﾞけ しﾞかん を)", $0
 
 Data_531db:
-	db "(せっていしてくたﾞさい)", $00
+	db "(せっていしてくたﾞさい)", $0
 
 Data_531e9:
-	db "(せいれき)", $00
+	db "(せいれき)", $0
 
 Data_531f0:
-	db "(ねん)", $00
+	db "(ねん)", $0
 
 Data_531f5:
 	TX_SNUM
 	TX_SNUM
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Func_531fe:
 	ld l, $12
@@ -710,23 +710,23 @@ Func_53260: ; 53260 (14:7260)
 	ret
 
 Data_5330b:
-	db "(ひつﾞけ)", $00
+	db "(ひつﾞけ)", $0
 
 Data_53312:
-	db "(かﾞつ)", $00
+	db "(かﾞつ)", $0
 
 Data_53318:
-	db "(にち)", $00
+	db "(にち)", $0
 
 Data_5331d:
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Data_53322:
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Func_53327: ; 53327 (14:7327)
 	push bc
@@ -812,23 +812,23 @@ Func_53327: ; 53327 (14:7327)
 	ret
 
 Data_533d4:
-	db "(しﾞかん)", $00
+	db "(しﾞかん)", $0
 
 Data_533db:
-	db ":", $00
+	db ":", $0
 
 Data_533dd:
-	db "(にち)", $00
+	db "(にち)", $0
 
 Data_533e2:
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Data_533e7:
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Data_533ec:
 	db  7,  8,  9, 10
@@ -911,10 +911,10 @@ Func_53465: ; 53465 (14:7465)
 	ret
 
 Data_53467:
-	db "b", $00
+	db "b", $0
 
 Data_53469:
-	db "_", $00
+	db "_", $0
 
 Func_5346b: ; 5346b (14:746b)
 	push bc
@@ -1213,7 +1213,7 @@ Data_53652:
 	TX_SNUM
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Func_5365b:
 	ld de, $2
@@ -1433,12 +1433,12 @@ Func_53771: ; 53771 (14:7771)
 Data_537c6:
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Data_537cb:
 	TX_SNUM
 	TX_SNUM
-	db $00
+	db $0
 
 Func_537d0:
 	ld de, $2

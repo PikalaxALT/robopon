@@ -680,13 +680,13 @@ Func_058a:: ; 058a
 	ret
 
 Data_059c:: ; 059c
-	db " PASSWORD INPUT", $0e, $0d, $01, $00
-	db " きゃらはﾞんはﾞーしﾞょん 5けﾞーむ", $0d, $01, $00
-	db " きすもん&はﾞけ", $0f, "ちゅ", $0e, "りれー", $0f, "ほか4", $0e, $0d, $01, $00
-	db " 15はﾟすﾞる&きゃのん", $0f, " ほか4こ", $0e, $0d, $01, $00
-	db " はﾞいなりーらんとﾞ", $0f, "&BJほか2こ", $0e, $0d, $01, $00
-	db " みにけﾞーむ", $0f, "かﾞそﾞういれかえ", $0e, "てﾞーた", $0d, $01, $00
-	db " GB KISS TOOLS", $0d, $01, $00
+	db " PASSWORD INPUT", $e, $d, $1, $0
+	db " きゃらはﾞんはﾞーしﾞょん 5けﾞーむ", $d, $1, $0
+	db " きすもん&はﾞけ", $f, "ちゅ", $e, "りれー", $f, "ほか4", $e, $d, $1, $0
+	db " 15はﾟすﾞる&きゃのん", $f, " ほか4こ", $e, $d, $1, $0
+	db " はﾞいなりーらんとﾞ", $f, "&BJほか2こ", $e, $d, $1, $0
+	db " みにけﾞーむ", $f, "かﾞそﾞういれかえ", $e, "てﾞーた", $d, $1, $0
+	db " GB KISS TOOLS", $d, $1, $0
 	db "KISSMON "
 	db "CANNON  "
 	db "BINARY  "
@@ -694,13 +694,13 @@ Data_059c:: ; 059c
 	db "KISSTOOL"
 
 Data_065e:: ; 065e
-	db "  めにゅー", $0f, "を せんたくして", $0e, $00
-	db " ", $00
-	db $0f, "START/Aを おしてくたﾞさい", $0e, $00
-	db $00
+	db "  めにゅー", $f, "を せんたくして", $e, $0
+	db " ", $0
+	db $f, "START/Aを おしてくたﾞさい", $e, $0
+	db $0
 
 Data_0686:: ; 0686
-	db "--------", $00
+	db "--------", $0
 
 Func_068f:: ; 68f (0:068f)
 	call Func_07a2
@@ -795,10 +795,10 @@ BitIndexToMask:: ; 739 (0:0739)
 	ret
 
 Data_0743:: ; 0743
-	db " ", $00
-	db "はﾟすわーとﾞ", $0f, "を にゅうりょくして ", $0e, $00
-	db $0f, "STARTを おしてくたﾞさい  ", $0e, $00
-	db $00
+	db " ", $0
+	db "はﾟすわーとﾞ", $f, "を にゅうりょくして ", $e, $0
+	db $f, "STARTを おしてくたﾞさい  ", $e, $0
+	db $0
 
 Func_076f:: ; 076f
 	ld de, $4000
@@ -857,7 +857,7 @@ Func_07a2:: ; 7a2 (0:07a2)
 	ret
 
 Data_07e7:: ; 07e7
-	db "GB KISS  MINI GAME", $00
+	db "GB KISS  MINI GAME", $0
 
 Data_07fa:: ; 07fa
 	dr $7fa, $83b
@@ -3108,20 +3108,20 @@ Func_1fbd:: ; 1fbd (0:1fbd)
 	ret
 
 Func_1fbe:: ; 1fbe
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	ld a, l
 	or h
 	jp nz, Func_2008
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $1ba
 	call FarCall
-	write_hl_to $c2f2
+	write_hl_to wc2f2
 	call WaitVideoTransfer
 	ld a, BANK(GFX_4b22)
 	ld [wFarCallDestBank], a
 	ld bc, $1ba
 	ld de, $8cc0
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	call FarRequestVideoData
 	ld a, BANK(GFX_4b22)
 	ld [wFarCallDestBank], a
@@ -3134,7 +3134,7 @@ Func_2008:: ; 2008 (0:2008)
 	ret
 
 Func_2009:: ; 2009
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	ld a, l
 	or h
 	jp z, Func_204b
@@ -3142,34 +3142,34 @@ Func_2009:: ; 2009
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $1ba
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	reg16swap de, hl
 	ld hl, $8cc0
 	call FarRequestVideoData
 	call WaitVideoTransfer
 	set_farcall_addrs_hli FreeMemory
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	call FarCall
-	ld hl, HuC3SRamMode
-	write_hl_to $c2f2
+	ld hl, $0
+	write_hl_to wc2f2
 Func_204b:: ; 204b
 	ret
 
 Func_204c:: ; 204c
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	ld a, l
 	or h
 	jp nz, Func_2096
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $50
 	call FarCall
-	write_hl_to $c2f2
+	write_hl_to wc2f2
 	call WaitVideoTransfer
 	ld a, BANK(GFX_4e02)
 	ld [wFarCallDestBank], a
 	ld bc, $50
 	ld de, $8fa0
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	call FarRequestVideoData
 	ld a, $1
 	ld [wFarCallDestBank], a
@@ -3182,7 +3182,7 @@ Func_2096:: ; 2096 (0:2096)
 	ret
 
 Func_2097:: ; 2097
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	ld a, l
 	or h
 	jp z, Func_20d9
@@ -3190,16 +3190,16 @@ Func_2097:: ; 2097
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $50
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	reg16swap de, hl
 	ld hl, $8fa0
 	call FarRequestVideoData
 	call WaitVideoTransfer
 	set_farcall_addrs_hli FreeMemory
-	read_hl_from $c2f2
+	read_hl_from wc2f2
 	call FarCall
 	ld hl, $0
-	write_hl_to $c2f2
+	write_hl_to wc2f2
 Func_20d9:: ; 20d9 (0:20d9)
 	ret
 
@@ -3343,17 +3343,17 @@ Func_22fe:: ; 22fe (0:22fe)
 
 Data_2304:: ; 2304
 	TX_SNUM
-	db $00
+	db $0
 
 Data_2307:: ; 2307
-	db "0", $00
+	db "0", $0
 
 Data_2309:: ; 2309
-	db " ", $00
+	db " ", $0
 
 Data_230b:: ; 230b
 	TX_SNUM
-	db $00
+	db $0
 
 PlaceStringDEatCoordHL:: ; 230e (0:230e)
 	push de

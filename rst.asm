@@ -1,8 +1,8 @@
-SECTION "rst $00", ROM0 [$00]
+SECTION "rst $0", ROM0 [$0]
 Serial_::
 	jp Func_0388
 
-SECTION "rst $08", ROM0 [$08]
+SECTION "rst $8", ROM0 [$8]
 	jp Predef
 
 Bank_000b:: ; 000b
@@ -19,11 +19,11 @@ Bank_000f:: ; 000f
 SECTION "rst $10", ROM0 [$10]
 	jp Func_00c9
 Byte_0013:: ; 0013
-	db $01
+	db $1
 Byte_0014:: ; 0014
-	db $08
+	db $8
 Pointer_0015:: ; 0015
-	dbw $01, $a1f0
+	dbw $1, $a1f0
 
 SECTION "rst $20", ROM0 [$20]
 BankSwitch_0020:: ; 0020

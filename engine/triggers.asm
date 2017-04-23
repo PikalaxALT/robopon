@@ -330,8 +330,8 @@ Pointers_c7aa4:
 	dw Data_c79fd
 	dw Data_c7a02
 	dw Data_c7a03
-	dw $0000
-	dw $0000
+	dw $0
+	dw $0
 	dw Data_c7a04
 	dw Data_c7a11
 	dw Data_c7a1d

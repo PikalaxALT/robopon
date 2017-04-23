@@ -1,5 +1,5 @@
 Data_6061f: ; 6061f
-	dw $0000
+	dw $0
 
 PrintMapText: ; 60621
 ; h - x coordinate

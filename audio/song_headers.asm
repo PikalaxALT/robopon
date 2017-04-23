@@ -43,12 +43,12 @@ SongPointers_1c: ; 712b9
 	dw SongHeader_71333
 	dw SongHeader_7133c
 	dw SongHeader_71345
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
 	dw SongHeader_71384
 	dw SongHeader_7138d
 	dw SongHeader_71396
@@ -58,8 +58,8 @@ SongPointers_1c: ; 712b9
 	dw SongHeader_713ba
 	dw SongHeader_713c3
 	dw SongHeader_713cc
-	dw $0000
-	dw $0000
+	dw $0
+	dw $0
 	dw SongHeader_713e7
 
 SongHeader_712f3: ; 712f3
@@ -10058,34 +10058,34 @@ SongBanks_1d: ; 7529c
 
 SongPointers_1d: ; 752b9
 	dw SongHeader_752f3
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
 	dw SongHeader_7534e
 	dw SongHeader_75357
 	dw SongHeader_75360
 	dw SongHeader_75369
 	dw SongHeader_75372
 	dw SongHeader_7537b
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
-	dw $0000
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
+	dw $0
 	dw SongHeader_753d5
 	dw SongHeader_753de
-	dw $0000
+	dw $0
 
 SongHeader_752f3: ; 752f3
 	db %0000

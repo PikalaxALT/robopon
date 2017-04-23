@@ -17,7 +17,7 @@ emote_header: MACRO
 	dw \2 - \1, \3
 	ENDM
 
-CallPredef EQUS "$08"
+CallPredef EQUS "$8"
 
 dn: MACRO
 	db ((\1 & $f) << 4) | (\2 & $f)
@@ -188,6 +188,7 @@ TX_STACK EQUS "db $25, $63"
 TX_SNUM EQUS "db $25, $64"
 TX_LITERAL EQUS "db $25, $6c,"
 TX_UNUM EQUS "db $25, $6c, $64"
+TX_HNUM EQUS "db $25, $70"
 TX_CALL EQUS "db $25, $73"
 
 write_hl_to: MACRO

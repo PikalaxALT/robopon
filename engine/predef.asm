@@ -12733,8 +12733,8 @@ Func_7e556:: ; 7e556 (1f:6556)
 	push de
 	ld hl, $2
 	add hl, de
-	lb de, $ff, $00
-	lb bc, $ff, $00
+	lb de, $ff, $0
+	lb bc, $ff, $0
 .asm_7e56e
 	ld a, [hli]
 	or a

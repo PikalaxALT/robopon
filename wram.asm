@@ -5,9 +5,9 @@ wTimer:: ds $3 ; c000
 wSerial:: ds $3 ; c003
 wVBlank:: ds $16 ; c006
 	char wRTCTicker ; c01c
-	; Cycles from $00 to $05 in increments of $1,
-	; then from $05 to $11 in increments of $2,
-	; then back to $00.
+	; Cycles from $0 to $5 in increments of $1,
+	; then from $5 to $11 in increments of $2,
+	; then back to $0.
 	; One increment per frame as described.
 
 SECTION "Audio RAM Backup", WRAM0 [$c020]
@@ -505,8 +505,7 @@ wVideoTransferQueue:: ; c239
 	char wTimeSetCenturies ; c2ef
 	char wTimeSetDecades ; c2f0
 	char wTimeSetYears ; c2f1
-	char wc2f2 ; c2f2
-	char wc2f3 ; c2f3
+	short wc2f2 ; c2f2
 	char wc2f4
 	ds $1
 	char wc2f6 ; c2f6

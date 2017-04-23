@@ -1,5 +1,5 @@
 	tree "string_tree.pickle"
-SECTION "Tree Bitstream Text Pointers", ROMX [$4000], BANK [$0e]
+SECTION "Tree Bitstream Text Pointers", ROMX [$4000], BANK [$e]
 TextTreeBitstreams:: ; 38000
 
 	dw TreeBitstreamText_38fa0 & $3fff ; 000
@@ -2004,7 +2004,7 @@ TextTreeBitstreams:: ; 38000
 	tree_text_pointer TextTreeBitstreams, TreeBitstreamText_46fd8 ; 7cf
 ; 38fa0
 
-SECTION "Tree Bitstream Text 0", ROMX [$4fa0], BANK [$0e]
+SECTION "Tree Bitstream Text 0", ROMX [$4fa0], BANK [$e]
 TreeBitstreamText_38fa0: ; 38fa0
 	ctxt ""
 	line "     これは ダミーです"
@@ -3958,7 +3958,7 @@ TreeBitstreamText_3bfc1: ; 3bfc1
 	line "みせて やるからな!"
 	done %101111101110110001000111110001001010100111110000011100111100111110001111010111111011010010011110010110011100100101001100001010100
 
-SECTION "Tree Bitstream Text 1", ROMX [$4000], BANK [$0f]
+SECTION "Tree Bitstream Text 1", ROMX [$4000], BANK [$f]
 TreeBitstreamText_3c000: ; 3c000
 	ctxt "ワイルド"
 	line "どうだ この ロボポンを みろ!"

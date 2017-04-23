@@ -1,5 +1,5 @@
 Data_a2e7: ; a2e7
-	db $18, $0c, $00, $0c
+	db $18, $c, $0, $c
 
 Func_a2eb:: ; a2eb
 	push hl

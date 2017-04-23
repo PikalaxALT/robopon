@@ -3,7 +3,7 @@ InitAllocatableMemoryBlocks:: ; 17a67 (5:7a67)
 	read_hl_from wMemoryAllocationPointer
 	ld c, l
 	ld b, h
-	ld a, $55
+	ld a, MEM_BLOCK_FREE
 	ld [bc], a
 	ld hl, -5
 	add hl, de
@@ -24,7 +24,7 @@ InitAllocatableMemoryBlocks:: ; 17a67 (5:7a67)
 	inc hl
 	ld [hl], d
 	ld bc, sAllocatableBlock1
-	ld a, $55
+	ld a, MEM_BLOCK_FREE
 	ld [bc], a
 	ld l, c
 	ld h, b
@@ -113,7 +113,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	pop hl
 	push hl
 	ld a, [hl]
-	cp $55
+	cp MEM_BLOCK_FREE
 	jp nz, .next
 	call GetHLAtSPPlus4
 	push hl
@@ -163,7 +163,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus4
-	ld [hl], $aa
+	ld [hl], MEM_BLOCK_USED
 	call GetHLAtSPPlus6
 	push hl
 	call GetHLAtSPPlus6
@@ -196,7 +196,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld [hl], $55
+	ld [hl], MEM_BLOCK_FREE
 	call GetHLAtSPPlus4
 	inc hl
 	inc hl
@@ -230,7 +230,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 .set_aa
 	pop hl
 	push hl
-	ld [hl], $aa
+	ld [hl], MEM_BLOCK_USED
 .finish
 	read_hl_from wMemoryAllocationNumBlocks
 	inc hl
@@ -282,10 +282,10 @@ AllocateMemory:: ; 17aba (5:7aba)
 	call CheckButton
 	or a
 	jp z, .crash_wait
-	set_farcall_addrs_hli Func_bf431
+	set_farcall_addrs_hli PrintMemoryAllocationErrorDetails
 	ld hl, -1
 	call FarCall
-	set_farcall_addrs_hli Func_bf431
+	set_farcall_addrs_hli PrintMemoryAllocationErrorDetails
 	call GetHLAtSPPlus4
 	call FarCall
 	jp @ - 1 ; better luck next time
@@ -296,7 +296,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	ret
 
 Data_17c44: ; 17c44
-	db "ケﾞットハﾞッファー ヌル エラー", $00 ; GET BUFFER FULL ERROR
+	db "ケﾞットハﾞッファー ヌル エラー", $0 ; GET BUFFER FULL ERROR
 
 Func_17c56: ; 17c56
 	ret
@@ -308,27 +308,27 @@ FreeMemory:: ; 17c57 (5:7c57)
 	call GetHLAtSPPlus6
 	ld a, l
 	or h
-	jp z, Func_17d77
+	jp z, .nothing_to_free
 	read_hl_from wMemoryAllocationNumBlocks
 	dec hl
 	write_hl_to wMemoryAllocationNumBlocks
 	call GetHLAtSPPlus6
-	ld de, hPushOAM + 6
+	ld de, -5
 	add hl, de
 	call WriteHLToSPPlus4
 	call GetHLAtSPPlus4
 	ld a, [hl]
-	cp $aa
-	jp nz, Func_17d77
+	cp MEM_BLOCK_USED
+	jp nz, .nothing_to_free
 	call GetHLAtSPPlus4
-	ld [hl], $55
+	ld [hl], MEM_BLOCK_FREE
 	read_hl_from wMemoryAllocationPointer
 	ld c, l
 	ld b, h
-Func_17c8c: ; 17c8c (5:7c8c)
+.loop
 	ld a, c
 	or b
-	jp z, Func_17cc9
+	jp z, .break
 	push bc
 	call GetHLAtSPPlus6
 	call WriteHLToSPPlus4
@@ -350,10 +350,10 @@ Func_17c8c: ; 17c8c (5:7c8c)
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp nz, Func_17cbe
-	jp Func_17cc9
+	jp nz, .next
+	jp .break
 
-Func_17cbe: ; 17cbe (5:7cbe)
+.next
 	ld l, c
 	ld h, b
 	inc hl
@@ -362,15 +362,15 @@ Func_17cbe: ; 17cbe (5:7cbe)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	jp Func_17c8c
+	jp .loop
 
-Func_17cc9: ; 17cc9 (5:7cc9)
+.break
 	ld a, c
 	or b
-	jp z, Func_17cfc
+	jp z, .get_alloc_pointer
 	ld a, [bc]
-	cp $55
-	jp nz, Func_17cfc
+	cp MEM_BLOCK_FREE
+	jp nz, .get_alloc_pointer
 	push bc
 	ld l, c
 	ld h, b
@@ -405,14 +405,14 @@ Func_17cc9: ; 17cc9 (5:7cc9)
 	ld a, [hl]
 	adc d
 	ld [hl], a
-Func_17cfc: ; 17cfc (5:7cfc)
+.get_alloc_pointer
 	read_hl_from wMemoryAllocationPointer
 	ld c, l
 	ld b, h
-Func_17d03: ; 17d03 (5:7d03)
+.loop2
 	ld a, c
 	or b
-	jp z, Func_17d42
+	jp z, .break2
 	push bc
 	ld l, c
 	ld h, b
@@ -436,10 +436,10 @@ Func_17d03: ; 17d03 (5:7d03)
 	call GetHLAtSPPlus4
 	pop de
 	call CompareHLtoDE
-	jp nz, Func_17d37
-	jp Func_17d42
+	jp nz, .next2
+	jp .break2
 
-Func_17d37: ; 17d37 (5:7d37)
+.next2
 	ld l, c
 	ld h, b
 	inc hl
@@ -448,15 +448,15 @@ Func_17d37: ; 17d37 (5:7d37)
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	jp Func_17d03
+	jp .loop2
 
-Func_17d42: ; 17d42 (5:7d42)
+.break2
 	ld a, c
 	or b
-	jp z, Func_17d77
+	jp z, .nothing_to_free
 	ld a, [bc]
-	cp $55
-	jp nz, Func_17d77
+	cp MEM_BLOCK_FREE
+	jp nz, .nothing_to_free
 	call GetHLAtSPPlus4
 	inc hl
 	inc hl
@@ -490,7 +490,7 @@ Func_17d42: ; 17d42 (5:7d42)
 	ld a, [hl]
 	adc d
 	ld [hl], a
-Func_17d77: ; 17d77 (5:7d77)
+.nothing_to_free
 	pop bc
 	pop bc
 	pop bc
@@ -512,21 +512,21 @@ Func_17d7b: ; 17d7b
 	ld hl, $0
 	pop de
 	push hl
-Func_17d9a: ; 17d9a (5:7d9a)
+.loop
 	call GetHLAtSPPlus8
 	ld a, l
 	or h
-	jp z, Func_17e0c
+	jp z, .break
 	call GetHLAtSPPlus8
 	ld a, [hl]
-	cp $55
-	jp nz, Func_17df5
+	cp MEM_BLOCK_FREE
+	jp nz, .inc_next
 	call GetHLAtSPPlus8
 	ld a, l
-	sub $0
+	sub $c000 % $100
 	ld a, h
-	sbc $c0
-	jp c, Func_17dca
+	sbc $c000 / $100
+	jp c, .sram
 	push bc
 	call GetHLAtSPPlus10
 	inc hl
@@ -537,9 +537,9 @@ Func_17d9a: ; 17d9a (5:7d9a)
 	add hl, bc
 	call WriteHLToSPPlus6
 	pop bc
-	jp Func_17dd5
+	jp .okay
 
-Func_17dca: ; 17dca (5:7dca)
+.sram
 	call GetHLAtSPPlus8
 	inc hl
 	ld a, [hl]
@@ -549,7 +549,7 @@ Func_17dca: ; 17dca (5:7dca)
 	add hl, bc
 	ld c, l
 	ld b, h
-Func_17dd5: ; 17dd5 (5:7dd5)
+.okay
 	push bc
 	call GetHLAtSPPlus10
 	inc hl
@@ -558,7 +558,7 @@ Func_17dd5: ; 17dd5 (5:7dd5)
 	ld b, [hl]
 	call GetHLAtSPPlus4
 	call CompareHLtoBC
-	jp nc, Func_17df1
+	jp nc, .pop_next
 	call GetHLAtSPPlus10
 	inc hl
 	ld a, [hl]
@@ -566,15 +566,15 @@ Func_17dd5: ; 17dd5 (5:7dd5)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
-Func_17df1: ; 17df1 (5:7df1)
+.pop_next
 	pop bc
-	jp Func_17dfc
+	jp .next
 
-Func_17df5: ; 17df5 (5:7df5)
+.inc_next
 	call GetHLAtSPPlus6
 	inc hl
 	call WriteHLToSPPlus6
-Func_17dfc: ; 17dfc (5:7dfc)
+.next
 	call GetHLAtSPPlus8
 	inc hl
 	inc hl
@@ -584,9 +584,9 @@ Func_17dfc: ; 17dfc (5:7dfc)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus8
-	jp Func_17d9a
+	jp .loop
 
-Func_17e0c: ; 17e0c (5:7e0c)
+.break
 	push bc
 	ld l, $12
 	push hl
@@ -610,7 +610,6 @@ Func_17e0c: ; 17e0c (5:7e0c)
 	pop bc
 	ld e, $2
 	xor a
-.asm_17e36
 	call SetStringStartState
 	pop bc
 	push bc
@@ -651,19 +650,19 @@ Data_17e6c: ; 17e6c
 	TX_SNUM
 	db " "
 	TX_SNUM
-	db $00
+	db $0
 
 Data_17e77: ; 17e77
 	db "ナイフﾞ "
 	TX_SNUM
 	db " カﾞイフﾞ "
 	TX_SNUM
-	db $00
+	db $0
 
 Data_17e88: ; 17e88
 	db "サイタﾞイ "
 	TX_SNUM
-	db $00
+	db $0
 
 Func_17e91: ; 17e91 (5:7e91)
 	call Func_17d7b

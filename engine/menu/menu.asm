@@ -11,14 +11,14 @@ Menu: ; 14028 (5:4028)
 	push hl
 	push de
 	ld hl, sp+$19
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 	read_hl_from_sp_plus $3c
 	ld l, h
 	ld h, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	read_hl_from_sp_plus $3c
 	ld h, $0
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 	read_hl_from_sp_plus $3e
 	ld l, h
 	ld h, $0
@@ -45,21 +45,21 @@ Menu: ; 14028 (5:4028)
 	ld hl, -1
 	write_hl_to_sp_plus $13
 Func_1408f: ; 1408f (5:408f)
-	read_hl_from_sp_plus $0b
+	read_hl_from_sp_plus $b
 	ld a, l
 	inc a
 	or h
 	jp nz, Func_140a0
 	ld hl, -1
-	write_hl_to_sp_plus $0b
+	write_hl_to_sp_plus $b
 Func_140a0: ; 140a0 (5:40a0)
-	read_hl_from_sp_plus $0d
+	read_hl_from_sp_plus $d
 	ld a, l
 	inc a
 	or h
 	jp nz, Func_140b1
 	ld hl, -1
-	write_hl_to_sp_plus $0d
+	write_hl_to_sp_plus $d
 Func_140b1: ; 140b1 (5:40b1)
 	read_hl_from wc2e6
 	ld de, $1c
@@ -151,7 +151,7 @@ Func_140b1: ; 140b1 (5:40b1)
 	jp nz, Func_14366
 Func_14180: ; 14180 (5:4180)
 	ld hl, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	ld hl, $0
 Func_1418a: ; 1418a (5:418a)
 	ld de, $4
@@ -192,19 +192,19 @@ Func_141b9: ; 141b9 (5:41b9)
 	callba_hli Func_7cd1
 	ld l, a
 	ld h, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	jp Func_14366
 
 Func_141d9: ; 141d9 (5:41d9)
 	ld hl, wSaveScratchca6c
 	ld l, [hl]
 	ld h, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	jp Func_14366
 
 Func_141e6: ; 141e6 (5:41e6)
 	ld hl, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	ld bc, $0
 Func_141f0: ; 141f0 (5:41f0)
 	ld l, c
@@ -220,9 +220,9 @@ Func_141f0: ; 141f0 (5:41f0)
 	ld a, [hl]
 	or a
 	jp z, Func_14213
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	inc hl
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	jp Func_14216
 
 Func_14213: ; 14213 (5:4213)
@@ -239,19 +239,19 @@ Func_1421d: ; 1421d (5:421d)
 	ld hl, wc9a2
 	ld l, [hl]
 	ld h, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	jp Func_14366
 
 Func_1422a: ; 1422a (5:422a)
 	ld hl, wc9b7
 	ld l, [hl]
 	ld h, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	jp Func_14366
 
 Func_14237: ; 14237 (5:4237)
 	ld hl, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	ld hl, $0
 	call WriteHLToSPPlus6
 Func_14244: ; 14244 (5:4244)
@@ -272,9 +272,9 @@ Func_14244: ; 14244 (5:4244)
 	ld a, [hl]
 	or a
 	jp z, Func_1427d
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	inc hl
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 Func_1427d: ; 1427d (5:427d)
 	call GetHLAtSPPlus6
 	inc hl
@@ -286,7 +286,7 @@ Func_14287: ; 14287 (5:4287)
 
 Func_1428a: ; 1428a (5:428a)
 	ld hl, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	ld bc, $0
 Func_14294: ; 14294 (5:4294)
 	ld l, c
@@ -299,9 +299,9 @@ Func_14294: ; 14294 (5:4294)
 	ld a, [hl]
 	or a
 	jp z, Func_142b4
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	inc hl
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	jp Func_142b7
 
 Func_142b4: ; 142b4 (5:42b4)
@@ -316,7 +316,7 @@ Func_142bb: ; 142bb (5:42bb)
 
 Func_142be: ; 142be (5:42be)
 	ld hl, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	ld bc, $0
 Func_142c8: ; 142c8 (5:42c8)
 	ld l, c
@@ -329,9 +329,9 @@ Func_142c8: ; 142c8 (5:42c8)
 	ld a, [hl]
 	or a
 	jp z, Func_142e8
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	inc hl
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	jp Func_142eb
 
 Func_142e8: ; 142e8 (5:42e8)
@@ -349,7 +349,7 @@ Func_142f2: ; 142f2 (5:42f2)
 	ld a, [hl]
 	call GetSRAMBank
 	ld hl, $1
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	ld bc, $0
 Func_14302: ; 14302 (5:4302)
 	ld l, c
@@ -376,9 +376,9 @@ Func_14302: ; 14302 (5:4302)
 	ld a, [hl]
 	or a
 	jp z, Func_14336
-	read_hl_from_sp_plus $0f
+	read_hl_from_sp_plus $f
 	inc hl
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 Func_14336: ; 14336 (5:4336)
 	inc bc
 	jp Func_14302
@@ -394,12 +394,12 @@ Func_1433d: ; 1433d (5:433d)
 	ld l, [hl]
 	ld h, $0
 	inc hl
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 	jp Func_14359
 
 Func_14352: ; 14352 (5:4352)
 	ld hl, $7
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 Func_14359: ; 14359 (5:4359)
 	jp Func_14366
 
@@ -407,7 +407,7 @@ Func_1435c: ; 1435c (5:435c)
 	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
-	write_hl_to_sp_plus $0f
+	write_hl_to_sp_plus $f
 Func_14366: ; 14366 (5:4366)
 	ld hl, sp+$3e
 	ld a, [hl]

@@ -89,7 +89,7 @@ CalcSaveChecksum:: ; 79b3 (1:79b3)
 	ret
 
 SaveGameSignature: ; 7a23
-	db "Robopon", $00
+	db "Robopon", $0
 
 ValidateSaveGameSignature:: ; 7a2b (1:7a2b)
 	push bc
