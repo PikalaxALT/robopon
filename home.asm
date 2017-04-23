@@ -2773,7 +2773,7 @@ Func_1c11:: ; 1c11
 	push bc
 	ld c, l
 	ld b, h
-	predef Func_7e640
+	predef IR_Receive_Predef
 	pop bc
 	ld l, a
 	call ApplyVBlankCallbackEnableFlag

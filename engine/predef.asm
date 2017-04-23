@@ -2928,51 +2928,51 @@ Func_7a8af:: ; 7a8af (1e:68af)
 	scf
 	ret
 
-Func_7a8b8:: ; 7a8b8 (1e:68b8)
+IR_SendByte:: ; 7a8b8 (1e:68b8)
 	ld c, $8
-.asm_7a8ba
+.loop
 	rla
-	jr c, .asm_7a8c1
+	jr c, .set
 	ld b, $a
-	jr .asm_7a8c4
+	jr .unset
 
-.asm_7a8c1
+.set
 	ld b, [hl]
 	ld b, $1a
-.asm_7a8c4
-	call Func_7a98c
+.unset
+	call IR_SendBit
 	dec c
-	jr nz, .asm_7a8ba
+	jr nz, .loop
 	push bc
 	pop bc
 	ld b, $3c
-	call Func_7a98c
+	call IR_SendBit
 	ld b, $a
-	call Func_7a98c
+	call IR_SendBit
 	ret
 
-Func_7a8d7:: ; 7a8d7 (1e:68d7)
+IR_ReceiveByte:: ; 7a8d7 (1e:68d7)
 	ld b, $0
-.asm_7a8d9
-	call Func_7a99b
-	jr c, .asm_7a8f5
+.loop
+	call IR_ReceiveBit
+	jr c, .quit
 	cp $1a
-	jr nc, .asm_7a8e8
+	jr nc, .loop2
 	cp $f
 	rl d
-	jr .asm_7a8d9
+	jr .loop
 
-.asm_7a8e8
+.loop2
 	ld a, [rJOYP]
 	bit 1, a
-	jr z, .asm_7a8f5
+	jr z, .quit
 	bit 0, [hl]
-	jr nz, .asm_7a8e8
+	jr nz, .loop2
 	ld a, d
 	cpl
 	ret
 
-.asm_7a8f5
+.quit
 	xor a
 	ret
 
@@ -2980,7 +2980,7 @@ Func_7a8f7:: ; 7a8f7 (1e:68f7)
 	push hl
 	push de
 	push bc
-	ld hl, $a000
+	ld hl, HuC3RTC
 	ld d, a
 	ld [hl], $1
 	ld c, $0
@@ -3010,13 +3010,13 @@ Func_7a8f7:: ; 7a8f7 (1e:68f7)
 	ld b, [hl]
 	ld b, $1a
 .asm_7a925
-	call Func_7a98c
+	call IR_SendBit
 	dec c
 	jr nz, .asm_7a91b
 	push bc
 	pop bc
 	ld b, $a
-	call Func_7a98c
+	call IR_SendBit
 	xor a
 	pop bc
 	pop de
@@ -3027,7 +3027,7 @@ Func_7a937:: ; 7a937 (1e:6937)
 	push hl
 	push de
 	push bc
-	ld hl, $a000
+	ld hl, HuC3RTC
 	ld c, $0
 	ld [hl], $0
 .asm_7a941
@@ -3054,7 +3054,7 @@ Func_7a937:: ; 7a937 (1e:6937)
 	jr z, .asm_7a95d
 	ld c, $8
 .asm_7a966
-	call Func_7a99b
+	call IR_ReceiveBit
 	jr c, asm_7a982
 	cp $f
 	rl d
@@ -3078,95 +3078,95 @@ asm_7a982
 	pop bc
 	pop de
 	pop hl
-asm_7a987
+ir_quit_fail
 	ld a, $ff
 	or a
 	scf
 	ret
 
-Func_7a98c:: ; 7a98c (1e:698c)
+IR_SendBit:: ; 7a98c (1e:698c)
 	push af
 	ld a, $a
 	ld [hl], $1
-.asm_7a991
+.wait_a
 	dec a
-	jr nz, .asm_7a991
+	jr nz, .wait_a
 	ld [hl], a
 	ld a, b
-.asm_7a996
+.wait_b
 	dec a
-	jr nz, .asm_7a996
+	jr nz, .wait_b
 	pop af
 	ret
 
-Func_7a99b:: ; 7a99b (1e:699b)
+IR_ReceiveBit:: ; 7a99b (1e:699b)
 	ld b, $0
-.asm_7a99d
+.wait_bit_set
 	inc b
-	jr z, asm_7a987
+	jr z, ir_quit_fail
 	bit 0, [hl]
-	jr z, .asm_7a99d
+	jr z, .wait_bit_set
 	ld b, $0
-.asm_7a9a6
+.wait_bit_cleared
 	inc b
-	jr z, asm_7a987
+	jr z, ir_quit_fail
 	bit 0, [hl]
-	jr nz, .asm_7a9a6
-.asm_7a9ad
+	jr nz, .wait_bit_cleared
+.wait_bit_set_again
 	inc b
-	jr z, asm_7a987
+	jr z, ir_quit_fail
 	bit 0, [hl]
-	jr z, .asm_7a9ad
+	jr z, .wait_bit_set_again
 	or a
 	ld a, b
 	ret
 
 Func_7a9b7:: ; 7a9b7 (1e:69b7)
-	ld hl, $a000
-.asm_7a9ba
+	ld hl, HuC3RTC
+.loop
 	ld a, [rJOYP]
 	bit 1, a
-	jr z, asm_7a987
+	jr z, ir_quit_fail
 	ld a, $aa
-	call Func_7a8b8
-	call Func_7a8d7
+	call IR_SendByte
+	call IR_ReceiveByte
 	cp $55
-	jr nz, .asm_7a9ba
+	jr nz, .loop
 	ld a, [rJOYP]
 	bit 1, a
-	jr z, asm_7a987
+	jr z, ir_quit_fail
 	ld a, $c3
-	call Func_7a8b8
-	call Func_7a8d7
+	call IR_SendByte
+	call IR_ReceiveByte
 	cp $3c
-	jr nz, .asm_7a9ba
+	jr nz, .loop
 	xor a
 	ret
 
 Func_7a9e0:: ; 7a9e0 (1e:69e0)
-	ld hl, $a000
+	ld hl, HuC3RTC
 .asm_7a9e3
 	ld a, [rJOYP]
 	bit 1, a
-	jr z, asm_7a987
-	call Func_7a8d7
+	jr z, ir_quit_fail
+	call IR_ReceiveByte
 	cp $aa
 	jr nz, .asm_7a9e3
 	ld a, $55
-	call Func_7a8b8
+	call IR_SendByte
 	ld a, [rJOYP]
 	bit 1, a
-	jr z, asm_7a987
-	call Func_7a8d7
+	jr z, ir_quit_fail
+	call IR_ReceiveByte
 	cp $c3
 	jr nz, .asm_7a9e3
 	ld a, $3c
-	call Func_7a8b8
+	call IR_SendByte
 	xor a
 	ret
 
 asm_7aa09
-	jp asm_7a987
+	jp ir_quit_fail
 
 Func_7aa0c:: ; 7aa0c (1e:6a0c)
 	call Func_7a9b7
@@ -3246,7 +3246,7 @@ Func_7aa75:: ; 7aa75 (1e:6a75)
 
 Func_7aa82:: ; 7aa82 (1e:6a82)
 	push af
-	ld a, $e
+	ld a, SRAM_IR_ON
 	jr asm_7aa89
 
 Func_7aa87:: ; 7aa87 (1e:6a87)
@@ -3469,7 +3469,7 @@ Func_7abd7:: ; 7abd7 (1e:6bd7)
 	pop de
 	jr c, .asm_7abfc
 	call Func_7ac00
-	ld a, $a
+	ld a, SRAM_READWRITE
 	ld [HuC3SRamMode], a
 .asm_7abf3
 	ld a, [de]
@@ -3605,7 +3605,7 @@ asm_7aca6
 	jr asm_7ac76
 
 .asm_7acb9
-	call asm_7a987
+	call ir_quit_fail
 asm_7acbc
 	jr asm_7ac76
 
@@ -6334,11 +6334,11 @@ Pointers_7c000:: ; 7c000
 	dw Func_7c17e
 	dw Func_7c17e
 	dw Func_7c17e
-	dw Func_7e610
+	dw IR_Listen
 	dw Func_7e6bd
 	dw Func_7e75b
 	dw Func_7e556
-	dw Func_7e640
+	dw IR_Receive_Predef
 	dw Func_7dff6
 	dw DelayFrame
 	dw Func_7c17e
@@ -6691,7 +6691,7 @@ Func_7c437:: ; 7c437 (1f:4437)
 	ld a, [hSRAMBank]
 	push af
 	call Func_7c4e9
-Func_7c43d:: ; 7c43d (1f:443d)
+Bank1F_PreviousSRAMBankReadOnly:: ; 7c43d (1f:443d)
 	pop af
 	or a
 	call Bank1F_GetSRAMBank
@@ -6744,7 +6744,7 @@ Bank1F_GetSRAMBank:: ; 7c475 (1f:4475)
 
 Func_7c47b
 	call Func_7c46c
-	lb de, $53, $ac
+	ld de, $53ac
 	ld a, [hli]
 	cp d
 	jr nz, .asm_7c4e5
@@ -6922,7 +6922,7 @@ Func_7c566:: ; 7c566 (1f:4566)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 Func_7c577:: ; 7c577 (1f:4577)
 	ld a, [hSRAMBank]
@@ -6999,7 +6999,7 @@ Func_7c5ca:: ; 7c5ca (1f:45ca)
 	call Bank1F_SetSRAMReadWrite
 	pop de
 	predef CopyPredef
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 Func_7c5da:: ; 7c5da (1f:45da)
 	ld a, h
@@ -7221,7 +7221,7 @@ Func_7c5da:: ; 7c5da (1f:45da)
 	add hl, de
 	call Func_7c70a
 	add sp, $2
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 Func_7c6ee:: ; 7c6ee (1f:46ee)
 	pop hl
@@ -7456,7 +7456,7 @@ Func_7c808:: ; 7c808
 .asm_7c832
 	call Func_7c877
 .asm_7c835
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 Func_7c838:: ; 7c838 (1f:4838)
 	add sp, $2
@@ -7642,7 +7642,7 @@ Func_7c8ec:: ; 7c8ec (1f:48ec)
 	ld a, $78
 	sub b
 	ld [$ffb7], a
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 .asm_7c91d
 	inc hl
@@ -7651,7 +7651,7 @@ Func_7c8ec:: ; 7c8ec (1f:48ec)
 	inc hl
 	dec b
 	jr nz, .asm_7c904
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 Func_7c926:: ; 7c926 (1f:4926)
 	or a
@@ -8138,7 +8138,7 @@ Func_7caa0:: ; 7caa0 (1f:4aa0)
 	ld a, [de]
 	ld [hl], a
 	pop hl
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 Func_7cb98:: ; 7cb98 (1f:4b98)
 	push hl
@@ -12659,11 +12659,11 @@ Func_7e4f8:: ; 7e4f8 (1f:64f8)
 	call Bank1F_GetSRAMBank
 	xor a ; SRAM_READONLY
 	ld [HuC3SRamMode], a
-	ld hl, $a000
+	ld hl, HuC3RTC
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 Func_7e50d:: ; 7e50d (1f:650d)
 	ld a, [hSRAMBank]
@@ -12672,11 +12672,11 @@ Func_7e50d:: ; 7e50d (1f:650d)
 	call Bank1F_GetSRAMBank
 	ld a, SRAM_READWRITE
 	ld [HuC3SRamMode], a
-	ld hl, $a000
+	ld hl, HuC3RTC
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	jp Func_7c43d
+	jp Bank1F_PreviousSRAMBankReadOnly
 
 Func_7e523:: ; 7e523 (1f:6523)
 	push af
@@ -12876,86 +12876,86 @@ Func_7e556:: ; 7e556 (1f:6556)
 	or a
 	ret
 
-Func_7e610:: ; 7e610 (1f:6610)
+IR_Listen:: ; 7e610 (1f:6610)
 	di
 	ld a, $10
 	ld [rJOYP], a
-	ld a, $e
+	ld a, SRAM_IR_ON
 	ld [HuC3SRamMode], a
 	xor a
 	ld [HuC3RTC], a
-.asm_7e61e
+.wait_a000_not_set
 	ld a, [rJOYP]
 	bit 1, a
 	ret z
 	ld a, [HuC3RTC]
 	rra
-	jr c, .asm_7e61e
+	jr c, .wait_a000_not_set
 	ld hl, $100
-.asm_7e62c
+.wait_a000_set
 	ld a, [rJOYP]
 	bit 1, a
 	ret z
 	inc l
-	jr nz, .asm_7e636
+	jr nz, .less_than_256_tries
 	ld h, $0
-.asm_7e636
+.less_than_256_tries
 	ld a, [HuC3RTC]
 	rra
-	jr nc, .asm_7e62c
+	jr nc, .wait_a000_set
 	dec h
-	jr z, .asm_7e61e
+	jr z, .wait_a000_not_set
 	ret
 
-Func_7e640:: ; 7e640 (1f:6640)
-	call Func_7e610
-	jr z, .asm_7e6a6
-	ld hl, $a000
+IR_Receive_Predef:: ; 7e640 (1f:6640)
+	call IR_Listen
+	jr z, .b_button_cancel
+	ld hl, HuC3RTC
 	push bc
-.asm_7e649
+.loop
 	xor a
 	ld b, a
-.asm_7e64b
+.loop2
 	add b
-	jr nc, .asm_7e64f
+	jr nc, .no_carry
 	sbc a
-.asm_7e64f
+.no_carry
 	ld b, a
 	ld c, $0
-.asm_7e652
+.loop3
 	push bc
 	rl b
 	pop bc
 	inc b
-	jr nz, .asm_7e65a
+	jr nz, .no_overflow_b
 	dec b
-.asm_7e65a
+.no_overflow_b
 	ld a, [rJOYP]
 	rra
 	rra
-	jr nc, .asm_7e6a5
+	jr nc, .pop_b_button_cancel
 	bit 0, [hl]
-	jr nz, .asm_7e652
-.asm_7e664
+	jr nz, .loop3
+.loop4
 	inc c
-	jr z, .asm_7e695
+	jr z, .next
 	bit 0, [hl]
-	jr nz, .asm_7e679
+	jr nz, .next2
 	ld a, [rJOYP]
 	rra
 	bit 0, [hl]
-	jr nz, .asm_7e679
+	jr nz, .next2
 	rra
-	jr nc, .asm_7e6a5
+	jr nc, .pop_b_button_cancel
 	bit 0, [hl]
-	jr z, .asm_7e664
-.asm_7e679
+	jr z, .loop4
+.next2
 	ld a, c
 	cp $b
-	jr c, .asm_7e64b
+	jr c, .loop2
 	ld a, b
 	cp $7
-	jr c, .asm_7e649
+	jr c, .loop
 	ld [de], a
 	inc de
 	ld a, c
@@ -12966,15 +12966,15 @@ Func_7e640:: ; 7e640 (1f:6640)
 	dec bc
 	ld a, b
 	or c
-	jr z, .asm_7e6aa
+	jr z, .l_2_exit
 	push bc
 	ld bc, $200
-	jr .asm_7e652
+	jr .loop3
 
-.asm_7e695
+.next
 	ld a, b
 	cp $7
-	jr c, .asm_7e649
+	jr c, .loop
 	ld [de], a
 	inc de
 	ld a, $ff
@@ -12982,17 +12982,17 @@ Func_7e640:: ; 7e640 (1f:6640)
 	inc de
 	pop bc
 	ld l, $1
-	jr .asm_7e6ac
+	jr .exit
 
-.asm_7e6a5
+.pop_b_button_cancel
 	pop bc
-.asm_7e6a6
+.b_button_cancel
 	ld l, $ff
-	jr .asm_7e6ac
+	jr .exit
 
-.asm_7e6aa
+.l_2_exit
 	ld l, $2
-.asm_7e6ac
+.exit
 	xor a
 	ld [de], a
 	inc de

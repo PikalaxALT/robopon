@@ -20,7 +20,7 @@
 	const SONG_11
 	const SONG_12
 	const SONG_13
-	const SONG_14
+	const SONG_WORLD_MAP
 	const SONG_GYM_LEADER_BATTLE
 	const SONG_HEAL
 	const SONG_17

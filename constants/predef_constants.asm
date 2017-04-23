@@ -138,7 +138,7 @@ const_value = $4b
 	predef_const Func_7e6bd
 	predef_const Func_7e75b
 	predef_const Func_7e556
-	predef_const Func_7e640
+	predef_const IR_Receive_Predef
 	predef_const Func_7dff6 ; b0
 	predef_const DelayFrame
 	predef_const Func_7c17e_5

@@ -3523,7 +3523,7 @@ Func_86b0d:
 	playmusic SONG_NONE
 	ld a, $1
 	call FadeInAudio_21
-	playmusic SONG_14
+	playmusic SONG_WORLD_MAP
 	xor a
 	call Func_8044b_21
 	script_sleep $1e

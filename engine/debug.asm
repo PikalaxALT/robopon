@@ -4983,7 +4983,7 @@ Data_be2ba:
 	db $a
 	db $0
 
-Func_be2c9: ; be2c9 (2f:62c9)
+DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	push bc
 	push bc
 	set_farcall_addrs_hli AllocateMemory
@@ -5112,7 +5112,7 @@ Data_be3e9:
 Data_be3f7:
 	dr $be3f7, $be4f7
 
-Func_be4f7: ; be4f7 (2f:64f7)
+DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	ld hl, -$102
 	add hl, sp
 	ld sp, hl
@@ -5138,7 +5138,7 @@ Func_be4f7: ; be4f7 (2f:64f7)
 	jp nz, Func_be579
 Func_be53e: ; be53e (2f:653e)
 	call CheckButton
-	and $20
+	and B_BUTTON
 	jp nz, Func_be53e
 	callba_hli Func_1c83
 	or a
@@ -5705,7 +5705,7 @@ Func_bea7d: ; bea7d (2f:6a7d)
 	ld hl, $108
 	add hl, sp
 	reg16swap de, hl
-	ld hl, Init
+	ld hl, $100
 	call FarCall
 	set_farcall_addrs_hli Func_1c27
 	ld hl, $108
@@ -6574,13 +6574,13 @@ Func_bf297: ; bf297 (2f:7297)
 
 Func_bf2f8: ; bf2f8 (2f:72f8)
 	push bc
-	call Func_be2c9
+	call DebugMenu_SerialTest
 	pop bc
 	jp Func_bf297
 
 Func_bf300: ; bf300 (2f:7300)
 	push bc
-	call Func_be4f7
+	call DebugMenu_IRTest
 	pop bc
 	jp Func_bf297
 
