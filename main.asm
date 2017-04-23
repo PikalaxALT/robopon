@@ -107765,6 +107765,8 @@ Data_e0000:
 	dr $e0000, $e09c0
 
 GFX_e09c0: INCBIN "gfx/misc/e09c0.2bpp"
+
+Data_e10c0:
 	dr $e10c0, $e1255
 
 Data_e1255: ; e1255
