@@ -2965,7 +2965,7 @@ NewSaveFileInWRam:: ; 1db9
 	ld hl, $0
 	write_hl_to wc391
 	ld hl, $0
-	write_hl_to wc393
+	write_hl_to wc391 + 2
 	ld bc, $5
 	ld e, $0
 	ld hl, wPlayerName
@@ -4520,7 +4520,7 @@ Func_2a49:: ; 2a49 (0:2a49)
 	ld hl, $5ba0
 	write_hl_to wc391
 	ld hl, $676
-	write_hl_to wc393
+	write_hl_to wc391 + 2
 Func_2a78:: ; 2a78 (0:2a78)
 	ret
 
@@ -5834,7 +5834,7 @@ PrintNum:: ; 3992 (0:3992)
 	push hl
 	ld hl, 10 & $ffff
 	push hl
-	call StackDivideLongSigned_KeepRemainder
+	call StackModulusLongSigned
 	pop hl
 	pop af
 	ld a, l

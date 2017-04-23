@@ -145,7 +145,7 @@ SaveGame: ; 56d9b (15:6d9b)
 	call CopyFromDEtoHL
 	read_hl_from wc391
 	write_hl_to wSaveBlock1 + $1bb
-	read_hl_from wc393
+	read_hl_from wc391 + 2
 	write_hl_to wSaveBlock1 + $1bd
 	ld de, wPlayerName
 	ld hl, wSaveScratchPlayerName
@@ -311,7 +311,7 @@ LoadGame: ; 56fc2 (15:6fc2)
 	read_hl_from wSaveBlock1 + $1bb
 	write_hl_to wc391
 	read_hl_from wSaveBlock1 + $1bd
-	write_hl_to wc393
+	write_hl_to wc391 + 2
 	ld de, wSaveScratchPlayerName
 	ld hl, wPlayerName
 	call CopyUntilNull

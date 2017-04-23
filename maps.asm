@@ -5626,10 +5626,7 @@ Func_93867: ; 93867 (24:7867)
 	ld h, d
 	inc hl
 	ld [hl], a
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	inc hl
 	inc hl
 	ld [hl], c

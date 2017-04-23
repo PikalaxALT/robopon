@@ -562,8 +562,7 @@ wVideoTransferQueue:: ; c239
 	char wc38d ; c38d
 	short wc38e ; c38e
 	ds $1
-	short wc391 ; c391
-	short wc393 ; c393
+	long wc391 ; c391
 	char wc395 ; c395
 	array wc396, 4, 1, 1 ; c396
 	char wc39a ; c39a

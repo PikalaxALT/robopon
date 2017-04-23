@@ -5467,38 +5467,1003 @@ Data_be889:
 Data_be897:
 	dr $be897, $be8c0
 
-Func_be8c0: ; be8c0
-	dr $be8c0, $be965
+Func_be8c0: ; be8c0 (2f:68c0)
+	add sp, -$38
+	ld hl, sp+$29
+	reg16swap de, hl
+	ld hl, Data_be889
+	ld bc, $e
+	call MemCopy
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, Data_be897
+	ld bc, $29
+	call MemCopy
+	ld a, $1
+	ld [wc2fa], a
+	callba_hli Func_cb4a
+	ld hl, sp+$29
+	call WriteHLToSPPlus3
+	read_hl_from wc2e6
+	ld de, $16
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $68
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$0
+	ld bc, $29
+	call MemCopy
+	callba_hli BattleIntro
+	callba_hli DoBattle
+	callba_hli Func_cced
+	xor a
+	ld [wc2fa], a
+	add sp, $38
+	ret
 
-Func_be965: ; be965
-	dr $be965, $bea7d
+Data_be945:
+	dr $be945, $be955
 
-Func_bea7d: ; bea7d
-	dr $bea7d, $beba0
+Data_be955:
+	dr $be955, $be965
 
-Func_beba0: ; beba0
-	dr $beba0, $bebdb
+Func_be965: ; be965 (2f:6965)
+	add sp, -$22
+	ld hl, sp+$11
+	reg16swap de, hl
+	ld hl, Data_be945
+	ld bc, $10
+	call MemCopy
+	ld hl, sp+$1
+	reg16swap de, hl
+	ld hl, Data_be955
+	ld bc, $10
+	call MemCopy
+	ld hl, sp+$0
+	ld [hl], $0
+	ld c, $4
+	ld e, $14
+	ld hl, $0
+	call Func_bc486
+	ld de, Data_bea69
+	ld hl, $101
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$12
+	ld a, [wStringDestY]
+	ld [hl], a
+	ld hl, sp+$11
+	ld a, [wStringDestX]
+	ld [hl], a
+	read_hl_from_sp_plus $19
+	ld c, l
+	ld b, h
+	ld hl, sp+$13
+	ld e, [hl]
+	ld d, $0
+	inc d
+	inc d
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call Func_2230
+	ld a, [wStringDestX]
+	inc a
+	ld [wStringDestX], a
+	ld de, Data_bea71
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$2
+	ld a, [wStringDestY]
+	ld [hl], a
+	ld hl, sp+$1
+	ld a, [wStringDestX]
+	ld [hl], a
+	call GetHLAtSPPlus9
+	ld c, l
+	ld b, h
+	ld hl, sp+$3
+	ld e, [hl]
+	ld d, $0
+	inc d
+	inc d
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call Func_2230
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+Func_bea04: ; bea04 (2f:6a04)
+	ld hl, sp+$0
+	ld a, [hl]
+	or a
+	jp nz, Func_bea35
+	ld hl, sp+$11
+	call Func_bd92f
+	ld l, a
+	and $20
+	jp z, Func_bea19
+	jp Func_bea5e
 
-Func_bebdb: ; bebdb
-	dr $bebdb, $bec61
+Func_bea19: ; bea19 (2f:6a19)
+	ld a, l
+	and $10
+	jp z, Func_bea2a
+	read_hl_from_sp_plus $19
+	ld a, l
+	call OverworldPlaySong
+	jp Func_bea32
 
-Func_bec61: ; bec61
-	dr $bec61, $becc2
+Func_bea2a: ; bea2a (2f:6a2a)
+	ld hl, sp+$0
+	ld a, [hl]
+	xor $1
+	ld hl, sp+$0
+	ld [hl], a
+Func_bea32: ; bea32 (2f:6a32)
+	jp Func_bea5b
 
-Func_becc2: ; becc2
-	dr $becc2, $bed16
+Func_bea35: ; bea35 (2f:6a35)
+	ld hl, sp+$1
+	call Func_bd92f
+	ld l, a
+	and $20
+	jp z, Func_bea43
+	jp Func_bea5e
 
-Func_bed16: ; bed16
-	dr $bed16, $bedc4
+Func_bea43: ; bea43 (2f:6a43)
+	ld a, l
+	and $10
+	jp z, Func_bea53
+	call GetHLAtSPPlus9
+	ld a, l
+	call OverworldPlaySFX
+	jp Func_bea5b
 
-Func_bedc4: ; bedc4
-	dr $bedc4, $bf01e
+Func_bea53: ; bea53 (2f:6a53)
+	ld hl, sp+$0
+	ld a, [hl]
+	xor $1
+	ld hl, sp+$0
+	ld [hl], a
+Func_bea5b: ; bea5b (2f:6a5b)
+	jp Func_bea04
 
-Func_bf01e: ; bf01e
-	dr $bf01e, $bf094
+Func_bea5e: ; bea5e (2f:6a5e)
+	xor a
+	call OverworldPlaySong
+	xor a
+	call OverworldPlaySFX
+	add sp, $22
+	ret
 
-Func_bf094: ; bf094
-	dr $bf094, $bf214
+Data_bea69:
+	db "ヒﾞーシﾞー:", $0
+
+Data_bea71:
+	db "エスイー:", $0
+
+Data_bea77:
+	dr $bea77, $bea7d
+
+Func_bea7d: ; bea7d (2f:6a7d)
+	ld hl, -$206
+	add hl, sp
+	ld sp, hl
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, Data_bea77
+	ld bc, $6
+	call MemCopy
+	callba_hli Func_cb4a
+	call ClearSprites
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+	call Func_bc49b
+	call FillVisibleAreaWithBlankTile
+	xor a
+	ld [wSCX2], a
+	ld [wSCX], a
+	xor a
+	ld [wSCY2], a
+	ld [wSCY], a
+	ld a, [wNextVBlankFlags]
+	or $10
+	ld [wNextVBlankFlags], a
+	call Func_bc49b
+	ld a, [wLCDC]
+	push af
+	set_farcall_addrs_hli Func_6183
+	pop af
+	push af
+	or $6
+	call FarCall
+	set_farcall_addrs_hli Func_dc0a
+	ld e, $0
+	xor a
+	call FarCall
+	set_farcall_addrs_hli Func_f723
+	ld hl, sp+$2
+	call FarCall
+	ld e, $7
+	ld hl, Data_beb8c
+	call Func_2a3e
+	set_farcall_addrs_hli Func_1c11
+	ld hl, $108
+	add hl, sp
+	reg16swap de, hl
+	ld hl, Init
+	call FarCall
+	set_farcall_addrs_hli Func_1c27
+	ld hl, $108
+	add hl, sp
+	reg16swap de, hl
+	ld hl, sp+$8
+	call FarCall
+	ld c, l
+	ld b, h
+	push bc
+	set_farcall_addrs_hli Func_bd6fa
+	pop bc
+	push bc
+	ld e, c
+	ld d, b
+	ld hl, Data_beb94
+	call FarCall
+	set_farcall_addrs_hli Func_bd72d
+	pop bc
+	ld hl, sp+$8
+	reg16swap de, hl
+	ld l, c
+	ld h, $0
+	call FarCall
+	set_farcall_addrs_hli Func_6183
+	pop af
+	call FarCall
+	callba_hli Func_cced
+	ld hl, $206
+	add hl, sp
+	ld sp, hl
+	ret
+
+Data_beb8c:
+	db "(あいあーる)", $0
+
+Data_beb94:
+	db "KISIYU:0x"
+	TX_HNUM
+	db $0
+
+Func_beba0: ; beba0 (2f:6ba0)
+	callba_hli Func_cc0c
+	callba_hli Func_6fe0
+	set_farcall_addrs_hli Func_60e81
+	ld a, $1
+	call FarCall
+	callba_hli Func_cced
+	ret
+
+Func_bebdb: ; bebdb (2f:6bdb)
+	ld c, $7
+	ld e, $14
+	ld hl, $0
+	call Func_bc486
+Func_bebe5: ; bebe5 (2f:6be5)
+	ld e, $1
+	ld a, $1
+	call SetStringStartState
+	read_hl_from wc391 + 2
+	push hl
+	read_hl_from wc391
+	push hl
+	ld hl, 216840 / $10000
+	push hl
+	ld hl, 216840 % $10000
+	push hl
+	call StackDivideLongSigned
+	ld hl, Data_bec5b
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	ld e, $3
+	ld a, $1
+	call SetStringStartState
+	read_hl_from wc391 + 2
+	push hl
+	read_hl_from wc391
+	push hl
+	ld hl, 3614 / $10000
+	push hl
+	ld hl, 3614 % $10000
+	push hl
+	call StackDivideLongSigned
+	ld hl, $0
+	push hl
+	ld hl, $3c
+	push hl
+	call StackModulusLongSigned
+	ld hl, Data_bec5e
+	push hl
+	call PlaceString
+	pop bc
+	pop bc
+	pop bc
+	ld l, $7
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call CheckButton
+	and $20
+	jp z, Func_bec57
+	jp Func_bec5a
+
+Func_bec57: ; bec57 (2f:6c57)
+	jp Func_bebe5
+
+Func_bec5a: ; bec5a (2f:6c5a)
+	ret
+
+Data_bec5b:
+	TX_SNUM
+	db $0
+
+Data_bec5e:
+	TX_SNUM
+	db $0
+
+Func_bec61: ; bec61 (2f:6c61)
+	ld a, SONG_CREDITS
+	call OverworldPlaySong
+	callba_hli Func_fdf13
+	call Func_bc355
+	ld a, $e4
+	ld [wOBP1], a
+	ld [wOBP0], a
+	ld [wBGP], a
+	ld a, [wNextVBlankFlags]
+	or $20
+	ld [wNextVBlankFlags], a
+Func_bec8a: ; bec8a (2f:6c8a)
+	ld a, [wNextVBlankFlags]
+	ld hl, wLastVBlankFlags
+	cp [hl]
+	jp nz, Func_bec8a
+	call Func_bc355
+	ld a, SONG_VICTORY
+	call OverworldPlaySong
+	callba_hli Func_fdf59
+	ret
+
+Data_becab:
+	dr $becab, $becba
+
+Data_becba:
+	dr $becba, $becc2
+
+Func_becc2: ; becc2 (2f:6cc2)
+	add sp, -$18
+	ld hl, sp+$8
+	reg16swap de, hl
+	ld hl, Data_becab
+	ld bc, $f
+	call MemCopy
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, Data_becba
+	ld bc, $8
+	call MemCopy
+	ld c, $0
+	ld l, $0
+	xor a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld l, a
+	ld h, $0
+	ld h, l
+	ld l, $0
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ld e, c
+	ld d, $0
+	add hl, de
+	write_hl_to_sp_plus $b
+	ld de, $f
+	ld hl, sp+$8
+	call Func_2b83
+	ld de, $8
+	ld hl, sp+$0
+	call Func_2b83
+	add sp, $18
+	ret
+
+Func_bed16: ; bed16 (2f:6d16)
+	ld hl, -$384
+	add hl, sp
+	ld sp, hl
+	ld a, [hSRAMBank]
+	push af
+	ld e, $0
+	ld hl, $356
+	add hl, sp
+	call GetRobotOrTrainerBaseStats
+	ld a, $1
+	call GetSRAMBank
+	ld bc, $2f
+	ld hl, $356
+	add hl, sp
+	reg16swap de, hl
+	ld hl, $ba24
+	call CopyFromDEtoHL
+	ld a, $3
+	call GetSRAMBank
+	ld a, $ab
+	ld [wSaveScratchParty], a
+	ld a, $3a
+	ld [wFarCallDestBank], a
+	ld bc, $4
+	ld de, $4000
+	ld hl, sp+$2
+	call FarCopyVideoData
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	reg16swap de, hl
+	reg16swap de, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, $40
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$2
+	ld a, [hl]
+	ld [wFarCallDestBank], a
+	ld c, e
+	ld b, d
+	ld hl, sp+$6
+	push hl
+	call GetHLAtSPPlus8
+	pop de
+	call FarDecompressVideoData
+	ld a, $2
+	call GetSRAMBank
+	xor a
+	ld [$b29f], a
+	ld bc, $350
+	ld hl, sp+$6
+	reg16swap de, hl
+	ld hl, $b2a0
+	call CopyFromDEtoHL
+	pop af
+	call GetSRAMBank
+	ld hl, $384
+	add hl, sp
+	ld sp, hl
+	ret
+
+Data_beda4:
+	dr $beda4, $bedb4
+
+Data_bedb4:
+	dr $bedb4, $bedc4
+
+Func_bedc4: ; bedc4 (2f:6dc4)
+	add sp, -$24
+	ld hl, sp+$13
+	reg16swap de, hl
+	ld hl, Data_beda4
+	ld bc, $10
+	call MemCopy
+	ld hl, sp+$3
+	reg16swap de, hl
+	ld hl, Data_bedb4
+	ld bc, $10
+	call MemCopy
+	ld hl, sp+$2
+	ld [hl], $0
+	ld hl, sp+$1
+	ld [hl], $0
+	xor a
+	ld a, $1
+	ld [wc2fa], a
+	callba_hli Func_cb4a
+	ld a, $1
+	ld [wPoncotPicAlignment], a
+	call FillVisibleAreaWithBlankTile
+Func_bee08: ; bee08 (2f:6e08)
+	ld de, Data_befd3
+	ld hl, $10f
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$14
+	ld a, [wStringDestY]
+	ld [hl], a
+	ld hl, sp+$13
+	ld a, [wStringDestX]
+	ld [hl], a
+	read_hl_from_sp_plus $1b
+	ld c, l
+	ld b, h
+	ld hl, sp+$15
+	ld e, [hl]
+	ld d, $0
+	inc d
+	inc d
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call Func_2230
+	set_farcall_addrs_hli Func_dc0a
+	read_hl_from_sp_plus $1b
+	dec hl
+	ld e, l
+	ld hl, sp+$2
+	ld a, [hl]
+	call FarCall
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $1
+	jp nz, Func_bee6f
+	set_farcall_addrs_hli Func_613fc
+	read_hl_from_sp_plus $b
+	ld a, l
+	read_hl_from_sp_plus $b
+	ld e, l
+	call FarCall
+	jp Func_bee8a
+
+Func_bee6f: ; bee6f (2f:6e6f)
+	ld hl, sp+$2
+	ld c, [hl]
+	ld b, $0
+	read_hl_from wc2e6
+	ld de, $1c8
+	add hl, de
+	add hl, bc
+	ld l, [hl]
+	ld h, $0
+	write_hl_to_sp_plus $b
+	read_hl_from_sp_plus $1b
+	ld a, l
+Func_bee8a: ; bee8a (2f:6e8a)
+	ld de, Data_befd8
+	ld hl, $a0f
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$4
+	ld a, [wStringDestY]
+	ld [hl], a
+	ld hl, sp+$3
+	ld a, [wStringDestX]
+	ld [hl], a
+	read_hl_from_sp_plus $b
+	ld c, l
+	ld b, h
+	ld hl, sp+$5
+	ld e, [hl]
+	ld d, $0
+	inc d
+	inc d
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call Func_2230
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	read_hl_from wc2e6
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$2
+	ld a, [hl]
+	or a
+	jp nz, Func_beedd
+	ld hl, $0
+	jp Func_beee0
+
+Func_beedd: ; beedd (2f:6edd)
+	ld hl, $40
+Func_beee0: ; beee0 (2f:6ee0)
+	add hl, de
+	reg16swap de, hl
+	ld hl, $105
+	call FarCall
+	set_farcall_addrs_hli Func_61424
+	ld c, $1
+	ld hl, sp+$2
+	ld a, [hl]
+	add $2
+	ld e, a
+	ld hl, sp+$2
+	ld a, [hl]
+	add $2
+	call FarCall
+	ld a, $2
+	ld [wc39a], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld hl, sp+$1
+	ld a, [hl]
+	or a
+	jp nz, Func_bef2f
+	ld hl, sp+$13
+	call Func_bd92f
+	ld e, a
+	and $20
+	jp z, Func_bef2c
+	jp Func_befa5
+
+Func_bef2c: ; bef2c (2f:6f2c)
+	jp Func_bef3d
+
+Func_bef2f: ; bef2f (2f:6f2f)
+	ld hl, sp+$3
+	call Func_bd92f
+	ld e, a
+	and $20
+	jp z, Func_bef3d
+	jp Func_befa5
+
+Func_bef3d: ; bef3d (2f:6f3d)
+	ld a, e
+	and $40
+	jp z, Func_bef4b
+	ld hl, sp+$1
+	ld a, [hl]
+	xor $1
+	ld hl, sp+$1
+	ld [hl], a
+Func_bef4b: ; bef4b (2f:6f4b)
+	ld a, e
+	and $80
+	jp z, Func_bef9a
+	read_hl_from_sp_plus $1b
+	inc hl
+	ld e, l
+	ld hl, sp+$0
+	ld [hl], e
+Func_bef5a: ; bef5a (2f:6f5a)
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $aa
+	jp c, Func_bef66
+	ld hl, sp+$0
+	ld [hl], $1
+Func_bef66: ; bef66 (2f:6f66)
+	set_farcall_addrs_hli Func_615be
+	ld hl, sp+$0
+	ld a, [hl]
+	call FarCall
+	read_hl_from_sp_plus $b
+	cp l
+	jp nz, Func_bef87
+	ld a, $2a
+	call OverworldPlaySFX
+	jp Func_bef91
+
+Func_bef87: ; bef87 (2f:6f87)
+	ld hl, sp+$0
+	ld a, [hl]
+	inc a
+	ld hl, sp+$0
+	ld [hl], a
+	jp Func_bef5a
+
+Func_bef91: ; bef91 (2f:6f91)
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, $0
+	write_hl_to_sp_plus $1b
+Func_bef9a: ; bef9a (2f:6f9a)
+	ld hl, sp+$2
+	ld a, [hl]
+	xor $1
+	ld hl, sp+$2
+	ld [hl], a
+	jp Func_bee08
+
+Func_befa5: ; befa5 (2f:6fa5)
+	xor a
+	ld [wPoncotPicAlignment], a
+	callba_hli Func_cced
+	ld a, $1
+	ld [wc2fa], a
+	set_farcall_addrs_hli Func_61424
+	ld c, $1
+	ld e, $1
+	ld a, $1
+	call FarCall
+	add sp, $24
+	ret
+
+Data_befd3:
+	db "キャラ:", $0
+
+Data_befd8:
+	db "イロ:", $0
+
+Pointers_befdc:
+	dw Data_befe6
+	dw Data_beff4
+	dw Data_befff
+	dw Data_bf00d
+	dw $0000
+
+Data_befe6:
+	db "(かんしを おこないます)", $0
+
+Data_beff4:
+	db "キー(を おしてね)", $0
+
+Data_befff:
+	db "アアアアアアアアアアアアア", $0
+
+Data_bf00d:
+	db "(いいいいいいいいいいいいいい)", $0
+
+Func_bf01e: ; bf01e (2f:701e)
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, Pointers_befdc
+	ld bc, $a
+	call MemCopy
+Func_bf032: ; bf032 (2f:7032)
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	set_farcall_addrs_hli PrintMapText
+	ld bc, $42f
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, $10e
+	call FarCall
+	jp Func_bf032
+
+Data_bf064:
+	dr $bf064, $bf074
+
+Data_bf074:
+	dr $bf074, $bf084
+
+Data_bf084:
+	dr $bf084, $bf094
+
+Func_bf094: ; bf094 (2f:7094)
+	add sp, -$30
+	push de
+	ld hl, sp+$22
+	reg16swap de, hl
+	ld hl, Data_bf064
+	ld bc, $10
+	call MemCopy
+	ld hl, sp+$12
+	reg16swap de, hl
+	ld hl, Data_bf074
+	ld bc, $10
+	call MemCopy
+	ld hl, sp+$2
+	reg16swap de, hl
+	ld hl, Data_bf084
+	ld bc, $10
+	call MemCopy
+	ld l, $0
+	push hl
+	call FillVisibleAreaWithBlankTile
+	pop hl
+	pop de
+Func_bf0cc: ; bf0cc (2f:70cc)
+	push de
+	push hl
+	ld de, Data_bf206
+	ld hl, $10
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$25
+	ld a, [wStringDestY]
+	ld [hl], a
+	ld hl, sp+$24
+	ld a, [wStringDestX]
+	ld [hl], a
+	read_hl_from_sp_plus $2c
+	ld c, l
+	ld b, h
+	ld hl, sp+$26
+	ld e, [hl]
+	ld d, $0
+	inc d
+	inc d
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call Func_2230
+	ld de, Data_bf20c
+	ld hl, $710
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$15
+	ld a, [wStringDestY]
+	ld [hl], a
+	ld hl, sp+$14
+	ld a, [wStringDestX]
+	ld [hl], a
+	read_hl_from_sp_plus $1c
+	ld c, l
+	ld b, h
+	ld hl, sp+$16
+	ld e, [hl]
+	ld d, $0
+	inc d
+	inc d
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call Func_2230
+	ld de, Data_bf210
+	ld hl, $d10
+	call PlaceStringDEatCoordHL
+	ld hl, sp+$5
+	ld a, [wStringDestY]
+	ld [hl], a
+	ld hl, sp+$4
+	ld a, [wStringDestX]
+	ld [hl], a
+	read_hl_from_sp_plus $c
+	ld c, l
+	ld b, h
+	ld hl, sp+$6
+	ld e, [hl]
+	ld d, $0
+	inc d
+	inc d
+	ld a, [wStringDestY]
+	ld l, a
+	ld a, [wStringDestX]
+	ld h, a
+	call Func_2230
+	set_farcall_addrs_hli Func_667d
+	ld bc, $103
+	ld de, $1311
+	ld hl, $10
+	call FarCall
+	ld a, $1
+	ld [wc39a], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	pop hl
+	pop de
+	push hl
+	ld a, l
+	cp $2
+	jp z, Func_bf1a1
+	cp $1
+	jp z, Func_bf198
+	or a
+	jp nz, Func_bf1a7
+	ld hl, sp+$22
+	call Func_bd92f
+	ld e, a
+	jp Func_bf1a7
+
+Func_bf198: ; bf198 (2f:7198)
+	ld hl, sp+$12
+	call Func_bd92f
+	ld e, a
+	jp Func_bf1a7
+
+Func_bf1a1: ; bf1a1 (2f:71a1)
+	ld hl, sp+$2
+	call Func_bd92f
+	ld e, a
+Func_bf1a7: ; bf1a7 (2f:71a7)
+	pop hl
+	ld a, e
+	and $20
+	jp z, Func_bf1b1
+	jp Func_bf203
+
+Func_bf1b1: ; bf1b1 (2f:71b1)
+	push de
+	ld a, e
+	and $40
+	jp z, Func_bf1c1
+	inc l
+	ld a, l
+	cp $3
+	jp c, Func_bf1c1
+	ld l, $0
+Func_bf1c1: ; bf1c1 (2f:71c1)
+	push hl
+	call WaitVideoTransfer
+Func_bf1c5: ; bf1c5 (2f:71c5)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_bf1c5
+	read_hl_from_sp_plus $1c
+	push hl
+	read_hl_from_sp_plus $2e
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	push hl
+	read_hl_from_sp_plus $10
+	ld h, l
+	ld l, $0
+	add hl, hl
+	add hl, hl
+	pop de
+	add hl, de
+	pop de
+	add hl, de
+	write_hl_to wCGB_BGPalsBuffer
+	ld a, [wNextVBlankFlags]
+	or $40
+	ld [wNextVBlankFlags], a
+Func_bf1f6: ; bf1f6 (2f:71f6)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_bf1f6
+	pop hl
+	pop de
+	jp Func_bf0cc
+
+Func_bf203: ; bf203 (2f:7203)
+	add sp, $30
+	ret
+
+Data_bf206:
+	db "ミトﾞリ:", $0
+
+Data_bf20c:
+	db "アカ:", $0
+
+Data_bf210:
+	db "アオ:", $0
 
 Func_bf214: ; bf214 (2f:7214)
 	push bc

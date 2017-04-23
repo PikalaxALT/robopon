@@ -265,7 +265,7 @@ RightShiftLong:: ; 33bd (0:33bd)
 	ld [hl], c
 	ret
 
-StackDivideLongSigned_KeepRemainder:: ; 33f2 (0:33f2)
+StackModulusLongSigned:: ; 33f2 (0:33f2)
 	ld hl, $6
 	add hl, sp
 	push hl
@@ -340,7 +340,7 @@ DivideLongSigned:: ; 3428 (0:3428)
 	push bc
 	ret
 
-StackDivideLong_KeepRemainder::
+StackModulusLong::
 	ld hl, $6
 	add hl, sp
 	push af

@@ -37487,7 +37487,7 @@ LoadDebugSaveState: ; 238c8 (8:78c8)
 	read_hl_from wcb3b
 	write_hl_to wc391
 	read_hl_from wcb3d
-	write_hl_to wc393
+	write_hl_to wc391 + 2
 	ld bc, $5
 	ld de, $c980
 	ld hl, wPlayerName
@@ -53415,7 +53415,7 @@ Func_4c19d: ; 4c19d (13:419d)
 	ld [rSC], a
 	ld e, $0
 Func_4c1ae: ; 4c1ae (13:41ae)
-	read_hl_from wc393
+	read_hl_from wc391 + 2
 	push hl
 	read_hl_from wc391
 	pop af
@@ -71725,7 +71725,7 @@ Func_575b5: ; 575b5 (15:75b5)
 	call PlaceString
 	pop bc
 	pop bc
-	read_hl_from wc393
+	read_hl_from wc391 + 2
 	push hl
 	read_hl_from wc391
 	push hl
@@ -73218,7 +73218,7 @@ Func_58e84: ; 58e84 (16:4e84)
 	pop bc
 	pop bc
 	pop bc
-	read_hl_from wc393
+	read_hl_from wc391 + 2
 	push hl
 	read_hl_from wc391
 	push hl
@@ -107458,7 +107458,13 @@ Func_fd213:: ; fd213
 	dr $fd213, $fd314
 
 Func_fd314: ; fd314
-	dr $fd314, $fe102
+	dr $fd314, $fdf13
+
+Func_fdf13:
+	dr $fdf13, $fdf59
+
+Func_fdf59:
+	dr $fdf59, $fe102
 
 Func_fe102:: ; fe102
 	dr $fe102, $100000
@@ -107470,7 +107476,13 @@ Func_fd213:: ; fd213
 	dr $fd211, $fd312
 
 Func_fd314: ; fd314
-	dr $fd312, $fe100
+	dr $fd312, $fdf11
+
+Func_fdf13:
+	dr $fdf11, $fdf57
+
+Func_fdf59:
+	dr $fdf57, $fe100
 
 Func_fe102:: ; fe102
 	dr $fe100, $100000
