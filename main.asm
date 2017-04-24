@@ -111466,20 +111466,333 @@ Func_fe096: ; fe096 (3f:6096)
 	pop af
 	reti
 
-Func_fe102:: ; fe102
-IF DEF(SUN)
-	dr $fe102, $ffda2
+Func_fe102:: ; fe102 (3f:6102)
+	ld bc, $3c
+	call Func_ffd81
+	call ClearSprites
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+.asm_fe113
+	ld a, [wNextVBlankFlags]
+	and $2
+	jr nz, .asm_fe113
+	di
+	xor a
+	ld [rBGP], a
+	ld a, [wSystemType]
+	or a
+	ret z
+	cp $11
+	ret z
+	cp $1
+	jr z, .asm_fe133
+	cp $ff
+	jr z, .asm_fe133
+.asm_fe12e
+	xor a
+	ld [wSystemType], a
+	ret
 
+.asm_fe133
+	call Func_ffcd4
+	jp nc, .asm_fe12e
+	ld hl, Data_fe444
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fe1da
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fe1ea
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fe1fa
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fe20a
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fe21a
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fe22a
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fe23a
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fe24a
+	ld de, $10
+	call Func_2b7d
+	ld hl, Data_fecd4
+	ld de, Data_fe404
+	call Func_ffd49
+	ld bc, $a
+	call Func_ffd81
+	ld hl, Data_fe474
+	ld de, Data_fe414
+	call Func_ffd49
+	ld bc, $a
+	call Func_ffd81
+	ld hl, Data_fe2b4
+	ld de, Data_fe384
+	call Func_ffd49
+	ld bc, $a
+	call Func_ffd81
+	ld hl, Data_fe374
+	ld de, $10
+	call Func_2b7d
+	ld bc, $a
+	call Func_ffd81
+	ld bc, $3c
+	call Func_ffd81
+	xor a
+	ld [rBGP], a
+	ld hl, Data_fe454
+	ld de, $10
+	call Func_2b7d
+	ei
+	ret
+
+IF DEF(SUN)
+Data_fe1da: ; fe1da
+	dr $fe1da, $fe1ea
+
+Data_fe1ea: ; fe1ea
+	dr $fe1ea, $fe1fa
+
+Data_fe1fa: ; fe1fa
+	dr $fe1fa, $fe20a
+
+Data_fe20a: ; fe20a
+	dr $fe20a, $fe21a
+
+Data_fe21a: ; fe21a
+	dr $fe21a, $fe22a
+
+Data_fe22a: ; fe22a
+	dr $fe22a, $fe23a
+
+Data_fe23a: ; fe23a
+	dr $fe23a, $fe24a
+
+Data_fe24a: ; fe24a
+	dr $fe24a, $fe2b4
+
+Data_fe2b4: ; fe2b4
+	dr $fe2b4, $fe374
+
+Data_fe374: ; fe374
+	dr $fe374, $fe384
+
+Data_fe384: ; fe384
+	dr $fe384, $fe404
+
+Data_fe404: ; fe404
+	dr $fe404, $fe414
+
+Data_fe414: ; fe414
+	dr $fe414, $fe444
+
+Data_fe444: ; fe444
+	dr $fe444, $fe454
+
+Data_fe454: ; fe454
+	dr $fe454, $fe474
+
+Data_fe474: ; fe474
+	dr $fe474, $fecd4
+
+Data_fecd4: ; fecd4
+	dr $fecd4, $ffb14
+
+SECTION "Bank 3f, 3", ROMX [$7cd4], BANK [$3f]
+ENDC
+IF DEF(STAR)
+Data_fe1da: ; fe1da
+	dr $fe1d8, $fe1e8
+
+Data_fe1ea: ; fe1ea
+	dr $fe1e8, $fe1f8
+
+Data_fe1fa: ; fe1fa
+	dr $fe1f8, $fe208
+
+Data_fe20a: ; fe20a
+	dr $fe208, $fe218
+
+Data_fe21a: ; fe21a
+	dr $fe218, $fe228
+
+Data_fe22a: ; fe22a
+	dr $fe228, $fe238
+
+Data_fe23a: ; fe23a
+	dr $fe238, $fe248
+
+Data_fe24a: ; fe24a
+	dr $fe248, $fe2b2
+
+Data_fe2b4: ; fe2b4
+	dr $fe2b2, $fe372
+
+Data_fe374: ; fe374
+	dr $fe372, $fe382
+
+Data_fe384: ; fe384
+	dr $fe382, $fe402
+
+Data_fe404: ; fe404
+	dr $fe402, $fe412
+
+Data_fe414: ; fe414
+	dr $fe412, $fe442
+
+Data_fe444: ; fe444
+	dr $fe442, $fe452
+
+Data_fe454: ; fe454
+	dr $fe452, $fe472
+
+Data_fe474: ; fe474
+	dr $fe472, $fecd2
+
+Data_fecd4: ; fecd4
+	dr $fecd2, $ffb12
+
+SECTION "Bank 3f, 3", ROMX [$7cd2], BANK [$3f]
+ENDC
+
+Func_ffcd4: ; ffcd4 (3f:7cd4)
+	ld hl, Data_ffd39
+	ld de, $10
+	call Func_2b7d
+	ld a, [rJOYP]
+	and $3
+	cp $3
+	jr nz, .asm_ffd1e
+	ld a, $20
+	ld [rJOYP], a
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	ld a, $30
+	ld [rJOYP], a
+	ld a, $10
+	ld [rJOYP], a
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	ld a, $30
+	ld [rJOYP], a
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	ld a, [rJOYP]
+	and $3
+	cp $3
+	jr nz, .asm_ffd1e
+	ld hl, Data_ffd29
+	ld de, $10
+	call Func_2b7d
+	sub a
+	ret
+
+.asm_ffd1e
+	ld hl, Data_ffd29
+	ld de, $10
+	call Func_2b7d
+	scf
+	ret
+
+Data_ffd29:
+IF DEF(SUN)
+	dr $ffd29, $ffd39
+
+Data_ffd39:
+	dr $ffd39, $ffd49
+ENDC
+IF DEF(STAR)
+	dr $ffd27, $ffd37
+
+Data_ffd39:
+	dr $ffd37, $ffd47
+ENDC
+
+Func_ffd49: ; ffd49 (3f:7d49)
+	di
+	push de
+	call Func_ffd92
+	ld a, $43
+	ld [rLCDC], a
+	ld a, $e4
+	ld [rBGP], a
+	ld de, $8800
+	ld bc, $1000
+	call Func_ffd99
+	hlbgcoord 0, 0
+	ld de, $c
+	ld a, $80
+	ld c, $d
+.asm_ffd69
+	ld b, $14
+.asm_ffd6b
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .asm_ffd6b
+	add hl, de
+	dec c
+	jr nz, .asm_ffd69
+	ld a, $c3
+	ld [rLCDC], a
+	pop hl
+	ld de, $10
+	call Func_2b7d
+	ei
+	ret
+
+Func_ffd81: ; ffd81 (3f:7d81)
+	ld de, $6d6
+.asm_ffd84
+	nop
+	nop
+	nop
+	dec de
+	ld a, d
+	or e
+	jr nz, .asm_ffd84
+	dec bc
+	ld a, b
+	or c
+	jr nz, Func_ffd81
+	ret
+
+Func_ffd92: ; ffd92 (3f:7d92)
+	ld a, [rLY]
+	cp $94
+	jr nz, Func_ffd92
+	ret
+
+Func_ffd99: ; ffd99 (3f:7d99)
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec bc
+	ld a, b
+	or c
+	jr nz, Func_ffd99
+	ret
+
+IF DEF(SUN)
 REPT $100000 - $ffda2
 	db $ff
 ENDR
 ENDC
-
 IF DEF(STAR)
-	dr $fe100, $ffda0
-
 REPT $100000 - $ffda0
 	db $ff
 ENDR
 ENDC
-
