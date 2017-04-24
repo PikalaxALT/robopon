@@ -29,7 +29,7 @@ Func_9a49:: ; 9a49 (2:5a49)
 	ld a, d
 	ld [wFunc94a9_c88c + 1], a
 .loop: ; 9a86 (2:5a86)
-	ld a, [wc772]
+	ld a, [wNumPeopleLoaded]
 	ld b, a
 	ld a, [wFunc94a9_c889]
 	cp b

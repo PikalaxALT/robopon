@@ -10,12 +10,8 @@ Func_82b03:
 	call Func_80f11_20
 	ld a, $2
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_82ab8
-	call LoadMapObjects_20
-	ld e, $3
-	ld hl, Data_82ad9
-	call Func_800fb_20
+	loadwarps $3, Data_82ab8
+	loadpeople $3, Data_82ad9
 	ld a, [wc78c]
 	cp $a
 	jp nc, Func_82b39

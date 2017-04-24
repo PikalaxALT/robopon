@@ -8,9 +8,7 @@ Data_825be: ; 825be
 	dr $825be, $825cc
 
 Func_825cc:
-	ld e, $1
-	ld hl, Data_82593
-	call LoadMapObjects_20
+	loadwarps $1, Data_82593
 	ld a, [wc793]
 	or a
 	jp z, Func_825eb
@@ -22,9 +20,7 @@ Func_825cc:
 	cp $2
 	jp nz, Func_825f9
 Func_825eb: ; 825eb (20:65eb)
-	ld e, $2
-	ld hl, Data_825a2
-	call Func_800fb_20
+	loadpeople $2, Data_825a2
 	ld e, $0
 	xor a
 	call Func_8013d_20
@@ -38,9 +34,7 @@ Func_825f9: ; 825f9 (20:65f9)
 	ld a, [wc790]
 	cp $4
 	jp z, Func_8261f
-	ld e, $1
-	ld hl, Data_825be
-	call Func_800fb_20
+	loadpeople $1, Data_825be
 Func_8261f: ; 8261f (20:661f)
 	playmusic $11
 	call Func_8001c_20

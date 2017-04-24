@@ -658,12 +658,12 @@ SECTION "Overworld RAM", WRAM0 [$c770]
 wc770:: ; c770
 	ds $2
 
-	char wc772 ; c772
+	char wNumPeopleLoaded ; c772
 	char wc773 ; c773
 	short wObjectStructPointer ; c774
 	short wc776 ; c776
 	short wc778 ; c778
-	short wMapObjectsAndWarpDataPointer ; c77a
+	short wWarpDataPointer ; c77a
 	char wNumWarps ; c77c
 	char wRandomEncounterTableBank ; c77d
 	short wRandomEncounterTableAddr ; c77e
@@ -812,15 +812,15 @@ wEventFlagsEnd::
 	short wLoadTilesTileCounter ; c890
 	ds wc888 - @
 
-	char wCheckCollisionReturnFlag ; c888
-	char wCheckCollisionX ; c889
-	char wCheckCollisionY ; c88a
-	char wCheckCollisionFlag ; c88b
-	char wCheckCollisionFacingDirection ; c88c
-	char wCheckCollisionObjectCounter ; c88d
-	short wCheckCollisionObjectStructPointer ; c88e
-	short wCheckCollision_c890 ; c890
-	ds wCheckCollisionReturnFlag - @
+	char wCheckFacingObjectReturnFlag ; c888
+	char wCheckFacingObjectX ; c889
+	char wCheckFacingObjectY ; c88a
+	char wCheckFacingObjectFlag ; c88b
+	char wCheckFacingObjectFacingDirection ; c88c
+	char wCheckFacingObjectObjectCounter ; c88d
+	short wCheckFacingObjectObjectStructPointer ; c88e
+	short wCheckFacingObject_c890 ; c890
+	ds wCheckFacingObjectReturnFlag - @
 
 	char wFunc94a9_c888 ; c888
 	char wFunc94a9_c889 ; c889

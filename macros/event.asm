@@ -57,3 +57,15 @@ loadwilds: MACRO
 	ld hl, \2
 	call LoadEncounters_20
 	ENDM
+
+loadwarps: MACRO
+	ld e, \1
+	ld hl, \2
+	call LoadWarps_20
+	ENDM
+
+loadpeople: MACRO
+	ld e, \1
+	ld hl, \2
+	call LoadMapObjects_20
+	ENDM

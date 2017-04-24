@@ -22,9 +22,7 @@ Func_82e70:
 	call Func_80f11_20
 	ld a, $5
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_82e20
-	call LoadMapObjects_20
+	loadwarps $3, Data_82e20
 	ld e, $1
 	ld hl, Data_82e41
 	call Func_80ce7_20

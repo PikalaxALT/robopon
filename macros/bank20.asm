@@ -10,10 +10,10 @@ Func_8001c_\1: ; 8001c (20:401c)
 	ret
 
 Func_8002b_\1: ; 8002b (20:402b)
-	callba_hli DeleteMapObjectsAndWarps
+	callba_hli UnloadWarps
 	ret
 
-LoadMapObjects_\1: ; 8003a (20:403a)
+LoadWarps_\1: ; 8003a (20:403a)
 	push hl
 	push bc
 	push bc
@@ -47,7 +47,7 @@ LoadMapObjects_\1: ; 8003a (20:403a)
 	ld hl, sp+$4
 	ld bc, $b
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli LoadMapObject
+	set_farcall_addrs_hli LoadWarp
 	ld hl, sp+$4
 	call FarCall
 	pop af
@@ -125,13 +125,13 @@ Func_800e9_\1:
 	pop af
 	jp FarCall
 
-Func_800fb_\1: ; 800fb (20:40fb)
+LoadMapObjects_\1: ; 800fb (20:40fb)
 	push hl
 	add sp, -$e
 	xor a
-Func_800ff_\1: ; 800ff (20:40ff)
+.loop
 	cp e
-	jp nc, Func_8013a_\1
+	jp nc, .quit
 	push de
 	push af
 	ld l, a
@@ -153,15 +153,15 @@ Func_800ff_\1: ; 800ff (20:40ff)
 	ld hl, sp+$4
 	ld bc, $e
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_a2eb
+	set_farcall_addrs_hli LoadMapObject
 	ld hl, sp+$4
 	call FarCall
 	pop af
 	inc a
 	pop de
-	jp Func_800ff_\1
+	jp .loop
 
-Func_8013a_\1: ; 8013a (20:413a)
+.quit
 	add sp, $10
 	ret
 

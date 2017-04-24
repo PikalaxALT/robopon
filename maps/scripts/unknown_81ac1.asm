@@ -8,9 +8,7 @@ Data_81abc: ; 81abc
 	dr $81abc, $81ac1
 
 Func_81ac1:
-	ld e, $2
-	ld hl, Data_81a66
-	call LoadMapObjects_20
+	loadwarps $2, Data_81a66
 	ld e, $1
 	ld hl, Data_81abc
 	call Func_80ce7_20
@@ -27,9 +25,7 @@ Func_81ae8: ; 81ae8 (20:5ae8)
 	checkevent $b
 	or a
 	jp nz, Func_81b15
-	ld e, $4
-	ld hl, Data_81a84
-	call Func_800fb_20
+	loadpeople $4, Data_81a84
 	ld a, $2
 	call PlayerFace_20
 	playmusic $11

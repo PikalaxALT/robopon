@@ -11,9 +11,7 @@ Func_82f08:
 	call Func_80f11_20
 	ld a, $6
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_82ee2
-	call LoadMapObjects_20
+	loadwarps $3, Data_82ee2
 	ld e, $1
 	ld hl, Data_82f03
 	call Func_80ce7_20

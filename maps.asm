@@ -47,12 +47,8 @@ Func_83213:
 	call Func_80f11_20
 	ld a, $9
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_831e4
-	call LoadMapObjects_20
-	ld e, $1
-	ld hl, Data_83205
-	call Func_800fb_20
+	loadwarps $3, Data_831e4
+	loadpeople $1, Data_83205
 	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d0
@@ -155,9 +151,7 @@ Func_83340:
 	call Func_80f11_20
 	ld a, $a
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_8331a
-	call LoadMapObjects_20
+	loadwarps $3, Data_8331a
 	ld e, $1
 	ld hl, Data_8333b
 	call Func_80ce7_20
@@ -198,9 +192,7 @@ Func_833ba:
 	call Func_80f11_20
 	ld a, $b
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_83399
-	call LoadMapObjects_20
+	loadwarps $3, Data_83399
 	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d2
@@ -241,9 +233,7 @@ Func_83431:
 	call Func_80f11_20
 	ld a, $c
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_8340b
-	call LoadMapObjects_20
+	loadwarps $3, Data_8340b
 	ld e, $1
 	ld hl, Data_8342c
 	call Func_80ce7_20
@@ -287,12 +277,8 @@ Func_834bd:
 	call Func_80f11_20
 	ld a, $d
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_8348a
-	call LoadMapObjects_20
-	ld e, $1
-	ld hl, Data_834af
-	call Func_800fb_20
+	loadwarps $3, Data_8348a
+	loadpeople $1, Data_834af
 	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3d4
@@ -330,9 +316,7 @@ Func_83537:
 	call Func_80f11_20
 	ld a, $e
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_83516
-	call LoadMapObjects_20
+	loadwarps $3, Data_83516
 	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, GetSRAMBank
@@ -373,9 +357,7 @@ Func_835ae:
 	call Func_80f11_20
 	ld a, $f
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_83588
-	call LoadMapObjects_20
+	loadwarps $3, Data_83588
 	ld e, $1
 	ld hl, Data_835a9
 	call Func_80ce7_20
@@ -419,9 +401,7 @@ Func_83632:
 	call Func_80f11_20
 	ld a, $10
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_83607
-	call LoadMapObjects_20
+	loadwarps $3, Data_83607
 	ld e, $2
 	ld hl, Data_83628
 	call Func_80ce7_20
@@ -465,9 +445,7 @@ Func_836b1:
 	call Func_80f11_20
 	ld a, $11
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_8368b
-	call LoadMapObjects_20
+	loadwarps $3, Data_8368b
 	ld e, $1
 	ld hl, Data_836ac
 	call Func_80ce7_20
@@ -511,9 +489,7 @@ Func_83730:
 	call Func_80f11_20
 	ld a, $12
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_8370a
-	call LoadMapObjects_20
+	loadwarps $3, Data_8370a
 	ld e, $1
 	ld hl, Data_8372b
 	call Func_80ce7_20
@@ -554,9 +530,7 @@ Func_837aa:
 	call Func_80f11_20
 	ld a, $13
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_83789
-	call LoadMapObjects_20
+	loadwarps $3, Data_83789
 	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3da
@@ -597,9 +571,7 @@ Func_83816:
 	call Func_80f11_20
 	ld a, $14
 	ld [wc7de], a
-	ld e, $2
-	ld hl, Data_837fb
-	call LoadMapObjects_20
+	loadwarps $2, Data_837fb
 	ld e, $1
 	ld hl, Data_83811
 	call Func_80ce7_20
@@ -646,15 +618,11 @@ Func_838a2:
 	call Func_80f11_20
 	xor a
 	ld [wc7de], a
-	ld e, $2
-	ld hl, Data_8386f
-	call LoadMapObjects_20
+	loadwarps $2, Data_8386f
 	ld e, $3
 	ld hl, Data_83885
 	call Func_80ce7_20
-	ld e, $1
-	ld hl, Data_83894
-	call Func_800fb_20
+	loadpeople $1, Data_83894
 	playmusic SONG_SHOP
 	call Func_83e56
 	ld [wc7a4], a
@@ -1341,9 +1309,7 @@ Func_851b4: ; 851b4 (21:51b4)
 	ld hl, $38
 	call EventFlagAction_21
 Func_851bc: ; 851bc (21:51bc)
-	ld e, $6
-	ld hl, Data_850b4
-	call LoadMapObjects_21
+	loadwarps $6, Data_850b4
 	ld a, $1
 	call Func_80cc6_21
 	ld a, $2
@@ -1351,12 +1317,8 @@ Func_851bc: ; 851bc (21:51bc)
 	checkevent $32
 	or a
 	jp nz, Func_851fe
-	ld e, $5
-	ld hl, Data_850fa
-	call Func_800fb_21
-	ld e, $4
-	ld hl, Data_85140
-	call Func_800fb_21
+	loadpeople $5, Data_850fa
+	loadpeople $4, Data_85140
 	playmusic SONG_TOWN1
 	call Func_8001c_21
 	call Func_852ac
@@ -1373,9 +1335,7 @@ Func_851fe: ; 851fe (21:51fe)
 	or a
 	jp nz, Func_85260
 Func_85212: ; 85212 (21:5212)
-	ld e, $5
-	ld hl, Data_850fa
-	call Func_800fb_21
+	loadpeople $5, Data_850fa
 	playmusic SONG_TOWN1
 	ld e, $0
 	ld a, $2
@@ -1409,9 +1369,7 @@ Func_85257: ; 85257 (21:5257)
 	call Func_80080_21
 Func_85260: ; 85260 (21:5260)
 	playmusic SONG_TOWN1
-	ld e, $4
-	ld hl, Data_85140
-	call Func_800fb_21
+	loadpeople $4, Data_85140
 	call Func_8001c_21
 Func_85270: ; 85270 (21:5270)
 	pop bc
@@ -2109,9 +2067,7 @@ Func_85a59: ; 85a59 (21:5a59)
 Func_85a61: ; 85a61 (21:5a61)
 	ld a, $1
 	ld [wc7de], a
-	ld e, $5
-	ld hl, Data_85992
-	call LoadMapObjects_21
+	loadwarps $5, Data_85992
 	checkevent $38
 	cp $1
 	jp nz, Func_85aaf
@@ -2136,9 +2092,7 @@ Func_85aac: ; 85aac (21:5aac)
 	jp Func_85abc
 
 Func_85aaf: ; 85aaf (21:5aaf)
-	ld e, $5
-	ld hl, Data_859c9
-	call Func_800fb_21
+	loadpeople $5, Data_859c9
 	playmusic SONG_TOWN3
 Func_85abc: ; 85abc (21:5abc)
 	ld a, [wc797]
@@ -2154,9 +2108,7 @@ Func_85ada: ; 85ada (21:5ada)
 	ld e, $0
 	ld a, $4
 	call Func_8013d_21
-	ld e, $1
-	ld hl, Data_85a0f
-	call Func_800fb_21
+	loadpeople $1, Data_85a0f
 	checkevent $14
 	cp $1
 	jp nz, Func_85afc
@@ -2346,9 +2298,7 @@ Func_85d1a: ; 85d1a (21:5d1a)
 Func_85d22: ; 85d22 (21:5d22)
 	ld a, $7
 	ld [wc7de], a
-	ld e, $2
-	ld hl, Data_85c82
-	call LoadMapObjects_21
+	loadwarps $2, Data_85c82
 	checkevent $38
 	cp $1
 	jp nz, Func_85d70
@@ -2373,9 +2323,7 @@ Func_85d6d: ; 85d6d (21:5d6d)
 	jp Func_85d7d
 
 Func_85d70: ; 85d70 (21:5d70)
-	ld e, $5
-	ld hl, Data_85c98
-	call Func_800fb_21
+	loadpeople $5, Data_85c98
 	playmusic SONG_TOWN3
 Func_85d7d: ; 85d7d (21:5d7d)
 	checkevent $14
@@ -2560,9 +2508,7 @@ Func_85fc9: ; 85fc9 (21:5fc9)
 	dec a
 	ld [wc7de], a
 Func_85fd8: ; 85fd8 (21:5fd8)
-	ld e, $3
-	ld hl, Data_85f05
-	call LoadMapObjects_21
+	loadwarps $3, Data_85f05
 	checkevent $38
 	cp $1
 	jp nz, Func_86014
@@ -2604,9 +2550,7 @@ Func_86019: ; 86019 (21:6019)
 	jp Func_86057
 
 Func_8604f: ; 8604f (21:604f)
-	ld e, $2
-	ld hl, Data_85f26
-	call Func_800fb_21
+	loadpeople $2, Data_85f26
 Func_86057: ; 86057 (21:6057)
 	ld hl, $2c6
 	call Func_80f72_21
@@ -2625,9 +2569,7 @@ Func_86060: ; 86060 (21:6060)
 	jp Func_8608e
 
 Func_86086: ; 86086 (21:6086)
-	ld e, $3
-	ld hl, Data_85f42
-	call Func_800fb_21
+	loadpeople $3, Data_85f42
 Func_8608e: ; 8608e (21:608e)
 	ld hl, $2c8
 	call Func_80f72_21
@@ -2906,9 +2848,7 @@ Func_864a0: ; 864a0 (21:64a0)
 	jp z, Func_864f4
 	cp $2
 	jp nz, Func_86575
-	ld e, $3
-	ld hl, Data_862fe
-	call LoadMapObjects_21
+	loadwarps $3, Data_862fe
 	checkevent $38
 	cp $1
 	jp nz, Func_864e0
@@ -2921,9 +2861,7 @@ Func_864a0: ; 864a0 (21:64a0)
 	jp Func_864e8
 
 Func_864e0: ; 864e0 (21:64e0)
-	ld e, $3
-	ld hl, Data_86361
-	call Func_800fb_21
+	loadpeople $3, Data_86361
 Func_864e8: ; 864e8 (21:64e8)
 	call Func_8001c_21
 	ld hl, $2c5
@@ -2931,9 +2869,7 @@ Func_864e8: ; 864e8 (21:64e8)
 	jp Func_86575
 
 Func_864f4: ; 864f4 (21:64f4)
-	ld e, $3
-	ld hl, Data_8631f
-	call LoadMapObjects_21
+	loadwarps $3, Data_8631f
 	checkevent $38
 	cp $1
 	jp nz, Func_86522
@@ -2946,9 +2882,7 @@ Func_864f4: ; 864f4 (21:64f4)
 	jp Func_8652a
 
 Func_86522: ; 86522 (21:6522)
-	ld e, $4
-	ld hl, Data_8638b
-	call Func_800fb_21
+	loadpeople $4, Data_8638b
 Func_8652a: ; 8652a (21:652a)
 	call Func_8001c_21
 	ld hl, $2c7
@@ -2956,9 +2890,7 @@ Func_8652a: ; 8652a (21:652a)
 	jp Func_86575
 
 Func_86536: ; 86536 (21:6536)
-	ld e, $3
-	ld hl, Data_86340
-	call LoadMapObjects_21
+	loadwarps $3, Data_86340
 	checkevent $38
 	cp $1
 	jp nz, Func_86564
@@ -2971,9 +2903,7 @@ Func_86536: ; 86536 (21:6536)
 	jp Func_8656c
 
 Func_86564: ; 86564 (21:6564)
-	ld e, $4
-	ld hl, Data_863c3
-	call Func_800fb_21
+	loadpeople $4, Data_863c3
 Func_8656c: ; 8656c (21:656c)
 	call Func_8001c_21
 	ld hl, $2c9
@@ -3238,21 +3168,15 @@ Func_8688a:
 	ld a, $f
 	call Func_80f24_21
 	pop bc
-	ld e, $2
-	ld hl, Data_8686e
-	call Func_800fb_21
+	loadpeople $2, Data_8686e
 	ld e, $0
 	xor a
 	call Func_8013d_21
-	ld e, $1
-	ld hl, Data_8682b
-	call LoadMapObjects_21
+	loadwarps $1, Data_8682b
 	checkevent $7
 	or a
 	jp nz, Func_868d5
-	ld e, $4
-	ld hl, Data_86836
-	call Func_800fb_21
+	loadpeople $4, Data_86836
 	call Func_8001c_21
 	call Func_86943
 	jp Func_868dd
@@ -3698,9 +3622,7 @@ Func_86ffa:
 	call Func_870fa
 	ld hl, Func_870fa
 	call Func_80f11_21
-	ld e, $b
-	ld hl, Data_86c01
-	call LoadMapObjects_21
+	loadwarps $b, Data_86c01
 	ld a, $5
 	call Func_80d01_21
 	loadwilds $2d, Data_86d84
@@ -3711,9 +3633,7 @@ Func_86ffa:
 	ld hl, Data_86c7a
 	call Func_80ce7_21
 Func_8703a: ; 8703a (21:703a)
-	ld e, $a
-	ld hl, Data_86cf8
-	call Func_800fb_21
+	loadpeople $a, Data_86cf8
 	ld a, [wc790]
 	or a
 	jp z, Func_8706e
@@ -3833,9 +3753,7 @@ Data_871d4: ; 871d4
 	dr $871d4, $871fe
 
 Func_871fe:
-	ld e, $3
-	ld hl, Data_87164
-	call LoadMapObjects_21
+	loadwarps $3, Data_87164
 	playmusic SONG_CAVE
 	checkevent $0
 	or a
@@ -3861,9 +3779,7 @@ Func_8723b: ; 8723b (21:723b)
 	ld e, $1
 	ld hl, Data_87185
 	call Func_80ce7_21
-	ld e, $3
-	ld hl, Data_871d4
-	call Func_800fb_21
+	loadpeople $3, Data_871d4
 	xor a
 	ld [wc7da], a
 	call Func_8001c_21
@@ -4003,18 +3919,14 @@ Data_87423: ; 87423
 	dr $87423, $8744d
 
 Func_8744d:
-	ld e, $3
-	ld hl, Data_87388
-	call LoadMapObjects_21
+	loadwarps $3, Data_87388
 	ld e, $2
 	ld hl, Data_873a9
 	call Func_80ce7_21
 	ld a, $3
 	call Func_80d01_21
 	loadwilds $8, Data_873b3
-	ld e, $3
-	ld hl, Data_87423
-	call Func_800fb_21
+	loadpeople $3, Data_87423
 	checkevent $0
 	or a
 	jp nz, Func_87484
@@ -4235,12 +4147,8 @@ Func_877cb:
 	or a
 	jp nz, Func_877f5
 	call Func_87648
-	ld e, $4
-	ld hl, Data_87669
-	call LoadMapObjects_21
-	ld e, $4
-	ld hl, Data_87731
-	call Func_800fb_21
+	loadwarps $4, Data_87669
+	loadpeople $4, Data_87731
 	jp Func_87828
 
 Func_877f5: ; 877f5 (21:77f5)
@@ -4251,25 +4159,17 @@ Func_877f5: ; 877f5 (21:77f5)
 	or a
 	jp nz, Func_87820
 	call Func_87648
-	ld e, $4
-	ld hl, Data_87669
-	call LoadMapObjects_21
-	ld e, $2
-	ld hl, Data_87769
-	call Func_800fb_21
+	loadwarps $4, Data_87669
+	loadpeople $2, Data_87769
 	jp Func_87828
 
 Func_87820: ; 87820 (21:7820)
-	ld e, $4
-	ld hl, Data_87695
-	call LoadMapObjects_21
+	loadwarps $4, Data_87695
 Func_87828: ; 87828 (21:7828)
 	ld a, $3
 	call Func_80d01_21
 	loadwilds $8, Data_876c1
-	ld e, $5
-	ld hl, Data_87785
-	call Func_800fb_21
+	loadpeople $5, Data_87785
 	playmusic SONG_CAVE
 	ld a, $4
 	ld [wc7e2], a
@@ -4699,9 +4599,7 @@ Func_87c03: ; 87c03 (21:7c03)
 	ld hl, $4c
 	call EventFlagAction_21
 	call Func_8002b_21
-	ld e, $4
-	ld hl, Data_87bd7
-	call LoadMapObjects_21
+	loadwarps $4, Data_87bd7
 	call Func_80ea2_21
 	playsfx $64
 	script_sleep $3c
@@ -4817,9 +4715,7 @@ Data_87d7a: ; 87d7a
 	dr $87d7a, $87d88
 
 Func_87d88:
-	ld e, $1
-	ld hl, Data_87d45
-	call LoadMapObjects_21
+	loadwarps $1, Data_87d45
 	ld a, $3
 	call Func_80d01_21
 	loadwilds $3, Data_87d50
@@ -4834,9 +4730,7 @@ Func_87daf: ; 87daf (21:7daf)
 	xor a
 	ld [wc7da], a
 Func_87db3: ; 87db3 (21:7db3)
-	ld e, $1
-	ld hl, Data_87d7a
-	call Func_800fb_21
+	loadpeople $1, Data_87d7a
 	playmusic SONG_CAVE
 	call Func_8001c_21
 	ld hl, $2d8
@@ -4915,9 +4809,7 @@ Data_87e94: ; 87e94
 	dr $87e94, $87ea2
 
 Func_87ea2:
-	ld e, $2
-	ld hl, Data_87e34
-	call LoadMapObjects_21
+	loadwarps $2, Data_87e34
 	ld a, $3
 	call Func_80d01_21
 	loadwilds $5, Data_87e4a
@@ -4932,9 +4824,7 @@ Func_87ec9: ; 87ec9 (21:7ec9)
 	xor a
 	ld [wc7da], a
 Func_87ecd: ; 87ecd (21:7ecd)
-	ld e, $1
-	ld hl, Data_87e94
-	call Func_800fb_21
+	loadpeople $1, Data_87e94
 	playmusic SONG_CAVE
 	call Func_8001c_21
 	ld hl, $2d8

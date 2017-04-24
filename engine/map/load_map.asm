@@ -268,7 +268,7 @@ del: MACRO
 	write_hl_to wc822
 	write_hl_to wc824
 	ld hl, $0
-	write_hl_to wMapObjectsAndWarpDataPointer
+	write_hl_to wWarpDataPointer
 	ld hl, $0
 	write_hl_to wc778
 	ld hl, $0
@@ -533,7 +533,7 @@ Func_8827: ; 8827 (2:4827)
 	jp nz, .dont_delete
 	call Func_a24c
 	call Func_aff1
-	call DeleteMapObjectsAndWarps
+	call UnloadWarps
 	call Func_b773
 	call ClearMovementPointer
 	call Func_9d31

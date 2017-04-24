@@ -20,9 +20,7 @@ Data_81d4e: ; 81d4e
 Func_81d6a:
 	xor a
 	ld [wc793], a
-	ld e, $1
-	ld hl, Data_81cb4
-	call LoadMapObjects_20
+	loadwarps $1, Data_81cb4
 	ld e, $1
 	ld hl, Data_81cbf
 	call Func_80ce7_20
@@ -42,16 +40,12 @@ Func_81d95: ; 81d95 (20:5d95)
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, Func_81db2
-	ld e, $1
-	ld hl, Data_81d40
-	call Func_800fb_20
+	loadpeople $1, Data_81d40
 	call Func_81f41
 	jp Func_81df6
 
 Func_81db2: ; 81db2 (20:5db2)
-	ld e, $1
-	ld hl, Data_81cb4
-	call LoadMapObjects_20
+	loadwarps $1, Data_81cb4
 	checkevent $a
 	or a
 	jp nz, Func_81de6
@@ -70,21 +64,15 @@ Func_81db2: ; 81db2 (20:5db2)
 	jp Func_81df6
 
 Func_81de6: ; 81de6 (20:5de6)
-	ld e, $3
-	ld hl, Data_81cd0
-	call Func_800fb_20
+	loadpeople $3, Data_81cd0
 	playmusic $11
 	call Func_8001c_20
 Func_81df6: ; 81df6 (20:5df6)
 	jp Func_81e22
 
 Func_81df9: ; 81df9 (20:5df9)
-	ld e, $3
-	ld hl, Data_81cd0
-	call Func_800fb_20
-	ld e, $5
-	ld hl, Data_81cfa
-	call Func_800fb_20
+	loadpeople $3, Data_81cd0
+	loadpeople $5, Data_81cfa
 	ld a, $5
 	call Func_80d01_20
 	loadwilds $2, Data_81d4e

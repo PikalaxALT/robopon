@@ -5,15 +5,11 @@ Data_823d4: ; 823d4
 	dr $823d4, $8240c
 
 Func_8240c:
-	ld e, $2
-	ld hl, Data_823ba
-	call LoadMapObjects_20
+	loadwarps $2, Data_823ba
 	ld a, [wc790]
 	cp $4
 	jp z, Func_8242b
-	ld e, $4
-	ld hl, Data_823d4
-	call Func_800fb_20
+	loadpeople $4, Data_823d4
 	ld e, $0
 	ld a, $3
 	call Func_8013d_20

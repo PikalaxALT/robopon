@@ -16,9 +16,7 @@ Func_827a9:
 	call Func_80f11_20
 	ld a, $1
 	ld [wc7de], a
-	ld e, $6
-	ld hl, Data_8271c
-	call LoadMapObjects_20
+	loadwarps $6, Data_8271c
 	ld e, $1
 	ld hl, Data_8275e
 	call Func_80ce7_20
@@ -32,9 +30,7 @@ Func_827a9:
 	cp $3
 	jp nz, Func_8283f
 Func_827de: ; 827de (20:67de)
-	ld e, $4
-	ld hl, Data_82763
-	call Func_800fb_20
+	loadpeople $4, Data_82763
 	playmusic $b
 	ld a, [wBackupMapGroup]
 	cp $20
@@ -73,12 +69,8 @@ Func_8283c: ; 8283c (20:683c)
 	jp Func_82859
 
 Func_8283f: ; 8283f (20:683f)
-	ld e, $4
-	ld hl, Data_82763
-	call Func_800fb_20
-	ld e, $1
-	ld hl, Data_8279b
-	call Func_800fb_20
+	loadpeople $4, Data_82763
+	loadpeople $1, Data_8279b
 	ld e, $0
 	ld a, $1
 	call Func_8013d_20

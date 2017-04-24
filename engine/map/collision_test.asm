@@ -165,7 +165,7 @@ Func_a09f: ; a09f (2:609f)
 Func_a0a9: ; a0a9 (2:60a9)
 	ld hl, sp+$6
 	ld a, [hl]
-	ld hl, wc772
+	ld hl, wNumPeopleLoaded
 	cp [hl]
 	jp nc, Func_a15e
 	ld hl, sp+$6

@@ -10,12 +10,8 @@ Func_82d7f:
 	call Func_80f11_20
 	ld a, $4
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_82d42
-	call LoadMapObjects_20
-	ld e, $2
-	ld hl, Data_82d63
-	call Func_800fb_20
+	loadwarps $3, Data_82d42
+	loadpeople $2, Data_82d63
 	playmusic $b
 	call Func_8001c_20
 	ld hl, $3cb

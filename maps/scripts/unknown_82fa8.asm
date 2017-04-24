@@ -14,9 +14,7 @@ Func_82fa8:
 	call Func_80f11_20
 	ld a, $7
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_82f61
-	call LoadMapObjects_20
+	loadwarps $3, Data_82f61
 	ld e, $2
 	ld hl, Data_82f82
 	call Func_80ce7_20
@@ -31,9 +29,7 @@ Func_82fa8:
 	cp $2
 	jp nz, Func_82ff0
 Func_82fe2: ; 82fe2 (20:6fe2)
-	ld e, $2
-	ld hl, Data_82f8c
-	call Func_800fb_20
+	loadpeople $2, Data_82f8c
 	ld e, $0
 	xor a
 	call Func_8013d_20

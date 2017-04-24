@@ -16,25 +16,17 @@ Func_82c44:
 	call Func_80f11_20
 	ld a, $3
 	ld [wc7de], a
-	ld e, $3
-	ld hl, Data_82bc1
-	call LoadMapObjects_20
-	ld e, $2
-	ld hl, Data_82be2
-	call Func_800fb_20
+	loadwarps $3, Data_82bc1
+	loadpeople $2, Data_82be2
 	ld a, [wc78c]
 	cp $a
 	jp c, Func_82c72
-	ld e, $3
-	ld hl, Data_82bfe
-	call Func_800fb_20
+	loadpeople $3, Data_82bfe
 Func_82c72: ; 82c72 (20:6c72)
 	ld a, [wc78c]
 	cp $f
 	jp c, Func_82c82
-	ld e, $2
-	ld hl, Data_82c28
-	call Func_800fb_20
+	loadpeople $2, Data_82c28
 Func_82c82: ; 82c82 (20:6c82)
 	playmusic $b
 	call Func_8001c_20

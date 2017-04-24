@@ -46,9 +46,7 @@ Func_81281:
 	ld [wc7e2], a
 	xor a
 	ld [wc791], a
-	ld e, $6
-	ld hl, Data_810b4
-	call LoadMapObjects_20
+	loadwarps $6, Data_810b4
 	ld a, $1
 	call Func_80cc6_20
 	ld a, [wc793]
@@ -64,9 +62,7 @@ Func_812c9: ; 812c9 (20:52c9)
 	checkevent $c
 	or a
 	jp nz, Func_812ec
-	ld e, $3
-	ld hl, Data_8113f
-	call Func_800fb_20
+	loadpeople $3, Data_8113f
 	call Func_8001c_20
 	call Func_814c1
 	ld e, $1
@@ -82,9 +78,7 @@ Func_812ec: ; 812ec (20:52ec)
 	or a
 	jp nz, Func_8137b
 Func_81300: ; 81300 (20:5300)
-	ld e, $6
-	ld hl, Data_81169
-	call Func_800fb_20
+	loadpeople $6, Data_81169
 	checkevent $2
 	cp $1
 	jp nz, Func_8133b
@@ -135,18 +129,14 @@ Func_81374: ; 81374 (20:5374)
 	ld a, $4
 	call Func_8013d_20
 Func_8137b: ; 8137b (20:537b)
-	ld e, $6
-	ld hl, Data_811bd
-	call Func_800fb_20
+	loadpeople $6, Data_811bd
 	checkevent $21
 	cp $1
 	jp nz, Func_813ba
 	checkevent $46
 	or a
 	jp nz, Func_813ba
-	ld e, $4
-	ld hl, Data_8122d
-	call Func_800fb_20
+	loadpeople $4, Data_8122d
 	ld a, [wc790]
 	or a
 	jp z, Func_813b7
@@ -160,9 +150,7 @@ Func_813b7: ; 813b7 (20:53b7)
 	jp Func_813c2
 
 Func_813ba: ; 813ba (20:53ba)
-	ld e, $2
-	ld hl, Data_81211
-	call Func_800fb_20
+	loadpeople $2, Data_81211
 Func_813c2: ; 813c2 (20:53c2)
 	ld a, [wc790]
 	or a
@@ -170,21 +158,15 @@ Func_813c2: ; 813c2 (20:53c2)
 	ld a, [wc790]
 	cp $7
 	jp nc, Func_813ec
-	ld e, $1
-	ld hl, Data_810f6
-	call LoadMapObjects_20
+	loadwarps $1, Data_810f6
 	ld de, Data_8113b
 	ld a, $7
 	call Func_80150_20
-	ld e, $1
-	ld hl, Data_81273
-	call Func_800fb_20
+	loadpeople $1, Data_81273
 	jp Func_813f4
 
 Func_813ec: ; 813ec (20:53ec)
-	ld e, $1
-	ld hl, Data_81265
-	call Func_800fb_20
+	loadpeople $1, Data_81265
 Func_813f4: ; 813f4 (20:53f4)
 	playmusic $3
 	call Func_8001c_20
