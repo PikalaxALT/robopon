@@ -111285,17 +111285,189 @@ Func_fafa8:
 	add sp, $16
 	ret
 
-Func_fdfe2:
-IF DEF(SUN)
-	dr $fdfe2, $fdfe5
+Func_fdfe2: ; fdfe2 (3f:5fe2)
+	jp Func_0388
 
-Func_fdfe5:
-	dr $fdfe5, $fe004
+Func_fdfe5: ; fdfe5 (3f:5fe5)
+	xor a
+	ld [wc319], a
+	ld [wc31a], a
+	ld [wc31b], a
+	ld [wc31e], a
+	ld hl, Func_fe03a
+	ld de, wc770
+	ld bc, $5c
+.asm_fdffb
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec bc
+	ld a, c
+	or b
+	jr nz, .asm_fdffb
+	ret
 
-Func_fe004:
-	dr $fe004, $fe102
+Func_fe004: ; fe004 (3f:6004)
+	xor a
+	ld [wc319], a
+	ld [wc31e], a
+	ld a, $1c
+	ld [wc31a], a
+	add $1
+	ld [wc31b], a
+	ld hl, Func_fe096
+	ld de, wc770
+	ld bc, $6c
+.asm_fe01e
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec bc
+	ld a, c
+	or b
+	jr nz, .asm_fe01e
+	ld a, [wc31a]
+	ld [rLYC], a
+	di
+	ld a, [rIF]
+	and $fd
+	ld [rIF], a
+	ld a, [rIE]
+	or $2
+	ld [rIE], a
+	ei
+	ret
+
+Func_fe03a: ; fe03a (3f:603a)
+	push af
+	push bc
+	ld a, [wc319]
+	inc a
+	ld [wc319], a
+	cp $1
+	jr z, .asm_fe055
+	cp $2
+	jr z, .asm_fe05a
+	cp $3
+	jr z, .asm_fe06c
+	cp $4
+	jr z, .asm_fe074
+	jr .asm_fe086
+
+.asm_fe055
+	ld bc, $20
+	jr .asm_fe08d
+
+.asm_fe05a
+	ld a, [wc31a]
+	add $4
+	cp $18
+	jr nz, .asm_fe064
+	xor a
+.asm_fe064
+	ld [wc31a], a
+	ld b, a
+	ld c, $28
+	jr .asm_fe08d
+
+.asm_fe06c
+	ld a, [wc31e]
+	ld b, a
+	ld c, $68
+	jr .asm_fe08d
+
+.asm_fe074
+	ld a, [wc31b]
+	sub $4
+	cp $e8
+	jr nz, .asm_fe07e
+	xor a
+.asm_fe07e
+	ld [wc31b], a
+	ld b, a
+	ld c, $6f
+	jr .asm_fe08d
+
+.asm_fe086
+	xor a
+	ld [wc319], a
+	ld bc, $0
+.asm_fe08d
+	ld a, b
+	ld [rSCX], a
+	ld a, c
+	ld [rLYC], a
+	pop bc
+	pop af
+	reti
+
+Func_fe096: ; fe096 (3f:6096)
+	push af
+	push bc
+	ld b, $0
+	ld a, [wc319]
+	xor $1
+	ld [wc319], a
+	jr z, .asm_fe0b3
+	ld a, [rLCDC]
+	ld a, [wLCDC]
+	ld [rLCDC], a
+	ld a, [wc31b]
+	ld [rLYC], a
+	pop bc
+	pop af
+	reti
+
+.asm_fe0b3
+	ld a, [wLCDC]
+	xor $8
+	ld [rLCDC], a
+	ld a, [wc31a]
+	ld [rLYC], a
+	ld a, [wc31e]
+	inc a
+	cp $2
+	jr nc, .asm_fe0cd
+	ld [wc31e], a
+	pop bc
+	pop af
+	reti
+
+.asm_fe0cd
+	xor a
+	ld [wc31e], a
+	ld a, [wc31a]
+	dec a
+	cp $ff
+	jr nz, .asm_fe0dc
+	set 0, b
+	xor a
+.asm_fe0dc
+	ld [wc31a], a
+	ld a, [wc31b]
+	inc a
+	cp $39
+	jr nz, .asm_fe0ea
+	set 1, b
+	dec a
+.asm_fe0ea
+	ld [wc31b], a
+	ld a, b
+	cp $3
+	jr nz, .asm_fe0ff
+	ld a, [wLCDC]
+	ld [rLCDC], a
+	ld a, [rIE]
+	and $fd
+	ld [rIE], a
+	ld [rIF], a
+.asm_fe0ff
+	pop bc
+	pop af
+	reti
 
 Func_fe102:: ; fe102
+IF DEF(SUN)
 	dr $fe102, $ffda2
 
 REPT $100000 - $ffda2
@@ -111304,15 +111476,6 @@ ENDR
 ENDC
 
 IF DEF(STAR)
-	dr $fdfe0, $fdfe3
-
-Func_fdfe5:
-	dr $fdfe3, $fe002
-
-Func_fe004:
-	dr $fe002, $fe100
-
-Func_fe102:: ; fe102
 	dr $fe100, $ffda0
 
 REPT $100000 - $ffda0
