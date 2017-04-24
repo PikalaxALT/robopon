@@ -1,9 +1,14 @@
-; person_event: MACRO
-	; db \1, \2 ; x, y
-	; db \3 ; ???
-	; db \4 ; ???
-	; ENDM
-
+person_event: MACRO
+	db \1, \2 ; x, y
+	db \3 ; ???
+	db \4 ; ???
+REPT 5
+	db \5
+	shift
+ENDR
+	dba \5
+	dw \6
+	ENDM
 
 wildbot: MACRO
 	db \1, \2, \3, \4
