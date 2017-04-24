@@ -1,4 +1,4 @@
-AllocateMonsterStruct: ; cb4a (3:4b4a)
+AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	read_hl_from wCurRobotPointer
 	ld a, l
 	or h
@@ -150,7 +150,7 @@ AllocateMonsterStruct2: ; cc0c
 .bail
 	ret
 
-FreeMonsterStruct: ; cced (3:4ced)
+FreeMonsterStruct:: ; cced (3:4ced)
 	read_hl_from wCurRobotPointer
 	ld a, l
 	or h

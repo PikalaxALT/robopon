@@ -353,7 +353,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	callba_hli Func_5575d
 	xor a
 	ld [wc2fa], a
-	set_farcall_addrs_hli Func_1445e
+	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_54384)
 	ld de, Data_54384
 	ld hl, Data_54365

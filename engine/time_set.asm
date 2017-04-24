@@ -55,7 +55,7 @@ Func_52e4d: ; 52e4d (14:6e4d)
 	jp nz, Func_52f83
 	ld a, $3
 	ld [wc2f7], a
-	set_farcall_addrs_hli Func_1445e
+	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_5004e)
 	ld de, Data_5004e
 	ld hl, Data_5002f
@@ -168,7 +168,7 @@ Func_52f28: ; 52f28 (14:6f28)
 Func_52f2c: ; 52f2c (14:6f2c)
 	xor a
 	ld [wc2f7], a
-	set_farcall_addrs_hli Func_1445e
+	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_5007c)
 	ld de, Data_5007c
 	ld hl, Data_5005d
@@ -178,7 +178,7 @@ Func_52f2c: ; 52f2c (14:6f2c)
 Func_52f49: ; 52f49 (14:6f49)
 	xor a
 	ld [wc2f7], a
-	set_farcall_addrs_hli Func_1445e
+	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_500aa)
 	ld de, Data_500aa
 	ld hl, Data_5008b

@@ -7273,3 +7273,1021 @@ Func_daa40:: ; daa40
 	dr $daa40, $daa72
 
 INCLUDE "maps/enter_map.asm"
+
+SECTION "Bank 38", ROMX, BANK [$38]
+Data_e0000:
+	dr $e0000, $e09c0
+
+GFX_e09c0: INCBIN "gfx/misc/e09c0.2bpp"
+
+Data_e10c0:
+	dr $e10c0, $e1255
+
+Data_e1255: ; e1255
+	dr $e1255, $e1259
+
+Data_e1259: ; e1259
+	dr $e1259, $e127f
+
+Data_e127f: ; e127f
+	dr $e127f, $e129e
+
+Data_e129e: ; e129e
+	dr $e129e, $e12af
+
+Data_e12af: ; e12af
+	dr $e12af, $e12c0
+
+Data_e12c0: ; e12c0
+	dr $e12c0, $e1513
+
+Func_e1513:: ; e1513 (38:5513)
+	ld hl, -$86
+	add hl, sp
+	ld sp, hl
+	push bc
+	push de
+	push af
+	ld hl, $81
+	add hl, sp
+	reg16swap de, hl
+	ld hl, Data_e1255
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$7b
+	reg16swap de, hl
+	ld hl, Data_e1259
+	ld bc, $6
+	call MemCopy
+	ld hl, sp+$75
+	reg16swap de, hl
+	ld hl, Data_e127f
+	ld bc, $6
+	call MemCopy
+	ld hl, sp+$6f
+	reg16swap de, hl
+	ld hl, Data_e129e
+	ld bc, $6
+	call MemCopy
+	ld hl, sp+$6b
+	reg16swap de, hl
+	ld hl, Data_e12af
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$b
+	reg16swap de, hl
+	ld hl, Data_e12c0
+	ld bc, $60
+	call MemCopy
+	ld hl, sp+$9
+	ld [hl], $0
+	ld hl, sp+$a
+	ld [hl], $0
+	pop af
+	ld hl, sp+$4
+	ld [hl], a
+	pop de
+	ld hl, sp+$3
+	ld [hl], e
+	pop bc
+	ld hl, sp+$2
+	ld [hl], c
+	callba_hli Func_b6f2
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	call FillVisibleAreaWithBlankTile
+	set_farcall_addrs_hli Func_d9f74
+	ld hl, sp+$3
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	callba_hli AllocateMonsterStruct
+	set_farcall_addrs_hli Func_dc0a
+	ld e, $bb
+	xor a
+	call FarCall
+	ld c, $6
+	push bc
+	ld a, $2
+	push af
+	set_farcall_addrs_hli Func_7c8a
+	pop af
+	pop bc
+	read_hl_from wCurRobotPointer
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld h, c
+	ld l, a
+	ld c, $2
+	call FarCall
+	callba_hli FreeMonsterStruct
+	ld a, $2
+	ld [wc39a], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ld a, [wSystemType]
+	cp $11
+	jp z, Func_e164a
+	callba_hli Func_b65f
+Func_e164a: ; e164a (38:564a)
+	ld e, $0
+	ld hl, sp+$75
+	call Func_e1d9c
+	ld e, $0
+	ld hl, sp+$6f
+	call Func_e1d9c
+	set_farcall_addrs_hli LoadEmote
+	ld c, $0
+	ld e, $f
+	ld a, $21
+	call FarCall
+	ld a, $1
+Func_e166e: ; e166e (38:566e)
+	cp $4
+	jp nc, Func_e1685
+	ld l, a
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	inc a
+	jp Func_e166e
+
+Func_e1685: ; e1685 (38:5685)
+	xor a
+	ld hl, $81
+	add hl, sp
+	ld [hl], $0
+	ld e, $ff
+Func_e168e: ; e168e (38:568e)
+	push de
+	call NextOverworldFrame
+	call CheckButton
+	ld l, a
+	pop de
+	push hl
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	cp e
+	jp z, Func_e1733
+	ld c, $1
+Func_e16a3: ; e16a3 (38:56a3)
+	ld a, c
+	cp $4
+	jp nc, Func_e172e
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	inc a
+	cp c
+	jp nz, Func_e171c
+	ld l, c
+	ld h, $0
+	add hl, hl
+	reg16swap de, hl
+	read_hl_from wc267
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	read_hl_from wc265
+	add hl, de
+	push hl
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, wc26bEnd
+	add hl, de
+	ld [hl], a
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, wc29b
+	add hl, de
+	ld [hl], a
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	inc de
+	ld a, [de]
+	ld e, c
+	ld d, $0
+	ld hl, wc2ab
+	add hl, de
+	ld [hl], a
+	jp Func_e172a
+
+Func_e171c: ; e171c (38:571c)
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+Func_e172a: ; e172a (38:572a)
+	inc c
+	jp Func_e16a3
+
+Func_e172e: ; e172e (38:572e)
+	ld hl, $83
+	add hl, sp
+	ld e, [hl]
+Func_e1733: ; e1733 (38:5733)
+	push de
+	set_farcall_addrs_hli Func_da093
+	ld a, $1
+	call FarCall
+	callba_hli Func_d9f55
+	pop de
+	pop hl
+	ld a, l
+	and $2
+	jp z, Func_e1772
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $1
+	jp c, Func_e176f
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	dec a
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e176f: ; e176f (38:576f)
+	jp Func_e179c
+
+Func_e1772: ; e1772 (38:5772)
+	ld a, l
+	and $1
+	jp z, Func_e1790
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $2
+	jp nc, Func_e178d
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e178d: ; e178d (38:578d)
+	jp Func_e179c
+
+Func_e1790: ; e1790 (38:5790)
+	ld a, l
+	and $10
+	jp z, Func_e179c
+	call NextOverworldFrame
+	jp Func_e179f
+
+Func_e179c: ; e179c (38:579c)
+	jp Func_e168e
+
+Func_e179f: ; e179f (38:579f)
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	ld hl, $80
+	add hl, sp
+	ld [hl], a
+	callba_hli Func_9a87c
+	callba_hli Func_b6f2
+	call FillVisibleAreaWithBlankTile
+	ld a, $38
+	ld [wFarCallDestBank], a
+	ld bc, $700
+	ld de, GFX_e09c0
+	ld hl, $8900
+	call FarRequestVideoData
+	ld hl, $83
+	add hl, sp
+	ld [hl], $0
+	ld hl, $82
+	add hl, sp
+	ld [hl], $17
+	ld l, $0
+	push hl
+	ld a, $c
+	push af
+	set_farcall_addrs_hli LoadSpriteGFX
+	pop af
+	pop hl
+	ld c, a
+	ld e, l
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	ld hl, $82
+	add hl, sp
+	ld l, [hl]
+	ld h, a
+	call FarCall
+	callba_hli Func_b65f
+	call FillVisibleAreaWithBlankTile
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ld hl, $80
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$0
+	add hl, de
+	ld c, [hl]
+	ld e, $6
+	ld a, $9
+	call Func_e1bb4
+	ld hl, $80
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$0
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	reg16swap de, hl
+	ld hl, sp+$5
+	add hl, de
+	ld e, $0
+	call Func_e1d9c
+	call FillVisibleAreaWithBlankTile
+	call Func_e1c97
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+Func_e1864: ; e1864 (38:5864)
+	ld e, $0
+	ld hl, sp+$65
+	call Func_e1d9c
+	ld hl, $81
+	add hl, sp
+	ld [hl], $0
+	ld e, $0
+Func_e1873: ; e1873 (38:5873)
+	push de
+	call NextOverworldFrame
+	call CheckButton
+	ld l, a
+	pop de
+	ld a, l
+	and $4
+	jp z, Func_e189b
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $6
+	jp c, Func_e1898
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	add $fa
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e1898: ; e1898 (38:5898)
+	jp Func_e1981
+
+Func_e189b: ; e189b (38:589b)
+	ld a, l
+	and $8
+	jp z, Func_e18ba
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $6
+	jp nc, Func_e18b7
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	add $6
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e18b7: ; e18b7 (38:58b7)
+	jp Func_e1981
+
+Func_e18ba: ; e18ba (38:58ba)
+	ld a, l
+	and $2
+	jp z, Func_e18d8
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $1
+	jp c, Func_e18d5
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	dec a
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e18d5: ; e18d5 (38:58d5)
+	jp Func_e1981
+
+Func_e18d8: ; e18d8 (38:58d8)
+	ld a, l
+	and $1
+	jp z, Func_e18f6
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	cp $b
+	jp nc, Func_e18f3
+	ld hl, $81
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $81
+	add hl, sp
+	ld [hl], a
+Func_e18f3: ; e18f3 (38:58f3)
+	jp Func_e1981
+
+Func_e18f6: ; e18f6 (38:58f6)
+	ld a, l
+	and $10
+	jp z, Func_e1981
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$7f
+	ld [hl], e
+	ld hl, $80
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$0
+	add hl, de
+	ld a, [hl]
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld [hl], a
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld a, [hl]
+	cp $ff
+	jp z, Func_e197e
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld l, [hl]
+	push hl
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	ld b, $6
+	call DivideAbyB
+	add a
+	ld d, a
+	add a
+	add d
+	add $3
+	ld l, a
+	push hl
+	ld hl, $85
+	add hl, sp
+	ld a, [hl]
+	ld b, $6
+	call DivideAbyB
+	ld a, b
+	ld d, a
+	add a
+	add d
+	inc a
+	pop de
+	pop bc
+	call Func_e1bb4
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+Func_e197e: ; e197e (38:597e)
+	jp Func_e1a0b
+
+Func_e1981: ; e1981 (38:5981)
+	push de
+	set_farcall_addrs_hli Func_da835
+	xor a
+	call FarCall
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	ld b, $6
+	call DivideAbyB
+	ld a, b
+	ld d, a
+	add a
+	add d
+	inc a
+	add a
+	add a
+	add a
+	add $c
+	ld hl, $87
+	add hl, sp
+	ld [hl], a
+	ld hl, $83
+	add hl, sp
+	ld a, [hl]
+	ld b, $6
+	call DivideAbyB
+	add a
+	ld d, a
+	add a
+	add d
+	add $3
+	add a
+	add a
+	add a
+	add $10
+	ld hl, $86
+	add hl, sp
+	ld [hl], a
+	set_farcall_addrs_hli Func_da839
+	pop de
+	push de
+	ld l, e
+	ld h, $0
+	ld b, $4
+	call RightShiftHL
+	reg16swap de, hl
+	ld hl, sp+$7d
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	ld hl, $86
+	add hl, sp
+	ld e, [hl]
+	ld hl, $87
+	add hl, sp
+	ld h, [hl]
+	ld d, h
+	xor a
+	call FarCall
+	pop de
+	inc e
+	ld a, e
+	and $3f
+	ld e, a
+	push de
+	callba_hli Func_d9f55
+	pop de
+	jp Func_e1873
+
+Func_e1a0b: ; e1a0b (38:5a0b)
+	callba_hli Func_da4dc
+	callba_hli Func_d9f55
+	ld e, $1
+	ld hl, sp+$69
+	call Func_e1d9c
+	callba_hli Func_1482e
+	ld a, l
+	or h
+	jp nz, Func_e1a44
+	jp Func_e1a65
+
+Func_e1a44: ; e1a44 (38:5a44)
+	ld hl, sp+$7f
+	ld a, [hl]
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld [hl], a
+	call Func_e1c97
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	jp Func_e1864
+
+Func_e1a65: ; e1a65 (38:5a65)
+	ld hl, $81
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld a, [hl]
+	cp $14
+	jp z, Func_e1a80
+	cp $13
+	jp z, Func_e1a80
+	cp $12
+	jp nz, Func_e1a91
+Func_e1a80: ; e1a80 (38:5a80)
+	set_farcall_addrs_hli Func_b785
+	ld a, [wc782]
+	call FarCall
+Func_e1a91: ; e1a91 (38:5a91)
+	call Func_e1aa9
+	set_farcall_addrs_hli FadeInMap
+	xor a
+	call FarCall
+	ld hl, $86
+	add hl, sp
+	ld sp, hl
+	ret
+
+Func_e1aa9:: ; e1aa9 (38:5aa9)
+	push bc
+	push bc
+	push bc
+	push bc
+	callba_hli Func_9336a
+	reg16swap de, hl
+	push de
+	ld bc, $8
+	ld e, $0
+	ld hl, sp+$2
+	call FillMemory
+	ld bc, $5
+	push bc
+	set_farcall_addrs_hli Func_935a8
+	pop bc
+	push bc
+	ld hl, sp+$4
+	reg16swap de, hl
+	ld l, c
+	ld h, b
+	call FarCall
+	set_farcall_addrs_hli Func_935a8
+	pop bc
+	ld hl, sp+$2
+	reg16swap de, hl
+	ld l, c
+	ld h, b
+	inc hl
+	call FarCall
+	ld l, $0
+	pop de
+Func_e1b01: ; e1b01 (38:5b01)
+	ld a, l
+	cp $c
+	jp nc, Func_e1baf
+	push de
+	ld bc, $ff
+	push hl
+	ld e, l
+	ld d, $0
+	ld hl, wc7b1
+	add hl, de
+	ld a, [hl]
+	cp $15
+	jp z, Func_e1b24
+	cp $14
+	jp nz, Func_e1b27
+	ld bc, $5
+	jp Func_e1b27
+
+Func_e1b24: ; e1b24 (38:5b24)
+	ld bc, $6
+Func_e1b27: ; e1b27 (38:5b27)
+	pop hl
+	pop de
+	push hl
+	ld a, c
+	inc a
+	or b
+	jp z, Func_e1baa
+	push bc
+	push de
+	ld h, $0
+	ld de, $78
+	call MultiplyHLbyDE
+	reg16swap de, hl
+	push de
+	ld a, e
+	and $f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$8
+	ld [hl], e
+	pop de
+	ld l, e
+	ld h, d
+	ld b, $4
+	call RightShiftHL
+	ld a, l
+	and $f
+	ld c, a
+	ld b, $0
+	ld hl, sp+$7
+	ld [hl], c
+	ld e, d
+	ld d, $0
+	ld a, e
+	and $f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$8
+	ld [hl], e
+	pop de
+	push de
+	ld a, e
+	and $f
+	ld e, a
+	ld d, $0
+	ld hl, sp+$9
+	ld [hl], e
+	pop de
+	push de
+	reg16swap de, hl
+	ld b, $4
+	call RightShiftHL
+	ld a, l
+	and $f
+	ld c, a
+	ld b, $0
+	ld hl, sp+$a
+	ld [hl], c
+	ld hl, sp+$b
+	ld [hl], $9
+	ld hl, sp+$c
+	ld [hl], $1
+	ld hl, sp+$d
+	ld [hl], $1
+	set_farcall_addrs_hli Func_935a8
+	pop de
+	pop bc
+	push de
+	ld hl, sp+$4
+	reg16swap de, hl
+	ld l, c
+	ld h, b
+	call FarCall
+	pop de
+Func_e1baa: ; e1baa (38:5baa)
+	pop hl
+	inc l
+	jp Func_e1b01
+
+Func_e1baf: ; e1baf (38:5baf)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_e1bb4: ; e1bb4
+	dr $e1bb4, $e1c97
+
+Func_e1c97: ; e1c97
+	dr $e1c97, $e1d9c
+
+Func_e1d9c: ; e1d9c
+	dr $e1d9c, $e1e83
+
+Func_e1e83:: ; e1e83
+	dr $e1e83, $e1f2d
+
+Func_e1f2d:: ; e1f2d
+	dr $e1f2d, $e220d
+
+Func_e220d:: ; e220d
+	dr $e220d, $e26e0
+
+Func_e26e0::
+	dr $e26e0, $e2780
+
+Func_e2780:: ; e2780
+	dr $e2780, $e2807
+
+Func_e2807:: ; e2807
+	dr $e2807, $e2829
+
+Func_e2829:: ; e2829
+	dr $e2829, $e2bf8
+
+Func_e2bf8:: ; e2bf8
+	dr $e2bf8, $e2c29
+
+Func_e2c29:: ; e2c29
+	dr $e2c29, $e2cc7
+
+Func_e2cc7:: ; e2cc7
+	dr $e2cc7, $e3507
+
+Func_e3507:: ; e3507
+	dr $e3507, $e3619
+
+Func_e3619:: ; e3619
+	dr $e3619, $e3714
+
+Func_e3714:: ; e3714 (38:7714)
+	push hl
+	push bc
+	push bc
+	push bc
+	push bc
+	push de
+	read_hl_from_sp_plus $c
+	ld e, h
+	ld hl, sp+$8
+	ld [hl], e
+	read_hl_from_sp_plus $c
+	pop de
+	push hl
+	ld hl, sp+$7
+	ld [hl], d
+	ld hl, sp+$6
+	ld [hl], b
+	ld a, c
+	pop hl
+	push de
+	push af
+	ld e, l
+	ld d, $0
+	ld hl, wMapWidth
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	reg16swap de, hl
+	read_hl_from wBlockdataPointer
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$a
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	call WriteHLToSPPlus8
+	pop af
+	ld e, a
+	ld d, $0
+	ld hl, wMapWidth
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	reg16swap de, hl
+	read_hl_from wBlockdataPointer
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	call WriteHLToSPPlus4
+	xor a
+	pop de
+.outer
+	cp e
+	jp nc, .quit
+	push de
+	push af
+	ld c, $0
+.inner
+	ld a, c
+	ld hl, sp+$9
+	cp [hl]
+	jp nc, .next
+	call GetHLAtSPPlus8
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld a, [hl]
+	call GetHLAtSPPlus6
+	ld e, c
+	ld d, $0
+	add hl, de
+	ld [hl], a
+	inc c
+	jp .inner
+
+.next
+	call GetHLAtSPPlus8
+	ld a, [wMapWidth]
+	ld e, a
+	ld d, $0
+	add hl, de
+	call WriteHLToSPPlus8
+	call GetHLAtSPPlus6
+	ld a, [wMapWidth]
+	ld e, a
+	ld d, $0
+	add hl, de
+	call WriteHLToSPPlus6
+	pop af
+	inc a
+	pop de
+	jp .outer
+
+.quit
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret

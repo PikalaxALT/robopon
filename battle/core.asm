@@ -300,7 +300,7 @@ Func_234c2: ; 234c2 (8:74c2)
 	xor a
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_1445e
+	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_20a54)
 	ld de, Data_20a54
 	ld hl, Data_20a63
@@ -356,7 +356,7 @@ Func_2354e: ; 2354e (8:754e)
 	jp Func_2356f
 
 Func_23557: ; 23557 (8:7557)
-	set_farcall_addrs_hli Func_1445e
+	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_20a82)
 	ld de, Data_20a82
 	ld hl, Data_20a91

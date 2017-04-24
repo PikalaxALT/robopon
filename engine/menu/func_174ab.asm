@@ -1,4 +1,31 @@
 HandleMenu: ; 174ab (5:74ab)
+; hl is the menu primary header.
+; A 15-byte secondary header is loaded on the stack.  This header has not yet
+; been deciphered.
+
+; Menu primary headers are 31-byte structures with the following containers.
+; First two bytes indicate the x and y coordinates of the top left corner.
+; Next two bytes indicate the width and height of the window.
+; If ???? is 0, the screen area behind this window is backed up to a
+; dynamically-allocated location at the start and restored on exit.
+; Each remaining three-byte object is a reactor function (bank, addr).
+; If addr is 0, the reactor is undefined, and therefore it is not called.
+; The reactors are identified below in the order in which they appear in the
+; header:
+; - Refresh
+; - Exit
+; - Up/Down
+; - A
+; - B
+; - Right
+; - Left
+; - Loop
+; - Select
+; Menu reactors can return one of the following codes:
+; $4000 - Loop back without refresh
+; $8000 - Loop back with refresh
+; $ffff - Exit
+
 	push hl
 	push bc
 	push bc
@@ -52,7 +79,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, .skip_17551
+	jp nz, .trigger_enter_callback
 
 	push bc
 	ld hl, sp+$4
@@ -124,7 +151,7 @@ HandleMenu: ; 174ab (5:74ab)
 	call BackUpAttrMapRectangle
 	pop bc
 
-.skip_17551
+.trigger_enter_callback
 	pop hl
 	push hl
 	ld de, $5
@@ -132,7 +159,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp z, .skip_1757e
+	jp z, .skip_enter_callback
 
 	pop hl
 	push hl
@@ -157,7 +184,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld c, l
 	ld b, h
 
-.skip_1757e
+.skip_enter_callback
 	push bc
 	ld hl, sp+$4
 	ld a, [hl]
@@ -468,14 +495,14 @@ HandleMenu: ; 174ab (5:74ab)
 .next
 	ld hl, -1
 	ld a, b
-	sub $80
+	sub $8000 / $100
 	or c
 	jp nz, .asm_1778d
-	jp .skip_17551
+	jp .trigger_enter_callback
 
 .asm_1778d
 	ld a, b
-	sub $40
+	sub $4000 / $100
 	or c
 	jp z, .jp_to_loop
 	jp .done
@@ -491,7 +518,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp z, .skip_far_call
+	jp z, .no_exit_callback
 	pop hl
 	push hl
 	ld de, $7
@@ -511,7 +538,7 @@ HandleMenu: ; 174ab (5:74ab)
 	call FarCall
 	ld c, l
 	ld b, h
-.skip_far_call
+.no_exit_callback
 	push bc
 	call GetHLAtSPPlus10
 	ld de, $f

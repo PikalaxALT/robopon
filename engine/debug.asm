@@ -682,13 +682,13 @@ Func_bc41b: ; bc41b (2f:441b)
 	pop bc
 	ret
 
-Func_bc472:
+Debug_MenuWithSecondaryHeader:
 	push hl
 	push de
-	set_farcall_addrs_hli Func_1445e
+	set_farcall_addrs_hli MenuWithSecondaryHeader
 	pop de
 	pop hl
-	ld c, $2f
+	ld c, BANK(Debug_MenuWithSecondaryHeader)
 	jp FarCall
 
 Func_bc486:
@@ -2727,7 +2727,7 @@ Func_bd2c7: ; bd2c7 (2f:52c7)
 	push hl
 	call GetHLAtSPPlus6
 	pop de
-	call Func_bc472
+	call Debug_MenuWithSecondaryHeader
 	reg16swap de, hl
 	ld a, e
 	cp $3
@@ -2776,7 +2776,7 @@ Func_bd2c7: ; bd2c7 (2f:52c7)
 	push hl
 	call GetHLAtSPPlus6
 	pop de
-	call Func_bc472
+	call Debug_MenuWithSecondaryHeader
 	reg16swap de, hl
 	jp Func_bd2c7
 
@@ -2828,7 +2828,7 @@ Func_bd37b: ; bd37b (2f:537b)
 	push hl
 	call GetHLAtSPPlus6
 	pop de
-	call Func_bc472
+	call Debug_MenuWithSecondaryHeader
 	reg16swap de, hl
 	ld a, e
 	and d
@@ -2922,7 +2922,7 @@ Func_bd424: ; bd424 (2f:5424)
 	push hl
 	call GetHLAtSPPlus6
 	pop de
-	call Func_bc472
+	call Debug_MenuWithSecondaryHeader
 	reg16swap de, hl
 	ld a, e
 	and d
@@ -3159,7 +3159,7 @@ Func_bd66d: ; bd66d (2f:566d)
 	push bc
 	ld e, c
 	ld d, b
-	call Func_bc472
+	call Debug_MenuWithSecondaryHeader
 	reg16swap de, hl
 	pop bc
 	pop hl
@@ -6534,7 +6534,7 @@ Func_bf297: ; bf297 (2f:7297)
 	reg16swap de, hl
 	ld l, c
 	ld h, b
-	call Func_bc472
+	call Debug_MenuWithSecondaryHeader
 	pop bc
 	ld a, l
 	cp $e
