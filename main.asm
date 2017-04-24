@@ -162,7 +162,8 @@ LoadFontGFX: ; 410c (1:410c)
 	ret
 
 GFX_4122: INCBIN "gfx/font/4122.2bpp", $0, $7d0
-GFX_48f2: INCBIN "gfx/font/4122.2bpp", $7d0, $f0
+GFX_48f2: INCBIN "gfx/font/4122.2bpp", $7d0, $30
+GFX_4922: INCBIN "gfx/font/4122.2bpp", $800, $c0
 GFX_49e2: INCBIN "gfx/font/4122.2bpp", $8c0, $20
 GFX_4a02: INCBIN "gfx/font/4122.2bpp", $8e0, $10
 GFX_4a12:: INCBIN "gfx/font/4122.2bpp", $8f0, $80
@@ -107446,6 +107447,7 @@ Func_fbfc9: ; fbfc9 (3e:7fc9)
 	ret
 
 SECTION "Bank 3f", ROMX, BANK [$3f]
+INCLUDE "charmap2.asm"
 Func_fc000:
 	ret
 
@@ -109686,18 +109688,1531 @@ Func_fd1e9: ; fd1e9 (3f:51e9)
 	ei
 	ret
 
-Func_fd213:: ; fd213
-IF DEF(SUN)
-	dr $fd213, $fd314
+Func_fd213:: ; fd213 (3f:5213)
+	ld a, $9
+	ld [wNextVBlankFlags], a
+	call WaitVideoTransfer
+	call Func_fccaa
+	call WaitVideoTransfer
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fd231
+Func_fd229: ; fd229 (3f:5229)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_fd229
+Func_fd231: ; fd231 (3f:5231)
+	call NextOverworldFrame
+	ld a, [rLCDC]
+	ld [wLCDC], a
+	push af
+	set_farcall_addrs_hli Func_6183
+	pop af
+	and $7f
+	call FarCall
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fd26a
+	ld a, [rVBK]
+	or $1
+	ld [rVBK], a
+	ld bc, $800
+	ld e, $0
+	hlbgcoord 0, 0
+	call FillMemory
+	ld a, [rVBK]
+	and $fe
+	ld [rVBK], a
+Func_fd26a: ; fd26a (3f:526a)
+	ld bc, $800
+	ld e, $8f
+	hlbgcoord 0, 0
+	call FillMemory
+	ld a, BANK(GFX_4122)
+	ld [wFarCallDestBank], a
+	ld bc, $800
+	ld de, GFX_4122
+	ld hl, $9000
+	call FarCopyVideoData
+	ld bc, $100
+	ld de, GFX_4922
+	ld hl, $8800
+	call FarCopyVideoData
+	di
+	ld a, [rIE]
+	and $fd
+	ld [rIE], a
+	ld hl, LCDInterrupt
+	write_hl_to wLCD + 1
+	ei
+	ld a, $81
+	ld [rLCDC], a
+	ld [wLCDC], a
+	xor a
+	ld [wc2cd], a
+	ld a, [wNextVBlankFlags]
+	or $9
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	xor a
+	ld [wSCX2], a
+	ld [wSCX], a
+	xor a
+	ld [wSCY2], a
+	ld [wSCY], a
+	ld a, [wNextVBlankFlags]
+	or $10
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	call ClearSprites
+	ld a, [wNextVBlankFlags]
+	or $2
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	call FillVisibleAreaWithBlankTile
+	callba_hli FreeMonsterStruct
+	xor a
+	ld [wJoyHeld], a
+	set_farcall_addrs_hli Func_61424
+	ld c, $0
+	ld e, $0
+	xor a
+	call FarCall
+	xor a
+	ld [wc2fa], a
+	ret
 
-Func_fd314: ; fd314
-	dr $fd314, $fdf13
+Data_fd30c:
+IF DEF(SUN)
+	dr $fd30c, $fd314
+ENDC
+IF DEF(STAR)
+	dr $fd30a, $fd312
+ENDC
+
+Func_fd314: ; fd314 (3f:5314)
+	set_farcall_addrs_hli InitAllocatableMemoryBlocks
+	ld de, $900
+	ld hl, wAllocatableBlock0
+	call FarCall
+	callba_hli AllocateMonsterStruct
+	ld a, $3
+	ld [wc2fa], a
+	xor a
+	ld [wc39a], a
+	xor a
+	ld [wVBlankTransferFlags], a
+	xor a
+	ld [wc92b], a
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fd394
+	ld bc, $80
+	ld de, Data_fc001
+	ld hl, wCGB_BGPalsBuffer
+	call CopyFromDEtoHL
+	ld bc, $8
+	ld de, Data_fd30c
+	ld hl, wCGB_BGPalsBuffer + 8
+	call CopyFromDEtoHL
+	ld bc, $80
+	read_hl_from wCurRobotPointer
+	ld de, $1ca
+	add hl, de
+	ld de, wCGB_BGPalsBuffer
+	call CopyFromDEtoHL
+	call WaitVideoTransfer
+Func_fd37c: ; fd37c (3f:537c)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_fd37c
+	ld a, [wNextVBlankFlags]
+	or $40
+	ld [wNextVBlankFlags], a
+Func_fd38c: ; fd38c (3f:538c)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_fd38c
+Func_fd394: ; fd394 (3f:5394)
+	callba_hli Func_da4dc
+	call FillVisibleAreaWithBlankTile
+	set_farcall_addrs_hli Func_c7bd0
+	xor a
+	call FarCall
+	set_farcall_addrs_hli Func_61424
+	ld c, $0
+	ld e, $0
+	xor a
+	call FarCall
+	call Func_fd03d
+	call Func_fcf0b
+	call Func_fd213
+	ret
+
+Text_fd3d1:
+	db "プロデューサー", $00
+
+Text_fd3d9:
+	db "えんどう ひでとし", $00
+
+Pointers_fd3e3:
+	dw Text_fd3d1
+	dw Text_fd3d9
+	dw $0000
+
+Text_fd3e9:
+	db "プロデューサー", $00
+
+Text_fd3f1:
+	db "こばやし まさき", $00
+
+Pointers_fd3fa:
+	dw Text_fd3e9
+	dw Text_fd3f1
+	dw $0000
+
+Text_fd400:
+	db "プロダクトマネージャー", $00
+
+Text_fd40c:
+	db " わけ まさのり", $00
+
+Text_fd415:
+	db " ", $00
+
+Text_fd417:
+	db " ", $00
+
+Text_fd419:
+	db " ", $00
+
+Text_fd41b:
+	db " ", $00
+
+Pointers_fd41d:
+	dw Text_fd400
+	dw Text_fd40c
+	dw Text_fd415
+	dw Text_fd417
+	dw Text_fd419
+	dw Text_fd41b
+	dw $0000
+
+Text_fd42b:
+	db "サブプロダクトマネージャー", $00
+
+Text_fd439:
+	db "あおやま えいじ", $00
+
+Text_fd442:
+	db " ", $00
+
+Text_fd444:
+	db " ", $00
+
+Text_fd446:
+	db " ", $00
+
+Text_fd448:
+	db " ", $00
+
+Pointers_fd44a:
+	dw Text_fd42b
+	dw Text_fd439
+	dw Text_fd442
+	dw Text_fd444
+	dw Text_fd446
+	dw Text_fd448
+	dw $0000
+
+Text_fd458:
+	db "せいさくたんとう", $00
+
+Text_fd461:
+	db "おざき ただし", $00
+
+Pointers_fd469:
+	dw Text_fd458
+	dw Text_fd461
+	dw $0000
+
+Text_fd46f:
+	db "サウンド プロダクツ", $00
+
+Text_fd47a:
+	db "スタジオ グイド", $00
+
+Pointers_fd483:
+	dw Text_fd46f
+	dw Text_fd47a
+	dw $0000
+
+Text_fd489:
+	db "サウンドプロデュース", $00
+
+Text_fd494:
+	db "おおつき かるた", $00
+
+Text_fd49d:
+	db "くどう ともり", $00
+
+Text_fd4a5:
+	db "やまなか ちこ", $00
+
+Pointers_fd4ad:
+	dw Text_fd489
+	dw Text_fd494
+	dw Text_fd49d
+	dw Text_fd4a5
+	dw $0000
+
+Text_fd4b7:
+	db "きかくサポート", $00
+
+Text_fd4bf:
+	db "おおはし しげやす", $00
+
+Text_fd4c9:
+	db "いえなが やまと", $00
+
+Text_fd4d2:
+	db "いしかわ たかし", $00
+
+Pointers_fd4db:
+	dw Text_fd4b7
+	dw Text_fd4bf
+	dw Text_fd4c9
+	dw Text_fd4d2
+	dw $0000
+
+Text_fd4e5:
+	db "プログラム", $00
+
+Text_fd4eb:
+	db "まきしま かずゆき", $00
+
+Text_fd4f5:
+	db "おおで たかのり", $00
+
+Text_fd4fe:
+	db "やじま ひでたか", $00
+
+Text_fd507:
+	db "さえき のりゆき", $00
+
+Pointers_fd510:
+	dw Text_fd4e5
+	dw Text_fd4eb
+	dw Text_fd4f5
+	dw Text_fd4fe
+	dw Text_fd507
+	dw $0000
+
+Text_fd51c:
+	db "グラフィック", $00
+
+Text_fd523:
+	db "ほしの なつこ", $00
+
+Text_fd52b:
+	db "くまい じゅんいち", $00
+
+Pointers_fd535:
+	dw Text_fd51c
+	dw Text_fd523
+	dw Text_fd52b
+	dw $0000
+
+Text_fd53d:
+	db "スペシャルサンクス", $00
+
+Text_fd547:
+	db "なかもと しんいち", $00
+
+Text_fd551:
+	db "おかだ せつお", $00
+
+Text_fd559:
+	db "もとさこ よしお", $00
+
+Text_fd562:
+	db "おおた ひろゆき", $00
+
+Text_fd56b:
+	db "さとう とおる", $00
+
+Pointers_fd573:
+	dw Text_fd53d
+	dw Text_fd547
+	dw Text_fd551
+	dw Text_fd559
+	dw Text_fd562
+	dw Text_fd56b
+	dw $0000
+
+Text_fd581:
+	db "スペシャルサンクス", $00
+
+Text_fd58b:
+	db "みつい けいすけ", $00
+
+Text_fd594:
+	db "たかはし しょうた", $00
+
+Text_fd59e:
+	db "はんだ ゆきこ", $00
+
+Text_fd5a6:
+	db "いとう たいじ", $00
+
+Pointers_fd5ae:
+	dw Text_fd581
+	dw Text_fd58b
+	dw Text_fd594
+	dw Text_fd59e
+	dw Text_fd5a6
+	dw $0000
+
+Text_fd5ba:
+	db "スペシャルサンクス", $00
+
+Text_fd5c4:
+	db "あおき コブた", $00
+
+Text_fd5cc:
+	db "あきたか みか", $00
+
+Text_fd5d4:
+	db "いい りつこ", $00
+
+Text_fd5db:
+	db "あらき ひろみ", $00
+
+Text_fd5e3:
+	db "いぶ としろう", $00
+
+Pointers_fd5eb:
+	dw Text_fd5ba
+	dw Text_fd5c4
+	dw Text_fd5cc
+	dw Text_fd5d4
+	dw Text_fd5db
+	dw Text_fd5e3
+	dw $0000
+
+Text_fd5f9:
+	db "スペシャルサンクス", $00
+
+Text_fd603:
+	db "はすぬま ひさお", $00
+
+Text_fd60c:
+	db "はすぬま みつお", $00
+
+Text_fd615:
+	db "くりもと ひろし", $00
+
+Text_fd61e:
+	db "よしはら りえ", $00
+
+Text_fd626:
+	db "おのでら のりひろ", $00
+
+Text_fd630:
+	db "といだ たかし", $00
+
+Pointers_fd638:
+	dw Text_fd5f9
+	dw Text_fd603
+	dw Text_fd60c
+	dw Text_fd615
+	dw Text_fd61e
+	dw Text_fd626
+	dw Text_fd630
+	dw $0000
+
+Text_fd648:
+	db "スペシャルサンクス", $00
+
+Text_fd652:
+	db "コミックボンボンへんしゅうぶ", $00
+
+Text_fd661:
+	db " ", $00
+
+Text_fd663:
+	db " ", $00
+
+Text_fd665:
+	db " ", $00
+
+Text_fd667:
+	db " ", $00
+
+Text_fd669:
+	db " ", $00
+
+Pointers_fd66b:
+	dw Text_fd648
+	dw Text_fd652
+	dw Text_fd661
+	dw Text_fd663
+	dw Text_fd665
+	dw Text_fd667
+	dw Text_fd669
+	dw $0000
+
+Text_fd67b:
+	db "デザインさいようしゃ", $00
+
+Text_fd686:
+	db "いわした のりふみ", $00
+
+Pointers_fd690:
+	dw Text_fd67b
+	dw Text_fd686
+	dw $0000
+
+Text_fd696:
+	db "デザインさいようしゃ", $00
+
+Text_fd6a1:
+	db "かきもと だいじろう", $00
+
+Pointers_fd6ac:
+	dw Text_fd696
+	dw Text_fd6a1
+	dw $0000
+
+Text_fd6b2:
+	db "ゲームデザイン", $00
+
+Text_fd6ba:
+	db "ますだ たつお", $00
+
+Pointers_fd6c2:
+	dw Text_fd6b2
+	dw Text_fd6ba
+	dw $0000
+
+Text_fd6c8:
+	db "キャラクターデザイン", $00
+
+Text_fd6d3:
+	db "みずたに けんのすけ", $00
+
+Pointers_fd6de:
+	dw Text_fd6c8
+	dw Text_fd6d3
+	dw $0000
+
+Text_fd6e4:
+	db "ゲームディレクター", $00
+
+Text_fd6ee:
+	db "いい しゅんいち", $00
+
+Pointers_fd6f7:
+	dw Text_fd6e4
+	dw Text_fd6ee
+	dw $0000
+
+Text_fd6fd:
+	db "トータルデザイン", $00
+
+Text_fd706:
+	db "しもだ あつし", $00
+
+Pointers_fd70e:
+	dw Text_fd6fd
+	dw Text_fd706
+	dw $0000
+
+Pointers_fd714:
+	dw Pointers_fd3e3
+	dw Pointers_fd3fa
+	dw Pointers_fd41d
+	dw Pointers_fd44a
+	dw Pointers_fd469
+	dw Pointers_fd483
+	dw Pointers_fd4ad
+	dw Pointers_fd4db
+	dw Pointers_fd510
+	dw Pointers_fd535
+	dw Pointers_fd573
+	dw Pointers_fd5ae
+	dw Pointers_fd5eb
+	dw Pointers_fd638
+	dw Pointers_fd66b
+	dw Pointers_fd690
+	dw Pointers_fd6ac
+	dw Pointers_fd6c2
+	dw Pointers_fd6de
+	dw Pointers_fd6f7
+	dw Pointers_fd70e
+
+IF DEF(SUN)
+SECTION "Bank 3f, 2", ROMX [$573e], BANK [$3f]
+ENDC
+IF DEF(STAR)
+SECTION "Bank 3f, 2", ROMX [$573c], BANK [$3f]
+ENDC
+INCLUDE "charmap.asm"
+Func_fd73e:
+	ret
+
+Func_fd73f:
+	ret
+
+Data_fd740:
+	db $16, $04, $06, $00
+
+Data_fd744:
+	dw $18
+	
+Func_fd746:
+	push bc
+	push bc
+	push bc
+	ld hl, sp+$2
+	reg16swap de, hl
+	ld hl, Data_fd740
+	ld bc, $4
+	call MemCopy
+	read_hl_from Data_fd744
+	pop de
+	push hl
+	set_farcall_addrs_hli Func_f723
+	ld hl, sp+$2
+	call FarCall
+	set_farcall_addrs_hli Func_f723
+	ld hl, sp+$0
+	call FarCall
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Data_fd783:
+IF DEF(SUN)
+	dr $fd783, $fd787
+ENDC
+IF DEF(STAR)
+	dr $fd781, $fd785
+ENDC
+
+Func_fd787: ; fd787 (3f:5787)
+	push bc
+	push bc
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, Data_fd783
+	ld bc, $4
+	call MemCopy
+	set_farcall_addrs_hli Func_f723
+	ld hl, sp+$0
+	call FarCall
+	pop bc
+	pop bc
+	ret
+
+Func_fd7ab: ; fd7ab (3f:57ab)
+	set_farcall_addrs_hli Func_667d
+	ld bc, $8f02
+	ld de, $1311
+	ld hl, $0
+	call FarCall
+	set_farcall_addrs_hli Func_667d
+	ld bc, $103
+	ld de, $1311
+	ld hl, $0
+	call FarCall
+	ld a, $1
+	ld [wc39a], a
+	ret
+
+Func_fd7df: ; fd7df (3f:57df)
+	ret
+
+Func_fd7e0: ; fd7e0 (3f:57e0)
+	add sp, -$3e
+	push de
+	push af
+	call Func_fd7ab
+	pop af
+	or a
+	jp nz, Func_fd7f3
+	ld hl, sp+$3
+	ld [hl], $b
+	jp Func_fd7f7
+
+Func_fd7f3: ; fd7f3 (3f:57f3)
+	ld hl, sp+$3
+	ld [hl], $1
+Func_fd7f7: ; fd7f7 (3f:57f7)
+	ld c, $0
+	pop de
+Func_fd7fa: ; fd7fa (3f:57fa)
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_fd809
+	inc c
+	jp Func_fd7fa
+
+Func_fd809: ; fd809 (3f:5809)
+	push de
+	ld a, c
+	add a
+	ld l, a
+	ld a, $12
+	sub l
+	ld b, $2
+	call DivideAbyB
+	ld hl, sp+$2
+	ld [hl], a
+	ld c, $0
+	pop de
+Func_fd81b: ; fd81b (3f:581b)
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_fd84a
+	push de
+	push bc
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call FindFirstNonzero
+	ld e, l
+	ld hl, sp+$5
+	ld a, [hl]
+	add e
+	cp $13
+	jp c, Func_fd844
+	ld a, $13
+	sub e
+	ld hl, sp+$5
+	ld [hl], a
+Func_fd844: ; fd844 (3f:5844)
+	pop bc
+	inc c
+	pop de
+	jp Func_fd81b
+
+Func_fd84a: ; fd84a (3f:584a)
+	ld l, e
+	ld h, d
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_fd884
+	push de
+	ld hl, sp+$2
+	ld e, [hl]
+	ld hl, sp+$3
+	ld a, [hl]
+	call SetStringStartState
+	ld a, $3f
+	ld [wFarCallDestBank], a
+	pop de
+	push de
+	reg16swap de, hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$4
+	call LiteralStringInTree
+	ld hl, sp+$4
+	push hl
+	call PlaceString
+	pop bc
+	pop de
+	inc de
+	inc de
+	ld hl, sp+$0
+	ld a, [hl]
+	add $2
+	ld hl, sp+$0
+	ld [hl], a
+	jp Func_fd84a
+
+Func_fd884: ; fd884 (3f:5884)
+	add sp, $3e
+	ret
+
+Data_fd887:
+IF DEF(SUN)
+	dr $fd887, $fd894
+ENDC
+IF DEF(STAR)
+	dr $fd885, $fd892
+ENDC
+
+Func_fd894: ; fd894 (3f:5894)
+	add sp, -$e
+	push af
+	push de
+	ld hl, sp+$4
+	reg16swap de, hl
+	ld hl, Data_fd887
+	ld bc, $d
+	call MemCopy
+	set_farcall_addrs_hli Func_dc0a
+	pop de
+	pop af
+	push af
+	call FarCall
+	pop af
+	push af
+	read_hl_from wCurRobotPointer
+	ld de, $b
+	add hl, de
+	ld [hl], a
+	set_farcall_addrs_hli Func_61424
+	pop af
+	or a
+	jp nz, Func_fd8e0
+	ld c, $1
+	ld e, $1
+	ld a, $2
+	call FarCall
+	jp Func_fd8e9
+
+Func_fd8e0: ; fd8e0 (3f:58e0)
+	ld c, $1
+	ld e, $3
+	ld a, $1
+	call FarCall
+Func_fd8e9: ; fd8e9 (3f:58e9)
+	set_farcall_addrs_hli Func_f723
+	ld hl, sp+$0
+	call FarCall
+	add sp, $e
+	ret
+
+Func_fd8fc: ; fd8fc (3f:58fc)
+	set_farcall_addrs_hli Func_c7bd0
+	xor a
+	call FarCall
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_fd91b
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_fd92e
+Func_fd91b: ; fd91b (3f:591b)
+	set_farcall_addrs_hli Func_61424
+	ld c, $0
+	ld e, $0
+	xor a
+	call FarCall
+Func_fd92e: ; fd92e (3f:592e)
+	call Func_fd746
+	ld hl, wSCY
+	ld a, [wc2cd]
+	ld e, a
+	ld d, $0
+	ld a, e
+	xor $1
+	ld e, a
+	add hl, de
+	ld [hl], $0
+	ld c, [hl]
+	ld hl, wSCX
+	ld a, [wc2cd]
+	ld e, a
+	ld d, $0
+	ld a, e
+	xor $1
+	ld e, a
+	add hl, de
+	ld [hl], c
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	ld de, wSCY
+	add hl, de
+	ld [hl], c
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	ld de, wSCX
+	add hl, de
+	ld [hl], c
+	ld a, [wNextVBlankFlags]
+	or $10
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	call ClearSprites
+	ld a, [wLCDC]
+	or $6
+	ld [wLCDC], a
+	ld a, [wNextVBlankFlags]
+	or $6
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	ret
+
+Func_fd989:
+	push hl
+	push bc
+	push de
+	ld hl, sp+$2
+	ld [hl], $0
+	xor a
+	call Func_fd8fc
+	ld de, Pointers_fd3e3
+	xor a
+	call Func_fd7e0
+	set_farcall_addrs_hli Func_dc0a
+	call GetHLAtSPPlus6
+	ld a, [hl]
+	inc hl
+	call WriteHLToSPPlus6
+	ld e, a
+	ld hl, sp+$2
+	ld a, [hl]
+	call FarCall
+	set_farcall_addrs_hli Func_7c8a
+	ld c, $2
+	read_hl_from wCurRobotPointer
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$2
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	reg16swap de, hl
+	ld hl, $105
+	call FarCall
+	ld a, [wc2cd]
+	xor $1
+	ld [wc2cd], a
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $0
+	ld de, $1311
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fda3e
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	or $1
+	ld [rVBK], a
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $12
+	ld de, $1323
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	and $fe
+	ld [rVBK], a
+Func_fda3e: ; fda3e (3f:5a3e)
+	call WaitVideoTransfer
+	call Func_fc756
+	ld a, [wNextVBlankFlags]
+	or $4
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fda5b
+	xor a
+	ld [wc2e8], a
+Func_fda5b: ; fda5b (3f:5a5b)
+	set_farcall_addrs_hli Func_613fc
+	read_hl_from wCurRobotPointer
+	ld de, $1c8
+	add hl, de
+	ld a, [hl]
+	read_hl_from wCurRobotPointer
+	ld de, $1c9
+	add hl, de
+	ld e, [hl]
+	call FarCall
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fdaad
+	ld bc, $80
+	read_hl_from wCurRobotPointer
+	ld de, $1ca
+	add hl, de
+	ld de, wCGB_BGPalsBuffer
+	call CopyFromDEtoHL
+	callba_hli Func_f233
+	ld a, $1
+	ld [wc2e8], a
+	jp Func_fdac1
+
+Func_fdaad: ; fdaad (3f:5aad)
+	set_farcall_addrs_hli Func_61424
+	ld c, $0
+	ld e, $0
+	ld a, $2
+	call FarCall
+Func_fdac1: ; fdac1 (3f:5ac1)
+	call Func_fd787
+	xor a
+	ld [wc2fa], a
+	call Func_fd7df
+	xor a
+Func_fdacc: ; fdacc (3f:5acc)
+	cp $78
+	jp nc, Func_fdada
+	push af
+	call NextOverworldFrame
+	pop af
+	inc a
+	jp Func_fdacc
+
+Func_fdada: ; fdada (3f:5ada)
+	ld l, $1
+	ld c, $1
+	pop de
+Func_fdadf: ; fdadf (3f:5adf)
+	ld a, c
+	cp e
+	jp nc, Func_fdb85
+	push de
+	push bc
+	push hl
+	ld a, [wc2cd]
+	xor $1
+	ld [wc2cd], a
+	ld hl, sp+$6
+	ld a, [hl]
+	xor $1
+	ld hl, sp+$6
+	ld [hl], a
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_fd714
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$6
+	ld a, [hl]
+	call Func_fd7e0
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $0
+	ld de, $1311
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fdb5a
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	or $1
+	ld [rVBK], a
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $12
+	ld de, $1323
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	and $fe
+	ld [rVBK], a
+Func_fdb5a: ; fdb5a (3f:5b5a)
+	call WaitVideoTransfer
+	call Func_fc756
+	ld a, [wNextVBlankFlags]
+	or $4
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	pop hl
+	push hl
+	ld c, l
+	call GetHLAtSPPlus10
+	ld a, [hl]
+	inc hl
+	call WriteHLToSPPlus10
+	ld e, a
+	ld hl, sp+$6
+	ld a, [hl]
+	call Func_fd894
+	pop hl
+	pop bc
+	inc c
+	inc l
+	pop de
+	jp Func_fdadf
+
+Func_fdb85: ; fdb85 (3f:5b85)
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_fdb95
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_fdba8
+Func_fdb95: ; fdb95 (3f:5b95)
+	set_farcall_addrs_hli Func_61424
+	ld c, $0
+	ld e, $0
+	xor a
+	call FarCall
+Func_fdba8: ; fdba8 (3f:5ba8)
+	call Func_fd746
+	call FillVisibleAreaWithBlankTile
+	ld a, [wNextVBlankFlags]
+	and $7f
+	ld [wNextVBlankFlags], a
+	xor a
+	ld [wc2e8], a
+	call Func_fc092
+	xor a
+	ld [wOBP1], a
+	ld [wOBP0], a
+	ld [wBGP], a
+	ld a, [wNextVBlankFlags]
+	or $20
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	ld a, [wLCDC]
+	and $fd
+	ld [wLCDC], a
+	ld a, [wNextVBlankFlags]
+	or $4
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	pop bc
+	pop bc
+	ret
+
+Func_fdbe8
+	push hl
+	push de
+	push bc
+	call Func_fd8fc
+	pop bc
+	push bc
+	ld a, c
+	ld hl, sp+$8
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_fd714
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	call Func_fd7e0
+	ld hl, sp+$8
+	ld a, [hl]
+	inc a
+	ld hl, sp+$8
+	ld [hl], a
+	set_farcall_addrs_hli Func_dc0a
+	pop bc
+	push bc
+	call GetHLAtSPPlus6
+	ld a, [hl]
+	inc hl
+	call WriteHLToSPPlus6
+	ld e, a
+	ld a, c
+	call FarCall
+	set_farcall_addrs_hli Func_7c8a
+	pop bc
+	push bc
+	read_hl_from wCurRobotPointer
+	ld de, $18
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	push hl
+	inc c
+	dec c
+	jp nz, Func_fdc51
+	ld hl, $0
+	jp Func_fdc54
+
+Func_fdc51: ; fdc51 (3f:5c51)
+	ld hl, $b
+Func_fdc54: ; fdc54 (3f:5c54)
+	ld h, l
+	ld l, $0
+	ld de, $5
+	add hl, de
+	pop de
+	ld c, $2
+	call FarCall
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $0
+	ld de, $1311
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fdcb3
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	or $1
+	ld [rVBK], a
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $12
+	ld de, $1323
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	and $fe
+	ld [rVBK], a
+Func_fdcb3: ; fdcb3 (3f:5cb3)
+	call WaitVideoTransfer
+	call Func_fc756
+	ld a, [wNextVBlankFlags]
+	or $4
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fdcd0
+	xor a
+	ld [wc2e8], a
+Func_fdcd0: ; fdcd0 (3f:5cd0)
+	set_farcall_addrs_hli Func_613fc
+	read_hl_from wCurRobotPointer
+	ld de, $1c8
+	add hl, de
+	ld a, [hl]
+	read_hl_from wCurRobotPointer
+	ld de, $1c9
+	add hl, de
+	ld e, [hl]
+	call FarCall
+	pop bc
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fdd25
+	push bc
+	ld bc, $80
+	read_hl_from wCurRobotPointer
+	ld de, $1ca
+	add hl, de
+	ld de, wCGB_BGPalsBuffer
+	call CopyFromDEtoHL
+	callba_hli Func_f233
+	ld a, $1
+	ld [wc2e8], a
+	pop bc
+	jp Func_fdd4f
+
+Func_fdd25: ; fdd25 (3f:5d25)
+	push bc
+	set_farcall_addrs_hli Func_61424
+	pop bc
+	inc c
+	dec c
+	jp nz, Func_fdd45
+	push bc
+	ld c, $0
+	ld e, $0
+	ld a, $2
+	call FarCall
+	pop bc
+	jp Func_fdd4f
+
+Func_fdd45: ; fdd45 (3f:5d45)
+	push bc
+	ld c, $0
+	ld e, $3
+	xor a
+	call FarCall
+	pop bc
+Func_fdd4f: ; fdd4f (3f:5d4f)
+	push bc
+	call Func_fd787
+	xor a
+	ld [wc2fa], a
+	call Func_fd7df
+	xor a
+Func_fdd5b: ; fdd5b (3f:5d5b)
+	cp $78
+	jp nc, Func_fdd69
+	push af
+	call NextOverworldFrame
+	pop af
+	inc a
+	jp Func_fdd5b
+
+Func_fdd69: ; fdd69 (3f:5d69)
+	ld a, $1
+	pop bc
+	pop de
+Func_fdd6d: ; fdd6d (3f:5d6d)
+	cp e
+	jp nc, Func_fde18
+	push de
+	push af
+	ld a, c
+	xor $1
+	ld c, a
+	push bc
+	ld a, [wc2cd]
+	xor $1
+	ld [wc2cd], a
+	ld a, c
+	ld hl, sp+$a
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_fd714
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	call Func_fd7e0
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $0
+	ld de, $1311
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_fdde3
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	or $1
+	ld [rVBK], a
+	set_farcall_addrs_hli Func_62a3
+	ld bc, $12
+	ld de, $1323
+	ld hl, wc2cd
+	ld l, [hl]
+	ld h, $0
+	inc h
+	inc h
+	call FarCall
+	call WaitVideoTransfer
+	ld a, [rVBK]
+	and $fe
+	ld [rVBK], a
+Func_fdde3: ; fdde3 (3f:5de3)
+	call WaitVideoTransfer
+	call Func_fc756
+	ld a, [wNextVBlankFlags]
+	or $4
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	pop bc
+	pop af
+	push bc
+	push af
+	call GetHLAtSPPlus8
+	ld a, [hl]
+	inc hl
+	call WriteHLToSPPlus8
+	ld e, a
+	ld a, c
+	ld hl, sp+$a
+	ld c, [hl]
+	call Func_fd894
+	pop af
+	inc a
+	push af
+	ld hl, sp+$a
+	ld a, [hl]
+	inc a
+	ld hl, sp+$a
+	ld [hl], a
+	pop af
+	pop bc
+	pop de
+	jp Func_fdd6d
+
+Func_fde18: ; fde18 (3f:5e18)
+	call Func_fd746
+	call FillVisibleAreaWithBlankTile
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_fde2e
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_fde41
+Func_fde2e: ; fde2e (3f:5e2e)
+	set_farcall_addrs_hli Func_61424
+	ld c, $0
+	ld e, $0
+	xor a
+	call FarCall
+Func_fde41: ; fde41 (3f:5e41)
+	ld e, $8
+	ld a, $8
+	call SetStringStartState
+	ld hl, Data_fdf06
+	push hl
+	call PlaceString
+	pop bc
+	ld a, $2
+	ld [wc39a], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	call Func_fd787
+Func_fde64: ; fde64 (3f:5e64)
+	call CheckButton
+	and $70
+	jp z, Func_fde64
+	ld a, $7
+Func_fde6e: ; fde6e (3f:5e6e)
+	or a
+	jp nz, Func_fde75
+	jp Func_fde8d
+
+Func_fde75: ; fde75 (3f:5e75)
+	dec a
+	push af
+	call SetVolume
+	xor a
+Func_fde7b: ; fde7b (3f:5e7b)
+	cp $4
+	jp nc, Func_fde89
+	push af
+	call NextOverworldFrame
+	pop af
+	inc a
+	jp Func_fde7b
+
+Func_fde89: ; fde89 (3f:5e89)
+	pop af
+	jp Func_fde6e
+
+Func_fde8d: ; fde8d (3f:5e8d)
+	xor a
+	call OverworldPlaySong
+	ld a, $7
+	call SetVolume
+	call Func_fd746
+	ld a, [wSystemType]
+	cp $1
+	jp z, Func_fdea9
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, Func_fdebc
+Func_fdea9: ; fdea9 (3f:5ea9)
+	set_farcall_addrs_hli Func_61424
+	ld c, $0
+	ld e, $0
+	xor a
+	call FarCall
+Func_fdebc: ; fdebc (3f:5ebc)
+	ld a, [wNextVBlankFlags]
+	and $7f
+	ld [wNextVBlankFlags], a
+	xor a
+	ld [wc2e8], a
+	call Func_fc092
+	xor a
+	ld [wOBP1], a
+	ld [wOBP0], a
+	ld [wBGP], a
+	ld a, [wNextVBlankFlags]
+	or $20
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	ld a, [wLCDC]
+	and $fd
+	ld [wLCDC], a
+	ld a, [wNextVBlankFlags]
+	or $4
+	ld [wNextVBlankFlags], a
+	call Func_fc092
+	call FillVisibleAreaWithBlankTile
+	callba_hli Func_fdfe2
+	pop bc
+	ret
+
+Data_fdf06:
+	db "(おわり)", $0
+
+Data_fdf0c:
+IF DEF(SUN)
+	dr $fdf0c, $fdf13
+ENDC
+IF DEF(STAR)
+	dr $fdf0a, $fdf11
+ENDC
 
 Credits:
+IF DEF(SUN)
 	dr $fdf13, $fdf59
 
 Credits2:
-	dr $fdf59, $fdfe5
+	dr $fdf59, $fdfe2
+
+Func_fdfe2:
+	dr $fdfe2, $fdfe5
 
 Func_fdfe5:
 	dr $fdfe5, $fe004
@@ -109714,16 +111229,13 @@ ENDR
 ENDC
 
 IF DEF(STAR)
-	dr $fd211, $fd312
-
-Func_fd314: ; fd314
-	dr $fd312, $fdf11
-
-Credits:
 	dr $fdf11, $fdf57
 
 Credits2:
-	dr $fdf57, $fdfe3
+	dr $fdf57, $fdfe0
+
+Func_fdfe2:
+	dr $fdfe0, $fdfe3
 
 Func_fdfe5:
 	dr $fdfe3, $fe002
