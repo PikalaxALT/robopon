@@ -107077,10 +107077,7 @@ Func_fbbfb: ; fbbfb (3e:7bfb)
 	call FarCall
 	push af
 	ld hl, sp+$4
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, SaveScratchMoney
 	ld bc, $4
 	call MemCopy
@@ -111204,14 +111201,92 @@ IF DEF(STAR)
 	dr $fdf0a, $fdf11
 ENDC
 
-Credits:
-IF DEF(SUN)
-	dr $fdf13, $fdf59
+Credits: ; fdf13 (3f:5f13)
+	push bc
+	push bc
+	push bc
+	push bc
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, Data_fdf0c
+	ld bc, $7
+	call MemCopy
+	call Func_fd73e
+	callba_hli AllocateMonsterStruct
+	ld a, $4
+	ld [wc2fa], a
+	ld e, $7
+	ld hl, sp+$0
+	call Func_fd989
+	call Func_fd73f
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
 
-Credits2:
-	dr $fdf59, $fdfe2
+Data_fdf4b:
+IF DEF(SUN)
+	dr $fdf4b, $fdf59
+ENDC
+IF DEF(STAR)
+	dr $fdf49, $fdf57
+ENDC
+
+Credits2: ; fdf59 (3f:5f59)
+	add sp, -$e
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, Data_fdf4b
+	ld bc, $e
+	call MemCopy
+	call Func_fd73e
+	callba_hli AllocateMonsterStruct
+	ld a, $4
+	ld [wc2fa], a
+	ld l, $7
+	push hl
+	ld c, $1
+	ld e, $e
+	ld hl, sp+$2
+	call Func_fdbe8
+	pop bc
+	call Func_fd73f
+	add sp, $e
+	ret
+
+Data_fdf93:
+IF DEF(SUN)
+	dr $fdf93, $fdfa8
+ENDC
+IF DEF(STAR)
+	dr $fdf91, $fdfa6
+ENDC
+
+Func_fafa8:
+	add sp, -$16
+	ld hl, sp+$0
+	reg16swap de, hl
+	ld hl, Data_fdf93
+	ld bc, $15
+	call MemCopy
+	call Func_fd73e
+	callba_hli AllocateMonsterStruct
+	ld a, $4
+	ld [wc2fa], a
+	ld l, $0
+	push hl
+	ld c, $0
+	ld e, $15
+	ld hl, sp+$2
+	call Func_fdbe8
+	pop bc
+	call Func_fd73f
+	add sp, $16
+	ret
 
 Func_fdfe2:
+IF DEF(SUN)
 	dr $fdfe2, $fdfe5
 
 Func_fdfe5:
@@ -111229,12 +111304,6 @@ ENDR
 ENDC
 
 IF DEF(STAR)
-	dr $fdf11, $fdf57
-
-Credits2:
-	dr $fdf57, $fdfe0
-
-Func_fdfe2:
 	dr $fdfe0, $fdfe3
 
 Func_fdfe5:
