@@ -6881,10 +6881,20 @@ Func_d3ceb: ; d3ceb
 	dr $d3ceb, $d4000
 
 SECTION "Bank 36", ROMX, BANK [$36]
-	dr $d8000, $d93e8
+GFX_d8000:: INCBIN "gfx/misc/d8000.2bpp"
+
+Data_d8790::
+	dr $d8790, $d88f8
+
+GFX_d88f8:: INCBIN "gfx/misc/d88f8.2bpp"
+
+Data_d9048:
+	dr $d9048, $d93e8
 
 OverworldAttrMaps:: ; d93e8
-	dr $d93e8, $d9f38
+	dr $d93e8, $d97e8
+
+GFX_d97e8:: INCBIN "gfx/misc/d97e8.2bpp"
 
 Func_d9f38:: ; d9f38
 	dr $d9f38, $d9f55
