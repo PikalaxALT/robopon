@@ -108735,6 +108735,7 @@ ENDC
 IF DEF(STAR)
 	dr $fc948, $fc9ba
 ENDC
+Data_fc948End
 
 Func_fc9bc: ; fc9bc (3f:49bc)
 	ld a, [wc2cd]
@@ -108777,14 +108778,24 @@ Func_fca1c: ; fca1c (3f:4a1c)
 	ret
 
 Data_fca1d:
+IF DEF(SUN)
 	dr $fca1d, $fca25
+ENDC
+IF DEF(STAR)
+	dr $fca1b, $fca23
+ENDC
 
 Func_fca25: ; fca25 (3f:4a25)
 	push bc
 	push bc
 	set_farcall_addrs_hli Func_da729
 	ld e, $1
+IF DEF(SUN)
 	ld a, $3b
+ENDC
+IF DEF(STAR)
+	ld a, $3c
+ENDC
 	call FarCall
 	call WriteHLToSPPlus3
 	ld hl, wc770
@@ -108824,7 +108835,7 @@ Func_fca63: ; fca63 (3f:4a63)
 	ld [hl], $0
 	ld a, $46
 Func_fca8a: ; fca8a (3f:4a8a)
-	ld a, $74
+	ld a, Data_fc948End - Data_fc948
 	call TitleScreenRandom
 	ld e, a
 	ld d, $0
@@ -108946,7 +108957,12 @@ Func_fcb85: ; fcb85 (3f:4b85)
 	call FarCall
 	set_farcall_addrs_hli Func_da729
 	ld e, $1
+IF DEF(SUN)
 	ld a, $3b
+ENDC
+IF DEF(STAR)
+	ld a, $3c
+ENDC
 	call FarCall
 	call WriteHLToSPPlus3
 	jp Func_fca8a
@@ -109010,7 +109026,12 @@ Func_fcc1e: ; fcc1e (3f:4c1e)
 	ret
 
 Data_fcc36:
+IF DEF(SUN)
 	dr $fcc36, $fccaa
+ENDC
+IF DEF(STAR)
+	dr $fcc34, $fcca8
+ENDC
 
 Func_fccaa:
 	add sp, -$14
@@ -109163,7 +109184,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	ld a, [hl]
 	cp $14
 	jp nc, Func_fce97
-	ld a, $36
+	ld a, BANK(Data_d9048)
 	ld [wFarCallDestBank], a
 	ld hl, sp+$13
 	ld c, [hl]
@@ -109178,7 +109199,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, $5048
+	ld de, Data_d9048
 	add hl, de
 	add hl, bc
 	reg16swap de, hl
@@ -109210,7 +109231,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	ld hl, sp+$10
 	ld e, [hl]
 	ld d, $0
-	ld hl, $4c36
+	ld hl, Data_fcc36
 	add hl, de
 	ld a, [hl]
 	add $4
@@ -109227,7 +109248,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wTileMapEnd
+	decoord 0, 0, wAttrMap
 	add hl, de
 	add hl, bc
 	ld [hl], a
@@ -109302,7 +109323,12 @@ Func_fcf0b:
 	call Func_fc092
 	ld a, $43
 	call OverworldPlaySFX
+IF DEF(SUN)
 	ld a, $c
+ENDC
+IF DEF(STAR)
+	ld a, $1
+ENDC
 	call Func_fc2d7
 	call Func_fc09d
 	or a
@@ -109312,7 +109338,12 @@ Func_fcf0b:
 Func_fcf30: ; fcf30 (3f:4f30)
 	ld a, $43
 	call OverworldPlaySFX
+IF DEF(SUN)
 	ld a, $6
+ENDC
+IF DEF(STAR)
+	ld a, $31
+ENDC
 	call Func_fc360
 	call Func_fc09d
 	or a
@@ -109322,7 +109353,12 @@ Func_fcf30: ; fcf30 (3f:4f30)
 Func_fcf42: ; fcf42 (3f:4f42)
 	ld a, $43
 	call OverworldPlaySFX
+IF DEF(SUN)
 	ld a, $2a
+ENDC
+IF DEF(STAR)
+	ld a, $37
+ENDC
 	call Func_fc2d7
 	call Func_fc09d
 	or a
@@ -109332,7 +109368,12 @@ Func_fcf42: ; fcf42 (3f:4f42)
 Func_fcf54: ; fcf54 (3f:4f54)
 	ld a, $43
 	call OverworldPlaySFX
+IF DEF(SUN)
 	ld a, $3a
+ENDC
+IF DEF(STAR)
+	ld a, $45
+ENDC
 	call Func_fc360
 	call Func_fc09d
 	or a
@@ -109342,8 +109383,14 @@ Func_fcf54: ; fcf54 (3f:4f54)
 Func_fcf66: ; fcf66 (3f:4f66)
 	ld a, $43
 	call OverworldPlaySFX
+IF DEF(SUN)
 	ld e, $6
 	ld a, $c
+ENDC
+IF DEF(STAR)
+	ld e, $31
+	ld a, $1
+ENDC
 	call Func_fc615
 	call Func_fc09d
 	or a
@@ -109363,7 +109410,7 @@ Func_fcf7a: ; fcf7a (3f:4f7a)
 	and $fd
 	ld [rIE], a
 	ld hl, LCDInterrupt
-	write_hl_to $c201
+	write_hl_to wLCD + 1
 	ei
 	ld a, [wNextVBlankFlags]
 	or $10

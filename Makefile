@@ -45,6 +45,10 @@ compare: roms
 
 roms: $(sun) $(star)
 
+sun: $(sun)
+
+star: $(star)
+
 tidy:
 	rm -f $(sun) $(star) $(sun_objs) $(star_objs) $(roms:.gbc=.sym) $(roms:.gbc=.map)
 

@@ -6888,7 +6888,7 @@ Data_d8790::
 
 GFX_d88f8:: INCBIN "gfx/misc/d88f8.2bpp"
 
-Data_d9048:
+Data_d9048::
 	dr $d9048, $d93e8
 
 OverworldAttrMaps:: ; d93e8
