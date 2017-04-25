@@ -3988,7 +3988,7 @@ Func_7da6: ; 7da6 (1:7da6)
 	pop bc
 	ret
 
-Func_7db0: ; 7db0 (1:7db0)
+Func_7db0:: ; 7db0 (1:7db0)
 	push de
 	add sp, -$40
 	push af
@@ -4035,7 +4035,7 @@ Func_7db0: ; 7db0 (1:7db0)
 	add sp, $42
 	ret
 
-Func_7dfc: ; 7dfc (1:7dfc)
+Func_7dfc:: ; 7dfc (1:7dfc)
 	add sp, -$24
 	push de
 	push af
