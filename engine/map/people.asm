@@ -371,7 +371,7 @@ Func_a460: ; a460 (2:6460)
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
-	call Func_9a49
+	call UpdateSprites
 Func_a4a0: ; a4a0 (2:64a0)
 	ld hl, sp+$7
 	ld l, [hl]
@@ -816,7 +816,7 @@ ChangePersonFacing:: ; a6d8 (2:66d8)
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
-	call Func_9a49
+	call UpdateSprites
 .not_player
 	pop de
 	pop bc

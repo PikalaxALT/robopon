@@ -1,4 +1,4 @@
-Func_9a49:: ; 9a49 (2:5a49)
+UpdateSprites:: ; 9a49 (2:5a49)
 	push bc
 	push af
 	push de
@@ -250,7 +250,7 @@ Func_9a49:: ; 9a49 (2:5a49)
 
 .asm_9bd2
 	push hl
-	set_farcall_addrs_hli Func_da839
+	set_farcall_addrs_hli UpdateCurSprite
 	pop hl
 	ld a, [hl]
 	ld b, a
@@ -331,7 +331,7 @@ Func_9a49:: ; 9a49 (2:5a49)
 	call Func_a1fa
 	pop de
 	pop af
-	call Func_9d80
+	call UpdatePlayerSprite
 	ld hl, sp+$0
 	ld [hl], $40
 	read_hl_from wFunc94a9_c888

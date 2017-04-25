@@ -6143,7 +6143,7 @@ Func_9a848: ; 9a848 (26:6848)
 
 Func_9a84a:: ; 9a84a (26:684a)
 	call NextOverworldFrame
-	set_farcall_addrs_hli Func_9a49
+	set_farcall_addrs_hli UpdateSprites
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
@@ -6200,8 +6200,105 @@ Func_9ace0: ; 9ace0
 Func_9b251:: ; 9b251
 	dr $9b251, $9b262
 
-Func_9b262: ; 9b262
-	dr $9b262, $9b326
+Func_9b262: ; 9b262 (26:7262)
+	ld [wc785], a
+	reg16swap de, hl
+	write_hl_to wc786
+	ld a, c
+	ld [wc788], a
+	call Func_9b276
+	ret
+
+Func_9b276: ; 9b276 (26:7276)
+	push bc
+	push bc
+	push bc
+	read_hl_from wc786
+	ld a, l
+	or h
+	jp nz, Func_9b286
+	jp Func_9b322
+
+Func_9b286: ; 9b286 (26:7286)
+	ld e, $0
+Func_9b288: ; 9b288 (26:7288)
+	ld a, e
+	ld hl, wc788
+	cp [hl]
+	jp nc, Func_9b314
+	push de
+	ld a, [wc785]
+	ld [wFarCallDestBank], a
+	ld l, e
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	reg16swap de, hl
+	read_hl_from wc786
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$3
+	ld bc, $5
+	call FarCopyVideoData
+	ld hl, sp+$3
+	ld a, [hl]
+	ld hl, sp+$2
+	ld [hl], a
+	ld hl, sp+$2
+	ld l, [hl]
+	ld h, $0
+	ld de, $8
+	call DivideHLByDESigned
+	ld de, wc7c5
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$2
+	ld a, [hl]
+	and $7
+	ld b, a
+	ld a, $1
+	call LeftShiftA
+	and e
+	jp z, Func_9b30f
+	ld hl, sp+$6
+	ld a, [hl]
+	and $10
+	jp nz, Func_9b30f
+	ld a, [wc859]
+	or a
+	jp z, Func_9b30f
+	ld hl, sp+$5
+	ld e, [hl]
+	ld d, $0
+	ld hl, wMapWidth
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	reg16swap de, hl
+	read_hl_from wBlockdataPointer
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld a, [wc859]
+	ld [hl], a
+Func_9b30f: ; 9b30f (26:730f)
+	pop de
+	inc e
+	jp Func_9b288
+
+Func_9b314: ; 9b314 (26:7314)
+	callba_hli Func_8f44
+Func_9b322: ; 9b322 (26:7322)
+	pop bc
+	pop bc
+	pop bc
+	ret
 
 Func_9b326:: ; 9b326
 	dr $9b326, $9b74a
@@ -7161,10 +7258,169 @@ Func_da729:: ; da729
 	dr $da729, $da835
 
 Func_da835:: ; da835
-	dr $da835, $da839
+	ld [wc2f5], a
+	ret
 
-Func_da839:: ; da839
-	dr $da839, $da901
+UpdateCurSprite:: ; da839 (36:6839)
+	push af
+	ld a, b
+	and $3
+	cp $1
+	jp z, Func_da89f
+	ld a, c
+	add a
+	add a
+	pop bc
+	add b
+	ld b, a
+	ld a, [wSystemType]
+	cp $11
+	jr z, .asm_da853
+	ld c, $10
+	jr .asm_da859
+
+.asm_da853
+	ld a, [wMapObjectCGBAttrsOverride]
+	or $10
+	ld c, a
+.asm_da859
+	push de
+	ld a, [wc2f5]
+	ld h, $0
+	ld l, a
+	add hl, hl
+	add hl, hl
+	ld de, wOAMBuffer
+	add hl, de
+	pop de
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	add $8
+	ld d, a
+	ld a, b
+	ld [hli], a
+	inc b
+	ld a, c
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	add $8
+	ld e, a
+	ld a, d
+	ld [hli], a
+	add $f8
+	ld d, a
+	ld a, b
+	ld [hli], a
+	inc b
+	ld a, c
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	add $8
+	ld d, a
+	ld a, b
+	ld [hli], a
+	inc b
+	ld a, c
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	ld a, [wc2f5]
+	add $4
+	ld [wc2f5], a
+	ret
+
+Func_da89f: ; da89f (36:689f)
+	ld a, c
+	add a
+	add a
+	pop bc
+	add b
+	ld b, a
+	ld a, [wSystemType]
+	cp $11
+	jr z, .asm_da8b0
+	ld c, $30
+	jr .asm_da8b6
+
+.asm_da8b0
+	ld a, [wMapObjectCGBAttrsOverride]
+	or $30
+	ld c, a
+.asm_da8b6
+	push de
+	ld a, [wc2f5]
+	ld h, $0
+	ld l, a
+	add hl, hl
+	add hl, hl
+	ld de, wOAM00YCoord
+	add hl, de
+	pop de
+	ld a, d
+	add $8
+	ld d, a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	add $f8
+	ld d, a
+	ld a, b
+	ld [hli], a
+	inc b
+	ld a, c
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	add $8
+	ld e, a
+	ld a, d
+	ld [hli], a
+	add $8
+	ld d, a
+	ld a, b
+	ld [hli], a
+	inc b
+	ld a, c
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	add $f8
+	ld d, a
+	ld a, b
+	ld [hli], a
+	inc b
+	ld a, c
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	ld a, [wc2f5]
+	add $4
+	ld [wc2f5], a
+	ret
+
+Func_da900:
+	ret
 
 Func_da901:: ; da901
 	dr $da901, $daa40
@@ -7811,7 +8067,7 @@ Func_e1981: ; e1981 (38:5981)
 	ld hl, $86
 	add hl, sp
 	ld [hl], a
-	set_farcall_addrs_hli Func_da839
+	set_farcall_addrs_hli UpdateCurSprite
 	pop de
 	push de
 	ld l, e

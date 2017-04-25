@@ -1,13 +1,22 @@
 person_event: MACRO
-	db \1, \2 ; x, y
-	db \3 ; ???
-	db \4 ; ???
-REPT 5
-	db \5
+	db \1 ; sprite image
+	db \2 ; facing
+	db \3 ; x coord
+	db \4 ; y coord
+	db \5 ; width
+	db \6 ; height
+	db \7
+	db \8
+	db \9
 	shift
-ENDR
-	dba \5
-	dw \6
+	shift
+IF \8 == 0
+	shift
+	dba \8
+ELSE
+	dbw \8, 0
+ENDC
+	dw \9
 	ENDM
 
 wildbot: MACRO

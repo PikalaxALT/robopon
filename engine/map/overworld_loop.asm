@@ -32,7 +32,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, .not_cgb
-	set_farcall_addrs_hli Func_c7759
+	set_farcall_addrs_hli MapFadeInCGB
 	ld e, $0
 	xor a
 	call FarCall

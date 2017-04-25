@@ -569,7 +569,7 @@ Func_88df: ; 88df (2:48df)
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
-	call Func_9a49
+	call UpdateSprites
 	call NextOverworldFrame
 Func_88f8: ; 88f8 (2:48f8)
 	ld a, [wc7ea]

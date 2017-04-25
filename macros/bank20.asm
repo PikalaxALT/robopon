@@ -973,7 +973,7 @@ Func_8085c_\1: ; 8085c (20:485c)
 	pop bc
 	ret
 
-Func_8085f_\1:
+PrintTextFacePlayer_\1:
 	push af
 	push bc
 	push de
@@ -1326,7 +1326,7 @@ Func_80a79_\1: ; 80a79 (20:4a79)
 	pop bc
 	ret
 
-Func_80a7c_\1:
+PrintTextFacePlayerYesOrNo_\1:
 	push af
 	push bc
 	push de

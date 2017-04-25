@@ -5,7 +5,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
-	call Func_9a49
+	call UpdateSprites
 	ld hl, sp+$e
 	ld [hl], $ff
 Func_90fe: ; 90fe (2:50fe)
@@ -81,7 +81,7 @@ Func_9179: ; 9179 (2:5179)
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
-	call Func_9a49
+	call UpdateSprites
 	call Func_b150
 	pop de
 Func_918e: ; 918e (2:518e)
@@ -92,7 +92,7 @@ Func_918e: ; 918e (2:518e)
 	jp z, Func_91ba
 	ld e, $0
 	ld a, [wPlayerFacing]
-	call Func_9d80
+	call UpdatePlayerSprite
 	ld a, [wLCDC]
 	or $3
 	ld [wLCDC], a

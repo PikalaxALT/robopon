@@ -1,35 +1,95 @@
 Data_810b4:
-	dr $810b4, $810f6
+	db $0c, $04, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e
+	db $1c, $0e, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e
+	db $11, $14, $01, $01, $00, $01, $01, $07, $01, $06, $34
+	db $10, $0c, $01, $01, $00, $0a, $06, $0e, $06, $0d, $2e
+	db $09, $0e, $01, $01, $00, $03, $01, $08, $01, $07, $34
+	db $09, $07, $01, $01, $20, $02, $01, $0a, $01, $09, $34
 
 Data_810f6: ; 810f6
-	dr $810f6, $81101
+	db $1b, $14, $01, $01, $20, $03, $01, $08, $01, $07, $2e
 
 Data_81101:
-	dr $81101, $8113b
+	db $56, $07, $07, $03, $02
+	db $57, $06, $10, $01, $4c
+	db $58, $07, $10, $01, $2f
+	db $59, $0f, $10, $11, $33
+
+Data_81115:
+	dtext_tree_pointer TreeBitstreamText_4650d
+	dw -1
+
+Data_81119:
+	dtext_tree_pointer TreeBitstreamText_3f384
+	dtext_tree_pointer TreeBitstreamText_3f3c4
+	dw -1
+
+Data_8111f:
+	dtext_tree_pointer TreeBitstreamText_46e6c
+	dw -1
+
+Data_81123:
+	dtext_tree_pointer TreeBitstreamText_3f436
+	dtext_tree_pointer TreeBitstreamText_3f449
+	dtext_tree_pointer TreeBitstreamText_3f463
+	dw -1
+
+Data_8112b:
+	dtext_tree_pointer TreeBitstreamText_3f4fb
+	dw -1
+
+Data_8112f:
+	dtext_tree_pointer TreeBitstreamText_3f51d
+	dw -1
+
+Data_81133:
+	dtext_tree_pointer TreeBitstreamText_3f55b
+	dw -1
+
+Data_81137:
+	dtext_tree_pointer TreeBitstreamText_3f58e
+	dw -1
 
 Data_8113b:
-	dr $8113b, $8113f
+	dtext_tree_pointer TreeBitstreamText_3f406
+	dw -1
 
 Data_8113f:
-	dr $8113f, $81169
+	person_event $24, $0c, $15, $0d, $01, $01, $00, $04, $00, $20, 0
+	person_event $18, $04, $14, $0c, $01, $01, $02, $04, $00, $20, 0
+	person_event $11, $04, $16, $0c, $01, $01, $02, $04, $00, $20, 0
 
 Data_81169:
-	dr $81169, $811bd
+	person_event $02, $04, $0d, $06, $01, $01, $03, $04, $00, 0, Func_81607, 0
+	person_event $0b, $0c, $0c, $06, $01, $01, $01, $04, $00, 0, Func_81607, 0
+	person_event $ff, $00, $0c, $06, $01, $01, $00, $04, $01, 0, Func_81973, 0
+	person_event $22, $0c, $1a, $0d, $01, $01, $02, $04, $00, 0, Func_81811, 0
+	person_event $0b, $0c, $1a, $0e, $01, $01, $00, $04, $00, 0, Func_81811, 0
+	person_event $ff, $00, $1a, $0e, $01, $01, $00, $04, $01, 0, Func_819b0, 0
 
 Data_811bd: ; 811bd
-	dr $811bd, $81211
+	person_event $ff, $00, $0b, $05, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_81115
+	person_event $ff, $00, $0d, $05, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_81115
+	person_event $ff, $00, $1b, $0d, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_81115
+	person_event $ff, $00, $1b, $0f, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_81115
+	person_event $ff, $00, $08, $08, $01, $01, $00, $04, $00, 0, Func_819ea, 0
+	person_event $ff, $00, $08, $0f, $01, $01, $00, $04, $00, 0, Func_81a22, 0
 
 Data_81211:
-	dr $81211, $8122d
+	person_event $03, $04, $0a, $11, $01, $01, $02, $04, $00, 0, PrintTextFacePlayerYesOrNo_20, Data_81123
+	person_event $07, $04, $18, $14, $01, $01, $02, $04, $00, 0, PrintTextFacePlayer_20, Data_81119
 
 Data_8122d:
-	dr $8122d, $81265
+	person_event $07, $04, $0b, $08, $01, $01, $01, $02, $00, 0, PrintTextFacePlayer_20, Data_8112b
+	person_event $0c, $04, $0d, $08, $01, $01, $03, $02, $00, 0, PrintTextFacePlayer_20, Data_8112f
+	person_event $05, $04, $0b, $0a, $01, $01, $01, $00, $00, 0, PrintTextFacePlayer_20, Data_81133
+	person_event $01, $04, $0d, $0a, $01, $01, $03, $00, $00, 0, PrintTextFacePlayer_20, Data_81137
 
 Data_81265: ; 81265
-	dr $81265, $81273
+	person_event $ff, $00, $1b, $14, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_8111f
 
 Data_81273: ; 81273
-	dr $81273, $81281
+	person_event $ff, $00, $1b, $14, $01, $01, $00, $04, $01, 0, Func_81a5a, 0
 
 Func_81281:
 	call Func_81427

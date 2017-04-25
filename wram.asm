@@ -506,8 +506,8 @@ wVideoTransferQueue:: ; c239
 	char wTimeSetDecades ; c2f0
 	char wTimeSetYears ; c2f1
 	short wc2f2 ; c2f2
-	char wc2f4
-	ds $1
+	char wc2f4 ; c2f4
+	char wc2f5 ; c2f5
 	char wc2f6 ; c2f6
 	char wc2f7 ; c2f7
 	char wc2f8 ; c2f8
@@ -550,7 +550,6 @@ wVideoTransferQueue:: ; c239
 	char wc326 ; c326
 	array wc327, 32, 1, 1 ; c327
 
-
 	array wc347, 3, 20, 1 ; c347
 	array wc383, 4, 1, 1 ; c383
 	char wc387 ; c387
@@ -561,7 +560,7 @@ wVideoTransferQueue:: ; c239
 	char wc38c ; c38c
 	char wc38d ; c38d
 	short wc38e ; c38e
-	ds $1
+	char wc390 ; c390
 	long wc391 ; c391
 	char wc395 ; c395
 	array wc396, 4, 1, 1 ; c396
@@ -672,7 +671,9 @@ wc770:: ; c770
 	char wc782 ; c782
 	char wRandomEncounterCooldown ; c783
 	char wc784 ; c784
-	ds $4 ; c785
+	char wc785 ; c785
+	short wc786 ; c786
+	char wc788 ; c788
 
 	char wc789 ; c789
 	char wc78a ; c78a
@@ -849,7 +850,7 @@ SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 	short wVBlankMetaTileTransferQueue1TileSource ; c925
 	short wVBlankMetaTileTransferQueue1AttrSource ; c927
 	short wVBlankMetaTileTransferQueue1Dest ; c929
-	char wc92b ; c92b
+	char wMapObjectCGBAttrsOverride ; c92b, only affects NPCs
 	short wc92c ; c92c
 	short wMinutesSinceMidnight ; c92e
 	short wc930 ; c930

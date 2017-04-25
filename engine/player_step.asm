@@ -46,7 +46,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	push de
 	ld a, [wPlayerFacing]
 	ld e, $0
-	call Func_9d80
+	call UpdatePlayerSprite
 	pop de
 	pop bc
 	di
@@ -698,7 +698,7 @@ Func_98f3: ; 98f3 (2:58f3)
 	ld c, a
 	ld e, $1
 	ld a, b
-	call Func_9a49
+	call UpdateSprites
 	pop hl
 	pop de
 	pop bc

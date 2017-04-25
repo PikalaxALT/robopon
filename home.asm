@@ -2984,7 +2984,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	xor a
 	ld [wVBlankTransferFlags], a
 	xor a
-	ld [wc92b], a
+	ld [wMapObjectCGBAttrsOverride], a
 	set_farcall_addrs_hli Func_613fc
 	ld e, $0
 	xor a
