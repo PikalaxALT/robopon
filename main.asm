@@ -103922,7 +103922,7 @@ Data_c7b84:
 	RGB 22, 19, 14
 	RGB 09, 05, 03
 
-Func_c7bd0: ; c7bd0 (31:7bd0)
+Func_c7bd0:: ; c7bd0 (31:7bd0)
 	ld l, a
 	ld h, $0
 	add hl, hl

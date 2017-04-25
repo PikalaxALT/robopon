@@ -7431,8 +7431,12 @@ Func_daa40:: ; daa40
 INCLUDE "maps/enter_map.asm"
 
 SECTION "Bank 38", ROMX, BANK [$38]
-Data_e0000:
-	dr $e0000, $e09c0
+GFX_e0000: INCBIN "gfx/misc/e0000.w64.t1.2bpp"
+Data_e06f0:
+	dr $e06f0, $e0858
+
+Data_e0858:
+	dr $e0858, $e09c0
 
 GFX_e09c0: INCBIN "gfx/misc/e09c0.2bpp"
 
@@ -8308,31 +8312,1476 @@ Func_e1d9c: ; e1d9c
 	dr $e1d9c, $e1e83
 
 Func_e1e83:: ; e1e83
-	dr $e1e83, $e1f2d
+	dr $e1e83, $e1f07
+
+Func_e1f07:
+	dr $e1f07, $e1f2d
 
 Func_e1f2d:: ; e1f2d
-	dr $e1f2d, $e220d
+	dr $e1f2d, $e1f7a
+
+Data_e1f7a:
+	dr $e1f7a, $e1fa2
+
+Data_e1fa2: ; e1fa2
+	dr $e1fa2, $e1ff2
+
+Pointers_e1ff2:
+	dw Data_e201a
+	dw Data_e2023
+	dw Data_e202d
+	dw Data_e2036
+	dw Data_e2040
+	dw Data_e2049
+	dw Data_e2052
+	dw Data_e205c
+	dw Data_e2065
+	dw Data_e2070
+	dw Data_e2079
+	dw Data_e2083
+	dw Data_e2090
+	dw Data_e2099
+	dw Data_e20a2
+	dw Data_e20ab
+	dw Data_e20b4
+	dw Data_e20bf
+	dw Data_e20c9
+	dw Data_e20d6
+
+Data_e201a:
+	db "カフﾟリ(むら)", $0
+
+Data_e2023:
+	db "リフﾞラ(のまち)", $0
+
+Data_e202d:
+	db "カリーユ(まち)", $0
+
+Data_e2036:
+	db "ハﾞンサﾞ(むら)", $0
+
+Data_e2040:
+	db "キャロル(むら)", $0
+
+Data_e2049:
+	db "クールス(まち)", $0
+
+Data_e2052:
+	db "クﾞリース(やま)", $0
+
+Data_e205c:
+	db "タﾞイン(まち)", $0
+
+Data_e2065:
+	db "アホﾟロ(ようさい)", $0
+
+Data_e2070:
+	db "カﾞーナ(いけ)", $0
+
+Data_e2079:
+	db "メイシﾞ(のもり)", $0
+
+Data_e2083:
+	db "コﾞルトﾞ(へいけﾞん)", $0
+
+Data_e2090:
+	db "テール(のしろ)", $0
+
+Data_e2099:
+	db "ツキカﾞ(おか)", $0
+
+Data_e20a2:
+	db "オワリ(のもり)", $0
+
+Data_e20ab:
+	db "ホﾟロ(のむら)", $0
+
+Data_e20b4:
+	db "ハﾞートﾞ(しﾞま)", $0
+
+Data_e20bf:
+	db "(まほﾞろしむら)", $0
+
+Data_e20c9:
+	db "コﾞルトﾞ(へいけﾞん)", $0
+
+Data_e20d6:
+	db "(すいちゅう)", $0
+
+Func_e20de:
+	ld e, $0
+	push de
+	call GetJoyPressed
+	ld c, a
+	ld l, $0
+	pop de
+Func_e20e8: ; e20e8 (38:60e8)
+	ld a, l
+	cp $8
+	jp nc, Func_e2110
+	ld b, l
+	ld a, [wc874]
+	call RightShiftA
+	and $1
+	jp nz, Func_e210c
+	ld a, c
+	ld b, l
+	call RightShiftA
+	and $1
+	jp z, Func_e210c
+	ld b, l
+	ld a, $1
+	call LeftShiftA
+	or e
+	ld e, a
+Func_e210c: ; e210c (38:610c)
+	inc l
+	jp Func_e20e8
+
+Func_e2110: ; e2110 (38:6110)
+	ld a, c
+	ld [wc874], a
+	ld a, e
+	ret
+
+Data_e2116: ; e2116
+	RGB 31, 31, 31
+	RGB 29, 22, 14
+	RGB 24, 07, 07
+	RGB 00, 00, 00
+
+	RGB 30, 23, 00
+	RGB 26, 16, 04
+	RGB 17, 08, 05
+	RGB 00, 00, 00
+
+	RGB 30, 23, 00
+	RGB 00, 16, 00
+	RGB 17, 08, 05
+	RGB 00, 00, 00
+
+	RGB 30, 23, 00
+	RGB 06, 19, 27
+	RGB 07, 07, 27
+	RGB 00, 00, 00
+
+	RGB 30, 23, 00
+	RGB 31, 00, 31
+	RGB 16, 00, 16
+	RGB 00, 00, 00
+
+	RGB 30, 23, 00
+	RGB 08, 19, 19
+	RGB 00, 11, 11
+	RGB 00, 00, 00
+
+	RGB 30, 23, 00
+	RGB 31, 00, 00
+	RGB 16, 00, 00
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 00, 16
+	RGB 11, 05, 03
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 29, 22, 14
+	RGB 24, 07, 07
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 16, 16, 31
+	RGB 08, 08, 16
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 31, 16, 16
+	RGB 16, 08, 08
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 08, 08, 16
+	RGB 04, 04, 08
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 16, 08, 08
+	RGB 08, 04, 04
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 30, 23, 19
+	RGB 22, 12, 10
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 20, 23, 31
+	RGB 10, 14, 31
+	RGB 00, 00, 00
+
+	RGB 31, 31, 31
+	RGB 26, 14, 25
+	RGB 22, 12, 10
+	RGB 00, 00, 00
+
+Data_e2196: ; e2196
+	dr $e2196, $e219a
+
+Data_e219a: ; e219a
+	dr $e219a, $e219e
+
+Data_e219e: ; e219e
+	dr $e219e, $e220d
 
 Func_e220d:: ; e220d
-	dr $e220d, $e26e0
+	ld hl, -$96
+	add hl, sp
+	ld sp, hl
+	ld hl, sp+$74
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, Data_e2196
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$70
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, Data_e219a
+	ld bc, $4
+	call MemCopy
+	ld hl, sp+$0
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, Data_e219e
+	ld bc, $6f
+	call MemCopy
+	ld de, $384
+	push de
+	ld bc, $438
+	push bc
+	set_farcall_addrs_hli Func_93370
+	ld hl, $84
+	add hl, sp
+	call FarCall
+	ld hl, $87
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	ld de, $3c
+	call MultiplyHLbyDE
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, $88
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	pop bc
+	pop de
+	call CompareHLtoDE
+	jp c, Func_e2287
+	ld e, c
+	ld d, b
+	call CompareHLtoDE
+	jp nc, Func_e2287
+	ld a, $1
+	jp Func_e2288
+
+Func_e2287: ; e2287 (38:6287)
+	xor a
+Func_e2288: ; e2288 (38:6288)
+	ld hl, sp+$6f
+	ld [hl], a
+Func_e228b: ; e228b (38:628b)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_e228b
+	ld bc, $80
+	ld de, Data_e2116
+	ld hl, wCGB_BGPalsBuffer
+	call CopyFromDEtoHL
+	di
+	ld a, [wNextVBlankFlags]
+	or $40
+	ld [wNextVBlankFlags], a
+	ei
+Func_e22a9: ; e22a9 (38:62a9)
+	ld a, [wNextVBlankFlags]
+	and $40
+	jp nz, Func_e22a9
+	ld a, $14
+	call OverworldPlaySong
+	ld hl, sp+$79
+	ld a, [wc7e2]
+	ld [hl], a
+	ld hl, sp+$79
+	ld a, [hl]
+	cp $12
+	jp nz, Func_e22c8
+	ld hl, sp+$6f
+	ld [hl], $1
+Func_e22c8: ; e22c8 (38:62c8)
+	xor a
+	call Func_e1f07
+	ld a, BANK(GFX_e0000)
+	ld [wFarCallDestBank], a
+	ld bc, $700
+	ld de, GFX_e0000
+	ld hl, $8900
+	call FarRequestVideoData
+	call Func_e2a17
+	hlcoord 0, 0
+	write_hl_to_sp_plus $7e
+	hlcoord 0, 0, wAttrMap
+	write_hl_to_sp_plus $7c
+	ld de, Data_e06f0
+	xor a
+Func_e22f2: ; e22f2 (38:62f2)
+	cp $12
+	jp nc, Func_e2350
+	push af
+	push de
+	ld a, BANK(Data_e06f0)
+	ld [wFarCallDestBank], a
+	ld hl, $84
+	add hl, sp
+	ld bc, $14
+	call FarCopyVideoData
+	ld c, $0
+Func_e230a: ; e230a (38:630a)
+	ld a, c
+	cp $14
+	jp nc, Func_e2342
+	ld e, c
+	ld d, $0
+	ld hl, $84
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	add $90
+	read_hl_from_sp_plus $82
+	ld [hl], a
+	inc hl
+	write_hl_to_sp_plus $82
+	ld e, c
+	ld d, $0
+	ld hl, $84
+	add hl, sp
+	add hl, de
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$4
+	add hl, de
+	ld a, [hl]
+	read_hl_from_sp_plus $80
+	ld [hl], a
+	inc hl
+	write_hl_to_sp_plus $80
+	inc c
+	jp Func_e230a
+
+Func_e2342: ; e2342 (38:6342)
+	pop de
+	ld hl, $14
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	pop af
+	inc a
+	jp Func_e22f2
+
+Func_e2350: ; e2350 (38:6350)
+	ld hl, $94
+	add hl, sp
+	ld [hl], $1
+Func_e2356: ; e2356 (38:6356)
+	ld hl, $94
+	add hl, sp
+	ld a, [hl]
+	cp $14
+	jp nc, Func_e243e
+	ld hl, $94
+	add hl, sp
+	ld a, [hl]
+	call Func_e2829
+	or a
+	jp z, Func_e2430
+	ld hl, $95
+	add hl, sp
+	ld [hl], $0
+Func_e2372: ; e2372 (38:6372)
+	ld hl, $95
+	add hl, sp
+	ld a, [hl]
+	cp $4
+	jp nc, Func_e2430
+	ld hl, $95
+	add hl, sp
+	ld c, [hl]
+	ld b, $0
+	ld hl, $94
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_e1fa2
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	ld hl, sp+$78
+	ld [hl], a
+	cp $ff
+	jp z, Func_e2422
+	ld hl, sp+$78
+	ld a, [hl]
+	ld hl, $94
+	add hl, sp
+	cp [hl]
+	jp nc, Func_e23a8
+	jp Func_e2422
+
+Func_e23a8: ; e23a8 (38:63a8)
+	ld hl, $94
+	add hl, sp
+	ld a, [hl]
+	cp $10
+	jp z, Func_e23bc
+	ld hl, $94
+	add hl, sp
+	ld a, [hl]
+	cp $11
+	jp nz, Func_e23d7
+Func_e23bc: ; e23bc (38:63bc)
+	ld hl, sp+$78
+	ld a, [hl]
+	cp $10
+	jp z, Func_e23cc
+	ld hl, sp+$78
+	ld a, [hl]
+	cp $11
+	jp nz, Func_e23d7
+Func_e23cc: ; e23cc (38:63cc)
+	ld hl, sp+$79
+	ld a, [hl]
+	cp $11
+	jp z, Func_e23d7
+	jp Func_e2422
+
+Func_e23d7: ; e23d7 (38:63d7)
+	ld hl, sp+$6f
+	ld a, [hl]
+	or a
+	jp nz, Func_e240d
+	ld hl, $94
+	add hl, sp
+	ld a, [hl]
+	cp $2
+	jp z, Func_e23f2
+	ld hl, $94
+	add hl, sp
+	ld a, [hl]
+	cp $12
+	jp nz, Func_e240d
+Func_e23f2: ; e23f2 (38:63f2)
+	ld hl, sp+$78
+	ld a, [hl]
+	cp $2
+	jp z, Func_e2402
+	ld hl, sp+$78
+	ld a, [hl]
+	cp $12
+	jp nz, Func_e240d
+Func_e2402: ; e2402 (38:6402)
+	ld hl, sp+$79
+	ld a, [hl]
+	cp $12
+	jp z, Func_e240d
+	jp Func_e2422
+
+Func_e240d: ; e240d (38:640d)
+	ld hl, sp+$78
+	ld a, [hl]
+	call Func_e2829
+	or a
+	jp z, Func_e2422
+	ld hl, sp+$78
+	ld e, [hl]
+	ld hl, $94
+	add hl, sp
+	ld a, [hl]
+	call Func_e2851
+Func_e2422: ; e2422 (38:6422)
+	ld hl, $95
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $95
+	add hl, sp
+	ld [hl], a
+	jp Func_e2372
+
+Func_e2430: ; e2430 (38:6430)
+	ld hl, $94
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $94
+	add hl, sp
+	ld [hl], a
+	jp Func_e2356
+
+Func_e243e: ; e243e (38:643e)
+	ld hl, sp+$79
+	ld a, [hl]
+	call Func_e262f
+	callba_hli Func_da4fc
+	ld hl, sp+$7f
+	ld [hl], $0
+	ld hl, sp+$7e
+	ld [hl], $17
+	ld l, $0
+	push hl
+	ld a, $c
+	push af
+	set_farcall_addrs_hli LoadSpriteGFX
+	pop af
+	pop hl
+	ld c, a
+	ld e, l
+	ld hl, sp+$7f
+	ld a, [hl]
+	ld hl, sp+$7e
+	ld l, [hl]
+	ld h, a
+	call FarCall
+	ld a, $1
+	call Func_e1f07
+	call NextOverworldFrame
+	call CheckButton
+	set_farcall_addrs_hli Func_c7bd0
+	xor a
+	call FarCall
+	ld e, $0
+	push de
+	ld a, $2
+	ld [wc39a], a
+	call Func_e2a24
+	xor a
+	ld [wc874], a
+	pop de
+Func_e24a3: ; e24a3 (38:64a3)
+	push de
+	call NextOverworldFrame
+	call CheckButton
+	ld hl, sp+$7a
+	ld [hl], a
+	ld hl, $97
+	add hl, sp
+	ld [hl], $0
+Func_e24b3: ; e24b3 (38:64b3)
+	ld hl, $97
+	add hl, sp
+	ld a, [hl]
+	cp $4
+	jp nc, Func_e258f
+	ld hl, sp+$7a
+	ld a, [hl]
+	ld hl, $97
+	add hl, sp
+	ld e, [hl]
+	ld d, $0
+	ld hl, sp+$76
+	add hl, de
+	and [hl]
+	jp z, Func_e2581
+	ld hl, $97
+	add hl, sp
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$7b
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_e1fa2
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	cp $ff
+	jp z, Func_e2581
+	ld hl, sp+$7b
+	ld a, [hl]
+	cp $10
+	jp nz, Func_e250b
+	ld hl, $97
+	add hl, sp
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$7b
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_e1fa2
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	cp $11
+	jp nz, Func_e250b
+	jp Func_e2581
+
+Func_e250b: ; e250b (38:650b)
+	ld hl, sp+$71
+	ld a, [hl]
+	or a
+	jp nz, Func_e2536
+	ld hl, sp+$7b
+	ld a, [hl]
+	cp $2
+	jp nz, Func_e2536
+	ld hl, $97
+	add hl, sp
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$7b
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_e1fa2
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	cp $12
+	jp nz, Func_e2536
+	jp Func_e2581
+
+Func_e2536: ; e2536 (38:6536)
+	ld hl, $97
+	add hl, sp
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$7b
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_e1fa2
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	call Func_e2829
+	or a
+	jp z, Func_e2581
+	ld hl, $97
+	add hl, sp
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$7b
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_e1fa2
+	add hl, de
+	add hl, bc
+	ld e, [hl]
+	ld hl, sp+$7b
+	ld [hl], e
+	ld hl, sp+$7b
+	ld a, [hl]
+	call Func_e262f
+	ld l, $3
+	push hl
+	ld c, $a
+	ld e, $f
+	ld a, $a
+	call Func_3bc5
+	pop bc
+	call NextOverworldFrame
+	jp Func_e258f
+
+Func_e2581: ; e2581 (38:6581)
+	ld hl, $97
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $97
+	add hl, sp
+	ld [hl], a
+	jp Func_e24b3
+
+Func_e258f: ; e258f (38:658f)
+	set_farcall_addrs_hli Func_da835
+	xor a
+	call FarCall
+	set_farcall_addrs_hli UpdateCurSprite
+	pop de
+	push de
+	ld l, e
+	ld h, $0
+	ld b, $4
+	call RightShiftHL
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$72
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$7b
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Data_e1f7a
+	add hl, de
+	inc hl
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, $c
+	add hl, de
+	push hl
+	ld hl, sp+$7d
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Data_e1f7a
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	ld h, l
+	ld l, $0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld de, $400
+	add hl, de
+	pop de
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	xor a
+	call FarCall
+	callba_hli Func_d9f55
+	pop de
+	ld a, e
+	inc a
+	and $3f
+	ld e, a
+	ld hl, sp+$78
+	ld a, [hl]
+	and $10
+	jp z, Func_e2626
+	call NextOverworldFrame
+	call NextOverworldFrame
+	call NextOverworldFrame
+	ld hl, sp+$79
+	ld a, [hl]
+	ld [wc7e2], a
+	ld hl, sp+$79
+	ld a, [hl]
+	dec a
+	jp Func_e2629
+
+Func_e2626: ; e2626 (38:6626)
+	jp Func_e24a3
+
+Func_e2629: ; e2629 (38:6629)
+	ld hl, $96
+	add hl, sp
+	ld sp, hl
+	ret
+
+Func_e262f: ; e262f (38:662f)
+	push af
+	set_farcall_addrs_hli Func_17e95
+	ld c, $3
+	ld e, $a
+	ld hl, $a0f
+	call FarCall
+	ld e, $10
+	ld a, $b
+	call SetStringStartState
+	set_farcall_addrs_hli CheckEventFlag
+	ld hl, $1c
+	call FarCall
+	ld e, a
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $f
+	jp nz, Func_e2677
+	ld a, e
+	cp $1
+	jp nz, Func_e2677
+	ld hl, Data_e26ce
+	push hl
+	call PlaceString
+	pop bc
+	jp Func_e26cc
+
+Func_e2677: ; e2677 (38:6677)
+	set_farcall_addrs_hli CheckEventFlag
+	ld hl, $35
+	call FarCall
+	ld e, a
+	push de
+	set_farcall_addrs_hli CheckEventFlag
+	ld hl, $23
+	call FarCall
+	ld c, a
+	pop de
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $d
+	jp nz, Func_e26ba
+.asm_e26a5
+	inc e
+	dec e
+	jp z, Func_e26ba
+	inc c
+	dec c
+	jp nz, Func_e26ba
+	ld hl, Data_e26d7
+	push hl
+	call PlaceString
+	pop bc
+	jp Func_e26cc
+
+Func_e26ba: ; e26ba (38:66ba)
+	ld hl, sp+$1
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_e1ff2 - 2
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	call PlaceString
+	pop bc
+Func_e26cc: ; e26cc (38:66cc)
+	pop bc
+	ret
+
+Data_e26ce:
+	db "セﾞロキャッスル", $0
+
+Data_e26d7:
+	db "セﾞロ(のしろ)", $0
 
 Func_e26e0::
-	dr $e26e0, $e2780
+	push hl
+	push bc
+	ld hl, sp+$0
+	ld a, [wc7e2]
+	ld [hl], a
+	set_farcall_addrs_hli CheckEventFlag
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $f
+	jp nz, Func_e2712
+	ld hl, $1c
+	call FarCall
+	cp $1
+	jp nz, Func_e2712
+	call GetHLAtSPPlus4
+	ld de, Data_e276e
+	call CopyUntilNull
+	jp Func_e276b
+
+Func_e2712: ; e2712 (38:6712)
+	set_farcall_addrs_hli CheckEventFlag
+	ld hl, $35
+	call FarCall
+	ld e, a
+	push de
+	set_farcall_addrs_hli CheckEventFlag
+	ld hl, $23
+	call FarCall
+	ld c, a
+	pop de
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $d
+	jp nz, Func_e2756
+	inc e
+	dec e
+	jp z, Func_e2756
+	inc c
+	dec c
+	jp nz, Func_e2756
+	call GetHLAtSPPlus4
+	ld de, Data_e2777
+	call CopyUntilNull
+	jp Func_e276b
+
+Func_e2756: ; e2756 (38:6756)
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Pointers_e1ff2 - 2
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	call GetHLAtSPPlus6
+	pop de
+	call CopyUntilNull
+Func_e276b: ; e276b (38:676b)
+	pop bc
+	pop bc
+	ret
+
+Data_e276e:
+	db "セﾞロキャッスル", $0
+
+Data_e2777:
+	db "セﾞロ(のしろ)", $0
 
 Func_e2780:: ; e2780
-	dr $e2780, $e2807
+	push af
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $12
+	jp nz, Func_e27a3
+	ld hl, sp+$1
+	ld a, [hl]
+	call Func_e2829
+	or a
+	jp nz, Func_e27a3
+	set_farcall_addrs_hli Func_93941
+	ld a, $1
+	call FarCall
+Func_e27a3: ; e27a3 (38:67a3)
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $2
+	jp nz, Func_e27c5
+	ld hl, sp+$1
+	ld a, [hl]
+	call Func_e2829
+	or a
+	jp nz, Func_e27c5
+	set_farcall_addrs_hli Func_93941
+	ld a, $2
+	call FarCall
+Func_e27c5: ; e27c5 (38:67c5)
+	ld hl, sp+$1
+	ld a, [hl]
+	cp $b
+	jp nz, Func_e27e7
+	ld hl, sp+$1
+	ld a, [hl]
+	call Func_e2829
+	or a
+	jp nz, Func_e27e7
+	set_farcall_addrs_hli Func_93941
+	ld a, $3
+	call FarCall
+Func_e27e7: ; e27e7 (38:67e7)
+	ld hl, sp+$1
+	ld a, [hl]
+	and $7
+	ld b, a
+	ld a, $1
+	call LeftShiftA
+	push af
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	ld de, $8
+	call DivideHLByDESigned
+	ld de, wc7e3
+	add hl, de
+	pop af
+	or [hl]
+	ld [hl], a
+	pop bc
+	ret
 
-Func_e2807:: ; e2807
-	dr $e2807, $e2829
+Func_e2807:: ; e2807 (38:6807)
+	push af
+	ld hl, sp+$1
+	ld a, [hl]
+	and $7
+	ld b, a
+	ld a, $1
+	call LeftShiftA
+	cpl
+	push af
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	ld de, $8
+	call DivideHLByDESigned
+	ld de, wc7e3
+	add hl, de
+	pop af
+	and [hl]
+	ld [hl], a
+	pop bc
+	ret
 
-Func_e2829:: ; e2829
-	dr $e2829, $e2bf8
+Func_e2829: ; e2829 (38:6829)
+	push af
+	ld hl, sp+$1
+	ld l, [hl]
+	ld h, $0
+	ld de, $8
+	call DivideHLByDESigned
+	ld de, wc7e3
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$1
+	ld a, [hl]
+	and $7
+	ld b, a
+	ld a, $1
+	call LeftShiftA
+	and e
+	jp z, Func_e284e
+	ld a, $1
+	jp Func_e284f
 
-Func_e2bf8:: ; e2bf8
-	dr $e2bf8, $e2c29
+Func_e284e: ; e284e (38:684e)
+	xor a
+Func_e284f: ; e284f (38:684f)
+	pop bc
+	ret
 
-Func_e2c29:: ; e2c29
-	dr $e2c29, $e2c73
+Func_e2851:
+	push af
+	push bc
+	push bc
+	push bc
+	push de
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Data_e1f7a
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$7
+	ld [hl], e
+	ld hl, sp+$9
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, Data_e1f7a
+	add hl, de
+	inc hl
+	ld e, [hl]
+	ld hl, sp+$6
+	ld [hl], e
+	pop de
+	push de
+	ld l, e
+	ld h, $0
+	add hl, hl
+	ld de, Data_e1f7a
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$5
+	ld [hl], e
+	pop de
+	push de
+	ld l, e
+	ld h, $0
+	add hl, hl
+	ld de, Data_e1f7a
+	add hl, de
+	inc hl
+	ld e, [hl]
+	ld hl, sp+$4
+	ld [hl], e
+	pop de
+	ld a, e
+	ld hl, sp+$7
+	cp [hl]
+	jp nc, Func_e289b
+	jp Func_e29f1
+
+Func_e289b: ; e289b (38:689b)
+	ld hl, sp+$3
+	ld a, [hl]
+	ld hl, sp+$5
+	cp [hl]
+	jp nc, Func_e28b0
+	ld hl, sp+$5
+	ld e, [hl]
+	ld hl, sp+$3
+	ld a, [hl]
+	ld hl, sp+$5
+	ld [hl], a
+	ld hl, sp+$3
+	ld [hl], e
+Func_e28b0: ; e28b0 (38:68b0)
+	ld hl, sp+$2
+	ld a, [hl]
+	ld hl, sp+$4
+	cp [hl]
+	jp nc, Func_e28c5
+	ld hl, sp+$4
+	ld e, [hl]
+	ld hl, sp+$2
+	ld a, [hl]
+	ld hl, sp+$4
+	ld [hl], a
+	ld hl, sp+$2
+	ld [hl], e
+Func_e28c5: ; e28c5 (38:68c5)
+	ld hl, sp+$5
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 0
+	add hl, de
+	add hl, bc
+	ld [hl], $fc
+	ld hl, sp+$3
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$2
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 0
+	add hl, de
+	add hl, bc
+	ld [hl], $fc
+	ld hl, sp+$5
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 0, wAttrMap
+	add hl, de
+	add hl, bc
+	ld [hl], $2
+	ld hl, sp+$3
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$2
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 0, wAttrMap
+	add hl, de
+	add hl, bc
+	ld [hl], $2
+	ld hl, sp+$4
+	ld a, [hl]
+	ld hl, sp+$2
+	cp [hl]
+	jp nz, Func_e2986
+	ld hl, sp+$5
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 0
+	add hl, de
+	add hl, bc
+	inc hl
+	pop de
+	push hl
+	ld hl, sp+$5
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 0, wAttrMap
+	add hl, de
+	add hl, bc
+	inc hl
+	push de
+	push hl
+	pop de
+	pop hl
+	ld c, $1
+Func_e2964: ; e2964 (38:6964)
+	ld hl, sp+$3
+	ld a, [hl]
+	ld hl, sp+$5
+	sub [hl]
+	ld l, a
+	ld a, c
+	cp l
+	jp nc, Func_e2983
+	push de
+	call GetHLAtSPPlus4
+	ld [hl], $fd
+	inc hl
+	call WriteHLToSPPlus4
+	pop de
+	ld a, $6
+	ld [de], a
+	inc de
+	inc c
+	jp Func_e2964
+
+Func_e2983: ; e2983 (38:6983)
+	jp Func_e29f1
+
+Func_e2986: ; e2986 (38:6986)
+	ld hl, sp+$5
+	ld a, [hl]
+	ld hl, sp+$3
+	cp [hl]
+	jp nz, Func_e29f1
+	ld hl, sp+$5
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 1
+	add hl, de
+	add hl, bc
+	pop de
+	push hl
+	ld hl, sp+$5
+	ld c, [hl]
+	ld b, $0
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	decoord 0, 1, wAttrMap
+	add hl, de
+	add hl, bc
+	push de
+	push hl
+	pop de
+	pop hl
+	ld c, $1
+Func_e29c3: ; e29c3 (38:69c3)
+	ld hl, sp+$2
+	ld a, [hl]
+	ld hl, sp+$4
+	sub [hl]
+	ld l, a
+	ld a, c
+	cp l
+	jp nc, Func_e29f1
+	push de
+	call GetHLAtSPPlus4
+	ld [hl], $fe
+	pop de
+	push de
+	ld a, $6
+	ld [de], a
+	call GetHLAtSPPlus4
+	ld de, $14
+	add hl, de
+	call WriteHLToSPPlus4
+	pop de
+	ld hl, $14
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	inc c
+	jp Func_e29c3
+
+Func_e29f1: ; e29f1 (38:69f1)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+
+Func_e29f6:
+	push hl
+	set_farcall_addrs_hli AllocateMemory
+	pop hl
+	jp FarCall
+
+Func_e2a06:
+	push hl
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	ret
+
+Func_e2a17:
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	ret
+
+Func_e2a24:
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3ca1
+	pop bc
+	ret
+
+Func_e2a31:
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	ret
+
+Data_e2a3e:
+	dr $e2a3e, $e2b56
+
+Data_e2b56:
+	dr $e2b56, $e2bf8
+
+Func_e2bf8:: ; e2bf8 (38:6bf8)
+	cp $ff
+	jp nz, Func_e2c08
+	ld hl, $0
+	write_hl_to wc854
+	jp Func_e2c28
+
+Func_e2c08: ; e2c08 (38:6c08)
+	ld l, a
+	ld h, $0
+	add hl, hl
+	ld de, Data_e2b56
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	write_hl_to wc854
+	read_hl_from wc854
+	ld a, [hl]
+	inc hl
+	write_hl_to wc854
+	ld [wc856], a
+Func_e2c28: ; e2c28 (38:6c28)
+	ret
+
+Func_e2c29:: ; e2c29 (38:6c29)
+	read_hl_from wc854
+	ld a, l
+	or h
+	jp nz, Func_e2c35
+	xor a
+	ret
+
+Func_e2c35: ; e2c35 (38:6c35)
+	ld a, [wc856]
+	or a
+	jp nz, Func_e2c69
+	read_hl_from wc854
+	ld a, [hl]
+	inc hl
+	write_hl_to wc854
+	call OverworldPlaySFX
+	read_hl_from wc854
+	ld a, [hl]
+	inc hl
+	write_hl_to wc854
+	ld [wc856], a
+	cp $ff
+	jp nz, Func_e2c69
+	ld hl, $0
+	write_hl_to wc854
+	xor a
+	ret
+
+Func_e2c69: ; e2c69 (38:6c69)
+	ld a, [wc856]
+	dec a
+	ld [wc856], a
+	ld a, $1
+	ret
 
 Data_e2c73:
 	dr $e2c73, $e2c88

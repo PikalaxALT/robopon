@@ -719,7 +719,7 @@ wc770:: ; c770
 	char wBackupMapNumber ; c7e0
 	char wc7e1 ; c7e1
 	char wc7e2 ; c7e2
-	ds $4
+	bitfield wc7e3, 32 ; c7e3
 
 	char wSpawnX ; c7e7
 	char wSpawnY ; c7e8
@@ -774,8 +774,8 @@ wEventFlagsEnd::
 	char wc850 ; c850
 	char wc851 ; c851
 	short wc852 ; c852
-	ds $3
-
+	short wc854 ; c854
+	char wc856 ; c856
 	char wc857 ; c857
 	char wc858 ; c858
 	char wc859 ; c859
