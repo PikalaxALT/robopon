@@ -4584,7 +4584,7 @@ Func_7b148:: ; 7b148 (1e:7148)
 	ld a, h
 	or l
 	jr z, .asm_7b195
-	ld de, hPushOAM + 5
+	ld de, -6
 	add hl, de
 	jr nc, .asm_7b16e
 	ld a, h

@@ -265,7 +265,7 @@ del: MACRO
 	write_hl_to wc82c
 	write_hl_to wBlockdataPointer
 	write_hl_to wc826
-	write_hl_to wc822
+	write_hl_to wLoadAttrsSourcePointer
 	write_hl_to wc824
 	ld hl, $0
 	write_hl_to wWarpDataPointer
@@ -287,7 +287,7 @@ del: MACRO
 
 .c_not_zero
 	del wc824
-	del wc822
+	del wLoadAttrsSourcePointer
 	del wc826
 	del wBlockdataPointer
 	del wc82c
@@ -309,7 +309,7 @@ del: MACRO
 	write_hl_to wc824
 	ld hl, $200
 	call AllocateMemory_Bank02
-	write_hl_to wc822
+	write_hl_to wLoadAttrsSourcePointer
 	ld hl, $80
 	call AllocateMemory_Bank02
 	write_hl_to wc826
@@ -606,7 +606,7 @@ Func_891c: ; 891c (2:491c)
 	cpl
 	ld h, a
 	inc hl
-	ld de, hPushOAM + 5
+	ld de, -6
 	add hl, de
 	write_hl_to wc868
 	ld hl, wMapWidth
@@ -617,7 +617,7 @@ Func_891c: ; 891c (2:491c)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, hPushOAM + 5
+	ld de, -6
 	add hl, de
 	write_hl_to wc86e
 	ld hl, wMapWidth
@@ -635,7 +635,7 @@ Func_891c: ; 891c (2:491c)
 	cpl
 	ld h, a
 	inc hl
-	ld de, hPushOAM + 4
+	ld de, -7
 	add hl, de
 	write_hl_to wc86c
 	ld hl, wMapWidth

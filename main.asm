@@ -4812,7 +4812,7 @@ del_if_defined: MACRO
 
 	del_if_defined wc85d
 	del_if_defined wc824
-	del_if_defined wc822
+	del_if_defined wLoadAttrsSourcePointer
 	del_if_defined wc826
 	del_if_defined wBlockdataPointer
 	del_if_defined wMapCollisionPointer
@@ -5472,7 +5472,7 @@ Func_9ed1: ; 9ed1 (2:5ed1)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from wc822
+	read_hl_from wLoadAttrsSourcePointer
 	add hl, de
 	pop bc
 	ret
@@ -5507,7 +5507,7 @@ Func_9efa: ; 9efa (2:5efa)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from wc822
+	read_hl_from wLoadAttrsSourcePointer
 	add hl, de
 	ret
 
@@ -5585,7 +5585,7 @@ Func_a184: ; a184 (2:6184)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from wc822
+	read_hl_from wLoadAttrsSourcePointer
 	add hl, de
 	ld a, [hl]
 	add $70
@@ -5607,7 +5607,7 @@ Func_a1ad: ; a1ad (2:61ad)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from wc822
+	read_hl_from wLoadAttrsSourcePointer
 	add hl, de
 	ld e, c
 	ld d, $0
@@ -14007,7 +14007,7 @@ Func_f554: ; f554 (3:7554)
 	pop bc
 	push bc
 	push de
-	ld hl, hPushOAM + 3
+	ld hl, -8
 	add hl, de
 	reg16swap de, hl
 	ld hl, $8
@@ -14021,7 +14021,7 @@ Func_f554: ; f554 (3:7554)
 	pop bc
 	push bc
 	push de
-	ld hl, hPushOAM + 3
+	ld hl, -8
 	add hl, de
 	reg16swap de, hl
 	ld l, c
@@ -64433,7 +64433,7 @@ Func_5516c: ; 5516c (15:516c)
 	add hl, de
 	call WriteHLToSPPlus6
 	read_hl_from wc312
-	ld de, hPushOAM + 1
+	ld de, -10
 	add hl, de
 	write_hl_to wc312
 	jp Func_551a7
@@ -64475,7 +64475,7 @@ Func_551e2: ; 551e2 (15:51e2)
 	add hl, de
 	call WriteHLToSPPlus4
 	read_hl_from wc314
-	ld de, hPushOAM + 1
+	ld de, -10
 	add hl, de
 	write_hl_to wc314
 	jp Func_5521d
@@ -69458,7 +69458,7 @@ Func_57d4a: ; 57d4a (15:7d4a)
 	pop de
 	push af
 Func_57d91: ; 57d91 (15:7d91)
-	ld hl, hPushOAM + 3
+	ld hl, -8
 	add hl, de
 	inc h
 	dec h
@@ -69470,7 +69470,7 @@ Func_57d91: ; 57d91 (15:7d91)
 	inc hl
 	call WriteHLToSPPlus6
 	pop de
-	ld hl, hPushOAM + 3
+	ld hl, -8
 	add hl, de
 	reg16swap de, hl
 	inc c
@@ -86379,7 +86379,7 @@ Func_63d05: ; 63d05 (18:7d05)
 	ld [de], a
 	inc de
 	ld a, $0
-	ld bc, hPushOAM + 1
+	ld bc, -10
 .asm_63d27
 	add hl, bc
 	inc a
@@ -86398,7 +86398,7 @@ Func_63d05: ; 63d05 (18:7d05)
 	ld [de], a
 	inc de
 	ld a, $0
-	ld bc, hPushOAM + 1
+	ld bc, -10
 .asm_63d41
 	add hl, bc
 	inc a
@@ -90483,7 +90483,7 @@ Func_692fb: ; 692fb (1a:52fb)
 	jp nc, Func_6931a
 	pop hl
 	push hl
-	ld de, hPushOAM + 4
+	ld de, -7
 	add hl, de
 	pop de
 	push hl
@@ -90493,7 +90493,7 @@ Func_6931a: ; 6931a (1a:531a)
 Func_6931d: ; 6931d (1a:531d)
 	pop hl
 	push hl
-	ld de, hPushOAM + 4
+	ld de, -7
 	add hl, de
 	pop de
 	push hl

@@ -734,7 +734,7 @@ wEventFlagsEnd::
 	char wc820 ; c820
 	char wc821 ; c821
 
-	short wc822 ; c822
+	short wLoadAttrsSourcePointer ; c822
 	short wc824 ; c824
 	short wc826 ; c826
 	short wBlockdataPointer ; c828

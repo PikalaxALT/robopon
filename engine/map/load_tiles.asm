@@ -207,9 +207,9 @@ LoadMapTiles: ; 898a (2:498a)
 	ld c, a
 	ld a, [wLoadTilesTileCounter + 1]
 	ld b, a
-	ld a, [wc822]
+	ld a, [wLoadAttrsSourcePointer]
 	ld l, a
-	ld a, [wc822 + 1]
+	ld a, [wLoadAttrsSourcePointer + 1]
 	ld h, a
 	add hl, bc
 	ld a, [wc88b]
