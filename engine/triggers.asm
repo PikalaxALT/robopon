@@ -9,7 +9,7 @@ trigcum = trigcum + 1
 
 trigcum = 0
 
-Data_c79b1: triggroup ; c79b1
+MapGroup1ScriptHeaders: triggroup ; c79b1
 	dmaptrigger Func_81281
 	dmaptrigger Func_81ac1
 	dmaptrigger Func_81d6a
@@ -41,11 +41,11 @@ Data_c79b1: triggroup ; c79b1
 	dmaptrigger Func_85f6c
 	db $ff
 
-Data_c79cf: triggroup ; c79cf
+MapGroup2ScriptHeaders: triggroup ; c79cf
 	dmaptrigger Func_8d256
 	db $ff
 
-Data_c79d1: triggroup ; c79d1
+MapGroup3ScriptHeaders: triggroup ; c79d1
 	dmaptrigger Func_85178
 	dmaptrigger Func_85a1d
 	dmaptrigger Func_85cde
@@ -54,7 +54,7 @@ Data_c79d1: triggroup ; c79d1
 	dmaptrigger Func_8744d
 	db $ff
 
-Data_c79d8: triggroup ; c79d8
+MapGroup4ScriptHeaders: triggroup ; c79d8
 	dmaptrigger Func_86ffa
 	dmaptrigger Func_89c58
 	dmaptrigger Func_89eaf
@@ -64,11 +64,11 @@ Data_c79d8: triggroup ; c79d8
 	dmaptrigger Func_8af07
 	db $ff
 
-Data_c79e0: triggroup ; c79e0
+MapGroup5ScriptHeaders: triggroup ; c79e0
 	dmaptrigger Func_8966d
 	db $ff
 
-Data_c79e2: triggroup ; c79e2
+MapGroup6ScriptHeaders: triggroup ; c79e2
 	dmaptrigger Func_8966d
 	dmaptrigger Func_96dbb
 	dmaptrigger Func_96e97
@@ -81,20 +81,20 @@ Data_c79e2: triggroup ; c79e2
 	dmaptrigger Func_9d1cb
 	db $ff
 
-Data_c79ed: triggroup ; c79ed
+MapGroup7ScriptHeaders: triggroup ; c79ed
 	dmaptrigger Func_8e5dc
 	db $ff
 
-Data_c79ef: triggroup ; c79ef
+MapGroup8ScriptHeaders: triggroup ; c79ef
 	dmaptrigger Func_8deaa
 	db $ff
 
-Data_c79f1: triggroup ; c79f1
+MapGroup9ScriptHeaders: triggroup ; c79f1
 	dmaptrigger Func_91189
 	dmaptrigger Func_91856
 	db $ff
 
-Data_c79f4: triggroup ; c79f4
+MapGroup10ScriptHeaders: triggroup ; c79f4
 	dmaptrigger Func_920c3
 	dmaptrigger Func_92965
 	dmaptrigger Func_92aab
@@ -102,27 +102,27 @@ Data_c79f4: triggroup ; c79f4
 	dmaptrigger Func_92e02
 	db $ff
 
-Data_c79fa: triggroup ; c79fa
+MapGroup11ScriptHeaders: triggroup ; c79fa
 	db $ff
 
-Data_c79fb: triggroup ; c79fb
+MapGroup12ScriptHeaders: triggroup ; c79fb
 	dmaptrigger Func_951a3
 	db $ff
 
-Data_c79fd: triggroup ; c79fd
+MapGroup13ScriptHeaders: triggroup ; c79fd
 	dmaptrigger Func_96dbb
 	dmaptrigger Func_96e97
 	dmaptrigger Func_971d6
 	dmaptrigger Func_97486
 	db $ff
 
-Data_c7a02: triggroup ; c7a02
+MapGroup14ScriptHeaders: triggroup ; c7a02
 	db $ff
 
-Data_c7a03: triggroup ; c7a03
+MapGroup15ScriptHeaders: triggroup ; c7a03
 	db $ff
 
-Data_c7a04: triggroup ; c7a04
+MapGroup18ScriptHeaders: triggroup ; c7a04
 	dmaptrigger Func_9a168
 	dmaptrigger Func_9a169
 	dmaptrigger Func_9a172
@@ -137,7 +137,7 @@ Data_c7a04: triggroup ; c7a04
 	dmaptrigger Func_9e4d8
 	db $ff
 
-Data_c7a11: triggroup ; c7a11
+MapGroup19ScriptHeaders: triggroup ; c7a11
 	dmaptrigger Func_9d1cb
 	dmaptrigger Func_9dcf6
 	dmaptrigger Func_9eec4
@@ -151,7 +151,7 @@ Data_c7a11: triggroup ; c7a11
 	dmaptrigger Func_9f5a0
 	db $ff
 
-Data_c7a1d: triggroup ; c7a1d
+MapGroup20ScriptHeaders: triggroup ; c7a1d
 	dmaptrigger Func_9ef0f
 	dmaptrigger Func_9ef10
 	dmaptrigger Func_9ef8d
@@ -174,12 +174,12 @@ Data_c7a1d: triggroup ; c7a1d
 	dmaptrigger Func_a98a2
 	db $ff
 
-Data_c7a32: triggroup ; c7a32
+MapGroup21ScriptHeaders: triggroup ; c7a32
 	dmaptrigger Func_a11de
 	dmaptrigger Func_a167b
 	db $ff
 
-Data_c7a35: triggroup ; c7a35
+MapGroup22ScriptHeaders: triggroup ; c7a35
 	dmaptrigger Func_c916d
 	dmaptrigger Func_cb8d6
 	dmaptrigger Func_cba6d
@@ -194,16 +194,16 @@ Data_c7a35: triggroup ; c7a35
 	dmaptrigger Func_a9db4
 	db $ff
 
-Data_c7a42: triggroup ; c7a42
+MapGroup23ScriptHeaders: triggroup ; c7a42
 	dmaptrigger Func_a5126
 	dmaptrigger Func_a544c
 	db $ff
 
-Data_c7a45: triggroup ; c7a45
+MapGroup24ScriptHeaders: triggroup ; c7a45
 	dmaptrigger Func_a6882
 	db $ff
 
-Data_c7a47: triggroup ; c7a47
+MapGroup25ScriptHeaders: triggroup ; c7a47
 	dmaptrigger Func_a922b
 	dmaptrigger Func_a9db4
 	dmaptrigger Func_a9e71
@@ -220,7 +220,7 @@ Data_c7a47: triggroup ; c7a47
 	dmaptrigger Func_ad122
 	db $ff
 
-Data_c7a56: triggroup ; c7a56
+MapGroup26ScriptHeaders: triggroup ; c7a56
 	dmaptrigger Func_aa218
 	dmaptrigger Func_aa5cb
 	dmaptrigger Func_aac19
@@ -231,11 +231,11 @@ Data_c7a56: triggroup ; c7a56
 	dmaptrigger Func_af3e9
 	db $ff
 
-Data_c7a5f: triggroup ; c7a5f
+MapGroup27ScriptHeaders: triggroup ; c7a5f
 	dmaptrigger Func_ad122
 	db $ff
 
-Data_c7a61: triggroup ; c7a61
+MapGroup28ScriptHeaders: triggroup ; c7a61
 	dmaptrigger Func_ae48b
 	dmaptrigger Func_ae6ea
 	dmaptrigger Func_ae8e7
@@ -250,12 +250,12 @@ Data_c7a61: triggroup ; c7a61
 	dmaptrigger Func_af3e9
 	db $ff
 
-Data_c7a6e: triggroup ; c7a6e
+MapGroup29ScriptHeaders: triggroup ; c7a6e
 	dmaptrigger Func_b10ea
 	dmaptrigger Func_b138f
 	db $ff
 
-Data_c7a71: triggroup ; c7a71
+MapGroup30ScriptHeaders: triggroup ; c7a71
 	dmaptrigger Func_d11ef
 	dmaptrigger Func_d153f
 	dmaptrigger Func_a2aa5
@@ -275,7 +275,7 @@ Data_c7a71: triggroup ; c7a71
 	dmaptrigger Func_b7a64
 	db $ff
 
-Data_c7a83: triggroup ; c7a83
+MapGroup31ScriptHeaders: triggroup ; c7a83
 	dmaptrigger Func_b5152
 	dmaptrigger Func_b5215
 	dmaptrigger Func_b52d3
@@ -293,13 +293,13 @@ Data_c7a83: triggroup ; c7a83
 	dmaptrigger Func_b5fbe
 	db $ff
 
-Data_c7a93: triggroup ; c7a93
+MapGroup32ScriptHeaders: triggroup ; c7a93
 	dmaptrigger Func_b790a
 	dmaptrigger Func_b79f8
 	dmaptrigger Func_b7a64
 	db $ff
 
-Data_c7a97: triggroup ; c7a97
+MapGroup33ScriptHeaders: triggroup ; c7a97
 	dmaptrigger Func_b93f1
 	dmaptrigger Func_b9bbe
 	dmaptrigger Func_ba46c
@@ -314,45 +314,45 @@ Data_c7a97: triggroup ; c7a97
 	dmaptrigger Func_d3ceb
 	db $ff
 
-Pointers_c7aa4:
-	dw Data_c79b1
-	dw Data_c79cf
-	dw Data_c79d1
-	dw Data_c79d8
-	dw Data_c79e0
-	dw Data_c79e2
-	dw Data_c79ed
-	dw Data_c79ef
-	dw Data_c79f1
-	dw Data_c79f4
-	dw Data_c79fa
-	dw Data_c79fb
-	dw Data_c79fd
-	dw Data_c7a02
-	dw Data_c7a03
+MapGroupPointers:
+	dw MapGroup1ScriptHeaders
+	dw MapGroup2ScriptHeaders
+	dw MapGroup3ScriptHeaders
+	dw MapGroup4ScriptHeaders
+	dw MapGroup5ScriptHeaders
+	dw MapGroup6ScriptHeaders
+	dw MapGroup7ScriptHeaders
+	dw MapGroup8ScriptHeaders
+	dw MapGroup9ScriptHeaders
+	dw MapGroup10ScriptHeaders
+	dw MapGroup11ScriptHeaders
+	dw MapGroup12ScriptHeaders
+	dw MapGroup13ScriptHeaders
+	dw MapGroup14ScriptHeaders
+	dw MapGroup15ScriptHeaders
 	dw $0
 	dw $0
-	dw Data_c7a04
-	dw Data_c7a11
-	dw Data_c7a1d
-	dw Data_c7a32
-	dw Data_c7a35
-	dw Data_c7a42
-	dw Data_c7a45
-	dw Data_c7a47
-	dw Data_c7a56
-	dw Data_c7a5f
-	dw Data_c7a61
-	dw Data_c7a6e
-	dw Data_c7a71
-	dw Data_c7a83
-	dw Data_c7a93
-	dw Data_c7a97
+	dw MapGroup18ScriptHeaders
+	dw MapGroup19ScriptHeaders
+	dw MapGroup20ScriptHeaders
+	dw MapGroup21ScriptHeaders
+	dw MapGroup22ScriptHeaders
+	dw MapGroup23ScriptHeaders
+	dw MapGroup24ScriptHeaders
+	dw MapGroup25ScriptHeaders
+	dw MapGroup26ScriptHeaders
+	dw MapGroup27ScriptHeaders
+	dw MapGroup28ScriptHeaders
+	dw MapGroup29ScriptHeaders
+	dw MapGroup30ScriptHeaders
+	dw MapGroup31ScriptHeaders
+	dw MapGroup32ScriptHeaders
+	dw MapGroup33ScriptHeaders
 
 GroupAndNumberToLinearIndex:: ; c7ae6 (31:7ae6)
 ; args: a, e
-; sum([len(xx) for xx in Pointers_c7aa4[:a]]) + Pointers_c7aa4[a].index(e) \
-;     if e in Pointers_c7aa4[a] else 0xffff
+; sum([len(xx) for xx in MapGroupPointers[:a]]) + MapGroupPointers[a].index(e) \
+;     if e in MapGroupPointers[a] else 0xffff
 	push af
 	push de
 	push bc
@@ -368,7 +368,7 @@ GroupAndNumberToLinearIndex:: ; c7ae6 (31:7ae6)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, Pointers_c7aa4
+	ld de, MapGroupPointers
 	add hl, de
 	ld a, [hl]
 	inc hl
@@ -380,7 +380,7 @@ GroupAndNumberToLinearIndex:: ; c7ae6 (31:7ae6)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	ld de, Pointers_c7aa4
+	ld de, MapGroupPointers
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -413,7 +413,7 @@ GroupAndNumberToLinearIndex:: ; c7ae6 (31:7ae6)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, Pointers_c7aa4
+	ld de, MapGroupPointers
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -428,7 +428,7 @@ GroupAndNumberToLinearIndex:: ; c7ae6 (31:7ae6)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, Pointers_c7aa4
+	ld de, MapGroupPointers
 	add hl, de
 	ld e, [hl]
 	inc hl

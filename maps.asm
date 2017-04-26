@@ -8,19 +8,8 @@ SECTION "Bank 20", ROMX, BANK [$20]
 	lib_bank_20 20
 
 INCLUDE "maps/scripts/unknown_81281.asm"
-INCLUDE "maps/scripts/unknown_81607.asm"
-INCLUDE "maps/scripts/unknown_81811.asm"
-INCLUDE "maps/scripts/unknown_81973.asm"
-INCLUDE "maps/scripts/unknown_819b0.asm"
 INCLUDE "maps/scripts/unknown_81ac1.asm"
 INCLUDE "maps/scripts/unknown_81d6a.asm"
-INCLUDE "maps/scripts/unknown_82047.asm"
-INCLUDE "maps/scripts/unknown_82079.asm"
-INCLUDE "maps/scripts/unknown_8208c.asm"
-INCLUDE "maps/scripts/unknown_82286.asm"
-INCLUDE "maps/scripts/unknown_822dd.asm"
-INCLUDE "maps/scripts/unknown_82335.asm"
-INCLUDE "maps/scripts/unknown_8238b.asm"
 INCLUDE "maps/scripts/unknown_8240c.asm"
 INCLUDE "maps/scripts/unknown_825cc.asm"
 INCLUDE "maps/scripts/unknown_82628.asm"
@@ -6796,7 +6785,7 @@ Func_cb8d6: ; cb8d6
 	dr $cb8d6, $cba6d
 
 Func_cba6d: ; cba6d
-	dr $cba6d, $cc000
+	dr $cba6d, $cbb5f
 
 SECTION "Bank 33", ROMX, BANK [$33]
 	lib_bank_20 33
@@ -6817,7 +6806,7 @@ Func_ceacc: ; ceacc
 	dr $ceacc, $cf14d
 
 Func_cf14d: ; cf14d
-	dr $cf14d, $d0000
+	dr $cf14d, $cf35a
 
 SECTION "Bank 34", ROMX, BANK [$34]
 	lib_bank_20 34

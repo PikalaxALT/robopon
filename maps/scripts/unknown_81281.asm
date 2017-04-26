@@ -423,3 +423,446 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld a, BANK(Data_814b3)
 	call ApplyMovementData_20
 	ret
+
+Data_815d0:
+	dr $815d0, $815f9
+
+Data_815f9: ; 815f9
+	dr $815f9, $815ff
+
+Data_815ff: ; 815ff
+	dr $815ff, $81603
+
+Data_81603: ; 81603
+	dr $81603, $81607
+
+Func_81607:
+	ld a, e
+	or a
+	jp nz, Func_8171a
+	checkevent $2
+	or a
+	jp nz, Func_81704
+	ld a, [wPlayerFacing]
+	cp FACE_RIGHT
+	jp nz, Func_8162b
+	ld c, $0
+	ld de, Data_815f9
+	ld a, BANK(Data_815f9)
+	call ApplyMovementData_20
+	jp Func_81635
+
+Func_8162b: ; 8162b (20:562b)
+	ld c, $0
+	ld de, Data_815ff
+	ld a, BANK(Data_815ff)
+	call ApplyMovementData_20
+Func_81635: ; 81635 (20:5635)
+	xor a
+	call PlayerFace_20
+	ld a, $a
+	call FadeOutAudio_20
+	playmusic SONG_NONE
+	ld e, FACE_DOWN
+	xor a
+	call SpriteFace_20
+	ld e, FACE_DOWN
+	ld a, $1
+	call SpriteFace_20
+	ld a, $1
+	call FadeInAudio_20
+	playmusic SONG_ENCOUNTER_EVIL
+	writenpctext TreeBitstreamText_3969a
+	writenpctext TreeBitstreamText_396d0
+	writetext_yesorno TreeBitstreamText_396ec
+	or a
+	jp nz, Func_816da
+	startbattle Data_8171b, Data_815d0
+	or a
+	jp nz, .won
+	jp Func_8171a
+
+.won
+	writenpctext TreeBitstreamText_396fd
+	ld bc, Data_81603
+	ld e, BANK(Data_81603)
+	ld a, $1
+	call Func_801f7_20
+	playsfx $2e
+	call Func_8020c_20
+	ld e, $0
+	ld a, $1
+	call Func_8013d_20
+	script_sleep $1e
+	playmusic SONG_NONE
+	playmusic SONG_TOWN1
+	checkevent $3
+	or a
+	jp nz, Func_816cc
+	writenpctext TreeBitstreamText_3972e
+	writenpctext TreeBitstreamText_39760
+	writenpctext TreeBitstreamText_3976c
+	jp Func_816cf
+
+Func_816cc: ; 816cc (20:56cc)
+	call Func_8172f
+Func_816cf: ; 816cf (20:56cf)
+	ld e, $1
+	ld hl, $2
+	call EventFlagAction_20
+	jp Func_81701
+
+Func_816da: ; 816da (20:56da)
+	playsfx $69
+	writenpctext TreeBitstreamText_39718
+	script_sleep $1e
+	ld e, FACE_LEFT
+	xor a
+	call SpriteFace_20
+	ld e, FACE_RIGHT
+	ld a, $1
+	call SpriteFace_20
+	playmusic SONG_NONE
+	playmusic SONG_TOWN1
+Func_81701: ; 81701 (20:5701)
+	jp Func_8171a
+
+Func_81704: ; 81704 (20:5704)
+	checkevent $3
+	or a
+	jp nz, Func_81717
+	writenpctext TreeBitstreamText_397b1
+	jp Func_8171a
+
+Func_81717: ; 81717 (20:5717)
+	call Func_8172f
+Func_8171a: ; 8171a (20:571a)
+	ret
+
+Data_8171b:
+	db "(こふﾞん1)", $0
+
+Data_81723: ; 81723
+	dr $81723, $81727
+
+Data_81727: ; 81727
+	dr $81727, $8172b
+
+Data_8172b: ; 8172b
+	dr $8172b, $8172f
+
+Func_8172f: ; 8172f (20:572f)
+	checkevent $4
+	or a
+	jp nz, Func_817c9
+	ld c, $e
+	ld e, $c
+	ld a, $3
+	call Func_80080_20
+	writenpctext TreeBitstreamText_397dc
+	writenpctext TreeBitstreamText_397ed
+	script_sleep $1e
+	playmusic $19
+	ld bc, Data_81727
+	ld e, BANK(Data_81727)
+	ld a, $3
+	call Func_801f7_20
+	call Func_8020c_20
+	script_sleep $1e
+	ld c, $1
+	ld de, Data_81723
+	ld a, BANK(Data_81723)
+	call ApplyMovementData_20
+	call Func_8020c_20
+	ld a, $2
+	call PlayerFace_20
+	script_sleep $1e
+	playmusic SONG_NONE
+	playmusic $3
+	writenpctext TreeBitstreamText_398d5
+	writenpctext TreeBitstreamText_398e4
+	writenpctext TreeBitstreamText_39944
+	writenpctext TreeBitstreamText_39953
+	playsfx $2e
+	ld bc, Data_8172b
+	ld e, BANK(Data_8172b)
+	ld a, $3
+	call Func_801f7_20
+	call Func_8020c_20
+	ld e, $0
+	ld a, $3
+	call Func_8013d_20
+	ld e, $1
+	ld hl, $4
+	call EventFlagAction_20
+	jp Func_817d3
+
+Func_817c9: ; 817c9 (20:57c9)
+	xor a
+	call Func_8044b_20
+	writenpctext TreeBitstreamText_399d1
+Func_817d3: ; 817d3 (20:57d3)
+	ret
+
+Data_817d4:
+	dr $817d4, $817fd
+
+Data_817fd: ; 817fd
+	dr $817fd, $81801
+
+Data_81801: ; 81801
+	dr $81801, $81805
+
+Data_81805: ; 81805
+	dr $81805, $8180d
+
+Data_8180d: ; 8180d
+	dr $8180d, $81811
+
+Func_81811:
+	ld a, e
+	or a
+	jp nz, Func_81966
+	checkevent $3
+	or a
+	jp nz, Func_8193b
+	ld c, $1
+	ld de, Data_8180d
+	ld a, BANK(Data_8180d)
+	call ApplyMovementData_20
+	ld a, $1
+	call PlayerFace_20
+	ld a, $a
+	call FadeOutAudio_20
+	playmusic SONG_NONE
+	ld e, $3
+	ld a, $3
+	call SpriteFace_20
+	ld e, $3
+	ld a, $4
+	call SpriteFace_20
+	ld a, $1
+	call FadeInAudio_20
+	playmusic $1a
+	writenpctext TreeBitstreamText_397f7
+	writenpctext TreeBitstreamText_3981d
+	writenpctext TreeBitstreamText_39839
+	writetext_yesorno TreeBitstreamText_396ec
+	or a
+	jp nz, Func_81910
+	startbattle Data_81967, Data_817d4
+	or a
+	jp nz, Func_8187c
+	jp Func_81966
+
+Func_8187c: ; 8187c (20:587c)
+	writenpctext TreeBitstreamText_3985c
+	ld bc, Data_817fd
+	ld e, BANK(Data_817fd)
+	ld a, $4
+	call Func_801f7_20
+	playsfx $2e
+	call Func_8020c_20
+	ld e, $0
+	ld a, $4
+	call Func_8013d_20
+	playmusic SONG_NONE
+	playmusic $3
+	checkevent $2
+	or a
+	jp nz, Func_818b7
+	writenpctext TreeBitstreamText_39889
+	jp Func_81905
+
+Func_818b7: ; 818b7 (20:58b7)
+	ld c, $1
+	ld de, Data_81801
+	ld a, BANK(Data_81801)
+	call ApplyMovementData_20
+	call Func_8020c_20
+	ld a, $1
+	call PlayerFace_20
+	writenpctext TreeBitstreamText_398ba
+	writenpctext TreeBitstreamText_398e4
+	writenpctext TreeBitstreamText_39944
+	writenpctext TreeBitstreamText_39953
+	playsfx $2e
+	ld bc, Data_81805
+	ld e, BANK(Data_81805)
+	ld a, $3
+	call Func_80688_20
+	ld a, $2
+	call PlayerFace_20
+	call Func_8020c_20
+	ld e, $0
+	ld a, $3
+	call Func_8013d_20
+	ld e, $0
+	xor a
+	call Func_8013d_20
+Func_81905: ; 81905 (20:5905)
+	ld e, $1
+	ld hl, $3
+	call EventFlagAction_20
+	jp Func_81938
+
+Func_81910: ; 81910 (20:5910)
+	playsfx $69
+	writenpctext TreeBitstreamText_39847
+	script_sleep $1e
+	ld e, $2
+	ld a, $3
+	call SpriteFace_20
+	ld e, $0
+	ld a, $4
+	call SpriteFace_20
+	playmusic SONG_NONE
+	playmusic $3
+Func_81938: ; 81938 (20:5938)
+	jp Func_81966
+
+Func_8193b: ; 8193b (20:593b)
+	checkevent $2
+	or a
+	jp nz, Func_8194e
+	writenpctext TreeBitstreamText_39889
+	jp Func_81966
+
+Func_8194e: ; 8194e (20:594e)
+	writenpctext TreeBitstreamText_398ba
+	writenpctext TreeBitstreamText_398e4
+	writenpctext TreeBitstreamText_39944
+	writenpctext TreeBitstreamText_39953
+Func_81966: ; 81966 (20:5966)
+	ret
+
+Data_81967:
+	db "(こふﾞん2)", $0
+
+Data_8196f: ; 8196f
+	dr $8196f, $81973
+
+Func_81973:
+	push de
+	checkevent $3
+	or a
+	jp nz, Func_819aa
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $2
+	jp nz, Func_819aa
+	ld e, $3
+	xor a
+	call SpriteFace_20
+	writenpctext TreeBitstreamText_3976c
+	ld a, $1
+	call PlayerFace_20
+	ld c, $1
+	ld de, Data_8196f
+	ld a, BANK(Data_8196f)
+	call ApplyMovementData_20
+	call Func_8020c_20
+	ld e, $2
+	xor a
+	call SpriteFace_20
+Func_819aa: ; 819aa (20:59aa)
+	pop bc
+	ret
+
+Data_819ac:
+	dr $819ac, $819b0
+
+Func_819b0:
+	push de
+	checkevent $2
+	or a
+	jp nz, Func_819e8
+	ld hl, sp+$0
+	ld a, [hl]
+	cp $2
+	jp nz, Func_819e8
+	ld e, $2
+	ld a, $3
+	call SpriteFace_20
+	writenpctext TreeBitstreamText_39889
+	xor a
+	call PlayerFace_20
+	ld c, $1
+	ld de, Data_819ac
+	ld a, BANK(Data_819ac)
+	call ApplyMovementData_20
+	call Func_8020c_20
+	ld e, $3
+	ld a, $3
+	call SpriteFace_20
+Func_819e8: ; 819e8 (20:59e8)
+	pop bc
+	ret
+
+Func_819ea:
+	ld a, e
+	cp $1
+	jp nz, Func_81a21
+	ld a, [wPlayerFacing]
+	cp $1
+	jp z, Func_819fb
+	jp Func_81a21
+
+Func_819fb: ; 819fb (20:59fb)
+	ld l, $7
+	push hl
+	ld c, $0
+	ld e, $4
+	ld a, $20
+	call Func_80dff_20
+	pop bc
+	ld a, $1
+	ld [wc7e9], a
+	ld a, $7
+	ld [wc7ea], a
+	playsfx $2e
+	ld a, $8
+	ld [wBackupMapX], a
+	ld a, $8
+	ld [wBackupMapY], a
+Func_81a21: ; 81a21 (20:5a21)
+	ret
+
+Func_81a22:
+	ld a, e
+	cp $1
+	jp nz, Func_81a59
+	ld a, [wPlayerFacing]
+	cp $1
+	jp z, Func_81a33
+	jp Func_81a59
+
+Func_81a33: ; 81a33 (20:5a33)
+	ld l, $7
+	push hl
+	ld c, $0
+	ld e, $4
+	ld a, $20
+	call Func_80dff_20
+	pop bc
+	ld a, $1
+	ld [wc7e9], a
+	ld a, $7
+	ld [wc7ea], a
+	playsfx $2e
+	ld a, $8
+	ld [wBackupMapX], a
+	ld a, $f
+	ld [wBackupMapY], a
+Func_81a59: ; 81a59 (20:5a59)
+	ret
+
+Func_81a5a:
+	ld a, e
+	cp $2
+	jp nz, Func_81a65
+	ld a, $6
+	ld [wc78a], a
+Func_81a65: ; 81a65 (20:5a65)
+	ret
+
