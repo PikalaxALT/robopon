@@ -6862,10 +6862,296 @@ Func_d367a: ; d367a
 	dr $d367a, $d392b
 
 Func_d392b: ; d392b
-	dr $d392b, $d3ceb
+	dr $d392b, $d3a6d
 
-Func_d3ceb: ; d3ceb
-	dr $d3ceb, $d4000
+Data_d3a6d: ; d3a6d
+	dr $d3a6d, $d3a73
+
+Data_d3a73: ; d3a73
+	dr $d3a73, $d3a79
+
+Data_d3a79: ; d3a79
+	dr $d3a79, $d3a7f
+
+Data_d3a7f: ; d3a7f
+	dr $d3a7f, $d3a85
+
+Data_d3a85: ; d3a85
+	dr $d3a85, $d3a8b
+
+Data_d3a8b: ; d3a8b
+	dr $d3a8b, $d3a91
+
+Data_d3a91: ; d3a91
+	dr $d3a91, $d3a97
+
+Data_d3a97: ; d3a97
+	dr $d3a97, $d3a9d
+
+Data_d3a9d: ; d3a9d
+	dr $d3a9d, $d3aa3
+
+Data_d3aa3: ; d3aa3
+	dr $d3aa3, $d3aa9
+
+Data_d3aa9: ; d3aa9
+	dr $d3aa9, $d3aaf
+
+Data_d3aaf: ; d3aaf
+	dr $d3aaf, $d3ab5
+
+Data_d3ab5: ; d3ab5
+	dr $d3ab5, $d3abb
+
+Data_d3abb: ; d3abb
+	dr $d3abb, $d3ac1
+
+Data_d3ac1: ; d3ac1
+	dr $d3ac1, $d3ac7
+
+Data_d3ac7: ; d3ac7
+	dr $d3ac7, $d3acd
+
+Data_d3acd: ; d3acd
+	dr $d3acd, $d3ad3
+
+Data_d3ad3: ; d3ad3
+	dr $d3ad3, $d3ad9
+
+Data_d3ad9: ; d3ad9
+	dr $d3ad9, $d3adf
+
+Func_d3adf: ; d3adf (34:7adf)
+	ld hl, $f1
+	call CheckEventFlag_34
+	or a
+	jp nz, Func_d3af2
+	ld hl, Data_d3ad9
+	call Func_80d9b_34
+	call Func_80f02_34
+Func_d3af2: ; d3af2 (34:7af2)
+	ld a, [wc78d + 1]
+	cp $1
+	jp nz, Func_d3b0c
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3aa3
+	call Func_80d9b_34
+	call Func_80f02_34
+	jp Func_d3cb1
+
+Func_d3b0c: ; d3b0c (34:7b0c)
+	ld a, [wc78d + 1]
+	cp $2
+	jp nz, Func_d3b2c
+	ld hl, Data_d3a73
+	call Func_80d9b_34
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3aa9
+	call Func_80d9b_34
+	call Func_80f02_34
+	jp Func_d3cb1
+
+Func_d3b2c: ; d3b2c (34:7b2c)
+	ld a, [wc78d + 1]
+	cp $3
+	jp nz, Func_d3b52
+	ld hl, Data_d3a79
+	call Func_80d9b_34
+	ld hl, Data_d3a73
+	call Func_80d9b_34
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3aaf
+	call Func_80d9b_34
+	call Func_80f02_34
+	jp Func_d3cb1
+
+Func_d3b52: ; d3b52 (34:7b52)
+	ld a, [wc78d + 1]
+	cp $4
+	jp nz, Func_d3b7e
+	ld hl, Data_d3a7f
+	call Func_80d9b_34
+	ld hl, Data_d3a79
+	call Func_80d9b_34
+	ld hl, Data_d3a73
+	call Func_80d9b_34
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3ab5
+	call Func_80d9b_34
+	call Func_80f02_34
+	jp Func_d3cb1
+
+Func_d3b7e: ; d3b7e (34:7b7e)
+	ld a, [wc78d + 1]
+	cp $5
+	jp nz, Func_d3bb0
+	ld hl, Data_d3a85
+	call Func_80d9b_34
+	ld hl, Data_d3a7f
+	call Func_80d9b_34
+	ld hl, Data_d3a79
+	call Func_80d9b_34
+	ld hl, Data_d3a73
+	call Func_80d9b_34
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3abb
+	call Func_80d9b_34
+	call Func_80f02_34
+	jp Func_d3cb1
+
+Func_d3bb0: ; d3bb0 (34:7bb0)
+	ld a, [wc78d + 1]
+	cp $6
+	jp nz, Func_d3be8
+	ld hl, Data_d3a8b
+	call Func_80d9b_34
+	ld hl, Data_d3a85
+	call Func_80d9b_34
+	ld hl, Data_d3a7f
+	call Func_80d9b_34
+	ld hl, Data_d3a79
+	call Func_80d9b_34
+	ld hl, Data_d3a73
+	call Func_80d9b_34
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3ac1
+	call Func_80d9b_34
+	call Func_80f02_34
+	jp Func_d3cb1
+
+Func_d3be8: ; d3be8 (34:7be8)
+	ld a, [wc78d + 1]
+	cp $7
+	jp nz, Func_d3c26
+	ld hl, Data_d3a91
+	call Func_80d9b_34
+	ld hl, Data_d3a8b
+	call Func_80d9b_34
+	ld hl, Data_d3a85
+	call Func_80d9b_34
+	ld hl, Data_d3a7f
+	call Func_80d9b_34
+	ld hl, Data_d3a79
+	call Func_80d9b_34
+	ld hl, Data_d3a73
+	call Func_80d9b_34
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3ac7
+	call Func_80d9b_34
+	call Func_80f02_34
+	jp Func_d3cb1
+
+Func_d3c26: ; d3c26 (34:7c26)
+	ld a, [wc78d + 1]
+	cp $8
+	jp nz, Func_d3c6a
+	ld hl, Data_d3a97
+	call Func_80d9b_34
+	ld hl, Data_d3a91
+	call Func_80d9b_34
+	ld hl, Data_d3a8b
+	call Func_80d9b_34
+	ld hl, Data_d3a85
+	call Func_80d9b_34
+	ld hl, Data_d3a7f
+	call Func_80d9b_34
+	ld hl, Data_d3a79
+	call Func_80d9b_34
+	ld hl, Data_d3a73
+	call Func_80d9b_34
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3acd
+	call Func_80d9b_34
+	call Func_80f02_34
+	jp Func_d3cb1
+
+Func_d3c6a: ; d3c6a (34:7c6a)
+	ld a, [wc78d + 1]
+	cp $9
+	jp nz, Func_d3cb1
+	ld hl, Data_d3a9d
+	call Func_80d9b_34
+	ld hl, Data_d3a97
+	call Func_80d9b_34
+	ld hl, Data_d3a91
+	call Func_80d9b_34
+	ld hl, Data_d3a8b
+	call Func_80d9b_34
+	ld hl, Data_d3a85
+	call Func_80d9b_34
+	ld hl, Data_d3a7f
+	call Func_80d9b_34
+	ld hl, Data_d3a79
+	call Func_80d9b_34
+	ld hl, Data_d3a73
+	call Func_80d9b_34
+	ld hl, Data_d3a6d
+	call Func_80d9b_34
+	ld hl, Data_d3ad3
+	call Func_80d9b_34
+	call Func_80f02_34
+Func_d3cb1: ; d3cb1 (34:7cb1)
+	ret
+
+Func_d3cb2: ; d3cb2 (34:7cb2)
+	ld c, $1
+	ld e, $2
+	ld a, $2b
+	call LoadEmote_34
+	ld e, $e
+	ld a, $7
+	call ShowEmote_34
+	ld a, $65
+	call PlaySFX_34
+	ld hl, $3c
+	call ScriptSleep_34
+	ld a, $43
+	call PlaySFX_34
+	call Func_801d5_34
+	ld e, $1
+	ld hl, $f1
+	call EventFlagAction_34
+	ld l, $9
+	push hl
+	ld c, $9
+	ld e, $1
+	ld a, $1f
+	call Func_80dff_34
+	pop bc
+	ret
+
+Func_d3ceb: ; d3ceb (34:7ceb)
+	ld e, $0
+	ld hl, $f9
+	call EventFlagAction_34
+	ld a, $e
+	call PlayMusic_34
+	xor a
+	call Func_80653_34
+	ld c, $1
+	ld e, $6
+	ld a, $26
+	call LoadEmote_34
+	call Func_8001c_34
+	call Func_801d5_34
+	ld a, $1
+	call PlayerFace_34
+	ld l, $5
+	push hl
+	ld c, $f
+	ld e, $16
+	ld a, $13
+	call Func_80dff_34
+	pop bc
+	ret
 
 SECTION "Bank 36", ROMX, BANK [$36]
 GFX_d8000:: INCBIN "gfx/misc/d8000.2bpp"
