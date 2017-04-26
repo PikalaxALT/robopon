@@ -40,11 +40,11 @@ person_event: MACRO
 	shift
 IF \8 == 0
 	shift
-	dba \8
+	dba \8 ; function pointer
 ELSE
-	dbw \8, 0
+	dbw \8, 0 ; dummy
 ENDC
-	dw \9
+	dw \9 ; param pointer
 	ENDM
 
 wildbot: MACRO
