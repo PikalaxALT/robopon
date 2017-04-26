@@ -7252,10 +7252,163 @@ DecompressEmoteAttrs: ; da5db (36:65db)
 	ret
 
 Data_da631:
-	dr $da631, $da729
+	dr $da631, $da66f
 
-Func_da729:: ; da729
-	dr $da729, $da835
+Data_da66f: ; da66f
+	dr $da66f, $da6ad
+
+Data_da6ad: ; da6ad
+	dr $da6ad, $da6eb
+
+Data_da6eb: ; da6eb
+	dr $da6eb, $da729
+
+Func_da729:: ; da729 (36:6729)
+	push af
+	push de
+	push bc
+	push bc
+	ld hl, sp+$2
+	ld [hl], $0
+	ld hl, sp+$3
+	ld [hl], $0
+	ld hl, sp+$2
+	call Func_d9f74
+	ld a, $2
+	ld [wFarCallDestBank], a
+	ld hl, $0
+	pop de
+	push hl
+	ld c, $1
+	ld hl, sp+$7
+	ld a, [hl]
+	cp $3a
+	jp z, Func_da79b
+	cp $39
+	jp z, Func_da78e
+	cp $38
+	jp z, Func_da78e
+	cp $5
+	jp z, Func_da781
+	cp $3d
+	jp z, Func_da76c
+	cp $3c
+	jp z, Func_da76c
+	cp $3b
+	jp nz, Func_da7a8
+Func_da76c: ; da76c (36:676c)
+	ld a, [wc85a]
+	or $1
+	ld [wc85a], a
+	xor a
+	ld [wc2cb], a
+	xor a
+	ld [wc2cc], a
+	ld c, $1
+	jp Func_da7b2
+
+Func_da781: ; da781 (36:6781)
+	ld a, $68
+	ld [wc2cb], a
+	ld a, $58
+	ld [wc2cc], a
+	jp Func_da7b2
+
+Func_da78e: ; da78e (36:678e)
+	ld a, $36
+	ld [wc2cb], a
+	ld a, $58
+	ld [wc2cc], a
+	jp Func_da7b2
+
+Func_da79b: ; da79b (36:679b)
+	ld a, $40
+	ld [wc2cb], a
+	ld a, $58
+	ld [wc2cc], a
+	jp Func_da7b2
+
+Func_da7a8: ; da7a8 (36:67a8)
+	ld a, $28
+	ld [wc2cb], a
+	ld a, $58
+	ld [wc2cc], a
+Func_da7b2: ; da7b2 (36:67b2)
+	ld hl, sp+$7
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_da66f
+	add hl, de
+	ld a, [hl]
+	or a
+	jp z, Func_da803
+	push bc
+	ld hl, sp+$9
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_da631
+	add hl, de
+	ld c, [hl]
+	ld de, Emotes_34000
+	ld a, BANK(Emotes_34000)
+	call LoadEmoteGFX
+	ld hl, sp+$9
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_da66f
+	add hl, de
+	ld c, [hl]
+	ld de, EmoteAttrs_3570d
+	ld a, BANK(EmoteAttrs_3570d)
+	call DecompressEmoteAttrs
+	call WriteHLToSPPlus4
+	pop bc
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, c
+	ld c, l
+	ld b, h
+	ld hl, sp+$7
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_da6ad
+	add hl, de
+	ld l, [hl]
+	ld h, $0
+	push hl
+	call GetHLAtSPPlus4
+	pop de
+	call Func_d9f7e
+Func_da803: ; da803 (36:6803)
+	ld a, [wSystemType]
+	cp $11
+	jp nz, Func_da82e
+	ld hl, sp+$7
+	ld a, [hl]
+	cp $3e
+	jp c, Func_da81e
+	ld a, [wc85a]
+	or $7
+	ld [wc85a], a
+	jp Func_da82e
+
+Func_da81e: ; da81e (36:681e)
+	ld a, [wc85a]
+	ld hl, sp+$7
+	ld e, [hl]
+	ld d, $0
+	ld hl, Data_da6eb
+	add hl, de
+	or [hl]
+	ld [wc85a], a
+Func_da82e: ; da82e (36:682e)
+	pop hl
+	push hl
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
 
 Func_da835:: ; da835
 	ld [wc2f5], a
@@ -7423,10 +7576,263 @@ Func_da900:
 	ret
 
 Func_da901:: ; da901
-	dr $da901, $daa40
+	push hl
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	ld hl, sp+$a
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	push de
+	push hl
+	ld e, h
+	ld d, $0
+	inc de
+	ld hl, sp+$e
+	ld [hl], e
+	pop hl
+	ld e, l
+	ld d, $0
+	inc de
+	inc de
+	ld hl, sp+$b
+	ld [hl], e
+	pop de
+	ld hl, sp+$8
+	ld [hl], d
+	ld hl, sp+$7
+	ld [hl], e
+	ld hl, sp+$5
+	ld [hl], $0
+	xor a
+Func_da92b: ; da92b (36:692b)
+	cp $28
+	jp nc, Func_da98b
+	push af
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, wOAMBuffer
+	add hl, de
+	ld a, [hl]
+	ld c, a
+	inc hl
+	ld a, [hl]
+	ld hl, sp+$4
+	ld [hl], a
+	ld a, c
+	add $8
+	ld e, a
+	ld hl, sp+$b
+	ld a, [hl]
+	add a
+	add a
+	add a
+	cp e
+	jp nc, Func_da986
+	ld hl, sp+$b
+	ld a, [hl]
+	ld hl, sp+$9
+	add [hl]
+	add a
+	add a
+	add a
+	ld l, a
+	ld a, c
+	cp l
+	jp nc, Func_da986
+	ld hl, sp+$4
+	ld a, [hl]
+	add $8
+	ld e, a
+	ld hl, sp+$c
+	ld a, [hl]
+	add a
+	add a
+	add a
+	cp e
+	jp nc, Func_da986
+	ld hl, sp+$c
+	ld a, [hl]
+	ld hl, sp+$a
+	add [hl]
+	add a
+	add a
+	add a
+	ld e, a
+	ld hl, sp+$4
+	ld a, [hl]
+	cp e
+	jp nc, Func_da986
+	ld hl, sp+$7
+	ld a, [hl]
+	inc a
+	ld hl, sp+$7
+	ld [hl], a
+Func_da986: ; da986 (36:6986)
+	pop af
+	inc a
+	jp Func_da92b
+
+Func_da98b: ; da98b (36:698b)
+	set_farcall_addrs_hli AllocateMemory
+	ld hl, sp+$5
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	inc hl
+	call FarCall
+	pop de
+	push hl
+	push hl
+	ld hl, sp+$7
+	ld a, [hl]
+	call GetHLAtSPPlus4
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus4
+	ld hl, sp+$8
+	ld [hl], $0
+Func_da9b2: ; da9b2 (36:69b2)
+	ld hl, sp+$8
+	ld a, [hl]
+	cp $28
+	jp nc, Func_daa38
+	ld hl, sp+$8
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, wOAMBuffer
+	add hl, de
+	call WriteHLToSPPlus7
+	call GetHLAtSPPlus7
+	ld c, [hl]
+	call GetHLAtSPPlus7
+	inc hl
+	ld e, [hl]
+	ld hl, sp+$4
+	ld [hl], e
+	ld a, c
+	add $8
+	ld e, a
+	ld hl, sp+$b
+	ld a, [hl]
+	add a
+	add a
+	add a
+	cp e
+	jp nc, Func_daa2e
+	ld hl, sp+$b
+	ld a, [hl]
+	ld hl, sp+$9
+	add [hl]
+	add a
+	add a
+	add a
+	ld l, a
+	ld a, c
+	cp l
+	jp nc, Func_daa2e
+	ld hl, sp+$4
+	ld a, [hl]
+	add $8
+	ld e, a
+	ld hl, sp+$c
+	ld a, [hl]
+	add a
+	add a
+	add a
+	cp e
+	jp nc, Func_daa2e
+	ld hl, sp+$c
+	ld a, [hl]
+	ld hl, sp+$a
+	add [hl]
+	add a
+	add a
+	add a
+	ld e, a
+	ld hl, sp+$4
+	ld a, [hl]
+	cp e
+	jp nc, Func_daa2e
+	ld hl, sp+$8
+	ld a, [hl]
+	call GetHLAtSPPlus4
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus7
+	ld a, [hl]
+	call GetHLAtSPPlus4
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus4
+	call GetHLAtSPPlus7
+	ld [hl], $a0
+Func_daa2e: ; daa2e (36:6a2e)
+	ld hl, sp+$8
+	ld a, [hl]
+	inc a
+	ld hl, sp+$8
+	ld [hl], a
+	jp Func_da9b2
+
+Func_daa38: ; daa38 (36:6a38)
+	pop hl
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
 
 Func_daa40:: ; daa40
-	dr $daa40, $daa72
+	push hl
+	ld c, l
+	ld b, h
+	ld a, [bc]
+	inc bc
+	ld l, a
+	xor a
+Func_daa47: ; daa47 (36:6a47)
+	cp l
+	jp nc, Func_daa61
+	push hl
+	push af
+	ld a, [bc]
+	inc bc
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, wOAM00YCoord
+	add hl, de
+	ld a, [bc]
+	inc bc
+	ld [hl], a
+	pop af
+	inc a
+	pop hl
+	jp Func_daa47
+
+Func_daa61: ; daa61 (36:6a61)
+	set_farcall_addrs_hli FreeMemory
+	pop hl
+	call FarCall
+	ret
+
+Func_daa71:
+	ret
+
+
 
 INCLUDE "maps/enter_map.asm"
 
