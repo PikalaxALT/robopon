@@ -9,7 +9,7 @@ Func_8001c_\1: ; 8001c (20:401c)
 	callba_hli Func_ae4d
 	ret
 
-Func_8002b_\1: ; 8002b (20:402b)
+UnloadWarps_\1: ; 8002b (20:402b)
 	callba_hli UnloadWarps
 	ret
 

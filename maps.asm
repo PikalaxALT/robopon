@@ -4598,7 +4598,7 @@ Func_87c03: ; 87c03 (21:7c03)
 	ld e, $1
 	ld hl, $4c
 	call EventFlagAction_21
-	call Func_8002b_21
+	call UnloadWarps_21
 	loadwarps $4, Data_87bd7
 	call Func_80ea2_21
 	playsfx $64
@@ -6850,19 +6850,1125 @@ Func_d293a: ; d293a
 	dr $d293a, $d2c2a
 
 Func_d2c2a: ; d2c2a
-	dr $d2c2a, $d2e9d
+	dr $d2c2a, $d2cf1
 
-Func_d2e9d: ; d2e9d
-	dr $d2e9d, $d3312
+Data_d2cf1: ; d2cf1
+	dr $d2cf1, $d2d75
 
-Func_d3312: ; d3312
-	dr $d3312, $d367a
+Data_d2d75: ; d2d75
+	dr $d2d75, $d2d81
 
-Func_d367a: ; d367a
-	dr $d367a, $d392b
+Data_d2d81: ; d2d81
+	dr $d2d81, $d2d85
 
-Func_d392b: ; d392b
-	dr $d392b, $d3a6d
+Data_d2d85: ; d2d85
+	dr $d2d85, $d2d89
+
+Data_d2d89: ; d2d89
+	dr $d2d89, $d2d8d
+
+Data_d2d8d: ; d2d8d
+	dr $d2d8d, $d2d9b
+
+Data_d2d9b: ; d2d9b
+	dr $d2d9b, $d2da9
+
+Data_d2da9: ; d2da9
+	dr $d2da9, $d2def
+
+Data_d2def: ; d2def
+	dr $d2def, $d2e5f
+
+Data_d2e5f: ; d2e5f
+	dr $d2e5f, $d2e6d
+
+Data_d2e6d: ; d2e6d
+	dr $d2e6d, $d2e9d
+
+Func_d2e9d: ; d2e9d (34:6e9d)
+	ld c, $0
+Func_d2e9f: ; d2e9f (34:6e9f)
+	ld a, c
+	cp $c
+	jp nc, Func_d2f07
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d2e6d
+	add hl, de
+	ld a, [wBackupMapGroup]
+	cp [hl]
+	jp nz, Func_d2f03
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d2e6d
+	add hl, de
+	inc hl
+	ld a, [wBackupMapNumber]
+	cp [hl]
+	jp nz, Func_d2f03
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d2e6d
+	add hl, de
+	inc hl
+	inc hl
+	ld a, [wBackupMapX]
+	cp [hl]
+	jp nz, Func_d2f03
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d2e6d
+	add hl, de
+	inc hl
+	inc hl
+	inc hl
+	ld a, [wBackupMapY]
+	cp [hl]
+	jp nz, Func_d2f03
+	ld l, c
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d2cf1
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+	jp Func_d2f07
+
+Func_d2f03: ; d2f03 (34:6f03)
+	inc c
+	jp Func_d2e9f
+
+Func_d2f07: ; d2f07 (34:6f07)
+	ld e, $8
+	ld hl, Data_d2def
+	call LoadMapObjects_34
+	ld a, [wBackupMapGroup]
+	cp $1
+	jp z, Func_d2f2f
+	ld a, [wBackupMapGroup]
+	cp $5
+	jp z, Func_d2f2f
+	ld a, [wBackupMapNumber]
+	cp $15
+	jp z, Func_d2f2f
+	ld a, [wBackupMapNumber]
+	cp $19
+	jp nz, Func_d2f37
+Func_d2f2f: ; d2f2f (34:6f2f)
+	ld e, $1
+	ld hl, Data_d2e5f
+	call LoadMapObjects_34
+Func_d2f37: ; d2f37 (34:6f37)
+	ld a, [wBackupMapGroup]
+	cp $15
+	jp z, Func_d2f5f
+	cp $19
+	jp z, Func_d2f54
+	cp $5
+	jp nz, Func_d2f6a
+	ld de, Data_d2d81
+	ld a, $8
+	call Func_80150_34
+	jp Func_d2f72
+
+Func_d2f54: ; d2f54 (34:6f54)
+	ld de, Data_d2d85
+	ld a, $8
+	call Func_80150_34
+	jp Func_d2f72
+
+Func_d2f5f: ; d2f5f (34:6f5f)
+	ld de, Data_d2d89
+	ld a, $8
+	call Func_80150_34
+	jp Func_d2f72
+
+Func_d2f6a: ; d2f6a (34:6f6a)
+	ld de, Data_d2d75
+	ld a, $8
+	call Func_80150_34
+Func_d2f72: ; d2f72 (34:6f72)
+	ld a, [wBackupMapGroup]
+	cp $5
+	jp nz, Func_d2fae
+	ld a, [wBackupMapNumber]
+	or a
+	jp nz, Func_d2fae
+	ld a, [wBackupMapX]
+	cp $5
+	jp nz, Func_d2fa3
+	ld a, [wBackupMapY]
+	cp $7
+	jp nz, Func_d2fa3
+	ld e, $1
+	ld hl, Data_d2d9b
+	call LoadMapObjects_34
+	ld e, $0
+	ld a, $8
+	call Func_8013d_34
+	jp Func_d2fab
+
+Func_d2fa3: ; d2fa3 (34:6fa3)
+	ld e, $1
+	ld hl, Data_d2d8d
+	call LoadMapObjects_34
+Func_d2fab: ; d2fab (34:6fab)
+	jp Func_d3019
+
+Func_d2fae: ; d2fae (34:6fae)
+	ld a, [wBackupMapGroup]
+	cp $1d
+	jp nz, Func_d3011
+	ld a, [wBackupMapNumber]
+	or a
+	jp nz, Func_d3011
+	ld e, $5
+	ld hl, Data_d2da9
+	call LoadMapObjects_34
+	ld a, [wc790]
+	cp $3
+	jp z, Func_d3000
+	cp $4
+	jp z, Func_d3000
+	cp $5
+	jp z, Func_d3000
+	cp $6
+	jp z, Func_d2fe1
+	cp $7
+	jp nz, Func_d300e
+Func_d2fe1: ; d2fe1 (34:6fe1)
+	ld e, $0
+	ld a, $9
+	call Func_8013d_34
+	ld e, $0
+	ld a, $a
+	call Func_8013d_34
+	ld e, $0
+	ld a, $b
+	call Func_8013d_34
+	ld e, $0
+	ld a, $c
+	call Func_8013d_34
+	jp Func_d300e
+
+Func_d3000: ; d3000 (34:7000)
+	ld e, $0
+	ld a, $b
+	call Func_8013d_34
+	ld e, $0
+	ld a, $c
+	call Func_8013d_34
+Func_d300e: ; d300e (34:700e)
+	jp Func_d3019
+
+Func_d3011: ; d3011 (34:7011)
+	ld e, $1
+	ld hl, Data_d2d8d
+	call LoadMapObjects_34
+Func_d3019: ; d3019 (34:7019)
+	ld a, $c
+	call PlayMusic_34
+	call Func_8001c_34
+	ld a, [wBackupMapGroup]
+	cp $5
+	jp nz, Func_d3046
+	ld a, [wBackupMapNumber]
+	or a
+	jp nz, Func_d3046
+	ld a, [wBackupMapX]
+	cp $5
+	jp nz, Func_d3046
+	ld a, [wBackupMapY]
+	cp $7
+	jp nz, Func_d3046
+	ld hl, $2b4
+	call Func_80f72_34
+Func_d3046: ; d3046 (34:7046)
+	ret
+
+Func_d3047:
+	ld a, e
+	or a
+	jp nz, Func_d3054
+	ld e, $0
+	ld a, [wc789]
+	call Func_806a0_34
+Func_d3054: ; d3054 (34:7054)
+	ret
+
+Func_d3055:
+	ld a, e
+	or a
+	jp nz, Func_d30f8
+	ld hl, $1
+	call CheckEventFlag_34
+	or a
+	jp nz, Func_d3086
+	ld hl, $5c
+	call PrintTextStandard_34
+	ld hl, $f0
+	call CheckEventFlag_34
+	cp $1
+	jp nz, Func_d3083
+	ld hl, $5d
+	call PrintTextStandard_34
+	ld e, $1
+	ld hl, $1
+	call EventFlagAction_34
+Func_d3083: ; d3083 (34:7083)
+	jp Func_d30f8
+
+Func_d3086: ; d3086 (34:7086)
+	ld a, $e
+	call Func_80e5d_34
+	or a
+	jp nz, Func_d3098
+	ld hl, $5e
+	call PrintTextStandard_34
+	jp Func_d30f8
+
+Func_d3098: ; d3098 (34:7098)
+	ld hl, $0
+	call CheckEventFlag_34
+	or a
+	jp nz, Func_d30e9
+	ld hl, $5f
+	call PrintTextWithYesNoBox_34
+	or a
+	jp nz, Func_d30e0
+	ld hl, $61
+	call PrintTextStandard_34
+	ld a, $2a
+	call PlaySFX_34
+	ld hl, $62
+	call PrintTextStandard_34
+	ld hl, $63
+	call PrintTextStandard_34
+	ld c, $1
+	ld e, $1
+	ld a, $e
+	call Func_80d4d_34
+	ld c, $0
+	ld e, $1
+	ld a, $12
+	call Func_80d4d_34
+	ld e, $1
+	ld hl, $0
+	call EventFlagAction_34
+	jp Func_d30e6
+
+Func_d30e0: ; d30e0 (34:70e0)
+	ld hl, $60
+	call PrintTextStandard_34
+Func_d30e6: ; d30e6 (34:70e6)
+	jp Func_d30f8
+
+Func_d30e9: ; d30e9 (34:70e9)
+	ld hl, $64
+	call PrintTextStandard_34
+	ld c, $1
+	ld e, $1
+	ld a, $e
+	call Func_80d4d_34
+Func_d30f8: ; d30f8 (34:70f8)
+	ret
+
+Func_d30f9:
+	cp $c
+	jp z, Func_d3108
+	cp $a
+	jp nz, Func_d310d
+	ld l, $9
+	jp Func_d310e
+
+Func_d3108: ; d3108 (34:7108)
+	ld l, $b
+	jp Func_d310e
+
+Func_d310d: ; d310d (34:710d)
+	ld l, a
+Func_d310e: ; d310e (34:710e)
+	ld a, e
+	or a
+	jp nz, Func_d3144
+	push hl
+	ld a, l
+	call Func_8044b_34
+	pop hl
+	ld a, l
+	cp $b
+	jp z, Func_d313d
+	cp $9
+	jp z, Func_d3133
+	cp $8
+	jp nz, Func_d3144
+	ld e, $0
+	ld a, $d
+	call Func_806a0_34
+	jp Func_d3144
+
+Func_d3133: ; d3133 (34:7133)
+	ld e, $0
+	ld a, $e
+	call Func_806a0_34
+	jp Func_d3144
+
+Func_d313d: ; d313d (34:713d)
+	ld e, $0
+	ld a, $f
+	call Func_806a0_34
+Func_d3144: ; d3144 (34:7144)
+	ret
+
+Data_d3145: ; d3145
+	dr $d3145, $d31ce
+
+Data_d31ce: ; d31ce
+	dr $d31ce, $d31ea
+
+Data_d31ea: ; d31ea
+	dr $d31ea, $d325a
+
+Data_d325a: ; d325a
+	dr $d325a, $d32ca
+
+Data_d32ca: ; d32ca
+	dr $d32ca, $d32e6
+
+Data_d32e6: ; d32e6
+	dr $d32e6, $d3312
+
+Func_d3312: ; d3312 (34:7312)
+	ld c, $0
+Func_d3314: ; d3314 (34:7314)
+	ld a, c
+	cp $b
+	jp nc, Func_d337c
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d32e6
+	add hl, de
+	ld a, [wBackupMapGroup]
+	cp [hl]
+	jp nz, Func_d3378
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d32e6
+	add hl, de
+	inc hl
+	ld a, [wBackupMapNumber]
+	cp [hl]
+	jp nz, Func_d3378
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d32e6
+	add hl, de
+	inc hl
+	inc hl
+	ld a, [wBackupMapX]
+	cp [hl]
+	jp nz, Func_d3378
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d32e6
+	add hl, de
+	inc hl
+	inc hl
+	inc hl
+	ld a, [wBackupMapY]
+	cp [hl]
+	jp nz, Func_d3378
+	ld l, c
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d3145
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+	jp Func_d337c
+
+Func_d3378: ; d3378 (34:7378)
+	inc c
+	jp Func_d3314
+
+Func_d337c: ; d337c (34:737c)
+	ld a, [wBackupMapGroup]
+	cp $1d
+	jp nz, Func_d33ed
+	ld a, [wBackupMapNumber]
+	or a
+	jp nz, Func_d33ed
+	ld e, $8
+	ld hl, Data_d31ea
+	call LoadMapObjects_34
+	ld a, [wc790]
+	cp $3
+	jp z, Func_d33dc
+	cp $4
+	jp z, Func_d33dc
+	cp $5
+	jp z, Func_d33dc
+	cp $6
+	jp z, Func_d33af
+	cp $7
+	jp nz, Func_d33ea
+Func_d33af: ; d33af (34:73af)
+	ld e, $0
+	ld a, $2
+	call Func_8013d_34
+	ld e, $0
+	ld a, $3
+	call Func_8013d_34
+	ld e, $0
+	ld a, $4
+	call Func_8013d_34
+	ld e, $0
+	ld a, $5
+	call Func_8013d_34
+	ld e, $0
+	ld a, $6
+	call Func_8013d_34
+	ld e, $0
+	ld a, $7
+	call Func_8013d_34
+	jp Func_d33ea
+
+Func_d33dc: ; d33dc (34:73dc)
+	ld e, $0
+	ld a, $6
+	call Func_8013d_34
+	ld e, $0
+	ld a, $7
+	call Func_8013d_34
+Func_d33ea: ; d33ea (34:73ea)
+	jp Func_d33f5
+
+Func_d33ed: ; d33ed (34:73ed)
+	ld e, $2
+	ld hl, Data_d31ce
+	call LoadMapObjects_34
+Func_d33f5: ; d33f5 (34:73f5)
+	ld a, [wBackupMapGroup]
+	cp $1
+	jp nz, Func_d340c
+	ld a, [wBackupMapNumber]
+	or a
+	jp nz, Func_d340c
+	ld e, $2
+	ld hl, Data_d32ca
+	call LoadMapObjects_34
+Func_d340c: ; d340c (34:740c)
+	ld e, $8
+	ld hl, Data_d325a
+	call LoadMapObjects_34
+	ld a, $c
+	call PlayMusic_34
+	call Func_8001c_34
+	ret
+
+Func_d341d:
+	ld a, e
+	or a
+	jp nz, Func_d342a
+	ld e, $2
+	ld a, [wc789]
+	call Func_806a0_34
+Func_d342a: ; d342a (34:742a)
+	ret
+
+Func_d342b:
+	ld a, e
+	or a
+	jp nz, Func_d3438
+	ld e, $1
+	ld a, [wc789]
+	call Func_806a0_34
+Func_d3438: ; d3438 (34:7438)
+	ret
+
+Func_d3439:
+	cp $5
+	jp z, Func_d3448
+	cp $3
+	jp nz, Func_d344d
+	ld l, $2
+	jp Func_d344e
+
+Func_d3448: ; d3448 (34:7448)
+	ld l, $4
+	jp Func_d344e
+
+Func_d344d: ; d344d (34:744d)
+	ld l, a
+Func_d344e: ; d344e (34:744e)
+	ld a, e
+	or a
+	jp nz, Func_d34b0
+	push hl
+	ld a, l
+	call Func_8044b_34
+	pop hl
+	ld a, l
+	cp $7
+	jp z, Func_d34a9
+	cp $6
+	jp z, Func_d349f
+	cp $4
+	jp z, Func_d3495
+	cp $2
+	jp z, Func_d348b
+	cp $1
+	jp z, Func_d3481
+	or a
+	jp nz, Func_d34b0
+	ld e, $2
+	ld a, $d
+	call Func_806a0_34
+	jp Func_d34b0
+
+Func_d3481: ; d3481 (34:7481)
+	ld e, $1
+	ld a, $d
+	call Func_806a0_34
+	jp Func_d34b0
+
+Func_d348b: ; d348b (34:748b)
+	ld e, $2
+	ld a, $e
+	call Func_806a0_34
+	jp Func_d34b0
+
+Func_d3495: ; d3495 (34:7495)
+	ld e, $1
+	ld a, $e
+	call Func_806a0_34
+	jp Func_d34b0
+
+Func_d349f: ; d349f (34:749f)
+	ld e, $2
+	ld a, $f
+	call Func_806a0_34
+	jp Func_d34b0
+
+Func_d34a9: ; d34a9 (34:74a9)
+	ld e, $1
+	ld a, $f
+	call Func_806a0_34
+Func_d34b0: ; d34b0 (34:74b0)
+	ret
+
+Data_d34b1: ; d34b1
+	dr $d34b1, $d358d
+
+Data_d358d: ; d358d
+	dr $d358d, $d35e5
+
+Data_d35e5: ; d35e5
+	dr $d35e5, $d365e
+
+Data_d365e: ; d365e
+	dr $d365e, $d367a
+
+Func_d367a: ; d367a (34:767a)
+	ld a, [wBackupMapGroup]
+	cp $1e
+	jp nz, Func_d37e8
+	ld a, [wBackupMapNumber]
+	cp $e
+	jp z, Func_d3718
+	cp $d
+	jp z, Func_d3713
+	cp $c
+	jp z, Func_d370e
+	cp $b
+	jp z, Func_d36fc
+	cp $a
+	jp z, Func_d36f7
+	cp $9
+	jp z, Func_d36f2
+	cp $7
+	jp z, Func_d36e0
+	cp $6
+	jp z, Func_d36ce
+	cp $5
+	jp z, Func_d36c9
+	cp $4
+	jp nz, Func_d371a
+	ld a, [wBackupMapX]
+	cp $1
+	jp nz, Func_d36c4
+	ld l, $0
+	jp Func_d36c6
+
+Func_d36c4: ; d36c4 (34:76c4)
+	ld l, $9
+Func_d36c6: ; d36c6 (34:76c6)
+	jp Func_d371a
+
+Func_d36c9: ; d36c9 (34:76c9)
+	ld l, $1
+	jp Func_d371a
+
+Func_d36ce: ; d36ce (34:76ce)
+	ld a, [wBackupMapX]
+	cp $7
+	jp nz, Func_d36db
+	ld l, $2
+	jp Func_d36dd
+
+Func_d36db: ; d36db (34:76db)
+	ld l, $3
+Func_d36dd: ; d36dd (34:76dd)
+	jp Func_d371a
+
+Func_d36e0: ; d36e0 (34:76e0)
+	ld a, [wBackupMapX]
+	cp $7
+	jp nz, Func_d36ed
+	ld l, $4
+	jp Func_d36ef
+
+Func_d36ed: ; d36ed (34:76ed)
+	ld l, $5
+Func_d36ef: ; d36ef (34:76ef)
+	jp Func_d371a
+
+Func_d36f2: ; d36f2 (34:76f2)
+	ld l, $6
+	jp Func_d371a
+
+Func_d36f7: ; d36f7 (34:76f7)
+	ld l, $7
+	jp Func_d371a
+
+Func_d36fc: ; d36fc (34:76fc)
+	ld a, [wBackupMapX]
+	cp $7
+	jp nz, Func_d3709
+	ld l, $2
+	jp Func_d370b
+
+Func_d3709: ; d3709 (34:7709)
+	ld l, $5
+Func_d370b: ; d370b (34:770b)
+	jp Func_d371a
+
+Func_d370e: ; d370e (34:770e)
+	ld l, $3
+	jp Func_d371a
+
+Func_d3713: ; d3713 (34:7713)
+	ld l, $8
+	jp Func_d371a
+
+Func_d3718: ; d3718 (34:7718)
+	ld l, $a
+Func_d371a: ; d371a (34:771a)
+	push hl
+	call UnloadWarps_34
+	pop hl
+	push hl
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d35e5
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+	ld a, $9
+	call PlayMusic_34
+	call Func_8001c_34
+	pop hl
+	ld a, l
+	cp $a
+	jp z, Func_d37ce
+	cp $9
+	jp z, Func_d37c5
+	cp $8
+	jp z, Func_d37bc
+	cp $7
+	jp z, Func_d37b3
+	cp $6
+	jp z, Func_d37aa
+	cp $5
+	jp z, Func_d37a1
+	cp $4
+	jp z, Func_d3798
+	cp $3
+	jp z, Func_d378f
+	cp $2
+	jp z, Func_d3786
+	cp $1
+	jp z, Func_d377d
+	or a
+	jp nz, Func_d37d4
+	ld hl, $46a
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d377d: ; d377d (34:777d)
+	ld hl, $467
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d3786: ; d3786 (34:7786)
+	ld hl, $468
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d378f: ; d378f (34:778f)
+	ld hl, $46b
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d3798: ; d3798 (34:7798)
+	ld hl, $466
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d37a1: ; d37a1 (34:77a1)
+	ld hl, $465
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d37aa: ; d37aa (34:77aa)
+	ld hl, $469
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d37b3: ; d37b3 (34:77b3)
+	ld hl, $464
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d37bc: ; d37bc (34:77bc)
+	ld hl, $46c
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d37c5: ; d37c5 (34:77c5)
+	ld hl, $46d
+	call Func_80f72_34
+	jp Func_d37d4
+
+Func_d37ce: ; d37ce (34:77ce)
+	ld hl, $46c
+	call Func_80f72_34
+Func_d37d4: ; d37d4 (34:77d4)
+	call Func_80ea2_34
+	ld a, $64
+	call PlaySFX_34
+	ld hl, $3c
+	call ScriptSleep_34
+	call Func_80eb1_34
+	jp Func_d385a
+
+Func_d37e8: ; d37e8 (34:77e8)
+	ld a, [wBackupMapGroup]
+	cp $2
+	jp nz, Func_d381e
+	call UnloadWarps_34
+	ld hl, wc7de
+	ld l, [hl]
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d358d
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+	ld e, $2
+	ld hl, Data_d365e
+	call LoadMapObjects_34
+	ld a, $11
+	call PlayMusic_34
+	call Func_8001c_34
+	jp Func_d385a
+
+Func_d381e: ; d381e (34:781e)
+	ld a, [wBackupMapNumber]
+	cp $1e
+	jp nz, Func_d382b
+	ld l, $0
+	jp Func_d3831
+
+Func_d382b: ; d382b (34:782b)
+	ld a, [wBackupMapNumber]
+	add $f7
+	ld l, a
+Func_d3831: ; d3831 (34:7831)
+	push hl
+	call UnloadWarps_34
+	pop hl
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d34b1
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+	ld e, $2
+	ld hl, Data_d365e
+	call LoadMapObjects_34
+	ld a, $b
+	call PlayMusic_34
+	call Func_8001c_34
+Func_d385a: ; d385a (34:785a)
+	ret
+
+Func_d385b:
+	ld a, e
+	or a
+	jp nz, Func_d38ae
+	xor a
+	call Func_8044b_34
+	call Func_80275_34
+	ld l, a
+	push hl
+	call Func_80f02_34
+	pop hl
+	ld a, [wBackupMapGroup]
+	cp $2
+	jp nz, Func_d3895
+	push hl
+	ld a, l
+	ld [wc7de], a
+	call UnloadWarps_34
+	pop hl
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d358d
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+	jp Func_d38ae
+
+Func_d3895: ; d3895 (34:7895)
+	push hl
+	call UnloadWarps_34
+	pop hl
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d34b1
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+Func_d38ae: ; d38ae (34:78ae)
+	ret
+
+Data_d38af: ; d38af
+	dr $d38af, $d38c9
+
+Data_d38c9: ; d38c9
+	dr $d38c9, $d390f
+
+Data_d390f: ; d390f
+	dr $d390f, $d392b
+
+Func_d392b: ; d392b (34:792b)
+	ld a, $f
+	ld [wc7e2], a
+	call Func_d3adf
+	ld hl, Func_d3adf
+	call Func_80f11_34
+	ld e, $2
+	ld hl, Data_d38af
+	call LoadWarps_34
+	ld a, $3
+	call Func_80d01_34
+	ld e, $5
+	ld hl, Data_d38c9
+	call LoadEncounters_34
+	ld e, $2
+	ld hl, Data_d390f
+	call LoadMapObjects_34
+	ld hl, $f1
+	call CheckEventFlag_34
+	or a
+	jp nz, Func_d3977
+	xor a
+	call PlayMusic_34
+	xor a
+	call Func_80653_34
+	call Func_8001c_34
+	ld hl, $b3
+	call Func_80f72_34
+	call Func_d3cb2
+	jp Func_d39a5
+
+Func_d3977: ; d3977 (34:7977)
+	ld hl, $1c
+	call CheckEventFlag_34
+	cp $1
+	jp nz, Func_d3998
+	xor a
+	call PlayMusic_34
+	ld a, $1
+	call Func_80cc6_34
+	xor a
+	call Func_80653_34
+	call Func_8001c_34
+	call Func_d39a6
+	jp Func_d39a5
+
+Func_d3998: ; d3998 (34:7998)
+	ld a, $10
+	call PlayMusic_34
+	ld a, $1
+	call Func_80cc6_34
+	call Func_8001c_34
+Func_d39a5: ; d39a5 (34:79a5)
+	ret
+
+Func_d39a6: ; d39a6 (34:79a6)
+	call Func_80ea2_34
+	ld a, $64
+	call PlaySFX_34
+	ld c, $3
+	ld e, $1
+	ld a, $13
+	call LoadEmote_34
+	call Func_80f54_34
+	call Func_801d5_34
+	call Func_8018b_34
+	ld c, $2
+	ld e, $1
+	ld a, $13
+	call LoadEmote_34
+	ld a, $64
+	call PlaySFX_34
+	ld a, $1
+	ld [wc78d + 1], a
+	call Func_d3adf
+	ld a, $4e
+	call PlaySFX_34
+	call Func_80f02_34
+	call Func_80f54_34
+	call Func_801d5_34
+	call Func_8018b_34
+	ld c, $2
+	ld e, $1
+	ld a, $13
+	call LoadEmote_34
+	ld a, $64
+	call PlaySFX_34
+	ld a, $2
+	ld [wc78d + 1], a
+	call Func_d3adf
+	ld a, $4e
+	call PlaySFX_34
+	call Func_80f02_34
+	call Func_80f54_34
+	call Func_801d5_34
+	call Func_8018b_34
+	ld c, $2
+	ld e, $1
+	ld a, $13
+	call LoadEmote_34
+	ld a, $64
+	call PlaySFX_34
+	ld a, $3
+	ld [wc78d + 1], a
+	call Func_d3adf
+	ld a, $4e
+	call PlaySFX_34
+	call Func_80f02_34
+	call Func_80f54_34
+	call Func_801d5_34
+	call Func_8018b_34
+	ld c, $2
+	ld e, $1
+	ld a, $13
+	call LoadEmote_34
+	ld a, $64
+	call PlaySFX_34
+	ld a, $4
+	ld [wc78d + 1], a
+	call Func_d3adf
+	ld a, $4e
+	call PlaySFX_34
+	call Func_80f02_34
+	call Func_80f54_34
+	call Func_801d5_34
+	call Func_8018b_34
+	call Func_80eb1_34
+	ld l, $6
+	push hl
+	ld c, $8
+	ld e, $0
+	ld a, $1a
+	call Func_80dff_34
+	pop bc
+	ret
 
 Data_d3a6d: ; d3a6d
 	dr $d3a6d, $d3a73

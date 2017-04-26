@@ -219,7 +219,7 @@ Func_81f86: ; 81f86 (20:5f86)
 	jp Func_81f6b
 
 Func_81f8a: ; 81f8a (20:5f8a)
-	call Func_8002b_20
+	call UnloadWarps_20
 	playmusic SONG_NONE
 	xor a
 	call Func_80653_20
