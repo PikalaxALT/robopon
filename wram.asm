@@ -713,7 +713,7 @@ wc770:: ; c770
 	char wc7da ; c7da
 	char wBackupMapX ; c7db
 	char wBackupMapY ; c7dc
-	ds $1
+	char wc7dd ; c7dd
 	char wc7de ; c7de
 	char wBackupMapGroup ; c7df
 	char wBackupMapNumber ; c7e0

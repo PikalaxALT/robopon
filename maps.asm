@@ -6841,16 +6841,688 @@ Func_d1ec5: ; d1ec5
 	dr $d1ec5, $d21fc
 
 Func_d21fc: ; d21fc
-	dr $d21fc, $d259b
+	dr $d21fc, $d23f4
 
-Func_d259b: ; d259b
-	dr $d259b, $d293a
+Data_d23f4: ; d23f4
+	dr $d23f4, $d23ff
 
-Func_d293a: ; d293a
-	dr $d293a, $d2c2a
+Data_d23ff: ; d23ff
+	dr $d23ff, $d2483
 
-Func_d2c2a: ; d2c2a
-	dr $d2c2a, $d2cf1
+Data_d2483: ; d2483
+	dr $d2483, $d24c9
+
+Data_d24c9: ; d24c9
+	dr $d24c9, $d250f
+
+Data_d250f: ; d250f
+	dr $d250f, $d2555
+
+Data_d2555: ; d2555
+	dr $d2555, $d259b
+
+Func_d259b: ; d259b (34:659b)
+	ld l, $0
+	push hl
+	ld c, $b
+	ld e, $b
+	ld a, $9
+	call Func_80f24_34
+	pop bc
+	ld l, $0
+	push hl
+	ld c, $8
+	ld e, $11
+	ld a, $f
+	call Func_80f24_34
+	pop bc
+	ld l, $0
+	push hl
+	ld c, $9
+	ld e, $16
+	ld a, $6
+	call Func_80f24_34
+	pop bc
+	ld l, $0
+	push hl
+	ld c, $8
+	ld e, $17
+	ld a, $15
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $14
+	ld e, $6
+	ld a, $2
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $e
+	ld e, $9
+	ld a, $5
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $8
+	ld e, $c
+	ld a, $8
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $5
+	ld e, $f
+	ld a, $b
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $5
+	ld e, $12
+	ld a, $e
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $5
+	ld e, $15
+	ld a, $11
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $3
+	ld e, $c
+	ld a, $13
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $3
+	ld e, $18
+	ld a, $14
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $9
+	ld e, $9
+	ld a, $16
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $f
+	ld e, $6
+	ld a, $19
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $12
+	ld e, $6
+	ld a, $1c
+	call Func_80f24_34
+	pop bc
+	ld a, [wc798]
+	or a
+	jp nz, Func_d2674
+	ld a, $3
+	call Func_80cd7_34
+	ld [wc7dd], a
+	ld a, [wc7de]
+	inc a
+	ld [wc7de], a
+Func_d2674: ; d2674 (34:6674)
+	ld a, [wc7de]
+	cp $14
+	jp nz, Func_d2684
+	ld e, $1
+	ld hl, $5d
+	call EventFlagAction_34
+Func_d2684: ; d2684 (34:6684)
+	ld a, $3
+	call Func_80d01_34
+	ld a, [wc7de]
+	cp $f
+	jp z, Func_d26ed
+	cp $e
+	jp z, Func_d26ed
+	cp $d
+	jp z, Func_d26ed
+	cp $c
+	jp z, Func_d26ed
+	cp $b
+	jp z, Func_d26ed
+	cp $a
+	jp z, Func_d26e2
+	cp $9
+	jp z, Func_d26e2
+	cp $8
+	jp z, Func_d26e2
+	cp $7
+	jp z, Func_d26e2
+	cp $6
+	jp z, Func_d26e2
+	cp $5
+	jp z, Func_d26d7
+	cp $4
+	jp z, Func_d26d7
+	cp $3
+	jp z, Func_d26d7
+	cp $2
+	jp z, Func_d26d7
+	cp $1
+	jp nz, Func_d26f8
+Func_d26d7: ; d26d7 (34:66d7)
+	ld e, $5
+	ld hl, Data_d2483
+	call LoadEncounters_34
+	jp Func_d2700
+
+Func_d26e2: ; d26e2 (34:66e2)
+	ld e, $5
+	ld hl, Data_d24c9
+	call LoadEncounters_34
+	jp Func_d2700
+
+Func_d26ed: ; d26ed (34:66ed)
+	ld e, $5
+	ld hl, Data_d250f
+	call LoadEncounters_34
+	jp Func_d2700
+
+Func_d26f8: ; d26f8 (34:66f8)
+	ld e, $5
+	ld hl, Data_d2555
+	call LoadEncounters_34
+Func_d2700: ; d2700 (34:6700)
+	ld a, [wc7de]
+	inc a
+	cp $15
+	jp nc, Func_d2740
+	call Func_d277d
+	ld hl, Func_d277d
+	call Func_80f11_34
+	ld a, $4
+	call Func_80cd7_34
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	push hl
+	ld hl, wc7dd
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d23ff
+	add hl, de
+	pop de
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+Func_d2740: ; d2740 (34:6740)
+	ld e, $1
+	ld hl, Data_d23f4
+	call LoadWarps_34
+	ld a, $8
+	call PlayMusic_34
+	call Func_8001c_34
+	ld a, [wc7de]
+	cp $14
+	jp nz, Func_d2761
+	ld hl, $f8
+	call PrintTextStandard_34
+	jp Func_d276a
+
+Func_d2761: ; d2761 (34:6761)
+	ld hl, wc7de
+	ld l, [hl]
+	ld h, $0
+	call Func_80f83_34
+Func_d276a: ; d276a (34:676a)
+	ret
+
+Data_d276b:
+	dr $d276b, $d277d
+
+Func_d277d: ; d277d (34:677d)
+	ld hl, wc7dd
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, Data_d276b
+	add hl, de
+	call Func_80d9b_34
+	call Func_80f02_34
+	ret
+
+Data_d2793: ; d2793
+	dr $d2793, $d279e
+
+Data_d279e: ; d279e
+	dr $d279e, $d2822
+
+Data_d2822: ; d2822
+	dr $d2822, $d2868
+
+Data_d2868: ; d2868
+	dr $d2868, $d28ae
+
+Data_d28ae: ; d28ae
+	dr $d28ae, $d28f4
+
+Data_d28f4: ; d28f4
+	dr $d28f4, $d293a
+
+Func_d293a: ; d293a (34:693a)
+	ld l, $0
+	push hl
+	ld c, $c
+	ld e, $5
+	ld a, $3
+	call Func_80f24_34
+	pop bc
+	ld l, $0
+	push hl
+	ld c, $b
+	ld e, $5
+	ld a, $12
+	call Func_80f24_34
+	pop bc
+	ld l, $0
+	push hl
+	ld c, $e
+	ld e, $b
+	ld a, $9
+	call Func_80f24_34
+	pop bc
+	ld l, $0
+	push hl
+	ld c, $9
+	ld e, $11
+	ld a, $6
+	call Func_80f24_34
+	pop bc
+	ld l, $0
+	push hl
+	ld c, $8
+	ld e, $11
+	ld a, $12
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $f
+	ld e, $6
+	ld a, $2
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $9
+	ld e, $9
+	ld a, $5
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $3
+	ld e, $c
+	ld a, $8
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $3
+	ld e, $6
+	ld a, $e
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $3
+	ld e, $12
+	ld a, $e
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $3
+	ld e, $6
+	ld a, $11
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $3
+	ld e, $12
+	ld a, $11
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $3
+	ld e, $c
+	ld a, $16
+	call Func_80f24_34
+	pop bc
+	ld l, $1
+	push hl
+	ld c, $9
+	ld e, $9
+	ld a, $19
+	call Func_80f24_34
+	pop bc
+	ld a, [wc798]
+	or a
+	jp nz, Func_d2a06
+	ld a, $3
+	call Func_80cd7_34
+	ld [wc7dd], a
+	ld a, [wc7de]
+	inc a
+	ld [wc7de], a
+Func_d2a06: ; d2a06 (34:6a06)
+	ld a, [wc7de]
+	cp $14
+	jp nz, Func_d2a16
+	ld e, $1
+	ld hl, $5d
+	call EventFlagAction_34
+Func_d2a16: ; d2a16 (34:6a16)
+	ld a, $3
+	call Func_80d01_34
+	ld a, [wc7de]
+	cp $f
+	jp z, Func_d2a7f
+	cp $e
+	jp z, Func_d2a7f
+	cp $d
+	jp z, Func_d2a7f
+	cp $c
+	jp z, Func_d2a7f
+	cp $b
+	jp z, Func_d2a7f
+	cp $a
+	jp z, Func_d2a74
+	cp $9
+	jp z, Func_d2a74
+	cp $8
+	jp z, Func_d2a74
+	cp $7
+	jp z, Func_d2a74
+	cp $6
+	jp z, Func_d2a74
+	cp $5
+	jp z, Func_d2a69
+	cp $4
+	jp z, Func_d2a69
+	cp $3
+	jp z, Func_d2a69
+	cp $2
+	jp z, Func_d2a69
+	cp $1
+	jp nz, Func_d2a8a
+Func_d2a69: ; d2a69 (34:6a69)
+	ld e, $5
+	ld hl, Data_d2822
+	call LoadEncounters_34
+	jp Func_d2a92
+
+Func_d2a74: ; d2a74 (34:6a74)
+	ld e, $5
+	ld hl, Data_d2868
+	call LoadEncounters_34
+	jp Func_d2a92
+
+Func_d2a7f: ; d2a7f (34:6a7f)
+	ld e, $5
+	ld hl, Data_d28ae
+	call LoadEncounters_34
+	jp Func_d2a92
+
+Func_d2a8a: ; d2a8a (34:6a8a)
+	ld e, $5
+	ld hl, Data_d28f4
+	call LoadEncounters_34
+Func_d2a92: ; d2a92 (34:6a92)
+	ld a, [wc7de]
+	inc a
+	cp $15
+	jp nc, Func_d2ad2
+	call Func_d2b0f
+	ld hl, Func_d2b0f
+	call Func_80f11_34
+	ld a, $4
+	call Func_80cd7_34
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	push hl
+	ld hl, wc7dd
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d279e
+	add hl, de
+	pop de
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+Func_d2ad2: ; d2ad2 (34:6ad2)
+	ld e, $1
+	ld hl, Data_d2793
+	call LoadWarps_34
+	ld a, $8
+	call PlayMusic_34
+	call Func_8001c_34
+	ld a, [wc7de]
+	cp $14
+	jp nz, Func_d2af3
+	ld hl, $f8
+	call PrintTextStandard_34
+	jp Func_d2afc
+
+Func_d2af3: ; d2af3 (34:6af3)
+	ld hl, wc7de
+	ld l, [hl]
+	ld h, $0
+	call Func_80f83_34
+Func_d2afc: ; d2afc (34:6afc)
+	ret
+
+Data_d2afd:
+	dr $d2afd, $d2b0f
+
+Func_d2b0f: ; d2b0f (34:6b0f)
+	ld hl, wc7dd
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, Data_d2afd
+	add hl, de
+	call Func_80d9b_34
+	call Func_80f02_34
+	ret
+
+Data_d2b25: ; d2b25
+	dr $d2b25, $d2b82
+
+Data_d2b82: ; d2b82
+	dr $d2b82, $d2bf2
+
+Data_d2bf2: ; d2bf2
+	dr $d2bf2, $d2c0e
+
+Data_d2c0e: ; d2c0e
+	dr $d2c0e, $d2c2a
+
+Func_d2c2a: ; d2c2a (34:6c2a)
+	ld c, $0
+Func_d2c2c: ; d2c2c (34:6c2c)
+	ld a, c
+	cp $7
+	jp nc, Func_d2c9b
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d2c0e
+	add hl, de
+	ld a, [wBackupMapGroup]
+	cp [hl]
+	jp nz, Func_d2c97
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d2c0e
+	add hl, de
+	inc hl
+	ld a, [wBackupMapNumber]
+	cp [hl]
+	jp nz, Func_d2c97
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d2c0e
+	add hl, de
+	inc hl
+	inc hl
+	ld a, [wBackupMapX]
+	cp [hl]
+	jp nz, Func_d2c97
+	ld l, c
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, Data_d2c0e
+	add hl, de
+	inc hl
+	inc hl
+	inc hl
+	ld a, [wBackupMapY]
+	cp [hl]
+	jp nz, Func_d2c97
+	push bc
+	ld l, c
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Data_d2b25
+	add hl, de
+	ld e, $1
+	call LoadWarps_34
+	pop bc
+	ld a, c
+	inc a
+	ld [wc2f8], a
+	jp Func_d2c9b
+
+Func_d2c97: ; d2c97 (34:6c97)
+	inc c
+	jp Func_d2c2c
+
+Func_d2c9b: ; d2c9b (34:6c9b)
+	ld e, $8
+	ld hl, Data_d2b82
+	call LoadMapObjects_34
+	ld a, [wBackupMapGroup]
+	cp $1
+	jp nz, Func_d2cba
+	ld a, [wBackupMapNumber]
+	or a
+	jp nz, Func_d2cba
+	ld e, $2
+	ld hl, Data_d2bf2
+	call LoadMapObjects_34
+Func_d2cba: ; d2cba (34:6cba)
+	ld a, $c
+	call PlayMusic_34
+	call Func_8001c_34
+	ret
+
+Func_d2cc3:
+	push af
+	ld a, e
+	or a
+	jp nz, Func_d2cef
+	ld hl, sp+$1
+	ld a, [hl]
+	call Func_8044b_34
+	ld hl, $362
+	call PrintTextWithNPCName_34
+	ld hl, sp+$1
+	ld a, [hl]
+	or a
+	jp nz, Func_d2ce7
+	ld e, $3
+	ld a, [wc2f8]
+	call Func_806a0_34
+	jp Func_d2cef
+
+Func_d2ce7: ; d2ce7 (34:6ce7)
+	ld e, $4
+	ld a, [wc2f8]
+	call Func_806a0_34
+Func_d2cef: ; d2cef (34:6cef)
+	pop bc
+	ret
 
 Data_d2cf1: ; d2cf1
 	dr $d2cf1, $d2d75
