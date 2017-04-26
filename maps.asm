@@ -6884,7 +6884,34 @@ OverworldAttrMaps:: ; d93e8
 GFX_d97e8:: INCBIN "gfx/misc/d97e8.2bpp"
 
 Func_d9f38:: ; d9f38
-	dr $d9f38, $d9f55
+	ret
+
+Func_d9f39:
+	push de
+	ld l, a
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, wOAMBuffer
+	add hl, de
+	pop de
+	ld a, [de]
+	inc de
+	ld [hl], a
+	inc hl
+	ld a, [de]
+	inc de
+	ld [hl], a
+	inc hl
+	ld a, [de]
+	inc de
+	ld [hl], a
+	inc hl
+	ld a, [de]
+	inc de
+	ld [hl], a
+	inc hl
+	ret
 
 Func_d9f55:: ; d9f55 (36:5f55)
 	di
@@ -6898,10 +6925,19 @@ Func_d9f55:: ; d9f55 (36:5f55)
 	ret
 
 Func_d9f68:: ; d9f68
-	dr $d9f68, $d9f74
+	ld bc, $a0
+	ld e, $0
+	ld hl, wOAMBuffer
+	call FillMemory
+	ret
 
 Func_d9f74:: ; d9f74
-	dr $d9f74, $d9f7e
+	ld a, [hl]
+	ld [wc263], a
+	inc hl
+	ld a, [hl]
+	ld [wNumSpritesLoaded], a
+	ret
 
 Func_d9f7e: ; d9f7e (36:5f7e)
 	; void Func_d9f7e (char b, char c, short de, char * hl) {
@@ -7092,10 +7128,767 @@ Func_d9f7e: ; d9f7e (36:5f7e)
 	ret
 
 Func_da07a:: ; da07a
-	dr $da07a, $da093
+	xor a
+Func_da07b: ; da07b (36:607b)
+	cp $10
+	jp nc, Func_da092
+	ld l, a
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	inc a
+	jp Func_da07b
+
+Func_da092: ; da092 (36:6092)
+	ret
 
 Func_da093:: ; da093
-	dr $da093, $da4dc
+	push af
+	push bc
+	push bc
+	push bc
+	push bc
+	ld hl, wNumSpritesLoaded
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld de, wOAM00YCoord
+	add hl, de
+	pop de
+	push hl
+	ld c, $0
+	ld hl, sp+$4
+	ld [hl], $f
+Func_da0ac: ; da0ac (36:60ac)
+	ld hl, sp+$4
+	ld a, [hl]
+	cp $ff
+	jp nz, Func_da0b7
+	jp Func_da4a1
+
+Func_da0b7: ; da0b7 (36:60b7)
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp nz, Func_da0ca
+	jp Func_da497
+
+Func_da0ca: ; da0ca (36:60ca)
+	ld a, $1
+	ld hl, sp+$4
+	ld b, [hl]
+	call LeftShiftA
+	or c
+	ld c, a
+	push bc
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld c, [hl]
+	ld a, c
+	cp $80
+	jp z, Func_da30a
+	ld a, c
+	cp $ff
+	jp z, Func_da30a
+	ld l, c
+	ld h, $0
+	add hl, hl
+	reg16swap de, hl
+	read_hl_from wc269
+	add hl, de
+	ld a, [hl]
+	inc hl
+	or [hl]
+	jp z, Func_da30a
+	ld l, c
+	ld h, $0
+	add hl, hl
+	reg16swap de, hl
+	read_hl_from wc269
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	read_hl_from wc265
+	add hl, de
+	ld c, l
+	ld b, h
+Func_da11d: ; da11d (36:611d)
+	ld a, [bc]
+	cp $ff
+	jp z, Func_da30a
+	push bc
+	ld a, [bc]
+	ld hl, wc263
+	add [hl]
+	ld hl, sp+$b
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	ld a, [wc85a]
+	or [hl]
+	ld hl, sp+$a
+	ld [hl], a
+	ld a, [wc2cb]
+	ld hl, sp+$8
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc29b
+	add hl, de
+	add [hl]
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	add [hl]
+	ld hl, sp+$7
+	ld [hl], a
+	ld a, [wc2cc]
+	ld hl, sp+$8
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc2ab
+	add hl, de
+	add [hl]
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	add [hl]
+	ld hl, sp+$6
+	ld [hl], a
+	ld l, c
+	ld h, b
+	inc hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	ld hl, sp+$9
+	ld [hl], a
+	ld hl, $5
+	add hl, bc
+	ld c, [hl]
+	ld hl, sp+$a
+	ld a, [hl]
+	and $40
+	jp z, Func_da184
+	ld a, c
+	dec a
+	add a
+	add a
+	add a
+	add a
+	ld hl, sp+$b
+	add [hl]
+	ld hl, sp+$b
+	ld [hl], a
+Func_da184: ; da184 (36:6184)
+	ld hl, sp+$a
+	ld a, [hl]
+	and $20
+	jp z, Func_da196
+	ld hl, sp+$9
+	ld a, [hl]
+	dec a
+	ld hl, sp+$b
+	add [hl]
+	ld hl, sp+$b
+	ld [hl], a
+Func_da196: ; da196 (36:6196)
+	ld a, [wc2f4]
+	or a
+	jp nz, Func_da241
+	ld e, $0
+Func_da19f: ; da19f (36:619f)
+	ld a, e
+	cp c
+	jp nc, Func_da23e
+	push bc
+	ld c, $0
+Func_da1a7: ; da1a7 (36:61a7)
+	ld a, c
+	ld hl, sp+$b
+	cp [hl]
+	jp nc, Func_da201
+	push de
+	ld a, e
+	add a
+	add a
+	add a
+	ld hl, sp+$a
+	add [hl]
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	ld a, c
+	add a
+	add a
+	add a
+	ld hl, sp+$b
+	add [hl]
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	ld hl, sp+$f
+	ld a, [hl]
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	ld hl, sp+$e
+	ld a, [hl]
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	ld hl, sp+$e
+	ld a, [hl]
+	and $20
+	jp z, Func_da1f5
+	ld hl, sp+$f
+	ld a, [hl]
+	dec a
+	ld hl, sp+$f
+	ld [hl], a
+	jp Func_da1fc
+
+Func_da1f5: ; da1f5 (36:61f5)
+	ld hl, sp+$f
+	ld a, [hl]
+	inc a
+	ld hl, sp+$f
+	ld [hl], a
+Func_da1fc: ; da1fc (36:61fc)
+	inc c
+	pop de
+	jp Func_da1a7
+
+Func_da201: ; da201 (36:6201)
+	ld hl, sp+$c
+	ld a, [hl]
+	and $20
+	jp z, Func_da215
+	ld hl, sp+$d
+	ld a, [hl]
+	ld hl, sp+$b
+	add [hl]
+	ld hl, sp+$d
+	ld [hl], a
+	jp Func_da21e
+
+Func_da215: ; da215 (36:6215)
+	ld hl, sp+$d
+	ld a, [hl]
+	ld hl, sp+$b
+	sub [hl]
+	ld hl, sp+$d
+	ld [hl], a
+Func_da21e: ; da21e (36:621e)
+	ld hl, sp+$c
+	ld a, [hl]
+	and $40
+	jp z, Func_da231
+	ld hl, sp+$d
+	ld a, [hl]
+	add $f0
+	ld hl, sp+$d
+	ld [hl], a
+	jp Func_da239
+
+Func_da231: ; da231 (36:6231)
+	ld hl, sp+$d
+	ld a, [hl]
+	add $10
+	ld hl, sp+$d
+	ld [hl], a
+Func_da239: ; da239 (36:6239)
+	inc e
+	pop bc
+	jp Func_da19f
+
+Func_da23e: ; da23e (36:623e)
+	jp Func_da300
+
+Func_da241: ; da241 (36:6241)
+	ld e, $0
+Func_da243: ; da243 (36:6243)
+	ld a, e
+	cp c
+	jp nc, Func_da300
+	push bc
+	ld c, $0
+Func_da24b: ; da24b (36:624b)
+	ld a, c
+	ld hl, sp+$b
+	cp [hl]
+	jp nc, Func_da2c3
+	push de
+	ld a, e
+	add a
+	add a
+	add a
+	ld hl, sp+$a
+	add [hl]
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	ld a, c
+	add a
+	add a
+	add a
+	ld hl, sp+$b
+	add [hl]
+	ld l, a
+	ld a, $a8
+	sub l
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	ld hl, sp+$f
+	ld a, [hl]
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	ld hl, sp+$e
+	ld a, [hl]
+	and $20
+	jp z, Func_da298
+	ld hl, sp+$e
+	ld a, [hl]
+	and $df
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+	jp Func_da2a5
+
+Func_da298: ; da298 (36:6298)
+	ld hl, sp+$e
+	ld a, [hl]
+	or $20
+	call GetHLAtSPPlus10
+	ld [hl], a
+	inc hl
+	call WriteHLToSPPlus10
+Func_da2a5: ; da2a5 (36:62a5)
+	ld hl, sp+$e
+	ld a, [hl]
+	and $20
+	jp z, Func_da2b7
+	ld hl, sp+$f
+	ld a, [hl]
+	dec a
+	ld hl, sp+$f
+	ld [hl], a
+	jp Func_da2be
+
+Func_da2b7: ; da2b7 (36:62b7)
+	ld hl, sp+$f
+	ld a, [hl]
+	inc a
+	ld hl, sp+$f
+	ld [hl], a
+Func_da2be: ; da2be (36:62be)
+	inc c
+	pop de
+	jp Func_da24b
+
+Func_da2c3: ; da2c3 (36:62c3)
+	ld hl, sp+$c
+	ld a, [hl]
+	and $20
+	jp z, Func_da2d7
+	ld hl, sp+$d
+	ld a, [hl]
+	ld hl, sp+$b
+	add [hl]
+	ld hl, sp+$d
+	ld [hl], a
+	jp Func_da2e0
+
+Func_da2d7: ; da2d7 (36:62d7)
+	ld hl, sp+$d
+	ld a, [hl]
+	ld hl, sp+$b
+	sub [hl]
+	ld hl, sp+$d
+	ld [hl], a
+Func_da2e0: ; da2e0 (36:62e0)
+	ld hl, sp+$c
+	ld a, [hl]
+	and $40
+	jp z, Func_da2f3
+	ld hl, sp+$d
+	ld a, [hl]
+	add $f0
+	ld hl, sp+$d
+	ld [hl], a
+	jp Func_da2fb
+
+Func_da2f3: ; da2f3 (36:62f3)
+	ld hl, sp+$d
+	ld a, [hl]
+	add $10
+	ld hl, sp+$d
+	ld [hl], a
+Func_da2fb: ; da2fb (36:62fb)
+	inc e
+	pop bc
+	jp Func_da243
+
+Func_da300: ; da300 (36:6300)
+	pop bc
+	ld hl, $6
+	add hl, bc
+	ld c, l
+	ld b, h
+	jp Func_da11d
+
+Func_da30a: ; da30a (36:630a)
+	pop bc
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc28b
+	add hl, de
+	ld e, $1
+	ld a, [hl]
+	sub e
+	ld [hl], a
+	cp $1
+	jp nc, Func_da497
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld a, [hl]
+	add $4
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	adc $0
+	ld [hl], a
+	ld hl, sp+$9
+	ld a, [hl]
+	cp $1
+	jp nz, Func_da379
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc2bb
+	add hl, de
+	ld a, [hl]
+	cp $1
+	jp nz, Func_da379
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	cp $80
+	jp nz, Func_da379
+	ld a, $1
+	ld hl, sp+$4
+	ld b, [hl]
+	call LeftShiftA
+	cpl
+	and c
+	ld c, a
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld a, [hl]
+	sub $4
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	sbc $0
+	ld [hl], a
+Func_da379: ; da379 (36:6379)
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld a, [de]
+	cp $80
+	jp nz, Func_da447
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc2bb
+	add hl, de
+	ld a, [hl]
+	or a
+	jp z, Func_da3bf
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc2bb
+	add hl, de
+	ld e, $1
+	ld a, [hl]
+	sub e
+	ld [hl], a
+	or a
+	jp nz, Func_da3bf
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld de, $0
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	jp Func_da497
+
+Func_da3bf: ; da3bf (36:63bf)
+	push bc
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	reg16swap de, hl
+	read_hl_from wc267
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	read_hl_from wc265
+	add hl, de
+	push hl
+	ld hl, sp+$8
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	pop de
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$6
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc28b
+	add hl, de
+	ld [hl], a
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$6
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc29b
+	add hl, de
+	ld [hl], a
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$6
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc2ab
+	add hl, de
+	ld [hl], a
+	ld a, [wc318]
+	or a
+	jp z, Func_da443
+	ld a, [wc318]
+	call OverworldPlaySFX
+Func_da443: ; da443 (36:6443)
+	pop bc
+	jp Func_da497
+
+Func_da447: ; da447 (36:6447)
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	ld a, [de]
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc28b
+	add hl, de
+	ld [hl], a
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc29b
+	add hl, de
+	add [hl]
+	ld [hl], a
+	ld hl, sp+$4
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld de, wc26b
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	inc de
+	inc de
+	inc de
+	ld a, [de]
+	ld hl, sp+$4
+	ld e, [hl]
+	ld d, $0
+	ld hl, wc2ab
+	add hl, de
+	add [hl]
+	ld [hl], a
+Func_da497: ; da497 (36:6497)
+	ld hl, sp+$4
+	ld a, [hl]
+	dec a
+	ld hl, sp+$4
+	ld [hl], a
+	jp Func_da0ac
+
+Func_da4a1: ; da4a1 (36:64a1)
+	pop hl
+	push hl
+	ld a, l
+	sub $a0
+	ld a, h
+	sbc $c4
+	jp nc, Func_da4cb
+	pop hl
+	push hl
+	ld [hl], $ff
+	inc hl
+	pop de
+	push hl
+	pop hl
+	push hl
+	ld [hl], $ff
+	inc hl
+	pop de
+	push hl
+	pop hl
+	push hl
+	ld [hl], $ff
+	inc hl
+	pop de
+	push hl
+	pop hl
+	push hl
+	ld [hl], $ff
+	inc hl
+	pop de
+	push hl
+	jp Func_da4a1
+
+Func_da4cb: ; da4cb (36:64cb)
+	inc c
+	dec c
+	jp z, Func_da4d5
+	ld a, $1
+	jp Func_da4d6
+
+Func_da4d5: ; da4d5 (36:64d5)
+	xor a
+Func_da4d6: ; da4d6 (36:64d6)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
 
 Func_da4dc:: ; da4dc (36:64dc)
 	ld hl, wOAMBuffer
@@ -7123,7 +7916,34 @@ Func_da4dc:: ; da4dc (36:64dc)
 	ret
 
 Func_da4fc:: ; da4fc
-	dr $da4fc, $da545
+	ld a, [wNumSpritesLoaded]
+	add a
+	add a
+	ld hl, $0
+	ld hl, wOAMBuffer ; whoops
+	ld l, a
+	ld a, [wNumSpritesLoaded]
+	ld b, a
+	ld a, $28
+	sub b
+	ld b, a
+	ld a, $ff
+	ld de, $4
+Func_da515: ; da515 (36:6515)
+	ld [hl], a
+	add hl, de
+	dec b
+	jp nz, Func_da515
+	ld hl, $0
+	ld hl, wc26b
+	ld a, $0
+	REPT $20
+	ld [hli], a
+	ENDR
+	ret
+
+Func_da544:
+	ret
 
 LoadEmoteGFX: ; da545 (36:6545)
 	push de
