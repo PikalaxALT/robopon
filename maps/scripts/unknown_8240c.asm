@@ -60,58 +60,58 @@ Func_82478: ; 82478 (20:6478)
 	xor a
 	call PlayerFace_20
 Func_82489: ; 82489 (20:6489)
-	call Func_8000e_20
-	cp $b
+	call GetZodiacSign_20
+	cp PISCES
 	jp z, Func_824c3
-	cp $7
+	cp SCORPIO
 	jp z, Func_824c3
-	cp $3
+	cp CANCER
 	jp z, Func_824c3
-	cp $a
+	cp AQUARIUS
 	jp z, Func_824be
-	cp $6
+	cp LIBRA
 	jp z, Func_824be
-	cp $2
+	cp GEMINI
 	jp z, Func_824be
-	cp $9
+	cp CAPRICORN
 	jp z, Func_824b9
-	cp $5
+	cp VIRGO
 	jp z, Func_824b9
-	cp $1
+	cp TAURUS
 	jp nz, Func_824c8
 Func_824b9: ; 824b9 (20:64b9)
 IF DEF(SUN)
-	ld a, $5a
+	ld a, ROBBY + 1
 ENDC
 IF DEF(STAR)
-	ld a, $2d
+	ld a, Q_ + 1
 ENDC
 	jp Func_824ca
 
 Func_824be: ; 824be (20:64be)
 IF DEF(SUN)
-	ld a, $5c
+	ld a, BELLA + 1
 ENDC
 IF DEF(STAR)
-	ld a, $2e
+	ld a, VIC + 1
 ENDC
 	jp Func_824ca
 
 Func_824c3: ; 824c3 (20:64c3)
 IF DEF(SUN)
-	ld a, $6c
+	ld a, HEYLOW + 1
 ENDC
 IF DEF(STAR)
-	ld a, $2f
+	ld a, RALPH + 1
 ENDC
 	jp Func_824ca
 
 Func_824c8: ; 824c8 (20:64c8)
 IF DEF(SUN)
-	ld a, $14
+	ld a, VIGGY + 1
 ENDC
 IF DEF(STAR)
-	ld a, $7d
+	ld a, CHECKS + 1
 ENDC
 Func_824ca: ; 824ca (20:64ca)
 	push af

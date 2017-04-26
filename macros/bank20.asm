@@ -2,8 +2,8 @@ lib_bank_20: MACRO
 Func_80000_\1:
 	jpba_hli Func_50d85
 
-Func_8000e_\1:
-	jpba_hli Func_50d09
+GetZodiacSign_\1:
+	jpba_hli GetZodiacSign
 
 Func_8001c_\1: ; 8001c (20:401c)
 	callba_hli Func_ae4d

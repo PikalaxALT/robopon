@@ -1447,3 +1447,280 @@ Func_537d0:
 Func_537d6:
 	ld de, $3
 	jp Func_5366b
+
+ComputeAndPrintZodiacSign: ; 537dc (14:77dc)
+	; month * 100 + day
+	ld a, [wTimeSetMonthsTensDigit]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wTimeSetMonthsOnesDigit
+	add [hl]
+	ld e, a
+	ld a, [wTimeSetDaysTensDigit]
+	add a
+	ld d, a
+	add a
+	add a
+	add d
+	ld hl, wTimeSetDaysOnesDigit
+	add [hl]
+	ld l, e
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld e, a
+	ld d, $0
+	add hl, de
+	ld c, l
+	ld b, h
+	push bc
+	ld de, Data_539ac
+	ld hl, $e08
+	call PlaceStringDEatCoordHL
+	pop bc
+	ld l, c
+	ld h, b
+	ld de, 100 * MARCH + 21
+	call CompareHLtoDE
+	jp c, Func_53838
+	ld e, c
+	ld d, b
+	ld hl, 100 * APRIL + 20
+	call CompareHLtoDE
+	jp c, Func_53838
+	ld de, Data_539b3
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	xor a ; ARIES
+	jp Func_539ab
+
+Func_53838: ; 53838 (14:7838)
+	ld l, c
+	ld h, b
+	ld de, 100 * APRIL + 21
+	call CompareHLtoDE
+	jp c, Func_5385c
+	ld e, c
+	ld d, b
+	ld hl, 100 * MAY + 21
+	call CompareHLtoDE
+	jp c, Func_5385c
+	ld de, Data_539bb
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, TAURUS
+	jp Func_539ab
+
+Func_5385c: ; 5385c (14:785c)
+	ld l, c
+	ld h, b
+	ld de, 100 * MAY + 22
+	call CompareHLtoDE
+	jp c, Func_53880
+	ld e, c
+	ld d, b
+	ld hl, 100 * JUNE + 21
+	call CompareHLtoDE
+	jp c, Func_53880
+	ld de, Data_539c2
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, GEMINI
+	jp Func_539ab
+
+Func_53880: ; 53880 (14:7880)
+	ld l, c
+	ld h, b
+	ld de, 100 * JUNE + 22
+	call CompareHLtoDE
+	jp c, Func_538a4
+	ld e, c
+	ld d, b
+	ld hl, 100 * JULY + 22
+	call CompareHLtoDE
+	jp c, Func_538a4
+	ld de, Data_539ca
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, CANCER
+	jp Func_539ab
+
+Func_538a4: ; 538a4 (14:78a4)
+	ld l, c
+	ld h, b
+	ld de, 100 * JULY + 23
+	call CompareHLtoDE
+	jp c, Func_538c8
+	ld e, c
+	ld d, b
+	ld hl, 100 * AUGUST + 22
+	call CompareHLtoDE
+	jp c, Func_538c8
+	ld de, Data_539d1
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, LEO
+	jp Func_539ab
+
+Func_538c8: ; 538c8 (14:78c8)
+	ld l, c
+	ld h, b
+	ld de, 100 * AUGUST + 23
+	call CompareHLtoDE
+	jp c, Func_538ec
+	ld e, c
+	ld d, b
+	ld hl, 100 * SEPTEMBER + 23
+	call CompareHLtoDE
+	jp c, Func_538ec
+	ld de, Data_539d8
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, VIRGO
+	jp Func_539ab
+
+Func_538ec: ; 538ec (14:78ec)
+	ld l, c
+	ld h, b
+	ld de, 100 * SEPTEMBER + 24
+	call CompareHLtoDE
+	jp c, Func_53910
+	ld e, c
+	ld d, b
+	ld hl, 100 * OCTOBER + 23
+	call CompareHLtoDE
+	jp c, Func_53910
+	ld de, Data_539df
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, LIBRA
+	jp Func_539ab
+
+Func_53910: ; 53910 (14:7910)
+	ld l, c
+	ld h, b
+	ld de, 100 * OCTOBER + 24
+	call CompareHLtoDE
+	jp c, Func_53934
+	ld e, c
+	ld d, b
+	ld hl, 100 * NOVEMBER + 22
+	call CompareHLtoDE
+	jp c, Func_53934
+	ld de, Data_539e7
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, SCORPIO
+	jp Func_539ab
+
+Func_53934: ; 53934 (14:7934)
+	ld l, c
+	ld h, b
+	ld de, 100 * NOVEMBER + 23
+	call CompareHLtoDE
+	jp c, Func_53958
+	ld e, c
+	ld d, b
+	ld hl, 100 * DECEMBER + 21
+	call CompareHLtoDE
+	jp c, Func_53958
+	ld de, Data_539ee
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, SAGITTARIUS
+	jp Func_539ab
+
+Func_53958: ; 53958 (14:7958)
+	ld l, c
+	ld h, b
+	ld de, 100 * DECEMBER + 22
+	call CompareHLtoDE
+	jp nc, Func_5396e
+	ld e, c
+	ld d, b
+	ld hl, 100 * JANUARY + 20
+	call CompareHLtoDE
+	jp c, Func_5397c
+Func_5396e: ; 5396e (14:796e)
+	ld de, Data_539f5
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, CAPRICORN
+	jp Func_539ab
+
+Func_5397c: ; 5397c (14:797c)
+	ld l, c
+	ld h, b
+	ld de, 100 * JANUARY + 21
+	call CompareHLtoDE
+	jp c, Func_539a0
+	ld e, c
+	ld d, b
+	ld hl, 100 * FEBRUARY + 18
+	call CompareHLtoDE
+	jp c, Func_539a0
+	ld de, Data_539fd
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, AQUARIUS
+	jp Func_539ab
+
+Func_539a0: ; 539a0 (14:79a0)
+	ld de, Data_53a06
+	ld hl, $e09
+	call PlaceStringDEatCoordHL
+	ld a, PISCES
+Func_539ab: ; 539ab (14:79ab)
+	ret
+
+Data_539ac:
+	db "(    )", $0
+
+Data_539b3:
+	db "(おひつしﾞ)", $0
+
+Data_539bb:
+	db "(おうし )", $0
+
+Data_539c2:
+	db "(ふたこﾞ )", $0
+
+Data_539ca:
+	db "(かに  )", $0
+
+Data_539d1:
+	db "(しし  )", $0
+
+Data_539d8:
+	db "(おとめ )", $0
+
+Data_539df:
+	db "(てんひﾞん)", $0
+
+Data_539e7:
+	db "(さそり )", $0
+
+Data_539ee:
+	db "(いて  )", $0
+
+Data_539f5:
+	db "(やきﾞ  )", $0
+
+Data_539fd:
+	db "(みすﾞかﾞめ)", $0
+
+Data_53a06:
+	db "(うお  )", $0

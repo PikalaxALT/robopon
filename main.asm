@@ -55088,7 +55088,7 @@ Func_4e7d3: ; 4e7d3 (13:67d3)
 	jp Func_4e793
 
 Func_4e7fb: ; 4e7fb (13:67fb)
-	callba_hli Func_537dc
+	callba_hli ComputeAndPrintZodiacSign
 	pop bc
 	pop bc
 	ret
@@ -55631,7 +55631,7 @@ Func_4eb71: ; 4eb71
 	call Func_4c0b9
 	callba_hli Func_1482e
 	push hl
-	callba_hli Func_537dc
+	callba_hli ComputeAndPrintZodiacSign
 	ld c, a
 	pop hl
 	ld a, l
@@ -55663,7 +55663,7 @@ Func_4eb71: ; 4eb71
 	ld [wSaveScratchBirthDay], a
 	pop bc
 	ld a, c
-	ld [wc987], a
+	ld [wSaveScratchZodiacSign], a
 	ld a, e
 	call GetSRAMBank
 	call FillVisibleAreaWithBlankTile
@@ -58461,13 +58461,13 @@ Func_50ccc: ; 50ccc (14:4ccc)
 Data_50cf6: ; 50cf6
 	db "(を すてても よろしいてﾞすか)?", $0
 
-Func_50d09:: ; 50d09
+GetZodiacSign:: ; 50d09
 	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wc987]
+	ld a, [wSaveScratchZodiacSign]
 	push af
 	ld a, l
 	call GetSRAMBank
@@ -62309,283 +62309,6 @@ Func_52def: ; 52def (14:6def)
 	ret
 
 INCLUDE "engine/time_set.asm"
-
-Func_537dc: ; 537dc (14:77dc)
-	ld a, [wTimeSetMonthsTensDigit]
-	add a
-	ld d, a
-	add a
-	add a
-	add d
-	ld hl, wTimeSetMonthsOnesDigit
-	add [hl]
-	ld e, a
-	ld a, [wTimeSetDaysTensDigit]
-	add a
-	ld d, a
-	add a
-	add a
-	add d
-	ld hl, wTimeSetDaysOnesDigit
-	add [hl]
-	ld l, e
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld c, l
-	ld b, h
-	push bc
-	ld de, Data_539ac
-	ld hl, $e08
-	call PlaceStringDEatCoordHL
-	pop bc
-	ld l, c
-	ld h, b
-	ld de, $141
-	call CompareHLtoDE
-	jp c, Func_53838
-	ld e, c
-	ld d, b
-	ld hl, $1a4
-	call CompareHLtoDE
-	jp c, Func_53838
-	ld de, Data_539b3
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	xor a
-	jp Func_539ab
-
-Func_53838: ; 53838 (14:7838)
-	ld l, c
-	ld h, b
-	ld de, $1a5
-	call CompareHLtoDE
-	jp c, Func_5385c
-	ld e, c
-	ld d, b
-	ld hl, $209
-	call CompareHLtoDE
-	jp c, Func_5385c
-	ld de, Data_539bb
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $1
-	jp Func_539ab
-
-Func_5385c: ; 5385c (14:785c)
-	ld l, c
-	ld h, b
-	ld de, $20a
-	call CompareHLtoDE
-	jp c, Func_53880
-	ld e, c
-	ld d, b
-	ld hl, $26d
-	call CompareHLtoDE
-	jp c, Func_53880
-	ld de, Data_539c2
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $2
-	jp Func_539ab
-
-Func_53880: ; 53880 (14:7880)
-	ld l, c
-	ld h, b
-	ld de, $26e
-	call CompareHLtoDE
-	jp c, Func_538a4
-	ld e, c
-	ld d, b
-	ld hl, $2d2
-	call CompareHLtoDE
-	jp c, Func_538a4
-	ld de, Data_539ca
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $3
-	jp Func_539ab
-
-Func_538a4: ; 538a4 (14:78a4)
-	ld l, c
-	ld h, b
-	ld de, $2d3
-	call CompareHLtoDE
-	jp c, Func_538c8
-	ld e, c
-	ld d, b
-	ld hl, $336
-	call CompareHLtoDE
-	jp c, Func_538c8
-	ld de, Data_539d1
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $4
-	jp Func_539ab
-
-Func_538c8: ; 538c8 (14:78c8)
-	ld l, c
-	ld h, b
-	ld de, $337
-	call CompareHLtoDE
-	jp c, Func_538ec
-	ld e, c
-	ld d, b
-	ld hl, $39b
-	call CompareHLtoDE
-	jp c, Func_538ec
-	ld de, Data_539d8
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $5
-	jp Func_539ab
-
-Func_538ec: ; 538ec (14:78ec)
-	ld l, c
-	ld h, b
-	ld de, $39c
-	call CompareHLtoDE
-	jp c, Func_53910
-	ld e, c
-	ld d, b
-	ld hl, $3ff
-	call CompareHLtoDE
-	jp c, Func_53910
-	ld de, Data_539df
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $6
-	jp Func_539ab
-
-Func_53910: ; 53910 (14:7910)
-	ld l, c
-	ld h, b
-	ld de, $400
-	call CompareHLtoDE
-	jp c, Func_53934
-	ld e, c
-	ld d, b
-	ld hl, $462
-	call CompareHLtoDE
-	jp c, Func_53934
-	ld de, Data_539e7
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $7
-	jp Func_539ab
-
-Func_53934: ; 53934 (14:7934)
-	ld l, c
-	ld h, b
-	ld de, $463
-	call CompareHLtoDE
-	jp c, Func_53958
-	ld e, c
-	ld d, b
-	ld hl, $4c5
-	call CompareHLtoDE
-	jp c, Func_53958
-	ld de, Data_539ee
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $8
-	jp Func_539ab
-
-Func_53958: ; 53958 (14:7958)
-	ld l, c
-	ld h, b
-	ld de, $4c6
-	call CompareHLtoDE
-	jp nc, Func_5396e
-	ld e, c
-	ld d, b
-	ld hl, $78
-	call CompareHLtoDE
-	jp c, Func_5397c
-Func_5396e: ; 5396e (14:796e)
-	ld de, Data_539f5
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $9
-	jp Func_539ab
-
-Func_5397c: ; 5397c (14:797c)
-	ld l, c
-	ld h, b
-	ld de, $79
-	call CompareHLtoDE
-	jp c, Func_539a0
-	ld e, c
-	ld d, b
-	ld hl, $da
-	call CompareHLtoDE
-	jp c, Func_539a0
-	ld de, Data_539fd
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $a
-	jp Func_539ab
-
-Func_539a0: ; 539a0 (14:79a0)
-	ld de, Data_53a06
-	ld hl, $e09
-	call PlaceStringDEatCoordHL
-	ld a, $b
-Func_539ab: ; 539ab (14:79ab)
-	ret
-
-Data_539ac:
-	db "(    )", $0
-
-Data_539b3:
-	db "(おひつしﾞ)", $0
-
-Data_539bb:
-	db "(おうし )", $0
-
-Data_539c2:
-	db "(ふたこﾞ )", $0
-
-Data_539ca:
-	db "(かに  )", $0
-
-Data_539d1:
-	db "(しし  )", $0
-
-Data_539d8:
-	db "(おとめ )", $0
-
-Data_539df:
-	db "(てんひﾞん)", $0
-
-Data_539e7:
-	db "(さそり )", $0
-
-Data_539ee:
-	db "(いて  )", $0
-
-Data_539f5:
-	db "(やきﾞ  )", $0
-
-Data_539fd:
-	db "(みすﾞかﾞめ)", $0
-
-Data_53a06:
-	db "(うお  )", $0
-
 INCLUDE "engine/robodex/flags.asm"
 
 Func_53b6e::
@@ -70063,7 +69786,7 @@ Func_58df9: ; 58df9 (16:4df9)
 	ld hl, sp+$c
 	ld bc, $5
 	call FarCopyVideoData
-	ld a, [wc987]
+	ld a, [wSaveScratchZodiacSign]
 	ld l, a
 	push hl
 	ld hl, sp+$8
@@ -104321,7 +104044,7 @@ Func_fb18e: ; fb18e (3e:718e)
 	ld a, $1
 	ld [wSaveScratchBirthDay], a
 	ld a, $9
-	ld [wc987], a
+	ld [wSaveScratchZodiacSign], a
 	ld a, l
 	call GetSRAMBank
 	call FillVisibleAreaWithBlankTile

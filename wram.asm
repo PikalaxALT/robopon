@@ -865,7 +865,7 @@ wSaveBlock1::
 	array wSaveScratchPlayerName, 5, 1, 1 ; c980
 	char wSaveScratchBirthMonth ; c985
 	char wSaveScratchBirthDay ; c986
-	char wc987 ; c987
+	char wSaveScratchZodiacSign ; c987
 	ds $1
 	array SaveScratchMoney, 4, 1, 1 ; c989
 	char wc98d ; c98d
