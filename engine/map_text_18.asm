@@ -1,7 +1,7 @@
 Data_6061f: ; 6061f
 	dw $0
 
-PrintMapText: ; 60621
+PrintMapText:: ; 60621
 ; h - x coordinate
 ; l - y coordinate
 ; de - string pointer table

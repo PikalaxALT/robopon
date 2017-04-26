@@ -236,7 +236,7 @@ Func_617d: ; 617d (1:617d)
 	ld [rLCDC], a
 	ret
 
-Func_6183: ; 6183
+Func_6183:: ; 6183
 	push af
 	ld a, [wLCDC]
 	bit 7, a
