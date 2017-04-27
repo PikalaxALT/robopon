@@ -10581,7 +10581,7 @@ Func_de2c: ; de2c (3:5e2c)
 	ld hl, $30
 	add hl, de
 	reg16swap de, hl
-	ld bc, $fff0
+	ld bc, -$10
 	jp Func_de6f
 
 Func_de6c: ; de6c (3:5e6c)
@@ -23618,7 +23618,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, $ffec
+	ld hl, -$14
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -23639,7 +23639,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, $ffec
+	ld hl, -$14
 	add hl, de
 	add hl, bc
 	ld e, [hl]
@@ -23703,7 +23703,7 @@ Func_15d29: ; 15d29 (5:5d29)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, $ffec
+	ld hl, -$14
 	add hl, de
 	add hl, bc
 	ld [hl], a
@@ -23790,7 +23790,7 @@ Func_15df5: ; 15df5 (5:5df5)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, $ffec
+	ld hl, -$14
 	add hl, de
 	add hl, bc
 	ld e, [hl]
@@ -23810,7 +23810,7 @@ Func_15df5: ; 15df5 (5:5df5)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, $ffec
+	ld hl, -$14
 	add hl, de
 	ld a, l
 	ld [wc311], a
@@ -83145,7 +83145,7 @@ Func_615ce: ; 615ce (18:55ce)
 	ld hl, $30
 	add hl, de
 	reg16swap de, hl
-	ld bc, $fff0
+	ld bc, -$10
 	jp Func_61611
 
 Func_6160e: ; 6160e (18:560e)
@@ -100936,7 +100936,7 @@ Func_6e52b: ; 6e52b (1b:652b)
 	ld hl, $0
 	call WriteHLToSPPlus4
 Func_6e531: ; 6e531 (1b:6531)
-	ld hl, $ffc0
+	ld hl, -$40
 	add hl, bc
 	push hl
 	call GetHLAtSPPlus6

@@ -6828,16 +6828,11 @@ Func_d11ef: ; d11ef (34:51ef)
 	ld e, $1
 	ld hl, Data_d1142
 	call Func_80ce7_34
-	ld e, $9
-	ld hl, Data_d10b4
-	call LoadWarps_34
-	ld e, $c
-	ld hl, Data_d1147
-	call LoadMapObjects_34
+	loadwarps $9, Data_d10b4
+	loadpeople $c, Data_d1147
 	ld a, $1
 	call Func_80cc6_34
-	ld a, $7
-	call PlayMusic_34
+	playmusic $7
 	call Func_8001c_34
 	ret
 
@@ -6861,22 +6856,17 @@ Func_d121f:
 	ld [hl], a
 	cp $ff
 	jp z, Func_d12b7
-	ld hl, $418
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_45564
 	ld a, $4e
 	call Func_80e7d_34
 	cp $1
 	jp nz, Func_d12ae
-	ld hl, $299
-	call PrintTextWithNPCName_34
-	ld hl, $400
-	call PrintTextWithYesNoBox_34
+	writenpctext TreeBitstreamText_4560f
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, Func_d129d
-	ld a, $68
-	call PlaySFX_34
-	ld hl, $410
-	call PrintTextWithNPCName_34
+	playsfx $68
+	writenpctext TreeBitstreamText_4565b
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
@@ -6902,18 +6892,15 @@ Func_d121f:
 	jp Func_d12ab
 
 Func_d129d: ; d129d (34:529d)
-	ld a, $69
-	call PlaySFX_34
-	ld hl, $411
-	call PrintTextWithNPCName_34
+	playsfx $69
+	writenpctext TreeBitstreamText_456f4
 	jp Func_d1454
 
 Func_d12ab: ; d12ab (34:52ab)
 	jp Func_d12b7
 
 Func_d12ae: ; d12ae (34:52ae)
-	ld hl, $46e
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_45a40
 	jp Func_d1454
 
 Func_d12b7: ; d12b7 (34:52b7)
@@ -6929,22 +6916,17 @@ Func_d12ba: ; d12ba (34:52ba)
 	ld [hl], a
 	cp $ff
 	jp z, Func_d1341
-	ld hl, $418
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_45564
 	ld a, $51
 	call Func_80e7d_34
 	cp $1
 	jp nz, Func_d1338
-	ld hl, $29a
-	call PrintTextWithNPCName_34
-	ld hl, $400
-	call PrintTextWithYesNoBox_34
+	writenpctext TreeBitstreamText_45794
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, Func_d1327
-	ld a, $68
-	call PlaySFX_34
-	ld hl, $43a
-	call PrintTextWithNPCName_34
+	playsfx $68
+	writenpctext TreeBitstreamText_457de
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
@@ -6970,18 +6952,15 @@ Func_d12ba: ; d12ba (34:52ba)
 	jp Func_d1335
 
 Func_d1327: ; d1327 (34:5327)
-	ld a, $69
-	call PlaySFX_34
-	ld hl, $411
-	call PrintTextWithNPCName_34
+	playsfx $69
+	writenpctext TreeBitstreamText_456f4
 	jp Func_d1454
 
 Func_d1335: ; d1335 (34:5335)
 	jp Func_d1341
 
 Func_d1338: ; d1338 (34:5338)
-	ld hl, $46e
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_45a40
 	jp Func_d1454
 
 Func_d1341: ; d1341 (34:5341)
@@ -7027,50 +7006,39 @@ Func_d135e: ; d135e (34:535e)
 	cp $1
 	jp nz, Func_d13f6
 Func_d139c: ; d139c (34:539c)
-	ld hl, $140
-	call PrintTextStandard_34
-	ld hl, $34d
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45acc
 	jp Func_d13fc
 
 Func_d13ab: ; d13ab (34:53ab)
-	ld hl, $140
-	call PrintTextStandard_34
-	ld hl, $205
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45add
 	jp Func_d13fc
 
 Func_d13ba: ; d13ba (34:53ba)
-	ld hl, $140
-	call PrintTextStandard_34
-	ld hl, $20a
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45aee
 	jp Func_d13fc
 
 Func_d13c9: ; d13c9 (34:53c9)
-	ld hl, $140
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_45a76
 	ld hl, Func_0218
 	call PrintTextStandard_34
 	jp Func_d13fc
 
 Func_d13d8: ; d13d8 (34:53d8)
-	ld hl, $140
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_45a76
 	ld hl, SelectChannelsPredef
 	call PrintTextStandard_34
 	jp Func_d13fc
 
 Func_d13e7: ; d13e7 (34:53e7)
-	ld hl, $140
-	call PrintTextStandard_34
-	ld hl, $34b
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45abb
 	jp Func_d13fc
 
 Func_d13f6: ; d13f6 (34:53f6)
-	ld hl, $418
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_45564
 Func_d13fc: ; d13fc (34:53fc)
 	jp Func_d1454
 
@@ -7085,33 +7053,27 @@ Func_d13ff: ; d13ff (34:53ff)
 	ld a, [wc793 + 3]
 	cp $7
 	jp c, Func_d1426
-	ld hl, $418
-	call PrintTextWithNPCName_34
-	ld hl, $439
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_45564
+	writenpctext TreeBitstreamText_45728
 	jp Func_d1454
 
 Func_d1426: ; d1426 (34:5426)
 	ld a, [wc793 + 3]
 	cp $f
 	jp nz, Func_d1437
-	ld hl, $418
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_45564
 	jp Func_d1454
 
 Func_d1437: ; d1437 (34:5437)
 	ld a, [wc793 + 3]
 	cp $9
 	jp c, Func_d1448
-	ld hl, $43c
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_45875
 	jp Func_d1454
 
 Func_d1448: ; d1448 (34:5448)
-	ld hl, $418
-	call PrintTextWithNPCName_34
-	ld hl, $344
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_45564
+	writenpctext TreeBitstreamText_455be
 Func_d1454: ; d1454 (34:5454)
 	pop bc
 	pop bc
@@ -7186,12 +7148,8 @@ Func_d153f: ; d153f (34:553f)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-	ld e, $1
-	ld hl, Data_d14fc
-	call LoadWarps_34
-	ld e, $4
-	ld hl, Data_d1507
-	call LoadMapObjects_34
+	loadwarps $1, Data_d14fc
+	loadpeople $4, Data_d1507
 	ld a, [wBackupMapNumber]
 	cp $22
 	jp z, Func_d1603
@@ -7279,8 +7237,7 @@ Func_d163f: ; d163f (34:563f)
 Func_d1654: ; d1654 (34:5654)
 	ld a, $1
 	ld [wc7a2 + 1], a
-	ld a, $7
-	call PlayMusic_34
+	playmusic $7
 	call Func_8001c_34
 	ld a, [wBackupMapNumber]
 	or a
@@ -7314,13 +7271,11 @@ Func_d1680:
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, Func_d16b1
-	ld hl, $3b3
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_47cc9
 	ld e, $0
 	ld a, $11
 	call Func_806a0_34
-	ld hl, $3c
-	call ScriptSleep_34
+	script_sleep $3c
 	ld e, $2
 	ld hl, sp+$1
 	ld a, [hl]
@@ -7328,12 +7283,10 @@ Func_d1680:
 	jp Func_d1729
 
 Func_d16b1: ; d16b1 (34:56b1)
-	ld hl, $3ba
-	call PrintTextWithNPCNameAndYesNoBox_34
+	writenpctext_yesorno TreeBitstreamText_47dc3
 	or a
 	jp nz, Func_d1723
-	ld hl, $3bd
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_47e09
 	ld a, [wPlayerFacing]
 	cp $3
 	jp z, Func_d16df
@@ -7380,8 +7333,7 @@ Func_d16e8: ; d16e8 (34:56e8)
 	jp Func_d1729
 
 Func_d1723: ; d1723 (34:5723)
-	ld hl, $3bc
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_47dfa
 Func_d1729: ; d1729 (34:5729)
 	pop bc
 	ret
@@ -7433,25 +7385,20 @@ Func_d177e: ; d177e (34:577e)
 	call ApplyMovementData_34
 	ld a, $2
 	call PlayerFace_34
-	ld hl, $1e
-	call ScriptSleep_34
+	script_sleep $1e
 	xor a
 	call Func_8044b_34
-	ld hl, $5d
-	call CheckEventFlag_34
+	checkevent $5d
 	cp $1
 	jp nz, Func_d17c7
-	ld hl, $5e
-	call CheckEventFlag_34
+	checkevent $5e
 	or a
 	jp nz, Func_d17c7
-	ld hl, $3b4
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_47ce9
 	ld e, $0
 	ld a, $2d
 	call Func_80d62_34
-	ld hl, $3b5
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_47d38
 	ld e, $1
 	ld hl, $5e
 	call EventFlagAction_34
@@ -7465,25 +7412,20 @@ Func_d17ca: ; d17ca (34:57ca)
 	call ApplyMovementData_34
 	ld a, $2
 	call PlayerFace_34
-	ld hl, $1e
-	call ScriptSleep_34
+	script_sleep $1e
 	xor a
 	call Func_8044b_34
-	ld hl, $5f
-	call CheckEventFlag_34
+	checkevent $5f
 	cp $1
 	jp nz, Func_d1813
-	ld hl, $60
-	call CheckEventFlag_34
+	checkevent $60
 	or a
 	jp nz, Func_d1813
-	ld hl, $3b4
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_47ce9
 	ld e, $0
 	ld a, $9
 	call Func_80d74_34
-	ld hl, $3b6
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_47d46
 	ld e, $1
 	ld hl, $60
 	call EventFlagAction_34
@@ -7497,20 +7439,16 @@ Func_d1816: ; d1816 (34:5816)
 	call ApplyMovementData_34
 	ld a, $2
 	call PlayerFace_34
-	ld hl, $1e
-	call ScriptSleep_34
+	script_sleep $1e
 	xor a
 	call Func_8044b_34
-	ld hl, $61
-	call CheckEventFlag_34
+	checkevent $61
 	cp $1
 	jp nz, Func_d1866
-	ld hl, $62
-	call CheckEventFlag_34
+	checkevent $62
 	or a
 	jp nz, Func_d1866
-	ld hl, $3b4
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_47ce9
 	ld c, $32
 	ld e, $0
 IF DEF(SUN)
@@ -7581,10 +7519,8 @@ Func_d18ba:: ; d18ba (34:58ba)
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-	ld hl, $3c
-	call ScriptSleep_34
-	ld hl, $3bb
-	call PrintTextWithNPCName_34
+	script_sleep $3c
+	writenpctext TreeBitstreamText_47ddc
 	ld bc, Data_d18ae
 	ld e, $34
 	xor a
@@ -7645,8 +7581,7 @@ Func_d1938: ; d1938 (34:5938)
 Func_d194d: ; d194d (34:594d)
 	pop af
 	ld [wc791], a
-	ld hl, $3c
-	call ScriptSleep_34
+	script_sleep $3c
 	ret
 
 Data_d1958: ; d1958
@@ -7845,27 +7780,19 @@ Func_d1c0f: ; d1c0f (34:5c0f)
 	cp $1
 	jp nz, Func_d1c83
 Func_d1c62: ; d1c62 (34:5c62)
-	ld e, $5
-	ld hl, Data_d19e7
-	call LoadEncounters_34
+	loadwilds $5, Data_d19e7
 	jp Func_d1c8b
 
 Func_d1c6d: ; d1c6d (34:5c6d)
-	ld e, $5
-	ld hl, Data_d1a2d
-	call LoadEncounters_34
+	loadwilds $5, Data_d1a2d
 	jp Func_d1c8b
 
 Func_d1c78: ; d1c78 (34:5c78)
-	ld e, $5
-	ld hl, Data_d1a73
-	call LoadEncounters_34
+	loadwilds $5, Data_d1a73
 	jp Func_d1c8b
 
 Func_d1c83: ; d1c83 (34:5c83)
-	ld e, $5
-	ld hl, Data_d1ab9
-	call LoadEncounters_34
+	loadwilds $5, Data_d1ab9
 Func_d1c8b: ; d1c8b (34:5c8b)
 	ld a, [wc7de]
 	inc a
@@ -7909,17 +7836,13 @@ Func_d1c8b: ; d1c8b (34:5c8b)
 	ld e, $1
 	call LoadWarps_34
 Func_d1ccb: ; d1ccb (34:5ccb)
-	ld e, $1
-	ld hl, Data_d1958
-	call LoadWarps_34
-	ld a, $8
-	call PlayMusic_34
+	loadwarps $1, Data_d1958
+	playmusic $8
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d1cec
-	ld hl, $f8
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_47e17
 	jp Func_d1cf5
 
 Func_d1cec: ; d1cec (34:5cec)
@@ -8067,27 +7990,19 @@ Func_d1f46: ; d1f46 (34:5f46)
 	cp $1
 	jp nz, Func_d1fba
 Func_d1f99: ; d1f99 (34:5f99)
-	ld e, $5
-	ld hl, Data_d1dad
-	call LoadEncounters_34
+	loadwilds $5, Data_d1dad
 	jp Func_d1fc2
 
 Func_d1fa4: ; d1fa4 (34:5fa4)
-	ld e, $5
-	ld hl, Data_d1df3
-	call LoadEncounters_34
+	loadwilds $5, Data_d1df3
 	jp Func_d1fc2
 
 Func_d1faf: ; d1faf (34:5faf)
-	ld e, $5
-	ld hl, Data_d1e39
-	call LoadEncounters_34
+	loadwilds $5, Data_d1e39
 	jp Func_d1fc2
 
 Func_d1fba: ; d1fba (34:5fba)
-	ld e, $5
-	ld hl, Data_d1e7f
-	call LoadEncounters_34
+	loadwilds $5, Data_d1e7f
 Func_d1fc2: ; d1fc2 (34:5fc2)
 	ld a, [wc7de]
 	inc a
@@ -8131,17 +8046,13 @@ Func_d1fc2: ; d1fc2 (34:5fc2)
 	ld e, $1
 	call LoadWarps_34
 Func_d2002: ; d2002 (34:6002)
-	ld e, $1
-	ld hl, Data_d1d1e
-	call LoadWarps_34
-	ld a, $8
-	call PlayMusic_34
+	loadwarps $1, Data_d1d1e
+	playmusic $8
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2023
-	ld hl, $f8
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_47e17
 	jp Func_d202c
 
 Func_d2023: ; d2023 (34:6023)
@@ -8345,27 +8256,19 @@ Func_d22e5: ; d22e5 (34:62e5)
 	cp $1
 	jp nz, Func_d2359
 Func_d2338: ; d2338 (34:6338)
-	ld e, $5
-	ld hl, Data_d20e4
-	call LoadEncounters_34
+	loadwilds $5, Data_d20e4
 	jp Func_d2361
 
 Func_d2343: ; d2343 (34:6343)
-	ld e, $5
-	ld hl, Data_d212a
-	call LoadEncounters_34
+	loadwilds $5, Data_d212a
 	jp Func_d2361
 
 Func_d234e: ; d234e (34:634e)
-	ld e, $5
-	ld hl, Data_d2170
-	call LoadEncounters_34
+	loadwilds $5, Data_d2170
 	jp Func_d2361
 
 Func_d2359: ; d2359 (34:6359)
-	ld e, $5
-	ld hl, Data_d21b6
-	call LoadEncounters_34
+	loadwilds $5, Data_d21b6
 Func_d2361: ; d2361 (34:6361)
 	ld a, [wc7de]
 	inc a
@@ -8409,17 +8312,13 @@ Func_d2361: ; d2361 (34:6361)
 	ld e, $1
 	call LoadWarps_34
 Func_d23a1: ; d23a1 (34:63a1)
-	ld e, $1
-	ld hl, Data_d2055
-	call LoadWarps_34
-	ld a, $8
-	call PlayMusic_34
+	loadwarps $1, Data_d2055
+	playmusic $8
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d23c2
-	ld hl, $f8
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_47e17
 	jp Func_d23cb
 
 Func_d23c2: ; d23c2 (34:63c2)
@@ -8623,27 +8522,19 @@ Func_d2684: ; d2684 (34:6684)
 	cp $1
 	jp nz, Func_d26f8
 Func_d26d7: ; d26d7 (34:66d7)
-	ld e, $5
-	ld hl, Data_d2483
-	call LoadEncounters_34
+	loadwilds $5, Data_d2483
 	jp Func_d2700
 
 Func_d26e2: ; d26e2 (34:66e2)
-	ld e, $5
-	ld hl, Data_d24c9
-	call LoadEncounters_34
+	loadwilds $5, Data_d24c9
 	jp Func_d2700
 
 Func_d26ed: ; d26ed (34:66ed)
-	ld e, $5
-	ld hl, Data_d250f
-	call LoadEncounters_34
+	loadwilds $5, Data_d250f
 	jp Func_d2700
 
 Func_d26f8: ; d26f8 (34:66f8)
-	ld e, $5
-	ld hl, Data_d2555
-	call LoadEncounters_34
+	loadwilds $5, Data_d2555
 Func_d2700: ; d2700 (34:6700)
 	ld a, [wc7de]
 	inc a
@@ -8687,17 +8578,13 @@ Func_d2700: ; d2700 (34:6700)
 	ld e, $1
 	call LoadWarps_34
 Func_d2740: ; d2740 (34:6740)
-	ld e, $1
-	ld hl, Data_d23f4
-	call LoadWarps_34
-	ld a, $8
-	call PlayMusic_34
+	loadwarps $1, Data_d23f4
+	playmusic $8
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2761
-	ld hl, $f8
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_47e17
 	jp Func_d276a
 
 Func_d2761: ; d2761 (34:6761)
@@ -8894,27 +8781,19 @@ Func_d2a16: ; d2a16 (34:6a16)
 	cp $1
 	jp nz, Func_d2a8a
 Func_d2a69: ; d2a69 (34:6a69)
-	ld e, $5
-	ld hl, Data_d2822
-	call LoadEncounters_34
+	loadwilds $5, Data_d2822
 	jp Func_d2a92
 
 Func_d2a74: ; d2a74 (34:6a74)
-	ld e, $5
-	ld hl, Data_d2868
-	call LoadEncounters_34
+	loadwilds $5, Data_d2868
 	jp Func_d2a92
 
 Func_d2a7f: ; d2a7f (34:6a7f)
-	ld e, $5
-	ld hl, Data_d28ae
-	call LoadEncounters_34
+	loadwilds $5, Data_d28ae
 	jp Func_d2a92
 
 Func_d2a8a: ; d2a8a (34:6a8a)
-	ld e, $5
-	ld hl, Data_d28f4
-	call LoadEncounters_34
+	loadwilds $5, Data_d28f4
 Func_d2a92: ; d2a92 (34:6a92)
 	ld a, [wc7de]
 	inc a
@@ -8958,17 +8837,13 @@ Func_d2a92: ; d2a92 (34:6a92)
 	ld e, $1
 	call LoadWarps_34
 Func_d2ad2: ; d2ad2 (34:6ad2)
-	ld e, $1
-	ld hl, Data_d2793
-	call LoadWarps_34
-	ld a, $8
-	call PlayMusic_34
+	loadwarps $1, Data_d2793
+	playmusic $8
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2af3
-	ld hl, $f8
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_47e17
 	jp Func_d2afc
 
 Func_d2af3: ; d2af3 (34:6af3)
@@ -9084,21 +8959,16 @@ Func_d2c97: ; d2c97 (34:6c97)
 	jp Func_d2c2c
 
 Func_d2c9b: ; d2c9b (34:6c9b)
-	ld e, $8
-	ld hl, Data_d2b82
-	call LoadMapObjects_34
+	loadpeople $8, Data_d2b82
 	ld a, [wBackupMapGroup]
 	cp $1
 	jp nz, Func_d2cba
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, Func_d2cba
-	ld e, $2
-	ld hl, Data_d2bf2
-	call LoadMapObjects_34
+	loadpeople $2, Data_d2bf2
 Func_d2cba: ; d2cba (34:6cba)
-	ld a, $c
-	call PlayMusic_34
+	playmusic $c
 	call Func_8001c_34
 	ret
 
@@ -9110,8 +8980,7 @@ Func_d2cc3:
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_8044b_34
-	ld hl, $362
-	call PrintTextWithNPCName_34
+	writenpctext TreeBitstreamText_470a2
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
@@ -9232,9 +9101,7 @@ Func_d2f03: ; d2f03 (34:6f03)
 	jp Func_d2e9f
 
 Func_d2f07: ; d2f07 (34:6f07)
-	ld e, $8
-	ld hl, Data_d2def
-	call LoadMapObjects_34
+	loadpeople $8, Data_d2def
 	ld a, [wBackupMapGroup]
 	cp $1
 	jp z, Func_d2f2f
@@ -9248,9 +9115,7 @@ Func_d2f07: ; d2f07 (34:6f07)
 	cp $19
 	jp nz, Func_d2f37
 Func_d2f2f: ; d2f2f (34:6f2f)
-	ld e, $1
-	ld hl, Data_d2e5f
-	call LoadMapObjects_34
+	loadpeople $1, Data_d2e5f
 Func_d2f37: ; d2f37 (34:6f37)
 	ld a, [wBackupMapGroup]
 	cp $15
@@ -9293,18 +9158,14 @@ Func_d2f72: ; d2f72 (34:6f72)
 	ld a, [wBackupMapY]
 	cp $7
 	jp nz, Func_d2fa3
-	ld e, $1
-	ld hl, Data_d2d9b
-	call LoadMapObjects_34
+	loadpeople $1, Data_d2d9b
 	ld e, $0
 	ld a, $8
 	call Func_8013d_34
 	jp Func_d2fab
 
 Func_d2fa3: ; d2fa3 (34:6fa3)
-	ld e, $1
-	ld hl, Data_d2d8d
-	call LoadMapObjects_34
+	loadpeople $1, Data_d2d8d
 Func_d2fab: ; d2fab (34:6fab)
 	jp Func_d3019
 
@@ -9315,9 +9176,7 @@ Func_d2fae: ; d2fae (34:6fae)
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, Func_d3011
-	ld e, $5
-	ld hl, Data_d2da9
-	call LoadMapObjects_34
+	loadpeople $5, Data_d2da9
 	ld a, [wc790]
 	cp $3
 	jp z, Func_d3000
@@ -9355,12 +9214,9 @@ Func_d300e: ; d300e (34:700e)
 	jp Func_d3019
 
 Func_d3011: ; d3011 (34:7011)
-	ld e, $1
-	ld hl, Data_d2d8d
-	call LoadMapObjects_34
+	loadpeople $1, Data_d2d8d
 Func_d3019: ; d3019 (34:7019)
-	ld a, $c
-	call PlayMusic_34
+	playmusic $c
 	call Func_8001c_34
 	ld a, [wBackupMapGroup]
 	cp $5
@@ -9393,18 +9249,14 @@ Func_d3055:
 	ld a, e
 	or a
 	jp nz, Func_d30f8
-	ld hl, $1
-	call CheckEventFlag_34
+	checkevent $1
 	or a
 	jp nz, Func_d3086
-	ld hl, $5c
-	call PrintTextStandard_34
-	ld hl, $f0
-	call CheckEventFlag_34
+	writetext TreeBitstreamText_3a8c3
+	checkevent $f0
 	cp $1
 	jp nz, Func_d3083
-	ld hl, $5d
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_3a8e1
 	ld e, $1
 	ld hl, $1
 	call EventFlagAction_34
@@ -9416,27 +9268,20 @@ Func_d3086: ; d3086 (34:7086)
 	call Func_80e5d_34
 	or a
 	jp nz, Func_d3098
-	ld hl, $5e
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_3a92f
 	jp Func_d30f8
 
 Func_d3098: ; d3098 (34:7098)
-	ld hl, $0
-	call CheckEventFlag_34
+	checkevent $0
 	or a
 	jp nz, Func_d30e9
-	ld hl, $5f
-	call PrintTextWithYesNoBox_34
+	writetext_yesorno TreeBitstreamText_3a966
 	or a
 	jp nz, Func_d30e0
-	ld hl, $61
-	call PrintTextStandard_34
-	ld a, $2a
-	call PlaySFX_34
-	ld hl, $62
-	call PrintTextStandard_34
-	ld hl, $63
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_3a995
+	playsfx $2a
+	writetext TreeBitstreamText_3a9e8
+	writetext TreeBitstreamText_3a9f3
 	ld c, $1
 	ld e, $1
 	ld a, $e
@@ -9451,14 +9296,12 @@ Func_d3098: ; d3098 (34:7098)
 	jp Func_d30e6
 
 Func_d30e0: ; d30e0 (34:70e0)
-	ld hl, $60
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_3a97f
 Func_d30e6: ; d30e6 (34:70e6)
 	jp Func_d30f8
 
 Func_d30e9: ; d30e9 (34:70e9)
-	ld hl, $64
-	call PrintTextStandard_34
+	writetext TreeBitstreamText_3aa23
 	ld c, $1
 	ld e, $1
 	ld a, $e
@@ -9607,9 +9450,7 @@ Func_d337c: ; d337c (34:737c)
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, Func_d33ed
-	ld e, $8
-	ld hl, Data_d31ea
-	call LoadMapObjects_34
+	loadpeople $8, Data_d31ea
 	ld a, [wc790]
 	cp $3
 	jp z, Func_d33dc
@@ -9653,9 +9494,7 @@ Func_d33ea: ; d33ea (34:73ea)
 	jp Func_d33f5
 
 Func_d33ed: ; d33ed (34:73ed)
-	ld e, $2
-	ld hl, Data_d31ce
-	call LoadMapObjects_34
+	loadpeople $2, Data_d31ce
 Func_d33f5: ; d33f5 (34:73f5)
 	ld a, [wBackupMapGroup]
 	cp $1
@@ -9663,15 +9502,10 @@ Func_d33f5: ; d33f5 (34:73f5)
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, Func_d340c
-	ld e, $2
-	ld hl, Data_d32ca
-	call LoadMapObjects_34
+	loadpeople $2, Data_d32ca
 Func_d340c: ; d340c (34:740c)
-	ld e, $8
-	ld hl, Data_d325a
-	call LoadMapObjects_34
-	ld a, $c
-	call PlayMusic_34
+	loadpeople $8, Data_d325a
+	playmusic $c
 	call Func_8001c_34
 	ret
 
@@ -9891,8 +9725,7 @@ Func_d371a: ; d371a (34:771a)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-	ld a, $9
-	call PlayMusic_34
+	playmusic $9
 	call Func_8001c_34
 	pop hl
 	ld a, l
@@ -9972,10 +9805,8 @@ Func_d37ce: ; d37ce (34:77ce)
 	call Func_80f72_34
 Func_d37d4: ; d37d4 (34:77d4)
 	call Func_80ea2_34
-	ld a, $64
-	call PlaySFX_34
-	ld hl, $3c
-	call ScriptSleep_34
+	playsfx $64
+	script_sleep $3c
 	call Func_80eb1_34
 	jp Func_d385a
 
@@ -10000,11 +9831,8 @@ Func_d37e8: ; d37e8 (34:77e8)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-	ld e, $2
-	ld hl, Data_d365e
-	call LoadMapObjects_34
-	ld a, $11
-	call PlayMusic_34
+	loadpeople $2, Data_d365e
+	playmusic $11
 	call Func_8001c_34
 	jp Func_d385a
 
@@ -10037,11 +9865,8 @@ Func_d3831: ; d3831 (34:7831)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-	ld e, $2
-	ld hl, Data_d365e
-	call LoadMapObjects_34
-	ld a, $b
-	call PlayMusic_34
+	loadpeople $2, Data_d365e
+	playmusic $b
 	call Func_8001c_34
 Func_d385a: ; d385a (34:785a)
 	ret
@@ -10117,19 +9942,12 @@ Func_d392b: ; d392b (34:792b)
 	call Func_d3adf
 	ld hl, Func_d3adf
 	call Func_80f11_34
-	ld e, $2
-	ld hl, Data_d38af
-	call LoadWarps_34
+	loadwarps $2, Data_d38af
 	ld a, $3
 	call Func_80d01_34
-	ld e, $5
-	ld hl, Data_d38c9
-	call LoadEncounters_34
-	ld e, $2
-	ld hl, Data_d390f
-	call LoadMapObjects_34
-	ld hl, $f1
-	call CheckEventFlag_34
+	loadwilds $5, Data_d38c9
+	loadpeople $2, Data_d390f
+	checkevent $f1
 	or a
 	jp nz, Func_d3977
 	xor a
@@ -10143,8 +9961,7 @@ Func_d392b: ; d392b (34:792b)
 	jp Func_d39a5
 
 Func_d3977: ; d3977 (34:7977)
-	ld hl, $1c
-	call CheckEventFlag_34
+	checkevent $1c
 	cp $1
 	jp nz, Func_d3998
 	xor a
@@ -10158,8 +9975,7 @@ Func_d3977: ; d3977 (34:7977)
 	jp Func_d39a5
 
 Func_d3998: ; d3998 (34:7998)
-	ld a, $10
-	call PlayMusic_34
+	playmusic $10
 	ld a, $1
 	call Func_80cc6_34
 	call Func_8001c_34
@@ -10168,8 +9984,7 @@ Func_d39a5: ; d39a5 (34:79a5)
 
 Func_d39a6: ; d39a6 (34:79a6)
 	call Func_80ea2_34
-	ld a, $64
-	call PlaySFX_34
+	playsfx $64
 	ld c, $3
 	ld e, $1
 	ld a, $13
@@ -10181,13 +9996,11 @@ Func_d39a6: ; d39a6 (34:79a6)
 	ld e, $1
 	ld a, $13
 	call LoadEmote_34
-	ld a, $64
-	call PlaySFX_34
+	playsfx $64
 	ld a, $1
 	ld [wc78d + 1], a
 	call Func_d3adf
-	ld a, $4e
-	call PlaySFX_34
+	playsfx $4e
 	call Func_80f02_34
 	call Func_80f54_34
 	call Func_801d5_34
@@ -10196,13 +10009,11 @@ Func_d39a6: ; d39a6 (34:79a6)
 	ld e, $1
 	ld a, $13
 	call LoadEmote_34
-	ld a, $64
-	call PlaySFX_34
+	playsfx $64
 	ld a, $2
 	ld [wc78d + 1], a
 	call Func_d3adf
-	ld a, $4e
-	call PlaySFX_34
+	playsfx $4e
 	call Func_80f02_34
 	call Func_80f54_34
 	call Func_801d5_34
@@ -10211,13 +10022,11 @@ Func_d39a6: ; d39a6 (34:79a6)
 	ld e, $1
 	ld a, $13
 	call LoadEmote_34
-	ld a, $64
-	call PlaySFX_34
+	playsfx $64
 	ld a, $3
 	ld [wc78d + 1], a
 	call Func_d3adf
-	ld a, $4e
-	call PlaySFX_34
+	playsfx $4e
 	call Func_80f02_34
 	call Func_80f54_34
 	call Func_801d5_34
@@ -10226,13 +10035,11 @@ Func_d39a6: ; d39a6 (34:79a6)
 	ld e, $1
 	ld a, $13
 	call LoadEmote_34
-	ld a, $64
-	call PlaySFX_34
+	playsfx $64
 	ld a, $4
 	ld [wc78d + 1], a
 	call Func_d3adf
-	ld a, $4e
-	call PlaySFX_34
+	playsfx $4e
 	call Func_80f02_34
 	call Func_80f54_34
 	call Func_801d5_34
@@ -10305,8 +10112,7 @@ Data_d3ad9: ; d3ad9
 	dr $d3ad9, $d3adf
 
 Func_d3adf: ; d3adf (34:7adf)
-	ld hl, $f1
-	call CheckEventFlag_34
+	checkevent $f1
 	or a
 	jp nz, Func_d3af2
 	ld hl, Data_d3ad9
@@ -10492,12 +10298,9 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	ld e, $e
 	ld a, $7
 	call ShowEmote_34
-	ld a, $65
-	call PlaySFX_34
-	ld hl, $3c
-	call ScriptSleep_34
-	ld a, $43
-	call PlaySFX_34
+	playsfx $65
+	script_sleep $3c
+	playsfx $43
 	call Func_801d5_34
 	ld e, $1
 	ld hl, $f1
@@ -10515,8 +10318,7 @@ Func_d3ceb: ; d3ceb (34:7ceb)
 	ld e, $0
 	ld hl, $f9
 	call EventFlagAction_34
-	ld a, $e
-	call PlayMusic_34
+	playmusic $e
 	xor a
 	call Func_80653_34
 	ld c, $1

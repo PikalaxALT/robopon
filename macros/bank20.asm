@@ -773,8 +773,7 @@ Func_806dd_\1:
 	checkevent $c8
 	or a
 	jp nz, Func_80732_\1
-	ld hl, $36d
-	call PrintTextWithNPCName_\1
+	writenpctext TreeBitstreamText_471e4
 	ld e, $1
 	ld hl, $c8
 	call EventFlagAction_\1
@@ -799,13 +798,11 @@ Func_80732_\1: ; 80732 (20:4732)
 	call LeftShiftA
 	and c
 	jp z, Func_8075a_\1
-	ld hl, $374
-	call PrintTextWithNPCName_\1
+	writenpctext TreeBitstreamText_472b9
 	jp Func_80796_\1
 
 Func_8075a_\1: ; 8075a (20:475a)
-	ld hl, $36e
-	call PrintTextWithNPCNameAndYesNoBox_\1
+	writenpctext_yesorno TreeBitstreamText_4725f
 	or a
 	jp nz, Func_80796_\1
 	set_farcall_addrs_hli Func_9ace0
@@ -824,15 +821,13 @@ Func_8075a_\1: ; 8075a (20:475a)
 	call FarCall
 	cp $2
 	jp nz, Func_8078c_\1
-	ld hl, $371
-	call PrintTextStandard_\1
+	writetext TreeBitstreamText_4728d
 	jp Func_80796_\1
 
 Func_8078c_\1: ; 8078c (20:478c)
 	or a
 	jp nz, Func_80796_\1
-	ld hl, $47c
-	call PrintTextStandard_\1
+	writetext TreeBitstreamText_472ce
 Func_80796_\1: ; 80796 (20:4796)
 	pop bc
 	pop bc

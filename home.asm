@@ -681,12 +681,14 @@ Func_058a:: ; 058a
 
 Data_059c:: ; 059c
 	db " PASSWORD INPUT", $e, $d, $1, $0
-	db " きゃらはﾞんはﾞーしﾞょん 5けﾞーむ", $d, $1, $0
-	db " きすもん&はﾞけ", $f, "ちゅ", $e, "りれー", $f, "ほか4", $e, $d, $1, $0
-	db " 15はﾟすﾞる&きゃのん", $f, " ほか4こ", $e, $d, $1, $0
-	db " はﾞいなりーらんとﾞ", $f, "&BJほか2こ", $e, $d, $1, $0
-	db " みにけﾞーむ", $f, "かﾞそﾞういれかえ", $e, "てﾞーた", $d, $1, $0
+	db " キャラハﾞンハﾞーシﾞョン 5ケﾞーム", $d, $1, $0
+	db " キスモン&ハﾞケ", $f, "ちゅ", $e, "リレー", $f, "ほか4", $e, $d, $1, $0
+	db " 15ハﾟスﾞル&キャノン", $f, " ほか4こ", $e, $d, $1, $0
+	db " ハﾞイナリーラントﾞ", $f, "&BJほか2こ", $e, $d, $1, $0
+	db " ミニケﾞーム", $f, "かﾞそﾞういれかえ", $e, "テﾞータ", $d, $1, $0
 	db " GB KISS TOOLS", $d, $1, $0
+
+Data_0636:
 	db "KISSMON "
 	db "CANNON  "
 	db "BINARY  "
@@ -694,7 +696,7 @@ Data_059c:: ; 059c
 	db "KISSTOOL"
 
 Data_065e:: ; 065e
-	db "  めにゅー", $f, "を せんたくして", $e, $0
+	db "  メニュー", $f, "を せんたくして", $e, $0
 	db " ", $0
 	db $f, "START/Aを おしてくたﾞさい", $e, $0
 	db $0
@@ -747,7 +749,7 @@ Func_068f:: ; 68f (0:068f)
 	ld c, $0
 	predef Func_7b93a
 	jp c, Func_0519
-	ld hl, $636
+	ld hl, Data_0636
 	ld bc, $502
 .asm_0705
 	push bc
@@ -860,7 +862,10 @@ Data_07e7:: ; 07e7
 	db "GB KISS  MINI GAME", $0
 
 Data_07fa:: ; 07fa
-	dr $7fa, $83b
+	db $f, "していの", $e, "テﾞータ", $f, "を てんそうします", $e, $0
+	db $f, "  AてﾞGBKISSてんそう  ", $e, $0
+	db $f, "STARTてﾞ しﾞふﾞんのSRAMへ", $e, $0
+	db $0
 
 Func_083b:: ; 83b (0:083b)
 	bcbgcoord 2, 14
@@ -1504,10 +1509,16 @@ Func_0bae:: ; bae (0:0bae)
 	jp Func_0ce1
 
 Data_0bd3:: ; 0bd3
-	dr $bd3, $c15
+	db $f, "つうしんしﾞゅんひﾞちゅう にして  ", $e, $0
+	db "ケﾞームホﾞーイ", $f, "とﾞうしを くっつけ ", $e, $0
+	db "Aホﾞタン", $f, "を おしてくたﾞさい   ", $e, $0
+	db $0
 
 Data_0c15:: ; 0c15
-	dr $c15, $c51
+	db $f, "つうしんを ちゅうしするはﾞあいは ", $e, $0
+	db "                ", $0
+	db "Bホﾞタン", $f, "を おしてくたﾞさい   ", $e, $0
+	db $0
 
 Func_0c51:: ; c51 (0:0c51)
 	ld hl, Data_0bd3
@@ -1562,7 +1573,7 @@ Func_0c51:: ; c51 (0:0c51)
 	ret
 
 Data_0cae:: ; 0cae
-	dr $cae, $cbb
+	db "GB KISS MENU "
 
 Func_0cbb:: ; cbb (0:0cbb)
 	predef FrameDelayPredef_7ceaf
@@ -1614,7 +1625,10 @@ asm_0cf7
 	ret
 
 Data_0cfc:: ; 0cfc
-	dr $cfc, $d3a
+	db $f, "- <てんそう されました> -", $e, $0
+	db $f, "- てんそうてﾞきませんてﾞした -", $e, $0
+	db $f, "- おなしﾞ", $e, "ファイル", $f, "かﾞあります -", $e, $0
+	db $0
 
 SECTION "0e00", ROM0 [$e00]
 INCLUDE "home/vblank.asm"
@@ -3206,7 +3220,11 @@ Func_20d9:: ; 20d9 (0:20d9)
 INCLUDE "home/tilemap_backup.asm"
 
 Data_2226:: ; 2226
-	dr $2226, $2230
+	dw 10000
+	dw  1000
+	dw   100
+	dw    10
+	dw     1
 
 Func_2230:: ; 2230
 	push hl
@@ -3745,7 +3763,7 @@ Func_256f:: ; 256f (0:256f)
 	ld [hl], a
 Func_2578:: ; 2578 (0:2578)
 	read_hl_from_sp_plus $12
-	ld de, $fff8
+	ld de, -8
 	add hl, de
 	inc h
 	dec h
@@ -3757,7 +3775,7 @@ Func_2578:: ; 2578 (0:2578)
 	call WriteHLToSPPlusParam8
 	db $f
 	read_hl_from_sp_plus $12
-	ld de, $fff8
+	ld de, -8
 	add hl, de
 	write_hl_to_sp_plus $12
 	inc c
@@ -5766,7 +5784,22 @@ Func_31a4:: ; 31a4 (0:31a4)
 INCLUDE "home/math/longlong.asm"
 
 Data_32b1:: ; 32b1
-	dr $32b1, $32d1
+	dw $ffff
+	dw $7f7f
+	dw $ffff
+	dw $ffff
+	dw $ffff
+	dw $7fef
+	dw $ffff
+	dw $ffff
+	dw $ffff
+	dw $ffff
+	dw $7ffe
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $8000
+	dw $0001
 
 INCLUDE "home/math/long.asm"
 

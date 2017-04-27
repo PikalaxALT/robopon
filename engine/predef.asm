@@ -87,19 +87,19 @@ Func_78100:: ; 78100 (1e:4100)
 	ld hl, Func_78100
 	predef Func_7b133
 	xor a
-	ld [$ffb7], a
+	ld [hFFB7], a
 	call Func_7898a
 Func_7810e:: ; 7810e (1e:410e)
 	call Func_78b33
-	ld hl, $ffc0
-	ld de, rLY
+	ld hl, hFFC0
+	lb de, $ff, $44
 	ld bc, $1
 	predef Func_7c577
 	ld a, $ff
-	ld [$ffc2], a
+	ld [hFFC2], a
 	xor a
-	ld [$ffc3], a
-	ld [$ffc1], a
+	ld [hFFC3], a
+	ld [hFFC1], a
 asm_78125
 	call Func_787eb
 	jp c, Func_0303
@@ -137,10 +137,10 @@ Func_78159:: ; 78159
 	jp Func_783b4
 
 Func_78164:: ; 78164
-	ld a, [$ffc0]
-	ld [$ffc2], a
-	ld a, [$ffc1]
-	ld [$ffc3], a
+	ld a, [hFFC0]
+	ld [hFFC2], a
+	ld a, [hFFC1]
+	ld [hFFC3], a
 	call Func_78990
 	push af
 .asm_78170
@@ -168,7 +168,7 @@ Func_78164:: ; 78164
 .asm_7819b
 	pop af
 	ld a, $ff
-	ld [$ffc2], a
+	ld [hFFC2], a
 	jp Func_7810e
 
 Func_781a3:: ; 781a3 (1e:41a3)
@@ -498,7 +498,7 @@ Func_783be:: ; 783be
 	jp Func_7810e
 
 Func_783d4:: ; 783d4 (1e:43d4)
-	ld a, [$ffc1]
+	ld a, [hFFC1]
 	call Func_78a36
 	jp Func_7813a
 
@@ -571,7 +571,7 @@ Func_78440:: ; 78440 (1e:4440)
 	predef Func_7af96
 	add sp, -$4
 	ld hl, sp+$0
-	ld de, rLCDC
+	lb de, $ff, $40
 	ld bc, $4
 	predef Func_7c577
 	pop de
@@ -717,14 +717,14 @@ Func_78526:: ; 78526 (1e:4526)
 	ret
 
 Func_785dd:: ; 785dd (1e:45dd)
-	ld a, [$ff92]
+	ld a, [hFF92]
 	push af
 	or $40
-	ld [$ff92], a
+	ld [hFF92], a
 	predef Func_7af96
 	pop af
 	and $fb
-	ld [$ff92], a
+	ld [hFF92], a
 	ret
 
 Func_785ec:: ; 785ec (1e:45ec)
@@ -869,7 +869,7 @@ Func_7869a:: ; 7869a (1e:469a)
 	or c
 	jr z, asm_78721
 	push bc
-	ld de, $ffd2
+	ld de, hFFD2
 	ld b, $0
 	call Func_7839c
 	pop bc
@@ -990,7 +990,7 @@ Func_7878a:: ; 7878a (1e:478a)
 Func_7879d:: ; 7879d (1e:479d)
 	ld hl, $c800
 	ld bc, $20
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	ld e, a
 .asm_787a6
 	push bc
@@ -1007,7 +1007,7 @@ Func_7879d:: ; 7879d (1e:479d)
 	jr .asm_787a6
 
 .asm_787b7
-	ld a, [$ffc1]
+	ld a, [hFFC1]
 Func_787b9:: ; 787b9 (1e:47b9)
 	ld de, $c3c
 	ld h, a
@@ -1038,18 +1038,18 @@ Data_787da:: ; 787da
 	dr $787da, $787eb
 
 Func_787eb:: ; 787eb (1e:47eb)
-	ld hl, $ffc0
+	ld hl, hFFC0
 	ld de, rLY
 	ld bc, $1
 	predef Func_7c5ca
 .asm_787f6
-	ld a, [$ffc2]
+	ld a, [hFFC2]
 	ld c, a
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	cp c
 .asm_787fc
 	jr nz, .asm_7880c
-	ld a, [$ffc3]
+	ld a, [hFFC3]
 	call Func_787b9
 	ld hl, Data_787da
 	ld a, $1c
@@ -1066,7 +1066,7 @@ Func_78814:: ; 78814
 	call Func_78fec
 	push af
 	ld a, h
-	ld [$ffc1], a
+	ld [hFFC1], a
 	pop af
 	or a
 	bit 0, a
@@ -1112,18 +1112,18 @@ Func_78814:: ; 78814
 .asm_7885e
 	ld l, $5
 Func_78860:: ; 78860 (1e:4860)
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	or a
 	jp z, Func_78814
-	ld a, [$ffc1]
+	ld a, [hFFC1]
 	add l
-	ld [$ffc1], a
-	ld a, [$ffc0]
+	ld [hFFC1], a
+	ld a, [hFFC0]
 	sub $6
 	jr nc, .asm_78872
 	xor a
 .asm_78872
-	ld [$ffc0], a
+	ld [hFFC0], a
 	jp Func_787eb
 
 asm_78877
@@ -1153,19 +1153,19 @@ asm_78877
 .asm_7889a
 	ld l, $5
 Func_7889c:: ; 7889c (1e:489c)
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	add $6
 	cp $78
 	jp nc, Func_787eb
-	ld [$ffc0], a
-	ld a, [$ffc1]
+	ld [hFFC0], a
+	ld a, [hFFC1]
 	sub l
-	ld [$ffc1], a
+	ld [hFFC1], a
 	jp Func_787eb
 
 asm_788af
 	push hl
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	ld e, a
 	ld d, $0
 	ld hl, $1e
@@ -1178,7 +1178,7 @@ asm_788af
 	jr asm_788c4
 
 asm_788c2
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 asm_788c4
 	add l
 	cp $c4
@@ -1191,7 +1191,7 @@ asm_788c4
 .asm_788d0
 	sub $88
 .asm_788d2
-	ld [$ffc0], a
+	ld [hFFC0], a
 	jp Func_787eb
 
 Func_788d7:: ; 788d7 (1e:48d7)
@@ -1253,7 +1253,7 @@ Func_7890e:: ; 7890e (1e:490e)
 Func_78929:: ; 78929 (1e:4929)
 	hlcoord 16, 4
 Func_7892c:: ; 7892c (1e:492c)
-	ld de, $ffd2
+	ld de, hFFD2
 	ld b, $0
 	predef Func_7cb98
 	ret
@@ -1280,7 +1280,7 @@ Func_78934:: ; 78934 (1e:4934)
 	ld h, [hl]
 	ld l, a
 	add hl, de
-	ld de, $ffd2
+	ld de, hFFD2
 	add hl, de
 	ld d, h
 	ld e, l
@@ -1321,9 +1321,9 @@ Func_7898a:: ; 7898a (1e:498a)
 	jp Func_7a6ee
 
 Func_78990:: ; 78990 (1e:4990)
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	ld c, a
-	ld a, [$ffc1]
+	ld a, [hFFC1]
 	add c
 	ret
 
@@ -1484,7 +1484,7 @@ Func_78a36:: ; 78a36 (1e:4a36)
 	call Func_78b45
 	ld hl, Data_78ac2
 	predef Func_7af96
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	pop de
 	add d
 	ld e, a
@@ -1953,7 +1953,7 @@ asm_79ebb
 
 Func_79ee7:: ; 79ee7 (1e:5ee7)
 	xor a
-	ld [$ffc1], a
+	ld [hFFC1], a
 	call Func_7a181
 	ld c, $11
 	predef Func_7bdaa
@@ -1966,40 +1966,40 @@ Func_79ef2:: ; 79ef2
 	predef Func_7b93a
 	jr c, .asm_79f0e
 	ld a, $1
-	ld [$ffc2], a
+	ld [hFFC2], a
 	ld a, [hFF8A]
 	bit 2, a
 	jp nz, Func_79f61
 	call Func_79f15
 	xor a
-	ld [$ffc1], a
+	ld [hFFC1], a
 .asm_79f0e
 	ld a, $1
 	call Func_7a6c2
 	jr asm_79ebb
 
 Func_79f15:: ; 79f15 (1e:5f15)
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	inc a
 	cp $9
 	jr c, .asm_79f1e
 	ld a, $1
 .asm_79f1e
-	ld [$ffc0], a
+	ld [hFFC0], a
 	ret
 
 Func_79f21:: ; 79f21 (1e:5f21)
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	dec a
 	bit 7, a
 	jr z, .asm_79f2a
 	ld a, $8
 .asm_79f2a
-	ld [$ffc0], a
+	ld [hFFC0], a
 	ret
 
 Func_79f2d:: ; 79f2d (1e:5f2d)
-	ld hl, $ffc1
+	ld hl, hFFC1
 	ld a, [hl]
 	inc [hl]
 	and $f
@@ -2079,12 +2079,12 @@ Func_79f89:: ; 79f89 (1e:5f89)
 	ld e, $1
 	predef Func_7bd42
 	ld a, d
-	ld [$ffc4], a
+	ld [hFFC4], a
 	or a
 	ret
 
 Func_79fa4:: ; 79fa4
-	ld a, [$ffc2]
+	ld a, [hFFC2]
 	or a
 	jr z, Func_79fb5
 	ld a, $8
@@ -2098,10 +2098,10 @@ Func_79fb5:: ; 79fb5
 
 Func_79fb7:: ; 79fb7
 	call Func_7a57f
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	push af
 	ld a, $1
-	ld [$ffc0], a
+	ld [hFFC0], a
 	ld a, $7
 	call Func_79f89
 	ld a, $3
@@ -2125,14 +2125,14 @@ Func_79fb7:: ; 79fb7
 
 .asm_79fe7
 	pop af
-	ld [$ffc0], a
+	ld [hFFC0], a
 	jp Func_79f61
 
 .asm_79fed
 	call Func_79ee7
 .asm_79ff0
 	call Func_79f21
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	or a
 	jr z, .asm_79ff0
 	jr .asm_79fe2
@@ -2157,10 +2157,10 @@ Func_79fb7:: ; 79fb7
 	jr .asm_79fca
 
 Func_7a01f:: ; 7a01f
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	push af
 	xor a
-	ld [$ffc0], a
+	ld [hFFC0], a
 .asm_7a025
 	call Func_7a14f
 	or a
@@ -2194,14 +2194,14 @@ Func_7a01f:: ; 7a01f
 	ld a, $6
 	jr c, .asm_7a065
 	xor a
-	ld [$ffc2], a
+	ld [hFFC2], a
 	ld a, $b
 .asm_7a065
 	call Func_79f89
 	call Func_7a173
 .asm_7a06b
 	pop af
-	ld [$ffc0], a
+	ld [hFFC0], a
 	jp Func_79f67
 
 Func_7a071:: ; 7a071
@@ -2244,7 +2244,7 @@ Func_7a071:: ; 7a071
 	jr .asm_7a0a7
 
 Func_7a0ba:: ; 7a0ba
-	ld a, [$ffc2]
+	ld a, [hFFC2]
 	or a
 	jr z, .asm_7a0c9
 	ld a, $12
@@ -2271,13 +2271,13 @@ Func_7a0ba:: ; 7a0ba
 	or a
 	jr z, .asm_7a106
 	xor a
-	ld [$ffc0], a
+	ld [hFFC0], a
 	call Func_79ee7
 	call Func_79f15
 	ld a, $e
 	call Func_79f89
 	ld a, $1
-	ld [$ffc2], a
+	ld [hFFC2], a
 .asm_7a100
 	call Func_7a173
 .asm_7a103
@@ -2353,7 +2353,7 @@ Func_7a14f:: ; 7a14f (1e:614f)
 	ret
 
 Func_7a169:: ; 7a169 (1e:6169)
-	ld a, [$ffc4]
+	ld a, [hFFC4]
 	ld d, a
 	ld e, $1
 	ld hl, Data_7a4c5
@@ -2371,7 +2371,7 @@ Func_7a173:: ; 7a173 (1e:6173)
 
 Func_7a181:: ; 7a181 (1e:6181)
 	ld b, $11
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	or a
 	jr nz, .asm_7a18a
 	ld b, $c
@@ -2554,10 +2554,10 @@ Func_7a57f:: ; 7a57f (1e:657f)
 	ld de, $204
 	ld bc, $1108
 	predef Func_7be3e
-	ld a, [$ffc0]
+	ld a, [hFFC0]
 	push af
 	xor a
-	ld [$ffc0], a
+	ld [hFFC0], a
 	ld c, $9
 .asm_7a5b7
 	push bc
@@ -2567,7 +2567,7 @@ Func_7a57f:: ; 7a57f (1e:657f)
 	dec c
 	jr nz, .asm_7a5b7
 	pop af
-	ld [$ffc0], a
+	ld [hFFC0], a
 	ret
 
 Func_7a5c6:: ; 7a5c6 (1e:65c6)
@@ -2625,9 +2625,9 @@ Func_7a62a:: ; 7a62a (1e:662a)
 	ld bc, $100
 	predef CopyPredef
 	xor a
-	ld [$ffc0], a
-	ld [$ffc1], a
-	ld [$ffc2], a
+	ld [hFFC0], a
+	ld [hFFC1], a
+	ld [hFFC2], a
 	ret
 
 Func_7a651:: ; 7a651 (1e:6651)
@@ -2759,11 +2759,11 @@ Func_7a6ff:: ; 7a6ff (1e:66ff)
 
 .asm_7a71f
 	xor a
-	ld [$ffc3], a
+	ld [hFFC3], a
 	predef Func_7c456
 	jr nc, .asm_7a731
 	ld a, $1
-	ld [$ffc3], a
+	ld [hFFC3], a
 	predef Func_7ae29
 	decoord 5, 7, wAttrMap
 	predef Func_7a65c
@@ -2774,7 +2774,7 @@ Func_7a6ff:: ; 7a6ff (1e:66ff)
 	predef Func_7bdaa
 	ld a, $3
 	predef Func_7d78e
-	ld a, [$ffc3]
+	ld a, [hFFC3]
 	or a
 	jr nz, .asm_7a757
 	call Func_7a52c
@@ -2867,13 +2867,13 @@ Data_7a855:: ; 7a855
 	dr $7a855, $7a85d
 
 Func_7a85d:: ; 7a85d (1e:685d)
-	ld [$ff91], a
+	ld [hFF91], a
 	ld a, $3
 .asm_7a861
-	ld [$ff90], a
+	ld [hFF90], a
 	ld a, $f
 	predef Func_7d9f9
-	ld a, [$ff91]
+	ld a, [hFF91]
 	ld e, a
 	ld d, $7
 	predef Func_7bdec
@@ -2881,13 +2881,13 @@ Func_7a85d:: ; 7a85d (1e:685d)
 	ld b, h
 	ld hl, Data_7a855
 	ld de, $d301
-	ld a, [$ff90]
+	ld a, [hFF90]
 	ld [hFFB4], a
 	predef Func_7bd5b
 	inc bc
 	inc bc
 	inc bc
-	ld a, [$ff90]
+	ld a, [hFF90]
 	swap a
 	ld [hFFB4], a
 	predef Func_7bd5b
@@ -2908,7 +2908,7 @@ Func_7a85d:: ; 7a85d (1e:685d)
 	ret nz
 	bit 0, b
 	jr z, .asm_7a88b
-	ld a, [$ff90]
+	ld a, [hFF90]
 	cp $30
 	ret
 
@@ -3702,7 +3702,7 @@ Func_7ad2a:: ; 7ad2a (1e:6d2a)
 	push hl
 	predef Func_7d738
 	jp c, Func_7ad4a
-	ld [$ffa1], a
+	ld [hFFA1], a
 	ld a, b
 	pop bc
 .asm_7ad36
@@ -3727,7 +3727,7 @@ Func_7ad2a:: ; 7ad2a (1e:6d2a)
 	push hl
 Func_7ad4a:: ; 7ad4a (1e:6d4a)
 	pop hl
-	ld a, [$ffa1]
+	ld a, [hFFA1]
 	ret
 
 Func_7ad4e:: ; 7ad4e (1e:6d4e)
@@ -4223,7 +4223,7 @@ Func_7af8a:: ; 7af8a (1e:6f8a)
 	jr .asm_7af8f
 
 Func_7af96:: ; 7af96 (1e:6f96)
-	ld a, [$ff92]
+	ld a, [hFF92]
 	ld e, a
 	ld a, [hli]
 	or a
@@ -4248,7 +4248,7 @@ Func_7af96:: ; 7af96 (1e:6f96)
 	jr .asm_7afae
 
 .asm_7afb5
-	ld a, [$ff92]
+	ld a, [hFF92]
 	bit 3, a
 	jr z, .asm_7afb2
 	push bc
@@ -4443,7 +4443,7 @@ Func_7b0b5:: ; 7b0b5 (1e:70b5)
 	dec hl
 	ret z
 	xor a
-	ld [$ffb7], a
+	ld [hFFB7], a
 	push hl
 	inc hl
 	inc hl
@@ -4515,7 +4515,7 @@ Func_7b113:: ; 7b113 (1e:7113)
 	inc hl
 	ld a, [hl]
 	inc hl
-	ld [$ff97], a
+	ld [hFF97], a
 	inc hl
 	inc hl
 	ld a, [hli]
@@ -4699,7 +4699,7 @@ Func_7b1e1:: ; 7b1e1 (1e:71e1)
 	predef Func_7c456
 	ret c
 	push hl
-	ld de, rLYC
+	lb de, $ff, $45
 	ld bc, $1
 	ld hl, sp+$0
 	predef Func_7c577
@@ -4713,7 +4713,7 @@ Func_7b1e1:: ; 7b1e1 (1e:71e1)
 	jr nz, asm_7b220
 	add sp, -$4
 	ld hl, sp+$0
-	ld de, rWave_c
+	lb de, $ff, $3c
 	ld bc, $4
 	predef Func_7c577
 	pop de
@@ -5861,23 +5861,23 @@ Func_7bd5b:: ; 7bd5b (1e:7d5b)
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-.asm_7bd68
+.loop
 	ld a, [hli]
 	or a
-	jr z, .asm_7bd8b
+	jr z, .quit
 	cp $20
-	jr nc, .asm_7bd74
+	jr nc, .next
 	predef Func_7d9f9
-	jr .asm_7bd68
+	jr .loop
 
-.asm_7bd74
+.next
 	push de
 	ld e, a
 	ld d, [hl]
 	predef Func_7db91
-	jr nc, .asm_7bd7c
+	jr nc, .no_carry
 	inc hl
-.asm_7bd7c
+.no_carry
 	pop de
 	push de
 	ld e, a
@@ -5889,9 +5889,9 @@ Func_7bd5b:: ; 7bd5b (1e:7d5b)
 	ld a, d
 	add e
 	ld d, a
-	jr .asm_7bd68
+	jr .loop
 
-.asm_7bd8b
+.quit
 	push de
 	ld e, l
 	ld d, h
@@ -6956,7 +6956,7 @@ Func_7c591:: ; 7c591 (1f:4591)
 	ld h, a
 	pop af
 	push hl
-	ld hl, $ff97
+	ld hl, hFF97
 	or [hl]
 	pop hl
 	jp Bank1F_GetSRAMBank
@@ -7246,7 +7246,7 @@ Func_7c70a:: ; 7c70a (1f:470a)
 	ld h, a
 	ld a, [hSRAMBank]
 	and $fc
-	ld [$ff97], a
+	ld [hFF97], a
 	ld a, [hSRAMBank]
 	and $3
 	rrca
@@ -7379,7 +7379,7 @@ Func_7c7b7:: ; 7c7b7 (1f:47b7)
 	ld a, h
 	or l
 	jp z, Func_7c6f4
-	ld de, $fffa
+	ld de, -6
 	add hl, de
 	ccf
 	ret c
@@ -7602,7 +7602,7 @@ Func_7c8dc:: ; 7c8dc (1f:48dc)
 	ld a, [hli]
 	ld d, a
 	ld a, [hl]
-	ld [$ff97], a
+	ld [hFF97], a
 	ld hl, -6
 	add hl, de
 	ccf
@@ -7632,7 +7632,7 @@ Func_7c8ec:: ; 7c8ec (1f:48ec)
 	ld a, [hli]
 	cp d
 	jr nz, .asm_7c91e
-	ld a, [$ff97]
+	ld a, [hFF97]
 	cp [hl]
 	jr nz, .asm_7c91e
 	xor a
@@ -7641,7 +7641,7 @@ Func_7c8ec:: ; 7c8ec (1f:48ec)
 	ld [hl], a
 	ld a, $78
 	sub b
-	ld [$ffb7], a
+	ld [hFFB7], a
 	jp Bank1F_PreviousSRAMBankReadOnly
 
 .asm_7c91d
@@ -7713,7 +7713,7 @@ Func_7c96e:: ; 7c96e (1f:496e)
 	ld a, [hli]
 	cp $ff
 	jp z, Func_7c9dc
-	ld [$ff97], a
+	ld [hFF97], a
 	inc hl
 	inc hl
 	inc hl
@@ -7723,7 +7723,7 @@ Func_7c96e:: ; 7c96e (1f:496e)
 	ld a, [hli]
 	bit 0, a
 	jr z, Func_7c9dc
-	ld hl, $fffa
+	ld hl, -6
 	add hl, de
 	jr nc, Func_7c9dc
 	ld a, h
@@ -7799,7 +7799,7 @@ Func_7c9de:: ; 7c9de (1f:49de)
 	or e
 	jr z, .asm_7ca05
 	ld a, [hl]
-	ld [$ff97], a
+	ld [hFF97], a
 	ld hl, -6
 	add hl, de
 	jr nc, .asm_7c9fc
@@ -7864,7 +7864,7 @@ Func_7c9de:: ; 7c9de (1f:49de)
 
 Func_7ca3c:: ; 7ca3c (1f:4a3c)
 	ld a, e
-	ld [$ff97], a
+	ld [hFF97], a
 	ld a, [hSRAMBank]
 	push af
 	call Func_7c591
@@ -7885,7 +7885,7 @@ Func_7ca4f:: ; 7ca4f (1f:4a4f)
 	ld a, h
 	ld [bc], a
 	inc bc
-	ld a, [$ff97]
+	ld a, [hFF97]
 	ld [bc], a
 	inc bc
 	ld l, c
@@ -7954,7 +7954,7 @@ Func_7caa0:: ; 7caa0 (1f:4aa0)
 	ld a, c
 	cp $ff
 	jr nz, .asm_7caa8
-	ld a, [$ffb7]
+	ld a, [hFFB7]
 	ld c, a
 .asm_7caa8
 	push bc
@@ -8018,7 +8018,7 @@ Func_7caa0:: ; 7caa0 (1f:4aa0)
 	inc hl
 	ld [hl], d
 	inc hl
-	ld a, [$ff97]
+	ld a, [hFF97]
 	ld [hl], a
 	inc hl
 	push hl
@@ -8364,7 +8364,7 @@ Func_7cc9a:: ; 7cc9a (1f:4c9a)
 	call Func_7ccb8
 	pop hl
 	push bc
-	ld [$ff97], a
+	ld [hFF97], a
 	call Func_7c577
 	pop bc
 	pop hl
@@ -8376,7 +8376,7 @@ Func_7cca9:: ; 7cca9 (1f:4ca9)
 	call Func_7ccb8
 	pop hl
 	push bc
-	ld [$ff97], a
+	ld [hFF97], a
 	call Func_7c5ca
 	pop bc
 	pop hl
@@ -9980,7 +9980,7 @@ Func_7d6cc:: ; 7d6cc (1f:56cc)
 	pop af
 	call Func_7d738
 	jp c, Func_7d71d
-	ld [$ffa1], a
+	ld [hFFA1], a
 	ld e, l
 	ld d, h
 	ld a, [rLCDC]
@@ -10037,7 +10037,7 @@ Func_7d71d:: ; 7d71d (1f:571d)
 	pop de
 	pop hl
 	pop bc
-	ld a, [$ffa1]
+	ld a, [hFFA1]
 	ret
 
 Func_7d724:: ; 7d724 (1f:5724)
@@ -10056,13 +10056,13 @@ Func_7d724:: ; 7d724 (1f:5724)
 	jr nz, .asm_7d729
 	or a
 .asm_7d735
-	ld a, [$ffa1]
+	ld a, [hFFA1]
 	ret
 
 Func_7d738:: ; 7d738 (1f:5738)
 	cp $ff
 	jr nz, .asm_7d73e
-	ld a, [$ffa1]
+	ld a, [hFFA1]
 .asm_7d73e
 	ld l, a
 	add b
@@ -10092,8 +10092,8 @@ Func_7d753:: ; 7d753 (1f:5753)
 	hlbgcoord 0, 0
 	call Func_7d8fc
 	xor a
-	ld [$ff8e], a
-	ld [$ff8f], a
+	ld [hFF8E], a
+	ld [hFF8F], a
 	call Func_7d8e5
 	call Func_7d835
 	call Func_7d847
@@ -10129,7 +10129,7 @@ LoadJUTFFont:: ; 7d79c (1f:579c)
 	bit 7, a
 	jr nz, .asm_7d7cf
 	ld a, $3
-	ld [$ff92], a
+	ld [hFF92], a
 	ld e, $20
 	call Func_7d854
 	ld hl, $8800
@@ -10170,7 +10170,7 @@ LoadJUTFFont:: ; 7d79c (1f:579c)
 	push de
 	and $83
 	or $8
-	ld [$ff92], a
+	ld [hFF92], a
 	ld e, $7f
 	call Func_7d854
 	pop de
@@ -10305,7 +10305,7 @@ Func_7d8c5:: ; 7d8c5 (1f:58c5)
 	ld bc, $2800
 Func_7d8c8:: ; 7d8c8 (1f:58c8)
 	ld a, c
-	ld [$ffa1], a
+	ld [hFFA1], a
 	call Func_7d738
 	xor a
 .asm_7d8cf
@@ -10352,13 +10352,13 @@ Func_7d8fc:: ; 7d8fc (1f:58fc)
 	ret
 
 Func_7d905:: ; 7d905 (1f:5905)
-	ld a, [$ff92]
+	ld a, [hFF92]
 	bit 3, a
 	jr nz, .asm_7d912
 	ld a, h
-	ld [$ff8e], a
+	ld [hFF8E], a
 	ld a, l
-	ld [$ff8f], a
+	ld [hFF8F], a
 	ret
 
 .asm_7d912
@@ -10370,19 +10370,19 @@ Func_7d905:: ; 7d905 (1f:5905)
 	ld l, a
 Func_7d918:: ; 7d918 (1f:5918)
 	ld a, h
-	ld [$ff90], a
+	ld [hFF90], a
 	ld a, l
-	ld [$ff91], a
+	ld [hFF91], a
 	ret
 
 Func_7d91f:: ; 7d91f (1f:591f)
 	push bc
 	ld c, a
-	ld a, [$ff92]
+	ld a, [hFF92]
 	bit 3, a
-	ld a, [$ff90]
+	ld a, [hFF90]
 	jr nz, .asm_7d92b
-	ld a, [$ff8e]
+	ld a, [hFF8E]
 .asm_7d92b
 	ld b, a
 	ld a, c
@@ -10405,7 +10405,7 @@ Func_7d93e:: ; 7d93e (1f:593e)
 	push de
 	push hl
 	ld e, a
-	ld a, [$ff92]
+	ld a, [hFF92]
 	bit 3, a
 	jr nz, .asm_7d952
 	call Func_7d974
@@ -10428,7 +10428,7 @@ Func_7d95c:: ; 7d95c (1f:595c)
 	push de
 	push hl
 	ld e, a
-	ld a, [$ff92]
+	ld a, [hFF92]
 	bit 3, a
 	jr nz, .asm_7d96d
 	call Func_7d974
@@ -10445,9 +10445,9 @@ Func_7d95c:: ; 7d95c (1f:595c)
 	ret
 
 Func_7d974:: ; 7d974 (1f:5974)
-	ld a, [$ff8e]
+	ld a, [hFF8E]
 	ld h, a
-	ld a, [$ff8f]
+	ld a, [hFF8F]
 	ld l, a
 	call Func_7d9e0
 	ld bc, $1
@@ -10461,9 +10461,9 @@ Func_7d983:: ; 7d983 (1f:5983)
 	pop hl
 Func_7d98c:: ; 7d98c (1f:598c)
 	push hl
-	ld a, [$ff90]
+	ld a, [hFF90]
 	ld h, a
-	ld a, [$ff91]
+	ld a, [hFF91]
 	ld l, a
 	call Func_7d99d
 	pop de
@@ -10556,20 +10556,20 @@ Func_7d9f9:: ; 7d9f9 (1f:59f9)
 	push bc
 	push de
 	push hl
-	call Func_7da03
+	call .Function
 	pop hl
 	pop de
 	pop bc
 	ret
 
-Func_7da03:: ; 7da03 (1f:5a03)
-	ld hl, $ff92
+.Function: ; 7da03 (1f:5a03)
+	ld hl, hFF92
 	bit 7, [hl]
 	jr z, .asm_7da19
 	bit 3, [hl]
 	jr z, .asm_7da1d
 	ld de, Data_7da60
-	ld bc, $ff90
+	ld bc, hFF90
 	cp $18
 	jr c, .asm_7da27
 	ret
@@ -10579,7 +10579,7 @@ Func_7da03:: ; 7da03 (1f:5a03)
 	jr z, Func_7da41
 .asm_7da1d
 	ld de, Data_7da42
-	ld bc, $ff8e
+	ld bc, hFF8E
 	cp $10
 	jr nc, Func_7da41
 .asm_7da27
@@ -10601,7 +10601,7 @@ Func_7da03:: ; 7da03 (1f:5a03)
 	ld l, c
 	ld h, b
 	jr c, Func_7da41
-	ld hl, $ff92
+	ld hl, hFF92
 Func_7da41:: ; 7da41
 	ret
 
@@ -10648,12 +10648,12 @@ Data_7da60:: ; 7da60
 	dw Func_7dacd
 
 Func_7da8e:: ; 7da8e
-	ld hl, $ff92
+	ld hl, hFF92
 	res 3, [hl]
 	ret
 
 Func_7da94:: ; 7da94
-	ld hl, $ff92
+	ld hl, hFF92
 	set 3, [hl]
 	ret
 
@@ -10753,7 +10753,7 @@ Func_7daea:: ; 7daea
 	call Func_7d9e0
 	call Func_7d5e7
 	pop af
-	ld hl, $ff8e
+	ld hl, hFF8E
 	add [hl]
 	ld [hl], a
 	call Func_7db42
@@ -10788,7 +10788,7 @@ Func_7db15:: ; 7db15
 	jr nz, .asm_7db23
 	pop de
 	pop bc
-	ld hl, $ff8e
+	ld hl, hFF8E
 Func_7db39:: ; 7db39
 	xor a
 	ld [hli], a
@@ -10796,7 +10796,7 @@ Func_7db39:: ; 7db39
 	ret
 
 Func_7db3d:: ; 7db3d (1f:5b3d)
-	ld hl, $ff8e
+	ld hl, hFF8E
 Func_7db40:: ; 7db40
 	inc [hl]
 	ld a, [hl]
@@ -10845,7 +10845,7 @@ Func_7db67:: ; 7db67
 	jp Func_7d95c
 
 Func_7db6f:: ; 7db6f (1f:5b6f)
-	ld hl, $ff90
+	ld hl, hFF90
 Func_7db72:: ; 7db72
 	inc [hl]
 	ld a, [wc3b9]
@@ -10878,7 +10878,7 @@ Func_7db8a:: ; 7db8a
 	ret
 
 Func_7db91:: ; 7db91 (1f:5b91)
-	ld a, [$ff92]
+	ld a, [hFF92]
 	bit 6, a
 	jr nz, .asm_7dbb8
 	bit 7, a
@@ -10994,7 +10994,7 @@ Func_7db91:: ; 7db91 (1f:5b91)
 	add $50
 Func_7dc35:: ; 7dc35
 	push hl
-	ld hl, $ff92
+	ld hl, hFF92
 	or a
 	bit 2, [hl]
 	pop hl
@@ -11244,7 +11244,7 @@ Func_7dd59:: ; 7dd59 (1f:5d59)
 	jr .asm_7dd68
 
 Func_7dd7c:: ; 7dd7c
-	ld a, [$ff92]
+	ld a, [hFF92]
 	ld b, a
 Func_7dd7f:: ; 7dd7f (1f:5d7f)
 	ld a, b
@@ -11263,8 +11263,8 @@ Func_7dd7f:: ; 7dd7f (1f:5d7f)
 	ld b, $e
 	call Func_7e9f0
 	xor a
-	ld [$ff90], a
-	ld [$ff91], a
+	ld [hFF90], a
+	ld [hFF91], a
 	ld a, [wc3bc]
 	ld l, a
 	ld a, [wc3bd]
@@ -11295,8 +11295,8 @@ Func_7dd7f:: ; 7dd7f (1f:5d7f)
 .asm_7ddc5
 	push de
 	xor a
-	ld [$ff90], a
-	ld [$ff91], a
+	ld [hFF90], a
+	ld [hFF91], a
 	ld a, [wc3bc]
 	ld e, a
 	ld a, [wc3bd]
@@ -11758,23 +11758,23 @@ Func_7dff6:: ; 7dff6 (1f:5ff6)
 	predef CopyPredef
 	xor a
 	ld [hVBlankOccurred], a
-	ld [$ff83], a
-	ld [$ff84], a
-	ld [$ff85], a
+	ld [hFF83], a
+	ld [hFF84], a
+	ld [hFF85], a
 	ld [hFF86], a
 	ld [hFF87], a
 	ld [hFF88], a
 	ld [hFF89], a
-	ld [$ff8b], a
-	ld [$ff8c], a
-	ld [$ff8d], a
-	ld [$ff93], a
-	ld [$ff94], a
-	ld [$ff95], a
-	ld [$ff96], a
+	ld [hFF8B], a
+	ld [hFF8C], a
+	ld [hFF8D], a
+	ld [hFF93], a
+	ld [hFF94], a
+	ld [hFF95], a
+	ld [hFF96], a
 	cpl
 	ld [hFF8A], a
-	ld [$ff98], a
+	ld [hFF98], a
 	ld [hFF99], a
 	ret
 
@@ -11855,9 +11855,9 @@ VBlank2:: ; 7e070 (1f:6070)
 	ld a, [rIE]
 	bit 2, a
 	call z, Timer_
-	ld hl, $ff83
+	ld hl, hFF83
 	inc [hl]
-	ld hl, $ff84
+	ld hl, hFF84
 	inc [hl]
 	ld a, $1
 	ld [hVBlankOccurred], a
@@ -11897,13 +11897,13 @@ Func_7e0d2:: ; 7e0d2 (1f:60d2)
 	push de
 	push hl
 	xor a
-	ld [$ff8c], a
-	ld [$ff8d], a
-	ld [$ff8b], a
+	ld [hFF8C], a
+	ld [hFF8D], a
+	ld [hFF8B], a
 	ld [hFFB6], a
 	cpl
 	ld [hFF8A], a
-	ld [$ffb5], a
+	ld [hFFB5], a
 	call Func_7e0ea
 	pop hl
 	pop de
@@ -11934,20 +11934,20 @@ Func_7e0ea:: ; 7e0ea (1f:60ea)
 	ld [hFF8A], a
 	ld a, $30
 	ld [rJOYP], a
-	ld a, [$ffb5]
+	ld a, [hFFB5]
 	xor b
 	and b
 	ld c, a
-	ld [$ff8b], a
+	ld [hFF8B], a
 	ld [hFFB6], a
 	ld a, b
-	ld [$ffb5], a
+	ld [hFFB5], a
 	jr nz, .asm_7e13b
 	and $f0
 	ret z
-	ld a, [$ff98]
+	ld a, [hFF98]
 	ld b, a
-	ld a, [$ff84]
+	ld a, [hFF84]
 	cp b
 	jr c, .asm_7e137
 	ld a, [hFF8A]
@@ -11968,17 +11968,17 @@ Func_7e0ea:: ; 7e0ea (1f:60ea)
 	jr z, .asm_7e147
 	ld a, $18
 .asm_7e142
-	ld [$ff98], a
+	ld [hFF98], a
 	xor a
-	ld [$ff84], a
+	ld [hFF84], a
 .asm_7e147
-	ld [$ff85], a
+	ld [hFF85], a
 	ld a, [hFF99]
 	and $10
 	ret z
-	ld a, [$ff8d]
+	ld a, [hFF8D]
 	ld l, a
-	ld a, [$ff8c]
+	ld a, [hFF8C]
 	ld e, a
 	ld h, $f
 	sub l
@@ -11992,7 +11992,7 @@ Func_7e0ea:: ; 7e0ea (1f:60ea)
 	ld a, e
 	inc a
 	and $f
-	ld [$ff8c], a
+	ld [hFF8C], a
 	ret
 
 Func_7e168:: ; 7e168 (1f:6168)
@@ -12003,7 +12003,7 @@ Func_7e168:: ; 7e168 (1f:6168)
 	call z, Func_7e0ea
 	ld a, [hFFB6]
 	ld h, a
-	ld a, [$ff8b]
+	ld a, [hFF8B]
 	ld l, a
 	ld a, [hFF8A]
 	pop de
@@ -12028,15 +12028,15 @@ Func_7e17c:: ; 7e17c (1f:617c)
 	ret z
 	push de
 	push hl
-	ld a, [$ff8d]
+	ld a, [hFF8D]
 	ld e, a
-	ld a, [$ff8c]
+	ld a, [hFF8C]
 	sub e
 	jr z, .asm_7e1ac
 	ld a, e
 	inc a
 	and $f
-	ld [$ff8d], a
+	ld [hFF8D], a
 	ld d, $0
 	ld hl, wc3a0
 	add hl, de

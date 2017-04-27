@@ -901,7 +901,7 @@ wSaveScratchEnd:: ; ce0a
 	ds $3
 	char wce0f ; ce0f
 
-; SECTION "Allocatable Memory", WRAM0 [$ce10]
+SECTION "Allocatable Memory", WRAM0 [$ce10]
 	alloc_block wAllocatableBlock0 ; ce10
 	ds $900 - 5
 
