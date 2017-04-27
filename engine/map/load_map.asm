@@ -220,47 +220,47 @@ Data_84f1: ; 84f1
 	db $f, $0, $0, $15, $2f, $a, $f, $3e
 
 Data_84f9: ; 84f9
-	db $00, $0f
-	db $01, $00
-	db $02, $00
-	db $03, $00
-	db $03, $0b
-	db $03, $0d
-	db $03, $0e
-	db $03, $0f
-	db $05, $20
-	db $08, $01
-	db $0b, $00
-	db $0c, $00
-	db $12, $0e
-	db $12, $11
-	db $13, $02
-	db $13, $03
-	db $13, $0a
-	db $13, $0b
-	db $13, $14
-	db $13, $16
-	db $13, $21
-	db $13, $28
-	db $15, $0c
-	db $15, $17
-	db $16, $00
-	db $16, $01
-	db $18, $00
-	db $19, $00
-	db $19, $01
-	db $1a, $00
-	db $1b, $00
-	db $1b, $04
-	db $1b, $05
-	db $1b, $06
-	db $1b, $07
-	db $1b, $08
-	db $1b, $0a
-	db $1c, $00
-	db $1d, $01
-	db $1d, $1e
-	db $20, $0b
+	map MAP_00_15
+	map MAP_01_00
+	map MAP_02_00
+	map MAP_03_00
+	map MAP_03_11
+	map MAP_03_13
+	map MAP_03_14
+	map MAP_03_15
+	map MAP_05_32
+	map MAP_08_01
+	map MAP_11_00
+	map MAP_12_00
+	map MAP_18_14
+	map MAP_18_17
+	map MAP_19_02
+	map MAP_19_03
+	map MAP_19_10
+	map MAP_19_11
+	map MAP_19_20
+	map MAP_19_22
+	map MAP_19_33
+	map MAP_19_40
+	map MAP_21_12
+	map MAP_21_23
+	map MAP_22_00
+	map MAP_22_01
+	map MAP_24_00
+	map MAP_25_00
+	map MAP_25_01
+	map MAP_26_00
+	map MAP_27_00
+	map MAP_27_04
+	map MAP_27_05
+	map MAP_27_06
+	map MAP_27_07
+	map MAP_27_08
+	map MAP_27_10
+	map MAP_28_00
+	map MAP_29_01
+	map MAP_29_30
+	map MAP_32_11
 
 PreloadNextMap: ; 854b (2:454b)
 ; a = map group
