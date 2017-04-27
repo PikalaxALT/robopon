@@ -17,10 +17,10 @@ Func_82b03:
 	jp nc, Func_82b39
 	ld e, $0
 	xor a
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	ld e, $0
 	ld a, $2
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	jp Func_82b48
 
 Func_82b39: ; 82b39 (20:6b39)
@@ -29,9 +29,9 @@ Func_82b39: ; 82b39 (20:6b39)
 	jp nc, Func_82b48
 	ld e, $0
 	ld a, $2
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 Func_82b48: ; 82b48 (20:6b48)
-	playmusic $b
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3c9
 	call Func_80f72_20
@@ -42,7 +42,7 @@ Func_82b57:
 	ld a, e
 	or a
 	jp nz, Func_82b93
-	playmusic $c
+	playmusic SONG_CENTER
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $2
@@ -67,7 +67,7 @@ Func_82b87: ; 82b87 (20:6b87)
 	ld a, $c
 	call Func_806a0_20
 Func_82b8e: ; 82b8e (20:6b8e)
-	playmusic $b
+	playmusic SONG_SHOP
 Func_82b93: ; 82b93 (20:6b93)
 	pop bc
 	ret

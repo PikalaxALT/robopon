@@ -1,8 +1,16 @@
 Data_823ba: ; 823ba
-	dr $823ba, $823d4
+	warpdef  9,  2, 1, 1, MAP_00_04,  8,  2,  8,  3, $2e
+	warpdef  1,  8, 2, 1, MAP_00_00,  9, 14,  9, 15, $34
+
+Pointers_823d0: ; 823d0
+	dtext_tree_pointer TreeBitstreamText_46ea4
+	dw -1
 
 Data_823d4: ; 823d4
-	dr $823d4, $8240c
+	person_event $21, $04,  7,  5,  1,  1, $02, $04, $00, 0, Func_82446, 0
+	person_event $ff, $00,  7,  1,  1,  1, $00, $04, $00, 0, PrintTextFacePlayer_20, Pointers_823d0
+	person_event $ff, $00,  8,  1,  1,  1, $00, $04, $00, 0, PrintTextFacePlayer_20, Pointers_823d0
+	person_event $00, $0c,  8,  5,  1,  1, $00, $04, $00, 0, PrintTextFacePlayer_20, Pointers_823d0
 
 Func_8240c:
 	loadwarps $2, Data_823ba
@@ -12,20 +20,26 @@ Func_8240c:
 	loadpeople $4, Data_823d4
 	ld e, $0
 	ld a, $3
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 Func_8242b: ; 8242b (20:642b)
-	playmusic $11
+	playmusic SONG_TOWN3
 	call Func_8001c_20
 	ret
 
 Data_82434:
-	dr $82434, $8243a
+	db  8,  6
+	db  7,  6
+	db -1, -1
 
 Data_8243a: ; 8243a
-	dr $8243a, $82440
+	db  6,  6
+	db  7,  6
+	db -1, -1
 
 Data_82440: ; 82440
-	dr $82440, $82446
+	db  8,  6
+	db  7,  6
+	db -1, -1
 
 Func_82446:
 	ld a, e
@@ -42,20 +56,14 @@ Func_82446:
 	jp Func_82489
 
 Func_82464: ; 82464 (20:6464)
-	ld c, $1
-	ld de, Data_8243a
-	ld a, BANK(Data_8243a)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_8243a
 	call Func_8020c_20
 	xor a
 	call PlayerFace_20
 	jp Func_82489
 
 Func_82478: ; 82478 (20:6478)
-	ld c, $1
-	ld de, Data_82434
-	ld a, BANK(Data_82434)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_82434
 	call Func_8020c_20
 	xor a
 	call PlayerFace_20
@@ -123,31 +131,15 @@ Func_824ca: ; 824ca (20:64ca)
 	script_sleep $1e
 	ld e, $1
 	ld a, $3
-	call Func_8013d_20
-	ld e, $3
-	ld a, $3
-	call SpriteFace_20
-	ld e, $0
-	ld a, $3
-	call SpriteFace_20
-	ld e, $1
-	ld a, $3
-	call SpriteFace_20
-	ld e, $2
-	ld a, $3
-	call SpriteFace_20
-	ld e, $3
-	ld a, $3
-	call SpriteFace_20
-	ld e, $0
-	ld a, $3
-	call SpriteFace_20
-	ld e, $1
-	ld a, $3
-	call SpriteFace_20
-	ld e, $2
-	ld a, $3
-	call SpriteFace_20
+	call SetPersonVisibilityState_20
+	sprite_face $3, $3
+	sprite_face $0, $3
+	sprite_face $1, $3
+	sprite_face $2, $3
+	sprite_face $3, $3
+	sprite_face $0, $3
+	sprite_face $1, $3
+	sprite_face $2, $3
 	script_sleep $1e
 	ld bc, Data_82440
 	ld e, BANK(Data_82440)
@@ -156,36 +148,30 @@ Func_824ca: ; 824ca (20:64ca)
 	call Func_8020c_20
 	ld e, $0
 	ld a, $3
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	playsfx $2a
 	writetext TreeBitstreamText_3f665
 	pop af
 	ld e, $0
 	ld c, $5
-	call Func_80d87_20
+	call GiveRobot_20
 	cp $ff
 	jp nz, Func_82551
 Func_82551: ; 82551 (20:6551)
 	writenpctext TreeBitstreamText_3f679
-	ld e, $1
-	ld hl, $c6
-	call EventFlagAction_20
+	setevent $c6
 	jp Func_82592
 
 Func_82562: ; 82562 (20:6562)
-	xor a
-	call Func_8044b_20
-	call RepairRobots_20
+	face_player 0
+	heal
 	playmusic SONG_NONE
-	playmusic $16
-	ld c, $1
-	ld e, $2
-	ld a, $8
-	call LoadEmote_20
+	playmusic SONG_HEAL
+	loademote $1, $2, $8
 	call Func_801d5_20
 	call Func_8018b_20
 	writetext TreeBitstreamText_46e0b
 	writenpctext TreeBitstreamText_3f5d5
-	playmusic $11
+	playmusic SONG_TOWN3
 Func_82592: ; 82592 (20:6592)
 	ret

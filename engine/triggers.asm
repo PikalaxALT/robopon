@@ -3,7 +3,7 @@ trigbase = trigcum
 	ENDM
 
 dmaptrigger: MACRO
-	db (\1_Pointer - Pointers_daaad) / 3 - trigbase
+	db (\1_Pointer - MapTriggerPointers) / 3 - trigbase
 trigcum = trigcum + 1
 	ENDM
 

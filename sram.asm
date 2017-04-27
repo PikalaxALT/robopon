@@ -5,9 +5,9 @@ SECTION "SRAM0", SRAM, BANK [0]
 SECTION "SRAM1", SRAM, BANK [1]
 
 SECTION "Save Game", SRAM [$a300], BANK [1]
-sSavedBoxes:: ; a300
+sSavedWarehouse:: ; a300
 	ds $1298
-sSavedBoxesEnd::
+sSavedWarehouseEnd::
 
 sSaveGame::
 sSaveBlock1:: ds $214 ; b598
@@ -27,7 +27,7 @@ SECTION "Robopon Title", SRAM [$bae0], BANK [1]
 
 SECTION "SRAM2", SRAM, BANK [2]
 	array sRoboponTitle, 7, 1, 1
-sBoxes:: ; a007
+sWarehouse:: ; a007
 	ds $1298
 
 SECTION "SRAM3", SRAM [$a002], BANK [3]

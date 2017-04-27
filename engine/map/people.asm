@@ -1,4 +1,4 @@
-Func_a24c: ; a24c (2:624c)
+AllocateSpaceForMapObjects: ; a24c (2:624c)
 	xor a
 	ld [wNumPeopleLoaded], a
 	ld a, $10
@@ -317,7 +317,7 @@ LoadMapObject:: ; a2eb
 	pop bc
 	ret
 
-Func_a444:: ; a444
+SetPersonVisibilityState:: ; a444
 	push af
 	push de
 	push bc

@@ -9,8 +9,8 @@ Func_8001c_\1: ; 8001c (20:401c)
 	callba_hli Func_ae4d
 	ret
 
-UnloadWarps_\1: ; 8002b (20:402b)
-	callba_hli UnloadWarps
+AllocateSpaceForWarps_\1: ; 8002b (20:402b)
+	callba_hli AllocateSpaceForWarps
 	ret
 
 LoadWarps_\1: ; 8003a (20:403a)
@@ -165,10 +165,10 @@ LoadMapObjects_\1: ; 800fb (20:40fb)
 	add sp, $10
 	ret
 
-Func_8013d_\1: ; 8013d (20:413d)
+SetPersonVisibilityState_\1: ; 8013d (20:413d)
 	push af
 	push de
-	set_farcall_addrs_hli Func_a444
+	set_farcall_addrs_hli SetPersonVisibilityState
 	pop de
 	pop af
 	call FarCall
@@ -458,9 +458,9 @@ Func_80446_\1: ; 80446 (20:4446)
 	pop bc
 	ret
 
-Func_8044b_\1: ; 8044b (20:444b)
+FacePlayer_\1: ; 8044b (20:444b)
 	push af
-	set_farcall_addrs_hli Func_b3ef
+	set_farcall_addrs_hli FacePlayer
 	pop af
 	call FarCall
 	ret
@@ -774,9 +774,7 @@ Func_806dd_\1:
 	or a
 	jp nz, Func_80732_\1
 	writenpctext TreeBitstreamText_471e4
-	ld e, $1
-	ld hl, $c8
-	call EventFlagAction_\1
+	setevent $c8
 	jp Func_80796_\1
 
 Func_80732_\1: ; 80732 (20:4732)
@@ -1757,11 +1755,11 @@ Func_80d74_\1:
 	inc a
 	jp FarCall
 
-Func_80d87_\1: ; 80d87 (20:4d87)
+GiveRobot_\1: ; 80d87 (20:4d87)
 	push af
 	push de
 	push bc
-	set_farcall_addrs_hli Func_31af1
+	set_farcall_addrs_hli GiveRobot
 	pop bc
 	pop de
 	pop af

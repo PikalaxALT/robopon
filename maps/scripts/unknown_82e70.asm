@@ -29,7 +29,7 @@ Func_82e70:
 	ld a, $1
 	call Func_80d01_20
 	loadwilds $3, Data_82e46
-	playmusic $b
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3cc
 	call Func_80f72_20

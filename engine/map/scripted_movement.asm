@@ -1,3 +1,15 @@
+FacePlayer:: ; b3ef
+	push af
+	ld a, [wPlayerFacing]
+	add $2
+	and $3
+	ld e, a
+	ld hl, sp+$1
+	ld a, [hl]
+	call ChangePersonFacing
+	pop bc
+	ret
+
 StartMovement:: ; b400 (2:7400)
 	call SetMovementPointer
 	call HandleMap

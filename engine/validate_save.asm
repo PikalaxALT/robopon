@@ -1,13 +1,13 @@
 Data_798b: ; 798b
-	db BANK(sBoxes), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1)
-	db BANK(sSavedBoxes), BANK(sSaveBlock1), BANK(sSaveBlock2), BANK(sSaveBlock3), BANK(sSaveBlock4)
+	db BANK(sWarehouse), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1)
+	db BANK(sSavedWarehouse), BANK(sSaveBlock1), BANK(sSaveBlock2), BANK(sSaveBlock3), BANK(sSaveBlock4)
 
 Data_7995: ; 7995
-	dw sBoxes,      wSaveBlock1, wSaveBlock2, wSaveBlock3, wSaveBlock4
-	dw sSavedBoxes, sSaveBlock1, sSaveBlock2, sSaveBlock3, sSaveBlock4
+	dw sWarehouse,      wSaveBlock1, wSaveBlock2, wSaveBlock3, wSaveBlock4
+	dw sSavedWarehouse, sSaveBlock1, sSaveBlock2, sSaveBlock3, sSaveBlock4
 
 Data_79a9: ; 79a9
-	dw sSavedBoxesEnd - sSavedBoxes, sSaveBlock1End - sSaveBlock1, sSaveBlock2End - sSaveBlock2, sSaveBlock3End - sSaveBlock3, sSaveBlock4End - sSaveBlock4
+	dw sSavedWarehouseEnd - sSavedWarehouse, sSaveBlock1End - sSaveBlock1, sSaveBlock2End - sSaveBlock2, sSaveBlock3End - sSaveBlock3, sSaveBlock4End - sSaveBlock4
 
 CalcSaveChecksum:: ; 79b3 (1:79b3)
 ; a: Which to validate

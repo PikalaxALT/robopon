@@ -2938,11 +2938,11 @@ NewSaveFileInWRam:: ; 1db9
 	ld e, $0
 	ld hl, wSaveBlock1
 	call FillMemory
-	ld a, BANK(sBoxes)
+	ld a, BANK(sWarehouse)
 	call GetSRAMBank
-	ld bc, sSavedBoxesEnd - sSavedBoxes
+	ld bc, sSavedWarehouseEnd - sSavedWarehouse
 	ld e, $0
-	ld hl, sBoxes
+	ld hl, sWarehouse
 	call FillMemory
 	ld a, BANK(sAllocatableBlock1)
 	call GetSRAMBank

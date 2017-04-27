@@ -31,7 +31,7 @@ Func_827a9:
 	jp nz, Func_8283f
 Func_827de: ; 827de (20:67de)
 	loadpeople $4, Data_82763
-	playmusic $b
+	playmusic SONG_SHOP
 	ld a, [wBackupMapGroup]
 	cp $20
 	jp nz, Func_82811
@@ -40,7 +40,7 @@ Func_827de: ; 827de (20:67de)
 	jp nz, Func_82811
 	ld e, $0
 	ld a, $1
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	call Func_8001c_20
 	ld hl, $3dc
 	call Func_80f72_20
@@ -53,15 +53,13 @@ Func_82811: ; 82811 (20:6811)
 	jp nz, Func_8282c
 	call Func_8001c_20
 	call Func_82894
-	ld e, $1
-	ld hl, $d
-	call EventFlagAction_20
+	setevent $d
 	jp Func_8283c
 
 Func_8282c: ; 8282c (20:682c)
 	ld e, $0
 	ld a, $1
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	call Func_8001c_20
 	ld hl, $3dc
 	call Func_80f72_20
@@ -73,7 +71,7 @@ Func_8283f: ; 8283f (20:683f)
 	loadpeople $1, Data_8279b
 	ld e, $0
 	ld a, $1
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	call Func_8001c_20
 Func_82859: ; 82859 (20:6859)
 	ret
@@ -114,10 +112,7 @@ Func_82894: ; 82894 (20:6894)
 	ld e, BANK(Data_82886)
 	ld a, $1
 	call Func_801f7_20
-	ld c, $1
-	ld de, Data_8288a
-	ld a, BANK(Data_8288a)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_8288a
 	call Func_8020c_20
 	writenpctext TreeBitstreamText_39235
 	writenpctext TreeBitstreamText_39257
@@ -125,10 +120,7 @@ Func_82894: ; 82894 (20:6894)
 	ld e, BANK(Data_82890)
 	ld a, $1
 	call Func_801f7_20
-	ld c, $3
-	ld de, Data_82890
-	ld a, BANK(Data_82890)
-	call ApplyMovementData_20
+	applymovementdata $3, Data_82890
 	call Func_8020c_20
 	ret
 
@@ -153,9 +145,7 @@ Func_828df:
 	ld a, $2
 	call Func_80688_20
 	call Func_8020c_20
-	ld e, $2
-	ld a, $2
-	call SpriteFace_20
+	sprite_face $2, $2
 	checkevent $32
 	cp $1
 	jp nz, Func_82967
@@ -168,51 +158,34 @@ Func_828df:
 	ld a, $2
 	call Func_80688_20
 	call Func_8020c_20
-	ld e, $2
-	ld a, $2
-	call SpriteFace_20
-	ld c, $1
-	ld de, Data_828db
-	ld a, BANK(Data_828db)
-	call ApplyMovementData_20
+	sprite_face $2, $2
+	applymovementdata $1, Data_828db
 	call Func_8020c_20
-	ld e, $0
-	ld hl, $f8
-	call EventFlagAction_20
+	resetevent $f8
 	jp Func_82964
 
 Func_82940: ; 82940 (20:6940)
 	writenpctext TreeBitstreamText_45ebc
-	ld c, $1
-	ld de, Data_828d7
-	ld a, BANK(Data_828d7)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_828d7
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
 	call Func_80688_20
 	call Func_8020c_20
-	ld e, $2
-	ld a, $2
-	call SpriteFace_20
+	sprite_face $2, $2
 Func_82964: ; 82964 (20:6964)
 	jp Func_8298b
 
 Func_82967: ; 82967 (20:6967)
 	ld hl, FillMemory
 	call PrintTextWithNPCName_20
-	ld c, $1
-	ld de, Data_828d7
-	ld a, BANK(Data_828d7)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_828d7
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
 	call Func_80688_20
 	call Func_8020c_20
-	ld e, $2
-	ld a, $2
-	call SpriteFace_20
+	sprite_face $2, $2
 Func_8298b: ; 8298b (20:698b)
 	ret
 
@@ -229,8 +202,7 @@ Func_8299b:
 	ld a, e
 	or a
 	jp nz, Func_829d0
-	ld a, $5
-	call Func_8044b_20
+	face_player $5
 	ld a, [wc78c]
 	inc a
 	ld [wc78c], a
@@ -259,14 +231,9 @@ Func_829dd: ; 829dd (20:69dd)
 	checkevent $f8
 	or a
 	jp nz, .asm_829fc
-	ld c, $1
-	ld de, Data_829d9
-	ld a, BANK(Data_829d9)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_829d9
 	call Func_8020c_20
-	ld e, $1
-	ld hl, $f8
-	call EventFlagAction_20
+	setevent $f8
 .asm_829fc
 	ret
 
@@ -277,7 +244,7 @@ Func_829fd:
 	jp nz, Func_82ab6
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_20
+	call FacePlayer_20
 	checkevent $114
 	or a
 	jp nz, Func_82ab0
@@ -324,9 +291,7 @@ Func_82a59: ; 82a59 (20:6a59)
 	ld e, $1
 	ld a, $18
 	call Func_80d4d_20
-	ld e, $1
-	ld hl, $114
-	call EventFlagAction_20
+	setevent $114
 	writetext TreeBitstreamText_45f98
 Func_82a8f: ; 82a8f (20:6a8f)
 	jp Func_82a98

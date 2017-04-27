@@ -64,10 +64,10 @@ SaveGame: ; 56d9b (15:6d9b)
 .break1
 	ld a, [hSRAMBank]
 	push af
-	ld bc, $1298
-	ld hl, sBoxes
+	ld bc, 136 * 35
+	ld hl, sWarehouse
 	call WriteHLToSPPlus10
-	ld hl, sSavedBoxes
+	ld hl, sSavedWarehouse
 	call WriteHLToSPPlus8
 .loop2
 	ld e, c
@@ -83,14 +83,14 @@ SaveGame: ; 56d9b (15:6d9b)
 
 .saveBoxes
 	push bc
-	ld a, BANK(sBoxes)
+	ld a, BANK(sWarehouse)
 	call GetSRAMBank_ReadOnly
 	ld bc, $400
 	read_hl_from_sp_plus $c
 	reg16swap de, hl
 	ld hl, sp+$c
 	call CopyFromDEtoHL
-	ld a, BANK(sSavedBoxes)
+	ld a, BANK(sSavedWarehouse)
 	call GetSRAMBank
 	ld bc, $400
 	ld hl, sp+$c
@@ -223,10 +223,10 @@ LoadGame: ; 56fc2 (15:6fc2)
 	ld sp, hl
 	ld a, [hSRAMBank]
 	push af
-	ld bc, $1298
-	ld hl, sSavedBoxes
+	ld bc, 136 * 35
+	ld hl, sSavedWarehouse
 	call WriteHLToSPPlus6
-	ld hl, sBoxes
+	ld hl, sWarehouse
 	call WriteHLToSPPlus4
 .loop
 	ld e, c
@@ -242,14 +242,14 @@ LoadGame: ; 56fc2 (15:6fc2)
 
 .loadBoxes
 	push bc
-	ld a, BANK(sSavedBoxes)
+	ld a, BANK(sSavedWarehouse)
 	call GetSRAMBank_ReadOnly
 	ld bc, $400
 	call GetHLAtSPPlus8
 	reg16swap de, hl
 	ld hl, sp+$8
 	call CopyFromDEtoHL
-	ld a, BANK(sBoxes)
+	ld a, BANK(sWarehouse)
 	call GetSRAMBank
 	ld bc, $400
 	ld hl, sp+$8

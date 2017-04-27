@@ -23,7 +23,7 @@ Func_825eb: ; 825eb (20:65eb)
 	loadpeople $2, Data_825a2
 	ld e, $0
 	xor a
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 Func_825f9: ; 825f9 (20:65f9)
 	checkevent $2
 	cp $1
@@ -36,6 +36,6 @@ Func_825f9: ; 825f9 (20:65f9)
 	jp z, Func_8261f
 	loadpeople $1, Data_825be
 Func_8261f: ; 8261f (20:661f)
-	playmusic $11
+	playmusic SONG_TOWN3
 	call Func_8001c_20
 	ret

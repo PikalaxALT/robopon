@@ -571,9 +571,9 @@ Func_8827: ; 8827 (2:4827)
 	inc c
 	dec c
 	jp nz, .dont_delete
-	call Func_a24c
+	call AllocateSpaceForMapObjects
 	call Func_aff1
-	call UnloadWarps
+	call AllocateSpaceForWarps
 	call Func_b773
 	call ClearMovementPointer
 	call Func_9d31

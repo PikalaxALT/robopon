@@ -18,7 +18,7 @@ EnterMap:: ; daa72 (36:6a72)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Pointers_daaad
+	ld de, MapTriggerPointers
 	add hl, de
 	ld a, [hl]
 	ld [wFarCallDestBank], a
@@ -28,7 +28,7 @@ EnterMap:: ; daa72 (36:6a72)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Pointers_daaad
+	ld de, MapTriggerPointers
 	add hl, de
 	inc hl
 	ld a, [hl]
@@ -42,7 +42,7 @@ EnterMap:: ; daa72 (36:6a72)
 Func_daaac:
 	ret
 
-Pointers_daaad::
+MapTriggerPointers::
 	map_trigger_ptr Func_81281 ; 00
 	map_trigger_ptr Func_81ac1 ; 01
 	map_trigger_ptr Func_81d6a ; 02

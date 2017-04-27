@@ -1,4 +1,4 @@
-UnloadWarps:: ; aca6 (2:6ca6)
+AllocateSpaceForWarps:: ; aca6 (2:6ca6)
 	xor a
 	ld [wNumWarps], a
 	read_hl_from wWarpDataPointer

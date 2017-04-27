@@ -1,29 +1,29 @@
 	const_def
 
-	const SONG_NONE
-	const SONG_TITLE ; SONG_BISCO
-	const SONG_CREDITS
-	const SONG_TOWN1
-	const SONG_WILD_BATTLE
-	const SONG_VICTORY
-	const SONG_TRAINER_BATTLE
-	const SONG_TOWN2
-	const SONG_CAVE
-	const SONG_TOWER
-	const SONG_0A
-	const SONG_SHOP
-	const SONG_CENTER
-	const SONG_MAZE_MINIGAME
-	const SONG_JUMP_MINIGAME
-	const SONG_CARD_MINIGAME
-	const SONG_PUNCH_MINIGAME
-	const SONG_TOWN3
-	const SONG_TEIL_TOWN
-	const SONG_PRINCE_TEIL
-	const SONG_WORLD_MAP
-	const SONG_GYM_LEADER_BATTLE
-	const SONG_HEAL
-	const SONG_LEVEL_UP
-	const SONG_ENCOUNTER_BEAUTY
-	const SONG_ENCOUNTER_UNKNOWN
-	const SONG_ENCOUNTER_EVIL
+	const SONG_NONE              ; 00
+	const SONG_TITLE             ; 01
+	const SONG_CREDITS           ; 02
+	const SONG_TOWN1             ; 03
+	const SONG_WILD_BATTLE       ; 04
+	const SONG_VICTORY           ; 05
+	const SONG_TRAINER_BATTLE    ; 06
+	const SONG_TOWN2             ; 07
+	const SONG_CAVE              ; 08
+	const SONG_TOWER             ; 09
+	const SONG_0A                ; 0a
+	const SONG_SHOP              ; 0b
+	const SONG_CENTER            ; 0c
+	const SONG_MAZE_MINIGAME     ; 0d
+	const SONG_JUMP_MINIGAME     ; 0e
+	const SONG_CARD_MINIGAME     ; 0f
+	const SONG_PUNCH_MINIGAME    ; 10
+	const SONG_TOWN3             ; 11
+	const SONG_TEIL_TOWN         ; 12
+	const SONG_PRINCE_TEIL       ; 13
+	const SONG_WORLD_MAP         ; 14
+	const SONG_GYM_LEADER_BATTLE ; 15
+	const SONG_HEAL              ; 16
+	const SONG_LEVEL_UP          ; 17
+	const SONG_ENCOUNTER_BEAUTY  ; 18
+	const SONG_ENCOUNTER_UNKNOWN ; 19
+	const SONG_ENCOUNTER_EVIL    ; 1a

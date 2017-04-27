@@ -28,22 +28,20 @@ Func_81ae8: ; 81ae8 (20:5ae8)
 	loadpeople $4, Data_81a84
 	ld a, $2
 	call PlayerFace_20
-	playmusic $11
+	playmusic SONG_TOWN3
 	call Func_8001c_20
 	call Func_81b45
-	ld e, $1
-	ld hl, $b
-	call EventFlagAction_20
+	setevent $b
 	jp Func_81b1d
 
 Func_81b15: ; 81b15 (20:5b15)
-	playmusic $11
+	playmusic SONG_TOWN3
 	call Func_8001c_20
 Func_81b1d: ; 81b1d (20:5b1d)
 	jp Func_81b28
 
 Func_81b20: ; 81b20 (20:5b20)
-	playmusic $11
+	playmusic SONG_TOWN3
 	call Func_8001c_20
 Func_81b28: ; 81b28 (20:5b28)
 	ret
@@ -83,9 +81,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	call Func_80688_20
 	call Func_8020c_20
 	writenpctext TreeBitstreamText_38fc9
-	ld e, $1
-	ld a, $1
-	call SpriteFace_20
+	sprite_face $1, $1
 	writenpctext TreeBitstreamText_38fe6
 	ld bc, Data_81b2d
 	ld e, BANK(Data_81b2d)
@@ -107,7 +103,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	call PlayerFace_20
 	ld e, $0
 	ld a, $1
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	playsfx $34
 	script_sleep $3c
 	ld e, $1
@@ -129,7 +125,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	call Func_8020c_20
 	ld e, $0
 	xor a
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	playsfx $34
 	script_sleep $1e
 	ld a, $2
@@ -140,7 +136,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	call SpriteFace_20
 	ld e, $1
 	xor a
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	playsfx $34
 	ld bc, Data_81b2d
 	ld e, BANK(Data_81b2d)
@@ -159,7 +155,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	call Func_80688_20
 	ld e, $0
 	xor a
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	playsfx $34
 	script_sleep $1e
 	ld e, $1
@@ -172,25 +168,16 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $f
 	call FadeOutAudio_20
 	playmusic SONG_NONE
-	ld c, $1
-	ld de, Data_81b35
-	ld a, BANK(Data_81b35)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_81b35
 	call Func_8020c_20
 	ld a, $2
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_390b4
 	script_sleep $1e
-	ld c, $1
-	ld de, Data_81b39
-	ld a, BANK(Data_81b39)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_81b39
 	call Func_8020c_20
 	writetext TreeBitstreamText_390d1
-	ld c, $1
-	ld de, Data_81b3d
-	ld a, BANK(Data_81b3d)
-	call ApplyMovementData_20
+	applymovementdata $1, Data_81b3d
 	call Func_8020c_20
 	ld a, $1
 	call FadeInAudio_20

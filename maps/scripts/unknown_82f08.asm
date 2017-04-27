@@ -15,7 +15,7 @@ Func_82f08:
 	ld e, $1
 	ld hl, Data_82f03
 	call Func_80ce7_20
-	playmusic $b
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3cd
 	call Func_80f72_20

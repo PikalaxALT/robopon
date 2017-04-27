@@ -12,7 +12,7 @@ Func_83169:
 	ld [wc7de], a
 	loadwarps $3, Data_8311a
 	loadpeople $3, Data_8313f
-	playmusic $b
+	playmusic SONG_SHOP
 	call Func_8001c_20
 	ld hl, $3cf
 	call Func_80f72_20

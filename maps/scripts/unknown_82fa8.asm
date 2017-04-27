@@ -18,7 +18,7 @@ Func_82fa8:
 	ld e, $2
 	ld hl, Data_82f82
 	call Func_80ce7_20
-	playmusic $11
+	playmusic SONG_TOWN3
 	ld a, [wc793]
 	or a
 	jp z, Func_82fe2
@@ -32,7 +32,7 @@ Func_82fe2: ; 82fe2 (20:6fe2)
 	loadpeople $2, Data_82f8c
 	ld e, $0
 	xor a
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 Func_82ff0: ; 82ff0 (20:6ff0)
 	call Func_8001c_20
 	ld hl, $3ce

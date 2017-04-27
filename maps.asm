@@ -73,7 +73,7 @@ Func_8326c:
 	jp nz, Func_83318
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_20
+	call FacePlayer_20
 	writetext_yesorno TreeBitstreamText_4600d
 	or a
 	jp nz, Func_832d4
@@ -96,9 +96,7 @@ Func_8326c:
 	ld e, $1
 	ld a, $10
 	call Func_80d4d_20
-	ld e, $1
-	ld hl, $108
-	call EventFlagAction_20
+	setevent $108
 Func_832cb: ; 832cb (20:72cb)
 	writetext TreeBitstreamText_4604f
 	jp Func_83318
@@ -121,9 +119,7 @@ Func_832d4: ; 832d4 (20:72d4)
 	ld e, $1
 	ld a, $10
 	call Func_80d4d_20
-	ld e, $1
-	ld hl, $108
-	call EventFlagAction_20
+	setevent $108
 Func_83318: ; 83318 (20:7318)
 	pop bc
 	ret
@@ -620,7 +616,7 @@ Func_838a2:
 	jp nz, Func_838e0
 	ld e, $0
 	xor a
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 Func_838e0: ; 838e0 (20:78e0)
 	call Func_8001c_20
 	ld hl, $3c8
@@ -670,14 +666,12 @@ Data_83a1f:
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
-	call Func_8044b_20
+	call FacePlayer_20
 	checkevent $58
 	or a
 	jp nz, Func_83a5e
 	writenpctext TreeBitstreamText_45c80
-	ld e, $1
-	ld hl, $58
-	call EventFlagAction_20
+	setevent $58
 	jp Func_83e48
 
 Func_83a5e: ; 83a5e (20:7a5e)
@@ -721,63 +715,49 @@ Func_83a7b: ; 83a7b (20:7a7b)
 	script_sleep $78
 	writenpctext TreeBitstreamText_39c6c
 	writenpctext TreeBitstreamText_39c82
-	ld e, $1
-	ld hl, $110
-	call EventFlagAction_20
+	setevent $110
 Func_83adb: ; 83adb (20:7adb)
 	checkevent $106
 	or a
 	jp nz, Func_83af3
 	ld hl, $493
 	call Func_80f72_20
-	ld e, $1
-	ld hl, $106
-	call EventFlagAction_20
+	setevent $106
 Func_83af3: ; 83af3 (20:7af3)
 	checkevent $105
 	or a
 	jp nz, Func_83b0b
 	ld hl, $494
 	call Func_80f72_20
-	ld e, $1
-	ld hl, $105
-	call EventFlagAction_20
+	setevent $105
 Func_83b0b: ; 83b0b (20:7b0b)
 	checkevent $104
 	or a
 	jp nz, Func_83b23
 	ld hl, $48f
 	call Func_80f72_20
-	ld e, $1
-	ld hl, $104
-	call EventFlagAction_20
+	setevent $104
 Func_83b23: ; 83b23 (20:7b23)
 	checkevent $103
 	or a
 	jp nz, Func_83b3b
 	ld hl, $492
 	call Func_80f72_20
-	ld e, $1
-	ld hl, $103
-	call EventFlagAction_20
+	setevent $103
 Func_83b3b: ; 83b3b (20:7b3b)
 	checkevent $102
 	or a
 	jp nz, Func_83b53
 	ld hl, $491
 	call Func_80f72_20
-	ld e, $1
-	ld hl, $102
-	call EventFlagAction_20
+	setevent $102
 Func_83b53: ; 83b53 (20:7b53)
 	checkevent $101
 	or a
 	jp nz, Func_83b6b
 	ld hl, $490
 	call Func_80f72_20
-	ld e, $1
-	ld hl, $101
-	call EventFlagAction_20
+	setevent $101
 Func_83b6b: ; 83b6b (20:7b6b)
 	jp Func_83b6e
 
@@ -1004,7 +984,7 @@ Func_83d57: ; 83d57 (20:7d57)
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
-	call Func_8013d_20
+	call SetPersonVisibilityState_20
 	playsfx $2e
 	push hl
 	push hl
@@ -1288,15 +1268,11 @@ Func_85178:
 	call CompareHLtoDE
 	jp c, Func_851b4
 Func_851a9: ; 851a9 (21:51a9)
-	ld e, $1
-	ld hl, $38
-	call EventFlagAction_21
+	setevent $38
 	jp Func_851bc
 
 Func_851b4: ; 851b4 (21:51b4)
-	ld e, $0
-	ld hl, $38
-	call EventFlagAction_21
+	resetevent $38
 Func_851bc: ; 851bc (21:51bc)
 	loadwarps $6, Data_850b4
 	ld a, $1
@@ -1311,9 +1287,7 @@ Func_851bc: ; 851bc (21:51bc)
 	playmusic SONG_TOWN1
 	call Func_8001c_21
 	call Func_852ac
-	ld e, $1
-	ld hl, $32
-	call EventFlagAction_21
+	setevent $32
 	jp Func_85270
 
 Func_851fe: ; 851fe (21:51fe)
@@ -1328,13 +1302,13 @@ Func_85212: ; 85212 (21:5212)
 	playmusic SONG_TOWN1
 	ld e, $0
 	ld a, $2
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	checkevent $5
 	cp $1
 	jp nz, Func_8523a
 	ld e, $0
 	xor a
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	jp Func_85242
 
 Func_8523a: ; 8523a (21:523a)
@@ -1348,7 +1322,7 @@ Func_85242: ; 85242 (21:5242)
 	jp nz, Func_85257
 	ld e, $0
 	ld a, $1
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	jp Func_85260
 
 Func_85257: ; 85257 (21:5257)
@@ -1401,10 +1375,7 @@ Data_852a4: ; 852a4
 
 Func_852ac: ; 852ac (21:52ac)
 	script_sleep $3c
-	ld c, $1
-	ld e, $1
-	ld a, $5
-	call LoadEmote_21
+	loademote $1, $1, $5
 	ld e, $f
 	ld a, $17
 	call ShowEmote_21
@@ -1434,9 +1405,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, $0
 	xor a
 	call SpriteFace_21
-	ld e, $0
-	ld a, $1
-	call SpriteFace_21
+	sprite_face $0, $1
 	ld bc, Data_8527c
 	ld e, BANK(Data_8527c)
 	ld a, $2
@@ -1451,9 +1420,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, $1
 	xor a
 	call SpriteFace_21
-	ld e, $3
-	ld a, $1
-	call SpriteFace_21
+	sprite_face $3, $1
 	ld bc, Data_8528a
 	ld e, BANK(Data_8528a)
 	ld a, $2
@@ -1462,9 +1429,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, $2
 	xor a
 	call SpriteFace_21
-	ld e, $2
-	ld a, $1
-	call SpriteFace_21
+	sprite_face $2, $1
 	script_sleep $3c
 	playmusic SONG_NONE
 	playmusic SONG_TITLE
@@ -1485,7 +1450,7 @@ Func_852ac: ; 852ac (21:52ac)
 	call Func_8020c_21
 	ld e, $0
 	ld a, $2
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	ld bc, Data_85280
 	ld e, BANK(Data_85280)
 	xor a
@@ -1496,22 +1461,15 @@ Func_852ac: ; 852ac (21:52ac)
 	call Func_80688_21
 	call Func_8020c_21
 	playsfx $33
-	ld e, $3
-	ld a, $1
-	call SpriteFace_21
-	ld c, $1
-	ld de, Data_85298
-	ld a, BANK(Data_85298)
-	call ApplyMovementData_21
+	sprite_face $3, $1
+	applymovementdata $1, Data_85298
 	script_sleep $1e
 	playsfx $2e
 	call Func_8020c_21
 	ld e, $2
 	xor a
 	call SpriteFace_21
-	ld e, $2
-	ld a, $1
-	call SpriteFace_21
+	sprite_face $2, $1
 	ld bc, Data_8529c
 	ld e, BANK(Data_8529c)
 	xor a
@@ -1526,9 +1484,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, $2
 	xor a
 	call SpriteFace_21
-	ld e, $2
-	ld a, $1
-	call SpriteFace_21
+	sprite_face $2, $1
 	playsfx $5c
 	script_sleep $78
 	writenpctext TreeBitstreamText_39c6c
@@ -1581,10 +1537,8 @@ Func_854eb: ; 854eb (21:54eb)
 	call Func_8020c_21
 	ld e, $0
 	xor a
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $5
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $5
 	checkevent $6
 	or a
 	jp nz, Func_85519
@@ -1615,10 +1569,8 @@ Func_85540: ; 85540 (21:5540)
 	call Func_8020c_21
 	ld e, $0
 	ld a, $1
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $6
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $6
 	checkevent $5
 	or a
 	jp nz, Func_85570
@@ -1663,9 +1615,7 @@ Func_855dc:
 	checkevent $6
 	or a
 	jp nz, Func_8560a
-	ld e, $3
-	ld a, $1
-	call SpriteFace_21
+	sprite_face $3, $1
 	ld a, $1
 	call PlayerFace_21
 	ld hl, sp+$0
@@ -1712,10 +1662,8 @@ Func_8565a: ; 8565a (21:565a)
 	call Func_8020c_21
 	ld e, $0
 	ld a, $1
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $6
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $6
 	checkevent $5
 	or a
 	jp nz, Func_8568a
@@ -1745,10 +1693,8 @@ Func_856ab: ; 856ab (21:56ab)
 	call Func_8020c_21
 	ld e, $0
 	xor a
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $5
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $5
 	checkevent $6
 	or a
 	jp nz, Func_856d9
@@ -1794,9 +1740,7 @@ Func_85746:
 	checkevent $6
 	or a
 	jp nz, Func_85774
-	ld e, $3
-	ld a, $1
-	call SpriteFace_21
+	sprite_face $3, $1
 	ld a, $1
 	call PlayerFace_21
 	ld hl, sp+$0
@@ -1843,10 +1787,8 @@ Func_857c4: ; 857c4 (21:57c4)
 	call Func_8020c_21
 	ld e, $0
 	ld a, $1
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $6
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $6
 	jp Func_8581b
 
 Func_857e3: ; 857e3 (21:57e3)
@@ -1868,10 +1810,8 @@ Func_85801: ; 85801 (21:5801)
 	call Func_8020c_21
 	ld e, $0
 	xor a
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $5
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $5
 Func_8581b: ; 8581b (21:581b)
 	pop bc
 	pop bc
@@ -1916,19 +1856,13 @@ Func_8585f: ; 8585f (21:585f)
 	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, Func_858bd
-	ld c, $1
-	ld de, Data_8582e
-	ld a, BANK(Data_8582e)
-	call ApplyMovementData_21
+	applymovementdata $1, Data_8582e
 	call Func_8020c_21
 	playmusic SONG_NONE
 	playmusic SONG_0A
 	xor a
 	call Func_80653_21
-	ld c, $1
-	ld e, $1
-	ld a, $b
-	call LoadEmote_21
+	loademote $1, $1, $b
 	playsfx $44
 	call Func_801d5_21
 	call Func_8018b_21
@@ -1966,7 +1900,7 @@ Func_858f9:
 	jp nz, Func_8592e
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	writetext_yesorno TreeBitstreamText_472f0
 	or a
 	jp nz, Func_85928
@@ -2044,15 +1978,11 @@ Func_85a1d:
 	call CompareHLtoDE
 	jp c, Func_85a59
 Func_85a4e: ; 85a4e (21:5a4e)
-	ld e, $1
-	ld hl, $38
-	call EventFlagAction_21
+	setevent $38
 	jp Func_85a61
 
 Func_85a59: ; 85a59 (21:5a59)
-	ld e, $0
-	ld hl, $38
-	call EventFlagAction_21
+	resetevent $38
 Func_85a61: ; 85a61 (21:5a61)
 	ld a, $1
 	ld [wc7de], a
@@ -2096,7 +2026,7 @@ Func_85abc: ; 85abc (21:5abc)
 Func_85ada: ; 85ada (21:5ada)
 	ld e, $0
 	ld a, $4
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	loadpeople $1, Data_85a0f
 	checkevent $14
 	cp $1
@@ -2132,7 +2062,7 @@ Func_85b17:
 	jp nz, Func_85b52
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	writenpctext TreeBitstreamText_39cd9
 	playsfx $2a
 	writetext TreeBitstreamText_39d70
@@ -2140,15 +2070,13 @@ Func_85b17:
 	ld e, $1
 	ld a, $17
 	call Func_80d4d_21
-	ld e, $1
-	ld hl, $c0
-	call EventFlagAction_21
+	setevent $c0
 	jp Func_85b6d
 
 Func_85b52: ; 85b52 (21:5b52)
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	ld hl, wc797
 	ld l, [hl]
 	ld h, $0
@@ -2174,7 +2102,7 @@ Func_85b98:
 	jp nz, Func_85c1a
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $c0
 	cp $1
 	jp nz, Func_85c14
@@ -2191,9 +2119,7 @@ Func_85b98:
 	jp Func_85c1a
 
 Func_85bd9: ; 85bd9 (21:5bd9)
-	ld e, $1
-	ld hl, $64
-	call EventFlagAction_21
+	setevent $64
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -2275,15 +2201,11 @@ Func_85cde:
 	call CompareHLtoDE
 	jp c, Func_85d1a
 Func_85d0f: ; 85d0f (21:5d0f)
-	ld e, $1
-	ld hl, $38
-	call EventFlagAction_21
+	setevent $38
 	jp Func_85d22
 
 Func_85d1a: ; 85d1a (21:5d1a)
-	ld e, $0
-	ld hl, $38
-	call EventFlagAction_21
+	resetevent $38
 Func_85d22: ; 85d22 (21:5d22)
 	ld a, $7
 	ld [wc7de], a
@@ -2343,7 +2265,7 @@ Func_85dcd:
 	jp nz, Func_85e60
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $c0
 	cp $1
 	jp nz, Func_85e5a
@@ -2363,9 +2285,7 @@ Func_85dcd:
 	jp Func_85e60
 
 Func_85e16: ; 85e16 (21:5e16)
-	ld e, $1
-	ld hl, $6a
-	call EventFlagAction_21
+	setevent $6a
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -2468,15 +2388,11 @@ Func_85f6c:
 	call CompareHLtoDE
 	jp c, Func_85fa8
 Func_85f9d: ; 85f9d (21:5f9d)
-	ld e, $1
-	ld hl, $38
-	call EventFlagAction_21
+	setevent $38
 	jp Func_85fb0
 
 Func_85fa8: ; 85fa8 (21:5fa8)
-	ld e, $0
-	ld hl, $38
-	call EventFlagAction_21
+	resetevent $38
 Func_85fb0: ; 85fb0 (21:5fb0)
 	ld a, [wc798]
 	or a
@@ -2578,7 +2494,7 @@ Func_860c1:
 	jp nz, Func_86143
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $c0
 	cp $1
 	jp nz, Func_8613d
@@ -2595,9 +2511,7 @@ Func_860c1:
 	jp Func_86143
 
 Func_86102: ; 86102 (21:6102)
-	ld e, $1
-	ld hl, $66
-	call EventFlagAction_21
+	setevent $66
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -2636,7 +2550,7 @@ Func_8617b:
 	jp nz, Func_861fd
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $c0
 	cp $1
 	jp nz, Func_861f7
@@ -2653,9 +2567,7 @@ Func_8617b:
 	jp Func_861fd
 
 Func_861bc: ; 861bc (21:61bc)
-	ld e, $1
-	ld hl, $68
-	call EventFlagAction_21
+	setevent $68
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -2778,15 +2690,11 @@ Func_863fb:
 	call CompareHLtoDE
 	jp c, Func_86437
 Func_8642c: ; 8642c (21:642c)
-	ld e, $1
-	ld hl, $38
-	call EventFlagAction_21
+	setevent $38
 	jp Func_8643f
 
 Func_86437: ; 86437 (21:6437)
-	ld e, $0
-	ld hl, $38
-	call EventFlagAction_21
+	resetevent $38
 Func_8643f: ; 8643f (21:643f)
 	ld a, [wc798]
 	or a
@@ -2910,7 +2818,7 @@ Func_86579:
 	jp nz, Func_865fa
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $14
 	or a
 	jp nz, Func_865f4
@@ -2925,9 +2833,7 @@ Func_86579:
 	or a
 	jp nz, Func_865be
 	writenpctext TreeBitstreamText_3f85e
-	ld e, $1
-	ld hl, $c5
-	call EventFlagAction_21
+	setevent $c5
 	jp Func_865df
 
 Func_865be: ; 865be (21:65be)
@@ -2937,9 +2843,7 @@ Func_865be: ; 865be (21:65be)
 	ld a, $7f
 	call Func_80d74_21
 	writenpctext TreeBitstreamText_3f901
-	ld e, $1
-	ld hl, $c5
-	call EventFlagAction_21
+	setevent $c5
 Func_865df: ; 865df (21:65df)
 	jp Func_865e8
 
@@ -2969,7 +2873,7 @@ Func_86625:
 	jp nz, Func_866a7
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $c0
 	cp $1
 	jp nz, Func_866a1
@@ -2986,9 +2890,7 @@ Func_86625:
 	jp Func_866a7
 
 Func_86666: ; 86666 (21:6666)
-	ld e, $1
-	ld hl, $65
-	call EventFlagAction_21
+	setevent $65
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -3027,7 +2929,7 @@ Func_866df:
 	jp nz, Func_86761
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $c0
 	cp $1
 	jp nz, Func_8675b
@@ -3044,9 +2946,7 @@ Func_866df:
 	jp Func_86761
 
 Func_86720: ; 86720 (21:6720)
-	ld e, $1
-	ld hl, $67
-	call EventFlagAction_21
+	setevent $67
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -3085,7 +2985,7 @@ Func_86799:
 	jp nz, Func_8681b
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $c0
 	cp $1
 	jp nz, Func_86815
@@ -3102,9 +3002,7 @@ Func_86799:
 	jp Func_8681b
 
 Func_867da: ; 867da (21:67da)
-	ld e, $1
-	ld hl, $69
-	call EventFlagAction_21
+	setevent $69
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -3160,7 +3058,7 @@ Func_8688a:
 	loadpeople $2, Data_8686e
 	ld e, $0
 	xor a
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	loadwarps $1, Data_8682b
 	checkevent $7
 	or a
@@ -3219,29 +3117,17 @@ Func_86943: ; 86943 (21:6943)
 	playmusic SONG_NONE
 	playmusic SONG_TITLE
 	call Func_8020c_21
-	ld c, $1
-	ld de, Data_86907
-	ld a, BANK(Data_86907)
-	call ApplyMovementData_21
+	applymovementdata $1, Data_86907
 	call Func_8020c_21
 	xor a
 	call PlayerFace_21
-	ld c, $1
-	ld e, $1
-	ld a, $7
-	call LoadEmote_21
+	loademote $1, $1, $7
 	playsfx $68
 	call Func_801d5_21
-	ld c, $1
-	ld e, $1
-	ld a, $7
-	call LoadEmote_21
+	loademote $1, $1, $7
 	playsfx $68
 	call Func_801d5_21
-	ld c, $1
-	ld e, $1
-	ld a, $7
-	call LoadEmote_21
+	loademote $1, $1, $7
 	playsfx $68
 	call Func_801d5_21
 	writenpctext TreeBitstreamText_3a38a
@@ -3254,16 +3140,12 @@ Func_86943: ; 86943 (21:6943)
 	ld a, $4
 	call Func_80688_21
 	call Func_8020c_21
-	ld e, $3
-	ld a, $2
-	call SpriteFace_21
+	sprite_face $3, $2
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	writenpctext TreeBitstreamText_3a3ac
 	writenpctext TreeBitstreamText_3a3c2
-	ld e, $2
-	ld a, $2
-	call SpriteFace_21
+	sprite_face $2, $2
 	writenpctext TreeBitstreamText_3a3dc
 	startbattle Data_86ac4, Data_868de
 	or a
@@ -3289,7 +3171,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	call Func_8020c_21
 	ld e, $0
 	ld a, $2
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	xor a
 	call PlayerFace_21
 	ld bc, Data_86923
@@ -3323,10 +3205,10 @@ Func_869e7: ; 869e7 (21:69e7)
 	call Func_8020c_21
 	ld e, $0
 	ld a, $3
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	ld e, $0
 	ld a, $4
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
 	script_sleep $1e
@@ -3335,17 +3217,13 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld a, $5
 	call Func_80688_21
 	call Func_8020c_21
-	ld e, $2
-	ld a, $5
-	call SpriteFace_21
+	sprite_face $2, $5
 	script_sleep $1e
 	xor a
 	call PlayerFace_21
 	script_sleep $1e
 	writenpctext TreeBitstreamText_3a481
-	ld e, $1
-	ld hl, $7
-	call EventFlagAction_21
+	setevent $7
 	ld a, $8
 	ld [wc790], a
 	ret
@@ -3357,31 +3235,15 @@ Func_86ac9:
 	ld a, e
 	or a
 	jp nz, Func_86b0c
-	ld e, $1
-	ld a, $5
-	call SpriteFace_21
-	ld e, $0
-	ld a, $5
-	call SpriteFace_21
-	ld e, $3
-	ld a, $5
-	call SpriteFace_21
-	ld e, $2
-	ld a, $5
-	call SpriteFace_21
+	sprite_face $1, $5
+	sprite_face $0, $5
+	sprite_face $3, $5
+	sprite_face $2, $5
 	script_sleep $1e
-	ld e, $3
-	ld a, $5
-	call SpriteFace_21
-	ld e, $0
-	ld a, $5
-	call SpriteFace_21
-	ld e, $1
-	ld a, $5
-	call SpriteFace_21
-	ld e, $2
-	ld a, $5
-	call SpriteFace_21
+	sprite_face $3, $5
+	sprite_face $0, $5
+	sprite_face $1, $5
+	sprite_face $2, $5
 Func_86b0c: ; 86b0c (21:6b0c)
 	ret
 
@@ -3393,10 +3255,7 @@ Func_86b0d:
 	or a
 	jp nz, Func_86bfa
 	playsfx $5e
-	ld c, $2
-	ld e, $2
-	ld a, $8
-	call LoadEmote_21
+	loademote $2, $2, $8
 	ld e, $4
 	ld a, $e
 	call ShowEmote_21
@@ -3405,7 +3264,7 @@ Func_86b0d:
 	playsfx $28
 	ld e, $1
 	xor a
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	playsfx $60
 	ld e, $3
 	xor a
@@ -3437,16 +3296,13 @@ Func_86b0d:
 	ld a, $1
 	call FadeInAudio_21
 	playmusic SONG_WORLD_MAP
-	xor a
-	call Func_8044b_21
+	face_player 0
 	script_sleep $1e
 	ld c, $8
 	ld e, $7
 	ld a, $6
 	call Func_80e8d_21
-	ld e, $1
-	ld hl, $d6
-	call EventFlagAction_21
+	setevent $d6
 	playsfx $60
 	ld e, $3
 	xor a
@@ -3478,11 +3334,10 @@ Func_86b0d:
 	ld a, $1
 	call FadeInAudio_21
 	playmusic SONG_TOWN2
-	xor a
-	call Func_8044b_21
+	face_player 0
 	ld e, $0
 	xor a
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	jp Func_86c00
 
 Func_86bfa: ; 86bfa (21:6bfa)
@@ -3637,10 +3492,10 @@ Func_8703a: ; 8703a (21:703a)
 	call Func_80150_21
 	ld e, $0
 	ld a, $8
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 	ld e, $0
 	ld a, $9
-	call Func_8013d_21
+	call SetPersonVisibilityState_21
 Func_8706e: ; 8706e (21:706e)
 	playmusic SONG_TOWN1
 	ld a, $1
@@ -3701,15 +3556,12 @@ Func_87141:
 	ld a, e
 	or a
 	jp nz, Func_87163
-	ld a, $5
-	call Func_8044b_21
+	face_player $5
 	writetext TreeBitstreamText_414b4
 	checkevent $f0
 	or a
 	jp nz, Func_87163
-	ld e, $1
-	ld hl, $f0
-	call EventFlagAction_21
+	setevent $f0
 Func_87163: ; 87163 (21:7163)
 	ret
 
@@ -3755,9 +3607,7 @@ Func_871fe:
 	checkevent $f0
 	or a
 	jp nz, Func_87238
-	ld e, $1
-	ld hl, $f0
-	call EventFlagAction_21
+	setevent $f0
 Func_87238: ; 87238 (21:7238)
 	jp Func_87265
 
@@ -3787,7 +3637,7 @@ Func_8728f:
 	jp nz, Func_872e5
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $6c
 	or a
 	jp nz, Func_872df
@@ -3801,9 +3651,7 @@ Func_8728f:
 	jp Func_872e5
 
 Func_872c5: ; 872c5 (21:72c5)
-	ld e, $1
-	ld hl, $6c
-	call EventFlagAction_21
+	setevent $6c
 	writetext TreeBitstreamText_42bc8
 	jp Func_872dc
 
@@ -3831,7 +3679,7 @@ Func_87317:
 	jp nz, Func_8736d
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $6d
 	or a
 	jp nz, Func_87367
@@ -3845,9 +3693,7 @@ Func_87317:
 	jp Func_8736d
 
 Func_8734d: ; 8734d (21:734d)
-	ld e, $1
-	ld hl, $6d
-	call EventFlagAction_21
+	setevent $6d
 	writetext TreeBitstreamText_42baa
 	jp Func_87364
 
@@ -3869,10 +3715,7 @@ Data_87376:
 	dr $87376, $8737a
 
 Func_8737a: ; 8737a (21:737a)
-	ld c, $1
-	ld de, Data_87376
-	ld a, BANK(Data_87376)
-	call ApplyMovementData_21
+	applymovementdata $1, Data_87376
 	call Func_8020c_21
 	ret
 
@@ -3937,13 +3780,10 @@ Func_87497:
 	ld a, e
 	or a
 	jp nz, Func_874c2
-	call RepairRobots_21
+	heal
 	playmusic SONG_NONE
 	playmusic SONG_HEAL
-	ld c, $1
-	ld e, $2
-	ld a, $8
-	call LoadEmote_21
+	loademote $1, $2, $8
 	call Func_801d5_21
 	call Func_8018b_21
 	writetext TreeBitstreamText_46e0b
@@ -3961,7 +3801,7 @@ Func_874ec:
 	jp nz, Func_87542
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $6e
 	or a
 	jp nz, Func_8753c
@@ -3975,9 +3815,7 @@ Func_874ec:
 	jp Func_87542
 
 Func_87522: ; 87522 (21:7522)
-	ld e, $1
-	ld hl, $6e
-	call EventFlagAction_21
+	setevent $6e
 	writetext TreeBitstreamText_42bf7
 	jp Func_87539
 
@@ -4005,7 +3843,7 @@ Func_87574
 	jp nz, Func_8763c
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $6f
 	or a
 	jp nz, Func_87602
@@ -4019,9 +3857,7 @@ Func_87574
 	jp Func_8763c
 
 Func_875aa: ; 875aa (21:75aa)
-	ld e, $1
-	ld hl, $6f
-	call EventFlagAction_21
+	setevent $6f
 	checkevent $109
 	or a
 	jp nz, Func_875f0
@@ -4038,9 +3874,7 @@ Func_875aa: ; 875aa (21:75aa)
 	ld e, $1
 	ld a, $10
 	call Func_80d4d_21
-	ld e, $1
-	ld hl, $109
-	call EventFlagAction_21
+	setevent $109
 Func_875f0: ; 875f0 (21:75f0)
 	writetext TreeBitstreamText_42b98
 	jp Func_875ff
@@ -4064,9 +3898,7 @@ Func_87602: ; 87602 (21:7602)
 	ld e, $1
 	ld a, $10
 	call Func_80d4d_21
-	ld e, $1
-	ld hl, $109
-	call EventFlagAction_21
+	setevent $109
 Func_87636: ; 87636 (21:7636)
 	writetext TreeBitstreamText_42bc8
 Func_8763c: ; 8763c (21:763c)
@@ -4077,18 +3909,10 @@ Data_8763e:
 	db "(かいてーしﾞん)", $0
 
 Func_87648: ; 87648 (21:7648)
-	ld e, $0
-	ld hl, $18
-	call EventFlagAction_21
-	ld e, $0
-	ld hl, $19
-	call EventFlagAction_21
-	ld e, $0
-	ld hl, $1a
-	call EventFlagAction_21
-	ld e, $0
-	ld hl, $4b
-	call EventFlagAction_21
+	resetevent $18
+	resetevent $19
+	resetevent $1a
+	resetevent $4b
 	ret
 
 Data_87669:
@@ -4224,10 +4048,8 @@ Func_878aa: ; 878aa (21:78aa)
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $18
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $18
 	checkevent $19
 	cp $1
 	jp nz, Func_878ef
@@ -4270,10 +4092,8 @@ Func_87910: ; 87910 (21:7910)
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $19
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $19
 	checkevent $18
 	cp $1
 	jp nz, Func_87955
@@ -4316,10 +4136,8 @@ Func_87976: ; 87976 (21:7976)
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $1a
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $1a
 	checkevent $18
 	cp $1
 	jp nz, Func_879bb
@@ -4362,10 +4180,8 @@ Func_879dc: ; 879dc (21:79dc)
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $4b
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $4b
 	checkevent $18
 	cp $1
 	jp nz, Func_87a21
@@ -4408,10 +4224,8 @@ Func_87a42: ; 87a42 (21:7a42)
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $18
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $18
 	checkevent $19
 	cp $1
 	jp nz, Func_87a71
@@ -4448,10 +4262,8 @@ Func_87a92: ; 87a92 (21:7a92)
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8013d_21
-	ld e, $1
-	ld hl, $19
-	call EventFlagAction_21
+	call SetPersonVisibilityState_21
+	setevent $19
 	checkevent $18
 	cp $1
 	jp nz, Func_87ac1
@@ -4477,17 +4289,13 @@ Func_87ae0: ; 87ae0 (21:7ae0)
 	checkevent $59
 	or a
 	jp nz, Func_87b00
-	ld e, $1
-	ld hl, $59
-	call EventFlagAction_21
+	setevent $59
 	playsfx $32
 	writetext TreeBitstreamText_47029
 	jp Func_87b13
 
 Func_87b00: ; 87b00 (21:7b00)
-	ld e, $0
-	ld hl, $59
-	call EventFlagAction_21
+	resetevent $59
 	playsfx $28
 	writetext TreeBitstreamText_4701b
 Func_87b13: ; 87b13 (21:7b13)
@@ -4524,18 +4332,13 @@ Func_87b4f: ; 87b4f (21:7b4f)
 	ld [wc78a], a
 	xor a
 	call Func_80653_21
-	ld c, $1
-	ld e, $1
-	ld a, $9
-	call LoadEmote_21
+	loademote $1, $1, $9
 	playsfx $5a
 	call Func_801d5_21
 	call Func_8018b_21
 	ld a, $2
 	call PlayerFace_21
-	ld e, $0
-	ld hl, $fa
-	call EventFlagAction_21
+	resetevent $fa
 	ld l, $3
 	push hl
 	ld c, $3
@@ -4565,29 +4368,22 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	call Func_8001c_21
 	ld hl, $2d7
 	call Func_80f72_21
-	ld c, $1
-	ld e, $2
-	ld a, $9
-	call LoadEmote_21
+	loademote $1, $2, $9
 	playsfx $37
 	call Func_801d5_21
 	ld a, $1
 	call Func_80653_21
 	script_sleep $1
 	call Func_8018b_21
-	ld e, $1
-	ld hl, $fb
-	call EventFlagAction_21
+	setevent $fb
 	ret
 
 Data_87bd7:
 	dr $87bd7, $87c03
 
 Func_87c03: ; 87c03 (21:7c03)
-	ld e, $1
-	ld hl, $4c
-	call EventFlagAction_21
-	call UnloadWarps_21
+	setevent $4c
+	call AllocateSpaceForWarps_21
 	loadwarps $4, Data_87bd7
 	call Func_80ea2_21
 	playsfx $64
@@ -4607,7 +4403,7 @@ Func_87c5c:
 	jp nz, Func_87cb2
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $70
 	or a
 	jp nz, Func_87cac
@@ -4621,9 +4417,7 @@ Func_87c5c:
 	jp Func_87cb2
 
 Func_87c92: ; 87c92 (21:7c92)
-	ld e, $1
-	ld hl, $70
-	call EventFlagAction_21
+	setevent $70
 	writetext TreeBitstreamText_42b64
 	jp Func_87ca9
 
@@ -4651,7 +4445,7 @@ Func_87ce5:
 	jp nz, Func_87d3b
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $71
 	or a
 	jp nz, Func_87d35
@@ -4665,9 +4459,7 @@ Func_87ce5:
 	jp Func_87d3b
 
 Func_87d1b: ; 87d1b (21:7d1b)
-	ld e, $1
-	ld hl, $71
-	call EventFlagAction_21
+	setevent $71
 	writetext TreeBitstreamText_42bdd
 	jp Func_87d32
 
@@ -4733,7 +4525,7 @@ Func_87dca:
 	jp nz, Func_87e32
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_21
+	call FacePlayer_20
 	checkevent $51
 	or a
 	jp nz, Func_87e2c
@@ -4750,9 +4542,7 @@ Func_87dca:
 	ld e, $1
 	ld a, $b
 	call Func_80d4d_21
-	ld e, $1
-	ld hl, $51
-	call EventFlagAction_21
+	setevent $51
 	writenpctext TreeBitstreamText_3af20
 	jp Func_87e20
 
@@ -6832,7 +6622,7 @@ Func_d11ef: ; d11ef (34:51ef)
 	loadpeople $c, Data_d1147
 	ld a, $1
 	call Func_80cc6_34
-	playmusic $7
+	playmusic SONG_TOWN2
 	call Func_8001c_34
 	ret
 
@@ -6846,7 +6636,7 @@ Func_d121f:
 	jp nz, Func_d1454
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_8044b_34
+	call FacePlayer_20
 	ld a, [wc793 + 3]
 	cp $6
 	jp nz, Func_d12ba
@@ -6879,12 +6669,12 @@ Func_d121f:
 	ld e, $1
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_80d87_34
+	call GiveRobot_34
 	pop af
 	ld c, a
 	ld e, $0
 	ld a, $50
-	call Func_80d87_34
+	call GiveRobot_34
 	ld a, $7
 	ld [wc793 + 3], a
 	ld hl, sp+$0
@@ -6939,12 +6729,12 @@ Func_d12ba: ; d12ba (34:52ba)
 	ld e, $1
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_80d87_34
+	call GiveRobot_34
 	pop af
 	ld c, a
 	ld e, $0
 	ld a, $69
-	call Func_80d87_34
+	call GiveRobot_34
 	ld a, $9
 	ld [wc793 + 3], a
 	ld hl, sp+$0
@@ -7184,19 +6974,19 @@ Func_d153f: ; d153f (34:553f)
 Func_d15ef: ; d15ef (34:55ef)
 	ld e, $0
 	ld a, $1
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d160a
 
 Func_d15f9: ; d15f9 (34:55f9)
 	ld e, $0
 	ld a, $2
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d160a
 
 Func_d1603: ; d1603 (34:5603)
 	ld e, $0
 	ld a, $3
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 Func_d160a: ; d160a (34:560a)
 	ld a, [wc791]
 	cp $4
@@ -7209,35 +6999,35 @@ Func_d160a: ; d160a (34:560a)
 	jp nz, Func_d1654
 	ld e, $0
 	ld a, $1
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d1654
 
 Func_d162b: ; d162b (34:562b)
 	ld e, $0
 	ld a, $2
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d1654
 
 Func_d1635: ; d1635 (34:5635)
 	ld e, $0
 	ld a, $3
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d1654
 
 Func_d163f: ; d163f (34:563f)
 	ld e, $0
 	ld a, $1
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $2
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $3
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 Func_d1654: ; d1654 (34:5654)
 	ld a, $1
 	ld [wc7a2 + 1], a
-	playmusic $7
+	playmusic SONG_TOWN2
 	call Func_8001c_34
 	ld a, [wBackupMapNumber]
 	or a
@@ -7267,7 +7057,7 @@ Func_d1680:
 	jp nz, Func_d1729
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_34
+	call FacePlayer_20
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, Func_d16b1
@@ -7307,10 +7097,7 @@ Func_d16df: ; d16df (34:56df)
 	call Func_80688_34
 Func_d16e8: ; d16e8 (34:56e8)
 	call Func_8020c_34
-	ld c, $1
-	ld de, Data_d1678
-	ld a, $34
-	call ApplyMovementData_34
+	applymovementdata $1, Data_d1678
 	ld bc, Data_d167c
 	ld e, $34
 	xor a
@@ -7321,13 +7108,13 @@ Func_d16e8: ; d16e8 (34:56e8)
 	call SpriteFace_34
 	ld e, $1
 	ld a, $1
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $1
 	ld a, $2
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $1
 	ld a, $3
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	xor a
 	ld [wc791], a
 	jp Func_d1729
@@ -7379,15 +7166,11 @@ Func_d1749: ; d1749 (34:5749)
 	cp $a
 	jp nz, Func_d1816
 Func_d177e: ; d177e (34:577e)
-	ld c, $1
-	ld de, Data_d172b
-	ld a, $34
-	call ApplyMovementData_34
+	applymovementdata $1, Data_d172b
 	ld a, $2
 	call PlayerFace_34
 	script_sleep $1e
-	xor a
-	call Func_8044b_34
+	face_player 0
 	checkevent $5d
 	cp $1
 	jp nz, Func_d17c7
@@ -7399,22 +7182,16 @@ Func_d177e: ; d177e (34:577e)
 	ld a, $2d
 	call Func_80d62_34
 	writetext TreeBitstreamText_47d38
-	ld e, $1
-	ld hl, $5e
-	call EventFlagAction_34
+	setevent $5e
 Func_d17c7: ; d17c7 (34:57c7)
 	jp Func_d1866
 
 Func_d17ca: ; d17ca (34:57ca)
-	ld c, $1
-	ld de, Data_d1731
-	ld a, $34
-	call ApplyMovementData_34
+	applymovementdata $1, Data_d1731
 	ld a, $2
 	call PlayerFace_34
 	script_sleep $1e
-	xor a
-	call Func_8044b_34
+	face_player 0
 	checkevent $5f
 	cp $1
 	jp nz, Func_d1813
@@ -7426,22 +7203,16 @@ Func_d17ca: ; d17ca (34:57ca)
 	ld a, $9
 	call Func_80d74_34
 	writetext TreeBitstreamText_47d46
-	ld e, $1
-	ld hl, $60
-	call EventFlagAction_34
+	setevent $60
 Func_d1813: ; d1813 (34:5813)
 	jp Func_d1866
 
 Func_d1816: ; d1816 (34:5816)
-	ld c, $1
-	ld de, Data_d1737
-	ld a, $34
-	call ApplyMovementData_34
+	applymovementdata $1, Data_d1737
 	ld a, $2
 	call PlayerFace_34
 	script_sleep $1e
-	xor a
-	call Func_8044b_34
+	face_player 0
 	checkevent $61
 	cp $1
 	jp nz, Func_d1866
@@ -7457,7 +7228,7 @@ ENDC
 IF DEF(STAR)
 	ld a, $98
 ENDC
-	call Func_80d87_34
+	call GiveRobot_34
 	cp $ff
 	jp nz, Func_d1858
 Func_d1858: ; d1858 (34:5858)
@@ -7468,9 +7239,7 @@ IF DEF(STAR)
 	ld hl, $20
 ENDC
 	call PrintTextStandard_34
-	ld e, $1
-	ld hl, $62
-	call EventFlagAction_34
+	setevent $62
 Func_d1866: ; d1866 (34:5866)
 	ld bc, Data_d173d
 	ld e, $34
@@ -7480,10 +7249,7 @@ Func_d1866: ; d1866 (34:5866)
 	ld e, $1
 	xor a
 	call SpriteFace_34
-	ld c, $1
-	ld de, Data_d1741
-	ld a, $34
-	call ApplyMovementData_34
+	applymovementdata $1, Data_d1741
 	ld bc, Data_d1745
 	ld e, $34
 	xor a
@@ -7494,13 +7260,13 @@ Func_d1866: ; d1866 (34:5866)
 	call SpriteFace_34
 	ld e, $1
 	ld a, $1
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $1
 	ld a, $2
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $1
 	ld a, $3
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	xor a
 	ld [wc791], a
 	ret
@@ -7529,10 +7295,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	ld e, $1
 	xor a
 	call SpriteFace_34
-	ld c, $1
-	ld de, Data_d18b2
-	ld a, $34
-	call ApplyMovementData_34
+	applymovementdata $1, Data_d18b2
 	ld bc, Data_d18b6
 	ld e, $34
 	xor a
@@ -7553,31 +7316,31 @@ Func_d18ba:: ; d18ba (34:58ba)
 	jp nz, Func_d194d
 	ld e, $0
 	ld a, $1
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d194d
 
 Func_d1924: ; d1924 (34:5924)
 	ld e, $0
 	ld a, $2
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d194d
 
 Func_d192e: ; d192e (34:592e)
 	ld e, $0
 	ld a, $3
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d194d
 
 Func_d1938: ; d1938 (34:5938)
 	ld e, $0
 	ld a, $1
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $2
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $3
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 Func_d194d: ; d194d (34:594d)
 	pop af
 	ld [wc791], a
@@ -7742,9 +7505,7 @@ Func_d1bff: ; d1bff (34:5bff)
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d1c0f
-	ld e, $1
-	ld hl, $5d
-	call EventFlagAction_34
+	setevent $5d
 Func_d1c0f: ; d1c0f (34:5c0f)
 	ld a, $3
 	call Func_80d01_34
@@ -7837,7 +7598,7 @@ Func_d1c8b: ; d1c8b (34:5c8b)
 	call LoadWarps_34
 Func_d1ccb: ; d1ccb (34:5ccb)
 	loadwarps $1, Data_d1958
-	playmusic $8
+	playmusic SONG_CAVE
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
@@ -7952,9 +7713,7 @@ Func_d1f36: ; d1f36 (34:5f36)
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d1f46
-	ld e, $1
-	ld hl, $5d
-	call EventFlagAction_34
+	setevent $5d
 Func_d1f46: ; d1f46 (34:5f46)
 	ld a, $3
 	call Func_80d01_34
@@ -8047,7 +7806,7 @@ Func_d1fc2: ; d1fc2 (34:5fc2)
 	call LoadWarps_34
 Func_d2002: ; d2002 (34:6002)
 	loadwarps $1, Data_d1d1e
-	playmusic $8
+	playmusic SONG_CAVE
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
@@ -8218,9 +7977,7 @@ Func_d22d5: ; d22d5 (34:62d5)
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d22e5
-	ld e, $1
-	ld hl, $5d
-	call EventFlagAction_34
+	setevent $5d
 Func_d22e5: ; d22e5 (34:62e5)
 	ld a, $3
 	call Func_80d01_34
@@ -8313,7 +8070,7 @@ Func_d2361: ; d2361 (34:6361)
 	call LoadWarps_34
 Func_d23a1: ; d23a1 (34:63a1)
 	loadwarps $1, Data_d2055
-	playmusic $8
+	playmusic SONG_CAVE
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
@@ -8484,9 +8241,7 @@ Func_d2674: ; d2674 (34:6674)
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2684
-	ld e, $1
-	ld hl, $5d
-	call EventFlagAction_34
+	setevent $5d
 Func_d2684: ; d2684 (34:6684)
 	ld a, $3
 	call Func_80d01_34
@@ -8579,7 +8334,7 @@ Func_d2700: ; d2700 (34:6700)
 	call LoadWarps_34
 Func_d2740: ; d2740 (34:6740)
 	loadwarps $1, Data_d23f4
-	playmusic $8
+	playmusic SONG_CAVE
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
@@ -8743,9 +8498,7 @@ Func_d2a06: ; d2a06 (34:6a06)
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2a16
-	ld e, $1
-	ld hl, $5d
-	call EventFlagAction_34
+	setevent $5d
 Func_d2a16: ; d2a16 (34:6a16)
 	ld a, $3
 	call Func_80d01_34
@@ -8838,7 +8591,7 @@ Func_d2a92: ; d2a92 (34:6a92)
 	call LoadWarps_34
 Func_d2ad2: ; d2ad2 (34:6ad2)
 	loadwarps $1, Data_d2793
-	playmusic $8
+	playmusic SONG_CAVE
 	call Func_8001c_34
 	ld a, [wc7de]
 	cp $14
@@ -8968,7 +8721,7 @@ Func_d2c9b: ; d2c9b (34:6c9b)
 	jp nz, Func_d2cba
 	loadpeople $2, Data_d2bf2
 Func_d2cba: ; d2cba (34:6cba)
-	playmusic $c
+	playmusic SONG_CENTER
 	call Func_8001c_34
 	ret
 
@@ -8979,7 +8732,7 @@ Func_d2cc3:
 	jp nz, Func_d2cef
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_8044b_34
+	call FacePlayer_20
 	writenpctext TreeBitstreamText_470a2
 	ld hl, sp+$1
 	ld a, [hl]
@@ -9161,7 +8914,7 @@ Func_d2f72: ; d2f72 (34:6f72)
 	loadpeople $1, Data_d2d9b
 	ld e, $0
 	ld a, $8
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d2fab
 
 Func_d2fa3: ; d2fa3 (34:6fa3)
@@ -9191,32 +8944,32 @@ Func_d2fae: ; d2fae (34:6fae)
 Func_d2fe1: ; d2fe1 (34:6fe1)
 	ld e, $0
 	ld a, $9
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $a
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $b
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $c
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d300e
 
 Func_d3000: ; d3000 (34:7000)
 	ld e, $0
 	ld a, $b
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $c
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 Func_d300e: ; d300e (34:700e)
 	jp Func_d3019
 
 Func_d3011: ; d3011 (34:7011)
 	loadpeople $1, Data_d2d8d
 Func_d3019: ; d3019 (34:7019)
-	playmusic $c
+	playmusic SONG_CENTER
 	call Func_8001c_34
 	ld a, [wBackupMapGroup]
 	cp $5
@@ -9257,9 +9010,7 @@ Func_d3055:
 	cp $1
 	jp nz, Func_d3083
 	writetext TreeBitstreamText_3a8e1
-	ld e, $1
-	ld hl, $1
-	call EventFlagAction_34
+	setevent $1
 Func_d3083: ; d3083 (34:7083)
 	jp Func_d30f8
 
@@ -9290,9 +9041,7 @@ Func_d3098: ; d3098 (34:7098)
 	ld e, $1
 	ld a, $12
 	call Func_80d4d_34
-	ld e, $1
-	ld hl, $0
-	call EventFlagAction_34
+	setevent $0
 	jp Func_d30e6
 
 Func_d30e0: ; d30e0 (34:70e0)
@@ -9329,7 +9078,7 @@ Func_d310e: ; d310e (34:710e)
 	jp nz, Func_d3144
 	push hl
 	ld a, l
-	call Func_8044b_34
+	call FacePlayer_20
 	pop hl
 	ld a, l
 	cp $b
@@ -9465,31 +9214,31 @@ Func_d337c: ; d337c (34:737c)
 Func_d33af: ; d33af (34:73af)
 	ld e, $0
 	ld a, $2
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $3
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $4
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $5
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $6
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $7
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	jp Func_d33ea
 
 Func_d33dc: ; d33dc (34:73dc)
 	ld e, $0
 	ld a, $6
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 	ld e, $0
 	ld a, $7
-	call Func_8013d_34
+	call SetPersonVisibilityState_34
 Func_d33ea: ; d33ea (34:73ea)
 	jp Func_d33f5
 
@@ -9505,7 +9254,7 @@ Func_d33f5: ; d33f5 (34:73f5)
 	loadpeople $2, Data_d32ca
 Func_d340c: ; d340c (34:740c)
 	loadpeople $8, Data_d325a
-	playmusic $c
+	playmusic SONG_CENTER
 	call Func_8001c_34
 	ret
 
@@ -9549,7 +9298,7 @@ Func_d344e: ; d344e (34:744e)
 	jp nz, Func_d34b0
 	push hl
 	ld a, l
-	call Func_8044b_34
+	call FacePlayer_20
 	pop hl
 	ld a, l
 	cp $7
@@ -9708,7 +9457,7 @@ Func_d3718: ; d3718 (34:7718)
 	ld l, $a
 Func_d371a: ; d371a (34:771a)
 	push hl
-	call UnloadWarps_34
+	call AllocateSpaceForWarps_34
 	pop hl
 	push hl
 	ld h, $0
@@ -9725,7 +9474,7 @@ Func_d371a: ; d371a (34:771a)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-	playmusic $9
+	playmusic SONG_TOWER
 	call Func_8001c_34
 	pop hl
 	ld a, l
@@ -9814,7 +9563,7 @@ Func_d37e8: ; d37e8 (34:77e8)
 	ld a, [wBackupMapGroup]
 	cp $2
 	jp nz, Func_d381e
-	call UnloadWarps_34
+	call AllocateSpaceForWarps_34
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
@@ -9832,7 +9581,7 @@ Func_d37e8: ; d37e8 (34:77e8)
 	ld e, $1
 	call LoadWarps_34
 	loadpeople $2, Data_d365e
-	playmusic $11
+	playmusic SONG_TOWN3
 	call Func_8001c_34
 	jp Func_d385a
 
@@ -9849,7 +9598,7 @@ Func_d382b: ; d382b (34:782b)
 	ld l, a
 Func_d3831: ; d3831 (34:7831)
 	push hl
-	call UnloadWarps_34
+	call AllocateSpaceForWarps_34
 	pop hl
 	ld h, $0
 	ld e, l
@@ -9866,7 +9615,7 @@ Func_d3831: ; d3831 (34:7831)
 	ld e, $1
 	call LoadWarps_34
 	loadpeople $2, Data_d365e
-	playmusic $b
+	playmusic SONG_SHOP
 	call Func_8001c_34
 Func_d385a: ; d385a (34:785a)
 	ret
@@ -9875,8 +9624,7 @@ Func_d385b:
 	ld a, e
 	or a
 	jp nz, Func_d38ae
-	xor a
-	call Func_8044b_34
+	face_player 0
 	call Func_80275_34
 	ld l, a
 	push hl
@@ -9888,7 +9636,7 @@ Func_d385b:
 	push hl
 	ld a, l
 	ld [wc7de], a
-	call UnloadWarps_34
+	call AllocateSpaceForWarps_34
 	pop hl
 	ld h, $0
 	ld e, l
@@ -9908,7 +9656,7 @@ Func_d385b:
 
 Func_d3895: ; d3895 (34:7895)
 	push hl
-	call UnloadWarps_34
+	call AllocateSpaceForWarps_34
 	pop hl
 	ld h, $0
 	ld e, l
@@ -9975,7 +9723,7 @@ Func_d3977: ; d3977 (34:7977)
 	jp Func_d39a5
 
 Func_d3998: ; d3998 (34:7998)
-	playmusic $10
+	playmusic SONG_PUNCH_MINIGAME
 	ld a, $1
 	call Func_80cc6_34
 	call Func_8001c_34
@@ -9985,17 +9733,11 @@ Func_d39a5: ; d39a5 (34:79a5)
 Func_d39a6: ; d39a6 (34:79a6)
 	call Func_80ea2_34
 	playsfx $64
-	ld c, $3
-	ld e, $1
-	ld a, $13
-	call LoadEmote_34
+	loademote $3, $1, $13
 	call Func_80f54_34
 	call Func_801d5_34
 	call Func_8018b_34
-	ld c, $2
-	ld e, $1
-	ld a, $13
-	call LoadEmote_34
+	loademote $2, $1, $13
 	playsfx $64
 	ld a, $1
 	ld [wc78d + 1], a
@@ -10005,10 +9747,7 @@ Func_d39a6: ; d39a6 (34:79a6)
 	call Func_80f54_34
 	call Func_801d5_34
 	call Func_8018b_34
-	ld c, $2
-	ld e, $1
-	ld a, $13
-	call LoadEmote_34
+	loademote $2, $1, $13
 	playsfx $64
 	ld a, $2
 	ld [wc78d + 1], a
@@ -10018,10 +9757,7 @@ Func_d39a6: ; d39a6 (34:79a6)
 	call Func_80f54_34
 	call Func_801d5_34
 	call Func_8018b_34
-	ld c, $2
-	ld e, $1
-	ld a, $13
-	call LoadEmote_34
+	loademote $2, $1, $13
 	playsfx $64
 	ld a, $3
 	ld [wc78d + 1], a
@@ -10031,10 +9767,7 @@ Func_d39a6: ; d39a6 (34:79a6)
 	call Func_80f54_34
 	call Func_801d5_34
 	call Func_8018b_34
-	ld c, $2
-	ld e, $1
-	ld a, $13
-	call LoadEmote_34
+	loademote $2, $1, $13
 	playsfx $64
 	ld a, $4
 	ld [wc78d + 1], a
@@ -10291,10 +10024,7 @@ Func_d3cb1: ; d3cb1 (34:7cb1)
 	ret
 
 Func_d3cb2: ; d3cb2 (34:7cb2)
-	ld c, $1
-	ld e, $2
-	ld a, $2b
-	call LoadEmote_34
+	loademote $1, $2, $2b
 	ld e, $e
 	ld a, $7
 	call ShowEmote_34
@@ -10302,9 +10032,7 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	script_sleep $3c
 	playsfx $43
 	call Func_801d5_34
-	ld e, $1
-	ld hl, $f1
-	call EventFlagAction_34
+	setevent $f1
 	ld l, $9
 	push hl
 	ld c, $9
@@ -10315,16 +10043,11 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	ret
 
 Func_d3ceb: ; d3ceb (34:7ceb)
-	ld e, $0
-	ld hl, $f9
-	call EventFlagAction_34
-	playmusic $e
+	resetevent $f9
+	playmusic SONG_JUMP_MINIGAME
 	xor a
 	call Func_80653_34
-	ld c, $1
-	ld e, $6
-	ld a, $26
-	call LoadEmote_34
+	loademote $1, $6, $26
 	call Func_8001c_34
 	call Func_801d5_34
 	ld a, $1

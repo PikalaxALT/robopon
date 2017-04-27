@@ -2,11 +2,7 @@ SECTION "Bank 0a", ROMX, BANK [$a]
 BlockDataHeaders:: ; 28000
 blockdataheader: MACRO
 	dbw BANK(\1) - BANK(BlockDataHeaders), \1
-IF _NARG == 2
 	db \2_WIDTH, \2_HEIGHT ; dimensions
-ELSE
-	db \2, \3
-ENDC
 	ENDM
 
 	blockdataheader BlockData_28424, MAP_00_00
