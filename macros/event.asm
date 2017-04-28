@@ -3,34 +3,29 @@ ldtext_tree_pointer: MACRO
 	ENDM
 hltext_tree_pointer EQUS "ldtext_tree_pointer hl,"
 
-scriptcall: MACRO
-printt "\1_{script_bank}\n"
-	call \1_{script_bank}
-	ENDM
-
 writetext: MACRO
 	hltext_tree_pointer \1
-	scriptcall PrintTextStandard
+	call PrintTextStandard_20
 	ENDM
 
 writenpctext: MACRO
 	hltext_tree_pointer \1
-	scriptcall PrintTextWithNPCName
+	call PrintTextWithNPCName_20
 	ENDM
 
 writetext_yesorno: MACRO
 	hltext_tree_pointer \1
-	scriptcall PrintTextWithYesNoBox
+	call PrintTextWithYesNoBox_20
 	ENDM
 
 writenpctext_yesorno: MACRO
 	hltext_tree_pointer \1
-	scriptcall PrintTextWithNPCNameAndYesNoBox
+	call PrintTextWithNPCNameAndYesNoBox_20
 	ENDM
 
 script_sleep: MACRO
 	ld hl, \1
-	scriptcall ScriptSleep
+	call ScriptSleep_20
 	ENDM
 
 playmusic: MACRO
@@ -39,7 +34,7 @@ IF \1 == 0
 ELSE
 	ld a, \1
 ENDC
-	scriptcall PlayMusic
+	call PlayMusic_20
 	ENDM
 
 playsfx: MACRO
@@ -48,66 +43,66 @@ IF \1 == 0
 ELSE
 	ld a, \1
 ENDC
-	scriptcall PlaySFX
+	call PlaySFX_20
 	ENDM
 
 checkevent: MACRO
 	ld hl, \1
-	scriptcall CheckEventFlag
+	call CheckEventFlag_20
 	ENDM
 
 setevent: MACRO
 	ld e, 1
 	ld hl, \1
-	scriptcall EventFlagAction
+	call EventFlagAction_20
 	ENDM
 
 resetevent: MACRO
 	ld e, 0
 	ld hl, \1
-	scriptcall EventFlagAction
+	call EventFlagAction_20
 	ENDM
 
 startbattle: MACRO
 	ld de, \1
 	ld hl, \2
-	scriptcall ScriptedBattle
+	call ScriptedBattle_20
 	ENDM
 
 loadwilds: MACRO
 	ld e, \1
 	ld hl, \2
-	scriptcall LoadEncounters
+	call LoadEncounters_20
 	ENDM
 
 loadwarps: MACRO
 	ld e, \1
 	ld hl, \2
-	scriptcall LoadWarps
+	call LoadWarps_20
 	ENDM
 
 loadpeople: MACRO
 	ld e, \1
 	ld hl, \2
-	scriptcall LoadMapObjects
+	call LoadMapObjects_20
 	ENDM
 
 applymovementdata: MACRO
 	ld c, \1
 	ld de, \2
 	ld a, BANK(\2)
-	scriptcall ApplyMovementData
+	call ApplyMovementData_20
 	ENDM
 
 loademote: MACRO
 	ld c, \1
 	ld e, \2
 	ld a, \3
-	scriptcall LoadEmote
+	call LoadEmote_20
 	ENDM
 
 heal: MACRO
-	scriptcall RepairRobots
+	call RepairRobots_20
 	ENDM
 
 face_player: MACRO
@@ -116,11 +111,11 @@ IF \1 == 0
 ELSE
 	ld a, \1
 ENDC
-	scriptcall FacePlayer
+	call FacePlayer_20
 	ENDM
 
 sprite_face: MACRO
 	ld e, \1
 	ld a, \2
-	scriptcall SpriteFace
+	call SpriteFace_20
 	ENDM
