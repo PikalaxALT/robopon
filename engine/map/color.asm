@@ -1,4 +1,4 @@
-Data_c7162:
+MapPalettes0:
 	RGB 31, 31, 31
 	RGB 29, 22, 14
 	RGB 24, 07, 07
@@ -39,7 +39,7 @@ Data_c7162:
 	RGB 18, 10, 00
 	RGB 00, 00, 00
 
-Data_c71a2: ; c71a2
+MapPalettes1: ; c71a2
 	RGB 31, 31, 31
 	RGB 29, 22, 14
 	RGB 24, 07, 07
@@ -80,7 +80,7 @@ Data_c71a2: ; c71a2
 	RGB 00, 00, 31
 	RGB 00, 00, 00
 
-Data_c71e2: ; c71e2
+MapPalettes2: ; c71e2
 	RGB 31, 31, 31
 	RGB 29, 22, 14
 	RGB 24, 07, 07
@@ -121,7 +121,7 @@ Data_c71e2: ; c71e2
 	RGB 00, 00, 31
 	RGB 00, 00, 00
 
-Data_c7222: ; c7222
+MapPalettes3: ; c7222
 	RGB 31, 31, 31
 	RGB 29, 22, 14
 	RGB 24, 07, 07
@@ -162,7 +162,7 @@ Data_c7222: ; c7222
 	RGB 31, 10, 00
 	RGB 00, 00, 00
 
-Data_c7262: ; c7262
+MapPalettes4: ; c7262
 	RGB 31, 31, 31
 	RGB 29, 22, 14
 	RGB 24, 07, 07
@@ -203,7 +203,7 @@ Data_c7262: ; c7262
 	RGB 31, 10, 00
 	RGB 00, 00, 00
 
-Data_c72a2: ; c72a2
+MapPalettes5: ; c72a2
 	RGB 31, 31, 31
 	RGB 29, 22, 14
 	RGB 24, 07, 07
@@ -244,7 +244,7 @@ Data_c72a2: ; c72a2
 	RGB 31, 10, 00
 	RGB 00, 00, 00
 
-Data_c72e2: ; c72e2
+MapPalettes6: ; c72e2
 	RGB 31, 31, 31
 	RGB 29, 22, 14
 	RGB 24, 07, 07
@@ -285,7 +285,7 @@ Data_c72e2: ; c72e2
 	RGB 11, 05, 05
 	RGB 00, 00, 00
 
-Data_37322: ; 37322 unreferenced
+MapPalettes7: ; 37322 unreferenced
 	RGB 31, 31, 31
 	RGB 29, 22, 14
 	RGB 24, 07, 07
@@ -326,135 +326,139 @@ Data_37322: ; 37322 unreferenced
 	RGB 22, 12, 10
 	RGB 00, 00, 00
 
+macro_c7362: MACRO
+	map \1
+	db \2
+	ENDM
+
 Data_c7362:
-; map group, map number, palette idx
-	db $00, $00, $02
-	db $06, $00, $02
-	db $07, $00, $01
-	db $16, $00, $01
-	db $18, $00, $01
-	db $1d, $00, $02
-	db $01, $01, $06
-	db $09, $02, $00
-	db $09, $03, $00
-	db $03, $0a, $00
-	db $03, $0b, $00
-	db $03, $0c, $00
-	db $03, $0d, $00
-	db $03, $0e, $00
-	db $03, $0f, $00
-	db $04, $01, $00
-	db $05, $14, $00
-	db $05, $15, $00
-	db $05, $1e, $00
-	db $05, $1f, $00
-	db $05, $20, $00
-	db $05, $21, $00
-	db $05, $22, $00
-	db $05, $23, $00
-	db $05, $24, $00
-	db $08, $01, $03
-	db $09, $01, $03
-	db $13, $0b, $03
-	db $13, $1e, $03
-	db $13, $1f, $03
-	db $13, $20, $03
-	db $13, $21, $03
-	db $13, $25, $03
-	db $13, $26, $03
-	db $13, $27, $03
-	db $15, $0a, $03
-	db $15, $0b, $03
-	db $15, $0c, $03
-	db $15, $0d, $03
-	db $15, $0e, $03
-	db $15, $14, $03
-	db $15, $15, $03
-	db $15, $16, $03
-	db $15, $17, $03
-	db $15, $18, $03
-	db $15, $19, $03
-	db $1e, $00, $03
-	db $1e, $01, $03
-	db $1e, $02, $03
-	db $1e, $03, $03
-	db $18, $0a, $04
-	db $18, $0b, $04
-	db $18, $0c, $04
-	db $18, $0d, $04
-	db $18, $0e, $04
-	db $18, $0f, $04
-	db $18, $10, $04
-	db $18, $11, $04
-	db $18, $12, $04
-	db $18, $13, $04
-	db $18, $14, $04
-	db $18, $15, $04
-	db $18, $16, $04
-	db $12, $0a, $04
-	db $12, $0b, $04
-	db $12, $0c, $04
-	db $12, $0d, $04
-	db $12, $0e, $04
-	db $12, $0f, $04
-	db $12, $10, $04
-	db $12, $11, $04
-	db $12, $12, $04
-	db $13, $16, $00
-	db $13, $02, $00
-	db $13, $03, $00
-	db $13, $0a, $00
-	db $13, $14, $00
-	db $13, $28, $00
-	db $19, $02, $04
-	db $19, $03, $04
-	db $19, $04, $04
-	db $19, $04, $04
-	db $1e, $04, $04
-	db $1e, $05, $04
-	db $1e, $06, $04
-	db $1e, $07, $04
-	db $1e, $08, $04
-	db $1e, $09, $04
-	db $1e, $0a, $04
-	db $1e, $0b, $04
-	db $1e, $0c, $04
-	db $1e, $0d, $04
-	db $1b, $01, $05
-	db $1b, $02, $05
-	db $1b, $03, $05
-	db $1b, $04, $05
-	db $1b, $05, $05
-	db $1b, $06, $05
-	db $1b, $07, $05
-	db $1b, $08, $05
-	db $1b, $09, $05
-	db $1b, $0a, $05
-	db $1b, $0b, $05
-	db $1d, $0a, $05
-	db $1d, $0b, $05
-	db $1d, $0c, $05
-	db $1d, $0d, $05
-	db $1d, $0e, $05
-	db $1d, $14, $05
-	db $1d, $15, $05
-	db $1d, $16, $05
-	db $1d, $17, $05
-	db $1d, $18, $05
-	db $1d, $1e, $00
-	db $1d, $1f, $00
-	db $1d, $20, $00
-	db $1d, $21, $00
-	db $1d, $22, $00
+	macro_c7362 MAP_00_00, 2
+	macro_c7362 MAP_06_00, 2
+	macro_c7362 MAP_07_00, 1
+	macro_c7362 MAP_22_00, 1
+	macro_c7362 MAP_24_00, 1
+	macro_c7362 MAP_29_00, 2
+	macro_c7362 MAP_01_01, 6
+	macro_c7362 MAP_09_02, 0
+	macro_c7362 MAP_09_03, 0
+	macro_c7362 MAP_03_10, 0
+	macro_c7362 MAP_03_11, 0
+	macro_c7362 MAP_03_12, 0
+	macro_c7362 MAP_03_13, 0
+	macro_c7362 MAP_03_14, 0
+	macro_c7362 MAP_03_15, 0
+	macro_c7362 MAP_04_01, 0
+	macro_c7362 MAP_05_20, 0
+	macro_c7362 MAP_05_21, 0
+	macro_c7362 MAP_05_30, 0
+	macro_c7362 MAP_05_31, 0
+	macro_c7362 MAP_05_32, 0
+	macro_c7362 MAP_05_33, 0
+	macro_c7362 MAP_05_34, 0
+	macro_c7362 MAP_05_35, 0
+	macro_c7362 MAP_05_36, 0
+	macro_c7362 MAP_08_01, 3
+	macro_c7362 MAP_09_01, 3
+	macro_c7362 MAP_19_11, 3
+	macro_c7362 MAP_19_30, 3
+	macro_c7362 MAP_19_31, 3
+	macro_c7362 MAP_19_32, 3
+	macro_c7362 MAP_19_33, 3
+	macro_c7362 MAP_19_37, 3
+	macro_c7362 MAP_19_38, 3
+	macro_c7362 MAP_19_39, 3
+	macro_c7362 MAP_21_10, 3
+	macro_c7362 MAP_21_11, 3
+	macro_c7362 MAP_21_12, 3
+	macro_c7362 MAP_21_13, 3
+	macro_c7362 MAP_21_14, 3
+	macro_c7362 MAP_21_20, 3
+	macro_c7362 MAP_21_21, 3
+	macro_c7362 MAP_21_22, 3
+	macro_c7362 MAP_21_23, 3
+	macro_c7362 MAP_21_24, 3
+	macro_c7362 MAP_21_25, 3
+	macro_c7362 MAP_30_00, 3
+	macro_c7362 MAP_30_01, 3
+	macro_c7362 MAP_30_02, 3
+	macro_c7362 MAP_30_03, 3
+	macro_c7362 MAP_24_10, 4
+	macro_c7362 MAP_24_11, 4
+	macro_c7362 MAP_24_12, 4
+	macro_c7362 MAP_24_13, 4
+	macro_c7362 MAP_24_14, 4
+	macro_c7362 MAP_24_15, 4
+	macro_c7362 MAP_24_16, 4
+	macro_c7362 MAP_24_17, 4
+	macro_c7362 MAP_24_18, 4
+	macro_c7362 MAP_24_19, 4
+	macro_c7362 MAP_24_20, 4
+	macro_c7362 MAP_24_21, 4
+	macro_c7362 MAP_24_22, 4
+	macro_c7362 MAP_18_10, 4
+	macro_c7362 MAP_18_11, 4
+	macro_c7362 MAP_18_12, 4
+	macro_c7362 MAP_18_13, 4
+	macro_c7362 MAP_18_14, 4
+	macro_c7362 MAP_18_15, 4
+	macro_c7362 MAP_18_16, 4
+	macro_c7362 MAP_18_17, 4
+	macro_c7362 MAP_18_18, 4
+	macro_c7362 MAP_19_22, 0
+	macro_c7362 MAP_19_02, 0
+	macro_c7362 MAP_19_03, 0
+	macro_c7362 MAP_19_10, 0
+	macro_c7362 MAP_19_20, 0
+	macro_c7362 MAP_19_40, 0
+	macro_c7362 MAP_25_02, 4
+	macro_c7362 MAP_25_03, 4
+	macro_c7362 MAP_25_04, 4
+	macro_c7362 MAP_25_04, 4
+	macro_c7362 MAP_30_04, 4
+	macro_c7362 MAP_30_05, 4
+	macro_c7362 MAP_30_06, 4
+	macro_c7362 MAP_30_07, 4
+	macro_c7362 MAP_30_08, 4
+	macro_c7362 MAP_30_09, 4
+	macro_c7362 MAP_30_10, 4
+	macro_c7362 MAP_30_11, 4
+	macro_c7362 MAP_30_12, 4
+	macro_c7362 MAP_30_13, 4
+	macro_c7362 MAP_27_01, 5
+	macro_c7362 MAP_27_02, 5
+	macro_c7362 MAP_27_03, 5
+	macro_c7362 MAP_27_04, 5
+	macro_c7362 MAP_27_05, 5
+	macro_c7362 MAP_27_06, 5
+	macro_c7362 MAP_27_07, 5
+	macro_c7362 MAP_27_08, 5
+	macro_c7362 MAP_27_09, 5
+	macro_c7362 MAP_27_10, 5
+	macro_c7362 MAP_27_11, 5
+	macro_c7362 MAP_29_10, 5
+	macro_c7362 MAP_29_11, 5
+	macro_c7362 MAP_29_12, 5
+	macro_c7362 MAP_29_13, 5
+	macro_c7362 MAP_29_14, 5
+	macro_c7362 MAP_29_20, 5
+	macro_c7362 MAP_29_21, 5
+	macro_c7362 MAP_29_22, 5
+	macro_c7362 MAP_29_23, 5
+	macro_c7362 MAP_29_24, 5
+	macro_c7362 MAP_29_30, 0
+	macro_c7362 MAP_29_31, 0
+	macro_c7362 MAP_29_32, 0
+	macro_c7362 MAP_29_33, 0
+	macro_c7362 MAP_29_34, 0
 Data_c7362End
 
 GetMapPalettePointer:
 	push bc
 	ld bc, Data_c7362
 	ld hl, sp+$0
-	ld [hl], $0
+	ld [hl], $0 ; default
 	ld de, $0
-.find_map_loop: ; c74cf (31:74cf)
+.find_map_loop
 	ld a, e
 	sub low(Data_c7362End - Data_c7362)
 	ld a, d
@@ -479,15 +483,15 @@ GetMapPalettePointer:
 	ld [hl], a
 	jp .got_map
 
-.next_map: ; c74f5 (31:74f5)
+.next_map
 	inc bc
 	inc bc
 	inc bc
 	inc de
 	jp .find_map_loop
 
-.got_map: ; c74fc (31:74fc)
-	ld de, Data_c7162
+.got_map
+	ld de, MapPalettes0
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $6
@@ -504,31 +508,31 @@ GetMapPalettePointer:
 	jp z, Func_c752a
 	or a
 	jp nz, Func_c754b
-	ld de, Data_c7162
+	ld de, MapPalettes0
 	jp Func_c754b
 
 Func_c752a: ; c752a (31:752a)
-	ld de, Data_c71a2
+	ld de, MapPalettes1
 	jp Func_c754b
 
 Func_c7530: ; c7530 (31:7530)
-	ld de, Data_c71e2
+	ld de, MapPalettes2
 	jp Func_c754b
 
 Func_c7536: ; c7536 (31:7536)
-	ld de, Data_c7222
+	ld de, MapPalettes3
 	jp Func_c754b
 
 Func_c753c: ; c753c (31:753c)
-	ld de, Data_c7262
+	ld de, MapPalettes4
 	jp Func_c754b
 
 Func_c7542: ; c7542 (31:7542)
-	ld de, Data_c72a2
+	ld de, MapPalettes5
 	jp Func_c754b
 
 Func_c7548: ; c7548 (31:7548)
-	ld de, Data_c72e2
+	ld de, MapPalettes6
 Func_c754b: ; c754b (31:754b)
 	reg16swap de, hl
 	pop bc
@@ -539,11 +543,13 @@ MapFadeOutCGB: ; c7551 (31:7551)
 	push bc
 	push bc
 	push bc
+
 	push de
 	call GetMapPalettePointer
 	ld c, l
 	ld b, h
 	pop de
+
 	ld hl, sp+$7
 	ld a, [hl]
 	or a
@@ -860,11 +866,13 @@ MapFadeInCGB: ; c7759 (31:7759)
 	push bc
 	push bc
 	push bc
+
 	push de
 	call GetMapPalettePointer
 	ld c, l
 	ld b, h
 	pop de
+
 	ld hl, sp+$7
 	ld a, [hl]
 	or a

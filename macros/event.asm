@@ -5,27 +5,27 @@ hltext_tree_pointer EQUS "ldtext_tree_pointer hl,"
 
 writetext: MACRO
 	hltext_tree_pointer \1
-	call PrintTextStandard_20
+	scall PrintTextStandard
 	ENDM
 
 writenpctext: MACRO
 	hltext_tree_pointer \1
-	call PrintTextWithNPCName_20
+	scall PrintTextWithNPCName
 	ENDM
 
 writetext_yesorno: MACRO
 	hltext_tree_pointer \1
-	call PrintTextWithYesNoBox_20
+	scall PrintTextWithYesNoBox
 	ENDM
 
 writenpctext_yesorno: MACRO
 	hltext_tree_pointer \1
-	call PrintTextWithNPCNameAndYesNoBox_20
+	scall PrintTextWithNPCNameAndYesNoBox
 	ENDM
 
 script_sleep: MACRO
 	ld hl, \1
-	call ScriptSleep_20
+	scall ScriptSleep
 	ENDM
 
 playmusic: MACRO
@@ -34,7 +34,7 @@ IF \1 == 0
 ELSE
 	ld a, \1
 ENDC
-	call PlayMusic_20
+	scall PlayMusic
 	ENDM
 
 playsfx: MACRO
@@ -43,66 +43,66 @@ IF \1 == 0
 ELSE
 	ld a, \1
 ENDC
-	call PlaySFX_20
+	scall PlaySFX
 	ENDM
 
 checkevent: MACRO
 	ld hl, \1
-	call CheckEventFlag_20
+	scall CheckEventFlag
 	ENDM
 
 setevent: MACRO
 	ld e, 1
 	ld hl, \1
-	call EventFlagAction_20
+	scall EventFlagAction
 	ENDM
 
 resetevent: MACRO
 	ld e, 0
 	ld hl, \1
-	call EventFlagAction_20
+	scall EventFlagAction
 	ENDM
 
 startbattle: MACRO
 	ld de, \1
 	ld hl, \2
-	call ScriptedBattle_20
+	scall ScriptedBattle
 	ENDM
 
 loadwilds: MACRO
 	ld e, \1
 	ld hl, \2
-	call LoadEncounters_20
+	scall LoadEncounters
 	ENDM
 
 loadwarps: MACRO
 	ld e, \1
 	ld hl, \2
-	call LoadWarps_20
+	scall LoadWarps
 	ENDM
 
 loadpeople: MACRO
 	ld e, \1
 	ld hl, \2
-	call LoadMapObjects_20
+	scall LoadMapObjects
 	ENDM
 
 applymovementdata: MACRO
 	ld c, \1
 	ld de, \2
 	ld a, BANK(\2)
-	call ApplyMovementData_20
+	scall ApplyMovementData
 	ENDM
 
 loademote: MACRO
 	ld c, \1
 	ld e, \2
 	ld a, \3
-	call LoadEmote_20
+	scall LoadEmote
 	ENDM
 
 heal: MACRO
-	call RepairRobots_20
+	scall RepairRobots
 	ENDM
 
 face_player: MACRO
@@ -111,11 +111,11 @@ IF \1 == 0
 ELSE
 	ld a, \1
 ENDC
-	call FacePlayer_20
+	scall FacePlayer
 	ENDM
 
 sprite_face: MACRO
 	ld e, \1
 	ld a, \2
-	call SpriteFace_20
+	scall SpriteFace
 	ENDM

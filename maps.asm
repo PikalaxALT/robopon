@@ -6919,11 +6919,11 @@ Data_b7d89: ; b7d89
 
 Func_b7d97: ; b7d97 (2d:7d97)
 	ld c, $1
-	ld hl, Data_b7d85
+	ld de, Data_b7d85
 	ld a, $2d
 	call ApplyMovementData_2d_2
 	ld hl, $125
-	call PrintTextWithYesNoBox_2d_2
+	call PrintTextWithNPCNameAndYesNoBox_2d_2
 	or a
 	jp nz, Func_b7db4
 	ld hl, $126

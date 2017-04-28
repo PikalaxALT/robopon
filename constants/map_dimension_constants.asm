@@ -40,6 +40,7 @@ const_value set -1
 
 	groupdef
 	mapdef MAP_01_00, 28, 46 ; 1d
+	mapdef MAP_01_01, -1, -1 ; ??
 
 	groupdef
 	mapdef MAP_02_00, 24, 39 ; 1e
