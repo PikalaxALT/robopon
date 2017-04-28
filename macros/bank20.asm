@@ -92,7 +92,7 @@ Func_800b8_\1:
 	pop af
 	jp FarCall
 
-Func_800c8_\1:
+ChangeSprite_\1:
 	push af
 	push de
 	ld hl, sp+$0
@@ -117,10 +117,10 @@ Func_800c8_\1:
 	pop bc
 	ret
 
-Func_800e9_\1:
+CheckObjectsOccupyingSameTile_\1:
 	push af
 	push de
-	set_farcall_addrs_hli Func_9a39e
+	set_farcall_addrs_hli CheckObjectsOccupyingSameTile
 	pop de
 	pop af
 	jp FarCall

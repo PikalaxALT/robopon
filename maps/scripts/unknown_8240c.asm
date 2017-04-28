@@ -126,7 +126,7 @@ Func_824ca: ; 824ca (20:64ca)
 	call Func_800b8_20
 	ld e, a
 	ld a, $3
-	call Func_800c8_20
+	call ChangeSprite_20
 	writenpctext TreeBitstreamText_3f60f
 	script_sleep $1e
 	ld e, $1

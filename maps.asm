@@ -4041,7 +4041,7 @@ Func_878aa: ; 878aa (21:78aa)
 	ld e, $4
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_800e9_21
+	call CheckObjectsOccupyingSameTile_21
 	or a
 	jp z, Func_878ef
 	playsfx $2b
@@ -4085,7 +4085,7 @@ Func_87910: ; 87910 (21:7910)
 	ld e, $4
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_800e9_21
+	call CheckObjectsOccupyingSameTile_21
 	or a
 	jp z, Func_87955
 	playsfx $2b
@@ -4129,7 +4129,7 @@ Func_87976: ; 87976 (21:7976)
 	ld e, $4
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_800e9_21
+	call CheckObjectsOccupyingSameTile_21
 	or a
 	jp z, Func_879bb
 	playsfx $2b
@@ -4173,7 +4173,7 @@ Func_879dc: ; 879dc (21:79dc)
 	ld e, $4
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_800e9_21
+	call CheckObjectsOccupyingSameTile_21
 	or a
 	jp z, Func_87a21
 	playsfx $2b
@@ -4217,7 +4217,7 @@ Func_87a42: ; 87a42 (21:7a42)
 	ld e, $2
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_800e9_21
+	call CheckObjectsOccupyingSameTile_21
 	or a
 	jp z, Func_87a71
 	playsfx $2b
@@ -4255,7 +4255,7 @@ Func_87a92: ; 87a92 (21:7a92)
 	ld e, $2
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_800e9_21
+	call CheckObjectsOccupyingSameTile_21
 	or a
 	jp z, Func_87ac1
 	playsfx $2b
@@ -5628,7 +5628,6 @@ Func_9a322: ; 9a322 (26:6322)
 	ld hl, sp+$7
 	ld [hl], e
 	ld c, $5
-.asm_9a32f
 	ld hl, sp+$1
 	reg16swap de, hl
 	ld hl, $ff04
@@ -5685,8 +5684,94 @@ Func_9a391: ; 9a391 (26:6391)
 	pop bc
 	ret
 
-Func_9a39e: ; 9a39e
-	dr $9a39e, $9a41d
+CheckObjectsOccupyingSameTile: ; 9a39e (26:639e)
+	push af
+	push de
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	reg16swap de, hl
+	read_hl_from wObjectStructPointer
+	add hl, de
+	inc hl
+	inc hl
+	ld a, [hl]
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	reg16swap de, hl
+	read_hl_from wObjectStructPointer
+	add hl, de
+	inc hl
+	inc hl
+	cp [hl]
+	jp nz, Func_9a419
+	ld hl, sp+$3
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	reg16swap de, hl
+	read_hl_from wObjectStructPointer
+	add hl, de
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	ld hl, sp+$0
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	reg16swap de, hl
+	read_hl_from wObjectStructPointer
+	add hl, de
+	inc hl
+	inc hl
+	inc hl
+	cp [hl]
+	jp nz, Func_9a419
+	ld a, $1
+	jp Func_9a41a
+
+Func_9a419: ; 9a419 (26:6419)
+	xor a
+Func_9a41a: ; 9a41a (26:641a)
+	pop bc
+	pop bc
+	ret
 
 Func_9a41d:: ; 9a41d
 	dr $9a41d, $9a5f6
@@ -6500,16 +6585,418 @@ Func_b5e4a: ; b5e4a
 	dr $b5e4a, $b5fbe
 
 Func_b5fbe: ; b5fbe
-	dr $b5fbe, $b790a
+	dr $b5fbe, $b6757
+
+SECTION "Bank 2d, 2", ROMX [$6757], BANK [$2d]
+	lib_bank_20 2d_2
+
+Data_b780b:
+	dr $b780b, $b790a
 
 Func_b790a: ; b790a
 	dr $b790a, $b79f8
 
 Func_b79f8: ; b79f8
-	dr $b79f8, $b7a64
+	dr $b79f8, $b7a13
 
-Func_b7a64: ; b7a64
-	dr $b7a64, $b7e47
+Data_b7a13: ; b7a13
+	dr $b7a13, $b7a1e
+
+Data_b7a1e: ; b7a1e
+	dr $b7a1e, $b7a64
+
+Func_b7a64: ; b7a64 (2d:7a64)
+	ld e, $1
+	ld hl, Data_b7a13
+	call LoadWarps_2d_2
+	ld e, $5
+	ld hl, Data_b7a1e
+	call LoadMapObjects_2d_2
+	ld a, $13
+	call PlayMusic_2d_2
+	ld e, $0
+	ld a, $2
+	call SetPersonVisibilityState_2d_2
+	ld e, $0
+	ld a, $3
+	call SetPersonVisibilityState_2d_2
+	ld e, $0
+	ld a, $4
+	call SetPersonVisibilityState_2d_2
+	ld hl, $1b
+	call CheckEventFlag_2d_2
+	or a
+	jp nz, Func_b7abb
+	ld e, $0
+	ld a, $2
+	call SetPersonVisibilityState_2d_2
+	ld e, $0
+	ld a, $3
+	call SetPersonVisibilityState_2d_2
+	ld e, $0
+	ld a, $4
+	call SetPersonVisibilityState_2d_2
+	ld a, $13
+	call PlayMusic_2d_2
+	call Func_8001c_2d_2
+	call Func_b7b62
+	jp Func_b7ae2
+
+Func_b7abb: ; b7abb (2d:7abb)
+	ld hl, $1c
+	call CheckEventFlag_2d_2
+	or a
+	jp nz, Func_b7ad3
+	ld a, $13
+	call PlayMusic_2d_2
+	call Func_8001c_2d_2
+	call Func_b7d97
+	jp Func_b7ae2
+
+Func_b7ad3: ; b7ad3 (2d:7ad3)
+	xor a
+	call PlayerFace_2d_2
+	ld a, $13
+	call PlayMusic_2d_2
+	call Func_8001c_2d_2
+	call Func_b7df7
+Func_b7ae2: ; b7ae2 (2d:7ae2)
+	ret
+
+Data_b7ae3:
+	dr $b7ae3, $b7b0c
+
+Data_b7b0c: ; b7b0c
+	dr $b7b0c, $b7b35
+
+Data_b7b35: ; b7b35
+	dr $b7b35, $b7b5e
+
+Data_b7b5e: ; b7b5e
+	dr $b7b5e, $b7b62
+
+Func_b7b62: ; b7b62 (2d:7b62)
+	ld c, $1
+	ld de, Data_b7b5e
+	ld a, $2d
+	call ApplyMovementData_2d_2
+	ld hl, $123
+	call PrintTextWithNPCName_2d_2
+	ld a, $5a
+	call PlaySFX_2d_2
+	ld e, $1
+	ld a, $2
+	call SetPersonVisibilityState_2d_2
+	ld e, $2
+	ld a, $2
+	call SpriteFace_2d_2
+	ld e, $3
+	ld a, $2
+	call SpriteFace_2d_2
+	ld e, $0
+	ld a, $2
+	call SpriteFace_2d_2
+	ld e, $1
+	ld a, $2
+	call SpriteFace_2d_2
+	ld e, $2
+	ld a, $2
+	call SpriteFace_2d_2
+	ld e, $3
+	ld a, $2
+	call SpriteFace_2d_2
+	ld e, $0
+	ld a, $2
+	call SpriteFace_2d_2
+	ld e, $1
+	ld a, $2
+	call SpriteFace_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	ld a, $5b
+	call PlaySFX_2d_2
+	ld e, $1
+	ld a, $3
+	call SetPersonVisibilityState_2d_2
+	ld e, $1
+	ld a, $3
+	call SpriteFace_2d_2
+	ld e, $2
+	ld a, $3
+	call SpriteFace_2d_2
+	ld e, $3
+	ld a, $3
+	call SpriteFace_2d_2
+	ld e, $0
+	ld a, $3
+	call SpriteFace_2d_2
+	ld e, $1
+	ld a, $3
+	call SpriteFace_2d_2
+	ld e, $2
+	ld a, $3
+	call SpriteFace_2d_2
+	ld e, $3
+	ld a, $3
+	call SpriteFace_2d_2
+	ld e, $0
+	ld a, $3
+	call SpriteFace_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	ld a, $66
+	call PlaySFX_2d_2
+	ld e, $1
+	ld a, $4
+	call SetPersonVisibilityState_2d_2
+	ld e, $0
+	ld a, $4
+	call SpriteFace_2d_2
+	ld e, $1
+	ld a, $4
+	call SpriteFace_2d_2
+	ld e, $2
+	ld a, $4
+	call SpriteFace_2d_2
+	ld e, $3
+	ld a, $4
+	call SpriteFace_2d_2
+	ld e, $0
+	ld a, $4
+	call SpriteFace_2d_2
+	ld e, $1
+	ld a, $4
+	call SpriteFace_2d_2
+	ld e, $2
+	ld a, $4
+	call SpriteFace_2d_2
+	ld e, $3
+	ld a, $4
+	call SpriteFace_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	ld a, $3
+	call PlayerFace_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	ld de, Data_b7d76
+	ld hl, Data_b7ae3
+	call ScriptedBattle_2d_2
+	or a
+	jp nz, Func_b7c69
+	ret
+
+Func_b7c69: ; b7c69 (2d:7c69)
+	ld c, $1
+	ld e, $1
+	ld a, $a
+	call LoadEmote_2d_2
+	ld e, $a
+	ld a, $8
+	call ShowEmote_2d_2
+	ld a, $38
+	call PlaySFX_2d_2
+	call Func_801d5_2d_2
+	call Func_8018b_2d_2
+	ld e, $0
+	ld a, $2
+	call SetPersonVisibilityState_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	ld a, $2
+	call PlayerFace_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	ld de, Data_b7d7b
+	ld hl, Data_b7b0c
+	call ScriptedBattle_2d_2
+	or a
+	jp nz, Func_b7caa
+	ret
+
+Func_b7caa: ; b7caa (2d:7caa)
+	ld c, $1
+	ld e, $1
+	ld a, $a
+	call LoadEmote_2d_2
+	ld e, $b
+	ld a, $9
+	call ShowEmote_2d_2
+	ld a, $38
+	call PlaySFX_2d_2
+	call Func_801d5_2d_2
+	call Func_8018b_2d_2
+	ld e, $0
+	ld a, $3
+	call SetPersonVisibilityState_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	ld a, $1
+	call PlayerFace_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	ld de, Data_b7d80
+	ld hl, Data_b7b35
+	call ScriptedBattle_2d_2
+	or a
+	jp nz, Func_b7ceb
+	ret
+
+Func_b7ceb: ; b7ceb (2d:7ceb)
+	ld c, $1
+	ld e, $1
+	ld a, $a
+	call LoadEmote_2d_2
+	ld e, $a
+	ld a, $a
+	call ShowEmote_2d_2
+	ld a, $38
+	call PlaySFX_2d_2
+	call Func_801d5_2d_2
+	call Func_8018b_2d_2
+	ld e, $0
+	ld a, $4
+	call SetPersonVisibilityState_2d_2
+	ld hl, $1e
+	call ScriptSleep_2d_2
+	xor a
+	call PlayerFace_2d_2
+	ld hl, $3c
+	call ScriptSleep_2d_2
+	ld hl, $124
+	call PrintTextWithNPCName_2d_2
+	ld c, $1
+	ld e, $1
+	ld a, $5
+	call LoadEmote_2d_2
+	ld e, $a
+	ld a, $9
+	call ShowEmote_2d_2
+	ld a, $28
+	call PlaySFX_2d_2
+	call Func_801d5_2d_2
+	call Func_8018b_2d_2
+	ld a, $35
+	call PlaySFX_2d_2
+	ld c, $1
+	ld e, $1
+	ld a, $1b
+	call LoadEmote_2d_2
+	ld a, $37
+	call PlaySFX_2d_2
+	xor a
+	call Func_80653_2d_2
+	call Func_801d5_2d_2
+	call Func_8018b_2d_2
+	ld e, $1
+	ld hl, $1b
+	call EventFlagAction_2d_2
+	ld a, $f
+	call Func_80c94_2d_2
+	ld l, $4
+	push hl
+	ld c, $7
+	ld e, $0
+	ld a, $1f
+	call Func_80dff_2d_2
+	pop bc
+	ret
+
+Data_b7d76: ; b7d76
+	dr $b7d76, $b7d7b
+
+Data_b7d7b: ; b7d7b
+	dr $b7d7b, $b7d80
+
+Data_b7d80: ; b7d80
+	dr $b7d80, $b7d85
+
+Data_b7d85: ; b7d85
+	dr $b7d85, $b7d89
+
+Data_b7d89: ; b7d89
+	dr $b7d89, $b7d97
+
+Func_b7d97: ; b7d97 (2d:7d97)
+	ld c, $1
+	ld de, Data_b7d85
+	ld a, $2d
+	call ApplyMovementData_2d_2
+	ld hl, $125
+	call PrintTextWithYesNoBox_2d_2
+	or a
+	jp nz, Func_b7db4
+	ld hl, $126
+	call PrintTextWithNPCName_2d_2
+	jp Func_b7dba
+
+Func_b7db4: ; b7db4 (2d:7db4)
+	ld hl, $127
+	call PrintTextWithNPCName_2d_2
+Func_b7dba: ; b7dba (2d:7dba)
+	ld e, $1
+	ld hl, $1c
+	call EventFlagAction_2d_2
+	ld a, $a
+	call FadeOutAudio_2d_2
+	xor a
+	call PlayMusic_2d_2
+	xor a
+	call FadeInAudio_2d_2
+	call Func_80ea2_2d_2
+	ld a, $65
+	call PlaySFX_2d_2
+	ld c, $1
+	ld de, Data_b7d89
+	ld a, $2d
+	call ApplyMovementData_2d_2
+	ld a, $65
+	call PlaySFX_2d_2
+	call Func_80eb1_2d_2
+	ld l, $f
+	push hl
+	ld c, $7
+	ld e, $a
+	ld a, $20
+	call Func_80dff_2d_2
+	pop bc
+	ret
+
+Func_b7df7: ; b7df7 (2d:7df7)
+	call Func_80eb1_2d_2
+	ld hl, $3c
+	call ScriptSleep_2d_2
+	ld hl, $129
+	call PrintTextWithNPCName_2d_2
+	ld c, $1
+	ld e, $1
+	ld a, $5
+	call LoadEmote_2d_2
+	ld e, $a
+	ld a, $9
+	call ShowEmote_2d_2
+	ld a, $28
+	call PlaySFX_2d_2
+	call Func_801d5_2d_2
+	call Func_8018b_2d_2
+	xor a
+	call Func_80653_2d_2
+	ld c, $1
+	ld e, $1
+	ld a, $1b
+	call LoadEmote_2d_2
+	ld a, $37
+	call PlaySFX_2d_2
+	call Func_801d5_2d_2
+	call Func_8018b_2d_2
+	ld l, $b
+	push hl
+	ld c, $9
+	ld e, $4
+	ld a, $1e
+	call Func_80dff_2d_2
+	pop bc
+	ret
 
 SECTION "Bank 2e", ROMX, BANK [$2e]
 	lib_bank_20 2e
