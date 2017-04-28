@@ -1300,9 +1300,7 @@ Func_851fe: ; 851fe (21:51fe)
 Func_85212: ; 85212 (21:5212)
 	loadpeople $5, Data_850fa
 	playmusic SONG_TOWN1
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_21
+	hideperson $2
 	checkevent $5
 	cp $1
 	jp nz, Func_8523a
@@ -1320,9 +1318,7 @@ Func_85242: ; 85242 (21:5242)
 	checkevent $6
 	cp $1
 	jp nz, Func_85257
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_21
+	hideperson $1
 	jp Func_85260
 
 Func_85257: ; 85257 (21:5257)
@@ -1448,9 +1444,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld a, $2
 	call Func_80688_21
 	call WaitMovement_21
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_21
+	hideperson $2
 	ld bc, Data_85280
 	ld e, BANK(Data_85280)
 	xor a
@@ -1567,9 +1561,7 @@ Func_85540: ; 85540 (21:5540)
 	ld a, $1
 	call Func_80688_21
 	call WaitMovement_21
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_21
+	hideperson $1
 	setevent $6
 	checkevent $5
 	or a
@@ -1660,9 +1652,7 @@ Func_8565a: ; 8565a (21:565a)
 	ld a, $1
 	call Func_80688_21
 	call WaitMovement_21
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_21
+	hideperson $1
 	setevent $6
 	checkevent $5
 	or a
@@ -1785,9 +1775,7 @@ Func_857c4: ; 857c4 (21:57c4)
 	ld a, $1
 	call Func_80688_21
 	call WaitMovement_21
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_21
+	hideperson $1
 	setevent $6
 	jp Func_8581b
 
@@ -2024,9 +2012,7 @@ Func_85abc: ; 85abc (21:5abc)
 	cp $1
 	jp z, Func_85afc
 Func_85ada: ; 85ada (21:5ada)
-	ld e, $0
-	ld a, $4
-	call SetPersonVisibilityState_21
+	hideperson $4
 	loadpeople $1, Data_85a0f
 	checkevent $14
 	cp $1
@@ -3169,9 +3155,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld a, $2
 	call Func_80688_21
 	call WaitMovement_21
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_21
+	hideperson $2
 	xor a
 	call PlayerFace_21
 	ld bc, Data_86923
@@ -3203,12 +3187,8 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld a, $4
 	call Func_80688_21
 	call WaitMovement_21
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_21
-	ld e, $0
-	ld a, $4
-	call SetPersonVisibilityState_21
+	hideperson $3
+	hideperson $4
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
 	script_sleep $1e
@@ -3490,12 +3470,8 @@ Func_8703a: ; 8703a (21:703a)
 	ld de, Data_86cf4
 	ld a, $1
 	call Func_80150_21
-	ld e, $0
-	ld a, $8
-	call SetPersonVisibilityState_21
-	ld e, $0
-	ld a, $9
-	call SetPersonVisibilityState_21
+	hideperson $8
+	hideperson $9
 Func_8706e: ; 8706e (21:706e)
 	playmusic SONG_TOWN1
 	ld a, $1
@@ -5412,38 +5388,26 @@ Func_958c2: ; 958c2 (25:58c2)
 	call Func_9596a
 	ld hl, Func_9596a
 	call Func_80f11_25
-	ld e, $1
-	ld hl, Data_95828
-	call LoadWarps_25
+	loadwarps 1, Data_95828
 	ld e, $1
 	ld hl, Data_95833
 	call Func_80ce7_25
-	ld a, $c
-	call PlayMusic_25
-	ld hl, $f
-	call CheckEventFlag_25
+	playmusic $c
+	checkevent $f
 	or a
 	jp nz, Func_9590a
-	ld e, $4
-	ld hl, Data_95844
-	call LoadMapObjects_25
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_25
+	loadpeople 4, Data_95844
+	hideperson $1
 	call Func_8001c_25
 	call Func_959a9
-	ld e, $1
-	ld hl, $f
-	call EventFlagAction_25
+	setevent $f
 	jp Func_95957
 
 Func_9590a: ; 9590a (25:590a)
 	ld a, [wc78c]
 	cp $a
 	jp c, Func_95935
-	ld e, $5
-	ld hl, Data_9587c
-	call LoadMapObjects_25
+	loadpeople 5, Data_9587c
 	ld c, $6
 	ld e, $9
 	xor a
@@ -5451,26 +5415,18 @@ Func_9590a: ; 9590a (25:590a)
 	ld e, $2
 	xor a
 	call SpriteFace_25
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_25
+	hideperson $1
 	call Func_8001c_25
 	jp Func_95957
 
 Func_95935: ; 95935 (25:5935)
-	ld e, $5
-	ld hl, Data_9587c
-	call LoadMapObjects_25
+	loadpeople 5, Data_9587c
 	ld c, $0
 	ld e, $0
 	ld a, $1
 	call Func_80080_25
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_25
-	ld e, $0
-	ld a, $4
-	call SetPersonVisibilityState_25
+	hideperson $1
+	hideperson $4
 	call Func_8001c_25
 Func_95957: ; 95957 (25:5957)
 	ret
@@ -5494,8 +5450,7 @@ Func_9596a: ; 9596a (25:596a)
 	jp Func_95998
 
 Func_9597e: ; 9597e (25:597e)
-	ld hl, $5b
-	call CheckEventFlag_25
+	checkevent $5b
 	cp $1
 	jp nz, Func_95998
 	ld hl, Data_95958
@@ -5527,12 +5482,8 @@ Func_959a9: ; 959a9 (25:59a9)
 	ld de, Data_9599d
 	ld a, BANK(Data_9599d)
 	call MovePlayer_25
-	ld a, $31
-	call PlaySFX_25
-	ld c, $1
-	ld e, $2
-	ld a, $c
-	call LoadEmote_25
+	playsfx $31
+	loademote $1, $2, $c
 	call WaitEmote_25
 	ld hl, $1e
 	call ScriptSleep_25
@@ -5544,72 +5495,53 @@ Func_959a9: ; 959a9 (25:59a9)
 	ld e, $2
 	ld a, $1
 	call SpriteFace_25
-	ld e, $1
-	ld a, $1
-	call SetPersonVisibilityState_25
+	showperson $1
 	ld bc, Data_959a1
 	ld e, BANK(Data_959a1)
 	ld a, $1
 	call Func_80688_25
 	call WaitMovement_25
-	ld a, $31
-	call PlaySFX_25
-	ld c, $1
-	ld e, $4
-	ld a, $c
-	call LoadEmote_25
+	playsfx $31
+	loademote $1, $4, $c
 	call WaitEmote_25
 	call HideEmote_25
 	ld e, $1
 	xor a
 	call SpriteFace_25
-	ld hl, $12
-	call PrintTextWithNPCName_25
+	writenpctext TreeBitstreamText_3926c
 	ld bc, Data_959a5
 	ld e, BANK(Data_959a5)
 	ld a, $1
 	call MovePerson_25
 	call WaitMovement_25
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_25
-	ld a, $2a
-	call PlaySFX_25
+	hideperson $1
+	playsfx $2a
 	xor a
 	call PlayMusic_25
-	ld a, $19
-	call PlayMusic_25
+	playmusic $19
 	ld hl, $b4
 	call ScriptSleep_25
 	xor a
 	call PlayMusic_25
-	ld a, $c
-	call PlayMusic_25
+	playmusic $c
 IF DEF(SUN)
-	ld hl, $13
-	call PrintTextStandard_25
+	writetext TreeBitstreamText_39295
 ENDC
 IF DEF(STAR)
-	ld hl, $441
-	call PrintTextStandard_25
+	writetext TreeBitstreamText_392a8
 ENDC
 	ld a, $3
 	call PlayerFace_25
-	ld hl, $14
-	call PrintTextWithNPCName_25
-	ld a, $2a
-	call PlaySFX_25
-	ld hl, $3c0
-	call PrintTextStandard_25
+	writenpctext TreeBitstreamText_392ba
+	playsfx $2a
+	writetext TreeBitstreamText_39321
 	ld a, [wc78c]
 	cp $a
 	jp nc, Func_95a7f
-	ld hl, $63
-	call CheckEventFlag_25
+	checkevent $63
 	cp $1
 	jp nz, Func_95a7f
-	ld hl, $3c1
-	call PrintTextWithNPCName_25
+	writenpctext TreeBitstreamText_3933b
 Func_95a7f: ; 95a7f (25:5a7f)
 	push hl
 	push hl
@@ -5648,82 +5580,62 @@ Func_95ab9:
 	ld a, e
 	or a
 	jp nz, Func_95c0b
-	ld hl, $f3
-	call CheckEventFlag_25
+	checkevent $f3
 	cp $1
 	jp nz, Func_95b02
-	ld hl, $f5
-	call CheckEventFlag_25
+	checkevent $f5
 	or a
 	jp nz, Func_95b02
 	xor a
 	call FacePlayer_25
-	ld hl, $47d
-	call PrintTextWithNPCName_25
-	ld a, $2a
-	call PlaySFX_25
-	ld hl, $47f
-	call PrintTextStandard_25
+	writenpctext TreeBitstreamText_39559
+	playsfx $2a
+	writetext TreeBitstreamText_395a3
 	ld c, $0
 	ld e, $1
 	ld a, $1b
 	call Func_80d4d_25
-	ld hl, $481
-	call PrintTextWithNPCName_25
-	ld e, $1
-	ld hl, $f5
-	call EventFlagAction_25
+	writenpctext TreeBitstreamText_395b4
+	setevent $f5
 	jp Func_95c0b
 
 Func_95b02: ; 95b02 (25:5b02)
-	ld hl, $f4
-	call CheckEventFlag_25
+	checkevent $f4
 	cp $1
 	jp nz, Func_95b40
-	ld hl, $f6
-	call CheckEventFlag_25
+	checkevent $f6
 	or a
 	jp nz, Func_95b40
 	xor a
 	call FacePlayer_25
 	ld hl, CopyFromDEtoHL
 	call PrintTextWithNPCName_25
-	ld a, $2a
-	call PlaySFX_25
-	ld hl, $480
-	call PrintTextStandard_25
+	playsfx $2a
+	writetext TreeBitstreamText_3968a
 	ld c, $0
 	ld e, $1
 	ld a, $1a
 	call Func_80d4d_25
-	ld e, $1
-	ld hl, $f6
-	call EventFlagAction_25
+	setevent $f6
 	jp Func_95c0b
 
 Func_95b40: ; 95b40 (25:5b40)
 	ld a, [wc78c]
 	cp $14
 	jp nz, Func_95b81
-	ld hl, $e7
-	call CheckEventFlag_25
+	checkevent $e7
 	or a
 	jp nz, Func_95b81
 	xor a
 	call FacePlayer_25
-	ld hl, $457
-	call PrintTextWithNPCName_25
-	ld a, $2a
-	call PlaySFX_25
-	ld hl, $458
-	call PrintTextStandard_25
+	writenpctext TreeBitstreamText_3949f
+	playsfx $2a
+	writetext TreeBitstreamText_39545
 	ld c, $1e
 	ld e, $0
 	ld a, $16
 	call GiveRobot_25
-	ld e, $1
-	ld hl, $e7
-	call EventFlagAction_25
+	setevent $e7
 	ld e, $2
 	xor a
 	call SpriteFace_25
@@ -5749,49 +5661,36 @@ Func_95ba4: ; 95ba4 (25:5ba4)
 	ld e, $2
 	xor a
 	call SpriteFace_25
-	ld hl, $c4
-	call CheckEventFlag_25
+	checkevent $c4
 	or a
 	jp nz, Func_95bc2
-	ld hl, $3c2
-	call PrintTextWithNPCName_25
-	ld e, $1
-	ld hl, $c4
-	call EventFlagAction_25
+	writenpctext TreeBitstreamText_393e9
+	setevent $c4
 Func_95bc2: ; 95bc2 (25:5bc2)
-	ld hl, $3c3
-	call PrintTextWithNPCNameAndYesNoBox_25
+	writenpctext_yesorno TreeBitstreamText_3945b
 	or a
 	jp nz, Func_95bd2
 	call Func_80479_25
 	jp Func_95bd8
 
 Func_95bd2: ; 95bd2 (25:5bd2)
-	ld hl, $3c4
-	call PrintTextWithNPCName_25
+	writenpctext TreeBitstreamText_39471
 Func_95bd8: ; 95bd8 (25:5bd8)
 	jp Func_95c0b
 
 Func_95bdb: ; 95bdb (25:5bdb)
 	xor a
 	call FacePlayer_25
-	call RepairRobots_25
+	heal
 	xor a
 	call PlayMusic_25
-	ld a, $16
-	call PlayMusic_25
-	ld c, $1
-	ld e, $2
-	ld a, $8
-	call LoadEmote_25
+	playmusic $16
+	loademote $1, $2, $8
 	call WaitEmote_25
 	call HideEmote_25
-	ld hl, $322
-	call PrintTextStandard_25
-	ld hl, $15
-	call PrintTextWithNPCName_25
-	ld a, $c
-	call PlayMusic_25
+	writetext TreeBitstreamText_46e0b
+	writenpctext TreeBitstreamText_39369
+	playmusic $c
 Func_95c0b: ; 95c0b (25:5c0b)
 	ret
 
@@ -7005,49 +6904,28 @@ Data_b7a1e: ; b7a1e
 	dr $b7a1e, $b7a64
 
 Func_b7a64: ; b7a64 (2d:7a64)
-	ld e, $1
-	ld hl, Data_b7a13
-	call LoadWarps_2d_2
-	ld e, $5
-	ld hl, Data_b7a1e
-	call LoadMapObjects_2d_2
-	ld a, $13
-	call PlayMusic_2d_2
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_2d_2
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_2d_2
-	ld e, $0
-	ld a, $4
-	call SetPersonVisibilityState_2d_2
-	ld hl, $1b
-	call CheckEventFlag_2d_2
+	loadwarps 1, Data_b7a13
+	loadpeople 5, Data_b7a1e
+	playmusic $13
+	hideperson $2
+	hideperson $3
+	hideperson $4
+	checkevent $1b
 	or a
 	jp nz, Func_b7abb
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_2d_2
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_2d_2
-	ld e, $0
-	ld a, $4
-	call SetPersonVisibilityState_2d_2
-	ld a, $13
-	call PlayMusic_2d_2
+	hideperson $2
+	hideperson $3
+	hideperson $4
+	playmusic $13
 	call Func_8001c_2d_2
 	call Func_b7b62
 	jp Func_b7ae2
 
 Func_b7abb: ; b7abb (2d:7abb)
-	ld hl, $1c
-	call CheckEventFlag_2d_2
+	checkevent $1c
 	or a
 	jp nz, Func_b7ad3
-	ld a, $13
-	call PlayMusic_2d_2
+	playmusic $13
 	call Func_8001c_2d_2
 	call Func_b7d97
 	jp Func_b7ae2
@@ -7055,8 +6933,7 @@ Func_b7abb: ; b7abb (2d:7abb)
 Func_b7ad3: ; b7ad3 (2d:7ad3)
 	xor a
 	call PlayerFace_2d_2
-	ld a, $13
-	call PlayMusic_2d_2
+	playmusic $13
 	call Func_8001c_2d_2
 	call Func_b7df7
 Func_b7ae2: ; b7ae2 (2d:7ae2)
@@ -7075,17 +6952,10 @@ Data_b7b5e: ; b7b5e
 	dr $b7b5e, $b7b62
 
 Func_b7b62: ; b7b62 (2d:7b62)
-	ld c, $1
-	ld de, Data_b7b5e
-	ld a, $2d
-	call MovePlayer_2d_2
-	ld hl, $123
-	call PrintTextWithNPCName_2d_2
-	ld a, $5a
-	call PlaySFX_2d_2
-	ld e, $1
-	ld a, $2
-	call SetPersonVisibilityState_2d_2
+	move_player $1, Data_b7b5e
+	writenpctext TreeBitstreamText_3dd0b
+	playsfx $5a
+	showperson $2
 	ld e, $2
 	ld a, $2
 	call SpriteFace_2d_2
@@ -7112,11 +6982,8 @@ Func_b7b62: ; b7b62 (2d:7b62)
 	call SpriteFace_2d_2
 	ld hl, $1e
 	call ScriptSleep_2d_2
-	ld a, $5b
-	call PlaySFX_2d_2
-	ld e, $1
-	ld a, $3
-	call SetPersonVisibilityState_2d_2
+	playsfx $5b
+	showperson $3
 	ld e, $1
 	ld a, $3
 	call SpriteFace_2d_2
@@ -7143,11 +7010,8 @@ Func_b7b62: ; b7b62 (2d:7b62)
 	call SpriteFace_2d_2
 	ld hl, $1e
 	call ScriptSleep_2d_2
-	ld a, $66
-	call PlaySFX_2d_2
-	ld e, $1
-	ld a, $4
-	call SetPersonVisibilityState_2d_2
+	playsfx $66
+	showperson $4
 	ld e, $0
 	ld a, $4
 	call SpriteFace_2d_2
@@ -7186,20 +7050,14 @@ Func_b7b62: ; b7b62 (2d:7b62)
 	ret
 
 Func_b7c69: ; b7c69 (2d:7c69)
-	ld c, $1
-	ld e, $1
-	ld a, $a
-	call LoadEmote_2d_2
+	loademote $1, $1, $a
 	ld e, $a
 	ld a, $8
 	call ShowEmote_2d_2
-	ld a, $38
-	call PlaySFX_2d_2
+	playsfx $38
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_2d_2
+	hideperson $2
 	ld hl, $1e
 	call ScriptSleep_2d_2
 	ld a, $2
@@ -7214,20 +7072,14 @@ Func_b7c69: ; b7c69 (2d:7c69)
 	ret
 
 Func_b7caa: ; b7caa (2d:7caa)
-	ld c, $1
-	ld e, $1
-	ld a, $a
-	call LoadEmote_2d_2
+	loademote $1, $1, $a
 	ld e, $b
 	ld a, $9
 	call ShowEmote_2d_2
-	ld a, $38
-	call PlaySFX_2d_2
+	playsfx $38
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_2d_2
+	hideperson $3
 	ld hl, $1e
 	call ScriptSleep_2d_2
 	ld a, $1
@@ -7242,54 +7094,36 @@ Func_b7caa: ; b7caa (2d:7caa)
 	ret
 
 Func_b7ceb: ; b7ceb (2d:7ceb)
-	ld c, $1
-	ld e, $1
-	ld a, $a
-	call LoadEmote_2d_2
+	loademote $1, $1, $a
 	ld e, $a
 	ld a, $a
 	call ShowEmote_2d_2
-	ld a, $38
-	call PlaySFX_2d_2
+	playsfx $38
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
-	ld e, $0
-	ld a, $4
-	call SetPersonVisibilityState_2d_2
+	hideperson $4
 	ld hl, $1e
 	call ScriptSleep_2d_2
 	xor a
 	call PlayerFace_2d_2
 	ld hl, $3c
 	call ScriptSleep_2d_2
-	ld hl, $124
-	call PrintTextWithNPCName_2d_2
-	ld c, $1
-	ld e, $1
-	ld a, $5
-	call LoadEmote_2d_2
+	writenpctext TreeBitstreamText_3de23
+	loademote $1, $1, $5
 	ld e, $a
 	ld a, $9
 	call ShowEmote_2d_2
-	ld a, $28
-	call PlaySFX_2d_2
+	playsfx $28
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
-	ld a, $35
-	call PlaySFX_2d_2
-	ld c, $1
-	ld e, $1
-	ld a, $1b
-	call LoadEmote_2d_2
-	ld a, $37
-	call PlaySFX_2d_2
+	playsfx $35
+	loademote $1, $1, $1b
+	playsfx $37
 	xor a
 	call Func_80653_2d_2
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
-	ld e, $1
-	ld hl, $1b
-	call EventFlagAction_2d_2
+	setevent $1b
 	ld a, $f
 	call Func_80c94_2d_2
 	ld l, $4
@@ -7317,25 +7151,17 @@ Data_b7d89: ; b7d89
 	dr $b7d89, $b7d97
 
 Func_b7d97: ; b7d97 (2d:7d97)
-	ld c, $1
-	ld de, Data_b7d85
-	ld a, $2d
-	call MovePlayer_2d_2
-	ld hl, $125
-	call PrintTextWithNPCNameAndYesNoBox_2d_2
+	move_player $1, Data_b7d85
+	writenpctext_yesorno TreeBitstreamText_3de8e
 	or a
 	jp nz, Func_b7db4
-	ld hl, $126
-	call PrintTextWithNPCName_2d_2
+	writenpctext TreeBitstreamText_3df08
 	jp Func_b7dba
 
 Func_b7db4: ; b7db4 (2d:7db4)
-	ld hl, $127
-	call PrintTextWithNPCName_2d_2
+	writenpctext TreeBitstreamText_3dfb9
 Func_b7dba: ; b7dba (2d:7dba)
-	ld e, $1
-	ld hl, $1c
-	call EventFlagAction_2d_2
+	setevent $1c
 	ld a, $a
 	call FadeOutAudio_2d_2
 	xor a
@@ -7343,14 +7169,9 @@ Func_b7dba: ; b7dba (2d:7dba)
 	xor a
 	call FadeInAudio_2d_2
 	call Func_80ea2_2d_2
-	ld a, $65
-	call PlaySFX_2d_2
-	ld c, $1
-	ld de, Data_b7d89
-	ld a, $2d
-	call MovePlayer_2d_2
-	ld a, $65
-	call PlaySFX_2d_2
+	playsfx $65
+	move_player $1, Data_b7d89
+	playsfx $65
 	call Func_80eb1_2d_2
 	ld l, $f
 	push hl
@@ -7365,27 +7186,18 @@ Func_b7df7: ; b7df7 (2d:7df7)
 	call Func_80eb1_2d_2
 	ld hl, $3c
 	call ScriptSleep_2d_2
-	ld hl, $129
-	call PrintTextWithNPCName_2d_2
-	ld c, $1
-	ld e, $1
-	ld a, $5
-	call LoadEmote_2d_2
+	writenpctext TreeBitstreamText_3e04a
+	loademote $1, $1, $5
 	ld e, $a
 	ld a, $9
 	call ShowEmote_2d_2
-	ld a, $28
-	call PlaySFX_2d_2
+	playsfx $28
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
 	xor a
 	call Func_80653_2d_2
-	ld c, $1
-	ld e, $1
-	ld a, $1b
-	call LoadEmote_2d_2
-	ld a, $37
-	call PlaySFX_2d_2
+	loademote $1, $1, $1b
+	playsfx $37
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
 	ld l, $b
@@ -7858,21 +7670,15 @@ Func_d153f: ; d153f (34:553f)
 	cp $a
 	jp nz, Func_d160a
 Func_d15ef: ; d15ef (34:55ef)
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_34
+	hideperson $1
 	jp Func_d160a
 
 Func_d15f9: ; d15f9 (34:55f9)
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_34
+	hideperson $2
 	jp Func_d160a
 
 Func_d1603: ; d1603 (34:5603)
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_34
+	hideperson $3
 Func_d160a: ; d160a (34:560a)
 	ld a, [wc791]
 	cp $4
@@ -7883,33 +7689,21 @@ Func_d160a: ; d160a (34:560a)
 	jp z, Func_d162b
 	cp $1
 	jp nz, Func_d1654
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_34
+	hideperson $1
 	jp Func_d1654
 
 Func_d162b: ; d162b (34:562b)
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_34
+	hideperson $2
 	jp Func_d1654
 
 Func_d1635: ; d1635 (34:5635)
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_34
+	hideperson $3
 	jp Func_d1654
 
 Func_d163f: ; d163f (34:563f)
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_34
+	hideperson $1
+	hideperson $2
+	hideperson $3
 Func_d1654: ; d1654 (34:5654)
 	ld a, $1
 	ld [wc7a2 + 1], a
@@ -7992,15 +7786,9 @@ Func_d16e8: ; d16e8 (34:56e8)
 	ld e, $2
 	xor a
 	call SpriteFace_34
-	ld e, $1
-	ld a, $1
-	call SetPersonVisibilityState_34
-	ld e, $1
-	ld a, $2
-	call SetPersonVisibilityState_34
-	ld e, $1
-	ld a, $3
-	call SetPersonVisibilityState_34
+	showperson $1
+	showperson $2
+	showperson $3
 	xor a
 	ld [wc791], a
 	jp Func_d1729
@@ -8144,15 +7932,9 @@ Func_d1866: ; d1866 (34:5866)
 	ld e, $2
 	xor a
 	call SpriteFace_34
-	ld e, $1
-	ld a, $1
-	call SetPersonVisibilityState_34
-	ld e, $1
-	ld a, $2
-	call SetPersonVisibilityState_34
-	ld e, $1
-	ld a, $3
-	call SetPersonVisibilityState_34
+	showperson $1
+	showperson $2
+	showperson $3
 	xor a
 	ld [wc791], a
 	ret
@@ -8200,33 +7982,21 @@ Func_d18ba:: ; d18ba (34:58ba)
 	jp z, Func_d1924
 	cp $1
 	jp nz, Func_d194d
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_34
+	hideperson $1
 	jp Func_d194d
 
 Func_d1924: ; d1924 (34:5924)
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_34
+	hideperson $2
 	jp Func_d194d
 
 Func_d192e: ; d192e (34:592e)
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_34
+	hideperson $3
 	jp Func_d194d
 
 Func_d1938: ; d1938 (34:5938)
-	ld e, $0
-	ld a, $1
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_34
+	hideperson $1
+	hideperson $2
+	hideperson $3
 Func_d194d: ; d194d (34:594d)
 	pop af
 	ld [wc791], a
@@ -9798,9 +9568,7 @@ Func_d2f72: ; d2f72 (34:6f72)
 	cp $7
 	jp nz, Func_d2fa3
 	loadpeople $1, Data_d2d9b
-	ld e, $0
-	ld a, $8
-	call SetPersonVisibilityState_34
+	hideperson $8
 	jp Func_d2fab
 
 Func_d2fa3: ; d2fa3 (34:6fa3)
@@ -9828,27 +9596,15 @@ Func_d2fae: ; d2fae (34:6fae)
 	cp $7
 	jp nz, Func_d300e
 Func_d2fe1: ; d2fe1 (34:6fe1)
-	ld e, $0
-	ld a, $9
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $a
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $b
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $c
-	call SetPersonVisibilityState_34
+	hideperson $9
+	hideperson $a
+	hideperson $b
+	hideperson $c
 	jp Func_d300e
 
 Func_d3000: ; d3000 (34:7000)
-	ld e, $0
-	ld a, $b
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $c
-	call SetPersonVisibilityState_34
+	hideperson $b
+	hideperson $c
 Func_d300e: ; d300e (34:700e)
 	jp Func_d3019
 
@@ -10098,33 +9854,17 @@ Func_d337c: ; d337c (34:737c)
 	cp $7
 	jp nz, Func_d33ea
 Func_d33af: ; d33af (34:73af)
-	ld e, $0
-	ld a, $2
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $3
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $4
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $5
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $6
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $7
-	call SetPersonVisibilityState_34
+	hideperson $2
+	hideperson $3
+	hideperson $4
+	hideperson $5
+	hideperson $6
+	hideperson $7
 	jp Func_d33ea
 
 Func_d33dc: ; d33dc (34:73dc)
-	ld e, $0
-	ld a, $6
-	call SetPersonVisibilityState_34
-	ld e, $0
-	ld a, $7
-	call SetPersonVisibilityState_34
+	hideperson $6
+	hideperson $7
 Func_d33ea: ; d33ea (34:73ea)
 	jp Func_d33f5
 

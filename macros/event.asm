@@ -88,9 +88,9 @@ loadpeople: MACRO
 	ENDM
 
 move_player: MACRO
-	ld c, \1
+	ld c, \1 ; speed?
 	ld de, \2
-	ld a, BANK(\2)
+	ld a, csbnk
 	scall MovePlayer
 	ENDM
 
@@ -118,4 +118,21 @@ sprite_face: MACRO
 	ld e, \1
 	ld a, \2
 	scall SpriteFace
+	ENDM
+
+showperson: MACRO
+	ld e, 1
+	ld a, \1
+	scall SetPersonVisibilityState
+	ENDM
+
+hideperson: MACRO
+	ld e, 0
+	ld a, \1
+	scall SetPersonVisibilityState
+	ENDM
+
+if_true: MACRO
+	or a
+	jp nz, \1
 	ENDM

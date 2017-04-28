@@ -708,7 +708,7 @@ MusicCommandProcessor_\1: ; 7041f (1c:441f)
 	pop de
 	ld d, a
 	ld a, e
-	cp $d9 ; mute_channel
+	cp $d9 ; mute
 	ld a, d
 	jr z, .set_c143
 	ld e, a

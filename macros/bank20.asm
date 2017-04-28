@@ -1,9 +1,11 @@
 lib_bank_20: MACRO
-IF DEF(cbank) & DEF(scall)
+IF DEF(cbank) & DEF(scall) & DEF(csbnk)
 PURGE scall
 PURGE cbank
+PURGE csbnk
 ENDC
 cbank EQUS "\1"
+csbnk EQUS "BANK(ScriptLibrary_\1)"
 
 scall: MACRO
 label EQUS "\1_{cbank}"
