@@ -79,7 +79,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b29)
 	xor a
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	writenpctext TreeBitstreamText_38fc9
 	sprite_face $1, $1
 	writenpctext TreeBitstreamText_38fe6
@@ -87,7 +87,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b2d)
 	ld a, $1
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	ld e, $3
 	xor a
 	call SpriteFace_20
@@ -95,7 +95,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b31)
 	ld a, $1
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	ld e, $2
 	xor a
 	call SpriteFace_20
@@ -117,12 +117,12 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b2d)
 	xor a
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	ld bc, Data_81b31
 	ld e, BANK(Data_81b31)
 	xor a
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_20
@@ -142,7 +142,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b2d)
 	xor a
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	ld e, $1
 	xor a
 	call SpriteFace_20
@@ -169,16 +169,16 @@ Func_81b45: ; 81b45 (20:5b45)
 	call FadeOutAudio_20
 	playmusic SONG_NONE
 	move_player $1, Data_81b35
-	call Func_8020c_20
+	call WaitMovement_20
 	ld a, $2
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_390b4
 	script_sleep $1e
 	move_player $1, Data_81b39
-	call Func_8020c_20
+	call WaitMovement_20
 	writetext TreeBitstreamText_390d1
 	move_player $1, Data_81b3d
-	call Func_8020c_20
+	call WaitMovement_20
 	ld a, $1
 	call FadeInAudio_20
 	ret

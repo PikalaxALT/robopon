@@ -10,8 +10,8 @@ Func_83026:
 	ld e, $2
 	ld a, $3
 	call ShowEmote_20
-	call Func_801d5_20
-	call Func_8018b_20
+	call WaitEmote_20
+	call HideEmote_20
 	playsfx $28
 	ld e, $1
 	xor a

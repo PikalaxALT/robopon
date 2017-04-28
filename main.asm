@@ -57001,7 +57001,7 @@ Func_50af6: ; 50af6 (14:4af6)
 	pop bc
 	ret
 
-Func_50b19:: ; 50b19
+GetRobotSprite:: ; 50b19
 	add sp, -$30
 	push af
 	set_farcall_addrs_hli GetBanks

@@ -685,7 +685,8 @@ wc770:: ; c770
 	char wc791 ; c791
 	ds $1
 	char wc793 ; c793
-	ds $3
+	ds $2
+	char wc796 ; c796
 	char wc797 ; c797
 	char wc798 ; c798
 	char wc799 ; c799

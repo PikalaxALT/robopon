@@ -90,7 +90,7 @@ Data_81e27: ; 81e27
 Func_81e2b: ; 81e2b (20:5e2b)
 	loademote $6, $1, $1f
 	call Func_8001c_20
-	call Func_801d5_20
+	call WaitEmote_20
 	playsfx $67
 	script_sleep $3c
 	ld a, $66
@@ -115,12 +115,12 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	script_sleep $1e
 	call Func_80eb1_20
 	loademote $6, $2, $1f
-	call Func_801d5_20
+	call WaitEmote_20
 	writetext TreeBitstreamText_38fae
 	loademote $1, $4, $1f
 	script_sleep $2d
 	move_player $1, Data_81e23
-	call Func_801d5_20
+	call WaitEmote_20
 	ld a, $3b
 	call OverworldPlaySFX
 	script_sleep $1e
@@ -142,10 +142,10 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	ld a, $1
 	call Func_80653_20
 	script_sleep $1
-	call Func_8018b_20
+	call HideEmote_20
 	script_sleep $1e
 	move_player $1, Data_81e27
-	call Func_8020c_20
+	call WaitMovement_20
 	ret
 
 Data_81f2d:
@@ -211,7 +211,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	call SetPersonVisibilityState_20
 	loademote $8, $1, $1f
 	call Func_8001c_20
-	call Func_801d5_20
+	call WaitEmote_20
 	script_sleep $3c
 	playsfx $2e
 	ld e, $1
@@ -221,7 +221,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld e, BANK(Data_81f2d)
 	xor a
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	ld e, $3
 	xor a
 	call SpriteFace_20
@@ -230,7 +230,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld e, BANK(Data_81f33)
 	xor a
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	playsfx $2e
 	ld e, $0
 	xor a
@@ -238,13 +238,13 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	loademote $1, $4, $1f
 	script_sleep $2d
 	move_player $1, Data_81f37
-	call Func_801d5_20
+	call WaitEmote_20
 	xor a
 	call PlayerFace_20
 	ld a, $1
 	call Func_80653_20
 	script_sleep $1
-	call Func_8018b_20
+	call HideEmote_20
 	script_sleep $1e
 	writetext TreeBitstreamText_3ecd6
 	script_sleep $1e
@@ -297,7 +297,7 @@ Func_82079:
 	cp $2
 	jp nz, Func_8208b
 	loademote $6, $1, $2b
-	call Func_801d5_20
+	call WaitEmote_20
 Func_8208b: ; 8208b (20:608b)
 	ret
 

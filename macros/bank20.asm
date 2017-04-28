@@ -99,9 +99,9 @@ SpriteFace_\1: ; 80095 (20:4095)
 .skip
 	ret
 
-Func_800b8_\1:
+GetRobotSprite_\1:
 	push af
-	set_farcall_addrs_hli Func_50b19
+	set_farcall_addrs_hli GetRobotSprite
 	pop af
 	jp FarCall
 
@@ -216,7 +216,7 @@ LoadEmote_\1: ; 80176 (20:4176)
 	call FarCall
 	ret
 
-Func_8018b_\1: ; 8018b (20:418b)
+HideEmote_\1: ; 8018b (20:418b)
 	callba_hli Func_da4fc
 	callba_hli Func_9a87c
 	ld a, [wLCDC]
@@ -232,7 +232,7 @@ Func_801b8_\1:
 	callba_hli Func_9a87c
 	ret
 
-Func_801d5_\1: ; 801d5 (20:41d5)
+WaitEmote_\1: ; 801d5 (20:41d5)
 	callba_hli Func_9a84a
 	ret
 
@@ -245,7 +245,7 @@ ShowEmote_\1: ; 801e4 (20:41e4)
 	call FarCall
 	ret
 
-Func_801f7_\1: ; 801f7 (20:41f7)
+MovePerson_\1: ; 801f7 (20:41f7)
 	push af
 	push de
 	push bc
@@ -256,7 +256,7 @@ Func_801f7_\1: ; 801f7 (20:41f7)
 	call FarCall
 	ret
 
-Func_8020c_\1: ; 8020c (20:420c)
+WaitMovement_\1: ; 8020c (20:420c)
 	callba_hli Func_b3ab
 	ret
 
@@ -713,8 +713,8 @@ PlayerFace_\1: ; 80677 (20:4677)
 	ret
 
 Func_80688_\1: ; 80688 (20:4688)
-	call Func_801f7_\1
-	call Func_8020c_\1
+	call MovePerson_\1
+	call WaitMovement_\1
 	ret
 
 ScriptSleep_\1: ; 8068f (20:468f)
@@ -1648,7 +1648,7 @@ Func_80c61_\1: ; 80c61 (20:4c61)
 	ld e, BANK(ScriptLibrary_\1)
 	ld hl, sp+$1
 	ld a, [hl]
-	call Func_801f7_\1
+	call MovePerson_\1
 	ld a, $1
 	jp Func_80c92_\1
 

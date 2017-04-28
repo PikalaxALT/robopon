@@ -111,17 +111,17 @@ Func_82894: ; 82894 (20:6894)
 	ld bc, Data_82886
 	ld e, BANK(Data_82886)
 	ld a, $1
-	call Func_801f7_20
+	call MovePerson_20
 	move_player $1, Data_8288a
-	call Func_8020c_20
+	call WaitMovement_20
 	writenpctext TreeBitstreamText_39235
 	writenpctext TreeBitstreamText_39257
 	ld bc, Data_82890
 	ld e, BANK(Data_82890)
 	ld a, $1
-	call Func_801f7_20
+	call MovePerson_20
 	move_player $3, Data_82890
-	call Func_8020c_20
+	call WaitMovement_20
 	ret
 
 Data_828cf:
@@ -144,7 +144,7 @@ Func_828df:
 	ld e, BANK(Data_828cf)
 	ld a, $2
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	sprite_face $2, $2
 	checkevent $32
 	cp $1
@@ -157,10 +157,10 @@ Func_828df:
 	ld e, BANK(Data_828d3)
 	ld a, $2
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	sprite_face $2, $2
 	move_player $1, Data_828db
-	call Func_8020c_20
+	call WaitMovement_20
 	resetevent $f8
 	jp Func_82964
 
@@ -171,7 +171,7 @@ Func_82940: ; 82940 (20:6940)
 	ld e, BANK(Data_828d3)
 	ld a, $2
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	sprite_face $2, $2
 Func_82964: ; 82964 (20:6964)
 	jp Func_8298b
@@ -184,7 +184,7 @@ Func_82967: ; 82967 (20:6967)
 	ld e, BANK(Data_828d3)
 	ld a, $2
 	call Func_80688_20
-	call Func_8020c_20
+	call WaitMovement_20
 	sprite_face $2, $2
 Func_8298b: ; 8298b (20:698b)
 	ret
@@ -232,7 +232,7 @@ Func_829dd: ; 829dd (20:69dd)
 	or a
 	jp nz, .asm_829fc
 	move_player $1, Data_829d9
-	call Func_8020c_20
+	call WaitMovement_20
 	setevent $f8
 .asm_829fc
 	ret

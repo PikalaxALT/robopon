@@ -1380,20 +1380,20 @@ Func_852ac: ; 852ac (21:52ac)
 	ld a, $17
 	call ShowEmote_21
 	playsfx $28
-	call Func_801d5_21
+	call WaitEmote_21
 	script_sleep $3c
-	call Func_8018b_21
+	call HideEmote_21
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	ld bc, Data_85274
 	ld e, BANK(Data_85274)
 	xor a
-	call Func_801f7_21
+	call MovePerson_21
 	ld bc, Data_85278
 	ld e, BANK(Data_85278)
 	ld a, $1
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	script_sleep $3c
 	writenpctext TreeBitstreamText_399f1
 	writenpctext TreeBitstreamText_39a27
@@ -1410,13 +1410,13 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_8527c)
 	ld a, $2
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	playsfx $33
 	ld bc, Data_85286
 	ld e, BANK(Data_85286)
 	ld a, $1
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $1
 	xor a
 	call SpriteFace_21
@@ -1425,7 +1425,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_8528a)
 	ld a, $2
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $2
 	xor a
 	call SpriteFace_21
@@ -1447,25 +1447,25 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_85292)
 	ld a, $2
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	ld a, $2
 	call SetPersonVisibilityState_21
 	ld bc, Data_85280
 	ld e, BANK(Data_85280)
 	xor a
-	call Func_801f7_21
+	call MovePerson_21
 	ld bc, Data_8528e
 	ld e, BANK(Data_8528e)
 	ld a, $1
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	playsfx $33
 	sprite_face $3, $1
 	move_player $1, Data_85298
 	script_sleep $1e
 	playsfx $2e
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $2
 	xor a
 	call SpriteFace_21
@@ -1473,12 +1473,12 @@ Func_852ac: ; 852ac (21:52ac)
 	ld bc, Data_8529c
 	ld e, BANK(Data_8529c)
 	xor a
-	call Func_801f7_21
+	call MovePerson_21
 	ld bc, Data_852a4
 	ld e, BANK(Data_852a4)
 	ld a, $1
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld a, $1
 	call PlayerFace_21
 	ld e, $2
@@ -1534,7 +1534,7 @@ Func_854eb: ; 854eb (21:54eb)
 	ld e, BANK(Data_854a2)
 	xor a
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_21
@@ -1566,7 +1566,7 @@ Func_85540: ; 85540 (21:5540)
 	ld e, BANK(Data_854a6)
 	ld a, $1
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_21
@@ -1659,7 +1659,7 @@ Func_8565a: ; 8565a (21:565a)
 	ld e, BANK(Data_855d8)
 	ld a, $1
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_21
@@ -1690,7 +1690,7 @@ Func_856ab: ; 856ab (21:56ab)
 	ld e, BANK(Data_855d4)
 	xor a
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_21
@@ -1784,7 +1784,7 @@ Func_857c4: ; 857c4 (21:57c4)
 	ld e, BANK(Data_85742)
 	ld a, $1
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_21
@@ -1807,7 +1807,7 @@ Func_85801: ; 85801 (21:5801)
 	ld e, BANK(Data_8573e)
 	xor a
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_21
@@ -1857,15 +1857,15 @@ Func_8585f: ; 8585f (21:585f)
 	or a
 	jp nz, Func_858bd
 	move_player $1, Data_8582e
-	call Func_8020c_21
+	call WaitMovement_21
 	playmusic SONG_NONE
 	playmusic SONG_0A
 	xor a
 	call Func_80653_21
 	loademote $1, $1, $b
 	playsfx $44
-	call Func_801d5_21
-	call Func_8018b_21
+	call WaitEmote_21
+	call HideEmote_21
 	ld a, $4
 	call Func_80cc6_21
 	ld a, $1
@@ -3116,30 +3116,30 @@ Data_8693f: ; 8693f
 Func_86943: ; 86943 (21:6943)
 	playmusic SONG_NONE
 	playmusic SONG_TITLE
-	call Func_8020c_21
+	call WaitMovement_21
 	move_player $1, Data_86907
-	call Func_8020c_21
+	call WaitMovement_21
 	xor a
 	call PlayerFace_21
 	loademote $1, $1, $7
 	playsfx $68
-	call Func_801d5_21
+	call WaitEmote_21
 	loademote $1, $1, $7
 	playsfx $68
-	call Func_801d5_21
+	call WaitEmote_21
 	loademote $1, $1, $7
 	playsfx $68
-	call Func_801d5_21
+	call WaitEmote_21
 	writenpctext TreeBitstreamText_3a38a
 	ld bc, Data_8690f
 	ld e, BANK(Data_8690f)
 	ld a, $3
-	call Func_801f7_21
+	call MovePerson_21
 	ld bc, Data_86913
 	ld e, BANK(Data_86913)
 	ld a, $4
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	sprite_face $3, $2
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
@@ -3161,14 +3161,14 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, BANK(Data_86917)
 	ld a, $2
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld a, $1
 	call PlayerFace_21
 	ld bc, Data_8691f
 	ld e, BANK(Data_8691f)
 	ld a, $2
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	ld a, $2
 	call SetPersonVisibilityState_21
@@ -3182,27 +3182,27 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, BANK(Data_86927)
 	ld a, $4
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld bc, Data_8692d
 	ld e, BANK(Data_8692d)
 	ld a, $3
-	call Func_801f7_21
+	call MovePerson_21
 	ld bc, Data_86931
 	ld e, BANK(Data_86931)
 	ld a, $4
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld a, $3
 	call PlayerFace_21
 	ld bc, Data_86935
 	ld e, BANK(Data_86935)
 	ld a, $3
-	call Func_801f7_21
+	call MovePerson_21
 	ld bc, Data_8693b
 	ld e, BANK(Data_8693b)
 	ld a, $4
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	ld e, $0
 	ld a, $3
 	call SetPersonVisibilityState_21
@@ -3216,7 +3216,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, BANK(Data_8693f)
 	ld a, $5
 	call Func_80688_21
-	call Func_8020c_21
+	call WaitMovement_21
 	sprite_face $2, $5
 	script_sleep $1e
 	xor a
@@ -3259,8 +3259,8 @@ Func_86b0d:
 	ld e, $4
 	ld a, $e
 	call ShowEmote_21
-	call Func_801d5_21
-	call Func_8018b_21
+	call WaitEmote_21
+	call HideEmote_21
 	playsfx $28
 	ld e, $1
 	xor a
@@ -3716,7 +3716,7 @@ Data_87376:
 
 Func_8737a: ; 8737a (21:737a)
 	move_player $1, Data_87376
-	call Func_8020c_21
+	call WaitMovement_21
 	ret
 
 Data_87388:
@@ -3784,8 +3784,8 @@ Func_87497:
 	playmusic SONG_NONE
 	playmusic SONG_HEAL
 	loademote $1, $2, $8
-	call Func_801d5_21
-	call Func_8018b_21
+	call WaitEmote_21
+	call HideEmote_21
 	writetext TreeBitstreamText_46e0b
 	playmusic SONG_CAVE
 Func_874c2: ; 874c2 (21:74c2)
@@ -4334,8 +4334,8 @@ Func_87b4f: ; 87b4f (21:7b4f)
 	call Func_80653_21
 	loademote $1, $1, $9
 	playsfx $5a
-	call Func_801d5_21
-	call Func_8018b_21
+	call WaitEmote_21
+	call HideEmote_21
 	ld a, $2
 	call PlayerFace_21
 	resetevent $fa
@@ -4370,11 +4370,11 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	call Func_80f72_21
 	loademote $1, $2, $9
 	playsfx $37
-	call Func_801d5_21
+	call WaitEmote_21
 	ld a, $1
 	call Func_80653_21
 	script_sleep $1
-	call Func_8018b_21
+	call HideEmote_21
 	setevent $fb
 	ret
 
@@ -5520,12 +5520,12 @@ Data_959a5: ; 959a5
 
 Func_959a9: ; 959a9 (25:59a9)
 	ld bc, Data_95999
-	ld e, $25
+	ld e, BANK(Data_95999)
 	xor a
-	call Func_801f7_25
+	call MovePerson_25
 	ld c, $1
 	ld de, Data_9599d
-	ld a, $25
+	ld a, BANK(Data_9599d)
 	call MovePlayer_25
 	ld a, $31
 	call PlaySFX_25
@@ -5533,11 +5533,11 @@ Func_959a9: ; 959a9 (25:59a9)
 	ld e, $2
 	ld a, $c
 	call LoadEmote_25
-	call Func_801d5_25
+	call WaitEmote_25
 	ld hl, $1e
 	call ScriptSleep_25
 	ld a, STARTER + 1
-	call Func_800b8_25
+	call GetRobotSprite_25
 	ld e, a
 	ld a, $1
 	call ChangeSprite_25
@@ -5548,28 +5548,28 @@ Func_959a9: ; 959a9 (25:59a9)
 	ld a, $1
 	call SetPersonVisibilityState_25
 	ld bc, Data_959a1
-	ld e, $25
+	ld e, BANK(Data_959a1)
 	ld a, $1
 	call Func_80688_25
-	call Func_8020c_25
+	call WaitMovement_25
 	ld a, $31
 	call PlaySFX_25
 	ld c, $1
 	ld e, $4
 	ld a, $c
 	call LoadEmote_25
-	call Func_801d5_25
-	call Func_8018b_25
+	call WaitEmote_25
+	call HideEmote_25
 	ld e, $1
 	xor a
 	call SpriteFace_25
 	ld hl, $12
 	call PrintTextWithNPCName_25
 	ld bc, Data_959a5
-	ld e, $25
+	ld e, BANK(Data_959a5)
 	ld a, $1
-	call Func_801f7_25
-	call Func_8020c_25
+	call MovePerson_25
+	call WaitMovement_25
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_25
@@ -5615,7 +5615,7 @@ Func_95a7f: ; 95a7f (25:5a7f)
 	push hl
 	ld hl, $0
 	push hl
-	ld hl, $3e8
+	ld hl, 1000
 	push hl
 	call AdjustMoney
 	pop bc
@@ -5741,7 +5741,7 @@ Func_95b81: ; 95b81 (25:5b81)
 Func_95b96: ; 95b96 (25:5b96)
 	ld c, $1
 	ld de, Data_95ab3
-	ld a, $25
+	ld a, BANK(Data_95ab3)
 	call MovePlayer_25
 	xor a
 	call PlayerFace_25
@@ -5784,8 +5784,8 @@ Func_95bdb: ; 95bdb (25:5bdb)
 	ld e, $2
 	ld a, $8
 	call LoadEmote_25
-	call Func_801d5_25
-	call Func_8018b_25
+	call WaitEmote_25
+	call HideEmote_25
 	ld hl, $322
 	call PrintTextStandard_25
 	ld hl, $15
@@ -7195,8 +7195,8 @@ Func_b7c69: ; b7c69 (2d:7c69)
 	call ShowEmote_2d_2
 	ld a, $38
 	call PlaySFX_2d_2
-	call Func_801d5_2d_2
-	call Func_8018b_2d_2
+	call WaitEmote_2d_2
+	call HideEmote_2d_2
 	ld e, $0
 	ld a, $2
 	call SetPersonVisibilityState_2d_2
@@ -7223,8 +7223,8 @@ Func_b7caa: ; b7caa (2d:7caa)
 	call ShowEmote_2d_2
 	ld a, $38
 	call PlaySFX_2d_2
-	call Func_801d5_2d_2
-	call Func_8018b_2d_2
+	call WaitEmote_2d_2
+	call HideEmote_2d_2
 	ld e, $0
 	ld a, $3
 	call SetPersonVisibilityState_2d_2
@@ -7251,8 +7251,8 @@ Func_b7ceb: ; b7ceb (2d:7ceb)
 	call ShowEmote_2d_2
 	ld a, $38
 	call PlaySFX_2d_2
-	call Func_801d5_2d_2
-	call Func_8018b_2d_2
+	call WaitEmote_2d_2
+	call HideEmote_2d_2
 	ld e, $0
 	ld a, $4
 	call SetPersonVisibilityState_2d_2
@@ -7273,8 +7273,8 @@ Func_b7ceb: ; b7ceb (2d:7ceb)
 	call ShowEmote_2d_2
 	ld a, $28
 	call PlaySFX_2d_2
-	call Func_801d5_2d_2
-	call Func_8018b_2d_2
+	call WaitEmote_2d_2
+	call HideEmote_2d_2
 	ld a, $35
 	call PlaySFX_2d_2
 	ld c, $1
@@ -7285,8 +7285,8 @@ Func_b7ceb: ; b7ceb (2d:7ceb)
 	call PlaySFX_2d_2
 	xor a
 	call Func_80653_2d_2
-	call Func_801d5_2d_2
-	call Func_8018b_2d_2
+	call WaitEmote_2d_2
+	call HideEmote_2d_2
 	ld e, $1
 	ld hl, $1b
 	call EventFlagAction_2d_2
@@ -7376,8 +7376,8 @@ Func_b7df7: ; b7df7 (2d:7df7)
 	call ShowEmote_2d_2
 	ld a, $28
 	call PlaySFX_2d_2
-	call Func_801d5_2d_2
-	call Func_8018b_2d_2
+	call WaitEmote_2d_2
+	call HideEmote_2d_2
 	xor a
 	call Func_80653_2d_2
 	ld c, $1
@@ -7386,8 +7386,8 @@ Func_b7df7: ; b7df7 (2d:7df7)
 	call LoadEmote_2d_2
 	ld a, $37
 	call PlaySFX_2d_2
-	call Func_801d5_2d_2
-	call Func_8018b_2d_2
+	call WaitEmote_2d_2
+	call HideEmote_2d_2
 	ld l, $b
 	push hl
 	ld c, $9
@@ -7523,7 +7523,7 @@ Func_d121f:
 	ld hl, sp+$3
 	ld a, [hl]
 	call FacePlayer_20
-	ld a, [wc793 + 3]
+	ld a, [wc796]
 	cp $6
 	jp nz, Func_d12ba
 	ld a, $4e
@@ -7562,7 +7562,7 @@ Func_d121f:
 	ld a, $50
 	call GiveRobot_34
 	ld a, $7
-	ld [wc793 + 3], a
+	ld [wc796], a
 	ld hl, sp+$0
 	ld [hl], $1
 	jp Func_d12ab
@@ -7583,7 +7583,7 @@ Func_d12b7: ; d12b7 (34:52b7)
 	jp Func_d13ff
 
 Func_d12ba: ; d12ba (34:52ba)
-	ld a, [wc793 + 3]
+	ld a, [wc796]
 	cp $8
 	jp nz, Func_d1344
 	ld a, $51
@@ -7622,7 +7622,7 @@ Func_d12ba: ; d12ba (34:52ba)
 	ld a, $69
 	call GiveRobot_34
 	ld a, $9
-	ld [wc793 + 3], a
+	ld [wc796], a
 	ld hl, sp+$0
 	ld [hl], $1
 	jp Func_d1335
@@ -7656,7 +7656,7 @@ Func_d1344: ; d1344 (34:5344)
 	cp $ff
 	jp z, Func_d13ff
 Func_d135e: ; d135e (34:535e)
-	ld a, [wc793 + 3]
+	ld a, [wc796]
 	cp $7
 	jp z, Func_d13e7
 	or a
@@ -7723,10 +7723,10 @@ Func_d13ff: ; d13ff (34:53ff)
 	ld a, [hl]
 	cp $ff
 	jp nz, Func_d1454
-	ld a, [wc793 + 3]
+	ld a, [wc796]
 	cp $9
 	jp nc, Func_d1426
-	ld a, [wc793 + 3]
+	ld a, [wc796]
 	cp $7
 	jp c, Func_d1426
 	writenpctext TreeBitstreamText_45564
@@ -7734,14 +7734,14 @@ Func_d13ff: ; d13ff (34:53ff)
 	jp Func_d1454
 
 Func_d1426: ; d1426 (34:5426)
-	ld a, [wc793 + 3]
+	ld a, [wc796]
 	cp $f
 	jp nz, Func_d1437
 	writenpctext TreeBitstreamText_45564
 	jp Func_d1454
 
 Func_d1437: ; d1437 (34:5437)
-	ld a, [wc793 + 3]
+	ld a, [wc796]
 	cp $9
 	jp c, Func_d1448
 	writenpctext TreeBitstreamText_45875
@@ -7982,13 +7982,13 @@ Func_d16df: ; d16df (34:56df)
 	xor a
 	call Func_80688_34
 Func_d16e8: ; d16e8 (34:56e8)
-	call Func_8020c_34
+	call WaitMovement_34
 	move_player $1, Data_d1678
 	ld bc, Data_d167c
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call Func_8020c_34
+	call WaitMovement_34
 	ld e, $2
 	xor a
 	call SpriteFace_34
@@ -8131,7 +8131,7 @@ Func_d1866: ; d1866 (34:5866)
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call Func_8020c_34
+	call WaitMovement_34
 	ld e, $1
 	xor a
 	call SpriteFace_34
@@ -8140,7 +8140,7 @@ Func_d1866: ; d1866 (34:5866)
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call Func_8020c_34
+	call WaitMovement_34
 	ld e, $2
 	xor a
 	call SpriteFace_34
@@ -8177,7 +8177,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call Func_8020c_34
+	call WaitMovement_34
 	ld e, $1
 	xor a
 	call SpriteFace_34
@@ -8186,7 +8186,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call Func_8020c_34
+	call WaitMovement_34
 	ld e, $0
 	xor a
 	call SpriteFace_34
@@ -10621,8 +10621,8 @@ Func_d39a6: ; d39a6 (34:79a6)
 	playsfx $64
 	loademote $3, $1, $13
 	call Func_80f54_34
-	call Func_801d5_34
-	call Func_8018b_34
+	call WaitEmote_34
+	call HideEmote_34
 	loademote $2, $1, $13
 	playsfx $64
 	ld a, $1
@@ -10631,8 +10631,8 @@ Func_d39a6: ; d39a6 (34:79a6)
 	playsfx $4e
 	call Func_80f02_34
 	call Func_80f54_34
-	call Func_801d5_34
-	call Func_8018b_34
+	call WaitEmote_34
+	call HideEmote_34
 	loademote $2, $1, $13
 	playsfx $64
 	ld a, $2
@@ -10641,8 +10641,8 @@ Func_d39a6: ; d39a6 (34:79a6)
 	playsfx $4e
 	call Func_80f02_34
 	call Func_80f54_34
-	call Func_801d5_34
-	call Func_8018b_34
+	call WaitEmote_34
+	call HideEmote_34
 	loademote $2, $1, $13
 	playsfx $64
 	ld a, $3
@@ -10651,8 +10651,8 @@ Func_d39a6: ; d39a6 (34:79a6)
 	playsfx $4e
 	call Func_80f02_34
 	call Func_80f54_34
-	call Func_801d5_34
-	call Func_8018b_34
+	call WaitEmote_34
+	call HideEmote_34
 	loademote $2, $1, $13
 	playsfx $64
 	ld a, $4
@@ -10661,8 +10661,8 @@ Func_d39a6: ; d39a6 (34:79a6)
 	playsfx $4e
 	call Func_80f02_34
 	call Func_80f54_34
-	call Func_801d5_34
-	call Func_8018b_34
+	call WaitEmote_34
+	call HideEmote_34
 	call Func_80eb1_34
 	ld l, $6
 	push hl
@@ -10917,7 +10917,7 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	playsfx $65
 	script_sleep $3c
 	playsfx $43
-	call Func_801d5_34
+	call WaitEmote_34
 	setevent $f1
 	ld l, $9
 	push hl
@@ -10935,7 +10935,7 @@ Func_d3ceb: ; d3ceb (34:7ceb)
 	call Func_80653_34
 	loademote $1, $6, $26
 	call Func_8001c_34
-	call Func_801d5_34
+	call WaitEmote_34
 	ld a, $1
 	call PlayerFace_34
 	ld l, $5
