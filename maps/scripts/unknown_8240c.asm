@@ -56,14 +56,14 @@ Func_82446:
 	jp Func_82489
 
 Func_82464: ; 82464 (20:6464)
-	applymovementdata $1, Data_8243a
+	move_player $1, Data_8243a
 	call Func_8020c_20
 	xor a
 	call PlayerFace_20
 	jp Func_82489
 
 Func_82478: ; 82478 (20:6478)
-	applymovementdata $1, Data_82434
+	move_player $1, Data_82434
 	call Func_8020c_20
 	xor a
 	call PlayerFace_20

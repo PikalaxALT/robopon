@@ -112,7 +112,7 @@ Func_82894: ; 82894 (20:6894)
 	ld e, BANK(Data_82886)
 	ld a, $1
 	call Func_801f7_20
-	applymovementdata $1, Data_8288a
+	move_player $1, Data_8288a
 	call Func_8020c_20
 	writenpctext TreeBitstreamText_39235
 	writenpctext TreeBitstreamText_39257
@@ -120,7 +120,7 @@ Func_82894: ; 82894 (20:6894)
 	ld e, BANK(Data_82890)
 	ld a, $1
 	call Func_801f7_20
-	applymovementdata $3, Data_82890
+	move_player $3, Data_82890
 	call Func_8020c_20
 	ret
 
@@ -159,14 +159,14 @@ Func_828df:
 	call Func_80688_20
 	call Func_8020c_20
 	sprite_face $2, $2
-	applymovementdata $1, Data_828db
+	move_player $1, Data_828db
 	call Func_8020c_20
 	resetevent $f8
 	jp Func_82964
 
 Func_82940: ; 82940 (20:6940)
 	writenpctext TreeBitstreamText_45ebc
-	applymovementdata $1, Data_828d7
+	move_player $1, Data_828d7
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
@@ -179,7 +179,7 @@ Func_82964: ; 82964 (20:6964)
 Func_82967: ; 82967 (20:6967)
 	ld hl, FillMemory
 	call PrintTextWithNPCName_20
-	applymovementdata $1, Data_828d7
+	move_player $1, Data_828d7
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
@@ -231,7 +231,7 @@ Func_829dd: ; 829dd (20:69dd)
 	checkevent $f8
 	or a
 	jp nz, .asm_829fc
-	applymovementdata $1, Data_829d9
+	move_player $1, Data_829d9
 	call Func_8020c_20
 	setevent $f8
 .asm_829fc

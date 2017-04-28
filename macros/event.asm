@@ -87,11 +87,11 @@ loadpeople: MACRO
 	scall LoadMapObjects
 	ENDM
 
-applymovementdata: MACRO
+move_player: MACRO
 	ld c, \1
 	ld de, \2
 	ld a, BANK(\2)
-	scall ApplyMovementData
+	scall MovePlayer
 	ENDM
 
 loademote: MACRO

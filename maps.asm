@@ -1462,7 +1462,7 @@ Func_852ac: ; 852ac (21:52ac)
 	call Func_8020c_21
 	playsfx $33
 	sprite_face $3, $1
-	applymovementdata $1, Data_85298
+	move_player $1, Data_85298
 	script_sleep $1e
 	playsfx $2e
 	call Func_8020c_21
@@ -1856,7 +1856,7 @@ Func_8585f: ; 8585f (21:585f)
 	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, Func_858bd
-	applymovementdata $1, Data_8582e
+	move_player $1, Data_8582e
 	call Func_8020c_21
 	playmusic SONG_NONE
 	playmusic SONG_0A
@@ -3117,7 +3117,7 @@ Func_86943: ; 86943 (21:6943)
 	playmusic SONG_NONE
 	playmusic SONG_TITLE
 	call Func_8020c_21
-	applymovementdata $1, Data_86907
+	move_player $1, Data_86907
 	call Func_8020c_21
 	xor a
 	call PlayerFace_21
@@ -3715,7 +3715,7 @@ Data_87376:
 	dr $87376, $8737a
 
 Func_8737a: ; 8737a (21:737a)
-	applymovementdata $1, Data_87376
+	move_player $1, Data_87376
 	call Func_8020c_21
 	ret
 
@@ -5394,10 +5394,409 @@ Func_957b0: ; 957b0
 	dr $957b0, $95817
 
 Func_95817: ; 95817
-	dr $95817, $958c2
+	dr $95817, $95828
 
-Func_958c2: ; 958c2
-	dr $958c2, $95c14
+Data_95828: ; 95828
+	dr $95828, $95833
+
+Data_95833: ; 95833
+	dr $95833, $95844
+
+Data_95844: ; 95844
+	dr $95844, $9587c
+
+Data_9587c: ; 9587c
+	dr $9587c, $958c2
+
+Func_958c2: ; 958c2 (25:58c2)
+	call Func_9596a
+	ld hl, Func_9596a
+	call Func_80f11_25
+	ld e, $1
+	ld hl, Data_95828
+	call LoadWarps_25
+	ld e, $1
+	ld hl, Data_95833
+	call Func_80ce7_25
+	ld a, $c
+	call PlayMusic_25
+	ld hl, $f
+	call CheckEventFlag_25
+	or a
+	jp nz, Func_9590a
+	ld e, $4
+	ld hl, Data_95844
+	call LoadMapObjects_25
+	ld e, $0
+	ld a, $1
+	call SetPersonVisibilityState_25
+	call Func_8001c_25
+	call Func_959a9
+	ld e, $1
+	ld hl, $f
+	call EventFlagAction_25
+	jp Func_95957
+
+Func_9590a: ; 9590a (25:590a)
+	ld a, [wc78c]
+	cp $a
+	jp c, Func_95935
+	ld e, $5
+	ld hl, Data_9587c
+	call LoadMapObjects_25
+	ld c, $6
+	ld e, $9
+	xor a
+	call Func_80080_25
+	ld e, $2
+	xor a
+	call SpriteFace_25
+	ld e, $0
+	ld a, $1
+	call SetPersonVisibilityState_25
+	call Func_8001c_25
+	jp Func_95957
+
+Func_95935: ; 95935 (25:5935)
+	ld e, $5
+	ld hl, Data_9587c
+	call LoadMapObjects_25
+	ld c, $0
+	ld e, $0
+	ld a, $1
+	call Func_80080_25
+	ld e, $0
+	ld a, $1
+	call SetPersonVisibilityState_25
+	ld e, $0
+	ld a, $4
+	call SetPersonVisibilityState_25
+	call Func_8001c_25
+Func_95957: ; 95957 (25:5957)
+	ret
+
+Data_95958:
+	dr $95958, $9595e
+
+Data_9595e: ; 9595e
+	dr $9595e, $95964
+
+Data_95964: ; 95964
+	dr $95964, $9596a
+
+Func_9596a: ; 9596a (25:596a)
+	ld a, [wc78c]
+	cp $a
+	jp nc, Func_9597e
+	ld hl, Data_95964
+	call Func_80d9b_25
+	call Func_80f02_25
+	jp Func_95998
+
+Func_9597e: ; 9597e (25:597e)
+	ld hl, $5b
+	call CheckEventFlag_25
+	cp $1
+	jp nz, Func_95998
+	ld hl, Data_95958
+	call Func_80d9b_25
+	ld hl, Data_9595e
+	call Func_80d9b_25
+	call Func_80f02_25
+Func_95998: ; 95998 (25:5998)
+	ret
+
+Data_95999:
+	dr $95999, $9599d
+
+Data_9599d: ; 9599d
+	dr $9599d, $959a1
+
+Data_959a1: ; 959a1
+	dr $959a1, $959a5
+
+Data_959a5: ; 959a5
+	dr $959a5, $959a9
+
+Func_959a9: ; 959a9 (25:59a9)
+	ld bc, Data_95999
+	ld e, $25
+	xor a
+	call Func_801f7_25
+	ld c, $1
+	ld de, Data_9599d
+	ld a, $25
+	call MovePlayer_25
+	ld a, $31
+	call PlaySFX_25
+	ld c, $1
+	ld e, $2
+	ld a, $c
+	call LoadEmote_25
+	call Func_801d5_25
+	ld hl, $1e
+	call ScriptSleep_25
+	ld a, STARTER + 1
+	call Func_800b8_25
+	ld e, a
+	ld a, $1
+	call ChangeSprite_25
+	ld e, $2
+	ld a, $1
+	call SpriteFace_25
+	ld e, $1
+	ld a, $1
+	call SetPersonVisibilityState_25
+	ld bc, Data_959a1
+	ld e, $25
+	ld a, $1
+	call Func_80688_25
+	call Func_8020c_25
+	ld a, $31
+	call PlaySFX_25
+	ld c, $1
+	ld e, $4
+	ld a, $c
+	call LoadEmote_25
+	call Func_801d5_25
+	call Func_8018b_25
+	ld e, $1
+	xor a
+	call SpriteFace_25
+	ld hl, $12
+	call PrintTextWithNPCName_25
+	ld bc, Data_959a5
+	ld e, $25
+	ld a, $1
+	call Func_801f7_25
+	call Func_8020c_25
+	ld e, $0
+	ld a, $1
+	call SetPersonVisibilityState_25
+	ld a, $2a
+	call PlaySFX_25
+	xor a
+	call PlayMusic_25
+	ld a, $19
+	call PlayMusic_25
+	ld hl, $b4
+	call ScriptSleep_25
+	xor a
+	call PlayMusic_25
+	ld a, $c
+	call PlayMusic_25
+IF DEF(SUN)
+	ld hl, $13
+	call PrintTextStandard_25
+ENDC
+IF DEF(STAR)
+	ld hl, $441
+	call PrintTextStandard_25
+ENDC
+	ld a, $3
+	call PlayerFace_25
+	ld hl, $14
+	call PrintTextWithNPCName_25
+	ld a, $2a
+	call PlaySFX_25
+	ld hl, $3c0
+	call PrintTextStandard_25
+	ld a, [wc78c]
+	cp $a
+	jp nc, Func_95a7f
+	ld hl, $63
+	call CheckEventFlag_25
+	cp $1
+	jp nz, Func_95a7f
+	ld hl, $3c1
+	call PrintTextWithNPCName_25
+Func_95a7f: ; 95a7f (25:5a7f)
+	push hl
+	push hl
+	ld hl, $0
+	push hl
+	ld hl, $3e8
+	push hl
+	call AdjustMoney
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ld a, [wc793]
+	cp $3
+	jp nz, Func_95aa4
+	ld c, $4
+	ld e, $0
+	ld a, SUNNY + 1
+	call GiveRobot_25
+	jp Func_95ab2
+
+Func_95aa4: ; 95aa4 (25:5aa4)
+	ld c, $5
+	ld e, $0
+	ld a, STARTER + 1
+	call GiveRobot_25
+	ld a, $28
+	call Func_810a3_25
+Func_95ab2: ; 95ab2 (25:5ab2)
+	ret
+
+Data_95ab3:
+	dr $95ab3, $95ab9
+
+Func_95ab9:
+	ld a, e
+	or a
+	jp nz, Func_95c0b
+	ld hl, $f3
+	call CheckEventFlag_25
+	cp $1
+	jp nz, Func_95b02
+	ld hl, $f5
+	call CheckEventFlag_25
+	or a
+	jp nz, Func_95b02
+	xor a
+	call FacePlayer_25
+	ld hl, $47d
+	call PrintTextWithNPCName_25
+	ld a, $2a
+	call PlaySFX_25
+	ld hl, $47f
+	call PrintTextStandard_25
+	ld c, $0
+	ld e, $1
+	ld a, $1b
+	call Func_80d4d_25
+	ld hl, $481
+	call PrintTextWithNPCName_25
+	ld e, $1
+	ld hl, $f5
+	call EventFlagAction_25
+	jp Func_95c0b
+
+Func_95b02: ; 95b02 (25:5b02)
+	ld hl, $f4
+	call CheckEventFlag_25
+	cp $1
+	jp nz, Func_95b40
+	ld hl, $f6
+	call CheckEventFlag_25
+	or a
+	jp nz, Func_95b40
+	xor a
+	call FacePlayer_25
+	ld hl, CopyFromDEtoHL
+	call PrintTextWithNPCName_25
+	ld a, $2a
+	call PlaySFX_25
+	ld hl, $480
+	call PrintTextStandard_25
+	ld c, $0
+	ld e, $1
+	ld a, $1a
+	call Func_80d4d_25
+	ld e, $1
+	ld hl, $f6
+	call EventFlagAction_25
+	jp Func_95c0b
+
+Func_95b40: ; 95b40 (25:5b40)
+	ld a, [wc78c]
+	cp $14
+	jp nz, Func_95b81
+	ld hl, $e7
+	call CheckEventFlag_25
+	or a
+	jp nz, Func_95b81
+	xor a
+	call FacePlayer_25
+	ld hl, $457
+	call PrintTextWithNPCName_25
+	ld a, $2a
+	call PlaySFX_25
+	ld hl, $458
+	call PrintTextStandard_25
+	ld c, $1e
+	ld e, $0
+	ld a, $16
+	call GiveRobot_25
+	ld e, $1
+	ld hl, $e7
+	call EventFlagAction_25
+	ld e, $2
+	xor a
+	call SpriteFace_25
+	jp Func_95c0b
+
+Func_95b81: ; 95b81 (25:5b81)
+	ld a, [wc78c]
+	cp $a
+	jp c, Func_95bdb
+	ld a, [wPlayerFacing]
+	cp $2
+	jp z, Func_95b96
+	cp $1
+	jp nz, Func_95ba4
+Func_95b96: ; 95b96 (25:5b96)
+	ld c, $1
+	ld de, Data_95ab3
+	ld a, $25
+	call MovePlayer_25
+	xor a
+	call PlayerFace_25
+Func_95ba4: ; 95ba4 (25:5ba4)
+	ld e, $2
+	xor a
+	call SpriteFace_25
+	ld hl, $c4
+	call CheckEventFlag_25
+	or a
+	jp nz, Func_95bc2
+	ld hl, $3c2
+	call PrintTextWithNPCName_25
+	ld e, $1
+	ld hl, $c4
+	call EventFlagAction_25
+Func_95bc2: ; 95bc2 (25:5bc2)
+	ld hl, $3c3
+	call PrintTextWithNPCNameAndYesNoBox_25
+	or a
+	jp nz, Func_95bd2
+	call Func_80479_25
+	jp Func_95bd8
+
+Func_95bd2: ; 95bd2 (25:5bd2)
+	ld hl, $3c4
+	call PrintTextWithNPCName_25
+Func_95bd8: ; 95bd8 (25:5bd8)
+	jp Func_95c0b
+
+Func_95bdb: ; 95bdb (25:5bdb)
+	xor a
+	call FacePlayer_25
+	call RepairRobots_25
+	xor a
+	call PlayMusic_25
+	ld a, $16
+	call PlayMusic_25
+	ld c, $1
+	ld e, $2
+	ld a, $8
+	call LoadEmote_25
+	call Func_801d5_25
+	call Func_8018b_25
+	ld hl, $322
+	call PrintTextStandard_25
+	ld hl, $15
+	call PrintTextWithNPCName_25
+	ld a, $c
+	call PlayMusic_25
+Func_95c0b: ; 95c0b (25:5c0b)
+	ret
+
+Data_95c0c:
+	dr $95c0c, $95c14
 
 Func_95c14:: ; 95c14
 	dr $95c14, $95c79
@@ -6679,7 +7078,7 @@ Func_b7b62: ; b7b62 (2d:7b62)
 	ld c, $1
 	ld de, Data_b7b5e
 	ld a, $2d
-	call ApplyMovementData_2d_2
+	call MovePlayer_2d_2
 	ld hl, $123
 	call PrintTextWithNPCName_2d_2
 	ld a, $5a
@@ -6921,7 +7320,7 @@ Func_b7d97: ; b7d97 (2d:7d97)
 	ld c, $1
 	ld de, Data_b7d85
 	ld a, $2d
-	call ApplyMovementData_2d_2
+	call MovePlayer_2d_2
 	ld hl, $125
 	call PrintTextWithNPCNameAndYesNoBox_2d_2
 	or a
@@ -6949,7 +7348,7 @@ Func_b7dba: ; b7dba (2d:7dba)
 	ld c, $1
 	ld de, Data_b7d89
 	ld a, $2d
-	call ApplyMovementData_2d_2
+	call MovePlayer_2d_2
 	ld a, $65
 	call PlaySFX_2d_2
 	call Func_80eb1_2d_2
@@ -7584,7 +7983,7 @@ Func_d16df: ; d16df (34:56df)
 	call Func_80688_34
 Func_d16e8: ; d16e8 (34:56e8)
 	call Func_8020c_34
-	applymovementdata $1, Data_d1678
+	move_player $1, Data_d1678
 	ld bc, Data_d167c
 	ld e, $34
 	xor a
@@ -7653,7 +8052,7 @@ Func_d1749: ; d1749 (34:5749)
 	cp $a
 	jp nz, Func_d1816
 Func_d177e: ; d177e (34:577e)
-	applymovementdata $1, Data_d172b
+	move_player $1, Data_d172b
 	ld a, $2
 	call PlayerFace_34
 	script_sleep $1e
@@ -7674,7 +8073,7 @@ Func_d17c7: ; d17c7 (34:57c7)
 	jp Func_d1866
 
 Func_d17ca: ; d17ca (34:57ca)
-	applymovementdata $1, Data_d1731
+	move_player $1, Data_d1731
 	ld a, $2
 	call PlayerFace_34
 	script_sleep $1e
@@ -7695,7 +8094,7 @@ Func_d1813: ; d1813 (34:5813)
 	jp Func_d1866
 
 Func_d1816: ; d1816 (34:5816)
-	applymovementdata $1, Data_d1737
+	move_player $1, Data_d1737
 	ld a, $2
 	call PlayerFace_34
 	script_sleep $1e
@@ -7736,7 +8135,7 @@ Func_d1866: ; d1866 (34:5866)
 	ld e, $1
 	xor a
 	call SpriteFace_34
-	applymovementdata $1, Data_d1741
+	move_player $1, Data_d1741
 	ld bc, Data_d1745
 	ld e, $34
 	xor a
@@ -7782,7 +8181,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	ld e, $1
 	xor a
 	call SpriteFace_34
-	applymovementdata $1, Data_d18b2
+	move_player $1, Data_d18b2
 	ld bc, Data_d18b6
 	ld e, $34
 	xor a

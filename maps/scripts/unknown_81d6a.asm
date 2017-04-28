@@ -119,7 +119,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	writetext TreeBitstreamText_38fae
 	loademote $1, $4, $1f
 	script_sleep $2d
-	applymovementdata $1, Data_81e23
+	move_player $1, Data_81e23
 	call Func_801d5_20
 	ld a, $3b
 	call OverworldPlaySFX
@@ -144,7 +144,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	script_sleep $1
 	call Func_8018b_20
 	script_sleep $1e
-	applymovementdata $1, Data_81e27
+	move_player $1, Data_81e27
 	call Func_8020c_20
 	ret
 
@@ -237,7 +237,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	call SetPersonVisibilityState_20
 	loademote $1, $4, $1f
 	script_sleep $2d
-	applymovementdata $1, Data_81f37
+	move_player $1, Data_81f37
 	call Func_801d5_20
 	xor a
 	call PlayerFace_20
@@ -248,7 +248,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	script_sleep $1e
 	writetext TreeBitstreamText_3ecd6
 	script_sleep $1e
-	applymovementdata $1, Data_81f3d
+	move_player $1, Data_81f3d
 	playsfx $2e
 	ld l, $1a
 	push hl

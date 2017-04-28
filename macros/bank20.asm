@@ -105,7 +105,7 @@ Func_800b8_\1:
 	pop af
 	jp FarCall
 
-ChangeSprite_\1:
+ChangeSprite_\1: ; 800c8
 	push af
 	push de
 	ld hl, sp+$0
@@ -299,7 +299,7 @@ AskRepairRobots_\1:
 	callba_hli Func_8f44
 	ret
 
-RepairRobots_\1:
+RepairRobots_\1: ; 802e0
 	callba_hli RepairRobots
 	ret
 
@@ -678,7 +678,7 @@ CheckEventFlag_\1: ; 8062e (20:462e)
 	pop hl
 	jp FarCall
 
-ApplyMovementData_\1: ; 8063e (20:463e)
+MovePlayer_\1: ; 8063e (20:463e)
 	push af
 	push de
 	push bc

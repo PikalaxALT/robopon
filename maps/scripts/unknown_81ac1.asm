@@ -168,16 +168,16 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $f
 	call FadeOutAudio_20
 	playmusic SONG_NONE
-	applymovementdata $1, Data_81b35
+	move_player $1, Data_81b35
 	call Func_8020c_20
 	ld a, $2
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_390b4
 	script_sleep $1e
-	applymovementdata $1, Data_81b39
+	move_player $1, Data_81b39
 	call Func_8020c_20
 	writetext TreeBitstreamText_390d1
-	applymovementdata $1, Data_81b3d
+	move_player $1, Data_81b3d
 	call Func_8020c_20
 	ld a, $1
 	call FadeInAudio_20

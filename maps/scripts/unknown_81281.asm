@@ -327,7 +327,7 @@ Data_814bb:
 
 Func_814c1: ; 814c1 (20:54c1)
 	playmusic SONG_WILD_BATTLE
-	applymovementdata $1, Data_814a9
+	move_player $1, Data_814a9
 	call Func_8020c_20
 	xor a
 	call PlayerFace_20
@@ -399,7 +399,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld e, BANK(Data_814bb)
 	xor a
 	call Func_801f7_20
-	applymovementdata $1, Data_814b3
+	move_player $1, Data_814b3
 	ret
 
 Data_815d0:
@@ -424,11 +424,11 @@ Func_81607:
 	ld a, [wPlayerFacing]
 	cp FACE_RIGHT
 	jp nz, Func_8162b
-	applymovementdata $0, Data_815f9
+	move_player $0, Data_815f9
 	jp Func_81635
 
 Func_8162b: ; 8162b (20:562b)
-	applymovementdata $0, Data_815ff
+	move_player $0, Data_815ff
 Func_81635: ; 81635 (20:5635)
 	xor a
 	call PlayerFace_20
@@ -539,7 +539,7 @@ Func_8172f: ; 8172f (20:572f)
 	call Func_801f7_20
 	call Func_8020c_20
 	script_sleep $1e
-	applymovementdata $1, Data_81723
+	move_player $1, Data_81723
 	call Func_8020c_20
 	ld a, $2
 	call PlayerFace_20
@@ -590,7 +590,7 @@ Func_81811:
 	checkevent $3
 	or a
 	jp nz, Func_8193b
-	applymovementdata $1, Data_8180d
+	move_player $1, Data_8180d
 	ld a, $1
 	call PlayerFace_20
 	ld a, $a
@@ -632,7 +632,7 @@ Func_8187c: ; 8187c (20:587c)
 	jp Func_81905
 
 Func_818b7: ; 818b7 (20:58b7)
-	applymovementdata $1, Data_81801
+	move_player $1, Data_81801
 	call Func_8020c_20
 	ld a, $1
 	call PlayerFace_20
@@ -705,7 +705,7 @@ Func_81973:
 	writenpctext TreeBitstreamText_3976c
 	ld a, $1
 	call PlayerFace_20
-	applymovementdata $1, Data_8196f
+	move_player $1, Data_8196f
 	call Func_8020c_20
 	ld e, $2
 	xor a
@@ -730,7 +730,7 @@ Func_819b0:
 	writenpctext TreeBitstreamText_39889
 	xor a
 	call PlayerFace_20
-	applymovementdata $1, Data_819ac
+	move_player $1, Data_819ac
 	call Func_8020c_20
 	sprite_face $3, $3
 Func_819e8: ; 819e8 (20:59e8)
