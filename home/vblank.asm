@@ -165,12 +165,12 @@ VBlank::
 	push bc
 	ld hl, wCGB_BGPalsBuffer
 	ld a, $80
-	ld c, rBGPI % $100
+	ld c, low(rBGPI)
 	ld [$ff00+c], a
-	ld c, rOBPI % $100
+	ld c, low(rOBPI)
 	ld [$ff00+c], a
 	ld b, $8
-	ld c, rBGPD % $100
+	ld c, low(rBGPD)
 .bgpals
 rept 8
 	ld a, [hli]
@@ -179,7 +179,7 @@ endr
 	dec b
 	jr nz, .bgpals
 	ld b, $8
-	ld c, rOBPD % $100
+	ld c, low(rOBPD)
 .obpals
 rept 8
 	ld a, [hli]

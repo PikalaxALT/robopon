@@ -1,4 +1,6 @@
 lib_bank_20: MACRO
+script_bank = "\1"
+
 Func_80000_\1:
 	jpba_hli Func_50d85
 

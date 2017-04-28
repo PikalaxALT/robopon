@@ -90,9 +90,9 @@ AllocateMemory:: ; 17aba (5:7aba)
 	pop hl
 	push hl
 	ld a, l
-	sub $c000 % $100
+	sub low($c000)
 	ld a, h
-	sbc $c000 / $100
+	sbc high($c000)
 	jp nc, .okay2
 	jp .next
 
@@ -103,9 +103,9 @@ AllocateMemory:: ; 17aba (5:7aba)
 	pop hl
 	push hl
 	ld a, l
-	sub $c000 % $100
+	sub low($c000)
 	ld a, h
-	sbc $c000 / $100
+	sbc high($c000)
 	jp c, .okay_3
 	jp .next
 
@@ -523,9 +523,9 @@ Func_17d7b: ; 17d7b
 	jp nz, .inc_next
 	call GetHLAtSPPlus8
 	ld a, l
-	sub $c000 % $100
+	sub low($c000)
 	ld a, h
-	sbc $c000 / $100
+	sbc high($c000)
 	jp c, .sram
 	push bc
 	call GetHLAtSPPlus10

@@ -456,9 +456,9 @@ GetMapPalettePointer:
 	ld de, $0
 .find_map_loop: ; c74cf (31:74cf)
 	ld a, e
-	sub (Data_c7362End - Data_c7362) % $100
+	sub (Data_c7362End - low(Data_c7362))
 	ld a, d
-	sbc (Data_c7362End - Data_c7362) / $100
+	sbc (Data_c7362End - high(Data_c7362))
 	jp nc, .got_map
 	ld a, [bc]
 	ld hl, wMapGroup

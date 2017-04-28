@@ -495,14 +495,14 @@ HandleMenu: ; 174ab (5:74ab)
 .next
 	ld hl, -1
 	ld a, b
-	sub $8000 / $100
+	sub high($8000)
 	or c
 	jp nz, .asm_1778d
 	jp .trigger_enter_callback
 
 .asm_1778d
 	ld a, b
-	sub $4000 / $100
+	sub high($4000)
 	or c
 	jp z, .jp_to_loop
 	jp .done

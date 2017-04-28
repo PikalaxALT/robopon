@@ -48,9 +48,9 @@ Predef:: ; 68 (0:0068)
 	dec hl
 	ld a, [hROMBank]
 	ld [hld], a
-	ld [hl], .Return / $100
+	ld [hl], high(.Return)
 	dec hl
-	ld [hl], .Return % $100
+	ld [hl], low(.Return)
 	; get the far pointer
 	sla e
 	ld a, d
@@ -2551,7 +2551,7 @@ CallAudioEngine1C::
 	ld a, h
 	ld de, .Return
 	push de
-	ld h, SoundOff_1c / $100
+	ld h, high(SoundOff_1c)
 	push hl
 	ret
 
@@ -2561,7 +2561,7 @@ CallAudioEngine1C::
 	jp BankSwitch
 
 SoundOff:: ; 1a90 (0:1a90)
-	ld l, SoundOff_1c % $100
+	ld l, low(SoundOff_1c)
 	jr CallAudioEngine1C
 
 UpdateSound:: ; 1a94 (0:1a94)
@@ -2570,7 +2570,7 @@ UpdateSound:: ; 1a94 (0:1a94)
 	ld a, [wVideoTransferRequestFlags]
 	set 1, a
 	ld [wVideoTransferRequestFlags], a
-	ld l, UpdateSound_1c % $100
+	ld l, low(UpdateSound_1c)
 	call CallAudioEngine1C
 	ld a, [wVideoTransferRequestFlags]
 	res 1, a
@@ -2578,47 +2578,47 @@ UpdateSound:: ; 1a94 (0:1a94)
 	ret
 
 StartSong:: ; 1aaf (0:1aaf)
-	ld l, StartSong_1c % $100
+	ld l, low(StartSong_1c)
 	ld h, a
 	jr CallAudioEngine1C
 
 StartSFX:: ; 1ab4 (0:1ab4)
-	ld l, StartSFX_1c % $100
+	ld l, low(StartSFX_1c)
 	ld h, a
 	jr CallAudioEngine1C
 
 SelectChannels:: ; 1ab9
-	ld l, SelectChannels_1c % $100
+	ld l, low(SelectChannels_1c)
 	ld h, a
 	jr CallAudioEngine1C
 
 CheckSongFinished:: ; 1abe
-	ld l, CheckSongFinished_1c % $100
+	ld l, low(CheckSongFinished_1c)
 	call CallAudioEngine1C
 	ld a, h
 	ret
 
 CheckSFXFinished:: ; 1ac5
-	ld l, CheckSFXFinished_1c % $100
+	ld l, low(CheckSFXFinished_1c)
 	call CallAudioEngine1C
 	ld a, h
 	ret
 
 ToggleMusic:: ; 1acc
-	ld l, ToggleMusic_1c % $100
+	ld l, low(ToggleMusic_1c)
 	jr CallAudioEngine1C
 
 SetVolume:: ; 1ad0
-	ld l, SetVolume_1c % $100
+	ld l, low(SetVolume_1c)
 	ld h, a
 	jr CallAudioEngine1C
 
 BackUpMusicData:: ; 1ad5
-	ld l, BackUpMusicData_1c % $100
+	ld l, low(BackUpMusicData_1c)
 	jr CallAudioEngine1C
 
 RestoreMusicData:: ; 1ad9
-	ld l, RestoreMusicData_1c % $100
+	ld l, low(RestoreMusicData_1c)
 	jr CallAudioEngine1C
 
 GBKiss:: ; 1add

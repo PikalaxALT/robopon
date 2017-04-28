@@ -131,7 +131,7 @@ FillToStackBottomWithWillTestString: ; 40cb (1:40cb)
 	db "WILL TEST", $0
 
 Func_40f4: ; 40f4 (1:40f4)
-	ld c, hPushOAM % $100
+	ld c, low(hPushOAM)
 	ld b, $a
 	ld hl, .PushOAM
 .asm_40fb
@@ -1420,9 +1420,9 @@ BlinkTextCursor:
 	ld hl, wVideoTransferQueueEntry4
 	ld a, $1
 	ld [hli], a
-	ld a, wBlinkerTile % $100
+	ld a, low(wBlinkerTile)
 	ld [hli], a
-	ld a, wBlinkerTile / $100
+	ld a, high(wBlinkerTile)
 	ld [hli], a
 	ld a, e
 	ld [hli], a
@@ -1839,7 +1839,7 @@ Func_6c53: ; 6c53 (1:6c53)
 Func_6c91: ; 6c91 (1:6c91)
 	read_hl_from_sp_plus $28
 	ld e, l
-	ld hl, [sp+$18]
+	ld hl, sp+$18
 	ld [hl], e
 	jp Func_6e0d
 
@@ -51565,9 +51565,9 @@ Func_4d7d6: ; 4d7d6 (13:57d6)
 	write_hl_to wcb53
 	read_hl_from wcb55
 	add hl, de
-	ld a, 30000 % $100
+	ld a, low(30000)
 	sub l
-	ld a, 30000 / $100
+	ld a, high(30000)
 	sbc h
 	jp c, Func_4d81a
 	read_hl_from wcb55

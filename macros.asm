@@ -131,9 +131,9 @@ ENDM
 callba: MACRO
 	ld a, BANK(\1)
 	ld [wFarCallDestBank], a
-	ld a, \1 % $100
+	ld a, low(\1)
 	ld [wFarCallDestAddr], a
-	ld a, \1 / $100
+	ld a, high(\1)
 	ld [wFarCallDestAddr + 1], a
 	call FarCall
 	ENDM
@@ -142,9 +142,9 @@ set_farcall_addrs_hli: MACRO
 	ld hl, wFarCallDestBank
 	ld [hl], BANK(\1)
 	inc hl
-	ld [hl], \1 % $100
+	ld [hl], low(\1)
 	inc hl
-	ld [hl], \1 / $100
+	ld [hl], high(\1)
 	ENDM
 
 callba_hli: MACRO
@@ -161,10 +161,14 @@ ctxt: MACRO
 	fail "ctxt must be passed through textcomp.py"
 	ENDM
 
+bigdw: MACRO
+	db high(\1), low(\1)
+	ENDM
+
 dx: MACRO
 x = \2
 rept \1
-	db x & $ff
+	db low(x)
 x = x >> 8
 endr
 endm
@@ -172,7 +176,7 @@ endm
 bigdx: MACRO
 y = \1
 rept \1
-	db (\2 >> ((y - 1) * 8)) & $ff
+	db low(\2 >> ((y - 1) * 8))
 y = y - 1
 endr
 endm

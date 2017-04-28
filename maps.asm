@@ -6919,7 +6919,7 @@ Data_b7d89: ; b7d89
 
 Func_b7d97: ; b7d97 (2d:7d97)
 	ld c, $1
-	ld de, Data_b7d85
+	ld hl, Data_b7d85
 	ld a, $2d
 	call ApplyMovementData_2d_2
 	ld hl, $125
@@ -11575,9 +11575,9 @@ Func_da4dc:: ; da4dc (36:64dc)
 	ld hl, wOAMBuffer
 .loop
 	ld a, l
-	sub wOAMBufferEnd % $100
+	sub low(wOAMBufferEnd)
 	ld a, h
-	sbc wOAMBufferEnd / $100
+	sbc high(wOAMBufferEnd)
 	jp nc, .done
 	ld a, $ff
 	ld [hl], a
