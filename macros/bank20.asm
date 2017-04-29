@@ -1680,14 +1680,14 @@ Func_80cb5_\1:
 	call FarCall
 	ret
 
-Func_80cc6_\1: ; 80cc6 (20:4cc6)
+LoadPlayerSprite_\1: ; 80cc6 (20:4cc6)
 	push af
 	set_farcall_addrs_hli LoadPlayerSprite
 	pop af
 	call FarCall
 	ret
 
-Func_80cd7_\1:
+Random_\1:
 	push af
 	set_farcall_addrs_hli RandomRange
 	pop af
@@ -2004,9 +2004,9 @@ Func_80f63_\1:
 	callba_hli Func_b6f2
 	ret
 
-Func_80f72_\1:
+LandmarkSign_\1:
 	push hl
-	set_farcall_addrs_hli Func_9a1bb
+	set_farcall_addrs_hli LandmarkSign
 	pop hl
 	call FarCall
 	ret

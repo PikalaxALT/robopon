@@ -44,19 +44,22 @@ person_event: MACRO
 	ENDM
 
 wildbot: MACRO
-	db \1, \2, \3, \4
+	db \1 ; x coord
+	db \2 ; y coord
+	db \3 ; width
+	db \4 ; height
 	shift
 	shift
 	shift
 	shift
 
-	db \1
-	db \2
-	db \3
+	db \1 ; species
+	db \2 ; min level
+	db \3 ; max level 
 	db \4
 	db \5
 	db \6
 	db \7
-	db \8
-	dw \9
+	db \8 ; randgen delta 1
+	dw \9 ; randgen delta 2
 	ENDM

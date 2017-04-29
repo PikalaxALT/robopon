@@ -5282,9 +5282,9 @@ Func_be6ab: ; be6ab (2f:66ab)
 	ld hl, sp+$0
 	ld [hl], $0
 	ld a, $1
-	ld [wc2fa], a
+	ld [wInBattle], a
 	callba_hli AllocateMonsterStruct
-	callba_hli Func_62865
+	callba_hli LoadBattlePals
 	set_farcall_addrs_hli Func_bd6fa
 	ld de, $34a
 	ld hl, Data_be86e
@@ -5439,7 +5439,7 @@ Func_be852: ; be852 (2f:6852)
 Func_be855: ; be855 (2f:6855)
 	callba_hli FreeMonsterStruct
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	xor a
 	call OverworldPlaySong
 	add sp, $52
@@ -5480,7 +5480,7 @@ Func_be8c0: ; be8c0 (2f:68c0)
 	ld bc, $29
 	call MemCopy
 	ld a, $1
-	ld [wc2fa], a
+	ld [wInBattle], a
 	callba_hli AllocateMonsterStruct
 	ld hl, sp+$29
 	call WriteHLToSPPlus3
@@ -5500,7 +5500,7 @@ Func_be8c0: ; be8c0 (2f:68c0)
 	callba_hli DoBattle
 	callba_hli FreeMonsterStruct
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	add sp, $38
 	ret
 
@@ -5990,7 +5990,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	ld [hl], $0
 	xor a
 	ld a, $1
-	ld [wc2fa], a
+	ld [wInBattle], a
 	callba_hli AllocateMonsterStruct
 	ld a, $1
 	ld [wPoncotPicAlignment], a
@@ -6199,7 +6199,7 @@ Func_befa5: ; befa5 (2f:6fa5)
 	ld [wPoncotPicAlignment], a
 	callba_hli FreeMonsterStruct
 	ld a, $1
-	ld [wc2fa], a
+	ld [wInBattle], a
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
 	ld e, $1

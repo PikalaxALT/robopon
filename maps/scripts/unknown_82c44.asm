@@ -30,8 +30,7 @@ Func_82c72: ; 82c72 (20:6c72)
 Func_82c82: ; 82c82 (20:6c82)
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3ca
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c14
 	ret
 
 Func_82c91:

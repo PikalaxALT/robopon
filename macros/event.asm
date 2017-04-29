@@ -23,6 +23,11 @@ writenpctext_yesorno: MACRO
 	scall PrintTextWithNPCNameAndYesNoBox
 	ENDM
 
+landmarksign: MACRO
+	hltext_tree_pointer \1
+	scall LandmarkSign
+	ENDM
+
 script_sleep: MACRO
 	ld hl, \1
 	scall ScriptSleep

@@ -14,8 +14,7 @@ Func_83169:
 	loadpeople $3, Data_8313f
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3cf
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c44
 	ret
 
 Data_83196:

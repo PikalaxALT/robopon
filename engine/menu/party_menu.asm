@@ -352,14 +352,14 @@ Func_5e72d: ; 5e72d (17:672d)
 	ld [hl], a
 	callba_hli Func_5575d
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_54384)
 	ld de, Data_54384
 	ld hl, Data_54365
 	call FarCall
 	ld a, $1
-	ld [wc2fa], a
+	ld [wInBattle], a
 	pop bc
 	pop hl
 	push bc
@@ -872,7 +872,7 @@ Func_5ebab: ; 5ebab (17:6bab)
 	ld e, a
 	ld a, $1
 	call FarCall
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	cp $2
 	jp z, Func_5ebfe
 	callba_hli Func_d767

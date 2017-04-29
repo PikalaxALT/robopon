@@ -352,7 +352,7 @@ RollRandomEncounter: ; b821 (2:7821)
 	ld a, [hl]
 	ld hl, sp+$34
 	cp [hl]
-	jp nc, .asm_ba11
+	jp nc, .level_plus_1
 	set_farcall_addrs_hli RandomRange
 	ld hl, sp+$34
 	ld a, [hl]
@@ -361,11 +361,11 @@ RollRandomEncounter: ; b821 (2:7821)
 	inc a
 	call FarCall
 	ld e, a
-	jp .asm_ba13
+	jp .got_level
 
-.asm_ba11
+.level_plus_1
 	ld e, $1
-.asm_ba13
+.got_level
 	ld hl, sp+$33
 	ld a, [hl]
 	add e
@@ -399,3 +399,138 @@ RollRandomEncounter: ; b821 (2:7821)
 .quit
 	add sp, $3c
 	ret
+
+LoadEnemyData: ; ba47
+	push de
+	push bc
+	push bc
+	push bc
+	push bc
+	push bc
+	push af
+	set_farcall_addrs_hli Func_93370
+	ld hl, sp+$4
+	call FarCall
+	ld hl, sp+$7
+	ld a, [hl]
+	ld b, $2
+	call DivideAbyB
+	ld [wc7bd], a
+	ld a, $1
+	ld [wInBattle], a
+	callba_hli AllocateMonsterStruct
+	pop af
+	ld [wFarCallDestBank], a
+	ld bc, $29
+	read_hl_from_sp_plus $c
+	push hl
+	read_hl_from wCurRobotPointer
+	ld de, $16
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $68
+	add hl, de
+	pop de
+	call FarCopyVideoData
+	read_hl_from wCurRobotPointer
+	ld de, $16
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $68
+	add hl, de
+	call WriteHLToSPPlus9
+	pop bc
+	call GetHLAtSPPlus7
+	inc hl
+	ld [hl], c
+	inc hl
+	ld [hl], b
+	call GetHLAtSPPlus7
+	ld de, $5
+	add hl, de
+	ld [hl], $c5
+	call GetHLAtSPPlus7
+	ld de, $7
+	add hl, de
+	ld [hl], $0
+	call GetHLAtSPPlus7
+	ld de, $8
+	add hl, de
+	ld [hl], $0
+	call GetHLAtSPPlus7
+	ld de, $b
+	add hl, de
+	ld a, [hl]
+	dec a
+	call GetHLAtSPPlus7
+	ld de, $9
+	add hl, de
+	ld [hl], a
+	call GetHLAtSPPlus7
+	ld de, $a
+	add hl, de
+	ld [hl], $1
+	xor a
+Func_baed: ; baed (2:7aed)
+	cp $4
+	jp nc, Func_bb31
+	push af
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus9
+	ld de, $b
+	add hl, de
+	add hl, bc
+	ld e, $1
+	ld a, [hl]
+	sub e
+	ld [hl], a
+	pop af
+	push af
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld c, l
+	ld b, h
+	call GetHLAtSPPlus9
+	ld de, $b
+	add hl, de
+	add hl, bc
+	ld de, $6
+	add hl, de
+	ld a, $1
+	add [hl]
+	ld [hl], a
+	pop af
+	inc a
+	jp Func_baed
+
+Func_bb31: ; bb31 (2:7b31)
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	pop bc
+	ret
+

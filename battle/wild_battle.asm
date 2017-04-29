@@ -13,35 +13,35 @@ StartBattle:: ; bbee (2:7bee)
 	ld hl, sp+$0
 	ld c, l
 	ld b, h
-	call Func_ba47
+	call LoadEnemyData
 	callba_hli BattleIntro
-	callba_hli Func_62865
+	callba_hli LoadBattlePals
 	callba_hli DoBattle
 	callba_hli FreeMonsterStruct
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	ld a, $1
-	call Func_bf4a
+	call CheckBlackedOut
 	push af
 	or a
-	jp z, Func_bc5a
+	jp z, .won
 	ld e, $0
 	ld a, $1
 	call Func_bb37
-	jp Func_bc5e
+	jp .get_return_value
 
-Func_bc5a: ; bc5a (2:7c5a)
+.won: ; bc5a (2:7c5a)
 	xor a
 	call FadeInMap
-Func_bc5e: ; bc5e (2:7c5e)
+.get_return_value: ; bc5e (2:7c5e)
 	pop af
 	cp $1
-	jp nz, Func_bc68
+	jp nz, .return_success
 	xor a
-	jp Func_bc6a
+	jp .quit
 
-Func_bc68: ; bc68 (2:7c68)
+.return_success: ; bc68 (2:7c68)
 	ld a, $1
-Func_bc6a: ; bc6a (2:7c6a)
+.quit: ; bc6a (2:7c6a)
 	add sp, $20
 	ret

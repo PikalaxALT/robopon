@@ -31,8 +31,7 @@ Func_82e70:
 	loadwilds $3, Data_82e46
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3cc
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c2b
 	ret
 
 Data_82eb6:

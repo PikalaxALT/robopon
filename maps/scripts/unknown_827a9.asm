@@ -42,8 +42,7 @@ Func_827de: ; 827de (20:67de)
 	ld a, $1
 	call SetPersonVisibilityState_20
 	call FadeInMap_20
-	ld hl, $3dc
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46ce3
 	call Func_829dd
 	jp Func_8283c
 
@@ -61,8 +60,7 @@ Func_8282c: ; 8282c (20:682c)
 	ld a, $1
 	call SetPersonVisibilityState_20
 	call FadeInMap_20
-	ld hl, $3dc
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46ce3
 Func_8283c: ; 8283c (20:683c)
 	jp Func_82859
 

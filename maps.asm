@@ -40,8 +40,7 @@ Func_83213:
 	loadpeople $1, Data_83205
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3d0
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c4e
 	ret
 
 Data_83240:
@@ -143,7 +142,7 @@ Func_83340:
 	playmusic SONG_SHOP
 	call FadeInMap_20
 	ld hl, Func_03d1
-	call Func_80f72_20
+	call LandmarkSign_20
 	ret
 
 Data_8336d:
@@ -180,8 +179,7 @@ Func_833ba:
 	loadwarps $3, Data_83399
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3d2
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c6a
 	ret
 
 Data_833df:
@@ -225,7 +223,7 @@ Func_83431:
 	playmusic SONG_SHOP
 	call FadeInMap_20
 	ld hl, Func_03d3
-	call Func_80f72_20
+	call LandmarkSign_20
 	ret
 
 Data_8345e:
@@ -266,8 +264,7 @@ Func_834bd:
 	loadpeople $1, Data_834af
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3d4
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c83
 	ret
 
 Data_834ea:
@@ -305,7 +302,7 @@ Func_83537:
 	playmusic SONG_SHOP
 	call FadeInMap_20
 	ld hl, GetSRAMBank
-	call Func_80f72_20
+	call LandmarkSign_20
 	ret
 
 Data_8355c:
@@ -348,8 +345,7 @@ Func_835ae:
 	call Func_80ce7_20
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3d6
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c9b
 	ret
 
 Data_835db:
@@ -392,8 +388,7 @@ Func_83632:
 	call Func_80ce7_20
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3d7
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46ca8
 	ret
 
 Data_8365f:
@@ -436,8 +431,7 @@ Func_836b1:
 	call Func_80ce7_20
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3d8
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46cb3
 	ret
 
 Data_836de:
@@ -480,8 +474,7 @@ Func_83730:
 	call Func_80ce7_20
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3d9
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46cbf
 	ret
 
 Data_8375d:
@@ -518,8 +511,7 @@ Func_837aa:
 	loadwarps $3, Data_83789
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3da
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46ccb
 	ret
 
 Data_837cf:
@@ -562,8 +554,7 @@ Func_83816:
 	call Func_80ce7_20
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3db
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46cd7
 	ret
 
 Data_83843:
@@ -619,8 +610,7 @@ Func_838a2:
 	call SetPersonVisibilityState_20
 Func_838e0: ; 838e0 (20:78e0)
 	call FadeInMap_20
-	ld hl, $3c8
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c00
 	ret
 
 Data_838ea: ; 838ea
@@ -720,43 +710,37 @@ Func_83adb: ; 83adb (20:7adb)
 	checkevent $106
 	or a
 	jp nz, Func_83af3
-	ld hl, $493
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_461a9
 	setevent $106
 Func_83af3: ; 83af3 (20:7af3)
 	checkevent $105
 	or a
 	jp nz, Func_83b0b
-	ld hl, $494
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_461b4
 	setevent $105
 Func_83b0b: ; 83b0b (20:7b0b)
 	checkevent $104
 	or a
 	jp nz, Func_83b23
-	ld hl, $48f
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46175
 	setevent $104
 Func_83b23: ; 83b23 (20:7b23)
 	checkevent $103
 	or a
 	jp nz, Func_83b3b
-	ld hl, $492
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_4619b
 	setevent $103
 Func_83b3b: ; 83b3b (20:7b3b)
 	checkevent $102
 	or a
 	jp nz, Func_83b53
-	ld hl, $491
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_4618f
 	setevent $102
 Func_83b53: ; 83b53 (20:7b53)
 	checkevent $101
 	or a
 	jp nz, Func_83b6b
-	ld hl, $490
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46183
 	setevent $101
 Func_83b6b: ; 83b6b (20:7b6b)
 	jp Func_83b6e
@@ -820,7 +804,7 @@ Func_83b96: ; 83b96 (20:7b96)
 	or a
 	jp nz, Func_83e39
 	ld a, $3
-	call Func_80cd7_20
+	call Random_20
 	cp $2
 	jp z, Func_83c48
 	cp $1
@@ -1276,7 +1260,7 @@ Func_851b4: ; 851b4 (21:51b4)
 Func_851bc: ; 851bc (21:51bc)
 	loadwarps $6, Data_850b4
 	ld a, $1
-	call Func_80cc6_21
+	call LoadPlayerSprite_21
 	ld a, $2
 	ld [wc7e2], a
 	checkevent $32
@@ -1855,7 +1839,7 @@ Func_8585f: ; 8585f (21:585f)
 	call WaitEmote_21
 	call HideEmote_21
 	ld a, $4
-	call Func_80cc6_21
+	call LoadPlayerSprite_21
 	ld a, $1
 	call PlayerFace_21
 	ld l, $b
@@ -2022,8 +2006,7 @@ Func_85ada: ; 85ada (21:5ada)
 	call Func_80150_21
 Func_85afc: ; 85afc (21:5afc)
 	call FadeInMap_21
-	ld hl, $2c4
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_467bb
 	pop bc
 	pop bc
 	pop bc
@@ -2234,8 +2217,7 @@ Func_85d7d: ; 85d7d (21:5d7d)
 	call Func_80150_21
 Func_85d97: ; 85d97 (21:5d97)
 	call FadeInMap_21
-	ld hl, $2ca
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_46803
 	pop bc
 	pop bc
 	pop bc
@@ -2443,8 +2425,7 @@ Func_86019: ; 86019 (21:6019)
 Func_8604f: ; 8604f (21:604f)
 	loadpeople $2, Data_85f26
 Func_86057: ; 86057 (21:6057)
-	ld hl, $2c6
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_467d3
 	jp Func_86094
 
 Func_86060: ; 86060 (21:6060)
@@ -2462,8 +2443,7 @@ Func_86060: ; 86060 (21:6060)
 Func_86086: ; 86086 (21:6086)
 	loadpeople $3, Data_85f42
 Func_8608e: ; 8608e (21:608e)
-	ld hl, $2c8
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_467eb
 Func_86094: ; 86094 (21:6094)
 	pop bc
 	pop bc
@@ -2747,8 +2727,7 @@ Func_864e0: ; 864e0 (21:64e0)
 	loadpeople $3, Data_86361
 Func_864e8: ; 864e8 (21:64e8)
 	call FadeInMap_21
-	ld hl, $2c5
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_467c7
 	jp Func_86575
 
 Func_864f4: ; 864f4 (21:64f4)
@@ -2768,8 +2747,7 @@ Func_86522: ; 86522 (21:6522)
 	loadpeople $4, Data_8638b
 Func_8652a: ; 8652a (21:652a)
 	call FadeInMap_21
-	ld hl, $2c7
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_467df
 	jp Func_86575
 
 Func_86536: ; 86536 (21:6536)
@@ -2789,8 +2767,7 @@ Func_86564: ; 86564 (21:6564)
 	loadpeople $4, Data_863c3
 Func_8656c: ; 8656c (21:656c)
 	call FadeInMap_21
-	ld hl, $2c9
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_467f7
 Func_86575: ; 86575 (21:6575)
 	pop bc
 	pop bc
@@ -3475,7 +3452,7 @@ Func_8703a: ; 8703a (21:703a)
 Func_8706e: ; 8706e (21:706e)
 	playmusic SONG_TOWN1
 	ld a, $1
-	call Func_80cc6_21
+	call LoadPlayerSprite_21
 	call FadeInMap_21
 	ret
 
@@ -3598,8 +3575,7 @@ Func_8723b: ; 8723b (21:723b)
 	xor a
 	ld [wc7da], a
 	call FadeInMap_21
-	ld hl, $2d5
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_4686b
 Func_87265: ; 87265 (21:7265)
 	ret
 
@@ -3748,8 +3724,7 @@ Func_87484: ; 87484 (21:7484)
 Func_87488: ; 87488 (21:7488)
 	playmusic SONG_CAVE
 	call FadeInMap_21
-	ld hl, $2d6
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_46878
 	ret
 
 Func_87497:
@@ -3973,8 +3948,7 @@ Func_87828: ; 87828 (21:7828)
 
 Func_8785f: ; 8785f (21:785f)
 	call FadeInMap_21
-	ld hl, $2d7
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_46886
 Func_87868: ; 87868 (21:7868)
 	jp Func_8788a
 
@@ -3991,8 +3965,7 @@ Func_8787d: ; 8787d (21:787d)
 	ld [wc7da], a
 Func_87881: ; 87881 (21:7881)
 	call FadeInMap_21
-	ld hl, $2d7
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_46886
 Func_8788a: ; 8788a (21:788a)
 	ret
 
@@ -4342,8 +4315,7 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	ld a, $2
 	call PlayerFace_21
 	call FadeInMap_21
-	ld hl, $2d7
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_46886
 	loademote $1, $2, $9
 	playsfx $37
 	call WaitEmote_21
@@ -4490,8 +4462,7 @@ Func_87db3: ; 87db3 (21:7db3)
 	loadpeople $1, Data_87d7a
 	playmusic SONG_CAVE
 	call FadeInMap_21
-	ld hl, $2d8
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_46894
 	ret
 
 Func_87dca:
@@ -4582,8 +4553,7 @@ Func_87ecd: ; 87ecd (21:7ecd)
 	loadpeople $1, Data_87e94
 	playmusic SONG_CAVE
 	call FadeInMap_21
-	ld hl, $2d8
-	call Func_80f72_21
+	landmarksign TreeBitstreamText_46894
 	ret
 
 SECTION "Bank 22", ROMX, BANK [$22]
@@ -4662,10 +4632,140 @@ Func_920c3: ; 920c3
 	dr $920c3, $92965
 
 Func_92965: ; 92965
-	dr $92965, $92aab
+	dr $92965, $929fc
 
-Func_92aab: ; 92aab
-	dr $92aab, $92c92
+Data_929fc: ; 929fc
+	dr $929fc, $92a28
+
+Data_92a28: ; 92a28
+	dr $92a28, $92a2d
+
+Data_92a2d: ; 92a2d
+	dr $92a2d, $92a8f
+
+Data_92a8f: ; 92a8f
+	dr $92a8f, $92aab
+
+Func_92aab: ; 92aab (24:6aab)
+	ld e, $4
+	ld hl, Data_929fc
+	call LoadWarps_24
+	ld e, $1
+	ld hl, Data_92a28
+	call Func_80ce7_24
+	ld a, $3
+	call Func_80d01_24
+	ld e, $7
+	ld hl, Data_92a2d
+	call LoadEncounters_24
+	ld e, $2
+	ld hl, Data_92a8f
+	call LoadMapObjects_24
+	ld a, $8
+	call PlayMusic_24
+	call FadeInMap_24
+	landmarksign TreeBitstreamText_46cec
+	ret
+
+Data_92adf:
+	dr $92adf, $92b08
+
+Func_92b08:
+	push af
+	ld a, e
+	or a
+	jp nz, Func_92b5e
+	ld hl, sp+$1
+	ld a, [hl]
+	call FacePlayer_24
+	ld hl, $8e
+	call CheckEventFlag_24
+	or a
+	jp nz, Func_92b58
+	writetext TreeBitstreamText_42ae8
+	writetext_yesorno TreeBitstreamText_46f28
+	or a
+	jp nz, Func_92b4f
+	ld de, Data_92b60
+	ld hl, Data_92adf
+	call ScriptedBattle_24
+	or a
+	jp nz, Func_92b3e
+	jp Func_92b5e
+
+Func_92b3e: ; 92b3e (24:6b3e)
+	ld e, $1
+	ld hl, $8e
+	call EventFlagAction_24
+	writetext TreeBitstreamText_42af6
+	jp Func_92b55
+
+Func_92b4f: ; 92b4f (24:6b4f)
+	writetext TreeBitstreamText_42ad0
+Func_92b55: ; 92b55 (24:6b55)
+	jp Func_92b5e
+
+Func_92b58: ; 92b58 (24:6b58)
+	ld hl, CheckSFXFinishedPredef
+	call PrintTextStandard_24
+Func_92b5e: ; 92b5e (24:6b5e)
+	pop bc
+	ret
+
+Data_92b60:
+	db "レテﾞィース", $0
+
+Data_92b67:
+	dr $92b67, $92b90
+
+Func_92b90:
+	push af
+	ld a, e
+	or a
+	jp nz, Func_92be6
+	ld hl, sp+$1
+	ld a, [hl]
+	call FacePlayer_24
+	ld hl, $8f
+	call CheckEventFlag_24
+	or a
+	jp nz, Func_92be0
+	writetext TreeBitstreamText_42b02
+	writetext_yesorno TreeBitstreamText_46f28
+	or a
+	jp nz, Func_92bd7
+	ld de, Data_92be8
+	ld hl, Data_92b67
+	call ScriptedBattle_24
+	or a
+	jp nz, Func_92bc6
+	jp Func_92be6
+
+Func_92bc6: ; 92bc6 (24:6bc6)
+	ld e, $1
+	ld hl, $8f
+	call EventFlagAction_24
+	ld hl, CheckSFXFinishedPredef
+	call PrintTextStandard_24
+	jp Func_92bdd
+
+Func_92bd7: ; 92bd7 (24:6bd7)
+	writetext TreeBitstreamText_42b24
+Func_92bdd: ; 92bdd (24:6bdd)
+	jp Func_92be6
+
+Func_92be0: ; 92be0 (24:6be0)
+	ld hl, CheckSongFinishedPredef
+	call PrintTextStandard_24
+Func_92be6: ; 92be6 (24:6be6)
+	pop bc
+	ret
+
+Data_92be8:
+	db "ソﾞッキー", $0
+
+Data_92bee:
+	dr $92bee, $92c92
 
 Func_92c92: ; 92c92
 	dr $92c92, $92e02
@@ -5760,7 +5860,7 @@ Func_9a173: ; 9a173
 Func_9a1aa: ; 9a1aa
 	dr $9a1aa, $9a1bb
 
-Func_9a1bb: ; 9a1bb (26:61bb)
+LandmarkSign: ; 9a1bb (26:61bb)
 	push hl
 	add sp, -$40
 	ld hl, sp+$40
@@ -7745,7 +7845,10 @@ Func_ceacc: ; ceacc
 	dr $ceacc, $cedca
 
 Data_cedca: ; cedca
-	dr $cedca, $cee59
+	dr $cedca, $cedd5
+
+Data_cedd5:
+	dr $cedd5, $cee59
 
 Data_cee59: ; cee59
 	dr $cee59, $cee9f
@@ -7782,7 +7885,7 @@ Func_cf14d: ; cf14d (33:714d)
 	or a
 	jp nz, Func_cf163
 	ld a, $3
-	call Func_80cd7_33
+	call Random_33
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
@@ -7955,7 +8058,7 @@ Func_cf2c7: ; cf2c7 (33:72c7)
 	ld hl, Func_cf344
 	call Func_80f11_33
 	ld a, $4
-	call Func_80cd7_33
+	call Random_33
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -7982,7 +8085,7 @@ Func_cf2c7: ; cf2c7 (33:72c7)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $6dd5
+	ld de, Data_cedd5
 	add hl, de
 	pop de
 	add hl, de
@@ -7998,8 +8101,7 @@ Func_cf307: ; cf307 (33:7307)
 	ld a, [wc7de]
 	cp $32
 	jp nz, Func_cf328
-	ld hl, $f8
-	call PrintTextStandard_33
+	writetext TreeBitstreamText_47e17
 	jp Func_cf331
 
 Func_cf328: ; cf328 (33:7328)
@@ -8051,7 +8153,7 @@ Func_d11ef: ; d11ef (34:51ef)
 	loadwarps $9, Data_d10b4
 	loadpeople $c, Data_d1147
 	ld a, $1
-	call Func_80cc6_34
+	call LoadPlayerSprite_34
 	playmusic SONG_TOWN2
 	call FadeInMap_34
 	ret
@@ -8318,7 +8420,7 @@ Func_d153f: ; d153f (34:553f)
 	xor a
 	ld [wc7de], a
 	ld a, $5
-	call Func_80cd7_34
+	call Random_34
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -8335,7 +8437,7 @@ Func_d153f: ; d153f (34:553f)
 	ld e, $1
 	call LoadWarps_34
 	ld a, $5
-	call Func_80cd7_34
+	call Random_34
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -8352,7 +8454,7 @@ Func_d153f: ; d153f (34:553f)
 	ld e, $1
 	call LoadWarps_34
 	ld a, $5
-	call Func_80cd7_34
+	call Random_34
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -8884,7 +8986,7 @@ Func_d1aff: ; d1aff (34:5aff)
 	or a
 	jp nz, Func_d1bff
 	ld a, $3
-	call Func_80cd7_34
+	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
@@ -8951,7 +9053,7 @@ Func_d1c8b: ; d1c8b (34:5c8b)
 	ld hl, Func_d1d08
 	call Func_80f11_34
 	ld a, $4
-	call Func_80cd7_34
+	call Random_34
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -9092,7 +9194,7 @@ Func_d1ec5: ; d1ec5 (34:5ec5)
 	or a
 	jp nz, Func_d1f36
 	ld a, $3
-	call Func_80cd7_34
+	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
@@ -9159,7 +9261,7 @@ Func_d1fc2: ; d1fc2 (34:5fc2)
 	ld hl, Func_d203f
 	call Func_80f11_34
 	ld a, $4
-	call Func_80cd7_34
+	call Random_34
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -9356,7 +9458,7 @@ Func_d21fc: ; d21fc (34:61fc)
 	or a
 	jp nz, Func_d22d5
 	ld a, $3
-	call Func_80cd7_34
+	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
@@ -9423,7 +9525,7 @@ Func_d2361: ; d2361 (34:6361)
 	ld hl, Func_d23de
 	call Func_80f11_34
 	ld a, $4
-	call Func_80cd7_34
+	call Random_34
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -9620,7 +9722,7 @@ Func_d259b: ; d259b (34:659b)
 	or a
 	jp nz, Func_d2674
 	ld a, $3
-	call Func_80cd7_34
+	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
@@ -9687,7 +9789,7 @@ Func_d2700: ; d2700 (34:6700)
 	ld hl, Func_d277d
 	call Func_80f11_34
 	ld a, $4
-	call Func_80cd7_34
+	call Random_34
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -9877,7 +9979,7 @@ Func_d293a: ; d293a (34:693a)
 	or a
 	jp nz, Func_d2a06
 	ld a, $3
-	call Func_80cd7_34
+	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
@@ -9944,7 +10046,7 @@ Func_d2a92: ; d2a92 (34:6a92)
 	ld hl, Func_d2b0f
 	call Func_80f11_34
 	ld a, $4
-	call Func_80cd7_34
+	call Random_34
 	ld l, a
 	ld h, $0
 	ld e, l
@@ -10357,8 +10459,7 @@ Func_d3019: ; d3019 (34:7019)
 	ld a, [wBackupMapY]
 	cp $7
 	jp nz, Func_d3046
-	ld hl, $2b4
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_465ae
 Func_d3046: ; d3046 (34:7046)
 	ret
 
@@ -10858,58 +10959,47 @@ Func_d371a: ; d371a (34:771a)
 	jp z, Func_d377d
 	or a
 	jp nz, Func_d37d4
-	ld hl, $46a
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d81
 	jp Func_d37d4
 
 Func_d377d: ; d377d (34:777d)
-	ld hl, $467
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d63
 	jp Func_d37d4
 
 Func_d3786: ; d3786 (34:7786)
-	ld hl, $468
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d6d
 	jp Func_d37d4
 
 Func_d378f: ; d378f (34:778f)
-	ld hl, $46b
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d8b
 	jp Func_d37d4
 
 Func_d3798: ; d3798 (34:7798)
-	ld hl, $466
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d59
 	jp Func_d37d4
 
 Func_d37a1: ; d37a1 (34:77a1)
-	ld hl, $465
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d4f
 	jp Func_d37d4
 
 Func_d37aa: ; d37aa (34:77aa)
-	ld hl, $469
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d77
 	jp Func_d37d4
 
 Func_d37b3: ; d37b3 (34:77b3)
-	ld hl, $464
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d45
 	jp Func_d37d4
 
 Func_d37bc: ; d37bc (34:77bc)
-	ld hl, $46c
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d96
 	jp Func_d37d4
 
 Func_d37c5: ; d37c5 (34:77c5)
-	ld hl, $46d
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46da2
 	jp Func_d37d4
 
 Func_d37ce: ; d37ce (34:77ce)
-	ld hl, $46c
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46d96
 Func_d37d4: ; d37d4 (34:77d4)
 	call StartShakingScreen_34
 	playsfx $64
@@ -11061,8 +11151,7 @@ Func_d392b: ; d392b (34:792b)
 	xor a
 	call Func_80653_34
 	call FadeInMap_34
-	ld hl, $b3
-	call Func_80f72_34
+	landmarksign TreeBitstreamText_46dc3
 	call Func_d3cb2
 	jp Func_d39a5
 
@@ -11073,7 +11162,7 @@ Func_d3977: ; d3977 (34:7977)
 	xor a
 	call PlayMusic_34
 	ld a, $1
-	call Func_80cc6_34
+	call LoadPlayerSprite_34
 	xor a
 	call Func_80653_34
 	call FadeInMap_34
@@ -11083,7 +11172,7 @@ Func_d3977: ; d3977 (34:7977)
 Func_d3998: ; d3998 (34:7998)
 	playmusic SONG_PUNCH_MINIGAME
 	ld a, $1
-	call Func_80cc6_34
+	call LoadPlayerSprite_34
 	call FadeInMap_34
 Func_d39a5: ; d39a5 (34:79a5)
 	ret

@@ -512,7 +512,7 @@ wVideoTransferQueue:: ; c239
 	char wc2f7 ; c2f7
 	char wc2f8 ; c2f8
 	char wc2f9 ; c2f9
-	char wc2fa ; c2fa
+	char wInBattle ; c2fa
 	char wSystemType ; c2fb
 	char wTimeSetMonthsTensDigit ; c2fc
 	char wTimeSetMonthsOnesDigit ; c2fd

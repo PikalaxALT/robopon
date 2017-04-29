@@ -108,7 +108,7 @@ Func_81281:
 	ld [wc791], a
 	loadwarps $6, Data_810b4
 	ld a, $1
-	call Func_80cc6_20
+	call LoadPlayerSprite_20
 	ld a, [wc793]
 	or a
 	jp z, Func_812c9

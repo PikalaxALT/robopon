@@ -6186,140 +6186,6 @@ Func_b772: ; b772 (2:7772)
 
 INCLUDE "engine/random_encounter.asm"
 
-Func_ba47: ; ba47
-	push de
-	push bc
-	push bc
-	push bc
-	push bc
-	push bc
-	push af
-	set_farcall_addrs_hli Func_93370
-	ld hl, sp+$4
-	call FarCall
-	ld hl, sp+$7
-	ld a, [hl]
-	ld b, $2
-	call DivideAbyB
-	ld [wc7bd], a
-	ld a, $1
-	ld [wc2fa], a
-	callba_hli AllocateMonsterStruct
-	pop af
-	ld [wFarCallDestBank], a
-	ld bc, $29
-	read_hl_from_sp_plus $c
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $16
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $68
-	add hl, de
-	pop de
-	call FarCopyVideoData
-	read_hl_from wCurRobotPointer
-	ld de, $16
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $68
-	add hl, de
-	call WriteHLToSPPlus9
-	pop bc
-	call GetHLAtSPPlus7
-	inc hl
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	call GetHLAtSPPlus7
-	ld de, $5
-	add hl, de
-	ld [hl], $c5
-	call GetHLAtSPPlus7
-	ld de, $7
-	add hl, de
-	ld [hl], $0
-	call GetHLAtSPPlus7
-	ld de, $8
-	add hl, de
-	ld [hl], $0
-	call GetHLAtSPPlus7
-	ld de, $b
-	add hl, de
-	ld a, [hl]
-	dec a
-	call GetHLAtSPPlus7
-	ld de, $9
-	add hl, de
-	ld [hl], a
-	call GetHLAtSPPlus7
-	ld de, $a
-	add hl, de
-	ld [hl], $1
-	xor a
-Func_baed: ; baed (2:7aed)
-	cp $4
-	jp nc, Func_bb31
-	push af
-	ld l, a
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus9
-	ld de, $b
-	add hl, de
-	add hl, bc
-	ld e, $1
-	ld a, [hl]
-	sub e
-	ld [hl], a
-	pop af
-	push af
-	ld l, a
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus9
-	ld de, $b
-	add hl, de
-	add hl, bc
-	ld de, $6
-	add hl, de
-	ld a, $1
-	add [hl]
-	ld [hl], a
-	pop af
-	inc a
-	jp Func_baed
-
-Func_bb31: ; bb31 (2:7b31)
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
 Func_bb37: ; bb37
 	inc e
 	dec e
@@ -6427,9 +6293,9 @@ Func_bc6d:: ; bc6d
 	ld hl, sp+$1
 	ld c, l
 	ld b, h
-	call Func_ba47
+	call LoadEnemyData
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	xor a
 	ld [wc7c4], a
 	set_farcall_addrs_hli Func_10abf
@@ -6474,9 +6340,9 @@ Func_bce5:: ; bce5
 	ld hl, sp+$1
 	ld c, l
 	ld b, h
-	call Func_ba47
+	call LoadEnemyData
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	xor a
 	ld [wc7c4], a
 	set_farcall_addrs_hli Func_6c5bb
@@ -6521,9 +6387,9 @@ Func_bd5d:: ; bd5d
 	ld hl, sp+$1
 	ld c, l
 	ld b, h
-	call Func_ba47
+	call LoadEnemyData
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	xor a
 	ld [wc7c4], a
 	set_farcall_addrs_hli Func_1228e
@@ -6568,9 +6434,9 @@ Func_bdd5:: ; bdd5
 	ld hl, sp+$1
 	ld c, l
 	ld b, h
-	call Func_ba47
+	call LoadEnemyData
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	xor a
 	ld [wc7c4], a
 	set_farcall_addrs_hli Func_6d395
@@ -6742,14 +6608,14 @@ Func_bf46:: ; bf46 (2:7f46)
 	ld [wc857], a
 	ret
 
-Func_bf4a: ; bf4a (2:7f4a)
+CheckBlackedOut: ; bf4a (2:7f4a)
 	add sp, -$24
 	ld c, $0
 	ld e, $0
-Func_bf50: ; bf50 (2:7f50)
+.loop: ; bf50 (2:7f50)
 	ld a, e
 	cp $4
-	jp nc, Func_bf9c
+	jp nc, .check_blackout
 	push bc
 	push de
 	set_farcall_addrs_hli GetRobotInParty
@@ -6764,10 +6630,10 @@ Func_bf50: ; bf50 (2:7f50)
 	ld hl, sp+$0
 	ld a, [hl]
 	or a
-	jp nz, Func_bf7b
-	jp Func_bf98
+	jp nz, .continue
+	jp .next
 
-Func_bf7b: ; bf7b (2:7f7b)
+.continue: ; bf7b (2:7f7b)
 	push bc
 	push de
 	set_farcall_addrs_hli Func_6e1b
@@ -6780,24 +6646,24 @@ Func_bf7b: ; bf7b (2:7f7b)
 	pop bc
 	ld a, l
 	or h
-	jp z, Func_bf98
+	jp z, .next
 	inc c
-Func_bf98: ; bf98 (2:7f98)
+.next: ; bf98 (2:7f98)
 	inc e
-	jp Func_bf50
+	jp .loop
 
-Func_bf9c: ; bf9c (2:7f9c)
+.check_blackout: ; bf9c (2:7f9c)
 	inc c
 	dec c
-	jp nz, Func_bfab
+	jp nz, .won
 	ld a, $ff
 	ld [wPlayerFacing], a
 	ld a, $1
-	jp Func_bfac
+	jp .done
 
-Func_bfab: ; bfab (2:7fab)
+.won: ; bfab (2:7fab)
 	xor a
-Func_bfac: ; bfac (2:7fac)
+.done: ; bfac (2:7fac)
 	add sp, $24
 	ret
 
@@ -14933,7 +14799,7 @@ Func_1028b: ; 1028b
 	ld bc, $4
 	call MemCopy
 	ld a, $2
-	ld [wc2fa], a
+	ld [wInBattle], a
 	ld a, SONG_WILD_BATTLE
 	call OverworldPlaySong
 	pop de
@@ -15198,7 +15064,7 @@ Func_104c9: ; 104c9 (4:44c9)
 	xor a
 	call FarCall
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
@@ -15673,11 +15539,11 @@ Func_10935: ; 10935 (4:4935)
 	cp $1
 	jp z, Func_1095a
 	ld a, $2
-	ld [wc2fa], a
+	ld [wInBattle], a
 	callba_hli Func_222b7
 .asm_1094b
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 Func_1095a: ; 1095a (4:495a)
 	pop bc
 	ret
@@ -18727,10 +18593,10 @@ Func_11fda: ; 11fda (4:5fda)
 	dec e
 	jp nz, Func_12021
 	ld a, $2
-	ld [wc2fa], a
+	ld [wInBattle], a
 	callba_hli Func_222b7
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 Func_12021: ; 12021 (4:6021)
 	call FillVisibleAreaWithBlankTile
 	ret
@@ -18906,7 +18772,7 @@ Func_122b3: ; 122b3 (4:62b3)
 	ld l, $0
 Func_122b8: ; 122b8 (4:62b8)
 	push hl
-	callba_hli Func_62865
+	callba_hli LoadBattlePals
 	ld a, $f
 	call OverworldPlaySong
 	read_hl_from wCurRobotPointer
@@ -31352,7 +31218,7 @@ Func_22329: ; 22329 (8:6329)
 	ld hl, Data_222b2
 	add hl, de
 	ld c, [hl]
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	cp $2
 	jp nz, Func_2234d
 	push bc
@@ -62670,7 +62536,7 @@ Func_54db3: ; 54db3 (15:4db3)
 	ld a, $3
 	call GetBanks_15
 	push af
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	cp $1
 	jp nz, Func_54e04
 	set_farcall_addrs_hli Func_5c694
@@ -66394,7 +66260,7 @@ Func_56d4b: ; 56d4b (15:6d4b)
 	call FindFirstNonzero
 	ld c, l
 	ld b, h
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	or a
 	jp nz, Func_56d72
 Func_56d58: ; 56d58 (15:6d58)
@@ -78814,11 +78680,11 @@ Func_5e174: ; 5e174 (17:6174)
 	ld a, [wc2e9]
 	ld [wc310], a
 	callba_hli Func_5575d
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	ld c, a
 	push bc
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_54384)
 	ld de, Data_54384
@@ -78826,7 +78692,7 @@ Func_5e174: ; 5e174 (17:6174)
 	call FarCall
 	pop bc
 	ld a, c
-	ld [wc2fa], a
+	ld [wInBattle], a
 	read_hl_from_sp_plus $5a
 	call Func_5de14
 	ld hl, $4000
@@ -78882,17 +78748,17 @@ Func_5e226: ; 5e226 (17:6226)
 	ld a, [wc2e9]
 	ld [wc310], a
 	callba_hli Func_5575d
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	ld c, a
 	push bc
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	set_farcall_addrs_hli Func_56b35
 	xor a
 	call FarCall
 	pop bc
 	ld a, c
-	ld [wc2fa], a
+	ld [wInBattle], a
 	read_hl_from_sp_plus $5a
 	call Func_5de14
 	ld hl, $4000
@@ -81021,7 +80887,7 @@ Func_60f5a: ; 60f5a (18:4f5a)
 Func_60f61: ; 60f61 (18:4f61)
 	push af
 	ld a, $1
-	ld [wc2fa], a
+	ld [wInBattle], a
 	ld a, [wc319]
 	cp $81
 	jp nz, Func_60f7d
@@ -81185,13 +81051,13 @@ Func_610b1: ; 610b1 (18:50b1)
 	ld a, $4
 	call FarCall
 Func_610d1: ; 610d1 (18:50d1)
-	call Func_62865
+	call LoadBattlePals
 	call Func_601d4
 	pop de
 	push af
 	push de
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	xor a
 Func_610df: ; 610df (18:50df)
 	cp $4
@@ -81540,7 +81406,7 @@ LoadRobotPaletteCGB: ; 612f4
 	write_hl_to wCGB_BGPalsBuffer + 3 * 8 + 6
 	write_hl_to wCGB_BGPalsBuffer + 2 * 8 + 6
 	write_hl_to wCGB_BGPalsBuffer + 6
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	cp $3
 	jp z, .bgpal0
 	ld hl, $7fff
@@ -81663,7 +81529,7 @@ LoadRobotPaletteCGB: ; 612f4
 	ld de, wCGB_BGPalsBuffer
 	ld hl, wCGB_OBPalsBuffer
 	call CopyFromDEtoHL
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	cp $4
 	jp z, .quit
 	call WaitVideoTransfer
@@ -84211,7 +84077,7 @@ Data_62845: ; 62845
 	RGB 20, 00, 00
 	RGB 00, 00, 00
 
-Func_62865: ; 62865 (18:6865)
+LoadBattlePals: ; 62865 (18:6865)
 	ld a, [wSystemType]
 	cp $11
 	jp z, .wait1
@@ -106799,7 +106665,7 @@ Func_fd26a: ; fd26a (3f:526a)
 	xor a
 	call FarCall
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	ret
 
 Data_fd30c:
@@ -106817,7 +106683,7 @@ Func_fd314: ; fd314 (3f:5314)
 	call FarCall
 	callba_hli AllocateMonsterStruct
 	ld a, $3
-	ld [wc2fa], a
+	ld [wInBattle], a
 	xor a
 	ld [wc39a], a
 	xor a
@@ -107706,7 +107572,7 @@ Func_fdaad: ; fdaad (3f:5aad)
 Func_fdac1: ; fdac1 (3f:5ac1)
 	call Func_fd787
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	call Func_fd7df
 	xor a
 Func_fdacc: ; fdacc (3f:5acc)
@@ -108006,7 +107872,7 @@ Func_fdd4f: ; fdd4f (3f:5d4f)
 	push bc
 	call Func_fd787
 	xor a
-	ld [wc2fa], a
+	ld [wInBattle], a
 	call Func_fd7df
 	xor a
 Func_fdd5b: ; fdd5b (3f:5d5b)
@@ -108237,7 +108103,7 @@ Credits: ; fdf13 (3f:5f13)
 	call Func_fd73e
 	callba_hli AllocateMonsterStruct
 	ld a, $4
-	ld [wc2fa], a
+	ld [wInBattle], a
 	ld e, $7
 	ld hl, sp+$0
 	call Func_fd989
@@ -108266,7 +108132,7 @@ Credits2: ; fdf59 (3f:5f59)
 	call Func_fd73e
 	callba_hli AllocateMonsterStruct
 	ld a, $4
-	ld [wc2fa], a
+	ld [wInBattle], a
 	ld l, $7
 	push hl
 	ld c, $1
@@ -108296,7 +108162,7 @@ Func_fafa8:
 	call Func_fd73e
 	callba_hli AllocateMonsterStruct
 	ld a, $4
-	ld [wc2fa], a
+	ld [wInBattle], a
 	ld l, $0
 	push hl
 	ld c, $0

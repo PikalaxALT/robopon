@@ -2073,7 +2073,7 @@ BagSubmenu: ; 14f0e
 	call FarCall
 	ld a, $ff
 	ld [wc39b], a
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	or a
 	jp nz, .skip_use
 	ld a, [wc317]
@@ -2127,7 +2127,7 @@ BagSubmenu: ; 14f0e
 	pop de
 	push bc
 	push de
-	ld a, [wc2fa]
+	ld a, [wInBattle]
 	or a
 	jp nz, Func_14ffa
 	ld a, [wc317]

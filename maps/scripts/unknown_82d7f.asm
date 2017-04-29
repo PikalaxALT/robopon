@@ -14,8 +14,7 @@ Func_82d7f:
 	loadpeople $2, Data_82d63
 	playmusic SONG_SHOP
 	call FadeInMap_20
-	ld hl, $3cb
-	call Func_80f72_20
+	landmarksign TreeBitstreamText_46c1f
 	ret
 
 Func_82dac:
