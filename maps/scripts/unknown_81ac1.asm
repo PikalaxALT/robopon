@@ -1,5 +1,9 @@
 Data_81a66:
-	dr $81a66, $81a84
+	warpdef $07, $02, $01, $01, MAP_00_02, $07, $02, $07, $03, $2e
+	warpdef $01, $07, $02, $01, MAP_00_00, $11, $14, $11, $15, $34
+
+Data_81a7c:
+	dr $81a7c, $81a84
 
 Data_81a84: ; 81a84
 	dr $81a84, $81abc
@@ -29,20 +33,20 @@ Func_81ae8: ; 81ae8 (20:5ae8)
 	ld a, $2
 	call PlayerFace_20
 	playmusic SONG_TOWN3
-	call Func_8001c_20
+	call FadeInMap_20
 	call Func_81b45
 	setevent $b
 	jp Func_81b1d
 
 Func_81b15: ; 81b15 (20:5b15)
 	playmusic SONG_TOWN3
-	call Func_8001c_20
+	call FadeInMap_20
 Func_81b1d: ; 81b1d (20:5b1d)
 	jp Func_81b28
 
 Func_81b20: ; 81b20 (20:5b20)
 	playmusic SONG_TOWN3
-	call Func_8001c_20
+	call FadeInMap_20
 Func_81b28: ; 81b28 (20:5b28)
 	ret
 
@@ -79,7 +83,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b29)
 	xor a
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	writenpctext TreeBitstreamText_38fc9
 	sprite_face $1, $1
 	writenpctext TreeBitstreamText_38fe6
@@ -87,7 +91,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b2d)
 	ld a, $1
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $3
 	xor a
 	call SpriteFace_20
@@ -95,7 +99,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b31)
 	ld a, $1
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $2
 	xor a
 	call SpriteFace_20
@@ -117,12 +121,12 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b2d)
 	xor a
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld bc, Data_81b31
 	ld e, BANK(Data_81b31)
 	xor a
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_20
@@ -142,7 +146,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, BANK(Data_81b2d)
 	xor a
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $1
 	xor a
 	call SpriteFace_20
@@ -169,16 +173,16 @@ Func_81b45: ; 81b45 (20:5b45)
 	call FadeOutAudio_20
 	playmusic SONG_NONE
 	move_player $1, Data_81b35
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld a, $2
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_390b4
 	script_sleep $1e
 	move_player $1, Data_81b39
-	call WaitMovement_20
+	call WaitNPCStep_20
 	writetext TreeBitstreamText_390d1
 	move_player $1, Data_81b3d
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld a, $1
 	call FadeInAudio_20
 	ret

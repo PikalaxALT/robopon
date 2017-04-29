@@ -1,7 +1,7 @@
 Func_aff1: ; aff1 (2:6ff1)
 	ld hl, $c
 	call AllocateMemory_Bank02
-	write_hl_to wc778
+	write_hl_to wNPCMovementDataPointer
 	xor a
 .loop
 	cp $2
@@ -14,7 +14,7 @@ Func_aff1: ; aff1 (2:6ff1)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from wc778
+	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	ld [hl], $ff
 	inc a
@@ -46,7 +46,7 @@ Func_b025: ; b025 (2:7025)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from wc778
+	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	call WriteHLToSPPlus4
 	call GetHLAtSPPlus4
@@ -185,7 +185,7 @@ Func_b109: ; b109 (2:7109)
 	inc hl
 	inc hl
 	ld e, [hl]
-	call Func_b377
+	call GetSpawnFacing
 	pop bc
 	ld e, a
 	cp $ff
@@ -199,7 +199,7 @@ Func_b109: ; b109 (2:7109)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from wc778
+	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	ld [hl], $ff
 	jp Func_b14d
@@ -216,12 +216,12 @@ Func_b14d: ; b14d (2:714d)
 	add sp, $c
 	ret
 
-Func_b150:: ; b150 (2:7150)
+HandleNPCStep:: ; b150 (2:7150)
 	add sp, -$e
 	xor a
-Func_b153: ; b153 (2:7153)
+.loop: ; b153 (2:7153)
 	cp $2
-	jp nc, Func_b374
+	jp nc, .break
 	push af
 	ld l, a
 	ld h, $0
@@ -231,7 +231,7 @@ Func_b153: ; b153 (2:7153)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from wc778
+	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	call WriteHLToSPPlus6
 	call GetHLAtSPPlus6
@@ -239,10 +239,10 @@ Func_b153: ; b153 (2:7153)
 	ld hl, sp+$e
 	ld [hl], a
 	cp $ff
-	jp nz, Func_b17d
-	jp Func_b36f
+	jp nz, .active
+	jp .next
 
-Func_b17d: ; b17d (2:717d)
+.active: ; b17d (2:717d)
 	ld hl, sp+$e
 	ld l, [hl]
 	ld h, $0
@@ -316,7 +316,7 @@ Func_b17d: ; b17d (2:717d)
 	add [hl]
 	ld [hl], a
 	cp $10
-	jp c, Func_b36f
+	jp c, .next
 	push de
 	ld l, c
 	ld h, b
@@ -349,13 +349,14 @@ Func_b17d: ; b17d (2:717d)
 	ld hl, sp+$d
 	ld a, [hl]
 	cp $3
-	jp z, Func_b27b
+	jp z, .walk_left
 	cp $2
-	jp z, Func_b266
+	jp z, .walk_down
 	cp $1
-	jp z, Func_b25b
+	jp z, .walk_right
 	or a
-	jp nz, Func_b283
+	jp nz, .increment_low_bits
+	; walk up
 	ld hl, sp+$e
 	ld a, [hl]
 	dec a
@@ -371,18 +372,18 @@ Func_b17d: ; b17d (2:717d)
 	sbc h
 	ld h, a
 	reg16swap de, hl
-	jp Func_b283
+	jp .increment_low_bits
 
-Func_b25b: ; b25b (2:725b)
+.walk_right: ; b25b (2:725b)
 	ld hl, sp+$f
 	ld a, [hl]
 	inc a
 	ld hl, sp+$f
 	ld [hl], a
 	inc de
-	jp Func_b283
+	jp .increment_low_bits
 
-Func_b266: ; b266 (2:7266)
+.walk_down: ; b266 (2:7266)
 	ld hl, sp+$e
 	ld a, [hl]
 	inc a
@@ -393,16 +394,16 @@ Func_b266: ; b266 (2:7266)
 	ld h, $0
 	add hl, de
 	reg16swap de, hl
-	jp Func_b283
+	jp .increment_low_bits
 
-Func_b27b: ; b27b (2:727b)
+.walk_left: ; b27b (2:727b)
 	ld hl, sp+$f
 	ld a, [hl]
 	dec a
 	ld hl, sp+$f
 	ld [hl], a
 	dec de
-Func_b283: ; b283 (2:7283)
+.increment_low_bits: ; b283 (2:7283)
 	ld a, [de]
 	inc a
 	and $7
@@ -425,7 +426,7 @@ Func_b283: ; b283 (2:7283)
 	inc hl
 	ld [hl], a
 	pop de
-Func_b2a1: ; b2a1 (2:72a1)
+.loop2: ; b2a1 (2:72a1)
 	push de
 	ld hl, sp+$b
 	ld a, [hl]
@@ -443,11 +444,11 @@ Func_b2a1: ; b2a1 (2:72a1)
 	ld hl, sp+$6
 	ld a, [hl]
 	cp $ff
-	jp nz, Func_b30e
+	jp nz, .asm_b30e
 	ld hl, sp+$7
 	ld a, [hl]
 	cp $ff
-	jp nz, Func_b304
+	jp nz, .asm_b304
 	call GetHLAtSPPlus6
 	ld [hl], $ff
 	call GetHLAtSPPlus4
@@ -456,7 +457,7 @@ Func_b2a1: ; b2a1 (2:72a1)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp z, Func_b301
+	jp z, .asm_b301
 	call GetHLAtSPPlus4
 	ld de, $9
 	add hl, de
@@ -474,40 +475,40 @@ Func_b2a1: ; b2a1 (2:72a1)
 	ld hl, sp+$e
 	ld a, [hl]
 	call FarCall
-Func_b301: ; b301 (2:7301)
-	jp Func_b32a
+.asm_b301: ; b301 (2:7301)
+	jp .check_facing
 
-Func_b304: ; b304 (2:7304)
+.asm_b304: ; b304 (2:7304)
 	ld hl, sp+$7
 	ld a, [hl]
 	add a
 	ld hl, sp+$8
 	ld [hl], a
-	jp Func_b2a1
+	jp .loop2
 
-Func_b30e: ; b30e (2:730e)
+.asm_b30e: ; b30e (2:730e)
 	ld hl, sp+$d
 	ld a, [hl]
 	ld hl, sp+$6
 	cp [hl]
-	jp nz, Func_b32a
+	jp nz, .check_facing
 	ld hl, sp+$c
 	ld a, [hl]
 	ld hl, sp+$7
 	cp [hl]
-	jp nz, Func_b32a
+	jp nz, .check_facing
 	ld hl, sp+$8
 	ld a, [hl]
 	inc a
 	ld hl, sp+$8
 	ld [hl], a
-	jp Func_b2a1
+	jp .loop2
 
-Func_b32a: ; b32a (2:732a)
+.check_facing: ; b32a (2:732a)
 	call GetHLAtSPPlus6
 	ld a, [hl]
 	cp $ff
-	jp z, Func_b359
+	jp z, .got_facing
 	ld hl, sp+$7
 	ld l, [hl]
 	push hl
@@ -517,7 +518,7 @@ Func_b32a: ; b32a (2:732a)
 	ld e, [hl]
 	ld hl, sp+$f
 	ld a, [hl]
-	call Func_b377
+	call GetSpawnFacing
 	pop bc
 	ld hl, sp+$b
 	ld [hl], a
@@ -525,13 +526,13 @@ Func_b32a: ; b32a (2:732a)
 	ld a, [hl]
 	ld hl, sp+$a
 	cp [hl]
-	jp z, Func_b359
+	jp z, .got_facing
 	ld hl, sp+$b
 	ld e, [hl]
 	ld hl, sp+$e
 	ld a, [hl]
 	call ChangePersonFacing
-Func_b359: ; b359 (2:7359)
+.got_facing: ; b359 (2:7359)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetHLAtSPPlus4
@@ -544,16 +545,16 @@ Func_b359: ; b359 (2:7359)
 	ld de, $5
 	add hl, de
 	ld [hl], a
-Func_b36f: ; b36f (2:736f)
+.next: ; b36f (2:736f)
 	pop af
 	inc a
-	jp Func_b153
+	jp .loop
 
-Func_b374: ; b374 (2:7374)
+.break: ; b374 (2:7374)
 	add sp, $e
 	ret
 
-Func_b377: ; b377 (2:7377)
+GetSpawnFacing: ; b377 (2:7377)
 	push af
 	ld hl, sp+$1
 	ld a, [hl]
@@ -593,17 +594,18 @@ Func_b3a9: ; b3a9 (2:73a9)
 	ret
 
 Func_b3ab:: ; b3ab (2:73ab)
+.loop
 	call NextOverworldFrame
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
 	call UpdateSprites
-	call Func_b150
+	call HandleNPCStep
 	ld c, $0
-Func_b3bd: ; b3bd (2:73bd)
+.loop2
 	ld a, c
 	cp $2
-	jp nc, Func_b3e2
+	jp nc, .next
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -612,25 +614,25 @@ Func_b3bd: ; b3bd (2:73bd)
 	add hl, hl
 	add hl, de
 	reg16swap de, hl
-	read_hl_from wc778
+	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	ld a, [hl]
 	cp $ff
-	jp z, Func_b3de
-	jp Func_b3e2
+	jp z, .next2
+	jp .next
 
-Func_b3de: ; b3de (2:73de)
+.next2
 	inc c
-	jp Func_b3bd
+	jp .loop2
 
-Func_b3e2: ; b3e2 (2:73e2)
+.next
 	ld a, c
 	cp $2
-	jp nz, Func_b3eb
-	jp Func_b3ee
+	jp nz, .back_to_loop
+	jp .quit
 
-Func_b3eb: ; b3eb (2:73eb)
-	jp Func_b3ab
+.back_to_loop
+	jp .loop
 
-Func_b3ee: ; b3ee (2:73ee)
+.quit
 	ret

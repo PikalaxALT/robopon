@@ -39,7 +39,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	xor a
 	ld [wLastStepSucceeded], a
 .asm_9487
-	ld a, [wc84a]
+	ld a, [wRemainInMap]
 	or a
 	jr nz, .asm_94ae
 	push bc
@@ -115,7 +115,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 .asm_94f9
 
 ; check player state
-	ld a, [wc7e1]
+	ld a, [wPlayerState]
 	cp $2
 	jr z, .asm_9508
 	cp $3
@@ -612,7 +612,7 @@ Func_9844: ; 9844 (2:5844)
 	push bc
 	push hl
 	call NextOverworldFrame
-	call ShowEmote_
+	call MoveEmote_
 	pop hl
 	pop bc
 	ld a, [wLastStepSucceeded]
@@ -814,7 +814,7 @@ Func_9900: ; 9900 (2:5900)
 .skip_step_vector
 	push bc
 	push hl
-	call Func_b150
+	call HandleNPCStep
 	pop hl
 	pop bc
 	di

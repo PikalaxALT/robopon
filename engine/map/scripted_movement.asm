@@ -121,7 +121,7 @@ Func_b4bd: ; b4bd (2:74bd)
 	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wPlayerMapX]
-	call Func_b377
+	call GetSpawnFacing
 	pop bc
 	ld hl, sp+$4
 	ld [hl], a

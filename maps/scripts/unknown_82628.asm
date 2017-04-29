@@ -9,7 +9,7 @@ Func_82628:
 	loademote $2, $2, $8
 	ld e, $2
 	ld a, $4
-	call ShowEmote_20
+	call MoveEmote_20
 	call WaitEmote_20
 	call HideEmote_20
 	playsfx $28

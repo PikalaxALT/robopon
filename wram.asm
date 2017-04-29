@@ -661,13 +661,15 @@ wc770:: ; c770
 	char wc773 ; c773
 	short wObjectStructPointer ; c774
 	short wc776 ; c776
-	short wc778 ; c778
+	short wNPCMovementDataPointer ; c778
 	short wWarpDataPointer ; c77a
 	char wNumWarps ; c77c
+
 	char wRandomEncounterTableBank ; c77d
 	short wRandomEncounterTableAddr ; c77e
 	char wRandomEncounterTableLength ; c780
 	char wRandomEncounterRate ; c781
+
 	char wc782 ; c782
 	char wRandomEncounterCooldown ; c783
 	char wc784 ; c784
@@ -718,14 +720,14 @@ wc770:: ; c770
 	char wc7de ; c7de
 	char wBackupMapGroup ; c7df
 	char wBackupMapNumber ; c7e0
-	char wc7e1 ; c7e1
+	char wPlayerState ; c7e1
 	char wc7e2 ; c7e2
 	bitfield wc7e3, 32 ; c7e3
 
 	char wSpawnX ; c7e7
 	char wSpawnY ; c7e8
-	char wc7e9 ; c7e9
-	char wc7ea ; c7ea
+	char wSpawnPushX ; c7e9
+	char wSpawnPushY ; c7ea
 	char wMapGroup ; c7eb
 	char wMapNumber ; c7ec
 
@@ -740,7 +742,7 @@ wEventFlagsEnd::
 	short wc824 ; c824
 	short wc826 ; c826
 	short wBlockdataPointer ; c828
-	short wc82a ; c82a
+	short wPlayerSpritePointer ; c82a
 	short wc82c ; c82c
 	short wc82e ; c82e
 	short wMapCollisionPointer ; c830
@@ -752,7 +754,7 @@ wEventFlagsEnd::
 	char wc836 ; c836
 	char wc837 ; c837
 	char wPlayerFacing ; c838
-	char wc839 ; c839
+	char wLastPlayerFacing ; c839
 	char wc83a ; c83a
 	char wMovementDataBank ; c83b
 	short wMovementDataAddr ; c83c
@@ -766,13 +768,13 @@ wEventFlagsEnd::
 	char wc847 ; c847
 	char wc848 ; c848
 	char wc849 ; c849
-	char wc84a ; c84a
+	char wRemainInMap ; c84a
 	char wc84b ; c84b
 	char wc84c ; c84c
 	char wc84d ; c84d
-	char wc84e ; c84e
-	char wc84f ; c84f
-	char wc850 ; c850
+	char wScreenIsShaking ; c84e
+	char wNextScreenShakeYDisplacement ; c84f
+	char wScreenShakeFrameTimer ; c850
 	char wc851 ; c851
 	short wc852 ; c852
 	short wc854 ; c854

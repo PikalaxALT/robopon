@@ -36,14 +36,10 @@ person_event: MACRO
 	db \7
 	db \8
 	db \9
+	db csbnk
 	shift
 	shift
-IF \8 == 0
-	shift
-	dba \8 ; function pointer
-ELSE
-	dbw \8, 0 ; dummy
-ENDC
+	dw \8 ; function pointer
 	dw \9 ; param pointer
 	ENDM
 

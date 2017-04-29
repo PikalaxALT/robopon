@@ -121,11 +121,11 @@ Func_a055: ; a055 (2:6055)
 	and $80
 	jp nz, Func_a09f
 	ld a, [wPlayerFacing]
-	cp $3
+	cp FACE_LEFT
 	jp z, Func_a094
-	cp $2
+	cp FACE_DOWN
 	jp z, Func_a089
-	cp $1
+	cp FACE_RIGHT
 	jp z, Func_a07e
 	or a
 	jp nz, Func_a09f

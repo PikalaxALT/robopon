@@ -67,10 +67,10 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld [wBackupMapNumber], a
 	ld [wBackupMapGroup], a
 	ld a, $3
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld [wSpawnX], a
 	ld a, $5
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 	ld [wSpawnY], a
 	xor a
 	ld [wMapGroup], a
@@ -131,10 +131,10 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld [wBackupMapNumber], a
 	ld [wBackupMapGroup], a
 	ld a, $3
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld [wSpawnX], a
 	ld a, $5
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 	ld [wSpawnY], a
 	xor a
 	ld [wMapGroup], a
@@ -235,7 +235,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	call FarCall
 	xor a
 	ld [wc798], a
-	ld a, [wc84a]
+	ld a, [wRemainInMap]
 	cp $1
 	jp nz, .skip_HandleMap
 	call HandleMap

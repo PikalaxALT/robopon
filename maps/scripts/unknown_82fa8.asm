@@ -34,7 +34,7 @@ Func_82fe2: ; 82fe2 (20:6fe2)
 	xor a
 	call SetPersonVisibilityState_20
 Func_82ff0: ; 82ff0 (20:6ff0)
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3ce
 	call Func_80f72_20
 	ret

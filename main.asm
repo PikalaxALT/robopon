@@ -1724,7 +1724,7 @@ Func_6b37:: ; 6b37 (1:6b37)
 	ret
 
 Func_6b4b:: ; 6b4b (1:6b4b)
-	ld bc, $2904
+	ld bc, 10500
 .asm_6b4e
 	dec bc
 	ld a, c
@@ -1749,7 +1749,7 @@ GetRobotInParty: ; 6b55 (1:6b55)
 	pop bc
 	ret
 
-Func_6b74: ; 6b74 (1:6b74)
+StackGetRobotInParty: ; 6b74 (1:6b74)
 	push de
 	ld l, a
 	ld h, 0
@@ -1801,28 +1801,25 @@ macro_6b94: MACRO
 	read_hl_from_sp_plus \1 + 2
 	pop de
 	add hl, de
-	call WriteHLToSPPlusParam8
-	db \1
+	write_hl_to_sp_plus \1
 	read_hl_from_sp_plus \1
 	reg16swap de, hl
 	ld hl, 999
 	call CompareHLtoDE
-	jp nc, .check_negative
+	jp nc, .check_negative_\@
 	ld hl, 999
-	call WriteHLToSPPlusParam8
-	db \1
-	jp .done
+	write_hl_to_sp_plus \1
+	jp .done_\@
 
-.check_negative
+.check_negative_\@
 	read_hl_from_sp_plus \1
 	inc h
 	dec h
 	bit 7, h
-	jr z, .done
+	jr z, .done_\@
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db \1
-.done
+	write_hl_to_sp_plus \1
+.done_\@
 ENDM
 
 	macro_6b94 $10
@@ -1870,7 +1867,7 @@ Func_6e0d: ; 6e0d (1:6e0d)
 	ld a, l
 	ld hl, sp+$0
 	reg16swap de, hl
-	call Func_6b74
+	call StackGetRobotInParty
 	add sp, $26
 	ret
 
@@ -2050,7 +2047,7 @@ Func_6f6d: ; 6f6d (1:6f6d)
 	ld a, l
 	ld hl, sp+$0
 	reg16swap de, hl
-	call Func_6b74
+	call StackGetRobotInParty
 	add sp, $26
 	ret
 
@@ -4120,7 +4117,7 @@ Func_7e70: ; 7e70
 	ld a, e
 	ld hl, sp+$0
 	reg16swap de, hl
-	call Func_6b74
+	call StackGetRobotInParty
 	add sp, $24
 	ret
 
@@ -4559,7 +4556,7 @@ Func_8bdc: ; 8bdc (2:4bdc)
 	jp Func_8bdc
 
 Func_8c16: ; 8c16 (2:4c16)
-	call Func_8ccf
+	call GetPlayerSprite
 	ld a, [wSongCurrentlyPlaying]
 	ld hl, wMapMusic
 	cp [hl]
@@ -4633,7 +4630,7 @@ Func_8cc8: ; 8cc8 (2:4cc8)
 Data_8ccb: ; 8ccb
 	dr $8ccb, $8ccf
 
-Func_8ccf: ; 8ccf (2:4ccf)
+GetPlayerSprite: ; 8ccf (2:4ccf)
 	call Bank2_WaitVideoTransferIfLCDEnabled
 	ld hl, Data_8ccb
 	ld a, [wPlayerFacing]
@@ -4655,7 +4652,7 @@ Func_8ce9: ; 8ce9 (2:4ce9)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from wc82a
+	read_hl_from wPlayerSpritePointer
 	add hl, de
 	reg16swap de, hl
 	ld hl, $8000
@@ -4773,7 +4770,7 @@ Func_8dbd: ; 8dbd (2:4dbd)
 	pop bc
 	ret
 
-ShowEmote_:: ; 8dc8
+MoveEmote_:: ; 8dc8
 	ld a, $50
 	ld hl, wSCX
 	sub [hl]
@@ -4816,11 +4813,11 @@ del_if_defined: MACRO
 	del_if_defined wc826
 	del_if_defined wBlockdataPointer
 	del_if_defined wMapCollisionPointer
-	del_if_defined wc82a
+	del_if_defined wPlayerSpritePointer
 	del_if_defined wc82c
 	del_if_defined wc82e
 	del_if_defined wWarpDataPointer
-	del_if_defined wc778
+	del_if_defined wNPCMovementDataPointer
 	del_if_defined wObjectStructPointer
 	del_if_defined wc776
 	ret
@@ -5175,50 +5172,6 @@ Func_9a47: ; 9a47 (2:5a47)
 	ret
 
 INCLUDE "engine/map/func_94a9.asm"
-
-Func_9d31: ; 9d31 (2:5d31)
-	xor a
-	ld [wc84e], a
-	xor a
-	ld [wc84f], a
-	xor a
-	ld [wc850], a
-	ret
-
-Func_9d3e:: ; 9d3e
-	ld a, $1
-	ld [wc84e], a
-	ld a, $2
-	ld [wc84f], a
-	xor a
-	ld [wc850], a
-	ret
-
-Func_9d4d:: ; 9d4d
-	ld a, [wc84f]
-	cp $2
-	jp z, Func_9d73
-	ld a, [wSCY]
-	ld hl, wc84f
-	add [hl]
-	ld [wSCY], a
-	ld a, [wSCY2]
-	ld hl, wc84f
-	add [hl]
-	ld [wSCY2], a
-	di
-	ld a, [wNextVBlankFlags]
-	or $10
-	ld [wNextVBlankFlags], a
-	ei
-Func_9d73: ; 9d73 (2:5d73)
-	xor a
-	ld [wc84f], a
-	xor a
-	ld [wc84e], a
-	xor a
-	ld [wc850], a
-	ret
 
 UpdatePlayerSprite: ; 9d80 (2:5d80)
 	push hl
@@ -5793,16 +5746,16 @@ Func_aeaa: ; aeaa (2:6eaa)
 	write_hl_to wPlayerStandingTileOffset
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld hl, sp+$0
 	ld a, [hl]
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 Func_aef5: ; aef5 (2:6ef5)
 	ld hl, sp+$3
-	ld a, [wc7e9]
+	ld a, [wSpawnPushX]
 	ld [hl], a
 	ld hl, sp+$4
-	ld a, [wc7ea]
+	ld a, [wSpawnPushY]
 	ld [hl], a
 	ld hl, sp+$6
 	ld a, $ff
@@ -5870,10 +5823,10 @@ Func_af7a:: ; af7a
 	ld a, [wPlayerMapY]
 	ld [wBackupMapY], a
 	ld a, c
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld [wSpawnX], a
 	ld a, e
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 	ld [wSpawnY], a
 	ld hl, sp+$2
 	ld a, [hl]
@@ -5903,7 +5856,7 @@ Func_af7a:: ; af7a
 	add hl, de
 	write_hl_to wPlayerStandingTileOffset
 	xor a
-	ld [wc84a], a
+	ld [wRemainInMap], a
 	pop bc
 	pop bc
 	ret
@@ -5958,7 +5911,7 @@ SpawnPlayerAt:: ; b530 (2:7530)
 	or $10
 	ld [wNextVBlankFlags], a
 	ei
-	call ShowEmote_
+	call MoveEmote_
 	call Func_8f44
 	ret
 
@@ -5987,7 +5940,7 @@ Func_b58e:: ; b58e
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from wc82a
+	read_hl_from wPlayerSpritePointer
 	add hl, de
 	push hl
 	ld e, $0
@@ -6000,7 +5953,7 @@ Func_b58e:: ; b58e
 	call RequestVideoData
 	pop af
 	ld [wPlayerFacing], a
-	ld [wc839], a
+	ld [wLastPlayerFacing], a
 	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop bc
 	pop bc
@@ -6023,7 +5976,7 @@ Func_b5db:: ; b5db
 	ld e, $0
 	ld a, [wPlayerFacing]
 	call UpdateSprites
-	call Func_b150
+	call HandleNPCStep
 	pop bc
 	inc bc
 	jp .loop
@@ -6660,33 +6613,33 @@ FreeMemory_Bank02: ; be5d (2:7e5d)
 	ret
 
 Data_be6e: ; be6e
-	dr $be6e, $be73
+	db $17, $17, $18, $11, $13
 
 Data_be73: ; be73
-	dr $be73, $be77
+	db $18, $c, $0, $c
 
-Func_be77:: ; be77 (2:7e77)
+LoadPlayerSprite:: ; be77 (2:7e77)
 	push af
 	ld de, $240
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
-	jp nz, Func_be95
+	jp nz, .already_allocated
 	reg16swap de, hl
 	call AllocateMemory_Bank02
-	write_hl_to wc82a
+	write_hl_to wPlayerSpritePointer
 	ld hl, sp+$1
 	ld [hl], $1
-	jp Func_bea1
+	jp .get_graphics
 
-Func_be95: ; be95 (2:7e95)
-	ld a, [wc7e1]
+.already_allocated
+	ld a, [wPlayerState]
 	ld hl, sp+$1
 	cp [hl]
-	jp nz, Func_bea1
-	jp Func_bf03
+	jp nz, .get_graphics
+	jp .quit
 
-Func_bea1: ; bea1 (2:7ea1)
+.get_graphics
 	ld hl, sp+$1
 	ld e, [hl]
 	ld d, $0
@@ -6711,7 +6664,7 @@ Func_bea1: ; bea1 (2:7ea1)
 	ld de, GFX_d4000
 	add hl, de
 	reg16swap de, hl
-	read_hl_from wc82a
+	read_hl_from wPlayerSpritePointer
 	ld bc, $240
 	call FarCopyVideoData
 	ld hl, wPlayerFacing
@@ -6726,7 +6679,7 @@ Func_bea1: ; bea1 (2:7ea1)
 	add hl, hl
 	add hl, hl
 	reg16swap de, hl
-	read_hl_from wc82a
+	read_hl_from wPlayerSpritePointer
 	add hl, de
 	push hl
 	call Bank2_WaitVideoTransferIfLCDEnabled
@@ -6737,8 +6690,8 @@ Func_bea1: ; bea1 (2:7ea1)
 	call Bank2_WaitVideoTransferIfLCDEnabled
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wc7e1], a
-Func_bf03: ; bf03 (2:7f03)
+	ld [wPlayerState], a
+.quit
 	pop bc
 	ret
 
@@ -13810,7 +13763,7 @@ Func_f86a: ; f86a (3:786a)
 	dec e
 	ld hl, sp+$26
 	call GetRobotOrTrainerBaseStats
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, $e3
 	add hl, sp
 	ld l, [hl]
@@ -13902,7 +13855,7 @@ Func_f91f: ; f91f (3:791f)
 	ld e, a
 	ld hl, sp+$28
 	call GetRobotOrTrainerBaseStats
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$53
 	ld e, [hl]
 	ld hl, sp+$2d
@@ -14377,7 +14330,7 @@ Func_fc31: ; fc31 (3:7c31)
 	ld hl, $22
 	add hl, de
 	ld [hl], a
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -18519,7 +18472,7 @@ Func_11e1f: ; 11e1f (4:5e1f)
 	cp $2
 	jp nc, Func_11e6b
 	push bc
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	pop bc
 	push bc
 	ld e, c
@@ -22697,7 +22650,7 @@ Data_15ac3: ; 15ac3
 Data_15ace: ; 15ace
 	db "ソフト(なし)", $0
 
-Func_15ad6: ; 15ad6 (5:5ad6)
+Func_15ad6:: ; 15ad6 (5:5ad6)
 	push hl
 	push de
 	add sp, -$6c
@@ -27540,7 +27493,7 @@ Func_20692: ; 20692 (8:4692)
 	jp Func_206d5
 
 Func_206ae: ; 206ae (8:46ae)
-	ld a, BANK(GFX_64c7d)
+	ld a, BANK(Data_64c90)
 	ld [wFarCallDestBank], a
 	ld a, [hl]
 	ld l, a
@@ -27555,7 +27508,7 @@ Func_206ae: ; 206ae (8:46ae)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, GFX_64c7d
+	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -32121,7 +32074,7 @@ Func_22887: ; 22887 (8:6887)
 	read_hl_from_sp_plus $de
 	write_hl_to_sp_plus $dc
 Func_228a0: ; 228a0 (8:68a0)
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	pop de
 	push de
 	ld d, $0
@@ -36728,7 +36681,7 @@ Func_255c4: ; 255c4 (9:55c4)
 	jp Func_2564a
 
 Func_25604: ; 25604 (9:5604)
-	ld a, BANK(GFX_64c7d)
+	ld a, BANK(Data_64c90)
 	ld [wFarCallDestBank], a
 	ld a, [bc]
 	ld l, a
@@ -36743,7 +36696,7 @@ Func_25604: ; 25604 (9:5604)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, GFX_64c7d
+	ld de, Data_64c90 - $13
 	add hl, de
 	push hl
 	read_hl_from_sp_plus $1c
@@ -45296,7 +45249,7 @@ Func_3248b: ; 3248b (c:648b)
 	or $2
 	ld hl, sp+$1f
 	ld [hl], a
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -45724,7 +45677,7 @@ Func_32800: ; 32800 (c:6800)
 	or $2
 	ld hl, sp+$4e
 	ld [hl], a
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$2f
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -49224,9 +49177,9 @@ Func_4c2a3: ; 4c2a3 (13:42a3)
 	ld a, [wPlayerMapY]
 	ld [wSpawnY], a
 	ld a, [wPlayerMapX]
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld a, [wPlayerMapY]
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 	callba_hli SaveGame
 Func_4c304: ; 4c304 (13:4304)
 	pop hl
@@ -55395,7 +55348,7 @@ Func_4fe2b: ; 4fe2b (13:7e2b)
 	write_hl_to_sp_plus $14
 	ld hl, sp+$18
 	ld [hl], $0
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$2
 	reg16swap de, hl
 	ld hl, sp+$26
@@ -57018,7 +56971,7 @@ GetRobotSprite:: ; 50b19
 	pop hl
 	ld a, l
 	call GetSRAMBank
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$2b
 	ld e, [hl]
 	ld hl, sp+$5
@@ -57573,7 +57526,7 @@ Func_50f58: ; 50f58 (14:4f58)
 	call FarCall
 Func_50fa8: ; 50fa8 (14:4fa8)
 	pop hl
-	ld a, [wc7e1]
+	ld a, [wPlayerState]
 	cp $1
 	jp z, Func_510ea
 	cp $4
@@ -58465,7 +58418,7 @@ Func_516e6: ; 516e6 (14:56e6)
 	ld hl, sp+$2
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	pop af
 	ld hl, sp+$23
 	reg16swap de, hl
@@ -61239,7 +61192,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	ld hl, sp+$28
 	ld a, [hl]
 	push af
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	pop af
 	ld hl, sp+$1f
 	ld e, [hl]
@@ -61316,7 +61269,7 @@ Func_53e02: ; 53e02 (14:7e02)
 	ld hl, sp+$28
 	ld a, [hl]
 	push af
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	pop af
 	ld hl, sp+$1f
 	ld e, [hl]
@@ -61956,7 +61909,7 @@ Func_54787: ; 54787 (15:4787)
 	pop af
 	push de
 	call GetSRAMBank
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	pop de
 	ld a, e
 	ld hl, sp+$21
@@ -63065,7 +63018,7 @@ Func_550fc: ; 550fc (15:50fc)
 	read_hl_from_sp_plus $43
 	write_hl_to_sp_plus $41
 Func_55114: ; 55114 (15:5114)
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$2f
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -63337,7 +63290,7 @@ Data_5538a:
 Func_5539a: ; 5539a (15:539a)
 	push af
 	ld hl, $64
-	call Func_57e30
+	call AllocateMemory_Bank15
 	push hl
 	ld c, l
 	ld b, h
@@ -63406,7 +63359,7 @@ Func_55427: ; 55427 (15:5427)
 	ld hl, $d
 	call Func_2323
 	pop hl
-	call Func_57e41
+	call FreeMemory_Bank15
 	ret
 
 Func_55439: ; 55439 (15:5439)
@@ -64353,7 +64306,7 @@ Data_55c3a:
 Func_55c41:
 	push hl
 	ld hl, $168
-	call Func_57e30
+	call AllocateMemory_Bank15
 	reg16swap de, hl
 	push de
 	ld c, e
@@ -64419,13 +64372,13 @@ Func_55cb9: ; 55cb9 (15:5cb9)
 	ld hl, $0
 	call Func_2323
 	pop hl
-	call Func_57e41
+	call FreeMemory_Bank15
 	ld hl, $8000
 	jp Func_55ce1
 
 Func_55cd7: ; 55cd7 (15:5cd7)
 	reg16swap de, hl
-	call Func_57e41
+	call FreeMemory_Bank15
 	ld hl, -1
 Func_55ce1: ; 55ce1 (15:5ce1)
 	ret
@@ -65084,7 +65037,7 @@ Func_561bd: ; 561bd (15:61bd)
 Func_561cf:
 	push hl
 	ld hl, $168
-	call Func_57e30
+	call AllocateMemory_Bank15
 	reg16swap de, hl
 	push de
 	ld c, e
@@ -65193,7 +65146,7 @@ Func_562d3: ; 562d3 (15:62d3)
 	ld hl, $0
 	call Func_2323
 	pop hl
-	call Func_57e41
+	call FreeMemory_Bank15
 	pop af
 	ld [wc2e9], a
 	ld hl, $8000
@@ -65453,7 +65406,7 @@ Func_564d6: ; 564d6 (15:64d6)
 Func_564dc: ; 564dc (15:64dc)
 	push de
 	ld hl, $64
-	call Func_57e30
+	call AllocateMemory_Bank15
 	pop de
 	push hl
 	push de
@@ -65623,7 +65576,7 @@ Func_56625: ; 56625 (15:6625)
 	ld hl, $d
 	call Func_2323
 	pop hl
-	call Func_57e41
+	call FreeMemory_Bank15
 	pop de
 	ld a, e
 	and d
@@ -66341,7 +66294,7 @@ Func_56c8c: ; 56c8c (15:6c8c)
 
 Func_56c8f: ; 56c8f (15:6c8f)
 	push bc
-	ld a, BANK(GFX_64c7d)
+	ld a, BANK(Data_64c90)
 	ld [wFarCallDestBank], a
 	call GetHLAtSPPlus6
 	reg16swap de, hl
@@ -66362,7 +66315,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, GFX_64c7d
+	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$6
@@ -66610,7 +66563,7 @@ Func_5720f: ; 5720f (15:720f)
 	ld a, [hSRAMBank]
 	push af
 	push bc
-	ld a, $19
+	ld a, BANK(Data_64c90)
 	ld [wFarCallDestBank], a
 	ld a, $3
 	call GetSRAMBank
@@ -66625,7 +66578,7 @@ Func_5720f: ; 5720f (15:720f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, GFX_64c7d
+	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -66926,7 +66879,7 @@ Func_57447: ; 57447 (15:7447)
 	push af
 	push hl
 	ld hl, $400
-	call Func_57e30
+	call AllocateMemory_Bank15
 	call WriteHLToSPPlus10
 	pop hl
 	inc l
@@ -66974,7 +66927,7 @@ Func_574ce: ; 574ce (15:74ce)
 	call FarCall
 	call WaitVideoTransfer
 	call GetHLAtSPPlus8
-	call Func_57e41
+	call FreeMemory_Bank15
 	ld hl, sp+$9
 	ld c, l
 	ld b, h
@@ -67653,7 +67606,7 @@ Func_579a5: ; 579a5 (15:79a5)
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	ld hl, $400
-	call Func_57e30
+	call AllocateMemory_Bank15
 	pop bc
 	push bc
 	push hl
@@ -67671,7 +67624,7 @@ Func_579a5: ; 579a5 (15:79a5)
 	call FarCall
 	call WaitVideoTransfer
 	pop hl
-	call Func_57e41
+	call FreeMemory_Bank15
 	set_farcall_addrs_hli Func_615be
 	pop bc
 	push bc
@@ -68220,14 +68173,14 @@ Func_57e2d: ; 57e2d (15:7e2d)
 	add sp, $e
 	ret
 
-Func_57e30: ; 57e30 (15:7e30)
+AllocateMemory_Bank15: ; 57e30 (15:7e30)
 	push hl
 	set_farcall_addrs_hli AllocateMemory
 	pop hl
 	call FarCall
 	ret
 
-Func_57e41: ; 57e41 (15:7e41)
+FreeMemory_Bank15: ; 57e41 (15:7e41)
 	push hl
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -72303,7 +72256,7 @@ Func_5ad50: ; 5ad50 (16:6d50)
 	ld e, $2
 	ld a, $3
 	call FarCall
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$1
 	reg16swap de, hl
 	ld a, $3
@@ -73504,7 +73457,7 @@ Func_5b752: ; 5b752 (16:7752)
 	write_hl_to_sp_plus $35
 	ld hl, sp+$39
 	ld [hl], $0
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$23
 	reg16swap de, hl
 	ld a, [wc307]
@@ -75449,7 +75402,7 @@ Func_5c8df: ; 5c8df (17:48df)
 	jp Func_5c991
 
 Func_5c8e2: ; 5c8e2 (17:48e2)
-	ld a, BANK(GFX_64c7d)
+	ld a, BANK(Data_64c90)
 	ld [wFarCallDestBank], a
 	ld a, [bc]
 	ld l, a
@@ -75464,7 +75417,7 @@ Func_5c8e2: ; 5c8e2 (17:48e2)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, GFX_64c7d
+	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -76811,7 +76764,7 @@ Func_5d2ae: ; 5d2ae (17:52ae)
 	jp Func_5d348
 
 Func_5d2b1: ; 5d2b1 (17:52b1)
-	ld a, BANK(GFX_64c7d)
+	ld a, BANK(Data_64c90)
 	ld [wFarCallDestBank], a
 	read_hl_from_sp_plus $40
 	ld l, [hl]
@@ -76826,7 +76779,7 @@ Func_5d2b1: ; 5d2b1 (17:52b1)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, GFX_64c7d
+	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -76926,7 +76879,7 @@ Func_5d35f: ; 5d35f (17:535f)
 	ld hl, sp+$2a
 	ld e, [hl]
 	push de
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	pop de
 	ld a, e
 	ld hl, sp+$21
@@ -79716,7 +79669,7 @@ Func_60268: ; 60268 (18:4268)
 	dec e
 	ld hl, sp+$2b
 	call GetRobotOrTrainerBaseStats
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$79
 	ld e, [hl]
 	ld hl, sp+$30
@@ -79767,7 +79720,7 @@ Func_60302: ; 60302 (18:4302)
 	dec e
 	ld hl, sp+$2b
 	call GetRobotOrTrainerBaseStats
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$79
 	ld e, [hl]
 	ld hl, sp+$30
@@ -79839,7 +79792,7 @@ Func_60386: ; 60386 (18:4386)
 	dec e
 	ld hl, sp+$2b
 	call GetRobotOrTrainerBaseStats
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$79
 	ld e, [hl]
 	ld hl, sp+$30
@@ -79912,7 +79865,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	dec e
 	ld hl, sp+$2b
 	call GetRobotOrTrainerBaseStats
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$79
 	ld e, [hl]
 	ld hl, sp+$30
@@ -80551,7 +80504,7 @@ Func_60b42: ; 60b42 (18:4b42)
 	reg16swap de, hl
 	ld hl, sp+$4
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$4
 	reg16swap de, hl
 	ld hl, $358
@@ -81032,7 +80985,7 @@ Func_60ef4: ; 60ef4 (18:4ef4)
 	ld hl, sp+$7
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$7
 	reg16swap de, hl
 	xor a
@@ -81044,7 +80997,7 @@ Func_60f30: ; 60f30 (18:4f30)
 	cp $4
 	jp nc, Func_60f51
 	push af
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	pop af
 	push af
 	ld hl, sp+$9
@@ -81149,7 +81102,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	ld hl, $22
 	add hl, de
 	ld [hl], a
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -81184,8 +81137,7 @@ Func_6103f: ; 6103f (18:503f)
 	reg16swap de, hl
 	call FarCall
 	pop bc
-	call GetHLAtSPPlusParam8
-	dec d
+	read_hl_from_sp_plus $15
 	reg16swap de, hl
 	ld hl, $0
 	call CompareHLtoDE
@@ -81245,7 +81197,7 @@ Func_610df: ; 610df (18:50df)
 	cp $4
 	jp nc, Func_6112a
 	push af
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	pop af
 	push af
 	ld l, a
@@ -81484,8 +81436,7 @@ Func_61248: ; 61248 (18:5248)
 
 Func_61276: ; 61276 (18:5276)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	db $f
+	write_hl_to_sp_plus $f
 	ld de, $f
 	ld hl, sp+$0
 	call Func_2b83
@@ -85377,11 +85328,40 @@ Data_64082:
 Data_64093:: ; 64093
 	dr $64093, $64390
 
-Data_64390:: ; 64390
-	dr $64390, $64c7d
+Pointers_64390:: ; 64390
+	dw Data_643b0 - Pointers_64390
+	dw Data_6443a - Pointers_64390
+	dw Data_644c5 - Pointers_64390
+	dw Data_64552 - Pointers_64390
+	dw Data_645da - Pointers_64390
+	dw Data_6466e - Pointers_64390
+	dw Data_646ff - Pointers_64390
+	dw Data_64799 - Pointers_64390
+	dw Data_6481b - Pointers_64390
+	dw Data_648ae - Pointers_64390
+	dw Data_6493d - Pointers_64390
+	dw Data_649c1 - Pointers_64390
+	dw Data_64a4e - Pointers_64390
+	dw Data_64adf - Pointers_64390
+	dw Data_64b6f - Pointers_64390
+	dw Data_64c02 - Pointers_64390
 
-GFX_64c7d: ; 64c7d
-	dr $64c7d, $64c90
+Data_643b0: INCBIN "data/unknown_64390/643b0.bin.rz"
+Data_6443a: INCBIN "data/unknown_64390/6443a.bin.rz"
+Data_644c5: INCBIN "data/unknown_64390/644c5.bin.rz"
+Data_64552: INCBIN "data/unknown_64390/64552.bin.rz"
+Data_645da: INCBIN "data/unknown_64390/645da.bin.rz"
+Data_6466e: INCBIN "data/unknown_64390/6466e.bin.rz"
+Data_646ff: INCBIN "data/unknown_64390/646ff.bin.rz"
+Data_64799: INCBIN "data/unknown_64390/64799.bin.rz"
+Data_6481b: INCBIN "data/unknown_64390/6481b.bin.rz"
+Data_648ae: INCBIN "data/unknown_64390/648ae.bin.rz"
+Data_6493d: INCBIN "data/unknown_64390/6493d.bin.rz"
+Data_649c1: INCBIN "data/unknown_64390/649c1.bin.rz"
+Data_64a4e: INCBIN "data/unknown_64390/64a4e.bin.rz"
+Data_64adf: INCBIN "data/unknown_64390/64adf.bin.rz"
+Data_64b6f: INCBIN "data/unknown_64390/64b6f.bin.rz"
+Data_64c02: INCBIN "data/unknown_64390/64c02.bin.rz"
 
 Data_64c90: ; 64c90
 	dr $64c90, $657c5
@@ -86219,7 +86199,7 @@ Func_6777f: ; 6777f (19:777f)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, GFX_64c7d
+	ld de, Data_64c90 - $13
 	add hl, de
 	ld de, $12
 	add hl, de
@@ -86406,7 +86386,7 @@ Func_678e7: ; 678e7 (19:78e7)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, GFX_64c7d
+	ld de, Data_64c90 - $13
 	add hl, de
 	ld de, $12
 	add hl, de
@@ -91761,7 +91741,7 @@ Func_6a789: ; 6a789 (1a:6789)
 Func_6a7be: ; 6a7be (1a:67be)
 	ld hl, sp+$38
 	call Func_69f36
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	read_hl_from_sp_plus $5d
 	inc hl
 	inc hl
@@ -92082,7 +92062,7 @@ Func_6aa43: ; 6aa43 (1a:6a43)
 Func_6aa4b: ; 6aa4b (1a:6a4b)
 	ld hl, sp+$38
 	call Func_69f36
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$38
 	reg16swap de, hl
 	ld hl, sp+$c
@@ -92475,7 +92455,7 @@ Func_6adb1: ; 6adb1 (1a:6db1)
 Func_6adb2: ; 6adb2 (1a:6db2)
 	ret
 
-Func_6adb3: ; 6adb3 (1a:6db3)
+LookUpRobotSpriteImage: ; 6adb3 (1a:6db3)
 	push af
 	ld a, e
 	rrca
@@ -92623,7 +92603,7 @@ Func_6ae7b: ; 6ae7b (1a:6e7b)
 	or $4
 	ld hl, sp+$20
 	ld [hl], a
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$1
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -95231,7 +95211,7 @@ Func_6c49d: ; 6c49d (1b:449d)
 	call FarCall
 	pop hl
 	write_hl_to_sp_plus $2d
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$e
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -95381,7 +95361,7 @@ Func_6c600: ; 6c600 (1b:4600)
 	ld e, $0
 Func_6c610: ; 6c610 (1b:4610)
 	push de
-	ld a, $10
+	ld a, SONG_PUNCH_MINIGAME
 	call OverworldPlaySong
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli AllocateMemory
@@ -100641,7 +100621,7 @@ Func_6ebed: ; 6ebed (1b:6bed)
 	cp $2
 	jp nc, Func_6ec3e
 	push bc
-	set_farcall_addrs_hli Func_6adb3
+	set_farcall_addrs_hli LookUpRobotSpriteImage
 	pop bc
 	push bc
 	ld e, c
@@ -102152,7 +102132,7 @@ Func_6f962: ; 6f962 (1b:7962)
 	write_hl_to_sp_plus $3d
 	read_hl_from_sp_plus $43
 	write_hl_to_sp_plus $41
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$2f
 	reg16swap de, hl
 	ld a, [wc2e9]
@@ -102416,13 +102396,13 @@ Data_c6e78: INCBIN "gfx/emotes/emote_c6e78.emoteattrs.rz" ; c6e78
 Data_c6ef0: INCBIN "gfx/emotes/emote_c6ef0.emoteattrs.rz" ; c6ef0
 Data_c6fff: INCBIN "gfx/emotes/emote_c6fff.emoteattrs.rz" ; c6fff
 
-AllocateMemory_31: ; c70e8
+AllocateMemory_Bank31: ; c70e8
 	push hl
 	set_farcall_addrs_hli AllocateMemory
 	pop hl
 	jp FarCall
 
-FreeMemory_31:
+FreeMemory_Bank31:
 	push hl
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -103226,7 +103206,7 @@ Func_fb55f:: ; fb55f (3e:755f)
 	ld l, a
 	ld h, $0
 	write_hl_to_sp_plus $16
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
 	xor a
@@ -103873,13 +103853,13 @@ Func_fb98c: ; fb98c (3e:798c)
 	ld hl, $30e
 	call FarCall
 Func_fb998: ; fb998 (3e:7998)
-	callba_hli Func_9d3e
+	callba_hli StartShakingScreen
 	ld a, $5f
 	call OverworldPlaySFX
 	set_farcall_addrs_hli Func_b5db
 	ld hl, $3c
 	call FarCall
-	callba_hli Func_9d4d
+	callba_hli StopShakingScreen
 	ld c, $5
 	ld e, $14
 	ld hl, $d

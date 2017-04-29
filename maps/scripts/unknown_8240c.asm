@@ -7,10 +7,10 @@ Pointers_823d0: ; 823d0
 	dw -1
 
 Data_823d4: ; 823d4
-	person_event $21, $04,  7,  5,  1,  1, $02, $04, $00, 0, Func_82446, 0
-	person_event $ff, $00,  7,  1,  1,  1, $00, $04, $00, 0, PrintTextFacePlayer_20, Pointers_823d0
-	person_event $ff, $00,  8,  1,  1,  1, $00, $04, $00, 0, PrintTextFacePlayer_20, Pointers_823d0
-	person_event $00, $0c,  8,  5,  1,  1, $00, $04, $00, 0, PrintTextFacePlayer_20, Pointers_823d0
+	person_event $21, $04,  7,  5,  1,  1, $02, $04, $00, Func_82446, 0
+	person_event $ff, $00,  7,  1,  1,  1, $00, $04, $00, PrintTextFacePlayer_20, Pointers_823d0
+	person_event $ff, $00,  8,  1,  1,  1, $00, $04, $00, PrintTextFacePlayer_20, Pointers_823d0
+	person_event $00, $0c,  8,  5,  1,  1, $00, $04, $00, PrintTextFacePlayer_20, Pointers_823d0
 
 Func_8240c:
 	loadwarps $2, Data_823ba
@@ -23,7 +23,7 @@ Func_8240c:
 	call SetPersonVisibilityState_20
 Func_8242b: ; 8242b (20:642b)
 	playmusic SONG_TOWN3
-	call Func_8001c_20
+	call FadeInMap_20
 	ret
 
 Data_82434:
@@ -49,7 +49,7 @@ Func_82446:
 	or a
 	jp nz, Func_82562
 	ld a, [wPlayerFacing]
-	cp $1
+	cp FACE_RIGHT
 	jp z, Func_82464
 	or a
 	jp nz, Func_82478
@@ -57,14 +57,14 @@ Func_82446:
 
 Func_82464: ; 82464 (20:6464)
 	move_player $1, Data_8243a
-	call WaitMovement_20
+	call WaitNPCStep_20
 	xor a
 	call PlayerFace_20
 	jp Func_82489
 
 Func_82478: ; 82478 (20:6478)
 	move_player $1, Data_82434
-	call WaitMovement_20
+	call WaitNPCStep_20
 	xor a
 	call PlayerFace_20
 Func_82489: ; 82489 (20:6489)
@@ -145,7 +145,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld e, BANK(Data_82440)
 	ld a, $3
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $0
 	ld a, $3
 	call SetPersonVisibilityState_20

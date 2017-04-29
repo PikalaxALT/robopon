@@ -13,7 +13,7 @@ Func_82d7f:
 	loadwarps $3, Data_82d42
 	loadpeople $2, Data_82d63
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3cb
 	call Func_80f72_20
 	ret

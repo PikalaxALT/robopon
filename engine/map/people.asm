@@ -994,7 +994,7 @@ CheckFacingObject: ; a783 (2:6783)
 	ld a, [wCheckFacingObjectObjectCounter]
 	cp b
 	jp nc, .done
-	ld a, [wc84a]
+	ld a, [wRemainInMap]
 	or a
 	jp z, .done
 	ld a, [wCheckFacingObject_c890]

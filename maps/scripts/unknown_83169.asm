@@ -13,7 +13,7 @@ Func_83169:
 	loadwarps $3, Data_8311a
 	loadpeople $3, Data_8313f
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3cf
 	call Func_80f72_20
 	ret

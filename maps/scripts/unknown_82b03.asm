@@ -32,7 +32,7 @@ Func_82b39: ; 82b39 (20:6b39)
 	call SetPersonVisibilityState_20
 Func_82b48: ; 82b48 (20:6b48)
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3c9
 	call Func_80f72_20
 	ret

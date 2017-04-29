@@ -55,41 +55,41 @@ Data_8113b:
 	dw -1
 
 Data_8113f:
-	person_event $24, $0c, $15, $0d, $01, $01, $00, $04, $00, $20, 0
-	person_event $18, $04, $14, $0c, $01, $01, $02, $04, $00, $20, 0
-	person_event $11, $04, $16, $0c, $01, $01, $02, $04, $00, $20, 0
+	person_event $24, $0c, $15, $0d, $01, $01, $00, $04, $00, 0, 0
+	person_event $18, $04, $14, $0c, $01, $01, $02, $04, $00, 0, 0
+	person_event $11, $04, $16, $0c, $01, $01, $02, $04, $00, 0, 0
 
 Data_81169:
-	person_event $02, $04, $0d, $06, $01, $01, $03, $04, $00, 0, Func_81607, 0
-	person_event $0b, $0c, $0c, $06, $01, $01, $01, $04, $00, 0, Func_81607, 0
-	person_event $ff, $00, $0c, $06, $01, $01, $00, $04, $01, 0, Func_81973, 0
-	person_event $22, $0c, $1a, $0d, $01, $01, $02, $04, $00, 0, Func_81811, 0
-	person_event $0b, $0c, $1a, $0e, $01, $01, $00, $04, $00, 0, Func_81811, 0
-	person_event $ff, $00, $1a, $0e, $01, $01, $00, $04, $01, 0, Func_819b0, 0
+	person_event $02, $04, $0d, $06, $01, $01, $03, $04, $00, Func_81607, 0
+	person_event $0b, $0c, $0c, $06, $01, $01, $01, $04, $00, Func_81607, 0
+	person_event $ff, $00, $0c, $06, $01, $01, $00, $04, $01, Func_81973, 0
+	person_event $22, $0c, $1a, $0d, $01, $01, $02, $04, $00, Func_81811, 0
+	person_event $0b, $0c, $1a, $0e, $01, $01, $00, $04, $00, Func_81811, 0
+	person_event $ff, $00, $1a, $0e, $01, $01, $00, $04, $01, Func_819b0, 0
 
 Data_811bd: ; 811bd
-	person_event $ff, $00, $0b, $05, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_81115
-	person_event $ff, $00, $0d, $05, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_81115
-	person_event $ff, $00, $1b, $0d, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_81115
-	person_event $ff, $00, $1b, $0f, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_81115
-	person_event $ff, $00, $08, $08, $01, $01, $00, $04, $00, 0, Func_819ea, 0
-	person_event $ff, $00, $08, $0f, $01, $01, $00, $04, $00, 0, Func_81a22, 0
+	person_event $ff, $00, $0b, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_20, Data_81115
+	person_event $ff, $00, $0d, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_20, Data_81115
+	person_event $ff, $00, $1b, $0d, $01, $01, $00, $04, $00, PrintTextFacePlayer_20, Data_81115
+	person_event $ff, $00, $1b, $0f, $01, $01, $00, $04, $00, PrintTextFacePlayer_20, Data_81115
+	person_event $ff, $00, $08, $08, $01, $01, $00, $04, $00, Func_819ea, 0
+	person_event $ff, $00, $08, $0f, $01, $01, $00, $04, $00, Func_81a22, 0
 
 Data_81211:
-	person_event $03, $04, $0a, $11, $01, $01, $02, $04, $00, 0, PrintTextFacePlayerYesOrNo_20, Data_81123
-	person_event $07, $04, $18, $14, $01, $01, $02, $04, $00, 0, PrintTextFacePlayer_20, Data_81119
+	person_event $03, $04, $0a, $11, $01, $01, $02, $04, $00, PrintTextFacePlayerYesOrNo_20, Data_81123
+	person_event $07, $04, $18, $14, $01, $01, $02, $04, $00, PrintTextFacePlayer_20, Data_81119
 
 Data_8122d:
-	person_event $07, $04, $0b, $08, $01, $01, $01, $02, $00, 0, PrintTextFacePlayer_20, Data_8112b
-	person_event $0c, $04, $0d, $08, $01, $01, $03, $02, $00, 0, PrintTextFacePlayer_20, Data_8112f
-	person_event $05, $04, $0b, $0a, $01, $01, $01, $00, $00, 0, PrintTextFacePlayer_20, Data_81133
-	person_event $01, $04, $0d, $0a, $01, $01, $03, $00, $00, 0, PrintTextFacePlayer_20, Data_81137
+	person_event $07, $04, $0b, $08, $01, $01, $01, $02, $00, PrintTextFacePlayer_20, Data_8112b
+	person_event $0c, $04, $0d, $08, $01, $01, $03, $02, $00, PrintTextFacePlayer_20, Data_8112f
+	person_event $05, $04, $0b, $0a, $01, $01, $01, $00, $00, PrintTextFacePlayer_20, Data_81133
+	person_event $01, $04, $0d, $0a, $01, $01, $03, $00, $00, PrintTextFacePlayer_20, Data_81137
 
 Data_81265: ; 81265
-	person_event $ff, $00, $1b, $14, $01, $01, $00, $04, $00, 0, PrintTextFacePlayer_20, Data_8111f
+	person_event $ff, $00, $1b, $14, $01, $01, $00, $04, $00, PrintTextFacePlayer_20, Data_8111f
 
 Data_81273: ; 81273
-	person_event $ff, $00, $1b, $14, $01, $01, $00, $04, $01, 0, Func_81a5a, 0
+	person_event $ff, $00, $1b, $14, $01, $01, $00, $04, $01, Func_81a5a, 0
 
 Func_81281:
 	call Func_81427
@@ -123,7 +123,7 @@ Func_812c9: ; 812c9 (20:52c9)
 	or a
 	jp nz, Func_812ec
 	loadpeople $3, Data_8113f
-	call Func_8001c_20
+	call FadeInMap_20
 	call Func_814c1
 	setevent $c
 	jp Func_813fc
@@ -225,12 +225,12 @@ Func_813ec: ; 813ec (20:53ec)
 	loadpeople $1, Data_81265
 Func_813f4: ; 813f4 (20:53f4)
 	playmusic SONG_TOWN1
-	call Func_8001c_20
+	call FadeInMap_20
 Func_813fc: ; 813fc (20:53fc)
 	jp Func_81402
 
 Func_813ff: ; 813ff (20:53ff)
-	call Func_8001c_20
+	call FadeInMap_20
 Func_81402: ; 81402 (20:5402)
 	ret
 
@@ -328,7 +328,7 @@ Data_814bb:
 Func_814c1: ; 814c1 (20:54c1)
 	playmusic SONG_WILD_BATTLE
 	move_player $1, Data_814a9
-	call WaitMovement_20
+	call WaitNPCStep_20
 	xor a
 	call PlayerFace_20
 	loademote $1, $1, $20
@@ -389,7 +389,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	loademote $1, $1, $5
 	ld e, $d
 	ld a, $15
-	call ShowEmote_20
+	call MoveEmote_20
 	playsfx $28
 	call WaitEmote_20
 	script_sleep $1e
@@ -461,7 +461,7 @@ Func_81635: ; 81635 (20:5635)
 	ld a, $1
 	call MovePerson_20
 	playsfx $2e
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
@@ -537,10 +537,10 @@ Func_8172f: ; 8172f (20:572f)
 	ld e, BANK(Data_81727)
 	ld a, $3
 	call MovePerson_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	script_sleep $1e
 	move_player $1, Data_81723
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld a, $2
 	call PlayerFace_20
 	script_sleep $1e
@@ -555,7 +555,7 @@ Func_8172f: ; 8172f (20:572f)
 	ld e, BANK(Data_8172b)
 	ld a, $3
 	call MovePerson_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $0
 	ld a, $3
 	call SetPersonVisibilityState_20
@@ -619,7 +619,7 @@ Func_8187c: ; 8187c (20:587c)
 	ld a, $4
 	call MovePerson_20
 	playsfx $2e
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $0
 	ld a, $4
 	call SetPersonVisibilityState_20
@@ -633,7 +633,7 @@ Func_8187c: ; 8187c (20:587c)
 
 Func_818b7: ; 818b7 (20:58b7)
 	move_player $1, Data_81801
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld a, $1
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_398ba
@@ -647,7 +647,7 @@ Func_818b7: ; 818b7 (20:58b7)
 	call Func_80688_20
 	ld a, $2
 	call PlayerFace_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $0
 	ld a, $3
 	call SetPersonVisibilityState_20
@@ -706,7 +706,7 @@ Func_81973:
 	ld a, $1
 	call PlayerFace_20
 	move_player $1, Data_8196f
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $2
 	xor a
 	call SpriteFace_20
@@ -731,7 +731,7 @@ Func_819b0:
 	xor a
 	call PlayerFace_20
 	move_player $1, Data_819ac
-	call WaitMovement_20
+	call WaitNPCStep_20
 	sprite_face $3, $3
 Func_819e8: ; 819e8 (20:59e8)
 	pop bc
@@ -755,9 +755,9 @@ Func_819fb: ; 819fb (20:59fb)
 	call Func_80dff_20
 	pop bc
 	ld a, $1
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld a, $7
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 	playsfx $2e
 	ld a, $8
 	ld [wBackupMapX], a
@@ -784,9 +784,9 @@ Func_81a33: ; 81a33 (20:5a33)
 	call Func_80dff_20
 	pop bc
 	ld a, $1
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld a, $7
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 	playsfx $2e
 	ld a, $8
 	ld [wBackupMapX], a

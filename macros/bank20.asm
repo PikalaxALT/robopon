@@ -20,7 +20,7 @@ Func_80000_\1:
 GetZodiacSign_\1:
 	jpba_hli GetZodiacSign
 
-Func_8001c_\1: ; 8001c (20:401c)
+FadeInMap_\1: ; 8001c (20:401c)
 	callba_hli Func_ae4d
 	ret
 
@@ -238,10 +238,10 @@ WaitEmote_\1: ; 801d5 (20:41d5)
 	callba_hli Func_9a84a
 	ret
 
-ShowEmote_\1: ; 801e4 (20:41e4)
+MoveEmote_\1: ; 801e4 (20:41e4)
 	push af
 	push de
-	set_farcall_addrs_hli ShowEmote
+	set_farcall_addrs_hli MoveEmote
 	pop de
 	pop af
 	call FarCall
@@ -258,7 +258,7 @@ MovePerson_\1: ; 801f7 (20:41f7)
 	call FarCall
 	ret
 
-WaitMovement_\1: ; 8020c (20:420c)
+WaitNPCStep_\1: ; 8020c (20:420c)
 	callba_hli Func_b3ab
 	ret
 
@@ -716,7 +716,7 @@ PlayerFace_\1: ; 80677 (20:4677)
 
 Func_80688_\1: ; 80688 (20:4688)
 	call MovePerson_\1
-	call WaitMovement_\1
+	call WaitNPCStep_\1
 	ret
 
 ScriptSleep_\1: ; 8068f (20:468f)
@@ -1682,7 +1682,7 @@ Func_80cb5_\1:
 
 Func_80cc6_\1: ; 80cc6 (20:4cc6)
 	push af
-	set_farcall_addrs_hli Func_be77
+	set_farcall_addrs_hli LoadPlayerSprite
 	pop af
 	call FarCall
 	ret
@@ -1918,12 +1918,12 @@ Func_80e8d_\1:
 	call FarCall
 	ret
 
-Func_80ea2_\1: ; 80ea2 (20:4ea2)
-	callba_hli Func_9d3e
+StartShakingScreen_\1: ; 80ea2 (20:4ea2)
+	callba_hli StartShakingScreen
 	ret
 
-Func_80eb1_\1: ; 80eb1 (20:4eb1)
-	callba_hli Func_9d4d
+StopShakingScreen_\1: ; 80eb1 (20:4eb1)
+	callba_hli StopShakingScreen
 	ret
 
 Func_80ec0_\1:

@@ -29,7 +29,7 @@ Func_82c72: ; 82c72 (20:6c72)
 	loadpeople $2, Data_82c28
 Func_82c82: ; 82c82 (20:6c82)
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3ca
 	call Func_80f72_20
 	ret

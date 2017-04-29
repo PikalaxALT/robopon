@@ -310,19 +310,19 @@ del: MACRO
 	ld hl, $0
 	write_hl_to wWarpDataPointer
 	ld hl, $0
-	write_hl_to wc778
+	write_hl_to wNPCMovementDataPointer
 	ld hl, $0
 	write_hl_to wObjectStructPointer
 	ld hl, $0
 	write_hl_to wc776
 	ld hl, $0
-	write_hl_to wc82a
+	write_hl_to wPlayerSpritePointer
 	xor a
 	ld [wc84d], a
 	ld [wc84c], a
 	ld [wc84b], a
 	ld a, $1
-	ld [wc84a], a
+	ld [wRemainInMap], a
 	jp .okay
 
 .c_not_zero
@@ -332,7 +332,7 @@ del: MACRO
 	del wBlockdataPointer
 	del wc82c
 	del wc82e
-	del wc82a
+	del wPlayerSpritePointer
 	del wc85d
 .okay
 	set_farcall_addrs_hli GroupAndNumberToLinearIndex
@@ -544,7 +544,7 @@ Func_8827: ; 8827 (2:4827)
 	ld a, [wSpawnX]
 	call SpawnPlayerAt
 	xor a
-	call Func_be77
+	call LoadPlayerSprite
 	ld hl, sp+$5d
 	ld e, [hl]
 	ld d, $0
@@ -576,7 +576,7 @@ Func_8827: ; 8827 (2:4827)
 	call AllocateSpaceForWarps
 	call Func_b773
 	call ClearMovementPointer
-	call Func_9d31
+	call AbortShakingScreen
 	call Func_bf2c
 	ld a, $ff
 	call Func_bf46
@@ -605,22 +605,22 @@ Func_88df: ; 88df (2:48df)
 	cp $1
 	jp nz, Func_88f8
 	ld a, $ff
-	ld [wc839], a
+	ld [wLastPlayerFacing], a
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
 	call UpdateSprites
 	call NextOverworldFrame
 Func_88f8: ; 88f8 (2:48f8)
-	ld a, [wc7ea]
+	ld a, [wSpawnPushY]
 	ld l, a
 	push hl
-	ld a, [wc7e9]
+	ld a, [wSpawnPushX]
 	ld c, a
 	ld a, [wSpawnY]
 	ld e, a
 	ld a, [wSpawnX]
-	call Func_b377
+	call GetSpawnFacing
 	pop bc
 	ld [wPlayerFacing], a
 	ld a, [wPlayerFacing]
@@ -629,7 +629,7 @@ Func_88f8: ; 88f8 (2:48f8)
 	ld a, $2
 	ld [wPlayerFacing], a
 Func_891c: ; 891c (2:491c)
-	call Func_8ccf
+	call GetPlayerSprite
 	call Bank2_WaitVideoTransferIfLCDEnabled
 	ld hl, wMapWidth
 	ld l, [hl]

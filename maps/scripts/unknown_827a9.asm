@@ -41,7 +41,7 @@ Func_827de: ; 827de (20:67de)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3dc
 	call Func_80f72_20
 	call Func_829dd
@@ -51,7 +51,7 @@ Func_82811: ; 82811 (20:6811)
 	checkevent $d
 	or a
 	jp nz, Func_8282c
-	call Func_8001c_20
+	call FadeInMap_20
 	call Func_82894
 	setevent $d
 	jp Func_8283c
@@ -60,7 +60,7 @@ Func_8282c: ; 8282c (20:682c)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3dc
 	call Func_80f72_20
 Func_8283c: ; 8283c (20:683c)
@@ -72,7 +72,7 @@ Func_8283f: ; 8283f (20:683f)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	call Func_8001c_20
+	call FadeInMap_20
 Func_82859: ; 82859 (20:6859)
 	ret
 
@@ -113,7 +113,7 @@ Func_82894: ; 82894 (20:6894)
 	ld a, $1
 	call MovePerson_20
 	move_player $1, Data_8288a
-	call WaitMovement_20
+	call WaitNPCStep_20
 	writenpctext TreeBitstreamText_39235
 	writenpctext TreeBitstreamText_39257
 	ld bc, Data_82890
@@ -121,7 +121,7 @@ Func_82894: ; 82894 (20:6894)
 	ld a, $1
 	call MovePerson_20
 	move_player $3, Data_82890
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ret
 
 Data_828cf:
@@ -144,7 +144,7 @@ Func_828df:
 	ld e, BANK(Data_828cf)
 	ld a, $2
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	sprite_face $2, $2
 	checkevent $32
 	cp $1
@@ -157,10 +157,10 @@ Func_828df:
 	ld e, BANK(Data_828d3)
 	ld a, $2
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	sprite_face $2, $2
 	move_player $1, Data_828db
-	call WaitMovement_20
+	call WaitNPCStep_20
 	resetevent $f8
 	jp Func_82964
 
@@ -171,7 +171,7 @@ Func_82940: ; 82940 (20:6940)
 	ld e, BANK(Data_828d3)
 	ld a, $2
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	sprite_face $2, $2
 Func_82964: ; 82964 (20:6964)
 	jp Func_8298b
@@ -184,7 +184,7 @@ Func_82967: ; 82967 (20:6967)
 	ld e, BANK(Data_828d3)
 	ld a, $2
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	sprite_face $2, $2
 Func_8298b: ; 8298b (20:698b)
 	ret
@@ -232,7 +232,7 @@ Func_829dd: ; 829dd (20:69dd)
 	or a
 	jp nz, .asm_829fc
 	move_player $1, Data_829d9
-	call WaitMovement_20
+	call WaitNPCStep_20
 	setevent $f8
 .asm_829fc
 	ret

@@ -1,57 +1,85 @@
-SoundOffPredef:: ; 22c (0:022c)
-	ld l, low(SoundOff_1c)
-	jr callMusicEngine_predef
-
-UpdateSoundPredef:: ; 230 (0:0230)
-	ld l, low(UpdateSound_1c)
-	jr callMusicEngine_predef
-
-StartSongPredef:: ; 234 (0:0234)
-	ld l, low(StartSong_1c)
-	jr callMusicEngine_predef
-
-StartSFXPredef:: ; 238 (0:0238)
-	cp 60
-	ret c
-	sub 20
-	ld l, low(StartSFX_1c)
-	jr callMusicEngine_predef
-
-SelectChannelsPredef:: ; 241 (0:0241)
-	ld l, low(SelectChannels_1c)
-	jr callMusicEngine_predef
-
-CheckSongFinishedPredef:: ; 245 (0:0245)
-	ld l, low(CheckSongFinished_1c)
-	jr callMusicEngine_predef
-
-CheckSFXFinishedPredef:: ; 249 (0:0249)
-	ld l, low(CheckSFXFinished_1c)
-	jr callMusicEngine_predef
-
-ToggleMusicPredef:: ; 24d (0:024d)
-	ld l, low(ToggleMusic_1c)
-	jr callMusicEngine_predef
-
-SetVolumePredef:: ; 251 (0:0251)
-	ld l, low(SetVolume_1c)
-callMusicEngine_predef
-	ld h, high(SoundOff_1c)
-	push af
-	call .Bank1CCall
-	pop hl
-	push af
-	ld a, h
-	jr .BankSwitchBack
-
-.Bank1CCall: ; 25e (0:025e)
-	push hl
-	push af
-	ld a, [hROMBank]
-	ld hl, sp+$7
-	ld [hl], a
-	ld a, BANK(SoundOff_1c)
-.BankSwitchBack
-	call BankSwitch_0020
-	pop af
+CallAudioEngine1C::
+	ld h, a
+	ld a, [wVideoTransferRequestFlags]
+	bit 0, a
+	jr z, .asm_1a7a
+	xor a
 	ret
+
+.asm_1a7a
+	ld a, [hROMBank]
+	push af
+	ld a, BANK(SoundOff_1c)
+	call BankSwitch
+	ld a, h
+	ld de, .Return
+	push de
+	ld h, high(SoundOff_1c)
+	push hl
+	ret
+
+.Return
+	ld h, a
+	pop af
+	jp BankSwitch
+
+SoundOff:: ; 1a90 (0:1a90)
+	ld l, low(SoundOff_1c)
+	jr CallAudioEngine1C
+
+UpdateSound:: ; 1a94 (0:1a94)
+	ld a, [hROMBank]
+	ld [wVideoTransferRequestBank], a
+	ld a, [wVideoTransferRequestFlags]
+	set 1, a
+	ld [wVideoTransferRequestFlags], a
+	ld l, low(UpdateSound_1c)
+	call CallAudioEngine1C
+	ld a, [wVideoTransferRequestFlags]
+	res 1, a
+	ld [wVideoTransferRequestFlags], a
+	ret
+
+StartSong:: ; 1aaf (0:1aaf)
+	ld l, low(StartSong_1c)
+	ld h, a
+	jr CallAudioEngine1C
+
+StartSFX:: ; 1ab4 (0:1ab4)
+	ld l, low(StartSFX_1c)
+	ld h, a
+	jr CallAudioEngine1C
+
+SelectChannels:: ; 1ab9
+	ld l, low(SelectChannels_1c)
+	ld h, a
+	jr CallAudioEngine1C
+
+CheckSongFinished:: ; 1abe
+	ld l, low(CheckSongFinished_1c)
+	call CallAudioEngine1C
+	ld a, h
+	ret
+
+CheckSFXFinished:: ; 1ac5
+	ld l, low(CheckSFXFinished_1c)
+	call CallAudioEngine1C
+	ld a, h
+	ret
+
+ToggleMusic:: ; 1acc
+	ld l, low(ToggleMusic_1c)
+	jr CallAudioEngine1C
+
+SetVolume:: ; 1ad0
+	ld l, low(SetVolume_1c)
+	ld h, a
+	jr CallAudioEngine1C
+
+BackUpMusicData:: ; 1ad5
+	ld l, low(BackUpMusicData_1c)
+	jr CallAudioEngine1C
+
+RestoreMusicData:: ; 1ad9
+	ld l, low(RestoreMusicData_1c)
+	jr CallAudioEngine1C

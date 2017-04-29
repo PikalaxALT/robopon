@@ -198,11 +198,11 @@ CheckWarpTile: ; ad56 (2:6d56)
 	ld hl, $8
 	add hl, de
 	ld a, [hl]
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld hl, $9
 	add hl, de
 	ld a, [hl]
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 	ld l, e
 	ld h, d
 	inc hl
@@ -218,7 +218,7 @@ CheckWarpTile: ; ad56 (2:6d56)
 	ld a, $2e
 	call OverworldPlaySFX
 	xor a
-	ld [wc84a], a
+	ld [wRemainInMap], a
 	ld a, $1
 	ret
 

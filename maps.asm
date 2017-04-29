@@ -39,7 +39,7 @@ Func_83213:
 	loadwarps $3, Data_831e4
 	loadpeople $1, Data_83205
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3d0
 	call Func_80f72_20
 	ret
@@ -141,7 +141,7 @@ Func_83340:
 	ld hl, Data_8333b
 	call Func_80ce7_20
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, Func_03d1
 	call Func_80f72_20
 	ret
@@ -179,7 +179,7 @@ Func_833ba:
 	ld [wc7de], a
 	loadwarps $3, Data_83399
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3d2
 	call Func_80f72_20
 	ret
@@ -223,7 +223,7 @@ Func_83431:
 	ld hl, Data_8342c
 	call Func_80ce7_20
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, Func_03d3
 	call Func_80f72_20
 	ret
@@ -265,7 +265,7 @@ Func_834bd:
 	loadwarps $3, Data_8348a
 	loadpeople $1, Data_834af
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3d4
 	call Func_80f72_20
 	ret
@@ -303,7 +303,7 @@ Func_83537:
 	ld [wc7de], a
 	loadwarps $3, Data_83516
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, GetSRAMBank
 	call Func_80f72_20
 	ret
@@ -347,7 +347,7 @@ Func_835ae:
 	ld hl, Data_835a9
 	call Func_80ce7_20
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3d6
 	call Func_80f72_20
 	ret
@@ -391,7 +391,7 @@ Func_83632:
 	ld hl, Data_83628
 	call Func_80ce7_20
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3d7
 	call Func_80f72_20
 	ret
@@ -435,7 +435,7 @@ Func_836b1:
 	ld hl, Data_836ac
 	call Func_80ce7_20
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3d8
 	call Func_80f72_20
 	ret
@@ -479,7 +479,7 @@ Func_83730:
 	ld hl, Data_8372b
 	call Func_80ce7_20
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3d9
 	call Func_80f72_20
 	ret
@@ -517,7 +517,7 @@ Func_837aa:
 	ld [wc7de], a
 	loadwarps $3, Data_83789
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3da
 	call Func_80f72_20
 	ret
@@ -561,7 +561,7 @@ Func_83816:
 	ld hl, Data_83811
 	call Func_80ce7_20
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3db
 	call Func_80f72_20
 	ret
@@ -618,7 +618,7 @@ Func_838a2:
 	xor a
 	call SetPersonVisibilityState_20
 Func_838e0: ; 838e0 (20:78e0)
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3c8
 	call Func_80f72_20
 	ret
@@ -1285,7 +1285,7 @@ Func_851bc: ; 851bc (21:51bc)
 	loadpeople $5, Data_850fa
 	loadpeople $4, Data_85140
 	playmusic SONG_TOWN1
-	call Func_8001c_21
+	call FadeInMap_21
 	call Func_852ac
 	setevent $32
 	jp Func_85270
@@ -1329,7 +1329,7 @@ Func_85257: ; 85257 (21:5257)
 Func_85260: ; 85260 (21:5260)
 	playmusic SONG_TOWN1
 	loadpeople $4, Data_85140
-	call Func_8001c_21
+	call FadeInMap_21
 Func_85270: ; 85270 (21:5270)
 	pop bc
 	pop bc
@@ -1374,7 +1374,7 @@ Func_852ac: ; 852ac (21:52ac)
 	loademote $1, $1, $5
 	ld e, $f
 	ld a, $17
-	call ShowEmote_21
+	call MoveEmote_21
 	playsfx $28
 	call WaitEmote_21
 	script_sleep $3c
@@ -1389,7 +1389,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_85278)
 	ld a, $1
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	script_sleep $3c
 	writenpctext TreeBitstreamText_399f1
 	writenpctext TreeBitstreamText_39a27
@@ -1406,13 +1406,13 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_8527c)
 	ld a, $2
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	playsfx $33
 	ld bc, Data_85286
 	ld e, BANK(Data_85286)
 	ld a, $1
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld e, $1
 	xor a
 	call SpriteFace_21
@@ -1421,7 +1421,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_8528a)
 	ld a, $2
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld e, $2
 	xor a
 	call SpriteFace_21
@@ -1443,7 +1443,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_85292)
 	ld a, $2
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	hideperson $2
 	ld bc, Data_85280
 	ld e, BANK(Data_85280)
@@ -1453,13 +1453,13 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_8528e)
 	ld a, $1
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	playsfx $33
 	sprite_face $3, $1
 	move_player $1, Data_85298
 	script_sleep $1e
 	playsfx $2e
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld e, $2
 	xor a
 	call SpriteFace_21
@@ -1472,7 +1472,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, BANK(Data_852a4)
 	ld a, $1
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld a, $1
 	call PlayerFace_21
 	ld e, $2
@@ -1528,7 +1528,7 @@ Func_854eb: ; 854eb (21:54eb)
 	ld e, BANK(Data_854a2)
 	xor a
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_21
@@ -1560,7 +1560,7 @@ Func_85540: ; 85540 (21:5540)
 	ld e, BANK(Data_854a6)
 	ld a, $1
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	hideperson $1
 	setevent $6
 	checkevent $5
@@ -1651,7 +1651,7 @@ Func_8565a: ; 8565a (21:565a)
 	ld e, BANK(Data_855d8)
 	ld a, $1
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	hideperson $1
 	setevent $6
 	checkevent $5
@@ -1680,7 +1680,7 @@ Func_856ab: ; 856ab (21:56ab)
 	ld e, BANK(Data_855d4)
 	xor a
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_21
@@ -1774,7 +1774,7 @@ Func_857c4: ; 857c4 (21:57c4)
 	ld e, BANK(Data_85742)
 	ld a, $1
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	hideperson $1
 	setevent $6
 	jp Func_8581b
@@ -1795,7 +1795,7 @@ Func_85801: ; 85801 (21:5801)
 	ld e, BANK(Data_8573e)
 	xor a
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_21
@@ -1845,7 +1845,7 @@ Func_8585f: ; 8585f (21:585f)
 	or a
 	jp nz, Func_858bd
 	move_player $1, Data_8582e
-	call WaitMovement_21
+	call WaitNPCStep_21
 	playmusic SONG_NONE
 	playmusic SONG_0A
 	xor a
@@ -2021,7 +2021,7 @@ Func_85ada: ; 85ada (21:5ada)
 	ld a, $5
 	call Func_80150_21
 Func_85afc: ; 85afc (21:5afc)
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2c4
 	call Func_80f72_21
 	pop bc
@@ -2233,7 +2233,7 @@ Func_85d7d: ; 85d7d (21:5d7d)
 	ld a, $3
 	call Func_80150_21
 Func_85d97: ; 85d97 (21:5d97)
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2ca
 	call Func_80f72_21
 	pop bc
@@ -2423,7 +2423,7 @@ Func_86011: ; 86011 (21:6011)
 Func_86014: ; 86014 (21:6014)
 	playmusic SONG_TOWN3
 Func_86019: ; 86019 (21:6019)
-	call Func_8001c_21
+	call FadeInMap_21
 	ld a, [wc7de]
 	cp $5
 	jp z, Func_86060
@@ -2746,7 +2746,7 @@ Func_864a0: ; 864a0 (21:64a0)
 Func_864e0: ; 864e0 (21:64e0)
 	loadpeople $3, Data_86361
 Func_864e8: ; 864e8 (21:64e8)
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2c5
 	call Func_80f72_21
 	jp Func_86575
@@ -2767,7 +2767,7 @@ Func_864f4: ; 864f4 (21:64f4)
 Func_86522: ; 86522 (21:6522)
 	loadpeople $4, Data_8638b
 Func_8652a: ; 8652a (21:652a)
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2c7
 	call Func_80f72_21
 	jp Func_86575
@@ -2788,7 +2788,7 @@ Func_86536: ; 86536 (21:6536)
 Func_86564: ; 86564 (21:6564)
 	loadpeople $4, Data_863c3
 Func_8656c: ; 8656c (21:656c)
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2c9
 	call Func_80f72_21
 Func_86575: ; 86575 (21:6575)
@@ -3050,13 +3050,13 @@ Func_8688a:
 	or a
 	jp nz, Func_868d5
 	loadpeople $4, Data_86836
-	call Func_8001c_21
+	call FadeInMap_21
 	call Func_86943
 	jp Func_868dd
 
 Func_868d5: ; 868d5 (21:68d5)
 	playmusic SONG_TOWN2
-	call Func_8001c_21
+	call FadeInMap_21
 Func_868dd: ; 868dd (21:68dd)
 	ret
 
@@ -3102,9 +3102,9 @@ Data_8693f: ; 8693f
 Func_86943: ; 86943 (21:6943)
 	playmusic SONG_NONE
 	playmusic SONG_TITLE
-	call WaitMovement_21
+	call WaitNPCStep_21
 	move_player $1, Data_86907
-	call WaitMovement_21
+	call WaitNPCStep_21
 	xor a
 	call PlayerFace_21
 	loademote $1, $1, $7
@@ -3125,7 +3125,7 @@ Func_86943: ; 86943 (21:6943)
 	ld e, BANK(Data_86913)
 	ld a, $4
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	sprite_face $3, $2
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
@@ -3147,14 +3147,14 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, BANK(Data_86917)
 	ld a, $2
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld a, $1
 	call PlayerFace_21
 	ld bc, Data_8691f
 	ld e, BANK(Data_8691f)
 	ld a, $2
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	hideperson $2
 	xor a
 	call PlayerFace_21
@@ -3166,7 +3166,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, BANK(Data_86927)
 	ld a, $4
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld bc, Data_8692d
 	ld e, BANK(Data_8692d)
 	ld a, $3
@@ -3175,7 +3175,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, BANK(Data_86931)
 	ld a, $4
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ld a, $3
 	call PlayerFace_21
 	ld bc, Data_86935
@@ -3186,7 +3186,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, BANK(Data_8693b)
 	ld a, $4
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	hideperson $3
 	hideperson $4
 	playmusic SONG_NONE
@@ -3196,7 +3196,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld e, BANK(Data_8693f)
 	ld a, $5
 	call Func_80688_21
-	call WaitMovement_21
+	call WaitNPCStep_21
 	sprite_face $2, $5
 	script_sleep $1e
 	xor a
@@ -3238,7 +3238,7 @@ Func_86b0d:
 	loademote $2, $2, $8
 	ld e, $4
 	ld a, $e
-	call ShowEmote_21
+	call MoveEmote_21
 	call WaitEmote_21
 	call HideEmote_21
 	playsfx $28
@@ -3476,7 +3476,7 @@ Func_8706e: ; 8706e (21:706e)
 	playmusic SONG_TOWN1
 	ld a, $1
 	call Func_80cc6_21
-	call Func_8001c_21
+	call FadeInMap_21
 	ret
 
 Data_8707c:
@@ -3577,7 +3577,7 @@ Func_871fe:
 	jp nz, Func_8723b
 	ld a, $1
 	ld [wc7da], a
-	call Func_8001c_21
+	call FadeInMap_21
 	writenpctext TreeBitstreamText_3a89f
 	call Func_8737a
 	checkevent $f0
@@ -3597,7 +3597,7 @@ Func_8723b: ; 8723b (21:723b)
 	loadpeople $3, Data_871d4
 	xor a
 	ld [wc7da], a
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2d5
 	call Func_80f72_21
 Func_87265: ; 87265 (21:7265)
@@ -3692,7 +3692,7 @@ Data_87376:
 
 Func_8737a: ; 8737a (21:737a)
 	move_player $1, Data_87376
-	call WaitMovement_21
+	call WaitNPCStep_21
 	ret
 
 Data_87388:
@@ -3747,7 +3747,7 @@ Func_87484: ; 87484 (21:7484)
 	ld [wc7da], a
 Func_87488: ; 87488 (21:7488)
 	playmusic SONG_CAVE
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2d6
 	call Func_80f72_21
 	ret
@@ -3972,7 +3972,7 @@ Func_87828: ; 87828 (21:7828)
 	jp Func_87868
 
 Func_8785f: ; 8785f (21:785f)
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2d7
 	call Func_80f72_21
 Func_87868: ; 87868 (21:7868)
@@ -3990,7 +3990,7 @@ Func_8787d: ; 8787d (21:787d)
 	xor a
 	ld [wc7da], a
 Func_87881: ; 87881 (21:7881)
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2d7
 	call Func_80f72_21
 Func_8788a: ; 8788a (21:788a)
@@ -4341,7 +4341,7 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	call Func_80653_21
 	ld a, $2
 	call PlayerFace_21
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2d7
 	call Func_80f72_21
 	loademote $1, $2, $9
@@ -4361,12 +4361,12 @@ Func_87c03: ; 87c03 (21:7c03)
 	setevent $4c
 	call AllocateSpaceForWarps_21
 	loadwarps $4, Data_87bd7
-	call Func_80ea2_21
+	call StartShakingScreen_21
 	playsfx $64
 	script_sleep $3c
 	playsfx $64
 	script_sleep $3c
-	call Func_80eb1_21
+	call StopShakingScreen_21
 	ret
 
 Data_87c33:
@@ -4489,7 +4489,7 @@ Func_87daf: ; 87daf (21:7daf)
 Func_87db3: ; 87db3 (21:7db3)
 	loadpeople $1, Data_87d7a
 	playmusic SONG_CAVE
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2d8
 	call Func_80f72_21
 	ret
@@ -4581,7 +4581,7 @@ Func_87ec9: ; 87ec9 (21:7ec9)
 Func_87ecd: ; 87ecd (21:7ecd)
 	loadpeople $1, Data_87e94
 	playmusic SONG_CAVE
-	call Func_8001c_21
+	call FadeInMap_21
 	ld hl, $2d8
 	call Func_80f72_21
 	ret
@@ -5398,7 +5398,7 @@ Func_958c2: ; 958c2 (25:58c2)
 	jp nz, Func_9590a
 	loadpeople 4, Data_95844
 	hideperson $1
-	call Func_8001c_25
+	call FadeInMap_25
 	call Func_959a9
 	setevent $f
 	jp Func_95957
@@ -5416,7 +5416,7 @@ Func_9590a: ; 9590a (25:590a)
 	xor a
 	call SpriteFace_25
 	hideperson $1
-	call Func_8001c_25
+	call FadeInMap_25
 	jp Func_95957
 
 Func_95935: ; 95935 (25:5935)
@@ -5427,7 +5427,7 @@ Func_95935: ; 95935 (25:5935)
 	call Func_80080_25
 	hideperson $1
 	hideperson $4
-	call Func_8001c_25
+	call FadeInMap_25
 Func_95957: ; 95957 (25:5957)
 	ret
 
@@ -5500,7 +5500,7 @@ Func_959a9: ; 959a9 (25:59a9)
 	ld e, BANK(Data_959a1)
 	ld a, $1
 	call Func_80688_25
-	call WaitMovement_25
+	call WaitNPCStep_25
 	playsfx $31
 	loademote $1, $4, $c
 	call WaitEmote_25
@@ -5513,7 +5513,7 @@ Func_959a9: ; 959a9 (25:59a9)
 	ld e, BANK(Data_959a5)
 	ld a, $1
 	call MovePerson_25
-	call WaitMovement_25
+	call WaitNPCStep_25
 	hideperson $1
 	playsfx $2a
 	xor a
@@ -5684,13 +5684,13 @@ Func_95bdb: ; 95bdb (25:5bdb)
 	heal
 	xor a
 	call PlayMusic_25
-	playmusic $16
+	playmusic SONG_HEAL
 	loademote $1, $2, $8
 	call WaitEmote_25
 	call HideEmote_25
 	writetext TreeBitstreamText_46e0b
 	writenpctext TreeBitstreamText_39369
-	playmusic $c
+	playmusic SONG_CENTER
 Func_95c0b: ; 95c0b (25:5c0b)
 	ret
 
@@ -6175,7 +6175,7 @@ Func_9a6c7: ; 9a6c7 (26:66c7)
 	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wPlayerMapX]
-	call ShowEmote
+	call MoveEmote
 	jp Func_9a771
 
 Func_9a75a: ; 9a75a (26:675a)
@@ -6191,7 +6191,7 @@ Func_9a75a: ; 9a75a (26:675a)
 	ld hl, Data_9a67d
 	add hl, de
 	ld e, [hl]
-	call ShowEmote
+	call MoveEmote
 Func_9a771: ; 9a771 (26:6771)
 	ld l, $50
 	push hl
@@ -6262,7 +6262,7 @@ Func_9a780: ; 9a780 (26:6780)
 	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wPlayerMapX]
-	call ShowEmote
+	call MoveEmote
 	jp .done_show_emote
 
 .not_over_player
@@ -6278,7 +6278,7 @@ Func_9a780: ; 9a780 (26:6780)
 	ld hl, Data_9a69f
 	add hl, de
 	ld e, [hl]
-	call ShowEmote
+	call MoveEmote
 .done_show_emote
 	ld l, $50
 	push hl
@@ -6315,7 +6315,7 @@ Func_9a84a:: ; 9a84a (26:684a)
 	jp Func_9a87b
 
 Func_9a86a: ; 9a86a (26:686a)
-	callba_hli Func_b150
+	callba_hli HandleNPCStep
 	jp Func_9a84a
 
 Func_9a87b: ; 9a87b (26:687b)
@@ -6333,13 +6333,13 @@ Func_9a87c:: ; 9a87c (26:687c)
 Func_9a896: ; 9a896 (26:6896)
 	ret
 
-ShowEmote: ; 9a897
+MoveEmote: ; 9a897
 	add -5
 	ld [wc832], a
 	ld a, e
 	add -4
 	ld [wc833], a
-	callba_hli ShowEmote_
+	callba_hli MoveEmote_
 	ret
 
 Func_9a8b1:
@@ -6462,8 +6462,459 @@ Func_9b322: ; 9b322 (26:7322)
 	pop bc
 	ret
 
-Func_9b326:: ; 9b326
-	dr $9b326, $9b74a
+Func_9b326:: ; 9b326 (26:7326)
+	add sp, -$4a
+	read_hl_from wc786
+	ld a, l
+	or h
+	jp nz, Func_9b335
+	jp Func_9b72f
+
+Func_9b335: ; 9b335 (26:7335)
+	ld e, $0
+Func_9b337: ; 9b337 (26:7337)
+	ld a, e
+	ld hl, wc788
+	cp [hl]
+	jp nc, Func_9b72f
+	push de
+	ld a, [wc785]
+	ld [wFarCallDestBank], a
+	ld l, e
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	reg16swap de, hl
+	read_hl_from wc786
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$45
+	ld bc, $5
+	call FarCopyVideoData
+	ld hl, sp+$45
+	ld a, [hl]
+	ld hl, sp+$4a
+	ld [hl], a
+	ld hl, sp+$4a
+	ld l, [hl]
+	ld h, $0
+	ld de, $8
+	call DivideHLByDESigned
+	ld de, wc7c5
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$4a
+	ld a, [hl]
+	and $7
+	ld b, a
+	ld a, $1
+	call LeftShiftA
+	and e
+	jp z, Func_9b38c
+	jp Func_9b72a
+
+Func_9b38c: ; 9b38c (26:738c)
+	ld hl, sp+$44
+	ld a, [wPlayerMapX]
+	ld [hl], a
+	ld a, [wPlayerMapY]
+	ld e, a
+	ld hl, sp+$48
+	ld a, [hl]
+	and $10
+	jp nz, Func_9b3cd
+	ld a, [wPlayerFacing]
+	cp $3
+	jp z, Func_9b3c6
+	cp $2
+	jp z, Func_9b3c2
+	cp $1
+	jp z, Func_9b3b8
+	or a
+	jp nz, Func_9b3cd
+	dec e
+	jp Func_9b3cd
+
+Func_9b3b8: ; 9b3b8 (26:73b8)
+	ld hl, sp+$44
+	ld a, [hl]
+	inc a
+	ld hl, sp+$44
+	ld [hl], a
+	jp Func_9b3cd
+
+Func_9b3c2: ; 9b3c2 (26:73c2)
+	inc e
+	jp Func_9b3cd
+
+Func_9b3c6: ; 9b3c6 (26:73c6)
+	ld hl, sp+$44
+	ld a, [hl]
+	dec a
+	ld hl, sp+$44
+	ld [hl], a
+Func_9b3cd: ; 9b3cd (26:73cd)
+	ld hl, sp+$46
+	ld a, [hl]
+	ld hl, sp+$44
+	cp [hl]
+	jp nz, Func_9b72a
+	ld hl, sp+$47
+	ld a, [hl]
+	cp e
+	jp nz, Func_9b72a
+	ld hl, sp+$4a
+	ld a, [hl]
+	cp $31
+	jp z, Func_9b403
+	cp $28
+	jp z, Func_9b403
+	cp $24
+	jp z, Func_9b403
+	cp $22
+	jp z, Func_9b403
+	cp $1d
+	jp z, Func_9b403
+	cp $1c
+	jp z, Func_9b403
+	cp $1a
+	jp nz, Func_9b44d
+Func_9b403: ; 9b403 (26:7403)
+	set_farcall_addrs_hli Func_da901
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call FarCall
+	push hl
+	set_farcall_addrs_hli DrawTextBoxAndOverworldText
+	ld c, $0
+	ld e, $c
+	ld hl, $69
+	call FarCall
+	callba_hli Func_8f44
+	set_farcall_addrs_hli Func_daa40
+	pop hl
+	call FarCall
+	jp Func_9b72a
+
+Func_9b44d: ; 9b44d (26:744d)
+	push de
+	ld a, $3
+	ld [wc39a], a
+	set_farcall_addrs_hli GetBanks
+	ld de, $19
+	ld a, $3
+	call FarCall
+	push af
+	ld hl, sp+$4c
+	ld a, [hl]
+	and $f
+	cp $3
+	jp z, Func_9b4c2
+	cp $2
+	jp z, Func_9b49f
+	cp $1
+	jp nz, Func_9b4e1
+	ld hl, sp+$4d
+	ld a, [hl]
+	dec a
+	push af
+	set_farcall_addrs_hli Func_15ad6
+	pop af
+	ld hl, sp+$2a
+	push hl
+	ld l, a
+	ld h, $0
+	ld de, $400
+	add hl, de
+	pop de
+	ld c, $a
+	call FarCall
+	jp Func_9b4e1
+
+Func_9b49f: ; 9b49f (26:749f)
+	ld hl, sp+$4d
+	ld a, [hl]
+	push af
+	set_farcall_addrs_hli Func_15ad6
+	pop af
+	ld hl, sp+$2a
+	reg16swap de, hl
+	ld l, a
+	ld h, $0
+	inc h
+	inc h
+	ld c, $8
+	call FarCall
+	jp Func_9b4e1
+
+Func_9b4c2: ; 9b4c2 (26:74c2)
+	ld hl, sp+$4d
+	ld a, [hl]
+	dec a
+	push af
+	set_farcall_addrs_hli Func_15ad6
+	pop af
+	ld hl, sp+$2a
+	reg16swap de, hl
+	ld l, a
+	ld h, $0
+	ld c, $5
+	call FarCall
+Func_9b4e1: ; 9b4e1 (26:74e1)
+	pop af
+	call GetSRAMBank
+	pop de
+	ld hl, sp+$48
+	ld a, [hl]
+	and $10
+	jp nz, Func_9b557
+	ld a, [wc859]
+	or a
+	jp z, Func_9b554
+	push de
+	ld a, $31
+	call OverworldPlaySFX
+	pop de
+	push de
+	ld d, $0
+	ld hl, wMapWidth
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	reg16swap de, hl
+	read_hl_from wBlockdataPointer
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$46
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld a, [hl]
+	ld hl, sp+$4
+	ld [hl], a
+	pop de
+	push de
+	ld d, $0
+	ld hl, wMapWidth
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	reg16swap de, hl
+	read_hl_from wBlockdataPointer
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$46
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	ld a, [wc859]
+	ld [hl], a
+	callba_hli Func_8f44
+	pop de
+Func_9b554: ; 9b554 (26:7554)
+	jp Func_9b55e
+
+Func_9b557: ; 9b557 (26:7557)
+	push de
+	ld a, $2a
+	call OverworldPlaySFX
+	pop de
+Func_9b55e: ; 9b55e (26:755e)
+	push de
+	ld hl, sp+$28
+	reg16swap de, hl
+	ld hl, sp+$a
+	call LiteralStringInTree
+	dec hl
+	ld de, $7732
+	call CopyUntilNull
+	ld hl, sp+$a
+	call WriteHLToSPPlus8
+	ld hl, $0
+	call WriteHLToSPPlus10
+	ld a, $1
+	ld [wc39a], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3afc
+	pop bc
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	set_farcall_addrs_hli Func_da901
+	ld de, PutOnVideoTransferQueue
+	ld hl, $d
+	call FarCall
+	push hl
+	ld a, $2
+	ld [wc39a], a
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	set_farcall_addrs_hli PrintMapText_
+	ld c, $80
+	ld hl, sp+$8
+	reg16swap de, hl
+	ld hl, $10e
+	call FarCall
+	callba_hli Func_8f44
+	set_farcall_addrs_hli Func_daa40
+	pop hl
+	call FarCall
+	ld hl, sp+$4a
+	ld a, [hl]
+	and $f
+	cp $3
+	jp z, Func_9b652
+	cp $2
+	jp z, Func_9b639
+	cp $1
+	jp nz, Func_9b668
+	set_farcall_addrs_hli Func_5a0e0
+	ld c, $0
+	ld e, $1
+	ld hl, sp+$4b
+	ld a, [hl]
+	call FarCall
+	ld hl, sp+$5
+	ld [hl], a
+	jp Func_9b668
+
+Func_9b639: ; 9b639 (26:7639)
+	set_farcall_addrs_hli Func_6af0d
+	ld e, $0
+	ld hl, sp+$4b
+	ld a, [hl]
+	call FarCall
+	ld hl, sp+$5
+	ld [hl], a
+	jp Func_9b668
+
+Func_9b652: ; 9b652 (26:7652)
+	set_farcall_addrs_hli Func_4ed5d
+	ld e, $0
+	ld hl, sp+$4b
+	ld a, [hl]
+	call FarCall
+	ld hl, sp+$5
+	ld [hl], a
+Func_9b668: ; 9b668 (26:7668)
+	pop de
+	ld hl, sp+$3
+	ld a, [hl]
+	cp $ff
+	jp nz, Func_9b70c
+	push de
+	ld de, $773a
+	ld hl, sp+$a
+	call CopyUntilNull
+	ld hl, sp+$a
+	call WriteHLToSPPlus8
+	ld hl, $0
+	call WriteHLToSPPlus10
+	ld a, $2
+	ld [wc39a], a
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	ld l, $12
+	push hl
+	ld c, $14
+	ld e, $0
+	xor a
+	call Func_3bc5
+	pop bc
+	set_farcall_addrs_hli PrintMapText_
+	ld c, $80
+	ld hl, sp+$6
+	reg16swap de, hl
+	ld hl, $10e
+	call FarCall
+	pop de
+	ld hl, sp+$48
+	ld a, [hl]
+	and $10
+	jp nz, Func_9b6fb
+	ld a, [wc859]
+	or a
+	jp z, Func_9b6fb
+	ld d, $0
+	ld hl, wMapWidth
+	ld l, [hl]
+	ld h, $0
+	call MultiplyHLbyDE
+	reg16swap de, hl
+	read_hl_from wBlockdataPointer
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$44
+	ld l, [hl]
+	ld h, $0
+	add hl, de
+	push de
+	push hl
+	pop de
+	pop hl
+	ld hl, sp+$2
+	ld a, [hl]
+	ld [de], a
+Func_9b6fb: ; 9b6fb (26:76fb)
+	callba_hli Func_8f44
+	jp Func_9b72a
+
+Func_9b70c: ; 9b70c (26:770c)
+	ld hl, sp+$4a
+	ld a, [hl]
+	and $7
+	ld b, a
+	ld a, $1
+	call LeftShiftA
+	push af
+	ld hl, sp+$4c
+	ld l, [hl]
+	ld h, $0
+	ld de, $8
+	call DivideHLByDESigned
+	ld de, wc7c5
+	add hl, de
+	pop af
+	or [hl]
+	ld [hl], a
+Func_9b72a: ; 9b72a (26:772a)
+	pop de
+	inc e
+	jp Func_9b337
+
+Func_9b72f: ; 9b72f (26:772f)
+	add sp, $4a
+	ret
+
+Data_9b732:
+	db "(をみつけた)", $0
+
+Data_9b73a:
+	db "(これいしﾞょう ひろえない)", $0
 
 SECTION "Bank 27", ROMX, BANK [$27]
 	lib_bank_20 27
@@ -6917,7 +7368,7 @@ Func_b7a64: ; b7a64 (2d:7a64)
 	hideperson $3
 	hideperson $4
 	playmusic $13
-	call Func_8001c_2d_2
+	call FadeInMap_2d_2
 	call Func_b7b62
 	jp Func_b7ae2
 
@@ -6926,7 +7377,7 @@ Func_b7abb: ; b7abb (2d:7abb)
 	or a
 	jp nz, Func_b7ad3
 	playmusic $13
-	call Func_8001c_2d_2
+	call FadeInMap_2d_2
 	call Func_b7d97
 	jp Func_b7ae2
 
@@ -6934,7 +7385,7 @@ Func_b7ad3: ; b7ad3 (2d:7ad3)
 	xor a
 	call PlayerFace_2d_2
 	playmusic $13
-	call Func_8001c_2d_2
+	call FadeInMap_2d_2
 	call Func_b7df7
 Func_b7ae2: ; b7ae2 (2d:7ae2)
 	ret
@@ -7053,7 +7504,7 @@ Func_b7c69: ; b7c69 (2d:7c69)
 	loademote $1, $1, $a
 	ld e, $a
 	ld a, $8
-	call ShowEmote_2d_2
+	call MoveEmote_2d_2
 	playsfx $38
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
@@ -7075,7 +7526,7 @@ Func_b7caa: ; b7caa (2d:7caa)
 	loademote $1, $1, $a
 	ld e, $b
 	ld a, $9
-	call ShowEmote_2d_2
+	call MoveEmote_2d_2
 	playsfx $38
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
@@ -7097,7 +7548,7 @@ Func_b7ceb: ; b7ceb (2d:7ceb)
 	loademote $1, $1, $a
 	ld e, $a
 	ld a, $a
-	call ShowEmote_2d_2
+	call MoveEmote_2d_2
 	playsfx $38
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
@@ -7112,7 +7563,7 @@ Func_b7ceb: ; b7ceb (2d:7ceb)
 	loademote $1, $1, $5
 	ld e, $a
 	ld a, $9
-	call ShowEmote_2d_2
+	call MoveEmote_2d_2
 	playsfx $28
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
@@ -7168,11 +7619,11 @@ Func_b7dba: ; b7dba (2d:7dba)
 	call PlayMusic_2d_2
 	xor a
 	call FadeInAudio_2d_2
-	call Func_80ea2_2d_2
+	call StartShakingScreen_2d_2
 	playsfx $65
 	move_player $1, Data_b7d89
 	playsfx $65
-	call Func_80eb1_2d_2
+	call StopShakingScreen_2d_2
 	ld l, $f
 	push hl
 	ld c, $7
@@ -7183,14 +7634,14 @@ Func_b7dba: ; b7dba (2d:7dba)
 	ret
 
 Func_b7df7: ; b7df7 (2d:7df7)
-	call Func_80eb1_2d_2
+	call StopShakingScreen_2d_2
 	ld hl, $3c
 	call ScriptSleep_2d_2
 	writenpctext TreeBitstreamText_3e04a
 	loademote $1, $1, $5
 	ld e, $a
 	ld a, $9
-	call ShowEmote_2d_2
+	call MoveEmote_2d_2
 	playsfx $28
 	call WaitEmote_2d_2
 	call HideEmote_2d_2
@@ -7291,10 +7742,291 @@ Func_cdfc4: ; cdfc4
 	dr $cdfc4, $ceacc
 
 Func_ceacc: ; ceacc
-	dr $ceacc, $cf14d
+	dr $ceacc, $cedca
 
-Func_cf14d: ; cf14d
-	dr $cf14d, $cf35a
+Data_cedca: ; cedca
+	dr $cedca, $cee59
+
+Data_cee59: ; cee59
+	dr $cee59, $cee9f
+
+Data_cee9f: ; cee9f
+	dr $cee9f, $ceee5
+
+Data_ceee5: ; ceee5
+	dr $ceee5, $cef2b
+
+Data_cef2b: ; cef2b
+	dr $cef2b, $cef71
+
+Data_cef71: ; cef71
+	dr $cef71, $cefb7
+
+Data_cefb7: ; cefb7
+	dr $cefb7, $ceffd
+
+Data_ceffd: ; ceffd
+	dr $ceffd, $cf043
+
+Data_cf043: ; cf043
+	dr $cf043, $cf089
+
+Data_cf089: ; cf089
+	dr $cf089, $cf0cf
+
+Data_cf0cf: ; cf0cf
+	dr $cf0cf, $cf14d
+
+Func_cf14d: ; cf14d (33:714d)
+	ld a, [wc798]
+	or a
+	jp nz, Func_cf163
+	ld a, $3
+	call Func_80cd7_33
+	ld [wc7dd], a
+	ld a, [wc7de]
+	inc a
+	ld [wc7de], a
+Func_cf163: ; cf163 (33:7163)
+	ld a, [wc7de]
+	cp $32
+	jp nz, Func_cf173
+	ld e, $1
+	ld hl, $61
+	call EventFlagAction_33
+Func_cf173: ; cf173 (33:7173)
+	ld a, $2
+	call Func_80d01_33
+	ld a, [wc7de]
+	cp $2d
+	jp z, Func_cf2b4
+	cp $2c
+	jp z, Func_cf2b4
+	cp $2b
+	jp z, Func_cf2b4
+	cp $2a
+	jp z, Func_cf2b4
+	cp $29
+	jp z, Func_cf2b4
+	cp $28
+	jp z, Func_cf2a9
+	cp $27
+	jp z, Func_cf2a9
+	cp $26
+	jp z, Func_cf2a9
+	cp $25
+	jp z, Func_cf2a9
+	cp $24
+	jp z, Func_cf2a9
+	cp $23
+	jp z, Func_cf29e
+	cp $22
+	jp z, Func_cf29e
+	cp $21
+	jp z, Func_cf29e
+	cp $20
+	jp z, Func_cf29e
+	cp $1f
+	jp z, Func_cf29e
+	cp $1e
+	jp z, Func_cf293
+	cp $1d
+	jp z, Func_cf293
+	cp $1c
+	jp z, Func_cf293
+	cp $1b
+	jp z, Func_cf293
+	cp $1a
+	jp z, Func_cf293
+	cp $19
+	jp z, Func_cf288
+	cp $18
+	jp z, Func_cf288
+	cp $17
+	jp z, Func_cf288
+	cp $16
+	jp z, Func_cf288
+	cp $15
+	jp z, Func_cf288
+	cp $14
+	jp z, Func_cf27d
+	cp $13
+	jp z, Func_cf27d
+	cp $12
+	jp z, Func_cf27d
+	cp $11
+	jp z, Func_cf27d
+	cp $10
+	jp z, Func_cf27d
+	cp $f
+	jp z, Func_cf272
+	cp $e
+	jp z, Func_cf272
+	cp $d
+	jp z, Func_cf272
+	cp $c
+	jp z, Func_cf272
+	cp $b
+	jp z, Func_cf272
+	cp $a
+	jp z, Func_cf267
+	cp $9
+	jp z, Func_cf267
+	cp $8
+	jp z, Func_cf267
+	cp $7
+	jp z, Func_cf267
+	cp $6
+	jp z, Func_cf267
+	cp $5
+	jp z, Func_cf25c
+	cp $4
+	jp z, Func_cf25c
+	cp $3
+	jp z, Func_cf25c
+	cp $2
+	jp z, Func_cf25c
+	cp $1
+	jp nz, Func_cf2bf
+Func_cf25c: ; cf25c (33:725c)
+	ld e, $5
+	ld hl, Data_cee59
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf267: ; cf267 (33:7267)
+	ld e, $5
+	ld hl, Data_cee9f
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf272: ; cf272 (33:7272)
+	ld e, $5
+	ld hl, Data_ceee5
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf27d: ; cf27d (33:727d)
+	ld e, $5
+	ld hl, Data_cef2b
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf288: ; cf288 (33:7288)
+	ld e, $5
+	ld hl, Data_cef71
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf293: ; cf293 (33:7293)
+	ld e, $5
+	ld hl, Data_cefb7
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf29e: ; cf29e (33:729e)
+	ld e, $5
+	ld hl, Data_ceffd
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf2a9: ; cf2a9 (33:72a9)
+	ld e, $5
+	ld hl, Data_cf043
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf2b4: ; cf2b4 (33:72b4)
+	ld e, $5
+	ld hl, Data_cf089
+	call LoadEncounters_33
+	jp Func_cf2c7
+
+Func_cf2bf: ; cf2bf (33:72bf)
+	ld e, $9
+	ld hl, Data_cf0cf
+	call LoadEncounters_33
+Func_cf2c7: ; cf2c7 (33:72c7)
+	ld a, [wc7de]
+	inc a
+	cp $33
+	jp nc, Func_cf307
+	call Func_cf344
+	ld hl, Func_cf344
+	call Func_80f11_33
+	ld a, $4
+	call Func_80cd7_33
+	ld l, a
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	push hl
+	ld hl, wc7dd
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, $6dd5
+	add hl, de
+	pop de
+	add hl, de
+	ld e, $1
+	call LoadWarps_33
+Func_cf307: ; cf307 (33:7307)
+	ld e, $1
+	ld hl, Data_cedca
+	call LoadWarps_33
+	ld a, $8
+	call PlayMusic_33
+	call FadeInMap_33
+	ld a, [wc7de]
+	cp $32
+	jp nz, Func_cf328
+	ld hl, $f8
+	call PrintTextStandard_33
+	jp Func_cf331
+
+Func_cf328: ; cf328 (33:7328)
+	ld hl, wc7de
+	ld l, [hl]
+	ld h, $0
+	call Func_80f83_33
+Func_cf331: ; cf331 (33:7331)
+	ret
+
+Data_cf332:
+	dr $cf332, $cf344
+
+Func_cf344: ; cf344 (33:7344)
+	ld hl, wc7dd
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ld de, Data_cf332
+	add hl, de
+	call Func_80d9b_33
+	call Func_80f02_33
+	ret
 
 SECTION "Bank 34", ROMX, BANK [$34]
 	lib_bank_20 34
@@ -7321,7 +8053,7 @@ Func_d11ef: ; d11ef (34:51ef)
 	ld a, $1
 	call Func_80cc6_34
 	playmusic SONG_TOWN2
-	call Func_8001c_34
+	call FadeInMap_34
 	ret
 
 Func_d121f:
@@ -7708,7 +8440,7 @@ Func_d1654: ; d1654 (34:5654)
 	ld a, $1
 	ld [wc7a2 + 1], a
 	playmusic SONG_TOWN2
-	call Func_8001c_34
+	call FadeInMap_34
 	ld a, [wBackupMapNumber]
 	or a
 	jp z, Func_d166f
@@ -7776,13 +8508,13 @@ Func_d16df: ; d16df (34:56df)
 	xor a
 	call Func_80688_34
 Func_d16e8: ; d16e8 (34:56e8)
-	call WaitMovement_34
+	call WaitNPCStep_34
 	move_player $1, Data_d1678
 	ld bc, Data_d167c
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call WaitMovement_34
+	call WaitNPCStep_34
 	ld e, $2
 	xor a
 	call SpriteFace_34
@@ -7919,7 +8651,7 @@ Func_d1866: ; d1866 (34:5866)
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call WaitMovement_34
+	call WaitNPCStep_34
 	ld e, $1
 	xor a
 	call SpriteFace_34
@@ -7928,7 +8660,7 @@ Func_d1866: ; d1866 (34:5866)
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call WaitMovement_34
+	call WaitNPCStep_34
 	ld e, $2
 	xor a
 	call SpriteFace_34
@@ -7959,7 +8691,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call WaitMovement_34
+	call WaitNPCStep_34
 	ld e, $1
 	xor a
 	call SpriteFace_34
@@ -7968,7 +8700,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	ld e, $34
 	xor a
 	call Func_80688_34
-	call WaitMovement_34
+	call WaitNPCStep_34
 	ld e, $0
 	xor a
 	call SpriteFace_34
@@ -8255,7 +8987,7 @@ Func_d1c8b: ; d1c8b (34:5c8b)
 Func_d1ccb: ; d1ccb (34:5ccb)
 	loadwarps $1, Data_d1958
 	playmusic SONG_CAVE
-	call Func_8001c_34
+	call FadeInMap_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d1cec
@@ -8463,7 +9195,7 @@ Func_d1fc2: ; d1fc2 (34:5fc2)
 Func_d2002: ; d2002 (34:6002)
 	loadwarps $1, Data_d1d1e
 	playmusic SONG_CAVE
-	call Func_8001c_34
+	call FadeInMap_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2023
@@ -8727,7 +9459,7 @@ Func_d2361: ; d2361 (34:6361)
 Func_d23a1: ; d23a1 (34:63a1)
 	loadwarps $1, Data_d2055
 	playmusic SONG_CAVE
-	call Func_8001c_34
+	call FadeInMap_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d23c2
@@ -8991,7 +9723,7 @@ Func_d2700: ; d2700 (34:6700)
 Func_d2740: ; d2740 (34:6740)
 	loadwarps $1, Data_d23f4
 	playmusic SONG_CAVE
-	call Func_8001c_34
+	call FadeInMap_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2761
@@ -9248,7 +9980,7 @@ Func_d2a92: ; d2a92 (34:6a92)
 Func_d2ad2: ; d2ad2 (34:6ad2)
 	loadwarps $1, Data_d2793
 	playmusic SONG_CAVE
-	call Func_8001c_34
+	call FadeInMap_34
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2af3
@@ -9378,7 +10110,7 @@ Func_d2c9b: ; d2c9b (34:6c9b)
 	loadpeople $2, Data_d2bf2
 Func_d2cba: ; d2cba (34:6cba)
 	playmusic SONG_CENTER
-	call Func_8001c_34
+	call FadeInMap_34
 	ret
 
 Func_d2cc3:
@@ -9612,7 +10344,7 @@ Func_d3011: ; d3011 (34:7011)
 	loadpeople $1, Data_d2d8d
 Func_d3019: ; d3019 (34:7019)
 	playmusic SONG_CENTER
-	call Func_8001c_34
+	call FadeInMap_34
 	ld a, [wBackupMapGroup]
 	cp $5
 	jp nz, Func_d3046
@@ -9881,7 +10613,7 @@ Func_d33f5: ; d33f5 (34:73f5)
 Func_d340c: ; d340c (34:740c)
 	loadpeople $8, Data_d325a
 	playmusic SONG_CENTER
-	call Func_8001c_34
+	call FadeInMap_34
 	ret
 
 Func_d341d:
@@ -10101,7 +10833,7 @@ Func_d371a: ; d371a (34:771a)
 	ld e, $1
 	call LoadWarps_34
 	playmusic SONG_TOWER
-	call Func_8001c_34
+	call FadeInMap_34
 	pop hl
 	ld a, l
 	cp $a
@@ -10179,10 +10911,10 @@ Func_d37ce: ; d37ce (34:77ce)
 	ld hl, $46c
 	call Func_80f72_34
 Func_d37d4: ; d37d4 (34:77d4)
-	call Func_80ea2_34
+	call StartShakingScreen_34
 	playsfx $64
 	script_sleep $3c
-	call Func_80eb1_34
+	call StopShakingScreen_34
 	jp Func_d385a
 
 Func_d37e8: ; d37e8 (34:77e8)
@@ -10208,7 +10940,7 @@ Func_d37e8: ; d37e8 (34:77e8)
 	call LoadWarps_34
 	loadpeople $2, Data_d365e
 	playmusic SONG_TOWN3
-	call Func_8001c_34
+	call FadeInMap_34
 	jp Func_d385a
 
 Func_d381e: ; d381e (34:781e)
@@ -10242,7 +10974,7 @@ Func_d3831: ; d3831 (34:7831)
 	call LoadWarps_34
 	loadpeople $2, Data_d365e
 	playmusic SONG_SHOP
-	call Func_8001c_34
+	call FadeInMap_34
 Func_d385a: ; d385a (34:785a)
 	ret
 
@@ -10328,7 +11060,7 @@ Func_d392b: ; d392b (34:792b)
 	call PlayMusic_34
 	xor a
 	call Func_80653_34
-	call Func_8001c_34
+	call FadeInMap_34
 	ld hl, $b3
 	call Func_80f72_34
 	call Func_d3cb2
@@ -10344,7 +11076,7 @@ Func_d3977: ; d3977 (34:7977)
 	call Func_80cc6_34
 	xor a
 	call Func_80653_34
-	call Func_8001c_34
+	call FadeInMap_34
 	call Func_d39a6
 	jp Func_d39a5
 
@@ -10352,12 +11084,12 @@ Func_d3998: ; d3998 (34:7998)
 	playmusic SONG_PUNCH_MINIGAME
 	ld a, $1
 	call Func_80cc6_34
-	call Func_8001c_34
+	call FadeInMap_34
 Func_d39a5: ; d39a5 (34:79a5)
 	ret
 
 Func_d39a6: ; d39a6 (34:79a6)
-	call Func_80ea2_34
+	call StartShakingScreen_34
 	playsfx $64
 	loademote $3, $1, $13
 	call Func_80f54_34
@@ -10403,7 +11135,7 @@ Func_d39a6: ; d39a6 (34:79a6)
 	call Func_80f54_34
 	call WaitEmote_34
 	call HideEmote_34
-	call Func_80eb1_34
+	call StopShakingScreen_34
 	ld l, $6
 	push hl
 	ld c, $8
@@ -10653,7 +11385,7 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	loademote $1, $2, $2b
 	ld e, $e
 	ld a, $7
-	call ShowEmote_34
+	call MoveEmote_34
 	playsfx $65
 	script_sleep $3c
 	playsfx $43
@@ -10674,7 +11406,7 @@ Func_d3ceb: ; d3ceb (34:7ceb)
 	xor a
 	call Func_80653_34
 	loademote $1, $6, $26
-	call Func_8001c_34
+	call FadeInMap_34
 	call WaitEmote_34
 	ld a, $1
 	call PlayerFace_34

@@ -629,7 +629,7 @@ Func_23784: ; 23784 (8:7784)
 	add hl, de
 	ld [hl], $0
 Func_2378e: ; 2378e (8:778e)
-	set_farcall_addrs_hli Func_6b74
+	set_farcall_addrs_hli StackGetRobotInParty
 	pop af
 	push af
 	read_hl_from_sp_plus $4d

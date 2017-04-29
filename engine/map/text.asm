@@ -1,4 +1,4 @@
-DrawTextBoxAndOverworldText: ; aa5d (2:6a5d)
+DrawTextBoxAndOverworldText:: ; aa5d (2:6a5d)
 ; e = ???
 ; c = 1 if yes/no box else 0
 	push hl

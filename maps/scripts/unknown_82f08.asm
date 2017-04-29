@@ -16,7 +16,7 @@ Func_82f08:
 	ld hl, Data_82f03
 	call Func_80ce7_20
 	playmusic SONG_SHOP
-	call Func_8001c_20
+	call FadeInMap_20
 	ld hl, $3cd
 	call Func_80f72_20
 	ret

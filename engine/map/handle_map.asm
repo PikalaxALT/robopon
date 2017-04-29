@@ -1,95 +1,95 @@
 HandleMap: ; 90e9 (2:50e9)
 	add sp, -$10
 	ld a, $ff
-	ld [wc839], a
+	ld [wLastPlayerFacing], a
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
 	call UpdateSprites
 	ld hl, sp+$e
 	ld [hl], $ff
-Func_90fe: ; 90fe (2:50fe)
-	ld a, [wc84a]
+.loop: ; 90fe (2:50fe)
+	ld a, [wRemainInMap]
 	cp $1
-	jp nz, Func_9413
+	jp nz, .quit
 	ld hl, sp+$e
 	ld a, [hl]
 	cp $ff
-	jp nz, Func_9111
+	jp nz, .skip_frame
 	call NextOverworldFrame
-Func_9111: ; 9111 (2:5111)
+.skip_frame: ; 9111 (2:5111)
 	call Func_b44d
 	ld hl, sp+$e
 	ld [hl], a
 	read_hl_from wMovementDataAddr
 	ld a, l
 	or h
-	jp z, Func_9134
+	jp z, .doPlayerStep
 	ld hl, sp+$e
 	ld a, [hl]
 	cp $ff
-	jp nz, Func_9134
+	jp nz, .doPlayerStep
 	ld hl, $0
 	write_hl_to wMovementDataAddr
-	jp Func_9413
+	jp .quit
 
-Func_9134: ; 9134 (2:5134)
+.doPlayerStep: ; 9134 (2:5134)
 	ld e, $ff
 	ld hl, sp+$e
 	ld a, [hl]
 	and $4
-	jp z, Func_9146
+	jp z, .check_step_down
 	xor a
 	ld [wPlayerFacing], a
 	ld e, a
-	jp Func_918e
+	jp .done_player_step
 
-Func_9146: ; 9146 (2:5146)
+.check_step_down: ; 9146 (2:5146)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $8
-	jp z, Func_9157
-	ld a, $2
+	jp z, .check_step_left
+	ld a, FACE_DOWN
 	ld [wPlayerFacing], a
 	ld e, a
-	jp Func_918e
+	jp .done_player_step
 
-Func_9157: ; 9157 (2:5157)
+.check_step_left: ; 9157 (2:5157)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $2
-	jp z, Func_9168
-	ld a, $3
+	jp z, .check_step_right
+	ld a, FACE_LEFT
 	ld [wPlayerFacing], a
 	ld e, a
-	jp Func_918e
+	jp .done_player_step
 
-Func_9168: ; 9168 (2:5168)
+.check_step_right: ; 9168 (2:5168)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $1
-	jp z, Func_9179
-	ld a, $1
+	jp z, .player_step_invalid
+	ld a, FACE_RIGHT
 	ld [wPlayerFacing], a
 	ld e, a
-	jp Func_918e
+	jp .done_player_step
 
-Func_9179: ; 9179 (2:5179)
+.player_step_invalid: ; 9179 (2:5179)
 	push de
 	ld a, [wPlayerFacing]
-	ld [wc839], a
+	ld [wLastPlayerFacing], a
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
 	call UpdateSprites
-	call Func_b150
+	call HandleNPCStep
 	pop de
-Func_918e: ; 918e (2:518e)
+.done_player_step: ; 918e (2:518e)
 	push de
-	ld a, [wc839]
+	ld a, [wLastPlayerFacing]
 	ld hl, wPlayerFacing
 	cp [hl]
-	jp z, Func_91ba
+	jp z, .skip_player_sprite_reload
 	ld e, $0
 	ld a, [wPlayerFacing]
 	call UpdatePlayerSprite
@@ -99,37 +99,38 @@ Func_918e: ; 918e (2:518e)
 	ld a, [wNextVBlankFlags]
 	or $6
 	ld [wNextVBlankFlags], a
-	call Func_8ccf
+	call GetPlayerSprite
 	ld a, [wPlayerFacing]
-	ld [wc839], a
-Func_91ba: ; 91ba (2:51ba)
-	call ShowEmote_
+	ld [wLastPlayerFacing], a
+.skip_player_sprite_reload: ; 91ba (2:51ba)
+	call MoveEmote_
 	pop de
 	ld hl, sp+$e
 	ld a, [hl]
 	and $10
-	jp z, Func_91f0
+	jp z, .notPressingA
 	ld e, $4
 	ld a, [wPlayerFacing]
 	ld e, a
 	ld a, $2
 	call CheckFacingObject
-	ld a, [wc84a]
+	ld a, [wRemainInMap]
 	or a
-	jp nz, Func_91db
-	jp Func_9413
+	jp nz, .continue_map
+	jp .quit
 
-Func_91db: ; 91db (2:51db)
+.continue_map: ; 91db (2:51db)
 	callba_hli Func_9b326
 	ld hl, sp+$e
 	ld [hl], $ff
-	jp Func_90fe
+	jp .loop
 
-Func_91f0: ; 91f0 (2:51f0)
+.notPressingA: ; 91f0 (2:51f0)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $40
-	jp z, Func_930d
+	jp z, .notPressingSelect
+	; Press and hold Select to display the time and date
 	push de
 	ld hl, $0
 	push hl
@@ -140,19 +141,19 @@ Func_91f0: ; 91f0 (2:51f0)
 	pop hl
 	ld a, l
 	or h
-	jp nz, Func_9222
+	jp nz, .asm_9222
 	set_farcall_addrs_hli Func_da901
 	ld de, $1403
 	ld hl, $0
 	call FarCall
-Func_9222: ; 9222 (2:5222)
+.asm_9222: ; 9222 (2:5222)
 	push hl
 	ld hl, sp+$4
 	ld [hl], $ff
-Func_9227: ; 9227 (2:5227)
+.whileHoldingSelect: ; 9227 (2:5227)
 	call GetJoyPressed
 	and $40
-	jp z, Func_92f7
+	jp z, .releasedSelect
 	call NextOverworldFrame
 	set_farcall_addrs_hli Func_93370
 	ld hl, sp+$5
@@ -161,10 +162,10 @@ Func_9227: ; 9227 (2:5227)
 	ld a, [hl]
 	ld hl, sp+$9
 	cp [hl]
-	jp nz, Func_924e
-	jp Func_9227
+	jp nz, .asm_924e
+	jp .whileHoldingSelect
 
-Func_924e: ; 924e (2:524e)
+.asm_924e: ; 924e (2:524e)
 	ld hl, sp+$9
 	ld a, [hl]
 	ld hl, sp+$4
@@ -201,7 +202,7 @@ Func_924e: ; 924e (2:524e)
 	ld hl, sp+$8
 	ld a, [hl]
 	cp $a
-	jp nc, Func_92ab
+	jp nc, .asm_92ab
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
@@ -211,9 +212,9 @@ Func_924e: ; 924e (2:524e)
 	call PlaceString
 	pop bc
 	pop bc
-	jp Func_92ba
+	jp .asm_92ba
 
-Func_92ab: ; 92ab (2:52ab)
+.asm_92ab: ; 92ab (2:52ab)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
@@ -223,11 +224,11 @@ Func_92ab: ; 92ab (2:52ab)
 	call PlaceString
 	pop bc
 	pop bc
-Func_92ba: ; 92ba (2:52ba)
+.asm_92ba: ; 92ba (2:52ba)
 	ld hl, sp+$9
 	ld a, [hl]
 	cp $a
-	jp nc, Func_92d4
+	jp nc, .asm_92d4
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -237,9 +238,9 @@ Func_92ba: ; 92ba (2:52ba)
 	call PlaceString
 	pop bc
 	pop bc
-	jp Func_92e3
+	jp .asm_92e3
 
-Func_92d4: ; 92d4 (2:52d4)
+.asm_92d4: ; 92d4 (2:52d4)
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -249,7 +250,7 @@ Func_92d4: ; 92d4 (2:52d4)
 	call PlaceString
 	pop bc
 	pop bc
-Func_92e3: ; 92e3 (2:52e3)
+.asm_92e3: ; 92e3 (2:52e3)
 	ld a, $1
 	ld [wc39a], a
 	ld l, $3
@@ -259,26 +260,26 @@ Func_92e3: ; 92e3 (2:52e3)
 	xor a
 	call Func_3bc5
 	pop bc
-	jp Func_9227
+	jp .whileHoldingSelect
 
-Func_92f7: ; 92f7 (2:52f7)
+.releasedSelect: ; 92f7 (2:52f7)
 	call Func_8f44
 	set_farcall_addrs_hli Func_daa40
 	pop hl
 	call FarCall
 	pop de
-	jp Func_93c0
+	jp .doneJoypadCheck
 
-Func_930d: ; 930d (2:530d)
+.notPressingSelect: ; 930d (2:530d)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $80
-	jp z, Func_93c0
+	jp z, .doneJoypadCheck
 	push de
 	callba_hli Func_da4dc
 	ld a, [wc7da]
 	or a
-	jp z, Func_9371
+	jp z, .asm_9371
 	xor a
 	ld [wOBP0], a
 	ld [wBGP], a
@@ -305,7 +306,7 @@ Func_930d: ; 930d (2:530d)
 	set_farcall_addrs_hli Func_c7bd0
 	ld a, [wc867]
 	call FarCall
-Func_9371: ; 9371 (2:5371)
+.asm_9371: ; 9371 (2:5371)
 	ld hl, sp+$c
 	ld a, [wSpawnX]
 	ld [hl], a
@@ -313,38 +314,38 @@ Func_9371: ; 9371 (2:5371)
 	ld a, [wSpawnY]
 	ld [hl], a
 	ld hl, sp+$e
-	ld a, [wc7e9]
+	ld a, [wSpawnPushX]
 	ld [hl], a
 	ld hl, sp+$f
-	ld a, [wc7ea]
+	ld a, [wSpawnPushY]
 	ld [hl], a
 	ld a, [wPlayerMapX]
 	ld [wSpawnX], a
 	ld a, [wPlayerMapY]
 	ld [wSpawnY], a
 	ld a, [wPlayerMapX]
-	ld [wc7e9], a
+	ld [wSpawnPushX], a
 	ld a, [wPlayerMapY]
-	ld [wc7ea], a
+	ld [wSpawnPushY], a
 	callba_hli Func_14675
 	pop de
-	ld a, [wc84a]
+	ld a, [wRemainInMap]
 	or a
-	jp nz, Func_93ba
-	jp Func_9413
+	jp nz, .asm_93ba
+	jp .quit
 
-Func_93ba: ; 93ba (2:53ba)
+.asm_93ba: ; 93ba (2:53ba)
 	push de
 	xor a
 	call FadeInMap
 	pop de
-Func_93c0: ; 93c0 (2:53c0)
+.doneJoypadCheck: ; 93c0 (2:53c0)
 	ld a, e
 	cp $ff
 	jp nz, .step
 	ld hl, sp+$e
 	ld [hl], $ff
-	jp Func_90fe
+	jp .loop
 
 .step
 	ld e, $0
@@ -354,38 +355,38 @@ Func_93c0: ; 93c0 (2:53c0)
 	ld e, a
 	xor a
 	call CheckFacingObject
-	ld a, [wc84a]
+	ld a, [wRemainInMap]
 	or a
-	jp nz, Func_93e7
-	jp Func_9413
+	jp nz, .asm_93e7
+	jp .quit
 
-Func_93e7: ; 93e7 (2:53e7)
+.asm_93e7: ; 93e7 (2:53e7)
 	call CheckWarpTile
 	cp $1
-	jp nz, Func_93f2
-	jp Func_9413
+	jp nz, .asm_93f2
+	jp .quit
 
-Func_93f2: ; 93f2 (2:53f2)
+.asm_93f2: ; 93f2 (2:53f2)
 	call RollRandomEncounter
 	cp $1
-	jp z, Func_9409
+	jp z, .asm_9409
 	cp $ff
-	jp z, Func_9406
+	jp z, .asm_9406
 	or a
-	jp nz, Func_940c
-	jp Func_9413
+	jp nz, .asm_940c
+	jp .quit
 
-Func_9406: ; 9406 (2:5406)
-	jp Func_940c
+.asm_9406: ; 9406 (2:5406)
+	jp .asm_940c
 
-Func_9409: ; 9409 (2:5409)
-	jp Func_90fe
+.asm_9409: ; 9409 (2:5409)
+	jp .loop
 
-Func_940c: ; 940c (2:540c)
+.asm_940c: ; 940c (2:540c)
 	ld hl, sp+$e
 	ld [hl], $0
-	jp Func_90fe
+	jp .loop
 
-Func_9413: ; 9413 (2:5413)
+.quit: ; 9413 (2:5413)
 	add sp, $10
 	ret

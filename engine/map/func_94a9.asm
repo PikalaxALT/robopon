@@ -215,40 +215,40 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	ld b, a
 	ld a, [wFunc94a9_c891]
 	or a
-	jr z, .asm_9bae
+	jr z, .player_facing_up
 	dec a
-	jr z, .asm_9bb7
+	jr z, .player_facing_right
 	dec a
-	jr z, .asm_9bc0
+	jr z, .player_facing_down
 	dec a
-	jr z, .asm_9bc9
-	jr .asm_9bd2
+	jr z, .player_facing_left
+	jr .done_player_facing
 
-.asm_9bae
+.player_facing_up
 	ld a, [wFunc94a9_c890]
 	add b
 	ld [wFunc94a9_c890], a
-	jr .asm_9bd2
+	jr .done_player_facing
 
-.asm_9bb7
+.player_facing_right
 	ld a, [wFunc94a9_c88f]
 	sub b
 	ld [wFunc94a9_c88f], a
-	jr .asm_9bd2
+	jr .done_player_facing
 
-.asm_9bc0
+.player_facing_down
 	ld a, [wFunc94a9_c890]
 	sub b
 	ld [wFunc94a9_c890], a
-	jr .asm_9bd2
+	jr .done_player_facing
 
-.asm_9bc9
+.player_facing_left
 	ld a, [wFunc94a9_c88f]
 	add b
 	ld [wFunc94a9_c88f], a
-	jr .asm_9bd2
+	jr .done_player_facing
 
-.asm_9bd2
+.done_player_facing
 	push hl
 	set_farcall_addrs_hli UpdateCurSprite
 	pop hl
@@ -299,21 +299,22 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	jp .loop
 
 .done: ; 9c36 (2:5c36)
-	ld a, [wc84e]
+	; Handle screen shake
+	ld a, [wScreenIsShaking]
 	cp $1
 	jp nz, .skip_multiply
-	ld a, [wc850]
+	ld a, [wScreenShakeFrameTimer]
 	inc a
-	ld [wc850], a
+	ld [wScreenShakeFrameTimer], a
 	dec a
-	cp $5
+	cp 5
 	jp c, .skip_multiply
 	ld a, [wSCY]
-	ld hl, wc84f
+	ld hl, wNextScreenShakeYDisplacement
 	add [hl]
 	ld [wSCY], a
 	ld a, [wSCY2]
-	ld hl, wc84f
+	ld hl, wNextScreenShakeYDisplacement
 	add [hl]
 	ld [wSCY2], a
 	di
@@ -321,12 +322,12 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	or $10
 	ld [wNextVBlankFlags], a
 	ei
-	ld a, [wc84f]
-	ld b, $ff
+	ld a, [wNextScreenShakeYDisplacement]
+	ld b, -1
 	call MultiplyAbyB
-	ld [wc84f], a
+	ld [wNextScreenShakeYDisplacement], a
 	xor a
-	ld [wc850], a
+	ld [wScreenShakeFrameTimer], a
 .skip_multiply: ; 9c78 (2:5c78)
 	call Func_a1fa
 	pop de
@@ -400,3 +401,48 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	ld a, e
 	pop bc
 	ret
+
+AbortShakingScreen: ; 9d31 (2:5d31)
+	xor a
+	ld [wScreenIsShaking], a
+	xor a
+	ld [wNextScreenShakeYDisplacement], a
+	xor a
+	ld [wScreenShakeFrameTimer], a
+	ret
+
+StartShakingScreen:: ; 9d3e
+	ld a, $1
+	ld [wScreenIsShaking], a
+	ld a, $2
+	ld [wNextScreenShakeYDisplacement], a
+	xor a
+	ld [wScreenShakeFrameTimer], a
+	ret
+
+StopShakingScreen:: ; 9d4d
+	ld a, [wNextScreenShakeYDisplacement]
+	cp $2
+	jp z, .okay_to_abort
+	ld a, [wSCY]
+	ld hl, wNextScreenShakeYDisplacement
+	add [hl]
+	ld [wSCY], a
+	ld a, [wSCY2]
+	ld hl, wNextScreenShakeYDisplacement
+	add [hl]
+	ld [wSCY2], a
+	di
+	ld a, [wNextVBlankFlags]
+	or $10
+	ld [wNextVBlankFlags], a
+	ei
+.okay_to_abort
+	xor a
+	ld [wNextScreenShakeYDisplacement], a
+	xor a
+	ld [wScreenIsShaking], a
+	xor a
+	ld [wScreenShakeFrameTimer], a
+	ret
+

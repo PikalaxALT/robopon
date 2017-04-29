@@ -20,8 +20,7 @@ BackUpRectangleAt:: ; 20da (0:20da)
 	read_hl_from_sp_plus $c
 	ld a, [hl]
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $c
+	write_hl_to_sp_plus $c
 	ld [bc], a
 	inc bc
 	pop af
@@ -44,8 +43,7 @@ BackUpRectangleAt:: ; 20da (0:20da)
 	ld b, a
 	read_hl_from_sp_plus $c
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $c
+	write_hl_to_sp_plus $c
 	pop af
 	inc a
 	pop bc
@@ -148,8 +146,7 @@ RestoreUpRectangleTo:: ; 2180 (0:2180)
 	read_hl_from_sp_plus $c
 	ld [hl], a
 	inc hl
-	call WriteHLToSPPlusParam8
-	db $c
+	write_hl_to_sp_plus $c
 	pop af
 	inc a
 	jp .inner
@@ -170,8 +167,7 @@ RestoreUpRectangleTo:: ; 2180 (0:2180)
 	ld b, a
 	read_hl_from_sp_plus $c
 	add hl, bc
-	call WriteHLToSPPlusParam8
-	db $c
+	write_hl_to_sp_plus $c
 	pop af
 	inc a
 	pop bc

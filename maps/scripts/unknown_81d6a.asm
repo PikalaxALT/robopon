@@ -1,17 +1,37 @@
+; Player's bedroom
+
 Data_81cb4:
-	db $7, $2, $1, $1, $0, $1, $7, $2, $7, $3, $2e
+	warpdef $7, $2, $1, $1, MAP_00_01, $7, $2, $7, $3, $2e
 
 Data_81cbf: ; 81cbf
-	dr $81cbf, $81cd0
+	dr $81cbf, $81cc4
+
+Data_81cc4:
+	dtext_tree_pointer TreeBitstreamText_47053
+	dw -1
+
+Data_81cc8:
+	dtext_tree_pointer TreeBitstreamText_46eb8
+	dw -1
+
+Data_81ccc:
+	dtext_tree_pointer TreeBitstreamText_46e84
+	dw -1
 
 Data_81cd0: ; 81cd0
-	dr $81cd0, $81cfa
+	person_event $ff, $00, $03, $04, $01, $01, $00, $04, $00, PrintTextFacePlayer_20, Data_81cc4
+	person_event $ff, $00, $05, $01, $01, $01, $00, $04, $00, PrintTextFacePlayer_20, Data_81cc8
+	person_event $ff, $00, $06, $01, $01, $01, $00, $04, $01, PrintTextFacePlayer_20, Data_81ccc
 
 Data_81cfa: ; 81cfa
-	dr $81cfa, $81d40
+	person_event $ff, $00, $00, $07, $01, $01, $00, $04, $01, Func_82047, 0
+	person_event $12, $04, $07, $04, $01, $01, $03, $04, $00, Func_82286, 0
+	person_event $11, $04, $07, $05, $01, $01, $03, $04, $00, Func_822dd, 0
+	person_event $14, $04, $07, $06, $01, $01, $03, $04, $00, Func_82335, 0
+	person_event $15, $04, $07, $07, $01, $01, $03, $04, $00, Func_8238b, 0
 
 Data_81d40: ; 81d40
-	dr $81d40, $81d4e
+	person_event $25, $0c, $07, $02, $01, $01, $02, $04, $00, 0, 0
 
 Data_81d4e: ; 81d4e
 	wildbot $0, $0, $6, $6, $2a, $a, $b, $63, $1, $2, $3, $1, $a
@@ -26,25 +46,25 @@ Func_81d6a:
 	call Func_80ce7_20
 	ld a, [wc793]
 	or a
-	jp z, Func_81d95
+	jp z, .check_dr_zero
 	ld a, [wc793]
 	cp $2
-	jp z, Func_81d95
+	jp z, .check_dr_zero
 	ld a, [wc793]
 	cp $3
 	jp nz, Func_81df9
-Func_81d95: ; 81d95 (20:5d95)
+.check_dr_zero: ; 81d95 (20:5d95)
 	ld a, [wBackupMapGroup]
-	cp $1a
-	jp nz, Func_81db2
+	cp GROUP_MAP_26_00 ; where you fight Dr. Zero
+	jp nz, .not_dr_zero
 	ld a, [wBackupMapNumber]
-	or a
-	jp nz, Func_81db2
+	or a ; cp MAP_MAP_26_00
+	jp nz, .not_dr_zero
 	loadpeople $1, Data_81d40
 	call Func_81f41
 	jp Func_81df6
 
-Func_81db2: ; 81db2 (20:5db2)
+.not_dr_zero: ; 81db2 (20:5db2)
 	loadwarps $1, Data_81cb4
 	checkevent $a
 	or a
@@ -64,7 +84,7 @@ Func_81db2: ; 81db2 (20:5db2)
 Func_81de6: ; 81de6 (20:5de6)
 	loadpeople $3, Data_81cd0
 	playmusic SONG_TOWN3
-	call Func_8001c_20
+	call FadeInMap_20
 Func_81df6: ; 81df6 (20:5df6)
 	jp Func_81e22
 
@@ -75,21 +95,23 @@ Func_81df9: ; 81df9 (20:5df9)
 	call Func_80d01_20
 	loadwilds $2, Data_81d4e
 	playmusic SONG_TOWN3
-	call Func_8001c_20
+	call FadeInMap_20
 	xor a
 	ld [wc793], a
 Func_81e22: ; 81e22 (20:5e22)
 	ret
 
 Data_81e23:
-	dr $81e23, $81e27
+	db  3,  2
+	db -1, -1
 
 Data_81e27: ; 81e27
-	dr $81e27, $81e2b
+	db  7,  2
+	db -1, -1
 
 Func_81e2b: ; 81e2b (20:5e2b)
 	loademote $6, $1, $1f
-	call Func_8001c_20
+	call FadeInMap_20
 	call WaitEmote_20
 	playsfx $67
 	script_sleep $3c
@@ -102,7 +124,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	ld a, $35
 	call OverworldPlaySFX
 	script_sleep $1e
-	call Func_80ea2_20
+	call StartShakingScreen_20
 	script_sleep $1e
 	ld a, $38
 	call OverworldPlaySFX
@@ -113,7 +135,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	ld a, $3a
 	call OverworldPlaySFX
 	script_sleep $1e
-	call Func_80eb1_20
+	call StopShakingScreen_20
 	loademote $6, $2, $1f
 	call WaitEmote_20
 	writetext TreeBitstreamText_38fae
@@ -127,7 +149,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	ld a, $3c
 	call OverworldPlaySFX
 	script_sleep $1e
-	call Func_80ea2_20
+	call StartShakingScreen_20
 	script_sleep $1e
 	ld a, $39
 	call OverworldPlaySFX
@@ -136,7 +158,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	call OverworldPlaySFX
 	script_sleep $1e
 	script_sleep $1e
-	call Func_80eb1_20
+	call StopShakingScreen_20
 	script_sleep $1
 	writetext TreeBitstreamText_38fbd
 	ld a, $1
@@ -145,7 +167,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	call HideEmote_20
 	script_sleep $1e
 	move_player $1, Data_81e27
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ret
 
 Data_81f2d:
@@ -210,7 +232,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	xor a
 	call SetPersonVisibilityState_20
 	loademote $8, $1, $1f
-	call Func_8001c_20
+	call FadeInMap_20
 	call WaitEmote_20
 	script_sleep $3c
 	playsfx $2e
@@ -221,7 +243,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld e, BANK(Data_81f2d)
 	xor a
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	ld e, $3
 	xor a
 	call SpriteFace_20
@@ -230,7 +252,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld e, BANK(Data_81f33)
 	xor a
 	call Func_80688_20
-	call WaitMovement_20
+	call WaitNPCStep_20
 	playsfx $2e
 	ld e, $0
 	xor a
