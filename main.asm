@@ -87813,7 +87813,7 @@ Func_68ac3: ; 68ac3 (1a:4ac3)
 	call DivideAbyB
 	ld hl, sp+$7
 	ld [hl], b
-	set_farcall_addrs_hli Func_93792
+	set_farcall_addrs_hli FixDays
 	ld hl, sp+$3
 	push hl
 	call GetHLAtSPPlus5

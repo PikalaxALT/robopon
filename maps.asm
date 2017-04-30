@@ -1031,7 +1031,7 @@ Func_83d57: ; 83d57 (20:7d57)
 	ld b, h
 Func_83dd5: ; 83dd5 (20:7dd5)
 	push bc
-	set_farcall_addrs_hli Func_93792
+	set_farcall_addrs_hli FixDays
 	ld hl, sp+$4
 	push hl
 	call GetHLAtSPPlus6
@@ -4883,7 +4883,7 @@ Func_932bd:: ; 932bd (24:72bd)
 	ret
 
 Func_93364: ; 93364 (24:7364)
-	read_hl_from wc930
+	read_hl_from wRTCDays
 	ret
 
 Func_9336a: ; 9336a (24:736a)
@@ -4895,8 +4895,8 @@ Func_93370:: ; 93370 (24:7370)
 	pop hl
 	push hl
 	reg16swap de, hl
-	read_hl_from wc930
-	call Func_93792
+	read_hl_from wRTCDays
+	call FixDays
 	read_hl_from wMinutesSinceMidnight
 	ld de, 60
 	call DivideHLByDESigned
@@ -5211,12 +5211,187 @@ Func_935a5: ; 935a5 (24:75a5)
 	ret
 
 Func_935a8:: ; 935a8
-	dr $935a8, $93630
+	dr $935a8, $93632
 
-Data_93630:
-	dr $93630, $93792
+DaysSince1Jan1924:
+	dw   366
+	dw   731
+	dw  1096
+	dw  1461
+	dw  1827
+	dw  2192
+	dw  2557
+	dw  2922
+	dw  3288
+	dw  3653
+	dw  4018
+	dw  4383
+	dw  4749
+	dw  5114
+	dw  5479
+	dw  5844
+	dw  6210
+	dw  6575
+	dw  6940
+	dw  7305
+	dw  7671
+	dw  8036
+	dw  8401
+	dw  8766
+	dw  9132
+	dw  9497
+	dw  9862
+	dw 10227
+	dw 10593
+	dw 10958
+	dw 11323
+	dw 11688
+	dw 12054
+	dw 12419
+	dw 12784
+	dw 13149
+	dw 13515
+	dw 13880
+	dw 14245
+	dw 14610
+	dw 14976
+	dw 15341
+	dw 15706
+	dw 16071
+	dw 16437
+	dw 16802
+	dw 17167
+	dw 17532
+	dw 17898
+	dw 18263
+	dw 18628
+	dw 18993
+	dw 19359
+	dw 19724
+	dw 20089
+	dw 20454
+	dw 20820
+	dw 21185
+	dw 21550
+	dw 21915
+	dw 22281
+	dw 22646
+	dw 23011
+	dw 23376
+	dw 23742
+	dw 24107
+	dw 24472
+	dw 24837
+	dw 25203
+	dw 25568
+	dw 25933
+	dw 26298
+	dw 26664
+	dw 27029
+	dw 27394
+	dw 27759
+	dw 28125
+	dw 28490
+	dw 28855
+	dw 29220
+	dw 29586
+	dw 29951
+	dw 30316
+	dw 30681
+	dw 31047
+	dw 31412
+	dw 31777
+	dw 32142
+	dw 32508
+	dw 32873
+	dw 33238
+	dw 33603
+	dw 33969
+	dw 34334
+	dw 34699
+	dw 35064
+	dw 35430
+	dw 35795
+	dw 36160
+	dw 36525
+	dw 36891
+	dw 37256
+	dw 37621
+	dw 37986
+	dw 38352
+	dw 38717
+	dw 39082
+	dw 39447
+	dw 39813
+	dw 40178
+	dw 40543
+	dw 40908
+	dw 41274
+	dw 41639
+	dw 42004
+	dw 42369
+	dw 42735
+	dw 43100
+	dw 43465
+	dw 43830
+	dw 44196
+	dw 44561
+	dw 44926
+	dw 45291
+	dw 45657
+	dw 46022
+	dw 46387
+	dw 46752
+	dw 47118
+	dw 47483
+	dw 47848
+	dw 48213
+	dw 48579
+	dw 48944
+	dw 49309
+	dw 49674
+	dw 50040
+	dw 50405
+	dw 50770
+	dw 51135
+	dw 51501
+	dw 51866
+	dw 52231
+	dw 52596
+	dw 52962
+	dw 53327
+	dw 53692
+	dw 54057
+	dw 54423
+	dw 54788
+	dw 55153
+	dw 55518
+	dw 55884
+	dw 56249
+	dw 56614
+	dw 56979
+	dw 57345
+	dw 57710
+	dw 58075
+	dw 58440
+	dw 58806
+	dw 59171
+	dw 59536
+	dw 59901
+	dw 60267
+	dw 60632
+	dw 60997
+	dw 61362
+	dw 61728
+	dw 62093
+	dw 62458
+	dw 62823
+	dw 63189
+	dw 63554
+	dw 63919
+	dw 64284
 
-Func_93792:: ; 93792 (24:7792)
+FixDays:: ; 93792 (24:7792)
 	push hl
 	push bc
 	push bc
@@ -5227,12 +5402,12 @@ Func_93792:: ; 93792 (24:7792)
 	call WriteHLToSPPlus8
 	ld hl, sp+$4
 	ld [hl], $0
-Func_937a4: ; 937a4 (24:77a4)
+.getYear
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, Data_93630 + 2
+	ld de, DaysSince1Jan1924
 	add hl, de
 	ld c, [hl]
 	inc hl
@@ -5242,24 +5417,24 @@ Func_937a4: ; 937a4 (24:77a4)
 	sub c
 	ld a, h
 	sbc b
-	jp c, Func_937c5
+	jp c, .gotYear
 	ld hl, sp+$4
 	ld a, [hl]
 	inc a
 	ld hl, sp+$4
 	ld [hl], a
-	jp Func_937a4
+	jp .getYear
 
-Func_937c5: ; 937c5 (24:77c5)
+.gotYear
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
-	jp z, Func_937e5
+	jp z, .year_zero
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, Data_93630
+	ld de, DaysSince1Jan1924 - 2
 	add hl, de
 	ld c, [hl]
 	inc hl
@@ -5272,19 +5447,20 @@ Func_937c5: ; 937c5 (24:77c5)
 	sbc b
 	ld h, a
 	call WriteHLToSPPlus8
-Func_937e5: ; 937e5 (24:77e5)
+.year_zero
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
-	jp nz, Func_937f3
+	jp nz, .not_1924
 	ld hl, sp+$3
 	ld [hl], $3
-	jp Func_937f7
+	jp .query_leap_year
 
-Func_937f3: ; 937f3 (24:77f3)
+.not_1924: ; 937f3 (24:77f3)
 	ld hl, sp+$3
 	ld [hl], $1
-Func_937f7: ; 937f7 (24:77f7)
+.query_leap_year: ; 937f7 (24:77f7)
+	; this is queried twice for some reason
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
@@ -5299,15 +5475,15 @@ Func_937f7: ; 937f7 (24:77f7)
 	call IsLeapYear
 	ld hl, sp+$2
 	ld [hl], a
-Func_93812: ; 93812 (24:7812)
+.loop: ; 93812 (24:7812)
 	call GetHLAtSPPlus8
 	ld a, l
 	or h
-	jp z, Func_93867
+	jp z, .break
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $1
-	jp nz, Func_93833
+	jp nz, .common_year
 	ld hl, sp+$3
 	ld e, [hl]
 	ld d, $0
@@ -5317,9 +5493,9 @@ Func_93812: ; 93812 (24:7812)
 	ld h, $0
 	ld c, l
 	ld b, h
-	jp Func_93841
+	jp .got_month
 
-Func_93833: ; 93833 (24:7833)
+.common_year: ; 93833 (24:7833)
 	ld hl, sp+$3
 	ld e, [hl]
 	ld d, $0
@@ -5329,13 +5505,13 @@ Func_93833: ; 93833 (24:7833)
 	ld h, $0
 	ld c, l
 	ld b, h
-Func_93841: ; 93841 (24:7841)
+.got_month: ; 93841 (24:7841)
 	call GetHLAtSPPlus8
 	ld a, l
 	sub c
 	ld a, h
 	sbc b
-	jp c, Func_93861
+	jp c, .break_
 	call GetHLAtSPPlus8
 	ld a, l
 	sub c
@@ -5349,15 +5525,15 @@ Func_93841: ; 93841 (24:7841)
 	inc a
 	ld hl, sp+$3
 	ld [hl], a
-	jp Func_93864
+	jp .continue
 
-Func_93861: ; 93861 (24:7861)
-	jp Func_93867
+.break_: ; 93861 (24:7861)
+	jp .break
 
-Func_93864: ; 93864 (24:7864)
-	jp Func_93812
+.continue: ; 93864 (24:7864)
+	jp .loop
 
-Func_93867: ; 93867 (24:7867)
+.break: ; 93867 (24:7867)
 	call GetHLAtSPPlus8
 	inc hl
 	ld c, l
@@ -5380,8 +5556,105 @@ Func_93867: ; 93867 (24:7867)
 	pop bc
 	ret
 
-Func_93883:: ; 93883
-	dr $93883, $93911
+Func_93883:: ; 93883 (24:7883)
+	push bc
+	push bc
+	push de
+	or a
+	jp nz, Func_93893
+	ld hl, $0
+	call WriteHLToSPPlus6
+	jp Func_938a4
+
+Func_93893: ; 93893 (24:7893)
+	push af
+	ld l, a
+	ld h, $0
+	add hl, hl
+	ld de, DaysSince1Jan1924 - 2
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call WriteHLToSPPlus8
+	pop af
+Func_938a4: ; 938a4 (24:78a4)
+	call GetHLAtSPPlus6
+	ld de, hFFC4
+	add hl, de
+	call WriteHLToSPPlus6
+	or a
+	jp nz, Func_938b7
+	ld c, $3
+	jp Func_938b9
+
+Func_938b7: ; 938b7 (24:78b7)
+	ld c, $1
+Func_938b9: ; 938b9 (24:78b9)
+	push bc
+	ld l, a
+	ld h, $0
+	ld de, 1924
+	add hl, de
+	call IsLeapYear
+	ld l, a
+	pop bc
+	pop de
+Func_938c7: ; 938c7 (24:78c7)
+	ld a, c
+	cp e
+	jp nc, Func_93903
+	push hl
+	push de
+	ld a, l
+	cp $1
+	jp nz, Func_938ea
+	push bc
+	ld e, c
+	ld d, $0
+	ld hl, LeapYearMonthLengths
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	call GetHLAtSPPlus10
+	add hl, bc
+	call WriteHLToSPPlus10
+	pop bc
+	jp Func_938fd
+
+Func_938ea: ; 938ea (24:78ea)
+	push bc
+	ld e, c
+	ld d, $0
+	ld hl, CommonYearMonthLengths
+	add hl, de
+	ld c, [hl]
+	ld b, $0
+	call GetHLAtSPPlus10
+	add hl, bc
+	call WriteHLToSPPlus10
+	pop bc
+Func_938fd: ; 938fd (24:78fd)
+	inc c
+	pop de
+	pop hl
+	jp Func_938c7
+
+Func_93903: ; 93903 (24:7903)
+	pop bc
+	pop hl
+	push hl
+	ld e, c
+	ld d, $0
+	dec de
+	add hl, de
+	pop de
+	push hl
+	pop hl
+	push hl
+	pop bc
+	ret
 
 IsLeapYear: ; 93911 (24:7911)
 	push hl

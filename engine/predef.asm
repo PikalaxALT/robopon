@@ -6307,8 +6307,8 @@ Pointers_7c000:: ; 7c000
 	dw SeedRNGPredef
 	dw RandomPredef
 	dw Func_7c96e
-	dw Func_7e1e8
-	dw Func_7e1c0
+	dw ReadRTCPredef
+	dw WriteRTCPredef
 	dw Func_7e2d8
 	dw Func_7e320
 	dw Func_7e486
@@ -12052,15 +12052,15 @@ Func_7e1af:: ; 7e1af (1f:61af)
 	and $f0
 	swap a
 	or $50
-	call Func_7e1c3
+	call WriteRTC
 	pop af
 	and $f
 	or $40
-	jr Func_7e1c3
+	jr WriteRTC
 
-Func_7e1c0:: ; 7e1c0 (1f:61c0)
+WriteRTCPredef:: ; 7e1c0 (1f:61c0)
 	call Func_7e205
-Func_7e1c3:: ; 7e1c3 (1f:61c3)
+WriteRTC:: ; 7e1c3 (1f:61c3)
 	push de
 	push hl
 	push af
@@ -12083,16 +12083,16 @@ Func_7e1c3:: ; 7e1c3 (1f:61c3)
 	ld a, $fe
 	ld [de], a
 	nop
-asm_7e1e3
+closeRTC
 	ld [hl], $0
 	pop hl
 	pop de
 	ret
 
-Func_7e1e8:: ; 7e1e8 (1f:61e8)
+ReadRTCPredef:: ; 7e1e8 (1f:61e8)
 	call Func_7e205
-Func_7e1eb:: ; 7e1eb (1f:61eb)
-	call Func_7e1c3
+ReadRTC:: ; 7e1eb (1f:61eb)
+	call WriteRTC
 	push de
 	push hl
 	ld hl, HuC3SRamMode
@@ -12106,7 +12106,7 @@ Func_7e1eb:: ; 7e1eb (1f:61eb)
 	nop
 	ld a, [de]
 	and $f
-	jr asm_7e1e3
+	jr closeRTC
 
 Func_7e205:: ; 7e205 (1f:6205)
 	push af
@@ -12115,14 +12115,14 @@ Func_7e205:: ; 7e205 (1f:6205)
 	ld a, [wRTCTicker]
 	or $80
 	ld [wRTCTicker], a
-.asm_7e210
-	call Func_7e22a
+.loop
+	call ForceUpdateRTC
 	ld a, [wRTCTicker]
 	and $7f
-	jr z, .asm_7e21e
+	jr z, .done
 	cp $10
-	jr c, .asm_7e210
-.asm_7e21e
+	jr c, .loop
+.done
 	ld [wRTCTicker], a
 	pop hl
 	pop bc
@@ -12133,7 +12133,7 @@ RTCUpdatePredef:: ; 7e225 (1f:6225)
 	ld a, [wRTCTicker]
 	rlca
 	ret c
-Func_7e22a:: ; 7e22a (1f:622a)
+ForceUpdateRTC:: ; 7e22a (1f:622a)
 	ld hl, wRTCTicker
 	ld a, [hl]
 	and $7f
@@ -12145,14 +12145,14 @@ Func_7e22a:: ; 7e22a (1f:622a)
 	ret nc
 	inc [hl]
 	dec a
-	jr z, .asm_7e28d
+	jr z, .phase_1
 	dec a
-	jr z, .asm_7e291
+	jr z, .phase_2
 	dec a
-	jr z, .asm_7e295
+	jr z, .phase_3
 	dec a
 	srl a
-	jr nc, .asm_7e27e
+	jr nc, .phase_even_4_to_16
 	srl a
 	push af
 	inc a
@@ -12160,7 +12160,7 @@ Func_7e22a:: ; 7e22a (1f:622a)
 	ld b, $0
 	add hl, bc
 	push hl
-	ld hl, $0
+	ld hl, HuC3SRamMode
 	ld [hl], SRAM_TOGGLE_LATCH
 	nop
 	ld a, [HuC3RTC]
@@ -12174,11 +12174,12 @@ Func_7e22a:: ; 7e22a (1f:622a)
 	pop hl
 	ld c, a
 	pop af
-	jr c, .asm_7e270
+	jr c, .phase_5_9_13
+	; 7, 11, 15
 	ld [hl], c
-	jr .asm_7e27a
+	jr .inc_ticker_again
 
-.asm_7e270
+.phase_5_9_13
 	cp $2
 	push af
 	ld a, c
@@ -12187,12 +12188,12 @@ Func_7e22a:: ; 7e22a (1f:622a)
 	ld [hl], a
 	pop af
 	ret z
-.asm_7e27a
+.inc_ticker_again
 	ld hl, wRTCTicker
 	inc [hl]
-.asm_7e27e
+.phase_even_4_to_16
 	ld a, $10
-	jr .asm_7e299
+	jr .rtc_request
 
 .end_of_clock_cycle
 	jr .quit
@@ -12206,19 +12207,19 @@ Func_7e22a:: ; 7e22a (1f:622a)
 	dec [hl]
 	ret
 
-.asm_7e28d
+.phase_1
 	ld a, $60
-	jr .asm_7e299
+	jr .rtc_request
 
-.asm_7e291
+.phase_2
 	ld a, $50
-	jr .asm_7e299
+	jr .rtc_request
 
-.asm_7e295
+.phase_3
 	ld a, $40
-	jr .asm_7e299
+	jr .rtc_request
 
-.asm_7e299
+.rtc_request
 	push af
 	ld hl, HuC3SRamMode
 	ld [hl], SRAM_TOGGLE_LATCH
@@ -12274,7 +12275,7 @@ Func_7e2d8:: ; 7e2d8 (1f:62d8)
 	cp $10
 	jr z, asm_7e2bc
 	ld a, $60
-	call Func_7e1c3
+	call WriteRTC
 	xor a
 	call Func_7e1af
 	call Func_7e30a
@@ -12282,7 +12283,7 @@ Func_7e2d8:: ; 7e2d8 (1f:62d8)
 	call Func_7e30a
 	push hl
 asm_7e2f4
-	call Func_7e4f8
+	call ReadHalfWordFromSRam_0_a000
 	pop bc
 	add hl, bc
 	ld e, l
@@ -12293,20 +12294,20 @@ asm_7e2f4
 Func_7e2fd:: ; 7e2fd (1f:62fd)
 	call Func_7e205
 	ld a, $60
-	call Func_7e1c3
+	call WriteRTC
 	ld a, $3
 	call Func_7e1af
 Func_7e30a:: ; 7e30a (1f:630a)
 	ld a, $10
-	call Func_7e1eb
+	call ReadRTC
 	ld l, a
 	ld a, $10
-	call Func_7e1eb
+	call ReadRTC
 	swap a
 	or l
 	ld l, a
 	ld a, $10
-	call Func_7e1eb
+	call ReadRTC
 	ld h, a
 	ret
 
@@ -12329,7 +12330,7 @@ Func_7e32f:: ; 7e32f (1f:632f)
 asm_7e332
 	push hl
 	push bc
-	call Func_7e50d
+	call WriteHalfWordToSRam_0_a000
 	xor a
 	call Func_7e1af
 	ld hl, sp+$2
@@ -12343,9 +12344,9 @@ asm_7e332
 	ld l, a
 	call Func_7e358
 	ld a, $31
-	call Func_7e1c3
+	call WriteRTC
 	ld a, $61
-	call Func_7e1c3
+	call WriteRTC
 	pop bc
 	pop hl
 	ret
@@ -12354,16 +12355,16 @@ Func_7e358:: ; 7e358 (1f:6358)
 	ld a, l
 	and $f
 	or $30
-	call Func_7e1c3
+	call WriteRTC
 	ld a, l
 	swap a
 	and $f
 	or $30
-	call Func_7e1c3
+	call WriteRTC
 	ld a, h
 	and $f
 	or $30
-	call Func_7e1c3
+	call WriteRTC
 	ret
 
 Func_7e373:: ; 7e373 (1f:6373)
@@ -12372,7 +12373,7 @@ Func_7e373:: ; 7e373 (1f:6373)
 	push bc
 	or a
 	jr z, .asm_7e381
-	call Func_7e4f8
+	call ReadHalfWordFromSRam_0_a000
 	pop bc
 	pop de
 	add hl, de
@@ -12536,7 +12537,7 @@ Func_7e44d:: ; 7e44d (1f:644d)
 	push de
 	push hl
 	push de
-	call Func_7e4f8
+	call ReadHalfWordFromSRam_0_a000
 	pop de
 	ld a, e
 	sub l
@@ -12576,7 +12577,7 @@ Func_7e486:: ; 7e486 (1f:6486)
 	call Func_7e1af
 .asm_7e48d
 	ld a, $10
-	call Func_7e1eb
+	call ReadRTC
 	ld [hli], a
 	dec b
 	jr nz, .asm_7e48d
@@ -12590,7 +12591,7 @@ Func_7e497:: ; 7e497 (1f:6497)
 	ld a, [hli]
 	and $f
 	or $30
-	call Func_7e1c3
+	call WriteRTC
 	dec b
 	jr nz, .asm_7e49e
 	ret
@@ -12630,7 +12631,7 @@ Func_7e4d2:: ; 7e4d2 (1f:64d2)
 	call Func_7e205
 .asm_7e4d5
 	ld a, $62
-	call Func_7e1eb
+	call ReadRTC
 	cp $1
 	jr nz, .asm_7e4d5
 	xor a
@@ -12639,7 +12640,7 @@ Func_7e4d2:: ; 7e4d2 (1f:64d2)
 	ld c, $f
 .asm_7e4e6
 	ld a, $10
-	call Func_7e1eb
+	call ReadRTC
 	and c
 	ld c, a
 	dec b
@@ -12652,27 +12653,27 @@ Func_7e4f4:: ; 7e4f4 (1f:64f4)
 	ld a, [Byte_0013]
 	ret
 
-Func_7e4f8:: ; 7e4f8 (1f:64f8)
+ReadHalfWordFromSRam_0_a000:: ; 7e4f8 (1f:64f8)
 	ld a, [hSRAMBank]
 	push af
 	ld a, $0
 	call Bank1F_GetSRAMBank
 	xor a ; SRAM_READONLY
 	ld [HuC3SRamMode], a
-	ld hl, HuC3RTC
+	ld hl, $a000
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	jp Bank1F_PreviousSRAMBankReadOnly
 
-Func_7e50d:: ; 7e50d (1f:650d)
+WriteHalfWordToSRam_0_a000:: ; 7e50d (1f:650d)
 	ld a, [hSRAMBank]
 	push af
 	ld a, $0
 	call Bank1F_GetSRAMBank
 	ld a, SRAM_READWRITE
 	ld [HuC3SRamMode], a
-	ld hl, HuC3RTC
+	ld hl, $a000
 	ld [hl], e
 	inc hl
 	ld [hl], d

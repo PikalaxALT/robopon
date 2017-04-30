@@ -745,9 +745,9 @@ GetTime:: ; 1b28 (0:1b28)
 	ld a, $1
 	ld [wRTCTicker], a
 	ld a, e
-	ld [wc930], a
+	ld [wRTCDays], a
 	ld a, d
-	ld [wc930 + 1], a
+	ld [wRTCDays + 1], a
 	ld a, [wMinutesSinceMidnight]
 	ld e, a
 	ld a, c
@@ -789,9 +789,9 @@ GetTime:: ; 1b28 (0:1b28)
 	ld b, $2
 	predef Func_7e497
 	ld a, $6e
-	predef Func_7e1c0
+	predef WriteRTCPredef
 	ld a, $6e
-	predef Func_7e1c0
+	predef WriteRTCPredef
 	di
 	pop af
 	and $1
@@ -3969,7 +3969,7 @@ PrintNum:: ; 3992 (0:3992)
 	ld [hl], $0
 	pop hl
 	push hl
-	call Func_3a36
+	call ReverseString
 	pop hl
 	pop bc
 	ret
@@ -3991,7 +3991,7 @@ PrintNumSigned:: ; 3a20 (0:3a20)
 	pop bc
 	ret
 
-Func_3a36:: ; 3a36 (0:3a36)
+ReverseString:: ; 3a36 (0:3a36)
 	push hl
 	push bc
 	push bc
@@ -4005,12 +4005,14 @@ Func_3a36:: ; 3a36 (0:3a36)
 	ld b, h
 .loop
 	pop hl
+
 	push hl
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
 	jp nc, .done
 	pop hl
+
 	push hl
 	push hl
 	call GetHLAtSPPlus8
@@ -4023,6 +4025,7 @@ Func_3a36:: ; 3a36 (0:3a36)
 	add hl, bc
 	ld a, [hl]
 	pop hl
+
 	push hl
 	push hl
 	call GetHLAtSPPlus8
@@ -4035,9 +4038,11 @@ Func_3a36:: ; 3a36 (0:3a36)
 	add hl, bc
 	ld [hl], a
 	pop hl
+
 	push hl
 	inc hl
 	pop de
+
 	push hl
 	dec bc
 	jp .loop

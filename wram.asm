@@ -9,6 +9,7 @@ wVBlank:: ds $16 ; c006
 	; then from $5 to $11 in increments of $2,
 	; then back to $0.
 	; One increment per frame as described.
+	array wRTCBuffer, 3, 1, 1 ; c10d
 
 SECTION "Audio RAM Backup", WRAM0 [$c020]
 	char wBackupSongIndex ; c020
@@ -856,7 +857,7 @@ SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 	char wMapObjectCGBAttrsOverride ; c92b, only affects NPCs
 	short wc92c ; c92c
 	short wMinutesSinceMidnight ; c92e
-	short wc930 ; c930
+	short wRTCDays ; c930
 	short wc932 ; c932
 	short wc934 ; c934
 	array wc936, 2, 1, 1 ; c936

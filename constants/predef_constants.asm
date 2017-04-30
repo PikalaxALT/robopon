@@ -107,8 +107,8 @@ const_value = $4b
 	predef_const SeedRNGPredef
 	predef_const RandomPredef
 	predef_const Func_7c96e
-	predef_const Func_7e1e8 ; 90
-	predef_const Func_7e1c0
+	predef_const ReadRTCPredef ; 90
+	predef_const WriteRTCPredef
 	predef_const Func_7e2d8
 	predef_const Func_7e320
 	predef_const Func_7e486
