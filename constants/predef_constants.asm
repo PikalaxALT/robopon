@@ -118,7 +118,7 @@ const_value = $4b
 	predef_const Func_7e4aa
 	predef_const Func_7e4d2
 	predef_const Func_7e2fd
-	predef_const Func_7e32f
+	predef_const SetRTCPredef
 	predef_const Func_7e4f4
 	predef_const Func_7e523
 	predef_const RTCUpdatePredef

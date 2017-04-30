@@ -467,7 +467,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp z, .no_action_b
+	jp z, .press_b_quit
 	pop hl
 	push hl
 	ld de, $10
@@ -489,7 +489,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld b, h
 	jp .next
 
-.no_action_b
+.press_b_quit
 	jp .done
 
 .next
@@ -550,7 +550,7 @@ HandleMenu: ; 174ab (5:74ab)
 	jp z, .quit
 	ld a, [wc317]
 	or a
-	jp nz, .skip_1784c
+	jp nz, .no_restore_window
 	ld a, $3
 	ld [wc39a], a
 	ld hl, sp+$4
@@ -621,7 +621,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld a, [hl]
 	call Func_3ca1
 	pop bc
-.skip_1784c
+.no_restore_window
 	call GetHLAtSPPlus10
 	ld de, $f
 	add hl, de

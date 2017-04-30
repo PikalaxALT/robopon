@@ -55344,7 +55344,17 @@ Func_50000: ; 50000
 	ret
 
 Data_50001: ; 50001
-	dr $50001, $50020
+	db  2,  9
+	db 14,  7
+	dba OptionsMenu_Redraw
+	dbw 5, 0
+	dba OptionsMenu_UpDown
+	dba OptionsMenu_AButton
+	dbw 5, 0
+	dba OptionsMenu_Right
+	dba OptionsMenu_Left
+	dbw 0, 0
+	dbw 0, 0
 
 Data_50020: ; 50020
 	dr $50020, $5002f
@@ -55692,7 +55702,7 @@ Data_5034a: ; 5034a
 	TX_STACK
 	db $0
 
-Func_5034d: ; 5034d (14:434d)
+OptionsMenu_UpDown: ; 5034d (14:434d)
 	push bc
 	push de
 	call WriteHLToSPPlus4
@@ -55888,15 +55898,15 @@ Func_5043a: ; 5043a (14:443a)
 	pop bc
 	ret
 
-Func_50473: ; 50473
+OptionsMenu_Right: ; 50473
 	ld de, $2
-	jp Func_5034d
+	jp OptionsMenu_UpDown
 
-Func_50479: ; 50479
+OptionsMenu_Left: ; 50479
 	ld de, $3
-	jp Func_5034d
+	jp OptionsMenu_UpDown
 
-Func_5047f: ; 5047f
+OptionsMenu_AButton: ; 5047f
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $64
 	call FarCall
@@ -103080,7 +103090,7 @@ Func_fb55f:: ; fb55f (3e:755f)
 	add sp, $24
 	ret
 
-Func_fb597:
+OptionsMenu_Redraw:
 	ld c, l
 	ld b, h
 	push bc

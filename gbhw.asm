@@ -9,8 +9,10 @@ HuC3RTC        EQU $a000
 
 SRAM_READONLY     EQU $0
 SRAM_READWRITE    EQU $a
-SRAM_TOGGLE_LATCH EQU $d
-SRAM_IR_ON        EQU $e
+RTC_WRITE         EQU $b
+RTC_READ          EQU $c
+RTC_STATUS        EQU $d
+CART_IR_ON        EQU $e
 
 NUM_SRAM_BANKS EQU 4
 

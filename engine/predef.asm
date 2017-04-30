@@ -2912,19 +2912,19 @@ Func_7a85d:: ; 7a85d (1e:685d)
 	cp $30
 	ret
 
-Func_7a8a9:: ; 7a8a9 (1e:68a9)
+Bank1E_GetSRAMBank:: ; 7a8a9 (1e:68a9)
 	ld [hSRAMBank], a
 	ld [HuC3SRamBank], a
 	ret
 
-Func_7a8af:: ; 7a8af (1e:68af)
+WaitIRReady:: ; 7a8af (1e:68af)
 	dec c
-	jr z, .asm_7a8b6
+	jr z, .timed_out
 	or a
 	bit 0, [hl]
 	ret
 
-.asm_7a8b6
+.timed_out
 	scf
 	ret
 
@@ -2976,7 +2976,7 @@ IR_ReceiveByte:: ; 7a8d7 (1e:68d7)
 	xor a
 	ret
 
-Func_7a8f7:: ; 7a8f7 (1e:68f7)
+IR_SendByte2:: ; 7a8f7 (1e:68f7)
 	push hl
 	push de
 	push bc
@@ -2984,35 +2984,35 @@ Func_7a8f7:: ; 7a8f7 (1e:68f7)
 	ld d, a
 	ld [hl], $1
 	ld c, $0
-.asm_7a902
-	call Func_7a8af
-	jr c, asm_7a982
-	jr z, .asm_7a902
+.wait
+	call WaitIRReady
+	jr c, ir_quit_fail_2
+	jr z, .wait
 	push bc
 	pop bc
 	push bc
 	pop bc
 	ld [hl], $0
 	ld c, $0
-.asm_7a911
-	call Func_7a8af
-	jr c, asm_7a982
-	jr nz, .asm_7a911
+.wait2
+	call WaitIRReady
+	jr c, ir_quit_fail_2
+	jr nz, .wait2
 	ld a, d
 	ld c, $8
-.asm_7a91b
+.loop
 	rla
-	jr c, .asm_7a922
+	jr c, .send_1
 	ld b, $a
-	jr .asm_7a925
+	jr .got_bit
 
-.asm_7a922
+.send_1
 	ld b, [hl]
 	ld b, $1a
-.asm_7a925
+.got_bit
 	call IR_SendBit
 	dec c
-	jr nz, .asm_7a91b
+	jr nz, .loop
 	push bc
 	pop bc
 	ld b, $a
@@ -3023,23 +3023,23 @@ Func_7a8f7:: ; 7a8f7 (1e:68f7)
 	pop hl
 	ret
 
-Func_7a937:: ; 7a937 (1e:6937)
+IR_ReceiveByte2:: ; 7a937 (1e:6937)
 	push hl
 	push de
 	push bc
 	ld hl, HuC3RTC
 	ld c, $0
 	ld [hl], $0
-.asm_7a941
-	call Func_7a8af
-	jr c, asm_7a982
-	jr z, .asm_7a941
+.wait
+	call WaitIRReady
+	jr c, ir_quit_fail_2
+	jr z, .wait
 	ld [hl], $1
 	ld c, $0
-.asm_7a94c
-	call Func_7a8af
-	jr c, asm_7a982
-	jr nz, .asm_7a94c
+.wait2
+	call WaitIRReady
+	jr c, ir_quit_fail_2
+	jr nz, .wait2
 	push bc
 	pop bc
 	push bc
@@ -3047,24 +3047,24 @@ Func_7a937:: ; 7a937 (1e:6937)
 	ld [hl], $0
 	ld c, $8
 	ld b, $0
-.asm_7a95d
+.wait3
 	inc b
-	jr z, asm_7a982
+	jr z, ir_quit_fail_2
 	bit 0, [hl]
-	jr z, .asm_7a95d
+	jr z, .wait3
 	ld c, $8
-.asm_7a966
+.loop
 	call IR_ReceiveBit
-	jr c, asm_7a982
+	jr c, ir_quit_fail_2
 	cp $f
 	rl d
 	dec c
-	jr nz, .asm_7a966
+	jr nz, .loop
 	ld c, $0
-.asm_7a974
-	call Func_7a8af
-	jr c, asm_7a982
-	jr nz, .asm_7a974
+.wait4
+	call WaitIRReady
+	jr c, ir_quit_fail_2
+	jr nz, .wait4
 	ld a, d
 	cpl
 	pop bc
@@ -3073,7 +3073,7 @@ Func_7a937:: ; 7a937 (1e:6937)
 	or a
 	ret
 
-asm_7a982
+ir_quit_fail_2
 	ld [hl], $0
 	pop bc
 	pop de
@@ -3145,13 +3145,13 @@ Func_7a9b7:: ; 7a9b7 (1e:69b7)
 
 Func_7a9e0:: ; 7a9e0 (1e:69e0)
 	ld hl, HuC3RTC
-.asm_7a9e3
+.loop
 	ld a, [rJOYP]
 	bit 1, a
 	jr z, ir_quit_fail
 	call IR_ReceiveByte
 	cp $aa
-	jr nz, .asm_7a9e3
+	jr nz, .loop
 	ld a, $55
 	call IR_SendByte
 	ld a, [rJOYP]
@@ -3159,125 +3159,126 @@ Func_7a9e0:: ; 7a9e0 (1e:69e0)
 	jr z, ir_quit_fail
 	call IR_ReceiveByte
 	cp $c3
-	jr nz, .asm_7a9e3
+	jr nz, .loop
 	ld a, $3c
 	call IR_SendByte
 	xor a
 	ret
 
-asm_7aa09
+ir_quit_fail_3
 	jp ir_quit_fail
 
 Func_7aa0c:: ; 7aa0c (1e:6a0c)
 	call Func_7a9b7
-	jr c, asm_7aa09
+	jr c, ir_quit_fail_3
 	ld a, $48
-	call Func_7a8f7
+	call IR_SendByte2
 	ld a, $75
-	call Func_7a8f7
+	call IR_SendByte2
 	ld hl, wc0f8
 	ld c, $8
-	jp Func_7aa3e
+	jp IR_SendDataFrom
 
-asm_7aa23
+Func_7aa23:
+.wait
 	call Func_7a9e0
-	jr c, asm_7aa09
-	call Func_7a937
+	jr c, ir_quit_fail_3
+	call IR_ReceiveByte2
 	cp $48
-	jr nz, asm_7aa23
-	call Func_7a937
+	jr nz, .wait
+	call IR_ReceiveByte2
 	cp $75
-	jr nz, asm_7aa23
+	jr nz, .wait
 	ld hl, wc0f8
 	ld c, $8
-	jp Func_7aa53
+	jp IR_ReceiveDataTo
 
-Func_7aa3e:: ; 7aa3e (1e:6a3e)
+IR_SendDataFrom:: ; 7aa3e (1e:6a3e)
 	ld b, $0
-.asm_7aa40
+.loop
 	ld a, b
 	add [hl]
 	ld b, a
 	ld a, [hli]
-	call Func_7a8f7
-	jr c, .asm_7aa52
+	call IR_SendByte2
+	jr c, .quit
 	dec c
-	jr nz, .asm_7aa40
+	jr nz, .loop
 	ld a, b
 	cpl
 	inc a
-	call Func_7a8f7
-.asm_7aa52
+	call IR_SendByte2
+.quit
 	ret
 
-Func_7aa53:: ; 7aa53 (1e:6a53)
+IR_ReceiveDataTo:: ; 7aa53 (1e:6a53)
 	ld b, $0
-.asm_7aa55
-	call Func_7a937
-	jr c, asm_7aa09
+.loop
+	call IR_ReceiveByte2
+	jr c, ir_quit_fail_3
 	ld [hli], a
 	add b
 	ld b, a
 	dec c
-	jr nz, .asm_7aa55
-	call Func_7a937
+	jr nz, .loop
+	call IR_ReceiveByte2
 	add b
 	or a
-	jr nz, asm_7aa09
+	jr nz, ir_quit_fail_3
 	ret
 
-Func_7aa68:: ; 7aa68 (1e:6a68)
+EnterIR:: ; 7aa68 (1e:6a68)
 	di
 	ld a, $10
 	ld [rJOYP], a
-	call Func_7aa82
+	call EnableIR
 	xor a
 	ld [HuC3RTC], a
 	ret
 
-Func_7aa75:: ; 7aa75 (1e:6a75)
+ExitIR:: ; 7aa75 (1e:6a75)
 	xor a
 	ld [HuC3RTC], a
-	call Func_7aa87
+	call DisableIR
 	ld a, $30
 	ld [rJOYP], a
 	ei
 	ret
 
-Func_7aa82:: ; 7aa82 (1e:6a82)
+EnableIR:: ; 7aa82 (1e:6a82)
 	push af
-	ld a, SRAM_IR_ON
-	jr asm_7aa89
+	ld a, CART_IR_ON
+	jr setIRmode
 
-Func_7aa87:: ; 7aa87 (1e:6a87)
+DisableIR:: ; 7aa87 (1e:6a87)
 	push af
 	xor a
-asm_7aa89
+setIRmode
 	ld [HuC3SRamMode], a
 	pop af
 	ret
 
 Func_7aa8e:: ; 7aa8e (1e:6a8e)
-	call Func_7aa68
-.asm_7aa91
-	call asm_7aa23
-	jr c, .asm_7aaa8
-	jr nz, .asm_7aa91
+	call EnterIR
+.while
+	call Func_7aa23
+	jr c, .done
+	jr nz, .while
 	ld hl, wc0f9
 	ld a, [hl]
 	ld hl, Pointers_7aab9
 	cp $d
-	jr nc, .asm_7aa91
-	call Func_7aaae
-	jr .asm_7aa91
+	jr nc, .while
+	call .CallRoutine
+	jr .while
 
-.asm_7aaa8
-	call Func_7aa75
+.done
+	call ExitIR
 	xor a
 	scf
 	ret
 
-Func_7aaae:: ; 7aaae (1e:6aae)
+.CallRoutine
 	add a
 	add l
 	ld l, a
@@ -3301,7 +3302,7 @@ Pointers_7aab9:: ; 7aab9
 	dw Func_7ab97
 	dw Func_7aba1
 	dw Func_7ab62
-	dw StoreSaveChecksum8
+	dw Func_7abc8
 	dw Func_7abd7
 
 Func_7aad3:: ; 7aad3 (1e:6ad3)
@@ -3310,10 +3311,10 @@ Func_7aad3:: ; 7aad3 (1e:6ad3)
 	ret c
 	ld hl, wc0f8
 	ld c, $8
-	jp Func_7aa3e
+	jp IR_SendDataFrom
 
 Func_7aae2:: ; 7aae2 (1e:6ae2)
-	call Func_7aa75
+	call ExitIR
 	pop hl
 	or a
 	ret
@@ -3327,20 +3328,20 @@ Func_7aae8:: ; 7aae8 (1e:6ae8)
 Func_7aaf3:: ; 7aaf3 (1e:6af3)
 	call Func_7ad13
 	ld hl, wOAMBuffer
-	call Func_7aa53
+	call IR_ReceiveDataTo
 	ret c
-	call Func_7aa87
+	call DisableIR
 	call Func_7ad13
 	hlcoord 16, 4
 	ld de, wOAM00YCoord
 	predef Func_7afe6
 asm_7ab0b
-	call Func_7aa82
+	call EnableIR
 	call Func_7aad3
 	ret c
 	hlcoord 16, 4
 	ld c, $0
-	jp Func_7aa3e
+	jp IR_SendDataFrom
 
 Func_7ab1a:: ; 7ab1a (1e:6b1a)
 	call Func_7ab83
@@ -3355,23 +3356,23 @@ Func_7ab22:: ; 7ab22 (1e:6b22)
 	jr asm_7ab0b
 
 Func_7ab2a:: ; 7ab2a (1e:6b2a)
-	call Func_7aa87
+	call DisableIR
 	call Func_7ad13
 	hlcoord 16, 4
 	predef Func_7cb98
-	call Func_7aa82
+	call EnableIR
 	jp Func_7aad3
 
 Func_7ab3b:: ; 7ab3b (1e:6b3b)
 	call Func_7ab4f
 	push bc
 	predef Func_7cc9a
-	call Func_7aa82
+	call EnableIR
 	call Func_7aad3
 	pop bc
 	ret c
 	ld hl, wOAM00YCoord
-	jp Func_7aa3e
+	jp IR_SendDataFrom
 
 Func_7ab4f:: ; 7ab4f (1e:6b4f)
 	call Func_7ad13
@@ -3383,31 +3384,31 @@ Func_7ab4f:: ; 7ab4f (1e:6b4f)
 .asm_7ab59
 	hlcoord 16, 4
 	ld de, wOAM00YCoord
-	jp Func_7aa87
+	jp DisableIR
 
 Func_7ab62:: ; 7ab62 (1e:6b62)
 	call Func_7ad13
 	ld hl, wOAMBuffer
-	call Func_7aa53
+	call IR_ReceiveDataTo
 	ret c
 	call Func_7ab4f
 	predef Func_7cca9
-	call Func_7aa82
+	call EnableIR
 	jp Func_7aad3
 
 Func_7ab77:: ; 7ab77 (1e:6b77)
 	call Func_7ab83
 	ret c
 	predef Func_7c8ec
-	call Func_7aa82
+	call EnableIR
 	jp Func_7aad3
 
 Func_7ab83:: ; 7ab83 (1e:6b83)
 	hlcoord 16, 4
 	ld c, $0
-	call Func_7aa53
+	call IR_ReceiveDataTo
 	ret c
-	call Func_7aa87
+	call DisableIR
 	call Func_7ad13
 	hlcoord 16, 4
 	or a
@@ -3417,7 +3418,7 @@ Func_7ab97:: ; 7ab97 (1e:6b97)
 	call Func_7a9b7
 	ret c
 	call Func_7ad13
-	jp Func_7aa3e
+	jp IR_SendDataFrom
 
 Func_7aba1:: ; 7aba1 (1e:6ba1)
 	ld a, [hSRAMBank]
@@ -3425,7 +3426,7 @@ Func_7aba1:: ; 7aba1 (1e:6ba1)
 	call Func_7ad13
 	call Func_7ac00
 	ld de, wOAM00YCoord
-	call Func_7aa87
+	call DisableIR
 	push de
 	push bc
 .asm_7abb2
@@ -3434,24 +3435,24 @@ Func_7aba1:: ; 7aba1 (1e:6ba1)
 	inc de
 	dec c
 	jr nz, .asm_7abb2
-	call Func_7aa82
+	call EnableIR
 	call Func_7a9b7
 	ret c
 	pop bc
 	pop hl
-	call Func_7aa3e
+	call IR_SendDataFrom
 	pop af
-	jp Func_7a8a9
+	jp Bank1E_GetSRAMBank
 
-StoreSaveChecksum8:: ; 7abc8 (1e:6bc8)
+Func_7abc8:: ; 7abc8 (1e:6bc8)
 	call Func_7ad13
 	ld l, e
 	ld h, d
-StoreSaveChecksumd:: ; 7abcd (1e:6bcd)
-	call Func_7aa53
+Func_7abcd:: ; 7abcd (1e:6bcd)
+	call IR_ReceiveDataTo
 	jr c, .asm_7abd6
 	sub b
-	call Func_7a8f7
+	call IR_SendByte2
 .asm_7abd6
 	ret
 
@@ -3463,7 +3464,7 @@ Func_7abd7:: ; 7abd7 (1e:6bd7)
 	push hl
 	push de
 	push bc
-	call StoreSaveChecksumd
+	call Func_7abcd
 	pop bc
 	pop hl
 	pop de
@@ -3477,10 +3478,10 @@ Func_7abd7:: ; 7abd7 (1e:6bd7)
 	ld [hli], a
 	dec c
 	jr nz, .asm_7abf3
-	call Func_7aa82
+	call EnableIR
 .asm_7abfc
 	pop af
-	jp Func_7a8a9
+	jp Bank1E_GetSRAMBank
 
 Func_7ac00:: ; 7ac00 (1e:6c00)
 	push hl
@@ -3491,7 +3492,7 @@ Func_7ac00:: ; 7ac00 (1e:6c00)
 	rla
 	rl h
 	rla
-	call Func_7a8a9
+	call Bank1E_GetSRAMBank
 	pop hl
 	ld a, h
 	and $1f
@@ -3500,7 +3501,7 @@ Func_7ac00:: ; 7ac00 (1e:6c00)
 	ret
 
 Func_7ac16:: ; 7ac16 (1e:6c16)
-	call Func_7aa68
+	call EnterIR
 	ld a, $0
 	ld [wc0f9], a
 	call Func_7aa0c
@@ -3528,7 +3529,7 @@ asm_7ac39
 	call Func_7ace6
 	ld c, $0
 asm_7ac3e
-	call Func_7aa3e
+	call IR_SendDataFrom
 	jr c, asm_7ac76
 	call Func_7ad13
 	push hl
@@ -3536,7 +3537,7 @@ asm_7ac3e
 	pop hl
 	jr c, asm_7ac76
 	ld c, $0
-	call Func_7aa53
+	call IR_ReceiveDataTo
 	jr c, asm_7ac76
 	jr asm_7ac73
 
@@ -3551,7 +3552,7 @@ Func_7ac62:: ; 7ac62 (1e:6c62)
 	ld a, $6
 	call Func_7ace6
 	ld c, $0
-	call Func_7aa3e
+	call IR_SendDataFrom
 	jr c, asm_7ac76
 	call Func_7ac7c
 	jr c, asm_7ac76
@@ -3559,7 +3560,7 @@ asm_7ac73
 	call Func_7ad13
 asm_7ac76
 	push af
-	call Func_7aa75
+	call ExitIR
 	pop af
 	ret
 
@@ -3568,7 +3569,7 @@ Func_7ac7c:: ; 7ac7c (1e:6c7c)
 	jr c, asm_7ac76
 	ld hl, wc0f8
 	ld c, $8
-	jp Func_7aa53
+	jp IR_ReceiveDataTo
 
 Func_7ac89:: ; 7ac89 (1e:6c89)
 	ld a, $9
@@ -3584,7 +3585,7 @@ asm_7ac8f
 	pop bc
 	pop hl
 	jr c, asm_7ac76
-	call Func_7aa53
+	call IR_ReceiveDataTo
 	jr asm_7ac76
 
 Func_7aca0:: ; 7aca0 (1e:6ca0)
@@ -3595,9 +3596,9 @@ Func_7aca4:: ; 7aca4 (1e:6ca4)
 	ld a, $b
 asm_7aca6
 	call Func_7ace6
-	call Func_7aa3e
+	call IR_SendDataFrom
 	jr c, asm_7ac76
-	call Func_7a937
+	call IR_ReceiveByte2
 	jr c, asm_7ac76
 	add b
 	jr nz, .asm_7acb9
@@ -3618,7 +3619,7 @@ Func_7acbe:: ; 7acbe (1e:6cbe)
 	pop bc
 	pop hl
 	jr c, asm_7ac76
-	call Func_7aa53
+	call IR_ReceiveDataTo
 	jr c, asm_7ac76
 	jr asm_7ac73
 
@@ -3627,7 +3628,7 @@ Func_7acd3:: ; 7acd3 (1e:6cd3)
 	call Func_7ace6
 	ld l, e
 	ld h, d
-	call Func_7aa3e
+	call IR_SendDataFrom
 	jr c, asm_7ac76
 	call Func_7ac7c
 	jr c, asm_7ac76
@@ -3638,7 +3639,7 @@ Func_7ace6:: ; 7ace6 (1e:6ce6)
 	push de
 	push bc
 	call Func_7acfa
-	call Func_7aa68
+	call EnterIR
 	call Func_7aa0c
 	pop bc
 	pop de
@@ -3701,11 +3702,11 @@ Func_7ad2a:: ; 7ad2a (1e:6d2a)
 	inc hl
 	push hl
 	predef Func_7d738
-	jp c, Func_7ad4a
+	jp c, .quit
 	ld [hFFA1], a
 	ld a, b
 	pop bc
-.asm_7ad36
+.loop
 	push af
 	ld a, [bc]
 	inc bc
@@ -3723,9 +3724,9 @@ Func_7ad2a:: ; 7ad2a (1e:6d2a)
 	ld [hli], a
 	pop af
 	dec a
-	jr nz, .asm_7ad36
+	jr nz, .loop
 	push hl
-Func_7ad4a:: ; 7ad4a (1e:6d4a)
+.quit
 	pop hl
 	ld a, [hFFA1]
 	ret
@@ -6318,7 +6319,7 @@ Pointers_7c000:: ; 7c000
 	dw Func_7e4aa
 	dw Func_7e4d2
 	dw Func_7e2fd
-	dw Func_7e32f
+	dw SetRTCPredef
 	dw Func_7e4f4
 	dw Func_7e523
 	dw RTCUpdatePredef
@@ -12059,13 +12060,13 @@ Func_7e1af:: ; 7e1af (1f:61af)
 	jr WriteRTC
 
 WriteRTCPredef:: ; 7e1c0 (1f:61c0)
-	call Func_7e205
+	call ForceUpdateRTCWithClockPaused
 WriteRTC:: ; 7e1c3 (1f:61c3)
 	push de
 	push hl
 	push af
 	ld hl, HuC3SRamMode
-	ld [hl], SRAM_TOGGLE_LATCH
+	ld [hl], RTC_STATUS
 	ld de, HuC3RTC
 .wait1
 	ld a, [de]
@@ -12075,11 +12076,11 @@ WriteRTC:: ; 7e1c3 (1f:61c3)
 .wait2
 	dec a
 	jr nz, .wait2
-	ld [hl], $b
+	ld [hl], RTC_WRITE
 	pop af
 	ld [de], a
 	nop
-	ld [hl], SRAM_TOGGLE_LATCH
+	ld [hl], RTC_STATUS
 	ld a, $fe
 	ld [de], a
 	nop
@@ -12090,25 +12091,25 @@ closeRTC
 	ret
 
 ReadRTCPredef:: ; 7e1e8 (1f:61e8)
-	call Func_7e205
+	call ForceUpdateRTCWithClockPaused
 ReadRTC:: ; 7e1eb (1f:61eb)
 	call WriteRTC
 	push de
 	push hl
 	ld hl, HuC3SRamMode
-	ld [hl], SRAM_TOGGLE_LATCH
+	ld [hl], RTC_STATUS
 	ld de, HuC3RTC
 .wait1
 	ld a, [de]
 	bit 0, a
 	jr z, .wait1
-	ld [hl], $c
+	ld [hl], RTC_READ
 	nop
 	ld a, [de]
 	and $f
 	jr closeRTC
 
-Func_7e205:: ; 7e205 (1f:6205)
+ForceUpdateRTCWithClockPaused:: ; 7e205 (1f:6205)
 	push af
 	push bc
 	push hl
@@ -12161,16 +12162,16 @@ ForceUpdateRTC:: ; 7e22a (1f:622a)
 	add hl, bc
 	push hl
 	ld hl, HuC3SRamMode
-	ld [hl], SRAM_TOGGLE_LATCH
+	ld [hl], RTC_STATUS
 	nop
 	ld a, [HuC3RTC]
 	bit 0, a
 	jr z, .rtc_not_working
-	ld [hl], $c
+	ld [hl], RTC_READ
 	nop
 	ld a, [HuC3RTC]
 	and $f
-	ld [hl], $0
+	ld [hl], SRAM_READONLY
 	pop hl
 	ld c, a
 	pop af
@@ -12222,7 +12223,7 @@ ForceUpdateRTC:: ; 7e22a (1f:622a)
 .rtc_request
 	push af
 	ld hl, HuC3SRamMode
-	ld [hl], SRAM_TOGGLE_LATCH
+	ld [hl], RTC_STATUS
 	ld bc, HuC3RTC
 	ld a, [bc]
 	bit 0, a
@@ -12235,11 +12236,11 @@ ForceUpdateRTC:: ; 7e22a (1f:622a)
 	pop af
 	ld [bc], a
 	nop
-	ld [hl], SRAM_TOGGLE_LATCH
+	ld [hl], RTC_STATUS
 	ld a, $fe
 	ld [bc], a
 	nop
-	ld [hl], $0
+	ld [hl], SRAM_READONLY
 	ret
 
 .quit
@@ -12269,7 +12270,7 @@ asm_7e2bc
 	jr asm_7e2f4
 
 Func_7e2d8:: ; 7e2d8 (1f:62d8)
-	call Func_7e205
+	call ForceUpdateRTCWithClockPaused
 	ld hl, wRTCTicker
 	ld a, [hli]
 	cp $10
@@ -12278,12 +12279,12 @@ Func_7e2d8:: ; 7e2d8 (1f:62d8)
 	call WriteRTC
 	xor a
 	call Func_7e1af
-	call Func_7e30a
+	call read12bitrtcvalue_7e30a
 	push hl
-	call Func_7e30a
+	call read12bitrtcvalue_7e30a
 	push hl
 asm_7e2f4
-	call ReadHalfWordFromSRam_0_a000
+	call GetStartDay
 	pop bc
 	add hl, bc
 	ld e, l
@@ -12292,12 +12293,12 @@ asm_7e2f4
 	ret
 
 Func_7e2fd:: ; 7e2fd (1f:62fd)
-	call Func_7e205
+	call ForceUpdateRTCWithClockPaused
 	ld a, $60
 	call WriteRTC
 	ld a, $3
 	call Func_7e1af
-Func_7e30a:: ; 7e30a (1f:630a)
+read12bitrtcvalue_7e30a
 	ld a, $10
 	call ReadRTC
 	ld l, a
@@ -12325,24 +12326,24 @@ Func_7e320:: ; 7e320 (1f:6320)
 	pop hl
 	jr asm_7e332
 
-Func_7e32f:: ; 7e32f (1f:632f)
-	call Func_7e205
+SetRTCPredef:: ; 7e32f (1f:632f)
+	call ForceUpdateRTCWithClockPaused
 asm_7e332
 	push hl
 	push bc
-	call WriteHalfWordToSRam_0_a000
+	call SetStartDay
 	xor a
 	call Func_7e1af
 	ld hl, sp+$2
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call Func_7e358
+	call .write12bitrtcvalue
 	ld hl, sp+$0
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call Func_7e358
+	call .write12bitrtcvalue
 	ld a, $31
 	call WriteRTC
 	ld a, $61
@@ -12351,7 +12352,7 @@ asm_7e332
 	pop hl
 	ret
 
-Func_7e358:: ; 7e358 (1f:6358)
+.write12bitrtcvalue
 	ld a, l
 	and $f
 	or $30
@@ -12373,7 +12374,7 @@ Func_7e373:: ; 7e373 (1f:6373)
 	push bc
 	or a
 	jr z, .asm_7e381
-	call ReadHalfWordFromSRam_0_a000
+	call GetStartDay
 	pop bc
 	pop de
 	add hl, de
@@ -12537,7 +12538,7 @@ Func_7e44d:: ; 7e44d (1f:644d)
 	push de
 	push hl
 	push de
-	call ReadHalfWordFromSRam_0_a000
+	call GetStartDay
 	pop de
 	ld a, e
 	sub l
@@ -12572,7 +12573,7 @@ Func_7e44d:: ; 7e44d (1f:644d)
 	ret
 
 Func_7e486:: ; 7e486 (1f:6486)
-	call Func_7e205
+	call ForceUpdateRTCWithClockPaused
 	ld a, c
 	call Func_7e1af
 .asm_7e48d
@@ -12584,7 +12585,7 @@ Func_7e486:: ; 7e486 (1f:6486)
 	ret
 
 Func_7e497:: ; 7e497 (1f:6497)
-	call Func_7e205
+	call ForceUpdateRTCWithClockPaused
 	ld a, c
 	call Func_7e1af
 .asm_7e49e
@@ -12628,7 +12629,7 @@ Func_7e4aa:: ; 7e4aa (1f:64aa)
 	ret
 
 Func_7e4d2:: ; 7e4d2 (1f:64d2)
-	call Func_7e205
+	call ForceUpdateRTCWithClockPaused
 .asm_7e4d5
 	ld a, $62
 	call ReadRTC
@@ -12653,7 +12654,7 @@ Func_7e4f4:: ; 7e4f4 (1f:64f4)
 	ld a, [Byte_0013]
 	ret
 
-ReadHalfWordFromSRam_0_a000:: ; 7e4f8 (1f:64f8)
+GetStartDay:: ; 7e4f8 (1f:64f8)
 	ld a, [hSRAMBank]
 	push af
 	ld a, $0
@@ -12666,7 +12667,7 @@ ReadHalfWordFromSRam_0_a000:: ; 7e4f8 (1f:64f8)
 	ld l, a
 	jp Bank1F_PreviousSRAMBankReadOnly
 
-WriteHalfWordToSRam_0_a000:: ; 7e50d (1f:650d)
+SetStartDay:: ; 7e50d (1f:650d)
 	ld a, [hSRAMBank]
 	push af
 	ld a, $0
@@ -12881,7 +12882,7 @@ IR_Listen:: ; 7e610 (1f:6610)
 	di
 	ld a, $10
 	ld [rJOYP], a
-	ld a, SRAM_IR_ON
+	ld a, CART_IR_ON
 	ld [HuC3SRamMode], a
 	xor a
 	ld [HuC3RTC], a
