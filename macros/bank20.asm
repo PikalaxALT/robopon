@@ -1662,20 +1662,20 @@ Func_80c92_\1: ; 80c92 (20:4c92)
 
 Func_80c94_\1: ; 80c94 (20:4c94)
 	push af
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	pop af
 	call FarCall
 	ret
 
 Func_80ca5_\1:
 	push af
-	set_farcall_addrs_hli Func_e2829
+	set_farcall_addrs_hli CheckUnlockedArea
 	pop af
 	jp FarCall
 
 Func_80cb5_\1:
 	push af
-	set_farcall_addrs_hli Func_e2807
+	set_farcall_addrs_hli LockArea
 	pop af
 	call FarCall
 	ret

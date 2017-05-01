@@ -1,29 +1,29 @@
-Data_8151: ; 8151
-	db $c, $4, $c, $5, $0, $0
-	db $5, $14, $6, $14, $1, $0
-	db $20, $d, $1f, $d, $5, $0
-	db $c, $4, $c, $5, $3, $0
-	db $23, $8, $22, $8, $6, $0
-	db $c, $4, $c, $5, $7, $0
-	db $5, $28, $6, $28, $9, $0
-	db $d, $4, $d, $5, $14, $0
-	db $11, $1d, $11, $1c, $15, $0
-	db $14, $5, $13, $5, $16, $0
-	db $11, $1c, $11, $1b, $12, $0
-	db $7, $a, $7, $9, $1f, $0
-	db $c, $1c, $c, $1b, $19, $1
-	db $e, $29, $e, $28, $1b, $0
-	db $7, $13, $7, $12, $20, $a
-	db $23, $e, $22, $e, $b, $0
-	db $f, $4, $f, $5, $13, $16
-	db $f, $1f, $f, $1e, $1d, $0
-	db $7, $b, $7, $a, $1f, $0
+SpawnsFromWorldMap: ; 8151
+	spawn $0c, $04, $0c, $05, MAP_00_00 ; 00
+	spawn $05, $14, $06, $14, MAP_01_00 ; 01
+	spawn $20, $0d, $1f, $0d, MAP_05_00 ; 02
+	spawn $0c, $04, $0c, $05, MAP_03_00 ; 03
+	spawn $23, $08, $22, $08, MAP_06_00 ; 04
+	spawn $0c, $04, $0c, $05, MAP_07_00 ; 05
+	spawn $05, $28, $06, $28, MAP_09_00 ; 06
+	spawn $0d, $04, $0d, $05, MAP_20_00 ; 07
+	spawn $11, $1d, $11, $1c, MAP_21_00 ; 08
+	spawn $14, $05, $13, $05, MAP_22_00 ; 09
+	spawn $11, $1c, $11, $1b, MAP_18_00 ; 0a
+	spawn $07, $0a, $07, $09, MAP_31_00 ; 0b
+	spawn $0c, $1c, $0c, $1b, MAP_25_01 ; 0c
+	spawn $0e, $29, $0e, $28, MAP_27_00 ; 0d
+	spawn $07, $13, $07, $12, MAP_32_10 ; 0e
+	spawn $23, $0e, $22, $0e, MAP_11_00 ; 0f
+	spawn $0f, $04, $0f, $05, MAP_19_22 ; 10
+	spawn $0f, $1f, $0f, $1e, MAP_29_00 ; 11
+	spawn $07, $0b, $07, $0a, MAP_31_00 ; 12
 
-Data_81c3
-	db $20, $5, $1f, $5, $18, $0
+Data_81c3: ; 81c3
+	spawn $20, $05, $1f, $05, MAP_24_00 ; conditional 09
 
 Data_81c9: ; 81c9
-	db $7, $c, $7, $b, $1a, $0
+	spawn $07, $0c, $07, $0b, MAP_26_00 ; conditional 0e
 
 OverworldLoop: ; 81cf (2:41cf)
 ; c: 1 if continuing from a previous save
@@ -60,7 +60,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld [wc318], a
 	ld a, $1
 	ld [wc7e2], a
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $1
 	call FarCall
 	ld a, $ff
@@ -159,9 +159,9 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, $1
 	call Func_bbc8
 	call Func_b65f
-	ld a, $14
+	ld a, SONG_WORLD_MAP
 	ld [wMapMusic], a
-	callba_hli Func_e220d
+	callba_hli WorldMap
 	ld hl, sp+$0
 	ld [hl], a
 	ld a, $ff
@@ -177,21 +177,21 @@ OverworldLoop: ; 81cf (2:41cf)
 	cp $1
 	jp nz, .no_lookup_Data_81c3
 	ld bc, Data_81c3
-	jp .do_trigger
+	jp .set_spawn
 
 .no_lookup_Data_81c3
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $e
-	jp nz, .lookup_Data_8151
+	jp nz, .lookup_SpawnsFromWorldMap
 	ld hl, $1c
 	call CheckEventFlag
 	cp $1
-	jp nz, .lookup_Data_8151
+	jp nz, .lookup_SpawnsFromWorldMap
 	ld bc, Data_81c9
-	jp .do_trigger
+	jp .set_spawn
 
-.lookup_Data_8151
+.lookup_SpawnsFromWorldMap
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
@@ -200,11 +200,11 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Data_8151
+	ld de, SpawnsFromWorldMap
 	add hl, de
 	ld c, l
 	ld b, h
-.do_trigger
+.set_spawn
 	ld de, wSpawnX - wc789
 .loop4
 	ld hl, wMapNumber - wc789

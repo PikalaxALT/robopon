@@ -723,7 +723,7 @@ wc770:: ; c770
 	char wBackupMapNumber ; c7e0
 	char wPlayerState ; c7e1
 	char wc7e2 ; c7e2
-	bitfield wc7e3, 32 ; c7e3
+	bitfield wUnlockedAreaFlags, 32 ; c7e3
 
 	char wSpawnX ; c7e7
 	char wSpawnY ; c7e8

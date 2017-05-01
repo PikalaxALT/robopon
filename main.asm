@@ -4292,19 +4292,29 @@ Func_8000: ; 8000
 	ret
 
 Data_8001: ; 8001
-	dr $8001, $8020
+	db  0,  0
+	db 14,  9
+	dba Func_15001
+	dbw $00, $0000
+	dba Func_151c2
+	dba Func_80f6
+	dba Func_1743f
+	dbw $00, $0000
+	dbw $00, $0000
+	dbw $00, $0000
+	dbw $00, $0000
 
-Data_8020: ; 8020
-	dr $8020, $802a
+Data_8020:
+	db "フィールトﾞテスト", $0
 
-Data_802a: ; 802a
-	dr $802a, $8034
+Data_802a:
+	db "スフﾟライトテスト", $0
 
-Data_8034: ; 8034
-	dr $8034, $8041
+Data_8034:
+	db "ワールトﾞマッフﾟテスト", $0
 
-Data_8041: ; 8041
-	dr $8041, $804c
+Data_8041:
+	db "コンティニューテスト", $0
 
 Func_804c: ; 804c (2:404c)
 	add sp, -$64
@@ -4376,33 +4386,33 @@ Func_80f6: ; 80f6
 	ld l, [hl]
 	add l
 	cp $3
-	jp z, Func_8146
+	jp z, .ContinueTest
 	cp $2
-	jp z, Func_8135
+	jp z, .WorldMapTest
 	cp $1
-	jp z, Func_8124
+	jp z, .SpriteTest
 	or a
-	jp nz, Func_814e
+	jp nz, .Quit
 	ld c, $0
 	ld e, $0
 	xor a
 	call OverworldLoop
-	jp Func_814e
+	jp .Quit
 
-Func_8124: ; 8124 (2:4124)
-	callba_hli Func_d9f38
-	jp Func_814e
+.SpriteTest
+	callba_hli Debug_SpriteTest
+	jp .Quit
 
-Func_8135: ; 8135 (2:4135)
-	callba_hli Func_e220d
-	jp Func_814e
+.WorldMapTest
+	callba_hli WorldMap
+	jp .Quit
 
-Func_8146: ; 8146 (2:4146)
+.ContinueTest
 	ld c, $1
 	ld e, $0
 	xor a
 	call OverworldLoop
-Func_814e: ; 814e (2:414e)
+.Quit
 	ret
 
 Func_814f: ; 814f
@@ -58456,10 +58466,10 @@ Func_51975: ; 51975
 	ld e, $1
 	ld a, $12
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $4
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $5
 	call FarCall
 	ret
@@ -58514,13 +58524,13 @@ Func_519ea: ; 519ea
 	ld e, $1
 	ld a, $3
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $6
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $7
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $8
 	call FarCall
 	ret
@@ -58575,10 +58585,10 @@ Func_51a81: ; 51a81
 	ld e, $1
 	ld a, $4
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $9
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $10
 	call FarCall
 	ret
@@ -58641,13 +58651,13 @@ Func_51aef: ; 51aef
 	jp .loop2
 
 .done2
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $a
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $b
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $11
 	call FarCall
 	ret
@@ -58679,13 +58689,13 @@ Func_51b87: ; 51b87 (14:5b87)
 	jp Func_51b87
 
 Func_51bae: ; 51bae (14:5bae)
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $c
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $e
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $f
 	call FarCall
 	ret
@@ -58800,7 +58810,7 @@ Func_51cba: ; 51cba (14:5cba)
 	cp $4
 	jp nc, Func_51cd5
 	push af
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	pop af
 	push af
 	call FarCall
@@ -58809,10 +58819,10 @@ Func_51cba: ; 51cba (14:5cba)
 	jp Func_51cba
 
 Func_51cd5: ; 51cd5 (14:5cd5)
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $d
 	call FarCall
-	set_farcall_addrs_hli Func_e2780
+	set_farcall_addrs_hli UnlockArea
 	ld a, $12
 	call FarCall
 	ld a, $4b
@@ -86760,7 +86770,7 @@ Func_683be: ; 683be (1a:43be)
 Func_68402: ; 68402 (1a:4402)
 	call Func_2009
 	ld a, [wSongCurrentlyPlaying]
-	callba_hli Func_e220d
+	callba_hli WorldMap
 	ld l, a
 	push hl
 	set_farcall_addrs_hli MenuWithSecondaryHeader

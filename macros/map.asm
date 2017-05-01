@@ -14,6 +14,12 @@ map: MACRO
 	db GROUP_\1, MAP_\1
 	ENDM
 
+spawn: MACRO
+	db \1, \2 ; spawn coords
+	db \3, \4 ; push coords
+	map \5 ; map group and number
+	ENDM
+
 warpdef: MACRO
 	db \1 ; x coord
 	db \2 ; y coord
