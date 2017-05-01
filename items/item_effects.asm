@@ -78,7 +78,7 @@ Func_4ef35: ; 4ef35
 	cp $b
 	jp nz, Func_4f01a
 	ld l, $1
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $a
 	ld hl, sp+$0
 	push hl
@@ -197,7 +197,7 @@ Func_4f076: ; 4f076 (13:7076)
 	ld a, l
 	cp $1
 	jp nz, Func_4f123
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $a
 	ld hl, sp+$0
 	push hl
@@ -643,7 +643,7 @@ Func_4f437: ; 4f437 (13:7437)
 	cp $1
 	jp nz, Func_4f583
 	push bc
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $a
 	ld hl, sp+$2
 	push hl

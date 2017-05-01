@@ -1672,12 +1672,12 @@ Func_241f:: ; 241f
 	ret
 
 Func_248f:: ; 248f
-; Loads 17 bytes from Data_64093[e] to sp+$0
+; Loads 17 bytes from Moves[e] to sp+$0
 	push hl
 	push de
 	ld a, [hROMBank]
 	push af
-	ld a, BANK(Data_64093)
+	ld a, BANK(Moves)
 	call BankSwitch
 	pop af
 	pop de
@@ -1691,7 +1691,7 @@ Func_248f:: ; 248f
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, Data_64093
+	ld de, Moves
 	add hl, de
 	push hl
 	call GetHLAtSPPlus6

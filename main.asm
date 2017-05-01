@@ -22162,7 +22162,7 @@ Func_157c5: ; 157c5 (5:57c5)
 	ld l, [hl]
 	ld h, $0
 	dec hl
-	call Func_15ad6
+	call GetName
 	jp Func_15887
 
 Func_157ea: ; 157ea (5:57ea)
@@ -22222,7 +22222,7 @@ Func_1580d: ; 1580d (5:580d)
 	ld l, [hl]
 	ld h, $0
 	dec hl
-	call Func_15ad6
+	call GetName
 	jp Func_1585a
 
 Func_1584b: ; 1584b (5:584b)
@@ -22233,7 +22233,7 @@ Func_1584b: ; 1584b (5:584b)
 	inc h
 	dec hl
 	pop de
-	call Func_15ad6
+	call GetName
 Func_1585a: ; 1585a (5:585a)
 	call GetHLAtSPPlus8
 	call FindFirstNonzero
@@ -22516,143 +22516,7 @@ Data_15ac3: ; 15ac3
 Data_15ace: ; 15ace
 	db "ソフト(なし)", $0
 
-Func_15ad6:: ; 15ad6 (5:5ad6)
-	push hl
-	push de
-	add sp, -$6c
-	push bc
-	read_hl_from_sp_plus $72
-	ld de, Init
-	call DivideHLByDESigned
-	ld c, l
-	read_hl_from_sp_plus $72
-	reg16swap de, hl
-	ld l, c
-	ld h, $0
-	ld h, l
-	ld l, $0
-	ld a, e
-	sub l
-	ld l, a
-	ld a, d
-	sbc h
-	ld h, a
-	ld a, BANK(Data_64093)
-	ld [wFarCallDestBank], a
-	ld a, c
-	cp $7
-	jp z, Func_15bae
-	cp $6
-	jp z, Func_15b9f
-	cp $3
-	jp z, Func_15b86
-	cp $4
-	jp z, Func_15b70
-	cp $2
-	jp z, Func_15b61
-	cp $5
-	jp z, Func_15b52
-	cp $1
-	jp z, Func_15b3b
-	or a
-	jp nz, Func_15bcb
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_64093
-	add hl, de
-	write_hl_to_sp_plus $6e
-	jp Func_15bcb
-
-Func_15b3b: ; 15b3b (5:5b3b)
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, Data_64c90
-	add hl, de
-	write_hl_to_sp_plus $6e
-	jp Func_15bcb
-
-Func_15b52: ; 15b52 (5:5b52)
-	ld e, l
-	ld hl, sp+$54
-	call Func_241f
-	ld hl, sp+$5d
-	write_hl_to_sp_plus $6e
-	jp Func_15bcb
-
-Func_15b61: ; 15b61 (5:5b61)
-	ld e, l
-	ld hl, sp+$54
-	call Func_241f
-	ld hl, sp+$54
-	write_hl_to_sp_plus $6e
-	jp Func_15bcb
-
-Func_15b70: ; 15b70 (5:5b70)
-	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, Func_157c5
-	add hl, de
-	write_hl_to_sp_plus $6e
-	jp Func_15bcb
-
-Func_15b86: ; 15b86 (5:5b86)
-	ld h, $0
-	get_party_bot
-	inc hl
-	write_hl_to_sp_plus $6e
-	jp Func_15bcb
-
-Func_15b9f: ; 15b9f (5:5b9f)
-	ld e, l
-	ld hl, sp+$25
-	call GetRobotOrTrainerBaseStats
-	ld hl, sp+$32
-	write_hl_to_sp_plus $6e
-	jp Func_15bcb
-
-Func_15bae: ; 15bae (5:5bae)
-	push hl
-	set_farcall_addrs_hli Func_7dfc
-	pop hl
-	ld a, l
-	ld hl, sp+$2
-	reg16swap de, hl
-	call FarCall
-	ld hl, sp+$3
-	write_hl_to_sp_plus $6e
-Func_15bcb: ; 15bcb (5:5bcb)
-	pop bc
-	ld b, $0
-	read_hl_from_sp_plus $6c
-	push hl
-	read_hl_from_sp_plus $70
-	pop de
-	call FarCopyVideoData
-	add sp, $70
-	ret
+INCLUDE "engine/get_name.asm"
 
 Func_15bde: ; 15bde
 	push bc
@@ -42815,7 +42679,7 @@ Func_30da7: ; 30da7 (c:4da7)
 	dec a
 Func_30db2: ; 30db2 (c:4db2)
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop af
 	call GetHLAtSPPlus4
 	push hl
@@ -42907,7 +42771,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $57c5
+	ld de, ItemAttributes
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2b
@@ -43318,7 +43182,7 @@ Func_31154: ; 31154 (c:5154)
 	push hl
 	push af
 	set_farcall_addrs_hli GetBanks
-	ld de, BANK(Data_64093)
+	ld de, BANK(Moves)
 	ld a, $3
 	call FarCall
 	ld e, a
@@ -43349,7 +43213,7 @@ Func_31154: ; 31154 (c:5154)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, Data_64093
+	ld de, Moves
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$1a
@@ -43529,7 +43393,7 @@ Func_312c7: ; 312c7 (c:52c7)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $57c5
+	ld de, ItemAttributes
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -43756,7 +43620,7 @@ Func_31475: ; 31475
 	pop bc
 	ret
 
-Func_3149e: ; 3149e
+GetItemAttributes: ; 3149e
 	push de
 	push af
 	set_farcall_addrs_hli GetBanks
@@ -43777,7 +43641,7 @@ Func_3149e: ; 3149e
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $57c5
+	ld de, ItemAttributes
 	add hl, de
 	ld c, l
 	ld b, h
@@ -45898,7 +45762,7 @@ Func_32a37: ; 32a37
 	ld a, c
 	ld hl, sp+$2
 	reg16swap de, hl
-	call Func_3149e
+	call GetItemAttributes
 	ld l, $10
 	push hl
 	ld c, $14
@@ -47072,7 +46936,7 @@ Func_333e0: ; 333e0
 	cp $1
 	jp c, Func_3345e
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop af
 	ld hl, sp+$35
 	push hl
@@ -48157,7 +48021,7 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	get_party_bot
 	ld a, [hl]
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $6
 	ld hl, sp+$36
 	reg16swap de, hl
@@ -54630,7 +54494,7 @@ Func_4f850: ; 4f850
 	call FarCall
 	ld l, a
 	push hl
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop hl
 	pop af
 	push hl
@@ -54755,7 +54619,7 @@ Func_4f9c4: ; 4f9c4 (13:79c4)
 	jp Func_4f99d
 
 Func_4f9ce: ; 4f9ce (13:79ce)
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $6
 	ld hl, sp+$55
 	reg16swap de, hl
@@ -54766,7 +54630,7 @@ Func_4f9ce: ; 4f9ce (13:79ce)
 	inc h
 	inc h
 	call FarCall
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop af
 	pop de
 	push af
@@ -59456,7 +59320,7 @@ Func_521c7: ; 521c7 (14:61c7)
 	call FarCall
 Func_521da: ; 521da (14:61da)
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $a
 	ld hl, sp+$5
 	push hl
@@ -62298,7 +62162,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	get_party_bot
 	ld c, [hl]
 	push bc
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $a
 	ld hl, sp+$23
 	push hl
@@ -66325,7 +66189,7 @@ Func_5712f: ; 5712f (15:712f)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, Data_64082
+	ld de, Moves - 17
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -68110,7 +67974,7 @@ Func_57ea2: ; 57ea2 (15:7ea2)
 	push de
 	push bc
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop af
 	call GetHLAtSPPlus8
 	ld c, l
@@ -68715,7 +68579,7 @@ Func_590a8: ; 590a8 (16:50a8)
 	inc hl
 	ld d, [hl]
 	push de
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $6
 	ld hl, sp+$b
 	reg16swap de, hl
@@ -69351,7 +69215,7 @@ Func_5966c: ; 5966c (16:566c)
 	push bc
 	push de
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop af
 	pop de
 	push af
@@ -69770,7 +69634,7 @@ Func_59905:
 	ld a, [hl]
 	cp $1
 	jp c, Func_59a10
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $6
 	ld hl, sp+$76
 	push hl
@@ -69780,7 +69644,7 @@ Func_59905:
 	inc h
 	pop de
 	call FarCall
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $6
 	ld hl, sp+$58
 	push hl
@@ -71300,7 +71164,7 @@ Func_5a672: ; 5a672 (16:6672)
 	pop bc
 	push af
 	push bc
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop bc
 	push bc
 	ld hl, sp+$e
@@ -72265,7 +72129,7 @@ Func_5ae7e: ; 5ae7e (16:6e7e)
 	ld a, [hl]
 	or a
 	jp z, Func_5aee2
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld hl, $92
 	add hl, sp
 	ld l, [hl]
@@ -85195,14 +85059,8 @@ Func_63eea: ; 63eea (18:7eea)
 
 SECTION "Bank 19", ROMX [$4000], BANK [$19]
 INCLUDE "charmap2.asm"
-Data_64000:
-	dr $64000, $64082
-
-Data_64082:
-	dr $64082, $64093
-
-Data_64093:: ; 64093
-	dr $64093, $64390
+Data_64000: INCLUDE "data/ram_chip_names.asm"
+Moves:: INCLUDE "battle/moves.asm" ; 64093
 
 Pointers_64390:: ; 64390
 	dw Data_643b0 - Pointers_64390
@@ -90478,7 +90336,7 @@ Func_69ddb: ; 69ddb (1a:5ddb)
 	ld a, [hl]
 	or a
 	jp z, Func_69e31
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -93410,7 +93268,7 @@ Func_6b607: ; 6b607 (1a:7607)
 	pop bc
 	push af
 	push bc
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop bc
 	push bc
 	ld hl, sp+$47
@@ -93570,7 +93428,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	ld e, $0
 	ld a, $6
 	call Func_6bbf3
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld c, $6
 	ld hl, sp+$23
 	push hl
@@ -93596,7 +93454,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	ld a, $3
 	call GetBanks_1a
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	ld hl, sp+$67
 	ld l, [hl]
 	ld h, $0

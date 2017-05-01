@@ -7827,7 +7827,7 @@ Func_9b44d: ; 9b44d (26:744d)
 	ld a, [hl]
 	dec a
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop af
 	ld hl, sp+$2a
 	push hl
@@ -7844,7 +7844,7 @@ Func_9b49f: ; 9b49f (26:749f)
 	ld hl, sp+$4d
 	ld a, [hl]
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop af
 	ld hl, sp+$2a
 	reg16swap de, hl
@@ -7861,7 +7861,7 @@ Func_9b4c2: ; 9b4c2 (26:74c2)
 	ld a, [hl]
 	dec a
 	push af
-	set_farcall_addrs_hli Func_15ad6
+	set_farcall_addrs_hli GetName
 	pop af
 	ld hl, sp+$2a
 	reg16swap de, hl
