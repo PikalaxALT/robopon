@@ -43233,7 +43233,7 @@ Func_3103d: ; 3103d
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $57c5
+	ld de, ItemAttributes
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2b
@@ -45766,7 +45766,7 @@ Func_3297b: ; 3297b (c:697b)
 	ld [hl], $63
 	ld hl, sp+$13
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$1d
@@ -46210,7 +46210,7 @@ Func_32c96: ; 32c96 (c:6c96)
 	push af
 	ld hl, sp+$2b
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$33
@@ -66717,7 +66717,7 @@ Func_573a4:
 	call CopyFromDEtoHL
 	ld hl, sp+$4
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, $0
@@ -68369,7 +68369,7 @@ Func_58df9: ; 58df9 (16:4df9)
 	push hl
 	ld hl, sp+$8
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$c
@@ -68684,7 +68684,7 @@ Func_590a8: ; 590a8 (16:50a8)
 	push af
 	ld hl, sp+$5
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, wc2e9
@@ -68998,7 +68998,7 @@ Func_59314: ; 59314 (16:5314)
 	ld a, $1f
 	and [hl]
 	ld [hl], a
-	ld de, SaveScratchMoney
+	ld de, wSaveScratchMoney
 	ld hl, sp+$5
 	ld bc, $4
 	call MemCopy
@@ -70050,7 +70050,7 @@ Func_59c89:
 	push af
 	ld hl, sp+$2
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, wc2f8
@@ -70149,7 +70149,7 @@ Func_59d3e: ; 59d3e (16:5d3e)
 	ld a, $3
 	call FarCall
 	push af
-	ld de, SaveScratchMoney
+	ld de, wSaveScratchMoney
 	ld hl, sp+$2
 	ld bc, $4
 	call MemCopy
@@ -71081,7 +71081,7 @@ Func_5a4c8: ; 5a4c8 (16:64c8)
 	push af
 	ld hl, sp+$4
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, wc2f8
@@ -71850,7 +71850,7 @@ Func_5aaf7: ; 5aaf7 (16:6af7)
 	ld a, [hl]
 	ld hl, sp+$31
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	pop af
@@ -85242,9 +85242,7 @@ Data_64c02: INCBIN "data/unknown_64390/64c02.bin.rz"
 Data_64c90: ; 64c90
 	dr $64c90, $657c5
 
-Data_657c5:: ; 657c5
-	dr $657c5, $65bc8
-
+ItemAttributes:: INCLUDE "items/item_attributes.asm"
 INCLUDE "data/base_stats.asm"
 INCLUDE "text/types.asm"
 
@@ -103977,7 +103975,7 @@ Func_fbbfb: ; fbbfb (3e:7bfb)
 	push af
 	ld hl, sp+$4
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	pop af

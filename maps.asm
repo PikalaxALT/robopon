@@ -5,7 +5,7 @@ INCLUDE "macros/bank20.asm"
 INCLUDE "maps/block_data.asm"
 
 SECTION "Bank 20", ROMX, BANK [$20]
-	lib_bank_20 20
+	script_library 20
 
 INCLUDE "maps/scripts/unknown_81281.asm"
 INCLUDE "maps/scripts/unknown_81ac1.asm"
@@ -1216,7 +1216,7 @@ Func_83f35: ; 83f35 (20:7f35)
 	ret
 
 SECTION "Bank 21", ROMX, BANK [$21]
-	lib_bank_20 21
+	script_library 21
 
 Data_850b4:
 	dr $850b4, $850fa
@@ -4557,7 +4557,7 @@ Func_87ecd: ; 87ecd (21:7ecd)
 	ret
 
 SECTION "Bank 22", ROMX, BANK [$22]
-	lib_bank_20 22
+	script_library 22
 
 Data_890b4:
 	dr $890b4, $89161
@@ -4599,7 +4599,7 @@ Func_8b65a: ; 8b65a
 	dr $8b65a, $8b7c9
 
 SECTION "Bank 23", ROMX, BANK [$23]
-	lib_bank_20 23
+	script_library 23
 
 Data_8d0b4:
 	dr $8d0b4, $8d256
@@ -4617,7 +4617,7 @@ Func_8e5dc: ; 8e5dc
 	dr $8e5dc, $8e8cd
 
 SECTION "Bank 24", ROMX, BANK [$24]
-	lib_bank_20 24
+	script_library 24
 
 Data_910b4:
 	dr $910b4, $91189
@@ -6564,7 +6564,7 @@ Func_93d05: ; 93d05 (24:7d05)
 	ret
 
 SECTION "Bank 25", ROMX, BANK [$25]
-	lib_bank_20 25
+	script_library 25
 
 Data_950b4:
 	dr $950b4, $951a3
@@ -6922,7 +6922,7 @@ Func_97486: ; 97486
 	dr $97486, $974a7
 
 SECTION "Bank 26", ROMX, BANK [$26]
-	lib_bank_20 26
+	script_library 26
 
 Data_990b4:
 	dr $990b4, $9a168
@@ -8120,7 +8120,7 @@ Data_9b73a:
 	db "(これいしﾞょう ひろえない)", $0
 
 SECTION "Bank 27", ROMX, BANK [$27]
-	lib_bank_20 27
+	script_library 27
 
 Data_9d0b4
 	dr $9d0b4, $9d1cb
@@ -8186,7 +8186,7 @@ Func_9f5e1: ; 9f5e1
 	dr $9f5e1, $9f672
 
 SECTION "Bank 28", ROMX, BANK [$28]
-	lib_bank_20 28
+	script_library 28
 
 Data_a10b4:
 	dr $a10b4, $a11de
@@ -8293,7 +8293,7 @@ Func_a3dc4: ; a3e0a
 ENDC
 
 SECTION "Bank 29", ROMX, BANK [$29]
-	lib_bank_20 29
+	script_library 29
 
 Data_a50b4:
 	dr $a50b4, $a5126
@@ -8311,7 +8311,7 @@ Func_a6882: ; a6882
 	dr $a6882, $a6add
 
 SECTION "Bank 2a", ROMX, BANK [$2a]
-	lib_bank_20 2a
+	script_library 2a
 
 Data_a90b4:
 	dr $a90b4, $a922b
@@ -8386,7 +8386,7 @@ Func_abf90: ; abf90
 	dr $abf90, $abf9c
 
 SECTION "Bank 2b", ROMX, BANK [$2b]
-	lib_bank_20 2b
+	script_library 2b
 
 Data_ad0b4:
 	dr $ad0b4, $ad122
@@ -8431,7 +8431,7 @@ Func_af3e9: ; af3e9
 	dr $af3e9, $af539
 
 SECTION "Bank 2c", ROMX, BANK [$2c]
-	lib_bank_20 2c
+	script_library 2c
 
 Data_b10b4:
 	dr $b10b4, $b10ea
@@ -8489,7 +8489,7 @@ Data_b3ecb: INCBIN "gfx/emotes/emote_b3ecb.emoteattrs.rz" ; b3ecb
 Data_b3f35: INCBIN "gfx/emotes/emote_b3f35.emoteattrs.rz" ; b3f35
 
 SECTION "Bank 2d", ROMX, BANK [$2d]
-	lib_bank_20 2d
+	script_library 2d
 
 Data_b50b4:
 	dr $b50b4, $b5152
@@ -8540,7 +8540,7 @@ Func_b5fbe: ; b5fbe
 	dr $b5fbe, $b6757
 
 SECTION "Bank 2d, 2", ROMX [$6757], BANK [$2d]
-	lib_bank_20 2d_2
+	script_library 2d_2
 
 Data_b780b:
 	dr $b780b, $b790a
@@ -8864,7 +8864,7 @@ Func_b7df7: ; b7df7 (2d:7df7)
 	ret
 
 SECTION "Bank 2e", ROMX, BANK [$2e]
-	lib_bank_20 2e
+	script_library 2e
 
 Data_b90b4:
 	dr $b90b4, $b93f1
@@ -8888,7 +8888,7 @@ Func_bb44e: ; bb44e
 	dr $bb44e, $bb71a
 
 SECTION "Bank 32", ROMX, BANK [$32]
-	lib_bank_20 32
+	script_library 32
 
 Data_c90b4:
 	dr $c90b4, $c916d
@@ -8930,7 +8930,7 @@ Func_cba6d: ; cba6d
 	dr $cba6d, $cbb5f
 
 SECTION "Bank 33", ROMX, BANK [$33]
-	lib_bank_20 33
+	script_library 33
 
 Data_cd0b4:
 	dr $cd0b4, $cd533
@@ -9234,7 +9234,7 @@ Func_cf344: ; cf344 (33:7344)
 	ret
 
 SECTION "Bank 34", ROMX, BANK [$34]
-	lib_bank_20 34
+	script_library 34
 
 Data_d10b4:
 	dr $d10b4, $d1142
@@ -14395,8 +14395,6 @@ Func_daa61: ; daa61 (36:6a61)
 
 Func_daa71:
 	ret
-
-
 
 INCLUDE "maps/enter_map.asm"
 

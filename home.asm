@@ -727,7 +727,7 @@ GetTime:: ; 1b28 (0:1b28)
 	push af
 	ld a, [wRTCTicker]
 	cp $11
-	jr z, .cgb
+	jr z, .end_of_cycle
 	di
 	predef RTCUpdatePredef
 	ei
@@ -738,7 +738,7 @@ GetTime:: ; 1b28 (0:1b28)
 	ld [wRTCTicker], a
 	jp .done
 
-.cgb
+.end_of_cycle
 	di
 	predef RTCUpdatePredef
 	ei
@@ -1704,12 +1704,12 @@ Func_248f:: ; 248f
 	ret
 
 Func_24bb::
-; Loads 13 bytes from Data_657c5[e] to sp+$0
+; Loads 13 bytes from ItemAttributes[e] to sp+$0
 	push hl
 	push de
 	ld a, [hROMBank]
 	push af
-	ld a, BANK(Data_657c5)
+	ld a, BANK(ItemAttributes)
 	call BankSwitch
 	pop af
 	pop de
@@ -1725,7 +1725,7 @@ Func_24bb::
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, Data_657c5
+	ld de, ItemAttributes
 	add hl, de
 	push hl
 	call GetHLAtSPPlus6
@@ -2174,7 +2174,7 @@ AdjustMoney:: ; 277c
 	call GetSRAMBank_ReadOnly
 	ld hl, sp+$8
 	reg16swap de, hl
-	ld hl, SaveScratchMoney
+	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$4
@@ -2215,7 +2215,7 @@ Func_27c0:: ; 27c0 (0:27c0)
 Func_27e0:: ; 27e0 (0:27e0)
 	ld a, $3
 	call GetSRAMBank
-	ld de, SaveScratchMoney
+	ld de, wSaveScratchMoney
 	ld hl, sp+$8
 	ld bc, $4
 	call MemCopy

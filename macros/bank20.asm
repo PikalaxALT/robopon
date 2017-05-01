@@ -1,4 +1,4 @@
-lib_bank_20: MACRO
+script_library: MACRO
 IF DEF(cbank) & DEF(scall) & DEF(csbnk)
 PURGE scall
 PURGE cbank

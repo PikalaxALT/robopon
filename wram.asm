@@ -871,7 +871,7 @@ wSaveBlock1::
 	char wSaveScratchBirthDay ; c986
 	char wSaveScratchZodiacSign ; c987
 	ds $1
-	array SaveScratchMoney, 4, 1, 1 ; c989
+	array wSaveScratchMoney, 4, 1, 1 ; c989
 	char wc98d ; c98d
 	array wc98e, 20, 1, 1 ; c98e
 	char wc9a2 ; c9a2
@@ -896,7 +896,8 @@ wSaveBlock1::
 	short wcb55 ; cb55
 	char wcb57 ; cb57
 	array wSaveScratchc347, 3, 20, 1 ; cb58
-wSaveBlock2:: ds $a0  ; cb94
+wSaveBlock2::
+wWarehouseItemQuantities:: ds $a0  ; cb94
 wSaveBlock3:: ds $dc  ; cc34
 wSaveBlock4:: ds $fa  ; cd10
 wSaveScratchEnd:: ; ce0a
