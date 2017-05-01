@@ -359,7 +359,7 @@ LoadGame: ; 56fc2 (15:6fc2)
 
 .okay
 	ld a, $1
-	ld [wc798], a
+	ld [wSaveFileExists], a
 	xor a
 .quit
 	ld hl, $404

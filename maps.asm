@@ -2362,7 +2362,7 @@ Func_85f9d: ; 85f9d (21:5f9d)
 Func_85fa8: ; 85fa8 (21:5fa8)
 	resetevent $38
 Func_85fb0: ; 85fb0 (21:5fb0)
-	ld a, [wc798]
+	ld a, [wSaveFileExists]
 	or a
 	jp nz, Func_85fd8
 	ld a, [wMapX]
@@ -2662,7 +2662,7 @@ Func_8642c: ; 8642c (21:642c)
 Func_86437: ; 86437 (21:6437)
 	resetevent $38
 Func_8643f: ; 8643f (21:643f)
-	ld a, [wc798]
+	ld a, [wSaveFileExists]
 	or a
 	jp nz, Func_86467
 	ld a, [wMapX]
@@ -8984,7 +8984,7 @@ Data_cf0cf: ; cf0cf
 	dr $cf0cf, $cf14d
 
 Func_cf14d: ; cf14d (33:714d)
-	ld a, [wc798]
+	ld a, [wSaveFileExists]
 	or a
 	jp nz, Func_cf163
 	ld a, $3
@@ -10085,7 +10085,7 @@ Func_d1aff: ; d1aff (34:5aff)
 	ld a, $14
 	call Func_80f24_34
 	pop bc
-	ld a, [wc798]
+	ld a, [wSaveFileExists]
 	or a
 	jp nz, Func_d1bff
 	ld a, $3
@@ -10293,7 +10293,7 @@ Func_d1ec5: ; d1ec5 (34:5ec5)
 	ld a, $16
 	call Func_80f24_34
 	pop bc
-	ld a, [wc798]
+	ld a, [wSaveFileExists]
 	or a
 	jp nz, Func_d1f36
 	ld a, $3
@@ -10557,7 +10557,7 @@ Func_d21fc: ; d21fc (34:61fc)
 	ld a, $16
 	call Func_80f24_34
 	pop bc
-	ld a, [wc798]
+	ld a, [wSaveFileExists]
 	or a
 	jp nz, Func_d22d5
 	ld a, $3
@@ -10821,7 +10821,7 @@ Func_d259b: ; d259b (34:659b)
 	ld a, $1c
 	call Func_80f24_34
 	pop bc
-	ld a, [wc798]
+	ld a, [wSaveFileExists]
 	or a
 	jp nz, Func_d2674
 	ld a, $3
@@ -11078,7 +11078,7 @@ Func_d293a: ; d293a (34:693a)
 	ld a, $19
 	call Func_80f24_34
 	pop bc
-	ld a, [wc798]
+	ld a, [wSaveFileExists]
 	or a
 	jp nz, Func_d2a06
 	ld a, $3

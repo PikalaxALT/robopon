@@ -691,7 +691,7 @@ wc770:: ; c770
 	ds $2
 	char wc796 ; c796
 	char wc797 ; c797
-	char wc798 ; c798
+	char wSaveFileExists ; c798
 	char wc799 ; c799
 	char wc79a ; c79a
 	ds $1

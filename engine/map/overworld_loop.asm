@@ -234,7 +234,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld a, [wMapGroup]
 	call FarCall
 	xor a
-	ld [wc798], a
+	ld [wSaveFileExists], a
 	ld a, [wRemainInMap]
 	cp $1
 	jp nz, .skip_HandleMap

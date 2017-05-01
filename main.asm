@@ -4295,14 +4295,14 @@ Data_8001: ; 8001
 	db  0,  0
 	db 14,  9
 	dba Func_15001
-	dbw $00, $0000
+	dbw 0, 0
 	dba Func_151c2
 	dba Func_80f6
 	dba Func_1743f
-	dbw $00, $0000
-	dbw $00, $0000
-	dbw $00, $0000
-	dbw $00, $0000
+	dbw 0, 0
+	dbw 0, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_8020:
 	db "フィールトﾞテスト", $0
@@ -55159,13 +55159,13 @@ Func_4fef1: ; 4fef1 (13:7ef1)
 	call GetSRAMBank
 	pop af
 	or a
-	jp nz, Func_4ff54
+	jp nz, .fail
 	callba_hli Func_e3507
 	callba_hli Func_e1aa9
 	xor a
-Func_4ff35: ; 4ff35 (13:7f35)
+.loop
 	cp $4
-	jp nc, Func_4ff51
+	jp nc, .break
 	push af
 	set_farcall_addrs_hli Func_93941
 	pop af
@@ -55174,26 +55174,26 @@ Func_4ff35: ; 4ff35 (13:7f35)
 	call FarCall
 	pop af
 	inc a
-	jp Func_4ff35
+	jp .loop
 
-Func_4ff51: ; 4ff51 (13:7f51)
-	jp Func_4ff8c
+.break
+	jp .quit
 
-Func_4ff54: ; 4ff54 (13:7f54)
+.fail
 	ld bc, $8
 	ld e, $0
 	ld hl, sp+$0
 	call FillMemory
 	xor a
-Func_4ff5f: ; 4ff5f (13:7f5f)
+.loop2
 	cp $b
-	jp nc, Func_4ff8c
+	jp nc, .quit
 	push af
 	cp $a
-	jp nz, Func_4ff6e
+	jp nz, .okay
 	ld hl, sp+$4
 	ld [hl], $8
-Func_4ff6e: ; 4ff6e (13:7f6e)
+.okay
 	set_farcall_addrs_hli Func_935a8
 	pop af
 	push af
@@ -55204,9 +55204,9 @@ Func_4ff6e: ; 4ff6e (13:7f6e)
 	call FarCall
 	pop af
 	inc a
-	jp Func_4ff5f
+	jp .loop2
 
-Func_4ff8c: ; 4ff8c (13:7f8c)
+.quit
 	pop bc
 	pop bc
 	pop bc
@@ -55250,7 +55250,7 @@ Data_5004e: ; 5004e
 	dr $5004e, $5005d
 
 Data_5005d: ; 5005d
-	db 6, 4
+	db  6, 4
 	db 11, 4
 	dba Func_5321e
 	dbw 5, 0
@@ -55282,19 +55282,75 @@ Data_500aa: ; 500aa
 	dr $500aa, $500b9
 
 Data_500b9: ; 500b9
-	dr $500b9, $500d8
+	db  0,  0
+	db 20, 18
+	dba Func_508e8
+	dbw 5, 0
+	dba Func_54981
+	dba Func_509b3
+	dba Func_50914
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_500d8: ; 500d8
 	dr $500d8, $500e7
 
 Data_500e7: ; 500e7
-	dr $500e7, $50148
+	db  4,  2
+	db 10, 13
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_51923
+	dbw 5, 0
+	dbw 5, 0
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+
+Pointers_50106:
+	dw Data_50112
+	dw Data_5011b
+	dw Data_50124
+	dw Data_5012d
+	dw Data_50136
+	dw Data_5013f
+
+Data_50112:
+	db "クﾞレーテスト6", $0
+
+Data_5011b:
+	db "クﾞレーテスト5", $0
+
+Data_50124:
+	db "クﾞレーテスト4", $0
+
+Data_5012d:
+	db "クﾞレーテスト3", $0
+
+Data_50136:
+	db "クﾞレーテスト2", $0
+
+Data_5013f:
+	db "クﾞレーテスト1", $0
 
 Data_50148: ; 50148
 	dr $50148, $50157
 
 Data_50157:
-	dr $50157, $50176
+	db  3,  0
+	db 13, 12
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Func_6275b
+	dba Func_1746c
+	dba Func_16038
+	dba Func_160c2
+	dbw 0, 0
+	dbw 0, 0
 
 Data_50176
 	dr $50176, $50185
