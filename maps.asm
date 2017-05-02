@@ -11297,7 +11297,7 @@ Func_d2c2c: ; d2c2c (34:6c2c)
 	pop bc
 	ld a, c
 	inc a
-	ld [wc2f8], a
+	ld [wCurShop], a
 	jp Func_d2c9b
 
 Func_d2c97: ; d2c97 (34:6c97)
@@ -11332,13 +11332,13 @@ Func_d2cc3:
 	or a
 	jp nz, Func_d2ce7
 	ld e, $3
-	ld a, [wc2f8]
+	ld a, [wCurShop]
 	call Func_806a0_34
 	jp Func_d2cef
 
 Func_d2ce7: ; d2ce7 (34:6ce7)
 	ld e, $4
-	ld a, [wc2f8]
+	ld a, [wCurShop]
 	call Func_806a0_34
 Func_d2cef: ; d2cef (34:6cef)
 	pop bc

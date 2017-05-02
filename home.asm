@@ -1703,7 +1703,7 @@ Func_248f:: ; 248f
 	pop bc
 	ret
 
-Func_24bb::
+GetItemAttributes::
 ; Loads 13 bytes from ItemAttributes[e] to sp+$0
 	push hl
 	push de

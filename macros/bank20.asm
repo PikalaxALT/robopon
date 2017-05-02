@@ -728,7 +728,7 @@ ScriptSleep_\1: ; 8068f (20:468f)
 
 Func_806a0_\1:
 	push de
-	ld [wc2f8], a
+	ld [wCurShop], a
 	set_farcall_addrs_hli Func_30348
 	pop de
 	push de

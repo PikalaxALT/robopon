@@ -22570,7 +22570,7 @@ Func_15bde: ; 15bde
 	ld l, a
 	add hl, bc
 	ld a, l
-	ld [wc311], a
+	ld [wCurItem], a
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -22627,7 +22627,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld de, $17
 	call CompareHLtoDE
 	jp nc, Func_15e9c
-	ld a, [wc311]
+	ld a, [wCurItem]
 	cp $ff
 	jp z, Func_15df5
 	call Func_15ff9
@@ -22638,7 +22638,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	call GetBanks
 	ld hl, sp+$4
 	ld [hl], a
-	ld hl, wc311
+	ld hl, wCurItem
 	ld l, [hl]
 	ld h, $0
 	ld de, wc98e
@@ -22757,7 +22757,7 @@ Func_15d29: ; 15d29 (5:5d29)
 	call GetSRAMBank
 	set_farcall_addrs_hli Func_4ec2b
 	ld e, $1
-	ld a, [wc311]
+	ld a, [wCurItem]
 	call FarCall
 	ld hl, sp+$1
 	ld a, [hl]
@@ -22801,7 +22801,7 @@ Func_15db0: ; 15db0 (5:5db0)
 	inc hl
 	ld [hl], d
 	ld a, $ff
-	ld [wc311], a
+	ld [wCurItem], a
 	ld hl, $8000
 	jp Func_15fe4
 
@@ -22858,7 +22858,7 @@ Func_15df5: ; 15df5 (5:5df5)
 	ld hl, -$14
 	add hl, de
 	ld a, l
-	ld [wc311], a
+	ld [wCurItem], a
 	ld a, $2
 	call Func_15fe9
 	or a
@@ -22880,7 +22880,7 @@ Func_15e59: ; 15e59 (5:5e59)
 	ld [hl], a
 Func_15e6d: ; 15e6d (5:5e6d)
 	ld a, $ff
-	ld [wc311], a
+	ld [wCurItem], a
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -22901,7 +22901,7 @@ Func_15e6d: ; 15e6d (5:5e6d)
 
 Func_15e91: ; 15e91 (5:5e91)
 	ld a, $ff
-	ld [wc311], a
+	ld [wCurItem], a
 Func_15e96: ; 15e96 (5:5e96)
 	ld hl, $4000
 	jp Func_15fe4
@@ -23037,7 +23037,7 @@ Func_15f9b: ; 15f9b (5:5f9b)
 	inc hl
 	ld [hl], d
 	ld a, $ff
-	ld [wc311], a
+	ld [wCurItem], a
 	ld hl, $8000
 	jp Func_15fe4
 
@@ -23444,7 +23444,7 @@ Func_1624a: ; 1624a (5:624a)
 	ld e, c
 	ld d, $0
 	add hl, de
-	ld a, [wc311]
+	ld a, [wCurItem]
 	ld e, a
 	ld d, $0
 	call CompareHLtoDE
@@ -24299,7 +24299,7 @@ Func_16841: ; 16841 (5:6841)
 	cp $3
 	jp nz, Func_16866
 	ld a, $ff
-	ld [wc311], a
+	ld [wCurItem], a
 	read_hl_from_sp_plus $e
 	call Func_16128
 	jp Func_1686d
@@ -27752,7 +27752,7 @@ Data_20a82: ; 20a82
 Data_20a91: ; 20a91
 	dr $20a91, $20ab0
 
-Func_20ab0: ; 20ab0
+Battle_ItemMenu_AButtonReactor: ; 20ab0
 	push hl
 	add sp, -$2e
 	ld hl, sp+$2e
@@ -27798,7 +27798,7 @@ Func_20ab0: ; 20ab0
 	dec a
 	ld e, a
 	ld hl, sp+$20
-	call Func_24bb
+	call GetItemAttributes
 	pop de
 	ld hl, sp+$28
 	ld a, [hl]
@@ -27836,21 +27836,21 @@ Func_20b38: ; 20b38 (8:4b38)
 Func_20b67: ; 20b67 (8:4b67)
 	ld hl, sp+$2b
 	ld a, [hl]
-	cp $4c
-	jp z, Func_20b87
+	cp BAR_MAGNET
+	jp z, .is_magnet
 	ld hl, sp+$2b
 	ld a, [hl]
-	cp $4d
-	jp z, Func_20b87
+	cp U_MAGNET
+	jp z, .is_magnet
 	ld hl, sp+$2b
 	ld a, [hl]
-	cp $4e
-	jp z, Func_20b87
+	cp ELECTROMAGNET
+	jp z, .is_magnet
 	ld hl, sp+$2b
 	ld a, [hl]
-	cp $4f
+	cp SUPERCONDUCTOR
 	jp nz, Func_20ba3
-Func_20b87: ; 20b87 (8:4b87)
+.is_magnet
 	call Func_20398
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $a0 | BANK(Pointers_201b1)
@@ -27889,7 +27889,7 @@ Func_20be8: ; 20be8 (8:4be8)
 	ld hl, sp+$2b
 	ld a, [hl]
 	dec a
-	ld [wc311], a
+	ld [wCurItem], a
 	ld hl, sp+$28
 	ld a, [hl]
 	and $4
@@ -27916,7 +27916,7 @@ Func_20be8: ; 20be8 (8:4be8)
 
 Func_20c33: ; 20c33 (8:4c33)
 	set_farcall_addrs_hli Func_fb42d
-	ld a, [wc311]
+	ld a, [wCurItem]
 	inc a
 	call FarCall
 	callba_hli Func_54af8
@@ -27958,7 +27958,20 @@ Data_20ca5: ; 20ca5
 	dr $20ca5, $20cb4
 
 Data_20cb4: ; 20cb4
-	dr $20cb4, $20d21
+	db  0,  3
+	db 15, 10
+	dba Func_16777
+	dbw 5, 0
+	dba Func_16d8e
+	dba Battle_ItemMenu_AButtonReactor
+	dba Func_17454
+	dba Func_523f2
+	dba Func_52475
+	dbw 0, 0
+	dbw 0, 0
+
+Data_29cd3:
+	dr $20cd3, $20d21
 
 Func_20d21: ; 20d21 (8:4d21)
 	push hl
@@ -30557,7 +30570,7 @@ Func_21f61: ; 21f61 (8:5f61)
 	add hl, sp
 	ld e, [hl]
 	ld hl, sp+$0
-	call Func_24bb
+	call GetItemAttributes
 	ld hl, sp+$0
 	push hl
 	ld hl, $d7
@@ -32592,15 +32605,15 @@ Func_22e48: ; 22e48 (8:6e48)
 	ld l, a
 	write_hl_to_sp_plus $12
 	ld hl, sp+$f
-	ld a, [wc311]
+	ld a, [wCurItem]
 	inc a
 	ld [hl], a
 	ld hl, sp+$e
 	ld [hl], $0
-	ld a, [wc311]
+	ld a, [wCurItem]
 	ld e, a
 	ld hl, sp+$0
-	call Func_24bb
+	call GetItemAttributes
 	ld hl, sp+$a
 	ld a, [hl]
 	and $4
@@ -32952,7 +32965,7 @@ Func_230ad: ; 230ad (8:70ad)
 	set_farcall_addrs_hli Func_5a149
 	ld c, $1
 	ld e, $1
-	ld a, [wc311]
+	ld a, [wCurItem]
 	inc a
 	call FarCall
 Func_23137: ; 23137 (8:7137)
@@ -32970,7 +32983,7 @@ Data_23140: ; 23140
 Data_23150: ; 23150
 	db "(つかえない)!", $0
 
-Func_23159: ; 23159
+Battle_ItemMenu: ; 23159
 	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
@@ -33023,7 +33036,7 @@ ENDC
 	inc a
 	jp z, Func_231e5
 	call Func_22e48
-	ld hl, wc311
+	ld hl, wCurItem
 	ld l, [hl]
 	ld h, $0
 	inc hl
@@ -40762,7 +40775,7 @@ Func_274da: ; 274da (9:74da)
 	push de
 	dec e
 	ld hl, sp+$6
-	call Func_24bb
+	call GetItemAttributes
 	call Func_24001
 	pop de
 	pop hl
@@ -41362,7 +41375,7 @@ Func_30313: ; 30313 (c:4313)
 
 Func_30328: ; 30328
 	ld a, $f
-	ld [wc2f8], a
+	ld [wCurShop], a
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -42008,7 +42021,7 @@ Func_30803: ; 30803 (c:4803)
 	ld l, a
 	add hl, bc
 	push hl
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -42140,7 +42153,7 @@ Func_30935: ; 30935 (c:4935)
 	ld hl, sp+$22
 	ld c, [hl]
 	ld b, $0
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -42174,7 +42187,7 @@ Func_3097b: ; 3097b (c:497b)
 	ld hl, sp+$22
 	ld c, [hl]
 	ld b, $0
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -42589,7 +42602,7 @@ Func_30c5f: ; 30c5f (c:4c5f)
 	read_hl_from_sp_plus $d
 	add hl, bc
 	push hl
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -42753,7 +42766,7 @@ Func_30d85: ; 30d85 (c:4d85)
 	ld hl, sp+$0
 	ld c, [hl]
 	ld b, $0
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -42844,7 +42857,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	jp nz, Func_30fe0
 	read_hl_from_sp_plus $3a
 	push hl
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -42912,7 +42925,7 @@ Func_30ea5: ; 30ea5 (c:4ea5)
 	jp nz, Func_30edd
 	read_hl_from_sp_plus $3c
 	push hl
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -43007,7 +43020,7 @@ Func_30f3f: ; 30f3f (c:4f3f)
 Func_30f5d: ; 30f5d (c:4f5d)
 	read_hl_from_sp_plus $3a
 	push hl
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -43461,7 +43474,7 @@ Func_312a4: ; 312a4
 	ld hl, sp+$15
 	ld c, [hl]
 	ld b, $0
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -43719,7 +43732,7 @@ Func_31475: ; 31475
 	pop bc
 	ret
 
-GetItemAttributes: ; 3149e
+GetItemAttributes2: ; 3149e
 	push de
 	push af
 	set_farcall_addrs_hli GetBanks
@@ -45850,7 +45863,7 @@ Func_32a37: ; 32a37
 	ld l, a
 	add hl, de
 	ld a, l
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -45870,7 +45883,7 @@ Func_32a37: ; 32a37
 	ld a, c
 	ld hl, sp+$2
 	reg16swap de, hl
-	call GetItemAttributes
+	call GetItemAttributes2
 	ld l, $10
 	push hl
 	ld c, $14
@@ -46139,7 +46152,7 @@ Func_32c30: ; 32c30
 	ld hl, sp+$32
 	ld c, [hl]
 	ld b, $0
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -46160,7 +46173,7 @@ Func_32c7d: ; 32c7d (c:6c7d)
 	ld hl, sp+$32
 	ld c, [hl]
 	ld b, $0
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -46995,7 +47008,7 @@ Func_333ba:: ; 333ba
 	call FarCall
 	ld c, a
 	pop af
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	ld de, wcb33
@@ -62330,7 +62343,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	ld c, $a
 	ld hl, sp+$23
 	push hl
-	ld hl, wc311
+	ld hl, wCurItem
 	ld l, [hl]
 	ld h, $0
 	ld de, $400
@@ -62343,7 +62356,7 @@ Func_54af8: ; 54af8 (15:4af8)
 	call GetSRAMBank
 	pop bc
 	pop hl
-	ld a, [wc311]
+	ld a, [wCurItem]
 	cp $4a
 	jp nz, Func_54c22
 	push bc
@@ -62364,7 +62377,7 @@ Func_54c1f: ; 54c1f (15:4c1f)
 	jp Func_54c3a
 
 Func_54c22: ; 54c22 (15:4c22)
-	ld a, [wc311]
+	ld a, [wCurItem]
 	cp $49
 	jp nz, Func_54c3a
 	ld a, l
@@ -62380,7 +62393,7 @@ Func_54c3a: ; 54c3a (15:4c3a)
 	ld a, l
 	or h
 	jp nz, Func_54c60
-	ld a, [wc311]
+	ld a, [wCurItem]
 	inc a
 	cp $42
 	jp z, Func_54c50
@@ -62399,7 +62412,7 @@ Func_54c5d: ; 54c5d (15:4c5d)
 	jp Func_54c78
 
 Func_54c60: ; 54c60 (15:4c60)
-	ld a, [wc311]
+	ld a, [wCurItem]
 	inc a
 	cp $42
 	jp z, Func_54c6e
@@ -62413,7 +62426,7 @@ Func_54c6e: ; 54c6e (15:4c6e)
 
 Func_54c78: ; 54c78 (15:4c78)
 	push bc
-	ld a, [wc311]
+	ld a, [wCurItem]
 	inc a
 	cp $4b
 	jp z, Func_54d34
@@ -62563,7 +62576,7 @@ Func_54d97: ; 54d97 (15:4d97)
 	pop de
 	call Func_5512e
 Func_54da5: ; 54da5 (15:4da5)
-	ld a, [wc311]
+	ld a, [wCurItem]
 	inc a
 	cp $42
 	jp z, Func_54db3
@@ -62665,7 +62678,7 @@ Func_54e67: ; 54e67 (15:4e67)
 	ld hl, $110
 	call FarCall
 	pop bc
-	ld a, [wc311]
+	ld a, [wCurItem]
 	cp $4a
 	jp nz, Func_54ee1
 	push bc
@@ -70081,7 +70094,7 @@ Func_59c89:
 	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	ld de, wcb33
@@ -71112,7 +71125,7 @@ Func_5a4c8: ; 5a4c8 (16:64c8)
 	ld hl, wSaveScratchMoney
 	ld bc, $4
 	call MemCopy
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	ld de, wcb33
@@ -71125,7 +71138,7 @@ Func_5a4c8: ; 5a4c8 (16:64c8)
 	ld a, [wc79a]
 	cp $1
 	jp nz, Func_5a528
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71159,7 +71172,7 @@ Func_5a53e: ; 5a53e (16:653e)
 	cp $8
 	jp nc, Func_5a56b
 	push de
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71179,7 +71192,7 @@ Func_5a53e: ; 5a53e (16:653e)
 
 Func_5a56b: ; 5a56b (16:656b)
 	push de
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71202,7 +71215,7 @@ Func_5a57e: ; 5a57e (16:657e)
 
 Func_5a589: ; 5a589 (16:6589)
 	dec c
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71238,7 +71251,7 @@ Func_5a5a5: ; 5a5a5 (16:65a5)
 	inc hl
 	ld [hl], d
 	pop de
-	ld a, [wc2f8]
+	ld a, [wCurShop]
 	cp $7
 	jp z, Func_5a5dd
 	cp $6
@@ -71262,7 +71275,7 @@ Func_5a5dd: ; 5a5dd (16:65dd)
 	jp Func_5a5f7
 
 Func_5a5eb: ; 5a5eb (16:65eb)
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71333,7 +71346,7 @@ Func_5a672: ; 5a672 (16:6672)
 	push bc
 	ld hl, sp+$e
 	push hl
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71751,7 +71764,7 @@ Func_5aa2f: ; 5aa2f (16:6a2f)
 	ld a, $3
 	call FarCall
 	ld c, a
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	ld de, wcb33
@@ -71760,7 +71773,7 @@ Func_5aa2f: ; 5aa2f (16:6a2f)
 	ld a, c
 	call GetSRAMBank
 	pop af
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71785,7 +71798,7 @@ Func_5aa2f: ; 5aa2f (16:6a2f)
 Func_5aa7c: ; 5aa7c (16:6a7c)
 	ld l, $7
 Func_5aa7e: ; 5aa7e (16:6a7e)
-	ld a, [wc2f8]
+	ld a, [wCurShop]
 	cp $7
 	jp z, Func_5aa98
 	cp $6
@@ -71807,7 +71820,7 @@ Func_5aa98: ; 5aa98 (16:6a98)
 	jp Func_5aab1
 
 Func_5aaa5: ; 5aaa5 (16:6aa5)
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71870,7 +71883,7 @@ Func_5aaf7: ; 5aaf7 (16:6af7)
 	ld a, $3
 	call FarCall
 	push af
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	ld de, wcb33
@@ -71886,7 +71899,7 @@ Func_5aaf7: ; 5aaf7 (16:6af7)
 	ld hl, sp+$38
 	ld c, [hl]
 	ld b, $0
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -71909,7 +71922,7 @@ Func_5aaf7: ; 5aaf7 (16:6af7)
 Func_5ab61: ; 5ab61 (16:6b61)
 	ld l, $7
 Func_5ab63: ; 5ab63 (16:6b63)
-	ld a, [wc2f8]
+	ld a, [wCurShop]
 	cp $7
 	jp z, Func_5ab80
 	cp $6
@@ -71935,7 +71948,7 @@ Func_5ab80: ; 5ab80 (16:6b80)
 	jp Func_5ab9f
 
 Func_5ab90: ; 5ab90 (16:6b90)
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -72068,7 +72081,7 @@ Func_5ac68: ; 5ac68 (16:6c68)
 	ld c, l
 	ld b, h
 	pop af
-	ld hl, wc2f8
+	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -83741,7 +83754,7 @@ Func_6251c: ; 6251c (18:651c)
 	push af
 	set_farcall_addrs_hli Func_5601b
 	ld c, $1
-	ld a, [wc311]
+	ld a, [wCurItem]
 	ld e, a
 	ld hl, sp+$11
 	call FarCall
@@ -83814,7 +83827,7 @@ Func_625bd: ; 625bd (18:65bd)
 	get_party_bot
 	ld de, $8
 	add hl, de
-	ld a, [wc311]
+	ld a, [wCurItem]
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -83858,13 +83871,13 @@ Func_62656: ; 62656 (18:6656)
 	get_party_bot
 	ld de, $8
 	add hl, de
-	ld a, [wc311]
+	ld a, [wCurItem]
 	ld e, a
 	ld d, $0
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$10
-	ld a, [wc311]
+	ld a, [wCurItem]
 	ld [hl], a
 Func_62685: ; 62685 (18:6685)
 	ld hl, sp+$10

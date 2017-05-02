@@ -50,7 +50,7 @@ ItemEffect_PartyRestore: ; 4ef0b
 	inc a
 	call FarCall
 	pop af
-	ld [wc311], a
+	ld [wCurItem], a
 	call ItemEffects_SelectPartyMember
 	ret
 
@@ -157,7 +157,7 @@ Func_4f01a: ; 4f01a (13:701a)
 	call ItemEffects_AskSelectPartyMember
 	ld hl, sp+$1f
 	ld a, [hl]
-	ld [wc311], a
+	ld [wCurItem], a
 	set_farcall_addrs_hli Func_fb42d
 	ld hl, sp+$1f
 	ld a, [hl]
@@ -786,7 +786,7 @@ ItemEffect_DownloadRAM: ; 4f591
 	call ItemEffects_AskSelectPartyMember
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wc311], a
+	ld [wCurItem], a
 	xor a
 	ld [wc316], a
 	ld hl, $0
@@ -877,7 +877,7 @@ ItemEffect_Evolve: ; 4f657
 .go
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wc311], a
+	ld [wCurItem], a
 	xor a
 	ld [wc316], a
 	ld hl, $0
@@ -932,7 +932,7 @@ ItemEffects_SelectPartyMember: ; 4f6dc (13:76dc)
 	set_farcall_addrs_hli Func_5a149
 	ld c, $1
 	ld e, $1
-	ld a, [wc311]
+	ld a, [wCurItem]
 	inc a
 	call FarCall
 	call Func_3af6

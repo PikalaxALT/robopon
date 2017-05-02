@@ -367,7 +367,7 @@ Func_2356f: ; 2356f (8:756f)
 	jp Func_235ee
 
 Func_23572: ; 23572 (8:7572)
-	call Func_23159
+	call Battle_ItemMenu
 	ld c, l
 	ld b, h
 	jp Func_235ee

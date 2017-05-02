@@ -511,7 +511,7 @@ wVideoTransferQueue:: ; c239
 	char wc2f5 ; c2f5
 	char wc2f6 ; c2f6
 	char wc2f7 ; c2f7
-	char wc2f8 ; c2f8
+	char wCurShop ; c2f8
 	char wc2f9 ; c2f9
 	char wInBattle ; c2fa
 	char wSystemType ; c2fb
@@ -532,7 +532,7 @@ wVideoTransferQueue:: ; c239
 	array wPlayerName, 5, 1, 1 ; c309
 	short wc30e ; c30e
 	char wc310 ; c310
-	char wc311 ; c311
+	char wCurItem ; c311
 	short wc312 ; c312
 	short wc314 ; c314
 	char wc316 ; c316
