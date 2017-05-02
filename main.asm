@@ -6207,7 +6207,7 @@ Func_bb37: ; bb37
 	call OverworldPlaySong
 	ld c, $2
 	ld e, $e
-	ld hl, $3e7
+	ld hl, 999
 	call DrawTextBoxAndOverworldText
 	ld a, $2
 	ld [wPlayerFacing], a
@@ -21424,7 +21424,7 @@ Func_1349d: ; 1349d (4:749d)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_134cf
 	read_hl_from_sp_plus $4e
@@ -21433,7 +21433,7 @@ Func_1349d: ; 1349d (4:749d)
 	ld h, $0
 	add hl, hl
 	add hl, de
-	ld de, $3e7
+	ld de, 999
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -26704,7 +26704,7 @@ Func_2034b: ; 2034b (8:434b)
 	pop bc
 	ret
 
-Func_2034d: ; 2034d (8:434d)
+BattleRandom: ; 2034d (8:434d)
 	push af
 	set_farcall_addrs_hli RandomRange
 	pop af
@@ -28285,7 +28285,7 @@ Func_20f12: ; 20f12 (8:4f12)
 
 Func_20f22: ; 20f22 (8:4f22)
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	ld e, a
 	ld d, $0
 	ld hl, sp+$0
@@ -28328,7 +28328,7 @@ Func_20f5e: ; 20f5e (8:4f5e)
 	call CompareHLtoDE
 	jp c, Func_20f7c
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	cp $46
 	jp nc, Func_20f7c
 	xor a
@@ -28452,7 +28452,7 @@ Func_21020: ; 21020 (8:5020)
 	cp $8
 	jp nz, Func_21056
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	cp $3c
 	jp nc, Func_21056
 Func_2104a: ; 2104a (8:504a)
@@ -28522,7 +28522,7 @@ Func_210af: ; 210af (8:50af)
 	ld [hl], a
 Func_210bc: ; 210bc (8:50bc)
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	ld hl, sp+$2
 	cp [hl]
 	jp nc, Func_210de
@@ -28582,7 +28582,7 @@ Func_2110b: ; 2110b (8:510b)
 	ld b, [hl]
 	push bc
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	ld e, a
 	ld hl, sp+$3
 	ld [hl], $0
@@ -29240,7 +29240,7 @@ Func_215fb: ; 215fb (8:55fb)
 	or a
 	jp nz, Func_21631
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	cp $32
 	jp nc, Func_21631
 	ld hl, sp+$4
@@ -29250,7 +29250,7 @@ Func_21631: ; 21631 (8:5631)
 
 Func_21634: ; 21634 (8:5634)
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	ld c, a
 	ld hl, sp+$4
 	ld a, [hl]
@@ -31064,7 +31064,7 @@ Func_222b7: ; 222b7 (8:62b7)
 	call WriteHLToSPPlus5
 Func_22304: ; 22304 (8:6304)
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	ld hl, sp+$2
 	ld [hl], a
 	ld c, $0
@@ -31107,11 +31107,11 @@ Func_2234d: ; 2234d (8:634d)
 	call Func_21bf5
 Func_22351: ; 22351 (8:6351)
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	cp $28
 	jp nc, Func_223a3
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	ld hl, sp+$2
 	ld [hl], a
 	ld c, $0
@@ -31746,10 +31746,10 @@ Func_227d3: ; 227d3 (8:67d3)
 	add hl, de
 	write_hl_to_sp_plus $da
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_227f7
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $da
 Func_227f7: ; 227f7 (8:67f7)
 	read_hl_from_sp_plus $10d
@@ -31759,10 +31759,10 @@ Func_227f7: ; 227f7 (8:67f7)
 	add hl, de
 	write_hl_to_sp_plus $de
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_2281b
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $de
 Func_2281b: ; 2281b (8:681b)
 	read_hl_from_sp_plus $112
@@ -31772,10 +31772,10 @@ Func_2281b: ; 2281b (8:681b)
 	add hl, de
 	write_hl_to_sp_plus $e3
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_2283f
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $e3
 Func_2283f: ; 2283f (8:683f)
 	read_hl_from_sp_plus $116
@@ -31785,10 +31785,10 @@ Func_2283f: ; 2283f (8:683f)
 	add hl, de
 	write_hl_to_sp_plus $e7
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_22863
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $e7
 Func_22863: ; 22863 (8:6863)
 	read_hl_from_sp_plus $114
@@ -31798,10 +31798,10 @@ Func_22863: ; 22863 (8:6863)
 	add hl, de
 	write_hl_to_sp_plus $e5
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_22887
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $e5
 Func_22887: ; 22887 (8:6887)
 	ld hl, $11e
@@ -32103,7 +32103,7 @@ Func_22acd: ; 22acd (8:6acd)
 	read_hl_from_sp_plus $ce
 	push hl
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	ld l, a
 	ld h, $0
 	pop de
@@ -41115,43 +41115,116 @@ Func_30000: ; 30000
 	ret
 
 Data_30001: ; 30001
-	dr $30001, $30020
+	db  0,  2
+	db 19, 10
+	dba Func_30676
+	dbw 5, 0
+	dba Func_309da
+	dba Func_32a37
+	dba Func_15297
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_30020: ; 30020
 	dr $30020, $3002f
 
 Data_3002f: ; 3002f
-	dr $3002f, $3004e
+	db  0,  2
+	db 19, 10
+	dba Func_30676
+	dbw 5, 0
+	dba Func_309da
+	dba Func_3103d
+	dba Func_15297
+	dba Func_30cc1
+	dba Func_30d44
+	dbw 0, 0
+	dbw 0, 0
 
 Data_3004e: ; 3004e
 	dr $3004e, $3005d
 
 Data_3005d: ; 3005d
-	dr $3005d, $3007c
+	db  0,  2
+	db 19, 10
+	dba Func_30676
+	dbw 5, 0
+	dba Func_309da
+	dba Func_32c30
+	dba Func_15297
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_3007c: ; 3007c
 	dr $3007c, $3008b
 
 Data_3008b: ; 3008b
-	dr $3008b, $300aa
+	db  0,  2
+	db 19, 10
+	dba Func_30676
+	dbw 5, 0
+	dba Func_309da
+	dba Func_3103d
+	dba Func_15297
+	dba Func_30cc1
+	dba Func_30d44
+	dbw 0, 0
+	dbw 0, 0
 
 Data_300aa: ; 300aa
 	dr $300aa, $300b9
 
 Data_300b9: ; 300b9
-	dr $300b9, $300d8
+	db  0,  2
+	db 19, 10
+	dba Func_30676
+	dbw 5, 0
+	dba Func_309da
+	dba Func_32c30
+	dba Func_15297
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
 
 Data_300d8: ; 300d8
 	dr $300d8, $300e7
 
 Data_300e7: ; 300e7
-	dr $300e7, $30106
+	db  0,  2
+	db 19, 10
+	dba Func_30676
+	dbw 5, 0
+	dba Func_309da
+	dba Func_3103d
+	dba Func_15297
+	dba Func_30cc1
+	dba Func_30d44
+	dbw 0, 0
+	dbw 0, 0
 
 Data_30106: ; 30106
 	dr $30106, $30115
 
 Data_30115: ; 30115
-	dr $30115, $30142
+	db  0,  0
+	db  5,  5
+	dba Func_15001
+	dbw 5, 0
+	dba Func_151c2
+	dba Func_15281
+	dba Func_15297
+	dbw 5, 0
+	dbw 5, 0
+	dbw 0, 0
+	dbw 0, 0
+
+Data_30134:
+	dr $30134, $30142
 
 Data_30142: ; 30142
 	dr $30142, $30151
@@ -41163,9 +41236,8 @@ Data_301bd: ; 301bd
 	dr $301bd, $30223
 
 Data_30223: ; 30223
-	dr $30223, $30283
+	dr $30223, $30289
 
-SECTION "Bank 0c part 2", ROMX [$4289], BANK [$c]
 Func_30289: ; 30289 (c:4289)
 	push af
 	push de
@@ -44036,7 +44108,7 @@ Func_3178a: ; 3178a (c:578a)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, $4093
+	ld de, Moves
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$30
@@ -44050,7 +44122,7 @@ Func_3178a: ; 3178a (c:578a)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, $6efb
+	ld de, Text_66efb
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -44864,10 +44936,10 @@ Func_322ed: ; 322ed (c:62ed)
 	write_hl_to_sp_plus $1f
 	read_hl_from_sp_plus $1f
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_3239e
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $1f
 Func_3239e: ; 3239e (c:639e)
 	jp Func_32483
@@ -44881,10 +44953,10 @@ Func_323a1: ; 323a1 (c:63a1)
 	write_hl_to_sp_plus $21
 	read_hl_from_sp_plus $21
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_323c7
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $21
 Func_323c7: ; 323c7 (c:63c7)
 	ld hl, sp+$2a
@@ -44895,10 +44967,10 @@ Func_323c7: ; 323c7 (c:63c7)
 	write_hl_to_sp_plus $23
 	read_hl_from_sp_plus $23
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_323ed
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $23
 Func_323ed: ; 323ed (c:63ed)
 	jp Func_32483
@@ -44912,10 +44984,10 @@ Func_323f0: ; 323f0 (c:63f0)
 	write_hl_to_sp_plus $16
 	read_hl_from_sp_plus $16
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_32416
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $16
 Func_32416: ; 32416 (c:6416)
 	ld hl, sp+$2a
@@ -44926,10 +44998,10 @@ Func_32416: ; 32416 (c:6416)
 	write_hl_to_sp_plus $1a
 	read_hl_from_sp_plus $1a
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_3243c
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $1a
 Func_3243c: ; 3243c (c:643c)
 	ld hl, sp+$2a
@@ -44997,20 +45069,29 @@ Func_3248b: ; 3248b (c:648b)
 	add sp, $28
 	ret
 
-IF DEF(SUN)
 Data_324ad: ; 324ad
-	dr $324ad, $324b7
+	db GRAMPS
+	db DOLLBY
+	db SAMMI
+	db Q_
+	db MEDBOT
+	db TOONA
+	db LEACHY
+	db RAZOR
+	db ORBIT
+	db WOODY
 
 Data_324b7: ; 324b7
-	dr $324b7, $324c1
-ENDC
-IF DEF(STAR)
-Data_324ad: ; 324ad
-	dr $324b6, $324c0
-
-Data_324b7: ; 324b7
-	dr $324c0, $324ca
-ENDC
+	db CARD
+	db UNIBOT
+	db REX
+	db VIRUS
+	db BOOM
+	db PALMER
+	db ZAPPA
+	db PAWS
+	db STINKY
+	db DETNO
 
 Func_324c1: ; 324c1 (c:64c1)
 	push af
@@ -45356,18 +45437,18 @@ Func_326fe: ; 326fe (c:66fe)
 	ld [hl], e
 	read_hl_from_sp_plus $3f
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_32770
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $3f
 Func_32770: ; 32770 (c:6770)
 	read_hl_from_sp_plus $43
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_32788
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $43
 Func_32788: ; 32788 (c:6788)
 	read_hl_from_sp_plus $3d
@@ -45390,26 +45471,26 @@ Func_327a0: ; 327a0 (c:67a0)
 Func_327b8: ; 327b8 (c:67b8)
 	read_hl_from_sp_plus $48
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_327d0
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $48
 Func_327d0: ; 327d0 (c:67d0)
 	read_hl_from_sp_plus $4a
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_327e8
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $4a
 Func_327e8: ; 327e8 (c:67e8)
 	read_hl_from_sp_plus $4c
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_32800
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $4c
 Func_32800: ; 32800 (c:6800)
 	ld hl, sp+$4e
@@ -60104,10 +60185,10 @@ Func_527db: ; 527db (14:67db)
 	ld d, $0
 	add hl, de
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_528a5
-	ld de, $3e7
+	ld de, 999
 Func_528a5: ; 528a5 (14:68a5)
 	push de
 	ld de, Data_52ada
@@ -60123,10 +60204,10 @@ Func_528a5: ; 528a5 (14:68a5)
 	ld d, $0
 	add hl, de
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_528d2
-	ld de, $3e7
+	ld de, 999
 Func_528d2: ; 528d2 (14:68d2)
 	push de
 	ld de, Data_52ae2
@@ -60142,10 +60223,10 @@ Func_528d2: ; 528d2 (14:68d2)
 	read_hl_from_sp_plus $93
 	add hl, bc
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_52900
-	ld de, $3e7
+	ld de, 999
 Func_52900: ; 52900 (14:6900)
 	push de
 	ld de, Data_52aeb
@@ -62345,7 +62426,7 @@ Func_54cbd: ; 54cbd (15:4cbd)
 	read_hl_from wc312
 	push hl
 	read_hl_from_sp_plus $b
-	ld de, $3e7
+	ld de, 999
 	ld a, e
 	sub l
 	ld l, a
@@ -62356,7 +62437,7 @@ Func_54cbd: ; 54cbd (15:4cbd)
 	call CompareHLtoDE
 	jp nc, Func_54ce8
 	call GetHLAtSPPlus9
-	ld de, $3e7
+	ld de, 999
 	ld a, e
 	sub l
 	ld l, a
@@ -62368,7 +62449,7 @@ Func_54ce8: ; 54ce8 (15:4ce8)
 	read_hl_from wc314
 	push hl
 	call GetHLAtSPPlus7
-	ld de, $3e7
+	ld de, 999
 	ld a, e
 	sub l
 	ld l, a
@@ -62379,7 +62460,7 @@ Func_54ce8: ; 54ce8 (15:4ce8)
 	call CompareHLtoDE
 	jp nc, Func_54d12
 	call GetHLAtSPPlus5
-	ld de, $3e7
+	ld de, 999
 	ld a, e
 	sub l
 	ld l, a
@@ -62768,42 +62849,42 @@ Func_55012: ; 55012 (15:5012)
 	ld [hl], c
 	read_hl_from_sp_plus $3f
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_55084
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $3f
 Func_55084: ; 55084 (15:5084)
 	read_hl_from_sp_plus $43
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_5509c
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $43
 Func_5509c: ; 5509c (15:509c)
 	read_hl_from_sp_plus $48
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_550b4
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $48
 Func_550b4: ; 550b4 (15:50b4)
 	read_hl_from_sp_plus $4c
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_550cc
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $4c
 Func_550cc: ; 550cc (15:50cc)
 	read_hl_from_sp_plus $4a
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_550e4
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $4a
 Func_550e4: ; 550e4 (15:50e4)
 	read_hl_from_sp_plus $3d
@@ -63934,10 +64015,10 @@ Func_55a26: ; 55a26 (15:5a26)
 	read_hl_from_sp_plus $39f
 	add hl, bc
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_55ae2
-	ld de, $3e7
+	ld de, 999
 Func_55ae2: ; 55ae2 (15:5ae2)
 	push de
 	ld de, Data_55c19
@@ -63954,10 +64035,10 @@ Func_55ae2: ; 55ae2 (15:5ae2)
 	read_hl_from_sp_plus $3a1
 	add hl, bc
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_55b13
-	ld de, $3e7
+	ld de, 999
 Func_55b13: ; 55b13 (15:5b13)
 	push de
 	ld de, Data_55c21
@@ -63974,10 +64055,10 @@ Func_55b13: ; 55b13 (15:5b13)
 	read_hl_from_sp_plus $3a3
 	add hl, bc
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_55b44
-	ld de, $3e7
+	ld de, 999
 Func_55b44: ; 55b44 (15:5b44)
 	push de
 	ld de, Data_55c2a
@@ -73898,10 +73979,10 @@ Func_5bbe3: ; 5bbe3 (16:7be3)
 	ld h, $0
 	add hl, de
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_5bd62
-	ld de, $3e7
+	ld de, 999
 Func_5bd62: ; 5bd62 (16:7d62)
 	push de
 	ld de, Data_5bfc3
@@ -73922,10 +74003,10 @@ Func_5bd62: ; 5bd62 (16:7d62)
 	ld h, $0
 	add hl, de
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_5bd97
-	ld de, $3e7
+	ld de, 999
 Func_5bd97: ; 5bd97 (16:7d97)
 	push de
 	ld de, Data_5bfcb
@@ -73946,10 +74027,10 @@ Func_5bd97: ; 5bd97 (16:7d97)
 	ld h, $0
 	add hl, de
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_5bdcc
-	ld de, $3e7
+	ld de, 999
 Func_5bdcc: ; 5bdcc (16:7dcc)
 	push de
 	ld de, Data_5bfd4
@@ -80712,8 +80793,8 @@ Func_60e69: ; 60e69 (18:4e69)
 	ld sp, hl
 	ret
 
-Data_60e6f: ; 60e6f
-	dr $60e6f, $60e77
+Data_60e6f:
+	db "ODE_TEL", $0
 
 Data_60e77: ; 60e77
 	dr $60e77, $60e81
@@ -81051,9 +81132,9 @@ Func_61133: ; 61133
 	write_hl_to_sp_plus $45
 	pop hl
 	write_hl_to_sp_plus $41
-Func_61145: ; 61145 (18:5145)
+.loop
 	or a
-	jp z, Func_61179
+	jp z, .break
 	set_farcall_addrs_hli Func_4b8ac
 	ld hl, sp+$0
 	reg16swap de, hl
@@ -81070,9 +81151,9 @@ Func_61145: ; 61145 (18:5145)
 	inc hl
 	write_hl_to_sp_plus $48
 	pop af
-	jp Func_61145
+	jp .loop
 
-Func_61179: ; 61179 (18:5179)
+.break
 	add sp, $46
 	ret
 
@@ -96537,7 +96618,7 @@ Func_6d02b: ; 6d02b (1b:502b)
 Func_6d074: ; 6d074 (1b:5074)
 	ld hl, $0
 	push hl
-	ld hl, $3e7
+	ld hl, 999
 	push hl
 	ld hl, $8b
 	add hl, sp
@@ -96553,7 +96634,7 @@ Func_6d074: ; 6d074 (1b:5074)
 	jp nc, Func_6d0b0
 	ld hl, $0
 	push hl
-	ld hl, $3e7
+	ld hl, 999
 	push hl
 	ld hl, $8b
 	add hl, sp
@@ -101380,10 +101461,10 @@ Func_6f34c: ; 6f34c (1b:734c)
 	add hl, de
 	write_hl_to_sp_plus $41
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_6f36f
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $41
 Func_6f36f: ; 6f36f (1b:736f)
 	read_hl_from_sp_plus $22
@@ -101393,10 +101474,10 @@ Func_6f36f: ; 6f36f (1b:736f)
 	add hl, de
 	write_hl_to_sp_plus $45
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_6f392
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $45
 Func_6f392: ; 6f392 (1b:7392)
 	read_hl_from_sp_plus $27
@@ -101406,10 +101487,10 @@ Func_6f392: ; 6f392 (1b:7392)
 	add hl, de
 	write_hl_to_sp_plus $4a
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_6f3b5
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $4a
 Func_6f3b5: ; 6f3b5 (1b:73b5)
 	read_hl_from_sp_plus $2b
@@ -101419,10 +101500,10 @@ Func_6f3b5: ; 6f3b5 (1b:73b5)
 	add hl, de
 	write_hl_to_sp_plus $4e
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_6f3d8
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $4e
 Func_6f3d8: ; 6f3d8 (1b:73d8)
 	read_hl_from_sp_plus $29
@@ -101432,10 +101513,10 @@ Func_6f3d8: ; 6f3d8 (1b:73d8)
 	add hl, de
 	write_hl_to_sp_plus $4c
 	reg16swap de, hl
-	ld hl, $3e7
+	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_6f3fb
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to_sp_plus $4c
 Func_6f3fb: ; 6f3fb (1b:73fb)
 	read_hl_from_sp_plus $41
@@ -102936,7 +103017,7 @@ Func_fb4d0: ; fb4d0 (3e:74d0)
 	jp Func_fb55e
 
 Func_fb4db: ; fb4db (3e:74db)
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to wc312
 	jp Func_fb55e
 
@@ -102956,7 +103037,7 @@ Func_fb4fc: ; fb4fc (3e:74fc)
 	jp Func_fb55e
 
 Func_fb507: ; fb507 (3e:7507)
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to wc314
 	jp Func_fb55e
 
@@ -102975,9 +103056,9 @@ Func_fb525: ; fb525 (3e:7525)
 	jp Func_fb55e
 
 Func_fb538: ; fb538 (3e:7538)
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to wc312
-	ld hl, $3e7
+	ld hl, 999
 	write_hl_to wc314
 	jp Func_fb55e
 

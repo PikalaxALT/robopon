@@ -56,7 +56,7 @@ BattleCoreLoop: ; 232f2 (8:72f2)
 	call Func_20318
 Func_23303: ; 23303 (8:7303)
 	ld a, $64
-	call Func_2034d
+	call BattleRandom
 	ld hl, sp+$48
 	ld [hl], a
 	set_farcall_addrs_hli Func_dbf5
@@ -310,14 +310,14 @@ Func_234c2: ; 234c2 (8:74c2)
 	ld a, l
 	and h
 	inc a
-	jp nz, Func_23508
+	jp nz, .parse_battle_menu
 	read_hl_from_sp_plus $4f
 	ld de, $5e
 	add hl, de
 	ld [hl], $ff
 	jp Func_23654
 
-Func_23508: ; 23508 (8:7508)
+.parse_battle_menu: ; 23508 (8:7508)
 	ld de, $1311
 	ld hl, $d
 	call Func_2036d
@@ -331,7 +331,7 @@ Func_23508: ; 23508 (8:7508)
 	cp $3
 	jp z, Func_235b3
 	cp $1
-	jp z, Func_2357a
+	jp z, Battle_AttackMenu
 	cp $2
 	jp z, Func_23572
 	or a
@@ -372,7 +372,7 @@ Func_23572: ; 23572 (8:7572)
 	ld b, h
 	jp Func_235ee
 
-Func_2357a: ; 2357a (8:757a)
+Battle_AttackMenu: ; 2357a (8:757a)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $7
