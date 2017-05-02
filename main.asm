@@ -24860,7 +24860,7 @@ Func_16c8e: ; 16c8e (5:6c8e)
 	pop af
 	ld l, a
 	ld h, $0
-	ld de, $a8
+	ld de, $a9 - 1 ; TreeBitstreamText_4b486
 	add hl, de
 	reg16swap de, hl
 	ld hl, $101
@@ -25388,7 +25388,7 @@ Func_17080: ; 17080 (5:7080)
 	pop af
 	ld l, a
 	ld h, $0
-	ld de, $a8
+	ld de, $a9 - 1 ; TreeBitstreamText_4b486
 	add hl, de
 	reg16swap de, hl
 	ld hl, $101
@@ -41229,8 +41229,25 @@ Data_30134:
 Data_30142: ; 30142
 	dr $30142, $30151
 
-Data_30151: ; 30151
-	dr $30151, $301bd
+ShopItems: ; 30151
+	db KEROSENE, TEN_VOLTS, BAR_MAGNET, FLAPPING_CROW, GROUND_ESCAPE, THOUSAND_VOLTS
+	db SUB_BATTERY, HEMWIDTH_COVER, SCAN_DISK, VERSION_UP, VERSION_DOWN, SIDE_EFFECT
+	db KEROSENE, KEIYU, TEN_VOLTS, HUNDRED_VOLTS, BAR_MAGNET, GROUND_ESCAPE
+	db KEIYU, GASOLINE, HUNDRED_VOLTS, THOUSAND_VOLTS, BAR_MAGNET, U_MAGNET
+	db GASOLINE, THOUSAND_VOLTS, HYDRO_SYSTEM, U_MAGNET, FLAPPING_CROW, GROUND_ESCAPE
+	db GASOLINE, HIGH_OCTANE, THOUSAND_VOLTS, MILLION_VOLTS, U_MAGNET, ELECTROMAGNET
+	db SUB_BATTERY, HEMWIDTH_COVER, SCAN_DISK, VERSION_UP, VERSION_DOWN, SIDE_EFFECT
+	db HIGH_OCTANE, MILLION_VOLTS, HYDRO_SYSTEM, ELECTROMAGNET, DEFRAG, GROUND_ESCAPE
+	db HYDRO_SYSTEM, SOLAR_SYSTEM, DEFRAG, BACKUP, U_MAGNET, ELECTROMAGNET
+	db SUB_BATTERY, HEMWIDTH_COVER, SCAN_DISK, VERSION_UP, VERSION_DOWN, SIDE_EFFECT
+	db KEROSENE, KEIYU, TEN_VOLTS, HUNDRED_VOLTS, BAR_MAGNET, U_MAGNET
+	db GASOLINE, HIGH_OCTANE, THOUSAND_VOLTS, MILLION_VOLTS, ELECTROMAGNET, DEFRAG
+	db HYDRO_SYSTEM, SOLAR_SYSTEM, DEFRAG, BACKUP, FLAPPING_CROW, GROUND_ESCAPE
+	db KEROSENE, KEIYU, GASOLINE, HIGH_OCTANE, BAR_MAGNET, FLAPPING_CROW
+	db TEN_VOLTS, HUNDRED_VOLTS, THOUSAND_VOLTS, MILLION_VOLTS, U_MAGNET, GROUND_ESCAPE
+	db SIDE_EFFECT, DEFRAG, BACKUP, RECOVERY_PROGRAM, HYDRO_SYSTEM, SOLAR_SYSTEM
+	db CUP_RAMEN, FRIED_EGGS, CROQUETTE, FRIED_SHRIMP, HANDBAG, SUKIYAKI_SET
+	db HYDRO_SYSTEM, SOLAR_SYSTEM, BEGINNER_TICKET, MIDDLE_TICKET, ADVANCED_TICKET, FREE_TICKET
 
 Data_301bd: ; 301bd
 	dr $301bd, $30223
@@ -41999,13 +42016,13 @@ Func_30803: ; 30803 (c:4803)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Data_30151
+	ld de, ShopItems
 	add hl, de
 	pop de
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld de, $a8
+	ld de, $a9 - 1 ; TreeBitstreamText_4b486
 	add hl, de
 	reg16swap de, hl
 	ld hl, $10c
@@ -42580,13 +42597,13 @@ Func_30c5f: ; 30c5f (c:4c5f)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Data_30151
+	ld de, ShopItems
 	add hl, de
 	pop de
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld de, $a8
+	ld de, $a9 - 1 ; TreeBitstreamText_4b486
 	add hl, de
 	reg16swap de, hl
 	ld hl, $10c
@@ -42744,7 +42761,7 @@ Func_30d85: ; 30d85 (c:4d85)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Data_30151
+	ld de, ShopItems
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -42835,7 +42852,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Data_30151
+	ld de, ShopItems
 	add hl, de
 	pop de
 	add hl, de
@@ -43452,7 +43469,7 @@ Func_312a4: ; 312a4
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Data_30151
+	ld de, ShopItems
 	add hl, de
 	add hl, bc
 	ld l, [hl]
@@ -45841,7 +45858,7 @@ Func_32a37: ; 32a37
 	ld d, h
 	add hl, hl
 	add hl, de
-	ld de, Data_30151
+	ld de, ShopItems
 	add hl, de
 	ld e, a
 	ld d, $0

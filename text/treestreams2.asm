@@ -4,252 +4,253 @@ TextTreeBitstreams2:: ; 38000
 
 	dw TreeBitstreamText_48fa2 & $3fff
 	dw TreeBitstreamText_48fa2 & $3fff
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_48fd5
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4900b
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49043
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49073
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_490a3
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_490da
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49115
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4914f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49189
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_491c3
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_491fa
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49233
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4926f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_492a5
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_492d9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4930d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49348
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49384
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_493b9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_493f4
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49432
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4946c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_494a8
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_494e3
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49518
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49554
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4957d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_495b8
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_495ef
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49628
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4965f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49696
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_496cb
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49707
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49742
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49779
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_497ab
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_497e5
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49821
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49856
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4988e
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_498c9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49905
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4993e
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49978
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_499a8
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_499e4
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49a28
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49a60
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49a9a
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49acf
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49b07
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49b42
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49b7c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49bb4
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49bef
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49c2e
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49c63
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49c98
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49cd1
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49d07
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49d3f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49d74
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49db0
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49dea
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49e1f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49e58
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49e97
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49ecf
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49f0a
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49f40
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49f79
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49faf
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49fee
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a026
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a059
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a097
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a0d2
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a10a
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a143
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a17d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a1b6
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a1f0
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a229
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a260
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a294
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a2cb
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a305
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a33c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a378
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a3b0
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a3e8
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a41e
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a450
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a485
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a4c4
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a4ff
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a535
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a569
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a5a4
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a5dc
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a613
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a651
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a688
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a6bf
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a6f7
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a732
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a765
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a799
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a7cb
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a801
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a83d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a877
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a8af
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a8e7
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a91f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a953
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a98f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a9c7
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a9fd
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aa32
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aa6d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aaa4
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aadd
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ab1d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ab5a
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ab95
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4abc8
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4abff
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ac38
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ac6e
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aca2
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4acda
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ad19
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ad4f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ad87
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4adc2
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4adf6
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ae29
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ae60
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ae9b
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aecf
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4af08
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4af3d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4af6f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4afac
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4afe9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b024
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b05f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b093
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b0d2
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b105
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b13c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b175
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b1aa
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b1e6
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b214
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b24c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b280
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b2b9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b2f1
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b326
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b361
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b39d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b3db
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b41a
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b451
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b486
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b494
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4a2
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4af
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4bc
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4c9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4d6
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4e3
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4f3
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b504
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b515
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b521
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b52d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b534
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b53f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b54b
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b557
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b56a
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b577
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b585
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b594
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5a3
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5b1
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5c2
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5d2
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5d7
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5e9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5f9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b607
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b615
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b621
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b62f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b63c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b648
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b656
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b663
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b671
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b67f
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b68e
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b69d
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6ac
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6bc
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6cc
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6db
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6ea
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6fa
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b708
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b716
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b724
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b733
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b741
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b74e
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b75b
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b769
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b776
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b781
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b78c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b794
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7a0
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7a9
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7b3
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7bd
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7c7
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7d4
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7e2
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7ee
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7fd
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b809
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b816
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b820
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b82c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b83b
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b84b
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b858
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b864
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b86e
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b87c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b88c
-	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b89d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_48fd5 ; 02
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4900b ; 03
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49043 ; 04
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49073 ; 05
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_490a3 ; 06
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_490da ; 07
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49115 ; 08
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4914f ; 09
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49189 ; 0a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_491c3 ; 0b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_491fa ; 0c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49233 ; 0d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4926f ; 0e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_492a5 ; 0f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_492d9 ; 10
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4930d ; 11
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49348 ; 12
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49384 ; 13
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_493b9 ; 14
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_493f4 ; 15
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49432 ; 16
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4946c ; 17
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_494a8 ; 18
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_494e3 ; 19
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49518 ; 1a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49554 ; 1b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4957d ; 1c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_495b8 ; 1d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_495ef ; 1e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49628 ; 1f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4965f ; 20
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49696 ; 21
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_496cb ; 22
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49707 ; 23
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49742 ; 24
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49779 ; 25
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_497ab ; 26
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_497e5 ; 27
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49821 ; 28
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49856 ; 29
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4988e ; 2a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_498c9 ; 2b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49905 ; 2c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4993e ; 2d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49978 ; 2e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_499a8 ; 2f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_499e4 ; 30
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49a28 ; 31
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49a60 ; 32
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49a9a ; 33
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49acf ; 34
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49b07 ; 35
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49b42 ; 36
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49b7c ; 37
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49bb4 ; 38
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49bef ; 39
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49c2e ; 3a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49c63 ; 3b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49c98 ; 3c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49cd1 ; 3d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49d07 ; 3e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49d3f ; 3f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49d74 ; 40
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49db0 ; 41
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49dea ; 42
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49e1f ; 43
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49e58 ; 44
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49e97 ; 45
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49ecf ; 46
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49f0a ; 47
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49f40 ; 48
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49f79 ; 49
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49faf ; 4a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_49fee ; 4b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a026 ; 4c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a059 ; 4d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a097 ; 4e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a0d2 ; 4f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a10a ; 50
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a143 ; 51
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a17d ; 52
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a1b6 ; 53
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a1f0 ; 54
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a229 ; 55
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a260 ; 56
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a294 ; 57
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a2cb ; 58
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a305 ; 59
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a33c ; 5a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a378 ; 5b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a3b0 ; 5c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a3e8 ; 5d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a41e ; 5e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a450 ; 5f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a485 ; 60
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a4c4 ; 61
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a4ff ; 62
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a535 ; 63
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a569 ; 64
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a5a4 ; 65
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a5dc ; 66
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a613 ; 67
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a651 ; 68
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a688 ; 69
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a6bf ; 6a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a6f7 ; 6b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a732 ; 6c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a765 ; 6d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a799 ; 6e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a7cb ; 6f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a801 ; 70
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a83d ; 71
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a877 ; 72
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a8af ; 73
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a8e7 ; 74
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a91f ; 75
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a953 ; 76
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a98f ; 77
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a9c7 ; 78
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4a9fd ; 79
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aa32 ; 7a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aa6d ; 7b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aaa4 ; 7c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aadd ; 7d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ab1d ; 7e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ab5a ; 7f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ab95 ; 80
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4abc8 ; 81
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4abff ; 82
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ac38 ; 83
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ac6e ; 84
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aca2 ; 85
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4acda ; 86
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ad19 ; 87
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ad4f ; 88
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ad87 ; 89
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4adc2 ; 8a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4adf6 ; 8b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ae29 ; 8c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ae60 ; 8d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4ae9b ; 8e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4aecf ; 8f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4af08 ; 90
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4af3d ; 91
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4af6f ; 92
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4afac ; 93
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4afe9 ; 94
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b024 ; 95
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b05f ; 96
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b093 ; 97
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b0d2 ; 98
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b105 ; 99
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b13c ; 9a
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b175 ; 9b
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b1aa ; 9c
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b1e6 ; 9d
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b214 ; 9e
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b24c ; 9f
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b280 ; a0
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b2b9 ; a1
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b2f1 ; a2
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b326 ; a3
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b361 ; a4
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b39d ; a5
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b3db ; a6
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b41a ; a7
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b451 ; a8
+
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b486 ; a9 GREATEST_7
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b494 ; aa GREATEST_6
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4a2 ; ab GREATEST_5
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4af ; ac GREATEST_4
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4bc ; ad GREATEST_3
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4c9 ; ae GREATEST_2
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4d6 ; af WINNING_LAUREL
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4e3 ; b0 BEGINNER_TICKET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b4f3 ; b1 MIDDLE_TICKET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b504 ; b2 ADVANCED_TICKET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b515 ; b3 BOOTS
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b521 ; b4 SEAWEED
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b52d ; b5 STARFISH
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b534 ; b6 SEA_GRAPES
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b53f ; b7 PEARL
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b54b ; b8 MEMORY_FRAGMENT
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b557 ; b9 DREAM_OF_DREAMS
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b56a ; ba CANTERA
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b577 ; bb KINS_WRENCH
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b585 ; bc FREE_TICKET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b594 ; bd MORRIS_SUNSET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5a3 ; be CONSOLATION_PRIZE
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5b1 ; bf STAMP_CARD
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5c2 ; c0 RING_OF_MEMORIES
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5d2 ; c1 RAW_SEWAGE
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5d7 ; c2 GOLD_TROPHY
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5e9 ; c3 SILVER_TROPHY
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b5f9 ; c4 JUMPER_BATCH
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b607 ; c5 SPEEDER_BATCH
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b615 ; c6 BATTLER_BATCH
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b621 ; c7 PUNCHER_BATCH
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b62f ; c8 SHIELDER_BATCH
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b63c ; c9 MEMBERS_CARD
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b648 ; ca FISHING_ROD
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b656 ; cb WORM_BAIT
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b663 ; cc CUP_RAMEN
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b671 ; cd FRIED_EGGS
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b67f ; ce CROQUETTE
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b68e ; cf FRIED_SHRIMP
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b69d ; d0 HANDBAG
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6ac ; d1 SUKIYAKI_SET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6bc ; d2 SNORKEL
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6cc ; d3 RED_BAKUDAN
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6db ; d4 BLACK_BAKUDAN
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6ea ; d5 WHITE_BAKUDAN
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b6fa ; d6 BLUE_BAKUDAN
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b708 ; d7 KEROSENE
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b716 ; d8 KEIYU
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b724 ; d9 GASOLINE
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b733 ; da HIGH_OCTANE
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b741 ; db TEN_VOLTS
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b74e ; dc HUNDRED_VOLTS
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b75b ; dd THOUSAND_VOLTS
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b769 ; de MILLION_VOLTS
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b776 ; df HYDRO_SYSTEM
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b781 ; e0 SOLAR_SYSTEM
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b78c ; e1 ATOM_SYSTEM
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b794 ; e2 SUB_BATTERY
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7a0 ; e3 HEMWIDTH_COVER
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7a9 ; e4 SCAN_DISK
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7b3 ; e5 VERSION_UP
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7bd ; e6 VERSION_DOWN
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7c7 ; e7 SIDE_EFFECT
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7d4 ; e8 DEFRAG
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7e2 ; e9 BACKUP
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7ee ; ea RECOVERY_PROGRAM
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b7fd ; eb ATTACK_MEMORY
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b809 ; ec SHIELD_MEMORY
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b816 ; ed SPEED_MEMORY
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b820 ; ee LIFE_MEMORY
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b82c ; ef ENERGY_MEMORY
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b83b ; f0 FLAPPING_CROW
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b84b ; f1 GROUND_ESCAPE
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b858 ; f2 SHORTCUT
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b864 ; f3 HIDDEN_COMMAND
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b86e ; f4 BAR_MAGNET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b87c ; f5 U_MAGNET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b88c ; f6 ELECTROMAGNET
+	tree_text_pointer TextTreeBitstreams2, TreeBitstreamText_4b89d ; f7 SUPERCONDUCTOR
 	dw TreeBitstreamText_48fa2 & $3fff
 	dw TreeBitstreamText_48fa2 & $3fff
 	dw TreeBitstreamText_48fa2 & $3fff

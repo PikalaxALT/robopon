@@ -41,7 +41,7 @@ ItemEffect_NoUse: ; 4eebc (13:6ebc)
 	pop bc
 	ret
 
-Func_4ef0b: ; 4ef0b
+ItemEffect_PartyRestore: ; 4ef0b
 	push af
 	call ItemEffects_AskSelectPartyMember
 	set_farcall_addrs_hli Func_fb42d
@@ -61,7 +61,7 @@ Pointers_4ef28: ; 4ef28
 Data_4ef2c: ; 4ef2c
 	db "(を つかった)", $0
 
-Func_4ef35: ; 4ef35
+ItemEffect_WaterUse: ; 4ef35
 	push af
 	add sp, -$1e
 	ld l, $0
@@ -175,7 +175,7 @@ Pointers_4f040: ; 4f040
 Data_4f044: ; 4f044
 	db "(を つかった)", $0
 
-Func_4f04d: ; 4f04d
+ItemEffect_Ticket: ; 4f04d
 	push af
 	add sp, -$1e
 	ld l, $0
@@ -268,24 +268,24 @@ Pointers_4f12c: ; 4f12c
 Data_4f130: ; 4f130
 	db "(を つかった)", $0
 
-Func_4f139: ; 4f139
+ItemEffect_CaveUse: ; 4f139
 	push af
 	add sp, -$1e
 	ld e, $0
 	ld hl, sp+$1f
 	ld a, [hl]
 	inc a
-	cp $49
+	cp GROUND_ESCAPE
 	jp z, Func_4f213
-	cp $15
+	cp MORRIS_SUNSET
 	jp z, Func_4f1ee
-	cp $2e
+	cp BLUE_BAKUDAN
 	jp z, Func_4f198
-	cp $2d
+	cp WHITE_BAKUDAN
 	jp z, Func_4f160
-	cp $2c
+	cp BLACK_BAKUDAN
 	jp z, Func_4f160
-	cp $2b
+	cp RED_BAKUDAN
 	jp nz, Func_4f437
 Func_4f160: ; 4f160 (13:7160)
 	ld a, [wMapGroup]
@@ -781,7 +781,7 @@ Func_4f58e: ; 4f58e (13:758e)
 	add sp, $20
 	ret
 
-Func_4f591: ; 4f591
+ItemEffect_DownloadRAM: ; 4f591
 	push af
 	call ItemEffects_AskSelectPartyMember
 	ld hl, sp+$1
@@ -952,11 +952,11 @@ ItemEffectPointers: ; 4f713
 	dba ItemEffect_NoUse ; 05
 	dba ItemEffect_NoUse ; 06
 	dba ItemEffect_NoUse ; 07
-	dba Func_4f04d       ; 08
-	dba Func_4f04d       ; 09
-	dba Func_4f04d       ; 0a
+	dba ItemEffect_Ticket       ; 08
+	dba ItemEffect_Ticket       ; 09
+	dba ItemEffect_Ticket       ; 0a
 	dba ItemEffect_NoUse ; 0b
-	dba Func_4ef0b       ; 0c
+	dba ItemEffect_PartyRestore       ; 0c
 	dba ItemEffect_NoUse ; 0d
 	dba ItemEffect_NoUse ; 0e
 	dba ItemEffect_NoUse ; 0f
@@ -964,8 +964,8 @@ ItemEffectPointers: ; 4f713
 	dba ItemEffect_NoUse ; 11
 	dba ItemEffect_NoUse ; 12
 	dba ItemEffect_NoUse ; 13
-	dba Func_4f04d       ; 14
-	dba Func_4f139       ; 15
+	dba ItemEffect_Ticket       ; 14
+	dba ItemEffect_CaveUse       ; 15
 	dba ItemEffect_NoUse ; 16
 	dba ItemEffect_NoUse ; 17
 	dba ItemEffect_NoUse ; 18
@@ -979,29 +979,29 @@ ItemEffectPointers: ; 4f713
 	dba ItemEffect_NoUse ; 20
 	dba ItemEffect_NoUse ; 21
 	dba ItemEffect_NoUse ; 22
-	dba Func_4ef35       ; 23
-	dba Func_4ef35       ; 24
-	dba Func_4ef35       ; 25
-	dba Func_4ef35       ; 26
-	dba Func_4ef35       ; 27
-	dba Func_4ef35       ; 28
-	dba Func_4ef35       ; 29
-	dba Func_4f139       ; 2a
-	dba Func_4f139       ; 2b
-	dba Func_4f139       ; 2c
-	dba Func_4f139       ; 2d
-	dba Func_4f139       ; 2e
-	dba Func_4ef0b       ; 2f
-	dba Func_4ef0b       ; 30
-	dba Func_4ef0b       ; 31
-	dba Func_4ef0b       ; 32
-	dba Func_4ef0b       ; 33
-	dba Func_4ef0b       ; 34
-	dba Func_4ef0b       ; 35
-	dba Func_4ef0b       ; 36
-	dba Func_4ef0b       ; 37
-	dba Func_4ef0b       ; 38
-	dba Func_4ef0b       ; 39
+	dba ItemEffect_WaterUse       ; 23
+	dba ItemEffect_WaterUse       ; 24
+	dba ItemEffect_WaterUse       ; 25
+	dba ItemEffect_WaterUse       ; 26
+	dba ItemEffect_WaterUse       ; 27
+	dba ItemEffect_WaterUse       ; 28
+	dba ItemEffect_WaterUse       ; 29
+	dba ItemEffect_CaveUse       ; 2a
+	dba ItemEffect_CaveUse       ; 2b
+	dba ItemEffect_CaveUse       ; 2c
+	dba ItemEffect_CaveUse       ; 2d
+	dba ItemEffect_CaveUse       ; 2e
+	dba ItemEffect_PartyRestore       ; 2f
+	dba ItemEffect_PartyRestore       ; 30
+	dba ItemEffect_PartyRestore       ; 31
+	dba ItemEffect_PartyRestore       ; 32
+	dba ItemEffect_PartyRestore       ; 33
+	dba ItemEffect_PartyRestore       ; 34
+	dba ItemEffect_PartyRestore       ; 35
+	dba ItemEffect_PartyRestore       ; 36
+	dba ItemEffect_PartyRestore       ; 37
+	dba ItemEffect_PartyRestore       ; 38
+	dba ItemEffect_PartyRestore       ; 39
 	dba ItemEffect_NoUse ; 3a
 	dba ItemEffect_NoUse ; 3b
 	dba ItemEffect_NoUse ; 3c
@@ -1009,15 +1009,15 @@ ItemEffectPointers: ; 4f713
 	dba ItemEffect_NoUse ; 3e
 	dba ItemEffect_NoUse ; 3f
 	dba ItemEffect_NoUse ; 40
-	dba Func_4ef0b       ; 41
-	dba Func_4ef0b       ; 42
-	dba Func_4f591       ; 43
-	dba Func_4f591       ; 44
-	dba Func_4f591       ; 45
-	dba Func_4f591       ; 46
-	dba Func_4f591       ; 47
+	dba ItemEffect_PartyRestore       ; 41
+	dba ItemEffect_PartyRestore       ; 42
+	dba ItemEffect_DownloadRAM       ; 43
+	dba ItemEffect_DownloadRAM       ; 44
+	dba ItemEffect_DownloadRAM       ; 45
+	dba ItemEffect_DownloadRAM       ; 46
+	dba ItemEffect_DownloadRAM       ; 47
 	dba ItemEffect_NoUse ; 48
-	dba Func_4f139       ; 49
+	dba ItemEffect_CaveUse       ; 49
 	dba ItemEffect_Evolve ; 4a
 	dba ItemEffect_Evolve ; 4b
 	dba ItemEffect_NoUse ; 4c
