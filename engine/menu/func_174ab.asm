@@ -552,7 +552,7 @@ HandleMenu: ; 174ab (5:74ab)
 	or a
 	jp nz, .no_restore_window
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld hl, sp+$4
 	ld l, [hl]
 	push hl

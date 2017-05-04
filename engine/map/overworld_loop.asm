@@ -103,7 +103,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_51bf3
 	pop bc

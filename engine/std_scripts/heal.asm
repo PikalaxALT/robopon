@@ -29,7 +29,7 @@ Data_6f500:
 
 AskRepairRobots:: ; 6f512 (1b:7512)
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -64,7 +64,7 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	ld hl, $d
 	call BackUpAttrMapRectangle
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -81,11 +81,11 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	call Func_3ca1
 	pop bc
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	callba_hli Func_1482e
 	push hl
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -119,7 +119,7 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	call FarCall
 	callba_hli Func_9a84a
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -156,7 +156,7 @@ Func_6f66f: ; 6f66f (1b:766f)
 	call FarCall
 Func_6f685: ; 6f685 (1b:7685)
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14

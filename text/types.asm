@@ -34,7 +34,8 @@ Text_66eed:
 Text_66ef4:
 	db "ブート", $0, $0, $0, $0
 
-Text_66efb:
+
+TypeNames:
 	db "ノーマル", $0
 
 Text_66f00:
@@ -54,6 +55,7 @@ Text_66f14:
 
 Text_66f19:
 	db "こおり", $0, $0
+
 
 Text_66f1e:
 	db "せい", $0, $0, $0

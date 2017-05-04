@@ -6,7 +6,7 @@ DrawTextBoxAndOverworldText:: ; aa5d (2:6a5d)
 	add sp, -$44
 	push bc
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $d
 	push hl
 	ld c, $14
@@ -110,7 +110,7 @@ Func_ab15: ; ab15 (2:6b15)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	pop hl
 	pop de

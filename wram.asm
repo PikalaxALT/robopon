@@ -435,11 +435,11 @@ wLCD:: ds $3 ; c200
 	short wDecompressLiteralCopySize ; c22a
 	char wDecompresLiteralCopyOffsetHi ; c22c
 	ds $1
-	short wc22e ; c22e
-	char wc230 ; c230
-	char wc231 ; c231
-	char wc232 ; c232
-	char wc233 ; c233
+	short wBGMapTransferRowStart ; c22e
+	char wBGMapTransferColumnStart ; c230
+	char wCurBGMapHi ; c231
+	char wCurScreenX ; c232
+	char wCurScreenY ; c233
 	ds $1
 	char wPoncotPicAlignment ; c235
 	char wc236 ; c236
@@ -562,10 +562,10 @@ wVideoTransferQueue:: ; c239
 	char wc38d ; c38d
 	short wc38e ; c38e
 	char wc390 ; c390
-	long wc391 ; c391
+	long wGameTimer ; c391
 	char wc395 ; c395
 	array wc396, 4, 1, 1 ; c396
-	char wc39a ; c39a
+	char wEnableAttrMapTransfer ; c39a
 	char wc39b ; c39b
 	char wc39c ; c39c
 	char wc39d ; c39d
@@ -888,8 +888,7 @@ wSaveBlock1::
 	bitfield wSaveScratchEventFlags, 400 ; ca9d
 	array wSaveScratchc789, 100, 1, 1 ; cacf
 	array wcb33, 8, 1, 1 ; cb33
-	short wcb3b ; cb3b
-	short wcb3d ; cb3d
+	long wcb3b ; cb3b
 	array wcb3f, 5, 1, 2 ; cb3f
 	array wcb49, 5, 1, 2 ; cb49
 	short wcb53 ; cb53

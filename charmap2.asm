@@ -217,7 +217,7 @@
 	defchar "プ"
 	defchar "ペ"
 	defchar "ポ"
-	defchar "ェ"
+	defchar "ヴ"
 	defchar "c"
 	defchar "A"
 	defchar "B"

@@ -23,21 +23,21 @@ GetName:: ; 15ad6 (5:5ad6)
 	ld [wFarCallDestBank], a
 	ld a, c
 	cp $7
-	jp z, Func_15bae
+	jp z, .asm_15bae
 	cp $6
-	jp z, Func_15b9f
+	jp z, .getRobotName
 	cp $3
-	jp z, Func_15b86
+	jp z, .getPartyNickname
 	cp $4
-	jp z, Func_15b70
+	jp z, .getItemName
 	cp $2
-	jp z, Func_15b61
+	jp z, .asm_15b61
 	cp $5
-	jp z, Func_15b52
+	jp z, .asm_15b52
 	cp $1
-	jp z, Func_15b3b
+	jp z, .asm_15b3b
 	or a
-	jp nz, Func_15bcb
+	jp nz, .gotName
 	ld h, $0
 	ld e, l
 	ld d, h
@@ -49,9 +49,9 @@ GetName:: ; 15ad6 (5:5ad6)
 	ld de, Moves
 	add hl, de
 	write_hl_to_sp_plus $6e
-	jp Func_15bcb
+	jp .gotName
 
-Func_15b3b: ; 15b3b (5:5b3b)
+.asm_15b3b: ; 15b3b (5:5b3b)
 	ld h, $0
 	ld e, l
 	ld d, h
@@ -66,25 +66,25 @@ Func_15b3b: ; 15b3b (5:5b3b)
 	ld de, Data_64c90
 	add hl, de
 	write_hl_to_sp_plus $6e
-	jp Func_15bcb
+	jp .gotName
 
-Func_15b52: ; 15b52 (5:5b52)
+.asm_15b52: ; 15b52 (5:5b52)
 	ld e, l
 	ld hl, sp+$54
 	call Func_241f
 	ld hl, sp+$5d
 	write_hl_to_sp_plus $6e
-	jp Func_15bcb
+	jp .gotName
 
-Func_15b61: ; 15b61 (5:5b61)
+.asm_15b61: ; 15b61 (5:5b61)
 	ld e, l
 	ld hl, sp+$54
 	call Func_241f
 	ld hl, sp+$54
 	write_hl_to_sp_plus $6e
-	jp Func_15bcb
+	jp .gotName
 
-Func_15b70: ; 15b70 (5:5b70)
+.getItemName: ; 15b70 (5:5b70)
 	ld h, $0
 	ld e, l
 	ld d, h
@@ -98,24 +98,24 @@ Func_15b70: ; 15b70 (5:5b70)
 	ld de, ItemAttributes
 	add hl, de
 	write_hl_to_sp_plus $6e
-	jp Func_15bcb
+	jp .gotName
 
-Func_15b86: ; 15b86 (5:5b86)
+.getPartyNickname: ; 15b86 (5:5b86)
 	ld h, $0
 	get_party_bot
 	inc hl
 	write_hl_to_sp_plus $6e
-	jp Func_15bcb
+	jp .gotName
 
-Func_15b9f: ; 15b9f (5:5b9f)
+.getRobotName: ; 15b9f (5:5b9f)
 	ld e, l
 	ld hl, sp+$25
 	call GetRobotOrTrainerBaseStats
 	ld hl, sp+$32
 	write_hl_to_sp_plus $6e
-	jp Func_15bcb
+	jp .gotName
 
-Func_15bae: ; 15bae (5:5bae)
+.asm_15bae: ; 15bae (5:5bae)
 	push hl
 	set_farcall_addrs_hli Func_7dfc
 	pop hl
@@ -125,7 +125,7 @@ Func_15bae: ; 15bae (5:5bae)
 	call FarCall
 	ld hl, sp+$3
 	write_hl_to_sp_plus $6e
-Func_15bcb: ; 15bcb (5:5bcb)
+.gotName: ; 15bcb (5:5bcb)
 	pop bc
 	ld b, $0
 	read_hl_from_sp_plus $6c

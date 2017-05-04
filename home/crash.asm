@@ -56,7 +56,7 @@ Crash:: ; 1d00 (0:1d00)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	jp @ - 1 ; better luck next time
 

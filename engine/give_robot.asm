@@ -50,7 +50,7 @@ GiveRobot:: ; 31af1
 	; There is no room for the robot
 	push bc
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -63,10 +63,10 @@ GiveRobot:: ; 31af1
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -78,7 +78,7 @@ GiveRobot:: ; 31af1
 	ld hl, $10e
 	call FarCall
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $5
 	push hl
 	ld c, $14
@@ -92,7 +92,7 @@ GiveRobot:: ; 31af1
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	callba_hli Func_52d1f
 	pop bc

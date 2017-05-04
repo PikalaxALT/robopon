@@ -601,7 +601,7 @@ Func_5e993: ; 5e993 (17:6993)
 	ld e, [hl]
 	ld hl, sp+$4b
 	ld a, [hl]
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call NextOverworldFrame
 	call NextOverworldFrame

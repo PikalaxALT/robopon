@@ -896,7 +896,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	ld hl, $0
 	write_hl_to_sp_plus $31
 	ld a, $1
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -915,20 +915,20 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	call FarCall
 	push hl
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
@@ -4956,7 +4956,7 @@ Func_931ec: ; 931ec (24:71ec)
 	ld e, $e
 .asm_931f2
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	pop hl
 	jp Func_931a2
@@ -6978,7 +6978,7 @@ LandmarkSign: ; 9a1bb (26:61bb)
 	ld hl, -1
 	write_hl_to_sp_plus $41
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	call Func_9a377
 	call Func_9a391
 	ld hl, sp+$1
@@ -6996,7 +6996,7 @@ LandmarkSign: ; 9a1bb (26:61bb)
 	call DivideAbyB
 	push af
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	set_farcall_addrs_hli Func_da901
 	pop af
 	pop hl
@@ -7063,7 +7063,7 @@ Func_9a28c: ; 9a28c (26:628c)
 	push hl
 	add sp, -$3e
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	call Func_9a377
 	call Func_9a391
 	ld de, Data_9a36c
@@ -7184,7 +7184,7 @@ Func_9a391: ; 9a391 (26:6391)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ret
 
@@ -7808,7 +7808,7 @@ Func_9b403: ; 9b403 (26:7403)
 Func_9b44d: ; 9b44d (26:744d)
 	push de
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
@@ -7942,7 +7942,7 @@ Func_9b55e: ; 9b55e (26:755e)
 	ld hl, $0
 	call WriteHLToSPPlus10
 	ld a, $1
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -7961,20 +7961,20 @@ Func_9b55e: ; 9b55e (26:755e)
 	call FarCall
 	push hl
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
@@ -8038,7 +8038,7 @@ Func_9b668: ; 9b668 (26:7668)
 	ld hl, $0
 	call WriteHLToSPPlus10
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -8049,7 +8049,7 @@ Func_9b668: ; 9b668 (26:7668)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
@@ -14530,7 +14530,7 @@ Func_e1513:: ; e1513 (38:5513)
 	call FarCall
 	callba_hli FreeMonsterStruct
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -16412,7 +16412,7 @@ Func_e2a31:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ret
 

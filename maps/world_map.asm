@@ -579,7 +579,7 @@ Func_e243e: ; e243e (38:643e)
 	ld e, $0
 	push de
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	call Func_e2a24
 	xor a
 	ld [wc874], a
@@ -711,7 +711,7 @@ Func_e2536: ; e2536 (38:6536)
 	ld c, $a
 	ld e, $f
 	ld a, $a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call NextOverworldFrame
 	jp Func_e258f

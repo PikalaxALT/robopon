@@ -283,7 +283,7 @@ Func_80257_\1:
 
 Func_80275_\1:
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	callba_hli Func_14ca9
 	ret
 

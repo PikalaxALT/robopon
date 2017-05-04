@@ -11,7 +11,7 @@ Func_bc002: ; bc002 (2f:4002)
 	ret
 
 Func_bc00a:
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
 	ld hl, wc2cd
@@ -25,7 +25,7 @@ Func_bc029: ; bc029 (2f:4029)
 	call CheckButton
 	or a
 	jp z, Func_bc029
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
 	ld hl, wc2cd
@@ -40,7 +40,7 @@ Func_bc029: ; bc029 (2f:4029)
 	inc hl
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
 	ld hl, wc2cd
@@ -560,7 +560,7 @@ Func_bc392: ; bc392 (2f:4392)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call DebugMenu_WaitButton
 	call Func_bc14e
@@ -742,7 +742,7 @@ Func_bc4a6:
 	ld c, $14
 	ld e, $7
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	pop bc
@@ -2048,7 +2048,7 @@ Func_bce54:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	call FillVisibleAreaWithBlankTile
@@ -2551,7 +2551,7 @@ Func_bd18f: ; bd18f (2f:518f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	ret
@@ -2857,7 +2857,7 @@ Func_bd37b: ; bd37b (2f:537b)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	jp Func_bd37b
@@ -2970,7 +2970,7 @@ Func_bd4ab: ; bd4ab (2f:54ab)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	jp Func_bd424
@@ -3048,7 +3048,7 @@ Func_bd542:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	call Func_bc14e
@@ -3188,7 +3188,7 @@ Func_bd66d: ; bd66d (2f:566d)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	pop bc
@@ -3298,7 +3298,7 @@ Func_bd75c: ; bd75c (2f:575c)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	xor a
@@ -3328,7 +3328,7 @@ Func_bd7bd: ; bd7bd (2f:57bd)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	call Func_bc14e
@@ -3683,7 +3683,7 @@ Func_bd9ea: ; bd9ea (2f:59ea)
 	ld e, [hl]
 	ld hl, sp+$15
 	ld a, [hl]
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_60001
 	ld c, $0
@@ -4947,7 +4947,7 @@ Func_be1dc: ; be1dc (2f:61dc)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call Func_bc160
 	call Func_bc14e
@@ -5765,14 +5765,8 @@ Func_bebe5: ; bebe5 (2f:6be5)
 	ld e, $1
 	ld a, $1
 	call SetStringStartState
-	read_hl_from wc391 + 2
-	push hl
-	read_hl_from wc391
-	push hl
-	ld hl, 216840 / $10000
-	push hl
-	ld hl, 216840 % $10000
-	push hl
+	read_long_from_and_push wGameTimer
+	push_long 216840
 	call StackDivideLongSigned
 	ld hl, Data_bec5b
 	push hl
@@ -5783,19 +5777,10 @@ Func_bebe5: ; bebe5 (2f:6be5)
 	ld e, $3
 	ld a, $1
 	call SetStringStartState
-	read_hl_from wc391 + 2
-	push hl
-	read_hl_from wc391
-	push hl
-	ld hl, 3614 / $10000
-	push hl
-	ld hl, 3614 % $10000
-	push hl
+	read_long_from_and_push wGameTimer
+	push_long 3614
 	call StackDivideLongSigned
-	ld hl, $0
-	push hl
-	ld hl, $3c
-	push hl
+	push_long 60
 	call StackModulusLongSigned
 	ld hl, Data_bec5e
 	push hl
@@ -5808,7 +5793,7 @@ Func_bebe5: ; bebe5 (2f:6be5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call CheckButton
 	and $20
@@ -6106,7 +6091,7 @@ Func_beee0: ; beee0 (2f:6ee0)
 	add $2
 	call FarCall
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -6365,13 +6350,13 @@ Func_bf0cc: ; bf0cc (2f:70cc)
 	ld hl, $10
 	call FarCall
 	ld a, $1
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	pop hl
 	pop de
@@ -6864,7 +6849,7 @@ Func_bf47b: ; bf47b (2f:747b)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 Func_bf4d5: ; bf4d5 (2f:74d5)
 	jp Func_bf4d5
@@ -7052,7 +7037,7 @@ Func_bf5ba: ; bf5ba (2f:75ba)
 	ld de, wOAMBufferEnd
 	ld hl, sp+$61
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	pop de
 	pop af
 	push de
@@ -7103,7 +7088,7 @@ Func_bf5ba: ; bf5ba (2f:75ba)
 	call PlaceString
 	pop bc
 	pop bc
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	pop af
 	push af
 	ld l, a
@@ -7122,7 +7107,7 @@ Func_bf680: ; bf680 (2f:7680)
 	reg16swap de, hl
 	hlcoord 0, 0
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	pop af
 	ld l, a
 	ld h, $0

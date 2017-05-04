@@ -135,7 +135,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld hl, $0
 	push hl
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	call Func_bf05
 	call Func_bf12
 	pop hl
@@ -252,13 +252,13 @@ HandleMap: ; 90e9 (2:50e9)
 	pop bc
 .asm_92e3: ; 92e3 (2:52e3)
 	ld a, $1
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $3
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	jp .whileHoldingSelect
 

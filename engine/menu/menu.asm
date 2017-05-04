@@ -27,7 +27,7 @@ Func_1401b: ; 1401b
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ret
 
@@ -1483,7 +1483,7 @@ Func_14b24: ; 14b24
 
 Func_14b44:: ; 14b44
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -1556,7 +1556,7 @@ Func_14bc4: ; 14bc4 (5:4bc4)
 Func_14be6: ; 14be6 (5:4be6)
 	ld l, BANK(Data_543ff)
 	push hl
-	ld hl, Func_0300
+	ld hl, $300
 	push hl
 	ld hl, $ff03
 	push hl
@@ -1593,7 +1593,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	ld hl, $d
 	call RestoreAttrMapRectangle
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	call Func_1400e
 	pop hl
 	call FreeMemory
@@ -1696,7 +1696,7 @@ Func_14ca9:: ; 14ca9
 	pop bc
 	pop bc
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	pop de
 	push hl
 	push de
@@ -2022,7 +2022,7 @@ BagSubmenu: ; 14f0e
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ld hl, $64
 	call AllocateMemory
@@ -2176,7 +2176,7 @@ Func_15001: ; 15001 (5:5001)
 	push af
 	call Func_1503d
 	ld a, $1
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	pop af
 	pop bc
 	ld l, a
@@ -2185,7 +2185,7 @@ Func_15001: ; 15001 (5:5001)
 	ld e, [hl]
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -2575,7 +2575,7 @@ Func_15281: ; 15281
 Func_15297: ; 15297
 	push hl
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	call Func_14001
 	call Func_1400e
 	pop bc

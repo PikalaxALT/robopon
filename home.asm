@@ -1040,9 +1040,9 @@ NewSaveFileInWRam:: ; 1db9
 	ld hl, wc347
 	call FillMemory
 	ld hl, $0
-	write_hl_to wc391
+	write_hl_to wGameTimer
 	ld hl, $0
-	write_hl_to wc391 + 2
+	write_hl_to wGameTimer + 2
 	ld bc, $5
 	ld e, $0
 	ld hl, wPlayerName
@@ -1057,7 +1057,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	call FarCall
 	call NewSaveFileInWRam
 	xor a
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	xor a
 	ld [wVBlankTransferFlags], a
 	xor a
@@ -1671,7 +1671,7 @@ Func_241f:: ; 241f
 	ld sp, hl
 	ret
 
-Func_248f:: ; 248f
+GetMove:: ; 248f
 ; Loads 17 bytes from Moves[e] to sp+$0
 	push hl
 	push de
@@ -1963,10 +1963,7 @@ Func_2653:: ; 2653 (0:2653)
 .asm_265e
 	push bc
 	push hl
-	ld hl, $1
-	push hl
-	ld hl, $0
-	push hl
+	push_long $10000
 	call MultiplyLongsFromStack
 	ld hl, sp+$8
 	call PutLongFromStackToHL
@@ -2012,10 +2009,7 @@ Func_26a4:: ; 26a4 (0:26a4)
 	push af
 	ld hl, sp+$2
 	call PutLongFromHLOnStack
-	ld hl, $0
-	push hl
-	ld hl, $ff
-	push hl
+	push_long $ff
 	call BitwiseAndLongsFromStack
 	pop bc
 	pop af
@@ -2092,10 +2086,7 @@ Func_270a:: ; 270a
 	push bc
 	push de
 	push hl
-	ld hl, $0
-	push hl
-	ld hl, $0
-	push hl
+	push_long 0
 	ld hl, sp+$a
 	call PutLongFromStackToHL
 	ld hl, $0
@@ -2181,18 +2172,12 @@ AdjustMoney:: ; 277c
 	call PutLongFromHLOnStack
 	ld hl, sp+$c
 	call AddLongs
-	ld hl, 999995 >> 16
-	push hl
-	ld hl, 999995 & $ffff
-	push hl
+	push_long 999995
 	ld hl, sp+$c
 	call PutLongFromHLOnStack
 	call CompareStackLongs_Signed
 	jp nc, Func_27c0
-	ld hl, 999995 >> 16
-	push hl
-	ld hl, 999995 & $ffff
-	push hl
+	push_long 999995
 	ld hl, sp+$c
 	call PutLongFromStackToHL
 	jp Func_27e0
@@ -2200,16 +2185,10 @@ AdjustMoney:: ; 277c
 Func_27c0:: ; 27c0 (0:27c0)
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
-	ld hl, $0
-	push hl
-	ld hl, $0
-	push hl
+	push_long 0
 	call CompareStackLongs_Signed
 	jp nc, Func_27e0
-	ld hl, $0
-	push hl
-	ld hl, $0
-	push hl
+	push_long 0
 	ld hl, sp+$c
 	call PutLongFromStackToHL
 Func_27e0:: ; 27e0 (0:27e0)
@@ -2384,7 +2363,7 @@ Func_2887:: ; 2887 (0:2887)
 	ld h, a
 	call RestoreAttrMapRectangle
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld hl, sp+$4
 	ld l, [hl]
 	push hl
@@ -2512,7 +2491,7 @@ Func_29a6:: ; 29a6 (0:29a6)
 Func_29cb:: ; 29cb (0:29cb)
 	push de
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	set_farcall_addrs_hli Func_c7109
 	pop de
 	push de
@@ -2586,23 +2565,14 @@ Func_2a3e:: ; 2a3e
 	jp Func_2951
 
 Func_2a49:: ; 2a49 (0:2a49)
-	ld hl, $676
-	push hl
-	ld hl, $5ba0
-	push hl
-	ld hl, $0
-	push hl
-	ld hl, $1
-	push hl
-	ld hl, wc391
+	push_long 108420000 ; 500 hours
+	push_long         1
+	ld hl, wGameTimer
 	call AddLongs
 	call PutLongFromHLOnStack
 	call CompareStackLongs_Signed
 	jp nc, Func_2a78
-	ld hl, $5ba0
-	write_hl_to wc391
-	ld hl, $676
-	write_hl_to wc391 + 2
+	write_long_to wGameTimer, 108420000
 Func_2a78:: ; 2a78 (0:2a78)
 	ret
 
@@ -3903,10 +3873,7 @@ PrintNum:: ; 3992 (0:3992)
 	push hl
 	ld hl, sp+$6
 	call PutLongFromHLOnStack
-	ld hl, 0 >> 16
-	push hl
-	ld hl, 0 & $ffff
-	push hl
+	push_long 0
 	call CompareStackLongs_Signed
 	jp nc, .nonnegative
 	ld a, $1
@@ -3927,10 +3894,7 @@ PrintNum:: ; 3992 (0:3992)
 .loop
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
-	ld hl, 10 >> 16
-	push hl
-	ld hl, 10 & $ffff
-	push hl
+	push_long 10
 	call StackModulusLongSigned
 	pop hl
 	pop af
@@ -3942,19 +3906,13 @@ PrintNum:: ; 3992 (0:3992)
 	call WriteHLToSPPlus6
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
-	ld hl, 10 >> 16
-	push hl
-	ld hl, 10 & $ffff
-	push hl
+	push_long 10
 	call StackDivideLongSigned
 	ld hl, sp+$c
 	call PutLongFromStackToHL
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
-	ld hl, 0 >> 16
-	push hl
-	ld hl, 0 & $ffff
-	push hl
+	push_long 0
 	call CompareStackLongs
 	jp nz, .loop
 	pop af
@@ -4104,7 +4062,7 @@ FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	hlcoord 0, 0, wAttrMap
 	call FillMemory
 	ld a, $2
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 .not_cgb
 	ld l, $12
 	push hl
@@ -4142,7 +4100,7 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld [hl], a
 	ld hl, sp+$0
 	ld [hl], $2
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	ld hl, sp+$4
 	ld c, [hl]
 	ld hl, sp+$7
@@ -4180,7 +4138,7 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, Func_3bc0
-	ld a, [wc39a]
+	ld a, [wEnableAttrMapTransfer]
 	or a
 	jp z, Func_3bc0
 	ld a, [rVBK]
@@ -4191,7 +4149,7 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	add $12
 	ld hl, sp+$4
 	ld [hl], a
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	ld hl, sp+$4
 	ld c, [hl]
 	ld hl, sp+$7
@@ -4229,9 +4187,9 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
-	ld a, [wc39a]
+	ld a, [wEnableAttrMapTransfer]
 	dec a
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 Func_3bc0:: ; 3bc0 (0:3bc0)
 	pop bc
 	pop bc
@@ -4239,7 +4197,7 @@ Func_3bc0:: ; 3bc0 (0:3bc0)
 	pop bc
 	ret
 
-Func_3bc5:: ; 3bc5 (0:3bc5)
+PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	push af
 	push de
 	push bc
@@ -4258,7 +4216,7 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 .wait_transfer
 	ld [hl], a
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	ld hl, sp+$4
 	ld c, [hl]
 	ld hl, sp+$7
@@ -4296,7 +4254,7 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	ld a, [wSystemType]
 	cp $11
 	jp nz, .skip_vbank1
-	ld a, [wc39a]
+	ld a, [wEnableAttrMapTransfer]
 	or a
 	jp z, .skip_vbank1
 	ld a, [rVBK]
@@ -4307,7 +4265,7 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	add $12
 	ld hl, sp+$4
 	ld [hl], a
-	set_farcall_addrs_hli Func_62a3
+	set_farcall_addrs_hli PushBGMapRegion_
 	ld hl, sp+$4
 	ld c, [hl]
 	ld hl, sp+$7
@@ -4345,9 +4303,9 @@ Func_3bc5:: ; 3bc5 (0:3bc5)
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
-	ld a, [wc39a]
+	ld a, [wEnableAttrMapTransfer]
 	dec a
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 .skip_vbank1
 	ld a, [wc2cd]
 	or a
@@ -4372,7 +4330,7 @@ Func_3ca1:: ; 3ca1 (0:3ca1)
 	ld hl, sp+$8
 	ld l, [hl]
 	push hl
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	pop af
 	pop de
@@ -4380,7 +4338,7 @@ Func_3ca1:: ; 3ca1 (0:3ca1)
 	ld hl, sp+$2
 	ld l, [hl]
 	push hl
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ret
 

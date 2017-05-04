@@ -285,3 +285,24 @@ ENDC
 	ld de, wSaveScratchParty
 	add hl, de
 	ENDM
+
+push_long: MACRO
+	ld hl, \1 / $10000
+	push hl
+	ld hl, \1 % $10000
+	push hl
+	ENDM
+
+write_long_to: MACRO
+	ld hl, \2 % $10000
+	write_hl_to \1
+	ld hl, \2 / $10000
+	write_hl_to \1 + 2
+	ENDM
+
+read_long_from_and_push: MACRO
+	read_hl_from \1 + 2
+	push hl
+	read_hl_from \1
+	push hl
+	ENDM

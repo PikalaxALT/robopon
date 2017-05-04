@@ -1202,7 +1202,7 @@ Func_5360d: ; 5360d (14:760d)
 	ld c, $4
 	ld e, $1
 	ld a, $7
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -1424,7 +1424,7 @@ Func_53771: ; 53771 (14:7771)
 	ld c, $5
 	ld e, $9
 	ld a, $7
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc

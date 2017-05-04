@@ -9,7 +9,7 @@ SaveGame: ; 56d9b (15:6d9b)
 	add hl, sp
 	ld sp, hl
 	ld a, $3
-	ld [wc39a], a
+	ld [wEnableAttrMapTransfer], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -133,20 +133,20 @@ SaveGame: ; 56d9b (15:6d9b)
 	call CopyFromDEtoHL
 	ld bc, $32
 	ld de, wEventFlags
-	ld hl, wSaveBlock1 + $11d
+	ld hl, wSaveScratchEventFlags
 	call CopyFromDEtoHL
 	ld bc, $64
 	ld de, wc789
-	ld hl, wSaveBlock1 + $14f
+	ld hl, wSaveScratchc789
 	call CopyFromDEtoHL
 	ld bc, $3c
 	ld de, wc347
-	ld hl, wSaveBlock1 + $1d8
+	ld hl, wSaveScratchc347
 	call CopyFromDEtoHL
-	read_hl_from wc391
-	write_hl_to wSaveBlock1 + $1bb
-	read_hl_from wc391 + 2
-	write_hl_to wSaveBlock1 + $1bd
+	read_hl_from wGameTimer
+	write_hl_to wcb3b
+	read_hl_from wGameTimer + 2
+	write_hl_to wcb3b + 2
 	ld de, wPlayerName
 	ld hl, wSaveScratchPlayerName
 	call CopyUntilNull
@@ -309,9 +309,9 @@ LoadGame: ; 56fc2 (15:6fc2)
 	ld hl, wc347
 	call CopyFromDEtoHL
 	read_hl_from wSaveBlock1 + $1bb
-	write_hl_to wc391
+	write_hl_to wGameTimer
 	read_hl_from wSaveBlock1 + $1bd
-	write_hl_to wc391 + 2
+	write_hl_to wGameTimer + 2
 	ld de, wSaveScratchPlayerName
 	ld hl, wPlayerName
 	call CopyUntilNull

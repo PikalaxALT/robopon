@@ -234,7 +234,7 @@ PrintMapText:: ; 60621
 	ld e, a
 	ld a, [wStringDestX]
 	dec a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	ld l, $2
 	push hl
@@ -245,7 +245,7 @@ PrintMapText:: ; 60621
 	ld e, a
 	ld a, [wStringDestX]
 	dec a
-	call Func_3bc5
+	call PushBGMapRegion
 	pop bc
 	call CheckButton
 	and $30

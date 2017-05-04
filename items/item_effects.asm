@@ -107,7 +107,7 @@ ItemEffect_WaterUse: ; 4ef35
 	ld de, Pointers_4ef28
 	ld hl, $110
 	call FarCall
-	set_farcall_addrs_hli Func_5a149
+	set_farcall_addrs_hli AdjustItemQuantity
 	ld c, $1
 	ld e, $1
 	ld hl, sp+$1f
@@ -230,7 +230,7 @@ Func_4f076: ; 4f076 (13:7076)
 	ld a, [hl]
 	cp $13
 	jp z, Func_4f10b
-	set_farcall_addrs_hli Func_5a149
+	set_farcall_addrs_hli AdjustItemQuantity
 	ld c, $1
 	ld e, $1
 	ld hl, sp+$1f
@@ -672,7 +672,7 @@ Func_4f437: ; 4f437 (13:7437)
 	ld de, Pointers_4f12c
 	ld hl, $110
 	call FarCall
-	set_farcall_addrs_hli Func_5a149
+	set_farcall_addrs_hli AdjustItemQuantity
 	ld c, $1
 	ld e, $1
 	ld hl, sp+$21
@@ -929,7 +929,7 @@ ItemEffects_SelectPartyMember: ; 4f6dc (13:76dc)
 	ld a, l
 	cp $ff
 	jp z, .did_not_select_party_member
-	set_farcall_addrs_hli Func_5a149
+	set_farcall_addrs_hli AdjustItemQuantity
 	ld c, $1
 	ld e, $1
 	ld a, [wCurItem]
