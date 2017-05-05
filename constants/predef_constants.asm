@@ -101,7 +101,7 @@ const_value = $4b
 	predef_const AddShortsPredef
 	predef_const SubtractShortsPredef
 	predef_const MultiplySignedShortPredef
-	predef_const DivideSignedShortAndOutputToC3B0Predef
+	predef_const DivideSignedShortPredef
 	predef_const NegateShortPredef
 	predef_const AbsoluteValueShortPredef
 	predef_const SeedRNGPredef

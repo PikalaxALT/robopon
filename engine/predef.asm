@@ -1170,7 +1170,7 @@ asm_788af
 	ld d, $0
 	ld hl, $1e
 	push hl
-	predef DivideSignedShortAndOutputToC3B0Predef
+	predef DivideSignedShortPredef
 	pop de
 	predef MultiplySignedShortPredef
 	ld a, l
@@ -6302,7 +6302,7 @@ Pointers_7c000:: ; 7c000
 	dw AddShortsPredef
 	dw SubtractShortsPredef
 	dw MultiplySignedShortPredef
-	dw DivideSignedShortAndOutputToC3B0Predef
+	dw DivideSignedShortPredef
 	dw NegateShortPredef
 	dw AbsoluteValueShortPredef
 	dw SeedRNGPredef
@@ -8061,7 +8061,7 @@ Func_7caa0:: ; 7caa0 (1f:4aa0)
 	inc hl
 	ld d, [hl]
 	ld hl, $a
-	predef DivideSignedShortAndOutputToC3B0Predef
+	predef DivideSignedShortPredef
 	ld de, $a
 	predef MultiplySignedShortPredef
 	ld e, l
@@ -9219,8 +9219,8 @@ MultiplySignedShortPredef:: ; 7d2e7 (1f:52e7)
 	jr nz, .loop
 	jr predefMath_fixSign
 
-DivideSignedShortAndOutputToC3B0Predef:: ; 7d322 (1f:5322)
-	call DivideSignedShortPredef
+DivideSignedShortPredef:: ; 7d322 (1f:5322)
+	call DivideSignedShortPredef_
 	ld a, e
 	ld [wc3b0], a
 	ld a, d
@@ -9254,7 +9254,7 @@ DivideShortPredef:: ; 7d32e (1f:532e)
 	jr nz, .asm_7d335
 	ret
 
-DivideSignedShortPredef:: ; 7d34e (1f:534e)
+DivideSignedShortPredef_:: ; 7d34e (1f:534e)
 	ld a, h
 	or l
 	jr nz, .asm_7d356
@@ -12621,7 +12621,7 @@ Func_7e4aa:: ; 7e4aa (1f:64aa)
 	adc $0
 	ld d, a
 	ld hl, $7
-	call DivideSignedShortPredef
+	call DivideSignedShortPredef_
 	pop hl
 	ld l, e
 	pop de

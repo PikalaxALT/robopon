@@ -781,7 +781,7 @@ Func_4f58e: ; 4f58e (13:758e)
 	add sp, $20
 	ret
 
-ItemEffect_DownloadRAM: ; 4f591
+ItemEffect_StatUp: ; 4f591
 	push af
 	call ItemEffects_AskSelectPartyMember
 	ld hl, sp+$1
@@ -796,9 +796,9 @@ ItemEffect_DownloadRAM: ; 4f591
 	ld hl, sp+$1
 	ld a, [hl]
 	inc a
-	cp $47
+	cp ENERGY_MEMORY
 	jp z, Func_4f5dc
-	cp $46
+	cp LIFE_MEMORY
 	jp nz, Func_4f5f8
 	set_farcall_addrs_hli RandomRange
 	ld a, $6
@@ -826,11 +826,11 @@ Func_4f5f8: ; 4f5f8 (13:75f8)
 	ld hl, sp+$1
 	ld a, [hl]
 	inc a
-	cp $45
+	cp SPEED_MEMORY
 	jp z, Func_4f613
-	cp $44
+	cp SHIELD_MEMORY
 	jp z, Func_4f613
-	cp $43
+	cp ATTACK_MEMORY
 	jp nz, Func_4f655
 Func_4f613: ; 4f613 (13:7613)
 	set_farcall_addrs_hli RandomRange
@@ -1011,11 +1011,11 @@ ItemEffectPointers: ; 4f713
 	dba ItemEffect_NoUse ; 40
 	dba ItemEffect_PartyRestore       ; 41
 	dba ItemEffect_PartyRestore       ; 42
-	dba ItemEffect_DownloadRAM       ; 43
-	dba ItemEffect_DownloadRAM       ; 44
-	dba ItemEffect_DownloadRAM       ; 45
-	dba ItemEffect_DownloadRAM       ; 46
-	dba ItemEffect_DownloadRAM       ; 47
+	dba ItemEffect_StatUp       ; 43
+	dba ItemEffect_StatUp       ; 44
+	dba ItemEffect_StatUp       ; 45
+	dba ItemEffect_StatUp       ; 46
+	dba ItemEffect_StatUp       ; 47
 	dba ItemEffect_NoUse ; 48
 	dba ItemEffect_CaveUse       ; 49
 	dba ItemEffect_Evolve ; 4a
