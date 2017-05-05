@@ -4,6 +4,11 @@ INCLUDE "macros/wram.asm"
 INCLUDE "macros/map.asm"
 INCLUDE "macros/event.asm"
 
+check_cgb: MACRO
+	ld a, [wSystemType]
+	cp SYSID_CGB
+	ENDM
+
 tree_text_pointer: MACRO
 \2_Pointer::
 	dw (BANK(\2) - BANK(\1)) << 14 | (\2 & $3fff)

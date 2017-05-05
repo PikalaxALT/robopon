@@ -233,8 +233,7 @@ Func_e15d: ; e15d (3:615d)
 	ld e, $8f
 	hlbgcoord 0, 0
 	call FillMemory
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_e20d
 	ld a, [rVBK]
 	or $1

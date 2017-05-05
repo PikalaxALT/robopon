@@ -4031,7 +4031,7 @@ SetStringStartState:: ; 3a83 (0:3a83)
 	ld e, a
 	ld d, $0
 	add hl, de
-	write_hl_to $c261
+	write_hl_to wStringStartTilemapAddress
 	ret
 
 FillVisibleAreaWithBlankTile:: ; 3aa8 (0:3aa8)
@@ -4054,8 +4054,7 @@ FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	call FillMemory
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, .not_cgb
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	ld e, $0
@@ -4135,8 +4134,7 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld h, a
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_3bc0
 	ld a, [wEnableAttrMapTransfer]
 	or a
@@ -4251,8 +4249,7 @@ PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	ld h, a
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, .skip_vbank1
 	ld a, [wEnableAttrMapTransfer]
 	or a

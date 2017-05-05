@@ -1,52 +1,51 @@
-
 LCDInterrupt::
 	push af
 	push bc
-	ld a, [wc2e1]
+	ld a, [wHBlankMode]
 	or a
-	jr nz, .asm_11ab
+	jr nz, .mode1
 	ld a, [rLYC]
 	ld c, a
-	ld a, [wc2e2]
+	ld a, [wHBlankLYCPrimary]
 	cp c
-	jr nz, .asm_119d
+	jr nz, .mode0_primary
 	ld a, [rLCDC]
 	set 1, a
 	ld [rLCDC], a
-	ld a, [wc2e3]
+	ld a, [wHBlankLYCAlternate]
 	ld [rLYC], a
 	pop bc
 	pop af
 	reti
 
-.asm_119d
+.mode0_primary
 	ld a, [rLCDC]
 	res 1, a
 	ld [rLCDC], a
-	ld a, [wc2e2]
+	ld a, [wHBlankLYCPrimary]
 	ld [rLYC], a
 	pop bc
 	pop af
 	reti
 
-.asm_11ab
+.mode1
 	ld a, [rLYC]
 	ld c, a
-	ld a, [wc2e2]
+	ld a, [wHBlankLYCPrimary]
 	cp c
-	jr nz, .asm_11c1
-	ld a, [wc2e4]
+	jr nz, .mode1_primary
+	ld a, [wHBlankSCXAlternate]
 	ld [rSCX], a
-	ld a, [wc2e3]
+	ld a, [wHBlankLYCAlternate]
 	ld [rLYC], a
 	pop bc
 	pop af
 	reti
 
-.asm_11c1
-	ld a, [wc2e5]
+.mode1_primary
+	ld a, [wHBlankSCXPrimary]
 	ld [rSCX], a
-	ld a, [wc2e2]
+	ld a, [wHBlankLYCPrimary]
 	ld [rLYC], a
 	pop bc
 	pop af

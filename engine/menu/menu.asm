@@ -315,7 +315,7 @@ Func_14294: ; 14294 (5:4294)
 	ld de, $fa
 	call CompareHLtoDE
 	jp nc, Func_142bb
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	add hl, bc
 	ld a, [hl]
 	or a
@@ -345,7 +345,7 @@ Func_142c8: ; 142c8 (5:42c8)
 	ld de, $dc
 	call CompareHLtoDE
 	jp nc, Func_142ef
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	add hl, bc
 	ld a, [hl]
 	or a
@@ -849,8 +849,7 @@ Func_14675: ; 14675 (5:4675)
 	ld e, $8f
 	hlbgcoord 0, 0
 	call FillMemory
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_146b5
 	ld a, [rVBK]
 	or $1
@@ -874,8 +873,7 @@ Func_146b5: ; 146b5 (5:46b5)
 	xor a
 	call Func_3ca1
 	pop bc
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_14703
 	set_farcall_addrs_hli Func_613fc
 	ld e, $0

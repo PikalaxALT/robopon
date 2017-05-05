@@ -166,7 +166,7 @@ Func_5a251: ; 5a251 (16:6251)
 	ld a, [hl]
 	ld [wSaveScratchca6c], a
 	xor a
-	ld [$ca57], a
+	ld [wSaveScratchBagItems + 19], a
 	ld hl, sp+$3
 	ld a, [hl]
 	call GetSRAMBank
@@ -305,7 +305,7 @@ Func_5a2d1: ; 5a2d1 (16:62d1)
 	call CopyFromDEtoHL
 Func_5a329: ; 5a329 (16:6329)
 	xor a
-	ld [$cc32], a
+	ld [wWarehouseItemQuantities + $9e], a
 	ld hl, sp+$3
 	ld a, [hl]
 	call GetSRAMBank

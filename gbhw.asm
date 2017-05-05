@@ -16,7 +16,7 @@ CART_IR_ON        EQU $e
 
 NUM_SRAM_BANKS EQU 4
 
-
+SYSID_CGB EQU $11
 
 ; interrupt flags
 VBLANK   EQU 0

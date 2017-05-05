@@ -6350,7 +6350,7 @@ Func_93be9: ; 93be9 (24:7be9)
 	ret
 
 Func_93bee: ; 93bee (24:7bee)
-	ld hl, wc770
+	ld hl, wLCDInterrupt2
 	ld b, $e0
 	xor a
 .asm_93bf4
@@ -6360,7 +6360,7 @@ Func_93bee: ; 93bee (24:7bee)
 	ld hl, wMapMusic + 4
 	ld a, $8
 	ld [hl], a
-	ld hl, wc770
+	ld hl, wLCDInterrupt2
 	ld c, $20
 	ld b, $e0
 	predef Func_7e497
@@ -13944,8 +13944,7 @@ Func_da7b2: ; da7b2 (36:67b2)
 	pop de
 	call Func_d9f7e
 Func_da803: ; da803 (36:6803)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_da82e
 	ld hl, sp+$7
 	ld a, [hl]
@@ -13990,8 +13989,7 @@ UpdateCurSprite:: ; da839 (36:6839)
 	pop bc
 	add b
 	ld b, a
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jr z, .asm_da853
 	ld c, $10
 	jr .asm_da859
@@ -14065,8 +14063,7 @@ Func_da89f: ; da89f (36:689f)
 	pop bc
 	add b
 	ld b, a
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jr z, .asm_da8b0
 	ld c, $30
 	jr .asm_da8b6
@@ -14538,8 +14535,7 @@ Func_e1513:: ; e1513 (38:5513)
 	xor a
 	call Func_3ca1
 	pop bc
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp z, Func_e164a
 	callba_hli Func_b65f
 Func_e164a: ; e164a (38:564a)

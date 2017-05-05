@@ -29,8 +29,7 @@ OverworldLoop: ; 81cf (2:41cf)
 ; c: 1 if continuing from a previous save
 	push bc
 	push bc
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, .not_cgb
 	set_farcall_addrs_hli MapFadeInCGB
 	ld e, $0

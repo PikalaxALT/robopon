@@ -463,8 +463,9 @@ wVideoTransferQueue:: ; c239
 ; 00: katakana
 ; ff: hiragana
 
-	ds $d
+	ds $b
 
+	short wStringStartTilemapAddress ; c261
 	char wc263 ; c263
 	char wNumSpritesLoaded ; c264
 	short wc265 ; c265
@@ -489,11 +490,16 @@ wVideoTransferQueue:: ; c239
 	short wMemoryAllocationNumBlocks ; c2dc
 	short wMemoryAllocationPointer ; c2de
 	char wMemoryAllocationMode ; c2e0
-	char wc2e1 ; c2e1
-	char wc2e2 ; c2e2
-	char wc2e3 ; c2e3
-	char wc2e4 ; c2e4
-	char wc2e5 ; c2e5
+
+	; hblank interrupt
+	; mode 0: toggle bg display alternately
+	; mode 1: toggle horizontal shaking
+	char wHBlankMode ; c2e1
+	char wHBlankLYCPrimary ; c2e2
+	char wHBlankLYCAlternate ; c2e3
+	char wHBlankSCXAlternate ; c2e4
+	char wHBlankSCXPrimary ; c2e5
+
 	short wCurRobotPointer ; c2e6
 	char wc2e8 ; c2e8
 	char wc2e9 ; c2e9
@@ -655,7 +661,7 @@ SECTION "Tile Map", WRAM0 [$c4a0]
 	array wAttrMap, SCREEN_WIDTH, SCREEN_HEIGHT, 1
 
 SECTION "Overworld RAM", WRAM0 [$c770]
-wc770:: ; c770
+wLCDInterrupt2:: ; c770
 	ds $2
 
 	char wNumPeopleLoaded ; c772

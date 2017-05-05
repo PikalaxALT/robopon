@@ -93,8 +93,7 @@ LoadMapTiles: ; 898a (2:498a)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jr nz, .load_tile_cgb
 	ld a, BANK(MapTiles_CGB)
 	jr .got_bank

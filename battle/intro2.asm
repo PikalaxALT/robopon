@@ -144,8 +144,7 @@ Func_d8cd: ; d8cd (3:58cd)
 	ld de, $1311
 	ld hl, $0
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_d932
 	call WaitVideoTransfer
 	ld a, [rVBK]

@@ -1593,7 +1593,7 @@ Func_6a77: ; 6a77
 	ld bc, $10
 	call RequestVideoData
 	xor a
-	ld [wc2e2], a
+	ld [wHBlankLYCPrimary], a
 	ld a, [wLCDC]
 	res 2, a
 	call Func_6183
@@ -1663,7 +1663,7 @@ Func_6a77: ; 6a77
 	ld [wNextVBlankFlags], a
 	call Func_6294
 	ld a, $28
-	ld [wc2e2], a
+	ld [wHBlankLYCPrimary], a
 	ld a, [wLCDC]
 	set 2, a
 	jp Func_6183
@@ -3798,8 +3798,7 @@ Func_7c8a:: ; 7c8a
 Func_7cac: ; 7cac (1:7cac)
 	ld l, $0
 Func_7cae: ; 7cae (1:7cae)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_7cc4
 	ld b, l
 	pop hl
@@ -4442,8 +4441,7 @@ Func_8b33: ; 8b33 (2:4b33)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_8b7e
 	push bc
 	ld a, BANK(MapTiles_CGB)
@@ -4617,8 +4615,7 @@ Func_8c8c: ; 8c8c (2:4c8c)
 	ld a, [wPlayerFacing]
 	call UpdatePlayerSprite
 Func_8c94: ; 8c94 (2:4c94)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp z, Func_8cc1
 	set_farcall_addrs_hli Func_c7bd0
 	ld a, [wc867]
@@ -4955,8 +4952,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	jp .loop
 
 .check_attr
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, .skip_attr
 	ld a, [rVBK]
 	or $1
@@ -6003,8 +5999,7 @@ Data_b609: ; b609
 
 Func_b60d: ; b60d (2:760d)
 	push af
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_b646
 	ld hl, sp+$1
 	ld a, [hl]
@@ -6041,8 +6036,7 @@ Func_b65d: ; b65d (2:765d)
 	ret
 
 Func_b65f:: ; b65f (2:765f)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_b67c
 	set_farcall_addrs_hli MapFadeInCGB
 	ld e, $0
@@ -6115,8 +6109,7 @@ Func_b6f1: ; b6f1 (2:76f1)
 	ret
 
 Func_b6f2:: ; b6f2 (2:76f2)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_b70f
 	set_farcall_addrs_hli MapFadeOutCGB
 	ld e, $0
@@ -7463,8 +7456,7 @@ Func_ca78: ; ca78 (3:4a78)
 	ld a, e
 	add $2
 	ld e, a
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_cb00
 	push de
 	set_farcall_addrs_hli Func_667d
@@ -7549,7 +7541,7 @@ Func_cda9: ; cda9
 	call DisableHBlank
 	xor a
 	ld [rSCX], a
-	ld [wc2e4], a
+	ld [wHBlankSCXAlternate], a
 	ld a, [wLCDC]
 	ld [rLCDC], a
 	ld a, [wNextVBlankFlags]
@@ -7570,8 +7562,7 @@ Func_cdc0: ; cdc0 (3:4dc0)
 	ld de, $1f0c
 	ld hl, $5
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_ce13
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -7674,7 +7665,7 @@ Func_cea1: ; cea1 (3:4ea1)
 
 Func_ced9: ; ced9
 	ld a, [wBlinkerOffTile]
-	ld [wc2e4], a
+	ld [wHBlankSCXAlternate], a
 	ret
 
 Data_cee0: ; cee0
@@ -7749,7 +7740,7 @@ Func_cf49: ; cf49 (3:4f49)
 	ld [wVBlankCallbackRAMBank], a
 	ld hl, Func_ced9
 	write_hl_to wVBlankCallbackAddress
-	ld a, [wc2e4]
+	ld a, [wHBlankSCXAlternate]
 	ld [wBlinkerOffTile], a
 	ld a, [wNextVBlankFlags]
 	or $80
@@ -7866,15 +7857,15 @@ Func_d030: ; d030
 	ld hl, $a0
 	call WriteHLToSPPlus4
 	ld a, $1
-	ld [wc2e1], a
+	ld [wHBlankMode], a
 	ld a, $27
-	ld [wc2e2], a
+	ld [wHBlankLYCPrimary], a
 	ld a, $67
-	ld [wc2e3], a
+	ld [wHBlankLYCAlternate], a
 	xor a
-	ld [wc2e4], a
+	ld [wHBlankSCXAlternate], a
 	xor a
-	ld [wc2e4 + 1], a
+	ld [wHBlankSCXAlternate + 1], a
 	ld a, [wLCDC]
 	or $6
 	ld [wLCDC], a
@@ -8992,11 +8983,11 @@ Func_dc2c: ; dc2c (3:5c2c)
 	ld a, $28
 	ld [rLYC], a
 	xor a
-	ld [wc2e1], a
+	ld [wHBlankMode], a
 	ld a, $28
-	ld [wc2e2], a
+	ld [wHBlankLYCPrimary], a
 	ld a, $69
-	ld [wc2e3], a
+	ld [wHBlankLYCAlternate], a
 	call EnableHBlank
 	call DelayFrames_NoHalt
 	call WaitVideoTransfer
@@ -9355,8 +9346,7 @@ Data_df24: ; df24
 Func_df28: ; df28
 	push af
 	ld c, $0
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp z, Func_df8b
 	xor a
 Func_df34: ; df34 (3:5f34)
@@ -9682,3009 +9672,7 @@ Func_e39a: ; e39a
 	pop bc
 	ret
 
-Func_e3bd: ; e3bd
-	push hl
-	ld a, $2
-	ld [wEnableAttrMapTransfer], a
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3ca1
-	pop bc
-	pop hl
-	ret
-
-Func_e3d1: ; e3d1
-	push hl
-	push bc
-	call GetHLAtSPPlus4
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus4
-	push af
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	ld hl, sp+$3
-	ld [hl], a
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	ld hl, sp+$2
-	ld [hl], a
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_e408
-	ld a, $c
-	ld hl, sp+$3
-	sub [hl]
-	ld hl, sp+$3
-	ld [hl], a
-Func_e408: ; e408 (3:6408)
-	set_farcall_addrs_hli Func_7c8a
-	pop af
-	push af
-	read_hl_from wCurRobotPointer
-	ld de, $18
-	add hl, de
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld e, a
-	ld d, $0
-	ld a, l
-	xor e
-	ld l, a
-	ld a, h
-	xor d
-	ld h, a
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, bc
-	reg16swap de, hl
-	ld hl, sp+$3
-	ld a, [hl]
-	ld hl, sp+$2
-	ld l, [hl]
-	ld h, a
-	ld c, $2
-	call FarCall
-	pop af
-	push af
-	ld hl, sp+$3
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld e, a
-	ld d, $0
-	ld a, l
-	xor e
-	ld l, a
-	ld a, h
-	xor d
-	ld h, a
-	add hl, hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	pop de
-	add hl, de
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	pop af
-	ld hl, sp+$0
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld e, a
-	ld d, $0
-	ld a, l
-	xor e
-	ld l, a
-	ld a, h
-	xor d
-	ld h, a
-	add hl, hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	pop de
-	add hl, de
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	call GetHLAtSPPlus4
-	pop bc
-	pop bc
-	ret
-
-Func_e4b4: ; e4b4
-	push af
-	ld a, [wSystemType]
-	cp $11
-	jp nz, Func_e4ce
-	ld hl, sp+$1
-	ld a, [hl]
-	or a
-	jp nz, Func_e4c9
-	ld a, $2
-	jp Func_e4cf
-
-Func_e4c9: ; e4c9 (3:64c9)
-	ld a, $3
-	jp Func_e4cf
-
-Func_e4ce: ; e4ce (3:64ce)
-	xor a
-Func_e4cf: ; e4cf (3:64cf)
-	pop bc
-	ret
-
-Func_e4d1: ; e4d1 (3:64d1)
-	push hl
-	push bc
-	push bc
-	push bc
-	call GetHLAtSPPlus8
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus8
-	ld hl, sp+$5
-	ld [hl], a
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld [hl], a
-	ld hl, sp+$5
-	ld a, [hl]
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	xor [hl]
-	call Func_e4b4
-	read_hl_from wCurRobotPointer
-	ld de, $15
-	add hl, de
-	ld [hl], a
-	ld hl, $8000
-	call WriteHLToSPPlus4
-	read_hl_from wCurRobotPointer
-	ld de, $18
-	add hl, de
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld hl, sp+$5
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor e
-	ld l, a
-	ld a, h
-	xor d
-	ld h, a
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, bc
-	ld c, l
-	ld b, h
-	ld l, $0
-Func_e538: ; e538 (3:6538)
-	ld a, l
-	cp $8
-	jp nc, Func_e5b7
-	xor a
-Func_e53f: ; e53f (3:653f)
-	cp $8
-	jp nc, Func_e5b0
-	push hl
-	push af
-	push bc
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, bc
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, $8000
-	add hl, de
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus10
-	ld e, c
-	ld d, b
-	ld bc, $10
-	call RequestVideoData
-	call GetHLAtSPPlus10
-	ld de, $10
-	add hl, de
-	call WriteHLToSPPlus10
-	pop bc
-	pop af
-	pop hl
-	push hl
-	push bc
-	push af
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, $8
-	add hl, de
-	add hl, bc
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, $8000
-	add hl, de
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus10
-	ld e, c
-	ld d, b
-	ld bc, $10
-	call RequestVideoData
-	call GetHLAtSPPlus10
-	ld de, $10
-	add hl, de
-	call WriteHLToSPPlus10
-	pop af
-	inc a
-	pop bc
-	pop hl
-	jp Func_e53f
-
-Func_e5b0: ; e5b0 (3:65b0)
-	ld a, l
-	add $2
-	ld l, a
-	jp Func_e538
-
-Func_e5b7: ; e5b7 (3:65b7)
-	call GetHLAtSPPlus8
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus8
-	ld l, a
-	ld h, $0
-	pop de
-	push hl
-	call GetHLAtSPPlus8
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus8
-	ld l, a
-	ld h, $0
-	ld c, l
-	ld b, h
-	pop hl
-	push hl
-	ld de, $80
-	call CompareHLtoDE
-	jp c, Func_e5e1
-	pop hl
-	push hl
-	dec h
-	pop de
-	push hl
-Func_e5e1: ; e5e1 (3:65e1)
-	ld l, c
-	ld h, b
-	ld de, $80
-	call CompareHLtoDE
-	jp c, Func_e5ed
-	dec b
-Func_e5ed: ; e5ed (3:65ed)
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_e608
-	pop hl
-	push hl
-	ld de, $c
-	ld a, e
-	sub l
-	ld l, a
-	ld a, d
-	sbc h
-	ld h, a
-	pop de
-	push hl
-Func_e608: ; e608 (3:6608)
-	pop hl
-	push hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	pop de
-	push hl
-	ld l, c
-	ld h, b
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	push bc
-	call GetHLAtSPPlus4
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld hl, sp+$9
-	ld l, [hl]
-	ld h, $0
-	ld a, e
-	xor l
-	ld l, a
-	ld a, d
-	xor h
-	ld h, a
-	add hl, hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	pop de
-	add hl, de
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld hl, sp+$7
-	ld l, [hl]
-	ld h, $0
-	ld a, e
-	xor l
-	ld l, a
-	ld a, d
-	xor h
-	ld h, a
-	add hl, hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	pop de
-	add hl, de
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	ld hl, wOAMBuffer
-	reg16swap de, hl
-	ld hl, sp+$6
-	ld [hl], $0
-Func_e675: ; e675 (3:6675)
-	ld hl, sp+$6
-	ld a, [hl]
-	cp $4
-	jp nc, Func_e6a4
-	ld c, $0
-Func_e67f: ; e67f (3:667f)
-	ld a, c
-	cp $8
-	jp nc, Func_e69a
-	ld hl, sp+$6
-	ld a, [hl]
-	add a
-	add a
-	add a
-	add c
-	add a
-	ld l, e
-	ld h, d
-	inc hl
-	inc hl
-	ld [hl], a
-	inc c
-	inc de
-	inc de
-	inc de
-	inc de
-	jp Func_e67f
-
-Func_e69a: ; e69a (3:669a)
-	ld hl, sp+$6
-	ld a, [hl]
-	inc a
-	ld hl, sp+$6
-	ld [hl], a
-	jp Func_e675
-
-Func_e6a4: ; e6a4 (3:66a4)
-	pop bc
-	pop hl
-	push hl
-	ld e, c
-	ld d, b
-	call Func_de2c
-	call WaitVideoTransfer
-	call GetHLAtSPPlus8
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_e6b7: ; e6b7
-	push bc
-	ld a, [hl]
-	inc hl
-	push hl
-	push af
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	ld a, l
-	xor e
-	ld l, a
-	ld a, h
-	xor d
-	ld h, a
-	add hl, hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	pop de
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld de, $8
-	call DivideHLByDESigned
-	ld a, l
-	ld hl, sp+$4
-	ld [hl], a
-	pop af
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	ld a, l
-	xor e
-	ld l, a
-	ld a, h
-	xor d
-	ld h, a
-	add hl, hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	pop de
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld de, $8
-	call DivideHLByDESigned
-	ld c, l
-	push bc
-	set_farcall_addrs_hli Func_667d
-	pop bc
-	push bc
-	ld hl, sp+$4
-	ld l, [hl]
-	ld h, $0
-	ld h, l
-	ld l, $0
-	ld de, $700
-	add hl, de
-	ld e, c
-	ld d, $0
-	add hl, de
-	ld de, $7
-	add hl, de
-	reg16swap de, hl
-	ld hl, sp+$4
-	ld a, [hl]
-	ld l, c
-	ld h, a
-	ld bc, $8f02
-	call FarCall
-	pop bc
-	ld a, [wSystemType]
-	cp $11
-	jp nz, Func_e784
-	push bc
-	set_farcall_addrs_hli Func_667d
-	pop bc
-	ld hl, sp+$2
-	ld l, [hl]
-	ld h, $0
-	ld h, l
-	ld l, $0
-	ld de, $700
-	add hl, de
-	ld e, c
-	ld d, $0
-	add hl, de
-	ld de, $7
-	add hl, de
-	reg16swap de, hl
-	ld hl, sp+$2
-	ld a, [hl]
-	ld l, c
-	ld h, a
-	ld bc, $3
-	call FarCall
-Func_e784: ; e784 (3:6784)
-	pop hl
-	pop bc
-	ret
-
-Func_e787: ; e787
-	push hl
-	call ClearSprites
-	pop hl
-	ret
-
-Func_e78d: ; e78d
-	push hl
-	push bc
-	push bc
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	ld l, a
-	ld h, $0
-	call WriteHLToSPPlus4
-	call GetHLAtSPPlus4
-	ld de, $80
-	call CompareHLtoDE
-	jp c, Func_e7b1
-	call GetHLAtSPPlus4
-	dec h
-	call WriteHLToSPPlus4
-Func_e7b1: ; e7b1 (3:67b1)
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	push af
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_e7d5
-	call GetHLAtSPPlus6
-	ld a, l
-	cpl
-	ld l, a
-	ld a, h
-	cpl
-	ld h, a
-	inc hl
-	call WriteHLToSPPlus6
-Func_e7d5: ; e7d5 (3:67d5)
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	add hl, bc
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus4
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	add hl, bc
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	pop af
-Func_e836: ; e836 (3:6836)
-	cp $1
-	jp c, Func_e862
-	push bc
-	push af
-	call GetHLAtSPPlus6
-	ld e, c
-	ld d, b
-	call Func_de2c
-	ld a, [wNextVBlankFlags]
-	or $2
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop af
-	dec a
-	call GetHLAtSPPlus6
-	push hl
-	call GetHLAtSPPlus6
-	pop de
-	add hl, de
-	call WriteHLToSPPlus4
-	pop bc
-	jp Func_e836
-
-Func_e862: ; e862 (3:6862)
-	pop hl
-	push hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	add hl, bc
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	call GetHLAtSPPlus6
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_e89b: ; e89b
-	push hl
-	push bc
-	push bc
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	ld l, a
-	ld h, $0
-	call WriteHLToSPPlus4
-	call GetHLAtSPPlus4
-	ld de, $80
-	call CompareHLtoDE
-	jp c, Func_e8bf
-	call GetHLAtSPPlus4
-	dec h
-	call WriteHLToSPPlus4
-Func_e8bf: ; e8bf (3:68bf)
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	push af
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	add hl, bc
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	push bc
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	add hl, bc
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus6
-	pop bc
-	pop af
-Func_e92b: ; e92b (3:692b)
-	cp $1
-	jp c, Func_e95b
-	push bc
-	push af
-	call GetHLAtSPPlus6
-	reg16swap de, hl
-	ld l, c
-	ld h, b
-	call Func_de2c
-	ld a, [wNextVBlankFlags]
-	or $2
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop af
-	dec a
-	call GetHLAtSPPlus6
-	push hl
-	call GetHLAtSPPlus6
-	pop de
-	add hl, de
-	call WriteHLToSPPlus4
-	pop bc
-	jp Func_e92b
-
-Func_e95b: ; e95b (3:695b)
-	pop hl
-	push hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	add hl, bc
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	call GetHLAtSPPlus6
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_e994: ; e994
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $15
-	add hl, de
-	ld a, $20
-	xor [hl]
-	ld [hl], a
-	pop hl
-	ret
-
-Func_e9a4: ; e9a4
-	push hl
-	set_farcall_addrs_hli Func_6938
-	ld c, $67
-	ld e, $28
-	ld hl, $14
-	call FarCall
-	pop hl
-	ret
-
-Func_e9bc: ; e9bc
-	push hl
-	set_farcall_addrs_hli Func_68fd
-	ld c, $68
-	ld e, $28
-	ld hl, $2710
-	call FarCall
-	pop hl
-	ret
-
-Func_e9d4: ; e9d4
-	push hl
-	push bc
-	push bc
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	ld l, a
-	ld h, $0
-	call WriteHLToSPPlus4
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	ld l, a
-	ld h, $0
-	pop de
-	push hl
-	call GetHLAtSPPlus4
-	ld de, $80
-	call CompareHLtoDE
-	jp c, Func_ea05
-	call GetHLAtSPPlus4
-	dec h
-	call WriteHLToSPPlus4
-Func_ea05: ; ea05 (3:6a05)
-	pop hl
-	push hl
-	ld de, $80
-	call CompareHLtoDE
-	jp c, Func_ea15
-	pop hl
-	push hl
-	dec h
-	pop de
-	push hl
-Func_ea15: ; ea15 (3:6a15)
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_ea32
-	call GetHLAtSPPlus4
-	ld de, $c
-	ld a, e
-	sub l
-	ld l, a
-	ld a, d
-	sbc h
-	ld h, a
-	call WriteHLToSPPlus4
-Func_ea32: ; ea32 (3:6a32)
-	call GetHLAtSPPlus4
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	call WriteHLToSPPlus4
-	pop hl
-	push hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	pop de
-	push hl
-	call GetHLAtSPPlus4
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	add hl, bc
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	pop hl
-	push hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	add hl, bc
-	pop de
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	pop hl
-	push hl
-	push hl
-	call GetHLAtSPPlus6
-	pop de
-	call Func_de2c
-	call GetHLAtSPPlus6
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_eab8: ; eab8
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $15
-	add hl, de
-	ld a, $40
-	xor [hl]
-	ld [hl], a
-	pop hl
-	ret
-
-Func_eac8: ; eac8
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $15
-	add hl, de
-	ld a, $80
-	xor [hl]
-	ld [hl], a
-	pop hl
-	ret
-
-Func_ead8: ; ead8
-	push hl
-	xor a
-	call Func_df28
-	pop hl
-	ret
-
-Func_eadf: ; eadf
-	push hl
-	ld a, $1
-	call Func_df28
-	pop hl
-	ret
-
-Func_eae7: ; eae7 (3:6ae7)
-	push bc
-	push bc
-	push bc
-	push bc
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	inc hl
-	ld c, $0
-Func_eaf5: ; eaf5 (3:6af5)
-	ld a, c
-	cp $4
-	jp nc, Func_eb15
-	push hl
-	ld a, [hl]
-	and $3
-	ld l, a
-	ld a, $4
-	sub l
-	ld e, c
-	ld d, $0
-	ld hl, sp+$5
-	add hl, de
-	ld [hl], a
-	pop hl
-	ld a, [hl]
-	rrca
-	rrca
-	and $3f
-	ld [hl], a
-	inc c
-	jp Func_eaf5
-
-Func_eb15: ; eb15 (3:6b15)
-	inc hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $1ca
-	add hl, de
-	reg16swap de, hl
-	push de
-	read_hl_from wCurRobotPointer
-	ld de, $24a
-	add hl, de
-	call WriteHLToSPPlus7
-	xor a
-	pop de
-Func_eb33: ; eb33 (3:6b33)
-	cp $8
-	jp nc, Func_ec10
-	push af
-	ld c, $0
-Func_eb3b: ; eb3b (3:6b3b)
-	ld a, c
-	cp $4
-	jp nc, Func_ec0b
-	push bc
-	push de
-	reg16swap de, hl
-	ld a, [hl]
-	and $1f
-	ld e, a
-	inc hl
-	ld d, $0
-	ld hl, sp+$8
-	ld [hl], e
-	pop de
-	push de
-	ld l, e
-	ld h, d
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $5
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld l, a
-	ld h, $0
-	ld a, l
-	push af
-	reg16swap de, hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $a
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld l, a
-	ld h, $0
-	ld a, l
-	ld e, c
-	ld d, $0
-	ld hl, sp+$d
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $d
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	read_hl_from_sp_plus $d
-	ld b, $5
-	call LeftShiftPointer
-	pop af
-	pop de
-	pop bc
-	push de
-	push bc
-	ld e, c
-	ld d, $0
-	ld hl, sp+$b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $b
-	ld a, [hl]
-	or c
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	or b
-	ld [hl], a
-	read_hl_from_sp_plus $b
-	ld b, $5
-	call LeftShiftPointer
-	pop bc
-	pop de
-	push bc
-	push de
-	ld e, c
-	ld d, $0
-	ld hl, sp+$b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld hl, sp+$8
-	ld l, [hl]
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $b
-	ld a, [hl]
-	or c
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	or b
-	ld [hl], a
-	read_hl_from_sp_plus $b
-	inc hl
-	inc hl
-	write_hl_to_sp_plus $b
-	pop de
-	inc de
-	inc de
-	pop bc
-	inc c
-	jp Func_eb3b
-
-Func_ec0b: ; ec0b (3:6c0b)
-	pop af
-	inc a
-	jp Func_eb33
-
-Func_ec10: ; ec10 (3:6c10)
-	pop hl
-	push de
-	ld c, $0
-Func_ec14: ; ec14 (3:6c14)
-	ld a, c
-	cp $4
-	jp nc, Func_ec34
-	push hl
-	ld a, [hl]
-	and $3
-	ld l, a
-	ld a, $4
-	sub l
-	ld e, c
-	ld d, $0
-	ld hl, sp+$7
-	add hl, de
-	ld [hl], a
-	pop hl
-	ld a, [hl]
-	rrca
-	rrca
-	and $3f
-	ld [hl], a
-	inc c
-	jp Func_ec14
-
-Func_ec34: ; ec34 (3:6c34)
-	inc hl
-	xor a
-	pop de
-	push hl
-Func_ec38: ; ec38 (3:6c38)
-	cp $8
-	jp nc, Func_ed15
-	push af
-	ld c, $0
-Func_ec40: ; ec40 (3:6c40)
-	ld a, c
-	cp $4
-	jp nc, Func_ed10
-	push bc
-	push de
-	reg16swap de, hl
-	ld a, [hl]
-	and $1f
-	ld e, a
-	inc hl
-	ld d, $0
-	ld hl, sp+$8
-	ld [hl], e
-	pop de
-	push de
-	ld l, e
-	ld h, d
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $5
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld l, a
-	ld h, $0
-	ld a, l
-	push af
-	reg16swap de, hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $a
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld l, a
-	ld h, $0
-	ld a, l
-	ld e, c
-	ld d, $0
-	ld hl, sp+$d
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $d
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	read_hl_from_sp_plus $d
-	ld b, $5
-	call LeftShiftPointer
-	pop af
-	pop de
-	pop bc
-	push de
-	push bc
-	ld e, c
-	ld d, $0
-	ld hl, sp+$b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $b
-	ld a, [hl]
-	or c
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	or b
-	ld [hl], a
-	read_hl_from_sp_plus $b
-	ld b, $5
-	call LeftShiftPointer
-	pop bc
-	pop de
-	push bc
-	push de
-	ld e, c
-	ld d, $0
-	ld hl, sp+$b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld hl, sp+$8
-	ld l, [hl]
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $b
-	ld a, [hl]
-	or c
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	or b
-	ld [hl], a
-	read_hl_from_sp_plus $b
-	inc hl
-	inc hl
-	write_hl_to_sp_plus $b
-	pop de
-	inc de
-	inc de
-	pop bc
-	inc c
-	jp Func_ec40
-
-Func_ed10: ; ed10 (3:6d10)
-	pop af
-	inc a
-	jp Func_ec38
-
-Func_ed15: ; ed15 (3:6d15)
-	ld c, $0
-	pop hl
-Func_ed18: ; ed18 (3:6d18)
-	ld a, c
-	cp $4
-	jp nc, Func_ed38
-	push hl
-	ld a, [hl]
-	and $3
-	ld l, a
-	ld a, $4
-	sub l
-	ld e, c
-	ld d, $0
-	ld hl, sp+$5
-	add hl, de
-	ld [hl], a
-	pop hl
-	ld a, [hl]
-	rrca
-	rrca
-	and $3f
-	ld [hl], a
-	inc c
-	jp Func_ed18
-
-Func_ed38: ; ed38 (3:6d38)
-	inc hl
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $1ca
-	add hl, de
-	reg16swap de, hl
-	push de
-	read_hl_from wCurRobotPointer
-	ld de, $2ca
-	add hl, de
-	call WriteHLToSPPlus7
-	xor a
-	pop de
-Func_ed56: ; ed56 (3:6d56)
-	cp $8
-	jp nc, Func_ee33
-	push af
-	ld c, $0
-Func_ed5e: ; ed5e (3:6d5e)
-	ld a, c
-	cp $4
-	jp nc, Func_ee2e
-	push bc
-	push de
-	reg16swap de, hl
-	ld a, [hl]
-	and $1f
-	ld e, a
-	inc hl
-	ld d, $0
-	ld hl, sp+$8
-	ld [hl], e
-	pop de
-	push de
-	ld l, e
-	ld h, d
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $5
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld l, a
-	ld h, $0
-	ld a, l
-	push af
-	reg16swap de, hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $a
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld l, a
-	ld h, $0
-	ld a, l
-	ld e, c
-	ld d, $0
-	ld hl, sp+$d
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $d
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	read_hl_from_sp_plus $d
-	ld b, $5
-	call LeftShiftPointer
-	pop af
-	pop de
-	pop bc
-	push de
-	push bc
-	ld e, c
-	ld d, $0
-	ld hl, sp+$b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $b
-	ld a, [hl]
-	or c
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	or b
-	ld [hl], a
-	read_hl_from_sp_plus $b
-	ld b, $5
-	call LeftShiftPointer
-	pop bc
-	pop de
-	push bc
-	push de
-	ld e, c
-	ld d, $0
-	ld hl, sp+$b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld hl, sp+$8
-	ld l, [hl]
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $b
-	ld a, [hl]
-	or c
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	or b
-	ld [hl], a
-	read_hl_from_sp_plus $b
-	inc hl
-	inc hl
-	write_hl_to_sp_plus $b
-	pop de
-	inc de
-	inc de
-	pop bc
-	inc c
-	jp Func_ed5e
-
-Func_ee2e: ; ee2e (3:6e2e)
-	pop af
-	inc a
-	jp Func_ed56
-
-Func_ee33: ; ee33 (3:6e33)
-	pop hl
-	push de
-	ld c, $0
-Func_ee37: ; ee37 (3:6e37)
-	ld a, c
-	cp $4
-	jp nc, Func_ee57
-	push hl
-	ld a, [hl]
-	and $3
-	ld l, a
-	ld a, $4
-	sub l
-	ld e, c
-	ld d, $0
-	ld hl, sp+$7
-	add hl, de
-	ld [hl], a
-	pop hl
-	ld a, [hl]
-	rrca
-	rrca
-	and $3f
-	ld [hl], a
-	inc c
-	jp Func_ee37
-
-Func_ee57: ; ee57 (3:6e57)
-	xor a
-	pop de
-Func_ee59: ; ee59 (3:6e59)
-	cp $8
-	jp nc, Func_ef31
-	push af
-	ld c, $0
-Func_ee61: ; ee61 (3:6e61)
-	ld a, c
-	cp $4
-	jp nc, Func_ef2c
-	push bc
-	push de
-	reg16swap de, hl
-	ld a, [hl]
-	and $1f
-	ld e, a
-	inc hl
-	ld d, $0
-	ld hl, sp+$6
-	ld [hl], e
-	pop de
-	push de
-	ld l, e
-	ld h, d
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $5
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld l, a
-	ld h, $0
-	ld a, l
-	push af
-	reg16swap de, hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $a
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld l, a
-	ld h, $0
-	ld a, l
-	ld e, c
-	ld d, $0
-	ld hl, sp+$b
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $b
-	ld [hl], c
-	inc hl
-	ld [hl], b
-	read_hl_from_sp_plus $b
-	ld b, $5
-	call LeftShiftPointer
-	pop af
-	pop de
-	pop bc
-	push de
-	push bc
-	ld e, c
-	ld d, $0
-	ld hl, sp+$9
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus9
-	ld a, [hl]
-	or c
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	or b
-	ld [hl], a
-	call GetHLAtSPPlus9
-	ld b, $5
-	call LeftShiftPointer
-	pop bc
-	pop de
-	push bc
-	push de
-	ld e, c
-	ld d, $0
-	ld hl, sp+$9
-	add hl, de
-	ld e, [hl]
-	ld d, $0
-	ld hl, sp+$6
-	ld l, [hl]
-	ld h, $0
-	call MultiplyHLbyDE
-	ld de, $4
-	call DivideHLByDESigned
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus9
-	ld a, [hl]
-	or c
-	ld [hl], a
-	inc hl
-	ld a, [hl]
-	or b
-	ld [hl], a
-	call GetHLAtSPPlus9
-	inc hl
-	inc hl
-	call WriteHLToSPPlus9
-	pop de
-	inc de
-	inc de
-	pop bc
-	inc c
-	jp Func_ee61
-
-Func_ef2c: ; ef2c (3:6f2c)
-	pop af
-	inc a
-	jp Func_ee59
-
-Func_ef31: ; ef31 (3:6f31)
-	pop bc
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_ef36: ; ef36
-	ld a, [wNextVBlankFlags]
-	and $40
-	jp z, Func_ef3f
-	ret
-
-Func_ef3f: ; ef3f (3:6f3f)
-	read_hl_from wCurRobotPointer
-	inc hl
-	ld a, $1
-	add [hl]
-	ld [hl], a
-	read_hl_from wCurRobotPointer
-	cp [hl]
-	jp nc, Func_ef53
-	ret
-
-Func_ef53: ; ef53 (3:6f53)
-	read_hl_from wCurRobotPointer
-	inc hl
-	ld [hl], $0
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	ld a, [hl]
-	or a
-	jp nz, Func_ef80
-	ld bc, $80
-	read_hl_from wCurRobotPointer
-	ld de, $24a
-	add hl, de
-	reg16swap de, hl
-	ld hl, wCGB_BGPalsBuffer
-	call CopyFromDEtoHL
-	jp Func_ef96
-
-Func_ef80: ; ef80 (3:6f80)
-	ld bc, $80
-	read_hl_from wCurRobotPointer
-	ld de, $2ca
-	add hl, de
-	reg16swap de, hl
-	ld hl, wCGB_BGPalsBuffer
-	call CopyFromDEtoHL
-Func_ef96: ; ef96 (3:6f96)
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	ld a, $1
-	xor [hl]
-	ld [hl], a
-	ld a, [wNextVBlankFlags]
-	or $40
-	ld [wNextVBlankFlags], a
-	ret
-
-Func_efaa: ; efaa
-	push hl
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	ld [hl], a
-	read_hl_from wCurRobotPointer
-	inc hl
-	ld [hl], $0
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	ld [hl], $0
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], a
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], a
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $5
-	add hl, de
-	ld [hl], a
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $6
-	add hl, de
-	ld [hl], a
-	ld a, [wSystemType]
-	cp $11
-	jp nz, Func_f049
-	ld bc, $80
-	read_hl_from wCurRobotPointer
-	ld de, $1ca
-	add hl, de
-	ld de, wCGB_BGPalsBuffer
-	call CopyFromDEtoHL
-	call Func_eae7
-	call WaitVideoTransfer
-	ld a, $2
-	ld [wc24d], a
-	ld a, $3
-	ld [wVBlankCallbackROMBank], a
-	ld a, $3
-	ld [wVBlankCallbackRAMBank], a
-	ld hl, $6f36
-	write_hl_to wVBlankCallbackAddress
-	ld a, [wNextVBlankFlags]
-	or $80
-	ld [wNextVBlankFlags], a
-	jp Func_f063
-
-Func_f049: ; f049 (3:7049)
-	ld a, BANK(DoFlashProgram)
-	ld [wVBlankCallbackROMBank], a
-	ld a, $3
-	ld [wVBlankCallbackRAMBank], a
-	ld hl, DoFlashProgram
-	write_hl_to wVBlankCallbackAddress
-	ld a, [wNextVBlankFlags]
-	or $80
-	ld [wNextVBlankFlags], a
-Func_f063: ; f063 (3:7063)
-	pop hl
-	push hl
-	pop bc
-	ret
-
-Func_f067: ; f067
-	push hl
-	ld a, [wSystemType]
-	cp $11
-	jp nz, Func_f0b2
-	ld a, [wNextVBlankFlags]
-	and $7f
-	ld [wNextVBlankFlags], a
-	xor a
-	ld [wc2e8], a
-Func_f07c: ; f07c (3:707c)
-	ld a, [wNextVBlankFlags]
-	and $40
-	jp nz, Func_f07c
-	ld bc, $80
-	read_hl_from wCurRobotPointer
-	ld de, $1ca
-	add hl, de
-	reg16swap de, hl
-	ld hl, wCGB_BGPalsBuffer
-	call CopyFromDEtoHL
-	ld a, [wNextVBlankFlags]
-	or $40
-	ld [wNextVBlankFlags], a
-Func_f0a2: ; f0a2 (3:70a2)
-	ld a, [wNextVBlankFlags]
-	and $40
-	jp nz, Func_f0a2
-	ld a, $4
-	ld [wc24d], a
-	jp Func_f0cd
-
-Func_f0b2: ; f0b2 (3:70b2)
-	ld a, [wNextVBlankFlags]
-	and $7f
-	ld [wNextVBlankFlags], a
-	ld a, $e4
-	ld [wOBP0], a
-	ld [wBGP], a
-	ld a, [wNextVBlankFlags]
-	or $20
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-Func_f0cd: ; f0cd (3:70cd)
-	pop hl
-	ret
-
-Func_f0cf: ; f0cf (3:70cf)
-	ld a, [hl]
-	inc hl
-	push hl
-	push af
-	ld a, [wLCDC]
-	ld e, a
-	push de
-	ld a, [rIE]
-	ld l, a
-	push hl
-	ld a, [wLCDC]
-	and $fb
-	ld [wLCDC], a
-	ld a, [wNextVBlankFlags]
-	or $4
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	call DisableHBlank
-	set_farcall_addrs_hli Func_da729
-	pop hl
-	pop de
-	pop af
-	push hl
-	push de
-	push af
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld e, [hl]
-	call FarCall
-	pop af
-	push hl
-	push af
-	set_farcall_addrs_hli Func_e2bf8
-	pop af
-	call FarCall
-Func_f122: ; f122 (3:7122)
-	call Func_0451
-	callba_hli Func_e2c29
-	set_farcall_addrs_hli Func_da093
-	xor a
-	call FarCall
-	or a
-	jp nz, Func_f149
-	jp Func_f15a
-
-Func_f149: ; f149 (3:7149)
-	callba_hli Func_d9f55
-	jp Func_f122
-
-Func_f15a: ; f15a (3:715a)
-	set_farcall_addrs_hli FreeMemory
-	pop hl
-	call FarCall
-	call ClearSprites
-	ld a, [wNextVBlankFlags]
-	or $2
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop de
-	ld a, e
-	ld [wLCDC], a
-	ld a, [wNextVBlankFlags]
-	or $4
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop hl
-	ld a, l
-	and $2
-	jp z, Func_f191
-	call EnableHBlank
-Func_f191: ; f191 (3:7191)
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call Func_3afc
-	pop bc
-	pop hl
-	ret
-
-Func_f19f: ; f19f
-	push hl
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	ld l, a
-	ld h, $0
-	ld de, $9c
-	call MultiplyHLbyDE
-	call Func_ddc2
-	pop hl
-	push hl
-	pop bc
-	ret
-
-Func_f1b6: ; f1b6
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $7
-	add hl, de
-	ld [hl], $0
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $8
-	add hl, de
-	ld [hl], a
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $9
-	add hl, de
-	ld [hl], a
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $a
-	add hl, de
-	ld [hl], a
-	ld a, BANK(DoShakeProgram)
-	ld [wVBlankCallbackROMBank], a
-	ld a, $3
-	ld [wVBlankCallbackRAMBank], a
-	ld hl, DoShakeProgram
-	write_hl_to wVBlankCallbackAddress
-	ld a, [wNextVBlankFlags]
-	or $80
-	ld [wNextVBlankFlags], a
-	pop hl
-	push hl
-	pop bc
-	ret
-
-Func_f210: ; f210
-	push hl
-	ld a, [wNextVBlankFlags]
-	and $7f
-	ld [wNextVBlankFlags], a
-	xor a
-	ld [wSCY2], a
-	ld [wSCY], a
-	ld [wSCX2], a
-	ld [wSCX], a
-	ld a, [wNextVBlankFlags]
-	or $10
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop hl
-	ret
-
-Func_f233: ; f233 (3:7233)
-	push bc
-	ld bc, wCGB_BGPalsBuffer
-	read_hl_from wCurRobotPointer
-	ld de, $24a
-	add hl, de
-	pop de
-	push hl
-	xor a
-Func_f243: ; f243 (3:7243)
-	cp $40
-	jp nc, Func_f29b
-	push af
-	push bc
-	ld l, c
-	ld h, b
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $a
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld c, a
-	ld b, $0
-	call GetHLAtSPPlus6
-	ld [hl], c
-	inc hl
-	call WriteHLToSPPlus6
-	pop bc
-	push bc
-	ld l, c
-	ld h, b
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	ld b, $5
-	call RightShiftHL
-	ld a, l
-	and $1f
-	ld c, a
-	ld b, $0
-	call GetHLAtSPPlus6
-	ld [hl], c
-	inc hl
-	call WriteHLToSPPlus6
-	pop bc
-	pop af
-	push bc
-	push af
-	ld l, c
-	ld h, b
-	ld a, [hl]
-	and $1f
-	ld c, a
-	inc hl
-	ld b, $0
-	call GetHLAtSPPlus6
-	ld [hl], c
-	inc hl
-	call WriteHLToSPPlus6
-	pop af
-	inc a
-	pop bc
-	inc bc
-	inc bc
-	jp Func_f243
-
-Func_f29b: ; f29b (3:729b)
-	pop bc
-	ret
-
-Func_f29d: ; f29d
-	push hl
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	ld [hl], a
-	read_hl_from wCurRobotPointer
-	inc hl
-	ld [hl], $0
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	ld [hl], $0
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], $1
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], $0
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	read_hl_from wCurRobotPointer
-	ld de, $5
-	add hl, de
-	ld [hl], a
-	ld a, [wSystemType]
-	or a
-	jp z, Func_f31b
-	cp $ff
-	jp z, Func_f31b
-	cp $1
-	jp z, Func_f31b
-	cp $11
-	jp nz, Func_f335
-	ld bc, $80
-	read_hl_from wCurRobotPointer
-	ld de, $1ca
-	add hl, de
-	ld de, wCGB_BGPalsBuffer
-	call CopyFromDEtoHL
-	call Func_f233
-	call WaitVideoTransfer
-	ld a, $2
-	ld [wc24d], a
-	ld a, $1
-	ld [wc2e8], a
-	jp Func_f335
-
-Func_f31b: ; f31b (3:731b)
-	ld a, $1
-	ld [wVBlankCallbackROMBank], a
-	ld a, $3
-	ld [wVBlankCallbackRAMBank], a
-	ld hl, $6a16
-	write_hl_to wVBlankCallbackAddress
-	ld a, [wNextVBlankFlags]
-	or $80
-	ld [wNextVBlankFlags], a
-Func_f335: ; f335 (3:7335)
-	pop hl
-	push hl
-	pop bc
-	ret
-
-Func_f339: ; f339
-	push hl
-	ld a, [wSystemType]
-	cp $11
-	jp nz, Func_f358
-	xor a
-	ld [wc2e8], a
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], $ff
-	ld a, $1
-	ld [wc2e8], a
-	jp Func_f375
-
-Func_f358: ; f358 (3:7358)
-	ld a, [wNextVBlankFlags]
-	and $7f
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], $ff
-	ld a, [wNextVBlankFlags]
-	or $80
-	ld [wNextVBlankFlags], a
-Func_f375: ; f375 (3:7375)
-	pop hl
-	ret
-
-Func_f377: ; f377
-	push hl
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	inc hl
-	ld a, [hl]
-	cp $ff
-	jp nz, Func_f395
-Func_f386: ; f386 (3:7386)
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	ld a, [hl]
-	or a
-	jp z, Func_f3a2
-	jp Func_f386
-
-Func_f395: ; f395 (3:7395)
-	read_hl_from wCurRobotPointer
-	inc hl
-	inc hl
-	ld a, [hl]
-	cp $10
-	jp nz, Func_f395
-Func_f3a2: ; f3a2 (3:73a2)
-	pop hl
-	ret
-
-Func_f3a4: ; f3a4
-	push hl
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	ld l, a
-	xor a
-Func_f3ad: ; f3ad (3:73ad)
-	cp l
-	jp nc, Func_f3bc
-	push hl
-	push af
-	call Func_0451
-	pop af
-	inc a
-	pop hl
-	jp Func_f3ad
-
-Func_f3bc: ; f3bc (3:73bc)
-	pop hl
-	push hl
-	pop bc
-	ret
-
-Func_f3c0: ; f3c0
-	push hl
-	ld hl, Data_c009
-	call Func_f723
-	pop hl
-	ret
-
-Func_f3c9: ; f3c9
-	push hl
-	ld hl, Data_c016
-	call Func_f723
-	pop hl
-	ret
-
-Func_f3d2: ; f3d2
-	push hl
-	push bc
-	push bc
-	call GetHLAtSPPlus6
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus6
-	push af
-	call GetHLAtSPPlus8
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus8
-	ld l, a
-	ld h, $0
-	call WriteHLToSPPlus6
-	call GetHLAtSPPlus8
-	ld a, [hl]
-	inc hl
-	call WriteHLToSPPlus8
-	ld l, a
-	ld h, $0
-	ld c, l
-	ld b, h
-	call GetHLAtSPPlus6
-	ld de, $80
-	call CompareHLtoDE
-	jp c, Func_f40c
-	call GetHLAtSPPlus6
-	dec h
-	call WriteHLToSPPlus6
-Func_f40c: ; f40c (3:740c)
-	ld l, c
-	ld h, b
-	ld de, $80
-	call CompareHLtoDE
-	jp c, Func_f418
-	dec b
-Func_f418: ; f418 (3:7418)
-	push bc
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld a, [hl]
-	or a
-	jp z, Func_f434
-	call GetHLAtSPPlus8
-	ld a, l
-	cpl
-	ld l, a
-	ld a, h
-	cpl
-	ld h, a
-	inc hl
-	call WriteHLToSPPlus8
-Func_f434: ; f434 (3:7434)
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	add hl, bc
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call WriteHLToSPPlus6
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	pop bc
-	pop af
-Func_f496: ; f496 (3:7496)
-	cp $1
-	jp c, Func_f4ea
-	push de
-	push af
-	push bc
-	reg16swap de, hl
-	add hl, bc
-	push hl
-	read_hl_from_sp_plus $c
-	push hl
-	read_hl_from_sp_plus $c
-	pop de
-	add hl, de
-	pop de
-	call Func_de2c
-	ld a, [wNextVBlankFlags]
-	or $2
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	xor a
-Func_f4bf: ; f4bf (3:74bf)
-	cp $2
-	jp nc, Func_f4cd
-	push af
-	call Func_0451
-	pop af
-	inc a
-	jp Func_f4bf
-
-Func_f4cd: ; f4cd (3:74cd)
-	call GetHLAtSPPlus10
-	ld a, l
-	cpl
-	ld l, a
-	ld a, h
-	cpl
-	ld h, a
-	inc hl
-	call WriteHLToSPPlus10
-	pop bc
-	ld a, c
-	cpl
-	ld l, a
-	ld a, b
-	cpl
-	ld h, a
-	inc hl
-	ld c, l
-	ld b, h
-	pop af
-	dec a
-	pop de
-	jp Func_f496
-
-Func_f4ea: ; f4ea (3:74ea)
-	call GetHLAtSPPlus6
-	pop bc
-	pop bc
-	pop bc
-	ret
-
-Func_f4f1: ; f4f1
-	ld a, [hl]
-	inc hl
-	push hl
-	push af
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $d
-	add hl, de
-	add hl, bc
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	push bc
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld c, [hl]
-	ld b, $0
-	read_hl_from wCurRobotPointer
-	ld de, $c
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld a, l
-	xor c
-	ld l, a
-	ld a, h
-	xor b
-	ld h, a
-	add hl, hl
-	ld c, l
-	ld b, h
-	read_hl_from wCurRobotPointer
-	ld de, $11
-	add hl, de
-	add hl, bc
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	pop bc
-	pop af
-Func_f554: ; f554 (3:7554)
-	cp $1
-	jp c, Func_f5c5
-	push af
-	push bc
-	push de
-	ld hl, $8
-	add hl, bc
-	call Func_de2c
-	ld a, [wNextVBlankFlags]
-	or $2
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop de
-	pop bc
-	push bc
-	push de
-	ld hl, -8
-	add hl, de
-	reg16swap de, hl
-	ld hl, $8
-	add hl, bc
-	call Func_de2c
-	ld a, [wNextVBlankFlags]
-	or $2
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop de
-	pop bc
-	push bc
-	push de
-	ld hl, -8
-	add hl, de
-	reg16swap de, hl
-	ld l, c
-	ld h, b
-	call Func_de2c
-	ld a, [wNextVBlankFlags]
-	or $2
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop de
-	pop bc
-	pop af
-	push bc
-	push de
-	push af
-	ld l, c
-	ld h, b
-	call Func_de2c
-	ld a, [wNextVBlankFlags]
-	or $2
-	ld [wNextVBlankFlags], a
-	call DelayFrames_NoHalt
-	pop af
-	dec a
-	pop de
-	pop bc
-	jp Func_f554
-
-Func_f5c5: ; f5c5 (3:75c5)
-	pop hl
-	ret
-
-Func_f5c7: ; f5c7
-	push hl
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	ld c, a
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	ld l, a
-Func_f5d6: ; f5d6 (3:75d6)
-	ld a, c
-	cp $1
-	jp c, Func_f5f5
-	push hl
-	push bc
-	ld h, $0
-	add hl, hl
-	ld de, Data_c6e1
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	reg16swap de, hl
-	call Func_f723
-	pop bc
-	dec c
-	pop hl
-	jp Func_f5d6
-
-Func_f5f5: ; f5f5 (3:75f5)
-	pop hl
-	push hl
-	pop bc
-	ret
-
-Func_f5f9: ; f5f9
-	push hl
-	set_farcall_addrs_hli Func_6a77
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	call FarCall
-	pop hl
-	inc hl
-	inc hl
-	ret
-
-Func_f612: ; f612
-	push hl
-.loop
-	call CheckSFXFinished
-	or a
-	jp nz, .loop
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	call OverworldPlaySFX
-	pop hl
-	push hl
-	pop bc
-	ret
-
-Func_f627: ; f627
-	ld a, [hl]
-	inc hl
-	ld [wc318], a
-	ret
-
-Func_f62d: ; f62d
-	push hl
-	pop hl
-	push hl
-	ld a, [hl]
-	inc hl
-	pop de
-	push hl
-	call OverworldPlaySong
-	pop hl
-	push hl
-	pop bc
-	ret
-
-Func_f63b: ; f63b
-	push hl
-	ld a, [wSystemType]
-	cp $1
-	jp z, Func_f64c
-	ld a, [wSystemType]
-	cp $ff
-	jp nz, Func_f660
-Func_f64c: ; f64c (3:764c)
-	set_farcall_addrs_hli Func_61424
-	ld c, $1
-	ld e, $1
-	ld a, $1
-	call FarCall
-Func_f660: ; f660 (3:7660)
-	pop hl
-	ret
-
-Func_f662: ; f662
-	push hl
-	ld a, [wSystemType]
-	cp $1
-	jp z, Func_f673
-	ld a, [wSystemType]
-	cp $ff
-	jp nz, Func_f687
-Func_f673: ; f673 (3:7673)
-	set_farcall_addrs_hli Func_61424
-	ld c, $1
-	ld e, $3
-	ld a, $2
-	call FarCall
-Func_f687: ; f687 (3:7687)
-	pop hl
-	ret
-
-Func_f689: ; f689
-	push hl
-	ld e, $0
-	xor a
-	call SetStringStartState
-	ld hl, Data_f6cb
-	push hl
-	call PlaceString
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-.asm_f69e
-	xor a
-	call PushBGMapRegion
-	pop bc
-	xor a
-	ld [wJoyHeld], a
-Func_f6a8: ; f6a8 (3:76a8)
-	call NextOverworldFrame
-	or a
-	jp z, Func_f6a8
-	ld e, $0
-	xor a
-	call SetStringStartState
-	ld hl, Data_f6d1
-	push hl
-	call PlaceString
-	pop bc
-	ld l, $12
-	push hl
-	ld c, $14
-	ld e, $0
-	xor a
-	call PushBGMapRegion
-	pop bc
-	pop hl
-	ret
-
-Data_f6cb: ; f6cb
-	db "キー マチ", $0
-
-Data_f6d1: ; f6d1
-	db "     ", $0
-
-Pointers_f6d7: ; f6d7
-	dw $0
-	dw Func_e3bd
-	dw Func_e3d1
-	dw Func_e4d1
-	dw Func_e6b7
-	dw Func_e787
-	dw Func_e78d
-	dw Func_e89b
-	dw Func_e994
-	dw Func_e9a4
-	dw Func_e9bc
-	dw Func_e9d4
-	dw Func_eab8
-	dw Func_eac8
-	dw Func_ead8
-	dw Func_eadf
-	dw Func_efaa
-	dw Func_f067
-	dw Func_f0cf
-	dw Func_f19f
-	dw Func_f1b6
-	dw Func_f210
-	dw Func_f29d
-	dw Func_f339
-	dw Func_f377
-	dw Func_f3a4
-	dw Func_f3c0
-	dw Func_f3c9
-	dw Func_f3d2
-	dw Func_f4f1
-	dw Func_f5c7
-	dw Func_f5f9
-	dw Func_f612
-	dw Func_f627
-	dw Func_f62d
-	dw Func_f63b
-	dw Func_f662
-	dw Func_f689
-
-Func_f723: ; f723 (3:7723)
-	push hl
-.loop
-	pop hl
-	push hl
-	ld a, [hl]
-	or a
-	jp z, Func_f748
-	ld hl, .Return
-	push hl
-	call GetHLAtSPPlus4
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld de, Pointers_f6d7
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	push de
-	call GetHLAtSPPlus6
-	inc hl
-	ret
-
-.Return
-	pop de
-	push hl
-	jp .loop
-
-Func_f748: ; f748 (3:7748)
-	pop bc
-	ret
+INCLUDE "battle/move_anim.asm"
 
 Data_f74a: ; f74a
 	dr $f74a, $f752
@@ -13331,7 +10319,7 @@ Func_1010f: ; 1010f (4:410f)
 	ld e, a
 	ld a, $1
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld a, $8f
 	ld [hl], a
 	pop bc
@@ -13342,7 +10330,7 @@ Func_1010f: ; 1010f (4:410f)
 	ld e, a
 	ld a, $1
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld a, $8b
 	ld [hl], a
 	pop bc
@@ -13365,7 +10353,7 @@ Func_10148: ; 10148 (4:4148)
 	ld e, a
 	ld a, $1
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld a, $8f
 	ld [hl], a
 	pop bc
@@ -13376,7 +10364,7 @@ Func_10148: ; 10148 (4:4148)
 	ld e, a
 	ld a, $1
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld a, $8b
 	ld [hl], a
 	pop bc
@@ -13457,7 +10445,7 @@ Func_101be: ; 101be
 	ld e, a
 	ld a, c
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld c, l
 	ld b, h
 	xor a
@@ -13497,7 +10485,7 @@ Func_10215: ; 10215
 	push bc
 	push bc
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	call WriteHLToSPPlus4
 	xor a
 	pop bc
@@ -13926,8 +10914,7 @@ Func_1055c: ; 1055c (4:455c)
 	ld de, $1f1f
 	ld hl, $0
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_105af
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -17334,8 +14321,7 @@ Func_11f5b: ; 11f5b (4:5f5b)
 	pop bc
 	pop bc
 	pop bc
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_11fc9
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_667d
@@ -17613,8 +14599,7 @@ Func_1230c: ; 1230c (4:630c)
 	xor a
 	call Func_12acb
 	pop bc
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_12352
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_667d
@@ -18839,7 +15824,7 @@ Func_12acb: ; 12acb (4:6acb)
 	and $f
 	pop de
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld a, $8f
 	ld [hl], a
 	ld hl, sp+$e
@@ -18865,7 +15850,7 @@ Func_12acb: ; 12acb (4:6acb)
 	and $f
 	pop de
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld a, $8f
 	ld [hl], a
 	ld hl, sp+$b
@@ -18890,7 +15875,7 @@ Func_12acb: ; 12acb (4:6acb)
 	and $f
 	pop de
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld a, $8b
 	ld [hl], a
 	pop bc
@@ -18915,7 +15900,7 @@ Func_12acb: ; 12acb (4:6acb)
 	and $f
 	pop de
 	call SetStringStartState
-	read_hl_from $c261
+	read_hl_from wStringStartTilemapAddress
 	ld a, $8c
 	ld [hl], a
 	ld l, $12
@@ -19091,8 +16076,7 @@ Func_12cff: ; 12cff (4:6cff)
 	call Func_12acb
 	pop bc
 Func_12d16: ; 12d16 (4:6d16)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_12d40
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_667d
@@ -19252,8 +16236,7 @@ Func_12e14: ; 12e14 (4:6e14)
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	call Func_2009
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_12e48
 	set_farcall_addrs_hli Func_667d
 	ld bc, $3
@@ -23245,7 +20228,7 @@ Func_169b2: ; 169b2 (5:69b2)
 	jp Func_16b21
 
 Func_169b5: ; 169b5 (5:69b5)
-	ld a, [$cc34]
+	ld a, [wSaveBlock3]
 	or a
 	jp nz, Func_169dd
 	ld hl, sp+$b
@@ -23315,7 +20298,7 @@ Func_16a2e: ; 16a2e (5:6a2e)
 	jp Func_16b21
 
 Func_16a31: ; 16a31 (5:6a31)
-	ld a, [$cd10]
+	ld a, [wSaveBlock4]
 	or a
 	jp nz, Func_16a59
 	ld hl, sp+$b
@@ -26318,8 +23301,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	jp .finish
 
 .check_cgb
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, .not_cgb
 	ld a, $2
 	ld [wEnableAttrMapTransfer], a
@@ -27459,8 +24441,7 @@ Func_21198: ; 21198 (8:5198)
 	jp Func_211fa
 
 Func_211e1: ; 211e1 (8:51e1)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_211ee
 	ld a, $2
 	ld [wEnableAttrMapTransfer], a
@@ -31884,8 +28865,7 @@ Func_237be: ; 237be
 	ld e, $8f
 	hlbgcoord 0, 0
 	call FillMemory
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_237fb
 	ld a, [rVBK]
 	or $1
@@ -31918,8 +28898,7 @@ Func_23824: ; 23824 (8:7824)
 	ld hl, wLastVBlankFlags
 	cp [hl]
 	jp nz, Func_23824
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_238c7
 	call WaitVideoTransfer
 Func_23839: ; 23839 (8:7839)
@@ -40181,8 +37160,7 @@ Func_30348:: ; 30348 (c:4348)
 	push bc
 	push bc
 	push bc
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_3035a
 	ld a, $2
 	ld [wEnableAttrMapTransfer], a
@@ -44344,7 +41322,7 @@ Func_32858: ; 32858 (c:6858)
 	jp nc, Func_32871
 	ld e, c
 	ld d, $0
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	add hl, de
 	ld a, [hl]
 	or a
@@ -44383,7 +41361,7 @@ Func_32890: ; 32890 (c:6890)
 	jp nc, Func_328a9
 	ld e, c
 	ld d, $0
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	add hl, de
 	ld a, [hl]
 	or a
@@ -46366,7 +43344,7 @@ Func_3383d: ; 3383d (c:783d)
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
-	ld hl, $c980
+	ld hl, wSaveScratchPlayerName
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$8
@@ -46437,7 +43415,7 @@ Func_338d5: ; 338d5 (c:78d5)
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
-	ld hl, $c980
+	ld hl, wSaveScratchPlayerName
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$8
@@ -47822,8 +44800,7 @@ Data_4c318: ; 4c318
 
 Func_4c323: ; 4c323 (13:4323)
 	call FillVisibleAreaWithBlankTile
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_4c355
 	set_farcall_addrs_hli Func_613fc
 	ld e, $0
@@ -52177,7 +49154,7 @@ Func_4e58b: ; 4e58b
 	ld a, $3
 	call FarCall
 	push af
-	ld hl, $c980
+	ld hl, wSaveScratchPlayerName
 	reg16swap de, hl
 	ld hl, sp+$a
 	ld bc, $5
@@ -53122,7 +50099,7 @@ Func_4ece2: ; 4ece2 (13:6ce2)
 	jp nc, Func_4ed0a
 	ld e, c
 	ld d, $0
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	add hl, de
 	ld a, [hl]
 	or a
@@ -53131,7 +50108,7 @@ Func_4ece2: ; 4ece2 (13:6ce2)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$2
@@ -53155,7 +50132,7 @@ Func_4ed0e: ; 4ed0e (13:6d0e)
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$5
@@ -53166,12 +50143,12 @@ Func_4ed30: ; 4ed30 (13:6d30)
 	jp nc, Func_4ed4a
 	ld e, c
 	ld d, $0
-	ld hl, $cd11
+	ld hl, wSaveBlock4 + 1
 	add hl, de
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	add hl, de
 	ld [hl], a
 	inc c
@@ -53179,7 +50156,7 @@ Func_4ed30: ; 4ed30 (13:6d30)
 
 Func_4ed4a: ; 4ed4a (13:6d4a)
 	xor a
-	ld [$ce09], a
+	ld [wSaveBlock4 + $f9], a
 	ld hl, sp+$2
 	ld [hl], $1
 	pop bc
@@ -53312,7 +50289,7 @@ Func_4ee37: ; 4ee37 (13:6e37)
 	jp nc, Func_4ee5f
 	ld e, c
 	ld d, $0
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	add hl, de
 	ld a, [hl]
 	or a
@@ -53321,7 +50298,7 @@ Func_4ee37: ; 4ee37 (13:6e37)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$2
@@ -53350,12 +50327,12 @@ Func_4ee7a: ; 4ee7a (13:6e7a)
 	jp nc, Func_4ee94
 	ld e, c
 	ld d, $0
-	ld hl, $cc35
+	ld hl, wSaveBlock3 + 1
 	add hl, de
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	add hl, de
 	ld [hl], a
 	inc c
@@ -53628,11 +50605,11 @@ Func_4fac6: ; 4fac6 (13:7ac6)
 	ld a, $28
 	ld [rLYC], a
 	xor a
-	ld [wc2e1], a
+	ld [wHBlankMode], a
 	xor a
-	ld [wc2e2], a
+	ld [wHBlankLYCPrimary], a
 	ld a, $91
-	ld [wc2e3], a
+	ld [wHBlankLYCAlternate], a
 	call EnableHBlank
 	call Func_4fabb
 	call WaitVideoTransfer
@@ -56163,7 +53140,7 @@ Func_50f2b: ; 50f2b (14:4f2b)
 	jp nc, Func_50f4e
 	ld e, c
 	ld d, $0
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	add hl, de
 	ld a, [hl]
 	or a
@@ -57653,14 +54630,14 @@ Data_51bef: ; 51bef
 Func_51bf3: ; 51bf3 (14:5bf3)
 	push af
 	ld a, $1
-	ld [$c980], a
+	ld [wSaveBlock1], a
 	xor a
-	ld [$c981], a
+	ld [wSaveBlock1 + 1], a
 	ld a, BANK(DebugSaveState)
 	ld [wFarCallDestBank], a
 	ld bc, $214
 	ld de, DebugSaveState
-	ld hl, $c980
+	ld hl, wSaveScratch
 	call FarCopyVideoData
 	xor a
 Func_51c0f: ; 51c0f (14:5c0f)
@@ -59197,8 +56174,7 @@ Func_52a2e: ; 52a2e (14:6a2e)
 	ld [hl], $0
 Func_52a51: ; 52a51 (14:6a51)
 	call FillVisibleAreaWithBlankTile
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_52a72
 	set_farcall_addrs_hli Func_61424
 	ld c, $0
@@ -63425,7 +60401,7 @@ Func_55f95: ; 55f95 (15:5f95)
 
 Func_55fb8: ; 55fb8 (15:5fb8)
 	ld d, $0
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$0
@@ -63548,7 +60524,7 @@ Func_5608d: ; 5608d (15:608d)
 
 Func_56090: ; 56090 (15:6090)
 	ld d, $0
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$1
@@ -64028,7 +61004,7 @@ Func_56423: ; 56423 (15:6423)
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, $cd10
+	ld hl, wSaveBlock4
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$4
@@ -64071,7 +61047,7 @@ Func_56481: ; 56481 (15:6481)
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, $cc34
+	ld hl, wSaveBlock3
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$4
@@ -64312,8 +61288,7 @@ Data_566a9:
 
 Func_566fe: ; 566fe (15:66fe)
 	add sp, -$6a
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_5671e
 	set_farcall_addrs_hli Func_61424
 	ld c, $0
@@ -65529,7 +62504,7 @@ Func_573a4:
 	ld a, $3
 	call GetBanks_15
 	push af
-	ld hl, $c980
+	ld hl, wSaveScratchPlayerName
 	reg16swap de, hl
 	ld hl, sp+$b
 	ld bc, $5
@@ -67178,7 +64153,7 @@ Func_58df9: ; 58df9 (16:4df9)
 	ld a, $3
 	call FarCall
 	push af
-	ld hl, $c980
+	ld hl, wSaveScratchPlayerName
 	reg16swap de, hl
 	ld hl, sp+$c
 	ld bc, $5
@@ -72780,8 +69755,7 @@ Func_5c328: ; 5c328 (17:4328)
 	ld bc, $0
 	call FarCall
 	pop de
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_5c37b
 	push de
 	call WaitVideoTransfer
@@ -78311,7 +75285,7 @@ Func_60556: ; 60556 (18:4556)
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, $c980
+	ld de, wSaveScratchPlayerName
 	ld hl, sp+$8
 	call CopyUntilNull
 	pop af
@@ -78349,7 +75323,7 @@ Func_605be: ; 605be (18:45be)
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, $c980
+	ld de, wSaveScratchPlayerName
 	ld hl, sp+$a
 	call CopyUntilNull
 	pop af
@@ -79959,8 +76933,7 @@ LoadRobotPaletteCGB: ; 612f4
 
 Func_613fc:: ; 613fc (18:53fc)
 	push af
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_6140e
 	ld hl, sp+$1
 	ld a, [hl]
@@ -80084,7 +77057,6 @@ Data_614f3: ; 614f3
 Func_615be: ; 615be
 	cp $cb
 	jp nc, Func_615cc
-Func_615c3: ; 615c3
 	ld e, a
 	ld d, $0
 	ld hl, Data_614f3
@@ -80251,469 +77223,7 @@ Func_616c2: ; 616c2 (18:56c2)
 	pop bc
 	ret
 
-Data_616c6: ; 616c6
-	dr $616c6, $616ce
-
-Data_616ce: ; 616ce
-	dr $616ce, $616d5
-
-Data_616d5: ; 616d5
-	dr $616d5, $616db
-
-Data_616db: ; 616db
-	dr $616db, $616dd
-
-Func_616dd: ; 616dd ; DoDamage?
-	push af
-	push de
-	add sp, -$26
-	ld e, $2
-	push de
-	read_hl_from wCurRobotPointer
-	ld de, $16
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, $5e
-	add hl, de
-	ld a, [hl]
-	and $1
-	ld hl, sp+$27
-	ld [hl], a
-	ld hl, sp+$26
-	ld [hl], $0
-	ld hl, sp+$9
-	reg16swap de, hl
-	ld hl, Data_616c6
-	ld bc, $8
-	call MemCopy
-	ld hl, sp+$2
-	reg16swap de, hl
-	ld hl, Data_616ce
-	ld bc, $7
-	call MemCopy
-	ld a, [wLCDC]
-	or $6
-	ld [wLCDC], a
-	ld a, [wNextVBlankFlags]
-	or $4
-	ld [wNextVBlankFlags], a
-.waitLoop
-	ld a, [wNextVBlankFlags]
-	ld hl, wLastVBlankFlags
-	cp [hl]
-	jp nz, .waitLoop
-	ld hl, sp+$2b
-	ld a, [hl]
-	read_hl_from wCurRobotPointer
-	ld de, $b
-	add hl, de
-	ld [hl], a
-	set_farcall_addrs_hli Func_f723
-	ld hl, sp+$9
-	call FarCall
-	ld hl, sp+$2b
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld de, Data_616d5
-	add hl, de
-	ld e, [hl]
-	ld hl, sp+$19
-	ld [hl], e
-	ld hl, sp+$2b
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	ld de, Data_616d5
-	add hl, de
-	inc hl
-	ld e, [hl]
-	ld hl, sp+$1a
-	ld [hl], e
-	ld hl, sp+$2b
-	ld a, [hl]
-	or a
-	jp nz, Func_6178d
-	ld hl, $2
-	write_hl_to_sp_plus $26
-	ld hl, $703
-	write_hl_to_sp_plus $24
-	ld hl, sp+$27
-	ld [hl], $1
-	xor a
-	jp Func_6179d
-
-Func_6178d: ; 6178d (18:578d)
-	ld hl, $b02
-	write_hl_to_sp_plus $26
-	ld hl, $1203
-	write_hl_to_sp_plus $24
-	ld a, $b
-Func_6179d: ; 6179d (18:579d)
-	push af
-	read_hl_from wCurRobotPointer
-	ld de, $16
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, sp+$2d
-	ld a, [hl]
-	or a
-	jp nz, Func_617b7
-	ld hl, $0
-	jp Func_617ba
-
-Func_617b7: ; 617b7 (18:57b7)
-	ld hl, $2f
-Func_617ba: ; 617ba (18:57ba)
-	add hl, de
-	ld c, l
-	ld b, h
-	push bc
-	ld hl, $1a
-	add hl, bc
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	write_hl_to_sp_plus $26
-	ld hl, $18
-	add hl, bc
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	write_hl_to_sp_plus $24
-	read_hl_from_sp_plus $2e
-	push hl
-	read_hl_from_sp_plus $26
-	pop de
-	ld a, l
-	sub e
-	ld l, a
-	ld a, h
-	sbc d
-	ld h, a
-	write_hl_to_sp_plus $22
-	read_hl_from_sp_plus $22
-	reg16swap de, hl
-	ld hl, $0
-	call CompareHLtoDE
-	jp c, Func_61802
-	ld hl, $0
-	write_hl_to_sp_plus $22
-Func_61802: ; 61802 (18:5802)
-	ld hl, sp+$19
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $26
-	push hl
-	read_hl_from_sp_plus $26
-	pop de
-	call Func_2617
-	ld hl, sp+$19
-	ld c, l
-	ld b, h
-	ld de, $30
-	ld hl, sp+$19
-	call MultiplyULongAtHLByUShortDE
-	ld hl, sp+$1b
-	ld a, [hl]
-	and $80
-	jp z, Func_6182e
-	ld hl, sp+$1a
-	ld a, [hl]
-	inc a
-	ld hl, sp+$1a
-	ld [hl], a
-Func_6182e: ; 6182e (18:582e)
-	ld hl, sp+$1a
-	ld a, [hl]
-	push af
-	ld hl, sp+$17
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $28
-	push hl
-	read_hl_from_sp_plus $26
-	pop de
-	call Func_2617
-	ld hl, sp+$17
-	ld c, l
-	ld b, h
-	ld de, $30
-	ld hl, sp+$17
-	call MultiplyULongAtHLByUShortDE
-	ld hl, sp+$19
-	ld a, [hl]
-	and $80
-	jp z, Func_6185e
-	ld hl, sp+$18
-	ld a, [hl]
-	inc a
-	ld hl, sp+$18
-	ld [hl], a
-Func_6185e: ; 6185e (18:585e)
-	ld hl, sp+$18
-	ld a, [hl]
-	ld hl, sp+$21
-	ld [hl], a
-	read_hl_from_sp_plus $26
-	ld de, $100
-	call DivideHLByDESigned
-	ld a, l
-	ld hl, sp+$1b
-	ld [hl], a
-	read_hl_from_sp_plus $26
-	ld e, l
-	ld hl, sp+$1c
-	ld [hl], e
-	ld hl, sp+$1e
-	xor a
-	ld [hl], a
-	ld hl, sp+$1d
-	ld [hl], a
-	pop af
-	push af
-	ld hl, sp+$17
-	ld c, l
-	ld b, h
-	ld hl, sp+$21
-	ld e, [hl]
-	ld d, $0
-	ld l, a
-	ld h, $0
-	ld a, l
-	sub e
-	ld l, a
-	ld a, h
-	sbc d
-	ld h, a
-	push hl
-	read_hl_from_sp_plus $26
-	push hl
-	read_hl_from_sp_plus $2a
-	pop de
-	ld a, l
-	sub e
-	ld l, a
-	ld a, h
-	sbc d
-	ld h, a
-	pop de
-	call Func_2617
-	ld a, $5d
-	call OverworldPlaySFX
-	pop af
-	ld e, a
-Func_618b1: ; 618b1 (18:58b1)
-	ld hl, sp+$1f
-	ld a, [hl]
-	cp e
-	jp nc, Func_6197c
-	push de
-	ld hl, sp+$31
-	ld a, [hl]
-	ld l, e
-	ld h, a
-	push hl
-	read_hl_from_sp_plus $2e
-	pop de
-	call DrawHPBar
-	ld hl, sp+$1a
-	reg16swap de, hl
-	ld hl, sp+$1e
-	call Func_63ce1
-	ld hl, sp+$2d
-	ld a, [hl]
-	or a
-	jp z, Func_618eb
-	ld hl, sp+$1c
-	ld e, [hl]
-	ld hl, sp+$1b
-	ld h, [hl]
-	ld d, h
-	push de
-	read_hl_from_sp_plus $2e
-	inc h
-	inc hl
-	pop de
-	call Func_63d05
-Func_618eb: ; 618eb (18:58eb)
-	ld a, [wc2cd]
-	xor $1
-	ld [wc2cd], a
-	read_hl_from_sp_plus $2c
-	ld c, l
-	ld b, h
-	read_hl_from_sp_plus $2a
-	reg16swap de, hl
-	ld hl, wc2cd
-	ld l, [hl]
-	ld h, $0
-	inc h
-	inc h
-	call Func_63e6f
-	pop de
-	ld hl, sp+$2a
-	ld a, [hl]
-	cp $7
-	jp c, Func_6192c
-	push de
-	ld hl, sp+$31
-	ld e, [hl]
-	ld d, $0
-	ld hl, Data_616db
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld de, $28
-	call Func_615ce
-	pop de
-	jp Func_61940
-
-Func_6192c: ; 6192c (18:592c)
-	push de
-	ld a, e
-	and $1
-	ld e, a
-	ld d, $0
-	ld hl, sp+$1f
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld de, $28
-	call Func_615ce
-	pop de
-Func_61940: ; 61940 (18:5940)
-	push de
-	call WaitVideoTransfer
-	ld a, [wc2cd]
-	or a
-	jp nz, Func_61956
-	ld a, [wLCDC]
-	and $f7
-	ld [wLCDC], a
-	jp Func_6195e
-
-Func_61956: ; 61956 (18:5956)
-	ld a, [wLCDC]
-	or $8
-	ld [wLCDC], a
-Func_6195e: ; 6195e (18:595e)
-	ld a, [wNextVBlankFlags]
-	or $6
-	ld [wNextVBlankFlags], a
-Func_61966: ; 61966 (18:5966)
-	ld a, [wNextVBlankFlags]
-	ld hl, wLastVBlankFlags
-	cp [hl]
-	jp nz, Func_61966
-	pop de
-	dec e
-	ld hl, sp+$2a
-	ld a, [hl]
-	inc a
-	ld hl, sp+$2a
-	ld [hl], a
-	jp Func_618b1
-
-Func_6197c: ; 6197c (18:597c)
-	ld hl, sp+$2a
-	ld a, [hl]
-	cp $7
-	jp nc, Func_619a5
-	ld hl, sp+$2a
-	ld a, [hl]
-	and $1
-	ld e, a
-	ld d, $0
-	ld hl, sp+$1d
-	add hl, de
-	ld l, [hl]
-	ld h, $0
-	ld de, $28
-	call Func_615ce
-	call Func_0451
-	ld hl, sp+$2a
-	ld a, [hl]
-	inc a
-	ld hl, sp+$2a
-	ld [hl], a
-	jp Func_6197c
-
-Func_619a5: ; 619a5 (18:59a5)
-	ld hl, sp+$1f
-	ld a, [hl]
-	or a
-	jp nz, Func_619c1
-	read_hl_from_sp_plus $22
-	reg16swap de, hl
-	ld hl, $0
-	call CompareHLtoDE
-	jp nc, Func_619c1
-	ld hl, sp+$1f
-	ld [hl], $1
-Func_619c1: ; 619c1 (18:59c1) (ApplyDamage?)
-	ld hl, sp+$1f
-	ld e, [hl]
-	ld hl, sp+$2f
-	ld h, [hl]
-	ld d, h
-	push de
-	read_hl_from_sp_plus $2c
-	pop de
-	call DrawHPBar
-	ld hl, sp+$2b
-	ld a, [hl]
-	or a
-	jp z, Func_619e7
-	read_hl_from_sp_plus $22
-	push hl
-	read_hl_from_sp_plus $2c
-	inc h
-	inc hl
-	pop de
-	call Func_63d05
-Func_619e7: ; 619e7 (18:59e7)
-	call WaitVideoTransfer
-	pop bc
-	read_hl_from_sp_plus $20
-	reg16swap de, hl
-	ld hl, $18
-	add hl, bc
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	pop af
-	pop de
-	ld l, $2
-	push hl
-	ld c, $8
-	call Func_3ca1
-	pop bc
-	set_farcall_addrs_hli Func_f723
-	ld hl, sp+$0
-	call FarCall
-	ld a, [wLCDC]
-	and $f9
-	ld [wLCDC], a
-	ld a, [wNextVBlankFlags]
-	or $4
-	ld [wNextVBlankFlags], a
-.waitLoop
-	ld a, [wNextVBlankFlags]
-	ld hl, wLastVBlankFlags
-	cp [hl]
-	jp nz, .waitLoop
-	read_hl_from_sp_plus $1c
-	reg16swap de, hl
-	add sp, $2a
-	reg16swap de, hl
-	ret
+INCLUDE "battle/damage_anim.asm"
 
 Func_61a3e: ; 61a3e
 	push af
@@ -82491,8 +79001,7 @@ Data_62845: ; 62845
 	RGB 00, 00, 00
 
 LoadBattlePals: ; 62865 (18:6865)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp z, .wait1
 	jp .not_cgb
 
@@ -87492,8 +84001,7 @@ Func_69399: ; 69399 (1a:5399)
 	inc hl
 	or [hl]
 	jp z, Func_69431
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_693e7
 	ld a, BANK(MapTiles_CGB)
 	ld [wFarCallDestBank], a
@@ -88163,7 +84671,7 @@ Func_69878: ; 69878 (1a:5878)
 	ld a, $3
 	call GetBanks_1a
 	push af
-	ld hl, $c980
+	ld hl, wSaveScratchPlayerName
 	reg16swap de, hl
 	ld hl, sp+$d
 	ld bc, $5
@@ -93571,11 +90079,11 @@ Func_6c546:
 	ld a, $28
 	ld [rLYC], a
 	xor a
-	ld [wc2e1], a
+	ld [wHBlankMode], a
 	xor a
-	ld [wc2e2], a
+	ld [wHBlankLYCPrimary], a
 	ld a, $91
-	ld [wc2e3], a
+	ld [wHBlankLYCAlternate], a
 	call EnableHBlank
 	call Func_6c011
 	call WaitVideoTransfer
@@ -95258,8 +91766,7 @@ Func_6d205: ; 6d205 (1b:5205)
 
 Func_6d20f: ; 6d20f (1b:520f)
 	call WaitVideoTransfer
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_6d234
 	set_farcall_addrs_hli Func_667d
 	ld bc, $3
@@ -95780,8 +92287,7 @@ Func_6d67e: ; 6d67e (1b:567e)
 	or $8
 	ld [wLCDC], a
 Func_6d686: ; 6d686 (1b:5686)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_6d6ba
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -97711,8 +94217,7 @@ Func_6e339: ; 6e339 (1b:6339)
 	ld e, $0
 	ld a, $1
 	call Func_6edcf
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_6e394
 	ld e, $0
 	ld a, $1
@@ -97770,8 +94275,7 @@ Func_6e39e: ; 6e39e (1b:639e)
 	ld e, $1
 	ld a, $1
 	call Func_6edcf
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_6e3f9
 	ld e, $1
 	ld a, $1
@@ -98186,16 +94690,16 @@ Func_6e6d4: ; 6e6d4 (1b:66d4)
 	or a
 	jp nz, Func_6e6f0
 	ld a, [bc]
-	ld hl, wc2e4 + 1
+	ld hl, wHBlankSCXAlternate + 1
 	add [hl]
-	ld [wc2e4 + 1], a
+	ld [wHBlankSCXAlternate + 1], a
 	jp Func_6e6f0
 
 Func_6e6e8: ; 6e6e8 (1b:66e8)
 	ld a, [bc]
-	ld hl, wc2e4
+	ld hl, wHBlankSCXAlternate
 	add [hl]
-	ld [wc2e4], a
+	ld [wHBlankSCXAlternate], a
 Func_6e6f0: ; 6e6f0 (1b:66f0)
 	ld a, [de]
 	cp $21
@@ -98281,16 +94785,16 @@ Func_6e75a: ; 6e75a (1b:675a)
 	or a
 	jp nz, Func_6e76c
 	ld a, [bc]
-	ld hl, wc2e4 + 1
+	ld hl, wHBlankSCXAlternate + 1
 	add [hl]
-	ld [wc2e4 + 1], a
+	ld [wHBlankSCXAlternate + 1], a
 	jp Func_6e774
 
 Func_6e76c: ; 6e76c (1b:676c)
 	ld a, [bc]
-	ld hl, wc2e4
+	ld hl, wHBlankSCXAlternate
 	add [hl]
-	ld [wc2e4], a
+	ld [wHBlankSCXAlternate], a
 Func_6e774: ; 6e774 (1b:6774)
 	ld hl, sp+$4
 	ld l, [hl]
@@ -98392,15 +94896,15 @@ Func_6e81f: ; 6e81f (1b:681f)
 	ld [wNextVBlankFlags], a
 	call Func_6c011
 	ld a, $1
-	ld [wc2e1], a
+	ld [wHBlankMode], a
 	ld a, $48
-	ld [wc2e2], a
+	ld [wHBlankLYCPrimary], a
 	ld a, $90
-	ld [wc2e3], a
+	ld [wHBlankLYCAlternate], a
 	xor a
-	ld [wc2e4], a
+	ld [wHBlankSCXAlternate], a
 	xor a
-	ld [wc2e4 + 1], a
+	ld [wHBlankSCXAlternate + 1], a
 	call Func_6c011
 	ld a, [wLCDC]
 	or $2
@@ -98427,8 +94931,7 @@ Func_6e867: ; 6e867 (1b:6867)
 	ld a, [wc2cd]
 	xor $1
 	ld [wc2cd], a
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_6e88b
 	call Func_6e9d1
 Func_6e88b: ; 6e88b (1b:688b)
@@ -98787,8 +95290,7 @@ Func_6eb16: ; 6eb16 (1b:6b16)
 Func_6eb1f: ; 6eb1f (1b:6b1f)
 	push bc
 	push bc
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_6eb31
 	ld a, BANK(MapTiles_CGB)
 	ld de, MapTiles_CGB
@@ -102343,8 +98845,7 @@ Func_fbbb5: ; fbbb5 (3e:7bb5)
 	push bc
 	push bc
 	push hl
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fbbe7
 	set_farcall_addrs_hli Func_613fc
 	ld e, $0
@@ -103382,7 +99883,7 @@ Func_fc416: ; fc416 (3f:4416)
 	ld hl, $40
 	add hl, de
 	push hl
-	read_hl_from $c325
+	read_hl_from wc324 + 1
 	ld de, $8
 	call DivideHLByDESigned
 	ld h, l
@@ -103544,7 +100045,7 @@ Func_fc580: ; fc580 (3f:4580)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to $c325
+	write_hl_to wc324 + 1
 	ld hl, sp+$6
 	ld a, [hl]
 	ld hl, sp+$d
@@ -104042,8 +100543,7 @@ Func_fc9bc: ; fc9bc (3f:49bc)
 	inc h
 	inc h
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fca19
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -104090,8 +100590,8 @@ IF DEF(STAR)
 ENDC
 	call FarCall
 	call WriteHLToSPPlus3
-	ld hl, wc770
-	write_hl_to $c201
+	ld hl, wLCDInterrupt2
+	write_hl_to wLCD + 1
 	call Func_fe004
 	xor a
 	ld [wJoyHeld], a
@@ -104276,8 +100776,7 @@ Func_fcbae: ; fcbae (3f:4bae)
 	add hl, de
 	ld de, $1311
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fcc1b
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -104373,8 +100872,7 @@ Func_fccc2: ; fccc2 (3f:4cc2)
 	ld de, $1311
 	ld hl, $0
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fcd66
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -104423,8 +100921,7 @@ Func_fcd69: ; fcd69 (3f:4d69)
 	ld [wNextVBlankFlags], a
 	call Func_fc092
 	call Func_fc884
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fcddc
 	call WaitVideoTransfer
 Func_fcdb8: ; fcdb8 (3f:4db8)
@@ -104443,8 +100940,7 @@ Func_fcdd4: ; fcdd4 (3f:4dd4)
 	and $40
 	jp nz, Func_fcdd4
 Func_fcddc: ; fcddc (3f:4ddc)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fcdf8
 	ld a, BANK(GFX_d97e8)
 	ld [wFarCallDestBank], a
@@ -104517,8 +101013,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	add hl, de
 	add hl, bc
 	ld [hl], a
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fce8d
 	ld hl, sp+$10
 	ld e, [hl]
@@ -104593,7 +101088,7 @@ Func_fcea1: ; fcea1 (3f:4ea1)
 	and $fd
 	ld [rIE], a
 	ld hl, LCDInterrupt
-	write_hl_to $c201
+	write_hl_to wLCD + 1
 	ei
 	ld l, $12
 	push hl
@@ -104783,8 +101278,7 @@ Func_fd03d:
 	ld de, GFX_4cd2
 	ld hl, $9000
 	call FarCopyVideoData
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp z, Func_fd0b1
 	ld bc, $10
 	ld e, $ff
@@ -104842,8 +101336,7 @@ Func_fd0f5: ; fd0f5 (3f:50f5)
 	jp Func_fd0c4
 
 Func_fd0fc: ; fd0fc (3f:50fc)
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp z, Func_fd11d
 	ld bc, $80
 	ld e, $6
@@ -104947,8 +101440,7 @@ Func_fd1bd: ; fd1bd (3f:51bd)
 	debgcoord 0, 0
 	hlbgcoord 0, 0, vWindowMap
 	call CopyFromDEtoHL
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fd1e9
 	ld a, [rVBK]
 	or $1
@@ -104967,8 +101459,8 @@ Func_fd1e9: ; fd1e9 (3f:51e9)
 	xor a
 	ld [wc2cd], a
 	call Func_fdfe5
-	ld hl, wc770
-	write_hl_to $c201
+	ld hl, wLCDInterrupt2
+	write_hl_to wLCD + 1
 	xor a
 	ld [rLYC], a
 	di
@@ -104984,8 +101476,7 @@ Func_fd213:: ; fd213 (3f:5213)
 	call WaitVideoTransfer
 	call Func_fccaa
 	call WaitVideoTransfer
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fd231
 Func_fd229: ; fd229 (3f:5229)
 	ld a, [wNextVBlankFlags]
@@ -105000,8 +101491,7 @@ Func_fd231: ; fd231 (3f:5231)
 	pop af
 	and $7f
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fd26a
 	ld a, [rVBK]
 	or $1
@@ -105094,8 +101584,7 @@ Func_fd314: ; fd314 (3f:5314)
 	ld [wVBlankTransferFlags], a
 	xor a
 	ld [wMapObjectCGBAttrsOverride], a
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fd394
 	ld bc, $80
 	ld de, Data_fc001
@@ -105910,8 +102399,7 @@ Func_fd989:
 	inc h
 	inc h
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fda3e
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -105937,8 +102425,7 @@ Func_fda3e: ; fda3e (3f:5a3e)
 	or $4
 	ld [wNextVBlankFlags], a
 	call Func_fc092
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fda5b
 	xor a
 	ld [wc2e8], a
@@ -105953,8 +102440,7 @@ Func_fda5b: ; fda5b (3f:5a5b)
 	add hl, de
 	ld e, [hl]
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fdaad
 	ld bc, $80
 	read_hl_from wCurRobotPointer
@@ -106027,8 +102513,7 @@ Func_fdadf: ; fdadf (3f:5adf)
 	inc h
 	inc h
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fdb5a
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -106190,8 +102675,7 @@ Func_fdc54: ; fdc54 (3f:5c54)
 	inc h
 	inc h
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fdcb3
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -106217,8 +102701,7 @@ Func_fdcb3: ; fdcb3 (3f:5cb3)
 	or $4
 	ld [wNextVBlankFlags], a
 	call Func_fc092
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fdcd0
 	xor a
 	ld [wc2e8], a
@@ -106234,8 +102717,7 @@ Func_fdcd0: ; fdcd0 (3f:5cd0)
 	ld e, [hl]
 	call FarCall
 	pop bc
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fdd25
 	push bc
 	ld bc, $80
@@ -106324,8 +102806,7 @@ Func_fdd6d: ; fdd6d (3f:5d6d)
 	inc h
 	inc h
 	call FarCall
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, Func_fdde3
 	call WaitVideoTransfer
 	ld a, [rVBK]
@@ -106588,7 +103069,7 @@ Func_fdfe5: ; fdfe5 (3f:5fe5)
 	ld [wc31b], a
 	ld [wc31e], a
 	ld hl, Func_fe03a
-	ld de, wc770
+	ld de, wLCDInterrupt2
 	ld bc, $5c
 .asm_fdffb
 	ld a, [hli]
@@ -106609,7 +103090,7 @@ Func_fe004: ; fe004 (3f:6004)
 	add $1
 	ld [wc31b], a
 	ld hl, Func_fe096
-	ld de, wc770
+	ld de, wLCDInterrupt2
 	ld bc, $6c
 .asm_fe01e
 	ld a, [hli]

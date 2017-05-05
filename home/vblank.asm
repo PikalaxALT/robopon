@@ -71,8 +71,7 @@ VBlank::
 	inc de
 	pop hl
 	; transfer attrs if and only if cgb
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, .skip_bgmap_tile_push
 	ld a, [rVBK]
 	or $1
@@ -127,8 +126,7 @@ VBlank::
 	inc de
 	pop hl
 	; transfer attrs if and only if cgb
-	ld a, [wSystemType]
-	cp $11
+	check_cgb
 	jp nz, .skip_bgmap_tile_push2
 	ld a, [rVBK]
 	or $1
