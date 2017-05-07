@@ -3034,7 +3034,7 @@ Func_bd542:
 	reg16swap de, hl
 	push de
 	reg16swap de, hl
-	ld de, wOAMBufferEnd
+	decoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
 	call FillVisibleAreaWithBlankTile
@@ -3054,7 +3054,7 @@ Func_bd542:
 	call Func_bc14e
 	pop de
 	push de
-	ld hl, wOAMBufferEnd
+	hlcoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli FreeMemory
@@ -3271,7 +3271,7 @@ Func_bd72d:
 	ld hl, $168
 	call FarCall
 	push hl
-	ld de, wOAMBufferEnd
+	decoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
 	call FillVisibleAreaWithBlankTile
@@ -5077,7 +5077,7 @@ Func_be39d: ; be39d (2f:639d)
 	push hl
 	add hl, bc
 	ld a, [hl]
-	ld hl, wOAMBufferEnd
+	hlcoord 0, 0
 	add hl, bc
 	ld [hl], a
 	inc bc
@@ -7034,7 +7034,7 @@ Func_bf5ba: ; bf5ba (2f:75ba)
 	ld [wNextVBlankFlags], a
 	call Func_bc49b
 	ld bc, $50
-	ld de, wOAMBufferEnd
+	decoord 0, 0
 	ld hl, sp+$61
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli PushBGMapRegion_

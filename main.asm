@@ -100522,11 +100522,159 @@ Func_fc946: ; fc946 (3f:4946)
 	ret
 
 Data_fc948:
+	db ROCKER + 1
+	db SUNNY + 1
+	db RAMJET + 1
 IF DEF(SUN)
-	dr $fc948, $fc9bc
+	db MOLBOT + 1
+	db DIGGER + 1
+ENDC
+	db COOKEY + 1
+	db BOOMER + 1
+	db COBALL + 1
+	db UNIX + 1
+	db ROMBY + 1
+	db RAMBY + 1
+	db DOTCOM + 1
+	db DOSBOT + 1
+	db PUNCHY + 1
+	db K_O_ + 1
+	db CARD + 1
+IF DEF(SUN)
+	db VIGGY + 1
+	db HOGBOT + 1
+ENDC
+	db TEABOT + 1
+	db GIDGET + 1
+	db BETTY + 1
+	db GRAMPS + 1
+	db B_BOT + 1
+	db SIGNOR + 1
+	db UNIBOT + 1
+	db CYCOOL + 1
+	db SPEEDY + 1
+IF DEF(SUN)
+	db DOLLBY + 1
+ENDC
+	db MOABOT + 1
+IF DEF(STAR)
+	db TOPAZ + 1
+ENDC
+	db SPUTER + 1
+	db ROTOR + 1
+IF DEF(SUN)
+	db SAMMI + 1
 ENDC
 IF DEF(STAR)
-	dr $fc948, $fc9ba
+	db MURI + 1
+ENDC
+	db SUMITO + 1
+	db SUMO + 1
+	db Q_ + 1
+	db VIC + 1
+	db RALPH + 1
+	db SCREWY + 1
+	db SKULBY + 1
+	db REX + 1
+	db FETCH + 1
+	db GIDYUP + 1
+	db MEDBOT + 1
+	db MEDDY + 1
+	db DOCBOT + 1
+IF DEF(SUN)
+	db SNIPES + 1
+	db DEEMO + 1
+ENDC
+	db CADET + 1
+	db PSS_T + 1
+	db TOONA + 1
+	db PING + 1
+	db LEACHY + 1
+	db BOOBOT + 1
+IF DEF(STAR)
+	db VIRUS + 1
+	db HEXBOT + 1
+ENDC
+	db CHIMP + 1
+	db SANDY + 1
+	db WHACKY + 1
+	db FILRUP + 1
+	db BATTY + 1
+	db WOLFE + 1
+	db BOLTON + 1
+	db BOILER + 1
+	db URCHY + 1
+	db SUBRIO + 1
+	db SUMISU + 1
+	db LOOPY + 1
+	db BOOM + 1
+	db KABOOM + 1
+	db CHOMPS + 1
+IF DEF(SUN)
+	db DIGIT + 1
+	db B_CELL + 1
+	db C_CELL + 1
+ENDC
+IF DEF(STAR)
+	db ROBBY + 1
+	db ROB_O + 1
+	db BELLA + 1
+	db CHARM + 1
+ENDC
+	db EGGER + 1
+	db QUAK_D + 1
+	db RAZOR + 1
+	db ROOTIX + 1
+	db ROOTER + 1
+	db PALMER + 1
+	db SPIKE + 1
+	db ZAPPA + 1
+	db VIPER + 1
+	db PAWS + 1
+IF DEF(STAR)
+	db HEYLOW + 1
+	db ANGIE + 1
+	db UGGY + 1
+ENDC
+	db SCORCH + 1
+	db CRYSTY + 1
+	db BEAKER + 1
+	db GRANIT + 1
+	db SNORKS + 1
+	db PEACH + 1
+	db ORBIT + 1
+	db SMACKS + 1
+	db PEEDO + 1
+	db ZEPPI + 1
+	db SPLAT + 1
+	db JOHNNY + 1
+	db SLOTS + 1
+	db CHECKS + 1
+	db MACK + 1
+	db HONEY + 1
+	db SEABEE + 1
+	db PUFF + 1
+	db GIGO + 1
+	db S_BOT + 1
+	db SV_BOT + 1
+	db SSTBOT + 1
+IF DEF(SUN)
+	db G_BOT + 1
+	db GY_BOT + 1
+	db GGTBOT + 1
+ENDC
+	db STIMY + 1
+	db HYME + 1
+	db STINKY + 1
+	db INVISO + 1
+	db MOCHI + 1
+	db TACBOT + 1
+	db GELLO + 1
+	db TICKER + 1
+	db RECYCO + 1
+	db ZOMBOT + 1
+IF DEF(STAR)
+	db RUDY + 1
 ENDC
 Data_fc948End
 

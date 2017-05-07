@@ -6297,14 +6297,14 @@ Func_93b87:: ; 93b87 (24:7b87)
 	ld [wRTCTicker], a
 	predef Func_7e4d2
 	jr z, .asm_93bb6
-	ld hl, wAttrMapEnd
+	ld hl, wLCDInterrupt2
 	xor a
 	ld [hl], a
 	ld c, $7
 	ld b, $1
 	predef Func_7e497
 	predef Func_7e2fd
-	ld bc, $fe00
+	ld bc, -$200
 	add hl, bc
 	jr nc, .skip_reset
 	call Func_93c08
@@ -6315,7 +6315,7 @@ Func_93b87:: ; 93b87 (24:7b87)
 
 .asm_93bb6
 	call Func_93bee
-	ld de, $6a89
+	ld de, 27273
 	ld hl, $0
 	jr .asm_93bc1
 
@@ -6326,7 +6326,7 @@ Func_93b87:: ; 93b87 (24:7b87)
 	call Func_93be9
 	jr z, .asm_93bd9
 	call Func_93bee
-	ld de, $6a89
+	ld de, 27273
 	ld hl, $0
 	predef Func_7e320
 	call Func_93be5
@@ -14406,10 +14406,159 @@ Data_e0858:
 GFX_e09c0: INCBIN "gfx/misc/e09c0.2bpp"
 
 Data_e10c0:
-	dr $e10c0, $e1255
+	db $5b, $01, $52
+	db $5b, $01, $52
+	db $5b, $01, $52
+	db $02, $03, $52
+	db $02, $03, $52
+	db $02, $03, $52
+	db $04, $05, $52
+	db $04, $05, $52
+	db $04, $05, $52
+
+	db $20, $21, $5d
+	db $20, $21, $5d
+	db $20, $21, $5d
+	db $22, $23, $5d
+	db $22, $23, $5d
+	db $22, $23, $5d
+	db $24, $25, $5d
+	db $24, $25, $5d
+	db $24, $25, $5d
+
+	db $64, $65, $66
+	db $64, $67, $68
+	db $64, $69, $6a
+	db $64, $65, $66
+	db $64, $67, $68
+	db $64, $69, $6a
+	db $64, $65, $66
+	db $64, $67, $68
+	db $64, $69, $6a
+
+	db $06, $07, $52
+	db $06, $07, $52
+	db $06, $07, $52
+	db $08, $09, $0a
+	db $08, $09, $0a
+	db $08, $09, $0a
+	db $0b, $0c, $0d
+	db $0b, $0c, $0d
+	db $0b, $0c, $0d
+
+	db $26, $27, $5d
+	db $26, $27, $5d
+	db $26, $27, $5d
+	db $28, $29, $2a
+	db $28, $29, $2a
+	db $28, $29, $2a
+	db $2b, $2c, $2d
+	db $2b, $2c, $2d
+	db $2b, $2c, $2d
+
+	db $6e, $1e, $4d
+	db $64, $67, $68
+	db $6e, $1e, $4e
+	db $64, $65, $66
+	db $64, $67, $68
+	db $64, $69, $6a
+	db $64, $65, $66
+	db $64, $67, $68
+	db $64, $69, $6a
+
+	db $0e, $0f, $52
+	db $0e, $0f, $52
+	db $0e, $0f, $52
+	db $50, $51, $52
+	db $40, $41, $52
+	db $42, $43, $52
+	db $10, $11, $52
+	db $10, $11, $52
+	db $10, $11, $52
+
+	db $2e, $2f, $5d
+	db $2e, $2f, $5d
+	db $2e, $2f, $5d
+	db $6b, $6c, $6d
+	db $60, $61, $5d
+	db $62, $63, $5d
+	db $30, $31, $5d
+	db $30, $31, $5d
+	db $30, $31, $5d
+
+	db $49, $4a, $46
+	db $4b, $4c, $46
+	db $6e, $4f, $46
+	db $6e, $1e, $6f
+	db $6e, $1e, $6f
+	db $6e, $1e, $6f
+	db $64, $65, $66
+	db $64, $67, $68
+	db $64, $69, $6a
+
+	db $12, $13, $52
+	db $12, $13, $52
+	db $12, $13, $52
+	db $17, $18, $52
+	db $1b, $1c, $52
+	db $19, $1a, $52
+	db $14, $15, $52
+	db $14, $15, $52
+	db $14, $15, $52
+
+	db $32, $33, $5d
+	db $32, $33, $5d
+	db $32, $33, $5d
+	db $37, $38, $5d
+	db $3b, $3c, $5d
+	db $39, $3a, $5d
+	db $34, $35, $5d
+	db $34, $35, $5d
+	db $34, $35, $5d
+
+	db $6e, $1e, $1f
+	db $6e, $3e, $3f
+	db $6e, $5e, $5f
+	db $57, $58, $1f
+	db $57, $58, $3f
+	db $59, $5a, $5f
+	db $49, $4a, $46
+	db $47, $48, $46
+	db $44, $45, $46
+
+	db $50, $51, $52
+	db $00, $16, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+
+	db $53, $54, $55
+	db $00, $36, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+
+	db $6e, $1e, $6f
+	db $00, $56, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
+	db $00, $00, $00
 
 Data_e1255: ; e1255
-	dr $e1255, $e1259
+	bigdw 1
+	bigdw 2
 
 Data_e1259: ; e1259
 	dr $e1259, $e127f
@@ -14628,7 +14777,7 @@ Func_e16a3: ; e16a3 (38:56a3)
 	ld a, [de]
 	ld e, c
 	ld d, $0
-	ld hl, wc26bEnd
+	ld hl, wc28b
 	add hl, de
 	ld [hl], a
 	ld l, c
@@ -15311,7 +15460,7 @@ Func_e1bdb: ; e1bdb (38:5bdb)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	ld de, $1b
+	ld de, 27
 	call MultiplyHLbyDE
 	ld de, Data_e10c0
 	add hl, de
@@ -17757,7 +17906,7 @@ Func_e350e: ; e350e (38:750e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wc327End
+	ld de, wc347
 	add hl, de
 	ld de, $10
 	add hl, de
@@ -17773,7 +17922,7 @@ Func_e350e: ; e350e (38:750e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wc327End
+	ld de, wc347
 	add hl, de
 	ld de, $9
 	add hl, de
@@ -17808,7 +17957,7 @@ Func_e350e: ; e350e (38:750e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wc327End
+	ld de, wc347
 	add hl, de
 	ld de, $5
 	add hl, de
@@ -17824,7 +17973,7 @@ Func_e350e: ; e350e (38:750e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wc327End
+	ld de, wc347
 	add hl, de
 	ld de, $6
 	add hl, de
@@ -17856,7 +18005,7 @@ Func_e350e: ; e350e (38:750e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, wc327End
+	ld de, wc347
 	add hl, de
 	ld de, $8
 	add hl, de
