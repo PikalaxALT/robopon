@@ -1514,6 +1514,7 @@ Func_2323:: ; 2323
 
 GetRobotOrTrainerBaseStats:: ; 236f
 	; e: Poncots index
+	; hl: Destination pointer
 	push hl
 	ld hl, -$ee
 	add hl, sp
@@ -1536,7 +1537,7 @@ GetRobotOrTrainerBaseStats:: ; 236f
 	ld h, $0
 	ld de, 47
 	call MultiplyHLbyDE
-	ld de, $ba24 - 47 * NUM_ROBOTS
+	ld de, sSRAMRobots - 47 * NUM_ROBOTS
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2

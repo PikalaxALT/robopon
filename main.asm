@@ -3826,7 +3826,7 @@ Func_7cd1: ; 7cd1
 	push af
 	ld a, $2
 	call GetSRAMBank_ReadOnly
-	ld de, $a007
+	ld de, sWarehouse
 	ld c, $0
 	ld l, c
 Func_7cdf: ; 7cdf (1:7cdf)
@@ -3859,7 +3859,7 @@ Func_7d01: ; 7d01
 	push af
 	ld a, $2
 	call GetSRAMBank_ReadOnly
-	ld de, $a007
+	ld de, sWarehouse
 	ld c, $0
 Func_7d0e: ; 7d0e (1:7d0e)
 	ld a, c
@@ -3909,7 +3909,7 @@ Func_7d39: ; 7d39
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $a007
+	ld de, sWarehouse
 	add hl, de
 	ld a, $2
 	call GetSRAMBank
@@ -3955,7 +3955,7 @@ Func_7d39: ; 7d39
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $a023
+	ld de, sWarehouse + 28
 	add hl, de
 	push hl
 	ld hl, sp+$7
@@ -3971,7 +3971,7 @@ Func_7d39: ; 7d39
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $a007
+	ld de, sWarehouse
 	add hl, de
 	pop de
 	pop bc
@@ -4012,7 +4012,7 @@ Func_7db0:: ; 7db0 (1:7db0)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $a007
+	ld de, sWarehouse
 	add hl, de
 	push hl
 	ld hl, sp+$42
@@ -4051,7 +4051,7 @@ Func_7dfc:: ; 7dfc (1:7dfc)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $a007
+	ld de, sWarehouse
 	add hl, de
 	ld c, l
 	ld b, h
@@ -4132,7 +4132,7 @@ Func_7e8a: ; 7e8a
 	ld h, $0
 	ld de, 849
 	call MultiplyHLbyDE
-	ld de, $b29f
+	ld de, s2_b29f
 	add hl, de
 	ld c, l
 	ld b, h
@@ -4214,7 +4214,7 @@ Func_7f14: ; 7f14
 	ld h, $0
 	ld de, 849
 	call MultiplyHLbyDE
-	ld de, $b29f
+	ld de, s2_b29f
 	add hl, de
 	ld c, l
 	ld b, h
@@ -24541,7 +24541,7 @@ Func_2126c: ; 2126c (8:526c)
 	ld h, $0
 	ld de, $351
 	call MultiplyHLbyDE
-	ld de, ($b29f - $351 * $ab) & $ffff
+	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
 	reg16swap de, hl
 	ld hl, $351
@@ -24716,7 +24716,7 @@ Func_213c3: ; 213c3 (8:53c3)
 	ld h, $0
 	ld de, $351
 	call MultiplyHLbyDE
-	ld de, ($b29f - $351 * $ab) & $ffff
+	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
 	reg16swap de, hl
 	ld hl, $351
@@ -47449,7 +47449,7 @@ Func_4dad5: ; 4dad5 (13:5ad5)
 	ld h, $0
 	ld de, $351
 	call MultiplyHLbyDE
-	ld de, ($b29f - $351 * $ab) & $ffff
+	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -47539,7 +47539,7 @@ Func_4dba7: ; 4dba7 (13:5ba7)
 	ld h, $0
 	ld de, $351
 	call MultiplyHLbyDE
-	ld de, ($b29f - $351 * $ab) & $ffff
+	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -56630,7 +56630,7 @@ Func_52daa: ; 52daa (14:6daa)
 	push de
 	ld a, $2
 	call GetSRAMBank_ReadOnly
-	ld bc, $a007
+	ld bc, sWarehouse
 	xor a
 	pop de
 Func_52db8: ; 52db8 (14:6db8)
@@ -62912,7 +62912,7 @@ Func_576c1: ; 576c1 (15:76c1)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $a007
+	ld de, sWarehouse
 	add hl, de
 	ld a, [hl]
 	cp $ff
@@ -76104,7 +76104,7 @@ Func_60da5: ; 60da5 (18:4da5)
 	ld h, $0
 	ld de, $351
 	call MultiplyHLbyDE
-	ld de, ($b29f - $351 * $ab) & $ffff
+	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -86283,7 +86283,7 @@ Func_6a5a5: ; 6a5a5 (1a:65a5)
 	ld h, $0
 	ld de, $2f
 	call MultiplyHLbyDE
-	ld de, $ba24
+	ld de, sSRAMRobots
 	add hl, de
 	reg16swap de, hl
 	ld hl, $2f
@@ -86308,7 +86308,7 @@ Func_6a5ea: ; 6a5ea (1a:65ea)
 	ld h, $0
 	ld de, $351
 	call MultiplyHLbyDE
-	ld de, $b29f
+	ld de, s2_b29f
 	add hl, de
 	reg16swap de, hl
 	ld hl, $351
@@ -86410,7 +86410,7 @@ Func_6a6c2: ; 6a6c2 (1a:66c2)
 	ld h, $0
 	ld de, $2f
 	call MultiplyHLbyDE
-	ld de, $ba24
+	ld de, sSRAMRobots
 	add hl, de
 	reg16swap de, hl
 	ld hl, $2f
@@ -86435,7 +86435,7 @@ Func_6a707: ; 6a707 (1a:6707)
 	ld h, $0
 	ld de, $351
 	call MultiplyHLbyDE
-	ld de, $b29f
+	ld de, s2_b29f
 	add hl, de
 	reg16swap de, hl
 	ld hl, $351
@@ -86789,7 +86789,7 @@ Func_6a9c9: ; 6a9c9 (1a:69c9)
 	ld h, $0
 	ld de, $2f
 	call MultiplyHLbyDE
-	ld de, $ba24
+	ld de, sSRAMRobots
 	add hl, de
 	reg16swap de, hl
 	ld hl, $2f
@@ -86814,7 +86814,7 @@ Func_6aa0e: ; 6aa0e (1a:6a0e)
 	ld h, $0
 	ld de, $351
 	call MultiplyHLbyDE
-	ld de, $b29f
+	ld de, s2_b29f
 	add hl, de
 	reg16swap de, hl
 	ld hl, $351
@@ -97466,7 +97466,7 @@ Func_fb0db: ; fb0db (3e:70db)
 	ld h, $0
 	ld de, $2f
 	call MultiplyHLbyDE
-	ld de, $ba24
+	ld de, sSRAMRobots
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2

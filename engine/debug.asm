@@ -5901,16 +5901,16 @@ Func_bed16: ; bed16 (2f:6d16)
 	ld hl, $356
 	add hl, sp
 	reg16swap de, hl
-	ld hl, $ba24
+	ld hl, sSRAMRobots
 	call CopyFromDEtoHL
 	ld a, $3
 	call GetSRAMBank
 	ld a, $ab
 	ld [wSaveScratchParty], a
-	ld a, $3a
+	ld a, BANK(PoncotPicHeaders);
 	ld [wFarCallDestBank], a
 	ld bc, $4
-	ld de, $4000
+	ld de, PoncotPicHeaders
 	ld hl, sp+$2
 	call FarCopyVideoData
 	ld hl, sp+$3
@@ -5938,11 +5938,11 @@ Func_bed16: ; bed16 (2f:6d16)
 	ld a, $2
 	call GetSRAMBank
 	xor a
-	ld [$b29f], a
+	ld [s2_b29f], a
 	ld bc, $350
 	ld hl, sp+$6
 	reg16swap de, hl
-	ld hl, $b2a0
+	ld hl, s2_b29f + 1
 	call CopyFromDEtoHL
 	pop af
 	call GetSRAMBank
