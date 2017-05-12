@@ -3978,7 +3978,7 @@ Func_7d39: ; 7d39
 	call CopyFromDEtoHL
 Func_7da6: ; 7da6 (1:7da6)
 	xor a
-	ld [$b283], a
+	ld [sWarehouseEnd - 28], a
 	pop af
 	call GetSRAMBank
 	pop bc
