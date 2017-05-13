@@ -1514,6 +1514,7 @@ Func_2323:: ; 2323
 
 GetRobotOrTrainerBaseStats:: ; 236f
 	; e: Poncots index
+	; hl: Destination pointer
 	push hl
 	ld hl, -$ee
 	add hl, sp
@@ -1536,7 +1537,7 @@ GetRobotOrTrainerBaseStats:: ; 236f
 	ld h, $0
 	ld de, 47
 	call MultiplyHLbyDE
-	ld de, $ba24 - 47 * NUM_ROBOTS
+	ld de, sSRAMRobots - 47 * NUM_ROBOTS
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -3465,7 +3466,7 @@ Func_2f80:: ; 2f80 (0:2f80)
 	ld a, h
 	sbc $bf
 	jp c, Func_2fc0
-	ld hl, $bffe
+	ld hl, $7fff + $3fff
 	jp Func_2fcc
 
 Func_2fc0:: ; 2fc0 (0:2fc0)
@@ -3476,7 +3477,7 @@ Func_2fc0:: ; 2fc0 (0:2fc0)
 	jp nc, Func_2fcc
 	ld hl, $3fff
 Func_2fcc:: ; 2fcc (0:2fcc)
-	ld de, $c001
+	ld de, -$3fff
 	add hl, de
 	reg16swap de, hl
 	pop af

@@ -4792,7 +4792,7 @@ Func_930b9:
 	call GetSRAMBank
 	ld bc, $7
 	ld de, Data_930b1
-	ld hl, $a000
+	ld hl, sRoboponTitle
 	call CopyFromDEtoHL
 	pop af
 	call GetSRAMBank
@@ -4818,7 +4818,7 @@ Func_930e1: ; 930e1 (24:70e1)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, $a000
+	ld hl, sRoboponTitle
 	add hl, de
 	cp [hl]
 	jp z, Func_93101
