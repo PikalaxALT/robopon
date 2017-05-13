@@ -707,7 +707,7 @@ Func_1b01:: ; 1b01
 	ld sp, wStackTop
 	ld a, $3
 	call GetSRAMBank
-	callba Func_fd213
+	callba TitleScreen
 	ld a, $3
 	call GetSRAMBank
 	ld a, BANK(Func_4060)

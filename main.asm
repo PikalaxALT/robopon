@@ -28,7 +28,7 @@ Func_4000:: ; 4000
 	or a
 	ret nz
 	callba Func_93b87
-	callba Func_fd314
+	callba IntroMovie
 Func_4060:: ; 4060 (1:4060)
 	jp Func_1e4d
 
@@ -7962,7 +7962,7 @@ Func_d111: ; d111 (3:5111)
 	push bc
 	push af
 	ld hl, Data_cff2
-	call Func_f723
+	call PlayBattleAnimScript
 	call EnableHBlank
 	pop af
 	pop bc
@@ -7981,22 +7981,22 @@ Func_d111: ; d111 (3:5111)
 
 Func_d13b: ; d13b (3:513b)
 	ld hl, Data_cffa
-	call Func_f723
+	call PlayBattleAnimScript
 	jp Func_d15c
 
 Func_d144: ; d144 (3:5144)
 	ld hl, Data_d005
-	call Func_f723
+	call PlayBattleAnimScript
 	jp Func_d15c
 
 Func_d14d: ; d14d (3:514d)
 	ld hl, Data_d015
-	call Func_f723
+	call PlayBattleAnimScript
 	jp Func_d15c
 
 Func_d156: ; d156 (3:5156)
 	ld hl, Data_d020
-	call Func_f723
+	call PlayBattleAnimScript
 Func_d15c: ; d15c (3:515c)
 	ld a, [wc2cd]
 	or a
@@ -8993,13 +8993,13 @@ Func_dc2c: ; dc2c (3:5c2c)
 	call WaitVideoTransfer
 	callba_hli Func_5d113
 	ld hl, Data_dc2a
-	call Func_f723
+	call PlayBattleAnimScript
 	pop hl
-	call Func_f723
+	call PlayBattleAnimScript
 	call ClearSprites
 	callba_hli Func_5d113
 	ld hl, Data_dc2a
-	call Func_f723
+	call PlayBattleAnimScript
 	call DisableHBlank
 	ld a, [wLCDC]
 	and $f9
@@ -50617,7 +50617,7 @@ Func_4fac6: ; 4fac6 (13:7ac6)
 	ld de, $b
 	add hl, de
 	ld [hl], $0
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	pop hl
 	call FarCall
 	ld bc, $a0
@@ -90087,7 +90087,7 @@ Func_6c546:
 	call EnableHBlank
 	call Func_6c011
 	call WaitVideoTransfer
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	pop hl
 	call FarCall
 	ld bc, $a0
@@ -99337,14 +99337,14 @@ Func_fc092: ; fc092 (3f:4092)
 	jp nz, Func_fc092
 	ret
 
-Func_fc09d: ; fc09d (3f:409d)
+IntroMovie_PlaySceneWaitButton: ; fc09d (3f:409d)
 	ld a, [wJoyHeld]
 	ld hl, wJoyPressed
 	or [hl]
-	and $b0
-	jp z, Func_fc0ac
+	and A_BUTTON | B_BUTTON | START
+	jp z, .cancel
 	call Func_1b01
-Func_fc0ac: ; fc0ac (3f:40ac)
+.cancel
 	xor a
 	ret
 
@@ -99618,7 +99618,7 @@ Func_fc255: ; fc255 (3f:4255)
 	or $2
 	ld [wNextVBlankFlags], a
 	call Func_fc092
-	call Func_fc09d
+	call IntroMovie_PlaySceneWaitButton
 	or a
 	jp z, Func_fc27e
 	ld a, $1
@@ -99683,7 +99683,7 @@ Data_fc2ce:
 Data_fc2d3:
 	dr $fc2d3, $fc2d7
 
-Func_fc2d7: ; fc2d7 (3f:42d7)
+IntroMovie_SlideRobotLeftToRight: ; fc2d7 (3f:42d7)
 	push bc
 	push bc
 	push bc
@@ -99704,7 +99704,7 @@ Func_fc2d7: ; fc2d7 (3f:42d7)
 	ld e, a
 	xor a
 	call FarCall
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$4
 	call FarCall
 	ld hl, sp+$2
@@ -99722,7 +99722,7 @@ Func_fc32d: ; fc32d (3f:432d)
 	cp $1e
 	jp nc, Func_fc34c
 	call NextOverworldFrame
-	call Func_fc09d
+	call IntroMovie_PlaySceneWaitButton
 	or a
 	jp z, Func_fc342
 	jp Func_fc351
@@ -99752,7 +99752,7 @@ Data_fc357:
 Data_fc35c:
 	dr $fc35c, $fc360
 
-Func_fc360: ; fc360 (3f:4360)
+IntroMovie_SlideRobotRightToLeft: ; fc360 (3f:4360)
 	push bc
 	push bc
 	push bc
@@ -99773,7 +99773,7 @@ Func_fc360: ; fc360 (3f:4360)
 	ld e, a
 	ld a, $1
 	call FarCall
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$4
 	call FarCall
 	ld hl, sp+$2
@@ -99791,7 +99791,7 @@ Func_fc3b7: ; fc3b7 (3f:43b7)
 	cp $1e
 	jp nc, Func_fc3d6
 	call NextOverworldFrame
-	call Func_fc09d
+	call IntroMovie_PlaySceneWaitButton
 	or a
 	jp z, Func_fc3cc
 	jp Func_fc3db
@@ -100090,7 +100090,7 @@ Func_fc5ea: ; fc5ea (3f:45ea)
 	or $2
 	ld [wNextVBlankFlags], a
 	call Func_fc092
-	call Func_fc09d
+	call IntroMovie_PlaySceneWaitButton
 	or a
 	jp z, Func_fc5ff
 	jp Func_fc602
@@ -100109,7 +100109,7 @@ Func_fc602: ; fc602 (3f:4602)
 Data_fc610:
 	dr $fc610, $fc615
 
-Func_fc615: ; fc615 (3f:4615)
+IntroMovie_SlideRobotsForCombat: ; fc615 (3f:4615)
 	push bc
 	push bc
 	push bc
@@ -100260,7 +100260,7 @@ Func_fc713: ; fc713 (3f:4713)
 	add a
 	add $50
 	push af
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$5
 	call FarCall
 	pop af
@@ -100323,7 +100323,7 @@ Data_fc771:
 	db $58, $60, $09, $60
 	db $60, $58, $08, $60
 
-Func_fc7a1: ; fc7a1 (3f:47a1)
+IntroMovie_SpawnIntenseBattleOrb: ; fc7a1 (3f:47a1)
 	call ClearSprites
 	ld bc, $30
 	ld de, Data_fc771
@@ -100369,7 +100369,7 @@ Data_fc7bc:
 	db $68, $58, $01, $60
 	db $68, $60, $00, $60
 
-Func_fc83c: ; fc83c (3f:483c)
+IntroMovie_SpawnLargerBattleOrb: ; fc83c (3f:483c)
 	call ClearSprites
 	ld bc, $80
 	ld de, Data_fc7bc
@@ -100382,9 +100382,9 @@ Func_fc83c: ; fc83c (3f:483c)
 	ret
 
 Data_fc857:
-	dr $fc857, $fc85c
+	db $16, $04, $07, $18, $00
 
-Func_fc85c:
+IntroMovie_FadeToBlack:
 	push bc
 	push bc
 	push bc
@@ -100393,7 +100393,7 @@ Func_fc85c:
 	ld hl, Data_fc857
 	ld bc, $5
 	call MemCopy
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$0
 	call FarCall
 	pop bc
@@ -100409,7 +100409,7 @@ Func_fc884: ; fc884 (3f:4884)
 	read_hl_from Data_fc882
 	pop de
 	push hl
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$0
 	call FarCall
 	pop bc
@@ -101259,80 +101259,80 @@ Func_fcf0b:
 	ld a, $43
 	call OverworldPlaySFX
 IF DEF(SUN)
-	ld a, $c
+	ld a, ZAP
 ENDC
 IF DEF(STAR)
-	ld a, $1
+	ld a, SUNNY
 ENDC
-	call Func_fc2d7
-	call Func_fc09d
+	call IntroMovie_SlideRobotLeftToRight
+	call IntroMovie_PlaySceneWaitButton
 	or a
-	jp z, Func_fcf30
+	jp z, .scene2
 	ret
 
-Func_fcf30: ; fcf30 (3f:4f30)
+.scene2
 	ld a, $43
 	call OverworldPlaySFX
 IF DEF(SUN)
-	ld a, $6
+	ld a, BOOMER
 ENDC
 IF DEF(STAR)
-	ld a, $31
+	ld a, PIRATE
 ENDC
-	call Func_fc360
-	call Func_fc09d
+	call IntroMovie_SlideRobotRightToLeft
+	call IntroMovie_PlaySceneWaitButton
 	or a
-	jp z, Func_fcf42
+	jp z, .scene3
 	ret
 
-Func_fcf42: ; fcf42 (3f:4f42)
+.scene3
 	ld a, $43
 	call OverworldPlaySFX
 IF DEF(SUN)
-	ld a, $2a
+	ld a, SUMO
 ENDC
 IF DEF(STAR)
-	ld a, $37
+	ld a, MEDDY
 ENDC
-	call Func_fc2d7
-	call Func_fc09d
+	call IntroMovie_SlideRobotLeftToRight
+	call IntroMovie_PlaySceneWaitButton
 	or a
-	jp z, Func_fcf54
+	jp z, .scene4
 	ret
 
-Func_fcf54: ; fcf54 (3f:4f54)
+.scene4
 	ld a, $43
 	call OverworldPlaySFX
 IF DEF(SUN)
-	ld a, $3a
+	ld a, DEEMO
 ENDC
 IF DEF(STAR)
-	ld a, $45
+	ld a, HEXBOT
 ENDC
-	call Func_fc360
-	call Func_fc09d
+	call IntroMovie_SlideRobotRightToLeft
+	call IntroMovie_PlaySceneWaitButton
 	or a
-	jp z, Func_fcf66
+	jp z, .scene5
 	ret
 
-Func_fcf66: ; fcf66 (3f:4f66)
+.scene5
 	ld a, $43
 	call OverworldPlaySFX
 IF DEF(SUN)
-	ld e, $6
-	ld a, $c
+	ld e, BOOMER
+	ld a, ZAP
 ENDC
 IF DEF(STAR)
-	ld e, $31
-	ld a, $1
+	ld e, PIRATE
+	ld a, SUNNY
 ENDC
-	call Func_fc615
-	call Func_fc09d
+	call IntroMovie_SlideRobotsForCombat
+	call IntroMovie_PlaySceneWaitButton
 	or a
-	jp z, Func_fcf7a
+	jp z, .scene6
 	ret
 
-Func_fcf7a: ; fcf7a (3f:4f7a)
+.scene6
 	ld a, [wLCDC]
 	and $fb
 	ld [wLCDC], a
@@ -101371,22 +101371,22 @@ Func_fcf7a: ; fcf7a (3f:4f7a)
 	call FarRequestVideoData
 	ld a, $3a
 	call OverworldPlaySFX
-	call Func_fc7a1
+	call IntroMovie_SpawnIntenseBattleOrb
 	call NextOverworldFrame
-	call Func_fc09d
+	call IntroMovie_PlaySceneWaitButton
 	or a
-	jp z, Func_fcfee
+	jp z, .scene7
 	ret
 
-Func_fcfee: ; fcfee (3f:4fee)
-	call Func_fc83c
-	call Func_fc09d
+.scene7
+	call IntroMovie_SpawnLargerBattleOrb
+	call IntroMovie_PlaySceneWaitButton
 	or a
-	jp z, Func_fcff9
+	jp z, .scene8
 	ret
 
-Func_fcff9: ; fcff9 (3f:4ff9)
-	call Func_fc85c
+.scene8
+	call IntroMovie_FadeToBlack
 	ret
 
 GFX_fcffd: INCBIN "gfx/misc/fcffd.2bpp"
@@ -101618,19 +101618,19 @@ Func_fd1e9: ; fd1e9 (3f:51e9)
 	ei
 	ret
 
-Func_fd213:: ; fd213 (3f:5213)
+TitleScreen:: ; fd213 (3f:5213)
 	ld a, $9
 	ld [wNextVBlankFlags], a
 	call WaitVideoTransfer
 	call Func_fccaa
 	call WaitVideoTransfer
 	check_cgb
-	jp nz, Func_fd231
-Func_fd229: ; fd229 (3f:5229)
+	jp nz, .no_wait
+.wait
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_fd229
-Func_fd231: ; fd231 (3f:5231)
+	jp nz, .wait
+.no_wait
 	call NextOverworldFrame
 	ld a, [rLCDC]
 	ld [wLCDC], a
@@ -101640,7 +101640,7 @@ Func_fd231: ; fd231 (3f:5231)
 	and $7f
 	call FarCall
 	check_cgb
-	jp nz, Func_fd26a
+	jp nz, .no_attr_clear
 	ld a, [rVBK]
 	or $1
 	ld [rVBK], a
@@ -101651,7 +101651,7 @@ Func_fd231: ; fd231 (3f:5231)
 	ld a, [rVBK]
 	and $fe
 	ld [rVBK], a
-Func_fd26a: ; fd26a (3f:526a)
+.no_attr_clear
 	ld bc, $800
 	ld e, $8f
 	hlbgcoord 0, 0
@@ -101718,7 +101718,7 @@ IF DEF(STAR)
 	dr $fd30a, $fd312
 ENDC
 
-Func_fd314: ; fd314 (3f:5314)
+IntroMovie: ; fd314 (3f:5314)
 	set_farcall_addrs_hli InitAllocatableMemoryBlocks
 	ld de, $900
 	ld hl, wAllocatableBlock0
@@ -101733,7 +101733,7 @@ Func_fd314: ; fd314 (3f:5314)
 	xor a
 	ld [wMapObjectCGBAttrsOverride], a
 	check_cgb
-	jp nz, Func_fd394
+	jp nz, .not_cgb
 	ld bc, $80
 	ld de, Data_fc001
 	ld hl, wCGB_BGPalsBuffer
@@ -101749,18 +101749,18 @@ Func_fd314: ; fd314 (3f:5314)
 	ld de, wCGB_BGPalsBuffer
 	call CopyFromDEtoHL
 	call WaitVideoTransfer
-Func_fd37c: ; fd37c (3f:537c)
+.wait1
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_fd37c
+	jp nz, .wait1
 	ld a, [wNextVBlankFlags]
 	or $40
 	ld [wNextVBlankFlags], a
-Func_fd38c: ; fd38c (3f:538c)
+.wait2
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_fd38c
-Func_fd394: ; fd394 (3f:5394)
+	jp nz, .wait2
+.not_cgb
 	callba_hli Func_da4dc
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_c7bd0
@@ -101773,7 +101773,7 @@ Func_fd394: ; fd394 (3f:5394)
 	call FarCall
 	call Func_fd03d
 	call Func_fcf0b
-	call Func_fd213
+	call TitleScreen
 	ret
 
 Text_fd3d1:
@@ -102209,10 +102209,10 @@ Func_fd746:
 	read_hl_from Data_fd744
 	pop de
 	push hl
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$2
 	call FarCall
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$0
 	call FarCall
 	pop bc
@@ -102236,7 +102236,7 @@ Func_fd787: ; fd787 (3f:5787)
 	ld hl, Data_fd783
 	ld bc, $4
 	call MemCopy
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$0
 	call FarCall
 	pop bc
@@ -102425,7 +102425,7 @@ Func_fd8e0: ; fd8e0 (3f:58e0)
 	ld a, $1
 	call FarCall
 Func_fd8e9: ; fd8e9 (3f:58e9)
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$0
 	call FarCall
 	add sp, $e

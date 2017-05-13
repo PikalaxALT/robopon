@@ -5695,7 +5695,7 @@ Func_bea7d: ; bea7d (2f:6a7d)
 	ld e, $0
 	xor a
 	call FarCall
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$2
 	call FarCall
 	ld e, $7

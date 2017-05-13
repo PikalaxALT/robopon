@@ -2438,14 +2438,14 @@ Func_f3bc: ; f3bc (3:73bc)
 Func_f3c0: ; f3c0
 	push hl
 	ld hl, Data_c009
-	call Func_f723
+	call PlayBattleAnimScript
 	pop hl
 	ret
 
 Func_f3c9: ; f3c9
 	push hl
 	ld hl, Data_c016
-	call Func_f723
+	call PlayBattleAnimScript
 	pop hl
 	ret
 
@@ -2777,7 +2777,7 @@ Func_f5d6: ; f5d6 (3:75d6)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call Func_f723
+	call PlayBattleAnimScript
 	pop bc
 	dec c
 	pop hl
@@ -2964,7 +2964,7 @@ Pointers_f6d7: ; f6d7
 	dw Func_f662
 	dw Func_f689
 
-Func_f723: ; f723 (3:7723)
+PlayBattleAnimScript: ; f723 (3:7723)
 	push hl
 .loop
 	pop hl

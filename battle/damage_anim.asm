@@ -62,7 +62,7 @@ Func_616dd: ; 616dd ; DoDamage?
 	ld de, $b
 	add hl, de
 	ld [hl], a
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$9
 	call FarCall
 	ld hl, sp+$2b
@@ -447,7 +447,7 @@ Func_619e7: ; 619e7 (18:59e7)
 	ld c, $8
 	call Func_3ca1
 	pop bc
-	set_farcall_addrs_hli Func_f723
+	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$0
 	call FarCall
 	ld a, [wLCDC]
