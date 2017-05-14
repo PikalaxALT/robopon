@@ -12,7 +12,7 @@ DrawTextBoxAndOverworldText:: ; aa5d (2:6a5d)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld hl, $0
 	call WriteHLToSPPlus4
@@ -179,7 +179,7 @@ Func_abdd: ; abdd (2:6bdd)
 	ld a, l
 	or h
 	jp z, Func_abf6
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	call GetHLAtSPPlus6
 	call FarCall
 Func_abf6: ; abf6 (2:6bf6)
@@ -188,7 +188,7 @@ Func_abf6: ; abf6 (2:6bf6)
 	or d
 	jp z, Func_ac0c
 	push de
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 Func_ac0c: ; ac0c (2:6c0c)

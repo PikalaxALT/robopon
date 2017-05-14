@@ -902,7 +902,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -936,7 +936,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	reg16swap de, hl
 	ld hl, $10e
 	call FarCall
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	writenpctext TreeBitstreamText_45d82
@@ -4902,7 +4902,7 @@ Func_9310e:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld l, $0
 Func_931a2: ; 931a2 (24:71a2)
@@ -4971,7 +4971,7 @@ Func_931fc: ; 931fc (24:71fc)
 	or $4
 	ld [wNextVBlankFlags], a
 	xor a
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 Func_93214: ; 93214 (24:7214)
 	ld a, [wNextVBlankFlags]
 	ld hl, wLastVBlankFlags
@@ -5276,8 +5276,8 @@ Func_93468: ; 93468 (24:7468)
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wca9c]
-	and $2
+	ld a, [wOptions]
+	and $2 ; stereo
 	push af
 	ld a, l
 	call GetSRAMBank
@@ -5471,8 +5471,8 @@ Func_935ce: ; 935ce (24:75ce)
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wca9c]
-	and $2
+	ld a, [wOptions]
+	and $2 ; stereo
 	push af
 	ld a, l
 	call GetSRAMBank
@@ -6285,7 +6285,7 @@ Func_93b84: ; 93b84 (24:7b84)
 	add sp, $12
 	ret
 
-Func_93b87:: ; 93b87 (24:7b87)
+GameBoot_ValidateRTC:: ; 93b87 (24:7b87)
 	push bc
 	push de
 	push hl
@@ -6315,7 +6315,7 @@ Func_93b87:: ; 93b87 (24:7b87)
 
 .asm_93bb6
 	call Func_93bee
-	ld de, 27273
+	ld de, 27273 ; September 1, 1998
 	ld hl, $0
 	jr .asm_93bc1
 
@@ -6326,7 +6326,7 @@ Func_93b87:: ; 93b87 (24:7b87)
 	call Func_93be9
 	jr z, .asm_93bd9
 	call Func_93bee
-	ld de, 27273
+	ld de, 27273 ; September 1, 1998
 	ld hl, $0
 	predef Func_7e320
 	call Func_93be5
@@ -6353,11 +6353,11 @@ Func_93bee: ; 93bee (24:7bee)
 	ld hl, wLCDInterrupt2
 	ld b, $e0
 	xor a
-.asm_93bf4
+.fill
 	ld [hli], a
 	dec b
-	jr nz, .asm_93bf4
-	ld hl, wMapMusic + 4
+	jr nz, .fill
+	ld hl, wc7c2
 	ld a, $8
 	ld [hl], a
 	ld hl, wLCDInterrupt2
@@ -7053,7 +7053,7 @@ Func_9a25d: ; 9a25d (26:625d)
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	add sp, $42
@@ -7164,7 +7164,7 @@ Func_9a377: ; 9a377 (26:6377)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ret
 
@@ -7174,7 +7174,7 @@ Func_9a384:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -7800,7 +7800,7 @@ Func_9b403: ; 9b403 (26:7403)
 	ld hl, $69
 	call FarCall
 	callba_hli Func_8f44
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	jp Func_9b72a
@@ -7948,7 +7948,7 @@ Func_9b55e: ; 9b55e (26:755e)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -7983,7 +7983,7 @@ Func_9b55e: ; 9b55e (26:755e)
 	ld hl, $10e
 	call FarCall
 	callba_hli Func_8f44
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	ld hl, sp+$4a
@@ -12657,7 +12657,7 @@ Func_d9f39:
 	inc hl
 	ret
 
-Func_d9f55:: ; d9f55 (36:5f55)
+QueueMoveAnimScriptGFXUpdate:: ; d9f55 (36:5f55)
 	di
 	ld a, [wLCDC]
 	or $3
@@ -12668,7 +12668,7 @@ Func_d9f55:: ; d9f55 (36:5f55)
 	ei
 	ret
 
-Func_d9f68:: ; d9f68
+MoveAnimScriptClearSprites:: ; d9f68
 	ld bc, $a0
 	ld e, $0
 	ld hl, wOAMBuffer
@@ -12891,7 +12891,7 @@ Func_da07b: ; da07b (36:607b)
 Func_da092: ; da092 (36:6092)
 	ret
 
-Func_da093:: ; da093
+PlayMoveAnimScript:: ; da093
 	push af
 	push bc
 	push bc
@@ -13816,18 +13816,262 @@ DecompressEmoteAttrs: ; da5db (36:65db)
 	ret
 
 Data_da631:
-	dr $da631, $da66f
+	db $00
+	db $01
+	db $02
+	db $03
+	db $08
+	db $05
+	db $06
+	db $08
+	db $08
+	db $09
+	db $09
+	db $0a
+	db $0b
+	db $0c
+	db $0c
+	db $0d
+	db $0e
+	db $0f
+	db $10
+	db $11
+	db $12
+	db $13
+	db $13
+	db $14
+	db $14
+	db $15
+	db $15
+	db $15
+	db $16
+	db $16
+	db $17
+	db $17
+	db $17
+	db $00
+	db $0d
+	db $19
+	db $1a
+	db $1b
+	db $1c
+	db $1d
+	db $00
+	db $1f
+	db $20
+	db $00
+	db $00
+	db $00
+	db $00
+	db $00
+	db $21
+	db $22
+	db $23
+	db $00
+	db $25
+	db $04
+	db $1f
+	db $07
+	db $26
+	db $27
+	db $28
+	db $29
+	db $2a
+	db $2b
 
 Data_da66f: ; da66f
-	dr $da66f, $da6ad
+	db $00
+	db $01
+	db $02
+	db $03
+	db $04
+	db $05
+	db $06
+	db $07
+	db $08
+	db $09
+	db $0a
+	db $0b
+	db $0c
+	db $0d
+	db $0e
+	db $0f
+	db $10
+	db $11
+	db $12
+	db $13
+	db $14
+	db $15
+	db $16
+	db $17
+	db $18
+	db $19
+	db $1a
+	db $1b
+	db $1c
+	db $1d
+	db $1e
+	db $1f
+	db $20
+	db $00
+	db $22
+	db $23
+	db $24
+	db $25
+	db $26
+	db $27
+	db $00
+	db $29
+	db $2a
+	db $00
+	db $00
+	db $00
+	db $00
+	db $00
+	db $30
+	db $31
+	db $32
+	db $00
+	db $34
+	db $35
+	db $36
+	db $37
+	db $38
+	db $39
+	db $3a
+	db $3b
+	db $3b
+	db $3b
 
 Data_da6ad: ; da6ad
-	dr $da6ad, $da6eb
+	db $00
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $03
+	db $01
+	db $0f
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $07
+	db $01
+	db $01
+	db $01
+	db $03
+	db $07
+	db $01
+	db $01
+	db $03
+	db $07
+	db $1f
+	db $00
+	db $01
+	db $01
+	db $03
+	db $01
+	db $01
+	db $01
+	db $00
+	db $01
+	db $01
+	db $00
+	db $00
+	db $00
+	db $00
+	db $00
+	db $01
+	db $01
+	db $01
+	db $00
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
+	db $01
 
 Data_da6eb: ; da6eb
-	dr $da6eb, $da729
+	db $00
+	db $07
+	db $07
+	db $04
+	db $04
+	db $04
+	db $04
+	db $04
+	db $04
+	db $07
+	db $07
+	db $07
+	db $07
+	db $05
+	db $05
+	db $04
+	db $04
+	db $04
+	db $04
+	db $04
+	db $04
+	db $07
+	db $07
+	db $07
+	db $07
+	db $06
+	db $06
+	db $06
+	db $06
+	db $06
+	db $06
+	db $06
+	db $06
+	db $00
+	db $05
+	db $07
+	db $07
+	db $04
+	db $07
+	db $07
+	db $00
+	db $04
+	db $04
+	db $00
+	db $00
+	db $00
+	db $00
+	db $00
+	db $04
+	db $04
+	db $05
+	db $00
+	db $07
+	db $07
+	db $06
+	db $07
+	db $07
+	db $07
+	db $07
+	db $07
+	db $05
+	db $05
 
-Func_da729:: ; da729 (36:6729)
+StartMoveAnimScript:: ; da729 (36:6729)
 	push af
 	push de
 	push bc
@@ -13973,16 +14217,22 @@ Func_da82e: ; da82e (36:682e)
 	pop bc
 	ret
 
-Func_da835:: ; da835
-	ld [wc2f5], a
+SetOAMUpdatePointer:: ; da835
+	ld [wOAMEntryCurrentlyBeingUpdated], a
 	ret
 
 UpdateCurSprite:: ; da839 (36:6839)
+; Parameters:
+; a: VRam slot
+; b: Facing
+; c: Animation frame
+; d: x coord
+; e: y coord
 	push af
 	ld a, b
 	and $3
 	cp $1
-	jp z, Func_da89f
+	jp z, .XFlip
 	ld a, c
 	add a
 	add a
@@ -14000,7 +14250,7 @@ UpdateCurSprite:: ; da839 (36:6839)
 	ld c, a
 .asm_da859
 	push de
-	ld a, [wc2f5]
+	ld a, [wOAMEntryCurrentlyBeingUpdated]
 	ld h, $0
 	ld l, a
 	add hl, hl
@@ -14025,7 +14275,7 @@ UpdateCurSprite:: ; da839 (36:6839)
 	ld e, a
 	ld a, d
 	ld [hli], a
-	add $f8
+	add -$8
 	ld d, a
 	ld a, b
 	ld [hli], a
@@ -14051,12 +14301,12 @@ UpdateCurSprite:: ; da839 (36:6839)
 	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld a, [wc2f5]
+	ld a, [wOAMEntryCurrentlyBeingUpdated]
 	add $4
-	ld [wc2f5], a
+	ld [wOAMEntryCurrentlyBeingUpdated], a
 	ret
 
-Func_da89f: ; da89f (36:689f)
+.XFlip: ; da89f (36:689f)
 	ld a, c
 	add a
 	add a
@@ -14074,7 +14324,7 @@ Func_da89f: ; da89f (36:689f)
 	ld c, a
 .asm_da8b6
 	push de
-	ld a, [wc2f5]
+	ld a, [wOAMEntryCurrentlyBeingUpdated]
 	ld h, $0
 	ld l, a
 	add hl, hl
@@ -14089,7 +14339,7 @@ Func_da89f: ; da89f (36:689f)
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	add $f8
+	add -$8
 	ld d, a
 	ld a, b
 	ld [hli], a
@@ -14113,7 +14363,7 @@ Func_da89f: ; da89f (36:689f)
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	add $f8
+	add -$8
 	ld d, a
 	ld a, b
 	ld [hli], a
@@ -14128,9 +14378,9 @@ Func_da89f: ; da89f (36:689f)
 	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld a, [wc2f5]
+	ld a, [wOAMEntryCurrentlyBeingUpdated]
 	add $4
-	ld [wc2f5], a
+	ld [wOAMEntryCurrentlyBeingUpdated], a
 	ret
 
 Func_da900:
@@ -14170,9 +14420,9 @@ Func_da901:: ; da901
 	ld hl, sp+$5
 	ld [hl], $0
 	xor a
-Func_da92b: ; da92b (36:692b)
-	cp $28
-	jp nc, Func_da98b
+.loop
+	cp 40
+	jp nc, .break
 	push af
 	ld l, a
 	ld h, $0
@@ -14195,7 +14445,7 @@ Func_da92b: ; da92b (36:692b)
 	add a
 	add a
 	cp e
-	jp nc, Func_da986
+	jp nc, .next
 	ld hl, sp+$b
 	ld a, [hl]
 	ld hl, sp+$9
@@ -14206,7 +14456,7 @@ Func_da92b: ; da92b (36:692b)
 	ld l, a
 	ld a, c
 	cp l
-	jp nc, Func_da986
+	jp nc, .next
 	ld hl, sp+$4
 	ld a, [hl]
 	add $8
@@ -14217,7 +14467,7 @@ Func_da92b: ; da92b (36:692b)
 	add a
 	add a
 	cp e
-	jp nc, Func_da986
+	jp nc, .next
 	ld hl, sp+$c
 	ld a, [hl]
 	ld hl, sp+$a
@@ -14229,18 +14479,18 @@ Func_da92b: ; da92b (36:692b)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp e
-	jp nc, Func_da986
+	jp nc, .next
 	ld hl, sp+$7
 	ld a, [hl]
 	inc a
 	ld hl, sp+$7
 	ld [hl], a
-Func_da986: ; da986 (36:6986)
+.next
 	pop af
 	inc a
-	jp Func_da92b
+	jp .loop
 
-Func_da98b: ; da98b (36:698b)
+.break
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, sp+$5
 	ld l, [hl]
@@ -14259,11 +14509,11 @@ Func_da98b: ; da98b (36:698b)
 	call WriteHLToSPPlus4
 	ld hl, sp+$8
 	ld [hl], $0
-Func_da9b2: ; da9b2 (36:69b2)
+.loop2
 	ld hl, sp+$8
 	ld a, [hl]
 	cp $28
-	jp nc, Func_daa38
+	jp nc, .break2
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
@@ -14288,7 +14538,7 @@ Func_da9b2: ; da9b2 (36:69b2)
 	add a
 	add a
 	cp e
-	jp nc, Func_daa2e
+	jp nc, .next2
 	ld hl, sp+$b
 	ld a, [hl]
 	ld hl, sp+$9
@@ -14299,7 +14549,7 @@ Func_da9b2: ; da9b2 (36:69b2)
 	ld l, a
 	ld a, c
 	cp l
-	jp nc, Func_daa2e
+	jp nc, .next2
 	ld hl, sp+$4
 	ld a, [hl]
 	add $8
@@ -14310,7 +14560,7 @@ Func_da9b2: ; da9b2 (36:69b2)
 	add a
 	add a
 	cp e
-	jp nc, Func_daa2e
+	jp nc, .next2
 	ld hl, sp+$c
 	ld a, [hl]
 	ld hl, sp+$a
@@ -14322,7 +14572,7 @@ Func_da9b2: ; da9b2 (36:69b2)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp e
-	jp nc, Func_daa2e
+	jp nc, .next2
 	ld hl, sp+$8
 	ld a, [hl]
 	call GetHLAtSPPlus4
@@ -14337,15 +14587,15 @@ Func_da9b2: ; da9b2 (36:69b2)
 	call WriteHLToSPPlus4
 	call GetHLAtSPPlus7
 	ld [hl], $a0
-Func_daa2e: ; daa2e (36:6a2e)
+.next2
 	ld hl, sp+$8
 	ld a, [hl]
 	inc a
 	ld hl, sp+$8
 	ld [hl], a
-	jp Func_da9b2
+	jp .loop2
 
-Func_daa38: ; daa38 (36:6a38)
+.break2
 	pop hl
 	pop bc
 	pop bc
@@ -14355,7 +14605,7 @@ Func_daa38: ; daa38 (36:6a38)
 	pop bc
 	ret
 
-Func_daa40:: ; daa40
+SetSpriteYCoordinatesAndCollectGarbage:: ; daa40
 	push hl
 	ld c, l
 	ld b, h
@@ -14363,9 +14613,9 @@ Func_daa40:: ; daa40
 	inc bc
 	ld l, a
 	xor a
-Func_daa47: ; daa47 (36:6a47)
+.loop
 	cp l
-	jp nc, Func_daa61
+	jp nc, .done
 	push hl
 	push af
 	ld a, [bc]
@@ -14382,9 +14632,9 @@ Func_daa47: ; daa47 (36:6a47)
 	pop af
 	inc a
 	pop hl
-	jp Func_daa47
+	jp .loop
 
-Func_daa61: ; daa61 (36:6a61)
+.done
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -14632,7 +14882,7 @@ Func_e1513:: ; e1513 (38:5513)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_d9f74
@@ -14643,14 +14893,14 @@ Func_e1513:: ; e1513 (38:5513)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	callba_hli AllocateMonsterStruct
 	set_farcall_addrs_hli Func_dc0a
@@ -14682,7 +14932,7 @@ Func_e1513:: ; e1513 (38:5513)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	check_cgb
 	jp z, Func_e164a
@@ -14835,10 +15085,10 @@ Func_e172e: ; e172e (38:572e)
 	ld e, [hl]
 Func_e1733: ; e1733 (38:5733)
 	push de
-	set_farcall_addrs_hli Func_da093
+	set_farcall_addrs_hli PlayMoveAnimScript
 	ld a, $1
 	call FarCall
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	pop de
 	pop hl
 	ld a, l
@@ -14934,7 +15184,7 @@ Func_e179f: ; e179f (38:579f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld hl, $80
 	add hl, sp
@@ -14968,7 +15218,7 @@ Func_e179f: ; e179f (38:579f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_e1864: ; e1864 (38:5864)
 	ld e, $0
@@ -15100,7 +15350,7 @@ Func_e18f6: ; e18f6 (38:58f6)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld hl, $81
 	add hl, sp
@@ -15140,14 +15390,14 @@ Func_e18f6: ; e18f6 (38:58f6)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_e197e: ; e197e (38:597e)
 	jp Func_e1a0b
 
 Func_e1981: ; e1981 (38:5981)
 	push de
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	ld hl, $83
@@ -15211,13 +15461,13 @@ Func_e1981: ; e1981 (38:5981)
 	and $3f
 	ld e, a
 	push de
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	pop de
 	jp Func_e1873
 
 Func_e1a0b: ; e1a0b (38:5a0b)
 	callba_hli Func_da4dc
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	ld e, $1
 	ld hl, sp+$69
 	call Func_e1d9c
@@ -15243,7 +15493,7 @@ Func_e1a44: ; e1a44 (38:5a44)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	jp Func_e1864
 
@@ -15575,7 +15825,7 @@ Func_e1c97: ; e1c97 (38:5c97)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld e, $2
 	xor a
@@ -15879,7 +16129,7 @@ Func_e1e83:: ; e1e83 (38:5e83)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_ac37
 	call Func_3af6
@@ -16537,7 +16787,7 @@ Func_e2a17:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ret
 
@@ -16547,7 +16797,7 @@ Func_e2a24:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -16561,71 +16811,495 @@ Func_e2a31:
 	pop bc
 	ret
 
-Data_e2a3e:
-	dr $e2a3e, $e2b56
+Data_e2a3e: ; e2a3e
+	db $00
+	db SFX_34, $ff
+	db $ff
 
-Data_e2b56:
-	dr $e2b56, $e2bf8
+Data_e2a42: ; e2a42
+	db $00
+	db SFX_35, $ff
+	db $ff
 
-Func_e2bf8:: ; e2bf8 (38:6bf8)
+Data_e2a46: ; e2a46
+	db $00
+	db SFX_2F, $ff
+	db $ff
+
+Data_e2a4a: ; e2a4a
+	db $00
+	db SFX_36, $ff
+	db $ff
+
+Data_e2a4e: ; e2a4e
+	db $00
+	db SFX_36, $0a
+	db SFX_35, $ff
+	db $ff
+
+Data_e2a54: ; e2a54
+	db $00
+	db SFX_36, $ff
+	db $ff
+
+Data_e2a58: ; e2a58
+	db $00
+	db SFX_34, $ff
+	db $ff
+
+Data_e2a5c: ; e2a5c
+	db $00
+	db SFX_34, $ff
+	db $ff
+
+Data_e2a60: ; e2a60
+	db $00
+	db SFX_37, $ff
+	db $ff
+
+Data_e2a64: ; e2a64
+	db $00
+	db SFX_37, $0a
+	db SFX_37, $ff
+	db $ff
+
+Data_e2a6a: ; e2a6a
+	db $00
+	db SFX_39, $ff
+	db $ff
+
+Data_e2a6e: ; e2a6e
+	db $00
+	db SFX_3A, $ff
+	db $ff
+
+Data_e2a72: ; e2a72
+	db $00
+	db SFX_3B, $ff
+	db $ff
+
+Data_e2a76: ; e2a76
+	db $00
+	db SFX_3C, $ff
+	db $ff
+
+Data_e2a7a: ; e2a7a
+	db $00
+	db SFX_56, $ff
+	db $ff
+
+Data_e2a7e: ; e2a7e
+	db $00
+	db SFX_3D, $ff
+	db $ff
+
+Data_e2a82: ; e2a82
+	db $00
+	db SFX_3E, $ff
+	db $ff
+
+Data_e2a86: ; e2a86
+	db $00
+	db SFX_3F, $ff
+	db $ff
+
+Data_e2a8a: ; e2a8a
+	db $00
+	db SFX_40, $ff
+	db $ff
+
+Data_e2a8e: ; e2a8e
+	db $00
+	db SFX_41, $ff
+	db $ff
+
+Data_e2a92: ; e2a92
+	db $00
+	db SFX_42, $ff
+	db $ff
+
+Data_e2a96: ; e2a96
+	db $00
+	db SFX_41, $ff
+	db $ff
+
+Data_e2a9a: ; e2a9a
+	db $00
+	db SFX_42, $ff
+	db $ff
+
+Data_e2a9e: ; e2a9e
+	db $00
+	db SFX_43, $ff
+	db $ff
+
+Data_e2aa2: ; e2aa2
+	db $00
+	db SFX_44, $ff
+	db $ff
+
+Data_e2aa6: ; e2aa6
+	db $00
+	db SFX_44, $ff
+	db $ff
+
+Data_e2aaa: ; e2aaa
+	db $00
+	db SFX_45, $ff
+	db $ff
+
+Data_e2aae: ; e2aae
+	db $00
+	db SFX_46, $ff
+	db $ff
+
+Data_e2ab2: ; e2ab2
+	db $00
+	db SFX_46, $ff
+	db $ff
+
+Data_e2ab6: ; e2ab6
+	db $00
+	db SFX_47, $ff
+	db $ff
+
+Data_e2aba: ; e2aba
+	db $00
+	db SFX_47, $ff
+	db $ff
+
+Data_e2abe: ; e2abe
+	db $00
+	db SFX_47, $ff
+	db $ff
+
+Data_e2ac2: ; e2ac2
+	db $00
+	db SFX_48, $ff
+	db $ff
+
+Data_e2ac6: ; e2ac6
+	db $00
+	db SFX_49, $ff
+	db $ff
+
+Data_e2aca: ; e2aca
+	db $00
+	db SFX_4A, $ff
+	db $ff
+
+Data_e2ace: ; e2ace
+	db $00
+	db SFX_4B, $ff
+	db $ff
+
+Data_e2ad2: ; e2ad2
+	db $00
+	db SFX_4C, $ff
+	db $ff
+
+Data_e2ad6: ; e2ad6
+	db $00
+	db SFX_4D, $ff
+	db $ff
+
+Data_e2ada: ; e2ada
+	db $00
+	db SFX_4D, $ff
+	db $ff
+
+Data_e2ade: ; e2ade
+	db $00
+	db SFX_4F, $ff
+	db $ff
+
+Data_e2ae2: ; e2ae2
+	db $00
+	db SFX_50, $ff
+	db $ff
+
+Data_e2ae6: ; e2ae6
+	db $00
+	db SFX_51, $ff
+	db $ff
+
+Data_e2aea: ; e2aea
+	db $00
+	db SFX_34, $ff
+	db $ff
+
+Data_e2aee: ; e2aee
+	db $00
+	db SFX_35, $ff
+	db $ff
+
+Data_e2af2: ; e2af2
+	db $00
+	db SFX_58, $ff
+	db $ff
+
+Data_e2af6: ; e2af6
+	db $00
+	db SFX_59, $ff
+	db $ff
+
+Data_e2afa: ; e2afa
+	db $00
+	db SFX_53, $ff
+	db $ff
+
+Data_e2afe: ; e2afe
+	db $00
+	db SFX_52, $ff
+	db $ff
+
+Data_e2b02: ; e2b02
+	db $00
+	db SFX_53, $ff
+	db $ff
+
+Data_e2b06: ; e2b06
+	db $00
+	db SFX_54, $ff
+	db $ff
+
+Data_e2b0a: ; e2b0a
+	db $00
+	db SFX_55, $ff
+	db $ff
+
+Data_e2b0e: ; e2b0e
+	db $00
+	db SFX_56, $ff
+	db $ff
+
+Data_e2b12: ; e2b12
+	db $00
+	db SFX_44, $ff
+	db $ff
+
+Data_e2b16: ; e2b16
+	db $00
+	db SFX_57, $ff
+	db $ff
+
+Data_e2b1a: ; e2b1a
+	db $00
+	db SFX_58, $ff
+	db $ff
+
+Data_e2b1e: ; e2b1e
+	db $00
+	db SFX_62, $ff
+	db $ff
+
+Data_e2b22: ; e2b22
+	db $00
+	db SFX_62, $ff
+	db $ff
+
+Data_e2b26: ; e2b26
+	db $00
+	db SFX_62, $ff
+	db $ff
+
+Data_e2b2a: ; e2b2a
+	db $00
+	db SFX_64, $ff
+	db $ff
+
+Data_e2b2e: ; e2b2e
+	db $00
+	db SFX_65, $ff
+	db $ff
+
+Data_e2b32: ; e2b32
+	db $00
+	db SFX_64, $ff
+	db $ff
+
+Data_e2b36: ; e2b36
+	db $00
+	db SFX_65, $ff
+	db $ff
+
+Data_e2b3a: ; e2b3a
+	db $00
+	db SFX_60, $ff
+	db $ff
+
+Data_e2b3e: ; e2b3e
+	db $00
+	db SFX_61, $ff
+	db $ff
+
+Data_e2b42: ; e2b42
+	db $00
+	db SFX_62, $ff
+	db $ff
+
+Data_e2b46: ; e2b46
+	db $00
+	db SFX_63, $ff
+	db $ff
+
+Data_e2b4a: ; e2b4a
+	db $00
+	db SFX_5E, $ff
+	db $ff
+
+Data_e2b4e: ; e2b4e
+	db $00
+	db SFX_5F, $ff
+	db $ff
+
+Data_e2b52: ; e2b52
+	db $00
+	db SFX_63, $ff
+	db $ff
+
+Pointers_e2b56:
+	dw $0000
+	dw Data_e2a3e
+	dw Data_e2a42
+	dw Data_e2a46
+	dw Data_e2a4a
+	dw Data_e2a4e
+	dw Data_e2a54
+	dw Data_e2a58
+	dw Data_e2a5c
+	dw Data_e2a60
+	dw Data_e2a64
+	dw Data_e2a6a
+	dw Data_e2a6e
+	dw Data_e2a72
+	dw Data_e2a76
+	dw Data_e2a7a
+	dw Data_e2a7e
+	dw Data_e2a82
+	dw Data_e2a86
+	dw Data_e2a8a
+	dw Data_e2a8e
+	dw Data_e2a92
+	dw Data_e2a96
+	dw Data_e2a9a
+	dw Data_e2a9e
+	dw Data_e2aa2
+	dw Data_e2aa6
+	dw Data_e2aaa
+	dw Data_e2aae
+	dw Data_e2ab2
+	dw Data_e2ab6
+	dw Data_e2aba
+	dw Data_e2abe
+	dw Data_e2ac2
+	dw Data_e2ac6
+	dw Data_e2aca
+	dw Data_e2ace
+	dw Data_e2ad2
+	dw Data_e2ad6
+	dw Data_e2ada
+	dw Data_e2ade
+	dw Data_e2ae2
+	dw Data_e2ae6
+	dw Data_e2aea
+	dw Data_e2aee
+	dw Data_e2af2
+	dw Data_e2af6
+	dw Data_e2afa
+	dw Data_e2afe
+	dw Data_e2b02
+	dw Data_e2b06
+	dw Data_e2b0a
+	dw Data_e2b0e
+	dw Data_e2b12
+	dw Data_e2b16
+	dw Data_e2b1a
+	dw Data_e2b1e
+	dw Data_e2b22
+	dw Data_e2b26
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw $0000
+	dw Data_e2b2a
+	dw Data_e2b2e
+	dw Data_e2b32
+	dw Data_e2b36
+	dw Data_e2b3a
+	dw Data_e2b3e
+	dw Data_e2b42
+	dw Data_e2b46
+	dw Data_e2b4a
+	dw Data_e2b4e
+	dw Data_e2b52
+
+StartBattleSFXScript:: ; e2bf8 (38:6bf8)
 	cp $ff
 	jp nz, Func_e2c08
 	ld hl, $0
-	write_hl_to wc854
+	write_hl_to wCurBattleSFXScriptPointer
 	jp Func_e2c28
 
 Func_e2c08: ; e2c08 (38:6c08)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	ld de, Data_e2b56
+	ld de, Pointers_e2b56
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
-	write_hl_to wc854
-	read_hl_from wc854
+	write_hl_to wCurBattleSFXScriptPointer
+	read_hl_from wCurBattleSFXScriptPointer
 	ld a, [hl]
 	inc hl
-	write_hl_to wc854
-	ld [wc856], a
+	write_hl_to wCurBattleSFXScriptPointer
+	ld [wCurBattleSFXTimer], a
 Func_e2c28: ; e2c28 (38:6c28)
 	ret
 
-Func_e2c29:: ; e2c29 (38:6c29)
-	read_hl_from wc854
+PlayBattleSFXScript:: ; e2c29 (38:6c29)
+	read_hl_from wCurBattleSFXScriptPointer
 	ld a, l
 	or h
-	jp nz, Func_e2c35
+	jp nz, .play_sfx
 	xor a
 	ret
 
-Func_e2c35: ; e2c35 (38:6c35)
-	ld a, [wc856]
+.play_sfx
+	ld a, [wCurBattleSFXTimer]
 	or a
-	jp nz, Func_e2c69
-	read_hl_from wc854
+	jp nz, .delay_timer
+	read_hl_from wCurBattleSFXScriptPointer
 	ld a, [hl]
 	inc hl
-	write_hl_to wc854
+	write_hl_to wCurBattleSFXScriptPointer
 	call OverworldPlaySFX
-	read_hl_from wc854
+	read_hl_from wCurBattleSFXScriptPointer
 	ld a, [hl]
 	inc hl
-	write_hl_to wc854
-	ld [wc856], a
+	write_hl_to wCurBattleSFXScriptPointer
+	ld [wCurBattleSFXTimer], a
 	cp $ff
-	jp nz, Func_e2c69
+	jp nz, .delay_timer
 	ld hl, $0
-	write_hl_to wc854
+	write_hl_to wCurBattleSFXScriptPointer
 	xor a
 	ret
 
-Func_e2c69: ; e2c69 (38:6c69)
-	ld a, [wc856]
+.delay_timer
+	ld a, [wCurBattleSFXTimer]
 	dec a
-	ld [wc856], a
+	ld [wCurBattleSFXTimer], a
 	ld a, $1
 	ret
 
@@ -17576,13 +18250,13 @@ Func_e3222: ; e3222 (38:7222)
 	push hl
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld a, [wca9c]
+	ld a, [wOptions]
 	pop hl
 	push af
 	ld a, l
 	call GetSRAMBank
 	pop af
-	and $2
+	and $2 ; stereo
 	jp z, Func_e32ed
 	ld hl, $83
 	add hl, sp
@@ -18023,13 +18697,13 @@ Func_e350e: ; e350e (38:750e)
 	push hl
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld a, [wca9c]
+	ld a, [wOptions]
 	pop hl
 	push af
 	ld a, l
 	call GetSRAMBank
 	pop af
-	and $2
+	and $2 ; stereo
 	jp z, Func_e35db
 	ld hl, sp+$9
 	ld [hl], $0

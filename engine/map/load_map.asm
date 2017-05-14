@@ -318,9 +318,9 @@ del: MACRO
 	ld hl, $0
 	write_hl_to wPlayerSpritePointer
 	xor a
-	ld [wc84d], a
-	ld [wc84c], a
-	ld [wc84b], a
+	ld [wPlayerSpriteYOffset], a
+	ld [wPlayerSpriteXOffset], a
+	ld [wPlayerSpriteNotCenteredOnScreen], a
 	ld a, $1
 	ld [wRemainInMap], a
 	jp .okay
@@ -561,11 +561,11 @@ Func_8827: ; 8827 (2:4827)
 	ld [wc834], a
 	ld [wc833], a
 	ld [wc832], a
-	ld [wc821], a
+	ld [wCurrentDirectionalInputHeldFramesCounter], a
 	xor a
 	ld [wc83a], a
 	xor a
-	ld [wc858], a
+	ld [wSliding], a
 	pop bc
 	push bc
 	inc c

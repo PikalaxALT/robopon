@@ -120,14 +120,14 @@ Func_fb64: ; fb64 (3:7b64)
 	push de
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld a, [wca9c]
+	ld a, [wOptions]
 	pop de
 	push de
 	push af
 	ld a, e
 	call GetSRAMBank
 	pop af
-	and $1
+	and $1 ; Battle Scene
 	jp z, Func_fb90
 	read_hl_from_sp_plus $36
 	ld a, $4

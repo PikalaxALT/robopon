@@ -11,7 +11,7 @@ Func_52df8: ; 52df8 (14:6df8)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld de, Data_530bd
 	ld hl, $20c
@@ -38,7 +38,7 @@ Func_52df8: ; 52df8 (14:6df8)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld e, $0
 	pop hl
@@ -159,7 +159,7 @@ Func_52f08: ; 52f08 (14:6f08)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_52f28: ; 52f28 (14:6f28)
 	pop hl
@@ -213,7 +213,7 @@ Func_52f83: ; 52f83 (14:6f83)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop de
 	ld a, e
@@ -305,7 +305,7 @@ Func_52ffe: ; 52ffe (14:6ffe)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop de
 	pop hl
@@ -572,7 +572,7 @@ Func_531fe:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	xor a
 	call Func_533f8
@@ -581,7 +581,7 @@ Func_531fe:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	ret
@@ -592,7 +592,7 @@ Func_5321e:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld a, $1
 	call Func_533f8
@@ -601,7 +601,7 @@ Func_5321e:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	ret
@@ -612,7 +612,7 @@ Func_5323f:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld a, $2
 	call Func_533f8
@@ -621,7 +621,7 @@ Func_5323f:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	ret

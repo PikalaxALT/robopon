@@ -67,7 +67,7 @@ PrintMapText:: ; 60621
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop de
 	pop bc
@@ -320,7 +320,7 @@ PrintMapText:: ; 60621
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 .not_newline: ; 6084a (18:484a)
 	ld hl, sp+$48

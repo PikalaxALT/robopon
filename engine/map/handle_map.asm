@@ -264,7 +264,7 @@ HandleMap: ; 90e9 (2:50e9)
 
 .releasedSelect: ; 92f7 (2:52f7)
 	call Func_8f44
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	pop de
@@ -273,13 +273,13 @@ HandleMap: ; 90e9 (2:50e9)
 .notPressingSelect: ; 930d (2:530d)
 	ld hl, sp+$e
 	ld a, [hl]
-	and $80
+	and START
 	jp z, .doneJoypadCheck
 	push de
 	callba_hli Func_da4dc
 	ld a, [wc7da]
 	or a
-	jp z, .asm_9371
+	jp z, .skip_flash
 	xor a
 	ld [wOBP0], a
 	ld [wBGP], a
@@ -306,7 +306,7 @@ HandleMap: ; 90e9 (2:50e9)
 	set_farcall_addrs_hli Func_c7bd0
 	ld a, [wc867]
 	call FarCall
-.asm_9371: ; 9371 (2:5371)
+.skip_flash: ; 9371 (2:5371)
 	ld hl, sp+$c
 	ld a, [wSpawnX]
 	ld [hl], a
@@ -327,14 +327,14 @@ HandleMap: ; 90e9 (2:50e9)
 	ld [wSpawnPushX], a
 	ld a, [wPlayerMapY]
 	ld [wSpawnPushY], a
-	callba_hli Func_14675
+	callba_hli StartMenu
 	pop de
 	ld a, [wRemainInMap]
 	or a
-	jp nz, .asm_93ba
+	jp nz, .did_not_quit
 	jp .quit
 
-.asm_93ba: ; 93ba (2:53ba)
+.did_not_quit: ; 93ba (2:53ba)
 	push de
 	xor a
 	call FadeInMap

@@ -14,7 +14,7 @@ Func_bc00a:
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -28,7 +28,7 @@ Func_bc029: ; bc029 (2f:4029)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld a, l
@@ -43,7 +43,7 @@ Func_bc029: ; bc029 (2f:4029)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -755,7 +755,7 @@ Func_bc4a6:
 	ld c, $14
 	ld e, $7
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -1153,7 +1153,7 @@ Func_bc8ff: ; bc8ff (2f:48ff)
 	ld e, [hl]
 	ld hl, sp+$9
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop de
 	pop bc
@@ -1417,7 +1417,7 @@ Func_bcaa2: ; bcaa2 (2f:4aa2)
 	ld e, [hl]
 	ld hl, sp+$c
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -1513,7 +1513,7 @@ Func_bcb1a:
 	ld e, [hl]
 	ld hl, sp+$2
 	ld c, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -1600,7 +1600,7 @@ Func_bcbc8: ; bcbc8 (2f:4bc8)
 	ld e, [hl]
 	ld hl, sp+$4
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_bcbe1: ; bcbe1 (2f:4be1)
 	call CheckButton
@@ -2648,7 +2648,7 @@ Func_bd242:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $168
@@ -3014,7 +3014,7 @@ Func_bd4f1: ; bd4f1 (2f:54f1)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	add sp, $16
 	ret
@@ -3026,7 +3026,7 @@ Func_bd542:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $168
@@ -3065,7 +3065,7 @@ Func_bd542:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -3077,7 +3077,7 @@ Func_bd5b7:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $168
@@ -3220,7 +3220,7 @@ Func_bd6ac: ; bd6ac (2f:56ac)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	add sp, $12
 	ret
@@ -3265,7 +3265,7 @@ Func_bd72d:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $168
@@ -3346,7 +3346,7 @@ Func_bd7bd: ; bd7bd (2f:57bd)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop bc
@@ -4199,7 +4199,7 @@ Func_bdd68: ; bdd68 (2f:5d68)
 	ld e, [hl]
 	ld hl, sp+$15
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$9
 	ld a, [hl]
@@ -4561,7 +4561,7 @@ Func_bdfaf: ; bdfaf (2f:5faf)
 	ld e, [hl]
 	ld hl, sp+$9
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop hl
@@ -4832,7 +4832,7 @@ Func_be165: ; be165 (2f:6165)
 	ld e, [hl]
 	ld hl, sp+$d
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -4854,7 +4854,7 @@ Data_be1bd: ; be1bd
 	dbw $2f, $0000
 	dba Func_bdfea
 	dba Func_15281
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw $2f, $0000
 	dbw $2f, $0000
 	dbw $00, $0000
@@ -5051,7 +5051,7 @@ Func_be351: ; be351 (2f:6351)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld e, $0
 	ld hl, Data_be3dc
@@ -5089,7 +5089,7 @@ Func_be3b5: ; be3b5 (2f:63b5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld e, $0
 	ld hl, Data_be3e9
@@ -5376,7 +5376,7 @@ Func_be6ab: ; be6ab (2f:66ab)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_be7ee: ; be7ee (2f:67ee)
 	ld hl, sp+$0
@@ -5583,7 +5583,7 @@ Func_be965: ; be965 (2f:6965)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_bea04: ; bea04 (2f:6a04)
 	ld hl, sp+$0
@@ -6097,7 +6097,7 @@ Func_beee0: ; beee0 (2f:6ee0)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$1
 	ld a, [hl]
@@ -6480,7 +6480,7 @@ Func_bf214: ; bf214 (2f:7214)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call GetHLAtSPPlus4
 	ld de, Data_be1ae
@@ -6648,7 +6648,7 @@ Func_bf368: ; bf368 (2f:7368)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	call GetHLAtSPPlus4

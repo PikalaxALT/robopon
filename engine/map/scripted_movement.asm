@@ -71,10 +71,10 @@ Func_b44d: ; b44d (2:744d)
 	ld [hl], a
 	ld hl, $0
 	call Func_9f4c
-	ld hl, wc857
+	ld hl, wSlipperyCollision
 	cp [hl]
 	jp nz, Func_b4b6
-	ld a, [wc858]
+	ld a, [wSliding]
 	cp $1
 	jp nz, Func_b4b3
 	ld a, [wPlayerFacing]
@@ -108,7 +108,7 @@ Func_b4b3: ; b4b3 (2:74b3)
 
 Func_b4b6: ; b4b6 (2:74b6)
 	xor a
-	ld [wc858], a
+	ld [wSliding], a
 Func_b4ba: ; b4ba (2:74ba)
 	jp Func_b525
 

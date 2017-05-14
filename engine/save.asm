@@ -15,14 +15,14 @@ SaveGame: ; 56d9b (15:6d9b)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_da901
 	ld de, $b03
@@ -206,7 +206,7 @@ SaveGame: ; 56d9b (15:6d9b)
 .quitOkay
 	pop hl
 	call Func_2887
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	ld hl, $404

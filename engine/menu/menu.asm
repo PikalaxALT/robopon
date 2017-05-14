@@ -7,7 +7,7 @@ Func_14001: ; 14001
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ret
 
@@ -17,7 +17,7 @@ Func_1400e: ; 1400e
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -609,7 +609,7 @@ Func_144bd: ; 144bd
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_544f7
+	ld bc, Pointers_544f7
 	ld de, $0
 	ld hl, Data_54001
 	call Menu
@@ -628,7 +628,7 @@ Func_144dd: ; 144dd (5:44dd)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_54548
+	ld bc, Pointers_54548
 	ld de, $0
 	ld hl, Data_54020
 	call Menu
@@ -708,7 +708,7 @@ Func_1458e: ; 1458e (5:458e)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_545a5
+	ld bc, Pointers_545a5
 	ld de, $0
 	ld hl, Data_5403f
 	call Menu
@@ -748,7 +748,7 @@ Func_145b5: ; 145b5 (5:45b5)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_545a5
+	ld bc, Pointers_545a5
 	ld de, $0
 	ld hl, Data_5405e
 	call Menu
@@ -787,7 +787,7 @@ Func_14615: ; 14615 (5:4615)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_545e4
+	ld bc, Pointers_545e4
 	ld de, $0
 	ld hl, Data_5407d
 	call Menu
@@ -827,7 +827,7 @@ Func_1463c: ; 1463c (5:463c)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_545e4
+	ld bc, Pointers_545e4
 	ld de, $0
 	ld hl, Data_5409c
 	call Menu
@@ -839,7 +839,7 @@ Func_14673: ; 14673 (5:4673)
 	pop bc
 	ret
 
-Func_14675: ; 14675 (5:4675)
+StartMenu: ; 14675 (5:4675)
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_6183
 	ld a, [wLCDC]
@@ -871,7 +871,7 @@ Func_146b5: ; 146b5 (5:46b5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	check_cgb
 	jp nz, Func_14703
@@ -907,7 +907,7 @@ Func_1472c: ; 1472c (5:472c)
 	cp [hl]
 	jp nz, Func_1472c
 	call Func_17470
-	ld l, BANK(Data_540da)
+	ld l, BANK(StartMenuHeader)
 	push hl
 	ld hl, $702
 	push hl
@@ -915,9 +915,9 @@ Func_1472c: ; 1472c (5:472c)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_54614
+	ld bc, Pointers_54614
 	ld de, -1
-	ld hl, Data_540da
+	ld hl, StartMenuHeader
 	call Menu
 	pop bc
 	pop bc
@@ -1026,7 +1026,7 @@ Func_1480e: ; 1480e
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_546af
+	ld bc, Pointers_546af
 	ld de, $0
 	ld hl, Data_541b3
 	call Menu
@@ -1045,7 +1045,7 @@ Func_1482e:: ; 1482e (5:482e)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_546c1
+	ld bc, Pointers_546c1
 	ld de, $0
 	ld hl, Data_541d2
 	call Menu
@@ -1064,7 +1064,7 @@ UseTossSelect: ; 1484e
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_546d0
+	ld bc, Pointers_546d0
 	ld de, $0
 	ld hl, Data_541f1
 	call Menu
@@ -1074,7 +1074,7 @@ UseTossSelect: ; 1484e
 	pop bc
 	ret
 
-Func_1486e: ; 1486e
+MainMenuSubmenu_Belongings: ; 1486e
 	ld l, BANK(Data_54118)
 	push hl
 	ld hl, $300
@@ -1083,7 +1083,7 @@ Func_1486e: ; 1486e
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_5464c
+	ld bc, Pointers_5464c
 	ld de, $0
 	ld hl, Data_54118
 	call Menu
@@ -1121,7 +1121,7 @@ Func_148ae: ; 148ae
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_54686
+	ld bc, Pointers_54686
 	ld de, $0
 	ld hl, Data_54137
 	call Menu
@@ -1194,7 +1194,7 @@ Func_1491a: ; 1491a
 	call Func_2009
 	ret
 
-Func_14940:: ; 14940
+MainMenuSubmenu_Warehouse:: ; 14940
 	ld l, BANK(Data_5428c)
 	push hl
 	ld hl, $402
@@ -1203,7 +1203,7 @@ Func_14940:: ; 14940
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_546e0
+	ld bc, Pointers_546e0
 	ld de, $0
 	ld hl, Data_5428c
 	call Menu
@@ -1213,7 +1213,7 @@ Func_14940:: ; 14940
 	pop bc
 	ret
 
-Func_14960: ; 14960
+MainMenuSubmenu_Data: ; 14960
 	ld l, BANK(Data_566a9)
 	push hl
 	ld hl, $302
@@ -1479,7 +1479,7 @@ Func_14b24: ; 14b24
 	pop bc
 	ret
 
-Func_14b44:: ; 14b44
+ReceptionCommandMenu:: ; 14b44
 	ld a, $3
 	ld [wEnableAttrMapTransfer], a
 	ld l, $12
@@ -1487,14 +1487,14 @@ Func_14b44:: ; 14b44
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $c8
 	call AllocateMemory
@@ -1541,7 +1541,7 @@ Func_14bc4: ; 14bc4 (5:4bc4)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_546fd
+	ld bc, Pointers_546fd
 	ld de, $0
 	ld hl, Data_5441e
 	call Menu
@@ -1560,7 +1560,7 @@ Func_14be6: ; 14be6 (5:4be6)
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_546fd
+	ld bc, Pointers_546fd
 	ld de, $0
 	ld hl, Data_543ff
 	call Menu
@@ -1595,10 +1595,10 @@ Func_14c05: ; 14c05 (5:4c05)
 	call Func_1400e
 	pop hl
 	call FreeMemory
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	ret
@@ -1625,7 +1625,7 @@ Func_14c55: ; 14c55
 	callba_hli Func_69436
 	ret
 
-Func_14c89: ; 14c89
+MartMenu: ; 14c89
 	ld l, BANK(Data_5445c)
 	push hl
 	ld hl, $61e
@@ -1634,7 +1634,7 @@ Func_14c89: ; 14c89
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_54727
+	ld bc, Pointers_54727
 	ld de, $0
 	ld hl, Data_5445c
 	call Menu
@@ -1644,20 +1644,20 @@ Func_14c89: ; 14c89
 	pop bc
 	ret
 
-Func_14ca9:: ; 14ca9
+ElevatorMenu:: ; 14ca9
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $c8
 	call AllocateMemory
@@ -1717,7 +1717,7 @@ Func_14ca9:: ; 14ca9
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	call FreeMemory
@@ -2135,7 +2135,7 @@ BagSubmenu: ; 14f0e
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 Func_14ffa: ; 14ffa (5:4ffa)
 	pop hl
 	call FreeMemory
@@ -2143,7 +2143,7 @@ Func_14ffa: ; 14ffa (5:4ffa)
 	pop bc
 	ret
 
-Func_15001: ; 15001 (5:5001)
+DrawDebugMenu: ; 15001 (5:5001)
 	push bc
 	push hl
 	inc hl
@@ -2422,7 +2422,7 @@ Data_151bf: ; 151bf
 	TX_CALL
 	db $0
 
-Func_151c2: ; 151c2
+StartMenu_MoveCursor: ; 151c2
 	push bc
 	push bc
 	push bc
@@ -2541,7 +2541,7 @@ Func_15258: ; 15258 (5:5258)
 	inc hl
 	ld [hl], d
 	call GetHLAtSPPlus6
-	call Func_15001
+	call DrawDebugMenu
 	ld hl, $4000
 	pop bc
 	pop bc
@@ -2632,7 +2632,7 @@ Func_152e4: ; 152e4
 	push hl
 	ld hl, $0
 	push hl
-	ld bc, Data_54660
+	ld bc, Pointers_54660
 	ld de, $0
 	ld hl, Data_54210
 	call Menu

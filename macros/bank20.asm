@@ -265,7 +265,7 @@ WaitNPCStep_\1: ; 8020c (20:420c)
 NamingScreen_\1: ; 8021b (20:421b)
 	push af
 	callba_hli Func_da4dc
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	set_farcall_addrs_hli NamingScreen__
 	pop af
 	call FarCall
@@ -284,12 +284,12 @@ Func_80257_\1:
 Func_80275_\1:
 	ld a, $3
 	ld [wEnableAttrMapTransfer], a
-	callba_hli Func_14ca9
+	callba_hli ElevatorMenu
 	ret
 
 Func_80289_\1:
 	callba_hli Func_17470
-	callba_hli Func_14940
+	callba_hli MainMenuSubmenu_Warehouse
 	callba_hli Func_17488
 	set_farcall_addrs_hli FadeInMap
 	xor a
@@ -481,7 +481,7 @@ FacePlayer_\1: ; 8044b (20:444b)
 	ret
 
 Func_8045c_\1:
-	callba_hli Func_14b44
+	callba_hli ReceptionCommandMenu
 	callba_hli Func_8f44
 	ret
 
@@ -1862,7 +1862,7 @@ Func_80dff_\1: ; 80dff (20:4dff)
 	pop bc
 	ret
 
-Func_80e1e_\1: ; 80e1e (20:4e1e)
+PlayerStep_\1: ; 80e1e (20:4e1e)
 	push af
 	push de
 	set_farcall_addrs_hli HandlePlayerStep
@@ -2124,7 +2124,7 @@ Func_8103e_\1:
 	ret
 
 Func_8104f_\1:
-	callba_hli Func_6ac44
+	callba_hli DispatchMenu
 	cp $ff
 	jp nz, Func_81071_\1
 	set_farcall_addrs_hli FadeInMap
@@ -2134,7 +2134,7 @@ Func_81071_\1: ; 81071 (20:5071)
 	ret
 
 Func_81072_\1:
-	callba_hli Func_6b31a
+	callba_hli AttitudeMenu
 	ret
 
 Func_81081_\1:

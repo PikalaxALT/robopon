@@ -525,7 +525,7 @@ FarCall::
 	ld a, [wFarCallSavedA]
 	ret
 
-Func_0451:: ; 0451
+NextBattleFrame:: ; 0451
 	push bc
 	ld a, [wc39e]
 	push af
@@ -1456,7 +1456,7 @@ PlaceStringDEatCoordHL:: ; 230e (0:230e)
 	pop bc
 	ret
 
-Func_2323:: ; 2323
+PopBGMapRegion:: ; 2323
 	push hl
 	push bc
 	push bc
@@ -1482,7 +1482,7 @@ Func_2323:: ; 2323
 	ld e, [hl]
 	ld hl, sp+$8
 	ld a, [hl]
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop de
 	pop bc
@@ -1505,7 +1505,7 @@ Func_2323:: ; 2323
 	ld e, [hl]
 	ld hl, sp+$4
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop bc
@@ -1812,7 +1812,7 @@ Func_2515:: ; 2515
 	ld hl, sp+$4
 	write_hl_to_sp_plus $f
 	ld c, $0
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_256d
 	ld e, $0
@@ -2374,7 +2374,7 @@ Func_2887:: ; 2887 (0:2887)
 	ld e, [hl]
 	ld hl, sp+$9
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -2534,7 +2534,7 @@ Func_29cb:: ; 29cb (0:29cb)
 	ld e, [hl]
 	ld hl, sp+$7
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	push bc
@@ -4048,7 +4048,7 @@ FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop af
 	ld e, a
@@ -4069,7 +4069,7 @@ FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	xor a
 	ld [wStringDestX], a
@@ -4082,13 +4082,13 @@ Func_3af6:: ; 3af6
 	call FillVisibleAreaWithTile
 	ret
 
-Func_3afc:: ; 3afc (0:3afc)
+PushBGMapRegion_NoWaitBefore:: ; 3afc (0:3afc)
 	push af
 	push de
 	push bc
 	push bc
 	ld hl, sp+$1
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_3b0d
 	xor a
@@ -4204,7 +4204,7 @@ PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	ld hl, sp+$1
 	ld [hl], $2
 	ld hl, sp+$0
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, .zero
 	ld a, $1
@@ -4305,7 +4305,7 @@ PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	dec a
 	ld [wEnableAttrMapTransfer], a
 .skip_vbank1
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, .zero_2
 	ld a, $1
@@ -4321,7 +4321,7 @@ PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	pop bc
 	ret
 
-Func_3ca1:: ; 3ca1 (0:3ca1)
+DoublePushBGMapRegion:: ; 3ca1 (0:3ca1)
 	push bc
 	push de
 	push af
@@ -4369,7 +4369,7 @@ ToggleBGMapSelect:: ; 3cb8 (0:3cb8)
 
 .done
 	pop af
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	ret
 
 FindFirstNonzero:: ; 3cf2 (0:3cf2)

@@ -33,7 +33,7 @@ Func_e03f: ; e03f (3:603f)
 	; main execution loop
 Func_e051: ; e051
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8e00
@@ -53,7 +53,7 @@ Func_e051: ; e051
 	call FarCall
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8e00
@@ -73,7 +73,7 @@ Func_e051: ; e051
 	call FarCall
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8e00
@@ -93,7 +93,7 @@ Func_e051: ; e051
 	call FarCall
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8e00
@@ -179,7 +179,7 @@ Func_e15a: ; e15a (3:615a)
 
 Func_e15d: ; e15d (3:615d)
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8e00

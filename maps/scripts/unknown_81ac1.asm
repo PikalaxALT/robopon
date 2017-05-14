@@ -72,12 +72,12 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call PlayerFace_20
 	script_sleep $1e
+	ld e, $1 ; freeze player
+	ld a, FACE_LEFT
+	call PlayerStep_20
 	ld e, $1
-	ld a, $3
-	call Func_80e1e_20
-	ld e, $1
-	ld a, $3
-	call Func_80e1e_20
+	ld a, FACE_LEFT
+	call PlayerStep_20
 	script_sleep $1e
 	ld bc, Data_81b29
 	ld e, BANK(Data_81b29)
@@ -162,12 +162,13 @@ Func_81b45: ; 81b45 (20:5b45)
 	call SetPersonVisibilityState_20
 	playsfx $34
 	script_sleep $1e
+	; scroll screen 32 pixels right, leaving player frozen
 	ld e, $1
-	ld a, $1
-	call Func_80e1e_20
+	ld a, FACE_RIGHT
+	call PlayerStep_20
 	ld e, $1
-	ld a, $1
-	call Func_80e1e_20
+	ld a, FACE_RIGHT
+	call PlayerStep_20
 	script_sleep $1e
 	ld a, $f
 	call FadeOutAudio_20

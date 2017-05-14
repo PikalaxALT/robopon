@@ -298,7 +298,7 @@ Func_234c2: ; 234c2 (8:74c2)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_20a54)

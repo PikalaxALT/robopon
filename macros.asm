@@ -3,6 +3,7 @@ INCLUDE "macros/audio.asm"
 INCLUDE "macros/wram.asm"
 INCLUDE "macros/map.asm"
 INCLUDE "macros/event.asm"
+INCLUDE "macros/battle_anim.asm"
 
 check_cgb: MACRO
 	ld a, [wSystemType]

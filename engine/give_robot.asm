@@ -56,7 +56,7 @@ GiveRobot:: ; 31af1
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
@@ -84,7 +84,7 @@ GiveRobot:: ; 31af1
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	ld l, $12

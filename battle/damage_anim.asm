@@ -1,8 +1,10 @@
 Data_616c6: ; 616c6
-	db 3, 0
-	db 1, 5
-	db 4, 0
-	db 1, 0
+	battleanim_03 0
+	battleanim_doublepushscreen
+	battleanim_clearsprites
+	battleanim_04 0
+	battleanim_doublepushscreen
+	battleanim_end
 
 Data_616ce: ; 616ce
 	db 2, 0, 1, 5, 5, 1, 0
@@ -35,16 +37,19 @@ Func_616dd: ; 616dd ; DoDamage?
 	ld [hl], a
 	ld hl, sp+$26
 	ld [hl], $0
+
 	ld hl, sp+$9
 	reg16swap de, hl
 	ld hl, Data_616c6
 	ld bc, $8
 	call MemCopy
+
 	ld hl, sp+$2
 	reg16swap de, hl
 	ld hl, Data_616ce
 	ld bc, $7
 	call MemCopy
+
 	ld a, [wLCDC]
 	or $6
 	ld [wLCDC], a
@@ -56,15 +61,18 @@ Func_616dd: ; 616dd ; DoDamage?
 	ld hl, wLastVBlankFlags
 	cp [hl]
 	jp nz, .waitLoop
+
 	ld hl, sp+$2b
 	ld a, [hl]
 	read_hl_from wCurRobotPointer
 	ld de, $b
 	add hl, de
 	ld [hl], a
+
 	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$9
 	call FarCall
+
 	ld hl, sp+$2b
 	ld l, [hl]
 	ld h, $0
@@ -74,6 +82,7 @@ Func_616dd: ; 616dd ; DoDamage?
 	ld e, [hl]
 	ld hl, sp+$19
 	ld [hl], e
+
 	ld hl, sp+$2b
 	ld l, [hl]
 	ld h, $0
@@ -84,10 +93,12 @@ Func_616dd: ; 616dd ; DoDamage?
 	ld e, [hl]
 	ld hl, sp+$1a
 	ld [hl], e
+
 	ld hl, sp+$2b
 	ld a, [hl]
 	or a
 	jp nz, Func_6178d
+
 	ld hl, $2
 	write_hl_to_sp_plus $26
 	ld hl, $703
@@ -257,7 +268,7 @@ Func_6185e: ; 6185e (18:585e)
 	ld h, a
 	pop de
 	call Func_2617
-	ld a, $5d
+	ld a, SFX_5D
 	call OverworldPlaySFX
 	pop af
 	ld e, a
@@ -295,15 +306,15 @@ Func_618b1: ; 618b1 (18:58b1)
 	pop de
 	call Func_63d05
 Func_618eb: ; 618eb (18:58eb)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	read_hl_from_sp_plus $2c
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $2a
 	reg16swap de, hl
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -343,7 +354,7 @@ Func_6192c: ; 6192c (18:592c)
 Func_61940: ; 61940 (18:5940)
 	push de
 	call WaitVideoTransfer
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_61956
 	ld a, [wLCDC]
@@ -389,7 +400,7 @@ Func_6197c: ; 6197c (18:597c)
 	ld h, $0
 	ld de, $28
 	call Func_615ce
-	call Func_0451
+	call NextBattleFrame
 	ld hl, sp+$2a
 	ld a, [hl]
 	inc a
@@ -445,7 +456,7 @@ Func_619e7: ; 619e7 (18:59e7)
 	ld l, $2
 	push hl
 	ld c, $8
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PlayBattleAnimScript
 	ld hl, sp+$0

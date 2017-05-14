@@ -35,14 +35,14 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $c8
@@ -78,7 +78,7 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld a, $2
 	ld [wEnableAttrMapTransfer], a
@@ -96,7 +96,7 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	ld a, l
@@ -125,7 +125,7 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -137,7 +137,7 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_6f4f1)
@@ -162,7 +162,7 @@ Func_6f685: ; 6f685 (1b:7685)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop de
 	push de
@@ -185,7 +185,7 @@ Func_6f685: ; 6f685 (1b:7685)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl

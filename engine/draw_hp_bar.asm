@@ -22,7 +22,7 @@ DrawHPBar: ; 63c5f (18:7c5f)
 	ld a, $94
 	add d
 	ld e, a
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jr z, .asm_63c88
 	ld a, $69

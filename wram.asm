@@ -478,7 +478,7 @@ wVideoTransferQueue:: ; c239
 	array wc2bb, 1, 16, 1 ; c2bb
 	char wc2cb ; c2cb
 	char wc2cc ; c2cc
-	char wc2cd ; c2cd
+	char wOverworldTilemapSelector ; c2cd
 	ds $8
 
 	char wMapWidth ; c2d6
@@ -514,7 +514,7 @@ wVideoTransferQueue:: ; c239
 	char wTimeSetYears ; c2f1
 	short wc2f2 ; c2f2
 	char wc2f4 ; c2f4
-	char wc2f5 ; c2f5
+	char wOAMEntryCurrentlyBeingUpdated ; c2f5
 	char wc2f6 ; c2f6
 	char wc2f7 ; c2f7
 	char wCurShop ; c2f8
@@ -532,8 +532,8 @@ wVideoTransferQueue:: ; c239
 	char wTimeSetMinutesOnesDigit ; c304
 	char wc305 ; c305
 	char wc306 ; c306
-	char wc307 ; c307
-	char wc308 ; c308
+	char wOptionsMenu_BattleScene ; c307
+	char wOptionsMenu_StereoSelect ; c308
 
 	array wPlayerName, 5, 1, 1 ; c309
 	short wc30e ; c30e
@@ -715,7 +715,9 @@ wLCDInterrupt2:: ; c770
 	array wc7b1, $c, $1, $1
 	char wc7bd ; c7bd
 	char wMapMusic ; c7be
-	ds $5
+	ds $3
+	char wc7c2
+	ds $1
 	char wc7c4 ; c7c4
 	char wc7c5 ; c7c5
 	ds $14
@@ -743,7 +745,7 @@ wEventFlagsEnd::
 
 	char wc81f ; c81f
 	char wc820 ; c820
-	char wc821 ; c821
+	char wCurrentDirectionalInputHeldFramesCounter ; c821
 
 	short wLoadAttrsSourcePointer ; c822
 	short wc824 ; c824
@@ -776,18 +778,18 @@ wEventFlagsEnd::
 	char wc848 ; c848
 	char wc849 ; c849
 	char wRemainInMap ; c84a
-	char wc84b ; c84b
-	char wc84c ; c84c
-	char wc84d ; c84d
+	char wPlayerSpriteNotCenteredOnScreen ; c84b
+	char wPlayerSpriteXOffset ; c84c
+	char wPlayerSpriteYOffset ; c84d
 	char wScreenIsShaking ; c84e
 	char wNextScreenShakeYDisplacement ; c84f
 	char wScreenShakeFrameTimer ; c850
 	char wc851 ; c851
 	short wc852 ; c852
-	short wc854 ; c854
-	char wc856 ; c856
-	char wc857 ; c857
-	char wc858 ; c858
+	short wCurBattleSFXScriptPointer ; c854
+	char wCurBattleSFXTimer ; c856
+	char wSlipperyCollision ; c857
+	char wSliding ; c858
 	char wc859 ; c859
 	char wc85a ; c85a
 	short wTilesetPointer ; c85b
@@ -890,7 +892,7 @@ wSaveBlock1::
 	ds $3
 	bitfield wSaveScratchDexSeenFlags, NUM_ROBOTS ; ca70
 	bitfield wSaveScratchDexCaughtFlags, NUM_ROBOTS ; ca86
-	char wca9c ; ca9c
+	char wOptions ; ca9c
 	bitfield wSaveScratchEventFlags, 400 ; ca9d
 	array wSaveScratchc789, 100, 1, 1 ; cacf
 	array wcb33, 8, 1, 1 ; cb33

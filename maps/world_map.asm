@@ -727,7 +727,7 @@ Func_e2581: ; e2581 (38:6581)
 	jp Func_e24b3
 
 Func_e258f: ; e258f (38:658f)
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	set_farcall_addrs_hli UpdateCurSprite
@@ -777,7 +777,7 @@ Func_e258f: ; e258f (38:658f)
 	reg16swap de, hl
 	xor a
 	call FarCall
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	pop de
 	ld a, e
 	inc a

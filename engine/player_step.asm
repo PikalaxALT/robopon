@@ -1,4 +1,6 @@
 HandlePlayerStep:: ; 943f (2:543f)
+; a: direction
+; e: if set, freeze player (bg scroll only)
 	push bc
 	push de
 	push hl
@@ -20,10 +22,10 @@ HandlePlayerStep:: ; 943f (2:543f)
 	call CheckMovingOffEdgeOfMap
 	pop bc
 	cp $ff
-	jr nz, .asm_9470
+	jr nz, .not_edge_bonk
 	xor a
 	ld [wLastStepSucceeded], a
-.asm_9470
+.not_edge_bonk
 	push bc
 	push de
 	push hl
@@ -35,13 +37,13 @@ HandlePlayerStep:: ; 943f (2:543f)
 	pop de
 	pop bc
 	cp $0
-	jr nz, .asm_9487
+	jr nz, .not_person_bonk
 	xor a
 	ld [wLastStepSucceeded], a
-.asm_9487
+.not_person_bonk
 	ld a, [wRemainInMap]
 	or a
-	jr nz, .asm_94ae
+	jr nz, .not_leaving_map_status
 	push bc
 	push de
 	ld a, [wPlayerFacing]
@@ -57,48 +59,48 @@ HandlePlayerStep:: ; 943f (2:543f)
 	or $6
 	ld [wNextVBlankFlags], a
 	ei
-	jp Func_99de
+	jp .dontResetSliding
 
 ; check background collision
-.asm_94ae
+.not_leaving_map_status
 	ld a, [wPlayerMapX]
 	ld d, a
 	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, b
-	cp $0
-	jr z, .asm_94c7
-	cp $1
-	jr z, .asm_94d2
-	cp $2
-	jr z, .asm_94d8
-	cp $3
-	jr z, .asm_94e1
-.asm_94c7
+	cp FACE_UP
+	jr z, .bgcollision_up
+	cp FACE_RIGHT
+	jr z, .bgcollision_right
+	cp FACE_DOWN
+	jr z, .bgcollision_down
+	cp FACE_LEFT
+	jr z, .bgcollision_left
+.bgcollision_up
 	dec e
 	ld a, [wMapWidth]
 	cpl
 	ld l, a
-	ld h, $ff
+	ld h, high(-1)
 	inc hl
-	jr .asm_94e5
+	jr .bgcollision
 
-.asm_94d2
+.bgcollision_right
 	inc d
 	ld hl, $1
-	jr .asm_94e5
+	jr .bgcollision
 
-.asm_94d8
+.bgcollision_down
 	inc e
 	ld a, [wMapWidth]
 	ld l, a
 	ld h, $0
-	jr .asm_94e5
+	jr .bgcollision
 
-.asm_94e1
+.bgcollision_left
 	dec d
 	ld hl, -1
-.asm_94e5
+.bgcollision
 	push bc
 	push de
 	push hl
@@ -109,52 +111,52 @@ HandlePlayerStep:: ; 943f (2:543f)
 	pop de
 	pop bc
 	cp $ff
-	jr nz, .asm_94f9
+	jr nz, .no_collision
 	xor a
 	ld [wLastStepSucceeded], a
-.asm_94f9
+.no_collision
 
 ; check player state
 	ld a, [wPlayerState]
 	cp $2
-	jr z, .asm_9508
+	jr z, .fast
 	cp $3
-	jr z, .asm_9508
+	jr z, .fast
 	ld a, $1
-	jr .asm_950a
+	jr .got_movement_rate
 
-.asm_9508
+.fast
 	ld a, $2
-.asm_950a
+.got_movement_rate
 	ld [wPlayerMovementRate], a
-	ld a, [wc858]
+	ld a, [wSliding]
 	cp $0
-	jr nz, .asm_952e
-	ld a, [wc857]
+	jr nz, .not_sliding
+	ld a, [wSlipperyCollision]
 	cp $ff
-	jr z, .asm_952e
+	jr z, .not_sliding
 	push bc
 	push de
 	call Func_9f4c
 	pop de
 	pop bc
 	ld h, a
-	ld a, [wc857]
+	ld a, [wSlipperyCollision]
 	cp h
-	jr nz, .asm_952e
+	jr nz, .not_sliding
 	ld a, $1
-	ld [wc858], a
-.asm_952e
+	ld [wSliding], a
+.not_sliding
 	ld a, c
 	cp $1
-	jr z, .asm_9536
+	jr z, .player_frozen
 	xor a
-	jr .asm_9538
+	jr .got_centered_status
 
-.asm_9536
+.player_frozen
 	ld a, $1
-.asm_9538
-	ld [wc84b], a
+.got_centered_status
+	ld [wPlayerSpriteNotCenteredOnScreen], a
 	ld a, [wSCX]
 	srl a
 	srl a
@@ -167,76 +169,76 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld l, a
 	ld a, b
 	or a
-	jr z, .asm_955c
+	jr z, .screen_up
 	dec a
-	jr z, .asm_9566
+	jr z, .screen_right
 	dec a
-	jr z, .asm_9570
+	jr z, .screen_down
 	dec a
-	jr z, .asm_957a
-.asm_955c
+	jr z, .screen_left
+.screen_up
 	ld a, h
 	sub $2
 	ld h, a
 	ld a, l
 	sub $4
 	ld l, a
-	jr .asm_9584
+	jr .done_screen_scroll
 
-.asm_9566
+.screen_right
 	ld a, h
 	add $16
 	ld h, a
 	ld a, l
 	sub $2
 	ld l, a
-	jr .asm_9584
+	jr .done_screen_scroll
 
-.asm_9570
+.screen_down
 	ld a, h
 	sub $2
 	ld h, a
 	ld a, l
 	add $14
 	ld l, a
-	jr .asm_9584
+	jr .done_screen_scroll
 
-.asm_957a
+.screen_left
 	ld a, h
 	sub $4
 	ld h, a
 	ld a, l
 	sub $2
 	ld l, a
-	jr .asm_9584
+	jr .done_screen_scroll
 
-.asm_9584
+.done_screen_scroll
 	ld a, c
 	cp $1
-	jr z, .asm_95a3
+	jr z, .no_player_movement
 	push hl
 	ld a, [wMovementDataAddr]
 	ld l, a
 	ld a, [wMovementDataAddr + 1]
 	or l
 	pop hl
-	jr nz, .asm_95a3
+	jr nz, .no_player_movement
 	ld a, [wLastStepSucceeded]
 	cp $1
-	jr z, .asm_95a8
+	jr z, .no_bonk
 	ld a, $33
 	call OverworldPlaySFX
-	jr .asm_95a8
+	jr .no_bonk
 
-.asm_95a3
+.no_player_movement
 	ld a, $1
 	ld [wLastStepSucceeded], a
-.asm_95a8
+.no_bonk
 	ld c, $0
-Func_95aa: ; 95aa (2:55aa)
+.Loop
 	ld a, [wLastStepSucceeded]
 	cp $0
-	jp z, Func_9844
+	jp z, .DoMovementRate
 	push hl
 	push bc
 	ld a, h
@@ -253,7 +255,7 @@ Func_95aa: ; 95aa (2:55aa)
 	add hl, hl
 	add hl, hl
 	add hl, bc
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	cp $0
 	jr z, .asm_95d2
 	bcbgcoord 0, 0, vWindowMap
@@ -266,17 +268,17 @@ Func_95aa: ; 95aa (2:55aa)
 	pop bc
 	ld a, b
 	or a
-	jr z, .asm_95e7
+	jr z, .scrollMapUp
 	dec a
-	jp z, Func_9678
+	jp z, .scrollMapRight
 	dec a
-	jp z, Func_9716
+	jp z, .scrollMapDown
 	dec a
-	jp z, Func_97a7
-.asm_95e7
+	jp z, .scrollMapLeft
+.scrollMapUp
 	ld a, c
 	cp $c
-	jp nc, Func_9670
+	jp nc, .dontScrollUp
 	push bc
 	push hl
 	ld a, [wc868]
@@ -344,14 +346,14 @@ Func_95aa: ; 95aa (2:55aa)
 	ld [wNextVBlankFlags], a
 	ei
 	pop bc
-Func_9670: ; 9670 (2:5670)
+.dontScrollUp: ; 9670 (2:5670)
 	pop hl
 	ld a, h
 	add $2
 	ld h, a
-	jp Func_9844
+	jp .DoMovementRate
 
-Func_9678: ; 9678 (2:5678)
+.scrollMapRight: ; 9678 (2:5678)
 	push bc
 	push hl
 	ld a, [wc870]
@@ -434,12 +436,12 @@ Func_9678: ; 9678 (2:5678)
 	ld a, l
 	add $2
 	ld l, a
-	jp Func_9844
+	jp .DoMovementRate
 
-Func_9716: ; 9716 (2:5716)
+.scrollMapDown: ; 9716 (2:5716)
 	ld a, c
 	cp $c
-	jp nc, Func_979f
+	jp nc, .dontScrollDown
 	push bc
 	push hl
 	ld a, [wc86e]
@@ -507,14 +509,14 @@ Func_9716: ; 9716 (2:5716)
 	ld [wNextVBlankFlags], a
 	ei
 	pop bc
-Func_979f: ; 979f (2:579f)
+.dontScrollDown: ; 979f (2:579f)
 	pop hl
 	ld a, h
 	add $2
 	ld h, a
-	jp Func_9844
+	jp .DoMovementRate
 
-Func_97a7: ; 97a7 (2:57a7)
+.scrollMapLeft: ; 97a7 (2:57a7)
 	push bc
 	push hl
 	ld a, [wc872]
@@ -597,16 +599,16 @@ Func_97a7: ; 97a7 (2:57a7)
 	ld a, l
 	add $2
 	ld l, a
-	jr Func_9844
+	jr .DoMovementRate
 
-Func_9844: ; 9844 (2:5844)
+.DoMovementRate: ; 9844 (2:5844)
 	ld a, [wPlayerMovementRate]
 	cp $1
 	jr z, .normal_movement_rate
 	ld a, c
 	and $1
 	jr z, .normal_movement_rate
-	jp Func_9900
+	jp .acceleratedMovementRate
 
 .normal_movement_rate
 	push bc
@@ -617,7 +619,7 @@ Func_9844: ; 9844 (2:5844)
 	pop bc
 	ld a, [wLastStepSucceeded]
 	cp $0
-	jp z, Func_98f3
+	jp z, .stepDidNotSucceed
 	ld a, b
 	cp $0
 	jr z, .asm_9876
@@ -634,12 +636,12 @@ Func_9844: ; 9844 (2:5844)
 	sub e
 	ld [wSCY], a
 	ld [wSCY2], a
-	ld a, [wc84b]
+	ld a, [wPlayerSpriteNotCenteredOnScreen]
 	cp $1
 	jr nz, .asm_98ee
-	ld a, [wc84d]
+	ld a, [wPlayerSpriteYOffset]
 	inc a
-	ld [wc84d], a
+	ld [wPlayerSpriteYOffset], a
 	jr .asm_98ee
 
 .asm_9894
@@ -649,12 +651,12 @@ Func_9844: ; 9844 (2:5844)
 	add e
 	ld [wSCX], a
 	ld [wSCX2], a
-	ld a, [wc84b]
+	ld a, [wPlayerSpriteNotCenteredOnScreen]
 	cp $1
 	jr nz, .asm_98ee
-	ld a, [wc84c]
+	ld a, [wPlayerSpriteXOffset]
 	dec a
-	ld [wc84c], a
+	ld [wPlayerSpriteXOffset], a
 	jr .asm_98ee
 
 .asm_98b2
@@ -664,12 +666,12 @@ Func_9844: ; 9844 (2:5844)
 	add e
 	ld [wSCY], a
 	ld [wSCY2], a
-	ld a, [wc84b]
+	ld a, [wPlayerSpriteNotCenteredOnScreen]
 	cp $1
 	jr nz, .asm_98ee
-	ld a, [wc84d]
+	ld a, [wPlayerSpriteYOffset]
 	dec a
-	ld [wc84d], a
+	ld [wPlayerSpriteYOffset], a
 	jr .asm_98ee
 
 .asm_98d0
@@ -679,19 +681,19 @@ Func_9844: ; 9844 (2:5844)
 	sub e
 	ld [wSCX], a
 	ld [wSCX2], a
-	ld a, [wc84b]
+	ld a, [wPlayerSpriteNotCenteredOnScreen]
 	cp $1
 	jr nz, .asm_98ee
-	ld a, [wc84c]
+	ld a, [wPlayerSpriteXOffset]
 	inc a
-	ld [wc84c], a
+	ld [wPlayerSpriteXOffset], a
 	jr .asm_98ee
 
 .asm_98ee
 	ld a, c
 	inc a
 	ld [wc83a], a
-Func_98f3: ; 98f3 (2:58f3)
+.stepDidNotSucceed: ; 98f3 (2:58f3)
 	push bc
 	push de
 	push hl
@@ -702,7 +704,7 @@ Func_98f3: ; 98f3 (2:58f3)
 	pop hl
 	pop de
 	pop bc
-Func_9900: ; 9900 (2:5900)
+.acceleratedMovementRate: ; 9900 (2:5900)
 	ld a, [wLastStepSucceeded]
 	cp $0
 	jp z, .skip_step_vector
@@ -825,13 +827,13 @@ Func_9900: ; 9900 (2:5900)
 	inc c
 	ld a, c
 	cp $10
-	jp nz, Func_95aa
+	jp nz, .Loop
 	ld a, [wLastStepSucceeded]
 	cp $0
-	jr nz, Func_99de
+	jr nz, .dontResetSliding
 	xor a
-	ld [wc858], a
-Func_99de: ; 99de (2:59de)
+	ld [wSliding], a
+.dontResetSliding: ; 99de (2:59de)
 	pop hl
 	pop de
 	pop bc

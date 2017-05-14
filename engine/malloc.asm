@@ -261,7 +261,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	ld e, $1
@@ -276,7 +276,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 .crash_wait
 	call CheckButton
@@ -593,7 +593,7 @@ Func_17d7b: ; 17d7b
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld e, $0
 	xor a
@@ -637,7 +637,7 @@ Func_17d7b: ; 17d7b
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop bc

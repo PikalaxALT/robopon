@@ -27,7 +27,7 @@ Func_4000:: ; 4000
 	ld a, [wc213]
 	or a
 	ret nz
-	callba Func_93b87
+	callba GameBoot_ValidateRTC
 	callba IntroMovie
 Func_4060:: ; 4060 (1:4060)
 	jp Func_1e4d
@@ -1398,7 +1398,7 @@ BlinkTextCursor:
 	add hl, hl
 	add hl, de
 	ld d, $98
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jr z, .asm_699d
 	ld d, $9c
@@ -4293,11 +4293,11 @@ Func_8000: ; 8000
 Data_8001: ; 8001
 	db  0,  0
 	db 14,  9
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 0, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_80f6
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 0, 0
 	dbw 0, 0
 	dbw 0, 0
@@ -4838,7 +4838,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	jp .quit
 
 .lcd_enabled
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp z, .bgmap_9c00
 	ld a, $98
@@ -5063,7 +5063,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	and $fe
 	ld [rVBK], a
 .skip_attr
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, .set_bgmap_9800
 	ld a, $1
@@ -5116,64 +5116,64 @@ Func_99e2: ; 99e2
 
 CheckMovingOffEdgeOfMap: ; 99e3 (2:59e3)
 	cp $3
-	jp z, Func_9a32
+	jp z, .check_left
 	cp $2
-	jp z, Func_9a20
+	jp z, .check_down
 	cp $1
-	jp z, Func_9a0e
+	jp z, .check_right
 	or a
-	jp nz, Func_9a47
+	jp nz, .not_edge
 	ld a, [wMapY]
 	and $80
-	jp z, Func_9a0b
+	jp z, .not_edge_up
 	ld a, [wMapY]
 	cpl
 	inc a
 	cp $4
-	jp c, Func_9a0b
+	jp c, .not_edge_up
 	ld a, $ff
 	ret
 
-Func_9a0b: ; 9a0b (2:5a0b)
-	jp Func_9a47
+.not_edge_up
+	jp .not_edge
 
-Func_9a0e: ; 9a0e (2:5a0e)
+.check_right
 	ld a, [wMapX]
 	add $6
 	ld hl, wMapWidth
 	cp [hl]
-	jp c, Func_9a1d
+	jp c, .not_edge_right
 	ld a, $ff
 	ret
 
-Func_9a1d: ; 9a1d (2:5a1d)
-	jp Func_9a47
+.not_edge_right
+	jp .not_edge
 
-Func_9a20: ; 9a20 (2:5a20)
+.check_down
 	ld a, [wMapY]
 	add $5
 	ld hl, wMapHeight
 	cp [hl]
-	jp c, Func_9a2f
+	jp c, .not_edge_down
 	ld a, $ff
 	ret
 
-Func_9a2f: ; 9a2f (2:5a2f)
-	jp Func_9a47
+.not_edge_down
+	jp .not_edge
 
-Func_9a32: ; 9a32 (2:5a32)
+.check_left
 	ld a, [wMapX]
 	and $80
-	jp z, Func_9a47
+	jp z, .not_edge
 	ld a, [wMapX]
 	cpl
 	inc a
 	cp $5
-	jp c, Func_9a47
+	jp c, .not_edge
 	ld a, $ff
 	ret
 
-Func_9a47: ; 9a47 (2:5a47)
+.not_edge
 	xor a
 	ret
 
@@ -5182,17 +5182,17 @@ INCLUDE "engine/map/func_94a9.asm"
 UpdatePlayerSprite: ; 9d80 (2:5d80)
 	push hl
 	ld h, a
-	ld a, [wc84b]
+	ld a, [wPlayerSpriteNotCenteredOnScreen]
 	cp $1
 	jr nz, .asm_9d8f
 	ld a, [wPlayerFacing]
 	pop hl
-	jr .asm_9d91
+	jr .got_facing
 
 .asm_9d8f
 	ld a, h
 	pop hl
-.asm_9d91
+.got_facing
 	push af
 	ld a, [wc841]
 	ld a, [wc841]
@@ -5202,16 +5202,16 @@ UpdatePlayerSprite: ; 9d80 (2:5d80)
 	or a
 	jr nz, .asm_9da4
 	xor a
-	ld [wc821], a
+	ld [wCurrentDirectionalInputHeldFramesCounter], a
 .asm_9da4
-	ld a, [wc858]
+	ld a, [wSliding]
 	cp $1
 	jr nz, .asm_9db0
 	xor a
-	ld [wc821], a
+	ld [wCurrentDirectionalInputHeldFramesCounter], a
 	ld e, a
 .asm_9db0
-	ld a, [wc821]
+	ld a, [wCurrentDirectionalInputHeldFramesCounter]
 	srl a
 	srl a
 	srl a
@@ -5224,15 +5224,15 @@ UpdatePlayerSprite: ; 9d80 (2:5d80)
 	ld b, a
 	ld hl, wOAM00YCoord
 	lb de, $58, $4c
-	ld a, [wc84b]
+	ld a, [wPlayerSpriteNotCenteredOnScreen]
 	cp $1
 	jr nz, .asm_9de1
 	ld d, $58
-	ld a, [wc84c]
+	ld a, [wPlayerSpriteXOffset]
 	add d
 	ld d, a
 	ld e, $4c
-	ld a, [wc84d]
+	ld a, [wPlayerSpriteYOffset]
 	add e
 	ld e, a
 	ld b, $0
@@ -5309,9 +5309,9 @@ UpdatePlayerSprite: ; 9d80 (2:5d80)
 	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld a, [wc821]
+	ld a, [wCurrentDirectionalInputHeldFramesCounter]
 	inc a
-	ld [wc821], a
+	ld [wCurrentDirectionalInputHeldFramesCounter], a
 	ret
 
 .asm_9e41
@@ -5387,9 +5387,9 @@ UpdatePlayerSprite: ; 9d80 (2:5d80)
 	ld [hli], a
 	ld a, c
 	ld [hli], a
-	ld a, [wc821]
+	ld a, [wCurrentDirectionalInputHeldFramesCounter]
 	inc a
-	ld [wc821], a
+	ld [wCurrentDirectionalInputHeldFramesCounter], a
 	ret
 
 .bail: ; 9ea0 (2:5ea0)
@@ -5404,7 +5404,16 @@ UpdatePlayerSprite: ; 9d80 (2:5d80)
 	ret
 
 Data_9ead: ; 9ead
-	dr $9ead, $9eb4
+	db $00, $04, $00, $08
+
+Func_9eb1:
+	ret
+
+Func_9eb2:
+	ret
+
+Func_9eb3:
+	ret
 
 Func_9eb4: ; 9eb4 (2:5eb4)
 	push af
@@ -6570,7 +6579,7 @@ Func_bf05: ; bf05 (2:7f05)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ret
 
@@ -6580,7 +6589,7 @@ Func_bf12: ; bf12 (2:7f12)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -6608,7 +6617,7 @@ Func_bf39:: ; bf39
 	ret
 
 Func_bf46:: ; bf46 (2:7f46)
-	ld [wc857], a
+	ld [wSlipperyCollision], a
 	ret
 
 CheckBlackedOut: ; bf4a (2:7f4a)
@@ -7006,7 +7015,7 @@ Func_c6ff: ; c6ff (3:46ff)
 	ret
 
 Func_c72e: ; c72e (3:472e)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_c740
 	ld a, [wLCDC]
@@ -7041,7 +7050,7 @@ Data_c76b: ; c76b
 	dr $c76b, $c779
 
 Func_c779: ; c779 (3:4779)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld e, a
 	ld a, $2
 	call Func_c758
@@ -7073,9 +7082,9 @@ Func_c79d: ; c79d (3:479d)
 	ret
 
 Func_c7ba: ; c7ba
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	call Func_c72e
 	call Func_c6ff
 	set_farcall_addrs_hli Func_7c8a
@@ -7439,14 +7448,14 @@ Func_ca46: ; ca46 (3:4a46)
 	jp Func_ca46
 
 Func_ca78: ; ca78 (3:4a78)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	call Func_c72e
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $b
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -7479,7 +7488,7 @@ Func_ca78: ; ca78 (3:4a78)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $1d
 	ld de, $1323
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -7517,13 +7526,13 @@ Func_cb2e: ; cb2e (3:4b2e)
 	cp $3c
 	jp nc, Func_cb3c
 	push af
-	call Func_0451
+	call NextBattleFrame
 	pop af
 	inc a
 	jp Func_cb2e
 
 Func_cb3c: ; cb3c (3:4b3c)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
 	ld e, a
 	ld a, $2
@@ -7586,14 +7595,14 @@ Func_ce13: ; ce13 (3:4e13)
 
 Func_ce18: ; ce18 (3:4e18)
 	push af
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	pop af
 	or a
 	jp nz, Func_ce73
 	set_farcall_addrs_hli Func_7c8a
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	read_hl_from wCurRobotPointer
 	ld de, $18
@@ -7604,7 +7613,7 @@ Func_ce18: ; ce18 (3:4e18)
 	ld hl, $105
 	call FarCall
 	set_farcall_addrs_hli Func_7c8a
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	read_hl_from wCurRobotPointer
 	ld de, $18
@@ -7620,7 +7629,7 @@ Func_ce18: ; ce18 (3:4e18)
 	jp Func_ce79
 
 Func_ce73: ; ce73 (3:4e73)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	call Func_cdc0
 Func_ce79: ; ce79 (3:4e79)
 	call WaitVideoTransfer
@@ -7642,9 +7651,9 @@ Func_cea1: ; cea1 (3:4ea1)
 	and $80
 	jp nz, Func_cea1
 	ld e, $2
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	call Func_c758
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
 	call Func_cdc0
 	call ClearSprites
@@ -7896,7 +7905,7 @@ Func_d030: ; d030
 	ld hl, $a0
 	pop de
 	push hl
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	read_hl_from wCurRobotPointer
 	ld de, $18
@@ -7926,7 +7935,7 @@ Func_d0d5: ; d0d5 (3:50d5)
 	ld hl, $a0
 	pop de
 	push hl
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	read_hl_from wCurRobotPointer
 	ld de, $18
@@ -7998,7 +8007,7 @@ Func_d156: ; d156 (3:5156)
 	ld hl, Data_d020
 	call PlayBattleAnimScript
 Func_d15c: ; d15c (3:515c)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_d16e
 	ld a, [wLCDC]
@@ -8324,7 +8333,7 @@ Func_d384: ; d384 (3:5384)
 	ld e, [hl]
 	ld hl, sp+$19
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	read_hl_from_sp_plus $12
 	reg16swap de, hl
@@ -8609,7 +8618,7 @@ Func_d578: ; d578 (3:5578)
 	ld e, [hl]
 	ld hl, sp+$19
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	read_hl_from_sp_plus $12
 	reg16swap de, hl
@@ -9045,7 +9054,7 @@ Func_dcd6: ; dcd6 (3:5cd6)
 	cp $46
 	jp nc, Func_dcf3
 	ld hl, sp+$0
-	call Func_f0cf
+	call BattleAnim_PlayMoveAnimScript
 	jp Func_dd07
 
 Func_dcf3: ; dcf3 (3:5cf3)
@@ -9375,7 +9384,7 @@ Func_df5c: ; df5c (3:5f5c)
 	cp $a
 	jp nc, Func_df6a
 	push af
-	call Func_0451
+	call NextBattleFrame
 	pop af
 	inc a
 	jp Func_df5c
@@ -9458,7 +9467,7 @@ Func_dffb: ; dffb (3:5ffb)
 	cp $a
 	jp nc, Func_e009
 	push af
-	call Func_0451
+	call NextBattleFrame
 	pop af
 	inc a
 	jp Func_dffb
@@ -10007,7 +10016,7 @@ Func_f9cc: ; f9cc (3:79cc)
 	jp Func_f991
 
 Func_f9d2: ; f9d2 (3:79d2)
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	ld hl, $e5
@@ -10193,7 +10202,7 @@ Func_10011: ; 10011 (4:4011)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_17e95
@@ -10244,7 +10253,7 @@ Func_10011: ; 10011 (4:4011)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld e, $0
 	ld c, e
@@ -10255,7 +10264,7 @@ Func_10011: ; 10011 (4:4011)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop de
 	pop bc
@@ -10397,7 +10406,7 @@ Func_10190: ; 10190 (4:4190)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -10702,7 +10711,7 @@ Func_103b5: ; 103b5 (4:43b5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -10714,7 +10723,7 @@ Func_103b5: ; 103b5 (4:43b5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $4
@@ -10976,13 +10985,13 @@ Func_105f3: ; 105f3 (4:45f3)
 	jp z, Func_1063b
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $7
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld e, a
 	xor a
 	call FarCall
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $8
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	ld e, a
 	ld a, $1
 	call FarCall
@@ -10999,13 +11008,13 @@ Func_1063b: ; 1063b (4:463b)
 	jp nz, Func_1067b
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $8
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld e, a
 	xor a
 	call FarCall
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $7
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	ld e, a
 	ld a, $1
 	call FarCall
@@ -11018,13 +11027,13 @@ Func_1063b: ; 1063b (4:463b)
 Func_1067b: ; 1067b (4:467b)
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $8
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld e, a
 	ld a, $1
 	call FarCall
 	set_farcall_addrs_hli Func_dbf5
 	ld c, $7
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	ld e, a
 	xor a
 	call FarCall
@@ -11043,10 +11052,10 @@ Func_106b1: ; 106b1 (4:46b1)
 	ld de, $1311
 	ld hl, $0
 	call FarCall
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
-	ld a, [wc2cd]
+	ld [wOverworldTilemapSelector], a
+	ld a, [wOverworldTilemapSelector]
 	call Func_1055c
 	xor a
 	ld [wSCX2], a
@@ -11059,7 +11068,7 @@ Func_106b1: ; 106b1 (4:46b1)
 	or $14
 	ld [wNextVBlankFlags], a
 	call Func_1025d
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
 	call Func_1055c
 	ld a, [wSystemType]
@@ -11171,7 +11180,7 @@ Func_1082a: ; 1082a (4:482a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld e, $a
 	ld a, $8
@@ -11283,7 +11292,7 @@ Func_10912: ; 10912 (4:4912)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	push bc
@@ -11714,7 +11723,7 @@ Func_10c0a: ; 10c0a (4:4c0a)
 	ld b, h
 	ld de, $605
 	ld hl, $705
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -13757,7 +13766,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	pop de
@@ -13926,7 +13935,7 @@ Func_11cb2: ; 11cb2 (4:5cb2)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop bc
@@ -13980,7 +13989,7 @@ Func_11cfb: ; 11cfb (4:5cfb)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_17e95
@@ -14151,7 +14160,7 @@ Func_11e1f: ; 11e1f (4:5e1f)
 	jp Func_11e1f
 
 Func_11e6b: ; 11e6b (4:5e6b)
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	read_hl_from_sp_plus $e
@@ -14338,7 +14347,7 @@ Func_11fc9: ; 11fc9 (4:5fc9)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop bc
@@ -14438,7 +14447,7 @@ Func_12093: ; 12093 (4:6093)
 	ld hl, sp+$1c
 	ld [hl], $2
 Func_1209f: ; 1209f (4:609f)
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	ld hl, sp+$18
@@ -14509,7 +14518,7 @@ Func_1209f: ; 1209f (4:609f)
 	add hl, de
 	reg16swap de, hl
 	call FarCall
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	add sp, $14
 	ret
 
@@ -14589,7 +14598,7 @@ Func_1230c: ; 1230c (4:630c)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call Func_12b93
 	ld l, $0
@@ -14616,7 +14625,7 @@ Func_12352: ; 12352 (4:6352)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$b
 	xor a
@@ -16039,7 +16048,7 @@ Func_12ccf: ; 12ccf (4:6ccf)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call Func_12b93
 	ld hl, sp+$c
@@ -16093,7 +16102,7 @@ Func_12d40: ; 12d40 (4:6d40)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$2
 	ld [hl], $0
@@ -16232,7 +16241,7 @@ Func_12e14: ; 12e14 (4:6e14)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	call Func_2009
@@ -16386,7 +16395,7 @@ Func_12ec5: ; 12ec5 (4:6ec5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	ld hl, sp+$d
@@ -16399,14 +16408,14 @@ Func_12ec5: ; 12ec5 (4:6ec5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld c, $0
 Func_12fb0: ; 12fb0 (4:6fb0)
@@ -17539,14 +17548,14 @@ Func_1551f:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $e
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	ld hl, $5
@@ -17600,7 +17609,7 @@ Func_1551f:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -17616,7 +17625,7 @@ Func_1551f:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	xor a
 	pop bc
@@ -18251,7 +18260,7 @@ Func_15a64: ; 15a64 (5:5a64)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $5
@@ -18299,7 +18308,7 @@ Func_15bde: ; 15bde
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	call WriteHLToSPPlus7
@@ -20183,7 +20192,7 @@ Func_1694e: ; 1694e (5:694e)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 Func_1695d: ; 1695d (5:695d)
@@ -20218,7 +20227,7 @@ Func_16966: ; 16966 (5:6966)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
@@ -20243,7 +20252,7 @@ Func_169b5: ; 169b5 (5:69b5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
@@ -20313,7 +20322,7 @@ Func_16a31: ; 16a31 (5:6a31)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
@@ -20424,7 +20433,7 @@ Func_16ae2: ; 16ae2 (5:6ae2)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
@@ -20655,7 +20664,7 @@ Func_16d1a: ; 16d1a (5:6d1a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 .asm_16d27
@@ -21633,7 +21642,7 @@ Func_17429: ; 17429 (5:7429)
 Data_1743d: ; 1743d
 	db " ", $0
 
-Func_1743f: ; 1743f
+StartMenu_PressB: ; 1743f
 	ld a, [wc39b]
 	cp $ff
 	jp z, Func_17450
@@ -22571,7 +22580,7 @@ Func_20417: ; 20417
 	ret
 
 Func_2041b: ; 2041b (8:441b)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_2042d
 	ld a, [wLCDC]
@@ -22792,7 +22801,7 @@ DrawBattleSelectionMenu: ; 20476 (8:4476)
 	ld c, $d
 	ld e, $d
 	ld a, $7
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	call GetHLAtSPPlus4
@@ -23269,14 +23278,14 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	cp $ff
 	jp nz, .check_cgb
 .sgb
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	call Func_2041b
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $b
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -23311,7 +23320,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	ld c, $14
 	ld e, $b
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 .finish
 	read_hl_from_sp_plus $34
@@ -23636,7 +23645,7 @@ Func_20ba3: ; 20ba3 (8:4ba3)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -23700,7 +23709,7 @@ Func_20c68: ; 20c68 (8:4c68)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 Func_20c8e: ; 20c8e (8:4c8e)
@@ -24411,14 +24420,14 @@ Func_21160: ; 21160 (8:5160)
 	cp $ff
 	jp nz, Func_211e1
 Func_21198: ; 21198 (8:5198)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	call Func_2041b
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -24451,7 +24460,7 @@ Func_211ee: ; 211ee (8:51ee)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_211fa: ; 211fa (8:51fa)
 	ret
@@ -26112,7 +26121,7 @@ Func_21d90: ; 21d90 (8:5d90)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -28058,12 +28067,12 @@ Func_22c2a: ; 22c2a (8:6c2a)
 	ld de, $1c8
 	add hl, de
 	ld a, [hl]
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 	read_hl_from wCurRobotPointer
 	ld de, $1c9
 	add hl, de
 	ld a, [hl]
-	ld [wc308], a
+	ld [wOptionsMenu_StereoSelect], a
 	callba_hli Func_52d1f
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
@@ -28071,9 +28080,9 @@ Func_22c2a: ; 22c2a (8:6c2a)
 	ld a, $2
 	call FarCall
 	set_farcall_addrs_hli Func_613fc
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	ld e, a
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	call FarCall
 	set_farcall_addrs_hli Func_620d5
 	ld hl, $d2
@@ -29101,7 +29110,7 @@ Func_23a05: ; 23a05 (8:7a05)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_17488
 	call Func_2097
@@ -29184,7 +29193,7 @@ Func_23afe: ; 23afe (8:7afe)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_17488
 	call Func_2097
@@ -36982,9 +36991,9 @@ Data_30106: ; 30106
 Data_30115: ; 30115
 	db  0,  0
 	db  5,  5
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_15281
 	dba Func_15297
 	dbw 5, 0
@@ -37170,7 +37179,7 @@ Func_3035a: ; 3035a (c:435a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
@@ -37324,7 +37333,7 @@ Func_304ac: ; 304ac (c:44ac)
 	xor a
 	call Func_33339
 Func_304b0: ; 304b0 (c:44b0)
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	jp Func_30516
@@ -37360,7 +37369,7 @@ Func_304fc: ; 304fc (c:44fc)
 	ld a, $1
 	call Func_33339
 Func_30501: ; 30501 (c:4501)
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	jp Func_30516
@@ -37409,12 +37418,12 @@ Func_30519: ; 30519 (c:4519)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	read_hl_from_sp_plus $b
 	call FarCall
 	set_farcall_addrs_hli FreeMemory
@@ -37485,7 +37494,7 @@ Func_305f4: ; 305f4 (c:45f4)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_da901
 	ld de, $505
@@ -37499,7 +37508,7 @@ Func_305f4: ; 305f4 (c:45f4)
 	call FarCall
 	reg16swap de, hl
 	push de
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop de
 	pop hl
 	push de
@@ -37803,7 +37812,7 @@ Func_30851: ; 30851 (c:4851)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 Func_30865: ; 30865 (c:4865)
@@ -37848,7 +37857,7 @@ Func_308a5: ; 308a5 (c:48a5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli WaitAorBButtonOverworld_17a44
 	ret
@@ -38924,14 +38933,14 @@ Func_3103d: ; 3103d
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop af
 	pop hl
@@ -39180,7 +39189,7 @@ Func_3122e: ; 3122e (c:522e)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$36
 	call PutLongFromHLOnStack
@@ -39471,7 +39480,7 @@ Func_31475: ; 31475
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_667d
 	ld bc, $8e02
@@ -39483,7 +39492,7 @@ Func_31475: ; 31475
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -39623,7 +39632,7 @@ Func_31539: ; 31539 (c:5539)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	pop bc
@@ -39815,7 +39824,7 @@ Func_316e8: ; 316e8 (c:56e8)
 	ld c, $e
 	ld e, $1
 	ld a, $6
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld e, $1
 	ld a, $6
@@ -39835,7 +39844,7 @@ Func_316e8: ; 316e8 (c:56e8)
 	ld c, $e
 	ld e, $1
 	ld a, $6
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld a, $4
 	call Func_3304d
@@ -40393,7 +40402,7 @@ Func_320d8: ; 320d8
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -40404,7 +40413,7 @@ Func_320d8: ; 320d8
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_3207b)
@@ -40424,7 +40433,7 @@ Func_3214e: ; 3214e (c:614e)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -40438,7 +40447,7 @@ Func_3214e: ; 3214e (c:614e)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_1c11
 	ld hl, sp+$2d
@@ -40540,7 +40549,7 @@ Func_32241: ; 32241 (c:6241)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -40551,7 +40560,7 @@ Func_32241: ; 32241 (c:6241)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	pop de
@@ -41772,7 +41781,7 @@ Func_32b4d: ; 32b4d (c:6b4d)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	pop bc
@@ -41789,7 +41798,7 @@ Func_32b4d: ; 32b4d (c:6b4d)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_5a0e0
 	pop bc
@@ -41842,7 +41851,7 @@ Func_32b4d: ; 32b4d (c:6b4d)
 	ld c, $e
 	ld e, $1
 	ld a, $6
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld a, $2
 	call Func_3304d
@@ -42147,7 +42156,7 @@ Func_32e21: ; 32e21 (c:6e21)
 	ld c, $14
 	ld e, $2
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	pop de
@@ -42190,7 +42199,7 @@ Func_32e6f: ; 32e6f (c:6e6f)
 	ld c, $14
 	ld e, $2
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -42208,7 +42217,7 @@ Func_32e6f: ; 32e6f (c:6e6f)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$31
 	ld a, [hl]
@@ -42279,7 +42288,7 @@ Func_32eec: ; 32eec (c:6eec)
 	ld c, $e
 	ld e, $1
 	ld a, $6
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop af
 	cp $1
@@ -42541,7 +42550,7 @@ Func_3312f: ; 3312f (c:712f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -42591,7 +42600,7 @@ Func_331fc: ; 331fc (c:71fc)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -42638,7 +42647,7 @@ Func_3321d: ; 3321d (c:721d)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -43498,7 +43507,7 @@ Func_33946: ; 33946 (c:7946)
 	ld c, $a
 	ld e, $8
 	ld a, $a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call GetHLAtSPPlus9
 	inc hl
@@ -43614,7 +43623,7 @@ Func_33a03: ; 33a03 (c:7a03)
 	ld c, $a
 	ld e, $8
 	ld a, $a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -44087,7 +44096,7 @@ Func_33db7: ; 33db7 (c:7db7)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -44104,7 +44113,7 @@ Func_33db7: ; 33db7 (c:7db7)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld a, $ff
 	ld [wc39b], a
@@ -44119,7 +44128,7 @@ Func_33db7: ; 33db7 (c:7db7)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -44136,7 +44145,7 @@ Func_33db7: ; 33db7 (c:7db7)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -44216,7 +44225,7 @@ Func_33efa: ; 33efa (c:7efa)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -44233,7 +44242,7 @@ Func_33efa: ; 33efa (c:7efa)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_33f3d: ; 33f3d (c:7f3d)
 	pop bc
@@ -44545,7 +44554,7 @@ Func_4c0ac: ; 4c0ac (13:40ac)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ret
 
@@ -44555,7 +44564,7 @@ Func_4c0b9: ; 4c0b9 (13:40b9)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ret
 
@@ -44600,7 +44609,7 @@ Func_4c12c: ; 4c12c
 	or a
 	jp nz, Func_4c1cf
 	push hl
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	call Func_4c4b3
@@ -44878,8 +44887,8 @@ Func_4c3de: ; 4c3de (13:43de)
 	cp $3
 	jp nz, Func_4c493
 	ld a, $ff
-	ld [wc308], a
-	ld [wc307], a
+	ld [wOptionsMenu_StereoSelect], a
+	ld [wOptionsMenu_BattleScene], a
 	callba_hli Func_17470
 	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_58d4e)
@@ -45498,7 +45507,7 @@ Func_4ca74: ; 4ca74 (13:4a74)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -45513,7 +45522,7 @@ Func_4ca74: ; 4ca74 (13:4a74)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_4ca9e: ; 4ca9e (13:4a9e)
 	set_farcall_addrs_hli PrintMapText_
@@ -45575,7 +45584,7 @@ Func_4cb0e: ; 4cb0e (13:4b0e)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	jp Func_4cb64
 
@@ -45667,7 +45676,7 @@ Func_4cc09: ; 4cc09 (13:4c09)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -45678,7 +45687,7 @@ Func_4cc09: ; 4cc09 (13:4c09)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
@@ -46161,10 +46170,10 @@ Func_4cff9: ; 4cff9 (13:4ff9)
 	ld hl, sp+$6
 	call Func_4d84e
 	ld hl, sp+$0
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld [hl], a
 	ld hl, sp+$1
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	ld [hl], a
 	call Func_4c0b9
 	callba_hli FreeMonsterStruct
@@ -46244,7 +46253,7 @@ Func_4d0ba: ; 4d0ba (13:50ba)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wc307
+	ld hl, wOptionsMenu_BattleScene
 	add hl, de
 	cp [hl]
 	jp z, Func_4d0e1
@@ -46255,7 +46264,7 @@ Func_4d0ba: ; 4d0ba (13:50ba)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wc307
+	ld hl, wOptionsMenu_BattleScene
 	add hl, de
 	ld [hl], a
 Func_4d0e1: ; 4d0e1 (13:50e1)
@@ -46313,7 +46322,7 @@ Func_4d13d: ; 4d13d (13:513d)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wc307
+	ld hl, wOptionsMenu_BattleScene
 	add hl, de
 	cp [hl]
 	jp z, Func_4d164
@@ -46324,7 +46333,7 @@ Func_4d13d: ; 4d13d (13:513d)
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wc307
+	ld hl, wOptionsMenu_BattleScene
 	add hl, de
 	ld [hl], a
 Func_4d164: ; 4d164 (13:5164)
@@ -46389,13 +46398,13 @@ Func_4d1e1: ; 4d1e1 (13:51e1)
 	ld a, [wc319]
 	cp $81
 	jp nz, Func_4d21d
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	call FarCall
 	ld l, a
 	jp Func_4d230
 
 Func_4d21d: ; 4d21d (13:521d)
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	call FarCall
 	ld l, a
 	inc l
@@ -46470,7 +46479,7 @@ Func_4d2ca: ; 4d2ca (13:52ca)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$67
 	reg16swap de, hl
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	call FarCall
 	jp Func_4d303
 
@@ -46478,7 +46487,7 @@ Func_4d2ec: ; 4d2ec (13:52ec)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$44
 	reg16swap de, hl
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	call FarCall
 Func_4d303: ; 4d303 (13:5303)
 	set_farcall_addrs_hli GetBanks
@@ -47177,7 +47186,7 @@ Func_4d84e: ; 4d84e (13:584e)
 	ld hl, sp+$0
 	ld [hl], a
 	ld a, [wc2e9]
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 	jp Func_4d8b5
 
 Func_4d891: ; 4d891 (13:5891)
@@ -47192,18 +47201,18 @@ Func_4d891: ; 4d891 (13:5891)
 	ld hl, sp+$1
 	ld [hl], a
 	ld a, [wc2e9]
-	ld [wc308], a
+	ld [wOptionsMenu_StereoSelect], a
 Func_4d8b5: ; 4d8b5 (13:58b5)
 	call Func_4c21e
 	ld a, [wc319]
 	cp $81
 	jp nz, Func_4d905
 	ld c, $1
-	ld de, wc308
+	ld de, wOptionsMenu_StereoSelect
 	ld hl, $1
 	call Func_4c1f6
 	ld c, $1
-	ld de, wc307
+	ld de, wOptionsMenu_BattleScene
 	ld hl, $1
 	call Func_4c20a
 	ld c, $1
@@ -47230,11 +47239,11 @@ Func_4d8b5: ; 4d8b5 (13:58b5)
 
 Func_4d905: ; 4d905 (13:5905)
 	ld c, $1
-	ld de, wc308
+	ld de, wOptionsMenu_StereoSelect
 	ld hl, $1
 	call Func_4c20a
 	ld c, $1
-	ld de, wc307
+	ld de, wOptionsMenu_BattleScene
 	ld hl, $1
 	call Func_4c1f6
 	ld c, $1
@@ -47640,7 +47649,7 @@ Func_4dc44: ; 4dc44 (13:5c44)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop af
 	cp $13
@@ -47704,7 +47713,7 @@ Func_4dc89: ; 4dc89 (13:5c89)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -49166,7 +49175,7 @@ Func_4e58b: ; 4e58b
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call Func_1fbe
 	pop af
@@ -49286,7 +49295,7 @@ Func_4e6fd: ; 4e6fd (13:66fd)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	reg16swap de, hl
@@ -51017,8 +51026,8 @@ Func_4fef1: ; 4fef1 (13:7ef1)
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wca9c]
-	and $2
+	ld a, [wOptions]
+	and $2 ; Stereo
 	push af
 	ld a, l
 	call GetSRAMBank
@@ -51165,9 +51174,9 @@ Data_500d8: ; 500d8
 Data_500e7: ; 500e7
 	db  4,  2
 	db 10, 13
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_51923
 	dbw 5, 0
 	dbw 5, 0
@@ -51231,13 +51240,13 @@ Func_50185: ; 50185 (14:4185)
 	call FarCall
 	ret
 
-Func_5019a: ; 5019a
+MainMenuSubmenu_Options: ; 5019a
 	set_farcall_addrs_hli GetBanks
 	ld de, $19
 	ld a, $3
 	call FarCall
 	ld e, a
-	ld a, [wca9c]
+	ld a, [wOptions]
 	ld l, a
 	push hl
 	ld a, e
@@ -51245,12 +51254,12 @@ Func_5019a: ; 5019a
 	pop hl
 	ld a, l
 	and $1
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 	ld a, l
 	and $2
 	rrca
 	and $7f
-	ld [wc308], a
+	ld [wOptionsMenu_StereoSelect], a
 	set_farcall_addrs_hli MenuWithSecondaryHeader
 	ld c, BANK(Data_50020)
 	ld de, Data_50020
@@ -51540,7 +51549,7 @@ Func_50380: ; 50380 (14:4380)
 	ld bc, $0
 .asm_5038a
 	ld a, c
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 	jp Func_503a8
 
 Func_50391: ; 50391 (14:4391)
@@ -51557,7 +51566,7 @@ Func_503a0: ; 503a0 (14:43a0)
 	dec hl
 	dec hl
 	ld a, l
-	ld [wc308], a
+	ld [wOptionsMenu_StereoSelect], a
 Func_503a8: ; 503a8 (14:43a8)
 	jp Func_5043a
 
@@ -51579,7 +51588,7 @@ Func_503b6: ; 503b6 (14:43b6)
 	ld bc, $1
 Func_503c5: ; 503c5 (14:43c5)
 	ld a, c
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 	jp Func_503e3
 
 Func_503cc: ; 503cc (14:43cc)
@@ -51596,7 +51605,7 @@ Func_503db: ; 503db (14:43db)
 	dec hl
 	dec hl
 	ld a, l
-	ld [wc308], a
+	ld [wOptionsMenu_StereoSelect], a
 Func_503e3: ; 503e3 (14:43e3)
 	jp Func_5043a
 
@@ -51610,8 +51619,8 @@ Func_503e6: ; 503e6 (14:43e6)
 	jp nz, Func_5040d
 Func_503f1: ; 503f1 (14:43f1)
 	ld a, c
-	ld [wc307], a
-	ld a, [wc308]
+	ld [wOptionsMenu_BattleScene], a
+	ld a, [wOptionsMenu_StereoSelect]
 	or a
 	jp nz, Func_50402
 	ld bc, $2
@@ -51625,7 +51634,7 @@ Func_50405: ; 50405 (14:4405)
 	dec hl
 	dec hl
 	ld a, l
-	ld [wc308], a
+	ld [wOptionsMenu_StereoSelect], a
 Func_5040d: ; 5040d (14:440d)
 	jp Func_5043a
 
@@ -51644,8 +51653,8 @@ Func_5041e: ; 5041e (14:441e)
 	dec hl
 	dec hl
 	ld a, l
-	ld [wc308], a
-	ld a, [wc307]
+	ld [wOptionsMenu_StereoSelect], a
+	ld a, [wOptionsMenu_BattleScene]
 	or a
 	jp nz, Func_50433
 	ld bc, $0
@@ -51655,7 +51664,7 @@ Func_50433: ; 50433 (14:4433)
 	ld bc, $1
 Func_50436: ; 50436 (14:4436)
 	ld a, c
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 Func_5043a: ; 5043a (14:443a)
 	push bc
 	call GetHLAtSPPlus4
@@ -51670,7 +51679,7 @@ Func_5043a: ; 5043a (14:443a)
 	ld c, $e
 	ld e, $9
 	ld a, $2
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call GetHLAtSPPlus4
 	call Func_501de
@@ -51679,7 +51688,7 @@ Func_5043a: ; 5043a (14:443a)
 	ld c, $e
 	ld e, $9
 	ld a, $2
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop hl
@@ -51712,20 +51721,20 @@ OptionsMenu_AButton: ; 5047f
 	ld hl, $d
 	call BackUpTileMapRectangle
 	ld l, $0
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	or a
 	jp nz, Func_504b1
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	or a
 	jp nz, Func_504b1
 	ld l, $0
 	jp Func_504e1
 
 Func_504b1: ; 504b1 (14:44b1)
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	or a
 	jp nz, Func_504c7
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	cp $1
 	jp nz, Func_504c7
 	ld a, l
@@ -51734,10 +51743,10 @@ Func_504b1: ; 504b1 (14:44b1)
 	jp Func_504e1
 
 Func_504c7: ; 504c7 (14:44c7)
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	cp $1
 	jp nz, Func_504dd
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	or a
 	jp nz, Func_504dd
 	ld a, l
@@ -51758,7 +51767,7 @@ Func_504e1: ; 504e1 (14:44e1)
 	ld e, a
 	pop hl
 	ld a, l
-	ld [wca9c], a
+	ld [wOptions], a
 	ld a, e
 	call GetSRAMBank
 	callba_hli Func_4fef1
@@ -51768,7 +51777,7 @@ Func_504e1: ; 504e1 (14:44e1)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -51782,7 +51791,7 @@ Pointers_5052d: ; 5052d
 Data_50531: ; 50531
 	db "セーフﾞ(したよ)", $0
 
-Func_5053b: ; 5053b
+MainMenuSubmenu_Save: ; 5053b
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $64
 	call FarCall
@@ -51797,7 +51806,7 @@ Func_5053b: ; 5053b
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -51811,19 +51820,19 @@ Func_5053b: ; 5053b
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
 	or h
-	jp nz, Func_505dc
+	jp nz, .said_no
 	callba_hli SaveGame
 	ld l, $5
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -51839,16 +51848,16 @@ Func_5053b: ; 5053b
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
-Func_505dc: ; 505dc (14:45dc)
+.said_no
 	pop hl
 	push hl
 	ld c, l
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -52313,7 +52322,7 @@ Func_508e8: ; 508e8
 	ld c, $1
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_54767
 	pop hl
@@ -52323,7 +52332,7 @@ Func_508e8: ; 508e8
 	ld c, $1
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	ret
@@ -52337,7 +52346,7 @@ Func_50914: ; 50914
 	ld c, $1
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop bc
 	push bc
@@ -52391,7 +52400,7 @@ Func_50961: ; 50961 (14:4961)
 	ld c, $1
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	ld l, c
@@ -52568,7 +52577,7 @@ Func_50a86: ; 50a86 (14:4a86)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -52584,14 +52593,14 @@ Func_50a86: ; 50a86 (14:4a86)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call GetHLAtSPPlus4
 	ld c, l
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	ld hl, $4000
 	pop bc
 Func_50ad1: ; 50ad1 (14:4ad1)
@@ -52665,14 +52674,14 @@ Func_50b55: ; 50b55
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	write_hl_to_sp_plus $19
@@ -52713,7 +52722,7 @@ Func_50b55: ; 50b55
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -52763,7 +52772,7 @@ Func_50c24: ; 50c24 (14:4c24)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -52821,7 +52830,7 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -53657,7 +53666,7 @@ Func_51385: ; 51385 (14:5385)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -53845,7 +53854,7 @@ Func_514ae: ; 514ae (14:54ae)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld c, l
@@ -53857,7 +53866,7 @@ Func_514ae: ; 514ae (14:54ae)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	pop hl
 	pop bc
 	ld a, c
@@ -53896,7 +53905,7 @@ Func_5153f: ; 5153f (14:553f)
 	ld b, h
 	ld de, $1412
 	ld hl, $0
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -54203,7 +54212,7 @@ Func_5182a: ; 5182a (14:582a)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -54282,13 +54291,13 @@ Func_518e3: ; 518e3 (14:58e3)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	push bc
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -55022,7 +55031,7 @@ Func_51ea4: ; 51ea4
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
@@ -55045,7 +55054,7 @@ Func_51fa4: ; 51fa4 (14:5fa4)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
@@ -55111,7 +55120,7 @@ Func_5200b: ; 5200b (14:600b)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
@@ -55134,7 +55143,7 @@ Func_5208b: ; 5208b (14:608b)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
@@ -55166,7 +55175,7 @@ Func_520ef: ; 520ef (14:60ef)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_14db8
 	read_hl_from_sp_plus $21
@@ -55328,7 +55337,7 @@ Func_52287: ; 52287 (14:6287)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $19
 	call FarCall
@@ -55389,7 +55398,7 @@ Func_52326: ; 52326
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop hl
 	pop af
@@ -55440,7 +55449,7 @@ Func_523c5: ; 523c5 (14:63c5)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	push hl
@@ -55448,7 +55457,7 @@ Func_523c5: ; 523c5 (14:63c5)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -56125,7 +56134,7 @@ Func_529d7: ; 529d7 (14:69d7)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$b
 	ld [hl], $ff
@@ -56139,7 +56148,7 @@ Func_529d7: ; 529d7 (14:69d7)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -56164,7 +56173,7 @@ Func_52a2e: ; 52a2e (14:6a2e)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -56195,14 +56204,14 @@ Func_52a86: ; 52a86 (14:6a86)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	read_hl_from_sp_plus $13
 	ld c, l
 	ld b, h
 	ld de, $1412
 	ld hl, $0
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $13
 	call FarCall
@@ -56396,7 +56405,7 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $64
@@ -56546,7 +56555,7 @@ Func_52cdc: ; 52cdc (14:6cdc)
 	ld b, d
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -56688,14 +56697,14 @@ Func_53b6e::
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $c8
@@ -56744,7 +56753,7 @@ Func_53b6e::
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -56821,7 +56830,7 @@ Func_53cb4: ; 53cb4 (14:7cb4)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -56832,7 +56841,7 @@ Func_53cb4: ; 53cb4 (14:7cb4)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_53c6c)
@@ -56882,7 +56891,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -56893,7 +56902,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop af
 	cp $2
@@ -56956,11 +56965,11 @@ Func_54000:
 Data_54001: ; 54001
 	db 0, 0
 	db 11, 13
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_58d7a
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -56969,11 +56978,11 @@ Data_54001: ; 54001
 Data_54020: ; 54020
 	db 0, 0
 	db 12, 17
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
-	dba Func_6ab70
-	dba Func_1743f
+	dba StartMenu_MoveCursor
+	dba DebugMenuMenuTestMenu
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -56982,9 +56991,9 @@ Data_54020: ; 54020
 Data_5403f: ; 5403f
 	db 4, 3
 	db 11, 11
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_2391e
 	dba Func_1746c
 	dbw 5, 0
@@ -56995,9 +57004,9 @@ Data_5403f: ; 5403f
 Data_5405e: ; 5405e
 	db 4, 4
 	db 11, 9
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_2391e
 	dba Func_1746c
 	dbw 5, 0
@@ -57008,9 +57017,9 @@ Data_5405e: ; 5405e
 Data_5407d: ; 5407d
 	db 4, 4
 	db 11, 9
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_23a68
 	dba Func_1746c
 	dbw 5, 0
@@ -57021,9 +57030,9 @@ Data_5407d: ; 5407d
 Data_5409c: ; 5409c
 	db 4, 5
 	db 11, 7
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_23a68
 	dba Func_1746c
 	dbw 5, 0
@@ -57044,14 +57053,14 @@ Data_540bb: ; 540bb
 	dbw 5, 0
 	dba Func_52b4f
 
-Data_540da: ; 540da
+StartMenuHeader: ; 540da
 	db 13, 0
 	db 7, 15
-	dba Func_56694
+	dba StartMenu_DrawMenu
 	dbw 5, 0
-	dba Func_151c2
-	dba Func_55627
-	dba Func_1743f
+	dba StartMenu_MoveCursor
+	dba StartMenu_PressA
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57064,7 +57073,7 @@ Data_540f9: ; 540f9
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_513a2
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_16038
 	dba Func_160c2
 	dbw 0, 0
@@ -57073,11 +57082,11 @@ Data_540f9: ; 540f9
 Data_54118: ; 54118
 	db 10, 5
 	db 7, 7
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_55c41
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57086,11 +57095,11 @@ Data_54118: ; 54118
 Data_54137: ; 54137
 	db 0, 0
 	db 11, 7
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_55ce2
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57116,7 +57125,7 @@ Data_54175: ; 54175
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_6af9d
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57129,7 +57138,7 @@ Data_54194: ; 54194
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_50b55
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57138,9 +57147,9 @@ Data_54194: ; 54194
 Data_541b3: ; 541b3
 	db 0, 9
 	db 7, 5
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_561cf
 	dbw 5, 0
 	dbw 5, 0
@@ -57151,9 +57160,9 @@ Data_541b3: ; 541b3
 Data_541d2: ; 541d2
 	db 14, 13
 	db 6, 5
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_15281
 	dba Func_15297
 	dbw 5, 0
@@ -57164,9 +57173,9 @@ Data_541d2: ; 541d2
 Data_541f1: ; 541f1
 	db 11, 8
 	db 6, 5
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_15281
 	dba Func_15297
 	dbw 5, 0
@@ -57177,11 +57186,11 @@ Data_541f1: ; 541f1
 Data_54210: ; 54210
 	db 0, 0
 	db 11, 7
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_55d5c
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57194,7 +57203,7 @@ Data_5422f: ; 5422f
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_1551f
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 5, 0
@@ -57207,7 +57216,7 @@ Data_5424e: ; 5424e
 	dbw 5, 0
 	dba Func_16377
 	dba Func_15bde
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_16038
 	dba Func_160c2
 	dbw 0, 0
@@ -57220,7 +57229,7 @@ Data_5426d: ; 5426d
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_50b55
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57229,11 +57238,11 @@ Data_5426d: ; 5426d
 Data_5428c: ; 5428c
 	db 0, 0
 	db 7, 9
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_5616f
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57246,7 +57255,7 @@ Data_542ab: ; 542ab
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_51ea4
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57259,7 +57268,7 @@ Data_542ca: ; 542ca
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_562ec
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57272,7 +57281,7 @@ Data_542e9: ; 542e9
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_562ec
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57285,7 +57294,7 @@ Data_54308: ; 54308
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_51ea4
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57298,7 +57307,7 @@ Data_54327: ; 54327
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_562ec
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57311,7 +57320,7 @@ Data_54346: ; 54346
 	dbw 5, 0
 	dba Func_16d8e
 	dba Func_562ec
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_523f2
 	dba Func_52475
 	dbw 0, 0
@@ -57323,18 +57332,32 @@ Data_54365: ; 54365
 	dba Func_16777
 	dbw 5, 0
 	dba Func_16d8e
-	dba Func_1743f
-	dba Func_1743f
+	dba StartMenu_PressB
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
 	dbw 0, 0
 
 Data_54384: ; 54384
-	dr $54384, $54393
+	dw 0
+	dw 0
+	dw -1
+	dw 3
+	dw 0
+	dw -1
+	dw $08
+	db $0d
 
 Data_54393: ; 54393
-	dr $54393, $543a2
+	dw 0
+	dw 0
+	dw -1
+	dw 3
+	dw 0
+	dw 0
+	dw $1f
+	db $25
 
 Data_543a2: ; 543a2
 	db 10, 0
@@ -57342,8 +57365,8 @@ Data_543a2: ; 543a2
 	dba Func_573a4
 	dbw 5, 0
 	dbw 5, 0
-	dba Func_1743f
-	dba Func_1743f
+	dba StartMenu_PressB
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57380,9 +57403,9 @@ Data_543ff: ; 543ff
 	db 11, 7
 	dba Func_696f3
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_555b6
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57393,9 +57416,9 @@ Data_5441e: ; 5441e
 	db 11, 5
 	dba Func_696f3
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_555b6
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57408,7 +57431,7 @@ Data_5443d: ; 5443d
 	dbw 5, 0
 	dba Func_69284
 	dba Func_68eeb
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_6934e
 	dba Func_69354
 	dbw 0, 0
@@ -57417,11 +57440,11 @@ Data_5443d: ; 5443d
 Data_5445c: ; 5445c
 	db 9, 0
 	db 11, 13
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_30328
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57434,7 +57457,7 @@ Data_5447b: ; 5447b
 	dbw 5, 0
 	dba Func_fb7f9
 	dba Func_fb8e9
-	dba Func_1743f
+	dba StartMenu_PressB
 	dbw 5, 0
 	dbw 5, 0
 	dbw 0, 0
@@ -57472,54 +57495,272 @@ Data_544d8: ; 544d8
 	dba Func_338f5
 	dbw 5, 0
 	dba Func_33a1f
-	dba Func_1743f
+	dba StartMenu_PressB
 	dba Func_152db
 	dba Func_33bb9
 	dba Func_33bc4
 	dbw 0, 0
 	dbw 0, 0
 
-Data_544f7: ; 544f7
-	dr $544f7, $54548
+Pointers_544f7: ; 544f7
+	dw Data_54503
+	dw Data_5450e
+	dw Data_5451a
+	dw Data_54526
+	dw Data_54531
+	dw Data_5453d
 
-Data_54548:
-	dr $54548, $545a5
+Data_54503:
+	db "(まきしま) テスト", $0
 
-Data_545a5:: ; 545a5
-	dr $545a5, $545e4
+Data_5450e:
+	db "(おおてﾞ)  テスト", $0
 
-Data_545e4:: ; 545e4
-	dr $545e4, $54614
+Data_5451a:
+	db "(やしﾞま)  テスト", $0
 
-Data_54614:: ; 54614
-	dr $54614, $5464c
+Data_54526:
+	db "(さえき)  テスト", $0
 
-Data_5464c:: ; 5464c
-	dr $5464c, $54660
+Data_54531:
+	db "(ますたﾞ)  テスト", $0
 
-Data_54660:: ; 54660
-	dr $54660, $54686
+Data_5453d:
+	db "(おと)   テスト", $0
 
-Data_54686:: ; 54686
-	dr $54686, $546af
+Pointers_54548:
+	dw Data_54558
+	dw Data_54563
+	dw Data_5456e
+	dw Data_5457a
+	dw Data_5457f
+	dw Data_54587
+	dw Data_54593
+	dw Data_54599
 
-Data_546af:: ; 546af
-	dr $546af, $546c1
+Data_54558:
+	db "ロホﾞホﾟンメニュー", $0
 
-Data_546c1:: ; 546c1
-	dr $546c1, $546d0
+Data_54563:
+	db "フィールトﾞメニュー", $0
 
-Data_546d0:: ; 546d0
-	dr $546d0, $546e0
+Data_5456e:
+	db "(うけつけ)コマントﾞ", $0
 
-Data_546e0:: ; 546e0
-	dr $546e0, $546fd
+Data_5457a:
+	db "(みせ)", $0
 
-Data_546fd:: ; 546fd
-	dr $546fd, $54727
+Data_5457f:
+	db "エレヘﾞーター", $0
 
-Data_54727:: ; 54727
-	dr $54727, $54767
+Data_54587:
+	db "(なまえにゅうりょく)", $0
+
+Data_54593:
+	db "(はけん)", $0
+
+Data_54599:
+	db "(はけんきかんしょり)", $0
+
+Pointers_545a5:: ; 545a5
+	dw Data_545af
+	dw Data_545bc
+	dw Data_545c9
+	dw Data_545d4
+	dw Data_545dc
+
+Data_545af:
+	db "(つつﾞきからあそふﾞ)", $0
+
+Data_545bc:
+	db "(はしﾞめからあそふﾞ)", $0
+
+Data_545c9:
+	db "(にちしﾞせってい)", $0
+
+Data_545d4:
+	db "gh ijkk", $0
+
+Data_545dc:
+	db "テﾞハﾞックﾞ", $0
+
+Pointers_545e4:: ; 545e4
+	dw Data_545ec
+	dw Data_545f9
+	dw Data_54604
+	dw Data_5460c
+
+Data_545ec:
+	db "(はしﾞめからあそふﾞ)", $0
+
+Data_545f9:
+	db "(にちしﾞせってい)", $0
+
+Data_54604:
+	db "gh ijkk", $0
+
+Data_5460c:
+	db "テﾞハﾞックﾞ", $0
+
+Pointers_54614:: ; 54614
+	dw Data_54622
+	dw Data_54629
+	dw Data_54630
+	dw Data_54636
+	dw Data_5463b
+	dw Data_54642
+	dw Data_54647
+
+Data_54622:
+	db "ロホﾞホﾟン", $0
+
+Data_54629:
+	db "(もちもの)", $0
+
+Data_54630:
+	db "(そうこ)", $0
+
+Data_54636:
+	db "テﾞータ", $0
+
+Data_5463b:
+	db "(せってい)", $0
+
+Data_54642:
+	db "セーフﾞ", $0
+
+Data_54647:
+	db "タイトル", $0
+
+Pointers_5464c:: ; 5464c
+	dw Data_54652
+	dw Data_54657
+	dw Data_5465b
+
+Data_54652:
+	db "アイテム", $0
+
+Data_54657:
+	db "ソフト", $0
+
+Data_5465b:
+	db "ハﾟーツ", $0
+
+Pointers_54660:: ; 54660
+	dw Data_54666
+	dw Data_54671
+	dw Data_5467c
+
+Data_54666:
+	db "ソフト(のいちらん)", $0
+
+Data_54671:
+	db "ソフト(のそうひﾞ)", $0
+
+Data_5467c:
+	db "ソフト(をすてる)", $0
+
+Pointers_54686:: ; 54686
+	dw Data_5468c
+	dw Data_54698
+	dw Data_546a4
+
+Data_5468c:
+	db "ハﾟーツ(のいちらん)", $0
+
+Data_54698:
+	db "ハﾟーツ(のそうひﾞ)", $0
+
+Data_546a4:
+	db "ハﾟーツ(をすてる)", $0
+
+Pointers_546af:: ; 546af
+	dw Data_546b3
+	dw Data_546b9
+
+Data_546b3:
+	db "(ほかん)", $0
+
+Data_546b9:
+	db "(ひきたﾞす)", $0
+
+Pointers_546c1:: ; 546c1
+	dw Data_546c5
+	dw Data_546ca
+
+Data_546c5:
+	db "(はい)", $0
+
+Data_546ca:
+	db "(いいえ)", $0
+
+Pointers_546d0:: ; 546d0
+	dw Data_546d4
+	dw Data_546da
+
+Data_546d4:
+	db "(つかう)", $0
+
+Data_546da:
+	db "(すてる)", $0
+
+Pointers_546e0:: ; 546e0
+	dw Data_546e8
+	dw Data_546ef
+	dw Data_546f4
+	dw Data_546f8
+
+Data_546e8:
+	db "ロホﾞホﾟン", $0
+
+Data_546ef:
+	db "アイテム", $0
+
+Data_546f4:
+	db "ソフト", $0
+
+Data_546f8:
+	db "ハﾟーツ", $0
+
+Pointers_546fd:: ; 546fd
+	dw Data_54703
+	dw Data_5470e
+	dw Data_5471b
+
+Data_54703:
+	db "(かいしゃあんない)", $0
+
+Data_5470e:
+	db "(つうしんてﾞあそふﾞ)", $0
+
+Data_5471b:
+	db "キッス(てﾞつうしん)", $0
+
+Pointers_54727:: ; 54727
+	dw Data_54733
+	dw Data_5473a
+	dw Data_54740
+	dw Data_54747
+	dw Data_54752
+	dw Data_5475e
+
+Data_54733:
+	db "(あいてむ)", $0
+
+Data_5473a:
+	db "(そふと)", $0
+
+Data_54740:
+	db "(はﾟーつ)", $0
+
+Data_54747:
+	db "(けんきゅうしﾞょ)", $0
+
+Data_54752:
+	db "(けんきゅうしﾞょ2)", $0
+
+Data_5475e:
+	db "(こうしﾞょう)", $0
 
 Func_54767: ; 54767 (15:4767)
 	push hl
@@ -57882,7 +58123,7 @@ Func_549cf: ; 549cf (15:49cf)
 	ld c, $1
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call GetHLAtSPPlus4
 	call Func_54767
@@ -57891,7 +58132,7 @@ Func_549cf: ; 549cf (15:49cf)
 	ld c, $1
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -57950,7 +58191,7 @@ Func_54a6c:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld hl, $5
 	push hl
@@ -57964,7 +58205,7 @@ Func_54a6c:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	pop af
@@ -58391,7 +58632,7 @@ Func_54e1f: ; 54e1f (15:4e1f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_54e67: ; 54e67 (15:4e67)
 	ld l, $12
@@ -58399,7 +58640,7 @@ Func_54e67: ; 54e67 (15:4e67)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld hl, $5
 	push hl
@@ -58420,7 +58661,7 @@ Func_54e67: ; 54e67 (15:4e67)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_54aeb)
@@ -59024,7 +59265,7 @@ Func_55427: ; 55427 (15:5427)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	pop hl
 	call FreeMemory_Bank15
 	ret
@@ -59269,7 +59510,7 @@ Func_5560e: ; 5560e (15:560e)
 	ld hl, $8000
 	ret
 
-Func_55627:
+StartMenu_PressA:
 	push bc
 	push hl
 	ld hl, $8000
@@ -59302,81 +59543,81 @@ Func_55627:
 	ld a, l
 	sub $6
 	or h
-	jp z, Func_556f7
+	jp z, .title
 	ld a, l
 	sub $5
 	or h
-	jp z, Func_556e1
+	jp z, .save
 	ld a, l
 	sub $4
 	or h
-	jp z, Func_556cb
+	jp z, .options
 	ld a, l
 	sub $3
 	or h
-	jp z, Func_556ba
+	jp z, .data
 	ld a, l
 	sub $2
 	or h
-	jp z, Func_556a9
+	jp z, .warehouse
 	ld a, l
 	dec a
 	or h
-	jp z, Func_55693
+	jp z, .belongings
 	ld a, l
 	or h
-	jp nz, Func_5570a
+	jp nz, .return
 	set_farcall_addrs_hli DisplayPartyMenu_
 	ld a, $1
 	call FarCall
 	call Func_3af6
-	jp Func_5570a
+	jp .return
 
-Func_55693: ; 55693 (15:5693)
-	callba_hli Func_1486e
+.belongings: ; 55693 (15:5693)
+	callba_hli MainMenuSubmenu_Belongings
 	ld hl, $4000
 	pop de
 	push hl
-	jp Func_5570a
+	jp .return
 
-Func_556a9: ; 556a9 (15:56a9)
-	callba_hli Func_14940
-	jp Func_5570a
+.warehouse: ; 556a9 (15:56a9)
+	callba_hli MainMenuSubmenu_Warehouse
+	jp .return
 
-Func_556ba: ; 556ba (15:56ba)
-	callba_hli Func_14960
-	jp Func_5570a
+.data: ; 556ba (15:56ba)
+	callba_hli MainMenuSubmenu_Data
+	jp .return
 
-Func_556cb: ; 556cb (15:56cb)
-	callba_hli Func_5019a
+.options: ; 556cb (15:56cb)
+	callba_hli MainMenuSubmenu_Options
 	ld hl, $4000
 	pop de
 	push hl
-	jp Func_5570a
+	jp .return
 
-Func_556e1: ; 556e1 (15:56e1)
-	callba_hli Func_5053b
+.save: ; 556e1 (15:56e1)
+	callba_hli MainMenuSubmenu_Save
 	ld hl, $4000
 	pop de
 	push hl
-	jp Func_5570a
+	jp .return
 
-Func_556f7: ; 556f7 (15:56f7)
-	callba_hli Func_fba6f
+.title: ; 556f7 (15:56f7)
+	callba_hli MainMenuSubmenu_Title
 	ld hl, $4000
 	pop de
 	push hl
-Func_5570a: ; 5570a (15:570a)
+.return: ; 5570a (15:570a)
 	ld a, [wc317]
 	or a
-	jp nz, Func_55716
+	jp nz, .exit_menu
 	pop hl
 	push hl
-	jp Func_55719
+	jp .done
 
-Func_55716: ; 55716 (15:5716)
+.exit_menu: ; 55716 (15:5716)
 	ld hl, -1
-Func_55719: ; 55719 (15:5719)
+.done: ; 55719 (15:5719)
 	pop bc
 	ret
 
@@ -60037,7 +60278,7 @@ Func_55cb9: ; 55cb9 (15:5cb9)
 	ld b, d
 	ld de, $1412
 	ld hl, $0
-	call Func_2323
+	call PopBGMapRegion
 	pop hl
 	call FreeMemory_Bank15
 	ld hl, $8000
@@ -60811,7 +61052,7 @@ Func_562d3: ; 562d3 (15:62d3)
 	ld b, d
 	ld de, $1412
 	ld hl, $0
-	call Func_2323
+	call PopBGMapRegion
 	pop hl
 	call FreeMemory_Bank15
 	pop af
@@ -61087,7 +61328,7 @@ Func_564dc: ; 564dc (15:64dc)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop de
 	push de
@@ -61157,7 +61398,7 @@ Func_5657b: ; 5657b (15:657b)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop de
 	push de
@@ -61241,7 +61482,7 @@ Func_56625: ; 56625 (15:6625)
 	ld b, h
 	ld de, $1405
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	pop hl
 	call FreeMemory_Bank15
 	pop de
@@ -61272,7 +61513,7 @@ Data_5666d:
 Data_56680:
 	db "(これいしﾞょう ほかんてﾞきないよ)", $0
 
-Func_56694:
+StartMenu_DrawMenu:
 	push hl
 	set_farcall_addrs_hli Func_fbbb5
 	pop hl
@@ -62477,7 +62718,7 @@ Func_573a4:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld hl, $5
 	push hl
@@ -62766,7 +63007,7 @@ Func_575b5: ; 575b5 (15:75b5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	reg16swap de, hl
@@ -63097,41 +63338,41 @@ Pointers_57886:
 	dw Data_578d7
 	dw Data_578dc
 
-Data_5789e: ; 5789e
-	dr $5789e, $578a3
+Data_5789e:
+	db "ノーマル", $0
 
-Data_578a3: ; 578a3
-	dr $578a3, $578a9
+Data_578a3:
+	db "(ほのお)", $0
 
-Data_578a9: ; 578a9
-	dr $578a9, $578af
+Data_578a9:
+	db "(みすﾞ)", $0
 
-Data_578af: ; 578af
-	dr $578af, $578b5
+Data_578af:
+	db "(かせﾞ)", $0
 
-Data_578b5: ; 578b5
-	dr $578b5, $578ba
+Data_578b5:
+	db "(つち)", $0
 
-Data_578ba: ; 578ba
-	dr $578ba, $578c1
+Data_578ba:
+	db "(かみなり)", $0
 
-Data_578c1: ; 578c1
-	dr $578c1, $578c7
+Data_578c1:
+	db "(こおり)", $0
 
-Data_578c7: ; 578c7
-	dr $578c7, $578cc
+Data_578c7:
+	db "(せい)", $0
 
-Data_578cc: ; 578cc
-	dr $578cc, $578d2
+Data_578cc:
+	db "(しﾞゃ)", $0
 
-Data_578d2: ; 578d2
-	dr $578d2, $578d7
+Data_578d2:
+	db "(りく)", $0
 
-Data_578d7: ; 578d7
-	dr $578d7, $578dc
+Data_578d7:
+	db "(うみ)", $0
 
-Data_578dc: ; 578dc
-	dr $578dc, $578e1
+Data_578dc:
+	db "(そら)", $0
 
 Data_578e1:
 	dr $578e1, $578e9
@@ -63217,7 +63458,7 @@ Func_578e9:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	ld de, $6ea7
+	ld de, Text_66ea7
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$36
@@ -63272,7 +63513,7 @@ Func_579a5: ; 579a5 (15:79a5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	ld hl, $400
@@ -63479,7 +63720,7 @@ Func_57b62: ; 57b62 (15:7b62)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $0
 	call WaitAorBButtonOverworld_57ec5
@@ -63610,7 +63851,7 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	callba_hli Func_da4dc
 	call FillVisibleAreaWithBlankTile
@@ -63619,7 +63860,7 @@ Func_57c4a: ; 57c4a (15:7c4a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld de, $19
 	ld a, $3
@@ -63937,9 +64178,9 @@ Func_58c00:
 Data_58c01: ; 58c01
 	db  0, 0
 	db 11, 5
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_33524
 	dba Func_15297
 	dbw 5, 0
@@ -63958,14 +64199,21 @@ Data_58c30:
 	db "(しんかのいらい)", $0
 
 Data_58c3a:
-	dr $58c3a, $58c49
+	dw 0
+	dw 0
+	dw -1
+	dw 2
+	dw 2
+	dw 0
+	dw Pointers_58c20
+	db 2
 
 Data_58c49: ; 58c49
 	db  0, 0
 	db 12, 7
-	dba Func_15001
+	dba DrawDebugMenu
 	dbw 5, 0
-	dba Func_151c2
+	dba StartMenu_MoveCursor
 	dba Func_fb118
 	dba Func_15297
 	dbw 5, 0
@@ -63988,7 +64236,14 @@ Data_58c87:
 	db "ロホﾞホﾟン(はﾞいきゃく)", $0
 
 Data_58c96: ; 58c96
-	dr $58c96, $58ca5
+	dw 0
+	dw 0
+	dw -1
+	dw 3
+	dw 3
+	dw 0
+	dw Pointers_58c68
+	db 2
 
 Data_58ca5: ; 58ca5
 	db 12, 0
@@ -64005,7 +64260,14 @@ Data_58ca5: ; 58ca5
 
 
 Data_58cc4: ; 58cc4
-	dr $58cc4, $58cd3
+	dw 0
+	dw 0
+	dw -1
+	dw 4
+	dw 4
+	dw 0
+	dw $18
+	db $13
 
 Data_58cd3:
 	db  7,  0
@@ -64021,7 +64283,14 @@ Data_58cd3:
 	dbw 0, 0
 
 Data_58cf2:
-	dr $58cf2, $58d01
+	dw 0
+	dw 0
+	dw -1
+	dw 0
+	dw 0
+	dw -1
+	dw $1b
+	db $20
 
 Data_58d01:
 	db  0, 0
@@ -64037,7 +64306,14 @@ Data_58d01:
 	dbw 0, 0
 
 Data_58d20:
-	dr $58d20, $58d2f
+	dw 0
+	dw 0
+	dw -1
+	dw 0
+	dw 0
+	dw -1
+	dw $1c
+	db $1e
 
 Data_58d2f: ; 58d2f
 	db 1, 3
@@ -64053,7 +64329,14 @@ Data_58d2f: ; 58d2f
 	dbw 0, 0
 
 Data_58d4e: ; 58d4e
-	dr $58d4e, $58d5d
+	dw 0
+	dw 0
+	dw -1
+	dw 0
+	dw 0
+	dw -1
+	dw $1d
+	db 2
 
 NamingScreen__:: ; 58d5d
 	push af
@@ -64358,7 +64641,7 @@ Func_58fb7: ; 58fb7 (16:4fb7)
 	push af
 	ld de, $1009
 	ld hl, $409
-	call Func_2323
+	call PopBGMapRegion
 	pop af
 	pop bc
 	jp Func_58fd1
@@ -64456,7 +64739,7 @@ Func_590a8: ; 590a8 (16:50a8)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $3
@@ -64643,7 +64926,7 @@ Func_5925a: ; 5925a (16:525a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop de
@@ -64663,7 +64946,7 @@ Func_59276: ; 59276 (16:5276)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -64675,7 +64958,7 @@ Func_59276: ; 59276 (16:5276)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_59047)
@@ -64695,7 +64978,7 @@ Func_592c5: ; 592c5 (16:52c5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -64707,7 +64990,7 @@ Func_592c5: ; 592c5 (16:52c5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_59060)
@@ -64748,7 +65031,7 @@ Func_59314: ; 59314 (16:5314)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -64812,7 +65095,7 @@ Func_59314: ; 59314 (16:5314)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_59021)
@@ -64827,7 +65110,7 @@ Func_59424: ; 59424 (16:5424)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_59035)
@@ -65092,7 +65375,7 @@ Func_595ab:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	pop bc
@@ -65205,7 +65488,7 @@ Func_596d7: ; 596d7 (16:56d7)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	reg16swap de, hl
@@ -65492,14 +65775,14 @@ Func_59905:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli GetBanks
 	ld de, $19
@@ -65611,7 +65894,7 @@ Func_59a2f: ; 59a2f (16:5a2f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_16019
@@ -65728,7 +66011,7 @@ Func_59b85: ; 59b85 (16:5b85)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -65739,7 +66022,7 @@ Func_59b85: ; 59b85 (16:5b85)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
@@ -65760,7 +66043,7 @@ Func_59bd7: ; 59bd7 (16:5bd7)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call Func_1f7b
 	ld hl, $8000
@@ -65862,7 +66145,7 @@ Func_59c89:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $3
@@ -65914,7 +66197,7 @@ Func_59d3e: ; 59d3e (16:5d3e)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$4
 	ld a, [hl]
@@ -65978,7 +66261,7 @@ Func_59dce: ; 59dce (16:5dce)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -65990,7 +66273,7 @@ Func_59dce: ; 59dce (16:5dce)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	pop af
@@ -66056,14 +66339,14 @@ Func_59e79:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	write_hl_to_sp_plus $54
@@ -66155,7 +66438,7 @@ Func_59f09: ; 59f09 (16:5f09)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	read_hl_from_sp_plus $5c
 	call FarCall
@@ -66228,7 +66511,7 @@ Func_59f7b: ; 59f7b (16:5f7b)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -66254,7 +66537,7 @@ Func_59f7b: ; 59f7b (16:5f7b)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -66298,7 +66581,7 @@ Func_5a079: ; 5a079 (16:6079)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	read_hl_from_sp_plus $54
 	inc hl
 	inc hl
@@ -66363,14 +66646,14 @@ Func_5a10a: ; 5a10a (16:610a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_fb205
 	ld a, $1
@@ -66624,7 +66907,7 @@ Func_5a5f7: ; 5a5f7 (16:65f7)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -66862,7 +67145,7 @@ Func_5a7b6: ; 5a7b6 (16:67b6)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	jp Func_5a819
 
@@ -66872,7 +67155,7 @@ Func_5a806: ; 5a806 (16:6806)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	xor a
 	call Func_5a963
@@ -66888,7 +67171,7 @@ Func_5a81d: ; 5a81d (16:681d)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld a, $1
 	call Func_5a963
@@ -67013,7 +67296,7 @@ Func_5a963: ; 5a963 (16:6963)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	pop af
@@ -67323,7 +67606,7 @@ Func_5ab9f: ; 5ab9f (16:6b9f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -67338,7 +67621,7 @@ Func_5ab9f: ; 5ab9f (16:6b9f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -67410,7 +67693,7 @@ Func_5ac68: ; 5ac68 (16:6c68)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld c, l
@@ -67790,7 +68073,7 @@ Func_5afd9: ; 5afd9 (16:6fd9)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	pop af
@@ -68019,7 +68302,7 @@ Func_5b196: ; 5b196 (16:7196)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	reg16swap de, hl
@@ -68292,17 +68575,17 @@ Func_5b35f: ; 5b35f (16:735f)
 	call GetHLAtSPPlus6
 	call FarCall
 	pop bc
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	cp $ff
 	jp z, Func_5b3b9
 	ld l, c
 	ld h, b
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld e, a
 	ld d, $0
 	call CompareHLtoDE
 	jp z, Func_5b3b9
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	add a
 	add $4
 	ld e, a
@@ -68356,14 +68639,14 @@ Func_5b3da:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	ld a, l
@@ -68386,7 +68669,7 @@ Func_5b427: ; 5b427 (16:7427)
 	ld a, l
 	cp $8
 	jp nz, Func_5b7ff
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	cp $ff
 	jp z, Func_5b7f7
 	ld a, l
@@ -68425,7 +68708,7 @@ Func_5b46f: ; 5b46f (16:746f)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	call FarCall
 	set_farcall_addrs_hli Func_7766
 	ld c, $1
@@ -68439,7 +68722,7 @@ Func_5b4c3: ; 5b4c3 (16:74c3)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
 	reg16swap de, hl
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	call FarCall
 	set_farcall_addrs_hli Func_7766
 	ld c, $1
@@ -68712,7 +68995,7 @@ Func_5b752: ; 5b752 (16:7752)
 	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$23
 	reg16swap de, hl
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	call FarCall
 	set_farcall_addrs_hli Func_53a0d
 	ld e, $0
@@ -68848,14 +69131,14 @@ Func_5b8d5: ; 5b8d5 (16:78d5)
 
 Func_5b8d8: ; 5b8d8 (16:78d8)
 	push af
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld hl, sp+$1
 	cp [hl]
 	jp z, Func_5b913
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	cp $ff
 	jp z, Func_5b90a
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	add a
 	add $4
 	ld e, a
@@ -68875,12 +69158,12 @@ Func_5b8d8: ; 5b8d8 (16:78d8)
 Func_5b90a: ; 5b90a (16:790a)
 	ld hl, sp+$1
 	ld a, [hl]
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 	jp Func_5b918
 
 Func_5b913: ; 5b913 (16:7913)
 	ld a, $ff
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 Func_5b918: ; 5b918 (16:7918)
 	pop bc
 	ret
@@ -68930,7 +69213,7 @@ Func_5b95d: ; 5b95d (16:795d)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	pop af
@@ -68975,7 +69258,7 @@ Func_5b9f5: ; 5b9f5 (16:79f5)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -68989,14 +69272,14 @@ Func_5ba1e:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop de
 	push de
@@ -69116,7 +69399,7 @@ Func_5ba6d: ; 5ba6d (16:7a6d)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop de
 	pop bc
@@ -69574,7 +69857,7 @@ Func_5bedb: ; 5bedb (16:7edb)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli WaitAorBButtonOverworld_17a44
 	ld a, $3
@@ -69585,7 +69868,7 @@ Func_5bedb: ; 5bedb (16:7edb)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld a, [wSystemType]
 	cp $1
@@ -69615,7 +69898,7 @@ Func_5bf82: ; 5bf82 (16:7f82)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call Func_1f7b
 	call Func_2009
@@ -72173,7 +72456,7 @@ Func_5d35f: ; 5d35f (17:535f)
 	ret
 
 Func_5d3d6: ; 5d3d6 (17:53d6)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, .selectMap1
 	ld a, [wLCDC]
@@ -72581,7 +72864,7 @@ Func_5d684: ; 5d684 (17:5684)
 	push bc
 	push bc
 	callba_hli Func_da4dc
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	call GetHLAtSPPlus8
@@ -73077,7 +73360,7 @@ Func_5d9ae: ; 5d9ae (17:59ae)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 Func_5d9c7: ; 5d9c7 (17:59c7)
@@ -73492,7 +73775,7 @@ Func_5dc6c: ; 5dc6c (17:5c6c)
 	ld hl, sp+$3
 	ld a, [hl]
 	inc a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	jp Func_5dd48
 
@@ -73507,14 +73790,14 @@ Func_5dcbe: ; 5dcbe (17:5cbe)
 	call GetHLAtSPPlus4
 	ld a, l
 	call Func_5db1b
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	call Func_5d3d6
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $11
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -73523,7 +73806,7 @@ Func_5dcbe: ; 5dcbe (17:5cbe)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $d
 	ld de, $a10
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -73546,7 +73829,7 @@ Func_5dd33: ; 5dd33 (17:5d33)
 	ld e, [hl]
 	ld hl, sp+$3
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_5dd48: ; 5dd48 (17:5d48)
 	ld hl, $4000
@@ -73837,7 +74120,7 @@ Func_5df96: ; 5df96 (17:5f96)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	ret
@@ -73995,7 +74278,7 @@ Func_5e021: ; 5e021 (17:6021)
 	ld e, [hl]
 	ld hl, sp+$57
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_5e0f1: ; 5e0f1 (17:60f1)
 	jp Func_5e264
@@ -74320,7 +74603,7 @@ Func_5e334: ; 5e334 (17:6334)
 	ld e, [hl]
 	ld hl, sp+$28
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	jp Func_5e4bd
@@ -74615,7 +74898,7 @@ Func_60001: ; 60001 (18:4001)
 	ld [wNextVBlankFlags], a
 	call WaitVideoTransfer
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8f00 ; clobbers e
@@ -74650,7 +74933,7 @@ StartCursorBlinking: ; 60075 (18:4075)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	jp .okay
 
@@ -74660,7 +74943,7 @@ StartCursorBlinking: ; 60075 (18:4075)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 .okay
 	ld hl, sp+$1
@@ -75199,7 +75482,7 @@ Func_604e1: ; 604e1 (18:44e1)
 	jp Func_604a6
 
 Func_604e7: ; 604e7 (18:44e7)
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	ld hl, sp+$7e
@@ -75267,7 +75550,7 @@ Func_60550: ; 60550 (18:4550)
 	jp Func_604ff
 
 Func_60556: ; 60556 (18:4556)
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	ld l, $12
 	push hl
 	ld c, $14
@@ -77448,22 +77731,22 @@ Func_61b92: ; 61b92 (18:5b92)
 	pop de
 	call Func_63d05
 Func_61bcc: ; 61bcc (18:5bcc)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	read_hl_from_sp_plus $1b
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $19
 	reg16swap de, hl
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
 	inc h
 	call Func_63e6f
 	call WaitVideoTransfer
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_61c02
 	ld a, [wLCDC]
@@ -77536,7 +77819,7 @@ Func_61c63: ; 61c63 (18:5c63)
 	ld l, $2
 	push hl
 	ld c, $8
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	read_hl_from_sp_plus $b
 	reg16swap de, hl
@@ -77674,7 +77957,7 @@ Func_61d3e: ; 61d3e
 	push bc
 	push bc
 	callba_hli Func_da4dc
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	ld c, $0
@@ -77751,7 +78034,7 @@ Func_61da8: ; 61da8 (18:5da8)
 	jp Func_61d61
 
 Func_61dd8: ; 61dd8 (18:5dd8)
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	pop bc
 	pop bc
 	pop bc
@@ -78601,7 +78884,7 @@ Func_624af: ; 624af
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -78649,7 +78932,7 @@ Func_6256a: ; 6256a (18:656a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$2f
 	ld a, [hl]
@@ -78807,7 +79090,7 @@ Func_626ff: ; 626ff (18:66ff)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop hl
 	push hl
@@ -78822,7 +79105,7 @@ Func_626ff: ; 626ff (18:66ff)
 .asm_6271c
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli FreeMemory
 	pop hl
@@ -81781,7 +82064,7 @@ Func_683be: ; 683be (1a:43be)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -81792,7 +82075,7 @@ Func_683be: ; 683be (1a:43be)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_683a6)
@@ -81853,7 +82136,7 @@ Func_68457: ; 68457 (1a:4457)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $a
@@ -81984,7 +82267,7 @@ Func_68580: ; 68580 (1a:4580)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -81995,7 +82278,7 @@ Func_68580: ; 68580 (1a:4580)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -82009,7 +82292,7 @@ Func_68580: ; 68580 (1a:4580)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -82383,7 +82666,7 @@ Func_6882c: ; 6882c (1a:482c)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_60001
 	ld c, $0
@@ -82605,7 +82888,7 @@ Func_68a2b:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -82641,7 +82924,7 @@ Func_68a2b:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	ret
@@ -82968,7 +83251,7 @@ Func_68cc1: ; 68cc1 (1a:4cc1)
 	ld c, $14
 	ld e, $6
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	ret
@@ -83276,14 +83559,14 @@ Func_68eeb:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $64
@@ -83301,7 +83584,7 @@ Func_68eeb:
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -83332,7 +83615,7 @@ Func_68eeb:
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	push hl
@@ -83340,7 +83623,7 @@ Func_68eeb:
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	pop hl
 	call Func_680d3
 	ld hl, $4000
@@ -83406,7 +83689,7 @@ Func_68f92:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop hl
 	ld a, [wc78c]
@@ -83603,7 +83886,7 @@ Func_690e3: ; 690e3 (1a:50e3)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -83762,7 +84045,7 @@ Func_6921f: ; 6921f (1a:521f)
 	ld c, $b
 	ld e, $0
 	ld a, $9
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop bc
 	ld hl, sp+$a
@@ -83804,7 +84087,7 @@ Func_6921f: ; 6921f (1a:521f)
 	ld c, $b
 	ld e, $0
 	ld a, $9
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_69279: ; 69279 (1a:5279)
 	add sp, $12
@@ -84510,7 +84793,7 @@ Func_696f3:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop af
 	pop hl
@@ -84700,7 +84983,7 @@ Func_69878: ; 69878 (1a:5878)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	reg16swap de, hl
@@ -84846,7 +85129,7 @@ Func_699a3: ; 699a3 (1a:59a3)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_101be
 	ld bc, $81
@@ -85015,7 +85298,7 @@ Func_69ae7: ; 69ae7 (1a:5ae7)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	reg16swap de, hl
@@ -85132,7 +85415,7 @@ Func_69bb9:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -85205,7 +85488,7 @@ Func_69c7d:
 	inc hl
 	ld b, [hl]
 	ld a, c
-	ld [wc307], a
+	ld [wOptionsMenu_BattleScene], a
 	pop hl
 	ld a, c
 	sub $2
@@ -85249,7 +85532,7 @@ Func_69cc9: ; 69cc9 (1a:5cc9)
 	ld e, [hl]
 	ld hl, sp+$4
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call Func_69d13
 	jp Func_69d0a
@@ -85477,7 +85760,7 @@ Func_69e88: ; 69e88 (1a:5e88)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	reg16swap de, hl
@@ -85529,7 +85812,7 @@ Func_69f1d: ; 69f1d (1a:5f1d)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_69f29: ; 69f29 (1a:5f29)
 	call CheckButton
@@ -85730,7 +86013,7 @@ Func_6a0e9: ; 6a0e9 (1a:60e9)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	xor a
 	call OverworldPlaySong
@@ -85822,7 +86105,7 @@ Func_6a1c8: ; 6a1c8 (1a:61c8)
 	call CheckButton
 Func_6a1cb: ; 6a1cb (1a:61cb)
 	ld hl, sp+$a
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	inc a
 	add a
 	add a
@@ -86961,7 +87244,7 @@ Func_6ab66: ; 6ab66 (1a:6b66)
 	pop bc
 	ret
 
-Func_6ab70:
+DebugMenuMenuTestMenu:
 	ld c, l
 	ld b, h
 	ld hl, $5
@@ -87013,25 +87296,25 @@ Func_6ab70:
 	jp Func_6ac27
 
 Func_6abbb: ; 6abbb (1a:6bbb)
-	set_farcall_addrs_hli Func_14675
+	set_farcall_addrs_hli StartMenu
 	ld hl, $0
 	call FarCall
 	jp Func_6ac27
 
 Func_6abcf: ; 6abcf (1a:6bcf)
-	set_farcall_addrs_hli Func_14b44
+	set_farcall_addrs_hli ReceptionCommandMenu
 	ld hl, $0
 	call FarCall
 	jp Func_6ac27
 
 Func_6abe3: ; 6abe3 (1a:6be3)
-	set_farcall_addrs_hli Func_14c89
+	set_farcall_addrs_hli MartMenu
 	ld hl, $0
 	call FarCall
 	jp Func_6ac27
 
 Func_6abf7: ; 6abf7 (1a:6bf7)
-	set_farcall_addrs_hli Func_14ca9
+	set_farcall_addrs_hli ElevatorMenu
 	ld hl, $0
 	call FarCall
 	jp Func_6ac27
@@ -87043,11 +87326,11 @@ Func_6ac0b: ; 6ac0b (1a:6c0b)
 	jp Func_6ac27
 
 Func_6ac1e: ; 6ac1e (1a:6c1e)
-	call Func_6ac44
+	call DispatchMenu
 	jp Func_6ac27
 
 Func_6ac24: ; 6ac24 (1a:6c24)
-	call Func_6b31a
+	call AttitudeMenu
 Func_6ac27: ; 6ac27 (1a:6c27)
 	ld hl, $8000
 	ret
@@ -87059,7 +87342,7 @@ Pointers_6ac2b:
 Data_6ac2f:
 	db "(これいしﾞょう はけん てﾞきないよ)", $0
 
-Func_6ac44:: ; 6ac44 (1a:6c44)
+DispatchMenu:: ; 6ac44 (1a:6c44)
 	push bc
 	ld hl, sp+$0
 	ld [hl], $ff
@@ -87112,7 +87395,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $c8
@@ -87142,7 +87425,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_6ac2b)
@@ -87156,7 +87439,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop de
 	push de
@@ -87179,7 +87462,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	call Func_680d3
@@ -87508,14 +87791,14 @@ Func_6af9d:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $64
@@ -87541,7 +87824,7 @@ Func_6af9d:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop hl
 	pop af
@@ -87787,7 +88070,7 @@ Func_6b2a4: ; 6b2a4 (1a:72a4)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli WaitAorBButtonOverworld_17a44
 	pop hl
@@ -87799,7 +88082,7 @@ Func_6b2a4: ; 6b2a4 (1a:72a4)
 	jp z, Func_6b2d2
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 Func_6b2d2: ; 6b2d2 (1a:72d2)
 	pop hl
 	call Func_680d3
@@ -87825,7 +88108,7 @@ Data_6b2ff:
 Data_6b30c:
 	db "(そうひﾞ てﾞきません)", $0
 
-Func_6b31a:: ; 6b31a (1a:731a)
+AttitudeMenu:: ; 6b31a (1a:731a)
 	push bc
 	push bc
 	set_farcall_addrs_hli AllocateMemory
@@ -87839,14 +88122,14 @@ Func_6b31a:: ; 6b31a (1a:731a)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call GetHLAtSPPlus4
 	ld c, l
@@ -88097,7 +88380,7 @@ Func_6b4ae: ; 6b4ae (1a:74ae)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	call GetHLAtSPPlus4
 	call Func_680d3
@@ -88354,7 +88637,7 @@ Func_6b607: ; 6b607 (1a:7607)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -88381,7 +88664,7 @@ Func_6b607: ; 6b607 (1a:7607)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld e, $0
 	ld a, $4
@@ -88606,7 +88889,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -88639,7 +88922,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld e, $0
 	ld a, $7
@@ -88665,7 +88948,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$65
 	ld l, [hl]
@@ -89005,7 +89288,7 @@ Func_6bbf3: ; 6bbf3 (1a:7bf3)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_6bc1a: ; 6bc1a (1a:7c1a)
 	pop af
@@ -89089,7 +89372,7 @@ Func_6bcab: ; 6bcab (1a:7cab)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call Func_681a6
 	ld l, $12
@@ -89097,7 +89380,7 @@ Func_6bcab: ; 6bcab (1a:7cab)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_6bce8: ; 6bce8 (1a:7ce8)
 	jp Func_6bddd
@@ -89824,7 +90107,7 @@ Func_6c304: ; 6c304 (1b:4304)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -89880,7 +90163,7 @@ Func_6c3a2: ; 6c3a2 (1b:43a2)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call GetHLAtSPPlus4
 	ld c, l
@@ -89906,7 +90189,7 @@ Func_6c3a2: ; 6c3a2 (1b:43a2)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	ld a, l
@@ -91052,7 +91335,7 @@ Func_6cd14: ; 6cd14 (1b:4d14)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop de
 	push de
@@ -91583,7 +91866,7 @@ Func_6d0be: ; 6d0be (1b:50be)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, sp+$7a
 	call PutLongFromHLOnStack
@@ -91656,7 +91939,7 @@ Func_6d167: ; 6d167 (1b:5167)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld e, $5
 	xor a
@@ -91895,7 +92178,7 @@ Func_6d2eb: ; 6d2eb (1b:52eb)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	ret
@@ -92259,11 +92542,11 @@ Data_6d62f:
 	db "(ひきわけなのてﾞ もういちとﾞ)", $0
 
 Func_6d641: ; 6d641 (1b:5641)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8f00
@@ -92274,7 +92557,7 @@ Func_6d641: ; 6d641 (1b:5641)
 	ld hl, $0
 	call FarCall
 	call ClearSprites
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_6d67e
 	ld a, [wLCDC]
@@ -92294,7 +92577,7 @@ Func_6d686: ; 6d686 (1b:5686)
 	or $1
 	ld [rVBK], a
 	set_farcall_addrs_hli Func_667d
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	ld b, $0
 	ld de, $1f1f
@@ -94877,7 +95160,7 @@ Func_6e7f5: ; 6e7f5 (1b:67f5)
 	pop hl
 	ld a, l
 	call FarCall
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_6e817
 	ld a, [wLCDC]
@@ -94928,15 +95211,15 @@ Func_6e867: ; 6e867 (1b:6867)
 	ld hl, Data_6e85f
 	ld bc, $8
 	call MemCopy
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	check_cgb
 	jp nz, Func_6e88b
 	call Func_6e9d1
 Func_6e88b: ; 6e88b (1b:688b)
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $a400
@@ -94947,7 +95230,7 @@ Func_6e88b: ; 6e88b (1b:688b)
 	ld hl, $0
 	call FarCall
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8400
@@ -94958,7 +95241,7 @@ Func_6e88b: ; 6e88b (1b:688b)
 	ld hl, $8
 	call FarCall
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8100
@@ -94968,7 +95251,7 @@ Func_6e88b: ; 6e88b (1b:688b)
 	ld de, $1f09
 	ld hl, $9
 	call FarCall
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_6e8fc
 	hlbgcoord 0, 0
@@ -95087,7 +95370,7 @@ Func_6e994: ; 6e994 (1b:6994)
 	ld e, $1
 	xor a
 	call Func_6edcf
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_6e9b6
 	ld bc, $400
@@ -95123,7 +95406,7 @@ Func_6e9d1: ; 6e9d1 (1b:69d1)
 	or $1
 	ld [rVBK], a
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $500
@@ -95134,20 +95417,20 @@ Func_6e9d1: ; 6e9d1 (1b:69d1)
 	ld hl, $0
 	call FarCall
 	set_farcall_addrs_hli Func_667d
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	ld b, $0
 	ld de, $1f08
 	ld hl, $8
 	call FarCall
 	set_farcall_addrs_hli Func_667d
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	ld b, $0
 	ld de, $1f09
 	ld hl, $9
 	call FarCall
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_6ea50
 	hlbgcoord 0, 0
@@ -95266,7 +95549,7 @@ Func_6eae8: ; 6eae8 (1b:6ae8)
 	ld e, $1
 	xor a
 	call Func_6ee8b
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_6eb0a
 	ld bc, $400
@@ -95479,7 +95762,7 @@ Func_6ec6a: ; 6ec6a (1b:6c6a)
 	add $10
 	ld hl, sp+$8
 	ld [hl], a
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
 	ld hl, sp+$a
@@ -95671,7 +95954,7 @@ Func_6eddd: ; 6eddd (1b:6ddd)
 Func_6ede1: ; 6ede1 (1b:6de1)
 	or a
 	jp nz, Func_6ee51
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_6edf5
 	hlbgcoord 0, 0
@@ -95746,7 +96029,7 @@ Func_6ee4e: ; 6ee4e (1b:6e4e)
 
 Func_6ee51: ; 6ee51 (1b:6e51)
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $a400
@@ -95790,7 +96073,7 @@ Func_6ee99: ; 6ee99 (1b:6e99)
 Func_6ee9d: ; 6ee9d (1b:6e9d)
 	or a
 	jp nz, Func_6ef0a
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_6eeb1
 	hlbgcoord 0, 0
@@ -96612,7 +96895,7 @@ Func_6f785: ; 6f785 (1b:7785)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $c8
@@ -96645,7 +96928,7 @@ Func_6f785: ; 6f785 (1b:7785)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli Func_da901
 	ld de, PutOnVideoTransferQueue
@@ -96673,7 +96956,7 @@ Func_6f785: ; 6f785 (1b:7785)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld c, l
@@ -96724,14 +97007,14 @@ Func_6f8c8: ; 6f8c8 (1b:78c8)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop de
 	jp Func_6f947
@@ -96760,9 +97043,9 @@ Func_6f906: ; 6f906 (1b:7906)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop de
 	pop hl
 	push de
@@ -96956,7 +97239,7 @@ Func_6fae2: ; 6fae2 (1b:7ae2)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	set_farcall_addrs_hli Func_17e95
 	ld c, $3
@@ -96986,7 +97269,7 @@ Func_6fb27: ; 6fb27 (1b:7b27)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	xor a
 Func_6fb34: ; 6fb34 (1b:7b34)
@@ -97584,14 +97867,14 @@ Func_fb205: ; fb205 (3e:7205)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $c8
@@ -97628,7 +97911,7 @@ Func_fb205: ; fb205 (3e:7205)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText
 	ld bc, BANK(Pointers_fb1e0)
@@ -97662,9 +97945,9 @@ Func_fb205: ; fb205 (3e:7205)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli Func_daa40
+	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli FreeMemory
@@ -98024,13 +98307,13 @@ OptionsMenu_Redraw:
 	ld de, Data_fb693
 	ld hl, $c0e
 	call PlaceStringDEatCoordHL
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	and $1
 	add a
 	add $c
 	ld l, a
 	push hl
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld b, $2
 	call DivideAbyB
 	ld d, a
@@ -98049,14 +98332,14 @@ OptionsMenu_Redraw:
 	call PlaceString
 	pop bc
 	pop bc
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	add $2
 	and $1
 	add a
 	add $c
 	ld l, a
 	push hl
-	ld a, [wc308]
+	ld a, [wOptionsMenu_StereoSelect]
 	add $2
 	ld b, $2
 	call DivideAbyB
@@ -98081,7 +98364,7 @@ OptionsMenu_Redraw:
 	ld c, $e
 	ld e, $9
 	ld a, $2
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	ld l, c
@@ -98089,7 +98372,7 @@ OptionsMenu_Redraw:
 	inc hl
 	inc hl
 	inc hl
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -98097,7 +98380,7 @@ OptionsMenu_Redraw:
 	ld [hl], d
 	ld hl, $b
 	add hl, bc
-	ld a, [wc307]
+	ld a, [wOptionsMenu_BattleScene]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -98370,7 +98653,7 @@ Func_fb783: ; fb783 (3e:7783)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -98491,7 +98774,7 @@ Func_fb88c: ; fb88c (3e:788c)
 	ld c, $4
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call GetHLAtSPPlus6
 	call Func_fb69c
@@ -98500,7 +98783,7 @@ Func_fb88c: ; fb88c (3e:788c)
 	ld c, $4
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
 	pop bc
@@ -98546,7 +98829,7 @@ Func_fb8e9: ; fb8e9 (3e:78e9)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -98685,7 +98968,7 @@ Func_fba15: ; fba15 (3e:7a15)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	ld a, l
@@ -98731,7 +99014,7 @@ Pointers_fba61:
 Data_fba65:
 	db "セーフﾞ(したよ)", $0
 
-Func_fba6f: ; fba6f (3e:7a6f)
+MainMenuSubmenu_Title: ; fba6f (3e:7a6f)
 	set_farcall_addrs_hli AllocateMemory
 	ld hl, $64
 	call FarCall
@@ -98746,7 +99029,7 @@ Func_fba6f: ; fba6f (3e:7a6f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -98763,7 +99046,7 @@ Func_fba6f: ; fba6f (3e:7a6f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	reg16swap de, hl
@@ -98774,7 +99057,7 @@ Func_fba6f: ; fba6f (3e:7a6f)
 	ld b, h
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
-	call Func_2323
+	call PopBGMapRegion
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -98787,7 +99070,7 @@ Func_fba6f: ; fba6f (3e:7a6f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -98801,7 +99084,7 @@ Func_fba6f: ; fba6f (3e:7a6f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
 	ld a, l
@@ -98999,7 +99282,7 @@ Func_fbd13: ; fbd13 (3e:7d13)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop bc
@@ -99821,7 +100104,7 @@ Func_fc3e1:
 	ret
 
 Func_fc3e8:
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_fc3fa
 	ld a, [wLCDC]
@@ -99849,9 +100132,9 @@ Func_fc416: ; fc416 (3f:4416)
 	cpl
 	inc a
 	push af
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	set_farcall_addrs_hli Func_7c8a
 	pop af
 	read_hl_from wCurRobotPointer
@@ -99870,7 +100153,7 @@ Func_fc416: ; fc416 (3f:4416)
 	ld de, $f805
 	add hl, de
 	pop de
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	call FarCall
 	set_farcall_addrs_hli Func_7c8a
@@ -99891,7 +100174,7 @@ Func_fc416: ; fc416 (3f:4416)
 	ld de, $5
 	add hl, de
 	pop de
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	call FarCall
 	call WaitVideoTransfer
@@ -99909,7 +100192,7 @@ Func_fc4ab: ; fc4ab (3f:44ab)
 	ld a, [wNextVBlankFlags]
 	and $80
 	jp nz, Func_fc4ab
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_fc4c9
 	ld bc, Func_0300
@@ -99927,7 +100210,7 @@ Func_fc4d5: ; fc4d5 (3f:44d5)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $5
 	ld de, $130c
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld h, l
@@ -100135,7 +100418,7 @@ IntroMovie_SlideRobotsForCombat: ; fc615 (3f:4615)
 	set_farcall_addrs_hli Func_7c8a
 	ld hl, $a0
 	call WriteHLToSPPlus3
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	read_hl_from wCurRobotPointer
 	ld de, $18
@@ -100294,7 +100577,7 @@ Func_fc713: ; fc713 (3f:4713)
 	ret
 
 Func_fc756: ; fc756 (3f:4756)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	or a
 	jp nz, Func_fc768
 	ld a, [wLCDC]
@@ -100437,7 +100720,7 @@ Func_fc89e:
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld e, $0
 Func_fc8d6: ; fc8d6 (3f:48d6)
@@ -100505,7 +100788,7 @@ Func_fc92b: ; fc92b (3f:492b)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	xor a
 Func_fc938: ; fc938 (3f:4938)
@@ -100679,13 +100962,13 @@ ENDC
 Data_fc948End
 
 Func_fc9bc: ; fc9bc (3f:49bc)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -100700,7 +100983,7 @@ Func_fc9bc: ; fc9bc (3f:49bc)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -100728,7 +101011,7 @@ ENDC
 Func_fca25: ; fca25 (3f:4a25)
 	push bc
 	push bc
-	set_farcall_addrs_hli Func_da729
+	set_farcall_addrs_hli StartMoveAnimScript
 	ld e, $1
 IF DEF(SUN)
 	ld a, $3b
@@ -100784,9 +101067,9 @@ Func_fca8a: ; fca8a (3f:4a8a)
 	ld a, [hl]
 	dec a
 	push af
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	or a
 	jp z, Func_fcabb
 	ld a, $64
@@ -100804,10 +101087,10 @@ Func_fcabb: ; fcabb (3f:4abb)
 	set_farcall_addrs_hli Func_dc0a
 	pop af
 	ld e, a
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	call FarCall
 	set_farcall_addrs_hli Func_7c8a
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	read_hl_from wCurRobotPointer
 	ld de, $18
@@ -100815,7 +101098,7 @@ Func_fcabb: ; fcabb (3f:4abb)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -100841,7 +101124,7 @@ Func_fcb12: ; fcb12 (3f:4b12)
 	ld [wNextVBlankFlags], a
 	call Func_fc092
 Func_fcb1d: ; fcb1d (3f:4b1d)
-	set_farcall_addrs_hli Func_da093
+	set_farcall_addrs_hli PlayMoveAnimScript
 	xor a
 	call FarCall
 	or a
@@ -100849,7 +101132,7 @@ Func_fcb1d: ; fcb1d (3f:4b1d)
 	jp Func_fcb85
 
 Func_fcb33: ; fcb33 (3f:4b33)
-	callba_hli Func_d9f55
+	callba_hli QueueMoveAnimScriptGFXUpdate
 	call CheckButton
 	ld c, a
 	inc c
@@ -100895,7 +101178,7 @@ Func_fcb85: ; fcb85 (3f:4b85)
 	set_farcall_addrs_hli FreeMemory
 	call GetHLAtSPPlus3
 	call FarCall
-	set_farcall_addrs_hli Func_da729
+	set_farcall_addrs_hli StartMoveAnimScript
 	ld e, $1
 IF DEF(SUN)
 	ld a, $3b
@@ -100910,12 +101193,12 @@ ENDC
 Func_fcbae: ; fcbae (3f:4bae)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld h, l
 	ld l, $0
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld e, a
 	ld d, $0
 	ld a, e
@@ -100932,12 +101215,12 @@ Func_fcbae: ; fcbae (3f:4bae)
 	ld [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld h, l
 	ld l, $0
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld e, a
 	ld d, $0
 	ld a, e
@@ -100996,11 +101279,11 @@ Func_fccc2: ; fccc2 (3f:4cc2)
 	ld a, [wNextVBlankFlags]
 	and $7f
 	ld [wNextVBlankFlags], a
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8e00
@@ -101027,7 +101310,7 @@ Func_fccc2: ; fccc2 (3f:4cc2)
 	or $1
 	ld [rVBK], a
 	set_farcall_addrs_hli Func_667d
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	ld b, $0
 	ld de, $1f1f
@@ -101204,11 +101487,11 @@ Func_fce97: ; fce97 (3f:4e97)
 	jp Func_fce0d
 
 Func_fcea1: ; fcea1 (3f:4ea1)
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8f00
@@ -101243,7 +101526,7 @@ Func_fcea1: ; fcea1 (3f:4ea1)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	add sp, $14
 	ret
@@ -101605,7 +101888,7 @@ Func_fd1e9: ; fd1e9 (3f:51e9)
 	pop af
 	call FarCall
 	xor a
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	call Func_fdfe5
 	ld hl, wLCDInterrupt2
 	write_hl_to wLCD + 1
@@ -101677,7 +101960,7 @@ TitleScreen:: ; fd213 (3f:5213)
 	ld [rLCDC], a
 	ld [wLCDC], a
 	xor a
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	ld a, [wNextVBlankFlags]
 	or $9
 	ld [wNextVBlankFlags], a
@@ -102450,7 +102733,7 @@ Func_fd91b: ; fd91b (3f:591b)
 Func_fd92e: ; fd92e (3f:592e)
 	call Func_fd746
 	ld hl, wSCY
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld e, a
 	ld d, $0
 	ld a, e
@@ -102460,7 +102743,7 @@ Func_fd92e: ; fd92e (3f:592e)
 	ld [hl], $0
 	ld c, [hl]
 	ld hl, wSCX
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld e, a
 	ld d, $0
 	ld a, e
@@ -102468,13 +102751,13 @@ Func_fd92e: ; fd92e (3f:592e)
 	ld e, a
 	add hl, de
 	ld [hl], c
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, wSCY
 	add hl, de
 	ld [hl], c
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, wSCX
@@ -102535,13 +102818,13 @@ Func_fd989:
 	reg16swap de, hl
 	ld hl, $105
 	call FarCall
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -102556,7 +102839,7 @@ Func_fd989:
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -102633,9 +102916,9 @@ Func_fdadf: ; fdadf (3f:5adf)
 	push de
 	push bc
 	push hl
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	ld hl, sp+$6
 	ld a, [hl]
 	xor $1
@@ -102655,7 +102938,7 @@ Func_fdadf: ; fdadf (3f:5adf)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -102670,7 +102953,7 @@ Func_fdadf: ; fdadf (3f:5adf)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -102817,7 +103100,7 @@ Func_fdc54: ; fdc54 (3f:5c54)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -102832,7 +103115,7 @@ Func_fdc54: ; fdc54 (3f:5c54)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -102931,9 +103214,9 @@ Func_fdd6d: ; fdd6d (3f:5d6d)
 	xor $1
 	ld c, a
 	push bc
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	ld a, c
 	ld hl, sp+$a
 	ld l, [hl]
@@ -102948,7 +103231,7 @@ Func_fdd6d: ; fdd6d (3f:5d6d)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $0
 	ld de, $1311
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h
@@ -102963,7 +103246,7 @@ Func_fdd6d: ; fdd6d (3f:5d6d)
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	inc h

@@ -562,7 +562,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld e, [hl]
 	ld hl, sp+$9
 	ld a, [hl]
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	call GetHLAtSPPlus10
 	ld de, $f
@@ -619,7 +619,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld e, [hl]
 	ld hl, sp+$9
 	ld a, [hl]
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 .no_restore_window
 	call GetHLAtSPPlus10

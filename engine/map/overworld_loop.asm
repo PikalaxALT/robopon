@@ -148,7 +148,7 @@ OverworldLoop: ; 81cf (2:41cf)
 	jp nz, .okay3
 	call Func_b6f2
 	call FillVisibleAreaWithBlankTile
-	callba_hli Func_d9f68
+	callba_hli MoveAnimScriptClearSprites
 	ld a, [wLCDC]
 	or $3
 	ld [wLCDC], a

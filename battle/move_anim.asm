@@ -1,4 +1,5 @@
-Func_e3bd: ; e3bd
+BattleAnim_DoublePushScreen: ; e3bd
+; Arguments: void
 	push hl
 	ld a, $2
 	ld [wEnableAttrMapTransfer], a
@@ -7,12 +8,13 @@ Func_e3bd: ; e3bd
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	ret
 
 Func_e3d1: ; e3d1
+; Arguments: char, char, char
 	push hl
 	push bc
 	call GetHLAtSPPlus4
@@ -173,6 +175,7 @@ Func_e4cf: ; e4cf (3:64cf)
 	ret
 
 Func_e4d1: ; e4d1 (3:64d1)
+; Arguments: char
 	push hl
 	push bc
 	push bc
@@ -491,6 +494,7 @@ Func_e6a4: ; e6a4 (3:66a4)
 	ret
 
 Func_e6b7: ; e6b7
+; Arguments: char
 	push bc
 	ld a, [hl]
 	inc hl
@@ -606,7 +610,7 @@ Func_e784: ; e784 (3:6784)
 	pop bc
 	ret
 
-Func_e787: ; e787
+BattleAnim_ClearSprites: ; e787
 	push hl
 	call ClearSprites
 	pop hl
@@ -2028,7 +2032,8 @@ Func_f0cd: ; f0cd (3:70cd)
 	pop hl
 	ret
 
-Func_f0cf: ; f0cf (3:70cf)
+BattleAnim_PlayMoveAnimScript: ; f0cf (3:70cf)
+; Arguments: char
 	ld a, [hl]
 	inc hl
 	push hl
@@ -2047,7 +2052,7 @@ Func_f0cf: ; f0cf (3:70cf)
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
 	call DisableHBlank
-	set_farcall_addrs_hli Func_da729
+	set_farcall_addrs_hli StartMoveAnimScript
 	pop hl
 	pop de
 	pop af
@@ -2062,24 +2067,24 @@ Func_f0cf: ; f0cf (3:70cf)
 	pop af
 	push hl
 	push af
-	set_farcall_addrs_hli Func_e2bf8
+	set_farcall_addrs_hli StartBattleSFXScript
 	pop af
 	call FarCall
-Func_f122: ; f122 (3:7122)
-	call Func_0451
-	callba_hli Func_e2c29
-	set_farcall_addrs_hli Func_da093
+.loop: ; f122 (3:7122)
+	call NextBattleFrame
+	callba_hli PlayBattleSFXScript
+	set_farcall_addrs_hli PlayMoveAnimScript
 	xor a
 	call FarCall
 	or a
-	jp nz, Func_f149
-	jp Func_f15a
+	jp nz, .next
+	jp .done
 
-Func_f149: ; f149 (3:7149)
-	callba_hli Func_d9f55
-	jp Func_f122
+.next: ; f149 (3:7149)
+	callba_hli QueueMoveAnimScriptGFXUpdate
+	jp .loop
 
-Func_f15a: ; f15a (3:715a)
+.done: ; f15a (3:715a)
 	set_farcall_addrs_hli FreeMemory
 	pop hl
 	call FarCall
@@ -2098,15 +2103,15 @@ Func_f15a: ; f15a (3:715a)
 	pop hl
 	ld a, l
 	and $2
-	jp z, Func_f191
+	jp z, .skip_hblank_enable
 	call EnableHBlank
-Func_f191: ; f191 (3:7191)
+.skip_hblank_enable: ; f191 (3:7191)
 	ld l, $12
 	push hl
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	pop hl
 	ret
@@ -2423,7 +2428,7 @@ Func_f3ad: ; f3ad (3:73ad)
 	jp nc, Func_f3bc
 	push hl
 	push af
-	call Func_0451
+	call NextBattleFrame
 	pop af
 	inc a
 	pop hl
@@ -2586,7 +2591,7 @@ Func_f4bf: ; f4bf (3:74bf)
 	cp $2
 	jp nc, Func_f4cd
 	push af
-	call Func_0451
+	call NextBattleFrame
 	pop af
 	inc a
 	jp Func_f4bf
@@ -2925,44 +2930,44 @@ Data_f6d1: ; f6d1
 	db "     ", $0
 
 Pointers_f6d7: ; f6d7
-	dw $0
-	dw Func_e3bd
-	dw Func_e3d1
-	dw Func_e4d1
-	dw Func_e6b7
-	dw Func_e787
-	dw Func_e78d
-	dw Func_e89b
-	dw Func_e994
-	dw Func_e9a4
-	dw Func_e9bc
-	dw Func_e9d4
-	dw Func_eab8
-	dw Func_eac8
-	dw Func_ead8
-	dw Func_eadf
-	dw Func_efaa
-	dw Func_f067
-	dw Func_f0cf
-	dw Func_f19f
-	dw Func_f1b6
-	dw Func_f210
-	dw Func_f29d
-	dw Func_f339
-	dw Func_f377
-	dw Func_f3a4
-	dw Func_f3c0
-	dw Func_f3c9
-	dw Func_f3d2
-	dw Func_f4f1
-	dw Func_f5c7
-	dw Func_f5f9
-	dw Func_f612
-	dw Func_f627
-	dw Func_f62d
-	dw Func_f63b
-	dw Func_f662
-	dw Func_f689
+	dw $0        ; 00 (dummy)
+	dw BattleAnim_DoublePushScreen ; 01
+	dw Func_e3d1 ; 02
+	dw Func_e4d1 ; 03
+	dw Func_e6b7 ; 04
+	dw BattleAnim_ClearSprites ; 05
+	dw Func_e78d ; 06
+	dw Func_e89b ; 07
+	dw Func_e994 ; 08
+	dw Func_e9a4 ; 09
+	dw Func_e9bc ; 0a
+	dw Func_e9d4 ; 0b
+	dw Func_eab8 ; 0c
+	dw Func_eac8 ; 0d
+	dw Func_ead8 ; 0e
+	dw Func_eadf ; 0f
+	dw Func_efaa ; 10
+	dw Func_f067 ; 11
+	dw BattleAnim_PlayMoveAnimScript ; 12
+	dw Func_f19f ; 13
+	dw Func_f1b6 ; 14
+	dw Func_f210 ; 15
+	dw Func_f29d ; 16
+	dw Func_f339 ; 17
+	dw Func_f377 ; 18
+	dw Func_f3a4 ; 19
+	dw Func_f3c0 ; 1a
+	dw Func_f3c9 ; 1b
+	dw Func_f3d2 ; 1c
+	dw Func_f4f1 ; 1d
+	dw Func_f5c7 ; 1e
+	dw Func_f5f9 ; 1f
+	dw Func_f612 ; 20
+	dw Func_f627 ; 21
+	dw Func_f62d ; 22
+	dw Func_f63b ; 23
+	dw Func_f662 ; 24
+	dw Func_f689 ; 25
 
 PlayBattleAnimScript: ; f723 (3:7723)
 	push hl

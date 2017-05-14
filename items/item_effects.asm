@@ -18,7 +18,7 @@ ItemEffect_NoUse: ; 4eebc (13:6ebc)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -29,7 +29,7 @@ ItemEffect_NoUse: ; 4eebc (13:6ebc)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
@@ -902,7 +902,7 @@ ItemEffects_AskSelectPartyMember: ; 4f6a3 (13:76a3)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3afc
+	call PushBGMapRegion_NoWaitBefore
 	pop bc
 	ld c, $5
 	ld e, $14
@@ -913,7 +913,7 @@ ItemEffects_AskSelectPartyMember: ; 4f6a3 (13:76a3)
 	ld c, $14
 	ld e, $d
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
 	ld c, BANK(Pointers_4f688)

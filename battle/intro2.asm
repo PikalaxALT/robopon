@@ -128,13 +128,13 @@ Func_d8ca: ; d8ca (3:58ca)
 
 Func_d8cd: ; d8cd (3:58cd)
 	call ClearSprites
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	xor $1
-	ld [wc2cd], a
+	ld [wOverworldTilemapSelector], a
 	call Func_c72e
 	call Func_c6ff
 	set_farcall_addrs_hli Func_667d
-	ld hl, wc2cd
+	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
 	ld de, $8f00
@@ -151,7 +151,7 @@ Func_d8cd: ; d8cd (3:58cd)
 	or $1
 	ld [rVBK], a
 	set_farcall_addrs_hli Func_667d
-	ld a, [wc2cd]
+	ld a, [wOverworldTilemapSelector]
 	ld c, a
 	ld b, $0
 	ld de, $1311
@@ -400,7 +400,7 @@ Func_dacf: ; dacf (3:5acf)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop hl
 	push hl
@@ -452,7 +452,7 @@ Func_db2f: ; db2f (3:5b2f)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_db5a: ; db5a (3:5b5a)
 	pop bc
@@ -507,7 +507,7 @@ Func_db78: ; db78 (3:5b78)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 Func_dbb7: ; dbb7 (3:5bb7)
 	pop bc
@@ -533,7 +533,7 @@ Func_dbd3: ; dbd3 (3:5bd3)
 	ld c, $14
 	ld e, $0
 	xor a
-	call Func_3ca1
+	call DoublePushBGMapRegion
 	pop bc
 	pop bc
 	pop bc

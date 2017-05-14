@@ -3,7 +3,7 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	push af
 	push de
 	ld [wFunc94a9_c891], a
-	set_farcall_addrs_hli Func_da835
+	set_farcall_addrs_hli SetOAMUpdatePointer
 	ld a, $4
 	call FarCall
 	ld a, $4
@@ -381,7 +381,7 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	add $9
 	cp l
 	jp c, .asm_9d0e
-	set_farcall_addrs_hli Func_da093
+	set_farcall_addrs_hli PlayMoveAnimScript
 	ld a, $1
 	call FarCall
 	ld e, a
