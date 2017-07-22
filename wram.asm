@@ -816,6 +816,7 @@ wEventFlagsEnd::
 	char wLastStepSucceeded ; c87d
 	ds $a
 
+UNION
 	char wc888 ; c888
 	char wLoadTilesBlockCounter ; c889
 	char wc88a ; c88a
@@ -823,8 +824,8 @@ wEventFlagsEnd::
 	short wLoadTilesSourcePointer ; c88c
 	short wc88e ; c88e
 	short wLoadTilesTileCounter ; c890
-	ds wc888 - @
 
+NEXTU
 	char wCheckFacingObjectReturnFlag ; c888
 	char wCheckFacingObjectX ; c889
 	char wCheckFacingObjectY ; c88a
@@ -833,8 +834,8 @@ wEventFlagsEnd::
 	char wCheckFacingObjectObjectCounter ; c88d
 	short wCheckFacingObjectObjectStructPointer ; c88e
 	short wCheckFacingObject_c890 ; c890
-	ds wCheckFacingObjectReturnFlag - @
 
+NEXTU
 	char wFunc94a9_c888 ; c888
 	char wFunc94a9_c889 ; c889
 	short wFunc94a9_c88a ; c88a
@@ -843,6 +844,7 @@ wEventFlagsEnd::
 	char wFunc94a9_c88f ; c88f
 	char wFunc94a9_c890 ; c890
 	char wFunc94a9_c891 ; c891
+ENDU
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 	array wCGB_BGPalsBuffer, $8, $8, $1 ; c89c
