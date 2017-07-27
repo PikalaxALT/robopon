@@ -16435,7 +16435,7 @@ Func_12fb0: ; 12fb0 (4:6fb0)
 	call CompareHLtoDE
 	jp nc, Func_12ff1
 	push bc
-	set_farcall_addrs_hli Func_616dd
+	set_farcall_addrs_hli DamageOrHeal
 	pop bc
 	push bc
 	ld l, c
@@ -30003,10 +30003,10 @@ Func_24611: ; 24611
 	callba_hli Func_5ec5e
 	ret
 
-Func_24620: ; 24620 (9:4620)
+Bank9_DamageOrHeal: ; 24620 (9:4620)
 	push af
 	push de
-	set_farcall_addrs_hli Func_616dd
+	set_farcall_addrs_hli DamageOrHeal
 	pop de
 	pop af
 	jp FarCall
@@ -30666,7 +30666,7 @@ Func_24b0b: ; 24b0b (9:4b0b)
 	ld d, b
 	ld hl, sp+$13
 	ld a, [hl]
-	call Func_24620
+	call Bank9_DamageOrHeal
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $13
@@ -32536,7 +32536,7 @@ Func_25813: ; 25813 (9:5813)
 Func_25869: ; 25869 (9:5869)
 	ld hl, sp+$2b
 	ld a, [hl]
-	call Func_24620
+	call Bank9_DamageOrHeal
 	reg16swap de, hl
 	ld a, e
 	or d
@@ -32754,13 +32754,15 @@ Func_25a06: ; 25a06 (9:5a06)
 	ld [hl], e
 	inc hl
 	ld [hl], d
+
 	call GetHLAtSPPlus6
 	reg16swap de, hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	xor $1
-	call Func_24620
+	call Bank9_DamageOrHeal
 	call WriteHLToSPPlus6
+
 	call GetHLAtSPPlus6
 	reg16swap de, hl
 	ld hl, $0
@@ -32881,8 +32883,9 @@ Func_25b19: ; 25b19 (9:5b19)
 	ld hl, sp+$2b
 	ld a, [hl]
 	xor $1
-	call Func_24620
+	call Bank9_DamageOrHeal
 	call WriteHLToSPPlus6
+
 	call GetHLAtSPPlus6
 	reg16swap de, hl
 	ld hl, $0
@@ -34311,7 +34314,7 @@ Func_265a8: ; 265a8 (9:65a8)
 	ld hl, sp+$1f
 	ld a, [hl]
 	xor $1
-	call Func_24620
+	call Bank9_DamageOrHeal
 	ld hl, sp+$1f
 	ld a, [hl]
 	xor $1
@@ -34401,7 +34404,7 @@ Func_26649: ; 26649 (9:6649)
 	pop de
 	ld hl, sp+$1d
 	ld a, [hl]
-	call Func_24620
+	call Bank9_DamageOrHeal
 	ld c, l
 	ld b, h
 	ld hl, sp+$1d
@@ -34482,7 +34485,7 @@ Func_26675: ; 26675 (9:6675)
 	reg16swap de, hl
 	ld hl, sp+$d
 	ld a, [hl]
-	call Func_24620
+	call Bank9_DamageOrHeal
 	pop de
 	ld hl, $a
 	add hl, de
@@ -34569,7 +34572,7 @@ Func_26796: ; 26796 (9:6796)
 	ld hl, sp+$b
 	ld a, [hl]
 	xor $1
-	call Func_24620
+	call Bank9_DamageOrHeal
 Func_267a5: ; 267a5 (9:67a5)
 	jp Func_267be
 
@@ -34701,7 +34704,7 @@ Func_26879: ; 26879 (9:6879)
 	ld hl, sp+$5
 	ld a, [hl]
 	xor $1
-	call Func_24620
+	call Bank9_DamageOrHeal
 	ld hl, sp+$5
 	ld a, [hl]
 	xor $1
@@ -77349,161 +77352,6 @@ Func_615be: ; 615be
 
 Func_615cc: ; 615cc (18:55cc)
 	xor a
-	ret
-
-Func_615ce: ; 615ce (18:55ce)
-	push hl
-	push bc
-	push bc
-	push de
-	read_hl_from wCurRobotPointer
-	ld de, $15
-	add hl, de
-	ld e, [hl]
-	ld hl, sp+$2
-	ld [hl], e
-	ld hl, wOAMBuffer
-	call WriteHLToSPPlus6
-	call GetHLAtSPPlus8
-	ld de, $8
-	add hl, de
-	call WriteHLToSPPlus8
-	pop de
-	ld hl, $10
-	add hl, de
-	reg16swap de, hl
-	ld hl, sp+$0
-	ld a, [hl]
-	and $40
-	jp z, Func_6160e
-	ld hl, $30
-	add hl, de
-	reg16swap de, hl
-	ld bc, -$10
-	jp Func_61611
-
-Func_6160e: ; 6160e (18:560e)
-	ld bc, $10
-Func_61611: ; 61611 (18:5611)
-	xor a
-Func_61612: ; 61612 (18:5612)
-	cp $4
-	jp nc, Func_616c2
-	push af
-	push bc
-	push de
-	ld c, e
-	ld b, d
-	inc b
-	dec b
-	bit 7, b
-	jr nz, .asm_6162d
-	ld e, c
-	ld d, b
-	ld hl, $98
-	call CompareHLtoDE
-	jp nc, Func_61630
-.asm_6162d
-	ld bc, $0
-Func_61630: ; 61630 (18:5630)
-	ld hl, sp+$7
-	ld [hl], $0
-Func_61634: ; 61634 (18:5634)
-	ld hl, sp+$7
-	ld a, [hl]
-	cp $8
-	jp nc, Func_616b2
-	push bc
-	ld hl, sp+$8
-	ld a, [hl]
-	and $20
-	jp z, Func_61662
-	ld hl, sp+$9
-	ld e, [hl]
-	ld d, $0
-	ld hl, $7
-	ld a, l
-	sub e
-	ld l, a
-	ld a, h
-	sbc d
-	ld h, a
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	push hl
-	read_hl_from_sp_plus $10
-	pop de
-	add hl, de
-	ld c, l
-	ld b, h
-	jp Func_61675
-
-Func_61662: ; 61662 (18:5662)
-	read_hl_from_sp_plus $e
-	reg16swap de, hl
-	ld hl, sp+$9
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld c, l
-	ld b, h
-Func_61675: ; 61675 (18:5675)
-	inc b
-	dec b
-	bit 7, b
-	jr nz, .asm_61686
-	ld e, c
-	ld d, b
-	ld hl, $a8
-	call CompareHLtoDE
-	jp nc, Func_61689
-.asm_61686
-	ld bc, $0
-Func_61689: ; 61689 (18:5689)
-	read_hl_from_sp_plus $c
-	inc hl
-	ld [hl], c
-	pop bc
-	call GetHLAtSPPlus10
-	ld [hl], c
-	ld hl, sp+$6
-	ld a, [hl]
-	call GetHLAtSPPlus10
-	inc hl
-	inc hl
-	inc hl
-	ld [hl], a
-	ld hl, sp+$7
-	ld a, [hl]
-	inc a
-	ld hl, sp+$7
-	ld [hl], a
-	call GetHLAtSPPlus10
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	call WriteHLToSPPlus10
-	jp Func_61634
-
-Func_616b2: ; 616b2 (18:56b2)
-	pop de
-	pop bc
-	reg16swap de, hl
-	add hl, bc
-	reg16swap de, hl
-	pop af
-	inc a
-	jp Func_61612
-
-Func_616c2: ; 616c2 (18:56c2)
-	pop bc
-	pop bc
-	pop bc
 	ret
 
 INCLUDE "battle/damage_anim.asm"
