@@ -413,21 +413,19 @@ Func_530b2: ; 530b2 (14:70b2)
 	ret
 
 Data_530bd:
-	db "(せっていしゅうりょう)", $0
+	dstr "(せっていしゅうりょう)"
 
 Data_530ca:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_530cd:
-	db "8", $0
+	dstr "8"
 
 Data_530cf:
-	db " ", $0
+	dstr " "
 
 Data_530d1:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_530d4: ; 530d4 (14:70d4)
 	push bc
@@ -548,23 +546,19 @@ Func_53149: ; 53149 (14:7149)
 	ret
 
 Data_531c8:
-	db "(せいれき ひつﾞけ しﾞかん を)", $0
+	dstr "(せいれき ひつﾞけ しﾞかん を)"
 
 Data_531db:
-	db "(せっていしてくたﾞさい)", $0
+	dstr "(せっていしてくたﾞさい)"
 
 Data_531e9:
-	db "(せいれき)", $0
+	dstr "(せいれき)"
 
 Data_531f0:
-	db "(ねん)", $0
+	dstr "(ねん)"
 
 Data_531f5:
-	TX_SNUM
-	TX_SNUM
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d%d%d"
 
 Func_531fe:
 	ld l, $12
@@ -710,23 +704,19 @@ Func_53260: ; 53260 (14:7260)
 	ret
 
 Data_5330b:
-	db "(ひつﾞけ)", $0
+	dstr "(ひつﾞけ)"
 
 Data_53312:
-	db "(かﾞつ)", $0
+	dstr "(かﾞつ)"
 
 Data_53318:
-	db "(にち)", $0
+	dstr "(にち)"
 
 Data_5331d:
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d"
 
 Data_53322:
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d"
 
 Func_53327: ; 53327 (14:7327)
 	push bc
@@ -812,23 +802,19 @@ Func_53327: ; 53327 (14:7327)
 	ret
 
 Data_533d4:
-	db "(しﾞかん)", $0
+	dstr "(しﾞかん)"
 
 Data_533db:
-	db ":", $0
+	dstr ":"
 
 Data_533dd:
-	db "(にち)", $0
+	dstr "(にち)"
 
 Data_533e2:
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d"
 
 Data_533e7:
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d"
 
 Data_533ec:
 	db  7,  8,  9, 10
@@ -911,10 +897,10 @@ Func_53465: ; 53465 (14:7465)
 	ret
 
 Data_53467:
-	db "b", $0
+	dstr "b"
 
 Data_53469:
-	db "_", $0
+	dstr "_"
 
 Func_5346b: ; 5346b (14:746b)
 	push bc
@@ -1209,11 +1195,7 @@ Func_5360d: ; 5360d (14:760d)
 	ret
 
 Data_53652:
-	TX_SNUM
-	TX_SNUM
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d%d%d"
 
 Func_5365b:
 	ld de, $2
@@ -1431,14 +1413,10 @@ Func_53771: ; 53771 (14:7771)
 	ret
 
 Data_537c6:
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d"
 
 Data_537cb:
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d"
 
 Func_537d0:
 	ld de, $2
@@ -1687,40 +1665,40 @@ Func_539ab: ; 539ab (14:79ab)
 	ret
 
 Data_539ac:
-	db "(    )", $0
+	dstr "(    )"
 
 Data_539b3:
-	db "(おひつしﾞ)", $0
+	dstr "(おひつしﾞ)"
 
 Data_539bb:
-	db "(おうし )", $0
+	dstr "(おうし )"
 
 Data_539c2:
-	db "(ふたこﾞ )", $0
+	dstr "(ふたこﾞ )"
 
 Data_539ca:
-	db "(かに  )", $0
+	dstr "(かに  )"
 
 Data_539d1:
-	db "(しし  )", $0
+	dstr "(しし  )"
 
 Data_539d8:
-	db "(おとめ )", $0
+	dstr "(おとめ )"
 
 Data_539df:
-	db "(てんひﾞん)", $0
+	dstr "(てんひﾞん)"
 
 Data_539e7:
-	db "(さそり )", $0
+	dstr "(さそり )"
 
 Data_539ee:
-	db "(いて  )", $0
+	dstr "(いて  )"
 
 Data_539f5:
-	db "(やきﾞ  )", $0
+	dstr "(やきﾞ  )"
 
 Data_539fd:
-	db "(みすﾞかﾞめ)", $0
+	dstr "(みすﾞかﾞめ)"
 
 Data_53a06:
-	db "(うお  )", $0
+	dstr "(うお  )"

@@ -128,7 +128,7 @@ FillToStackBottomWithWillTestString: ; 40cb (1:40cb)
 	ret
 
 .WillTestString:
-	db "WILL TEST", $0
+	dstr "WILL TEST"
 
 Func_40f4: ; 40f4 (1:40f4)
 	ld c, low(hPushOAM)
@@ -2094,7 +2094,7 @@ Func_6fb7: ; 6fb7 (1:6fb7)
 	jp Func_6f7b
 
 Data_6fc1: ; 6fc1
-	db "(つうしん まち)", $0
+	dstr "(つうしん まち)"
 
 Func_6fcb: ; 6fcb (1:6fcb)
 	reg16swap de, hl
@@ -2102,7 +2102,7 @@ Func_6fcb: ; 6fcb (1:6fcb)
 	jp Func_6f7b
 
 Data_6fd5: ; 6fd5
-	db "(つうしん )エラー", $0
+	dstr "(つうしん )エラー"
 
 Func_6fe0: ; 6fe0
 	push bc
@@ -2408,7 +2408,7 @@ Func_71ee: ; 71ee (1:71ee)
 	ret
 
 Data_71f0: ; 71f0
-	db "(せつそﾞくちゅう)", $0
+	dstr "(せつそﾞくちゅう)"
 
 Func_71fb: ; 71fb (1:71fb)
 	push af
@@ -3233,7 +3233,7 @@ Func_777d: ; 777d (1:777d)
 	ret
 
 Data_7784: ; 7784
-	db "ROBOPON IR TAKANORI", $0
+	dstr "ROBOPON IR TAKANORI"
 
 Func_7798: ; 7798 (1:7798)
 	push hl
@@ -4304,16 +4304,16 @@ Data_8001: ; 8001
 	dbw 0, 0
 
 Data_8020:
-	db "フィールトﾞテスト", $0
+	dstr "フィールトﾞテスト"
 
 Data_802a:
-	db "スフﾟライトテスト", $0
+	dstr "スフﾟライトテスト"
 
 Data_8034:
-	db "ワールトﾞマッフﾟテスト", $0
+	dstr "ワールトﾞマッフﾟテスト"
 
 Data_8041:
-	db "コンティニューテスト", $0
+	dstr "コンティニューテスト"
 
 Func_804c: ; 804c (2:404c)
 	add sp, -$64
@@ -5078,32 +5078,6 @@ Func_8f44:: ; 8f44 (2:4f44)
 	ret
 
 INCLUDE "engine/map/handle_map.asm"
-
-Data_9416: ; 9416
-	TX_SNUM
-	db "/"
-	TX_SNUM
-	db "/"
-	TX_SNUM
-	db " ", $0
-
-Data_9420: ; 9420
-	db "0"
-	TX_SNUM
-	db ":", $0
-
-Data_9425: ; 9425
-	TX_SNUM
-	db ":", $0
-
-Data_9429: ; 9429
-	db "0"
-	TX_SNUM
-	db $0
-
-Data_942d: ; 942d
-	TX_SNUM
-	db $0
 
 Func_9430: ; 9430
 	callba_hli Func_17e91
@@ -7229,19 +7203,19 @@ Pointers_c8c1: ; c8c1
 	dw Data_c8ed
 
 Data_c8cb: ; c8cb
-	db "(たのんたﾞそﾞ)", $0
+	dstr "(たのんたﾞそﾞ)"
 
 Data_c8d5: ; c8d5
-	db "(かﾞんはﾞれ)", $0
+	dstr "(かﾞんはﾞれ)"
 
 Data_c8de: ; c8de
-	db "(いっけぇー)", $0
+	dstr "(いっけぇー)"
 
 Data_c8e6: ; c8e6
-	db "(よしっ) ", $0
+	dstr "(よしっ) "
 
 Data_c8ed
-	db " (ゆけっ!!)", $0
+	dstr " (ゆけっ!!)"
 
 Data_c8f6: ; c8f6
 	dr $c8f6, $c8fe
@@ -8878,22 +8852,19 @@ Func_d735: ; d735 (3:5735)
 	ret
 
 Data_d747: ; d747
-	db "         ", $0
+	dstr "         "
 
 Data_d751: ; d751
-	db "        ", $0
+	dstr "        "
 
 Data_d75a: ; d75a
-	TX_STACK
-	db "V"
-	TX_SNUM
-	db $0
+	dstr "%cV%d"
 
 Data_d760: ; d760
-	db " ", $0
+	dstr " "
 
 Data_d762: ; d762
-	db "/   ", $0
+	dstr "/   "
 
 Func_d767: ; d767
 	ld c, $5
@@ -10115,7 +10086,7 @@ Func_fa45: ; fa45 (3:7a45)
 	ret
 
 String_fa7b: ; fa7b
-	db " (かﾞ)", $0
+	dstr " (かﾞ)"
 
 INCLUDE "battle/intro.asm"
 
@@ -10411,8 +10382,7 @@ Func_10190: ; 10190 (4:4190)
 	ret
 
 Data_1019d: ; 1019d
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_101a0: ; 101a0
 	db "スヒﾟータﾞー", $0 ; speeder
@@ -11088,7 +11058,7 @@ Func_10732: ; 10732 (4:4732)
 	ret
 
 Data_10734: ; 10734
-	db "(てﾞはﾞっく)", $0
+	dstr "(てﾞはﾞっく)"
 
 Data_1073d: ; 1073d
 	dr $1073d, $10766
@@ -11332,27 +11302,25 @@ Func_1095a: ; 1095a (4:495a)
 	ret
 
 Data_1095c: ; 1095c
-	db "(のしょうり)", $0
+	dstr "(のしょうり)"
 
 Data_10964: ; 10964
-	db "(のしょうり)", $0
+	dstr "(のしょうり)"
 
 Data_1096c: ; 1096c
-	db "(ひきわけ)", $0
+	dstr "(ひきわけ)"
 
 Data_10973: ; 10973
-	db "(きろく)", $0
+	dstr "(きろく)"
 
 Data_10979: ; 10979
-	TX_SNUM
-	db "キロ", $0
+	dstr "%dキロ"
 
 Data_1097e: ; 1097e
-	db "メートル", $0
+	dstr "メートル"
 
 Data_10983: ; 10983
-	TX_SNUM
-	db "(とん)", $0
+	dstr "%d(とん)"
 
 Data_1098a: ; 1098a
 	dr $1098a, $10992
@@ -13733,29 +13701,19 @@ Func_11a9e: ; 11a9e (4:5a9e)
 	ret
 
 Data_11b47: ; 11b47
-	TX_STACK
-	TX_STACK
-	db $0
+	dstr "%c%c"
 
 Data_11b4c: ; 11b4c
-	TX_STACK
-	TX_STACK
-	db $0
+	dstr "%c%c"
 
 Data_11b51: ; 11b51
-	TX_STACK
-	TX_STACK
-	db $0
+	dstr "%c%c"
 
 Data_11b56: ; 11b56
-	TX_STACK
-	TX_STACK
-	db $0
+	dstr "%c%c"
 
 Data_11b5b: ; 11b5b
-	TX_STACK
-	TX_STACK
-	db $0
+	dstr "%c%c"
 
 Func_11b60: ; 11b60 (4:5b60)
 	push af
@@ -13942,41 +13900,34 @@ Func_11cb2: ; 11cb2 (4:5cb2)
 	ret
 
 Data_11cc1: ; 11cc1
-	db "スタート", $0
+	dstr "スタート"
 
 Data_11cc6: ; 11cc6
-	db " "
-	TX_SNUM
-	db $0
+	dstr " %d"
 
 Data_11cca: ; 11cca
-	db "(あなたのかち)", $0
+	dstr "(あなたのかち)"
 
 Data_11cd3: ; 11cd3
-	db "(あなたのまけ)", $0
+	dstr "(あなたのまけ)"
 
 Data_11cdc: ; 11cdc
-	db "(ひきわけ)", $0
+	dstr "(ひきわけ)"
 
 Data_11ce3: ; 11ce3
-	db "タイムオーハﾞー", $0
+	dstr "タイムオーハﾞー"
 
 Data_11cec: ; 11cec
-	db "タイム", $0
+	dstr "タイム"
 
 Data_11cf0: ; 11cf0
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_11cf3: ; 11cf3
-	db " "
-	TX_SNUM
-	db $0
+	dstr " %d"
 
 Data_11cf7: ; 11cf7
-	db ":"
-	TX_SNUM
-	db $0
+	dstr ":%d"
 
 Func_11cfb: ; 11cfb (4:5cfb)
 	push hl
@@ -14759,7 +14710,7 @@ Func_1242f: ; 1242f (4:642f)
 	ret
 
 Data_12436: ; 12436
-	db "(ひきわけなのてﾞ もういちとﾞ)", $0
+	dstr "(ひきわけなのてﾞ もういちとﾞ)"
 
 Func_12448: ; 12448 (4:6448)
 	push af
@@ -15567,10 +15518,10 @@ Func_12972: ; 12972 (4:6972)
 	ret
 
 Data_12974: ; 12974
-	db "(しﾞふﾞん)", $0
+	dstr "(しﾞふﾞん)"
 
 Data_1297c: ; 1297c
-	db "(あいて)", $0
+	dstr "(あいて)"
 
 Func_12982: ; 12982 (4:6982)
 	push hl
@@ -15793,8 +15744,7 @@ Func_12ab0: ; 12ab0 (4:6ab0)
 	ret
 
 Data_12ac2: ; 12ac2
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Data_12ac5: ; 12ac5
 	dr $12ac5, $12acb
@@ -16019,10 +15969,10 @@ Func_12bba: ; 12bba (4:6bba)
 	ret
 
 Data_12c88: ; 12c88
-	db "カートﾞ(を えらんてﾞ)", $0
+	dstr "カートﾞ(を えらんてﾞ)"
 
 Data_12c96: ; 12c96
-	db "Aホﾞタン(を おしてね)", $0
+	dstr "Aホﾞタン(を おしてね)"
 
 Func_12ca4: ; 12ca4 (4:6ca4)
 	push hl
@@ -16540,12 +16490,10 @@ Func_13071: ; 13071 (4:7071)
 	ret
 
 Data_13074: ; 13074
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Data_13077: ; 13077
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Func_1307a: ; 1307a (4:707a)
 	push af
@@ -17435,20 +17383,16 @@ Func_13632: ; 13632 (4:7632)
 	ret
 
 Data_13640: ; 13640
-	db "(かいふく) 50", $0
+	dstr "(かいふく) 50"
 
 Data_1364a: ; 1364a
-	db "タﾞメーシﾞ "
-	TX_SNUM
-	db $0
+	dstr "タﾞメーシﾞ %d"
 
 Data_13654: ; 13654
-	db "(かいふく) 50", $0
+	dstr "(かいふく) 50"
 
 Data_1365e: ; 1365e
-	db "タﾞメーシﾞ "
-	TX_SNUM
-	db $0
+	dstr "タﾞメーシﾞ %d"
 
 Func_13668: ; 13668 (4:7668)
 	inc c
@@ -17918,10 +17862,10 @@ Func_157b3: ; 157b3 (5:57b3)
 	ret
 
 Data_157b6: ; 157b6
-	db "(てﾞ つかえるわさﾞ)", $0
+	dstr "(てﾞ つかえるわさﾞ)"
 
 Data_157c3: ; 157c3
-	db "^", $0
+	dstr "^"
 
 Func_157c5: ; 157c5 (5:57c5)
 	push hl
@@ -18050,10 +17994,10 @@ Pointers_1588f:
 	dw $0
 
 Data_15895:
-	db "フﾞート(そﾞくは) ソフト(の つけかえかﾞ)", $0
+	dstr "フﾞート(そﾞくは) ソフト(の つけかえかﾞ)"
 
 Data_158ae:
-	db "(てﾞきないよ)", $0
+	dstr "(てﾞきないよ)"
 
 Func_158b7: ; 158b7
 	add sp, -$76
@@ -18278,22 +18222,22 @@ Func_15a9f: ; 15a9f (5:5a9f)
 	ret
 
 Data_15aa2: ; 15aa2
-	db "M", $0
+	dstr "M"
 
 Data_15aa4: ; 15aa4
-	db "(そうひﾞ)ソフト", $0
+	dstr "(そうひﾞ)ソフト"
 
 Data_15aae: ; 15aae
-	db "(もちもの)ソフト", $0
+	dstr "(もちもの)ソフト"
 
 Data_15ab8: ; 15ab8
-	db "(すへﾞてはすﾞす)", $0
+	dstr "(すへﾞてはすﾞす)"
 
 Data_15ac3: ; 15ac3
-	db "(つかえる わさﾞ)", $0
+	dstr "(つかえる わさﾞ)"
 
 Data_15ace: ; 15ace
-	db "ソフト(なし)", $0
+	dstr "ソフト(なし)"
 
 INCLUDE "engine/get_name.asm"
 
@@ -19374,26 +19318,22 @@ Func_16364: ; 16364 (5:6364)
 	ret
 
 Data_16367: ; 16367
-	db " ", $0
+	dstr " "
 
 Data_16369: ; 16369
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_1636c: ; 1636c
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_1636f: ; 1636f
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_16372: ; 16372
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_16375: ; 16375
-	db " ", $0
+	dstr " "
 
 Func_16377: ; 16377 (5:6377)
 	push hl
@@ -20650,13 +20590,13 @@ Func_16ce3: ; 16ce3 (5:6ce3)
 	ret
 
 Data_16cee: ; 16cee
-	db "(わさﾞ なし)", $0
+	dstr "(わさﾞ なし)"
 
 Data_16cf7: ; 16cf7
-	db "ロホﾞホﾟン (なし)", $0
+	dstr "ロホﾞホﾟン (なし)"
 
 Data_16d03: ; 16d03
-	db "(とﾞの)ロホﾞホﾟン(をさくしﾞょする)?", $0
+	dstr "(とﾞの)ロホﾞホﾟン(をさくしﾞょする)?"
 
 Func_16d1a: ; 16d1a (5:6d1a)
 	ld l, $12
@@ -20680,7 +20620,7 @@ Func_16d2d: ; 16d2d (5:6d2d)
 	ret
 
 Data_16d3d: ; 16d3d
-	db "アイテム (なし)", $0
+	dstr "アイテム (なし)"
 
 Func_16d47: ; 16d47 (5:6d47)
 	push de
@@ -20702,7 +20642,7 @@ Func_16d47: ; 16d47 (5:6d47)
 	ret
 
 Data_16d61: ; 16d61
-	db "ハﾟーツ (なし)", $0
+	dstr "ハﾟーツ (なし)"
 
 Func_16d6b: ; 16d6b (5:6d6b)
 	push de
@@ -20724,7 +20664,7 @@ Func_16d6b: ; 16d6b (5:6d6b)
 	ret
 
 Data_16d85: ; 16d85
-	db "ソフト (なし)", $0
+	dstr "ソフト (なし)"
 
 Func_16d8e: ; 16d8e
 	push hl
@@ -21287,11 +21227,10 @@ Func_17195: ; 17195 (5:7195)
 	ret
 
 Data_171a6: ; 171a6
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_171a9: ; 171a9
-	db " ", $0
+	dstr " "
 
 Func_171ab: ; 171ab (5:71ab)
 	push af
@@ -21531,8 +21470,7 @@ Func_1739b: ; 1739b (5:739b)
 	ret
 
 Data_1739e: ; 1739e
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_173a1: ; 173a1 (5:73a1)
 	push bc
@@ -21558,8 +21496,7 @@ Func_173b2: ; 173b2 (5:73b2)
 	ret
 
 Data_173c1: ; 173c1
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Func_173c4: ; 173c4 (5:73c4)
 	push bc
@@ -21640,7 +21577,7 @@ Func_17429: ; 17429 (5:7429)
 	ret
 
 Data_1743d: ; 1743d
-	db " ", $0
+	dstr " "
 
 StartMenu_PressB: ; 1743f
 	ld a, [wc39b]
@@ -21889,18 +21826,16 @@ Func_17965: ; 17965 (5:7965)
 	ret
 
 Data_1796b: ; 1796b
-	db " ", $0
+	dstr " "
 
 Data_1796d: ; 1796d
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_17970: ; 17970
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_17973: ; 17973
-	db " ", $0
+	dstr " "
 
 Func_17975: ; 17975
 	push hl
@@ -22324,19 +22259,19 @@ Data_20001: ; 20001
 	dr $20001, $200fd
 
 Text_200fd: ; 200fd
-	db "エネだま", $0
+	dstr "エネだま"
 
 Text_20102: ; 20102
-	db "は", $0
+	dstr "は"
 
 Text_20104: ; 20104
-	db "G", $0
+	dstr "G"
 
 Text_20106: ; 20106
-	db "レベル", $0
+	dstr "レベル"
 
 Text_2010a: ; 2010a
-	db "の", $0
+	dstr "の"
 
 Pointers_2010c: ; 2010c
 	dw Text_200fd
@@ -22346,31 +22281,31 @@ Pointers_2010c: ; 2010c
 	dw Text_2010a
 
 Text_20116: ; 20116
-	db "を ひろった", $0
+	dstr "を ひろった"
 
 Text_2011d: ; 2011d
-	db "ひかっている", $0
+	dstr "ひかっている"
 
 Text_20124: ; 20124
-	db "しかし いっぱいなので すてた", $0
+	dstr "しかし いっぱいなので すてた"
 
 Text_20134: ; 20134
-	db "けいけんちが ふえた", $0
+	dstr "けいけんちが ふえた"
 
 Text_2013f: ; 2013f
-	db "に なった", $0
+	dstr "に なった"
 
 Text_20145: ; 20145
-	db "ほかくに せいこうした", $0
+	dstr "ほかくに せいこうした"
 
 Text_20151: ; 20151
-	db "ほかくに しっぱいした", $0
+	dstr "ほかくに しっぱいした"
 
 Text_2015d: ; 2015d
-	db "しかし だれもたべられない", $0
+	dstr "しかし だれもたべられない"
 
 Text_2016b: ; 2016b
-	db "そのコマンドは つかえません", $0
+	dstr "そのコマンドは つかえません"
 
 Pointers_2017a: ; 2017a
 	dw Text_20116
@@ -22384,10 +22319,10 @@ Pointers_2017a: ; 2017a
 	dw Text_2016b
 
 Text_2018c: ; 2018c
-	db "ここでは", $0
+	dstr "ここでは"
 
 Text_20191: ; 20191
-	db "しようできない", $0
+	dstr "しようできない"
 
 Pointers_20199: ; 20199
 	dw Text_2018c
@@ -22395,10 +22330,10 @@ Pointers_20199: ; 20199
 	dw $0
 
 Text_2019f: ; 2019f
-	db "ひとのものを", $0
+	dstr "ひとのものを"
 
 Text_201a6: ; 201a6
-	db "とっちゃいけないよ!", $0
+	dstr "とっちゃいけないよ!"
 
 Pointers_201b1: ; 201b1
 	dw Text_2019f
@@ -22406,17 +22341,17 @@ Pointers_201b1: ; 201b1
 	dw $0
 
 Text_201b7: ; 201b7
-	db "は まだ がまんしている!", $0
+	dstr "は まだ がまんしている!"
 
 Pointers_201c5: ; 201c5
 	dw Text_201b7
 
 INCLUDE "text/attack_categories.asm"
 Text_202d7: ; 202d7
-	db "エネルギー ポイントが", $0
+	dstr "エネルギー ポイントが"
 
 Text_202e3: ; 202e3
-	db "たりません!", $0
+	dstr "たりません!"
 
 Pointers_202ea: ; 202ea
 	dw Text_202d7
@@ -22611,22 +22546,22 @@ Pointers_20441: ; 20441
 	dw Data_20470
 
 Data_2044d: ; 2044d
-	db "(たたかう)", $0
+	dstr "(たたかう)"
 
 Data_20454: ; 20454
-	db "ロホﾞホﾟン", $0
+	dstr "ロホﾞホﾟン"
 
 Data_2045b: ; 2045b
-	db "アイテム", $0
+	dstr "アイテム"
 
 Data_20460: ; 20460
-	db "(にけﾞる)", $0
+	dstr "(にけﾞる)"
 
 Data_20467: ; 20467
-	db "(ほﾞうきﾞょ)", $0
+	dstr "(ほﾞうきﾞょ)"
 
 Data_20470: ; 20470
-	db "(かいひ)", $0
+	dstr "(かいひ)"
 
 DrawBattleSelectionMenu: ; 20476 (8:4476)
 	push hl
@@ -22816,18 +22751,16 @@ DrawBattleSelectionMenu: ; 20476 (8:4476)
 	ret
 
 Data_2058f: ; 2058f
-	db " ", $0
+	dstr " "
 
 Data_20591: ; 20591
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_20594: ; 20594
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_20597: ; 20597
-	db " ", $0
+	dstr " "
 
 Func_20599: ; 20599
 	push hl
@@ -23339,22 +23272,19 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	ret
 
 Data_2094f: ; 2094f
-	db "/", $0
+	dstr "/"
 
 Data_20951: ; 20951
-	db "タイフﾟ:"
-	TX_CALL
-	db $0
+	dstr "タイフﾟ:%s"
 
 Data_20959: ; 20959
-	db "P", $0
+	dstr "P"
 
 Data_2095b: ; 2095b
-	db "(こうか:)", $0
+	dstr "(こうか:)"
 
 Data_20962: ; 20962
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_20965: ; 20965
 	push bc
@@ -23720,7 +23650,7 @@ Func_20c8e: ; 20c8e (8:4c8e)
 	ret
 
 Data_20c99: ; 20c99
-	db "(を つかいますか?)", $0
+	dstr "(を つかいますか?)"
 
 Data_20ca5: ; 20ca5
 	dr $20ca5, $20cb4
@@ -26291,7 +26221,7 @@ Func_21f1c: ; 21f1c (8:5f1c)
 	ret
 
 Data_21f22: ; 21f22
-	db "(たへﾞさせますか?)", $0
+	dstr "(たへﾞさせますか?)"
 
 Func_21f2e: ; 21f2e
 	push af
@@ -28745,10 +28675,10 @@ Pointers_2313a: ; 2313a
 	dw $0
 
 Data_23140: ; 23140
-	db "(つうしん)ハﾞトル(てﾞは)", $0
+	dstr "(つうしん)ハﾞトル(てﾞは)"
 
 Data_23150: ; 23150
-	db "(つかえない)!", $0
+	dstr "(つかえない)!"
 
 Battle_ItemMenu: ; 23159
 	read_hl_from wCurRobotPointer
@@ -29253,34 +29183,34 @@ Func_24054: ; 24054
 	ret
 
 Text_24065: ; 24065
-	db " ", $0
+	dstr " "
 
 Text_24067: ; 24067
-	db "!", $0
+	dstr "!"
 
 Text_24069: ; 24069
-	db "は", $0
+	dstr "は"
 
 Text_2406b: ; 2406b
-	db "に", $0
+	dstr "に"
 
 Text_2406d: ; 2406d
-	db "が", $0
+	dstr "が"
 
 Text_2406f: ; 2406f
-	db "の", $0
+	dstr "の"
 
 Text_24071: ; 24071
-	db "を", $0
+	dstr "を"
 
 Text_24073: ; 24073
-	db "で", $0
+	dstr "で"
 
 Text_24075: ; 24075
-	db "/", $0
+	dstr "/"
 
 Text_24077: ; 24077
-	db "G", $0
+	dstr "G"
 
 Pointers_24079: ; 24079
 	dw Text_24065
@@ -29295,49 +29225,49 @@ Pointers_24079: ; 24079
 	dw Text_24077
 
 Text_2408d: ; 2408d
-	db " ", $0
+	dstr " "
 
 Text_2408f: ; 2408f
-	db "いのり", $0
+	dstr "いのり"
 
 Text_24093: ; 24093
-	db "のろい", $0
+	dstr "のろい"
 
 Text_24097: ; 24097
-	db "ねつ", $0
+	dstr "ねつ"
 
 Text_2409a: ; 2409a
-	db "バグ", $0
+	dstr "バグ"
 
 Text_2409d: ; 2409d
-	db "のうむ", $0
+	dstr "のうむ"
 
 Text_240a1: ; 240a1
-	db "めいれいむし", $0
+	dstr "めいれいむし"
 
 Text_240a8: ; 240a8
-	db "ていし", $0
+	dstr "ていし"
 
 Text_240ac: ; 240ac
-	db "サビ", $0
+	dstr "サビ"
 
 Text_240af: ; 240af
-	db "ぼうそう", $0
+	dstr "ぼうそう"
 
 Text_240b4: ; 240b4
-	db "はんどう", $0
+	dstr "はんどう"
 
 Text_240b9: ; 240b9
-	db "みずびたし", $0
+	dstr "みずびたし"
 
 Text_240bf: ; 240bf
-	db "あぶらまみれ", $0
+	dstr "あぶらまみれ"
 
 Text_240c6: ; 240c6
-	db "バリヤ", $0
+	dstr "バリヤ"
 
 Text_240ca: ; 240ca
-	db "ふのう", $0
+	dstr "ふのう"
 
 Pointers_240ce: ; 240ce
 	dw Text_2408d
@@ -29357,37 +29287,37 @@ Pointers_240ce: ; 240ce
 	dw Text_240ca
 
 Text_240ec: ; 240ec
-	db "ぼうぎょ", $0
+	dstr "ぼうぎょ"
 
 Text_240f1: ; 240f1
-	db "こうげき", $0
+	dstr "こうげき"
 
 Text_240f6: ; 240f6
-	db "すばやさ", $0
+	dstr "すばやさ"
 
 Text_240fb: ; 240fb
-	db "めいちゅう", $0
+	dstr "めいちゅう"
 
 Text_24101: ; 24101
-	db "ポイント", $0
+	dstr "ポイント"
 
 Text_24106: ; 24106
-	db "エネルギー", $0
+	dstr "エネルギー"
 
 Text_2410c: ; 2410c
-	db "ヒット", $0
+	dstr "ヒット"
 
 Text_24110: ; 24110
-	db "こうげき", $0
+	dstr "こうげき"
 
 Text_24115: ; 24115
-	db "わざ", $0
+	dstr "わざ"
 
 Text_24118: ; 24118
-	db "はんどう", $0
+	dstr "はんどう"
 
 Text_2411d: ; 2411d
-	db "ばくはつ", $0
+	dstr "ばくはつ"
 
 Pointers_24122: ; 24122
 	dw Text_240ec
@@ -29403,22 +29333,22 @@ Pointers_24122: ; 24122
 	dw Text_2411d
 
 Text_24138: ; 24138
-	db "たたかう", $0
+	dstr "たたかう"
 
 Text_2413d: ; 2413d
-	db "アイテム", $0
+	dstr "アイテム"
 
 Text_24142: ; 24142
-	db "ロボポン", $0
+	dstr "ロボポン"
 
 Text_24147: ; 24147
-	db "にげる", $0
+	dstr "にげる"
 
 Text_2414b: ; 2414b
-	db "コマンド", $0
+	dstr "コマンド"
 
 Text_24150: ; 24150
-	db "すべて", $0
+	dstr "すべて"
 
 Pointers_24154: ; 24154
 	dw Text_24138
@@ -29429,76 +29359,76 @@ Pointers_24154: ; 24154
 	dw Text_24150
 
 Text_24160: ; 24160
-	db "あがった", $0
+	dstr "あがった"
 
 Text_24165: ; 24165
-	db "さがった", $0
+	dstr "さがった"
 
 Text_2416a: ; 2416a
-	db "うけた", $0
+	dstr "うけた"
 
 Text_2416e: ; 2416e
-	db "つかえません", $0
+	dstr "つかえません"
 
 Text_24175: ; 24175
-	db "はずれた", $0
+	dstr "はずれた"
 
 Text_2417a: ; 2417a
-	db "なっている", $0
+	dstr "なっている"
 
 Text_24180: ; 24180
-	db "なおった", $0
+	dstr "なおった"
 
 Text_24185: ; 24185
-	db "ふせいだ", $0
+	dstr "ふせいだ"
 
 Text_2418a: ; 2418a
-	db "すいとった", $0
+	dstr "すいとった"
 
 Text_24190: ; 24190
-	db "あたえた", $0
+	dstr "あたえた"
 
 Text_24195: ; 24195
-	db "ダメージ", $0
+	dstr "ダメージ"
 
 Text_2419a: ; 2419a
-	db "はんげきした", $0
+	dstr "はんげきした"
 
 Text_241a1: ; 241a1
-	db "ひろった", $0
+	dstr "ひろった"
 
 Text_241a6: ; 241a6
-	db "かけてきた", $0
+	dstr "かけてきた"
 
 Text_241ac: ; 241ac
-	db "かけている", $0
+	dstr "かけている"
 
 Text_241b2: ; 241b2
-	db "しっぱいした", $0
+	dstr "しっぱいした"
 
 Text_241b9: ; 241b9
-	db "になった", $0
+	dstr "になった"
 
 Text_241be: ; 241be
-	db "ダメージをうけとめた", $0
+	dstr "ダメージをうけとめた"
 
 Text_241c9: ; 241c9
-	db "にへった", $0
+	dstr "にへった"
 
 Text_241ce: ; 241ce
-	db "しようできなくなった", $0
+	dstr "しようできなくなった"
 
 Text_241d9: ; 241d9
-	db "の ばくははしっぱいした", $0
+	dstr "の ばくははしっぱいした"
 
 Text_241e6: ; 241e6
-	db "つかった", $0
+	dstr "つかった"
 
 Text_241eb: ; 241eb
-	db "スクラップ", $0
+	dstr "スクラップ"
 
 Text_241f1: ; 241f1
-	db "にした", $0
+	dstr "にした"
 
 Pointers_241f5: ; 241f5
 	dw Text_24160
@@ -29527,55 +29457,55 @@ Pointers_241f5: ; 241f5
 	dw Text_241f1
 
 Text_24225: ; 24225
-	db "えいきょうで ", $0
+	dstr "えいきょうで "
 
 Text_2422d: ; 2422d
-	db "こうかで ", $0
+	dstr "こうかで "
 
 Text_24233: ; 24233
-	db "のこうかが きれた", $0
+	dstr "のこうかが きれた"
 
 Text_2423d: ; 2423d
-	db "で まもられている", $0
+	dstr "で まもられている"
 
 Text_24247: ; 24247
-	db "は こんらんしている", $0
+	dstr "は こんらんしている"
 
 Text_24252: ; 24252
-	db "しかし ", $0
+	dstr "しかし "
 
 Text_24257: ; 24257
-	db "で つつまれた", $0
+	dstr "で つつまれた"
 
 Text_2425f: ; 2425f
-	db "バリアにはねかえされた", $0
+	dstr "バリアにはねかえされた"
 
 Text_2426b: ; 2426b
-	db "さらに", $0
+	dstr "さらに"
 
 Text_2426f: ; 2426f
-	db "のこうかで", $0
+	dstr "のこうかで"
 
 Text_24275: ; 24275
-	db "HP", $0
+	dstr "HP"
 
 Text_24278: ; 24278
-	db "そのわざは", $0
+	dstr "そのわざは"
 
 Text_2427e: ; 2427e
-	db "ぞくせいは", $0
+	dstr "ぞくせいは"
 
 Text_24284: ; 24284
-	db "にげようとした", $0
+	dstr "にげようとした"
 
 Text_2428c: ; 2428c
-	db "しかし にげられなかった", $0
+	dstr "しかし にげられなかった"
 
 Text_24299: ; 24299
-	db "うまく にげた", $0
+	dstr "うまく にげた"
 
 Text_242a1: ; 242a1
-	db "ばくはつした", $0
+	dstr "ばくはつした"
 
 Pointers_242a8: ; 242a8
 	dw Text_24225
@@ -29597,40 +29527,40 @@ Pointers_242a8: ; 242a8
 	dw Text_242a1
 
 Text_242ca: ; 242ca
-	db "ノーマル", $0
+	dstr "ノーマル"
 
 Text_242cf: ; 242cf
-	db "ひ", $0
+	dstr "ひ"
 
 Text_242d1: ; 242d1
-	db "みず", $0
+	dstr "みず"
 
 Text_242d4: ; 242d4
-	db "かぜ", $0
+	dstr "かぜ"
 
 Text_242d7: ; 242d7
-	db "つち", $0
+	dstr "つち"
 
 Text_242da: ; 242da
-	db "かみなり", $0
+	dstr "かみなり"
 
 Text_242df: ; 242df
-	db "こおり", $0
+	dstr "こおり"
 
 Text_242e3: ; 242e3
-	db "せい", $0
+	dstr "せい"
 
 Text_242e6: ; 242e6
-	db "じゃ", $0
+	dstr "じゃ"
 
 Text_242e9: ; 242e9
-	db "りく", $0
+	dstr "りく"
 
 Text_242ec: ; 242ec
-	db "かい", $0
+	dstr "かい"
 
 Text_242ef: ; 242ef
-	db "くう", $0
+	dstr "くう"
 
 Pointers_242f2: ; 242f2
 	dw Text_242ca
@@ -29647,88 +29577,88 @@ Pointers_242f2: ; 242f2
 	dw Text_242ef
 
 Text_2430a: ; 2430a
-	db "こうか17", $0
+	dstr "こうか17"
 
 Text_24310: ; 24310
-	db "EP", $0
+	dstr "EP"
 
 Text_24313: ; 24313
-	db "ついかダメージ", $0
+	dstr "ついかダメージ"
 
 Text_2431b: ; 2431b
-	db "ごうげきのはんどうで", $0
+	dstr "ごうげきのはんどうで"
 
 Text_24326: ; 24326
-	db "じばくした", $0
+	dstr "じばくした"
 
 Text_2432c: ; 2432c
-	db "はんげき", $0
+	dstr "はんげき"
 
 Text_24331: ; 24331
-	db "いちげきひっさつ", $0
+	dstr "いちげきひっさつ"
 
 Text_2433a: ; 2433a
-	db "がまんしている", $0
+	dstr "がまんしている"
 
 Text_24342: ; 24342
-	db "してきた", $0
+	dstr "してきた"
 
 Text_24347: ; 24347
-	db "した", $0
+	dstr "した"
 
 Text_2434a: ; 2434a
-	db "27", $0
+	dstr "27"
 
 Text_2434d: ; 2434d
-	db "28", $0
+	dstr "28"
 
 Text_24350: ; 24350
-	db "はんてんかいふく", $0
+	dstr "はんてんかいふく"
 
 Text_24359: ; 24359
-	db "きゅうしゅう", $0
+	dstr "きゅうしゅう"
 
 Text_24360: ; 24360
-	db "HPかいふく", $0
+	dstr "HPかいふく"
 
 Text_24367: ; 24367
-	db "32", $0
+	dstr "32"
 
 Text_2436a: ; 2436a
-	db "ぼうぎょ", $0
+	dstr "ぼうぎょ"
 
 Text_2436f: ; 2436f
-	db "うけみ", $0
+	dstr "うけみ"
 
 Text_24373: ; 24373
-	db "35", $0
+	dstr "35"
 
 Text_24376: ; 24376
-	db "36", $0
+	dstr "36"
 
 Text_24379: ; 24379
-	db "37", $0
+	dstr "37"
 
 Text_2437c: ; 2437c
-	db "38", $0
+	dstr "38"
 
 Text_2437f: ; 2437f
-	db "れんぞくこうげき", $0
+	dstr "れんぞくこうげき"
 
 Text_24388: ; 24388
-	db "こうか40", $0
+	dstr "こうか40"
 
 Text_2438e: ; 2438e
-	db "こうか41", $0
+	dstr "こうか41"
 
 Text_24394: ; 24394
-	db "こうか42", $0
+	dstr "こうか42"
 
 Text_2439a: ; 2439a
-	db "こうか43", $0
+	dstr "こうか43"
 
 Text_243a0: ; 243a0
-	db "こうか44", $0
+	dstr "こうか44"
 
 Pointers_243a6: ; 243a6
 	dw Text_2430a
@@ -29761,16 +29691,16 @@ Pointers_243a6: ; 243a6
 	dw Text_243a0
 
 Text_243de: ; 243de
-	db "ていしじょうたいで うごけない!", $0
+	dstr "ていしじょうたいで うごけない!"
 
 Text_243ef: ; 243ef
-	db "ぼうぎょしている", $0
+	dstr "ぼうぎょしている"
 
 Text_243f8: ; 243f8
-	db "かいひしようとしている", $0
+	dstr "かいひしようとしている"
 
 Text_24404: ; 24404
-	db "なにもしない", $0
+	dstr "なにもしない"
 
 Pointers_2440b: ; 2440b
 	dw Text_243de
@@ -29779,68 +29709,68 @@ Pointers_2440b: ; 2440b
 	dw Text_24404
 
 Text_24413: ; 24413
-	db "こうげきの はんどうで", $0
+	dstr "こうげきの はんどうで"
 
 Text_2441f: ; 2441f
-	db "の ダメージ", $0
+	dstr "の ダメージ"
 
 Pointers_24426: ; 24426
 	dw Text_24413
 	dw Text_2441f
 
 Text_2442a: ; 2442a
-	db "しかし", $0
+	dstr "しかし"
 
 Text_2442e: ; 2442e
-	db "バリアに はねかえされた", $0
+	dstr "バリアに はねかえされた"
 
 Pointers_2443b: ; 2443b
 	dw Text_2442a
 	dw Text_2442e
 
 Text_2443f: ; 2443f
-	db "きゅうしょ にあたって", $0
+	dstr "きゅうしょ にあたって"
 
 Text_2444b: ; 2444b
-	db "いちげきひっさつ にした!", $0
+	dstr "いちげきひっさつ にした!"
 
 Pointers_24459: ; 24459
 	dw Text_2443f
 	dw Text_2444b
 
 Text_2445d: ; 2445d
-	db "は すべての わざの", $0
+	dstr "は すべての わざの"
 
 Text_24468: ; 24468
-	db "しようが できなくなった!", $0
+	dstr "しようが できなくなった!"
 
 Pointers_24476: ; 24476
 	dw Text_2445d
 	dw Text_24468
 
 Text_2447a: ; 2447a
-	db "きあい をいれた!", $0
+	dstr "きあい をいれた!"
 
 Pointers_24484: ; 24484
 	dw Text_2447a
 
 Text_24486: ; 24486
-	db "しようできなくなった!", $0
+	dstr "しようできなくなった!"
 
 Pointers_24492: ; 24492
 	dw Text_24486
 
 Text_24494: ; 24494
-	db "りく こうげき をふうじた!", $0
+	dstr "りく こうげき をふうじた!"
 
 Text_244a3: ; 244a3
-	db "うみ こうげき をふうじた!", $0
+	dstr "うみ こうげき をふうじた!"
 
 Text_244b2: ; 244b2
-	db "そら こうげき をふうじた!", $0
+	dstr "そら こうげき をふうじた!"
 
 Text_244c1: ; 244c1
-	db "ノーマル こうげき をふうじた!", $0
+	dstr "ノーマル こうげき をふうじた!"
 
 Pointers_244d2: ; 244d2
 	dw Text_24494
@@ -29849,28 +29779,28 @@ Pointers_244d2: ; 244d2
 	dw Text_244c1
 
 Text_244da: ; 244da
-	db "を ぬすんだ", $0
+	dstr "を ぬすんだ"
 
 Pointers_244e1: ; 244e1
 	dw Text_244da
 
 Text_244e3: ; 244e3
-	db "は ", $0
+	dstr "は "
 
 Text_244e6: ; 244e6
-	db "を", $0
+	dstr "を"
 
 Text_244e8: ; 244e8
-	db "スキャニングした!", $0
+	dstr "スキャニングした!"
 
 Text_244f2: ; 244f2
-	db "の ぼうぎょぞくせいは", $0
+	dstr "の ぼうぎょぞくせいは"
 
 Text_244fe: ; 244fe
-	db "ヒットポイントの", $0
+	dstr "ヒットポイントの"
 
 Text_24507: ; 24507
-	db "じょうたいも わかった!", $0
+	dstr "じょうたいも わかった!"
 
 Pointers_24514: ; 24514
 	dw Text_244e3
@@ -29881,13 +29811,13 @@ Pointers_24514: ; 24514
 	dw Text_24507
 
 Text_24520: ; 24520
-	db "は ", $0
+	dstr "は "
 
 Text_24523: ; 24523
-	db "から", $0
+	dstr "から"
 
 Text_24526: ; 24526
-	db "ゴールド ごうだつした!", $0
+	dstr "ゴールド ごうだつした!"
 
 Pointers_24533: ; 24533
 	dw Text_24520
@@ -29895,70 +29825,70 @@ Pointers_24533: ; 24533
 	dw Text_24526
 
 Text_24539: ; 24539
-	db "は ", $0
+	dstr "は "
 
 Text_2453c: ; 2453c
-	db "れんぞくこうげき した!", $0
+	dstr "れんぞくこうげき した!"
 
 Pointers_24549: ; 24549
 	dw Text_24539
 	dw Text_2453c
 
 Text_2454d: ; 2454d
-	db "は ", $0
+	dstr "は "
 
 Text_24550: ; 24550
-	db "せんせいこうげき した!", $0
+	dstr "せんせいこうげき した!"
 
 Pointers_2455d: ; 2455d
 	dw Text_2454d
 	dw Text_24550
 
 Text_24561: ; 24561
-	db "かけた", $0
+	dstr "かけた"
 
 Text_24565: ; 24565
-	db "かけてきた", $0
+	dstr "かけてきた"
 
 Pointers_2456b: ; 2456b
 	dw Text_24561
 	dw Text_24565
 
 Text_2456f: ; 2456f
-	db "よしっ!", $0
+	dstr "よしっ!"
 
 Text_24574: ; 24574
-	db "かなりきいたみたいだぞ", $0
+	dstr "かなりきいたみたいだぞ"
 
 Pointers_24580: ; 24580
 	dw Text_2456f
 	dw Text_24574
 
 Text_24584: ; 24584
-	db "しまった!", $0
+	dstr "しまった!"
 
 Text_2458a: ; 2458a
-	db "かなりやられたみたいだ", $0
+	dstr "かなりやられたみたいだ"
 
 Pointers_24596: ; 24596
 	dw Text_24584
 	dw Text_2458a
 
 Text_2459a: ; 2459a
-	db "しまった!", $0
+	dstr "しまった!"
 
 Text_245a0: ; 245a0
-	db "ぜんぜんきいていないみたいだ", $0
+	dstr "ぜんぜんきいていないみたいだ"
 
 Pointers_245af: ; 245af
 	dw Text_2459a
 	dw Text_245a0
 
 Text_245b3: ; 245b3
-	db "よしっ!", $0
+	dstr "よしっ!"
 
 Text_245b8: ; 245b8
-	db "ぜんぜんきいていないぞ", $0
+	dstr "ぜんぜんきいていないぞ"
 
 Pointers_245c4: ; 245c4
 	dw Text_245b3
@@ -37522,16 +37452,16 @@ Func_305f4: ; 305f4 (c:45f4)
 	ret
 
 Data_3064a: ; 3064a
-	db "(しょしﾞきん)", $0
+	dstr "(しょしﾞきん)"
 
 Data_30653: ; 30653
-	db "(いらっしゃい)", $0
+	dstr "(いらっしゃい)"
 
 Data_3065c: ; 3065c
-	db "(ようけんはなに)?", $0
+	dstr "(ようけんはなに)?"
 
 Data_30667: ; 30667
-	db "(ほかにも ようかﾞある)?", $0
+	dstr "(ほかにも ようかﾞある)?"
 
 Func_30676: ; 30676 (c:4676)
 	push bc
@@ -37866,13 +37796,13 @@ Func_308a5: ; 308a5 (c:48a5)
 	ret
 
 Data_308c0: ; 308c0
-	db "アイテム(なし)", $0
+	dstr "アイテム(なし)"
 
 Data_308c9: ; 308c9
-	db "ソフト(なし)", $0
+	dstr "ソフト(なし)"
 
 Data_308d1: ; 308d1
-	db "ハﾟーツ(なし)", $0
+	dstr "ハﾟーツ(なし)"
 
 Func_308da: ; 308da (c:48da)
 	push bc
@@ -38861,19 +38791,19 @@ Func_30fe0: ; 30fe0 (c:4fe0)
 	ret
 
 Data_30fe7: ; 30fe7
-	db "0G", $0
+	dstr "0G"
 
 Data_30fea: ; 30fea
-	db "    ", $0
+	dstr "    "
 
 Data_30fef: ; 30fef
-	db "G", $0
+	dstr "G"
 
 Data_30ff1: ; 30ff1
-	db "00G", $0
+	dstr "00G"
 
 Data_30ff5: ; 30ff5
-	db "0G", $0
+	dstr "0G"
 
 Func_30ff8: ; 30ff8 (c:4ff8)
 	push af
@@ -38900,10 +38830,10 @@ Func_31024: ; 31024 (c:5024)
 	ret
 
 Data_31025: ; 31025
-	db "(なにを かう)?", $0
+	dstr "(なにを かう)?"
 
 Data_3102f: ; 3102f
-	db "(なにを うってくれる)?", $0
+	dstr "(なにを うってくれる)?"
 
 Func_3103d: ; 3103d
 	push hl
@@ -39446,36 +39376,25 @@ Func_31432: ; 31432 (c:5432)
 	ret
 
 Data_31435: ; 31435
-	db "(ねたﾞん)", $0
+	dstr "(ねたﾞん)"
 
 Data_3143c: ; 3143c
-	db "     "
-	TX_UNUM
-	db "G", $0
+	dstr "     %ldG"
 
 Data_31446: ; 31446
-	db "    "
-	TX_UNUM
-	db "0G", $0
+	dstr "    %ld0G"
 
 Data_31450: ; 31450
-	db "   "
-	TX_UNUM
-	db "0G", $0
+	dstr "   %ld0G"
 
 Data_31459: ; 31459
-	db "  "
-	TX_UNUM
-	db "0G", $0
+	dstr "  %ld0G"
 
 Data_31461: ; 31461
-	db " "
-	TX_UNUM
-	db "0G", $0
+	dstr " %ld0G"
 
 Data_31468: ; 31468
-	TX_UNUM
-	db "0G", $0
+	dstr "%ld0G"
 
 Func_31475: ; 31475
 	ld l, $12
@@ -39567,17 +39486,16 @@ Func_31514: ; 31514 (c:5514)
 	ret
 
 Data_31515: ; 31515
-	TX_UNUM
-	db "G", $0
+	dstr "%ldG"
 
 Data_3151a: ; 3151a
-	db "(になります)", $0
+	dstr "(になります)"
 
 Data_31522: ; 31522
-	db "(おもとめになりますか)?", $0
+	dstr "(おもとめになりますか)?"
 
 Data_31530: ; 31530
-	db "(うりますか)?", $0
+	dstr "(うりますか)?"
 
 Func_31539: ; 31539 (c:5539)
 	push de
@@ -39865,7 +39783,7 @@ Func_31750: ; 31750 (c:5750)
 	ret
 
 Data_31756: ; 31756
-	db "(しょしﾞきん)", $0
+	dstr "(しょしﾞきん)"
 
 Func_3175f: ; 3175f
 	add sp, -$3e
@@ -40092,47 +40010,43 @@ Func_31932: ; 31932 (c:5932)
 	ret
 
 Data_31935: ; 31935
-	db "タイフﾟ:", $0
+	dstr "タイフﾟ:"
 
 Data_3193b: ; 3193b
-	db "RAM:", $0
+	dstr "RAM:"
 
 Data_31940: ; 31940
-	db " "
-	TX_SNUM
-	db "M", $0
+	dstr " %dM"
 
 Data_31945: ; 31945
-	db "(いりょく)", $0
+	dstr "(いりょく)"
 
 Data_3194c: ; 3194c
-	TX_STACK
-	TX_STACK
-	db $0
+	dstr "%c%c"
 
 Data_31951: ; 31951
-	db "(こうけﾞき)", $0
+	dstr "(こうけﾞき)"
 
 Data_31959: ; 31959
-	db "(ほﾞうきﾞょ)", $0
+	dstr "(ほﾞうきﾞょ)"
 
 Data_31962: ; 31962
-	db "(すはﾞやさ)", $0
+	dstr "(すはﾞやさ)"
 
 Data_3196a: ; 3196a
-	db "RAM:", $0
+	dstr "RAM:"
 
 Data_3196f: ; 3196f
-	db "M", $0
+	dstr "M"
 
 Data_31971: ; 31971
-	db "(すへﾞての)アーム(そﾞくかﾞ そうひﾞかのう)", $0
+	dstr "(すへﾞての)アーム(そﾞくかﾞ そうひﾞかのう)"
 
 Data_3198b: ; 3198b
-	db "(すへﾞての)ムーフﾞ(そﾞくかﾞ そうひﾞかのう)", $0
+	dstr "(すへﾞての)ムーフﾞ(そﾞくかﾞ そうひﾞかのう)"
 
 Data_319a6: ; 319a6
-	db "フﾞート(そﾞくいかﾞいかﾞ そうひﾞかのう)", $0
+	dstr "フﾞート(そﾞくいかﾞいかﾞ そうひﾞかのう)"
 
 Func_319be: ; 319be (c:59be)
 	ld a, l
@@ -40253,34 +40167,22 @@ Func_31a96: ; 31a96 (c:5a96)
 	ret
 
 Data_31a97: ; 31a97
-	db "      "
-	TX_UNUM
-	db "G", $0
+	dstr "      %ldG"
 
 Data_31aa2: ; 31aa2
-	db "     "
-	TX_UNUM
-	db "G", $0
+	dstr "     %ldG"
 
 Data_31aac: ; 31aac
-	db "    "
-	TX_UNUM
-	db "G", $0
+	dstr "    %ldG"
 
 Data_31ab5: ; 31ab5
-	db "   "
-	TX_UNUM
-	db "G", $0
+	dstr "   %ldG"
 
 Data_31abd: ; 31abd
-	db "  "
-	TX_UNUM
-	db "G", $0
+	dstr "  %ldG"
 
 Data_31ac4: ; 31ac4
-	db " "
-	TX_UNUM
-	db "G", $0
+	dstr " %ldG"
 
 INCLUDE "engine/give_robot.asm"
 
@@ -40352,7 +40254,7 @@ Pointers_3207b: ; 3207b
 	dw $0
 
 Data_3207f: ; 3207f
-	db "(その)ロホﾞホﾟン(は) (えらへﾞないよ)", $0
+	dstr "(その)ロホﾞホﾟン(は) (えらへﾞないよ)"
 
 Pointers_32097: ; 32097
 	dw Data_3209d
@@ -40360,10 +40262,10 @@ Pointers_32097: ; 32097
 	dw $0
 
 Data_3209d: ; 3209d
-	db "リモコン(の しﾞゅしんに)", $0
+	dstr "リモコン(の しﾞゅしんに)"
 
 Data_320ac: ; 320ac
-	db "(しっはﾟいしました)", $0
+	dstr "(しっはﾟいしました)"
 
 Pointers_320b8: ; 320b8
 	dw Data_320be
@@ -40371,10 +40273,10 @@ Pointers_320b8: ; 320b8
 	dw $0
 
 Data_320be: ; 320be
-	db "リモコン(の しﾞゅしんに)", $0
+	dstr "リモコン(の しﾞゅしんに)"
 
 Data_320cd: ; 320cd
-	db "(せいこうしました)", $0
+	dstr "(せいこうしました)"
 
 Func_320d8: ; 320d8
 	push af
@@ -40600,7 +40502,7 @@ Func_322a1: ; 322a1 (c:62a1)
 	ret
 
 Data_322a7: ; 322a7
-	db "リモコン(の) ホﾞタン(を おしてね)", $0
+	dstr "リモコン(の) ホﾞタン(を おしてね)"
 
 Data_322bc: ; 322bc
 	dr $322bc, $322ce
@@ -41877,7 +41779,7 @@ Func_32c1c: ; 32c1c (c:6c1c)
 	ret
 
 Data_32c27: ; 32c27
-	db "(しょしﾞきん)", $0
+	dstr "(しょしﾞきん)"
 
 Func_32c30: ; 32c30
 	push hl
@@ -42327,28 +42229,28 @@ Func_32f6f: ; 32f6f (c:6f6f)
 	ret
 
 Data_32f7a: ; 32f7a
-	db "(しょしﾞきん)", $0
+	dstr "(しょしﾞきん)"
 
 Pointers_32f83: ; 32f83
 	dw Data_32f87
 	dw $0
 
 Data_32f87: ; 32f87
-	db "(おかねかﾞたりないよ)", $0
+	dstr "(おかねかﾞたりないよ)"
 
 Pointers_32f94: ; 32f94
 	dw Data_32f98
 	dw $0
 
 Data_32f98: ; 32f98
-	db "(これいしﾞょう かえないよ)", $0
+	dstr "(これいしﾞょう かえないよ)"
 
 Pointers_32fa8: ; 32fa8
 	dw Data_32fac
 	dw $0
 
 Data_32fac: ; 32fac
-	db "(とﾞうもありかﾞとう)", $0
+	dstr "(とﾞうもありかﾞとう)"
 
 Pointers_32fb9: ; 32fb9
 	dw Data_32fbf
@@ -42356,17 +42258,17 @@ Pointers_32fb9: ; 32fb9
 	dw $0
 
 Data_32fbf: ; 32fbf
-	db "(とﾞうもありかﾞとう)", $0
+	dstr "(とﾞうもありかﾞとう)"
 
 Data_32fcc: ; 32fcc
-	db "(ほかにも かうかい)?", $0
+	dstr "(ほかにも かうかい)?"
 
 Pointers_32fd9: ; 32fd9
 	dw Data_32fdd
 	dw $0
 
 Data_32fdd: ; 32fdd
-	db "(ほかのものは かうかい)?", $0
+	dstr "(ほかのものは かうかい)?"
 
 Pointers_32fec: ; 32fec
 	dw Data_32ff2
@@ -42374,17 +42276,17 @@ Pointers_32fec: ; 32fec
 	dw $0
 
 Data_32ff2: ; 32ff2
-	db "(とﾞうもありかﾞとう)", $0
+	dstr "(とﾞうもありかﾞとう)"
 
 Data_32fff: ; 32fff
-	db "(ほかにも うるかい)?", $0
+	dstr "(ほかにも うるかい)?"
 
 Pointers_3300c: ; 3300c
 	dw Data_33010
 	dw $0
 
 Data_33010: ; 33010
-	db "(ほかのものは うるかい)?", $0
+	dstr "(ほかのものは うるかい)?"
 
 Pointers_3301f: ; 3301f
 	dw Data_33025
@@ -42392,17 +42294,17 @@ Pointers_3301f: ; 3301f
 	dw $0
 
 Data_33025: ; 33025
-	db "(とﾞうもありかﾞとう)", $0
+	dstr "(とﾞうもありかﾞとう)"
 
 Data_33032: ; 33032
-	db "(またきてね)", $0
+	dstr "(またきてね)"
 
 Pointers_3303a: ; 3303a
 	dw Data_3303e
 	dw $0
 
 Data_3303e: ; 3303e
-	db "(それは うっちゃたﾞめ)!", $0
+	dstr "(それは うっちゃたﾞめ)!"
 
 Func_3304d: ; 3304d (c:704d)
 	push hl
@@ -42762,10 +42664,10 @@ Func_33375: ; 33375
 	ret
 
 Data_333a6: ; 333a6
-	db "(ひつよう)エネルキﾞー", $0
+	dstr "(ひつよう)エネルキﾞー"
 
 Data_333b3: ; 333b3
-	db "エネルキﾞー", $0
+	dstr "エネルキﾞー"
 
 Func_333ba:: ; 333ba
 	push af
@@ -42905,19 +42807,19 @@ Func_334d6: ; 334d6 (c:74d6)
 	ret
 
 Data_334ee: ; 334ee
-	db "ヘ", $0
+	dstr "ヘ"
 
 Data_334f0: ; 334f0
-	db "(しんか かのう)", $0
+	dstr "(しんか かのう)"
 
 Data_334fa: ; 334fa
-	db "(しんか てﾞきないよ)", $0
+	dstr "(しんか てﾞきないよ)"
 
 Data_33507: ; 33507
-	db "エネルキﾞー (ふﾞそくてﾞ)", $0
+	dstr "エネルキﾞー (ふﾞそくてﾞ)"
 
 Data_33517: ; 33517
-	db "(しんか てﾞきないよ)", $0
+	dstr "(しんか てﾞきないよ)"
 
 Func_33524: ; 33524
 	ld c, l
@@ -43635,16 +43537,16 @@ Func_33a03: ; 33a03 (c:7a03)
 	ret
 
 Data_33a17: ; 33a17
-	db "_", $0
+	dstr "_"
 
 Data_33a19: ; 33a19
-	db "b", $0
+	dstr "b"
 
 Data_33a1b: ; 33a1b
-	db "b", $0
+	dstr "b"
 
 Data_33a1d: ; 33a1d
-	db "_", $0
+	dstr "_"
 
 Func_33a1f: ; 33a1f
 	push bc
@@ -44038,35 +43940,35 @@ Func_33bd0: ; 33bd0 (c:7bd0)
 	ret
 
 Data_33d73: ; 33d73
-	db ":", $0
+	dstr ":"
 
 Data_33d75: ; 33d75
-	db "(そうひﾞちゅうの)", $0
+	dstr "(そうひﾞちゅうの)"
 
 Data_33d80: ; 33d80
-	db "ハﾟーツ", $0
+	dstr "ハﾟーツ"
 
 Data_33d85: ; 33d85
-	db "(こうけﾞき )", $0
+	dstr "(こうけﾞき )"
 
 Data_33d8e: ; 33d8e
-	db "(ほﾞうきﾞょ )", $0
+	dstr "(ほﾞうきﾞょ )"
 
 Data_33d98: ; 33d98
-	db "(すはﾞやさ )", $0
+	dstr "(すはﾞやさ )"
 
 Data_33da1: ; 33da1
-	db "RAM:", $0
+	dstr "RAM:"
 
 Data_33da6: ; 33da6
-	db "M", $0
+	dstr "M"
 
 Pointers_33da8: ; 33da8
 	dw Data_33dac
 	dw $0
 
 Data_33dac: ; 33dac
-	db "(すてちゃ)タﾞメ!", $0
+	dstr "(すてちゃ)タﾞメ!"
 
 Func_33db7: ; 33db7 (c:7db7)
 	push bc
@@ -44253,16 +44155,16 @@ Func_33f3d: ; 33f3d (c:7f3d)
 	ret
 
 Data_33f40: ; 33f40
-	db "(すてる こすうを)", $0
+	dstr "(すてる こすうを)"
 
 Data_33f4b: ; 33f4b
-	db "(にゅうりょくしてくたﾞさい)", $0
+	dstr "(にゅうりょくしてくたﾞさい)"
 
 Data_33f5b: ; 33f5b
-	db "(ほんとうに)", $0
+	dstr "(ほんとうに)"
 
 Data_33f63: ; 33f63
-	db "(すてても いいてﾞすか?)", $0
+	dstr "(すてても いいてﾞすか?)"
 
 Func_33f72: ; 33f72 (c:7f72)
 	push hl
@@ -44805,10 +44707,10 @@ Func_4c304: ; 4c304 (13:4304)
 	ret
 
 Data_4c307: ; 4c307
-	db "(つうしんてﾞ あそふﾞまえに)", $0
+	dstr "(つうしんてﾞ あそふﾞまえに)"
 
 Data_4c318: ; 4c318
-	db "(きろくしますか)?", $0
+	dstr "(きろくしますか)?"
 
 Func_4c323: ; 4c323 (13:4323)
 	call FillVisibleAreaWithBlankTile
@@ -44870,10 +44772,10 @@ Func_4c3bc: ; 4c3bc (13:43bc)
 	ret
 
 Data_4c3be: ; 4c3be
-	db "(ほんしﾞつは)", $0
+	dstr "(ほんしﾞつは)"
 
 Data_4c3c7: ; 4c3c7
-	db "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?", $0
+	dstr "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?"
 
 Func_4c3de: ; 4c3de (13:43de)
 	ld a, [wc38d]
@@ -45078,10 +44980,10 @@ Func_4c5dd: ; 4c5dd (13:45dd)
 	ret
 
 Data_4c5df: ; 4c5df
-	db "(たたﾞいま)", $0
+	dstr "(たたﾞいま)"
 
 Data_4c5e7: ; 4c5e7
-	db "モートﾞ (せんたくちゅう)", $0
+	dstr "モートﾞ (せんたくちゅう)"
 
 Pointers_4c5f6: ; 4c5f6
 	dw Data_4c604
@@ -45093,29 +44995,29 @@ Pointers_4c5f6: ; 4c5f6
 	dw $0
 
 Data_4c604: ; 4c604
-	db "タイトルマッチ(てﾞは)", $0
+	dstr "タイトルマッチ(てﾞは)"
 
 Data_4c611: ; 4c611
-	db "ヘﾞルト(をかけて たたかいます)", $0
+	dstr "ヘﾞルト(をかけて たたかいます)"
 
 Data_4c623: ; 4c623
-	db "(かてはﾞ あいての もっている)", $0
+	dstr "(かてはﾞ あいての もっている)"
 
 Data_4c635: ; 4c635
-	db "ヘﾞルト(を うはﾞうことかﾞ てﾞきますかﾞ)", $0
+	dstr "ヘﾞルト(を うはﾞうことかﾞ てﾞきますかﾞ)"
 
 Data_4c64e: ; 4c64e
-	db "(まけると しﾞふﾞんの もっている)", $0
+	dstr "(まけると しﾞふﾞんの もっている)"
 
 Data_4c662: ; 4c662
-	db "ヘﾞルト(を うはﾞわれて しまいます)", $0
+	dstr "ヘﾞルト(を うはﾞわれて しまいます)"
 
 Pointers_4c677: ; 4c677
 	dw Data_4c67b
 	dw $0
 
 Data_4c67b: ; 4c67b
-	db "ヘﾞルト(かﾞ ありません)", $0
+	dstr "ヘﾞルト(かﾞ ありません)"
 
 Func_4c68a: ; 4c68a
 	push bc
@@ -45400,28 +45302,28 @@ Func_4c8f7: ; 4c8f7 (13:48f7)
 	ret
 
 Data_4c8f9: ; 4c8f9
-	db "ロホﾞホﾟン(こうかんてﾞ)", $0
+	dstr "ロホﾞホﾟン(こうかんてﾞ)"
 
 Data_4c908: ; 4c908
-	db "タイトルマッチ(てﾞ)", $0
+	dstr "タイトルマッチ(てﾞ)"
 
 Data_4c914: ; 4c914
-	db "ノンタイトルマッチ(てﾞ)", $0
+	dstr "ノンタイトルマッチ(てﾞ)"
 
 Data_4c922: ; 4c922
-	db "ハﾟーティーハﾞトル(てﾞ)", $0
+	dstr "ハﾟーティーハﾞトル(てﾞ)"
 
 Data_4c931: ; 4c931
-	db "ロホﾞホﾟン(あけﾞるてﾞ)", $0
+	dstr "ロホﾞホﾟン(あけﾞるてﾞ)"
 
 Data_4c940: ; 4c940
-	db "ロホﾞホﾟン(もらうてﾞ)", $0
+	dstr "ロホﾞホﾟン(もらうてﾞ)"
 
 Data_4c94e: ; 4c94e
-	db "(たいせん しますか)?", $0
+	dstr "(たいせん しますか)?"
 
 Data_4c95b: ; 4c95b
-	db "(いいてﾞすか)?", $0
+	dstr "(いいてﾞすか)?"
 
 Pointers_4c965: ; 4c965
 	dw Data_4c96b
@@ -45429,10 +45331,10 @@ Pointers_4c965: ; 4c965
 	dw $0
 
 Data_4c96b: ; 4c96b
-	db "ハﾟーティー(に 4たい) ロホﾞホﾟン(かﾞ)", $0
+	dstr "ハﾟーティー(に 4たい) ロホﾞホﾟン(かﾞ)"
 
 Data_4c984: ; 4c984
-	db "(いるから もらえないよ)", $0
+	dstr "(いるから もらえないよ)"
 
 Pointers_4c992: ; 4c992
 	dw Data_4c998
@@ -45440,10 +45342,10 @@ Pointers_4c992: ; 4c992
 	dw $0
 
 Data_4c998: ; 4c998
-	db "ハﾟーティー(に 1たいしか) ロホﾞホﾟン(かﾞ)", $0
+	dstr "ハﾟーティー(に 1たいしか) ロホﾞホﾟン(かﾞ)"
 
 Data_4c9b3: ; 4c9b3
-	db "(いないから あけﾞれないよ)", $0
+	dstr "(いないから あけﾞれないよ)"
 
 Pointers_4c9c3: ; 4c9c3
 	dw Data_4c9c9
@@ -45451,10 +45353,10 @@ Pointers_4c9c3: ; 4c9c3
 	dw $0
 
 Data_4c9c9: ; 4c9c9
-	db "(あいての) ロホﾞホﾟン(かﾞ 4たい)", $0
+	dstr "(あいての) ロホﾞホﾟン(かﾞ 4たい)"
 
 Data_4c9df: ; 4c9df
-	db "(いるから あけﾞれないよ)", $0
+	dstr "(いるから あけﾞれないよ)"
 
 Pointers_4c9ee: ; 4c9ee
 	dw Data_4c9f4
@@ -45462,10 +45364,10 @@ Pointers_4c9ee: ; 4c9ee
 	dw $0
 
 Data_4c9f4: ; 4c9f4
-	db "(あいての) ロホﾞホﾟン(かﾞ 1たい)", $0
+	dstr "(あいての) ロホﾞホﾟン(かﾞ 1たい)"
 
 Data_4ca0a: ; 4ca0a
-	db "(しかいないから もらえないよ)", $0
+	dstr "(しかいないから もらえないよ)"
 
 Pointers_4ca1b: ; 4ca1b
 	dw Data_4ca21
@@ -45473,24 +45375,24 @@ Pointers_4ca1b: ; 4ca1b
 	dw $0
 
 Data_4ca21: ; 4ca21
-	db "(その) ロホﾞホﾟン(は)", $0
+	dstr "(その) ロホﾞホﾟン(は)"
 
 Data_4ca30: ; 4ca30
-	db "(あけﾞれないよ)", $0
+	dstr "(あけﾞれないよ)"
 
 Pointers_4ca3a: ; 4ca3a
 	dw Data_4ca3e
 	dw $0
 
 Data_4ca3e: ; 4ca3e
-	db "(あけﾞたよ)", $0
+	dstr "(あけﾞたよ)"
 
 Pointers_4ca46: ; 4ca46
 	dw Data_4ca4a
 	dw $0
 
 Data_4ca4a: ; 4ca4a
-	db "(もらったよ)", $0
+	dstr "(もらったよ)"
 
 Pointers_4ca52: ; 4ca52
 	dw Data_4ca58
@@ -45498,10 +45400,10 @@ Pointers_4ca52: ; 4ca52
 	dw $0
 
 Data_4ca58: ; 4ca58
-	db "(たたかえる) ロホﾞホﾟン(かﾞ)", $0
+	dstr "(たたかえる) ロホﾞホﾟン(かﾞ)"
 
 Data_4ca6b: ; 4ca6b
-	db "(いなくなるよ)", $0
+	dstr "(いなくなるよ)"
 
 Func_4ca74: ; 4ca74 (13:4a74)
 	push af
@@ -45621,10 +45523,10 @@ Func_4cb64: ; 4cb64 (13:4b64)
 	ret
 
 Data_4cb65: ; 4cb65
-	db "(ほんしﾞつは)", $0
+	dstr "(ほんしﾞつは)"
 
 Data_4cb6e: ; 4cb6e
-	db "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?", $0
+	dstr "(とﾞの)モートﾞ(てﾞ あそひﾞますか)?"
 
 Func_4cb85: ; 4cb85
 	ld a, $ff
@@ -45643,7 +45545,7 @@ Pointers_4cba7: ; 4cba7
 	dw $0
 
 Data_4cbab: ; 4cbab
-	db "スクラッフﾟ(に なっているよ)", $0
+	dstr "スクラッフﾟ(に なっているよ)"
 
 Func_4cbbc: ; 4cbbc (13:4bbc)
 	push bc
@@ -45771,19 +45673,19 @@ Pointers_4cccb: ; 4cccb
 	dw Data_4ccf2
 
 Data_4ccd5: ; 4ccd5
-	db "ハﾞトラー", $0
+	dstr "ハﾞトラー"
 
 Data_4ccdb: ; 4ccdb
-	db "シﾞャンハﾟー", $0
+	dstr "シﾞャンハﾟー"
 
 Data_4cce3: ; 4cce3
-	db "スヒﾟータﾞー", $0
+	dstr "スヒﾟータﾞー"
 
 Data_4cceb: ; 4cceb
-	db "シールタﾞー", $0
+	dstr "シールタﾞー"
 
 Data_4ccf2: ; 4ccf2
-	db "ハﾟンチャー", $0
+	dstr "ハﾟンチャー"
 
 Func_4ccf9: ; 4ccf9
 	push bc
@@ -45895,10 +45797,10 @@ Func_4cd88: ; 4cd88 (13:4d88)
 	ret
 
 Data_4cdb1: ; 4cdb1
-	db "(たいせんする) ステーシﾞ(を)", $0
+	dstr "(たいせんする) ステーシﾞ(を)"
 
 Data_4cdc3: ; 4cdc3
-	db "(えらんてﾞくたﾞさい)", $0
+	dstr "(えらんてﾞくたﾞさい)"
 
 Pointers_4cdd0: ; 4cdd0
 	dw Data_4cde4
@@ -45915,34 +45817,34 @@ Pointers_4cdda: ; 4cdda
 	dw Data_4ce5c
 
 Data_4cde4: ; 4cde4
-	db "(つうしﾞょうの)ハﾞトル(てﾞ)", $0
+	dstr "(つうしﾞょうの)ハﾞトル(てﾞ)"
 
 Data_4cdf6: ; 4cdf6
-	db "(ひきょりをきそう)", $0
+	dstr "(ひきょりをきそう)"
 
 Data_4ce01: ; 4ce01
-	db "タイム(をきそう)", $0
+	dstr "タイム(をきそう)"
 
 Data_4ce0b: ; 4ce0b
-	db "(かﾞんしﾞょうさをきそう)", $0
+	dstr "(かﾞんしﾞょうさをきそう)"
 
 Data_4ce1a: ; 4ce1a
-	db "(はかいりょくをきそう)", $0
+	dstr "(はかいりょくをきそう)"
 
 Data_4ce27: ; 4ce27
-	db "((たいせんします)", $0
+	dstr "((たいせんします)"
 
 Data_4ce32: ; 4ce32
-	db "シﾞャンフﾟケﾞーム(てﾞ)", $0
+	dstr "シﾞャンフﾟケﾞーム(てﾞ)"
 
 Data_4ce41: ; 4ce41
-	db "(めいろ)ケﾞーム(てﾞ)", $0
+	dstr "(めいろ)ケﾞーム(てﾞ)"
 
 Data_4ce4f: ; 4ce4f
-	db "カートﾞケﾞーム(てﾞ)", $0
+	dstr "カートﾞケﾞーム(てﾞ)"
 
 Data_4ce5c: ; 4ce5c
-	db "ハﾟンチンクﾞケﾞーム(てﾞ)", $0
+	dstr "ハﾟンチンクﾞケﾞーム(てﾞ)"
 
 Func_4ce6c: ; 4ce6c (13:4e6c)
 	push af
@@ -46377,9 +46279,7 @@ Func_4d1c7: ; 4d1c7 (13:51c7)
 	ret
 
 Data_4d1d4: ; 4d1d4
-	db "(たﾞい)"
-	TX_SNUM
-	db "(しあい)", $0
+	dstr "(たﾞい)%d(しあい)"
 
 Func_4d1e1: ; 4d1e1 (13:51e1)
 	push af
@@ -47099,24 +46999,22 @@ Func_4d769: ; 4d769 (13:5769)
 	ret
 
 Data_4d7ac: ; 4d7ac
-	db "(たﾞい)"
-	TX_SNUM
-	db "(しあい) ", $0
+	dstr "(たﾞい)%d(しあい) "
 
 Data_4d7ba: ; 4d7ba
-	db "(かち)", $0
+	dstr "(かち)"
 
 Data_4d7bf: ; 4d7bf
-	db "(まけ)", $0
+	dstr "(まけ)"
 
 Data_4d7c4: ; 4d7c4
-	db "(かち)", $0
+	dstr "(かち)"
 
 Data_4d7c9: ; 4d7c9
-	db "(まけ)", $0
+	dstr "(まけ)"
 
 Data_4d7ce: ; 4d7ce
-	db "(のしょうり)", $0
+	dstr "(のしょうり)"
 
 Func_4d7d6: ; 4d7d6 (13:57d6)
 	push de
@@ -47427,9 +47325,7 @@ Func_4da78: ; 4da78 (13:5a78)
 	ret
 
 Data_4dac7: ; 4dac7
-	db "(たﾞい)"
-	TX_SNUM
-	db "(しあい) ", $0
+	dstr "(たﾞい)%d(しあい) "
 
 Func_4dad5: ; 4dad5 (13:5ad5)
 	push af
@@ -47723,27 +47619,25 @@ Func_4dc89: ; 4dc89 (13:5c89)
 	ret
 
 Data_4dcee: ; 4dcee
-	db "ホﾞク(のなまえを きめて)ネ", $0
+	dstr "ホﾞク(のなまえを きめて)ネ"
 
 Data_4dcfe: ; 4dcfe
-	db "b___", $0
+	dstr "b___"
 
 Data_4dd03: ; 4dd03
-	db "ロホﾞホﾟン(のなまえを きめて)ネ", $0
+	dstr "ロホﾞホﾟン(のなまえを きめて)ネ"
 
 Data_4dd16: ; 4dd16
-	db "b____", $0
+	dstr "b____"
 
 Data_4dd1c: ; 4dd1c
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_4dd1f: ; 4dd1f
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_4dd22: ; 4dd22
-	db "(けってい)", $0
+	dstr "(けってい)"
 
 Pointers_4dd29: ; 4dd29
 	dw Data_4de01
@@ -47856,328 +47750,328 @@ Pointers_4dd29: ; 4dd29
 	dw Data_4df43
 
 Data_4de01: ; 4de01
-	db "(あ)", $0
+	dstr "(あ)"
 
 Data_4de05: ; 4de05
-	db "(い)", $0
+	dstr "(い)"
 
 Data_4de09: ; 4de09
-	db "(う)", $0
+	dstr "(う)"
 
 Data_4de0d: ; 4de0d
-	db "(え)", $0
+	dstr "(え)"
 
 Data_4de11: ; 4de11
-	db "(お)", $0
+	dstr "(お)"
 
 Data_4de15: ; 4de15
-	db "(ゃ)", $0
+	dstr "(ゃ)"
 
 Data_4de19: ; 4de19
-	db "(か)", $0
+	dstr "(か)"
 
 Data_4de1d: ; 4de1d
-	db "(き)", $0
+	dstr "(き)"
 
 Data_4de21: ; 4de21
-	db "(く)", $0
+	dstr "(く)"
 
 Data_4de25: ; 4de25
-	db "(け)", $0
+	dstr "(け)"
 
 Data_4de29: ; 4de29
-	db "(こ)", $0
+	dstr "(こ)"
 
 Data_4de2d: ; 4de2d
-	db "(ゅ)", $0
+	dstr "(ゅ)"
 
 Data_4de31: ; 4de31
-	db "(さ)", $0
+	dstr "(さ)"
 
 Data_4de35: ; 4de35
-	db "(し)", $0
+	dstr "(し)"
 
 Data_4de39: ; 4de39
-	db "(す)", $0
+	dstr "(す)"
 
 Data_4de3d: ; 4de3d
-	db "(せ)", $0
+	dstr "(せ)"
 
 Data_4de41: ; 4de41
-	db "(そ)", $0
+	dstr "(そ)"
 
 Data_4de45: ; 4de45
-	db "(ょ)", $0
+	dstr "(ょ)"
 
 Data_4de49: ; 4de49
-	db "(た)", $0
+	dstr "(た)"
 
 Data_4de4d: ; 4de4d
-	db "(ち)", $0
+	dstr "(ち)"
 
 Data_4de51: ; 4de51
-	db "(つ)", $0
+	dstr "(つ)"
 
 Data_4de55: ; 4de55
-	db "(て)", $0
+	dstr "(て)"
 
 Data_4de59: ; 4de59
-	db "(と)", $0
+	dstr "(と)"
 
 Data_4de5d: ; 4de5d
-	db "(っ)", $0
+	dstr "(っ)"
 
 Data_4de61: ; 4de61
-	db "(な)", $0
+	dstr "(な)"
 
 Data_4de65: ; 4de65
-	db "(に)", $0
+	dstr "(に)"
 
 Data_4de69: ; 4de69
-	db "(ぬ)", $0
+	dstr "(ぬ)"
 
 Data_4de6d: ; 4de6d
-	db "(ね)", $0
+	dstr "(ね)"
 
 Data_4de71: ; 4de71
-	db "(の)", $0
+	dstr "(の)"
 
 Data_4de75: ; 4de75
-	db "(ﾞ)", $0
+	dstr "(ﾞ)"
 
 Data_4de79: ; 4de79
-	db "(は)", $0
+	dstr "(は)"
 
 Data_4de7d: ; 4de7d
-	db "(ひ)", $0
+	dstr "(ひ)"
 
 Data_4de81: ; 4de81
-	db "(ふ)", $0
+	dstr "(ふ)"
 
 Data_4de85: ; 4de85
-	db "(へ)", $0
+	dstr "(へ)"
 
 Data_4de89: ; 4de89
-	db "(ほ)", $0
+	dstr "(ほ)"
 
 Data_4de8d: ; 4de8d
-	db "(ﾟ)", $0
+	dstr "(ﾟ)"
 
 Data_4de91: ; 4de91
-	db "(ま)", $0
+	dstr "(ま)"
 
 Data_4de95: ; 4de95
-	db "(み)", $0
+	dstr "(み)"
 
 Data_4de99: ; 4de99
-	db "(む)", $0
+	dstr "(む)"
 
 Data_4de9d: ; 4de9d
-	db "(め)", $0
+	dstr "(め)"
 
 Data_4dea1: ; 4dea1
-	db "(も)", $0
+	dstr "(も)"
 
 Data_4dea5: ; 4dea5
-	db "(-)", $0
+	dstr "(-)"
 
 Data_4dea9: ; 4dea9
-	db "(や)", $0
+	dstr "(や)"
 
 Data_4dead: ; 4dead
-	db "(ゆ)", $0
+	dstr "(ゆ)"
 
 Data_4deb1: ; 4deb1
-	db "(よ)", $0
+	dstr "(よ)"
 
 Data_4deb5: ; 4deb5
-	db "(わ)", $0
+	dstr "(わ)"
 
 Data_4deb9: ; 4deb9
-	db "(を)", $0
+	dstr "(を)"
 
 Data_4debd: ; 4debd
-	db "(ん)", $0
+	dstr "(ん)"
 
 Data_4dec1: ; 4dec1
-	db "(ら)", $0
+	dstr "(ら)"
 
 Data_4dec5: ; 4dec5
-	db "(り)", $0
+	dstr "(り)"
 
 Data_4dec9: ; 4dec9
-	db "(る)", $0
+	dstr "(る)"
 
 Data_4decd: ; 4decd
-	db "(れ)", $0
+	dstr "(れ)"
 
 Data_4ded1: ; 4ded1
-	db "(ろ)", $0
+	dstr "(ろ)"
 
 Data_4ded5: ; 4ded5
-	db "( )", $0
+	dstr "( )"
 
 Data_4ded9: ; 4ded9
-	db "ア", $0
+	dstr "ア"
 
 Data_4dedb: ; 4dedb
-	db "イ", $0
+	dstr "イ"
 
 Data_4dedd: ; 4dedd
-	db "ウ", $0
+	dstr "ウ"
 
 Data_4dedf: ; 4dedf
-	db "エ", $0
+	dstr "エ"
 
 Data_4dee1: ; 4dee1
-	db "オ", $0
+	dstr "オ"
 
 Data_4dee3: ; 4dee3
-	db "ャ", $0
+	dstr "ャ"
 
 Data_4dee5: ; 4dee5
-	db "カ", $0
+	dstr "カ"
 
 Data_4dee7: ; 4dee7
-	db "キ", $0
+	dstr "キ"
 
 Data_4dee9: ; 4dee9
-	db "ク", $0
+	dstr "ク"
 
 Data_4deeb: ; 4deeb
-	db "ケ", $0
+	dstr "ケ"
 
 Data_4deed: ; 4deed
-	db "コ", $0
+	dstr "コ"
 
 Data_4deef: ; 4deef
-	db "ュ", $0
+	dstr "ュ"
 
 Data_4def1: ; 4def1
-	db "サ", $0
+	dstr "サ"
 
 Data_4def3: ; 4def3
-	db "シ", $0
+	dstr "シ"
 
 Data_4def5: ; 4def5
-	db "ス", $0
+	dstr "ス"
 
 Data_4def7: ; 4def7
-	db "セ", $0
+	dstr "セ"
 
 Data_4def9: ; 4def9
-	db "ソ", $0
+	dstr "ソ"
 
 Data_4defb: ; 4defb
-	db "ョ", $0
+	dstr "ョ"
 
 Data_4defd: ; 4defd
-	db "タ", $0
+	dstr "タ"
 
 Data_4deff: ; 4deff
-	db "チ", $0
+	dstr "チ"
 
 Data_4df01: ; 4df01
-	db "ツ", $0
+	dstr "ツ"
 
 Data_4df03: ; 4df03
-	db "テ", $0
+	dstr "テ"
 
 Data_4df05: ; 4df05
-	db "ト", $0
+	dstr "ト"
 
 Data_4df07: ; 4df07
-	db "ッ", $0
+	dstr "ッ"
 
 Data_4df09: ; 4df09
-	db "ナ", $0
+	dstr "ナ"
 
 Data_4df0b: ; 4df0b
-	db "ニ", $0
+	dstr "ニ"
 
 Data_4df0d: ; 4df0d
-	db "ヌ", $0
+	dstr "ヌ"
 
 Data_4df0f: ; 4df0f
-	db "ネ", $0
+	dstr "ネ"
 
 Data_4df11: ; 4df11
-	db "ノ", $0
+	dstr "ノ"
 
 Data_4df13: ; 4df13
-	db "ﾞ", $0
+	dstr "ﾞ"
 
 Data_4df15: ; 4df15
-	db "ハ", $0
+	dstr "ハ"
 
 Data_4df17: ; 4df17
-	db "ヒ", $0
+	dstr "ヒ"
 
 Data_4df19: ; 4df19
-	db "フ", $0
+	dstr "フ"
 
 Data_4df1b: ; 4df1b
-	db "ヘ", $0
+	dstr "ヘ"
 
 Data_4df1d: ; 4df1d
-	db "ホ", $0
+	dstr "ホ"
 
 Data_4df1f: ; 4df1f
-	db "ﾟ", $0
+	dstr "ﾟ"
 
 Data_4df21: ; 4df21
-	db "マ", $0
+	dstr "マ"
 
 Data_4df23: ; 4df23
-	db "ミ", $0
+	dstr "ミ"
 
 Data_4df25: ; 4df25
-	db "ム", $0
+	dstr "ム"
 
 Data_4df27: ; 4df27
-	db "メ", $0
+	dstr "メ"
 
 Data_4df29: ; 4df29
-	db "モ", $0
+	dstr "モ"
 
 Data_4df2b: ; 4df2b
-	db "-", $0
+	dstr "-"
 
 Data_4df2d: ; 4df2d
-	db "ヤ", $0
+	dstr "ヤ"
 
 Data_4df2f: ; 4df2f
-	db "ユ", $0
+	dstr "ユ"
 
 Data_4df31: ; 4df31
-	db "ヨ", $0
+	dstr "ヨ"
 
 Data_4df33: ; 4df33
-	db "ワ", $0
+	dstr "ワ"
 
 Data_4df35: ; 4df35
-	db "ヲ", $0
+	dstr "ヲ"
 
 Data_4df37: ; 4df37
-	db "ン", $0
+	dstr "ン"
 
 Data_4df39: ; 4df39
-	db "ラ", $0
+	dstr "ラ"
 
 Data_4df3b: ; 4df3b
-	db "リ", $0
+	dstr "リ"
 
 Data_4df3d: ; 4df3d
-	db "ル", $0
+	dstr "ル"
 
 Data_4df3f: ; 4df3f
-	db "レ", $0
+	dstr "レ"
 
 Data_4df41: ; 4df41
-	db "ロ", $0
+	dstr "ロ"
 
 Data_4df43: ; 4df43
-	db " ", $0
+	dstr " "
 
 Func_4df45: ; 4df45 (13:5f45)
 	push af
@@ -48301,10 +48195,10 @@ Func_4dff8: ; 4dff8 (13:5ff8)
 	ret
 
 Data_4dffc: ; 4dffc
-	db "カタカナ", $0
+	dstr "カタカナ"
 
 Data_4e001: ; 4e001
-	db "(かな  )", $0
+	dstr "(かな  )"
 
 Func_4e008: ; 4e008 (13:6008)
 	push bc
@@ -48833,10 +48727,10 @@ Func_4e3a0: ; 4e3a0 (13:63a0)
 	ret
 
 Data_4e3a4: ; 4e3a4
-	db "_", $0
+	dstr "_"
 
 Data_4e3a6: ; 4e3a6
-	db "b", $0
+	dstr "b"
 
 Func_4e3a8: ; 4e3a8
 	reg16swap de, hl
@@ -48998,19 +48892,19 @@ Func_4e4e3: ; 4e4e3 (13:64e3)
 	ret
 
 Data_4e4e4: ; 4e4e4
-	db " ", $0
+	dstr " "
 
 Data_4e4e6: ; 4e4e6
-	db " ", $0
+	dstr " "
 
 Data_4e4e8: ; 4e4e8
-	db "_", $0
+	dstr "_"
 
 Data_4e4ea: ; 4e4ea
-	db " ", $0
+	dstr " "
 
 Data_4e4ec: ; 4e4ec
-	db "b", $0
+	dstr "b"
 
 Func_4e4ee: ; 4e4ee (13:64ee)
 	push af
@@ -49307,22 +49201,22 @@ Func_4e6fd: ; 4e6fd (13:66fd)
 	ret
 
 Data_4e743: ; 4e743
-	db "(なまえ)", $0
+	dstr "(なまえ)"
 
 Data_4e749: ; 4e749
-	db "(たんしﾞょうひﾞ)", $0
+	dstr "(たんしﾞょうひﾞ)"
 
 Data_4e754: ; 4e754
-	db "(せいさﾞ)", $0
+	dstr "(せいさﾞ)"
 
 Data_4e75b: ; 4e75b
-	db "ホﾞク(の たんしﾞょうひﾞを きめて)ネ", $0
+	dstr "ホﾞク(の たんしﾞょうひﾞを きめて)ネ"
 
 Data_4e771: ; 4e771
-	db "(かﾞつ)", $0
+	dstr "(かﾞつ)"
 
 Data_4e777: ; 4e777
-	db "(にち)", $0
+	dstr "(にち)"
 
 Data_4e77c: ; 4e77c
 	db 11, 12
@@ -49413,14 +49307,13 @@ Func_4e7fb: ; 4e7fb (13:67fb)
 	ret
 
 Data_4e80c: ; 4e80c
-	db "b", $0
+	dstr "b"
 
 Data_4e80e: ; 4e80e
-	db "_", $0
+	dstr "_"
 
 Data_4e810: ; 4e810
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Func_4e813: ; 4e813 (13:6813)
 	push bc
@@ -49923,14 +49816,10 @@ Func_4eb61: ; 4eb61 (13:6b61)
 	ret
 
 Data_4eb67: ; 4eb67
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d"
 
 Data_4eb6c: ; 4eb6c
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d"
 
 Func_4eb71: ; 4eb71
 	inc hl
@@ -50008,7 +49897,7 @@ Func_4ec20: ; 4ec20 (13:6c20)
 	ret
 
 Data_4ec21: ; 4ec21
-	db "(これてﾞいい)?", $0
+	dstr "(これてﾞいい)?"
 
 Func_4ec2b: ; 4ec2b (13:6c2b)
 	push af
@@ -50412,7 +50301,7 @@ Pointers_4f8a6: ; 4f8a6
 	dw $0
 
 Data_4f8aa: ; 4f8aa
-	db "(しんかした)", $0
+	dstr "(しんかした)"
 
 Data_4f8b2: ; 4f8b2
 	dr $4f8b2, $4f8ba
@@ -50586,10 +50475,10 @@ Func_4fa9e: ; 4fa9e (13:7a9e)
 	ret
 
 Data_4fab2: ; 4fab2
-	db "(は) ", $0
+	dstr "(は) "
 
 Data_4fab7: ; 4fab7
-	db "(に)", $0
+	dstr "(に)"
 
 Func_4fabb: ; 4fabb (13:7abb)
 	ld a, [wNextVBlankFlags]
@@ -51002,10 +50891,10 @@ Func_4fec1: ; 4fec1 (13:7ec1)
 	ret
 
 Data_4fec4: ; 4fec4
-	db "(くれる) ロホﾞホﾟン(を)", $0
+	dstr "(くれる) ロホﾞホﾟン(を)"
 
 Data_4fed4: ; 4fed4
-	db "(えらんてﾞいるよ)", $0
+	dstr "(えらんてﾞいるよ)"
 
 Func_4fedf: ; 4fedf (13:7edf)
 	ld a, [wc319]
@@ -51196,22 +51085,22 @@ Pointers_50106:
 	dw Data_5013f
 
 Data_50112:
-	db "クﾞレーテスト6", $0
+	dstr "クﾞレーテスト6"
 
 Data_5011b:
-	db "クﾞレーテスト5", $0
+	dstr "クﾞレーテスト5"
 
 Data_50124:
-	db "クﾞレーテスト4", $0
+	dstr "クﾞレーテスト4"
 
 Data_5012d:
-	db "クﾞレーテスト3", $0
+	dstr "クﾞレーテスト3"
 
 Data_50136:
-	db "クﾞレーテスト2", $0
+	dstr "クﾞレーテスト2"
 
 Data_5013f:
-	db "クﾞレーテスト1", $0
+	dstr "クﾞレーテスト1"
 
 Data_50148: ; 50148
 	dr $50148, $50157
@@ -51480,34 +51369,28 @@ Func_50331: ; 50331 (14:4331)
 	ret
 
 Data_50337: ; 50337
-	db " ", $0
+	dstr " "
 
 Data_50339: ; 50339
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_5033c: ; 5033c
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_5033f: ; 5033f
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_50342: ; 50342
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_50345: ; 50345
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_50348: ; 50348
-	db " ", $0
+	dstr " "
 
 Data_5034a: ; 5034a
-	TX_STACK
-	db $0
+	dstr "%c"
 
 OptionsMenu_UpDown: ; 5034d (14:434d)
 	push bc
@@ -51792,7 +51675,7 @@ Pointers_5052d: ; 5052d
 	dw $0
 
 Data_50531: ; 50531
-	db "セーフﾞ(したよ)", $0
+	dstr "セーフﾞ(したよ)"
 
 MainMenuSubmenu_Save: ; 5053b
 	set_farcall_addrs_hli AllocateMemory
@@ -51867,7 +51750,7 @@ MainMenuSubmenu_Save: ; 5053b
 	ret
 
 Data_505f9: ; 505f9
-	db "セーフﾞ(するよ)?", $0
+	dstr "セーフﾞ(するよ)?"
 
 Func_50604: ; 50604 (14:4604)
 	push bc
@@ -52287,29 +52170,25 @@ Func_508bc: ; 508bc (14:48bc)
 	ret
 
 Data_508c0: ; 508c0
-	db " ", $0
+	dstr " "
 
 Data_508c2: ; 508c2
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_508c5: ; 508c5
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_508c8: ; 508c8
-	db " ", $0
+	dstr " "
 
 Data_508ca: ; 508ca
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_508cd: ; 508cd
-	db " ", $0
+	dstr " "
 
 Data_508cf: ; 508cf
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_508d2: ; 508d2
 	set_farcall_addrs_hli MenuWithSecondaryHeader
@@ -52427,10 +52306,10 @@ Func_50961: ; 50961 (14:4961)
 	ret
 
 Data_5098a: ; 5098a
-	db " ", $0
+	dstr " "
 
 Data_5098c: ; 5098c
-	db " ", $0
+	dstr " "
 
 Pointers_5098e: ; 5098e
 	dw Data_50994
@@ -52438,10 +52317,10 @@ Pointers_5098e: ; 5098e
 	dw $0
 	
 Data_50994: ; 50994
-	db "(おなしﾞ)ロホﾞホﾟン(は)", $0
+	dstr "(おなしﾞ)ロホﾞホﾟン(は)"
 
 Data_509a4: ; 509a4
-	db "(ならひﾞかえてﾞきません)", $0
+	dstr "(ならひﾞかえてﾞきません)"
 
 Func_509b3: ; 509b3
 	push bc
@@ -52844,7 +52723,7 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	ret
 
 Data_50cf6: ; 50cf6
-	db "(を すてても よろしいてﾞすか)?", $0
+	dstr "(を すてても よろしいてﾞすか)?"
 
 GetZodiacSign:: ; 50d09
 	set_farcall_addrs_hli GetBanks
@@ -53551,28 +53430,28 @@ Pointers_5125a: ; 5125a
 	dw $0
 
 Data_5125e: ; 5125e
-	db "(その)ロホﾞホﾟン(は はけん されているよ)", $0
+	dstr "(その)ロホﾞホﾟン(は はけん されているよ)"
 
 Pointers_51277: ; 51277
 	dw Data_5127b
 	dw $0
 
 Data_5127b: ; 5127b
-	db "ハﾟーティー(かﾞ いっはﾟいたﾞよ)", $0
+	dstr "ハﾟーティー(かﾞ いっはﾟいたﾞよ)"
 
 Pointers_5128f: ; 5128f
 	dw Data_51293
 	dw $0
 
 Data_51293: ; 51293
-	db "(こうかんしたよ)", $0
+	dstr "(こうかんしたよ)"
 
 Pointers_5129d: ; 5129d
 	dw Data_512a1
 	dw $0
 
 Data_512a1: ; 512a1
-	db "(ひきたﾞしたよ)", $0
+	dstr "(ひきたﾞしたよ)"
 
 Pointers_512ab: ; 512ab
 	dw Data_512b1
@@ -53580,17 +53459,17 @@ Pointers_512ab: ; 512ab
 	dw $0
 
 Data_512b1: ; 512b1
-	db "(たたかえる) ロホﾞホﾟン(かﾞ)", $0
+	dstr "(たたかえる) ロホﾞホﾟン(かﾞ)"
 
 Data_512c4: ; 512c4
-	db "(いなくなるよ)", $0
+	dstr "(いなくなるよ)"
 
 Pointers_512cd: ; 512cd
 	dw Data_512d1
 	dw $0
 
 Data_512d1: ; 512d1
-	db "(そいつは えらへﾞないよ)!", $0
+	dstr "(そいつは えらへﾞないよ)!"
 
 Func_512e1: ; 512e1 (14:52e1)
 	push af
@@ -54071,10 +53950,10 @@ Func_516c3: ; 516c3 (14:56c3)
 	ret
 
 Data_516c8: ; 516c8
-	db "ハﾟーティー(の) ロホﾞホﾟン(と)", $0
+	dstr "ハﾟーティー(の) ロホﾞホﾟン(と)"
 
 Data_516dc: ; 516dc
-	db "(こうかんする)?", $0
+	dstr "(こうかんする)?"
 
 Func_516e6: ; 516e6 (14:56e6)
 	add sp, -$46
@@ -54114,7 +53993,7 @@ Pointers_51747: ; 51747
 	dw $0
 
 Data_5174b: ; 5174b
-	db "(を ひきたﾞしました)", $0
+	dstr "(を ひきたﾞしました)"
 
 Pointers_51758: ; 51758
 	dw Data_5175e
@@ -54122,17 +54001,17 @@ Pointers_51758: ; 51758
 	dw $0
 
 Data_5175e: ; 5175e
-	db "(これいしﾞょう) ハﾟーティー(に)", $0
+	dstr "(これいしﾞょう) ハﾟーティー(に)"
 
 Data_51772: ; 51772
-	db "(ついかてﾞきないよ)", $0
+	dstr "(ついかてﾞきないよ)"
 
 Pointers_5177e: ; 5177e
 	dw Data_51782
 	dw $0
 
 Data_51782: ; 51782
-	db "(を すてた)", $0
+	dstr "(を すてた)"
 
 Func_5178a: ; 5178a
 	push hl
@@ -54906,28 +54785,28 @@ Pointers_51e56: ; 51e56
 	dw $0
 
 Data_51e5a: ; 51e5a
-	db "(これいしﾞょう ほかんてﾞきないよ)", $0
+	dstr "(これいしﾞょう ほかんてﾞきないよ)"
 
 Pointers_51e6e: ; 51e6e
 	dw Data_51e72
 	dw $0
 
 Data_51e72: ; 51e72
-	db "(これいしﾞょう ひきたﾞせないよ)", $0
+	dstr "(これいしﾞょう ひきたﾞせないよ)"
 
 Pointers_51e85: ; 51e85
 	dw Data_51e89
 	dw $0
 
 Data_51e89: ; 51e89
-	db "(を ほかんしたよ)", $0
+	dstr "(を ほかんしたよ)"
 
 Pointers_51e94: ; 51e94
 	dw Data_51e98
 	dw $0
 
 Data_51e98: ; 51e98
-	db "(を ひきたﾞしたよ)", $0
+	dstr "(を ひきたﾞしたよ)"
 
 Func_51ea4: ; 51ea4
 	push hl
@@ -55352,13 +55231,13 @@ Func_522ac: ; 522ac (14:62ac)
 	ret
 
 Data_522b7: ; 522b7
-	db "(ほかんする こすうを)", $0
+	dstr "(ほかんする こすうを)"
 
 Data_522c4: ; 522c4
-	db "(ひきたﾞす こすうを)", $0
+	dstr "(ひきたﾞす こすうを)"
 
 Data_522d1: ; 522d1
-	db "(にゅうりょくしてくたﾞさい)", $0
+	dstr "(にゅうりょくしてくたﾞさい)"
 
 Pointers_522e1: ; 522e1
 	dw Data_522e7
@@ -55366,10 +55245,10 @@ Pointers_522e1: ; 522e1
 	dw $0
 
 Data_522e7: ; 522e7
-	db "(もちものかﾞ いっはﾟいなのてﾞ)", $0
+	dstr "(もちものかﾞ いっはﾟいなのてﾞ)"
 
 Data_522fa: ; 522fa
-	db "(ひきたﾞせないよ)", $0
+	dstr "(ひきたﾞせないよ)"
 
 Pointers_52305: ; 52305
 	dw Data_5230b
@@ -55377,10 +55256,10 @@ Pointers_52305: ; 52305
 	dw $0
 
 Data_5230b: ; 5230b
-	db "(これいしﾞょう そうこに)", $0
+	dstr "(これいしﾞょう そうこに)"
 
 Data_5231a: ; 5231a
-	db "(ついかてﾞきないよ)", $0
+	dstr "(ついかてﾞきないよ)"
 
 Func_52326: ; 52326
 	push bc
@@ -56227,68 +56106,61 @@ Func_52a86: ; 52a86 (14:6a86)
 	ret
 
 Data_52abf:
-	db " ", $0
+	dstr " "
 
 Data_52ac1:
-	db ":LV", $0
+	dstr ":LV"
 
 Data_52ac5:
-	db " ", $0
+	dstr " "
 
 Data_52ac7:
-	db "タイフﾟ:", $0
+	dstr "タイフﾟ:"
 
 Data_52acd:
-	db "CPU:"
-	TX_CALL
-	db $0
+	dstr "CPU:%s"
 
 Data_52ad4:
-	db "E", $0
+	dstr "E"
 
 Data_52ad6:
-	db "/", $0
+	dstr "/"
 
 Data_52ad8:
-	db "/", $0
+	dstr "/"
 
 Data_52ada:
-	db "(こうけﾞき)", $0
+	dstr "(こうけﾞき)"
 
 Data_52ae2:
-	db "(ほﾞうきﾞょ)", $0
+	dstr "(ほﾞうきﾞょ)"
 
 Data_52aeb:
-	db "(すはﾞやさ)", $0
+	dstr "(すはﾞやさ)"
 
 Data_52af3:
-	db "E*P:"
-	TX_UNUM
-	db $0
+	dstr "E*P:%ld"
 
 Data_52afb:
-	db "(あと)"
-	TX_SNUM
-	db $0
+	dstr "(あと)%d"
 
 Data_52b02:
-	db "(しんかしない)", $0
+	dstr "(しんかしない)"
 
 Data_52b0b:
-	db "(しんかする あと)", $0
+	dstr "(しんかする あと)"
 
 Data_52b16:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_52b19:
-	db "(ひかってる)", $0
+	dstr "(ひかってる)"
 
 Data_52b21:
-	db "(さくしﾞょするかい)?", $0
+	dstr "(さくしﾞょするかい)?"
 
 Data_52b2e:
-	db "(ひきたﾞすかい)?", $0
+	dstr "(ひきたﾞすかい)?"
 
 Func_52b39:
 	reg16swap de, hl
@@ -56375,7 +56247,7 @@ Pointers_52bad:
 	dw $0
 
 Data_52bb1:
-	db "(こうかんしたよ)", $0
+	dstr "(こうかんしたよ)"
 
 Func_52bbb: ; 52bbb (14:6bbb)
 	push bc
@@ -56770,7 +56642,7 @@ Pointers_53c10:
 	dw $0
 
 Data_53c14:
-	db "(とﾞうやら せいこうした みたいしﾞゃ)", $0
+	dstr "(とﾞうやら せいこうした みたいしﾞゃ)"
 
 Pointers_53c2a:
 	dw Data_53c30
@@ -56778,10 +56650,10 @@ Pointers_53c2a:
 	dw $0
 
 Data_53c30:
-	db "リモコン(の しﾞゅしんに)", $0
+	dstr "リモコン(の しﾞゅしんに)"
 
 Data_53c3f:
-	db "(しっはﾟいしました)", $0
+	dstr "(しっはﾟいしました)"
 
 Pointers_53c4b:
 	dw Data_53c51
@@ -56789,17 +56661,17 @@ Pointers_53c4b:
 	dw $0
 
 Data_53c51:
-	db "(なんしﾞゃ やめるのか)", $0
+	dstr "(なんしﾞゃ やめるのか)"
 
 Data_53c5f:
-	db "(いくしﾞかﾞないのう)", $0
+	dstr "(いくしﾞかﾞないのう)"
 
 Pointers_53c6c:
 	dw Data_53c70
 	dw $0
 
 Data_53c70:
-	db "(その)ロホﾞホﾟン(は) (えらへﾞないよ)", $0
+	dstr "(その)ロホﾞホﾟン(は) (えらへﾞないよ)"
 
 Func_53c88::
 	add sp, -$52
@@ -57514,22 +57386,22 @@ Pointers_544f7: ; 544f7
 	dw Data_5453d
 
 Data_54503:
-	db "(まきしま) テスト", $0
+	dstr "(まきしま) テスト"
 
 Data_5450e:
-	db "(おおてﾞ)  テスト", $0
+	dstr "(おおてﾞ)  テスト"
 
 Data_5451a:
-	db "(やしﾞま)  テスト", $0
+	dstr "(やしﾞま)  テスト"
 
 Data_54526:
-	db "(さえき)  テスト", $0
+	dstr "(さえき)  テスト"
 
 Data_54531:
-	db "(ますたﾞ)  テスト", $0
+	dstr "(ますたﾞ)  テスト"
 
 Data_5453d:
-	db "(おと)   テスト", $0
+	dstr "(おと)   テスト"
 
 Pointers_54548:
 	dw Data_54558
@@ -57542,28 +57414,28 @@ Pointers_54548:
 	dw Data_54599
 
 Data_54558:
-	db "ロホﾞホﾟンメニュー", $0
+	dstr "ロホﾞホﾟンメニュー"
 
 Data_54563:
-	db "フィールトﾞメニュー", $0
+	dstr "フィールトﾞメニュー"
 
 Data_5456e:
-	db "(うけつけ)コマントﾞ", $0
+	dstr "(うけつけ)コマントﾞ"
 
 Data_5457a:
-	db "(みせ)", $0
+	dstr "(みせ)"
 
 Data_5457f:
-	db "エレヘﾞーター", $0
+	dstr "エレヘﾞーター"
 
 Data_54587:
-	db "(なまえにゅうりょく)", $0
+	dstr "(なまえにゅうりょく)"
 
 Data_54593:
-	db "(はけん)", $0
+	dstr "(はけん)"
 
 Data_54599:
-	db "(はけんきかんしょり)", $0
+	dstr "(はけんきかんしょり)"
 
 Pointers_545a5:: ; 545a5
 	dw Data_545af
@@ -57573,19 +57445,19 @@ Pointers_545a5:: ; 545a5
 	dw Data_545dc
 
 Data_545af:
-	db "(つつﾞきからあそふﾞ)", $0
+	dstr "(つつﾞきからあそふﾞ)"
 
 Data_545bc:
-	db "(はしﾞめからあそふﾞ)", $0
+	dstr "(はしﾞめからあそふﾞ)"
 
 Data_545c9:
-	db "(にちしﾞせってい)", $0
+	dstr "(にちしﾞせってい)"
 
 Data_545d4:
-	db "gh ijkk", $0
+	dstr "gh ijkk"
 
 Data_545dc:
-	db "テﾞハﾞックﾞ", $0
+	dstr "テﾞハﾞックﾞ"
 
 Pointers_545e4:: ; 545e4
 	dw Data_545ec
@@ -57594,16 +57466,16 @@ Pointers_545e4:: ; 545e4
 	dw Data_5460c
 
 Data_545ec:
-	db "(はしﾞめからあそふﾞ)", $0
+	dstr "(はしﾞめからあそふﾞ)"
 
 Data_545f9:
-	db "(にちしﾞせってい)", $0
+	dstr "(にちしﾞせってい)"
 
 Data_54604:
-	db "gh ijkk", $0
+	dstr "gh ijkk"
 
 Data_5460c:
-	db "テﾞハﾞックﾞ", $0
+	dstr "テﾞハﾞックﾞ"
 
 Pointers_54614:: ; 54614
 	dw Data_54622
@@ -57615,25 +57487,25 @@ Pointers_54614:: ; 54614
 	dw Data_54647
 
 Data_54622:
-	db "ロホﾞホﾟン", $0
+	dstr "ロホﾞホﾟン"
 
 Data_54629:
-	db "(もちもの)", $0
+	dstr "(もちもの)"
 
 Data_54630:
-	db "(そうこ)", $0
+	dstr "(そうこ)"
 
 Data_54636:
-	db "テﾞータ", $0
+	dstr "テﾞータ"
 
 Data_5463b:
-	db "(せってい)", $0
+	dstr "(せってい)"
 
 Data_54642:
-	db "セーフﾞ", $0
+	dstr "セーフﾞ"
 
 Data_54647:
-	db "タイトル", $0
+	dstr "タイトル"
 
 Pointers_5464c:: ; 5464c
 	dw Data_54652
@@ -57641,13 +57513,13 @@ Pointers_5464c:: ; 5464c
 	dw Data_5465b
 
 Data_54652:
-	db "アイテム", $0
+	dstr "アイテム"
 
 Data_54657:
-	db "ソフト", $0
+	dstr "ソフト"
 
 Data_5465b:
-	db "ハﾟーツ", $0
+	dstr "ハﾟーツ"
 
 Pointers_54660:: ; 54660
 	dw Data_54666
@@ -57655,13 +57527,13 @@ Pointers_54660:: ; 54660
 	dw Data_5467c
 
 Data_54666:
-	db "ソフト(のいちらん)", $0
+	dstr "ソフト(のいちらん)"
 
 Data_54671:
-	db "ソフト(のそうひﾞ)", $0
+	dstr "ソフト(のそうひﾞ)"
 
 Data_5467c:
-	db "ソフト(をすてる)", $0
+	dstr "ソフト(をすてる)"
 
 Pointers_54686:: ; 54686
 	dw Data_5468c
@@ -57669,43 +57541,43 @@ Pointers_54686:: ; 54686
 	dw Data_546a4
 
 Data_5468c:
-	db "ハﾟーツ(のいちらん)", $0
+	dstr "ハﾟーツ(のいちらん)"
 
 Data_54698:
-	db "ハﾟーツ(のそうひﾞ)", $0
+	dstr "ハﾟーツ(のそうひﾞ)"
 
 Data_546a4:
-	db "ハﾟーツ(をすてる)", $0
+	dstr "ハﾟーツ(をすてる)"
 
 Pointers_546af:: ; 546af
 	dw Data_546b3
 	dw Data_546b9
 
 Data_546b3:
-	db "(ほかん)", $0
+	dstr "(ほかん)"
 
 Data_546b9:
-	db "(ひきたﾞす)", $0
+	dstr "(ひきたﾞす)"
 
 Pointers_546c1:: ; 546c1
 	dw Data_546c5
 	dw Data_546ca
 
 Data_546c5:
-	db "(はい)", $0
+	dstr "(はい)"
 
 Data_546ca:
-	db "(いいえ)", $0
+	dstr "(いいえ)"
 
 Pointers_546d0:: ; 546d0
 	dw Data_546d4
 	dw Data_546da
 
 Data_546d4:
-	db "(つかう)", $0
+	dstr "(つかう)"
 
 Data_546da:
-	db "(すてる)", $0
+	dstr "(すてる)"
 
 Pointers_546e0:: ; 546e0
 	dw Data_546e8
@@ -57714,16 +57586,16 @@ Pointers_546e0:: ; 546e0
 	dw Data_546f8
 
 Data_546e8:
-	db "ロホﾞホﾟン", $0
+	dstr "ロホﾞホﾟン"
 
 Data_546ef:
-	db "アイテム", $0
+	dstr "アイテム"
 
 Data_546f4:
-	db "ソフト", $0
+	dstr "ソフト"
 
 Data_546f8:
-	db "ハﾟーツ", $0
+	dstr "ハﾟーツ"
 
 Pointers_546fd:: ; 546fd
 	dw Data_54703
@@ -57731,13 +57603,13 @@ Pointers_546fd:: ; 546fd
 	dw Data_5471b
 
 Data_54703:
-	db "(かいしゃあんない)", $0
+	dstr "(かいしゃあんない)"
 
 Data_5470e:
-	db "(つうしんてﾞあそふﾞ)", $0
+	dstr "(つうしんてﾞあそふﾞ)"
 
 Data_5471b:
-	db "キッス(てﾞつうしん)", $0
+	dstr "キッス(てﾞつうしん)"
 
 Pointers_54727:: ; 54727
 	dw Data_54733
@@ -57748,22 +57620,22 @@ Pointers_54727:: ; 54727
 	dw Data_5475e
 
 Data_54733:
-	db "(あいてむ)", $0
+	dstr "(あいてむ)"
 
 Data_5473a:
-	db "(そふと)", $0
+	dstr "(そふと)"
 
 Data_54740:
-	db "(はﾟーつ)", $0
+	dstr "(はﾟーつ)"
 
 Data_54747:
-	db "(けんきゅうしﾞょ)", $0
+	dstr "(けんきゅうしﾞょ)"
 
 Data_54752:
-	db "(けんきゅうしﾞょ2)", $0
+	dstr "(けんきゅうしﾞょ2)"
 
 Data_5475e:
-	db "(こうしﾞょう)", $0
+	dstr "(こうしﾞょう)"
 
 Func_54767: ; 54767 (15:4767)
 	push hl
@@ -58034,22 +57906,22 @@ Func_54846:
 	ret
 
 Data_54972:
-	db "Hp", $0
+	dstr "Hp"
 
 Data_54975:
-	db "/", $0
+	dstr "/"
 
 Data_54977:
-	db "Ep", $0
+	dstr "Ep"
 
 Data_5497a:
-	db "/", $0
+	dstr "/"
 
 Data_5497c:
-	db "LV", $0
+	dstr "LV"
 
 Data_5497f:
-	db ":", $0
+	dstr ":"
 
 Func_54981:
 	push bc
@@ -58160,21 +58032,21 @@ Pointers_54a13:
 	dw $0
 
 Data_54a17:
-	db "スクラッフﾟ(に なっているよ)", $0
+	dstr "スクラッフﾟ(に なっているよ)"
 
 Pointers_54a28:
 	dw Data_54a2c
 	dw $0
 
 Data_54a2c:
-	db "スクラッフﾟ(しﾞゃないよ)", $0
+	dstr "スクラッフﾟ(しﾞゃないよ)"
 
 Pointers_54a3b:
 	dw Data_54a3f
 	dw $0
 
 Data_54a3f:
-	db "(しんか しないよ)", $0
+	dstr "(しんか しないよ)"
 
 Pointers_54a4a:
 	dw Data_54a50
@@ -58182,10 +58054,10 @@ Pointers_54a4a:
 	dw $0
 
 Data_54a50:
-	db "(これいしﾞょう) レヘﾞルアッフﾟ", $0
+	dstr "(これいしﾞょう) レヘﾞルアッフﾟ"
 
 Data_54a63:
-	db "(てﾞきないよ)", $0
+	dstr "(てﾞきないよ)"
 
 Func_54a6c:
 	push af
@@ -58253,7 +58125,7 @@ Pointers_54aeb:
 	dw $0
 
 Data_54aef:
-	db "(を つかった)", $0
+	dstr "(を つかった)"
 
 Func_54af8: ; 54af8 (15:4af8)
 	add sp, -$3c
@@ -59161,17 +59033,17 @@ Pointers_55320:
 	dw $0
 
 Data_55326:
-	db "(おいおい! ひとりてﾞ)", $0
+	dstr "(おいおい! ひとりてﾞ)"
 
 Data_55334:
-	db "(たひﾞするつもりかい)?", $0
+	dstr "(たひﾞするつもりかい)?"
 
 Pointers_55342:
 	dw Data_55346
 	dw $0
 
 Data_55346:
-	db "(そうこかﾞ いっはﾟいたﾞよ)", $0
+	dstr "(そうこかﾞ いっはﾟいたﾞよ)"
 
 Pointers_55357:
 	dw Data_5535d
@@ -59179,24 +59051,24 @@ Pointers_55357:
 	dw $0
 
 Data_5535d:
-	db "(たたかえる) ろほﾞほﾟん(かﾞ)", $0
+	dstr "(たたかえる) ろほﾞほﾟん(かﾞ)"
 
 Data_55370:
-	db "(いなくなるよ)", $0
+	dstr "(いなくなるよ)"
 
 Pointers_55379:
 	dw Data_5537d
 	dw $0
 
 Data_5537d:
-	db "(ほかんしたよ)", $0
+	dstr "(ほかんしたよ)"
 
 Pointers_55386:
 	dw Data_5538a
 	dw $0
 
 Data_5538a:
-	db "(そいつは えらへﾞないよ)!", $0
+	dstr "(そいつは えらへﾞないよ)!"
 
 Func_5539a: ; 5539a (15:539a)
 	push af
@@ -60170,49 +60042,43 @@ Func_55ba5: ; 55ba5 (15:5ba5)
 	ret
 
 Data_55bfe:
-	db " ", $0
+	dstr " "
 
 Data_55c00:
-	db ":LV", $0
+	dstr ":LV"
 
 Data_55c04:
-	db " ", $0
+	dstr " "
 
 Data_55c06:
-	db "タイフﾟ:", $0
+	dstr "タイフﾟ:"
 
 Data_55c0c:
-	db "CPU:"
-	TX_CALL
-	db $0
+	dstr "CPU:%s"
 
 Data_55c13:
-	db "E", $0
+	dstr "E"
 
 Data_55c15:
-	db "/", $0
+	dstr "/"
 
 Data_55c17:
-	db "/", $0
+	dstr "/"
 
 Data_55c19:
-	db "(こうけﾞき)", $0
+	dstr "(こうけﾞき)"
 
 Data_55c21:
-	db "(ほﾞうきﾞょ)", $0
+	dstr "(ほﾞうきﾞょ)"
 
 Data_55c2a:
-	db "(すはﾞやさ)", $0
+	dstr "(すはﾞやさ)"
 
 Data_55c32:
-	db "E*P:"
-	TX_UNUM
-	db $0
+	dstr "E*P:%ld"
 
 Data_55c3a:
-	db "(あと)"
-	TX_SNUM
-	db $0
+	dstr "(あと)%d"
 
 Func_55c41:
 	push hl
@@ -60889,7 +60755,7 @@ Func_5615c: ; 5615c (15:615c)
 	ret
 
 Data_56166:
-	db "(のこり)RAM", $0
+	dstr "(のこり)RAM"
 
 Func_5616f:
 	ld c, l
@@ -61505,16 +61371,16 @@ Func_5664b: ; 5664b (15:664b)
 	ret
 
 Data_56656:
-	db "(を ひきたﾞしたよ)", $0
+	dstr "(を ひきたﾞしたよ)"
 
 Data_56662:
-	db "(を ほかんしたよ)", $0
+	dstr "(を ほかんしたよ)"
 
 Data_5666d:
-	db "(これいしﾞょう ひきたﾞせないよ)", $0
+	dstr "(これいしﾞょう ひきたﾞせないよ)"
 
 Data_56680:
-	db "(これいしﾞょう ほかんてﾞきないよ)", $0
+	dstr "(これいしﾞょう ほかんてﾞきないよ)"
 
 StartMenu_DrawMenu:
 	push hl
@@ -61827,47 +61693,46 @@ Func_56902: ; 56902 (15:6902)
 	ret
 
 Data_56981:
-	db " ", $0
+	dstr " "
 
 Data_56983:
-	db ":", $0
+	dstr ":"
 
 Data_56985:
-	db "ソフト(なし)", $0
+	dstr "ソフト(なし)"
 
 Data_5698d:
-	db "(しんかしない)", $0
+	dstr "(しんかしない)"
 
 Data_56996:
-	db "(しんかする あと)", $0
+	dstr "(しんかする あと)"
 
 Data_569a1:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_569a4:
-	db "(ひかってる)", $0
+	dstr "(ひかってる)"
 
 Data_569ac:
-	db "ハﾟーツ", $0
+	dstr "ハﾟーツ"
 
 Data_569b1:
-	db "M", $0
+	dstr "M"
 
 Data_569b3:
-	db "(こうけﾞき )", $0
+	dstr "(こうけﾞき )"
 
 Data_569bc:
-	db "(ほﾞうきﾞょ )", $0
+	dstr "(ほﾞうきﾞょ )"
 
 Data_569c6:
-	db "(すはﾞやさ )", $0
+	dstr "(すはﾞやさ )"
 
 Data_569cf:
-	db "ソフト", $0
+	dstr "ソフト"
 
 Data_569d3:
-	db "(わさﾞ)", $0
+	dstr "(わさﾞ)"
 
 Func_569d9: ; 569d9 (15:69d9)
 	push hl
@@ -61968,19 +61833,19 @@ Func_56a21: ; 56a21 (15:6a21)
 	ret
 
 Data_56a9c:
-	db "(こうけﾞき )", $0
+	dstr "(こうけﾞき )"
 
 Data_56aa5:
-	db "(ほﾞうきﾞょ )", $0
+	dstr "(ほﾞうきﾞょ )"
 
 Data_56aaf:
-	db "(すはﾞやさ )", $0
+	dstr "(すはﾞやさ )"
 
 Data_56ab8:
-	db "RAM:", $0
+	dstr "RAM:"
 
 Data_56abd:
-	db "M", $0
+	dstr "M"
 
 Func_56abf: ; 56abf (15:6abf)
 	push hl
@@ -62041,7 +61906,7 @@ Func_56abf: ; 56abf (15:6abf)
 	ret
 
 Data_56b33:
-	db "M", $0
+	dstr "M"
 
 Func_56b35: ; 56b35 (15:6b35)
 	push af
@@ -62075,7 +61940,7 @@ Func_56b8d: ; 56b8d (15:6b8d)
 SECTION "Text_56b9c", ROMX [$6b9c], BANK [$15]
 INCLUDE "charmap2.asm"
 Text_56b9c:
-	db "アタック", $00
+	dstr "アタック"
 
 SECTION "Bank 15, 2", ROMX [$6ba1], BANK [$15]
 INCLUDE "charmap.asm"
@@ -62422,8 +62287,7 @@ Func_5712f: ; 5712f (15:712f)
 	ret
 
 Data_571bb:
-	TX_SNUM
-	db "M", $0
+	dstr "%dM"
 
 Func_571bf:
 	push hl
@@ -63019,61 +62883,52 @@ Func_575b5: ; 575b5 (15:75b5)
 	ret
 
 Data_57655:
-	db "ヒﾞル", $0
+	dstr "ヒﾞル"
 
 Data_57659:
-	db "  "
-	TX_SNUM
-	db "(かい)", $0
+	dstr "  %d(かい)"
 
 Data_57662:
-	db " "
-	TX_SNUM
-	db "(かい)", $0
+	dstr " %d(かい)"
 
 Data_5766a:
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Data_5766d:
-	db "クﾞレイテスト", $0
+	dstr "クﾞレイテスト"
 
 Data_57675:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_57678:
-	db "?", $0
+	dstr "?"
 
 Data_5767a:
-	db "クﾞレイテスト", $0
+	dstr "クﾞレイテスト"
 
 Data_57682:
-	TX_SNUM
-	db "(に)", $0
+	dstr "%d(に)"
 
 Data_57688:
-	db "(ちょうせんかのう)", $0
+	dstr "(ちょうせんかのう)"
 
 Data_57693:
-	db "(しょしﾞきん) ", $0
+	dstr "(しょしﾞきん) "
 
 Data_5769d:
-	TX_UNUM
-	db "G", $0
+	dstr "%ldG"
 
 Data_576a2:
-	db "ロホﾞホﾟン(のかすﾞ) ", $0
+	dstr "ロホﾞホﾟン(のかすﾞ) "
 
 Data_576b0:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_576b3:
-	db "フﾟレイ(しﾞかん) ", $0
+	dstr "フﾟレイ(しﾞかん) "
 
 Data_576bf:
-	db ":", $0
+	dstr ":"
 
 Func_576c1: ; 576c1 (15:76c1)
 	push hl
@@ -63322,10 +63177,10 @@ Func_57840: ; 57840 (15:7840)
 	ret
 
 Data_57871:
-	db "(みつけたかすﾞ)", $0
+	dstr "(みつけたかすﾞ)"
 
 Data_5787b:
-	db "(つかまえたかすﾞ)", $0
+	dstr "(つかまえたかすﾞ)"
 
 Pointers_57886:
 	dw Data_5789e
@@ -63342,40 +63197,40 @@ Pointers_57886:
 	dw Data_578dc
 
 Data_5789e:
-	db "ノーマル", $0
+	dstr "ノーマル"
 
 Data_578a3:
-	db "(ほのお)", $0
+	dstr "(ほのお)"
 
 Data_578a9:
-	db "(みすﾞ)", $0
+	dstr "(みすﾞ)"
 
 Data_578af:
-	db "(かせﾞ)", $0
+	dstr "(かせﾞ)"
 
 Data_578b5:
-	db "(つち)", $0
+	dstr "(つち)"
 
 Data_578ba:
-	db "(かみなり)", $0
+	dstr "(かみなり)"
 
 Data_578c1:
-	db "(こおり)", $0
+	dstr "(こおり)"
 
 Data_578c7:
-	db "(せい)", $0
+	dstr "(せい)"
 
 Data_578cc:
-	db "(しﾞゃ)", $0
+	dstr "(しﾞゃ)"
 
 Data_578d2:
-	db "(りく)", $0
+	dstr "(りく)"
 
 Data_578d7:
-	db "(うみ)", $0
+	dstr "(うみ)"
 
 Data_578dc:
-	db "(そら)", $0
+	dstr "(そら)"
 
 Data_578e1:
 	dr $578e1, $578e9
@@ -63741,44 +63596,43 @@ Func_57b8e: ; 57b8e (15:7b8e)
 	ret
 
 Data_57b99:
-	db "(ふﾞそﾞく)", $0
+	dstr "(ふﾞそﾞく)"
 
 Data_57ba1:
-	db "(しんちょう)", $0
+	dstr "(しんちょう)"
 
 Data_57ba9:
-	db "(たいしﾞゅう)", $0
+	dstr "(たいしﾞゅう)"
 
 Data_57bb2:
-	db "(そﾞくせい)", $0
+	dstr "(そﾞくせい)"
 
 Data_57bba:
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Data_57bbd:
-	db "(しょう)", $0
+	dstr "(しょう)"
 
 Data_57bc3:
-	db "(ちゅう)", $0
+	dstr "(ちゅう)"
 
 Data_57bc9:
-	db "(たﾞい)", $0
+	dstr "(たﾞい)"
 
 Data_57bcf:
-	db "(きょたﾞい)", $0
+	dstr "(きょたﾞい)"
 
 Data_57bd7:
-	db "(かるい)", $0
+	dstr "(かるい)"
 
 Data_57bdd:
-	db "(ふつう)", $0
+	dstr "(ふつう)"
 
 Data_57be3:
-	db "(おもい)", $0
+	dstr "(おもい)"
 
 Data_57be9:
-	db "(おもすきﾞ)", $0
+	dstr "(おもすきﾞ)"
 
 Func_57bf1: ; 57bf1 (15:7bf1)
 	push bc
@@ -63832,18 +63686,13 @@ Func_57c3d: ; 57c3d (15:7c3d)
 	ret
 
 Data_57c3e:
-	db "00"
-	TX_SNUM
-	db $0
+	dstr "00%d"
 
 Data_57c43:
-	db "0"
-	TX_SNUM
-	db $0
+	dstr "0%d"
 
 Data_57c47:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Func_57c4a: ; 57c4a (15:7c4a)
 	add sp, -$24
@@ -64196,10 +64045,10 @@ Pointers_58c20:
 	dw Data_58c30
 
 Data_58c24:
-	db "チッフﾟ(のこうしん)", $0
+	dstr "チッフﾟ(のこうしん)"
 
 Data_58c30:
-	db "(しんかのいらい)", $0
+	dstr "(しんかのいらい)"
 
 Data_58c3a:
 	dw 0
@@ -64230,13 +64079,13 @@ Pointers_58c68:
 	dw Data_58c87
 
 Data_58c6e:
-	db "(けんきゅうとうし)", $0
+	dstr "(けんきゅうとうし)"
 
 Data_58c79:
-	db "ロホﾞホﾟン(こうにゅう)", $0
+	dstr "ロホﾞホﾟン(こうにゅう)"
 
 Data_58c87:
-	db "ロホﾞホﾟン(はﾞいきゃく)", $0
+	dstr "ロホﾞホﾟン(はﾞいきゃく)"
 
 Data_58c96: ; 58c96
 	dw 0
@@ -64384,40 +64233,40 @@ Pointers_58d95:
 	dw Data_58df4
 
 Data_58dad:
-	db "(おひつしﾞ)", $0
+	dstr "(おひつしﾞ)"
 
 Data_58db5:
-	db "(おうし)", $0
+	dstr "(おうし)"
 
 Data_58dbb:
-	db "(ふたこﾞ)", $0
+	dstr "(ふたこﾞ)"
 
 Data_58dc2:
-	db "(かに)", $0
+	dstr "(かに)"
 
 Data_58dc7:
-	db "(しし)", $0
+	dstr "(しし)"
 
 Data_58dcc:
-	db "(おとめ)", $0
+	dstr "(おとめ)"
 
 Data_58dd2:
-	db "(てんひﾞん)", $0
+	dstr "(てんひﾞん)"
 
 Data_58dda:
-	db "(さそり)", $0
+	dstr "(さそり)"
 
 Data_58de0:
-	db "(いて)", $0
+	dstr "(いて)"
 
 Data_58de5:
-	db "(やきﾞ)", $0
+	dstr "(やきﾞ)"
 
 Data_58deb:
-	db "(みすﾞかﾞめ)", $0
+	dstr "(みすﾞかﾞめ)"
 
 Data_58df4:
-	db "(うお)", $0
+	dstr "(うお)"
 
 Func_58df9: ; 58df9 (16:4df9)
 	add sp, -$1a
@@ -64663,56 +64512,53 @@ Func_58fd1: ; 58fd1 (16:4fd1)
 	ret
 
 Data_58fe6:
-	db "(しゃちょう) ", $0
+	dstr "(しゃちょう) "
 
 Data_58fef:
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Data_58ff2:
-	db "ロホﾞホﾟン(のかすﾞ) ", $0
+	dstr "ロホﾞホﾟン(のかすﾞ) "
 
 Data_59000:
-	db "(たい)", $0
+	dstr "(たい)"
 
 Data_59005:
-	db "(しょしﾞきん) "
-	TX_UNUM
-	db "G", $0
+	dstr "(しょしﾞきん) %ldG"
 
 Data_59013:
-	db "フﾟレイ(しﾞかん) ", $0
+	dstr "フﾟレイ(しﾞかん) "
 
 Data_5901f:
-	db ":", $0
+	dstr ":"
 
 Pointers_59021:
 	dw Data_59025
 	dw $0
 
 Data_59025:
-	db "チッフﾟ(をこうしんしました)", $0
+	dstr "チッフﾟ(をこうしんしました)"
 
 Pointers_59035:
 	dw Data_59039
 	dw $0
 
 Data_59039:
-	db "(おかねかﾞ たりないよ)", $0
+	dstr "(おかねかﾞ たりないよ)"
 
 Pointers_59047:
 	dw Data_5904b
 	dw $0
 
 Data_5904b:
-	db "(これいしﾞょう こうしんてﾞきないよ)", $0
+	dstr "(これいしﾞょう こうしんてﾞきないよ)"
 
 Pointers_59060:
 	dw Data_59064
 	dw $0
 
 Data_59064:
-	db "スクラッフﾟ(に なっているよ)", $0
+	dstr "スクラッフﾟ(に なっているよ)"
 
 Data_59075:
 	db 2, 4, 8, 16, 32, 64
@@ -65137,30 +64983,28 @@ Func_59457: ; 59457 (16:5457)
 	ret
 
 Data_5945a:
-	db "(しょしﾞきん)", $0
+	dstr "(しょしﾞきん)"
 
 Data_59463:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_59466:
-	db "チッフﾟ(へ)", $0
+	dstr "チッフﾟ(へ)"
 
 Data_5946e:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_59471:
-	db "00G (ひつようてﾞす)", $0
+	dstr "00G (ひつようてﾞす)"
 
 Data_5947f:
-	db "チッフﾟ(をこうしんしますか?)", $0
+	dstr "チッフﾟ(をこうしんしますか?)"
 
 Data_59490:
-	db "レヘﾞル(ふﾞそく)", $0
+	dstr "レヘﾞル(ふﾞそく)"
 
 Data_5949b:
-	db "(しょしﾞきん)", $0
+	dstr "(しょしﾞきん)"
 
 Func_594a4: ; 594a4 (16:54a4)
 	ld a, l
@@ -65278,34 +65122,22 @@ Func_59577: ; 59577 (16:5577)
 	ret
 
 Data_59578:
-	db "      "
-	TX_UNUM
-	db "G", $0
+	dstr "      %ldG"
 
 Data_59583:
-	db "     "
-	TX_UNUM
-	db "G", $0
+	dstr "     %ldG"
 
 Data_5958d:
-	db "    "
-	TX_UNUM
-	db "G", $0
+	dstr "    %ldG"
 
 Data_59596:
-	db "   "
-	TX_UNUM
-	db "G", $0
+	dstr "   %ldG"
 
 Data_5959e:
-	db "  "
-	TX_UNUM
-	db "G", $0
+	dstr "  %ldG"
 
 Data_595a5:
-	db " "
-	TX_UNUM
-	db "G", $0
+	dstr " %ldG"
 
 Func_595ab:
 	push hl
@@ -66079,45 +65911,43 @@ Func_59c25: ; 59c25 (16:5c25)
 	ret
 
 Data_59c33:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_59c36:
-	db "V", $0
+	dstr "V"
 
 Data_59c38:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_59c3b:
-	db "(を) ", $0
+	dstr "(を) "
 
 Data_59c40:
-	db "(に)", $0
+	dstr "(に)"
 
 Data_59c44:
-	db "(しんか させる?)", $0
+	dstr "(しんか させる?)"
 
 Pointers_59c4f:
 	dw Data_59c53
 	dw $0
 
 Data_59c53:
-	db "(これいしﾞょう とうし てﾞきないよ)", $0
+	dstr "(これいしﾞょう とうし てﾞきないよ)"
 
 Pointers_59c68:
 	dw Data_59c6c
 	dw $0
 
 Data_59c6c:
-	db "(おかねかﾞ たりないよ)", $0
+	dstr "(おかねかﾞ たりないよ)"
 
 Pointers_59c7a:
 	dw Data_59c7e
 	dw $0
 
 Data_59c7e:
-	db "(とうし しました)", $0
+	dstr "(とうし しました)"
 
 Func_59c89:
 	push bc
@@ -66312,21 +66142,19 @@ Func_59e3e: ; 59e3e (16:5e3e)
 	ret
 
 Data_59e42:
-	db "(しょしﾞきん)", $0
+	dstr "(しょしﾞきん)"
 
 Data_59e4b:
-	db "(とうし)レヘﾞル", $0
+	dstr "(とうし)レヘﾞル"
 
 Data_59e55:
-	db " "
-	TX_SNUM
-	db $0
+	dstr " %d"
 
 Data_59e59:
-	db "2000G (ひつようてﾞす)", $0
+	dstr "2000G (ひつようてﾞす)"
 
 Data_59e69:
-	db "(とうしを おこないますか)?", $0
+	dstr "(とうしを おこないますか)?"
 
 Func_59e79:
 	push hl
@@ -66611,11 +66439,10 @@ Func_5a0b8: ; 5a0b8 (16:60b8)
 	ret
 
 Data_5a0c3:
-	TX_SNUM
-	db "コﾞールトﾞ(てﾞ)", $0
+	dstr "%dコﾞールトﾞ(てﾞ)"
 
 Data_5a0d0:
-	db "(かいとるけとﾞ いいかい)?", $0
+	dstr "(かいとるけとﾞ いいかい)?"
 
 Func_5a0e0:: ; 5a0e0 (16:60e0)
 	push af
@@ -67205,47 +67032,43 @@ Func_5a855: ; 5a855 (16:6855)
 	ret
 
 Data_5a860:
-	db "(ねたﾞん)", $0
+	dstr "(ねたﾞん)"
 
 Data_5a867:
-	db "(しきん)", $0
+	dstr "(しきん)"
 
 Data_5a86d:
-	db "L "
-	TX_SNUM
-	db $0
+	dstr "L %d"
 
 Data_5a872:
-	db "L"
-	TX_SNUM
-	db $0
+	dstr "L%d"
 
 Data_5a876:
-	db "(わかﾞ) (けんきゅうしﾞょ)", $0
+	dstr "(わかﾞ) (けんきゅうしﾞょ)"
 
 Data_5a887:
-	db "(しﾞまんの) ロホﾞホﾟン(たﾞよ)", $0
+	dstr "(しﾞまんの) ロホﾞホﾟン(たﾞよ)"
 
 Pointers_5a89b:
 	dw Data_5a89f
 	dw $0
 
 Data_5a89f:
-	db "(これいしﾞょう) ロホﾞホﾟン(は かえないよ)", $0
+	dstr "(これいしﾞょう) ロホﾞホﾟン(は かえないよ)"
 
 Pointers_5a8b9:
 	dw Data_5a8bd
 	dw $0
 
 Data_5a8bd:
-	db "(こﾞめん またﾞてﾞきてないんたﾞ)", $0
+	dstr "(こﾞめん またﾞてﾞきてないんたﾞ)"
 
 Pointers_5a8d1:
 	dw Data_5a8d5
 	dw $0
 
 Data_5a8d5:
-	db "(おかねかﾞ たりないよ)", $0
+	dstr "(おかねかﾞ たりないよ)"
 
 Pointers_5a8e3:
 	dw Data_5a8e9
@@ -67253,10 +67076,10 @@ Pointers_5a8e3:
 	dw $0
 
 Data_5a8e9:
-	db "(そうかい)", $0
+	dstr "(そうかい)"
 
 Data_5a8f0:
-	db "(それは さﾞんねんたﾞね)", $0
+	dstr "(それは さﾞんねんたﾞね)"
 
 Pointers_5a8ff:
 	dw Data_5a905
@@ -67264,17 +67087,17 @@ Pointers_5a8ff:
 	dw $0
 
 Data_5a905:
-	db "(ありかﾞとう けんきゅうに やくたﾞつよ)", $0
+	dstr "(ありかﾞとう けんきゅうに やくたﾞつよ)"
 
 Data_5a91c:
-	db "(ほかにも うってくれるかい?)", $0
+	dstr "(ほかにも うってくれるかい?)"
 
 Pointers_5a92d:
 	dw Data_5a931
 	dw $0
 
 Data_5a931:
-	db "(ありかﾞとう つくったかいかﾞ あったね)", $0
+	dstr "(ありかﾞとう つくったかいかﾞ あったね)"
 
 Pointers_5a948:
 	dw Data_5a94e
@@ -67282,10 +67105,10 @@ Pointers_5a948:
 	dw $0
 
 Data_5a94e:
-	db "(そうかい)", $0
+	dstr "(そうかい)"
 
 Data_5a955:
-	db "(ほかにも ようはある?)", $0
+	dstr "(ほかにも ようはある?)"
 
 Func_5a963: ; 5a963 (16:6963)
 	push af
@@ -67675,7 +67498,7 @@ Func_5ac52: ; 5ac52 (16:6c52)
 	ret
 
 Data_5ac60:
-	db "(かうかい?)", $0
+	dstr "(かうかい?)"
 
 Func_5ac68: ; 5ac68 (16:6c68)
 	add sp, -$24
@@ -67817,7 +67640,7 @@ Func_5adbe: ; 5adbe (16:6dbe)
 	ret
 
 Data_5adc1:
-	db "(ひかりを あてるかい)", $0
+	dstr "(ひかりを あてるかい)"
 
 Func_5adce: ; 5adce (16:6dce)
 	ld l, $12
@@ -68316,16 +68139,16 @@ Func_5b196: ; 5b196 (16:7196)
 	ret
 
 Data_5b1c6:
-	db "(しﾞふﾞん)", $0
+	dstr "(しﾞふﾞん)"
 
 Data_5b1ce:
-	db "(あいて)", $0
+	dstr "(あいて)"
 
 Data_5b1d4:
-	db "(こうかんしﾞっこう)", $0
+	dstr "(こうかんしﾞっこう)"
 
 Data_5b1e0:
-	db "(こうかんちゅうし)", $0
+	dstr "(こうかんちゅうし)"
 
 Func_5b1eb: ; 5b1eb (16:71eb)
 	push bc
@@ -68615,8 +68438,7 @@ Func_5b3b9: ; 5b3b9 (16:73b9)
 	ret
 
 Data_5b3cb:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_5b3ce:
 	ld de, $2
@@ -69081,7 +68903,7 @@ Func_5b83d: ; 5b83d (16:783d)
 	ret
 
 Data_5b848:
-	db "(こうかんてﾞきないよ)", $0
+	dstr "(こうかんてﾞきないよ)"
 
 Func_5b855: ; 5b855 (16:7855)
 	push af
@@ -69172,28 +68994,28 @@ Func_5b918: ; 5b918 (16:7918)
 	ret
 
 Data_5b91a:
-	db " ", $0
+	dstr " "
 
 Pointers_5b91c:
 	dw Data_5b920
 	dw $0
 
 Data_5b920:
-	db "(その)ロホﾞホﾟン (は えらへﾞないよ)", $0
+	dstr "(その)ロホﾞホﾟン (は えらへﾞないよ)"
 
 Pointers_5b937:
 	dw Data_5b93b
 	dw $0
 
 Data_5b93b:
-	db "ロホﾞホﾟン(を えらんてﾞないよ)", $0
+	dstr "ロホﾞホﾟン(を えらんてﾞないよ)"
 
 Pointers_5b94e:
 	dw Data_5b952
 	dw $0
 
 Data_5b952:
-	db "(こうかんしたよ!)", $0
+	dstr "(こうかんしたよ!)"
 
 Func_5b95d: ; 5b95d (16:795d)
 	push af
@@ -69909,54 +69731,46 @@ Func_5bf82: ; 5bf82 (16:7f82)
 	ret
 
 Data_5bfb3:
-	db "???", $0
+	dstr "???"
 
 Data_5bfb7:
-	db ":LV", $0
+	dstr ":LV"
 
 Data_5bfbb:
-	db " ", $0
+	dstr " "
 
 Data_5bfbd:
-	db "E", $0
+	dstr "E"
 
 Data_5bfbf:
-	db "/", $0
+	dstr "/"
 
 Data_5bfc1:
-	db "/", $0
+	dstr "/"
 
 Data_5bfc3:
-	db "(こうけﾞき)", $0
+	dstr "(こうけﾞき)"
 
 Data_5bfcb:
-	db "(ほﾞうきﾞょ)", $0
+	dstr "(ほﾞうきﾞょ)"
 
 Data_5bfd4:
-	db "(すはﾞやさ)", $0
+	dstr "(すはﾞやさ)"
 
 Data_5bfdc:
-	db "タイフﾟ:", $0
+	dstr "タイフﾟ:"
 
 Data_5bfe2:
-	db "CPU:"
-	TX_CALL
-	db $0
+	dstr "CPU:%s"
 
 Data_5bfe9:
-	db "E*P:"
-	TX_UNUM
-	db $0
+	dstr "E*P:%ld"
 
 Data_5bff1:
-	db "E*P:"
-	TX_UNUM
-	db $0
+	dstr "E*P:%ld"
 
 Data_5bff9:
-	db "(あと)"
-	TX_SNUM
-	db $0
+	dstr "(あと)%d"
 
 SECTION "Bank 17", ROMX, BANK [$17]
 Func_5c000:
@@ -72000,7 +71814,7 @@ Func_5d07e: ; 5d07e (17:507e)
 	ret
 
 Data_5d084:
-	db "ハﾞトル メッセーシﾞ オーハﾞー", $0
+	dstr "ハﾞトル メッセーシﾞ オーハﾞー"
 
 Func_5d096: ; 5d096 (17:5096)
 	push bc
@@ -72601,7 +72415,7 @@ Func_5d4a2: ; 5d4a2 (17:54a2)
 	ret
 
 Data_5d4a4:
-	db " ", $0
+	dstr " "
 
 Func_5d4a6:
 	push hl
@@ -72832,31 +72646,31 @@ Func_5d657: ; 5d657 (17:5657)
 	ret
 
 Data_5d65a:
-	db "Hp", $0
+	dstr "Hp"
 
 Data_5d65d:
-	db "/", $0
+	dstr "/"
 
 Data_5d65f:
-	db "Ep", $0
+	dstr "Ep"
 
 Data_5d662:
-	db "/", $0
+	dstr "/"
 
 Data_5d664:
-	db "LV", $0
+	dstr "LV"
 
 Data_5d667:
-	db ":", $0
+	dstr ":"
 
 Data_5d669:
-	db "(ひかっている)", $0
+	dstr "(ひかっている)"
 
 Data_5d672:
-	db "エネ:", $0
+	dstr "エネ:"
 
 Data_5d676:
-	db "(しんか しない)", $0
+	dstr "(しんか しない)"
 
 Data_5d680:
 	dr $5d680, $5d684
@@ -73235,22 +73049,21 @@ Func_5d8df: ; 5d8df (17:58df)
 	ret
 
 Data_5d909:
-	db " ", $0
+	dstr " "
 
 
 Data_5d90b:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Pointers_5d90e:
 	dw Data_5d912
 	dw Data_5d919
 
 Data_5d912:
-	db "(こうかん)", $0
+	dstr "(こうかん)"
 
 Data_5d919:
-	db "ステータス", $0
+	dstr "ステータス"
 
 Func_5d91f:
 	push hl
@@ -73554,15 +73367,13 @@ Func_5db00: ; 5db00 (17:5b00)
 	ret
 
 Data_5db13:
-	db " ", $0
+	dstr " "
 
 Data_5db15:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_5db18:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_5db1b: ; 5db1b (17:5b1b)
 	push af
@@ -73622,25 +73433,25 @@ Func_5db9b: ; 5db9b (17:5b9b)
 	ret
 
 Data_5db9e:
-	db "         ", $0
+	dstr "         "
 
 Data_5dba8:
-	db "スクラッフﾟ(に)", $0
+	dstr "スクラッフﾟ(に)"
 
 Data_5dbb2:
-	db "(なっている)", $0
+	dstr "(なっている)"
 
 Data_5dbba:
-	db "(そいつは)", $0
+	dstr "(そいつは)"
 
 Data_5dbc1:
-	db "(たたかっている)", $0
+	dstr "(たたかっている)"
 
 Data_5dbcb:
-	db "(そいつは)", $0
+	dstr "(そいつは)"
 
 Data_5dbd2:
-	db "(こうかんてﾞきる)", $0
+	dstr "(こうかんてﾞきる)"
 
 Func_5dbdd:
 	push bc
@@ -73910,10 +73721,10 @@ Pointers_5dde3:
 	dw $0
 
 Data_5dde7:
-	db "Aホﾞタン(てﾞ)ステータス(かﾞみれるよ)", $0
+	dstr "Aホﾞタン(てﾞ)ステータス(かﾞみれるよ)"
 
 Data_5ddfe:
-	db "セレクトホﾞタン(てﾞこうかんてﾞきるよ)", $0
+	dstr "セレクトホﾞタン(てﾞこうかんてﾞきるよ)"
 
 Func_5de14: ; 5de14 (17:5e14)
 	push hl
@@ -74129,19 +73940,19 @@ Func_5df96: ; 5df96 (17:5f96)
 	ret
 
 Data_5dfab:
-	db "(とﾞの)ロホﾞホﾟン(に)", $0
+	dstr "(とﾞの)ロホﾞホﾟン(に)"
 
 Data_5dfba:
-	db "(しますか)?", $0
+	dstr "(しますか)?"
 
 Data_5dfc2:
-	db "(とﾞの)ロホﾞホﾟン(にする)?", $0
+	dstr "(とﾞの)ロホﾞホﾟン(にする)?"
 
 Data_5dfd4:
-	db "(とﾞの)ロホﾞホﾟン(をあけﾞる)?", $0
+	dstr "(とﾞの)ロホﾞホﾟン(をあけﾞる)?"
 
 Data_5dfe8:
-	db "(とﾞの)ロホﾞホﾟン(につかう)?", $0
+	dstr "(とﾞの)ロホﾞホﾟン(につかう)?"
 
 Func_5dffb:
 	ld a, [wc395]
@@ -74447,15 +74258,14 @@ Func_5e266: ; 5e266 (17:6266)
 	ret
 
 Data_5e271:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Pointers_5e274:
 	dw Data_5e278
 	dw $0
 
 Data_5e278:
-	db "(こうかんしたよ)", $0
+	dstr "(こうかんしたよ)"
 
 Pointers_5e282:
 	dw Data_5e288
@@ -74463,10 +74273,10 @@ Pointers_5e282:
 	dw $0
 
 Data_5e288:
-	db "(おなしﾞ)ロホﾞホﾟン(は)", $0
+	dstr "(おなしﾞ)ロホﾞホﾟン(は)"
 
 Data_5e298:
-	db "(こうかんてﾞきないよ)", $0
+	dstr "(こうかんてﾞきないよ)"
 
 Func_5e2a5:
 	push hl
@@ -75635,7 +75445,7 @@ Func_605fc: ; 605fc (18:45fc)
 	ret
 
 Data_60619: ; 60619
-	db " (かﾞ)", $0
+	dstr " (かﾞ)"
 
 INCLUDE "engine/map_text_18.asm"
 
@@ -76446,7 +76256,7 @@ Func_60e69: ; 60e69 (18:4e69)
 	ret
 
 Data_60e6f:
-	db "ODE_TEL", $0
+	dstr "ODE_TEL"
 
 Data_60e77: ; 60e77
 	dr $60e77, $60e81
@@ -77786,15 +77596,13 @@ Func_61d23: ; 61d23 (18:5d23)
 	ret
 
 Data_61d32: ; 61d32
-	db " ", $0
+	dstr " "
 
 Data_61d34: ; 61d34
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_61d37: ; 61d37
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_61d3a: ; 61d3a
 	dr $61d3a, $61d3e
@@ -78013,10 +77821,10 @@ Func_61ef4: ; 61ef3
 	ret
 
 Data_61f11: ; 61f11
-	db "(はけんする) ロホﾞホﾟン(を)", $0
+	dstr "(はけんする) ロホﾞホﾟン(を)"
 
 Data_61f23: ; 61f23
-	db "4(たい えらんてﾞくたﾞさい)", $0
+	dstr "4(たい えらんてﾞくたﾞさい)"
 
 Func_61f34: ; 61f34
 	push af
@@ -78105,12 +77913,10 @@ Func_61fae: ; 61fae (18:5fae)
 	ret
 
 Data_61fb2: ; 61fb2
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_61fb5: ; 61fb5
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_61fb8: ; 61fb8
 	push hl
@@ -78194,37 +78000,37 @@ Func_62068: ; 62068 (18:6068)
 	ret
 
 Data_6206a: ; 6206a
-	db "RAM:", $0
+	dstr "RAM:"
 
 Data_6206f: ; 6206f
-	db "(いりょく)", $0
+	dstr "(いりょく)"
 
 Data_62076: ; 62076
-	db "EP", $0
+	dstr "EP"
 
 Data_62079: ; 62079
-	db "(こうけﾞき)   0", $0
+	dstr "(こうけﾞき)   0"
 
 Data_62085: ; 62085
-	db "(ほﾞうきﾞょ)   0", $0
+	dstr "(ほﾞうきﾞょ)   0"
 
 Data_62092: ; 62092
-	db "(すはﾞやさ)   0", $0
+	dstr "(すはﾞやさ)   0"
 
 Data_6209e: ; 6209e
-	db "RAM:  0M", $0
+	dstr "RAM:  0M"
 
 Data_620a7: ; 620a7
-	db "(こうけﾞき)   0", $0
+	dstr "(こうけﾞき)   0"
 
 Data_620b3: ; 620b3
-	db "(ほﾞうきﾞょ)   0", $0
+	dstr "(ほﾞうきﾞょ)   0"
 
 Data_620c0: ; 620c0
-	db "(すはﾞやさ)   0", $0
+	dstr "(すはﾞやさ)   0"
 
 Data_620cc: ; 620cc
-	db "RAM:  0M", $0
+	dstr "RAM:  0M"
 
 Func_620d5: ; 620d5
 	push hl
@@ -78697,13 +78503,13 @@ Data_62482: ; 62482
 	dw Data_62486, $0
 
 Data_62486: ; 62486
-	db "(RAMかﾞたりないよ)", $0
+	dstr "(RAMかﾞたりないよ)"
 
 Data_62493: ; 62493
 	dw Data_62497, $0
 
 Data_62497: ; 62497
-	db "ソフト(かﾞ いっはﾟいてﾞ はすﾞせません)", $0
+	dstr "ソフト(かﾞ いっはﾟいてﾞ はすﾞせません)"
 
 Func_624af: ; 624af
 	push af
@@ -78964,10 +78770,10 @@ Func_626ff: ; 626ff (18:66ff)
 	ret
 
 Data_6273a: ; 6273a
-	db "(すへﾞてはすﾞして いいてﾞすか?)", $0
+	dstr "(すへﾞてはすﾞして いいてﾞすか?)"
 
 Data_6274e: ; 6274e
-	db "(を はすﾞしますか?)", $0
+	dstr "(を はすﾞしますか?)"
 
 Func_6275b: ; 6275b
 	push bc
@@ -81570,10 +81376,10 @@ Func_6819f: ; 6819f (1a:419f)
 	ret
 
 Data_681a2:
-	db "c", $0
+	dstr "c"
 
 Data_681a4:
-	db "*", $0
+	dstr "*"
 
 Func_681a6: ; 681a6 (1a:41a6)
 	ld a, [wFarCallDestBank]
@@ -81904,7 +81710,7 @@ Pointers_683a6:
 	dw $0
 
 Data_683aa:
-	db "(はけんする ちいきを えらんてﾞね)", $0
+	dstr "(はけんする ちいきを えらんてﾞね)"
 
 Func_683be: ; 683be (1a:43be)
 	ld l, $12
@@ -82539,69 +82345,52 @@ Func_68883: ; 68883 (1a:4883)
 	ret
 
 Data_68886:
-	db "(はけんちいき)", $0
+	dstr "(はけんちいき)"
 
 Data_6888f:
-	db "(はけんしﾞかん)", $0
+	dstr "(はけんしﾞかん)"
 
 Data_68899:
-	db "(はけん)ハﾟーティー", $0
+	dstr "(はけん)ハﾟーティー"
 
 Data_688a5:
-	db "(これてﾞいい?)", $0
+	dstr "(これてﾞいい?)"
 
 Data_688af:
-	TX_SNUM
-	TX_SNUM
-	db ":"
-	TX_SNUM
-	TX_SNUM
-	db $0
+	dstr "%d%d:%d%d"
 
 Data_688b9:
-	db "(しﾞかんを しらせますか)?", $0
+	dstr "(しﾞかんを しらせますか)?"
 
 Data_688c9:
-	db "(きかんしﾞかんは)", $0
+	dstr "(きかんしﾞかんは)"
 
 Data_688d4:
-	db " "
-	TX_SNUM
-	db "(かﾞつ)", $0
+	dstr " %d(かﾞつ)"
 
 Data_688dd:
-	TX_SNUM
-	db "(かﾞつ)", $0
+	dstr "%d(かﾞつ)"
 
 Data_688e5:
-	db " "
-	TX_SNUM
-	db "(にち)", $0
+	dstr " %d(にち)"
 
 Data_688ed:
-	TX_SNUM
-	db "(にち)", $0
+	dstr "%d(にち)"
 
 Data_688f4:
-	db " "
-	TX_SNUM
-	db ":", $0
+	dstr " %d:"
 
 Data_688f9:
-	TX_SNUM
-	db ":", $0
+	dstr "%d:"
 
 Data_688fd:
-	db "0"
-	TX_SNUM
-	db $0
+	dstr "0%d"
 
 Data_68901:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_68904:
-	db "(たﾞよ)", $0
+	dstr "(たﾞよ)"
 
 Func_6890a: ; 6890a (1a:490a)
 	push hl
@@ -82726,8 +82515,7 @@ Func_689f0: ; 689f0 (1a:49f0)
 	ret
 
 Data_68a28:
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Func_68a2b:
 	call Func_1fbe
@@ -82778,16 +82566,16 @@ Func_68a2b:
 	ret
 
 Data_68a98:
-	db "(はけんする しﾞかんを)", $0
+	dstr "(はけんする しﾞかんを)"
 
 Data_68aa6:
-	db "(にゅうりょく してくたﾞさい)", $0
+	dstr "(にゅうりょく してくたﾞさい)"
 
 Data_68ab7:
-	db "(はけんしﾞかん)", $0
+	dstr "(はけんしﾞかん)"
 
 Data_68ac1:
-	db ":", $0
+	dstr ":"
 
 Func_68ac3: ; 68ac3 (1a:4ac3)
 	push bc
@@ -82962,14 +82750,13 @@ Func_68bea: ; 68bea (1a:4bea)
 	ret
 
 Data_68beb:
-	db "b", $0
+	dstr "b"
 
 Data_68bed:
-	db "_", $0
+	dstr "_"
 
 Data_68bef:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Func_68bf2: ; 68bf2 (1a:4bf2)
 	ld a, [wc2f7]
@@ -83274,130 +83061,130 @@ Pointers_68da6:
 	dw $0
 
 Data_68dac:
-	db "(ちか1かい)", $0
+	dstr "(ちか1かい)"
 
 Data_68db4:
-	db "(そうこ)", $0
+	dstr "(そうこ)"
 
 Data_68dba:
-	db "(1かい)", $0
+	dstr "(1かい)"
 
 Data_68dc0:
-	db "(うけつけ)", $0
+	dstr "(うけつけ)"
 
 Data_68dc7:
-	db "(2かい)", $0
+	dstr "(2かい)"
 
 Data_68dcd:
-	db "アイテム(や)", $0
+	dstr "アイテム(や)"
 
 Data_68dd5:
-	db "(3かい)", $0
+	dstr "(3かい)"
 
 Data_68ddb:
-	db "ハﾟーツ(や)", $0
+	dstr "ハﾟーツ(や)"
 
 Data_68de3:
-	db "(4かい)", $0
+	dstr "(4かい)"
 
 Data_68de9:
-	db "(けんきゅうしﾞょ)", $0
+	dstr "(けんきゅうしﾞょ)"
 
 Data_68df4:
-	db "(5かい)", $0
+	dstr "(5かい)"
 
 Data_68dfa:
-	db "トイレ", $0
+	dstr "トイレ"
 
 Data_68dfe:
-	db "(6かい)", $0
+	dstr "(6かい)"
 
 Data_68e04:
-	db "ハﾞス", $0
+	dstr "ハﾞス"
 
 Data_68e08:
-	db "(7かい)", $0
+	dstr "(7かい)"
 
 Data_68e0e:
-	db "(こういしつ)", $0
+	dstr "(こういしつ)"
 
 Data_68e16:
-	db "(8かい)", $0
+	dstr "(8かい)"
 
 Data_68e1c:
-	db "(はけんしﾞょ)", $0
+	dstr "(はけんしﾞょ)"
 
 Data_68e25:
-	db "(9かい)", $0
+	dstr "(9かい)"
 
 Data_68e2b:
-	db "レクリエーションルーム", $0
+	dstr "レクリエーションルーム"
 
 Data_68e37:
-	db "(10かい)", $0
+	dstr "(10かい)"
 
 Data_68e3e:
-	db "ケﾞームコーナー", $0
+	dstr "ケﾞームコーナー"
 
 Data_68e47:
-	db "(11かい)", $0
+	dstr "(11かい)"
 
 Data_68e4e:
-	db "(かいきﾞしつ)", $0
+	dstr "(かいきﾞしつ)"
 
 Data_68e57:
-	db "(12かい)", $0
+	dstr "(12かい)"
 
 Data_68e5e:
-	db "リラックスルーム", $0
+	dstr "リラックスルーム"
 
 Data_68e67:
-	db "(13かい)", $0
+	dstr "(13かい)"
 
 Data_68e6e:
-	db "サウナ", $0
+	dstr "サウナ"
 
 Data_68e72:
-	db "(14かい)", $0
+	dstr "(14かい)"
 
 Data_68e79:
-	db "カウンセリンクﾞルーム", $0
+	dstr "カウンセリンクﾞルーム"
 
 Data_68e85:
-	db "(15かい)", $0
+	dstr "(15かい)"
 
 Data_68e8c:
-	db "(しちょうかくしつ)", $0
+	dstr "(しちょうかくしつ)"
 
 Data_68e97:
-	db "(16かい)", $0
+	dstr "(16かい)"
 
 Data_68e9e:
-	db "(あきへﾞや)", $0
+	dstr "(あきへﾞや)"
 
 Data_68ea6:
-	db "(17かい)", $0
+	dstr "(17かい)"
 
 Data_68ead:
-	db "(おうせつしつ)", $0
+	dstr "(おうせつしつ)"
 
 Data_68eb6:
-	db "(18かい)", $0
+	dstr "(18かい)"
 
 Data_68ebd:
-	db "(しゃちょうしつ)", $0
+	dstr "(しゃちょうしつ)"
 
 Data_68ec7:
-	db "(19かい)", $0
+	dstr "(19かい)"
 
 Data_68ece:
-	db "(てんしﾞしﾞょう)", $0
+	dstr "(てんしﾞしﾞょう)"
 
 Data_68ed9:
-	db "(20かい)", $0
+	dstr "(20かい)"
 
 Data_68ee0:
-	db "(てんほﾞうたﾞい)", $0
+	dstr "(てんほﾞうたﾞい)"
 
 Func_68eeb:
 	reg16swap de, hl
@@ -83743,13 +83530,13 @@ Func_690e3: ; 690e3 (1a:50e3)
 	ret
 
 Data_69114:
-	db "(ちか)", $0
+	dstr "(ちか)"
 
 Data_69119:
-	db "(ちか)", $0
+	dstr "(ちか)"
 
 Data_6911e:
-	db "(かいたﾞて)", $0
+	dstr "(かいたﾞて)"
 
 Data_69126:
 	dr $69126, $6912c
@@ -83942,15 +83729,13 @@ Func_69279: ; 69279 (1a:5279)
 	ret
 
 Data_6927c:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_6927f:
-	db " ", $0
+	dstr " "
 
 Data_69281:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_69284: ; 69284 (1a:5284)
 	push bc
@@ -84840,18 +84625,16 @@ Func_69878: ; 69878 (1a:5878)
 	ret
 
 Data_698e2:
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Data_698e5:
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Data_698e8:
-	db "(しゃちょう)", $0
+	dstr "(しゃちょう)"
 
 Data_698f0:
-	db "(こﾞようけんは なんてﾞすか)?", $0
+	dstr "(こﾞようけんは なんてﾞすか)?"
 
 Func_69902:
 	push hl
@@ -85155,37 +84938,37 @@ Func_69ae7: ; 69ae7 (1a:5ae7)
 	ret
 
 Data_69b31:
-	db "(せいせきL)", $0
+	dstr "(せいせきL)"
 
 Data_69b39:
-	db "ハﾞトラー", $0
+	dstr "ハﾞトラー"
 
 Data_69b3f:
-	db "シﾞャンハﾟー", $0
+	dstr "シﾞャンハﾟー"
 
 Data_69b47:
-	db "スヒﾟータﾞー", $0
+	dstr "スヒﾟータﾞー"
 
 Data_69b4f:
-	db "シールタﾞー", $0
+	dstr "シールタﾞー"
 
 Data_69b56:
-	db "ハﾟンチャー", $0
+	dstr "ハﾟンチャー"
 
 Data_69b5d:
-	db "(かち)", $0
+	dstr "(かち)"
 
 Data_69b62:
-	db "(まけ)", $0
+	dstr "(まけ)"
 
 Data_69b67:
-	db "(おうしﾞゃにおくる) ヘﾞルト", $0
+	dstr "(おうしﾞゃにおくる) ヘﾞルト"
 
 Data_69b78:
-	db "p", $0
+	dstr "p"
 
 Data_69b7a:
-	db "(れんしょうちゅう)!", $0
+	dstr "(れんしょうちゅう)!"
 
 Func_69b86: ; 69b86 (1a:5b86)
 	callba_hli Func_17470
@@ -85270,19 +85053,19 @@ Func_69bb9:
 	ret
 
 Data_69c49:
-	db "(こうかん)", $0
+	dstr "(こうかん)"
 
 Data_69c50:
-	db "(あけﾞる)", $0
+	dstr "(あけﾞる)"
 
 Data_69c57:
-	db "(もらう)", $0
+	dstr "(もらう)"
 
 Data_69c5d:
-	db "キッス(てﾞ おこなう)", $0
+	dstr "キッス(てﾞ おこなう)"
 
 Data_69c6a:
-	db "モートﾞ(を えらんてﾞくたﾞさい)", $0
+	dstr "モートﾞ(を えらんてﾞくたﾞさい)"
 
 Func_69c7d:
 	push bc
@@ -85398,8 +85181,7 @@ Func_69d0a: ; 69d0a (1a:5d0a)
 	ret
 
 Data_69d10:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_69d13: ; 69d13 (1a:5d13)
 	call Func_1fbe
@@ -85617,7 +85399,7 @@ Func_69e88: ; 69e88 (1a:5e88)
 	ret
 
 Data_69ed2:
-	db "ロホﾞホﾟン(を) (えらんてﾞね)", $0
+	dstr "ロホﾞホﾟン(を) (えらんてﾞね)"
 
 Func_69ee5: ; 69ee5 (1a:5ee5)
 	push hl
@@ -85735,14 +85517,14 @@ Pointers_69f88:
 	dw $0
 
 Data_69f8c:
-	db "(つうしん) エラー", $0
+	dstr "(つうしん) エラー"
 
 Pointers_69f97:
 	dw Data_69f9b
 	dw $0
 
 Data_69f9b:
-	db "モートﾞ(かﾞ ちかﾞうよ)", $0
+	dstr "モートﾞ(かﾞ ちかﾞうよ)"
 
 Pointers_69faa:
 	dw Data_69fb0
@@ -85750,10 +85532,10 @@ Pointers_69faa:
 	dw $0
 
 Data_69fb0:
-	db "ハﾟーティー(かﾞ いなくなるから)", $0
+	dstr "ハﾟーティー(かﾞ いなくなるから)"
 
 Data_69fc3:
-	db "(あけﾞられないよ)", $0
+	dstr "(あけﾞられないよ)"
 
 Pointers_69fce:
 	dw Data_69fd4
@@ -85761,10 +85543,10 @@ Pointers_69fce:
 	dw $0
 
 Data_69fd4:
-	db "(あいての)ハﾟーティー(かﾞ)", $0
+	dstr "(あいての)ハﾟーティー(かﾞ)"
 
 Data_69fe5:
-	db "(いなくなるのてﾞ もらえないよ)", $0
+	dstr "(いなくなるのてﾞ もらえないよ)"
 
 Pointers_69ff7:
 	dw Data_69ffd
@@ -85772,10 +85554,10 @@ Pointers_69ff7:
 	dw $0
 
 Data_69ffd:
-	db "(あいての)ハﾟーティー(かﾞ)", $0
+	dstr "(あいての)ハﾟーティー(かﾞ)"
 
 Data_6a00e:
-	db "(いっはﾟいなのてﾞ あけﾞられないよ)", $0
+	dstr "(いっはﾟいなのてﾞ あけﾞられないよ)"
 
 Pointers_6a023:
 	dw Data_6a029
@@ -85783,10 +85565,10 @@ Pointers_6a023:
 	dw $0
 
 Data_6a029:
-	db "ハﾟーティー(かﾞ いっはﾟいなのてﾞ)", $0
+	dstr "ハﾟーティー(かﾞ いっはﾟいなのてﾞ)"
 
 Data_6a03e:
-	db "(もらえないよ)", $0
+	dstr "(もらえないよ)"
 
 Pointers_6a047:
 	dw Data_6a04d
@@ -85794,10 +85576,10 @@ Pointers_6a047:
 	dw $0
 
 Data_6a04d:
-	db "(この)ロホﾞホﾟン(は)", $0
+	dstr "(この)ロホﾞホﾟン(は)"
 
 Data_6a05b:
-	db "(こうかんてﾞきないよ)", $0
+	dstr "(こうかんてﾞきないよ)"
 
 Pointers_6a068:
 	dw Data_6a06e
@@ -85805,10 +85587,10 @@ Pointers_6a068:
 	dw $0
 
 Data_6a06e:
-	db "(この)ロホﾞホﾟン(は)", $0
+	dstr "(この)ロホﾞホﾟン(は)"
 
 Data_6a07c:
-	db "(あけﾞられないよ)", $0
+	dstr "(あけﾞられないよ)"
 
 Pointers_6a087:
 	dw Data_6a08d
@@ -85816,10 +85598,10 @@ Pointers_6a087:
 	dw $0
 
 Data_6a08d:
-	db "(この)ロホﾞホﾟン(は)", $0
+	dstr "(この)ロホﾞホﾟン(は)"
 
 Data_6a09b:
-	db "(もらえないよ)", $0
+	dstr "(もらえないよ)"
 
 Pointers_6a0a4:
 	dw Data_6a0aa
@@ -85827,24 +85609,24 @@ Pointers_6a0a4:
 	dw $0
 
 Data_6a0aa:
-	db "(いきてる)ロホﾞホﾟン(かﾞ)", $0
+	dstr "(いきてる)ロホﾞホﾟン(かﾞ)"
 
 Data_6a0bb:
-	db "(いなくなるよ)", $0
+	dstr "(いなくなるよ)"
 
 Pointers_6a0c4:
 	dw Data_6a0c8
 	dw $0
 
 Data_6a0c8:
-	db "(もらえないよ)", $0
+	dstr "(もらえないよ)"
 
 Pointers_6a0d1:
 	dw Data_6a0d5
 	dw $0
 
 Data_6a0d5:
-	db "(せいしﾞょうに しゅうりょうしたよ)", $0
+	dstr "(せいしﾞょうに しゅうりょうしたよ)"
 
 Func_6a0e9: ; 6a0e9 (1a:60e9)
 	push hl
@@ -86992,16 +86774,16 @@ Func_6aa84: ; 6aa84 (1a:6a84)
 	ret
 
 Data_6aa8f:
-	db "ケﾞームホﾞーイ(を ちかつﾞけて)", $0
+	dstr "ケﾞームホﾞーイ(を ちかつﾞけて)"
 
 Data_6aaa2:
-	db "(とﾞちらかかﾞ) Bホﾞタン(を おしてね)", $0
+	dstr "(とﾞちらかかﾞ) Bホﾞタン(を おしてね)"
 
 Data_6aaba:
-	db "(ちゅうしするときは)", $0
+	dstr "(ちゅうしするときは)"
 
 Data_6aac6:
-	db "Bホﾞタン(を おしてね)", $0
+	dstr "Bホﾞタン(を おしてね)"
 
 Func_6aad4::
 	push af
@@ -87188,7 +86970,7 @@ Pointers_6ac2b:
 	dw $0
 
 Data_6ac2f:
-	db "(これいしﾞょう はけん てﾞきないよ)", $0
+	dstr "(これいしﾞょう はけん てﾞきないよ)"
 
 DispatchMenu:: ; 6ac44 (1a:6c44)
 	push bc
@@ -87951,10 +87733,10 @@ Func_6b2f4: ; 6b2f4 (1a:72f4)
 	ret
 
 Data_6b2ff:
-	db "(を そうひﾞしました)", $0
+	dstr "(を そうひﾞしました)"
 
 Data_6b30c:
-	db "(そうひﾞ てﾞきません)", $0
+	dstr "(そうひﾞ てﾞきません)"
 
 AttitudeMenu:: ; 6b31a (1a:731a)
 	push bc
@@ -88973,15 +88755,13 @@ Func_6ba04: ; 6ba04 (1a:7a04)
 	ret
 
 Data_6ba07:
-	db "(は)レヘﾞル(かﾞ)"
-	TX_SNUM
-	db $0
+	dstr "(は)レヘﾞル(かﾞ)%d"
 
 Data_6ba15:
-	db "(たちは )", $0
+	dstr "(たちは )"
 
 Data_6ba1c:
-	db "(を)", $0
+	dstr "(を)"
 
 Pointers_6ba20:
 	dw Data_6ba26
@@ -88989,10 +88769,10 @@ Pointers_6ba20:
 	dw $0
 
 Data_6ba26:
-	db "(はけんした)ハﾟーティー(は)", $0
+	dstr "(はけんした)ハﾟーティー(は)"
 
 Data_6ba37:
-	db "(かえってきているよ!)", $0
+	dstr "(かえってきているよ!)"
 
 Pointers_6ba44:
 	dw Data_6ba4a
@@ -89000,10 +88780,10 @@ Pointers_6ba44:
 	dw $0
 
 Data_6ba4a:
-	db "(はけんした)ハﾟーティー(は)", $0
+	dstr "(はけんした)ハﾟーティー(は)"
 
 Data_6ba5b:
-	db "(またﾞ かえってきて いないね#)", $0
+	dstr "(またﾞ かえってきて いないね#)"
 
 Pointers_6ba6e:
 	dw Data_6ba78
@@ -89013,30 +88793,30 @@ Pointers_6ba6e:
 	dw $0
 
 Data_6ba78:
-	db "(はけんした)ハﾟーティー(は)", $0
+	dstr "(はけんした)ハﾟーティー(は)"
 
 Data_6ba89:
-	db "(かえってきてはいるけとﾞ#)", $0
+	dstr "(かえってきてはいるけとﾞ#)"
 
 Data_6ba99:
-	db "ホﾞロホﾞロ(のしﾞょうたいたﾞね)", $0
+	dstr "ホﾞロホﾞロ(のしﾞょうたいたﾞね)"
 
 Data_6baac:
-	db "(むりを させすきﾞしﾞゃないの?)", $0
+	dstr "(むりを させすきﾞしﾞゃないの?)"
 
 Pointers_6babf:
 	dw Data_6bac3
 	dw $0
 
 Data_6bac3:
-	db "(その)ロホﾞホﾟン(は はけん されているよ)", $0
+	dstr "(その)ロホﾞホﾟン(は はけん されているよ)"
 
 Pointers_6badc:
 	dw Data_6bae0
 	dw $0
 
 Data_6bae0:
-	db "(あかﾞったよ)", $0
+	dstr "(あかﾞったよ)"
 
 Pointers_6bae9:
 	dw Data_6baf3
@@ -89046,16 +88826,16 @@ Pointers_6bae9:
 	dw $0
 
 Data_6baf3:
-	db "(こんかいの はけんてﾞ)レヘﾞル(の)", $0
+	dstr "(こんかいの はけんてﾞ)レヘﾞル(の)"
 
 Data_6bb08:
-	db "アッフﾟ(した) ロホﾞホﾟン(は いないね)", $0
+	dstr "アッフﾟ(した) ロホﾞホﾟン(は いないね)"
 
 Data_6bb20:
-	db "(らくを させすきﾞても)", $0
+	dstr "(らくを させすきﾞても)"
 
 Data_6bb2e:
-	db "レヘﾞル(は あかﾞらないよ)", $0
+	dstr "レヘﾞル(は あかﾞらないよ)"
 
 Pointers_6bb3e:
 	dw Data_6bb44
@@ -89063,17 +88843,17 @@ Pointers_6bb3e:
 	dw $0
 
 Data_6bb44:
-	db "(そうそう たひﾞのとちゅうてﾞ)", $0
+	dstr "(そうそう たひﾞのとちゅうてﾞ)"
 
 Data_6bb56:
-	db "(なにかを みつけてきたようたﾞね)", $0
+	dstr "(なにかを みつけてきたようたﾞね)"
 
 Pointers_6bb69:
 	dw Data_6bb6d
 	dw $0
 
 Data_6bb6d:
-	db "(みつけてきた)", $0
+	dstr "(みつけてきた)"
 
 Pointers_6bb76:
 	dw Data_6bb7c
@@ -89081,24 +88861,24 @@ Pointers_6bb76:
 	dw $0
 
 Data_6bb7c:
-	db "(はけんしている)ハﾟーティー(は)", $0
+	dstr "(はけんしている)ハﾟーティー(は)"
 
 Data_6bb8f:
-	db "(いないよ)", $0
+	dstr "(いないよ)"
 
 Pointers_6bb96:
 	dw Data_6bb9a
 	dw $0
 
 Data_6bb9a:
-	db "(かえってきてるよ)", $0
+	dstr "(かえってきてるよ)"
 
 Pointers_6bba5:
 	dw Data_6bba9
 	dw $0
 
 Data_6bba9:
-	db "(くみめの) ハﾟーティー", $0
+	dstr "(くみめの) ハﾟーティー"
 
 Pointers_6bbb7:
 	dw Data_6bbbd
@@ -89106,17 +88886,17 @@ Pointers_6bbb7:
 	dw $0
 
 Data_6bbbd:
-	db "(はけんにたﾞすときに たいりょくを)", $0
+	dstr "(はけんにたﾞすときに たいりょくを)"
 
 Data_6bbd1:
-	db "(かいふく させとくよ!)", $0
+	dstr "(かいふく させとくよ!)"
 
 Pointers_6bbdf:
 	dw Data_6bbe3
 	dw $0
 
 Data_6bbe3:
-	db "(いっはﾟいなのてﾞ すてた)", $0
+	dstr "(いっはﾟいなのてﾞ すてた)"
 
 Func_6bbf3: ; 6bbf3 (1a:7bf3)
 	push de
@@ -89326,14 +89106,10 @@ Func_6bddd: ; 6bddd (1a:7ddd)
 	ret
 
 Data_6bdde:
-	db "(はけんした) ハﾟーティー(は "
-	TX_SNUM
-	db "くみ)", $0
+	dstr "(はけんした) ハﾟーティー(は %dくみ)"
 
 Data_6bdf5:
-	db "("
-	TX_SNUM
-	db ")", $0
+	dstr "(%d)"
 
 Func_6bdfa: ; 6bdfa (1a:7dfa)
 	push af
@@ -90189,7 +89965,7 @@ Func_6c534: ; 6c534 (1b:4534)
 	ret
 
 Data_6c53a:
-	db "(たへﾞさせますか?)", $0
+	dstr "(たへﾞさせますか?)"
 
 Func_6c546:
 	push hl
@@ -91769,12 +91545,10 @@ Func_6d14d: ; 6d14d (1b:514d)
 	ret
 
 Data_6d153:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_6d156:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_6d159:
 	dr $6d159, $6d167
@@ -92387,7 +92161,7 @@ Func_6d62c: ; 6d62c (1b:562c)
 	ret
 
 Data_6d62f:
-	db "(ひきわけなのてﾞ もういちとﾞ)", $0
+	dstr "(ひきわけなのてﾞ もういちとﾞ)"
 
 Func_6d641: ; 6d641 (1b:5641)
 	ld a, [wOverworldTilemapSelector]
@@ -96729,10 +96503,10 @@ Pointers_6f762:
 	dw $0
 
 Data_6f768:
-	db "(そうこもいっはﾟいてﾞ)", $0
+	dstr "(そうこもいっはﾟいてﾞ)"
 
 Data_6f776:
-	db "(これいしﾞょうもてないよ)", $0
+	dstr "(これいしﾞょうもてないよ)"
 
 Func_6f785: ; 6f785 (1b:7785)
 	push af
@@ -96910,7 +96684,7 @@ Func_6f947: ; 6f947 (1b:7947)
 	ret
 
 Data_6f95b:
-	db "(すてる?)", $0
+	dstr "(すてる?)"
 
 Func_6f962: ; 6f962 (1b:7962)
 	add sp, -$52
@@ -97133,10 +96907,10 @@ Func_6fb42: ; 6fb42 (1b:7b42)
 	ret
 
 Data_6fb43:
-	db "(あなたのかち)", $0
+	dstr "(あなたのかち)"
 
 Data_6fb4c:
-	db "(あなたのまけ)", $0
+	dstr "(あなたのまけ)"
 
 INCLUDE "engine/predef.asm"
 
@@ -97702,10 +97476,10 @@ Pointers_fb1e0:
 	dw $0000
 
 Data_fb1e6:
-	db "(もちものかﾞ いっはﾟいなのてﾞ)", $0
+	dstr "(もちものかﾞ いっはﾟいなのてﾞ)"
 
 Data_fb1f9:
-	db "(そうこに おくるよ)", $0
+	dstr "(そうこに おくるよ)"
 
 Func_fb205: ; fb205 (3e:7205)
 	ld a, $3
@@ -98238,30 +98012,28 @@ OptionsMenu_Redraw:
 	ret
 
 Data_fb67f:
-	db "アニメ", $0
+	dstr "アニメ"
 
 Data_fb683:
-	db "オン", $0
+	dstr "オン"
 
 Data_fb686:
-	db "オフ", $0
+	dstr "オフ"
 
 Data_fb689:
-	db "スヒﾟーカー", $0
+	dstr "スヒﾟーカー"
 
 Data_fb690:
-	db "オン", $0
+	dstr "オン"
 
 Data_fb693:
-	db "オフ", $0
+	dstr "オフ"
 
 Data_fb696:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Data_fb699:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_fb69c:
 	push hl
@@ -98411,21 +98183,16 @@ Func_fb75f: ; fb75f (3e:775f)
 	ret
 
 Data_fb773:
-	db "(ちか)", $0
+	dstr "(ちか)"
 
 Data_fb778:
-	db " "
-	TX_SNUM
-	db $0
+	dstr " %d"
 
 Data_fb77c:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_fb77f:
-	db " "
-	TX_SNUM
-	db $0
+	dstr " %d"
 
 Func_fb783: ; fb783 (3e:7783)
 	push bc
@@ -98508,7 +98275,7 @@ Func_fb783: ; fb783 (3e:7783)
 	ret
 
 Data_fb7ee:
-	db "(なんかいにいく)?", $0
+	dstr "(なんかいにいく)?"
 
 Func_fb7f9: ; fb7f9 (3e:77f9)
 	push bc
@@ -98644,14 +98411,14 @@ Pointers_fb8c9:
 	dw $0000
 
 Data_fb8cd:
-	db "(かいにいとﾞうするよ)", $0
+	dstr "(かいにいとﾞうするよ)"
 
 Pointers_fb8da:
 	dw Data_fb8de
 	dw $0000
 
 Data_fb8de:
-	db "(にいとﾞうするよ)", $0
+	dstr "(にいとﾞうするよ)"
 
 Func_fb8e9: ; fb8e9 (3e:78e9)
 	ld c, l
@@ -98834,33 +98601,29 @@ Func_fba36: ; fba36 (3e:7a36)
 	ret
 
 Data_fba37:
-	db "(ちか)", $0
+	dstr "(ちか)"
 
 Data_fba3c:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_fba3f:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_fba42:
-	db "(ちか たﾞよ)", $0
+	dstr "(ちか たﾞよ)"
 
 Data_fba4b:
-	TX_SNUM
-	db " (かいたﾞよ)", $0
+	dstr "%d (かいたﾞよ)"
 
 Data_fba56:
-	TX_SNUM
-	db " (かいたﾞよ)", $0
+	dstr "%d (かいたﾞよ)"
 
 Pointers_fba61:
 	dw Data_fba65
 	dw $0000
 
 Data_fba65:
-	db "セーフﾞ(したよ)", $0
+	dstr "セーフﾞ(したよ)"
 
 MainMenuSubmenu_Title: ; fba6f (3e:7a6f)
 	set_farcall_addrs_hli AllocateMemory
@@ -98964,13 +98727,13 @@ Func_fbb90: ; fbb90 (3e:7b90)
 	ret
 
 Data_fbb91:
-	db "タイトルメニュー(に)", $0
+	dstr "タイトルメニュー(に)"
 
 Data_fbb9d:
-	db "(もとﾞるけとﾞ いい)?", $0
+	dstr "(もとﾞるけとﾞ いい)?"
 
 Data_fbbab:
-	db "セーフﾞ(する)?", $0
+	dstr "セーフﾞ(する)?"
 
 Func_fbbb5: ; fbbb5 (3e:7bb5)
 	push bc
@@ -99137,37 +98900,25 @@ Func_fbd13: ; fbd13 (3e:7d13)
 	ret
 
 Data_fbd22:
-	db "(しょしﾞきん)", $0
+	dstr "(しょしﾞきん)"
 
 Data_fbd2b:
-	db "      "
-	TX_UNUM
-	db "G", $0
+	dstr "      %ldG"
 
 Data_fbd36:
-	db "     "
-	TX_UNUM
-	db "G", $0
+	dstr "     %ldG"
 
 Data_fbd40:
-	db "    "
-	TX_UNUM
-	db "G", $0
+	dstr "    %ldG"
 
 Data_fbd49:
-	db "   "
-	TX_UNUM
-	db "G", $0
+	dstr "   %ldG"
 
 Data_fbd51:
-	db "  "
-	TX_UNUM
-	db "G", $0
+	dstr "  %ldG"
 
 Data_fbd58:
-	db " "
-	TX_UNUM
-	db "G", $0
+	dstr " %ldG"
 
 Func_fbd5e: ; fbd5e (3e:7d5e)
 	or a
@@ -101908,10 +101659,10 @@ IntroMovie: ; fd314 (3f:5314)
 	ret
 
 Text_fd3d1:
-	db "プロデューサー", $00
+	dstr "プロデューサー"
 
 Text_fd3d9:
-	db "えんどう ひでとし", $00
+	dstr "えんどう ひでとし"
 
 Pointers_fd3e3:
 	dw Text_fd3d1
@@ -101919,10 +101670,10 @@ Pointers_fd3e3:
 	dw $0000
 
 Text_fd3e9:
-	db "プロデューサー", $00
+	dstr "プロデューサー"
 
 Text_fd3f1:
-	db "こばやし まさき", $00
+	dstr "こばやし まさき"
 
 Pointers_fd3fa:
 	dw Text_fd3e9
@@ -101930,22 +101681,22 @@ Pointers_fd3fa:
 	dw $0000
 
 Text_fd400:
-	db "プロダクトマネージャー", $00
+	dstr "プロダクトマネージャー"
 
 Text_fd40c:
-	db " わけ まさのり", $00
+	dstr " わけ まさのり"
 
 Text_fd415:
-	db " ", $00
+	dstr " "
 
 Text_fd417:
-	db " ", $00
+	dstr " "
 
 Text_fd419:
-	db " ", $00
+	dstr " "
 
 Text_fd41b:
-	db " ", $00
+	dstr " "
 
 Pointers_fd41d:
 	dw Text_fd400
@@ -101957,22 +101708,22 @@ Pointers_fd41d:
 	dw $0000
 
 Text_fd42b:
-	db "サブプロダクトマネージャー", $00
+	dstr "サブプロダクトマネージャー"
 
 Text_fd439:
-	db "あおやま えいじ", $00
+	dstr "あおやま えいじ"
 
 Text_fd442:
-	db " ", $00
+	dstr " "
 
 Text_fd444:
-	db " ", $00
+	dstr " "
 
 Text_fd446:
-	db " ", $00
+	dstr " "
 
 Text_fd448:
-	db " ", $00
+	dstr " "
 
 Pointers_fd44a:
 	dw Text_fd42b
@@ -101984,10 +101735,10 @@ Pointers_fd44a:
 	dw $0000
 
 Text_fd458:
-	db "せいさくたんとう", $00
+	dstr "せいさくたんとう"
 
 Text_fd461:
-	db "おざき ただし", $00
+	dstr "おざき ただし"
 
 Pointers_fd469:
 	dw Text_fd458
@@ -101995,10 +101746,10 @@ Pointers_fd469:
 	dw $0000
 
 Text_fd46f:
-	db "サウンド プロダクツ", $00
+	dstr "サウンド プロダクツ"
 
 Text_fd47a:
-	db "スタジオ グイド", $00
+	dstr "スタジオ グイド"
 
 Pointers_fd483:
 	dw Text_fd46f
@@ -102006,16 +101757,16 @@ Pointers_fd483:
 	dw $0000
 
 Text_fd489:
-	db "サウンドプロデュース", $00
+	dstr "サウンドプロデュース"
 
 Text_fd494:
-	db "おおつき かるた", $00
+	dstr "おおつき かるた"
 
 Text_fd49d:
-	db "くどう ともり", $00
+	dstr "くどう ともり"
 
 Text_fd4a5:
-	db "やまなか ちこ", $00
+	dstr "やまなか ちこ"
 
 Pointers_fd4ad:
 	dw Text_fd489
@@ -102025,16 +101776,16 @@ Pointers_fd4ad:
 	dw $0000
 
 Text_fd4b7:
-	db "きかくサポート", $00
+	dstr "きかくサポート"
 
 Text_fd4bf:
-	db "おおはし しげやす", $00
+	dstr "おおはし しげやす"
 
 Text_fd4c9:
-	db "いえなが やまと", $00
+	dstr "いえなが やまと"
 
 Text_fd4d2:
-	db "いしかわ たかし", $00
+	dstr "いしかわ たかし"
 
 Pointers_fd4db:
 	dw Text_fd4b7
@@ -102044,19 +101795,19 @@ Pointers_fd4db:
 	dw $0000
 
 Text_fd4e5:
-	db "プログラム", $00
+	dstr "プログラム"
 
 Text_fd4eb:
-	db "まきしま かずゆき", $00
+	dstr "まきしま かずゆき"
 
 Text_fd4f5:
-	db "おおで たかのり", $00
+	dstr "おおで たかのり"
 
 Text_fd4fe:
-	db "やじま ひでたか", $00
+	dstr "やじま ひでたか"
 
 Text_fd507:
-	db "さえき のりゆき", $00
+	dstr "さえき のりゆき"
 
 Pointers_fd510:
 	dw Text_fd4e5
@@ -102067,13 +101818,13 @@ Pointers_fd510:
 	dw $0000
 
 Text_fd51c:
-	db "グラフィック", $00
+	dstr "グラフィック"
 
 Text_fd523:
-	db "ほしの なつこ", $00
+	dstr "ほしの なつこ"
 
 Text_fd52b:
-	db "くまい じゅんいち", $00
+	dstr "くまい じゅんいち"
 
 Pointers_fd535:
 	dw Text_fd51c
@@ -102082,22 +101833,22 @@ Pointers_fd535:
 	dw $0000
 
 Text_fd53d:
-	db "スペシャルサンクス", $00
+	dstr "スペシャルサンクス"
 
 Text_fd547:
-	db "なかもと しんいち", $00
+	dstr "なかもと しんいち"
 
 Text_fd551:
-	db "おかだ せつお", $00
+	dstr "おかだ せつお"
 
 Text_fd559:
-	db "もとさこ よしお", $00
+	dstr "もとさこ よしお"
 
 Text_fd562:
-	db "おおた ひろゆき", $00
+	dstr "おおた ひろゆき"
 
 Text_fd56b:
-	db "さとう とおる", $00
+	dstr "さとう とおる"
 
 Pointers_fd573:
 	dw Text_fd53d
@@ -102109,19 +101860,19 @@ Pointers_fd573:
 	dw $0000
 
 Text_fd581:
-	db "スペシャルサンクス", $00
+	dstr "スペシャルサンクス"
 
 Text_fd58b:
-	db "みつい けいすけ", $00
+	dstr "みつい けいすけ"
 
 Text_fd594:
-	db "たかはし しょうた", $00
+	dstr "たかはし しょうた"
 
 Text_fd59e:
-	db "はんだ ゆきこ", $00
+	dstr "はんだ ゆきこ"
 
 Text_fd5a6:
-	db "いとう たいじ", $00
+	dstr "いとう たいじ"
 
 Pointers_fd5ae:
 	dw Text_fd581
@@ -102132,22 +101883,22 @@ Pointers_fd5ae:
 	dw $0000
 
 Text_fd5ba:
-	db "スペシャルサンクス", $00
+	dstr "スペシャルサンクス"
 
 Text_fd5c4:
-	db "あおき コブた", $00
+	dstr "あおき コブた"
 
 Text_fd5cc:
-	db "あきたか みか", $00
+	dstr "あきたか みか"
 
 Text_fd5d4:
-	db "いい りつこ", $00
+	dstr "いい りつこ"
 
 Text_fd5db:
-	db "あらき ひろみ", $00
+	dstr "あらき ひろみ"
 
 Text_fd5e3:
-	db "いぶ としろう", $00
+	dstr "いぶ としろう"
 
 Pointers_fd5eb:
 	dw Text_fd5ba
@@ -102159,25 +101910,25 @@ Pointers_fd5eb:
 	dw $0000
 
 Text_fd5f9:
-	db "スペシャルサンクス", $00
+	dstr "スペシャルサンクス"
 
 Text_fd603:
-	db "はすぬま ひさお", $00
+	dstr "はすぬま ひさお"
 
 Text_fd60c:
-	db "はすぬま みつお", $00
+	dstr "はすぬま みつお"
 
 Text_fd615:
-	db "くりもと ひろし", $00
+	dstr "くりもと ひろし"
 
 Text_fd61e:
-	db "よしはら りえ", $00
+	dstr "よしはら りえ"
 
 Text_fd626:
-	db "おのでら のりひろ", $00
+	dstr "おのでら のりひろ"
 
 Text_fd630:
-	db "といだ たかし", $00
+	dstr "といだ たかし"
 
 Pointers_fd638:
 	dw Text_fd5f9
@@ -102190,25 +101941,25 @@ Pointers_fd638:
 	dw $0000
 
 Text_fd648:
-	db "スペシャルサンクス", $00
+	dstr "スペシャルサンクス"
 
 Text_fd652:
-	db "コミックボンボンへんしゅうぶ", $00
+	dstr "コミックボンボンへんしゅうぶ"
 
 Text_fd661:
-	db " ", $00
+	dstr " "
 
 Text_fd663:
-	db " ", $00
+	dstr " "
 
 Text_fd665:
-	db " ", $00
+	dstr " "
 
 Text_fd667:
-	db " ", $00
+	dstr " "
 
 Text_fd669:
-	db " ", $00
+	dstr " "
 
 Pointers_fd66b:
 	dw Text_fd648
@@ -102221,10 +101972,10 @@ Pointers_fd66b:
 	dw $0000
 
 Text_fd67b:
-	db "デザインさいようしゃ", $00
+	dstr "デザインさいようしゃ"
 
 Text_fd686:
-	db "いわした のりふみ", $00
+	dstr "いわした のりふみ"
 
 Pointers_fd690:
 	dw Text_fd67b
@@ -102232,10 +101983,10 @@ Pointers_fd690:
 	dw $0000
 
 Text_fd696:
-	db "デザインさいようしゃ", $00
+	dstr "デザインさいようしゃ"
 
 Text_fd6a1:
-	db "かきもと だいじろう", $00
+	dstr "かきもと だいじろう"
 
 Pointers_fd6ac:
 	dw Text_fd696
@@ -102243,10 +101994,10 @@ Pointers_fd6ac:
 	dw $0000
 
 Text_fd6b2:
-	db "ゲームデザイン", $00
+	dstr "ゲームデザイン"
 
 Text_fd6ba:
-	db "ますだ たつお", $00
+	dstr "ますだ たつお"
 
 Pointers_fd6c2:
 	dw Text_fd6b2
@@ -102254,10 +102005,10 @@ Pointers_fd6c2:
 	dw $0000
 
 Text_fd6c8:
-	db "キャラクターデザイン", $00
+	dstr "キャラクターデザイン"
 
 Text_fd6d3:
-	db "みずたに けんのすけ", $00
+	dstr "みずたに けんのすけ"
 
 Pointers_fd6de:
 	dw Text_fd6c8
@@ -102265,10 +102016,10 @@ Pointers_fd6de:
 	dw $0000
 
 Text_fd6e4:
-	db "ゲームディレクター", $00
+	dstr "ゲームディレクター"
 
 Text_fd6ee:
-	db "いい しゅんいち", $00
+	dstr "いい しゅんいち"
 
 Pointers_fd6f7:
 	dw Text_fd6e4
@@ -102276,10 +102027,10 @@ Pointers_fd6f7:
 	dw $0000
 
 Text_fd6fd:
-	db "トータルデザイン", $00
+	dstr "トータルデザイン"
 
 Text_fd706:
-	db "しもだ あつし", $00
+	dstr "しもだ あつし"
 
 Pointers_fd70e:
 	dw Text_fd6fd
@@ -103244,7 +102995,7 @@ Func_fdebc: ; fdebc (3f:5ebc)
 	ret
 
 Data_fdf06:
-	db "(おわり)", $0
+	dstr "(おわり)"
 
 Data_fdf0c:
 IF DEF(SUN)

@@ -2415,12 +2415,10 @@ Func_151b9: ; 151b9 (5:51b9)
 	ret
 
 Data_151bc: ; 151bc
-	TX_CALL
-	db $0
+	dstr "%s"
 
 Data_151bf: ; 151bf
-	TX_CALL
-	db $0
+	dstr "%s"
 
 StartMenu_MoveCursor: ; 151c2
 	push bc

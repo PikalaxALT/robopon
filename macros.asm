@@ -194,12 +194,9 @@ dbbw: MACRO
 	dw \3
 	ENDM
 
-TX_STACK EQUS "db $25, $63"
-TX_SNUM EQUS "db $25, $64"
-TX_LITERAL EQUS "db $25, $6c,"
-TX_UNUM EQUS "db $25, $6c, $64"
-TX_HNUM EQUS "db $25, $70"
-TX_CALL EQUS "db $25, $73"
+dstr: MACRO
+	db \1, 0
+	ENDM
 
 write_hl_to: MACRO
 	call WriteHalfWordTo

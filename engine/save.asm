@@ -2,7 +2,7 @@ Pointers_56d8e:
 	dw Data_56d90
 
 Data_56d90:
-	db "(ちょっとまってね)", $0 ; Please wait...
+	dstr "(ちょっとまってね)" ; Please wait...
 
 SaveGame: ; 56d9b (15:6d9b)
 	ld hl, -$404
@@ -215,7 +215,7 @@ SaveGame: ; 56d9b (15:6d9b)
 	ret
 
 Data_56fb9:
-	db "セーフﾞ エラー", $0
+	dstr "セーフﾞ エラー"
 
 LoadGame: ; 56fc2 (15:6fc2)
 	ld hl, -$404

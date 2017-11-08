@@ -910,4 +910,4 @@ Func_5ec1b: ; 5ec1b (17:6c1b)
 	ret
 
 Data_5ec5a:
-	db "エネ:", $0
+	dstr "エネ:"

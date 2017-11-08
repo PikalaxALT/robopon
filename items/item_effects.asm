@@ -3,7 +3,7 @@ Pointers_4eead: ; 4eead
 	dw $0
 
 Data_4eeb1: ; 4eeb1
-	db "(それはつかえない)", $0
+	dstr "(それはつかえない)"
 
 ItemEffect_NoUse: ; 4eebc (13:6ebc)
 	push bc
@@ -59,7 +59,7 @@ Pointers_4ef28: ; 4ef28
 	dw $0
 
 Data_4ef2c: ; 4ef2c
-	db "(を つかった)", $0
+	dstr "(を つかった)"
 
 ItemEffect_WaterUse: ; 4ef35
 	push af
@@ -173,7 +173,7 @@ Pointers_4f040: ; 4f040
 	dw $0
 
 Data_4f044: ; 4f044
-	db "(を つかった)", $0
+	dstr "(を つかった)"
 
 ItemEffect_Ticket: ; 4f04d
 	push af
@@ -266,7 +266,7 @@ Pointers_4f12c: ; 4f12c
 	dw $0
 
 Data_4f130: ; 4f130
-	db "(を つかった)", $0
+	dstr "(を つかった)"
 
 ItemEffect_CaveUse: ; 4f139
 	push af
@@ -894,7 +894,7 @@ Pointers_4f688: ; 4f688
 	dw $0
 
 Data_4f68c: ; 4f68c
-	db "(とﾞの)ロホﾞホﾟン(に つかいますか)?", $0
+	dstr "(とﾞの)ロホﾞホﾟン(に つかいますか)?"
 
 ItemEffects_AskSelectPartyMember: ; 4f6a3 (13:76a3)
 	ld l, $5

@@ -61,22 +61,16 @@ Crash:: ; 1d00 (0:1d00)
 	jp @ - 1 ; better luck next time
 
 Data_1d8d:: ; 1d8d
-	db "(あれ) ?", $0
+	dstr "(あれ) ?"
 
 Data_1d94:: ; 1d94
-	db "(てﾞんけﾞんきってね)!", $0
+	dstr "(てﾞんけﾞんきってね)!"
 
 Data_1da2:: ; 1da2
-	db "スタック:"
-	TX_SNUM
-	db $0
+	dstr "スタック:%d"
 
 Data_1daa:: ; 1daa
-	db "ロム:"
-	TX_SNUM
-	db $0
+	dstr "ロム:%d"
 
 Data_1db0:: ; 1db0
-	db "アトﾞレス:"
-	TX_SNUM
-	db $0
+	dstr "アトﾞレス:%d"

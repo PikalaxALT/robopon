@@ -36,7 +36,7 @@ Text_66ef4:
 
 
 TypeNames:
-	db "ノーマル", $0
+	dstr "ノーマル"
 
 Text_66f00:
 	db "ほのお", $0, $0
@@ -51,7 +51,7 @@ Text_66f0f:
 	db "つち", $0, $0, $0
 
 Text_66f14:
-	db "かみなり", $0
+	dstr "かみなり"
 
 Text_66f19:
 	db "こおり", $0, $0
@@ -73,13 +73,13 @@ Text_66f32:
 	db "そら", $0, $0, $0
 
 Text_66f37:
-	db "ふつう", $0
+	dstr "ふつう"
 
 Text_66f3b:
-	db "いのり", $0
+	dstr "いのり"
 
 Text_66f3f:
-	db "のろい", $0
+	dstr "のろい"
 
 Text_66f43:
 	db "ねつ", $0, $0
@@ -88,22 +88,22 @@ Text_66f47:
 	db "バグ", $0, $0
 
 Text_66f4b:
-	db "のうむ", $0
+	dstr "のうむ"
 
 Text_66f4f:
 	db "むし", $0, $0
 
 Text_66f53:
-	db "ていし", $0
+	dstr "ていし"
 
 Text_66f57:
 	db "サビ", $0, $0
 
 Text_66f5b:
-	db "???", $0
+	dstr "???"
 
 Text_66f5f:
-	db "!!!", $0
+	dstr "!!!"
 
 Text_66f63:
 	db " ", $0, $0, $0
@@ -115,4 +115,4 @@ Text_66f6b:
 	db " ", $0, $0, $0
 
 Text_66f6f:
-	db "ふのう", $0
+	dstr "ふのう"

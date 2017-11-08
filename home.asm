@@ -1423,18 +1423,16 @@ Func_22fe:: ; 22fe (0:22fe)
 	ret
 
 Data_2304:: ; 2304
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_2307:: ; 2307
-	db "0", $0
+	dstr "0"
 
 Data_2309:: ; 2309
-	db " ", $0
+	dstr " "
 
 Data_230b:: ; 230b
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 PlaceStringDEatCoordHL:: ; 230e (0:230e)
 	push de

@@ -4,10 +4,10 @@ Data_31aca: ; 31aca
 	dw $0
 
 Data_31ad0: ; 31ad0
-	db "(そうこかﾞ いっはﾟいなのてﾞ)", $0
+	dstr "(そうこかﾞ いっはﾟいなのてﾞ)"
 
 Data_31ae2: ; 31ae2
-	db "(さくしﾞょしてくたﾞさい)", $0
+	dstr "(さくしﾞょしてくたﾞさい)"
 
 GiveRobot:: ; 31af1
 	push af

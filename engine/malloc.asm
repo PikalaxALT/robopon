@@ -646,23 +646,13 @@ Func_17d7b: ; 17d7b
 	ret
 
 Data_17e6c: ; 17e6c
-	db "カウント "
-	TX_SNUM
-	db " "
-	TX_SNUM
-	db $0
+	dstr "カウント %d %d"
 
 Data_17e77: ; 17e77
-	db "ナイフﾞ "
-	TX_SNUM
-	db " カﾞイフﾞ "
-	TX_SNUM
-	db $0
+	dstr "ナイフﾞ %d カﾞイフﾞ %d"
 
 Data_17e88: ; 17e88
-	db "サイタﾞイ "
-	TX_SNUM
-	db $0
+	dstr "サイタﾞイ %d"
 
 Func_17e91: ; 17e91 (5:7e91)
 	call Func_17d7b

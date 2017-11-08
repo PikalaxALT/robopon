@@ -105,20 +105,16 @@ Data_059c:: ; 059c
 	db " GB KISS TOOLS", $d, $1, $0
 
 Data_0636:
-	db "KISSMON "
-	db "CANNON  "
-	db "BINARY  "
-	db "GAMEDATA"
-	db "KISSTOOL"
+	db "KISSMON CANNON  BINARY  GAMEDATAKISSTOOL"
 
 Data_065e:: ; 065e
 	db "  メニュー", $f, "を せんたくして", $e, $0
-	db " ", $0
+	dstr " "
 	db $f, "START/Aを おしてくたﾞさい", $e, $0
 	db $0
 
 Data_0686:: ; 0686
-	db "--------", $0
+	dstr "--------"
 
 Func_068f:: ; 68f (0:068f)
 	call Func_07a2
@@ -213,7 +209,7 @@ BitIndexToMask:: ; 739 (0:0739)
 	ret
 
 Data_0743:: ; 0743
-	db " ", $0
+	dstr " "
 	db "はﾟすわーとﾞ", $f, "を にゅうりょくして ", $e, $0
 	db $f, "STARTを おしてくたﾞさい  ", $e, $0
 	db $0
@@ -275,7 +271,7 @@ Func_07a2:: ; 7a2 (0:07a2)
 	ret
 
 Data_07e7:: ; 07e7
-	db "GB KISS  MINI GAME", $0
+	dstr "GB KISS  MINI GAME"
 
 Data_07fa:: ; 07fa
 	db $f, "していの", $e, "テﾞータ", $f, "を てんそうします", $e, $0
@@ -932,7 +928,7 @@ Data_0bd3:: ; 0bd3
 
 Data_0c15:: ; 0c15
 	db $f, "つうしんを ちゅうしするはﾞあいは ", $e, $0
-	db "                ", $0
+	dstr "                "
 	db "Bホﾞタン", $f, "を おしてくたﾞさい   ", $e, $0
 	db $0
 

@@ -390,3 +390,18 @@ HandleMap: ; 90e9 (2:50e9)
 .quit: ; 9413 (2:5413)
 	add sp, $10
 	ret
+
+Data_9416: ; 9416
+	dstr "%d/%d/%d "
+
+Data_9420: ; 9420
+	dstr "0%d:"
+
+Data_9425: ; 9425
+	dstr "%d:"
+
+Data_9429: ; 9429
+	dstr "0%d"
+
+Data_942d: ; 942d
+	dstr "%d"

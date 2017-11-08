@@ -243,4 +243,4 @@ OverworldLoop: ; 81cf (2:41cf)
 	jp .loop3
 
 Data_840f: ; 840f
-	db "(なう ろーてﾞぃんくﾞ)", $0
+	dstr "(なう ろーてﾞぃんくﾞ)"

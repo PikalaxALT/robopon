@@ -2924,10 +2924,10 @@ Func_f6a8: ; f6a8 (3:76a8)
 	ret
 
 Data_f6cb: ; f6cb
-	db "キー マチ", $0
+	dstr "キー マチ"
 
 Data_f6d1: ; f6d1
-	db "     ", $0
+	dstr "     "
 
 Pointers_f6d7: ; f6d7
 	dw $0        ; 00 (dummy)

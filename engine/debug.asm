@@ -289,8 +289,7 @@ Func_bc170: ; bc170 (2f:4170)
 	ret
 
 Data_bc1f1:
-	TX_STACK
-	db $0
+	dstr "%c"
 
 Func_bc1f4: ; bc1f4 (2f:41f4)
 	push hl
@@ -574,11 +573,7 @@ Data_bc3bd:
 	db "[]:", $a, $0
 
 Data_bc3c2:
-	db "No["
-	TX_SNUM
-	db "]:"
-	TX_SNUM
-	db $a, $0
+	db "No[%d]:%d", $a, $0
 
 Func_bc3cd:
 	ld bc, $f
@@ -838,9 +833,7 @@ Func_bc773: ; bc773 (2f:4773)
 	ret
 
 Data_bc776:
-	db ":"
-	TX_SNUM
-	db $0
+	dstr ":%d"
 
 Func_bc77a: ; bc77a (2f:477a)
 	ld l, a
@@ -1928,105 +1921,73 @@ Func_bcc95: ; bcc95 (2f:4c95)
 	ret
 
 Data_bcda9:
-	db "TypeNum:"
-	TX_SNUM
-	db $a
+	db "TypeNum:%d", $a
 	db $0
 
 Data_bcdb5:
-	db "Soft:", $0
+	dstr "Soft:"
 
 Data_bcdbb:
-	db "["
-	TX_SNUM
-	db "]", $0
+	dstr "[%d]"
 
 Data_bcdc0:
 	db $a
 	db $0
 
 Data_bcdc2:
-	db "Parts:"
-	TX_SNUM
-	db $a
+	db "Parts:%d", $a
 	db $0
 
 Data_bcdcc:
-	db "Level:"
-	TX_SNUM
-	db $a
+	db "Level:%d", $a
 	db $0
 
 Data_bcdd6:
-	db "Hp:"
-	TX_SNUM
-	db $a
+	db "Hp:%d", $a
 	db $0
 
 Data_bcddd:
-	db "HppMax:"
-	TX_SNUM
-	db $a
+	db "HppMax:%d", $a
 	db $0
 
 Data_bcde8:
-	db "Ep:"
-	TX_SNUM
-	db $a
+	db "Ep:%d", $a
 	db $0
 
 Data_bcdef:
-	db "EpMax:"
-	TX_SNUM
-	db $a
+	db "EpMax:%d", $a
 	db $0
 
 Data_bcdf9:
-	db "Exp:"
-	TX_SNUM
-	db $a
+	db "Exp:%d", $a
 	db $0
 
 Data_bce01:
-	db "Mode:"
-	TX_SNUM
-	db $a
+	db "Mode:%d", $a
 	db $0
 
 Data_bce0a:
-	db "AtackP:"
-	TX_SNUM
-	db $a
+	db "AtackP:%d", $a
 	db $0
 
 Data_bce15:
-	db "DefenceP:"
-	TX_SNUM
-	db $a
+	db "DefenceP:%d", $a
 	db $0
 
 Data_bce22:
-	db "SpeedP:"
-	TX_SNUM
-	db $a
+	db "SpeedP:%d", $a
 	db $0
 
 Data_bce2d:
-	db "EnedamaP:"
-	TX_SNUM
-	db $a
+	db "EnedamaP:%d", $a
 	db $0
 
 Data_bce3a:
-	db "DefenceType:0x"
-	TX_HNUM
-	db $a
+	db "DefenceType:0x%p", $a
 	db $0
 
 Data_bce4c:
-	db "CPU:"
-	TX_SNUM
-	db $a
+	db "CPU:%d", $a
 	db $0
 
 Func_bce54:
@@ -2058,9 +2019,7 @@ Func_bce54:
 	ret
 
 Data_bce80:
-	db "RSRM ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "RSRM ADDRESS:0x%p", $a
 	db $0
 
 Func_bce93:
@@ -2087,15 +2046,11 @@ Func_bce93:
 	ret
 
 Data_bceb1:
-	db "ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "ADDRESS:0x%p", $a
 	db $0
 
 Data_bcebf:
-	db "sinnka:"
-	TX_SNUM
-	db $a
+	db "sinnka:%d", $a
 	db $0
 
 Func_bceca:
@@ -2125,15 +2080,11 @@ Func_bceca:
 	ret
 
 Data_bceea:
-	db "ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "ADDRESS:0x%p", $a
 	db $0
 
 Data_bcef8:
-	db "Enadama:"
-	TX_SNUM
-	db $a
+	db "Enadama:%d", $a
 	db $0
 
 Func_bcf04:
@@ -2167,15 +2118,11 @@ Func_bcf05:
 	ret
 
 Data_bcf2b:
-	db "ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "ADDRESS:0x%p", $a
 	db $0
 
 Data_bcf39:
-	db "Zokusei:"
-	TX_SNUM
-	db $a
+	db "Zokusei:%d", $a
 	db $0
 
 Func_bcf45:
@@ -2206,15 +2153,11 @@ Func_bcf45:
 	ret
 
 Data_bcf6b:
-	db "ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "ADDRESS:0x%p", $a
 	db $0
 
 Data_bcf79:
-	db "HpKeisu:"
-	TX_SNUM
-	db $a
+	db "HpKeisu:%d", $a
 	db $0
 
 Func_bcf85:
@@ -2245,15 +2188,11 @@ Func_bcf85:
 	ret
 
 Data_bcfab:
-	db "ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "ADDRESS:0x%p", $a
 	db $0
 
 Data_bcfb9:
-	db "EpKeisu:"
-	TX_SNUM
-	db $a
+	db "EpKeisu:%d", $a
 	db $0
 
 Func_bcfc5:
@@ -2284,15 +2223,11 @@ Func_bcfc5:
 	ret
 
 Data_bcfeb:
-	db "ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "ADDRESS:0x%p", $a
 	db $0
 
 Data_bcff9:
-	db "AtackPKeisu:"
-	TX_SNUM
-	db $a
+	db "AtackPKeisu:%d", $a
 	db $0
 
 Func_bd009:
@@ -2323,15 +2258,11 @@ Func_bd009:
 	ret
 
 Data_bd02f:
-	db "ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "ADDRESS:0x%p", $a
 	db $0
 
 Data_bd03d:
-	db "DefencePKeisu:"
-	TX_SNUM
-	db $a
+	db "DefencePKeisu:%d", $a
 	db $0
 
 Func_bd04f:
@@ -2362,15 +2293,11 @@ Func_bd04f:
 	ret
 
 Data_bd075:
-	db "ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "ADDRESS:0x%p", $a
 	db $0
 
 Data_bd083:
-	db "SpeedPKeisu:"
-	TX_SNUM
-	db $a
+	db "SpeedPKeisu:%d", $a
 	db $0
 
 Func_bd093:
@@ -2557,33 +2484,23 @@ Func_bd18f: ; bd18f (2f:518f)
 	ret
 
 Data_bd1a7:
-	db "EBM ADDRESS:0x"
-	TX_HNUM
-	db $a
+	db "EBM ADDRESS:0x%p", $a
 	db $0
 
 Data_bd1b9:
-	db "DispFlag:"
-	TX_SNUM
-	db $a
+	db "DispFlag:%d", $a
 	db $0
 
 Data_bd1c6:
-	db "EBM.efbs2m:0x"
-	TX_HNUM
-	db $a
+	db "EBM.efbs2m:0x%p", $a
 	db $0
 
 Data_bd1d7:
-	db "CPU:"
-	TX_SNUM
-	db $a
+	db "CPU:%d", $a
 	db $0
 
 Data_bd1df:
-	db "Level:"
-	TX_SNUM
-	db $a
+	db "Level:%d", $a
 	db $0
 
 Data_bd1e9:
@@ -2591,24 +2508,18 @@ Data_bd1e9:
 	db $0
 
 Data_bd1f2:
-	db "["
-	TX_SNUM
-	db "]", $0
+	dstr "[%d]"
 
 Data_bd1f7:
 	db $a
 	db $0
 
 Data_bd1f9:
-	db "Parts:"
-	TX_SNUM
-	db $a
+	db "Parts:%d", $a
 	db $0
 
 Data_bd203:
-	db "EndFlag:0x"
-	TX_HNUM
-	db $a
+	db "EndFlag:0x%p", $a
 	db $0
 
 Data_bd211:
@@ -2616,9 +2527,7 @@ Data_bd211:
 	db $0
 
 Data_bd21f:
-	db "["
-	TX_SNUM
-	db "]", $0
+	dstr "[%d]"
 
 Data_bd224:
 	db $a
@@ -3353,8 +3262,7 @@ Func_bd7bd: ; bd7bd (2f:57bd)
 	ret
 
 Data_bd7fc:
-	TX_HNUM
-	db ":", $0
+	dstr "%p:"
 
 Func_bd800: ; bd800 (2f:5800)
 	push de
@@ -4212,7 +4120,7 @@ Func_bdd83: ; bdd83 (2f:5d83)
 	ret
 
 Data_bdd87:
-	db " ", $0
+	dstr " "
 
 Pointers_bdd89:
 	dw Data_bdda7
@@ -4232,49 +4140,49 @@ Pointers_bdd89:
 	dw Data_bde47
 
 Data_bdda7:
-	db "ハﾞイト (すう) タﾞンフﾟ", $0
+	dstr "ハﾞイト (すう) タﾞンフﾟ"
 
 Data_bddb7:
-	db "シリアル (てんそう)", $0
+	dstr "シリアル (てんそう)"
 
 Data_bddc3:
-	db "アイアール (てんそう)", $0
+	dstr "アイアール (てんそう)"
 
 Data_bddd0:
-	db "ハﾞトル アニメ", $0
+	dstr "ハﾞトル アニメ"
 
 Data_bddd9:
-	db "ハﾞトル (しﾞっこう)", $0
+	dstr "ハﾞトル (しﾞっこう)"
 
 Data_bdde6:
-	db "(おとの) テスト", $0
+	dstr "(おとの) テスト"
 
 Data_bddf0:
-	db "アイアール リモコン", $0
+	dstr "アイアール リモコン"
 
 Data_bddfb:
-	db "(つうしん) ハﾞトル", $0
+	dstr "(つうしん) ハﾞトル"
 
 Data_bde07:
-	db "(しﾞかん ひょうしﾞ)", $0
+	dstr "(しﾞかん ひょうしﾞ)"
 
 Data_bde14:
-	db "エンテﾞィンクﾞ", $0
+	dstr "エンテﾞィンクﾞ"
 
 Data_bde1d:
-	db "スーハﾟ ケﾞームホﾞーイ", $0
+	dstr "スーハﾟ ケﾞームホﾞーイ"
 
 Data_bde2b:
-	db "64テﾞータセット", $0
+	dstr "64テﾞータセット"
 
 Data_bde35:
-	db "ハﾞトルキャラ ミル", $0
+	dstr "ハﾞトルキャラ ミル"
 
 Data_bde40:
-	db "テﾞハﾞック", $0
+	dstr "テﾞハﾞック"
 
 Data_bde47:
-	db "カラー", $0
+	dstr "カラー"
 
 Func_bde4b: ; bde4b (2f:5e4b)
 	ld l, a
@@ -4954,33 +4862,23 @@ Func_be1dc: ; be1dc (2f:61dc)
 	ret
 
 Data_be27f:
-	db "HSRM_TBL:0x"
-	TX_HNUM
-	db $a
+	db "HSRM_TBL:0x%p", $a
 	db $0
 
 Data_be28e:
-	db "Robopon:0x"
-	TX_HNUM
-	db $a
+	db "Robopon:0x%p", $a
 	db $0
 
 Data_be29c:
-	db "SIRM_TBL:0x"
-	TX_HNUM
-	db $a
+	db "SIRM_TBL:0x%p", $a
 	db $0
 
 Data_be2ab:
-	db "SPRM_TBL:0x"
-	TX_HNUM
-	db $a
+	db "SPRM_TBL:0x%p", $a
 	db $0
 
 Data_be2ba:
-	db "SSRM_TBL:0x"
-	TX_HNUM
-	db $a
+	db "SSRM_TBL:0x%p", $a
 	db $0
 
 DebugMenu_SerialTest: ; be2c9 (2f:62c9)
@@ -5104,10 +5002,10 @@ Func_be3c9: ; be3c9 (2f:63c9)
 	ret
 
 Data_be3dc:
-	db "(しゅうりょう おくり)", $0
+	dstr "(しゅうりょう おくり)"
 
 Data_be3e9:
-	db "(しゅうりょう よみこみ)", $0
+	dstr "(しゅうりょう よみこみ)"
 
 Data_be3f7:
 	dr $be3f7, $be4f7
@@ -5225,25 +5123,19 @@ Func_be621: ; be621 (2f:6621)
 	ret
 
 Data_be627:
-	db "B ホﾞタン(を おしてね)", $0
+	dstr "B ホﾞタン(を おしてね)"
 
 Data_be636:
-	db "B ホﾞタン キャンセル", $0
+	dstr "B ホﾞタン キャンセル"
 
 Data_be643:
-	db "Error:"
-	TX_SNUM
-	db $0
+	dstr "Error:%d"
 
 Data_be64c:
-	db "OK:"
-	TX_SNUM
-	db $0
+	dstr "OK:%d"
 
 Data_be652:
-	db "Error:"
-	TX_SNUM
-	db $0
+	dstr "Error:%d"
 
 Data_be65b:
 	dr $be65b, $be66b
@@ -5446,23 +5338,19 @@ Func_be855: ; be855 (2f:6855)
 	ret
 
 Data_be86e:
-	db "BBM:"
-	TX_SNUM
-	db $0
+	dstr "BBM:%d"
 
 Data_be875:
-	db "address:"
-	TX_SNUM
-	db $0
+	dstr "address:%d"
 
 Data_be880:
-	db "アニメ:", $0
+	dstr "アニメ:"
 
 Data_be885:
-	db "オト:", $0
+	dstr "オト:"
 
 Data_be889:
-	db "0(あかﾞはﾟ)アカﾞハﾟ", $0
+	dstr "0(あかﾞはﾟ)アカﾞハﾟ"
 
 Data_be897:
 	dr $be897, $be8c0
@@ -5650,10 +5538,10 @@ Func_bea5e: ; bea5e (2f:6a5e)
 	ret
 
 Data_bea69:
-	db "ヒﾞーシﾞー:", $0
+	dstr "ヒﾞーシﾞー:"
 
 Data_bea71:
-	db "エスイー:", $0
+	dstr "エスイー:"
 
 Data_bea77:
 	dr $bea77, $bea7d
@@ -5740,12 +5628,10 @@ Func_bea7d: ; bea7d (2f:6a7d)
 	ret
 
 Data_beb8c:
-	db "(あいあーる)", $0
+	dstr "(あいあーる)"
 
 Data_beb94:
-	db "KISIYU:0x"
-	TX_HNUM
-	db $0
+	dstr "KISIYU:0x%p"
 
 Func_beba0: ; beba0 (2f:6ba0)
 	callba_hli AllocateMonsterStruct2
@@ -5807,12 +5693,10 @@ Func_bec5a: ; bec5a (2f:6c5a)
 	ret
 
 Data_bec5b:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Data_bec5e:
-	TX_SNUM
-	db $0
+	dstr "%d"
 
 Func_bec61: ; bec61 (2f:6c61)
 	ld a, SONG_CREDITS
@@ -6194,10 +6078,10 @@ Func_befa5: ; befa5 (2f:6fa5)
 	ret
 
 Data_befd3:
-	db "キャラ:", $0
+	dstr "キャラ:"
 
 Data_befd8:
-	db "イロ:", $0
+	dstr "イロ:"
 
 Pointers_befdc:
 	dw Data_befe6
@@ -6207,16 +6091,16 @@ Pointers_befdc:
 	dw $0000
 
 Data_befe6:
-	db "(かんしを おこないます)", $0
+	dstr "(かんしを おこないます)"
 
 Data_beff4:
-	db "キー(を おしてね)", $0
+	dstr "キー(を おしてね)"
 
 Data_befff:
-	db "アアアアアアアアアアアアア", $0
+	dstr "アアアアアアアアアアアアア"
 
 Data_bf00d:
-	db "(いいいいいいいいいいいいいい)", $0
+	dstr "(いいいいいいいいいいいいいい)"
 
 Func_bf01e: ; bf01e (2f:701e)
 	push bc
@@ -6442,13 +6326,13 @@ Func_bf203: ; bf203 (2f:7203)
 	ret
 
 Data_bf206:
-	db "ミトﾞリ:", $0
+	dstr "ミトﾞリ:"
 
 Data_bf20c:
-	db "アカ:", $0
+	dstr "アカ:"
 
 Data_bf210:
-	db "アオ:", $0
+	dstr "アオ:"
 
 Func_bf214: ; bf214 (2f:7214)
 	push bc
@@ -7153,26 +7037,16 @@ Func_bf701: ; bf701 (2f:7701)
 	ret
 
 Data_bf707:
-	db "ハﾞッファ エラー:"
-	TX_SNUM
-	db $0
+	dstr "ハﾞッファ エラー:%d"
 
 Data_bf714:
-	db "エラー:"
-	TX_SNUM
-	db $0
+	dstr "エラー:%d"
 
 Data_bf71b:
-	db "アトﾞレス:"
-	TX_SNUM
-	db $0
+	dstr "アトﾞレス:%d"
 
 Data_bf724:
-	db "ケﾞットサイスﾞ:"
-	TX_SNUM
-	db $0
+	dstr "ケﾞットサイスﾞ:%d"
 
 Data_bf730:
-	db "ノコリサイスﾞ:"
-	TX_SNUM
-	db $0
+	dstr "ノコリサイスﾞ:%d"

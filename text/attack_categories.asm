@@ -1,134 +1,134 @@
 Text_201c7: ; 201c7
-	db "ダメージ", $0
+	dstr "ダメージ"
 
 Text_201cc: ; 201cc
-	db "いのり", $0
+	dstr "いのり"
 
 Text_201d0: ; 201d0
-	db "のろい", $0
+	dstr "のろい"
 
 Text_201d4: ; 201d4
-	db "ねつ", $0
+	dstr "ねつ"
 
 Text_201d7: ; 201d7
-	db "バグ", $0
+	dstr "バグ"
 
 Text_201da: ; 201da
-	db "のうむ", $0
+	dstr "のうむ"
 
 Text_201de: ; 201de
-	db "ダメージ", $0
+	dstr "ダメージ"
 
 Text_201e3: ; 201e3
-	db "ていし", $0
+	dstr "ていし"
 
 Text_201e7: ; 201e7
-	db "サビ", $0
+	dstr "サビ"
 
 Text_201ea: ; 201ea
-	db "ダメージ", $0
+	dstr "ダメージ"
 
 Text_201ef: ; 201ef
-	db "はんどう", $0
+	dstr "はんどう"
 
 Text_201f4: ; 201f4
-	db "みず", $0
+	dstr "みず"
 
 Text_201f7: ; 201f7
-	db "あぶら", $0
+	dstr "あぶら"
 
 Text_201fb: ; 201fb
-	db "バリヤ", $0
+	dstr "バリヤ"
 
 Text_201ff: ; 201ff
-	db " ", $0
+	dstr " "
 
 Text_20201: ; 20201
-	db " ", $0
+	dstr " "
 
 Text_20203: ; 20203
-	db " ", $0
+	dstr " "
 
 Text_20205: ; 20205
-	db "ダメージ", $0
+	dstr "ダメージ"
 
 Text_2020a: ; 2020a
-	db "イーピー", $0
+	dstr "イーピー"
 
 Text_2020f: ; 2020f
-	db "ついか", $0
+	dstr "ついか"
 
 Text_20213: ; 20213
-	db "もろは", $0
+	dstr "もろは"
 
 Text_20217: ; 20217
-	db "じばく", $0
+	dstr "じばく"
 
 Text_2021b: ; 2021b
-	db "はんげき", $0
+	dstr "はんげき"
 
 Text_20220: ; 20220
-	db "ひっさつ", $0
+	dstr "ひっさつ"
 
 Text_20225: ; 20225
-	db "がまん", $0
+	dstr "がまん"
 
 Text_20229: ; 20229
-	db "きあい", $0
+	dstr "きあい"
 
 Text_2022d: ; 2022d
-	db "はかい", $0
+	dstr "はかい"
 
 Text_20231: ; 20231
-	db "はかい", $0
+	dstr "はかい"
 
 Text_20235: ; 20235
-	db "ふういん", $0
+	dstr "ふういん"
 
 Text_2023a: ; 2023a
-	db "はんてん", $0
+	dstr "はんてん"
 
 Text_2023f: ; 2023f
-	db "すいとり", $0
+	dstr "すいとり"
 
 Text_20244: ; 20244
-	db "かいふく", $0
+	dstr "かいふく"
 
 Text_20249: ; 20249
-	db "アップ", $0
+	dstr "アップ"
 
 Text_2024d: ; 2024d
-	db "ぼうぎょ", $0
+	dstr "ぼうぎょ"
 
 Text_20252: ; 20252
-	db "うけみ", $0
+	dstr "うけみ"
 
 Text_20256: ; 20256
-	db "ぬすむ", $0
+	dstr "ぬすむ"
 
 Text_2025a: ; 2025a
-	db "たんさ", $0
+	dstr "たんさ"
 
 Text_2025e: ; 2025e
-	db "にげる", $0
+	dstr "にげる"
 
 Text_20262: ; 20262
-	db "にげる", $0
+	dstr "にげる"
 
 Text_20266: ; 20266
-	db "れんぞく", $0
+	dstr "れんぞく"
 
 Text_2026b: ; 2026b
-	db "せんせい", $0
+	dstr "せんせい"
 
 Text_20270: ; 20270
-	db "あとぜめ", $0
+	dstr "あとぜめ"
 
 Text_20275: ; 20275
-	db "ダメージ", $0
+	dstr "ダメージ"
 
 Text_2027a: ; 2027a
-	db "ダメージ", $0
+	dstr "ダメージ"
 
 Pointers_2027f: ; 2027f
 	dw Text_201c7
