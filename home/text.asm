@@ -107,9 +107,10 @@ OverworldStopSFX:: ; 150b
 	jr OverworldPlaySFX
 
 PlaceString:: ; 150e (0:150e)
+; printf
 ; source: on stack
 ; dest: screen at (wStringDestX, wStringDestY)
-; additional arugments on stack, if applicable
+; additional arguments on stack, if applicable
 	ld a, [wStringDestX]
 	ld h, a
 	ld a, [wStringDestY]
@@ -132,11 +133,11 @@ PlaceNextCharacter::
 	ret
 
 CheckDict::
-	cp $25
+	cp "%"
 	jp z, .SpecialCharacter
-	cp $28
+	cp "("
 	jr z, .set_hiragana
-	cp $29
+	cp ")"
 	jr nz, .charmap
 	xor a
 	ld [wKana], a
@@ -252,15 +253,21 @@ CheckDict::
 	jr .after_dakuten_restore_pointer
 
 .SpecialCharacter: ; 15db (0:15db)
+; This is where the format codes are handled.
+; %d: short
+; %c: char
+; %s: char*
+; %l: literal
+; %ld: unsigned long
 	ld a, [de]
 	inc de
-	cp $64
+	cp "d"
 	jr z, .print_num
-	cp $63
+	cp "c"
 	jr z, .place_stack_char
-	cp $73
+	cp "s"
 	jr z, .call_string
-	cp $6c
+	cp "l"
 	jr z, .print_num_unsigned
 	ld [hli], a
 	jp PlaceNextCharacter
@@ -319,7 +326,7 @@ CheckDict::
 .print_num_unsigned
 	ld a, [de]
 	inc de
-	cp $64
+	cp "d"
 	jr z, .okay
 	ld [hli], a
 	jp PlaceNextCharacter
