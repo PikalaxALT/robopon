@@ -707,7 +707,7 @@ Func_bc49b: ; bc49b (2f:449b)
 Func_bc4a6:
 	push hl
 	push de
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $3c
 	call FarCall
 	ld c, l
@@ -752,7 +752,7 @@ Func_bc4a6:
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -2559,18 +2559,18 @@ Func_bd242:
 	xor a
 	call PushBGMapRegion_NoWaitBefore
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
 	push hl
 	decoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $f
 	call FarCall
 	call WriteHLToSPPlus6
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $1f
 	call FarCall
 	call WriteHLToSPPlus4
@@ -2908,13 +2908,13 @@ Func_bd4f1: ; bd4f1 (2f:54f1)
 	hlcoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus4
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	push hl
 	call FarCall
@@ -2937,7 +2937,7 @@ Func_bd542:
 	xor a
 	call PushBGMapRegion_NoWaitBefore
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
 	reg16swap de, hl
@@ -2966,7 +2966,7 @@ Func_bd542:
 	hlcoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld l, $12
@@ -2988,7 +2988,7 @@ Func_bd5b7:
 	xor a
 	call PushBGMapRegion_NoWaitBefore
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
 	reg16swap de, hl
@@ -2997,13 +2997,13 @@ Func_bd5b7:
 	decoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $f
 	call FarCall
 	ld c, l
 	ld b, h
 	push bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $1f
 	call FarCall
 	push hl
@@ -3115,13 +3115,13 @@ Func_bd6ac: ; bd6ac (2f:56ac)
 	hlcoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld l, $12
@@ -3176,7 +3176,7 @@ Func_bd72d:
 	xor a
 	call PushBGMapRegion_NoWaitBefore
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
 	push hl
@@ -3247,7 +3247,7 @@ Func_bd7bd: ; bd7bd (2f:57bd)
 	hlcoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld l, $12
@@ -4884,7 +4884,7 @@ Data_be2ba:
 DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	push bc
 	push bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
 	pop de
@@ -4993,7 +4993,7 @@ Func_be3b5: ; be3b5 (2f:63b5)
 	ld hl, Data_be3e9
 	call Func_2a3e
 Func_be3c9: ; be3c9 (2f:63c9)
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	push hl
 	call FarCall
@@ -6348,12 +6348,12 @@ Func_bf214: ; bf214 (2f:7214)
 	call FarCopyVideoData
 	pop af
 	call GetSRAMBank
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $f
 	call FarCall
 	pop de
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $1f
 	call FarCall
 	ld c, l
@@ -6534,10 +6534,10 @@ Func_bf368: ; bf368 (2f:7368)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus4
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop bc
@@ -6548,7 +6548,7 @@ Func_bf397: ; bf397 (2f:7397)
 	push bc
 	push bc
 	push bc
-	read_hl_from wMemoryAllocationPointer
+	read_hl_from wHeapPtr
 	call WriteHLToSPPlus8
 	ld hl, $0
 	call WriteHLToSPPlus6
@@ -6666,7 +6666,7 @@ PrintMemoryAllocationErrorDetails: ; bf431 (2f:7431)
 	and h
 	inc a
 	jp nz, Func_bf599
-	read_hl_from wMemoryAllocationPointer
+	read_hl_from wHeapPtr
 	pop de
 	push hl
 Func_bf460: ; bf460 (2f:7460)
@@ -7029,7 +7029,7 @@ Func_bf680: ; bf680 (2f:7680)
 	ld hl, sp+$8
 	ld a, [hl]
 	ld [rIE], a
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 Func_bf701: ; bf701 (2f:7701)
 	ld hl, $14a
 	add hl, sp

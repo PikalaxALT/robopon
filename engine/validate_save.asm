@@ -1,5 +1,5 @@
 Data_798b: ; 798b
-	db BANK(sWarehouse), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1), BANK(sAllocatableBlock1)
+	db BANK(sWarehouse), BANK(sHeap), BANK(sHeap), BANK(sHeap), BANK(sHeap)
 	db BANK(sSavedWarehouse), BANK(sSaveBlock1), BANK(sSaveBlock2), BANK(sSaveBlock3), BANK(sSaveBlock4)
 
 Data_7995: ; 7995
@@ -184,7 +184,7 @@ StoreSaveChecksum: ; 7abc
 	dec e
 	jp nz, .saveToSRAM
 	push hl
-	ld a, BANK(sAllocatableBlock1)
+	ld a, BANK(sHeap)
 	call GetSRAMBank
 	pop hl
 	write_hl_to wCheckSum
@@ -209,7 +209,7 @@ GetSaveChecksum:: ; 7ae4 (1:7ae4)
 	push de
 	or a
 	jp nz, .save
-	ld a, BANK(sAllocatableBlock1)
+	ld a, BANK(sHeap)
 	call GetSRAMBank_ReadOnly
 	read_hl_from wCheckSum
 	jp .done

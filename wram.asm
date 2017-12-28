@@ -487,8 +487,8 @@ wVideoTransferQueue:: ; c239
 	char wMapY ; c2d9
 	ds $2
 
-	short wMemoryAllocationNumBlocks ; c2dc
-	short wMemoryAllocationPointer ; c2de
+	short wMallocNBlocks ; c2dc
+	short wHeapPtr ; c2de
 	char wMemoryAllocationMode ; c2e0
 
 	; hblank interrupt

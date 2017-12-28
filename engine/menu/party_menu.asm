@@ -19,15 +19,15 @@ DisplayPartyMenu: ; 5e504 (17:6504)
 	ld bc, $e
 	call MemCopy
 	call FillVisibleAreaWithBlankTile
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $2f
 	call FarCall
 	call WriteHLToSPPlus10
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $23
 	call FarCall
 	call WriteHLToSPPlus8
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	call WriteHLToSPPlus6
@@ -894,13 +894,13 @@ Func_5ec15: ; 5ec15 (17:6c15)
 	call Func_1f7b
 	call Func_2009
 Func_5ec1b: ; 5ec1b (17:6c1b)
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus4
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus6
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus8
 	call FarCall
 	pop hl

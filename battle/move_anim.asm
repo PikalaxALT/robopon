@@ -2085,7 +2085,7 @@ BattleAnim_PlayMoveAnimScript: ; f0cf (3:70cf)
 	jp .loop
 
 .done: ; f15a (3:715a)
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	call ClearSprites

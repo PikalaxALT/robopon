@@ -7044,7 +7044,7 @@ Func_9a253: ; 9a253 (26:6253)
 
 Func_9a25d: ; 9a25d (26:625d)
 	callba_hli Func_8f44
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
@@ -7143,7 +7143,7 @@ Func_9a33e: ; 9a33e (26:633e)
 
 Func_9a34c: ; 9a34c (26:634c)
 	callba_hli Func_8f44
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	add sp, $40
@@ -13702,7 +13702,7 @@ LoadEmoteGFX: ; da545 (36:6545)
 	ld hl, sp+$6
 	ld bc, $4
 	call FarCopyVideoData
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	call GetHLAtSPPlus10
 	call FarCall
 	call WriteHLToSPPlus4
@@ -13753,7 +13753,7 @@ LoadEmoteGFX: ; da545 (36:6545)
 	call GetHLAtSPPlus6
 	pop de
 	call RequestVideoData
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	push hl
 	call FarCall
@@ -13782,7 +13782,7 @@ DecompressEmoteAttrs: ; da5db (36:65db)
 	ld hl, sp+$4
 	ld bc, $4
 	call FarCopyVideoData
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	call GetHLAtSPPlus8
 	call FarCall
 	call WriteHLToSPPlus4
@@ -14485,7 +14485,7 @@ Func_da901:: ; da901
 	jp .loop
 
 .break
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
@@ -14629,7 +14629,7 @@ SetSpriteYCoordinatesAndCollectGarbage:: ; daa40
 	jp .loop
 
 .done
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -16762,15 +16762,15 @@ Func_e29f1: ; e29f1 (38:69f1)
 	pop bc
 	ret
 
-AllocateMemory_Bank38:
+malloc_Bank38:
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	pop hl
 	jp FarCall
 
-FreeMemory_Bank38:
+free_Bank38:
 	push hl
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret

@@ -4,10 +4,10 @@ AllocateSpaceForMapObjects: ; a24c (2:624c)
 	ld a, $10
 	ld [wc773], a
 	ld hl, 14 * 20
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wObjectStructPointer
 	ld hl, $50
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wc776
 	ret
 

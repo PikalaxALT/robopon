@@ -1497,7 +1497,7 @@ ReceptionCommandMenu:: ; 14b44
 	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $c8
-	call AllocateMemory
+	call malloc
 	reg16swap de, hl
 	push de
 	ld c, e
@@ -1594,7 +1594,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	ld [wEnableAttrMapTransfer], a
 	call Func_1400e
 	pop hl
-	call FreeMemory
+	call free
 	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
@@ -1660,7 +1660,7 @@ ElevatorMenu:: ; 14ca9
 	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $c8
-	call AllocateMemory
+	call malloc
 	reg16swap de, hl
 	push de
 	ld c, e
@@ -1720,7 +1720,7 @@ ElevatorMenu:: ; 14ca9
 	call DoublePushBGMapRegion
 	pop bc
 	pop hl
-	call FreeMemory
+	call free
 	pop hl
 	ld a, l
 	and h
@@ -2023,7 +2023,7 @@ BagSubmenu: ; 14f0e
 	call PushBGMapRegion
 	pop bc
 	ld hl, $64
-	call AllocateMemory
+	call malloc
 	reg16swap de, hl
 	push de
 	ld c, e
@@ -2138,7 +2138,7 @@ BagSubmenu: ; 14f0e
 	call PopBGMapRegion
 Func_14ffa: ; 14ffa (5:4ffa)
 	pop hl
-	call FreeMemory
+	call free
 	pop hl
 	pop bc
 	ret

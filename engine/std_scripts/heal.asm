@@ -44,7 +44,7 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	reg16swap de, hl
@@ -187,7 +187,7 @@ Func_6f685: ; 6f685 (1b:7685)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret

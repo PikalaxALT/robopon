@@ -268,7 +268,7 @@ PreloadNextMap: ; 854b (2:454b)
 ; c = flag
 del: MACRO
 	read_hl_from \1
-	call FreeMemory_Bank02
+	call free_Bank02
 	ld hl, $0
 	write_hl_to \1
 	ENDM
@@ -345,19 +345,19 @@ del: MACRO
 	ld hl, sp+$5d
 	ld [hl], a
 	ld hl, $200
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wc824
 	ld hl, $200
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wLoadAttrsSourcePointer
 	ld hl, $80
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wc826
 	ld hl, $80
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wc844
 	ld hl, $e0
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wc85d
 	ld hl, sp+$5d
 	ld e, [hl]
@@ -398,7 +398,7 @@ del: MACRO
 	call FarCopyVideoData
 	ld hl, $728
 	push hl
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wTilesetPointer
 	ld hl, sp+$60
 	ld a, [hl]
@@ -418,7 +418,7 @@ del: MACRO
 	add hl, de
 	push hl
 	ld hl, $154
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wc842
 	ld bc, $154
 	ld e, $ff
@@ -507,11 +507,11 @@ Func_87ca: ; 87ca (2:47ca)
 	ld bc, $80
 	call CopyFromDEtoHL
 	read_hl_from wc842
-	call FreeMemory_Bank02
+	call free_Bank02
 	read_hl_from wc844
-	call FreeMemory_Bank02
+	call free_Bank02
 	read_hl_from wTilesetPointer
-	call FreeMemory_Bank02
+	call free_Bank02
 	pop bc
 	push bc
 	inc c
@@ -524,7 +524,7 @@ Func_87ca: ; 87ca (2:47ca)
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wMapCollisionPointer
 	ld hl, wMapWidth
 	ld l, [hl]
@@ -598,7 +598,7 @@ Func_8827: ; 8827 (2:4827)
 	or h
 	jp z, Func_88df
 	read_hl_from wc82e
-	call FreeMemory_Bank02
+	call free_Bank02
 Func_88df: ; 88df (2:48df)
 	pop bc
 	ld a, c

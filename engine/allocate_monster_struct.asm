@@ -8,7 +8,7 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	ld a, $2
 	call FarCall
 	; allocate 842 bytes and save the pointer
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $34a
 	call FarCall
 	write_hl_to wCurRobotPointer
@@ -19,7 +19,7 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	call FillMemory
 	; allocate an additional 128 bytes and store the pointer in the
 	; larger struct
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $80
 	call FarCall
 	ld c, l
@@ -32,7 +32,7 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	ld [hl], b
 	; allocate an additional 145 bytes and store the pointer in the
 	; larger struct
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $91
 	call FarCall
 	ld c, l
@@ -56,7 +56,7 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	call FillMemory
 	; allocate an additional 223 bytes and store the pointer in the
 	; larger struct
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $df
 	call FarCall
 	ld c, l
@@ -82,7 +82,7 @@ AllocateMonsterStruct2: ; cc0c
 	set_farcall_addrs_hli SetAllocationMode
 	ld a, $2
 	call FarCall
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $34a
 	call FarCall
 	write_hl_to wCurRobotPointer
@@ -90,7 +90,7 @@ AllocateMonsterStruct2: ; cc0c
 	ld e, $0
 	read_hl_from wCurRobotPointer
 	call FillMemory
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $80
 	call FarCall
 	ld c, l
@@ -101,7 +101,7 @@ AllocateMonsterStruct2: ; cc0c
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $91
 	call FarCall
 	ld c, l
@@ -122,7 +122,7 @@ AllocateMonsterStruct2: ; cc0c
 	reg16swap de, hl
 	ld e, $0
 	call FillMemory
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $df
 	call FarCall
 	ld c, l
@@ -133,7 +133,7 @@ AllocateMonsterStruct2: ; cc0c
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $351
 	call FarCall
 	ld c, l
@@ -155,7 +155,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	ld a, l
 	or h
 	jp z, Func_cd99
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -164,7 +164,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	ld d, [hl]
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from wCurRobotPointer
 	ld de, $18
 	add hl, de
@@ -173,7 +173,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	ld d, [hl]
 	reg16swap de, hl
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from wCurRobotPointer
 	ld de, $1c6
 	add hl, de
@@ -189,7 +189,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	inc hl
 	or [hl]
 	jp z, Func_cd7e
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from wCurRobotPointer
 	ld de, $1a
 	add hl, de
@@ -199,7 +199,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	reg16swap de, hl
 	call FarCall
 Func_cd7e: ; cd7e (3:4d7e)
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from wCurRobotPointer
 	call FarCall
 	ld hl, $0

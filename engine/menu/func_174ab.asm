@@ -90,7 +90,7 @@ HandleMenu: ; 174ab (5:74ab)
 	ld h, $0
 	call MultiplyHLbyDE
 	add hl, hl
-	call AllocateMemory
+	call malloc
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus10
@@ -629,7 +629,7 @@ HandleMenu: ; 174ab (5:74ab)
 	inc hl
 	ld d, [hl]
 	reg16swap de, hl
-	call FreeMemory
+	call free
 .quit
 	pop hl
 	pop bc

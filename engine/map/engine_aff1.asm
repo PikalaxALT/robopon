@@ -1,6 +1,6 @@
 Func_aff1: ; aff1 (2:6ff1)
 	ld hl, $c
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wNPCMovementDataPointer
 	xor a
 .loop

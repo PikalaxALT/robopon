@@ -523,7 +523,7 @@ PrintTextWithNPCNameAndYesNoBox_\1: ; 804ca (20:44ca)
 
 Func_804da_\1:
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $154
 	call FarCall
 	ld c, l
@@ -541,7 +541,7 @@ Func_804da_\1:
 	ld l, c
 	ld h, b
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -554,7 +554,7 @@ Func_80519_\1: ; 80519 (20:4519)
 	push bc
 	push hl
 	push de
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $154
 	call FarCall
 	ld c, l
@@ -577,7 +577,7 @@ Func_80519_\1: ; 80519 (20:4519)
 	ld d, b
 	ld hl, sp+$2
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop bc
@@ -589,7 +589,7 @@ Func_80519_\1: ; 80519 (20:4519)
 
 Func_8056f_\1:
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $154
 	call FarCall
 	ld c, l
@@ -610,7 +610,7 @@ Func_8056f_\1:
 	pop bc
 	push af
 	push bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop af
@@ -624,7 +624,7 @@ Func_805b2_\1: ; 805b2 (20:45b2)
 	push bc
 	push hl
 	push de
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $154
 	call FarCall
 	ld c, l
@@ -650,7 +650,7 @@ Func_805b2_\1: ; 805b2 (20:45b2)
 	pop bc
 	push af
 	push bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop af

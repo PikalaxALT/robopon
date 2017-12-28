@@ -226,7 +226,7 @@ Func_5c0b2:
 	jp .asm_5c300
 
 .hardCoded
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $400
 	call FarCall
 	write_hl_to_sp_plus $354
@@ -275,7 +275,7 @@ Func_5c0b2:
 	pop de
 	call CopyFromDEtoHL
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $354
 	call FarCall
 	set_farcall_addrs_hli Func_615be

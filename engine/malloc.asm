@@ -1,6 +1,6 @@
-InitAllocatableMemoryBlocks:: ; 17a67 (5:7a67)
-	write_hl_to wMemoryAllocationPointer
-	read_hl_from wMemoryAllocationPointer
+InitHeap:: ; 17a67 (5:7a67)
+	write_hl_to wHeapPtr
+	read_hl_from wHeapPtr
 	ld c, l
 	ld b, h
 	ld a, MEM_BLOCK_FREE
@@ -19,11 +19,11 @@ InitAllocatableMemoryBlocks:: ; 17a67 (5:7a67)
 	inc hl
 	inc hl
 	inc hl
-	ld de, sAllocatableBlock1
+	ld de, sHeap
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	ld bc, sAllocatableBlock1
+	ld bc, sHeap
 	ld a, MEM_BLOCK_FREE
 	ld [bc], a
 	ld l, c
@@ -45,14 +45,14 @@ InitAllocatableMemoryBlocks:: ; 17a67 (5:7a67)
 	xor a
 	ld [wMemoryAllocationMode], a
 	ld hl, $0
-	write_hl_to wMemoryAllocationNumBlocks
+	write_hl_to wMallocNBlocks
 	ret
 
 SetAllocationMode: ; 17ab6 (5:7ab6)
 	ld [wMemoryAllocationMode], a
 	ret
 
-AllocateMemory:: ; 17aba (5:7aba)
+malloc:: ; 17aba (5:7aba)
 	push hl
 	push bc
 	call GetHLAtSPPlus4
@@ -75,7 +75,7 @@ AllocateMemory:: ; 17aba (5:7aba)
 	add hl, hl
 	add hl, hl
 	call WriteHLToSPPlus4
-	read_hl_from wMemoryAllocationPointer
+	read_hl_from wHeapPtr
 	pop de
 	push hl
 .loop
@@ -232,9 +232,9 @@ AllocateMemory:: ; 17aba (5:7aba)
 	push hl
 	ld [hl], MEM_BLOCK_USED
 .finish
-	read_hl_from wMemoryAllocationNumBlocks
+	read_hl_from wMallocNBlocks
 	inc hl
-	write_hl_to wMemoryAllocationNumBlocks
+	write_hl_to wMallocNBlocks
 	pop hl
 	push hl
 	ld de, $5
@@ -301,7 +301,7 @@ Data_17c44: ; 17c44
 Func_17c56: ; 17c56
 	ret
 
-FreeMemory:: ; 17c57 (5:7c57)
+free:: ; 17c57 (5:7c57)
 	push hl
 	push bc
 	push bc
@@ -309,9 +309,9 @@ FreeMemory:: ; 17c57 (5:7c57)
 	ld a, l
 	or h
 	jp z, .nothing_to_free
-	read_hl_from wMemoryAllocationNumBlocks
+	read_hl_from wMallocNBlocks
 	dec hl
-	write_hl_to wMemoryAllocationNumBlocks
+	write_hl_to wMallocNBlocks
 	call GetHLAtSPPlus6
 	ld de, -5
 	add hl, de
@@ -322,7 +322,7 @@ FreeMemory:: ; 17c57 (5:7c57)
 	jp nz, .nothing_to_free
 	call GetHLAtSPPlus4
 	ld [hl], MEM_BLOCK_FREE
-	read_hl_from wMemoryAllocationPointer
+	read_hl_from wHeapPtr
 	ld c, l
 	ld b, h
 .loop
@@ -406,7 +406,7 @@ FreeMemory:: ; 17c57 (5:7c57)
 	adc d
 	ld [hl], a
 .get_alloc_pointer
-	read_hl_from wMemoryAllocationPointer
+	read_hl_from wHeapPtr
 	ld c, l
 	ld b, h
 .loop2
@@ -501,7 +501,7 @@ Func_17d7b: ; 17d7b
 	push bc
 	push bc
 	push bc
-	read_hl_from wMemoryAllocationPointer
+	read_hl_from wHeapPtr
 	call WriteHLToSPPlus8
 	ld hl, $0
 	call WriteHLToSPPlus6
@@ -600,7 +600,7 @@ Func_17d7b: ; 17d7b
 	call SetStringStartState
 	call GetHLAtSPPlus8
 	push hl
-	read_hl_from wMemoryAllocationNumBlocks
+	read_hl_from wMallocNBlocks
 	push hl
 	ld hl, Data_17e6c
 	push hl

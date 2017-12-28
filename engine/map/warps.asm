@@ -6,10 +6,10 @@ AllocateSpaceForWarps:: ; aca6 (2:6ca6)
 	or h
 	jp z, .unallocated
 	read_hl_from wWarpDataPointer
-	call FreeMemory_Bank02
+	call free_Bank02
 .unallocated
 	ld hl, 20 * 11
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wWarpDataPointer
 	ret
 

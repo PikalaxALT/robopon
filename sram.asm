@@ -31,5 +31,5 @@ SECTION "SRAM2", SRAM, BANK [2]
 	array s2_b29f, 1, 4, $351 ; b29f
 
 SECTION "SRAM3", SRAM [$a002], BANK [3]
-sAllocatableBlock1:: alloc_block s3_a002
+sHeap:: alloc_block s3_a002
 	ds $1ffe - 5

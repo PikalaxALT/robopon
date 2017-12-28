@@ -4730,7 +4730,7 @@ LoadBlockData: ; 8d2a (2:4d2a)
 	ld h, $0
 	call MultiplyHLbyDE
 	push hl
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wBlockdataPointer
 	ld hl, sp+$4
 	ld a, [hl]
@@ -5535,7 +5535,7 @@ Func_a184: ; a184 (2:6184)
 	xor a
 	ld [wc820], a
 	ld hl, $30
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wc82c
 	ld c, $0
 Func_a1ad: ; a1ad (2:61ad)
@@ -6451,15 +6451,15 @@ Func_be39: ; be39 (2:7e39)
 	add sp, $22
 	ret
 
-AllocateMemory_Bank02: ; be4d (2:7e4d)
+malloc_Bank02: ; be4d (2:7e4d)
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	pop hl
 	jp FarCall
 
-FreeMemory_Bank02: ; be5d (2:7e5d)
+free_Bank02: ; be5d (2:7e5d)
 	push hl
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -6478,7 +6478,7 @@ LoadPlayerSprite:: ; be77 (2:7e77)
 	or a
 	jp nz, .already_allocated
 	reg16swap de, hl
-	call AllocateMemory_Bank02
+	call malloc_Bank02
 	write_hl_to wPlayerSpritePointer
 	ld hl, sp+$1
 	ld [hl], $1
@@ -11622,7 +11622,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	reg16swap de, hl
 	ld hl, sp+$1
 	call Func_11cfb
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $1e
 	call FarCall
 	push hl
@@ -11692,7 +11692,7 @@ Func_10c0a: ; 10c0a (4:4c0a)
 	ld de, $605
 	ld hl, $705
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld hl, sp+$0
@@ -17520,7 +17520,7 @@ Func_1551f:
 	pop de
 	push hl
 	ld hl, $64
-	call AllocateMemory
+	call malloc
 	call WriteHLToSPPlus4
 	call GetHLAtSPPlus4
 	ld c, l
@@ -17653,7 +17653,7 @@ Func_1563b: ; 1563b (5:563b)
 
 Func_1563e: ; 1563e (5:563e)
 	call GetHLAtSPPlus4
-	call FreeMemory
+	call free
 	ld hl, $8000
 	pop bc
 	pop bc
@@ -37142,7 +37142,7 @@ Func_3038d: ; 3038d (c:438d)
 Func_30393: ; 30393 (c:4393)
 	ld hl, sp+$7
 	ld [hl], $0
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	reg16swap de, hl
@@ -37359,7 +37359,7 @@ Func_30519: ; 30519 (c:4519)
 	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	read_hl_from_sp_plus $b
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop hl
@@ -42011,7 +42011,7 @@ Func_32da6: ; 32da6 (c:6da6)
 	ld a, [hl]
 	cp $34
 	jp nz, Func_32df4
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $b4
 	call FarCall
 	reg16swap de, hl
@@ -42033,7 +42033,7 @@ Func_32da6: ; 32da6 (c:6da6)
 	jp Func_32e21
 
 Func_32df4: ; 32df4 (c:6df4)
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $1b8
 	call FarCall
 	reg16swap de, hl
@@ -42106,7 +42106,7 @@ Func_32e6f: ; 32e6f (c:6e6f)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop hl
@@ -42423,7 +42423,7 @@ Func_3312e: ; 3312e (c:712e)
 	ret
 
 Func_3312f: ; 3312f (c:712f)
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	push hl
@@ -42457,7 +42457,7 @@ Func_3312f: ; 3312f (c:712f)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -42512,7 +42512,7 @@ Func_331fc: ; 331fc (c:71fc)
 Func_3321d: ; 3321d (c:721d)
 	or a
 	jp nz, Func_33294
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $208
 	call FarCall
 	push hl
@@ -42554,7 +42554,7 @@ Func_3321d: ; 3321d (c:721d)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	jp Func_332aa
@@ -49133,7 +49133,7 @@ Func_4e58b: ; 4e58b
 	ld hl, $1103
 	call PlaceStringDEatCoordHL
 	call Func_4e780
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $400
 	call FarCall
 	call WriteHLToSPPlus4
@@ -49183,7 +49183,7 @@ Func_4e6fd: ; 4e6fd (13:66fd)
 	ld hl, $4
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	push hl
 	call FarCall
@@ -51597,7 +51597,7 @@ OptionsMenu_Left: ; 50479
 	jp OptionsMenu_UpDown
 
 OptionsMenu_AButton: ; 5047f
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -51664,7 +51664,7 @@ Func_504e1: ; 504e1 (14:44e1)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld hl, -1
@@ -51678,7 +51678,7 @@ Data_50531: ; 50531
 	dstr "セーフﾞ(したよ)"
 
 MainMenuSubmenu_Save: ; 5053b
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -51744,7 +51744,7 @@ MainMenuSubmenu_Save: ; 5053b
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -52335,7 +52335,7 @@ Func_509b3: ; 509b3
 	inc hl
 	ld a, [hl]
 	ld [wc310], a
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	call WriteHLToSPPlus6
@@ -52509,7 +52509,7 @@ Func_50af6: ; 50af6 (14:4af6)
 	ld hl, wc396
 	add hl, de
 	ld [hl], $0
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus4
 	call FarCall
 	pop hl
@@ -52590,7 +52590,7 @@ Func_50b55: ; 50b55
 	ld e, [hl]
 	ld hl, sp+$2
 	ld [hl], e
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -52713,7 +52713,7 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld hl, $8000
@@ -53076,7 +53076,7 @@ Func_50f58: ; 50f58 (14:4f58)
 	ld a, [hl]
 	cp $ff
 	jp z, Func_50fa8
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $23
 	call FarCall
 	call WriteHLToSPPlus8
@@ -53413,7 +53413,7 @@ Func_51239: ; 51239 (14:5239)
 	ld a, [hl]
 	cp $ff
 	jp z, Func_51252
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus6
 	call FarCall
 Func_51252: ; 51252 (14:5252)
@@ -53473,7 +53473,7 @@ Data_512d1: ; 512d1
 
 Func_512e1: ; 512e1 (14:52e1)
 	push af
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -53549,7 +53549,7 @@ Func_51385: ; 51385 (14:5385)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -53712,7 +53712,7 @@ Func_514ae: ; 514ae (14:54ae)
 	jp nz, Func_5167d
 	ld a, $1
 	call Func_512e1
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -53755,7 +53755,7 @@ Func_514ae: ; 514ae (14:54ae)
 	or b
 	jp z, Func_5153f
 	push hl
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld hl, $4000
@@ -53763,7 +53763,7 @@ Func_514ae: ; 514ae (14:54ae)
 
 Func_5153f: ; 5153f (14:553f)
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
 	push hl
@@ -53788,10 +53788,10 @@ Func_5153f: ; 5153f (14:553f)
 	ld de, $1412
 	ld hl, $0
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop bc
 	pop hl
 	push bc
@@ -53854,7 +53854,7 @@ Func_515fd: ; 515fd (14:55fd)
 	or c
 	jp nz, Func_5165b
 	push bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $23
 	call FarCall
 	reg16swap de, hl
@@ -53879,7 +53879,7 @@ Func_515fd: ; 515fd (14:55fd)
 	ld bc, $8000
 Func_51644: ; 51644 (14:5644)
 	push bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop bc
 	pop de
 	push bc
@@ -54040,7 +54040,7 @@ Func_5178a: ; 5178a
 	ld l, a
 	add hl, bc
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	ld c, l
@@ -54180,7 +54180,7 @@ Func_518e3: ; 518e3 (14:58e3)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	add sp, $3a
@@ -54852,7 +54852,7 @@ Func_51ea4: ; 51ea4
 	xor a
 	call PushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	write_hl_to_sp_plus $21
@@ -54914,7 +54914,7 @@ Func_51ea4: ; 51ea4
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -54937,7 +54937,7 @@ Func_51fa4: ; 51fa4 (14:5fa4)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -55003,7 +55003,7 @@ Func_5200b: ; 5200b (14:600b)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -55026,7 +55026,7 @@ Func_5208b: ; 5208b (14:608b)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -55220,7 +55220,7 @@ Func_52287: ; 52287 (14:6287)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $19
 	call FarCall
 	read_hl_from_sp_plus $1b
@@ -55266,7 +55266,7 @@ Func_52326: ; 52326
 	push af
 	ld hl, sp+$2
 	ld [hl], $0
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -55340,7 +55340,7 @@ Func_523c5: ; 523c5 (14:63c5)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld hl, sp+$0
@@ -55505,8 +55505,8 @@ Func_524b6: ; 524b6 (14:64b6)
 	add hl, de
 	ld l, [hl]
 	push hl
-	set_farcall_addrs_hli AllocateMemory
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
+	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
 	write_hl_to_sp_plus $15
@@ -55691,7 +55691,7 @@ Func_52591: ; 52591 (14:6591)
 	ld a, [hl]
 	cp $af
 	jp nc, Func_5276c
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $400
 	call FarCall
 	write_hl_to_sp_plus $1f
@@ -55755,13 +55755,13 @@ Func_5270e: ; 5270e (14:670e)
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $1f
 	call FarCall
 	jp Func_527db
 
 Func_5276c: ; 5276c (14:676c)
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $400
 	call FarCall
 	write_hl_to_sp_plus $1f
@@ -55780,7 +55780,7 @@ Func_5276c: ; 5276c (14:676c)
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $1f
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -56094,7 +56094,7 @@ Func_52a86: ; 52a86 (14:6a86)
 	ld de, $1412
 	ld hl, $0
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $13
 	call FarCall
 	call Func_1f7b
@@ -56282,7 +56282,7 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	reg16swap de, hl
@@ -56431,7 +56431,7 @@ Func_52cdc: ; 52cdc (14:6cdc)
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop bc
@@ -56581,7 +56581,7 @@ Func_53b6e::
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	reg16swap de, hl
@@ -56630,7 +56630,7 @@ Func_53b6e::
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop hl
@@ -59073,7 +59073,7 @@ Data_5538a:
 Func_5539a: ; 5539a (15:539a)
 	push af
 	ld hl, $64
-	call AllocateMemory_Bank15
+	call malloc_Bank15
 	push hl
 	ld c, l
 	ld b, h
@@ -59142,7 +59142,7 @@ Func_55427: ; 55427 (15:5427)
 	ld hl, $d
 	call PopBGMapRegion
 	pop hl
-	call FreeMemory_Bank15
+	call free_Bank15
 	ret
 
 Func_55439: ; 55439 (15:5439)
@@ -59817,7 +59817,7 @@ Func_5597b: ; 5597b (15:597b)
 	jp Func_55a26
 
 Func_559c2: ; 559c2 (15:59c2)
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $400
 	call FarCall
 	push hl
@@ -59837,7 +59837,7 @@ Func_559c2: ; 559c2 (15:59c2)
 	ld c, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -60083,7 +60083,7 @@ Data_55c3a:
 Func_55c41:
 	push hl
 	ld hl, $168
-	call AllocateMemory_Bank15
+	call malloc_Bank15
 	reg16swap de, hl
 	push de
 	ld c, e
@@ -60149,13 +60149,13 @@ Func_55cb9: ; 55cb9 (15:5cb9)
 	ld hl, $0
 	call PopBGMapRegion
 	pop hl
-	call FreeMemory_Bank15
+	call free_Bank15
 	ld hl, $8000
 	jp Func_55ce1
 
 Func_55cd7: ; 55cd7 (15:5cd7)
 	reg16swap de, hl
-	call FreeMemory_Bank15
+	call free_Bank15
 	ld hl, -1
 Func_55ce1: ; 55ce1 (15:5ce1)
 	ret
@@ -60814,7 +60814,7 @@ Func_561bd: ; 561bd (15:61bd)
 Func_561cf:
 	push hl
 	ld hl, $168
-	call AllocateMemory_Bank15
+	call malloc_Bank15
 	reg16swap de, hl
 	push de
 	ld c, e
@@ -60923,7 +60923,7 @@ Func_562d3: ; 562d3 (15:62d3)
 	ld hl, $0
 	call PopBGMapRegion
 	pop hl
-	call FreeMemory_Bank15
+	call free_Bank15
 	pop af
 	ld [wc2e9], a
 	ld hl, $8000
@@ -61183,7 +61183,7 @@ Func_564d6: ; 564d6 (15:64d6)
 Func_564dc: ; 564dc (15:64dc)
 	push de
 	ld hl, $64
-	call AllocateMemory_Bank15
+	call malloc_Bank15
 	pop de
 	push hl
 	push de
@@ -61353,7 +61353,7 @@ Func_56625: ; 56625 (15:6625)
 	ld hl, $d
 	call PopBGMapRegion
 	pop hl
-	call FreeMemory_Bank15
+	call free_Bank15
 	pop de
 	ld a, e
 	and d
@@ -62657,7 +62657,7 @@ Func_57447: ; 57447 (15:7447)
 	push af
 	push hl
 	ld hl, $400
-	call AllocateMemory_Bank15
+	call malloc_Bank15
 	call WriteHLToSPPlus10
 	pop hl
 	inc l
@@ -62705,7 +62705,7 @@ Func_574ce: ; 574ce (15:74ce)
 	call FarCall
 	call WaitVideoTransfer
 	call GetHLAtSPPlus8
-	call FreeMemory_Bank15
+	call free_Bank15
 	ld hl, sp+$9
 	ld c, l
 	ld b, h
@@ -63375,7 +63375,7 @@ Func_579a5: ; 579a5 (15:79a5)
 	pop bc
 	call FillVisibleAreaWithBlankTile
 	ld hl, $400
-	call AllocateMemory_Bank15
+	call malloc_Bank15
 	pop bc
 	push bc
 	push hl
@@ -63393,7 +63393,7 @@ Func_579a5: ; 579a5 (15:79a5)
 	call FarCall
 	call WaitVideoTransfer
 	pop hl
-	call FreeMemory_Bank15
+	call free_Bank15
 	set_farcall_addrs_hli Func_615be
 	pop bc
 	push bc
@@ -63936,16 +63936,16 @@ Func_57e2d: ; 57e2d (15:7e2d)
 	add sp, $e
 	ret
 
-AllocateMemory_Bank15: ; 57e30 (15:7e30)
+malloc_Bank15: ; 57e30 (15:7e30)
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	pop hl
 	call FarCall
 	ret
 
-FreeMemory_Bank15: ; 57e41 (15:7e41)
+free_Bank15: ; 57e41 (15:7e41)
 	push hl
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -64274,7 +64274,7 @@ Func_58df9: ; 58df9 (16:4df9)
 	ld [hl], $4
 	ld e, $9
 	push de
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $90
 	call FarCall
 	ld c, l
@@ -64504,7 +64504,7 @@ Func_58fce: ; 58fce (16:4fce)
 Func_58fd1: ; 58fd1 (16:4fd1)
 	push af
 	push bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop af
@@ -65768,7 +65768,7 @@ Func_59a2f: ; 59a2f (16:5a2f)
 	ld de, $1
 	ld hl, $c
 	call FarCall
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $400
 	call FarCall
 	push hl
@@ -65797,7 +65797,7 @@ Func_59a2f: ; 59a2f (16:5a2f)
 	ld c, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli Func_17e95
@@ -66199,7 +66199,7 @@ Func_59e79:
 	ld a, l
 	ld hl, sp+$5c
 	ld [hl], a
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	write_hl_to_sp_plus $5c
@@ -66270,7 +66270,7 @@ Func_59f09: ; 59f09 (16:5f09)
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $5c
 	call FarCall
 	ld hl, $4000
@@ -66428,7 +66428,7 @@ Func_5a079: ; 5a079 (16:6079)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $5c
 	call FarCall
 	ld hl, $8000
@@ -67714,7 +67714,7 @@ Func_5ade6:
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $8c
 	call FarCall
 	ld c, l
@@ -68501,7 +68501,7 @@ Func_5b427: ; 5b427 (16:7427)
 	call Func_5b855
 	cp $ff
 	jp nz, Func_5b46f
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $4e
 	ld de, $f
 	add hl, de
@@ -68640,7 +68640,7 @@ Func_5b5c6: ; 5b5c6 (16:75c6)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_5b7b9
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $4e
 	ld de, $f
 	add hl, de
@@ -68875,7 +68875,7 @@ Func_5b7ff: ; 5b7ff (16:77ff)
 	jp nz, Func_5b83a
 	ld a, l
 	call Func_5b855
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $4e
 	ld de, $f
 	add hl, de
@@ -69019,7 +69019,7 @@ Data_5b952:
 
 Func_5b95d: ; 5b95d (16:795d)
 	push af
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -69085,7 +69085,7 @@ Func_5b9f5: ; 5b9f5 (16:79f5)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -69110,7 +69110,7 @@ Func_5ba1e:
 	push de
 	ld a, $ff
 	call Func_5b855
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop de
 	push de
 	ld hl, $f
@@ -69144,7 +69144,7 @@ Func_5ba6d: ; 5ba6d (16:7a6d)
 	ld l, a
 	push bc
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
 	reg16swap de, hl
@@ -69249,7 +69249,7 @@ Func_5ba6d: ; 5ba6d (16:7a6d)
 	jp Func_5bbb7
 
 Func_5bb54: ; 5bb54 (16:7b54)
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $400
 	call FarCall
 	ld c, l
@@ -69272,7 +69272,7 @@ Func_5bb54: ; 5bb54 (16:7b54)
 	ld c, $2
 	call FarCall
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	set_farcall_addrs_hli Func_615be
@@ -69715,7 +69715,7 @@ Func_5bf82: ; 5bf82 (16:7f82)
 	ld de, $1412
 	ld hl, $0
 	call RestoreTileMapRectangle
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld l, $12
@@ -73704,7 +73704,7 @@ Func_5dd7d: ; 5dd7d (17:5d7d)
 	ld l, [hl]
 	ld h, a
 	call RestoreTileMapRectangle
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop af
@@ -76283,7 +76283,7 @@ Func_60e9e: ; 60e9e (18:4e9e)
 	ld a, [hl]
 	cp $4
 	jp nc, Func_60ef4
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $23
 	call FarCall
 	ld c, l
@@ -76559,7 +76559,7 @@ Func_610df: ; 610df (18:50df)
 	inc hl
 	ld d, [hl]
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop af
 	push af
 	ld l, a
@@ -78524,7 +78524,7 @@ Func_624af: ; 624af
 	ld hl, Data_62493
 	ld bc, $4
 	call MemCopy
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -78761,7 +78761,7 @@ Func_626ff: ; 626ff (18:66ff)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	call GetHLAtSPPlus10
@@ -81265,7 +81265,7 @@ Data_680c4:
 
 Func_680d3:
 	push hl
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -83203,7 +83203,7 @@ Func_68eeb:
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	pop de
@@ -83896,7 +83896,7 @@ Func_6935a:
 	or h
 	jp nz, Func_69431
 	push bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, Func_0150
 	call FarCall
 	write_hl_to wc38e
@@ -87027,7 +87027,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	xor a
 	call PushBGMapRegion_NoWaitBefore
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	reg16swap de, hl
@@ -87430,7 +87430,7 @@ Func_6af9d:
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	ld c, l
@@ -87741,7 +87741,7 @@ Data_6b30c:
 AttitudeMenu:: ; 6b31a (1a:731a)
 	push bc
 	push bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	call WriteHLToSPPlus4
@@ -89484,7 +89484,7 @@ Func_6c11d: ; 6c11d (1b:411d)
 	add hl, de
 	ld a, [hl]
 	push af
-	set_farcall_addrs_hli AllocateMemory ; has a crash check
+	set_farcall_addrs_hli malloc ; has a crash check
 	ld hl, $2d0
 	call FarCall
 	call WriteHLToSPPlus4
@@ -89715,7 +89715,7 @@ Func_6c2d8: ; 6c2d8 (1b:42d8)
 	ld a, [hl]
 	cp $4
 	jp c, Func_6c304
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	push hl
 	call FarCall
@@ -89737,7 +89737,7 @@ Func_6c304: ; 6c304 (1b:4304)
 	ld a, l
 	or h
 	jp z, Func_6c342
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	push hl
 	call FarCall
@@ -89823,7 +89823,7 @@ Func_6c3a2: ; 6c3a2 (1b:43a2)
 	jp Func_6c304
 
 Func_6c3fe: ; 6c3fe (1b:43fe)
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	push hl
 	call FarCall
@@ -90049,7 +90049,7 @@ Func_6c610: ; 6c610 (1b:4610)
 	ld a, SONG_PUNCH_MINIGAME
 	call OverworldPlaySong
 	call FillVisibleAreaWithBlankTile
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $80
 	call FarCall
 	write_hl_to_sp_plus $11
@@ -90252,7 +90252,7 @@ Func_6c78d: ; 6c78d (1b:478d)
 	ld bc, $80
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from_sp_plus $15
 	call FarCall
 	read_hl_from_sp_plus $13
@@ -95863,13 +95863,13 @@ Func_6eff0:
 	ld hl, sp+$33
 	ld a, [hSRAMBank]
 	ld [hl], a
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $351
 	call FarCall
 	ld c, l
 	ld b, h
 	push bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $351
 	call FarCall
 	pop bc
@@ -96042,10 +96042,10 @@ Func_6f0f7: ; 6f0f7 (1b:70f7)
 Func_6f1c5: ; 6f1c5 (1b:71c5)
 	push hl
 	push bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ld hl, sp+$c
@@ -96519,7 +96519,7 @@ Func_6f785: ; 6f785 (1b:7785)
 	xor a
 	call PushBGMapRegion_NoWaitBefore
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	reg16swap de, hl
@@ -96675,7 +96675,7 @@ Func_6f906: ; 6f906 (1b:7906)
 	pop de
 Func_6f947: ; 6f947 (1b:7947)
 	push de
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop bc
@@ -97073,15 +97073,15 @@ Data_c6e78: INCBIN "gfx/emotes/emote_c6e78.emoteattrs.rz" ; c6e78
 Data_c6ef0: INCBIN "gfx/emotes/emote_c6ef0.emoteattrs.rz" ; c6ef0
 Data_c6fff: INCBIN "gfx/emotes/emote_c6fff.emoteattrs.rz" ; c6fff
 
-AllocateMemory_Bank31: ; c70e8
+malloc_Bank31: ; c70e8
 	push hl
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	pop hl
 	jp FarCall
 
-FreeMemory_Bank31:
+free_Bank31:
 	push hl
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -97498,7 +97498,7 @@ Func_fb205: ; fb205 (3e:7205)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
 	reg16swap de, hl
@@ -97572,7 +97572,7 @@ Func_fb205: ; fb205 (3e:7205)
 	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	ret
@@ -98626,7 +98626,7 @@ Data_fba65:
 	dstr "セーフﾞ(したよ)"
 
 MainMenuSubmenu_Title: ; fba6f (3e:7a6f)
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
 	push hl
@@ -98669,7 +98669,7 @@ MainMenuSubmenu_Title: ; fba6f (3e:7a6f)
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
 	call PopBGMapRegion
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop de
@@ -100774,7 +100774,7 @@ Func_fcb82: ; fcb82 (3f:4b82)
 	jp Func_fcb1d
 
 Func_fcb85: ; fcb85 (3f:4b85)
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus3
 	call FarCall
 	set_farcall_addrs_hli StartMoveAnimScript
@@ -100837,7 +100837,7 @@ Func_fcbae: ; fcbae (3f:4bae)
 Func_fcc1b: ; fcc1b (3f:4c1b)
 	call WaitVideoTransfer
 Func_fcc1e: ; fcc1e (3f:4c1e)
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	call GetHLAtSPPlus3
 	call FarCall
 	xor a
@@ -101601,7 +101601,7 @@ IF DEF(STAR)
 ENDC
 
 IntroMovie: ; fd314 (3f:5314)
-	set_farcall_addrs_hli InitAllocatableMemoryBlocks
+	set_farcall_addrs_hli InitHeap
 	ld de, $900
 	ld hl, wAllocatableBlock0
 	call FarCall

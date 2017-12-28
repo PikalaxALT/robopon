@@ -995,7 +995,7 @@ INCLUDE "home/crash.asm"
 NewSaveFileInWRam:: ; 1db9
 	ld a, [hSRAMBank]
 	push af
-	ld a, BANK(sAllocatableBlock1)
+	ld a, BANK(sHeap)
 	call GetSRAMBank
 	ld bc, sSaveBlock1End - sSaveBlock1
 	ld e, $0
@@ -1007,19 +1007,19 @@ NewSaveFileInWRam:: ; 1db9
 	ld e, $0
 	ld hl, sWarehouse
 	call FillMemory
-	ld a, BANK(sAllocatableBlock1)
+	ld a, BANK(sHeap)
 	call GetSRAMBank
 	ld bc, $a0
 	ld e, $0
 	ld hl, wSaveBlock2
 	call FillMemory
-	ld a, BANK(sAllocatableBlock1)
+	ld a, BANK(sHeap)
 	call GetSRAMBank
 	ld bc, $dc
 	ld e, $0
 	ld hl, wSaveBlock3
 	call FillMemory
-	ld a, BANK(sAllocatableBlock1)
+	ld a, BANK(sHeap)
 	call GetSRAMBank
 	ld bc, $fa
 	ld e, $0
@@ -1051,7 +1051,7 @@ NewSaveFileInWRam:: ; 1db9
 
 Func_1e4d:: ; 1e4d (0:1e4d)
 	call FillVisibleAreaWithBlankTile
-	set_farcall_addrs_hli InitAllocatableMemoryBlocks
+	set_farcall_addrs_hli InitHeap
 	ld de, $900
 	ld hl, wAllocatableBlock0
 	call FarCall
@@ -1141,7 +1141,7 @@ Func_1f30:: ; 1f30
 	ld a, l
 	or h
 	jp nz, Func_1f7a
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $100
 	call FarCall
 	write_hl_to wc30e
@@ -1176,7 +1176,7 @@ Func_1f7b:: ; 1f7b
 	ld hl, $88f0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from wc30e
 	call FarCall
 	ld hl, $0
@@ -1189,7 +1189,7 @@ Func_1fbe:: ; 1fbe
 	ld a, l
 	or h
 	jp nz, Func_2008
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $1ba
 	call FarCall
 	write_hl_to wc2f2
@@ -1224,7 +1224,7 @@ Func_2009:: ; 2009
 	ld hl, $8cc0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from wc2f2
 	call FarCall
 	ld hl, $0
@@ -1237,7 +1237,7 @@ Func_204c:: ; 204c
 	ld a, l
 	or h
 	jp nz, Func_2096
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	ld hl, $50
 	call FarCall
 	write_hl_to wc2f2
@@ -1272,7 +1272,7 @@ Func_2097:: ; 2097
 	ld hl, $8fa0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	read_hl_from wc2f2
 	call FarCall
 	ld hl, $0
@@ -2225,7 +2225,7 @@ Func_2801:: ; 2801 (0:2801)
 	push de
 	ld a, $3
 	call GetSRAMBank
-	set_farcall_addrs_hli AllocateMemory
+	set_farcall_addrs_hli malloc
 	pop de
 	push de
 	reg16swap de, hl
@@ -2374,7 +2374,7 @@ Func_2887:: ; 2887 (0:2887)
 	ld a, [hl]
 	call DoublePushBGMapRegion
 	pop bc
-	set_farcall_addrs_hli FreeMemory
+	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
 	pop af
