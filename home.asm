@@ -701,7 +701,7 @@ GBKiss:: ; 1add
 	ld [rOBP1], a
 	predef InitCartIRMode
 	predef Func_7b21d
-	jp @ - 1 ; better luck next time
+	jp @ ; better luck next time
 
 Func_1b01:: ; 1b01
 	ld sp, wStackTop

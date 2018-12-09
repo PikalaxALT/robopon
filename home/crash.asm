@@ -58,7 +58,7 @@ Crash:: ; 1d00 (0:1d00)
 	xor a
 	call PushBGMapRegion
 	pop bc
-	jp @ - 1 ; better luck next time
+	jp @ ; better luck next time
 
 Data_1d8d:: ; 1d8d
 	dstr "(あれ) ?"

@@ -288,7 +288,7 @@ malloc:: ; 17aba (5:7aba)
 	set_farcall_addrs_hli PrintMemoryAllocationErrorDetails
 	call GetHLAtSPPlus4
 	call FarCall
-	jp @ - 1 ; better luck next time
+	jp @ ; better luck next time
 
 .done
 	pop bc

@@ -75867,7 +75867,7 @@ Func_60b73: ; 60b73 (18:4b73)
 	ld de, $0
 	ld hl, Data_60e6f
 	call FarCall
-	jp @ - 1 ; better luck next time
+	jp @ ; better luck next time
 
 Func_60b8a: ; 60b8a (18:4b8a)
 	ld hl, $358
