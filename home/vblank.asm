@@ -18,7 +18,7 @@ VBlank::
 	ld a, [wVideoTransferRequestFlags]
 	bit 1, a
 	jr z, .no_bank_switch
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, [wVideoTransferRequestBank]
 	call BankSwitch
@@ -73,9 +73,9 @@ VBlank::
 	; transfer attrs if and only if cgb
 	check_cgb
 	jp nz, .skip_bgmap_tile_push
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld a, [wVBlankMetaTileTransferQueue0AttrSource]
 	ld e, a
 	ld a, [wVBlankMetaTileTransferQueue0AttrSource + 1]
@@ -94,9 +94,9 @@ VBlank::
 	ld a, [de]
 	ld [hli], a
 	inc de
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $ff ^ 1
-	ld [rVBK], a
+	ldh [rVBK], a
 .skip_bgmap_tile_push
 	ld a, [wVBlankTransferFlags]
 	and $2
@@ -128,9 +128,9 @@ VBlank::
 	; transfer attrs if and only if cgb
 	check_cgb
 	jp nz, .skip_bgmap_tile_push2
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld a, [wVBlankMetaTileTransferQueue1AttrSource]
 	ld e, a
 	ld a, [wVBlankMetaTileTransferQueue1AttrSource + 1]
@@ -149,9 +149,9 @@ VBlank::
 	ld a, [de]
 	ld [hli], a
 	inc de
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $ff ^ 1
-	ld [rVBK], a
+	ldh [rVBK], a
 .skip_bgmap_tile_push2
 	xor a
 	ld [wVBlankTransferFlags], a
@@ -198,11 +198,11 @@ endr
 	jr z, .skip_push_lcdc
 	res 2, l
 .wait_ly
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $90
 	jr z, .wait_ly
 	ld a, [wLCDC]
-	ld [rLCDC], a
+	ldh [rLCDC], a
 .skip_push_lcdc
 	bit 3, h
 	jr z, .skip_joypad
@@ -215,26 +215,26 @@ endr
 	bit 3, a
 	jr nz, .map_selected_9c00
 	ld a, [wSCX]
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld a, [wSCY]
-	ld [rSCY], a
+	ldh [rSCY], a
 	jr .skip_push_screen_coords
 
 .map_selected_9c00
 	ld a, [wSCX2]
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld a, [wSCY2]
-	ld [rSCY], a
+	ldh [rSCY], a
 .skip_push_screen_coords
 	bit 5, h
 	jr z, .skip_push_dmg_pals
 	res 5, l
 	ld a, [wBGP]
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld a, [wOBP0]
-	ld [rOBP0], a
+	ldh [rOBP0], a
 	ld a, [wOBP1]
-	ld [rOBP1], a
+	ldh [rOBP1], a
 .skip_push_dmg_pals
 	bit 7, h
 	jr z, .skip_vblank_callback
@@ -248,9 +248,9 @@ endr
 	ld h, [hl]
 	ld l, a
 	push hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, [wVBlankCallbackRAMBank]
 	call GetSRAMBank

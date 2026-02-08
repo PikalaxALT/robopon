@@ -27,6 +27,6 @@ Pointer_0015:: ; 0015
 
 SECTION "rst $20", ROM0 [$20]
 BankSwitch_0020:: ; 0020
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ret

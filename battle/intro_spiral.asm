@@ -222,7 +222,7 @@ Func_e15d: ; e15d (3:615d)
 	or $20
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	push af
 	set_farcall_addrs_hli Func_6183
 	pop af
@@ -235,16 +235,16 @@ Func_e15d: ; e15d (3:615d)
 	call FillMemory
 	check_cgb
 	jp nz, Func_e20d
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld bc, $800
 	ld e, $0
 	hlbgcoord 0, 0
 	call FillMemory
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_e20d: ; e20d (3:620d)
 	set_farcall_addrs_hli Func_6183
 	pop af

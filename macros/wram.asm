@@ -1,22 +1,22 @@
-char: MACRO
+MACRO char
 \1:: db
 ENDM
 
-short: MACRO
+MACRO short
 \1:: dw
 ENDM
 
-long: MACRO
+MACRO long
 \1:: ds $4
 ENDM
 
-array: MACRO
+MACRO array
 \1::
 	ds \2 * \3 * \4
 \1End::
 ENDM
 
-bitfield: MACRO
+MACRO bitfield
 \1::
 IF \2 & $7
 	ds (\2 >> 3) + 1
@@ -25,7 +25,7 @@ ELSE
 ENDC
 ENDM
 
-oam_ram: MACRO
+MACRO oam_ram
 \1YCoord:: ds 1
 \1XCoord:: ds 1
 \1VTile:: ds 1
@@ -39,14 +39,14 @@ oam_ram: MACRO
 	ds 1
 	ENDM
 
-video_transfer_queue: MACRO
+MACRO video_transfer_queue
 \1::
 \1TilesRemaining:: ds 1
 \1Source:: ds 2
 \1Dest:: ds 2
 ENDM
 
-alloc_block: MACRO
+MACRO alloc_block
 \1::
 	char \1_Status
 	short \1_Size

@@ -1,9 +1,9 @@
-predef: MACRO
+MACRO predef
 	rst CallPredef
 	db \1_predef
 	ENDM
 
-predef_const: MACRO
+MACRO predef_const
 	const \1_predef
 	ENDM
 
@@ -37,7 +37,7 @@ predef_const: MACRO
 	predef_const Func_0218
 	predef_const Func_026c ; 1b
 
-const_value = $4b
+DEF const_value = $4b
 	predef_const Func_7bdc7
 	predef_const Func_7bf2a
 	predef_const Func_7be72

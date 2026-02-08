@@ -1,17 +1,17 @@
 	enum_start 0
 
 	enum battleanim_end_command
-battleanim_end: MACRO
+MACRO battleanim_end
 	db battleanim_end_command
 	ENDM
 
 	enum battleanim_doublepushscreen_command
-battleanim_doublepushscreen: MACRO
+MACRO battleanim_doublepushscreen
 	db battleanim_doublepushscreen_command
 	ENDM
 
 	enum battleanim_02_command
-battleanim_02: MACRO
+MACRO battleanim_02
 	db battleanim_02_command
 	db \1
 	db \2
@@ -19,18 +19,18 @@ battleanim_02: MACRO
 	ENDM
 
 	enum battleanim_03_command
-battleanim_03: MACRO
+MACRO battleanim_03
 	db battleanim_03_command
 	db \1
 	ENDM
 
 	enum battleanim_04_command
-battleanim_04: MACRO
+MACRO battleanim_04
 	db battleanim_04_command
 	db \1
 	ENDM
 
 	enum battleanim_clearsprites_command
-battleanim_clearsprites: MACRO
+MACRO battleanim_clearsprites
 	db battleanim_clearsprites_command
 	ENDM

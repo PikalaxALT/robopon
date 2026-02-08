@@ -629,7 +629,7 @@ CompareStackLongs:: ; 3593 (0:3593)
 	reg16swap de, hl
 	ld hl, $5
 	add hl, sp
-compare_stack_longs
+compare_stack_longs:
 	call CompareLong
 	pop de
 	push af

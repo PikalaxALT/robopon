@@ -1,6 +1,6 @@
 SECTION "Bank 0a", ROMX, BANK [$a]
 BlockDataHeaders:: ; 28000
-blockdataheader: MACRO
+MACRO blockdataheader
 	dbw BANK(\1) - BANK(BlockDataHeaders), \1
 	db \2_WIDTH, \2_HEIGHT ; dimensions
 	ENDM

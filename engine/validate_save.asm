@@ -13,7 +13,7 @@ CalcSaveChecksum:: ; 79b3 (1:79b3)
 ; a: Which to validate
 	push af
 	push bc
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld hl, $0
 	call WriteHLToSPPlus4
@@ -93,7 +93,7 @@ SaveGameSignature: ; 7a23
 
 ValidateSaveGameSignature:: ; 7a2b (1:7a2b)
 	push bc
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld hl, sp+$2
 	ld [hl], $0
@@ -159,7 +159,7 @@ ValidateSaveGameSignature:: ; 7a2b (1:7a2b)
 	ret
 
 SignSaveFiles: ; 7a92
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $2
 	call GetSRAMBank
@@ -178,7 +178,7 @@ SignSaveFiles: ; 7a92
 	ret
 
 StoreSaveChecksum: ; 7abc
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	inc e
 	dec e
@@ -203,7 +203,7 @@ StoreSaveChecksum: ; 7abc
 
 GetSaveChecksum:: ; 7ae4 (1:7ae4)
 	push af
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld e, a
 	pop af
 	push de

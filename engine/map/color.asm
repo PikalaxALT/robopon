@@ -326,7 +326,7 @@ MapPalettes7: ; 37322 unreferenced
 	RGB 22, 12, 10
 	RGB 00, 00, 00
 
-macro_c7362: MACRO
+MACRO macro_c7362
 	map \1
 	db \2
 	ENDM
@@ -450,7 +450,7 @@ Data_c7362:
 	macro_c7362 MAP_29_32, 0
 	macro_c7362 MAP_29_33, 0
 	macro_c7362 MAP_29_34, 0
-Data_c7362End
+Data_c7362End:
 
 GetMapPalettePointer:
 	push bc

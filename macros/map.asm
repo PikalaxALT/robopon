@@ -1,26 +1,26 @@
-groupdef: MACRO
+MACRO groupdef
 	const_def
-__enum__ = __enum__ + 1
+DEF __enum__ = __enum__ + 1
 	ENDM
 
-mapdef: MACRO
-GROUP_\1 EQU __enum__
+MACRO mapdef
+DEF GROUP_\1 EQU __enum__
 	const MAP_\1
-\1_WIDTH EQU \2
-\1_HEIGHT EQU \3
+DEF \1_WIDTH EQU \2
+DEF \1_HEIGHT EQU \3
 	ENDM
 
-map: MACRO
+MACRO map
 	db GROUP_\1, MAP_\1
 	ENDM
 
-spawn: MACRO
+MACRO spawn
 	db \1, \2 ; spawn coords
 	db \3, \4 ; push coords
 	map \5 ; map group and number
 	ENDM
 
-warpdef: MACRO
+MACRO warpdef
 	db \1 ; x coord
 	db \2 ; y coord
 	db \3 ; width
@@ -32,7 +32,7 @@ warpdef: MACRO
 	db \9 ; warp sound
 	ENDM
 
-person_event: MACRO
+MACRO person_event
 	db \1 ; sprite image
 	db \2 ; facing
 	db \3 ; x coord
@@ -49,7 +49,7 @@ person_event: MACRO
 	dw \9 ; param pointer
 	ENDM
 
-wildbot: MACRO
+MACRO wildbot
 	db \1 ; x coord
 	db \2 ; y coord
 	db \3 ; width

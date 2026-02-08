@@ -1,4 +1,4 @@
-pic_header: MACRO
+MACRO pic_header
 	db BANK(\1)
 	db (\2 - $40) >> 4
 	dw \1

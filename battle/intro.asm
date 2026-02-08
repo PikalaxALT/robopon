@@ -115,7 +115,7 @@ Func_fb64: ; fb64 (3:7b64)
 	ld de, $7
 	add hl, de
 	ld [hl], $0
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld e, a
 	push de
 	ld a, $3

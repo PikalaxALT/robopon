@@ -1,5 +1,5 @@
 	enum_start -1
-const_value set -1
+DEF const_value = -1
 	mapdef MAP_N_A, -1, -1
 
 	groupdef

@@ -4,49 +4,49 @@ LCDInterrupt::
 	ld a, [wHBlankMode]
 	or a
 	jr nz, .mode1
-	ld a, [rLYC]
+	ldh a, [rLYC]
 	ld c, a
 	ld a, [wHBlankLYCPrimary]
 	cp c
 	jr nz, .mode0_primary
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	set 1, a
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld a, [wHBlankLYCAlternate]
-	ld [rLYC], a
+	ldh [rLYC], a
 	pop bc
 	pop af
 	reti
 
 .mode0_primary
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	res 1, a
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld a, [wHBlankLYCPrimary]
-	ld [rLYC], a
+	ldh [rLYC], a
 	pop bc
 	pop af
 	reti
 
 .mode1
-	ld a, [rLYC]
+	ldh a, [rLYC]
 	ld c, a
 	ld a, [wHBlankLYCPrimary]
 	cp c
 	jr nz, .mode1_primary
 	ld a, [wHBlankSCXAlternate]
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld a, [wHBlankLYCAlternate]
-	ld [rLYC], a
+	ldh [rLYC], a
 	pop bc
 	pop af
 	reti
 
 .mode1_primary
 	ld a, [wHBlankSCXPrimary]
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld a, [wHBlankLYCPrimary]
-	ld [rLYC], a
+	ldh [rLYC], a
 	pop bc
 	pop af
 	reti

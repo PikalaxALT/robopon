@@ -2041,7 +2041,7 @@ BattleAnim_PlayMoveAnimScript: ; f0cf (3:70cf)
 	ld a, [wLCDC]
 	ld e, a
 	push de
-	ld a, [rIE]
+	ldh a, [rIE]
 	ld l, a
 	push hl
 	ld a, [wLCDC]

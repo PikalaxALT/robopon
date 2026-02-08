@@ -213,9 +213,9 @@ Func_bc167: ; bc167 (2f:4167)
 
 Func_bc170: ; bc170 (2f:4170)
 	push bc
-	cp "a"
+	cp CHARVAL("a")
 	jp c, .checkCapital
-	cp "z" + 1
+	cp CHARVAL("z") + 1
 	jp nc, .checkCapital
 	add $a9
 	ld hl, sp+$0
@@ -223,9 +223,9 @@ Func_bc170: ; bc170 (2f:4170)
 	jp .placeDirectly
 
 .checkCapital: ; bc183 (2f:4183)
-	cp "A"
+	cp CHARVAL("A")
 	jp c, .checkLeftParenthesis
-	cp "Z" + 1
+	cp CHARVAL("Z") + 1
 	jp nc, .checkLeftParenthesis
 	add $e3
 	ld hl, sp+$0
@@ -233,28 +233,28 @@ Func_bc170: ; bc170 (2f:4170)
 	jp .placeDirectly
 
 .checkLeftParenthesis: ; bc195 (2f:4195)
-	cp "["
+	cp CHARVAL("[")
 	jp nz, .checkRightParenthesis
 	ld hl, sp+$0
 	ld [hl], $3e
 	jp .placeDirectly
 
 .checkRightParenthesis: ; bc1a1 (2f:41a1)
-	cp "]"
+	cp CHARVAL("]")
 	jp nz, .checkColon
 	ld hl, sp+$0
 	ld [hl], $3f
 	jp .placeDirectly
 
 .checkColon: ; bc1ad (2f:41ad)
-	cp ":"
+	cp CHARVAL(":")
 	jp nz, .checkPeriod
 	ld hl, sp+$0
 	ld [hl], $40
 	jp .placeDirectly
 
 .checkPeriod: ; bc1b9 (2f:41b9)
-	cp "."
+	cp CHARVAL(".")
 	jp nz, .autoCharacter
 	ld hl, sp+$0
 	ld [hl], $41
@@ -371,7 +371,7 @@ Func_bc241: ; bc241 (2f:4241)
 	jp nc, .more_than_10
 	ld hl, sp+$0
 	ld a, [hl]
-	add "0"
+	add CHARVAL("0")
 	ld hl, sp+$0
 	ld [hl], a
 	jp .next
@@ -379,7 +379,7 @@ Func_bc241: ; bc241 (2f:4241)
 .more_than_10: ; bc270 (2f:4270)
 	ld hl, sp+$0
 	ld a, [hl]
-	add "A" - 10
+	add CHARVAL("A") - 10
 	ld hl, sp+$0
 	ld [hl], a
 .next: ; bc278 (2f:4278)
@@ -3136,7 +3136,7 @@ Func_bd6ac: ; bd6ac (2f:56ac)
 
 Func_bd6fa:: ; bd6fa (2f:56fa)
 	call Func_bc000
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $0
 	call GetSRAMBank
@@ -5773,7 +5773,7 @@ Func_bed16: ; bed16 (2f:6d16)
 	ld hl, -$384
 	add hl, sp
 	ld sp, hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld e, $0
 	ld hl, $356
@@ -6336,7 +6336,7 @@ Data_bf210:
 
 Func_bf214: ; bf214 (2f:7214)
 	push bc
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank
@@ -6872,7 +6872,7 @@ Func_bf596: ; bf596 (2f:7596)
 
 Func_bf599: ; bf599 (2f:7599)
 	push hl
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	ld [wLCDC], a
 	ld c, a
 	push bc
@@ -6880,7 +6880,7 @@ Func_bf599: ; bf599 (2f:7599)
 	or $81
 	ld [wLCDC], a
 	ld a, [wLCDC]
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld a, c
 	and $8
 	jp nz, Func_bf5b8
@@ -6892,15 +6892,15 @@ Func_bf5b8: ; bf5b8 (2f:75b8)
 Func_bf5ba: ; bf5ba (2f:75ba)
 	push af
 	ld hl, sp+$e
-	ld a, [rIE]
+	ldh a, [rIE]
 	ld [hl], a
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $fd
-	ld [rIE], a
-	ld a, [rIE]
+	ldh [rIE], a
+	ldh a, [rIE]
 	or $1
-	ld [rIE], a
-	ld a, [hSRAMBank]
+	ldh [rIE], a
+	ldh a, [hSRAMBank]
 	ld e, a
 	push de
 	ld a, $3
@@ -7024,11 +7024,11 @@ Func_bf680: ; bf680 (2f:7680)
 	call GetSRAMBank
 	pop bc
 	ld a, c
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld [wLCDC], a
 	ld hl, sp+$8
 	ld a, [hl]
-	ld [rIE], a
+	ldh [rIE], a
 	set_farcall_addrs_hli malloc
 Func_bf701: ; bf701 (2f:7701)
 	ld hl, $14a

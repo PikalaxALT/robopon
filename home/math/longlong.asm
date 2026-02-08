@@ -209,7 +209,7 @@ PutS64OnStack::
 PutS80OnStack::
 	ld bc, $a
 	ld a, $5
-putLongOrUltraLongOnStack
+putLongOrUltraLongOnStack:
 	add hl, bc
 	pop bc
 .loop

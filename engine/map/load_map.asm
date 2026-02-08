@@ -1,4 +1,4 @@
-macro_841d: MACRO
+MACRO macro_841d
 	db (\1 << 3) | \2
 	ENDM
 
@@ -266,7 +266,7 @@ PreloadNextMap: ; 854b (2:454b)
 ; a = map group
 ; e = map number
 ; c = flag
-del: MACRO
+MACRO del
 	read_hl_from \1
 	call free_Bank02
 	ld hl, $0

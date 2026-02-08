@@ -1,4 +1,4 @@
-map_trigger_ptr: MACRO
+MACRO map_trigger_ptr
 \1_Pointer::
 	dba \1
 	ENDM

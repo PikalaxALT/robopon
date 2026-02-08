@@ -1,6 +1,6 @@
 SECTION "Bank 12 Tree", ROMX [$78ac], BANK [$12]
 Func_4b8ac:: ; 4b8ac (12:78ac)
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(TextTreeBitstreams2)
 	call BankSwitch
@@ -57,7 +57,7 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jp c, .asm_4b981
 	call .GetNextBit
 	jr c, .asm_4b90c
-	ld a, "ﾞ"
+	ld a, CHARVAL("ﾞ")
 	jp .done
 
 .asm_4b90c
@@ -65,11 +65,11 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4b920
 	call .GetNextBit
 	jr c, .asm_4b91b
-	ld a, "ほ"
+	ld a, CHARVAL("ほ")
 	jp .done
 
 .asm_4b91b
-	ld a, "の"
+	ld a, CHARVAL("の")
 	jp .done
 
 .asm_4b920
@@ -77,13 +77,13 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jp c, .asm_4b97c
 	call .GetNextBit
 	jr c, .asm_4b930
-	ld a, "つ"
+	ld a, CHARVAL("つ")
 	jp .done
 
 .asm_4b930
 	call .GetNextBit
 	jr c, .asm_4b93a
-	ld a, "わ"
+	ld a, CHARVAL("わ")
 	jp .done
 
 .asm_4b93a
@@ -93,13 +93,13 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4b972
 	call .GetNextBit
 	jr c, .asm_4b94f
-	ld a, "1"
+	ld a, CHARVAL("1")
 	jp .done
 
 .asm_4b94f
 	call .GetNextBit
 	jr c, .asm_4b959
-	ld a, "ぃ"
+	ld a, CHARVAL("ぃ")
 	jp .done
 
 .asm_4b959
@@ -107,27 +107,27 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4b96d
 	call .GetNextBit
 	jr c, .asm_4b968
-	ld a, "6"
+	ld a, CHARVAL("6")
 	jp .done
 
 .asm_4b968
-	ld a, "8"
+	ld a, CHARVAL("8")
 	jp .done
 
 .asm_4b96d
-	ld a, "3"
+	ld a, CHARVAL("3")
 	jp .done
 
 .asm_4b972
-	ld a, "0"
+	ld a, CHARVAL("0")
 	jp .done
 
 .asm_4b977
-	ld a, "ね"
+	ld a, CHARVAL("ね")
 	jp .done
 
 .asm_4b97c
-	ld a, "く"
+	ld a, CHARVAL("く")
 	jp .done
 
 .asm_4b981
@@ -139,27 +139,27 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4b9a0
 	call .GetNextBit
 	jr c, .asm_4b99b
-	ld a, "っ"
+	ld a, CHARVAL("っ")
 	jp .done
 
 .asm_4b99b
-	ld a, "を"
+	ld a, CHARVAL("を")
 	jp .done
 
 .asm_4b9a0
-	ld a, "と"
+	ld a, CHARVAL("と")
 	jp .done
 
 .asm_4b9a5
 	call .GetNextBit
 	jr c, .asm_4b9af
-	ld a, "し"
+	ld a, CHARVAL("し")
 	jp .done
 
 .asm_4b9af
 	call .GetNextBit
 	jr c, .asm_4b9b9
-	ld a, "ら"
+	ld a, CHARVAL("ら")
 	jp .done
 
 .asm_4b9b9
@@ -167,15 +167,15 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4b9cd
 	call .GetNextBit
 	jr c, .asm_4b9c8
-	ld a, "へ"
+	ld a, CHARVAL("へ")
 	jp .done
 
 .asm_4b9c8
-	ld a, "ゅ"
+	ld a, CHARVAL("ゅ")
 	jp .done
 
 .asm_4b9cd
-	ld a, "あ"
+	ld a, CHARVAL("あ")
 	jp .done
 
 .asm_4b9d2
@@ -183,11 +183,11 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4b9e6
 	call .GetNextBit
 	jr c, .asm_4b9e1
-	ld a, "う"
+	ld a, CHARVAL("う")
 	jp .done
 
 .asm_4b9e1
-	ld a, "て"
+	ld a, CHARVAL("て")
 	jp .done
 
 .asm_4b9e6
@@ -195,11 +195,11 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4b9fa
 	call .GetNextBit
 	jr c, .asm_4b9f5
-	ld a, "に"
+	ld a, CHARVAL("に")
 	jp .done
 
 .asm_4b9f5
-	ld a, "こ"
+	ld a, CHARVAL("こ")
 	jp .done
 
 .asm_4b9fa
@@ -207,15 +207,15 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4ba0e
 	call .GetNextBit
 	jr c, .asm_4ba09
-	ld a, "ひ"
+	ld a, CHARVAL("ひ")
 	jp .done
 
 .asm_4ba09
-	ld a, "せ"
+	ld a, CHARVAL("せ")
 	jp .done
 
 .asm_4ba0e
-	ld a, "す"
+	ld a, CHARVAL("す")
 	jp .done
 
 .asm_4ba13
@@ -233,7 +233,7 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jp .done
 
 .asm_4ba33
-	ld a, "ﾟ"
+	ld a, CHARVAL("ﾟ")
 	jp .done
 
 .asm_4ba38
@@ -245,7 +245,7 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jp c, .asm_4ba8f
 	call .GetNextBit
 	jr c, .asm_4ba4d
-	ld a, "な"
+	ld a, CHARVAL("な")
 	jp .done
 
 .asm_4ba4d
@@ -257,45 +257,45 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4ba80
 	call .GetNextBit
 	jr c, .asm_4ba67
-	ld a, "2"
+	ld a, CHARVAL("2")
 	jp .done
 
 .asm_4ba67
 	call .GetNextBit
 	jr c, .asm_4ba71
-	ld a, "5"
+	ld a, CHARVAL("5")
 	jp .done
 
 .asm_4ba71
 	call .GetNextBit
 	jr c, .asm_4ba7b
-	ld a, "ぇ"
+	ld a, CHARVAL("ぇ")
 	jp .done
 
 .asm_4ba7b
-	ld a, "!"
+	ld a, CHARVAL("!")
 	jp .done
 
 .asm_4ba80
-	ld a, "む"
+	ld a, CHARVAL("む")
 	jp .done
 
 .asm_4ba85
-	ld a, "え"
+	ld a, CHARVAL("え")
 	jp .done
 
 .asm_4ba8a
-	ld a, "ち"
+	ld a, CHARVAL("ち")
 	jp .done
 
 .asm_4ba8f
-	ld a, "た"
+	ld a, CHARVAL("た")
 	jp .done
 
 .asm_4ba94
 	call .GetNextBit
 	jr c, .asm_4ba9e
-	ld a, " "
+	ld a, CHARVAL(" ")
 	jp .done
 
 .asm_4ba9e
@@ -305,17 +305,17 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4bab8
 	call .GetNextBit
 	jr c, .asm_4bab3
-	ld a, "お"
+	ld a, CHARVAL("お")
 	jp .done
 
 .asm_4bab3
-	ld a, "け"
+	ld a, CHARVAL("け")
 	jp .done
 
 .asm_4bab8
 	call .GetNextBit
 	jr c, .asm_4bac2
-	ld a, "れ"
+	ld a, CHARVAL("れ")
 	jp .done
 
 .asm_4bac2
@@ -329,11 +329,11 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4bae8
 	call .GetNextBit
 	jr c, .asm_4bae3
-	ld a, "4"
+	ld a, CHARVAL("4")
 	jp .done
 
 .asm_4bae3
-	ld a, "ぁ"
+	ld a, CHARVAL("ぁ")
 	jp .done
 
 .asm_4bae8
@@ -341,37 +341,37 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4bafc
 	call .GetNextBit
 	jr c, .asm_4baf7
-	ld a, "7"
+	ld a, CHARVAL("7")
 	jp .done
 
 .asm_4baf7
-	ld a, "9"
+	ld a, CHARVAL("9")
 	jp .done
 
 .asm_4bafc
 	call .GetNextBit
 	jr c, .asm_4bb06
-	ld a, "?"
+	ld a, CHARVAL("?")
 	jp .done
 
 .asm_4bb06
-	ld a, "ぬ"
+	ld a, CHARVAL("ぬ")
 	jp .done
 
 .asm_4bb0b
-	ld a, "ゆ"
+	ld a, CHARVAL("ゆ")
 	jp .done
 
 .asm_4bb10
-	ld a, "ゃ"
+	ld a, CHARVAL("ゃ")
 	jp .done
 
 .asm_4bb15
-	ld a, "そ"
+	ld a, CHARVAL("そ")
 	jp .done
 
 .asm_4bb1a
-	ld a, "ん"
+	ld a, CHARVAL("ん")
 	jp .done
 
 .asm_4bb1f
@@ -383,33 +383,33 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4bb52
 	call .GetNextBit
 	jr c, .asm_4bb39
-	ld a, "き"
+	ld a, CHARVAL("き")
 	jp .done
 
 .asm_4bb39
 	call .GetNextBit
 	jr c, .asm_4bb43
-	ld a, "ょ"
+	ld a, CHARVAL("ょ")
 	jp .done
 
 .asm_4bb43
 	call .GetNextBit
 	jr c, .asm_4bb4d
-	ld a, "よ"
+	ld a, CHARVAL("よ")
 	jp .done
 
 .asm_4bb4d
-	ld a, "や"
+	ld a, CHARVAL("や")
 	jp .done
 
 .asm_4bb52
-	ld a, "("
+	ld a, CHARVAL("(")
 	jp .done
 
 .asm_4bb57
 	call .GetNextBit
 	jr c, .asm_4bb61
-	ld a, ")"
+	ld a, CHARVAL(")")
 	jp .done
 
 .asm_4bb61
@@ -417,21 +417,21 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4bb75
 	call .GetNextBit
 	jr c, .asm_4bb70
-	ld a, "ふ"
+	ld a, CHARVAL("ふ")
 	jp .done
 
 .asm_4bb70
-	ld a, "ー"
+	ld a, CHARVAL("ー")
 	jp .done
 
 .asm_4bb75
 	call .GetNextBit
 	jr c, .asm_4bb7f
-	ld a, "り"
+	ld a, CHARVAL("り")
 	jp .done
 
 .asm_4bb7f
-	ld a, "さ"
+	ld a, CHARVAL("さ")
 	jp .done
 
 .asm_4bb84
@@ -439,29 +439,29 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4bbb6
 	call .GetNextBit
 	jr c, .asm_4bb93
-	ld a, "か"
+	ld a, CHARVAL("か")
 	jp .done
 
 .asm_4bb93
 	call .GetNextBit
 	jr c, .asm_4bb9d
-	ld a, "る"
+	ld a, CHARVAL("る")
 	jp .done
 
 .asm_4bb9d
 	call .GetNextBit
 	jr c, .asm_4bba7
-	ld a, "ま"
+	ld a, CHARVAL("ま")
 	jp .done
 
 .asm_4bba7
 	call .GetNextBit
 	jr c, .asm_4bbb1
-	ld a, "み"
+	ld a, CHARVAL("み")
 	jp .done
 
 .asm_4bbb1
-	ld a, "め"
+	ld a, CHARVAL("め")
 	jp .done
 
 .asm_4bbb6
@@ -469,21 +469,21 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	jr c, .asm_4bbd4
 	call .GetNextBit
 	jr c, .asm_4bbc5
-	ld a, "は"
+	ld a, CHARVAL("は")
 	jp .done
 
 .asm_4bbc5
 	call .GetNextBit
 	jr c, .asm_4bbcf
-	ld a, "も"
+	ld a, CHARVAL("も")
 	jp .done
 
 .asm_4bbcf
-	ld a, "ろ"
+	ld a, CHARVAL("ろ")
 	jp .done
 
 .asm_4bbd4
-	ld a, "い"
+	ld a, CHARVAL("い")
 	jp .done
 
 .done
@@ -526,7 +526,7 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	sla b
 	sla b
 	sla b
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	or b
 	ld [hli], a
 	ld [hl], e

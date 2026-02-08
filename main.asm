@@ -6,12 +6,12 @@ Func_4000:: ; 4000
 	ld a, $0
 	call Func_6169
 	ld a, $e4
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld [wBGP], a
-	ld [rOBP0], a
+	ldh [rOBP0], a
 	ld [wOBP0], a
 	ld a, $e0
-	ld [rOBP1], a
+	ldh [rOBP1], a
 	ld [wOBP1], a
 	call LoadFontGFX
 	hlbgcoord 0, 0
@@ -72,12 +72,12 @@ Func_4064:: ; 4064 (1:4064)
 	ld [wBGMapHi], a
 	call Func_40f4
 	ld a, $1
-	ld [rIE], a
-	ld a, [rSTAT]
+	ldh [rIE], a
+	ldh a, [rSTAT]
 	set 6, a
-	ld [rSTAT], a
+	ldh [rSTAT], a
 	xor a
-	ld [rIF], a
+	ldh [rIF], a
 	ei
 	ld a, $d
 	ld [wRNGState], a
@@ -86,7 +86,7 @@ Func_4064:: ; 4064 (1:4064)
 	xor a
 	ld [wRTCTicker], a
 	ld a, $80
-	ld [rSC], a
+	ldh [rSC], a
 	ret
 
 Func_40bf: ; 40bf
@@ -144,7 +144,7 @@ Func_40f4: ; 40f4 (1:40f4)
 
 .PushOAM:
 	ld a, $c4
-	ld [rDMA], a
+	ldh [rDMA], a
 	ld a, $28
 .asm_4108
 	dec a
@@ -233,7 +233,7 @@ Func_6169: ; 6169 (1:6169)
 
 Func_617d: ; 617d (1:617d)
 	ld [wLCDC], a
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ret
 
 Func_6183:: ; 6183
@@ -478,7 +478,7 @@ Func_62e3: ; 62e3 (1:62e3)
 	jr nz, Func_62e3
 	ret
 
-asm_62fb
+asm_62fb:
 	ld a, c
 	call GetBGMapAddresses
 	pop bc
@@ -1260,27 +1260,27 @@ ApplyPoncotNameCharmap:: ; 68b6 (1:68b6)
 	jr nz, .no_hira
 	bit 0, c
 	jr z, .no_hira
-	ld [hl], "("
+	ld [hl], CHARVAL("(")
 	inc hl
 .no_hira
 	bit 0, b
 	jr z, .no_kata
 	bit 0, c
 	jr nz, .no_kata
-	ld [hl], ")"
+	ld [hl], CHARVAL(")")
 	inc hl
 .no_kata
 	ld [hli], a
 	bit 2, c
 	jr z, .test_dakuten
-	ld a, "ﾟ"
+	ld a, CHARVAL("ﾟ")
 	ld [hli], a
 	jr .done_dakuten
 
 .test_dakuten
 	bit 1, c
 	jr z, .done_dakuten
-	ld a, "ﾞ"
+	ld a, CHARVAL("ﾞ")
 	ld [hli], a
 .done_dakuten
 	ld a, c
@@ -1293,11 +1293,11 @@ Func_68fd: ; 68fd
 	ld b, $1
 	xor a
 	ld [wFarCallSavedA], a
-	ld [rSCX], a
-	ld a, [rLY]
+	ldh [rSCX], a
+	ldh a, [rLY]
 	ld c, a
 .wait_next_line
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp c
 	jr z, .wait_next_line
 	ld c, a
@@ -1311,7 +1311,7 @@ Func_68fd: ; 68fd
 .asm_691a
 	xor a
 .asm_691b
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld a, [wFarCallSavedA]
 	add b
 	ld [wFarCallSavedA], a
@@ -1328,7 +1328,7 @@ Func_68fd: ; 68fd
 	or l
 	jr nz, .wait_next_line
 	xor a
-	ld [rSCX], a
+	ldh [rSCX], a
 	ret
 
 Func_6938: ; 6938
@@ -1337,14 +1337,14 @@ Func_6938: ; 6938
 .asm_693b
 	ld c, $0
 .asm_693d
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp e
 	jr c, .asm_693b
 	bit 0, c
 	jr nz, .asm_6957
 	ld c, $1
 	ld a, b
-	ld [rSCX], a
+	ldh [rSCX], a
 	xor $fe
 	ld b, a
 	dec hl
@@ -1352,14 +1352,14 @@ Func_6938: ; 6938
 	or h
 	jr nz, .asm_693d
 	xor a
-	ld [rSCX], a
+	ldh [rSCX], a
 	ret
 
 .asm_6957
 	cp d
 	jr c, .asm_693d
 	xor a
-	ld [rSCX], a
+	ldh [rSCX], a
 	jr .asm_693d
 
 BlinkTextCursor:
@@ -1370,7 +1370,7 @@ BlinkTextCursor:
 	ret
 
 .toggle
-	ld a, [rSCX]
+	ldh a, [rSCX]
 	srl a
 	srl a
 	srl a
@@ -1379,7 +1379,7 @@ BlinkTextCursor:
 	add e
 	and $1f
 	ld e, a
-	ld a, [rSCY]
+	ldh a, [rSCY]
 	srl a
 	srl a
 	srl a
@@ -1452,12 +1452,12 @@ DoShakeProgram:
 	ld a, [hl]
 	cpl
 	inc a
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld [hli], a
 	ld a, [hl]
 	cpl
 	inc a
-	ld [rSCY], a
+	ldh [rSCY], a
 	ld [hl], a
 	dec hl
 	dec hl
@@ -1487,9 +1487,9 @@ DoFlashProgram:
 	ld b, $0
 	add hl, bc
 	ld a, [hli]
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld a, [hl]
-	ld [rOBP0], a
+	ldh [rOBP0], a
 .done
 	ret
 
@@ -1532,11 +1532,11 @@ DoFadeProgram:
 	ld a, [hl]
 	bit 1, e
 	jr z, .no_bgp
-	ld [rBGP], a
+	ldh [rBGP], a
 .no_bgp
 	bit 2, e
 	jr z, .done
-	ld [rOBP0], a
+	ldh [rOBP0], a
 .done
 	ret
 
@@ -1688,11 +1688,11 @@ CalcChecksum: ; 6b11
 	ret
 
 Func_6b22:: ; 6b22 (1:6b22)
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	push af
 	pop af
 	ld a, $30
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	push af
 	pop af
 	push af
@@ -1795,7 +1795,7 @@ Func_6b94:: ; 6b94
 	or a
 	jp nz, Func_6e0d
 
-macro_6b94: MACRO
+MACRO macro_6b94
 	read_hl_from_sp_plus $28
 	push hl
 	read_hl_from_sp_plus \1 + 2
@@ -2054,7 +2054,7 @@ Func_6f6d: ; 6f6d (1:6f6d)
 Func_6f7b: ; 6f7b (1:6f7b)
 	push hl
 	push de
-	ld a, [rIE]
+	ldh a, [rIE]
 	push af
 	call EnableVBlank
 	call EnableTimerInt
@@ -2110,7 +2110,7 @@ Func_6fe0: ; 6fe0
 	push de
 	ld hl, sp+$2
 	ld [hl], $0
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	push hl
 	xor a
@@ -2126,7 +2126,7 @@ Func_6fe0: ; 6fe0
 .asm_7005
 	ld [wc31b], a
 	ld [wc31d], a
-	ld [rSC], a
+	ldh [rSC], a
 	xor a
 	ld [wc319], a
 	ld e, $5
@@ -2227,7 +2227,7 @@ Func_70bc: ; 70bc (1:70bc)
 	ld a, $1
 	ld [wc31d], a
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 	ld l, $0
 Func_70d1: ; 70d1 (1:70d1)
 	ld a, l
@@ -2242,7 +2242,7 @@ Func_70d7: ; 70d7 (1:70d7)
 	ld [wc31a], a
 	call NextOverworldFrame
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 	pop hl
 	ld a, [wc31c]
 	cp $dd
@@ -2288,13 +2288,13 @@ Func_711e: ; 711e (1:711e)
 	ld a, $1
 	ld [wc31d], a
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 Func_7137: ; 7137 (1:7137)
 	ld a, [wc31a]
 	or a
 	jp z, Func_7137
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 	xor a
 	ld [wc31a], a
 Func_7146: ; 7146 (1:7146)
@@ -2333,7 +2333,7 @@ Func_7172: ; 7172 (1:7172)
 	ld [wc31a], a
 	call NextOverworldFrame
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 	pop hl
 	inc l
 	jp Func_716c
@@ -2455,15 +2455,15 @@ Func_7234: ; 7234 (1:7234)
 	xor a
 	ld [wc31e], a
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 Func_7243: ; 7243 (1:7243)
-	ld a, [rSC]
+	ldh a, [rSC]
 	and $80
 	jp nz, Func_7243
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 Func_724e: ; 724e (1:724e)
-	ld a, [rSC]
+	ldh a, [rSC]
 	and $80
 	jp nz, Func_724e
 	ld a, $14
@@ -2477,15 +2477,15 @@ Func_725f: ; 725f (1:725f)
 	push hl
 	call DisableJoypadInt
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 Func_726a: ; 726a (1:726a)
-	ld a, [rSC]
+	ldh a, [rSC]
 	and $80
 	jp nz, Func_726a
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 Func_7275: ; 7275 (1:7275)
-	ld a, [rSC]
+	ldh a, [rSC]
 	and $80
 	jp nz, Func_7275
 	ld a, $28
@@ -2507,15 +2507,15 @@ Func_7286: ; 7286 (1:7286)
 	ld hl, sp+$0
 	ld [hl], $0
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	push af
 	ld hl, sp+$6
 	ld a, [hl]
 	and $1
 	jp z, Func_72ab
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $c
-	ld [rIE], a
+	ldh [rIE], a
 Func_72ab: ; 72ab (1:72ab)
 	ei
 Func_72ac: ; 72ac (1:72ac)
@@ -2630,7 +2630,7 @@ Func_7386: ; 7386 (1:7386)
 Func_7395: ; 7395 (1:7395)
 	di
 	pop af
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 	call GetHLAtSPPlus4
 	ld a, l
@@ -2660,7 +2660,7 @@ Func_73af: ; 73af (1:73af)
 	ld hl, sp+$4
 	ld [hl], $0
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	pop hl
 	pop bc
 	push af
@@ -2669,9 +2669,9 @@ Func_73af: ; 73af (1:73af)
 	ld a, c
 	and $1
 	jp z, Func_73d5
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $c
-	ld [rIE], a
+	ldh [rIE], a
 Func_73d5: ; 73d5 (1:73d5)
 	ei
 	pop bc
@@ -2798,7 +2798,7 @@ Func_74a7: ; 74a7 (1:74a7)
 Func_74c1: ; 74c1 (1:74c1)
 	di
 	pop af
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 	call GetHLAtSPPlus3
 	ld a, l
@@ -2817,11 +2817,11 @@ Func_74d4: ; 74d4 (1:74d4)
 Func_74da: ; 74da (1:74da)
 	push af
 	ld a, e
-	ld [rSB], a
+	ldh [rSB], a
 	xor a
 	ld [wc31a], a
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 Func_74e6: ; 74e6 (1:74e6)
 	ld a, [wc31a]
 	or a
@@ -2856,16 +2856,16 @@ Func_7507: ; 7507 (1:7507)
 	push af
 	xor a
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	ld l, a
 	push hl
 	ld hl, sp+$6
 	ld a, [hl]
 	and $1
 	jp z, Func_7526
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $c
-	ld [rIE], a
+	ldh [rIE], a
 Func_7526: ; 7526 (1:7526)
 	ei
 	pop hl
@@ -2983,7 +2983,7 @@ Func_75e8: ; 75e8
 	di
 	pop hl
 	ld a, l
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 	pop hl
 	push hl
@@ -3016,7 +3016,7 @@ Func_7618: ; 7618 (1:7618)
 	ld hl, sp+$8
 	ld [hl], $0
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	ld l, a
 	pop af
 	pop de
@@ -3028,9 +3028,9 @@ Func_7618: ; 7618 (1:7618)
 	ld a, c
 	and $1
 	jp z, Func_763e
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $c
-	ld [rIE], a
+	ldh [rIE], a
 Func_763e: ; 763e (1:763e)
 	ei
 	pop bc
@@ -3176,7 +3176,7 @@ Func_7726: ; 7726 (1:7726)
 	di
 	pop hl
 	ld a, l
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 	pop de
 	ld a, e
@@ -3738,9 +3738,9 @@ Func_7c3d: ; 7c3d (1:7c3d)
 	pop de
 	call Func_6336
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld hl, sp+$2
 	ld c, [hl]
 	ld hl, sp+$3
@@ -3766,9 +3766,9 @@ Func_7c3d: ; 7c3d (1:7c3d)
 	pop bc
 	call Func_667d
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_7c85: ; 7c85 (1:7c85)
 	pop bc
 	pop bc
@@ -3822,7 +3822,7 @@ Func_7cce: ; 7cce (1:7cce)
 	ret
 
 Func_7cd1: ; 7cd1
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $2
 	call GetSRAMBank_ReadOnly
@@ -3855,7 +3855,7 @@ Func_7cf9: ; 7cf9 (1:7cf9)
 	ret
 
 Func_7d01: ; 7d01
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $2
 	call GetSRAMBank_ReadOnly
@@ -3894,7 +3894,7 @@ Func_7d37: ; 7d37 (1:7d37)
 
 Func_7d39: ; 7d39
 	push af
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld hl, sp+$3
 	ld l, [hl]
@@ -3988,7 +3988,7 @@ Func_7db0:: ; 7db0 (1:7db0)
 	push de
 	add sp, -$40
 	push af
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	push hl
 	ld hl, sp+$4
@@ -4035,7 +4035,7 @@ Func_7dfc:: ; 7dfc (1:7dfc)
 	add sp, -$24
 	push de
 	push af
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	pop af
 	push hl
@@ -4124,7 +4124,7 @@ Func_7e8a: ; 7e8a
 	push de
 	add sp, -$40
 	push af
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	pop af
 	push hl
@@ -4206,7 +4206,7 @@ Func_7f14: ; 7f14
 	add sp, -$40
 	push de
 	push af
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	pop af
 	push hl
@@ -4805,7 +4805,7 @@ MoveEmote_:: ; 8dc8
 	ret
 
 Func_8df1: ; 8df1 (2:4df1)
-del_if_defined: MACRO
+MACRO del_if_defined
 	read_hl_from \1
 	ld a, l
 	or h
@@ -4832,7 +4832,7 @@ del_if_defined: MACRO
 Func_8f44:: ; 8f44 (2:4f44)
 ; bgmap transfer?
 	add sp, -$30
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	and $80
 	jp nz, .lcd_enabled
 	jp .quit
@@ -4954,9 +4954,9 @@ Func_8f44:: ; 8f44 (2:4f44)
 .check_attr
 	check_cgb
 	jp nz, .skip_attr
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld e, $0
 .attr_loop
 	ld a, e
@@ -5059,9 +5059,9 @@ Func_8f44:: ; 8f44 (2:4f44)
 	jp .attr_loop
 
 .done_attr
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 .skip_attr
 	ld a, [wOverworldTilemapSelector]
 	or a
@@ -6241,7 +6241,7 @@ Func_bbc7: ; bbc7 (2:7bc7)
 
 Func_bbc8: ; bbc8 (2:7bc8)
 	push af
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	ld l, a
 	push hl
 	set_farcall_addrs_hli Func_6183
@@ -6654,7 +6654,7 @@ CheckBlackedOut: ; bf4a (2:7f4a)
 	ret
 
 Bank2_WaitVideoTransferIfLCDEnabled: ; bfaf (2:7faf)
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	and $80
 	jp z, Func_bfb9
 	call WaitVideoTransfer
@@ -7089,7 +7089,7 @@ Func_c7ba: ; c7ba
 
 Func_c812: ; c812
 	push hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -7106,7 +7106,7 @@ Func_c812: ; c812
 
 Func_c82b: ; c82b
 	push hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -7214,7 +7214,7 @@ Data_c8de: ; c8de
 Data_c8e6: ; c8e6
 	dstr "(よしっ) "
 
-Data_c8ed
+Data_c8ed:
 	dstr " (ゆけっ!!)"
 
 Data_c8f6: ; c8f6
@@ -7246,7 +7246,7 @@ Func_c8fe: ; c8fe
 	push de
 	ld hl, sp+$11
 	call Func_c82b
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -7456,9 +7456,9 @@ Func_ca78: ; ca78 (3:4a78)
 	ld bc, $3
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $1d
 	ld de, $1323
@@ -7469,9 +7469,9 @@ Func_ca78: ; ca78 (3:4a78)
 	inc h
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 	pop de
 Func_cb00: ; cb00 (3:4b00)
 	push de
@@ -7523,10 +7523,10 @@ Func_cd9a: ; cd9a (3:4d9a)
 Func_cda9: ; cda9
 	call DisableHBlank
 	xor a
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld [wHBlankSCXAlternate], a
 	ld a, [wLCDC]
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld a, [wNextVBlankFlags]
 	and $7f
 	ld [wNextVBlankFlags], a
@@ -7548,9 +7548,9 @@ Func_cdc0: ; cdc0 (3:4dc0)
 	check_cgb
 	jp nz, Func_ce13
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli Func_667d
 	ld hl, sp+$1
 	ld c, [hl]
@@ -7559,9 +7559,9 @@ Func_cdc0: ; cdc0 (3:4dc0)
 	ld hl, $5
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_ce13: ; ce13 (3:4e13)
 	call WaitVideoTransfer
 	pop bc
@@ -8961,7 +8961,7 @@ Func_dc2c: ; dc2c (3:5c2c)
 	or $4
 	ld [wNextVBlankFlags], a
 	ld a, $28
-	ld [rLYC], a
+	ldh [rLYC], a
 	xor a
 	ld [wHBlankMode], a
 	ld a, $28
@@ -9105,10 +9105,10 @@ Func_ddc2: ; ddc2
 	ld [hl], $fe
 	ld c, $1
 	ld hl, sp+$1
-	ld a, [rLY]
+	ldh a, [rLY]
 	ld [hl], a
 Func_ddcf: ; ddcf (3:5dcf)
-	ld a, [rLY]
+	ldh a, [rLY]
 	ld e, a
 	ld hl, sp+$1
 	ld a, [hl]
@@ -9116,7 +9116,7 @@ Func_ddcf: ; ddcf (3:5dcf)
 	jp z, Func_de1b
 	ld hl, sp+$0
 	ld a, [hl]
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld hl, sp+$1
 	ld [hl], e
 	ld hl, sp+$0
@@ -9694,7 +9694,7 @@ Func_f771: ; f771
 	call WriteHLToSPPlus4
 	ld hl, $0
 	call WriteHLToSPPlus6
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -10624,7 +10624,7 @@ Func_10327: ; 10327 (4:4327)
 Func_10342: ; 10342 (4:4342)
 	push de
 	push bc
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	push hl
 	ld a, $3
@@ -10896,9 +10896,9 @@ Func_1055c: ; 1055c (4:455c)
 	check_cgb
 	jp nz, Func_105af
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli Func_667d
 	ld hl, sp+$1
 	ld c, [hl]
@@ -10907,9 +10907,9 @@ Func_1055c: ; 1055c (4:455c)
 	ld hl, $0
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_105af: ; 105af (4:45af)
 	call WaitVideoTransfer
 	ld hl, sp+$1
@@ -12332,7 +12332,7 @@ Func_11048: ; 11048 (4:5048)
 	push hl
 	jp Func_10ff8
 
-asm_1105a
+asm_1105a:
 	xor a
 Func_1105b: ; 1105b (4:505b)
 	cp $a
@@ -18784,7 +18784,7 @@ Func_15ff9: ; 15ff9 (5:5ff9)
 GetBanks:: ; 16007 (5:6007)
 	push de
 	push af
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	pop af
 	push hl
@@ -20770,7 +20770,7 @@ Func_16d8e: ; 16d8e
 	ld l, a
 	write_hl_to_sp_plus $e
 Func_16e3e: ; 16e3e (5:6e3e)
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld c, a
 	read_hl_from_sp_plus $10
 	push hl
@@ -23479,7 +23479,7 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 	push de
 	call FarCall
 	write_hl_to_sp_plus $30
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -24369,7 +24369,7 @@ Func_21198: ; 21198 (8:5198)
 	ld hl, Data_21152
 	call Func_2a79
 	ld a, [wLCDC]
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld l, $12
 	push hl
 	ld c, $14
@@ -24427,7 +24427,7 @@ Func_211fb: ; 211fb (8:51fb)
 	add hl, de
 	call WriteHLToSPPlus4
 	ld hl, sp+$1
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld [hl], a
 	ld hl, sp+$0
 	ld [hl], $0
@@ -25445,7 +25445,7 @@ Func_2193a: ; 2193a
 	jp z, Func_219b7
 	ld hl, sp+$4
 	ld [hl], $1
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -25577,7 +25577,7 @@ Func_21a51: ; 21a51 (8:5a51)
 	jp z, Func_21a9c
 	ld hl, sp+$4
 	ld [hl], $1
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -25709,7 +25709,7 @@ Func_21b0d: ; 21b0d
 	ld a, [hl]
 	and $1
 	jp z, Func_21bc0
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -28806,16 +28806,16 @@ Func_237be: ; 237be
 	call FillMemory
 	check_cgb
 	jp nz, Func_237fb
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld bc, $800
 	ld e, $0
 	hlbgcoord 0, 0
 	call FillMemory
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_237fb: ; 237fb (8:77fb)
 	set_farcall_addrs_hli Func_6183
 	ld a, [wLCDC]
@@ -35648,7 +35648,7 @@ Func_26ee8: ; 26ee8
 	jr z, asm_26f53
 Func_26f50: ; 26f50 (9:6f50)
 	ld bc, 9990
-asm_26f53
+asm_26f53:
 	push bc
 	ld hl, sp+$2
 	reg16swap de, hl
@@ -38029,7 +38029,7 @@ Func_309da: ; 309da
 	write_hl_to_sp_plus $11
 Func_30a85: ; 30a85 (c:4a85)
 	ld hl, sp+$6
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld [hl], a
 	read_hl_from_sp_plus $13
 	ld de, $b
@@ -44547,7 +44547,7 @@ Func_4c19d: ; 4c19d (13:419d)
 	ld [wc319], a
 	call DisableJoypadInt
 	ld a, $81
-	ld [rSC], a
+	ldh [rSC], a
 	ld e, $0
 Func_4c1ae: ; 4c1ae (13:41ae)
 	read_hl_from wGameTimer + 2
@@ -44565,7 +44565,7 @@ Func_4c1ae: ; 4c1ae (13:41ae)
 
 Func_4c1c8: ; 4c1c8 (13:41c8)
 	ld a, $80
-	ld [rSC], a
+	ldh [rSC], a
 	jp Func_4c1f5
 
 Func_4c1cf: ; 4c1cf (13:41cf)
@@ -47332,7 +47332,7 @@ Func_4dad5: ; 4dad5 (13:5ad5)
 	ld hl, -$352
 	add hl, sp
 	ld sp, hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld c, a
 	ld a, [wc319]
 	cp $81
@@ -50504,7 +50504,7 @@ Func_4fac6: ; 4fac6 (13:7ac6)
 	or $4
 	ld [wNextVBlankFlags], a
 	ld a, $28
-	ld [rLYC], a
+	ldh [rLYC], a
 	xor a
 	ld [wHBlankMode], a
 	xor a
@@ -51118,7 +51118,7 @@ Data_50157:
 	dbw 0, 0
 	dbw 0, 0
 
-Data_50176
+Data_50176:
 	dr $50176, $50185
 
 Func_50185: ; 50185 (14:4185)
@@ -56509,7 +56509,7 @@ Func_52d9f: ; 52d9f (14:6d9f)
 	jp Func_52d73
 
 Func_52daa: ; 52daa (14:6daa)
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	push de
 	ld a, $2
@@ -62338,7 +62338,7 @@ Func_571bf:
 	jp Func_5732a
 
 Func_5720f: ; 5720f (15:720f)
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	push bc
 	ld a, BANK(Data_64c90)
@@ -69859,9 +69859,9 @@ Func_5c328: ; 5c328 (17:4328)
 	jp nz, Func_5c37b
 	push de
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	pop de
 	ld hl, sp+$1
@@ -69872,9 +69872,9 @@ Func_5c328: ; 5c328 (17:4328)
 	ld bc, $12
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_5c37b: ; 5c37b (17:437b)
 	call WaitVideoTransfer
 	pop bc
@@ -73663,7 +73663,7 @@ Func_5dd7d: ; 5dd7d (17:5d7d)
 	push bc
 	push bc
 	call GetHLAtSPPlus6
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	push hl
 	ld a, $3
@@ -74977,7 +74977,7 @@ Func_60268: ; 60268 (18:4268)
 	ld a, c
 	cp $4
 	jp nc, Func_6037b
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	push bc
 	ld a, $3
@@ -75173,7 +75173,7 @@ Func_60386: ; 60386 (18:4386)
 	call PlaceStringDEatCoordHL
 	pop bc
 Func_603f8: ; 603f8 (18:43f8)
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	push bc
 	ld a, $3
@@ -75377,7 +75377,7 @@ Func_60556: ; 60556 (18:4556)
 	ld a, [hl]
 	and $2
 	jp z, Func_605be
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -75415,7 +75415,7 @@ Func_605be: ; 605be (18:45be)
 	call LiteralStringInTree
 	dec hl
 	push hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -75688,7 +75688,7 @@ Func_609d3: ; 609d3 (18:49d3)
 	push bc
 	ld hl, $357
 	add hl, sp
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld [hl], a
 	ld hl, $35b
 	add hl, sp
@@ -76503,7 +76503,7 @@ Func_61076: ; 61076 (18:5076)
 	ld de, $e2
 	add hl, de
 	ld [hl], c
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	push hl
 	ld a, $3
@@ -79037,7 +79037,7 @@ Func_62d42: ; 62d42 (18:6d42)
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
 	ld a, $40
-asm_62d4b
+asm_62d4b:
 	push af
 	push de
 	ld de, $0
@@ -79162,7 +79162,7 @@ Func_62dfc: ; 62dfc (18:6dfc)
 	add hl, de
 	ld de, wCGB_BGPalsBuffer
 	ld a, $40
-asm_62e05
+asm_62e05:
 	push af
 	push de
 	ld de, $0
@@ -79331,30 +79331,30 @@ SGBInit: ; 62ee4
 	call Func_62eb1
 	ld bc, $4
 	call SGBWait
-	ld a, [rJOYP]
+	ldh a, [rJOYP]
 	and $3
 	cp $3
 	jr nz, .is_sgb
 	ld a, $20
-	ld [rJOYP], a
-	ld a, [rJOYP]
-	ld a, [rJOYP]
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
 	ld a, $30
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	ld a, $10
-	ld [rJOYP], a
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
 	ld a, $30
-	ld [rJOYP], a
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
 	and $3
 	cp $3
 	jr nz, .is_sgb
@@ -79380,20 +79380,20 @@ Data_62f52: ; 62f52
 	dr $62f52, $62f62
 
 Func_62f62: ; 62f62
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	push af
 	push de
 	rlca
 	jr nc, .asm_62f73
 .asm_62f69
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $94
 	jr nz, .asm_62f69
 	ld a, $41
-	ld [rLCDC], a
+	ldh [rLCDC], a
 .asm_62f73
 	ld a, $e4
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld de, $8800
 .asm_62f7a
 	ld a, [hli]
@@ -79418,7 +79418,7 @@ Func_62f62: ; 62f62
 	dec c
 	jr nz, .asm_62f8c
 	ld a, $c1
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	pop hl
 	call Func_62eb1
 	ld bc, $4
@@ -79430,12 +79430,12 @@ Func_62f62: ; 62f62
 	jr nz, .asm_62fb8
 	push af
 .asm_62fb1
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $94
 	jr nz, .asm_62fb1
 	pop af
 .asm_62fb8
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ret
 
 Func_62fbb: ; 62fbb
@@ -79526,11 +79526,11 @@ Data_63102: ; 63102
 
 Func_63112: ; 63112
 	ld a, $80
-	ld [rBGPI], a
+	ldh [rBGPI], a
 	ld hl, rBGPD
 	call Func_63123
 	ld a, $80
-	ld [rOBPI], a
+	ldh [rOBPI], a
 	ld hl, rOBPD
 Func_63123: ; 63123 (18:7123)
 	ld a, $4
@@ -79572,7 +79572,7 @@ Func_63141:: ; 63141 (18:7141)
 	predef Func_7d753
 	call Func_631f7
 	ld a, $f0
-	ld [hBGP], a
+	ldh [hBGP], a
 	ld a, $1
 	predef Func_7d78e
 	call .Delay120
@@ -79632,7 +79632,7 @@ Data_631c0: ; 631c0
 
 Func_631d0: ; 631d0 (18:71d0)
 	ld a, $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	hlbgcoord 0, 0
 	xor a
 	ld bc, $800
@@ -79643,7 +79643,7 @@ Func_631d0: ; 631d0 (18:71d0)
 	dec b
 	jr nz, .asm_631db
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 	bcRGB 31, 27, 03
 	deRGB 04, 07, 22
 	jp Func_63112
@@ -79845,7 +79845,7 @@ Func_63dd3: ; 63dd3 (18:7dd3)
 	ld d, a
 	jp PutOnVideoTransferQueue
 
-asm_63de5
+asm_63de5:
 	sub $20
 	ld c, a
 	ld a, b
@@ -79910,7 +79910,7 @@ Func_63e41: ; 63e41 (18:7e41)
 	ld h, a
 	jp PutOnVideoTransferQueue
 
-asm_63e53
+asm_63e53:
 	sub $20
 	ld c, a
 	ld a, b
@@ -79997,7 +79997,7 @@ Func_63eaf: ; 63eaf (18:7eaf)
 	jr nz, Func_63eaf
 	ret
 
-asm_63ec7
+asm_63ec7:
 	ld a, c
 	call Func_63d5c
 	pop bc
@@ -85636,7 +85636,7 @@ Func_6a0e9: ; 6a0e9 (1a:60e9)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	write_hl_to_sp_plus $5d
 	ld l, $12
 	push hl
@@ -89984,7 +89984,7 @@ Func_6c546:
 	or $4
 	ld [wNextVBlankFlags], a
 	ld a, $28
-	ld [rLYC], a
+	ldh [rLYC], a
 	xor a
 	ld [wHBlankMode], a
 	xor a
@@ -91834,7 +91834,7 @@ Func_6d350: ; 6d350 (1b:5350)
 
 Func_6d37d:
 	ld a, [wLCDC]
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld hl, rIE
 	res 1, [hl]
 	ld hl, rIF
@@ -92195,9 +92195,9 @@ Func_6d686: ; 6d686 (1b:5686)
 	check_cgb
 	jp nz, Func_6d6ba
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli Func_667d
 	ld a, [wOverworldTilemapSelector]
 	ld c, a
@@ -92206,9 +92206,9 @@ Func_6d686: ; 6d686 (1b:5686)
 	ld hl, $0
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_6d6ba: ; 6d6ba (1b:56ba)
 	set_farcall_addrs_hli Func_667d
 	ld bc, $2
@@ -94709,7 +94709,7 @@ Func_6e774: ; 6e774 (1b:6774)
 
 Func_6e77b: ; 6e77b (1b:677b)
 	push af
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	ld l, a
 	push hl
 	set_farcall_addrs_hli Func_6183
@@ -95024,9 +95024,9 @@ Func_6e9d1: ; 6e9d1 (1b:69d1)
 	ld bc, $8
 	call MemCopy
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli Func_667d
 	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
@@ -95186,9 +95186,9 @@ Func_6eb0a: ; 6eb0a (1b:6b0a)
 	hlbgcoord 0, 0
 	call CopyFromDEtoHL
 Func_6eb16: ; 6eb16 (1b:6b16)
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 	add sp, $e
 	ret
 
@@ -95775,7 +95775,7 @@ Func_6ef0d: ; 6ef0d (1b:6f0d)
 	add hl, sp
 	ld sp, hl
 	push af
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	push hl
 	set_farcall_addrs_hli Func_7e8a
@@ -95861,7 +95861,7 @@ Func_6eff0:
 	push af
 	push de
 	ld hl, sp+$33
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld [hl], a
 	set_farcall_addrs_hli malloc
 	ld hl, $351
@@ -97354,7 +97354,7 @@ Func_fb0db: ; fb0db (3e:70db)
 	push hl
 	add sp, -$30
 	push de
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld hl, sp+$4
 	push hl
@@ -99717,10 +99717,10 @@ Func_fc3fa: ; fc3fa (3f:43fa)
 	ld [wLCDC], a
 Func_fc402: ; fc402 (3f:4402)
 	xor a
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld [wc31e], a
 	ld a, [wLCDC]
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld a, [wNextVBlankFlags]
 	and $7f
 	ld [wNextVBlankFlags], a
@@ -100558,7 +100558,7 @@ ENDC
 IF DEF(STAR)
 	db RUDY + 1
 ENDC
-Data_fc948End
+Data_fc948End:
 
 Func_fc9bc: ; fc9bc (3f:49bc)
 	ld a, [wOverworldTilemapSelector]
@@ -100576,9 +100576,9 @@ Func_fc9bc: ; fc9bc (3f:49bc)
 	check_cgb
 	jp nz, Func_fca19
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
@@ -100589,9 +100589,9 @@ Func_fc9bc: ; fc9bc (3f:49bc)
 	inc h
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 	jp Func_fca1c
 
 Func_fca19: ; fca19 (3f:4a19)
@@ -100632,7 +100632,7 @@ Func_fca4b: ; fca4b (3f:4a4b)
 	jp Func_fcbae
 
 Func_fca56: ; fca56 (3f:4a56)
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $2
 	jp nz, Func_fca60
 	jp Func_fca63
@@ -100711,7 +100711,7 @@ Func_fcabb: ; fcabb (3f:4abb)
 	ld hl, $608
 	call FarCall
 	call Func_fc756
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $2
 	jp nz, Func_fcb12
 	ld a, [wLCDC]
@@ -100809,9 +100809,9 @@ Func_fcbae: ; fcbae (3f:4bae)
 	check_cgb
 	jp nz, Func_fcc1b
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld hl, wOverworldTilemapSelector
@@ -100829,9 +100829,9 @@ Func_fcbae: ; fcbae (3f:4bae)
 	ld de, $1323
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 	jp Func_fcc1e
 
 Func_fcc1b: ; fcc1b (3f:4c1b)
@@ -100905,9 +100905,9 @@ Func_fccc2: ; fccc2 (3f:4cc2)
 	check_cgb
 	jp nz, Func_fcd66
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli Func_667d
 	ld a, [wOverworldTilemapSelector]
 	ld c, a
@@ -100916,9 +100916,9 @@ Func_fccc2: ; fccc2 (3f:4cc2)
 	ld hl, $0
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 	jp Func_fcd69
 
 Func_fcd66: ; fcd66 (3f:4d66)
@@ -100937,9 +100937,9 @@ Func_fcd69: ; fcd69 (3f:4d69)
 	ld [wNextVBlankFlags], a
 	call Func_fc092
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $fd
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 	xor a
 	ld [wSCY2], a
@@ -101114,9 +101114,9 @@ Func_fcea1: ; fcea1 (3f:4ea1)
 	xor a
 	call OverworldPlaySong
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $fd
-	ld [rIE], a
+	ldh [rIE], a
 	ld hl, LCDInterrupt
 	write_hl_to wLCD + 1
 	ei
@@ -101223,9 +101223,9 @@ ENDC
 	ld [wNextVBlankFlags], a
 	call Func_fc092
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $fd
-	ld [rIE], a
+	ldh [rIE], a
 	ld hl, LCDInterrupt
 	write_hl_to wLCD + 1
 	ei
@@ -101290,7 +101290,7 @@ Func_fd03d:
 	ld [wNextVBlankFlags], a
 	call Func_fc092
 	call FillVisibleAreaWithBlankTile
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	ld [wLCDC], a
 	push af
 	set_farcall_addrs_hli Func_6183
@@ -101379,9 +101379,9 @@ Func_fd0fc: ; fd0fc (3f:50fc)
 	jp Func_fd1bd
 
 Func_fd11d: ; fd11d (3f:511d)
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld bc, $80
 	ld e, $1
 	hlbgcoord 0, 0
@@ -101390,9 +101390,9 @@ Func_fd11d: ; fd11d (3f:511d)
 	ld e, $1
 	hlbgcoord 0, 14
 	call FillMemory
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld e, $0
 	ld l, e
 Func_fd142: ; fd142 (3f:5142)
@@ -101472,16 +101472,16 @@ Func_fd1bd: ; fd1bd (3f:51bd)
 	call CopyFromDEtoHL
 	check_cgb
 	jp nz, Func_fd1e9
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld bc, $400
 	debgcoord 0, 0
 	hlbgcoord 0, 0, vWindowMap
 	call CopyFromDEtoHL
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_fd1e9: ; fd1e9 (3f:51e9)
 	set_farcall_addrs_hli Func_6183
 	pop af
@@ -101492,11 +101492,11 @@ Func_fd1e9: ; fd1e9 (3f:51e9)
 	ld hl, wLCDInterrupt2
 	write_hl_to wLCD + 1
 	xor a
-	ld [rLYC], a
+	ldh [rLYC], a
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	or $2
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 	ret
 
@@ -101514,7 +101514,7 @@ TitleScreen:: ; fd213 (3f:5213)
 	jp nz, .wait
 .no_wait
 	call NextOverworldFrame
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	ld [wLCDC], a
 	push af
 	set_farcall_addrs_hli Func_6183
@@ -101523,16 +101523,16 @@ TitleScreen:: ; fd213 (3f:5213)
 	call FarCall
 	check_cgb
 	jp nz, .no_attr_clear
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld bc, $800
 	ld e, $0
 	hlbgcoord 0, 0
 	call FillMemory
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 .no_attr_clear
 	ld bc, $800
 	ld e, $8f
@@ -101549,14 +101549,14 @@ TitleScreen:: ; fd213 (3f:5213)
 	ld hl, $8800
 	call FarCopyVideoData
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	and $fd
-	ld [rIE], a
+	ldh [rIE], a
 	ld hl, LCDInterrupt
 	write_hl_to wLCD + 1
 	ei
 	ld a, $81
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld [wLCDC], a
 	xor a
 	ld [wOverworldTilemapSelector], a
@@ -102432,9 +102432,9 @@ Func_fd989:
 	check_cgb
 	jp nz, Func_fda3e
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
@@ -102445,9 +102445,9 @@ Func_fd989:
 	inc h
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_fda3e: ; fda3e (3f:5a3e)
 	call WaitVideoTransfer
 	call Func_fc756
@@ -102546,9 +102546,9 @@ Func_fdadf: ; fdadf (3f:5adf)
 	check_cgb
 	jp nz, Func_fdb5a
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
@@ -102559,9 +102559,9 @@ Func_fdadf: ; fdadf (3f:5adf)
 	inc h
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_fdb5a: ; fdb5a (3f:5b5a)
 	call WaitVideoTransfer
 	call Func_fc756
@@ -102628,7 +102628,7 @@ Func_fdba8: ; fdba8 (3f:5ba8)
 	pop bc
 	ret
 
-Func_fdbe8
+Func_fdbe8:
 	push hl
 	push de
 	push bc
@@ -102708,9 +102708,9 @@ Func_fdc54: ; fdc54 (3f:5c54)
 	check_cgb
 	jp nz, Func_fdcb3
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
@@ -102721,9 +102721,9 @@ Func_fdc54: ; fdc54 (3f:5c54)
 	inc h
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_fdcb3: ; fdcb3 (3f:5cb3)
 	call WaitVideoTransfer
 	call Func_fc756
@@ -102839,9 +102839,9 @@ Func_fdd6d: ; fdd6d (3f:5d6d)
 	check_cgb
 	jp nz, Func_fdde3
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli PushBGMapRegion_
 	ld bc, $12
 	ld de, $1323
@@ -102852,9 +102852,9 @@ Func_fdd6d: ; fdd6d (3f:5d6d)
 	inc h
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_fdde3: ; fdde3 (3f:5de3)
 	call WaitVideoTransfer
 	call Func_fc756
@@ -103131,14 +103131,14 @@ Func_fe004: ; fe004 (3f:6004)
 	or b
 	jr nz, .asm_fe01e
 	ld a, [wc31a]
-	ld [rLYC], a
+	ldh [rLYC], a
 	di
-	ld a, [rIF]
+	ldh a, [rIF]
 	and $fd
-	ld [rIF], a
-	ld a, [rIE]
+	ldh [rIF], a
+	ldh a, [rIE]
 	or $2
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 	ret
 
@@ -103198,9 +103198,9 @@ Func_fe03a: ; fe03a (3f:603a)
 	ld bc, $0
 .asm_fe08d
 	ld a, b
-	ld [rSCX], a
+	ldh [rSCX], a
 	ld a, c
-	ld [rLYC], a
+	ldh [rLYC], a
 	pop bc
 	pop af
 	reti
@@ -103213,11 +103213,11 @@ Func_fe096: ; fe096 (3f:6096)
 	xor $1
 	ld [wc319], a
 	jr z, .asm_fe0b3
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	ld a, [wLCDC]
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld a, [wc31b]
-	ld [rLYC], a
+	ldh [rLYC], a
 	pop bc
 	pop af
 	reti
@@ -103225,9 +103225,9 @@ Func_fe096: ; fe096 (3f:6096)
 .asm_fe0b3
 	ld a, [wLCDC]
 	xor $8
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld a, [wc31a]
-	ld [rLYC], a
+	ldh [rLYC], a
 	ld a, [wc31e]
 	inc a
 	cp $2
@@ -103260,11 +103260,11 @@ Func_fe096: ; fe096 (3f:6096)
 	cp $3
 	jr nz, .asm_fe0ff
 	ld a, [wLCDC]
-	ld [rLCDC], a
-	ld a, [rIE]
+	ldh [rLCDC], a
+	ldh a, [rIE]
 	and $fd
-	ld [rIE], a
-	ld [rIF], a
+	ldh [rIE], a
+	ldh [rIF], a
 .asm_fe0ff
 	pop bc
 	pop af
@@ -103283,7 +103283,7 @@ Func_fe102:: ; fe102 (3f:6102)
 	jr nz, .asm_fe113
 	di
 	xor a
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld a, [wSystemType]
 	or a
 	ret z
@@ -103351,7 +103351,7 @@ Func_fe102:: ; fe102 (3f:6102)
 	ld bc, $3c
 	call Func_ffd81
 	xor a
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld hl, Data_fe454
 	ld de, $10
 	call Func_2b7d
@@ -103471,30 +103471,30 @@ Func_ffcd4: ; ffcd4 (3f:7cd4)
 	ld hl, Data_ffd39
 	ld de, $10
 	call Func_2b7d
-	ld a, [rJOYP]
+	ldh a, [rJOYP]
 	and $3
 	cp $3
 	jr nz, .asm_ffd1e
 	ld a, $20
-	ld [rJOYP], a
-	ld a, [rJOYP]
-	ld a, [rJOYP]
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
 	ld a, $30
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	ld a, $10
-	ld [rJOYP], a
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
 	ld a, $30
-	ld [rJOYP], a
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
 	and $3
 	cp $3
 	jr nz, .asm_ffd1e
@@ -103530,9 +103530,9 @@ Func_ffd49: ; ffd49 (3f:7d49)
 	push de
 	call Func_ffd92
 	ld a, $43
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ld a, $e4
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld de, $8800
 	ld bc, $1000
 	call Func_ffd99
@@ -103551,7 +103551,7 @@ Func_ffd49: ; ffd49 (3f:7d49)
 	dec c
 	jr nz, .asm_ffd69
 	ld a, $c3
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	pop hl
 	ld de, $10
 	call Func_2b7d
@@ -103575,7 +103575,7 @@ Func_ffd81: ; ffd81 (3f:7d81)
 	ret
 
 Func_ffd92: ; ffd92 (3f:7d92)
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $94
 	jr nz, Func_ffd92
 	ret

@@ -1,5 +1,5 @@
 LiteralStringInTree:: ; 1494 (0:1494)
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld b, $0
 .loop
@@ -20,7 +20,7 @@ LiteralStringInTree:: ; 1494 (0:1494)
 .done
 	bit 0, b
 	jr z, .bit_0_clear
-	ld a, ")"
+	ld a, CHARVAL(")")
 	ld [hli], a
 	xor a
 .bit_0_clear
@@ -133,11 +133,11 @@ PlaceNextCharacter::
 	ret
 
 CheckDict::
-	cp "%"
+	cp CHARVAL("%")
 	jp z, .SpecialCharacter
-	cp "("
+	cp CHARVAL("(")
 	jr z, .set_hiragana
-	cp ")"
+	cp CHARVAL(")")
 	jr nz, .charmap
 	xor a
 	ld [wKana], a
@@ -261,13 +261,13 @@ CheckDict::
 ; %ld: unsigned long
 	ld a, [de]
 	inc de
-	cp "d"
+	cp CHARVAL("d")
 	jr z, .print_num
-	cp "c"
+	cp CHARVAL("c")
 	jr z, .place_stack_char
-	cp "s"
+	cp CHARVAL("s")
 	jr z, .call_string
-	cp "l"
+	cp CHARVAL("l")
 	jr z, .print_num_unsigned
 	ld [hli], a
 	jp PlaceNextCharacter
@@ -326,7 +326,7 @@ CheckDict::
 .print_num_unsigned
 	ld a, [de]
 	inc de
-	cp "d"
+	cp CHARVAL("d")
 	jr z, .okay
 	ld [hli], a
 	jp PlaceNextCharacter
@@ -363,7 +363,7 @@ CheckDict::
 	jp PlaceNextCharacter
 
 PrintCharacterFromTree::
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(TextTreeBitstreams)
 	call BankSwitch
@@ -435,19 +435,19 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits0000001
 	; 0000000
-	ld a, "ふ"
+	ld a, CHARVAL("ふ")
 	jp .queue_character
 
 .bits0000001
-	ld a, "ひ"
+	ld a, CHARVAL("ひ")
 	jp .queue_character
 
 .bits000001
-	ld a, "す"
+	ld a, CHARVAL("す")
 	jp .queue_character
 
 .bits00001
-	ld a, "な"
+	ld a, CHARVAL("な")
 	jp .queue_character
 
 .bits0001
@@ -456,15 +456,15 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits000101
 	; 000100
-	ld a, "ま"
+	ld a, CHARVAL("ま")
 	jp .queue_character
 
 .bits000101
-	ld a, "あ"
+	ld a, CHARVAL("あ")
 	jp .queue_character
 
 .bits00011
-	ld a, "う"
+	ld a, CHARVAL("う")
 	jp .queue_character
 
 .bits001
@@ -477,15 +477,15 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits0010001
 	; 0010000
-	ld a, "ゃ"
+	ld a, CHARVAL("ゃ")
 	jp .queue_character
 
 .bits0010001
-	ld a, "み"
+	ld a, CHARVAL("み")
 	jp .queue_character
 
 .bits001001
-	ld a, "も"
+	ld a, CHARVAL("も")
 	jp .queue_character
 
 .bits00101
@@ -498,23 +498,23 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits001010001
 	; 001010000
-	ld a, "ゆ"
+	ld a, CHARVAL("ゆ")
 	jp .queue_character
 
 .bits001010001
-	ld a, "ぁ"
+	ld a, CHARVAL("ぁ")
 	jp .queue_character
 
 .bits00101001
-	ld a, "へ"
+	ld a, CHARVAL("へ")
 	jp .queue_character
 
 .bits0010101
-	ld a, "え"
+	ld a, CHARVAL("え")
 	jp .queue_character
 
 .bits001011
-	ld a, "お"
+	ld a, CHARVAL("お")
 	jp .queue_character
 
 .bits0011
@@ -523,22 +523,22 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits001101
 	; 001100
-	ld a, "き"
+	ld a, CHARVAL("き")
 	jp .queue_character
 
 .bits001101
 	call .GetNextBit
 	jr c, .bits0011011
 	; 0011010
-	ld a, "や"
+	ld a, CHARVAL("や")
 	jp .queue_character
 
 .bits0011011
-	ld a, "を"
+	ld a, CHARVAL("を")
 	jp .queue_character
 
 .bits00111
-	ld a, "と"
+	ld a, CHARVAL("と")
 	jp .queue_character
 
 .bits01
@@ -558,15 +558,15 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits0101001
 	; 0101000
-	ld a, "ょ"
+	ld a, CHARVAL("ょ")
 	jp .queue_character
 
 .bits0101001
-	ld a, "ﾟ"
+	ld a, CHARVAL("ﾟ")
 	jp .queue_character
 
 .bits010101
-	ld a, "に"
+	ld a, CHARVAL("に")
 	jp .queue_character
 
 .bits01011
@@ -577,7 +577,7 @@ PrintCharacterFromTree::
 	jp .queue_character
 
 .bits010111
-	ld a, "ー"
+	ld a, CHARVAL("ー")
 	jp .queue_character
 
 .bits011
@@ -586,11 +586,11 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits01101
 	; 01100
-	ld a, "て"
+	ld a, CHARVAL("て")
 	jp .queue_character
 
 .bits01101
-	ld a, "し"
+	ld a, CHARVAL("し")
 	jp .queue_character
 
 .bits0111
@@ -599,21 +599,21 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits011101
 	; 011100
-	ld a, "#"
+	ld a, CHARVAL("#")
 	jp .queue_character
 
 .bits011101
 	call .GetNextBit
 	jr c, .bits0111011
 	; 0111010
-	ld a, "り"
+	ld a, CHARVAL("り")
 	jp .queue_character
 
 .bits0111011
 	call .GetNextBit
 	jr c, .bits01110111
 	; 01110110
-	ld a, "め"
+	ld a, CHARVAL("め")
 	jp .queue_character
 
 .bits01110111
@@ -628,30 +628,30 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits0111011100001
 	; 0111011100000
-	ld a, "9"
+	ld a, CHARVAL("9")
 	jp .queue_character
 
 .bits0111011100001
-	ld a, "ぅ"
+	ld a, CHARVAL("ぅ")
 	jp .queue_character
 
 .bits011101110001
-	ld a, "ぬ"
+	ld a, CHARVAL("ぬ")
 	jp .queue_character
 
 .bits01110111001
-	ld a, "8"
+	ld a, CHARVAL("8")
 	jp .queue_character
 
 .bits0111011101
 	call .GetNextBit
 	jr c, .bits01110111011
 	; 01110111010
-	ld a, "4"
+	ld a, CHARVAL("4")
 	jp .queue_character
 
 .bits01110111011
-	ld a, "3"
+	ld a, CHARVAL("3")
 	jp .queue_character
 
 .bits011101111
@@ -662,18 +662,18 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits011111
 	; 011110
-	ld a, "く"
+	ld a, CHARVAL("く")
 	jp .queue_character
 
 .bits011111
 	call .GetNextBit
 	jr c, .bits0111111
 	; 0111110
-	ld a, "わ"
+	ld a, CHARVAL("わ")
 	jp .queue_character
 
 .bits0111111
-	ld a, "せ"
+	ld a, CHARVAL("せ")
 	jp .queue_character
 
 .bits1
@@ -686,18 +686,18 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits10001
 	; 10000
-	ld a, "ん"
+	ld a, CHARVAL("ん")
 	jp .queue_character
 
 .bits10001
 	call .GetNextBit
 	jr c, .bits100011
 	; 100010
-	ld a, "る"
+	ld a, CHARVAL("る")
 	jp .queue_character
 
 .bits100011
-	ld a, "こ"
+	ld a, CHARVAL("こ")
 	jp .queue_character
 
 .bits1001
@@ -708,26 +708,26 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits1001001
 	; 1001000
-	ld a, "そ"
+	ld a, CHARVAL("そ")
 	jp .queue_character
 
 .bits1001001
-	ld a, "ろ"
+	ld a, CHARVAL("ろ")
 	jp .queue_character
 
 .bits100101
 	call .GetNextBit
 	jr c, .bits1001011
 	; 1001010
-	ld a, "つ"
+	ld a, CHARVAL("つ")
 	jp .queue_character
 
 .bits1001011
-	ld a, "さ"
+	ld a, CHARVAL("さ")
 	jp .queue_character
 
 .bits10011
-	ld a, "た"
+	ld a, CHARVAL("た")
 	jp .queue_character
 
 .bits101
@@ -736,18 +736,18 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits10101
 	; 10100
-	ld a, "か"
+	ld a, CHARVAL("か")
 	jp .queue_character
 
 .bits10101
-	ld a, "("
+	ld a, CHARVAL("(")
 	jp .queue_character
 
 .bits1011
 	call .GetNextBit
 	jr c, .bits10111
 	; 10110
-	ld a, ")"
+	ld a, CHARVAL(")")
 	jp .queue_character
 
 .bits10111
@@ -756,11 +756,11 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits1011101
 	; 1011100
-	ld a, "け"
+	ld a, CHARVAL("け")
 	jp .queue_character
 
 .bits1011101
-	ld a, "ち"
+	ld a, CHARVAL("ち")
 	jp .queue_character
 
 .bits101111
@@ -773,7 +773,7 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits1011110001
 	; 1011110000
-	ld a, "ぇ"
+	ld a, CHARVAL("ぇ")
 	jp .queue_character
 
 .bits1011110001
@@ -782,34 +782,34 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits101111000101
 	; 101111000100
-	ld a, "6"
+	ld a, CHARVAL("6")
 	jp .queue_character
 
 .bits101111000101
-	ld a, "ぉ"
+	ld a, CHARVAL("ぉ")
 	jp .queue_character
 
 .bits10111100011
 	call .GetNextBit
 	jr c, .bits101111000111
 	; 101111000110
-	ld a, "0"
+	ld a, CHARVAL("0")
 	jp .queue_character
 
 .bits101111000111
-	ld a, "5"
+	ld a, CHARVAL("5")
 	jp .queue_character
 
 .bits101111001
-	ld a, "む"
+	ld a, CHARVAL("む")
 	jp .queue_character
 
 .bits10111101
-	ld a, "?"
+	ld a, CHARVAL("?")
 	jp .queue_character
 
 .bits1011111
-	ld a, "よ"
+	ld a, CHARVAL("よ")
 	jp .queue_character
 
 .bits11
@@ -818,7 +818,7 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits1101
 	; 1100
-	ld a, "ﾞ"
+	ld a, CHARVAL("ﾞ")
 	jp .queue_character
 
 .bits1101
@@ -827,11 +827,11 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits110101
 	; 110100
-	ld a, "!"
+	ld a, CHARVAL("!")
 	jp .queue_character
 
 .bits110101
-	ld a, "の"
+	ld a, CHARVAL("の")
 	jp .queue_character
 
 .bits11011
@@ -840,7 +840,7 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits1101101
 	; 1101100
-	ld a, "れ"
+	ld a, CHARVAL("れ")
 	jp .queue_character
 
 .bits1101101
@@ -849,40 +849,40 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits110110101
 	; 110110100
-	ld a, "ゅ"
+	ld a, CHARVAL("ゅ")
 	jp .queue_character
 
 .bits110110101
 	call .GetNextBit
 	jr c, .bits1101101011
 	; 1101101010
-	ld a, "1"
+	ld a, CHARVAL("1")
 	jp .queue_character
 
 .bits1101101011
 	call .GetNextBit
 	jr c, .bits11011010111
 	; 11011010110
-	ld a, "2"
+	ld a, CHARVAL("2")
 	jp .queue_character
 
 .bits11011010111
 	call .GetNextBit
 	jr c, .bits110110101111
 	; 110110101110
-	ld a, "7"
+	ld a, CHARVAL("7")
 	jp .queue_character
 
 .bits110110101111
-	ld a, "ぃ"
+	ld a, CHARVAL("ぃ")
 	jp .queue_character
 
 .bits11011011
-	ld a, "ね"
+	ld a, CHARVAL("ね")
 	jp .queue_character
 
 .bits110111
-	ld a, "っ"
+	ld a, CHARVAL("っ")
 	jp .queue_character
 
 .bits111
@@ -893,26 +893,26 @@ PrintCharacterFromTree::
 	call .GetNextBit
 	jr c, .bits111001
 	; 111000
-	ld a, "は"
+	ld a, CHARVAL("は")
 	jp .queue_character
 
 .bits111001
 	call .GetNextBit
 	jr c, .bits1110011
 	; 1110010
-	ld a, "ほ"
+	ld a, CHARVAL("ほ")
 	jp .queue_character
 
 .bits1110011
-	ld a, "ら"
+	ld a, CHARVAL("ら")
 	jp .queue_character
 
 .bits11101
-	ld a, "い"
+	ld a, CHARVAL("い")
 	jp .queue_character
 
 .bits1111
-	ld a, " "
+	ld a, CHARVAL(" ")
 	jp .queue_character
 
 .queue_character
@@ -955,7 +955,7 @@ PrintCharacterFromTree::
 	sla b
 	sla b
 	sla b
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	or b
 	ld [hli], a
 	ld [hl], e
