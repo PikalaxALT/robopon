@@ -1,16 +1,16 @@
 import argparse
-blank_tile = '\x00' * 16
+blank_tile = b'\x00' * 16
 
 
 def tm2bpp_furl(infile, outfile):
     gfx = infile.read()
-    buffer = ''
-    tilemap = ''
+    buffer = b''
+    tilemap = b''
     while gfx:
         if gfx[:16] == blank_tile:
-            tilemap += '\xff'
+            tilemap += b'\xff'
         else:
-            tilemap += '\x00'
+            tilemap += b'\x00'
             buffer += gfx[:16]
         gfx = gfx[16:]
     outfile.write(tilemap)

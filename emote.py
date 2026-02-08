@@ -26,9 +26,11 @@ def pack_emote(infilename):
 
 if __name__ == '__main__':
     if sys.argv[1] == 'pack':
-        map(pack_emote, sys.argv[2:])
+        for arg in sys.argv[2:]:
+            pack_emote(arg)
     elif sys.argv[1] == 'unpack':
-        map(unpack_emote, sys.argv[2:])
+        for arg in sys.argv[2:]:
+            unpack_emote(arg)
     else:
         raise ValueError('unsupported method: %s', sys.argv[1])
     

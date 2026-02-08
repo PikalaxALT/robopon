@@ -68,7 +68,7 @@ def compress(infile, outfile, length=0x4000, print_dump=False):
     src_ptr = 0
     outfile.seek(0)
     outfile.truncate()
-    output = ''
+    output = b''
 
     def write_bits(nbits, value):
         global bitmask, last_byte, output
@@ -77,7 +77,7 @@ def compress(infile, outfile, length=0x4000, print_dump=False):
             last_byte |= (1 & (value >> (nbits - bit))) * bitmask
             bitmask >>= 1
             if not bitmask:
-                output += chr(last_byte)
+                output += bytes([last_byte])
                 bitmask = 0x80
                 last_byte = 0x00
 
@@ -85,7 +85,7 @@ def compress(infile, outfile, length=0x4000, print_dump=False):
         size, back = find_largest_block(source_data, src_ptr)
         if size == 0:
             write_bits(1, 0x01)
-            value = ord(source_data[src_ptr])
+            value = source_data[src_ptr]
             write_bits(8, value)
         elif size < 2:
             write_bits(2, 0x00)
@@ -116,7 +116,7 @@ def compress(infile, outfile, length=0x4000, print_dump=False):
     if print_dump:
         sys.stderr.write('\n')
     if bitmask != 0x80:
-        output += chr(last_byte)
+        output += bytes([last_byte])
     written_length = len(output)
     if length < 0x4000 and outfile.tell() > length:
         raise ValueError('Did all that work compressing, '
@@ -132,7 +132,7 @@ def compress(infile, outfile, length=0x4000, print_dump=False):
                          'file!\n'
                          'Given size %d, got size %d' %
                          (len(source_data), written_length))
-    outfile.write(bytes(output))
+    outfile.write(output)
     outfile.flush()
 
 

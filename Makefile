@@ -1,5 +1,4 @@
-PYTHON := python2.7
-PYTHON3 := python3
+PYTHON := python3
 MD5 := md5sum -c
 POKETOOLS := extras/pokemontools
 
@@ -56,7 +55,7 @@ clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' -o -iname '*.ctf' \) -exec rm {} +
 
 %.ctf: %.asm
-	$(PYTHON3) textcomp.py $<
+	$(PYTHON) textcomp.py $<
 
 %.asm: ;
 %.tm: ;
