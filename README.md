@@ -9,4 +9,4 @@ This repository builds the following ROMs:
     88ee129f5f61078d8649e2134b2e78a3 *robosun.gbc
     9bdc654fc8acb425fe4b68269928fbfb *robostar.gbc
 
-To build, you will need [Rednex GameBoy Development System (RGBDS)](https://github.com/rednex/rgbds) and a GNU Make build environment with Python 2.7 and Python 3.4 or newer.
+To build, you will need [Rednex GameBoy Development System (RGBDS)](https://github.com/rednex/rgbds) 1.0.1 and a GNU Make build environment with Python 3.10 or newer.
