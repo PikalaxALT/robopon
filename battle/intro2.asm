@@ -147,9 +147,9 @@ Func_d8cd: ; d8cd (3:58cd)
 	check_cgb
 	jp nz, Func_d932
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	set_farcall_addrs_hli Func_667d
 	ld a, [wOverworldTilemapSelector]
 	ld c, a
@@ -158,9 +158,9 @@ Func_d8cd: ; d8cd (3:58cd)
 	ld hl, $0
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_d932: ; d932 (3:5932)
 	call WaitVideoTransfer
 	call Func_c779

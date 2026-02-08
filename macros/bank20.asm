@@ -1,17 +1,10 @@
-script_library: MACRO
-IF DEF(cbank) & DEF(scall) & DEF(csbnk)
-PURGE scall
+MACRO script_library
+IF DEF(cbank) & DEF(csbnk)
 PURGE cbank
 PURGE csbnk
 ENDC
-cbank EQUS "\1"
-csbnk EQUS "BANK(ScriptLibrary_\1)"
-
-scall: MACRO
-label EQUS "\1_{cbank}"
-	call label
-PURGE label
-	ENDM
+DEF cbank EQUS "\1"
+DEF csbnk EQUS "BANK(ScriptLibrary_\1)"
 
 ScriptLibrary_\1::
 Func_80000_\1:
@@ -92,7 +85,7 @@ SpriteFace_\1: ; 80095 (20:4095)
 	pop de
 	pop af
 	call FarCall
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	and $80
 	jp z, .skip
 	call NextOverworldFrame
@@ -2157,3 +2150,9 @@ Func_810a3_\1:
 	call FarCall
 	ret
 ENDM
+
+MACRO scall
+DEF label EQUS "\1_{cbank}"
+	call label
+PURGE label
+	ENDM

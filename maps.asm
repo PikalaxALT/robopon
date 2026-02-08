@@ -1564,7 +1564,7 @@ Data_85572:
 Data_8557a:
 	dstr "(こふﾞん2)"
 
-Data_85582
+Data_85582:
 	dr $85582, $855ab
 
 Data_855ab: ; 855ab
@@ -3540,7 +3540,7 @@ IF DEF(STAR)
 	wildbot $0, $3, $10, $10, $6a, $e, $10, $7f, $3, $c, $0, $b, $2
 ENDC
 
-Data_871d0
+Data_871d0:
 	dr $871d0, $871d4
 
 Data_871d4: ; 871d4
@@ -3787,7 +3787,7 @@ Data_87544:
 Data_8754b:
 	dr $8754b, $87574
 
-Func_87574
+Func_87574:
 	push af
 	ld a, e
 	or a
@@ -4617,6 +4617,7 @@ Func_8e5dc: ; 8e5dc
 	dr $8e5dc, $8e8cd
 
 SECTION "Bank 24", ROMX, BANK [$24]
+
 	script_library 24
 
 Data_910b4:
@@ -4786,7 +4787,7 @@ Data_930b1:
 	dstr "Robopon"
 
 Func_930b9:
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $2
 	call GetSRAMBank
@@ -4800,7 +4801,7 @@ Func_930b9:
 
 Func_930d2:
 	push bc
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld hl, sp+$2
 	ld [hl], $0
@@ -5215,7 +5216,7 @@ Func_933ea: ; 933ea (24:73ea)
 	ld a, [wc876]
 	ld c, a
 	ld b, $8
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	predef Func_7e497
 	pop af
@@ -6283,7 +6284,7 @@ GameBoot_ValidateRTC:: ; 93b87 (24:7b87)
 	push bc
 	push de
 	push hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
 	push bc
@@ -6533,7 +6534,7 @@ Func_93d05: ; 93d05 (24:7d05)
 	call SuppressVBlankCallback
 	push bc
 	reg16swap hl, de
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	push af
 	push bc
@@ -8116,7 +8117,7 @@ Data_9b73a:
 SECTION "Bank 27", ROMX, BANK [$27]
 	script_library 27
 
-Data_9d0b4
+Data_9d0b4:
 	dr $9d0b4, $9d1cb
 
 Func_9d1cb: ; 9d1cb
@@ -16137,7 +16138,7 @@ Data_e1ef9:
 
 Func_e1f07: ; e1f07 (38:5f07)
 	push af
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	ld l, a
 	push hl
 	set_farcall_addrs_hli Func_6183
@@ -16160,7 +16161,7 @@ Func_e1f2c: ; e1f2c (38:5f2c)
 Func_e1f2d:: ; e1f2d (38:5f2d)
 	push af
 	push bc
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -18239,7 +18240,7 @@ Func_e3222: ; e3222 (38:7222)
 	ld hl, $82
 	add hl, sp
 	ld [hl], $c
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	push hl
 	ld a, $3
@@ -18686,7 +18687,7 @@ Func_e350e: ; e350e (38:750e)
 	ld [hl], a
 	ld hl, sp+$8
 	ld [hl], $c
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld l, a
 	push hl
 	ld a, $3

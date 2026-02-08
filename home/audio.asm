@@ -7,7 +7,7 @@ CallAudioEngine1C::
 	ret
 
 .asm_1a7a
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(SoundOff_1c)
 	call BankSwitch
@@ -28,7 +28,7 @@ SoundOff:: ; 1a90 (0:1a90)
 	jr CallAudioEngine1C
 
 UpdateSound:: ; 1a94 (0:1a94)
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	ld [wVideoTransferRequestBank], a
 	ld a, [wVideoTransferRequestFlags]
 	set 1, a

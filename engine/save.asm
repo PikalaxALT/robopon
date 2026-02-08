@@ -62,7 +62,7 @@ SaveGame: ; 56d9b (15:6d9b)
 	jp .loop
 
 .break1
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld bc, 136 * 35
 	ld hl, sWarehouse
@@ -221,7 +221,7 @@ LoadGame: ; 56fc2 (15:6fc2)
 	ld hl, -$404
 	add hl, sp
 	ld sp, hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld bc, 136 * 35
 	ld hl, sSavedWarehouse

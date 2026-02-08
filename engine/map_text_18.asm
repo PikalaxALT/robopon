@@ -210,11 +210,11 @@ PrintMapText:: ; 60621
 	ld [hl], e
 	ld hl, sp+$46
 	ld a, [hl]
-	cp "ﾞ"
+	cp CHARVAL("ﾞ")
 	jp z, .asm_6078d
 	ld hl, sp+$46
 	ld a, [hl]
-	cp "ﾟ"
+	cp CHARVAL("ﾟ")
 	jp nz, .asm_6079d
 .asm_6078d: ; 6078d (18:478d)
 	ld hl, sp+$46

@@ -1,39 +1,39 @@
-ldtext_tree_pointer: MACRO
+MACRO ldtext_tree_pointer
 	ld \1, (\2_Pointer - TextTreeBitstreams) / 2
 	ENDM
-hltext_tree_pointer EQUS "ldtext_tree_pointer hl,"
+DEF hltext_tree_pointer EQUS "ldtext_tree_pointer hl,"
 
-writetext: MACRO
+MACRO writetext
 	hltext_tree_pointer \1
 	scall PrintTextStandard
 	ENDM
 
-writenpctext: MACRO
+MACRO writenpctext
 	hltext_tree_pointer \1
 	scall PrintTextWithNPCName
 	ENDM
 
-writetext_yesorno: MACRO
+MACRO writetext_yesorno
 	hltext_tree_pointer \1
 	scall PrintTextWithYesNoBox
 	ENDM
 
-writenpctext_yesorno: MACRO
+MACRO writenpctext_yesorno
 	hltext_tree_pointer \1
 	scall PrintTextWithNPCNameAndYesNoBox
 	ENDM
 
-landmarksign: MACRO
+MACRO landmarksign
 	hltext_tree_pointer \1
 	scall LandmarkSign
 	ENDM
 
-script_sleep: MACRO
+MACRO script_sleep
 	ld hl, \1
 	scall ScriptSleep
 	ENDM
 
-playmusic: MACRO
+MACRO playmusic
 IF \1 == 0
 	xor a
 ELSE
@@ -42,7 +42,7 @@ ENDC
 	scall PlayMusic
 	ENDM
 
-playsfx: MACRO
+MACRO playsfx
 IF \1 == 0
 	xor a
 ELSE
@@ -51,66 +51,66 @@ ENDC
 	scall PlaySFX
 	ENDM
 
-checkevent: MACRO
+MACRO checkevent
 	ld hl, \1
 	scall CheckEventFlag
 	ENDM
 
-setevent: MACRO
+MACRO setevent
 	ld e, 1
 	ld hl, \1
 	scall EventFlagAction
 	ENDM
 
-resetevent: MACRO
+MACRO resetevent
 	ld e, 0
 	ld hl, \1
 	scall EventFlagAction
 	ENDM
 
-startbattle: MACRO
+MACRO startbattle
 	ld de, \1
 	ld hl, \2
 	scall ScriptedBattle
 	ENDM
 
-loadwilds: MACRO
+MACRO loadwilds
 	ld e, \1
 	ld hl, \2
 	scall LoadEncounters
 	ENDM
 
-loadwarps: MACRO
+MACRO loadwarps
 	ld e, \1
 	ld hl, \2
 	scall LoadWarps
 	ENDM
 
-loadpeople: MACRO
+MACRO loadpeople
 	ld e, \1
 	ld hl, \2
 	scall LoadMapObjects
 	ENDM
 
-move_player: MACRO
+MACRO move_player
 	ld c, \1 ; speed?
 	ld de, \2
 	ld a, csbnk
 	scall MovePlayer
 	ENDM
 
-loademote: MACRO
+MACRO loademote
 	ld c, \1
 	ld e, \2
 	ld a, \3
 	scall LoadEmote
 	ENDM
 
-heal: MACRO
+MACRO heal
 	scall RepairRobots
 	ENDM
 
-face_player: MACRO
+MACRO face_player
 IF \1 == 0
 	xor a
 ELSE
@@ -119,25 +119,25 @@ ENDC
 	scall FacePlayer
 	ENDM
 
-sprite_face: MACRO
+MACRO sprite_face
 	ld e, \1
 	ld a, \2
 	scall SpriteFace
 	ENDM
 
-showperson: MACRO
+MACRO showperson
 	ld e, 1
 	ld a, \1
 	scall SetPersonVisibilityState
 	ENDM
 
-hideperson: MACRO
+MACRO hideperson
 	ld e, 0
 	ld a, \1
 	scall SetPersonVisibilityState
 	ENDM
 
-if_true: MACRO
+MACRO if_true
 	or a
 	jp nz, \1
 	ENDM

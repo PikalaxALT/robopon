@@ -1,4 +1,4 @@
-audio_engine: MACRO
+MACRO audio_engine
 SoundOff_\1::
 	jp SoundOff__\1
 
@@ -112,13 +112,13 @@ SetVolume__\1: ; 7007a (1c:407a)
 
 SoundOff__\1: ; 70088 (1c:4088)
 	xor a
-	ld [rNR52], a
+	ldh [rNR52], a
 	ld a, $80
-	ld [rNR52], a
+	ldh [rNR52], a
 	ld a, $77
-	ld [rNR50], a
+	ldh [rNR50], a
 	ld a, $ff
-	ld [rNR51], a
+	ldh [rNR51], a
 	ld a, BANK(SoundOff__1c)
 	ld [wAudioROMBank], a
 	ld a, $80
@@ -174,7 +174,7 @@ UpdateSound__\1: ; 700f4 (1c:40f4)
 	ld hl, UpdateSFX
 	call AudioEngineFarCall
 	ld a, [wAudioROMBank]
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ld a, [wMusicPaused]
 	cp $0
@@ -223,34 +223,34 @@ MusicChannelsOff2_\1: ; 70156 (1c:4156)
 	bit 0, d
 	jr nz, .asm_7016a
 	ld a, $8
-	ld [rNR12], a
+	ldh [rNR12], a
 	swap a
-	ld [rNR14], a
+	ldh [rNR14], a
 .asm_7016a
 	xor a
 	ld [wChannel2ActiveFlag], a
 	bit 1, d
 	jr nz, .asm_7017a
 	ld a, $8
-	ld [rNR22], a
+	ldh [rNR22], a
 	swap a
-	ld [rNR24], a
+	ldh [rNR24], a
 .asm_7017a
 	xor a
 	ld [wChannel4ActiveFlag], a
 	bit 3, d
 	jr nz, .asm_7018a
 	ld a, $8
-	ld [rNR42], a
+	ldh [rNR42], a
 	swap a
-	ld [rNR44], a
+	ldh [rNR44], a
 .asm_7018a
 	xor a
 	ld [wChannel3ActiveFlag], a
 	bit 2, d
 	jr nz, .asm_70196
 	ld a, $0
-	ld [rNR32], a
+	ldh [rNR32], a
 .asm_70196
 	ret
 
@@ -262,7 +262,7 @@ PlaySong_\1: ; 70197 (1c:4197)
 	add hl, bc
 	ld a, [hl]
 	ld [wAudioROMBank], a
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	pop af
 	add a
@@ -436,9 +436,9 @@ PlayChannel1_\1: ; 702b0 (1c:42b0)
 	bit 0, a
 	jr nz, .skip_sfx
 	ld a, $8
-	ld [rNR12], a
+	ldh [rNR12], a
 	swap a
-	ld [rNR14], a
+	ldh [rNR14], a
 .skip_sfx
 	ret
 
@@ -490,9 +490,9 @@ PlayChannel2_\1: ; 70315 (1c:4315)
 	bit 1, a
 	jr nz, .asm_70379
 	ld a, $8
-	ld [rNR22], a
+	ldh [rNR22], a
 	swap a
-	ld [rNR24], a
+	ldh [rNR24], a
 .asm_70379
 	ret
 
@@ -514,7 +514,7 @@ PlayChannel3_\1: ; 7037a (1c:437a)
 	cp $1
 	jr z, .skip
 	ld a, [wChannel3NR2]
-	ld [rNR32], a
+	ldh [rNR32], a
 .skip
 	ld a, [wChannel3NoteDuration]
 	dec a
@@ -540,9 +540,9 @@ PlayChannel3_\1: ; 7037a (1c:437a)
 	bit 2, a
 	jr nz, .asm_703d8
 	ld a, $0
-	ld [rNR32], a
+	ldh [rNR32], a
 	ld a, $80
-	ld [rNR34], a
+	ldh [rNR34], a
 .asm_703d8
 	ret
 
@@ -580,9 +580,9 @@ PlayChannel4_\1: ; 703d9 (1c:43d9)
 	xor a
 	ld [wc16f], a
 	ld a, $8
-	ld [rNR42], a
+	ldh [rNR42], a
 	swap a
-	ld [rNR44], a
+	ldh [rNR44], a
 .quit
 	ret
 
@@ -1181,19 +1181,19 @@ Channel1_PlayNote_\1: ; 7071d (1c:471d)
 	cp $80
 	jr z, .skip
 	ld a, [wNR12]
-	ld [rNR12], a
+	ldh [rNR12], a
 	ld d, $80
 .skip
 	ld [hl], $2
 	ld a, $8
-	ld [rNR10], a
+	ldh [rNR10], a
 	ld a, [wChannel1NR1]
-	ld [rNR11], a
+	ldh [rNR11], a
 	ld a, [wChannel1Frequency]
-	ld [rNR13], a
+	ldh [rNR13], a
 	ld a, [wChannel1Frequency + 1]
 	or d
-	ld [rNR14], a
+	ldh [rNR14], a
 .dont_play_note
 	ret
 
@@ -1221,17 +1221,17 @@ Channel2_PlayNote_\1: ; 70763 (1c:4763)
 	cp $80
 	jr z, .asm_70782
 	ld a, [wNR22]
-	ld [rNR22], a
+	ldh [rNR22], a
 	ld d, $80
 .asm_70782
 	ld [hl], $2
 	ld a, [wChannel2NR1]
-	ld [rNR21], a
+	ldh [rNR21], a
 	ld a, [wChannel2Frequency]
-	ld [rNR23], a
+	ldh [rNR23], a
 	ld a, [wChannel2Frequency + 1]
 	or d
-	ld [rNR24], a
+	ldh [rNR24], a
 .asm_70794
 	ret
 
@@ -1255,7 +1255,7 @@ Channel3_PlayNote_\1: ; 707a5 (1c:47a5)
 	or a
 	jr z, .skip_wave_copy
 	xor a
-	ld [rNR30], a
+	ldh [rNR30], a
 	call Func_707f3_\1
 	ld d, $80
 .skip_wave_copy
@@ -1267,21 +1267,21 @@ Channel3_PlayNote_\1: ; 707a5 (1c:47a5)
 	cp $80
 	jr z, .asm_707d5
 	ld a, [wNR32]
-	ld [rNR32], a
+	ldh [rNR32], a
 	xor a
-	ld [rNR30], a
+	ldh [rNR30], a
 	ld d, $80
 .asm_707d5
 	ld [hl], $2
 	xor a
-	ld [rNR31], a
+	ldh [rNR31], a
 	ld a, [wChannel3Frequency]
-	ld [rNR33], a
+	ldh [rNR33], a
 	ld a, $80
-	ld [rNR30], a
+	ldh [rNR30], a
 	ld a, [wChannel3Frequency + 1]
 	or d
-	ld [rNR34], a
+	ldh [rNR34], a
 .asm_707e9
 	ret
 
@@ -1289,7 +1289,7 @@ Channel3_PlayNote_\1: ; 707a5 (1c:47a5)
 	ld hl, wChannel1NoteState
 	ld [hl], $0
 	xor a
-	ld [rNR30], a
+	ldh [rNR30], a
 	ret
 
 Func_707f3_\1: ; 707f3 (1c:47f3)
@@ -1339,7 +1339,7 @@ PlayNoiseHeaderCh4_\1: ; 70813 (1c:4813)
 .no_ch4_sfx
 	ret
 
-noiseSampleEndedCh4_\1
+noiseSampleEndedCh4_\1:
 	xor a
 	ld [wc16f], a
 	ld hl, rNR42
@@ -1369,7 +1369,7 @@ PlayNextNoiseSample_\1: ; 70842 (1c:4842)
 	jr noiseSampleEndedCh4_\1
 
 .read
-	ld [rNR43], a
+	ldh [rNR43], a
 	inc de
 	ld a, d
 	ld [hld], a
@@ -1388,7 +1388,7 @@ UpdateChannelNoise_\1: ; 70863 (1c:4863)
 
 Func_7086f_\1: ; 7086f (1c:486f)
 	ld a, [wVolume]
-	ld [rNR50], a
+	ldh [rNR50], a
 	ld a, [wSFXChannelFlags]
 	or a
 	ld hl, wGlobalDuty
@@ -1417,7 +1417,7 @@ Func_7086f_\1: ; 7086f (1c:486f)
 	swap e
 	or e
 	and d
-	ld [rNR51], a
+	ldh [rNR51], a
 	ret
 
 Func_708a1_\1: ; 708a1 (1c:48a1)
@@ -1519,9 +1519,9 @@ Func_70914_\1: ; 70914 (1c:4914)
 	bit 0, a
 	jr nz, .asm_7095c
 	ld a, e
-	ld [rNR13], a
+	ldh [rNR13], a
 	ld a, d
-	ld [rNR14], a
+	ldh [rNR14], a
 .asm_7092c
 	cp $1
 	jr nz, .asm_70944
@@ -1532,9 +1532,9 @@ Func_70914_\1: ; 70914 (1c:4914)
 	bit 1, a
 	jr nz, .asm_7095c
 	ld a, e
-	ld [rNR23], a
+	ldh [rNR23], a
 	ld a, d
-	ld [rNR24], a
+	ldh [rNR24], a
 .asm_70944
 	cp $2
 	jr nz, .asm_7095c
@@ -1545,9 +1545,9 @@ Func_70914_\1: ; 70914 (1c:4914)
 	bit 2, a
 	jr nz, .asm_7095c
 	ld a, e
-	ld [rNR33], a
+	ldh [rNR33], a
 	ld a, d
-	ld [rNR34], a
+	ldh [rNR34], a
 .asm_7095c
 	ret
 
@@ -1581,28 +1581,28 @@ MusicChannelsOff_\1: ; 70976 (1c:4976)
 	bit 0, d
 	jr nz, .check_ch2
 	ld a, $8
-	ld [rNR12], a
+	ldh [rNR12], a
 	swap a
-	ld [rNR14], a
+	ldh [rNR14], a
 .check_ch2
 	bit 1, d
 	jr nz, .check_ch3
 	swap a
-	ld [rNR22], a
+	ldh [rNR22], a
 	swap a
-	ld [rNR24], a
+	ldh [rNR24], a
 .check_ch3
 	bit 3, d
 	jr nz, .check_ch4
 	swap a
-	ld [rNR42], a
+	ldh [rNR42], a
 	swap a
-	ld [rNR44], a
+	ldh [rNR44], a
 .check_ch4
 	bit 2, d
 	jr nz, .end
 	ld a, $0
-	ld [rNR32], a
+	ldh [rNR32], a
 .end
 	ret
 
@@ -2400,7 +2400,7 @@ Data_7122e_\1: ; 7122e
 	REPT 108
 	db $a
 	ENDR
-
+ 
 NumSongs_\1: ; 7129b
 	db 29
 ENDM
@@ -2749,7 +2749,7 @@ SFXCommand_Wave: ; 769a9 (1d:69a9)
 	ld h, [hl]
 	ld l, a
 	ld a, $0
-	ld [rNR30], a
+	ldh [rNR30], a
 	ld b, d
 	ld de, rWave_0
 .loop
@@ -2763,7 +2763,7 @@ SFXCommand_Wave: ; 769a9 (1d:69a9)
 	ld a, $1
 	ld [wc10b], a
 	ld a, $80
-	ld [rNR30], a
+	ldh [rNR30], a
 	ld b, $0
 	pop hl
 	jp SFXCommandProcessor
@@ -2831,14 +2831,14 @@ ResetSFXVariables: ; 76a13 (1d:6a13)
 
 ResetSFXChannelRegisters: ; 76a20 (1d:6a20)
 	ld a, $8
-	ld a, [rNR12]
-	ld a, [rNR22]
-	ld a, [rNR32]
-	ld a, [rNR42]
+	ldh a, [rNR12]
+	ldh a, [rNR22]
+	ldh a, [rNR32]
+	ldh a, [rNR42]
 	ld a, $80
-	ld a, [rNR14]
-	ld a, [rNR24]
-	ld a, [rNR44]
+	ldh a, [rNR14]
+	ldh a, [rNR24]
+	ldh a, [rNR44]
 	xor a
 	ld [wSFXChannelFlags], a
-	ret
+  	ret

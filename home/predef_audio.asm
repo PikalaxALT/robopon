@@ -35,7 +35,7 @@ ToggleMusicPredef:: ; 24d (0:024d)
 
 SetVolumePredef:: ; 251 (0:0251)
 	ld l, low(SetVolume_1c)
-callMusicEngine_predef
+callMusicEngine_predef:
 	ld h, high(SoundOff_1c)
 	push af
 	call .Bank1CCall
@@ -47,7 +47,7 @@ callMusicEngine_predef
 .Bank1CCall: ; 25e (0:025e)
 	push hl
 	push af
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	ld hl, sp+$7
 	ld [hl], a
 	ld a, BANK(SoundOff_1c)

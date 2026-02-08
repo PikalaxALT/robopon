@@ -79,10 +79,10 @@ data/base_stats/%.bin: ;
 	$(RZ) $< $@
 
 $(sun_objs): %_sun.o: %.asm $$(%_dep)
-	rgbasm -h -D SUN -o $@ $*.asm
+	rgbasm -D SUN -o $@ $*.asm
 
 $(star_objs): %_star.o: %.asm $$(%_dep)
-	rgbasm -h -D STAR -o $@ $*.asm
+	rgbasm -D STAR -o $@ $*.asm
 
 opts = -csv -k 18 -l 0x33 -m 0xfe -p 0x00 -r 0x03
 

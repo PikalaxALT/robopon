@@ -851,16 +851,16 @@ StartMenu: ; 14675 (5:4675)
 	call FillMemory
 	check_cgb
 	jp nz, Func_146b5
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld bc, $800
 	ld e, $0
 	hlbgcoord 0, 0
 	call FillMemory
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 Func_146b5: ; 146b5 (5:46b5)
 	set_farcall_addrs_hli Func_6183
 	ld a, [wLCDC]

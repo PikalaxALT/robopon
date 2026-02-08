@@ -75,19 +75,19 @@ VBlankReadJoypad:: ; 120e (0:120e)
 ReadJoypad:: ; 1222 (0:1222)
 	ld c, $0
 	ld a, $20
-	ld [rJOYP], a
-	ld a, [rJOYP]
-	ld a, [rJOYP]
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
 	and $f
 	ld c, a
 	ld a, $10
-	ld [rJOYP], a
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
-	ld a, [rJOYP]
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
 	and $f
 	swap a
 	or c
@@ -95,5 +95,5 @@ ReadJoypad:: ; 1222 (0:1222)
 	ld [wJoyPressed], a
 	ld c, a
 	ld a, $30
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	ret

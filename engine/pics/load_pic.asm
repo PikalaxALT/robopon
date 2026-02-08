@@ -4,7 +4,7 @@ Func_5c0b2:
 	ld hl, -$354
 	add hl, sp
 	ld sp, hl
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	ld e, a
 	ld hl, $354
 	add hl, sp

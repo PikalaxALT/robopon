@@ -140,7 +140,7 @@ Func_068f:: ; 68f (0:068f)
 	bcbgcoord 2, 8
 	call Func_083e
 	ld a, $3
-	ld [hFFAE], a
+	ldh [hFFAE], a
 	ld de, $900d
 	ld hl, $0
 	predef Func_7b85e
@@ -312,20 +312,20 @@ Func_085d:: ; 85d (0:085d)
 	call Func_07a2
 	ld hl, Data_07fa
 	call Func_083b
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	hlcoord 12, 17
 	ld a, [hli]
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	hlcoord 16, 17
 	ld bc, $28
 	predef CopyPredef
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ld de, $304
 	predef Func_7bdec
@@ -347,10 +347,10 @@ Func_088f:: ; 88f (0:088f)
 	push hl
 	or a
 	jr z, .asm_08da
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, b
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ld a, d
 	cp $80
@@ -364,7 +364,7 @@ Func_088f:: ; 88f (0:088f)
 	predef CopyPredef
 	pop bc
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ld d, c
 	ld e, $7
@@ -411,7 +411,7 @@ Func_088f:: ; 88f (0:088f)
 	jp Func_085d
 
 .asm_08ff
-	ld a, [hFF8A]
+	ldh a, [hFF8A]
 	and $4
 	ret z
 	predef Func_0150
@@ -426,13 +426,13 @@ Func_0906:: ; 906 (0:0906)
 	or a
 	scf
 	ret z
-	ld a, [hFF8A]
+	ldh a, [hFF8A]
 	Coorda 8, 4, wAttrMap
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	Coorda 7, 4, wAttrMap
 	push af
 	ld a, [hli]
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ld a, [hli]
 	ld h, [hl]
@@ -452,7 +452,7 @@ Func_0906:: ; 906 (0:0906)
 	cp $44
 	jr z, .asm_09a2
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	push bc
 	push de
@@ -469,11 +469,11 @@ Func_0906:: ; 906 (0:0906)
 	pop de
 	pop bc
 	ret c
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, b
 	Coorda 6, 4, wAttrMap
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ld l, e
 	ld h, d
@@ -492,7 +492,7 @@ Func_0906:: ; 906 (0:0906)
 	ld de, $d24
 .asm_097e
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ld a, $4
 	add c
@@ -517,7 +517,7 @@ Func_0906:: ; 906 (0:0906)
 
 .asm_09a2
 	pop af
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ld c, b
 	hlcoord 12, 17
@@ -886,9 +886,9 @@ Func_0b97:: ; b97 (0:0b97)
 	ld a, $7
 	jr asm_0ba4
 
-asm_0ba2
+asm_0ba2:
 	ld a, $5
-asm_0ba4
+asm_0ba4:
 	call Func_0cc1
 	call Func_0cd2
 Func_0baa:: ; baa (0:0baa)
@@ -1030,7 +1030,7 @@ Func_0ced:: ; ced (0:0ced)
 Func_0cf3:: ; cf3 (0:0cf3)
 	predef FrameDelayPredef_7ceaf
 	predef Func_7ac2a
-asm_0cf7
+asm_0cf7:
 	push af
 	predef Func_7e0d2
 	pop af

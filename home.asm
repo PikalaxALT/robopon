@@ -46,7 +46,7 @@ Predef:: ; 68 (0:0068)
 	ld d, e
 	; store the return bank and address on the stack
 	dec hl
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	ld [hld], a
 	ld [hl], high(.Return)
 	dec hl
@@ -122,14 +122,14 @@ Func_00c9:: ; c9 (0:00c9)
 
 InitCartIRMode:: ; 00e9
 	xor a
-	ld [hSRAMBank], a
+	ldh [hSRAMBank], a
 	inc a
 	ld [HuC3LatchClock], a
 	xor a
 	ld [HuC3SRamMode], a
 	ld a, [Bank_000c]
 BankSwitch_00f7:: ; f7 (0:00f7)
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
 
@@ -144,7 +144,7 @@ SECTION "Header", ROM0 [$104]
 SECTION "Home", ROM0 [$150]
 Func_0150:: ; 0150
 	ld a, [Bank_000b]
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	jp Func_78100
 
@@ -152,7 +152,7 @@ CopyPredef::
 	ld a, b
 	or c
 	ret z
-	ld a, [hFF86]
+	ldh a, [hFF86]
 	or a
 	jr z, .copy
 	ld a, h
@@ -225,10 +225,10 @@ CopyPredef::
 	jr nz, .hblank_copy_loop
 	di
 	ld a, l
-	ld [hFF87], a
-	ld a, [hFF89]
+	ldh [hFF87], a
+	ldh a, [hFF89]
 	add b
-	ld [hFF89], a
+	ldh [hFF89], a
 	ei
 NullPredef::
 	ret
@@ -273,7 +273,7 @@ Func_021c:: ; 21c (0:021c)
 	push bc
 	push de
 	push hl
-	ld a, [hFF99]
+	ldh a, [hFF99]
 	bit 2, a
 	call nz, UpdateSoundPredef
 	pop hl
@@ -351,19 +351,19 @@ Func_030a:: ; 30a (0:030a)
 Start:: ; 323 (0:0323)
 	di
 	ld sp, wStackTop
-	ld [hSystemType], a
+	ldh [hSystemType], a
 	push af
 Func_032a:: ; 32a (0:032a)
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $91
 	jp nc, Func_032a
 Func_0331:: ; 331 (0:0331)
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $91
 	jp c, Func_0331
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	and $7f
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	hlbgcoord 0, 0
 	ld bc, $400
 .asm_0344
@@ -373,9 +373,9 @@ Func_0331:: ; 331 (0:0331)
 	ld a, b
 	or c
 	jr nz, .asm_0344
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	or $80
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	pop af
 	di
 	ld sp, wStackTop
@@ -401,7 +401,7 @@ Func_0331:: ; 331 (0:0331)
 	call BankSwitch
 	call Func_fe102
 	ld a, [wSystemType]
-	ld [hSystemType], a
+	ldh [hSystemType], a
 Func_0388:: ; 388 (0:0388)
 	di
 	ld sp, wStackTop
@@ -416,7 +416,7 @@ Func_0388:: ; 388 (0:0388)
 	jp Func_4000
 
 Func_03a4:: ; 3a4 (0:03a4)
-	ld a, [hSystemType]
+	ldh a, [hSystemType]
 	ld [wSystemType], a
 	di
 	ld sp, wStackTop
@@ -448,7 +448,7 @@ GetSRAMBank:: ; 3d5 (0:03d5)
 ; bit 7: read-only if set, read/write else
 	bit 7, a
 	jr nz, GetSRAMBank_ReadOnly
-	ld [hSRAMBank], a
+	ldh [hSRAMBank], a
 	ld [HuC3SRamBank], a
 	ld a, SRAM_READWRITE
 	ld [HuC3SRamMode], a
@@ -456,7 +456,7 @@ GetSRAMBank:: ; 3d5 (0:03d5)
 
 GetSRAMBank_ReadOnly::
 	set 7, a
-	ld [hSRAMBank], a
+	ldh [hSRAMBank], a
 	res 7, a
 	ld [HuC3SRamBank], a
 	xor a ; SRAM_READONLY
@@ -464,7 +464,7 @@ GetSRAMBank_ReadOnly::
 	ret
 
 BankSwitch::
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
 
@@ -485,7 +485,7 @@ FarCall::
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	ld c, a
 	ld b, $ff
 	ld hl, sp+$0
@@ -496,7 +496,7 @@ FarCall::
 	pop bc
 	pop hl
 	ld [wFarCallSavedA], a
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, [wFarCallDestBank]
 	call BankSwitch
@@ -687,18 +687,18 @@ INCLUDE "home/audio.asm"
 GBKiss:: ; 1add
 	di
 	xor a
-	ld [rIF], a
-	ld [rIE], a
+	ldh [rIF], a
+	ldh [rIE], a
 	ld a, $0
 	call GetSRAMBank
 	ld a, BANK(GBKiss)
 	call BankSwitch
 	ld sp, wStackTop
 	ld a, $e4
-	ld [rBGP], a
-	ld [rOBP0], a
+	ldh [rBGP], a
+	ldh [rOBP0], a
 	ld a, $1b
-	ld [rOBP1], a
+	ldh [rOBP1], a
 	predef InitCartIRMode
 	predef Func_7b21d
 	jp @ ; better luck next time
@@ -723,7 +723,7 @@ GetTime:: ; 1b28 (0:1b28)
 	push hl
 	call SuppressVBlankCallback
 	push bc
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, [wRTCTicker]
 	cp $11
@@ -779,10 +779,10 @@ GetTime:: ; 1b28 (0:1b28)
 	jr nz, .done
 .disable_vblank
 	di
-	ld a, [rIE]
+	ldh a, [rIE]
 	push af
 	and $fe
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 	ld hl, wc936
 	ld c, $26
@@ -796,9 +796,9 @@ GetTime:: ; 1b28 (0:1b28)
 	pop af
 	and $1
 	ld c, a
-	ld a, [rIE]
+	ldh a, [rIE]
 	or c
-	ld [rIE], a
+	ldh [rIE], a
 	ld hl, rIF
 	res 0, [hl]
 	ei
@@ -844,7 +844,7 @@ ApplyVBlankCallbackEnableFlag:: ; 1bff (0:1bff)
 	ret
 
 Func_1c11:: ; 1c11
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
 	push bc
@@ -860,7 +860,7 @@ Func_1c11:: ; 1c11
 	ret
 
 Func_1c27:: ; 1c27
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
 	push bc
@@ -874,7 +874,7 @@ Func_1c27:: ; 1c27
 	ret
 
 Func_1c3b:: ; 1c3b
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
 	push bc
@@ -895,7 +895,7 @@ Func_1c3b:: ; 1c3b
 	jr .asm_1c4a
 
 Func_1c5a:: ; 1c5a
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld b, c
 	push bc
@@ -907,7 +907,7 @@ Func_1c5a:: ; 1c5a
 	jr asm_1c8c
 
 Func_1c69:: ; 1c69
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld b, c
 	push bc
@@ -919,7 +919,7 @@ Func_1c69:: ; 1c69
 	jr asm_1c8c
 
 Func_1c78:: ; 1c78
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
 	push bc
@@ -927,12 +927,12 @@ Func_1c78:: ; 1c78
 	jr asm_1c8c
 
 Func_1c83:: ; 1c83
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	call SuppressVBlankCallback
 	push bc
 	predef Func_7ac16
-asm_1c8c
+asm_1c8c:
 	jr nc, .asm_1c99
 	pop bc
 	call ApplyVBlankCallbackEnableFlag
@@ -993,7 +993,7 @@ SECTION "1d00", ROM0 [$1d00]
 INCLUDE "home/crash.asm"
 
 NewSaveFileInWRam:: ; 1db9
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, BANK(sHeap)
 	call GetSRAMBank
@@ -1524,7 +1524,7 @@ GetRobotOrTrainerBaseStats:: ; 236f
 	cp NUM_ROBOTS + 4
 	jp nc, .PoncotsOrTrainer
 	push de
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $1
 	call GetSRAMBank_ReadOnly
@@ -1553,7 +1553,7 @@ GetRobotOrTrainerBaseStats:: ; 236f
 
 .PoncotsOrTrainer
 	push de
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(PoncotsBaseStats)
 	call BankSwitch
@@ -1613,7 +1613,7 @@ Func_241f:: ; 241f
 	ld sp, hl
 	dec e
 	push de
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(Pointers_64390)
 	call BankSwitch
@@ -1674,7 +1674,7 @@ GetMove:: ; 248f
 ; Loads 17 bytes from Moves[e] to sp+$0
 	push hl
 	push de
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(Moves)
 	call BankSwitch
@@ -1706,7 +1706,7 @@ GetItemAttributes::
 ; Loads 13 bytes from ItemAttributes[e] to sp+$0
 	push hl
 	push de
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(ItemAttributes)
 	call BankSwitch
@@ -2050,7 +2050,7 @@ FarCopyUntilNull::
 ; copy from c:de to hl
 	push de
 	push hl
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, c
 	call BankSwitch
@@ -2158,7 +2158,7 @@ Func_2770:: ; 2770 (0:2770)
 	ret
 
 AdjustMoney:: ; 277c
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
@@ -2211,7 +2211,7 @@ ClearSprites:: ; 27f5
 Func_2801:: ; 2801 (0:2801)
 	push hl
 	push de
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	call GetHLAtSPPlus4
 	ld h, $0
@@ -2294,7 +2294,7 @@ Func_2887:: ; 2887 (0:2887)
 	push bc
 	push bc
 	call GetHLAtSPPlus6
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	push hl
 	ld a, $3
@@ -2581,11 +2581,11 @@ Func_2a79:: ; 2a79 (0:2a79)
 	add sp, -$12
 	push bc
 	ld hl, sp+$13
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	ld [hl], a
 	ld a, [wNextVBlankFlags]
 	push af
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	and $80
 	jp z, .noNeedToWait
 	call WaitVideoTransfer
@@ -3918,7 +3918,7 @@ PrintNum:: ; 3992 (0:3992)
 	or a
 	jp z, .done
 	call GetHLAtSPPlus4
-	ld [hl], "-"
+	ld [hl], CHARVAL("-")
 	inc hl
 	call WriteHLToSPPlus4
 .done
@@ -4138,9 +4138,9 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld a, [wEnableAttrMapTransfer]
 	or a
 	jp z, Func_3bc0
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld hl, sp+$4
 	ld a, [hl]
 	add $12
@@ -4181,9 +4181,9 @@ Func_3b0f:: ; 3b0f (0:3b0f)
 	ld h, a
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld a, [wEnableAttrMapTransfer]
 	dec a
 	ld [wEnableAttrMapTransfer], a
@@ -4253,9 +4253,9 @@ PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	ld a, [wEnableAttrMapTransfer]
 	or a
 	jp z, .skip_vbank1
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	or $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld hl, sp+$4
 	ld a, [hl]
 	add $12
@@ -4296,9 +4296,9 @@ PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	ld h, a
 	call FarCall
 	call WaitVideoTransfer
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	and $fe
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld a, [wEnableAttrMapTransfer]
 	dec a
 	ld [wEnableAttrMapTransfer], a
@@ -4417,7 +4417,7 @@ SECTION "3f80", ROM0 [$3f80]
 AudioEngineFarCall::
 	push af
 	ld a, $1d
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	pop af
 	ld bc, .Return
@@ -4426,7 +4426,7 @@ AudioEngineFarCall::
 
 .Return
 	ld a, $1c
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [HuC3RomBank], a
 	ret
 

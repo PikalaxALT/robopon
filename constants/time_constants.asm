@@ -1,4 +1,4 @@
-const_value = 1
+DEF const_value = 1
 	const JANUARY
 	const FEBRUARY
 	const MARCH

@@ -2,11 +2,11 @@ TimerInterrupt::
 	push af
 	push hl
 	ld a, $0
-	ld [rTAC], a
+	ldh [rTAC], a
 	ld a, -68
-	ld [rTMA], a
+	ldh [rTMA], a
 	ld a, $4
-	ld [rTAC], a
+	ldh [rTAC], a
 	ld hl, rIE
 	res 2, [hl]
 	ei
@@ -35,11 +35,11 @@ TimerInterrupt::
 	ld a, [wc2e8]
 	or a
 	jr z, .check_stack_overflow
-	ld a, [hSRAMBank]
+	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(Func_62ce4)
 	call BankSwitch

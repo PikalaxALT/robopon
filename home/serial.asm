@@ -1,14 +1,14 @@
 Func_1069:: ; 1069, serial interrupt pointer for ???
 	push af
 	push hl
-	ld a, [rSB]
+	ldh a, [rSB]
 	ld [wc31c], a
 	ld a, $1
 	ld [wc31a], a
 	ld a, [wc31b]
-	ld [rSB], a
+	ldh [rSB], a
 	ld a, [wc31d]
-	ld [rSC], a
+	ldh [rSC], a
 	ld hl, Pointers_1090
 	ld a, [wc31e]
 	add a
@@ -59,7 +59,7 @@ Func_10b9:: ; 10b9
 	cp $a0
 	jr nz, .asm_10c9
 	ld a, $b0
-	ld [rSB], a
+	ldh [rSB], a
 	ld a, $9
 	ld [wc31e], a
 .asm_10c9
@@ -121,7 +121,7 @@ Func_111d:: ; 111d
 	cp $a2
 	jr nz, .asm_112d
 	ld a, $b2
-	ld [rSB], a
+	ldh [rSB], a
 	ld a, $6
 	ld [wc31e], a
 .asm_112d
@@ -135,7 +135,7 @@ Func_1130:: ; 1130
 	ld a, [wc322 + 1]
 	ld h, a
 	ld a, [hli]
-	ld [rSB], a
+	ldh [rSB], a
 	ld a, l
 	ld [wc322], a
 	ld a, h
@@ -160,7 +160,7 @@ Func_1130:: ; 1130
 
 Func_115f:: ; 115f
 	ld a, [wc324]
-	ld [rSB], a
+	ldh [rSB], a
 	ld a, $8
 	ld [wc31e], a
 	pop hl
@@ -171,7 +171,7 @@ Func_116c:: ; 116c
 	ld a, $1
 	ld [wc31f], a
 	ld a, [wc324 + 1]
-	ld [rSB], a
+	ldh [rSB], a
 	ld a, $0
 	ld [wc31e], a
 	pop hl

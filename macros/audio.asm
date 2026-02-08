@@ -14,16 +14,16 @@
 	const A#
 	const B_
 
-note: MACRO
+MACRO note
 	dn \1, \2 - 1 ; pitch, duration
 	ENDM
 
-tempo: MACRO
+MACRO tempo
 	db $d0
 	db \1 ; tempo
 	ENDM
 
-octave: MACRO
+MACRO octave
 	IF \1 <= 0
 	fail "invalid argument for octave"
 	ENDC
@@ -33,146 +33,146 @@ octave: MACRO
 	db $d0 + \1 ; octave
 	ENDM
 
-octave_up: MACRO
+MACRO octave_up
 	db $d7
 	ENDM
 
-octave_down: MACRO
+MACRO octave_down
 	db $d8
 	ENDM
 
-mute_channel: MACRO
+MACRO mute_channel
 	db $d9
 	ENDM
 
-dutycycle: MACRO
+MACRO dutycycle
 	db $dc
 	db \1 ; duty cycle
 	ENDM
 
-startinfloop: MACRO
+MACRO startinfloop
 	db $dd
 	ENDM
 
-doinfloop: MACRO
+MACRO doinfloop
 	db $de
 	ENDM
 
-setloop: MACRO
+MACRO setloop
 	db $df
 	db \1 ; counter
 	ENDM
 
-doloop: MACRO
+MACRO doloop
 	db $e0
 	ENDM
 
-jumpchannel: MACRO
+MACRO jumpchannel
 	db $e1
 	dw \1 ; pointer
 	ENDM
 
-callchannel: MACRO
+MACRO callchannel
 	db $e2
 	dw \1 ; pointer
 	ENDM
 
-retchannel: MACRO
+MACRO retchannel
 	db $e3
 	ENDM
 
-freqoffset: MACRO
+MACRO freqoffset
 	db $e4
 	db \1 ; offset
 	ENDM
 
-set_nrx1: MACRO
+MACRO set_nrx1
 	db $e5
 	db \1
 	ENDM
 
-set_background_nrx2: MACRO
+MACRO set_background_nrx2
 	db $e6
 	db \1
 	ENDM
 
-noise: MACRO
+MACRO noise
 	db $e7
 	db \1
 	ENDM
 
-set_c13f: MACRO
+MACRO set_c13f
 	db $e8
 	db \1
 	ENDM
 
-set_foreground_nrx2: MACRO
+MACRO set_foreground_nrx2
 	db $e9
 	db \1
 	ENDM
 
-set_c153c157: MACRO
+MACRO set_c153c157
 	db $ea
 	db \1
 	ENDM
 
-set_c15f: MACRO
+MACRO set_c15f
 	db $eb
 	db \1
 	ENDM
 
-key: MACRO
+MACRO key
 	db $ec
 	db \1
 	ENDM
 
-keyrel: MACRO
+MACRO keyrel
 	db $ed
 	db \1
 	ENDM
 
-end_channel: MACRO
+MACRO end_channel
 	db $ff
 	ENDM
 
 
-sfx_frq: MACRO
+MACRO sfx_frq
 	dn $0, \1
 	db \2
 	ENDM
 
-sfx_env: MACRO
+MACRO sfx_env
 	db $10, \1
 	ENDM
 
-sfx_duty: MACRO
+MACRO sfx_duty
 	dn $2, \1
 	ENDM
 
-sfx_startloop: MACRO
+MACRO sfx_startloop
 	db $30, \1
 	ENDM
 
-sfx_endloop: MACRO
+MACRO sfx_endloop
 	db $40
 	ENDM
 
-sfx_setc1af: MACRO
+MACRO sfx_setc1af
 	db $50, \1
 	ENDM
 
-sfx_setc1b3: MACRO
+MACRO sfx_setc1b3
 	db $60, \1
 	ENDM
 
-sfx_wave: MACRO
+MACRO sfx_wave
 	dn $7, \1
 	ENDM
 
-sfx_dutycycle: MACRO
+MACRO sfx_dutycycle
 	db $80, \1
 	ENDM
 
-sfx_end: MACRO
+MACRO sfx_end
 	db $f0
 	ENDM

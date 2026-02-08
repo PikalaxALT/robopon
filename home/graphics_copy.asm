@@ -220,7 +220,7 @@ DecompressRequestRoboponPic::
 	; destination de
 	push hl
 	ld l, a
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(PoncotPicHeaders)
 	call BankSwitch
@@ -368,7 +368,7 @@ RequestVideoData:: ; 1428 (0:1428)
 	jr .loop
 
 FarCopyVideoData::
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, [wFarCallDestBank]
 	call BankSwitch
@@ -379,7 +379,7 @@ FarCopyVideoData::
 	ret
 
 FarRequestVideoData::
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, [wFarCallDestBank]
 	call BankSwitch
@@ -390,7 +390,7 @@ FarRequestVideoData::
 	ret
 
 FarDecompressVideoData::
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, [wFarCallDestBank]
 	call BankSwitch
