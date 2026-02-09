@@ -1,4 +1,7 @@
 LiteralStringInTree:: ; 1494 (0:1494)
+	; Converts string from charmap2 to charmap
+	; src: (wFarCallDestBank):de
+	; dest: hl
 	ldh a, [hROMBank]
 	push af
 	ld b, $0

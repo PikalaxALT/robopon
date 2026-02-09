@@ -16875,42 +16875,42 @@ UnlockArea:: ; e2780
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $12
-	jp nz, Func_e27a3
+	jp nz, _e27a3
 	ld hl, sp+$1
 	ld a, [hl]
 	call CheckUnlockedArea
 	or a
-	jp nz, Func_e27a3
+	jp nz, _e27a3
 	set_farcall_addrs_hli Func_93941
 	ld a, $1
 	call FarCall
-Func_e27a3: ; e27a3 (38:67a3)
+_e27a3: ; e27a3 (38:67a3)
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $2
-	jp nz, Func_e27c5
+	jp nz, _e27c5
 	ld hl, sp+$1
 	ld a, [hl]
 	call CheckUnlockedArea
 	or a
-	jp nz, Func_e27c5
+	jp nz, _e27c5
 	set_farcall_addrs_hli Func_93941
 	ld a, $2
 	call FarCall
-Func_e27c5: ; e27c5 (38:67c5)
+_e27c5: ; e27c5 (38:67c5)
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $b
-	jp nz, Func_e27e7
+	jp nz, _e27e7
 	ld hl, sp+$1
 	ld a, [hl]
 	call CheckUnlockedArea
 	or a
-	jp nz, Func_e27e7
+	jp nz, _e27e7
 	set_farcall_addrs_hli Func_93941
 	ld a, $3
 	call FarCall
-Func_e27e7: ; e27e7 (38:67e7)
+_e27e7: ; e27e7 (38:67e7)
 	ld hl, sp+$1
 	ld a, [hl]
 	and $7
@@ -16971,13 +16971,13 @@ CheckUnlockedArea: ; e2829 (38:6829)
 	ld a, $1
 	call LeftShiftA
 	and e
-	jp z, Func_e284e
+	jp z, _e284e
 	ld a, $1
-	jp Func_e284f
+	jp _e284f
 
-Func_e284e: ; e284e (38:684e)
+_e284e: ; e284e (38:684e)
 	xor a
-Func_e284f: ; e284f (38:684f)
+_e284f: ; e284f (38:684f)
 	pop bc
 	ret
 

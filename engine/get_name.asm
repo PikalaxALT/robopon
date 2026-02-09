@@ -23,7 +23,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	ld [wFarCallDestBank], a
 	ld a, c
 	cp $7
-	jp z, .asm_15bae
+	jp z, .getWarehouseNickname
 	cp $6
 	jp z, .getRobotName
 	cp $3
@@ -115,7 +115,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.asm_15bae: ; 15bae (5:5bae)
+.getWarehouseNickname: ; 15bae (5:5bae)
 	push hl
 	set_farcall_addrs_hli Func_7dfc
 	pop hl

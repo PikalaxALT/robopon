@@ -1234,6 +1234,10 @@ PoncotNameAttributes:
 	db %100, %010, %111, %111, %111, %111, %111, %111 ; d8-df
 
 ApplyPoncotNameCharmap:: ; 68b6 (1:68b6)
+	; Convert character a and append to (hl)
+	; If katakana, enclose in parentheses
+	; Append dakuten/handakuten character
+	; Register b returns the open delimiter state
 	push de
 	push hl
 	ld e, a
@@ -9705,17 +9709,7 @@ Func_f7c3: ; f7c3 (3:77c3)
 	push af
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	reg16swap de, hl
 	ld hl, sp+$57
 	add hl, de
@@ -9787,17 +9781,7 @@ Func_f86a: ; f86a (3:786a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	reg16swap de, hl
 	ld hl, sp+$55
 	add hl, de
@@ -9813,17 +9797,7 @@ Func_f86a: ; f86a (3:786a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	reg16swap de, hl
 	ld hl, sp+$55
 	add hl, de
@@ -9839,17 +9813,7 @@ Func_f86a: ; f86a (3:786a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	reg16swap de, hl
 	ld hl, sp+$55
 	add hl, de
@@ -12872,17 +12836,7 @@ Func_1168e: ; 1168e (4:568e)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -12918,17 +12872,7 @@ Func_116e3: ; 116e3 (4:56e3)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -12965,17 +12909,7 @@ Func_11722: ; 11722 (4:5722)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13013,17 +12947,7 @@ Func_11762: ; 11762 (4:5762)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13060,17 +12984,7 @@ Func_117a3: ; 117a3 (4:57a3)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13101,17 +13015,7 @@ Func_117db: ; 117db (4:57db)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13142,17 +13046,7 @@ Func_11813: ; 11813 (4:5813)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13247,17 +13141,7 @@ Func_118bb: ; 118bb (4:58bb)
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13292,17 +13176,7 @@ Func_1190a: ; 1190a (4:590a)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13339,17 +13213,7 @@ Func_11948: ; 11948 (4:5948)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13388,17 +13252,7 @@ Func_11988: ; 11988 (4:5988)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13433,17 +13287,7 @@ Func_119c7: ; 119c7 (4:59c7)
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13474,17 +13318,7 @@ Func_119ff: ; 119ff (4:59ff)
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -13515,17 +13349,7 @@ Func_11a37: ; 11a37 (4:5a37)
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -16610,13 +16434,7 @@ Func_13130: ; 13130 (4:7130)
 	ld hl, sp+$48
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -16625,13 +16443,7 @@ Func_13130: ; 13130 (4:7130)
 	ld hl, sp+$46
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$4
 	add hl, de
@@ -16656,13 +16468,7 @@ Func_13130: ; 13130 (4:7130)
 	ld hl, sp+$46
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$4
 	add hl, de
@@ -22939,16 +22745,7 @@ Func_206ae: ; 206ae (8:46ae)
 	ld a, [hl]
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby19
 	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
@@ -24892,19 +24689,7 @@ Func_215b7: ; 215b7 (8:55b7)
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -28930,7 +28715,7 @@ Func_238c7: ; 238c7 (8:78c7)
 LoadDebugSaveState: ; 238c8 (8:78c8)
 	ld a, BANK(DebugSaveState)
 	ld [wFarCallDestBank], a
-	ld bc, $214
+	ld bc, DebugSaveState_end-DebugSaveState
 	ld de, DebugSaveState
 	ld hl, wSaveBlock1
 	call FarCopyVideoData
@@ -30180,19 +29965,7 @@ Func_247eb: ; 247eb (9:47eb)
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -30738,19 +30511,7 @@ Func_24c32: ; 24c32 (9:4c32)
 	write_hl_to_sp_plus $37
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -30858,19 +30619,7 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	write_hl_to_sp_plus $39
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -31582,19 +31331,7 @@ Func_2520c: ; 2520c (9:520c)
 	call WriteHLToSPPlus9
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -31610,19 +31347,7 @@ Func_2520c: ; 2520c (9:520c)
 	ld a, l
 	xor $1
 	ld l, a
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -31856,19 +31581,7 @@ Func_253f0: ; 253f0 (9:53f0)
 	push hl
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -32132,16 +31845,7 @@ Func_25604: ; 25604 (9:5604)
 	ld a, [bc]
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby19
 	ld de, Data_64c90 - $13
 	add hl, de
 	push hl
@@ -35847,19 +35551,7 @@ Func_27063: ; 27063 (9:7063)
 	ld hl, sp+$59
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -35873,19 +35565,7 @@ Func_27063: ; 27063 (9:7063)
 	ld a, l
 	xor $1
 	ld l, a
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -36244,19 +35924,7 @@ Func_27357: ; 27357 (9:7357)
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -36270,19 +35938,7 @@ Func_27357: ; 27357 (9:7357)
 	ld a, l
 	xor $1
 	ld l, a
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -36563,19 +36219,7 @@ Func_2759b: ; 2759b (9:759b)
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -54478,9 +54122,9 @@ Func_51b81: ; 51b81
 	ld a, $2
 	ld [wc790], a
 	xor a
-Func_51b87: ; 51b87 (14:5b87)
+_51b87: ; 51b87 (14:5b87)
 	cp $7
-	jp nc, Func_51bae
+	jp nc, _51bae
 	push af
 	set_farcall_addrs_hli EventFlagAction
 	pop af
@@ -54495,9 +54139,9 @@ Func_51b87: ; 51b87 (14:5b87)
 	call FarCall
 	pop af
 	inc a
-	jp Func_51b87
+	jp _51b87
 
-Func_51bae: ; 51bae (14:5bae)
+_51bae: ; 51bae (14:5bae)
 	set_farcall_addrs_hli UnlockArea
 	ld a, $c
 	call FarCall
@@ -54523,7 +54167,7 @@ Func_51bf3: ; 51bf3 (14:5bf3)
 	ld [wSaveBlock1 + 1], a
 	ld a, BANK(DebugSaveState)
 	ld [wFarCallDestBank], a
-	ld bc, $214
+	ld bc, DebugSaveState_end-DebugSaveState
 	ld de, DebugSaveState
 	ld hl, wSaveScratch
 	call FarCopyVideoData
@@ -61972,19 +61616,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	ld hl, sp+$2a
 	call Func_241f
 	read_hl_from_sp_plus $44
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -62081,16 +61713,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby19
 	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
@@ -62343,16 +61966,7 @@ Func_5720f: ; 5720f (15:720f)
 	ld a, $3
 	call GetSRAMBank
 	pop hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby19
 	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
@@ -67810,17 +67424,7 @@ Func_5af1c: ; 5af1c (16:6f1c)
 	push af
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -67850,17 +67454,7 @@ Func_5af6d: ; 5af6d (16:6f6d)
 	push af
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -68042,17 +67636,7 @@ Func_5b0f5: ; 5b0f5 (16:70f5)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	pop de
 	add hl, de
 	ld a, [hl]
@@ -69172,17 +68756,7 @@ Func_5ba6d: ; 5ba6d (16:7a6d)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby35
 	ld de, -$8c
 	add hl, de
 	pop de
@@ -69903,19 +69477,7 @@ Func_5c3a3: ; 5c3a3 (17:43a3)
 	ld hl, sp+$36
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -69973,13 +69535,7 @@ Func_5c40a: ; 5c40a (17:440a)
 	ld hl, sp+$38
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -70133,13 +69689,7 @@ Func_5c511: ; 5c511 (17:4511)
 	ld hl, sp+$34
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -70158,13 +69708,7 @@ Func_5c536: ; 5c536 (17:4536)
 	ld hl, sp+$33
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -70178,13 +69722,7 @@ Func_5c536: ; 5c536 (17:4536)
 	ld hl, sp+$34
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -70206,13 +69744,7 @@ Func_5c57d: ; 5c57d (17:457d)
 	ld hl, sp+$34
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -70226,13 +69758,7 @@ Func_5c57d: ; 5c57d (17:457d)
 	ld hl, sp+$33
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -70254,13 +69780,7 @@ Func_5c5c4: ; 5c5c4 (17:45c4)
 	ld hl, sp+$33
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -70274,13 +69794,7 @@ Func_5c5c4: ; 5c5c4 (17:45c4)
 	ld hl, sp+$34
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -70592,19 +70106,7 @@ Func_5c7d5: ; 5c7d5 (17:47d5)
 	pop af
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -70617,19 +70119,7 @@ Func_5c7d5: ; 5c7d5 (17:47d5)
 	ld a, l
 	xor $1
 	ld l, a
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -70755,16 +70245,7 @@ Func_5c8e2: ; 5c8e2 (17:48e2)
 	ld a, [bc]
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby19
 	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
@@ -71971,19 +71452,7 @@ Func_5d1c0: ; 5d1c0 (17:51c0)
 	push bc
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -71996,19 +71465,7 @@ Func_5d1c0: ; 5d1c0 (17:51c0)
 	ld a, l
 	xor $1
 	ld l, a
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -72117,16 +71574,7 @@ Func_5d2b1: ; 5d2b1 (17:52b1)
 	read_hl_from_sp_plus $40
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby19
 	ld de, Data_64c90 - $13
 	add hl, de
 	reg16swap de, hl
@@ -75690,19 +75138,7 @@ Func_609d3: ; 609d3 (18:49d3)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -80084,8 +79520,9 @@ ItemAttributes:: INCLUDE "items/item_attributes.asm"
 INCLUDE "data/base_stats.asm"
 INCLUDE "text/types.asm"
 
-DebugSaveState: ; 66f73
+DebugSaveState:: ; 66f73
 	db $2e, $3d, $30, $40, $00, $0c, $0e, $08, $01, $3b, $42, $0f, $00, $00, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $2a, $2b, $2c, $2d, $10, $13, $16, $17, $18, $19, $14, $35, $36, $37, $38, $41, $42, $43, $4c, $4d, $4e, $06, $0a, $0b, $15, $16, $0f, $28, $2a, $2c, $34, $14, $02, $ce, $d0, $4e, $c3, $02, $00, $63, $12, $15, $1c, $06, $e7, $03, $e7, $03, $e7, $03, $e7, $03, $00, $00, $00, $2c, $01, $e7, $03, $2c, $01, $00, $00, $00, $01, $00, $07, $20, $ce, $d0, $4e, $c3, $03, $00, $63, $14, $1e, $1f, $7c, $e7, $03, $e7, $03, $e7, $03, $e7, $03, $00, $00, $00, $2c, $01, $e7, $03, $2c, $01, $00, $00, $00, $0a, $00, $07, $0f, $ce, $d0, $4e, $c3, $04, $00, $63, $08, $0a, $0d, $6d, $e7, $03, $e7, $03, $e7, $03, $e7, $03, $00, $00, $00, $2c, $01, $e7, $03, $2c, $01, $00, $00, $00, $0b, $00, $07, $26, $ce, $d0, $4e, $c3, $05, $00, $63, $0b, $1b, $00, $64, $e7, $03, $e7, $03, $e7, $03, $e7, $03, $00, $00, $00, $2c, $01, $e7, $03, $2c, $01, $00, $00, $00, $0c, $00, $07, $32, $36, $37, $38, $39, $3a, $3b, $3c, $3d, $3e, $3f, $40, $41, $42, $25, $26, $27, $28, $29, $4f, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $63, $14, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+DebugSaveState_end::
 
 SECTION "Bank 19 2", ROMX [$7187], BANK [$19]
 INCLUDE "charmap.asm"
@@ -80476,19 +79913,7 @@ Func_6741a: ; 6741a (19:741a)
 	push de
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -80901,16 +80326,7 @@ Func_6777f: ; 6777f (19:777f)
 	read_hl_from_sp_plus $40
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby19
 	ld de, Data_64c90 - $13
 	add hl, de
 	ld de, $12
@@ -81088,16 +80504,7 @@ Func_678e7: ; 678e7 (19:78e7)
 	read_hl_from_sp_plus $29
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby19
 	ld de, Data_64c90 - $13
 	add hl, de
 	ld de, $12
