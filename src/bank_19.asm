@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 19", ROMX [$4000], BANK [$19]
+SECTION "Bank 19", ROMX
 INCLUDE "charmap2.asm"
 Data_64000: INCLUDE "data/ram_chip_names.asm"
 Moves:: INCLUDE "battle/moves.asm" ; 64093

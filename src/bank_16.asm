@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 16", ROMX, BANK [$16]
+SECTION "Bank 16", ROMX
 GFX_58000:: INCBIN "gfx/misc/58000.2bpp"
 GFX_58080:: INCBIN "gfx/misc/58080.2bpp"
 GFX_58100:: INCBIN "gfx/misc/58100.2bpp"

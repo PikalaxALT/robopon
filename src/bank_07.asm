@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 07", ROMX, BANK [$7]
+SECTION "Bank 07", ROMX
 Pointers_1c000:: ; 1c000
 	dbw BANK(Data_1c018) - BANK(Pointers_1c000), Data_1c018
 	dbw BANK(Data_1c4fe) - BANK(Pointers_1c000), Data_1c4fe

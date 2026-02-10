@@ -4,7 +4,7 @@ MACRO pic_header
 	dw \1
 	ENDM
 
-SECTION "Poncot Pic Headers", ROMX [$4000], BANK [$3a]
+SECTION "Poncot Pic Headers", ROMX
 PoncotPicHeaders::
 	pic_header PoncotPic_00, $280
 	pic_header PoncotPic_01, $280
@@ -177,7 +177,7 @@ PoncotPicHeaders::
 	pic_header PoncotPic_a8, $280
 	pic_header PoncotPic_a9, $310
 
-SECTION "Trainer Pic Headers", ROMX [$42b8], BANK [$3a]
+SECTION "Trainer Pic Headers", ROMX
 	pic_header TrainerPic_ae, $230
 	pic_header TrainerPic_af, $240
 	pic_header TrainerPic_b0, $260
@@ -208,7 +208,7 @@ SECTION "Trainer Pic Headers", ROMX [$42b8], BANK [$3a]
 	pic_header TrainerPic_c9, $220
 	pic_header TrainerPic_ca, $270
 
-SECTION "Poncot Pics 1", ROMX [$432c], BANK [$3a]
+SECTION "Poncot Pics 1", ROMX
 PoncotPic_00: ; e832c (3a:432c)
 INCBIN "gfx/pic/poncot/poncot_00.tm2bpp.rz"
 
@@ -326,7 +326,7 @@ INCBIN "gfx/pic/poncot/poncot_25.tm2bpp.rz"
 PoncotPic_26: ; ebd38 (3a:7d38)
 INCBIN "gfx/pic/poncot/poncot_26.tm2bpp.rz"
 
-SECTION "Poncot Pics 2", ROMX [$4000], BANK [$3b]
+SECTION "Poncot Pics 2", ROMX
 PoncotPic_27: ; ec000 (3b:4000)
 INCBIN "gfx/pic/poncot/poncot_27.tm2bpp.rz"
 
@@ -453,7 +453,7 @@ INCBIN "gfx/pic/poncot/poncot_4f.tm2bpp.rz"
 PoncotPic_50: ; efe10 (3b:7e10)
 INCBIN "gfx/pic/poncot/poncot_50.tm2bpp.rz"
 
-SECTION "Poncot Pics 3", ROMX [$4000], BANK [$3c]
+SECTION "Poncot Pics 3", ROMX
 PoncotPic_51: ; f0000 (3c:4000)
 INCBIN "gfx/pic/poncot/poncot_51.tm2bpp.rz"
 
@@ -598,7 +598,7 @@ INCBIN "gfx/pic/poncot/poncot_7f.tm2bpp.rz"
 PoncotPic_80: ; f3e32 (3c:7e32)
 INCBIN "gfx/pic/poncot/poncot_80.tm2bpp.rz"
 
-SECTION "Poncot Pics 4", ROMX [$4000], BANK [$3d]
+SECTION "Poncot Pics 4", ROMX
 PoncotPic_81: ; f4000 (3d:4000)
 INCBIN "gfx/pic/poncot/poncot_81.tm2bpp.rz"
 
@@ -722,7 +722,7 @@ INCBIN "gfx/pic/poncot/poncot_a8.tm2bpp.rz"
 PoncotPic_a9: ; f7d20 (3d:7d20)
 INCBIN "gfx/pic/poncot/poncot_a9.tm2bpp.rz"
 
-SECTION "Trainer Pics", ROMX [$4000], BANK [$3e]
+SECTION "Trainer Pics", ROMX
 TrainerPic_ae: ; f8000 (3e:4000)
 INCBIN "gfx/pic/trainer/trainer_ae.tm2bpp.rz"
 

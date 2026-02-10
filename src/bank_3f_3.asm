@@ -7,7 +7,7 @@ ELIF DEF(STAR)
 DEF __offset_3F_3 EQU $7cd2
 ENDC
 
-SECTION "Bank 3f, 3", ROMX [__offset_3F_3], BANK [$3f]
+SECTION "Bank 3f, 3", ROMX
 
 Func_ffcd4:: ; ffcd4 (3f:7cd4)
 	ld hl, Data_ffd39
@@ -130,13 +130,3 @@ Func_ffd99: ; ffd99 (3f:7d99)
 	or c
 	jr nz, Func_ffd99
 	ret
-
-IF DEF(SUN)
-REPT $100000 - $ffda2
-	db $ff
-ENDR
-ELIF DEF(STAR)
-REPT $100000 - $ffda0
-	db $ff
-ENDR
-ENDC

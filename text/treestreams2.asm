@@ -1,5 +1,5 @@
 	tree "string_tree_2.pickle"
-SECTION "Tree Bitstream Text Pointers 2", ROMX [$4000], BANK [$12]
+SECTION "Tree Bitstream Text Pointers 2", ROMX
 TextTreeBitstreams2:: ; 38000
 
 	dw TreeBitstreamText_48fa2 & $3fff
@@ -2006,7 +2006,7 @@ TextTreeBitstreams2:: ; 38000
 	dw TreeBitstreamText_48fa2 & $3fff
 ; 48fa2
 
-SECTION "Tree Bitstream Text 5", ROMX [$4fa2], BANK [$12]
+SECTION "Tree Bitstream Text 5", ROMX
 TreeBitstreamText_48fa2: ; 48fa2
 	ctxt "せなかのランドセルで そらをかける"
 	line "ほんにんの めは わらっているが"

@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 35", ROMX, BANK [$35]
+SECTION "Bank 35", ROMX
 GFX_d4000:: INCBIN "gfx/sprites/d4000.w16.2bpp" ; d4000
 GFX_d4240: INCBIN "gfx/sprites/d4240.w16.2bpp" ; d4240
 GFX_d4480: INCBIN "gfx/sprites/d4480.w16.2bpp" ; d4480

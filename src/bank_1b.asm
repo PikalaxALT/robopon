@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 1b", ROMX, BANK [$1b]
+SECTION "Bank 1b", ROMX
 Func_6c000:
 	ret
 

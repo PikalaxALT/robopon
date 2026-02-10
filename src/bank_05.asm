@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 05", ROMX, BANK [$5]
+SECTION "Bank 05", ROMX
 INCLUDE "engine/menu/menu.asm"
 
 Data_15399: ; 15399

@@ -1,0 +1,223 @@
+ROM0 $00
+    org $0000
+    "rst $0"
+    org $0008
+    "rst $8"
+    org $0010
+    "rst $10"
+    org $0020
+    "rst $20"
+    org $0040
+    "VBlankInt"
+    org $0048
+    "HBlankInt"
+    org $0050
+    "TimerInt"
+    org $0058
+    "SerialInt"
+    org $0068
+    "High Home"
+    org $0100
+    "Init"
+    "Header"
+    "Home"
+    org $01e0
+    "01e0"
+    org $02fd
+    "02fd"
+    align 8
+    "0500"
+    align 8
+    "0e00"
+    align 8
+    "1d00"
+    org $3f80
+    "3f80"
+    org $3fe0
+    "3fe0"
+ROMX $01
+    "Bank 01"
+ROMX $02
+    "Bank 02"
+ROMX $03
+    "Bank 03"
+ROMX $04
+    "Bank 04"
+ROMX $05
+    "Bank 05"
+ROMX $06
+    "Bank 06"
+ROMX $07
+    "Bank 07"
+ROMX $08
+    "Bank 08"
+    "Bank 8 part 2"
+ROMX $09
+    "Bank 09"
+    "Bank 9 part 2"
+ROMX $0a
+    "Bank 0a"
+ROMX $0b
+    "Bank 0b"
+ROMX $0c
+    "Bank 0c"
+ROMX $0d
+    "Bank 0d"
+ROMX $0e
+    "Tree Bitstream Text Pointers"
+    "Tree Bitstream Text 0"
+ROMX $0f
+    "Tree Bitstream Text 1"
+ROMX $10
+    "Tree Bitstream Text 2"
+ROMX $11
+    "Tree Bitstream Text 3"
+ROMX $12
+    "Tree Bitstream Text Pointers 2"
+    "Tree Bitstream Text 5"
+    "Bank 12 Tree"
+ROMX $13
+    "Bank 13"
+ROMX $14
+    "Bank 14"
+ROMX $15
+    "Bank 15"
+    "Text_56b9c"
+    "Bank 15, 2"
+ROMX $16
+    "Bank 16"
+ROMX $17
+    "Bank 17"
+ROMX $18
+    "Bank 18"
+ROMX $19
+    "Bank 19"
+    "Bank 19 2"
+ROMX $1a
+    "Bank 1a"
+ROMX $1b
+    "Bank 1b"
+ROMX $1c
+    "Audio Engine"
+    "Music Headers 1C"
+    "Bank 1c padding"
+ROMX $1d
+    "Audio Engine 2"
+    "Music Headers 1D"
+    "Audio Engine 3"
+    "SFX Data"
+    "Bank 1d padding"
+ROMX $1e
+    "Bank 1e"
+    org $4096
+    "Predef 1e"
+ROMX $1f
+    "Bank 1f"
+ROMX $20
+    "Bank 20"
+ROMX $21
+    "Bank 21"
+ROMX $22
+    "Bank 22"
+ROMX $23
+    "Bank 23"
+ROMX $24
+    "Bank 24"
+    "Bank 24, 2"
+ROMX $25
+    "Bank 25"
+ROMX $26
+    "Bank 26"
+ROMX $27
+    "Bank 27"
+ROMX $28
+    "Bank 28"
+ROMX $29
+    "Bank 29"
+ROMX $2a
+    "Bank 2a"
+ROMX $2b
+    "Bank 2b"
+ROMX $2c
+    "Bank 2c"
+ROMX $2d
+    "Bank 2d"
+    "Bank 2d, 2"
+ROMX $2e
+    "Bank 2e"
+ROMX $2f
+    "Bank 2f"
+ROMX $30
+    "Bank 30"
+ROMX $31
+    "Bank 31"
+ROMX $32
+    "Bank 32"
+ROMX $33
+    "Bank 33"
+ROMX $34
+    "Bank 34"
+ROMX $35
+    "Bank 35"
+ROMX $36
+    "Bank 36"
+ROMX $37
+ROMX $38
+    "Bank 38"
+ROMX $39
+    "Bank 39"
+ROMX $3a
+    "Poncot Pic Headers"
+    org $42b8
+    "Trainer Pic Headers"
+    "Poncot Pics 1"
+ROMX $3b
+    "Poncot Pics 2"
+ROMX $3c
+    "Poncot Pics 3"
+ROMX $3d
+    "Poncot Pics 4"
+ROMX $3e
+    "Trainer Pics"
+    "Bank 3e 2"
+ROMX $3f
+    "Bank 3f"
+    "Bank 3f, 2"
+    "Bank 3f, 3"
+VRAM 0
+    "Vram0"
+VRAM 1
+    "Vram1"
+SRAM 0
+    "SRAM0"
+SRAM 1
+    "SRAM1"
+    org $a300
+    "Save Game"
+    "Robopon Title"
+SRAM 2
+    "SRAM2"
+SRAM 3
+    org $a002
+    "SRAM3"
+WRAM0
+    "WRAM0"
+    "Audio RAM Backup"
+    org $c0f8
+    "High WRAM"
+    align 8
+    "Audio RAM"
+    align 8
+    "LCD Interrupt"
+    align 8
+    "OAM Buffer"
+    "Tile Map"
+    "Overworld RAM"
+    align 2
+    "CGB Palettes Buffer"
+    align 4
+    "Save Game Scratch"
+    align 4
+    "Allocatable Memory"
+    align 4
+    "Stack"

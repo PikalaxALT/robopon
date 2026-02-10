@@ -581,7 +581,7 @@ wVideoTransferQueue:: ; c239
 	short wc3b0 ; c3b0
 	short wSTDLibRNGState ; c3b2
 	char wSTDLibRNGCount ; c3b4
-	
+
 	char wc3b5 ; c3b5
 	char wc3b6 ; c3b6
 	short wc3b7 ; c3b7
@@ -844,6 +844,8 @@ NEXTU
 	char wFunc94a9_c88f ; c88f
 	char wFunc94a9_c890 ; c890
 	char wFunc94a9_c891 ; c891
+NEXTU
+	ds $14
 ENDU
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
@@ -917,7 +919,7 @@ wSaveScratchEnd:: ; ce0a
 
 SECTION "Allocatable Memory", WRAM0 [$ce10]
 	alloc_block wAllocatableBlock0 ; ce10
-	ds $900 - 5
+	ds $a00 - 5
 
 SECTION "Stack", WRAM0 [$d810]
 wStackBottom:: ds $7f0 ; d810

@@ -1,4 +1,4 @@
-SECTION "Bank 0a", ROMX, BANK [$a]
+SECTION "Bank 0a", ROMX
 BlockDataHeaders:: ; 28000
 MACRO blockdataheader
 	dbw BANK(\1) - BANK(BlockDataHeaders), \1
@@ -345,7 +345,7 @@ BlockData_2be50: INCBIN "maps/block_data/blockdata_2be50.blk.rz"
 BlockData_2bec2: INCBIN "maps/block_data/blockdata_2bec2.blk.rz"
 BlockData_2bf58: INCBIN "maps/block_data/blockdata_2bf58.blk.rz"
 
-SECTION "Bank 0b", ROMX, BANK [$b]
+SECTION "Bank 0b", ROMX
 BlockData_2c000: INCBIN "maps/block_data/blockdata_2c000.blk.rz"
 BlockData_2c059: INCBIN "maps/block_data/blockdata_2c059.blk.rz"
 BlockData_2c159: INCBIN "maps/block_data/blockdata_2c159.blk.rz"

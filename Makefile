@@ -139,8 +139,9 @@ data/base_stats/%.bin: ;
 $(objs): $(BUILDDIR)/%.o: %.asm $$(%_dep)
 	rgbasm -D $(GAME_VERSION) -o $@ $<
 
-opts = -csv -k 18 -l 0x33 -m 0xfe -p 0x00 -r 0x03
+opts = -csv -k 18 -l 0x33 -m 0xfe -p 0xff -r 0x03
 
-$(ROM): $(objs)
-	rgblink -w -n $*.sym -m $*.map -o $@ $^
+$(ROM): $(objs) | layout.link
+	rgblink -w -l layout.link -n $*.sym -m $*.map -o $@ $^
+	./trim.py $@
 	rgbfix $(opts) -t "ROBOPON $(GAME_VERSION)" $@

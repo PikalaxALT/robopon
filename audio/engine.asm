@@ -2400,18 +2400,18 @@ Data_7122e_\1: ; 7122e
 	REPT 108
 	db $a
 	ENDR
- 
+
 NumSongs_\1: ; 7129b
 	db 29
 ENDM
 
-SECTION "Audio Engine", ROMX [$4000], BANK [$1c]
+SECTION "Audio Engine", ROMX
 	audio_engine 1c
 
-SECTION "Audio Engine 2", ROMX [$4000], BANK [$1d]
+SECTION "Audio Engine 2", ROMX
 	audio_engine 1d
 
-SECTION "Audio Engine 3", ROMX [$6800], BANK [$1d]
+SECTION "Audio Engine 3", ROMX
 PlaySFX:
 	jp PlaySFX_
 

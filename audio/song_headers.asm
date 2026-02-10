@@ -1,5 +1,5 @@
 
-SECTION "Music Headers 1C", ROMX [$529c], BANK [$1c]
+SECTION "Music Headers 1C", ROMX
 SongBanks_1c: ; 7129c
 	db BANK(SongHeader_712f3)
 	db BANK(SongHeader_712f4)
@@ -10024,7 +10024,7 @@ Music_73f0d:
 	note D_, 1
 
 
-SECTION "Music Headers 1D", ROMX [$529c], BANK [$1d]
+SECTION "Music Headers 1D", ROMX
 SongBanks_1d: ; 7529c
 	db BANK(SongHeader_712f3)
 	db BANK(SongHeader_712f4)

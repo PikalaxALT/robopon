@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 9 part 2", ROMX [$45c8], BANK [$9]
+SECTION "Bank 9 part 2", ROMX
 INCLUDE "charmap.asm"
 Data_245c8: ; 245c8
 	db $00, $0a, $14, $1e, $28, $32, $3c, $46
