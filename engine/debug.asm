@@ -70,9 +70,9 @@ Func_bc092: ; bc092 (2f:4092)
 	ld e, $a
 	ld l, $0
 	ld a, $61
-Func_bc09d: ; bc09d (2f:409d)
+_bc09d: ; bc09d (2f:409d)
 	cp $7b
-	jp nc, Func_bc0c1
+	jp nc, _bc0c1
 	push hl
 	push de
 	push af
@@ -93,13 +93,13 @@ Func_bc09d: ; bc09d (2f:409d)
 	inc e
 	pop hl
 	inc l
-	jp Func_bc09d
+	jp _bc09d
 
-Func_bc0c1: ; bc0c1 (2f:40c1)
+_bc0c1: ; bc0c1 (2f:40c1)
 	ld a, $41
-Func_bc0c3: ; bc0c3 (2f:40c3)
+_bc0c3: ; bc0c3 (2f:40c3)
 	cp $5b
-	jp nc, Func_bc0e5
+	jp nc, _bc0e5
 	push hl
 	push de
 	push af
@@ -119,9 +119,9 @@ Func_bc0c3: ; bc0c3 (2f:40c3)
 	inc e
 	pop hl
 	inc l
-	jp Func_bc0c3
+	jp _bc0c3
 
-Func_bc0e5: ; bc0e5 (2f:40e5)
+_bc0e5: ; bc0e5 (2f:40e5)
 	push de
 	ld bc, $340
 	ld hl, sp+$2
@@ -133,9 +133,9 @@ Func_bc0e5: ; bc0e5 (2f:40e5)
 	push de
 	ld c, $0
 	xor a
-Func_bc0fd: ; bc0fd (2f:40fd)
+_bc0fd: ; bc0fd (2f:40fd)
 	cp $5
-	jp nc, Func_bc129
+	jp nc, _bc129
 	push bc
 	push de
 	push af
@@ -162,9 +162,9 @@ Func_bc0fd: ; bc0fd (2f:40fd)
 	inc e
 	pop bc
 	inc c
-	jp Func_bc0fd
+	jp _bc0fd
 
-Func_bc129: ; bc129 (2f:4129)
+_bc129: ; bc129 (2f:4129)
 	pop de
 	ld l, a
 	ld h, $0
