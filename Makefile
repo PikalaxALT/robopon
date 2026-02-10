@@ -8,6 +8,27 @@ else
 	MD5 := md5sum -c
 endif
 
+SUN_ROM := robosun.gbc
+STAR_ROM := robostar.gbc
+ROMS := $(SUN_ROM) $(STAR_ROM)
+
+GAME_VERSION ?= SUN
+
+ifeq ($(GAME_VERSION),SUN)
+shortname := sun
+else
+ifeq ($(GAME_VERSION),STAR)
+shortname := star
+else
+$(error unsupported GAME_VERSION=$(GAME_VERSION))
+endif
+endif
+
+BUILDDIR := build/$(shortname)
+BUILD_SUBDIRS := src
+ROM := robo$(shortname).gbc
+dummy := $(foreach dir,$(BUILD_SUBDIRS),$(shell mkdir -p $(BUILDDIR)/$(dir)))
+
 RZ       := $(PYTHON) rz.py compress
 TM       := $(PYTHON) tm2bpp.py furl
 EMOTE    := $(PYTHON) emote.py pack
@@ -16,6 +37,14 @@ EMOTE    := $(PYTHON) emote.py pack
 includes := $(PYTHON) scan_includes.py
 
 SRC_ASM := \
+	wram.asm \
+	sram.asm \
+	vram.asm \
+	gfx.asm \
+	audio.asm \
+	text.asm \
+	maps.asm \
+	home.asm \
 	src/bank_01.asm \
 	src/bank_02.asm \
 	src/bank_03.asm \
@@ -51,23 +80,9 @@ SRC_ASM := \
 	src/bank_3f_2.asm \
 	src/bank_3f_3.asm
 
-SRC_OBJS := $(SRC_ASM:%.asm=%.o)
+objs := $(SRC_ASM:%.asm=$(BUILDDIR)/%.o)
 
-objs := \
-	wram.o \
-	sram.o \
-	vram.o \
-	gfx.o \
-	audio.o \
-	text.o \
-	maps.o \
-	home.o \
-	$(SRC_OBJS)
-
-sun_objs := $(objs:.o=_sun.o)
-star_objs := $(objs:.o=_star.o)
-
-$(foreach obj, $(objs:.o=), \
+$(foreach obj, $(SRC_ASM:.asm=), \
 	$(eval $(obj)_dep := $(shell $(includes) $(obj).asm)) \
 )
 
@@ -78,22 +93,21 @@ $(foreach obj, $(objs:.o=), \
 .PRECIOUS: %.2bpp %.png %.tm2bpp %.emote
 .PHONY: all clean tidy roms sun star compare
 
-sun  := robosun.gbc
-star := robostar.gbc
-
-all: roms
+all: $(ROM)
 
 compare: roms
 	$(MD5) roms.md5
 
-roms: $(sun) $(star)
+roms: sun star
 
-sun: $(sun)
+sun:
+	$(MAKE) GAME_VERSION=SUN
 
-star: $(star)
+star:
+	$(MAKE) GAME_VERSION=STAR
 
 tidy:
-	rm -f $(sun) $(star) $(sun_objs) $(star_objs) $(roms:.gbc=.sym) $(roms:.gbc=.map)
+	$(RM) -r $(ROMS) $(BUILDDIR) $(roms:.gbc=.sym) $(roms:.gbc=.map)
 
 clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' -o -iname '*.ctf' \) -exec rm {} +
@@ -122,18 +136,11 @@ data/base_stats/%.bin: ;
 %.rz: %
 	$(RZ) $< $@
 
-$(sun_objs): %_sun.o: %.asm $$(%_dep)
-	rgbasm -D SUN -o $@ $*.asm
-
-$(star_objs): %_star.o: %.asm $$(%_dep)
-	rgbasm -D STAR -o $@ $*.asm
+$(objs): $(BUILDDIR)/%.o: %.asm $$(%_dep)
+	rgbasm -D $(GAME_VERSION) -o $@ $<
 
 opts = -csv -k 18 -l 0x33 -m 0xfe -p 0x00 -r 0x03
 
-$(sun): $(sun_objs)
-	rgblink -w -n $*.sym -o $@ $^
-	rgbfix $(opts) -t "ROBOPON SUN" $@
-
-$(star): $(star_objs)
-	rgblink -w -n $*.sym -o $@ $^
-	rgbfix $(opts) -t "ROBOPON STAR" $@
+$(ROM): $(objs)
+	rgblink -w -n $*.sym -m $*.map -o $@ $^
+	rgbfix $(opts) -t "ROBOPON $(GAME_VERSION)" $@
