@@ -183,7 +183,16 @@ MACRO dbbw
 	ENDM
 
 MACRO dstr
-	db \1, 0
+.strStart_\@:
+	db \1
+	IF _NARG == 2
+.strEnd_\@:
+		REPT \2 - (.strEnd_\@ - .strStart_\@)
+		db 0
+		ENDR
+	ELSE
+		db 0
+	ENDC
 	ENDM
 
 MACRO write_hl_to
@@ -257,7 +266,37 @@ ENDC
 ENDR
 ENDM
 
-MACRO get_party_bot
+MACRO mulhlby3
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ENDM
+
+MACRO mulhlby24
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+	ENDM
+
+MACRO mulhlby19
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ENDM
+
+MACRO mulhlby35
 	ld e, l
 	ld d, h
 	add hl, hl
@@ -269,6 +308,27 @@ MACRO get_party_bot
 	add hl, hl
 	add hl, de
 	add hl, bc
+	ENDM
+
+MACRO mulhlby200
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ENDM
+
+	; optional arg: byte offset within struct
+MACRO get_party_bot
+	mulhlby35
 IF _NARG > 0
 	ld de, \1
 	add hl, de

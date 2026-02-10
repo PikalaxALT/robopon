@@ -1,7 +1,7 @@
 Data_d7e7: ; d7e7
 	db $21, $02, $07, $1a, $00, $05, $09, $0c, $03, $1f, $0a, $05, $13, $0c
 
-Func_d7f5: ; d7f5 (3:57f5)
+Func_d7f5:: ; d7f5 (3:57f5)
 	push bc
 	push bc
 	push de

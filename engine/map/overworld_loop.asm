@@ -25,7 +25,7 @@ Data_81c3: ; 81c3
 Data_81c9: ; 81c9
 	spawn $07, $0c, $07, $0b, MAP_26_00 ; conditional 0e
 
-OverworldLoop: ; 81cf (2:41cf)
+OverworldLoop:: ; 81cf (2:41cf)
 ; c: 1 if continuing from a previous save
 	push bc
 	push bc

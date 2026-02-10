@@ -1,0 +1,41 @@
+on:
+    push:
+
+jobs:
+    build_rom:
+        runs-on: ubuntu-latest
+        env:
+            rgbds_version: v1.0.1
+
+        steps:
+            -
+                name: Checkout repository
+                uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+                with:
+                    submodules: 'recursive'
+
+            -
+                name: Checkout rgbds
+                uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+                with:
+                    path: rgbds
+                    ref: ${{ env.rgbds_version }}
+                    repository: gbdev/rgbds
+
+            -
+                name: Install rgbds (Ubuntu)
+                working-directory: rgbds
+                run: |
+                    sudo apt-get update
+                    sudo apt-get install -yq bison libpng-dev pkg-config
+                    sudo make -j$(nproc) install
+
+            -
+                name: Remove rgbds
+                run: |
+                    rm -rf rgbds
+
+            -
+                name: Make
+                run: |
+                    make -j$(nproc) ${{ github.repository_owner == 'pikalaxalt' && 'compare' || '' }}

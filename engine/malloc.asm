@@ -48,7 +48,7 @@ InitHeap:: ; 17a67 (5:7a67)
 	write_hl_to wMallocNBlocks
 	ret
 
-SetAllocationMode: ; 17ab6 (5:7ab6)
+SetAllocationMode:: ; 17ab6 (5:7ab6)
 	ld [wMemoryAllocationMode], a
 	ret
 
@@ -654,6 +654,6 @@ Data_17e77: ; 17e77
 Data_17e88: ; 17e88
 	dstr "サイタﾞイ %d"
 
-Func_17e91: ; 17e91 (5:7e91)
+Func_17e91:: ; 17e91 (5:7e91)
 	call Func_17d7b
 	ret

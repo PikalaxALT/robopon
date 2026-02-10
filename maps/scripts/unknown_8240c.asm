@@ -90,8 +90,7 @@ Func_82489: ; 82489 (20:6489)
 Func_824b9: ; 824b9 (20:64b9)
 IF DEF(SUN)
 	ld a, ROBBY + 1
-ENDC
-IF DEF(STAR)
+ELIF DEF(STAR)
 	ld a, Q_ + 1
 ENDC
 	jp Func_824ca
@@ -99,8 +98,7 @@ ENDC
 Func_824be: ; 824be (20:64be)
 IF DEF(SUN)
 	ld a, BELLA + 1
-ENDC
-IF DEF(STAR)
+ELIF DEF(STAR)
 	ld a, VIC + 1
 ENDC
 	jp Func_824ca
@@ -108,8 +106,7 @@ ENDC
 Func_824c3: ; 824c3 (20:64c3)
 IF DEF(SUN)
 	ld a, HEYLOW + 1
-ENDC
-IF DEF(STAR)
+ELIF DEF(STAR)
 	ld a, RALPH + 1
 ENDC
 	jp Func_824ca
@@ -117,8 +114,7 @@ ENDC
 Func_824c8: ; 824c8 (20:64c8)
 IF DEF(SUN)
 	ld a, VIGGY + 1
-ENDC
-IF DEF(STAR)
+ELIF DEF(STAR)
 	ld a, CHECKS + 1
 ENDC
 Func_824ca: ; 824ca (20:64ca)

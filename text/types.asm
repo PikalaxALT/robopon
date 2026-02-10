@@ -1,118 +1,44 @@
-Text_66ea7:
-	db "アーム", $0, $0, $0, $0
+Text_66ea7::
+	dstr "アーム", 7
+	dstr "アーム", 7
+	dstr "アーム", 7
+	dstr "アーム", 7
+	dstr "アーム", 7
+	dstr "アーム", 7
+	dstr "アーム", 7
+	dstr "アーム", 7
+	dstr "ムーブ", 7
+	dstr "ムーブ", 7
+	dstr "ムーブ", 7
+	dstr "ブート", 7
 
-Text_66eae:
-	db "アーム", $0, $0, $0, $0
+TypeNames::
+	dstr "ノーマル", 5
+	dstr "ほのお", 5
+	dstr "みず", 5
+	dstr "かぜ", 5
+	dstr "つち", 5
+	dstr "かみなり", 5
+	dstr "こおり", 5
+	dstr "せい", 5
+	dstr "じゃ", 5
+	dstr "りく", 5
+	dstr "うみ", 5
+	dstr "そら", 5
 
-Text_66eb5:
-	db "アーム", $0, $0, $0, $0
-
-Text_66ebc:
-	db "アーム", $0, $0, $0, $0
-
-Text_66ec3:
-	db "アーム", $0, $0, $0, $0
-
-Text_66eca:
-	db "アーム", $0, $0, $0, $0
-
-Text_66ed1:
-	db "アーム", $0, $0, $0, $0
-
-Text_66ed8:
-	db "アーム", $0, $0, $0, $0
-
-Text_66edf:
-	db "ムーブ", $0, $0, $0, $0
-
-Text_66ee6:
-	db "ムーブ", $0, $0, $0, $0
-
-Text_66eed:
-	db "ムーブ", $0, $0, $0, $0
-
-Text_66ef4:
-	db "ブート", $0, $0, $0, $0
-
-
-TypeNames:
-	dstr "ノーマル"
-
-Text_66f00:
-	db "ほのお", $0, $0
-
-Text_66f05:
-	db "みず", $0, $0, $0
-
-Text_66f0a:
-	db "かぜ", $0, $0, $0
-
-Text_66f0f:
-	db "つち", $0, $0, $0
-
-Text_66f14:
-	dstr "かみなり"
-
-Text_66f19:
-	db "こおり", $0, $0
-
-
-Text_66f1e:
-	db "せい", $0, $0, $0
-
-Text_66f23:
-	db "じゃ", $0, $0, $0
-
-Text_66f28:
-	db "りく", $0, $0, $0
-
-Text_66f2d:
-	db "うみ", $0, $0, $0
-
-Text_66f32:
-	db "そら", $0, $0, $0
-
-Text_66f37:
-	dstr "ふつう"
-
-Text_66f3b:
-	dstr "いのり"
-
-Text_66f3f:
-	dstr "のろい"
-
-Text_66f43:
-	db "ねつ", $0, $0
-
-Text_66f47:
-	db "バグ", $0, $0
-
-Text_66f4b:
-	dstr "のうむ"
-
-Text_66f4f:
-	db "むし", $0, $0
-
-Text_66f53:
-	dstr "ていし"
-
-Text_66f57:
-	db "サビ", $0, $0
-
-Text_66f5b:
-	dstr "???"
-
-Text_66f5f:
-	dstr "!!!"
-
-Text_66f63:
-	db " ", $0, $0, $0
-
-Text_66f67:
-	db " ", $0, $0, $0
-
-Text_66f6b:
-	db " ", $0, $0, $0
-
-Text_66f6f:
-	dstr "ふのう"
+Text_66f37::
+	dstr "ふつう", 4
+	dstr "いのり", 4
+	dstr "のろい", 4
+	dstr "ねつ", 4
+	dstr "バグ", 4
+	dstr "のうむ", 4
+	dstr "むし", 4
+	dstr "ていし", 4
+	dstr "サビ", 4
+	dstr "???", 4
+	dstr "!!!", 4
+	dstr " ", 4
+	dstr " ", 4
+	dstr " ", 4
+	dstr "ふのう", 4

@@ -158,7 +158,7 @@ ValidateSaveGameSignature:: ; 7a2b (1:7a2b)
 	pop bc
 	ret
 
-SignSaveFiles: ; 7a92
+SignSaveFiles:: ; 7a92
 	ldh a, [hSRAMBank]
 	push af
 	ld a, $2
@@ -177,7 +177,7 @@ SignSaveFiles: ; 7a92
 	call GetSRAMBank
 	ret
 
-StoreSaveChecksum: ; 7abc
+StoreSaveChecksum:: ; 7abc
 	ldh a, [hSRAMBank]
 	push af
 	inc e

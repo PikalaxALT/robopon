@@ -4,7 +4,7 @@ Pointers_56d8e:
 Data_56d90:
 	dstr "(ちょっとまってね)" ; Please wait...
 
-SaveGame: ; 56d9b (15:6d9b)
+SaveGame:: ; 56d9b (15:6d9b)
 	ld hl, -$404
 	add hl, sp
 	ld sp, hl
@@ -217,7 +217,7 @@ SaveGame: ; 56d9b (15:6d9b)
 Data_56fb9:
 	dstr "セーフﾞ エラー"
 
-LoadGame: ; 56fc2 (15:6fc2)
+LoadGame:: ; 56fc2 (15:6fc2)
 	ld hl, -$404
 	add hl, sp
 	ld sp, hl

@@ -1,4 +1,4 @@
-AdjustItemQuantity: ; 5a149 (16:6149)
+AdjustItemQuantity:: ; 5a149 (16:6149)
 ; a = item idx
 ; c = execution mode
 ;     0: put in bag

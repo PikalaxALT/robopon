@@ -538,7 +538,7 @@ Func_c754b: ; c754b (31:754b)
 	pop bc
 	ret
 
-MapFadeOutCGB: ; c7551 (31:7551)
+MapFadeOutCGB:: ; c7551 (31:7551)
 	push af
 	push bc
 	push bc
@@ -861,7 +861,7 @@ Func_c7751: ; c7751 (31:7751)
 	pop bc
 	ret
 
-MapFadeInCGB: ; c7759 (31:7759)
+MapFadeInCGB:: ; c7759 (31:7759)
 	push af
 	push bc
 	push bc

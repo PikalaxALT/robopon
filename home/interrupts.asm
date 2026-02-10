@@ -65,7 +65,7 @@ VBlankReadJoypad:: ; 120e (0:120e)
 	xor c
 	jr z, .asm_121c
 	and c
-	ld [wJoyHeld], a
+	ld [wJoyHeld], a ; held both this frame and last frame
 .asm_121c
 	ld a, c
 	ld [wJoyLast], a
@@ -74,12 +74,14 @@ VBlankReadJoypad:: ; 120e (0:120e)
 
 ReadJoypad:: ; 1222 (0:1222)
 	ld c, $0
+	; poll buttons, this is unreliable so we read twice
 	ld a, $20
 	ldh [rJOYP], a
 	ldh a, [rJOYP]
 	ldh a, [rJOYP]
 	and $f
 	ld c, a
+	; poll dpad, this is unreliable so we read 6 times
 	ld a, $10
 	ldh [rJOYP], a
 	ldh a, [rJOYP]
@@ -91,9 +93,12 @@ ReadJoypad:: ; 1222 (0:1222)
 	and $f
 	swap a
 	or c
+	; register encodes 0 for pressed, so complement
 	cpl
+	; return to wJoyPressed and c
 	ld [wJoyPressed], a
 	ld c, a
+	; reset the joypad register
 	ld a, $30
 	ldh [rJOYP], a
 	ret

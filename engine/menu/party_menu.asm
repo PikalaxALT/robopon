@@ -7,7 +7,7 @@ Data_5e4e7:
 Data_5e4f6:
 	db $00, $03, $00, $00, $00, $00, $00, $00, $00, $00, $00, $ff, $00, $00
 
-DisplayPartyMenu: ; 5e504 (17:6504)
+DisplayPartyMenu:: ; 5e504 (17:6504)
 	push af
 	push de
 	add sp, -$4a

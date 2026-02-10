@@ -130,7 +130,7 @@ Text_20275: ; 20275
 Text_2027a: ; 2027a
 	dstr "ダメージ"
 
-Pointers_2027f: ; 2027f
+Pointers_2027f:: ; 2027f
 	dw Text_201c7
 	dw Text_201cc
 	dw Text_201d0

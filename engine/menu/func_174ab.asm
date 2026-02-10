@@ -1,4 +1,4 @@
-HandleMenu: ; 174ab (5:74ab)
+HandleMenu:: ; 174ab (5:74ab)
 ; hl is the menu primary header.
 ; A 15-byte secondary header is loaded on the stack.  This header has not yet
 ; been deciphered.

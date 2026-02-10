@@ -1,4 +1,4 @@
-BattleIntro: ; fa81 (3:7a81)
+BattleIntro:: ; fa81 (3:7a81)
 	add sp, -$32
 	read_hl_from wCurRobotPointer
 	ld de, $16

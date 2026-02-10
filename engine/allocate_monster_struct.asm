@@ -74,7 +74,7 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 .bail
 	ret
 
-AllocateMonsterStruct2: ; cc0c
+AllocateMonsterStruct2:: ; cc0c
 	read_hl_from wCurRobotPointer
 	ld a, l
 	or h

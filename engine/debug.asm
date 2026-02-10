@@ -6334,7 +6334,7 @@ Data_bf20c:
 Data_bf210:
 	dstr "アオ:"
 
-Func_bf214: ; bf214 (2f:7214)
+Func_bf214:: ; bf214 (2f:7214)
 	push bc
 	ldh a, [hSRAMBank]
 	push af
@@ -6642,7 +6642,7 @@ Func_bf428: ; bf428 (2f:7428)
 	pop bc
 	ret
 
-PrintMemoryAllocationErrorDetails: ; bf431 (2f:7431)
+PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	push hl
 	ld hl, -$148
 	add hl, sp
