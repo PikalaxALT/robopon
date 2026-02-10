@@ -582,49 +582,49 @@ SFXWaveSamples: ; 76c72
 	dw Sample_76d1a
 
 Sample_76c9a: ; 76c9a
-	dr $76c9a, $76caa
+	db $79, $bd, $ff, $ff, $ff, $ff, $fd, $b9, $75, $31, $00, $00, $00, $00, $01, $35
 
 Sample_76caa: ; 76caa
-	dr $76caa, $76cba
+	db $01, $12, $23, $34, $45, $56, $67, $77, $88, $99, $aa, $bb, $cc, $dd, $ee, $ff
 
 Sample_76cba: ; 76cba
-	dr $76cba, $76cca
+	db $12, $23, $33, $44, $55, $66, $77, $77, $78, $89, $9a, $ab, $bb, $cc, $dd, $ee
 
 Sample_76cca: ; 76cca
-	dr $76cca, $76cda
+	db $22, $33, $34, $45, $55, $66, $77, $77, $78, $89, $99, $aa, $bb, $bc, $cd, $dd
 
 Sample_76cda: ; 76cda
-	dr $76cda, $76cea
+	db $33, $34, $44, $55, $56, $66, $77, $77, $78, $88, $99, $9a, $aa, $bb, $bc, $cc
 
 Sample_76cea: ; 76cea
-	dr $76cea, $76cfa
+	db $7b, $ff, $ff, $fb, $73, $00, $00, $03, $7b, $ff, $ff, $fb, $73, $00, $00, $03
 
 Sample_76cfa: ; 76cfa
-	dr $76cfa, $76d0a
+	db $7b, $ef, $ff, $eb, $73, $00, $00, $03, $7b, $ef, $ff, $eb, $73, $00, $00, $03
 
 Sample_76d0a: ; 76d0a
-	dr $76d0a, $76d1a
+	db $7a, $df, $ff, $da, $74, $10, $00, $14, $7a, $df, $ff, $da, $74, $10, $00, $14
 
 Sample_76d1a: ; 76d1a
-	dr $76d1a, $76d2a
+	db $bb, $bb, $bb, $bb, $bb, $bb, $bb, $bb, $bb, $bb, $bb, $bb, $33, $33, $33, $33
 
 Sample_76d2a: ; 76d2a
-	dr $76d2a, $76d3a
+	db $ee, $ee, $ee, $ee, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
 Sample_76d3a: ; 76d3a
-	dr $76d3a, $76d4a
+	db $cc, $cc, $cc, $cc, $22, $22, $22, $22, $22, $22, $22, $22, $22, $22, $22, $22
 
 Sample_76d4a: ; 76d4a
-	dr $76d4a, $76d5a
+	db $ee, $ee, $ee, $ee, $ee, $ee, $ee, $ee, $00, $00, $00, $00, $00, $00, $00, $00
 
 Sample_76d5a: ; 76d5a
-	dr $76d5a, $76d6a
+	db $dd, $dd, $dd, $dd, $dd, $dd, $dd, $dd, $11, $11, $11, $11, $11, $11, $11, $11
 
 Sample_76d6a: ; 76d6a
-	dr $76d6a, $76d7a
+	db $cc, $cc, $cc, $cc, $cc, $cc, $cc, $cc, $22, $22, $22, $22, $22, $22, $22, $22
 
 Sample_76d7a: ; 76d7a
-	dr $76d7a, $76d8a
+	db $bb, $bb, $bb, $bb, $bb, $bb, $bb, $bb, $33, $33, $33, $33, $33, $33, $33, $33
 
 
 SFX_76b86_Ch1: ; 76d8a
@@ -3205,4 +3205,4 @@ SFX_76c69_Ch3: ; 77ef6
 	sfx_setc1b3 $3c
 	sfx_end
 
-	dr $77f01, $77f10
+	db $10, $58, $00, $2c, $50, $00, $60, $3c, $f0, $fd, $60, $3c, $f0, $80, $11

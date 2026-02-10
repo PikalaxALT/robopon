@@ -51,7 +51,7 @@ SetMovementPointer: ; b41d (2:741d)
 	ret
 
 Data_b449: ; b449
-	dr $b449, $b44d
+	db $04, $01, $08, $02
 
 Func_b44d: ; b44d (2:744d)
 	push bc

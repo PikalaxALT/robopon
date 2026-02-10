@@ -1,6 +1,12 @@
 PYTHON := python3
-MD5 := md5sum -c
 POKETOOLS := extras/pokemontools
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	MD5 := gmd5sum -c
+else
+	MD5 := md5sum -c
+endif
 
 RZ       := $(PYTHON) rz.py compress
 TM       := $(PYTHON) tm2bpp.py furl
@@ -8,6 +14,44 @@ EMOTE    := $(PYTHON) emote.py pack
 2bpp     := $(PYTHON) gfx.py 2bpp
 1bpp     := $(PYTHON) gfx.py 1bpp
 includes := $(PYTHON) scan_includes.py
+
+SRC_ASM := \
+	src/bank_01.asm \
+	src/bank_02.asm \
+	src/bank_03.asm \
+	src/bank_04.asm \
+	src/bank_05.asm \
+	src/bank_06.asm \
+	src/bank_07.asm \
+	src/bank_08.asm \
+	src/bank_8_part_2.asm \
+	src/bank_09.asm \
+	src/bank_9_part_2.asm \
+	src/bank_0c.asm \
+	src/bank_0d.asm \
+	src/bank_13.asm \
+	src/bank_14.asm \
+	src/bank_15.asm \
+	src/text_56b9c.asm \
+	src/bank_15_2.asm \
+	src/bank_16.asm \
+	src/bank_17.asm \
+	src/bank_18.asm \
+	src/bank_19.asm \
+	src/bank_19_2.asm \
+	src/bank_1a.asm \
+	src/bank_1b.asm \
+	src/bank_2f.asm \
+	src/bank_30.asm \
+	src/bank_31.asm \
+	src/bank_35.asm \
+	src/bank_39.asm \
+	src/bank_3e_2.asm \
+	src/bank_3f.asm \
+	src/bank_3f_2.asm \
+	src/bank_3f_3.asm
+
+SRC_OBJS := $(SRC_ASM:%.asm=%.o)
 
 objs := \
 	wram.o \
@@ -31,7 +75,7 @@ $(foreach obj, $(objs:.o=), \
 .SUFFIXES: .asm .o .gbc .png .2bpp .1bpp .pic .wav .pcm
 .SECONDEXPANSION:
 # Suppress annoying intermediate file deletion messages.
-.PRECIOUS: %.2bpp %.png
+.PRECIOUS: %.2bpp %.png %.tm2bpp %.emote
 .PHONY: all clean tidy roms sun star compare
 
 sun  := robosun.gbc
