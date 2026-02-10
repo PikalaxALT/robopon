@@ -1,4 +1,4 @@
-Func_e015: ; e015 (3:6015)
+Func_e015:: ; e015 (3:6015)
 	add sp, -$14
 	push de
 	push af

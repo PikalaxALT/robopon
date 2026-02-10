@@ -4,32 +4,30 @@
 """
 Recursively scan an asm file for dependencies.
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
-import sys
 import argparse
 import os.path
+import sys
 
 
 def scan_file(filename):
-    ctf = filename.endswith('.ctf')
+    ctf = filename.endswith(".ctf")
     if ctf:
-        filename = filename[:-4] + '.asm'
+        filename = filename[:-4] + ".asm"
     with open(filename) as f:
         for line in f:
-            if ctf and line.startswith('\ttree'):
+            if ctf and line.startswith("\ttree"):
                 include = line.split('"')[1]
                 yield include
                 ctf = False
                 continue
-            elif 'INC' not in line:
+            elif "INC" not in line:
                 continue
-            line = line.split(';')[0]
-            if 'INCLUDE' in line:
+            line = line.split(";")[0]
+            if "INCLUDE" in line:
                 include = line.split('"')[1]
-                if os.path.exists("src/"):
+                if os.path.exists("src/") and os.path.exists("src/" + include):
                     yield "src/" + include
                     for inc in scan_file("src/" + include):
                         yield inc
@@ -37,9 +35,9 @@ def scan_file(filename):
                     yield include
                     for inc in scan_file(include):
                         yield inc
-            elif 'INCBIN' in line:
+            elif "INCBIN" in line:
                 include = line.split('"')[1]
-                if 'baserom.gbc' not in line and os.path.exists("src/"):
+                if "baserom.gbc" not in line and os.path.exists("src/" + include):
                     yield "src/" + include
                 else:
                     yield include
@@ -47,13 +45,13 @@ def scan_file(filename):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('filenames', nargs='*')
+    ap.add_argument("filenames", nargs="*")
     args = ap.parse_args()
     includes = set()
     for filename in set(args.filenames):
         includes.update(scan_file(filename))
-    sys.stdout.write(' '.join(sorted(includes)))
+    sys.stdout.write(" ".join(sorted(includes)))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

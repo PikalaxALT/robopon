@@ -1,4 +1,4 @@
-Text_66ea7:
+Text_66ea7::
 	dstr "アーム", 7
 	dstr "アーム", 7
 	dstr "アーム", 7
@@ -12,7 +12,7 @@ Text_66ea7:
 	dstr "ムーブ", 7
 	dstr "ブート", 7
 
-TypeNames:
+TypeNames::
 	dstr "ノーマル", 5
 	dstr "ほのお", 5
 	dstr "みず", 5
@@ -26,7 +26,7 @@ TypeNames:
 	dstr "うみ", 5
 	dstr "そら", 5
 
-Text_66f37:
+Text_66f37::
 	dstr "ふつう", 4
 	dstr "いのり", 4
 	dstr "のろい", 4

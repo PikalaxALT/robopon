@@ -547,7 +547,7 @@ Func_14452: ; 14452 (5:4452)
 	reg16swap de, hl
 	ret
 
-MenuWithSecondaryHeader: ; 1445e
+MenuWithSecondaryHeader:: ; 1445e
 	push hl
 	add sp, -$10
 	push bc
@@ -600,7 +600,7 @@ MenuWithSecondaryHeader: ; 1445e
 	reg16swap de, hl
 	ret
 
-Func_144bd: ; 144bd
+Func_144bd:: ; 144bd
 	ld l, BANK(Data_54001)
 	push hl
 	ld hl, $600
@@ -619,7 +619,7 @@ Func_144bd: ; 144bd
 	pop bc
 	ret
 
-Func_144dd: ; 144dd (5:44dd)
+Func_144dd:: ; 144dd (5:44dd)
 	ld l, BANK(Data_54020)
 	push hl
 	ld hl, $81e
@@ -839,7 +839,7 @@ Func_14673: ; 14673 (5:4673)
 	pop bc
 	ret
 
-StartMenu: ; 14675 (5:4675)
+StartMenu:: ; 14675 (5:4675)
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_6183
 	ld a, [wLCDC]
@@ -996,7 +996,7 @@ Func_147d4: ; 147d4 (5:47d4)
 Func_147e7: ; 147e7 (5:47e7)
 	ret
 
-Func_147e8: ; 147e8
+Func_147e8:: ; 147e8
 	call Func_1fbe
 	ld l, BANK(Data_540f9)
 	push hl
@@ -1017,7 +1017,7 @@ Func_147e8: ; 147e8
 	call Func_2009
 	ret
 
-Func_1480e: ; 1480e
+Func_1480e:: ; 1480e
 	ld l, BANK(Data_541b3)
 	push hl
 	ld hl, $200
@@ -1074,7 +1074,7 @@ UseTossSelect: ; 1484e
 	pop bc
 	ret
 
-MainMenuSubmenu_Belongings: ; 1486e
+MainMenuSubmenu_Belongings:: ; 1486e
 	ld l, BANK(Data_54118)
 	push hl
 	ld hl, $300
@@ -1093,7 +1093,7 @@ MainMenuSubmenu_Belongings: ; 1486e
 	pop bc
 	ret
 
-Func_1488e: ; 1488e
+Func_1488e:: ; 1488e
 	ld l, BANK(Data_540bb)
 	push hl
 	ld hl, $3
@@ -1112,7 +1112,7 @@ Func_1488e: ; 1488e
 	pop bc
 	ret
 
-Func_148ae: ; 148ae
+Func_148ae:: ; 148ae
 	ld l, BANK(Data_54137)
 	push hl
 	ld hl, $302
@@ -1131,7 +1131,7 @@ Func_148ae: ; 148ae
 	pop bc
 	ret
 
-Func_148ce: ; 148ce
+Func_148ce:: ; 148ce
 	call Func_1fbe
 	ld l, BANK(Data_54156)
 	push hl
@@ -1152,7 +1152,7 @@ Func_148ce: ; 148ce
 	call Func_2009
 	ret
 
-Func_148f4: ; 148f4
+Func_148f4:: ; 148f4
 	call Func_1fbe
 	ld l, BANK(Data_54175)
 	push hl
@@ -1173,7 +1173,7 @@ Func_148f4: ; 148f4
 	call Func_2009
 	ret
 
-Func_1491a: ; 1491a
+Func_1491a:: ; 1491a
 	call Func_1fbe
 	ld l, BANK(Data_54194)
 	push hl
@@ -1213,7 +1213,7 @@ MainMenuSubmenu_Warehouse:: ; 14940
 	pop bc
 	ret
 
-MainMenuSubmenu_Data: ; 14960
+MainMenuSubmenu_Data:: ; 14960
 	ld l, BANK(Data_566a9)
 	push hl
 	ld hl, $302
@@ -1232,7 +1232,7 @@ MainMenuSubmenu_Data: ; 14960
 	pop bc
 	ret
 
-Func_14980: ; 14980
+Func_14980:: ; 14980
 	ld l, BANK(Data_543a2)
 	push hl
 	ld hl, $21
@@ -1266,7 +1266,7 @@ Func_149c6: ; 149c6 (5:49c6)
 	callba_hli Func_e1e83
 	ret
 
-Func_149d5: ; 149d5
+Func_149d5:: ; 149d5
 	push bc
 	ld hl, sp+$0
 	xor a
@@ -1346,7 +1346,7 @@ Func_14a31: ; 14a31 (5:4a31)
 	pop bc
 	ret
 
-Func_14a64: ; 14a64
+Func_14a64:: ; 14a64
 	ld l, BANK(Data_543e0)
 	push hl
 	ld hl, $1e
@@ -1365,7 +1365,7 @@ Func_14a64: ; 14a64
 	pop bc
 	ret
 
-Func_14a84: ; 14a84
+Func_14a84:: ; 14a84
 	ld l, BANK(Data_542ca)
 	push hl
 	ld hl, $9
@@ -1384,7 +1384,7 @@ Func_14a84: ; 14a84
 	pop bc
 	ret
 
-Func_14aa4: ; 14aa4
+Func_14aa4:: ; 14aa4
 	ld l, BANK(Data_542ab)
 	push hl
 	ld hl, $10
@@ -1403,7 +1403,7 @@ Func_14aa4: ; 14aa4
 	pop bc
 	ret
 
-Func_14ac4: ; 14ac4
+Func_14ac4:: ; 14ac4
 	ld l, BANK(Data_542e9)
 	push hl
 	ld hl, $a
@@ -1422,7 +1422,7 @@ Func_14ac4: ; 14ac4
 	pop bc
 	ret
 
-Func_14ae4: ; 14ae4
+Func_14ae4:: ; 14ae4
 	ld l, BANK(Data_54308)
 	push hl
 	ld hl, $11
@@ -1441,7 +1441,7 @@ Func_14ae4: ; 14ae4
 	pop bc
 	ret
 
-Func_14b04: ; 14b04
+Func_14b04:: ; 14b04
 	ld l, BANK(Data_54327)
 	push hl
 	ld hl, $b
@@ -1460,7 +1460,7 @@ Func_14b04: ; 14b04
 	pop bc
 	ret
 
-Func_14b24: ; 14b24
+Func_14b24:: ; 14b24
 	ld l, BANK(Data_54346)
 	push hl
 	ld hl, $c
@@ -1603,7 +1603,7 @@ Func_14c05: ; 14c05 (5:4c05)
 	call FarCall
 	ret
 
-Func_14c55: ; 14c55
+Func_14c55:: ; 14c55
 	call Func_17470
 	ld l, BANK(Data_5443d)
 	push hl
@@ -1625,7 +1625,7 @@ Func_14c55: ; 14c55
 	callba_hli Func_69436
 	ret
 
-MartMenu: ; 14c89
+MartMenu:: ; 14c89
 	ld l, BANK(Data_5445c)
 	push hl
 	ld hl, $61e
@@ -1733,7 +1733,7 @@ Func_14d48: ; 14d48 (5:4d48)
 	ld a, l
 	ret
 
-NamingScreen: ; 14d4a (5:4d4a)
+NamingScreen:: ; 14d4a (5:4d4a)
 	or a
 	jp nz, Func_14d70
 	ld l, BANK(Data_5449a)
@@ -1797,7 +1797,7 @@ Func_14d93:: ; 14d93 (5:4d93)
 	pop hl
 	ret
 
-Func_14db8: ; 14db8
+Func_14db8:: ; 14db8
 	push bc
 	ld c, l
 	ld b, h
@@ -2010,7 +2010,7 @@ Func_14edb: ; 14edb (5:4edb)
 	pop bc
 	ret
 
-BagSubmenu: ; 14f0e
+BagSubmenu:: ; 14f0e
 	push bc
 	push hl
 	ld bc, $8000
@@ -2143,7 +2143,7 @@ Func_14ffa: ; 14ffa (5:4ffa)
 	pop bc
 	ret
 
-DrawDebugMenu: ; 15001 (5:5001)
+DrawDebugMenu:: ; 15001 (5:5001)
 	push bc
 	push hl
 	inc hl
@@ -2189,7 +2189,7 @@ DrawDebugMenu: ; 15001 (5:5001)
 	pop bc
 	ret
 
-Func_1503d: ; 1503d (5:503d)
+Func_1503d:: ; 1503d (5:503d)
 	push hl
 	add sp, -$4a
 	ld hl, sp+$4a
@@ -2420,7 +2420,7 @@ Data_151bc: ; 151bc
 Data_151bf: ; 151bf
 	dstr "%s"
 
-StartMenu_MoveCursor: ; 151c2
+StartMenu_MoveCursor:: ; 151c2
 	push bc
 	push bc
 	push bc
@@ -2546,7 +2546,7 @@ Func_15258: ; 15258 (5:5258)
 	pop bc
 	ret
 
-Func_15281: ; 15281
+Func_15281:: ; 15281
 	push hl
 	pop hl
 	push hl
@@ -2568,7 +2568,7 @@ Func_15281: ; 15281
 	pop bc
 	ret
 
-Func_15297: ; 15297
+Func_15297:: ; 15297
 	push hl
 	ld a, $3
 	ld [wEnableAttrMapTransfer], a
@@ -2593,7 +2593,7 @@ Func_15297: ; 15297
 	ld hl, -1
 	ret
 
-Func_152bd: ; 152bd
+Func_152bd:: ; 152bd
 	ld c, l
 	ld b, h
 	ld l, c
@@ -2615,13 +2615,13 @@ Func_152bd: ; 152bd
 	ld hl, -1
 	ret
 
-Func_152db: ; 152db
+Func_152db:: ; 152db
 	ld a, $ff
 	ld [wc2f6], a
 	ld hl, -1
 	ret
 
-Func_152e4: ; 152e4
+Func_152e4:: ; 152e4
 	ld l, BANK(Data_54210)
 	push hl
 	ld hl, $302
@@ -2640,7 +2640,7 @@ Func_152e4: ; 152e4
 	pop bc
 	ret
 
-Func_15304: ; 15304
+Func_15304:: ; 15304
 	call Func_1fbe
 	call Func_1f30
 	ld l, BANK(Data_5422f)
@@ -2663,7 +2663,7 @@ Func_15304: ; 15304
 	call Func_1f7b
 	ret
 
-Func_15330: ; 15330
+Func_15330:: ; 15330
 	call Func_1fbe
 	call Func_1f30
 	ld l, BANK(Data_5424e)
@@ -2686,7 +2686,7 @@ Func_15330: ; 15330
 	call Func_1f7b
 	ret
 
-Func_1535c: ; 1535c
+Func_1535c:: ; 1535c
 	call Func_1fbe
 	call Func_1f30
 	ld l, BANK(Data_5426d)

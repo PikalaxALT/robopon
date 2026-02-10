@@ -1,4 +1,4 @@
-Func_5c0b2:
+Func_5c0b2::
 	push af
 	push de
 	ld hl, -$354

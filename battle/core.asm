@@ -9,7 +9,7 @@ Data_23274: ; 23274
 Data_23284: ; 23284
 	dstr "(にけﾞられない)!"
 
-DoBattle: ; 2328f (8:728f)
+DoBattle:: ; 2328f (8:728f)
 	add sp, -$52
 	read_hl_from wCurRobotPointer
 	ld de, $16

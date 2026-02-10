@@ -1025,7 +1025,7 @@ ItemEffectPointers: ; 4f713
 	dba ItemEffect_NoUse ; 4e
 	dba ItemEffect_NoUse ; 4f
 
-DoItemEffect: ; 4f800 (13:7800)
+DoItemEffect:: ; 4f800 (13:7800)
 	push af
 	set_farcall_addrs_hli GetBanks
 	ld de, $19

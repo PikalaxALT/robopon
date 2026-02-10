@@ -172,7 +172,7 @@ Data_616d5: ; 616d5
 Data_616db: ; 616db
 	db $08, $58
 
-DamageOrHeal: ; 616dd
+DamageOrHeal:: ; 616dd
 ; bool a: which side
 ; s16 de: how much
 	push af

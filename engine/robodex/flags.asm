@@ -1,4 +1,4 @@
-Func_53a0d: ; 53a0d (14:7a0d)
+Func_53a0d:: ; 53a0d (14:7a0d)
 	push bc
 	push bc
 	cp NUM_ROBOTS + 1
@@ -151,7 +151,7 @@ Func_53b1b: ; 53b1b (14:7b1b)
 	pop bc
 	ret
 
-Func_53b1e: ; 53b1e (14:7b1e)
+Func_53b1e:: ; 53b1e (14:7b1e)
 	push bc
 	push de
 	push af

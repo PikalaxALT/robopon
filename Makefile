@@ -62,7 +62,7 @@ objs := \
 	text.o \
 	maps.o \
 	home.o \
-	main.o
+	$(SRC_OBJS)
 
 sun_objs := $(objs:.o=_sun.o)
 star_objs := $(objs:.o=_star.o)

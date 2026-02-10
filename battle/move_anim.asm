@@ -2201,7 +2201,7 @@ Func_f210: ; f210
 	pop hl
 	ret
 
-Func_f233: ; f233 (3:7233)
+Func_f233:: ; f233 (3:7233)
 	push bc
 	ld bc, wCGB_BGPalsBuffer
 	read_hl_from wCurRobotPointer
@@ -2969,7 +2969,7 @@ Pointers_f6d7: ; f6d7
 	dw Func_f662 ; 24
 	dw Func_f689 ; 25
 
-PlayBattleAnimScript: ; f723 (3:7723)
+PlayBattleAnimScript:: ; f723 (3:7723)
 	push hl
 .loop
 	pop hl

@@ -111,7 +111,7 @@ GiveRobot:: ; 31af1
 	pop bc
 	ret
 
-TryGiveRobot: ; 31bbe (c:5bbe)
+TryGiveRobot:: ; 31bbe (c:5bbe)
 	push af
 	add sp, -$58
 	push de

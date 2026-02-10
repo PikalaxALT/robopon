@@ -1,4 +1,4 @@
-Func_52df8: ; 52df8 (14:6df8)
+Func_52df8:: ; 52df8 (14:6df8)
 	push bc
 	push bc
 	push bc
@@ -821,7 +821,7 @@ Data_533ec:
 	db  7,  8, 12, 13
 	db  7,  8, 10, 11
 
-Func_533f8: ; 533f8 (14:73f8)
+Func_533f8:: ; 533f8 (14:73f8)
 	push af
 	ld c, $0
 Func_533fb: ; 533fb (14:73fb)
@@ -1426,7 +1426,7 @@ Func_537d6:
 	ld de, $3
 	jp Func_5366b
 
-ComputeAndPrintZodiacSign: ; 537dc (14:77dc)
+ComputeAndPrintZodiacSign:: ; 537dc (14:77dc)
 	; month * 100 + day
 	ld a, [wTimeSetMonthsTensDigit]
 	add a
