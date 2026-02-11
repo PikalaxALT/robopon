@@ -17828,7 +17828,7 @@ Func_e2cd2: ; e2cd2 (38:6cd2)
 	ld a, [hl]
 	cp $4
 	jp nc, Func_e2e0c
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	ld hl, $8e
 	add hl, sp
 	ld e, [hl]
@@ -17889,7 +17889,7 @@ Func_e2cd2: ; e2cd2 (38:6cd2)
 	ld e, a
 	dec e
 	ld hl, sp+$23
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$28
 	ld a, [hl]
 	ld hl, $8e

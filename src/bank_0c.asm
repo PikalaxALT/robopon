@@ -2170,7 +2170,7 @@ Func_31154: ; 31154 (c:5154)
 	push hl
 	push af
 	set_farcall_addrs_hli GetBanks
-	ld de, BANK(Moves)
+	ld de, BANK(Data_64093)
 	ld a, $3
 	call FarCall
 	ld e, a
@@ -2201,7 +2201,7 @@ Func_31154: ; 31154 (c:5154)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, Moves
+	ld de, Data_64093
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$1a
@@ -3002,7 +3002,7 @@ Func_3178a: ; 3178a (c:578a)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, Moves
+	ld de, Data_64093
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$30
@@ -4149,7 +4149,7 @@ Func_325d5: ; 325d5 (c:65d5)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$53
 	ld e, [hl]
 	push de
@@ -4220,7 +4220,7 @@ Func_325d5: ; 325d5 (c:65d5)
 	ld e, a
 	dec e
 	ld hl, sp+$4
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_4f8ec
 	pop af
 	push af
@@ -5894,7 +5894,7 @@ Func_333e0:: ; 333e0
 	ld e, a
 	dec e
 	ld hl, sp+$4
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	call GetHLAtSPPlus9
 	reg16swap de, hl
 	pop hl
@@ -7004,7 +7004,7 @@ Func_33bd0:: ; 33bd0 (c:7bd0)
 	ld e, a
 	dec e
 	ld hl, sp+$60
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld a, BANK(Text_66ea7)
 	ld [wFarCallDestBank], a
 	ld hl, sp+$65

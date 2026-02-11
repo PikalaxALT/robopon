@@ -414,7 +414,7 @@ Func_5e835: ; 5e835 (17:6835)
 	push hl
 	call GetHLAtSPPlus8
 	pop de
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	call GetHLAtSPPlus6
 	inc hl
 	inc hl
@@ -531,7 +531,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	push hl
 	call GetHLAtSPPlus10
 	pop de
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$49
 	ld [hl], $3
 	ld hl, sp+$48

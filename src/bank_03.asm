@@ -3126,7 +3126,7 @@ Func_f86a: ; f86a (3:786a)
 	ld e, a
 	dec e
 	ld hl, sp+$26
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, $e3
 	add hl, sp
@@ -3198,7 +3198,7 @@ Func_f91f: ; f91f (3:791f)
 	ld a, [bc]
 	ld e, a
 	ld hl, sp+$28
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$53
 	ld e, [hl]

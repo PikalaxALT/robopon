@@ -1,4 +1,8 @@
 GetName:: ; 15ad6 (5:5ad6)
+	; c = length
+	; h = kind
+	; l = index
+	; de = copy dest
 	push hl
 	push de
 	add sp, -$6c
@@ -19,24 +23,24 @@ GetName:: ; 15ad6 (5:5ad6)
 	ld a, d
 	sbc h
 	ld h, a
-	ld a, BANK(Moves)
+	ld a, BANK(Data_64093)  ; =BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, c
-	cp $7
+	cp GETNAME_WAREHOUSEBOT
 	jp z, .getWarehouseNickname
-	cp $6
+	cp GETNAME_SPECIES
 	jp z, .getRobotName
-	cp $3
+	cp GETNAME_PARTYBOT
 	jp z, .getPartyNickname
-	cp $4
+	cp GETNAME_ITEM
 	jp z, .getItemName
-	cp $2
+	cp GETNAME_2
 	jp z, .asm_15b61
-	cp $5
+	cp GETNAME_5
 	jp z, .asm_15b52
-	cp $1
+	cp GETNAME_1
 	jp z, .asm_15b3b
-	or a
+	or a  ; GETNAME_0
 	jp nz, .gotName
 	ld h, $0
 	ld e, l
@@ -46,24 +50,15 @@ GetName:: ; 15ad6 (5:5ad6)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, Moves
+	ld de, Data_64093
 	add hl, de
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
 .asm_15b3b: ; 15b3b (5:5b3b)
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, Data_64c90
+	mulhlby19
+	ld de, Moves
 	add hl, de
 	write_hl_to_sp_plus $6e
 	jp .gotName
@@ -110,14 +105,14 @@ GetName:: ; 15ad6 (5:5ad6)
 .getRobotName: ; 15b9f (5:5b9f)
 	ld e, l
 	ld hl, sp+$25
-	call GetRobotOrTrainerBaseStats
-	ld hl, sp+$32
+	call GetRobotBaseStats
+	ld hl, sp+$25+robotBaseStats_Name
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
 .getWarehouseNickname: ; 15bae (5:5bae)
 	push hl
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop hl
 	ld a, l
 	ld hl, sp+$2

@@ -1634,7 +1634,7 @@ Func_59905:
 	dec a
 	ld e, a
 	ld hl, sp+$4
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	call GetHLAtSPPlus9
 	reg16swap de, hl
 	pop bc
@@ -2278,7 +2278,7 @@ Func_59f71: ; 59f71 (16:5f71)
 	jp Func_59ee3
 
 Func_59f7b: ; 59f7b (16:5f7b)
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld hl, sp+$5c
@@ -2293,7 +2293,7 @@ Func_59f7b: ; 59f7b (16:5f7b)
 	ld e, a
 	dec e
 	ld hl, sp+$23
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	read_hl_from_sp_plus $25
 	ld bc, $0
 	inc h
@@ -3216,7 +3216,7 @@ Func_5aa2f: ; 5aa2f (16:6a2f)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld a, [wc79a]
 	cp $1
 	jp nz, Func_5aa7c
@@ -3340,7 +3340,7 @@ Func_5aaf7: ; 5aaf7 (16:6af7)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld a, [wc79a]
 	cp $1
 	jp nz, Func_5ab61
@@ -5158,7 +5158,7 @@ Func_5ba6d: ; 5ba6d (16:7a6d)
 	dec a
 	ld e, a
 	ld hl, sp+$1e
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	pop af
 	call GetSRAMBank
 	ld a, $3

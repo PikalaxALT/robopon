@@ -341,7 +341,7 @@ Func_60268: ; 60268 (18:4268)
 	ld e, a
 	dec e
 	ld hl, sp+$2b
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$79
 	ld e, [hl]
@@ -392,7 +392,7 @@ Func_60302: ; 60302 (18:4302)
 	ld e, a
 	dec e
 	ld hl, sp+$2b
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$79
 	ld e, [hl]
@@ -464,7 +464,7 @@ Func_60386: ; 60386 (18:4386)
 	ld e, a
 	dec e
 	ld hl, sp+$2b
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$79
 	ld e, [hl]
@@ -537,7 +537,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	ld e, a
 	dec e
 	ld hl, sp+$2b
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$79
 	ld e, [hl]
@@ -941,7 +941,7 @@ Func_6095c: ; 6095c (18:495c)
 	push hl
 	call GetHLAtSPPlus8
 	pop de
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	pop hl
 	push hl
 	inc hl
@@ -1080,7 +1080,7 @@ Func_60a23: ; 60a23 (18:4a23)
 	push hl
 	read_hl_from_sp_plus $359
 	pop de
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
@@ -1138,7 +1138,7 @@ Func_60af2: ; 60af2 (18:4af2)
 	push hl
 	read_hl_from_sp_plus $359
 	pop de
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
@@ -1428,7 +1428,7 @@ Func_60d07: ; 60d07 (18:4d07)
 	push hl
 	read_hl_from_sp_plus $359
 	pop de
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld bc, $23
 	ld hl, sp+$4
 	push hl
@@ -3447,7 +3447,7 @@ Func_6218f: ; 6218f (18:618f)
 	dec a
 	ld e, a
 	ld hl, sp+$8
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$3c
 	ld a, [hl]
 	ld hl, sp+$3a
@@ -3643,7 +3643,7 @@ Func_622e9: ; 622e9 (18:62e9)
 	dec a
 	ld e, a
 	ld hl, sp+$8
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_6086c
 	ld hl, sp+$37
 	ld e, [hl]

@@ -898,13 +898,13 @@ Func_5c8df: ; 5c8df (17:48df)
 	jp Func_5c991
 
 Func_5c8e2: ; 5c8e2 (17:48e2)
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, [bc]
 	ld l, a
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -2227,13 +2227,13 @@ Func_5d2ae: ; 5d2ae (17:52ae)
 	jp Func_5d348
 
 Func_5d2b1: ; 5d2b1 (17:52b1)
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	read_hl_from_sp_plus $40
 	ld l, [hl]
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -2329,7 +2329,7 @@ Func_5d35f: ; 5d35f (17:535f)
 	ld e, a
 	dec e
 	ld hl, sp+$25
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$2a
 	ld e, [hl]
 	push de
@@ -2674,7 +2674,7 @@ Func_5d4a6:
 	dec a
 	ld e, a
 	ld hl, sp+$14
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$16
 	ld a, [hl]
 	or a
@@ -4244,7 +4244,7 @@ Func_5e135: ; 5e135 (17:6135)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$4
 	ld a, [hl]
 	or a

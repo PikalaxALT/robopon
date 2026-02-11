@@ -80,7 +80,7 @@ Func_6810b:: ; 6810b (1a:410b)
 	ld e, c
 	dec e
 	ld hl, sp+$1c
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	pop af
 	ld e, a
 	ld hl, sp+$2
@@ -1167,7 +1167,7 @@ Func_6890a: ; 6890a (1a:490a)
 	ld [hl], $81
 	inc hl
 	write_hl_to_sp_plus $2a
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop hl
 	pop de
 	push hl
@@ -6887,7 +6887,7 @@ GetRobotInPartyd: ; 6b55d (1a:755d)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_6b5e2
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	ld hl, sp+$62
 	ld c, [hl]
 	ld b, $0
@@ -7070,7 +7070,7 @@ Func_6b6d0: ; 6b6d0 (1a:76d0)
 
 Func_6b6d4: ; 6b6d4 (1a:76d4)
 	push bc
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	ld hl, sp+$64
 	ld c, [hl]
 	ld b, $0

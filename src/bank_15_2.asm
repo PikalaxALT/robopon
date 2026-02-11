@@ -119,7 +119,7 @@ Func_56c8c: ; 56c8c (15:6c8c)
 
 Func_56c8f: ; 56c8f (15:6c8f)
 	push bc
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	call GetHLAtSPPlus6
 	reg16swap de, hl
@@ -131,7 +131,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	ld l, [hl]
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$6
@@ -265,7 +265,7 @@ Func_5712f:: ; 5712f (15:712f)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, Moves - 17
+	ld de, Data_64093 - 17
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -378,13 +378,13 @@ Func_5720f: ; 5720f (15:720f)
 	ldh a, [hSRAMBank]
 	push af
 	push bc
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, $3
 	call GetSRAMBank
 	pop hl
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -1327,7 +1327,7 @@ Func_578e9::
 	push bc
 	ld e, c
 	ld hl, sp+$6
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	read_hl_from_sp_plus $34
 	dec hl
 	ld e, l

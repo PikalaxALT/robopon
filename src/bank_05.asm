@@ -409,7 +409,7 @@ Func_157c5: ; 157c5 (5:57c5)
 	reg16swap de, hl
 	ld hl, sp+$4
 	ld l, [hl]
-	ld h, $0
+	ld h, GETNAME_0
 	dec hl
 	call GetName
 	jp Func_15887
@@ -469,7 +469,7 @@ Func_1580d: ; 1580d (5:580d)
 	reg16swap de, hl
 	ld hl, sp+$4
 	ld l, [hl]
-	ld h, $0
+	ld h, GETNAME_0
 	dec hl
 	call GetName
 	jp Func_1585a
@@ -624,7 +624,7 @@ Func_1598d: ; 1598d (5:598d)
 	ld e, a
 	dec e
 	ld hl, sp+$6
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$b
 	ld a, [hl]
 	push af

@@ -4034,7 +4034,7 @@ Func_7db0:: ; 7db0 (1:7db0)
 	add sp, $42
 	ret
 
-Func_7dfc:: ; 7dfc (1:7dfc)
+GetRobotFromWarehouse:: ; 7dfc (1:7dfc)
 	add sp, -$24
 	push de
 	push af
@@ -4114,7 +4114,7 @@ Func_7e70:: ; 7e70
 	push de
 	ld hl, sp+$2
 	reg16swap de, hl
-	call Func_7dfc
+	call GetRobotFromWarehouse
 	pop de
 	ld a, e
 	ld hl, sp+$0

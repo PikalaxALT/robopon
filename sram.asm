@@ -20,7 +20,7 @@ sSaveGameEnd:: ; ba22
 
 	short sCheckSum ; ba22
 
-	array sSRAMRobots, 1, 4, 47 ; ba24
+	array sSRAMRobots, 1, NUM_SRAM_ROBOTS, 47 ; ba24
 
 SECTION "Robopon Title", SRAM
 	array sSavedRoboponTitle, 7, 1, 1

@@ -2163,13 +2163,13 @@ Func_255c4: ; 255c4 (9:55c4)
 	jp Func_2564a
 
 Func_25604: ; 25604 (9:5604)
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, [bc]
 	ld l, a
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	push hl
 	read_hl_from_sp_plus $1c

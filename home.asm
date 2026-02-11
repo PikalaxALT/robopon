@@ -1510,7 +1510,7 @@ PopBGMapRegion:: ; 2323
 	pop bc
 	ret
 
-GetRobotOrTrainerBaseStats:: ; 236f
+GetRobotBaseStats:: ; 236f
 	; e: Poncots index
 	; hl: Destination pointer
 	push hl
@@ -1519,10 +1519,10 @@ GetRobotOrTrainerBaseStats:: ; 236f
 	ld sp, hl
 	ld a, e
 	cp NUM_ROBOTS
-	jp c, .PoncotsOrTrainer
+	jp c, .inROM
 	ld a, e
-	cp NUM_ROBOTS + 4
-	jp nc, .PoncotsOrTrainer
+	cp SRAM_ROBOT_MAX
+	jp nc, .inROM
 	push de
 	ldh a, [hSRAMBank]
 	push af
@@ -1533,17 +1533,17 @@ GetRobotOrTrainerBaseStats:: ; 236f
 	push af
 	ld l, e
 	ld h, $0
-	ld de, 47
+	ld de, robotBaseStats_SIZEOF
 	call MultiplyHLbyDE
-	ld de, sSRAMRobots - 47 * NUM_ROBOTS
+	ld de, sSRAMRobots - robotBaseStats_SIZEOF * NUM_ROBOTS
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
-	ld bc, 47
+	ld bc, robotBaseStats_SIZEOF
 	call CopyFromDEtoHL
 	pop af
 	call GetSRAMBank
-	ld bc, 47
+	ld bc, robotBaseStats_SIZEOF
 	ld hl, sp+$0
 	push hl
 	read_hl_from_sp_plus $f2
@@ -1551,7 +1551,9 @@ GetRobotOrTrainerBaseStats:: ; 236f
 	call CopyFromDEtoHL
 	jp .Done
 
-.PoncotsOrTrainer
+.inROM
+	; Potential bug: If given an index above 174
+	; will read PoncotsBaseStats out-of-bounds
 	push de
 	ldh a, [hROMBank]
 	push af
@@ -1580,14 +1582,14 @@ GetRobotOrTrainerBaseStats:: ; 236f
 	read_hl_from_sp_plus $f3
 	add hl, bc
 	pop de
-	ld bc, 5 * 47
+	ld bc, 5 * robotBaseStats_SIZEOF
 	call Decompress
 	pop de
 	ld l, e
 	ld h, $0
 	ld de, $5
 	call DivideHLByDESigned
-	ld hl, 47
+	ld hl, robotBaseStats_SIZEOF
 	call MultiplyHLbyDE
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -1595,7 +1597,7 @@ GetRobotOrTrainerBaseStats:: ; 236f
 	push hl
 	read_hl_from_sp_plus $f4
 	pop de
-	ld bc, 47
+	ld bc, robotBaseStats_SIZEOF
 	call CopyFromDEtoHL
 	pop af
 	call BankSwitch
@@ -1648,13 +1650,7 @@ Func_241f:: ; 241f
 	ld de, $8
 	call DivideHLByDESigned
 	reg16swap de, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhlby24
 	reg16swap de, hl
 	ld hl, sp+$2
 	add hl, de
@@ -1671,12 +1667,12 @@ Func_241f:: ; 241f
 	ret
 
 GetMove:: ; 248f
-; Loads 17 bytes from Moves[e] to sp+$0
+; Loads 17 bytes from Data_64093[e] to sp+$0
 	push hl
 	push de
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(Moves)
+	ld a, BANK(Data_64093)
 	call BankSwitch
 	pop af
 	pop de
@@ -1690,7 +1686,7 @@ GetMove:: ; 248f
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, Moves
+	ld de, Data_64093
 	add hl, de
 	push hl
 	call GetHLAtSPPlus6

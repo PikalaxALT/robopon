@@ -338,7 +338,7 @@ Func_6c273: ; 6c273 (1b:4273)
 	dec a
 	ld e, a
 	ld hl, sp+$4
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	pop bc
 	ld hl, sp+$4
 	ld a, [hl]
@@ -554,7 +554,7 @@ Func_6c3fe: ; 6c3fe (1b:43fe)
 	dec a
 	ld e, a
 	ld hl, sp+$4
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	call GetHLAtSPPlus9
 	reg16swap de, hl
 	pop bc
@@ -6770,7 +6770,7 @@ Func_6f1eb:: ; 6f1eb (1b:71eb)
 	ld c, e
 	ld b, d
 	push bc
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop bc
 	pop af
 	push af
@@ -6809,7 +6809,7 @@ Func_6f244: ; 6f244 (1b:7244)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$38
 	ld e, [hl]
@@ -6937,7 +6937,7 @@ Func_6f32f: ; 6f32f (1b:732f)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$38
 	ld e, [hl]
@@ -7390,7 +7390,7 @@ Func_6f962:: ; 6f962 (1b:7962)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$36
 	ld e, [hl]
@@ -7461,7 +7461,7 @@ Func_6f962:: ; 6f962 (1b:7962)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$36
 	ld e, [hl]

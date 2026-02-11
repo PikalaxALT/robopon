@@ -17,7 +17,7 @@ Func_67195: ; 67195 (19:7195)
 	jp Func_67202
 
 Func_67199: ; 67199 (19:7199)
-	ld bc, Data_64c90
+	ld bc, Moves
 	ld hl, sp+$0
 	ld [hl], $0
 Func_671a0: ; 671a0 (19:71a0)
@@ -110,7 +110,7 @@ Func_67205:
 	ld a, [hl]
 	or a
 	jp z, Func_67350
-	ld bc, Data_64c90
+	ld bc, Moves
 	ld hl, sp+$0
 	ld [hl], $0
 Func_6722f: ; 6722f (19:722f)
@@ -803,7 +803,7 @@ Func_6777f: ; 6777f (19:777f)
 	ld l, [hl]
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	ld de, $12
 	add hl, de
@@ -981,7 +981,7 @@ Func_678e7: ; 678e7 (19:78e7)
 	ld l, [hl]
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	ld de, $12
 	add hl, de

@@ -3,7 +3,7 @@ INCLUDE "charmap.asm"
 SECTION "Bank 19", ROMX
 INCLUDE "charmap2.asm"
 Data_64000: INCLUDE "data/ram_chip_names.asm"
-Moves:: INCLUDE "battle/moves.asm" ; 64093
+Data_64093:: INCLUDE "data/unk_64093.asm" ; 64093
 
 Pointers_64390:: ; 64390
 	dw Data_643b0 - Pointers_64390
@@ -40,7 +40,7 @@ Data_64adf: INCBIN "data/unknown_64390/64adf.bin.rz"
 Data_64b6f: INCBIN "data/unknown_64390/64b6f.bin.rz"
 Data_64c02: INCBIN "data/unknown_64390/64c02.bin.rz"
 
-Data_64c90:: INCLUDE "data/unknown_64c90.asm" ; 64c90
+Moves:: INCLUDE "battle/moves.asm" ; 64c90
 
 ItemAttributes:: INCLUDE "items/item_attributes.asm"
 INCLUDE "data/base_stats.asm"

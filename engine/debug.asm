@@ -5778,7 +5778,7 @@ Func_bed16: ; bed16 (2f:6d16)
 	ld e, $0
 	ld hl, $356
 	add hl, sp
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld a, $1
 	call GetSRAMBank
 	ld bc, $2f

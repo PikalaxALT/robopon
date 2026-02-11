@@ -577,13 +577,13 @@ Func_20692: ; 20692 (8:4692)
 	jp Func_206d5
 
 Func_206ae: ; 206ae (8:46ae)
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, [hl]
 	ld l, a
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -3593,7 +3593,7 @@ Func_21d11: ; 21d11 (8:5d11)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	pop bc
 	ld hl, sp+$2
 	ld a, [hl]
@@ -3730,7 +3730,7 @@ Func_21de0: ; 21de0 (8:5de0)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	call GetHLAtSPPlus7
 	write_hl_to_sp_plus $33
 	pop bc
@@ -4582,7 +4582,7 @@ Func_22430: ; 22430 (8:6430)
 	ld e, a
 	ld hl, $f3
 	add hl, sp
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, $f8
 	add hl, sp
 	ld a, [hl]
@@ -4844,7 +4844,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld e, a
 	ld hl, $ed
 	add hl, sp
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, $d1
 	add hl, sp
@@ -5061,7 +5061,7 @@ Func_22701: ; 22701 (8:6701)
 	ld e, a
 	ld hl, $ed
 	add hl, sp
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, $d1
 	add hl, sp
