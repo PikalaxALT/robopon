@@ -56,8 +56,10 @@ charmap = load_charmap(repo_root / "charmap2.asm")
 parts_struct = struct.Struct("<")  # size=47
 json_data = {"parts": []}
 
-with (repo_root / "constants" / "robot_constants.asm").open() as robots_file:
-    robots = [m[1] for m in re.finditer(r"const (\w+)", robots_file.read())]
+with (repo_root / "constants" / "parts_constants.asm").open() as parts_constants_file:
+    parts_constants = [
+        m[1] for m in re.finditer(r"const (\w+)", parts_constants_file.read())
+    ]
 
 """
 struct BaseStats {
@@ -75,7 +77,7 @@ for i in range(0, 128, 8):
     for j, stats in enumerate(bin_data, i):
         json_data["parts"].append(
             {
-                "id": j,
+                "id": parts_constants[j],
                 "name": decode_string(stats[0], charmap),
                 "unknown_08": stats[1],
                 "unknown_09": decode_string(stats[2], charmap),
