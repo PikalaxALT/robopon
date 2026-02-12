@@ -1608,7 +1608,7 @@ GetRobotBaseStats:: ; 236f
 	ret
 
 Func_241f:: ; 241f
-; Load 24 bytes from unrz(Pointers_64390[(e-1)/8])[(e-1)%8] to sp+$0
+; Load 24 bytes from unrz(Parts[(e-1)/8])[(e-1)%8] to sp+$0
 	push hl
 	ld hl, -$c2
 	add hl, sp
@@ -1617,9 +1617,9 @@ Func_241f:: ; 241f
 	push de
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(Pointers_64390)
+	ld a, BANK(Parts)
 	call BankSwitch
-	ld hl, Pointers_64390
+	ld hl, Parts
 	write_hl_to_sp_plus $c6
 	pop af
 	pop de
@@ -1667,26 +1667,20 @@ Func_241f:: ; 241f
 	ret
 
 GetMove:: ; 248f
-; Loads 17 bytes from Data_64093[e] to sp+$0
+; Loads 17 bytes from Software[e] to sp+$0
 	push hl
 	push de
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(Data_64093)
+	ld a, BANK(Software)
 	call BankSwitch
 	pop af
 	pop de
 	push af
 	ld l, e
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_64093
+	mulhlby17
+	ld de, Software
 	add hl, de
 	push hl
 	call GetHLAtSPPlus6
@@ -1711,15 +1705,7 @@ GetItemAttributes::
 	push af
 	ld l, e
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby13
 	ld de, ItemAttributes
 	add hl, de
 	push hl

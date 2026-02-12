@@ -273,6 +273,28 @@ MACRO mulhlby3
 	add hl, de
 	ENDM
 
+MACRO mulhlby13
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ENDM
+
+MACRO mulhlby17
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ENDM
+
 MACRO mulhlby24
 	add hl, hl
 	add hl, hl

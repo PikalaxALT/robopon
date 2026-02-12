@@ -1,0 +1,2180 @@
+{
+    "parts": [
+        {
+            "id": 0,
+            "name": "ナックルアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rナックル",
+            "ram": 1,
+            "attack": 5,
+            "defense": 5,
+            "speed": 5,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 1,
+            "name": "ヘヴィナックル",
+            "unknown_08": 220,
+            "unknown_09": "Rナックル",
+            "ram": 2,
+            "attack": 10,
+            "defense": 10,
+            "speed": 10,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 2,
+            "name": "ハンマーアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rハンマー",
+            "ram": 3,
+            "attack": 15,
+            "defense": 15,
+            "speed": 15,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                2
+            ]
+        },
+        {
+            "id": 3,
+            "name": "ヘヴィハンマー",
+            "unknown_08": 220,
+            "unknown_09": "Rハンマー",
+            "ram": 4,
+            "attack": 20,
+            "defense": 20,
+            "speed": 20,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                2
+            ]
+        },
+        {
+            "id": 4,
+            "name": "サンボアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rパンチ",
+            "ram": 5,
+            "attack": 25,
+            "defense": 25,
+            "speed": 25,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 5,
+            "name": "ボクサーアーム",
+            "unknown_08": 0,
+            "unknown_09": "Rパンチ",
+            "ram": 11,
+            "attack": 55,
+            "defense": 55,
+            "speed": 55,
+            "unknown_13": [
+                168,
+                0,
+                58,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 6,
+            "name": "ムエタイアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rパンチ",
+            "ram": 6,
+            "attack": 30,
+            "defense": 30,
+            "speed": 30,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 7,
+            "name": "ウルフハング",
+            "unknown_08": 220,
+            "unknown_09": "Rウルフ",
+            "ram": 7,
+            "attack": 35,
+            "defense": 35,
+            "speed": 35,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                3
+            ]
+        },
+        {
+            "id": 8,
+            "name": "タイガーアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rタイガー",
+            "ram": 8,
+            "attack": 40,
+            "defense": 40,
+            "speed": 40,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                3
+            ]
+        },
+        {
+            "id": 9,
+            "name": "ぶとうハンド",
+            "unknown_08": 0,
+            "unknown_09": "Rパンチ",
+            "ram": 12,
+            "attack": 60,
+            "defense": 60,
+            "speed": 60,
+            "unknown_13": [
+                167,
+                0,
+                68,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 10,
+            "name": "ぼうそうアーム",
+            "unknown_08": 0,
+            "unknown_09": "Rパンチ",
+            "ram": 12,
+            "attack": 70,
+            "defense": 70,
+            "speed": 70,
+            "unknown_13": [
+                9,
+                0,
+                80,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 11,
+            "name": "ダガーアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rぎり",
+            "ram": 1,
+            "attack": 0,
+            "defense": 15,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 12,
+            "name": "ソードアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rぎり",
+            "ram": 2,
+            "attack": 0,
+            "defense": 30,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 13,
+            "name": "サムライソード",
+            "unknown_08": 220,
+            "unknown_09": "Rぎり",
+            "ram": 3,
+            "attack": 0,
+            "defense": 45,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 14,
+            "name": "ムラマサアーム",
+            "unknown_08": 17,
+            "unknown_09": "Rぎり",
+            "ram": 12,
+            "attack": 25,
+            "defense": 150,
+            "speed": 30,
+            "unknown_13": [
+                9,
+                0,
+                68,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 15,
+            "name": "トマホーク",
+            "unknown_08": 220,
+            "unknown_09": "Rなげ",
+            "ram": 4,
+            "attack": 0,
+            "defense": 60,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                5
+            ]
+        },
+        {
+            "id": 16,
+            "name": "ライントハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rなげ",
+            "ram": 3,
+            "attack": 0,
+            "defense": 75,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                5
+            ]
+        },
+        {
+            "id": 17,
+            "name": "ピックアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rづき",
+            "ram": 6,
+            "attack": 0,
+            "defense": 90,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                6
+            ]
+        },
+        {
+            "id": 18,
+            "name": "レイピアアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rづき",
+            "ram": 7,
+            "attack": 0,
+            "defense": 105,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                6
+            ]
+        },
+        {
+            "id": 19,
+            "name": "スピアアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rづき",
+            "ram": 8,
+            "attack": 0,
+            "defense": 120,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                6
+            ]
+        },
+        {
+            "id": 20,
+            "name": "グレイブアーム",
+            "unknown_08": 17,
+            "unknown_09": "Rはらい",
+            "ram": 10,
+            "attack": 0,
+            "defense": 150,
+            "speed": 0,
+            "unknown_13": [
+                169,
+                0,
+                48,
+                0,
+                7
+            ]
+        },
+        {
+            "id": 21,
+            "name": "ヴァイドハンド",
+            "unknown_08": 17,
+            "unknown_09": "Rはらい",
+            "ram": 11,
+            "attack": 0,
+            "defense": 150,
+            "speed": 15,
+            "unknown_13": [
+                169,
+                0,
+                58,
+                0,
+                7
+            ]
+        },
+        {
+            "id": 22,
+            "name": "ハーブアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rシルバー",
+            "ram": 2,
+            "attack": 0,
+            "defense": 5,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 23,
+            "name": "タロットアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rシルバー",
+            "ram": 4,
+            "attack": 0,
+            "defense": 10,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 24,
+            "name": "ミスリルアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rシルバー",
+            "ram": 6,
+            "attack": 0,
+            "defense": 15,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 25,
+            "name": "エンゼルアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rファラ",
+            "ram": 8,
+            "attack": 0,
+            "defense": 20,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 26,
+            "name": "ゴッドハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rファラ",
+            "ram": 10,
+            "attack": 0,
+            "defense": 25,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                1
+            ]
+        },
+        {
+            "id": 27,
+            "name": "ミカドアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rバンプ",
+            "ram": 12,
+            "attack": 0,
+            "defense": 30,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                7
+            ]
+        },
+        {
+            "id": 28,
+            "name": "ルーンアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rバンプ",
+            "ram": 12,
+            "attack": 0,
+            "defense": 35,
+            "speed": 20,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                7
+            ]
+        },
+        {
+            "id": 29,
+            "name": "ウラヌスハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rクライク",
+            "ram": 12,
+            "attack": 0,
+            "defense": 50,
+            "speed": 30,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                8
+            ]
+        },
+        {
+            "id": 30,
+            "name": "じょうかハンド",
+            "unknown_08": 34,
+            "unknown_09": "Rセルフ",
+            "ram": 12,
+            "attack": 0,
+            "defense": 70,
+            "speed": 60,
+            "unknown_13": [
+                0,
+                0,
+                48,
+                0,
+                78
+            ]
+        },
+        {
+            "id": 31,
+            "name": "ジャッジハンド",
+            "unknown_08": 34,
+            "unknown_09": "Rセルフ",
+            "ram": 12,
+            "attack": 0,
+            "defense": 85,
+            "speed": 70,
+            "unknown_13": [
+                0,
+                0,
+                58,
+                0,
+                78
+            ]
+        },
+        {
+            "id": 32,
+            "name": "ガイアハンド",
+            "unknown_08": 34,
+            "unknown_09": "Rクライク",
+            "ram": 12,
+            "attack": 0,
+            "defense": 100,
+            "speed": 80,
+            "unknown_13": [
+                0,
+                0,
+                68,
+                0,
+                8
+            ]
+        },
+        {
+            "id": 33,
+            "name": "ガンハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rガン",
+            "ram": 1,
+            "attack": 10,
+            "defense": 0,
+            "speed": 5,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                9
+            ]
+        },
+        {
+            "id": 34,
+            "name": "ライフルアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rショット",
+            "ram": 2,
+            "attack": 20,
+            "defense": 0,
+            "speed": 10,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                87
+            ]
+        },
+        {
+            "id": 35,
+            "name": "ショットガン",
+            "unknown_08": 220,
+            "unknown_09": "Rショット",
+            "ram": 3,
+            "attack": 30,
+            "defense": 0,
+            "speed": 15,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                87
+            ]
+        },
+        {
+            "id": 36,
+            "name": "ガトリング",
+            "unknown_08": 220,
+            "unknown_09": "Rバルカン",
+            "ram": 4,
+            "attack": 40,
+            "defense": 0,
+            "speed": 20,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                10
+            ]
+        },
+        {
+            "id": 37,
+            "name": "バルカンアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rバルカン",
+            "ram": 5,
+            "attack": 50,
+            "defense": 0,
+            "speed": 25,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                10
+            ]
+        },
+        {
+            "id": 38,
+            "name": "グレネード",
+            "unknown_08": 220,
+            "unknown_09": "Rボム",
+            "ram": 6,
+            "attack": 60,
+            "defense": 0,
+            "speed": 30,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                11
+            ]
+        },
+        {
+            "id": 39,
+            "name": "バズーカアーム",
+            "unknown_08": 51,
+            "unknown_09": "Rボム",
+            "ram": 10,
+            "attack": 100,
+            "defense": 0,
+            "speed": 50,
+            "unknown_13": [
+                167,
+                0,
+                48,
+                0,
+                11
+            ]
+        },
+        {
+            "id": 40,
+            "name": "レーザーアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rレーザー",
+            "ram": 7,
+            "attack": 70,
+            "defense": 0,
+            "speed": 35,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                13
+            ]
+        },
+        {
+            "id": 41,
+            "name": "メガレーザー",
+            "unknown_08": 51,
+            "unknown_09": "Rレーザー",
+            "ram": 11,
+            "attack": 110,
+            "defense": 0,
+            "speed": 55,
+            "unknown_13": [
+                167,
+                0,
+                58,
+                0,
+                13
+            ]
+        },
+        {
+            "id": 42,
+            "name": "ビームアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rビーム",
+            "ram": 8,
+            "attack": 80,
+            "defense": 0,
+            "speed": 40,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                14
+            ]
+        },
+        {
+            "id": 43,
+            "name": "ハイパービーム",
+            "unknown_08": 51,
+            "unknown_09": "Rビーム",
+            "ram": 12,
+            "attack": 140,
+            "defense": 0,
+            "speed": 60,
+            "unknown_13": [
+                169,
+                0,
+                68,
+                0,
+                14
+            ]
+        },
+        {
+            "id": 44,
+            "name": "ナイフアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rぎり",
+            "ram": 1,
+            "attack": 0,
+            "defense": 0,
+            "speed": 15,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 45,
+            "name": "カギヅメ",
+            "unknown_08": 220,
+            "unknown_09": "Rひっかき",
+            "ram": 2,
+            "attack": 0,
+            "defense": 0,
+            "speed": 30,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                3
+            ]
+        },
+        {
+            "id": 46,
+            "name": "りゅうのつめ",
+            "unknown_08": 220,
+            "unknown_09": "Rひっかき",
+            "ram": 3,
+            "attack": 0,
+            "defense": 0,
+            "speed": 45,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                3
+            ]
+        },
+        {
+            "id": 47,
+            "name": "なげなわアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rしばり",
+            "ram": 4,
+            "attack": 0,
+            "defense": 0,
+            "speed": 60,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                15
+            ]
+        },
+        {
+            "id": 48,
+            "name": "スリハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rぬすみ",
+            "ram": 5,
+            "attack": 0,
+            "defense": 0,
+            "speed": 75,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                71
+            ]
+        },
+        {
+            "id": 49,
+            "name": "ぶんどりアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rぬすみ",
+            "ram": 6,
+            "attack": 0,
+            "defense": 0,
+            "speed": 90,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                71
+            ]
+        },
+        {
+            "id": 50,
+            "name": "イカサマアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rだまし",
+            "ram": 7,
+            "attack": 0,
+            "defense": 0,
+            "speed": 105,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                88
+            ]
+        },
+        {
+            "id": 51,
+            "name": "たんさアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rたんさ",
+            "ram": 8,
+            "attack": 0,
+            "defense": 0,
+            "speed": 120,
+            "unknown_13": [
+                164,
+                7,
+                30,
+                0,
+                42
+            ]
+        },
+        {
+            "id": 52,
+            "name": "ふきや",
+            "unknown_08": 220,
+            "unknown_09": "Rアロー",
+            "ram": 9,
+            "attack": 0,
+            "defense": 0,
+            "speed": 135,
+            "unknown_13": [
+                151,
+                2,
+                38,
+                0,
+                6
+            ]
+        },
+        {
+            "id": 53,
+            "name": "だいごうきゅう",
+            "unknown_08": 68,
+            "unknown_09": "Rアロー",
+            "ram": 10,
+            "attack": 0,
+            "defense": 0,
+            "speed": 150,
+            "unknown_13": [
+                168,
+                0,
+                48,
+                0,
+                6
+            ]
+        },
+        {
+            "id": 54,
+            "name": "クロスボウ",
+            "unknown_08": 68,
+            "unknown_09": "Rアロー",
+            "ram": 11,
+            "attack": 0,
+            "defense": 15,
+            "speed": 150,
+            "unknown_13": [
+                168,
+                0,
+                58,
+                0,
+                6
+            ]
+        },
+        {
+            "id": 55,
+            "name": "タイレルアーム",
+            "unknown_08": 68,
+            "unknown_09": "Rクラブ",
+            "ram": 12,
+            "attack": 0,
+            "defense": 30,
+            "speed": 150,
+            "unknown_13": [
+                168,
+                0,
+                68,
+                0,
+                2
+            ]
+        },
+        {
+            "id": 56,
+            "name": "クラブアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rクラブ",
+            "ram": 1,
+            "attack": 5,
+            "defense": 10,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                2
+            ]
+        },
+        {
+            "id": 57,
+            "name": "メイスアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rメイス",
+            "ram": 2,
+            "attack": 10,
+            "defense": 20,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                2
+            ]
+        },
+        {
+            "id": 58,
+            "name": "フレイルアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rメイス",
+            "ram": 3,
+            "attack": 15,
+            "defense": 30,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                2
+            ]
+        },
+        {
+            "id": 59,
+            "name": "レッスルアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rなげ",
+            "ram": 4,
+            "attack": 20,
+            "defense": 40,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                72
+            ]
+        },
+        {
+            "id": 60,
+            "name": "バスターアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rなげ",
+            "ram": 5,
+            "attack": 25,
+            "defense": 50,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                72
+            ]
+        },
+        {
+            "id": 61,
+            "name": "パワーアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rがため",
+            "ram": 6,
+            "attack": 30,
+            "defense": 60,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                15
+            ]
+        },
+        {
+            "id": 62,
+            "name": "ブレイドアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rがため",
+            "ram": 7,
+            "attack": 35,
+            "defense": 70,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                15
+            ]
+        },
+        {
+            "id": 63,
+            "name": "ケイブアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rおとし",
+            "ram": 8,
+            "attack": 40,
+            "defense": 80,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                72
+            ]
+        },
+        {
+            "id": 64,
+            "name": "カトックアーム",
+            "unknown_08": 85,
+            "unknown_09": "Rおとし",
+            "ram": 10,
+            "attack": 50,
+            "defense": 100,
+            "speed": 0,
+            "unknown_13": [
+                169,
+                0,
+                48,
+                0,
+                72
+            ]
+        },
+        {
+            "id": 65,
+            "name": "パイルバンカー",
+            "unknown_08": 85,
+            "unknown_09": "Rクロー",
+            "ram": 11,
+            "attack": 50,
+            "defense": 110,
+            "speed": 0,
+            "unknown_13": [
+                169,
+                0,
+                58,
+                0,
+                3
+            ]
+        },
+        {
+            "id": 66,
+            "name": "ハイパークロー",
+            "unknown_08": 85,
+            "unknown_09": "Rクロー",
+            "ram": 12,
+            "attack": 60,
+            "defense": 120,
+            "speed": 0,
+            "unknown_13": [
+                169,
+                0,
+                68,
+                0,
+                3
+            ]
+        },
+        {
+            "id": 67,
+            "name": "チャームハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rチャーム",
+            "ram": 1,
+            "attack": 7,
+            "defense": 8,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                17
+            ]
+        },
+        {
+            "id": 68,
+            "name": "ナーガハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rダーク",
+            "ram": 2,
+            "attack": 15,
+            "defense": 15,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                18
+            ]
+        },
+        {
+            "id": 69,
+            "name": "デスハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rダーク",
+            "ram": 3,
+            "attack": 22,
+            "defense": 23,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                18
+            ]
+        },
+        {
+            "id": 70,
+            "name": "スキュラハンド",
+            "unknown_08": 220,
+            "unknown_09": "デビルR",
+            "ram": 4,
+            "attack": 30,
+            "defense": 30,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                123
+            ]
+        },
+        {
+            "id": 71,
+            "name": "グールハンド",
+            "unknown_08": 220,
+            "unknown_09": "デビルR",
+            "ram": 5,
+            "attack": 37,
+            "defense": 38,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                123
+            ]
+        },
+        {
+            "id": 72,
+            "name": "ブラッドハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rブラッド",
+            "ram": 6,
+            "attack": 45,
+            "defense": 45,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                6
+            ]
+        },
+        {
+            "id": 73,
+            "name": "アシュラハンド",
+            "unknown_08": 220,
+            "unknown_09": "アシュラR",
+            "ram": 7,
+            "attack": 52,
+            "defense": 53,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                8
+            ]
+        },
+        {
+            "id": 74,
+            "name": "ヤシャハンド",
+            "unknown_08": 220,
+            "unknown_09": "ヤシャR",
+            "ram": 8,
+            "attack": 60,
+            "defense": 60,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                8
+            ]
+        },
+        {
+            "id": 75,
+            "name": "ジークハンド",
+            "unknown_08": 102,
+            "unknown_09": "ジークR",
+            "ram": 10,
+            "attack": 75,
+            "defense": 75,
+            "speed": 0,
+            "unknown_13": [
+                9,
+                0,
+                38,
+                0,
+                77
+            ]
+        },
+        {
+            "id": 76,
+            "name": "ワイズアーム",
+            "unknown_08": 102,
+            "unknown_09": "ワイズR",
+            "ram": 11,
+            "attack": 82,
+            "defense": 83,
+            "speed": 0,
+            "unknown_13": [
+                9,
+                0,
+                48,
+                0,
+                78
+            ]
+        },
+        {
+            "id": 77,
+            "name": "スレッジハンド",
+            "unknown_08": 102,
+            "unknown_09": "Rブラッド",
+            "ram": 12,
+            "attack": 100,
+            "defense": 100,
+            "speed": 0,
+            "unknown_13": [
+                9,
+                0,
+                58,
+                0,
+                6
+            ]
+        },
+        {
+            "id": 78,
+            "name": "ブレンアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rボルト",
+            "ram": 2,
+            "attack": 5,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                79
+            ]
+        },
+        {
+            "id": 79,
+            "name": "ケミカルハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rボルト",
+            "ram": 4,
+            "attack": 10,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                79
+            ]
+        },
+        {
+            "id": 80,
+            "name": "マジックアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rボルト",
+            "ram": 6,
+            "attack": 15,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                79
+            ]
+        },
+        {
+            "id": 81,
+            "name": "ライトニング",
+            "unknown_08": 220,
+            "unknown_09": "Rボルト",
+            "ram": 8,
+            "attack": 20,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                79
+            ]
+        },
+        {
+            "id": 82,
+            "name": "ウィンアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rウィン",
+            "ram": 10,
+            "attack": 25,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                76
+            ]
+        },
+        {
+            "id": 83,
+            "name": "シェルハンド",
+            "unknown_08": 220,
+            "unknown_09": "Rウィン",
+            "ram": 12,
+            "attack": 30,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                76
+            ]
+        },
+        {
+            "id": 84,
+            "name": "ロッポウアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rリンク",
+            "ram": 12,
+            "attack": 55,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                76
+            ]
+        },
+        {
+            "id": 85,
+            "name": "レジストアーム",
+            "unknown_08": 220,
+            "unknown_09": "Rリンク",
+            "ram": 12,
+            "attack": 80,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                76
+            ]
+        },
+        {
+            "id": 86,
+            "name": "サーブハンド",
+            "unknown_08": 119,
+            "unknown_09": "サモンR",
+            "ram": 12,
+            "attack": 130,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                168,
+                0,
+                38,
+                0,
+                80
+            ]
+        },
+        {
+            "id": 87,
+            "name": "ラートルハンド",
+            "unknown_08": 119,
+            "unknown_09": "サモンR",
+            "ram": 12,
+            "attack": 150,
+            "defense": 0,
+            "speed": 5,
+            "unknown_13": [
+                168,
+                0,
+                47,
+                0,
+                80
+            ]
+        },
+        {
+            "id": 88,
+            "name": "エリコルアーム",
+            "unknown_08": 119,
+            "unknown_09": "サモンR",
+            "ram": 12,
+            "attack": 150,
+            "defense": 0,
+            "speed": 30,
+            "unknown_13": [
+                168,
+                0,
+                58,
+                0,
+                80
+            ]
+        },
+        {
+            "id": 89,
+            "name": "プロペラ",
+            "unknown_08": 238,
+            "unknown_09": "Rブレード",
+            "ram": 1,
+            "attack": 15,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 90,
+            "name": "ウイング",
+            "unknown_08": 238,
+            "unknown_09": "Rブレード",
+            "ram": 2,
+            "attack": 30,
+            "defense": 0,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 91,
+            "name": "ジェット",
+            "unknown_08": 238,
+            "unknown_09": "Rジェット",
+            "ram": 3,
+            "attack": 40,
+            "defense": 0,
+            "speed": 5,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 92,
+            "name": "ターボジェット",
+            "unknown_08": 238,
+            "unknown_09": "Rジェット",
+            "ram": 3,
+            "attack": 60,
+            "defense": 0,
+            "speed": 10,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 93,
+            "name": "グライダー",
+            "unknown_08": 238,
+            "unknown_09": "Rアタック",
+            "ram": 3,
+            "attack": 75,
+            "defense": 0,
+            "speed": 20,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 94,
+            "name": "ブースター",
+            "unknown_08": 238,
+            "unknown_09": "Rアタック",
+            "ram": 3,
+            "attack": 90,
+            "defense": 0,
+            "speed": 30,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 95,
+            "name": "カミカゼ",
+            "unknown_08": 136,
+            "unknown_09": "Rアタック",
+            "ram": 3,
+            "attack": 150,
+            "defense": 0,
+            "speed": 70,
+            "unknown_13": [
+                168,
+                0,
+                38,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 96,
+            "name": "きじゅう",
+            "unknown_08": 238,
+            "unknown_09": "Rバルカン",
+            "ram": 4,
+            "attack": 105,
+            "defense": 0,
+            "speed": 40,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                10
+            ]
+        },
+        {
+            "id": 97,
+            "name": "ソニック",
+            "unknown_08": 136,
+            "unknown_09": "Rウェーブ",
+            "ram": 4,
+            "attack": 150,
+            "defense": 0,
+            "speed": 85,
+            "unknown_13": [
+                169,
+                0,
+                48,
+                0,
+                15
+            ]
+        },
+        {
+            "id": 98,
+            "name": "ばくだん",
+            "unknown_08": 238,
+            "unknown_09": "Rボム",
+            "ram": 3,
+            "attack": 120,
+            "defense": 0,
+            "speed": 50,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                11
+            ]
+        },
+        {
+            "id": 99,
+            "name": "アトミック",
+            "unknown_08": 136,
+            "unknown_09": "Rボム",
+            "ram": 6,
+            "attack": 150,
+            "defense": 0,
+            "speed": 90,
+            "unknown_13": [
+                0,
+                0,
+                58,
+                0,
+                11
+            ]
+        },
+        {
+            "id": 100,
+            "name": "スクリュー",
+            "unknown_08": 238,
+            "unknown_09": "Rブレード",
+            "ram": 1,
+            "attack": 0,
+            "defense": 10,
+            "speed": 5,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                4
+            ]
+        },
+        {
+            "id": 101,
+            "name": "ホバー",
+            "unknown_08": 238,
+            "unknown_09": "Rアタック",
+            "ram": 2,
+            "attack": 0,
+            "defense": 20,
+            "speed": 10,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 102,
+            "name": "ソナー",
+            "unknown_08": 238,
+            "unknown_09": "Rウェーブ",
+            "ram": 3,
+            "attack": 0,
+            "defense": 30,
+            "speed": 15,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                15
+            ]
+        },
+        {
+            "id": 103,
+            "name": "ウェーブ",
+            "unknown_08": 238,
+            "unknown_09": "Rウェーブ",
+            "ram": 4,
+            "attack": 0,
+            "defense": 40,
+            "speed": 20,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                15
+            ]
+        },
+        {
+            "id": 104,
+            "name": "20ミリほう",
+            "unknown_08": 238,
+            "unknown_09": "Rキャノン",
+            "ram": 5,
+            "attack": 0,
+            "defense": 50,
+            "speed": 25,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                14
+            ]
+        },
+        {
+            "id": 105,
+            "name": "36ミリほう",
+            "unknown_08": 238,
+            "unknown_09": "Rキャノン",
+            "ram": 6,
+            "attack": 0,
+            "defense": 60,
+            "speed": 30,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                14
+            ]
+        },
+        {
+            "id": 106,
+            "name": "46ミリほう",
+            "unknown_08": 153,
+            "unknown_09": "Rキャノン",
+            "ram": 10,
+            "attack": 0,
+            "defense": 100,
+            "speed": 50,
+            "unknown_13": [
+                0,
+                0,
+                38,
+                0,
+                14
+            ]
+        },
+        {
+            "id": 107,
+            "name": "ヘッジボム",
+            "unknown_08": 153,
+            "unknown_09": "Rボム",
+            "ram": 11,
+            "attack": 0,
+            "defense": 110,
+            "speed": 55,
+            "unknown_13": [
+                0,
+                0,
+                48,
+                0,
+                11
+            ]
+        },
+        {
+            "id": 108,
+            "name": "バトルガンマー",
+            "unknown_08": 153,
+            "unknown_09": "ガンマーR",
+            "ram": 12,
+            "attack": 0,
+            "defense": 120,
+            "speed": 60,
+            "unknown_13": [
+                0,
+                0,
+                58,
+                0,
+                15
+            ]
+        },
+        {
+            "id": 109,
+            "name": "ぎょらい",
+            "unknown_08": 238,
+            "unknown_09": "Rぎょらい",
+            "ram": 7,
+            "attack": 0,
+            "defense": 70,
+            "speed": 35,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                19
+            ]
+        },
+        {
+            "id": 110,
+            "name": "きらい",
+            "unknown_08": 238,
+            "unknown_09": "Rボム",
+            "ram": 8,
+            "attack": 0,
+            "defense": 80,
+            "speed": 40,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                11
+            ]
+        },
+        {
+            "id": 111,
+            "name": "ローラー",
+            "unknown_08": 238,
+            "unknown_09": "Rロール",
+            "ram": 1,
+            "attack": 5,
+            "defense": 5,
+            "speed": 5,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 112,
+            "name": "ビッグローラー",
+            "unknown_08": 238,
+            "unknown_09": "Rロール",
+            "ram": 1,
+            "attack": 35,
+            "defense": 35,
+            "speed": 20,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 113,
+            "name": "とげローラー",
+            "unknown_08": 238,
+            "unknown_09": "Rロール",
+            "ram": 1,
+            "attack": 65,
+            "defense": 65,
+            "speed": 35,
+            "unknown_13": [
+                0,
+                0,
+                24,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 114,
+            "name": "キャタピラ",
+            "unknown_08": 238,
+            "unknown_09": "Rクリス",
+            "ram": 1,
+            "attack": 15,
+            "defense": 15,
+            "speed": 10,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                10
+            ]
+        },
+        {
+            "id": 115,
+            "name": "ヘルキャタピラ",
+            "unknown_08": 238,
+            "unknown_09": "Rクリス",
+            "ram": 1,
+            "attack": 45,
+            "defense": 45,
+            "speed": 25,
+            "unknown_13": [
+                0,
+                0,
+                12,
+                0,
+                10
+            ]
+        },
+        {
+            "id": 116,
+            "name": "マシンガン",
+            "unknown_08": 238,
+            "unknown_09": "Rガン",
+            "ram": 1,
+            "attack": 75,
+            "defense": 75,
+            "speed": 40,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                9
+            ]
+        },
+        {
+            "id": 117,
+            "name": "ストロングほう",
+            "unknown_08": 170,
+            "unknown_09": "Rボム",
+            "ram": 1,
+            "attack": 105,
+            "defense": 105,
+            "speed": 55,
+            "unknown_13": [
+                169,
+                0,
+                48,
+                0,
+                11
+            ]
+        },
+        {
+            "id": 118,
+            "name": "キャノンほう",
+            "unknown_08": 170,
+            "unknown_09": "Rキャノン",
+            "ram": 1,
+            "attack": 115,
+            "defense": 115,
+            "speed": 60,
+            "unknown_13": [
+                169,
+                0,
+                58,
+                0,
+                14
+            ]
+        },
+        {
+            "id": 119,
+            "name": "バズーカー",
+            "unknown_08": 255,
+            "unknown_09": "Rキャノン",
+            "ram": 3,
+            "attack": 0,
+            "defense": 70,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                8,
+                0,
+                14
+            ]
+        },
+        {
+            "id": 120,
+            "name": "マイン",
+            "unknown_08": 255,
+            "unknown_09": "Rマイン",
+            "ram": 3,
+            "attack": 0,
+            "defense": 120,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                5
+            ]
+        },
+        {
+            "id": 121,
+            "name": "きかんほう",
+            "unknown_08": 255,
+            "unknown_09": "Rバルカン",
+            "ram": 3,
+            "attack": 0,
+            "defense": 150,
+            "speed": 20,
+            "unknown_13": [
+                0,
+                0,
+                30,
+                0,
+                10
+            ]
+        },
+        {
+            "id": 122,
+            "name": "ロケットほう",
+            "unknown_08": 255,
+            "unknown_09": "Rロケット",
+            "ram": 3,
+            "attack": 0,
+            "defense": 150,
+            "speed": 70,
+            "unknown_13": [
+                0,
+                0,
+                38,
+                0,
+                19
+            ]
+        },
+        {
+            "id": 123,
+            "name": "ミサイル",
+            "unknown_08": 255,
+            "unknown_09": "Rミサイル",
+            "ram": 3,
+            "attack": 0,
+            "defense": 150,
+            "speed": 120,
+            "unknown_13": [
+                0,
+                0,
+                58,
+                0,
+                20
+            ]
+        },
+        {
+            "id": 124,
+            "name": "スパイクタイヤ",
+            "unknown_08": 238,
+            "unknown_09": "Rクリス",
+            "ram": 1,
+            "attack": 25,
+            "defense": 25,
+            "speed": 15,
+            "unknown_13": [
+                0,
+                0,
+                6,
+                0,
+                10
+            ]
+        },
+        {
+            "id": 125,
+            "name": "ビッグフット",
+            "unknown_08": 238,
+            "unknown_09": "Rローラ",
+            "ram": 1,
+            "attack": 55,
+            "defense": 55,
+            "speed": 30,
+            "unknown_13": [
+                0,
+                0,
+                18,
+                0,
+                70
+            ]
+        },
+        {
+            "id": 126,
+            "name": "ばくちく",
+            "unknown_08": 255,
+            "unknown_09": "Rボム",
+            "ram": 2,
+            "attack": 0,
+            "defense": 5,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                2,
+                0,
+                11
+            ]
+        },
+        {
+            "id": 127,
+            "name": "てなげだん",
+            "unknown_08": 255,
+            "unknown_09": "Rボム",
+            "ram": 3,
+            "attack": 0,
+            "defense": 20,
+            "speed": 0,
+            "unknown_13": [
+                0,
+                0,
+                4,
+                0,
+                11
+            ]
+        }
+    ]
+}

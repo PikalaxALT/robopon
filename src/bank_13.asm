@@ -5958,6 +5958,7 @@ Func_4f9c4: ; 4f9c4 (13:79c4)
 	jp Func_4f99d
 
 Func_4f9ce: ; 4f9ce (13:79ce)
+	; get partybot name
 	set_farcall_addrs_hli GetName
 	ld c, $6
 	ld hl, sp+$55
@@ -5969,6 +5970,7 @@ Func_4f9ce: ; 4f9ce (13:79ce)
 	inc h
 	inc h
 	call FarCall
+	; get species name
 	set_farcall_addrs_hli GetName
 	pop af
 	pop de

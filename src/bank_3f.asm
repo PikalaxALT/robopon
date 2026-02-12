@@ -1,7 +1,8 @@
 INCLUDE "includes.asm"
-INCLUDE "charmap.asm"
-SECTION "Bank 3f", ROMX
 INCLUDE "charmap2.asm"
+
+SECTION "Bank 3f", ROMX
+
 Func_fc000:
 	ret
 

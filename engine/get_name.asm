@@ -23,7 +23,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	ld a, d
 	sbc h
 	ld h, a
-	ld a, BANK(Data_64093)  ; =BANK(Moves)
+	ld a, BANK(Software)  ; =BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, c
 	cp GETNAME_WAREHOUSEBOT
@@ -34,28 +34,22 @@ GetName:: ; 15ad6 (5:5ad6)
 	jp z, .getPartyNickname
 	cp GETNAME_ITEM
 	jp z, .getItemName
-	cp GETNAME_2
-	jp z, .asm_15b61
+	cp GETNAME_PART
+	jp z, .getPartName
 	cp GETNAME_5
-	jp z, .asm_15b52
-	cp GETNAME_1
-	jp z, .asm_15b3b
-	or a  ; GETNAME_0
+	jp z, .getPartClassName
+	cp GETNAME_MOVE
+	jp z, .getMoveName
+	or a  ; GETNAME_SOFTWARE
 	jp nz, .gotName
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_64093
+	mulhlby17
+	ld de, Software
 	add hl, de
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.asm_15b3b: ; 15b3b (5:5b3b)
+.getMoveName: ; 15b3b (5:5b3b)
 	ld h, $0
 	mulhlby19
 	ld de, Moves
@@ -63,7 +57,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.asm_15b52: ; 15b52 (5:5b52)
+.getPartClassName: ; 15b52 (5:5b52)
 	ld e, l
 	ld hl, sp+$54
 	call Func_241f
@@ -71,7 +65,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.asm_15b61: ; 15b61 (5:5b61)
+.getPartName: ; 15b61 (5:5b61)
 	ld e, l
 	ld hl, sp+$54
 	call Func_241f
@@ -81,15 +75,7 @@ GetName:: ; 15ad6 (5:5ad6)
 
 .getItemName: ; 15b70 (5:5b70)
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby13
 	ld de, ItemAttributes
 	add hl, de
 	write_hl_to_sp_plus $6e

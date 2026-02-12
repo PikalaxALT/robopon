@@ -1,7 +1,7 @@
     const_def
-    const GETNAME_0
-    const GETNAME_1
-    const GETNAME_2
+    const GETNAME_SOFTWARE
+    const GETNAME_MOVE
+    const GETNAME_PART
     const GETNAME_PARTYBOT
     const GETNAME_ITEM
     const GETNAME_5

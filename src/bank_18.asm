@@ -1214,13 +1214,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	push hl
 	call GetHLAtSPPlus8
 	ld de, $82
@@ -1730,13 +1724,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	push hl
 	read_hl_from_sp_plus $36
 	ld de, $82

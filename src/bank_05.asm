@@ -409,7 +409,7 @@ Func_157c5: ; 157c5 (5:57c5)
 	reg16swap de, hl
 	ld hl, sp+$4
 	ld l, [hl]
-	ld h, GETNAME_0
+	ld h, GETNAME_SOFTWARE
 	dec hl
 	call GetName
 	jp Func_15887
@@ -469,7 +469,7 @@ Func_1580d: ; 1580d (5:580d)
 	reg16swap de, hl
 	ld hl, sp+$4
 	ld l, [hl]
-	ld h, GETNAME_0
+	ld h, GETNAME_SOFTWARE
 	dec hl
 	call GetName
 	jp Func_1585a

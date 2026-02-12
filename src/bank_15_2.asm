@@ -258,14 +258,8 @@ Func_5712f:: ; 5712f (15:712f)
 	and $3f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_64093 - 17
+	mulhlby17
+	ld de, Software - 17
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4

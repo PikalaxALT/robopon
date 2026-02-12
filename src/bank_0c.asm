@@ -1750,15 +1750,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	ld c, a
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby13
 	ld de, ItemAttributes
 	add hl, de
 	reg16swap de, hl
@@ -1831,13 +1823,7 @@ Func_30edd: ; 30edd (c:4edd)
 	and $3f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	ld de, $4093
 	add hl, de
 	reg16swap de, hl
@@ -2076,15 +2062,7 @@ Func_3103d: ; 3103d
 	ld hl, sp+$3c
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby13
 	ld de, ItemAttributes
 	add hl, de
 	reg16swap de, hl
@@ -2170,7 +2148,7 @@ Func_31154: ; 31154 (c:5154)
 	push hl
 	push af
 	set_farcall_addrs_hli GetBanks
-	ld de, BANK(Data_64093)
+	ld de, BANK(Software)
 	ld a, $3
 	call FarCall
 	ld e, a
@@ -2194,14 +2172,8 @@ Func_31154: ; 31154 (c:5154)
 	and $3f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_64093
+	mulhlby17
+	ld de, Software
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$1a
@@ -2372,15 +2344,7 @@ Func_312c7: ; 312c7 (c:52c7)
 	call FarCall
 	pop hl
 	push af
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby13
 	ld de, ItemAttributes
 	add hl, de
 	reg16swap de, hl
@@ -2609,15 +2573,7 @@ GetItemAttributes2: ; 3149e
 	push hl
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby13
 	ld de, ItemAttributes
 	add hl, de
 	ld c, l
@@ -2995,14 +2951,8 @@ Func_3178a: ; 3178a (c:578a)
 	and $3f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Data_64093
+	mulhlby17
+	ld de, Software
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$30
@@ -4605,15 +4555,7 @@ Func_3297b: ; 3297b (c:697b)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby13
 	ld de, $57b8
 	add hl, de
 	reg16swap de, hl
@@ -5055,13 +4997,7 @@ Func_32c96: ; 32c96 (c:6c96)
 	and $3f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	ld de, $4093
 	add hl, de
 	reg16swap de, hl
@@ -7378,15 +7314,7 @@ Func_33f72: ; 33f72 (c:7f72)
 	ld a, [hl]
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhlby13
 	ld de, $57b8
 	add hl, de
 	reg16swap de, hl

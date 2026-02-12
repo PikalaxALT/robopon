@@ -1,44 +1,45 @@
 INCLUDE "includes.asm"
-INCLUDE "charmap.asm"
-SECTION "Bank 19", ROMX
 INCLUDE "charmap2.asm"
+
+SECTION "Bank 19", ROMX
+
 Data_64000: INCLUDE "data/ram_chip_names.asm"
-Data_64093:: INCLUDE "data/unk_64093.asm" ; 64093
+Software:: INCLUDE "data/unk_64093.asm" ; 64093
 
-Pointers_64390:: ; 64390
-	dw Data_643b0 - Pointers_64390
-	dw Data_6443a - Pointers_64390
-	dw Data_644c5 - Pointers_64390
-	dw Data_64552 - Pointers_64390
-	dw Data_645da - Pointers_64390
-	dw Data_6466e - Pointers_64390
-	dw Data_646ff - Pointers_64390
-	dw Data_64799 - Pointers_64390
-	dw Data_6481b - Pointers_64390
-	dw Data_648ae - Pointers_64390
-	dw Data_6493d - Pointers_64390
-	dw Data_649c1 - Pointers_64390
-	dw Data_64a4e - Pointers_64390
-	dw Data_64adf - Pointers_64390
-	dw Data_64b6f - Pointers_64390
-	dw Data_64c02 - Pointers_64390
+Parts:: ; 64390
+	dw Parts_00 - Parts
+	dw Parts_01 - Parts
+	dw Parts_02 - Parts
+	dw Parts_03 - Parts
+	dw Parts_04 - Parts
+	dw Parts_05 - Parts
+	dw Parts_06 - Parts
+	dw Parts_07 - Parts
+	dw Parts_08 - Parts
+	dw Parts_09 - Parts
+	dw Parts_10 - Parts
+	dw Parts_11 - Parts
+	dw Parts_12 - Parts
+	dw Parts_13 - Parts
+	dw Parts_14 - Parts
+	dw Parts_15 - Parts
 
-Data_643b0: INCBIN "data/unknown_64390/643b0.bin.rz"
-Data_6443a: INCBIN "data/unknown_64390/6443a.bin.rz"
-Data_644c5: INCBIN "data/unknown_64390/644c5.bin.rz"
-Data_64552: INCBIN "data/unknown_64390/64552.bin.rz"
-Data_645da: INCBIN "data/unknown_64390/645da.bin.rz"
-Data_6466e: INCBIN "data/unknown_64390/6466e.bin.rz"
-Data_646ff: INCBIN "data/unknown_64390/646ff.bin.rz"
-Data_64799: INCBIN "data/unknown_64390/64799.bin.rz"
-Data_6481b: INCBIN "data/unknown_64390/6481b.bin.rz"
-Data_648ae: INCBIN "data/unknown_64390/648ae.bin.rz"
-Data_6493d: INCBIN "data/unknown_64390/6493d.bin.rz"
-Data_649c1: INCBIN "data/unknown_64390/649c1.bin.rz"
-Data_64a4e: INCBIN "data/unknown_64390/64a4e.bin.rz"
-Data_64adf: INCBIN "data/unknown_64390/64adf.bin.rz"
-Data_64b6f: INCBIN "data/unknown_64390/64b6f.bin.rz"
-Data_64c02: INCBIN "data/unknown_64390/64c02.bin.rz"
+Parts_00: INCBIN "data/parts/parts_00.bin.rz"
+Parts_01: INCBIN "data/parts/parts_01.bin.rz"
+Parts_02: INCBIN "data/parts/parts_02.bin.rz"
+Parts_03: INCBIN "data/parts/parts_03.bin.rz"
+Parts_04: INCBIN "data/parts/parts_04.bin.rz"
+Parts_05: INCBIN "data/parts/parts_05.bin.rz"
+Parts_06: INCBIN "data/parts/parts_06.bin.rz"
+Parts_07: INCBIN "data/parts/parts_07.bin.rz"
+Parts_08: INCBIN "data/parts/parts_08.bin.rz"
+Parts_09: INCBIN "data/parts/parts_09.bin.rz"
+Parts_10: INCBIN "data/parts/parts_10.bin.rz"
+Parts_11: INCBIN "data/parts/parts_11.bin.rz"
+Parts_12: INCBIN "data/parts/parts_12.bin.rz"
+Parts_13: INCBIN "data/parts/parts_13.bin.rz"
+Parts_14: INCBIN "data/parts/parts_14.bin.rz"
+Parts_15: INCBIN "data/parts/parts_15.bin.rz"
 
 Moves:: INCLUDE "battle/moves.asm" ; 64c90
 

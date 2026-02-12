@@ -50,49 +50,40 @@ def decode_string(raw: bytes, charmap: dict[int, list[str]]) -> str:
 
 my_file = pathlib.Path(__file__)
 repo_root = my_file.parent.parent
-bin_dir = repo_root / "data" / "base_stats"
-json_src = bin_dir / "base_stats.json"
+bin_dir = repo_root / "data" / "parts"
+json_src = bin_dir / "parts.json"
 charmap = load_charmap(repo_root / "charmap2.asm")
-base_stats_struct = struct.Struct("<")  # size=47
-json_data = {"base_stats": []}
+parts_struct = struct.Struct("<")  # size=47
+json_data = {"parts": []}
 
 with (repo_root / "constants" / "robot_constants.asm").open() as robots_file:
     robots = [m[1] for m in re.finditer(r"const (\w+)", robots_file.read())]
 
 """
 struct BaseStats {
-    u8 filler_00[6];
-    u8 hp;
-    u8 ep;
-    u8 attack;
-    u8 defense;
-    u8 speed;
-    u8 filler_0B[2];
-    char name[6]; // 0x0D
-    u8 filler_13[28];
+    u8 unk_00[8];
+    unk_08;
+    unk_09[6];
+    u8 filler_0F[9];
 };
 """
-base_stats_struct = struct.Struct("<13B6s28B")
+parts_struct = struct.Struct("<8s1B6s9B")
 
-for i in range(0, 170, 5):
-    with (bin_dir / f"base_stats_{i // 5}.bin").open("rb") as binfile:
-        bin_data = list(base_stats_struct.iter_unpack(binfile.read()))
+for i in range(0, 128, 8):
+    with (bin_dir / f"parts_{i // 8:02d}.bin").open("rb") as binfile:
+        bin_data = list(parts_struct.iter_unpack(binfile.read()))
     for j, stats in enumerate(bin_data, i):
-        json_data["base_stats"].append(
+        json_data["parts"].append(
             {
-                "id": robots[j] if j < len(robots) else None,
-                "unknown_00": stats[:2],
-                "enhances_into": robots[stats[2] - 1] if stats[2] else None,
-                "unknown_03": stats[3:6],
-                "hp": stats[6],
-                "ep": stats[7],
-                "attack": stats[8],
-                "defense": stats[9],
-                "speed": stats[10],
-                "unknown_0B": stats[11],
-                "dex_number": stats[12],
-                "name": decode_string(stats[13], charmap),
-                "unknown_13": stats[14:],
+                "id": j,
+                "name": decode_string(stats[0], charmap),
+                "unknown_08": stats[1],
+                "unknown_09": decode_string(stats[2], charmap),
+                "ram": stats[3],
+                "attack": stats[4],
+                "defense": stats[5],
+                "speed": stats[6],
+                "unknown_13": stats[7:],
             }
         )
 

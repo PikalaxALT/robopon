@@ -296,13 +296,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -330,13 +324,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
