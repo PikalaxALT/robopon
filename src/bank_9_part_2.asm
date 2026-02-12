@@ -1014,7 +1014,7 @@ Func_24daf: ; 24daf (9:4daf)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$17
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $39
 	ld de, $2e
 	add hl, de
@@ -2049,7 +2049,7 @@ Func_254f4: ; 254f4 (9:54f4)
 	ld de, $12
 	add hl, de
 	pop de
-	call Func_241f
+	call GetPart
 	call Func_24036
 	ld e, $1
 	ld hl, sp+$1b
@@ -2098,7 +2098,7 @@ Func_25532: ; 25532 (9:5532)
 	ld de, $12
 	add hl, de
 	pop de
-	call Func_241f
+	call GetPart
 	call Func_24036
 	pop bc
 	read_hl_from_sp_plus $18
@@ -6009,7 +6009,7 @@ Func_27187: ; 27187 (9:7187)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$14
-	call Func_241f
+	call GetPart
 	pop bc
 	read_hl_from_sp_plus $27
 	ld a, l

@@ -1607,7 +1607,7 @@ GetRobotBaseStats:: ; 236f
 	ld sp, hl
 	ret
 
-Func_241f:: ; 241f
+GetPart:: ; 241f
 ; Load 24 bytes from unrz(Parts[(e-1)/8])[(e-1)%8] to sp+$0
 	push hl
 	ld hl, -$c2

@@ -3745,7 +3745,7 @@ Func_623d0:: ; 623d0
 	ld a, [hl]
 	ld e, a
 	ld hl, sp+$2
-	call Func_241f
+	call GetPart
 	ld hl, sp+$11
 	ld a, [hl]
 	add a

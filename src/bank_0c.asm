@@ -1897,7 +1897,7 @@ Func_30f5d: ; 30f5d (c:4f5d)
 	ld c, [hl]
 	ld e, c
 	ld hl, sp+$2
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $19
 	ld a, [wc38d]
 	cp $1
@@ -1930,7 +1930,7 @@ Func_30fae: ; 30fae (c:4fae)
 	ld c, [hl]
 	ld e, c
 	ld hl, sp+$2
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $19
 	add hl, hl
 	ld e, l
@@ -2229,7 +2229,7 @@ Func_311e9: ; 311e9 (c:51e9)
 	ld hl, sp+$3c
 	ld e, [hl]
 	ld hl, sp+$2
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $19
 	ld bc, $0
 	inc h
@@ -3050,7 +3050,7 @@ Func_3178a: ; 3178a (c:578a)
 Func_31869: ; 31869 (c:5869)
 	push hl
 	ld hl, sp+$16
-	call Func_241f
+	call GetPart
 	pop hl
 	ld a, l
 	call GetSRAMBank
@@ -5010,7 +5010,7 @@ Func_32ce3: ; 32ce3 (c:6ce3)
 	ld hl, sp+$35
 	ld e, [hl]
 	ld hl, sp+$2
-	call Func_241f
+	call GetPart
 Func_32ceb: ; 32ceb (c:6ceb)
 	pop af
 	call GetSRAMBank
@@ -6912,7 +6912,7 @@ Func_33bd0:: ; 33bd0 (c:7bd0)
 	push af
 	ld e, a
 	ld hl, sp+$4a
-	call Func_241f
+	call GetPart
 	set_farcall_addrs_hli Func_55f95
 	pop af
 	ld e, a

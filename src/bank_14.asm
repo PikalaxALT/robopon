@@ -4693,7 +4693,7 @@ Func_52591: ; 52591 (14:6591)
 	ld a, [hl]
 	ld e, a
 	ld hl, sp+$2f
-	call Func_241f
+	call GetPart
 	ld hl, sp+$3f
 	ld a, [hl]
 	push af

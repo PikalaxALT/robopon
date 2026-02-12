@@ -31,7 +31,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2a
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $44
 	mulhlby200
 	ld c, l

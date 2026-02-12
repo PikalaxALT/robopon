@@ -198,7 +198,7 @@ Func_5c40a: ; 5c40a (17:440a)
 	ld hl, sp+$6
 	add hl, de
 	pop de
-	call Func_241f
+	call GetPart
 	ld hl, sp+$36
 	ld a, [hl]
 	inc a
@@ -593,7 +593,7 @@ Func_5c6c3: ; 5c6c3 (17:46c3)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$0
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $15
 	ld a, l
 	and $80
@@ -640,7 +640,7 @@ Func_5c712: ; 5c712 (17:4712)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$0
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $15
 	ld a, l
 	and $80
@@ -799,7 +799,7 @@ Func_5c82f: ; 5c82f (17:482f)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$24
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $39
 	write_hl_to_sp_plus $4c
 	push hl
@@ -2151,7 +2151,7 @@ Func_5d221: ; 5d221 (17:5221)
 	add hl, bc
 	ld e, [hl]
 	ld hl, sp+$24
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $39
 	read_hl_from_sp_plus $3e
 	ld de, $5f

@@ -5141,7 +5141,7 @@ Func_5ba6d: ; 5ba6d (16:7a6d)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$4
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $73
 	inc hl
 	reg16swap de, hl

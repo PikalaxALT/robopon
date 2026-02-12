@@ -543,7 +543,7 @@ Func_2064c: ; 2064c (8:464c)
 	add hl, bc
 	ld e, [hl]
 	ld hl, sp+$26
-	call Func_241f
+	call GetPart
 	pop af
 	read_hl_from_sp_plus $3e
 	reg16swap de, hl
@@ -3994,7 +3994,7 @@ Func_22063: ; 22063 (8:6063)
 	add hl, sp
 	ld e, [hl]
 	ld hl, sp+$0
-	call Func_241f
+	call GetPart
 	ld hl, sp+$0
 	push hl
 	ld hl, $e2

@@ -84,7 +84,7 @@ Func_6810b:: ; 6810b (1a:410b)
 	pop af
 	ld e, a
 	ld hl, sp+$2
-	call Func_241f
+	call GetPart
 	ld hl, sp+$1f
 	ld l, [hl]
 	pop de

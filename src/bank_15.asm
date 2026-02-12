@@ -2750,7 +2750,7 @@ Func_5575d:: ; 5575d (15:575d)
 	ld e, [hl]
 	ld hl, $370
 	add hl, sp
-	call Func_241f
+	call GetPart
 	ld hl, $6
 	push hl
 	ld hl, $35e
@@ -4669,7 +4669,7 @@ Func_567d1: ; 567d1 (15:67d1)
 	push af
 	ld e, a
 	ld hl, sp+$2a
-	call Func_241f
+	call GetPart
 	pop af
 	ld e, a
 	ld hl, sp+$a
@@ -4926,7 +4926,7 @@ Func_569d9:: ; 569d9 (15:69d9)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld hl, sp+$5
-	call Func_241f
+	call GetPart
 	ld hl, sp+$15
 	ld a, [hl]
 	ld hl, sp+$3
@@ -5030,7 +5030,7 @@ Func_56abf:: ; 56abf (15:6abf)
 	read_hl_from_sp_plus $1c
 	ld e, l
 	ld hl, sp+$2
-	call Func_241f
+	call GetPart
 	pop af
 	call GetSRAMBank
 	ld hl, sp+$10

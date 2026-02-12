@@ -1718,12 +1718,12 @@ Func_6cd14: ; 6cd14 (1b:4d14)
 	add hl, sp
 	ld e, [hl]
 	ld hl, sp+$4c
-	call Func_241f
+	call GetPart
 	ld hl, $93
 	add hl, sp
 	ld e, [hl]
 	ld hl, sp+$64
-	call Func_241f
+	call GetPart
 	pop af
 	call GetSRAMBank
 	ld hl, sp+$5a

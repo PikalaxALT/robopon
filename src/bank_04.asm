@@ -1243,7 +1243,7 @@ Func_109e3: ; 109e3 (4:49e3)
 	push af
 	ld e, l
 	ld hl, sp+$19
-	call Func_241f
+	call GetPart
 	pop af
 	call GetSRAMBank
 	pop bc
@@ -6318,7 +6318,7 @@ Func_13130: ; 13130 (4:7130)
 	ld hl, sp+$6
 	add hl, de
 	pop de
-	call Func_241f
+	call GetPart
 	ld hl, sp+$46
 	ld l, [hl]
 	ld h, $0

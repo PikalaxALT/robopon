@@ -60,7 +60,7 @@ GetName:: ; 15ad6 (5:5ad6)
 .getPartClassName: ; 15b52 (5:5b52)
 	ld e, l
 	ld hl, sp+$54
-	call Func_241f
+	call GetPart
 	ld hl, sp+$5d
 	write_hl_to_sp_plus $6e
 	jp .gotName
@@ -68,7 +68,7 @@ GetName:: ; 15ad6 (5:5ad6)
 .getPartName: ; 15b61 (5:5b61)
 	ld e, l
 	ld hl, sp+$54
-	call Func_241f
+	call GetPart
 	ld hl, sp+$54
 	write_hl_to_sp_plus $6e
 	jp .gotName
