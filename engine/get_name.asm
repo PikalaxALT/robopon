@@ -36,7 +36,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	jp z, .getItemName
 	cp GETNAME_PART
 	jp z, .getPartName
-	cp GETNAME_5
+	cp GETNAME_PART_CLASS
 	jp z, .getPartClassName
 	cp GETNAME_MOVE
 	jp z, .getMoveName

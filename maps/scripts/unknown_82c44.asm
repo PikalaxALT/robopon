@@ -10,10 +10,10 @@ Data_82bfe: ; 82bfe
 Data_82c28: ; 82c28
 	db $15, $04, $00, $06, $01, $01, $01, $04, $00, $20, $c9, $6c, $00, $00, $10, $04, $00, $05, $01, $01, $01, $04, $00, $20, $91, $6c, $00, $00
 
-Func_82c44:
+Func_82c44::
 	call Func_82d22
 	ld hl, Func_82d22
-	call Func_80f11_20
+	scall Func_80f11
 	ld a, $3
 	ld [wc7de], a
 	loadwarps $3, Data_82bc1
@@ -29,7 +29,7 @@ Func_82c72: ; 82c72 (20:6c72)
 	loadpeople $2, Data_82c28
 Func_82c82: ; 82c82 (20:6c82)
 	playmusic SONG_SHOP
-	call FadeInMap_20
+	scall FadeInMap
 	landmarksign TreeBitstreamText_46c14
 	ret
 
@@ -62,7 +62,7 @@ Func_82caa: ; 82caa (20:6caa)
 	pop hl
 	ld a, l
 	ld e, $2
-	call Func_806a0_20
+	scall Func_806a0
 	playmusic SONG_SHOP
 Func_82cc7: ; 82cc7 (20:6cc7)
 	pop bc
@@ -109,7 +109,7 @@ Func_82cfd: ; 82cfd (20:6cfd)
 	pop hl
 	ld a, l
 	ld e, $1
-	call Func_806a0_20
+	scall Func_806a0
 	playmusic SONG_SHOP
 Func_82d14: ; 82d14 (20:6d14)
 	pop bc
@@ -126,13 +126,13 @@ Func_82d22: ; 82d22 (20:6d22)
 	cp $4
 	jp nc, Func_82d30
 	ld hl, Data_82d16
-	call Func_80d9b_20
+	scall Func_80d9b
 Func_82d30: ; 82d30 (20:6d30)
 	ld a, [wc78c]
 	cp $5
 	jp nc, Func_82d3e
 	ld hl, Data_82d1c
-	call Func_80d9b_20
+	scall Func_80d9b
 Func_82d3e: ; 82d3e (20:6d3e)
-	call Func_80f02_20
+	scall Func_80f02
 	ret

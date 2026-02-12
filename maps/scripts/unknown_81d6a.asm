@@ -37,13 +37,13 @@ Data_81d4e: ; 81d4e
 	wildbot $0, $0, $6, $6, $2a, $a, $b, $63, $1, $2, $3, $1, $a
 	wildbot $0, $0, $6, $6, $2a, $a, $b, $13, $4, $5, $6, $1, $a
 
-Func_81d6a:
+Func_81d6a::
 	xor a
 	ld [wc793], a
 	loadwarps $1, Data_81cb4
 	ld e, $1
 	ld hl, Data_81cbf
-	call Func_80ce7_20
+	scall Func_80ce7
 	ld a, [wc793]
 	or a
 	jp z, .check_dr_zero
@@ -71,10 +71,10 @@ Func_81d6a:
 	jp nz, Func_81de6
 	playmusic SONG_NONE
 	xor a
-	call Func_80653_20
+	scall Func_80653
 	ld e, $5
 	ld a, $3
-	call Func_80664_20
+	scall Func_80664
 	call Func_81e2b
 	setevent $a
 	ld a, $1
@@ -84,7 +84,7 @@ Func_81d6a:
 Func_81de6: ; 81de6 (20:5de6)
 	loadpeople $3, Data_81cd0
 	playmusic SONG_TOWN3
-	call FadeInMap_20
+	scall FadeInMap
 Func_81df6: ; 81df6 (20:5df6)
 	jp Func_81e22
 
@@ -92,10 +92,10 @@ Func_81df9: ; 81df9 (20:5df9)
 	loadpeople $3, Data_81cd0
 	loadpeople $5, Data_81cfa
 	ld a, $5
-	call Func_80d01_20
+	scall Func_80d01
 	loadwilds $2, Data_81d4e
 	playmusic SONG_TOWN3
-	call FadeInMap_20
+	scall FadeInMap
 	xor a
 	ld [wc793], a
 Func_81e22: ; 81e22 (20:5e22)
@@ -111,7 +111,7 @@ Data_81e27: ; 81e27
 
 Func_81e2b: ; 81e2b (20:5e2b)
 	loademote $6, $1, $1f
-	call FadeInMap_20
+	scall FadeInMap
 	call WaitEmote_20
 	playsfx $67
 	script_sleep $3c
@@ -162,7 +162,7 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	script_sleep $1
 	writetext TreeBitstreamText_38fbd
 	ld a, $1
-	call Func_80653_20
+	scall Func_80653
 	script_sleep $1
 	call HideEmote_20
 	script_sleep $1e
@@ -227,12 +227,12 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	call AllocateSpaceForWarps_20
 	playmusic SONG_NONE
 	xor a
-	call Func_80653_20
+	scall Func_80653
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_20
 	loademote $8, $1, $1f
-	call FadeInMap_20
+	scall FadeInMap
 	call WaitEmote_20
 	script_sleep $3c
 	playsfx $2e
@@ -242,7 +242,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld bc, Data_81f2d
 	ld e, BANK(Data_81f2d)
 	xor a
-	call Func_80688_20
+	scall Func_80688
 	call WaitNPCStep_20
 	ld e, $3
 	xor a
@@ -251,7 +251,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld bc, Data_81f33
 	ld e, BANK(Data_81f33)
 	xor a
-	call Func_80688_20
+	scall Func_80688
 	call WaitNPCStep_20
 	playsfx $2e
 	ld e, $0
@@ -264,7 +264,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	xor a
 	call PlayerFace_20
 	ld a, $1
-	call Func_80653_20
+	scall Func_80653
 	script_sleep $1
 	call HideEmote_20
 	script_sleep $1e
@@ -277,7 +277,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld c, $f
 	ld e, $a
 	ld a, $19
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	ret
 
@@ -288,7 +288,7 @@ Func_82049: ; 82049 (20:6049)
 	cp $14
 	jp nc, Func_82057
 	push af
-	call Func_80c94_20
+	scall Func_80c94
 	pop af
 	inc a
 	jp Func_82049
@@ -299,7 +299,7 @@ Func_82057: ; 82057 (20:6057)
 	cp $2
 	jp nz, Func_82078
 	xor a
-	call Func_80653_20
+	scall Func_80653
 	ld c, $32
 	ld e, $0
 	ld a, $1e
@@ -309,7 +309,7 @@ Func_82057: ; 82057 (20:6057)
 	ld c, $f
 	ld e, $a
 	ld a, $19
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 Func_82078: ; 82078 (20:6078)
 	ret
@@ -366,7 +366,7 @@ Func_8208c:: ; 8208c (20:608c)
 	ld c, $2b
 	ld e, $0
 	ld a, $3
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -377,7 +377,7 @@ Func_820fa: ; 820fa (20:60fa)
 	ld c, $d
 	ld e, $0
 	ld a, $3
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -388,7 +388,7 @@ Func_8210f: ; 8210f (20:610f)
 	ld c, $5
 	ld e, $0
 	ld a, $5
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -399,7 +399,7 @@ Func_82124: ; 82124 (20:6124)
 	ld c, $10
 	ld e, $0
 	ld a, $5
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -410,7 +410,7 @@ Func_82139: ; 82139 (20:6139)
 	ld c, $a
 	ld e, $0
 	ld a, $8
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -421,7 +421,7 @@ Func_8214e: ; 8214e (20:614e)
 	ld c, $6
 	ld e, $0
 	ld a, $2
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -432,7 +432,7 @@ Func_82163: ; 82163 (20:6163)
 	ld c, $5
 	ld e, $0
 	ld a, $9
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -443,7 +443,7 @@ Func_82178: ; 82178 (20:6178)
 	ld c, $11
 	ld e, $0
 	ld a, $15
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -454,7 +454,7 @@ Func_8218d: ; 8218d (20:618d)
 	ld c, $7
 	ld e, $0
 	ld a, $18
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -465,7 +465,7 @@ Func_821a2: ; 821a2 (20:61a2)
 	ld c, $7
 	ld e, $0
 	ld a, $1c
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -476,7 +476,7 @@ Func_821b7: ; 821b7 (20:61b7)
 	ld c, $9
 	ld e, $0
 	ld a, $1b
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -487,7 +487,7 @@ Func_821cc: ; 821cc (20:61cc)
 	ld c, $6
 	ld e, $1
 	ld a, $1d
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -498,7 +498,7 @@ Func_821e1: ; 821e1 (20:61e1)
 	ld c, $7
 	ld e, $0
 	ld a, $1a
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -509,7 +509,7 @@ Func_821f6: ; 821f6 (20:61f6)
 	ld c, $10
 	ld e, $0
 	ld a, $6
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -520,7 +520,7 @@ Func_8220b: ; 8220b (20:620b)
 	ld c, $13
 	ld e, $16
 	ld a, $13
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -531,7 +531,7 @@ Func_82220: ; 82220 (20:6220)
 	ld c, $a
 	ld e, $1
 	ld a, $1d
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -542,7 +542,7 @@ Func_82235: ; 82235 (20:6235)
 	ld c, $e
 	ld e, $1
 	ld a, $1d
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	jp Func_8225c
 
@@ -553,7 +553,7 @@ Func_8224a: ; 8224a (20:624a)
 	ld c, $5
 	ld e, $a
 	ld a, $12
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 Func_8225c: ; 8225c (20:625c)
 	ret

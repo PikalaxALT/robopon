@@ -25,7 +25,7 @@ endif
 endif
 
 BUILDDIR := build/$(shortname)
-BUILD_SUBDIRS := src
+BUILD_SUBDIRS := src maps
 ROM := robo$(shortname).gbc
 dummy := $(foreach dir,$(BUILD_SUBDIRS),$(shell mkdir -p $(BUILDDIR)/$(dir)))
 
@@ -43,7 +43,6 @@ SRC_ASM := \
 	gfx.asm \
 	audio.asm \
 	text.asm \
-	maps.asm \
 	home.asm \
 	src/bank_01.asm \
 	src/bank_02.asm \
@@ -56,6 +55,7 @@ SRC_ASM := \
 	src/bank_8_part_2.asm \
 	src/bank_09.asm \
 	src/bank_9_part_2.asm \
+	maps/block_data.asm \
 	src/bank_0c.asm \
 	src/bank_0d.asm \
 	src/bank_13.asm \
@@ -70,10 +70,32 @@ SRC_ASM := \
 	src/bank_19_2.asm \
 	src/bank_1a.asm \
 	src/bank_1b.asm \
+	maps/bank_20.asm \
+	maps/bank_21.asm \
+	maps/bank_22.asm \
+	maps/bank_23.asm \
+	maps/bank_24.asm \
+	maps/bank_24_2.asm \
+	maps/bank_25.asm \
+	maps/bank_26.asm \
+	maps/bank_27.asm \
+	maps/bank_28.asm \
+	maps/bank_29.asm \
+	maps/bank_2a.asm \
+	maps/bank_2b.asm \
+	maps/bank_2c.asm \
+	maps/bank_2d.asm \
+	maps/bank_2d_2.asm \
+	maps/bank_2e.asm \
 	src/bank_2f.asm \
 	src/bank_30.asm \
 	src/bank_31.asm \
+	maps/bank_32.asm \
+	maps/bank_33.asm \
+	maps/bank_34.asm \
 	src/bank_35.asm \
+	maps/bank_36.asm \
+	maps/bank_38.asm \
 	src/bank_39.asm \
 	src/bank_3e_2.asm \
 	src/bank_3f.asm \

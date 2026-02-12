@@ -91,17 +91,17 @@ Data_81265: ; 81265
 Data_81273: ; 81273
 	person_event $ff, $00, $1b, $14, $01, $01, $00, $04, $01, Func_81a5a, 0
 
-Func_81281:
+Func_81281::
 	call Func_81427
 	ld hl, Func_81427
-	call Func_80f11_20
+	scall Func_80f11
 	ld e, $4
 	ld hl, Data_81101
-	call Func_80ce7_20
+	scall Func_80ce7
 	ld a, $2
-	call Func_80c94_20
+	scall Func_80c94
 	ld a, $d
-	call Func_80c94_20
+	scall Func_80c94
 	ld a, $1
 	ld [wc7e2], a
 	xor a
@@ -123,7 +123,7 @@ Func_812c9: ; 812c9 (20:52c9)
 	or a
 	jp nz, Func_812ec
 	loadpeople $3, Data_8113f
-	call FadeInMap_20
+	scall FadeInMap
 	call Func_814c1
 	setevent $c
 	jp Func_813fc
@@ -201,7 +201,7 @@ Func_8137b: ; 8137b (20:537b)
 	jp nc, Func_813b7
 	ld de, Data_8113b
 	ld a, $7
-	call Func_80150_20
+	scall Func_80150
 Func_813b7: ; 813b7 (20:53b7)
 	jp Func_813c2
 
@@ -217,7 +217,7 @@ Func_813c2: ; 813c2 (20:53c2)
 	loadwarps $1, Data_810f6
 	ld de, Data_8113b
 	ld a, $7
-	call Func_80150_20
+	scall Func_80150
 	loadpeople $1, Data_81273
 	jp Func_813f4
 
@@ -225,12 +225,12 @@ Func_813ec: ; 813ec (20:53ec)
 	loadpeople $1, Data_81265
 Func_813f4: ; 813f4 (20:53f4)
 	playmusic SONG_TOWN1
-	call FadeInMap_20
+	scall FadeInMap
 Func_813fc: ; 813fc (20:53fc)
 	jp Func_81402
 
 Func_813ff: ; 813ff (20:53ff)
-	call FadeInMap_20
+	scall FadeInMap
 Func_81402: ; 81402 (20:5402)
 	ret
 
@@ -260,10 +260,10 @@ Func_81427: ; 81427 (20:5427)
 	cp $a
 	jp nc, Func_81449
 	ld hl, Data_81409
-	call Func_80d9b_20
+	scall Func_80d9b
 	ld hl, Data_81403
-	call Func_80d9b_20
-	call Func_80f02_20
+	scall Func_80d9b
+	scall Func_80f02
 	jp Func_81490
 
 Func_81449: ; 81449 (20:5449)
@@ -274,10 +274,10 @@ Func_81449: ; 81449 (20:5449)
 	cp $f
 	jp nc, Func_8146b
 	ld hl, Data_8140f
-	call Func_80d9b_20
+	scall Func_80d9b
 	ld hl, Data_81403
-	call Func_80d9b_20
-	call Func_80f02_20
+	scall Func_80d9b
+	scall Func_80f02
 	jp Func_81490
 
 Func_8146b: ; 8146b (20:546b)
@@ -288,12 +288,12 @@ Func_8146b: ; 8146b (20:546b)
 	cp $15
 	jp nc, Func_81490
 	ld hl, Data_8141b
-	call Func_80d9b_20
+	scall Func_80d9b
 	ld hl, Data_81415
-	call Func_80d9b_20
+	scall Func_80d9b
 	ld hl, Data_81403
-	call Func_80d9b_20
-	call Func_80f02_20
+	scall Func_80d9b
+	scall Func_80f02
 Func_81490: ; 81490 (20:5490)
 	ld a, [wc790]
 	or a
@@ -302,8 +302,8 @@ Func_81490: ; 81490 (20:5490)
 	cp $7
 	jp nc, Func_814a8
 	ld hl, Data_81421
-	call Func_80d9b_20
-	call Func_80f02_20
+	scall Func_80d9b
+	scall Func_80f02
 Func_814a8: ; 814a8 (20:54a8)
 	ret
 
@@ -528,7 +528,7 @@ Func_8172f: ; 8172f (20:572f)
 	ld c, $e
 	ld e, $c
 	ld a, $3
-	call Func_80080_20
+	scall Func_80080
 	writenpctext TreeBitstreamText_397dc
 	writenpctext TreeBitstreamText_397ed
 	script_sleep $1e
@@ -644,7 +644,7 @@ Func_818b7: ; 818b7 (20:58b7)
 	ld bc, Data_81805
 	ld e, BANK(Data_81805)
 	ld a, $3
-	call Func_80688_20
+	scall Func_80688
 	ld a, $2
 	call PlayerFace_20
 	call WaitNPCStep_20
@@ -752,7 +752,7 @@ Func_819fb: ; 819fb (20:59fb)
 	ld c, $0
 	ld e, $4
 	ld a, $20
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	ld a, $1
 	ld [wSpawnPushX], a
@@ -781,7 +781,7 @@ Func_81a33: ; 81a33 (20:5a33)
 	ld c, $0
 	ld e, $4
 	ld a, $20
-	call Func_80dff_20
+	scall Func_80dff
 	pop bc
 	ld a, $1
 	ld [wSpawnPushX], a

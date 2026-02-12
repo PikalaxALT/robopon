@@ -4,10 +4,10 @@ Data_82ab8:
 Data_82ad9: ; 82ad9
 	db $06, $04, $01, $03, $01, $02, $02, $04, $00, $20, $57, $6b, $00, $00, $07, $04, $03, $03, $01, $02, $02, $04, $00, $20, $57, $6b, $00, $00, $06, $04, $06, $03, $01, $02, $02, $04, $00, $20, $57, $6b, $00, $00
 
-Func_82b03:
+Func_82b03::
 	call Func_82ba1
 	ld hl, Func_82ba1
-	call Func_80f11_20
+	scall Func_80f11
 	ld a, $2
 	ld [wc7de], a
 	loadwarps $3, Data_82ab8
@@ -32,7 +32,7 @@ Func_82b39: ; 82b39 (20:6b39)
 	call SetPersonVisibilityState_20
 Func_82b48: ; 82b48 (20:6b48)
 	playmusic SONG_SHOP
-	call FadeInMap_20
+	scall FadeInMap
 	landmarksign TreeBitstreamText_46c09
 	ret
 
@@ -52,19 +52,19 @@ Func_82b57:
 	jp nz, Func_82b8e
 	ld e, $0
 	ld a, $b
-	call Func_806a0_20
+	scall Func_806a0
 	jp Func_82b8e
 
 Func_82b7d: ; 82b7d (20:6b7d)
 	ld e, $0
 	ld a, $a
-	call Func_806a0_20
+	scall Func_806a0
 	jp Func_82b8e
 
 Func_82b87: ; 82b87 (20:6b87)
 	ld e, $0
 	ld a, $c
-	call Func_806a0_20
+	scall Func_806a0
 Func_82b8e: ; 82b8e (20:6b8e)
 	playmusic SONG_SHOP
 Func_82b93: ; 82b93 (20:6b93)
@@ -82,14 +82,14 @@ Func_82ba1: ; 82ba1 (20:6ba1)
 	cp $3
 	jp nc, Func_82baf
 	ld hl, Data_82b95
-	call Func_80d9b_20
+	scall Func_80d9b
 Func_82baf: ; 82baf (20:6baf)
 	ld a, [wc78c]
 	cp $5
 	jp nc, Func_82bbd
 	ld hl, Data_82b9b
-	call Func_80d9b_20
+	scall Func_80d9b
 Func_82bbd: ; 82bbd (20:6bbd)
-	call Func_80f02_20
+	scall Func_80f02
 	ret
 

@@ -10,16 +10,16 @@ Data_82763: ; 82763
 Data_8279b: ; 8279b
 	db $1a, $04, $02, $02, $01, $01, $01, $04, $00, $20, $9b, $69, $00, $00
 
-Func_827a9:
+Func_827a9::
 	call Func_82866
 	ld hl, Func_82866
-	call Func_80f11_20
+	scall Func_80f11
 	ld a, $1
 	ld [wc7de], a
 	loadwarps $6, Data_8271c
 	ld e, $1
 	ld hl, Data_8275e
-	call Func_80ce7_20
+	scall Func_80ce7
 	ld a, [wc793]
 	or a
 	jp z, Func_827de
@@ -41,7 +41,7 @@ Func_827de: ; 827de (20:67de)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	call FadeInMap_20
+	scall FadeInMap
 	landmarksign TreeBitstreamText_46ce3
 	call Func_829dd
 	jp Func_8283c
@@ -50,7 +50,7 @@ Func_82811: ; 82811 (20:6811)
 	checkevent $d
 	or a
 	jp nz, Func_8282c
-	call FadeInMap_20
+	scall FadeInMap
 	call Func_82894
 	setevent $d
 	jp Func_8283c
@@ -59,7 +59,7 @@ Func_8282c: ; 8282c (20:682c)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	call FadeInMap_20
+	scall FadeInMap
 	landmarksign TreeBitstreamText_46ce3
 Func_8283c: ; 8283c (20:683c)
 	jp Func_82859
@@ -70,7 +70,7 @@ Func_8283f: ; 8283f (20:683f)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	call FadeInMap_20
+	scall FadeInMap
 Func_82859: ; 82859 (20:6859)
 	ret
 
@@ -85,15 +85,15 @@ Func_82866: ; 82866 (20:6866)
 	cp $2
 	jp nc, Func_82874
 	ld hl, Data_8285a
-	call Func_80d9b_20
+	scall Func_80d9b
 Func_82874: ; 82874 (20:6874)
 	ld a, [wc78c]
 	cp $5
 	jp nc, Func_82882
 	ld hl, Data_82860
-	call Func_80d9b_20
+	scall Func_80d9b
 Func_82882: ; 82882 (20:6882)
-	call Func_80f02_20
+	scall Func_80f02
 	ret
 
 Data_82886:
@@ -141,7 +141,7 @@ Func_828df:
 	ld bc, Data_828cf
 	ld e, BANK(Data_828cf)
 	ld a, $2
-	call Func_80688_20
+	scall Func_80688
 	call WaitNPCStep_20
 	sprite_face $2, $2
 	checkevent $32
@@ -154,7 +154,7 @@ Func_828df:
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	call Func_80688_20
+	scall Func_80688
 	call WaitNPCStep_20
 	sprite_face $2, $2
 	move_player $1, Data_828db
@@ -168,7 +168,7 @@ Func_82940: ; 82940 (20:6940)
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	call Func_80688_20
+	scall Func_80688
 	call WaitNPCStep_20
 	sprite_face $2, $2
 Func_82964: ; 82964 (20:6964)
@@ -181,7 +181,7 @@ Func_82967: ; 82967 (20:6967)
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	call Func_80688_20
+	scall Func_80688
 	call WaitNPCStep_20
 	sprite_face $2, $2
 Func_8298b: ; 8298b (20:698b)
@@ -192,7 +192,7 @@ Func_8298c:
 	or a
 	jp nz, Func_8299a
 	writenpctext TreeBitstreamText_45e48
-	call Func_8045c_20
+	scall Func_8045c
 Func_8299a: ; 8299a (20:699a)
 	ret
 
@@ -247,7 +247,7 @@ Func_829fd:
 	or a
 	jp nz, Func_82ab0
 	ld a, $10
-	call Func_80e5d_20
+	scall Func_80e5d
 	or a
 	jp z, Func_82a9b
 	writetext_yesorno TreeBitstreamText_45f28
@@ -257,7 +257,7 @@ Func_829fd:
 	ld c, $1
 	ld e, $1
 	ld a, $10
-	call Func_80d4d_20
+	scall Func_80d4d
 	ld a, [wc79c]
 	or a
 	jp nz, Func_82a43
@@ -288,7 +288,7 @@ Func_82a59: ; 82a59 (20:6a59)
 	ld c, $0
 	ld e, $1
 	ld a, $18
-	call Func_80d4d_20
+	scall Func_80d4d
 	setevent $114
 	writetext TreeBitstreamText_45f98
 Func_82a8f: ; 82a8f (20:6a8f)

@@ -4,16 +4,16 @@ Data_8311a:
 Data_8313f: ; 8313f
 	db $12, $04, $02, $02, $01, $02, $02, $04, $00, $20, $c2, $71, $00, $00, $16, $04, $05, $02, $01, $02, $02, $04, $00, $20, $d3, $71, $00, $00, $00, $04, $06, $02, $01, $02, $02, $04, $00, $20, $5f, $48, $3b, $71
 
-Func_83169:
+Func_83169::
 	call Func_831a2
 	ld hl, Func_831a2
-	call Func_80f11_20
+	scall Func_80f11
 	ld a, $8
 	ld [wc7de], a
 	loadwarps $3, Data_8311a
 	loadpeople $3, Data_8313f
 	playmusic SONG_SHOP
-	call FadeInMap_20
+	scall FadeInMap
 	landmarksign TreeBitstreamText_46c44
 	ret
 
@@ -28,13 +28,13 @@ Func_831a2: ; 831a2 (20:71a2)
 	cp $9
 	jp nc, Func_831b0
 	ld hl, Data_83196
-	call Func_80d9b_20
+	scall Func_80d9b
 Func_831b0: ; 831b0 (20:71b0)
 	ld a, [wc78c]
 	cp $5
 	jp nc, Func_831be
 	ld hl, Data_8319c
-	call Func_80d9b_20
+	scall Func_80d9b
 Func_831be: ; 831be (20:71be)
-	call Func_80f02_20
+	scall Func_80f02
 	ret

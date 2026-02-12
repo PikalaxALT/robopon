@@ -52,7 +52,7 @@ Func_83026:
 	ld c, $c
 	ld e, $17
 	ld a, $15
-	call Func_80e8d_20
+	scall Func_80e8d
 	setevent $d7
 	playsfx $60
 	ld e, $3

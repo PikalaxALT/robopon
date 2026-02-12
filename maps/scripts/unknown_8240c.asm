@@ -12,7 +12,7 @@ Data_823d4: ; 823d4
 	person_event $ff, $00,  8,  1,  1,  1, $00, $04, $00, PrintTextFacePlayer_20, Pointers_823d0
 	person_event $00, $0c,  8,  5,  1,  1, $00, $04, $00, PrintTextFacePlayer_20, Pointers_823d0
 
-Func_8240c:
+Func_8240c::
 	loadwarps $2, Data_823ba
 	ld a, [wc790]
 	cp $4
@@ -23,7 +23,7 @@ Func_8240c:
 	call SetPersonVisibilityState_20
 Func_8242b: ; 8242b (20:642b)
 	playmusic SONG_TOWN3
-	call FadeInMap_20
+	scall FadeInMap
 	ret
 
 Data_82434:
@@ -140,7 +140,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld bc, Data_82440
 	ld e, BANK(Data_82440)
 	ld a, $3
-	call Func_80688_20
+	scall Func_80688
 	call WaitNPCStep_20
 	ld e, $0
 	ld a, $3

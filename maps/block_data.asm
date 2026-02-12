@@ -1,3 +1,7 @@
+INCLUDE "includes.asm"
+INCLUDE "charmap.asm"
+INCLUDE "macros/bank20.asm"
+
 SECTION "Bank 0a", ROMX
 BlockDataHeaders:: ; 28000
 MACRO blockdataheader

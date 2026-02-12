@@ -7,7 +7,7 @@ Data_825a2: ; 825a2
 Data_825be: ; 825be
 	db $22, $04, $03, $04, $01, $01, $01, $04, $00, $20, $fc, $48, $9e, $65
 
-Func_825cc:
+Func_825cc::
 	loadwarps $1, Data_82593
 	ld a, [wc793]
 	or a
@@ -37,5 +37,5 @@ Func_825f9: ; 825f9 (20:65f9)
 	loadpeople $1, Data_825be
 Func_8261f: ; 8261f (20:661f)
 	playmusic SONG_TOWN3
-	call FadeInMap_20
+	scall FadeInMap
 	ret

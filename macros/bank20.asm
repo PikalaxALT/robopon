@@ -322,7 +322,7 @@ Func_8030d_\1: ; 8030d (20:430d)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	or a
 	jp z, Func_80332_\1
@@ -364,7 +364,7 @@ Func_80364_\1: ; 80364 (20:4364)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	or a
 	jp z, Func_80389_\1
@@ -406,7 +406,7 @@ Func_803bb_\1: ; 803bb (20:43bb)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	or a
 	jp z, Func_803e0_\1
@@ -448,7 +448,7 @@ Func_80412_\1: ; 80412 (20:4412)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	or a
 	jp z, Func_80437_\1
@@ -1640,7 +1640,7 @@ Func_80c61_\1: ; 80c61 (20:4c61)
 	ld a, $33
 	call OverworldPlaySFX
 	ld bc, wc846
-	ld e, BANK(ScriptLibrary_\1)
+	ld e, csbnk
 	ld hl, sp+$1
 	ld a, [hl]
 	call MovePerson_\1
@@ -1694,7 +1694,7 @@ Func_80ce7_\1: ; 80ce7 (20:4ce7)
 	pop hl
 	ld c, e
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	ret
 
@@ -1730,7 +1730,7 @@ LoadEncounters_\1: ; 80d24 (20:4d24)
 	pop hl
 	ld c, e
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 .quit
 	ret
@@ -1829,7 +1829,7 @@ Func_80de2_\1: ; 80de2 (20:4de2)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	ld l, a
 Func_80dfd_\1: ; 80dfd (20:4dfd)
@@ -1960,7 +1960,7 @@ Func_80f11_\1: ; 80f11 (20:4f11)
 	push hl
 	set_farcall_addrs_hli Func_bf39
 	pop de
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	ret
 
