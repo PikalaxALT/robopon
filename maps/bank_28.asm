@@ -148,7 +148,283 @@ Func_a11de:: ; a11de
 	ret
 
 Func_a12b1:
-	db $f5, $c5, $f8, $00, $36, $ff, $7b, $b7, $c2, $e6, $54, $f8, $03, $7e, $cd, $4b, $44, $fa, $96, $c7, $fe, $03, $c2, $4c, $53, $3e, $32, $cd, $6d, $4e, $f8, $01, $77, $fe, $ff, $ca, $49, $53, $21, $14, $04, $cd, $a9, $44, $3e, $32, $cd, $7d, $4e, $fe, $01, $c2, $40, $53, $21, $92, $02, $cd, $a9, $44, $21, $00, $04, $cd, $ba, $44, $b7, $c2, $2f, $53, $3e, $68, $cd, $fe, $4e, $21, $08, $04, $cd, $a9, $44, $f8, $01, $6e, $26, $00, $11, $00, $0b, $19, $cd, $88, $44, $7d, $f5, $0e, $00, $1e, $01, $f8, $03, $7e, $cd, $87, $4d, $f1, $4f, $1e, $00, $3e, $49, $cd, $87, $4d, $3e, $04, $ea, $96, $c7, $f8, $00, $36, $01, $c3, $3d, $53, $3e, $69, $cd, $fe, $4e, $21, $09, $04, $cd, $a9, $44, $c3, $e6, $54, $c3, $49, $53, $21, $6e, $04, $cd, $98, $44, $c3, $e6, $54, $c3, $91, $54, $fa, $96, $c7, $fe, $0d, $c2, $d6, $53, $3e, $7e, $cd, $6d, $4e, $f8, $01, $77, $fe, $ff, $ca, $d3, $53, $21, $14, $04, $cd, $a9, $44, $3e, $7e, $cd, $7d, $4e, $fe, $01, $c2, $ca, $53, $21, $93, $02, $cd, $a9, $44, $21, $00, $04, $cd, $ba, $44, $b7, $c2, $b9, $53, $3e, $68, $cd, $fe, $4e, $21, $2d, $04, $cd, $a9, $44, $f8, $01, $6e, $26, $00, $11, $00, $0b, $19, $cd, $88, $44, $7d, $f5, $0e, $00, $1e, $01, $f8, $03, $7e, $cd, $87, $4d, $f1, $4f, $1e, $00, $3e, $83, $cd, $87, $4d, $3e, $0e, $ea, $96, $c7, $f8, $00, $36, $01, $c3, $c7, $53, $3e, $69, $cd, $fe, $4e, $21, $2e, $04, $cd, $a9, $44, $c3, $e6, $54, $c3, $d3, $53, $21, $6e, $04, $cd, $98, $44, $c3, $e6, $54, $c3, $91, $54, $3e, $32, $cd, $6d, $4e, $f8, $01, $77, $fe, $ff, $c2, $f0, $53, $3e, $7e, $cd, $6d, $4e, $f8, $01, $77, $fe, $ff, $ca, $91, $54, $fa, $96, $c7, $fe, $08, $ca, $79, $54, $fe, $06, $ca, $79, $54, $fe, $0a, $ca, $6a, $54, $fe, $05, $ca, $6a, $54, $fe, $0c, $ca, $5b, $54, $fe, $04, $ca, $5b, $54, $fe, $07, $ca, $4c, $54, $b7, $ca, $4c, $54, $fe, $0b, $ca, $3d, $54, $fe, $02, $ca, $3d, $54, $fe, $09, $ca, $2e, $54, $fe, $01, $c2, $88, $54, $21, $40, $01, $cd, $98, $44, $21, $4d, $03, $cd, $98, $44, $c3, $8e, $54, $21, $40, $01, $cd, $98, $44, $21, $05, $02, $cd, $98, $44, $c3, $8e, $54, $21, $40, $01, $cd, $98, $44, $21, $4b, $03, $cd, $98, $44, $c3, $8e, $54, $21, $40, $01, $cd, $98, $44, $21, $18, $02, $cd, $98, $44, $c3, $8e, $54, $21, $40, $01, $cd, $98, $44, $21, $41, $02, $cd, $98, $44, $c3, $8e, $54, $21, $40, $01, $cd, $98, $44, $21, $44, $02, $cd, $98, $44, $c3, $8e, $54, $21, $14, $04, $cd, $a9, $44, $c3, $e6, $54, $f8, $00, $7e, $fe, $ff, $c2, $e6, $54, $fa, $96, $c7, $fe, $0e, $d2, $b8, $54, $fa, $96, $c7, $fe, $04, $da, $b8, $54, $21, $14, $04, $cd, $a9, $44, $21, $2c, $04, $cd, $a9, $44, $c3, $e6, $54, $fa, $96, $c7, $fe, $0f, $c2, $c9, $54, $21, $14, $04, $cd, $a9, $44, $c3, $e6, $54, $fa, $96, $c7, $fe, $0e, $da, $da, $54, $21, $2f, $04, $cd, $a9, $44, $c3, $e6, $54, $21, $14, $04, $cd, $a9, $44, $21, $e6, $01, $cd, $a9, $44, $c1, $c1, $c9, $14, $0c, $01, $01, $15, $11
+	push af
+	push bc
+	ld hl, sp+$00
+	ld [hl], $ff
+	ld a, e
+	or a
+	jp nz, .asm_a14e6
+	ld hl, sp+$03
+	ld a, [hl]
+	scall FacePlayer
+	ld a, [wc796]
+	cp $03
+	jp nz, .asm_a134c
+	ld a, $32
+	scall Func_80e6d
+	ld hl, sp+$01
+	ld [hl], a
+	cp $ff
+	jp z, .asm_a1349
+	ld hl, $0414
+	scall PrintTextWithNPCName
+	ld a, $32
+	scall Func_80e7d
+	cp $01
+	jp nz, .asm_a1340
+	ld hl, $0292
+	scall PrintTextWithNPCName
+	ld hl, $0400
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, .asm_a132f
+	ld a, $68
+	scall PlaySFX
+	ld hl, $0408
+	scall PrintTextWithNPCName
+	ld hl, sp+$01
+	ld l, [hl]
+	ld h, $00
+	ld de, $0b00
+	add hl, de
+	scall Func_80488
+	ld a, l
+	push af
+	ld c, $00
+	ld e, $01
+	ld hl, sp+$03
+	ld a, [hl]
+	scall GiveRobot
+	pop af
+	ld c, a
+	ld e, $00
+	ld a, $49
+	scall GiveRobot
+	ld a, $04
+	ld [$c796], a
+	ld hl, sp+$00
+	ld [hl], $01
+	jp .asm_a133d
+
+.asm_a132f:
+	ld a, $69
+	scall PlaySFX
+	ld hl, $0409
+	scall PrintTextWithNPCName
+	jp .asm_a14e6
+
+.asm_a133d:
+	jp .asm_a1349
+
+.asm_a1340:
+	ld hl, $046e
+	scall PrintTextStandard
+	jp .asm_a14e6
+
+.asm_a1349:
+	jp .asm_a1491
+
+.asm_a134c:
+	ld a, [$c796]
+	cp $0d
+	jp nz, .asm_a13d6
+	ld a, $7e
+	scall Func_80e6d
+	ld hl, sp+$01
+	ld [hl], a
+	cp $ff
+	jp z, .asm_a13d3
+	ld hl, $0414
+	scall PrintTextWithNPCName
+	ld a, $7e
+	scall Func_80e7d
+	cp $01
+	jp nz, .asm_a13ca
+	ld hl, $0293
+	scall PrintTextWithNPCName
+	ld hl, $0400
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, .asm_a13b9
+	ld a, $68
+	scall PlaySFX
+	ld hl, $042d
+	scall PrintTextWithNPCName
+	ld hl, sp+$01
+	ld l, [hl]
+	ld h, $00
+	ld de, $0b00
+	add hl, de
+	scall Func_80488
+	ld a, l
+	push af
+	ld c, $00
+	ld e, $01
+	ld hl, sp+$03
+	ld a, [hl]
+	scall GiveRobot
+	pop af
+	ld c, a
+	ld e, $00
+	ld a, $83
+	scall GiveRobot
+	ld a, $0e
+	ld [$c796], a
+	ld hl, sp+$00
+	ld [hl], $01
+	jp .asm_a13c7
+
+.asm_a13b9:
+	ld a, $69
+	scall PlaySFX
+	ld hl, $042e
+	scall PrintTextWithNPCName
+	jp .asm_a14e6
+
+.asm_a13c7:
+	jp .asm_a13d3
+
+.asm_a13ca:
+	ld hl, $046e
+	scall PrintTextStandard
+	jp .asm_a14e6
+
+.asm_a13d3:
+	jp .asm_a1491
+
+.asm_a13d6:
+	ld a, $32
+	scall Func_80e6d
+	ld hl, sp+$01
+	ld [hl], a
+	cp $ff
+	jp nz, .asm_a13f0
+	ld a, $7e
+	scall Func_80e6d
+	ld hl, sp+$01
+	ld [hl], a
+	cp $ff
+	jp z, .asm_a1491
+.asm_a13f0:
+	ld a, [$c796]
+	cp $08
+	jp z, .asm_a1479
+	cp $06
+	jp z, .asm_a1479
+	cp $0a
+	jp z, .asm_a146a
+	cp $05
+	jp z, .asm_a146a
+	cp $0c
+	jp z, .asm_a145b
+	cp $04
+	jp z, .asm_a145b
+	cp $07
+	jp z, .asm_a144c
+	or a
+	jp z, .asm_a144c
+	cp $0b
+	jp z, .asm_a143d
+	cp $02
+	jp z, .asm_a143d
+	cp $09
+	jp z, .asm_a142e
+	cp $01
+	jp nz, .asm_a1488
+.asm_a142e:
+	ld hl, $0140
+	scall PrintTextStandard
+	ld hl, $034d
+	scall PrintTextStandard
+	jp .asm_a148e
+
+.asm_a143d:
+	ld hl, $0140
+	scall PrintTextStandard
+	ld hl, $0205
+	scall PrintTextStandard
+	jp .asm_a148e
+
+.asm_a144c:
+	ld hl, $0140
+	scall PrintTextStandard
+	ld hl, $034b
+	scall PrintTextStandard
+	jp .asm_a148e
+
+.asm_a145b:
+	ld hl, $0140
+	scall PrintTextStandard
+	ld hl, $0218
+	scall PrintTextStandard
+	jp .asm_a148e
+
+.asm_a146a:
+	ld hl, $0140
+	scall PrintTextStandard
+	ld hl, $0241
+	scall PrintTextStandard
+	jp .asm_a148e
+
+.asm_a1479:
+	ld hl, $0140
+	scall PrintTextStandard
+	ld hl, $0244
+	scall PrintTextStandard
+	jp .asm_a148e
+
+.asm_a1488:
+	ld hl, $0414
+	scall PrintTextWithNPCName
+.asm_a148e:
+	jp .asm_a14e6
+
+.asm_a1491:
+	ld hl, sp+$00
+	ld a, [hl]
+	cp $ff
+	jp nz, .asm_a14e6
+	ld a, [$c796]
+	cp $0e
+	jp nc, .asm_a14b8
+	ld a, [$c796]
+	cp $04
+	jp c, .asm_a14b8
+	ld hl, $0414
+	scall PrintTextWithNPCName
+	ld hl, $042c
+	scall PrintTextWithNPCName
+	jp .asm_a14e6
+
+.asm_a14b8:
+	ld a, [$c796]
+	cp $0f
+	jp nz, .asm_a14c9
+	ld hl, $0414
+	scall PrintTextWithNPCName
+	jp .asm_a14e6
+
+.asm_a14c9:
+	ld a, [$c796]
+	cp $0e
+	jp c, .asm_a14da
+	ld hl, $042f
+	scall PrintTextWithNPCName
+	jp .asm_a14e6
+
+.asm_a14da:
+	ld hl, $0414
+	scall PrintTextWithNPCName
+	ld hl, $01e6
+	scall PrintTextWithNPCName
+.asm_a14e6:
+	pop bc
+	pop bc
+	ret
+
+Data_a14e9:
+	db $14, $0c, $01, $01, $15, $11
 
 Func_a14ef:
 	db $fa, $90, $c7, $b7, $ca, $07, $55, $fa, $90, $c7, $fe, $07, $d2, $07, $55, $21, $e9, $54, $cd, $9b, $4d, $cd, $02, $4f, $c9, $7b, $fe, $02, $c2, $13, $55, $3e, $0d, $ea, $8a, $c7, $c9, $7b, $b7, $c2, $1b, $56, $21, $dd, $00, $cd, $2e, $46, $b7, $c2, $15, $56, $3e, $5e, $cd, $fe, $4e, $0e, $02, $1e, $02, $3e, $08, $cd, $76, $41, $1e, $08, $3e, $0c, $cd, $e4, $41, $cd, $d5, $41, $cd, $8b, $41, $3e, $28, $cd, $fe, $4e, $1e, $01, $3e, $07, $cd, $3d, $41, $3e, $60, $cd, $fe, $4e, $1e, $03, $3e, $07, $cd, $95, $40, $1e, $00, $3e, $07, $cd, $95, $40, $1e, $01, $3e, $07, $cd, $95, $40, $1e, $02, $3e, $07, $cd, $95, $40, $1e, $03, $3e, $07, $cd, $95, $40, $1e, $00, $3e, $07, $cd, $95, $40, $1e, $01, $3e, $07, $cd, $95, $40, $1e, $02, $3e, $07, $cd, $95, $40, $3e, $0f, $cd, $f1, $4f, $af, $cd, $e6, $4e, $3e, $01, $cd, $1a, $50, $3e, $14, $cd, $e6, $4e, $3e, $07, $cd, $4b, $44, $21, $1e, $00, $cd, $8f, $46, $0e, $11, $1e, $0a, $3e, $03, $cd, $8d, $4e, $1e, $01, $21, $dd, $00, $cd, $1b, $46, $3e, $60, $cd, $fe, $4e, $1e, $03, $3e, $07, $cd, $95, $40, $1e, $00, $3e, $07, $cd, $95, $40, $1e, $01, $3e, $07, $cd, $95, $40, $1e, $02, $3e, $07, $cd, $95, $40, $1e, $03, $3e, $07, $cd, $95, $40, $1e, $00, $3e, $07, $cd, $95, $40, $1e, $01, $3e, $07, $cd, $95, $40, $1e, $02, $3e, $07, $cd, $95, $40, $3e, $0f, $cd, $f1, $4f, $af, $cd, $e6, $4e, $3e, $01, $cd, $1a, $50, $3e, $13, $cd, $e6, $4e, $3e, $07, $cd, $4b, $44, $1e, $00, $3e, $07, $cd, $3d, $41, $c3, $1b, $56, $21, $5c, $01, $cd, $98, $44, $c9
@@ -177,19 +453,19 @@ Func_a167b:: ; a167b
 	scall CheckEventFlag
 	cp $1
 	jp nz, .asm_a16e5
-	ld hl, $009A
+	ld hl, $009a
 	scall CheckEventFlag
 	cp $1
 	jp nz, .asm_a16e5
-	ld hl, $009F
+	ld hl, $009f
 	scall CheckEventFlag
 	cp $1
 	jp nz, .asm_a16e5
-	ld hl, $00A4
+	ld hl, $00a4
 	scall CheckEventFlag
 	cp $1
 	jp nz, .asm_a16e5
-	ld hl, $00A9
+	ld hl, $00a9
 	scall CheckEventFlag
 	cp $1
 	jp nz, .asm_a16e5
@@ -212,7 +488,7 @@ Func_a167b:: ; a167b
 	ld a, $14
 	scall PlayMusic
 	scall FadeInMap
-	ld hl, $02BB
+	ld hl, $02bb
 	scall LandmarkSign
 	ret
 IF DEF(SUN)
