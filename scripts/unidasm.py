@@ -6,6 +6,7 @@ import hashlib
 import pathlib
 import re
 import subprocess
+import sys
 from typing import Literal, SupportsIndex
 
 my_file = pathlib.Path(__file__)
@@ -56,6 +57,7 @@ class Instruction:
     label: str | None = dataclasses.field(default=None)
 
     def __str__(self):
+        bank, addr = rom_offset_to_addr(self.offset)
         raw = " ".join(f"{x:02X}" for x in self.raw)
         if self.operands:
             operands = ", ".join(self.operands)
@@ -64,7 +66,9 @@ class Instruction:
             insn = self.mnemonic
         label = f"{self.label}:\n" if self.label else ""
         if self.verbose:
-            return f"{label}\t{insn} ; {self.offset:05X} -> {raw}"
+            return (
+                f"{label}\t{insn} ; {self.offset:05X} ({bank:02x}:{addr:04x}) -> {raw}"
+            )
         return f"{label}\t{insn}"
 
     def __getitem__(self, index: SupportsIndex) -> str:
@@ -123,16 +127,15 @@ def sanitize_operand(operand: str):
 def get_disassembly(
     unidasm: pathlib.Path, rom: pathlib.Path, start: int, end: int
 ) -> list[Instruction]:
-    _, addr = rom_offset_to_addr(start)
     args = [
         str(unidasm.absolute()),
         str(rom.absolute()),
         "-skip",
-        str(start),
+        hex(start),
         "-count",
-        str(end - start),
+        hex(end - start),
         "-basepc",
-        str(addr),
+        hex(start),
         "-arch",
         "lr35902",
     ]
@@ -165,6 +168,8 @@ def update_instructions_symbols(
                 addr_operand |= 0xFF00
             else:
                 region = get_region(addr_operand)
+            if region is None:
+                continue
             if region == "ROM":
                 op_bank = 0 if addr_operand < 0x4000 else bank
             else:
@@ -190,6 +195,10 @@ def update_instructions_symbols(
             insn.label = label
 
 
+def any_int(arg: str):
+    return int(arg, 0)
+
+
 class Namespace(argparse.Namespace):
     version: Literal["sun", "star"]
     start: int
@@ -200,8 +209,8 @@ class Namespace(argparse.Namespace):
     def from_cli(cls, args: list[str] | None = None):
         parser = argparse.ArgumentParser()
         parser.add_argument("version", choices=["sun", "star"])
-        parser.add_argument("start", type=int)
-        parser.add_argument("end", type=int)
+        parser.add_argument("start", type=any_int)
+        parser.add_argument("end", type=any_int)
         parser.add_argument("--unidasm", type=pathlib.Path)
         return parser.parse_args(args, cls())
 
