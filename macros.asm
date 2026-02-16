@@ -183,11 +183,11 @@ MACRO dbbw
 	ENDM
 
 MACRO dstr
-.strStart_\@:
+:
 	db \1
 	IF _NARG == 2
-.strEnd_\@:
-		REPT \2 - (.strEnd_\@ - .strStart_\@)
+:
+		REPT \2 - (:- - :--)
 		db 0
 		ENDR
 	ELSE
