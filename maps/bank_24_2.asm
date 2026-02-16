@@ -1107,7 +1107,7 @@ Func_93893: ; 93893 (24:7893)
 	pop af
 Func_938a4: ; 938a4 (24:78a4)
 	call GetHLAtSPPlus6
-	ld de, hFFC4
+	ld de, -60
 	add hl, de
 	call WriteHLToSPPlus6
 	or a

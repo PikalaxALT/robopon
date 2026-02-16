@@ -37,6 +37,7 @@ EMOTE    := $(PYTHON) emote.py pack
 includes := $(PYTHON) scan_includes.py
 
 SRC_ASM := \
+	hram.asm \
 	wram.asm \
 	sram.asm \
 	vram.asm \

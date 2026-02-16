@@ -221,3 +221,5 @@ WRAM0
     "Allocatable Memory"
     align 4
     "Stack"
+HRAM
+    "HRAM"
