@@ -8,16 +8,16 @@ SECTION "Bank 22", ROMX
 Data_890b4:
 	db $1b, $10, $05, $03, $12
 
-Data_890b9:
-	db $0c, $0c, $0d, $10, $01, $01, $02, $04, $00, $22, $00, $00, $00, $00
-	db $0c, $0c, $0e, $0e, $01, $01, $02, $04, $00, $22, $00, $00, $00, $00
-	db $0c, $0c, $0f, $10, $01, $01, $02, $04, $00, $22, $00, $00, $00, $00
-	db $ff, $00, $0c, $11, $01, $03, $02, $04, $01, $22, $37, $52, $00, $00
+MapObjects_890b9:
+	map_object $0c, $0c, $0d, $10, $01, $01, $02, $04, $00, 0, 0
+	map_object $0c, $0c, $0e, $0e, $01, $01, $02, $04, $00, 0, 0
+	map_object $0c, $0c, $0f, $10, $01, $01, $02, $04, $00, 0, 0
+	map_object $ff, $00, $0c, $11, $01, $03, $02, $04, $01, Func_89237, 0
 
-Data_890f1:
-	db $ff, $00, $09, $09, $01, $01, $00, $04, $00, $22, $53, $53, $00, $00
-	db $ff, $00, $0f, $09, $01, $01, $00, $04, $00, $22, $a6, $53, $00, $00
-	db $ff, $00, $0c, $09, $01, $01, $00, $04, $00, $22, $f9, $53, $00, $00
+MapObjects_890f1:
+	map_object $ff, $00, $09, $09, $01, $01, $00, $04, $00, Func_89353, 0
+	map_object $ff, $00, $0f, $09, $01, $01, $00, $04, $00, Func_893a6, 0
+	map_object $ff, $00, $0c, $09, $01, $01, $00, $04, $00, Func_893f9, 0
 
 Data_8911b:
 IF DEF(SUN)
@@ -40,46 +40,54 @@ Func_89161::
 	scall Func_80ce7
 	ld a, $04
 	ld [wc7e2], a
-	ld hl, $0073
-	scall CheckEventFlag
-	or a
-	jp nz, label_89180
-	ld e, $04
-	ld hl, Data_890b9
-	scall LoadMapObjects
+	checkevent $0073
+	if_true label_89180
+	loadpeople $04, MapObjects_890b9
 label_89180:
-	ld e, $03
-	ld hl, Data_890f1
-	scall LoadMapObjects
+	loadpeople $03, MapObjects_890f1
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_8911b
-	scall LoadEncounters
-	ld a, $09
-	scall PlayMusic
+	loadwilds $05, Data_8911b
+	playmusic $09
 	scall FadeInMap
-	ld hl, $02d9
+	hltext_tree_pointer TreeBitstreamText_468a2
 	scall LandmarkSign
 	ret
 
-Data_891A4:
-	db $0d, $11, $0e, $11, $0e, $10, $ff, $ff, $0f, $09, $ff, $ff, $0d, $09, $ff, $ff, $0e, $0f, $ff, $ff, $0e, $09, $ff, $ff, $00, $00, $00, $01, $00, $c5, $af, $00, $00, $52, $01, $17, $03, $0e, $1f, $07, $18, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c, $00, $00, $00, $01, $00, $c5, $b1, $00, $00, $52, $01, $0e, $03, $0e, $04, $17, $04, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c, $00, $00, $00, $01, $00, $c5, $c8, $00, $00, $52, $01, $6b, $03, $0e, $17, $17, $0a, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
+Data_891a4:
+	db $0d, $11, $0e, $11, $0e, $10, $ff, $ff
+
+Data_891ac:
+	db $0f, $09, $ff, $ff
+
+Data_891b0:
+	db $0d, $09, $ff, $ff
+
+Data_891b4:
+	db $0e, $0f, $ff, $ff
+
+Data_891b8:
+	db $0e, $09, $ff, $ff
+
+Data_891bc:
+	db $00, $00, $00, $01, $00, $c5, $af, $00, $00, $52, $01, $17, $03, $0e, $1f, $07, $18, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Data_891e5:
+	db $00, $00, $00, $01, $00, $c5, $b1, $00, $00, $52, $01, $0e, $03, $0e, $04, $17, $04, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Data_8920e:
+	db $00, $00, $00, $01, $00, $c5, $c8, $00, $00, $52, $01, $6b, $03, $0e, $17, $17, $0a, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_89237:
 	ld a, e
 	cp $02
 	jp nz, label_89348
-	ld hl, $0073
-	scall CheckEventFlag
-	or a
-	jp nz, label_89348
-	xor a
-	scall PlayMusic
-	ld a, $1a
-	scall PlayMusic
+	checkevent $0073
+	if_true label_89348
+	playmusic 0
+	playmusic $1a
 	ld c, $01
-	ld de, $51a4
+	ld de, Data_891a4
 	ld a, $22
 	scall MovePlayer
 	ld e, $03
@@ -87,54 +95,50 @@ Func_89237:
 	scall SpriteFace
 	ld a, $01
 	scall PlayerFace
-	ld hl, $022b
+	hltext_tree_pointer TreeBitstreamText_42972
 	scall PrintTextStandard
-	ld hl, $015d
+	hltext_tree_pointer TreeBitstreamText_47192
 	scall PrintTextStandard
 label_89272:
-	ld de, $5349
-	ld hl, $51bc
+	ld de, Data_89349
+	ld hl, Data_891bc
 	scall Func_8039e
-	or a
-	jp nz, label_8928a
+	if_true label_8928a
 	ld a, [wc7c4]
 	cp $01
 	jp nz, label_89272
 	jp label_89348
 label_8928a:
-	ld hl, $022b
+	hltext_tree_pointer TreeBitstreamText_42972
 	scall PrintTextStandard
-	ld bc, $51ac
+	ld bc, Data_891ac
 	ld e, $22
 	ld a, $02
 	scall Func_80688
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	hideperson $02
 	ld e, $01
 	xor a
 	scall SpriteFace
 	ld a, $03
 	scall PlayerFace
-	ld hl, $022b
+	hltext_tree_pointer TreeBitstreamText_42972
 	scall PrintTextStandard
-	ld hl, $015d
+	hltext_tree_pointer TreeBitstreamText_47192
 	scall PrintTextStandard
 label_892bb:
-	ld de, $534c
-	ld hl, $51e5
+	ld de, Data_8934c
+	ld hl, Data_891e5
 	scall Func_8039e
-	or a
-	jp nz, label_892d3
+	if_true label_892d3
 	ld a, [wc7c4]
 	cp $01
 	jp nz, label_892bb
 	jp label_89348
 label_892d3:
-	ld hl, $022b
+	hltext_tree_pointer TreeBitstreamText_42972
 	scall PrintTextStandard
-	ld bc, $51b0
+	ld bc, Data_891b0
 	ld e, $22
 	xor a
 	scall Func_80688
@@ -142,75 +146,70 @@ label_892d3:
 	ld e, $00
 	xor a
 	scall SetPersonVisibilityState
-	ld bc, $51b4
+	ld bc, Data_891b4
 	ld e, $22
 	ld a, $01
 	scall Func_80688
 	xor a
 	scall PlayerFace
-	ld hl, $022b
+	hltext_tree_pointer TreeBitstreamText_42972
 	scall PrintTextStandard
-	ld hl, $015d
+	hltext_tree_pointer TreeBitstreamText_47192
 	scall PrintTextStandard
 label_89305:
-	ld de, $5350
-	ld hl, $520e
+	ld de, Data_89350
+	ld hl, Data_8920e
 	scall Func_8039e
-	or a
-	jp nz, label_8931d
+	if_true label_8931d
 	ld a, [wc7c4]
 	cp $01
 	jp nz, label_89305
 	jp label_89348
 label_8931d:
-	ld hl, $022b
+	hltext_tree_pointer TreeBitstreamText_42972
 	scall PrintTextStandard
 	ld e, $01
 	ld hl, $0073
 	scall EventFlagAction
-	ld bc, $51b8
+	ld bc, Data_891b8
 	ld e, $22
 	ld a, $01
 	scall Func_80688
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	xor a
-	scall PlayMusic
-	ld a, $09
-	scall PlayMusic
+	hideperson $01
+	playmusic 0
+	playmusic $09
 label_89348:
 	ret
 
 Data_89349:
-	db $d5, $b7, $00, $c5, $c2, $ba, $00, $b1, $b2, $00
+	dstr "ゆき"
+
+Data_8934c:
+	dstr "なつこ"
+
+Data_89350:
+	dstr "あい"
 
 Func_89353:
 	ld a, e
-	or a
-	jp nz, label_893a5
+	if_true label_893a5
 	ld a, [wPlayerFacing]
 	or a
 	jp z, label_89362
 	jp label_893a5
 label_89362:
-	ld hl, $0059
-	scall CheckEventFlag
+	checkevent $0059
 	cp $01
 	jp nz, label_89376
-	ld hl, $0283
+	hltext_tree_pointer TreeBitstreamText_47037
 	scall PrintTextStandard
 	jp label_893a5
 label_89376:
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
+	loademote $01, $01, $09
 	xor a
 	scall Func_80653
-	ld a, $5a
-	scall PlaySFX
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -229,29 +228,23 @@ label_893a5:
 
 Func_893a6:
 	ld a, e
-	or a
-	jp nz, label_893f8
+	if_true label_893f8
 	ld a, [wPlayerFacing]
 	or a
 	jp z, label_893b5
 	jp label_893f8
 label_893b5:
-	ld hl, $0059
-	scall CheckEventFlag
+	checkevent $0059
 	cp $01
 	jp nz, label_893c9
-	ld hl, $0283
+	hltext_tree_pointer TreeBitstreamText_47037
 	scall PrintTextStandard
 	jp label_893f8
 label_893c9:
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
+	loademote $01, $01, $09
 	xor a
 	scall Func_80653
-	ld a, $5a
-	scall PlaySFX
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -270,33 +263,104 @@ label_893f8:
 
 Func_893f9:
 	ld a, e
-	or a
-	jp nz, label_89431
-	ld hl, $0059
-	scall CheckEventFlag
-	or a
-	jp nz, label_8941e
+	if_true label_89431
+	checkevent $0059
+	if_true label_8941e
 	ld e, $01
 	ld hl, $0059
 	scall EventFlagAction
-	ld a, $31
-	scall PlaySFX
-	ld hl, $035b
+	playsfx $31
+	hltext_tree_pointer TreeBitstreamText_47029
 	scall PrintTextStandard
 	jp label_89431
 label_8941e:
 	ld e, $00
 	ld hl, $0059
 	scall EventFlagAction
-	ld a, $32
-	scall PlaySFX
-	ld hl, $035c
+	playsfx $32
+	hltext_tree_pointer TreeBitstreamText_4701b
 	scall PrintTextStandard
 label_89431:
 	ret
 
 Data_89432:
-	db $20, $0d, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $05, $07, $01, $01, $20, $07, $05, $09, $05, $08, $34, $1c, $07, $01, $01, $20, $07, $05, $09, $05, $08, $34, $1e, $0b, $01, $01, $20, $08, $05, $09, $05, $08, $34, $1e, $12, $01, $01, $20, $05, $06, $0b, $06, $0a, $34, $1c, $16, $01, $01, $20, $06, $06, $0c, $06, $0b, $34, $10, $06, $01, $01, $05, $1e, $09, $13, $09, $12, $34, $05, $15, $01, $01, $05, $14, $09, $13, $09, $12, $34, $08, $0b, $01, $01, $20, $03, $01, $08, $01, $07, $34, $0a, $0e, $01, $01, $20, $03, $01, $08, $01, $07, $34, $0d, $14, $01, $01, $20, $03, $01, $08, $01, $07, $34, $10, $15, $01, $01, $20, $03, $01, $08, $01, $07, $34, $13, $14, $01, $01, $20, $03, $01, $08, $01, $07, $34, $16, $0e, $01, $01, $20, $03, $01, $08, $01, $07, $34, $19, $0b, $01, $01, $20, $03, $01, $08, $01, $07, $34, $c1, $01, $ff, $ff, $ca, $01, $ff, $ff, $c5, $01, $ff, $ff, $c3, $01, $ff, $ff, $c6, $01, $ff, $ff, $c7, $01, $ff, $ff, $c2, $01, $ff, $ff, $c9, $01, $ff, $ff, $b5, $02, $ff, $ff, $26, $03, $ff, $ff, $9c, $03, $ff, $ff, $9d, $03, $ff, $ff, $9e, $03, $ff, $ff, $9f, $03, $ff, $ff, $00, $04, $17, $15, $01, $01, $02, $04, $00, $22, $5f, $48, $d7, $54, $07, $04, $0e, $0a, $01, $01, $02, $04, $00, $22, $5f, $48, $db, $54, $06, $04, $1a, $06, $01, $01, $01, $04, $00, $22, $5f, $48, $df, $54, $06, $04, $05, $0d, $01, $01, $01, $04, $00, $22, $5f, $48, $e3, $54, $06, $0c, $1f, $18, $01, $01, $03, $04, $00, $22, $5f, $48, $e7, $54, $ff, $00, $1f, $0c, $01, $01, $00, $04, $00, $22, $5f, $48, $f7, $54, $ff, $00, $1f, $0e, $01, $01, $00, $04, $00, $22, $5f, $48, $f7, $54, $02, $04, $0d, $16, $01, $01, $02, $04, $00, $22, $5f, $48, $eb, $54, $05, $04, $11, $0f, $01, $01, $00, $04, $00, $22, $5f, $48, $ef, $54, $00, $04, $1d, $0e, $01, $01, $00, $04, $00, $22, $5f, $48, $f3, $54, $07, $04, $13, $07, $01, $01, $03, $04, $00, $22, $f7, $56, $00, $00, $ff, $00, $08, $0b, $01, $01, $00, $04, $00, $22, $5f, $48, $fb, $54, $ff, $00, $0a, $0e, $01, $01, $00, $04, $00, $22, $5f, $48, $fb, $54, $ff, $00, $0d, $14, $01, $01, $00, $04, $00, $22, $5f, $48, $fb, $54, $ff, $00, $10, $15, $01, $01, $00, $04, $00, $22, $5f, $48, $fb, $54, $ff, $00, $13, $14, $01, $01, $00, $04, $00, $22, $5f, $48, $fb, $54, $ff, $00, $16, $0e, $01, $01, $00, $04, $00, $22, $5f, $48, $fb, $54, $ff, $00, $19, $0b, $01, $01, $00, $04, $00, $22, $5f, $48, $fb, $54, $ff, $00, $08, $0b, $01, $01, $00, $04, $01, $22, $96, $59, $00, $00, $ff, $00, $0a, $0e, $01, $01, $00, $04, $01, $22, $96, $59, $00, $00, $ff, $00, $0d, $14, $01, $01, $00, $04, $01, $22, $96, $59, $00, $00, $ff, $00, $10, $15, $01, $01, $00, $04, $01, $22, $96, $59, $00, $00, $ff, $00, $13, $14, $01, $01, $00, $04, $01, $22, $96, $59, $00, $00, $ff, $00, $16, $0e, $01, $01, $00, $04, $01, $22, $96, $59, $00, $00, $ff, $00, $19, $0b, $01, $01, $00, $04, $01, $22, $96, $59, $00, $00
+	db $20, $0d, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $05, $07, $01, $01, $20, $07, $05, $09, $05, $08, $34, $1c, $07, $01, $01, $20, $07, $05, $09, $05, $08, $34, $1e, $0b, $01, $01, $20, $08, $05, $09, $05, $08, $34, $1e, $12, $01, $01, $20, $05, $06, $0b, $06, $0a, $34, $1c, $16, $01, $01, $20, $06, $06, $0c, $06, $0b, $34, $10, $06, $01, $01, $05, $1e, $09, $13, $09, $12, $34, $05, $15, $01, $01, $05, $14, $09, $13, $09, $12, $34
+
+Data_8948a:
+	db $08, $0b, $01, $01, $20, $03, $01, $08, $01, $07, $34, $0a, $0e, $01, $01, $20, $03, $01, $08, $01, $07, $34, $0d, $14, $01, $01, $20, $03, $01, $08, $01, $07, $34, $10, $15, $01, $01, $20, $03, $01, $08, $01, $07, $34, $13, $14, $01, $01, $20, $03, $01, $08, $01, $07, $34, $16, $0e, $01, $01, $20, $03, $01, $08, $01, $07, $34, $19, $0b, $01, $01, $20, $03, $01, $08, $01, $07, $34
+
+Data_894d7:
+	db $c1, $01, $ff, $ff
+
+Data_894db:
+	db $ca, $01, $ff, $ff
+
+Data_894df:
+	db $c5, $01, $ff, $ff
+
+Data_894e3:
+	db $c3, $01, $ff, $ff
+
+Data_894e7:
+	db $c6, $01, $ff, $ff
+
+Data_894eb:
+	db $c7, $01, $ff, $ff
+
+Data_894ef:
+	db $c2, $01, $ff, $ff
+
+Data_894f3:
+	db $c9, $01, $ff, $ff
+
+Data_894f7:
+	db $b5, $02, $ff, $ff
+
+Data_894fb:
+	db $26, $03, $ff, $ff
+
+Data_894ff:
+	db $9c, $03, $ff, $ff
+
+Data_89503:
+	db $9d, $03, $ff, $ff
+
+Data_89507:
+	db $9e, $03, $ff, $ff
+
+Data_8950b:
+	db $9f, $03, $ff, $ff
+
+MapObjects_8950f:
+	map_object $00, $04, $17, $15, $01, $01, $02, $04, $00, PrintTextFacePlayer_22, Data_894d7
+	map_object $07, $04, $0e, $0a, $01, $01, $02, $04, $00, PrintTextFacePlayer_22, Data_894db
+	map_object $06, $04, $1a, $06, $01, $01, $01, $04, $00, PrintTextFacePlayer_22, Data_894df
+	map_object $06, $04, $05, $0d, $01, $01, $01, $04, $00, PrintTextFacePlayer_22, Data_894e3
+	map_object $06, $0c, $1f, $18, $01, $01, $03, $04, $00, PrintTextFacePlayer_22, Data_894e7
+	map_object $ff, $00, $1f, $0c, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894f7
+	map_object $ff, $00, $1f, $0e, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894f7
+	map_object $02, $04, $0d, $16, $01, $01, $02, $04, $00, PrintTextFacePlayer_22, Data_894eb
+	map_object $05, $04, $11, $0f, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894ef
+	map_object $00, $04, $1d, $0e, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894f3
+	map_object $07, $04, $13, $07, $01, $01, $03, $04, $00, Func_896f7, 0
+
+MapObjects_895a9:
+	map_object $ff, $00, $08, $0b, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894fb
+	map_object $ff, $00, $0a, $0e, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894fb
+	map_object $ff, $00, $0d, $14, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894fb
+	map_object $ff, $00, $10, $15, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894fb
+	map_object $ff, $00, $13, $14, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894fb
+	map_object $ff, $00, $16, $0e, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894fb
+	map_object $ff, $00, $19, $0b, $01, $01, $00, $04, $00, PrintTextFacePlayer_22, Data_894fb
+
+MapObjects_8960b:
+	map_object $ff, $00, $08, $0b, $01, $01, $00, $04, $01, Func_89996, 0
+	map_object $ff, $00, $0a, $0e, $01, $01, $00, $04, $01, Func_89996, 0
+	map_object $ff, $00, $0d, $14, $01, $01, $00, $04, $01, Func_89996, 0
+	map_object $ff, $00, $10, $15, $01, $01, $00, $04, $01, Func_89996, 0
+	map_object $ff, $00, $13, $14, $01, $01, $00, $04, $01, Func_89996, 0
+	map_object $ff, $00, $16, $0e, $01, $01, $00, $04, $01, Func_89996, 0
+	map_object $ff, $00, $19, $0b, $01, $01, $00, $04, $01, Func_89996, 0
 
 Func_8966d:: ; 8966d
 	ld a, $01
@@ -306,8 +370,7 @@ Func_8966d:: ; 8966d
 	call Func_89959
 	ld hl, Func_89959
 	scall Func_80f11
-	ld a, $03
-	scall PlayMusic
+	playmusic $03
 	ld a, $01
 	scall LoadPlayerSprite
 	ld a, [wc790]
@@ -316,41 +379,27 @@ Func_8966d:: ; 8966d
 	ld a, [wc790]
 	cp $07
 	jp nc, label_896db
-	ld e, $08
-	ld hl, $5432
-	scall LoadWarps
-	ld e, $07
-	ld hl, $548a
-	scall LoadWarps
-	ld e, $0b
-	ld hl, $550f
-	scall LoadMapObjects
-	ld e, $07
-	ld hl, $560b
-	scall LoadMapObjects
-	ld de, $550b
+	loadwarps $08, Data_89432
+	loadwarps $07, Data_8948a
+	loadpeople $0b, MapObjects_8950f
+	loadpeople $07, MapObjects_8960b
+	ld de, Data_8950b
 	xor a
 	scall Func_80150
-	ld de, $5503
+	ld de, Data_89503
 	ld a, $01
 	scall Func_80150
-	ld de, $5507
+	ld de, Data_89507
 	ld a, $03
 	scall Func_80150
-	ld de, $54ff
+	ld de, Data_894ff
 	ld a, $09
 	scall Func_80150
 	jp label_896f3
 label_896db:
-	ld e, $08
-	ld hl, $5432
-	scall LoadWarps
-	ld e, $0b
-	ld hl, $550f
-	scall LoadMapObjects
-	ld e, $07
-	ld hl, $55a9
-	scall LoadMapObjects
+	loadwarps $08, Data_89432
+	loadpeople $0b, MapObjects_8950f
+	loadpeople $07, MapObjects_895a9
 label_896f3:
 	scall FadeInMap
 	ret
@@ -361,8 +410,7 @@ Func_896f7:
 	ld hl, sp+$00
 	ld [hl], $ff
 	ld a, e
-	or a
-	jp nz, label_8992c
+	if_true label_8992c
 	ld hl, sp+$03
 	ld a, [hl]
 	scall FacePlayer
@@ -375,21 +423,19 @@ Func_896f7:
 	ld [hl], a
 	cp $ff
 	jp z, label_8978f
-	ld hl, $029c
+	hltext_tree_pointer TreeBitstreamText_442ef
 	scall PrintTextWithNPCName
 	ld a, $26
 	scall Func_80e7d
 	cp $01
 	jp nz, label_89786
-	ld hl, $028e
+	hltext_tree_pointer TreeBitstreamText_44392
 	scall PrintTextWithNPCName
-	ld hl, $0400
+	hltext_tree_pointer TreeBitstreamText_458e0
 	scall PrintTextWithYesNoBox
-	or a
-	jp nz, label_89775
-	ld a, $68
-	scall PlaySFX
-	ld hl, $0404
+	if_true label_89775
+	playsfx $68
+	hltext_tree_pointer TreeBitstreamText_443c5
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
 	ld l, [hl]
@@ -415,15 +461,14 @@ Func_896f7:
 	ld [hl], $01
 	jp label_89783
 label_89775:
-	ld a, $69
-	scall PlaySFX
-	ld hl, $0405
+	playsfx $69
+	hltext_tree_pointer TreeBitstreamText_4445d
 	scall PrintTextWithNPCName
 	jp label_8992c
 label_89783:
 	jp label_8978f
 label_89786:
-	ld hl, $046e
+	hltext_tree_pointer TreeBitstreamText_45a40
 	scall PrintTextStandard
 	jp label_8992c
 label_8978f:
@@ -438,21 +483,19 @@ label_89792:
 	ld [hl], a
 	cp $ff
 	jp z, label_89819
-	ld hl, $029c
+	hltext_tree_pointer TreeBitstreamText_442ef
 	scall PrintTextWithNPCName
 	ld a, $69
 	scall Func_80e7d
 	cp $01
 	jp nz, label_89810
-	ld hl, $028f
+	hltext_tree_pointer TreeBitstreamText_44507
 	scall PrintTextWithNPCName
-	ld hl, $0400
+	hltext_tree_pointer TreeBitstreamText_458e0
 	scall PrintTextWithYesNoBox
-	or a
-	jp nz, label_897ff
-	ld a, $68
-	scall PlaySFX
-	ld hl, $0425
+	if_true label_897ff
+	playsfx $68
+	hltext_tree_pointer TreeBitstreamText_4453d
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
 	ld l, [hl]
@@ -478,15 +521,14 @@ label_89792:
 	ld [hl], $01
 	jp label_8980d
 label_897ff:
-	ld a, $69
-	scall PlaySFX
-	ld hl, $0405
+	playsfx $69
+	hltext_tree_pointer TreeBitstreamText_4445d
 	scall PrintTextWithNPCName
 	jp label_8992c
 label_8980d:
 	jp label_89819
 label_89810:
-	ld hl, $046e
+	hltext_tree_pointer TreeBitstreamText_45a40
 	scall PrintTextStandard
 	jp label_8992c
 label_89819:
@@ -528,46 +570,45 @@ label_89836:
 	jp z, label_89883
 	cp $07
 	jp z, label_89874
-	or a
-	jp nz, label_898ce
+	if_true label_898ce
 label_89874:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $034b
+	hltext_tree_pointer TreeBitstreamText_45abb
 	scall PrintTextStandard
 	jp label_898d4
 label_89883:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $0205
+	hltext_tree_pointer TreeBitstreamText_45add
 	scall PrintTextStandard
 	jp label_898d4
 label_89892:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $020a
+	hltext_tree_pointer TreeBitstreamText_45aee
 	scall PrintTextStandard
 	jp label_898d4
 label_898a1:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $0218
+	hltext_tree_pointer TreeBitstreamText_45aff
 	scall PrintTextStandard
 	jp label_898d4
 label_898b0:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $0241
+	hltext_tree_pointer TreeBitstreamText_45b10
 	scall PrintTextStandard
 	jp label_898d4
 label_898bf:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $0244
+	hltext_tree_pointer TreeBitstreamText_45b20
 	scall PrintTextStandard
 	jp label_898d4
 label_898ce:
-	ld hl, $029c
+	hltext_tree_pointer TreeBitstreamText_442ef
 	scall PrintTextWithNPCName
 label_898d4:
 	jp label_8992c
@@ -582,29 +623,29 @@ label_898d7:
 	ld a, [wc796]
 	cp $02
 	jp c, label_898fe
-	ld hl, $029c
+	hltext_tree_pointer TreeBitstreamText_442ef
 	scall PrintTextWithNPCName
-	ld hl, $0424
+	hltext_tree_pointer TreeBitstreamText_44486
 	scall PrintTextWithNPCName
 	jp label_8992c
 label_898fe:
 	ld a, [wc796]
 	cp $0f
 	jp nz, label_8990f
-	ld hl, $029c
+	hltext_tree_pointer TreeBitstreamText_442ef
 	scall PrintTextWithNPCName
 	jp label_8992c
 label_8990f:
 	ld a, [wc796]
 	cp $0a
 	jp c, label_89920
-	ld hl, $0427
+	hltext_tree_pointer TreeBitstreamText_445b1
 	scall PrintTextWithNPCName
 	jp label_8992c
 label_89920:
-	ld hl, $029c
+	hltext_tree_pointer TreeBitstreamText_442ef
 	scall PrintTextWithNPCName
-	ld hl, $01c8
+	hltext_tree_pointer TreeBitstreamText_4434a
 	scall PrintTextWithNPCName
 label_8992c:
 	pop bc
@@ -612,7 +653,25 @@ label_8992c:
 	ret
 
 Data_8992f:
-	db $05, $07, $01, $01, $08, $0b, $05, $07, $01, $01, $0a, $0e, $05, $07, $01, $01, $0d, $14, $05, $07, $01, $01, $10, $15, $05, $07, $01, $01, $13, $14, $05, $07, $01, $01, $16, $0e, $05, $07, $01, $01, $19, $0b
+	db $05, $07, $01, $01, $08, $0b
+
+Data_89935:
+	db $05, $07, $01, $01, $0a, $0e
+
+Data_8993b:
+	db $05, $07, $01, $01, $0d, $14
+
+Data_89941:
+	db $05, $07, $01, $01, $10, $15
+
+Data_89947:
+	db $05, $07, $01, $01, $13, $14
+
+Data_8994d:
+	db $05, $07, $01, $01, $16, $0e
+
+Data_89953:
+	db $05, $07, $01, $01, $19, $0b
 
 Func_89959:
 	ld a, [wc790]
@@ -621,19 +680,19 @@ Func_89959:
 	ld a, [wc790]
 	cp $07
 	jp nc, label_89995
-	ld hl, $592f
+	ld hl, Data_8992f
 	scall Func_80d9b
-	ld hl, $5935
+	ld hl, Data_89935
 	scall Func_80d9b
-	ld hl, $593b
+	ld hl, Data_8993b
 	scall Func_80d9b
-	ld hl, $5941
+	ld hl, Data_89941
 	scall Func_80d9b
-	ld hl, $5947
+	ld hl, Data_89947
 	scall Func_80d9b
-	ld hl, $594d
+	ld hl, Data_8994d
 	scall Func_80d9b
-	ld hl, $5953
+	ld hl, Data_89953
 	scall Func_80d9b
 	scall Func_80f02
 label_89995:
@@ -686,23 +745,171 @@ label_899f4:
 	ld [wc78a], a
 	jp label_89a02
 label_899fc:
-	ld hl, $0001
+	hltext_tree_pointer DummyTextTreeBitstream_001
 	scall PrintTextStandard
 label_89a02:
 	ret
 
 Data_89a03:
+	db $08, $13, $04, $01, $05, $00, $05, $15, $05, $16, $2e
+
+Data_89a0e:
+	db $1f, $01, $0a, $03, $14
+
+Data_89a13:
 IF DEF(SUN)
-	db $08, $13, $04, $01, $05, $00, $05, $15, $05, $16, $2e, $1f, $01, $0a, $03, $14, $00, $02, $14, $14, $18, $07, $09, $17, $1f, $07, $18, $01, $0a, $00, $00, $02, $14, $14, $1c, $08, $0a, $7f, $1f, $17, $11, $08, $09, $00, $00, $02, $14, $14, $26, $08, $0a, $5a, $01, $00, $00, $01, $08, $00, $00, $02, $14, $14, $07, $09, $0b, $45, $06, $06, $11, $01, $04, $00, $00, $02, $14, $14, $03, $0a, $0c, $02, $0f, $17, $00, $02, $02, $00, $ff, $00, $09, $03, $01, $01, $00, $04, $00, $22, $c3, $5a, $00, $00, $ff, $00, $0a, $03, $01, $01, $00, $04, $00, $22, $28, $5b, $00, $00
+	db $00, $02, $14, $14, $18, $07, $09, $17, $1f, $07, $18, $01, $0a, $00
+	db $00, $02, $14, $14, $1c, $08, $0a, $7f, $1f, $17, $11, $08, $09, $00
+	db $00, $02, $14, $14, $26, $08, $0a, $5a, $01, $00, $00, $01, $08, $00
+	db $00, $02, $14, $14, $07, $09, $0b, $45, $06, $06, $11, $01, $04, $00
+	db $00, $02, $14, $14, $03, $0a, $0c, $02, $0f, $17, $00, $02, $02, $00
 ELIF DEF(STAR)
-	db $08, $13, $04, $01, $05, $00, $05, $15, $05, $16, $2e, $1f, $01, $0a, $03, $14, $00, $02, $14, $14, $18, $07, $09, $17, $1f, $07, $18, $01, $0a, $00, $00, $02, $14, $14, $38, $08, $0a, $18, $0d, $0b, $00, $01, $09, $00, $00, $02, $14, $14, $34, $08, $0a, $19, $17, $05, $1e, $01, $08, $00, $00, $02, $14, $14, $3a, $09, $0b, $17, $1f, $1e, $08, $01, $04, $00, $00, $02, $14, $14, $58, $0a, $0c, $02, $1f, $17, $11, $02, $02, $00, $ff, $00, $09, $03, $01, $01, $00, $04, $00, $22, $c3, $5a, $00, $00, $ff, $00, $0a, $03, $01, $01, $00, $04, $00, $22, $28, $5b, $00, $00
+	db $00, $02, $14, $14, $18, $07, $09, $17, $1f, $07, $18, $01, $0a, $00
+	db $00, $02, $14, $14, $38, $08, $0a, $18, $0d, $0b, $00, $01, $09, $00
+	db $00, $02, $14, $14, $34, $08, $0a, $19, $17, $05, $1e, $01, $08, $00
+	db $00, $02, $14, $14, $3a, $09, $0b, $17, $1f, $1e, $08, $01, $04, $00
+	db $00, $02, $14, $14, $58, $0a, $0c, $02, $1f, $17, $11, $02, $02, $00
 ENDC
 
+MapObjects_89a59:
+	map_object $ff, $00, $09, $03, $01, $01, $00, $04, $00, Func_89ac3, 0
+	map_object $ff, $00, $0a, $03, $01, $01, $00, $04, $00, Func_89b28, 0
+
 Func_89a75:: ; 89a75
+	loadwarps $01, Data_89a03
+	ld e, $01
+	ld hl, Data_89a0e
+	scall Func_80ce7
+	ld a, $03
+	scall Func_80d01
+	loadwilds $05, Data_89a13
+	loadpeople $02, MapObjects_89a59
+	ld a, $03
+	ld [wc7e2], a
+	ld a, [wBackupMapGroup]
+	if_true label_89ab4
+	ld a, [wBackupMapNumber]
+	cp $02
+	jp nz, label_89ab4
+	call Func_89b79
+	jp label_89ac2
+label_89ab4:
+	playmusic $09
+	scall FadeInMap
+	hltext_tree_pointer TreeBitstreamText_468ae
+	scall LandmarkSign
+label_89ac2:
+	ret
+
+Func_89ac3:
+	ld a, e
+	if_true label_89b27
+	ld a, [wPlayerFacing]
+	or a
+	jp z, label_89ad2
+	jp label_89b27
+label_89ad2:
+	checkevent $0059
+	cp $01
+	jp nz, label_89ae6
+	hltext_tree_pointer TreeBitstreamText_47037
+	scall PrintTextStandard
+	jp label_89b27
+label_89ae6:
+	ld a, [wc790]
+	or a
+	jp z, label_89afe
+	ld a, [wc790]
+	cp $07
+	jp nc, label_89afe
+	hltext_tree_pointer TreeBitstreamText_47037
+	scall PrintTextStandard
+	jp label_89b27
+label_89afe:
+	xor a
+	scall Func_80653
+	loademote $01, $01, $09
+	playsfx $5a
+	scall WaitEmote
+	scall HideEmote
+	xor a
+	scall PlayerFace
+	ld l, $10
+	push hl
+	ld c, $09
+	ld e, $15
+	ld a, $05
+	scall Func_80dff
+	pop bc
+label_89b27:
+	ret
+
+Func_89b28:
+	ld a, e
+	if_true label_89b78
+	ld a, [wc790]
+	or a
+	jp z, label_89b45
+	ld a, [wc790]
+	cp $07
+	jp nc, label_89b45
+	hltext_tree_pointer TreeBitstreamText_47041
+	scall PrintTextStandard
+	jp label_89b78
+label_89b45:
+	checkevent $0059
+	if_true label_89b65
+	ld e, $01
+	ld hl, $0059
+	scall EventFlagAction
+	playsfx $32
+	hltext_tree_pointer TreeBitstreamText_47029
+	scall PrintTextStandard
+	jp label_89b78
+label_89b65:
+	ld e, $00
+	ld hl, $0059
+	scall EventFlagAction
+	playsfx $28
+	hltext_tree_pointer TreeBitstreamText_4701b
+	scall PrintTextStandard
+label_89b78:
+	ret
+
+Func_89b79:
+	checkevent $00fc
+	if_true label_89bc4
+	playmusic $09
+	xor a
+	scall Func_80653
+	ld a, $02
+	scall PlayerFace
+	scall FadeInMap
+	hltext_tree_pointer TreeBitstreamText_3d76a
+	scall LandmarkSign
+	loademote $01, $02, $09
+	playsfx $37
+	scall WaitEmote
+	ld a, $01
+	scall Func_80653
+	ld hl, $0001
+	scall ScriptSleep
+	scall HideEmote
+	ld e, $01
+	ld hl, $00fc
+	scall EventFlagAction
+	jp label_89bc9
+label_89bc4:
+	ld a, $01
+	scall Func_80653
+label_89bc9:
+	ret
+
+Data_89bca:
 IF DEF(SUN)
-	db $1e, $01, $21, $03, $5a, $cd, $3a, $40, $1e, $01, $21, $0e, $5a, $cd, $e7, $4c, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $13, $5a, $cd, $24, $4d, $1e, $02, $21, $59, $5a, $cd, $fb, $40, $3e, $03, $ea, $e2, $c7, $fa, $df, $c7, $b7, $c2, $b4, $5a, $fa, $e0, $c7, $fe, $02, $c2, $b4, $5a, $cd, $79, $5b, $c3, $c2, $5a, $3e, $09, $cd, $e6, $4e, $cd, $1c, $40, $21, $da, $02, $cd, $72, $4f, $c9, $7b, $b7, $c2, $27, $5b, $fa, $38, $c8, $b7, $ca, $d2, $5a, $c3, $27, $5b, $21, $59, $00, $cd, $2e, $46, $fe, $01, $c2, $e6, $5a, $21, $83, $02, $cd, $98, $44, $c3, $27, $5b, $fa, $90, $c7, $b7, $ca, $fe, $5a, $fa, $90, $c7, $fe, $07, $d2, $fe, $5a, $21, $83, $02, $cd, $98, $44, $c3, $27, $5b, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $09, $cd, $76, $41, $3e, $5a, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $af, $cd, $77, $46, $2e, $10, $e5, $0e, $09, $1e, $15, $3e, $05, $cd, $ff, $4d, $c1, $c9, $7b, $b7, $c2, $78, $5b, $fa, $90, $c7, $b7, $ca, $45, $5b, $fa, $90, $c7, $fe, $07, $d2, $45, $5b, $21, $dd, $03, $cd, $98, $44, $c3, $78, $5b, $21, $59, $00, $cd, $2e, $46, $b7, $c2, $65, $5b, $1e, $01, $21, $59, $00, $cd, $1b, $46, $3e, $32, $cd, $fe, $4e, $21, $5b, $03, $cd, $98, $44, $c3, $78, $5b, $1e, $00, $21, $59, $00, $cd, $1b, $46, $3e, $28, $cd, $fe, $4e, $21, $5c, $03, $cd, $98, $44, $c9, $21, $fc, $00, $cd, $2e, $46, $b7, $c2, $c4, $5b, $3e, $09, $cd, $e6, $4e, $af, $cd, $53, $46, $3e, $02, $cd, $77, $46, $cd, $1c, $40, $21, $fc, $00, $cd, $72, $4f, $0e, $01, $1e, $02, $3e, $09, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $3e, $01, $cd, $53, $46, $21, $01, $00, $cd, $8f, $46, $cd, $8b, $41, $1e, $01, $21, $fc, $00, $cd, $1b, $46, $c3, $c9, $5b, $3e, $01, $cd, $53, $46, $c9, $09, $03, $01, $01, $20, $03, $03, $02, $03, $03, $2e, $21, $0e, $12, $03, $0d, $00, $02, $14, $14, $18, $07, $09, $17, $1f, $07, $18, $01, $0a, $00, $00, $02, $14, $14, $1c, $08, $0a, $7f, $1f, $17, $11, $08, $09, $00, $00, $02, $14, $14, $26, $08, $0a, $5a, $01, $00, $00, $01, $08, $00, $00, $02, $14, $14, $07, $09, $0b, $45, $06, $06, $11, $01, $04, $00, $00, $02, $14, $14, $03, $0a, $0c, $02, $0f, $17, $00, $02, $02, $00, $0c, $0c, $10, $09, $01, $01, $02, $04, $00, $22, $00, $00, $00, $00, $ff, $00, $0e, $0a, $01, $02, $00, $04, $01, $22, $8a, $5d, $00, $00, $ff, $00, $09, $03, $01, $01, $00, $04, $00, $22, $a9, $5c, $00, $00, $ff, $00, $0a, $03, $01, $01, $00, $04, $00, $22, $04, $5d, $00, $00
+	db $09, $03, $01, $01, $20, $03, $03, $02, $03, $03, $2e, $21, $0e, $12, $03, $0d, $00, $02, $14, $14, $18, $07, $09, $17, $1f, $07, $18, $01, $0a, $00, $00, $02, $14, $14, $1c, $08, $0a, $7f, $1f, $17, $11, $08, $09, $00, $00, $02, $14, $14, $26, $08, $0a, $5a, $01, $00, $00, $01, $08, $00, $00, $02, $14, $14, $07, $09, $0b, $45, $06, $06, $11, $01, $04, $00, $00, $02, $14, $14, $03, $0a, $0c, $02, $0f, $17, $00, $02, $02, $00, $0c, $0c, $10, $09, $01, $01, $02, $04, $00, $22, $00, $00, $00, $00, $ff, $00, $0e, $0a, $01, $02, $00, $04, $01, $22, $8a, $5d, $00, $00, $ff, $00, $09, $03, $01, $01, $00, $04, $00, $22, $a9, $5c, $00, $00, $ff, $00, $0a, $03, $01, $01, $00, $04, $00, $22, $04, $5d, $00, $00
 ELIF DEF(STAR)
-	db $1e, $01, $21, $03, $5a, $cd, $3a, $40, $1e, $01, $21, $0e, $5a, $cd, $e7, $4c, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $13, $5a, $cd, $24, $4d, $1e, $02, $21, $59, $5a, $cd, $fb, $40, $3e, $03, $ea, $e2, $c7, $fa, $df, $c7, $b7, $c2, $b4, $5a, $fa, $e0, $c7, $fe, $02, $c2, $b4, $5a, $cd, $79, $5b, $c3, $c2, $5a, $3e, $09, $cd, $e6, $4e, $cd, $1c, $40, $21, $da, $02, $cd, $72, $4f, $c9, $7b, $b7, $c2, $27, $5b, $fa, $38, $c8, $b7, $ca, $d2, $5a, $c3, $27, $5b, $21, $59, $00, $cd, $2e, $46, $fe, $01, $c2, $e6, $5a, $21, $83, $02, $cd, $98, $44, $c3, $27, $5b, $fa, $90, $c7, $b7, $ca, $fe, $5a, $fa, $90, $c7, $fe, $07, $d2, $fe, $5a, $21, $83, $02, $cd, $98, $44, $c3, $27, $5b, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $09, $cd, $76, $41, $3e, $5a, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $af, $cd, $77, $46, $2e, $10, $e5, $0e, $09, $1e, $15, $3e, $05, $cd, $ff, $4d, $c1, $c9, $7b, $b7, $c2, $78, $5b, $fa, $90, $c7, $b7, $ca, $45, $5b, $fa, $90, $c7, $fe, $07, $d2, $45, $5b, $21, $dd, $03, $cd, $98, $44, $c3, $78, $5b, $21, $59, $00, $cd, $2e, $46, $b7, $c2, $65, $5b, $1e, $01, $21, $59, $00, $cd, $1b, $46, $3e, $32, $cd, $fe, $4e, $21, $5b, $03, $cd, $98, $44, $c3, $78, $5b, $1e, $00, $21, $59, $00, $cd, $1b, $46, $3e, $28, $cd, $fe, $4e, $21, $5c, $03, $cd, $98, $44, $c9, $21, $fc, $00, $cd, $2e, $46, $b7, $c2, $c4, $5b, $3e, $09, $cd, $e6, $4e, $af, $cd, $53, $46, $3e, $02, $cd, $77, $46, $cd, $1c, $40, $21, $fc, $00, $cd, $72, $4f, $0e, $01, $1e, $02, $3e, $09, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $3e, $01, $cd, $53, $46, $21, $01, $00, $cd, $8f, $46, $cd, $8b, $41, $1e, $01, $21, $fc, $00, $cd, $1b, $46, $c3, $c9, $5b, $3e, $01, $cd, $53, $46, $c9, $09, $03, $01, $01, $20, $03, $03, $02, $03, $03, $2e, $21, $0e, $12, $03, $0d, $00, $02, $14, $14, $18, $07, $09, $17, $1f, $07, $18, $01, $0a, $00, $00, $02, $14, $14, $38, $08, $0a, $18, $0d, $0b, $00, $01, $09, $00, $00, $02, $14, $14, $34, $08, $0a, $19, $17, $05, $1e, $01, $08, $00, $00, $02, $14, $14, $3a, $09, $0b, $17, $1f, $1e, $08, $01, $04, $00, $00, $02, $14, $14, $58, $0a, $0c, $02, $1f, $17, $11, $02, $02, $00, $0c, $0c, $10, $09, $01, $01, $02, $04, $00, $22, $00, $00, $00, $00, $ff, $00, $0e, $0a, $01, $02, $00, $04, $01, $22, $8a, $5d, $00, $00, $ff, $00, $09, $03, $01, $01, $00, $04, $00, $22, $a9, $5c, $00, $00, $ff, $00, $0a, $03, $01, $01, $00, $04, $00, $22, $04, $5d, $00, $00
+	db $09, $03, $01, $01, $20, $03, $03, $02, $03, $03, $2e, $21, $0e, $12, $03, $0d, $00, $02, $14, $14, $18, $07, $09, $17, $1f, $07, $18, $01, $0a, $00, $00, $02, $14, $14, $38, $08, $0a, $18, $0d, $0b, $00, $01, $09, $00, $00, $02, $14, $14, $34, $08, $0a, $19, $17, $05, $1e, $01, $08, $00, $00, $02, $14, $14, $3a, $09, $0b, $17, $1f, $1e, $08, $01, $04, $00, $00, $02, $14, $14, $58, $0a, $0c, $02, $1f, $17, $11, $02, $02, $00, $0c, $0c, $10, $09, $01, $01, $02, $04, $00, $22, $00, $00, $00, $00, $ff, $00, $0e, $0a, $01, $02, $00, $04, $01, $22, $8a, $5d, $00, $00, $ff, $00, $09, $03, $01, $01, $00, $04, $00, $22, $a9, $5c, $00, $00, $ff, $00, $0a, $03, $01, $01, $00, $04, $00, $22, $04, $5d, $00, $00
 ENDC
 
 Func_89c58:: ; 89c58

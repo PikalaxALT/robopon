@@ -121,23 +121,42 @@ ENDC
 
 MACRO sprite_face
 	ld e, \1
+IF \2 == 0
+	xor a
+ELSE
 	ld a, \2
+ENDC
 	scall SpriteFace
 	ENDM
 
 MACRO showperson
 	ld e, 1
+IF \1 == 0
+	xor a
+ELSE
 	ld a, \1
+ENDC
 	scall SetPersonVisibilityState
 	ENDM
 
 MACRO hideperson
 	ld e, 0
+IF \1 == 0
+	xor a
+ELSE
 	ld a, \1
+ENDC
 	scall SetPersonVisibilityState
 	ENDM
 
 MACRO if_true
 	or a
 	jp nz, \1
+	ENDM
+
+MACRO map_object
+	db \1, \2, \3, \4, \5, \6, \7, \8, \9, BANK(.)
+	shift 2
+	dw \8
+	dw \9
 	ENDM
