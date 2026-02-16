@@ -42,3 +42,4 @@ pokecrystal.txt
 # swap files for gedit
 *~
 tools/unidasm
+.vscode
