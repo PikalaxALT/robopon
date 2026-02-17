@@ -164,7 +164,7 @@ label_8d321:
 	ld a, [wc790]
 	cp $06
 	jp nc, label_8d386
-	ld hl, $032d
+	hltext_tree_pointer TreeBitstreamText_46f30
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_8d383
@@ -204,12 +204,12 @@ label_8d34b:
 label_8d383:
 	jp label_8d38c
 label_8d386:
-	ld hl, $0377
+	hltext_tree_pointer TreeBitstreamText_470f0
 	scall PrintTextStandard
 label_8d38c:
 	jp label_8d395
 label_8d38f:
-	ld hl, $0376
+	hltext_tree_pointer TreeBitstreamText_470d8
 	scall PrintTextStandard
 label_8d395:
 	ret
@@ -233,7 +233,7 @@ label_8d3b4:
 	ld e, $01
 	xor a
 	scall SetPersonVisibilityState
-	ld hl, $00e4
+	hltext_tree_pointer TreeBitstreamText_3ccf9
 	scall PrintTextWithNPCName
 	ld l, $11
 	xor a
@@ -310,7 +310,7 @@ Data_8d431:
 Func_8d435:
 	ld hl, $003c
 	scall ScriptSleep
-	ld hl, $00e5
+	hltext_tree_pointer TreeBitstreamText_3cd08
 	scall PrintTextWithNPCName
 	ld hl, $003c
 	scall ScriptSleep
@@ -342,7 +342,7 @@ Func_8d435:
 	ld e, $01
 	ld a, $01
 	scall SpriteFace
-	ld hl, $00e6
+	hltext_tree_pointer TreeBitstreamText_3cdce
 	scall PrintTextWithNPCName
 	ld e, $00
 	ld a, $01
@@ -360,14 +360,14 @@ Func_8d435:
 	ld e, $02
 	xor a
 	scall SpriteFace
-	ld hl, $00e7
+	hltext_tree_pointer TreeBitstreamText_3ce14
 	scall PrintTextWithNPCName
 	ld e, $02
 	ld a, $01
 	scall SpriteFace
-	ld hl, $00e8
+	hltext_tree_pointer TreeBitstreamText_3cec2
 	scall PrintTextWithNPCName
-	ld hl, $00e9
+	hltext_tree_pointer TreeBitstreamText_3cefd
 	scall PrintTextWithNPCName
 	ld e, $00
 	ld a, $02
@@ -550,7 +550,7 @@ Func_8d61a:
 	ld e, $02
 	ld a, $01
 	scall SpriteFace
-	ld hl, $00f0
+	hltext_tree_pointer TreeBitstreamText_3d465
 	scall PrintTextWithNPCName
 	ld e, $03
 	ld a, $01
@@ -585,12 +585,12 @@ Func_8d61a:
 	ld e, $02
 	xor a
 	scall SpriteFace
-	ld hl, $00f1
+	hltext_tree_pointer TreeBitstreamText_3d4a3
 	scall PrintTextWithNPCName
 	ld e, $03
 	ld a, $01
 	scall SpriteFace
-	ld hl, $00f2
+	hltext_tree_pointer TreeBitstreamText_3d51a
 	scall PrintTextWithNPCName
 	ld e, $02
 	ld a, $01
@@ -606,13 +606,13 @@ Func_8d61a:
 	xor a
 	scall PlayMusic
 label_8d6e1:
-	ld hl, $0358
+	hltext_tree_pointer TreeBitstreamText_3d552
 	scall PrintTextWithNPCNameAndYesNoBox
 	or a
 	jp nz, label_8d75c
 	ld a, $03
 	scall PlayMusic
-	ld hl, $00f3
+	hltext_tree_pointer TreeBitstreamText_3d59c
 	scall PrintTextWithNPCName
 	ld e, $03
 	ld a, $01
@@ -634,9 +634,9 @@ label_8d6e1:
 	scall SpriteFace
 	ld hl, $001e
 	scall ScriptSleep
-	ld hl, $00f5
+	hltext_tree_pointer TreeBitstreamText_3d5d0
 	scall PrintTextWithNPCName
-	ld hl, $00f6
+	hltext_tree_pointer TreeBitstreamText_3d60c
 	scall PrintTextWithNPCName
 	ld bc, Data_8d612
 	ld e, $23
@@ -657,7 +657,7 @@ label_8d6e1:
 label_8d75c:
 	ld a, $69
 	scall PlaySFX
-	ld hl, $00f7
+	hltext_tree_pointer TreeBitstreamText_3d63e
 	scall PrintTextWithNPCName
 	jp label_8d6e1
 label_8d76a:
@@ -690,7 +690,7 @@ label_8d790:
 	push hl
 	ld a, $69
 	scall PlaySFX
-	ld hl, $00ee
+	hltext_tree_pointer TreeBitstreamText_3d404
 	scall PrintTextWithNPCName
 	xor a
 	pop hl
@@ -743,7 +743,7 @@ label_8d7df:
 	scall ScriptSleep
 	ld a, $68
 	scall PlaySFX
-	ld hl, $00ef
+	hltext_tree_pointer TreeBitstreamText_3d442
 	scall PrintTextWithNPCName
 	xor a
 	pop hl
@@ -799,7 +799,7 @@ label_8d843:
 	push hl
 	ld a, $69
 	scall PlaySFX
-	ld hl, $00ec
+	hltext_tree_pointer TreeBitstreamText_3d37a
 	scall PrintTextWithNPCName
 	xor a
 	pop hl
@@ -866,7 +866,7 @@ label_8d8a9:
 	scall ScriptSleep
 	ld a, $68
 	scall PlaySFX
-	ld hl, $00eb
+	hltext_tree_pointer TreeBitstreamText_3d2d1
 	scall PrintTextWithNPCName
 	xor a
 	pop hl
@@ -929,7 +929,7 @@ label_8d919:
 	push hl
 	ld a, $69
 	scall PlaySFX
-	ld hl, $00ea
+	hltext_tree_pointer TreeBitstreamText_3d278
 	scall PrintTextWithNPCName
 	xor a
 	pop hl
@@ -968,11 +968,11 @@ Func_8d955:
 	ld a, e
 	or a
 	jp nz, label_8d9bb
-	ld hl, $0358
+	hltext_tree_pointer TreeBitstreamText_3d552
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_8d9b5
-	ld hl, $00f3
+	hltext_tree_pointer TreeBitstreamText_3d59c
 	scall PrintTextWithNPCName
 	ld e, $01
 	ld a, $01
@@ -982,7 +982,7 @@ Func_8d955:
 	ld e, $01
 	xor a
 	scall SpriteFace
-	ld hl, $00f5
+	hltext_tree_pointer TreeBitstreamText_3d5d0
 	scall PrintTextWithNPCName
 	ld e, $02
 	xor a
@@ -992,7 +992,7 @@ Func_8d955:
 	ld e, $02
 	ld a, $01
 	scall SpriteFace
-	ld hl, $00f6
+	hltext_tree_pointer TreeBitstreamText_3d60c
 	scall PrintTextWithNPCName
 	ld bc, Data_8d94d
 	ld e, $23
@@ -1005,7 +1005,7 @@ Func_8d955:
 	scall WaitNPCStep
 	jp label_8d9bb
 label_8d9b5:
-	ld hl, $00f7
+	hltext_tree_pointer TreeBitstreamText_3d63e
 	scall PrintTextWithNPCName
 label_8d9bb:
 	ret
@@ -1187,21 +1187,21 @@ Func_8db33:
 	ld [hl], a
 	cp $ff
 	jp z, label_8dbd0
-	ld hl, $03eb
+	hltext_tree_pointer TreeBitstreamText_44000
 	scall PrintTextWithNPCName
 	ld a, $17
 	scall Func_80e7d
 	cp $01
 	jp nz, label_8dbc7
-	ld hl, $028c
+	hltext_tree_pointer TreeBitstreamText_440c4
 	scall PrintTextWithNPCName
-	ld hl, $0400
+	hltext_tree_pointer TreeBitstreamText_458e0
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_8dbb3
 	ld a, $68
 	scall PlaySFX
-	ld hl, $0401
+	hltext_tree_pointer TreeBitstreamText_440f4
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
 	ld l, [hl]
@@ -1230,14 +1230,14 @@ Func_8db33:
 label_8dbb3:
 	ld a, $69
 	scall PlaySFX
-	ld hl, $0402
+	hltext_tree_pointer TreeBitstreamText_44185
 	scall PrintTextWithNPCName
 	call Func_8dd96
 	jp label_8dd7d
 label_8dbc4:
 	jp label_8dbd0
 label_8dbc7:
-	ld hl, $046e
+	hltext_tree_pointer TreeBitstreamText_45a40
 	scall PrintTextStandard
 	jp label_8dd7d
 label_8dbd0:
@@ -1252,21 +1252,21 @@ label_8dbd3:
 	ld [hl], a
 	cp $ff
 	jp z, label_8dc60
-	ld hl, $03eb
+	hltext_tree_pointer TreeBitstreamText_44000
 	scall PrintTextWithNPCName
 	ld a, $50
 	scall Func_80e7d
 	cp $01
 	jp nz, label_8dc57
-	ld hl, $028d
+	hltext_tree_pointer TreeBitstreamText_44213
 	scall PrintTextWithNPCName
-	ld hl, $0400
+	hltext_tree_pointer TreeBitstreamText_458e0
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_8dc43
 	ld a, $68
 	scall PlaySFX
-	ld hl, $0421
+	hltext_tree_pointer TreeBitstreamText_44239
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
 	ld l, [hl]
@@ -1295,14 +1295,14 @@ label_8dbd3:
 label_8dc43:
 	ld a, $69
 	scall PlaySFX
-	ld hl, $0402
+	hltext_tree_pointer TreeBitstreamText_44185
 	scall PrintTextWithNPCName
 	call Func_8dd96
 	jp label_8dd7d
 label_8dc54:
 	jp label_8dc60
 label_8dc57:
-	ld hl, $046e
+	hltext_tree_pointer TreeBitstreamText_45a40
 	scall PrintTextStandard
 	jp label_8dd7d
 label_8dc60:
@@ -1347,43 +1347,43 @@ label_8dc7d:
 	cp $01
 	jp nz, label_8dd16
 label_8dcbc:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $034d
+	hltext_tree_pointer TreeBitstreamText_45acc
 	scall PrintTextStandard
 	jp label_8dd1c
 label_8dccb:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $0205
+	hltext_tree_pointer TreeBitstreamText_45add
 	scall PrintTextStandard
 	jp label_8dd1c
 label_8dcda:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $020a
+	hltext_tree_pointer TreeBitstreamText_45aee
 	scall PrintTextStandard
 	jp label_8dd1c
 label_8dce9:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $0218
+	hltext_tree_pointer TreeBitstreamText_45aff
 	scall PrintTextStandard
 	jp label_8dd1c
 label_8dcf8:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $0241
+	hltext_tree_pointer TreeBitstreamText_45b10
 	scall PrintTextStandard
 	jp label_8dd1c
 label_8dd07:
-	ld hl, $0140
+	hltext_tree_pointer TreeBitstreamText_45a76
 	scall PrintTextStandard
-	ld hl, $0244
+	hltext_tree_pointer TreeBitstreamText_45b20
 	scall PrintTextStandard
 	jp label_8dd1c
 label_8dd16:
-	ld hl, $03eb
+	hltext_tree_pointer TreeBitstreamText_44000
 	scall PrintTextWithNPCName
 label_8dd1c:
 	jp label_8dd7d
@@ -1398,9 +1398,9 @@ label_8dd1f:
 	ld a, [wc796]
 	cp $01
 	jp c, label_8dd49
-	ld hl, $03eb
+	hltext_tree_pointer TreeBitstreamText_44000
 	scall PrintTextWithNPCName
-	ld hl, $0420
+	hltext_tree_pointer TreeBitstreamText_441b3
 	scall PrintTextWithNPCName
 	call Func_8dd96
 	jp label_8dd7d
@@ -1408,21 +1408,21 @@ label_8dd49:
 	ld a, [wc796]
 	cp $0f
 	jp nz, label_8dd5a
-	ld hl, $03eb
+	hltext_tree_pointer TreeBitstreamText_44000
 	scall PrintTextWithNPCName
 	jp label_8dd7d
 label_8dd5a:
 	ld a, [wc796]
 	cp $08
 	jp c, label_8dd6e
-	ld hl, $0423
+	hltext_tree_pointer TreeBitstreamText_4428f
 	scall PrintTextWithNPCName
 	call Func_8dd96
 	jp label_8dd7d
 label_8dd6e:
-	ld hl, $03eb
+	hltext_tree_pointer TreeBitstreamText_44000
 	scall PrintTextWithNPCName
-	ld hl, $018c
+	hltext_tree_pointer TreeBitstreamText_44051
 	scall PrintTextWithNPCName
 	call Func_8dd96
 label_8dd7d:
@@ -1643,7 +1643,7 @@ Func_8dfe6:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall FacePlayer
-	ld hl, $0235
+	hltext_tree_pointer TreeBitstreamText_429e1
 	scall PrintTextStandard
 	ld de, Data_8e048
 	ld hl, Data_8dfbd
@@ -1704,7 +1704,7 @@ Func_8e080:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall FacePlayer
-	ld hl, $0236
+	hltext_tree_pointer TreeBitstreamText_429f2
 	scall PrintTextStandard
 	ld de, Data_8e0e2
 	ld hl, Data_8e057
@@ -1765,7 +1765,7 @@ Func_8e11a:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall FacePlayer
-	ld hl, $0238
+	hltext_tree_pointer TreeBitstreamText_42a0d
 	scall PrintTextStandard
 	ld de, Data_8e17c
 	ld hl, Data_8e0f1
@@ -1826,7 +1826,7 @@ Func_8e1b2:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall FacePlayer
-	ld hl, $0237
+	hltext_tree_pointer TreeBitstreamText_42a00
 	scall PrintTextStandard
 	ld de, Data_8e214
 	ld hl, Data_8e189
@@ -1887,7 +1887,7 @@ Func_8e24c:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall FacePlayer
-	ld hl, $0239
+	hltext_tree_pointer TreeBitstreamText_42a24
 	scall PrintTextStandard
 	ld de, Data_8e2ad
 	ld hl, Data_8e223
@@ -1987,7 +1987,7 @@ Func_8e2be:
 	ld a, $0a
 	scall SpriteFace
 label_8e346:
-	ld hl, $008a
+	hltext_tree_pointer TreeBitstreamText_3b605
 	scall PrintTextWithNPCName
 	ld bc, Data_8e2b8
 	ld e, $23
@@ -2126,7 +2126,7 @@ label_8e466:
 	scall SetPersonVisibilityState
 	jp label_8e479
 label_8e473:
-	ld hl, $015c
+	hltext_tree_pointer TreeBitstreamText_3f79e
 	scall PrintTextStandard
 label_8e479:
 	ret
@@ -2236,13 +2236,13 @@ Func_8e66b:
 	xor a
 	scall MovePersonAndWait
 	scall WaitNPCStep
-	ld hl, $0083
+	hltext_tree_pointer TreeBitstreamText_3b2db
 	scall PrintTextStandard
 	ld a, $2a
 	scall PlaySFX
-	ld hl, $0369
+	hltext_tree_pointer TreeBitstreamText_3b30a
 	scall PrintTextStandard
-	ld hl, $036c
+	hltext_tree_pointer TreeBitstreamText_3b31f
 	scall PrintTextStandard
 	ld bc, Data_8e661
 	ld e, $23
@@ -2278,7 +2278,7 @@ Func_8e66b:
 	scall PlayMusic
 	ld a, $0f
 	scall PlayMusic
-	ld hl, $0084
+	hltext_tree_pointer TreeBitstreamText_3b324
 	scall PrintTextWithNPCNameAndYesNoBox
 	or a
 	jp nz, label_8e727
@@ -2287,11 +2287,11 @@ Func_8e66b:
 	scall EventFlagAction
 	ld a, $2b
 	scall PlaySFX
-	ld hl, $0451
+	hltext_tree_pointer TreeBitstreamText_3b35d
 	scall PrintTextStandard
 	ld a, $68
 	scall PlaySFX
-	ld hl, $0085
+	hltext_tree_pointer TreeBitstreamText_3b36e
 	scall PrintTextWithNPCName
 	xor a
 	scall PlayMusic
@@ -2309,7 +2309,7 @@ Func_8e66b:
 label_8e727:
 	ld a, $69
 	scall PlaySFX
-	ld hl, $0086
+	hltext_tree_pointer TreeBitstreamText_3b3c0
 	scall PrintTextWithNPCName
 	xor a
 	scall PlayMusic
@@ -2338,14 +2338,14 @@ label_8e727:
 	xor a
 	scall Func_80653
 	scall WaitEmote
-	ld hl, $0087
+	hltext_tree_pointer TreeBitstreamText_3b412
 	scall PrintTextWithNPCName
 	ld e, $01
 	ld hl, $00ea
 	scall EventFlagAction
 	ld a, $2b
 	scall PlaySFX
-	ld hl, $0450
+	hltext_tree_pointer TreeBitstreamText_3b401
 	scall PrintTextStandard
 	xor a
 	scall PlayMusic
@@ -2371,7 +2371,7 @@ label_8e7b2:
 	ld a, $0f
 	scall LoadEmote
 	scall WaitEmote
-	ld hl, $0088
+	hltext_tree_pointer TreeBitstreamText_3b447
 	scall PrintTextWithNPCName
 	ld c, $01
 	ld e, $20
@@ -2384,7 +2384,7 @@ label_8e7b2:
 	ld a, $0f
 	scall LoadEmote
 	scall WaitEmote
-	ld hl, $0089
+	hltext_tree_pointer TreeBitstreamText_3b481
 	scall PrintTextWithNPCName
 	ld c, $01
 	ld e, $20
@@ -2416,7 +2416,7 @@ Func_8e826:
 	ld a, e
 	or a
 	jp nz, label_8e863
-	ld hl, $0323
+	hltext_tree_pointer TreeBitstreamText_46e1d
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_8e85d
@@ -2439,7 +2439,7 @@ Func_8e826:
 	ld [wBackupMapY], a
 	jp label_8e863
 label_8e85d:
-	ld hl, $006b
+	hltext_tree_pointer TreeBitstreamText_46e5d
 	scall PrintTextStandard
 label_8e863:
 	ret
@@ -2494,7 +2494,7 @@ Func_8e8b4:
 	jp nz, label_8e8cc
 	ld a, $01
 	scall FacePlayer
-	ld hl, $0098
+	hltext_tree_pointer TreeBitstreamText_3ba23
 	scall PrintTextWithNPCName
 	ld e, $01
 	ld hl, $003a
