@@ -1,3 +1,5 @@
+DEF NULL EQUS "0"
+
 INCLUDE "macros/enum.asm"
 INCLUDE "macros/audio.asm"
 INCLUDE "macros/wram.asm"
