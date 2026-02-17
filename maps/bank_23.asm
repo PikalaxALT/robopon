@@ -1479,115 +1479,659 @@ label_8dddf:
 	ret  ; 8DDDF (23:5ddf) -> C9
 
 Data_8dde0:
-	db $0c, $04, $01, $01, $ff, $ff, $ff, $ff
-	db $ff, $ff, $2e, $12, $11, $01, $01, $08, $00, $13, $0d, $12, $0d, $2e, $b8, $02
-	db $ff, $ff, $23, $03, $24, $03, $25, $03, $ff, $ff, $02, $0c, $0e, $07, $01, $01
-	db $03, $04, $00, $23, $e6, $5f, $00, $00, $0c, $0c, $0a, $09, $01, $01, $01, $04
-	db $00, $23, $80, $60, $00, $00, $00, $0c, $09, $0c, $01, $01, $01, $04, $00, $23
-	db $1a, $61, $00, $00, $0c, $0c, $0d, $0d, $01, $01, $03, $04, $00, $23, $b2, $61
-	db $00, $00, $0b, $0c, $07, $11, $01, $01, $01, $04, $00, $23, $4c, $62, $00, $00
-	db $04, $0c, $12, $11, $01, $01, $02, $04, $00, $23, $00, $00, $00, $00, $ff, $00
-	db $0e, $10, $03, $03, $00, $04, $01, $23, $be, $62, $00, $00, $0f, $04, $06, $05
-	db $01, $01, $02, $04, $00, $23, $00, $00, $00, $00, $ff, $00, $06, $05, $01, $01
-	db $02, $04, $00, $23, $6e, $63, $00, $00, $ff, $00, $0b, $05, $01, $01, $00, $04
-	db $00, $23, $5f, $48, $f6, $5d, $ff, $00, $0d, $05, $01, $01, $00, $04, $00, $23
-	db $5f, $48, $f6, $5d, $ff, $00, $0c, $0b, $01, $01, $00, $04, $00, $23, $7c, $4a
-	db $fa, $5d
+	db $0c, $04, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $12, $11, $01, $01, $08, $00, $13, $0d, $12, $0d, $2e
+
+Data_8ddf6:
+	db $b8, $02, $ff, $ff
+
+Data_8ddfa:
+	db $23, $03, $24, $03, $25, $03, $ff, $ff
+
+Data_8de02:
+	map_object $02, $0c, $0e, $07, $01, $01, $03, $04, $00, Func_8dfe6, NULL
+	map_object $0c, $0c, $0a, $09, $01, $01, $01, $04, $00, Func_8e080, NULL
+	map_object $00, $0c, $09, $0c, $01, $01, $01, $04, $00, Func_8e11a, NULL
+	map_object $0c, $0c, $0d, $0d, $01, $01, $03, $04, $00, Func_8e1b2, NULL
+	map_object $0b, $0c, $07, $11, $01, $01, $01, $04, $00, Func_8e24c, NULL
+	map_object $04, $0c, $12, $11, $01, $01, $02, $04, $00, NULL, NULL
+	map_object $ff, $00, $0e, $10, $03, $03, $00, $04, $01, Func_8e2be, NULL
+
+Data_8de64:
+	map_object $0f, $04, $06, $05, $01, $01, $02, $04, $00, NULL, NULL
+	map_object $ff, $00, $06, $05, $01, $01, $02, $04, $00, Func_8e36e, NULL
+	map_object $ff, $00, $0b, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8ddf6
+	map_object $ff, $00, $0d, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8ddf6
+	map_object $ff, $00, $0c, $0b, $01, $01, $00, $04, $00, PrintTextFacePlayerYesOrNo_23, Data_8ddfa
 
 Func_8deaa:: ; 8deaa
-	db $3e, $06, $ea, $e2, $c7, $cd, $6e, $5f, $21, $6e, $5f, $cd, $11, $4f, $1e, $02
-	db $21, $e0, $5d, $cd, $3a, $40, $1e, $05, $21, $64, $5e, $cd, $fb, $40, $1e, $00
-	db $af, $cd, $3d, $41, $21, $37, $00, $cd, $2e, $46, $b7, $c2, $41, $5f, $1e, $07
-	db $21, $02, $5e, $cd, $fb, $40, $1e, $00, $3e, $0a, $cd, $3d, $41, $21, $28, $00
-	db $cd, $2e, $46, $fe, $01, $c2, $f9, $5e, $1e, $00, $3e, $05, $cd, $3d, $41, $21
-	db $29, $00, $cd, $2e, $46, $fe, $01, $c2, $0b, $5f, $1e, $00, $3e, $06, $cd, $3d
-	db $41, $21, $2a, $00, $cd, $2e, $46, $fe, $01, $c2, $1d, $5f, $1e, $00, $3e, $07
-	db $cd, $3d, $41, $21, $2b, $00, $cd, $2e, $46, $fe, $01, $c2, $2f, $5f, $1e, $00
-	db $3e, $08, $cd, $3d, $41, $21, $2c, $00, $cd, $2e, $46, $fe, $01, $c2, $41, $5f
-	db $1e, $00, $3e, $09, $cd, $3d, $41, $21, $37, $00, $cd, $2e, $46, $fe, $01, $c2
-	db $54, $5f, $3e, $03, $cd, $e6, $4e, $c3, $59, $5f, $3e, $04, $cd, $e6, $4e, $3e
-	db $01, $cd, $c6, $4c, $cd, $1c, $40, $c9, $10, $0d, $01, $01, $12, $12, $11, $12
-	db $01, $01, $12, $12, $21, $28, $00, $cd, $2e, $46, $b7, $ca, $a0, $5f, $21, $29
-	db $00, $cd, $2e, $46, $b7, $ca, $a0, $5f, $21, $2a, $00, $cd, $2e, $46, $b7, $ca
-	db $a0, $5f, $21, $2b, $00, $cd, $2e, $46, $b7, $ca, $a0, $5f, $21, $2c, $00, $cd
-	db $2e, $46, $b7, $c2, $a9, $5f, $21, $62, $5f, $cd, $9b, $4d, $c3, $af, $5f, $21
-	db $68, $5f, $cd, $9b, $4d, $cd, $02, $4f, $c9, $0c, $04, $ff, $ff, $0e, $06, $0c
-	db $04, $ff, $ff, $00, $00, $00, $01, $00, $c5, $b2, $00, $00, $1f, $01, $1f, $03
-	db $11, $17, $17, $00, $6f, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c, $f5, $7b, $b7, $c2
-	db $46, $60, $21, $28, $00, $cd, $2e, $46, $b7, $c2, $46, $60, $f8, $01, $7e, $cd
-	db $4b, $44, $21, $35, $02, $cd, $98, $44, $11, $48, $60, $21, $bd, $5f, $cd, $d3
-	db $4d, $b7, $c2, $12, $60, $c3, $46, $60, $fa, $38, $c8, $fe, $01, $c2, $28, $60
-	db $01, $b7, $5f, $1e, $23, $f8, $01, $7e, $cd, $88, $46, $c3, $33, $60, $01, $b3
-	db $5f, $1e, $23, $f8, $01, $7e, $cd, $88, $46, $cd, $0c, $42, $1e, $00, $f8, $01
-	db $7e, $cd, $3d, $41, $1e, $01, $21, $28, $00, $cd, $1b, $46, $c1, $c9, $bf, $de
-	db $b8, $31, $00, $0a, $08, $0c, $04, $ff, $ff, $0c, $04, $ff, $ff, $00, $00, $00
-	db $01, $00, $c5, $c6, $00, $00, $1f, $01, $1f, $03, $12, $17, $17, $00, $6f, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $0c, $f5, $7b, $b7, $c2, $e0, $60, $21, $29, $00, $cd
-	db $2e, $46, $b7, $c2, $e0, $60, $f8, $01, $7e, $cd, $4b, $44, $21, $36, $02, $cd
-	db $98, $44, $11, $e2, $60, $21, $57, $60, $cd, $d3, $4d, $b7, $c2, $ac, $60, $c3
-	db $e0, $60, $fa, $38, $c8, $fe, $03, $c2, $c2, $60, $01, $4d, $60, $1e, $23, $f8
-	db $01, $7e, $cd, $88, $46, $c3, $cd, $60, $01, $53, $60, $1e, $23, $f8, $01, $7e
-	db $cd, $88, $46, $cd, $0c, $42, $1e, $00, $f8, $01, $7e, $cd, $3d, $41, $1e, $01
-	db $21, $29, $00, $cd, $1b, $46, $c1, $c9, $bf, $de, $b8, $32, $00, $09, $0b, $0b
-	db $06, $ff, $ff, $0b, $06, $ff, $ff, $00, $00, $00, $01, $00, $c5, $ae, $00, $00
-	db $1f, $01, $1f, $03, $12, $17, $17, $00, $6f, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
-	db $f5, $7b, $b7, $c2, $7a, $61, $21, $2a, $00, $cd, $2e, $46, $b7, $c2, $7a, $61
-	db $f8, $01, $7e, $cd, $4b, $44, $21, $38, $02, $cd, $98, $44, $11, $7c, $61, $21
-	db $f1, $60, $cd, $d3, $4d, $b7, $c2, $46, $61, $c3, $7a, $61, $fa, $38, $c8, $fe
-	db $03, $c2, $5c, $61, $01, $e7, $60, $1e, $23, $f8, $01, $7e, $cd, $88, $46, $c3
-	db $67, $61, $01, $ed, $60, $1e, $23, $f8, $01, $7e, $cd, $88, $46, $cd, $0c, $42
-	db $1e, $00, $f8, $01, $7e, $cd, $3d, $41, $1e, $01, $21, $2a, $00, $cd, $1b, $46
-	db $c1, $c9, $bf, $de, $b8, $33, $00, $0e, $07, $ff, $ff, $0d, $07, $ff, $ff, $00
-	db $00, $00, $01, $00, $c5, $c6, $00, $00, $1f, $01, $1f, $03, $12, $17, $17, $00
-	db $70, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $0c, $f5, $7b, $b7, $c2, $12, $62, $21, $2b
-	db $00, $cd, $2e, $46, $b7, $c2, $12, $62, $f8, $01, $7e, $cd, $4b, $44, $21, $37
-	db $02, $cd, $98, $44, $11, $14, $62, $21, $89, $61, $cd, $d3, $4d, $b7, $c2, $de
-	db $61, $c3, $12, $62, $fa, $38, $c8, $fe, $02, $c2, $f4, $61, $01, $81, $61, $1e
-	db $23, $f8, $01, $7e, $cd, $88, $46, $c3, $ff, $61, $01, $85, $61, $1e, $23, $f8
-	db $01, $7e, $cd, $88, $46, $cd, $0c, $42, $1e, $00, $f8, $01, $7e, $cd, $3d, $41
-	db $1e, $01, $21, $2b, $00, $cd, $1b, $46, $c1, $c9, $bf, $de, $b8, $34, $00, $09
-	db $0c, $ff, $ff, $07, $12, $09, $0c, $ff, $ff, $00, $00, $00, $01, $00, $c5, $b0
-	db $00, $00, $20, $01, $20, $03, $13, $17, $17, $00, $6f, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $0c, $f5, $7b, $b7, $c2, $ab, $62, $21, $2c, $00, $cd, $2e, $46, $b7, $c2
-	db $ab, $62, $f8, $01, $7e, $cd, $4b, $44, $21, $39, $02, $cd, $98, $44, $11, $ad
-	db $62, $21, $23, $62, $cd, $d3, $4d, $b7, $c2, $78, $62, $c3, $ab, $62, $fa, $38
-	db $c8, $b7, $c2, $8d, $62, $01, $19, $62, $1e, $23, $f8, $01, $7e, $cd, $88, $46
-	db $c3, $98, $62, $01, $1d, $62, $1e, $23, $f8, $01, $7e, $cd, $88, $46, $cd, $0c
-	db $42, $1e, $00, $f8, $01, $7e, $cd, $3d, $41, $1e, $01, $21, $2c, $00, $cd, $1b
-	db $46, $c1, $c9, $bf, $de, $b8, $35, $00, $12, $12, $10, $12, $ff, $ff, $12, $12
-	db $12, $11, $ff, $ff, $7b, $fe, $02, $c2, $6d, $63, $21, $28, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $6d, $63, $21, $29, $00, $cd, $2e, $46, $fe, $01, $c2, $6d, $63
-	db $21, $2a, $00, $cd, $2e, $46, $fe, $01, $c2, $6d, $63, $21, $2b, $00, $cd, $2e
-	db $46, $fe, $01, $c2, $6d, $63, $21, $2c, $00, $cd, $2e, $46, $fe, $01, $c2, $6d
-	db $63, $21, $37, $00, $cd, $2e, $46, $b7, $c2, $6d, $63, $af, $cd, $e6, $4e, $1e
-	db $01, $3e, $0a, $cd, $3d, $41, $21, $3c, $00, $cd, $8f, $46, $3e, $30, $cd, $fe
-	db $4e, $cd, $6e, $5f, $21, $6e, $5f, $cd, $11, $4f, $21, $3c, $00, $cd, $8f, $46
-	db $01, $b2, $62, $1e, $23, $3e, $0a, $cd, $88, $46, $cd, $0c, $42, $fa, $38, $c8
-	db $fe, $02, $c2, $46, $63, $1e, $00, $3e, $0a, $cd, $95, $40, $21, $8a, $00, $cd
-	db $a9, $44, $01, $b8, $62, $1e, $23, $3e, $0a, $cd, $88, $46, $cd, $0c, $42, $3e
-	db $2e, $cd, $fe, $4e, $1e, $00, $3e, $0a, $cd, $3d, $41, $1e, $01, $21, $37, $00
-	db $cd, $1b, $46, $c9, $7b, $b7, $c2, $79, $64, $21, $d9, $00, $cd, $2e, $46, $b7
-	db $c2, $73, $64, $3e, $5e, $cd, $fe, $4e, $0e, $02, $1e, $02, $3e, $08, $cd, $76
-	db $41, $1e, $05, $3e, $06, $cd, $e4, $41, $cd, $d5, $41, $cd, $8b, $41, $3e, $28
-	db $cd, $fe, $4e, $1e, $01, $af, $cd, $3d, $41, $3e, $60, $cd, $fe, $4e, $1e, $03
-	db $af, $cd, $95, $40, $1e, $00, $af, $cd, $95, $40, $1e, $01, $af, $cd, $95, $40
-	db $1e, $02, $af, $cd, $95, $40, $1e, $03, $af, $cd, $95, $40, $1e, $00, $af, $cd
-	db $95, $40, $1e, $01, $af, $cd, $95, $40, $1e, $02, $af, $cd, $95, $40, $3e, $0f
-	db $cd, $f1, $4f, $af, $cd, $e6, $4e, $3e, $01, $cd, $1a, $50, $3e, $14, $cd, $e6
-	db $4e, $af, $cd, $4b, $44, $21, $1e, $00, $cd, $8f, $46, $0e, $05, $1e, $04, $3e
-	db $03, $cd, $8d, $4e, $1e, $01, $21, $d9, $00, $cd, $1b, $46, $3e, $60, $cd, $fe
-	db $4e, $1e, $03, $af, $cd, $95, $40, $1e, $00, $af, $cd, $95, $40, $1e, $01, $af
-	db $cd, $95, $40, $1e, $02, $af, $cd, $95, $40, $1e, $03, $af, $cd, $95, $40, $1e
-	db $00, $af, $cd, $95, $40, $1e, $01, $af, $cd, $95, $40, $1e, $02, $af, $cd, $95
-	db $40, $3e, $0f, $cd, $f1, $4f, $af, $cd, $e6, $4e, $21, $37, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $5c, $64, $3e, $01, $cd, $1a, $50, $3e, $03, $cd, $e6, $4e, $c3
-	db $66, $64, $3e, $01, $cd, $1a, $50, $3e, $04, $cd, $e6, $4e, $af, $cd, $4b, $44
-	db $1e, $00, $af, $cd, $3d, $41, $c3, $79, $64, $21, $5c, $01, $cd, $98, $44, $c9
+	ld a, $06 ; 8DEAA (23:5eaa) -> 3E 06
+	ld [wc7e2], a ; 8DEAC (23:5eac) -> EA E2 C7
+	call Func_8df6e ; 8DEAF (23:5eaf) -> CD 6E 5F
+	ld hl, Func_8df6e ; 8DEB2 (23:5eb2) -> 21 6E 5F
+	scall Func_80f11 ; 8DEB5 (23:5eb5) -> CD 11 4F
+	ld e, $02 ; 8DEB8 (23:5eb8) -> 1E 02
+	ld hl, Data_8dde0 ; 8DEBA (23:5eba) -> 21 E0 5D
+	scall LoadWarps ; 8DEBD (23:5ebd) -> CD 3A 40
+	ld e, $05 ; 8DEC0 (23:5ec0) -> 1E 05
+	ld hl, Data_8de64 ; 8DEC2 (23:5ec2) -> 21 64 5E
+	scall LoadMapObjects ; 8DEC5 (23:5ec5) -> CD FB 40
+	ld e, $00 ; 8DEC8 (23:5ec8) -> 1E 00
+	xor a ; 8DECA (23:5eca) -> AF
+	scall SetPersonVisibilityState ; 8DECB (23:5ecb) -> CD 3D 41
+	ld hl, $0037 ; 8DECE (23:5ece) -> 21 37 00
+	scall CheckEventFlag ; 8DED1 (23:5ed1) -> CD 2E 46
+	or a ; 8DED4 (23:5ed4) -> B7
+	jp nz, label_8df41 ; 8DED5 (23:5ed5) -> C2 41 5F
+	ld e, $07 ; 8DED8 (23:5ed8) -> 1E 07
+	ld hl, Data_8de02 ; 8DEDA (23:5eda) -> 21 02 5E
+	scall LoadMapObjects ; 8DEDD (23:5edd) -> CD FB 40
+	ld e, $00 ; 8DEE0 (23:5ee0) -> 1E 00
+	ld a, $0a ; 8DEE2 (23:5ee2) -> 3E 0A
+	scall SetPersonVisibilityState ; 8DEE4 (23:5ee4) -> CD 3D 41
+	ld hl, $0028 ; 8DEE7 (23:5ee7) -> 21 28 00
+	scall CheckEventFlag ; 8DEEA (23:5eea) -> CD 2E 46
+	cp $01 ; 8DEED (23:5eed) -> FE 01
+	jp nz, label_8def9 ; 8DEEF (23:5eef) -> C2 F9 5E
+	ld e, $00 ; 8DEF2 (23:5ef2) -> 1E 00
+	ld a, $05 ; 8DEF4 (23:5ef4) -> 3E 05
+	scall SetPersonVisibilityState ; 8DEF6 (23:5ef6) -> CD 3D 41
+label_8def9:
+	ld hl, $0029 ; 8DEF9 (23:5ef9) -> 21 29 00
+	scall CheckEventFlag ; 8DEFC (23:5efc) -> CD 2E 46
+	cp $01 ; 8DEFF (23:5eff) -> FE 01
+	jp nz, label_8df0b ; 8DF01 (23:5f01) -> C2 0B 5F
+	ld e, $00 ; 8DF04 (23:5f04) -> 1E 00
+	ld a, $06 ; 8DF06 (23:5f06) -> 3E 06
+	scall SetPersonVisibilityState ; 8DF08 (23:5f08) -> CD 3D 41
+label_8df0b:
+	ld hl, $002a ; 8DF0B (23:5f0b) -> 21 2A 00
+	scall CheckEventFlag ; 8DF0E (23:5f0e) -> CD 2E 46
+	cp $01 ; 8DF11 (23:5f11) -> FE 01
+	jp nz, label_8df1d ; 8DF13 (23:5f13) -> C2 1D 5F
+	ld e, $00 ; 8DF16 (23:5f16) -> 1E 00
+	ld a, $07 ; 8DF18 (23:5f18) -> 3E 07
+	scall SetPersonVisibilityState ; 8DF1A (23:5f1a) -> CD 3D 41
+label_8df1d:
+	ld hl, $002b ; 8DF1D (23:5f1d) -> 21 2B 00
+	scall CheckEventFlag ; 8DF20 (23:5f20) -> CD 2E 46
+	cp $01 ; 8DF23 (23:5f23) -> FE 01
+	jp nz, label_8df2f ; 8DF25 (23:5f25) -> C2 2F 5F
+	ld e, $00 ; 8DF28 (23:5f28) -> 1E 00
+	ld a, $08 ; 8DF2A (23:5f2a) -> 3E 08
+	scall SetPersonVisibilityState ; 8DF2C (23:5f2c) -> CD 3D 41
+label_8df2f:
+	ld hl, $002c ; 8DF2F (23:5f2f) -> 21 2C 00
+	scall CheckEventFlag ; 8DF32 (23:5f32) -> CD 2E 46
+	cp $01 ; 8DF35 (23:5f35) -> FE 01
+	jp nz, label_8df41 ; 8DF37 (23:5f37) -> C2 41 5F
+	ld e, $00 ; 8DF3A (23:5f3a) -> 1E 00
+	ld a, $09 ; 8DF3C (23:5f3c) -> 3E 09
+	scall SetPersonVisibilityState ; 8DF3E (23:5f3e) -> CD 3D 41
+label_8df41:
+	ld hl, $0037 ; 8DF41 (23:5f41) -> 21 37 00
+	scall CheckEventFlag ; 8DF44 (23:5f44) -> CD 2E 46
+	cp $01 ; 8DF47 (23:5f47) -> FE 01
+	jp nz, label_8df54 ; 8DF49 (23:5f49) -> C2 54 5F
+	ld a, $03 ; 8DF4C (23:5f4c) -> 3E 03
+	scall PlayMusic ; 8DF4E (23:5f4e) -> CD E6 4E
+	jp label_8df59 ; 8DF51 (23:5f51) -> C3 59 5F
+label_8df54:
+	ld a, $04 ; 8DF54 (23:5f54) -> 3E 04
+	scall PlayMusic ; 8DF56 (23:5f56) -> CD E6 4E
+label_8df59:
+	ld a, $01 ; 8DF59 (23:5f59) -> 3E 01
+	scall LoadPlayerSprite ; 8DF5B (23:5f5b) -> CD C6 4C
+	scall Func_8001c ; 8DF5E (23:5f5e) -> CD 1C 40
+	ret  ; 8DF61 (23:5f61) -> C9
+
+Data_8df62:
+	db $10, $0d, $01, $01, $12, $12
+
+Data_8df68:
+	db $11, $12, $01, $01, $12, $12
+
+Func_8df6e:
+	ld hl, $0028 ; 8DF6E (23:5f6e) -> 21 28 00
+	scall CheckEventFlag ; 8DF71 (23:5f71) -> CD 2E 46
+	or a ; 8DF74 (23:5f74) -> B7
+	jp z, label_8dfa0 ; 8DF75 (23:5f75) -> CA A0 5F
+	ld hl, $0029 ; 8DF78 (23:5f78) -> 21 29 00
+	scall CheckEventFlag ; 8DF7B (23:5f7b) -> CD 2E 46
+	or a ; 8DF7E (23:5f7e) -> B7
+	jp z, label_8dfa0 ; 8DF7F (23:5f7f) -> CA A0 5F
+	ld hl, $002a ; 8DF82 (23:5f82) -> 21 2A 00
+	scall CheckEventFlag ; 8DF85 (23:5f85) -> CD 2E 46
+	or a ; 8DF88 (23:5f88) -> B7
+	jp z, label_8dfa0 ; 8DF89 (23:5f89) -> CA A0 5F
+	ld hl, $002b ; 8DF8C (23:5f8c) -> 21 2B 00
+	scall CheckEventFlag ; 8DF8F (23:5f8f) -> CD 2E 46
+	or a ; 8DF92 (23:5f92) -> B7
+	jp z, label_8dfa0 ; 8DF93 (23:5f93) -> CA A0 5F
+	ld hl, $002c ; 8DF96 (23:5f96) -> 21 2C 00
+	scall CheckEventFlag ; 8DF99 (23:5f99) -> CD 2E 46
+	or a ; 8DF9C (23:5f9c) -> B7
+	jp nz, label_8dfa9 ; 8DF9D (23:5f9d) -> C2 A9 5F
+label_8dfa0:
+	ld hl, Data_8df62 ; 8DFA0 (23:5fa0) -> 21 62 5F
+	scall Func_80d9b ; 8DFA3 (23:5fa3) -> CD 9B 4D
+	jp label_8dfaf ; 8DFA6 (23:5fa6) -> C3 AF 5F
+label_8dfa9:
+	ld hl, Data_8df68 ; 8DFA9 (23:5fa9) -> 21 68 5F
+	scall Func_80d9b ; 8DFAC (23:5fac) -> CD 9B 4D
+label_8dfaf:
+	scall Func_80f02 ; 8DFAF (23:5faf) -> CD 02 4F
+	ret  ; 8DFB2 (23:5fb2) -> C9
+
+Data_8dfb3:
+	db $0c, $04, $ff, $ff
+
+Data_8dfb7:
+	db $0e, $06, $0c, $04, $ff, $ff
+
+Data_8dfbd:
+	db $00, $00, $00, $01, $00, $c5, $b2, $00, $00, $1f, $01, $1f, $03, $11, $17, $17, $00, $6f, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_8dfe6:
+	push af ; 8DFE6 (23:5fe6) -> F5
+	ld a, e ; 8DFE7 (23:5fe7) -> 7B
+	or a ; 8DFE8 (23:5fe8) -> B7
+	jp nz, label_8e046 ; 8DFE9 (23:5fe9) -> C2 46 60
+	ld hl, $0028 ; 8DFEC (23:5fec) -> 21 28 00
+	scall CheckEventFlag ; 8DFEF (23:5fef) -> CD 2E 46
+	or a ; 8DFF2 (23:5ff2) -> B7
+	jp nz, label_8e046 ; 8DFF3 (23:5ff3) -> C2 46 60
+	ld hl, sp+$01 ; 8DFF6 (23:5ff6) -> F8 01
+	ld a, [hl] ; 8DFF8 (23:5ff8) -> 7E
+	scall FacePlayer ; 8DFF9 (23:5ff9) -> CD 4B 44
+	ld hl, $0235 ; 8DFFC (23:5ffc) -> 21 35 02
+	scall PrintTextStandard ; 8DFFF (23:5fff) -> CD 98 44
+	ld de, Data_8e048 ; 8E002 (23:6002) -> 11 48 60
+	ld hl, Data_8dfbd ; 8E005 (23:6005) -> 21 BD 5F
+	scall ScriptedBattle ; 8E008 (23:6008) -> CD D3 4D
+	or a ; 8E00B (23:600b) -> B7
+	jp nz, label_8e012 ; 8E00C (23:600c) -> C2 12 60
+	jp label_8e046 ; 8E00F (23:600f) -> C3 46 60
+label_8e012:
+	ld a, [wPlayerFacing] ; 8E012 (23:6012) -> FA 38 C8
+	cp $01 ; 8E015 (23:6015) -> FE 01
+	jp nz, label_8e028 ; 8E017 (23:6017) -> C2 28 60
+	ld bc, Data_8dfb7 ; 8E01A (23:601a) -> 01 B7 5F
+	ld e, $23 ; 8E01D (23:601d) -> 1E 23
+	ld hl, sp+$01 ; 8E01F (23:601f) -> F8 01
+	ld a, [hl] ; 8E021 (23:6021) -> 7E
+	scall MovePersonAndWait ; 8E022 (23:6022) -> CD 88 46
+	jp label_8e033 ; 8E025 (23:6025) -> C3 33 60
+label_8e028:
+	ld bc, Data_8dfb3 ; 8E028 (23:6028) -> 01 B3 5F
+	ld e, $23 ; 8E02B (23:602b) -> 1E 23
+	ld hl, sp+$01 ; 8E02D (23:602d) -> F8 01
+	ld a, [hl] ; 8E02F (23:602f) -> 7E
+	scall MovePersonAndWait ; 8E030 (23:6030) -> CD 88 46
+label_8e033:
+	scall WaitNPCStep ; 8E033 (23:6033) -> CD 0C 42
+	ld e, $00 ; 8E036 (23:6036) -> 1E 00
+	ld hl, sp+$01 ; 8E038 (23:6038) -> F8 01
+	ld a, [hl] ; 8E03A (23:603a) -> 7E
+	scall SetPersonVisibilityState ; 8E03B (23:603b) -> CD 3D 41
+	ld e, $01 ; 8E03E (23:603e) -> 1E 01
+	ld hl, $0028 ; 8E040 (23:6040) -> 21 28 00
+	scall EventFlagAction ; 8E043 (23:6043) -> CD 1B 46
+label_8e046:
+	pop bc ; 8E046 (23:6046) -> C1
+	ret  ; 8E047 (23:6047) -> C9
+
+Data_8e048:
+	dstr "ソﾞク1"
+
+Data_8e04d:
+	db $0a, $08, $0c, $04, $ff, $ff
+
+Data_8e053:
+	db $0c, $04, $ff, $ff
+
+Data_8e057:
+	db $00, $00, $00, $01, $00, $c5, $c6, $00, $00, $1f, $01, $1f, $03, $12, $17, $17, $00, $6f, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_8e080:
+	push af ; 8E080 (23:6080) -> F5
+	ld a, e ; 8E081 (23:6081) -> 7B
+	or a ; 8E082 (23:6082) -> B7
+	jp nz, label_8e0e0 ; 8E083 (23:6083) -> C2 E0 60
+	ld hl, $0029 ; 8E086 (23:6086) -> 21 29 00
+	scall CheckEventFlag ; 8E089 (23:6089) -> CD 2E 46
+	or a ; 8E08C (23:608c) -> B7
+	jp nz, label_8e0e0 ; 8E08D (23:608d) -> C2 E0 60
+	ld hl, sp+$01 ; 8E090 (23:6090) -> F8 01
+	ld a, [hl] ; 8E092 (23:6092) -> 7E
+	scall FacePlayer ; 8E093 (23:6093) -> CD 4B 44
+	ld hl, $0236 ; 8E096 (23:6096) -> 21 36 02
+	scall PrintTextStandard ; 8E099 (23:6099) -> CD 98 44
+	ld de, Data_8e0e2 ; 8E09C (23:609c) -> 11 E2 60
+	ld hl, Data_8e057 ; 8E09F (23:609f) -> 21 57 60
+	scall ScriptedBattle ; 8E0A2 (23:60a2) -> CD D3 4D
+	or a ; 8E0A5 (23:60a5) -> B7
+	jp nz, label_8e0ac ; 8E0A6 (23:60a6) -> C2 AC 60
+	jp label_8e0e0 ; 8E0A9 (23:60a9) -> C3 E0 60
+label_8e0ac:
+	ld a, [wPlayerFacing] ; 8E0AC (23:60ac) -> FA 38 C8
+	cp $03 ; 8E0AF (23:60af) -> FE 03
+	jp nz, label_8e0c2 ; 8E0B1 (23:60b1) -> C2 C2 60
+	ld bc, Data_8e04d ; 8E0B4 (23:60b4) -> 01 4D 60
+	ld e, $23 ; 8E0B7 (23:60b7) -> 1E 23
+	ld hl, sp+$01 ; 8E0B9 (23:60b9) -> F8 01
+	ld a, [hl] ; 8E0BB (23:60bb) -> 7E
+	scall MovePersonAndWait ; 8E0BC (23:60bc) -> CD 88 46
+	jp label_8e0cd ; 8E0BF (23:60bf) -> C3 CD 60
+label_8e0c2:
+	ld bc, Data_8e053 ; 8E0C2 (23:60c2) -> 01 53 60
+	ld e, $23 ; 8E0C5 (23:60c5) -> 1E 23
+	ld hl, sp+$01 ; 8E0C7 (23:60c7) -> F8 01
+	ld a, [hl] ; 8E0C9 (23:60c9) -> 7E
+	scall MovePersonAndWait ; 8E0CA (23:60ca) -> CD 88 46
+label_8e0cd:
+	scall WaitNPCStep ; 8E0CD (23:60cd) -> CD 0C 42
+	ld e, $00 ; 8E0D0 (23:60d0) -> 1E 00
+	ld hl, sp+$01 ; 8E0D2 (23:60d2) -> F8 01
+	ld a, [hl] ; 8E0D4 (23:60d4) -> 7E
+	scall SetPersonVisibilityState ; 8E0D5 (23:60d5) -> CD 3D 41
+	ld e, $01 ; 8E0D8 (23:60d8) -> 1E 01
+	ld hl, $0029 ; 8E0DA (23:60da) -> 21 29 00
+	scall EventFlagAction ; 8E0DD (23:60dd) -> CD 1B 46
+label_8e0e0:
+	pop bc ; 8E0E0 (23:60e0) -> C1
+	ret  ; 8E0E1 (23:60e1) -> C9
+
+Data_8e0e2:
+	dstr "ソﾞク2"
+
+Data_8e0e7:
+	db $09, $0b, $0b, $06, $ff, $ff
+
+Data_8e0ed:
+	db $0b, $06, $ff, $ff
+
+Data_8e0f1:
+	db $00, $00, $00, $01, $00, $c5, $ae, $00, $00, $1f, $01, $1f, $03, $12, $17, $17, $00, $6f, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_8e11a:
+	push af ; 8E11A (23:611a) -> F5
+	ld a, e ; 8E11B (23:611b) -> 7B
+	or a ; 8E11C (23:611c) -> B7
+	jp nz, label_8e17a ; 8E11D (23:611d) -> C2 7A 61
+	ld hl, $002a ; 8E120 (23:6120) -> 21 2A 00
+	scall CheckEventFlag ; 8E123 (23:6123) -> CD 2E 46
+	or a ; 8E126 (23:6126) -> B7
+	jp nz, label_8e17a ; 8E127 (23:6127) -> C2 7A 61
+	ld hl, sp+$01 ; 8E12A (23:612a) -> F8 01
+	ld a, [hl] ; 8E12C (23:612c) -> 7E
+	scall FacePlayer ; 8E12D (23:612d) -> CD 4B 44
+	ld hl, $0238 ; 8E130 (23:6130) -> 21 38 02
+	scall PrintTextStandard ; 8E133 (23:6133) -> CD 98 44
+	ld de, Data_8e17c ; 8E136 (23:6136) -> 11 7C 61
+	ld hl, Data_8e0f1 ; 8E139 (23:6139) -> 21 F1 60
+	scall ScriptedBattle ; 8E13C (23:613c) -> CD D3 4D
+	or a ; 8E13F (23:613f) -> B7
+	jp nz, label_8e146 ; 8E140 (23:6140) -> C2 46 61
+	jp label_8e17a ; 8E143 (23:6143) -> C3 7A 61
+label_8e146:
+	ld a, [wPlayerFacing] ; 8E146 (23:6146) -> FA 38 C8
+	cp $03 ; 8E149 (23:6149) -> FE 03
+	jp nz, label_8e15c ; 8E14B (23:614b) -> C2 5C 61
+	ld bc, Data_8e0e7 ; 8E14E (23:614e) -> 01 E7 60
+	ld e, $23 ; 8E151 (23:6151) -> 1E 23
+	ld hl, sp+$01 ; 8E153 (23:6153) -> F8 01
+	ld a, [hl] ; 8E155 (23:6155) -> 7E
+	scall MovePersonAndWait ; 8E156 (23:6156) -> CD 88 46
+	jp label_8e167 ; 8E159 (23:6159) -> C3 67 61
+label_8e15c:
+	ld bc, Data_8e0ed ; 8E15C (23:615c) -> 01 ED 60
+	ld e, $23 ; 8E15F (23:615f) -> 1E 23
+	ld hl, sp+$01 ; 8E161 (23:6161) -> F8 01
+	ld a, [hl] ; 8E163 (23:6163) -> 7E
+	scall MovePersonAndWait ; 8E164 (23:6164) -> CD 88 46
+label_8e167:
+	scall WaitNPCStep ; 8E167 (23:6167) -> CD 0C 42
+	ld e, $00 ; 8E16A (23:616a) -> 1E 00
+	ld hl, sp+$01 ; 8E16C (23:616c) -> F8 01
+	ld a, [hl] ; 8E16E (23:616e) -> 7E
+	scall SetPersonVisibilityState ; 8E16F (23:616f) -> CD 3D 41
+	ld e, $01 ; 8E172 (23:6172) -> 1E 01
+	ld hl, $002a ; 8E174 (23:6174) -> 21 2A 00
+	scall EventFlagAction ; 8E177 (23:6177) -> CD 1B 46
+label_8e17a:
+	pop bc ; 8E17A (23:617a) -> C1
+	ret  ; 8E17B (23:617b) -> C9
+
+Data_8e17c:
+	dstr "ソﾞク3"
+
+Data_8e181:
+	db $0e, $07, $ff, $ff
+
+Data_8e185:
+	db $0d, $07, $ff, $ff
+
+Data_8e189:
+	db $00, $00, $00, $01, $00, $c5, $c6, $00, $00, $1f, $01, $1f, $03, $12, $17, $17, $00, $70, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_8e1b2:
+	push af ; 8E1B2 (23:61b2) -> F5
+	ld a, e ; 8E1B3 (23:61b3) -> 7B
+	or a ; 8E1B4 (23:61b4) -> B7
+	jp nz, label_8e212 ; 8E1B5 (23:61b5) -> C2 12 62
+	ld hl, $002b ; 8E1B8 (23:61b8) -> 21 2B 00
+	scall CheckEventFlag ; 8E1BB (23:61bb) -> CD 2E 46
+	or a ; 8E1BE (23:61be) -> B7
+	jp nz, label_8e212 ; 8E1BF (23:61bf) -> C2 12 62
+	ld hl, sp+$01 ; 8E1C2 (23:61c2) -> F8 01
+	ld a, [hl] ; 8E1C4 (23:61c4) -> 7E
+	scall FacePlayer ; 8E1C5 (23:61c5) -> CD 4B 44
+	ld hl, $0237 ; 8E1C8 (23:61c8) -> 21 37 02
+	scall PrintTextStandard ; 8E1CB (23:61cb) -> CD 98 44
+	ld de, Data_8e214 ; 8E1CE (23:61ce) -> 11 14 62
+	ld hl, Data_8e189 ; 8E1D1 (23:61d1) -> 21 89 61
+	scall ScriptedBattle ; 8E1D4 (23:61d4) -> CD D3 4D
+	or a ; 8E1D7 (23:61d7) -> B7
+	jp nz, label_8e1de ; 8E1D8 (23:61d8) -> C2 DE 61
+	jp label_8e212 ; 8E1DB (23:61db) -> C3 12 62
+label_8e1de:
+	ld a, [wPlayerFacing] ; 8E1DE (23:61de) -> FA 38 C8
+	cp $02 ; 8E1E1 (23:61e1) -> FE 02
+	jp nz, label_8e1f4 ; 8E1E3 (23:61e3) -> C2 F4 61
+	ld bc, Data_8e181 ; 8E1E6 (23:61e6) -> 01 81 61
+	ld e, $23 ; 8E1E9 (23:61e9) -> 1E 23
+	ld hl, sp+$01 ; 8E1EB (23:61eb) -> F8 01
+	ld a, [hl] ; 8E1ED (23:61ed) -> 7E
+	scall MovePersonAndWait ; 8E1EE (23:61ee) -> CD 88 46
+	jp label_8e1ff ; 8E1F1 (23:61f1) -> C3 FF 61
+label_8e1f4:
+	ld bc, Data_8e185 ; 8E1F4 (23:61f4) -> 01 85 61
+	ld e, $23 ; 8E1F7 (23:61f7) -> 1E 23
+	ld hl, sp+$01 ; 8E1F9 (23:61f9) -> F8 01
+	ld a, [hl] ; 8E1FB (23:61fb) -> 7E
+	scall MovePersonAndWait ; 8E1FC (23:61fc) -> CD 88 46
+label_8e1ff:
+	scall WaitNPCStep ; 8E1FF (23:61ff) -> CD 0C 42
+	ld e, $00 ; 8E202 (23:6202) -> 1E 00
+	ld hl, sp+$01 ; 8E204 (23:6204) -> F8 01
+	ld a, [hl] ; 8E206 (23:6206) -> 7E
+	scall SetPersonVisibilityState ; 8E207 (23:6207) -> CD 3D 41
+	ld e, $01 ; 8E20A (23:620a) -> 1E 01
+	ld hl, $002b ; 8E20C (23:620c) -> 21 2B 00
+	scall EventFlagAction ; 8E20F (23:620f) -> CD 1B 46
+label_8e212:
+	pop bc ; 8E212 (23:6212) -> C1
+	ret  ; 8E213 (23:6213) -> C9
+
+Data_8e214:
+	dstr "ソﾞク4"
+
+Data_8e219:
+	db $09, $0c, $ff, $ff
+
+Data_8e21d:
+	db $07, $12, $09, $0c, $ff, $ff
+
+Data_8e223:
+	db $00, $00, $00, $01, $00, $c5, $b0, $00, $00, $20, $01, $20, $03, $13, $17, $17, $00, $6f, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_8e24c:
+	push af ; 8E24C (23:624c) -> F5
+	ld a, e ; 8E24D (23:624d) -> 7B
+	or a ; 8E24E (23:624e) -> B7
+	jp nz, label_8e2ab ; 8E24F (23:624f) -> C2 AB 62
+	ld hl, $002c ; 8E252 (23:6252) -> 21 2C 00
+	scall CheckEventFlag ; 8E255 (23:6255) -> CD 2E 46
+	or a ; 8E258 (23:6258) -> B7
+	jp nz, label_8e2ab ; 8E259 (23:6259) -> C2 AB 62
+	ld hl, sp+$01 ; 8E25C (23:625c) -> F8 01
+	ld a, [hl] ; 8E25E (23:625e) -> 7E
+	scall FacePlayer ; 8E25F (23:625f) -> CD 4B 44
+	ld hl, $0239 ; 8E262 (23:6262) -> 21 39 02
+	scall PrintTextStandard ; 8E265 (23:6265) -> CD 98 44
+	ld de, Data_8e2ad ; 8E268 (23:6268) -> 11 AD 62
+	ld hl, Data_8e223 ; 8E26B (23:626b) -> 21 23 62
+	scall ScriptedBattle ; 8E26E (23:626e) -> CD D3 4D
+	or a ; 8E271 (23:6271) -> B7
+	jp nz, label_8e278 ; 8E272 (23:6272) -> C2 78 62
+	jp label_8e2ab ; 8E275 (23:6275) -> C3 AB 62
+label_8e278:
+	ld a, [wPlayerFacing] ; 8E278 (23:6278) -> FA 38 C8
+	or a ; 8E27B (23:627b) -> B7
+	jp nz, label_8e28d ; 8E27C (23:627c) -> C2 8D 62
+	ld bc, Data_8e219 ; 8E27F (23:627f) -> 01 19 62
+	ld e, $23 ; 8E282 (23:6282) -> 1E 23
+	ld hl, sp+$01 ; 8E284 (23:6284) -> F8 01
+	ld a, [hl] ; 8E286 (23:6286) -> 7E
+	scall MovePersonAndWait ; 8E287 (23:6287) -> CD 88 46
+	jp label_8e298 ; 8E28A (23:628a) -> C3 98 62
+label_8e28d:
+	ld bc, Data_8e21d ; 8E28D (23:628d) -> 01 1D 62
+	ld e, $23 ; 8E290 (23:6290) -> 1E 23
+	ld hl, sp+$01 ; 8E292 (23:6292) -> F8 01
+	ld a, [hl] ; 8E294 (23:6294) -> 7E
+	scall MovePersonAndWait ; 8E295 (23:6295) -> CD 88 46
+label_8e298:
+	scall WaitNPCStep ; 8E298 (23:6298) -> CD 0C 42
+	ld e, $00 ; 8E29B (23:629b) -> 1E 00
+	ld hl, sp+$01 ; 8E29D (23:629d) -> F8 01
+	ld a, [hl] ; 8E29F (23:629f) -> 7E
+	scall SetPersonVisibilityState ; 8E2A0 (23:62a0) -> CD 3D 41
+	ld e, $01 ; 8E2A3 (23:62a3) -> 1E 01
+	ld hl, $002c ; 8E2A5 (23:62a5) -> 21 2C 00
+	scall EventFlagAction ; 8E2A8 (23:62a8) -> CD 1B 46
+label_8e2ab:
+	pop bc ; 8E2AB (23:62ab) -> C1
+	ret  ; 8E2AC (23:62ac) -> C9
+
+Data_8e2ad:
+	dstr "ソﾞク5"
+
+Data_8e2b2:
+	db $12, $12, $10, $12, $ff, $ff
+
+Data_8e2b8:
+	db $12, $12, $12, $11, $ff, $ff
+
+Func_8e2be:
+	ld a, e ; 8E2BE (23:62be) -> 7B
+	cp $02 ; 8E2BF (23:62bf) -> FE 02
+	jp nz, label_8e36d ; 8E2C1 (23:62c1) -> C2 6D 63
+	ld hl, $0028 ; 8E2C4 (23:62c4) -> 21 28 00
+	scall CheckEventFlag ; 8E2C7 (23:62c7) -> CD 2E 46
+	cp $01 ; 8E2CA (23:62ca) -> FE 01
+	jp nz, label_8e36d ; 8E2CC (23:62cc) -> C2 6D 63
+	ld hl, $0029 ; 8E2CF (23:62cf) -> 21 29 00
+	scall CheckEventFlag ; 8E2D2 (23:62d2) -> CD 2E 46
+	cp $01 ; 8E2D5 (23:62d5) -> FE 01
+	jp nz, label_8e36d ; 8E2D7 (23:62d7) -> C2 6D 63
+	ld hl, $002a ; 8E2DA (23:62da) -> 21 2A 00
+	scall CheckEventFlag ; 8E2DD (23:62dd) -> CD 2E 46
+	cp $01 ; 8E2E0 (23:62e0) -> FE 01
+	jp nz, label_8e36d ; 8E2E2 (23:62e2) -> C2 6D 63
+	ld hl, $002b ; 8E2E5 (23:62e5) -> 21 2B 00
+	scall CheckEventFlag ; 8E2E8 (23:62e8) -> CD 2E 46
+	cp $01 ; 8E2EB (23:62eb) -> FE 01
+	jp nz, label_8e36d ; 8E2ED (23:62ed) -> C2 6D 63
+	ld hl, $002c ; 8E2F0 (23:62f0) -> 21 2C 00
+	scall CheckEventFlag ; 8E2F3 (23:62f3) -> CD 2E 46
+	cp $01 ; 8E2F6 (23:62f6) -> FE 01
+	jp nz, label_8e36d ; 8E2F8 (23:62f8) -> C2 6D 63
+	ld hl, $0037 ; 8E2FB (23:62fb) -> 21 37 00
+	scall CheckEventFlag ; 8E2FE (23:62fe) -> CD 2E 46
+	or a ; 8E301 (23:6301) -> B7
+	jp nz, label_8e36d ; 8E302 (23:6302) -> C2 6D 63
+	xor a ; 8E305 (23:6305) -> AF
+	scall PlayMusic ; 8E306 (23:6306) -> CD E6 4E
+	ld e, $01 ; 8E309 (23:6309) -> 1E 01
+	ld a, $0a ; 8E30B (23:630b) -> 3E 0A
+	scall SetPersonVisibilityState ; 8E30D (23:630d) -> CD 3D 41
+	ld hl, $003c ; 8E310 (23:6310) -> 21 3C 00
+	scall ScriptSleep ; 8E313 (23:6313) -> CD 8F 46
+	ld a, $30 ; 8E316 (23:6316) -> 3E 30
+	scall PlaySFX ; 8E318 (23:6318) -> CD FE 4E
+	call Func_8df6e ; 8E31B (23:631b) -> CD 6E 5F
+	ld hl, Func_8df6e ; 8E31E (23:631e) -> 21 6E 5F
+	scall Func_80f11 ; 8E321 (23:6321) -> CD 11 4F
+	ld hl, $003c ; 8E324 (23:6324) -> 21 3C 00
+	scall ScriptSleep ; 8E327 (23:6327) -> CD 8F 46
+	ld bc, Data_8e2b2 ; 8E32A (23:632a) -> 01 B2 62
+	ld e, $23 ; 8E32D (23:632d) -> 1E 23
+	ld a, $0a ; 8E32F (23:632f) -> 3E 0A
+	scall MovePersonAndWait ; 8E331 (23:6331) -> CD 88 46
+	scall WaitNPCStep ; 8E334 (23:6334) -> CD 0C 42
+	ld a, [wPlayerFacing] ; 8E337 (23:6337) -> FA 38 C8
+	cp $02 ; 8E33A (23:633a) -> FE 02
+	jp nz, label_8e346 ; 8E33C (23:633c) -> C2 46 63
+	ld e, $00 ; 8E33F (23:633f) -> 1E 00
+	ld a, $0a ; 8E341 (23:6341) -> 3E 0A
+	scall SpriteFace ; 8E343 (23:6343) -> CD 95 40
+label_8e346:
+	ld hl, $008a ; 8E346 (23:6346) -> 21 8A 00
+	scall PrintTextWithNPCName ; 8E349 (23:6349) -> CD A9 44
+	ld bc, Data_8e2b8 ; 8E34C (23:634c) -> 01 B8 62
+	ld e, $23 ; 8E34F (23:634f) -> 1E 23
+	ld a, $0a ; 8E351 (23:6351) -> 3E 0A
+	scall MovePersonAndWait ; 8E353 (23:6353) -> CD 88 46
+	scall WaitNPCStep ; 8E356 (23:6356) -> CD 0C 42
+	ld a, $2e ; 8E359 (23:6359) -> 3E 2E
+	scall PlaySFX ; 8E35B (23:635b) -> CD FE 4E
+	ld e, $00 ; 8E35E (23:635e) -> 1E 00
+	ld a, $0a ; 8E360 (23:6360) -> 3E 0A
+	scall SetPersonVisibilityState ; 8E362 (23:6362) -> CD 3D 41
+	ld e, $01 ; 8E365 (23:6365) -> 1E 01
+	ld hl, $0037 ; 8E367 (23:6367) -> 21 37 00
+	scall EventFlagAction ; 8E36A (23:636a) -> CD 1B 46
+label_8e36d:
+	ret  ; 8E36D (23:636d) -> C9
+
+Func_8e36e:
+	ld a, e ; 8E36E (23:636e) -> 7B
+	or a ; 8E36F (23:636f) -> B7
+	jp nz, label_8e479 ; 8E370 (23:6370) -> C2 79 64
+	ld hl, $00d9 ; 8E373 (23:6373) -> 21 D9 00
+	scall CheckEventFlag ; 8E376 (23:6376) -> CD 2E 46
+	or a ; 8E379 (23:6379) -> B7
+	jp nz, label_8e473 ; 8E37A (23:637a) -> C2 73 64
+	ld a, $5e ; 8E37D (23:637d) -> 3E 5E
+	scall PlaySFX ; 8E37F (23:637f) -> CD FE 4E
+	ld c, $02 ; 8E382 (23:6382) -> 0E 02
+	ld e, $02 ; 8E384 (23:6384) -> 1E 02
+	ld a, $08 ; 8E386 (23:6386) -> 3E 08
+	scall LoadEmote ; 8E388 (23:6388) -> CD 76 41
+	ld e, $05 ; 8E38B (23:638b) -> 1E 05
+	ld a, $06 ; 8E38D (23:638d) -> 3E 06
+	scall MoveEmote ; 8E38F (23:638f) -> CD E4 41
+	scall WaitEmote ; 8E392 (23:6392) -> CD D5 41
+	scall HideEmote ; 8E395 (23:6395) -> CD 8B 41
+	ld a, $28 ; 8E398 (23:6398) -> 3E 28
+	scall PlaySFX ; 8E39A (23:639a) -> CD FE 4E
+	ld e, $01 ; 8E39D (23:639d) -> 1E 01
+	xor a ; 8E39F (23:639f) -> AF
+	scall SetPersonVisibilityState ; 8E3A0 (23:63a0) -> CD 3D 41
+	ld a, $60 ; 8E3A3 (23:63a3) -> 3E 60
+	scall PlaySFX ; 8E3A5 (23:63a5) -> CD FE 4E
+	ld e, $03 ; 8E3A8 (23:63a8) -> 1E 03
+	xor a ; 8E3AA (23:63aa) -> AF
+	scall SpriteFace ; 8E3AB (23:63ab) -> CD 95 40
+	ld e, $00 ; 8E3AE (23:63ae) -> 1E 00
+	xor a ; 8E3B0 (23:63b0) -> AF
+	scall SpriteFace ; 8E3B1 (23:63b1) -> CD 95 40
+	ld e, $01 ; 8E3B4 (23:63b4) -> 1E 01
+	xor a ; 8E3B6 (23:63b6) -> AF
+	scall SpriteFace ; 8E3B7 (23:63b7) -> CD 95 40
+	ld e, $02 ; 8E3BA (23:63ba) -> 1E 02
+	xor a ; 8E3BC (23:63bc) -> AF
+	scall SpriteFace ; 8E3BD (23:63bd) -> CD 95 40
+	ld e, $03 ; 8E3C0 (23:63c0) -> 1E 03
+	xor a ; 8E3C2 (23:63c2) -> AF
+	scall SpriteFace ; 8E3C3 (23:63c3) -> CD 95 40
+	ld e, $00 ; 8E3C6 (23:63c6) -> 1E 00
+	xor a ; 8E3C8 (23:63c8) -> AF
+	scall SpriteFace ; 8E3C9 (23:63c9) -> CD 95 40
+	ld e, $01 ; 8E3CC (23:63cc) -> 1E 01
+	xor a ; 8E3CE (23:63ce) -> AF
+	scall SpriteFace ; 8E3CF (23:63cf) -> CD 95 40
+	ld e, $02 ; 8E3D2 (23:63d2) -> 1E 02
+	xor a ; 8E3D4 (23:63d4) -> AF
+	scall SpriteFace ; 8E3D5 (23:63d5) -> CD 95 40
+	ld a, $0f ; 8E3D8 (23:63d8) -> 3E 0F
+	scall FadeOutAudio ; 8E3DA (23:63da) -> CD F1 4F
+	xor a ; 8E3DD (23:63dd) -> AF
+	scall PlayMusic ; 8E3DE (23:63de) -> CD E6 4E
+	ld a, $01 ; 8E3E1 (23:63e1) -> 3E 01
+	scall FadeInAudio ; 8E3E3 (23:63e3) -> CD 1A 50
+	ld a, $14 ; 8E3E6 (23:63e6) -> 3E 14
+	scall PlayMusic ; 8E3E8 (23:63e8) -> CD E6 4E
+	xor a ; 8E3EB (23:63eb) -> AF
+	scall FacePlayer ; 8E3EC (23:63ec) -> CD 4B 44
+	ld hl, $001e ; 8E3EF (23:63ef) -> 21 1E 00
+	scall ScriptSleep ; 8E3F2 (23:63f2) -> CD 8F 46
+	ld c, $05 ; 8E3F5 (23:63f5) -> 0E 05
+	ld e, $04 ; 8E3F7 (23:63f7) -> 1E 04
+	ld a, $03 ; 8E3F9 (23:63f9) -> 3E 03
+	scall Func_80e8d ; 8E3FB (23:63fb) -> CD 8D 4E
+	ld e, $01 ; 8E3FE (23:63fe) -> 1E 01
+	ld hl, $00d9 ; 8E400 (23:6400) -> 21 D9 00
+	scall EventFlagAction ; 8E403 (23:6403) -> CD 1B 46
+	ld a, $60 ; 8E406 (23:6406) -> 3E 60
+	scall PlaySFX ; 8E408 (23:6408) -> CD FE 4E
+	ld e, $03 ; 8E40B (23:640b) -> 1E 03
+	xor a ; 8E40D (23:640d) -> AF
+	scall SpriteFace ; 8E40E (23:640e) -> CD 95 40
+	ld e, $00 ; 8E411 (23:6411) -> 1E 00
+	xor a ; 8E413 (23:6413) -> AF
+	scall SpriteFace ; 8E414 (23:6414) -> CD 95 40
+	ld e, $01 ; 8E417 (23:6417) -> 1E 01
+	xor a ; 8E419 (23:6419) -> AF
+	scall SpriteFace ; 8E41A (23:641a) -> CD 95 40
+	ld e, $02 ; 8E41D (23:641d) -> 1E 02
+	xor a ; 8E41F (23:641f) -> AF
+	scall SpriteFace ; 8E420 (23:6420) -> CD 95 40
+	ld e, $03 ; 8E423 (23:6423) -> 1E 03
+	xor a ; 8E425 (23:6425) -> AF
+	scall SpriteFace ; 8E426 (23:6426) -> CD 95 40
+	ld e, $00 ; 8E429 (23:6429) -> 1E 00
+	xor a ; 8E42B (23:642b) -> AF
+	scall SpriteFace ; 8E42C (23:642c) -> CD 95 40
+	ld e, $01 ; 8E42F (23:642f) -> 1E 01
+	xor a ; 8E431 (23:6431) -> AF
+	scall SpriteFace ; 8E432 (23:6432) -> CD 95 40
+	ld e, $02 ; 8E435 (23:6435) -> 1E 02
+	xor a ; 8E437 (23:6437) -> AF
+	scall SpriteFace ; 8E438 (23:6438) -> CD 95 40
+	ld a, $0f ; 8E43B (23:643b) -> 3E 0F
+	scall FadeOutAudio ; 8E43D (23:643d) -> CD F1 4F
+	xor a ; 8E440 (23:6440) -> AF
+	scall PlayMusic ; 8E441 (23:6441) -> CD E6 4E
+	ld hl, $0037 ; 8E444 (23:6444) -> 21 37 00
+	scall CheckEventFlag ; 8E447 (23:6447) -> CD 2E 46
+	cp $01 ; 8E44A (23:644a) -> FE 01
+	jp nz, label_8e45c ; 8E44C (23:644c) -> C2 5C 64
+	ld a, $01 ; 8E44F (23:644f) -> 3E 01
+	scall FadeInAudio ; 8E451 (23:6451) -> CD 1A 50
+	ld a, $03 ; 8E454 (23:6454) -> 3E 03
+	scall PlayMusic ; 8E456 (23:6456) -> CD E6 4E
+	jp label_8e466 ; 8E459 (23:6459) -> C3 66 64
+label_8e45c:
+	ld a, $01 ; 8E45C (23:645c) -> 3E 01
+	scall FadeInAudio ; 8E45E (23:645e) -> CD 1A 50
+	ld a, $04 ; 8E461 (23:6461) -> 3E 04
+	scall PlayMusic ; 8E463 (23:6463) -> CD E6 4E
+label_8e466:
+	xor a ; 8E466 (23:6466) -> AF
+	scall FacePlayer ; 8E467 (23:6467) -> CD 4B 44
+	ld e, $00 ; 8E46A (23:646a) -> 1E 00
+	xor a ; 8E46C (23:646c) -> AF
+	scall SetPersonVisibilityState ; 8E46D (23:646d) -> CD 3D 41
+	jp label_8e479 ; 8E470 (23:6470) -> C3 79 64
+label_8e473:
+	ld hl, $015c ; 8E473 (23:6473) -> 21 5C 01
+	scall PrintTextStandard ; 8E476 (23:6476) -> CD 98 44
+label_8e479:
+	ret  ; 8E479 (23:6479) -> C9
+
+Data_8e47a:
 	db $05, $08, $01, $02, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $23, $07, $01, $02, $ff
 	db $ff, $ff, $ff, $ff, $ff, $2e, $08, $06, $01, $01, $20, $01, $01, $08, $01, $07
 	db $34, $0c, $04, $01, $01, $20, $04, $01, $08, $01, $07, $34, $10, $05, $01, $01
