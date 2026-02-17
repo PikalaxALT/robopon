@@ -1356,10 +1356,10 @@ INCLUDE "engine/map/text.asm"
 INCLUDE "engine/map/warps.asm"
 
 Data_ae3d: ; ae3d
-	db $01, $01, $00, $ff, $ff, $ff, $00, $01
+	db 1, 1, 0, -1, -1, -1, 0, 1
 
 Data_ae45: ; ae45
-	db $00, $01, $01, $01, $00, $ff, $ff, $ff
+	db 0, 1, 1, 1, 0, -1, -1, -1
 
 Func_ae4d:: ; ae4d
 	push bc
@@ -1372,14 +1372,14 @@ Func_ae4d:: ; ae4d
 	ld a, [wPlayerMapX]
 	call CheckBackgroundCollision
 	cp $ff
-	jp nz, Func_aef5
+	jp nz, .asm_aef5
 	ld hl, sp+$2
 	ld [hl], $0
-Func_ae66: ; ae66 (2:6e66)
+.asm_ae66: ; ae66 (2:6e66)
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $9
-	jp nc, Func_aeaa
+	jp nc,.asm_aeaa
 	ld a, [wPlayerMapX]
 	ld hl, sp+$2
 	ld e, [hl]
@@ -1405,22 +1405,21 @@ Func_ae66: ; ae66 (2:6e66)
 	ld a, [hl]
 	call CheckBackgroundCollision
 	or a
-	jp nz, Func_aea0
-	jp Func_aeaa
+	jp nz, .asm_aea0
+	jp .asm_aeaa
 
-Func_aea0: ; aea0 (2:6ea0)
+.asm_aea0: ; aea0 (2:6ea0)
 	ld hl, sp+$2
 	ld a, [hl]
 	inc a
 	ld hl, sp+$2
 	ld [hl], a
-	jp Func_ae66
-
-Func_aeaa: ; aeaa (2:6eaa)
+	jp .asm_ae66
+.asm_aeaa: ; aeaa (2:6eaa)
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $9
-	jp z, Func_aef5
+	jp z, .asm_aef5
 	ld hl, sp+$1
 	ld a, [hl]
 	add $fb
@@ -1453,7 +1452,7 @@ Func_aeaa: ; aeaa (2:6eaa)
 	ld hl, sp+$0
 	ld a, [hl]
 	ld [wSpawnPushY], a
-Func_aef5: ; aef5 (2:6ef5)
+.asm_aef5: ; aef5 (2:6ef5)
 	ld hl, sp+$3
 	ld a, [wSpawnPushX]
 	ld [hl], a
@@ -1467,7 +1466,7 @@ Func_aef5: ; aef5 (2:6ef5)
 	ld [hl], a
 	ld a, [wc7da]
 	or a
-	jp nz, Func_af33
+	jp nz, .asm_af33
 	callba_hli Func_9a41d
 	ld a, $1
 	call Func_bbc8
@@ -1476,9 +1475,9 @@ Func_aef5: ; aef5 (2:6ef5)
 	ld a, [wPlayerFacing]
 	call UpdateSprites
 	call Func_b65f
-	jp Func_af68
+	jp .asm_af68
 
-Func_af33: ; af33 (2:6f33)
+.asm_af33: ; af33 (2:6f33)
 	callba_hli Func_9a41d
 	ld a, $1
 	call Func_bbc8
@@ -1492,7 +1491,7 @@ Func_af33: ; af33 (2:6f33)
 	ld e, $fe
 	ld a, $fe
 	call Func_b60d
-Func_af68: ; af68 (2:6f68)
+.asm_af68: ; af68 (2:6f68)
 	ld c, $1
 	ld hl, sp+$3
 	reg16swap de, hl

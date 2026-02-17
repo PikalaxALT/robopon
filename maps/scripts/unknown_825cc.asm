@@ -37,5 +37,5 @@ Func_825f9: ; 825f9 (20:65f9)
 	loadpeople $1, Data_825be
 Func_8261f: ; 8261f (20:661f)
 	playmusic SONG_TOWN3
-	scall FadeInMap
+	scall Func_8001c
 	ret

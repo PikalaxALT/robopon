@@ -34,7 +34,7 @@ Func_82fe2: ; 82fe2 (20:6fe2)
 	xor a
 	call SetPersonVisibilityState_20
 Func_82ff0: ; 82ff0 (20:6ff0)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c3b
 	ret
 

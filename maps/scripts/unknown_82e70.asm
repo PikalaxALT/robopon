@@ -30,7 +30,7 @@ Func_82e70::
 	scall Func_80d01
 	loadwilds $3, Data_82e46
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c2b
 	ret
 

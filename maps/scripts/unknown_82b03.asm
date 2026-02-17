@@ -32,7 +32,7 @@ Func_82b39: ; 82b39 (20:6b39)
 	call SetPersonVisibilityState_20
 Func_82b48: ; 82b48 (20:6b48)
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c09
 	ret
 

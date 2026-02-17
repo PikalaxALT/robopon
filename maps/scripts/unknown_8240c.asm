@@ -23,7 +23,7 @@ Func_8240c::
 	call SetPersonVisibilityState_20
 Func_8242b: ; 8242b (20:642b)
 	playmusic SONG_TOWN3
-	scall FadeInMap
+	scall Func_8001c
 	ret
 
 Data_82434:
@@ -140,7 +140,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld bc, Data_82440
 	ld e, BANK(Data_82440)
 	ld a, $3
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_20
 	ld e, $0
 	ld a, $3

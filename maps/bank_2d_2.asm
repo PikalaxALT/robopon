@@ -34,7 +34,7 @@ Func_b7a64:: ; b7a64 (2d:7a64)
 	hideperson $3
 	hideperson $4
 	playmusic $13
-	scall FadeInMap
+	scall Func_8001c
 	call Func_b7b62
 	jp Func_b7ae2
 
@@ -43,7 +43,7 @@ Func_b7abb: ; b7abb (2d:7abb)
 	or a
 	jp nz, Func_b7ad3
 	playmusic $13
-	scall FadeInMap
+	scall Func_8001c
 	call Func_b7d97
 	jp Func_b7ae2
 
@@ -51,7 +51,7 @@ Func_b7ad3: ; b7ad3 (2d:7ad3)
 	xor a
 	call PlayerFace_2d_2
 	playmusic $13
-	scall FadeInMap
+	scall Func_8001c
 	call Func_b7df7
 Func_b7ae2: ; b7ae2 (2d:7ae2)
 	ret

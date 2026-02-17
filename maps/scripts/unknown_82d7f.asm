@@ -13,7 +13,7 @@ Func_82d7f::
 	loadwarps $3, Data_82d42
 	loadpeople $2, Data_82d63
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c1f
 	ret
 

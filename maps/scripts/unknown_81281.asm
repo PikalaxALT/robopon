@@ -123,7 +123,7 @@ Func_812c9: ; 812c9 (20:52c9)
 	or a
 	jp nz, Func_812ec
 	loadpeople $3, Data_8113f
-	scall FadeInMap
+	scall Func_8001c
 	call Func_814c1
 	setevent $c
 	jp Func_813fc
@@ -225,12 +225,12 @@ Func_813ec: ; 813ec (20:53ec)
 	loadpeople $1, Data_81265
 Func_813f4: ; 813f4 (20:53f4)
 	playmusic SONG_TOWN1
-	scall FadeInMap
+	scall Func_8001c
 Func_813fc: ; 813fc (20:53fc)
 	jp Func_81402
 
 Func_813ff: ; 813ff (20:53ff)
-	scall FadeInMap
+	scall Func_8001c
 Func_81402: ; 81402 (20:5402)
 	ret
 
@@ -644,7 +644,7 @@ Func_818b7: ; 818b7 (20:58b7)
 	ld bc, Data_81805
 	ld e, BANK(Data_81805)
 	ld a, $3
-	scall Func_80688
+	scall MovePersonAndWait
 	ld a, $2
 	call PlayerFace_20
 	call WaitNPCStep_20

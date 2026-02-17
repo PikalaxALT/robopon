@@ -84,7 +84,7 @@ Func_81d6a::
 Func_81de6: ; 81de6 (20:5de6)
 	loadpeople $3, Data_81cd0
 	playmusic SONG_TOWN3
-	scall FadeInMap
+	scall Func_8001c
 Func_81df6: ; 81df6 (20:5df6)
 	jp Func_81e22
 
@@ -95,7 +95,7 @@ Func_81df9: ; 81df9 (20:5df9)
 	scall Func_80d01
 	loadwilds $2, Data_81d4e
 	playmusic SONG_TOWN3
-	scall FadeInMap
+	scall Func_8001c
 	xor a
 	ld [wc793], a
 Func_81e22: ; 81e22 (20:5e22)
@@ -111,7 +111,7 @@ Data_81e27: ; 81e27
 
 Func_81e2b: ; 81e2b (20:5e2b)
 	loademote $6, $1, $1f
-	scall FadeInMap
+	scall Func_8001c
 	call WaitEmote_20
 	playsfx $67
 	script_sleep $3c
@@ -232,7 +232,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	xor a
 	call SetPersonVisibilityState_20
 	loademote $8, $1, $1f
-	scall FadeInMap
+	scall Func_8001c
 	call WaitEmote_20
 	script_sleep $3c
 	playsfx $2e
@@ -242,7 +242,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld bc, Data_81f2d
 	ld e, BANK(Data_81f2d)
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_20
 	ld e, $3
 	xor a
@@ -251,7 +251,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld bc, Data_81f33
 	ld e, BANK(Data_81f33)
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_20
 	playsfx $2e
 	ld e, $0

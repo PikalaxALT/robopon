@@ -43,7 +43,7 @@ Func_958c2:: ; 958c2 (25:58c2)
 	jp nz, Func_9590a
 	loadpeople 4, Data_95844
 	hideperson $1
-	scall FadeInMap
+	scall Func_8001c
 	call Func_959a9
 	setevent $f
 	jp Func_95957
@@ -61,7 +61,7 @@ Func_9590a: ; 9590a (25:590a)
 	xor a
 	call SpriteFace_25
 	hideperson $1
-	scall FadeInMap
+	scall Func_8001c
 	jp Func_95957
 
 Func_95935: ; 95935 (25:5935)
@@ -72,7 +72,7 @@ Func_95935: ; 95935 (25:5935)
 	scall Func_80080
 	hideperson $1
 	hideperson $4
-	scall FadeInMap
+	scall Func_8001c
 Func_95957: ; 95957 (25:5957)
 	ret
 
@@ -144,7 +144,7 @@ Func_959a9: ; 959a9 (25:59a9)
 	ld bc, Data_959a1
 	ld e, BANK(Data_959a1)
 	ld a, $1
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_25
 	playsfx $31
 	loademote $1, $4, $c

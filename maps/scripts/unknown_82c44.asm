@@ -29,7 +29,7 @@ Func_82c72: ; 82c72 (20:6c72)
 	loadpeople $2, Data_82c28
 Func_82c82: ; 82c82 (20:6c82)
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c14
 	ret
 

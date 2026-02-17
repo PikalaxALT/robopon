@@ -41,7 +41,7 @@ Func_827de: ; 827de (20:67de)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46ce3
 	call Func_829dd
 	jp Func_8283c
@@ -50,7 +50,7 @@ Func_82811: ; 82811 (20:6811)
 	checkevent $d
 	or a
 	jp nz, Func_8282c
-	scall FadeInMap
+	scall Func_8001c
 	call Func_82894
 	setevent $d
 	jp Func_8283c
@@ -59,7 +59,7 @@ Func_8282c: ; 8282c (20:682c)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46ce3
 Func_8283c: ; 8283c (20:683c)
 	jp Func_82859
@@ -70,7 +70,7 @@ Func_8283f: ; 8283f (20:683f)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	scall FadeInMap
+	scall Func_8001c
 Func_82859: ; 82859 (20:6859)
 	ret
 
@@ -141,7 +141,7 @@ Func_828df:
 	ld bc, Data_828cf
 	ld e, BANK(Data_828cf)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_20
 	sprite_face $2, $2
 	checkevent $32
@@ -154,7 +154,7 @@ Func_828df:
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_20
 	sprite_face $2, $2
 	move_player $1, Data_828db
@@ -168,7 +168,7 @@ Func_82940: ; 82940 (20:6940)
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_20
 	sprite_face $2, $2
 Func_82964: ; 82964 (20:6964)
@@ -181,7 +181,7 @@ Func_82967: ; 82967 (20:6967)
 	ld bc, Data_828d3
 	ld e, BANK(Data_828d3)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_20
 	sprite_face $2, $2
 Func_8298b: ; 8298b (20:698b)

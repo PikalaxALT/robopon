@@ -329,7 +329,7 @@ Func_cf307: ; cf307 (33:7307)
 	call LoadWarps_33
 	ld a, $8
 	call PlayMusic_33
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wc7de]
 	cp $32
 	jp nz, Func_cf328

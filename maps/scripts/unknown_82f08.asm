@@ -16,7 +16,7 @@ Func_82f08::
 	ld hl, Data_82f03
 	scall Func_80ce7
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c33
 	ret
 

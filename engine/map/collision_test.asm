@@ -1,4 +1,7 @@
 CheckBackgroundCollision:: ; 9f87 (2:5f87)
+	; a = x
+	; e = y
+	; c = collision
 	push af
 	push de
 	push bc

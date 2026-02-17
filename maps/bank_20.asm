@@ -37,7 +37,7 @@ Func_83213::
 	loadwarps $3, Data_831e4
 	loadpeople $1, Data_83205
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c4e
 	ret
 
@@ -138,7 +138,7 @@ Func_83340::
 	ld hl, Data_8333b
 	scall Func_80ce7
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	ld hl, Func_03d1
 	call LandmarkSign_20
 	ret
@@ -176,7 +176,7 @@ Func_833ba::
 	ld [wc7de], a
 	loadwarps $3, Data_83399
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c6a
 	ret
 
@@ -219,7 +219,7 @@ Func_83431::
 	ld hl, Data_8342c
 	scall Func_80ce7
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	ld hl, Func_03d3
 	call LandmarkSign_20
 	ret
@@ -261,7 +261,7 @@ Func_834bd::
 	loadwarps $3, Data_8348a
 	loadpeople $1, Data_834af
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c83
 	ret
 
@@ -298,7 +298,7 @@ Func_83537::
 	ld [wc7de], a
 	loadwarps $3, Data_83516
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	ld hl, GetSRAMBank
 	call LandmarkSign_20
 	ret
@@ -342,7 +342,7 @@ Func_835ae::
 	ld hl, Data_835a9
 	scall Func_80ce7
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c9b
 	ret
 
@@ -385,7 +385,7 @@ Func_83632::
 	ld hl, Data_83628
 	scall Func_80ce7
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46ca8
 	ret
 
@@ -428,7 +428,7 @@ Func_836b1::
 	ld hl, Data_836ac
 	scall Func_80ce7
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46cb3
 	ret
 
@@ -471,7 +471,7 @@ Func_83730::
 	ld hl, Data_8372b
 	scall Func_80ce7
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46cbf
 	ret
 
@@ -508,7 +508,7 @@ Func_837aa::
 	ld [wc7de], a
 	loadwarps $3, Data_83789
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46ccb
 	ret
 
@@ -551,7 +551,7 @@ Func_83816::
 	ld hl, Data_83811
 	scall Func_80ce7
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46cd7
 	ret
 
@@ -607,7 +607,7 @@ Func_838a2::
 	xor a
 	call SetPersonVisibilityState_20
 Func_838e0: ; 838e0 (20:78e0)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46c00
 	ret
 
@@ -949,7 +949,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
-	scall Func_80688
+	scall MovePersonAndWait
 	playsfx $2e
 	jp Func_83d57
 
@@ -959,7 +959,7 @@ Func_83d45: ; 83d45 (20:7d45)
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
-	scall Func_80688
+	scall MovePersonAndWait
 	playsfx $2e
 Func_83d57: ; 83d57 (20:7d57)
 	ld e, $0

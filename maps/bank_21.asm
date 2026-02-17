@@ -56,7 +56,7 @@ Func_851bc: ; 851bc (21:51bc)
 	loadpeople $5, Data_850fa
 	loadpeople $4, Data_85140
 	playmusic SONG_TOWN1
-	scall FadeInMap
+	scall Func_8001c
 	call Func_852ac
 	setevent $32
 	jp Func_85270
@@ -100,7 +100,7 @@ Func_85257: ; 85257 (21:5257)
 Func_85260: ; 85260 (21:5260)
 	playmusic SONG_TOWN1
 	loadpeople $4, Data_85140
-	scall FadeInMap
+	scall Func_8001c
 Func_85270: ; 85270 (21:5270)
 	pop bc
 	pop bc
@@ -159,7 +159,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld bc, Data_85278
 	ld e, BANK(Data_85278)
 	ld a, $1
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	script_sleep $3c
 	writenpctext TreeBitstreamText_399f1
@@ -176,13 +176,13 @@ Func_852ac: ; 852ac (21:52ac)
 	ld bc, Data_8527c
 	ld e, BANK(Data_8527c)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	playsfx $33
 	ld bc, Data_85286
 	ld e, BANK(Data_85286)
 	ld a, $1
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld e, $1
 	xor a
@@ -191,7 +191,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld bc, Data_8528a
 	ld e, BANK(Data_8528a)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld e, $2
 	xor a
@@ -213,7 +213,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld bc, Data_85292
 	ld e, BANK(Data_85292)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	hideperson $2
 	ld bc, Data_85280
@@ -223,7 +223,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld bc, Data_8528e
 	ld e, BANK(Data_8528e)
 	ld a, $1
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	playsfx $33
 	sprite_face $3, $1
@@ -242,7 +242,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld bc, Data_852a4
 	ld e, BANK(Data_852a4)
 	ld a, $1
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld a, $1
 	scall PlayerFace
@@ -298,7 +298,7 @@ Func_854eb: ; 854eb (21:54eb)
 	ld bc, Data_854a2
 	ld e, BANK(Data_854a2)
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld e, $0
 	xor a
@@ -330,7 +330,7 @@ Func_85540: ; 85540 (21:5540)
 	ld bc, Data_854a6
 	ld e, BANK(Data_854a6)
 	ld a, $1
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	hideperson $1
 	setevent $6
@@ -421,7 +421,7 @@ Func_8565a: ; 8565a (21:565a)
 	ld bc, Data_855d8
 	ld e, BANK(Data_855d8)
 	ld a, $1
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	hideperson $1
 	setevent $6
@@ -450,7 +450,7 @@ Func_856ab: ; 856ab (21:56ab)
 	ld bc, Data_855d4
 	ld e, BANK(Data_855d4)
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld e, $0
 	xor a
@@ -544,7 +544,7 @@ Func_857c4: ; 857c4 (21:57c4)
 	ld bc, Data_85742
 	ld e, BANK(Data_85742)
 	ld a, $1
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	hideperson $1
 	setevent $6
@@ -565,7 +565,7 @@ Func_85801: ; 85801 (21:5801)
 	ld bc, Data_8573e
 	ld e, BANK(Data_8573e)
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld e, $0
 	xor a
@@ -791,7 +791,7 @@ Func_85ada: ; 85ada (21:5ada)
 	ld a, $5
 	scall Func_80150
 Func_85afc: ; 85afc (21:5afc)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_467bb
 	pop bc
 	pop bc
@@ -1001,7 +1001,7 @@ Func_85d7d: ; 85d7d (21:5d7d)
 	ld a, $3
 	scall Func_80150
 Func_85d97: ; 85d97 (21:5d97)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46803
 	pop bc
 	pop bc
@@ -1188,7 +1188,7 @@ Func_86011: ; 86011 (21:6011)
 Func_86014: ; 86014 (21:6014)
 	playmusic SONG_TOWN3
 Func_86019: ; 86019 (21:6019)
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wc7de]
 	cp $5
 	jp z, Func_86060
@@ -1506,7 +1506,7 @@ Func_864a0: ; 864a0 (21:64a0)
 Func_864e0: ; 864e0 (21:64e0)
 	loadpeople $3, Data_86361
 Func_864e8: ; 864e8 (21:64e8)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_467c7
 	jp Func_86575
 
@@ -1526,7 +1526,7 @@ Func_864f4: ; 864f4 (21:64f4)
 Func_86522: ; 86522 (21:6522)
 	loadpeople $4, Data_8638b
 Func_8652a: ; 8652a (21:652a)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_467df
 	jp Func_86575
 
@@ -1546,7 +1546,7 @@ Func_86536: ; 86536 (21:6536)
 Func_86564: ; 86564 (21:6564)
 	loadpeople $4, Data_863c3
 Func_8656c: ; 8656c (21:656c)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_467f7
 Func_86575: ; 86575 (21:6575)
 	pop bc
@@ -1807,13 +1807,13 @@ Func_8688a::
 	or a
 	jp nz, Func_868d5
 	loadpeople $4, Data_86836
-	scall FadeInMap
+	scall Func_8001c
 	call Func_86943
 	jp Func_868dd
 
 Func_868d5: ; 868d5 (21:68d5)
 	playmusic SONG_TOWN2
-	scall FadeInMap
+	scall Func_8001c
 Func_868dd: ; 868dd (21:68dd)
 	ret
 
@@ -1885,7 +1885,7 @@ Func_86943: ; 86943 (21:6943)
 	ld bc, Data_86913
 	ld e, BANK(Data_86913)
 	ld a, $4
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	sprite_face $3, $2
 	playmusic SONG_NONE
@@ -1907,14 +1907,14 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld bc, Data_86917
 	ld e, BANK(Data_86917)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld a, $1
 	scall PlayerFace
 	ld bc, Data_8691f
 	ld e, BANK(Data_8691f)
 	ld a, $2
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	hideperson $2
 	xor a
@@ -1922,11 +1922,11 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld bc, Data_86923
 	ld e, BANK(Data_86923)
 	ld a, $3
-	scall Func_80688
+	scall MovePersonAndWait
 	ld bc, Data_86927
 	ld e, BANK(Data_86927)
 	ld a, $4
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld bc, Data_8692d
 	ld e, BANK(Data_8692d)
@@ -1935,7 +1935,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld bc, Data_86931
 	ld e, BANK(Data_86931)
 	ld a, $4
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	ld a, $3
 	scall PlayerFace
@@ -1946,7 +1946,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld bc, Data_8693b
 	ld e, BANK(Data_8693b)
 	ld a, $4
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	hideperson $3
 	hideperson $4
@@ -1956,7 +1956,7 @@ Func_869e7: ; 869e7 (21:69e7)
 	ld bc, Data_8693f
 	ld e, BANK(Data_8693f)
 	ld a, $5
-	scall Func_80688
+	scall MovePersonAndWait
 	scall WaitNPCStep
 	sprite_face $2, $5
 	script_sleep $1e
@@ -2236,7 +2236,7 @@ Func_8706e: ; 8706e (21:706e)
 	playmusic SONG_TOWN1
 	ld a, $1
 	scall LoadPlayerSprite
-	scall FadeInMap
+	scall Func_8001c
 	ret
 
 Data_8707c:
@@ -2336,7 +2336,7 @@ Func_871fe::
 	jp nz, Func_8723b
 	ld a, $1
 	ld [wc7da], a
-	scall FadeInMap
+	scall Func_8001c
 	writenpctext TreeBitstreamText_3a89f
 	call Func_8737a
 	checkevent $f0
@@ -2356,7 +2356,7 @@ Func_8723b: ; 8723b (21:723b)
 	loadpeople $3, Data_871d4
 	xor a
 	ld [wc7da], a
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_4686b
 Func_87265: ; 87265 (21:7265)
 	ret
@@ -2504,7 +2504,7 @@ Func_87484: ; 87484 (21:7484)
 	ld [wc7da], a
 Func_87488: ; 87488 (21:7488)
 	playmusic SONG_CAVE
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46878
 	ret
 
@@ -2727,7 +2727,7 @@ Func_87828: ; 87828 (21:7828)
 	jp Func_87868
 
 Func_8785f: ; 8785f (21:785f)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46886
 Func_87868: ; 87868 (21:7868)
 	jp Func_8788a
@@ -2744,7 +2744,7 @@ Func_8787d: ; 8787d (21:787d)
 	xor a
 	ld [wc7da], a
 Func_87881: ; 87881 (21:7881)
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46886
 Func_8788a: ; 8788a (21:788a)
 	ret
@@ -3094,7 +3094,7 @@ Func_87b9d: ; 87b9d (21:7b9d)
 	scall Func_80653
 	ld a, $2
 	scall PlayerFace
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46886
 	loademote $1, $2, $9
 	playsfx $37
@@ -3240,7 +3240,7 @@ Func_87daf: ; 87daf (21:7daf)
 Func_87db3: ; 87db3 (21:7db3)
 	loadpeople $1, Data_87d7a
 	playmusic SONG_CAVE
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46894
 	ret
 
@@ -3330,7 +3330,7 @@ Func_87ec9: ; 87ec9 (21:7ec9)
 Func_87ecd: ; 87ecd (21:7ecd)
 	loadpeople $1, Data_87e94
 	playmusic SONG_CAVE
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46894
 	ret
 

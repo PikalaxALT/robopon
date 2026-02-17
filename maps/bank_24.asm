@@ -58,7 +58,7 @@ Func_92aab:: ; 92aab (24:6aab)
 	call LoadMapObjects_24
 	ld a, $8
 	call PlayMusic_24
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46cec
 	ret
 

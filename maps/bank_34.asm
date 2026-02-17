@@ -27,7 +27,7 @@ Func_d11ef:: ; d11ef (34:51ef)
 	ld a, $1
 	call LoadPlayerSprite_34
 	playmusic SONG_TOWN2
-	scall FadeInMap
+	scall Func_8001c
 	ret
 
 Func_d121f:
@@ -414,7 +414,7 @@ Func_d1654: ; d1654 (34:5654)
 	ld a, $1
 	ld [wc7a2 + 1], a
 	playmusic SONG_TOWN2
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wBackupMapNumber]
 	or a
 	jp z, Func_d166f
@@ -473,21 +473,21 @@ Func_d16b1: ; d16b1 (34:56b1)
 	ld bc, Data_d1674
 	ld e, $34
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	jp Func_d16e8
 
 Func_d16df: ; d16df (34:56df)
 	ld bc, Data_d1670
 	ld e, $34
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 Func_d16e8: ; d16e8 (34:56e8)
 	call WaitNPCStep_34
 	move_player $1, Data_d1678
 	ld bc, Data_d167c
 	ld e, $34
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_34
 	ld e, $2
 	xor a
@@ -622,7 +622,7 @@ Func_d1866: ; d1866 (34:5866)
 	ld bc, Data_d173d
 	ld e, $34
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_34
 	ld e, $1
 	xor a
@@ -631,7 +631,7 @@ Func_d1866: ; d1866 (34:5866)
 	ld bc, Data_d1745
 	ld e, $34
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_34
 	ld e, $2
 	xor a
@@ -662,7 +662,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	ld bc, Data_d18ae
 	ld e, $34
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_34
 	ld e, $1
 	xor a
@@ -671,7 +671,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	ld bc, Data_d18b6
 	ld e, $34
 	xor a
-	scall Func_80688
+	scall MovePersonAndWait
 	call WaitNPCStep_34
 	ld e, $0
 	xor a
@@ -975,7 +975,7 @@ Func_d1c8b: ; d1c8b (34:5c8b)
 Func_d1ccb: ; d1ccb (34:5ccb)
 	loadwarps $1, Data_d1958
 	playmusic SONG_CAVE
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d1cec
@@ -1199,7 +1199,7 @@ Func_d1fc2: ; d1fc2 (34:5fc2)
 Func_d2002: ; d2002 (34:6002)
 	loadwarps $1, Data_d1d1e
 	playmusic SONG_CAVE
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2023
@@ -1479,7 +1479,7 @@ Func_d2361: ; d2361 (34:6361)
 Func_d23a1: ; d23a1 (34:63a1)
 	loadwarps $1, Data_d2055
 	playmusic SONG_CAVE
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d23c2
@@ -1759,7 +1759,7 @@ Func_d2700: ; d2700 (34:6700)
 Func_d2740: ; d2740 (34:6740)
 	loadwarps $1, Data_d23f4
 	playmusic SONG_CAVE
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2761
@@ -2032,7 +2032,7 @@ Func_d2a92: ; d2a92 (34:6a92)
 Func_d2ad2: ; d2ad2 (34:6ad2)
 	loadwarps $1, Data_d2793
 	playmusic SONG_CAVE
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
 	jp nz, Func_d2af3
@@ -2162,7 +2162,7 @@ Func_d2c9b: ; d2c9b (34:6c9b)
 	loadpeople $2, Data_d2bf2
 Func_d2cba: ; d2cba (34:6cba)
 	playmusic SONG_CENTER
-	scall FadeInMap
+	scall Func_8001c
 	ret
 
 Func_d2cc3:
@@ -2396,7 +2396,7 @@ Func_d3011: ; d3011 (34:7011)
 	loadpeople $1, Data_d2d8d
 Func_d3019: ; d3019 (34:7019)
 	playmusic SONG_CENTER
-	scall FadeInMap
+	scall Func_8001c
 	ld a, [wBackupMapGroup]
 	cp $5
 	jp nz, Func_d3046
@@ -2664,7 +2664,7 @@ Func_d33f5: ; d33f5 (34:73f5)
 Func_d340c: ; d340c (34:740c)
 	loadpeople $8, Data_d325a
 	playmusic SONG_CENTER
-	scall FadeInMap
+	scall Func_8001c
 	ret
 
 Func_d341d:
@@ -2884,7 +2884,7 @@ Func_d371a: ; d371a (34:771a)
 	ld e, $1
 	call LoadWarps_34
 	playmusic SONG_TOWER
-	scall FadeInMap
+	scall Func_8001c
 	pop hl
 	ld a, l
 	cp $a
@@ -2980,7 +2980,7 @@ Func_d37e8: ; d37e8 (34:77e8)
 	call LoadWarps_34
 	loadpeople $2, Data_d365e
 	playmusic SONG_TOWN3
-	scall FadeInMap
+	scall Func_8001c
 	jp Func_d385a
 
 Func_d381e: ; d381e (34:781e)
@@ -3014,7 +3014,7 @@ Func_d3831: ; d3831 (34:7831)
 	call LoadWarps_34
 	loadpeople $2, Data_d365e
 	playmusic SONG_SHOP
-	scall FadeInMap
+	scall Func_8001c
 Func_d385a: ; d385a (34:785a)
 	ret
 
@@ -3100,7 +3100,7 @@ Func_d392b:: ; d392b (34:792b)
 	call PlayMusic_34
 	xor a
 	scall Func_80653
-	scall FadeInMap
+	scall Func_8001c
 	landmarksign TreeBitstreamText_46dc3
 	call Func_d3cb2
 	jp Func_d39a5
@@ -3115,7 +3115,7 @@ Func_d3977: ; d3977 (34:7977)
 	call LoadPlayerSprite_34
 	xor a
 	scall Func_80653
-	scall FadeInMap
+	scall Func_8001c
 	call Func_d39a6
 	jp Func_d39a5
 
@@ -3123,7 +3123,7 @@ Func_d3998: ; d3998 (34:7998)
 	playmusic SONG_PUNCH_MINIGAME
 	ld a, $1
 	call LoadPlayerSprite_34
-	scall FadeInMap
+	scall Func_8001c
 Func_d39a5: ; d39a5 (34:79a5)
 	ret
 
@@ -3445,7 +3445,7 @@ Func_d3ceb:: ; d3ceb (34:7ceb)
 	xor a
 	scall Func_80653
 	loademote $1, $6, $26
-	scall FadeInMap
+	scall Func_8001c
 	call WaitEmote_34
 	ld a, $1
 	call PlayerFace_34

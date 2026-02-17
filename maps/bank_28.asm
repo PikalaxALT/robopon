@@ -144,7 +144,7 @@ Func_a11de:: ; a11de
 	ld hl, Data_a11c2
 	scall LoadMapObjects
 .asm_a12ad:
-	scall FadeInMap
+	scall Func_8001c
 	ret
 
 Func_a12b1:
@@ -487,7 +487,7 @@ Func_a167b:: ; a167b
 .asm_a16e5:
 	ld a, $14
 	scall PlayMusic
-	scall FadeInMap
+	scall Func_8001c
 	ld hl, $02bb
 	scall LandmarkSign
 	ret
