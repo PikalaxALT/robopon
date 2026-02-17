@@ -1168,53 +1168,318 @@ label_8db2f:
 	ret  ; 8DB32 (23:5b32) -> C9
 
 Func_8db33:
-	db $f5, $c5, $f8, $00, $36
-	db $ff, $7b, $b7, $c2, $7d, $5d, $f8, $03, $7e, $cd, $4b, $44, $fa, $96, $c7, $b7
-	db $c2, $d3, $5b, $3e, $17, $cd, $6d, $4e, $f8, $01, $77, $fe, $ff, $ca, $d0, $5b
-	db $21, $eb, $03, $cd, $a9, $44, $3e, $17, $cd, $7d, $4e, $fe, $01, $c2, $c7, $5b
-	db $21, $8c, $02, $cd, $a9, $44, $21, $00, $04, $cd, $ba, $44, $b7, $c2, $b3, $5b
-	db $3e, $68, $cd, $fe, $4e, $21, $01, $04, $cd, $a9, $44, $f8, $01, $6e, $26, $00
-	db $11, $00, $0b, $19, $cd, $88, $44, $7d, $f5, $0e, $00, $1e, $01, $f8, $03, $7e
-	db $cd, $87, $4d, $f1, $4f, $1e, $00, $3e, $26, $cd, $87, $4d, $3e, $01, $ea, $96
-	db $c7, $f8, $00, $36, $01, $cd, $96, $5d, $c3, $c4, $5b, $3e, $69, $cd, $fe, $4e
-	db $21, $02, $04, $cd, $a9, $44, $cd, $96, $5d, $c3, $7d, $5d, $c3, $d0, $5b, $21
-	db $6e, $04, $cd, $98, $44, $c3, $7d, $5d, $c3, $1f, $5d, $fa, $96, $c7, $fe, $07
-	db $c2, $63, $5c, $3e, $50, $cd, $6d, $4e, $f8, $01, $77, $fe, $ff, $ca, $60, $5c
-	db $21, $eb, $03, $cd, $a9, $44, $3e, $50, $cd, $7d, $4e, $fe, $01, $c2, $57, $5c
-	db $21, $8d, $02, $cd, $a9, $44, $21, $00, $04, $cd, $ba, $44, $b7, $c2, $43, $5c
-	db $3e, $68, $cd, $fe, $4e, $21, $21, $04, $cd, $a9, $44, $f8, $01, $6e, $26, $00
-	db $11, $00, $0b, $19, $cd, $88, $44, $7d, $f5, $0e, $00, $1e, $01, $f8, $03, $7e
-	db $cd, $87, $4d, $f1, $4f, $1e, $00, $3e, $51, $cd, $87, $4d, $3e, $08, $ea, $96
-	db $c7, $f8, $00, $36, $01, $cd, $96, $5d, $c3, $54, $5c, $3e, $69, $cd, $fe, $4e
-	db $21, $02, $04, $cd, $a9, $44, $cd, $96, $5d, $c3, $7d, $5d, $c3, $60, $5c, $21
-	db $6e, $04, $cd, $98, $44, $c3, $7d, $5d, $c3, $1f, $5d, $3e, $17, $cd, $6d, $4e
-	db $f8, $01, $77, $fe, $ff, $c2, $7d, $5c, $3e, $50, $cd, $6d, $4e, $f8, $01, $77
-	db $fe, $ff, $ca, $1f, $5d, $fa, $96, $c7, $fe, $08, $ca, $07, $5d, $fe, $06, $ca
-	db $07, $5d, $fe, $0a, $ca, $f8, $5c, $fe, $05, $ca, $f8, $5c, $fe, $0c, $ca, $e9
-	db $5c, $fe, $04, $ca, $e9, $5c, $fe, $0d, $ca, $da, $5c, $fe, $03, $ca, $da, $5c
-	db $fe, $0b, $ca, $cb, $5c, $fe, $02, $ca, $cb, $5c, $fe, $09, $ca, $bc, $5c, $fe
-	db $01, $c2, $16, $5d, $21, $40, $01, $cd, $98, $44, $21, $4d, $03, $cd, $98, $44
-	db $c3, $1c, $5d, $21, $40, $01, $cd, $98, $44, $21, $05, $02, $cd, $98, $44, $c3
-	db $1c, $5d, $21, $40, $01, $cd, $98, $44, $21, $0a, $02, $cd, $98, $44, $c3, $1c
-	db $5d, $21, $40, $01, $cd, $98, $44, $21, $18, $02, $cd, $98, $44, $c3, $1c, $5d
-	db $21, $40, $01, $cd, $98, $44, $21, $41, $02, $cd, $98, $44, $c3, $1c, $5d, $21
-	db $40, $01, $cd, $98, $44, $21, $44, $02, $cd, $98, $44, $c3, $1c, $5d, $21, $eb
-	db $03, $cd, $a9, $44, $c3, $7d, $5d, $f8, $00, $7e, $fe, $ff, $c2, $7d, $5d, $fa
-	db $96, $c7, $fe, $08, $d2, $49, $5d, $fa, $96, $c7, $fe, $01, $da, $49, $5d, $21
-	db $eb, $03, $cd, $a9, $44, $21, $20, $04, $cd, $a9, $44, $cd, $96, $5d, $c3, $7d
-	db $5d, $fa, $96, $c7, $fe, $0f, $c2, $5a, $5d, $21, $eb, $03, $cd, $a9, $44, $c3
-	db $7d, $5d, $fa, $96, $c7, $fe, $08, $da, $6e, $5d, $21, $23, $04, $cd, $a9, $44
-	db $cd, $96, $5d, $c3, $7d, $5d, $21, $eb, $03, $cd, $a9, $44, $21, $8c, $01, $cd
-	db $a9, $44, $cd, $96, $5d, $c1, $c1, $c9
+	push af ; 8DB33 (23:5b33) -> F5
+	push bc ; 8DB34 (23:5b34) -> C5
+	ld hl, sp+$00 ; 8DB35 (23:5b35) -> F8 00
+	ld [hl], $ff ; 8DB37 (23:5b37) -> 36 FF
+	ld a, e ; 8DB39 (23:5b39) -> 7B
+	or a ; 8DB3A (23:5b3a) -> B7
+	jp nz, label_8dd7d ; 8DB3B (23:5b3b) -> C2 7D 5D
+	ld hl, sp+$03 ; 8DB3E (23:5b3e) -> F8 03
+	ld a, [hl] ; 8DB40 (23:5b40) -> 7E
+	scall FacePlayer ; 8DB41 (23:5b41) -> CD 4B 44
+	ld a, [wc796] ; 8DB44 (23:5b44) -> FA 96 C7
+	or a ; 8DB47 (23:5b47) -> B7
+	jp nz, label_8dbd3 ; 8DB48 (23:5b48) -> C2 D3 5B
+	ld a, $17 ; 8DB4B (23:5b4b) -> 3E 17
+	scall Func_80e6d ; 8DB4D (23:5b4d) -> CD 6D 4E
+	ld hl, sp+$01 ; 8DB50 (23:5b50) -> F8 01
+	ld [hl], a ; 8DB52 (23:5b52) -> 77
+	cp $ff ; 8DB53 (23:5b53) -> FE FF
+	jp z, label_8dbd0 ; 8DB55 (23:5b55) -> CA D0 5B
+	ld hl, $03eb ; 8DB58 (23:5b58) -> 21 EB 03
+	scall PrintTextWithNPCName ; 8DB5B (23:5b5b) -> CD A9 44
+	ld a, $17 ; 8DB5E (23:5b5e) -> 3E 17
+	scall Func_80e7d ; 8DB60 (23:5b60) -> CD 7D 4E
+	cp $01 ; 8DB63 (23:5b63) -> FE 01
+	jp nz, label_8dbc7 ; 8DB65 (23:5b65) -> C2 C7 5B
+	ld hl, $028c ; 8DB68 (23:5b68) -> 21 8C 02
+	scall PrintTextWithNPCName ; 8DB6B (23:5b6b) -> CD A9 44
+	ld hl, $0400 ; 8DB6E (23:5b6e) -> 21 00 04
+	scall PrintTextWithYesNoBox ; 8DB71 (23:5b71) -> CD BA 44
+	or a ; 8DB74 (23:5b74) -> B7
+	jp nz, label_8dbb3 ; 8DB75 (23:5b75) -> C2 B3 5B
+	ld a, $68 ; 8DB78 (23:5b78) -> 3E 68
+	scall PlaySFX ; 8DB7A (23:5b7a) -> CD FE 4E
+	ld hl, $0401 ; 8DB7D (23:5b7d) -> 21 01 04
+	scall PrintTextWithNPCName ; 8DB80 (23:5b80) -> CD A9 44
+	ld hl, sp+$01 ; 8DB83 (23:5b83) -> F8 01
+	ld l, [hl] ; 8DB85 (23:5b85) -> 6E
+	ld h, $00 ; 8DB86 (23:5b86) -> 26 00
+	ld de, $0b00 ; 8DB88 (23:5b88) -> 11 00 0B
+	add hl, de ; 8DB8B (23:5b8b) -> 19
+	scall Func_80488 ; 8DB8C (23:5b8c) -> CD 88 44
+	ld a, l ; 8DB8F (23:5b8f) -> 7D
+	push af ; 8DB90 (23:5b90) -> F5
+	ld c, $00 ; 8DB91 (23:5b91) -> 0E 00
+	ld e, $01 ; 8DB93 (23:5b93) -> 1E 01
+	ld hl, sp+$03 ; 8DB95 (23:5b95) -> F8 03
+	ld a, [hl] ; 8DB97 (23:5b97) -> 7E
+	scall GiveRobot ; 8DB98 (23:5b98) -> CD 87 4D
+	pop af ; 8DB9B (23:5b9b) -> F1
+	ld c, a ; 8DB9C (23:5b9c) -> 4F
+	ld e, $00 ; 8DB9D (23:5b9d) -> 1E 00
+	ld a, $26 ; 8DB9F (23:5b9f) -> 3E 26
+	scall GiveRobot ; 8DBA1 (23:5ba1) -> CD 87 4D
+	ld a, $01 ; 8DBA4 (23:5ba4) -> 3E 01
+	ld [wc796], a ; 8DBA6 (23:5ba6) -> EA 96 C7
+	ld hl, sp+$00 ; 8DBA9 (23:5ba9) -> F8 00
+	ld [hl], $01 ; 8DBAB (23:5bab) -> 36 01
+	call Func_8dd96 ; 8DBAD (23:5bad) -> CD 96 5D
+	jp label_8dbc4 ; 8DBB0 (23:5bb0) -> C3 C4 5B
+label_8dbb3:
+	ld a, $69 ; 8DBB3 (23:5bb3) -> 3E 69
+	scall PlaySFX ; 8DBB5 (23:5bb5) -> CD FE 4E
+	ld hl, $0402 ; 8DBB8 (23:5bb8) -> 21 02 04
+	scall PrintTextWithNPCName ; 8DBBB (23:5bbb) -> CD A9 44
+	call Func_8dd96 ; 8DBBE (23:5bbe) -> CD 96 5D
+	jp label_8dd7d ; 8DBC1 (23:5bc1) -> C3 7D 5D
+label_8dbc4:
+	jp label_8dbd0 ; 8DBC4 (23:5bc4) -> C3 D0 5B
+label_8dbc7:
+	ld hl, $046e ; 8DBC7 (23:5bc7) -> 21 6E 04
+	scall PrintTextStandard ; 8DBCA (23:5bca) -> CD 98 44
+	jp label_8dd7d ; 8DBCD (23:5bcd) -> C3 7D 5D
+label_8dbd0:
+	jp label_8dd1f ; 8DBD0 (23:5bd0) -> C3 1F 5D
+label_8dbd3:
+	ld a, [wc796] ; 8DBD3 (23:5bd3) -> FA 96 C7
+	cp $07 ; 8DBD6 (23:5bd6) -> FE 07
+	jp nz, label_8dc63 ; 8DBD8 (23:5bd8) -> C2 63 5C
+	ld a, $50 ; 8DBDB (23:5bdb) -> 3E 50
+	scall Func_80e6d ; 8DBDD (23:5bdd) -> CD 6D 4E
+	ld hl, sp+$01 ; 8DBE0 (23:5be0) -> F8 01
+	ld [hl], a ; 8DBE2 (23:5be2) -> 77
+	cp $ff ; 8DBE3 (23:5be3) -> FE FF
+	jp z, label_8dc60 ; 8DBE5 (23:5be5) -> CA 60 5C
+	ld hl, $03eb ; 8DBE8 (23:5be8) -> 21 EB 03
+	scall PrintTextWithNPCName ; 8DBEB (23:5beb) -> CD A9 44
+	ld a, $50 ; 8DBEE (23:5bee) -> 3E 50
+	scall Func_80e7d ; 8DBF0 (23:5bf0) -> CD 7D 4E
+	cp $01 ; 8DBF3 (23:5bf3) -> FE 01
+	jp nz, label_8dc57 ; 8DBF5 (23:5bf5) -> C2 57 5C
+	ld hl, $028d ; 8DBF8 (23:5bf8) -> 21 8D 02
+	scall PrintTextWithNPCName ; 8DBFB (23:5bfb) -> CD A9 44
+	ld hl, $0400 ; 8DBFE (23:5bfe) -> 21 00 04
+	scall PrintTextWithYesNoBox ; 8DC01 (23:5c01) -> CD BA 44
+	or a ; 8DC04 (23:5c04) -> B7
+	jp nz, label_8dc43 ; 8DC05 (23:5c05) -> C2 43 5C
+	ld a, $68 ; 8DC08 (23:5c08) -> 3E 68
+	scall PlaySFX ; 8DC0A (23:5c0a) -> CD FE 4E
+	ld hl, $0421 ; 8DC0D (23:5c0d) -> 21 21 04
+	scall PrintTextWithNPCName ; 8DC10 (23:5c10) -> CD A9 44
+	ld hl, sp+$01 ; 8DC13 (23:5c13) -> F8 01
+	ld l, [hl] ; 8DC15 (23:5c15) -> 6E
+	ld h, $00 ; 8DC16 (23:5c16) -> 26 00
+	ld de, $0b00 ; 8DC18 (23:5c18) -> 11 00 0B
+	add hl, de ; 8DC1B (23:5c1b) -> 19
+	scall Func_80488 ; 8DC1C (23:5c1c) -> CD 88 44
+	ld a, l ; 8DC1F (23:5c1f) -> 7D
+	push af ; 8DC20 (23:5c20) -> F5
+	ld c, $00 ; 8DC21 (23:5c21) -> 0E 00
+	ld e, $01 ; 8DC23 (23:5c23) -> 1E 01
+	ld hl, sp+$03 ; 8DC25 (23:5c25) -> F8 03
+	ld a, [hl] ; 8DC27 (23:5c27) -> 7E
+	scall GiveRobot ; 8DC28 (23:5c28) -> CD 87 4D
+	pop af ; 8DC2B (23:5c2b) -> F1
+	ld c, a ; 8DC2C (23:5c2c) -> 4F
+	ld e, $00 ; 8DC2D (23:5c2d) -> 1E 00
+	ld a, $51 ; 8DC2F (23:5c2f) -> 3E 51
+	scall GiveRobot ; 8DC31 (23:5c31) -> CD 87 4D
+	ld a, $08 ; 8DC34 (23:5c34) -> 3E 08
+	ld [wc796], a ; 8DC36 (23:5c36) -> EA 96 C7
+	ld hl, sp+$00 ; 8DC39 (23:5c39) -> F8 00
+	ld [hl], $01 ; 8DC3B (23:5c3b) -> 36 01
+	call Func_8dd96 ; 8DC3D (23:5c3d) -> CD 96 5D
+	jp label_8dc54 ; 8DC40 (23:5c40) -> C3 54 5C
+label_8dc43:
+	ld a, $69 ; 8DC43 (23:5c43) -> 3E 69
+	scall PlaySFX ; 8DC45 (23:5c45) -> CD FE 4E
+	ld hl, $0402 ; 8DC48 (23:5c48) -> 21 02 04
+	scall PrintTextWithNPCName ; 8DC4B (23:5c4b) -> CD A9 44
+	call Func_8dd96 ; 8DC4E (23:5c4e) -> CD 96 5D
+	jp label_8dd7d ; 8DC51 (23:5c51) -> C3 7D 5D
+label_8dc54:
+	jp label_8dc60 ; 8DC54 (23:5c54) -> C3 60 5C
+label_8dc57:
+	ld hl, $046e ; 8DC57 (23:5c57) -> 21 6E 04
+	scall PrintTextStandard ; 8DC5A (23:5c5a) -> CD 98 44
+	jp label_8dd7d ; 8DC5D (23:5c5d) -> C3 7D 5D
+label_8dc60:
+	jp label_8dd1f ; 8DC60 (23:5c60) -> C3 1F 5D
+label_8dc63:
+	ld a, $17 ; 8DC63 (23:5c63) -> 3E 17
+	scall Func_80e6d ; 8DC65 (23:5c65) -> CD 6D 4E
+	ld hl, sp+$01 ; 8DC68 (23:5c68) -> F8 01
+	ld [hl], a ; 8DC6A (23:5c6a) -> 77
+	cp $ff ; 8DC6B (23:5c6b) -> FE FF
+	jp nz, label_8dc7d ; 8DC6D (23:5c6d) -> C2 7D 5C
+	ld a, $50 ; 8DC70 (23:5c70) -> 3E 50
+	scall Func_80e6d ; 8DC72 (23:5c72) -> CD 6D 4E
+	ld hl, sp+$01 ; 8DC75 (23:5c75) -> F8 01
+	ld [hl], a ; 8DC77 (23:5c77) -> 77
+	cp $ff ; 8DC78 (23:5c78) -> FE FF
+	jp z, label_8dd1f ; 8DC7A (23:5c7a) -> CA 1F 5D
+label_8dc7d:
+	ld a, [wc796] ; 8DC7D (23:5c7d) -> FA 96 C7
+	cp $08 ; 8DC80 (23:5c80) -> FE 08
+	jp z, label_8dd07 ; 8DC82 (23:5c82) -> CA 07 5D
+	cp $06 ; 8DC85 (23:5c85) -> FE 06
+	jp z, label_8dd07 ; 8DC87 (23:5c87) -> CA 07 5D
+	cp $0a ; 8DC8A (23:5c8a) -> FE 0A
+	jp z, label_8dcf8 ; 8DC8C (23:5c8c) -> CA F8 5C
+	cp $05 ; 8DC8F (23:5c8f) -> FE 05
+	jp z, label_8dcf8 ; 8DC91 (23:5c91) -> CA F8 5C
+	cp $0c ; 8DC94 (23:5c94) -> FE 0C
+	jp z, label_8dce9 ; 8DC96 (23:5c96) -> CA E9 5C
+	cp $04 ; 8DC99 (23:5c99) -> FE 04
+	jp z, label_8dce9 ; 8DC9B (23:5c9b) -> CA E9 5C
+	cp $0d ; 8DC9E (23:5c9e) -> FE 0D
+	jp z, label_8dcda ; 8DCA0 (23:5ca0) -> CA DA 5C
+	cp $03 ; 8DCA3 (23:5ca3) -> FE 03
+	jp z, label_8dcda ; 8DCA5 (23:5ca5) -> CA DA 5C
+	cp $0b ; 8DCA8 (23:5ca8) -> FE 0B
+	jp z, label_8dccb ; 8DCAA (23:5caa) -> CA CB 5C
+	cp $02 ; 8DCAD (23:5cad) -> FE 02
+	jp z, label_8dccb ; 8DCAF (23:5caf) -> CA CB 5C
+	cp $09 ; 8DCB2 (23:5cb2) -> FE 09
+	jp z, label_8dcbc ; 8DCB4 (23:5cb4) -> CA BC 5C
+	cp $01 ; 8DCB7 (23:5cb7) -> FE 01
+	jp nz, label_8dd16 ; 8DCB9 (23:5cb9) -> C2 16 5D
+label_8dcbc:
+	ld hl, $0140 ; 8DCBC (23:5cbc) -> 21 40 01
+	scall PrintTextStandard ; 8DCBF (23:5cbf) -> CD 98 44
+	ld hl, $034d ; 8DCC2 (23:5cc2) -> 21 4D 03
+	scall PrintTextStandard ; 8DCC5 (23:5cc5) -> CD 98 44
+	jp label_8dd1c ; 8DCC8 (23:5cc8) -> C3 1C 5D
+label_8dccb:
+	ld hl, $0140 ; 8DCCB (23:5ccb) -> 21 40 01
+	scall PrintTextStandard ; 8DCCE (23:5cce) -> CD 98 44
+	ld hl, $0205 ; 8DCD1 (23:5cd1) -> 21 05 02
+	scall PrintTextStandard ; 8DCD4 (23:5cd4) -> CD 98 44
+	jp label_8dd1c ; 8DCD7 (23:5cd7) -> C3 1C 5D
+label_8dcda:
+	ld hl, $0140 ; 8DCDA (23:5cda) -> 21 40 01
+	scall PrintTextStandard ; 8DCDD (23:5cdd) -> CD 98 44
+	ld hl, $020a ; 8DCE0 (23:5ce0) -> 21 0A 02
+	scall PrintTextStandard ; 8DCE3 (23:5ce3) -> CD 98 44
+	jp label_8dd1c ; 8DCE6 (23:5ce6) -> C3 1C 5D
+label_8dce9:
+	ld hl, $0140 ; 8DCE9 (23:5ce9) -> 21 40 01
+	scall PrintTextStandard ; 8DCEC (23:5cec) -> CD 98 44
+	ld hl, $0218 ; 8DCEF (23:5cef) -> 21 18 02
+	scall PrintTextStandard ; 8DCF2 (23:5cf2) -> CD 98 44
+	jp label_8dd1c ; 8DCF5 (23:5cf5) -> C3 1C 5D
+label_8dcf8:
+	ld hl, $0140 ; 8DCF8 (23:5cf8) -> 21 40 01
+	scall PrintTextStandard ; 8DCFB (23:5cfb) -> CD 98 44
+	ld hl, $0241 ; 8DCFE (23:5cfe) -> 21 41 02
+	scall PrintTextStandard ; 8DD01 (23:5d01) -> CD 98 44
+	jp label_8dd1c ; 8DD04 (23:5d04) -> C3 1C 5D
+label_8dd07:
+	ld hl, $0140 ; 8DD07 (23:5d07) -> 21 40 01
+	scall PrintTextStandard ; 8DD0A (23:5d0a) -> CD 98 44
+	ld hl, $0244 ; 8DD0D (23:5d0d) -> 21 44 02
+	scall PrintTextStandard ; 8DD10 (23:5d10) -> CD 98 44
+	jp label_8dd1c ; 8DD13 (23:5d13) -> C3 1C 5D
+label_8dd16:
+	ld hl, $03eb ; 8DD16 (23:5d16) -> 21 EB 03
+	scall PrintTextWithNPCName ; 8DD19 (23:5d19) -> CD A9 44
+label_8dd1c:
+	jp label_8dd7d ; 8DD1C (23:5d1c) -> C3 7D 5D
+label_8dd1f:
+	ld hl, sp+$00 ; 8DD1F (23:5d1f) -> F8 00
+	ld a, [hl] ; 8DD21 (23:5d21) -> 7E
+	cp $ff ; 8DD22 (23:5d22) -> FE FF
+	jp nz, label_8dd7d ; 8DD24 (23:5d24) -> C2 7D 5D
+	ld a, [wc796] ; 8DD27 (23:5d27) -> FA 96 C7
+	cp $08 ; 8DD2A (23:5d2a) -> FE 08
+	jp nc, label_8dd49 ; 8DD2C (23:5d2c) -> D2 49 5D
+	ld a, [wc796] ; 8DD2F (23:5d2f) -> FA 96 C7
+	cp $01 ; 8DD32 (23:5d32) -> FE 01
+	jp c, label_8dd49 ; 8DD34 (23:5d34) -> DA 49 5D
+	ld hl, $03eb ; 8DD37 (23:5d37) -> 21 EB 03
+	scall PrintTextWithNPCName ; 8DD3A (23:5d3a) -> CD A9 44
+	ld hl, $0420 ; 8DD3D (23:5d3d) -> 21 20 04
+	scall PrintTextWithNPCName ; 8DD40 (23:5d40) -> CD A9 44
+	call Func_8dd96 ; 8DD43 (23:5d43) -> CD 96 5D
+	jp label_8dd7d ; 8DD46 (23:5d46) -> C3 7D 5D
+label_8dd49:
+	ld a, [wc796] ; 8DD49 (23:5d49) -> FA 96 C7
+	cp $0f ; 8DD4C (23:5d4c) -> FE 0F
+	jp nz, label_8dd5a ; 8DD4E (23:5d4e) -> C2 5A 5D
+	ld hl, $03eb ; 8DD51 (23:5d51) -> 21 EB 03
+	scall PrintTextWithNPCName ; 8DD54 (23:5d54) -> CD A9 44
+	jp label_8dd7d ; 8DD57 (23:5d57) -> C3 7D 5D
+label_8dd5a:
+	ld a, [wc796] ; 8DD5A (23:5d5a) -> FA 96 C7
+	cp $08 ; 8DD5D (23:5d5d) -> FE 08
+	jp c, label_8dd6e ; 8DD5F (23:5d5f) -> DA 6E 5D
+	ld hl, $0423 ; 8DD62 (23:5d62) -> 21 23 04
+	scall PrintTextWithNPCName ; 8DD65 (23:5d65) -> CD A9 44
+	call Func_8dd96 ; 8DD68 (23:5d68) -> CD 96 5D
+	jp label_8dd7d ; 8DD6B (23:5d6b) -> C3 7D 5D
+label_8dd6e:
+	ld hl, $03eb ; 8DD6E (23:5d6e) -> 21 EB 03
+	scall PrintTextWithNPCName ; 8DD71 (23:5d71) -> CD A9 44
+	ld hl, $018c ; 8DD74 (23:5d74) -> 21 8C 01
+	scall PrintTextWithNPCName ; 8DD77 (23:5d77) -> CD A9 44
+	call Func_8dd96 ; 8DD7A (23:5d7a) -> CD 96 5D
+label_8dd7d:
+	pop bc ; 8DD7D (23:5d7d) -> C1
+	pop bc ; 8DD7E (23:5d7e) -> C1
+	ret  ; 8DD7F (23:5d7f) -> C9
 
 Func_8dd80:
-	db $7b, $fe, $02, $c2, $8b, $5d, $3e, $07
-	db $ea, $8a, $c7, $c9, $14, $08, $ff, $ff, $0d, $07, $14, $08, $ff, $ff, $fa, $38
-	db $c8, $fe, $03, $c2, $c0, $5d, $21, $1e, $00, $cd, $8f, $46, $3e, $2e, $cd, $fe
-	db $4e, $01, $90, $5d, $1e, $23, $3e, $08, $cd, $88, $46, $cd, $0c, $42, $1e, $00
-	db $3e, $08, $cd, $3d, $41, $c3, $df, $5d, $21, $1e, $00, $cd, $8f, $46, $3e, $2e
-	db $cd, $fe, $4e, $01, $8c, $5d, $1e, $23, $3e, $08, $cd, $88, $46, $cd, $0c, $42
-	db $1e, $00, $3e, $08, $cd, $3d, $41, $c9, $0c, $04, $01, $01, $ff, $ff, $ff, $ff
+	ld a, e ; 8DD80 (23:5d80) -> 7B
+	cp $02 ; 8DD81 (23:5d81) -> FE 02
+	jp nz, label_8dd8b ; 8DD83 (23:5d83) -> C2 8B 5D
+	ld a, $07 ; 8DD86 (23:5d86) -> 3E 07
+	ld [wc78a], a ; 8DD88 (23:5d88) -> EA 8A C7
+label_8dd8b:
+	ret  ; 8DD8B (23:5d8b) -> C9
+
+Data_8dd8c:
+	db $14, $08, $ff, $ff
+
+Data_8dd90:
+	db $0d, $07, $14, $08, $ff, $ff
+
+Func_8dd96:
+	ld a, [wPlayerFacing] ; 8DD96 (23:5d96) -> FA 38 C8
+	cp $03 ; 8DD99 (23:5d99) -> FE 03
+	jp nz, label_8ddc0 ; 8DD9B (23:5d9b) -> C2 C0 5D
+	ld hl, $001e ; 8DD9E (23:5d9e) -> 21 1E 00
+	scall ScriptSleep ; 8DDA1 (23:5da1) -> CD 8F 46
+	ld a, $2e ; 8DDA4 (23:5da4) -> 3E 2E
+	scall PlaySFX ; 8DDA6 (23:5da6) -> CD FE 4E
+	ld bc, Data_8dd90 ; 8DDA9 (23:5da9) -> 01 90 5D
+	ld e, $23 ; 8DDAC (23:5dac) -> 1E 23
+	ld a, $08 ; 8DDAE (23:5dae) -> 3E 08
+	scall MovePersonAndWait ; 8DDB0 (23:5db0) -> CD 88 46
+	scall WaitNPCStep ; 8DDB3 (23:5db3) -> CD 0C 42
+	ld e, $00 ; 8DDB6 (23:5db6) -> 1E 00
+	ld a, $08 ; 8DDB8 (23:5db8) -> 3E 08
+	scall SetPersonVisibilityState ; 8DDBA (23:5dba) -> CD 3D 41
+	jp label_8dddf ; 8DDBD (23:5dbd) -> C3 DF 5D
+label_8ddc0:
+	ld hl, $001e ; 8DDC0 (23:5dc0) -> 21 1E 00
+	scall ScriptSleep ; 8DDC3 (23:5dc3) -> CD 8F 46
+	ld a, $2e ; 8DDC6 (23:5dc6) -> 3E 2E
+	scall PlaySFX ; 8DDC8 (23:5dc8) -> CD FE 4E
+	ld bc, Data_8dd8c ; 8DDCB (23:5dcb) -> 01 8C 5D
+	ld e, $23 ; 8DDCE (23:5dce) -> 1E 23
+	ld a, $08 ; 8DDD0 (23:5dd0) -> 3E 08
+	scall MovePersonAndWait ; 8DDD2 (23:5dd2) -> CD 88 46
+	scall WaitNPCStep ; 8DDD5 (23:5dd5) -> CD 0C 42
+	ld e, $00 ; 8DDD8 (23:5dd8) -> 1E 00
+	ld a, $08 ; 8DDDA (23:5dda) -> 3E 08
+	scall SetPersonVisibilityState ; 8DDDC (23:5ddc) -> CD 3D 41
+label_8dddf:
+	ret  ; 8DDDF (23:5ddf) -> C9
+
+Data_8dde0:
+	db $0c, $04, $01, $01, $ff, $ff, $ff, $ff
 	db $ff, $ff, $2e, $12, $11, $01, $01, $08, $00, $13, $0d, $12, $0d, $2e, $b8, $02
 	db $ff, $ff, $23, $03, $24, $03, $25, $03, $ff, $ff, $02, $0c, $0e, $07, $01, $01
 	db $03, $04, $00, $23, $e6, $5f, $00, $00, $0c, $0c, $0a, $09, $01, $01, $01, $04

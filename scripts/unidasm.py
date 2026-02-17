@@ -121,7 +121,13 @@ def rom_offset_to_addr(offset: int) -> tuple[int, int]:
 
 
 def sanitize_operand(operand: str):
-    return operand.lower().replace("(", "[").replace(")", "]")
+    return (
+        operand.lower()
+        .replace("(", "[")
+        .replace(")", "]")
+        .replace("hl+", "hli")
+        .replace("hl-", "hld")
+    )
 
 
 def get_disassembly(
