@@ -1,3 +1,14 @@
+MACRO lda
+IF \1 == 0
+	xor a
+ELIF \1 < 0
+	ld hl, sp-\1
+	ld a, [hl]
+ELSE
+	ld a, \1
+ENDC
+ENDM
+
 MACRO ldtext_tree_pointer
 	ld \1, (\2_Pointer - TextTreeBitstreams) / 2
 	ENDM
@@ -34,20 +45,12 @@ MACRO script_sleep
 	ENDM
 
 MACRO playmusic
-IF \1 == 0
-	xor a
-ELSE
-	ld a, \1
-ENDC
+	lda \1
 	scall PlayMusic
 	ENDM
 
 MACRO playsfx
-IF \1 == 0
-	xor a
-ELSE
-	ld a, \1
-ENDC
+	lda \1
 	scall PlaySFX
 	ENDM
 
@@ -99,6 +102,18 @@ MACRO move_player
 	scall MovePlayer
 	ENDM
 
+MACRO move_person
+	; person, pointer, wait
+	ld bc, \2
+	ld e, csbnk
+	lda \1
+IF \3 == 0
+	scall MovePerson
+ELSE
+	scall MovePersonAndWait
+ENDC
+	ENDM
+
 MACRO loademote
 	ld c, \1
 	ld e, \2
@@ -111,41 +126,25 @@ MACRO heal
 	ENDM
 
 MACRO face_player
-IF \1 == 0
-	xor a
-ELSE
-	ld a, \1
-ENDC
+	lda \1
 	scall FacePlayer
 	ENDM
 
 MACRO sprite_face
 	ld e, \1
-IF \2 == 0
-	xor a
-ELSE
-	ld a, \2
-ENDC
+	lda \2
 	scall SpriteFace
 	ENDM
 
 MACRO showperson
 	ld e, 1
-IF \1 == 0
-	xor a
-ELSE
-	ld a, \1
-ENDC
+	lda \1
 	scall SetPersonVisibilityState
 	ENDM
 
 MACRO hideperson
 	ld e, 0
-IF \1 == 0
-	xor a
-ELSE
-	ld a, \1
-ENDC
+	lda \1
 	scall SetPersonVisibilityState
 	ENDM
 
@@ -154,9 +153,7 @@ MACRO if_true
 	jp nz, \1
 	ENDM
 
-MACRO map_object
-	db \1, \2, \3, \4, \5, \6, \7, \8, \9, BANK(.)
-	shift 2
-	dw \8
-	dw \9
+MACRO if_false
+	or a
+	jp z, \1
 	ENDM

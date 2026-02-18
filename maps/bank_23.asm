@@ -6,67 +6,79 @@ SECTION "Bank 23", ROMX
 	script_library 23
 
 Data_8d0b4:
-	db $05, $14, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $15
-	db $05, $01, $01, $02, $00, $17, $10, $17, $0f, $2e, $0c, $06, $01, $01, $20, $07
-	db $05, $09, $05, $08, $34, $11, $06, $01, $01, $20, $02, $01, $0a, $01, $09, $34
-	db $19, $06, $01, $01, $20, $02, $01, $0a, $01, $09, $34, $1e, $06, $01, $01, $20
-	db $06, $06, $0c, $06, $0b, $34, $0c, $0c, $01, $01, $20, $08, $05, $09, $05, $08
-	db $34, $11, $0c, $01, $01, $20, $01, $01, $08, $01, $07, $34, $19, $0c, $01, $01
-	db $20, $01, $01, $08, $01, $07, $34, $1d, $0c, $01, $01, $20, $00, $01, $05, $01
-	db $04, $34, $0c, $12, $01, $01, $20, $05, $06, $0b, $06, $0a, $34, $11, $12, $01
-	db $01, $20, $01, $01, $08, $01, $07, $34, $19, $12, $01, $01, $20, $01, $01, $08
-	db $01, $07, $34, $1d, $12, $01, $01, $20, $00, $01, $05, $01, $04, $34, $23, $14
-	db $01, $01, $20, $05, $06, $0b, $06, $0a, $34
+	db $05, $14, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e
+	db $15, $05, $01, $01, $02, $00, $17, $10, $17, $0f, $2e
+	db $0c, $06, $01, $01, $20, $07, $05, $09, $05, $08, $34
+	db $11, $06, $01, $01, $20, $02, $01, $0a, $01, $09, $34
+	db $19, $06, $01, $01, $20, $02, $01, $0a, $01, $09, $34
+	db $1e, $06, $01, $01, $20, $06, $06, $0c, $06, $0b, $34
+	db $0c, $0c, $01, $01, $20, $08, $05, $09, $05, $08, $34
+	db $11, $0c, $01, $01, $20, $01, $01, $08, $01, $07, $34
+	db $19, $0c, $01, $01, $20, $01, $01, $08, $01, $07, $34
+	db $1d, $0c, $01, $01, $20, $00, $01, $05, $01, $04, $34
+	db $0c, $12, $01, $01, $20, $05, $06, $0b, $06, $0a, $34
+	db $11, $12, $01, $01, $20, $01, $01, $08, $01, $07, $34
+	db $19, $12, $01, $01, $20, $01, $01, $08, $01, $07, $34
+	db $1d, $12, $01, $01, $20, $00, $01, $05, $01, $04, $34
+	db $23, $14, $01, $01, $20, $05, $06, $0b, $06, $0a, $34
 
 Data_8d159:
 	db $07, $11, $01, $01, $20, $03, $01, $08, $01, $07, $34
 
 Data_8d164:
-	db $ac, $02, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_4651c
+	dw -1
 
 Data_8d168:
-	db $ad, $02, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_4653a
+	dw -1
 
 Data_8d16c:
-	db $82, $01, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_3fd45
+	dw -1
 
 Data_8d170:
-	db $90, $01, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_3ffc5
+	dw -1
 
 Data_8d174:
-	db $53, $03, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_3fc99
+	dw -1
 
 Data_8d178:
-	db $8f, $01, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_3ff8c
+	dw -1
 
 Data_8d17c:
-	db $26, $03, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_46e6c
+	dw -1
 
 Data_8d180:
-	db $7f, $01, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_3fcf1
+	dw -1
 
 Data_8d184:
-	db $21, $0c, $23, $02, $01, $01, $02, $04, $00, $23, $55, $59
-	db $00, $00, $22, $0c, $23, $01, $01, $01, $02, $04, $00, $23, $55, $59, $00, $00
+	person_event $21, $0c, $23, $02, $01, $01, $02, $04, $00, Func_8d955, NULL
+	person_event $22, $0c, $23, $01, $01, $01, $02, $04, $00, Func_8d955, NULL
 
 Data_8d1a0:
-	map_object $ff, $00, $23, $14, $02, $01, $00, $04, $00, Func_8d396, NULL
-	map_object $ff, $00, $06, $13, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d164
-	map_object $ff, $00, $06, $15, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d164
-	map_object $ff, $00, $14, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d168
-	map_object $ff, $00, $16, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d168
-	map_object $ff, $00, $06, $04, $03, $03, $00, $04, $00, Func_8d2f4, NULL
-	map_object $10, $0c, $0d, $08, $01, $01, $03, $04, $00, Func_8db33, NULL
-	map_object $06, $04, $0b, $14, $01, $01, $03, $04, $00, PrintTextFacePlayer_23, Data_8d16c
-	map_object $0e, $04, $1c, $07, $01, $01, $02, $04, $00, PrintTextFacePlayer_23, Data_8d170
-	map_object $04, $04, $1c, $14, $01, $01, $01, $04, $00, PrintTextFacePlayer_23, Data_8d174
-	map_object $0a, $04, $21, $04, $01, $01, $03, $04, $00, PrintTextFacePlayer_23, Data_8d178
+	person_event $ff, $00, $23, $14, $02, $01, $00, $04, $00, Func_8d396, NULL
+	person_event $ff, $00, $06, $13, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d164
+	person_event $ff, $00, $06, $15, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d164
+	person_event $ff, $00, $14, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d168
+	person_event $ff, $00, $16, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d168
+	person_event $ff, $00, $06, $04, $03, $03, $00, $04, $00, Func_8d2f4, NULL
+	person_event $10, $0c, $0d, $08, $01, $01, $03, $04, $00, Func_8db33, NULL
+	person_event $06, $04, $0b, $14, $01, $01, $03, $04, $00, PrintTextFacePlayer_23, Data_8d16c
+	person_event $0e, $04, $1c, $07, $01, $01, $02, $04, $00, PrintTextFacePlayer_23, Data_8d170
+	person_event $04, $04, $1c, $14, $01, $01, $01, $04, $00, PrintTextFacePlayer_23, Data_8d174
+	person_event $0a, $04, $21, $04, $01, $01, $03, $04, $00, PrintTextFacePlayer_23, Data_8d178
 
 Data_8d23a:
-	map_object $ff, $00, $07, $11, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d17c
+	person_event $ff, $00, $07, $11, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8d17c
 
 Data_8d248:
-	map_object $ff, $00, $07, $11, $01, $01, $00, $04, $01, Func_8dd80, NULL
+	person_event $ff, $00, $07, $11, $01, $01, $00, $04, $01, Func_8dd80, NULL
 
 Func_8d256:: ; 8d256
 	call Func_8da28
@@ -76,32 +88,19 @@ Func_8d256:: ; 8d256
 	ld [wc789], a
 	ld a, $02
 	ld [wc7e2], a
-	ld e, $0f
-	ld hl, Data_8d0b4
-	scall LoadWarps
-	ld e, $02
-	ld hl, Data_8d184
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $0b
-	ld hl, Data_8d1a0
-	scall LoadMapObjects
+	loadwarps $0f, Data_8d0b4
+	loadpeople $02, Data_8d184
+	hideperson 0
+	hideperson $01
+	loadpeople $0b, Data_8d1a0
 	ld a, $07
 	scall PlayMusic
 	ld a, $01
 	scall LoadPlayerSprite
-	ld hl, $0046
-	scall CheckEventFlag
+	checkevent $0046
 	cp $01
 	jp nz, label_8d2a9
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	hideperson $02
 label_8d2a9:
 	ld a, [wc790]
 	or a
@@ -119,17 +118,11 @@ label_8d2c0:
 	ld a, [wc790]
 	cp $07
 	jp nc, label_8d2e2
-	ld e, $01
-	ld hl, Data_8d159
-	scall LoadWarps
-	ld e, $01
-	ld hl, Data_8d248
-	scall LoadMapObjects
+	loadwarps $01, Data_8d159
+	loadpeople $01, Data_8d248
 	jp label_8d2ea
 label_8d2e2:
-	ld e, $01
-	ld hl, Data_8d23a
-	scall LoadMapObjects
+	loadpeople $01, Data_8d23a
 label_8d2ea:
 	scall Func_8001c
 	ret
@@ -164,8 +157,7 @@ label_8d321:
 	ld a, [wc790]
 	cp $06
 	jp nc, label_8d386
-	hltext_tree_pointer TreeBitstreamText_46f30
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, label_8d383
 	ld a, [wPlayerFacing]
@@ -204,21 +196,18 @@ label_8d34b:
 label_8d383:
 	jp label_8d38c
 label_8d386:
-	hltext_tree_pointer TreeBitstreamText_470f0
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 label_8d38c:
 	jp label_8d395
 label_8d38f:
-	hltext_tree_pointer TreeBitstreamText_470d8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 label_8d395:
 	ret
 
 Func_8d396:
 	push de
 	xor a
-	ld hl, $0046
-	scall CheckEventFlag
+	checkevent $0046
 	or a
 	jp nz, label_8d42b
 	ld hl, sp+$00
@@ -230,11 +219,8 @@ Func_8d396:
 	jp z, label_8d3b4
 	jp label_8d42b
 label_8d3b4:
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
-	hltext_tree_pointer TreeBitstreamText_3ccf9
-	scall PrintTextWithNPCName
+	showperson 0
+	writenpctext TreeBitstreamText_3ccf9
 	ld l, $11
 	xor a
 label_8d3c3:
@@ -273,12 +259,8 @@ label_8d3e6:
 	push af
 	cp $07
 	jp nz, label_8d40c
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $01
 	ld a, $01
 	scall Func_80653
 label_8d40c:
@@ -287,16 +269,12 @@ label_8d40c:
 	pop hl
 	jp label_8d3e6
 label_8d412:
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	hideperson $02
 	ld a, $0a
 	scall Func_80c94
 	ld a, $0b
 	scall Func_80c94
-	ld e, $01
-	ld hl, $0046
-	scall EventFlagAction
+	setevent $0046
 label_8d42b:
 	pop bc
 	ret
@@ -310,13 +288,10 @@ Data_8d431:
 Func_8d435:
 	ld hl, $003c
 	scall ScriptSleep
-	hltext_tree_pointer TreeBitstreamText_3cd08
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3cd08
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
+	showperson $01
 	ld hl, $001e
 	scall ScriptSleep
 	ld e, $00
@@ -324,26 +299,19 @@ Func_8d435:
 	scall SpriteFace
 	ld hl, $001e
 	scall ScriptSleep
-	ld bc, Data_8d42d
-	ld e, $23
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_8d42d, 1
 	scall WaitNPCStep
 	ld e, $03
 	xor a
 	scall SpriteFace
 	ld hl, $001e
 	scall ScriptSleep
-	ld bc, Data_8d431
-	ld e, $23
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_8d431, 1
 	scall WaitNPCStep
 	ld e, $01
 	ld a, $01
 	scall SpriteFace
-	hltext_tree_pointer TreeBitstreamText_3cdce
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3cdce
 	ld e, $00
 	ld a, $01
 	scall SpriteFace
@@ -360,18 +328,13 @@ Func_8d435:
 	ld e, $02
 	xor a
 	scall SpriteFace
-	hltext_tree_pointer TreeBitstreamText_3ce14
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ce14
 	ld e, $02
 	ld a, $01
 	scall SpriteFace
-	hltext_tree_pointer TreeBitstreamText_3cec2
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_3cefd
-	scall PrintTextWithNPCName
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	writenpctext TreeBitstreamText_3cec2
+	writenpctext TreeBitstreamText_3cefd
+	hideperson $02
 	ret
 
 Func_8d4d8:: ; 8d4d8
@@ -386,9 +349,7 @@ Func_8d4d8:: ; 8d4d8
 	call FarCall
 	xor a
 	scall PlayMusic
-	ld e, $00
-	ld a, $0c
-	scall SetPersonVisibilityState
+	hideperson $0c
 	ld a, $3a
 	scall PlaySFX
 	scall StartShakingScreen
@@ -472,9 +433,7 @@ Func_8d4d8:: ; 8d4d8
 	jp label_8d5f2
 label_8d5bd:
 	call Func_8d877
-	ld e, $01
-	ld hl, $002f
-	scall EventFlagAction
+	setevent $002f
 	jp label_8d5f2
 label_8d5cb:
 	call Func_8d813
@@ -486,14 +445,11 @@ label_8d5d7:
 	call Func_8d76b
 	jp label_8d5f2
 label_8d5dd:
-	ld hl, $0049
-	scall CheckEventFlag
+	checkevent $0049
 	or a
 	jp nz, label_8d5f2
 	call Func_8d61a
-	ld e, $01
-	ld hl, $0049
-	scall EventFlagAction
+	setevent $0049
 label_8d5f2:
 	jp label_8d5fa
 label_8d5f5:
@@ -539,28 +495,19 @@ Func_8d61a:
 	ld e, $23
 	ld a, $01
 	scall Func_80080
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld bc, Data_8d602
-	ld e, $23
-	ld a, $01
-	scall MovePersonAndWait
+	showperson $01
+	move_person $01, Data_8d602, 1
 	scall WaitNPCStep
 	ld e, $02
 	ld a, $01
 	scall SpriteFace
-	hltext_tree_pointer TreeBitstreamText_3d465
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d465
 	ld e, $03
 	ld a, $01
 	scall SpriteFace
 	ld hl, $001e
 	scall ScriptSleep
-	ld bc, Data_8d608
-	ld e, $23
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_8d608, 1
 	scall WaitNPCStep
 	ld e, $03
 	ld a, $01
@@ -569,13 +516,8 @@ Func_8d61a:
 	ld e, $23
 	xor a
 	scall Func_80080
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
-	ld bc, Data_8d60c
-	ld e, $23
-	xor a
-	scall MovePersonAndWait
+	showperson 0
+	move_person 0, Data_8d60c, 1
 	scall WaitNPCStep
 	ld e, $00
 	xor a
@@ -585,13 +527,11 @@ Func_8d61a:
 	ld e, $02
 	xor a
 	scall SpriteFace
-	hltext_tree_pointer TreeBitstreamText_3d4a3
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d4a3
 	ld e, $03
 	ld a, $01
 	scall SpriteFace
-	hltext_tree_pointer TreeBitstreamText_3d51a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d51a
 	ld e, $02
 	ld a, $01
 	scall SpriteFace
@@ -606,14 +546,12 @@ Func_8d61a:
 	xor a
 	scall PlayMusic
 label_8d6e1:
-	hltext_tree_pointer TreeBitstreamText_3d552
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_3d552
 	or a
 	jp nz, label_8d75c
 	ld a, $03
 	scall PlayMusic
-	hltext_tree_pointer TreeBitstreamText_3d59c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d59c
 	ld e, $03
 	ld a, $01
 	scall SpriteFace
@@ -634,40 +572,25 @@ label_8d6e1:
 	scall SpriteFace
 	ld hl, $001e
 	scall ScriptSleep
-	hltext_tree_pointer TreeBitstreamText_3d5d0
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_3d60c
-	scall PrintTextWithNPCName
-	ld bc, Data_8d612
-	ld e, $23
-	xor a
-	scall MovePerson
-	ld bc, Data_8d616
-	ld e, $23
-	ld a, $01
-	scall MovePersonAndWait
+	writenpctext TreeBitstreamText_3d5d0
+	writenpctext TreeBitstreamText_3d60c
+	move_person 0, Data_8d612, 0
+	move_person $01, Data_8d616, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $01
 	jp label_8d76a
 label_8d75c:
 	ld a, $69
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3d63e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d63e
 	jp label_8d6e1
 label_8d76a:
 	ret
 Func_8d76b:
 	ld l, $03
 	push hl
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	ld c, $10
 	ld e, $23
 	xor a
@@ -690,8 +613,7 @@ label_8d790:
 	push hl
 	ld a, $69
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3d404
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d404
 	xor a
 	pop hl
 label_8d79e:
@@ -707,16 +629,12 @@ label_8d79e:
 	pop hl
 	jp label_8d79e
 label_8d7b1:
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ret
 Func_8d7b8:
 	ld l, $06
 	push hl
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
+	showperson $01
 	ld c, $0d
 	ld e, $23
 	ld a, $01
@@ -743,8 +661,7 @@ label_8d7df:
 	scall ScriptSleep
 	ld a, $68
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3d442
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d442
 	xor a
 	pop hl
 label_8d7f8:
@@ -760,16 +677,12 @@ label_8d7f8:
 	pop hl
 	jp label_8d7f8
 label_8d80b:
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 	ret
 Func_8d813:
 	ld l, $09
 	push hl
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	ld c, $0a
 	ld e, $23
 	xor a
@@ -799,8 +712,7 @@ label_8d843:
 	push hl
 	ld a, $69
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3d37a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d37a
 	xor a
 	pop hl
 label_8d851:
@@ -823,16 +735,12 @@ label_8d86a:
 	pop hl
 	jp label_8d851
 label_8d870:
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ret
 Func_8d877:
 	ld l, $0c
 	push hl
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
+	showperson $01
 	ld c, $07
 	ld e, $23
 	ld a, $01
@@ -866,8 +774,7 @@ label_8d8a9:
 	scall ScriptSleep
 	ld a, $68
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3d2d1
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d2d1
 	xor a
 	pop hl
 label_8d8c2:
@@ -890,16 +797,12 @@ label_8d8db:
 	pop hl
 	jp label_8d8c2
 label_8d8e1:
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 	ret
 Func_8d8e9:
 	ld l, $0f
 	push hl
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	ld c, $04
 	ld e, $23
 	xor a
@@ -929,8 +832,7 @@ label_8d919:
 	push hl
 	ld a, $69
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3d278
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d278
 	xor a
 	pop hl
 label_8d927:
@@ -953,9 +855,7 @@ label_8d940:
 	pop hl
 	jp label_8d927
 label_8d946:
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ret
 
 Data_8d94d:
@@ -968,12 +868,10 @@ Func_8d955:
 	ld a, e
 	or a
 	jp nz, label_8d9bb
-	hltext_tree_pointer TreeBitstreamText_3d552
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_3d552
 	or a
 	jp nz, label_8d9b5
-	hltext_tree_pointer TreeBitstreamText_3d59c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d59c
 	ld e, $01
 	ld a, $01
 	scall SpriteFace
@@ -982,8 +880,7 @@ Func_8d955:
 	ld e, $01
 	xor a
 	scall SpriteFace
-	hltext_tree_pointer TreeBitstreamText_3d5d0
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d5d0
 	ld e, $02
 	xor a
 	scall SpriteFace
@@ -992,21 +889,13 @@ Func_8d955:
 	ld e, $02
 	ld a, $01
 	scall SpriteFace
-	hltext_tree_pointer TreeBitstreamText_3d60c
-	scall PrintTextWithNPCName
-	ld bc, Data_8d94d
-	ld e, $23
-	xor a
-	scall MovePerson
-	ld bc, Data_8d951
-	ld e, $23
-	ld a, $01
-	scall MovePersonAndWait
+	writenpctext TreeBitstreamText_3d60c
+	move_person 0, Data_8d94d, 0
+	move_person $01, Data_8d951, 1
 	scall WaitNPCStep
 	jp label_8d9bb
 label_8d9b5:
-	hltext_tree_pointer TreeBitstreamText_3d63e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d63e
 label_8d9bb:
 	ret
 
@@ -1175,9 +1064,7 @@ Func_8db33:
 	ld a, e
 	or a
 	jp nz, label_8dd7d
-	ld hl, sp+$03
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$03
 	ld a, [wc796]
 	or a
 	jp nz, label_8dbd3
@@ -1187,22 +1074,18 @@ Func_8db33:
 	ld [hl], a
 	cp $ff
 	jp z, label_8dbd0
-	hltext_tree_pointer TreeBitstreamText_44000
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44000
 	ld a, $17
 	scall Func_80e7d
 	cp $01
 	jp nz, label_8dbc7
-	hltext_tree_pointer TreeBitstreamText_440c4
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_458e0
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_440c4
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, label_8dbb3
 	ld a, $68
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_440f4
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_440f4
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -1230,15 +1113,13 @@ Func_8db33:
 label_8dbb3:
 	ld a, $69
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_44185
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44185
 	call Func_8dd96
 	jp label_8dd7d
 label_8dbc4:
 	jp label_8dbd0
 label_8dbc7:
-	hltext_tree_pointer TreeBitstreamText_45a40
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp label_8dd7d
 label_8dbd0:
 	jp label_8dd1f
@@ -1252,22 +1133,18 @@ label_8dbd3:
 	ld [hl], a
 	cp $ff
 	jp z, label_8dc60
-	hltext_tree_pointer TreeBitstreamText_44000
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44000
 	ld a, $50
 	scall Func_80e7d
 	cp $01
 	jp nz, label_8dc57
-	hltext_tree_pointer TreeBitstreamText_44213
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_458e0
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_44213
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, label_8dc43
 	ld a, $68
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_44239
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44239
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -1295,15 +1172,13 @@ label_8dbd3:
 label_8dc43:
 	ld a, $69
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_44185
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44185
 	call Func_8dd96
 	jp label_8dd7d
 label_8dc54:
 	jp label_8dc60
 label_8dc57:
-	hltext_tree_pointer TreeBitstreamText_45a40
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp label_8dd7d
 label_8dc60:
 	jp label_8dd1f
@@ -1347,44 +1222,31 @@ label_8dc7d:
 	cp $01
 	jp nz, label_8dd16
 label_8dcbc:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45acc
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45acc
 	jp label_8dd1c
 label_8dccb:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45add
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45add
 	jp label_8dd1c
 label_8dcda:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45aee
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45aee
 	jp label_8dd1c
 label_8dce9:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45aff
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45aff
 	jp label_8dd1c
 label_8dcf8:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45b10
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45b10
 	jp label_8dd1c
 label_8dd07:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45b20
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45b20
 	jp label_8dd1c
 label_8dd16:
-	hltext_tree_pointer TreeBitstreamText_44000
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44000
 label_8dd1c:
 	jp label_8dd7d
 label_8dd1f:
@@ -1398,32 +1260,26 @@ label_8dd1f:
 	ld a, [wc796]
 	cp $01
 	jp c, label_8dd49
-	hltext_tree_pointer TreeBitstreamText_44000
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_441b3
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44000
+	writenpctext TreeBitstreamText_441b3
 	call Func_8dd96
 	jp label_8dd7d
 label_8dd49:
 	ld a, [wc796]
 	cp $0f
 	jp nz, label_8dd5a
-	hltext_tree_pointer TreeBitstreamText_44000
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44000
 	jp label_8dd7d
 label_8dd5a:
 	ld a, [wc796]
 	cp $08
 	jp c, label_8dd6e
-	hltext_tree_pointer TreeBitstreamText_4428f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4428f
 	call Func_8dd96
 	jp label_8dd7d
 label_8dd6e:
-	hltext_tree_pointer TreeBitstreamText_44000
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_44051
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44000
+	writenpctext TreeBitstreamText_44051
 	call Func_8dd96
 label_8dd7d:
 	pop bc
@@ -1453,55 +1309,50 @@ Func_8dd96:
 	scall ScriptSleep
 	ld a, $2e
 	scall PlaySFX
-	ld bc, Data_8dd90
-	ld e, $23
-	ld a, $08
-	scall MovePersonAndWait
+	move_person $08, Data_8dd90, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $08
-	scall SetPersonVisibilityState
+	hideperson $08
 	jp label_8dddf
 label_8ddc0:
 	ld hl, $001e
 	scall ScriptSleep
 	ld a, $2e
 	scall PlaySFX
-	ld bc, Data_8dd8c
-	ld e, $23
-	ld a, $08
-	scall MovePersonAndWait
+	move_person $08, Data_8dd8c, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $08
-	scall SetPersonVisibilityState
+	hideperson $08
 label_8dddf:
 	ret
 
 Data_8dde0:
-	db $0c, $04, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $12, $11, $01, $01, $08, $00, $13, $0d, $12, $0d, $2e
+	db $0c, $04, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e
+	db $12, $11, $01, $01, $08, $00, $13, $0d, $12, $0d, $2e
 
 Data_8ddf6:
-	db $b8, $02, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_465ec
+	dw -1
 
 Data_8ddfa:
-	db $23, $03, $24, $03, $25, $03, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_46e1d
+	dtext_tree_pointer TreeBitstreamText_46e3b
+	dtext_tree_pointer TreeBitstreamText_46e4b
+	dw -1
 
 Data_8de02:
-	map_object $02, $0c, $0e, $07, $01, $01, $03, $04, $00, Func_8dfe6, NULL
-	map_object $0c, $0c, $0a, $09, $01, $01, $01, $04, $00, Func_8e080, NULL
-	map_object $00, $0c, $09, $0c, $01, $01, $01, $04, $00, Func_8e11a, NULL
-	map_object $0c, $0c, $0d, $0d, $01, $01, $03, $04, $00, Func_8e1b2, NULL
-	map_object $0b, $0c, $07, $11, $01, $01, $01, $04, $00, Func_8e24c, NULL
-	map_object $04, $0c, $12, $11, $01, $01, $02, $04, $00, NULL, NULL
-	map_object $ff, $00, $0e, $10, $03, $03, $00, $04, $01, Func_8e2be, NULL
+	person_event $02, $0c, $0e, $07, $01, $01, $03, $04, $00, Func_8dfe6, NULL
+	person_event $0c, $0c, $0a, $09, $01, $01, $01, $04, $00, Func_8e080, NULL
+	person_event $00, $0c, $09, $0c, $01, $01, $01, $04, $00, Func_8e11a, NULL
+	person_event $0c, $0c, $0d, $0d, $01, $01, $03, $04, $00, Func_8e1b2, NULL
+	person_event $0b, $0c, $07, $11, $01, $01, $01, $04, $00, Func_8e24c, NULL
+	person_event $04, $0c, $12, $11, $01, $01, $02, $04, $00, NULL, NULL
+	person_event $ff, $00, $0e, $10, $03, $03, $00, $04, $01, Func_8e2be, NULL
 
 Data_8de64:
-	map_object $0f, $04, $06, $05, $01, $01, $02, $04, $00, NULL, NULL
-	map_object $ff, $00, $06, $05, $01, $01, $02, $04, $00, Func_8e36e, NULL
-	map_object $ff, $00, $0b, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8ddf6
-	map_object $ff, $00, $0d, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8ddf6
-	map_object $ff, $00, $0c, $0b, $01, $01, $00, $04, $00, PrintTextFacePlayerYesOrNo_23, Data_8ddfa
+	person_event $0f, $04, $06, $05, $01, $01, $02, $04, $00, NULL, NULL
+	person_event $ff, $00, $06, $05, $01, $01, $02, $04, $00, Func_8e36e, NULL
+	person_event $ff, $00, $0b, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8ddf6
+	person_event $ff, $00, $0d, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8ddf6
+	person_event $ff, $00, $0c, $0b, $01, $01, $00, $04, $00, PrintTextFacePlayerYesOrNo_23, Data_8ddfa
 
 Func_8deaa:: ; 8deaa
 	ld a, $06
@@ -1509,67 +1360,40 @@ Func_8deaa:: ; 8deaa
 	call Func_8df6e
 	ld hl, Func_8df6e
 	scall Func_80f11
-	ld e, $02
-	ld hl, Data_8dde0
-	scall LoadWarps
-	ld e, $05
-	ld hl, Data_8de64
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld hl, $0037
-	scall CheckEventFlag
+	loadwarps $02, Data_8dde0
+	loadpeople $05, Data_8de64
+	hideperson 0
+	checkevent $0037
 	or a
 	jp nz, label_8df41
-	ld e, $07
-	ld hl, Data_8de02
-	scall LoadMapObjects
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
-	ld hl, $0028
-	scall CheckEventFlag
+	loadpeople $07, Data_8de02
+	hideperson $0a
+	checkevent $0028
 	cp $01
 	jp nz, label_8def9
-	ld e, $00
-	ld a, $05
-	scall SetPersonVisibilityState
+	hideperson $05
 label_8def9:
-	ld hl, $0029
-	scall CheckEventFlag
+	checkevent $0029
 	cp $01
 	jp nz, label_8df0b
-	ld e, $00
-	ld a, $06
-	scall SetPersonVisibilityState
+	hideperson $06
 label_8df0b:
-	ld hl, $002a
-	scall CheckEventFlag
+	checkevent $002a
 	cp $01
 	jp nz, label_8df1d
-	ld e, $00
-	ld a, $07
-	scall SetPersonVisibilityState
+	hideperson $07
 label_8df1d:
-	ld hl, $002b
-	scall CheckEventFlag
+	checkevent $002b
 	cp $01
 	jp nz, label_8df2f
-	ld e, $00
-	ld a, $08
-	scall SetPersonVisibilityState
+	hideperson $08
 label_8df2f:
-	ld hl, $002c
-	scall CheckEventFlag
+	checkevent $002c
 	cp $01
 	jp nz, label_8df41
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
+	hideperson $09
 label_8df41:
-	ld hl, $0037
-	scall CheckEventFlag
+	checkevent $0037
 	cp $01
 	jp nz, label_8df54
 	ld a, $03
@@ -1591,24 +1415,19 @@ Data_8df68:
 	db $11, $12, $01, $01, $12, $12
 
 Func_8df6e:
-	ld hl, $0028
-	scall CheckEventFlag
+	checkevent $0028
 	or a
 	jp z, label_8dfa0
-	ld hl, $0029
-	scall CheckEventFlag
+	checkevent $0029
 	or a
 	jp z, label_8dfa0
-	ld hl, $002a
-	scall CheckEventFlag
+	checkevent $002a
 	or a
 	jp z, label_8dfa0
-	ld hl, $002b
-	scall CheckEventFlag
+	checkevent $002b
 	or a
 	jp z, label_8dfa0
-	ld hl, $002c
-	scall CheckEventFlag
+	checkevent $002c
 	or a
 	jp nz, label_8dfa9
 label_8dfa0:
@@ -1636,18 +1455,12 @@ Func_8dfe6:
 	ld a, e
 	or a
 	jp nz, label_8e046
-	ld hl, $0028
-	scall CheckEventFlag
+	checkevent $0028
 	or a
 	jp nz, label_8e046
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	hltext_tree_pointer TreeBitstreamText_429e1
-	scall PrintTextStandard
-	ld de, Data_8e048
-	ld hl, Data_8dfbd
-	scall ScriptedBattle
+	face_player -$01
+	writetext TreeBitstreamText_429e1
+	startbattle Data_8e048, Data_8dfbd
 	or a
 	jp nz, label_8e012
 	jp label_8e046
@@ -1655,27 +1468,17 @@ label_8e012:
 	ld a, [wPlayerFacing]
 	cp $01
 	jp nz, label_8e028
-	ld bc, Data_8dfb7
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8dfb7, 1
 	jp label_8e033
 label_8e028:
-	ld bc, Data_8dfb3
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8dfb3, 1
 label_8e033:
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $0028
-	scall EventFlagAction
+	setevent $0028
 label_8e046:
 	pop bc
 	ret
@@ -1697,18 +1500,12 @@ Func_8e080:
 	ld a, e
 	or a
 	jp nz, label_8e0e0
-	ld hl, $0029
-	scall CheckEventFlag
+	checkevent $0029
 	or a
 	jp nz, label_8e0e0
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	hltext_tree_pointer TreeBitstreamText_429f2
-	scall PrintTextStandard
-	ld de, Data_8e0e2
-	ld hl, Data_8e057
-	scall ScriptedBattle
+	face_player -$01
+	writetext TreeBitstreamText_429f2
+	startbattle Data_8e0e2, Data_8e057
 	or a
 	jp nz, label_8e0ac
 	jp label_8e0e0
@@ -1716,27 +1513,17 @@ label_8e0ac:
 	ld a, [wPlayerFacing]
 	cp $03
 	jp nz, label_8e0c2
-	ld bc, Data_8e04d
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8e04d, 1
 	jp label_8e0cd
 label_8e0c2:
-	ld bc, Data_8e053
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8e053, 1
 label_8e0cd:
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $0029
-	scall EventFlagAction
+	setevent $0029
 label_8e0e0:
 	pop bc
 	ret
@@ -1758,18 +1545,12 @@ Func_8e11a:
 	ld a, e
 	or a
 	jp nz, label_8e17a
-	ld hl, $002a
-	scall CheckEventFlag
+	checkevent $002a
 	or a
 	jp nz, label_8e17a
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	hltext_tree_pointer TreeBitstreamText_42a0d
-	scall PrintTextStandard
-	ld de, Data_8e17c
-	ld hl, Data_8e0f1
-	scall ScriptedBattle
+	face_player -$01
+	writetext TreeBitstreamText_42a0d
+	startbattle Data_8e17c, Data_8e0f1
 	or a
 	jp nz, label_8e146
 	jp label_8e17a
@@ -1777,27 +1558,17 @@ label_8e146:
 	ld a, [wPlayerFacing]
 	cp $03
 	jp nz, label_8e15c
-	ld bc, Data_8e0e7
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8e0e7, 1
 	jp label_8e167
 label_8e15c:
-	ld bc, Data_8e0ed
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8e0ed, 1
 label_8e167:
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $002a
-	scall EventFlagAction
+	setevent $002a
 label_8e17a:
 	pop bc
 	ret
@@ -1819,18 +1590,12 @@ Func_8e1b2:
 	ld a, e
 	or a
 	jp nz, label_8e212
-	ld hl, $002b
-	scall CheckEventFlag
+	checkevent $002b
 	or a
 	jp nz, label_8e212
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	hltext_tree_pointer TreeBitstreamText_42a00
-	scall PrintTextStandard
-	ld de, Data_8e214
-	ld hl, Data_8e189
-	scall ScriptedBattle
+	face_player -$01
+	writetext TreeBitstreamText_42a00
+	startbattle Data_8e214, Data_8e189
 	or a
 	jp nz, label_8e1de
 	jp label_8e212
@@ -1838,27 +1603,17 @@ label_8e1de:
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, label_8e1f4
-	ld bc, Data_8e181
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8e181, 1
 	jp label_8e1ff
 label_8e1f4:
-	ld bc, Data_8e185
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8e185, 1
 label_8e1ff:
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $002b
-	scall EventFlagAction
+	setevent $002b
 label_8e212:
 	pop bc
 	ret
@@ -1880,18 +1635,12 @@ Func_8e24c:
 	ld a, e
 	or a
 	jp nz, label_8e2ab
-	ld hl, $002c
-	scall CheckEventFlag
+	checkevent $002c
 	or a
 	jp nz, label_8e2ab
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	hltext_tree_pointer TreeBitstreamText_42a24
-	scall PrintTextStandard
-	ld de, Data_8e2ad
-	ld hl, Data_8e223
-	scall ScriptedBattle
+	face_player -$01
+	writetext TreeBitstreamText_42a24
+	startbattle Data_8e2ad, Data_8e223
 	or a
 	jp nz, label_8e278
 	jp label_8e2ab
@@ -1899,27 +1648,17 @@ label_8e278:
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, label_8e28d
-	ld bc, Data_8e219
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8e219, 1
 	jp label_8e298
 label_8e28d:
-	ld bc, Data_8e21d
-	ld e, $23
-	ld hl, sp+$01
-	ld a, [hl]
-	scall MovePersonAndWait
+	move_person -$01, Data_8e21d, 1
 label_8e298:
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $002c
-	scall EventFlagAction
+	setevent $002c
 label_8e2ab:
 	pop bc
 	ret
@@ -1937,35 +1676,27 @@ Func_8e2be:
 	ld a, e
 	cp $02
 	jp nz, label_8e36d
-	ld hl, $0028
-	scall CheckEventFlag
+	checkevent $0028
 	cp $01
 	jp nz, label_8e36d
-	ld hl, $0029
-	scall CheckEventFlag
+	checkevent $0029
 	cp $01
 	jp nz, label_8e36d
-	ld hl, $002a
-	scall CheckEventFlag
+	checkevent $002a
 	cp $01
 	jp nz, label_8e36d
-	ld hl, $002b
-	scall CheckEventFlag
+	checkevent $002b
 	cp $01
 	jp nz, label_8e36d
-	ld hl, $002c
-	scall CheckEventFlag
+	checkevent $002c
 	cp $01
 	jp nz, label_8e36d
-	ld hl, $0037
-	scall CheckEventFlag
+	checkevent $0037
 	or a
 	jp nz, label_8e36d
 	xor a
 	scall PlayMusic
-	ld e, $01
-	ld a, $0a
-	scall SetPersonVisibilityState
+	showperson $0a
 	ld hl, $003c
 	scall ScriptSleep
 	ld a, $30
@@ -1975,10 +1706,7 @@ Func_8e2be:
 	scall Func_80f11
 	ld hl, $003c
 	scall ScriptSleep
-	ld bc, Data_8e2b2
-	ld e, $23
-	ld a, $0a
-	scall MovePersonAndWait
+	move_person $0a, Data_8e2b2, 1
 	scall WaitNPCStep
 	ld a, [wPlayerFacing]
 	cp $02
@@ -1987,21 +1715,13 @@ Func_8e2be:
 	ld a, $0a
 	scall SpriteFace
 label_8e346:
-	hltext_tree_pointer TreeBitstreamText_3b605
-	scall PrintTextWithNPCName
-	ld bc, Data_8e2b8
-	ld e, $23
-	ld a, $0a
-	scall MovePersonAndWait
+	writenpctext TreeBitstreamText_3b605
+	move_person $0a, Data_8e2b8, 1
 	scall WaitNPCStep
 	ld a, $2e
 	scall PlaySFX
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $0037
-	scall EventFlagAction
+	hideperson $0a
+	setevent $0037
 label_8e36d:
 	ret
 
@@ -2009,8 +1729,7 @@ Func_8e36e:
 	ld a, e
 	or a
 	jp nz, label_8e479
-	ld hl, $00d9
-	scall CheckEventFlag
+	checkevent $00d9
 	or a
 	jp nz, label_8e473
 	ld a, $5e
@@ -2026,9 +1745,7 @@ Func_8e36e:
 	scall HideEmote
 	ld a, $28
 	scall PlaySFX
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	ld a, $60
 	scall PlaySFX
 	ld e, $03
@@ -2063,17 +1780,14 @@ Func_8e36e:
 	scall FadeInAudio
 	ld a, $14
 	scall PlayMusic
-	xor a
-	scall FacePlayer
+	face_player 0
 	ld hl, $001e
 	scall ScriptSleep
 	ld c, $05
 	ld e, $04
 	ld a, $03
 	scall Func_80e8d
-	ld e, $01
-	ld hl, $00d9
-	scall EventFlagAction
+	setevent $00d9
 	ld a, $60
 	scall PlaySFX
 	ld e, $03
@@ -2104,8 +1818,7 @@ Func_8e36e:
 	scall FadeOutAudio
 	xor a
 	scall PlayMusic
-	ld hl, $0037
-	scall CheckEventFlag
+	checkevent $0037
 	cp $01
 	jp nz, label_8e45c
 	ld a, $01
@@ -2119,15 +1832,11 @@ label_8e45c:
 	ld a, $04
 	scall PlayMusic
 label_8e466:
-	xor a
-	scall FacePlayer
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	face_player 0
+	hideperson 0
 	jp label_8e479
 label_8e473:
-	hltext_tree_pointer TreeBitstreamText_3f79e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f79e
 label_8e479:
 	ret
 
@@ -2143,45 +1852,62 @@ Data_8e47a:
 	db $00, $04, $01, $2e
 
 Data_8e4fe:
-	db $97, $00, $ff, $ff, $dd, $01, $de, $01, $ff, $ff, $df, $01, $ff, $ff, $e0, $01, $ff, $ff, $e1, $01, $ff, $ff, $b7, $02, $ff, $ff
+	dtext_tree_pointer TreeBitstreamText_3b9f6
+	dw -1
+
+Data_8e502:
+	dtext_tree_pointer TreeBitstreamText_41675
+	dtext_tree_pointer TreeBitstreamText_416c4
+	dw -1
+
+Data_8e508:
+	dtext_tree_pointer TreeBitstreamText_416f0
+	dw -1
+
+Data_8e50c:
+	dtext_tree_pointer TreeBitstreamText_41721
+	dw -1
+
+Data_8e510:
+	dtext_tree_pointer TreeBitstreamText_4174d
+	dw -1
+
+Data_8e514:
+	dtext_tree_pointer TreeBitstreamText_465d8
+	dw -1
 
 Data_8e518:
-	map_object $04, $04, $0a, $04, $01, $01, $02, $04, $00, Func_808fc_23, Data_8e4fe
+	person_event $04, $04, $0a, $04, $01, $01, $02, $04, $00, Func_808fc_23, Data_8e4fe
 
 Data_8e526:
-	map_object $04, $04, $0a, $04, $01, $01, $02, $04, $00, Func_8e8b4, NULL
+	person_event $04, $04, $0a, $04, $01, $01, $02, $04, $00, Func_8e8b4, NULL
 
 Data_8e534:
-	db $00, $04, $1f, $06, $01, $01
-	db $02, $04, $00, $23, $5f, $48, $02, $65, $01, $04, $0d, $0a, $01, $01, $01, $04
-	db $00, $23, $5f, $48, $08, $65, $07, $04, $0b, $10, $01, $01, $03, $04, $00, $23
-	db $5f, $48, $0c, $65, $0c, $04, $16, $0b, $01, $01, $00, $04, $00, $23, $5f, $48
-	db $10, $65, $ff, $00, $22, $06, $01, $01, $00, $04, $00, $23, $5f, $48, $14, $65
-	db $ff, $00, $22, $09, $01, $01, $00, $04, $00, $23, $5f, $48, $14, $65, $ff, $00
-	db $06, $07, $01, $01, $00, $04, $00, $23, $5f, $48, $14, $65, $ff, $00, $06, $09
-	db $01, $01, $00, $04, $00, $23, $5f, $48, $14, $65, $ff, $00, $10, $09, $01, $01
-	db $00, $04, $00, $23, $26, $68, $00, $00, $ff, $00, $09, $05, $01, $01, $00, $04
-	db $00, $23, $64, $68, $00, $00, $ff, $00, $16, $05, $01, $01, $00, $04, $00, $23
-	db $8c, $68, $00, $00
+	person_event $00, $04, $1f, $06, $01, $01, $02, $04, $00, PrintTextFacePlayer_23, Data_8e502
+	person_event $01, $04, $0d, $0a, $01, $01, $01, $04, $00, PrintTextFacePlayer_23, Data_8e508
+	person_event $07, $04, $0b, $10, $01, $01, $03, $04, $00, PrintTextFacePlayer_23, Data_8e50c
+	person_event $0c, $04, $16, $0b, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8e510
+	person_event $ff, $00, $22, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8e514
+	person_event $ff, $00, $22, $09, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8e514
+	person_event $ff, $00, $06, $07, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8e514
+	person_event $ff, $00, $06, $09, $01, $01, $00, $04, $00, PrintTextFacePlayer_23, Data_8e514
+	person_event $ff, $00, $10, $09, $01, $01, $00, $04, $00, Func_8e826, NULL
+	person_event $ff, $00, $09, $05, $01, $01, $00, $04, $00, Func_8e864, NULL
+	person_event $ff, $00, $16, $05, $01, $01, $00, $04, $00, Func_8e88c, NULL
 
 Data_8e5ce:
-	map_object $03, $0c, $1c, $05, $01, $01, $02, $04, $00, NULL, NULL
+	person_event $03, $0c, $1c, $05, $01, $01, $02, $04, $00, NULL, NULL
 
 Func_8e5dc:: ; 8e5dc
 	ld a, $03
 	ld [wc789], a
 	ld a, $05
 	ld [wc7e2], a
-	ld e, $0c
-	ld hl, Data_8e47a
-	scall LoadWarps
-	ld hl, $0008
-	scall CheckEventFlag
+	loadwarps $0c, Data_8e47a
+	checkevent $0008
 	or a
 	jp nz, label_8e612
-	ld e, $01
-	ld hl, Data_8e5ce
-	scall LoadMapObjects
+	loadpeople $01, Data_8e5ce
 	ld a, $01
 	scall LoadPlayerSprite
 	xor a
@@ -2190,18 +1916,13 @@ Func_8e5dc:: ; 8e5dc
 	call Func_8e66b
 	jp label_8e65a
 label_8e612:
-	ld hl, $0088
-	scall CheckEventFlag
+	checkevent $0088
 	cp $01
 	jp nz, label_8e63d
 	ld a, $03
 	scall PlayMusic
-	ld e, $01
-	ld hl, Data_8e526
-	scall LoadMapObjects
-	ld e, $0b
-	ld hl, Data_8e534
-	scall LoadMapObjects
+	loadpeople $01, Data_8e526
+	loadpeople $0b, Data_8e534
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -2209,12 +1930,8 @@ label_8e612:
 label_8e63d:
 	ld a, $03
 	scall PlayMusic
-	ld e, $01
-	ld hl, Data_8e518
-	scall LoadMapObjects
-	ld e, $0b
-	ld hl, Data_8e534
-	scall LoadMapObjects
+	loadpeople $01, Data_8e518
+	loadpeople $0b, Data_8e534
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -2231,27 +1948,16 @@ Data_8e667:
 	db $1b, $08, $ff, $ff
 
 Func_8e66b:
-	ld bc, Data_8e65b
-	ld e, $23
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_8e65b, 1
 	scall WaitNPCStep
-	hltext_tree_pointer TreeBitstreamText_3b2db
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3b2db
 	ld a, $2a
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3b30a
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_3b31f
-	scall PrintTextStandard
-	ld bc, Data_8e661
-	ld e, $23
-	xor a
-	scall MovePerson
+	writetext TreeBitstreamText_3b30a
+	writetext TreeBitstreamText_3b31f
+	move_person 0, Data_8e661, 0
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld a, $1b
 	scall PlayMusic
 	ld c, $01
@@ -2278,21 +1984,16 @@ Func_8e66b:
 	scall PlayMusic
 	ld a, $0f
 	scall PlayMusic
-	hltext_tree_pointer TreeBitstreamText_3b324
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_3b324
 	or a
 	jp nz, label_8e727
-	ld e, $01
-	ld hl, $00e9
-	scall EventFlagAction
+	setevent $00e9
 	ld a, $2b
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3b35d
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3b35d
 	ld a, $68
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3b36e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3b36e
 	xor a
 	scall PlayMusic
 	ld a, $1b
@@ -2309,8 +2010,7 @@ Func_8e66b:
 label_8e727:
 	ld a, $69
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3b3c0
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3b3c0
 	xor a
 	scall PlayMusic
 	ld a, $1b
@@ -2338,15 +2038,11 @@ label_8e727:
 	xor a
 	scall Func_80653
 	scall WaitEmote
-	hltext_tree_pointer TreeBitstreamText_3b412
-	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $00ea
-	scall EventFlagAction
+	writenpctext TreeBitstreamText_3b412
+	setevent $00ea
 	ld a, $2b
 	scall PlaySFX
-	hltext_tree_pointer TreeBitstreamText_3b401
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3b401
 	xor a
 	scall PlayMusic
 	ld a, $1b
@@ -2371,8 +2067,7 @@ label_8e7b2:
 	ld a, $0f
 	scall LoadEmote
 	scall WaitEmote
-	hltext_tree_pointer TreeBitstreamText_3b447
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3b447
 	ld c, $01
 	ld e, $20
 	ld a, $0f
@@ -2384,8 +2079,7 @@ label_8e7b2:
 	ld a, $0f
 	scall LoadEmote
 	scall WaitEmote
-	hltext_tree_pointer TreeBitstreamText_3b481
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3b481
 	ld c, $01
 	ld e, $20
 	ld a, $0f
@@ -2394,9 +2088,7 @@ label_8e7b2:
 	scall HideEmote
 	ld a, $06
 	scall Func_80c94
-	ld e, $01
-	ld hl, $0008
-	scall EventFlagAction
+	setevent $0008
 	ld l, $08
 	push hl
 	ld c, $1b
@@ -2416,8 +2108,7 @@ Func_8e826:
 	ld a, e
 	or a
 	jp nz, label_8e863
-	hltext_tree_pointer TreeBitstreamText_46e1d
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46e1d
 	or a
 	jp nz, label_8e85d
 	xor a
@@ -2439,8 +2130,7 @@ Func_8e826:
 	ld [wBackupMapY], a
 	jp label_8e863
 label_8e85d:
-	hltext_tree_pointer TreeBitstreamText_46e5d
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46e5d
 label_8e863:
 	ret
 
@@ -2492,12 +2182,8 @@ Func_8e8b4:
 	ld a, e
 	or a
 	jp nz, label_8e8cc
-	ld a, $01
-	scall FacePlayer
-	hltext_tree_pointer TreeBitstreamText_3ba23
-	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $003a
-	scall EventFlagAction
+	face_player $01
+	writenpctext TreeBitstreamText_3ba23
+	setevent $003a
 label_8e8cc:
 	ret

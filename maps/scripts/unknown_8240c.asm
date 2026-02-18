@@ -137,10 +137,7 @@ Func_824ca: ; 824ca (20:64ca)
 	sprite_face $1, $3
 	sprite_face $2, $3
 	script_sleep $1e
-	ld bc, Data_82440
-	ld e, BANK(Data_82440)
-	ld a, $3
-	scall MovePersonAndWait
+	move_person $3, Data_82440, 1
 	call WaitNPCStep_20
 	ld e, $0
 	ld a, $3

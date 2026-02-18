@@ -56,9 +56,7 @@ Func_d121f:
 	ld a, e
 	or a
 	jp nz, Func_d1454
-	ld hl, sp+$3
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$3
 	ld a, [wc796]
 	cp $6
 	jp nz, Func_d12ba
@@ -471,9 +469,7 @@ Func_d1680:
 	ld a, e
 	or a
 	jp nz, Func_d1729
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, Func_d16b1
@@ -500,24 +496,15 @@ Func_d16b1: ; d16b1 (34:56b1)
 	jp z, Func_d16df
 	cp $1
 	jp nz, Func_d16e8
-	ld bc, Data_d1674
-	ld e, $34
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_d1674, 1
 	jp Func_d16e8
 
 Func_d16df: ; d16df (34:56df)
-	ld bc, Data_d1670
-	ld e, $34
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_d1670, 1
 Func_d16e8: ; d16e8 (34:56e8)
 	call WaitNPCStep_34
 	move_player $1, Data_d1678
-	ld bc, Data_d167c
-	ld e, $34
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_d167c, 1
 	call WaitNPCStep_34
 	ld e, $2
 	xor a
@@ -649,19 +636,13 @@ ENDC
 	call PrintTextStandard_34
 	setevent $62
 Func_d1866: ; d1866 (34:5866)
-	ld bc, Data_d173d
-	ld e, $34
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_d173d, 1
 	call WaitNPCStep_34
 	ld e, $1
 	xor a
 	call SpriteFace_34
 	move_player $1, Data_d1741
-	ld bc, Data_d1745
-	ld e, $34
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_d1745, 1
 	call WaitNPCStep_34
 	ld e, $2
 	xor a
@@ -689,19 +670,13 @@ Func_d18ba:: ; d18ba (34:58ba)
 	call FarCall
 	script_sleep $3c
 	writenpctext TreeBitstreamText_47ddc
-	ld bc, Data_d18ae
-	ld e, $34
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_d18ae, 1
 	call WaitNPCStep_34
 	ld e, $1
 	xor a
 	call SpriteFace_34
 	move_player $1, Data_d18b2
-	ld bc, Data_d18b6
-	ld e, $34
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_d18b6, 1
 	call WaitNPCStep_34
 	ld e, $0
 	xor a
@@ -2418,9 +2393,7 @@ Func_d2cc3:
 	ld a, e
 	or a
 	jp nz, Func_d2cef
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	writenpctext TreeBitstreamText_470a2
 	ld hl, sp+$1
 	ld a, [hl]

@@ -145,10 +145,7 @@ Func_828df:
 	ld a, e
 	cp $2
 	jp nz, Func_8298b
-	ld bc, Data_828cf
-	ld e, BANK(Data_828cf)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_828cf, 1
 	call WaitNPCStep_20
 	sprite_face $2, $2
 	checkevent $32
@@ -158,10 +155,7 @@ Func_828df:
 	or a
 	jp nz, Func_82940
 	writenpctext TreeBitstreamText_45eaa
-	ld bc, Data_828d3
-	ld e, BANK(Data_828d3)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_828d3, 1
 	call WaitNPCStep_20
 	sprite_face $2, $2
 	move_player $1, Data_828db
@@ -172,10 +166,7 @@ Func_828df:
 Func_82940: ; 82940 (20:6940)
 	writenpctext TreeBitstreamText_45ebc
 	move_player $1, Data_828d7
-	ld bc, Data_828d3
-	ld e, BANK(Data_828d3)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_828d3, 1
 	call WaitNPCStep_20
 	sprite_face $2, $2
 Func_82964: ; 82964 (20:6964)
@@ -185,10 +176,7 @@ Func_82967: ; 82967 (20:6967)
 	ld hl, FillMemory
 	call PrintTextWithNPCName_20
 	move_player $1, Data_828d7
-	ld bc, Data_828d3
-	ld e, BANK(Data_828d3)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_828d3, 1
 	call WaitNPCStep_20
 	sprite_face $2, $2
 Func_8298b: ; 8298b (20:698b)

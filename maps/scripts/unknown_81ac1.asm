@@ -82,26 +82,17 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, FACE_LEFT
 	call PlayerStep_20
 	script_sleep $1e
-	ld bc, Data_81b29
-	ld e, BANK(Data_81b29)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_81b29, 1
 	call WaitNPCStep_20
 	writenpctext TreeBitstreamText_38fc9
 	sprite_face $1, $1
 	writenpctext TreeBitstreamText_38fe6
-	ld bc, Data_81b2d
-	ld e, BANK(Data_81b2d)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person $1, Data_81b2d, 1
 	call WaitNPCStep_20
 	ld e, $3
 	xor a
 	call SpriteFace_20
-	ld bc, Data_81b31
-	ld e, BANK(Data_81b31)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person $1, Data_81b31, 1
 	call WaitNPCStep_20
 	ld e, $2
 	xor a
@@ -120,15 +111,9 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_3902d
-	ld bc, Data_81b2d
-	ld e, BANK(Data_81b2d)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_81b2d, 1
 	call WaitNPCStep_20
-	ld bc, Data_81b31
-	ld e, BANK(Data_81b31)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_81b31, 1
 	call WaitNPCStep_20
 	ld e, $0
 	xor a
@@ -145,10 +130,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	xor a
 	call SetPersonVisibilityState_20
 	playsfx $34
-	ld bc, Data_81b2d
-	ld e, BANK(Data_81b2d)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_81b2d, 1
 	call WaitNPCStep_20
 	ld e, $1
 	xor a
@@ -156,10 +138,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_39084
-	ld bc, Data_81b31
-	ld e, BANK(Data_81b31)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_81b31, 1
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_20

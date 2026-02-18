@@ -645,10 +645,7 @@ Func_818b7: ; 818b7 (20:58b7)
 	writenpctext TreeBitstreamText_39944
 	writenpctext TreeBitstreamText_39953
 	playsfx $2e
-	ld bc, Data_81805
-	ld e, BANK(Data_81805)
-	ld a, $3
-	scall MovePersonAndWait
+	move_person $3, Data_81805, 1
 	ld a, $2
 	call PlayerFace_20
 	call WaitNPCStep_20

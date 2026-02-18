@@ -239,19 +239,13 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	ld e, $1
 	xor a
 	call SetPersonVisibilityState_20
-	ld bc, Data_81f2d
-	ld e, BANK(Data_81f2d)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_81f2d, 1
 	call WaitNPCStep_20
 	ld e, $3
 	xor a
 	call SpriteFace_20
 	writenpctext TreeBitstreamText_3ec9f
-	ld bc, Data_81f33
-	ld e, BANK(Data_81f33)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_81f33, 1
 	call WaitNPCStep_20
 	playsfx $2e
 	ld e, $0

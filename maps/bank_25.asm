@@ -266,10 +266,7 @@ Func_959a9: ; 959a9 (25:59a9)
 	ld a, $1
 	call SpriteFace_25
 	showperson $1
-	ld bc, Data_959a1
-	ld e, BANK(Data_959a1)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person $1, Data_959a1, 1
 	call WaitNPCStep_25
 	playsfx $31
 	loademote $1, $4, $c

@@ -67,8 +67,7 @@ Func_a11de:: ; a11de
 	call Func_a14ef
 	ld hl, Func_a14ef
 	scall Func_80f11
-	ld hl, $42
-	scall CheckEventFlag
+	checkevent $42
 	cp $1
 	jp nz, .asm_a120b
 	ld a, $9
@@ -97,15 +96,11 @@ Func_a11de:: ; a11de
 	pop bc
 	pop bc
 .asm_a122c:
-	ld e, $8
-	ld hl, Data_a10b4
-	scall LoadWarps
+	loadwarps $8, Data_a10b4
 	ld e, $1
 	ld hl, Data_a113f
 	scall Func_80ce7
-	ld e, $9
-	ld hl, Data_a1144
-	scall LoadMapObjects
+	loadpeople $9, Data_a1144
 	ld a, $13
 	scall PlayMusic
 	ld a, $1
@@ -138,17 +133,11 @@ Func_a11de:: ; a11de
 	ld a, [wc790]
 	cp 7
 	jp nc, .asm_a12a5
-	ld e, $1
-	ld hl, Data_a110c
-	scall LoadWarps
-	ld e, $1
-	ld hl, Data_a11d0
-	scall LoadMapObjects
+	loadwarps $1, Data_a110c
+	loadpeople $1, Data_a11d0
 	jp .asm_a12ad
 .asm_a12a5:
-	ld e, $1
-	ld hl, Data_a11c2
-	scall LoadMapObjects
+	loadpeople $1, Data_a11c2
 .asm_a12ad:
 	scall Func_8001c
 	ret
@@ -161,9 +150,7 @@ Func_a12b1:
 	ld a, e
 	or a
 	jp nz, .asm_a14e6
-	ld hl, sp+$03
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$03
 	ld a, [wc796]
 	cp $03
 	jp nz, .asm_a134c
@@ -473,24 +460,19 @@ Func_a167b:: ; a167b
 	ld e, (Data_a1627_end - Data_a1627) / 14
 	ld hl, Data_a1627
 	scall LoadMapObjects
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	cp $1
 	jp nz, .asm_a16e5
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	cp $1
 	jp nz, .asm_a16e5
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	cp $1
 	jp nz, .asm_a16e5
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	cp $1
 	jp nz, .asm_a16e5
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	cp $1
 	jp nz, .asm_a16e5
 	ld e, $0

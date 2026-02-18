@@ -163,14 +163,8 @@ Func_852ac: ; 852ac (21:52ac)
 	scall HideEmote
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
-	ld bc, Data_85274
-	ld e, BANK(Data_85274)
-	xor a
-	scall MovePerson
-	ld bc, Data_85278
-	ld e, BANK(Data_85278)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person 0, Data_85274, 0
+	move_person $1, Data_85278, 1
 	scall WaitNPCStep
 	script_sleep $3c
 	writenpctext TreeBitstreamText_399f1
@@ -184,25 +178,16 @@ Func_852ac: ; 852ac (21:52ac)
 	xor a
 	scall SpriteFace
 	sprite_face $0, $1
-	ld bc, Data_8527c
-	ld e, BANK(Data_8527c)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_8527c, 1
 	scall WaitNPCStep
 	playsfx $33
-	ld bc, Data_85286
-	ld e, BANK(Data_85286)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person $1, Data_85286, 1
 	scall WaitNPCStep
 	ld e, $1
 	xor a
 	scall SpriteFace
 	sprite_face $3, $1
-	ld bc, Data_8528a
-	ld e, BANK(Data_8528a)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_8528a, 1
 	scall WaitNPCStep
 	ld e, $2
 	xor a
@@ -221,20 +206,11 @@ Func_852ac: ; 852ac (21:52ac)
 	ld a, $1
 	scall FadeInAudio
 	playmusic SONG_ENCOUNTER_BEAUTY
-	ld bc, Data_85292
-	ld e, BANK(Data_85292)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_85292, 1
 	scall WaitNPCStep
 	hideperson $2
-	ld bc, Data_85280
-	ld e, BANK(Data_85280)
-	xor a
-	scall MovePerson
-	ld bc, Data_8528e
-	ld e, BANK(Data_8528e)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person 0, Data_85280, 0
+	move_person $1, Data_8528e, 1
 	scall WaitNPCStep
 	playsfx $33
 	sprite_face $3, $1
@@ -246,14 +222,8 @@ Func_852ac: ; 852ac (21:52ac)
 	xor a
 	scall SpriteFace
 	sprite_face $2, $1
-	ld bc, Data_8529c
-	ld e, BANK(Data_8529c)
-	xor a
-	scall MovePerson
-	ld bc, Data_852a4
-	ld e, BANK(Data_852a4)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person 0, Data_8529c, 0
+	move_person $1, Data_852a4, 1
 	scall WaitNPCStep
 	ld a, $1
 	scall PlayerFace
@@ -310,10 +280,7 @@ Func_854c8: ; 854c8 (21:54c8)
 	jp Func_85570
 
 Func_854eb: ; 854eb (21:54eb)
-	ld bc, Data_854a2
-	ld e, BANK(Data_854a2)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_854a2, 1
 	scall WaitNPCStep
 	ld e, $0
 	xor a
@@ -342,10 +309,7 @@ Func_8551c: ; 8551c (21:551c)
 	jp Func_85570
 
 Func_85540: ; 85540 (21:5540)
-	ld bc, Data_854a6
-	ld e, BANK(Data_854a6)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person $1, Data_854a6, 1
 	scall WaitNPCStep
 	hideperson $1
 	setevent $6
@@ -437,10 +401,7 @@ Func_8562e: ; 8562e (21:562e)
 	jp Func_856d9
 
 Func_8565a: ; 8565a (21:565a)
-	ld bc, Data_855d8
-	ld e, BANK(Data_855d8)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person $1, Data_855d8, 1
 	scall WaitNPCStep
 	hideperson $1
 	setevent $6
@@ -466,10 +427,7 @@ Func_8568d: ; 8568d (21:568d)
 	jp Func_856d9
 
 Func_856ab: ; 856ab (21:56ab)
-	ld bc, Data_855d4
-	ld e, BANK(Data_855d4)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_855d4, 1
 	scall WaitNPCStep
 	ld e, $0
 	xor a
@@ -564,10 +522,7 @@ Func_85798: ; 85798 (21:5798)
 	jp Func_8581b
 
 Func_857c4: ; 857c4 (21:57c4)
-	ld bc, Data_85742
-	ld e, BANK(Data_85742)
-	ld a, $1
-	scall MovePersonAndWait
+	move_person $1, Data_85742, 1
 	scall WaitNPCStep
 	hideperson $1
 	setevent $6
@@ -585,10 +540,7 @@ Func_857e3: ; 857e3 (21:57e3)
 	jp Func_8581b
 
 Func_85801: ; 85801 (21:5801)
-	ld bc, Data_8573e
-	ld e, BANK(Data_8573e)
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_8573e, 1
 	scall WaitNPCStep
 	ld e, $0
 	xor a
@@ -682,9 +634,7 @@ Func_858f9:
 	ld a, e
 	or a
 	jp nz, Func_8592e
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	writetext_yesorno TreeBitstreamText_472f0
 	or a
 	jp nz, Func_85928
@@ -847,9 +797,7 @@ Func_85b17:
 	checkevent $c0
 	or a
 	jp nz, Func_85b52
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	writenpctext TreeBitstreamText_39cd9
 	playsfx $2a
 	writetext TreeBitstreamText_39d70
@@ -861,9 +809,7 @@ Func_85b17:
 	jp Func_85b6d
 
 Func_85b52: ; 85b52 (21:5b52)
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	ld hl, wc797
 	ld l, [hl]
 	ld h, $0
@@ -889,9 +835,7 @@ Func_85b98:
 	ld a, e
 	or a
 	jp nz, Func_85c1a
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $c0
 	cp $1
 	jp nz, Func_85c14
@@ -1057,9 +1001,7 @@ Func_85dcd:
 	ld a, e
 	or a
 	jp nz, Func_85e60
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $c0
 	cp $1
 	jp nz, Func_85e5a
@@ -1289,9 +1231,7 @@ Func_860c1:
 	ld a, e
 	or a
 	jp nz, Func_86143
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $c0
 	cp $1
 	jp nz, Func_8613d
@@ -1347,9 +1287,7 @@ Func_8617b:
 	ld a, e
 	or a
 	jp nz, Func_861fd
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $c0
 	cp $1
 	jp nz, Func_861f7
@@ -1624,9 +1562,7 @@ Func_86579:
 	ld a, e
 	or a
 	jp nz, Func_865fa
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $14
 	or a
 	jp nz, Func_865f4
@@ -1681,9 +1617,7 @@ Func_86625:
 	ld a, e
 	or a
 	jp nz, Func_866a7
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $c0
 	cp $1
 	jp nz, Func_866a1
@@ -1739,9 +1673,7 @@ Func_866df:
 	ld a, e
 	or a
 	jp nz, Func_86761
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $c0
 	cp $1
 	jp nz, Func_8675b
@@ -1797,9 +1729,7 @@ Func_86799:
 	ld a, e
 	or a
 	jp nz, Func_8681b
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $c0
 	cp $1
 	jp nz, Func_86815
@@ -1957,14 +1887,8 @@ Func_86943: ; 86943 (21:6943)
 	playsfx $68
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3a38a
-	ld bc, Data_8690f
-	ld e, BANK(Data_8690f)
-	ld a, $3
-	scall MovePerson
-	ld bc, Data_86913
-	ld e, BANK(Data_86913)
-	ld a, $4
-	scall MovePersonAndWait
+	move_person $3, Data_8690f, 0
+	move_person $4, Data_86913, 1
 	scall WaitNPCStep
 	sprite_face $3, $2
 	playmusic SONG_NONE
@@ -1983,59 +1907,32 @@ Func_869e7: ; 869e7 (21:69e7)
 	writenpctext TreeBitstreamText_3a420
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_BEAUTY
-	ld bc, Data_86917
-	ld e, BANK(Data_86917)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_86917, 1
 	scall WaitNPCStep
 	ld a, $1
 	scall PlayerFace
-	ld bc, Data_8691f
-	ld e, BANK(Data_8691f)
-	ld a, $2
-	scall MovePersonAndWait
+	move_person $2, Data_8691f, 1
 	scall WaitNPCStep
 	hideperson $2
 	xor a
 	scall PlayerFace
-	ld bc, Data_86923
-	ld e, BANK(Data_86923)
-	ld a, $3
-	scall MovePersonAndWait
-	ld bc, Data_86927
-	ld e, BANK(Data_86927)
-	ld a, $4
-	scall MovePersonAndWait
+	move_person $3, Data_86923, 1
+	move_person $4, Data_86927, 1
 	scall WaitNPCStep
-	ld bc, Data_8692d
-	ld e, BANK(Data_8692d)
-	ld a, $3
-	scall MovePerson
-	ld bc, Data_86931
-	ld e, BANK(Data_86931)
-	ld a, $4
-	scall MovePersonAndWait
+	move_person $3, Data_8692d, 0
+	move_person $4, Data_86931, 1
 	scall WaitNPCStep
 	ld a, $3
 	scall PlayerFace
-	ld bc, Data_86935
-	ld e, BANK(Data_86935)
-	ld a, $3
-	scall MovePerson
-	ld bc, Data_8693b
-	ld e, BANK(Data_8693b)
-	ld a, $4
-	scall MovePersonAndWait
+	move_person $3, Data_86935, 0
+	move_person $4, Data_8693b, 1
 	scall WaitNPCStep
 	hideperson $3
 	hideperson $4
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
 	script_sleep $1e
-	ld bc, Data_8693f
-	ld e, BANK(Data_8693f)
-	ld a, $5
-	scall MovePersonAndWait
+	move_person $5, Data_8693f, 1
 	scall WaitNPCStep
 	sprite_face $2, $5
 	script_sleep $1e
@@ -2483,9 +2380,7 @@ Func_8728f:
 	ld a, e
 	or a
 	jp nz, Func_872e5
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $6c
 	or a
 	jp nz, Func_872df
@@ -2527,9 +2422,7 @@ Func_87317:
 	ld a, e
 	or a
 	jp nz, Func_8736d
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $6d
 	or a
 	jp nz, Func_87367
@@ -2653,9 +2546,7 @@ Func_874ec:
 	ld a, e
 	or a
 	jp nz, Func_87542
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $6e
 	or a
 	jp nz, Func_8753c
@@ -2697,9 +2588,7 @@ Func_87574:
 	ld a, e
 	or a
 	jp nz, Func_8763c
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $6f
 	or a
 	jp nz, Func_87602
@@ -3269,9 +3158,7 @@ Func_87c5c:
 	ld a, e
 	or a
 	jp nz, Func_87cb2
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $70
 	or a
 	jp nz, Func_87cac
@@ -3313,9 +3200,7 @@ Func_87ce5:
 	ld a, e
 	or a
 	jp nz, Func_87d3b
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $71
 	or a
 	jp nz, Func_87d35
@@ -3391,9 +3276,7 @@ Func_87dca:
 	ld a, e
 	or a
 	jp nz, Func_87e32
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$1
 	checkevent $51
 	or a
 	jp nz, Func_87e2c
