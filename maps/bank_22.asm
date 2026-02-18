@@ -48,7 +48,7 @@ Func_89161::
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_8911b
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468a2
 	ret
@@ -89,8 +89,8 @@ Func_89237:
 	jp nz, .asm_89348
 	checkevent $0073
 	if_true .asm_89348
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	ld c, $01
 	ld de, Data_891a4
 	ld a, $22
@@ -157,8 +157,8 @@ Func_89237:
 	move_person $01, Data_891b8, 1
 	scall WaitNPCStep
 	hideperson $01
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 .asm_89348:
 	ret
 
@@ -369,7 +369,7 @@ Func_8966d:: ; 8966d
 	call Func_89959
 	ld hl, Func_89959
 	scall Func_80f11
-	playmusic $03
+	playmusic SONG_TOWN1
 	ld a, $01
 	scall LoadPlayerSprite
 	ld a, [wc790]
@@ -759,7 +759,7 @@ Func_89a75:: ; 89a75
 	call Func_89b79
 	jp .asm_89ac2
 .asm_89ab4:
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468ae
 .asm_89ac2:
@@ -834,7 +834,7 @@ Func_89b28:
 Func_89b79:
 	checkevent $00fc
 	if_true .asm_89bc4
-	playmusic $09
+	playmusic SONG_TOWER
 	xor a
 	scall Func_80653
 	ld a, $02
@@ -893,7 +893,7 @@ Func_89c58:: ; 89c58
 	scall Func_80d01
 	loadwilds $05, Data_89bda
 	loadpeople $04, Data_89c20
-	playmusic $09
+	playmusic SONG_TOWER
 	ld a, $03
 	ld [wc7e2], a
 	checkevent $006b
@@ -990,8 +990,8 @@ Func_89d8a:
 	checkevent $006b
 	or a
 	jp nz, .asm_89df8
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	ld c, $01
 	ld de, Data_89d7e
 	ld a, $22
@@ -1011,8 +1011,8 @@ Func_89d8a:
 	playsfx $2e
 	scall WaitNPCStep
 	hideperson 0
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 .asm_89df8:
 	ret
 
@@ -1020,33 +1020,33 @@ Data_89df9:
 	dstr "チネン"
 
 Data_89dfd:
-	db $08, $13, $04, $01, $05, $00, $10, $06, $10, $07, $34, $01, $0a, $01, $01, $05
-	db $1f, $01, $0a, $02, $0a, $2e, $12, $0a, $01, $01, $05, $1f, $12, $0a, $11, $0a
-	db $2e
+	db $08, $13, $04, $01, $05, $00, $10, $06, $10, $07, $34
+	db $01, $0a, $01, $01, $05, $1f, $01, $0a, $02, $0a, $2e
+	db $12, $0a, $01, $01, $05, $1f, $12, $0a, $11, $0a, $2e
 
 Data_89e1e:
 	db $1e, $0b, $0f, $03, $13
 
 Data_89e23:
 IF DEF(SUN)
-	db $00, $02, $14, $14, $30, $08, $0a, $3a, $17, $1b, $1c, $01, $0a, $00, $00, $02
-	db $14, $14, $03, $08, $0a, $01, $0f, $17, $00, $01, $09, $00, $00, $02, $14, $14
-	db $52, $07, $09, $2d, $09, $09, $00, $08, $08, $00, $00, $02, $14, $14, $1b, $09
-	db $0b, $7f, $04, $0a, $00, $09, $04, $00, $00, $02, $14, $14, $3a, $0a, $0c, $17
-	db $1f, $1e, $08, $02, $02, $00
+	db $00, $02, $14, $14, $30, $08, $0a, $3a, $17, $1b, $1c, $01, $0a, $00
+	db $00, $02, $14, $14, $03, $08, $0a, $01, $0f, $17, $00, $01, $09, $00
+	db $00, $02, $14, $14, $52, $07, $09, $2d, $09, $09, $00, $08, $08, $00
+	db $00, $02, $14, $14, $1b, $09, $0b, $7f, $04, $0a, $00, $09, $04, $00
+	db $00, $02, $14, $14, $3a, $0a, $0c, $17, $1f, $1e, $08, $02, $02, $00
 ELIF DEF(STAR)
-	db $00, $02, $14, $14, $6d, $08, $0a, $02, $09, $0e, $00, $01, $0a, $00, $00, $02
-	db $14, $14, $07, $08, $0a, $45, $06, $06, $11, $01, $09, $00, $00, $02, $14, $14
-	db $52, $07, $09, $2d, $09, $09, $00, $08, $08, $00, $00, $02, $14, $14, $1b, $09
-	db $0b, $7f, $04, $0a, $00, $08, $04, $00, $00, $02, $14, $14, $14, $0a, $0c, $17
-	db $09, $0f, $00, $02, $02, $00
+	db $00, $02, $14, $14, $6d, $08, $0a, $02, $09, $0e, $00, $01, $0a, $00
+	db $00, $02, $14, $14, $07, $08, $0a, $45, $06, $06, $11, $01, $09, $00
+	db $00, $02, $14, $14, $52, $07, $09, $2d, $09, $09, $00, $08, $08, $00
+	db $00, $02, $14, $14, $1b, $09, $0b, $7f, $04, $0a, $00, $08, $04, $00
+	db $00, $02, $14, $14, $14, $0a, $0c, $17, $09, $0f, $00, $02, $02, $00
 ENDC
 
 Data_89e69:
-	db $03, $04, $08, $05, $01, $01, $00, $04, $00, $22, $1e, $5f, $00, $00, $05, $04
-	db $09, $05, $01, $01, $00, $04, $00, $22, $a8, $5f, $00, $00, $01, $04, $0a, $05
-	db $01, $01, $00, $04, $00, $22, $31, $60, $00, $00, $07, $04, $0b, $05, $01, $01
-	db $00, $04, $00, $22, $b7, $60, $00, $00
+	person_event $03, $04, $08, $05, $01, $01, $00, $04, $00, Func_89f1e, NULL
+	person_event $05, $04, $09, $05, $01, $01, $00, $04, $00, Func_89fa8, NULL
+	person_event $01, $04, $0a, $05, $01, $01, $00, $04, $00, Func_8a031, NULL
+	person_event $07, $04, $0b, $05, $01, $01, $00, $04, $00, Func_8a0b7, NULL
 
 Data_89ea1:
 	person_event $ff, $00, $07, $03, $06, $01, $00, $04, $00, Func_8a115, NULL
@@ -1065,7 +1065,7 @@ Func_89eaf:: ; 89eaf
 	loadpeople $04, Data_89e69
 .asm_89ede:
 	loadpeople $01, Data_89ea1
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468c8
 	ret
@@ -1247,32 +1247,32 @@ Func_8a115:
 	ret
 
 Data_8a130:
-	db $01, $0a, $01, $01, $05, $1e, $01, $0a, $02, $0a, $2e, $12, $0a, $01, $01, $05
-	db $1e, $12, $0a, $11, $0a, $2e
+	db $01, $0a, $01, $01, $05, $1e, $01, $0a, $02, $0a, $2e
+	db $12, $0a, $01, $01, $05, $1e, $12, $0a, $11, $0a, $2e
 
 Data_8a146:
 	db $23, $0b, $0b, $03, $0b
 
 Data_8a14b:
 IF DEF(SUN)
-	db $00, $02, $14, $14, $30, $08, $0a, $3a, $17, $1b, $1c, $01, $0a, $00, $00, $02
-	db $14, $14, $03, $08, $0a, $01, $0f, $17, $00, $01, $09, $00, $00, $02, $14, $14
-	db $52, $07, $09, $2d, $09, $09, $00, $08, $08, $00, $00, $02, $14, $14, $1b, $09
-	db $0b, $7f, $04, $0a, $00, $03, $04, $00, $00, $02, $14, $14, $3a, $0a, $0c, $17
-	db $1f, $1e, $08, $02, $02, $00
+	db $00, $02, $14, $14, $30, $08, $0a, $3a, $17, $1b, $1c, $01, $0a, $00
+	db $00, $02, $14, $14, $03, $08, $0a, $01, $0f, $17, $00, $01, $09, $00
+	db $00, $02, $14, $14, $52, $07, $09, $2d, $09, $09, $00, $08, $08, $00
+	db $00, $02, $14, $14, $1b, $09, $0b, $7f, $04, $0a, $00, $03, $04, $00
+	db $00, $02, $14, $14, $3a, $0a, $0c, $17, $1f, $1e, $08, $02, $02, $00
 ELIF DEF(STAR)
-	db $00, $02, $14, $14, $6d, $08, $0a, $02, $09, $0e, $00, $01, $0a, $00, $00, $02
-	db $14, $14, $07, $08, $0a, $45, $06, $06, $11, $01, $09, $00, $00, $02, $14, $14
-	db $52, $07, $09, $2d, $09, $09, $00, $08, $08, $00, $00, $02, $14, $14, $1b, $09
-	db $0b, $7f, $04, $0a, $00, $08, $04, $00, $00, $02, $14, $14, $14, $0a, $0c, $17
-	db $09, $0f, $00, $02, $02, $00
+	db $00, $02, $14, $14, $6d, $08, $0a, $02, $09, $0e, $00, $01, $0a, $00
+	db $00, $02, $14, $14, $07, $08, $0a, $45, $06, $06, $11, $01, $09, $00
+	db $00, $02, $14, $14, $52, $07, $09, $2d, $09, $09, $00, $08, $08, $00
+	db $00, $02, $14, $14, $1b, $09, $0b, $7f, $04, $0a, $00, $08, $04, $00
+	db $00, $02, $14, $14, $14, $0a, $0c, $17, $09, $0f, $00, $02, $02, $00
 ENDC
 
 Data_8a191:
-	db $0c, $04, $08, $05, $01, $01, $00, $04, $00, $22, $84, $62, $00, $00, $00, $04
-	db $09, $05, $01, $01, $00, $04, $00, $22, $0a, $63, $00, $00, $01, $04, $0a, $05
-	db $01, $01, $00, $04, $00, $22, $94, $63, $00, $00, $03, $04, $0b, $05, $01, $01
-	db $00, $04, $00, $22, $1d, $64, $00, $00
+	person_event $0c, $04, $08, $05, $01, $01, $00, $04, $00, Func_8a284, NULL
+	person_event $00, $04, $09, $05, $01, $01, $00, $04, $00, Func_8a30a, NULL
+	person_event $01, $04, $0a, $05, $01, $01, $00, $04, $00, Func_8a394, NULL
+	person_event $03, $04, $0b, $05, $01, $01, $00, $04, $00, Func_8a41d, NULL
 
 Data_8a1c9:
 	person_event $ff, $00, $07, $03, $06, $01, $00, $04, $00, Func_8a5a5, NULL
@@ -1301,7 +1301,7 @@ Func_8a1f3:: ; 8a1f3
 	loadpeople $03, Data_8a1c9
 	hideperson $01
 .asm_8a24c:
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468d4
 	ret
@@ -1389,7 +1389,7 @@ Data_8a36b:
 	db $1e, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
-Func_8a393:
+Func_8a394:
 	push af
 	ld a, e
 	or a
@@ -1428,7 +1428,7 @@ Data_8a3f4:
 	db $00, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
-Func_84a1d:
+Func_8a41d:
 	push af
 	ld a, e
 	or a
@@ -1525,10 +1525,10 @@ Func_8a480:
 	scall SpriteFace
 	ld a, $0f
 	scall FadeOutAudio
-	playmusic 0
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	face_player -$01
 	ld hl, $001e
 	scall ScriptSleep
@@ -1572,10 +1572,10 @@ Func_8a480:
 	scall SpriteFace
 	ld a, $0f
 	scall FadeOutAudio
-	playmusic 0
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $09
+	playmusic SONG_TOWER
 	face_player -$01
 	ld e, $00
 	ld hl, sp+$01
@@ -1666,7 +1666,7 @@ Func_8a69b:: ; 8a69b
 	hideperson $01
 	hideperson $02
 .asm_8a6de:
-	playmusic $09
+	playmusic SONG_TOWER
 	ld a, $03
 	ld [wc7e2], a
 	checkevent $0086
@@ -1698,8 +1698,8 @@ Func_8a724:
 	or a
 	jp nz, .asm_8a74f
 	scall RepairRobots
-	playmusic 0
-	playmusic $16
+	playmusic SONG_NONE
+	playmusic SONG_HEAL
 	ld c, $01
 	ld e, $02
 	ld a, $08
@@ -1707,7 +1707,7 @@ Func_8a724:
 	scall WaitEmote
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
-	playmusic $09
+	playmusic SONG_TOWER
 .asm_8a74f:
 	ret
 
@@ -1932,7 +1932,7 @@ Func_8aa33:: ; 8aa33
 	hideperson $08
 	hideperson $09
 .asm_8aac9:
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468ec
 	ret
@@ -1955,8 +1955,8 @@ Func_8aae9:
 	ld a, e
 	cp $02
 	jp nz, .asm_8ab38
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	ld a, [wMapX]
 	add a, $05
 	cp $0b
@@ -2011,8 +2011,8 @@ Func_8ab66:
 	hideperson 0
 	hideperson $01
 	setevent $0080
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 	ret
 
 Data_8abb9:
@@ -2033,8 +2033,8 @@ Func_8abcc:
 	ld a, e
 	cp $02
 	jp nz, .asm_8ac22
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	ld a, [wMapX]
 	add a, $05
 	cp $0b
@@ -2094,8 +2094,8 @@ Func_8ac50:
 	hideperson $02
 	hideperson $03
 	hideperson $04
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 	setevent $0081
 	ret
 
@@ -2117,8 +2117,8 @@ Func_8acc0:
 	ld a, e
 	cp $02
 	jp nz, .asm_8ad16
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	ld a, [wMapX]
 	add a, $05
 	cp $0b
@@ -2179,8 +2179,8 @@ Func_8ad46:
 	hideperson $05
 	hideperson $06
 	hideperson $07
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 	setevent $0082
 	ret
 
@@ -2205,8 +2205,8 @@ Func_8adc4:
 	ld a, e
 	cp $02
 	jp nz, .asm_8ae20
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	ld a, [wMapX]
 	add a, $05
 	cp $0a
@@ -2264,8 +2264,8 @@ Func_8ae50:
 	scall WaitNPCStep
 	hideperson $08
 	hideperson $09
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 	setevent $0083
 	ret
 
@@ -2296,7 +2296,7 @@ Func_8af07:: ; 8af07
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_8aec1
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468f8
 	ret
@@ -2316,7 +2316,7 @@ IF DEF(SUN)
 	db $00, $02, $14, $11, $14, $0e, $10, $17, $09, $0f, $00, $02, $04, $00
 	db $00, $02, $14, $11, $53, $0f, $11, $7f, $1f, $07, $1a, $0a, $02, $00
 ELIF DEF(STAR)
-	db 00, $02, $14, $11, $18, $0c, $0e, $17, $1f, $07, $18, $02, $0a, $00
+	db $00, $02, $14, $11, $18, $0c, $0e, $17, $1f, $07, $18, $02, $0a, $00
 	db $00, $02, $14, $11, $4c, $0d, $0f, $45, $01, $01, $01, $02, $08, $00
 	db $00, $02, $14, $11, $74, $0b, $0d, $7f, $0c, $08, $00, $02, $06, $00
 	db $00, $02, $14, $11, $35, $0e, $10, $77, $17, $12, $11, $02, $04, $00
@@ -2350,7 +2350,7 @@ Func_8afc4:: ; 8afc4
 	hideperson $02
 	hideperson $03
 .asm_8b01a:
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46904
 	ret
@@ -2371,8 +2371,8 @@ Func_8b05e:
 	ld a, e
 	or a
 	jp nz, .asm_8b109
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_42972
 	face_player -$01
 	writetext TreeBitstreamText_471a6
@@ -2414,8 +2414,8 @@ Func_8b05e:
 	scall WaitNPCStep
 	hideperson $01
 	setevent $0084
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 .asm_8b109:
 	pop bc
 	ret
@@ -2521,8 +2521,8 @@ Func_8b243:
 	ld a, e
 	or a
 	jp nz, .asm_8b2fe
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_42972
 	face_player -$01
 	writetext TreeBitstreamText_471a6
@@ -2566,8 +2566,8 @@ Func_8b243:
 	scall WaitNPCStep
 	hideperson $03
 	setevent $0085
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 .asm_8b2fe:
 	pop bc
 	ret
@@ -2597,8 +2597,8 @@ Func_8b345:
 	ld a, e
 	or a
 	jp nz, .asm_8b400
-	playmusic 0
-	playmusic $1a
+	playmusic SONG_NONE
+	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_429aa
 	face_player -$01
 	writetext TreeBitstreamText_471a6
@@ -2642,8 +2642,8 @@ Func_8b345:
 	scall WaitNPCStep
 	hideperson $02
 	setevent $0085
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 .asm_8b400:
 	pop bc
 	ret
@@ -2698,7 +2698,7 @@ Func_8b49c:: ; 8b49c
 	loadpeople $02, Data_8b464
 .asm_8b4cb:
 	loadpeople $02, Data_8b480
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46910
 	ret
@@ -2713,13 +2713,13 @@ Func_8b4ea:
 	ld a, e
 	cp $02
 	jp nz, .asm_8b53c
-	playmusic 0
+	playmusic SONG_NONE
 	ld c, $01
 	ld de, Data_8b4e2
 	ld a, $22
 	scall MovePlayer
 	scall WaitNPCStep
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3afdd
 	move_person 0, Data_8b4e6, 1
 	scall WaitNPCStep
@@ -2728,8 +2728,8 @@ Func_8b4ea:
 	scall SpriteFace
 	hideperson 0
 	hideperson $01
-	playmusic 0
-	playmusic $09
+	playmusic SONG_NONE
+	playmusic SONG_TOWER
 	setevent $003c
 .asm_8b53c:
 	ret
@@ -2846,7 +2846,7 @@ Func_8b65a:: ; 8b65a
 .asm_8b69a:
 	ld a, $01
 	scall LoadPlayerSprite
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46894
 	ret
@@ -2881,8 +2881,8 @@ Func_8b6ae:
 	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_8b72b
-	playmusic 0
-	playmusic $0a
+	playmusic SONG_NONE
+	playmusic SONG_0A
 	xor a
 	scall Func_80653
 	ld c, $01
