@@ -6,31 +6,73 @@ SECTION "Bank 34", ROMX
 	script_library 34
 
 Data_d10b4:
-	db $0f, $20, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $0f, $04, $01, $01, $1d
-	db $01, $0a, $11, $0a, $10, $2e, $06, $0d, $01, $01, $20, $08, $05, $09, $05, $08
-	db $2e, $14, $13, $01, $01, $20, $06, $07, $0c, $07, $0b, $2e, $16, $0d, $01, $01
-	db $20, $07, $05, $09, $05, $08, $2e, $13, $08, $01, $01, $20, $05, $06, $0b, $06
-	db $0a, $2e, $08, $13, $01, $01, $20, $01, $01, $08, $01, $07, $2e, $0a, $19, $01
-	db $01, $20, $01, $01, $08, $01, $07, $2e, $12, $19, $01, $01, $20, $01, $01, $08
-	db $01, $07, $2e, $82, $03, $ff, $ff, $81, $03, $ff, $ff, $23, $03, $24, $03, $25
-	db $03, $ff, $ff, $11, $01, $ff, $ff, $84, $03, $ff, $ff, $21, $01, $ff, $ff, $85
-	db $03, $ff, $ff, $cf, $01, $ff, $ff, $4e, $04, $ff, $ff, $1a, $19, $05
+	db $0f, $20, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e
+	db $0f, $04, $01, $01, $1d, $01, $0a, $11, $0a, $10, $2e
+	db $06, $0d, $01, $01, $20, $08, $05, $09, $05, $08, $2e
+	db $14, $13, $01, $01, $20, $06, $07, $0c, $07, $0b, $2e
+	db $16, $0d, $01, $01, $20, $07, $05, $09, $05, $08, $2e
+	db $13, $08, $01, $01, $20, $05, $06, $0b, $06, $0a, $2e
+	db $08, $13, $01, $01, $20, $01, $01, $08, $01, $07, $2e
+	db $0a, $19, $01, $01, $20, $01, $01, $08, $01, $07, $2e
+	db $12, $19, $01, $01, $20, $01, $01, $08, $01, $07, $2e
+
+Data_d1117:
+	dtext_tree_pointer TreeBitstreamText_46740
+	dw -1
+
+Data_d111b:
+	dtext_tree_pointer TreeBitstreamText_4672b
+	dw -1
+
+Data_d111f:
+	dtext_tree_pointer TreeBitstreamText_46e1d
+	dtext_tree_pointer TreeBitstreamText_46e3b
+	dtext_tree_pointer TreeBitstreamText_46e4b
+	dw -1
+
+Data_d1127:
+	dtext_tree_pointer TreeBitstreamText_473b2
+	dw -1
+
+Data_d112b:
+	dtext_tree_pointer TreeBitstreamText_475a7
+	dw -1
+
+Data_d112f:
+	dtext_tree_pointer TreeBitstreamText_47416
+	dw -1
+
+Data_d1133:
+	dtext_tree_pointer TreeBitstreamText_475f4
+	dw -1
+
+Data_d1137:
+	dtext_tree_pointer TreeBitstreamText_474d4
+	dw -1
+
+Data_d113b:
+	dtext_tree_pointer TreeBitstreamText_4734f
+	dw -1
+
+Data_d113f:
+	db $1a, $19, $05
 
 Data_d1142:
 	db $1a, $19, $05, $00, $00
 
 Data_d1147:
-	db $03, $04, $19, $07, $01, $01, $01, $04, $00, $34, $1f, $52, $00, $00, $ff, $00
-	db $0e, $05, $01, $01, $00, $04, $00, $34, $5f, $48, $17, $51, $ff, $00, $0e, $1f
-	db $01, $01, $00, $04, $00, $34, $5f, $48, $1b, $51, $ff, $00, $10, $1f, $01, $01
-	db $00, $04, $00, $34, $5f, $48, $1b, $51, $00, $04, $18, $05, $01, $01, $03, $04
-	db $00, $34, $dd, $46, $3f, $51, $ff, $00, $0f, $0d, $01, $01, $00, $04, $00, $34
-	db $7c, $4a, $1f, $51, $00, $04, $11, $1c, $01, $01, $02, $04, $00, $34, $5f, $48
-	db $27, $51, $02, $04, $0d, $11, $01, $01, $00, $04, $00, $34, $5f, $48, $2b, $51
-	db $01, $04, $12, $0b, $01, $01, $02, $04, $00, $34, $5f, $48, $2f, $51, $06, $04
-	db $0b, $08, $01, $01, $03, $04, $00, $34, $5f, $48, $33, $51, $04, $04, $08, $1c
-	db $01, $01, $03, $04, $00, $34, $5f, $48, $37, $51, $01, $04, $10, $15, $01, $01
-	db $02, $04, $00, $34, $5f, $48, $3b, $51
+	person_event $03, $04, $19, $07, $01, $01, $01, $04, $00, Func_d121f, NULL
+	person_event $ff, $00, $0e, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d1117
+	person_event $ff, $00, $0e, $1f, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d111b
+	person_event $ff, $00, $10, $1f, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d111b
+	person_event $00, $04, $18, $05, $01, $01, $03, $04, $00, Func_806dd_34, Data_d113f
+	person_event $ff, $00, $0f, $0d, $01, $01, $00, $04, $00, PrintTextFacePlayerYesOrNo_34, Data_d111f
+	person_event $00, $04, $11, $1c, $01, $01, $02, $04, $00, PrintTextFacePlayer_34, Data_d1127
+	person_event $02, $04, $0d, $11, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d112b
+	person_event $01, $04, $12, $0b, $01, $01, $02, $04, $00, PrintTextFacePlayer_34, Data_d112f
+	person_event $06, $04, $0b, $08, $01, $01, $03, $04, $00, PrintTextFacePlayer_34, Data_d1133
+	person_event $04, $04, $08, $1c, $01, $01, $03, $04, $00, PrintTextFacePlayer_34, Data_d1137
+	person_event $01, $04, $10, $15, $01, $01, $02, $04, $00, PrintTextFacePlayer_34, Data_d113b
 
 Func_d11ef:: ; d11ef (34:51ef)
 	ld a, $d
@@ -55,26 +97,26 @@ Func_d121f:
 	ld [hl], $ff
 	ld a, e
 	or a
-	jp nz, Func_d1454
+	jp nz, .asm_d1454
 	face_player -$3
 	ld a, [wc796]
 	cp $6
-	jp nz, Func_d12ba
+	jp nz, .asm_d12ba
 	ld a, $4e
 	scall Func_80e6d
 	ld hl, sp+$1
 	ld [hl], a
 	cp $ff
-	jp z, Func_d12b7
+	jp z, .asm_d12b7
 	writenpctext TreeBitstreamText_45564
 	ld a, $4e
 	scall Func_80e7d
 	cp $1
-	jp nz, Func_d12ae
+	jp nz, .asm_d12ae
 	writenpctext TreeBitstreamText_4560f
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
-	jp nz, Func_d129d
+	jp nz, .asm_d129d
 	playsfx $68
 	writenpctext TreeBitstreamText_4565b
 	ld hl, sp+$1
@@ -99,42 +141,42 @@ Func_d121f:
 	ld [wc796], a
 	ld hl, sp+$0
 	ld [hl], $1
-	jp Func_d12ab
+	jp .asm_d12ab
 
-Func_d129d: ; d129d (34:529d)
+.asm_d129d: ; d129d (34:529d)
 	playsfx $69
 	writenpctext TreeBitstreamText_456f4
-	jp Func_d1454
+	jp .asm_d1454
 
-Func_d12ab: ; d12ab (34:52ab)
-	jp Func_d12b7
+.asm_d12ab: ; d12ab (34:52ab)
+	jp .asm_d12b7
 
-Func_d12ae: ; d12ae (34:52ae)
+.asm_d12ae: ; d12ae (34:52ae)
 	writetext TreeBitstreamText_45a40
-	jp Func_d1454
+	jp .asm_d1454
 
-Func_d12b7: ; d12b7 (34:52b7)
-	jp Func_d13ff
+.asm_d12b7: ; d12b7 (34:52b7)
+	jp .asm_d13ff
 
-Func_d12ba: ; d12ba (34:52ba)
+.asm_d12ba: ; d12ba (34:52ba)
 	ld a, [wc796]
 	cp $8
-	jp nz, Func_d1344
+	jp nz, .asm_d1344
 	ld a, $51
 	scall Func_80e6d
 	ld hl, sp+$1
 	ld [hl], a
 	cp $ff
-	jp z, Func_d1341
+	jp z, .asm_d1341
 	writenpctext TreeBitstreamText_45564
 	ld a, $51
 	scall Func_80e7d
 	cp $1
-	jp nz, Func_d1338
+	jp nz, .asm_d1338
 	writenpctext TreeBitstreamText_45794
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
-	jp nz, Func_d1327
+	jp nz, .asm_d1327
 	playsfx $68
 	writenpctext TreeBitstreamText_457de
 	ld hl, sp+$1
@@ -159,132 +201,132 @@ Func_d12ba: ; d12ba (34:52ba)
 	ld [wc796], a
 	ld hl, sp+$0
 	ld [hl], $1
-	jp Func_d1335
+	jp .asm_d1335
 
-Func_d1327: ; d1327 (34:5327)
+.asm_d1327: ; d1327 (34:5327)
 	playsfx $69
 	writenpctext TreeBitstreamText_456f4
-	jp Func_d1454
+	jp .asm_d1454
 
-Func_d1335: ; d1335 (34:5335)
-	jp Func_d1341
+.asm_d1335: ; d1335 (34:5335)
+	jp .asm_d1341
 
-Func_d1338: ; d1338 (34:5338)
+.asm_d1338: ; d1338 (34:5338)
 	writetext TreeBitstreamText_45a40
-	jp Func_d1454
+	jp .asm_d1454
 
-Func_d1341: ; d1341 (34:5341)
-	jp Func_d13ff
+.asm_d1341: ; d1341 (34:5341)
+	jp .asm_d13ff
 
-Func_d1344: ; d1344 (34:5344)
+.asm_d1344: ; d1344 (34:5344)
 	ld a, $4e
 	scall Func_80e6d
 	ld hl, sp+$1
 	ld [hl], a
 	cp $ff
-	jp nz, Func_d135e
+	jp nz, .asm_d135e
 	ld a, $51
 	scall Func_80e6d
 	ld hl, sp+$1
 	ld [hl], a
 	cp $ff
-	jp z, Func_d13ff
-Func_d135e: ; d135e (34:535e)
+	jp z, .asm_d13ff
+.asm_d135e: ; d135e (34:535e)
 	ld a, [wc796]
 	cp $7
-	jp z, Func_d13e7
+	jp z, .asm_d13e7
 	or a
-	jp z, Func_d13e7
+	jp z, .asm_d13e7
 	cp $a
-	jp z, Func_d13d8
+	jp z, .asm_d13d8
 	cp $5
-	jp z, Func_d13d8
+	jp z, .asm_d13d8
 	cp $c
-	jp z, Func_d13c9
+	jp z, .asm_d13c9
 	cp $4
-	jp z, Func_d13c9
+	jp z, .asm_d13c9
 	cp $d
-	jp z, Func_d13ba
+	jp z, .asm_d13ba
 	cp $3
-	jp z, Func_d13ba
+	jp z, .asm_d13ba
 	cp $b
-	jp z, Func_d13ab
+	jp z, .asm_d13ab
 	cp $2
-	jp z, Func_d13ab
+	jp z, .asm_d13ab
 	cp $9
-	jp z, Func_d139c
+	jp z, .asm_d139c
 	cp $1
-	jp nz, Func_d13f6
-Func_d139c: ; d139c (34:539c)
+	jp nz, .asm_d13f6
+.asm_d139c: ; d139c (34:539c)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45acc
-	jp Func_d13fc
+	jp .asm_d13fc
 
-Func_d13ab: ; d13ab (34:53ab)
+.asm_d13ab: ; d13ab (34:53ab)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45add
-	jp Func_d13fc
+	jp .asm_d13fc
 
-Func_d13ba: ; d13ba (34:53ba)
+.asm_d13ba: ; d13ba (34:53ba)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aee
-	jp Func_d13fc
+	jp .asm_d13fc
 
-Func_d13c9: ; d13c9 (34:53c9)
+.asm_d13c9: ; d13c9 (34:53c9)
 	writetext TreeBitstreamText_45a76
 	ld hl, Func_0218
 	call PrintTextStandard_34
-	jp Func_d13fc
+	jp .asm_d13fc
 
-Func_d13d8: ; d13d8 (34:53d8)
+.asm_d13d8: ; d13d8 (34:53d8)
 	writetext TreeBitstreamText_45a76
 	ld hl, SelectChannelsPredef
 	call PrintTextStandard_34
-	jp Func_d13fc
+	jp .asm_d13fc
 
-Func_d13e7: ; d13e7 (34:53e7)
+.asm_d13e7: ; d13e7 (34:53e7)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45abb
-	jp Func_d13fc
+	jp .asm_d13fc
 
-Func_d13f6: ; d13f6 (34:53f6)
+.asm_d13f6: ; d13f6 (34:53f6)
 	writenpctext TreeBitstreamText_45564
-Func_d13fc: ; d13fc (34:53fc)
-	jp Func_d1454
+.asm_d13fc: ; d13fc (34:53fc)
+	jp .asm_d1454
 
-Func_d13ff: ; d13ff (34:53ff)
+.asm_d13ff: ; d13ff (34:53ff)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $ff
-	jp nz, Func_d1454
+	jp nz, .asm_d1454
 	ld a, [wc796]
 	cp $9
-	jp nc, Func_d1426
+	jp nc, .asm_d1426
 	ld a, [wc796]
 	cp $7
-	jp c, Func_d1426
+	jp c, .asm_d1426
 	writenpctext TreeBitstreamText_45564
 	writenpctext TreeBitstreamText_45728
-	jp Func_d1454
+	jp .asm_d1454
 
-Func_d1426: ; d1426 (34:5426)
+.asm_d1426: ; d1426 (34:5426)
 	ld a, [wc796]
 	cp $f
-	jp nz, Func_d1437
+	jp nz, .asm_d1437
 	writenpctext TreeBitstreamText_45564
-	jp Func_d1454
+	jp .asm_d1454
 
-Func_d1437: ; d1437 (34:5437)
+.asm_d1437: ; d1437 (34:5437)
 	ld a, [wc796]
 	cp $9
-	jp c, Func_d1448
+	jp c, .asm_d1448
 	writenpctext TreeBitstreamText_45875
-	jp Func_d1454
+	jp .asm_d1454
 
-Func_d1448: ; d1448 (34:5448)
+.asm_d1448: ; d1448 (34:5448)
 	writenpctext TreeBitstreamText_45564
 	writenpctext TreeBitstreamText_455be
-Func_d1454: ; d1454 (34:5454)
+.asm_d1454: ; d1454 (34:5454)
 	pop bc
 	pop bc
 	ret
@@ -374,82 +416,82 @@ Func_d153f:: ; d153f (34:553f)
 	loadpeople $4, Data_d1507
 	ld a, [wBackupMapNumber]
 	cp $22
-	jp z, Func_d1603
+	jp z, .asm_d1603
 	cp $21
-	jp z, Func_d1603
+	jp z, .asm_d1603
 	cp $20
-	jp z, Func_d1603
+	jp z, .asm_d1603
 	cp $1f
-	jp z, Func_d1603
+	jp z, .asm_d1603
 	cp $1e
-	jp z, Func_d1603
+	jp z, .asm_d1603
 	cp $18
-	jp z, Func_d15f9
+	jp z, .asm_d15f9
 	cp $17
-	jp z, Func_d15f9
+	jp z, .asm_d15f9
 	cp $16
-	jp z, Func_d15f9
+	jp z, .asm_d15f9
 	cp $15
-	jp z, Func_d15f9
+	jp z, .asm_d15f9
 	cp $14
-	jp z, Func_d15f9
+	jp z, .asm_d15f9
 	cp $e
-	jp z, Func_d15ef
+	jp z, .asm_d15ef
 	cp $d
-	jp z, Func_d15ef
+	jp z, .asm_d15ef
 	cp $c
-	jp z, Func_d15ef
+	jp z, .asm_d15ef
 	cp $b
-	jp z, Func_d15ef
+	jp z, .asm_d15ef
 	cp $a
-	jp nz, Func_d160a
-Func_d15ef: ; d15ef (34:55ef)
+	jp nz, .asm_d160a
+.asm_d15ef: ; d15ef (34:55ef)
 	hideperson $1
-	jp Func_d160a
+	jp .asm_d160a
 
-Func_d15f9: ; d15f9 (34:55f9)
+.asm_d15f9: ; d15f9 (34:55f9)
 	hideperson $2
-	jp Func_d160a
+	jp .asm_d160a
 
-Func_d1603: ; d1603 (34:5603)
+.asm_d1603: ; d1603 (34:5603)
 	hideperson $3
-Func_d160a: ; d160a (34:560a)
+.asm_d160a: ; d160a (34:560a)
 	ld a, [wc791]
 	cp $4
-	jp z, Func_d163f
+	jp z, .asm_d163f
 	cp $3
-	jp z, Func_d1635
+	jp z, .asm_d1635
 	cp $2
-	jp z, Func_d162b
+	jp z, .asm_d162b
 	cp $1
-	jp nz, Func_d1654
+	jp nz, .asm_d1654
 	hideperson $1
-	jp Func_d1654
+	jp .asm_d1654
 
-Func_d162b: ; d162b (34:562b)
+.asm_d162b: ; d162b (34:562b)
 	hideperson $2
-	jp Func_d1654
+	jp .asm_d1654
 
-Func_d1635: ; d1635 (34:5635)
+.asm_d1635: ; d1635 (34:5635)
 	hideperson $3
-	jp Func_d1654
+	jp .asm_d1654
 
-Func_d163f: ; d163f (34:563f)
+.asm_d163f: ; d163f (34:563f)
 	hideperson $1
 	hideperson $2
 	hideperson $3
-Func_d1654: ; d1654 (34:5654)
+.asm_d1654: ; d1654 (34:5654)
 	ld a, $1
 	ld [wc7a2 + 1], a
 	playmusic SONG_TOWN2
 	scall Func_8001c
 	ld a, [wBackupMapNumber]
 	or a
-	jp z, Func_d166f
+	jp z, .asm_d166f
 	call Func_d1749
 	xor a
 	ld [wBackupMapNumber], a
-Func_d166f: ; d166f (34:566f)
+.asm_d166f: ; d166f (34:566f)
 	ret
 
 Data_d1670:
@@ -468,11 +510,11 @@ Func_d1680:
 	push af
 	ld a, e
 	or a
-	jp nz, Func_d1729
+	jp nz, .asm_d1729
 	face_player -$1
 	ld a, [wPlayerFacing]
 	or a
-	jp nz, Func_d16b1
+	jp nz, .asm_d16b1
 	writenpctext TreeBitstreamText_47cc9
 	ld e, $0
 	ld a, $11
@@ -482,26 +524,26 @@ Func_d1680:
 	ld hl, sp+$1
 	ld a, [hl]
 	call SpriteFace_34
-	jp Func_d1729
+	jp .asm_d1729
 
-Func_d16b1: ; d16b1 (34:56b1)
+.asm_d16b1: ; d16b1 (34:56b1)
 	writenpctext_yesorno TreeBitstreamText_47dc3
 	or a
-	jp nz, Func_d1723
+	jp nz, .asm_d1723
 	writenpctext TreeBitstreamText_47e09
 	ld a, [wPlayerFacing]
 	cp $3
-	jp z, Func_d16df
+	jp z, .asm_d16df
 	cp $2
-	jp z, Func_d16df
+	jp z, .asm_d16df
 	cp $1
-	jp nz, Func_d16e8
+	jp nz, .asm_d16e8
 	move_person 0, Data_d1674, 1
-	jp Func_d16e8
+	jp .asm_d16e8
 
-Func_d16df: ; d16df (34:56df)
+.asm_d16df: ; d16df (34:56df)
 	move_person 0, Data_d1670, 1
-Func_d16e8: ; d16e8 (34:56e8)
+.asm_d16e8: ; d16e8 (34:56e8)
 	call WaitNPCStep_34
 	move_player $1, Data_d1678
 	move_person 0, Data_d167c, 1
@@ -514,11 +556,11 @@ Func_d16e8: ; d16e8 (34:56e8)
 	showperson $3
 	xor a
 	ld [wc791], a
-	jp Func_d1729
+	jp .asm_d1729
 
-Func_d1723: ; d1723 (34:5723)
+.asm_d1723: ; d1723 (34:5723)
 	writenpctext TreeBitstreamText_47dfa
-Func_d1729: ; d1729 (34:5729)
+.asm_d1729: ; d1729 (34:5729)
 	pop bc
 	ret
 
@@ -543,26 +585,26 @@ Data_d1745: ; d1745
 Func_d1749: ; d1749 (34:5749)
 	ld a, [wBackupMapNumber]
 	cp $18
-	jp z, Func_d17ca
+	jp z, .asm_d17ca
 	cp $17
-	jp z, Func_d17ca
+	jp z, .asm_d17ca
 	cp $16
-	jp z, Func_d17ca
+	jp z, .asm_d17ca
 	cp $15
-	jp z, Func_d17ca
+	jp z, .asm_d17ca
 	cp $14
-	jp z, Func_d17ca
+	jp z, .asm_d17ca
 	cp $e
-	jp z, Func_d177e
+	jp z, .asm_d177e
 	cp $d
-	jp z, Func_d177e
+	jp z, .asm_d177e
 	cp $c
-	jp z, Func_d177e
+	jp z, .asm_d177e
 	cp $b
-	jp z, Func_d177e
+	jp z, .asm_d177e
 	cp $a
-	jp nz, Func_d1816
-Func_d177e: ; d177e (34:577e)
+	jp nz, .asm_d1816
+.asm_d177e: ; d177e (34:577e)
 	move_player $1, Data_d172b
 	ld a, $2
 	call PlayerFace_34
@@ -570,20 +612,20 @@ Func_d177e: ; d177e (34:577e)
 	face_player 0
 	checkevent $5d
 	cp $1
-	jp nz, Func_d17c7
+	jp nz, .asm_d17c7
 	checkevent $5e
 	or a
-	jp nz, Func_d17c7
+	jp nz, .asm_d17c7
 	writenpctext TreeBitstreamText_47ce9
 	ld e, $0
 	ld a, $2d
 	scall Func_80d62
 	writetext TreeBitstreamText_47d38
 	setevent $5e
-Func_d17c7: ; d17c7 (34:57c7)
-	jp Func_d1866
+.asm_d17c7: ; d17c7 (34:57c7)
+	jp .asm_d1866
 
-Func_d17ca: ; d17ca (34:57ca)
+.asm_d17ca: ; d17ca (34:57ca)
 	move_player $1, Data_d1731
 	ld a, $2
 	call PlayerFace_34
@@ -591,20 +633,20 @@ Func_d17ca: ; d17ca (34:57ca)
 	face_player 0
 	checkevent $5f
 	cp $1
-	jp nz, Func_d1813
+	jp nz, .asm_d1813
 	checkevent $60
 	or a
-	jp nz, Func_d1813
+	jp nz, .asm_d1813
 	writenpctext TreeBitstreamText_47ce9
 	ld e, $0
 	ld a, $9
 	scall Func_80d74
 	writetext TreeBitstreamText_47d46
 	setevent $60
-Func_d1813: ; d1813 (34:5813)
-	jp Func_d1866
+.asm_d1813: ; d1813 (34:5813)
+	jp .asm_d1866
 
-Func_d1816: ; d1816 (34:5816)
+.asm_d1816: ; d1816 (34:5816)
 	move_player $1, Data_d1737
 	ld a, $2
 	call PlayerFace_34
@@ -612,10 +654,10 @@ Func_d1816: ; d1816 (34:5816)
 	face_player 0
 	checkevent $61
 	cp $1
-	jp nz, Func_d1866
+	jp nz, .asm_d1866
 	checkevent $62
 	or a
-	jp nz, Func_d1866
+	jp nz, .asm_d1866
 	writenpctext TreeBitstreamText_47ce9
 	ld c, $32
 	ld e, $0
@@ -626,8 +668,8 @@ ELIF DEF(STAR)
 ENDC
 	call GiveRobot_34
 	cp $ff
-	jp nz, Func_d1858
-Func_d1858: ; d1858 (34:5858)
+	jp nz, .asm_d1858
+.asm_d1858: ; d1858 (34:5858)
 IF DEF(SUN)
 	ld hl, $3b7
 ELIF DEF(STAR)
@@ -635,7 +677,7 @@ ELIF DEF(STAR)
 ENDC
 	call PrintTextStandard_34
 	setevent $62
-Func_d1866: ; d1866 (34:5866)
+.asm_d1866: ; d1866 (34:5866)
 	move_person 0, Data_d173d, 1
 	call WaitNPCStep_34
 	ld e, $1
@@ -684,29 +726,29 @@ Func_d18ba:: ; d18ba (34:58ba)
 	pop af
 	push af
 	cp $4
-	jp z, Func_d1938
+	jp z, .asm_d1938
 	cp $3
-	jp z, Func_d192e
+	jp z, .asm_d192e
 	cp $2
-	jp z, Func_d1924
+	jp z, .asm_d1924
 	cp $1
-	jp nz, Func_d194d
+	jp nz, .asm_d194d
 	hideperson $1
-	jp Func_d194d
+	jp .asm_d194d
 
-Func_d1924: ; d1924 (34:5924)
+.asm_d1924: ; d1924 (34:5924)
 	hideperson $2
-	jp Func_d194d
+	jp .asm_d194d
 
-Func_d192e: ; d192e (34:592e)
+.asm_d192e: ; d192e (34:592e)
 	hideperson $3
-	jp Func_d194d
+	jp .asm_d194d
 
-Func_d1938: ; d1938 (34:5938)
+.asm_d1938: ; d1938 (34:5938)
 	hideperson $1
 	hideperson $2
 	hideperson $3
-Func_d194d: ; d194d (34:594d)
+.asm_d194d: ; d194d (34:594d)
 	pop af
 	ld [wc791], a
 	script_sleep $3c
@@ -915,71 +957,71 @@ Func_d1aff:: ; d1aff (34:5aff)
 	pop bc
 	ld a, [wSaveFileExists]
 	or a
-	jp nz, Func_d1bff
+	jp nz, .asm_d1bff
 	ld a, $3
 	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-Func_d1bff: ; d1bff (34:5bff)
+.asm_d1bff: ; d1bff (34:5bff)
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d1c0f
+	jp nz, .asm_d1c0f
 	setevent $5d
-Func_d1c0f: ; d1c0f (34:5c0f)
+.asm_d1c0f: ; d1c0f (34:5c0f)
 	ld a, $3
 	scall Func_80d01
 	ld a, [wc7de]
 	cp $f
-	jp z, Func_d1c78
+	jp z, .asm_d1c78
 	cp $e
-	jp z, Func_d1c78
+	jp z, .asm_d1c78
 	cp $d
-	jp z, Func_d1c78
+	jp z, .asm_d1c78
 	cp $c
-	jp z, Func_d1c78
+	jp z, .asm_d1c78
 	cp $b
-	jp z, Func_d1c78
+	jp z, .asm_d1c78
 	cp $a
-	jp z, Func_d1c6d
+	jp z, .asm_d1c6d
 	cp $9
-	jp z, Func_d1c6d
+	jp z, .asm_d1c6d
 	cp $8
-	jp z, Func_d1c6d
+	jp z, .asm_d1c6d
 	cp $7
-	jp z, Func_d1c6d
+	jp z, .asm_d1c6d
 	cp $6
-	jp z, Func_d1c6d
+	jp z, .asm_d1c6d
 	cp $5
-	jp z, Func_d1c62
+	jp z, .asm_d1c62
 	cp $4
-	jp z, Func_d1c62
+	jp z, .asm_d1c62
 	cp $3
-	jp z, Func_d1c62
+	jp z, .asm_d1c62
 	cp $2
-	jp z, Func_d1c62
+	jp z, .asm_d1c62
 	cp $1
-	jp nz, Func_d1c83
-Func_d1c62: ; d1c62 (34:5c62)
+	jp nz, .asm_d1c83
+.asm_d1c62: ; d1c62 (34:5c62)
 	loadwilds $5, Data_d19e7
-	jp Func_d1c8b
+	jp .asm_d1c8b
 
-Func_d1c6d: ; d1c6d (34:5c6d)
+.asm_d1c6d: ; d1c6d (34:5c6d)
 	loadwilds $5, Data_d1a2d
-	jp Func_d1c8b
+	jp .asm_d1c8b
 
-Func_d1c78: ; d1c78 (34:5c78)
+.asm_d1c78: ; d1c78 (34:5c78)
 	loadwilds $5, Data_d1a73
-	jp Func_d1c8b
+	jp .asm_d1c8b
 
-Func_d1c83: ; d1c83 (34:5c83)
+.asm_d1c83: ; d1c83 (34:5c83)
 	loadwilds $5, Data_d1ab9
-Func_d1c8b: ; d1c8b (34:5c8b)
+.asm_d1c8b: ; d1c8b (34:5c8b)
 	ld a, [wc7de]
 	inc a
 	cp $15
-	jp nc, Func_d1ccb
+	jp nc, .asm_d1ccb
 	call Func_d1d08
 	ld hl, Func_d1d08
 	scall Func_80f11
@@ -1017,22 +1059,22 @@ Func_d1c8b: ; d1c8b (34:5c8b)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-Func_d1ccb: ; d1ccb (34:5ccb)
+.asm_d1ccb: ; d1ccb (34:5ccb)
 	loadwarps $1, Data_d1958
 	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d1cec
+	jp nz, .asm_d1cec
 	writetext TreeBitstreamText_47e17
-	jp Func_d1cf5
+	jp .asm_d1cf5
 
-Func_d1cec: ; d1cec (34:5cec)
+.asm_d1cec: ; d1cec (34:5cec)
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 	scall Func_80f83
-Func_d1cf5: ; d1cf5 (34:5cf5)
+.asm_d1cf5: ; d1cf5 (34:5cf5)
 	ret
 
 Data_d1cf6:
@@ -1180,71 +1222,71 @@ Func_d1ec5:: ; d1ec5 (34:5ec5)
 	pop bc
 	ld a, [wSaveFileExists]
 	or a
-	jp nz, Func_d1f36
+	jp nz, .asm_d1f36
 	ld a, $3
 	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-Func_d1f36: ; d1f36 (34:5f36)
+.asm_d1f36: ; d1f36 (34:5f36)
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d1f46
+	jp nz, .asm_d1f46
 	setevent $5d
-Func_d1f46: ; d1f46 (34:5f46)
+.asm_d1f46: ; d1f46 (34:5f46)
 	ld a, $3
 	scall Func_80d01
 	ld a, [wc7de]
 	cp $f
-	jp z, Func_d1faf
+	jp z, .asm_d1faf
 	cp $e
-	jp z, Func_d1faf
+	jp z, .asm_d1faf
 	cp $d
-	jp z, Func_d1faf
+	jp z, .asm_d1faf
 	cp $c
-	jp z, Func_d1faf
+	jp z, .asm_d1faf
 	cp $b
-	jp z, Func_d1faf
+	jp z, .asm_d1faf
 	cp $a
-	jp z, Func_d1fa4
+	jp z, .asm_d1fa4
 	cp $9
-	jp z, Func_d1fa4
+	jp z, .asm_d1fa4
 	cp $8
-	jp z, Func_d1fa4
+	jp z, .asm_d1fa4
 	cp $7
-	jp z, Func_d1fa4
+	jp z, .asm_d1fa4
 	cp $6
-	jp z, Func_d1fa4
+	jp z, .asm_d1fa4
 	cp $5
-	jp z, Func_d1f99
+	jp z, .asm_d1f99
 	cp $4
-	jp z, Func_d1f99
+	jp z, .asm_d1f99
 	cp $3
-	jp z, Func_d1f99
+	jp z, .asm_d1f99
 	cp $2
-	jp z, Func_d1f99
+	jp z, .asm_d1f99
 	cp $1
-	jp nz, Func_d1fba
-Func_d1f99: ; d1f99 (34:5f99)
+	jp nz, .asm_d1fba
+.asm_d1f99: ; d1f99 (34:5f99)
 	loadwilds $5, Data_d1dad
-	jp Func_d1fc2
+	jp .asm_d1fc2
 
-Func_d1fa4: ; d1fa4 (34:5fa4)
+.asm_d1fa4: ; d1fa4 (34:5fa4)
 	loadwilds $5, Data_d1df3
-	jp Func_d1fc2
+	jp .asm_d1fc2
 
-Func_d1faf: ; d1faf (34:5faf)
+.asm_d1faf: ; d1faf (34:5faf)
 	loadwilds $5, Data_d1e39
-	jp Func_d1fc2
+	jp .asm_d1fc2
 
-Func_d1fba: ; d1fba (34:5fba)
+.asm_d1fba: ; d1fba (34:5fba)
 	loadwilds $5, Data_d1e7f
-Func_d1fc2: ; d1fc2 (34:5fc2)
+.asm_d1fc2: ; d1fc2 (34:5fc2)
 	ld a, [wc7de]
 	inc a
 	cp $15
-	jp nc, Func_d2002
+	jp nc, .asm_d2002
 	call Func_d203f
 	ld hl, Func_d203f
 	scall Func_80f11
@@ -1282,22 +1324,22 @@ Func_d1fc2: ; d1fc2 (34:5fc2)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-Func_d2002: ; d2002 (34:6002)
+.asm_d2002: ; d2002 (34:6002)
 	loadwarps $1, Data_d1d1e
 	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d2023
+	jp nz, .asm_d2023
 	writetext TreeBitstreamText_47e17
-	jp Func_d202c
+	jp .asm_d202c
 
-Func_d2023: ; d2023 (34:6023)
+.asm_d2023: ; d2023 (34:6023)
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 	scall Func_80f83
-Func_d202c: ; d202c (34:602c)
+.asm_d202c: ; d202c (34:602c)
 	ret
 
 Data_d202d:
@@ -1501,71 +1543,71 @@ Func_d21fc:: ; d21fc (34:61fc)
 	pop bc
 	ld a, [wSaveFileExists]
 	or a
-	jp nz, Func_d22d5
+	jp nz, .asm_d22d5
 	ld a, $3
 	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-Func_d22d5: ; d22d5 (34:62d5)
+.asm_d22d5: ; d22d5 (34:62d5)
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d22e5
+	jp nz, .asm_d22e5
 	setevent $5d
-Func_d22e5: ; d22e5 (34:62e5)
+.asm_d22e5: ; d22e5 (34:62e5)
 	ld a, $3
 	scall Func_80d01
 	ld a, [wc7de]
 	cp $f
-	jp z, Func_d234e
+	jp z, .asm_d234e
 	cp $e
-	jp z, Func_d234e
+	jp z, .asm_d234e
 	cp $d
-	jp z, Func_d234e
+	jp z, .asm_d234e
 	cp $c
-	jp z, Func_d234e
+	jp z, .asm_d234e
 	cp $b
-	jp z, Func_d234e
+	jp z, .asm_d234e
 	cp $a
-	jp z, Func_d2343
+	jp z, .asm_d2343
 	cp $9
-	jp z, Func_d2343
+	jp z, .asm_d2343
 	cp $8
-	jp z, Func_d2343
+	jp z, .asm_d2343
 	cp $7
-	jp z, Func_d2343
+	jp z, .asm_d2343
 	cp $6
-	jp z, Func_d2343
+	jp z, .asm_d2343
 	cp $5
-	jp z, Func_d2338
+	jp z, .asm_d2338
 	cp $4
-	jp z, Func_d2338
+	jp z, .asm_d2338
 	cp $3
-	jp z, Func_d2338
+	jp z, .asm_d2338
 	cp $2
-	jp z, Func_d2338
+	jp z, .asm_d2338
 	cp $1
-	jp nz, Func_d2359
-Func_d2338: ; d2338 (34:6338)
+	jp nz, .asm_d2359
+.asm_d2338: ; d2338 (34:6338)
 	loadwilds $5, Data_d20e4
-	jp Func_d2361
+	jp .asm_d2361
 
-Func_d2343: ; d2343 (34:6343)
+.asm_d2343: ; d2343 (34:6343)
 	loadwilds $5, Data_d212a
-	jp Func_d2361
+	jp .asm_d2361
 
-Func_d234e: ; d234e (34:634e)
+.asm_d234e: ; d234e (34:634e)
 	loadwilds $5, Data_d2170
-	jp Func_d2361
+	jp .asm_d2361
 
-Func_d2359: ; d2359 (34:6359)
+.asm_d2359: ; d2359 (34:6359)
 	loadwilds $5, Data_d21b6
-Func_d2361: ; d2361 (34:6361)
+.asm_d2361: ; d2361 (34:6361)
 	ld a, [wc7de]
 	inc a
 	cp $15
-	jp nc, Func_d23a1
+	jp nc, .asm_d23a1
 	call Func_d23de
 	ld hl, Func_d23de
 	scall Func_80f11
@@ -1603,22 +1645,22 @@ Func_d2361: ; d2361 (34:6361)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-Func_d23a1: ; d23a1 (34:63a1)
+.asm_d23a1: ; d23a1 (34:63a1)
 	loadwarps $1, Data_d2055
 	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d23c2
+	jp nz, .asm_d23c2
 	writetext TreeBitstreamText_47e17
-	jp Func_d23cb
+	jp .asm_d23cb
 
-Func_d23c2: ; d23c2 (34:63c2)
+.asm_d23c2: ; d23c2 (34:63c2)
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 	scall Func_80f83
-Func_d23cb: ; d23cb (34:63cb)
+.asm_d23cb: ; d23cb (34:63cb)
 	ret
 
 Data_d23cc:
@@ -1822,71 +1864,71 @@ Func_d259b:: ; d259b (34:659b)
 	pop bc
 	ld a, [wSaveFileExists]
 	or a
-	jp nz, Func_d2674
+	jp nz, .asm_d2674
 	ld a, $3
 	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-Func_d2674: ; d2674 (34:6674)
+.asm_d2674: ; d2674 (34:6674)
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d2684
+	jp nz, .asm_d2684
 	setevent $5d
-Func_d2684: ; d2684 (34:6684)
+.asm_d2684: ; d2684 (34:6684)
 	ld a, $3
 	scall Func_80d01
 	ld a, [wc7de]
 	cp $f
-	jp z, Func_d26ed
+	jp z, .asm_d26ed
 	cp $e
-	jp z, Func_d26ed
+	jp z, .asm_d26ed
 	cp $d
-	jp z, Func_d26ed
+	jp z, .asm_d26ed
 	cp $c
-	jp z, Func_d26ed
+	jp z, .asm_d26ed
 	cp $b
-	jp z, Func_d26ed
+	jp z, .asm_d26ed
 	cp $a
-	jp z, Func_d26e2
+	jp z, .asm_d26e2
 	cp $9
-	jp z, Func_d26e2
+	jp z, .asm_d26e2
 	cp $8
-	jp z, Func_d26e2
+	jp z, .asm_d26e2
 	cp $7
-	jp z, Func_d26e2
+	jp z, .asm_d26e2
 	cp $6
-	jp z, Func_d26e2
+	jp z, .asm_d26e2
 	cp $5
-	jp z, Func_d26d7
+	jp z, .asm_d26d7
 	cp $4
-	jp z, Func_d26d7
+	jp z, .asm_d26d7
 	cp $3
-	jp z, Func_d26d7
+	jp z, .asm_d26d7
 	cp $2
-	jp z, Func_d26d7
+	jp z, .asm_d26d7
 	cp $1
-	jp nz, Func_d26f8
-Func_d26d7: ; d26d7 (34:66d7)
+	jp nz, .asm_d26f8
+.asm_d26d7: ; d26d7 (34:66d7)
 	loadwilds $5, Data_d2483
-	jp Func_d2700
+	jp .asm_d2700
 
-Func_d26e2: ; d26e2 (34:66e2)
+.asm_d26e2: ; d26e2 (34:66e2)
 	loadwilds $5, Data_d24c9
-	jp Func_d2700
+	jp .asm_d2700
 
-Func_d26ed: ; d26ed (34:66ed)
+.asm_d26ed: ; d26ed (34:66ed)
 	loadwilds $5, Data_d250f
-	jp Func_d2700
+	jp .asm_d2700
 
-Func_d26f8: ; d26f8 (34:66f8)
+.asm_d26f8: ; d26f8 (34:66f8)
 	loadwilds $5, Data_d2555
-Func_d2700: ; d2700 (34:6700)
+.asm_d2700: ; d2700 (34:6700)
 	ld a, [wc7de]
 	inc a
 	cp $15
-	jp nc, Func_d2740
+	jp nc, .asm_d2740
 	call Func_d277d
 	ld hl, Func_d277d
 	scall Func_80f11
@@ -1924,22 +1966,22 @@ Func_d2700: ; d2700 (34:6700)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-Func_d2740: ; d2740 (34:6740)
+.asm_d2740: ; d2740 (34:6740)
 	loadwarps $1, Data_d23f4
 	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d2761
+	jp nz, .asm_d2761
 	writetext TreeBitstreamText_47e17
-	jp Func_d276a
+	jp .asm_d276a
 
-Func_d2761: ; d2761 (34:6761)
+.asm_d2761: ; d2761 (34:6761)
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 	scall Func_80f83
-Func_d276a: ; d276a (34:676a)
+.asm_d276a: ; d276a (34:676a)
 	ret
 
 Data_d276b:
@@ -2136,71 +2178,71 @@ Func_d293a:: ; d293a (34:693a)
 	pop bc
 	ld a, [wSaveFileExists]
 	or a
-	jp nz, Func_d2a06
+	jp nz, .asm_d2a06
 	ld a, $3
 	call Random_34
 	ld [wc7dd], a
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-Func_d2a06: ; d2a06 (34:6a06)
+.asm_d2a06: ; d2a06 (34:6a06)
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d2a16
+	jp nz, .asm_d2a16
 	setevent $5d
-Func_d2a16: ; d2a16 (34:6a16)
+.asm_d2a16: ; d2a16 (34:6a16)
 	ld a, $3
 	scall Func_80d01
 	ld a, [wc7de]
 	cp $f
-	jp z, Func_d2a7f
+	jp z, .asm_d2a7f
 	cp $e
-	jp z, Func_d2a7f
+	jp z, .asm_d2a7f
 	cp $d
-	jp z, Func_d2a7f
+	jp z, .asm_d2a7f
 	cp $c
-	jp z, Func_d2a7f
+	jp z, .asm_d2a7f
 	cp $b
-	jp z, Func_d2a7f
+	jp z, .asm_d2a7f
 	cp $a
-	jp z, Func_d2a74
+	jp z, .asm_d2a74
 	cp $9
-	jp z, Func_d2a74
+	jp z, .asm_d2a74
 	cp $8
-	jp z, Func_d2a74
+	jp z, .asm_d2a74
 	cp $7
-	jp z, Func_d2a74
+	jp z, .asm_d2a74
 	cp $6
-	jp z, Func_d2a74
+	jp z, .asm_d2a74
 	cp $5
-	jp z, Func_d2a69
+	jp z, .asm_d2a69
 	cp $4
-	jp z, Func_d2a69
+	jp z, .asm_d2a69
 	cp $3
-	jp z, Func_d2a69
+	jp z, .asm_d2a69
 	cp $2
-	jp z, Func_d2a69
+	jp z, .asm_d2a69
 	cp $1
-	jp nz, Func_d2a8a
-Func_d2a69: ; d2a69 (34:6a69)
+	jp nz, .asm_d2a8a
+.asm_d2a69: ; d2a69 (34:6a69)
 	loadwilds $5, Data_d2822
-	jp Func_d2a92
+	jp .asm_d2a92
 
-Func_d2a74: ; d2a74 (34:6a74)
+.asm_d2a74: ; d2a74 (34:6a74)
 	loadwilds $5, Data_d2868
-	jp Func_d2a92
+	jp .asm_d2a92
 
-Func_d2a7f: ; d2a7f (34:6a7f)
+.asm_d2a7f: ; d2a7f (34:6a7f)
 	loadwilds $5, Data_d28ae
-	jp Func_d2a92
+	jp .asm_d2a92
 
-Func_d2a8a: ; d2a8a (34:6a8a)
+.asm_d2a8a: ; d2a8a (34:6a8a)
 	loadwilds $5, Data_d28f4
-Func_d2a92: ; d2a92 (34:6a92)
+.asm_d2a92: ; d2a92 (34:6a92)
 	ld a, [wc7de]
 	inc a
 	cp $15
-	jp nc, Func_d2ad2
+	jp nc, .asm_d2ad2
 	call Func_d2b0f
 	ld hl, Func_d2b0f
 	scall Func_80f11
@@ -2238,22 +2280,22 @@ Func_d2a92: ; d2a92 (34:6a92)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-Func_d2ad2: ; d2ad2 (34:6ad2)
+.asm_d2ad2: ; d2ad2 (34:6ad2)
 	loadwarps $1, Data_d2793
 	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $14
-	jp nz, Func_d2af3
+	jp nz, .asm_d2af3
 	writetext TreeBitstreamText_47e17
-	jp Func_d2afc
+	jp .asm_d2afc
 
-Func_d2af3: ; d2af3 (34:6af3)
+.asm_d2af3: ; d2af3 (34:6af3)
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 	scall Func_80f83
-Func_d2afc: ; d2afc (34:6afc)
+.asm_d2afc: ; d2afc (34:6afc)
 	ret
 
 Data_d2afd:
@@ -2302,10 +2344,10 @@ Data_d2c0e: ; d2c0e
 
 Func_d2c2a:: ; d2c2a (34:6c2a)
 	ld c, $0
-Func_d2c2c: ; d2c2c (34:6c2c)
+.asm_d2c2c: ; d2c2c (34:6c2c)
 	ld a, c
 	cp $7
-	jp nc, Func_d2c9b
+	jp nc, .asm_d2c9b
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2314,7 +2356,7 @@ Func_d2c2c: ; d2c2c (34:6c2c)
 	add hl, de
 	ld a, [wBackupMapGroup]
 	cp [hl]
-	jp nz, Func_d2c97
+	jp nz, .asm_d2c97
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2324,7 +2366,7 @@ Func_d2c2c: ; d2c2c (34:6c2c)
 	inc hl
 	ld a, [wBackupMapNumber]
 	cp [hl]
-	jp nz, Func_d2c97
+	jp nz, .asm_d2c97
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2335,7 +2377,7 @@ Func_d2c2c: ; d2c2c (34:6c2c)
 	inc hl
 	ld a, [wBackupMapX]
 	cp [hl]
-	jp nz, Func_d2c97
+	jp nz, .asm_d2c97
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2347,7 +2389,7 @@ Func_d2c2c: ; d2c2c (34:6c2c)
 	inc hl
 	ld a, [wBackupMapY]
 	cp [hl]
-	jp nz, Func_d2c97
+	jp nz, .asm_d2c97
 	push bc
 	ld l, c
 	ld h, $0
@@ -2368,22 +2410,22 @@ Func_d2c2c: ; d2c2c (34:6c2c)
 	ld a, c
 	inc a
 	ld [wCurShop], a
-	jp Func_d2c9b
+	jp .asm_d2c9b
 
-Func_d2c97: ; d2c97 (34:6c97)
+.asm_d2c97: ; d2c97 (34:6c97)
 	inc c
-	jp Func_d2c2c
+	jp .asm_d2c2c
 
-Func_d2c9b: ; d2c9b (34:6c9b)
+.asm_d2c9b: ; d2c9b (34:6c9b)
 	loadpeople $8, Data_d2b82
 	ld a, [wBackupMapGroup]
 	cp $1
-	jp nz, Func_d2cba
+	jp nz, .asm_d2cba
 	ld a, [wBackupMapNumber]
 	or a
-	jp nz, Func_d2cba
+	jp nz, .asm_d2cba
 	loadpeople $2, Data_d2bf2
-Func_d2cba: ; d2cba (34:6cba)
+.asm_d2cba: ; d2cba (34:6cba)
 	playmusic SONG_CENTER
 	scall Func_8001c
 	ret
@@ -2392,23 +2434,23 @@ Func_d2cc3:
 	push af
 	ld a, e
 	or a
-	jp nz, Func_d2cef
+	jp nz, .asm_d2cef
 	face_player -$1
 	writenpctext TreeBitstreamText_470a2
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
-	jp nz, Func_d2ce7
+	jp nz, .asm_d2ce7
 	ld e, $3
 	ld a, [wCurShop]
 	scall Func_806a0
-	jp Func_d2cef
+	jp .asm_d2cef
 
-Func_d2ce7: ; d2ce7 (34:6ce7)
+.asm_d2ce7: ; d2ce7 (34:6ce7)
 	ld e, $4
 	ld a, [wCurShop]
 	scall Func_806a0
-Func_d2cef: ; d2cef (34:6cef)
+.asm_d2cef: ; d2cef (34:6cef)
 	pop bc
 	ret
 
@@ -2467,10 +2509,10 @@ Data_d2e6d: ; d2e6d
 
 Func_d2e9d:: ; d2e9d (34:6e9d)
 	ld c, $0
-Func_d2e9f: ; d2e9f (34:6e9f)
+.asm_d2e9f: ; d2e9f (34:6e9f)
 	ld a, c
 	cp $c
-	jp nc, Func_d2f07
+	jp nc, .asm_d2f07
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2479,7 +2521,7 @@ Func_d2e9f: ; d2e9f (34:6e9f)
 	add hl, de
 	ld a, [wBackupMapGroup]
 	cp [hl]
-	jp nz, Func_d2f03
+	jp nz, .asm_d2f03
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2489,7 +2531,7 @@ Func_d2e9f: ; d2e9f (34:6e9f)
 	inc hl
 	ld a, [wBackupMapNumber]
 	cp [hl]
-	jp nz, Func_d2f03
+	jp nz, .asm_d2f03
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2500,7 +2542,7 @@ Func_d2e9f: ; d2e9f (34:6e9f)
 	inc hl
 	ld a, [wBackupMapX]
 	cp [hl]
-	jp nz, Func_d2f03
+	jp nz, .asm_d2f03
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2512,7 +2554,7 @@ Func_d2e9f: ; d2e9f (34:6e9f)
 	inc hl
 	ld a, [wBackupMapY]
 	cp [hl]
-	jp nz, Func_d2f03
+	jp nz, .asm_d2f03
 	ld l, c
 	ld h, $0
 	ld e, l
@@ -2528,173 +2570,173 @@ Func_d2e9f: ; d2e9f (34:6e9f)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-	jp Func_d2f07
+	jp .asm_d2f07
 
-Func_d2f03: ; d2f03 (34:6f03)
+.asm_d2f03: ; d2f03 (34:6f03)
 	inc c
-	jp Func_d2e9f
+	jp .asm_d2e9f
 
-Func_d2f07: ; d2f07 (34:6f07)
+.asm_d2f07: ; d2f07 (34:6f07)
 	loadpeople $8, Data_d2def
 	ld a, [wBackupMapGroup]
 	cp $1
-	jp z, Func_d2f2f
+	jp z, .asm_d2f2f
 	ld a, [wBackupMapGroup]
 	cp $5
-	jp z, Func_d2f2f
+	jp z, .asm_d2f2f
 	ld a, [wBackupMapNumber]
 	cp $15
-	jp z, Func_d2f2f
+	jp z, .asm_d2f2f
 	ld a, [wBackupMapNumber]
 	cp $19
-	jp nz, Func_d2f37
-Func_d2f2f: ; d2f2f (34:6f2f)
+	jp nz, .asm_d2f37
+.asm_d2f2f: ; d2f2f (34:6f2f)
 	loadpeople $1, Data_d2e5f
-Func_d2f37: ; d2f37 (34:6f37)
+.asm_d2f37: ; d2f37 (34:6f37)
 	ld a, [wBackupMapGroup]
 	cp $15
-	jp z, Func_d2f5f
+	jp z, .asm_d2f5f
 	cp $19
-	jp z, Func_d2f54
+	jp z, .asm_d2f54
 	cp $5
-	jp nz, Func_d2f6a
+	jp nz, .asm_d2f6a
 	ld de, Data_d2d81
 	ld a, $8
 	scall Func_80150
-	jp Func_d2f72
+	jp .asm_d2f72
 
-Func_d2f54: ; d2f54 (34:6f54)
+.asm_d2f54: ; d2f54 (34:6f54)
 	ld de, Data_d2d85
 	ld a, $8
 	scall Func_80150
-	jp Func_d2f72
+	jp .asm_d2f72
 
-Func_d2f5f: ; d2f5f (34:6f5f)
+.asm_d2f5f: ; d2f5f (34:6f5f)
 	ld de, Data_d2d89
 	ld a, $8
 	scall Func_80150
-	jp Func_d2f72
+	jp .asm_d2f72
 
-Func_d2f6a: ; d2f6a (34:6f6a)
+.asm_d2f6a: ; d2f6a (34:6f6a)
 	ld de, Data_d2d75
 	ld a, $8
 	scall Func_80150
-Func_d2f72: ; d2f72 (34:6f72)
+.asm_d2f72: ; d2f72 (34:6f72)
 	ld a, [wBackupMapGroup]
 	cp $5
-	jp nz, Func_d2fae
+	jp nz, .asm_d2fae
 	ld a, [wBackupMapNumber]
 	or a
-	jp nz, Func_d2fae
+	jp nz, .asm_d2fae
 	ld a, [wBackupMapX]
 	cp $5
-	jp nz, Func_d2fa3
+	jp nz, .asm_d2fa3
 	ld a, [wBackupMapY]
 	cp $7
-	jp nz, Func_d2fa3
+	jp nz, .asm_d2fa3
 	loadpeople $1, Data_d2d9b
 	hideperson $8
-	jp Func_d2fab
+	jp .asm_d2fab
 
-Func_d2fa3: ; d2fa3 (34:6fa3)
+.asm_d2fa3: ; d2fa3 (34:6fa3)
 	loadpeople $1, Data_d2d8d
-Func_d2fab: ; d2fab (34:6fab)
-	jp Func_d3019
+.asm_d2fab: ; d2fab (34:6fab)
+	jp .asm_d3019
 
-Func_d2fae: ; d2fae (34:6fae)
+.asm_d2fae: ; d2fae (34:6fae)
 	ld a, [wBackupMapGroup]
 	cp $1d
-	jp nz, Func_d3011
+	jp nz, .asm_d3011
 	ld a, [wBackupMapNumber]
 	or a
-	jp nz, Func_d3011
+	jp nz, .asm_d3011
 	loadpeople $5, Data_d2da9
 	ld a, [wc790]
 	cp $3
-	jp z, Func_d3000
+	jp z, .asm_d3000
 	cp $4
-	jp z, Func_d3000
+	jp z, .asm_d3000
 	cp $5
-	jp z, Func_d3000
+	jp z, .asm_d3000
 	cp $6
-	jp z, Func_d2fe1
+	jp z, .asm_d2fe1
 	cp $7
-	jp nz, Func_d300e
-Func_d2fe1: ; d2fe1 (34:6fe1)
+	jp nz, .asm_d300e
+.asm_d2fe1: ; d2fe1 (34:6fe1)
 	hideperson $9
 	hideperson $a
 	hideperson $b
 	hideperson $c
-	jp Func_d300e
+	jp .asm_d300e
 
-Func_d3000: ; d3000 (34:7000)
+.asm_d3000: ; d3000 (34:7000)
 	hideperson $b
 	hideperson $c
-Func_d300e: ; d300e (34:700e)
-	jp Func_d3019
+.asm_d300e: ; d300e (34:700e)
+	jp .asm_d3019
 
-Func_d3011: ; d3011 (34:7011)
+.asm_d3011: ; d3011 (34:7011)
 	loadpeople $1, Data_d2d8d
-Func_d3019: ; d3019 (34:7019)
+.asm_d3019: ; d3019 (34:7019)
 	playmusic SONG_CENTER
 	scall Func_8001c
 	ld a, [wBackupMapGroup]
 	cp $5
-	jp nz, Func_d3046
+	jp nz, .asm_d3046
 	ld a, [wBackupMapNumber]
 	or a
-	jp nz, Func_d3046
+	jp nz, .asm_d3046
 	ld a, [wBackupMapX]
 	cp $5
-	jp nz, Func_d3046
+	jp nz, .asm_d3046
 	ld a, [wBackupMapY]
 	cp $7
-	jp nz, Func_d3046
+	jp nz, .asm_d3046
 	landmarksign TreeBitstreamText_465ae
-Func_d3046: ; d3046 (34:7046)
+.asm_d3046: ; d3046 (34:7046)
 	ret
 
 Func_d3047:
 	ld a, e
 	or a
-	jp nz, Func_d3054
+	jp nz, .asm_d3054
 	ld e, $0
 	ld a, [wc789]
 	scall Func_806a0
-Func_d3054: ; d3054 (34:7054)
+.asm_d3054: ; d3054 (34:7054)
 	ret
 
 Func_d3055:
 	ld a, e
 	or a
-	jp nz, Func_d30f8
+	jp nz, .asm_d30f8
 	checkevent $1
 	or a
-	jp nz, Func_d3086
+	jp nz, .asm_d3086
 	writetext TreeBitstreamText_3a8c3
 	checkevent $f0
 	cp $1
-	jp nz, Func_d3083
+	jp nz, .asm_d3083
 	writetext TreeBitstreamText_3a8e1
 	setevent $1
-Func_d3083: ; d3083 (34:7083)
-	jp Func_d30f8
+.asm_d3083: ; d3083 (34:7083)
+	jp .asm_d30f8
 
-Func_d3086: ; d3086 (34:7086)
+.asm_d3086: ; d3086 (34:7086)
 	ld a, $e
 	scall Func_80e5d
 	or a
-	jp nz, Func_d3098
+	jp nz, .asm_d3098
 	writetext TreeBitstreamText_3a92f
-	jp Func_d30f8
+	jp .asm_d30f8
 
-Func_d3098: ; d3098 (34:7098)
+.asm_d3098: ; d3098 (34:7098)
 	checkevent $0
 	or a
-	jp nz, Func_d30e9
+	jp nz, .asm_d30e9
 	writetext_yesorno TreeBitstreamText_3a966
 	or a
-	jp nz, Func_d30e0
+	jp nz, .asm_d30e0
 	writetext TreeBitstreamText_3a995
 	playsfx $2a
 	writetext TreeBitstreamText_3a9e8
@@ -2708,67 +2750,67 @@ Func_d3098: ; d3098 (34:7098)
 	ld a, $12
 	scall Func_80d4d
 	setevent $0
-	jp Func_d30e6
+	jp .asm_d30e6
 
-Func_d30e0: ; d30e0 (34:70e0)
+.asm_d30e0: ; d30e0 (34:70e0)
 	writetext TreeBitstreamText_3a97f
-Func_d30e6: ; d30e6 (34:70e6)
-	jp Func_d30f8
+.asm_d30e6: ; d30e6 (34:70e6)
+	jp .asm_d30f8
 
-Func_d30e9: ; d30e9 (34:70e9)
+.asm_d30e9: ; d30e9 (34:70e9)
 	writetext TreeBitstreamText_3aa23
 	ld c, $1
 	ld e, $1
 	ld a, $e
 	scall Func_80d4d
-Func_d30f8: ; d30f8 (34:70f8)
+.asm_d30f8: ; d30f8 (34:70f8)
 	ret
 
 Func_d30f9:
 	cp $c
-	jp z, Func_d3108
+	jp z, .asm_d3108
 	cp $a
-	jp nz, Func_d310d
+	jp nz, .asm_d310d
 	ld l, $9
-	jp Func_d310e
+	jp .asm_d310e
 
-Func_d3108: ; d3108 (34:7108)
+.asm_d3108: ; d3108 (34:7108)
 	ld l, $b
-	jp Func_d310e
+	jp .asm_d310e
 
-Func_d310d: ; d310d (34:710d)
+.asm_d310d: ; d310d (34:710d)
 	ld l, a
-Func_d310e: ; d310e (34:710e)
+.asm_d310e: ; d310e (34:710e)
 	ld a, e
 	or a
-	jp nz, Func_d3144
+	jp nz, .asm_d3144
 	push hl
 	ld a, l
 	scall FacePlayer
 	pop hl
 	ld a, l
 	cp $b
-	jp z, Func_d313d
+	jp z, .asm_d313d
 	cp $9
-	jp z, Func_d3133
+	jp z, .asm_d3133
 	cp $8
-	jp nz, Func_d3144
+	jp nz, .asm_d3144
 	ld e, $0
 	ld a, $d
 	scall Func_806a0
-	jp Func_d3144
+	jp .asm_d3144
 
-Func_d3133: ; d3133 (34:7133)
+.asm_d3133: ; d3133 (34:7133)
 	ld e, $0
 	ld a, $e
 	scall Func_806a0
-	jp Func_d3144
+	jp .asm_d3144
 
-Func_d313d: ; d313d (34:713d)
+.asm_d313d: ; d313d (34:713d)
 	ld e, $0
 	ld a, $f
 	scall Func_806a0
-Func_d3144: ; d3144 (34:7144)
+.asm_d3144: ; d3144 (34:7144)
 	ret
 
 Data_d3145: ; d3145
@@ -2779,46 +2821,71 @@ Data_d3145: ; d3145
 	db $12, $34, $05, $09, $02, $01, $15, $00, $17, $0c, $17, $0d, $34, $05, $09, $02
 	db $01, $17, $00, $14, $08, $14, $09, $34, $05, $09, $02, $01, $18, $00, $12, $13
 	db $12, $14, $34, $05, $09, $02, $01, $19, $01, $20, $16, $20, $17, $34, $05, $09
-	db $02, $01, $1d, $00, $06, $0d, $06, $0e, $34, $8e, $03, $ff, $ff, $8f, $03, $ff
-	db $ff, $f3, $03, $ff, $ff, $f4, $03, $ff, $ff
+	db $02, $01, $1d, $00, $06, $0d, $06, $0e, $34
+
+Data_d31be:
+	dtext_tree_pointer TreeBitstreamText_46ecc
+	dw -1
+
+Data_d31c2:
+	dtext_tree_pointer TreeBitstreamText_46ee5
+	dw -1
+
+Data_d31c6:
+	dtext_tree_pointer TreeBitstreamText_426de
+	dw -1
+
+Data_d31ca:
+	dtext_tree_pointer TreeBitstreamText_4272e
+	dw -1
 
 Data_d31ce: ; d31ce
-	db $10, $04, $05, $04, $01, $02, $02, $04, $00, $34, $1d, $74, $00, $00, $00, $04
-	db $06, $04, $01, $02, $02, $04, $00, $34, $2b, $74, $00, $00
+	person_event $10, $04, $05, $04, $01, $02, $02, $04, $00, Func_d341d, NULL
+	person_event $00, $04, $06, $04, $01, $02, $02, $04, $00, Func_d342b, NULL
 
 Data_d31ea: ; d31ea
-	db $10, $04, $05, $04, $01, $02, $02, $04, $00, $34, $39, $74, $00, $00, $00, $04
-	db $06, $04, $01, $02, $02, $04, $00, $34, $39, $74, $00, $00, $06, $04, $03, $03
-	db $01, $02, $02, $04, $00, $34, $39, $74, $00, $00, $ff, $00, $02, $03, $01, $01
-	db $00, $04, $00, $34, $39, $74, $00, $00, $07, $04, $08, $03, $01, $02, $02, $04
-	db $00, $34, $39, $74, $00, $00, $ff, $00, $09, $03, $01, $01, $00, $04, $00, $34
-	db $39, $74, $00, $00, $04, $04, $00, $03, $01, $01, $02, $04, $00, $34, $39, $74
-	db $00, $00, $05, $04, $0b, $03, $01, $01, $02, $04, $00, $34, $39, $74, $00, $00
+	person_event $10, $04, $05, $04, $01, $02, $02, $04, $00, Func_d3439, NULL
+	person_event $00, $04, $06, $04, $01, $02, $02, $04, $00, Func_d3439, NULL
+	person_event $06, $04, $03, $03, $01, $02, $02, $04, $00, Func_d3439, NULL
+	person_event $ff, $00, $02, $03, $01, $01, $00, $04, $00, Func_d3439, NULL
+	person_event $07, $04, $08, $03, $01, $02, $02, $04, $00, Func_d3439, NULL
+	person_event $ff, $00, $09, $03, $01, $01, $00, $04, $00, Func_d3439, NULL
+	person_event $04, $04, $00, $03, $01, $01, $02, $04, $00, Func_d3439, NULL
+	person_event $05, $04, $0b, $03, $01, $01, $02, $04, $00, Func_d3439, NULL
 
 Data_d325a: ; d325a
-	db $ff, $00, $00, $06, $01, $01, $00, $04, $00, $34, $5f, $48, $be, $71, $ff, $00
-	db $01, $06, $01, $01, $00, $04, $00, $34, $5f, $48, $be, $71, $ff, $00, $0a, $06
-	db $01, $01, $00, $04, $00, $34, $5f, $48, $be, $71, $ff, $00, $0b, $06, $01, $01
-	db $00, $04, $00, $34, $5f, $48, $be, $71, $ff, $00, $00, $01, $01, $01, $00, $04
-	db $00, $34, $5f, $48, $c2, $71, $ff, $00, $01, $01, $01, $01, $00, $04, $00, $34
-	db $5f, $48, $be, $71, $ff, $00, $0a, $01, $01, $01, $00, $04, $00, $34, $5f, $48
-	db $be, $71, $ff, $00, $0b, $01, $01, $01, $00, $04, $00, $34, $5f, $48, $c2, $71
+	person_event $ff, $00, $00, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d31be
+	person_event $ff, $00, $01, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d31be
+	person_event $ff, $00, $0a, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d31be
+	person_event $ff, $00, $0b, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d31be
+	person_event $ff, $00, $00, $01, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d31c2
+	person_event $ff, $00, $01, $01, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d31be
+	person_event $ff, $00, $0a, $01, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d31be
+	person_event $ff, $00, $0b, $01, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d31c2
 
 Data_d32ca: ; d32ca
-	db $02, $04, $08, $05, $01, $01, $02, $04, $00, $34, $5f, $48, $c6, $71, $03, $04
-	db $03, $05, $01, $01, $02, $04, $00, $34, $5f, $48, $ca, $71
+	person_event $02, $04, $08, $05, $01, $01, $02, $04, $00, PrintTextFacePlayer_34, Data_d31c6
+	person_event $03, $04, $03, $05, $01, $01, $02, $04, $00, PrintTextFacePlayer_34, Data_d31ca
 
 Data_d32e6: ; d32e6
-	db $01, $00, $0c, $0c, $03, $00, $17, $06, $05, $00, $1e, $0b, $06, $00, $15, $10
-	db $0b, $00, $09, $0c, $14, $00, $07, $11, $15, $00, $17, $0c, $17, $00, $14, $08
-	db $18, $00, $12, $13, $19, $01, $20, $16, $1d, $00, $06, $0d
+	db $01, $00, $0c, $0c
+	db $03, $00, $17, $06
+	db $05, $00, $1e, $0b
+	db $06, $00, $15, $10
+	db $0b, $00, $09, $0c
+	db $14, $00, $07, $11
+	db $15, $00, $17, $0c
+	db $17, $00, $14, $08
+	db $18, $00, $12, $13
+	db $19, $01, $20, $16
+	db $1d, $00, $06, $0d
 
 Func_d3312:: ; d3312 (34:7312)
 	ld c, $0
-Func_d3314: ; d3314 (34:7314)
+.asm_d3314: ; d3314 (34:7314)
 	ld a, c
 	cp $b
-	jp nc, Func_d337c
+	jp nc, .asm_d337c
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2827,7 +2894,7 @@ Func_d3314: ; d3314 (34:7314)
 	add hl, de
 	ld a, [wBackupMapGroup]
 	cp [hl]
-	jp nz, Func_d3378
+	jp nz, .asm_d3378
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2837,7 +2904,7 @@ Func_d3314: ; d3314 (34:7314)
 	inc hl
 	ld a, [wBackupMapNumber]
 	cp [hl]
-	jp nz, Func_d3378
+	jp nz, .asm_d3378
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2848,7 +2915,7 @@ Func_d3314: ; d3314 (34:7314)
 	inc hl
 	ld a, [wBackupMapX]
 	cp [hl]
-	jp nz, Func_d3378
+	jp nz, .asm_d3378
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -2860,7 +2927,7 @@ Func_d3314: ; d3314 (34:7314)
 	inc hl
 	ld a, [wBackupMapY]
 	cp [hl]
-	jp nz, Func_d3378
+	jp nz, .asm_d3378
 	ld l, c
 	ld h, $0
 	ld e, l
@@ -2876,57 +2943,57 @@ Func_d3314: ; d3314 (34:7314)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-	jp Func_d337c
+	jp .asm_d337c
 
-Func_d3378: ; d3378 (34:7378)
+.asm_d3378: ; d3378 (34:7378)
 	inc c
-	jp Func_d3314
+	jp .asm_d3314
 
-Func_d337c: ; d337c (34:737c)
+.asm_d337c: ; d337c (34:737c)
 	ld a, [wBackupMapGroup]
 	cp $1d
-	jp nz, Func_d33ed
+	jp nz, .asm_d33ed
 	ld a, [wBackupMapNumber]
 	or a
-	jp nz, Func_d33ed
+	jp nz, .asm_d33ed
 	loadpeople $8, Data_d31ea
 	ld a, [wc790]
 	cp $3
-	jp z, Func_d33dc
+	jp z, .asm_d33dc
 	cp $4
-	jp z, Func_d33dc
+	jp z, .asm_d33dc
 	cp $5
-	jp z, Func_d33dc
+	jp z, .asm_d33dc
 	cp $6
-	jp z, Func_d33af
+	jp z, .asm_d33af
 	cp $7
-	jp nz, Func_d33ea
-Func_d33af: ; d33af (34:73af)
+	jp nz, .asm_d33ea
+.asm_d33af: ; d33af (34:73af)
 	hideperson $2
 	hideperson $3
 	hideperson $4
 	hideperson $5
 	hideperson $6
 	hideperson $7
-	jp Func_d33ea
+	jp .asm_d33ea
 
-Func_d33dc: ; d33dc (34:73dc)
+.asm_d33dc: ; d33dc (34:73dc)
 	hideperson $6
 	hideperson $7
-Func_d33ea: ; d33ea (34:73ea)
-	jp Func_d33f5
+.asm_d33ea: ; d33ea (34:73ea)
+	jp .asm_d33f5
 
-Func_d33ed: ; d33ed (34:73ed)
+.asm_d33ed: ; d33ed (34:73ed)
 	loadpeople $2, Data_d31ce
-Func_d33f5: ; d33f5 (34:73f5)
+.asm_d33f5: ; d33f5 (34:73f5)
 	ld a, [wBackupMapGroup]
 	cp $1
-	jp nz, Func_d340c
+	jp nz, .asm_d340c
 	ld a, [wBackupMapNumber]
 	or a
-	jp nz, Func_d340c
+	jp nz, .asm_d340c
 	loadpeople $2, Data_d32ca
-Func_d340c: ; d340c (34:740c)
+.asm_d340c: ; d340c (34:740c)
 	loadpeople $8, Data_d325a
 	playmusic SONG_CENTER
 	scall Func_8001c
@@ -2935,227 +3002,238 @@ Func_d340c: ; d340c (34:740c)
 Func_d341d:
 	ld a, e
 	or a
-	jp nz, Func_d342a
+	jp nz, .asm_d342a
 	ld e, $2
 	ld a, [wc789]
 	scall Func_806a0
-Func_d342a: ; d342a (34:742a)
+.asm_d342a: ; d342a (34:742a)
 	ret
 
 Func_d342b:
 	ld a, e
 	or a
-	jp nz, Func_d3438
+	jp nz, .asm_d3438
 	ld e, $1
 	ld a, [wc789]
 	scall Func_806a0
-Func_d3438: ; d3438 (34:7438)
+.asm_d3438: ; d3438 (34:7438)
 	ret
 
 Func_d3439:
 	cp $5
-	jp z, Func_d3448
+	jp z, .asm_d3448
 	cp $3
-	jp nz, Func_d344d
+	jp nz, .asm_d344d
 	ld l, $2
-	jp Func_d344e
+	jp .asm_d344e
 
-Func_d3448: ; d3448 (34:7448)
+.asm_d3448: ; d3448 (34:7448)
 	ld l, $4
-	jp Func_d344e
+	jp .asm_d344e
 
-Func_d344d: ; d344d (34:744d)
+.asm_d344d: ; d344d (34:744d)
 	ld l, a
-Func_d344e: ; d344e (34:744e)
+.asm_d344e: ; d344e (34:744e)
 	ld a, e
 	or a
-	jp nz, Func_d34b0
+	jp nz, .asm_d34b0
 	push hl
 	ld a, l
 	scall FacePlayer
 	pop hl
 	ld a, l
 	cp $7
-	jp z, Func_d34a9
+	jp z, .asm_d34a9
 	cp $6
-	jp z, Func_d349f
+	jp z, .asm_d349f
 	cp $4
-	jp z, Func_d3495
+	jp z, .asm_d3495
 	cp $2
-	jp z, Func_d348b
+	jp z, .asm_d348b
 	cp $1
-	jp z, Func_d3481
+	jp z, .asm_d3481
 	or a
-	jp nz, Func_d34b0
+	jp nz, .asm_d34b0
 	ld e, $2
 	ld a, $d
 	scall Func_806a0
-	jp Func_d34b0
+	jp .asm_d34b0
 
-Func_d3481: ; d3481 (34:7481)
+.asm_d3481: ; d3481 (34:7481)
 	ld e, $1
 	ld a, $d
 	scall Func_806a0
-	jp Func_d34b0
+	jp .asm_d34b0
 
-Func_d348b: ; d348b (34:748b)
+.asm_d348b: ; d348b (34:748b)
 	ld e, $2
 	ld a, $e
 	scall Func_806a0
-	jp Func_d34b0
+	jp .asm_d34b0
 
-Func_d3495: ; d3495 (34:7495)
+.asm_d3495: ; d3495 (34:7495)
 	ld e, $1
 	ld a, $e
 	scall Func_806a0
-	jp Func_d34b0
+	jp .asm_d34b0
 
-Func_d349f: ; d349f (34:749f)
+.asm_d349f: ; d349f (34:749f)
 	ld e, $2
 	ld a, $f
 	scall Func_806a0
-	jp Func_d34b0
+	jp .asm_d34b0
 
-Func_d34a9: ; d34a9 (34:74a9)
+.asm_d34a9: ; d34a9 (34:74a9)
 	ld e, $1
 	ld a, $f
 	scall Func_806a0
-Func_d34b0: ; d34b0 (34:74b0)
+.asm_d34b0: ; d34b0 (34:74b0)
 	ret
 
 Data_d34b1: ; d34b1
-	db $01, $06, $02, $01, $00, $1e, $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $00
-	db $0a, $0e, $01, $0e, $02, $34, $01, $06, $02, $01, $00, $0b, $0a, $01, $0a, $02
-	db $34, $01, $06, $02, $01, $00, $0c, $0a, $01, $0a, $02, $34, $01, $06, $02, $01
-	db $00, $0d, $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $00, $0e, $0a, $01, $0a
-	db $02, $34, $01, $06, $02, $01, $00, $0f, $0a, $01, $0a, $02, $34, $01, $06, $02
-	db $01, $00, $10, $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $00, $11, $0a, $01
-	db $0a, $02, $34, $01, $06, $02, $01, $00, $12, $0a, $01, $0a, $02, $34, $01, $06
-	db $02, $01, $00, $13, $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $00, $14, $0a
-	db $01, $0a, $02, $34, $01, $06, $02, $01, $00, $15, $0a, $01, $0a, $02, $34, $01
-	db $06, $02, $01, $00, $16, $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $00, $17
-	db $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $00, $18, $0a, $01, $0a, $02, $34
-	db $01, $06, $02, $01, $00, $19, $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $00
-	db $1a, $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $00, $1b, $0a, $01, $0a, $02
-	db $34, $01, $06, $02, $01, $00, $1c, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $1e, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $0a, $0e, $01, $0e, $02, $34
+	db $01, $06, $02, $01, $00, $0b, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $0c, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $0d, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $0e, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $0f, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $10, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $11, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $12, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $13, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $14, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $15, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $16, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $17, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $18, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $19, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $1a, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $1b, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $00, $1c, $0a, $01, $0a, $02, $34
 
 Data_d358d: ; d358d
-	db $01, $06, $02, $01, $00, $1d, $0a, $01, $0a, $02, $34, $01, $06, $02, $01, $02
-	db $01, $0b, $01, $0b, $02, $34, $01, $06, $02, $01, $02, $04, $0b, $01, $0b, $02
-	db $34, $01, $06, $02, $01, $02, $03, $0b, $01, $0b, $02, $34, $01, $06, $02, $01
-	db $02, $04, $0b, $01, $0b, $02, $34, $01, $06, $02, $01, $02, $03, $0b, $01, $0b
-	db $02, $34, $01, $06, $02, $01, $02, $04, $0b, $01, $0b, $02, $34, $01, $06, $02
-	db $01, $02, $02, $0b, $01, $0b, $02, $34
+	db $01, $06, $02, $01, $00, $1d, $0a, $01, $0a, $02, $34
+	db $01, $06, $02, $01, $02, $01, $0b, $01, $0b, $02, $34
+	db $01, $06, $02, $01, $02, $04, $0b, $01, $0b, $02, $34
+	db $01, $06, $02, $01, $02, $03, $0b, $01, $0b, $02, $34
+	db $01, $06, $02, $01, $02, $04, $0b, $01, $0b, $02, $34
+	db $01, $06, $02, $01, $02, $03, $0b, $01, $0b, $02, $34
+	db $01, $06, $02, $01, $02, $04, $0b, $01, $0b, $02, $34
+	db $01, $06, $02, $01, $02, $02, $0b, $01, $0b, $02, $34
 
 Data_d35e5: ; d35e5
-	db $01, $06, $02, $01, $1e, $06, $01, $02, $01, $03, $34, $01, $06, $02, $01, $1e
-	db $0a, $01, $02, $01, $03, $34, $01, $06, $02, $01, $1e, $09, $01, $02, $01, $03
-	db $34, $01, $06, $02, $01, $1e, $05, $01, $02, $01, $03, $34, $01, $06, $02, $01
-	db $1e, $0b, $01, $02, $01, $03, $34, $01, $06, $02, $01, $1e, $0c, $01, $02, $01
-	db $03, $34, $01, $06, $02, $01, $1e, $07, $01, $02, $01, $03, $34, $01, $06, $02
-	db $01, $1e, $0d, $01, $02, $01, $03, $34, $01, $06, $02, $01, $1e, $04, $01, $02
-	db $01, $03, $34, $01, $06, $02, $01, $1e, $0e, $0c, $05, $0c, $06, $34, $01, $06
-	db $02, $01, $1e, $04, $07, $01, $07, $02, $34
+	db $01, $06, $02, $01, $1e, $06, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $0a, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $09, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $05, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $0b, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $0c, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $07, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $0d, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $04, $01, $02, $01, $03, $34
+	db $01, $06, $02, $01, $1e, $0e, $0c, $05, $0c, $06, $34
+	db $01, $06, $02, $01, $1e, $04, $07, $01, $07, $02, $34
 
 Data_d365e: ; d365e
-	db $01, $04, $00, $02, $01, $01, $02, $04, $00, $34, $5b, $78, $00, $00, $ff, $00
-	db $00, $03, $01, $01, $00, $04, $00, $34, $5b, $78, $00, $00
+	person_event $01, $04, $00, $02, $01, $01, $02, $04, $00, Func_d385b, NULL
+	person_event $ff, $00, $00, $03, $01, $01, $00, $04, $00, Func_d385b, NULL
 
 Func_d367a:: ; d367a (34:767a)
 	ld a, [wBackupMapGroup]
 	cp $1e
-	jp nz, Func_d37e8
+	jp nz, .asm_d37e8
 	ld a, [wBackupMapNumber]
 	cp $e
-	jp z, Func_d3718
+	jp z, .asm_d3718
 	cp $d
-	jp z, Func_d3713
+	jp z, .asm_d3713
 	cp $c
-	jp z, Func_d370e
+	jp z, .asm_d370e
 	cp $b
-	jp z, Func_d36fc
+	jp z, .asm_d36fc
 	cp $a
-	jp z, Func_d36f7
+	jp z, .asm_d36f7
 	cp $9
-	jp z, Func_d36f2
+	jp z, .asm_d36f2
 	cp $7
-	jp z, Func_d36e0
+	jp z, .asm_d36e0
 	cp $6
-	jp z, Func_d36ce
+	jp z, .asm_d36ce
 	cp $5
-	jp z, Func_d36c9
+	jp z, .asm_d36c9
 	cp $4
-	jp nz, Func_d371a
+	jp nz, .asm_d371a
 	ld a, [wBackupMapX]
 	cp $1
-	jp nz, Func_d36c4
+	jp nz, .asm_d36c4
 	ld l, $0
-	jp Func_d36c6
+	jp .asm_d36c6
 
-Func_d36c4: ; d36c4 (34:76c4)
+.asm_d36c4: ; d36c4 (34:76c4)
 	ld l, $9
-Func_d36c6: ; d36c6 (34:76c6)
-	jp Func_d371a
+.asm_d36c6: ; d36c6 (34:76c6)
+	jp .asm_d371a
 
-Func_d36c9: ; d36c9 (34:76c9)
+.asm_d36c9: ; d36c9 (34:76c9)
 	ld l, $1
-	jp Func_d371a
+	jp .asm_d371a
 
-Func_d36ce: ; d36ce (34:76ce)
+.asm_d36ce: ; d36ce (34:76ce)
 	ld a, [wBackupMapX]
 	cp $7
-	jp nz, Func_d36db
+	jp nz, .asm_d36db
 	ld l, $2
-	jp Func_d36dd
+	jp .asm_d36dd
 
-Func_d36db: ; d36db (34:76db)
+.asm_d36db: ; d36db (34:76db)
 	ld l, $3
-Func_d36dd: ; d36dd (34:76dd)
-	jp Func_d371a
+.asm_d36dd: ; d36dd (34:76dd)
+	jp .asm_d371a
 
-Func_d36e0: ; d36e0 (34:76e0)
+.asm_d36e0: ; d36e0 (34:76e0)
 	ld a, [wBackupMapX]
 	cp $7
-	jp nz, Func_d36ed
+	jp nz, .asm_d36ed
 	ld l, $4
-	jp Func_d36ef
+	jp .asm_d36ef
 
-Func_d36ed: ; d36ed (34:76ed)
+.asm_d36ed: ; d36ed (34:76ed)
 	ld l, $5
-Func_d36ef: ; d36ef (34:76ef)
-	jp Func_d371a
+.asm_d36ef: ; d36ef (34:76ef)
+	jp .asm_d371a
 
-Func_d36f2: ; d36f2 (34:76f2)
+.asm_d36f2: ; d36f2 (34:76f2)
 	ld l, $6
-	jp Func_d371a
+	jp .asm_d371a
 
-Func_d36f7: ; d36f7 (34:76f7)
+.asm_d36f7: ; d36f7 (34:76f7)
 	ld l, $7
-	jp Func_d371a
+	jp .asm_d371a
 
-Func_d36fc: ; d36fc (34:76fc)
+.asm_d36fc: ; d36fc (34:76fc)
 	ld a, [wBackupMapX]
 	cp $7
-	jp nz, Func_d3709
+	jp nz, .asm_d3709
 	ld l, $2
-	jp Func_d370b
+	jp .asm_d370b
 
-Func_d3709: ; d3709 (34:7709)
+.asm_d3709: ; d3709 (34:7709)
 	ld l, $5
-Func_d370b: ; d370b (34:770b)
-	jp Func_d371a
+.asm_d370b: ; d370b (34:770b)
+	jp .asm_d371a
 
-Func_d370e: ; d370e (34:770e)
+.asm_d370e: ; d370e (34:770e)
 	ld l, $3
-	jp Func_d371a
+	jp .asm_d371a
 
-Func_d3713: ; d3713 (34:7713)
+.asm_d3713: ; d3713 (34:7713)
 	ld l, $8
-	jp Func_d371a
+	jp .asm_d371a
 
-Func_d3718: ; d3718 (34:7718)
+.asm_d3718: ; d3718 (34:7718)
 	ld l, $a
-Func_d371a: ; d371a (34:771a)
+.asm_d371a: ; d371a (34:771a)
 	push hl
 	call AllocateSpaceForWarps_34
 	pop hl
@@ -3179,79 +3257,79 @@ Func_d371a: ; d371a (34:771a)
 	pop hl
 	ld a, l
 	cp $a
-	jp z, Func_d37ce
+	jp z, .asm_d37ce
 	cp $9
-	jp z, Func_d37c5
+	jp z, .asm_d37c5
 	cp $8
-	jp z, Func_d37bc
+	jp z, .asm_d37bc
 	cp $7
-	jp z, Func_d37b3
+	jp z, .asm_d37b3
 	cp $6
-	jp z, Func_d37aa
+	jp z, .asm_d37aa
 	cp $5
-	jp z, Func_d37a1
+	jp z, .asm_d37a1
 	cp $4
-	jp z, Func_d3798
+	jp z, .asm_d3798
 	cp $3
-	jp z, Func_d378f
+	jp z, .asm_d378f
 	cp $2
-	jp z, Func_d3786
+	jp z, .asm_d3786
 	cp $1
-	jp z, Func_d377d
+	jp z, .asm_d377d
 	or a
-	jp nz, Func_d37d4
+	jp nz, .asm_d37d4
 	landmarksign TreeBitstreamText_46d81
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d377d: ; d377d (34:777d)
+.asm_d377d: ; d377d (34:777d)
 	landmarksign TreeBitstreamText_46d63
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d3786: ; d3786 (34:7786)
+.asm_d3786: ; d3786 (34:7786)
 	landmarksign TreeBitstreamText_46d6d
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d378f: ; d378f (34:778f)
+.asm_d378f: ; d378f (34:778f)
 	landmarksign TreeBitstreamText_46d8b
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d3798: ; d3798 (34:7798)
+.asm_d3798: ; d3798 (34:7798)
 	landmarksign TreeBitstreamText_46d59
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d37a1: ; d37a1 (34:77a1)
+.asm_d37a1: ; d37a1 (34:77a1)
 	landmarksign TreeBitstreamText_46d4f
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d37aa: ; d37aa (34:77aa)
+.asm_d37aa: ; d37aa (34:77aa)
 	landmarksign TreeBitstreamText_46d77
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d37b3: ; d37b3 (34:77b3)
+.asm_d37b3: ; d37b3 (34:77b3)
 	landmarksign TreeBitstreamText_46d45
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d37bc: ; d37bc (34:77bc)
+.asm_d37bc: ; d37bc (34:77bc)
 	landmarksign TreeBitstreamText_46d96
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d37c5: ; d37c5 (34:77c5)
+.asm_d37c5: ; d37c5 (34:77c5)
 	landmarksign TreeBitstreamText_46da2
-	jp Func_d37d4
+	jp .asm_d37d4
 
-Func_d37ce: ; d37ce (34:77ce)
+.asm_d37ce: ; d37ce (34:77ce)
 	landmarksign TreeBitstreamText_46d96
-Func_d37d4: ; d37d4 (34:77d4)
+.asm_d37d4: ; d37d4 (34:77d4)
 	call StartShakingScreen_34
 	playsfx $64
 	script_sleep $3c
 	call StopShakingScreen_34
-	jp Func_d385a
+	jp .asm_d385a
 
-Func_d37e8: ; d37e8 (34:77e8)
+.asm_d37e8: ; d37e8 (34:77e8)
 	ld a, [wBackupMapGroup]
 	cp $2
-	jp nz, Func_d381e
+	jp nz, .asm_d381e
 	call AllocateSpaceForWarps_34
 	ld hl, wc7de
 	ld l, [hl]
@@ -3272,20 +3350,20 @@ Func_d37e8: ; d37e8 (34:77e8)
 	loadpeople $2, Data_d365e
 	playmusic SONG_TOWN3
 	scall Func_8001c
-	jp Func_d385a
+	jp .asm_d385a
 
-Func_d381e: ; d381e (34:781e)
+.asm_d381e: ; d381e (34:781e)
 	ld a, [wBackupMapNumber]
 	cp $1e
-	jp nz, Func_d382b
+	jp nz, .asm_d382b
 	ld l, $0
-	jp Func_d3831
+	jp .asm_d3831
 
-Func_d382b: ; d382b (34:782b)
+.asm_d382b: ; d382b (34:782b)
 	ld a, [wBackupMapNumber]
 	add $f7
 	ld l, a
-Func_d3831: ; d3831 (34:7831)
+.asm_d3831: ; d3831 (34:7831)
 	push hl
 	call AllocateSpaceForWarps_34
 	pop hl
@@ -3306,13 +3384,13 @@ Func_d3831: ; d3831 (34:7831)
 	loadpeople $2, Data_d365e
 	playmusic SONG_SHOP
 	scall Func_8001c
-Func_d385a: ; d385a (34:785a)
+.asm_d385a: ; d385a (34:785a)
 	ret
 
 Func_d385b:
 	ld a, e
 	or a
-	jp nz, Func_d38ae
+	jp nz, .asm_d38ae
 	face_player 0
 	scall Func_80275
 	ld l, a
@@ -3321,7 +3399,7 @@ Func_d385b:
 	pop hl
 	ld a, [wBackupMapGroup]
 	cp $2
-	jp nz, Func_d3895
+	jp nz, .asm_d3895
 	push hl
 	ld a, l
 	ld [wc7de], a
@@ -3341,9 +3419,9 @@ Func_d385b:
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-	jp Func_d38ae
+	jp .asm_d38ae
 
-Func_d3895: ; d3895 (34:7895)
+.asm_d3895: ; d3895 (34:7895)
 	push hl
 	call AllocateSpaceForWarps_34
 	pop hl
@@ -3361,23 +3439,27 @@ Func_d3895: ; d3895 (34:7895)
 	add hl, de
 	ld e, $1
 	call LoadWarps_34
-Func_d38ae: ; d38ae (34:78ae)
+.asm_d38ae: ; d38ae (34:78ae)
 	ret
 
 Data_d38af: ; d38af
-	db $07, $14, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $07, $0e, $01, $01, $1f
-	db $02, $09, $0e, $09, $0d, $34, $c3, $02, $ff, $ff
+	db $07, $14, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $07, $0e
+	db $01, $01, $1f, $02, $09, $0e, $09, $0d, $34
+
+Data_d38c5:
+	dtext_tree_pointer TreeBitstreamText_4670e
+	dw -1
 
 Data_d38c9: ; d38c9
-	db $01, $01, $0a, $0e, $2d, $28, $2d, $04, $06, $06, $06, $06, $04, $00, $01, $01
-	db $0a, $0e, $36, $28, $2d, $04, $0f, $0b, $00, $06, $02, $00, $01, $01, $0a, $0e
-	db $91, $28, $2d, $04, $04, $17, $00, $06, $08, $00, $01, $01, $0a, $0e, $08, $28
-	db $2d, $6e, $01, $13, $00, $13, $0a, $00, $01, $01, $0a, $0e, $8f, $28, $2d, $6e
-	db $0f, $0d, $14, $12, $07, $00
+	db $01, $01, $0a, $0e, $2d, $28, $2d, $04, $06, $06, $06, $06, $04, $00
+	db $01, $01, $0a, $0e, $36, $28, $2d, $04, $0f, $0b, $00, $06, $02, $00
+	db $01, $01, $0a, $0e, $91, $28, $2d, $04, $04, $17, $00, $06, $08, $00
+	db $01, $01, $0a, $0e, $08, $28, $2d, $6e, $01, $13, $00, $13, $0a, $00
+	db $01, $01, $0a, $0e, $8f, $28, $2d, $6e, $0f, $0d, $14, $12, $07, $00
 
 Data_d390f: ; d390f
-	db $ff, $00, $06, $13, $01, $01, $00, $04, $00, $34, $5f, $48, $c5, $78, $ff, $00
-	db $08, $13, $01, $01, $00, $04, $00, $34, $5f, $48, $c5, $78
+	person_event $ff, $00, $06, $13, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d38c5
+	person_event $ff, $00, $08, $13, $01, $01, $00, $04, $00, PrintTextFacePlayer_34, Data_d38c5
 
 Func_d392b:: ; d392b (34:792b)
 	ld a, $f
@@ -3392,7 +3474,7 @@ Func_d392b:: ; d392b (34:792b)
 	loadpeople $2, Data_d390f
 	checkevent $f1
 	or a
-	jp nz, Func_d3977
+	jp nz, .asm_d3977
 	xor a
 	call PlayMusic_34
 	xor a
@@ -3400,12 +3482,12 @@ Func_d392b:: ; d392b (34:792b)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46dc3
 	call Func_d3cb2
-	jp Func_d39a5
+	jp .asm_d39a5
 
-Func_d3977: ; d3977 (34:7977)
+.asm_d3977: ; d3977 (34:7977)
 	checkevent $1c
 	cp $1
-	jp nz, Func_d3998
+	jp nz, .asm_d3998
 	xor a
 	call PlayMusic_34
 	ld a, $1
@@ -3414,14 +3496,14 @@ Func_d3977: ; d3977 (34:7977)
 	scall Func_80653
 	scall Func_8001c
 	call Func_d39a6
-	jp Func_d39a5
+	jp .asm_d39a5
 
-Func_d3998: ; d3998 (34:7998)
+.asm_d3998: ; d3998 (34:7998)
 	playmusic SONG_PUNCH_MINIGAME
 	ld a, $1
 	call LoadPlayerSprite_34
 	scall Func_8001c
-Func_d39a5: ; d39a5 (34:79a5)
+.asm_d39a5: ; d39a5 (34:79a5)
 	ret
 
 Func_d39a6: ; d39a6 (34:79a6)
@@ -3541,25 +3623,25 @@ Data_d3ad9: ; d3ad9
 Func_d3adf: ; d3adf (34:7adf)
 	checkevent $f1
 	or a
-	jp nz, Func_d3af2
+	jp nz, .asm_d3af2
 	ld hl, Data_d3ad9
 	scall Func_80d9b
 	scall Func_80f02
-Func_d3af2: ; d3af2 (34:7af2)
+.asm_d3af2: ; d3af2 (34:7af2)
 	ld a, [wc78d + 1]
 	cp $1
-	jp nz, Func_d3b0c
+	jp nz, .asm_d3b0c
 	ld hl, Data_d3a6d
 	scall Func_80d9b
 	ld hl, Data_d3aa3
 	scall Func_80d9b
 	scall Func_80f02
-	jp Func_d3cb1
+	jp .asm_d3cb1
 
-Func_d3b0c: ; d3b0c (34:7b0c)
+.asm_d3b0c: ; d3b0c (34:7b0c)
 	ld a, [wc78d + 1]
 	cp $2
-	jp nz, Func_d3b2c
+	jp nz, .asm_d3b2c
 	ld hl, Data_d3a73
 	scall Func_80d9b
 	ld hl, Data_d3a6d
@@ -3567,12 +3649,12 @@ Func_d3b0c: ; d3b0c (34:7b0c)
 	ld hl, Data_d3aa9
 	scall Func_80d9b
 	scall Func_80f02
-	jp Func_d3cb1
+	jp .asm_d3cb1
 
-Func_d3b2c: ; d3b2c (34:7b2c)
+.asm_d3b2c: ; d3b2c (34:7b2c)
 	ld a, [wc78d + 1]
 	cp $3
-	jp nz, Func_d3b52
+	jp nz, .asm_d3b52
 	ld hl, Data_d3a79
 	scall Func_80d9b
 	ld hl, Data_d3a73
@@ -3582,12 +3664,12 @@ Func_d3b2c: ; d3b2c (34:7b2c)
 	ld hl, Data_d3aaf
 	scall Func_80d9b
 	scall Func_80f02
-	jp Func_d3cb1
+	jp .asm_d3cb1
 
-Func_d3b52: ; d3b52 (34:7b52)
+.asm_d3b52: ; d3b52 (34:7b52)
 	ld a, [wc78d + 1]
 	cp $4
-	jp nz, Func_d3b7e
+	jp nz, .asm_d3b7e
 	ld hl, Data_d3a7f
 	scall Func_80d9b
 	ld hl, Data_d3a79
@@ -3599,12 +3681,12 @@ Func_d3b52: ; d3b52 (34:7b52)
 	ld hl, Data_d3ab5
 	scall Func_80d9b
 	scall Func_80f02
-	jp Func_d3cb1
+	jp .asm_d3cb1
 
-Func_d3b7e: ; d3b7e (34:7b7e)
+.asm_d3b7e: ; d3b7e (34:7b7e)
 	ld a, [wc78d + 1]
 	cp $5
-	jp nz, Func_d3bb0
+	jp nz, .asm_d3bb0
 	ld hl, Data_d3a85
 	scall Func_80d9b
 	ld hl, Data_d3a7f
@@ -3618,12 +3700,12 @@ Func_d3b7e: ; d3b7e (34:7b7e)
 	ld hl, Data_d3abb
 	scall Func_80d9b
 	scall Func_80f02
-	jp Func_d3cb1
+	jp .asm_d3cb1
 
-Func_d3bb0: ; d3bb0 (34:7bb0)
+.asm_d3bb0: ; d3bb0 (34:7bb0)
 	ld a, [wc78d + 1]
 	cp $6
-	jp nz, Func_d3be8
+	jp nz, .asm_d3be8
 	ld hl, Data_d3a8b
 	scall Func_80d9b
 	ld hl, Data_d3a85
@@ -3639,12 +3721,12 @@ Func_d3bb0: ; d3bb0 (34:7bb0)
 	ld hl, Data_d3ac1
 	scall Func_80d9b
 	scall Func_80f02
-	jp Func_d3cb1
+	jp .asm_d3cb1
 
-Func_d3be8: ; d3be8 (34:7be8)
+.asm_d3be8: ; d3be8 (34:7be8)
 	ld a, [wc78d + 1]
 	cp $7
-	jp nz, Func_d3c26
+	jp nz, .asm_d3c26
 	ld hl, Data_d3a91
 	scall Func_80d9b
 	ld hl, Data_d3a8b
@@ -3662,12 +3744,12 @@ Func_d3be8: ; d3be8 (34:7be8)
 	ld hl, Data_d3ac7
 	scall Func_80d9b
 	scall Func_80f02
-	jp Func_d3cb1
+	jp .asm_d3cb1
 
-Func_d3c26: ; d3c26 (34:7c26)
+.asm_d3c26: ; d3c26 (34:7c26)
 	ld a, [wc78d + 1]
 	cp $8
-	jp nz, Func_d3c6a
+	jp nz, .asm_d3c6a
 	ld hl, Data_d3a97
 	scall Func_80d9b
 	ld hl, Data_d3a91
@@ -3687,12 +3769,12 @@ Func_d3c26: ; d3c26 (34:7c26)
 	ld hl, Data_d3acd
 	scall Func_80d9b
 	scall Func_80f02
-	jp Func_d3cb1
+	jp .asm_d3cb1
 
-Func_d3c6a: ; d3c6a (34:7c6a)
+.asm_d3c6a: ; d3c6a (34:7c6a)
 	ld a, [wc78d + 1]
 	cp $9
-	jp nz, Func_d3cb1
+	jp nz, .asm_d3cb1
 	ld hl, Data_d3a9d
 	scall Func_80d9b
 	ld hl, Data_d3a97
@@ -3714,7 +3796,7 @@ Func_d3c6a: ; d3c6a (34:7c6a)
 	ld hl, Data_d3ad3
 	scall Func_80d9b
 	scall Func_80f02
-Func_d3cb1: ; d3cb1 (34:7cb1)
+.asm_d3cb1: ; d3cb1 (34:7cb1)
 	ret
 
 Func_d3cb2: ; d3cb2 (34:7cb2)
