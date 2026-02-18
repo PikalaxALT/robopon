@@ -19,7 +19,7 @@ LoadSpriteGFX:: ; a26c (2:626c)
 	call GetHLAtSPPlus8
 	ld a, l
 	cp $1a
-	jp nc, Func_a296
+	jp nc, .asm_a296
 	ld a, BANK(GFX_d4000)
 	ld [wFarCallDestBank], a
 	ld h, $0
@@ -38,9 +38,9 @@ LoadSpriteGFX:: ; a26c (2:626c)
 	ld de, GFX_d4000
 	add hl, de
 	call WriteHLToSPPlus4
-	jp Func_a2b0
+	jp .asm_a2b0
 
-Func_a296: ; a296 (2:6296)
+.asm_a296: ; a296 (2:6296)
 	ld a, BANK(GFX_c0000)
 	ld [wFarCallDestBank], a
 	ld h, $0
@@ -59,7 +59,7 @@ Func_a296: ; a296 (2:6296)
 	ld de, GFX_c0000 - $1a * $240
 	add hl, de
 	call WriteHLToSPPlus4
-Func_a2b0: ; a2b0 (2:62b0)
+.asm_a2b0: ; a2b0 (2:62b0)
 	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop bc
 	ld l, c
@@ -333,10 +333,10 @@ SetPersonVisibilityState:: ; a444
 	ld a, [hl]
 	ld hl, wNumPeopleLoaded
 	cp [hl]
-	jp c, Func_a460
-	jp Func_a57b
+	jp c, .asm_a460
+	jp .asm_a57b
 
-Func_a460: ; a460 (2:6460)
+.asm_a460: ; a460 (2:6460)
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
@@ -367,12 +367,12 @@ Func_a460: ; a460 (2:6460)
 	ld [hl], a
 	ld a, c
 	and $80
-	jp nz, Func_a4a0
+	jp nz, .asm_a4a0
 	ld c, $0
 	ld e, $0
 	ld a, [wPlayerFacing]
 	call UpdateSprites
-Func_a4a0: ; a4a0 (2:64a0)
+.asm_a4a0: ; a4a0 (2:64a0)
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
@@ -434,24 +434,24 @@ Func_a4a0: ; a4a0 (2:64a0)
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
-	jp nz, Func_a543
+	jp nz, .asm_a543
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $1
-	jp nz, Func_a540
+	jp nz, .asm_a540
 	xor a
-Func_a510: ; a510 (2:6510)
+.asm_a510: ; a510 (2:6510)
 	ld hl, sp+$1
 	cp [hl]
-	jp nc, Func_a540
+	jp nc, .asm_a540
 	push af
 	push de
 	ld c, $0
-Func_a51a: ; a51a (2:651a)
+.asm_a51a: ; a51a (2:651a)
 	ld a, c
 	ld hl, sp+$6
 	cp [hl]
-	jp nc, Func_a52f
+	jp nc, .asm_a52f
 	ld a, [de]
 	dec a
 	and $7
@@ -461,9 +461,9 @@ Func_a51a: ; a51a (2:651a)
 	add l
 	ld [de], a
 	inc c
-	jp Func_a51a
+	jp .asm_a51a
 
-Func_a52f: ; a52f (2:652f)
+.asm_a52f: ; a52f (2:652f)
 	pop de
 	ld hl, wMapWidth
 	ld l, [hl]
@@ -472,30 +472,29 @@ Func_a52f: ; a52f (2:652f)
 	reg16swap de, hl
 	pop af
 	inc a
-	jp Func_a510
+	jp .asm_a510
 
-Func_a540: ; a540 (2:6540)
-	jp Func_a57b
+.asm_a540: ; a540 (2:6540)
+	jp .asm_a57b
 
-Func_a543: ; a543 (2:6543)
+.asm_a543: ; a543 (2:6543)
 	ld hl, sp+$0
 	ld a, [hl]
 	or a
-	jp nz, Func_a57b
-Func_a54a:
+	jp nz, .asm_a57b
 	xor a
-Func_a54b: ; a54b (2:654b)
+.asm_a54b: ; a54b (2:654b)
 	ld hl, sp+$1
 	cp [hl]
-	jp nc, Func_a57b
+	jp nc, .asm_a57b
 	push af
 	push de
 	ld c, $0
-Func_a555: ; a555 (2:6555)
+.asm_a555: ; a555 (2:6555)
 	ld a, c
 	ld hl, sp+$6
 	cp [hl]
-	jp nc, Func_a56a
+	jp nc, .asm_a56a
 	ld a, [de]
 	inc a
 	and $7
@@ -505,9 +504,9 @@ Func_a555: ; a555 (2:6555)
 	add l
 	ld [de], a
 	inc c
-	jp Func_a555
+	jp .asm_a555
 
-Func_a56a: ; a56a (2:656a)
+.asm_a56a: ; a56a (2:656a)
 	pop de
 	ld hl, wMapWidth
 	ld l, [hl]
@@ -516,9 +515,9 @@ Func_a56a: ; a56a (2:656a)
 	reg16swap de, hl
 	pop af
 	inc a
-	jp Func_a54b
+	jp .asm_a54b
 
-Func_a57b: ; a57b (2:657b)
+.asm_a57b: ; a57b (2:657b)
 	pop bc
 	pop bc
 	pop bc
@@ -559,12 +558,12 @@ Func_a5a4:: ; a5a4
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
-Func_a5ab: ; a5ab (2:65ab)
+.asm_a5ab: ; a5ab (2:65ab)
 	ld hl, sp+$0
 	ld a, [hl]
 	ld hl, wNumPeopleLoaded
 	cp [hl]
-	jp nc, Func_a60b
+	jp nc, .asm_a60b
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
@@ -587,7 +586,7 @@ Func_a5ab: ; a5ab (2:65ab)
 	ld b, [hl]
 	call GetHLAtSPPlus6
 	call CompareHLtoBC
-	jp nz, Func_a601
+	jp nz, .asm_a601
 	call GetHLAtSPPlus4
 	push hl
 	ld hl, sp+$2
@@ -611,15 +610,15 @@ Func_a5ab: ; a5ab (2:65ab)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_a601: ; a601 (2:6601)
+.asm_a601: ; a601 (2:6601)
 	ld hl, sp+$0
 	ld a, [hl]
 	inc a
 	ld hl, sp+$0
 	ld [hl], a
-	jp Func_a5ab
+	jp .asm_a5ab
 
-Func_a60b: ; a60b (2:660b)
+.asm_a60b: ; a60b (2:660b)
 	pop bc
 	pop bc
 	pop bc

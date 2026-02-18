@@ -110,7 +110,7 @@ label_8d2a9:
 	jp nz, label_8d2c0
 	ld de, Data_8d180
 	ld a, $09
-	scall Func_80150
+	scall SetPersonTextPointer
 label_8d2c0:
 	ld a, [wc790]
 	or a

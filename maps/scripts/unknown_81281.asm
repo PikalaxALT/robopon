@@ -201,7 +201,7 @@ Func_8137b: ; 8137b (20:537b)
 	jp nc, Func_813b7
 	ld de, Data_8113b
 	ld a, $7
-	scall Func_80150
+	scall SetPersonTextPointer
 Func_813b7: ; 813b7 (20:53b7)
 	jp Func_813c2
 
@@ -217,7 +217,7 @@ Func_813c2: ; 813c2 (20:53c2)
 	loadwarps $1, Data_810f6
 	ld de, Data_8113b
 	ld a, $7
-	scall Func_80150
+	scall SetPersonTextPointer
 	loadpeople $1, Data_81273
 	jp Func_813f4
 

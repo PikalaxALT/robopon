@@ -182,7 +182,7 @@ SetPersonVisibilityState_\1: ; 8013d (20:413d)
 	call FarCall
 	ret
 
-Func_80150_\1: ; 80150 (20:4150)
+SetPersonTextPointer_\1: ; 80150 (20:4150)
 	push af
 	push de
 	set_farcall_addrs_hli Func_a580

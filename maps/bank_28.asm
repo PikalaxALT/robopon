@@ -116,16 +116,16 @@ Func_a11de:: ; a11de
 	jp nc, .asm_a1283
 	ld de, Data_a112f
 	xor a
-	scall Func_80150
+	scall SetPersonTextPointer
 	ld de, Data_a1133
 	ld a, $1
-	scall Func_80150
+	scall SetPersonTextPointer
 	ld de, Data_a1137
 	ld a, $2
-	scall Func_80150
+	scall SetPersonTextPointer
 	ld de, Data_a113b
 	ld a, $4
-	scall Func_80150
+	scall SetPersonTextPointer
 .asm_a1283:
 	ld a, [wc790]
 	or a

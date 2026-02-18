@@ -771,7 +771,7 @@ Func_85ada: ; 85ada (21:5ada)
 	jp nz, Func_85afc
 	ld de, Data_8598e
 	ld a, $5
-	scall Func_80150
+	scall SetPersonTextPointer
 Func_85afc: ; 85afc (21:5afc)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_467bb
@@ -982,7 +982,7 @@ Func_85d7d: ; 85d7d (21:5d7d)
 	jp nz, Func_85d97
 	ld de, Data_85c7e
 	ld a, $3
-	scall Func_80150
+	scall SetPersonTextPointer
 Func_85d97: ; 85d97 (21:5d97)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46803
@@ -2224,10 +2224,10 @@ Func_8703a: ; 8703a (21:703a)
 	jp nc, Func_8706e
 	ld de, Data_86cf0
 	xor a
-	scall Func_80150
+	scall SetPersonTextPointer
 	ld de, Data_86cf4
 	ld a, $1
-	scall Func_80150
+	scall SetPersonTextPointer
 	hideperson $8
 	hideperson $9
 Func_8706e: ; 8706e (21:706e)

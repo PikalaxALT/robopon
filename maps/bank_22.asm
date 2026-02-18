@@ -384,16 +384,16 @@ Func_8966d:: ; 8966d
 	loadpeople $07, MapObjects_8960b
 	ld de, Data_8950b
 	xor a
-	scall Func_80150
+	scall SetPersonTextPointer
 	ld de, Data_89503
 	ld a, $01
-	scall Func_80150
+	scall SetPersonTextPointer
 	ld de, Data_89507
 	ld a, $03
-	scall Func_80150
+	scall SetPersonTextPointer
 	ld de, Data_894ff
 	ld a, $09
-	scall Func_80150
+	scall SetPersonTextPointer
 	jp .asm_896f3
 .asm_896db:
 	loadwarps $08, Data_89432

@@ -148,6 +148,13 @@ MACRO hideperson
 	scall SetPersonVisibilityState
 	ENDM
 
+Macro give_robot
+	ld c, \2
+	ld e, \3
+	ld a, \1 + 1
+	scall GiveRobot
+	ENDM
+
 MACRO if_true
 	or a
 	jp nz, \1
