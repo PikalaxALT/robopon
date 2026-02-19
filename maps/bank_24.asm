@@ -2476,54 +2476,301 @@ label_92db9:
 	pop bc ; 92DB9 (24:6db9) -> C1
 	ret  ; 92DBA (24:6dba) -> C9
 
-Data_92dba:
-	db $01, $06, $02, $01, $09, $00, $08
-	db $04, $08, $05, $34, $9b, $03, $ff, $ff, $1f, $0c, $02, $04, $01, $01, $02, $04
-	db $00, $24, $00, $00, $00, $00, $18, $04, $01, $04, $01, $01, $02, $04, $00, $24
-	db $00, $00, $00, $00, $1f, $0c, $02, $04, $01, $01, $02, $04, $00, $24, $fc, $48
-	db $c6, $6d, $18, $04, $01, $04, $01, $01, $02, $04, $00, $24, $00, $00, $00, $00
+Data_92dbb:
+	db $01, $06, $02, $01, $09, $00, $08, $04, $08, $05, $34
+
+Data_92dc6:
+	dtext_tree_pointer TreeBitstreamText_3c162
+	dw -1
+
+Data_92dca:
+	person_event $1f, $0c, $02, $04, $01, $01, $02, $04, $00, NULL, NULL
+	person_event $18, $04, $01, $04, $01, $01, $02, $04, $00, NULL, NULL
+
+Data_92de6:
+	person_event $1f, $0c, $02, $04, $01, $01, $02, $04, $00, Func_808fc_24, Data_92dc6
+	person_event $18, $04, $01, $04, $01, $01, $02, $04, $00, NULL, NULL
 
 Func_92e02:: ; 92e02
-	db $1e, $01, $21, $bb, $6d, $cd, $3a, $40, $3e, $01, $cd, $c6, $4c, $21, $15, $00
-	db $cd, $2e, $46, $b7, $c2, $32, $6e, $1e, $02, $21, $ca, $6d, $cd, $fb, $40, $cd
-	db $1c, $40, $cd, $6d, $6e, $1e, $01, $21, $15, $00, $cd, $1b, $46, $c3, $5c, $6e
-	db $fa, $90, $c7, $b7, $ca, $54, $6e, $fa, $90, $c7, $fe, $06, $d2, $54, $6e, $1e
-	db $02, $21, $e6, $6d, $cd, $fb, $40, $3e, $11, $cd, $e6, $4e, $cd, $1c, $40, $c3
-	db $5c, $6e, $3e, $11, $cd, $e6, $4e, $cd, $1c, $40, $c9, $02, $02, $05, $02, $03
-	db $02, $04, $02, $ff, $ff, $02, $02, $02, $04, $ff, $ff, $1e, $01, $af, $cd, $1e
-	db $4e, $af, $cd, $e6, $4e, $3e, $01, $cd, $e6, $4e, $21, $a3, $00, $cd, $a9, $44
-	db $af, $cd, $e6, $4e, $1e, $03, $af, $cd, $95, $40, $0e, $01, $1e, $01, $3e, $10
-	db $cd, $76, $41, $3e, $34, $cd, $fe, $4e, $1e, $00, $af, $cd, $3d, $41, $3e, $3d
-	db $cd, $fe, $4e, $cd, $d5, $41, $21, $a4, $00, $cd, $a9, $44, $0e, $01, $1e, $02
-	db $3e, $10, $cd, $76, $41, $3e, $34, $cd, $fe, $4e, $cd, $d5, $41, $1e, $01, $af
-	db $cd, $3d, $41, $cd, $8b, $41, $1e, $01, $af, $cd, $95, $40, $01, $5d, $6e, $1e
-	db $24, $af, $cd, $88, $46, $cd, $0c, $42, $1e, $02, $af, $cd, $95, $40, $0e, $01
-	db $1e, $01, $3e, $05, $cd, $76, $41, $1e, $02, $3e, $04, $cd, $e4, $41, $3e, $28
-	db $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $01, $67, $6e, $1e, $24, $af, $cd
-	db $88, $46, $cd, $0c, $42, $1e, $03, $af, $cd, $95, $40, $0e, $01, $1e, $01, $3e
-	db $10, $cd, $76, $41, $3e, $34, $cd, $fe, $4e, $1e, $00, $af, $cd, $3d, $41, $cd
-	db $d5, $41, $21, $a5, $00, $cd, $98, $44, $af, $cd, $e6, $4e, $3e, $1b, $cd, $e6
-	db $4e, $0e, $02, $1e, $04, $3e, $10, $cd, $76, $41, $cd, $d5, $41, $3e, $69, $cd
-	db $fe, $4e, $21, $a6, $00, $cd, $a9, $44, $af, $cd, $e6, $4e, $0e, $01, $1e, $02
-	db $3e, $10, $cd, $76, $41, $cd, $d5, $41, $3e, $34, $cd, $fe, $4e, $1e, $01, $af
-	db $cd, $3d, $41, $cd, $8b, $41, $1e, $01, $af, $cd, $95, $40, $01, $5d, $6e, $1e
-	db $24, $af, $cd, $88, $46, $cd, $0c, $42, $1e, $02, $af, $cd, $95, $40, $0e, $01
-	db $1e, $01, $3e, $05, $cd, $76, $41, $1e, $02, $3e, $04, $cd, $e4, $41, $3e, $28
-	db $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $01, $67, $6e, $1e, $24, $af, $cd
-	db $88, $46, $cd, $0c, $42, $1e, $03, $af, $cd, $95, $40, $0e, $01, $1e, $01, $3e
-	db $10, $cd, $76, $41, $3e, $34, $cd, $fe, $4e, $1e, $00, $af, $cd, $3d, $41, $cd
-	db $d5, $41, $21, $a7, $00, $cd, $a9, $44, $af, $cd, $e6, $4e, $3e, $1b, $cd, $e6
-	db $4e, $0e, $02, $1e, $08, $3e, $10, $cd, $76, $41, $cd, $d5, $41, $3e, $69, $cd
-	db $fe, $4e, $21, $a8, $00, $cd, $a9, $44, $af, $cd, $e6, $4e, $0e, $01, $1e, $02
-	db $3e, $10, $cd, $76, $41, $cd, $d5, $41, $3e, $34, $cd, $fe, $4e, $1e, $01, $af
-	db $cd, $3d, $41, $cd, $8b, $41, $1e, $01, $af, $cd, $95, $40, $01, $5d, $6e, $1e
-	db $24, $af, $cd, $88, $46, $cd, $0c, $42, $1e, $02, $af, $cd, $95, $40, $0e, $01
-	db $1e, $01, $3e, $05, $cd, $76, $41, $1e, $02, $3e, $04, $cd, $e4, $41, $3e, $28
-	db $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $01, $67, $6e, $1e, $24, $af, $cd
-	db $88, $46, $cd, $0c, $42, $3e, $34, $cd, $fe, $4e, $1e, $03, $af, $cd, $95, $40
-	db $0e, $01, $1e, $50, $3e, $10, $cd, $76, $41, $3e, $34, $cd, $fe, $4e, $1e, $00
-	db $af, $cd, $3d, $41, $cd, $d5, $41, $3e, $68, $cd, $fe, $4e, $21, $a9, $00, $cd
-	db $a9, $44, $1e, $00, $3e, $01, $cd, $3d, $41, $0e, $01, $1e, $20, $3e, $10, $cd
-	db $76, $41, $3e, $4d, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $1e, $01, $3e
-	db $02, $cd, $1e, $4e, $c9
+	ld e, $01 ; 92E02 (24:6e02) -> 1E 01
+	ld hl, Data_92dbb ; 92E04 (24:6e04) -> 21 BB 6D
+	scall LoadWarps ; 92E07 (24:6e07) -> CD 3A 40
+	ld a, $01 ; 92E0A (24:6e0a) -> 3E 01
+	scall LoadPlayerSprite ; 92E0C (24:6e0c) -> CD C6 4C
+	ld hl, $0015 ; 92E0F (24:6e0f) -> 21 15 00
+	scall CheckEventFlag ; 92E12 (24:6e12) -> CD 2E 46
+	or a ; 92E15 (24:6e15) -> B7
+	jp nz, label_92e32 ; 92E16 (24:6e16) -> C2 32 6E
+	ld e, $02 ; 92E19 (24:6e19) -> 1E 02
+	ld hl, Data_92dca ; 92E1B (24:6e1b) -> 21 CA 6D
+	scall LoadMapObjects ; 92E1E (24:6e1e) -> CD FB 40
+	scall Func_8001c ; 92E21 (24:6e21) -> CD 1C 40
+	call Func_92e6d ; 92E24 (24:6e24) -> CD 6D 6E
+	ld e, $01 ; 92E27 (24:6e27) -> 1E 01
+	ld hl, $0015 ; 92E29 (24:6e29) -> 21 15 00
+	scall EventFlagAction ; 92E2C (24:6e2c) -> CD 1B 46
+	jp label_92e5c ; 92E2F (24:6e2f) -> C3 5C 6E
+label_92e32:
+	ld a, [wc790] ; 92E32 (24:6e32) -> FA 90 C7
+	or a ; 92E35 (24:6e35) -> B7
+	jp z, label_92e54 ; 92E36 (24:6e36) -> CA 54 6E
+	ld a, [wc790] ; 92E39 (24:6e39) -> FA 90 C7
+	cp $06 ; 92E3C (24:6e3c) -> FE 06
+	jp nc, label_92e54 ; 92E3E (24:6e3e) -> D2 54 6E
+	ld e, $02 ; 92E41 (24:6e41) -> 1E 02
+	ld hl, Data_92de6 ; 92E43 (24:6e43) -> 21 E6 6D
+	scall LoadMapObjects ; 92E46 (24:6e46) -> CD FB 40
+	ld a, $11 ; 92E49 (24:6e49) -> 3E 11
+	scall PlayMusic ; 92E4B (24:6e4b) -> CD E6 4E
+	scall Func_8001c ; 92E4E (24:6e4e) -> CD 1C 40
+	jp label_92e5c ; 92E51 (24:6e51) -> C3 5C 6E
+label_92e54:
+	ld a, $11 ; 92E54 (24:6e54) -> 3E 11
+	scall PlayMusic ; 92E56 (24:6e56) -> CD E6 4E
+	scall Func_8001c ; 92E59 (24:6e59) -> CD 1C 40
+label_92e5c:
+	ret  ; 92E5C (24:6e5c) -> C9
 
+Data_92e5d:
+	db $02, $02, $05, $02, $03, $02, $04, $02, $ff, $ff
+
+Data_92e67:
+	db $02, $02, $02, $04, $ff, $ff
+
+Func_92e6d:
+	ld e, $01 ; 92E6D (24:6e6d) -> 1E 01
+	xor a ; 92E6F (24:6e6f) -> AF
+	scall PlayerStep ; 92E70 (24:6e70) -> CD 1E 4E
+	xor a ; 92E73 (24:6e73) -> AF
+	scall PlayMusic ; 92E74 (24:6e74) -> CD E6 4E
+	ld a, $01 ; 92E77 (24:6e77) -> 3E 01
+	scall PlayMusic ; 92E79 (24:6e79) -> CD E6 4E
+	ld hl, $00a3 ; 92E7C (24:6e7c) -> 21 A3 00
+	scall PrintTextWithNPCName ; 92E7F (24:6e7f) -> CD A9 44
+	xor a ; 92E82 (24:6e82) -> AF
+	scall PlayMusic ; 92E83 (24:6e83) -> CD E6 4E
+	ld e, $03 ; 92E86 (24:6e86) -> 1E 03
+	xor a ; 92E88 (24:6e88) -> AF
+	scall SpriteFace ; 92E89 (24:6e89) -> CD 95 40
+	ld c, $01 ; 92E8C (24:6e8c) -> 0E 01
+	ld e, $01 ; 92E8E (24:6e8e) -> 1E 01
+	ld a, $10 ; 92E90 (24:6e90) -> 3E 10
+	scall LoadEmote ; 92E92 (24:6e92) -> CD 76 41
+	ld a, $34 ; 92E95 (24:6e95) -> 3E 34
+	scall PlaySFX ; 92E97 (24:6e97) -> CD FE 4E
+	ld e, $00 ; 92E9A (24:6e9a) -> 1E 00
+	xor a ; 92E9C (24:6e9c) -> AF
+	scall SetPersonVisibilityState ; 92E9D (24:6e9d) -> CD 3D 41
+	ld a, $3d ; 92EA0 (24:6ea0) -> 3E 3D
+	scall PlaySFX ; 92EA2 (24:6ea2) -> CD FE 4E
+	scall WaitEmote ; 92EA5 (24:6ea5) -> CD D5 41
+	ld hl, $00a4 ; 92EA8 (24:6ea8) -> 21 A4 00
+	scall PrintTextWithNPCName ; 92EAB (24:6eab) -> CD A9 44
+	ld c, $01 ; 92EAE (24:6eae) -> 0E 01
+	ld e, $02 ; 92EB0 (24:6eb0) -> 1E 02
+	ld a, $10 ; 92EB2 (24:6eb2) -> 3E 10
+	scall LoadEmote ; 92EB4 (24:6eb4) -> CD 76 41
+	ld a, $34 ; 92EB7 (24:6eb7) -> 3E 34
+	scall PlaySFX ; 92EB9 (24:6eb9) -> CD FE 4E
+	scall WaitEmote ; 92EBC (24:6ebc) -> CD D5 41
+	ld e, $01 ; 92EBF (24:6ebf) -> 1E 01
+	xor a ; 92EC1 (24:6ec1) -> AF
+	scall SetPersonVisibilityState ; 92EC2 (24:6ec2) -> CD 3D 41
+	scall HideEmote ; 92EC5 (24:6ec5) -> CD 8B 41
+	ld e, $01 ; 92EC8 (24:6ec8) -> 1E 01
+	xor a ; 92ECA (24:6eca) -> AF
+	scall SpriteFace ; 92ECB (24:6ecb) -> CD 95 40
+	ld bc, Data_92e5d ; 92ECE (24:6ece) -> 01 5D 6E
+	ld e, $24 ; 92ED1 (24:6ed1) -> 1E 24
+	xor a ; 92ED3 (24:6ed3) -> AF
+	scall MovePersonAndWait ; 92ED4 (24:6ed4) -> CD 88 46
+	scall WaitNPCStep ; 92ED7 (24:6ed7) -> CD 0C 42
+	ld e, $02 ; 92EDA (24:6eda) -> 1E 02
+	xor a ; 92EDC (24:6edc) -> AF
+	scall SpriteFace ; 92EDD (24:6edd) -> CD 95 40
+	ld c, $01 ; 92EE0 (24:6ee0) -> 0E 01
+	ld e, $01 ; 92EE2 (24:6ee2) -> 1E 01
+	ld a, $05 ; 92EE4 (24:6ee4) -> 3E 05
+	scall LoadEmote ; 92EE6 (24:6ee6) -> CD 76 41
+	ld e, $02 ; 92EE9 (24:6ee9) -> 1E 02
+	ld a, $04 ; 92EEB (24:6eeb) -> 3E 04
+	scall MoveEmote ; 92EED (24:6eed) -> CD E4 41
+	ld a, $28 ; 92EF0 (24:6ef0) -> 3E 28
+	scall PlaySFX ; 92EF2 (24:6ef2) -> CD FE 4E
+	scall WaitEmote ; 92EF5 (24:6ef5) -> CD D5 41
+	scall HideEmote ; 92EF8 (24:6ef8) -> CD 8B 41
+	ld bc, Data_92e67 ; 92EFB (24:6efb) -> 01 67 6E
+	ld e, $24 ; 92EFE (24:6efe) -> 1E 24
+	xor a ; 92F00 (24:6f00) -> AF
+	scall MovePersonAndWait ; 92F01 (24:6f01) -> CD 88 46
+	scall WaitNPCStep ; 92F04 (24:6f04) -> CD 0C 42
+	ld e, $03 ; 92F07 (24:6f07) -> 1E 03
+	xor a ; 92F09 (24:6f09) -> AF
+	scall SpriteFace ; 92F0A (24:6f0a) -> CD 95 40
+	ld c, $01 ; 92F0D (24:6f0d) -> 0E 01
+	ld e, $01 ; 92F0F (24:6f0f) -> 1E 01
+	ld a, $10 ; 92F11 (24:6f11) -> 3E 10
+	scall LoadEmote ; 92F13 (24:6f13) -> CD 76 41
+	ld a, $34 ; 92F16 (24:6f16) -> 3E 34
+	scall PlaySFX ; 92F18 (24:6f18) -> CD FE 4E
+	ld e, $00 ; 92F1B (24:6f1b) -> 1E 00
+	xor a ; 92F1D (24:6f1d) -> AF
+	scall SetPersonVisibilityState ; 92F1E (24:6f1e) -> CD 3D 41
+	scall WaitEmote ; 92F21 (24:6f21) -> CD D5 41
+	ld hl, $00a5 ; 92F24 (24:6f24) -> 21 A5 00
+	scall PrintTextStandard ; 92F27 (24:6f27) -> CD 98 44
+	xor a ; 92F2A (24:6f2a) -> AF
+	scall PlayMusic ; 92F2B (24:6f2b) -> CD E6 4E
+	ld a, $1b ; 92F2E (24:6f2e) -> 3E 1B
+	scall PlayMusic ; 92F30 (24:6f30) -> CD E6 4E
+	ld c, $02 ; 92F33 (24:6f33) -> 0E 02
+	ld e, $04 ; 92F35 (24:6f35) -> 1E 04
+	ld a, $10 ; 92F37 (24:6f37) -> 3E 10
+	scall LoadEmote ; 92F39 (24:6f39) -> CD 76 41
+	scall WaitEmote ; 92F3C (24:6f3c) -> CD D5 41
+	ld a, $69 ; 92F3F (24:6f3f) -> 3E 69
+	scall PlaySFX ; 92F41 (24:6f41) -> CD FE 4E
+	ld hl, $00a6 ; 92F44 (24:6f44) -> 21 A6 00
+	scall PrintTextWithNPCName ; 92F47 (24:6f47) -> CD A9 44
+	xor a ; 92F4A (24:6f4a) -> AF
+	scall PlayMusic ; 92F4B (24:6f4b) -> CD E6 4E
+	ld c, $01 ; 92F4E (24:6f4e) -> 0E 01
+	ld e, $02 ; 92F50 (24:6f50) -> 1E 02
+	ld a, $10 ; 92F52 (24:6f52) -> 3E 10
+	scall LoadEmote ; 92F54 (24:6f54) -> CD 76 41
+	scall WaitEmote ; 92F57 (24:6f57) -> CD D5 41
+	ld a, $34 ; 92F5A (24:6f5a) -> 3E 34
+	scall PlaySFX ; 92F5C (24:6f5c) -> CD FE 4E
+	ld e, $01 ; 92F5F (24:6f5f) -> 1E 01
+	xor a ; 92F61 (24:6f61) -> AF
+	scall SetPersonVisibilityState ; 92F62 (24:6f62) -> CD 3D 41
+	scall HideEmote ; 92F65 (24:6f65) -> CD 8B 41
+	ld e, $01 ; 92F68 (24:6f68) -> 1E 01
+	xor a ; 92F6A (24:6f6a) -> AF
+	scall SpriteFace ; 92F6B (24:6f6b) -> CD 95 40
+	ld bc, Data_92e5d ; 92F6E (24:6f6e) -> 01 5D 6E
+	ld e, $24 ; 92F71 (24:6f71) -> 1E 24
+	xor a ; 92F73 (24:6f73) -> AF
+	scall MovePersonAndWait ; 92F74 (24:6f74) -> CD 88 46
+	scall WaitNPCStep ; 92F77 (24:6f77) -> CD 0C 42
+	ld e, $02 ; 92F7A (24:6f7a) -> 1E 02
+	xor a ; 92F7C (24:6f7c) -> AF
+	scall SpriteFace ; 92F7D (24:6f7d) -> CD 95 40
+	ld c, $01 ; 92F80 (24:6f80) -> 0E 01
+	ld e, $01 ; 92F82 (24:6f82) -> 1E 01
+	ld a, $05 ; 92F84 (24:6f84) -> 3E 05
+	scall LoadEmote ; 92F86 (24:6f86) -> CD 76 41
+	ld e, $02 ; 92F89 (24:6f89) -> 1E 02
+	ld a, $04 ; 92F8B (24:6f8b) -> 3E 04
+	scall MoveEmote ; 92F8D (24:6f8d) -> CD E4 41
+	ld a, $28 ; 92F90 (24:6f90) -> 3E 28
+	scall PlaySFX ; 92F92 (24:6f92) -> CD FE 4E
+	scall WaitEmote ; 92F95 (24:6f95) -> CD D5 41
+	scall HideEmote ; 92F98 (24:6f98) -> CD 8B 41
+	ld bc, Data_92e67 ; 92F9B (24:6f9b) -> 01 67 6E
+	ld e, $24 ; 92F9E (24:6f9e) -> 1E 24
+	xor a ; 92FA0 (24:6fa0) -> AF
+	scall MovePersonAndWait ; 92FA1 (24:6fa1) -> CD 88 46
+	scall WaitNPCStep ; 92FA4 (24:6fa4) -> CD 0C 42
+	ld e, $03 ; 92FA7 (24:6fa7) -> 1E 03
+	xor a ; 92FA9 (24:6fa9) -> AF
+	scall SpriteFace ; 92FAA (24:6faa) -> CD 95 40
+	ld c, $01 ; 92FAD (24:6fad) -> 0E 01
+	ld e, $01 ; 92FAF (24:6faf) -> 1E 01
+	ld a, $10 ; 92FB1 (24:6fb1) -> 3E 10
+	scall LoadEmote ; 92FB3 (24:6fb3) -> CD 76 41
+	ld a, $34 ; 92FB6 (24:6fb6) -> 3E 34
+	scall PlaySFX ; 92FB8 (24:6fb8) -> CD FE 4E
+	ld e, $00 ; 92FBB (24:6fbb) -> 1E 00
+	xor a ; 92FBD (24:6fbd) -> AF
+	scall SetPersonVisibilityState ; 92FBE (24:6fbe) -> CD 3D 41
+	scall WaitEmote ; 92FC1 (24:6fc1) -> CD D5 41
+	ld hl, $00a7 ; 92FC4 (24:6fc4) -> 21 A7 00
+	scall PrintTextWithNPCName ; 92FC7 (24:6fc7) -> CD A9 44
+	xor a ; 92FCA (24:6fca) -> AF
+	scall PlayMusic ; 92FCB (24:6fcb) -> CD E6 4E
+	ld a, $1b ; 92FCE (24:6fce) -> 3E 1B
+	scall PlayMusic ; 92FD0 (24:6fd0) -> CD E6 4E
+	ld c, $02 ; 92FD3 (24:6fd3) -> 0E 02
+	ld e, $08 ; 92FD5 (24:6fd5) -> 1E 08
+	ld a, $10 ; 92FD7 (24:6fd7) -> 3E 10
+	scall LoadEmote ; 92FD9 (24:6fd9) -> CD 76 41
+	scall WaitEmote ; 92FDC (24:6fdc) -> CD D5 41
+	ld a, $69 ; 92FDF (24:6fdf) -> 3E 69
+	scall PlaySFX ; 92FE1 (24:6fe1) -> CD FE 4E
+	ld hl, $00a8 ; 92FE4 (24:6fe4) -> 21 A8 00
+	scall PrintTextWithNPCName ; 92FE7 (24:6fe7) -> CD A9 44
+	xor a ; 92FEA (24:6fea) -> AF
+	scall PlayMusic ; 92FEB (24:6feb) -> CD E6 4E
+	ld c, $01 ; 92FEE (24:6fee) -> 0E 01
+	ld e, $02 ; 92FF0 (24:6ff0) -> 1E 02
+	ld a, $10 ; 92FF2 (24:6ff2) -> 3E 10
+	scall LoadEmote ; 92FF4 (24:6ff4) -> CD 76 41
+	scall WaitEmote ; 92FF7 (24:6ff7) -> CD D5 41
+	ld a, $34 ; 92FFA (24:6ffa) -> 3E 34
+	scall PlaySFX ; 92FFC (24:6ffc) -> CD FE 4E
+	ld e, $01 ; 92FFF (24:6fff) -> 1E 01
+	xor a ; 93001 (24:7001) -> AF
+	scall SetPersonVisibilityState ; 93002 (24:7002) -> CD 3D 41
+	scall HideEmote ; 93005 (24:7005) -> CD 8B 41
+	ld e, $01 ; 93008 (24:7008) -> 1E 01
+	xor a ; 9300A (24:700a) -> AF
+	scall SpriteFace ; 9300B (24:700b) -> CD 95 40
+	ld bc, Data_92e5d ; 9300E (24:700e) -> 01 5D 6E
+	ld e, $24 ; 93011 (24:7011) -> 1E 24
+	xor a ; 93013 (24:7013) -> AF
+	scall MovePersonAndWait ; 93014 (24:7014) -> CD 88 46
+	scall WaitNPCStep ; 93017 (24:7017) -> CD 0C 42
+	ld e, $02 ; 9301A (24:701a) -> 1E 02
+	xor a ; 9301C (24:701c) -> AF
+	scall SpriteFace ; 9301D (24:701d) -> CD 95 40
+	ld c, $01 ; 93020 (24:7020) -> 0E 01
+	ld e, $01 ; 93022 (24:7022) -> 1E 01
+	ld a, $05 ; 93024 (24:7024) -> 3E 05
+	scall LoadEmote ; 93026 (24:7026) -> CD 76 41
+	ld e, $02 ; 93029 (24:7029) -> 1E 02
+	ld a, $04 ; 9302B (24:702b) -> 3E 04
+	scall MoveEmote ; 9302D (24:702d) -> CD E4 41
+	ld a, $28 ; 93030 (24:7030) -> 3E 28
+	scall PlaySFX ; 93032 (24:7032) -> CD FE 4E
+	scall WaitEmote ; 93035 (24:7035) -> CD D5 41
+	scall HideEmote ; 93038 (24:7038) -> CD 8B 41
+	ld bc, Data_92e67 ; 9303B (24:703b) -> 01 67 6E
+	ld e, $24 ; 9303E (24:703e) -> 1E 24
+	xor a ; 93040 (24:7040) -> AF
+	scall MovePersonAndWait ; 93041 (24:7041) -> CD 88 46
+	scall WaitNPCStep ; 93044 (24:7044) -> CD 0C 42
+	ld a, $34 ; 93047 (24:7047) -> 3E 34
+	scall PlaySFX ; 93049 (24:7049) -> CD FE 4E
+	ld e, $03 ; 9304C (24:704c) -> 1E 03
+	xor a ; 9304E (24:704e) -> AF
+	scall SpriteFace ; 9304F (24:704f) -> CD 95 40
+	ld c, $01 ; 93052 (24:7052) -> 0E 01
+	ld e, $50 ; 93054 (24:7054) -> 1E 50
+	ld a, $10 ; 93056 (24:7056) -> 3E 10
+	scall LoadEmote ; 93058 (24:7058) -> CD 76 41
+	ld a, $34 ; 9305B (24:705b) -> 3E 34
+	scall PlaySFX ; 9305D (24:705d) -> CD FE 4E
+	ld e, $00 ; 93060 (24:7060) -> 1E 00
+	xor a ; 93062 (24:7062) -> AF
+	scall SetPersonVisibilityState ; 93063 (24:7063) -> CD 3D 41
+	scall WaitEmote ; 93066 (24:7066) -> CD D5 41
+	ld a, $68 ; 93069 (24:7069) -> 3E 68
+	scall PlaySFX ; 9306B (24:706b) -> CD FE 4E
+	ld hl, $00a9 ; 9306E (24:706e) -> 21 A9 00
+	scall PrintTextWithNPCName ; 93071 (24:7071) -> CD A9 44
+	ld e, $00 ; 93074 (24:7074) -> 1E 00
+	ld a, $01 ; 93076 (24:7076) -> 3E 01
+	scall SetPersonVisibilityState ; 93078 (24:7078) -> CD 3D 41
+	ld c, $01 ; 9307B (24:707b) -> 0E 01
+	ld e, $20 ; 9307D (24:707d) -> 1E 20
+	ld a, $10 ; 9307F (24:707f) -> 3E 10
+	scall LoadEmote ; 93081 (24:7081) -> CD 76 41
+	ld a, $4d ; 93084 (24:7084) -> 3E 4D
+	scall PlaySFX ; 93086 (24:7086) -> CD FE 4E
+	scall WaitEmote ; 93089 (24:7089) -> CD D5 41
+	scall HideEmote ; 9308C (24:708c) -> CD 8B 41
+	ld e, $01 ; 9308F (24:708f) -> 1E 01
+	ld a, $02 ; 93091 (24:7091) -> 3E 02
+	scall PlayerStep ; 93093 (24:7093) -> CD 1E 4E
+	ret  ; 93096 (24:7096) -> C9
