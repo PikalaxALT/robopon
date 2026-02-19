@@ -1111,16 +1111,52 @@ Func_95c0b: ; 95c0b (25:5c0b)
 	ret
 
 Data_95c0c:
-	db $0a, $07, $ff, $ff, $0a, $06, $ff, $ff
+	db $0a, $07, $ff, $ff
+
+Data_95c10:
+	db $0a, $06, $ff, $ff
 
 Func_95c14:: ; 95c14
-	db $f5, $21, $1a, $c2, $36, $02, $23, $36, $a8, $23, $36, $4b, $af, $cd, $f8, $03
-	db $21, $3c, $00, $cd, $8f, $46, $f1, $5f, $3e, $01, $cd, $c8, $40, $1e, $02, $3e
-	db $01, $cd, $95, $40, $1e, $01, $3e, $01, $cd, $3d, $41, $01, $0c, $5c, $1e, $25
-	db $3e, $01, $cd, $88, $46, $cd, $0c, $42, $1e, $00, $3e, $01, $cd, $95, $40, $1e
-	db $01, $21, $5b, $00, $cd, $1b, $46, $cd, $6a, $59, $01, $10, $5c, $1e, $25, $3e
-	db $01, $cd, $88, $46, $cd, $0c, $42, $1e, $00, $3e, $01, $cd, $3d, $41, $c9, $0a
-	db $07, $09, $07, $ff, $ff
+	push af ; 95C14 (25:5c14) -> F5
+	set_farcall_addrs_hli FadeInMap
+	xor a ; 95C20 (25:5c20) -> AF
+	call FarCall ; 95C21 (25:5c21) -> CD F8 03
+	ld hl, $003c ; 95C24 (25:5c24) -> 21 3C 00
+	scall ScriptSleep ; 95C27 (25:5c27) -> CD 8F 46
+	pop af ; 95C2A (25:5c2a) -> F1
+	ld e, a ; 95C2B (25:5c2b) -> 5F
+	ld a, $01 ; 95C2C (25:5c2c) -> 3E 01
+	scall ChangeSprite ; 95C2E (25:5c2e) -> CD C8 40
+	ld e, $02 ; 95C31 (25:5c31) -> 1E 02
+	ld a, $01 ; 95C33 (25:5c33) -> 3E 01
+	scall SpriteFace ; 95C35 (25:5c35) -> CD 95 40
+	ld e, $01 ; 95C38 (25:5c38) -> 1E 01
+	ld a, $01 ; 95C3A (25:5c3a) -> 3E 01
+	scall SetPersonVisibilityState ; 95C3C (25:5c3c) -> CD 3D 41
+	ld bc, Data_95c0c ; 95C3F (25:5c3f) -> 01 0C 5C
+	ld e, $25 ; 95C42 (25:5c42) -> 1E 25
+	ld a, $01 ; 95C44 (25:5c44) -> 3E 01
+	scall MovePersonAndWait ; 95C46 (25:5c46) -> CD 88 46
+	scall WaitNPCStep ; 95C49 (25:5c49) -> CD 0C 42
+	ld e, $00 ; 95C4C (25:5c4c) -> 1E 00
+	ld a, $01 ; 95C4E (25:5c4e) -> 3E 01
+	scall SpriteFace ; 95C50 (25:5c50) -> CD 95 40
+	ld e, $01 ; 95C53 (25:5c53) -> 1E 01
+	ld hl, $005b ; 95C55 (25:5c55) -> 21 5B 00
+	scall EventFlagAction ; 95C58 (25:5c58) -> CD 1B 46
+	call Func_9596a ; 95C5B (25:5c5b) -> CD 6A 59
+	ld bc, Data_95c10 ; 95C5E (25:5c5e) -> 01 10 5C
+	ld e, $25 ; 95C61 (25:5c61) -> 1E 25
+	ld a, $01 ; 95C63 (25:5c63) -> 3E 01
+	scall MovePersonAndWait ; 95C65 (25:5c65) -> CD 88 46
+	scall WaitNPCStep ; 95C68 (25:5c68) -> CD 0C 42
+	ld e, $00 ; 95C6B (25:5c6b) -> 1E 00
+	ld a, $01 ; 95C6D (25:5c6d) -> 3E 01
+	scall SetPersonVisibilityState ; 95C6F (25:5c6f) -> CD 3D 41
+	ret  ; 95C72 (25:5c72) -> C9
+
+Data_957c3:
+	db $0a, $07, $09, $07, $ff, $ff
 
 Func_95c79:: ; 95c79
 IF DEF(SUN)
