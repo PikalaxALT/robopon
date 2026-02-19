@@ -99,6 +99,8 @@ def parse_symfile(
             if line.startswith(";"):
                 continue
             bank, addr, name = re.split("[ :]", line.rstrip("\n"))
+            if "." in name:
+                continue
             bank = int(bank, 16)
             addr = int(addr, 16)
             region = get_region(addr)
