@@ -47,62 +47,62 @@ Data_910fd:
 	person_event $01, $04, $02, $08, $01, $01, $02, $04, $00, PrintTextFacePlayer_24, Data_910c7
 
 Func_91189:: ; 91189
-	ld a, $04 ; 91189 (24:5189) -> 3E 04
-	ld [wc789], a ; 9118B (24:518b) -> EA 89 C7
-	ld e, $01 ; 9118E (24:518e) -> 1E 01
-	ld hl, Data_910b4 ; 91190 (24:5190) -> 21 B4 50
-	scall LoadWarps ; 91193 (24:5193) -> CD 3A 40
-	ld a, $0f ; 91196 (24:5196) -> 3E 0F
-	scall PlayMusic ; 91198 (24:5198) -> CD E6 4E
-	ld a, $01 ; 9119B (24:519b) -> 3E 01
-	scall LoadPlayerSprite ; 9119D (24:519d) -> CD C6 4C
-	ld a, $06 ; 911A0 (24:51a0) -> 3E 06
-	ld [wc7e2], a ; 911A2 (24:51a2) -> EA E2 C7
-	ld hl, $0036 ; 911A5 (24:51a5) -> 21 36 00
-	scall CheckEventFlag ; 911A8 (24:51a8) -> CD 2E 46
-	or a ; 911AB (24:51ab) -> B7
-	jp nz, label_911c0 ; 911AC (24:51ac) -> C2 C0 51
-	ld e, $03 ; 911AF (24:51af) -> 1E 03
-	ld hl, Data_910d3 ; 911B1 (24:51b1) -> 21 D3 50
-	scall LoadMapObjects ; 911B4 (24:51b4) -> CD FB 40
-	scall Func_8001c ; 911B7 (24:51b7) -> CD 1C 40
-	call Func_91219 ; 911BA (24:51ba) -> CD 19 52
-	jp label_9120c ; 911BD (24:51bd) -> C3 0C 52
+	ld a, $04
+	ld [wc789], a
+	ld e, $01
+	ld hl, Data_910b4
+	scall LoadWarps
+	ld a, $0f
+	scall PlayMusic
+	ld a, $01
+	scall LoadPlayerSprite
+	ld a, $06
+	ld [wc7e2], a
+	ld hl, $0036
+	scall CheckEventFlag
+	or a
+	jp nz, label_911c0
+	ld e, $03
+	ld hl, Data_910d3
+	scall LoadMapObjects
+	scall Func_8001c
+	call Func_91219
+	jp label_9120c
 label_911c0:
-	ld e, $0a ; 911C0 (24:51c0) -> 1E 0A
-	ld hl, Data_910fd ; 911C2 (24:51c2) -> 21 FD 50
-	scall LoadMapObjects ; 911C5 (24:51c5) -> CD FB 40
-	ld e, $00 ; 911C8 (24:51c8) -> 1E 00
-	ld a, $02 ; 911CA (24:51ca) -> 3E 02
-	scall SetPersonVisibilityState ; 911CC (24:51cc) -> CD 3D 41
-	ld hl, $0039 ; 911CF (24:51cf) -> 21 39 00
-	scall CheckEventFlag ; 911D2 (24:51d2) -> CD 2E 46
-	cp $01 ; 911D5 (24:51d5) -> FE 01
-	jp nz, label_911ea ; 911D7 (24:51d7) -> C2 EA 51
-	ld c, $0c ; 911DA (24:51da) -> 0E 0C
-	ld e, $02 ; 911DC (24:51dc) -> 1E 02
-	ld a, $01 ; 911DE (24:51de) -> 3E 01
-	scall Func_80080 ; 911E0 (24:51e0) -> CD 80 40
-	ld e, $02 ; 911E3 (24:51e3) -> 1E 02
-	ld a, $01 ; 911E5 (24:51e5) -> 3E 01
-	scall SpriteFace ; 911E7 (24:51e7) -> CD 95 40
+	ld e, $0a
+	ld hl, Data_910fd
+	scall LoadMapObjects
+	ld e, $00
+	ld a, $02
+	scall SetPersonVisibilityState
+	ld hl, $0039
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_911ea
+	ld c, $0c
+	ld e, $02
+	ld a, $01
+	scall Func_80080
+	ld e, $02
+	ld a, $01
+	scall SpriteFace
 label_911ea:
-	ld a, [wc790] ; 911EA (24:51ea) -> FA 90 C7
-	or a ; 911ED (24:51ed) -> B7
-	jp z, label_91209 ; 911EE (24:51ee) -> CA 09 52
-	ld a, [wc790] ; 911F1 (24:51f1) -> FA 90 C7
-	cp $06 ; 911F4 (24:51f4) -> FE 06
-	jp nc, label_91209 ; 911F6 (24:51f6) -> D2 09 52
-	ld de, Data_910cb ; 911F9 (24:51f9) -> 11 CB 50
-	ld a, $08 ; 911FC (24:51fc) -> 3E 08
-	scall SetPersonTextPointer ; 911FE (24:51fe) -> CD 50 41
-	ld de, Data_910cf ; 91201 (24:5201) -> 11 CF 50
-	ld a, $09 ; 91204 (24:5204) -> 3E 09
-	scall SetPersonTextPointer ; 91206 (24:5206) -> CD 50 41
+	ld a, [wc790]
+	or a
+	jp z, label_91209
+	ld a, [wc790]
+	cp $06
+	jp nc, label_91209
+	ld de, Data_910cb
+	ld a, $08
+	scall SetPersonTextPointer
+	ld de, Data_910cf
+	ld a, $09
+	scall SetPersonTextPointer
 label_91209:
-	scall Func_8001c ; 91209 (24:5209) -> CD 1C 40
+	scall Func_8001c
 label_9120c:
-	ret  ; 9120C (24:520c) -> C9
+	ret
 
 Data_9120d:
 	db $0e, $07, $ff, $ff
@@ -114,130 +114,130 @@ Data_91215:
 	db $11, $04, $ff, $ff
 
 Func_91219:
-	ld c, $01 ; 91219 (24:5219) -> 0E 01
-	ld de, Data_9120d ; 9121B (24:521b) -> 11 0D 52
-	ld a, $24 ; 9121E (24:521e) -> 3E 24
-	scall MovePlayer ; 91220 (24:5220) -> CD 3E 46
-	scall WaitNPCStep ; 91223 (24:5223) -> CD 0C 42
-	ld a, $03 ; 91226 (24:5226) -> 3E 03
-	scall PlayerFace ; 91228 (24:5228) -> CD 77 46
-	ld hl, $001e ; 9122B (24:522b) -> 21 1E 00
-	scall ScriptSleep ; 9122E (24:522e) -> CD 8F 46
-	ld e, $01 ; 91231 (24:5231) -> 1E 01
-	ld a, $03 ; 91233 (24:5233) -> 3E 03
-	scall PlayerStep ; 91235 (24:5235) -> CD 1E 4E
-	ld e, $01 ; 91238 (24:5238) -> 1E 01
-	ld a, $03 ; 9123A (24:523a) -> 3E 03
-	scall PlayerStep ; 9123C (24:523c) -> CD 1E 4E
-	ld e, $01 ; 9123F (24:523f) -> 1E 01
-	ld a, $03 ; 91241 (24:5241) -> 3E 03
-	scall PlayerStep ; 91243 (24:5243) -> CD 1E 4E
-	ld e, $01 ; 91246 (24:5246) -> 1E 01
-	ld a, $03 ; 91248 (24:5248) -> 3E 03
-	scall PlayerStep ; 9124A (24:524a) -> CD 1E 4E
-	ld hl, $008b ; 9124D (24:524d) -> 21 8B 00
-	scall PrintTextWithNPCName ; 91250 (24:5250) -> CD A9 44
-	ld hl, $008c ; 91253 (24:5253) -> 21 8C 00
-	scall PrintTextWithNPCName ; 91256 (24:5256) -> CD A9 44
-	ld hl, $008d ; 91259 (24:5259) -> 21 8D 00
-	scall PrintTextWithNPCName ; 9125C (24:525c) -> CD A9 44
-	ld hl, $008c ; 9125F (24:525f) -> 21 8C 00
-	scall PrintTextWithNPCName ; 91262 (24:5262) -> CD A9 44
-	ld e, $01 ; 91265 (24:5265) -> 1E 01
-	xor a ; 91267 (24:5267) -> AF
-	scall SpriteFace ; 91268 (24:5268) -> CD 95 40
-	ld hl, $008e ; 9126B (24:526b) -> 21 8E 00
-	scall PrintTextWithNPCName ; 9126E (24:526e) -> CD A9 44
-	ld e, $02 ; 91271 (24:5271) -> 1E 02
-	xor a ; 91273 (24:5273) -> AF
-	scall SpriteFace ; 91274 (24:5274) -> CD 95 40
-	ld hl, $008c ; 91277 (24:5277) -> 21 8C 00
-	scall PrintTextWithNPCName ; 9127A (24:527a) -> CD A9 44
-	ld hl, $008f ; 9127D (24:527d) -> 21 8F 00
-	scall PrintTextWithNPCName ; 91280 (24:5280) -> CD A9 44
-	ld hl, $0090 ; 91283 (24:5283) -> 21 90 00
-	scall PrintTextWithNPCName ; 91286 (24:5286) -> CD A9 44
-	ld bc, Data_91211 ; 91289 (24:5289) -> 01 11 52
-	ld e, $24 ; 9128C (24:528c) -> 1E 24
-	ld a, $01 ; 9128E (24:528e) -> 3E 01
-	scall MovePerson ; 91290 (24:5290) -> CD F7 41
-	ld bc, Data_91215 ; 91293 (24:5293) -> 01 15 52
-	ld e, $24 ; 91296 (24:5296) -> 1E 24
-	ld a, $02 ; 91298 (24:5298) -> 3E 02
-	scall MovePersonAndWait ; 9129A (24:529a) -> CD 88 46
-	scall WaitNPCStep ; 9129D (24:529d) -> CD 0C 42
-	ld e, $02 ; 912A0 (24:52a0) -> 1E 02
-	ld a, $01 ; 912A2 (24:52a2) -> 3E 01
-	scall SpriteFace ; 912A4 (24:52a4) -> CD 95 40
-	ld e, $02 ; 912A7 (24:52a7) -> 1E 02
-	ld a, $02 ; 912A9 (24:52a9) -> 3E 02
-	scall SpriteFace ; 912AB (24:52ab) -> CD 95 40
-	ld e, $01 ; 912AE (24:52ae) -> 1E 01
-	ld a, $01 ; 912B0 (24:52b0) -> 3E 01
-	scall PlayerStep ; 912B2 (24:52b2) -> CD 1E 4E
-	ld e, $01 ; 912B5 (24:52b5) -> 1E 01
-	ld a, $01 ; 912B7 (24:52b7) -> 3E 01
-	scall PlayerStep ; 912B9 (24:52b9) -> CD 1E 4E
-	ld e, $01 ; 912BC (24:52bc) -> 1E 01
-	ld a, $01 ; 912BE (24:52be) -> 3E 01
-	scall PlayerStep ; 912C0 (24:52c0) -> CD 1E 4E
-	ld e, $01 ; 912C3 (24:52c3) -> 1E 01
-	ld a, $01 ; 912C5 (24:52c5) -> 3E 01
-	scall PlayerStep ; 912C7 (24:52c7) -> CD 1E 4E
-	ld e, $01 ; 912CA (24:52ca) -> 1E 01
-	ld hl, $0036 ; 912CC (24:52cc) -> 21 36 00
-	scall EventFlagAction ; 912CF (24:52cf) -> CD 1B 46
-	ld a, $07 ; 912D2 (24:52d2) -> 3E 07
-	scall Func_80c94 ; 912D4 (24:52d4) -> CD 94 4C
-	ld l, $07 ; 912D7 (24:52d7) -> 2E 07
-	push hl ; 912D9 (24:52d9) -> E5
-	ld c, $0e ; 912DA (24:52da) -> 0E 0E
-	ld e, $00 ; 912DC (24:52dc) -> 1E 00
-	ld a, $08 ; 912DE (24:52de) -> 3E 08
-	scall Func_80dff ; 912E0 (24:52e0) -> CD FF 4D
-	pop bc ; 912E3 (24:52e3) -> C1
-	ret  ; 912E4 (24:52e4) -> C9
+	ld c, $01
+	ld de, Data_9120d
+	ld a, $24
+	scall MovePlayer
+	scall WaitNPCStep
+	ld a, $03
+	scall PlayerFace
+	ld hl, $001e
+	scall ScriptSleep
+	ld e, $01
+	ld a, $03
+	scall PlayerStep
+	ld e, $01
+	ld a, $03
+	scall PlayerStep
+	ld e, $01
+	ld a, $03
+	scall PlayerStep
+	ld e, $01
+	ld a, $03
+	scall PlayerStep
+	hltext_tree_pointer TreeBitstreamText_3b676
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_3b6ef
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_3b6fb
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_3b6ef
+	scall PrintTextWithNPCName
+	ld e, $01
+	xor a
+	scall SpriteFace
+	hltext_tree_pointer TreeBitstreamText_3b731
+	scall PrintTextWithNPCName
+	ld e, $02
+	xor a
+	scall SpriteFace
+	hltext_tree_pointer TreeBitstreamText_3b6ef
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_3b762
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_3b77b
+	scall PrintTextWithNPCName
+	ld bc, Data_91211
+	ld e, $24
+	ld a, $01
+	scall MovePerson
+	ld bc, Data_91215
+	ld e, $24
+	ld a, $02
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	ld e, $02
+	ld a, $01
+	scall SpriteFace
+	ld e, $02
+	ld a, $02
+	scall SpriteFace
+	ld e, $01
+	ld a, $01
+	scall PlayerStep
+	ld e, $01
+	ld a, $01
+	scall PlayerStep
+	ld e, $01
+	ld a, $01
+	scall PlayerStep
+	ld e, $01
+	ld a, $01
+	scall PlayerStep
+	ld e, $01
+	ld hl, $0036
+	scall EventFlagAction
+	ld a, $07
+	scall Func_80c94
+	ld l, $07
+	push hl
+	ld c, $0e
+	ld e, $00
+	ld a, $08
+	scall Func_80dff
+	pop bc
+	ret
 
 Func_912e5:
-	push af ; 912E5 (24:52e5) -> F5
-	ld a, e ; 912E6 (24:52e6) -> 7B
-	or a ; 912E7 (24:52e7) -> B7
-	jp nz, label_91332 ; 912E8 (24:52e8) -> C2 32 53
-	ld hl, sp+$01 ; 912EB (24:52eb) -> F8 01
-	ld a, [hl] ; 912ED (24:52ed) -> 7E
-	scall FacePlayer ; 912EE (24:52ee) -> CD 4B 44
-	ld hl, $0039 ; 912F1 (24:52f1) -> 21 39 00
-	scall CheckEventFlag ; 912F4 (24:52f4) -> CD 2E 46
-	or a ; 912F7 (24:52f7) -> B7
-	jp nz, label_9132c ; 912F8 (24:52f8) -> C2 2C 53
-	ld hl, $005c ; 912FB (24:52fb) -> 21 5C 00
-	scall CheckEventFlag ; 912FE (24:52fe) -> CD 2E 46
-	or a ; 91301 (24:5301) -> B7
-	jp nz, label_91326 ; 91302 (24:5302) -> C2 26 53
-	ld hl, $0092 ; 91305 (24:5305) -> 21 92 00
-	scall PrintTextWithNPCNameAndYesNoBox ; 91308 (24:5308) -> CD CA 44
-	or a ; 9130B (24:530b) -> B7
-	jp nz, label_9131d ; 9130C (24:530c) -> C2 1D 53
-	ld e, $01 ; 9130F (24:530f) -> 1E 01
-	ld hl, $005c ; 91311 (24:5311) -> 21 5C 00
-	scall EventFlagAction ; 91314 (24:5314) -> CD 1B 46
-	call Func_91342 ; 91317 (24:5317) -> CD 42 53
-	jp label_91323 ; 9131A (24:531a) -> C3 23 53
+	push af
+	ld a, e
+	or a
+	jp nz, label_91332
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld hl, $0039
+	scall CheckEventFlag
+	or a
+	jp nz, label_9132c
+	ld hl, $005c
+	scall CheckEventFlag
+	or a
+	jp nz, label_91326
+	hltext_tree_pointer TreeBitstreamText_3b7f7
+	scall PrintTextWithNPCNameAndYesNoBox
+	or a
+	jp nz, label_9131d
+	ld e, $01
+	ld hl, $005c
+	scall EventFlagAction
+	call Func_91342
+	jp label_91323
 label_9131d:
-	ld hl, $0094 ; 9131D (24:531d) -> 21 94 00
-	scall PrintTextWithNPCName ; 91320 (24:5320) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3b8b8
+	scall PrintTextWithNPCName
 label_91323:
-	jp label_91329 ; 91323 (24:5323) -> C3 29 53
+	jp label_91329
 label_91326:
-	call Func_91342 ; 91326 (24:5326) -> CD 42 53
+	call Func_91342
 label_91329:
-	jp label_91332 ; 91329 (24:5329) -> C3 32 53
+	jp label_91332
 label_9132c:
-	ld hl, $003c ; 9132C (24:532c) -> 21 3C 00
-	scall PrintTextWithNPCName ; 9132F (24:532f) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3b973
+	scall PrintTextWithNPCName
 label_91332:
-	pop bc ; 91332 (24:5332) -> C1
-	ret  ; 91333 (24:5333) -> C9
+	pop bc
+	ret
 
 Data_91334:
 	db $01, $0d, $ff, $ff
@@ -249,497 +249,495 @@ Data_9133c:
 	db $04, $0d, $01, $0d, $ff, $ff
 
 Func_91342:
-	ld a, $13 ; 91342 (24:5342) -> 3E 13
-	scall Func_80e5d ; 91344 (24:5344) -> CD 5D 4E
-	or a ; 91347 (24:5347) -> B7
-	jp z, label_91415 ; 91348 (24:5348) -> CA 15 54
-	ld a, $1e ; 9134B (24:534b) -> 3E 1E
-	scall Func_80e6d ; 9134D (24:534d) -> CD 6D 4E
-	cp $ff ; 91350 (24:5350) -> FE FF
-	jp z, label_9140c ; 91352 (24:5352) -> CA 0C 54
-	push af ; 91355 (24:5355) -> F5
-	ld hl, $0095 ; 91356 (24:5356) -> 21 95 00
-	scall PrintTextWithNPCName ; 91359 (24:5359) -> CD A9 44
-	ld bc, Data_91334 ; 9135C (24:535c) -> 01 34 53
-	ld e, $24 ; 9135F (24:535f) -> 1E 24
-	ld a, $01 ; 91361 (24:5361) -> 3E 01
-	scall MovePersonAndWait ; 91363 (24:5363) -> CD 88 46
-	scall WaitNPCStep ; 91366 (24:5366) -> CD 0C 42
-	xor a ; 91369 (24:5369) -> AF
-	scall PlayMusic ; 9136A (24:536a) -> CD E6 4E
-	ld a, $19 ; 9136D (24:536d) -> 3E 19
-	scall PlayMusic ; 9136F (24:536f) -> CD E6 4E
-	ld c, $01 ; 91372 (24:5372) -> 0E 01
-	ld e, $01 ; 91374 (24:5374) -> 1E 01
-	ld a, $04 ; 91376 (24:5376) -> 3E 04
-	scall LoadEmote ; 91378 (24:5378) -> CD 76 41
-	ld e, $00 ; 9137B (24:537b) -> 1E 00
-	ld a, $01 ; 9137D (24:537d) -> 3E 01
-	scall SetPersonVisibilityState ; 9137F (24:537f) -> CD 3D 41
-	scall WaitEmote ; 91382 (24:5382) -> CD D5 41
-	ld e, $01 ; 91385 (24:5385) -> 1E 01
-	ld a, $01 ; 91387 (24:5387) -> 3E 01
-	scall SetPersonVisibilityState ; 91389 (24:5389) -> CD 3D 41
-	scall HideEmote ; 9138C (24:538c) -> CD 8B 41
-	ld e, $01 ; 9138F (24:538f) -> 1E 01
-	ld a, $02 ; 91391 (24:5391) -> 3E 02
-	scall SetPersonVisibilityState ; 91393 (24:5393) -> CD 3D 41
-	ld a, $68 ; 91396 (24:5396) -> 3E 68
-	scall PlaySFX ; 91398 (24:5398) -> CD FE 4E
-	xor a ; 9139B (24:539b) -> AF
-	scall PlayMusic ; 9139C (24:539c) -> CD E6 4E
-	ld a, $0f ; 9139F (24:539f) -> 3E 0F
-	scall PlayMusic ; 913A1 (24:53a1) -> CD E6 4E
-	ld bc, Data_91338 ; 913A4 (24:53a4) -> 01 38 53
-	ld e, $24 ; 913A7 (24:53a7) -> 1E 24
-	ld a, $01 ; 913A9 (24:53a9) -> 3E 01
-	scall MovePersonAndWait ; 913AB (24:53ab) -> CD 88 46
-	scall WaitNPCStep ; 913AE (24:53ae) -> CD 0C 42
-	ld e, $02 ; 913B1 (24:53b1) -> 1E 02
-	ld a, $01 ; 913B3 (24:53b3) -> 3E 01
-	scall SpriteFace ; 913B5 (24:53b5) -> CD 95 40
-	ld hl, $0096 ; 913B8 (24:53b8) -> 21 96 00
-	scall PrintTextWithNPCName ; 913BB (24:53bb) -> CD A9 44
-	ld c, $01 ; 913BE (24:53be) -> 0E 01
-	ld de, Data_9133c ; 913C0 (24:53c0) -> 11 3C 53
-	ld a, $24 ; 913C3 (24:53c3) -> 3E 24
-	scall MovePlayer ; 913C5 (24:53c5) -> CD 3E 46
-	ld a, $2a ; 913C8 (24:53c8) -> 3E 2A
-	scall PlaySFX ; 913CA (24:53ca) -> CD FE 4E
-	ld hl, $0359 ; 913CD (24:53cd) -> 21 59 03
-	scall PrintTextStandard ; 913D0 (24:53d0) -> CD 98 44
-	pop af ; 913D3 (24:53d3) -> F1
-
-Func_913d4:
-	push af ; 913D4 (24:53d4) -> F5
-	ld l, a ; 913D5 (24:53d5) -> 6F
-	ld h, $00 ; 913D6 (24:53d6) -> 26 00
-	ld de, $0b00 ; 913D8 (24:53d8) -> 11 00 0B
-	add hl, de ; 913DB (24:53db) -> 19
-	scall Func_80488 ; 913DC (24:53dc) -> CD 88 44
-	pop af ; 913DF (24:53df) -> F1
-	push hl ; 913E0 (24:53e0) -> E5
-	ld e, $01 ; 913E1 (24:53e1) -> 1E 01
-	ld c, $00 ; 913E3 (24:53e3) -> 0E 00
-	scall GiveRobot ; 913E5 (24:53e5) -> CD 87 4D
-	pop hl ; 913E8 (24:53e8) -> E1
-	ld c, l ; 913E9 (24:53e9) -> 4D
-	ld e, $00 ; 913EA (24:53ea) -> 1E 00
-	ld a, $1f ; 913EC (24:53ec) -> 3E 1F
-	scall GiveRobot ; 913EE (24:53ee) -> CD 87 4D
-	ld c, $01 ; 913F1 (24:53f1) -> 0E 01
-	ld e, $01 ; 913F3 (24:53f3) -> 1E 01
-	ld a, $13 ; 913F5 (24:53f5) -> 3E 13
-	scall Func_80d4d ; 913F7 (24:53f7) -> CD 4D 4D
-	ld e, $00 ; 913FA (24:53fa) -> 1E 00
-	ld a, $02 ; 913FC (24:53fc) -> 3E 02
-	scall SetPersonVisibilityState ; 913FE (24:53fe) -> CD 3D 41
-	ld e, $01 ; 91401 (24:5401) -> 1E 01
-	ld hl, $0039 ; 91403 (24:5403) -> 21 39 00
-	scall EventFlagAction ; 91406 (24:5406) -> CD 1B 46
-	jp label_91412 ; 91409 (24:5409) -> C3 12 54
+	ld a, $13
+	scall Func_80e5d
+	or a
+	jp z, label_91415
+	ld a, $1e
+	scall Func_80e6d
+	cp $ff
+	jp z, label_9140c
+	push af
+	hltext_tree_pointer TreeBitstreamText_3b8f2
+	scall PrintTextWithNPCName
+	ld bc, Data_91334
+	ld e, $24
+	ld a, $01
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	xor a
+	scall PlayMusic
+	ld a, $19
+	scall PlayMusic
+	ld c, $01
+	ld e, $01
+	ld a, $04
+	scall LoadEmote
+	ld e, $00
+	ld a, $01
+	scall SetPersonVisibilityState
+	scall WaitEmote
+	ld e, $01
+	ld a, $01
+	scall SetPersonVisibilityState
+	scall HideEmote
+	ld e, $01
+	ld a, $02
+	scall SetPersonVisibilityState
+	ld a, $68
+	scall PlaySFX
+	xor a
+	scall PlayMusic
+	ld a, $0f
+	scall PlayMusic
+	ld bc, Data_91338
+	ld e, $24
+	ld a, $01
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	ld e, $02
+	ld a, $01
+	scall SpriteFace
+	hltext_tree_pointer TreeBitstreamText_3b942
+	scall PrintTextWithNPCName
+	ld c, $01
+	ld de, Data_9133c
+	ld a, $24
+	scall MovePlayer
+	ld a, $2a
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_3b932
+	scall PrintTextStandard
+	pop af
+	push af
+	ld l, a
+	ld h, $00
+	ld de, $0b00
+	add hl, de
+	scall Func_80488
+	pop af
+	push hl
+	ld e, $01
+	ld c, $00
+	scall GiveRobot
+	pop hl
+	ld c, l
+	ld e, $00
+	ld a, $1f
+	scall GiveRobot
+	ld c, $01
+	ld e, $01
+	ld a, $13
+	scall Func_80d4d
+	ld e, $00
+	ld a, $02
+	scall SetPersonVisibilityState
+	ld e, $01
+	ld hl, $0039
+	scall EventFlagAction
+	jp label_91412
 label_9140c:
-	ld hl, $038b ; 9140C (24:540c) -> 21 8B 03
-	scall PrintTextWithNPCName ; 9140F (24:540f) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3b9d7
+	scall PrintTextWithNPCName
 label_91412:
-	jp label_9141b ; 91412 (24:5412) -> C3 1B 54
+	jp label_9141b
 label_91415:
-	ld hl, $038a ; 91415 (24:5415) -> 21 8A 03
-	scall PrintTextWithNPCName ; 91418 (24:5418) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3b9a9
+	scall PrintTextWithNPCName
 label_9141b:
-	ret  ; 9141B (24:541b) -> C9
+	ret
 
 Func_9141c:
-	push af ; 9141C (24:541c) -> F5
-	ld a, e ; 9141D (24:541d) -> 7B
-	or a ; 9141E (24:541e) -> B7
-	jp nz, label_9142f ; 9141F (24:541f) -> C2 2F 54
-	ld hl, sp+$01 ; 91422 (24:5422) -> F8 01
-	ld a, [hl] ; 91424 (24:5424) -> 7E
-	scall FacePlayer ; 91425 (24:5425) -> CD 4B 44
-	ld e, $00 ; 91428 (24:5428) -> 1E 00
-	ld a, $04 ; 9142A (24:542a) -> 3E 04
-	scall Func_806a0 ; 9142C (24:542c) -> CD A0 46
+	push af
+	ld a, e
+	or a
+	jp nz, label_9142f
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld e, $00
+	ld a, $04
+	scall Func_806a0
 label_9142f:
-	pop bc ; 9142F (24:542f) -> C1
-	ret  ; 91430 (24:5430) -> C9
+	pop bc
+	ret
 
 Func_91431:
-	push af ; 91431 (24:5431) -> F5
-	ld a, e ; 91432 (24:5432) -> 7B
-	or a ; 91433 (24:5433) -> B7
-	jp nz, label_91444 ; 91434 (24:5434) -> C2 44 54
-	ld hl, sp+$01 ; 91437 (24:5437) -> F8 01
-	ld a, [hl] ; 91439 (24:5439) -> 7E
-	scall FacePlayer ; 9143A (24:543a) -> CD 4B 44
-	ld e, $02 ; 9143D (24:543d) -> 1E 02
-	ld a, $04 ; 9143F (24:543f) -> 3E 04
-	scall Func_806a0 ; 91441 (24:5441) -> CD A0 46
+	push af
+	ld a, e
+	or a
+	jp nz, label_91444
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld e, $02
+	ld a, $04
+	scall Func_806a0
 label_91444:
-	pop bc ; 91444 (24:5444) -> C1
-	ret  ; 91445 (24:5445) -> C9
+	pop bc
+	ret
 
 Func_91446:
-	push af ; 91446 (24:5446) -> F5
-	ld a, e ; 91447 (24:5447) -> 7B
-	or a ; 91448 (24:5448) -> B7
-	jp nz, label_91459 ; 91449 (24:5449) -> C2 59 54
-	ld hl, sp+$01 ; 9144C (24:544c) -> F8 01
-	ld a, [hl] ; 9144E (24:544e) -> 7E
-	scall FacePlayer ; 9144F (24:544f) -> CD 4B 44
-	ld e, $01 ; 91452 (24:5452) -> 1E 01
-	ld a, $04 ; 91454 (24:5454) -> 3E 04
-	scall Func_806a0 ; 91456 (24:5456) -> CD A0 46
+	push af
+	ld a, e
+	or a
+	jp nz, label_91459
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld e, $01
+	ld a, $04
+	scall Func_806a0
 label_91459:
-	pop bc ; 91459 (24:5459) -> C1
-	ret  ; 9145A (24:545a) -> C9
+	pop bc
+	ret
 
 Func_9145b:
-	ld a, e ; 9145B (24:545b) -> 7B
-	or a ; 9145C (24:545c) -> B7
-	jp nz, label_91477 ; 9145D (24:545d) -> C2 77 54
-	ld l, $01 ; 91460 (24:5460) -> 2E 01
-	push hl ; 91462 (24:5462) -> E5
-	ld c, $04 ; 91463 (24:5463) -> 0E 04
-	ld e, $01 ; 91465 (24:5465) -> 1E 01
-	ld a, $08 ; 91467 (24:5467) -> 3E 08
-	scall Func_80dff ; 91469 (24:5469) -> CD FF 4D
-	pop bc ; 9146C (24:546c) -> C1
-	ld a, $2e ; 9146D (24:546d) -> 3E 2E
-	scall PlaySFX ; 9146F (24:546f) -> CD FE 4E
-	ld a, $02 ; 91472 (24:5472) -> 3E 02
-	ld [wPlayerFacing], a ; 91474 (24:5474) -> EA 38 C8
+	ld a, e
+	or a
+	jp nz, label_91477
+	ld l, $01
+	push hl
+	ld c, $04
+	ld e, $01
+	ld a, $08
+	scall Func_80dff
+	pop bc
+	ld a, $2e
+	scall PlaySFX
+	ld a, $02
+	ld [wPlayerFacing], a
 label_91477:
-	ret  ; 91477 (24:5477) -> C9
+	ret
 
 Func_91478:
-	push af ; 91478 (24:5478) -> F5
-	push bc ; 91479 (24:5479) -> C5
-	ld hl, sp+$00 ; 9147A (24:547a) -> F8 00
-	ld [hl], $ff ; 9147C (24:547c) -> 36 FF
-	ld a, e ; 9147E (24:547e) -> 7B
-	or a ; 9147F (24:547f) -> B7
-	jp nz, label_9176c ; 91480 (24:5480) -> C2 6C 57
-	ld a, [wc796] ; 91483 (24:5483) -> FA 96 C7
-	cp $02 ; 91486 (24:5486) -> FE 02
-	jp nz, label_9152c ; 91488 (24:5488) -> C2 2C 55
-	ld a, $13 ; 9148B (24:548b) -> 3E 13
-	scall Func_80e6d ; 9148D (24:548d) -> CD 6D 4E
-	ld hl, sp+$01 ; 91490 (24:5490) -> F8 01
-	ld [hl], a ; 91492 (24:5492) -> 77
-	cp $ff ; 91493 (24:5493) -> FE FF
-	jp z, label_91529 ; 91495 (24:5495) -> CA 29 55
-	ld hl, $0422 ; 91498 (24:5498) -> 21 22 04
-	scall PrintTextWithNPCName ; 9149B (24:549b) -> CD A9 44
-	ld hl, $003c ; 9149E (24:549e) -> 21 3C 00
-	scall ScriptSleep ; 914A1 (24:54a1) -> CD 8F 46
-	ld a, $07 ; 914A4 (24:54a4) -> 3E 07
-	scall FacePlayer ; 914A6 (24:54a6) -> CD 4B 44
-	ld hl, $0413 ; 914A9 (24:54a9) -> 21 13 04
-	scall PrintTextWithNPCName ; 914AC (24:54ac) -> CD A9 44
-	ld a, $13 ; 914AF (24:54af) -> 3E 13
-	scall Func_80e7d ; 914B1 (24:54b1) -> CD 7D 4E
-	cp $01 ; 914B4 (24:54b4) -> FE 01
-	jp nz, label_91520 ; 914B6 (24:54b6) -> C2 20 55
-	ld hl, $0290 ; 914B9 (24:54b9) -> 21 90 02
-	scall PrintTextWithNPCName ; 914BC (24:54bc) -> CD A9 44
-	ld hl, $0400 ; 914BF (24:54bf) -> 21 00 04
-	scall PrintTextWithYesNoBox ; 914C2 (24:54c2) -> CD BA 44
-	or a ; 914C5 (24:54c5) -> B7
-	jp nz, label_91508 ; 914C6 (24:54c6) -> C2 08 55
-	ld a, $68 ; 914C9 (24:54c9) -> 3E 68
-	scall PlaySFX ; 914CB (24:54cb) -> CD FE 4E
-	ld hl, $0406 ; 914CE (24:54ce) -> 21 06 04
-	scall PrintTextWithNPCName ; 914D1 (24:54d1) -> CD A9 44
-	ld e, $00 ; 914D4 (24:54d4) -> 1E 00
-	ld a, $07 ; 914D6 (24:54d6) -> 3E 07
-	scall SpriteFace ; 914D8 (24:54d8) -> CD 95 40
-	ld hl, sp+$01 ; 914DB (24:54db) -> F8 01
-	ld l, [hl] ; 914DD (24:54dd) -> 6E
-	ld h, $00 ; 914DE (24:54de) -> 26 00
-	ld de, $0b00 ; 914E0 (24:54e0) -> 11 00 0B
-	add hl, de ; 914E3 (24:54e3) -> 19
-	scall Func_80488 ; 914E4 (24:54e4) -> CD 88 44
-	ld a, l ; 914E7 (24:54e7) -> 7D
-	push af ; 914E8 (24:54e8) -> F5
-	ld c, $00 ; 914E9 (24:54e9) -> 0E 00
-	ld e, $01 ; 914EB (24:54eb) -> 1E 01
-	ld hl, sp+$03 ; 914ED (24:54ed) -> F8 03
-	ld a, [hl] ; 914EF (24:54ef) -> 7E
-	scall GiveRobot ; 914F0 (24:54f0) -> CD 87 4D
-	pop af ; 914F3 (24:54f3) -> F1
-	ld c, a ; 914F4 (24:54f4) -> 4F
-	ld e, $00 ; 914F5 (24:54f5) -> 1E 00
-	ld a, $32 ; 914F7 (24:54f7) -> 3E 32
-	scall GiveRobot ; 914F9 (24:54f9) -> CD 87 4D
-	ld a, $03 ; 914FC (24:54fc) -> 3E 03
-	ld [wc796], a ; 914FE (24:54fe) -> EA 96 C7
-	ld hl, sp+$00 ; 91501 (24:5501) -> F8 00
-	ld [hl], $01 ; 91503 (24:5503) -> 36 01
-	jp label_9151d ; 91505 (24:5505) -> C3 1D 55
+	push af
+	push bc
+	ld hl, sp+$00
+	ld [hl], $ff
+	ld a, e
+	or a
+	jp nz, label_9176c
+	ld a, [wc796]
+	cp $02
+	jp nz, label_9152c
+	ld a, $13
+	scall Func_80e6d
+	ld hl, sp+$01
+	ld [hl], a
+	cp $ff
+	jp z, label_91529
+	hltext_tree_pointer TreeBitstreamText_44601
+	scall PrintTextWithNPCName
+	ld hl, $003c
+	scall ScriptSleep
+	ld a, $07
+	scall FacePlayer
+	hltext_tree_pointer TreeBitstreamText_4461b
+	scall PrintTextWithNPCName
+	ld a, $13
+	scall Func_80e7d
+	cp $01
+	jp nz, label_91520
+	hltext_tree_pointer TreeBitstreamText_446dc
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_458e0
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_91508
+	ld a, $68
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_44733
+	scall PrintTextWithNPCName
+	ld e, $00
+	ld a, $07
+	scall SpriteFace
+	ld hl, sp+$01
+	ld l, [hl]
+	ld h, $00
+	ld de, $0b00
+	add hl, de
+	scall Func_80488
+	ld a, l
+	push af
+	ld c, $00
+	ld e, $01
+	ld hl, sp+$03
+	ld a, [hl]
+	scall GiveRobot
+	pop af
+	ld c, a
+	ld e, $00
+	ld a, $32
+	scall GiveRobot
+	ld a, $03
+	ld [wc796], a
+	ld hl, sp+$00
+	ld [hl], $01
+	jp label_9151d
 label_91508:
-	ld a, $69 ; 91508 (24:5508) -> 3E 69
-	scall PlaySFX ; 9150A (24:550a) -> CD FE 4E
-	ld hl, $0407 ; 9150D (24:550d) -> 21 07 04
-	scall PrintTextWithNPCName ; 91510 (24:5510) -> CD A9 44
-	ld e, $00 ; 91513 (24:5513) -> 1E 00
-	ld a, $07 ; 91515 (24:5515) -> 3E 07
-	scall SpriteFace ; 91517 (24:5517) -> CD 95 40
-	jp label_9176c ; 9151A (24:551a) -> C3 6C 57
+	ld a, $69
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_447bd
+	scall PrintTextWithNPCName
+	ld e, $00
+	ld a, $07
+	scall SpriteFace
+	jp label_9176c
 label_9151d:
-	jp label_91529 ; 9151D (24:551d) -> C3 29 55
+	jp label_91529
 label_91520:
-	ld hl, $046e ; 91520 (24:5520) -> 21 6E 04
-	scall PrintTextStandard ; 91523 (24:5523) -> CD 98 44
-	jp label_9176c ; 91526 (24:5526) -> C3 6C 57
+	hltext_tree_pointer TreeBitstreamText_45a40
+	scall PrintTextStandard
+	jp label_9176c
 label_91529:
-	jp label_916a9 ; 91529 (24:5529) -> C3 A9 56
+	jp label_916a9
 label_9152c:
-	ld a, [wc796] ; 9152C (24:552c) -> FA 96 C7
-	cp $0b ; 9152F (24:552f) -> FE 0B
-	jp nz, label_915dc ; 91531 (24:5531) -> C2 DC 55
-	ld a, $72 ; 91534 (24:5534) -> 3E 72
-	scall Func_80e6d ; 91536 (24:5536) -> CD 6D 4E
-	ld hl, sp+$01 ; 91539 (24:5539) -> F8 01
-	ld [hl], a ; 9153B (24:553b) -> 77
-	cp $ff ; 9153C (24:553c) -> FE FF
-	jp z, label_915d9 ; 9153E (24:553e) -> CA D9 55
-	ld hl, $0422 ; 91541 (24:5541) -> 21 22 04
-	scall PrintTextWithNPCName ; 91544 (24:5544) -> CD A9 44
-	ld hl, $003c ; 91547 (24:5547) -> 21 3C 00
-	scall ScriptSleep ; 9154A (24:554a) -> CD 8F 46
-	ld a, $07 ; 9154D (24:554d) -> 3E 07
-	scall FacePlayer ; 9154F (24:554f) -> CD 4B 44
-	ld hl, $0413 ; 91552 (24:5552) -> 21 13 04
-	scall PrintTextWithNPCName ; 91555 (24:5555) -> CD A9 44
-	ld a, $72 ; 91558 (24:5558) -> 3E 72
-	scall Func_80e7d ; 9155A (24:555a) -> CD 7D 4E
-	cp $01 ; 9155D (24:555d) -> FE 01
-	jp nz, label_915d0 ; 9155F (24:555f) -> C2 D0 55
-	ld hl, $0291 ; 91562 (24:5562) -> 21 91 02
-	scall PrintTextWithNPCName ; 91565 (24:5565) -> CD A9 44
-	ld hl, $0400 ; 91568 (24:5568) -> 21 00 04
-	scall PrintTextWithYesNoBox ; 9156B (24:556b) -> CD BA 44
-	or a ; 9156E (24:556e) -> B7
-	jp nz, label_915b1 ; 9156F (24:556f) -> C2 B1 55
-	ld a, $68 ; 91572 (24:5572) -> 3E 68
-	scall PlaySFX ; 91574 (24:5574) -> CD FE 4E
-	ld hl, $0429 ; 91577 (24:5577) -> 21 29 04
-	scall PrintTextWithNPCName ; 9157A (24:557a) -> CD A9 44
-	ld e, $00 ; 9157D (24:557d) -> 1E 00
-	ld a, $07 ; 9157F (24:557f) -> 3E 07
-	scall SpriteFace ; 91581 (24:5581) -> CD 95 40
-	ld hl, sp+$01 ; 91584 (24:5584) -> F8 01
-	ld l, [hl] ; 91586 (24:5586) -> 6E
-	ld h, $00 ; 91587 (24:5587) -> 26 00
-	ld de, $0b00 ; 91589 (24:5589) -> 11 00 0B
-	add hl, de ; 9158C (24:558c) -> 19
-	scall Func_80488 ; 9158D (24:558d) -> CD 88 44
-	ld a, l ; 91590 (24:5590) -> 7D
-	push af ; 91591 (24:5591) -> F5
-	ld c, $00 ; 91592 (24:5592) -> 0E 00
-	ld e, $01 ; 91594 (24:5594) -> 1E 01
-	ld hl, sp+$03 ; 91596 (24:5596) -> F8 03
-	ld a, [hl] ; 91598 (24:5598) -> 7E
-	scall GiveRobot ; 91599 (24:5599) -> CD 87 4D
-	pop af ; 9159C (24:559c) -> F1
-	ld c, a ; 9159D (24:559d) -> 4F
-	ld e, $00 ; 9159E (24:559e) -> 1E 00
-	ld a, $7c ; 915A0 (24:55a0) -> 3E 7C
-	scall GiveRobot ; 915A2 (24:55a2) -> CD 87 4D
-	ld a, $0c ; 915A5 (24:55a5) -> 3E 0C
-	ld [wc796], a ; 915A7 (24:55a7) -> EA 96 C7
-	ld hl, sp+$00 ; 915AA (24:55aa) -> F8 00
-	ld [hl], $01 ; 915AC (24:55ac) -> 36 01
-	jp label_915cd ; 915AE (24:55ae) -> C3 CD 55
+	ld a, [wc796]
+	cp $0b
+	jp nz, label_915dc
+	ld a, $72
+	scall Func_80e6d
+	ld hl, sp+$01
+	ld [hl], a
+	cp $ff
+	jp z, label_915d9
+	hltext_tree_pointer TreeBitstreamText_44601
+	scall PrintTextWithNPCName
+	ld hl, $003c
+	scall ScriptSleep
+	ld a, $07
+	scall FacePlayer
+	hltext_tree_pointer TreeBitstreamText_4461b
+	scall PrintTextWithNPCName
+	ld a, $72
+	scall Func_80e7d
+	cp $01
+	jp nz, label_915d0
+	hltext_tree_pointer TreeBitstreamText_44861
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_458e0
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_915b1
+	ld a, $68
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_448b8
+	scall PrintTextWithNPCName
+	ld e, $00
+	ld a, $07
+	scall SpriteFace
+	ld hl, sp+$01
+	ld l, [hl]
+	ld h, $00
+	ld de, $0b00
+	add hl, de
+	scall Func_80488
+	ld a, l
+	push af
+	ld c, $00
+	ld e, $01
+	ld hl, sp+$03
+	ld a, [hl]
+	scall GiveRobot
+	pop af
+	ld c, a
+	ld e, $00
+	ld a, $7c
+	scall GiveRobot
+	ld a, $0c
+	ld [wc796], a
+	ld hl, sp+$00
+	ld [hl], $01
+	jp label_915cd
 label_915b1:
-	ld a, $69 ; 915B1 (24:55b1) -> 3E 69
-	scall PlaySFX ; 915B3 (24:55b3) -> CD FE 4E
-	ld hl, $0407 ; 915B6 (24:55b6) -> 21 07 04
-	scall PrintTextWithNPCName ; 915B9 (24:55b9) -> CD A9 44
-	ld hl, $001e ; 915BC (24:55bc) -> 21 1E 00
-	scall ScriptSleep ; 915BF (24:55bf) -> CD 8F 46
-	ld e, $00 ; 915C2 (24:55c2) -> 1E 00
-	ld hl, sp+$03 ; 915C4 (24:55c4) -> F8 03
-	ld a, [hl] ; 915C6 (24:55c6) -> 7E
-	scall SpriteFace ; 915C7 (24:55c7) -> CD 95 40
-	jp label_9176c ; 915CA (24:55ca) -> C3 6C 57
+	ld a, $69
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_447bd
+	scall PrintTextWithNPCName
+	ld hl, $001e
+	scall ScriptSleep
+	ld e, $00
+	ld hl, sp+$03
+	ld a, [hl]
+	scall SpriteFace
+	jp label_9176c
 label_915cd:
-	jp label_915d9 ; 915CD (24:55cd) -> C3 D9 55
+	jp label_915d9
 label_915d0:
-	ld hl, $046e ; 915D0 (24:55d0) -> 21 6E 04
-	scall PrintTextStandard ; 915D3 (24:55d3) -> CD 98 44
-	jp label_9176c ; 915D6 (24:55d6) -> C3 6C 57
+	hltext_tree_pointer TreeBitstreamText_45a40
+	scall PrintTextStandard
+	jp label_9176c
 label_915d9:
-	jp label_916a9 ; 915D9 (24:55d9) -> C3 A9 56
+	jp label_916a9
 label_915dc:
-	ld a, $13 ; 915DC (24:55dc) -> 3E 13
-	scall Func_80e6d ; 915DE (24:55de) -> CD 6D 4E
-	ld hl, sp+$01 ; 915E1 (24:55e1) -> F8 01
-	ld [hl], a ; 915E3 (24:55e3) -> 77
-	cp $ff ; 915E4 (24:55e4) -> FE FF
-	jp nz, label_915f6 ; 915E6 (24:55e6) -> C2 F6 55
-	ld a, $72 ; 915E9 (24:55e9) -> 3E 72
-	scall Func_80e6d ; 915EB (24:55eb) -> CD 6D 4E
-	ld hl, sp+$01 ; 915EE (24:55ee) -> F8 01
-	ld [hl], a ; 915F0 (24:55f0) -> 77
-	cp $ff ; 915F1 (24:55f1) -> FE FF
-	jp z, label_916a9 ; 915F3 (24:55f3) -> CA A9 56
+	ld a, $13
+	scall Func_80e6d
+	ld hl, sp+$01
+	ld [hl], a
+	cp $ff
+	jp nz, label_915f6
+	ld a, $72
+	scall Func_80e6d
+	ld hl, sp+$01
+	ld [hl], a
+	cp $ff
+	jp z, label_916a9
 label_915f6:
-	ld a, $07 ; 915F6 (24:55f6) -> 3E 07
-	scall FacePlayer ; 915F8 (24:55f8) -> CD 4B 44
-	ld a, [wc796] ; 915FB (24:55fb) -> FA 96 C7
-	cp $08 ; 915FE (24:55fe) -> FE 08
-	jp z, label_91684 ; 91600 (24:5600) -> CA 84 56
-	cp $06 ; 91603 (24:5603) -> FE 06
-	jp z, label_91684 ; 91605 (24:5605) -> CA 84 56
-	cp $0a ; 91608 (24:5608) -> FE 0A
-	jp z, label_91675 ; 9160A (24:560a) -> CA 75 56
-	cp $05 ; 9160D (24:560d) -> FE 05
-	jp z, label_91675 ; 9160F (24:560f) -> CA 75 56
-	cp $0c ; 91612 (24:5612) -> FE 0C
-	jp z, label_91666 ; 91614 (24:5614) -> CA 66 56
-	cp $04 ; 91617 (24:5617) -> FE 04
-	jp z, label_91666 ; 91619 (24:5619) -> CA 66 56
-	cp $0d ; 9161C (24:561c) -> FE 0D
-	jp z, label_91657 ; 9161E (24:561e) -> CA 57 56
-	cp $03 ; 91621 (24:5621) -> FE 03
-	jp z, label_91657 ; 91623 (24:5623) -> CA 57 56
-	cp $07 ; 91626 (24:5626) -> FE 07
-	jp z, label_91648 ; 91628 (24:5628) -> CA 48 56
-	or a ; 9162B (24:562b) -> B7
-	jp z, label_91648 ; 9162C (24:562c) -> CA 48 56
-	cp $09 ; 9162F (24:562f) -> FE 09
-	jp z, label_91639 ; 91631 (24:5631) -> CA 39 56
-	cp $01 ; 91634 (24:5634) -> FE 01
-	jp nz, label_91693 ; 91636 (24:5636) -> C2 93 56
+	ld a, $07
+	scall FacePlayer
+	ld a, [wc796]
+	cp $08
+	jp z, label_91684
+	cp $06
+	jp z, label_91684
+	cp $0a
+	jp z, label_91675
+	cp $05
+	jp z, label_91675
+	cp $0c
+	jp z, label_91666
+	cp $04
+	jp z, label_91666
+	cp $0d
+	jp z, label_91657
+	cp $03
+	jp z, label_91657
+	cp $07
+	jp z, label_91648
+	or a
+	jp z, label_91648
+	cp $09
+	jp z, label_91639
+	cp $01
+	jp nz, label_91693
 label_91639:
-	ld hl, $0140 ; 91639 (24:5639) -> 21 40 01
-	scall PrintTextStandard ; 9163C (24:563c) -> CD 98 44
-	ld hl, $034d ; 9163F (24:563f) -> 21 4D 03
-	scall PrintTextStandard ; 91642 (24:5642) -> CD 98 44
-	jp label_91699 ; 91645 (24:5645) -> C3 99 56
+	hltext_tree_pointer TreeBitstreamText_45a76
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_45acc
+	scall PrintTextStandard
+	jp label_91699
 label_91648:
-	ld hl, $0140 ; 91648 (24:5648) -> 21 40 01
-	scall PrintTextStandard ; 9164B (24:564b) -> CD 98 44
-	ld hl, $034b ; 9164E (24:564e) -> 21 4B 03
-	scall PrintTextStandard ; 91651 (24:5651) -> CD 98 44
-	jp label_91699 ; 91654 (24:5654) -> C3 99 56
+	hltext_tree_pointer TreeBitstreamText_45a76
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_45abb
+	scall PrintTextStandard
+	jp label_91699
 label_91657:
-	ld hl, $0140 ; 91657 (24:5657) -> 21 40 01
-	scall PrintTextStandard ; 9165A (24:565a) -> CD 98 44
-	ld hl, $020a ; 9165D (24:565d) -> 21 0A 02
-	scall PrintTextStandard ; 91660 (24:5660) -> CD 98 44
-	jp label_91699 ; 91663 (24:5663) -> C3 99 56
+	hltext_tree_pointer TreeBitstreamText_45a76
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_45aee
+	scall PrintTextStandard
+	jp label_91699
 label_91666:
-	ld hl, $0140 ; 91666 (24:5666) -> 21 40 01
-	scall PrintTextStandard ; 91669 (24:5669) -> CD 98 44
-	ld hl, $0218 ; 9166C (24:566c) -> 21 18 02
-	scall PrintTextStandard ; 9166F (24:566f) -> CD 98 44
-	jp label_91699 ; 91672 (24:5672) -> C3 99 56
+	hltext_tree_pointer TreeBitstreamText_45a76
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_45aff
+	scall PrintTextStandard
+	jp label_91699
 label_91675:
-	ld hl, $0140 ; 91675 (24:5675) -> 21 40 01
-	scall PrintTextStandard ; 91678 (24:5678) -> CD 98 44
-	ld hl, $0241 ; 9167B (24:567b) -> 21 41 02
-	scall PrintTextStandard ; 9167E (24:567e) -> CD 98 44
-	jp label_91699 ; 91681 (24:5681) -> C3 99 56
+	hltext_tree_pointer TreeBitstreamText_45a76
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_45b10
+	scall PrintTextStandard
+	jp label_91699
 label_91684:
-	ld hl, $0140 ; 91684 (24:5684) -> 21 40 01
-	scall PrintTextStandard ; 91687 (24:5687) -> CD 98 44
-	ld hl, $0244 ; 9168A (24:568a) -> 21 44 02
-	scall PrintTextStandard ; 9168D (24:568d) -> CD 98 44
-	jp label_91699 ; 91690 (24:5690) -> C3 99 56
+	hltext_tree_pointer TreeBitstreamText_45a76
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_45b20
+	scall PrintTextStandard
+	jp label_91699
 label_91693:
-	ld hl, $0413 ; 91693 (24:5693) -> 21 13 04
-	scall PrintTextWithNPCName ; 91696 (24:5696) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_4461b
+	scall PrintTextWithNPCName
 label_91699:
-	ld hl, $003c ; 91699 (24:5699) -> 21 3C 00
-	scall ScriptSleep ; 9169C (24:569c) -> CD 8F 46
-	ld e, $00 ; 9169F (24:569f) -> 1E 00
-	ld a, $07 ; 916A1 (24:56a1) -> 3E 07
-	scall SpriteFace ; 916A3 (24:56a3) -> CD 95 40
-	jp label_9176c ; 916A6 (24:56a6) -> C3 6C 57
+	ld hl, $003c
+	scall ScriptSleep
+	ld e, $00
+	ld a, $07
+	scall SpriteFace
+	jp label_9176c
 label_916a9:
-	ld hl, sp+$00 ; 916A9 (24:56a9) -> F8 00
-	ld a, [hl] ; 916AB (24:56ab) -> 7E
-	cp $ff ; 916AC (24:56ac) -> FE FF
-	jp nz, label_9176c ; 916AE (24:56ae) -> C2 6C 57
-	ld a, [wc796] ; 916B1 (24:56b1) -> FA 96 C7
-	cp $0c ; 916B4 (24:56b4) -> FE 0C
-	jp nc, label_916ee ; 916B6 (24:56b6) -> D2 EE 56
-	ld a, [wc796] ; 916B9 (24:56b9) -> FA 96 C7
-	cp $03 ; 916BC (24:56bc) -> FE 03
-	jp c, label_916ee ; 916BE (24:56be) -> DA EE 56
-	ld hl, $0422 ; 916C1 (24:56c1) -> 21 22 04
-	scall PrintTextWithNPCName ; 916C4 (24:56c4) -> CD A9 44
-	ld hl, $003c ; 916C7 (24:56c7) -> 21 3C 00
-	scall ScriptSleep ; 916CA (24:56ca) -> CD 8F 46
-	ld a, $07 ; 916CD (24:56cd) -> 3E 07
-	scall FacePlayer ; 916CF (24:56cf) -> CD 4B 44
-	ld hl, $0413 ; 916D2 (24:56d2) -> 21 13 04
-	scall PrintTextWithNPCName ; 916D5 (24:56d5) -> CD A9 44
-	ld hl, $0428 ; 916D8 (24:56d8) -> 21 28 04
-	scall PrintTextWithNPCName ; 916DB (24:56db) -> CD A9 44
-	ld hl, $001e ; 916DE (24:56de) -> 21 1E 00
-	scall ScriptSleep ; 916E1 (24:56e1) -> CD 8F 46
-	ld e, $00 ; 916E4 (24:56e4) -> 1E 00
-	ld a, $07 ; 916E6 (24:56e6) -> 3E 07
-	scall SpriteFace ; 916E8 (24:56e8) -> CD 95 40
-	jp label_9176c ; 916EB (24:56eb) -> C3 6C 57
+	ld hl, sp+$00
+	ld a, [hl]
+	cp $ff
+	jp nz, label_9176c
+	ld a, [wc796]
+	cp $0c
+	jp nc, label_916ee
+	ld a, [wc796]
+	cp $03
+	jp c, label_916ee
+	hltext_tree_pointer TreeBitstreamText_44601
+	scall PrintTextWithNPCName
+	ld hl, $003c
+	scall ScriptSleep
+	ld a, $07
+	scall FacePlayer
+	hltext_tree_pointer TreeBitstreamText_4461b
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_447ed
+	scall PrintTextWithNPCName
+	ld hl, $001e
+	scall ScriptSleep
+	ld e, $00
+	ld a, $07
+	scall SpriteFace
+	jp label_9176c
 label_916ee:
-	ld a, [wc796] ; 916EE (24:56ee) -> FA 96 C7
-	cp $0f ; 916F1 (24:56f1) -> FE 0F
-	jp nz, label_9171e ; 916F3 (24:56f3) -> C2 1E 57
-	ld hl, $0422 ; 916F6 (24:56f6) -> 21 22 04
-	scall PrintTextWithNPCName ; 916F9 (24:56f9) -> CD A9 44
-	ld hl, $003c ; 916FC (24:56fc) -> 21 3C 00
-	scall ScriptSleep ; 916FF (24:56ff) -> CD 8F 46
-	ld a, $07 ; 91702 (24:5702) -> 3E 07
-	scall FacePlayer ; 91704 (24:5704) -> CD 4B 44
-	ld hl, $0413 ; 91707 (24:5707) -> 21 13 04
-	scall PrintTextWithNPCName ; 9170A (24:570a) -> CD A9 44
-	ld hl, $001e ; 9170D (24:570d) -> 21 1E 00
-	scall ScriptSleep ; 91710 (24:5710) -> CD 8F 46
-	ld e, $00 ; 91713 (24:5713) -> 1E 00
-	ld hl, sp+$03 ; 91715 (24:5715) -> F8 03
-	ld a, [hl] ; 91717 (24:5717) -> 7E
-	scall SpriteFace ; 91718 (24:5718) -> CD 95 40
-	jp label_9176c ; 9171B (24:571b) -> C3 6C 57
+	ld a, [wc796]
+	cp $0f
+	jp nz, label_9171e
+	hltext_tree_pointer TreeBitstreamText_44601
+	scall PrintTextWithNPCName
+	ld hl, $003c
+	scall ScriptSleep
+	ld a, $07
+	scall FacePlayer
+	hltext_tree_pointer TreeBitstreamText_4461b
+	scall PrintTextWithNPCName
+	ld hl, $001e
+	scall ScriptSleep
+	ld e, $00
+	ld hl, sp+$03
+	ld a, [hl]
+	scall SpriteFace
+	jp label_9176c
 label_9171e:
-	ld a, [wc796] ; 9171E (24:571e) -> FA 96 C7
-	cp $0c ; 91721 (24:5721) -> FE 0C
-	jp c, label_91742 ; 91723 (24:5723) -> DA 42 57
-	ld a, $07 ; 91726 (24:5726) -> 3E 07
-	scall FacePlayer ; 91728 (24:5728) -> CD 4B 44
-	ld hl, $042b ; 9172B (24:572b) -> 21 2B 04
-	scall PrintTextWithNPCName ; 9172E (24:572e) -> CD A9 44
-	ld hl, $001e ; 91731 (24:5731) -> 21 1E 00
-	scall ScriptSleep ; 91734 (24:5734) -> CD 8F 46
-	ld e, $00 ; 91737 (24:5737) -> 1E 00
-	ld hl, sp+$03 ; 91739 (24:5739) -> F8 03
-	ld a, [hl] ; 9173B (24:573b) -> 7E
-	scall SpriteFace ; 9173C (24:573c) -> CD 95 40
-	jp label_9176c ; 9173F (24:573f) -> C3 6C 57
+	ld a, [wc796]
+	cp $0c
+	jp c, label_91742
+	ld a, $07
+	scall FacePlayer
+	hltext_tree_pointer TreeBitstreamText_44937
+	scall PrintTextWithNPCName
+	ld hl, $001e
+	scall ScriptSleep
+	ld e, $00
+	ld hl, sp+$03
+	ld a, [hl]
+	scall SpriteFace
+	jp label_9176c
 label_91742:
-	ld hl, $0422 ; 91742 (24:5742) -> 21 22 04
-	scall PrintTextWithNPCName ; 91745 (24:5745) -> CD A9 44
-	ld hl, $003c ; 91748 (24:5748) -> 21 3C 00
-	scall ScriptSleep ; 9174B (24:574b) -> CD 8F 46
-	ld a, $07 ; 9174E (24:574e) -> 3E 07
-	scall FacePlayer ; 91750 (24:5750) -> CD 4B 44
-	ld hl, $0413 ; 91753 (24:5753) -> 21 13 04
-	scall PrintTextWithNPCName ; 91756 (24:5756) -> CD A9 44
-	ld hl, $01e3 ; 91759 (24:5759) -> 21 E3 01
-	scall PrintTextWithNPCName ; 9175C (24:575c) -> CD A9 44
-	ld hl, $001e ; 9175F (24:575f) -> 21 1E 00
-	scall ScriptSleep ; 91762 (24:5762) -> CD 8F 46
-	ld e, $00 ; 91765 (24:5765) -> 1E 00
-	ld a, $07 ; 91767 (24:5767) -> 3E 07
-	scall SpriteFace ; 91769 (24:5769) -> CD 95 40
+	hltext_tree_pointer TreeBitstreamText_44601
+	scall PrintTextWithNPCName
+	ld hl, $003c
+	scall ScriptSleep
+	ld a, $07
+	scall FacePlayer
+	hltext_tree_pointer TreeBitstreamText_4461b
+	scall PrintTextWithNPCName
+	hltext_tree_pointer TreeBitstreamText_44657
+	scall PrintTextWithNPCName
+	ld hl, $001e
+	scall ScriptSleep
+	ld e, $00
+	ld a, $07
+	scall SpriteFace
 label_9176c:
-	pop bc ; 9176C (24:576c) -> C1
-	pop bc ; 9176D (24:576d) -> C1
-	ret  ; 9176E (24:576e) -> C9
+	pop bc
+	pop bc
+	ret
 
 Data_9176f:
 	db $04, $00, $01, $01, $08, $00, $0a, $09, $0a, $08, $2e
@@ -792,137 +790,137 @@ Data_9183a:
 	person_event $ff, $00, $03, $15, $03, $01, $00, $04, $00, Func_91ae0, NULL
 
 Func_91856:: ; 91856
-	ld a, [wBackupMapGroup] ; 91856 (24:5856) -> FA DF C7
-	cp $06 ; 91859 (24:5859) -> FE 06
-	jp nz, label_918a0 ; 9185B (24:585b) -> C2 A0 58
-	ld a, [wBackupMapNumber] ; 9185E (24:585e) -> FA E0 C7
-	or a ; 91861 (24:5861) -> B7
-	jp nz, label_918a0 ; 91862 (24:5862) -> C2 A0 58
-	ld e, $01 ; 91865 (24:5865) -> 1E 01
-	ld hl, Data_91827 ; 91867 (24:5867) -> 21 27 58
-	scall LoadWarps ; 9186A (24:586a) -> CD 3A 40
-	ld e, $01 ; 9186D (24:586d) -> 1E 01
-	ld hl, Data_91835 ; 9186F (24:586f) -> 21 35 58
-	scall Func_80ce7 ; 91872 (24:5872) -> CD E7 4C
-	ld a, $03 ; 91875 (24:5875) -> 3E 03
-	scall Func_80d01 ; 91877 (24:5877) -> CD 01 4D
-	ld e, $04 ; 9187A (24:587a) -> 1E 04
-	ld hl, Data_917a9 ; 9187C (24:587c) -> 21 A9 57
-	scall LoadEncounters ; 9187F (24:587f) -> CD 24 4D
-	ld e, $02 ; 91882 (24:5882) -> 1E 02
-	ld hl, Data_9183a ; 91884 (24:5884) -> 21 3A 58
-	scall LoadMapObjects ; 91887 (24:5887) -> CD FB 40
-	ld a, $05 ; 9188A (24:588a) -> 3E 05
-	ld [wc7e2], a ; 9188C (24:588c) -> EA E2 C7
-	ld a, $08 ; 9188F (24:588f) -> 3E 08
-	scall PlayMusic ; 91891 (24:5891) -> CD E6 4E
-	scall Func_8001c ; 91894 (24:5894) -> CD 1C 40
-	ld hl, $01b5 ; 91897 (24:5897) -> 21 B5 01
-	scall LandmarkSign ; 9189A (24:589a) -> CD 72 4F
-	jp label_918f4 ; 9189D (24:589d) -> C3 F4 58
+	ld a, [wBackupMapGroup]
+	cp $06
+	jp nz, label_918a0
+	ld a, [wBackupMapNumber]
+	or a
+	jp nz, label_918a0
+	ld e, $01
+	ld hl, Data_91827
+	scall LoadWarps
+	ld e, $01
+	ld hl, Data_91835
+	scall Func_80ce7
+	ld a, $03
+	scall Func_80d01
+	ld e, $04
+	ld hl, Data_917a9
+	scall LoadEncounters
+	ld e, $02
+	ld hl, Data_9183a
+	scall LoadMapObjects
+	ld a, $05
+	ld [wc7e2], a
+	ld a, $08
+	scall PlayMusic
+	scall Func_8001c
+	ld hl, $01b5
+	scall LandmarkSign
+	jp label_918f4
 label_918a0:
-	ld e, $01 ; 918A0 (24:58a0) -> 1E 01
-	ld hl, Data_9176f ; 918A2 (24:58a2) -> 21 6F 57
-	scall LoadWarps ; 918A5 (24:58a5) -> CD 3A 40
-	ld e, $01 ; 918A8 (24:58a8) -> 1E 01
-	ld hl, Data_9177a ; 918AA (24:58aa) -> 21 7A 57
-	scall Func_80ce7 ; 918AD (24:58ad) -> CD E7 4C
-	ld a, $03 ; 918B0 (24:58b0) -> 3E 03
-	scall Func_80d01 ; 918B2 (24:58b2) -> CD 01 4D
-	ld e, $03 ; 918B5 (24:58b5) -> 1E 03
-	ld hl, Data_9177f ; 918B7 (24:58b7) -> 21 7F 57
-	scall LoadEncounters ; 918BA (24:58ba) -> CD 24 4D
-	ld a, $08 ; 918BD (24:58bd) -> 3E 08
-	ld [wBackupMapGroup], a ; 918BF (24:58bf) -> EA DF C7
-	xor a ; 918C2 (24:58c2) -> AF
-	ld [wBackupMapNumber], a ; 918C3 (24:58c3) -> EA E0 C7
-	ld a, $06 ; 918C6 (24:58c6) -> 3E 06
-	ld [wc7e2], a ; 918C8 (24:58c8) -> EA E2 C7
-	ld e, $05 ; 918CB (24:58cb) -> 1E 05
-	ld hl, Data_917e1 ; 918CD (24:58cd) -> 21 E1 57
-	scall LoadMapObjects ; 918D0 (24:58d0) -> CD FB 40
-	ld a, $01 ; 918D3 (24:58d3) -> 3E 01
-	scall LoadPlayerSprite ; 918D5 (24:58d5) -> CD C6 4C
-	ld a, $08 ; 918D8 (24:58d8) -> 3E 08
-	scall PlayMusic ; 918DA (24:58da) -> CD E6 4E
-	ld e, $00 ; 918DD (24:58dd) -> 1E 00
-	ld a, $03 ; 918DF (24:58df) -> 3E 03
-	scall SetPersonVisibilityState ; 918E1 (24:58e1) -> CD 3D 41
-	ld e, $00 ; 918E4 (24:58e4) -> 1E 00
-	ld a, $04 ; 918E6 (24:58e6) -> 3E 04
-	scall SetPersonVisibilityState ; 918E8 (24:58e8) -> CD 3D 41
-	scall Func_8001c ; 918EB (24:58eb) -> CD 1C 40
-	ld hl, $01b5 ; 918EE (24:58ee) -> 21 B5 01
-	scall LandmarkSign ; 918F1 (24:58f1) -> CD 72 4F
+	ld e, $01
+	ld hl, Data_9176f
+	scall LoadWarps
+	ld e, $01
+	ld hl, Data_9177a
+	scall Func_80ce7
+	ld a, $03
+	scall Func_80d01
+	ld e, $03
+	ld hl, Data_9177f
+	scall LoadEncounters
+	ld a, $08
+	ld [wBackupMapGroup], a
+	xor a
+	ld [wBackupMapNumber], a
+	ld a, $06
+	ld [wc7e2], a
+	ld e, $05
+	ld hl, Data_917e1
+	scall LoadMapObjects
+	ld a, $01
+	scall LoadPlayerSprite
+	ld a, $08
+	scall PlayMusic
+	ld e, $00
+	ld a, $03
+	scall SetPersonVisibilityState
+	ld e, $00
+	ld a, $04
+	scall SetPersonVisibilityState
+	scall Func_8001c
+	ld hl, $01b5
+	scall LandmarkSign
 label_918f4:
-	ret  ; 918F4 (24:58f4) -> C9
+	ret
 
 Func_918f5:
-	ld a, e ; 918F5 (24:58f5) -> 7B
-	or a ; 918F6 (24:58f6) -> B7
-	jp nz, label_91980 ; 918F7 (24:58f7) -> C2 80 59
-	ld a, $0f ; 918FA (24:58fa) -> 3E 0F
-	scall Func_80e6d ; 918FC (24:58fc) -> CD 6D 4E
-	cp $ff ; 918FF (24:58ff) -> FE FF
-	jp nz, label_91922 ; 91901 (24:5901) -> C2 22 59
-	ld a, $41 ; 91904 (24:5904) -> 3E 41
-	scall Func_80e6d ; 91906 (24:5906) -> CD 6D 4E
-	cp $ff ; 91909 (24:5909) -> FE FF
-	jp nz, label_91922 ; 9190B (24:590b) -> C2 22 59
-	ld a, $50 ; 9190E (24:590e) -> 3E 50
-	scall Func_80e6d ; 91910 (24:5910) -> CD 6D 4E
-	cp $ff ; 91913 (24:5913) -> FE FF
-	jp nz, label_91922 ; 91915 (24:5915) -> C2 22 59
-	ld a, $64 ; 91918 (24:5918) -> 3E 64
-	scall Func_80e6d ; 9191A (24:591a) -> CD 6D 4E
-	cp $ff ; 9191D (24:591d) -> FE FF
-	jp z, label_9197a ; 9191F (24:591f) -> CA 7A 59
+	ld a, e
+	or a
+	jp nz, label_91980
+	ld a, $0f
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_91922
+	ld a, $41
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_91922
+	ld a, $50
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_91922
+	ld a, $64
+	scall Func_80e6d
+	cp $ff
+	jp z, label_9197a
 label_91922:
-	ld a, [wc790] ; 91922 (24:5922) -> FA 90 C7
-	or a ; 91925 (24:5925) -> B7
-	jp z, label_91971 ; 91926 (24:5926) -> CA 71 59
-	ld a, [wc790] ; 91929 (24:5929) -> FA 90 C7
-	cp $06 ; 9192C (24:592c) -> FE 06
-	jp nc, label_91971 ; 9192E (24:592e) -> D2 71 59
-	ld hl, $032d ; 91931 (24:5931) -> 21 2D 03
-	scall PrintTextWithYesNoBox ; 91934 (24:5934) -> CD BA 44
-	or a ; 91937 (24:5937) -> B7
-	jp nz, label_9196e ; 91938 (24:5938) -> C2 6E 59
-	xor a ; 9193B (24:593b) -> AF
-	scall PlayMusic ; 9193C (24:593c) -> CD E6 4E
-	ld a, $0a ; 9193F (24:593f) -> 3E 0A
-	scall PlayMusic ; 91941 (24:5941) -> CD E6 4E
-	xor a ; 91944 (24:5944) -> AF
-	scall Func_80653 ; 91945 (24:5945) -> CD 53 46
-	ld c, $01 ; 91948 (24:5948) -> 0E 01
-	ld e, $01 ; 9194A (24:594a) -> 1E 01
-	ld a, $0b ; 9194C (24:594c) -> 3E 0B
-	scall LoadEmote ; 9194E (24:594e) -> CD 76 41
-	scall WaitEmote ; 91951 (24:5951) -> CD D5 41
-	scall HideEmote ; 91954 (24:5954) -> CD 8B 41
-	ld a, $04 ; 91957 (24:5957) -> 3E 04
-	scall LoadPlayerSprite ; 91959 (24:5959) -> CD C6 4C
-	ld a, $02 ; 9195C (24:595c) -> 3E 02
-	scall PlayerFace ; 9195E (24:595e) -> CD 77 46
-	ld l, $04 ; 91961 (24:5961) -> 2E 04
-	push hl ; 91963 (24:5963) -> E5
-	ld c, $2e ; 91964 (24:5964) -> 0E 2E
-	ld e, $01 ; 91966 (24:5966) -> 1E 01
-	ld a, $1e ; 91968 (24:5968) -> 3E 1E
-	scall Func_80dff ; 9196A (24:596a) -> CD FF 4D
-	pop bc ; 9196D (24:596d) -> C1
+	ld a, [wc790]
+	or a
+	jp z, label_91971
+	ld a, [wc790]
+	cp $06
+	jp nc, label_91971
+	hltext_tree_pointer TreeBitstreamText_46f30
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_9196e
+	xor a
+	scall PlayMusic
+	ld a, $0a
+	scall PlayMusic
+	xor a
+	scall Func_80653
+	ld c, $01
+	ld e, $01
+	ld a, $0b
+	scall LoadEmote
+	scall WaitEmote
+	scall HideEmote
+	ld a, $04
+	scall LoadPlayerSprite
+	ld a, $02
+	scall PlayerFace
+	ld l, $04
+	push hl
+	ld c, $2e
+	ld e, $01
+	ld a, $1e
+	scall Func_80dff
+	pop bc
 label_9196e:
-	jp label_91977 ; 9196E (24:596e) -> C3 77 59
+	jp label_91977
 label_91971:
-	ld hl, $0377 ; 91971 (24:5971) -> 21 77 03
-	scall PrintTextStandard ; 91974 (24:5974) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_470f0
+	scall PrintTextStandard
 label_91977:
-	jp label_91980 ; 91977 (24:5977) -> C3 80 59
+	jp label_91980
 label_9197a:
-	ld hl, $0376 ; 9197A (24:597a) -> 21 76 03
-	scall PrintTextStandard ; 9197D (24:597d) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_470d8
+	scall PrintTextStandard
 label_91980:
-	ret  ; 91980 (24:5980) -> C9
+	ret
 
 Data_91981:
 	db $01, $16, $02, $16, $ff, $ff
@@ -931,219 +929,219 @@ Data_91987:
 	db $01, $16, $ff, $ff
 
 Func_9198b:
-	ld a, e ; 9198B (24:598b) -> 7B
-	or a ; 9198C (24:598c) -> B7
-	jp nz, label_91adf ; 9198D (24:598d) -> C2 DF 5A
-	ld a, [wPlayerFacing] ; 91990 (24:5990) -> FA 38 C8
-	cp $01 ; 91993 (24:5993) -> FE 01
-	jp nz, label_919a9 ; 91995 (24:5995) -> C2 A9 59
-	ld c, $01 ; 91998 (24:5998) -> 0E 01
-	ld de, Data_91981 ; 9199A (24:599a) -> 11 81 59
-	ld a, $24 ; 9199D (24:599d) -> 3E 24
-	scall MovePlayer ; 9199F (24:599f) -> CD 3E 46
-	scall WaitNPCStep ; 919A2 (24:59a2) -> CD 0C 42
-	xor a ; 919A5 (24:59a5) -> AF
-	scall PlayerFace ; 919A6 (24:59a6) -> CD 77 46
+	ld a, e
+	or a
+	jp nz, label_91adf
+	ld a, [wPlayerFacing]
+	cp $01
+	jp nz, label_919a9
+	ld c, $01
+	ld de, Data_91981
+	ld a, $24
+	scall MovePlayer
+	scall WaitNPCStep
+	xor a
+	scall PlayerFace
 label_919a9:
-	ld a, $01 ; 919A9 (24:59a9) -> 3E 01
-	scall FacePlayer ; 919AB (24:59ab) -> CD 4B 44
-	ld hl, $0039 ; 919AE (24:59ae) -> 21 39 00
-	scall CheckEventFlag ; 919B1 (24:59b1) -> CD 2E 46
-	cp $01 ; 919B4 (24:59b4) -> FE 01
-	jp nz, label_91ad9 ; 919B6 (24:59b6) -> C2 D9 5A
-	ld hl, $0020 ; 919B9 (24:59b9) -> 21 20 00
-	scall CheckEventFlag ; 919BC (24:59bc) -> CD 2E 46
-	or a ; 919BF (24:59bf) -> B7
-	jp nz, label_91ad9 ; 919C0 (24:59c0) -> C2 D9 5A
-	ld hl, $003a ; 919C3 (24:59c3) -> 21 3A 00
-	scall CheckEventFlag ; 919C6 (24:59c6) -> CD 2E 46
-	cp $01 ; 919C9 (24:59c9) -> FE 01
-	jp nz, label_91ad0 ; 919CB (24:59cb) -> C2 D0 5A
-	ld hl, $0047 ; 919CE (24:59ce) -> 21 47 00
-	scall CheckEventFlag ; 919D1 (24:59d1) -> CD 2E 46
-	or a ; 919D4 (24:59d4) -> B7
-	jp nz, label_91ac7 ; 919D5 (24:59d5) -> C2 C7 5A
-	ld a, $1f ; 919D8 (24:59d8) -> 3E 1F
-	scall Func_80e6d ; 919DA (24:59da) -> CD 6D 4E
-	cp $ff ; 919DD (24:59dd) -> FE FF
-	jp z, label_91abe ; 919DF (24:59df) -> CA BE 5A
-	push af ; 919E2 (24:59e2) -> F5
-	ld hl, $009f ; 919E3 (24:59e3) -> 21 9F 00
-	scall PrintTextWithNPCName ; 919E6 (24:59e6) -> CD A9 44
-	ld hl, $001e ; 919E9 (24:59e9) -> 21 1E 00
-	scall ScriptSleep ; 919EC (24:59ec) -> CD 8F 46
-	xor a ; 919EF (24:59ef) -> AF
-	scall PlayMusic ; 919F0 (24:59f0) -> CD E6 4E
-	ld a, $19 ; 919F3 (24:59f3) -> 3E 19
-	scall PlayMusic ; 919F5 (24:59f5) -> CD E6 4E
-	ld e, $01 ; 919F8 (24:59f8) -> 1E 01
-	ld a, $03 ; 919FA (24:59fa) -> 3E 03
-	scall SetPersonVisibilityState ; 919FC (24:59fc) -> CD 3D 41
-	ld hl, $001e ; 919FF (24:59ff) -> 21 1E 00
-	scall ScriptSleep ; 91A02 (24:5a02) -> CD 8F 46
-	ld c, $01 ; 91A05 (24:5a05) -> 0E 01
-	ld e, $01 ; 91A07 (24:5a07) -> 1E 01
-	ld a, $29 ; 91A09 (24:5a09) -> 3E 29
-	scall LoadEmote ; 91A0B (24:5a0b) -> CD 76 41
-	ld e, $15 ; 91A0E (24:5a0e) -> 1E 15
-	ld a, $02 ; 91A10 (24:5a10) -> 3E 02
-	scall MoveEmote ; 91A12 (24:5a12) -> CD E4 41
-	ld e, $00 ; 91A15 (24:5a15) -> 1E 00
-	ld a, $01 ; 91A17 (24:5a17) -> 3E 01
-	scall SetPersonVisibilityState ; 91A19 (24:5a19) -> CD 3D 41
-	scall WaitEmote ; 91A1C (24:5a1c) -> CD D5 41
-	ld e, $00 ; 91A1F (24:5a1f) -> 1E 00
-	ld a, $03 ; 91A21 (24:5a21) -> 3E 03
-	scall SetPersonVisibilityState ; 91A23 (24:5a23) -> CD 3D 41
-	ld hl, $001e ; 91A26 (24:5a26) -> 21 1E 00
-	scall ScriptSleep ; 91A29 (24:5a29) -> CD 8F 46
-	ld a, $68 ; 91A2C (24:5a2c) -> 3E 68
-	scall PlaySFX ; 91A2E (24:5a2e) -> CD FE 4E
-	ld e, $01 ; 91A31 (24:5a31) -> 1E 01
-	ld a, $04 ; 91A33 (24:5a33) -> 3E 04
-	scall SetPersonVisibilityState ; 91A35 (24:5a35) -> CD 3D 41
-	ld hl, $001e ; 91A38 (24:5a38) -> 21 1E 00
-	scall ScriptSleep ; 91A3B (24:5a3b) -> CD 8F 46
-	ld e, $01 ; 91A3E (24:5a3e) -> 1E 01
-	ld a, $01 ; 91A40 (24:5a40) -> 3E 01
-	scall SetPersonVisibilityState ; 91A42 (24:5a42) -> CD 3D 41
-	ld hl, $0001 ; 91A45 (24:5a45) -> 21 01 00
-	scall ScriptSleep ; 91A48 (24:5a48) -> CD 8F 46
-	scall HideEmote ; 91A4B (24:5a4b) -> CD 8B 41
-	ld hl, $001e ; 91A4E (24:5a4e) -> 21 1E 00
-	scall ScriptSleep ; 91A51 (24:5a51) -> CD 8F 46
-	ld c, $01 ; 91A54 (24:5a54) -> 0E 01
-	ld de, Data_91987 ; 91A56 (24:5a56) -> 11 87 59
-	ld a, $24 ; 91A59 (24:5a59) -> 3E 24
-	scall MovePlayer ; 91A5B (24:5a5b) -> CD 3E 46
-	scall WaitNPCStep ; 91A5E (24:5a5e) -> CD 0C 42
-	ld hl, $001e ; 91A61 (24:5a61) -> 21 1E 00
-	scall ScriptSleep ; 91A64 (24:5a64) -> CD 8F 46
-	xor a ; 91A67 (24:5a67) -> AF
-	scall PlayerFace ; 91A68 (24:5a68) -> CD 77 46
-	call WaitVideoTransfer ; 91A6B (24:5a6b) -> CD D4 14
-	pop af ; 91A6E (24:5a6e) -> F1
-	push af ; 91A6F (24:5a6f) -> F5
-	ld l, a ; 91A70 (24:5a70) -> 6F
-	ld h, $00 ; 91A71 (24:5a71) -> 26 00
-	ld de, $0b00 ; 91A73 (24:5a73) -> 11 00 0B
-	add hl, de ; 91A76 (24:5a76) -> 19
-	scall Func_80488 ; 91A77 (24:5a77) -> CD 88 44
-	pop af ; 91A7A (24:5a7a) -> F1
-	push hl ; 91A7B (24:5a7b) -> E5
-	ld e, $01 ; 91A7C (24:5a7c) -> 1E 01
-	ld c, $00 ; 91A7E (24:5a7e) -> 0E 00
-	scall GiveRobot ; 91A80 (24:5a80) -> CD 87 4D
-	pop hl ; 91A83 (24:5a83) -> E1
-	ld c, l ; 91A84 (24:5a84) -> 4D
-	ld e, $00 ; 91A85 (24:5a85) -> 1E 00
-	ld a, $20 ; 91A87 (24:5a87) -> 3E 20
-	scall GiveRobot ; 91A89 (24:5a89) -> CD 87 4D
-	ld e, $01 ; 91A8C (24:5a8c) -> 1E 01
-	ld hl, $0047 ; 91A8E (24:5a8e) -> 21 47 00
-	scall EventFlagAction ; 91A91 (24:5a91) -> CD 1B 46
-	ld hl, $001e ; 91A94 (24:5a94) -> 21 1E 00
-	scall ScriptSleep ; 91A97 (24:5a97) -> CD 8F 46
-	ld a, $2a ; 91A9A (24:5a9a) -> 3E 2A
-	scall PlaySFX ; 91A9C (24:5a9c) -> CD FE 4E
-	ld e, $00 ; 91A9F (24:5a9f) -> 1E 00
-	ld a, $04 ; 91AA1 (24:5aa1) -> 3E 04
-	scall SetPersonVisibilityState ; 91AA3 (24:5aa3) -> CD 3D 41
-	ld hl, $038d ; 91AA6 (24:5aa6) -> 21 8D 03
-	scall PrintTextStandard ; 91AA9 (24:5aa9) -> CD 98 44
-	ld hl, $00a0 ; 91AAC (24:5aac) -> 21 A0 00
-	scall PrintTextWithNPCName ; 91AAF (24:5aaf) -> CD A9 44
-	xor a ; 91AB2 (24:5ab2) -> AF
-	scall PlayMusic ; 91AB3 (24:5ab3) -> CD E6 4E
-	ld a, $08 ; 91AB6 (24:5ab6) -> 3E 08
-	scall PlayMusic ; 91AB8 (24:5ab8) -> CD E6 4E
-	jp label_91ac4 ; 91ABB (24:5abb) -> C3 C4 5A
+	ld a, $01
+	scall FacePlayer
+	ld hl, $0039
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_91ad9
+	ld hl, $0020
+	scall CheckEventFlag
+	or a
+	jp nz, label_91ad9
+	ld hl, $003a
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_91ad0
+	ld hl, $0047
+	scall CheckEventFlag
+	or a
+	jp nz, label_91ac7
+	ld a, $1f
+	scall Func_80e6d
+	cp $ff
+	jp z, label_91abe
+	push af
+	hltext_tree_pointer TreeBitstreamText_3bc83
+	scall PrintTextWithNPCName
+	ld hl, $001e
+	scall ScriptSleep
+	xor a
+	scall PlayMusic
+	ld a, $19
+	scall PlayMusic
+	ld e, $01
+	ld a, $03
+	scall SetPersonVisibilityState
+	ld hl, $001e
+	scall ScriptSleep
+	ld c, $01
+	ld e, $01
+	ld a, $29
+	scall LoadEmote
+	ld e, $15
+	ld a, $02
+	scall MoveEmote
+	ld e, $00
+	ld a, $01
+	scall SetPersonVisibilityState
+	scall WaitEmote
+	ld e, $00
+	ld a, $03
+	scall SetPersonVisibilityState
+	ld hl, $001e
+	scall ScriptSleep
+	ld a, $68
+	scall PlaySFX
+	ld e, $01
+	ld a, $04
+	scall SetPersonVisibilityState
+	ld hl, $001e
+	scall ScriptSleep
+	ld e, $01
+	ld a, $01
+	scall SetPersonVisibilityState
+	ld hl, $0001
+	scall ScriptSleep
+	scall HideEmote
+	ld hl, $001e
+	scall ScriptSleep
+	ld c, $01
+	ld de, Data_91987
+	ld a, $24
+	scall MovePlayer
+	scall WaitNPCStep
+	ld hl, $001e
+	scall ScriptSleep
+	xor a
+	scall PlayerFace
+	call WaitVideoTransfer
+	pop af
+	push af
+	ld l, a
+	ld h, $00
+	ld de, $0b00
+	add hl, de
+	scall Func_80488
+	pop af
+	push hl
+	ld e, $01
+	ld c, $00
+	scall GiveRobot
+	pop hl
+	ld c, l
+	ld e, $00
+	ld a, $20
+	scall GiveRobot
+	ld e, $01
+	ld hl, $0047
+	scall EventFlagAction
+	ld hl, $001e
+	scall ScriptSleep
+	ld a, $2a
+	scall PlaySFX
+	ld e, $00
+	ld a, $04
+	scall SetPersonVisibilityState
+	hltext_tree_pointer TreeBitstreamText_3bd77
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_3bd02
+	scall PrintTextWithNPCName
+	xor a
+	scall PlayMusic
+	ld a, $08
+	scall PlayMusic
+	jp label_91ac4
 label_91abe:
-	ld hl, $038c ; 91ABE (24:5abe) -> 21 8C 03
-	scall PrintTextWithNPCName ; 91AC1 (24:5ac1) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3bd37
+	scall PrintTextWithNPCName
 label_91ac4:
-	jp label_91acd ; 91AC4 (24:5ac4) -> C3 CD 5A
+	jp label_91acd
 label_91ac7:
-	ld hl, $00a0 ; 91AC7 (24:5ac7) -> 21 A0 00
-	scall PrintTextWithNPCName ; 91ACA (24:5aca) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3bd02
+	scall PrintTextWithNPCName
 label_91acd:
-	jp label_91ad6 ; 91ACD (24:5acd) -> C3 D6 5A
+	jp label_91ad6
 label_91ad0:
-	ld hl, $009d ; 91AD0 (24:5ad0) -> 21 9D 00
-	scall PrintTextWithNPCName ; 91AD3 (24:5ad3) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3bbab
+	scall PrintTextWithNPCName
 label_91ad6:
-	jp label_91adf ; 91AD6 (24:5ad6) -> C3 DF 5A
+	jp label_91adf
 label_91ad9:
-	ld hl, $009d ; 91AD9 (24:5ad9) -> 21 9D 00
-	scall PrintTextWithNPCName ; 91ADC (24:5adc) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3bbab
+	scall PrintTextWithNPCName
 label_91adf:
-	ret  ; 91ADF (24:5adf) -> C9
+	ret
 
 Func_91ae0:
-	ld a, e ; 91AE0 (24:5ae0) -> 7B
-	or a ; 91AE1 (24:5ae1) -> B7
-	jp nz, label_91b0b ; 91AE2 (24:5ae2) -> C2 0B 5B
-	scall RepairRobots ; 91AE5 (24:5ae5) -> CD E0 42
-	xor a ; 91AE8 (24:5ae8) -> AF
-	scall PlayMusic ; 91AE9 (24:5ae9) -> CD E6 4E
-	ld a, $16 ; 91AEC (24:5aec) -> 3E 16
-	scall PlayMusic ; 91AEE (24:5aee) -> CD E6 4E
-	ld c, $01 ; 91AF1 (24:5af1) -> 0E 01
-	ld e, $02 ; 91AF3 (24:5af3) -> 1E 02
-	ld a, $08 ; 91AF5 (24:5af5) -> 3E 08
-	scall LoadEmote ; 91AF7 (24:5af7) -> CD 76 41
-	scall WaitEmote ; 91AFA (24:5afa) -> CD D5 41
-	scall HideEmote ; 91AFD (24:5afd) -> CD 8B 41
-	ld hl, $0322 ; 91B00 (24:5b00) -> 21 22 03
-	scall PrintTextStandard ; 91B03 (24:5b03) -> CD 98 44
-	ld a, $08 ; 91B06 (24:5b06) -> 3E 08
-	scall PlayMusic ; 91B08 (24:5b08) -> CD E6 4E
+	ld a, e
+	or a
+	jp nz, label_91b0b
+	scall RepairRobots
+	xor a
+	scall PlayMusic
+	ld a, $16
+	scall PlayMusic
+	ld c, $01
+	ld e, $02
+	ld a, $08
+	scall LoadEmote
+	scall WaitEmote
+	scall HideEmote
+	hltext_tree_pointer TreeBitstreamText_46e0b
+	scall PrintTextStandard
+	ld a, $08
+	scall PlayMusic
 label_91b0b:
-	ret  ; 91B0B (24:5b0b) -> C9
+	ret
 
 Func_91b0c:
-	push af ; 91B0C (24:5b0c) -> F5
-	ld a, e ; 91B0D (24:5b0d) -> 7B
-	or a ; 91B0E (24:5b0e) -> B7
-	jp nz, label_91b6b ; 91B0F (24:5b0f) -> C2 6B 5B
-	ld hl, sp+$01 ; 91B12 (24:5b12) -> F8 01
-	ld a, [hl] ; 91B14 (24:5b14) -> 7E
-	scall FacePlayer ; 91B15 (24:5b15) -> CD 4B 44
-	ld hl, $010f ; 91B18 (24:5b18) -> 21 0F 01
-	scall CheckEventFlag ; 91B1B (24:5b1b) -> CD 2E 46
-	or a ; 91B1E (24:5b1e) -> B7
-	jp nz, label_91b65 ; 91B1F (24:5b1f) -> C2 65 5B
-	ld a, [wc79c] ; 91B22 (24:5b22) -> FA 9C C7
-	cp $01 ; 91B25 (24:5b25) -> FE 01
-	jp c, label_91b65 ; 91B27 (24:5b27) -> DA 65 5B
-	ld hl, $0114 ; 91B2A (24:5b2a) -> 21 14 01
-	scall CheckEventFlag ; 91B2D (24:5b2d) -> CD 2E 46
-	or a ; 91B30 (24:5b30) -> B7
-	jp nz, label_91b65 ; 91B31 (24:5b31) -> C2 65 5B
-	ld hl, $009e ; 91B34 (24:5b34) -> 21 9E 00
-	scall PrintTextStandard ; 91B37 (24:5b37) -> CD 98 44
-	ld hl, $001e ; 91B3A (24:5b3a) -> 21 1E 00
-	scall ScriptSleep ; 91B3D (24:5b3d) -> CD 8F 46
-	ld hl, $049d ; 91B40 (24:5b40) -> 21 9D 04
-	scall PrintTextStandard ; 91B43 (24:5b43) -> CD 98 44
-	ld a, $2a ; 91B46 (24:5b46) -> 3E 2A
-	scall PlaySFX ; 91B48 (24:5b48) -> CD FE 4E
-	ld hl, $049e ; 91B4B (24:5b4b) -> 21 9E 04
-	scall PrintTextStandard ; 91B4E (24:5b4e) -> CD 98 44
-	ld c, $00 ; 91B51 (24:5b51) -> 0E 00
-	ld e, $01 ; 91B53 (24:5b53) -> 1E 01
-	ld a, $10 ; 91B55 (24:5b55) -> 3E 10
-	scall Func_80d4d ; 91B57 (24:5b57) -> CD 4D 4D
-	ld e, $01 ; 91B5A (24:5b5a) -> 1E 01
-	ld hl, $010f ; 91B5C (24:5b5c) -> 21 0F 01
-	scall EventFlagAction ; 91B5F (24:5b5f) -> CD 1B 46
-	jp label_91b6b ; 91B62 (24:5b62) -> C3 6B 5B
+	push af
+	ld a, e
+	or a
+	jp nz, label_91b6b
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld hl, $010f
+	scall CheckEventFlag
+	or a
+	jp nz, label_91b65
+	ld a, [wc79c]
+	cp $01
+	jp c, label_91b65
+	ld hl, $0114
+	scall CheckEventFlag
+	or a
+	jp nz, label_91b65
+	hltext_tree_pointer TreeBitstreamText_3bc38
+	scall PrintTextStandard
+	ld hl, $001e
+	scall ScriptSleep
+	hltext_tree_pointer TreeBitstreamText_45fec
+	scall PrintTextStandard
+	ld a, $2a
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_45ffd
+	scall PrintTextStandard
+	ld c, $00
+	ld e, $01
+	ld a, $10
+	scall Func_80d4d
+	ld e, $01
+	ld hl, $010f
+	scall EventFlagAction
+	jp label_91b6b
 label_91b65:
-	ld hl, $009e ; 91B65 (24:5b65) -> 21 9E 00
-	scall PrintTextStandard ; 91B68 (24:5b68) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_3bc38
+	scall PrintTextStandard
 label_91b6b:
-	pop bc ; 91B6B (24:5b6b) -> C1
-	ret  ; 91B6C (24:5b6c) -> C9
+	pop bc
+	ret
 
 Data_91b6d:
 	db $08, $04, $01, $01, $09, $04, $02, $06, $02, $05, $34
@@ -1266,132 +1264,132 @@ Data_91fe3:
 	person_event $0b, $04, $06, $25, $01, $01, $01, $04, $00, Func_927eb, NULL
 
 Func_920c3:: ; 920c3
-	ld a, $07 ; 920C3 (24:60c3) -> 3E 07
-	ld [wc7e2], a ; 920C5 (24:60c5) -> EA E2 C7
-	ld e, $05 ; 920C8 (24:60c8) -> 1E 05
-	ld hl, Data_91b6d ; 920CA (24:60ca) -> 21 6D 5B
-	scall LoadWarps ; 920CD (24:60cd) -> CD 3A 40
-	ld e, $03 ; 920D0 (24:60d0) -> 1E 03
-	ld hl, Data_91ba4 ; 920D2 (24:60d2) -> 21 A4 5B
-	scall Func_80ce7 ; 920D5 (24:60d5) -> CD E7 4C
-	ld e, $11 ; 920D8 (24:60d8) -> 1E 11
-	ld hl, Data_91fd5 ; 920DA (24:60da) -> 21 D5 5F
-	scall LoadMapObjects ; 920DD (24:60dd) -> CD FB 40
-	ld a, $0d ; 920E0 (24:60e0) -> 3E 0D
-	scall PlayMusic ; 920E2 (24:60e2) -> CD E6 4E
-	ld a, $03 ; 920E5 (24:60e5) -> 3E 03
-	scall Func_80d01 ; 920E7 (24:60e7) -> CD 01 4D
-	ld a, $1e ; 920EA (24:60ea) -> 3E 1E
-	scall Func_80e6d ; 920EC (24:60ec) -> CD 6D 4E
-	cp $ff ; 920EF (24:60ef) -> FE FF
-	jp nz, label_92147 ; 920F1 (24:60f1) -> C2 47 61
-	ld a, $1f ; 920F4 (24:60f4) -> 3E 1F
-	scall Func_80e6d ; 920F6 (24:60f6) -> CD 6D 4E
-	cp $ff ; 920F9 (24:60f9) -> FE FF
-	jp nz, label_92147 ; 920FB (24:60fb) -> C2 47 61
-	ld a, $20 ; 920FE (24:60fe) -> 3E 20
-	scall Func_80e6d ; 92100 (24:6100) -> CD 6D 4E
-	cp $ff ; 92103 (24:6103) -> FE FF
-	jp nz, label_92147 ; 92105 (24:6105) -> C2 47 61
-	ld a, $21 ; 92108 (24:6108) -> 3E 21
-	scall Func_80e6d ; 9210A (24:610a) -> CD 6D 4E
-	cp $ff ; 9210D (24:610d) -> FE FF
-	jp nz, label_92147 ; 9210F (24:610f) -> C2 47 61
-	ld hl, $0039 ; 92112 (24:6112) -> 21 39 00
-	scall CheckEventFlag ; 92115 (24:6115) -> CD 2E 46
-	or a ; 92118 (24:6118) -> B7
-	jp nz, label_92127 ; 92119 (24:6119) -> C2 27 61
-	ld e, $13 ; 9211C (24:611c) -> 1E 13
-	ld hl, Data_91caf ; 9211E (24:611e) -> 21 AF 5C
-	scall LoadEncounters ; 92121 (24:6121) -> CD 24 4D
-	jp label_92144 ; 92124 (24:6124) -> C3 44 61
+	ld a, $07
+	ld [wc7e2], a
+	ld e, $05
+	ld hl, Data_91b6d
+	scall LoadWarps
+	ld e, $03
+	ld hl, Data_91ba4
+	scall Func_80ce7
+	ld e, $11
+	ld hl, Data_91fd5
+	scall LoadMapObjects
+	ld a, $0d
+	scall PlayMusic
+	ld a, $03
+	scall Func_80d01
+	ld a, $1e
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_92147
+	ld a, $1f
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_92147
+	ld a, $20
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_92147
+	ld a, $21
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_92147
+	ld hl, $0039
+	scall CheckEventFlag
+	or a
+	jp nz, label_92127
+	ld e, $13
+	ld hl, Data_91caf
+	scall LoadEncounters
+	jp label_92144
 label_92127:
-	ld hl, $0047 ; 92127 (24:6127) -> 21 47 00
-	scall CheckEventFlag ; 9212A (24:612a) -> CD 2E 46
-	or a ; 9212D (24:612d) -> B7
-	jp nz, label_9213c ; 9212E (24:612e) -> C2 3C 61
-	ld e, $13 ; 92131 (24:6131) -> 1E 13
-	ld hl, Data_91db9 ; 92133 (24:6133) -> 21 B9 5D
-	scall LoadEncounters ; 92136 (24:6136) -> CD 24 4D
-	jp label_92144 ; 92139 (24:6139) -> C3 44 61
+	ld hl, $0047
+	scall CheckEventFlag
+	or a
+	jp nz, label_9213c
+	ld e, $13
+	ld hl, Data_91db9
+	scall LoadEncounters
+	jp label_92144
 label_9213c:
-	ld e, $13 ; 9213C (24:613c) -> 1E 13
-	ld hl, Data_91ec3 ; 9213E (24:613e) -> 21 C3 5E
-	scall LoadEncounters ; 92141 (24:6141) -> CD 24 4D
+	ld e, $13
+	ld hl, Data_91ec3
+	scall LoadEncounters
 label_92144:
-	jp label_9214f ; 92144 (24:6144) -> C3 4F 61
+	jp label_9214f
 label_92147:
-	ld e, $12 ; 92147 (24:6147) -> 1E 12
-	ld hl, Data_91bb3 ; 92149 (24:6149) -> 21 B3 5B
-	scall LoadEncounters ; 9214C (24:614c) -> CD 24 4D
+	ld e, $12
+	ld hl, Data_91bb3
+	scall LoadEncounters
 label_9214f:
-	ld hl, $0047 ; 9214F (24:614f) -> 21 47 00
-	scall CheckEventFlag ; 92152 (24:6152) -> CD 2E 46
-	cp $01 ; 92155 (24:6155) -> FE 01
-	jp nz, label_92180 ; 92157 (24:6157) -> C2 80 61
-	ld a, $20 ; 9215A (24:615a) -> 3E 20
-	scall Func_80e6d ; 9215C (24:615c) -> CD 6D 4E
-	cp $ff ; 9215F (24:615f) -> FE FF
-	jp nz, label_92178 ; 92161 (24:6161) -> C2 78 61
-	ld a, $21 ; 92164 (24:6164) -> 3E 21
-	scall Func_80e6d ; 92166 (24:6166) -> CD 6D 4E
-	cp $ff ; 92169 (24:6169) -> FE FF
-	jp nz, label_92178 ; 9216B (24:616b) -> C2 78 61
-	ld a, $7e ; 9216E (24:616e) -> 3E 7E
-	scall Func_80e6d ; 92170 (24:6170) -> CD 6D 4E
-	cp $ff ; 92173 (24:6173) -> FE FF
-	jp z, label_92180 ; 92175 (24:6175) -> CA 80 61
+	ld hl, $0047
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_92180
+	ld a, $20
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_92178
+	ld a, $21
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_92178
+	ld a, $7e
+	scall Func_80e6d
+	cp $ff
+	jp z, label_92180
 label_92178:
-	ld a, $03 ; 92178 (24:6178) -> 3E 03
-	scall LoadPlayerSprite ; 9217A (24:617a) -> CD C6 4C
-	jp label_9219a ; 9217D (24:617d) -> C3 9A 61
+	ld a, $03
+	scall LoadPlayerSprite
+	jp label_9219a
 label_92180:
-	ld hl, $0039 ; 92180 (24:6180) -> 21 39 00
-	scall CheckEventFlag ; 92183 (24:6183) -> CD 2E 46
-	cp $01 ; 92186 (24:6186) -> FE 01
-	jp nz, label_9219a ; 92188 (24:6188) -> C2 9A 61
-	ld a, $1f ; 9218B (24:618b) -> 3E 1F
-	scall Func_80e6d ; 9218D (24:618d) -> CD 6D 4E
-	cp $ff ; 92190 (24:6190) -> FE FF
-	jp z, label_9219a ; 92192 (24:6192) -> CA 9A 61
-	ld a, $02 ; 92195 (24:6195) -> 3E 02
-	scall LoadPlayerSprite ; 92197 (24:6197) -> CD C6 4C
+	ld hl, $0039
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_9219a
+	ld a, $1f
+	scall Func_80e6d
+	cp $ff
+	jp z, label_9219a
+	ld a, $02
+	scall LoadPlayerSprite
 label_9219a:
-	ld hl, $008d ; 9219A (24:619a) -> 21 8D 00
-	scall CheckEventFlag ; 9219D (24:619d) -> CD 2E 46
-	cp $01 ; 921A0 (24:61a0) -> FE 01
-	jp nz, label_921ac ; 921A2 (24:61a2) -> C2 AC 61
-	ld e, $00 ; 921A5 (24:61a5) -> 1E 00
-	ld a, $0a ; 921A7 (24:61a7) -> 3E 0A
-	scall SetPersonVisibilityState ; 921A9 (24:61a9) -> CD 3D 41
+	ld hl, $008d
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_921ac
+	ld e, $00
+	ld a, $0a
+	scall SetPersonVisibilityState
 label_921ac:
-	ld a, [wc790] ; 921AC (24:61ac) -> FA 90 C7
-	or a ; 921AF (24:61af) -> B7
-	jp z, label_921dd ; 921B0 (24:61b0) -> CA DD 61
-	ld a, [wc790] ; 921B3 (24:61b3) -> FA 90 C7
-	cp $06 ; 921B6 (24:61b6) -> FE 06
-	jp nc, label_921dd ; 921B8 (24:61b8) -> D2 DD 61
-	ld e, $00 ; 921BB (24:61bb) -> 1E 00
-	xor a ; 921BD (24:61bd) -> AF
-	scall SetPersonVisibilityState ; 921BE (24:61be) -> CD 3D 41
-	ld e, $00 ; 921C1 (24:61c1) -> 1E 00
-	ld a, $06 ; 921C3 (24:61c3) -> 3E 06
-	scall SetPersonVisibilityState ; 921C5 (24:61c5) -> CD 3D 41
-	ld e, $00 ; 921C8 (24:61c8) -> 1E 00
-	ld a, $07 ; 921CA (24:61ca) -> 3E 07
-	scall SetPersonVisibilityState ; 921CC (24:61cc) -> CD 3D 41
-	ld e, $00 ; 921CF (24:61cf) -> 1E 00
-	ld a, $08 ; 921D1 (24:61d1) -> 3E 08
-	scall SetPersonVisibilityState ; 921D3 (24:61d3) -> CD 3D 41
-	ld e, $00 ; 921D6 (24:61d6) -> 1E 00
-	ld a, $09 ; 921D8 (24:61d8) -> 3E 09
-	scall SetPersonVisibilityState ; 921DA (24:61da) -> CD 3D 41
+	ld a, [wc790]
+	or a
+	jp z, label_921dd
+	ld a, [wc790]
+	cp $06
+	jp nc, label_921dd
+	ld e, $00
+	xor a
+	scall SetPersonVisibilityState
+	ld e, $00
+	ld a, $06
+	scall SetPersonVisibilityState
+	ld e, $00
+	ld a, $07
+	scall SetPersonVisibilityState
+	ld e, $00
+	ld a, $08
+	scall SetPersonVisibilityState
+	ld e, $00
+	ld a, $09
+	scall SetPersonVisibilityState
 label_921dd:
-	ld e, $00 ; 921DD (24:61dd) -> 1E 00
-	ld a, $0e ; 921DF (24:61df) -> 3E 0E
-	scall SetPersonVisibilityState ; 921E1 (24:61e1) -> CD 3D 41
-	scall Func_8001c ; 921E4 (24:61e4) -> CD 1C 40
-	ret  ; 921E7 (24:61e7) -> C9
+	ld e, $00
+	ld a, $0e
+	scall SetPersonVisibilityState
+	scall Func_8001c
+	ret
 
 Data_921e8:
 	db $00, $00, $00, $02, $00, $c5, $b0, $00, $00, $8a, $01
@@ -1399,241 +1397,241 @@ Data_921e8:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_92211:
-	ld a, e ; 92211 (24:6211) -> 7B
-	or a ; 92212 (24:6212) -> B7
-	jp nz, label_92251 ; 92213 (24:6213) -> C2 51 62
-	xor a ; 92216 (24:6216) -> AF
-	scall FacePlayer ; 92217 (24:6217) -> CD 4B 44
-	ld hl, $0088 ; 9221A (24:621a) -> 21 88 00
-	scall CheckEventFlag ; 9221D (24:621d) -> CD 2E 46
-	or a ; 92220 (24:6220) -> B7
-	jp nz, label_9224b ; 92221 (24:6221) -> C2 4B 62
-	ld hl, $0099 ; 92224 (24:6224) -> 21 99 00
-	scall PrintTextWithNPCName ; 92227 (24:6227) -> CD A9 44
-	ld de, Data_92252 ; 9222A (24:622a) -> 11 52 62
-	ld hl, Data_921e8 ; 9222D (24:622d) -> 21 E8 61
-	scall ScriptedBattle ; 92230 (24:6230) -> CD D3 4D
-	or a ; 92233 (24:6233) -> B7
-	jp nz, label_9223a ; 92234 (24:6234) -> C2 3A 62
-	jp label_92251 ; 92237 (24:6237) -> C3 51 62
+	ld a, e
+	or a
+	jp nz, label_92251
+	xor a
+	scall FacePlayer
+	ld hl, $0088
+	scall CheckEventFlag
+	or a
+	jp nz, label_9224b
+	hltext_tree_pointer TreeBitstreamText_3babb
+	scall PrintTextWithNPCName
+	ld de, Data_92252
+	ld hl, Data_921e8
+	scall ScriptedBattle
+	or a
+	jp nz, label_9223a
+	jp label_92251
 label_9223a:
-	ld hl, $009a ; 9223A (24:623a) -> 21 9A 00
-	scall PrintTextWithNPCName ; 9223D (24:623d) -> CD A9 44
-	ld e, $01 ; 92240 (24:6240) -> 1E 01
-	ld hl, $0088 ; 92242 (24:6242) -> 21 88 00
-	scall EventFlagAction ; 92245 (24:6245) -> CD 1B 46
-	jp label_92251 ; 92248 (24:6248) -> C3 51 62
+	hltext_tree_pointer TreeBitstreamText_3baee
+	scall PrintTextWithNPCName
+	ld e, $01
+	ld hl, $0088
+	scall EventFlagAction
+	jp label_92251
 label_9224b:
-	ld hl, $009b ; 9224B (24:624b) -> 21 9B 00
-	scall PrintTextWithNPCName ; 9224E (24:624e) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_3bb2b
+	scall PrintTextWithNPCName
 label_92251:
-	ret  ; 92251 (24:6251) -> C9
+	ret
 
 Data_92252:
 	dstr "ウォリア"
 
 Func_92257:
-	ld a, e ; 92257 (24:6257) -> 7B
-	cp $02 ; 92258 (24:6258) -> FE 02
-	jp nz, label_9233a ; 9225A (24:625a) -> C2 3A 63
-	ld a, $1f ; 9225D (24:625d) -> 3E 1F
-	scall Func_80e6d ; 9225F (24:625f) -> CD 6D 4E
-	cp $ff ; 92262 (24:6262) -> FE FF
-	jp nz, label_922b2 ; 92264 (24:6264) -> C2 B2 62
-	ld a, $20 ; 92267 (24:6267) -> 3E 20
-	scall Func_80e6d ; 92269 (24:6269) -> CD 6D 4E
-	cp $ff ; 9226C (24:626c) -> FE FF
-	jp nz, label_922b2 ; 9226E (24:626e) -> C2 B2 62
-	ld a, $21 ; 92271 (24:6271) -> 3E 21
-	scall Func_80e6d ; 92273 (24:6273) -> CD 6D 4E
-	cp $ff ; 92276 (24:6276) -> FE FF
-	jp nz, label_922b2 ; 92278 (24:6278) -> C2 B2 62
-	ld a, $7e ; 9227B (24:627b) -> 3E 7E
-	scall Func_80e6d ; 9227D (24:627d) -> CD 6D 4E
-	cp $ff ; 92280 (24:6280) -> FE FF
-	jp nz, label_922b2 ; 92282 (24:6282) -> C2 B2 62
-	ld c, $01 ; 92285 (24:6285) -> 0E 01
-	ld e, $01 ; 92287 (24:6287) -> 1E 01
-	ld a, $1b ; 92289 (24:6289) -> 3E 1B
-	scall LoadEmote ; 9228B (24:628b) -> CD 76 41
-	xor a ; 9228E (24:628e) -> AF
-	scall Func_80653 ; 9228F (24:628f) -> CD 53 46
-	ld a, $37 ; 92292 (24:6292) -> 3E 37
-	scall PlaySFX ; 92294 (24:6294) -> CD FE 4E
-	scall WaitEmote ; 92297 (24:6297) -> CD D5 41
-	scall HideEmote ; 9229A (24:629a) -> CD 8B 41
-	ld a, $02 ; 9229D (24:629d) -> 3E 02
-	scall PlayerFace ; 9229F (24:629f) -> CD 77 46
-	ld l, $06 ; 922A2 (24:62a2) -> 2E 06
-	push hl ; 922A4 (24:62a4) -> E5
-	ld c, $0d ; 922A5 (24:62a5) -> 0E 0D
-	ld e, $01 ; 922A7 (24:62a7) -> 1E 01
-	ld a, $09 ; 922A9 (24:62a9) -> 3E 09
-	scall Func_80dff ; 922AB (24:62ab) -> CD FF 4D
-	pop bc ; 922AE (24:62ae) -> C1
-	jp label_9233a ; 922AF (24:62af) -> C3 3A 63
+	ld a, e
+	cp $02
+	jp nz, label_9233a
+	ld a, $1f
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_922b2
+	ld a, $20
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_922b2
+	ld a, $21
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_922b2
+	ld a, $7e
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_922b2
+	ld c, $01
+	ld e, $01
+	ld a, $1b
+	scall LoadEmote
+	xor a
+	scall Func_80653
+	ld a, $37
+	scall PlaySFX
+	scall WaitEmote
+	scall HideEmote
+	ld a, $02
+	scall PlayerFace
+	ld l, $06
+	push hl
+	ld c, $0d
+	ld e, $01
+	ld a, $09
+	scall Func_80dff
+	pop bc
+	jp label_9233a
 label_922b2:
-	ld hl, $0047 ; 922B2 (24:62b2) -> 21 47 00
-	scall CheckEventFlag ; 922B5 (24:62b5) -> CD 2E 46
-	cp $01 ; 922B8 (24:62b8) -> FE 01
-	jp nz, label_922eb ; 922BA (24:62ba) -> C2 EB 62
-	ld a, $20 ; 922BD (24:62bd) -> 3E 20
-	scall Func_80e6d ; 922BF (24:62bf) -> CD 6D 4E
-	cp $ff ; 922C2 (24:62c2) -> FE FF
-	jp nz, label_922db ; 922C4 (24:62c4) -> C2 DB 62
-	ld a, $21 ; 922C7 (24:62c7) -> 3E 21
-	scall Func_80e6d ; 922C9 (24:62c9) -> CD 6D 4E
-	cp $ff ; 922CC (24:62cc) -> FE FF
-	jp nz, label_922db ; 922CE (24:62ce) -> C2 DB 62
-	ld a, $7e ; 922D1 (24:62d1) -> 3E 7E
-	scall Func_80e6d ; 922D3 (24:62d3) -> CD 6D 4E
-	cp $ff ; 922D6 (24:62d6) -> FE FF
-	jp z, label_922eb ; 922D8 (24:62d8) -> CA EB 62
+	ld hl, $0047
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_922eb
+	ld a, $20
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_922db
+	ld a, $21
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_922db
+	ld a, $7e
+	scall Func_80e6d
+	cp $ff
+	jp z, label_922eb
 label_922db:
-	ld a, [wPlayerState] ; 922DB (24:62db) -> FA E1 C7
-	cp $03 ; 922DE (24:62de) -> FE 03
-	jp z, label_922e8 ; 922E0 (24:62e0) -> CA E8 62
-	ld a, $03 ; 922E3 (24:62e3) -> 3E 03
-	scall LoadPlayerSprite ; 922E5 (24:62e5) -> CD C6 4C
+	ld a, [wPlayerState]
+	cp $03
+	jp z, label_922e8
+	ld a, $03
+	scall LoadPlayerSprite
 label_922e8:
-	jp label_9233a ; 922E8 (24:62e8) -> C3 3A 63
+	jp label_9233a
 label_922eb:
-	ld a, $1f ; 922EB (24:62eb) -> 3E 1F
-	scall Func_80e6d ; 922ED (24:62ed) -> CD 6D 4E
-	cp $ff ; 922F0 (24:62f0) -> FE FF
-	jp z, label_92310 ; 922F2 (24:62f2) -> CA 10 63
-	ld hl, $0039 ; 922F5 (24:62f5) -> 21 39 00
-	scall CheckEventFlag ; 922F8 (24:62f8) -> CD 2E 46
-	cp $01 ; 922FB (24:62fb) -> FE 01
-	jp nz, label_92310 ; 922FD (24:62fd) -> C2 10 63
-	ld a, [wPlayerState] ; 92300 (24:6300) -> FA E1 C7
-	cp $02 ; 92303 (24:6303) -> FE 02
-	jp z, label_9230d ; 92305 (24:6305) -> CA 0D 63
-	ld a, $02 ; 92308 (24:6308) -> 3E 02
-	scall LoadPlayerSprite ; 9230A (24:630a) -> CD C6 4C
+	ld a, $1f
+	scall Func_80e6d
+	cp $ff
+	jp z, label_92310
+	ld hl, $0039
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_92310
+	ld a, [wPlayerState]
+	cp $02
+	jp z, label_9230d
+	ld a, $02
+	scall LoadPlayerSprite
 label_9230d:
-	jp label_9233a ; 9230D (24:630d) -> C3 3A 63
+	jp label_9233a
 label_92310:
-	ld c, $01 ; 92310 (24:6310) -> 0E 01
-	ld e, $01 ; 92312 (24:6312) -> 1E 01
-	ld a, $1b ; 92314 (24:6314) -> 3E 1B
-	scall LoadEmote ; 92316 (24:6316) -> CD 76 41
-	xor a ; 92319 (24:6319) -> AF
-	scall Func_80653 ; 9231A (24:631a) -> CD 53 46
-	ld a, $37 ; 9231D (24:631d) -> 3E 37
-	scall PlaySFX ; 9231F (24:631f) -> CD FE 4E
-	scall WaitEmote ; 92322 (24:6322) -> CD D5 41
-	scall HideEmote ; 92325 (24:6325) -> CD 8B 41
-	ld a, $02 ; 92328 (24:6328) -> 3E 02
-	scall PlayerFace ; 9232A (24:632a) -> CD 77 46
-	ld l, $06 ; 9232D (24:632d) -> 2E 06
-	push hl ; 9232F (24:632f) -> E5
-	ld c, $0d ; 92330 (24:6330) -> 0E 0D
-	ld e, $01 ; 92332 (24:6332) -> 1E 01
-	ld a, $09 ; 92334 (24:6334) -> 3E 09
-	scall Func_80dff ; 92336 (24:6336) -> CD FF 4D
-	pop bc ; 92339 (24:6339) -> C1
+	ld c, $01
+	ld e, $01
+	ld a, $1b
+	scall LoadEmote
+	xor a
+	scall Func_80653
+	ld a, $37
+	scall PlaySFX
+	scall WaitEmote
+	scall HideEmote
+	ld a, $02
+	scall PlayerFace
+	ld l, $06
+	push hl
+	ld c, $0d
+	ld e, $01
+	ld a, $09
+	scall Func_80dff
+	pop bc
 label_9233a:
-	ret  ; 9233A (24:633a) -> C9
+	ret
 
 Func_9233b:
-	push bc ; 9233B (24:633b) -> C5
-	push bc ; 9233C (24:633c) -> C5
-	ld hl, sp+$03 ; 9233D (24:633d) -> F8 03
-	ld a, $ff ; 9233F (24:633f) -> 3E FF
-	ld [hl], a ; 92341 (24:6341) -> 77
-	ld hl, sp+$02 ; 92342 (24:6342) -> F8 02
-	ld [hl], a ; 92344 (24:6344) -> 77
-	ld a, e ; 92345 (24:6345) -> 7B
-	cp $02 ; 92346 (24:6346) -> FE 02
-	jp nz, label_923f6 ; 92348 (24:6348) -> C2 F6 63
-	ld a, $20 ; 9234B (24:634b) -> 3E 20
-	scall Func_80e6d ; 9234D (24:634d) -> CD 6D 4E
-	cp $ff ; 92350 (24:6350) -> FE FF
-	jp nz, label_923a1 ; 92352 (24:6352) -> C2 A1 63
-	ld a, $21 ; 92355 (24:6355) -> 3E 21
-	scall Func_80e6d ; 92357 (24:6357) -> CD 6D 4E
-	cp $ff ; 9235A (24:635a) -> FE FF
-	jp nz, label_923a1 ; 9235C (24:635c) -> C2 A1 63
-	ld a, $7e ; 9235F (24:635f) -> 3E 7E
-	scall Func_80e6d ; 92361 (24:6361) -> CD 6D 4E
-	cp $ff ; 92364 (24:6364) -> FE FF
-	jp nz, label_923a1 ; 92366 (24:6366) -> C2 A1 63
-	ld hl, $035a ; 92369 (24:6369) -> 21 5A 03
-	scall PrintTextStandard ; 9236C (24:636c) -> CD 98 44
-	ld hl, sp+$00 ; 9236F (24:636f) -> F8 00
-	ld a, [wMapX] ; 92371 (24:6371) -> FA D8 C2
-	add a, $05 ; 92374 (24:6374) -> C6 05
-	ld [hl], a ; 92376 (24:6376) -> 77
-	ld a, [wPlayerFacing] ; 92377 (24:6377) -> FA 38 C8
-	or a ; 9237A (24:637a) -> B7
-	jp nz, label_92389 ; 9237B (24:637b) -> C2 89 63
-	ld hl, sp+$01 ; 9237E (24:637e) -> F8 01
-	ld a, [wMapY] ; 92380 (24:6380) -> FA D9 C2
-	add a, $05 ; 92383 (24:6383) -> C6 05
-	ld [hl], a ; 92385 (24:6385) -> 77
-	jp label_92391 ; 92386 (24:6386) -> C3 91 63
+	push bc
+	push bc
+	ld hl, sp+$03
+	ld a, $ff
+	ld [hl], a
+	ld hl, sp+$02
+	ld [hl], a
+	ld a, e
+	cp $02
+	jp nz, label_923f6
+	ld a, $20
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_923a1
+	ld a, $21
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_923a1
+	ld a, $7e
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_923a1
+	hltext_tree_pointer TreeBitstreamText_46fe6
+	scall PrintTextStandard
+	ld hl, sp+$00
+	ld a, [wMapX]
+	add a, $05
+	ld [hl], a
+	ld a, [wPlayerFacing]
+	or a
+	jp nz, label_92389
+	ld hl, sp+$01
+	ld a, [wMapY]
+	add a, $05
+	ld [hl], a
+	jp label_92391
 label_92389:
-	ld hl, sp+$01 ; 92389 (24:6389) -> F8 01
-	ld a, [wMapY] ; 9238B (24:638b) -> FA D9 C2
-	add a, $03 ; 9238E (24:638e) -> C6 03
-	ld [hl], a ; 92390 (24:6390) -> 77
+	ld hl, sp+$01
+	ld a, [wMapY]
+	add a, $03
+	ld [hl], a
 label_92391:
-	ld c, $01 ; 92391 (24:6391) -> 0E 01
-	ld hl, sp+$00 ; 92393 (24:6393) -> F8 00
-	push de ; 92395 (24:6395) -> D5
-	push hl ; 92396 (24:6396) -> E5
-	pop de ; 92397 (24:6397) -> D1
-	pop hl ; 92398 (24:6398) -> E1
-	ld a, $24 ; 92399 (24:6399) -> 3E 24
-	scall MovePlayer ; 9239B (24:639b) -> CD 3E 46
-	jp label_923f6 ; 9239E (24:639e) -> C3 F6 63
+	ld c, $01
+	ld hl, sp+$00
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, $24
+	scall MovePlayer
+	jp label_923f6
 label_923a1:
-	ld hl, $0047 ; 923A1 (24:63a1) -> 21 47 00
-	scall CheckEventFlag ; 923A4 (24:63a4) -> CD 2E 46
-	or a ; 923A7 (24:63a7) -> B7
-	jp nz, label_923e9 ; 923A8 (24:63a8) -> C2 E9 63
-	ld hl, $035a ; 923AB (24:63ab) -> 21 5A 03
-	scall PrintTextStandard ; 923AE (24:63ae) -> CD 98 44
-	ld hl, sp+$00 ; 923B1 (24:63b1) -> F8 00
-	ld a, [wMapX] ; 923B3 (24:63b3) -> FA D8 C2
-	add a, $05 ; 923B6 (24:63b6) -> C6 05
-	ld [hl], a ; 923B8 (24:63b8) -> 77
-	ld a, [wPlayerFacing] ; 923B9 (24:63b9) -> FA 38 C8
-	or a ; 923BC (24:63bc) -> B7
-	jp nz, label_923cb ; 923BD (24:63bd) -> C2 CB 63
-	ld hl, sp+$01 ; 923C0 (24:63c0) -> F8 01
-	ld a, [wMapY] ; 923C2 (24:63c2) -> FA D9 C2
-	add a, $05 ; 923C5 (24:63c5) -> C6 05
-	ld [hl], a ; 923C7 (24:63c7) -> 77
-	jp label_923d3 ; 923C8 (24:63c8) -> C3 D3 63
+	ld hl, $0047
+	scall CheckEventFlag
+	or a
+	jp nz, label_923e9
+	hltext_tree_pointer TreeBitstreamText_46fe6
+	scall PrintTextStandard
+	ld hl, sp+$00
+	ld a, [wMapX]
+	add a, $05
+	ld [hl], a
+	ld a, [wPlayerFacing]
+	or a
+	jp nz, label_923cb
+	ld hl, sp+$01
+	ld a, [wMapY]
+	add a, $05
+	ld [hl], a
+	jp label_923d3
 label_923cb:
-	ld hl, sp+$01 ; 923CB (24:63cb) -> F8 01
-	ld a, [wMapY] ; 923CD (24:63cd) -> FA D9 C2
-	add a, $03 ; 923D0 (24:63d0) -> C6 03
-	ld [hl], a ; 923D2 (24:63d2) -> 77
+	ld hl, sp+$01
+	ld a, [wMapY]
+	add a, $03
+	ld [hl], a
 label_923d3:
-	ld c, $01 ; 923D3 (24:63d3) -> 0E 01
-	ld hl, sp+$00 ; 923D5 (24:63d5) -> F8 00
-	push de ; 923D7 (24:63d7) -> D5
-	push hl ; 923D8 (24:63d8) -> E5
-	pop de ; 923D9 (24:63d9) -> D1
-	pop hl ; 923DA (24:63da) -> E1
-	ld a, $24 ; 923DB (24:63db) -> 3E 24
-	scall MovePlayer ; 923DD (24:63dd) -> CD 3E 46
-	ld hl, $048c ; 923E0 (24:63e0) -> 21 8C 04
-	scall PrintTextWithNPCName ; 923E3 (24:63e3) -> CD A9 44
-	jp label_923f6 ; 923E6 (24:63e6) -> C3 F6 63
+	ld c, $01
+	ld hl, sp+$00
+	push de
+	push hl
+	pop de
+	pop hl
+	ld a, $24
+	scall MovePlayer
+	hltext_tree_pointer TreeBitstreamText_46ffa
+	scall PrintTextWithNPCName
+	jp label_923f6
 label_923e9:
-	ld a, [wPlayerState] ; 923E9 (24:63e9) -> FA E1 C7
-	cp $03 ; 923EC (24:63ec) -> FE 03
-	jp z, label_923f6 ; 923EE (24:63ee) -> CA F6 63
-	ld a, $03 ; 923F1 (24:63f1) -> 3E 03
-	scall LoadPlayerSprite ; 923F3 (24:63f3) -> CD C6 4C
+	ld a, [wPlayerState]
+	cp $03
+	jp z, label_923f6
+	ld a, $03
+	scall LoadPlayerSprite
 label_923f6:
-	pop bc ; 923F6 (24:63f6) -> C1
-	pop bc ; 923F7 (24:63f7) -> C1
-	ret  ; 923F8 (24:63f8) -> C9
+	pop bc
+	pop bc
+	ret
 
 Data_923f9:
 	db $00, $00, $00, $02, $00, $c5, $b0, $00, $00, $1f
@@ -1641,47 +1639,47 @@ Data_923f9:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_92422:
-	push af ; 92422 (24:6422) -> F5
-	ld a, e ; 92423 (24:6423) -> 7B
-	or a ; 92424 (24:6424) -> B7
-	jp nz, label_92478 ; 92425 (24:6425) -> C2 78 64
-	ld hl, sp+$01 ; 92428 (24:6428) -> F8 01
-	ld a, [hl] ; 9242A (24:642a) -> 7E
-	scall FacePlayer ; 9242B (24:642b) -> CD 4B 44
-	ld hl, $0089 ; 9242E (24:642e) -> 21 89 00
-	scall CheckEventFlag ; 92431 (24:6431) -> CD 2E 46
-	or a ; 92434 (24:6434) -> B7
-	jp nz, label_92472 ; 92435 (24:6435) -> C2 72 64
-	ld hl, $023a ; 92438 (24:6438) -> 21 3A 02
-	scall PrintTextStandard ; 9243B (24:643b) -> CD 98 44
-	ld hl, $032c ; 9243E (24:643e) -> 21 2C 03
-	scall PrintTextWithYesNoBox ; 92441 (24:6441) -> CD BA 44
-	or a ; 92444 (24:6444) -> B7
-	jp nz, label_92469 ; 92445 (24:6445) -> C2 69 64
-	ld de, Data_9247a ; 92448 (24:6448) -> 11 7A 64
-	ld hl, Data_923f9 ; 9244B (24:644b) -> 21 F9 63
-	scall ScriptedBattle ; 9244E (24:644e) -> CD D3 4D
-	or a ; 92451 (24:6451) -> B7
-	jp nz, label_92458 ; 92452 (24:6452) -> C2 58 64
-	jp label_92478 ; 92455 (24:6455) -> C3 78 64
+	push af
+	ld a, e
+	or a
+	jp nz, label_92478
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld hl, $0089
+	scall CheckEventFlag
+	or a
+	jp nz, label_92472
+	hltext_tree_pointer TreeBitstreamText_42a37
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_46f28
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_92469
+	ld de, Data_9247a
+	ld hl, Data_923f9
+	scall ScriptedBattle
+	or a
+	jp nz, label_92458
+	jp label_92478
 label_92458:
-	ld e, $01 ; 92458 (24:6458) -> 1E 01
-	ld hl, $0089 ; 9245A (24:645a) -> 21 89 00
-	scall EventFlagAction ; 9245D (24:645d) -> CD 1B 46
-	ld hl, $023b ; 92460 (24:6460) -> 21 3B 02
-	scall PrintTextStandard ; 92463 (24:6463) -> CD 98 44
-	jp label_9246f ; 92466 (24:6466) -> C3 6F 64
+	ld e, $01
+	ld hl, $0089
+	scall EventFlagAction
+	hltext_tree_pointer TreeBitstreamText_42a4c
+	scall PrintTextStandard
+	jp label_9246f
 label_92469:
-	ld hl, $024c ; 92469 (24:6469) -> 21 4C 02
-	scall PrintTextStandard ; 9246C (24:646c) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42b32
+	scall PrintTextStandard
 label_9246f:
-	jp label_92478 ; 9246F (24:646f) -> C3 78 64
+	jp label_92478
 label_92472:
-	ld hl, $023b ; 92472 (24:6472) -> 21 3B 02
-	scall PrintTextStandard ; 92475 (24:6475) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42a4c
+	scall PrintTextStandard
 label_92478:
-	pop bc ; 92478 (24:6478) -> C1
-	ret  ; 92479 (24:6479) -> C9
+	pop bc
+	ret
 
 Data_9247a:
 	dstr "ソﾞッキー"
@@ -1692,47 +1690,47 @@ Data_92480:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_924a9:
-	push af ; 924A9 (24:64a9) -> F5
-	ld a, e ; 924AA (24:64aa) -> 7B
-	or a ; 924AB (24:64ab) -> B7
-	jp nz, label_924ff ; 924AC (24:64ac) -> C2 FF 64
-	ld hl, sp+$01 ; 924AF (24:64af) -> F8 01
-	ld a, [hl] ; 924B1 (24:64b1) -> 7E
-	scall FacePlayer ; 924B2 (24:64b2) -> CD 4B 44
-	ld hl, $008a ; 924B5 (24:64b5) -> 21 8A 00
-	scall CheckEventFlag ; 924B8 (24:64b8) -> CD 2E 46
-	or a ; 924BB (24:64bb) -> B7
-	jp nz, label_924f9 ; 924BC (24:64bc) -> C2 F9 64
-	ld hl, $023c ; 924BF (24:64bf) -> 21 3C 02
-	scall PrintTextStandard ; 924C2 (24:64c2) -> CD 98 44
-	ld hl, $032c ; 924C5 (24:64c5) -> 21 2C 03
-	scall PrintTextWithYesNoBox ; 924C8 (24:64c8) -> CD BA 44
-	or a ; 924CB (24:64cb) -> B7
-	jp nz, label_924f0 ; 924CC (24:64cc) -> C2 F0 64
-	ld de, Data_92501 ; 924CF (24:64cf) -> 11 01 65
-	ld hl, Data_92480 ; 924D2 (24:64d2) -> 21 80 64
-	scall ScriptedBattle ; 924D5 (24:64d5) -> CD D3 4D
-	or a ; 924D8 (24:64d8) -> B7
-	jp nz, label_924df ; 924D9 (24:64d9) -> C2 DF 64
-	jp label_924ff ; 924DC (24:64dc) -> C3 FF 64
+	push af
+	ld a, e
+	or a
+	jp nz, label_924ff
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld hl, $008a
+	scall CheckEventFlag
+	or a
+	jp nz, label_924f9
+	hltext_tree_pointer TreeBitstreamText_42a61
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_46f28
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_924f0
+	ld de, Data_92501
+	ld hl, Data_92480
+	scall ScriptedBattle
+	or a
+	jp nz, label_924df
+	jp label_924ff
 label_924df:
-	ld e, $01 ; 924DF (24:64df) -> 1E 01
-	ld hl, $008a ; 924E1 (24:64e1) -> 21 8A 00
-	scall EventFlagAction ; 924E4 (24:64e4) -> CD 1B 46
-	ld hl, $023d ; 924E7 (24:64e7) -> 21 3D 02
-	scall PrintTextStandard ; 924EA (24:64ea) -> CD 98 44
-	jp label_924f6 ; 924ED (24:64ed) -> C3 F6 64
+	ld e, $01
+	ld hl, $008a
+	scall EventFlagAction
+	hltext_tree_pointer TreeBitstreamText_42a6e
+	scall PrintTextStandard
+	jp label_924f6
 label_924f0:
-	ld hl, $024d ; 924F0 (24:64f0) -> 21 4D 02
-	scall PrintTextStandard ; 924F3 (24:64f3) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42b41
+	scall PrintTextStandard
 label_924f6:
-	jp label_924ff ; 924F6 (24:64f6) -> C3 FF 64
+	jp label_924ff
 label_924f9:
-	ld hl, $023d ; 924F9 (24:64f9) -> 21 3D 02
-	scall PrintTextStandard ; 924FC (24:64fc) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42a6e
+	scall PrintTextStandard
 label_924ff:
-	pop bc ; 924FF (24:64ff) -> C1
-	ret  ; 92500 (24:6500) -> C9
+	pop bc
+	ret
 
 Data_92501:
 	dstr "レテﾞィース"
@@ -1743,47 +1741,47 @@ Data_92508:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_92531:
-	push af ; 92531 (24:6531) -> F5
-	ld a, e ; 92532 (24:6532) -> 7B
-	or a ; 92533 (24:6533) -> B7
-	jp nz, label_92587 ; 92534 (24:6534) -> C2 87 65
-	ld hl, sp+$01 ; 92537 (24:6537) -> F8 01
-	ld a, [hl] ; 92539 (24:6539) -> 7E
-	scall FacePlayer ; 9253A (24:653a) -> CD 4B 44
-	ld hl, $008b ; 9253D (24:653d) -> 21 8B 00
-	scall CheckEventFlag ; 92540 (24:6540) -> CD 2E 46
-	or a ; 92543 (24:6543) -> B7
-	jp nz, label_92581 ; 92544 (24:6544) -> C2 81 65
-	ld hl, $023e ; 92547 (24:6547) -> 21 3E 02
-	scall PrintTextStandard ; 9254A (24:654a) -> CD 98 44
-	ld hl, $032c ; 9254D (24:654d) -> 21 2C 03
-	scall PrintTextWithYesNoBox ; 92550 (24:6550) -> CD BA 44
-	or a ; 92553 (24:6553) -> B7
-	jp nz, label_92578 ; 92554 (24:6554) -> C2 78 65
-	ld de, Data_92589 ; 92557 (24:6557) -> 11 89 65
-	ld hl, Data_92508 ; 9255A (24:655a) -> 21 08 65
-	scall ScriptedBattle ; 9255D (24:655d) -> CD D3 4D
-	or a ; 92560 (24:6560) -> B7
-	jp nz, label_92567 ; 92561 (24:6561) -> C2 67 65
-	jp label_92587 ; 92564 (24:6564) -> C3 87 65
+	push af
+	ld a, e
+	or a
+	jp nz, label_92587
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld hl, $008b
+	scall CheckEventFlag
+	or a
+	jp nz, label_92581
+	hltext_tree_pointer TreeBitstreamText_42a7e
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_46f28
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_92578
+	ld de, Data_92589
+	ld hl, Data_92508
+	scall ScriptedBattle
+	or a
+	jp nz, label_92567
+	jp label_92587
 label_92567:
-	ld e, $01 ; 92567 (24:6567) -> 1E 01
-	ld hl, $008b ; 92569 (24:6569) -> 21 8B 00
-	scall EventFlagAction ; 9256C (24:656c) -> CD 1B 46
-	ld hl, $023f ; 9256F (24:656f) -> 21 3F 02
-	scall PrintTextStandard ; 92572 (24:6572) -> CD 98 44
-	jp label_9257e ; 92575 (24:6575) -> C3 7E 65
+	ld e, $01
+	ld hl, $008b
+	scall EventFlagAction
+	hltext_tree_pointer TreeBitstreamText_42a9a
+	scall PrintTextStandard
+	jp label_9257e
 label_92578:
-	ld hl, $024b ; 92578 (24:6578) -> 21 4B 02
-	scall PrintTextStandard ; 9257B (24:657b) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42b24
+	scall PrintTextStandard
 label_9257e:
-	jp label_92587 ; 9257E (24:657e) -> C3 87 65
+	jp label_92587
 label_92581:
-	ld hl, $0240 ; 92581 (24:6581) -> 21 40 02
-	scall PrintTextStandard ; 92584 (24:6584) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42ab0
+	scall PrintTextStandard
 label_92587:
-	pop bc ; 92587 (24:6587) -> C1
-	ret  ; 92588 (24:6588) -> C9
+	pop bc
+	ret
 
 Data_92589:
 	dstr "ソﾞッキー"
@@ -1794,47 +1792,47 @@ Data_9258f:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_925b8:
-	push af ; 925B8 (24:65b8) -> F5
-	ld a, e ; 925B9 (24:65b9) -> 7B
-	or a ; 925BA (24:65ba) -> B7
-	jp nz, label_9260e ; 925BB (24:65bb) -> C2 0E 66
-	ld hl, sp+$01 ; 925BE (24:65be) -> F8 01
-	ld a, [hl] ; 925C0 (24:65c0) -> 7E
-	scall FacePlayer ; 925C1 (24:65c1) -> CD 4B 44
-	ld hl, $008c ; 925C4 (24:65c4) -> 21 8C 00
-	scall CheckEventFlag ; 925C7 (24:65c7) -> CD 2E 46
-	or a ; 925CA (24:65ca) -> B7
-	jp nz, label_92608 ; 925CB (24:65cb) -> C2 08 66
-	ld hl, $0242 ; 925CE (24:65ce) -> 21 42 02
-	scall PrintTextStandard ; 925D1 (24:65d1) -> CD 98 44
-	ld hl, $032c ; 925D4 (24:65d4) -> 21 2C 03
-	scall PrintTextWithYesNoBox ; 925D7 (24:65d7) -> CD BA 44
-	or a ; 925DA (24:65da) -> B7
-	jp nz, label_925ff ; 925DB (24:65db) -> C2 FF 65
-	ld de, Data_92610 ; 925DE (24:65de) -> 11 10 66
-	ld hl, Data_9258f ; 925E1 (24:65e1) -> 21 8F 65
-	scall ScriptedBattle ; 925E4 (24:65e4) -> CD D3 4D
-	or a ; 925E7 (24:65e7) -> B7
-	jp nz, label_925ee ; 925E8 (24:65e8) -> C2 EE 65
-	jp label_9260e ; 925EB (24:65eb) -> C3 0E 66
+	push af
+	ld a, e
+	or a
+	jp nz, label_9260e
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld hl, $008c
+	scall CheckEventFlag
+	or a
+	jp nz, label_92608
+	hltext_tree_pointer TreeBitstreamText_42abe
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_46f28
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_925ff
+	ld de, Data_92610
+	ld hl, Data_9258f
+	scall ScriptedBattle
+	or a
+	jp nz, label_925ee
+	jp label_9260e
 label_925ee:
-	ld e, $01 ; 925EE (24:65ee) -> 1E 01
-	ld hl, $008c ; 925F0 (24:65f0) -> 21 8C 00
-	scall EventFlagAction ; 925F3 (24:65f3) -> CD 1B 46
-	ld hl, $0243 ; 925F6 (24:65f6) -> 21 43 02
-	scall PrintTextStandard ; 925F9 (24:65f9) -> CD 98 44
-	jp label_92605 ; 925FC (24:65fc) -> C3 05 66
+	ld e, $01
+	ld hl, $008c
+	scall EventFlagAction
+	hltext_tree_pointer TreeBitstreamText_42ad0
+	scall PrintTextStandard
+	jp label_92605
 label_925ff:
-	ld hl, $024c ; 925FF (24:65ff) -> 21 4C 02
-	scall PrintTextStandard ; 92602 (24:6602) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42b32
+	scall PrintTextStandard
 label_92605:
-	jp label_9260e ; 92605 (24:6605) -> C3 0E 66
+	jp label_9260e
 label_92608:
-	ld hl, $0249 ; 92608 (24:6608) -> 21 49 02
-	scall PrintTextStandard ; 9260B (24:660b) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42b0b
+	scall PrintTextStandard
 label_9260e:
-	pop bc ; 9260E (24:660e) -> C1
-	ret  ; 9260F (24:660f) -> C9
+	pop bc
+	ret
 
 Data_92610:
 	dstr "ソﾞッキー"
@@ -1851,219 +1849,218 @@ Data_92622:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_9264b:
-	ld a, e ; 9264B (24:664b) -> 7B
-	or a ; 9264C (24:664c) -> B7
-	jp nz, label_926b4 ; 9264D (24:664d) -> C2 B4 66
-	ld hl, $008d ; 92650 (24:6650) -> 21 8D 00
-	scall CheckEventFlag ; 92653 (24:6653) -> CD 2E 46
-	or a ; 92656 (24:6656) -> B7
-	jp nz, label_926b4 ; 92657 (24:6657) -> C2 B4 66
-	ld a, $0a ; 9265A (24:665a) -> 3E 0A
-	scall FacePlayer ; 9265C (24:665c) -> CD 4B 44
-	ld hl, $00a1 ; 9265F (24:665f) -> 21 A1 00
-	scall PrintTextWithNPCName ; 92662 (24:6662) -> CD A9 44
-	ld de, Data_926b5 ; 92665 (24:6665) -> 11 B5 66
-	ld hl, Data_92622 ; 92668 (24:6668) -> 21 22 66
-	scall ScriptedBattle ; 9266B (24:666b) -> CD D3 4D
-	or a ; 9266E (24:666e) -> B7
-	jp nz, label_92675 ; 9266F (24:666f) -> C2 75 66
-	jp label_926b4 ; 92672 (24:6672) -> C3 B4 66
+	ld a, e
+	or a
+	jp nz, label_926b4
+	ld hl, $008d
+	scall CheckEventFlag
+	or a
+	jp nz, label_926b4
+	ld a, $0a
+	scall FacePlayer
+	hltext_tree_pointer TreeBitstreamText_3bd87
+	scall PrintTextWithNPCName
+	ld de, Data_926b5
+	ld hl, Data_92622
+	scall ScriptedBattle
+	or a
+	jp nz, label_92675
+	jp label_926b4
 label_92675:
-	ld hl, $00a2 ; 92675 (24:6675) -> 21 A2 00
-	scall PrintTextWithNPCName ; 92678 (24:6678) -> CD A9 44
-	ld a, [wPlayerFacing] ; 9267B (24:667b) -> FA 38 C8
-	cp $01 ; 9267E (24:667e) -> FE 01
-	jp z, label_9268b ; 92680 (24:6680) -> CA 8B 66
-	ld a, [wPlayerFacing] ; 92683 (24:6683) -> FA 38 C8
-	cp $03 ; 92686 (24:6686) -> FE 03
-	jp nz, label_92698 ; 92688 (24:6688) -> C2 98 66
+	hltext_tree_pointer TreeBitstreamText_3bdc2
+	scall PrintTextWithNPCName
+	ld a, [wPlayerFacing]
+	cp $01
+	jp z, label_9268b
+	ld a, [wPlayerFacing]
+	cp $03
+	jp nz, label_92698
 label_9268b:
-	ld bc, Data_92616 ; 9268B (24:668b) -> 01 16 66
-	ld e, $24 ; 9268E (24:668e) -> 1E 24
-	ld a, $0a ; 92690 (24:6690) -> 3E 0A
-	scall MovePersonAndWait ; 92692 (24:6692) -> CD 88 46
-	jp label_926a2 ; 92695 (24:6695) -> C3 A2 66
+	ld bc, Data_92616
+	ld e, $24
+	ld a, $0a
+	scall MovePersonAndWait
+	jp label_926a2
 label_92698:
-	ld bc, Data_9261c ; 92698 (24:6698) -> 01 1C 66
-	ld e, $24 ; 9269B (24:669b) -> 1E 24
-	ld a, $0a ; 9269D (24:669d) -> 3E 0A
-	scall MovePersonAndWait ; 9269F (24:669f) -> CD 88 46
+	ld bc, Data_9261c
+	ld e, $24
+	ld a, $0a
+	scall MovePersonAndWait
 label_926a2:
-	scall WaitNPCStep ; 926A2 (24:66a2) -> CD 0C 42
-	ld e, $00 ; 926A5 (24:66a5) -> 1E 00
-	ld a, $0a ; 926A7 (24:66a7) -> 3E 0A
-	scall SetPersonVisibilityState ; 926A9 (24:66a9) -> CD 3D 41
-	ld e, $01 ; 926AC (24:66ac) -> 1E 01
-	ld hl, $008d ; 926AE (24:66ae) -> 21 8D 00
-	scall EventFlagAction ; 926B1 (24:66b1) -> CD 1B 46
+	scall WaitNPCStep
+	ld e, $00
+	ld a, $0a
+	scall SetPersonVisibilityState
+	ld e, $01
+	ld hl, $008d
+	scall EventFlagAction
 label_926b4:
-	ret  ; 926B4 (24:66b4) -> C9
+	ret
 
 Data_926b5:
 	dstr "ヒﾞーノ"
 
 Func_926ba:
-	ld a, e ; 926BA (24:66ba) -> 7B
-	or a ; 926BB (24:66bb) -> B7
-	jp nz, label_927c1 ; 926BC (24:66bc) -> C2 C1 67
-	ld hl, $00da ; 926BF (24:66bf) -> 21 DA 00
-	scall CheckEventFlag ; 926C2 (24:66c2) -> CD 2E 46
-	or a ; 926C5 (24:66c5) -> B7
-	jp nz, label_927bb ; 926C6 (24:66c6) -> C2 BB 67
-	ld a, $5e ; 926C9 (24:66c9) -> 3E 5E
-	scall PlaySFX ; 926CB (24:66cb) -> CD FE 4E
-	ld c, $02 ; 926CE (24:66ce) -> 0E 02
-	ld e, $02 ; 926D0 (24:66d0) -> 1E 02
-	ld a, $08 ; 926D2 (24:66d2) -> 3E 08
-	scall LoadEmote ; 926D4 (24:66d4) -> CD 76 41
-	ld e, $2b ; 926D7 (24:66d7) -> 1E 2B
-	ld a, $0f ; 926D9 (24:66d9) -> 3E 0F
-	scall MoveEmote ; 926DB (24:66db) -> CD E4 41
-	scall WaitEmote ; 926DE (24:66de) -> CD D5 41
-	scall HideEmote ; 926E1 (24:66e1) -> CD 8B 41
-	ld a, $28 ; 926E4 (24:66e4) -> 3E 28
-	scall PlaySFX ; 926E6 (24:66e6) -> CD FE 4E
-	ld e, $01 ; 926E9 (24:66e9) -> 1E 01
-	ld a, $0e ; 926EB (24:66eb) -> 3E 0E
-	scall SetPersonVisibilityState ; 926ED (24:66ed) -> CD 3D 41
-	ld a, $60 ; 926F0 (24:66f0) -> 3E 60
-	scall PlaySFX ; 926F2 (24:66f2) -> CD FE 4E
-	ld e, $03 ; 926F5 (24:66f5) -> 1E 03
-	ld a, $0e ; 926F7 (24:66f7) -> 3E 0E
-	scall SpriteFace ; 926F9 (24:66f9) -> CD 95 40
-	ld e, $00 ; 926FC (24:66fc) -> 1E 00
-	ld a, $0e ; 926FE (24:66fe) -> 3E 0E
-	scall SpriteFace ; 92700 (24:6700) -> CD 95 40
-	ld e, $01 ; 92703 (24:6703) -> 1E 01
-	ld a, $0e ; 92705 (24:6705) -> 3E 0E
-	scall SpriteFace ; 92707 (24:6707) -> CD 95 40
-	ld e, $02 ; 9270A (24:670a) -> 1E 02
-	ld a, $0e ; 9270C (24:670c) -> 3E 0E
-	scall SpriteFace ; 9270E (24:670e) -> CD 95 40
-	ld e, $03 ; 92711 (24:6711) -> 1E 03
-	ld a, $0e ; 92713 (24:6713) -> 3E 0E
-	scall SpriteFace ; 92715 (24:6715) -> CD 95 40
-	ld e, $00 ; 92718 (24:6718) -> 1E 00
-	ld a, $0e ; 9271A (24:671a) -> 3E 0E
-	scall SpriteFace ; 9271C (24:671c) -> CD 95 40
-	ld e, $01 ; 9271F (24:671f) -> 1E 01
-	ld a, $0e ; 92721 (24:6721) -> 3E 0E
-	scall SpriteFace ; 92723 (24:6723) -> CD 95 40
-	ld e, $02 ; 92726 (24:6726) -> 1E 02
-	ld a, $0e ; 92728 (24:6728) -> 3E 0E
-	scall SpriteFace ; 9272A (24:672a) -> CD 95 40
-	ld a, $0f ; 9272D (24:672d) -> 3E 0F
-	scall FadeOutAudio ; 9272F (24:672f) -> CD F1 4F
-	xor a ; 92732 (24:6732) -> AF
-	scall PlayMusic ; 92733 (24:6733) -> CD E6 4E
-	ld a, $01 ; 92736 (24:6736) -> 3E 01
-	scall FadeInAudio ; 92738 (24:6738) -> CD 1A 50
-	ld a, $14 ; 9273B (24:673b) -> 3E 14
-	scall PlayMusic ; 9273D (24:673d) -> CD E6 4E
-	ld hl, $001e ; 92740 (24:6740) -> 21 1E 00
-	scall ScriptSleep ; 92743 (24:6743) -> CD 8F 46
-	ld a, $0e ; 92746 (24:6746) -> 3E 0E
-	scall FacePlayer ; 92748 (24:6748) -> CD 4B 44
-	ld c, $01 ; 9274B (24:674b) -> 0E 01
-	ld e, $13 ; 9274D (24:674d) -> 1E 13
-	ld a, $12 ; 9274F (24:674f) -> 3E 12
-	scall Func_80e8d ; 92751 (24:6751) -> CD 8D 4E
-	ld e, $01 ; 92754 (24:6754) -> 1E 01
-	ld hl, $00da ; 92756 (24:6756) -> 21 DA 00
-	scall EventFlagAction ; 92759 (24:6759) -> CD 1B 46
-	ld a, $60 ; 9275C (24:675c) -> 3E 60
-	scall PlaySFX ; 9275E (24:675e) -> CD FE 4E
-	ld e, $03 ; 92761 (24:6761) -> 1E 03
-	ld a, $0e ; 92763 (24:6763) -> 3E 0E
-	scall SpriteFace ; 92765 (24:6765) -> CD 95 40
-	ld e, $00 ; 92768 (24:6768) -> 1E 00
-	ld a, $0e ; 9276A (24:676a) -> 3E 0E
-	scall SpriteFace ; 9276C (24:676c) -> CD 95 40
-	ld e, $01 ; 9276F (24:676f) -> 1E 01
-	ld a, $0e ; 92771 (24:6771) -> 3E 0E
-	scall SpriteFace ; 92773 (24:6773) -> CD 95 40
-	ld e, $02 ; 92776 (24:6776) -> 1E 02
-	ld a, $0e ; 92778 (24:6778) -> 3E 0E
-	scall SpriteFace ; 9277A (24:677a) -> CD 95 40
-	ld e, $03 ; 9277D (24:677d) -> 1E 03
-	ld a, $0e ; 9277F (24:677f) -> 3E 0E
-	scall SpriteFace ; 92781 (24:6781) -> CD 95 40
-	ld e, $00 ; 92784 (24:6784) -> 1E 00
-	ld a, $0e ; 92786 (24:6786) -> 3E 0E
-	scall SpriteFace ; 92788 (24:6788) -> CD 95 40
-	ld e, $01 ; 9278B (24:678b) -> 1E 01
-	ld a, $0e ; 9278D (24:678d) -> 3E 0E
-	scall SpriteFace ; 9278F (24:678f) -> CD 95 40
-	ld e, $02 ; 92792 (24:6792) -> 1E 02
-	ld a, $0e ; 92794 (24:6794) -> 3E 0E
-	scall SpriteFace ; 92796 (24:6796) -> CD 95 40
-	ld a, $0f ; 92799 (24:6799) -> 3E 0F
-	scall FadeOutAudio ; 9279B (24:679b) -> CD F1 4F
-	xor a ; 9279E (24:679e) -> AF
-	scall PlayMusic ; 9279F (24:679f) -> CD E6 4E
-	ld a, $01 ; 927A2 (24:67a2) -> 3E 01
-	scall FadeInAudio ; 927A4 (24:67a4) -> CD 1A 50
-	ld a, $0d ; 927A7 (24:67a7) -> 3E 0D
-	scall PlayMusic ; 927A9 (24:67a9) -> CD E6 4E
-	ld a, $0e ; 927AC (24:67ac) -> 3E 0E
-	scall FacePlayer ; 927AE (24:67ae) -> CD 4B 44
-	ld e, $00 ; 927B1 (24:67b1) -> 1E 00
-	ld a, $0e ; 927B3 (24:67b3) -> 3E 0E
-	scall SetPersonVisibilityState ; 927B5 (24:67b5) -> CD 3D 41
-	jp label_927c1 ; 927B8 (24:67b8) -> C3 C1 67
+	ld a, e
+	or a
+	jp nz, label_927c1
+	ld hl, $00da
+	scall CheckEventFlag
+	or a
+	jp nz, label_927bb
+	ld a, $5e
+	scall PlaySFX
+	ld c, $02
+	ld e, $02
+	ld a, $08
+	scall LoadEmote
+	ld e, $2b
+	ld a, $0f
+	scall MoveEmote
+	scall WaitEmote
+	scall HideEmote
+	ld a, $28
+	scall PlaySFX
+	ld e, $01
+	ld a, $0e
+	scall SetPersonVisibilityState
+	ld a, $60
+	scall PlaySFX
+	ld e, $03
+	ld a, $0e
+	scall SpriteFace
+	ld e, $00
+	ld a, $0e
+	scall SpriteFace
+	ld e, $01
+	ld a, $0e
+	scall SpriteFace
+	ld e, $02
+	ld a, $0e
+	scall SpriteFace
+	ld e, $03
+	ld a, $0e
+	scall SpriteFace
+	ld e, $00
+	ld a, $0e
+	scall SpriteFace
+	ld e, $01
+	ld a, $0e
+	scall SpriteFace
+	ld e, $02
+	ld a, $0e
+	scall SpriteFace
+	ld a, $0f
+	scall FadeOutAudio
+	xor a
+	scall PlayMusic
+	ld a, $01
+	scall FadeInAudio
+	ld a, $14
+	scall PlayMusic
+	ld hl, $001e
+	scall ScriptSleep
+	ld a, $0e
+	scall FacePlayer
+	ld c, $01
+	ld e, $13
+	ld a, $12
+	scall Func_80e8d
+	ld e, $01
+	ld hl, $00da
+	scall EventFlagAction
+	ld a, $60
+	scall PlaySFX
+	ld e, $03
+	ld a, $0e
+	scall SpriteFace
+	ld e, $00
+	ld a, $0e
+	scall SpriteFace
+	ld e, $01
+	ld a, $0e
+	scall SpriteFace
+	ld e, $02
+	ld a, $0e
+	scall SpriteFace
+	ld e, $03
+	ld a, $0e
+	scall SpriteFace
+	ld e, $00
+	ld a, $0e
+	scall SpriteFace
+	ld e, $01
+	ld a, $0e
+	scall SpriteFace
+	ld e, $02
+	ld a, $0e
+	scall SpriteFace
+	ld a, $0f
+	scall FadeOutAudio
+	xor a
+	scall PlayMusic
+	ld a, $01
+	scall FadeInAudio
+	ld a, $0d
+	scall PlayMusic
+	ld a, $0e
+	scall FacePlayer
+	ld e, $00
+	ld a, $0e
+	scall SetPersonVisibilityState
+	jp label_927c1
 label_927bb:
-	ld hl, $015c ; 927BB (24:67bb) -> 21 5C 01
-	scall PrintTextStandard ; 927BE (24:67be) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_3f79e
+	scall PrintTextStandard
 label_927c1:
-	ret  ; 927C1 (24:67c1) -> C9
+	ret
 
 Data_927c2:
-	db $00
-	db $00, $00, $03, $00, $c5, $b0, $00, $00, $1f, $01, $1f, $04, $17, $17, $17, $17
-	db $70, $20, $04, $17, $17, $17, $17, $6f, $21, $02, $17, $0c, $0f, $17, $6f, $00
-	db $00, $00, $00, $00, $00, $00, $00, $02
+	db $00, $00, $00, $03, $00, $c5, $b0, $00, $00, $1f, $01, $1f, $04, $17, $17, $17
+	db $17, $70, $20, $04, $17, $17, $17, $17, $6f, $21, $02, $17, $0c, $0f, $17, $6f
+	db $00, $00, $00, $00, $00, $00, $00, $00, $02
 
 Func_927eb:
-	ld a, e ; 927EB (24:67eb) -> 7B
-	or a ; 927EC (24:67ec) -> B7
-	jp nz, label_92844 ; 927ED (24:67ed) -> C2 44 68
-	ld a, $10 ; 927F0 (24:67f0) -> 3E 10
-	scall FacePlayer ; 927F2 (24:67f2) -> CD 4B 44
-	ld hl, $0039 ; 927F5 (24:67f5) -> 21 39 00
-	scall CheckEventFlag ; 927F8 (24:67f8) -> CD 2E 46
-	or a ; 927FB (24:67fb) -> B7
-	jp nz, label_92808 ; 927FC (24:67fc) -> C2 08 68
-	ld hl, $048d ; 927FF (24:67ff) -> 21 8D 04
-	scall PrintTextStandard ; 92802 (24:6802) -> CD 98 44
-	jp label_92844 ; 92805 (24:6805) -> C3 44 68
+	ld a, e
+	or a
+	jp nz, label_92844
+	ld a, $10
+	scall FacePlayer
+	ld hl, $0039
+	scall CheckEventFlag
+	or a
+	jp nz, label_92808
+	hltext_tree_pointer TreeBitstreamText_3bdf0
+	scall PrintTextStandard
+	jp label_92844
 label_92808:
-	ld hl, $0047 ; 92808 (24:6808) -> 21 47 00
-	scall CheckEventFlag ; 9280B (24:680b) -> CD 2E 46
-	or a ; 9280E (24:680e) -> B7
-	jp nz, label_9281b ; 9280F (24:680f) -> C2 1B 68
-	ld hl, $048e ; 92812 (24:6812) -> 21 8E 04
-	scall PrintTextStandard ; 92815 (24:6815) -> CD 98 44
-	jp label_92844 ; 92818 (24:6818) -> C3 44 68
+	ld hl, $0047
+	scall CheckEventFlag
+	or a
+	jp nz, label_9281b
+	hltext_tree_pointer TreeBitstreamText_3be3f
+	scall PrintTextStandard
+	jp label_92844
 label_9281b:
-	ld hl, $0248 ; 9281B (24:681b) -> 21 48 02
-	scall PrintTextWithYesNoBox ; 9281E (24:681e) -> CD BA 44
-	or a ; 92821 (24:6821) -> B7
-	jp nz, label_9283e ; 92822 (24:6822) -> C2 3E 68
-	ld de, Data_92845 ; 92825 (24:6825) -> 11 45 68
-	ld hl, Data_927c2 ; 92828 (24:6828) -> 21 C2 67
-	scall ScriptedBattle ; 9282B (24:682b) -> CD D3 4D
-	or a ; 9282E (24:682e) -> B7
-	jp nz, label_92835 ; 9282F (24:682f) -> C2 35 68
-	jp label_92844 ; 92832 (24:6832) -> C3 44 68
+	hltext_tree_pointer TreeBitstreamText_42b02
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_9283e
+	ld de, Data_92845
+	ld hl, Data_927c2
+	scall ScriptedBattle
+	or a
+	jp nz, label_92835
+	jp label_92844
 label_92835:
-	ld hl, $0247 ; 92835 (24:6835) -> 21 47 02
-	scall PrintTextStandard ; 92838 (24:6838) -> CD 98 44
-	jp label_92844 ; 9283B (24:683b) -> C3 44 68
+	hltext_tree_pointer TreeBitstreamText_42af6
+	scall PrintTextStandard
+	jp label_92844
 label_9283e:
-	ld hl, $0228 ; 9283E (24:683e) -> 21 28 02
-	scall PrintTextStandard ; 92841 (24:6841) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42903
+	scall PrintTextStandard
 label_92844:
-	ret  ; 92844 (24:6844) -> C9
+	ret
 
 Data_92845:
 	dstr "ソﾞッキー"
@@ -2102,68 +2099,68 @@ Data_9291f:
 	db $09, $03, $09, $0a, $3e, $0f, $12, $23, $1f, $17, $00, $03, $08, $00
 
 Func_92965:: ; 92965
-	ld e, $01 ; 92965 (24:6965) -> 1E 01
-	ld hl, Data_9284b ; 92967 (24:6967) -> 21 4B 68
-	scall LoadWarps ; 9296A (24:696a) -> CD 3A 40
-	ld e, $01 ; 9296D (24:696d) -> 1E 01
-	ld hl, Data_92856 ; 9296F (24:696f) -> 21 56 68
-	scall Func_80ce7 ; 92972 (24:6972) -> CD E7 4C
-	ld a, $03 ; 92975 (24:6975) -> 3E 03
-	scall Func_80d01 ; 92977 (24:6977) -> CD 01 4D
-	ld a, $1f ; 9297A (24:697a) -> 3E 1F
-	scall Func_80e6d ; 9297C (24:697c) -> CD 6D 4E
-	cp $ff ; 9297F (24:697f) -> FE FF
-	jp nz, label_92999 ; 92981 (24:6981) -> C2 99 69
-	ld hl, $0039 ; 92984 (24:6984) -> 21 39 00
-	scall CheckEventFlag ; 92987 (24:6987) -> CD 2E 46
-	or a ; 9298A (24:698a) -> B7
-	jp nz, label_92999 ; 9298B (24:698b) -> C2 99 69
-	ld e, $05 ; 9298E (24:698e) -> 1E 05
-	ld hl, Data_92893 ; 92990 (24:6990) -> 21 93 68
-	scall LoadEncounters ; 92993 (24:6993) -> CD 24 4D
-	jp label_929e0 ; 92996 (24:6996) -> C3 E0 69
+	ld e, $01
+	ld hl, Data_9284b
+	scall LoadWarps
+	ld e, $01
+	ld hl, Data_92856
+	scall Func_80ce7
+	ld a, $03
+	scall Func_80d01
+	ld a, $1f
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_92999
+	ld hl, $0039
+	scall CheckEventFlag
+	or a
+	jp nz, label_92999
+	ld e, $05
+	ld hl, Data_92893
+	scall LoadEncounters
+	jp label_929e0
 label_92999:
-	ld a, $20 ; 92999 (24:6999) -> 3E 20
-	scall Func_80e6d ; 9299B (24:699b) -> CD 6D 4E
-	cp $ff ; 9299E (24:699e) -> FE FF
-	jp nz, label_929b8 ; 929A0 (24:69a0) -> C2 B8 69
-	ld hl, $0047 ; 929A3 (24:69a3) -> 21 47 00
-	scall CheckEventFlag ; 929A6 (24:69a6) -> CD 2E 46
-	or a ; 929A9 (24:69a9) -> B7
-	jp nz, label_929b8 ; 929AA (24:69aa) -> C2 B8 69
-	ld e, $05 ; 929AD (24:69ad) -> 1E 05
-	ld hl, Data_928d9 ; 929AF (24:69af) -> 21 D9 68
-	scall LoadEncounters ; 929B2 (24:69b2) -> CD 24 4D
-	jp label_929e0 ; 929B5 (24:69b5) -> C3 E0 69
+	ld a, $20
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_929b8
+	ld hl, $0047
+	scall CheckEventFlag
+	or a
+	jp nz, label_929b8
+	ld e, $05
+	ld hl, Data_928d9
+	scall LoadEncounters
+	jp label_929e0
 label_929b8:
-	ld a, $21 ; 929B8 (24:69b8) -> 3E 21
-	scall Func_80e6d ; 929BA (24:69ba) -> CD 6D 4E
-	cp $ff ; 929BD (24:69bd) -> FE FF
-	jp nz, label_929d8 ; 929BF (24:69bf) -> C2 D8 69
-	ld hl, $0047 ; 929C2 (24:69c2) -> 21 47 00
-	scall CheckEventFlag ; 929C5 (24:69c5) -> CD 2E 46
-	cp $01 ; 929C8 (24:69c8) -> FE 01
-	jp nz, label_929d8 ; 929CA (24:69ca) -> C2 D8 69
-	ld e, $05 ; 929CD (24:69cd) -> 1E 05
-	ld hl, Data_9291f ; 929CF (24:69cf) -> 21 1F 69
-	scall LoadEncounters ; 929D2 (24:69d2) -> CD 24 4D
-	jp label_929e0 ; 929D5 (24:69d5) -> C3 E0 69
+	ld a, $21
+	scall Func_80e6d
+	cp $ff
+	jp nz, label_929d8
+	ld hl, $0047
+	scall CheckEventFlag
+	cp $01
+	jp nz, label_929d8
+	ld e, $05
+	ld hl, Data_9291f
+	scall LoadEncounters
+	jp label_929e0
 label_929d8:
-	ld e, $04 ; 929D8 (24:69d8) -> 1E 04
-	ld hl, Data_9285b ; 929DA (24:69da) -> 21 5B 68
-	scall LoadEncounters ; 929DD (24:69dd) -> CD 24 4D
+	ld e, $04
+	ld hl, Data_9285b
+	scall LoadEncounters
 label_929e0:
-	ld e, $04 ; 929E0 (24:69e0) -> 1E 04
-	ld hl, Data_9285b ; 929E2 (24:69e2) -> 21 5B 68
-	scall LoadEncounters ; 929E5 (24:69e5) -> CD 24 4D
-	ld a, $01 ; 929E8 (24:69e8) -> 3E 01
-	scall LoadPlayerSprite ; 929EA (24:69ea) -> CD C6 4C
-	ld a, $08 ; 929ED (24:69ed) -> 3E 08
-	scall PlayMusic ; 929EF (24:69ef) -> CD E6 4E
-	scall Func_8001c ; 929F2 (24:69f2) -> CD 1C 40
-	ld hl, $02e3 ; 929F5 (24:69f5) -> 21 E3 02
-	scall LandmarkSign ; 929F8 (24:69f8) -> CD 72 4F
-	ret  ; 929FB (24:69fb) -> C9
+	ld e, $04
+	ld hl, Data_9285b
+	scall LoadEncounters
+	ld a, $01
+	scall LoadPlayerSprite
+	ld a, $08
+	scall PlayMusic
+	scall Func_8001c
+	ld hl, $02e3
+	scall LandmarkSign
+	ret
 
 Data_929fc: ; 929fc
 	db $12, $18, $01, $01, $09, $03, $0a, $19, $0a, $18, $2e
@@ -2351,33 +2348,33 @@ Data_92c76:
 	person_event $0f, $04, $01, $1c, $01, $01, $00, $04, $00, Func_92d5c, NULL
 
 Func_92c92:: ; 92c92
-	ld e, $03 ; 92C92 (24:6c92) -> 1E 03
-	ld hl, Data_92bee ; 92C94 (24:6c94) -> 21 EE 6B
-	scall LoadWarps ; 92C97 (24:6c97) -> CD 3A 40
-	ld e, $01 ; 92C9A (24:6c9a) -> 1E 01
-	ld hl, Data_92c0f ; 92C9C (24:6c9c) -> 21 0F 6C
-	scall Func_80ce7 ; 92C9F (24:6c9f) -> CD E7 4C
-	ld a, $03 ; 92CA2 (24:6ca2) -> 3E 03
-	scall Func_80d01 ; 92CA4 (24:6ca4) -> CD 01 4D
-	ld e, $07 ; 92CA7 (24:6ca7) -> 1E 07
-	ld hl, Data_92c14 ; 92CA9 (24:6ca9) -> 21 14 6C
-	scall LoadEncounters ; 92CAC (24:6cac) -> CD 24 4D
-	ld e, $02 ; 92CAF (24:6caf) -> 1E 02
-	ld hl, Data_92c76 ; 92CB1 (24:6cb1) -> 21 76 6C
-	scall LoadMapObjects ; 92CB4 (24:6cb4) -> CD FB 40
-	ld a, [wc797] ; 92CB7 (24:6cb7) -> FA 97 C7
-	cp $07 ; 92CBA (24:6cba) -> FE 07
-	jp z, label_92cc6 ; 92CBC (24:6cbc) -> CA C6 6C
-	ld e, $00 ; 92CBF (24:6cbf) -> 1E 00
-	ld a, $01 ; 92CC1 (24:6cc1) -> 3E 01
-	scall SetPersonVisibilityState ; 92CC3 (24:6cc3) -> CD 3D 41
+	ld e, $03
+	ld hl, Data_92bee
+	scall LoadWarps
+	ld e, $01
+	ld hl, Data_92c0f
+	scall Func_80ce7
+	ld a, $03
+	scall Func_80d01
+	ld e, $07
+	ld hl, Data_92c14
+	scall LoadEncounters
+	ld e, $02
+	ld hl, Data_92c76
+	scall LoadMapObjects
+	ld a, [wc797]
+	cp $07
+	jp z, label_92cc6
+	ld e, $00
+	ld a, $01
+	scall SetPersonVisibilityState
 label_92cc6:
-	ld a, $08 ; 92CC6 (24:6cc6) -> 3E 08
-	scall PlayMusic ; 92CC8 (24:6cc8) -> CD E6 4E
-	scall Func_8001c ; 92CCB (24:6ccb) -> CD 1C 40
-	ld hl, $03f2 ; 92CCE (24:6cce) -> 21 F2 03
-	scall LandmarkSign ; 92CD1 (24:6cd1) -> CD 72 4F
-	ret  ; 92CD4 (24:6cd4) -> C9
+	ld a, $08
+	scall PlayMusic
+	scall Func_8001c
+	ld hl, $03f2
+	scall LandmarkSign
+	ret
 
 Data_92cd5:
 	db $00, $00, $00, $01, $00, $c5, $b0, $00, $00, $1e, $01, $1e, $02
@@ -2385,96 +2382,96 @@ Data_92cd5:
 	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_92cfe:
-	push af ; 92CFE (24:6cfe) -> F5
-	ld a, e ; 92CFF (24:6cff) -> 7B
-	or a ; 92D00 (24:6d00) -> B7
-	jp nz, label_92d54 ; 92D01 (24:6d01) -> C2 54 6D
-	ld hl, sp+$01 ; 92D04 (24:6d04) -> F8 01
-	ld a, [hl] ; 92D06 (24:6d06) -> 7E
-	scall FacePlayer ; 92D07 (24:6d07) -> CD 4B 44
-	ld hl, $0090 ; 92D0A (24:6d0a) -> 21 90 00
-	scall CheckEventFlag ; 92D0D (24:6d0d) -> CD 2E 46
-	or a ; 92D10 (24:6d10) -> B7
-	jp nz, label_92d4e ; 92D11 (24:6d11) -> C2 4E 6D
-	ld hl, $024a ; 92D14 (24:6d14) -> 21 4A 02
-	scall PrintTextStandard ; 92D17 (24:6d17) -> CD 98 44
-	ld hl, $032c ; 92D1A (24:6d1a) -> 21 2C 03
-	scall PrintTextWithYesNoBox ; 92D1D (24:6d1d) -> CD BA 44
-	or a ; 92D20 (24:6d20) -> B7
-	jp nz, label_92d45 ; 92D21 (24:6d21) -> C2 45 6D
-	ld de, Data_92d56 ; 92D24 (24:6d24) -> 11 56 6D
-	ld hl, Data_92cd5 ; 92D27 (24:6d27) -> 21 D5 6C
-	scall ScriptedBattle ; 92D2A (24:6d2a) -> CD D3 4D
-	or a ; 92D2D (24:6d2d) -> B7
-	jp nz, label_92d34 ; 92D2E (24:6d2e) -> C2 34 6D
-	jp label_92d54 ; 92D31 (24:6d31) -> C3 54 6D
+	push af
+	ld a, e
+	or a
+	jp nz, label_92d54
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld hl, $0090
+	scall CheckEventFlag
+	or a
+	jp nz, label_92d4e
+	hltext_tree_pointer TreeBitstreamText_42b16
+	scall PrintTextStandard
+	hltext_tree_pointer TreeBitstreamText_46f28
+	scall PrintTextWithYesNoBox
+	or a
+	jp nz, label_92d45
+	ld de, Data_92d56
+	ld hl, Data_92cd5
+	scall ScriptedBattle
+	or a
+	jp nz, label_92d34
+	jp label_92d54
 label_92d34:
-	ld e, $01 ; 92D34 (24:6d34) -> 1E 01
-	ld hl, $0090 ; 92D36 (24:6d36) -> 21 90 00
-	scall EventFlagAction ; 92D39 (24:6d39) -> CD 1B 46
-	ld hl, $024a ; 92D3C (24:6d3c) -> 21 4A 02
-	scall PrintTextStandard ; 92D3F (24:6d3f) -> CD 98 44
-	jp label_92d4b ; 92D42 (24:6d42) -> C3 4B 6D
+	ld e, $01
+	ld hl, $0090
+	scall EventFlagAction
+	hltext_tree_pointer TreeBitstreamText_42b16
+	scall PrintTextStandard
+	jp label_92d4b
 label_92d45:
-	ld hl, $024a ; 92D45 (24:6d45) -> 21 4A 02
-	scall PrintTextStandard ; 92D48 (24:6d48) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42b16
+	scall PrintTextStandard
 label_92d4b:
-	jp label_92d54 ; 92D4B (24:6d4b) -> C3 54 6D
+	jp label_92d54
 label_92d4e:
-	ld hl, $024a ; 92D4E (24:6d4e) -> 21 4A 02
-	scall PrintTextStandard ; 92D51 (24:6d51) -> CD 98 44
+	hltext_tree_pointer TreeBitstreamText_42b16
+	scall PrintTextStandard
 label_92d54:
-	pop bc ; 92D54 (24:6d54) -> C1
-	ret  ; 92D55 (24:6d55) -> C9
+	pop bc
+	ret
 
 Data_92d56:
 	dstr "ソﾞッキー"
 
 Func_92d5c:
-	push af ; 92D5C (24:6d5c) -> F5
-	ld a, e ; 92D5D (24:6d5d) -> 7B
-	or a ; 92D5E (24:6d5e) -> B7
-	jp nz, label_92db9 ; 92D5F (24:6d5f) -> C2 B9 6D
-	ld hl, sp+$01 ; 92D62 (24:6d62) -> F8 01
-	ld a, [hl] ; 92D64 (24:6d64) -> 7E
-	scall FacePlayer ; 92D65 (24:6d65) -> CD 4B 44
-	ld hl, $0014 ; 92D68 (24:6d68) -> 21 14 00
-	scall CheckEventFlag ; 92D6B (24:6d6b) -> CD 2E 46
-	or a ; 92D6E (24:6d6e) -> B7
-	jp nz, label_92db3 ; 92D6F (24:6d6f) -> C2 B3 6D
-	ld a, $17 ; 92D72 (24:6d72) -> 3E 17
-	scall Func_80e5d ; 92D74 (24:6d74) -> CD 5D 4E
-	cp $01 ; 92D77 (24:6d77) -> FE 01
-	jp nz, label_92daa ; 92D79 (24:6d79) -> C2 AA 6D
-	ld hl, $033e ; 92D7C (24:6d7c) -> 21 3E 03
-	scall PrintTextWithNPCName ; 92D7F (24:6d7f) -> CD A9 44
-	ld a, $2a ; 92D82 (24:6d82) -> 3E 2A
-	scall PlaySFX ; 92D84 (24:6d84) -> CD FE 4E
-	ld hl, $0340 ; 92D87 (24:6d87) -> 21 40 03
-	scall PrintTextStandard ; 92D8A (24:6d8a) -> CD 98 44
-	ld e, $01 ; 92D8D (24:6d8d) -> 1E 01
-	ld hl, $0014 ; 92D8F (24:6d8f) -> 21 14 00
-	scall EventFlagAction ; 92D92 (24:6d92) -> CD 1B 46
-	ld c, $01 ; 92D95 (24:6d95) -> 0E 01
-	ld e, $01 ; 92D97 (24:6d97) -> 1E 01
-	ld a, $17 ; 92D99 (24:6d99) -> 3E 17
-	scall Func_80d4d ; 92D9B (24:6d9b) -> CD 4D 4D
-	ld c, $00 ; 92D9E (24:6d9e) -> 0E 00
-	ld e, $01 ; 92DA0 (24:6da0) -> 1E 01
-	ld a, $16 ; 92DA2 (24:6da2) -> 3E 16
-	scall Func_80d4d ; 92DA4 (24:6da4) -> CD 4D 4D
-	jp label_92db0 ; 92DA7 (24:6da7) -> C3 B0 6D
+	push af
+	ld a, e
+	or a
+	jp nz, label_92db9
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld hl, $0014
+	scall CheckEventFlag
+	or a
+	jp nz, label_92db3
+	ld a, $17
+	scall Func_80e5d
+	cp $01
+	jp nz, label_92daa
+	hltext_tree_pointer TreeBitstreamText_39e1f
+	scall PrintTextWithNPCName
+	ld a, $2a
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_39e65
+	scall PrintTextStandard
+	ld e, $01
+	ld hl, $0014
+	scall EventFlagAction
+	ld c, $01
+	ld e, $01
+	ld a, $17
+	scall Func_80d4d
+	ld c, $00
+	ld e, $01
+	ld a, $16
+	scall Func_80d4d
+	jp label_92db0
 label_92daa:
-	ld hl, $047a ; 92DAA (24:6daa) -> 21 7A 04
-	scall PrintTextWithNPCName ; 92DAD (24:6dad) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_39e71
+	scall PrintTextWithNPCName
 label_92db0:
-	jp label_92db9 ; 92DB0 (24:6db0) -> C3 B9 6D
+	jp label_92db9
 label_92db3:
-	ld hl, $0341 ; 92DB3 (24:6db3) -> 21 41 03
-	scall PrintTextWithNPCName ; 92DB6 (24:6db6) -> CD A9 44
+	hltext_tree_pointer TreeBitstreamText_39e8c
+	scall PrintTextWithNPCName
 label_92db9:
-	pop bc ; 92DB9 (24:6db9) -> C1
-	ret  ; 92DBA (24:6dba) -> C9
+	pop bc
+	ret
 
 Data_92dbb:
 	db $01, $06, $02, $01, $09, $00, $08, $04, $08, $05, $34
@@ -2492,44 +2489,44 @@ Data_92de6:
 	person_event $18, $04, $01, $04, $01, $01, $02, $04, $00, NULL, NULL
 
 Func_92e02:: ; 92e02
-	ld e, $01 ; 92E02 (24:6e02) -> 1E 01
-	ld hl, Data_92dbb ; 92E04 (24:6e04) -> 21 BB 6D
-	scall LoadWarps ; 92E07 (24:6e07) -> CD 3A 40
-	ld a, $01 ; 92E0A (24:6e0a) -> 3E 01
-	scall LoadPlayerSprite ; 92E0C (24:6e0c) -> CD C6 4C
-	ld hl, $0015 ; 92E0F (24:6e0f) -> 21 15 00
-	scall CheckEventFlag ; 92E12 (24:6e12) -> CD 2E 46
-	or a ; 92E15 (24:6e15) -> B7
-	jp nz, label_92e32 ; 92E16 (24:6e16) -> C2 32 6E
-	ld e, $02 ; 92E19 (24:6e19) -> 1E 02
-	ld hl, Data_92dca ; 92E1B (24:6e1b) -> 21 CA 6D
-	scall LoadMapObjects ; 92E1E (24:6e1e) -> CD FB 40
-	scall Func_8001c ; 92E21 (24:6e21) -> CD 1C 40
-	call Func_92e6d ; 92E24 (24:6e24) -> CD 6D 6E
-	ld e, $01 ; 92E27 (24:6e27) -> 1E 01
-	ld hl, $0015 ; 92E29 (24:6e29) -> 21 15 00
-	scall EventFlagAction ; 92E2C (24:6e2c) -> CD 1B 46
-	jp label_92e5c ; 92E2F (24:6e2f) -> C3 5C 6E
+	ld e, $01
+	ld hl, Data_92dbb
+	scall LoadWarps
+	ld a, $01
+	scall LoadPlayerSprite
+	ld hl, $0015
+	scall CheckEventFlag
+	or a
+	jp nz, label_92e32
+	ld e, $02
+	ld hl, Data_92dca
+	scall LoadMapObjects
+	scall Func_8001c
+	call Func_92e6d
+	ld e, $01
+	ld hl, $0015
+	scall EventFlagAction
+	jp label_92e5c
 label_92e32:
-	ld a, [wc790] ; 92E32 (24:6e32) -> FA 90 C7
-	or a ; 92E35 (24:6e35) -> B7
-	jp z, label_92e54 ; 92E36 (24:6e36) -> CA 54 6E
-	ld a, [wc790] ; 92E39 (24:6e39) -> FA 90 C7
-	cp $06 ; 92E3C (24:6e3c) -> FE 06
-	jp nc, label_92e54 ; 92E3E (24:6e3e) -> D2 54 6E
-	ld e, $02 ; 92E41 (24:6e41) -> 1E 02
-	ld hl, Data_92de6 ; 92E43 (24:6e43) -> 21 E6 6D
-	scall LoadMapObjects ; 92E46 (24:6e46) -> CD FB 40
-	ld a, $11 ; 92E49 (24:6e49) -> 3E 11
-	scall PlayMusic ; 92E4B (24:6e4b) -> CD E6 4E
-	scall Func_8001c ; 92E4E (24:6e4e) -> CD 1C 40
-	jp label_92e5c ; 92E51 (24:6e51) -> C3 5C 6E
+	ld a, [wc790]
+	or a
+	jp z, label_92e54
+	ld a, [wc790]
+	cp $06
+	jp nc, label_92e54
+	ld e, $02
+	ld hl, Data_92de6
+	scall LoadMapObjects
+	ld a, $11
+	scall PlayMusic
+	scall Func_8001c
+	jp label_92e5c
 label_92e54:
-	ld a, $11 ; 92E54 (24:6e54) -> 3E 11
-	scall PlayMusic ; 92E56 (24:6e56) -> CD E6 4E
-	scall Func_8001c ; 92E59 (24:6e59) -> CD 1C 40
+	ld a, $11
+	scall PlayMusic
+	scall Func_8001c
 label_92e5c:
-	ret  ; 92E5C (24:6e5c) -> C9
+	ret
 
 Data_92e5d:
 	db $02, $02, $05, $02, $03, $02, $04, $02, $ff, $ff
@@ -2538,239 +2535,239 @@ Data_92e67:
 	db $02, $02, $02, $04, $ff, $ff
 
 Func_92e6d:
-	ld e, $01 ; 92E6D (24:6e6d) -> 1E 01
-	xor a ; 92E6F (24:6e6f) -> AF
-	scall PlayerStep ; 92E70 (24:6e70) -> CD 1E 4E
-	xor a ; 92E73 (24:6e73) -> AF
-	scall PlayMusic ; 92E74 (24:6e74) -> CD E6 4E
-	ld a, $01 ; 92E77 (24:6e77) -> 3E 01
-	scall PlayMusic ; 92E79 (24:6e79) -> CD E6 4E
-	ld hl, $00a3 ; 92E7C (24:6e7c) -> 21 A3 00
-	scall PrintTextWithNPCName ; 92E7F (24:6e7f) -> CD A9 44
-	xor a ; 92E82 (24:6e82) -> AF
-	scall PlayMusic ; 92E83 (24:6e83) -> CD E6 4E
-	ld e, $03 ; 92E86 (24:6e86) -> 1E 03
-	xor a ; 92E88 (24:6e88) -> AF
-	scall SpriteFace ; 92E89 (24:6e89) -> CD 95 40
-	ld c, $01 ; 92E8C (24:6e8c) -> 0E 01
-	ld e, $01 ; 92E8E (24:6e8e) -> 1E 01
-	ld a, $10 ; 92E90 (24:6e90) -> 3E 10
-	scall LoadEmote ; 92E92 (24:6e92) -> CD 76 41
-	ld a, $34 ; 92E95 (24:6e95) -> 3E 34
-	scall PlaySFX ; 92E97 (24:6e97) -> CD FE 4E
-	ld e, $00 ; 92E9A (24:6e9a) -> 1E 00
-	xor a ; 92E9C (24:6e9c) -> AF
-	scall SetPersonVisibilityState ; 92E9D (24:6e9d) -> CD 3D 41
-	ld a, $3d ; 92EA0 (24:6ea0) -> 3E 3D
-	scall PlaySFX ; 92EA2 (24:6ea2) -> CD FE 4E
-	scall WaitEmote ; 92EA5 (24:6ea5) -> CD D5 41
-	ld hl, $00a4 ; 92EA8 (24:6ea8) -> 21 A4 00
-	scall PrintTextWithNPCName ; 92EAB (24:6eab) -> CD A9 44
-	ld c, $01 ; 92EAE (24:6eae) -> 0E 01
-	ld e, $02 ; 92EB0 (24:6eb0) -> 1E 02
-	ld a, $10 ; 92EB2 (24:6eb2) -> 3E 10
-	scall LoadEmote ; 92EB4 (24:6eb4) -> CD 76 41
-	ld a, $34 ; 92EB7 (24:6eb7) -> 3E 34
-	scall PlaySFX ; 92EB9 (24:6eb9) -> CD FE 4E
-	scall WaitEmote ; 92EBC (24:6ebc) -> CD D5 41
-	ld e, $01 ; 92EBF (24:6ebf) -> 1E 01
-	xor a ; 92EC1 (24:6ec1) -> AF
-	scall SetPersonVisibilityState ; 92EC2 (24:6ec2) -> CD 3D 41
-	scall HideEmote ; 92EC5 (24:6ec5) -> CD 8B 41
-	ld e, $01 ; 92EC8 (24:6ec8) -> 1E 01
-	xor a ; 92ECA (24:6eca) -> AF
-	scall SpriteFace ; 92ECB (24:6ecb) -> CD 95 40
-	ld bc, Data_92e5d ; 92ECE (24:6ece) -> 01 5D 6E
-	ld e, $24 ; 92ED1 (24:6ed1) -> 1E 24
-	xor a ; 92ED3 (24:6ed3) -> AF
-	scall MovePersonAndWait ; 92ED4 (24:6ed4) -> CD 88 46
-	scall WaitNPCStep ; 92ED7 (24:6ed7) -> CD 0C 42
-	ld e, $02 ; 92EDA (24:6eda) -> 1E 02
-	xor a ; 92EDC (24:6edc) -> AF
-	scall SpriteFace ; 92EDD (24:6edd) -> CD 95 40
-	ld c, $01 ; 92EE0 (24:6ee0) -> 0E 01
-	ld e, $01 ; 92EE2 (24:6ee2) -> 1E 01
-	ld a, $05 ; 92EE4 (24:6ee4) -> 3E 05
-	scall LoadEmote ; 92EE6 (24:6ee6) -> CD 76 41
-	ld e, $02 ; 92EE9 (24:6ee9) -> 1E 02
-	ld a, $04 ; 92EEB (24:6eeb) -> 3E 04
-	scall MoveEmote ; 92EED (24:6eed) -> CD E4 41
-	ld a, $28 ; 92EF0 (24:6ef0) -> 3E 28
-	scall PlaySFX ; 92EF2 (24:6ef2) -> CD FE 4E
-	scall WaitEmote ; 92EF5 (24:6ef5) -> CD D5 41
-	scall HideEmote ; 92EF8 (24:6ef8) -> CD 8B 41
-	ld bc, Data_92e67 ; 92EFB (24:6efb) -> 01 67 6E
-	ld e, $24 ; 92EFE (24:6efe) -> 1E 24
-	xor a ; 92F00 (24:6f00) -> AF
-	scall MovePersonAndWait ; 92F01 (24:6f01) -> CD 88 46
-	scall WaitNPCStep ; 92F04 (24:6f04) -> CD 0C 42
-	ld e, $03 ; 92F07 (24:6f07) -> 1E 03
-	xor a ; 92F09 (24:6f09) -> AF
-	scall SpriteFace ; 92F0A (24:6f0a) -> CD 95 40
-	ld c, $01 ; 92F0D (24:6f0d) -> 0E 01
-	ld e, $01 ; 92F0F (24:6f0f) -> 1E 01
-	ld a, $10 ; 92F11 (24:6f11) -> 3E 10
-	scall LoadEmote ; 92F13 (24:6f13) -> CD 76 41
-	ld a, $34 ; 92F16 (24:6f16) -> 3E 34
-	scall PlaySFX ; 92F18 (24:6f18) -> CD FE 4E
-	ld e, $00 ; 92F1B (24:6f1b) -> 1E 00
-	xor a ; 92F1D (24:6f1d) -> AF
-	scall SetPersonVisibilityState ; 92F1E (24:6f1e) -> CD 3D 41
-	scall WaitEmote ; 92F21 (24:6f21) -> CD D5 41
-	ld hl, $00a5 ; 92F24 (24:6f24) -> 21 A5 00
-	scall PrintTextStandard ; 92F27 (24:6f27) -> CD 98 44
-	xor a ; 92F2A (24:6f2a) -> AF
-	scall PlayMusic ; 92F2B (24:6f2b) -> CD E6 4E
-	ld a, $1b ; 92F2E (24:6f2e) -> 3E 1B
-	scall PlayMusic ; 92F30 (24:6f30) -> CD E6 4E
-	ld c, $02 ; 92F33 (24:6f33) -> 0E 02
-	ld e, $04 ; 92F35 (24:6f35) -> 1E 04
-	ld a, $10 ; 92F37 (24:6f37) -> 3E 10
-	scall LoadEmote ; 92F39 (24:6f39) -> CD 76 41
-	scall WaitEmote ; 92F3C (24:6f3c) -> CD D5 41
-	ld a, $69 ; 92F3F (24:6f3f) -> 3E 69
-	scall PlaySFX ; 92F41 (24:6f41) -> CD FE 4E
-	ld hl, $00a6 ; 92F44 (24:6f44) -> 21 A6 00
-	scall PrintTextWithNPCName ; 92F47 (24:6f47) -> CD A9 44
-	xor a ; 92F4A (24:6f4a) -> AF
-	scall PlayMusic ; 92F4B (24:6f4b) -> CD E6 4E
-	ld c, $01 ; 92F4E (24:6f4e) -> 0E 01
-	ld e, $02 ; 92F50 (24:6f50) -> 1E 02
-	ld a, $10 ; 92F52 (24:6f52) -> 3E 10
-	scall LoadEmote ; 92F54 (24:6f54) -> CD 76 41
-	scall WaitEmote ; 92F57 (24:6f57) -> CD D5 41
-	ld a, $34 ; 92F5A (24:6f5a) -> 3E 34
-	scall PlaySFX ; 92F5C (24:6f5c) -> CD FE 4E
-	ld e, $01 ; 92F5F (24:6f5f) -> 1E 01
-	xor a ; 92F61 (24:6f61) -> AF
-	scall SetPersonVisibilityState ; 92F62 (24:6f62) -> CD 3D 41
-	scall HideEmote ; 92F65 (24:6f65) -> CD 8B 41
-	ld e, $01 ; 92F68 (24:6f68) -> 1E 01
-	xor a ; 92F6A (24:6f6a) -> AF
-	scall SpriteFace ; 92F6B (24:6f6b) -> CD 95 40
-	ld bc, Data_92e5d ; 92F6E (24:6f6e) -> 01 5D 6E
-	ld e, $24 ; 92F71 (24:6f71) -> 1E 24
-	xor a ; 92F73 (24:6f73) -> AF
-	scall MovePersonAndWait ; 92F74 (24:6f74) -> CD 88 46
-	scall WaitNPCStep ; 92F77 (24:6f77) -> CD 0C 42
-	ld e, $02 ; 92F7A (24:6f7a) -> 1E 02
-	xor a ; 92F7C (24:6f7c) -> AF
-	scall SpriteFace ; 92F7D (24:6f7d) -> CD 95 40
-	ld c, $01 ; 92F80 (24:6f80) -> 0E 01
-	ld e, $01 ; 92F82 (24:6f82) -> 1E 01
-	ld a, $05 ; 92F84 (24:6f84) -> 3E 05
-	scall LoadEmote ; 92F86 (24:6f86) -> CD 76 41
-	ld e, $02 ; 92F89 (24:6f89) -> 1E 02
-	ld a, $04 ; 92F8B (24:6f8b) -> 3E 04
-	scall MoveEmote ; 92F8D (24:6f8d) -> CD E4 41
-	ld a, $28 ; 92F90 (24:6f90) -> 3E 28
-	scall PlaySFX ; 92F92 (24:6f92) -> CD FE 4E
-	scall WaitEmote ; 92F95 (24:6f95) -> CD D5 41
-	scall HideEmote ; 92F98 (24:6f98) -> CD 8B 41
-	ld bc, Data_92e67 ; 92F9B (24:6f9b) -> 01 67 6E
-	ld e, $24 ; 92F9E (24:6f9e) -> 1E 24
-	xor a ; 92FA0 (24:6fa0) -> AF
-	scall MovePersonAndWait ; 92FA1 (24:6fa1) -> CD 88 46
-	scall WaitNPCStep ; 92FA4 (24:6fa4) -> CD 0C 42
-	ld e, $03 ; 92FA7 (24:6fa7) -> 1E 03
-	xor a ; 92FA9 (24:6fa9) -> AF
-	scall SpriteFace ; 92FAA (24:6faa) -> CD 95 40
-	ld c, $01 ; 92FAD (24:6fad) -> 0E 01
-	ld e, $01 ; 92FAF (24:6faf) -> 1E 01
-	ld a, $10 ; 92FB1 (24:6fb1) -> 3E 10
-	scall LoadEmote ; 92FB3 (24:6fb3) -> CD 76 41
-	ld a, $34 ; 92FB6 (24:6fb6) -> 3E 34
-	scall PlaySFX ; 92FB8 (24:6fb8) -> CD FE 4E
-	ld e, $00 ; 92FBB (24:6fbb) -> 1E 00
-	xor a ; 92FBD (24:6fbd) -> AF
-	scall SetPersonVisibilityState ; 92FBE (24:6fbe) -> CD 3D 41
-	scall WaitEmote ; 92FC1 (24:6fc1) -> CD D5 41
-	ld hl, $00a7 ; 92FC4 (24:6fc4) -> 21 A7 00
-	scall PrintTextWithNPCName ; 92FC7 (24:6fc7) -> CD A9 44
-	xor a ; 92FCA (24:6fca) -> AF
-	scall PlayMusic ; 92FCB (24:6fcb) -> CD E6 4E
-	ld a, $1b ; 92FCE (24:6fce) -> 3E 1B
-	scall PlayMusic ; 92FD0 (24:6fd0) -> CD E6 4E
-	ld c, $02 ; 92FD3 (24:6fd3) -> 0E 02
-	ld e, $08 ; 92FD5 (24:6fd5) -> 1E 08
-	ld a, $10 ; 92FD7 (24:6fd7) -> 3E 10
-	scall LoadEmote ; 92FD9 (24:6fd9) -> CD 76 41
-	scall WaitEmote ; 92FDC (24:6fdc) -> CD D5 41
-	ld a, $69 ; 92FDF (24:6fdf) -> 3E 69
-	scall PlaySFX ; 92FE1 (24:6fe1) -> CD FE 4E
-	ld hl, $00a8 ; 92FE4 (24:6fe4) -> 21 A8 00
-	scall PrintTextWithNPCName ; 92FE7 (24:6fe7) -> CD A9 44
-	xor a ; 92FEA (24:6fea) -> AF
-	scall PlayMusic ; 92FEB (24:6feb) -> CD E6 4E
-	ld c, $01 ; 92FEE (24:6fee) -> 0E 01
-	ld e, $02 ; 92FF0 (24:6ff0) -> 1E 02
-	ld a, $10 ; 92FF2 (24:6ff2) -> 3E 10
-	scall LoadEmote ; 92FF4 (24:6ff4) -> CD 76 41
-	scall WaitEmote ; 92FF7 (24:6ff7) -> CD D5 41
-	ld a, $34 ; 92FFA (24:6ffa) -> 3E 34
-	scall PlaySFX ; 92FFC (24:6ffc) -> CD FE 4E
-	ld e, $01 ; 92FFF (24:6fff) -> 1E 01
-	xor a ; 93001 (24:7001) -> AF
-	scall SetPersonVisibilityState ; 93002 (24:7002) -> CD 3D 41
-	scall HideEmote ; 93005 (24:7005) -> CD 8B 41
-	ld e, $01 ; 93008 (24:7008) -> 1E 01
-	xor a ; 9300A (24:700a) -> AF
-	scall SpriteFace ; 9300B (24:700b) -> CD 95 40
-	ld bc, Data_92e5d ; 9300E (24:700e) -> 01 5D 6E
-	ld e, $24 ; 93011 (24:7011) -> 1E 24
-	xor a ; 93013 (24:7013) -> AF
-	scall MovePersonAndWait ; 93014 (24:7014) -> CD 88 46
-	scall WaitNPCStep ; 93017 (24:7017) -> CD 0C 42
-	ld e, $02 ; 9301A (24:701a) -> 1E 02
-	xor a ; 9301C (24:701c) -> AF
-	scall SpriteFace ; 9301D (24:701d) -> CD 95 40
-	ld c, $01 ; 93020 (24:7020) -> 0E 01
-	ld e, $01 ; 93022 (24:7022) -> 1E 01
-	ld a, $05 ; 93024 (24:7024) -> 3E 05
-	scall LoadEmote ; 93026 (24:7026) -> CD 76 41
-	ld e, $02 ; 93029 (24:7029) -> 1E 02
-	ld a, $04 ; 9302B (24:702b) -> 3E 04
-	scall MoveEmote ; 9302D (24:702d) -> CD E4 41
-	ld a, $28 ; 93030 (24:7030) -> 3E 28
-	scall PlaySFX ; 93032 (24:7032) -> CD FE 4E
-	scall WaitEmote ; 93035 (24:7035) -> CD D5 41
-	scall HideEmote ; 93038 (24:7038) -> CD 8B 41
-	ld bc, Data_92e67 ; 9303B (24:703b) -> 01 67 6E
-	ld e, $24 ; 9303E (24:703e) -> 1E 24
-	xor a ; 93040 (24:7040) -> AF
-	scall MovePersonAndWait ; 93041 (24:7041) -> CD 88 46
-	scall WaitNPCStep ; 93044 (24:7044) -> CD 0C 42
-	ld a, $34 ; 93047 (24:7047) -> 3E 34
-	scall PlaySFX ; 93049 (24:7049) -> CD FE 4E
-	ld e, $03 ; 9304C (24:704c) -> 1E 03
-	xor a ; 9304E (24:704e) -> AF
-	scall SpriteFace ; 9304F (24:704f) -> CD 95 40
-	ld c, $01 ; 93052 (24:7052) -> 0E 01
-	ld e, $50 ; 93054 (24:7054) -> 1E 50
-	ld a, $10 ; 93056 (24:7056) -> 3E 10
-	scall LoadEmote ; 93058 (24:7058) -> CD 76 41
-	ld a, $34 ; 9305B (24:705b) -> 3E 34
-	scall PlaySFX ; 9305D (24:705d) -> CD FE 4E
-	ld e, $00 ; 93060 (24:7060) -> 1E 00
-	xor a ; 93062 (24:7062) -> AF
-	scall SetPersonVisibilityState ; 93063 (24:7063) -> CD 3D 41
-	scall WaitEmote ; 93066 (24:7066) -> CD D5 41
-	ld a, $68 ; 93069 (24:7069) -> 3E 68
-	scall PlaySFX ; 9306B (24:706b) -> CD FE 4E
-	ld hl, $00a9 ; 9306E (24:706e) -> 21 A9 00
-	scall PrintTextWithNPCName ; 93071 (24:7071) -> CD A9 44
-	ld e, $00 ; 93074 (24:7074) -> 1E 00
-	ld a, $01 ; 93076 (24:7076) -> 3E 01
-	scall SetPersonVisibilityState ; 93078 (24:7078) -> CD 3D 41
-	ld c, $01 ; 9307B (24:707b) -> 0E 01
-	ld e, $20 ; 9307D (24:707d) -> 1E 20
-	ld a, $10 ; 9307F (24:707f) -> 3E 10
-	scall LoadEmote ; 93081 (24:7081) -> CD 76 41
-	ld a, $4d ; 93084 (24:7084) -> 3E 4D
-	scall PlaySFX ; 93086 (24:7086) -> CD FE 4E
-	scall WaitEmote ; 93089 (24:7089) -> CD D5 41
-	scall HideEmote ; 9308C (24:708c) -> CD 8B 41
-	ld e, $01 ; 9308F (24:708f) -> 1E 01
-	ld a, $02 ; 93091 (24:7091) -> 3E 02
-	scall PlayerStep ; 93093 (24:7093) -> CD 1E 4E
-	ret  ; 93096 (24:7096) -> C9
+	ld e, $01
+	xor a
+	scall PlayerStep
+	xor a
+	scall PlayMusic
+	ld a, $01
+	scall PlayMusic
+	hltext_tree_pointer TreeBitstreamText_3be8e
+	scall PrintTextWithNPCName
+	xor a
+	scall PlayMusic
+	ld e, $03
+	xor a
+	scall SpriteFace
+	ld c, $01
+	ld e, $01
+	ld a, $10
+	scall LoadEmote
+	ld a, $34
+	scall PlaySFX
+	ld e, $00
+	xor a
+	scall SetPersonVisibilityState
+	ld a, $3d
+	scall PlaySFX
+	scall WaitEmote
+	hltext_tree_pointer TreeBitstreamText_3bf25
+	scall PrintTextWithNPCName
+	ld c, $01
+	ld e, $02
+	ld a, $10
+	scall LoadEmote
+	ld a, $34
+	scall PlaySFX
+	scall WaitEmote
+	ld e, $01
+	xor a
+	scall SetPersonVisibilityState
+	scall HideEmote
+	ld e, $01
+	xor a
+	scall SpriteFace
+	ld bc, Data_92e5d
+	ld e, $24
+	xor a
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	ld e, $02
+	xor a
+	scall SpriteFace
+	ld c, $01
+	ld e, $01
+	ld a, $05
+	scall LoadEmote
+	ld e, $02
+	ld a, $04
+	scall MoveEmote
+	ld a, $28
+	scall PlaySFX
+	scall WaitEmote
+	scall HideEmote
+	ld bc, Data_92e67
+	ld e, $24
+	xor a
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	ld e, $03
+	xor a
+	scall SpriteFace
+	ld c, $01
+	ld e, $01
+	ld a, $10
+	scall LoadEmote
+	ld a, $34
+	scall PlaySFX
+	ld e, $00
+	xor a
+	scall SetPersonVisibilityState
+	scall WaitEmote
+	hltext_tree_pointer TreeBitstreamText_3bf4b
+	scall PrintTextStandard
+	xor a
+	scall PlayMusic
+	ld a, $1b
+	scall PlayMusic
+	ld c, $02
+	ld e, $04
+	ld a, $10
+	scall LoadEmote
+	scall WaitEmote
+	ld a, $69
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_3bf50
+	scall PrintTextWithNPCName
+	xor a
+	scall PlayMusic
+	ld c, $01
+	ld e, $02
+	ld a, $10
+	scall LoadEmote
+	scall WaitEmote
+	ld a, $34
+	scall PlaySFX
+	ld e, $01
+	xor a
+	scall SetPersonVisibilityState
+	scall HideEmote
+	ld e, $01
+	xor a
+	scall SpriteFace
+	ld bc, Data_92e5d
+	ld e, $24
+	xor a
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	ld e, $02
+	xor a
+	scall SpriteFace
+	ld c, $01
+	ld e, $01
+	ld a, $05
+	scall LoadEmote
+	ld e, $02
+	ld a, $04
+	scall MoveEmote
+	ld a, $28
+	scall PlaySFX
+	scall WaitEmote
+	scall HideEmote
+	ld bc, Data_92e67
+	ld e, $24
+	xor a
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	ld e, $03
+	xor a
+	scall SpriteFace
+	ld c, $01
+	ld e, $01
+	ld a, $10
+	scall LoadEmote
+	ld a, $34
+	scall PlaySFX
+	ld e, $00
+	xor a
+	scall SetPersonVisibilityState
+	scall WaitEmote
+	hltext_tree_pointer TreeBitstreamText_3bf85
+	scall PrintTextWithNPCName
+	xor a
+	scall PlayMusic
+	ld a, $1b
+	scall PlayMusic
+	ld c, $02
+	ld e, $08
+	ld a, $10
+	scall LoadEmote
+	scall WaitEmote
+	ld a, $69
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_3bf8e
+	scall PrintTextWithNPCName
+	xor a
+	scall PlayMusic
+	ld c, $01
+	ld e, $02
+	ld a, $10
+	scall LoadEmote
+	scall WaitEmote
+	ld a, $34
+	scall PlaySFX
+	ld e, $01
+	xor a
+	scall SetPersonVisibilityState
+	scall HideEmote
+	ld e, $01
+	xor a
+	scall SpriteFace
+	ld bc, Data_92e5d
+	ld e, $24
+	xor a
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	ld e, $02
+	xor a
+	scall SpriteFace
+	ld c, $01
+	ld e, $01
+	ld a, $05
+	scall LoadEmote
+	ld e, $02
+	ld a, $04
+	scall MoveEmote
+	ld a, $28
+	scall PlaySFX
+	scall WaitEmote
+	scall HideEmote
+	ld bc, Data_92e67
+	ld e, $24
+	xor a
+	scall MovePersonAndWait
+	scall WaitNPCStep
+	ld a, $34
+	scall PlaySFX
+	ld e, $03
+	xor a
+	scall SpriteFace
+	ld c, $01
+	ld e, $50
+	ld a, $10
+	scall LoadEmote
+	ld a, $34
+	scall PlaySFX
+	ld e, $00
+	xor a
+	scall SetPersonVisibilityState
+	scall WaitEmote
+	ld a, $68
+	scall PlaySFX
+	hltext_tree_pointer TreeBitstreamText_3bfc1
+	scall PrintTextWithNPCName
+	ld e, $00
+	ld a, $01
+	scall SetPersonVisibilityState
+	ld c, $01
+	ld e, $20
+	ld a, $10
+	scall LoadEmote
+	ld a, $4d
+	scall PlaySFX
+	scall WaitEmote
+	scall HideEmote
+	ld e, $01
+	ld a, $02
+	scall PlayerStep
+	ret
