@@ -6,7 +6,6 @@ import hashlib
 import pathlib
 import re
 import subprocess
-import sys
 from typing import Literal, SupportsIndex
 
 my_file = pathlib.Path(__file__)
@@ -106,6 +105,17 @@ def parse_symfile(
             region = get_region(addr)
             addr_to_symbol[region][(bank, addr)] = name
     return addr_to_symbol
+
+
+def parse_gbhw_asm(asmfile: pathlib.Path) -> dict[int, str]:
+    pattern = re.compile(r"^DEF +(\w+) +EQU +\$(ff[0-9a-f][0-9a-f])", re.IGNORECASE)
+    ret: dict[int, str] = {}
+    with asmfile.open() as fp:
+        for line in fp:
+            if m := pattern.match(line):
+                name, addr = m.groups()
+                ret[int(addr, 16)] = name
+    return ret
 
 
 def addr_to_rom_offset(bank: int, addr: int) -> int:
@@ -264,6 +274,7 @@ def main():
         raise ValueError("end must be strictly greater than start")
     baserom, symfile = verify_paths(args.version, args.unidasm)
     addr_to_symbol = parse_symfile(symfile)
+    addr_to_symbol["HRAM"] |= parse_gbhw_asm(root_dir / "gbhw.asm")
     instructions = get_disassembly(args.unidasm, baserom, args.start, args.end)
     update_instructions_symbols(instructions, addr_to_symbol)
     for insn in instructions:
