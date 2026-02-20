@@ -153,7 +153,7 @@ Func_96f2b:
 	jp nz, .asm_970c9
 	xor a
 	scall FacePlayer
-	ld hl, $00f4
+	hltext_tree_pointer TreeBitstreamText_47aea
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_970c3
@@ -179,7 +179,7 @@ Func_96f2b:
 	xor a
 	scall PlayerFace
 .asm_96f71:
-	ld hl, $03a1
+	hltext_tree_pointer TreeBitstreamText_47b05
 	scall PrintTextStandard
 	ld hl, $001e
 	scall ScriptSleep
@@ -304,7 +304,7 @@ Func_96f2b:
 	scall LoadEmote
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $0322
+	hltext_tree_pointer TreeBitstreamText_46e0b
 	scall PrintTextStandard
 	ld e, $01
 	ld a, $01
@@ -325,7 +325,7 @@ Func_96f2b:
 	scall PlayMusic
 	jp .asm_970c9
 .asm_970c3:
-	ld hl, $0203
+	hltext_tree_pointer TreeBitstreamText_47b1d
 	scall PrintTextStandard
 .asm_970c9:
 	ret
@@ -354,7 +354,7 @@ Func_970d8:
 	scall Func_80e5d
 	or a
 	jp z, .asm_97136
-	ld hl, $04a0
+	hltext_tree_pointer TreeBitstreamText_47bd1
 	scall PrintTextWithNPCName
 	ld hl, $001e
 	scall ScriptSleep
@@ -380,7 +380,7 @@ Func_970d8:
 	pop bc
 	jp .asm_9714f
 .asm_97136:
-	ld hl, $04a1
+	hltext_tree_pointer TreeBitstreamText_47c51
 	scall PrintTextWithNPCName
 	ld hl, $001e
 	scall ScriptSleep
@@ -531,7 +531,7 @@ Func_971f5:
 	scall SetPersonVisibilityState
 	jp label_972e7
 label_972e1:
-	ld hl, $015c
+	hltext_tree_pointer TreeBitstreamText_3f79e
 	scall PrintTextStandard
 label_972e7:
 	ret
@@ -549,7 +549,7 @@ Func_97311:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall FacePlayer
-	ld hl, $01d8
+	hltext_tree_pointer TreeBitstreamText_472f0
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_97340
@@ -560,11 +560,11 @@ Func_97311:
 	jp nz, label_97337
 	jp label_97346
 label_97337:
-	ld hl, $02e5
+	hltext_tree_pointer TreeBitstreamText_47319
 	scall PrintTextStandard
 	jp label_97346
 label_97340:
-	ld hl, $02e4
+	hltext_tree_pointer TreeBitstreamText_47306
 	scall PrintTextStandard
 label_97346:
 	pop bc
@@ -587,7 +587,7 @@ Func_97379:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall FacePlayer
-	ld hl, $01d8
+	hltext_tree_pointer TreeBitstreamText_472f0
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_973a8
@@ -598,11 +598,11 @@ Func_97379:
 	jp nz, label_9739f
 	jp label_973ae
 label_9739f:
-	ld hl, $02e5
+	hltext_tree_pointer TreeBitstreamText_47319
 	scall PrintTextStandard
 	jp label_973ae
 label_973a8:
-	ld hl, $02e4
+	hltext_tree_pointer TreeBitstreamText_47306
 	scall PrintTextStandard
 label_973ae:
 	pop bc
@@ -624,7 +624,7 @@ Func_973e1:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall FacePlayer
-	ld hl, $01d8
+	hltext_tree_pointer TreeBitstreamText_472f0
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_97410
@@ -635,11 +635,11 @@ Func_973e1:
 	jp nz, label_97407
 	jp label_97416
 label_97407:
-	ld hl, $02e5
+	hltext_tree_pointer TreeBitstreamText_47319
 	scall PrintTextStandard
 	jp label_97416
 label_97410:
-	ld hl, $02e4
+	hltext_tree_pointer TreeBitstreamText_47306
 	scall PrintTextStandard
 label_97416:
 	pop bc
