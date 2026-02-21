@@ -208,16 +208,16 @@ Func_23412: ; 23412 (8:7412)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2414b
-	call FarCopyUntilNull
+	call strcpy_far
 	ld de, Text_24069
 	ld c, BANK(Text_24069)
-	call FarCopyUntilNull
+	call strcpy_far
 	ld de, Text_24150
 	ld c, BANK(Text_24150)
-	call FarCopyUntilNull
+	call strcpy_far
 	ld de, Text_2416e
 	ld c, BANK(Text_2416e)
-	call FarCopyUntilNull
+	call strcpy_far
 	ld hl, sp+$45
 	ld e, [hl]
 	ld hl, sp+$3d
@@ -274,9 +274,9 @@ Func_23489: ; 23489 (8:7489)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_201b7
-	call CopyUntilNull
+	call strcpy
 	ld hl, sp+$45
 	ld e, [hl]
 	ld hl, sp+$3d

@@ -708,7 +708,7 @@ Func_60556: ; 60556 (18:4556)
 	call GetSRAMBank_ReadOnly
 	ld de, wSaveScratchPlayerName
 	ld hl, sp+$8
-	call CopyUntilNull
+	call strcpy
 	pop af
 	call GetSRAMBank
 	ld c, $1
@@ -746,7 +746,7 @@ Func_605be: ; 605be (18:45be)
 	call GetSRAMBank_ReadOnly
 	ld de, wSaveScratchPlayerName
 	ld hl, sp+$a
-	call CopyUntilNull
+	call strcpy
 	pop af
 	call GetSRAMBank
 	ld c, $1
@@ -757,7 +757,7 @@ Func_605be: ; 605be (18:45be)
 	pop hl
 Func_605fc: ; 605fc (18:45fc)
 	ld de, Data_60619
-	call CopyUntilNull
+	call strcpy
 	ld c, $98
 	ld hl, sp+$0
 	reg16swap de, hl

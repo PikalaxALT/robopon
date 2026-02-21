@@ -58,7 +58,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	jp nz, Func_56c8f
 	read_hl_from_sp_plus $44
 	ld de, Text_56b9c
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
@@ -90,13 +90,13 @@ Func_56c23: ; 56c23 (15:6c23)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	ld hl, sp+$32
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	jp Func_56c8c
 
@@ -105,14 +105,14 @@ Func_56c6d: ; 56c6d (15:6c6d)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	ld hl, sp+$17
 	push hl
 	read_hl_from_sp_plus $46
 	dec hl
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 Func_56c8c: ; 56c8c (15:6c8c)
 	jp Func_56d4b
@@ -168,7 +168,7 @@ Func_56cf1: ; 56cf1 (15:6cf1)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
@@ -181,13 +181,13 @@ Func_56d03: ; 56d03 (15:6d03)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	ld hl, sp+$32
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
@@ -196,14 +196,14 @@ Func_56d2c: ; 56d2c (15:6d2c)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	ld hl, sp+$4
 	push hl
 	read_hl_from_sp_plus $46
 	dec hl
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 Func_56d4b: ; 56d4b (15:6d4b)
 	pop hl

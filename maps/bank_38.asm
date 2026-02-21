@@ -1459,7 +1459,7 @@ Func_e1da5: ; e1da5 (38:5da5)
 	ld hl, sp+$6
 	add hl, de
 	pop de
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	ld l, c
 	ld h, $0
@@ -1753,7 +1753,7 @@ Func_e26e0::
 	jp nz, Func_e2712
 	call GetHLAtSPPlus4
 	ld de, Data_e276e
-	call CopyUntilNull
+	call strcpy
 	jp Func_e276b
 
 Func_e2712: ; e2712 (38:6712)
@@ -1779,7 +1779,7 @@ Func_e2712: ; e2712 (38:6712)
 	jp nz, Func_e2756
 	call GetHLAtSPPlus4
 	ld de, Data_e2777
-	call CopyUntilNull
+	call strcpy
 	jp Func_e276b
 
 Func_e2756: ; e2756 (38:6756)
@@ -1795,7 +1795,7 @@ Func_e2756: ; e2756 (38:6756)
 	push de
 	call GetHLAtSPPlus6
 	pop de
-	call CopyUntilNull
+	call strcpy
 Func_e276b: ; e276b (38:676b)
 	pop bc
 	pop bc

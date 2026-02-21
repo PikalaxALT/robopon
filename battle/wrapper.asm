@@ -7,7 +7,7 @@ StartBattle:: ; bbee (2:7bee)
 	read_hl_from_sp_plus $24
 	reg16swap de, hl
 	ld hl, sp+$4
-	call FarCopyUntilNull
+	call strcpy_far
 	pop af
 	pop de
 	ld hl, sp+$0

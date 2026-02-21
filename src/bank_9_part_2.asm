@@ -212,13 +212,13 @@ Func_24759: ; 24759 (9:4759)
 	push de
 	call GetHLAtSPPlus4
 	pop de
-	call CopyUntilNull
+	call strcpy
 	pop de
 	push hl
 	pop hl
 	push hl
 	ld de, Text_2426f
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	ret
 

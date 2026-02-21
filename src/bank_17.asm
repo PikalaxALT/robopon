@@ -1825,7 +1825,7 @@ Func_5cfb7: ; 5cfb7 (17:4fb7)
 	read_hl_from_sp_plus $24
 	reg16swap de, hl
 	ld hl, sp+$0
-	call FarCopyUntilNull
+	call strcpy_far
 	read_hl_from_sp_plus $20
 	ld de, $16
 	add hl, de
@@ -1871,7 +1871,7 @@ Func_5d00a: ; 5d00a (17:500a)
 	ld d, [hl]
 	reg16swap de, hl
 	pop de
-	call FarCopyUntilNull
+	call strcpy_far
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $20

@@ -1985,7 +1985,7 @@ Func_bc6d:: ; bc6d
 	read_hl_from_sp_plus $26
 	reg16swap de, hl
 	ld hl, sp+$5
-	call FarCopyUntilNull
+	call strcpy_far
 	callba_hli AllocateMonsterStruct
 	pop af
 	pop de
@@ -2032,7 +2032,7 @@ Func_bce5:: ; bce5
 	read_hl_from_sp_plus $26
 	reg16swap de, hl
 	ld hl, sp+$5
-	call FarCopyUntilNull
+	call strcpy_far
 	callba_hli AllocateMonsterStruct
 	pop af
 	pop de
@@ -2079,7 +2079,7 @@ Func_bd5d:: ; bd5d
 	read_hl_from_sp_plus $26
 	reg16swap de, hl
 	ld hl, sp+$5
-	call FarCopyUntilNull
+	call strcpy_far
 	callba_hli AllocateMonsterStruct
 	pop af
 	pop de
@@ -2126,7 +2126,7 @@ Func_bdd5:: ; bdd5
 	read_hl_from_sp_plus $26
 	reg16swap de, hl
 	ld hl, sp+$5
-	call FarCopyUntilNull
+	call strcpy_far
 	callba_hli AllocateMonsterStruct
 	pop af
 	pop de

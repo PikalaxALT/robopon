@@ -277,7 +277,7 @@ Func_6c11d:: ; 6c11d (1b:411d)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_200fd
-	call FarCopyUntilNull
+	call strcpy_far
 	reg16swap de, hl
 	ld hl, $115
 	add hl, sp
@@ -305,7 +305,7 @@ Func_6c11d:: ; 6c11d (1b:411d)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20116
-	call FarCopyUntilNull
+	call strcpy_far
 	ld hl, $f9
 	add hl, sp
 	ld [hl], $0
@@ -393,7 +393,7 @@ Func_6c2a9: ; 6c2a9 (1b:42a9)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2015d
-	call FarCopyUntilNull
+	call strcpy_far
 Func_6c2d8: ; 6c2d8 (1b:42d8)
 	ld hl, $fa
 	add hl, sp
@@ -618,10 +618,10 @@ Func_6c49d: ; 6c49d (1b:449d)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Func_6c102
 	ld c, $8
-	call FarCopyUntilNull
+	call strcpy_far
 	ld c, $8
 	ld hl, $fa
 	add hl, sp
@@ -643,7 +643,7 @@ Func_6c49d: ; 6c49d (1b:449d)
 	ld h, [hl]
 	ld l, a
 	ld de, Func_6c11d
-	call FarCopyUntilNull
+	call strcpy_far
 	ld hl, $fa
 	add hl, sp
 	ld e, [hl]

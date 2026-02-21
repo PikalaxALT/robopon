@@ -3285,7 +3285,7 @@ Func_77c7: ; 77c7 (1:77c7)
 	jp nz, Func_782a
 	ld de, Data_7784
 	ld hl, wc327
-	call CopyUntilNull
+	call strcpy
 	call Func_1c78
 	or a
 	jp z, Func_77ec
@@ -3364,7 +3364,7 @@ Func_7850: ; 7850 (1:7850)
 Func_7865: ; 7865 (1:7865)
 	ld de, Data_7784
 	ld hl, wc327
-	call CopyUntilNull
+	call strcpy
 	call Func_1c78
 	or a
 	jp z, Func_787d

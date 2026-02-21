@@ -2988,7 +2988,7 @@ Func_21912: ; 21912 (8:5912)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2016b
-	call CopyUntilNull
+	call strcpy
 	ld hl, sp+$44
 	ld e, [hl]
 	ld hl, sp+$3c
@@ -3497,7 +3497,7 @@ Func_21c7e: ; 21c7e (8:5c7e)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_200fd
-	call CopyUntilNull
+	call strcpy
 	reg16swap de, hl
 	ld hl, $115
 	add hl, sp
@@ -3524,7 +3524,7 @@ Func_21c7e: ; 21c7e (8:5c7e)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20116
-	call CopyUntilNull
+	call strcpy
 	ld hl, $10e
 	add hl, sp
 	ld [hl], $0
@@ -3611,7 +3611,7 @@ Func_21d47: ; 21d47 (8:5d47)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2015d
-	call CopyUntilNull
+	call strcpy
 Func_21d74: ; 21d74 (8:5d74)
 	ld hl, $f9
 	add hl, sp
@@ -3769,9 +3769,9 @@ Func_21e76: ; 21e76 (8:5e76)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_20102
-	call CopyUntilNull
+	call strcpy
 	ld hl, $f9
 	add hl, sp
 	ld a, [hl]
@@ -3792,7 +3792,7 @@ Func_21e76: ; 21e76 (8:5e76)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2011d
-	call CopyUntilNull
+	call strcpy
 	ld hl, $f9
 	add hl, sp
 	ld e, [hl]
@@ -3875,7 +3875,7 @@ Func_21f61: ; 21f61 (8:5f61)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld hl, $d5
 	add hl, sp
 	ld a, [hl]
@@ -3896,7 +3896,7 @@ Func_21f61: ; 21f61 (8:5f61)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20116
-	call CopyUntilNull
+	call strcpy
 	ld hl, $eb
 	add hl, sp
 	ld a, [hl]
@@ -3943,7 +3943,7 @@ Func_21ff6: ; 21ff6 (8:5ff6)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20124
-	call CopyUntilNull
+	call strcpy
 Func_2201e: ; 2201e (8:601e)
 	ld hl, $d5
 	add hl, sp
@@ -4023,7 +4023,7 @@ Func_22063: ; 22063 (8:6063)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld hl, $e0
 	add hl, sp
 	ld a, [hl]
@@ -4044,7 +4044,7 @@ Func_22063: ; 22063 (8:6063)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20116
-	call CopyUntilNull
+	call strcpy
 	ld hl, BankSwitch_00f7
 	add hl, sp
 	ld a, [hl]
@@ -4089,7 +4089,7 @@ Func_220f4: ; 220f4 (8:60f4)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20124
-	call CopyUntilNull
+	call strcpy
 Func_2211c: ; 2211c (8:611c)
 	ld hl, $e0
 	add hl, sp
@@ -4275,9 +4275,9 @@ Func_22250: ; 22250 (8:6250)
 	pop de
 	call Func_20d35
 	ld de, Text_20104
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_20116
-	call CopyUntilNull
+	call strcpy
 	ld hl, $c8
 	add hl, sp
 	ld e, [hl]
@@ -4763,9 +4763,9 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_20102
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	push bc
 	ld hl, $123
@@ -4790,7 +4790,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld h, b
 	call Func_20d35
 	ld de, Text_20134
-	call CopyUntilNull
+	call strcpy
 	ld hl, $123
 	add hl, sp
 	ld e, [hl]
@@ -4918,9 +4918,9 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_20102
-	call CopyUntilNull
+	call strcpy
 	pop bc
 Func_22701: ; 22701 (8:6701)
 	read_hl_from_sp_plus $e0
@@ -4955,7 +4955,7 @@ Func_22701: ; 22701 (8:6701)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20106
-	call CopyUntilNull
+	call strcpy
 	reg16swap de, hl
 	ld hl, $d3
 	add hl, sp
@@ -4972,7 +4972,7 @@ Func_22701: ; 22701 (8:6701)
 	reg16swap de, hl
 	reg16swap de, hl
 	ld de, Text_2013f
-	call CopyUntilNull
+	call strcpy
 	reg16swap de, hl
 	ld hl, $123
 	add hl, sp
@@ -5432,9 +5432,9 @@ Func_22ae7: ; 22ae7 (8:6ae7)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_2010a
-	call CopyUntilNull
+	call strcpy
 	ld hl, $d2
 	add hl, sp
 	ld a, [hl]
@@ -5470,7 +5470,7 @@ Func_22ae7: ; 22ae7 (8:6ae7)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20145
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_dd29
 	ld hl, $d4
 	add hl, sp
@@ -5499,7 +5499,7 @@ Func_22b6f: ; 22b6f (8:6b6f)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20151
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_dd29
 	ld hl, $d4
 	add hl, sp

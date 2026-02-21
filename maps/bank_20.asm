@@ -928,7 +928,7 @@ Func_83c6f: ; 83c6f (20:7c6f)
 	ld hl, sp+$f
 	add hl, de
 	ld de, Data_83e4e
-	call CopyUntilNull
+	call strcpy
 	ld hl, sp+$f
 	write_hl_to_sp_plus $2f
 	ld hl, $0

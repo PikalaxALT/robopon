@@ -4609,7 +4609,7 @@ Func_52591: ; 52591 (14:6591)
 	read_hl_from_sp_plus $15
 	reg16swap de, hl
 	ld hl, sp+$1b
-	call FarCopyUntilNull
+	call strcpy_far
 	ld hl, Data_52ac1
 	push hl
 	call PlaceString
@@ -4648,7 +4648,7 @@ Func_52591: ; 52591 (14:6591)
 	read_hl_from_sp_plus $15
 	reg16swap de, hl
 	ld hl, sp+$1b
-	call FarCopyUntilNull
+	call strcpy_far
 	ld de, Data_52ac7
 	ld hl, $903
 	call PlaceStringDEatCoordHL

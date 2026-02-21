@@ -527,7 +527,7 @@ Func_804da_\1:
 	ld d, h
 	ld l, c
 	ld h, b
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_ac35
 	pop bc
 	push bc
@@ -556,13 +556,13 @@ Func_80519_\1: ; 80519 (20:4519)
 	push bc
 	ld l, c
 	ld h, b
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	pop hl
 	push bc
 	reg16swap de, hl
 	ld hl, sp+$2
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_ac36
 	pop bc
 	push bc
@@ -593,7 +593,7 @@ Func_8056f_\1:
 	ld d, h
 	ld l, c
 	ld h, b
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_ac9b
 	pop bc
 	push bc
@@ -626,13 +626,13 @@ Func_805b2_\1: ; 805b2 (20:45b2)
 	push bc
 	ld l, c
 	ld h, b
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	pop hl
 	push bc
 	reg16swap de, hl
 	ld hl, sp+$2
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_aca4
 	pop bc
 	push bc

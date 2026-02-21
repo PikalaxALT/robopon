@@ -499,7 +499,7 @@ Func_c812:: ; c812
 	pop hl
 	push af
 	ld de, $c980
-	call CopyUntilNull
+	call strcpy
 	pop af
 	push hl
 	call GetSRAMBank
@@ -520,7 +520,7 @@ Func_c82b: ; c82b
 	push hl
 	call GetHLAtSPPlus6
 	pop de
-	call CopyUntilNull
+	call strcpy
 	call WriteHLToSPPlus4
 	pop af
 	call GetSRAMBank
@@ -750,7 +750,7 @@ Func_c9e8: ; c9e8 (3:49e8)
 	push de
 	read_hl_from_sp_plus $2b
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld c, l
 	ld b, h
 	ld hl, sp+$10
@@ -783,7 +783,7 @@ Func_ca22: ; ca22 (3:4a22)
 	ld l, c
 	ld h, b
 	dec hl
-	call CopyUntilNull
+	call strcpy
 Func_ca3e: ; ca3e (3:4a3e)
 	pop de
 	push de
@@ -3435,9 +3435,9 @@ Func_fa45: ; fa45 (3:7a45)
 	push de
 	call GetHLAtSPPlus4
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, String_fa7b
-	call CopyUntilNull
+	call strcpy
 	ld c, $83
 	ld hl, sp+$0
 	reg16swap de, hl

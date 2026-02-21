@@ -3186,7 +3186,7 @@ Func_bd6fa:: ; bd6fa (2f:56fa)
 	pop de
 	ld hl, sp+$0
 	push hl
-	call FarCopyUntilNull
+	call strcpy_far
 	ld hl, sp+$3e
 	ld e, [hl]
 	inc hl
