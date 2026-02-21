@@ -20,9 +20,10 @@ LoadSpriteGFX:: ; a26c (2:626c)
 	ld a, l
 	cp $1a
 	jp nc, .asm_a296
-	ld a, BANK(GFX_d4000)
+	ld a, BANK(OverworldSpriteGFX)
 	ld [wFarCallDestBank], a
 	ld h, $0
+	; * $240
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -35,13 +36,13 @@ LoadSpriteGFX:: ; a26c (2:626c)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, GFX_d4000
+	ld de, OverworldSpriteGFX
 	add hl, de
 	call WriteHLToSPPlus4
 	jp .asm_a2b0
 
 .asm_a296: ; a296 (2:6296)
-	ld a, BANK(GFX_c0000)
+	ld a, BANK(OverworldSprieGFX_2)
 	ld [wFarCallDestBank], a
 	ld h, $0
 	add hl, hl
@@ -56,7 +57,7 @@ LoadSpriteGFX:: ; a26c (2:626c)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, GFX_c0000 - $1a * $240
+	ld de, OverworldSprieGFX_2 - $1a * $240
 	add hl, de
 	call WriteHLToSPPlus4
 .asm_a2b0: ; a2b0 (2:62b0)

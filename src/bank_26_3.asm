@@ -1336,41 +1336,31 @@ label_9abb1:
 	ret  ; 9ABB5 (26:6bb5) -> C9
 
 Data_9abb6:
-	db $28, $c0, $de, $b2, $b8, $c9, $29, $b9, $dd, $28, $bb, $dd, $b6
-	db $de, $20, $b6, $b4, $af, $c3, $b7, $c3, $d9, $d6, $29, $00
+	dstr "(たﾞいくの)ケン(さんかﾞ かえってきてるよ)"
 
 Data_9abcf:
-	db $ca, $b9, $dd, $28
-	db $c6, $c0, $de, $bc, $c0, $29, $20, $db, $ce, $de, $ce, $df, $dd, $28, $b6, $de
-	db $29, $00
+	dstr "ハケン(にたﾞした) ロホﾞホﾟン(かﾞ)"
 
 Data_9abe5:
-	db $25, $64, $ca, $df, $b0, $c3, $a8, $b0, $20, $28, $b6, $b4, $af, $c3
-	db $b7, $c3, $d9, $d6, $29, $00
+	dstr "%dハﾟーティー (かえってきてるよ)"
 
 Data_9abf9:
-	db $28, $d6, $d9, $c9, $b6, $de, $af, $ba, $b3, $c6
-	db $20, $b1, $bb, $36, $bc, $de, $cf, $c3, $de, $29, $00
+	dstr "(よるのかﾞっこうに あさ6しﾞまてﾞ)"
 
 Data_9ac0e:
-	db $28, $ca, $b2, $da, $d9
-	db $d6, $29, $00
+	dstr "(はいれるよ)"
 
 Data_9ac16:
-	db $28, $cf, $ce, $de, $db, $bc, $d1, $d7, $c6, $20, $ba, $de, $ba
-	db $de, $36, $bc, $de, $cf, $c3, $de, $29, $00
+	dstr "(まほﾞろしむらに こﾞこﾞ6しﾞまてﾞ)"
 
 Data_9ac2c:
-	db $28, $ca, $b2, $da, $d9, $d6, $29
-	db $00
+	dstr "(はいれるよ)"
 
 Data_9ac34:
-	db $d2, $b2, $bc, $de, $28, $c4, $de, $b3, $b8, $c2, $c6, $20, $ba, $de, $ba
-	db $de, $38, $bc, $de, $cf, $c3, $de, $29, $00
+	dstr "メイシﾞ(とﾞうくつに こﾞこﾞ8しﾞまてﾞ)"
 
 Data_9ac4c:
-	db $28, $ca, $b2, $da, $d9, $d6, $29
-	db $00
+	dstr "(はいれるよ)"
 
 Data_9ac54:
 IF DEF(SUN)

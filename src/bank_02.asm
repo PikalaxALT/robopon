@@ -2211,8 +2211,9 @@ LoadPlayerSprite:: ; be77 (2:7e77)
 	ld hl, Data_be6e
 	add hl, de
 	ld l, [hl]
-	ld a, BANK(GFX_d4000)
+	ld a, BANK(OverworldSpriteGFX)
 	ld [wFarCallDestBank], a
+	; * $240
 	ld h, $0
 	add hl, hl
 	add hl, hl
@@ -2226,7 +2227,7 @@ LoadPlayerSprite:: ; be77 (2:7e77)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld de, GFX_d4000
+	ld de, OverworldSpriteGFX
 	add hl, de
 	reg16swap de, hl
 	read_hl_from wPlayerSpritePointer
