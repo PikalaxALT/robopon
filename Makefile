@@ -80,6 +80,8 @@ SRC_ASM := \
 	maps/bank_25.asm \
 	maps/bank_25_2.asm \
 	maps/bank_26.asm \
+	maps/bank_26_2.asm \
+	src/bank_26_3.asm \
 	maps/bank_27.asm \
 	maps/bank_28.asm \
 	maps/bank_29.asm \

@@ -1127,7 +1127,7 @@ Func_83e48: ; 83e48 (20:7e48)
 Data_83e4e:
 	dstr "G(とられた)"
 
-Func_83e56: ; 83e56 (20:7e56)
+Func_83e56:: ; 83e56 (20:7e56)
 	push bc
 	push bc
 	push bc

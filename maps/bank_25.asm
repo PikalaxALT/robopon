@@ -55,8 +55,7 @@ label_951bc:
 	ld e, $07
 	ld hl, Data_950b4
 	scall LoadWarps
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_0A
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -389,10 +388,8 @@ label_954aa:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, label_954f1
-	xor a
-	scall PlayMusic
-	ld a, $0e
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic SONG_JUMP_MINIGAME
 	xor a
 	scall Func_80653
 	ld c, $01
@@ -428,10 +425,8 @@ Func_95504:
 	or a
 	jp nz, label_9552f
 	scall RepairRobots
-	xor a
-	scall PlayMusic
-	ld a, $16
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic SONG_HEAL
 	ld c, $01
 	ld e, $02
 	ld a, $08
@@ -440,8 +435,7 @@ Func_95504:
 	scall HideEmote
 	hltext_tree_pointer TreeBitstreamText_46e0b
 	scall PrintTextStandard
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_0A
 label_9552f:
 	ret
 
@@ -739,8 +733,7 @@ Func_957b0:: ; 957b0
 	ld e, $01
 	ld hl, Data_95786
 	scall LoadMapObjects
-	ld a, $0b
-	scall PlayMusic
+	playmusic SONG_SHOP
 	scall Func_8001c
 	call Func_957f5
 	ld e, $01
@@ -748,8 +741,7 @@ Func_957b0:: ; 957b0
 	scall EventFlagAction
 	jp label_957f0
 label_957e0:
-	ld a, $0b
-	scall PlayMusic
+	playmusic SONG_SHOP
 	ld e, $02
 	ld hl, Data_95794
 	scall LoadMapObjects
@@ -779,8 +771,7 @@ Func_95817:: ; 95817
 	ld e, $01
 	ld hl, Data_9580c
 	scall LoadWarps
-	ld a, $14
-	scall PlayMusic
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	ret
 
@@ -933,13 +924,11 @@ Func_959a9:
 	scall WaitNPCStep
 	hideperson $1
 	playsfx $2a
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	playmusic $19
 	ld hl, $b4
 	scall ScriptSleep
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	playmusic $c
 IF DEF(SUN)
 	writetext TreeBitstreamText_39295
@@ -1098,8 +1087,7 @@ Func_95bdb:
 	xor a
 	scall FacePlayer
 	heal
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	playmusic SONG_HEAL
 	loademote $1, $2, $8
 	scall WaitEmote

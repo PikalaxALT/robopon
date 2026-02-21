@@ -7888,7 +7888,7 @@ Data_6bdde:
 Data_6bdf5:
 	dstr "(%d)"
 
-Func_6bdfa: ; 6bdfa (1a:7dfa)
+Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	push af
 	push bc
 	push bc

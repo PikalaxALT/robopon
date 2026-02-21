@@ -27,8 +27,7 @@ Func_96dbb:: ; 96dbb
 	ld e, $02
 	ld hl, Data_96d9f
 	scall LoadMapObjects
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_0A
 	ld a, $04
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -136,8 +135,7 @@ Func_96e97:: ; 96e97
 	ld a, $09
 	scall SetPersonVisibilityState
 .asm_96f18:
-	ld a, $07
-	scall PlayMusic
+	playmusic SONG_TOWN2
 	scall Func_8001c
 	ret
 
@@ -185,12 +183,10 @@ Func_96f2b:
 	scall ScriptSleep
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $0d
-	scall PlayMusic
+	playmusic SONG_MAZE_MINIGAME
 	xor a
 .asm_96f91:
 	cp $05
@@ -267,8 +263,7 @@ Func_96f2b:
 	scall HideEmote
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld hl, $001e
 	scall ScriptSleep
 	ld e, $01
@@ -294,10 +289,8 @@ Func_96f2b:
 	scall RepairRobots
 	ld a, $01
 	scall FadeInAudio
-	xor a
-	scall PlayMusic
-	ld a, $16
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic SONG_HEAL
 	ld c, $01
 	ld e, $02
 	ld a, $08
@@ -321,8 +314,7 @@ Func_96f2b:
 	ld e, $01
 	ld a, $09
 	scall SetPersonVisibilityState
-	ld a, $07
-	scall PlayMusic
+	playmusic SONG_TOWN2
 	jp .asm_970c9
 .asm_970c3:
 	hltext_tree_pointer TreeBitstreamText_47b1d
@@ -413,8 +405,7 @@ Func_971d6:: ; 971d6
 	ld e, $08
 	ld hl, Data_97166
 	scall LoadMapObjects
-	ld a, $07
-	scall PlayMusic
+	playmusic SONG_TOWN2
 	ld e, $00
 	xor a
 	scall SetPersonVisibilityState
@@ -473,12 +464,10 @@ Func_971f5:
 	scall SpriteFace
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $14
-	scall PlayMusic
+	playmusic SONG_WORLD_MAP
 	xor a
 	scall FacePlayer
 	ld hl, $001e
@@ -518,12 +507,10 @@ Func_971f5:
 	scall SpriteFace
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $07
-	scall PlayMusic
+	playmusic SONG_TOWN2
 	xor a
 	scall FacePlayer
 	ld e, $00
@@ -709,7 +696,6 @@ Func_97486:: ; 97486
 	ld e, $01
 	ld hl, Data_97478
 	scall LoadMapObjects
-	ld a, $07
-	scall PlayMusic
+	playmusic SONG_TOWN2
 	scall Func_8001c
 	ret

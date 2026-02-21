@@ -1103,7 +1103,7 @@ Func_9eb2:
 Func_9eb3:
 	ret
 
-Func_9eb4: ; 9eb4 (2:5eb4)
+Func_9eb4:: ; 9eb4 (2:5eb4)
 	push af
 	ld hl, sp+$1
 	ld a, [hl]
@@ -1167,7 +1167,7 @@ Func_9efa: ; 9efa (2:5efa)
 	add hl, de
 	ret
 
-Func_9f1e: ; 9f1e (2:5f1e)
+Func_9f1e:: ; 9f1e (2:5f1e)
 	push af
 	ld hl, sp+$1
 	ld a, [hl]

@@ -129,6 +129,8 @@ ROMX $25
     "Bank 25, 2"
 ROMX $26
     "Bank 26"
+    "Bank 26, 2"
+    "Bank 26, 3"
 ROMX $27
     "Bank 27"
 ROMX $28
