@@ -692,10 +692,10 @@ wLCDInterrupt2:: ; c770
 	ds $2
 	char wc790 ; c790
 	char wc791 ; c791
-	ds $1
+	char wc792 ; c792
 	char wc793 ; c793
 	ds $1
-	char wc795
+	char wc795 ; c795
 	char wc796 ; c796
 	char wc797 ; c797
 	char wSaveFileExists ; c798
