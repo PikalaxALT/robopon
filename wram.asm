@@ -680,9 +680,11 @@ wLCDInterrupt2:: ; c770
 	char wc782 ; c782
 	char wRandomEncounterCooldown ; c783
 	char wc784 ; c784
-	char wc785 ; c785
-	short wc786 ; c786
-	char wc788 ; c788
+
+	; for Func_9b262 (scall Func_80ce7)
+	char wc785 ; c785   bank
+	short wc786 ; c786  addr
+	char wc788 ; c788   count
 
 	char wc789 ; c789
 	char wc78a ; c78a

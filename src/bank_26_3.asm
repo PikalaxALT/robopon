@@ -97,30 +97,30 @@ LandmarkSign::
 	push hl
 	ld hl, sp+$4
 	ld [hl], $0
-Func_9a236:
+.asm_9a236:
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $3c
-	jp nc, Func_9a25d
+	jp nc, .asm_9a25d
 	call NextOverworldFrame
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $10
-	jp c, Func_9a253
+	jp c, .asm_9a253
 	call GetJoyPressed
 	or a
-	jp z, Func_9a253
-	jp Func_9a25d
+	jp z, .asm_9a253
+	jp .asm_9a25d
 
-Func_9a253:
+.asm_9a253:
 	ld hl, sp+$4
 	ld a, [hl]
 	inc a
 	ld hl, sp+$4
 	ld [hl], a
-	jp Func_9a236
+	jp .asm_9a236
 
-Func_9a25d:
+.asm_9a25d:
 	callba_hli Func_8f44
 	set_farcall_addrs_hli free
 	pop hl
@@ -146,14 +146,14 @@ Func_9a28c::
 	ld hl, sp+$0
 	ld a, [hl]
 	or a
-	jp nz, Func_9a2bc
+	jp nz, .asm_9a2bc
 	read_hl_from_sp_plus $40
 	ld de, $64
 	call DivideHLByDESigned
 	ld a, l
 	or h
-	jp z, Func_9a2e4
-Func_9a2bc:
+	jp z, .asm_9a2e4
+.asm_9a2bc:
 	read_hl_from_sp_plus $40
 	ld de, $64
 	call DivideHLByDESigned
@@ -169,18 +169,18 @@ Func_9a2bc:
 	write_hl_to_sp_plus $40
 	ld hl, sp+$0
 	ld [hl], $1
-Func_9a2e4:
+.asm_9a2e4:
 	ld hl, sp+$0
 	ld a, [hl]
 	or a
-	jp nz, Func_9a2fa
+	jp nz, .asm_9a2fa
 	read_hl_from_sp_plus $40
 	ld de, $a
 	call DivideHLByDESigned
 	ld a, l
 	or h
-	jp z, Func_9a322
-Func_9a2fa:
+	jp z, .asm_9a322
+.asm_9a2fa:
 	read_hl_from_sp_plus $40
 	ld de, $a
 	call DivideHLByDESigned
@@ -196,7 +196,7 @@ Func_9a2fa:
 	write_hl_to_sp_plus $40
 	ld hl, sp+$0
 	ld [hl], $1
-Func_9a322:
+.asm_9a322:
 	read_hl_from_sp_plus $40
 	ld de, $30
 	add hl, de
@@ -210,16 +210,16 @@ Func_9a322:
 	call Func_2951
 	push hl
 	xor a
-Func_9a33e:
+.asm_9a33e:
 	cp $3c
-	jp nc, Func_9a34c
+	jp nc, .asm_9a34c
 	push af
 	call NextOverworldFrame
 	pop af
 	inc a
-	jp Func_9a33e
+	jp .asm_9a33e
 
-Func_9a34c:
+.asm_9a34c:
 	callba_hli Func_8f44
 	set_farcall_addrs_hli free
 	pop hl
@@ -299,7 +299,7 @@ CheckObjectsOccupyingSameTile::
 	inc hl
 	inc hl
 	cp [hl]
-	jp nz, Func_9a419
+	jp nz, .asm_9a419
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -338,13 +338,13 @@ CheckObjectsOccupyingSameTile::
 	inc hl
 	inc hl
 	cp [hl]
-	jp nz, Func_9a419
+	jp nz, .asm_9a419
 	ld a, $1
-	jp Func_9a41a
+	jp .asm_9a41a
 
-Func_9a419:
+.asm_9a419:
 	xor a
-Func_9a41a:
+.asm_9a41a:
 	pop bc
 	pop bc
 	ret
@@ -721,18 +721,18 @@ LoadEmote::
 	read_hl_from wc82e
 	ld a, l
 	or h
-	jp z, Func_9a6c7
+	jp z, .asm_9a6c7
 	read_hl_from wc82e
 	call Func_9a1aa
 	ld hl, $0
 	write_hl_to wc82e
-Func_9a6c7:
+.asm_9a6c7:
 	pop bc
 	pop de
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $22
-	jp nc, Func_9a780
+	jp nc, .asm_9a780
 	push de
 	push bc
 	set_farcall_addrs_hli LoadEmoteGFX
@@ -775,7 +775,7 @@ Func_9a6c7:
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_9a75a
+	jp nz, .asm_9a75a
 	ld hl, sp+$1
 	ld e, [hl]
 	ld d, $0
@@ -783,14 +783,14 @@ Func_9a6c7:
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_9a75a
+	jp nz, .asm_9a75a
 	ld a, [wPlayerMapY]
 	ld e, a
 	ld a, [wPlayerMapX]
 	call MoveEmote
-	jp Func_9a771
+	jp .asm_9a771
 
-Func_9a75a:
+.asm_9a75a:
 	ld hl, sp+$1
 	ld e, [hl]
 	ld d, $0
@@ -804,7 +804,7 @@ Func_9a75a:
 	add hl, de
 	ld e, [hl]
 	call MoveEmote
-Func_9a771:
+.asm_9a771:
 	ld l, $50
 	push hl
 	ld c, $50
@@ -812,9 +812,9 @@ Func_9a771:
 	xor a
 	call Func_9a8b1
 	pop bc
-	jp Func_9a834
+	jp .asm_9a834
 
-Func_9a780:
+.asm_9a780:
 	push de
 	push bc
 	ld hl, sp+$5
@@ -899,23 +899,24 @@ Func_9a780:
 	xor a
 	call Func_9a8b1
 	pop bc
-Func_9a834:
+.asm_9a834:
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $c
-	jp z, Func_9a844
+	jp z, .asm_9a844
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $12
-	jp nz, Func_9a848
-Func_9a844:
+	jp nz, .asm_9a848
+.asm_9a844:
 	xor a
 	ld [wc85a], a
-Func_9a848:
+.asm_9a848:
 	pop bc
 	ret
 
 Func_9a84a::
+.asm_9a84a:
 	call NextOverworldFrame
 	set_farcall_addrs_hli UpdateSprites
 	ld c, $0
@@ -923,26 +924,26 @@ Func_9a84a::
 	ld a, [wPlayerFacing]
 	call FarCall
 	cp $1
-	jp z, Func_9a86a
-	jp Func_9a87b
+	jp z, .asm_9a86a
+	jp .asm_9a87b
 
-Func_9a86a:
+.asm_9a86a:
 	callba_hli HandleNPCStep
-	jp Func_9a84a
+	jp .asm_9a84a
 
-Func_9a87b:
+.asm_9a87b:
 	ret
 
 Func_9a87c::
 	read_hl_from wc82e
 	ld a, l
 	or h
-	jp z, Func_9a896
+	jp z, .asm_9a896
 	read_hl_from wc82e
 	call Func_9a1aa
 	ld hl, $0
 	write_hl_to wc82e
-Func_9a896:
+.asm_9a896:
 	ret
 
 MoveEmote:: ; 9a897
@@ -2105,16 +2106,16 @@ Func_9b276:
 	read_hl_from wc786
 	ld a, l
 	or h
-	jp nz, Func_9b286
-	jp Func_9b322
+	jp nz, .asm_9b286
+	jp .asm_9b322
 
-Func_9b286:
+.asm_9b286:
 	ld e, $0
-Func_9b288:
+.asm_9b288:
 	ld a, e
 	ld hl, wc788
 	cp [hl]
-	jp nc, Func_9b314
+	jp nc, .asm_9b314
 	push de
 	ld a, [wc785]
 	ld [wFarCallDestBank], a
@@ -2151,14 +2152,14 @@ Func_9b288:
 	ld a, $1
 	call LeftShiftA
 	and e
-	jp z, Func_9b30f
+	jp z, .asm_9b30f
 	ld hl, sp+$6
 	ld a, [hl]
 	and $10
-	jp nz, Func_9b30f
+	jp nz, .asm_9b30f
 	ld a, [wc859]
 	or a
-	jp z, Func_9b30f
+	jp z, .asm_9b30f
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
@@ -2176,14 +2177,14 @@ Func_9b288:
 	add hl, de
 	ld a, [wc859]
 	ld [hl], a
-Func_9b30f:
+.asm_9b30f:
 	pop de
 	inc e
-	jp Func_9b288
+	jp .asm_9b288
 
-Func_9b314:
+.asm_9b314:
 	callba_hli Func_8f44
-Func_9b322:
+.asm_9b322:
 	pop bc
 	pop bc
 	pop bc
@@ -2194,16 +2195,16 @@ Func_9b326::
 	read_hl_from wc786
 	ld a, l
 	or h
-	jp nz, Func_9b335
-	jp Func_9b72f
+	jp nz, .asm_9b335
+	jp .asm_9b72f
 
-Func_9b335:
+.asm_9b335:
 	ld e, $0
-Func_9b337:
+.asm_9b337:
 	ld a, e
 	ld hl, wc788
 	cp [hl]
-	jp nc, Func_9b72f
+	jp nc, .asm_9b72f
 	push de
 	ld a, [wc785]
 	ld [wFarCallDestBank], a
@@ -2240,10 +2241,10 @@ Func_9b337:
 	ld a, $1
 	call LeftShiftA
 	and e
-	jp z, Func_9b38c
-	jp Func_9b72a
+	jp z, .asm_9b38c
+	jp .asm_9b72a
 
-Func_9b38c:
+.asm_9b38c:
 	ld hl, sp+$44
 	ld a, [wPlayerMapX]
 	ld [hl], a
@@ -2252,64 +2253,64 @@ Func_9b38c:
 	ld hl, sp+$48
 	ld a, [hl]
 	and $10
-	jp nz, Func_9b3cd
+	jp nz, .asm_9b3cd
 	ld a, [wPlayerFacing]
 	cp $3
-	jp z, Func_9b3c6
+	jp z, .asm_9b3c6
 	cp $2
-	jp z, Func_9b3c2
+	jp z, .asm_9b3c2
 	cp $1
-	jp z, Func_9b3b8
+	jp z, .asm_9b3b8
 	or a
-	jp nz, Func_9b3cd
+	jp nz, .asm_9b3cd
 	dec e
-	jp Func_9b3cd
+	jp .asm_9b3cd
 
-Func_9b3b8:
+.asm_9b3b8:
 	ld hl, sp+$44
 	ld a, [hl]
 	inc a
 	ld hl, sp+$44
 	ld [hl], a
-	jp Func_9b3cd
+	jp .asm_9b3cd
 
-Func_9b3c2:
+.asm_9b3c2:
 	inc e
-	jp Func_9b3cd
+	jp .asm_9b3cd
 
-Func_9b3c6:
+.asm_9b3c6:
 	ld hl, sp+$44
 	ld a, [hl]
 	dec a
 	ld hl, sp+$44
 	ld [hl], a
-Func_9b3cd:
+.asm_9b3cd:
 	ld hl, sp+$46
 	ld a, [hl]
 	ld hl, sp+$44
 	cp [hl]
-	jp nz, Func_9b72a
+	jp nz, .asm_9b72a
 	ld hl, sp+$47
 	ld a, [hl]
 	cp e
-	jp nz, Func_9b72a
+	jp nz, .asm_9b72a
 	ld hl, sp+$4a
 	ld a, [hl]
 	cp $31
-	jp z, Func_9b403
+	jp z, .asm_9b403
 	cp $28
-	jp z, Func_9b403
+	jp z, .asm_9b403
 	cp $24
-	jp z, Func_9b403
+	jp z, .asm_9b403
 	cp $22
-	jp z, Func_9b403
+	jp z, .asm_9b403
 	cp $1d
-	jp z, Func_9b403
+	jp z, .asm_9b403
 	cp $1c
-	jp z, Func_9b403
+	jp z, .asm_9b403
 	cp $1a
-	jp nz, Func_9b44d
-Func_9b403:
+	jp nz, .asm_9b44d
+.asm_9b403:
 	set_farcall_addrs_hli Func_da901
 	ld de, PutOnVideoTransferQueue
 	ld hl, $d
@@ -2324,9 +2325,9 @@ Func_9b403:
 	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
 	call FarCall
-	jp Func_9b72a
+	jp .asm_9b72a
 
-Func_9b44d:
+.asm_9b44d:
 	push de
 	ld a, $3
 	ld [wEnableAttrMapTransfer], a
@@ -2339,11 +2340,11 @@ Func_9b44d:
 	ld a, [hl]
 	and $f
 	cp $3
-	jp z, Func_9b4c2
+	jp z, .asm_9b4c2
 	cp $2
-	jp z, Func_9b49f
+	jp z, .asm_9b49f
 	cp $1
-	jp nz, Func_9b4e1
+	jp nz, .asm_9b4e1
 	ld hl, sp+$4d
 	ld a, [hl]
 	dec a
@@ -2359,9 +2360,9 @@ Func_9b44d:
 	pop de
 	ld c, $a
 	call FarCall
-	jp Func_9b4e1
+	jp .asm_9b4e1
 
-Func_9b49f:
+.asm_9b49f:
 	ld hl, sp+$4d
 	ld a, [hl]
 	push af
@@ -2375,9 +2376,9 @@ Func_9b49f:
 	inc h
 	ld c, $8
 	call FarCall
-	jp Func_9b4e1
+	jp .asm_9b4e1
 
-Func_9b4c2:
+.asm_9b4c2:
 	ld hl, sp+$4d
 	ld a, [hl]
 	dec a
@@ -2390,17 +2391,17 @@ Func_9b4c2:
 	ld h, $0
 	ld c, $5
 	call FarCall
-Func_9b4e1:
+.asm_9b4e1:
 	pop af
 	call GetSRAMBank
 	pop de
 	ld hl, sp+$48
 	ld a, [hl]
 	and $10
-	jp nz, Func_9b557
+	jp nz, .asm_9b557
 	ld a, [wc859]
 	or a
-	jp z, Func_9b554
+	jp z, .asm_9b554
 	push de
 	ld a, $31
 	call OverworldPlaySFX
@@ -2441,15 +2442,15 @@ Func_9b4e1:
 	ld [hl], a
 	callba_hli Func_8f44
 	pop de
-Func_9b554:
-	jp Func_9b55e
+.asm_9b554:
+	jp .asm_9b55e
 
-Func_9b557:
+.asm_9b557:
 	push de
 	ld a, $2a
 	call OverworldPlaySFX
 	pop de
-Func_9b55e:
+.asm_9b55e:
 	push de
 	ld hl, sp+$28
 	reg16swap de, hl
@@ -2511,11 +2512,11 @@ Func_9b55e:
 	ld a, [hl]
 	and $f
 	cp $3
-	jp z, Func_9b652
+	jp z, .asm_9b652
 	cp $2
-	jp z, Func_9b639
+	jp z, .asm_9b639
 	cp $1
-	jp nz, Func_9b668
+	jp nz, .asm_9b668
 	set_farcall_addrs_hli Func_5a0e0
 	ld c, $0
 	ld e, $1
@@ -2524,9 +2525,9 @@ Func_9b55e:
 	call FarCall
 	ld hl, sp+$5
 	ld [hl], a
-	jp Func_9b668
+	jp .asm_9b668
 
-Func_9b639:
+.asm_9b639:
 	set_farcall_addrs_hli Func_6af0d
 	ld e, $0
 	ld hl, sp+$4b
@@ -2534,9 +2535,9 @@ Func_9b639:
 	call FarCall
 	ld hl, sp+$5
 	ld [hl], a
-	jp Func_9b668
+	jp .asm_9b668
 
-Func_9b652:
+.asm_9b652:
 	set_farcall_addrs_hli Func_4ed5d
 	ld e, $0
 	ld hl, sp+$4b
@@ -2544,12 +2545,12 @@ Func_9b652:
 	call FarCall
 	ld hl, sp+$5
 	ld [hl], a
-Func_9b668:
+.asm_9b668:
 	pop de
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $ff
-	jp nz, Func_9b70c
+	jp nz, .asm_9b70c
 	push de
 	ld de, Data_9b73a
 	ld hl, sp+$a
@@ -2582,10 +2583,10 @@ Func_9b668:
 	ld hl, sp+$48
 	ld a, [hl]
 	and $10
-	jp nz, Func_9b6fb
+	jp nz, .asm_9b6fb
 	ld a, [wc859]
 	or a
-	jp z, Func_9b6fb
+	jp z, .asm_9b6fb
 	ld d, $0
 	ld hl, wMapWidth
 	ld l, [hl]
@@ -2603,11 +2604,11 @@ Func_9b668:
 	ld hl, sp+$2
 	ld a, [hl]
 	ld [de], a
-Func_9b6fb:
+.asm_9b6fb:
 	callba_hli Func_8f44
-	jp Func_9b72a
+	jp .asm_9b72a
 
-Func_9b70c:
+.asm_9b70c:
 	ld hl, sp+$4a
 	ld a, [hl]
 	and $7
@@ -2625,12 +2626,12 @@ Func_9b70c:
 	pop af
 	or [hl]
 	ld [hl], a
-Func_9b72a:
+.asm_9b72a:
 	pop de
 	inc e
-	jp Func_9b337
+	jp .asm_9b337
 
-Func_9b72f:
+.asm_9b72f:
 	add sp, $4a
 	ret
 
