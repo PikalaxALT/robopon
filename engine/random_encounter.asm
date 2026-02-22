@@ -475,9 +475,9 @@ LoadEnemyData: ; ba47
 	add hl, de
 	ld [hl], $1
 	xor a
-Func_baed: ; baed (2:7aed)
+.asm_baed: ; baed (2:7aed)
 	cp $4
-	jp nc, Func_bb31
+	jp nc, .asm_bb31
 	push af
 	ld l, a
 	ld h, $0
@@ -524,9 +524,9 @@ Func_baed: ; baed (2:7aed)
 	ld [hl], a
 	pop af
 	inc a
-	jp Func_baed
+	jp .asm_baed
 
-Func_bb31: ; bb31 (2:7b31)
+.asm_bb31: ; bb31 (2:7b31)
 	pop bc
 	pop bc
 	pop bc
