@@ -439,10 +439,7 @@ Func_9233b:
 .asm_92391:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $24
 	scall MovePlayer
 	jp .asm_923f6
@@ -473,10 +470,7 @@ Func_9233b:
 .asm_923d3:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $24
 	scall MovePlayer
 	hltext_tree_pointer TreeBitstreamText_46ffa

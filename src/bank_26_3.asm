@@ -440,10 +440,7 @@ Func_9a41d:: ; 9a41d
 	inc de
 	ld hl, $001e
 	add hl, de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, [bc]
 	inc bc
 	ld [de], a
@@ -469,10 +466,7 @@ Func_9a41d:: ; 9a41d
 	ld a, h
 	or d
 	ld h, a
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop bc
 	inc c
 	jp .asm_9a476
@@ -593,10 +587,7 @@ Func_9a41d:: ; 9a41d
 	inc de
 	ld hl, $001e
 	add hl, de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, [bc]
 	inc bc
 	ld [de], a
@@ -622,10 +613,7 @@ Func_9a41d:: ; 9a41d
 	ld a, h
 	or d
 	ld h, a
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	pop bc
 	inc c
 	jp .asm_9a552
@@ -982,10 +970,7 @@ Func_9a8c3:: ; 9a8c3
 	ld h, $00
 	ld de, $003c
 	call MultiplyHLbyDE
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$04
 	ld l, [hl]
 	ld h, $00
@@ -1434,10 +1419,7 @@ Func_9ace0:: ; 9ace0
 	call Func_2a3e
 	set_farcall_addrs_hli Func_1c11
 	ld hl, sp+$11
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $0066
 	call FarCall
 	ld hl, sp+$05
@@ -1478,16 +1460,10 @@ Func_9ace0:: ; 9ace0
 	push de
 	set_farcall_addrs_hli Func_1c27
 	ld hl, sp+$0f
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$05
 	call FarCall
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$76
 	ld [hl], d
 	ld hl, sp+$75
@@ -1814,10 +1790,7 @@ Func_9af6f:
 	set_farcall_addrs_hli GetName
 	ld c, $08
 	ld hl, sp+$26
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$44
 	ld l, [hl]
 	ld h, $00
@@ -1829,10 +1802,7 @@ Func_9af6f:
 	set_farcall_addrs_hli GetName
 	ld c, $05
 	ld hl, sp+$26
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$44
 	ld a, [hl]
 	and $3f
@@ -1867,16 +1837,10 @@ Func_9af6f:
 	ld l, [hl]
 	ld h, $00
 	call MultiplyHLbyDE
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$4a
 	ld l, [hl]
 	ld h, $00
@@ -1891,16 +1855,10 @@ Func_9af6f:
 	ld l, [hl]
 	ld h, $00
 	call MultiplyHLbyDE
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$4a
 	ld l, [hl]
 	ld h, $00
@@ -1911,10 +1869,7 @@ Func_9af6f:
 	call FarCall
 .asm_9b0ad:
 	ld hl, sp+$24
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$06
 	call LiteralStringInTree
 	dec hl
@@ -1948,10 +1903,7 @@ Func_9af6f:
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
 	ld hl, sp+$02
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $010e
 	call FarCall
 	set_farcall_addrs_hli Func_8f44
@@ -2033,10 +1985,7 @@ Func_9af6f:
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
 	ld hl, sp+$02
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, $010e
 	call FarCall
 	ld hl, sp+$4c
@@ -2046,24 +1995,15 @@ Func_9af6f:
 	ld l, [hl]
 	ld h, $00
 	call MultiplyHLbyDE
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$4a
 	ld l, [hl]
 	ld h, $00
 	add hl, de
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld hl, sp+$00
 	ld a, [hl]
 	ld [de], a
