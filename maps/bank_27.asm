@@ -2531,27 +2531,27 @@ ENDC
 Func_9e95e:: ; 9e95e
 	ld a, [wc792] ; 9E95E (27:695e) -> FA 92 C7
 	cp $01 ; 9E961 (27:6961) -> FE 01
-	jp z, label_9e976 ; 9E963 (27:6963) -> CA 76 69
+	jp z, .asm_9e976 ; 9E963 (27:6963) -> CA 76 69
 	ld a, [wc792] ; 9E966 (27:6966) -> FA 92 C7
 	cp $03 ; 9E969 (27:6969) -> FE 03
-	jp z, label_9e976 ; 9E96B (27:696b) -> CA 76 69
+	jp z, .asm_9e976 ; 9E96B (27:696b) -> CA 76 69
 	ld a, [wc792] ; 9E96E (27:696e) -> FA 92 C7
 	cp $02 ; 9E971 (27:6971) -> FE 02
-	jp nz, label_9e986 ; 9E973 (27:6973) -> C2 86 69
-label_9e976:
+	jp nz, .asm_9e986 ; 9E973 (27:6973) -> C2 86 69
+.asm_9e976:
 	ld e, $02 ; 9E976 (27:6976) -> 1E 02
 	ld hl, Data_9e8fa ; 9E978 (27:6978) -> 21 FA 68
 	scall LoadWarps ; 9E97B (27:697b) -> CD 3A 40
 	ld a, $02 ; 9E97E (27:697e) -> 3E 02
 	ld [wc792], a ; 9E980 (27:6980) -> EA 92 C7
-	jp label_9e993 ; 9E983 (27:6983) -> C3 93 69
-label_9e986:
+	jp .asm_9e993 ; 9E983 (27:6983) -> C3 93 69
+.asm_9e986:
 	ld e, $02 ; 9E986 (27:6986) -> 1E 02
 	ld hl, Data_9e910 ; 9E988 (27:6988) -> 21 10 69
 	scall LoadWarps ; 9E98B (27:698b) -> CD 3A 40
 	ld a, $05 ; 9E98E (27:698e) -> 3E 05
 	ld [wc792], a ; 9E990 (27:6990) -> EA 92 C7
-label_9e993:
+.asm_9e993:
 	ld a, $03 ; 9E993 (27:6993) -> 3E 03
 	scall Func_80d01 ; 9E995 (27:6995) -> CD 01 4D
 	ld e, $04 ; 9E998 (27:6998) -> 1E 04
@@ -2581,88 +2581,506 @@ ENDC
 Data_9e9ec:
 	person_event $0f, $04, $04, $04, $01, $01, $02, $04, $00, NULL, NULL
 	person_event $ff, $00, $04, $04, $01, $01, $00, $04, $00, Func_9eb3c, NULL
+
+Data_9ea08:
 	person_event $ff, $00, $00, $08, $04, $01, $00, $04, $00, Func_9ed0f, NULL
 	person_event $ff, $00, $05, $08, $04, $01, $00, $04, $00, Func_9eda0, NULL
 
 Func_9ea24:: ; 9ea24
-	db $1e, $00, $21, $45, $00, $cd, $1b, $46, $1e, $01, $21, $a9, $69, $cd, $3a, $40
-	db $3e, $03, $cd, $01, $4d, $1e, $04, $21, $b4, $69, $cd, $24, $4d, $3e, $01, $cd
-	db $c6, $4c, $fa, $94, $c7, $fe, $02, $c2, $69, $6a, $21, $53, $00, $cd, $2e, $46
-	db $b7, $c2, $69, $6a, $1e, $02, $21, $ec, $69, $cd, $fb, $40, $1e, $00, $af, $cd
-	db $3d, $41, $c3, $f2, $6a, $fa, $94, $c7, $fe, $03, $c2, $8c, $6a, $21, $54, $00
-	db $cd, $2e, $46, $b7, $c2, $8c, $6a, $1e, $02, $21, $ec, $69, $cd, $fb, $40, $1e
-	db $00, $af, $cd, $3d, $41, $c3, $f2, $6a, $fa, $94, $c7, $fe, $05, $c2, $af, $6a
-	db $21, $55, $00, $cd, $2e, $46, $b7, $c2, $af, $6a, $1e, $02, $21, $ec, $69, $cd
-	db $fb, $40, $1e, $00, $af, $cd, $3d, $41, $c3, $f2, $6a, $fa, $94, $c7, $fe, $06
-	db $c2, $d2, $6a, $21, $56, $00, $cd, $2e, $46, $b7, $c2, $d2, $6a, $1e, $02, $21
-	db $ec, $69, $cd, $fb, $40, $1e, $00, $af, $cd, $3d, $41, $c3, $f2, $6a, $fa, $94
-	db $c7, $fe, $09, $c2, $f2, $6a, $21, $57, $00, $cd, $2e, $46, $b7, $c2, $f2, $6a
-	db $1e, $02, $21, $ec, $69, $cd, $fb, $40, $1e, $00, $af, $cd, $3d, $41, $fa, $df
-	db $c7, $fe, $12, $c2, $0a, $6b, $fa, $e0, $c7, $fe, $0e, $c2, $0a, $6b, $1e, $02
-	db $21, $08, $6a, $cd, $fb, $40, $3e, $08, $cd, $e6, $4e, $cd, $1c, $40, $c9, $00
-	db $00, $00, $01, $00, $c5, $bb, $00, $00, $30, $01, $30, $07, $32, $07, $11, $1f
-	db $09, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $0c
+	ld e, $00 ; 9EA24 (27:6a24) -> 1E 00
+	ld hl, $0045 ; 9EA26 (27:6a26) -> 21 45 00
+	scall EventFlagAction ; 9EA29 (27:6a29) -> CD 1B 46
+	ld e, $01 ; 9EA2C (27:6a2c) -> 1E 01
+	ld hl, Data_9e9a9 ; 9EA2E (27:6a2e) -> 21 A9 69
+	scall LoadWarps ; 9EA31 (27:6a31) -> CD 3A 40
+	ld a, $03 ; 9EA34 (27:6a34) -> 3E 03
+	scall Func_80d01 ; 9EA36 (27:6a36) -> CD 01 4D
+	ld e, $04 ; 9EA39 (27:6a39) -> 1E 04
+	ld hl, Data_9e9b4 ; 9EA3B (27:6a3b) -> 21 B4 69
+	scall LoadEncounters ; 9EA3E (27:6a3e) -> CD 24 4D
+	ld a, $01 ; 9EA41 (27:6a41) -> 3E 01
+	scall LoadPlayerSprite ; 9EA43 (27:6a43) -> CD C6 4C
+	ld a, [wc794] ; 9EA46 (27:6a46) -> FA 94 C7
+	cp $02 ; 9EA49 (27:6a49) -> FE 02
+	jp nz, .asm_9ea69 ; 9EA4B (27:6a4b) -> C2 69 6A
+	ld hl, $0053 ; 9EA4E (27:6a4e) -> 21 53 00
+	scall CheckEventFlag ; 9EA51 (27:6a51) -> CD 2E 46
+	or a ; 9EA54 (27:6a54) -> B7
+	jp nz, .asm_9ea69 ; 9EA55 (27:6a55) -> C2 69 6A
+	ld e, $02 ; 9EA58 (27:6a58) -> 1E 02
+	ld hl, Data_9e9ec ; 9EA5A (27:6a5a) -> 21 EC 69
+	scall LoadMapObjects ; 9EA5D (27:6a5d) -> CD FB 40
+	ld e, $00 ; 9EA60 (27:6a60) -> 1E 00
+	xor a ; 9EA62 (27:6a62) -> AF
+	scall SetPersonVisibilityState ; 9EA63 (27:6a63) -> CD 3D 41
+	jp .asm_9eaf2 ; 9EA66 (27:6a66) -> C3 F2 6A
+.asm_9ea69:
+	ld a, [wc794] ; 9EA69 (27:6a69) -> FA 94 C7
+	cp $03 ; 9EA6C (27:6a6c) -> FE 03
+	jp nz, .asm_9ea8c ; 9EA6E (27:6a6e) -> C2 8C 6A
+	ld hl, $0054 ; 9EA71 (27:6a71) -> 21 54 00
+	scall CheckEventFlag ; 9EA74 (27:6a74) -> CD 2E 46
+	or a ; 9EA77 (27:6a77) -> B7
+	jp nz, .asm_9ea8c ; 9EA78 (27:6a78) -> C2 8C 6A
+	ld e, $02 ; 9EA7B (27:6a7b) -> 1E 02
+	ld hl, Data_9e9ec ; 9EA7D (27:6a7d) -> 21 EC 69
+	scall LoadMapObjects ; 9EA80 (27:6a80) -> CD FB 40
+	ld e, $00 ; 9EA83 (27:6a83) -> 1E 00
+	xor a ; 9EA85 (27:6a85) -> AF
+	scall SetPersonVisibilityState ; 9EA86 (27:6a86) -> CD 3D 41
+	jp .asm_9eaf2 ; 9EA89 (27:6a89) -> C3 F2 6A
+.asm_9ea8c:
+	ld a, [wc794] ; 9EA8C (27:6a8c) -> FA 94 C7
+	cp $05 ; 9EA8F (27:6a8f) -> FE 05
+	jp nz, .asm_9eaaf ; 9EA91 (27:6a91) -> C2 AF 6A
+	ld hl, $0055 ; 9EA94 (27:6a94) -> 21 55 00
+	scall CheckEventFlag ; 9EA97 (27:6a97) -> CD 2E 46
+	or a ; 9EA9A (27:6a9a) -> B7
+	jp nz, .asm_9eaaf ; 9EA9B (27:6a9b) -> C2 AF 6A
+	ld e, $02 ; 9EA9E (27:6a9e) -> 1E 02
+	ld hl, Data_9e9ec ; 9EAA0 (27:6aa0) -> 21 EC 69
+	scall LoadMapObjects ; 9EAA3 (27:6aa3) -> CD FB 40
+	ld e, $00 ; 9EAA6 (27:6aa6) -> 1E 00
+	xor a ; 9EAA8 (27:6aa8) -> AF
+	scall SetPersonVisibilityState ; 9EAA9 (27:6aa9) -> CD 3D 41
+	jp .asm_9eaf2 ; 9EAAC (27:6aac) -> C3 F2 6A
+.asm_9eaaf:
+	ld a, [wc794] ; 9EAAF (27:6aaf) -> FA 94 C7
+	cp $06 ; 9EAB2 (27:6ab2) -> FE 06
+	jp nz, .asm_9ead2 ; 9EAB4 (27:6ab4) -> C2 D2 6A
+	ld hl, $0056 ; 9EAB7 (27:6ab7) -> 21 56 00
+	scall CheckEventFlag ; 9EABA (27:6aba) -> CD 2E 46
+	or a ; 9EABD (27:6abd) -> B7
+	jp nz, .asm_9ead2 ; 9EABE (27:6abe) -> C2 D2 6A
+	ld e, $02 ; 9EAC1 (27:6ac1) -> 1E 02
+	ld hl, Data_9e9ec ; 9EAC3 (27:6ac3) -> 21 EC 69
+	scall LoadMapObjects ; 9EAC6 (27:6ac6) -> CD FB 40
+	ld e, $00 ; 9EAC9 (27:6ac9) -> 1E 00
+	xor a ; 9EACB (27:6acb) -> AF
+	scall SetPersonVisibilityState ; 9EACC (27:6acc) -> CD 3D 41
+	jp .asm_9eaf2 ; 9EACF (27:6acf) -> C3 F2 6A
+.asm_9ead2:
+	ld a, [wc794] ; 9EAD2 (27:6ad2) -> FA 94 C7
+	cp $09 ; 9EAD5 (27:6ad5) -> FE 09
+	jp nz, .asm_9eaf2 ; 9EAD7 (27:6ad7) -> C2 F2 6A
+	ld hl, $0057 ; 9EADA (27:6ada) -> 21 57 00
+	scall CheckEventFlag ; 9EADD (27:6add) -> CD 2E 46
+	or a ; 9EAE0 (27:6ae0) -> B7
+	jp nz, .asm_9eaf2 ; 9EAE1 (27:6ae1) -> C2 F2 6A
+	ld e, $02 ; 9EAE4 (27:6ae4) -> 1E 02
+	ld hl, Data_9e9ec ; 9EAE6 (27:6ae6) -> 21 EC 69
+	scall LoadMapObjects ; 9EAE9 (27:6ae9) -> CD FB 40
+	ld e, $00 ; 9EAEC (27:6aec) -> 1E 00
+	xor a ; 9EAEE (27:6aee) -> AF
+	scall SetPersonVisibilityState ; 9EAEF (27:6aef) -> CD 3D 41
+.asm_9eaf2:
+	ld a, [wBackupMapGroup] ; 9EAF2 (27:6af2) -> FA DF C7
+	cp $12 ; 9EAF5 (27:6af5) -> FE 12
+	jp nz, .asm_9eb0a ; 9EAF7 (27:6af7) -> C2 0A 6B
+	ld a, [wBackupMapNumber] ; 9EAFA (27:6afa) -> FA E0 C7
+	cp $0e ; 9EAFD (27:6afd) -> FE 0E
+	jp nz, .asm_9eb0a ; 9EAFF (27:6aff) -> C2 0A 6B
+	ld e, $02 ; 9EB02 (27:6b02) -> 1E 02
+	ld hl, Data_9ea08 ; 9EB04 (27:6b04) -> 21 08 6A
+	scall LoadMapObjects ; 9EB07 (27:6b07) -> CD FB 40
+.asm_9eb0a:
+	ld a, $08 ; 9EB0A (27:6b0a) -> 3E 08
+	scall PlayMusic ; 9EB0C (27:6b0c) -> CD E6 4E
+	scall Func_8001c ; 9EB0F (27:6b0f) -> CD 1C 40
+	ret  ; 9EB12 (27:6b12) -> C9
+
+Data_9eb13:
+	db $00, $00, $00, $01, $00, $c5, $bb, $00, $00, $30, $01, $30, $07, $32, $07, $11
+	db $1f, $09, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
 
 Func_9eb3c:
-	db $c5, $7b, $b7, $c2, $f8, $6c, $21, $45
-	db $00, $cd, $2e, $46, $b7, $c2, $a0, $6b, $0e, $03, $1e, $02, $3e, $08, $cd, $76
-	db $41, $1e, $04, $3e, $04, $cd, $e4, $41, $cd, $d5, $41, $cd, $8b, $41, $1e, $01
-	db $af, $cd, $3d, $41, $1e, $03, $af, $cd, $95, $40, $1e, $00, $af, $cd, $95, $40
-	db $1e, $01, $af, $cd, $95, $40, $1e, $02, $af, $cd, $95, $40, $1e, $03, $af, $cd
-	db $95, $40, $1e, $00, $af, $cd, $95, $40, $1e, $01, $af, $cd, $95, $40, $1e, $02
-	db $af, $cd, $95, $40, $1e, $01, $21, $45, $00, $cd, $1b, $46, $af, $cd, $4b, $44
-	db $f8, $00, $36, $00, $21, $53, $00, $cd, $2e, $46, $b7, $c2, $b9, $6b, $f8, $00
-	db $7e, $3c, $f8, $00, $77, $21, $54, $00, $cd, $2e, $46, $b7, $c2, $ca, $6b, $f8
-	db $00, $7e, $3c, $f8, $00, $77, $21, $55, $00, $cd, $2e, $46, $b7, $c2, $db, $6b
-	db $f8, $00, $7e, $3c, $f8, $00, $77, $21, $56, $00, $cd, $2e, $46, $b7, $c2, $ec
-	db $6b, $f8, $00, $7e, $3c, $f8, $00, $77, $21, $57, $00, $cd, $2e, $46, $b7, $c2
-	db $fd, $6b, $f8, $00, $7e, $3c, $f8, $00, $77, $f8, $00, $7e, $fe, $05, $ca, $3d
-	db $6c, $fe, $04, $ca, $34, $6c, $fe, $03, $ca, $2b, $6c, $fe, $02, $ca, $22, $6c
-	db $fe, $01, $c2, $43, $6c, $21, $8b, $02, $cd, $a9, $44, $c3, $43, $6c, $21, $8a
-	db $02, $cd, $a9, $44, $c3, $43, $6c, $21, $89, $02, $cd, $a9, $44, $c3, $43, $6c
-	db $21, $88, $02, $cd, $a9, $44, $c3, $43, $6c, $21, $87, $02, $cd, $a9, $44, $21
-	db $2c, $03, $cd, $ba, $44, $b7, $c2, $f8, $6c, $11, $fa, $6c, $21, $13, $6b, $cd
-	db $d3, $4d, $b7, $c2, $5d, $6c, $c3, $f8, $6c, $fa, $94, $c7, $fe, $02, $c2, $7a
-	db $6c, $21, $53, $00, $cd, $2e, $46, $b7, $c2, $7a, $6c, $1e, $01, $21, $53, $00
-	db $cd, $1b, $46, $c3, $eb, $6c, $fa, $94, $c7, $fe, $03, $c2, $97, $6c, $21, $54
-	db $00, $cd, $2e, $46, $b7, $c2, $97, $6c, $1e, $01, $21, $54, $00, $cd, $1b, $46
-	db $c3, $eb, $6c, $fa, $94, $c7, $fe, $05, $c2, $b4, $6c, $21, $55, $00, $cd, $2e
-	db $46, $b7, $c2, $b4, $6c, $1e, $01, $21, $55, $00, $cd, $1b, $46, $c3, $eb, $6c
-	db $fa, $94, $c7, $fe, $06, $c2, $d1, $6c, $21, $56, $00, $cd, $2e, $46, $b7, $c2
-	db $d1, $6c, $1e, $01, $21, $56, $00, $cd, $1b, $46, $c3, $eb, $6c, $fa, $94, $c7
-	db $fe, $09, $c2, $eb, $6c, $21, $57, $00, $cd, $2e, $46, $b7, $c2, $eb, $6c, $1e
-	db $01, $21, $57, $00, $cd, $1b, $46, $2e, $1b, $e5, $0e, $1e, $1e, $00, $3e, $12
-	db $cd, $ff, $4d, $c1, $c1, $c9, $b5, $d4, $bc, $de, $28, $d6, $b3, $be, $b2, $29
-	db $00, $04, $09, $01, $09, $ff, $ff, $01, $09, $ff, $ff
+	push bc ; 9EB3C (27:6b3c) -> C5
+	ld a, e ; 9EB3D (27:6b3d) -> 7B
+	or a ; 9EB3E (27:6b3e) -> B7
+	jp nz, .asm_9ecf8 ; 9EB3F (27:6b3f) -> C2 F8 6C
+	ld hl, $0045 ; 9EB42 (27:6b42) -> 21 45 00
+	scall CheckEventFlag ; 9EB45 (27:6b45) -> CD 2E 46
+	or a ; 9EB48 (27:6b48) -> B7
+	jp nz, .asm_9eba0 ; 9EB49 (27:6b49) -> C2 A0 6B
+	ld c, $03 ; 9EB4C (27:6b4c) -> 0E 03
+	ld e, $02 ; 9EB4E (27:6b4e) -> 1E 02
+	ld a, $08 ; 9EB50 (27:6b50) -> 3E 08
+	scall LoadEmote ; 9EB52 (27:6b52) -> CD 76 41
+	ld e, $04 ; 9EB55 (27:6b55) -> 1E 04
+	ld a, $04 ; 9EB57 (27:6b57) -> 3E 04
+	scall MoveEmote ; 9EB59 (27:6b59) -> CD E4 41
+	scall WaitEmote ; 9EB5C (27:6b5c) -> CD D5 41
+	scall HideEmote ; 9EB5F (27:6b5f) -> CD 8B 41
+	ld e, $01 ; 9EB62 (27:6b62) -> 1E 01
+	xor a ; 9EB64 (27:6b64) -> AF
+	scall SetPersonVisibilityState ; 9EB65 (27:6b65) -> CD 3D 41
+	ld e, $03 ; 9EB68 (27:6b68) -> 1E 03
+	xor a ; 9EB6A (27:6b6a) -> AF
+	scall SpriteFace ; 9EB6B (27:6b6b) -> CD 95 40
+	ld e, $00 ; 9EB6E (27:6b6e) -> 1E 00
+	xor a ; 9EB70 (27:6b70) -> AF
+	scall SpriteFace ; 9EB71 (27:6b71) -> CD 95 40
+	ld e, $01 ; 9EB74 (27:6b74) -> 1E 01
+	xor a ; 9EB76 (27:6b76) -> AF
+	scall SpriteFace ; 9EB77 (27:6b77) -> CD 95 40
+	ld e, $02 ; 9EB7A (27:6b7a) -> 1E 02
+	xor a ; 9EB7C (27:6b7c) -> AF
+	scall SpriteFace ; 9EB7D (27:6b7d) -> CD 95 40
+	ld e, $03 ; 9EB80 (27:6b80) -> 1E 03
+	xor a ; 9EB82 (27:6b82) -> AF
+	scall SpriteFace ; 9EB83 (27:6b83) -> CD 95 40
+	ld e, $00 ; 9EB86 (27:6b86) -> 1E 00
+	xor a ; 9EB88 (27:6b88) -> AF
+	scall SpriteFace ; 9EB89 (27:6b89) -> CD 95 40
+	ld e, $01 ; 9EB8C (27:6b8c) -> 1E 01
+	xor a ; 9EB8E (27:6b8e) -> AF
+	scall SpriteFace ; 9EB8F (27:6b8f) -> CD 95 40
+	ld e, $02 ; 9EB92 (27:6b92) -> 1E 02
+	xor a ; 9EB94 (27:6b94) -> AF
+	scall SpriteFace ; 9EB95 (27:6b95) -> CD 95 40
+	ld e, $01 ; 9EB98 (27:6b98) -> 1E 01
+	ld hl, $0045 ; 9EB9A (27:6b9a) -> 21 45 00
+	scall EventFlagAction ; 9EB9D (27:6b9d) -> CD 1B 46
+.asm_9eba0:
+	xor a ; 9EBA0 (27:6ba0) -> AF
+	scall FacePlayer ; 9EBA1 (27:6ba1) -> CD 4B 44
+	ld hl, sp+$00 ; 9EBA4 (27:6ba4) -> F8 00
+	ld [hl], $00 ; 9EBA6 (27:6ba6) -> 36 00
+	ld hl, $0053 ; 9EBA8 (27:6ba8) -> 21 53 00
+	scall CheckEventFlag ; 9EBAB (27:6bab) -> CD 2E 46
+	or a ; 9EBAE (27:6bae) -> B7
+	jp nz, .asm_9ebb9 ; 9EBAF (27:6baf) -> C2 B9 6B
+	ld hl, sp+$00 ; 9EBB2 (27:6bb2) -> F8 00
+	ld a, [hl] ; 9EBB4 (27:6bb4) -> 7E
+	inc a ; 9EBB5 (27:6bb5) -> 3C
+	ld hl, sp+$00 ; 9EBB6 (27:6bb6) -> F8 00
+	ld [hl], a ; 9EBB8 (27:6bb8) -> 77
+.asm_9ebb9:
+	ld hl, $0054 ; 9EBB9 (27:6bb9) -> 21 54 00
+	scall CheckEventFlag ; 9EBBC (27:6bbc) -> CD 2E 46
+	or a ; 9EBBF (27:6bbf) -> B7
+	jp nz, .asm_9ebca ; 9EBC0 (27:6bc0) -> C2 CA 6B
+	ld hl, sp+$00 ; 9EBC3 (27:6bc3) -> F8 00
+	ld a, [hl] ; 9EBC5 (27:6bc5) -> 7E
+	inc a ; 9EBC6 (27:6bc6) -> 3C
+	ld hl, sp+$00 ; 9EBC7 (27:6bc7) -> F8 00
+	ld [hl], a ; 9EBC9 (27:6bc9) -> 77
+.asm_9ebca:
+	ld hl, $0055 ; 9EBCA (27:6bca) -> 21 55 00
+	scall CheckEventFlag ; 9EBCD (27:6bcd) -> CD 2E 46
+	or a ; 9EBD0 (27:6bd0) -> B7
+	jp nz, .asm_9ebdb ; 9EBD1 (27:6bd1) -> C2 DB 6B
+	ld hl, sp+$00 ; 9EBD4 (27:6bd4) -> F8 00
+	ld a, [hl] ; 9EBD6 (27:6bd6) -> 7E
+	inc a ; 9EBD7 (27:6bd7) -> 3C
+	ld hl, sp+$00 ; 9EBD8 (27:6bd8) -> F8 00
+	ld [hl], a ; 9EBDA (27:6bda) -> 77
+.asm_9ebdb:
+	ld hl, $0056 ; 9EBDB (27:6bdb) -> 21 56 00
+	scall CheckEventFlag ; 9EBDE (27:6bde) -> CD 2E 46
+	or a ; 9EBE1 (27:6be1) -> B7
+	jp nz, .asm_9ebec ; 9EBE2 (27:6be2) -> C2 EC 6B
+	ld hl, sp+$00 ; 9EBE5 (27:6be5) -> F8 00
+	ld a, [hl] ; 9EBE7 (27:6be7) -> 7E
+	inc a ; 9EBE8 (27:6be8) -> 3C
+	ld hl, sp+$00 ; 9EBE9 (27:6be9) -> F8 00
+	ld [hl], a ; 9EBEB (27:6beb) -> 77
+.asm_9ebec:
+	ld hl, $0057 ; 9EBEC (27:6bec) -> 21 57 00
+	scall CheckEventFlag ; 9EBEF (27:6bef) -> CD 2E 46
+	or a ; 9EBF2 (27:6bf2) -> B7
+	jp nz, .asm_9ebfd ; 9EBF3 (27:6bf3) -> C2 FD 6B
+	ld hl, sp+$00 ; 9EBF6 (27:6bf6) -> F8 00
+	ld a, [hl] ; 9EBF8 (27:6bf8) -> 7E
+	inc a ; 9EBF9 (27:6bf9) -> 3C
+	ld hl, sp+$00 ; 9EBFA (27:6bfa) -> F8 00
+	ld [hl], a ; 9EBFC (27:6bfc) -> 77
+.asm_9ebfd:
+	ld hl, sp+$00 ; 9EBFD (27:6bfd) -> F8 00
+	ld a, [hl] ; 9EBFF (27:6bff) -> 7E
+	cp $05 ; 9EC00 (27:6c00) -> FE 05
+	jp z, .asm_9ec3d ; 9EC02 (27:6c02) -> CA 3D 6C
+	cp $04 ; 9EC05 (27:6c05) -> FE 04
+	jp z, .asm_9ec34 ; 9EC07 (27:6c07) -> CA 34 6C
+	cp $03 ; 9EC0A (27:6c0a) -> FE 03
+	jp z, .asm_9ec2b ; 9EC0C (27:6c0c) -> CA 2B 6C
+	cp $02 ; 9EC0F (27:6c0f) -> FE 02
+	jp z, .asm_9ec22 ; 9EC11 (27:6c11) -> CA 22 6C
+	cp $01 ; 9EC14 (27:6c14) -> FE 01
+	jp nz, .asm_9ec43 ; 9EC16 (27:6c16) -> C2 43 6C
+	ld hl, $028b ; 9EC19 (27:6c19) -> 21 8B 02
+	scall PrintTextWithNPCName ; 9EC1C (27:6c1c) -> CD A9 44
+	jp .asm_9ec43 ; 9EC1F (27:6c1f) -> C3 43 6C
+.asm_9ec22:
+	ld hl, $028a ; 9EC22 (27:6c22) -> 21 8A 02
+	scall PrintTextWithNPCName ; 9EC25 (27:6c25) -> CD A9 44
+	jp .asm_9ec43 ; 9EC28 (27:6c28) -> C3 43 6C
+.asm_9ec2b:
+	ld hl, $0289 ; 9EC2B (27:6c2b) -> 21 89 02
+	scall PrintTextWithNPCName ; 9EC2E (27:6c2e) -> CD A9 44
+	jp .asm_9ec43 ; 9EC31 (27:6c31) -> C3 43 6C
+.asm_9ec34:
+	ld hl, $0288 ; 9EC34 (27:6c34) -> 21 88 02
+	scall PrintTextWithNPCName ; 9EC37 (27:6c37) -> CD A9 44
+	jp .asm_9ec43 ; 9EC3A (27:6c3a) -> C3 43 6C
+.asm_9ec3d:
+	ld hl, $0287 ; 9EC3D (27:6c3d) -> 21 87 02
+	scall PrintTextWithNPCName ; 9EC40 (27:6c40) -> CD A9 44
+.asm_9ec43:
+	ld hl, $032c ; 9EC43 (27:6c43) -> 21 2C 03
+	scall PrintTextWithYesNoBox ; 9EC46 (27:6c46) -> CD BA 44
+	or a ; 9EC49 (27:6c49) -> B7
+	jp nz, .asm_9ecf8 ; 9EC4A (27:6c4a) -> C2 F8 6C
+	ld de, Data_9ecfa ; 9EC4D (27:6c4d) -> 11 FA 6C
+	ld hl, Data_9eb13 ; 9EC50 (27:6c50) -> 21 13 6B
+	scall ScriptedBattle ; 9EC53 (27:6c53) -> CD D3 4D
+	or a ; 9EC56 (27:6c56) -> B7
+	jp nz, .asm_9ec5d ; 9EC57 (27:6c57) -> C2 5D 6C
+	jp .asm_9ecf8 ; 9EC5A (27:6c5a) -> C3 F8 6C
+.asm_9ec5d:
+	ld a, [wc794] ; 9EC5D (27:6c5d) -> FA 94 C7
+	cp $02 ; 9EC60 (27:6c60) -> FE 02
+	jp nz, .asm_9ec7a ; 9EC62 (27:6c62) -> C2 7A 6C
+	ld hl, $0053 ; 9EC65 (27:6c65) -> 21 53 00
+	scall CheckEventFlag ; 9EC68 (27:6c68) -> CD 2E 46
+	or a ; 9EC6B (27:6c6b) -> B7
+	jp nz, .asm_9ec7a ; 9EC6C (27:6c6c) -> C2 7A 6C
+	ld e, $01 ; 9EC6F (27:6c6f) -> 1E 01
+	ld hl, $0053 ; 9EC71 (27:6c71) -> 21 53 00
+	scall EventFlagAction ; 9EC74 (27:6c74) -> CD 1B 46
+	jp .asm_9eceb ; 9EC77 (27:6c77) -> C3 EB 6C
+.asm_9ec7a:
+	ld a, [wc794] ; 9EC7A (27:6c7a) -> FA 94 C7
+	cp $03 ; 9EC7D (27:6c7d) -> FE 03
+	jp nz, .asm_9ec97 ; 9EC7F (27:6c7f) -> C2 97 6C
+	ld hl, $0054 ; 9EC82 (27:6c82) -> 21 54 00
+	scall CheckEventFlag ; 9EC85 (27:6c85) -> CD 2E 46
+	or a ; 9EC88 (27:6c88) -> B7
+	jp nz, .asm_9ec97 ; 9EC89 (27:6c89) -> C2 97 6C
+	ld e, $01 ; 9EC8C (27:6c8c) -> 1E 01
+	ld hl, $0054 ; 9EC8E (27:6c8e) -> 21 54 00
+	scall EventFlagAction ; 9EC91 (27:6c91) -> CD 1B 46
+	jp .asm_9eceb ; 9EC94 (27:6c94) -> C3 EB 6C
+.asm_9ec97:
+	ld a, [wc794] ; 9EC97 (27:6c97) -> FA 94 C7
+	cp $05 ; 9EC9A (27:6c9a) -> FE 05
+	jp nz, .asm_9ecb4 ; 9EC9C (27:6c9c) -> C2 B4 6C
+	ld hl, $0055 ; 9EC9F (27:6c9f) -> 21 55 00
+	scall CheckEventFlag ; 9ECA2 (27:6ca2) -> CD 2E 46
+	or a ; 9ECA5 (27:6ca5) -> B7
+	jp nz, .asm_9ecb4 ; 9ECA6 (27:6ca6) -> C2 B4 6C
+	ld e, $01 ; 9ECA9 (27:6ca9) -> 1E 01
+	ld hl, $0055 ; 9ECAB (27:6cab) -> 21 55 00
+	scall EventFlagAction ; 9ECAE (27:6cae) -> CD 1B 46
+	jp .asm_9eceb ; 9ECB1 (27:6cb1) -> C3 EB 6C
+.asm_9ecb4:
+	ld a, [wc794] ; 9ECB4 (27:6cb4) -> FA 94 C7
+	cp $06 ; 9ECB7 (27:6cb7) -> FE 06
+	jp nz, .asm_9ecd1 ; 9ECB9 (27:6cb9) -> C2 D1 6C
+	ld hl, $0056 ; 9ECBC (27:6cbc) -> 21 56 00
+	scall CheckEventFlag ; 9ECBF (27:6cbf) -> CD 2E 46
+	or a ; 9ECC2 (27:6cc2) -> B7
+	jp nz, .asm_9ecd1 ; 9ECC3 (27:6cc3) -> C2 D1 6C
+	ld e, $01 ; 9ECC6 (27:6cc6) -> 1E 01
+	ld hl, $0056 ; 9ECC8 (27:6cc8) -> 21 56 00
+	scall EventFlagAction ; 9ECCB (27:6ccb) -> CD 1B 46
+	jp .asm_9eceb ; 9ECCE (27:6cce) -> C3 EB 6C
+.asm_9ecd1:
+	ld a, [wc794] ; 9ECD1 (27:6cd1) -> FA 94 C7
+	cp $09 ; 9ECD4 (27:6cd4) -> FE 09
+	jp nz, .asm_9eceb ; 9ECD6 (27:6cd6) -> C2 EB 6C
+	ld hl, $0057 ; 9ECD9 (27:6cd9) -> 21 57 00
+	scall CheckEventFlag ; 9ECDC (27:6cdc) -> CD 2E 46
+	or a ; 9ECDF (27:6cdf) -> B7
+	jp nz, .asm_9eceb ; 9ECE0 (27:6ce0) -> C2 EB 6C
+	ld e, $01 ; 9ECE3 (27:6ce3) -> 1E 01
+	ld hl, $0057 ; 9ECE5 (27:6ce5) -> 21 57 00
+	scall EventFlagAction ; 9ECE8 (27:6ce8) -> CD 1B 46
+.asm_9eceb:
+	ld l, $1b ; 9ECEB (27:6ceb) -> 2E 1B
+	push hl ; 9ECED (27:6ced) -> E5
+	ld c, $1e ; 9ECEE (27:6cee) -> 0E 1E
+	ld e, $00 ; 9ECF0 (27:6cf0) -> 1E 00
+	ld a, $12 ; 9ECF2 (27:6cf2) -> 3E 12
+	scall Func_80dff ; 9ECF4 (27:6cf4) -> CD FF 4D
+	pop bc ; 9ECF7 (27:6cf7) -> C1
+.asm_9ecf8:
+	pop bc ; 9ECF8 (27:6cf8) -> C1
+	ret  ; 9ECF9 (27:6cf9) -> C9
+
+Data_9ecfa:
+	dstr "オヤシﾞ(ようせい)"
+
+Data_9ed05:
+	db $04, $09, $01, $09, $ff, $ff
+
+Data_9ed0b:
+	db $01, $09, $ff, $ff
 
 Func_9ed0f:
-	db $7b, $b7, $c2, $95, $6d
-	db $3e, $0f, $cd, $6d, $4e, $fe, $ff, $c2, $3c, $6d, $3e, $41, $cd, $6d, $4e, $fe
-	db $ff, $c2, $3c, $6d, $3e, $50, $cd, $6d, $4e, $fe, $ff, $c2, $3c, $6d, $3e, $64
-	db $cd, $6d, $4e, $fe, $ff, $ca, $8f, $6d, $fa, $90, $c7, $b7, $ca, $86, $6d, $fa
-	db $90, $c7, $fe, $06, $d2, $86, $6d, $21, $2d, $03, $cd, $ba, $44, $b7, $c2, $83
-	db $6d, $fa, $38, $c8, $b7, $c2, $69, $6d, $0e, $01, $11, $0b, $6d, $3e, $27, $cd
-	db $3e, $46, $c3, $73, $6d, $0e, $01, $11, $05, $6d, $3e, $27, $cd, $3e, $46, $cd
-	db $0c, $42, $af, $cd, $77, $46, $21, $1e, $00, $cd, $8f, $46, $cd, $27, $6e, $c3
-	db $8c, $6d, $21, $77, $03, $cd, $98, $44, $c3, $95, $6d, $21, $76, $03, $cd, $98
-	db $44, $c9, $04, $09, $07, $09, $ff, $ff, $07, $09, $ff, $ff
+	ld a, e ; 9ED0F (27:6d0f) -> 7B
+	or a ; 9ED10 (27:6d10) -> B7
+	jp nz, .asm_9ed95 ; 9ED11 (27:6d11) -> C2 95 6D
+	ld a, $0f ; 9ED14 (27:6d14) -> 3E 0F
+	scall Func_80e6d ; 9ED16 (27:6d16) -> CD 6D 4E
+	cp $ff ; 9ED19 (27:6d19) -> FE FF
+	jp nz, .asm_9ed3c ; 9ED1B (27:6d1b) -> C2 3C 6D
+	ld a, $41 ; 9ED1E (27:6d1e) -> 3E 41
+	scall Func_80e6d ; 9ED20 (27:6d20) -> CD 6D 4E
+	cp $ff ; 9ED23 (27:6d23) -> FE FF
+	jp nz, .asm_9ed3c ; 9ED25 (27:6d25) -> C2 3C 6D
+	ld a, $50 ; 9ED28 (27:6d28) -> 3E 50
+	scall Func_80e6d ; 9ED2A (27:6d2a) -> CD 6D 4E
+	cp $ff ; 9ED2D (27:6d2d) -> FE FF
+	jp nz, .asm_9ed3c ; 9ED2F (27:6d2f) -> C2 3C 6D
+	ld a, $64 ; 9ED32 (27:6d32) -> 3E 64
+	scall Func_80e6d ; 9ED34 (27:6d34) -> CD 6D 4E
+	cp $ff ; 9ED37 (27:6d37) -> FE FF
+	jp z, .asm_9ed8f ; 9ED39 (27:6d39) -> CA 8F 6D
+.asm_9ed3c:
+	ld a, [wc790] ; 9ED3C (27:6d3c) -> FA 90 C7
+	or a ; 9ED3F (27:6d3f) -> B7
+	jp z, .asm_9ed86 ; 9ED40 (27:6d40) -> CA 86 6D
+	ld a, [wc790] ; 9ED43 (27:6d43) -> FA 90 C7
+	cp $06 ; 9ED46 (27:6d46) -> FE 06
+	jp nc, .asm_9ed86 ; 9ED48 (27:6d48) -> D2 86 6D
+	ld hl, $032d ; 9ED4B (27:6d4b) -> 21 2D 03
+	scall PrintTextWithYesNoBox ; 9ED4E (27:6d4e) -> CD BA 44
+	or a ; 9ED51 (27:6d51) -> B7
+	jp nz, .asm_9ed83 ; 9ED52 (27:6d52) -> C2 83 6D
+	ld a, [wPlayerFacing] ; 9ED55 (27:6d55) -> FA 38 C8
+	or a ; 9ED58 (27:6d58) -> B7
+	jp nz, .asm_9ed69 ; 9ED59 (27:6d59) -> C2 69 6D
+	ld c, $01 ; 9ED5C (27:6d5c) -> 0E 01
+	ld de, Data_9ed0b ; 9ED5E (27:6d5e) -> 11 0B 6D
+	ld a, $27 ; 9ED61 (27:6d61) -> 3E 27
+	scall MovePlayer ; 9ED63 (27:6d63) -> CD 3E 46
+	jp .asm_9ed73 ; 9ED66 (27:6d66) -> C3 73 6D
+.asm_9ed69:
+	ld c, $01 ; 9ED69 (27:6d69) -> 0E 01
+	ld de, Data_9ed05 ; 9ED6B (27:6d6b) -> 11 05 6D
+	ld a, $27 ; 9ED6E (27:6d6e) -> 3E 27
+	scall MovePlayer ; 9ED70 (27:6d70) -> CD 3E 46
+.asm_9ed73:
+	scall WaitNPCStep ; 9ED73 (27:6d73) -> CD 0C 42
+	xor a ; 9ED76 (27:6d76) -> AF
+	scall PlayerFace ; 9ED77 (27:6d77) -> CD 77 46
+	ld hl, $001e ; 9ED7A (27:6d7a) -> 21 1E 00
+	scall ScriptSleep ; 9ED7D (27:6d7d) -> CD 8F 46
+	call Func_9ee27 ; 9ED80 (27:6d80) -> CD 27 6E
+.asm_9ed83:
+	jp .asm_9ed8c ; 9ED83 (27:6d83) -> C3 8C 6D
+.asm_9ed86:
+	ld hl, $0377 ; 9ED86 (27:6d86) -> 21 77 03
+	scall PrintTextStandard ; 9ED89 (27:6d89) -> CD 98 44
+.asm_9ed8c:
+	jp .asm_9ed95 ; 9ED8C (27:6d8c) -> C3 95 6D
+.asm_9ed8f:
+	ld hl, $0376 ; 9ED8F (27:6d8f) -> 21 76 03
+	scall PrintTextStandard ; 9ED92 (27:6d92) -> CD 98 44
+.asm_9ed95:
+	ret  ; 9ED95 (27:6d95) -> C9
+
+Data_9ed96:
+	db $04, $09, $07, $09, $ff, $ff
+
+Data_9ed9c:
+	db $07, $09, $ff, $ff
 
 Func_9eda0:
-	db $7b, $b7, $c2, $26
-	db $6e, $3e, $0f, $cd, $6d, $4e, $fe, $ff, $c2, $cd, $6d, $3e, $41, $cd, $6d, $4e
-	db $fe, $ff, $c2, $cd, $6d, $3e, $50, $cd, $6d, $4e, $fe, $ff, $c2, $cd, $6d, $3e
-	db $64, $cd, $6d, $4e, $fe, $ff, $ca, $20, $6e, $fa, $90, $c7, $b7, $ca, $17, $6e
-	db $fa, $90, $c7, $fe, $06, $d2, $17, $6e, $21, $2d, $03, $cd, $ba, $44, $b7, $c2
-	db $14, $6e, $fa, $38, $c8, $b7, $c2, $fa, $6d, $0e, $01, $11, $9c, $6d, $3e, $27
-	db $cd, $3e, $46, $c3, $04, $6e, $0e, $01, $11, $96, $6d, $3e, $27, $cd, $3e, $46
-	db $cd, $0c, $42, $af, $cd, $77, $46, $21, $1e, $00, $cd, $8f, $46, $cd, $27, $6e
-	db $c3, $1d, $6e, $21, $77, $03, $cd, $98, $44, $c3, $26, $6e, $21, $76, $03, $cd
-	db $98, $44, $c9, $af, $cd, $e6, $4e, $3e, $0a, $cd, $e6, $4e, $af, $cd, $53, $46
-	db $0e, $01, $1e, $01, $3e, $0b, $cd, $76, $41, $3e, $44, $cd, $fe, $4e, $cd, $d5
-	db $41, $cd, $8b, $41, $3e, $04, $cd, $c6, $4c, $3e, $03, $cd, $77, $46, $2e, $08
-	db $e5, $0e, $04, $1e, $0e, $3e, $12, $cd, $ff, $4d, $c1, $c9
+	ld a, e ; 9EDA0 (27:6da0) -> 7B
+	or a ; 9EDA1 (27:6da1) -> B7
+	jp nz, .asm_9ee26 ; 9EDA2 (27:6da2) -> C2 26 6E
+	ld a, $0f ; 9EDA5 (27:6da5) -> 3E 0F
+	scall Func_80e6d ; 9EDA7 (27:6da7) -> CD 6D 4E
+	cp $ff ; 9EDAA (27:6daa) -> FE FF
+	jp nz, .asm_9edcd ; 9EDAC (27:6dac) -> C2 CD 6D
+	ld a, $41 ; 9EDAF (27:6daf) -> 3E 41
+	scall Func_80e6d ; 9EDB1 (27:6db1) -> CD 6D 4E
+	cp $ff ; 9EDB4 (27:6db4) -> FE FF
+	jp nz, .asm_9edcd ; 9EDB6 (27:6db6) -> C2 CD 6D
+	ld a, $50 ; 9EDB9 (27:6db9) -> 3E 50
+	scall Func_80e6d ; 9EDBB (27:6dbb) -> CD 6D 4E
+	cp $ff ; 9EDBE (27:6dbe) -> FE FF
+	jp nz, .asm_9edcd ; 9EDC0 (27:6dc0) -> C2 CD 6D
+	ld a, $64 ; 9EDC3 (27:6dc3) -> 3E 64
+	scall Func_80e6d ; 9EDC5 (27:6dc5) -> CD 6D 4E
+	cp $ff ; 9EDC8 (27:6dc8) -> FE FF
+	jp z, .asm_9ee20 ; 9EDCA (27:6dca) -> CA 20 6E
+.asm_9edcd:
+	ld a, [wc790] ; 9EDCD (27:6dcd) -> FA 90 C7
+	or a ; 9EDD0 (27:6dd0) -> B7
+	jp z, .asm_9ee17 ; 9EDD1 (27:6dd1) -> CA 17 6E
+	ld a, [wc790] ; 9EDD4 (27:6dd4) -> FA 90 C7
+	cp $06 ; 9EDD7 (27:6dd7) -> FE 06
+	jp nc, .asm_9ee17 ; 9EDD9 (27:6dd9) -> D2 17 6E
+	ld hl, $032d ; 9EDDC (27:6ddc) -> 21 2D 03
+	scall PrintTextWithYesNoBox ; 9EDDF (27:6ddf) -> CD BA 44
+	or a ; 9EDE2 (27:6de2) -> B7
+	jp nz, .asm_9ee14 ; 9EDE3 (27:6de3) -> C2 14 6E
+	ld a, [wPlayerFacing] ; 9EDE6 (27:6de6) -> FA 38 C8
+	or a ; 9EDE9 (27:6de9) -> B7
+	jp nz, .asm_9edfa ; 9EDEA (27:6dea) -> C2 FA 6D
+	ld c, $01 ; 9EDED (27:6ded) -> 0E 01
+	ld de, Data_9ed9c ; 9EDEF (27:6def) -> 11 9C 6D
+	ld a, $27 ; 9EDF2 (27:6df2) -> 3E 27
+	scall MovePlayer ; 9EDF4 (27:6df4) -> CD 3E 46
+	jp .asm_9ee04 ; 9EDF7 (27:6df7) -> C3 04 6E
+.asm_9edfa:
+	ld c, $01 ; 9EDFA (27:6dfa) -> 0E 01
+	ld de, Data_9ed96 ; 9EDFC (27:6dfc) -> 11 96 6D
+	ld a, $27 ; 9EDFF (27:6dff) -> 3E 27
+	scall MovePlayer ; 9EE01 (27:6e01) -> CD 3E 46
+.asm_9ee04:
+	scall WaitNPCStep ; 9EE04 (27:6e04) -> CD 0C 42
+	xor a ; 9EE07 (27:6e07) -> AF
+	scall PlayerFace ; 9EE08 (27:6e08) -> CD 77 46
+	ld hl, $001e ; 9EE0B (27:6e0b) -> 21 1E 00
+	scall ScriptSleep ; 9EE0E (27:6e0e) -> CD 8F 46
+	call Func_9ee27 ; 9EE11 (27:6e11) -> CD 27 6E
+.asm_9ee14:
+	jp .asm_9ee1d ; 9EE14 (27:6e14) -> C3 1D 6E
+.asm_9ee17:
+	ld hl, $0377 ; 9EE17 (27:6e17) -> 21 77 03
+	scall PrintTextStandard ; 9EE1A (27:6e1a) -> CD 98 44
+.asm_9ee1d:
+	jp .asm_9ee26 ; 9EE1D (27:6e1d) -> C3 26 6E
+.asm_9ee20:
+	ld hl, $0376 ; 9EE20 (27:6e20) -> 21 76 03
+	scall PrintTextStandard ; 9EE23 (27:6e23) -> CD 98 44
+.asm_9ee26:
+	ret  ; 9EE26 (27:6e26) -> C9
 
+Func_9ee27:
+	xor a ; 9EE27 (27:6e27) -> AF
+	scall PlayMusic ; 9EE28 (27:6e28) -> CD E6 4E
+	ld a, $0a ; 9EE2B (27:6e2b) -> 3E 0A
+	scall PlayMusic ; 9EE2D (27:6e2d) -> CD E6 4E
+	xor a ; 9EE30 (27:6e30) -> AF
+	scall Func_80653 ; 9EE31 (27:6e31) -> CD 53 46
+	ld c, $01 ; 9EE34 (27:6e34) -> 0E 01
+	ld e, $01 ; 9EE36 (27:6e36) -> 1E 01
+	ld a, $0b ; 9EE38 (27:6e38) -> 3E 0B
+	scall LoadEmote ; 9EE3A (27:6e3a) -> CD 76 41
+	ld a, $44 ; 9EE3D (27:6e3d) -> 3E 44
+	scall PlaySFX ; 9EE3F (27:6e3f) -> CD FE 4E
+	scall WaitEmote ; 9EE42 (27:6e42) -> CD D5 41
+	scall HideEmote ; 9EE45 (27:6e45) -> CD 8B 41
+	ld a, $04 ; 9EE48 (27:6e48) -> 3E 04
+	scall LoadPlayerSprite ; 9EE4A (27:6e4a) -> CD C6 4C
+	ld a, $03 ; 9EE4D (27:6e4d) -> 3E 03
+	scall PlayerFace ; 9EE4F (27:6e4f) -> CD 77 46
+	ld l, $08 ; 9EE52 (27:6e52) -> 2E 08
+	push hl ; 9EE54 (27:6e54) -> E5
+	ld c, $04 ; 9EE55 (27:6e55) -> 0E 04
+	ld e, $0e ; 9EE57 (27:6e57) -> 1E 0E
+	ld a, $12 ; 9EE59 (27:6e59) -> 3E 12
+	scall Func_80dff ; 9EE5B (27:6e5b) -> CD FF 4D
+	pop bc ; 9EE5E (27:6e5e) -> C1
+	ret  ; 9EE5F (27:6e5f) -> C9
+
+Data_9ee5f:
 IF DEF(SUN)
 	db $01, $09, $01, $01
 	db $12, $0b, $02, $08, $03, $08, $2e, $06, $04, $01, $01, $12, $10, $06, $04, $05
