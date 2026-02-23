@@ -691,7 +691,8 @@ wLCDInterrupt2:: ; c770
 	ds $1
 	char wc78c ; c78c
 	char wc78d ; c78d
-	ds $2
+	ds $1
+	char wc78f ; c78f
 	char wc790 ; c790
 	char wc791 ; c791
 	char wc792 ; c792
