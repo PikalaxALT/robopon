@@ -3402,22 +3402,22 @@ ENDC
 Func_a36ec:: ; a36ec
 	call Func_a3730 ; A36EC (28:76ec) -> CD 30 77
 	ld hl, Func_a3730 ; A36EF (28:76ef) -> 21 30 77
-	call Func_80f11_28 ; A36F2 (28:76f2) -> CD 11 4F
+	scall Func_80f11 ; A36F2 (28:76f2) -> CD 11 4F
 	ld e, $03 ; A36F5 (28:76f5) -> 1E 03
 	ld hl, Data_a365b ; A36F7 (28:76f7) -> 21 5B 76
-	call LoadWarps_28 ; A36FA (28:76fa) -> CD 3A 40
+	scall LoadWarps ; A36FA (28:76fa) -> CD 3A 40
 	ld a, $03 ; A36FD (28:76fd) -> 3E 03
-	call Func_80d01_28 ; A36FF (28:76ff) -> CD 01 4D
+	scall Func_80d01 ; A36FF (28:76ff) -> CD 01 4D
 	ld e, $08 ; A3702 (28:7702) -> 1E 08
 	ld hl, Data_a367c ; A3704 (28:7704) -> 21 7C 76
-	call LoadEncounters_28 ; A3707 (28:7707) -> CD 24 4D
+	scall LoadEncounters ; A3707 (28:7707) -> CD 24 4D
 	ld a, $01 ; A370A (28:770a) -> 3E 01
-	call LoadPlayerSprite_28 ; A370C (28:770c) -> CD C6 4C
+	scall LoadPlayerSprite ; A370C (28:770c) -> CD C6 4C
 	ld a, $08 ; A370F (28:770f) -> 3E 08
-	call PlayMusic_28 ; A3711 (28:7711) -> CD E6 4E
-	call Func_8001c_28 ; A3714 (28:7714) -> CD 1C 40
+	scall PlayMusic ; A3711 (28:7711) -> CD E6 4E
+	scall Func_8001c ; A3714 (28:7714) -> CD 1C 40
 	ld hl, $02a9 ; A3717 (28:7717) -> 21 A9 02
-	call LandmarkSign_28 ; A371A (28:771a) -> CD 72 4F
+	scall LandmarkSign ; A371A (28:771a) -> CD 72 4F
 	ret  ; A371D (28:771d) -> C9
 
 Data_a371e:
@@ -3431,40 +3431,40 @@ Data_a372a:
 
 Func_a3730:
 	ld hl, $00d1 ; A3730 (28:7730) -> 21 D1 00
-	call CheckEventFlag_28 ; A3733 (28:7733) -> CD 2E 46
+	scall CheckEventFlag ; A3733 (28:7733) -> CD 2E 46
 	cp $01 ; A3736 (28:7736) -> FE 01
 	jp z, .asm_a3751 ; A3738 (28:7738) -> CA 51 77
 	ld hl, $00d2 ; A373B (28:773b) -> 21 D2 00
-	call CheckEventFlag_28 ; A373E (28:773e) -> CD 2E 46
+	scall CheckEventFlag ; A373E (28:773e) -> CD 2E 46
 	cp $01 ; A3741 (28:7741) -> FE 01
 	jp z, .asm_a3751 ; A3743 (28:7743) -> CA 51 77
 	ld hl, $00d3 ; A3746 (28:7746) -> 21 D3 00
-	call CheckEventFlag_28 ; A3749 (28:7749) -> CD 2E 46
+	scall CheckEventFlag ; A3749 (28:7749) -> CD 2E 46
 	cp $01 ; A374C (28:774c) -> FE 01
 	jp nz, .asm_a3787 ; A374E (28:774e) -> C2 87 77
 .asm_a3751:
 	ld hl, $00d1 ; A3751 (28:7751) -> 21 D1 00
-	call CheckEventFlag_28 ; A3754 (28:7754) -> CD 2E 46
+	scall CheckEventFlag ; A3754 (28:7754) -> CD 2E 46
 	cp $01 ; A3757 (28:7757) -> FE 01
 	jp nz, .asm_a3762 ; A3759 (28:7759) -> C2 62 77
 	ld hl, Data_a371e ; A375C (28:775c) -> 21 1E 77
-	call Func_80d9b_28 ; A375F (28:775f) -> CD 9B 4D
+	scall Func_80d9b ; A375F (28:775f) -> CD 9B 4D
 .asm_a3762:
 	ld hl, $00d2 ; A3762 (28:7762) -> 21 D2 00
-	call CheckEventFlag_28 ; A3765 (28:7765) -> CD 2E 46
+	scall CheckEventFlag ; A3765 (28:7765) -> CD 2E 46
 	cp $01 ; A3768 (28:7768) -> FE 01
 	jp nz, .asm_a3773 ; A376A (28:776a) -> C2 73 77
 	ld hl, Data_a3724 ; A376D (28:776d) -> 21 24 77
-	call Func_80d9b_28 ; A3770 (28:7770) -> CD 9B 4D
+	scall Func_80d9b ; A3770 (28:7770) -> CD 9B 4D
 .asm_a3773:
 	ld hl, $00d3 ; A3773 (28:7773) -> 21 D3 00
-	call CheckEventFlag_28 ; A3776 (28:7776) -> CD 2E 46
+	scall CheckEventFlag ; A3776 (28:7776) -> CD 2E 46
 	cp $01 ; A3779 (28:7779) -> FE 01
 	jp nz, .asm_a3784 ; A377B (28:777b) -> C2 84 77
 	ld hl, Data_a372a ; A377E (28:777e) -> 21 2A 77
-	call Func_80d9b_28 ; A3781 (28:7781) -> CD 9B 4D
+	scall Func_80d9b ; A3781 (28:7781) -> CD 9B 4D
 .asm_a3784:
-	call Func_80f02_28 ; A3784 (28:7784) -> CD 02 4F
+	scall Func_80f02 ; A3784 (28:7784) -> CD 02 4F
 .asm_a3787:
 	ret  ; A3787 (28:7787) -> C9
 
@@ -3478,83 +3478,346 @@ Func_a378a:: ; a378a
 	ret
 
 Data_a378b:
+	warpdef $01, $0d, $01, $01, MAP_19_33, $01, $04, $02, $04, $2e
+	warpdef $0b, $0d, $01, $01, MAP_19_38, $0b, $0d, $0a, $0d, $2e
+	warpdef $06, $02, $01, $01, MAP_19_11, $02, $1b, $02, $1a, $2e
+
+Data_a37ac:
 IF DEF(SUN)
-	db $01, $0d, $01, $01, $13, $21, $01, $04, $02, $04, $2e, $0b, $0d, $01, $01
-	db $13, $26, $0b, $0d, $0a, $0d, $2e, $06, $02, $01, $01, $13, $0b, $02, $1b, $02
-	db $1a, $2e, $00, $03, $0d, $0c, $5f, $15, $17, $77, $05, $06, $00, $04, $0a, $00
-	db $00, $03, $0d, $0c, $50, $15, $17, $77, $14, $14, $00, $0e, $09, $00, $00, $03
-	db $0d, $0c, $34, $16, $18, $18, $17, $05, $1e, $04, $08, $00, $00, $03, $0d, $0c
-	db $35, $16, $18, $77, $17, $12, $11, $04, $06, $00, $00, $03, $0d, $0c, $29, $17
-	db $19, $0d, $01, $01, $01, $04, $02, $00, $ff, $00, $00, $04, $01, $01, $00, $04
-	db $01, $28, $b8, $78, $00, $00, $ff, $00, $01, $08, $01, $01, $00, $04, $01, $28
-	db $e9, $78, $00, $00, $ff, $00, $02, $0a, $01, $01, $00, $04, $01, $28, $1a, $79
-	db $00, $00, $ff, $00, $04, $0c, $01, $01, $00, $04, $01, $28, $4b, $79, $00, $00
-	db $ff, $00, $05, $05, $01, $01, $00, $04, $01, $28, $7c, $79, $00, $00, $ff, $00
-	db $05, $07, $01, $01, $00, $04, $01, $28, $ad, $79, $00, $00, $ff, $00, $06, $0a
-	db $01, $01, $00, $04, $01, $28, $de, $79, $00, $00, $ff, $00, $07, $04, $01, $01
-	db $00, $04, $01, $28, $0f, $7a, $00, $00, $ff, $00, $07, $0c, $01, $01, $00, $04
-	db $01, $28, $40, $7a, $00, $00, $ff, $00, $09, $07, $01, $01, $00, $04, $01, $28
-	db $71, $7a, $00, $00, $ff, $00, $0a, $0a, $01, $01, $00, $04, $01, $28, $a2, $7a
-	db $00, $00
+	db $00, $03, $0d, $0c, $5f, $15, $17, $77, $05, $06, $00, $04, $0a, $00
+	db $00, $03, $0d, $0c, $50, $15, $17, $77, $14, $14, $00, $0e, $09, $00
+	db $00, $03, $0d, $0c, $34, $16, $18, $18, $17, $05, $1e, $04, $08, $00
+	db $00, $03, $0d, $0c, $35, $16, $18, $77, $17, $12, $11, $04, $06, $00
+	db $00, $03, $0d, $0c, $29, $17, $19, $0d, $01, $01, $01, $04, $02, $00
 ELIF DEF(STAR)
-	db $01, $0d, $01, $01, $13, $21, $01, $04, $02, $04, $2e, $0b, $0d, $01, $01
-	db $13, $26, $0b, $0d, $0a, $0d, $2e, $06, $02, $01, $01, $13, $0b, $02, $1b, $02
-	db $1a, $2e, $00, $03, $0d, $0c, $50, $15, $17, $77, $14, $14, $00, $0e, $0a, $00
-	db $00, $03, $0d, $0c, $57, $15, $17, $46, $1f, $17, $11, $0d, $09, $00, $00, $03
-	db $0d, $0c, $26, $16, $18, $5b, $01, $00, $00, $04, $08, $00, $00, $03, $0d, $0c
-	db $5f, $16, $18, $77, $05, $06, $00, $04, $06, $00, $00, $03, $0d, $0c, $2a, $17
-	db $19, $10, $05, $05, $05, $04, $02, $00, $ff, $00, $00, $04, $01, $01, $00, $04
-	db $01, $28, $fe, $78, $00, $00, $ff, $00, $01, $08, $01, $01, $00, $04, $01, $28
-	db $2f, $79, $00, $00, $ff, $00, $02, $0a, $01, $01, $00, $04, $01, $28, $60, $79
-	db $00, $00, $ff, $00, $04, $0c, $01, $01, $00, $04, $01, $28, $91, $79, $00, $00
-	db $ff, $00, $05, $05, $01, $01, $00, $04, $01, $28, $c2, $79, $00, $00, $ff, $00
-	db $05, $07, $01, $01, $00, $04, $01, $28, $f3, $79, $00, $00, $ff, $00, $06, $0a
-	db $01, $01, $00, $04, $01, $28, $24, $7a, $00, $00, $ff, $00, $07, $04, $01, $01
-	db $00, $04, $01, $28, $55, $7a, $00, $00, $ff, $00, $07, $0c, $01, $01, $00, $04
-	db $01, $28, $86, $7a, $00, $00, $ff, $00, $09, $07, $01, $01, $00, $04, $01, $28
-	db $b7, $7a, $00, $00, $ff, $00, $0a, $0a, $01, $01, $00, $04, $01, $28, $e8, $7a
-	db $00, $00
+	db $00, $03, $0d, $0c, $50, $15, $17, $77, $14, $14, $00, $0e, $0a, $00
+	db $00, $03, $0d, $0c, $57, $15, $17, $46, $1f, $17, $11, $0d, $09, $00
+	db $00, $03, $0d, $0c, $26, $16, $18, $5b, $01, $00, $00, $04, $08, $00
+	db $00, $03, $0d, $0c, $5f, $16, $18, $77, $05, $06, $00, $04, $06, $00
+	db $00, $03, $0d, $0c, $2a, $17, $19, $10, $05, $05, $05, $04, $02, $00
 ENDC
 
+Data_a37f2:
+	person_event $ff, $00, $00, $04, $01, $01, $00, $04, $01, Func_a38b8, NULL
+	person_event $ff, $00, $01, $08, $01, $01, $00, $04, $01, Func_a38e9, NULL
+	person_event $ff, $00, $02, $0a, $01, $01, $00, $04, $01, Func_a391a, NULL
+	person_event $ff, $00, $04, $0c, $01, $01, $00, $04, $01, Func_a394b, NULL
+	person_event $ff, $00, $05, $05, $01, $01, $00, $04, $01, Func_a397c, NULL
+	person_event $ff, $00, $05, $07, $01, $01, $00, $04, $01, Func_a39ad, NULL
+	person_event $ff, $00, $06, $0a, $01, $01, $00, $04, $01, Func_a39de, NULL
+	person_event $ff, $00, $07, $04, $01, $01, $00, $04, $01, Func_a3a0f, NULL
+	person_event $ff, $00, $07, $0c, $01, $01, $00, $04, $01, Func_a3a40, NULL
+	person_event $ff, $00, $09, $07, $01, $01, $00, $04, $01, Func_a3a71, NULL
+	person_event $ff, $00, $0a, $0a, $01, $01, $00, $04, $01, Func_a3aa2, NULL
+
 Func_a388c:: ; a388c
+	ld e, $03 ; A388C (28:788c) -> 1E 03
+	ld hl, Data_a378b ; A388E (28:788e) -> 21 8B 77
+	scall LoadWarps ; A3891 (28:7891) -> CD 3A 40
+	ld a, $03 ; A3894 (28:7894) -> 3E 03
+	scall Func_80d01 ; A3896 (28:7896) -> CD 01 4D
+	ld e, $05 ; A3899 (28:7899) -> 1E 05
+	ld hl, Data_a37ac ; A389B (28:789b) -> 21 AC 77
+	scall LoadEncounters ; A389E (28:789e) -> CD 24 4D
+	ld e, $0b ; A38A1 (28:78a1) -> 1E 0B
+	ld hl, Data_a37f2 ; A38A3 (28:78a3) -> 21 F2 77
+	scall LoadMapObjects ; A38A6 (28:78a6) -> CD FB 40
+	ld a, $08 ; A38A9 (28:78a9) -> 3E 08
+	scall PlayMusic ; A38AB (28:78ab) -> CD E6 4E
+	scall Func_8001c ; A38AE (28:78ae) -> CD 1C 40
+	ld hl, $041e ; A38B1 (28:78b1) -> 21 1E 04
+	scall LandmarkSign ; A38B4 (28:78b4) -> CD 72 4F
+	ret  ; A38B7 (28:78b7) -> C9
+
+Func_a38b8:
+	ld a, e ; A38B8 (28:78b8) -> 7B
+	cp $02 ; A38B9 (28:78b9) -> FE 02
+	jp nz, .asm_a38e8 ; A38BB (28:78bb) -> C2 E8 78
+	xor a ; A38BE (28:78be) -> AF
+	scall Func_80653 ; A38BF (28:78bf) -> CD 53 46
+	ld c, $01 ; A38C2 (28:78c2) -> 0E 01
+	ld e, $01 ; A38C4 (28:78c4) -> 1E 01
+	ld a, $1b ; A38C6 (28:78c6) -> 3E 1B
+	scall LoadEmote ; A38C8 (28:78c8) -> CD 76 41
+	ld a, $37 ; A38CB (28:78cb) -> 3E 37
+	scall PlaySFX ; A38CD (28:78cd) -> CD FE 4E
+	scall WaitEmote ; A38D0 (28:78d0) -> CD D5 41
+	scall HideEmote ; A38D3 (28:78d3) -> CD 8B 41
+	ld a, $02 ; A38D6 (28:78d6) -> 3E 02
+	scall PlayerFace ; A38D8 (28:78d8) -> CD 77 46
+	ld l, $04 ; A38DB (28:78db) -> 2E 04
+	push hl ; A38DD (28:78dd) -> E5
+	ld c, $00 ; A38DE (28:78de) -> 0E 00
+	ld e, $26 ; A38E0 (28:78e0) -> 1E 26
+	ld a, $13 ; A38E2 (28:78e2) -> 3E 13
+	scall Func_80dff ; A38E4 (28:78e4) -> CD FF 4D
+	pop bc ; A38E7 (28:78e7) -> C1
+.asm_a38e8:
+	ret  ; A38E8 (28:78e8) -> C9
+
+Func_a38e9:
+	ld a, e ; A38E9 (28:78e9) -> 7B
+	cp $02 ; A38EA (28:78ea) -> FE 02
+	jp nz, .asm_a3919 ; A38EC (28:78ec) -> C2 19 79
+	xor a ; A38EF (28:78ef) -> AF
+	scall Func_80653 ; A38F0 (28:78f0) -> CD 53 46
+	ld c, $01 ; A38F3 (28:78f3) -> 0E 01
+	ld e, $01 ; A38F5 (28:78f5) -> 1E 01
+	ld a, $1b ; A38F7 (28:78f7) -> 3E 1B
+	scall LoadEmote ; A38F9 (28:78f9) -> CD 76 41
+	ld a, $37 ; A38FC (28:78fc) -> 3E 37
+	scall PlaySFX ; A38FE (28:78fe) -> CD FE 4E
+	scall WaitEmote ; A3901 (28:7901) -> CD D5 41
+	scall HideEmote ; A3904 (28:7904) -> CD 8B 41
+	ld a, $02 ; A3907 (28:7907) -> 3E 02
+	scall PlayerFace ; A3909 (28:7909) -> CD 77 46
+	ld l, $08 ; A390C (28:790c) -> 2E 08
+	push hl ; A390E (28:790e) -> E5
+	ld c, $01 ; A390F (28:790f) -> 0E 01
+	ld e, $26 ; A3911 (28:7911) -> 1E 26
+	ld a, $13 ; A3913 (28:7913) -> 3E 13
+	scall Func_80dff ; A3915 (28:7915) -> CD FF 4D
+	pop bc ; A3918 (28:7918) -> C1
+.asm_a3919:
+	ret  ; A3919 (28:7919) -> C9
+
+Func_a391a:
+	ld a, e ; A391A (28:791a) -> 7B
+	cp $02 ; A391B (28:791b) -> FE 02
+	jp nz, .asm_a394a ; A391D (28:791d) -> C2 4A 79
+	xor a ; A3920 (28:7920) -> AF
+	scall Func_80653 ; A3921 (28:7921) -> CD 53 46
+	ld c, $01 ; A3924 (28:7924) -> 0E 01
+	ld e, $01 ; A3926 (28:7926) -> 1E 01
+	ld a, $1b ; A3928 (28:7928) -> 3E 1B
+	scall LoadEmote ; A392A (28:792a) -> CD 76 41
+	ld a, $37 ; A392D (28:792d) -> 3E 37
+	scall PlaySFX ; A392F (28:792f) -> CD FE 4E
+	scall WaitEmote ; A3932 (28:7932) -> CD D5 41
+	scall HideEmote ; A3935 (28:7935) -> CD 8B 41
+	ld a, $02 ; A3938 (28:7938) -> 3E 02
+	scall PlayerFace ; A393A (28:793a) -> CD 77 46
+	ld l, $0a ; A393D (28:793d) -> 2E 0A
+	push hl ; A393F (28:793f) -> E5
+	ld c, $02 ; A3940 (28:7940) -> 0E 02
+	ld e, $26 ; A3942 (28:7942) -> 1E 26
+	ld a, $13 ; A3944 (28:7944) -> 3E 13
+	scall Func_80dff ; A3946 (28:7946) -> CD FF 4D
+	pop bc ; A3949 (28:7949) -> C1
+.asm_a394a:
+	ret  ; A394A (28:794a) -> C9
+
+Func_a394b:
+	ld a, e ; A394B (28:794b) -> 7B
+	cp $02 ; A394C (28:794c) -> FE 02
+	jp nz, .asm_a397b ; A394E (28:794e) -> C2 7B 79
+	xor a ; A3951 (28:7951) -> AF
+	scall Func_80653 ; A3952 (28:7952) -> CD 53 46
+	ld c, $01 ; A3955 (28:7955) -> 0E 01
+	ld e, $01 ; A3957 (28:7957) -> 1E 01
+	ld a, $1b ; A3959 (28:7959) -> 3E 1B
+	scall LoadEmote ; A395B (28:795b) -> CD 76 41
+	ld a, $37 ; A395E (28:795e) -> 3E 37
+	scall PlaySFX ; A3960 (28:7960) -> CD FE 4E
+	scall WaitEmote ; A3963 (28:7963) -> CD D5 41
+	scall HideEmote ; A3966 (28:7966) -> CD 8B 41
+	ld a, $02 ; A3969 (28:7969) -> 3E 02
+	scall PlayerFace ; A396B (28:796b) -> CD 77 46
+	ld l, $0c ; A396E (28:796e) -> 2E 0C
+	push hl ; A3970 (28:7970) -> E5
+	ld c, $04 ; A3971 (28:7971) -> 0E 04
+	ld e, $26 ; A3973 (28:7973) -> 1E 26
+	ld a, $13 ; A3975 (28:7975) -> 3E 13
+	scall Func_80dff ; A3977 (28:7977) -> CD FF 4D
+	pop bc ; A397A (28:797a) -> C1
+.asm_a397b:
+	ret  ; A397B (28:797b) -> C9
+
+Func_a397c:
+	ld a, e ; A397C (28:797c) -> 7B
+	cp $02 ; A397D (28:797d) -> FE 02
+	jp nz, .asm_a39ac ; A397F (28:797f) -> C2 AC 79
+	xor a ; A3982 (28:7982) -> AF
+	scall Func_80653 ; A3983 (28:7983) -> CD 53 46
+	ld c, $01 ; A3986 (28:7986) -> 0E 01
+	ld e, $01 ; A3988 (28:7988) -> 1E 01
+	ld a, $1b ; A398A (28:798a) -> 3E 1B
+	scall LoadEmote ; A398C (28:798c) -> CD 76 41
+	ld a, $37 ; A398F (28:798f) -> 3E 37
+	scall PlaySFX ; A3991 (28:7991) -> CD FE 4E
+	scall WaitEmote ; A3994 (28:7994) -> CD D5 41
+	scall HideEmote ; A3997 (28:7997) -> CD 8B 41
+	ld a, $02 ; A399A (28:799a) -> 3E 02
+	scall PlayerFace ; A399C (28:799c) -> CD 77 46
+	ld l, $05 ; A399F (28:799f) -> 2E 05
+	push hl ; A39A1 (28:79a1) -> E5
+	ld c, $05 ; A39A2 (28:79a2) -> 0E 05
+	ld e, $26 ; A39A4 (28:79a4) -> 1E 26
+	ld a, $13 ; A39A6 (28:79a6) -> 3E 13
+	scall Func_80dff ; A39A8 (28:79a8) -> CD FF 4D
+	pop bc ; A39AB (28:79ab) -> C1
+.asm_a39ac:
+	ret  ; A39AC (28:79ac) -> C9
+
+Func_a39ad:
+	ld a, e ; A39AD (28:79ad) -> 7B
+	cp $02 ; A39AE (28:79ae) -> FE 02
+	jp nz, .asm_a39dd ; A39B0 (28:79b0) -> C2 DD 79
+	xor a ; A39B3 (28:79b3) -> AF
+	scall Func_80653 ; A39B4 (28:79b4) -> CD 53 46
+	ld c, $01 ; A39B7 (28:79b7) -> 0E 01
+	ld e, $01 ; A39B9 (28:79b9) -> 1E 01
+	ld a, $1b ; A39BB (28:79bb) -> 3E 1B
+	scall LoadEmote ; A39BD (28:79bd) -> CD 76 41
+	ld a, $37 ; A39C0 (28:79c0) -> 3E 37
+	scall PlaySFX ; A39C2 (28:79c2) -> CD FE 4E
+	scall WaitEmote ; A39C5 (28:79c5) -> CD D5 41
+	scall HideEmote ; A39C8 (28:79c8) -> CD 8B 41
+	ld a, $02 ; A39CB (28:79cb) -> 3E 02
+	scall PlayerFace ; A39CD (28:79cd) -> CD 77 46
+	ld l, $07 ; A39D0 (28:79d0) -> 2E 07
+	push hl ; A39D2 (28:79d2) -> E5
+	ld c, $05 ; A39D3 (28:79d3) -> 0E 05
+	ld e, $26 ; A39D5 (28:79d5) -> 1E 26
+	ld a, $13 ; A39D7 (28:79d7) -> 3E 13
+	scall Func_80dff ; A39D9 (28:79d9) -> CD FF 4D
+	pop bc ; A39DC (28:79dc) -> C1
+.asm_a39dd:
+	ret  ; A39DD (28:79dd) -> C9
+
+Func_a39de:
+	ld a, e ; A39DE (28:79de) -> 7B
+	cp $02 ; A39DF (28:79df) -> FE 02
+	jp nz, .asm_a3a0e ; A39E1 (28:79e1) -> C2 0E 7A
+	xor a ; A39E4 (28:79e4) -> AF
+	scall Func_80653 ; A39E5 (28:79e5) -> CD 53 46
+	ld c, $01 ; A39E8 (28:79e8) -> 0E 01
+	ld e, $01 ; A39EA (28:79ea) -> 1E 01
+	ld a, $1b ; A39EC (28:79ec) -> 3E 1B
+	scall LoadEmote ; A39EE (28:79ee) -> CD 76 41
+	ld a, $37 ; A39F1 (28:79f1) -> 3E 37
+	scall PlaySFX ; A39F3 (28:79f3) -> CD FE 4E
+	scall WaitEmote ; A39F6 (28:79f6) -> CD D5 41
+	scall HideEmote ; A39F9 (28:79f9) -> CD 8B 41
+	ld a, $02 ; A39FC (28:79fc) -> 3E 02
+	scall PlayerFace ; A39FE (28:79fe) -> CD 77 46
+	ld l, $0a ; A3A01 (28:7a01) -> 2E 0A
+	push hl ; A3A03 (28:7a03) -> E5
+	ld c, $06 ; A3A04 (28:7a04) -> 0E 06
+	ld e, $26 ; A3A06 (28:7a06) -> 1E 26
+	ld a, $13 ; A3A08 (28:7a08) -> 3E 13
+	scall Func_80dff ; A3A0A (28:7a0a) -> CD FF 4D
+	pop bc ; A3A0D (28:7a0d) -> C1
+.asm_a3a0e:
+	ret  ; A3A0E (28:7a0e) -> C9
+
+Func_a3a0f:
+	ld a, e ; A3A0F (28:7a0f) -> 7B
+	cp $02 ; A3A10 (28:7a10) -> FE 02
+	jp nz, .asm_a3a3f ; A3A12 (28:7a12) -> C2 3F 7A
+	xor a ; A3A15 (28:7a15) -> AF
+	scall Func_80653 ; A3A16 (28:7a16) -> CD 53 46
+	ld c, $01 ; A3A19 (28:7a19) -> 0E 01
+	ld e, $01 ; A3A1B (28:7a1b) -> 1E 01
+	ld a, $1b ; A3A1D (28:7a1d) -> 3E 1B
+	scall LoadEmote ; A3A1F (28:7a1f) -> CD 76 41
+	ld a, $37 ; A3A22 (28:7a22) -> 3E 37
+	scall PlaySFX ; A3A24 (28:7a24) -> CD FE 4E
+	scall WaitEmote ; A3A27 (28:7a27) -> CD D5 41
+	scall HideEmote ; A3A2A (28:7a2a) -> CD 8B 41
+	ld a, $02 ; A3A2D (28:7a2d) -> 3E 02
+	scall PlayerFace ; A3A2F (28:7a2f) -> CD 77 46
+	ld l, $04 ; A3A32 (28:7a32) -> 2E 04
+	push hl ; A3A34 (28:7a34) -> E5
+	ld c, $07 ; A3A35 (28:7a35) -> 0E 07
+	ld e, $26 ; A3A37 (28:7a37) -> 1E 26
+	ld a, $13 ; A3A39 (28:7a39) -> 3E 13
+	scall Func_80dff ; A3A3B (28:7a3b) -> CD FF 4D
+	pop bc ; A3A3E (28:7a3e) -> C1
+.asm_a3a3f:
+	ret  ; A3A3F (28:7a3f) -> C9
+
+Func_a3a40:
+	ld a, e ; A3A40 (28:7a40) -> 7B
+	cp $02 ; A3A41 (28:7a41) -> FE 02
+	jp nz, .asm_a3a70 ; A3A43 (28:7a43) -> C2 70 7A
+	xor a ; A3A46 (28:7a46) -> AF
+	scall Func_80653 ; A3A47 (28:7a47) -> CD 53 46
+	ld c, $01 ; A3A4A (28:7a4a) -> 0E 01
+	ld e, $01 ; A3A4C (28:7a4c) -> 1E 01
+	ld a, $1b ; A3A4E (28:7a4e) -> 3E 1B
+	scall LoadEmote ; A3A50 (28:7a50) -> CD 76 41
+	ld a, $37 ; A3A53 (28:7a53) -> 3E 37
+	scall PlaySFX ; A3A55 (28:7a55) -> CD FE 4E
+	scall WaitEmote ; A3A58 (28:7a58) -> CD D5 41
+	scall HideEmote ; A3A5B (28:7a5b) -> CD 8B 41
+	ld a, $02 ; A3A5E (28:7a5e) -> 3E 02
+	scall PlayerFace ; A3A60 (28:7a60) -> CD 77 46
+	ld l, $0c ; A3A63 (28:7a63) -> 2E 0C
+	push hl ; A3A65 (28:7a65) -> E5
+	ld c, $07 ; A3A66 (28:7a66) -> 0E 07
+	ld e, $26 ; A3A68 (28:7a68) -> 1E 26
+	ld a, $13 ; A3A6A (28:7a6a) -> 3E 13
+	scall Func_80dff ; A3A6C (28:7a6c) -> CD FF 4D
+	pop bc ; A3A6F (28:7a6f) -> C1
+.asm_a3a70:
+	ret  ; A3A70 (28:7a70) -> C9
+
+Func_a3a71:
+	ld a, e ; A3A71 (28:7a71) -> 7B
+	cp $02 ; A3A72 (28:7a72) -> FE 02
+	jp nz, .asm_a3aa1 ; A3A74 (28:7a74) -> C2 A1 7A
+	xor a ; A3A77 (28:7a77) -> AF
+	scall Func_80653 ; A3A78 (28:7a78) -> CD 53 46
+	ld c, $01 ; A3A7B (28:7a7b) -> 0E 01
+	ld e, $01 ; A3A7D (28:7a7d) -> 1E 01
+	ld a, $1b ; A3A7F (28:7a7f) -> 3E 1B
+	scall LoadEmote ; A3A81 (28:7a81) -> CD 76 41
+	ld a, $37 ; A3A84 (28:7a84) -> 3E 37
+	scall PlaySFX ; A3A86 (28:7a86) -> CD FE 4E
+	scall WaitEmote ; A3A89 (28:7a89) -> CD D5 41
+	scall HideEmote ; A3A8C (28:7a8c) -> CD 8B 41
+	ld a, $02 ; A3A8F (28:7a8f) -> 3E 02
+	scall PlayerFace ; A3A91 (28:7a91) -> CD 77 46
+	ld l, $07 ; A3A94 (28:7a94) -> 2E 07
+	push hl ; A3A96 (28:7a96) -> E5
+	ld c, $09 ; A3A97 (28:7a97) -> 0E 09
+	ld e, $26 ; A3A99 (28:7a99) -> 1E 26
+	ld a, $13 ; A3A9B (28:7a9b) -> 3E 13
+	scall Func_80dff ; A3A9D (28:7a9d) -> CD FF 4D
+	pop bc ; A3AA0 (28:7aa0) -> C1
+.asm_a3aa1:
+	ret  ; A3AA1 (28:7aa1) -> C9
+
+Func_a3aa2:
+	ld a, e ; A3AA2 (28:7aa2) -> 7B
+	cp $02 ; A3AA3 (28:7aa3) -> FE 02
+	jp nz, .asm_a3ad2 ; A3AA5 (28:7aa5) -> C2 D2 7A
+	xor a ; A3AA8 (28:7aa8) -> AF
+	scall Func_80653 ; A3AA9 (28:7aa9) -> CD 53 46
+	ld c, $01 ; A3AAC (28:7aac) -> 0E 01
+	ld e, $01 ; A3AAE (28:7aae) -> 1E 01
+	ld a, $1b ; A3AB0 (28:7ab0) -> 3E 1B
+	scall LoadEmote ; A3AB2 (28:7ab2) -> CD 76 41
+	ld a, $37 ; A3AB5 (28:7ab5) -> 3E 37
+	scall PlaySFX ; A3AB7 (28:7ab7) -> CD FE 4E
+	scall WaitEmote ; A3ABA (28:7aba) -> CD D5 41
+	scall HideEmote ; A3ABD (28:7abd) -> CD 8B 41
+	ld a, $02 ; A3AC0 (28:7ac0) -> 3E 02
+	scall PlayerFace ; A3AC2 (28:7ac2) -> CD 77 46
+	ld l, $0a ; A3AC5 (28:7ac5) -> 2E 0A
+	push hl ; A3AC7 (28:7ac7) -> E5
+	ld c, $0a ; A3AC8 (28:7ac8) -> 0E 0A
+	ld e, $26 ; A3ACA (28:7aca) -> 1E 26
+	ld a, $13 ; A3ACC (28:7acc) -> 3E 13
+	scall Func_80dff ; A3ACE (28:7ace) -> CD FF 4D
+	pop bc ; A3AD1 (28:7ad1) -> C1
+.asm_a3ad2:
+	ret  ; A3AD2 (28:7ad2) -> C9
+
+Data_a3ad3:
 IF DEF(SUN)
-	db $1e, $03, $21, $8b, $77, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $05, $21
-	db $ac, $77, $cd, $24, $4d, $1e, $0b, $21, $f2, $77, $cd, $fb, $40, $3e, $08, $cd
-	db $e6, $4e, $cd, $1c, $40, $21, $1e, $04, $cd, $72, $4f, $c9, $7b, $fe, $02, $c2
-	db $e8, $78, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b, $cd, $76, $41, $3e
-	db $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd, $77, $46, $2e
-	db $04, $e5, $0e, $00, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1, $c9, $7b, $fe, $02
-	db $c2, $19, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b, $cd, $76, $41
-	db $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd, $77, $46
-	db $2e, $08, $e5, $0e, $01, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1, $c9, $7b, $fe
-	db $02, $c2, $4a, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b, $cd, $76
-	db $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd, $77
-	db $46, $2e, $0a, $e5, $0e, $02, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1, $c9, $7b
-	db $fe, $02, $c2, $7b, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b, $cd
-	db $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd
-	db $77, $46, $2e, $0c, $e5, $0e, $04, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1, $c9
-	db $7b, $fe, $02, $c2, $ac, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b
-	db $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02
-	db $cd, $77, $46, $2e, $05, $e5, $0e, $05, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1
-	db $c9, $7b, $fe, $02, $c2, $dd, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e
-	db $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e
-	db $02, $cd, $77, $46, $2e, $07, $e5, $0e, $05, $1e, $26, $3e, $13, $cd, $ff, $4d
-	db $c1, $c9, $7b, $fe, $02, $c2, $0e, $7a, $af, $cd, $53, $46, $0e, $01, $1e, $01
-	db $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41
-	db $3e, $02, $cd, $77, $46, $2e, $0a, $e5, $0e, $06, $1e, $26, $3e, $13, $cd, $ff
-	db $4d, $c1, $c9, $7b, $fe, $02, $c2, $3f, $7a, $af, $cd, $53, $46, $0e, $01, $1e
-	db $01, $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b
-	db $41, $3e, $02, $cd, $77, $46, $2e, $04, $e5, $0e, $07, $1e, $26, $3e, $13, $cd
-	db $ff, $4d, $c1, $c9, $7b, $fe, $02, $c2, $70, $7a, $af, $cd, $53, $46, $0e, $01
-	db $1e, $01, $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd
-	db $8b, $41, $3e, $02, $cd, $77, $46, $2e, $0c, $e5, $0e, $07, $1e, $26, $3e, $13
-	db $cd, $ff, $4d, $c1, $c9, $7b, $fe, $02, $c2, $a1, $7a, $af, $cd, $53, $46, $0e
-	db $01, $1e, $01, $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41
-	db $cd, $8b, $41, $3e, $02, $cd, $77, $46, $2e, $07, $e5, $0e, $09, $1e, $26, $3e
-	db $13, $cd, $ff, $4d, $c1, $c9, $7b, $fe, $02, $c2, $d2, $7a, $af, $cd, $53, $46
-	db $0e, $01, $1e, $01, $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5
-	db $41, $cd, $8b, $41, $3e, $02, $cd, $77, $46, $2e, $0a, $e5, $0e, $0a, $1e, $26
-	db $3e, $13, $cd, $ff, $4d, $c1, $c9, $0b, $0d, $01, $01, $13, $25, $0b, $0d, $0a
+	db $0b, $0d, $01, $01, $13, $25, $0b, $0d, $0a
 	db $0d, $2e, $01, $0d, $01, $01, $13, $27, $03, $21, $03, $20, $2e, $00, $03, $0d
 	db $0c, $5f, $15, $17, $77, $05, $06, $00, $04, $0a, $00, $00, $03, $0d, $0c, $50
 	db $15, $17, $77, $14, $14, $00, $0e, $09, $00, $00, $03, $0d, $0c, $34, $16, $18
@@ -3562,43 +3825,7 @@ IF DEF(SUN)
 	db $12, $11, $04, $06, $00, $00, $03, $0d, $0c, $29, $17, $19, $0d, $01, $01, $01
 	db $04, $02, $00
 ELIF DEF(STAR)
-	db $1e, $03, $21, $d1, $77, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $05, $21
-	db $f2, $77, $cd, $24, $4d, $1e, $0b, $21, $38, $78, $cd, $fb, $40, $3e, $08, $cd
-	db $e6, $4e, $cd, $1c, $40, $21, $1e, $04, $cd, $72, $4f, $c9, $7b, $fe, $02, $c2
-	db $2e, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b, $cd, $76, $41, $3e
-	db $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd, $77, $46, $2e
-	db $04, $e5, $0e, $00, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1, $c9, $7b, $fe, $02
-	db $c2, $5f, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b, $cd, $76, $41
-	db $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd, $77, $46
-	db $2e, $08, $e5, $0e, $01, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1, $c9, $7b, $fe
-	db $02, $c2, $90, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b, $cd, $76
-	db $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd, $77
-	db $46, $2e, $0a, $e5, $0e, $02, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1, $c9, $7b
-	db $fe, $02, $c2, $c1, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b, $cd
-	db $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd
-	db $77, $46, $2e, $0c, $e5, $0e, $04, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1, $c9
-	db $7b, $fe, $02, $c2, $f2, $79, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $1b
-	db $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $02
-	db $cd, $77, $46, $2e, $05, $e5, $0e, $05, $1e, $26, $3e, $13, $cd, $ff, $4d, $c1
-	db $c9, $7b, $fe, $02, $c2, $23, $7a, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e
-	db $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e
-	db $02, $cd, $77, $46, $2e, $07, $e5, $0e, $05, $1e, $26, $3e, $13, $cd, $ff, $4d
-	db $c1, $c9, $7b, $fe, $02, $c2, $54, $7a, $af, $cd, $53, $46, $0e, $01, $1e, $01
-	db $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41
-	db $3e, $02, $cd, $77, $46, $2e, $0a, $e5, $0e, $06, $1e, $26, $3e, $13, $cd, $ff
-	db $4d, $c1, $c9, $7b, $fe, $02, $c2, $85, $7a, $af, $cd, $53, $46, $0e, $01, $1e
-	db $01, $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b
-	db $41, $3e, $02, $cd, $77, $46, $2e, $04, $e5, $0e, $07, $1e, $26, $3e, $13, $cd
-	db $ff, $4d, $c1, $c9, $7b, $fe, $02, $c2, $b6, $7a, $af, $cd, $53, $46, $0e, $01
-	db $1e, $01, $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41, $cd
-	db $8b, $41, $3e, $02, $cd, $77, $46, $2e, $0c, $e5, $0e, $07, $1e, $26, $3e, $13
-	db $cd, $ff, $4d, $c1, $c9, $7b, $fe, $02, $c2, $e7, $7a, $af, $cd, $53, $46, $0e
-	db $01, $1e, $01, $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5, $41
-	db $cd, $8b, $41, $3e, $02, $cd, $77, $46, $2e, $07, $e5, $0e, $09, $1e, $26, $3e
-	db $13, $cd, $ff, $4d, $c1, $c9, $7b, $fe, $02, $c2, $18, $7b, $af, $cd, $53, $46
-	db $0e, $01, $1e, $01, $3e, $1b, $cd, $76, $41, $3e, $37, $cd, $fe, $4e, $cd, $d5
-	db $41, $cd, $8b, $41, $3e, $02, $cd, $77, $46, $2e, $0a, $e5, $0e, $0a, $1e, $26
-	db $3e, $13, $cd, $ff, $4d, $c1, $c9, $0b, $0d, $01, $01, $13, $25, $0b, $0d, $0a
+	db $0b, $0d, $01, $01, $13, $25, $0b, $0d, $0a
 	db $0d, $2e, $01, $0d, $01, $01, $13, $27, $03, $21, $03, $20, $2e, $00, $03, $0d
 	db $0c, $50, $15, $17, $77, $14, $14, $00, $0e, $0a, $00, $00, $03, $0d, $0c, $57
 	db $15, $17, $46, $1f, $17, $11, $0d, $09, $00, $00, $03, $0d, $0c, $26, $16, $18
