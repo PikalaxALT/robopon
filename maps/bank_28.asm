@@ -2559,7 +2559,7 @@ Func_a2ebf:: ; a2ebf
 	or a ; A2EC2 (28:6ec2) -> B7
 	jp nz, .asm_a2ed5 ; A2EC3 (28:6ec3) -> C2 D5 6E
 	ld a, $03 ; A2EC6 (28:6ec6) -> 3E 03
-	call Random_28 ; A2EC8 (28:6ec8) -> CD D7 4C
+	scall Random ; A2EC8 (28:6ec8) -> CD D7 4C
 	ld [wc7dd], a ; A2ECB (28:6ecb) -> EA DD C7
 	ld a, [wc7de] ; A2ECE (28:6ece) -> FA DE C7
 	inc a ; A2ED1 (28:6ed1) -> 3C
@@ -2570,10 +2570,10 @@ Func_a2ebf:: ; a2ebf
 	jp nz, .asm_a2ee5 ; A2EDA (28:6eda) -> C2 E5 6E
 	ld e, $01 ; A2EDD (28:6edd) -> 1E 01
 	ld hl, $005f ; A2EDF (28:6edf) -> 21 5F 00
-	call EventFlagAction_28 ; A2EE2 (28:6ee2) -> CD 1B 46
+	scall EventFlagAction ; A2EE2 (28:6ee2) -> CD 1B 46
 .asm_a2ee5:
 	ld a, $03 ; A2EE5 (28:6ee5) -> 3E 03
-	call Func_80d01_28 ; A2EE7 (28:6ee7) -> CD 01 4D
+	scall Func_80d01 ; A2EE7 (28:6ee7) -> CD 01 4D
 	ld a, [wc7de] ; A2EEA (28:6eea) -> FA DE C7
 	cp $1e ; A2EED (28:6eed) -> FE 1E
 	jp z, .asm_a2fba ; A2EEF (28:6eef) -> CA BA 6F
@@ -2638,32 +2638,32 @@ Func_a2ebf:: ; a2ebf
 .asm_a2f83:
 	ld e, $05 ; A2F83 (28:6f83) -> 1E 05
 	ld hl, Data_a2cd5 ; A2F85 (28:6f85) -> 21 D5 6C
-	call LoadEncounters_28 ; A2F88 (28:6f88) -> CD 24 4D
+	scall LoadEncounters ; A2F88 (28:6f88) -> CD 24 4D
 	jp .asm_a2fcd ; A2F8B (28:6f8b) -> C3 CD 6F
 .asm_a2f8e:
 	ld e, $05 ; A2F8E (28:6f8e) -> 1E 05
 	ld hl, Data_a2d1b ; A2F90 (28:6f90) -> 21 1B 6D
-	call LoadEncounters_28 ; A2F93 (28:6f93) -> CD 24 4D
+	scall LoadEncounters ; A2F93 (28:6f93) -> CD 24 4D
 	jp .asm_a2fcd ; A2F96 (28:6f96) -> C3 CD 6F
 .asm_a2f99:
 	ld e, $05 ; A2F99 (28:6f99) -> 1E 05
 	ld hl, Data_a2d61 ; A2F9B (28:6f9b) -> 21 61 6D
-	call LoadEncounters_28 ; A2F9E (28:6f9e) -> CD 24 4D
+	scall LoadEncounters ; A2F9E (28:6f9e) -> CD 24 4D
 	jp .asm_a2fcd ; A2FA1 (28:6fa1) -> C3 CD 6F
 .asm_a2fa4:
 	ld e, $05 ; A2FA4 (28:6fa4) -> 1E 05
 	ld hl, Data_a2da7 ; A2FA6 (28:6fa6) -> 21 A7 6D
-	call LoadEncounters_28 ; A2FA9 (28:6fa9) -> CD 24 4D
+	scall LoadEncounters ; A2FA9 (28:6fa9) -> CD 24 4D
 	jp .asm_a2fcd ; A2FAC (28:6fac) -> C3 CD 6F
 .asm_a2faf:
 	ld e, $05 ; A2FAF (28:6faf) -> 1E 05
 	ld hl, Data_a2ded ; A2FB1 (28:6fb1) -> 21 ED 6D
-	call LoadEncounters_28 ; A2FB4 (28:6fb4) -> CD 24 4D
+	scall LoadEncounters ; A2FB4 (28:6fb4) -> CD 24 4D
 	jp .asm_a2fcd ; A2FB7 (28:6fb7) -> C3 CD 6F
 .asm_a2fba:
 	ld e, $05 ; A2FBA (28:6fba) -> 1E 05
 	ld hl, Data_a2e33 ; A2FBC (28:6fbc) -> 21 33 6E
-	call LoadEncounters_28 ; A2FBF (28:6fbf) -> CD 24 4D
+	scall LoadEncounters ; A2FBF (28:6fbf) -> CD 24 4D
 	jp .asm_a2fcd ; A2FC2 (28:6fc2) -> C3 CD 6F
 .asm_a2fc5:
 IF DEF(SUN)
@@ -2672,7 +2672,7 @@ ELIF DEF(STAR)
 	ld e, $0a ; A2FC5 (28:6fc5) -> 1E 05
 ENDC
 	ld hl, Data_a2e79 ; A2FC7 (28:6fc7) -> 21 79 6E
-	call LoadEncounters_28 ; A2FCA (28:6fca) -> CD 24 4D
+	scall LoadEncounters ; A2FCA (28:6fca) -> CD 24 4D
 .asm_a2fcd:
 	ld a, [wc7de] ; A2FCD (28:6fcd) -> FA DE C7
 	inc a ; A2FD0 (28:6fd0) -> 3C
@@ -2680,9 +2680,9 @@ ENDC
 	jp nc, .asm_a300d ; A2FD3 (28:6fd3) -> D2 0D 70
 	call Func_a304a ; A2FD6 (28:6fd6) -> CD 4A 70
 	ld hl, Func_a304a ; A2FD9 (28:6fd9) -> 21 4A 70
-	call Func_80f11_28 ; A2FDC (28:6fdc) -> CD 11 4F
+	scall Func_80f11 ; A2FDC (28:6fdc) -> CD 11 4F
 	ld a, $04 ; A2FDF (28:6fdf) -> 3E 04
-	call Random_28 ; A2FE1 (28:6fe1) -> CD D7 4C
+	scall Random ; A2FE1 (28:6fe1) -> CD D7 4C
 	ld l, a ; A2FE4 (28:6fe4) -> 6F
 	ld h, $00 ; A2FE5 (28:6fe5) -> 26 00
 	ld e, l ; A2FE7 (28:6fe7) -> 5D
@@ -2714,25 +2714,25 @@ ENDC
 	pop de ; A3006 (28:7006) -> D1
 	add hl, de ; A3007 (28:7007) -> 19
 	ld e, $01 ; A3008 (28:7008) -> 1E 01
-	call LoadWarps_28 ; A300A (28:700a) -> CD 3A 40
+	scall LoadWarps ; A300A (28:700a) -> CD 3A 40
 .asm_a300d:
 	ld e, $01 ; A300D (28:700d) -> 1E 01
 	ld hl, Data_a2c46 ; A300F (28:700f) -> 21 46 6C
-	call LoadWarps_28 ; A3012 (28:7012) -> CD 3A 40
+	scall LoadWarps ; A3012 (28:7012) -> CD 3A 40
 	ld a, $08 ; A3015 (28:7015) -> 3E 08
-	call PlayMusic_28 ; A3017 (28:7017) -> CD E6 4E
-	call Func_8001c_28 ; A301A (28:701a) -> CD 1C 40
+	scall PlayMusic ; A3017 (28:7017) -> CD E6 4E
+	scall Func_8001c ; A301A (28:701a) -> CD 1C 40
 	ld a, [wc7de] ; A301D (28:701d) -> FA DE C7
 	cp $23 ; A3020 (28:7020) -> FE 23
 	jp nz, .asm_a302e ; A3022 (28:7022) -> C2 2E 70
 	ld hl, $00f8 ; A3025 (28:7025) -> 21 F8 00
-	call PrintTextStandard_28 ; A3028 (28:7028) -> CD 98 44
+	scall PrintTextStandard ; A3028 (28:7028) -> CD 98 44
 	jp .asm_a3037 ; A302B (28:702b) -> C3 37 70
 .asm_a302e:
 	ld hl, wc7de ; A302E (28:702e) -> 21 DE C7
 	ld l, [hl] ; A3031 (28:7031) -> 6E
 	ld h, $00 ; A3032 (28:7032) -> 26 00
-	call Func_80f83_28 ; A3034 (28:7034) -> CD 83 4F
+	scall Func_80f83 ; A3034 (28:7034) -> CD 83 4F
 .asm_a3037:
 	ret  ; A3037 (28:7037) -> C9
 
@@ -2752,8 +2752,8 @@ Func_a304a:
 	add hl, de ; A3054 (28:7054) -> 19
 	ld de, Data_a3038 ; A3055 (28:7055) -> 11 38 70
 	add hl, de ; A3058 (28:7058) -> 19
-	call Func_80d9b_28 ; A3059 (28:7059) -> CD 9B 4D
-	call Func_80f02_28 ; A305C (28:705c) -> CD 02 4F
+	scall Func_80d9b ; A3059 (28:7059) -> CD 9B 4D
+	scall Func_80f02 ; A305C (28:705c) -> CD 02 4F
 	ret  ; A305F (28:705f) -> C9
 
 Data_a3060:
@@ -2781,46 +2781,46 @@ Data_a30bf:
 Func_a30cd:: ; a30cd
 	ld e, $01 ; A30CD (28:70cd) -> 1E 01
 	ld hl, Data_a3060 ; A30CF (28:70cf) -> 21 60 70
-	call LoadWarps_28 ; A30D2 (28:70d2) -> CD 3A 40
+	scall LoadWarps ; A30D2 (28:70d2) -> CD 3A 40
 	ld a, $03 ; A30D5 (28:70d5) -> 3E 03
-	call Func_80d01_28 ; A30D7 (28:70d7) -> CD 01 4D
+	scall Func_80d01 ; A30D7 (28:70d7) -> CD 01 4D
 	ld e, $03 ; A30DA (28:70da) -> 1E 03
 	ld hl, Data_a306b ; A30DC (28:70dc) -> 21 6B 70
-	call LoadEncounters_28 ; A30DF (28:70df) -> CD 24 4D
+	scall LoadEncounters ; A30DF (28:70df) -> CD 24 4D
 	ld a, $08 ; A30E2 (28:70e2) -> 3E 08
-	call PlayMusic_28 ; A30E4 (28:70e4) -> CD E6 4E
+	scall PlayMusic ; A30E4 (28:70e4) -> CD E6 4E
 	ld hl, $00c8 ; A30E7 (28:70e7) -> 21 C8 00
-	call CheckEventFlag_28 ; A30EA (28:70ea) -> CD 2E 46
+	scall CheckEventFlag ; A30EA (28:70ea) -> CD 2E 46
 	or a ; A30ED (28:70ed) -> B7
 	jp z, .asm_a3105 ; A30EE (28:70ee) -> CA 05 71
 	ld hl, $00c9 ; A30F1 (28:70f1) -> 21 C9 00
-	call CheckEventFlag_28 ; A30F4 (28:70f4) -> CD 2E 46
+	scall CheckEventFlag ; A30F4 (28:70f4) -> CD 2E 46
 	or a ; A30F7 (28:70f7) -> B7
 	jp z, .asm_a3105 ; A30F8 (28:70f8) -> CA 05 71
 	ld hl, $00ca ; A30FB (28:70fb) -> 21 CA 00
-	call CheckEventFlag_28 ; A30FE (28:70fe) -> CD 2E 46
+	scall CheckEventFlag ; A30FE (28:70fe) -> CD 2E 46
 	or a ; A3101 (28:7101) -> B7
 	jp nz, .asm_a3125 ; A3102 (28:7102) -> C2 25 71
 .asm_a3105:
 	ld e, $00 ; A3105 (28:7105) -> 1E 00
 	ld hl, $00c8 ; A3107 (28:7107) -> 21 C8 00
-	call EventFlagAction_28 ; A310A (28:710a) -> CD 1B 46
+	scall EventFlagAction ; A310A (28:710a) -> CD 1B 46
 	ld e, $00 ; A310D (28:710d) -> 1E 00
 	ld hl, $00c9 ; A310F (28:710f) -> 21 C9 00
-	call EventFlagAction_28 ; A3112 (28:7112) -> CD 1B 46
+	scall EventFlagAction ; A3112 (28:7112) -> CD 1B 46
 	ld e, $00 ; A3115 (28:7115) -> 1E 00
 	ld hl, $00ca ; A3117 (28:7117) -> 21 CA 00
-	call EventFlagAction_28 ; A311A (28:711a) -> CD 1B 46
+	scall EventFlagAction ; A311A (28:711a) -> CD 1B 46
 	ld e, $03 ; A311D (28:711d) -> 1E 03
 	ld hl, Data_a3095 ; A311F (28:711f) -> 21 95 70
-	call LoadMapObjects_28 ; A3122 (28:7122) -> CD FB 40
+	scall LoadMapObjects ; A3122 (28:7122) -> CD FB 40
 .asm_a3125:
 	ld e, $01 ; A3125 (28:7125) -> 1E 01
 	ld hl, Data_a30bf ; A3127 (28:7127) -> 21 BF 70
-	call LoadMapObjects_28 ; A312A (28:712a) -> CD FB 40
-	call Func_8001c_28 ; A312D (28:712d) -> CD 1C 40
+	scall LoadMapObjects ; A312A (28:712a) -> CD FB 40
+	scall Func_8001c ; A312D (28:712d) -> CD 1C 40
 	ld hl, $041c ; A3130 (28:7130) -> 21 1C 04
-	call LandmarkSign_28 ; A3133 (28:7133) -> CD 72 4F
+	scall LandmarkSign ; A3133 (28:7133) -> CD 72 4F
 	ret  ; A3136 (28:7136) -> C9
 
 Func_a3137:
@@ -2832,7 +2832,7 @@ Func_a3137:
 	jp nz, .asm_a3195 ; A3140 (28:7140) -> C2 95 71
 	ld hl, sp+$01 ; A3143 (28:7143) -> F8 01
 	ld a, [hl] ; A3145 (28:7145) -> 7E
-	call Func_80bde_28 ; A3146 (28:7146) -> CD DE 4B
+	scall Func_80bde ; A3146 (28:7146) -> CD DE 4B
 	cp $01 ; A3149 (28:7149) -> FE 01
 	jp nz, .asm_a3153 ; A314B (28:714b) -> C2 53 71
 	ld a, $01 ; A314E (28:714e) -> 3E 01
@@ -2843,29 +2843,29 @@ Func_a3137:
 	ld e, $03 ; A3156 (28:7156) -> 1E 03
 	ld hl, sp+$01 ; A3158 (28:7158) -> F8 01
 	ld a, [hl] ; A315A (28:715a) -> 7E
-	call CheckObjectsOccupyingSameTile_28 ; A315B (28:715b) -> CD E9 40
+	scall CheckObjectsOccupyingSameTile ; A315B (28:715b) -> CD E9 40
 	or a ; A315E (28:715e) -> B7
 	jp z, .asm_a3195 ; A315F (28:715f) -> CA 95 71
 	ld a, $2b ; A3162 (28:7162) -> 3E 2B
-	call PlaySFX_28 ; A3164 (28:7164) -> CD FE 4E
+	scall PlaySFX ; A3164 (28:7164) -> CD FE 4E
 	ld e, $00 ; A3167 (28:7167) -> 1E 00
 	ld hl, sp+$01 ; A3169 (28:7169) -> F8 01
 	ld a, [hl] ; A316B (28:716b) -> 7E
-	call SetPersonVisibilityState_28 ; A316C (28:716c) -> CD 3D 41
+	scall SetPersonVisibilityState ; A316C (28:716c) -> CD 3D 41
 	ld e, $01 ; A316F (28:716f) -> 1E 01
 	ld hl, $00c8 ; A3171 (28:7171) -> 21 C8 00
-	call EventFlagAction_28 ; A3174 (28:7174) -> CD 1B 46
+	scall EventFlagAction ; A3174 (28:7174) -> CD 1B 46
 	ld hl, $00c9 ; A3177 (28:7177) -> 21 C9 00
-	call CheckEventFlag_28 ; A317A (28:717a) -> CD 2E 46
+	scall CheckEventFlag ; A317A (28:717a) -> CD 2E 46
 	cp $01 ; A317D (28:717d) -> FE 01
 	jp nz, .asm_a3195 ; A317F (28:717f) -> C2 95 71
 	ld hl, $00ca ; A3182 (28:7182) -> 21 CA 00
-	call CheckEventFlag_28 ; A3185 (28:7185) -> CD 2E 46
+	scall CheckEventFlag ; A3185 (28:7185) -> CD 2E 46
 	cp $01 ; A3188 (28:7188) -> FE 01
 	jp nz, .asm_a3195 ; A318A (28:718a) -> C2 95 71
 	ld e, $01 ; A318D (28:718d) -> 1E 01
 	ld hl, $00d1 ; A318F (28:718f) -> 21 D1 00
-	call EventFlagAction_28 ; A3192 (28:7192) -> CD 1B 46
+	scall EventFlagAction ; A3192 (28:7192) -> CD 1B 46
 .asm_a3195:
 	pop bc ; A3195 (28:7195) -> C1
 	ret  ; A3196 (28:7196) -> C9
@@ -2879,7 +2879,7 @@ Func_a3197:
 	jp nz, .asm_a31f5 ; A31A0 (28:71a0) -> C2 F5 71
 	ld hl, sp+$01 ; A31A3 (28:71a3) -> F8 01
 	ld a, [hl] ; A31A5 (28:71a5) -> 7E
-	call Func_80bde_28 ; A31A6 (28:71a6) -> CD DE 4B
+	scall Func_80bde ; A31A6 (28:71a6) -> CD DE 4B
 	cp $01 ; A31A9 (28:71a9) -> FE 01
 	jp nz, .asm_a31b3 ; A31AB (28:71ab) -> C2 B3 71
 	ld a, $01 ; A31AE (28:71ae) -> 3E 01
@@ -2890,29 +2890,29 @@ Func_a3197:
 	ld e, $03 ; A31B6 (28:71b6) -> 1E 03
 	ld hl, sp+$01 ; A31B8 (28:71b8) -> F8 01
 	ld a, [hl] ; A31BA (28:71ba) -> 7E
-	call CheckObjectsOccupyingSameTile_28 ; A31BB (28:71bb) -> CD E9 40
+	scall CheckObjectsOccupyingSameTile ; A31BB (28:71bb) -> CD E9 40
 	or a ; A31BE (28:71be) -> B7
 	jp z, .asm_a31f5 ; A31BF (28:71bf) -> CA F5 71
 	ld a, $2b ; A31C2 (28:71c2) -> 3E 2B
-	call PlaySFX_28 ; A31C4 (28:71c4) -> CD FE 4E
+	scall PlaySFX ; A31C4 (28:71c4) -> CD FE 4E
 	ld e, $00 ; A31C7 (28:71c7) -> 1E 00
 	ld hl, sp+$01 ; A31C9 (28:71c9) -> F8 01
 	ld a, [hl] ; A31CB (28:71cb) -> 7E
-	call SetPersonVisibilityState_28 ; A31CC (28:71cc) -> CD 3D 41
+	scall SetPersonVisibilityState ; A31CC (28:71cc) -> CD 3D 41
 	ld e, $01 ; A31CF (28:71cf) -> 1E 01
 	ld hl, $00c9 ; A31D1 (28:71d1) -> 21 C9 00
-	call EventFlagAction_28 ; A31D4 (28:71d4) -> CD 1B 46
+	scall EventFlagAction ; A31D4 (28:71d4) -> CD 1B 46
 	ld hl, $00c8 ; A31D7 (28:71d7) -> 21 C8 00
-	call CheckEventFlag_28 ; A31DA (28:71da) -> CD 2E 46
+	scall CheckEventFlag ; A31DA (28:71da) -> CD 2E 46
 	cp $01 ; A31DD (28:71dd) -> FE 01
 	jp nz, .asm_a31f5 ; A31DF (28:71df) -> C2 F5 71
 	ld hl, $00ca ; A31E2 (28:71e2) -> 21 CA 00
-	call CheckEventFlag_28 ; A31E5 (28:71e5) -> CD 2E 46
+	scall CheckEventFlag ; A31E5 (28:71e5) -> CD 2E 46
 	cp $01 ; A31E8 (28:71e8) -> FE 01
 	jp nz, .asm_a31f5 ; A31EA (28:71ea) -> C2 F5 71
 	ld e, $01 ; A31ED (28:71ed) -> 1E 01
 	ld hl, $00d1 ; A31EF (28:71ef) -> 21 D1 00
-	call EventFlagAction_28 ; A31F2 (28:71f2) -> CD 1B 46
+	scall EventFlagAction ; A31F2 (28:71f2) -> CD 1B 46
 .asm_a31f5:
 	pop bc ; A31F5 (28:71f5) -> C1
 	ret  ; A31F6 (28:71f6) -> C9
@@ -2926,7 +2926,7 @@ Func_a31f7:
 	jp nz, .asm_a3255 ; A3200 (28:7200) -> C2 55 72
 	ld hl, sp+$01 ; A3203 (28:7203) -> F8 01
 	ld a, [hl] ; A3205 (28:7205) -> 7E
-	call Func_80bde_28 ; A3206 (28:7206) -> CD DE 4B
+	scall Func_80bde ; A3206 (28:7206) -> CD DE 4B
 	cp $01 ; A3209 (28:7209) -> FE 01
 	jp nz, .asm_a3213 ; A320B (28:720b) -> C2 13 72
 	ld a, $01 ; A320E (28:720e) -> 3E 01
@@ -2937,84 +2937,242 @@ Func_a31f7:
 	ld e, $03 ; A3216 (28:7216) -> 1E 03
 	ld hl, sp+$01 ; A3218 (28:7218) -> F8 01
 	ld a, [hl] ; A321A (28:721a) -> 7E
-	call CheckObjectsOccupyingSameTile_28 ; A321B (28:721b) -> CD E9 40
+	scall CheckObjectsOccupyingSameTile ; A321B (28:721b) -> CD E9 40
 	or a ; A321E (28:721e) -> B7
 	jp z, .asm_a3255 ; A321F (28:721f) -> CA 55 72
 	ld a, $2b ; A3222 (28:7222) -> 3E 2B
-	call PlaySFX_28 ; A3224 (28:7224) -> CD FE 4E
+	scall PlaySFX ; A3224 (28:7224) -> CD FE 4E
 	ld e, $00 ; A3227 (28:7227) -> 1E 00
 	ld hl, sp+$01 ; A3229 (28:7229) -> F8 01
 	ld a, [hl] ; A322B (28:722b) -> 7E
-	call SetPersonVisibilityState_28 ; A322C (28:722c) -> CD 3D 41
+	scall SetPersonVisibilityState ; A322C (28:722c) -> CD 3D 41
 	ld e, $01 ; A322F (28:722f) -> 1E 01
 	ld hl, $00ca ; A3231 (28:7231) -> 21 CA 00
-	call EventFlagAction_28 ; A3234 (28:7234) -> CD 1B 46
+	scall EventFlagAction ; A3234 (28:7234) -> CD 1B 46
 	ld hl, $00c8 ; A3237 (28:7237) -> 21 C8 00
-	call CheckEventFlag_28 ; A323A (28:723a) -> CD 2E 46
+	scall CheckEventFlag ; A323A (28:723a) -> CD 2E 46
 	cp $01 ; A323D (28:723d) -> FE 01
 	jp nz, .asm_a3255 ; A323F (28:723f) -> C2 55 72
 	ld hl, $00c9 ; A3242 (28:7242) -> 21 C9 00
-	call CheckEventFlag_28 ; A3245 (28:7245) -> CD 2E 46
+	scall CheckEventFlag ; A3245 (28:7245) -> CD 2E 46
 	cp $01 ; A3248 (28:7248) -> FE 01
 	jp nz, .asm_a3255 ; A324A (28:724a) -> C2 55 72
 	ld e, $01 ; A324D (28:724d) -> 1E 01
 	ld hl, $00d1 ; A324F (28:724f) -> 21 D1 00
-	call EventFlagAction_28 ; A3252 (28:7252) -> CD 1B 46
+	scall EventFlagAction ; A3252 (28:7252) -> CD 1B 46
 .asm_a3255:
 	pop bc ; A3255 (28:7255) -> C1
 	ret  ; A3256 (28:7256) -> C9
 
 Data_a3257:
+	warpdef $0b, $0c, $01, $01, MAP_19_30, $0b, $0c, $0a, $0c, $2e
+	warpdef $0e, $0c, $01, $01, MAP_19_32, $0e, $0c, $0d, $0c, $2e
 
+Data_a326d:
 IF DEF(SUN)
-	db $0b, $0c, $01, $01, $13, $1e
-	db $0b, $0c, $0a, $0c, $2e, $0e, $0c, $01, $01, $13, $20, $0e, $0c, $0d, $0c, $2e
-	db $00, $03, $0e, $0b, $5f, $13, $16, $77, $05, $06, $00, $03, $0a, $00, $00, $03
-	db $0e, $0b, $50, $13, $16, $77, $14, $14, $00, $0c, $09, $00, $00, $03, $0e, $0b
-	db $34, $14, $17, $18, $17, $05, $1e, $04, $08, $00, $1b, $04, $01, $06, $01, $01
-	db $02, $04, $00, $28, $39, $73, $00, $00, $1b, $04, $04, $09, $01, $01, $02, $04
-	db $00, $28, $99, $73, $00, $00, $1b, $04, $07, $06, $01, $01, $02, $04, $00, $28
-	db $f9, $73, $00, $00, $ff, $00, $04, $06, $01, $01, $00, $04, $01, $28, $00, $00
-	db $00, $00
+	wildbot $00, $03, $0e, $0b, $5f, $13, $16, $77, $05, $06, $00, $03, $0a, $00
+	wildbot $00, $03, $0e, $0b, $50, $13, $16, $77, $14, $14, $00, $0c, $09, $00
+	wildbot $00, $03, $0e, $0b, $34, $14, $17, $18, $17, $05, $1e, $04, $08, $00
 ELIF DEF(STAR)
-	db $0b, $0c, $01, $01, $13, $1e
-	db $0b, $0c, $0a, $0c, $2e, $0e, $0c, $01, $01, $13, $20, $0e, $0c, $0d, $0c, $2e
-	db $00, $03, $0e, $0b, $50, $13, $16, $77, $14, $14, $00, $0c, $0a, $00, $00, $03
-	db $0e, $0b, $57, $13, $16, $46, $1f, $17, $11, $0c, $09, $00, $00, $03, $0e, $0b
-	db $26, $14, $17, $5b, $01, $01, $00, $04, $08, $00, $1b, $04, $01, $06, $01, $01
-	db $02, $04, $00, $28, $7f, $73, $00, $00, $1b, $04, $04, $09, $01, $01, $02, $04
-	db $00, $28, $df, $73, $00, $00, $1b, $04, $07, $06, $01, $01, $02, $04, $00, $28
-	db $3f, $74, $00, $00, $ff, $00, $04, $06, $01, $01, $00, $04, $01, $28, $00, $00
-	db $00, $00
+	wildbot $00, $03, $0e, $0b, $50, $13, $16, $77, $14, $14, $00, $0c, $0a, $00
+	wildbot $00, $03, $0e, $0b, $57, $13, $16, $46, $1f, $17, $11, $0c, $09, $00
+	wildbot $00, $03, $0e, $0b, $26, $14, $17, $5b, $01, $01, $00, $04, $08, $00
 ENDC
 
+Data_a3297:
+	person_event $1b, $04, $01, $06, $01, $01, $02, $04, $00, Func_a3339, NULL
+	person_event $1b, $04, $04, $09, $01, $01, $02, $04, $00, Func_a3399, NULL
+	person_event $1b, $04, $07, $06, $01, $01, $02, $04, $00, Func_a33f9, NULL
+
+Data_a32c1:
+	person_event $ff, $00, $04, $06, $01, $01, $00, $04, $01, NULL, NULL
+
 Func_a32cf:: ; a32cf
+	ld e, $02 ; A32CF (28:72cf) -> 1E 02
+	ld hl, Data_a3257 ; A32D1 (28:72d1) -> 21 57 72
+	scall LoadWarps ; A32D4 (28:72d4) -> CD 3A 40
+	ld a, $03 ; A32D7 (28:72d7) -> 3E 03
+	scall Func_80d01 ; A32D9 (28:72d9) -> CD 01 4D
+	ld e, $03 ; A32DC (28:72dc) -> 1E 03
+	ld hl, Data_a326d ; A32DE (28:72de) -> 21 6D 72
+	scall LoadEncounters ; A32E1 (28:72e1) -> CD 24 4D
+	ld a, $08 ; A32E4 (28:72e4) -> 3E 08
+	scall PlayMusic ; A32E6 (28:72e6) -> CD E6 4E
+	ld hl, $00cb ; A32E9 (28:72e9) -> 21 CB 00
+	scall CheckEventFlag ; A32EC (28:72ec) -> CD 2E 46
+	or a ; A32EF (28:72ef) -> B7
+	jp z, .asm_a3307 ; A32F0 (28:72f0) -> CA 07 73
+	ld hl, $00cc ; A32F3 (28:72f3) -> 21 CC 00
+	scall CheckEventFlag ; A32F6 (28:72f6) -> CD 2E 46
+	or a ; A32F9 (28:72f9) -> B7
+	jp z, .asm_a3307 ; A32FA (28:72fa) -> CA 07 73
+	ld hl, $00cd ; A32FD (28:72fd) -> 21 CD 00
+	scall CheckEventFlag ; A3300 (28:7300) -> CD 2E 46
+	or a ; A3303 (28:7303) -> B7
+	jp nz, .asm_a3327 ; A3304 (28:7304) -> C2 27 73
+.asm_a3307:
+	ld e, $00 ; A3307 (28:7307) -> 1E 00
+	ld hl, $00cb ; A3309 (28:7309) -> 21 CB 00
+	scall EventFlagAction ; A330C (28:730c) -> CD 1B 46
+	ld e, $00 ; A330F (28:730f) -> 1E 00
+	ld hl, $00cc ; A3311 (28:7311) -> 21 CC 00
+	scall EventFlagAction ; A3314 (28:7314) -> CD 1B 46
+	ld e, $00 ; A3317 (28:7317) -> 1E 00
+	ld hl, $00cd ; A3319 (28:7319) -> 21 CD 00
+	scall EventFlagAction ; A331C (28:731c) -> CD 1B 46
+	ld e, $03 ; A331F (28:731f) -> 1E 03
+	ld hl, Data_a3297 ; A3321 (28:7321) -> 21 97 72
+	scall LoadMapObjects ; A3324 (28:7324) -> CD FB 40
+.asm_a3327:
+	ld e, $01 ; A3327 (28:7327) -> 1E 01
+	ld hl, Data_a32c1 ; A3329 (28:7329) -> 21 C1 72
+	scall LoadMapObjects ; A332C (28:732c) -> CD FB 40
+	scall Func_8001c ; A332F (28:732f) -> CD 1C 40
+	ld hl, $03ee ; A3332 (28:7332) -> 21 EE 03
+	scall LandmarkSign ; A3335 (28:7335) -> CD 72 4F
+	ret  ; A3338 (28:7338) -> C9
+Func_a3339:
+	push af ; A3339 (28:7339) -> F5
+	ld a, e ; A333A (28:733a) -> 7B
+	cp $03 ; A333B (28:733b) -> FE 03
+	jp z, .asm_a3358 ; A333D (28:733d) -> CA 58 73
+	cp $01 ; A3340 (28:7340) -> FE 01
+	jp nz, .asm_a3397 ; A3342 (28:7342) -> C2 97 73
+	ld hl, sp+$01 ; A3345 (28:7345) -> F8 01
+	ld a, [hl] ; A3347 (28:7347) -> 7E
+	scall Func_80bde ; A3348 (28:7348) -> CD DE 4B
+	cp $01 ; A334B (28:734b) -> FE 01
+	jp nz, .asm_a3355 ; A334D (28:734d) -> C2 55 73
+	ld a, $01 ; A3350 (28:7350) -> 3E 01
+	ld [wc7c4], a ; A3352 (28:7352) -> EA C4 C7
+.asm_a3355:
+	jp .asm_a3397 ; A3355 (28:7355) -> C3 97 73
+.asm_a3358:
+	ld e, $03 ; A3358 (28:7358) -> 1E 03
+	ld hl, sp+$01 ; A335A (28:735a) -> F8 01
+	ld a, [hl] ; A335C (28:735c) -> 7E
+	scall CheckObjectsOccupyingSameTile ; A335D (28:735d) -> CD E9 40
+	or a ; A3360 (28:7360) -> B7
+	jp z, .asm_a3397 ; A3361 (28:7361) -> CA 97 73
+	ld a, $2b ; A3364 (28:7364) -> 3E 2B
+	scall PlaySFX ; A3366 (28:7366) -> CD FE 4E
+	ld e, $00 ; A3369 (28:7369) -> 1E 00
+	ld hl, sp+$01 ; A336B (28:736b) -> F8 01
+	ld a, [hl] ; A336D (28:736d) -> 7E
+	scall SetPersonVisibilityState ; A336E (28:736e) -> CD 3D 41
+	ld e, $01 ; A3371 (28:7371) -> 1E 01
+	ld hl, $00cb ; A3373 (28:7373) -> 21 CB 00
+	scall EventFlagAction ; A3376 (28:7376) -> CD 1B 46
+	ld hl, $00cc ; A3379 (28:7379) -> 21 CC 00
+	scall CheckEventFlag ; A337C (28:737c) -> CD 2E 46
+	cp $01 ; A337F (28:737f) -> FE 01
+	jp nz, .asm_a3397 ; A3381 (28:7381) -> C2 97 73
+	ld hl, $00cd ; A3384 (28:7384) -> 21 CD 00
+	scall CheckEventFlag ; A3387 (28:7387) -> CD 2E 46
+	cp $01 ; A338A (28:738a) -> FE 01
+	jp nz, .asm_a3397 ; A338C (28:738c) -> C2 97 73
+	ld e, $01 ; A338F (28:738f) -> 1E 01
+	ld hl, $00d2 ; A3391 (28:7391) -> 21 D2 00
+	scall EventFlagAction ; A3394 (28:7394) -> CD 1B 46
+.asm_a3397:
+	pop bc ; A3397 (28:7397) -> C1
+	ret  ; A3398 (28:7398) -> C9
+Func_a3399:
+	push af ; A3399 (28:7399) -> F5
+	ld a, e ; A339A (28:739a) -> 7B
+	cp $03 ; A339B (28:739b) -> FE 03
+	jp z, .asm_a33b8 ; A339D (28:739d) -> CA B8 73
+	cp $01 ; A33A0 (28:73a0) -> FE 01
+	jp nz, .asm_a33f7 ; A33A2 (28:73a2) -> C2 F7 73
+	ld hl, sp+$01 ; A33A5 (28:73a5) -> F8 01
+	ld a, [hl] ; A33A7 (28:73a7) -> 7E
+	scall Func_80bde ; A33A8 (28:73a8) -> CD DE 4B
+	cp $01 ; A33AB (28:73ab) -> FE 01
+	jp nz, .asm_a33b5 ; A33AD (28:73ad) -> C2 B5 73
+	ld a, $01 ; A33B0 (28:73b0) -> 3E 01
+	ld [wc7c4], a ; A33B2 (28:73b2) -> EA C4 C7
+.asm_a33b5:
+	jp .asm_a33f7 ; A33B5 (28:73b5) -> C3 F7 73
+.asm_a33b8:
+	ld e, $03 ; A33B8 (28:73b8) -> 1E 03
+	ld hl, sp+$01 ; A33BA (28:73ba) -> F8 01
+	ld a, [hl] ; A33BC (28:73bc) -> 7E
+	scall CheckObjectsOccupyingSameTile ; A33BD (28:73bd) -> CD E9 40
+	or a ; A33C0 (28:73c0) -> B7
+	jp z, .asm_a33f7 ; A33C1 (28:73c1) -> CA F7 73
+	ld a, $2b ; A33C4 (28:73c4) -> 3E 2B
+	scall PlaySFX ; A33C6 (28:73c6) -> CD FE 4E
+	ld e, $00 ; A33C9 (28:73c9) -> 1E 00
+	ld hl, sp+$01 ; A33CB (28:73cb) -> F8 01
+	ld a, [hl] ; A33CD (28:73cd) -> 7E
+	scall SetPersonVisibilityState ; A33CE (28:73ce) -> CD 3D 41
+	ld e, $01 ; A33D1 (28:73d1) -> 1E 01
+	ld hl, $00cc ; A33D3 (28:73d3) -> 21 CC 00
+	scall EventFlagAction ; A33D6 (28:73d6) -> CD 1B 46
+	ld hl, $00cb ; A33D9 (28:73d9) -> 21 CB 00
+	scall CheckEventFlag ; A33DC (28:73dc) -> CD 2E 46
+	cp $01 ; A33DF (28:73df) -> FE 01
+	jp nz, .asm_a33f7 ; A33E1 (28:73e1) -> C2 F7 73
+	ld hl, $00cd ; A33E4 (28:73e4) -> 21 CD 00
+	scall CheckEventFlag ; A33E7 (28:73e7) -> CD 2E 46
+	cp $01 ; A33EA (28:73ea) -> FE 01
+	jp nz, .asm_a33f7 ; A33EC (28:73ec) -> C2 F7 73
+	ld e, $01 ; A33EF (28:73ef) -> 1E 01
+	ld hl, $00d2 ; A33F1 (28:73f1) -> 21 D2 00
+	scall EventFlagAction ; A33F4 (28:73f4) -> CD 1B 46
+.asm_a33f7:
+	pop bc ; A33F7 (28:73f7) -> C1
+	ret  ; A33F8 (28:73f8) -> C9
+Func_a33f9:
+	push af ; A33F9 (28:73f9) -> F5
+	ld a, e ; A33FA (28:73fa) -> 7B
+	cp $03 ; A33FB (28:73fb) -> FE 03
+	jp z, .asm_a3418 ; A33FD (28:73fd) -> CA 18 74
+	cp $01 ; A3400 (28:7400) -> FE 01
+	jp nz, .asm_a3457 ; A3402 (28:7402) -> C2 57 74
+	ld hl, sp+$01 ; A3405 (28:7405) -> F8 01
+	ld a, [hl] ; A3407 (28:7407) -> 7E
+	scall Func_80bde ; A3408 (28:7408) -> CD DE 4B
+	cp $01 ; A340B (28:740b) -> FE 01
+	jp nz, .asm_a3415 ; A340D (28:740d) -> C2 15 74
+	ld a, $01 ; A3410 (28:7410) -> 3E 01
+	ld [wc7c4], a ; A3412 (28:7412) -> EA C4 C7
+.asm_a3415:
+	jp .asm_a3457 ; A3415 (28:7415) -> C3 57 74
+.asm_a3418:
+	ld e, $03 ; A3418 (28:7418) -> 1E 03
+	ld hl, sp+$01 ; A341A (28:741a) -> F8 01
+	ld a, [hl] ; A341C (28:741c) -> 7E
+	scall CheckObjectsOccupyingSameTile ; A341D (28:741d) -> CD E9 40
+	or a ; A3420 (28:7420) -> B7
+	jp z, .asm_a3457 ; A3421 (28:7421) -> CA 57 74
+	ld a, $2b ; A3424 (28:7424) -> 3E 2B
+	scall PlaySFX ; A3426 (28:7426) -> CD FE 4E
+	ld e, $00 ; A3429 (28:7429) -> 1E 00
+	ld hl, sp+$01 ; A342B (28:742b) -> F8 01
+	ld a, [hl] ; A342D (28:742d) -> 7E
+	scall SetPersonVisibilityState ; A342E (28:742e) -> CD 3D 41
+	ld e, $01 ; A3431 (28:7431) -> 1E 01
+	ld hl, $00cd ; A3433 (28:7433) -> 21 CD 00
+	scall EventFlagAction ; A3436 (28:7436) -> CD 1B 46
+	ld hl, $00cb ; A3439 (28:7439) -> 21 CB 00
+	scall CheckEventFlag ; A343C (28:743c) -> CD 2E 46
+	cp $01 ; A343F (28:743f) -> FE 01
+	jp nz, .asm_a3457 ; A3441 (28:7441) -> C2 57 74
+	ld hl, $00cc ; A3444 (28:7444) -> 21 CC 00
+	scall CheckEventFlag ; A3447 (28:7447) -> CD 2E 46
+	cp $01 ; A344A (28:744a) -> FE 01
+	jp nz, .asm_a3457 ; A344C (28:744c) -> C2 57 74
+	ld e, $01 ; A344F (28:744f) -> 1E 01
+	ld hl, $00d2 ; A3451 (28:7451) -> 21 D2 00
+	scall EventFlagAction ; A3454 (28:7454) -> CD 1B 46
+.asm_a3457:
+	pop bc ; A3457 (28:7457) -> C1
+	ret  ; A3458 (28:7458) -> C9
+
+Data_a3459:
 IF DEF(SUN)
-	db $1e, $02, $21, $57, $72, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $03, $21
-	db $6d, $72, $cd, $24, $4d, $3e, $08, $cd, $e6, $4e, $21, $cb, $00, $cd, $2e, $46
-	db $b7, $ca, $07, $73, $21, $cc, $00, $cd, $2e, $46, $b7, $ca, $07, $73, $21, $cd
-	db $00, $cd, $2e, $46, $b7, $c2, $27, $73, $1e, $00, $21, $cb, $00, $cd, $1b, $46
-	db $1e, $00, $21, $cc, $00, $cd, $1b, $46, $1e, $00, $21, $cd, $00, $cd, $1b, $46
-	db $1e, $03, $21, $97, $72, $cd, $fb, $40, $1e, $01, $21, $c1, $72, $cd, $fb, $40
-	db $cd, $1c, $40, $21, $ee, $03, $cd, $72, $4f, $c9, $f5, $7b, $fe, $03, $ca, $58
-	db $73, $fe, $01, $c2, $97, $73, $f8, $01, $7e, $cd, $de, $4b, $fe, $01, $c2, $55
-	db $73, $3e, $01, $ea, $c4, $c7, $c3, $97, $73, $1e, $03, $f8, $01, $7e, $cd, $e9
-	db $40, $b7, $ca, $97, $73, $3e, $2b, $cd, $fe, $4e, $1e, $00, $f8, $01, $7e, $cd
-	db $3d, $41, $1e, $01, $21, $cb, $00, $cd, $1b, $46, $21, $cc, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $97, $73, $21, $cd, $00, $cd, $2e, $46, $fe, $01, $c2, $97, $73
-	db $1e, $01, $21, $d2, $00, $cd, $1b, $46, $c1, $c9, $f5, $7b, $fe, $03, $ca, $b8
-	db $73, $fe, $01, $c2, $f7, $73, $f8, $01, $7e, $cd, $de, $4b, $fe, $01, $c2, $b5
-	db $73, $3e, $01, $ea, $c4, $c7, $c3, $f7, $73, $1e, $03, $f8, $01, $7e, $cd, $e9
-	db $40, $b7, $ca, $f7, $73, $3e, $2b, $cd, $fe, $4e, $1e, $00, $f8, $01, $7e, $cd
-	db $3d, $41, $1e, $01, $21, $cc, $00, $cd, $1b, $46, $21, $cb, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $f7, $73, $21, $cd, $00, $cd, $2e, $46, $fe, $01, $c2, $f7, $73
-	db $1e, $01, $21, $d2, $00, $cd, $1b, $46, $c1, $c9, $f5, $7b, $fe, $03, $ca, $18
-	db $74, $fe, $01, $c2, $57, $74, $f8, $01, $7e, $cd, $de, $4b, $fe, $01, $c2, $15
-	db $74, $3e, $01, $ea, $c4, $c7, $c3, $57, $74, $1e, $03, $f8, $01, $7e, $cd, $e9
-	db $40, $b7, $ca, $57, $74, $3e, $2b, $cd, $fe, $4e, $1e, $00, $f8, $01, $7e, $cd
-	db $3d, $41, $1e, $01, $21, $cd, $00, $cd, $1b, $46, $21, $cb, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $57, $74, $21, $cc, $00, $cd, $2e, $46, $fe, $01, $c2, $57, $74
-	db $1e, $01, $21, $d2, $00, $cd, $1b, $46, $c1, $c9, $0b, $0c, $01, $01, $13, $21
+	db $0b, $0c, $01, $01, $13, $21
 	db $0b, $11, $0a, $11, $2e, $0e, $0c, $01, $01, $13, $1f, $0e, $0c, $0d, $0c, $2e
 	db $00, $03, $0e, $0b, $5f, $13, $16, $77, $05, $06, $00, $03, $0a, $00, $00, $03
 	db $0e, $0b, $50, $13, $16, $77, $14, $14, $00, $0c, $09, $00, $00, $03, $0e, $0b
@@ -3024,31 +3182,7 @@ IF DEF(SUN)
 	db $fb, $75, $00, $00, $ff, $00, $04, $06, $01, $01, $00, $04, $01, $28, $00, $00
 	db $00, $00
 ELIF DEF(STAR)
-	db $1e, $02, $21, $9d, $72, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $03, $21
-	db $b3, $72, $cd, $24, $4d, $3e, $08, $cd, $e6, $4e, $21, $cb, $00, $cd, $2e, $46
-	db $b7, $ca, $4d, $73, $21, $cc, $00, $cd, $2e, $46, $b7, $ca, $4d, $73, $21, $cd
-	db $00, $cd, $2e, $46, $b7, $c2, $6d, $73, $1e, $00, $21, $cb, $00, $cd, $1b, $46
-	db $1e, $00, $21, $cc, $00, $cd, $1b, $46, $1e, $00, $21, $cd, $00, $cd, $1b, $46
-	db $1e, $03, $21, $dd, $72, $cd, $fb, $40, $1e, $01, $21, $07, $73, $cd, $fb, $40
-	db $cd, $1c, $40, $21, $ee, $03, $cd, $72, $4f, $c9, $f5, $7b, $fe, $03, $ca, $9e
-	db $73, $fe, $01, $c2, $dd, $73, $f8, $01, $7e, $cd, $de, $4b, $fe, $01, $c2, $9b
-	db $73, $3e, $01, $ea, $c4, $c7, $c3, $dd, $73, $1e, $03, $f8, $01, $7e, $cd, $e9
-	db $40, $b7, $ca, $dd, $73, $3e, $2b, $cd, $fe, $4e, $1e, $00, $f8, $01, $7e, $cd
-	db $3d, $41, $1e, $01, $21, $cb, $00, $cd, $1b, $46, $21, $cc, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $dd, $73, $21, $cd, $00, $cd, $2e, $46, $fe, $01, $c2, $dd, $73
-	db $1e, $01, $21, $d2, $00, $cd, $1b, $46, $c1, $c9, $f5, $7b, $fe, $03, $ca, $fe
-	db $73, $fe, $01, $c2, $3d, $74, $f8, $01, $7e, $cd, $de, $4b, $fe, $01, $c2, $fb
-	db $73, $3e, $01, $ea, $c4, $c7, $c3, $3d, $74, $1e, $03, $f8, $01, $7e, $cd, $e9
-	db $40, $b7, $ca, $3d, $74, $3e, $2b, $cd, $fe, $4e, $1e, $00, $f8, $01, $7e, $cd
-	db $3d, $41, $1e, $01, $21, $cc, $00, $cd, $1b, $46, $21, $cb, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $3d, $74, $21, $cd, $00, $cd, $2e, $46, $fe, $01, $c2, $3d, $74
-	db $1e, $01, $21, $d2, $00, $cd, $1b, $46, $c1, $c9, $f5, $7b, $fe, $03, $ca, $5e
-	db $74, $fe, $01, $c2, $9d, $74, $f8, $01, $7e, $cd, $de, $4b, $fe, $01, $c2, $5b
-	db $74, $3e, $01, $ea, $c4, $c7, $c3, $9d, $74, $1e, $03, $f8, $01, $7e, $cd, $e9
-	db $40, $b7, $ca, $9d, $74, $3e, $2b, $cd, $fe, $4e, $1e, $00, $f8, $01, $7e, $cd
-	db $3d, $41, $1e, $01, $21, $cd, $00, $cd, $1b, $46, $21, $cb, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $9d, $74, $21, $cc, $00, $cd, $2e, $46, $fe, $01, $c2, $9d, $74
-	db $1e, $01, $21, $d2, $00, $cd, $1b, $46, $c1, $c9, $0b, $0c, $01, $01, $13, $21
+	db $0b, $0c, $01, $01, $13, $21
 	db $0b, $11, $0a, $11, $2e, $0e, $0c, $01, $01, $13, $1f, $0e, $0c, $0d, $0c, $2e
 	db $00, $03, $0e, $0b, $50, $13, $16, $77, $14, $14, $00, $0c, $0a, $00, $00, $03
 	db $0e, $0b, $57, $13, $16, $46, $1f, $17, $11, $0c, $09, $00, $00, $03, $0e, $0b
