@@ -5,7 +5,7 @@ INCLUDE "macros/bank20.asm"
 SECTION "Bank 2b, 2", ROMX
 	script_library 2b_2
 
-placeholder:
+Data_ad3c9:
 IF DEF(SUN)
 	db $0e, $29, $01, $01, $ff, $ff, $ff, $ff, $ff
 	db $ff, $2e, $09, $06, $01, $01, $1b, $01, $12, $1c, $12, $1b, $2e, $05, $05, $10

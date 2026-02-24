@@ -6,92 +6,373 @@ SECTION "Bank 29, 2", ROMX
 	script_library 29_2
 
 Data_a6720:
-IF DEF(SUN)
-	db $13, $19, $01, $01, $16, $00, $09, $0f, $09, $0e, $2e, $10
-	db $08, $01, $01, $20, $07, $05, $09, $05, $08, $34, $14, $08, $01, $01, $20, $08
-	db $05, $09, $05, $08, $34, $16, $0f, $01, $01, $20, $05, $06, $0b, $06, $0a, $34
-	db $0b, $05, $01, $01, $20, $02, $01, $0a, $01, $09, $34, $19, $06, $01, $01, $20
-	db $00, $01, $05, $01, $04, $34, $1d, $06, $01, $01, $20, $00, $01, $05, $01, $04
-	db $34, $21, $06, $01, $01, $20, $00, $01, $05, $01, $04, $34, $08, $10, $01, $01
-	db $20, $00, $01, $05, $01, $04, $34, $0c, $10, $01, $01, $20, $00, $01, $05, $01
-	db $04, $34, $10, $10, $01, $01, $20, $00, $01, $05, $01, $04, $34, $20, $0e, $01
-	db $01, $20, $02, $01, $0a, $01, $09, $34, $f1, $01, $ff, $ff, $f0, $01, $ff, $ff
-	db $f5, $01, $ff, $ff, $f3, $01, $ff, $ff, $f6, $01, $ff, $ff, $f4, $01, $ff, $ff
-	db $f7, $01, $ff, $ff, $ff, $01, $ff, $ff, $72, $04, $ff, $ff, $c0, $02, $ff, $ff
-	db $02, $0c, $13, $14, $01, $01, $02, $04, $00, $29, $00, $00, $00, $00, $02, $04
-	db $24, $05, $01, $01, $00, $04, $00, $29, $87, $6a, $00, $00, $26, $04, $0c, $0a
-	db $01, $01, $01, $04, $00, $29, $cb, $5e, $a4, $67, $26, $04, $16, $14, $01, $01
-	db $00, $04, $00, $29, $cb, $5e, $a8, $67, $26, $04, $0c, $14, $01, $01, $01, $04
-	db $00, $29, $cb, $5e, $ac, $67, $26, $04, $21, $0a, $01, $01, $03, $04, $00, $29
-	db $cb, $5e, $b0, $67, $26, $04, $18, $0b, $01, $01, $00, $04, $00, $29, $cb, $5e
-	db $b4, $67, $27, $04, $1e, $13, $01, $01, $00, $04, $00, $29, $cb, $5e, $b8, $67
-	db $26, $04, $09, $04, $01, $01, $00, $04, $00, $29, $cb, $5e, $bc, $67, $26, $04
-	db $06, $10, $01, $01, $03, $04, $00, $29, $cb, $5e, $c0, $67, $26, $04, $1a, $10
-	db $01, $01, $02, $04, $00, $29, $cb, $5e, $c4, $67, $ff, $00, $14, $18, $01, $01
-	db $00, $04, $00, $29, $cb, $5e, $c8, $67, $ff, $00, $12, $18, $01, $01, $00, $04
-	db $00, $29, $cb, $5e, $c8, $67
-ELIF DEF(STAR)
-	db $13, $19, $01, $01, $16, $00, $09, $0f, $09, $0e, $2e, $10
-	db $08, $01, $01, $20, $07, $05, $09, $05, $08, $34, $14, $08, $01, $01, $20, $08
-	db $05, $09, $05, $08, $34, $16, $0f, $01, $01, $20, $05, $06, $0b, $06, $0a, $34
-	db $0b, $05, $01, $01, $20, $02, $01, $0a, $01, $09, $34, $19, $06, $01, $01, $20
-	db $00, $01, $05, $01, $04, $34, $1d, $06, $01, $01, $20, $00, $01, $05, $01, $04
-	db $34, $21, $06, $01, $01, $20, $00, $01, $05, $01, $04, $34, $08, $10, $01, $01
-	db $20, $00, $01, $05, $01, $04, $34, $0c, $10, $01, $01, $20, $00, $01, $05, $01
-	db $04, $34, $10, $10, $01, $01, $20, $00, $01, $05, $01, $04, $34, $20, $0e, $01
-	db $01, $20, $02, $01, $0a, $01, $09, $34, $f1, $01, $ff, $ff, $f0, $01, $ff, $ff
-	db $f5, $01, $ff, $ff, $f3, $01, $ff, $ff, $f6, $01, $ff, $ff, $f4, $01, $ff, $ff
-	db $f7, $01, $ff, $ff, $ff, $01, $ff, $ff, $72, $04, $ff, $ff, $c0, $02, $ff, $ff
-	db $02, $0c, $13, $14, $01, $01, $02, $04, $00, $29, $00, $00, $00, $00, $02, $04
-	db $24, $05, $01, $01, $00, $04, $00, $29, $87, $6a, $00, $00, $26, $04, $0c, $0a
-	db $01, $01, $01, $04, $00, $29, $cb, $5e, $a4, $67, $26, $04, $16, $14, $01, $01
-	db $00, $04, $00, $29, $cb, $5e, $a8, $67, $26, $04, $0c, $14, $01, $01, $01, $04
-	db $00, $29, $cb, $5e, $ac, $67, $26, $04, $21, $0a, $01, $01, $03, $04, $00, $29
-	db $cb, $5e, $b0, $67, $26, $04, $18, $0b, $01, $01, $00, $04, $00, $29, $cb, $5e
-	db $b4, $67, $27, $04, $1e, $13, $01, $01, $00, $04, $00, $29, $cb, $5e, $b8, $67
-	db $26, $04, $09, $04, $01, $01, $00, $04, $00, $29, $cb, $5e, $bc, $67, $26, $04
-	db $06, $10, $01, $01, $03, $04, $00, $29, $cb, $5e, $c0, $67, $26, $04, $1a, $10
-	db $01, $01, $02, $04, $00, $29, $cb, $5e, $c4, $67, $ff, $00, $14, $18, $01, $01
-	db $00, $04, $00, $29, $cb, $5e, $c8, $67, $ff, $00, $12, $18, $01, $01, $00, $04
-	db $00, $29, $cb, $5e, $c8, $67
-ENDC
+	warpdef $13, $19, $01, $01, MAP_22_00, $09, $0f, $09, $0e, $2e
+	warpdef $10, $08, $01, $01, MAP_32_07, $05, $09, $05, $08, $34
+	warpdef $14, $08, $01, $01, MAP_32_08, $05, $09, $05, $08, $34
+	warpdef $16, $0f, $01, $01, MAP_32_05, $06, $0b, $06, $0a, $34
+	warpdef $0b, $05, $01, $01, MAP_32_02, $01, $0a, $01, $09, $34
+	warpdef $19, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
+	warpdef $1d, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
+	warpdef $21, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
+	warpdef $08, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
+	warpdef $0c, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
+	warpdef $10, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
+	warpdef $20, $0e, $01, $01, MAP_32_02, $01, $0a, $01, $09, $34
+
+Data_a67a4:
+	dw $1f1
+	dw -1
+
+Data_a67a8:
+	dw $1f0
+	dw -1
+
+Data_a67ac:
+	dw $1f5
+	dw -1
+
+Data_a67b0:
+	dw $1f3
+	dw -1
+
+Data_a67b4:
+	dw $1f6
+	dw -1
+
+Data_a67b8:
+	dw $1f4
+	dw -1
+
+Data_a67bc:
+	dw $1f7
+	dw -1
+
+Data_a67c0:
+	dw $1ff
+	dw -1
+
+Data_a67c4:
+	dw $472
+	dw -1
+
+Data_a67c8:
+	dw $2c0
+	dw -1
+
+Data_a67cc:
+	person_event $02, $0c, $13, $14, $01, $01, $02, $04, $00, NULL, NULL
+
+Data_a67da:
+	person_event $02, $04, $24, $05, $01, $01, $00, $04, $00, Func_a6a87, NULL
+	person_event $26, $04, $0c, $0a, $01, $01, $01, $04, $00, PrintTextFacePlayer_29_2, Data_a67a4
+	person_event $26, $04, $16, $14, $01, $01, $00, $04, $00, PrintTextFacePlayer_29_2, Data_a67a8
+	person_event $26, $04, $0c, $14, $01, $01, $01, $04, $00, PrintTextFacePlayer_29_2, Data_a67ac
+	person_event $26, $04, $21, $0a, $01, $01, $03, $04, $00, PrintTextFacePlayer_29_2, Data_a67b0
+	person_event $26, $04, $18, $0b, $01, $01, $00, $04, $00, PrintTextFacePlayer_29_2, Data_a67b4
+	person_event $27, $04, $1e, $13, $01, $01, $00, $04, $00, PrintTextFacePlayer_29_2, Data_a67b8
+	person_event $26, $04, $09, $04, $01, $01, $00, $04, $00, PrintTextFacePlayer_29_2, Data_a67bc
+	person_event $26, $04, $06, $10, $01, $01, $03, $04, $00, PrintTextFacePlayer_29_2, Data_a67c0
+	person_event $26, $04, $1a, $10, $01, $01, $02, $04, $00, PrintTextFacePlayer_29_2, Data_a67c4
+
+Data_a6866:
+	person_event $ff, $00, $14, $18, $01, $01, $00, $04, $00, PrintTextFacePlayer_29_2, Data_a67c8
+	person_event $ff, $00, $12, $18, $01, $01, $00, $04, $00, PrintTextFacePlayer_29_2, Data_a67c8
 
 Func_a6882:: ; a6882
-	db $2e, $00, $e5, $0e, $02, $1e, $03, $3e, $08, $cd, $90, $65, $c1, $2e, $00, $e5
-	db $0e, $02, $1e, $03, $3e, $0d, $cd, $90, $65, $c1, $2e, $00, $e5, $0e, $09, $1e
-	db $04, $3e, $0f, $cd, $90, $65, $c1, $2e, $00, $e5, $0e, $02, $1e, $04, $3e, $23
-	db $cd, $90, $65, $c1, $2e, $00, $e5, $0e, $03, $1e, $0b, $3e, $05, $cd, $90, $65
-	db $c1, $2e, $01, $e5, $0e, $08, $1e, $04, $3e, $07, $cd, $90, $65, $c1, $2e, $01
-	db $e5, $0e, $09, $1e, $0c, $3e, $04, $cd, $90, $65, $c1, $2e, $01, $e5, $0e, $01
-	db $1e, $11, $3e, $06, $cd, $90, $65, $c1, $2e, $01, $e5, $0e, $01, $1e, $06, $3e
-	db $09, $cd, $90, $65, $c1, $2e, $01, $e5, $0e, $01, $1e, $06, $3e, $0c, $cd, $90
-	db $65, $c1, $2e, $01, $e5, $0e, $01, $1e, $04, $3e, $0e, $cd, $90, $65, $c1, $2e
-	db $01, $e5, $0e, $01, $1e, $09, $3e, $0e, $cd, $90, $65, $c1, $2e, $01, $e5, $0e
-	db $01, $1e, $11, $3e, $11, $cd, $90, $65, $c1, $2e, $01, $e5, $0e, $01, $1e, $10
-	db $3e, $14, $cd, $90, $65, $c1, $2e, $01, $e5, $0e, $01, $1e, $09, $3e, $15, $cd
-	db $90, $65, $c1, $2e, $01, $e5, $0e, $01, $1e, $07, $3e, $17, $cd, $90, $65, $c1
-	db $2e, $01, $e5, $0e, $01, $1e, $10, $3e, $1b, $cd, $90, $65, $c1, $2e, $01, $e5
-	db $0e, $01, $1e, $0f, $3e, $1e, $cd, $90, $65, $c1, $2e, $01, $e5, $0e, $01, $1e
-	db $0f, $3e, $21, $cd, $90, $65, $c1, $2e, $01, $e5, $0e, $01, $1e, $07, $3e, $22
-	db $cd, $90, $65, $c1, $2e, $01, $e5, $0e, $05, $1e, $0e, $3e, $23, $cd, $90, $65
-	db $c1, $2e, $01, $e5, $0e, $06, $1e, $05, $3e, $24, $cd, $90, $65, $c1, $3e, $08
-	db $ea, $89, $c7, $1e, $0c, $21, $20, $67, $cd, $a6, $56, $21, $2d, $00, $cd, $9a
-	db $5c, $b7, $c2, $d9, $69, $1e, $01, $21, $cc, $67, $cd, $67, $57, $1e, $02, $21
-	db $66, $68, $cd, $67, $57, $af, $cd, $52, $65, $3e, $01, $cd, $32, $63, $cd, $88
-	db $56, $cd, $09, $6a, $c3, $f6, $69, $1e, $0a, $21, $da, $67, $cd, $67, $57, $1e
-	db $02, $21, $66, $68, $cd, $67, $57, $3e, $0a, $cd, $52, $65, $3e, $01, $cd, $32
-	db $63, $cd, $88, $56, $c9, $13, $17, $ff, $ff, $0e, $11, $10, $10, $ff, $ff, $13
-	db $13, $0e, $11, $10, $10, $ff, $ff, $0e, $01, $11, $f7, $69, $3e, $29, $cd, $aa
-	db $5c, $1e, $01, $af, $cd, $8a, $64, $1e, $01, $af, $cd, $8a, $64, $1e, $01, $af
-	db $cd, $8a, $64, $0e, $01, $1e, $01, $3e, $05, $cd, $e2, $57, $1e, $14, $3e, $13
-	db $cd, $50, $58, $3e, $28, $cd, $6a, $65, $cd, $41, $58, $cd, $f7, $57, $21, $02
-	db $01, $cd, $15, $5b, $af, $cd, $52, $65, $3e, $1b, $cd, $52, $65, $01, $fb, $69
-	db $1e, $29, $af, $cd, $63, $58, $cd, $78, $58, $21, $1e, $00, $cd, $fb, $5c, $1e
-	db $00, $af, $cd, $a9, $57, $1e, $01, $3e, $02, $cd, $8a, $64, $1e, $01, $3e, $02
-	db $cd, $8a, $64, $1e, $01, $3e, $02, $cd, $8a, $64, $0e, $01, $11, $01, $6a, $3e
-	db $29, $cd, $aa, $5c, $c9, $f5, $7b, $b7, $c2, $db, $6a, $af, $cd, $52, $65, $3e
-	db $28, $cd, $6a, $65, $0e, $01, $1e, $02, $3e, $03, $cd, $e2, $57, $1e, $00, $af
-	db $cd, $a9, $57, $cd, $41, $58, $3e, $28, $cd, $6a, $65, $0e, $01, $1e, $01, $3e
-	db $03, $cd, $e2, $57, $cd, $41, $58, $1e, $01, $af, $cd, $a9, $57, $cd, $f7, $57
-	db $f8, $01, $7e, $cd, $b7, $5a, $1e, $01, $21, $2e, $00, $cd, $87, $5c, $21, $08
-	db $01, $cd, $15, $5b, $3e, $0a, $cd, $52, $65, $c1, $c9
+	ld l, $00
+	push hl
+	ld c, $02
+	ld e, $03
+	ld a, $08
+	scall Func_80f24
+	pop bc
+	ld l, $00
+	push hl
+	ld c, $02
+	ld e, $03
+	ld a, $0d
+	scall Func_80f24
+	pop bc
+	ld l, $00
+	push hl
+	ld c, $09
+	ld e, $04
+	ld a, $0f
+	scall Func_80f24
+	pop bc
+	ld l, $00
+	push hl
+	ld c, $02
+	ld e, $04
+	ld a, $23
+	scall Func_80f24
+	pop bc
+	ld l, $00
+	push hl
+	ld c, $03
+	ld e, $0b
+	ld a, $05
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $08
+	ld e, $04
+	ld a, $07
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $09
+	ld e, $0c
+	ld a, $04
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $11
+	ld a, $06
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $06
+	ld a, $09
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $06
+	ld a, $0c
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $04
+	ld a, $0e
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $09
+	ld a, $0e
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $11
+	ld a, $11
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $10
+	ld a, $14
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $09
+	ld a, $15
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $07
+	ld a, $17
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $10
+	ld a, $1b
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $0f
+	ld a, $1e
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $0f
+	ld a, $21
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $01
+	ld e, $07
+	ld a, $22
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $05
+	ld e, $0e
+	ld a, $23
+	scall Func_80f24
+	pop bc
+	ld l, $01
+	push hl
+	ld c, $06
+	ld e, $05
+	ld a, $24
+	scall Func_80f24
+	pop bc
+	ld a, $08
+	ld [wc789], a
+	ld e, $0c
+	ld hl, Data_a6720
+	scall LoadWarps
+	ld hl, $002d
+	scall CheckEventFlag
+	or a
+	jp nz, .asm_a69d9
+	ld e, $01
+	ld hl, Data_a67cc
+	scall LoadMapObjects
+	ld e, $02
+	ld hl, Data_a6866
+	scall LoadMapObjects
+	xor a
+	scall PlayMusic
+	ld a, $01
+	scall LoadPlayerSprite
+	scall Func_8001c
+	call Func_a6a09
+	jp .asm_a69f6
+.asm_a69d9:
+	ld e, $0a
+	ld hl, Data_a67da
+	scall LoadMapObjects
+	ld e, $02
+	ld hl, Data_a6866
+	scall LoadMapObjects
+	ld a, $0a
+	scall PlayMusic
+	ld a, $01
+	scall LoadPlayerSprite
+	scall Func_8001c
+.asm_a69f6:
+	ret
+
+Data_a69f7:
+	db $13, $17, $ff, $ff
+
+Data_a69fb:
+	db $0e, $11, $10, $10, $ff, $ff
+
+Data_a6a01:
+	db $13, $13, $0e, $11, $10, $10, $ff, $ff
+
+Func_a6a09:
+	ld c, $01
+	ld de, Data_a69f7
+	ld a, $29
+	scall MovePlayer
+	ld e, $01
+	xor a
+	scall PlayerStep
+	ld e, $01
+	xor a
+	scall PlayerStep
+	ld e, $01
+	xor a
+	scall PlayerStep
+	ld c, $01
+	ld e, $01
+	ld a, $05
+	scall LoadEmote
+	ld e, $14
+	ld a, $13
+	scall MoveEmote
+	ld a, $28
+	scall PlaySFX
+	scall WaitEmote
+	scall HideEmote
+	ld hl, $0102
+	scall PrintTextWithNPCName
+	xor a
+	scall PlayMusic
+	ld a, $1b
+	scall PlayMusic
+	ld bc, Data_a69fb
+	ld e, $29
+	xor a
+	scall MovePerson
+	scall WaitNPCStep
+	ld hl, $001e
+	scall ScriptSleep
+	ld e, $00
+	xor a
+	scall SetPersonVisibilityState
+	ld e, $01
+	ld a, $02
+	scall PlayerStep
+	ld e, $01
+	ld a, $02
+	scall PlayerStep
+	ld e, $01
+	ld a, $02
+	scall PlayerStep
+	ld c, $01
+	ld de, Data_a6a01
+	ld a, $29
+	scall MovePlayer
+	ret
+
+Func_a6a87:
+	push af
+	ld a, e
+	or a
+	jp nz, .asm_a6adb
+	xor a
+	scall PlayMusic
+	ld a, $28
+	scall PlaySFX
+	ld c, $01
+	ld e, $02
+	ld a, $03
+	scall LoadEmote
+	ld e, $00
+	xor a
+	scall SetPersonVisibilityState
+	scall WaitEmote
+	ld a, $28
+	scall PlaySFX
+	ld c, $01
+	ld e, $01
+	ld a, $03
+	scall LoadEmote
+	scall WaitEmote
+	ld e, $01
+	xor a
+	scall SetPersonVisibilityState
+	scall HideEmote
+	ld hl, sp+$01
+	ld a, [hl]
+	scall FacePlayer
+	ld e, $01
+	ld hl, $002e
+	scall EventFlagAction
+	ld hl, $0108
+	scall PrintTextWithNPCName
+	ld a, $0a
+	scall PlayMusic
+.asm_a6adb:
+	pop bc
+	ret
