@@ -137,10 +137,12 @@ ROMX $28
     "Bank 28"
 ROMX $29
     "Bank 29"
+    "Bank 29, 2"
 ROMX $2a
     "Bank 2a"
 ROMX $2b
     "Bank 2b"
+    "Bank 2b, 2"
 ROMX $2c
     "Bank 2c"
 ROMX $2d
