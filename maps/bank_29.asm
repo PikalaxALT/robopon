@@ -6,63 +6,347 @@ SECTION "Bank 29", ROMX
 	script_library 29
 
 Data_a50b4:
-	db $14, $05, $01, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $06, $04, $01, $01, $16
-	db $01, $03, $0c, $03, $0b, $34, $be, $02, $ff, $ff, $bf, $02, $ff, $ff, $02, $0c
-	db $08, $06, $01, $01, $02, $04, $00, $29, $00, $00, $00, $00, $ff, $00, $12, $05
-	db $01, $01, $00, $04, $01, $29, $64, $52, $00, $00, $ff, $00, $09, $0d, $01, $01
-	db $00, $04, $01, $29, $64, $52, $00, $00, $ff, $00, $13, $04, $01, $01, $00, $04
-	db $00, $29, $5f, $48, $ca, $50, $ff, $00, $13, $06, $01, $01, $00, $04, $00, $29
-	db $5f, $48, $ce, $50, $ff, $00, $09, $0f, $01, $01, $00, $04, $01, $29, $98, $53
-	db $00, $00
+	warpdef $14, $05, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
+	warpdef $06, $04, $01, $01, MAP_22_01, $03, $0c, $03, $0b, $34
+
+Data_a50ca:
+	dw $2be
+	dw -1
+
+Data_a50ce:
+	dw $2bf
+	dw -1
+
+Data_a50d2:
+	person_event $02, $0c, $08, $06, $01, $01, $02, $04, $00, $0000, $0000
+	person_event $ff, $00, $12, $05, $01, $01, $00, $04, $01, Func_a5264, $0000
+	person_event $ff, $00, $09, $0d, $01, $01, $00, $04, $01, Func_a5264, $0000
+
+Data_a50fc:
+	person_event $ff, $00, $13, $04, $01, $01, $00, $04, $00, PrintTextFacePlayer_29, Data_a50ca
+	person_event $ff, $00, $13, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_29, Data_a50ce
+
+Data_a5118:
+	person_event $ff, $00, $09, $0f, $01, $01, $00, $04, $01, Func_a5398, $0000
 
 Func_a5126:: ; a5126
-	db $3e, $0a, $ea, $e2, $c7, $1e, $02, $21, $b4, $50, $cd, $3a, $40, $3e, $03, $cd
-	db $e6, $4e, $21, $2e, $00, $cd, $2e, $46, $fe, $01, $c2, $63, $51, $21, $2f, $00
-	db $cd, $2e, $46, $fe, $01, $c2, $63, $51, $21, $44, $00, $cd, $2e, $46, $b7, $c2
-	db $63, $51, $1e, $03, $21, $d2, $50, $cd, $fb, $40, $c3, $6b, $51, $1e, $01, $21
-	db $18, $51, $cd, $fb, $40, $3e, $01, $cd, $c6, $4c, $1e, $02, $21, $fc, $50, $cd
-	db $fb, $40, $cd, $1c, $40, $c9
+	ld a, $0a ; A5126 (29:5126) -> 3E 0A
+	ld [wc7e2], a ; A5128 (29:5128) -> EA E2 C7
+	ld e, $02 ; A512B (29:512b) -> 1E 02
+	ld hl, Data_a50b4 ; A512D (29:512d) -> 21 B4 50
+	scall LoadWarps ; A5130 (29:5130) -> CD 3A 40
+	ld a, $03 ; A5133 (29:5133) -> 3E 03
+	scall PlayMusic ; A5135 (29:5135) -> CD E6 4E
+	ld hl, $002e ; A5138 (29:5138) -> 21 2E 00
+	scall CheckEventFlag ; A513B (29:513b) -> CD 2E 46
+	cp $01 ; A513E (29:513e) -> FE 01
+	jp nz, .asm_a5163 ; A5140 (29:5140) -> C2 63 51
+	ld hl, $002f ; A5143 (29:5143) -> 21 2F 00
+	scall CheckEventFlag ; A5146 (29:5146) -> CD 2E 46
+	cp $01 ; A5149 (29:5149) -> FE 01
+	jp nz, .asm_a5163 ; A514B (29:514b) -> C2 63 51
+	ld hl, $0044 ; A514E (29:514e) -> 21 44 00
+	scall CheckEventFlag ; A5151 (29:5151) -> CD 2E 46
+	or a ; A5154 (29:5154) -> B7
+	jp nz, .asm_a5163 ; A5155 (29:5155) -> C2 63 51
+	ld e, $03 ; A5158 (29:5158) -> 1E 03
+	ld hl, Data_a50d2 ; A515A (29:515a) -> 21 D2 50
+	scall LoadMapObjects ; A515D (29:515d) -> CD FB 40
+	jp .asm_a516b ; A5160 (29:5160) -> C3 6B 51
+.asm_a5163:
+	ld e, $01 ; A5163 (29:5163) -> 1E 01
+	ld hl, Data_a5118 ; A5165 (29:5165) -> 21 18 51
+	scall LoadMapObjects ; A5168 (29:5168) -> CD FB 40
+.asm_a516b:
+	ld a, $01 ; A516B (29:516b) -> 3E 01
+	scall LoadPlayerSprite ; A516D (29:516d) -> CD C6 4C
+	ld e, $02 ; A5170 (29:5170) -> 1E 02
+	ld hl, Data_a50fc ; A5172 (29:5172) -> 21 FC 50
+	scall LoadMapObjects ; A5175 (29:5175) -> CD FB 40
+	scall Func_8001c ; A5178 (29:5178) -> CD 1C 40
+	ret  ; A517B (29:517b) -> C9
 
 Func_a517c:: ; a517c
-	db $f5, $21, $1a, $c2, $36, $02, $23, $36, $a8, $23, $36, $4b, $af, $cd, $f8, $03
-	db $af, $cd, $e6, $4e, $3e, $0a, $cd, $e6, $4e, $af, $cd, $53, $46, $0e, $01, $1e
-	db $01, $3e, $11, $cd, $76, $41, $cd, $d5, $41, $21, $3c, $00, $cd, $8f, $46, $f1
-	db $f5, $fe, $02, $ca, $f7, $51, $fe, $01, $ca, $d6, $51, $b7, $c2, $23, $52, $21
-	db $1e, $00, $cd, $8f, $46, $21, $32, $03, $cd, $a9, $44, $21, $3c, $00, $cd, $8f
-	db $46, $21, $36, $03, $cd, $a9, $44, $c3, $23, $52, $0e, $01, $1e, $02, $3e, $11
-	db $cd, $76, $41, $cd, $d5, $41, $21, $33, $03, $cd, $a9, $44, $21, $3c, $00, $cd
-	db $8f, $46, $21, $36, $03, $cd, $a9, $44, $c3, $23, $52, $0e, $01, $1e, $02, $3e
-	db $11, $cd, $76, $41, $cd, $d5, $41, $21, $3c, $00, $cd, $8f, $46, $3e, $28, $cd
-	db $fe, $4e, $0e, $01, $1e, $04, $3e, $11, $cd, $76, $41, $af, $cd, $e6, $4e, $3e
-	db $15, $cd, $e6, $4e, $cd, $d5, $41, $cd, $8b, $41, $f1, $fe, $02, $c2, $47, $52
-	db $3e, $45, $cd, $fe, $4e, $21, $2e, $03, $cd, $a9, $44, $2e, $18, $e5, $0e, $13
-	db $1e, $00, $3e, $17, $cd, $ff, $4d, $c1, $c3, $4c, $52, $3e, $01, $cd, $53, $46
-	db $c9, $0c, $06, $ff, $ff, $09, $06, $0c, $06, $ff, $09, $06, $ff, $ff, $09, $05
-	db $12, $05, $ff, $ff, $0b, $06, $ff, $ff, $f5, $7b, $fe, $02, $c2, $83, $53, $3e
-	db $0a, $cd, $f1, $4f, $af, $cd, $e6, $4e, $f8, $01, $7e, $fe, $01, $c2, $89, $52
-	db $0e, $01, $11, $4d, $52, $3e, $29, $cd, $3e, $46, $c3, $93, $52, $0e, $01, $11
-	db $51, $52, $3e, $29, $cd, $3e, $46, $01, $56, $52, $1e, $29, $af, $cd, $88, $46
-	db $cd, $0c, $42, $21, $3c, $00, $cd, $8f, $46, $1e, $01, $af, $cd, $95, $40, $3e
-	db $03, $cd, $77, $46, $21, $1e, $00, $cd, $8f, $46, $21, $09, $01, $cd, $a9, $44
-	db $3e, $01, $cd, $1a, $50, $3e, $1b, $cd, $e6, $4e, $21, $1e, $00, $cd, $8f, $46
-	db $1e, $01, $3e, $02, $cd, $1e, $4e, $1e, $01, $3e, $02, $cd, $1e, $4e, $3e, $5b
-	db $cd, $fe, $4e, $0e, $01, $1e, $0f, $3e, $15, $cd, $76, $41, $1e, $00, $af, $cd
-	db $3d, $41, $af, $cd, $53, $46, $21, $3c, $00, $cd, $8f, $46, $3e, $46, $cd, $fe
-	db $4e, $21, $1e, $00, $cd, $8f, $46, $3e, $46, $cd, $fe, $4e, $21, $1e, $00, $cd
-	db $8f, $46, $3e, $46, $cd, $fe, $4e, $21, $1e, $00, $cd, $8f, $46, $cd, $d5, $41
-	db $1e, $01, $af, $cd, $3d, $41, $3e, $01, $cd, $53, $46, $cd, $8b, $41, $1e, $01
-	db $af, $cd, $1e, $4e, $1e, $01, $af, $cd, $1e, $4e, $21, $0a, $01, $cd, $a9, $44
-	db $cd, $a2, $4e, $3e, $65, $cd, $fe, $4e, $af, $cd, $e6, $4e, $3e, $1b, $cd, $e6
-	db $4e, $01, $5a, $52, $1e, $29, $af, $cd, $88, $46, $3e, $2e, $cd, $fe, $4e, $cd
-	db $0c, $42, $1e, $00, $af, $cd, $3d, $41, $3e, $65, $cd, $fe, $4e, $0e, $01, $11
-	db $60, $52, $3e, $29, $cd, $3e, $46, $cd, $0c, $42, $2e, $06, $e5, $0e, $16, $1e
-	db $00, $3e, $18, $cd, $ff, $4d, $c1, $c1, $c9, $3e, $45, $cd, $fe, $4e, $2e, $18
-	db $e5, $0e, $13, $1e, $00, $3e, $17, $cd, $ff, $4d, $c1, $c9, $7b, $fe, $02, $c2
-	db $dd, $53, $21, $2d, $00, $cd, $2e, $46, $fe, $01, $c2, $dd, $53, $3e, $2a, $cd
-	db $5d, $4e, $b7, $ca, $d7, $53, $21, $34, $03, $cd, $ba, $44, $b7, $c2, $d4, $53
-	db $3e, $45, $cd, $fe, $4e, $21, $1e, $00, $cd, $8f, $46, $2e, $18, $e5, $0e, $13
-	db $1e, $00, $3e, $17, $cd, $ff, $4d, $c1, $c3, $dd, $53, $21, $35, $03, $cd, $98
-	db $44, $c9, $02, $0c, $02, $01, $16, $00, $06, $04, $06, $05, $2e, $02, $0c, $02
+	push af ; A517C (29:517c) -> F5
+	set_farcall_addrs_hli FadeInMap
+	xor a ; A5188 (29:5188) -> AF
+	call FarCall ; A5189 (29:5189) -> CD F8 03
+	xor a ; A518C (29:518c) -> AF
+	scall PlayMusic ; A518D (29:518d) -> CD E6 4E
+	ld a, $0a ; A5190 (29:5190) -> 3E 0A
+	scall PlayMusic ; A5192 (29:5192) -> CD E6 4E
+	xor a ; A5195 (29:5195) -> AF
+	scall Func_80653 ; A5196 (29:5196) -> CD 53 46
+	ld c, $01 ; A5199 (29:5199) -> 0E 01
+	ld e, $01 ; A519B (29:519b) -> 1E 01
+	ld a, $11 ; A519D (29:519d) -> 3E 11
+	scall LoadEmote ; A519F (29:519f) -> CD 76 41
+	scall WaitEmote ; A51A2 (29:51a2) -> CD D5 41
+	ld hl, $003c ; A51A5 (29:51a5) -> 21 3C 00
+	scall ScriptSleep ; A51A8 (29:51a8) -> CD 8F 46
+	pop af ; A51AB (29:51ab) -> F1
+	push af ; A51AC (29:51ac) -> F5
+	cp $02 ; A51AD (29:51ad) -> FE 02
+	jp z, .asm_a51f7 ; A51AF (29:51af) -> CA F7 51
+	cp $01 ; A51B2 (29:51b2) -> FE 01
+	jp z, .asm_a51d6 ; A51B4 (29:51b4) -> CA D6 51
+	or a ; A51B7 (29:51b7) -> B7
+	jp nz, .asm_a5223 ; A51B8 (29:51b8) -> C2 23 52
+	ld hl, $001e ; A51BB (29:51bb) -> 21 1E 00
+	scall ScriptSleep ; A51BE (29:51be) -> CD 8F 46
+	ld hl, $0332 ; A51C1 (29:51c1) -> 21 32 03
+	scall PrintTextWithNPCName ; A51C4 (29:51c4) -> CD A9 44
+	ld hl, $003c ; A51C7 (29:51c7) -> 21 3C 00
+	scall ScriptSleep ; A51CA (29:51ca) -> CD 8F 46
+	ld hl, $0336 ; A51CD (29:51cd) -> 21 36 03
+	scall PrintTextWithNPCName ; A51D0 (29:51d0) -> CD A9 44
+	jp .asm_a5223 ; A51D3 (29:51d3) -> C3 23 52
+.asm_a51d6:
+	ld c, $01 ; A51D6 (29:51d6) -> 0E 01
+	ld e, $02 ; A51D8 (29:51d8) -> 1E 02
+	ld a, $11 ; A51DA (29:51da) -> 3E 11
+	scall LoadEmote ; A51DC (29:51dc) -> CD 76 41
+	scall WaitEmote ; A51DF (29:51df) -> CD D5 41
+	ld hl, $0333 ; A51E2 (29:51e2) -> 21 33 03
+	scall PrintTextWithNPCName ; A51E5 (29:51e5) -> CD A9 44
+	ld hl, $003c ; A51E8 (29:51e8) -> 21 3C 00
+	scall ScriptSleep ; A51EB (29:51eb) -> CD 8F 46
+	ld hl, $0336 ; A51EE (29:51ee) -> 21 36 03
+	scall PrintTextWithNPCName ; A51F1 (29:51f1) -> CD A9 44
+	jp .asm_a5223 ; A51F4 (29:51f4) -> C3 23 52
+.asm_a51f7:
+	ld c, $01 ; A51F7 (29:51f7) -> 0E 01
+	ld e, $02 ; A51F9 (29:51f9) -> 1E 02
+	ld a, $11 ; A51FB (29:51fb) -> 3E 11
+	scall LoadEmote ; A51FD (29:51fd) -> CD 76 41
+	scall WaitEmote ; A5200 (29:5200) -> CD D5 41
+	ld hl, $003c ; A5203 (29:5203) -> 21 3C 00
+	scall ScriptSleep ; A5206 (29:5206) -> CD 8F 46
+	ld a, $28 ; A5209 (29:5209) -> 3E 28
+	scall PlaySFX ; A520B (29:520b) -> CD FE 4E
+	ld c, $01 ; A520E (29:520e) -> 0E 01
+	ld e, $04 ; A5210 (29:5210) -> 1E 04
+	ld a, $11 ; A5212 (29:5212) -> 3E 11
+	scall LoadEmote ; A5214 (29:5214) -> CD 76 41
+	xor a ; A5217 (29:5217) -> AF
+	scall PlayMusic ; A5218 (29:5218) -> CD E6 4E
+	ld a, $15 ; A521B (29:521b) -> 3E 15
+	scall PlayMusic ; A521D (29:521d) -> CD E6 4E
+	scall WaitEmote ; A5220 (29:5220) -> CD D5 41
+.asm_a5223:
+	scall HideEmote ; A5223 (29:5223) -> CD 8B 41
+	pop af ; A5226 (29:5226) -> F1
+	cp $02 ; A5227 (29:5227) -> FE 02
+	jp nz, .asm_a5247 ; A5229 (29:5229) -> C2 47 52
+	ld a, $45 ; A522C (29:522c) -> 3E 45
+	scall PlaySFX ; A522E (29:522e) -> CD FE 4E
+	ld hl, $032e ; A5231 (29:5231) -> 21 2E 03
+	scall PrintTextWithNPCName ; A5234 (29:5234) -> CD A9 44
+	ld l, $18 ; A5237 (29:5237) -> 2E 18
+	push hl ; A5239 (29:5239) -> E5
+	ld c, $13 ; A523A (29:523a) -> 0E 13
+	ld e, $00 ; A523C (29:523c) -> 1E 00
+	ld a, $17 ; A523E (29:523e) -> 3E 17
+	scall Func_80dff ; A5240 (29:5240) -> CD FF 4D
+	pop bc ; A5243 (29:5243) -> C1
+	jp .asm_a524c ; A5244 (29:5244) -> C3 4C 52
+.asm_a5247:
+	ld a, $01 ; A5247 (29:5247) -> 3E 01
+	scall Func_80653 ; A5249 (29:5249) -> CD 53 46
+.asm_a524c:
+	ret  ; A524C (29:524c) -> C9
+
+Data_a524d:
+	db $0c, $06, $ff, $ff
+
+Data_a5251:
+	db $09, $06, $0c, $06, $ff
+
+Data_a5256:
+	db $09, $06, $ff, $ff
+
+Data_a525a:
+	db $09, $05, $12, $05, $ff, $ff
+
+Data_a5260:
+	db $0b, $06, $ff, $ff
+
+Func_a5264:
+	push af ; A5264 (29:5264) -> F5
+	ld a, e ; A5265 (29:5265) -> 7B
+	cp $02 ; A5266 (29:5266) -> FE 02
+	jp nz, .asm_a5383 ; A5268 (29:5268) -> C2 83 53
+	ld a, $0a ; A526B (29:526b) -> 3E 0A
+	scall FadeOutAudio ; A526D (29:526d) -> CD F1 4F
+	xor a ; A5270 (29:5270) -> AF
+	scall PlayMusic ; A5271 (29:5271) -> CD E6 4E
+	ld hl, sp+$01 ; A5274 (29:5274) -> F8 01
+	ld a, [hl] ; A5276 (29:5276) -> 7E
+	cp $01 ; A5277 (29:5277) -> FE 01
+	jp nz, .asm_a5289 ; A5279 (29:5279) -> C2 89 52
+	ld c, $01 ; A527C (29:527c) -> 0E 01
+	ld de, Data_a524d ; A527E (29:527e) -> 11 4D 52
+	ld a, $29 ; A5281 (29:5281) -> 3E 29
+	scall MovePlayer ; A5283 (29:5283) -> CD 3E 46
+	jp .asm_a5293 ; A5286 (29:5286) -> C3 93 52
+.asm_a5289:
+	ld c, $01 ; A5289 (29:5289) -> 0E 01
+	ld de, Data_a5251 ; A528B (29:528b) -> 11 51 52
+	ld a, $29 ; A528E (29:528e) -> 3E 29
+	scall MovePlayer ; A5290 (29:5290) -> CD 3E 46
+.asm_a5293:
+	ld bc, Data_a5256 ; A5293 (29:5293) -> 01 56 52
+	ld e, $29 ; A5296 (29:5296) -> 1E 29
+	xor a ; A5298 (29:5298) -> AF
+	scall MovePersonAndWait ; A5299 (29:5299) -> CD 88 46
+	scall WaitNPCStep ; A529C (29:529c) -> CD 0C 42
+	ld hl, $003c ; A529F (29:529f) -> 21 3C 00
+	scall ScriptSleep ; A52A2 (29:52a2) -> CD 8F 46
+	ld e, $01 ; A52A5 (29:52a5) -> 1E 01
+	xor a ; A52A7 (29:52a7) -> AF
+	scall SpriteFace ; A52A8 (29:52a8) -> CD 95 40
+	ld a, $03 ; A52AB (29:52ab) -> 3E 03
+	scall PlayerFace ; A52AD (29:52ad) -> CD 77 46
+	ld hl, $001e ; A52B0 (29:52b0) -> 21 1E 00
+	scall ScriptSleep ; A52B3 (29:52b3) -> CD 8F 46
+	ld hl, $0109 ; A52B6 (29:52b6) -> 21 09 01
+	scall PrintTextWithNPCName ; A52B9 (29:52b9) -> CD A9 44
+	ld a, $01 ; A52BC (29:52bc) -> 3E 01
+	scall FadeInAudio ; A52BE (29:52be) -> CD 1A 50
+	ld a, $1b ; A52C1 (29:52c1) -> 3E 1B
+	scall PlayMusic ; A52C3 (29:52c3) -> CD E6 4E
+	ld hl, $001e ; A52C6 (29:52c6) -> 21 1E 00
+	scall ScriptSleep ; A52C9 (29:52c9) -> CD 8F 46
+	ld e, $01 ; A52CC (29:52cc) -> 1E 01
+	ld a, $02 ; A52CE (29:52ce) -> 3E 02
+	scall PlayerStep ; A52D0 (29:52d0) -> CD 1E 4E
+	ld e, $01 ; A52D3 (29:52d3) -> 1E 01
+	ld a, $02 ; A52D5 (29:52d5) -> 3E 02
+	scall PlayerStep ; A52D7 (29:52d7) -> CD 1E 4E
+	ld a, $5b ; A52DA (29:52da) -> 3E 5B
+	scall PlaySFX ; A52DC (29:52dc) -> CD FE 4E
+	ld c, $01 ; A52DF (29:52df) -> 0E 01
+	ld e, $0f ; A52E1 (29:52e1) -> 1E 0F
+	ld a, $15 ; A52E3 (29:52e3) -> 3E 15
+	scall LoadEmote ; A52E5 (29:52e5) -> CD 76 41
+	ld e, $00 ; A52E8 (29:52e8) -> 1E 00
+	xor a ; A52EA (29:52ea) -> AF
+	scall SetPersonVisibilityState ; A52EB (29:52eb) -> CD 3D 41
+	xor a ; A52EE (29:52ee) -> AF
+	scall Func_80653 ; A52EF (29:52ef) -> CD 53 46
+	ld hl, $003c ; A52F2 (29:52f2) -> 21 3C 00
+	scall ScriptSleep ; A52F5 (29:52f5) -> CD 8F 46
+	ld a, $46 ; A52F8 (29:52f8) -> 3E 46
+	scall PlaySFX ; A52FA (29:52fa) -> CD FE 4E
+	ld hl, $001e ; A52FD (29:52fd) -> 21 1E 00
+	scall ScriptSleep ; A5300 (29:5300) -> CD 8F 46
+	ld a, $46 ; A5303 (29:5303) -> 3E 46
+	scall PlaySFX ; A5305 (29:5305) -> CD FE 4E
+	ld hl, $001e ; A5308 (29:5308) -> 21 1E 00
+	scall ScriptSleep ; A530B (29:530b) -> CD 8F 46
+	ld a, $46 ; A530E (29:530e) -> 3E 46
+	scall PlaySFX ; A5310 (29:5310) -> CD FE 4E
+	ld hl, $001e ; A5313 (29:5313) -> 21 1E 00
+	scall ScriptSleep ; A5316 (29:5316) -> CD 8F 46
+	scall WaitEmote ; A5319 (29:5319) -> CD D5 41
+	ld e, $01 ; A531C (29:531c) -> 1E 01
+	xor a ; A531E (29:531e) -> AF
+	scall SetPersonVisibilityState ; A531F (29:531f) -> CD 3D 41
+	ld a, $01 ; A5322 (29:5322) -> 3E 01
+	scall Func_80653 ; A5324 (29:5324) -> CD 53 46
+	scall HideEmote ; A5327 (29:5327) -> CD 8B 41
+	ld e, $01 ; A532A (29:532a) -> 1E 01
+	xor a ; A532C (29:532c) -> AF
+	scall PlayerStep ; A532D (29:532d) -> CD 1E 4E
+	ld e, $01 ; A5330 (29:5330) -> 1E 01
+	xor a ; A5332 (29:5332) -> AF
+	scall PlayerStep ; A5333 (29:5333) -> CD 1E 4E
+	ld hl, $010a ; A5336 (29:5336) -> 21 0A 01
+	scall PrintTextWithNPCName ; A5339 (29:5339) -> CD A9 44
+	scall StartShakingScreen ; A533C (29:533c) -> CD A2 4E
+	ld a, $65 ; A533F (29:533f) -> 3E 65
+	scall PlaySFX ; A5341 (29:5341) -> CD FE 4E
+	xor a ; A5344 (29:5344) -> AF
+	scall PlayMusic ; A5345 (29:5345) -> CD E6 4E
+	ld a, $1b ; A5348 (29:5348) -> 3E 1B
+	scall PlayMusic ; A534A (29:534a) -> CD E6 4E
+	ld bc, Data_a525a ; A534D (29:534d) -> 01 5A 52
+	ld e, $29 ; A5350 (29:5350) -> 1E 29
+	xor a ; A5352 (29:5352) -> AF
+	scall MovePersonAndWait ; A5353 (29:5353) -> CD 88 46
+	ld a, $2e ; A5356 (29:5356) -> 3E 2E
+	scall PlaySFX ; A5358 (29:5358) -> CD FE 4E
+	scall WaitNPCStep ; A535B (29:535b) -> CD 0C 42
+	ld e, $00 ; A535E (29:535e) -> 1E 00
+	xor a ; A5360 (29:5360) -> AF
+	scall SetPersonVisibilityState ; A5361 (29:5361) -> CD 3D 41
+	ld a, $65 ; A5364 (29:5364) -> 3E 65
+	scall PlaySFX ; A5366 (29:5366) -> CD FE 4E
+	ld c, $01 ; A5369 (29:5369) -> 0E 01
+	ld de, Data_a5260 ; A536B (29:536b) -> 11 60 52
+	ld a, $29 ; A536E (29:536e) -> 3E 29
+	scall MovePlayer ; A5370 (29:5370) -> CD 3E 46
+	scall WaitNPCStep ; A5373 (29:5373) -> CD 0C 42
+	ld l, $06 ; A5376 (29:5376) -> 2E 06
+	push hl ; A5378 (29:5378) -> E5
+	ld c, $16 ; A5379 (29:5379) -> 0E 16
+	ld e, $00 ; A537B (29:537b) -> 1E 00
+	ld a, $18 ; A537D (29:537d) -> 3E 18
+	scall Func_80dff ; A537F (29:537f) -> CD FF 4D
+	pop bc ; A5382 (29:5382) -> C1
+.asm_a5383:
+	pop bc ; A5383 (29:5383) -> C1
+	ret  ; A5384 (29:5384) -> C9
+
+Func_a5385:
+	ld a, $45 ; A5385 (29:5385) -> 3E 45
+	scall PlaySFX ; A5387 (29:5387) -> CD FE 4E
+	ld l, $18 ; A538A (29:538a) -> 2E 18
+	push hl ; A538C (29:538c) -> E5
+	ld c, $13 ; A538D (29:538d) -> 0E 13
+	ld e, $00 ; A538F (29:538f) -> 1E 00
+	ld a, $17 ; A5391 (29:5391) -> 3E 17
+	scall Func_80dff ; A5393 (29:5393) -> CD FF 4D
+	pop bc ; A5396 (29:5396) -> C1
+	ret  ; A5397 (29:5397) -> C9
+
+Func_a5398:
+	ld a, e ; A5398 (29:5398) -> 7B
+	cp $02 ; A5399 (29:5399) -> FE 02
+	jp nz, label_a53dd ; A539B (29:539b) -> C2 DD 53
+	ld hl, $002d ; A539E (29:539e) -> 21 2D 00
+	call CheckEventFlag_29 ; A53A1 (29:53a1) -> CD 2E 46
+	cp $01 ; A53A4 (29:53a4) -> FE 01
+	jp nz, label_a53dd ; A53A6 (29:53a6) -> C2 DD 53
+	ld a, $2a ; A53A9 (29:53a9) -> 3E 2A
+	call Func_80e5d_29 ; A53AB (29:53ab) -> CD 5D 4E
+	or a ; A53AE (29:53ae) -> B7
+	jp z, label_a53d7 ; A53AF (29:53af) -> CA D7 53
+	ld hl, $0334 ; A53B2 (29:53b2) -> 21 34 03
+	call PrintTextWithYesNoBox_29 ; A53B5 (29:53b5) -> CD BA 44
+	or a ; A53B8 (29:53b8) -> B7
+	jp nz, label_a53d4 ; A53B9 (29:53b9) -> C2 D4 53
+	ld a, $45 ; A53BC (29:53bc) -> 3E 45
+	call PlaySFX_29 ; A53BE (29:53be) -> CD FE 4E
+	ld hl, $001e ; A53C1 (29:53c1) -> 21 1E 00
+	call ScriptSleep_29 ; A53C4 (29:53c4) -> CD 8F 46
+	ld l, $18 ; A53C7 (29:53c7) -> 2E 18
+	push hl ; A53C9 (29:53c9) -> E5
+	ld c, $13 ; A53CA (29:53ca) -> 0E 13
+	ld e, $00 ; A53CC (29:53cc) -> 1E 00
+	ld a, $17 ; A53CE (29:53ce) -> 3E 17
+	call Func_80dff_29 ; A53D0 (29:53d0) -> CD FF 4D
+	pop bc ; A53D3 (29:53d3) -> C1
+label_a53d4:
+	jp label_a53dd ; A53D4 (29:53d4) -> C3 DD 53
+label_a53d7:
+	ld hl, $0335 ; A53D7 (29:53d7) -> 21 35 03
+	call PrintTextStandard_29 ; A53DA (29:53da) -> CD 98 44
+label_a53dd:
+	ret  ; A53DD (29:53dd) -> C9
+
+Data_a53de:
+	db $02, $0c, $02, $01, $16, $00, $06, $04, $06, $05, $2e, $02, $0c, $02
 	db $01, $18, $00, $11, $04, $11, $05, $2e, $8e, $01, $ff, $ff, $06, $04, $06, $03
 	db $01, $02, $02, $04, $00, $29, $9d, $54, $00, $00, $13, $0c, $06, $08, $01, $01
 	db $02, $04, $00, $29, $00, $00, $00, $00, $ff, $00, $05, $07, $03, $03, $00, $04
