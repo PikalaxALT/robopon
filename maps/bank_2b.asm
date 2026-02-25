@@ -45,5 +45,19 @@ Func_ad122:: ; ad122
 	db $41, $0e, $01, $11, $21, $52, $3e, $2b, $cd, $3e, $46, $cd, $0c, $42, $cd, $b1
 	db $4e, $3e, $0f, $cd, $f1, $4f, $af, $cd, $e6, $4e, $3e, $01, $cd, $1a, $50, $af
 	db $cd, $e6, $4e, $2e, $05, $e5, $0e, $04, $1e, $02, $af, $cd, $ff, $4d, $c1, $c9
-	db $2e, $06, $e5, $0e, $19, $1e, $01, $3e, $19, $cd, $ff, $4d, $c1, $c9, $c9, $c9
-	db $c9, $c9, $c9
+	db $2e, $06, $e5, $0e, $19, $1e, $01, $3e, $19, $cd, $ff, $4d, $c1, $c9
+
+Func_ad310:
+	ret
+
+Func_ad311:
+	ret
+
+Func_ad312:
+	ret
+
+Func_ad313:
+	ret
+
+Func_ad314:
+	ret
