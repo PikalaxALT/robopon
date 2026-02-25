@@ -54,16 +54,12 @@ MACRO wildbot
 	db \2 ; y coord
 	db \3 ; width
 	db \4 ; height
-	shift
-	shift
-	shift
-	shift
-
-	db \1 ; species
-	db \2 ; min level
-	db \3 ; max level 
-	db \4
-	db \5
+	db \5 ; species
+	db \6 ; min level
+	db \7 ; max level
+	db \8
+	db \9
+	shift 4
 	db \6
 	db \7
 	db \8 ; randgen delta 1
