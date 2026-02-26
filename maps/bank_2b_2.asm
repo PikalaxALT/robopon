@@ -265,54 +265,209 @@ Func_ae56c:
 .asm_ae674:
 	ret  ; AE674 (2b:6674) -> C9
 
-Data_ae674:
+Data_ae675:
+	warpdef $11, $1c, $03, $01, MAP_27_00, $09, $06, $09, $07, $2e
+	warpdef $0f, $0c, $01, $01, MAP_27_02, $11, $0c, $11, $0b, $2e
+	warpdef $14, $0c, $01, $01, MAP_27_02, $16, $0c, $17, $0c, $2e
+
+Data_ae696:
 IF DEF(SUN)
-	db $11, $1c, $03, $01, $1b, $00
-	db $09, $06, $09, $07, $2e, $0f, $0c, $01, $01, $1b, $02, $11, $0c, $11, $0b, $2e
-	db $14, $0c, $01, $01, $1b, $02, $16, $0c, $17, $0c, $2e, $00, $03, $22, $19, $48
-	db $2a, $2d, $7a, $14, $0d, $1e, $06, $0a, $00, $00, $03, $22, $19, $8f, $2b, $2e
-	db $5e, $0f, $0d, $14, $12, $09, $00, $00, $03, $22, $19, $49, $2b, $2e, $06, $02
-	db $02, $02, $06, $08, $00, $00, $03, $22, $19, $44, $2c, $2f, $7a, $14, $08, $00
-	db $13, $07, $00, $00, $03, $22, $19, $39, $2d, $30, $1b, $0e, $0b, $00, $06, $06
-	db $00, $0d, $0c, $0a, $11, $01, $01, $02, $04, $00, $2b, $00, $00, $00, $00
+	wildbot $00, $03, $22, $19, $48, $2a, $2d, $7a, $14, $0d, $1e, $06, $0a, $00
+	wildbot $00, $03, $22, $19, $8f, $2b, $2e, $5e, $0f, $0d, $14, $12, $09, $00
+	wildbot $00, $03, $22, $19, $49, $2b, $2e, $06, $02, $02, $02, $06, $08, $00
+	wildbot $00, $03, $22, $19, $44, $2c, $2f, $7a, $14, $08, $00, $13, $07, $00
+	wildbot $00, $03, $22, $19, $39, $2d, $30, $1b, $0e, $0b, $00, $06, $06, $00
 ELIF DEF(STAR)
-	db $11, $1c, $03, $01, $1b, $00
-	db $09, $06, $09, $07, $2e, $0f, $0c, $01, $01, $1b, $02, $11, $0c, $11, $0b, $2e
-	db $14, $0c, $01, $01, $1b, $02, $16, $0c, $17, $0c, $2e, $00, $03, $22, $19, $49
-	db $2a, $2d, $06, $02, $02, $02, $06, $0a, $00, $00, $03, $22, $19, $8f, $2b, $2e
-	db $5e, $0f, $0d, $14, $12, $09, $00, $00, $03, $22, $19, $48, $2b, $2e, $7a, $14
-	db $0d, $1e, $06, $08, $00, $00, $03, $22, $19, $44, $2c, $2f, $7a, $14, $08, $00
-	db $13, $07, $00, $00, $03, $22, $19, $39, $2d, $30, $1b, $0e, $0b, $00, $06, $06
-	db $00, $0d, $0c, $0a, $11, $01, $01, $02, $04, $00, $2b, $00, $00, $00, $00
+	wildbot $00, $03, $22, $19, $49, $2a, $2d, $06, $02, $02, $02, $06, $0a, $00
+	wildbot $00, $03, $22, $19, $8f, $2b, $2e, $5e, $0f, $0d, $14, $12, $09, $00
+	wildbot $00, $03, $22, $19, $48, $2b, $2e, $7a, $14, $0d, $1e, $06, $08, $00
+	wildbot $00, $03, $22, $19, $44, $2c, $2f, $7a, $14, $08, $00, $13, $07, $00
+	wildbot $00, $03, $22, $19, $39, $2d, $30, $1b, $0e, $0b, $00, $06, $06, $00
 ENDC
 
+Data_ae6dc:
+	person_event $0d, $0c, $0a, $11, $01, $01, $02, $04, $00, NULL, NULL
+
 Func_ae6ea:: ; ae6ea
+	ld e, $03 ; AE6EA (2b:66ea) -> 1E 03
+	ld hl, Data_ae675 ; AE6EC (2b:66ec) -> 21 75 66
+	scall LoadWarps ; AE6EF (2b:66ef) -> CD 4F 53
+	ld a, $01 ; AE6F2 (2b:66f2) -> 3E 01
+	scall LoadPlayerSprite ; AE6F4 (2b:66f4) -> CD DB 5F
+	ld hl, $0033 ; AE6F7 (2b:66f7) -> 21 33 00
+	scall CheckEventFlag ; AE6FA (2b:66fa) -> CD 43 59
+	or a ; AE6FD (2b:66fd) -> B7
+	jp nz, label_ae720 ; AE6FE (2b:66fe) -> C2 20 67
+	ld e, $01 ; AE701 (2b:6701) -> 1E 01
+	ld hl, Data_ae6dc ; AE703 (2b:6703) -> 21 DC 66
+	scall LoadMapObjects ; AE706 (2b:6706) -> CD 10 54
+	scall Func_8001c ; AE709 (2b:6709) -> CD 31 53
+	ld hl, $0315 ; AE70C (2b:670c) -> 21 15 03
+	scall LandmarkSign ; AE70F (2b:670f) -> CD 87 62
+	call Func_ae74c ; AE712 (2b:6712) -> CD 4C 67
+	ld e, $01 ; AE715 (2b:6715) -> 1E 01
+	ld hl, $0033 ; AE717 (2b:6717) -> 21 33 00
+	scall EventFlagAction ; AE71A (2b:671a) -> CD 30 59
+	jp label_ae73b ; AE71D (2b:671d) -> C3 3B 67
+label_ae720:
+	ld a, $03 ; AE720 (2b:6720) -> 3E 03
+	scall Func_80d01 ; AE722 (2b:6722) -> CD 16 60
+	ld e, $05 ; AE725 (2b:6725) -> 1E 05
+	ld hl, Data_ae696 ; AE727 (2b:6727) -> 21 96 66
+	scall LoadEncounters ; AE72A (2b:672a) -> CD 39 60
+	ld a, $08 ; AE72D (2b:672d) -> 3E 08
+	scall PlayMusic ; AE72F (2b:672f) -> CD FB 61
+	scall Func_8001c ; AE732 (2b:6732) -> CD 31 53
+	ld hl, $0315 ; AE735 (2b:6735) -> 21 15 03
+	scall LandmarkSign ; AE738 (2b:6738) -> CD 87 62
+label_ae73b:
+	ret  ; AE73B (2b:673b) -> C9
+
+Data_ae73c:
+	db $12, $17, $ff, $ff
+
+Data_ae740:
+	db $12, $15, $ff, $ff
+
+Data_ae744:
+	db $11, $1c, $ff, $ff
+
+Data_ae748:
+	db $0a, $15, $ff, $ff
+
+Func_ae74c:
+	xor a ; AE74C (2b:674c) -> AF
+	scall PlayMusic ; AE74D (2b:674d) -> CD FB 61
+	ld e, $01 ; AE750 (2b:6750) -> 1E 01
+	xor a ; AE752 (2b:6752) -> AF
+	scall PlayerStep ; AE753 (2b:6753) -> CD 33 61
+	ld e, $01 ; AE756 (2b:6756) -> 1E 01
+	xor a ; AE758 (2b:6758) -> AF
+	scall PlayerStep ; AE759 (2b:6759) -> CD 33 61
+	ld e, $01 ; AE75C (2b:675c) -> 1E 01
+	xor a ; AE75E (2b:675e) -> AF
+	scall PlayerStep ; AE75F (2b:675f) -> CD 33 61
+	ld e, $01 ; AE762 (2b:6762) -> 1E 01
+	xor a ; AE764 (2b:6764) -> AF
+	scall PlayerStep ; AE765 (2b:6765) -> CD 33 61
+	ld e, $01 ; AE768 (2b:6768) -> 1E 01
+	xor a ; AE76A (2b:676a) -> AF
+	scall PlayerStep ; AE76B (2b:676b) -> CD 33 61
+	xor a ; AE76E (2b:676e) -> AF
+	scall Func_80653 ; AE76F (2b:676f) -> CD 68 59
+	ld e, $01 ; AE772 (2b:6772) -> 1E 01
+	ld a, $03 ; AE774 (2b:6774) -> 3E 03
+	scall PlayerStep ; AE776 (2b:6776) -> CD 33 61
+	ld e, $01 ; AE779 (2b:6779) -> 1E 01
+	ld a, $03 ; AE77B (2b:677b) -> 3E 03
+	scall PlayerStep ; AE77D (2b:677d) -> CD 33 61
+	ld e, $01 ; AE780 (2b:6780) -> 1E 01
+	ld a, $03 ; AE782 (2b:6782) -> 3E 03
+	scall PlayerStep ; AE784 (2b:6784) -> CD 33 61
+	ld e, $01 ; AE787 (2b:6787) -> 1E 01
+	ld a, $03 ; AE789 (2b:6789) -> 3E 03
+	scall PlayerStep ; AE78B (2b:678b) -> CD 33 61
+	ld e, $01 ; AE78E (2b:678e) -> 1E 01
+	ld a, $03 ; AE790 (2b:6790) -> 3E 03
+	scall PlayerStep ; AE792 (2b:6792) -> CD 33 61
+	ld e, $01 ; AE795 (2b:6795) -> 1E 01
+	ld a, $03 ; AE797 (2b:6797) -> 3E 03
+	scall PlayerStep ; AE799 (2b:6799) -> CD 33 61
+	ld e, $01 ; AE79C (2b:679c) -> 1E 01
+	ld a, $03 ; AE79E (2b:679e) -> 3E 03
+	scall PlayerStep ; AE7A0 (2b:67a0) -> CD 33 61
+	ld a, $01 ; AE7A3 (2b:67a3) -> 3E 01
+	scall PlayMusic ; AE7A5 (2b:67a5) -> CD FB 61
+	ld bc, Data_ae748 ; AE7A8 (2b:67a8) -> 01 48 67
+	ld e, $2b ; AE7AB (2b:67ab) -> 1E 2B
+	xor a ; AE7AD (2b:67ad) -> AF
+	scall MovePersonAndWait ; AE7AE (2b:67ae) -> CD 9D 59
+	scall WaitNPCStep ; AE7B1 (2b:67b1) -> CD 21 55
+	ld hl, $0131 ; AE7B4 (2b:67b4) -> 21 31 01
+	scall PrintTextWithNPCName ; AE7B7 (2b:67b7) -> CD BE 57
+	ld e, $01 ; AE7BA (2b:67ba) -> 1E 01
+	ld a, $01 ; AE7BC (2b:67bc) -> 3E 01
+	scall PlayerStep ; AE7BE (2b:67be) -> CD 33 61
+	ld e, $01 ; AE7C1 (2b:67c1) -> 1E 01
+	ld a, $01 ; AE7C3 (2b:67c3) -> 3E 01
+	scall PlayerStep ; AE7C5 (2b:67c5) -> CD 33 61
+	ld e, $01 ; AE7C8 (2b:67c8) -> 1E 01
+	ld a, $01 ; AE7CA (2b:67ca) -> 3E 01
+	scall PlayerStep ; AE7CC (2b:67cc) -> CD 33 61
+	ld e, $01 ; AE7CF (2b:67cf) -> 1E 01
+	ld a, $01 ; AE7D1 (2b:67d1) -> 3E 01
+	scall PlayerStep ; AE7D3 (2b:67d3) -> CD 33 61
+	ld e, $01 ; AE7D6 (2b:67d6) -> 1E 01
+	ld a, $01 ; AE7D8 (2b:67d8) -> 3E 01
+	scall PlayerStep ; AE7DA (2b:67da) -> CD 33 61
+	ld e, $01 ; AE7DD (2b:67dd) -> 1E 01
+	ld a, $01 ; AE7DF (2b:67df) -> 3E 01
+	scall PlayerStep ; AE7E1 (2b:67e1) -> CD 33 61
+	ld e, $01 ; AE7E4 (2b:67e4) -> 1E 01
+	ld a, $01 ; AE7E6 (2b:67e6) -> 3E 01
+	scall PlayerStep ; AE7E8 (2b:67e8) -> CD 33 61
+	ld a, $01 ; AE7EB (2b:67eb) -> 3E 01
+	scall Func_80653 ; AE7ED (2b:67ed) -> CD 68 59
+	ld e, $01 ; AE7F0 (2b:67f0) -> 1E 01
+	ld a, $02 ; AE7F2 (2b:67f2) -> 3E 02
+	scall PlayerStep ; AE7F4 (2b:67f4) -> CD 33 61
+	ld e, $01 ; AE7F7 (2b:67f7) -> 1E 01
+	ld a, $02 ; AE7F9 (2b:67f9) -> 3E 02
+	scall PlayerStep ; AE7FB (2b:67fb) -> CD 33 61
+	ld e, $01 ; AE7FE (2b:67fe) -> 1E 01
+	ld a, $02 ; AE800 (2b:6800) -> 3E 02
+	scall PlayerStep ; AE802 (2b:6802) -> CD 33 61
+	ld e, $01 ; AE805 (2b:6805) -> 1E 01
+	ld a, $02 ; AE807 (2b:6807) -> 3E 02
+	scall PlayerStep ; AE809 (2b:6809) -> CD 33 61
+	ld e, $01 ; AE80C (2b:680c) -> 1E 01
+	ld a, $02 ; AE80E (2b:680e) -> 3E 02
+	scall PlayerStep ; AE810 (2b:6810) -> CD 33 61
+	ld c, $01 ; AE813 (2b:6813) -> 0E 01
+	ld de, Data_ae73c ; AE815 (2b:6815) -> 11 3C 67
+	ld a, $2b ; AE818 (2b:6818) -> 3E 2B
+	scall MovePlayer ; AE81A (2b:681a) -> CD 53 59
+	scall WaitNPCStep ; AE81D (2b:681d) -> CD 21 55
+	ld bc, Data_ae740 ; AE820 (2b:6820) -> 01 40 67
+	ld e, $2b ; AE823 (2b:6823) -> 1E 2B
+	xor a ; AE825 (2b:6825) -> AF
+	scall MovePersonAndWait ; AE826 (2b:6826) -> CD 9D 59
+	scall WaitNPCStep ; AE829 (2b:6829) -> CD 21 55
+	ld e, $02 ; AE82C (2b:682c) -> 1E 02
+	xor a ; AE82E (2b:682e) -> AF
+	scall SpriteFace ; AE82F (2b:682f) -> CD AA 53
+	ld c, $01 ; AE832 (2b:6832) -> 0E 01
+	ld e, $01 ; AE834 (2b:6834) -> 1E 01
+	ld a, $05 ; AE836 (2b:6836) -> 3E 05
+	scall LoadEmote ; AE838 (2b:6838) -> CD 8B 54
+	ld e, $15 ; AE83B (2b:683b) -> 1E 15
+	ld a, $12 ; AE83D (2b:683d) -> 3E 12
+	scall MoveEmote ; AE83F (2b:683f) -> CD F9 54
+	ld a, $28 ; AE842 (2b:6842) -> 3E 28
+	scall PlaySFX ; AE844 (2b:6844) -> CD 13 62
+	scall WaitEmote ; AE847 (2b:6847) -> CD EA 54
+	scall HideEmote ; AE84A (2b:684a) -> CD A0 54
+	ld hl, $001e ; AE84D (2b:684d) -> 21 1E 00
+	scall ScriptSleep ; AE850 (2b:6850) -> CD A4 59
+	ld hl, $0132 ; AE853 (2b:6853) -> 21 32 01
+	scall PrintTextWithNPCName ; AE856 (2b:6856) -> CD BE 57
+	ld bc, Data_ae744 ; AE859 (2b:6859) -> 01 44 67
+	ld e, $2b ; AE85C (2b:685c) -> 1E 2B
+	xor a ; AE85E (2b:685e) -> AF
+	scall MovePersonAndWait ; AE85F (2b:685f) -> CD 9D 59
+	scall WaitNPCStep ; AE862 (2b:6862) -> CD 21 55
+	ld e, $00 ; AE865 (2b:6865) -> 1E 00
+	xor a ; AE867 (2b:6867) -> AF
+	scall SetPersonVisibilityState ; AE868 (2b:6868) -> CD 52 54
+	xor a ; AE86B (2b:686b) -> AF
+	scall PlayMusic ; AE86C (2b:686c) -> CD FB 61
+	ld a, $08 ; AE86F (2b:686f) -> 3E 08
+	scall PlayMusic ; AE871 (2b:6871) -> CD FB 61
+	ret  ; AE874 (2b:6874) -> C9
+
+Data_ae875:
 IF DEF(SUN)
-	db $1e, $03, $21, $75, $66, $cd, $4f, $53, $3e, $01, $cd, $db, $5f, $21, $33, $00
-	db $cd, $43, $59, $b7, $c2, $20, $67, $1e, $01, $21, $dc, $66, $cd, $10, $54, $cd
-	db $31, $53, $21, $15, $03, $cd, $87, $62, $cd, $4c, $67, $1e, $01, $21, $33, $00
-	db $cd, $30, $59, $c3, $3b, $67, $3e, $03, $cd, $16, $60, $1e, $05, $21, $96, $66
-	db $cd, $39, $60, $3e, $08, $cd, $fb, $61, $cd, $31, $53, $21, $15, $03, $cd, $87
-	db $62, $c9, $12, $17, $ff, $ff, $12, $15, $ff, $ff, $11, $1c, $ff, $ff, $0a, $15
-	db $ff, $ff, $af, $cd, $fb, $61, $1e, $01, $af, $cd, $33, $61, $1e, $01, $af, $cd
-	db $33, $61, $1e, $01, $af, $cd, $33, $61, $1e, $01, $af, $cd, $33, $61, $1e, $01
-	db $af, $cd, $33, $61, $af, $cd, $68, $59, $1e, $01, $3e, $03, $cd, $33, $61, $1e
-	db $01, $3e, $03, $cd, $33, $61, $1e, $01, $3e, $03, $cd, $33, $61, $1e, $01, $3e
-	db $03, $cd, $33, $61, $1e, $01, $3e, $03, $cd, $33, $61, $1e, $01, $3e, $03, $cd
-	db $33, $61, $1e, $01, $3e, $03, $cd, $33, $61, $3e, $01, $cd, $fb, $61, $01, $48
-	db $67, $1e, $2b, $af, $cd, $9d, $59, $cd, $21, $55, $21, $31, $01, $cd, $be, $57
-	db $1e, $01, $3e, $01, $cd, $33, $61, $1e, $01, $3e, $01, $cd, $33, $61, $1e, $01
-	db $3e, $01, $cd, $33, $61, $1e, $01, $3e, $01, $cd, $33, $61, $1e, $01, $3e, $01
-	db $cd, $33, $61, $1e, $01, $3e, $01, $cd, $33, $61, $1e, $01, $3e, $01, $cd, $33
-	db $61, $3e, $01, $cd, $68, $59, $1e, $01, $3e, $02, $cd, $33, $61, $1e, $01, $3e
-	db $02, $cd, $33, $61, $1e, $01, $3e, $02, $cd, $33, $61, $1e, $01, $3e, $02, $cd
-	db $33, $61, $1e, $01, $3e, $02, $cd, $33, $61, $0e, $01, $11, $3c, $67, $3e, $2b
-	db $cd, $53, $59, $cd, $21, $55, $01, $40, $67, $1e, $2b, $af, $cd, $9d, $59, $cd
-	db $21, $55, $1e, $02, $af, $cd, $aa, $53, $0e, $01, $1e, $01, $3e, $05, $cd, $8b
-	db $54, $1e, $15, $3e, $12, $cd, $f9, $54, $3e, $28, $cd, $13, $62, $cd, $ea, $54
-	db $cd, $a0, $54, $21, $1e, $00, $cd, $a4, $59, $21, $32, $01, $cd, $be, $57, $01
-	db $44, $67, $1e, $2b, $af, $cd, $9d, $59, $cd, $21, $55, $1e, $00, $af, $cd, $52
-	db $54, $af, $cd, $fb, $61, $3e, $08, $cd, $fb, $61, $c9, $11, $0c, $01, $01, $1b
+	db $11, $0c, $01, $01, $1b
 	db $01, $0f, $0c, $0f, $0b, $2e, $16, $0c, $01, $01, $1b, $01, $14, $0c, $14, $0b
 	db $2e, $19, $14, $01, $01, $1b, $03, $14, $0c, $14, $0d, $2e, $1e, $14, $01, $01
 	db $1b, $03, $19, $0c, $19, $0b, $2e, $00, $03, $20, $16, $8f, $2b, $2e, $5e, $0f
@@ -321,31 +476,7 @@ IF DEF(SUN)
 	db $00, $00, $03, $20, $16, $39, $2d, $30, $1b, $0e, $0b, $00, $06, $07, $00, $00
 	db $03, $20, $16, $8e, $2f, $32, $7a, $0d, $0e, $13, $13, $04, $00
 ELIF DEF(STAR)
-	db $1e, $03, $21, $75, $66, $cd, $4f, $53, $3e, $01, $cd, $db, $5f, $21, $33, $00
-	db $cd, $43, $59, $b7, $c2, $20, $67, $1e, $01, $21, $dc, $66, $cd, $10, $54, $cd
-	db $31, $53, $21, $15, $03, $cd, $87, $62, $cd, $4c, $67, $1e, $01, $21, $33, $00
-	db $cd, $30, $59, $c3, $3b, $67, $3e, $03, $cd, $16, $60, $1e, $05, $21, $96, $66
-	db $cd, $39, $60, $3e, $08, $cd, $fb, $61, $cd, $31, $53, $21, $15, $03, $cd, $87
-	db $62, $c9, $12, $17, $ff, $ff, $12, $15, $ff, $ff, $11, $1c, $ff, $ff, $0a, $15
-	db $ff, $ff, $af, $cd, $fb, $61, $1e, $01, $af, $cd, $33, $61, $1e, $01, $af, $cd
-	db $33, $61, $1e, $01, $af, $cd, $33, $61, $1e, $01, $af, $cd, $33, $61, $1e, $01
-	db $af, $cd, $33, $61, $af, $cd, $68, $59, $1e, $01, $3e, $03, $cd, $33, $61, $1e
-	db $01, $3e, $03, $cd, $33, $61, $1e, $01, $3e, $03, $cd, $33, $61, $1e, $01, $3e
-	db $03, $cd, $33, $61, $1e, $01, $3e, $03, $cd, $33, $61, $1e, $01, $3e, $03, $cd
-	db $33, $61, $1e, $01, $3e, $03, $cd, $33, $61, $3e, $01, $cd, $fb, $61, $01, $48
-	db $67, $1e, $2b, $af, $cd, $9d, $59, $cd, $21, $55, $21, $31, $01, $cd, $be, $57
-	db $1e, $01, $3e, $01, $cd, $33, $61, $1e, $01, $3e, $01, $cd, $33, $61, $1e, $01
-	db $3e, $01, $cd, $33, $61, $1e, $01, $3e, $01, $cd, $33, $61, $1e, $01, $3e, $01
-	db $cd, $33, $61, $1e, $01, $3e, $01, $cd, $33, $61, $1e, $01, $3e, $01, $cd, $33
-	db $61, $3e, $01, $cd, $68, $59, $1e, $01, $3e, $02, $cd, $33, $61, $1e, $01, $3e
-	db $02, $cd, $33, $61, $1e, $01, $3e, $02, $cd, $33, $61, $1e, $01, $3e, $02, $cd
-	db $33, $61, $1e, $01, $3e, $02, $cd, $33, $61, $0e, $01, $11, $3c, $67, $3e, $2b
-	db $cd, $53, $59, $cd, $21, $55, $01, $40, $67, $1e, $2b, $af, $cd, $9d, $59, $cd
-	db $21, $55, $1e, $02, $af, $cd, $aa, $53, $0e, $01, $1e, $01, $3e, $05, $cd, $8b
-	db $54, $1e, $15, $3e, $12, $cd, $f9, $54, $3e, $28, $cd, $13, $62, $cd, $ea, $54
-	db $cd, $a0, $54, $21, $1e, $00, $cd, $a4, $59, $21, $32, $01, $cd, $be, $57, $01
-	db $44, $67, $1e, $2b, $af, $cd, $9d, $59, $cd, $21, $55, $1e, $00, $af, $cd, $52
-	db $54, $af, $cd, $fb, $61, $3e, $08, $cd, $fb, $61, $c9, $11, $0c, $01, $01, $1b
+	db $11, $0c, $01, $01, $1b
 	db $01, $0f, $0c, $0f, $0b, $2e, $16, $0c, $01, $01, $1b, $01, $14, $0c, $14, $0b
 	db $2e, $19, $14, $01, $01, $1b, $03, $14, $0c, $14, $0d, $2e, $1e, $14, $01, $01
 	db $1b, $03, $19, $0c, $19, $0b, $2e, $00, $03, $20, $16, $8f, $2b, $2e, $5e, $0f
