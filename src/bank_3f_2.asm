@@ -1007,7 +1007,7 @@ ELIF DEF(STAR)
 	db $95, $8b, $85, $55, $28
 ENDC
 
-Func_fafa8:
+Func_fafa8::
 	add sp, -$16
 	ld hl, sp+$0
 	reg16swap de, hl
