@@ -1743,21 +1743,33 @@ ENDC
 
 Func_aa321:
 	ld hl, $010b ; AA321 (2a:6321) -> 21 0B 01
-	call PrintTextStandard_2a ; AA324 (2a:6324) -> CD 98 44
+	scall PrintTextStandard ; AA324 (2a:6324) -> CD 98 44
 	ld de, Data_aa35f ; AA327 (2a:6327) -> 11 5F 63
 	ld hl, Data_aa2f8 ; AA32A (2a:632a) -> 21 F8 62
-	call ScriptedBattle_2a ; AA32D (2a:632d) -> CD D3 4D
+	scall ScriptedBattle ; AA32D (2a:632d) -> CD D3 4D
 	or a ; AA330 (2a:6330) -> B7
 	jp nz, Func_aa33d ; AA331 (2a:6331) -> C2 3D 63
 	ld e, $01 ; AA334 (2a:6334) -> 1E 01
 	ld hl, $00f7 ; AA336 (2a:6336) -> 21 F7 00
-	call EventFlagAction_2a ; AA339 (2a:6339) -> CD 1B 46
+	scall EventFlagAction ; AA339 (2a:6339) -> CD 1B 46
 	ret  ; AA33C (2a:633c) -> C9
 
 Func_aa33d:
-	db $af, $cd, $e6, $4e, $3e, $04, $cd, $e6, $4e, $21, $0f, $01, $cd, $98, $44, $01
-	db $f4, $62, $1e, $2a, $af, $cd, $88, $46, $cd, $0c, $42, $1e, $00, $af, $cd, $3d
-	db $41, $c9
+	xor a ; AA33D (2a:633d) -> AF
+	scall PlayMusic ; AA33E (2a:633e) -> CD E6 4E
+	ld a, $04 ; AA341 (2a:6341) -> 3E 04
+	scall PlayMusic ; AA343 (2a:6343) -> CD E6 4E
+	ld hl, $010f ; AA346 (2a:6346) -> 21 0F 01
+	scall PrintTextStandard ; AA349 (2a:6349) -> CD 98 44
+	ld bc, Data_aa2f4 ; AA34C (2a:634c) -> 01 F4 62
+	ld e, $2a ; AA34F (2a:634f) -> 1E 2A
+	xor a ; AA351 (2a:6351) -> AF
+	scall MovePersonAndWait ; AA352 (2a:6352) -> CD 88 46
+	scall WaitNPCStep ; AA355 (2a:6355) -> CD 0C 42
+	ld e, $00 ; AA358 (2a:6358) -> 1E 00
+	xor a ; AA35A (2a:635a) -> AF
+	scall SetPersonVisibilityState ; AA35B (2a:635b) -> CD 3D 41
+	ret  ; AA35E (2a:635e) -> C9
 
 Data_aa35f:
 	dstr "(へいし)"
@@ -1778,200 +1790,820 @@ ENDC
 
 Func_aa392:
 	ld hl, $010d ; AA392 (2a:6392) -> 21 0D 01
-	call PrintTextStandard_2a ; AA395 (2a:6395) -> CD 98 44
+	scall PrintTextStandard ; AA395 (2a:6395) -> CD 98 44
 	ld de, Data_aa3d2 ; AA398 (2a:6398) -> 11 D2 63
 	ld hl, Data_aa369 ; AA39B (2a:639b) -> 21 69 63
-	call ScriptedBattle_2a ; AA39E (2a:639e) -> CD D3 4D
+	scall ScriptedBattle ; AA39E (2a:639e) -> CD D3 4D
 	or a ; AA3A1 (2a:63a1) -> B7
 	jp nz, .asm_aa3ae ; AA3A2 (2a:63a2) -> C2 AE 63
 	ld e, $01 ; AA3A5 (2a:63a5) -> 1E 01
 	ld hl, $00f7 ; AA3A7 (2a:63a7) -> 21 F7 00
-	call EventFlagAction_2a ; AA3AA (2a:63aa) -> CD 1B 46
+	scall EventFlagAction ; AA3AA (2a:63aa) -> CD 1B 46
 	ret  ; AA3AD (2a:63ad) -> C9
 .asm_aa3ae:
 	xor a ; AA3AE (2a:63ae) -> AF
-	call PlayMusic_2a ; AA3AF (2a:63af) -> CD E6 4E
+	scall PlayMusic ; AA3AF (2a:63af) -> CD E6 4E
 	ld a, $04 ; AA3B2 (2a:63b2) -> 3E 04
-	call PlayMusic_2a ; AA3B4 (2a:63b4) -> CD E6 4E
+	scall PlayMusic ; AA3B4 (2a:63b4) -> CD E6 4E
 	ld hl, $010f ; AA3B7 (2a:63b7) -> 21 0F 01
-	call PrintTextStandard_2a ; AA3BA (2a:63ba) -> CD 98 44
+	scall PrintTextStandard ; AA3BA (2a:63ba) -> CD 98 44
 	ld bc, Data_aa365 ; AA3BD (2a:63bd) -> 01 65 63
 	ld e, $2a ; AA3C0 (2a:63c0) -> 1E 2A
 	ld a, $01 ; AA3C2 (2a:63c2) -> 3E 01
-	call MovePersonAndWait_2a ; AA3C4 (2a:63c4) -> CD 88 46
-	call WaitNPCStep_2a ; AA3C7 (2a:63c7) -> CD 0C 42
+	scall MovePersonAndWait ; AA3C4 (2a:63c4) -> CD 88 46
+	scall WaitNPCStep ; AA3C7 (2a:63c7) -> CD 0C 42
 	ld e, $00 ; AA3CA (2a:63ca) -> 1E 00
 	ld a, $01 ; AA3CC (2a:63cc) -> 3E 01
-	call SetPersonVisibilityState_2a ; AA3CE (2a:63ce) -> CD 3D 41
+	scall SetPersonVisibilityState ; AA3CE (2a:63ce) -> CD 3D 41
 	ret  ; AA3D1 (2a:63d1) -> C9
 
 Data_aa3d2:
 	dstr "(へいし)"
 
 Data_aa3d8:
-IF DEF(SUN)
-	db $0c, $1c, $02, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $0c, $04, $02, $01, $19
-	db $00, $08, $14, $08, $13, $2e, $19, $04, $01, $01, $1c, $00, $06, $1a, $06, $19
-	db $2e, $05, $0e, $01, $01, $20, $05, $06, $0b, $06, $0a, $34, $08, $0e, $01, $01
-	db $20, $06, $06, $0c, $06, $0b, $34, $1d, $16, $01, $01, $20, $07, $05, $09, $05
-	db $08, $34, $20, $16, $01, $01, $20, $08, $05, $09, $05, $08, $34, $05, $15, $01
-	db $01, $20, $01, $01, $08, $01, $07, $34, $08, $15, $01, $01, $20, $01, $01, $08
-	db $01, $07, $34, $11, $15, $01, $01, $20, $01, $01, $08, $01, $07, $34, $14, $15
-	db $01, $01, $20, $01, $01, $08, $01, $07, $34, $17, $15, $01, $01, $20, $01, $01
-	db $08, $01, $07, $34, $1e, $0a, $01, $01, $20, $01, $01, $08, $01, $07, $34, $21
-	db $0a, $01, $01, $20, $01, $01, $08, $01, $07, $34, $07, $08, $01, $01, $20, $03
-	db $01, $08, $01, $07, $34, $bb, $01, $ff, $ff, $be, $01, $ff, $ff, $bc, $01, $ff
-	db $ff, $bd, $01, $ff, $ff, $af, $02, $ff, $ff, $b1, $02, $ff, $ff, $b0, $02, $ff
-	db $ff, $23, $03, $24, $03, $25, $03, $ff, $ff, $26, $03, $ff, $ff, $ff, $00, $0b
-	db $05, $01, $01, $00, $04, $00, $2a, $5f, $48, $91, $64, $ff, $00, $0e, $05, $01
-	db $01, $00, $04, $00, $2a, $5f, $48, $91, $64, $ff, $00, $18, $05, $01, $01, $00
-	db $04, $00, $2a, $5f, $48, $95, $64, $ff, $00, $1a, $05, $01, $01, $00, $04, $00
-	db $2a, $5f, $48, $95, $64, $ff, $00, $0b, $1b, $01, $01, $00, $04, $00, $2a, $5f
-	db $48, $8d, $64, $ff, $00, $0e, $1b, $01, $01, $00, $04, $00, $2a, $5f, $48, $8d
-	db $64, $ff, $00, $07, $19, $01, $01, $00, $04, $00, $2a, $7c, $4a, $99, $64, $ff
-	db $00, $14, $19, $01, $01, $00, $04, $00, $2a, $7c, $4a, $99, $64, $ff, $00, $12
-	db $07, $03, $03, $00, $04, $00, $2a, $ee, $66, $00, $00, $09, $04, $0b, $06, $01
-	db $01, $02, $04, $00, $2a, $5f, $48, $81, $64, $ff, $00, $0c, $06, $01, $01, $00
-	db $04, $01, $2a, $b6, $67, $00, $00, $ff, $00, $0d, $06, $01, $01, $00, $04, $01
-	db $2a, $f5, $67, $00, $00, $09, $04, $0e, $06, $01, $01, $02, $04, $00, $2a, $5f
-	db $48, $85, $64, $09, $04, $18, $06, $01, $01, $02, $04, $00, $2a, $5f, $48, $89
-	db $64, $ff, $00, $19, $06, $01, $01, $00, $04, $01, $2a, $34, $68, $00, $00, $03
-	db $04, $0d, $18, $01, $01, $02, $04, $00, $2a, $6f, $68, $00, $00, $00, $04, $0c
-	db $11, $01, $01, $01, $04, $00, $2a, $5f, $48, $7d, $64, $10, $0c, $19, $00, $01
-	db $01, $02, $04, $00, $2a, $00, $00, $00, $00, $0b, $0c, $19, $00, $01, $01, $02
-	db $04, $00, $2a, $00, $00, $00, $00, $ff, $00, $07, $08, $01, $01, $00, $04, $00
-	db $2a, $5f, $48, $a1, $64, $ff, $00, $07, $08, $01, $01, $00, $04, $01, $2a, $87
-	db $6b, $00, $00
-ELIF DEF(STAR)
-	db $0c, $1c, $02, $01, $ff, $ff, $ff, $ff, $ff, $ff, $2e, $0c, $04, $02, $01, $19
-	db $00, $08, $14, $08, $13, $2e, $19, $04, $01, $01, $1c, $00, $06, $1a, $06, $19
-	db $2e, $05, $0e, $01, $01, $20, $05, $06, $0b, $06, $0a, $34, $08, $0e, $01, $01
-	db $20, $06, $06, $0c, $06, $0b, $34, $1d, $16, $01, $01, $20, $07, $05, $09, $05
-	db $08, $34, $20, $16, $01, $01, $20, $08, $05, $09, $05, $08, $34, $05, $15, $01
-	db $01, $20, $01, $01, $08, $01, $07, $34, $08, $15, $01, $01, $20, $01, $01, $08
-	db $01, $07, $34, $11, $15, $01, $01, $20, $01, $01, $08, $01, $07, $34, $14, $15
-	db $01, $01, $20, $01, $01, $08, $01, $07, $34, $17, $15, $01, $01, $20, $01, $01
-	db $08, $01, $07, $34, $1e, $0a, $01, $01, $20, $01, $01, $08, $01, $07, $34, $21
-	db $0a, $01, $01, $20, $01, $01, $08, $01, $07, $34, $07, $08, $01, $01, $20, $03
-	db $01, $08, $01, $07, $34, $bb, $01, $ff, $ff, $be, $01, $ff, $ff, $bc, $01, $ff
-	db $ff, $bd, $01, $ff, $ff, $af, $02, $ff, $ff, $b1, $02, $ff, $ff, $b0, $02, $ff
-	db $ff, $23, $03, $24, $03, $25, $03, $ff, $ff, $26, $03, $ff, $ff, $ff, $00, $0b
-	db $05, $01, $01, $00, $04, $00, $2a, $5f, $48, $91, $64, $ff, $00, $0e, $05, $01
-	db $01, $00, $04, $00, $2a, $5f, $48, $91, $64, $ff, $00, $18, $05, $01, $01, $00
-	db $04, $00, $2a, $5f, $48, $95, $64, $ff, $00, $1a, $05, $01, $01, $00, $04, $00
-	db $2a, $5f, $48, $95, $64, $ff, $00, $0b, $1b, $01, $01, $00, $04, $00, $2a, $5f
-	db $48, $8d, $64, $ff, $00, $0e, $1b, $01, $01, $00, $04, $00, $2a, $5f, $48, $8d
-	db $64, $ff, $00, $07, $19, $01, $01, $00, $04, $00, $2a, $7c, $4a, $99, $64, $ff
-	db $00, $14, $19, $01, $01, $00, $04, $00, $2a, $7c, $4a, $99, $64, $ff, $00, $12
-	db $07, $03, $03, $00, $04, $00, $2a, $ee, $66, $00, $00, $09, $04, $0b, $06, $01
-	db $01, $02, $04, $00, $2a, $5f, $48, $81, $64, $ff, $00, $0c, $06, $01, $01, $00
-	db $04, $01, $2a, $b6, $67, $00, $00, $ff, $00, $0d, $06, $01, $01, $00, $04, $01
-	db $2a, $f5, $67, $00, $00, $09, $04, $0e, $06, $01, $01, $02, $04, $00, $2a, $5f
-	db $48, $85, $64, $09, $04, $18, $06, $01, $01, $02, $04, $00, $2a, $5f, $48, $89
-	db $64, $ff, $00, $19, $06, $01, $01, $00, $04, $01, $2a, $34, $68, $00, $00, $03
-	db $04, $0d, $18, $01, $01, $02, $04, $00, $2a, $6f, $68, $00, $00, $00, $04, $0c
-	db $11, $01, $01, $01, $04, $00, $2a, $5f, $48, $7d, $64, $10, $0c, $19, $00, $01
-	db $01, $02, $04, $00, $2a, $00, $00, $00, $00, $0b, $0c, $19, $00, $01, $01, $02
-	db $04, $00, $2a, $00, $00, $00, $00, $ff, $00, $07, $08, $01, $01, $00, $04, $00
-	db $2a, $5f, $48, $a1, $64, $ff, $00, $07, $08, $01, $01, $00, $04, $01, $2a, $87
-	db $6b, $00, $00
-ENDC
+	warpdef $0c, $1c, $02, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
+	warpdef $0c, $04, $02, $01, MAP_25_00, $08, $14, $08, $13, $2e
+	warpdef $19, $04, $01, $01, MAP_28_00, $06, $1a, $06, $19, $2e
+	warpdef $05, $0e, $01, $01, MAP_32_05, $06, $0b, $06, $0a, $34
+	warpdef $08, $0e, $01, $01, MAP_32_06, $06, $0c, $06, $0b, $34
+	warpdef $1d, $16, $01, $01, MAP_32_07, $05, $09, $05, $08, $34
+	warpdef $20, $16, $01, $01, MAP_32_08, $05, $09, $05, $08, $34
+	warpdef $05, $15, $01, $01, MAP_32_01, $01, $08, $01, $07, $34
+	warpdef $08, $15, $01, $01, MAP_32_01, $01, $08, $01, $07, $34
+	warpdef $11, $15, $01, $01, MAP_32_01, $01, $08, $01, $07, $34
+	warpdef $14, $15, $01, $01, MAP_32_01, $01, $08, $01, $07, $34
+	warpdef $17, $15, $01, $01, MAP_32_01, $01, $08, $01, $07, $34
+	warpdef $1e, $0a, $01, $01, MAP_32_01, $01, $08, $01, $07, $34
+	warpdef $21, $0a, $01, $01, MAP_32_01, $01, $08, $01, $07, $34
+
+Data_aa472:
+	warpdef $07, $08, $01, $01, MAP_32_03, $01, $08, $01, $07, $34
+
+Data_aa47d:
+	dw $1bb
+	dw -1
+
+Data_aa481:
+	dw $1be
+	dw -1
+
+Data_aa485:
+	dw $1bc
+	dw -1
+
+Data_aa489:
+	dw $1bd
+	dw -1
+
+Data_aa48d:
+	dw $2af
+	dw -1
+
+Data_aa491:
+	dw $2b1
+	dw -1
+
+Data_aa495:
+	dw $2b0
+	dw -1
+
+Data_aa499:
+	dw $323, $324, $325
+	dw -1
+
+Data_aa4a1:
+	dw $326
+	dw -1
+
+Data_aa4a5:
+	person_event $ff, $00, $0b, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_2a, Data_aa491
+	person_event $ff, $00, $0e, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_2a, Data_aa491
+	person_event $ff, $00, $18, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_2a, Data_aa495
+	person_event $ff, $00, $1a, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_2a, Data_aa495
+	person_event $ff, $00, $0b, $1b, $01, $01, $00, $04, $00, PrintTextFacePlayer_2a, Data_aa48d
+	person_event $ff, $00, $0e, $1b, $01, $01, $00, $04, $00, PrintTextFacePlayer_2a, Data_aa48d
+	person_event $ff, $00, $07, $19, $01, $01, $00, $04, $00, PrintTextFacePlayerYesOrNo_2a, Data_aa499
+	person_event $ff, $00, $14, $19, $01, $01, $00, $04, $00, PrintTextFacePlayerYesOrNo_2a, Data_aa499
+	person_event $ff, $00, $12, $07, $03, $03, $00, $04, $00, Func_aa6ee, NULL
+
+Data_aa523:
+	person_event $09, $04, $0b, $06, $01, $01, $02, $04, $00, PrintTextFacePlayer_2a, Data_aa481
+	person_event $ff, $00, $0c, $06, $01, $01, $00, $04, $01, Func_aa7b6, NULL
+	person_event $ff, $00, $0d, $06, $01, $01, $00, $04, $01, Func_aa7f5, NULL
+	person_event $09, $04, $0e, $06, $01, $01, $02, $04, $00, PrintTextFacePlayer_2a, Data_aa485
+	person_event $09, $04, $18, $06, $01, $01, $02, $04, $00, PrintTextFacePlayer_2a, Data_aa489
+	person_event $ff, $00, $19, $06, $01, $01, $00, $04, $01, Func_aa834, NULL
+
+Data_aa577:
+	person_event $03, $04, $0d, $18, $01, $01, $02, $04, $00, Func_aa86f, NULL
+	person_event $00, $04, $0c, $11, $01, $01, $01, $04, $00, PrintTextFacePlayer_2a, Data_aa47d
+
+Data_aa593:
+	person_event $10, $0c, $19, $00, $01, $01, $02, $04, $00, NULL, NULL
+
+Data_aa5a1:
+	person_event $0b, $0c, $19, $00, $01, $01, $02, $04, $00, NULL, NULL
+
+Data_aa5af:
+	person_event $ff, $00, $07, $08, $01, $01, $00, $04, $00, PrintTextFacePlayer_2a, Data_aa4a1
+
+Data_aa5bd:
+	person_event $ff, $00, $07, $08, $01, $01, $00, $04, $01, Func_aab87, NULL
 
 Func_aa5cb:: ; aa5cb
+	ld a, $09 ; AA5CB (2a:65cb) -> 3E 09
+	ld [wc789], a ; AA5CD (2a:65cd) -> EA 89 C7
+	ld a, $0d ; AA5D0 (2a:65d0) -> 3E 0D
+	ld [wc7e2], a ; AA5D2 (2a:65d2) -> EA E2 C7
+	call Func_aaaad ; AA5D5 (2a:65d5) -> CD AD 6A
+	ld hl, Func_aaaad ; AA5D8 (2a:65d8) -> 21 AD 6A
+	scall Func_80f11 ; AA5DB (2a:65db) -> CD 11 4F
+	ld e, $0e ; AA5DE (2a:65de) -> 1E 0E
+	ld hl, Data_aa3d8 ; AA5E0 (2a:65e0) -> 21 D8 63
+	scall LoadWarps ; AA5E3 (2a:65e3) -> CD 3A 40
+	ld e, $09 ; AA5E6 (2a:65e6) -> 1E 09
+	ld hl, Data_aa4a5 ; AA5E8 (2a:65e8) -> 21 A5 64
+	scall LoadMapObjects ; AA5EB (2a:65eb) -> CD FB 40
+	ld e, $02 ; AA5EE (2a:65ee) -> 1E 02
+	ld hl, Data_aa577 ; AA5F0 (2a:65f0) -> 21 77 65
+	scall LoadMapObjects ; AA5F3 (2a:65f3) -> CD FB 40
+	ld a, $01 ; AA5F6 (2a:65f6) -> 3E 01
+	scall LoadPlayerSprite ; AA5F8 (2a:65f8) -> CD C6 4C
+	ld a, $12 ; AA5FB (2a:65fb) -> 3E 12
+	scall PlayMusic ; AA5FD (2a:65fd) -> CD E6 4E
+	ld a, [wc790] ; AA600 (2a:6600) -> FA 90 C7
+	or a ; AA603 (2a:6603) -> B7
+	jp z, label_aa622 ; AA604 (2a:6604) -> CA 22 66
+	ld a, [wc790] ; AA607 (2a:6607) -> FA 90 C7
+	cp $07 ; AA60A (2a:660a) -> FE 07
+	jp nc, label_aa622 ; AA60C (2a:660c) -> D2 22 66
+	ld e, $01 ; AA60F (2a:660f) -> 1E 01
+	ld hl, Data_aa472 ; AA611 (2a:6611) -> 21 72 64
+	scall LoadWarps ; AA614 (2a:6614) -> CD 3A 40
+	ld e, $01 ; AA617 (2a:6617) -> 1E 01
+	ld hl, Data_aa5bd ; AA619 (2a:6619) -> 21 BD 65
+	scall LoadMapObjects ; AA61C (2a:661c) -> CD FB 40
+	jp label_aa62a ; AA61F (2a:661f) -> C3 2A 66
+label_aa622:
+	ld e, $01 ; AA622 (2a:6622) -> 1E 01
+	ld hl, Data_aa5af ; AA624 (2a:6624) -> 21 AF 65
+	scall LoadMapObjects ; AA627 (2a:6627) -> CD FB 40
+label_aa62a:
+	ld hl, $0034 ; AA62A (2a:662a) -> 21 34 00
+	scall CheckEventFlag ; AA62D (2a:662d) -> CD 2E 46
+	cp $01 ; AA630 (2a:6630) -> FE 01
+	jp nz, label_aa666 ; AA632 (2a:6632) -> C2 66 66
+	ld hl, $00c3 ; AA635 (2a:6635) -> 21 C3 00
+	scall CheckEventFlag ; AA638 (2a:6638) -> CD 2E 46
+	or a ; AA63B (2a:663b) -> B7
+	jp nz, label_aa666 ; AA63C (2a:663c) -> C2 66 66
+	ld a, [wBackupMapGroup] ; AA63F (2a:663f) -> FA DF C7
+	cp $1a ; AA642 (2a:6642) -> FE 1A
+	jp nz, label_aa666 ; AA644 (2a:6644) -> C2 66 66
+	ld hl, $0035 ; AA647 (2a:6647) -> 21 35 00
+	scall CheckEventFlag ; AA64A (2a:664a) -> CD 2E 46
+	or a ; AA64D (2a:664d) -> B7
+	jp nz, label_aa666 ; AA64E (2a:664e) -> C2 66 66
+	ld e, $01 ; AA651 (2a:6651) -> 1E 01
+	ld hl, Data_aa5a1 ; AA653 (2a:6653) -> 21 A1 65
+	scall LoadMapObjects ; AA656 (2a:6656) -> CD FB 40
+	xor a ; AA659 (2a:6659) -> AF
+	scall Func_80653 ; AA65A (2a:665a) -> CD 53 46
+	scall Func_8001c ; AA65D (2a:665d) -> CD 1C 40
+	call Func_aab3f ; AA660 (2a:6660) -> CD 3F 6B
+	jp label_aa6dd ; AA663 (2a:6663) -> C3 DD 66
+label_aa666:
+	ld hl, $0022 ; AA666 (2a:6666) -> 21 22 00
+	scall CheckEventFlag ; AA669 (2a:6669) -> CD 2E 46
+	cp $01 ; AA66C (2a:666c) -> FE 01
+	jp nz, label_aa69e ; AA66E (2a:666e) -> C2 9E 66
+	ld hl, $0043 ; AA671 (2a:6671) -> 21 43 00
+	scall CheckEventFlag ; AA674 (2a:6674) -> CD 2E 46
+	or a ; AA677 (2a:6677) -> B7
+	jp nz, label_aa69e ; AA678 (2a:6678) -> C2 9E 66
+	ld hl, $00c2 ; AA67B (2a:667b) -> 21 C2 00
+	scall CheckEventFlag ; AA67E (2a:667e) -> CD 2E 46
+	or a ; AA681 (2a:6681) -> B7
+	jp nz, label_aa69e ; AA682 (2a:6682) -> C2 9E 66
+	ld a, [wBackupMapGroup] ; AA685 (2a:6685) -> FA DF C7
+	cp $ff ; AA688 (2a:6688) -> FE FF
+	jp z, label_aa69b ; AA68A (2a:668a) -> CA 9B 66
+	ld e, $01 ; AA68D (2a:668d) -> 1E 01
+	ld hl, Data_aa593 ; AA68F (2a:668f) -> 21 93 65
+	scall LoadMapObjects ; AA692 (2a:6692) -> CD FB 40
+	scall Func_8001c ; AA695 (2a:6695) -> CD 1C 40
+	call Func_aaad6 ; AA698 (2a:6698) -> CD D6 6A
+label_aa69b:
+	jp label_aa6dd ; AA69B (2a:669b) -> C3 DD 66
+label_aa69e:
+	ld hl, $0022 ; AA69E (2a:669e) -> 21 22 00
+	scall CheckEventFlag ; AA6A1 (2a:66a1) -> CD 2E 46
+	or a ; AA6A4 (2a:66a4) -> B7
+	jp nz, label_aa6da ; AA6A5 (2a:66a5) -> C2 DA 66
+	ld e, $06 ; AA6A8 (2a:66a8) -> 1E 06
+	ld hl, Data_aa523 ; AA6AA (2a:66aa) -> 21 23 65
+	scall LoadMapObjects ; AA6AD (2a:66ad) -> CD FB 40
+	ld hl, $0014 ; AA6B0 (2a:66b0) -> 21 14 00
+	scall CheckEventFlag ; AA6B3 (2a:66b3) -> CD 2E 46
+	cp $01 ; AA6B6 (2a:66b6) -> FE 01
+	jp nz, label_aa6d4 ; AA6B8 (2a:66b8) -> C2 D4 66
+	ld hl, $0007 ; AA6BB (2a:66bb) -> 21 07 00
+	scall CheckEventFlag ; AA6BE (2a:66be) -> CD 2E 46
+	cp $01 ; AA6C1 (2a:66c1) -> FE 01
+	jp nz, label_aa6d4 ; AA6C3 (2a:66c3) -> C2 D4 66
+	ld e, $00 ; AA6C6 (2a:66c6) -> 1E 00
+	ld a, $10 ; AA6C8 (2a:66c8) -> 3E 10
+	scall SetPersonVisibilityState ; AA6CA (2a:66ca) -> CD 3D 41
+	ld e, $00 ; AA6CD (2a:66cd) -> 1E 00
+	ld a, $11 ; AA6CF (2a:66cf) -> 3E 11
+	scall SetPersonVisibilityState ; AA6D1 (2a:66d1) -> CD 3D 41
+label_aa6d4:
+	scall Func_8001c ; AA6D4 (2a:66d4) -> CD 1C 40
+	jp label_aa6dd ; AA6D7 (2a:66d7) -> C3 DD 66
+label_aa6da:
+	scall Func_8001c ; AA6DA (2a:66da) -> CD 1C 40
+label_aa6dd:
+	ret  ; AA6DD (2a:66dd) -> C9
+
+Data_aa6de:
+	db $13, $0a, $ff, $ff
+
+Data_aa6e2:
+	db $11, $0a, $13, $0a, $ff, $ff
+
+Data_aa6e8:
+	db $15, $0a, $13, $0a, $ff, $ff
+
+Func_aa6ee:
+	ld a, e ; AA6EE (2a:66ee) -> 7B
+	or a ; AA6EF (2a:66ef) -> B7
+	jp nz, label_aa7b1 ; AA6F0 (2a:66f0) -> C2 B1 67
+	ld a, $0f ; AA6F3 (2a:66f3) -> 3E 0F
+	scall Func_80e6d ; AA6F5 (2a:66f5) -> CD 6D 4E
+	cp $ff ; AA6F8 (2a:66f8) -> FE FF
+	jp nz, label_aa71b ; AA6FA (2a:66fa) -> C2 1B 67
+	ld a, $41 ; AA6FD (2a:66fd) -> 3E 41
+	scall Func_80e6d ; AA6FF (2a:66ff) -> CD 6D 4E
+	cp $ff ; AA702 (2a:6702) -> FE FF
+	jp nz, label_aa71b ; AA704 (2a:6704) -> C2 1B 67
+	ld a, $50 ; AA707 (2a:6707) -> 3E 50
+	scall Func_80e6d ; AA709 (2a:6709) -> CD 6D 4E
+	cp $ff ; AA70C (2a:670c) -> FE FF
+	jp nz, label_aa71b ; AA70E (2a:670e) -> C2 1B 67
+	ld a, $64 ; AA711 (2a:6711) -> 3E 64
+	scall Func_80e6d ; AA713 (2a:6713) -> CD 6D 4E
+	cp $ff ; AA716 (2a:6716) -> FE FF
+	jp z, label_aa7ab ; AA718 (2a:6718) -> CA AB 67
+label_aa71b:
+	ld a, [wc790] ; AA71B (2a:671b) -> FA 90 C7
+	or a ; AA71E (2a:671e) -> B7
+	jp z, label_aa7a2 ; AA71F (2a:671f) -> CA A2 67
+	ld a, [wc790] ; AA722 (2a:6722) -> FA 90 C7
+	cp $06 ; AA725 (2a:6725) -> FE 06
+	jp nc, label_aa7a2 ; AA727 (2a:6727) -> D2 A2 67
+	ld hl, $032d ; AA72A (2a:672a) -> 21 2D 03
+	scall PrintTextWithYesNoBox ; AA72D (2a:672d) -> CD BA 44
+	or a ; AA730 (2a:6730) -> B7
+	jp nz, label_aa79f ; AA731 (2a:6731) -> C2 9F 67
+	ld a, [wPlayerFacing] ; AA734 (2a:6734) -> FA 38 C8
+	cp $01 ; AA737 (2a:6737) -> FE 01
+	jp z, label_aa74d ; AA739 (2a:6739) -> CA 4D 67
+	or a ; AA73C (2a:673c) -> B7
+	jp nz, label_aa75a ; AA73D (2a:673d) -> C2 5A 67
+	ld c, $01 ; AA740 (2a:6740) -> 0E 01
+	ld de, Data_aa6de ; AA742 (2a:6742) -> 11 DE 66
+	ld a, $2a ; AA745 (2a:6745) -> 3E 2A
+	scall MovePlayer ; AA747 (2a:6747) -> CD 3E 46
+	jp label_aa764 ; AA74A (2a:674a) -> C3 64 67
+label_aa74d:
+	ld c, $01 ; AA74D (2a:674d) -> 0E 01
+	ld de, Data_aa6e2 ; AA74F (2a:674f) -> 11 E2 66
+	ld a, $2a ; AA752 (2a:6752) -> 3E 2A
+	scall MovePlayer ; AA754 (2a:6754) -> CD 3E 46
+	jp label_aa764 ; AA757 (2a:6757) -> C3 64 67
+label_aa75a:
+	ld c, $01 ; AA75A (2a:675a) -> 0E 01
+	ld de, Data_aa6e8 ; AA75C (2a:675c) -> 11 E8 66
+	ld a, $2a ; AA75F (2a:675f) -> 3E 2A
+	scall MovePlayer ; AA761 (2a:6761) -> CD 3E 46
+label_aa764:
+	scall WaitNPCStep ; AA764 (2a:6764) -> CD 0C 42
+	xor a ; AA767 (2a:6767) -> AF
+	scall PlayMusic ; AA768 (2a:6768) -> CD E6 4E
+	ld a, $0a ; AA76B (2a:676b) -> 3E 0A
+	scall PlayMusic ; AA76D (2a:676d) -> CD E6 4E
+	xor a ; AA770 (2a:6770) -> AF
+	scall Func_80653 ; AA771 (2a:6771) -> CD 53 46
+	ld c, $01 ; AA774 (2a:6774) -> 0E 01
+	ld e, $01 ; AA776 (2a:6776) -> 1E 01
+	ld a, $0b ; AA778 (2a:6778) -> 3E 0B
+	scall LoadEmote ; AA77A (2a:677a) -> CD 76 41
+	ld a, $44 ; AA77D (2a:677d) -> 3E 44
+	scall PlaySFX ; AA77F (2a:677f) -> CD FE 4E
+	scall WaitEmote ; AA782 (2a:6782) -> CD D5 41
+	scall HideEmote ; AA785 (2a:6785) -> CD 8B 41
+	ld a, $04 ; AA788 (2a:6788) -> 3E 04
+	scall LoadPlayerSprite ; AA78A (2a:678a) -> CD C6 4C
+	ld a, $02 ; AA78D (2a:678d) -> 3E 02
+	scall PlayerFace ; AA78F (2a:678f) -> CD 77 46
+	ld l, $12 ; AA792 (2a:6792) -> 2E 12
+	push hl ; AA794 (2a:6794) -> E5
+	ld c, $0a ; AA795 (2a:6795) -> 0E 0A
+	ld e, $01 ; AA797 (2a:6797) -> 1E 01
+	ld a, $1e ; AA799 (2a:6799) -> 3E 1E
+	scall Func_80dff ; AA79B (2a:679b) -> CD FF 4D
+	pop bc ; AA79E (2a:679e) -> C1
+label_aa79f:
+	jp label_aa7a8 ; AA79F (2a:679f) -> C3 A8 67
+label_aa7a2:
+	ld hl, $0377 ; AA7A2 (2a:67a2) -> 21 77 03
+	scall PrintTextStandard ; AA7A5 (2a:67a5) -> CD 98 44
+label_aa7a8:
+	jp label_aa7b1 ; AA7A8 (2a:67a8) -> C3 B1 67
+label_aa7ab:
+	ld hl, $0376 ; AA7AB (2a:67ab) -> 21 76 03
+	scall PrintTextStandard ; AA7AE (2a:67ae) -> CD 98 44
+label_aa7b1:
+	ret  ; AA7B1 (2a:67b1) -> C9
+
+Data_aa7b2:
+	db $0c, $07, $ff, $ff
+
+Func_aa7b6:
+	push af ; AA7B6 (2a:67b6) -> F5
+	ld a, e ; AA7B7 (2a:67b7) -> 7B
+	cp $02 ; AA7B8 (2a:67b8) -> FE 02
+	jp nz, label_aa7ef ; AA7BA (2a:67ba) -> C2 EF 67
+	ld e, $01 ; AA7BD (2a:67bd) -> 1E 01
+	ld hl, sp+$01 ; AA7BF (2a:67bf) -> F8 01
+	ld a, [hl] ; AA7C1 (2a:67c1) -> 7E
+	dec a ; AA7C2 (2a:67c2) -> 3D
+	scall SpriteFace ; AA7C3 (2a:67c3) -> CD 95 40
+	ld hl, $001e ; AA7C6 (2a:67c6) -> 21 1E 00
+	scall ScriptSleep ; AA7C9 (2a:67c9) -> CD 8F 46
+	ld a, $03 ; AA7CC (2a:67cc) -> 3E 03
+	scall PlayerFace ; AA7CE (2a:67ce) -> CD 77 46
+	ld a, $69 ; AA7D1 (2a:67d1) -> 3E 69
+	scall PlaySFX ; AA7D3 (2a:67d3) -> CD FE 4E
+	ld hl, $01bc ; AA7D6 (2a:67d6) -> 21 BC 01
+	scall PrintTextStandard ; AA7D9 (2a:67d9) -> CD 98 44
+	ld c, $01 ; AA7DC (2a:67dc) -> 0E 01
+	ld de, Data_aa7b2 ; AA7DE (2a:67de) -> 11 B2 67
+	ld a, $2a ; AA7E1 (2a:67e1) -> 3E 2A
+	scall MovePlayer ; AA7E3 (2a:67e3) -> CD 3E 46
+	ld e, $02 ; AA7E6 (2a:67e6) -> 1E 02
+	ld hl, sp+$01 ; AA7E8 (2a:67e8) -> F8 01
+	ld a, [hl] ; AA7EA (2a:67ea) -> 7E
+	dec a ; AA7EB (2a:67eb) -> 3D
+	scall SpriteFace ; AA7EC (2a:67ec) -> CD 95 40
+label_aa7ef:
+	pop bc ; AA7EF (2a:67ef) -> C1
+	ret  ; AA7F0 (2a:67f0) -> C9
+
+Data_aa7f1:
+	db $0d, $07, $ff, $ff
+
+Func_aa7f5:
+	push af ; AA7F5 (2a:67f5) -> F5
+	ld a, e ; AA7F6 (2a:67f6) -> 7B
+	cp $02 ; AA7F7 (2a:67f7) -> FE 02
+	jp nz, label_aa82e ; AA7F9 (2a:67f9) -> C2 2E 68
+	ld e, $03 ; AA7FC (2a:67fc) -> 1E 03
+	ld hl, sp+$01 ; AA7FE (2a:67fe) -> F8 01
+	ld a, [hl] ; AA800 (2a:6800) -> 7E
+	inc a ; AA801 (2a:6801) -> 3C
+	scall SpriteFace ; AA802 (2a:6802) -> CD 95 40
+	ld hl, $001e ; AA805 (2a:6805) -> 21 1E 00
+	scall ScriptSleep ; AA808 (2a:6808) -> CD 8F 46
+	ld a, $01 ; AA80B (2a:680b) -> 3E 01
+	scall PlayerFace ; AA80D (2a:680d) -> CD 77 46
+	ld a, $69 ; AA810 (2a:6810) -> 3E 69
+	scall PlaySFX ; AA812 (2a:6812) -> CD FE 4E
+	ld hl, $01bc ; AA815 (2a:6815) -> 21 BC 01
+	scall PrintTextStandard ; AA818 (2a:6818) -> CD 98 44
+	ld c, $01 ; AA81B (2a:681b) -> 0E 01
+	ld de, Data_aa7f1 ; AA81D (2a:681d) -> 11 F1 67
+	ld a, $2a ; AA820 (2a:6820) -> 3E 2A
+	scall MovePlayer ; AA822 (2a:6822) -> CD 3E 46
+	ld e, $02 ; AA825 (2a:6825) -> 1E 02
+	ld hl, sp+$01 ; AA827 (2a:6827) -> F8 01
+	ld a, [hl] ; AA829 (2a:6829) -> 7E
+	inc a ; AA82A (2a:682a) -> 3C
+	scall SpriteFace ; AA82B (2a:682b) -> CD 95 40
+label_aa82e:
+	pop bc ; AA82E (2a:682e) -> C1
+	ret  ; AA82F (2a:682f) -> C9
+
+Data_aa830:
+	db $19, $07, $ff, $ff
+
+Func_aa834:
+	push af ; AA834 (2a:6834) -> F5
+	ld a, e ; AA835 (2a:6835) -> 7B
+	cp $02 ; AA836 (2a:6836) -> FE 02
+	jp nz, label_aa86d ; AA838 (2a:6838) -> C2 6D 68
+	ld e, $01 ; AA83B (2a:683b) -> 1E 01
+	ld hl, sp+$01 ; AA83D (2a:683d) -> F8 01
+	ld a, [hl] ; AA83F (2a:683f) -> 7E
+	dec a ; AA840 (2a:6840) -> 3D
+	scall SpriteFace ; AA841 (2a:6841) -> CD 95 40
+	ld hl, $001e ; AA844 (2a:6844) -> 21 1E 00
+	scall ScriptSleep ; AA847 (2a:6847) -> CD 8F 46
+	ld a, $03 ; AA84A (2a:684a) -> 3E 03
+	scall PlayerFace ; AA84C (2a:684c) -> CD 77 46
+	ld a, $69 ; AA84F (2a:684f) -> 3E 69
+	scall PlaySFX ; AA851 (2a:6851) -> CD FE 4E
+	ld hl, $01bd ; AA854 (2a:6854) -> 21 BD 01
+	scall PrintTextStandard ; AA857 (2a:6857) -> CD 98 44
+	ld c, $01 ; AA85A (2a:685a) -> 0E 01
+	ld de, Data_aa830 ; AA85C (2a:685c) -> 11 30 68
+	ld a, $2a ; AA85F (2a:685f) -> 3E 2A
+	scall MovePlayer ; AA861 (2a:6861) -> CD 3E 46
+	ld e, $02 ; AA864 (2a:6864) -> 1E 02
+	ld hl, sp+$01 ; AA866 (2a:6866) -> F8 01
+	ld a, [hl] ; AA868 (2a:6868) -> 7E
+	dec a ; AA869 (2a:6869) -> 3D
+	scall SpriteFace ; AA86A (2a:686a) -> CD 95 40
+label_aa86d:
+	pop bc ; AA86D (2a:686d) -> C1
+	ret  ; AA86E (2a:686e) -> C9
+
+Func_aa86f:
+	push af ; AA86F (2a:686f) -> F5
+	push bc ; AA870 (2a:6870) -> C5
+	ld hl, sp+$00 ; AA871 (2a:6871) -> F8 00
+	ld [hl], $ff ; AA873 (2a:6873) -> 36 FF
+	ld a, e ; AA875 (2a:6875) -> 7B
+	or a ; AA876 (2a:6876) -> B7
+	jp nz, label_aaaa4 ; AA877 (2a:6877) -> C2 A4 6A
+	ld hl, sp+$03 ; AA87A (2a:687a) -> F8 03
+	ld a, [hl] ; AA87C (2a:687c) -> 7E
+	scall FacePlayer ; AA87D (2a:687d) -> CD 4B 44
+	ld a, [wc796] ; AA880 (2a:6880) -> FA 96 C7
+	cp $04 ; AA883 (2a:6883) -> FE 04
+	jp nz, label_aa90a ; AA885 (2a:6885) -> C2 0A 69
+	ld a, $49 ; AA888 (2a:6888) -> 3E 49
+	scall Func_80e6d ; AA88A (2a:688a) -> CD 6D 4E
+	ld hl, sp+$01 ; AA88D (2a:688d) -> F8 01
+	ld [hl], a ; AA88F (2a:688f) -> 77
+	cp $ff ; AA890 (2a:6890) -> FE FF
+	jp z, label_aa907 ; AA892 (2a:6892) -> CA 07 69
+	ld hl, $0416 ; AA895 (2a:6895) -> 21 16 04
+	scall PrintTextWithNPCName ; AA898 (2a:6898) -> CD A9 44
+	ld a, $49 ; AA89B (2a:689b) -> 3E 49
+	scall Func_80e7d ; AA89D (2a:689d) -> CD 7D 4E
+	cp $01 ; AA8A0 (2a:68a0) -> FE 01
+	jp nz, label_aa8fe ; AA8A2 (2a:68a2) -> C2 FE 68
+	ld hl, $0295 ; AA8A5 (2a:68a5) -> 21 95 02
+	scall PrintTextWithNPCName ; AA8A8 (2a:68a8) -> CD A9 44
+	ld hl, $0400 ; AA8AB (2a:68ab) -> 21 00 04
+	scall PrintTextWithYesNoBox ; AA8AE (2a:68ae) -> CD BA 44
+	or a ; AA8B1 (2a:68b1) -> B7
+	jp nz, label_aa8ed ; AA8B2 (2a:68b2) -> C2 ED 68
+	ld a, $68 ; AA8B5 (2a:68b5) -> 3E 68
+	scall PlaySFX ; AA8B7 (2a:68b7) -> CD FE 4E
+	ld hl, $040c ; AA8BA (2a:68ba) -> 21 0C 04
+	scall PrintTextWithNPCName ; AA8BD (2a:68bd) -> CD A9 44
+	ld hl, sp+$01 ; AA8C0 (2a:68c0) -> F8 01
+	ld l, [hl] ; AA8C2 (2a:68c2) -> 6E
+	ld h, $00 ; AA8C3 (2a:68c3) -> 26 00
+	ld de, $0b00 ; AA8C5 (2a:68c5) -> 11 00 0B
+	add hl, de ; AA8C8 (2a:68c8) -> 19
+	scall Func_80488 ; AA8C9 (2a:68c9) -> CD 88 44
+	ld a, l ; AA8CC (2a:68cc) -> 7D
+	push af ; AA8CD (2a:68cd) -> F5
+	ld c, $00 ; AA8CE (2a:68ce) -> 0E 00
+	ld e, $01 ; AA8D0 (2a:68d0) -> 1E 01
+	ld hl, sp+$03 ; AA8D2 (2a:68d2) -> F8 03
+	ld a, [hl] ; AA8D4 (2a:68d4) -> 7E
+	scall GiveRobot ; AA8D5 (2a:68d5) -> CD 87 4D
+	pop af ; AA8D8 (2a:68d8) -> F1
+	ld c, a ; AA8D9 (2a:68d9) -> 4F
+	ld e, $00 ; AA8DA (2a:68da) -> 1E 00
+	ld a, $4a ; AA8DC (2a:68dc) -> 3E 4A
+	scall GiveRobot ; AA8DE (2a:68de) -> CD 87 4D
+	ld a, $05 ; AA8E1 (2a:68e1) -> 3E 05
+	ld [wc796], a ; AA8E3 (2a:68e3) -> EA 96 C7
+	ld hl, sp+$00 ; AA8E6 (2a:68e6) -> F8 00
+	ld [hl], $01 ; AA8E8 (2a:68e8) -> 36 01
+	jp label_aa8fb ; AA8EA (2a:68ea) -> C3 FB 68
+label_aa8ed:
+	ld a, $69 ; AA8ED (2a:68ed) -> 3E 69
+	scall PlaySFX ; AA8EF (2a:68ef) -> CD FE 4E
+	ld hl, $040d ; AA8F2 (2a:68f2) -> 21 0D 04
+	scall PrintTextWithNPCName ; AA8F5 (2a:68f5) -> CD A9 44
+	jp label_aaaa4 ; AA8F8 (2a:68f8) -> C3 A4 6A
+label_aa8fb:
+	jp label_aa907 ; AA8FB (2a:68fb) -> C3 07 69
+label_aa8fe:
+	ld hl, $046e ; AA8FE (2a:68fe) -> 21 6E 04
+	scall PrintTextStandard ; AA901 (2a:6901) -> CD 98 44
+	jp label_aaaa4 ; AA904 (2a:6904) -> C3 A4 6A
+label_aa907:
+	jp label_aaa4f ; AA907 (2a:6907) -> C3 4F 6A
+label_aa90a:
+	ld a, [wc796] ; AA90A (2a:690a) -> FA 96 C7
+	cp $0c ; AA90D (2a:690d) -> FE 0C
+	jp nz, label_aa994 ; AA90F (2a:690f) -> C2 94 69
+	ld a, $7c ; AA912 (2a:6912) -> 3E 7C
+	scall Func_80e6d ; AA914 (2a:6914) -> CD 6D 4E
+	ld hl, sp+$01 ; AA917 (2a:6917) -> F8 01
+	ld [hl], a ; AA919 (2a:6919) -> 77
+	cp $ff ; AA91A (2a:691a) -> FE FF
+	jp z, label_aa991 ; AA91C (2a:691c) -> CA 91 69
+	ld hl, $0416 ; AA91F (2a:691f) -> 21 16 04
+	scall PrintTextWithNPCName ; AA922 (2a:6922) -> CD A9 44
+	ld a, $7c ; AA925 (2a:6925) -> 3E 7C
+	scall Func_80e7d ; AA927 (2a:6927) -> CD 7D 4E
+	cp $01 ; AA92A (2a:692a) -> FE 01
+	jp nz, label_aa988 ; AA92C (2a:692c) -> C2 88 69
+	ld hl, $0296 ; AA92F (2a:692f) -> 21 96 02
+	scall PrintTextWithNPCName ; AA932 (2a:6932) -> CD A9 44
+	ld hl, $0400 ; AA935 (2a:6935) -> 21 00 04
+	scall PrintTextWithYesNoBox ; AA938 (2a:6938) -> CD BA 44
+	or a ; AA93B (2a:693b) -> B7
+	jp nz, label_aa977 ; AA93C (2a:693c) -> C2 77 69
+	ld a, $68 ; AA93F (2a:693f) -> 3E 68
+	scall PlaySFX ; AA941 (2a:6941) -> CD FE 4E
+	ld hl, $0432 ; AA944 (2a:6944) -> 21 32 04
+	scall PrintTextWithNPCName ; AA947 (2a:6947) -> CD A9 44
+	ld hl, sp+$01 ; AA94A (2a:694a) -> F8 01
+	ld l, [hl] ; AA94C (2a:694c) -> 6E
+	ld h, $00 ; AA94D (2a:694d) -> 26 00
+	ld de, $0b00 ; AA94F (2a:694f) -> 11 00 0B
+	add hl, de ; AA952 (2a:6952) -> 19
+	scall Func_80488 ; AA953 (2a:6953) -> CD 88 44
+	ld a, l ; AA956 (2a:6956) -> 7D
+	push af ; AA957 (2a:6957) -> F5
+	ld c, $00 ; AA958 (2a:6958) -> 0E 00
+	ld e, $01 ; AA95A (2a:695a) -> 1E 01
+	ld hl, sp+$03 ; AA95C (2a:695c) -> F8 03
+	ld a, [hl] ; AA95E (2a:695e) -> 7E
+	scall GiveRobot ; AA95F (2a:695f) -> CD 87 4D
+	pop af ; AA962 (2a:6962) -> F1
+	ld c, a ; AA963 (2a:6963) -> 4F
+	ld e, $00 ; AA964 (2a:6964) -> 1E 00
+	ld a, $7e ; AA966 (2a:6966) -> 3E 7E
+	scall GiveRobot ; AA968 (2a:6968) -> CD 87 4D
+	ld a, $0d ; AA96B (2a:696b) -> 3E 0D
+	ld [wc796], a ; AA96D (2a:696d) -> EA 96 C7
+	ld hl, sp+$00 ; AA970 (2a:6970) -> F8 00
+	ld [hl], $01 ; AA972 (2a:6972) -> 36 01
+	jp label_aa985 ; AA974 (2a:6974) -> C3 85 69
+label_aa977:
+	ld a, $69 ; AA977 (2a:6977) -> 3E 69
+	scall PlaySFX ; AA979 (2a:6979) -> CD FE 4E
+	ld hl, $0433 ; AA97C (2a:697c) -> 21 33 04
+	scall PrintTextWithNPCName ; AA97F (2a:697f) -> CD A9 44
+	jp label_aaaa4 ; AA982 (2a:6982) -> C3 A4 6A
+label_aa985:
+	jp label_aa991 ; AA985 (2a:6985) -> C3 91 69
+label_aa988:
+	ld hl, $046e ; AA988 (2a:6988) -> 21 6E 04
+	scall PrintTextStandard ; AA98B (2a:698b) -> CD 98 44
+	jp label_aaaa4 ; AA98E (2a:698e) -> C3 A4 6A
+label_aa991:
+	jp label_aaa4f ; AA991 (2a:6991) -> C3 4F 6A
+label_aa994:
+	ld a, $49 ; AA994 (2a:6994) -> 3E 49
+	scall Func_80e6d ; AA996 (2a:6996) -> CD 6D 4E
+	ld hl, sp+$01 ; AA999 (2a:6999) -> F8 01
+	ld [hl], a ; AA99B (2a:699b) -> 77
+	cp $ff ; AA99C (2a:699c) -> FE FF
+	jp nz, label_aa9ae ; AA99E (2a:699e) -> C2 AE 69
+	ld a, $7c ; AA9A1 (2a:69a1) -> 3E 7C
+	scall Func_80e6d ; AA9A3 (2a:69a3) -> CD 6D 4E
+	ld hl, sp+$01 ; AA9A6 (2a:69a6) -> F8 01
+	ld [hl], a ; AA9A8 (2a:69a8) -> 77
+	cp $ff ; AA9A9 (2a:69a9) -> FE FF
+	jp z, label_aaa4f ; AA9AB (2a:69ab) -> CA 4F 6A
+label_aa9ae:
+	ld a, [wc796] ; AA9AE (2a:69ae) -> FA 96 C7
+	cp $08 ; AA9B1 (2a:69b1) -> FE 08
+	jp z, label_aaa37 ; AA9B3 (2a:69b3) -> CA 37 6A
+	cp $06 ; AA9B6 (2a:69b6) -> FE 06
+	jp z, label_aaa37 ; AA9B8 (2a:69b8) -> CA 37 6A
+	cp $0a ; AA9BB (2a:69bb) -> FE 0A
+	jp z, label_aaa28 ; AA9BD (2a:69bd) -> CA 28 6A
+	cp $05 ; AA9C0 (2a:69c0) -> FE 05
+	jp z, label_aaa28 ; AA9C2 (2a:69c2) -> CA 28 6A
+	cp $07 ; AA9C5 (2a:69c5) -> FE 07
+	jp z, label_aaa19 ; AA9C7 (2a:69c7) -> CA 19 6A
+	or a ; AA9CA (2a:69ca) -> B7
+	jp z, label_aaa19 ; AA9CB (2a:69cb) -> CA 19 6A
+	cp $0d ; AA9CE (2a:69ce) -> FE 0D
+	jp z, label_aaa0a ; AA9D0 (2a:69d0) -> CA 0A 6A
+	cp $03 ; AA9D3 (2a:69d3) -> FE 03
+	jp z, label_aaa0a ; AA9D5 (2a:69d5) -> CA 0A 6A
+	cp $0b ; AA9D8 (2a:69d8) -> FE 0B
+	jp z, label_aa9fb ; AA9DA (2a:69da) -> CA FB 69
+	cp $02 ; AA9DD (2a:69dd) -> FE 02
+	jp z, label_aa9fb ; AA9DF (2a:69df) -> CA FB 69
+	cp $09 ; AA9E2 (2a:69e2) -> FE 09
+	jp z, label_aa9ec ; AA9E4 (2a:69e4) -> CA EC 69
+	cp $01 ; AA9E7 (2a:69e7) -> FE 01
+	jp nz, label_aaa46 ; AA9E9 (2a:69e9) -> C2 46 6A
+label_aa9ec:
+	ld hl, $0140 ; AA9EC (2a:69ec) -> 21 40 01
+	scall PrintTextStandard ; AA9EF (2a:69ef) -> CD 98 44
+	ld hl, $034d ; AA9F2 (2a:69f2) -> 21 4D 03
+	scall PrintTextStandard ; AA9F5 (2a:69f5) -> CD 98 44
+	jp label_aaa4c ; AA9F8 (2a:69f8) -> C3 4C 6A
+label_aa9fb:
+	ld hl, $0140 ; AA9FB (2a:69fb) -> 21 40 01
+	scall PrintTextStandard ; AA9FE (2a:69fe) -> CD 98 44
+	ld hl, $0205 ; AAA01 (2a:6a01) -> 21 05 02
+	scall PrintTextStandard ; AAA04 (2a:6a04) -> CD 98 44
+	jp label_aaa4c ; AAA07 (2a:6a07) -> C3 4C 6A
+label_aaa0a:
+	ld hl, $0140 ; AAA0A (2a:6a0a) -> 21 40 01
+	scall PrintTextStandard ; AAA0D (2a:6a0d) -> CD 98 44
+	ld hl, $020a ; AAA10 (2a:6a10) -> 21 0A 02
+	scall PrintTextStandard ; AAA13 (2a:6a13) -> CD 98 44
+	jp label_aaa4c ; AAA16 (2a:6a16) -> C3 4C 6A
+label_aaa19:
+	ld hl, $0140 ; AAA19 (2a:6a19) -> 21 40 01
+	scall PrintTextStandard ; AAA1C (2a:6a1c) -> CD 98 44
+	ld hl, $034b ; AAA1F (2a:6a1f) -> 21 4B 03
+	scall PrintTextStandard ; AAA22 (2a:6a22) -> CD 98 44
+	jp label_aaa4c ; AAA25 (2a:6a25) -> C3 4C 6A
+label_aaa28:
+	ld hl, $0140 ; AAA28 (2a:6a28) -> 21 40 01
+	scall PrintTextStandard ; AAA2B (2a:6a2b) -> CD 98 44
+	ld hl, $0241 ; AAA2E (2a:6a2e) -> 21 41 02
+	scall PrintTextStandard ; AAA31 (2a:6a31) -> CD 98 44
+	jp label_aaa4c ; AAA34 (2a:6a34) -> C3 4C 6A
+label_aaa37:
+	ld hl, $0140 ; AAA37 (2a:6a37) -> 21 40 01
+	scall PrintTextStandard ; AAA3A (2a:6a3a) -> CD 98 44
+	ld hl, $0244 ; AAA3D (2a:6a3d) -> 21 44 02
+	scall PrintTextStandard ; AAA40 (2a:6a40) -> CD 98 44
+	jp label_aaa4c ; AAA43 (2a:6a43) -> C3 4C 6A
+label_aaa46:
+	ld hl, $0416 ; AAA46 (2a:6a46) -> 21 16 04
+	scall PrintTextWithNPCName ; AAA49 (2a:6a49) -> CD A9 44
+label_aaa4c:
+	jp label_aaaa4 ; AAA4C (2a:6a4c) -> C3 A4 6A
+label_aaa4f:
+	ld hl, sp+$00 ; AAA4F (2a:6a4f) -> F8 00
+	ld a, [hl] ; AAA51 (2a:6a51) -> 7E
+	cp $ff ; AAA52 (2a:6a52) -> FE FF
+	jp nz, label_aaaa4 ; AAA54 (2a:6a54) -> C2 A4 6A
+	ld a, [wc796] ; AAA57 (2a:6a57) -> FA 96 C7
+	cp $0d ; AAA5A (2a:6a5a) -> FE 0D
+	jp nc, label_aaa76 ; AAA5C (2a:6a5c) -> D2 76 6A
+	ld a, [wc796] ; AAA5F (2a:6a5f) -> FA 96 C7
+	cp $05 ; AAA62 (2a:6a62) -> FE 05
+	jp c, label_aaa76 ; AAA64 (2a:6a64) -> DA 76 6A
+	ld hl, $0416 ; AAA67 (2a:6a67) -> 21 16 04
+	scall PrintTextWithNPCName ; AAA6A (2a:6a6a) -> CD A9 44
+	ld hl, $0431 ; AAA6D (2a:6a6d) -> 21 31 04
+	scall PrintTextWithNPCName ; AAA70 (2a:6a70) -> CD A9 44
+	jp label_aaaa4 ; AAA73 (2a:6a73) -> C3 A4 6A
+label_aaa76:
+	ld a, [wc796] ; AAA76 (2a:6a76) -> FA 96 C7
+	cp $0f ; AAA79 (2a:6a79) -> FE 0F
+	jp nz, label_aaa87 ; AAA7B (2a:6a7b) -> C2 87 6A
+	ld hl, $0416 ; AAA7E (2a:6a7e) -> 21 16 04
+	scall PrintTextWithNPCName ; AAA81 (2a:6a81) -> CD A9 44
+	jp label_aaaa4 ; AAA84 (2a:6a84) -> C3 A4 6A
+label_aaa87:
+	ld a, [wc796] ; AAA87 (2a:6a87) -> FA 96 C7
+	cp $0d ; AAA8A (2a:6a8a) -> FE 0D
+	jp c, label_aaa98 ; AAA8C (2a:6a8c) -> DA 98 6A
+	ld hl, $0434 ; AAA8F (2a:6a8f) -> 21 34 04
+	scall PrintTextWithNPCName ; AAA92 (2a:6a92) -> CD A9 44
+	jp label_aaaa4 ; AAA95 (2a:6a95) -> C3 A4 6A
+label_aaa98:
+	ld hl, $0416 ; AAA98 (2a:6a98) -> 21 16 04
+	scall PrintTextWithNPCName ; AAA9B (2a:6a9b) -> CD A9 44
+	ld hl, $01ba ; AAA9E (2a:6a9e) -> 21 BA 01
+	scall PrintTextWithNPCName ; AAAA1 (2a:6aa1) -> CD A9 44
+label_aaaa4:
+	pop bc ; AAAA4 (2a:6aa4) -> C1
+	pop bc ; AAAA5 (2a:6aa5) -> C1
+	ret  ; AAAA6 (2a:6aa6) -> C9
+
+Data_aaaa7:
+	db $05, $0e, $01, $01
+	db $07, $08
+
+Func_aaaad:
+	ld a, [wc790] ; AAAAD (2a:6aad) -> FA 90 C7
+	or a ; AAAB0 (2a:6ab0) -> B7
+	jp z, label_aaac5 ; AAAB1 (2a:6ab1) -> CA C5 6A
+	ld a, [wc790] ; AAAB4 (2a:6ab4) -> FA 90 C7
+	cp $07 ; AAAB7 (2a:6ab7) -> FE 07
+	jp nc, label_aaac5 ; AAAB9 (2a:6ab9) -> D2 C5 6A
+	ld hl, Data_aaaa7 ; AAABC (2a:6abc) -> 21 A7 6A
+	scall Func_80d9b ; AAABF (2a:6abf) -> CD 9B 4D
+	scall Func_80f02 ; AAAC2 (2a:6ac2) -> CD 02 4F
+label_aaac5:
+	ret  ; AAAC5 (2a:6ac5) -> C9
+
+Data_aaac6:
+	db $19, $05, $ff, $ff
+
+Data_aaaca:
+	db $19, $0d, $ff, $ff
+
+Data_aaace:
+	db $1a, $06, $ff, $ff
+
+Data_aaad2:
+	db $19, $07, $ff, $ff
+
+Func_aaad6:
+	ld bc, Data_aaac6 ; AAAD6 (2a:6ad6) -> 01 C6 6A
+	ld e, $2a ; AAAD9 (2a:6ad9) -> 1E 2A
+	ld a, $0c ; AAADB (2a:6adb) -> 3E 0C
+	scall MovePersonAndWait ; AAADD (2a:6add) -> CD 88 46
+	scall WaitNPCStep ; AAAE0 (2a:6ae0) -> CD 0C 42
+	ld c, $01 ; AAAE3 (2a:6ae3) -> 0E 01
+	ld de, Data_aaace ; AAAE5 (2a:6ae5) -> 11 CE 6A
+	ld a, $2a ; AAAE8 (2a:6ae8) -> 3E 2A
+	scall MovePlayer ; AAAEA (2a:6aea) -> CD 3E 46
+	scall WaitNPCStep ; AAAED (2a:6aed) -> CD 0C 42
+	ld a, $03 ; AAAF0 (2a:6af0) -> 3E 03
+	scall PlayerFace ; AAAF2 (2a:6af2) -> CD 77 46
+	ld bc, Data_aaaca ; AAAF5 (2a:6af5) -> 01 CA 6A
+	ld e, $2a ; AAAF8 (2a:6af8) -> 1E 2A
+	ld a, $0c ; AAAFA (2a:6afa) -> 3E 0C
+	scall MovePersonAndWait ; AAAFC (2a:6afc) -> CD 88 46
+	scall WaitNPCStep ; AAAFF (2a:6aff) -> CD 0C 42
+	ld a, $02 ; AAB02 (2a:6b02) -> 3E 02
+	scall PlayerFace ; AAB04 (2a:6b04) -> CD 77 46
+	ld e, $00 ; AAB07 (2a:6b07) -> 1E 00
+	ld a, $0c ; AAB09 (2a:6b09) -> 3E 0C
+	scall SetPersonVisibilityState ; AAB0B (2a:6b0b) -> CD 3D 41
+	ld hl, $0112 ; AAB0E (2a:6b0e) -> 21 12 01
+	scall PrintTextStandard ; AAB11 (2a:6b11) -> CD 98 44
+	ld c, $01 ; AAB14 (2a:6b14) -> 0E 01
+	ld de, Data_aaad2 ; AAB16 (2a:6b16) -> 11 D2 6A
+	ld a, $2a ; AAB19 (2a:6b19) -> 3E 2A
+	scall MovePlayer ; AAB1B (2a:6b1b) -> CD 3E 46
+	scall WaitNPCStep ; AAB1E (2a:6b1e) -> CD 0C 42
+	ld e, $01 ; AAB21 (2a:6b21) -> 1E 01
+	ld hl, $00c2 ; AAB23 (2a:6b23) -> 21 C2 00
+	scall EventFlagAction ; AAB26 (2a:6b26) -> CD 1B 46
+	ld l, $07 ; AAB29 (2a:6b29) -> 2E 07
+	push hl ; AAB2B (2a:6b2b) -> E5
+	ld c, $19 ; AAB2C (2a:6b2c) -> 0E 19
+	ld e, $01 ; AAB2E (2a:6b2e) -> 1E 01
+	ld a, $19 ; AAB30 (2a:6b30) -> 3E 19
+	scall Func_80dff ; AAB32 (2a:6b32) -> CD FF 4D
+	pop bc ; AAB35 (2a:6b35) -> C1
+	ret  ; AAB36 (2a:6b36) -> C9
+
+Data_aab37:
+	db $19, $06, $ff, $ff
+
+Data_aab3b:
+	db $19, $0d, $ff, $ff
+
+Func_aab3f:
+	ld bc, Data_aab37 ; AAB3F (2a:6b3f) -> 01 37 6B
+	ld e, $2a ; AAB42 (2a:6b42) -> 1E 2A
+	ld a, $0c ; AAB44 (2a:6b44) -> 3E 0C
+	scall MovePersonAndWait ; AAB46 (2a:6b46) -> CD 88 46
+	scall WaitNPCStep ; AAB49 (2a:6b49) -> CD 0C 42
+	ld hl, $001e ; AAB4C (2a:6b4c) -> 21 1E 00
+	scall ScriptSleep ; AAB4F (2a:6b4f) -> CD 8F 46
+	ld hl, $01bf ; AAB52 (2a:6b52) -> 21 BF 01
+	scall PrintTextStandard ; AAB55 (2a:6b55) -> CD 98 44
+	ld hl, $001e ; AAB58 (2a:6b58) -> 21 1E 00
+	scall ScriptSleep ; AAB5B (2a:6b5b) -> CD 8F 46
+	ld bc, Data_aab3b ; AAB5E (2a:6b5e) -> 01 3B 6B
+	ld e, $2a ; AAB61 (2a:6b61) -> 1E 2A
+	ld a, $0c ; AAB63 (2a:6b63) -> 3E 0C
+	scall MovePersonAndWait ; AAB65 (2a:6b65) -> CD 88 46
+	scall WaitNPCStep ; AAB68 (2a:6b68) -> CD 0C 42
+	ld hl, $001e ; AAB6B (2a:6b6b) -> 21 1E 00
+	scall ScriptSleep ; AAB6E (2a:6b6e) -> CD 8F 46
+	ld l, $06 ; AAB71 (2a:6b71) -> 2E 06
+	push hl ; AAB73 (2a:6b73) -> E5
+	ld c, $07 ; AAB74 (2a:6b74) -> 0E 07
+	ld e, $00 ; AAB76 (2a:6b76) -> 1E 00
+	ld a, $1a ; AAB78 (2a:6b78) -> 3E 1A
+	scall Func_80dff ; AAB7A (2a:6b7a) -> CD FF 4D
+	pop bc ; AAB7D (2a:6b7d) -> C1
+	ld e, $01 ; AAB7E (2a:6b7e) -> 1E 01
+	ld hl, $00c3 ; AAB80 (2a:6b80) -> 21 C3 00
+	scall EventFlagAction ; AAB83 (2a:6b83) -> CD 1B 46
+	ret  ; AAB86 (2a:6b86) -> C9
+
+Func_aab87:
+	ld a, e ; AAB87 (2a:6b87) -> 7B
+	cp $02 ; AAB88 (2a:6b88) -> FE 02
+	jp nz, label_aab92 ; AAB8A (2a:6b8a) -> C2 92 6B
+	ld a, $0c ; AAB8D (2a:6b8d) -> 3E 0C
+	ld [wc78a], a ; AAB8F (2a:6b8f) -> EA 8A C7
+label_aab92:
+	ret  ; AAB92 (2a:6b92) -> C9
+
+Data_aab93:
 IF DEF(SUN)
-	db $3e, $09, $ea, $89, $c7, $3e, $0d, $ea, $e2, $c7, $cd, $ad, $6a, $21, $ad, $6a
-	db $cd, $11, $4f, $1e, $0e, $21, $d8, $63, $cd, $3a, $40, $1e, $09, $21, $a5, $64
-	db $cd, $fb, $40, $1e, $02, $21, $77, $65, $cd, $fb, $40, $3e, $01, $cd, $c6, $4c
-	db $3e, $12, $cd, $e6, $4e, $fa, $90, $c7, $b7, $ca, $22, $66, $fa, $90, $c7, $fe
-	db $07, $d2, $22, $66, $1e, $01, $21, $72, $64, $cd, $3a, $40, $1e, $01, $21, $bd
-	db $65, $cd, $fb, $40, $c3, $2a, $66, $1e, $01, $21, $af, $65, $cd, $fb, $40, $21
-	db $34, $00, $cd, $2e, $46, $fe, $01, $c2, $66, $66, $21, $c3, $00, $cd, $2e, $46
-	db $b7, $c2, $66, $66, $fa, $df, $c7, $fe, $1a, $c2, $66, $66, $21, $35, $00, $cd
-	db $2e, $46, $b7, $c2, $66, $66, $1e, $01, $21, $a1, $65, $cd, $fb, $40, $af, $cd
-	db $53, $46, $cd, $1c, $40, $cd, $3f, $6b, $c3, $dd, $66, $21, $22, $00, $cd, $2e
-	db $46, $fe, $01, $c2, $9e, $66, $21, $43, $00, $cd, $2e, $46, $b7, $c2, $9e, $66
-	db $21, $c2, $00, $cd, $2e, $46, $b7, $c2, $9e, $66, $fa, $df, $c7, $fe, $ff, $ca
-	db $9b, $66, $1e, $01, $21, $93, $65, $cd, $fb, $40, $cd, $1c, $40, $cd, $d6, $6a
-	db $c3, $dd, $66, $21, $22, $00, $cd, $2e, $46, $b7, $c2, $da, $66, $1e, $06, $21
-	db $23, $65, $cd, $fb, $40, $21, $14, $00, $cd, $2e, $46, $fe, $01, $c2, $d4, $66
-	db $21, $07, $00, $cd, $2e, $46, $fe, $01, $c2, $d4, $66, $1e, $00, $3e, $10, $cd
-	db $3d, $41, $1e, $00, $3e, $11, $cd, $3d, $41, $cd, $1c, $40, $c3, $dd, $66, $cd
-	db $1c, $40, $c9, $13, $0a, $ff, $ff, $11, $0a, $13, $0a, $ff, $ff, $15, $0a, $13
-	db $0a, $ff, $ff, $7b, $b7, $c2, $b1, $67, $3e, $0f, $cd, $6d, $4e, $fe, $ff, $c2
-	db $1b, $67, $3e, $41, $cd, $6d, $4e, $fe, $ff, $c2, $1b, $67, $3e, $50, $cd, $6d
-	db $4e, $fe, $ff, $c2, $1b, $67, $3e, $64, $cd, $6d, $4e, $fe, $ff, $ca, $ab, $67
-	db $fa, $90, $c7, $b7, $ca, $a2, $67, $fa, $90, $c7, $fe, $06, $d2, $a2, $67, $21
-	db $2d, $03, $cd, $ba, $44, $b7, $c2, $9f, $67, $fa, $38, $c8, $fe, $01, $ca, $4d
-	db $67, $b7, $c2, $5a, $67, $0e, $01, $11, $de, $66, $3e, $2a, $cd, $3e, $46, $c3
-	db $64, $67, $0e, $01, $11, $e2, $66, $3e, $2a, $cd, $3e, $46, $c3, $64, $67, $0e
-	db $01, $11, $e8, $66, $3e, $2a, $cd, $3e, $46, $cd, $0c, $42, $af, $cd, $e6, $4e
-	db $3e, $0a, $cd, $e6, $4e, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $0b, $cd
-	db $76, $41, $3e, $44, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $04, $cd
-	db $c6, $4c, $3e, $02, $cd, $77, $46, $2e, $12, $e5, $0e, $0a, $1e, $01, $3e, $1e
-	db $cd, $ff, $4d, $c1, $c3, $a8, $67, $21, $77, $03, $cd, $98, $44, $c3, $b1, $67
-	db $21, $76, $03, $cd, $98, $44, $c9, $0c, $07, $ff, $ff, $f5, $7b, $fe, $02, $c2
-	db $ef, $67, $1e, $01, $f8, $01, $7e, $3d, $cd, $95, $40, $21, $1e, $00, $cd, $8f
-	db $46, $3e, $03, $cd, $77, $46, $3e, $69, $cd, $fe, $4e, $21, $bc, $01, $cd, $98
-	db $44, $0e, $01, $11, $b2, $67, $3e, $2a, $cd, $3e, $46, $1e, $02, $f8, $01, $7e
-	db $3d, $cd, $95, $40, $c1, $c9, $0d, $07, $ff, $ff, $f5, $7b, $fe, $02, $c2, $2e
-	db $68, $1e, $03, $f8, $01, $7e, $3c, $cd, $95, $40, $21, $1e, $00, $cd, $8f, $46
-	db $3e, $01, $cd, $77, $46, $3e, $69, $cd, $fe, $4e, $21, $bc, $01, $cd, $98, $44
-	db $0e, $01, $11, $f1, $67, $3e, $2a, $cd, $3e, $46, $1e, $02, $f8, $01, $7e, $3c
-	db $cd, $95, $40, $c1, $c9, $19, $07, $ff, $ff, $f5, $7b, $fe, $02, $c2, $6d, $68
-	db $1e, $01, $f8, $01, $7e, $3d, $cd, $95, $40, $21, $1e, $00, $cd, $8f, $46, $3e
-	db $03, $cd, $77, $46, $3e, $69, $cd, $fe, $4e, $21, $bd, $01, $cd, $98, $44, $0e
-	db $01, $11, $30, $68, $3e, $2a, $cd, $3e, $46, $1e, $02, $f8, $01, $7e, $3d, $cd
-	db $95, $40, $c1, $c9, $f5, $c5, $f8, $00, $36, $ff, $7b, $b7, $c2, $a4, $6a, $f8
-	db $03, $7e, $cd, $4b, $44, $fa, $96, $c7, $fe, $04, $c2, $0a, $69, $3e, $49, $cd
-	db $6d, $4e, $f8, $01, $77, $fe, $ff, $ca, $07, $69, $21, $16, $04, $cd, $a9, $44
-	db $3e, $49, $cd, $7d, $4e, $fe, $01, $c2, $fe, $68, $21, $95, $02, $cd, $a9, $44
-	db $21, $00, $04, $cd, $ba, $44, $b7, $c2, $ed, $68, $3e, $68, $cd, $fe, $4e, $21
-	db $0c, $04, $cd, $a9, $44, $f8, $01, $6e, $26, $00, $11, $00, $0b, $19, $cd, $88
-	db $44, $7d, $f5, $0e, $00, $1e, $01, $f8, $03, $7e, $cd, $87, $4d, $f1, $4f, $1e
-	db $00, $3e, $4a, $cd, $87, $4d, $3e, $05, $ea, $96, $c7, $f8, $00, $36, $01, $c3
-	db $fb, $68, $3e, $69, $cd, $fe, $4e, $21, $0d, $04, $cd, $a9, $44, $c3, $a4, $6a
-	db $c3, $07, $69, $21, $6e, $04, $cd, $98, $44, $c3, $a4, $6a, $c3, $4f, $6a, $fa
-	db $96, $c7, $fe, $0c, $c2, $94, $69, $3e, $7c, $cd, $6d, $4e, $f8, $01, $77, $fe
-	db $ff, $ca, $91, $69, $21, $16, $04, $cd, $a9, $44, $3e, $7c, $cd, $7d, $4e, $fe
-	db $01, $c2, $88, $69, $21, $96, $02, $cd, $a9, $44, $21, $00, $04, $cd, $ba, $44
-	db $b7, $c2, $77, $69, $3e, $68, $cd, $fe, $4e, $21, $32, $04, $cd, $a9, $44, $f8
-	db $01, $6e, $26, $00, $11, $00, $0b, $19, $cd, $88, $44, $7d, $f5, $0e, $00, $1e
-	db $01, $f8, $03, $7e, $cd, $87, $4d, $f1, $4f, $1e, $00, $3e, $7e, $cd, $87, $4d
-	db $3e, $0d, $ea, $96, $c7, $f8, $00, $36, $01, $c3, $85, $69, $3e, $69, $cd, $fe
-	db $4e, $21, $33, $04, $cd, $a9, $44, $c3, $a4, $6a, $c3, $91, $69, $21, $6e, $04
-	db $cd, $98, $44, $c3, $a4, $6a, $c3, $4f, $6a, $3e, $49, $cd, $6d, $4e, $f8, $01
-	db $77, $fe, $ff, $c2, $ae, $69, $3e, $7c, $cd, $6d, $4e, $f8, $01, $77, $fe, $ff
-	db $ca, $4f, $6a, $fa, $96, $c7, $fe, $08, $ca, $37, $6a, $fe, $06, $ca, $37, $6a
-	db $fe, $0a, $ca, $28, $6a, $fe, $05, $ca, $28, $6a, $fe, $07, $ca, $19, $6a, $b7
-	db $ca, $19, $6a, $fe, $0d, $ca, $0a, $6a, $fe, $03, $ca, $0a, $6a, $fe, $0b, $ca
-	db $fb, $69, $fe, $02, $ca, $fb, $69, $fe, $09, $ca, $ec, $69, $fe, $01, $c2, $46
-	db $6a, $21, $40, $01, $cd, $98, $44, $21, $4d, $03, $cd, $98, $44, $c3, $4c, $6a
-	db $21, $40, $01, $cd, $98, $44, $21, $05, $02, $cd, $98, $44, $c3, $4c, $6a, $21
-	db $40, $01, $cd, $98, $44, $21, $0a, $02, $cd, $98, $44, $c3, $4c, $6a, $21, $40
-	db $01, $cd, $98, $44, $21, $4b, $03, $cd, $98, $44, $c3, $4c, $6a, $21, $40, $01
-	db $cd, $98, $44, $21, $41, $02, $cd, $98, $44, $c3, $4c, $6a, $21, $40, $01, $cd
-	db $98, $44, $21, $44, $02, $cd, $98, $44, $c3, $4c, $6a, $21, $16, $04, $cd, $a9
-	db $44, $c3, $a4, $6a, $f8, $00, $7e, $fe, $ff, $c2, $a4, $6a, $fa, $96, $c7, $fe
-	db $0d, $d2, $76, $6a, $fa, $96, $c7, $fe, $05, $da, $76, $6a, $21, $16, $04, $cd
-	db $a9, $44, $21, $31, $04, $cd, $a9, $44, $c3, $a4, $6a, $fa, $96, $c7, $fe, $0f
-	db $c2, $87, $6a, $21, $16, $04, $cd, $a9, $44, $c3, $a4, $6a, $fa, $96, $c7, $fe
-	db $0d, $da, $98, $6a, $21, $34, $04, $cd, $a9, $44, $c3, $a4, $6a, $21, $16, $04
-	db $cd, $a9, $44, $21, $ba, $01, $cd, $a9, $44, $c1, $c1, $c9, $05, $0e, $01, $01
-	db $07, $08, $fa, $90, $c7, $b7, $ca, $c5, $6a, $fa, $90, $c7, $fe, $07, $d2, $c5
-	db $6a, $21, $a7, $6a, $cd, $9b, $4d, $cd, $02, $4f, $c9, $19, $05, $ff, $ff, $19
-	db $0d, $ff, $ff, $1a, $06, $ff, $ff, $19, $07, $ff, $ff, $01, $c6, $6a, $1e, $2a
-	db $3e, $0c, $cd, $88, $46, $cd, $0c, $42, $0e, $01, $11, $ce, $6a, $3e, $2a, $cd
-	db $3e, $46, $cd, $0c, $42, $3e, $03, $cd, $77, $46, $01, $ca, $6a, $1e, $2a, $3e
-	db $0c, $cd, $88, $46, $cd, $0c, $42, $3e, $02, $cd, $77, $46, $1e, $00, $3e, $0c
-	db $cd, $3d, $41, $21, $12, $01, $cd, $98, $44, $0e, $01, $11, $d2, $6a, $3e, $2a
-	db $cd, $3e, $46, $cd, $0c, $42, $1e, $01, $21, $c2, $00, $cd, $1b, $46, $2e, $07
-	db $e5, $0e, $19, $1e, $01, $3e, $19, $cd, $ff, $4d, $c1, $c9, $19, $06, $ff, $ff
-	db $19, $0d, $ff, $ff, $01, $37, $6b, $1e, $2a, $3e, $0c, $cd, $88, $46, $cd, $0c
-	db $42, $21, $1e, $00, $cd, $8f, $46, $21, $bf, $01, $cd, $98, $44, $21, $1e, $00
-	db $cd, $8f, $46, $01, $3b, $6b, $1e, $2a, $3e, $0c, $cd, $88, $46, $cd, $0c, $42
-	db $21, $1e, $00, $cd, $8f, $46, $2e, $06, $e5, $0e, $07, $1e, $00, $3e, $1a, $cd
-	db $ff, $4d, $c1, $1e, $01, $21, $c3, $00, $cd, $1b, $46, $c9, $7b, $fe, $02, $c2
-	db $92, $6b, $3e, $0c, $ea, $8a, $c7, $c9, $01, $04, $01, $01, $19, $04, $09, $18
+	db $01, $04, $01, $01, $19, $04, $09, $18
 	db $09, $17, $2e, $0e, $03, $01, $03, $1c, $01, $05, $14, $06, $14, $2e, $00, $03
 	db $13, $03, $3f, $23, $26, $26, $0c, $0f, $00, $05, $0a, $00, $00, $03, $13, $03
 	db $56, $24, $27, $48, $0c, $0c, $0c, $10, $0a, $00, $00, $03, $13, $03, $36, $26
@@ -1981,99 +2613,7 @@ IF DEF(SUN)
 	db $00, $00, $09, $0c, $0a, $03, $01, $01, $02, $04, $00, $2a, $a6, $6d, $00, $00
 	db $ff, $00, $0a, $04, $01, $02, $00, $04, $01, $2a, $a6, $6d, $00, $00
 ELIF DEF(STAR)
-	db $3e, $09, $ea, $89, $c7, $3e, $0d, $ea, $e2, $c7, $cd, $ad, $6a, $21, $ad, $6a
-	db $cd, $11, $4f, $1e, $0e, $21, $d8, $63, $cd, $3a, $40, $1e, $09, $21, $a5, $64
-	db $cd, $fb, $40, $1e, $02, $21, $77, $65, $cd, $fb, $40, $3e, $01, $cd, $c6, $4c
-	db $3e, $12, $cd, $e6, $4e, $fa, $90, $c7, $b7, $ca, $22, $66, $fa, $90, $c7, $fe
-	db $07, $d2, $22, $66, $1e, $01, $21, $72, $64, $cd, $3a, $40, $1e, $01, $21, $bd
-	db $65, $cd, $fb, $40, $c3, $2a, $66, $1e, $01, $21, $af, $65, $cd, $fb, $40, $21
-	db $34, $00, $cd, $2e, $46, $fe, $01, $c2, $66, $66, $21, $c3, $00, $cd, $2e, $46
-	db $b7, $c2, $66, $66, $fa, $df, $c7, $fe, $1a, $c2, $66, $66, $21, $35, $00, $cd
-	db $2e, $46, $b7, $c2, $66, $66, $1e, $01, $21, $a1, $65, $cd, $fb, $40, $af, $cd
-	db $53, $46, $cd, $1c, $40, $cd, $3f, $6b, $c3, $dd, $66, $21, $22, $00, $cd, $2e
-	db $46, $fe, $01, $c2, $9e, $66, $21, $43, $00, $cd, $2e, $46, $b7, $c2, $9e, $66
-	db $21, $c2, $00, $cd, $2e, $46, $b7, $c2, $9e, $66, $fa, $df, $c7, $fe, $ff, $ca
-	db $9b, $66, $1e, $01, $21, $93, $65, $cd, $fb, $40, $cd, $1c, $40, $cd, $d6, $6a
-	db $c3, $dd, $66, $21, $22, $00, $cd, $2e, $46, $b7, $c2, $da, $66, $1e, $06, $21
-	db $23, $65, $cd, $fb, $40, $21, $14, $00, $cd, $2e, $46, $fe, $01, $c2, $d4, $66
-	db $21, $07, $00, $cd, $2e, $46, $fe, $01, $c2, $d4, $66, $1e, $00, $3e, $10, $cd
-	db $3d, $41, $1e, $00, $3e, $11, $cd, $3d, $41, $cd, $1c, $40, $c3, $dd, $66, $cd
-	db $1c, $40, $c9, $13, $0a, $ff, $ff, $11, $0a, $13, $0a, $ff, $ff, $15, $0a, $13
-	db $0a, $ff, $ff, $7b, $b7, $c2, $b1, $67, $3e, $0f, $cd, $6d, $4e, $fe, $ff, $c2
-	db $1b, $67, $3e, $41, $cd, $6d, $4e, $fe, $ff, $c2, $1b, $67, $3e, $50, $cd, $6d
-	db $4e, $fe, $ff, $c2, $1b, $67, $3e, $64, $cd, $6d, $4e, $fe, $ff, $ca, $ab, $67
-	db $fa, $90, $c7, $b7, $ca, $a2, $67, $fa, $90, $c7, $fe, $06, $d2, $a2, $67, $21
-	db $2d, $03, $cd, $ba, $44, $b7, $c2, $9f, $67, $fa, $38, $c8, $fe, $01, $ca, $4d
-	db $67, $b7, $c2, $5a, $67, $0e, $01, $11, $de, $66, $3e, $2a, $cd, $3e, $46, $c3
-	db $64, $67, $0e, $01, $11, $e2, $66, $3e, $2a, $cd, $3e, $46, $c3, $64, $67, $0e
-	db $01, $11, $e8, $66, $3e, $2a, $cd, $3e, $46, $cd, $0c, $42, $af, $cd, $e6, $4e
-	db $3e, $0a, $cd, $e6, $4e, $af, $cd, $53, $46, $0e, $01, $1e, $01, $3e, $0b, $cd
-	db $76, $41, $3e, $44, $cd, $fe, $4e, $cd, $d5, $41, $cd, $8b, $41, $3e, $04, $cd
-	db $c6, $4c, $3e, $02, $cd, $77, $46, $2e, $12, $e5, $0e, $0a, $1e, $01, $3e, $1e
-	db $cd, $ff, $4d, $c1, $c3, $a8, $67, $21, $77, $03, $cd, $98, $44, $c3, $b1, $67
-	db $21, $76, $03, $cd, $98, $44, $c9, $0c, $07, $ff, $ff, $f5, $7b, $fe, $02, $c2
-	db $ef, $67, $1e, $01, $f8, $01, $7e, $3d, $cd, $95, $40, $21, $1e, $00, $cd, $8f
-	db $46, $3e, $03, $cd, $77, $46, $3e, $69, $cd, $fe, $4e, $21, $bc, $01, $cd, $98
-	db $44, $0e, $01, $11, $b2, $67, $3e, $2a, $cd, $3e, $46, $1e, $02, $f8, $01, $7e
-	db $3d, $cd, $95, $40, $c1, $c9, $0d, $07, $ff, $ff, $f5, $7b, $fe, $02, $c2, $2e
-	db $68, $1e, $03, $f8, $01, $7e, $3c, $cd, $95, $40, $21, $1e, $00, $cd, $8f, $46
-	db $3e, $01, $cd, $77, $46, $3e, $69, $cd, $fe, $4e, $21, $bc, $01, $cd, $98, $44
-	db $0e, $01, $11, $f1, $67, $3e, $2a, $cd, $3e, $46, $1e, $02, $f8, $01, $7e, $3c
-	db $cd, $95, $40, $c1, $c9, $19, $07, $ff, $ff, $f5, $7b, $fe, $02, $c2, $6d, $68
-	db $1e, $01, $f8, $01, $7e, $3d, $cd, $95, $40, $21, $1e, $00, $cd, $8f, $46, $3e
-	db $03, $cd, $77, $46, $3e, $69, $cd, $fe, $4e, $21, $bd, $01, $cd, $98, $44, $0e
-	db $01, $11, $30, $68, $3e, $2a, $cd, $3e, $46, $1e, $02, $f8, $01, $7e, $3d, $cd
-	db $95, $40, $c1, $c9, $f5, $c5, $f8, $00, $36, $ff, $7b, $b7, $c2, $a4, $6a, $f8
-	db $03, $7e, $cd, $4b, $44, $fa, $96, $c7, $fe, $04, $c2, $0a, $69, $3e, $49, $cd
-	db $6d, $4e, $f8, $01, $77, $fe, $ff, $ca, $07, $69, $21, $16, $04, $cd, $a9, $44
-	db $3e, $49, $cd, $7d, $4e, $fe, $01, $c2, $fe, $68, $21, $95, $02, $cd, $a9, $44
-	db $21, $00, $04, $cd, $ba, $44, $b7, $c2, $ed, $68, $3e, $68, $cd, $fe, $4e, $21
-	db $0c, $04, $cd, $a9, $44, $f8, $01, $6e, $26, $00, $11, $00, $0b, $19, $cd, $88
-	db $44, $7d, $f5, $0e, $00, $1e, $01, $f8, $03, $7e, $cd, $87, $4d, $f1, $4f, $1e
-	db $00, $3e, $4a, $cd, $87, $4d, $3e, $05, $ea, $96, $c7, $f8, $00, $36, $01, $c3
-	db $fb, $68, $3e, $69, $cd, $fe, $4e, $21, $0d, $04, $cd, $a9, $44, $c3, $a4, $6a
-	db $c3, $07, $69, $21, $6e, $04, $cd, $98, $44, $c3, $a4, $6a, $c3, $4f, $6a, $fa
-	db $96, $c7, $fe, $0c, $c2, $94, $69, $3e, $7c, $cd, $6d, $4e, $f8, $01, $77, $fe
-	db $ff, $ca, $91, $69, $21, $16, $04, $cd, $a9, $44, $3e, $7c, $cd, $7d, $4e, $fe
-	db $01, $c2, $88, $69, $21, $96, $02, $cd, $a9, $44, $21, $00, $04, $cd, $ba, $44
-	db $b7, $c2, $77, $69, $3e, $68, $cd, $fe, $4e, $21, $32, $04, $cd, $a9, $44, $f8
-	db $01, $6e, $26, $00, $11, $00, $0b, $19, $cd, $88, $44, $7d, $f5, $0e, $00, $1e
-	db $01, $f8, $03, $7e, $cd, $87, $4d, $f1, $4f, $1e, $00, $3e, $7e, $cd, $87, $4d
-	db $3e, $0d, $ea, $96, $c7, $f8, $00, $36, $01, $c3, $85, $69, $3e, $69, $cd, $fe
-	db $4e, $21, $33, $04, $cd, $a9, $44, $c3, $a4, $6a, $c3, $91, $69, $21, $6e, $04
-	db $cd, $98, $44, $c3, $a4, $6a, $c3, $4f, $6a, $3e, $49, $cd, $6d, $4e, $f8, $01
-	db $77, $fe, $ff, $c2, $ae, $69, $3e, $7c, $cd, $6d, $4e, $f8, $01, $77, $fe, $ff
-	db $ca, $4f, $6a, $fa, $96, $c7, $fe, $08, $ca, $37, $6a, $fe, $06, $ca, $37, $6a
-	db $fe, $0a, $ca, $28, $6a, $fe, $05, $ca, $28, $6a, $fe, $07, $ca, $19, $6a, $b7
-	db $ca, $19, $6a, $fe, $0d, $ca, $0a, $6a, $fe, $03, $ca, $0a, $6a, $fe, $0b, $ca
-	db $fb, $69, $fe, $02, $ca, $fb, $69, $fe, $09, $ca, $ec, $69, $fe, $01, $c2, $46
-	db $6a, $21, $40, $01, $cd, $98, $44, $21, $4d, $03, $cd, $98, $44, $c3, $4c, $6a
-	db $21, $40, $01, $cd, $98, $44, $21, $05, $02, $cd, $98, $44, $c3, $4c, $6a, $21
-	db $40, $01, $cd, $98, $44, $21, $0a, $02, $cd, $98, $44, $c3, $4c, $6a, $21, $40
-	db $01, $cd, $98, $44, $21, $4b, $03, $cd, $98, $44, $c3, $4c, $6a, $21, $40, $01
-	db $cd, $98, $44, $21, $41, $02, $cd, $98, $44, $c3, $4c, $6a, $21, $40, $01, $cd
-	db $98, $44, $21, $44, $02, $cd, $98, $44, $c3, $4c, $6a, $21, $16, $04, $cd, $a9
-	db $44, $c3, $a4, $6a, $f8, $00, $7e, $fe, $ff, $c2, $a4, $6a, $fa, $96, $c7, $fe
-	db $0d, $d2, $76, $6a, $fa, $96, $c7, $fe, $05, $da, $76, $6a, $21, $16, $04, $cd
-	db $a9, $44, $21, $31, $04, $cd, $a9, $44, $c3, $a4, $6a, $fa, $96, $c7, $fe, $0f
-	db $c2, $87, $6a, $21, $16, $04, $cd, $a9, $44, $c3, $a4, $6a, $fa, $96, $c7, $fe
-	db $0d, $da, $98, $6a, $21, $34, $04, $cd, $a9, $44, $c3, $a4, $6a, $21, $16, $04
-	db $cd, $a9, $44, $21, $ba, $01, $cd, $a9, $44, $c1, $c1, $c9, $05, $0e, $01, $01
-	db $07, $08, $fa, $90, $c7, $b7, $ca, $c5, $6a, $fa, $90, $c7, $fe, $07, $d2, $c5
-	db $6a, $21, $a7, $6a, $cd, $9b, $4d, $cd, $02, $4f, $c9, $19, $05, $ff, $ff, $19
-	db $0d, $ff, $ff, $1a, $06, $ff, $ff, $19, $07, $ff, $ff, $01, $c6, $6a, $1e, $2a
-	db $3e, $0c, $cd, $88, $46, $cd, $0c, $42, $0e, $01, $11, $ce, $6a, $3e, $2a, $cd
-	db $3e, $46, $cd, $0c, $42, $3e, $03, $cd, $77, $46, $01, $ca, $6a, $1e, $2a, $3e
-	db $0c, $cd, $88, $46, $cd, $0c, $42, $3e, $02, $cd, $77, $46, $1e, $00, $3e, $0c
-	db $cd, $3d, $41, $21, $12, $01, $cd, $98, $44, $0e, $01, $11, $d2, $6a, $3e, $2a
-	db $cd, $3e, $46, $cd, $0c, $42, $1e, $01, $21, $c2, $00, $cd, $1b, $46, $2e, $07
-	db $e5, $0e, $19, $1e, $01, $3e, $19, $cd, $ff, $4d, $c1, $c9, $19, $06, $ff, $ff
-	db $19, $0d, $ff, $ff, $01, $37, $6b, $1e, $2a, $3e, $0c, $cd, $88, $46, $cd, $0c
-	db $42, $21, $1e, $00, $cd, $8f, $46, $21, $bf, $01, $cd, $98, $44, $21, $1e, $00
-	db $cd, $8f, $46, $01, $3b, $6b, $1e, $2a, $3e, $0c, $cd, $88, $46, $cd, $0c, $42
-	db $21, $1e, $00, $cd, $8f, $46, $2e, $06, $e5, $0e, $07, $1e, $00, $3e, $1a, $cd
-	db $ff, $4d, $c1, $1e, $01, $21, $c3, $00, $cd, $1b, $46, $c9, $7b, $fe, $02, $c2
-	db $92, $6b, $3e, $0c, $ea, $8a, $c7, $c9, $01, $04, $01, $01, $19, $04, $09, $18
+	db $01, $04, $01, $01, $19, $04, $09, $18
 	db $09, $17, $2e, $0e, $03, $01, $03, $1c, $01, $05, $14, $06, $14, $2e, $00, $03
 	db $13, $03, $3f, $23, $26, $26, $0c, $0f, $00, $05, $0a, $00, $00, $03, $13, $03
 	db $56, $24, $27, $48, $0c, $0c, $0c, $10, $0a, $00, $00, $03, $13, $03, $36, $26
