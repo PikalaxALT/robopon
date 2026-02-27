@@ -6,17 +6,53 @@ SECTION "Bank 2c", ROMX
 	script_library 2c
 
 Data_b10b4:
-	db $06, $1b, $01, $01, $19, $01, $19, $05, $19, $06, $2e, $06, $04, $04, $01, $1c
-	db $01, $11, $19, $11, $18, $2e, $b2, $02, $ff, $ff, $ff, $00, $05, $1a, $01, $01
-	db $00, $04, $01, $2c, $5f, $48, $ca, $50, $ff, $00, $07, $1a, $01, $01, $00, $04
-	db $01, $2c, $5f, $48, $ca, $50
+	warpdef $06, $1b, $01, $01, MAP_25_01, $19, $05, $19, $06, $2e
+	warpdef $06, $04, $04, $01, MAP_28_01, $11, $19, $11, $18, $2e
+
+Data_b10ca:
+	dw $2b2
+	dw -1
+
+Data_b10ce:
+	person_event $ff, $00, $05, $1a, $01, $01, $00, $04, $01, PrintTextFacePlayer_2c, Data_b10ca
+	person_event $ff, $00, $07, $1a, $01, $01, $00, $04, $01, PrintTextFacePlayer_2c, Data_b10ca
 
 Func_b10ea:: ; b10ea
-	db $1e, $02, $21, $b4, $50, $cd, $3a, $40, $1e, $02, $21, $ce, $50, $cd, $fb, $40
-	db $3e, $0d, $ea, $e2, $c7, $3e, $12, $cd, $e6, $4e, $cd, $1c, $40, $cd, $0b, $51
-	db $c9, $21, $1e, $00, $cd, $2e, $46, $fe, $01, $c2, $2d, $51, $21, $09, $00, $cd
-	db $2e, $46, $b7, $c2, $2d, $51, $2e, $04, $e5, $0e, $11, $1e, $01, $3e, $1c, $cd
-	db $ff, $4d, $c1, $c9, $10, $19, $03, $01, $1c, $00, $07, $04, $07, $05, $2e, $05
+	ld e, $02 ; B10EA (2c:50ea) -> 1E 02
+	ld hl, Data_b10b4 ; B10EC (2c:50ec) -> 21 B4 50
+	scall LoadWarps ; B10EF (2c:50ef) -> CD 3A 40
+	ld e, $02 ; B10F2 (2c:50f2) -> 1E 02
+	ld hl, Data_b10ce ; B10F4 (2c:50f4) -> 21 CE 50
+	scall LoadMapObjects ; B10F7 (2c:50f7) -> CD FB 40
+	ld a, $0d ; B10FA (2c:50fa) -> 3E 0D
+	ld [wc7e2], a ; B10FC (2c:50fc) -> EA E2 C7
+	ld a, $12 ; B10FF (2c:50ff) -> 3E 12
+	scall PlayMusic ; B1101 (2c:5101) -> CD E6 4E
+	scall Func_8001c ; B1104 (2c:5104) -> CD 1C 40
+	call Func_b110b ; B1107 (2c:5107) -> CD 0B 51
+	ret  ; B110A (2c:510a) -> C9
+
+Func_b110b:
+	ld hl, $001e ; B110B (2c:510b) -> 21 1E 00
+	scall CheckEventFlag ; B110E (2c:510e) -> CD 2E 46
+	cp $01 ; B1111 (2c:5111) -> FE 01
+	jp nz, .asm_b112d ; B1113 (2c:5113) -> C2 2D 51
+	ld hl, $0009 ; B1116 (2c:5116) -> 21 09 00
+	scall CheckEventFlag ; B1119 (2c:5119) -> CD 2E 46
+	or a ; B111C (2c:511c) -> B7
+	jp nz, .asm_b112d ; B111D (2c:511d) -> C2 2D 51
+	ld l, $04 ; B1120 (2c:5120) -> 2E 04
+	push hl ; B1122 (2c:5122) -> E5
+	ld c, $11 ; B1123 (2c:5123) -> 0E 11
+	ld e, $01 ; B1125 (2c:5125) -> 1E 01
+	ld a, $1c ; B1127 (2c:5127) -> 3E 1C
+	scall Func_80dff ; B1129 (2c:5129) -> CD FF 4D
+	pop bc ; B112C (2c:512c) -> C1
+.asm_b112d:
+	ret  ; B112D (2c:512d) -> C9
+
+Data_b112e:
+	db $10, $19, $03, $01, $1c, $00, $07, $04, $07, $05, $2e, $05
 	db $13, $01, $03, $19, $02, $0e, $04, $0d, $04, $2e, $1d, $13, $01, $03, $19, $03
 	db $05, $04, $06, $04, $2e, $0c, $08, $01, $01, $1c, $01, $11, $03, $11, $04, $2e
 	db $11, $03, $01, $01, $1c, $01, $0c, $08, $0c, $09, $2e, $2f, $01, $ff, $ff, $c0
