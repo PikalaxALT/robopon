@@ -91,20 +91,20 @@ Func_b5215:: ; b5215
 	ld [wc7e2], a ; B5217 (2d:5217) -> EA E2 C7
 	ld e, $04 ; B521A (2d:521a) -> 1E 04
 	ld hl, Data_b5194 ; B521C (2d:521c) -> 21 94 51
-	call LoadWarps_2d ; B521F (2d:521f) -> CD 3A 40
+	scall LoadWarps ; B521F (2d:521f) -> CD 3A 40
 	ld a, $03 ; B5222 (2d:5222) -> 3E 03
-	call Func_80d01_2d ; B5224 (2d:5224) -> CD 01 4D
+	scall Func_80d01 ; B5224 (2d:5224) -> CD 01 4D
 	ld e, $05 ; B5227 (2d:5227) -> 1E 05
 	ld hl, Data_b51c0 ; B5229 (2d:5229) -> 21 C0 51
-	call LoadEncounters_2d ; B522C (2d:522c) -> CD 24 4D
+	scall LoadEncounters ; B522C (2d:522c) -> CD 24 4D
 	ld e, $03 ; B522F (2d:522f) -> 1E 03
 	ld hl, Data_b5206 ; B5231 (2d:5231) -> 21 06 52
-	call Func_80ce7_2d ; B5234 (2d:5234) -> CD E7 4C
+	scall Func_80ce7 ; B5234 (2d:5234) -> CD E7 4C
 	ld a, $0a ; B5237 (2d:5237) -> 3E 0A
-	call PlayMusic_2d ; B5239 (2d:5239) -> CD E6 4E
+	scall PlayMusic ; B5239 (2d:5239) -> CD E6 4E
 	ld a, $04 ; B523C (2d:523c) -> 3E 04
-	call LoadPlayerSprite_2d ; B523E (2d:523e) -> CD C6 4C
-	call Func_8001c_2d ; B5241 (2d:5241) -> CD 1C 40
+	scall LoadPlayerSprite ; B523E (2d:523e) -> CD C6 4C
+	scall Func_8001c ; B5241 (2d:5241) -> CD 1C 40
 	ret  ; B5244 (2d:5244) -> C9
 
 Data_b5245:
@@ -144,56 +144,78 @@ Func_b52d3:: ; b52d3
 	ld [wc7e2], a ; B52D5 (2d:52d5) -> EA E2 C7
 	ld e, $04 ; B52D8 (2d:52d8) -> 1E 04
 	ld hl, Data_b5245 ; B52DA (2d:52da) -> 21 45 52
-	call LoadWarps_2d ; B52DD (2d:52dd) -> CD 3A 40
+	scall LoadWarps ; B52DD (2d:52dd) -> CD 3A 40
 	ld a, $03 ; B52E0 (2d:52e0) -> 3E 03
-	call Func_80d01_2d ; B52E2 (2d:52e2) -> CD 01 4D
+	scall Func_80d01 ; B52E2 (2d:52e2) -> CD 01 4D
 	ld e, $05 ; B52E5 (2d:52e5) -> 1E 05
 	ld hl, Data_b5271 ; B52E7 (2d:52e7) -> 21 71 52
-	call LoadEncounters_2d ; B52EA (2d:52ea) -> CD 24 4D
+	scall LoadEncounters ; B52EA (2d:52ea) -> CD 24 4D
 	ld e, $02 ; B52ED (2d:52ed) -> 1E 02
 	ld hl, Data_b52b7 ; B52EF (2d:52ef) -> 21 B7 52
-	call Func_80ce7_2d ; B52F2 (2d:52f2) -> CD E7 4C
+	scall Func_80ce7 ; B52F2 (2d:52f2) -> CD E7 4C
 	ld hl, $0021 ; B52F5 (2d:52f5) -> 21 21 00
-	call CheckEventFlag_2d ; B52F8 (2d:52f8) -> CD 2E 46
+	scall CheckEventFlag ; B52F8 (2d:52f8) -> CD 2E 46
 	or a ; B52FB (2d:52fb) -> B7
-	jp nz, label_b5307 ; B52FC (2d:52fc) -> C2 07 53
+	jp nz, .asm_b5307 ; B52FC (2d:52fc) -> C2 07 53
 	ld e, $01 ; B52FF (2d:52ff) -> 1E 01
 	ld hl, Data_b52c5 ; B5301 (2d:5301) -> 21 C5 52
-	call LoadMapObjects_2d ; B5304 (2d:5304) -> CD FB 40
-label_b5307:
+	scall LoadMapObjects ; B5304 (2d:5304) -> CD FB 40
+.asm_b5307:
 	ld a, $0a ; B5307 (2d:5307) -> 3E 0A
-	call PlayMusic_2d ; B5309 (2d:5309) -> CD E6 4E
+	scall PlayMusic ; B5309 (2d:5309) -> CD E6 4E
 	ld a, $04 ; B530C (2d:530c) -> 3E 04
-	call LoadPlayerSprite_2d ; B530E (2d:530e) -> CD C6 4C
-	call Func_8001c_2d ; B5311 (2d:5311) -> CD 1C 40
+	scall LoadPlayerSprite ; B530E (2d:530e) -> CD C6 4C
+	scall Func_8001c ; B5311 (2d:5311) -> CD 1C 40
 	ret  ; B5314 (2d:5314) -> C9
 
 Data_b5315:
+	warpdef $00, $1d, $01, $03, MAP_30_02, $2f, $1e, $2e, $1e, $2e
+	warpdef $2e, $00, $02, $01, MAP_30_01, $2e, $1f, $2e, $1e, $2e
+	warpdef $18, $1e, $01, $01, MAP_11_00, $0e, $09, $0e, $0a, $2e
+	warpdef $2e, $1e, $01, $01, MAP_03_15, $04, $0a, $04, $0b, $2e
+
+Data_b5341:
+	db $54, $07, $16, $02, $1f
+	db $55, $01, $08, $01, $39
+
+Data_b534b:
 IF DEF(SUN)
-	db $00, $1d, $01, $03, $1e, $02, $2f, $1e, $2e, $1e, $2e, $2e, $00, $02
-	db $01, $1e, $01, $2e, $1f, $2e, $1e, $2e, $18, $1e, $01, $01, $0b, $00, $0e, $09
-	db $0e, $0a, $2e, $2e, $1e, $01, $01, $03, $0f, $04, $0a, $04, $0b, $2e, $54, $07
-	db $16, $02, $1f, $55, $01, $08, $01, $39, $00, $03, $30, $1d, $65, $19, $23, $67
-	db $02, $02, $00, $0e, $0a, $00, $00, $03, $30, $1d, $64, $19, $23, $78, $0d, $09
-	db $0a, $04, $0a, $00, $00, $03, $30, $1d, $40, $14, $1e, $78, $02, $09, $00, $04
-	db $0a, $00, $00, $03, $30, $1d, $41, $19, $23, $78, $0e, $0e, $00, $04, $0a, $00
-	db $00, $03, $30, $1d, $51, $14, $1e, $67, $02, $11, $00, $0f, $0a, $00
+	wildbot $00, $03, $30, $1d, $65, $19, $23, $67, $02, $02, $00, $0e, $0a, $00
+	wildbot $00, $03, $30, $1d, $64, $19, $23, $78, $0d, $09, $0a, $04, $0a, $00
+	wildbot $00, $03, $30, $1d, $40, $14, $1e, $78, $02, $09, $00, $04, $0a, $00
+	wildbot $00, $03, $30, $1d, $41, $19, $23, $78, $0e, $0e, $00, $04, $0a, $00
+	wildbot $00, $03, $30, $1d, $51, $14, $1e, $67, $02, $11, $00, $0f, $0a, $00
 ELIF DEF(STAR)
-	db $00, $1d, $01, $03, $1e, $02, $2f, $1e, $2e, $1e, $2e, $2e, $00, $02
-	db $01, $1e, $01, $2e, $1f, $2e, $1e, $2e, $18, $1e, $01, $01, $0b, $00, $0e, $09
-	db $0e, $0a, $2e, $2e, $1e, $01, $01, $03, $0f, $04, $0a, $04, $0b, $2e, $54, $07
-	db $16, $02, $1f, $55, $01, $08, $01, $39, $00, $03, $30, $1d, $42, $19, $23, $67
-	db $02, $02, $05, $04, $0a, $00, $00, $03, $30, $1d, $64, $19, $23, $78, $0d, $09
-	db $0a, $04, $0a, $00, $00, $03, $30, $1d, $40, $14, $1e, $78, $02, $09, $00, $04
-	db $0a, $00, $00, $03, $30, $1d, $51, $14, $1e, $67, $02, $11, $00, $0f, $0a, $00
-	db $00, $03, $30, $1d, $41, $19, $23, $78, $0e, $0e, $00, $04, $0a, $00
+	wildbot $00, $03, $30, $1d, $42, $19, $23, $67, $02, $02, $05, $04, $0a, $00
+	wildbot $00, $03, $30, $1d, $64, $19, $23, $78, $0d, $09, $0a, $04, $0a, $00
+	wildbot $00, $03, $30, $1d, $40, $14, $1e, $78, $02, $09, $00, $04, $0a, $00
+	wildbot $00, $03, $30, $1d, $51, $14, $1e, $67, $02, $11, $00, $0f, $0a, $00
+	wildbot $00, $03, $30, $1d, $41, $19, $23, $78, $0e, $0e, $00, $04, $0a, $00
 ENDC
 
 Func_b5391:: ; b5391
+	ld a, $14 ; B5391 (2d:5391) -> 3E 14
+	ld [wc7e2], a ; B5393 (2d:5393) -> EA E2 C7
+	ld e, $04 ; B5396 (2d:5396) -> 1E 04
+	ld hl, Data_b5315 ; B5398 (2d:5398) -> 21 15 53
+	scall LoadWarps ; B539B (2d:539b) -> CD 3A 40
+	ld e, $02 ; B539E (2d:539e) -> 1E 02
+	ld hl, Data_b5341 ; B53A0 (2d:53a0) -> 21 41 53
+	scall Func_80ce7 ; B53A3 (2d:53a3) -> CD E7 4C
+	ld a, $03 ; B53A6 (2d:53a6) -> 3E 03
+	scall Func_80d01 ; B53A8 (2d:53a8) -> CD 01 4D
+	ld e, $05 ; B53AB (2d:53ab) -> 1E 05
+	ld hl, Data_b534b ; B53AD (2d:53ad) -> 21 4B 53
+	scall LoadEncounters ; B53B0 (2d:53b0) -> CD 24 4D
+	ld a, $0a ; B53B3 (2d:53b3) -> 3E 0A
+	scall PlayMusic ; B53B5 (2d:53b5) -> CD E6 4E
+	ld a, $04 ; B53B8 (2d:53b8) -> 3E 04
+	scall LoadPlayerSprite ; B53BA (2d:53ba) -> CD C6 4C
+	scall Func_8001c ; B53BD (2d:53bd) -> CD 1C 40
+	ret  ; B53C0 (2d:53c0) -> C9
+
+Data_b53c1:
 IF DEF(SUN)
-	db $3e, $14, $ea, $e2, $c7, $1e, $04, $21, $15, $53, $cd, $3a, $40, $1e, $02, $21
-	db $41, $53, $cd, $e7, $4c, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $4b, $53, $cd
-	db $24, $4d, $3e, $0a, $cd, $e6, $4e, $3e, $04, $cd, $c6, $4c, $cd, $1c, $40, $c9
 	db $01, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $01, $02, $01, $01, $20
 	db $09, $01, $06, $01, $05, $2e, $07, $01, $01, $01, $20, $09, $01, $06, $01, $05
 	db $2e, $00, $02, $0f, $0e, $88, $25, $28, $7a, $04, $04, $00, $05, $0a, $00, $00
@@ -205,9 +227,6 @@ IF DEF(SUN)
 	db $55, $00, $00, $ff, $00, $0b, $0c, $01, $01, $00, $04, $01, $2d, $be, $55, $00
 	db $00
 ELIF DEF(STAR)
-	db $3e, $14, $ea, $e2, $c7, $1e, $04, $21, $15, $53, $cd, $3a, $40, $1e, $02, $21
-	db $41, $53, $cd, $e7, $4c, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $4b, $53, $cd
-	db $24, $4d, $3e, $0a, $cd, $e6, $4e, $3e, $04, $cd, $c6, $4c, $cd, $1c, $40, $c9
 	db $01, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $01, $02, $01, $01, $20
 	db $09, $01, $06, $01, $05, $2e, $07, $01, $01, $01, $20, $09, $01, $06, $01, $05
 	db $2e, $00, $02, $0f, $0e, $85, $25, $28, $7b, $14, $0d, $1f, $11, $0a, $00, $00
