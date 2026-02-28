@@ -252,47 +252,47 @@ Func_b5452:: ; b5452
 	jp nc, .asm_b5475 ; B545E (2d:545e) -> D2 75 54
 	call Func_b556c ; B5461 (2d:5461) -> CD 6C 55
 	ld hl, Func_b556c ; B5464 (2d:5464) -> 21 6C 55
-	call Func_80f11_2d ; B5467 (2d:5467) -> CD 11 4F
+	scall Func_80f11 ; B5467 (2d:5467) -> CD 11 4F
 	ld e, $02 ; B546A (2d:546a) -> 1E 02
 	ld hl, Data_b53cc ; B546C (2d:546c) -> 21 CC 53
-	call LoadWarps_2d ; B546F (2d:546f) -> CD 3A 40
+	scall LoadWarps ; B546F (2d:546f) -> CD 3A 40
 	jp .asm_b547d ; B5472 (2d:5472) -> C3 7D 54
 .asm_b5475:
 	ld e, $01 ; B5475 (2d:5475) -> 1E 01
 	ld hl, Data_b53c1 ; B5477 (2d:5477) -> 21 C1 53
-	call LoadWarps_2d ; B547A (2d:547a) -> CD 3A 40
+	scall LoadWarps ; B547A (2d:547a) -> CD 3A 40
 .asm_b547d:
 	ld a, $03 ; B547D (2d:547d) -> 3E 03
-	call Func_80d01_2d ; B547F (2d:547f) -> CD 01 4D
+	scall Func_80d01 ; B547F (2d:547f) -> CD 01 4D
 	ld e, $05 ; B5482 (2d:5482) -> 1E 05
 	ld hl, Data_b53e2 ; B5484 (2d:5484) -> 21 E2 53
-	call LoadEncounters_2d ; B5487 (2d:5487) -> CD 24 4D
+	scall LoadEncounters ; B5487 (2d:5487) -> CD 24 4D
 	ld a, $0f ; B548A (2d:548a) -> 3E 0F
 	ld [wc7e2], a ; B548C (2d:548c) -> EA E2 C7
 	ld hl, $0034 ; B548F (2d:548f) -> 21 34 00
-	call CheckEventFlag_2d ; B5492 (2d:5492) -> CD 2E 46
+	scall CheckEventFlag ; B5492 (2d:5492) -> CD 2E 46
 	or a ; B5495 (2d:5495) -> B7
 	jp nz, .asm_b54c0 ; B5496 (2d:5496) -> C2 C0 54
 	ld e, $01 ; B5499 (2d:5499) -> 1E 01
 	ld hl, Data_b5428 ; B549B (2d:549b) -> 21 28 54
-	call LoadMapObjects_2d ; B549E (2d:549e) -> CD FB 40
+	scall LoadMapObjects ; B549E (2d:549e) -> CD FB 40
 	ld e, $02 ; B54A1 (2d:54a1) -> 1E 02
 	ld hl, Data_b5436 ; B54A3 (2d:54a3) -> 21 36 54
-	call LoadMapObjects_2d ; B54A6 (2d:54a6) -> CD FB 40
-	call Func_8001c_2d ; B54A9 (2d:54a9) -> CD 1C 40
+	scall LoadMapObjects ; B54A6 (2d:54a6) -> CD FB 40
+	scall Func_8001c ; B54A9 (2d:54a9) -> CD 1C 40
 	ld hl, $0314 ; B54AC (2d:54ac) -> 21 14 03
-	call LandmarkSign_2d ; B54AF (2d:54af) -> CD 72 4F
+	scall LandmarkSign ; B54AF (2d:54af) -> CD 72 4F
 	call Func_b5526 ; B54B2 (2d:54b2) -> CD 26 55
 	ld e, $01 ; B54B5 (2d:54b5) -> 1E 01
 	ld hl, $0034 ; B54B7 (2d:54b7) -> 21 34 00
-	call EventFlagAction_2d ; B54BA (2d:54ba) -> CD 1B 46
+	scall EventFlagAction ; B54BA (2d:54ba) -> CD 1B 46
 	jp .asm_b551f ; B54BD (2d:54bd) -> C3 1F 55
 .asm_b54c0:
 	ld e, $02 ; B54C0 (2d:54c0) -> 1E 02
 	ld hl, Data_b5436 ; B54C2 (2d:54c2) -> 21 36 54
-	call LoadMapObjects_2d ; B54C5 (2d:54c5) -> CD FB 40
+	scall LoadMapObjects ; B54C5 (2d:54c5) -> CD FB 40
 	ld a, $09 ; B54C8 (2d:54c8) -> 3E 09
-	call PlayMusic_2d ; B54CA (2d:54ca) -> CD E6 4E
+	scall PlayMusic ; B54CA (2d:54ca) -> CD E6 4E
 	ld a, [wBackupMapGroup] ; B54CD (2d:54cd) -> FA DF C7
 	cp $1e ; B54D0 (2d:54d0) -> FE 1E
 	jp nz, .asm_b5516 ; B54D2 (2d:54d2) -> C2 16 55
@@ -306,26 +306,26 @@ Func_b5452:: ; b5452
 	cp $0c ; B54E8 (2d:54e8) -> FE 0C
 	jp nz, .asm_b5516 ; B54EA (2d:54ea) -> C2 16 55
 	ld hl, $00ff ; B54ED (2d:54ed) -> 21 FF 00
-	call CheckEventFlag_2d ; B54F0 (2d:54f0) -> CD 2E 46
+	scall CheckEventFlag ; B54F0 (2d:54f0) -> CD 2E 46
 	or a ; B54F3 (2d:54f3) -> B7
 	jp nz, .asm_b550a ; B54F4 (2d:54f4) -> C2 0A 55
 	xor a ; B54F7 (2d:54f7) -> AF
-	call Func_80653_2d ; B54F8 (2d:54f8) -> CD 53 46
-	call Func_8001c_2d ; B54FB (2d:54fb) -> CD 1C 40
+	scall Func_80653 ; B54F8 (2d:54f8) -> CD 53 46
+	scall Func_8001c ; B54FB (2d:54fb) -> CD 1C 40
 	ld hl, $0314 ; B54FE (2d:54fe) -> 21 14 03
-	call LandmarkSign_2d ; B5501 (2d:5501) -> CD 72 4F
+	scall LandmarkSign ; B5501 (2d:5501) -> CD 72 4F
 	call Func_b55fd ; B5504 (2d:5504) -> CD FD 55
 	jp .asm_b5513 ; B5507 (2d:5507) -> C3 13 55
 .asm_b550a:
-	call Func_8001c_2d ; B550A (2d:550a) -> CD 1C 40
+	scall Func_8001c ; B550A (2d:550a) -> CD 1C 40
 	ld hl, $0314 ; B550D (2d:550d) -> 21 14 03
-	call LandmarkSign_2d ; B5510 (2d:5510) -> CD 72 4F
+	scall LandmarkSign ; B5510 (2d:5510) -> CD 72 4F
 .asm_b5513:
 	jp .asm_b551f ; B5513 (2d:5513) -> C3 1F 55
 .asm_b5516:
-	call Func_8001c_2d ; B5516 (2d:5516) -> CD 1C 40
+	scall Func_8001c ; B5516 (2d:5516) -> CD 1C 40
 	ld hl, $0314 ; B5519 (2d:5519) -> 21 14 03
-	call LandmarkSign_2d ; B551C (2d:551c) -> CD 72 4F
+	scall LandmarkSign ; B551C (2d:551c) -> CD 72 4F
 .asm_b551f:
 	ret  ; B551F (2d:551f) -> C9
 
@@ -334,31 +334,31 @@ Data_b5520:
 
 Func_b5526:
 	ld a, $0a ; B5526 (2d:5526) -> 3E 0A
-	call FadeOutAudio_2d ; B5528 (2d:5528) -> CD F1 4F
+	scall FadeOutAudio ; B5528 (2d:5528) -> CD F1 4F
 	xor a ; B552B (2d:552b) -> AF
-	call PlayMusic_2d ; B552C (2d:552c) -> CD E6 4E
+	scall PlayMusic ; B552C (2d:552c) -> CD E6 4E
 	ld a, $01 ; B552F (2d:552f) -> 3E 01
-	call PlayerFace_2d ; B5531 (2d:5531) -> CD 77 46
+	scall PlayerFace ; B5531 (2d:5531) -> CD 77 46
 	ld a, $01 ; B5534 (2d:5534) -> 3E 01
-	call FadeInAudio_2d ; B5536 (2d:5536) -> CD 1A 50
+	scall FadeInAudio ; B5536 (2d:5536) -> CD 1A 50
 	ld a, $18 ; B5539 (2d:5539) -> 3E 18
-	call PlayMusic_2d ; B553B (2d:553b) -> CD E6 4E
+	scall PlayMusic ; B553B (2d:553b) -> CD E6 4E
 	ld hl, $012a ; B553E (2d:553e) -> 21 2A 01
-	call PrintTextWithNPCName_2d ; B5541 (2d:5541) -> CD A9 44
+	scall PrintTextWithNPCName ; B5541 (2d:5541) -> CD A9 44
 	ld a, $18 ; B5544 (2d:5544) -> 3E 18
-	call PlayMusic_2d ; B5546 (2d:5546) -> CD E6 4E
+	scall PlayMusic ; B5546 (2d:5546) -> CD E6 4E
 	ld bc, Data_b5520 ; B5549 (2d:5549) -> 01 20 55
 	ld e, $2d ; B554C (2d:554c) -> 1E 2D
 	xor a ; B554E (2d:554e) -> AF
-	call MovePersonAndWait_2d ; B554F (2d:554f) -> CD 88 46
-	call WaitNPCStep_2d ; B5552 (2d:5552) -> CD 0C 42
+	scall MovePersonAndWait ; B554F (2d:554f) -> CD 88 46
+	scall WaitNPCStep ; B5552 (2d:5552) -> CD 0C 42
 	ld a, $2e ; B5555 (2d:5555) -> 3E 2E
-	call PlaySFX_2d ; B5557 (2d:5557) -> CD FE 4E
+	scall PlaySFX ; B5557 (2d:5557) -> CD FE 4E
 	ld e, $00 ; B555A (2d:555a) -> 1E 00
 	xor a ; B555C (2d:555c) -> AF
-	call SetPersonVisibilityState_2d ; B555D (2d:555d) -> CD 3D 41
+	scall SetPersonVisibilityState ; B555D (2d:555d) -> CD 3D 41
 	ld a, $09 ; B5560 (2d:5560) -> 3E 09
-	call PlayMusic_2d ; B5562 (2d:5562) -> CD E6 4E
+	scall PlayMusic ; B5562 (2d:5562) -> CD E6 4E
 	ret  ; B5565 (2d:5565) -> C9
 
 Data_b5566:
@@ -366,8 +366,8 @@ Data_b5566:
 
 Func_b556c:
 	ld hl, Data_b5566 ; B556C (2d:556c) -> 21 66 55
-	call Func_80d9b_2d ; B556F (2d:556f) -> CD 9B 4D
-	call Func_80f02_2d ; B5572 (2d:5572) -> CD 02 4F
+	scall Func_80d9b ; B556F (2d:556f) -> CD 9B 4D
+	scall Func_80f02 ; B5572 (2d:5572) -> CD 02 4F
 	ret  ; B5575 (2d:5575) -> C9
 
 Func_b5576:
@@ -382,7 +382,7 @@ Func_b5576:
 	cp $02 ; B5581 (2d:5581) -> FE 02
 	jp nz, .asm_b55bb ; B5583 (2d:5583) -> C2 BB 55
 	ld hl, $0327 ; B5586 (2d:5586) -> 21 27 03
-	call LandmarkSign_2d ; B5589 (2d:5589) -> CD 72 4F
+	scall LandmarkSign ; B5589 (2d:5589) -> CD 72 4F
 	ld hl, sp+$00 ; B558C (2d:558c) -> F8 00
 	ld a, [wMapX] ; B558E (2d:558e) -> FA D8 C2
 	add a, $05 ; B5591 (2d:5591) -> C6 05
@@ -408,7 +408,7 @@ Func_b5576:
 	pop de ; B55B4 (2d:55b4) -> D1
 	pop hl ; B55B5 (2d:55b5) -> E1
 	ld a, $2d ; B55B6 (2d:55b6) -> 3E 2D
-	call MovePlayer_2d ; B55B8 (2d:55b8) -> CD 3E 46
+	scall MovePlayer ; B55B8 (2d:55b8) -> CD 3E 46
 .asm_b55bb:
 	pop bc ; B55BB (2d:55bb) -> C1
 	pop bc ; B55BC (2d:55bc) -> C1
@@ -419,84 +419,141 @@ Func_b55be:
 	cp $02 ; B55BF (2d:55bf) -> FE 02
 	jp nz, .asm_b55fc ; B55C1 (2d:55c1) -> C2 FC 55
 	ld hl, $00b4 ; B55C4 (2d:55c4) -> 21 B4 00
-	call LandmarkSign_2d ; B55C7 (2d:55c7) -> CD 72 4F
+	scall LandmarkSign ; B55C7 (2d:55c7) -> CD 72 4F
 	ld e, $00 ; B55CA (2d:55ca) -> 1E 00
 	ld hl, $00fe ; B55CC (2d:55cc) -> 21 FE 00
-	call EventFlagAction_2d ; B55CF (2d:55cf) -> CD 1B 46
+	scall EventFlagAction ; B55CF (2d:55cf) -> CD 1B 46
 	xor a ; B55D2 (2d:55d2) -> AF
-	call Func_80653_2d ; B55D3 (2d:55d3) -> CD 53 46
+	scall Func_80653 ; B55D3 (2d:55d3) -> CD 53 46
 	ld c, $01 ; B55D6 (2d:55d6) -> 0E 01
 	ld e, $01 ; B55D8 (2d:55d8) -> 1E 01
 	ld a, $09 ; B55DA (2d:55da) -> 3E 09
-	call LoadEmote_2d ; B55DC (2d:55dc) -> CD 76 41
+	scall LoadEmote ; B55DC (2d:55dc) -> CD 76 41
 	ld a, $5a ; B55DF (2d:55df) -> 3E 5A
-	call PlaySFX_2d ; B55E1 (2d:55e1) -> CD FE 4E
-	call WaitEmote_2d ; B55E4 (2d:55e4) -> CD D5 41
-	call HideEmote_2d ; B55E7 (2d:55e7) -> CD 8B 41
+	scall PlaySFX ; B55E1 (2d:55e1) -> CD FE 4E
+	scall WaitEmote ; B55E4 (2d:55e4) -> CD D5 41
+	scall HideEmote ; B55E7 (2d:55e7) -> CD 8B 41
 	ld a, $02 ; B55EA (2d:55ea) -> 3E 02
-	call PlayerFace_2d ; B55EC (2d:55ec) -> CD 77 46
+	scall PlayerFace ; B55EC (2d:55ec) -> CD 77 46
 	ld l, $0c ; B55EF (2d:55ef) -> 2E 0C
 	push hl ; B55F1 (2d:55f1) -> E5
 	ld c, $0b ; B55F2 (2d:55f2) -> 0E 0B
 	ld e, $08 ; B55F4 (2d:55f4) -> 1E 08
 	ld a, $1e ; B55F6 (2d:55f6) -> 3E 1E
-	call Func_80dff_2d ; B55F8 (2d:55f8) -> CD FF 4D
+	scall Func_80dff ; B55F8 (2d:55f8) -> CD FF 4D
 	pop bc ; B55FB (2d:55fb) -> C1
 .asm_b55fc:
 	ret  ; B55FC (2d:55fc) -> C9
 
 Func_b55fd:
 	ld a, $09 ; B55FD (2d:55fd) -> 3E 09
-	call PlayMusic_2d ; B55FF (2d:55ff) -> CD E6 4E
+	scall PlayMusic ; B55FF (2d:55ff) -> CD E6 4E
 	ld a, $02 ; B5602 (2d:5602) -> 3E 02
-	call PlayerFace_2d ; B5604 (2d:5604) -> CD 77 46
+	scall PlayerFace ; B5604 (2d:5604) -> CD 77 46
 	ld c, $01 ; B5607 (2d:5607) -> 0E 01
 	ld e, $02 ; B5609 (2d:5609) -> 1E 02
 	ld a, $09 ; B560B (2d:560b) -> 3E 09
-	call LoadEmote_2d ; B560D (2d:560d) -> CD 76 41
+	scall LoadEmote ; B560D (2d:560d) -> CD 76 41
 	ld a, $37 ; B5610 (2d:5610) -> 3E 37
-	call PlaySFX_2d ; B5612 (2d:5612) -> CD FE 4E
-	call WaitEmote_2d ; B5615 (2d:5615) -> CD D5 41
+	scall PlaySFX ; B5612 (2d:5612) -> CD FE 4E
+	scall WaitEmote ; B5615 (2d:5615) -> CD D5 41
 	ld a, $01 ; B5618 (2d:5618) -> 3E 01
-	call Func_80653_2d ; B561A (2d:561a) -> CD 53 46
+	scall Func_80653 ; B561A (2d:561a) -> CD 53 46
 	ld hl, $0001 ; B561D (2d:561d) -> 21 01 00
-	call ScriptSleep_2d ; B5620 (2d:5620) -> CD 8F 46
-	call HideEmote_2d ; B5623 (2d:5623) -> CD 8B 41
+	scall ScriptSleep ; B5620 (2d:5620) -> CD 8F 46
+	scall HideEmote ; B5623 (2d:5623) -> CD 8B 41
 	ld e, $01 ; B5626 (2d:5626) -> 1E 01
 	ld hl, $00ff ; B5628 (2d:5628) -> 21 FF 00
-	call EventFlagAction_2d ; B562B (2d:562b) -> CD 1B 46
+	scall EventFlagAction ; B562B (2d:562b) -> CD 1B 46
 	ret  ; B562E (2d:562e) -> C9
 
 Data_b562f:
-	db $0d, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e
+	warpdef $0d, $02, $01, $01, MAP_32_09, $01, $06, $01, $05, $2e
 
 Data_b563a:
 IF DEF(SUN)
-	db $00, $02, $0f, $0e, $88
-	db $25, $28, $7a, $04, $04, $00, $05, $0a, $00, $00, $02, $0f, $0e, $70, $26, $29
-	db $53, $01, $10, $00, $10, $09, $00, $00, $02, $0f, $0e, $4a, $27, $2a, $3d, $07
-	db $11, $14, $05, $08, $00, $00, $02, $0f, $0e, $4b, $28, $2b, $26, $0e, $08, $14
-	db $12, $07, $00, $00, $02, $0f, $0e, $7d, $29, $2c, $11, $06, $08, $11, $13, $06
-	db $00, $ff, $00, $01, $02, $01, $01, $00, $04, $01, $2d, $ba, $56, $00, $00
+	wildbot $00, $02, $0f, $0e, $88, $25, $28, $7a, $04, $04, $00, $05, $0a, $00
+	wildbot $00, $02, $0f, $0e, $70, $26, $29, $53, $01, $10, $00, $10, $09, $00
+	wildbot $00, $02, $0f, $0e, $4a, $27, $2a, $3d, $07, $11, $14, $05, $08, $00
+	wildbot $00, $02, $0f, $0e, $4b, $28, $2b, $26, $0e, $08, $14, $12, $07, $00
+	wildbot $00, $02, $0f, $0e, $7d, $29, $2c, $11, $06, $08, $11, $13, $06, $00
 ELIF DEF(STAR)
-	db $00, $02, $0f, $0e, $85
-	db $25, $28, $7b, $14, $0d, $1f, $11, $0a, $00, $00, $02, $0f, $0e, $4f, $26, $29
-	db $26, $01, $02, $00, $12, $09, $00, $00, $02, $0f, $0e, $4a, $27, $2a, $3f, $07
-	db $11, $14, $05, $08, $00, $00, $02, $0f, $0e, $7d, $28, $2b, $12, $06, $06, $11
-	db $13, $07, $00, $00, $02, $0f, $0e, $4b, $29, $2c, $28, $0e, $08, $14, $12, $06
-	db $00, $ff, $00, $01, $02, $01, $01, $00, $04, $01, $2d, $ba, $56, $00, $00
+	wildbot $00, $02, $0f, $0e, $85, $25, $28, $7b, $14, $0d, $1f, $11, $0a, $00
+	wildbot $00, $02, $0f, $0e, $4f, $26, $29, $26, $01, $02, $00, $12, $09, $00
+	wildbot $00, $02, $0f, $0e, $4a, $27, $2a, $3f, $07, $11, $14, $05, $08, $00
+	wildbot $00, $02, $0f, $0e, $7d, $28, $2b, $12, $06, $06, $11, $13, $07, $00
+	wildbot $00, $02, $0f, $0e, $4b, $29, $2c, $28, $0e, $08, $14, $12, $06, $00
 ENDC
 
+Data_b5680:
+	person_event $ff, $00, $01, $02, $01, $01, $00, $04, $01, Func_b56ba, NULL
+
 Func_b568e:: ; b568e
+	ld e, $01 ; B568E (2d:568e) -> 1E 01
+	ld hl, Data_b562f ; B5690 (2d:5690) -> 21 2F 56
+	scall LoadWarps ; B5693 (2d:5693) -> CD 3A 40
+	ld a, $03 ; B5696 (2d:5696) -> 3E 03
+	scall Func_80d01 ; B5698 (2d:5698) -> CD 01 4D
+	ld e, $05 ; B569B (2d:569b) -> 1E 05
+	ld hl, Data_b563a ; B569D (2d:569d) -> 21 3A 56
+	scall LoadEncounters ; B56A0 (2d:56a0) -> CD 24 4D
+	ld e, $01 ; B56A3 (2d:56a3) -> 1E 01
+	ld hl, Data_b5680 ; B56A5 (2d:56a5) -> 21 80 56
+	scall LoadMapObjects ; B56A8 (2d:56a8) -> CD FB 40
+	ld a, $09 ; B56AB (2d:56ab) -> 3E 09
+	scall PlayMusic ; B56AD (2d:56ad) -> CD E6 4E
+	scall Func_8001c ; B56B0 (2d:56b0) -> CD 1C 40
+	ld hl, $0313 ; B56B3 (2d:56b3) -> 21 13 03
+	scall LandmarkSign ; B56B6 (2d:56b6) -> CD 72 4F
+	ret  ; B56B9 (2d:56b9) -> C9
+
+Func_b56ba:
+	push bc ; B56BA (2d:56ba) -> C5
+	push bc ; B56BB (2d:56bb) -> C5
+	ld hl, sp+$03 ; B56BC (2d:56bc) -> F8 03
+	ld a, $ff ; B56BE (2d:56be) -> 3E FF
+	ld [hl], a ; B56C0 (2d:56c0) -> 77
+	ld hl, sp+$02 ; B56C1 (2d:56c1) -> F8 02
+	ld [hl], a ; B56C3 (2d:56c3) -> 77
+	ld a, e ; B56C4 (2d:56c4) -> 7B
+	cp $02 ; B56C5 (2d:56c5) -> FE 02
+	jp nz, .asm_b56ff ; B56C7 (2d:56c7) -> C2 FF 56
+	ld hl, $0327 ; B56CA (2d:56ca) -> 21 27 03
+	scall LandmarkSign ; B56CD (2d:56cd) -> CD 72 4F
+	ld hl, sp+$00 ; B56D0 (2d:56d0) -> F8 00
+	ld a, [wMapX] ; B56D2 (2d:56d2) -> FA D8 C2
+	add a, $05 ; B56D5 (2d:56d5) -> C6 05
+	ld [hl], a ; B56D7 (2d:56d7) -> 77
+	ld a, [wPlayerFacing] ; B56D8 (2d:56d8) -> FA 38 C8
+	or a ; B56DB (2d:56db) -> B7
+	jp nz, .asm_b56ea ; B56DC (2d:56dc) -> C2 EA 56
+	ld hl, sp+$01 ; B56DF (2d:56df) -> F8 01
+	ld a, [wMapY] ; B56E1 (2d:56e1) -> FA D9 C2
+	add a, $05 ; B56E4 (2d:56e4) -> C6 05
+	ld [hl], a ; B56E6 (2d:56e6) -> 77
+	jp .asm_b56f2 ; B56E7 (2d:56e7) -> C3 F2 56
+.asm_b56ea:
+	ld hl, sp+$01 ; B56EA (2d:56ea) -> F8 01
+	ld a, [wMapY] ; B56EC (2d:56ec) -> FA D9 C2
+	add a, $03 ; B56EF (2d:56ef) -> C6 03
+	ld [hl], a ; B56F1 (2d:56f1) -> 77
+.asm_b56f2:
+	ld c, $01 ; B56F2 (2d:56f2) -> 0E 01
+	ld hl, sp+$00 ; B56F4 (2d:56f4) -> F8 00
+	push de ; B56F6 (2d:56f6) -> D5
+	push hl ; B56F7 (2d:56f7) -> E5
+	pop de ; B56F8 (2d:56f8) -> D1
+	pop hl ; B56F9 (2d:56f9) -> E1
+	ld a, $2d ; B56FA (2d:56fa) -> 3E 2D
+	scall MovePlayer ; B56FC (2d:56fc) -> CD 3E 46
+.asm_b56ff:
+	pop bc ; B56FF (2d:56ff) -> C1
+	pop bc ; B5700 (2d:5700) -> C1
+	ret  ; B5701 (2d:5701) -> C9
+
+Data_b5702:
 IF DEF(SUN)
-	db $1e, $01, $21, $2f, $56, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $05, $21
-	db $3a, $56, $cd, $24, $4d, $1e, $01, $21, $80, $56, $cd, $fb, $40, $3e, $09, $cd
-	db $e6, $4e, $cd, $1c, $40, $21, $13, $03, $cd, $72, $4f, $c9, $c5, $c5, $f8, $03
-	db $3e, $ff, $77, $f8, $02, $77, $7b, $fe, $02, $c2, $ff, $56, $21, $27, $03, $cd
-	db $72, $4f, $f8, $00, $fa, $d8, $c2, $c6, $05, $77, $fa, $38, $c8, $b7, $c2, $ea
-	db $56, $f8, $01, $fa, $d9, $c2, $c6, $05, $77, $c3, $f2, $56, $f8, $01, $fa, $d9
-	db $c2, $c6, $03, $77, $0e, $01, $f8, $00, $d5, $e5, $d1, $e1, $3e, $2d, $cd, $3e
-	db $46, $c1, $c1, $c9, $07, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $0d
+	db $07, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $0d
 	db $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $00, $02, $0f, $0e, $88, $25
 	db $28, $7a, $04, $04, $00, $05, $0a, $00, $00, $02, $0f, $0e, $70, $26, $29, $53
 	db $01, $10, $00, $10, $09, $00, $00, $02, $0f, $0e, $4a, $27, $2a, $3d, $07, $11
@@ -504,14 +561,7 @@ IF DEF(SUN)
 	db $07, $00, $00, $02, $0f, $0e, $7d, $29, $2c, $11, $06, $08, $11, $13, $06, $00
 	db $ff, $00, $01, $02, $01, $01, $00, $04, $01, $2d, $98, $57, $00, $00
 ELIF DEF(STAR)
-	db $1e, $01, $21, $2f, $56, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $05, $21
-	db $3a, $56, $cd, $24, $4d, $1e, $01, $21, $80, $56, $cd, $fb, $40, $3e, $09, $cd
-	db $e6, $4e, $cd, $1c, $40, $21, $13, $03, $cd, $72, $4f, $c9, $c5, $c5, $f8, $03
-	db $3e, $ff, $77, $f8, $02, $77, $7b, $fe, $02, $c2, $ff, $56, $21, $27, $03, $cd
-	db $72, $4f, $f8, $00, $fa, $d8, $c2, $c6, $05, $77, $fa, $38, $c8, $b7, $c2, $ea
-	db $56, $f8, $01, $fa, $d9, $c2, $c6, $05, $77, $c3, $f2, $56, $f8, $01, $fa, $d9
-	db $c2, $c6, $03, $77, $0e, $01, $f8, $00, $d5, $e5, $d1, $e1, $3e, $2d, $cd, $3e
-	db $46, $c1, $c1, $c9, $07, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $0d
+	db $07, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $0d
 	db $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $00, $02, $0f, $0e, $85, $25
 	db $28, $7b, $14, $0d, $1f, $11, $0a, $00, $00, $02, $0f, $0e, $4f, $26, $29, $26
 	db $01, $02, $00, $12, $09, $00, $00, $02, $0f, $0e, $4a, $27, $2a, $3f, $07, $11
