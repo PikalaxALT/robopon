@@ -929,20 +929,20 @@ Data_b5ada:
 Func_b5ae8:: ; b5ae8
 	ld e, $01 ; B5AE8 (2d:5ae8) -> 1E 01
 	ld hl, Data_b5a89 ; B5AEA (2d:5aea) -> 21 89 5A
-	call LoadWarps_2d ; B5AED (2d:5aed) -> CD 3A 40
+	scall LoadWarps ; B5AED (2d:5aed) -> CD 3A 40
 	ld a, $03 ; B5AF0 (2d:5af0) -> 3E 03
-	call Func_80d01_2d ; B5AF2 (2d:5af2) -> CD 01 4D
+	scall Func_80d01 ; B5AF2 (2d:5af2) -> CD 01 4D
 	ld e, $05 ; B5AF5 (2d:5af5) -> 1E 05
 	ld hl, Data_b5a94 ; B5AF7 (2d:5af7) -> 21 94 5A
-	call LoadEncounters_2d ; B5AFA (2d:5afa) -> CD 24 4D
+	scall LoadEncounters ; B5AFA (2d:5afa) -> CD 24 4D
 	ld e, $01 ; B5AFD (2d:5afd) -> 1E 01
 	ld hl, Data_b5ada ; B5AFF (2d:5aff) -> 21 DA 5A
-	call LoadMapObjects_2d ; B5B02 (2d:5b02) -> CD FB 40
+	scall LoadMapObjects ; B5B02 (2d:5b02) -> CD FB 40
 	ld a, $09 ; B5B05 (2d:5b05) -> 3E 09
-	call PlayMusic_2d ; B5B07 (2d:5b07) -> CD E6 4E
-	call Func_8001c_2d ; B5B0A (2d:5b0a) -> CD 1C 40
+	scall PlayMusic ; B5B07 (2d:5b07) -> CD E6 4E
+	scall Func_8001c ; B5B0A (2d:5b0a) -> CD 1C 40
 	ld hl, $030f ; B5B0D (2d:5b0d) -> 21 0F 03
-	call LandmarkSign_2d ; B5B10 (2d:5b10) -> CD 72 4F
+	scall LandmarkSign ; B5B10 (2d:5b10) -> CD 72 4F
 	ret  ; B5B13 (2d:5b13) -> C9
 
 Func_b5b14:
@@ -955,27 +955,27 @@ Func_b5b14:
 	ld [hl], a ; B5B1D (2d:5b1d) -> 77
 	ld a, e ; B5B1E (2d:5b1e) -> 7B
 	cp $02 ; B5B1F (2d:5b1f) -> FE 02
-	jp nz, label_b5b59 ; B5B21 (2d:5b21) -> C2 59 5B
+	jp nz, .asm_b5b59 ; B5B21 (2d:5b21) -> C2 59 5B
 	ld hl, $0327 ; B5B24 (2d:5b24) -> 21 27 03
-	call LandmarkSign_2d ; B5B27 (2d:5b27) -> CD 72 4F
+	scall LandmarkSign ; B5B27 (2d:5b27) -> CD 72 4F
 	ld hl, sp+$00 ; B5B2A (2d:5b2a) -> F8 00
 	ld a, [wMapX] ; B5B2C (2d:5b2c) -> FA D8 C2
 	add a, $05 ; B5B2F (2d:5b2f) -> C6 05
 	ld [hl], a ; B5B31 (2d:5b31) -> 77
 	ld a, [wPlayerFacing] ; B5B32 (2d:5b32) -> FA 38 C8
 	or a ; B5B35 (2d:5b35) -> B7
-	jp nz, label_b5b44 ; B5B36 (2d:5b36) -> C2 44 5B
+	jp nz, .asm_b5b44 ; B5B36 (2d:5b36) -> C2 44 5B
 	ld hl, sp+$01 ; B5B39 (2d:5b39) -> F8 01
 	ld a, [wMapY] ; B5B3B (2d:5b3b) -> FA D9 C2
 	add a, $05 ; B5B3E (2d:5b3e) -> C6 05
 	ld [hl], a ; B5B40 (2d:5b40) -> 77
-	jp label_b5b4c ; B5B41 (2d:5b41) -> C3 4C 5B
-label_b5b44:
+	jp .asm_b5b4c ; B5B41 (2d:5b41) -> C3 4C 5B
+.asm_b5b44:
 	ld hl, sp+$01 ; B5B44 (2d:5b44) -> F8 01
 	ld a, [wMapY] ; B5B46 (2d:5b46) -> FA D9 C2
 	add a, $03 ; B5B49 (2d:5b49) -> C6 03
 	ld [hl], a ; B5B4B (2d:5b4b) -> 77
-label_b5b4c:
+.asm_b5b4c:
 	ld c, $01 ; B5B4C (2d:5b4c) -> 0E 01
 	ld hl, sp+$00 ; B5B4E (2d:5b4e) -> F8 00
 	push de ; B5B50 (2d:5b50) -> D5
@@ -983,41 +983,99 @@ label_b5b4c:
 	pop de ; B5B52 (2d:5b52) -> D1
 	pop hl ; B5B53 (2d:5b53) -> E1
 	ld a, $2d ; B5B54 (2d:5b54) -> 3E 2D
-	call MovePlayer_2d ; B5B56 (2d:5b56) -> CD 3E 46
-label_b5b59:
+	scall MovePlayer ; B5B56 (2d:5b56) -> CD 3E 46
+.asm_b5b59:
 	pop bc ; B5B59 (2d:5b59) -> C1
 	pop bc ; B5B5A (2d:5b5a) -> C1
 	ret  ; B5B5B (2d:5b5b) -> C9
 
 Data_b5b5c:
+	warpdef $0d, $02, $01, $01, MAP_32_09, $01, $06, $01, $05, $2e
+
+Data_b5b67:
 IF DEF(SUN)
-	db $0d, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $00
-	db $02, $0f, $0e, $70, $27, $2a, $52, $01, $10, $00, $10, $0a, $00, $00, $02, $0f
-	db $0e, $4a, $28, $2b, $3c, $07, $11, $14, $06, $09, $00, $00, $02, $0f, $0e, $4b
-	db $29, $2c, $26, $0e, $08, $14, $12, $08, $00, $00, $02, $0f, $0e, $7d, $2a, $2d
-	db $11, $06, $08, $11, $13, $07, $00, $00, $02, $0f, $0e, $4f, $2b, $2e, $26, $01
-	db $02, $00, $12, $06, $00, $ff, $00, $01, $02, $01, $01, $00, $04, $01, $2d, $e7
-	db $5b, $00, $00
+	wildbot $00, $02, $0f, $0e, $70, $27, $2a, $52, $01, $10, $00, $10, $0a, $00
+	wildbot $00, $02, $0f, $0e, $4a, $28, $2b, $3c, $07, $11, $14, $06, $09, $00
+	wildbot $00, $02, $0f, $0e, $4b, $29, $2c, $26, $0e, $08, $14, $12, $08, $00
+	wildbot $00, $02, $0f, $0e, $7d, $2a, $2d, $11, $06, $08, $11, $13, $07, $00
+	wildbot $00, $02, $0f, $0e, $4f, $2b, $2e, $26, $01, $02, $00, $12, $06, $00
 ELIF DEF(STAR)
-	db $0d, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $00
-	db $02, $0f, $0e, $85, $27, $2a, $7b, $14, $0d, $1f, $11, $0a, $00, $00, $02, $0f
-	db $0e, $4f, $28, $2b, $26, $01, $02, $00, $13, $09, $00, $00, $02, $0f, $0e, $4a
-	db $29, $2c, $3f, $07, $11, $14, $06, $08, $00, $00, $02, $0f, $0e, $7d, $2a, $2d
-	db $12, $06, $06, $11, $12, $07, $00, $00, $02, $0f, $0e, $4b, $2b, $2e, $28, $0e
-	db $08, $14, $13, $06, $00, $ff, $00, $01, $02, $01, $01, $00, $04, $01, $2d, $e7
-	db $5b, $00, $00
+	wildbot $00, $02, $0f, $0e, $85, $27, $2a, $7b, $14, $0d, $1f, $11, $0a, $00
+	wildbot $00, $02, $0f, $0e, $4f, $28, $2b, $26, $01, $02, $00, $13, $09, $00
+	wildbot $00, $02, $0f, $0e, $4a, $29, $2c, $3f, $07, $11, $14, $06, $08, $00
+	wildbot $00, $02, $0f, $0e, $7d, $2a, $2d, $12, $06, $06, $11, $12, $07, $00
+	wildbot $00, $02, $0f, $0e, $4b, $2b, $2e, $28, $0e, $08, $14, $13, $06, $00
 ENDC
 
+Data_b5bad:
+	person_event $ff, $00, $01, $02, $01, $01, $00, $04, $01, Func_b5be7, NULL
+
 Func_b5bbb:: ; b5bbb
+	ld e, $01 ; B5BBB (2d:5bbb) -> 1E 01
+	ld hl, Data_b5b5c ; B5BBD (2d:5bbd) -> 21 5C 5B
+	scall LoadWarps ; B5BC0 (2d:5bc0) -> CD 3A 40
+	ld a, $03 ; B5BC3 (2d:5bc3) -> 3E 03
+	scall Func_80d01 ; B5BC5 (2d:5bc5) -> CD 01 4D
+	ld e, $05 ; B5BC8 (2d:5bc8) -> 1E 05
+	ld hl, Data_b5b67 ; B5BCA (2d:5bca) -> 21 67 5B
+	scall LoadEncounters ; B5BCD (2d:5bcd) -> CD 24 4D
+	ld e, $01 ; B5BD0 (2d:5bd0) -> 1E 01
+	ld hl, Data_b5bad ; B5BD2 (2d:5bd2) -> 21 AD 5B
+	scall LoadMapObjects ; B5BD5 (2d:5bd5) -> CD FB 40
+	ld a, $09 ; B5BD8 (2d:5bd8) -> 3E 09
+	scall PlayMusic ; B5BDA (2d:5bda) -> CD E6 4E
+	scall Func_8001c ; B5BDD (2d:5bdd) -> CD 1C 40
+	ld hl, $030e ; B5BE0 (2d:5be0) -> 21 0E 03
+	scall LandmarkSign ; B5BE3 (2d:5be3) -> CD 72 4F
+	ret  ; B5BE6 (2d:5be6) -> C9
+
+Func_b5be7:
+	push bc ; B5BE7 (2d:5be7) -> C5
+	push bc ; B5BE8 (2d:5be8) -> C5
+	ld hl, sp+$03 ; B5BE9 (2d:5be9) -> F8 03
+	ld a, $ff ; B5BEB (2d:5beb) -> 3E FF
+	ld [hl], a ; B5BED (2d:5bed) -> 77
+	ld hl, sp+$02 ; B5BEE (2d:5bee) -> F8 02
+	ld [hl], a ; B5BF0 (2d:5bf0) -> 77
+	ld a, e ; B5BF1 (2d:5bf1) -> 7B
+	cp $02 ; B5BF2 (2d:5bf2) -> FE 02
+	jp nz, .asm_b5c2c ; B5BF4 (2d:5bf4) -> C2 2C 5C
+	ld hl, $0327 ; B5BF7 (2d:5bf7) -> 21 27 03
+	scall LandmarkSign ; B5BFA (2d:5bfa) -> CD 72 4F
+	ld hl, sp+$00 ; B5BFD (2d:5bfd) -> F8 00
+	ld a, [wMapX] ; B5BFF (2d:5bff) -> FA D8 C2
+	add a, $05 ; B5C02 (2d:5c02) -> C6 05
+	ld [hl], a ; B5C04 (2d:5c04) -> 77
+	ld a, [wPlayerFacing] ; B5C05 (2d:5c05) -> FA 38 C8
+	or a ; B5C08 (2d:5c08) -> B7
+	jp nz, .asm_b5c17 ; B5C09 (2d:5c09) -> C2 17 5C
+	ld hl, sp+$01 ; B5C0C (2d:5c0c) -> F8 01
+	ld a, [wMapY] ; B5C0E (2d:5c0e) -> FA D9 C2
+	add a, $05 ; B5C11 (2d:5c11) -> C6 05
+	ld [hl], a ; B5C13 (2d:5c13) -> 77
+	jp .asm_b5c1f ; B5C14 (2d:5c14) -> C3 1F 5C
+.asm_b5c17:
+	ld hl, sp+$01 ; B5C17 (2d:5c17) -> F8 01
+	ld a, [wMapY] ; B5C19 (2d:5c19) -> FA D9 C2
+	add a, $03 ; B5C1C (2d:5c1c) -> C6 03
+	ld [hl], a ; B5C1E (2d:5c1e) -> 77
+.asm_b5c1f:
+	ld c, $01 ; B5C1F (2d:5c1f) -> 0E 01
+	ld hl, sp+$00 ; B5C21 (2d:5c21) -> F8 00
+	push de ; B5C23 (2d:5c23) -> D5
+	push hl ; B5C24 (2d:5c24) -> E5
+	pop de ; B5C25 (2d:5c25) -> D1
+	pop hl ; B5C26 (2d:5c26) -> E1
+	ld a, $2d ; B5C27 (2d:5c27) -> 3E 2D
+	scall MovePlayer ; B5C29 (2d:5c29) -> CD 3E 46
+.asm_b5c2c:
+	pop bc ; B5C2C (2d:5c2c) -> C1
+	pop bc ; B5C2D (2d:5c2d) -> C1
+	ret  ; B5C2E (2d:5c2e) -> C9
+
+Data_b5c2f:
 IF DEF(SUN)
-	db $1e, $01, $21, $5c, $5b, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $05, $21
-	db $67, $5b, $cd, $24, $4d, $1e, $01, $21, $ad, $5b, $cd, $fb, $40, $3e, $09, $cd
-	db $e6, $4e, $cd, $1c, $40, $21, $0e, $03, $cd, $72, $4f, $c9, $c5, $c5, $f8, $03
-	db $3e, $ff, $77, $f8, $02, $77, $7b, $fe, $02, $c2, $2c, $5c, $21, $27, $03, $cd
-	db $72, $4f, $f8, $00, $fa, $d8, $c2, $c6, $05, $77, $fa, $38, $c8, $b7, $c2, $17
-	db $5c, $f8, $01, $fa, $d9, $c2, $c6, $05, $77, $c3, $1f, $5c, $f8, $01, $fa, $d9
-	db $c2, $c6, $03, $77, $0e, $01, $f8, $00, $d5, $e5, $d1, $e1, $3e, $2d, $cd, $3e
-	db $46, $c1, $c1, $c9, $07, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $0d
+	db $07, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $0d
 	db $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $00, $02, $0f, $0e, $70, $27
 	db $2a, $53, $01, $10, $00, $10, $0a, $00, $00, $02, $0f, $0e, $4a, $28, $2b, $3d
 	db $07, $11, $14, $06, $09, $00, $00, $02, $0f, $0e, $4b, $29, $2c, $26, $0e, $08
@@ -1025,14 +1083,7 @@ IF DEF(SUN)
 	db $07, $00, $00, $02, $0f, $0e, $4f, $2b, $2e, $26, $06, $07, $00, $12, $06, $00
 	db $ff, $00, $01, $02, $01, $01, $00, $04, $01, $2d, $c5, $5c, $00, $00
 ELIF DEF(STAR)
-	db $1e, $01, $21, $5c, $5b, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $05, $21
-	db $67, $5b, $cd, $24, $4d, $1e, $01, $21, $ad, $5b, $cd, $fb, $40, $3e, $09, $cd
-	db $e6, $4e, $cd, $1c, $40, $21, $0e, $03, $cd, $72, $4f, $c9, $c5, $c5, $f8, $03
-	db $3e, $ff, $77, $f8, $02, $77, $7b, $fe, $02, $c2, $2c, $5c, $21, $27, $03, $cd
-	db $72, $4f, $f8, $00, $fa, $d8, $c2, $c6, $05, $77, $fa, $38, $c8, $b7, $c2, $17
-	db $5c, $f8, $01, $fa, $d9, $c2, $c6, $05, $77, $c3, $1f, $5c, $f8, $01, $fa, $d9
-	db $c2, $c6, $03, $77, $0e, $01, $f8, $00, $d5, $e5, $d1, $e1, $3e, $2d, $cd, $3e
-	db $46, $c1, $c1, $c9, $07, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $0d
+	db $07, $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $0d
 	db $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $00, $02, $0f, $0e, $85, $27
 	db $2a, $7b, $14, $0d, $1f, $11, $0a, $00, $00, $02, $0f, $0e, $4f, $28, $2b, $26
 	db $01, $02, $00, $13, $09, $00, $00, $02, $0f, $0e, $4a, $29, $2c, $3f, $07, $11
