@@ -210,13 +210,56 @@ Data_b937f:
 	person_event $0a, $04, $00, $04, $01, $01, $03, $04, $00, PrintTextFacePlayer_2e, Data_b9223
 
 Data_b938d:
-	db $01, $00, $1d, $0c, $01, $00, $1d
-	db $12, $03, $00, $09, $09, $03, $00, $07, $0d, $03, $00, $05, $11, $03, $00, $11
-	db $09, $03, $00, $17, $13, $14, $00, $14, $09, $14, $00, $14, $0c, $17, $00, $19
-	db $06, $17, $00, $1d, $06, $17, $00, $21, $06, $17, $00, $08, $10, $17, $00, $0c
-	db $10, $17, $00, $10, $10, $18, $00, $17, $11, $18, $00, $1b, $11, $18, $00, $1f
-	db $11, $18, $00, $06, $1b, $18, $00, $0a, $1b, $18, $00, $0e, $1b, $0b, $00, $0f
-	db $0d, $0b, $00, $13, $11, $0b, $00, $1b, $10, $0b, $00, $1c, $0b
+	map MAP_01_00
+	db $1d, $0c
+	map MAP_01_00
+	db $1d, $12
+	map MAP_03_00
+	db $09, $09
+	map MAP_03_00
+	db $07, $0d
+	map MAP_03_00
+	db $05, $11
+	map MAP_03_00
+	db $11, $09
+	map MAP_03_00
+	db $17, $13
+	map MAP_20_00
+	db $14, $09
+	map MAP_20_00
+	db $14, $0c
+	map MAP_23_00
+	db $19, $06
+	map MAP_23_00
+	db $1d, $06
+	map MAP_23_00
+	db $21, $06
+	map MAP_23_00
+	db $08, $10
+	map MAP_23_00
+	db $0c, $10
+	map MAP_23_00
+	db $10, $10
+	map MAP_24_00
+	db $17, $11
+	map MAP_24_00
+	db $1b, $11
+	map MAP_24_00
+	db $1f, $11
+	map MAP_24_00
+	db $06, $1b
+	map MAP_24_00
+	db $0a, $1b
+	map MAP_24_00
+	db $0e, $1b
+	map MAP_11_00
+	db $0f, $0d
+	map MAP_11_00
+	db $13, $11
+	map MAP_11_00
+	db $1b, $10
+	map MAP_11_00
+	db $1c, $0b
 
 Func_b93f1:: ; b93f1
 	ld c, $00 ; B93F1 (2e:53f1) -> 0E 00
@@ -719,134 +762,791 @@ Func_b97c4:
 	ret  ; B9857 (2e:5857) -> C9
 
 Data_b9858:
-	db $01, $08, $02, $01, $01, $00, $11, $0c, $11
-	db $0d, $34, $01, $08, $02, $01, $01, $00, $19, $0c, $19, $0d, $34, $01, $08, $02
-	db $01, $01, $00, $11, $12, $11, $13, $34, $01, $08, $02, $01, $01, $00, $19, $12
-	db $19, $13, $34, $01, $08, $02, $01, $06, $00, $08, $06, $08, $07, $34, $01, $08
-	db $02, $01, $06, $00, $15, $06, $15, $07, $34, $01, $08, $02, $01, $11, $00, $06
-	db $04, $06, $05, $34, $01, $08, $02, $01, $11, $00, $0f, $04, $0f, $05, $34, $01
-	db $08, $02, $01, $14, $00, $06, $06, $06, $07, $34, $01, $08, $02, $01, $14, $00
-	db $15, $06, $15, $07, $34, $01, $08, $02, $01, $19, $01, $1e, $0a, $1e, $0b, $34
-	db $01, $08, $02, $01, $19, $01, $21, $0a, $21, $0b, $34, $01, $08, $02, $01, $19
-	db $01, $05, $15, $05, $16, $34, $01, $08, $02, $01, $19, $01, $08, $15, $08, $16
-	db $34, $01, $08, $02, $01, $19, $01, $11, $15, $11, $16, $34, $01, $08, $02, $01
-	db $19, $01, $14, $15, $14, $16, $34, $01, $08, $02, $01, $19, $01, $17, $15, $17
-	db $16, $34, $01, $08, $02, $01, $1d, $00, $08, $13, $08, $14, $34, $01, $08, $02
-	db $01, $1d, $00, $0a, $19, $0a, $1a, $34, $01, $08, $02, $01, $1d, $00, $12, $19
-	db $12, $1a, $34, $88, $01, $ff, $ff, $86, $01, $ff, $ff, $7e, $01, $ff, $ff, $84
-	db $01, $ff, $ff, $d9, $01, $ff, $ff, $2a, $00, $ff, $ff, $2a, $00, $ff, $ff, $ed
-	db $01, $ff, $ff, $e9, $01, $ff, $ff, $ef, $01, $ff, $ff, $e7, $01, $ff, $ff, $ea
-	db $01, $ff, $ff, $b8, $01, $ff, $ff, $ae, $01, $ff, $ff, $ad, $01, $ff, $ff, $7b
-	db $01, $ff, $ff, $af, $01, $ff, $ff, $b0, $01, $ff, $ff, $ab, $01, $ff, $ff, $75
-	db $03, $ff, $ff, $ac, $01, $ff, $ff, $9b, $02, $ff, $ff, $83, $03, $ff, $ff, $86
-	db $03, $ff, $ff, $28, $03, $ff, $ff, $2a, $03, $ff, $ff, $2b, $03, $ff, $ff, $97
-	db $03, $ff, $ff, $81, $01, $ff, $ff, $87, $01, $ff, $ff, $83, $01, $ff, $ff, $b0
-	db $03, $ff, $ff, $af, $03, $ff, $ff, $b1, $03, $ff, $ff, $02, $04, $06, $07, $01
-	db $01, $00, $04, $00, $2e, $5f, $48, $34, $59, $03, $04, $08, $07, $01, $01, $02
-	db $04, $00, $2e, $5f, $48, $38, $59, $00, $04, $03, $03, $01, $01, $01, $04, $00
-	db $2e, $5f, $48, $3c, $59, $06, $04, $07, $07, $01, $01, $03, $04, $00, $2e, $5f
-	db $48, $40, $59, $01, $04, $08, $07, $01, $01, $01, $04, $00, $2e, $5f, $48, $44
-	db $59, $ff, $00, $0a, $07, $01, $02, $01, $04, $01, $2e, $71, $5f, $00, $00, $03
-	db $04, $01, $03, $01, $01, $02, $04, $00, $2e, $ad, $5f, $00, $00, $ff, $00, $0a
-	db $07, $01, $02, $01, $04, $01, $2e, $8f, $5f, $00, $00, $04, $04, $06, $05, $01
-	db $01, $00, $04, $00, $2e, $5f, $48, $48, $59, $10, $04, $06, $04, $01, $01, $03
-	db $04, $00, $2e, $5f, $48, $4c, $59, $06, $04, $02, $03, $01, $01, $03, $04, $00
-	db $2e, $5f, $48, $50, $59, $02, $04, $09, $06, $01, $01, $02, $04, $00, $2e, $5f
-	db $48, $54, $59, $00, $04, $06, $07, $01, $01, $02, $04, $00, $2e, $5f, $48, $58
-	db $59, $07, $04, $03, $03, $01, $01, $01, $04, $00, $2e, $5f, $48, $5c, $59, $03
-	db $04, $09, $08, $01, $01, $03, $04, $00, $2e, $5f, $48, $60, $59, $01, $04, $01
-	db $04, $01, $01, $02, $04, $00, $2e, $5f, $48, $64, $59, $00, $04, $0a, $08, $01
-	db $01, $01, $04, $00, $2e, $5f, $48, $68, $59, $03, $04, $03, $02, $01, $01, $02
-	db $04, $00, $2e, $5f, $48, $6c, $59, $03, $04, $08, $07, $01, $01, $01, $04, $00
-	db $2e, $5f, $48, $70, $59, $02, $04, $07, $07, $01, $01, $03, $04, $00, $2e, $5f
-	db $48, $74, $59, $07, $04, $03, $03, $01, $01, $02, $04, $00, $2e, $5f, $48, $78
-	db $59, $00, $04, $08, $07, $01, $01, $00, $04, $00, $2e, $5f, $48, $7c, $59, $13
-	db $04, $02, $04, $01, $02, $02, $04, $00, $2e, $5f, $48, $80, $59, $01, $04, $04
-	db $03, $01, $01, $01, $04, $00, $2e, $5f, $48, $84, $59, $0e, $04, $07, $03, $01
-	db $01, $00, $04, $00, $2e, $5f, $48, $88, $59, $02, $04, $01, $03, $01, $01, $03
-	db $04, $00, $2e, $5f, $48, $8c, $59, $05, $04, $03, $02, $01, $01, $00, $04, $00
-	db $2e, $5f, $48, $90, $59, $04, $04, $08, $07, $01, $01, $01, $04, $00, $2e, $5f
-	db $48, $a0, $59, $ff, $00, $06, $04, $01, $01, $00, $04, $00, $2e, $5f, $48, $94
-	db $59, $ff, $00, $07, $04, $01, $01, $00, $04, $00, $2e, $5f, $48, $98, $59, $ff
-	db $00, $09, $04, $01, $01, $00, $04, $00, $2e, $5f, $48, $9c, $59, $01, $00, $11
-	db $0c, $01, $00, $19, $0c, $01, $00, $11, $12, $01, $00, $19, $12, $06, $00, $08
-	db $06, $06, $00, $15, $06, $11, $00, $06, $04, $11, $00, $0f, $04, $14, $00, $06
-	db $06, $14, $00, $15, $06, $19, $01, $1e, $0a, $19, $01, $21, $0a, $19, $01, $05
-	db $15, $19, $01, $08, $15, $19, $01, $11, $15, $19, $01, $14, $15, $19, $01, $17
-	db $15, $1d, $00, $08, $13, $1d, $00, $0a, $19, $1d, $00, $12, $19
+	warpdef $01, $08, $02, $01, MAP_01_00, $11, $0c, $11, $0d, $34
+	warpdef $01, $08, $02, $01, MAP_01_00, $19, $0c, $19, $0d, $34
+	warpdef $01, $08, $02, $01, MAP_01_00, $11, $12, $11, $13, $34
+	warpdef $01, $08, $02, $01, MAP_01_00, $19, $12, $19, $13, $34
+	warpdef $01, $08, $02, $01, MAP_06_00, $08, $06, $08, $07, $34
+	warpdef $01, $08, $02, $01, MAP_06_00, $15, $06, $15, $07, $34
+	warpdef $01, $08, $02, $01, MAP_17_00, $06, $04, $06, $05, $34
+	warpdef $01, $08, $02, $01, MAP_17_00, $0f, $04, $0f, $05, $34
+	warpdef $01, $08, $02, $01, MAP_20_00, $06, $06, $06, $07, $34
+	warpdef $01, $08, $02, $01, MAP_20_00, $15, $06, $15, $07, $34
+	warpdef $01, $08, $02, $01, MAP_25_01, $1e, $0a, $1e, $0b, $34
+	warpdef $01, $08, $02, $01, MAP_25_01, $21, $0a, $21, $0b, $34
+	warpdef $01, $08, $02, $01, MAP_25_01, $05, $15, $05, $16, $34
+	warpdef $01, $08, $02, $01, MAP_25_01, $08, $15, $08, $16, $34
+	warpdef $01, $08, $02, $01, MAP_25_01, $11, $15, $11, $16, $34
+	warpdef $01, $08, $02, $01, MAP_25_01, $14, $15, $14, $16, $34
+	warpdef $01, $08, $02, $01, MAP_25_01, $17, $15, $17, $16, $34
+	warpdef $01, $08, $02, $01, MAP_29_00, $08, $13, $08, $14, $34
+	warpdef $01, $08, $02, $01, MAP_29_00, $0a, $19, $0a, $1a, $34
+	warpdef $01, $08, $02, $01, MAP_29_00, $12, $19, $12, $1a, $34
+
+Data_b9934:
+	dw $188
+	dw -1
+
+Data_b9938:
+	dw $186
+	dw -1
+
+Data_b993c:
+	dw $17e
+	dw -1
+
+Data_b9940:
+	dw $184
+	dw -1
+
+Data_b9944:
+	dw $1d9
+	dw -1
+
+Data_b9948:
+	dw $02a
+	dw -1
+
+Data_b994c:
+	dw $02a
+	dw -1
+
+Data_b9950:
+	dw $1ed
+	dw -1
+
+Data_b9954:
+	dw $1e9
+	dw -1
+
+Data_b9958:
+	dw $1ef
+	dw -1
+
+Data_b995c:
+	dw $1e7
+	dw -1
+
+Data_b9960:
+	dw $1ea
+	dw -1
+
+Data_b9964:
+	dw $1b8
+	dw -1
+
+Data_b9968:
+	dw $1ae
+	dw -1
+
+Data_b996c:
+	dw $1ad
+	dw -1
+
+Data_b9970:
+	dw $17b
+	dw -1
+
+Data_b9974:
+	dw $1af
+	dw -1
+
+Data_b9978:
+	dw $1b0
+	dw -1
+
+Data_b997c:
+	dw $1ab
+	dw -1
+
+Data_b9980:
+	dw $375
+	dw -1
+
+Data_b9984:
+	dw $1ac
+	dw -1
+
+Data_b9988:
+	dw $29b
+	dw -1
+
+Data_b998c:
+	dw $383
+	dw -1
+
+Data_b9990:
+	dw $386
+	dw -1
+
+Data_b9994:
+	dw $328
+	dw -1
+
+Data_b9998:
+	dw $32a
+	dw -1
+
+Data_b999c:
+	dw $32b
+	dw -1
+
+Data_b99a0:
+	dw $397
+	dw -1
+
+Data_b99a4:
+	dw $181
+	dw -1
+
+Data_b99a8:
+	dw $187
+	dw -1
+
+Data_b99ac:
+	dw $183
+	dw -1
+
+Data_b99b0:
+	dw $3b0
+	dw -1
+
+Data_b99b4:
+	dw $3af
+	dw -1
+
+Data_b99b8:
+	dw $3b1
+	dw -1
+
+Data_b99bc:
+	person_event $02, $04, $06, $07, $01, $01, $00, $04, $00, PrintTextFacePlayer_2e, Data_b9934
+
+Data_b99ca:
+	person_event $03, $04, $08, $07, $01, $01, $02, $04, $00, PrintTextFacePlayer_2e, Data_b9938
+
+Data_b99d8:
+	person_event $00, $04, $03, $03, $01, $01, $01, $04, $00, PrintTextFacePlayer_2e, Data_b993c
+
+Data_b99e6:
+	person_event $06, $04, $07, $07, $01, $01, $03, $04, $00, PrintTextFacePlayer_2e, Data_b9940
+
+Data_b99f4:
+	person_event $01, $04, $08, $07, $01, $01, $01, $04, $00, PrintTextFacePlayer_2e, Data_b9944
+	person_event $ff, $00, $0a, $07, $01, $02, $01, $04, $01, Func_b9f71, NULL
+
+Data_b9a10:
+	person_event $03, $04, $01, $03, $01, $01, $02, $04, $00, Func_b9fad, NULL
+	person_event $ff, $00, $0a, $07, $01, $02, $01, $04, $01, Func_b9f8f, NULL
+
+Data_b9a2c:
+	person_event $04, $04, $06, $05, $01, $01, $00, $04, $00, PrintTextFacePlayer_2e, Data_b9948
+
+Data_b9a3a:
+	person_event $10, $04, $06, $04, $01, $01, $03, $04, $00, PrintTextFacePlayer_2e, Data_b994c
+
+Data_b9a48:
+	person_event $06, $04, $02, $03, $01, $01, $03, $04, $00, PrintTextFacePlayer_2e, Data_b9950
+	person_event $02, $04, $09, $06, $01, $01, $02, $04, $00, PrintTextFacePlayer_2e, Data_b9954
+
+Data_b9a64:
+	person_event $00, $04, $06, $07, $01, $01, $02, $04, $00, PrintTextFacePlayer_2e, Data_b9958
+	person_event $07, $04, $03, $03, $01, $01, $01, $04, $00, PrintTextFacePlayer_2e, Data_b995c
+	person_event $03, $04, $09, $08, $01, $01, $03, $04, $00, PrintTextFacePlayer_2e, Data_b9960
+
+Data_b9a8e:
+	person_event $01, $04, $01, $04, $01, $01, $02, $04, $00, PrintTextFacePlayer_2e, Data_b9964
+	person_event $00, $04, $0a, $08, $01, $01, $01, $04, $00, PrintTextFacePlayer_2e, Data_b9968
+
+Data_b9aaa:
+	person_event $03, $04, $03, $02, $01, $01, $02, $04, $00, PrintTextFacePlayer_2e, Data_b996c
+
+Data_b9ab8:
+	person_event $03, $04, $08, $07, $01, $01, $01, $04, $00, PrintTextFacePlayer_2e, Data_b9970
+
+Data_b9ac6:
+	person_event $02, $04, $07, $07, $01, $01, $03, $04, $00, PrintTextFacePlayer_2e, Data_b9974
+	person_event $07, $04, $03, $03, $01, $01, $02, $04, $00, PrintTextFacePlayer_2e, Data_b9978
+
+Data_b9ae2:
+	person_event $00, $04, $08, $07, $01, $01, $00, $04, $00, PrintTextFacePlayer_2e, Data_b997c
+
+Data_b9af0:
+	person_event $13, $04, $02, $04, $01, $02, $02, $04, $00, PrintTextFacePlayer_2e, Data_b9980
+
+Data_b9afe:
+	person_event $01, $04, $04, $03, $01, $01, $01, $04, $00, PrintTextFacePlayer_2e, Data_b9984
+
+Data_b9b0c:
+	person_event $0e, $04, $07, $03, $01, $01, $00, $04, $00, PrintTextFacePlayer_2e, Data_b9988
+
+Data_b9b1a:
+	person_event $02, $04, $01, $03, $01, $01, $03, $04, $00, PrintTextFacePlayer_2e, Data_b998c
+
+Data_b9b28:
+	person_event $05, $04, $03, $02, $01, $01, $00, $04, $00, PrintTextFacePlayer_2e, Data_b9990
+	person_event $04, $04, $08, $07, $01, $01, $01, $04, $00, PrintTextFacePlayer_2e, Data_b99a0
+
+Data_b9b44:
+	person_event $ff, $00, $06, $04, $01, $01, $00, $04, $00, PrintTextFacePlayer_2e, Data_b9994
+	person_event $ff, $00, $07, $04, $01, $01, $00, $04, $00, PrintTextFacePlayer_2e, Data_b9998
+	person_event $ff, $00, $09, $04, $01, $01, $00, $04, $00, PrintTextFacePlayer_2e, Data_b999c
+
+Data_b9b6e:
+	map MAP_01_00
+	db $11, $0c
+	map MAP_01_00
+	db $19, $0c
+	map MAP_01_00
+	db $11, $12
+	map MAP_01_00
+	db $19, $12
+	map MAP_06_00
+	db $08, $06
+	map MAP_06_00
+	db $15, $06
+	map MAP_17_00
+	db $06, $04
+	map MAP_17_00
+	db $0f, $04
+	map MAP_20_00
+	db $06, $06
+	map MAP_20_00
+	db $15, $06
+	map MAP_25_01
+	db $1e, $0a
+	map MAP_25_01
+	db $21, $0a
+	map MAP_25_01
+	db $05, $15
+	map MAP_25_01
+	db $08, $15
+	map MAP_25_01
+	db $11, $15
+	map MAP_25_01
+	db $14, $15
+	map MAP_25_01
+	db $17, $15
+	map MAP_29_00
+	db $08, $13
+	map MAP_29_00
+	db $0a, $19
+	map MAP_29_00
+	db $12, $19
 
 Func_b9bbe:: ; b9bbe
-	db $0e, $00, $79, $fe, $14, $d2, $28, $5c, $69, $26, $00, $29, $29, $11, $6e, $5b
-	db $19, $fa, $df, $c7, $be, $c2, $24, $5c, $69, $26, $00, $29, $29, $11, $6e, $5b
-	db $19, $23, $fa, $e0, $c7, $be, $c2, $24, $5c, $69, $26, $00, $29, $29, $11, $6e
-	db $5b, $19, $23, $23, $fa, $db, $c7, $be, $c2, $24, $5c, $69, $26, $00, $29, $29
-	db $11, $6e, $5b, $19, $23, $23, $23, $fa, $dc, $c7, $be, $c2, $24, $5c, $69, $26
-	db $00, $5d, $54, $29, $4d, $44, $29, $29, $19, $09, $11, $58, $58, $19, $1e, $01
-	db $cd, $3a, $40, $c3, $28, $5c, $0c, $c3, $c0, $5b, $cd, $52, $5f, $21, $52, $5f
-	db $cd, $11, $4f, $fa, $df, $c7, $fe, $01, $c2, $ee, $5c, $fa, $e0, $c7, $b7, $c2
-	db $ee, $5c, $fa, $db, $c7, $fe, $11, $c2, $71, $5c, $fa, $dc, $c7, $fe, $0c, $c2
-	db $71, $5c, $1e, $01, $21, $bc, $59, $cd, $fb, $40, $fa, $90, $c7, $b7, $ca, $6e
-	db $5c, $fa, $90, $c7, $fe, $04, $c2, $6e, $5c, $11, $a4, $59, $af, $cd, $50, $41
-	db $c3, $eb, $5c, $fa, $db, $c7, $fe, $19, $c2, $a2, $5c, $fa, $dc, $c7, $fe, $0c
-	db $c2, $a2, $5c, $1e, $01, $21, $ca, $59, $cd, $fb, $40, $fa, $90, $c7, $b7, $ca
-	db $9f, $5c, $fa, $90, $c7, $fe, $04, $c2, $9f, $5c, $11, $a8, $59, $af, $cd, $50
-	db $41, $c3, $eb, $5c, $fa, $db, $c7, $fe, $11, $c2, $bd, $5c, $fa, $dc, $c7, $fe
-	db $12, $c2, $bd, $5c, $1e, $01, $21, $d8, $59, $cd, $fb, $40, $c3, $eb, $5c, $fa
-	db $db, $c7, $fe, $19, $c2, $eb, $5c, $fa, $dc, $c7, $fe, $12, $c2, $eb, $5c, $1e
-	db $01, $21, $e6, $59, $cd, $fb, $40, $fa, $90, $c7, $b7, $ca, $eb, $5c, $fa, $90
-	db $c7, $fe, $04, $c2, $eb, $5c, $11, $ac, $59, $af, $cd, $50, $41, $c3, $35, $5f
-	db $fa, $df, $c7, $fe, $06, $c2, $3f, $5d, $fa, $e0, $c7, $b7, $c2, $3f, $5d, $fa
-	db $db, $c7, $fe, $08, $c2, $1e, $5d, $fa, $dc, $c7, $fe, $06, $c2, $1e, $5d, $1e
-	db $02, $21, $f4, $59, $cd, $fb, $40, $cd, $52, $5f, $cd, $02, $4f, $c3, $3c, $5d
-	db $fa, $db, $c7, $fe, $15, $c2, $3c, $5d, $fa, $dc, $c7, $fe, $06, $c2, $3c, $5d
-	db $1e, $02, $21, $10, $5a, $cd, $fb, $40, $cd, $52, $5f, $cd, $02, $4f, $c3, $35
-	db $5f, $fa, $df, $c7, $fe, $11, $c2, $84, $5d, $fa, $e0, $c7, $b7, $c2, $84, $5d
-	db $fa, $db, $c7, $fe, $06, $c2, $69, $5d, $fa, $dc, $c7, $fe, $04, $c2, $69, $5d
-	db $1e, $01, $21, $2c, $5a, $cd, $fb, $40, $c3, $81, $5d, $fa, $db, $c7, $fe, $0f
-	db $c2, $81, $5d, $fa, $dc, $c7, $fe, $04, $c2, $81, $5d, $1e, $01, $21, $3a, $5a
-	db $cd, $fb, $40, $c3, $35, $5f, $fa, $df, $c7, $fe, $14, $c2, $0b, $5e, $fa, $e0
-	db $c7, $b7, $c2, $0b, $5e, $fa, $db, $c7, $fe, $06, $c2, $cb, $5d, $fa, $dc, $c7
-	db $fe, $06, $c2, $cb, $5d, $1e, $02, $21, $48, $5a, $cd, $fb, $40, $fa, $90, $c7
-	db $b7, $ca, $c8, $5d, $fa, $90, $c7, $fe, $05, $d2, $c8, $5d, $11, $b0, $59, $af
-	db $cd, $50, $41, $1e, $00, $3e, $01, $cd, $3d, $41, $c3, $08, $5e, $fa, $db, $c7
-	db $fe, $15, $c2, $08, $5e, $fa, $dc, $c7, $fe, $06, $c2, $08, $5e, $1e, $03, $21
-	db $64, $5a, $cd, $fb, $40, $fa, $90, $c7, $b7, $ca, $08, $5e, $fa, $90, $c7, $fe
-	db $05, $d2, $08, $5e, $11, $b8, $59, $3e, $01, $cd, $50, $41, $11, $b4, $59, $3e
-	db $02, $cd, $50, $41, $1e, $00, $af, $cd, $3d, $41, $c3, $35, $5f, $fa, $df, $c7
-	db $fe, $19, $c2, $d8, $5e, $fa, $e0, $c7, $fe, $01, $c2, $d8, $5e, $fa, $db, $c7
-	db $fe, $1e, $c2, $36, $5e, $fa, $dc, $c7, $fe, $0a, $c2, $36, $5e, $1e, $02, $21
-	db $8e, $5a, $cd, $fb, $40, $c3, $d5, $5e, $fa, $db, $c7, $fe, $21, $c2, $51, $5e
-	db $fa, $dc, $c7, $fe, $0a, $c2, $51, $5e, $1e, $01, $21, $aa, $5a, $cd, $fb, $40
-	db $c3, $d5, $5e, $fa, $db, $c7, $fe, $05, $c2, $6c, $5e, $fa, $dc, $c7, $fe, $15
-	db $c2, $6c, $5e, $1e, $01, $21, $b8, $5a, $cd, $fb, $40, $c3, $d5, $5e, $fa, $db
-	db $c7, $fe, $08, $c2, $87, $5e, $fa, $dc, $c7, $fe, $15, $c2, $87, $5e, $1e, $02
-	db $21, $c6, $5a, $cd, $fb, $40, $c3, $d5, $5e, $fa, $db, $c7, $fe, $11, $c2, $a2
-	db $5e, $fa, $dc, $c7, $fe, $15, $c2, $a2, $5e, $1e, $01, $21, $e2, $5a, $cd, $fb
-	db $40, $c3, $d5, $5e, $fa, $db, $c7, $fe, $14, $c2, $bd, $5e, $fa, $dc, $c7, $fe
-	db $15, $c2, $bd, $5e, $1e, $01, $21, $fe, $5a, $cd, $fb, $40, $c3, $d5, $5e, $fa
-	db $db, $c7, $fe, $17, $c2, $d5, $5e, $fa, $dc, $c7, $fe, $15, $c2, $d5, $5e, $1e
-	db $01, $21, $f0, $5a, $cd, $fb, $40, $c3, $35, $5f, $fa, $df, $c7, $fe, $1d, $c2
-	db $35, $5f, $fa, $e0, $c7, $b7, $c2, $35, $5f, $fa, $db, $c7, $fe, $08, $c2, $02
-	db $5f, $fa, $dc, $c7, $fe, $13, $c2, $02, $5f, $1e, $01, $21, $0c, $5b, $cd, $fb
-	db $40, $c3, $35, $5f, $fa, $db, $c7, $fe, $0a, $c2, $1d, $5f, $fa, $dc, $c7, $fe
-	db $19, $c2, $1d, $5f, $1e, $01, $21, $1a, $5b, $cd, $fb, $40, $c3, $35, $5f, $fa
-	db $db, $c7, $fe, $12, $c2, $35, $5f, $fa, $dc, $c7, $fe, $19, $c2, $35, $5f, $1e
-	db $02, $21, $28, $5b, $cd, $fb, $40, $1e, $03, $21, $44, $5b, $cd, $fb, $40, $cd
-	db $1c, $40, $3e, $11, $cd, $e6, $4e, $c9, $01, $08, $01, $01, $0a, $07, $01, $08
-	db $01, $01, $0a, $08, $fa, $df, $c7, $fe, $06, $c2, $70, $5f, $fa, $e0, $c7, $b7
-	db $c2, $70, $5f, $21, $46, $5f, $cd, $9b, $4d, $21, $4c, $5f, $cd, $9b, $4d, $cd
-	db $02, $4f, $c9, $7b, $fe, $02, $c2, $8e, $5f, $3e, $2e, $cd, $fe, $4e, $2e, $05
-	db $e5, $0e, $0a, $1e, $00, $3e, $06, $cd, $ff, $4d, $c1, $3e, $01, $ea, $38, $c8
-	db $c9, $7b, $fe, $02, $c2, $ac, $5f, $2e, $05, $e5, $0e, $17, $1e, $00, $3e, $06
-	db $cd, $ff, $4d, $c1, $3e, $2e, $cd, $fe, $4e, $3e, $01, $ea, $38, $c8, $c9, $f5
-	db $7b, $b7, $c2, $23, $60, $f8, $01, $7e, $cd, $4b, $44, $fa, $90, $c7, $b7, $ca
-	db $d1, $5f, $fa, $90, $c7, $fe, $06, $d2, $d1, $5f, $21, $54, $04, $cd, $98, $44
-	db $c3, $23, $60, $21, $e9, $00, $cd, $2e, $46, $fe, $01, $c2, $f7, $5f, $21, $eb
-	db $00, $cd, $2e, $46, $b7, $c2, $f7, $5f, $21, $52, $04, $cd, $98, $44, $1e, $01
-	db $21, $eb, $00, $cd, $1b, $46, $c3, $23, $60, $21, $ea, $00, $cd, $2e, $46, $fe
-	db $01, $c2, $1d, $60, $21, $eb, $00, $cd, $2e, $46, $b7, $c2, $1d, $60, $21, $53
-	db $04, $cd, $98, $44, $1e, $01, $21, $eb, $00, $cd, $1b, $46, $c3, $23, $60, $21
-	db $55, $04, $cd, $98, $44, $c1, $c9, $01, $0a, $02, $01, $00, $00, $09, $07, $09
+	ld c, $00 ; B9BBE (2e:5bbe) -> 0E 00
+.asm_b9bc0:
+	ld a, c ; B9BC0 (2e:5bc0) -> 79
+	cp $14 ; B9BC1 (2e:5bc1) -> FE 14
+	jp nc, .asm_b9c28 ; B9BC3 (2e:5bc3) -> D2 28 5C
+	ld l, c ; B9BC6 (2e:5bc6) -> 69
+	ld h, $00 ; B9BC7 (2e:5bc7) -> 26 00
+	add hl, hl ; B9BC9 (2e:5bc9) -> 29
+	add hl, hl ; B9BCA (2e:5bca) -> 29
+	ld de, Data_b9b6e ; B9BCB (2e:5bcb) -> 11 6E 5B
+	add hl, de ; B9BCE (2e:5bce) -> 19
+	ld a, [wBackupMapGroup] ; B9BCF (2e:5bcf) -> FA DF C7
+	cp [hl] ; B9BD2 (2e:5bd2) -> BE
+	jp nz, .asm_b9c24 ; B9BD3 (2e:5bd3) -> C2 24 5C
+	ld l, c ; B9BD6 (2e:5bd6) -> 69
+	ld h, $00 ; B9BD7 (2e:5bd7) -> 26 00
+	add hl, hl ; B9BD9 (2e:5bd9) -> 29
+	add hl, hl ; B9BDA (2e:5bda) -> 29
+	ld de, Data_b9b6e ; B9BDB (2e:5bdb) -> 11 6E 5B
+	add hl, de ; B9BDE (2e:5bde) -> 19
+	inc hl ; B9BDF (2e:5bdf) -> 23
+	ld a, [wBackupMapNumber] ; B9BE0 (2e:5be0) -> FA E0 C7
+	cp [hl] ; B9BE3 (2e:5be3) -> BE
+	jp nz, .asm_b9c24 ; B9BE4 (2e:5be4) -> C2 24 5C
+	ld l, c ; B9BE7 (2e:5be7) -> 69
+	ld h, $00 ; B9BE8 (2e:5be8) -> 26 00
+	add hl, hl ; B9BEA (2e:5bea) -> 29
+	add hl, hl ; B9BEB (2e:5beb) -> 29
+	ld de, Data_b9b6e ; B9BEC (2e:5bec) -> 11 6E 5B
+	add hl, de ; B9BEF (2e:5bef) -> 19
+	inc hl ; B9BF0 (2e:5bf0) -> 23
+	inc hl ; B9BF1 (2e:5bf1) -> 23
+	ld a, [wBackupMapX] ; B9BF2 (2e:5bf2) -> FA DB C7
+	cp [hl] ; B9BF5 (2e:5bf5) -> BE
+	jp nz, .asm_b9c24 ; B9BF6 (2e:5bf6) -> C2 24 5C
+	ld l, c ; B9BF9 (2e:5bf9) -> 69
+	ld h, $00 ; B9BFA (2e:5bfa) -> 26 00
+	add hl, hl ; B9BFC (2e:5bfc) -> 29
+	add hl, hl ; B9BFD (2e:5bfd) -> 29
+	ld de, Data_b9b6e ; B9BFE (2e:5bfe) -> 11 6E 5B
+	add hl, de ; B9C01 (2e:5c01) -> 19
+	inc hl ; B9C02 (2e:5c02) -> 23
+	inc hl ; B9C03 (2e:5c03) -> 23
+	inc hl ; B9C04 (2e:5c04) -> 23
+	ld a, [wBackupMapY] ; B9C05 (2e:5c05) -> FA DC C7
+	cp [hl] ; B9C08 (2e:5c08) -> BE
+	jp nz, .asm_b9c24 ; B9C09 (2e:5c09) -> C2 24 5C
+	ld l, c ; B9C0C (2e:5c0c) -> 69
+	ld h, $00 ; B9C0D (2e:5c0d) -> 26 00
+	ld e, l ; B9C0F (2e:5c0f) -> 5D
+	ld d, h ; B9C10 (2e:5c10) -> 54
+	add hl, hl ; B9C11 (2e:5c11) -> 29
+	ld c, l ; B9C12 (2e:5c12) -> 4D
+	ld b, h ; B9C13 (2e:5c13) -> 44
+	add hl, hl ; B9C14 (2e:5c14) -> 29
+	add hl, hl ; B9C15 (2e:5c15) -> 29
+	add hl, de ; B9C16 (2e:5c16) -> 19
+	add hl, bc ; B9C17 (2e:5c17) -> 09
+	ld de, Data_b9858 ; B9C18 (2e:5c18) -> 11 58 58
+	add hl, de ; B9C1B (2e:5c1b) -> 19
+	ld e, $01 ; B9C1C (2e:5c1c) -> 1E 01
+	scall LoadWarps ; B9C1E (2e:5c1e) -> CD 3A 40
+	jp .asm_b9c28 ; B9C21 (2e:5c21) -> C3 28 5C
+.asm_b9c24:
+	inc c ; B9C24 (2e:5c24) -> 0C
+	jp .asm_b9bc0 ; B9C25 (2e:5c25) -> C3 C0 5B
+.asm_b9c28:
+	call Func_b9f52 ; B9C28 (2e:5c28) -> CD 52 5F
+	ld hl, Func_b9f52 ; B9C2B (2e:5c2b) -> 21 52 5F
+	scall Func_80f11 ; B9C2E (2e:5c2e) -> CD 11 4F
+	ld a, [wBackupMapGroup] ; B9C31 (2e:5c31) -> FA DF C7
+	cp $01 ; B9C34 (2e:5c34) -> FE 01
+	jp nz, .asm_b9cee ; B9C36 (2e:5c36) -> C2 EE 5C
+	ld a, [wBackupMapNumber] ; B9C39 (2e:5c39) -> FA E0 C7
+	or a ; B9C3C (2e:5c3c) -> B7
+	jp nz, .asm_b9cee ; B9C3D (2e:5c3d) -> C2 EE 5C
+	ld a, [wBackupMapX] ; B9C40 (2e:5c40) -> FA DB C7
+	cp $11 ; B9C43 (2e:5c43) -> FE 11
+	jp nz, .asm_b9c71 ; B9C45 (2e:5c45) -> C2 71 5C
+	ld a, [wBackupMapY] ; B9C48 (2e:5c48) -> FA DC C7
+	cp $0c ; B9C4B (2e:5c4b) -> FE 0C
+	jp nz, .asm_b9c71 ; B9C4D (2e:5c4d) -> C2 71 5C
+	ld e, $01 ; B9C50 (2e:5c50) -> 1E 01
+	ld hl, Data_b99bc ; B9C52 (2e:5c52) -> 21 BC 59
+	scall LoadMapObjects ; B9C55 (2e:5c55) -> CD FB 40
+	ld a, [wc790] ; B9C58 (2e:5c58) -> FA 90 C7
+	or a ; B9C5B (2e:5c5b) -> B7
+	jp z, .asm_b9c6e ; B9C5C (2e:5c5c) -> CA 6E 5C
+	ld a, [wc790] ; B9C5F (2e:5c5f) -> FA 90 C7
+	cp $04 ; B9C62 (2e:5c62) -> FE 04
+	jp nz, .asm_b9c6e ; B9C64 (2e:5c64) -> C2 6E 5C
+	ld de, Data_b99a4 ; B9C67 (2e:5c67) -> 11 A4 59
+	xor a ; B9C6A (2e:5c6a) -> AF
+	scall SetPersonTextPointer ; B9C6B (2e:5c6b) -> CD 50 41
+.asm_b9c6e:
+	jp .asm_b9ceb ; B9C6E (2e:5c6e) -> C3 EB 5C
+.asm_b9c71:
+	ld a, [wBackupMapX] ; B9C71 (2e:5c71) -> FA DB C7
+	cp $19 ; B9C74 (2e:5c74) -> FE 19
+	jp nz, .asm_b9ca2 ; B9C76 (2e:5c76) -> C2 A2 5C
+	ld a, [wBackupMapY] ; B9C79 (2e:5c79) -> FA DC C7
+	cp $0c ; B9C7C (2e:5c7c) -> FE 0C
+	jp nz, .asm_b9ca2 ; B9C7E (2e:5c7e) -> C2 A2 5C
+	ld e, $01 ; B9C81 (2e:5c81) -> 1E 01
+	ld hl, Data_b99ca ; B9C83 (2e:5c83) -> 21 CA 59
+	scall LoadMapObjects ; B9C86 (2e:5c86) -> CD FB 40
+	ld a, [wc790] ; B9C89 (2e:5c89) -> FA 90 C7
+	or a ; B9C8C (2e:5c8c) -> B7
+	jp z, .asm_b9c9f ; B9C8D (2e:5c8d) -> CA 9F 5C
+	ld a, [wc790] ; B9C90 (2e:5c90) -> FA 90 C7
+	cp $04 ; B9C93 (2e:5c93) -> FE 04
+	jp nz, .asm_b9c9f ; B9C95 (2e:5c95) -> C2 9F 5C
+	ld de, Data_b99a8 ; B9C98 (2e:5c98) -> 11 A8 59
+	xor a ; B9C9B (2e:5c9b) -> AF
+	scall SetPersonTextPointer ; B9C9C (2e:5c9c) -> CD 50 41
+.asm_b9c9f:
+	jp .asm_b9ceb ; B9C9F (2e:5c9f) -> C3 EB 5C
+.asm_b9ca2:
+	ld a, [wBackupMapX] ; B9CA2 (2e:5ca2) -> FA DB C7
+	cp $11 ; B9CA5 (2e:5ca5) -> FE 11
+	jp nz, .asm_b9cbd ; B9CA7 (2e:5ca7) -> C2 BD 5C
+	ld a, [wBackupMapY] ; B9CAA (2e:5caa) -> FA DC C7
+	cp $12 ; B9CAD (2e:5cad) -> FE 12
+	jp nz, .asm_b9cbd ; B9CAF (2e:5caf) -> C2 BD 5C
+	ld e, $01 ; B9CB2 (2e:5cb2) -> 1E 01
+	ld hl, Data_b99d8 ; B9CB4 (2e:5cb4) -> 21 D8 59
+	scall LoadMapObjects ; B9CB7 (2e:5cb7) -> CD FB 40
+	jp .asm_b9ceb ; B9CBA (2e:5cba) -> C3 EB 5C
+.asm_b9cbd:
+	ld a, [wBackupMapX] ; B9CBD (2e:5cbd) -> FA DB C7
+	cp $19 ; B9CC0 (2e:5cc0) -> FE 19
+	jp nz, .asm_b9ceb ; B9CC2 (2e:5cc2) -> C2 EB 5C
+	ld a, [wBackupMapY] ; B9CC5 (2e:5cc5) -> FA DC C7
+	cp $12 ; B9CC8 (2e:5cc8) -> FE 12
+	jp nz, .asm_b9ceb ; B9CCA (2e:5cca) -> C2 EB 5C
+	ld e, $01 ; B9CCD (2e:5ccd) -> 1E 01
+	ld hl, Data_b99e6 ; B9CCF (2e:5ccf) -> 21 E6 59
+	scall LoadMapObjects ; B9CD2 (2e:5cd2) -> CD FB 40
+	ld a, [wc790] ; B9CD5 (2e:5cd5) -> FA 90 C7
+	or a ; B9CD8 (2e:5cd8) -> B7
+	jp z, .asm_b9ceb ; B9CD9 (2e:5cd9) -> CA EB 5C
+	ld a, [wc790] ; B9CDC (2e:5cdc) -> FA 90 C7
+	cp $04 ; B9CDF (2e:5cdf) -> FE 04
+	jp nz, .asm_b9ceb ; B9CE1 (2e:5ce1) -> C2 EB 5C
+	ld de, Data_b99ac ; B9CE4 (2e:5ce4) -> 11 AC 59
+	xor a ; B9CE7 (2e:5ce7) -> AF
+	scall SetPersonTextPointer ; B9CE8 (2e:5ce8) -> CD 50 41
+.asm_b9ceb:
+	jp .asm_b9f35 ; B9CEB (2e:5ceb) -> C3 35 5F
+.asm_b9cee:
+	ld a, [wBackupMapGroup] ; B9CEE (2e:5cee) -> FA DF C7
+	cp $06 ; B9CF1 (2e:5cf1) -> FE 06
+	jp nz, .asm_b9d3f ; B9CF3 (2e:5cf3) -> C2 3F 5D
+	ld a, [wBackupMapNumber] ; B9CF6 (2e:5cf6) -> FA E0 C7
+	or a ; B9CF9 (2e:5cf9) -> B7
+	jp nz, .asm_b9d3f ; B9CFA (2e:5cfa) -> C2 3F 5D
+	ld a, [wBackupMapX] ; B9CFD (2e:5cfd) -> FA DB C7
+	cp $08 ; B9D00 (2e:5d00) -> FE 08
+	jp nz, .asm_b9d1e ; B9D02 (2e:5d02) -> C2 1E 5D
+	ld a, [wBackupMapY] ; B9D05 (2e:5d05) -> FA DC C7
+	cp $06 ; B9D08 (2e:5d08) -> FE 06
+	jp nz, .asm_b9d1e ; B9D0A (2e:5d0a) -> C2 1E 5D
+	ld e, $02 ; B9D0D (2e:5d0d) -> 1E 02
+	ld hl, Data_b99f4 ; B9D0F (2e:5d0f) -> 21 F4 59
+	scall LoadMapObjects ; B9D12 (2e:5d12) -> CD FB 40
+	call Func_b9f52 ; B9D15 (2e:5d15) -> CD 52 5F
+	scall Func_80f02 ; B9D18 (2e:5d18) -> CD 02 4F
+	jp .asm_b9d3c ; B9D1B (2e:5d1b) -> C3 3C 5D
+.asm_b9d1e:
+	ld a, [wBackupMapX] ; B9D1E (2e:5d1e) -> FA DB C7
+	cp $15 ; B9D21 (2e:5d21) -> FE 15
+	jp nz, .asm_b9d3c ; B9D23 (2e:5d23) -> C2 3C 5D
+	ld a, [wBackupMapY] ; B9D26 (2e:5d26) -> FA DC C7
+	cp $06 ; B9D29 (2e:5d29) -> FE 06
+	jp nz, .asm_b9d3c ; B9D2B (2e:5d2b) -> C2 3C 5D
+	ld e, $02 ; B9D2E (2e:5d2e) -> 1E 02
+	ld hl, Data_b9a10 ; B9D30 (2e:5d30) -> 21 10 5A
+	scall LoadMapObjects ; B9D33 (2e:5d33) -> CD FB 40
+	call Func_b9f52 ; B9D36 (2e:5d36) -> CD 52 5F
+	scall Func_80f02 ; B9D39 (2e:5d39) -> CD 02 4F
+.asm_b9d3c:
+	jp .asm_b9f35 ; B9D3C (2e:5d3c) -> C3 35 5F
+.asm_b9d3f:
+	ld a, [wBackupMapGroup] ; B9D3F (2e:5d3f) -> FA DF C7
+	cp $11 ; B9D42 (2e:5d42) -> FE 11
+	jp nz, .asm_b9d84 ; B9D44 (2e:5d44) -> C2 84 5D
+	ld a, [wBackupMapNumber] ; B9D47 (2e:5d47) -> FA E0 C7
+	or a ; B9D4A (2e:5d4a) -> B7
+	jp nz, .asm_b9d84 ; B9D4B (2e:5d4b) -> C2 84 5D
+	ld a, [wBackupMapX] ; B9D4E (2e:5d4e) -> FA DB C7
+	cp $06 ; B9D51 (2e:5d51) -> FE 06
+	jp nz, .asm_b9d69 ; B9D53 (2e:5d53) -> C2 69 5D
+	ld a, [wBackupMapY] ; B9D56 (2e:5d56) -> FA DC C7
+	cp $04 ; B9D59 (2e:5d59) -> FE 04
+	jp nz, .asm_b9d69 ; B9D5B (2e:5d5b) -> C2 69 5D
+	ld e, $01 ; B9D5E (2e:5d5e) -> 1E 01
+	ld hl, Data_b9a2c ; B9D60 (2e:5d60) -> 21 2C 5A
+	scall LoadMapObjects ; B9D63 (2e:5d63) -> CD FB 40
+	jp .asm_b9d81 ; B9D66 (2e:5d66) -> C3 81 5D
+.asm_b9d69:
+	ld a, [wBackupMapX] ; B9D69 (2e:5d69) -> FA DB C7
+	cp $0f ; B9D6C (2e:5d6c) -> FE 0F
+	jp nz, .asm_b9d81 ; B9D6E (2e:5d6e) -> C2 81 5D
+	ld a, [wBackupMapY] ; B9D71 (2e:5d71) -> FA DC C7
+	cp $04 ; B9D74 (2e:5d74) -> FE 04
+	jp nz, .asm_b9d81 ; B9D76 (2e:5d76) -> C2 81 5D
+	ld e, $01 ; B9D79 (2e:5d79) -> 1E 01
+	ld hl, Data_b9a3a ; B9D7B (2e:5d7b) -> 21 3A 5A
+	scall LoadMapObjects ; B9D7E (2e:5d7e) -> CD FB 40
+.asm_b9d81:
+	jp .asm_b9f35 ; B9D81 (2e:5d81) -> C3 35 5F
+.asm_b9d84:
+	ld a, [wBackupMapGroup] ; B9D84 (2e:5d84) -> FA DF C7
+	cp $14 ; B9D87 (2e:5d87) -> FE 14
+	jp nz, .asm_b9e0b ; B9D89 (2e:5d89) -> C2 0B 5E
+	ld a, [wBackupMapNumber] ; B9D8C (2e:5d8c) -> FA E0 C7
+	or a ; B9D8F (2e:5d8f) -> B7
+	jp nz, .asm_b9e0b ; B9D90 (2e:5d90) -> C2 0B 5E
+	ld a, [wBackupMapX] ; B9D93 (2e:5d93) -> FA DB C7
+	cp $06 ; B9D96 (2e:5d96) -> FE 06
+	jp nz, .asm_b9dcb ; B9D98 (2e:5d98) -> C2 CB 5D
+	ld a, [wBackupMapY] ; B9D9B (2e:5d9b) -> FA DC C7
+	cp $06 ; B9D9E (2e:5d9e) -> FE 06
+	jp nz, .asm_b9dcb ; B9DA0 (2e:5da0) -> C2 CB 5D
+	ld e, $02 ; B9DA3 (2e:5da3) -> 1E 02
+	ld hl, Data_b9a48 ; B9DA5 (2e:5da5) -> 21 48 5A
+	scall LoadMapObjects ; B9DA8 (2e:5da8) -> CD FB 40
+	ld a, [wc790] ; B9DAB (2e:5dab) -> FA 90 C7
+	or a ; B9DAE (2e:5dae) -> B7
+	jp z, .asm_b9dc8 ; B9DAF (2e:5daf) -> CA C8 5D
+	ld a, [wc790] ; B9DB2 (2e:5db2) -> FA 90 C7
+	cp $05 ; B9DB5 (2e:5db5) -> FE 05
+	jp nc, .asm_b9dc8 ; B9DB7 (2e:5db7) -> D2 C8 5D
+	ld de, Data_b99b0 ; B9DBA (2e:5dba) -> 11 B0 59
+	xor a ; B9DBD (2e:5dbd) -> AF
+	scall SetPersonTextPointer ; B9DBE (2e:5dbe) -> CD 50 41
+	ld e, $00 ; B9DC1 (2e:5dc1) -> 1E 00
+	ld a, $01 ; B9DC3 (2e:5dc3) -> 3E 01
+	scall SetPersonVisibilityState ; B9DC5 (2e:5dc5) -> CD 3D 41
+.asm_b9dc8:
+	jp .asm_b9e08 ; B9DC8 (2e:5dc8) -> C3 08 5E
+.asm_b9dcb:
+	ld a, [wBackupMapX] ; B9DCB (2e:5dcb) -> FA DB C7
+	cp $15 ; B9DCE (2e:5dce) -> FE 15
+	jp nz, .asm_b9e08 ; B9DD0 (2e:5dd0) -> C2 08 5E
+	ld a, [wBackupMapY] ; B9DD3 (2e:5dd3) -> FA DC C7
+	cp $06 ; B9DD6 (2e:5dd6) -> FE 06
+	jp nz, .asm_b9e08 ; B9DD8 (2e:5dd8) -> C2 08 5E
+	ld e, $03 ; B9DDB (2e:5ddb) -> 1E 03
+	ld hl, Data_b9a64 ; B9DDD (2e:5ddd) -> 21 64 5A
+	scall LoadMapObjects ; B9DE0 (2e:5de0) -> CD FB 40
+	ld a, [wc790] ; B9DE3 (2e:5de3) -> FA 90 C7
+	or a ; B9DE6 (2e:5de6) -> B7
+	jp z, .asm_b9e08 ; B9DE7 (2e:5de7) -> CA 08 5E
+	ld a, [wc790] ; B9DEA (2e:5dea) -> FA 90 C7
+	cp $05 ; B9DED (2e:5ded) -> FE 05
+	jp nc, .asm_b9e08 ; B9DEF (2e:5def) -> D2 08 5E
+	ld de, Data_b99b8 ; B9DF2 (2e:5df2) -> 11 B8 59
+	ld a, $01 ; B9DF5 (2e:5df5) -> 3E 01
+	scall SetPersonTextPointer ; B9DF7 (2e:5df7) -> CD 50 41
+	ld de, Data_b99b4 ; B9DFA (2e:5dfa) -> 11 B4 59
+	ld a, $02 ; B9DFD (2e:5dfd) -> 3E 02
+	scall SetPersonTextPointer ; B9DFF (2e:5dff) -> CD 50 41
+	ld e, $00 ; B9E02 (2e:5e02) -> 1E 00
+	xor a ; B9E04 (2e:5e04) -> AF
+	scall SetPersonVisibilityState ; B9E05 (2e:5e05) -> CD 3D 41
+.asm_b9e08:
+	jp .asm_b9f35 ; B9E08 (2e:5e08) -> C3 35 5F
+.asm_b9e0b:
+	ld a, [wBackupMapGroup] ; B9E0B (2e:5e0b) -> FA DF C7
+	cp $19 ; B9E0E (2e:5e0e) -> FE 19
+	jp nz, .asm_b9ed8 ; B9E10 (2e:5e10) -> C2 D8 5E
+	ld a, [wBackupMapNumber] ; B9E13 (2e:5e13) -> FA E0 C7
+	cp $01 ; B9E16 (2e:5e16) -> FE 01
+	jp nz, .asm_b9ed8 ; B9E18 (2e:5e18) -> C2 D8 5E
+	ld a, [wBackupMapX] ; B9E1B (2e:5e1b) -> FA DB C7
+	cp $1e ; B9E1E (2e:5e1e) -> FE 1E
+	jp nz, .asm_b9e36 ; B9E20 (2e:5e20) -> C2 36 5E
+	ld a, [wBackupMapY] ; B9E23 (2e:5e23) -> FA DC C7
+	cp $0a ; B9E26 (2e:5e26) -> FE 0A
+	jp nz, .asm_b9e36 ; B9E28 (2e:5e28) -> C2 36 5E
+	ld e, $02 ; B9E2B (2e:5e2b) -> 1E 02
+	ld hl, Data_b9a8e ; B9E2D (2e:5e2d) -> 21 8E 5A
+	scall LoadMapObjects ; B9E30 (2e:5e30) -> CD FB 40
+	jp .asm_b9ed5 ; B9E33 (2e:5e33) -> C3 D5 5E
+.asm_b9e36:
+	ld a, [wBackupMapX] ; B9E36 (2e:5e36) -> FA DB C7
+	cp $21 ; B9E39 (2e:5e39) -> FE 21
+	jp nz, .asm_b9e51 ; B9E3B (2e:5e3b) -> C2 51 5E
+	ld a, [wBackupMapY] ; B9E3E (2e:5e3e) -> FA DC C7
+	cp $0a ; B9E41 (2e:5e41) -> FE 0A
+	jp nz, .asm_b9e51 ; B9E43 (2e:5e43) -> C2 51 5E
+	ld e, $01 ; B9E46 (2e:5e46) -> 1E 01
+	ld hl, Data_b9aaa ; B9E48 (2e:5e48) -> 21 AA 5A
+	scall LoadMapObjects ; B9E4B (2e:5e4b) -> CD FB 40
+	jp .asm_b9ed5 ; B9E4E (2e:5e4e) -> C3 D5 5E
+.asm_b9e51:
+	ld a, [wBackupMapX] ; B9E51 (2e:5e51) -> FA DB C7
+	cp $05 ; B9E54 (2e:5e54) -> FE 05
+	jp nz, .asm_b9e6c ; B9E56 (2e:5e56) -> C2 6C 5E
+	ld a, [wBackupMapY] ; B9E59 (2e:5e59) -> FA DC C7
+	cp $15 ; B9E5C (2e:5e5c) -> FE 15
+	jp nz, .asm_b9e6c ; B9E5E (2e:5e5e) -> C2 6C 5E
+	ld e, $01 ; B9E61 (2e:5e61) -> 1E 01
+	ld hl, Data_b9ab8 ; B9E63 (2e:5e63) -> 21 B8 5A
+	scall LoadMapObjects ; B9E66 (2e:5e66) -> CD FB 40
+	jp .asm_b9ed5 ; B9E69 (2e:5e69) -> C3 D5 5E
+.asm_b9e6c:
+	ld a, [wBackupMapX] ; B9E6C (2e:5e6c) -> FA DB C7
+	cp $08 ; B9E6F (2e:5e6f) -> FE 08
+	jp nz, .asm_b9e87 ; B9E71 (2e:5e71) -> C2 87 5E
+	ld a, [wBackupMapY] ; B9E74 (2e:5e74) -> FA DC C7
+	cp $15 ; B9E77 (2e:5e77) -> FE 15
+	jp nz, .asm_b9e87 ; B9E79 (2e:5e79) -> C2 87 5E
+	ld e, $02 ; B9E7C (2e:5e7c) -> 1E 02
+	ld hl, Data_b9ac6 ; B9E7E (2e:5e7e) -> 21 C6 5A
+	scall LoadMapObjects ; B9E81 (2e:5e81) -> CD FB 40
+	jp .asm_b9ed5 ; B9E84 (2e:5e84) -> C3 D5 5E
+.asm_b9e87:
+	ld a, [wBackupMapX] ; B9E87 (2e:5e87) -> FA DB C7
+	cp $11 ; B9E8A (2e:5e8a) -> FE 11
+	jp nz, .asm_b9ea2 ; B9E8C (2e:5e8c) -> C2 A2 5E
+	ld a, [wBackupMapY] ; B9E8F (2e:5e8f) -> FA DC C7
+	cp $15 ; B9E92 (2e:5e92) -> FE 15
+	jp nz, .asm_b9ea2 ; B9E94 (2e:5e94) -> C2 A2 5E
+	ld e, $01 ; B9E97 (2e:5e97) -> 1E 01
+	ld hl, Data_b9ae2 ; B9E99 (2e:5e99) -> 21 E2 5A
+	scall LoadMapObjects ; B9E9C (2e:5e9c) -> CD FB 40
+	jp .asm_b9ed5 ; B9E9F (2e:5e9f) -> C3 D5 5E
+.asm_b9ea2:
+	ld a, [wBackupMapX] ; B9EA2 (2e:5ea2) -> FA DB C7
+	cp $14 ; B9EA5 (2e:5ea5) -> FE 14
+	jp nz, .asm_b9ebd ; B9EA7 (2e:5ea7) -> C2 BD 5E
+	ld a, [wBackupMapY] ; B9EAA (2e:5eaa) -> FA DC C7
+	cp $15 ; B9EAD (2e:5ead) -> FE 15
+	jp nz, .asm_b9ebd ; B9EAF (2e:5eaf) -> C2 BD 5E
+	ld e, $01 ; B9EB2 (2e:5eb2) -> 1E 01
+	ld hl, Data_b9afe ; B9EB4 (2e:5eb4) -> 21 FE 5A
+	scall LoadMapObjects ; B9EB7 (2e:5eb7) -> CD FB 40
+	jp .asm_b9ed5 ; B9EBA (2e:5eba) -> C3 D5 5E
+.asm_b9ebd:
+	ld a, [wBackupMapX] ; B9EBD (2e:5ebd) -> FA DB C7
+	cp $17 ; B9EC0 (2e:5ec0) -> FE 17
+	jp nz, .asm_b9ed5 ; B9EC2 (2e:5ec2) -> C2 D5 5E
+	ld a, [wBackupMapY] ; B9EC5 (2e:5ec5) -> FA DC C7
+	cp $15 ; B9EC8 (2e:5ec8) -> FE 15
+	jp nz, .asm_b9ed5 ; B9ECA (2e:5eca) -> C2 D5 5E
+	ld e, $01 ; B9ECD (2e:5ecd) -> 1E 01
+	ld hl, Data_b9af0 ; B9ECF (2e:5ecf) -> 21 F0 5A
+	scall LoadMapObjects ; B9ED2 (2e:5ed2) -> CD FB 40
+.asm_b9ed5:
+	jp .asm_b9f35 ; B9ED5 (2e:5ed5) -> C3 35 5F
+.asm_b9ed8:
+	ld a, [wBackupMapGroup] ; B9ED8 (2e:5ed8) -> FA DF C7
+	cp $1d ; B9EDB (2e:5edb) -> FE 1D
+	jp nz, .asm_b9f35 ; B9EDD (2e:5edd) -> C2 35 5F
+	ld a, [wBackupMapNumber] ; B9EE0 (2e:5ee0) -> FA E0 C7
+	or a ; B9EE3 (2e:5ee3) -> B7
+	jp nz, .asm_b9f35 ; B9EE4 (2e:5ee4) -> C2 35 5F
+	ld a, [wBackupMapX] ; B9EE7 (2e:5ee7) -> FA DB C7
+	cp $08 ; B9EEA (2e:5eea) -> FE 08
+	jp nz, .asm_b9f02 ; B9EEC (2e:5eec) -> C2 02 5F
+	ld a, [wBackupMapY] ; B9EEF (2e:5eef) -> FA DC C7
+	cp $13 ; B9EF2 (2e:5ef2) -> FE 13
+	jp nz, .asm_b9f02 ; B9EF4 (2e:5ef4) -> C2 02 5F
+	ld e, $01 ; B9EF7 (2e:5ef7) -> 1E 01
+	ld hl, Data_b9b0c ; B9EF9 (2e:5ef9) -> 21 0C 5B
+	scall LoadMapObjects ; B9EFC (2e:5efc) -> CD FB 40
+	jp .asm_b9f35 ; B9EFF (2e:5eff) -> C3 35 5F
+.asm_b9f02:
+	ld a, [wBackupMapX] ; B9F02 (2e:5f02) -> FA DB C7
+	cp $0a ; B9F05 (2e:5f05) -> FE 0A
+	jp nz, .asm_b9f1d ; B9F07 (2e:5f07) -> C2 1D 5F
+	ld a, [wBackupMapY] ; B9F0A (2e:5f0a) -> FA DC C7
+	cp $19 ; B9F0D (2e:5f0d) -> FE 19
+	jp nz, .asm_b9f1d ; B9F0F (2e:5f0f) -> C2 1D 5F
+	ld e, $01 ; B9F12 (2e:5f12) -> 1E 01
+	ld hl, Data_b9b1a ; B9F14 (2e:5f14) -> 21 1A 5B
+	scall LoadMapObjects ; B9F17 (2e:5f17) -> CD FB 40
+	jp .asm_b9f35 ; B9F1A (2e:5f1a) -> C3 35 5F
+.asm_b9f1d:
+	ld a, [wBackupMapX] ; B9F1D (2e:5f1d) -> FA DB C7
+	cp $12 ; B9F20 (2e:5f20) -> FE 12
+	jp nz, .asm_b9f35 ; B9F22 (2e:5f22) -> C2 35 5F
+	ld a, [wBackupMapY] ; B9F25 (2e:5f25) -> FA DC C7
+	cp $19 ; B9F28 (2e:5f28) -> FE 19
+	jp nz, .asm_b9f35 ; B9F2A (2e:5f2a) -> C2 35 5F
+	ld e, $02 ; B9F2D (2e:5f2d) -> 1E 02
+	ld hl, Data_b9b28 ; B9F2F (2e:5f2f) -> 21 28 5B
+	scall LoadMapObjects ; B9F32 (2e:5f32) -> CD FB 40
+.asm_b9f35:
+	ld e, $03 ; B9F35 (2e:5f35) -> 1E 03
+	ld hl, Data_b9b44 ; B9F37 (2e:5f37) -> 21 44 5B
+	scall LoadMapObjects ; B9F3A (2e:5f3a) -> CD FB 40
+	scall Func_8001c ; B9F3D (2e:5f3d) -> CD 1C 40
+	ld a, $11 ; B9F40 (2e:5f40) -> 3E 11
+	scall PlayMusic ; B9F42 (2e:5f42) -> CD E6 4E
+	ret  ; B9F45 (2e:5f45) -> C9
+
+Data_b9f46:
+	db $01, $08, $01, $01, $0a, $07
+
+Data_b9f4c:
+	db $01, $08, $01, $01, $0a, $08
+
+Func_b9f52:
+	ld a, [wBackupMapGroup] ; B9F52 (2e:5f52) -> FA DF C7
+	cp $06 ; B9F55 (2e:5f55) -> FE 06
+	jp nz, .asm_b9f70 ; B9F57 (2e:5f57) -> C2 70 5F
+	ld a, [wBackupMapNumber] ; B9F5A (2e:5f5a) -> FA E0 C7
+	or a ; B9F5D (2e:5f5d) -> B7
+	jp nz, .asm_b9f70 ; B9F5E (2e:5f5e) -> C2 70 5F
+	ld hl, Data_b9f46 ; B9F61 (2e:5f61) -> 21 46 5F
+	scall Func_80d9b ; B9F64 (2e:5f64) -> CD 9B 4D
+	ld hl, Data_b9f4c ; B9F67 (2e:5f67) -> 21 4C 5F
+	scall Func_80d9b ; B9F6A (2e:5f6a) -> CD 9B 4D
+	scall Func_80f02 ; B9F6D (2e:5f6d) -> CD 02 4F
+.asm_b9f70:
+	ret  ; B9F70 (2e:5f70) -> C9
+
+Func_b9f71:
+	ld a, e ; B9F71 (2e:5f71) -> 7B
+	cp $02 ; B9F72 (2e:5f72) -> FE 02
+	jp nz, .asm_b9f8e ; B9F74 (2e:5f74) -> C2 8E 5F
+	ld a, $2e ; B9F77 (2e:5f77) -> 3E 2E
+	scall PlaySFX ; B9F79 (2e:5f79) -> CD FE 4E
+	ld l, $05 ; B9F7C (2e:5f7c) -> 2E 05
+	push hl ; B9F7E (2e:5f7e) -> E5
+	ld c, $0a ; B9F7F (2e:5f7f) -> 0E 0A
+	ld e, $00 ; B9F81 (2e:5f81) -> 1E 00
+	ld a, $06 ; B9F83 (2e:5f83) -> 3E 06
+	scall Func_80dff ; B9F85 (2e:5f85) -> CD FF 4D
+	pop bc ; B9F88 (2e:5f88) -> C1
+	ld a, $01 ; B9F89 (2e:5f89) -> 3E 01
+	ld [wPlayerFacing], a ; B9F8B (2e:5f8b) -> EA 38 C8
+.asm_b9f8e:
+	ret  ; B9F8E (2e:5f8e) -> C9
+
+Func_b9f8f:
+	ld a, e ; B9F8F (2e:5f8f) -> 7B
+	cp $02 ; B9F90 (2e:5f90) -> FE 02
+	jp nz, .asm_b9fac ; B9F92 (2e:5f92) -> C2 AC 5F
+	ld l, $05 ; B9F95 (2e:5f95) -> 2E 05
+	push hl ; B9F97 (2e:5f97) -> E5
+	ld c, $17 ; B9F98 (2e:5f98) -> 0E 17
+	ld e, $00 ; B9F9A (2e:5f9a) -> 1E 00
+	ld a, $06 ; B9F9C (2e:5f9c) -> 3E 06
+	scall Func_80dff ; B9F9E (2e:5f9e) -> CD FF 4D
+	pop bc ; B9FA1 (2e:5fa1) -> C1
+	ld a, $2e ; B9FA2 (2e:5fa2) -> 3E 2E
+	scall PlaySFX ; B9FA4 (2e:5fa4) -> CD FE 4E
+	ld a, $01 ; B9FA7 (2e:5fa7) -> 3E 01
+	ld [wPlayerFacing], a ; B9FA9 (2e:5fa9) -> EA 38 C8
+.asm_b9fac:
+	ret  ; B9FAC (2e:5fac) -> C9
+
+Func_b9fad:
+	push af ; B9FAD (2e:5fad) -> F5
+	ld a, e ; B9FAE (2e:5fae) -> 7B
+	or a ; B9FAF (2e:5faf) -> B7
+	jp nz, .asm_ba023 ; B9FB0 (2e:5fb0) -> C2 23 60
+	ld hl, sp+$01 ; B9FB3 (2e:5fb3) -> F8 01
+	ld a, [hl] ; B9FB5 (2e:5fb5) -> 7E
+	scall FacePlayer ; B9FB6 (2e:5fb6) -> CD 4B 44
+	ld a, [wc790] ; B9FB9 (2e:5fb9) -> FA 90 C7
+	or a ; B9FBC (2e:5fbc) -> B7
+	jp z, .asm_b9fd1 ; B9FBD (2e:5fbd) -> CA D1 5F
+	ld a, [wc790] ; B9FC0 (2e:5fc0) -> FA 90 C7
+	cp $06 ; B9FC3 (2e:5fc3) -> FE 06
+	jp nc, .asm_b9fd1 ; B9FC5 (2e:5fc5) -> D2 D1 5F
+	ld hl, $0454 ; B9FC8 (2e:5fc8) -> 21 54 04
+	scall PrintTextStandard ; B9FCB (2e:5fcb) -> CD 98 44
+	jp .asm_ba023 ; B9FCE (2e:5fce) -> C3 23 60
+.asm_b9fd1:
+	ld hl, $00e9 ; B9FD1 (2e:5fd1) -> 21 E9 00
+	scall CheckEventFlag ; B9FD4 (2e:5fd4) -> CD 2E 46
+	cp $01 ; B9FD7 (2e:5fd7) -> FE 01
+	jp nz, .asm_b9ff7 ; B9FD9 (2e:5fd9) -> C2 F7 5F
+	ld hl, $00eb ; B9FDC (2e:5fdc) -> 21 EB 00
+	scall CheckEventFlag ; B9FDF (2e:5fdf) -> CD 2E 46
+	or a ; B9FE2 (2e:5fe2) -> B7
+	jp nz, .asm_b9ff7 ; B9FE3 (2e:5fe3) -> C2 F7 5F
+	ld hl, $0452 ; B9FE6 (2e:5fe6) -> 21 52 04
+	scall PrintTextStandard ; B9FE9 (2e:5fe9) -> CD 98 44
+	ld e, $01 ; B9FEC (2e:5fec) -> 1E 01
+	ld hl, $00eb ; B9FEE (2e:5fee) -> 21 EB 00
+	scall EventFlagAction ; B9FF1 (2e:5ff1) -> CD 1B 46
+	jp .asm_ba023 ; B9FF4 (2e:5ff4) -> C3 23 60
+.asm_b9ff7:
+	ld hl, $00ea ; B9FF7 (2e:5ff7) -> 21 EA 00
+	scall CheckEventFlag ; B9FFA (2e:5ffa) -> CD 2E 46
+	cp $01 ; B9FFD (2e:5ffd) -> FE 01
+	jp nz, .asm_ba01d ; B9FFF (2e:5fff) -> C2 1D 60
+	ld hl, $00eb ; BA002 (2e:6002) -> 21 EB 00
+	scall CheckEventFlag ; BA005 (2e:6005) -> CD 2E 46
+	or a ; BA008 (2e:6008) -> B7
+	jp nz, .asm_ba01d ; BA009 (2e:6009) -> C2 1D 60
+	ld hl, $0453 ; BA00C (2e:600c) -> 21 53 04
+	scall PrintTextStandard ; BA00F (2e:600f) -> CD 98 44
+	ld e, $01 ; BA012 (2e:6012) -> 1E 01
+	ld hl, $00eb ; BA014 (2e:6014) -> 21 EB 00
+	scall EventFlagAction ; BA017 (2e:6017) -> CD 1B 46
+	jp .asm_ba023 ; BA01A (2e:601a) -> C3 23 60
+.asm_ba01d:
+	ld hl, $0455 ; BA01D (2e:601d) -> 21 55 04
+	scall PrintTextStandard ; BA020 (2e:6020) -> CD 98 44
+.asm_ba023:
+	pop bc ; BA023 (2e:6023) -> C1
+	ret  ; BA024 (2e:6024) -> C9
+
+Data_ba025:
+	db $01, $0a, $02, $01, $00, $00, $09, $07, $09
 	db $08, $34, $01, $0a, $02, $01, $01, $00, $11, $06, $11, $07, $34, $01, $0a, $02
 	db $01, $01, $00, $19, $06, $19, $07, $34, $01, $0a, $02, $01, $06, $00, $0e, $12
 	db $0e, $13, $34, $01, $0a, $02, $01, $06, $00, $1c, $0e, $1c, $0f, $34, $01, $0a
