@@ -1098,20 +1098,20 @@ Data_b5c8b:
 Func_b5c99:: ; b5c99
 	ld e, $02 ; B5C99 (2d:5c99) -> 1E 02
 	ld hl, Data_b5c2f ; B5C9B (2d:5c9b) -> 21 2F 5C
-	call LoadWarps_2d ; B5C9E (2d:5c9e) -> CD 3A 40
+	scall LoadWarps ; B5C9E (2d:5c9e) -> CD 3A 40
 	ld a, $03 ; B5CA1 (2d:5ca1) -> 3E 03
-	call Func_80d01_2d ; B5CA3 (2d:5ca3) -> CD 01 4D
+	scall Func_80d01 ; B5CA3 (2d:5ca3) -> CD 01 4D
 	ld e, $05 ; B5CA6 (2d:5ca6) -> 1E 05
 	ld hl, Data_b5c45 ; B5CA8 (2d:5ca8) -> 21 45 5C
-	call LoadEncounters_2d ; B5CAB (2d:5cab) -> CD 24 4D
+	scall LoadEncounters ; B5CAB (2d:5cab) -> CD 24 4D
 	ld e, $01 ; B5CAE (2d:5cae) -> 1E 01
 	ld hl, Data_b5c8b ; B5CB0 (2d:5cb0) -> 21 8B 5C
-	call LoadMapObjects_2d ; B5CB3 (2d:5cb3) -> CD FB 40
+	scall LoadMapObjects ; B5CB3 (2d:5cb3) -> CD FB 40
 	ld a, $09 ; B5CB6 (2d:5cb6) -> 3E 09
-	call PlayMusic_2d ; B5CB8 (2d:5cb8) -> CD E6 4E
-	call Func_8001c_2d ; B5CBB (2d:5cbb) -> CD 1C 40
+	scall PlayMusic ; B5CB8 (2d:5cb8) -> CD E6 4E
+	scall Func_8001c ; B5CBB (2d:5cbb) -> CD 1C 40
 	ld hl, $030d ; B5CBE (2d:5cbe) -> 21 0D 03
-	call LandmarkSign_2d ; B5CC1 (2d:5cc1) -> CD 72 4F
+	scall LandmarkSign ; B5CC1 (2d:5cc1) -> CD 72 4F
 	ret  ; B5CC4 (2d:5cc4) -> C9
 
 Func_b5cc5:
@@ -1124,27 +1124,27 @@ Func_b5cc5:
 	ld [hl], a ; B5CCE (2d:5cce) -> 77
 	ld a, e ; B5CCF (2d:5ccf) -> 7B
 	cp $02 ; B5CD0 (2d:5cd0) -> FE 02
-	jp nz, label_b5d0a ; B5CD2 (2d:5cd2) -> C2 0A 5D
+	jp nz, .asm_b5d0a ; B5CD2 (2d:5cd2) -> C2 0A 5D
 	ld hl, $0327 ; B5CD5 (2d:5cd5) -> 21 27 03
-	call LandmarkSign_2d ; B5CD8 (2d:5cd8) -> CD 72 4F
+	scall LandmarkSign ; B5CD8 (2d:5cd8) -> CD 72 4F
 	ld hl, sp+$00 ; B5CDB (2d:5cdb) -> F8 00
 	ld a, [wMapX] ; B5CDD (2d:5cdd) -> FA D8 C2
 	add a, $05 ; B5CE0 (2d:5ce0) -> C6 05
 	ld [hl], a ; B5CE2 (2d:5ce2) -> 77
 	ld a, [wPlayerFacing] ; B5CE3 (2d:5ce3) -> FA 38 C8
 	or a ; B5CE6 (2d:5ce6) -> B7
-	jp nz, label_b5cf5 ; B5CE7 (2d:5ce7) -> C2 F5 5C
+	jp nz, .asm_b5cf5 ; B5CE7 (2d:5ce7) -> C2 F5 5C
 	ld hl, sp+$01 ; B5CEA (2d:5cea) -> F8 01
 	ld a, [wMapY] ; B5CEC (2d:5cec) -> FA D9 C2
 	add a, $05 ; B5CEF (2d:5cef) -> C6 05
 	ld [hl], a ; B5CF1 (2d:5cf1) -> 77
-	jp label_b5cfd ; B5CF2 (2d:5cf2) -> C3 FD 5C
-label_b5cf5:
+	jp .asm_b5cfd ; B5CF2 (2d:5cf2) -> C3 FD 5C
+.asm_b5cf5:
 	ld hl, sp+$01 ; B5CF5 (2d:5cf5) -> F8 01
 	ld a, [wMapY] ; B5CF7 (2d:5cf7) -> FA D9 C2
 	add a, $03 ; B5CFA (2d:5cfa) -> C6 03
 	ld [hl], a ; B5CFC (2d:5cfc) -> 77
-label_b5cfd:
+.asm_b5cfd:
 	ld c, $01 ; B5CFD (2d:5cfd) -> 0E 01
 	ld hl, sp+$00 ; B5CFF (2d:5cff) -> F8 00
 	push de ; B5D01 (2d:5d01) -> D5
@@ -1152,8 +1152,8 @@ label_b5cfd:
 	pop de ; B5D03 (2d:5d03) -> D1
 	pop hl ; B5D04 (2d:5d04) -> E1
 	ld a, $2d ; B5D05 (2d:5d05) -> 3E 2D
-	call MovePlayer_2d ; B5D07 (2d:5d07) -> CD 3E 46
-label_b5d0a:
+	scall MovePlayer ; B5D07 (2d:5d07) -> CD 3E 46
+.asm_b5d0a:
 	pop bc ; B5D0A (2d:5d0a) -> C1
 	pop bc ; B5D0B (2d:5d0b) -> C1
 	ret  ; B5D0C (2d:5d0c) -> C9
@@ -1180,22 +1180,22 @@ Data_b5d5e:
 	person_event $ff, $00, $01, $02, $01, $01, $00, $04, $01, Func_b5d98, NULL
 
 Func_b5d6c:: ; b5d6c
-		ld e, $01 ; B5D6C (2d:5d6c) -> 1E 01
-	ld hl, $5d0d ; B5D6E (2d:5d6e) -> 21 0D 5D
-	call LoadWarps_2d ; B5D71 (2d:5d71) -> CD 3A 40
+	ld e, $01 ; B5D6C (2d:5d6c) -> 1E 01
+	ld hl, Data_b5d0d ; B5D6E (2d:5d6e) -> 21 0D 5D
+	scall LoadWarps ; B5D71 (2d:5d71) -> CD 3A 40
 	ld a, $03 ; B5D74 (2d:5d74) -> 3E 03
-	call Func_80d01_2d ; B5D76 (2d:5d76) -> CD 01 4D
+	scall Func_80d01 ; B5D76 (2d:5d76) -> CD 01 4D
 	ld e, $05 ; B5D79 (2d:5d79) -> 1E 05
-	ld hl, $5d18 ; B5D7B (2d:5d7b) -> 21 18 5D
-	call LoadEncounters_2d ; B5D7E (2d:5d7e) -> CD 24 4D
+	ld hl, Data_b5d18 ; B5D7B (2d:5d7b) -> 21 18 5D
+	scall LoadEncounters ; B5D7E (2d:5d7e) -> CD 24 4D
 	ld e, $01 ; B5D81 (2d:5d81) -> 1E 01
-	ld hl, $5d5e ; B5D83 (2d:5d83) -> 21 5E 5D
-	call LoadMapObjects_2d ; B5D86 (2d:5d86) -> CD FB 40
+	ld hl, Data_b5d5e ; B5D83 (2d:5d83) -> 21 5E 5D
+	scall LoadMapObjects ; B5D86 (2d:5d86) -> CD FB 40
 	ld a, $09 ; B5D89 (2d:5d89) -> 3E 09
-	call PlayMusic_2d ; B5D8B (2d:5d8b) -> CD E6 4E
-	call Func_8001c_2d ; B5D8E (2d:5d8e) -> CD 1C 40
+	scall PlayMusic ; B5D8B (2d:5d8b) -> CD E6 4E
+	scall Func_8001c ; B5D8E (2d:5d8e) -> CD 1C 40
 	ld hl, $030c ; B5D91 (2d:5d91) -> 21 0C 03
-	call LandmarkSign_2d ; B5D94 (2d:5d94) -> CD 72 4F
+	scall LandmarkSign ; B5D94 (2d:5d94) -> CD 72 4F
 	ret  ; B5D97 (2d:5d97) -> C9
 
 Func_b5d98:
@@ -1208,27 +1208,27 @@ Func_b5d98:
 	ld [hl], a ; B5DA1 (2d:5da1) -> 77
 	ld a, e ; B5DA2 (2d:5da2) -> 7B
 	cp $02 ; B5DA3 (2d:5da3) -> FE 02
-	jp nz, label_b5ddd ; B5DA5 (2d:5da5) -> C2 DD 5D
+	jp nz, .asm_b5ddd ; B5DA5 (2d:5da5) -> C2 DD 5D
 	ld hl, $0327 ; B5DA8 (2d:5da8) -> 21 27 03
-	call LandmarkSign_2d ; B5DAB (2d:5dab) -> CD 72 4F
+	scall LandmarkSign ; B5DAB (2d:5dab) -> CD 72 4F
 	ld hl, sp+$00 ; B5DAE (2d:5dae) -> F8 00
 	ld a, [wMapX] ; B5DB0 (2d:5db0) -> FA D8 C2
 	add a, $05 ; B5DB3 (2d:5db3) -> C6 05
 	ld [hl], a ; B5DB5 (2d:5db5) -> 77
 	ld a, [wPlayerFacing] ; B5DB6 (2d:5db6) -> FA 38 C8
 	or a ; B5DB9 (2d:5db9) -> B7
-	jp nz, label_b5dc8 ; B5DBA (2d:5dba) -> C2 C8 5D
+	jp nz, .asm_b5dc8 ; B5DBA (2d:5dba) -> C2 C8 5D
 	ld hl, sp+$01 ; B5DBD (2d:5dbd) -> F8 01
 	ld a, [wMapY] ; B5DBF (2d:5dbf) -> FA D9 C2
 	add a, $05 ; B5DC2 (2d:5dc2) -> C6 05
 	ld [hl], a ; B5DC4 (2d:5dc4) -> 77
-	jp label_b5dd0 ; B5DC5 (2d:5dc5) -> C3 D0 5D
-label_b5dc8:
+	jp .asm_b5dd0 ; B5DC5 (2d:5dc5) -> C3 D0 5D
+.asm_b5dc8:
 	ld hl, sp+$01 ; B5DC8 (2d:5dc8) -> F8 01
 	ld a, [wMapY] ; B5DCA (2d:5dca) -> FA D9 C2
 	add a, $03 ; B5DCD (2d:5dcd) -> C6 03
 	ld [hl], a ; B5DCF (2d:5dcf) -> 77
-label_b5dd0:
+.asm_b5dd0:
 	ld c, $01 ; B5DD0 (2d:5dd0) -> 0E 01
 	ld hl, sp+$00 ; B5DD2 (2d:5dd2) -> F8 00
 	push de ; B5DD4 (2d:5dd4) -> D5
@@ -1236,47 +1236,141 @@ label_b5dd0:
 	pop de ; B5DD6 (2d:5dd6) -> D1
 	pop hl ; B5DD7 (2d:5dd7) -> E1
 	ld a, $2d ; B5DD8 (2d:5dd8) -> 3E 2D
-	call MovePlayer_2d ; B5DDA (2d:5dda) -> CD 3E 46
-label_b5ddd:
+	scall MovePlayer ; B5DDA (2d:5dda) -> CD 3E 46
+.asm_b5ddd:
 	pop bc ; B5DDD (2d:5ddd) -> C1
 	pop bc ; B5DDE (2d:5dde) -> C1
 	ret  ; B5DDF (2d:5ddf) -> C9
 
 Data_b5de0:
+	warpdef $0d, $0f, $02, $01, MAP_26_00, $07, $05, $07, $06, $2e
+	warpdef $01, $02, $01, $01, MAP_32_09, $01, $06, $01, $05, $2e
+
+Data_b5df6:
 IF DEF(SUN)
-	db $0d, $0f, $02, $01, $1a, $00, $07, $05, $07, $06, $2e, $01
-	db $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $00, $02, $0f, $0e, $4a, $29
-	db $2c, $3d, $07, $11, $14, $06, $0a, $00, $00, $02, $0f, $0e, $4b, $2a, $2d, $26
-	db $0e, $08, $14, $12, $09, $00, $00, $02, $0f, $0e, $7d, $2b, $2e, $11, $06, $08
-	db $11, $13, $08, $00, $00, $02, $0f, $0e, $4f, $2c, $2f, $26, $06, $07, $00, $12
-	db $07, $00, $00, $02, $0f, $0e, $88, $2d, $30, $7a, $04, $04, $00, $06, $06, $00
-	db $ff, $00, $09, $0a, $01, $01, $00, $04, $01, $2d, $c4, $5e, $00, $00
+	wildbot $00, $02, $0f, $0e, $4a, $29, $2c, $3d, $07, $11, $14, $06, $0a, $00
+	wildbot $00, $02, $0f, $0e, $4b, $2a, $2d, $26, $0e, $08, $14, $12, $09, $00
+	wildbot $00, $02, $0f, $0e, $7d, $2b, $2e, $11, $06, $08, $11, $13, $08, $00
+	wildbot $00, $02, $0f, $0e, $4f, $2c, $2f, $26, $06, $07, $00, $12, $07, $00
+	wildbot $00, $02, $0f, $0e, $88, $2d, $30, $7a, $04, $04, $00, $06, $06, $00
 ELIF DEF(STAR)
-	db $0d, $0f, $02, $01, $1a, $00, $07, $05, $07, $06, $2e, $01
-	db $02, $01, $01, $20, $09, $01, $06, $01, $05, $2e, $00, $02, $0f, $0e, $4a, $29
-	db $2c, $3f, $07, $11, $14, $06, $0a, $00, $00, $02, $0f, $0e, $7d, $2a, $2d, $12
-	db $06, $06, $11, $12, $09, $00, $00, $02, $0f, $0e, $70, $2b, $2e, $53, $01, $10
-	db $00, $10, $08, $00, $00, $02, $0f, $0e, $85, $2c, $2f, $7b, $14, $0d, $1f, $11
-	db $07, $00, $00, $02, $0f, $0e, $4f, $2d, $30, $26, $01, $02, $00, $13, $06, $00
-	db $ff, $00, $09, $0a, $01, $01, $00, $04, $01, $2d, $c4, $5e, $00, $00
+	wildbot $00, $02, $0f, $0e, $4a, $29, $2c, $3f, $07, $11, $14, $06, $0a, $00
+	wildbot $00, $02, $0f, $0e, $7d, $2a, $2d, $12, $06, $06, $11, $12, $09, $00
+	wildbot $00, $02, $0f, $0e, $70, $2b, $2e, $53, $01, $10, $00, $10, $08, $00
+	wildbot $00, $02, $0f, $0e, $85, $2c, $2f, $7b, $14, $0d, $1f, $11, $07, $00
+	wildbot $00, $02, $0f, $0e, $4f, $2d, $30, $26, $01, $02, $00, $13, $06, $00
 ENDC
 
+Data_b5e3c:
+	person_event $ff, $00, $09, $0a, $01, $01, $00, $04, $01, Func_b5ec4, NULL
+
 Func_b5e4a:: ; b5e4a
-	db $1e, $02, $21, $e0, $5d, $cd, $3a, $40, $3e, $03, $cd, $01, $4d, $1e, $05, $21
-	db $f6, $5d, $cd, $24, $4d, $1e, $01, $21, $3c, $5e, $cd, $fb, $40, $3e, $09, $cd
-	db $e6, $4e, $3e, $0f, $ea, $e2, $c7, $fa, $df, $c7, $fe, $1e, $c2, $ba, $5e, $fa
-	db $e0, $c7, $fe, $08, $c2, $ba, $5e, $fa, $db, $c7, $fe, $09, $c2, $ba, $5e, $fa
-	db $dc, $c7, $fe, $0a, $c2, $ba, $5e, $21, $fd, $00, $cd, $2e, $46, $b7, $c2, $ae
-	db $5e, $af, $cd, $53, $46, $cd, $1c, $40, $21, $0b, $03, $cd, $72, $4f, $cd, $03
-	db $5f, $c3, $b7, $5e, $cd, $1c, $40, $21, $0b, $03, $cd, $72, $4f, $c3, $c3, $5e
-	db $cd, $1c, $40, $21, $0b, $03, $cd, $72, $4f, $c9, $7b, $fe, $02, $c2, $02, $5f
-	db $21, $b4, $00, $cd, $72, $4f, $1e, $00, $21, $fe, $00, $cd, $1b, $46, $af, $cd
-	db $53, $46, $0e, $01, $1e, $01, $3e, $09, $cd, $76, $41, $3e, $5a, $cd, $fe, $4e
-	db $cd, $d5, $41, $cd, $8b, $41, $3e, $02, $cd, $77, $46, $2e, $0a, $e5, $0e, $09
-	db $1e, $08, $3e, $1e, $cd, $ff, $4d, $c1, $c9, $3e, $09, $cd, $e6, $4e, $3e, $02
-	db $cd, $77, $46, $0e, $01, $1e, $02, $3e, $09, $cd, $76, $41, $3e, $37, $cd, $fe
-	db $4e, $cd, $d5, $41, $3e, $01, $cd, $53, $46, $21, $01, $00, $cd, $8f, $46, $cd
-	db $8b, $41, $1e, $01, $21, $fd, $00, $cd, $1b, $46, $c9, $0c, $05, $01, $01, $20
+	ld e, $02 ; B5E4A (2d:5e4a) -> 1E 02
+	ld hl, Data_b5de0 ; B5E4C (2d:5e4c) -> 21 E0 5D
+	scall LoadWarps ; B5E4F (2d:5e4f) -> CD 3A 40
+	ld a, $03 ; B5E52 (2d:5e52) -> 3E 03
+	scall Func_80d01 ; B5E54 (2d:5e54) -> CD 01 4D
+	ld e, $05 ; B5E57 (2d:5e57) -> 1E 05
+	ld hl, Data_b5df6 ; B5E59 (2d:5e59) -> 21 F6 5D
+	scall LoadEncounters ; B5E5C (2d:5e5c) -> CD 24 4D
+	ld e, $01 ; B5E5F (2d:5e5f) -> 1E 01
+	ld hl, Data_b5e3c ; B5E61 (2d:5e61) -> 21 3C 5E
+	scall LoadMapObjects ; B5E64 (2d:5e64) -> CD FB 40
+	ld a, $09 ; B5E67 (2d:5e67) -> 3E 09
+	scall PlayMusic ; B5E69 (2d:5e69) -> CD E6 4E
+	ld a, $0f ; B5E6C (2d:5e6c) -> 3E 0F
+	ld [wc7e2], a ; B5E6E (2d:5e6e) -> EA E2 C7
+	ld a, [wBackupMapGroup] ; B5E71 (2d:5e71) -> FA DF C7
+	cp $1e ; B5E74 (2d:5e74) -> FE 1E
+	jp nz, .asm_b5eba ; B5E76 (2d:5e76) -> C2 BA 5E
+	ld a, [wBackupMapNumber] ; B5E79 (2d:5e79) -> FA E0 C7
+	cp $08 ; B5E7C (2d:5e7c) -> FE 08
+	jp nz, .asm_b5eba ; B5E7E (2d:5e7e) -> C2 BA 5E
+	ld a, [wBackupMapX] ; B5E81 (2d:5e81) -> FA DB C7
+	cp $09 ; B5E84 (2d:5e84) -> FE 09
+	jp nz, .asm_b5eba ; B5E86 (2d:5e86) -> C2 BA 5E
+	ld a, [wBackupMapY] ; B5E89 (2d:5e89) -> FA DC C7
+	cp $0a ; B5E8C (2d:5e8c) -> FE 0A
+	jp nz, .asm_b5eba ; B5E8E (2d:5e8e) -> C2 BA 5E
+	ld hl, $00fd ; B5E91 (2d:5e91) -> 21 FD 00
+	scall CheckEventFlag ; B5E94 (2d:5e94) -> CD 2E 46
+	or a ; B5E97 (2d:5e97) -> B7
+	jp nz, .asm_b5eae ; B5E98 (2d:5e98) -> C2 AE 5E
+	xor a ; B5E9B (2d:5e9b) -> AF
+	scall Func_80653 ; B5E9C (2d:5e9c) -> CD 53 46
+	scall Func_8001c ; B5E9F (2d:5e9f) -> CD 1C 40
+	ld hl, $030b ; B5EA2 (2d:5ea2) -> 21 0B 03
+	scall LandmarkSign ; B5EA5 (2d:5ea5) -> CD 72 4F
+	call Func_b5f03 ; B5EA8 (2d:5ea8) -> CD 03 5F
+	jp .asm_b5eb7 ; B5EAB (2d:5eab) -> C3 B7 5E
+.asm_b5eae:
+	scall Func_8001c ; B5EAE (2d:5eae) -> CD 1C 40
+	ld hl, $030b ; B5EB1 (2d:5eb1) -> 21 0B 03
+	scall LandmarkSign ; B5EB4 (2d:5eb4) -> CD 72 4F
+.asm_b5eb7:
+	jp .asm_b5ec3 ; B5EB7 (2d:5eb7) -> C3 C3 5E
+.asm_b5eba:
+	scall Func_8001c ; B5EBA (2d:5eba) -> CD 1C 40
+	ld hl, $030b ; B5EBD (2d:5ebd) -> 21 0B 03
+	scall LandmarkSign ; B5EC0 (2d:5ec0) -> CD 72 4F
+.asm_b5ec3:
+	ret  ; B5EC3 (2d:5ec3) -> C9
+
+Func_b5ec4:
+	ld a, e ; B5EC4 (2d:5ec4) -> 7B
+	cp $02 ; B5EC5 (2d:5ec5) -> FE 02
+	jp nz, .asm_b5f02 ; B5EC7 (2d:5ec7) -> C2 02 5F
+	ld hl, $00b4 ; B5ECA (2d:5eca) -> 21 B4 00
+	scall LandmarkSign ; B5ECD (2d:5ecd) -> CD 72 4F
+	ld e, $00 ; B5ED0 (2d:5ed0) -> 1E 00
+	ld hl, $00fe ; B5ED2 (2d:5ed2) -> 21 FE 00
+	scall EventFlagAction ; B5ED5 (2d:5ed5) -> CD 1B 46
+	xor a ; B5ED8 (2d:5ed8) -> AF
+	scall Func_80653 ; B5ED9 (2d:5ed9) -> CD 53 46
+	ld c, $01 ; B5EDC (2d:5edc) -> 0E 01
+	ld e, $01 ; B5EDE (2d:5ede) -> 1E 01
+	ld a, $09 ; B5EE0 (2d:5ee0) -> 3E 09
+	scall LoadEmote ; B5EE2 (2d:5ee2) -> CD 76 41
+	ld a, $5a ; B5EE5 (2d:5ee5) -> 3E 5A
+	scall PlaySFX ; B5EE7 (2d:5ee7) -> CD FE 4E
+	scall WaitEmote ; B5EEA (2d:5eea) -> CD D5 41
+	scall HideEmote ; B5EED (2d:5eed) -> CD 8B 41
+	ld a, $02 ; B5EF0 (2d:5ef0) -> 3E 02
+	scall PlayerFace ; B5EF2 (2d:5ef2) -> CD 77 46
+	ld l, $0a ; B5EF5 (2d:5ef5) -> 2E 0A
+	push hl ; B5EF7 (2d:5ef7) -> E5
+	ld c, $09 ; B5EF8 (2d:5ef8) -> 0E 09
+	ld e, $08 ; B5EFA (2d:5efa) -> 1E 08
+	ld a, $1e ; B5EFC (2d:5efc) -> 3E 1E
+	scall Func_80dff ; B5EFE (2d:5efe) -> CD FF 4D
+	pop bc ; B5F01 (2d:5f01) -> C1
+.asm_b5f02:
+	ret  ; B5F02 (2d:5f02) -> C9
+
+Func_b5f03:
+	ld a, $09 ; B5F03 (2d:5f03) -> 3E 09
+	scall PlayMusic ; B5F05 (2d:5f05) -> CD E6 4E
+	ld a, $02 ; B5F08 (2d:5f08) -> 3E 02
+	scall PlayerFace ; B5F0A (2d:5f0a) -> CD 77 46
+	ld c, $01 ; B5F0D (2d:5f0d) -> 0E 01
+	ld e, $02 ; B5F0F (2d:5f0f) -> 1E 02
+	ld a, $09 ; B5F11 (2d:5f11) -> 3E 09
+	scall LoadEmote ; B5F13 (2d:5f13) -> CD 76 41
+	ld a, $37 ; B5F16 (2d:5f16) -> 3E 37
+	scall PlaySFX ; B5F18 (2d:5f18) -> CD FE 4E
+	scall WaitEmote ; B5F1B (2d:5f1b) -> CD D5 41
+	ld a, $01 ; B5F1E (2d:5f1e) -> 3E 01
+	scall Func_80653 ; B5F20 (2d:5f20) -> CD 53 46
+	ld hl, $0001 ; B5F23 (2d:5f23) -> 21 01 00
+	scall ScriptSleep ; B5F26 (2d:5f26) -> CD 8F 46
+	scall HideEmote ; B5F29 (2d:5f29) -> CD 8B 41
+	ld e, $01 ; B5F2C (2d:5f2c) -> 1E 01
+	ld hl, $00fd ; B5F2E (2d:5f2e) -> 21 FD 00
+	scall EventFlagAction ; B5F31 (2d:5f31) -> CD 1B 46
+	ret  ; B5F34 (2d:5f34) -> C9
+
+Data_b5f35:
+	db $0c, $05, $01, $01, $20
 	db $09, $01, $06, $01, $05, $2e, $1a, $04, $0c, $0a, $01, $01, $02, $04, $00, $2d
 	db $00, $00, $00, $00, $19, $0c, $0c, $05, $01, $01, $02, $04, $00, $2d, $00, $00
 	db $00, $00, $ff, $00, $0c, $0e, $01, $01, $00, $04, $01, $2d, $17, $61, $00, $00

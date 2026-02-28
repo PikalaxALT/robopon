@@ -164,3 +164,18 @@ MACRO if_false
 	or a
 	jp z, \1
 	ENDM
+
+MACRO if_last_warp_not
+	ld a, [wBackupMapGroup]
+	cp GROUP_\1
+	jp nz, \4
+	ld a, [wBackupMapNumber]
+	cp MAP_\1
+	jp nz, \4
+	ld a, [wBackupMapX]
+	cp \2
+	jp nz, \4
+	ld a, [wBackupMapY]
+	cp \3
+	jp nz, \4
+	ENDM
