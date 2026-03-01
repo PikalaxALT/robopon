@@ -71,6 +71,7 @@ OverworldLoop:: ; 81cf (2:41cf)
 	ld a, $5
 	ld [wSpawnPushY], a
 	ld [wSpawnY], a
+	; MAP_00_02
 	xor a
 	ld [wMapGroup], a
 	ld a, $2
@@ -135,6 +136,7 @@ OverworldLoop:: ; 81cf (2:41cf)
 	ld a, $5
 	ld [wSpawnPushY], a
 	ld [wSpawnY], a
+	; MAP_00_02
 	xor a
 	ld [wMapGroup], a
 	ld a, $2

@@ -145,6 +145,7 @@ ROMX $2b
     "Bank 2b, 2"
 ROMX $2c
     "Bank 2c"
+    "Emotes GFX"
 ROMX $2d
     "Bank 2d"
     "Bank 2d, 2"

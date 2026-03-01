@@ -131,30 +131,30 @@ Func_e20de:
 	ld c, a
 	ld l, $0
 	pop de
-Func_e20e8: ; e20e8 (38:60e8)
+.asm_e20e8: ; e20e8 (38:60e8)
 	ld a, l
 	cp $8
-	jp nc, Func_e2110
+	jp nc, .asm_e2110
 	ld b, l
 	ld a, [wc874]
 	call RightShiftA
 	and $1
-	jp nz, Func_e210c
+	jp nz, .asm_e210c
 	ld a, c
 	ld b, l
 	call RightShiftA
 	and $1
-	jp z, Func_e210c
+	jp z, .asm_e210c
 	ld b, l
 	ld a, $1
 	call LeftShiftA
 	or e
 	ld e, a
-Func_e210c: ; e210c (38:610c)
+.asm_e210c: ; e210c (38:610c)
 	inc l
-	jp Func_e20e8
+	jp .asm_e20e8
 
-Func_e2110: ; e2110 (38:6110)
+.asm_e2110: ; e2110 (38:6110)
 	ld a, c
 	ld [wc874], a
 	ld a, e
@@ -300,23 +300,23 @@ WorldMap:: ; e220d
 	pop bc
 	pop de
 	call CompareHLtoDE
-	jp c, Func_e2287
+	jp c, .asm_e2287
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp nc, Func_e2287
+	jp nc, .asm_e2287
 	ld a, $1
-	jp Func_e2288
+	jp .asm_e2288
 
-Func_e2287: ; e2287 (38:6287)
+.asm_e2287: ; e2287 (38:6287)
 	xor a
-Func_e2288: ; e2288 (38:6288)
+.asm_e2288: ; e2288 (38:6288)
 	ld hl, sp+$6f
 	ld [hl], a
-Func_e228b: ; e228b (38:628b)
+.asm_e228b: ; e228b (38:628b)
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_e228b
+	jp nz, .asm_e228b
 	ld bc, $80
 	ld de, Data_e2116
 	ld hl, wCGB_BGPalsBuffer
@@ -326,10 +326,10 @@ Func_e228b: ; e228b (38:628b)
 	or $40
 	ld [wNextVBlankFlags], a
 	ei
-Func_e22a9: ; e22a9 (38:62a9)
+.asm_e22a9: ; e22a9 (38:62a9)
 	ld a, [wNextVBlankFlags]
 	and $40
-	jp nz, Func_e22a9
+	jp nz, .asm_e22a9
 	ld a, $14
 	call OverworldPlaySong
 	ld hl, sp+$79
@@ -338,10 +338,10 @@ Func_e22a9: ; e22a9 (38:62a9)
 	ld hl, sp+$79
 	ld a, [hl]
 	cp $12
-	jp nz, Func_e22c8
+	jp nz, .asm_e22c8
 	ld hl, sp+$6f
 	ld [hl], $1
-Func_e22c8: ; e22c8 (38:62c8)
+.asm_e22c8: ; e22c8 (38:62c8)
 	xor a
 	call Func_e1f07
 	ld a, BANK(GFX_e0000)
@@ -357,9 +357,9 @@ Func_e22c8: ; e22c8 (38:62c8)
 	write_hl_to_sp_plus $7c
 	ld de, Data_e06f0
 	xor a
-Func_e22f2: ; e22f2 (38:62f2)
+.asm_e22f2: ; e22f2 (38:62f2)
 	cp $12
-	jp nc, Func_e2350
+	jp nc, .asm_e2350
 	push af
 	push de
 	ld a, BANK(Data_e06f0)
@@ -369,10 +369,10 @@ Func_e22f2: ; e22f2 (38:62f2)
 	ld bc, $14
 	call FarCopyVideoData
 	ld c, $0
-Func_e230a: ; e230a (38:630a)
+.asm_e230a: ; e230a (38:630a)
 	ld a, c
 	cp $14
-	jp nc, Func_e2342
+	jp nc, .asm_e2342
 	ld e, c
 	ld d, $0
 	ld hl, $84
@@ -399,42 +399,42 @@ Func_e230a: ; e230a (38:630a)
 	inc hl
 	write_hl_to_sp_plus $80
 	inc c
-	jp Func_e230a
+	jp .asm_e230a
 
-Func_e2342: ; e2342 (38:6342)
+.asm_e2342: ; e2342 (38:6342)
 	pop de
 	ld hl, $14
 	add hl, de
 	reg16swap de, hl
 	pop af
 	inc a
-	jp Func_e22f2
+	jp .asm_e22f2
 
-Func_e2350: ; e2350 (38:6350)
+.asm_e2350: ; e2350 (38:6350)
 	ld hl, $94
 	add hl, sp
 	ld [hl], $1
-Func_e2356: ; e2356 (38:6356)
+.asm_e2356: ; e2356 (38:6356)
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
 	cp $14
-	jp nc, Func_e243e
+	jp nc, .asm_e243e
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
 	call CheckUnlockedArea
 	or a
-	jp z, Func_e2430
+	jp z, .asm_e2430
 	ld hl, $95
 	add hl, sp
 	ld [hl], $0
-Func_e2372: ; e2372 (38:6372)
+.asm_e2372: ; e2372 (38:6372)
 	ld hl, $95
 	add hl, sp
 	ld a, [hl]
 	cp $4
-	jp nc, Func_e2430
+	jp nc, .asm_e2430
 	ld hl, $95
 	add hl, sp
 	ld c, [hl]
@@ -452,86 +452,86 @@ Func_e2372: ; e2372 (38:6372)
 	ld hl, sp+$78
 	ld [hl], a
 	cp $ff
-	jp z, Func_e2422
+	jp z, .asm_e2422
 	ld hl, sp+$78
 	ld a, [hl]
 	ld hl, $94
 	add hl, sp
 	cp [hl]
-	jp nc, Func_e23a8
-	jp Func_e2422
+	jp nc, .asm_e23a8
+	jp .asm_e2422
 
-Func_e23a8: ; e23a8 (38:63a8)
+.asm_e23a8: ; e23a8 (38:63a8)
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
 	cp $10
-	jp z, Func_e23bc
+	jp z, .asm_e23bc
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
 	cp $11
-	jp nz, Func_e23d7
-Func_e23bc: ; e23bc (38:63bc)
+	jp nz, .asm_e23d7
+.asm_e23bc: ; e23bc (38:63bc)
 	ld hl, sp+$78
 	ld a, [hl]
 	cp $10
-	jp z, Func_e23cc
+	jp z, .asm_e23cc
 	ld hl, sp+$78
 	ld a, [hl]
 	cp $11
-	jp nz, Func_e23d7
-Func_e23cc: ; e23cc (38:63cc)
+	jp nz, .asm_e23d7
+.asm_e23cc: ; e23cc (38:63cc)
 	ld hl, sp+$79
 	ld a, [hl]
 	cp $11
-	jp z, Func_e23d7
-	jp Func_e2422
+	jp z, .asm_e23d7
+	jp .asm_e2422
 
-Func_e23d7: ; e23d7 (38:63d7)
+.asm_e23d7: ; e23d7 (38:63d7)
 	ld hl, sp+$6f
 	ld a, [hl]
 	or a
-	jp nz, Func_e240d
+	jp nz, .asm_e240d
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
 	cp $2
-	jp z, Func_e23f2
+	jp z, .asm_e23f2
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
 	cp $12
-	jp nz, Func_e240d
-Func_e23f2: ; e23f2 (38:63f2)
+	jp nz, .asm_e240d
+.asm_e23f2: ; e23f2 (38:63f2)
 	ld hl, sp+$78
 	ld a, [hl]
 	cp $2
-	jp z, Func_e2402
+	jp z, .asm_e2402
 	ld hl, sp+$78
 	ld a, [hl]
 	cp $12
-	jp nz, Func_e240d
-Func_e2402: ; e2402 (38:6402)
+	jp nz, .asm_e240d
+.asm_e2402: ; e2402 (38:6402)
 	ld hl, sp+$79
 	ld a, [hl]
 	cp $12
-	jp z, Func_e240d
-	jp Func_e2422
+	jp z, .asm_e240d
+	jp .asm_e2422
 
-Func_e240d: ; e240d (38:640d)
+.asm_e240d: ; e240d (38:640d)
 	ld hl, sp+$78
 	ld a, [hl]
 	call CheckUnlockedArea
 	or a
-	jp z, Func_e2422
+	jp z, .asm_e2422
 	ld hl, sp+$78
 	ld e, [hl]
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
 	call Func_e2851
-Func_e2422: ; e2422 (38:6422)
+.asm_e2422: ; e2422 (38:6422)
 	ld hl, $95
 	add hl, sp
 	ld a, [hl]
@@ -539,9 +539,9 @@ Func_e2422: ; e2422 (38:6422)
 	ld hl, $95
 	add hl, sp
 	ld [hl], a
-	jp Func_e2372
+	jp .asm_e2372
 
-Func_e2430: ; e2430 (38:6430)
+.asm_e2430: ; e2430 (38:6430)
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
@@ -549,9 +549,9 @@ Func_e2430: ; e2430 (38:6430)
 	ld hl, $94
 	add hl, sp
 	ld [hl], a
-	jp Func_e2356
+	jp .asm_e2356
 
-Func_e243e: ; e243e (38:643e)
+.asm_e243e: ; e243e (38:643e)
 	ld hl, sp+$79
 	ld a, [hl]
 	call Func_e262f
@@ -590,7 +590,7 @@ Func_e243e: ; e243e (38:643e)
 	xor a
 	ld [wc874], a
 	pop de
-Func_e24a3: ; e24a3 (38:64a3)
+.asm_e24a3: ; e24a3 (38:64a3)
 	push de
 	call NextOverworldFrame
 	call CheckButton
@@ -599,12 +599,12 @@ Func_e24a3: ; e24a3 (38:64a3)
 	ld hl, $97
 	add hl, sp
 	ld [hl], $0
-Func_e24b3: ; e24b3 (38:64b3)
+.asm_e24b3: ; e24b3 (38:64b3)
 	ld hl, $97
 	add hl, sp
 	ld a, [hl]
 	cp $4
-	jp nc, Func_e258f
+	jp nc, .asm_e258f
 	ld hl, sp+$7a
 	ld a, [hl]
 	ld hl, $97
@@ -614,7 +614,7 @@ Func_e24b3: ; e24b3 (38:64b3)
 	ld hl, sp+$76
 	add hl, de
 	and [hl]
-	jp z, Func_e2581
+	jp z, .asm_e2581
 	ld hl, $97
 	add hl, sp
 	ld c, [hl]
@@ -629,11 +629,11 @@ Func_e24b3: ; e24b3 (38:64b3)
 	add hl, bc
 	ld a, [hl]
 	cp $ff
-	jp z, Func_e2581
+	jp z, .asm_e2581
 	ld hl, sp+$7b
 	ld a, [hl]
 	cp $10
-	jp nz, Func_e250b
+	jp nz, .asm_e250b
 	ld hl, $97
 	add hl, sp
 	ld c, [hl]
@@ -648,18 +648,18 @@ Func_e24b3: ; e24b3 (38:64b3)
 	add hl, bc
 	ld a, [hl]
 	cp $11
-	jp nz, Func_e250b
-	jp Func_e2581
+	jp nz, .asm_e250b
+	jp .asm_e2581
 
-Func_e250b: ; e250b (38:650b)
+.asm_e250b: ; e250b (38:650b)
 	ld hl, sp+$71
 	ld a, [hl]
 	or a
-	jp nz, Func_e2536
+	jp nz, .asm_e2536
 	ld hl, sp+$7b
 	ld a, [hl]
 	cp $2
-	jp nz, Func_e2536
+	jp nz, .asm_e2536
 	ld hl, $97
 	add hl, sp
 	ld c, [hl]
@@ -674,10 +674,10 @@ Func_e250b: ; e250b (38:650b)
 	add hl, bc
 	ld a, [hl]
 	cp $12
-	jp nz, Func_e2536
-	jp Func_e2581
+	jp nz, .asm_e2536
+	jp .asm_e2581
 
-Func_e2536: ; e2536 (38:6536)
+.asm_e2536: ; e2536 (38:6536)
 	ld hl, $97
 	add hl, sp
 	ld c, [hl]
@@ -693,7 +693,7 @@ Func_e2536: ; e2536 (38:6536)
 	ld a, [hl]
 	call CheckUnlockedArea
 	or a
-	jp z, Func_e2581
+	jp z, .asm_e2581
 	ld hl, $97
 	add hl, sp
 	ld c, [hl]
@@ -720,9 +720,9 @@ Func_e2536: ; e2536 (38:6536)
 	call PushBGMapRegion
 	pop bc
 	call NextOverworldFrame
-	jp Func_e258f
+	jp .asm_e258f
 
-Func_e2581: ; e2581 (38:6581)
+.asm_e2581: ; e2581 (38:6581)
 	ld hl, $97
 	add hl, sp
 	ld a, [hl]
@@ -730,9 +730,9 @@ Func_e2581: ; e2581 (38:6581)
 	ld hl, $97
 	add hl, sp
 	ld [hl], a
-	jp Func_e24b3
+	jp .asm_e24b3
 
-Func_e258f: ; e258f (38:658f)
+.asm_e258f: ; e258f (38:658f)
 	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
@@ -792,7 +792,7 @@ Func_e258f: ; e258f (38:658f)
 	ld hl, sp+$78
 	ld a, [hl]
 	and A_BUTTON
-	jp z, Func_e2626
+	jp z, .asm_e2626
 	call NextOverworldFrame
 	call NextOverworldFrame
 	call NextOverworldFrame
@@ -802,12 +802,12 @@ Func_e258f: ; e258f (38:658f)
 	ld hl, sp+$79
 	ld a, [hl]
 	dec a
-	jp Func_e2629
+	jp .asm_e2629
 
-Func_e2626: ; e2626 (38:6626)
-	jp Func_e24a3
+.asm_e2626: ; e2626 (38:6626)
+	jp .asm_e24a3
 
-Func_e2629: ; e2629 (38:6629)
+.asm_e2629: ; e2629 (38:6629)
 	ld hl, $96
 	add hl, sp
 	ld sp, hl
