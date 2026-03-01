@@ -1,7 +1,7 @@
 ; Player's bedroom
 
 Data_81cb4:
-	warpdef $7, $2, $1, $1, MAP_00_01, $7, $2, $7, $3, $2e
+	warpdef $7, $2, $1, $1, MAP_00_01, $7, $2, $7, $3, SFX_2E
 
 Data_81cbf: ; 81cbf
 	db $01, $01, $02, $11, $4a

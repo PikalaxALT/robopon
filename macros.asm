@@ -17,6 +17,11 @@ MACRO tree_text_pointer
 	dw (BANK(\2) - BANK(\1)) << 14 | (\2 & $3fff)
 	ENDM
 
+MACRO dummy_text_tree_pointer
+DummyTextTreeBitstream_\1_Pointer::
+	dw TreeBitstreamText_38fa0 & $3fff
+	ENDM
+
 MACRO dtext_tree_pointer
 	dw (\1_Pointer - TextTreeBitstreams) / 2
 	ENDM

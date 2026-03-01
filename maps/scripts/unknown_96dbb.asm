@@ -1,11 +1,11 @@
 
 Data_96d59:
-	warpdef $0b, $0f, $05, $01, MAP_30_00, $0c, $0b, $0b, $0b, $2e
-    warpdef $09, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, $2e
-    warpdef $0b, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, $2e
-    warpdef $0d, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, $2e
-    warpdef $0f, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, $2e
-    warpdef $11, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, $2e
+	warpdef $0b, $0f, $05, $01, MAP_30_00, $0c, $0b, $0b, $0b, SFX_2E
+    warpdef $09, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, SFX_2E
+    warpdef $0b, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, SFX_2E
+    warpdef $0d, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, SFX_2E
+    warpdef $0f, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, SFX_2E
+    warpdef $11, $04, $01, $01, MAP_12_01, $09, $2c, $09, $2b, SFX_2E
 
 Data_96d9b:
 	dtext_tree_pointer TreeBitstreamText_46dd4
@@ -29,8 +29,8 @@ Func_96dbb:: ; 96dbb
 	ret
 
 Data_96dd9:
-	warpdef $08, $2c, $03, $01, MAP_12_00, $0d, $04, $0d, $05, $2e
-    warpdef $09, $03, $01, $01, MAP_12_02, $1c, $0a, $1b, $0a, $2e
+	warpdef $08, $2c, $03, $01, MAP_12_00, $0d, $04, $0d, $05, SFX_2E
+    warpdef $09, $03, $01, $01, MAP_12_02, $1c, $0a, $1b, $0a, SFX_2E
 
 Data_96def:
     dtext_tree_pointer TreeBitstreamText_47b32

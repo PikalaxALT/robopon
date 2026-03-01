@@ -1,7 +1,7 @@
 
 Data_8dde0:
-	warpdef $0c, $04, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
-	warpdef $12, $11, $01, $01, MAP_08_00, $13, $0d, $12, $0d, $2e
+	warpdef $0c, $04, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
+	warpdef $12, $11, $01, $01, MAP_08_00, $13, $0d, $12, $0d, SFX_2E
 
 Data_8ddf6:
 	dtext_tree_pointer TreeBitstreamText_465ec

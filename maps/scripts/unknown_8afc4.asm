@@ -1,7 +1,7 @@
 
 Data_8aeab:
-	warpdef $0d, $04, $01, $01, MAP_05_33, $0d, $04, $0c, $04, $2e
-	warpdef $12, $0a, $01, $01, MAP_05_35, $12, $0a, $12, $0b, $2e
+	warpdef $0d, $04, $01, $01, MAP_05_33, $0d, $04, $0c, $04, SFX_2E
+	warpdef $12, $0a, $01, $01, MAP_05_35, $12, $0a, $12, $0b, SFX_2E
 
 Data_8aec1:
 IF DEF(SUN)
@@ -29,8 +29,8 @@ Func_8af07:: ; 8af07
 	ret
 
 Data_8af2b:
-	warpdef $05, $05, $01, $01, MAP_05_36, $05, $05, $04, $05, $2e
-	warpdef $12, $0a, $01, $01, MAP_05_34, $12, $0a, $11, $0a, $2e
+	warpdef $05, $05, $01, $01, MAP_05_36, $05, $05, $04, $05, SFX_2E
+	warpdef $12, $0a, $01, $01, MAP_05_34, $12, $0a, $11, $0a, SFX_2E
 
 Data_8af41:
 	db $26, $09, $0d, $01, $4a

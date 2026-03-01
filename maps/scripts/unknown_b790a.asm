@@ -1,14 +1,14 @@
 
 Data_b780b:
-	warpdef $07, $0a, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
-	warpdef $07, $05, $01, $01, MAP_31_02, $09, $0e, $09, $0d, $34
+	warpdef $07, $0a, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
+	warpdef $07, $05, $01, $01, MAP_31_02, $09, $0e, $09, $0d, SFX_34
 
 Data_b7821:
-	warpdef $07, $0a, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
-	warpdef $07, $05, $01, $01, MAP_31_01, $09, $0e, $09, $0d, $34
+	warpdef $07, $0a, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
+	warpdef $07, $05, $01, $01, MAP_31_01, $09, $0e, $09, $0d, SFX_34
 
 Data_b7837:
-	warpdef $07, $0a, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
+	warpdef $07, $0a, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
 
 Data_b7842:
 	wildbot $01, $01, $0a, $0e, $2d, $28, $2d, $04, $06, $06, $06, $06, $04, $00
@@ -25,7 +25,7 @@ Data_b7842:
 	wildbot $01, $01, $0a, $0e, $37, $28, $2d, $6e, $24, $12, $00, $06, $02, $00
 
 Data_b78ea:
-	dw $2c2
+	dtext_tree_pointer TreeBitstreamText_466ff
 	dw -1
 
 Data_b78ee:

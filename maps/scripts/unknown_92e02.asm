@@ -1,6 +1,6 @@
 
 Data_92dbb:
-	warpdef $01, $06, $02, $01, MAP_09_00, $08, $04, $08, $05, $34
+	warpdef $01, $06, $02, $01, MAP_09_00, $08, $04, $08, $05, SFX_34
 
 Data_92dc6:
 	dtext_tree_pointer TreeBitstreamText_3c162

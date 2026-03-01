@@ -1,6 +1,6 @@
 Data_823ba: ; 823ba
-	warpdef  9,  2, 1, 1, MAP_00_04,  8,  2,  8,  3, $2e
-	warpdef  1,  8, 2, 1, MAP_00_00,  9, 14,  9, 15, $34
+	warpdef  9,  2, 1, 1, MAP_00_04,  8,  2,  8,  3, SFX_2E
+	warpdef  1,  8, 2, 1, MAP_00_00,  9, 14,  9, 15, SFX_34
 
 Pointers_823d0: ; 823d0
 	dtext_tree_pointer TreeBitstreamText_46ea4

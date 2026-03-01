@@ -1,8 +1,8 @@
 
 Data_a365b:
-	warpdef $0b, $11, $01, $01, MAP_19_32, $0b, $0c, $0a, $0c, $2e
-	warpdef $01, $04, $01, $01, MAP_19_37, $01, $0d, $02, $0d, $2e
-	warpdef $03, $17, $03, $01, MAP_09_00, $0b, $21, $0b, $22, $2e
+	warpdef $0b, $11, $01, $01, MAP_19_32, $0b, $0c, $0a, $0c, SFX_2E
+	warpdef $01, $04, $01, $01, MAP_19_37, $01, $0d, $02, $0d, SFX_2E
+	warpdef $03, $17, $03, $01, MAP_09_00, $0b, $21, $0b, $22, SFX_2E
 
 Data_a367c:
 IF DEF(SUN)

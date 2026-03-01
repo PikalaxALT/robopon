@@ -1,56 +1,56 @@
 
 Data_a6720:
-	warpdef $13, $19, $01, $01, MAP_22_00, $09, $0f, $09, $0e, $2e
-	warpdef $10, $08, $01, $01, MAP_32_07, $05, $09, $05, $08, $34
-	warpdef $14, $08, $01, $01, MAP_32_08, $05, $09, $05, $08, $34
-	warpdef $16, $0f, $01, $01, MAP_32_05, $06, $0b, $06, $0a, $34
-	warpdef $0b, $05, $01, $01, MAP_32_02, $01, $0a, $01, $09, $34
-	warpdef $19, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
-	warpdef $1d, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
-	warpdef $21, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
-	warpdef $08, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
-	warpdef $0c, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
-	warpdef $10, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, $34
-	warpdef $20, $0e, $01, $01, MAP_32_02, $01, $0a, $01, $09, $34
+	warpdef $13, $19, $01, $01, MAP_22_00, $09, $0f, $09, $0e, SFX_2E
+	warpdef $10, $08, $01, $01, MAP_32_07, $05, $09, $05, $08, SFX_34
+	warpdef $14, $08, $01, $01, MAP_32_08, $05, $09, $05, $08, SFX_34
+	warpdef $16, $0f, $01, $01, MAP_32_05, $06, $0b, $06, $0a, SFX_34
+	warpdef $0b, $05, $01, $01, MAP_32_02, $01, $0a, $01, $09, SFX_34
+	warpdef $19, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, SFX_34
+	warpdef $1d, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, SFX_34
+	warpdef $21, $06, $01, $01, MAP_32_00, $01, $05, $01, $04, SFX_34
+	warpdef $08, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, SFX_34
+	warpdef $0c, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, SFX_34
+	warpdef $10, $10, $01, $01, MAP_32_00, $01, $05, $01, $04, SFX_34
+	warpdef $20, $0e, $01, $01, MAP_32_02, $01, $0a, $01, $09, SFX_34
 
 Data_a67a4:
-	dw $1f1
+	dtext_tree_pointer TreeBitstreamText_41c86
 	dw -1
 
 Data_a67a8:
-	dw $1f0
+	dtext_tree_pointer TreeBitstreamText_41c4a
 	dw -1
 
 Data_a67ac:
-	dw $1f5
+	dtext_tree_pointer TreeBitstreamText_41dce
 	dw -1
 
 Data_a67b0:
-	dw $1f3
+	dtext_tree_pointer TreeBitstreamText_41d47
 	dw -1
 
 Data_a67b4:
-	dw $1f6
+	dtext_tree_pointer TreeBitstreamText_41e16
 	dw -1
 
 Data_a67b8:
-	dw $1f4
+	dtext_tree_pointer TreeBitstreamText_41d81
 	dw -1
 
 Data_a67bc:
-	dw $1f7
+	dtext_tree_pointer TreeBitstreamText_41e56
 	dw -1
 
 Data_a67c0:
-	dw $1ff
+	dtext_tree_pointer TreeBitstreamText_4203a
 	dw -1
 
 Data_a67c4:
-	dw $472
+	dtext_tree_pointer TreeBitstreamText_4249f
 	dw -1
 
 Data_a67c8:
-	dw $2c0
+	dtext_tree_pointer TreeBitstreamText_466e2
 	dw -1
 
 Data_a67cc:

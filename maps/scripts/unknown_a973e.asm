@@ -1,6 +1,6 @@
 
 Data_a96df:
-	warpdef $04, $1a, $03, $01, MAP_24_00, $07, $0f, $07, $10, $2e
+	warpdef $04, $1a, $03, $01, MAP_24_00, $07, $0f, $07, $10, SFX_2E
 
 Data_a96ea:
 IF DEF(SUN)

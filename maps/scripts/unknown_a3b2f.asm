@@ -1,7 +1,7 @@
 
 Data_a3ad3:
-	warpdef $0b, $0d, $01, $01, MAP_19_37, $0b, $0d, $0a, $0d, $2e
-	warpdef $01, $0d, $01, $01, MAP_19_39, $03, $21, $03, $20, $2e
+	warpdef $0b, $0d, $01, $01, MAP_19_37, $0b, $0d, $0a, $0d, SFX_2E
+	warpdef $01, $0d, $01, $01, MAP_19_39, $03, $21, $03, $20, SFX_2E
 
 Data_a3ae9:
 IF DEF(SUN)

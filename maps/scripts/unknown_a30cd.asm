@@ -1,6 +1,6 @@
 
 Data_a3060:
-	warpdef $0b, $0c, $01, $01, MAP_19_31, $0b, $0c, $0a, $0c, $2e
+	warpdef $0b, $0c, $01, $01, MAP_19_31, $0b, $0c, $0a, $0c, SFX_2E
 
 Data_a306b:
 IF DEF(SUN)

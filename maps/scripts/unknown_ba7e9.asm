@@ -3,63 +3,63 @@ Data_ba65d:
 	wildbot $00, $02, $0a, $0a, $0f, $0f, $19, $7f, $04, $17, $00, $03, $0a, $00
 
 Data_ba66b:
-	dw $065
+	dtext_tree_pointer TreeBitstreamText_3aa4c
 	dw -1
 
 Data_ba66f:
-	dw $066
+	dtext_tree_pointer TreeBitstreamText_3aaa0
 	dw -1
 
 Data_ba673:
-	dw $067
+	dtext_tree_pointer TreeBitstreamText_3aabf
 	dw -1
 
 Data_ba677:
-	dw $068
+	dtext_tree_pointer TreeBitstreamText_3aadf
 	dw -1
 
 Data_ba67b:
-	dw $06a
+	dtext_tree_pointer TreeBitstreamText_3aafc
 	dw -1
 
 Data_ba67f:
-	dw $06c
+	dtext_tree_pointer TreeBitstreamText_3ab2b
 	dw -1
 
 Data_ba683:
-	dw $06d
+	dtext_tree_pointer TreeBitstreamText_3ab80
 	dw -1
 
 Data_ba687:
-	dw $363
+	dtext_tree_pointer TreeBitstreamText_3a858
 	dw -1
 
 Data_ba68b:
-	dw $1b4
+	dtext_tree_pointer TreeBitstreamText_3abf2
 	dw -1
 
 Data_ba68f:
-	dw $346
+	dtext_tree_pointer TreeBitstreamText_3ac82
 	dw -1
 
 Data_ba693:
-	dw $37a
+	dtext_tree_pointer TreeBitstreamText_3ad19
 	dw -1
 
 Data_ba697:
-	dw $378
+	dtext_tree_pointer TreeBitstreamText_3accc
 	dw -1
 
 Data_ba69b:
-	dw $329
+	dtext_tree_pointer TreeBitstreamText_46e95
 	dw -1
 
 Data_ba69f:
-	dw $38e
+	dtext_tree_pointer TreeBitstreamText_46ecc
 	dw -1
 
 Data_ba6a3:
-	dw $283
+	dtext_tree_pointer TreeBitstreamText_47037
 	dw -1
 
 Data_ba6a7:
@@ -1010,40 +1010,40 @@ Func_baefe:
 	ret
 
 Data_baf52:
-	warpdef $01, $08, $02, $01, MAP_03_00, $1c, $10, $1c, $11, $34
+	warpdef $01, $08, $02, $01, MAP_03_00, $1c, $10, $1c, $11, SFX_34
 
 Data_baf5d:
-	warpdef $01, $08, $02, $01, MAP_05_00, $08, $0b, $08, $0c, $34
+	warpdef $01, $08, $02, $01, MAP_05_00, $08, $0b, $08, $0c, SFX_34
 
 Data_baf68:
-	warpdef $01, $08, $02, $01, MAP_05_00, $19, $0b, $19, $0c, $34
+	warpdef $01, $08, $02, $01, MAP_05_00, $19, $0b, $19, $0c, SFX_34
 
 Data_baf73:
-	warpdef $01, $08, $02, $01, MAP_00_00, $1b, $14, $1b, $15, $34
+	warpdef $01, $08, $02, $01, MAP_00_00, $1b, $14, $1b, $15, SFX_34
 
 Data_baf7e:
-	warpdef $01, $08, $02, $01, MAP_25_01, $07, $08, $07, $09, $34
+	warpdef $01, $08, $02, $01, MAP_25_01, $07, $08, $07, $09, SFX_34
 
 Data_baf89:
-	warpdef $01, $08, $02, $01, MAP_05_00, $0a, $0e, $0a, $0f, $34
+	warpdef $01, $08, $02, $01, MAP_05_00, $0a, $0e, $0a, $0f, SFX_34
 
 Data_baf94:
-	warpdef $01, $08, $02, $01, MAP_05_00, $16, $0e, $16, $0f, $34
+	warpdef $01, $08, $02, $01, MAP_05_00, $16, $0e, $16, $0f, SFX_34
 
 Data_baf9f:
-	warpdef $01, $08, $02, $01, MAP_05_00, $0d, $14, $0d, $15, $34
+	warpdef $01, $08, $02, $01, MAP_05_00, $0d, $14, $0d, $15, SFX_34
 
 Data_bafaa:
-	warpdef $01, $08, $02, $01, MAP_05_00, $13, $14, $13, $15, $34
+	warpdef $01, $08, $02, $01, MAP_05_00, $13, $14, $13, $15, SFX_34
 
 Data_bafb5:
-	warpdef $01, $08, $02, $01, MAP_01_00, $07, $11, $07, $12, $34
+	warpdef $01, $08, $02, $01, MAP_01_00, $07, $11, $07, $12, SFX_34
 
 Data_bafc0:
-	warpdef $01, $08, $02, $01, MAP_20_00, $15, $11, $15, $12, $34
+	warpdef $01, $08, $02, $01, MAP_20_00, $15, $11, $15, $12, SFX_34
 
 Data_bafcb:
-	warpdef $01, $08, $02, $01, MAP_05_00, $10, $15, $10, $16, $34
+	warpdef $01, $08, $02, $01, MAP_05_00, $10, $15, $10, $16, SFX_34
 
 Func_bafd6:
 	ld hl, $0059

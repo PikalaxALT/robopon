@@ -35,15 +35,15 @@ Data_85c7e: ; 85c7e
 	dw -1
 
 Data_85c82: ; 85c82
-	warpdef $0a, $01, $01, $01, MAP_02_04, $0a, $01, $0a, $02, $2e
-	warpdef $0b, $01, $01, $01, MAP_32_09, $01, $06, $01, $05, $34
+	warpdef $0a, $01, $01, $01, MAP_02_04, $0a, $01, $0a, $02, SFX_2E
+	warpdef $0b, $01, $01, $01, MAP_32_09, $01, $06, $01, $05, SFX_34
 
 Data_85c98: ; 85c98
 	person_event $ff, $00, $01, $01, $06, $01, $00, $04, $00, PrintTextFacePlayer_21, Data_85c6e
 	person_event $07, $04, $09, $08, $01, $01, $03, $04, $00, PrintTextFacePlayer_21, Data_85c72
 	person_event $02, $04, $01, $0b, $01, $01, $01, $04, $00, PrintTextFacePlayer_21, Data_85c76
 	person_event $03, $04, $02, $03, $01, $01, $03, $04, $00, PrintTextFacePlayer_21, Data_85c7a
-	person_event $06, $04, $0a, $03, $01, $01, $02, $04, $00, Func_85dcd, $0000
+	person_event $06, $04, $0a, $03, $01, $01, $02, $04, $00, Func_85dcd, NULL
 
 Func_85cde::
 	push bc

@@ -1,7 +1,7 @@
 
 Data_d38af: ; d38af
-	warpdef $07, $14, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
-	warpdef $07, $0e, $01, $01, MAP_31_02, $09, $0e, $09, $0d, $34
+	warpdef $07, $14, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
+	warpdef $07, $0e, $01, $01, MAP_31_02, $09, $0e, $09, $0d, SFX_34
 
 Data_d38c5:
 	dtext_tree_pointer TreeBitstreamText_4670e

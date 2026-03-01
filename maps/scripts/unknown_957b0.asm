@@ -1,7 +1,7 @@
 
 Data_95768:
-	warpdef $01, $08, $02, $01, MAP_00_10, $03, $01, $03, $02, $34
-	warpdef $05, $01, $01, $01, MAP_00_33, $02, $09, $02, $08, $34
+	warpdef $01, $08, $02, $01, MAP_00_10, $03, $01, $03, $02, SFX_34
+	warpdef $05, $01, $01, $01, MAP_00_33, $02, $09, $02, $08, SFX_34
 
 Data_9577e:
 	dtext_tree_pointer TreeBitstreamText_46ef5

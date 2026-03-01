@@ -1,6 +1,6 @@
 
 Data_a3d73:
-	warpdef $04, $0c, $03, $01, MAP_19_20, $0c, $02, $0c, $03, $2e
+	warpdef $04, $0c, $03, $01, MAP_19_20, $0c, $02, $0c, $03, SFX_2E
 
 Data_a3d7e:
 IF DEF(SUN)

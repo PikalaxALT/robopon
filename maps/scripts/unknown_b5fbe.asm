@@ -1,6 +1,6 @@
 
 Data_b5f35:
-	warpdef $0c, $05, $01, $01, MAP_32_09, $01, $06, $01, $05, $2e
+	warpdef $0c, $05, $01, $01, MAP_32_09, $01, $06, $01, $05, SFX_2E
 
 Data_b5f40:
 	person_event $1a, $04, $0c, $0a, $01, $01, $02, $04, $00, NULL, NULL

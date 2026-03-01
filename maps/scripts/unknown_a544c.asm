@@ -1,12 +1,12 @@
 
 Data_a53de:
-	warpdef $02, $0c, $02, $01, MAP_22_00, $06, $04, $06, $05, $2e
+	warpdef $02, $0c, $02, $01, MAP_22_00, $06, $04, $06, $05, SFX_2E
 
 Data_a53e9:
-	warpdef $02, $0c, $02, $01, MAP_24_00, $11, $04, $11, $05, $2e
+	warpdef $02, $0c, $02, $01, MAP_24_00, $11, $04, $11, $05, SFX_2E
 
 Data_a53f4:
-	dw $18e
+	dtext_tree_pointer TreeBitstreamText_3d00d
 	dw -1
 
 Data_a53f8:

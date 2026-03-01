@@ -1,6 +1,6 @@
 
 Data_9dc24:
-	warpdef $02, $0b, $02, $01, MAP_18_00, $1b, $0e, $1b, $0f, $2e
+	warpdef $02, $0b, $02, $01, MAP_18_00, $1b, $0e, $1b, $0f, SFX_2E
 
 Data_9dc2f:
 	db $88, $0f, $02, $12, $2a

@@ -1,6 +1,6 @@
 
 Data_ab69d:
-	warpdef $0e, $1b, $04, $01, MAP_25_20, $0f, $05, $0f, $06, $2e
+	warpdef $0e, $1b, $04, $01, MAP_25_20, $0f, $05, $0f, $06, SFX_2E
 
 Data_ab6a8:
 	db $22, $01, $ff, $ff

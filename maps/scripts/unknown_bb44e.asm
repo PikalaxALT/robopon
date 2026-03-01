@@ -1,36 +1,36 @@
 
 Data_bb2ec:
-	warpdef $06, $0b, $02, $01, MAP_01_00, $0c, $12, $0c, $13, $34
-	warpdef $06, $0b, $02, $01, MAP_03_00, $1a, $0a, $1a, $0b, $34
-	warpdef $06, $0b, $02, $01, MAP_05_00, $1e, $12, $1e, $13, $34
-	warpdef $06, $0b, $02, $01, MAP_06_00, $1c, $05, $1c, $06, $34
-	warpdef $06, $0b, $02, $01, MAP_17_00, $1d, $04, $1d, $05, $34
-	warpdef $06, $0b, $02, $01, MAP_21_00, $0a, $14, $0a, $15, $34
-	warpdef $06, $0b, $02, $01, MAP_23_00, $16, $0f, $16, $10, $34
-	warpdef $06, $0b, $02, $01, MAP_24_00, $14, $1a, $14, $1b, $34
-	warpdef $06, $0b, $02, $01, MAP_25_01, $05, $0e, $05, $0f, $34
-	warpdef $06, $0b, $02, $01, MAP_29_00, $13, $08, $13, $09, $34
-	warpdef $06, $0b, $02, $01, MAP_00_10, $09, $01, $09, $02, $34
-	warpdef $06, $0b, $02, $01, MAP_01_00, $23, $14, $23, $15, $34
+	warpdef $06, $0b, $02, $01, MAP_01_00, $0c, $12, $0c, $13, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_03_00, $1a, $0a, $1a, $0b, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_05_00, $1e, $12, $1e, $13, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_06_00, $1c, $05, $1c, $06, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_17_00, $1d, $04, $1d, $05, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_21_00, $0a, $14, $0a, $15, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_23_00, $16, $0f, $16, $10, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_24_00, $14, $1a, $14, $1b, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_25_01, $05, $0e, $05, $0f, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_29_00, $13, $08, $13, $09, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_00_10, $09, $01, $09, $02, SFX_34
+	warpdef $06, $0b, $02, $01, MAP_01_00, $23, $14, $23, $15, SFX_34
 
 Data_bb370:
-	dw $38e
+	dtext_tree_pointer TreeBitstreamText_46ecc
 	dw -1
 
 Data_bb374:
-	dw $38f
+	dtext_tree_pointer TreeBitstreamText_46ee5
 	dw -1
 
 Data_bb378:
-	dw $328
+	dtext_tree_pointer TreeBitstreamText_46e84
 	dw -1
 
 Data_bb37c:
-	dw $32a
+	dtext_tree_pointer TreeBitstreamText_46ea4
 	dw -1
 
 Data_bb380:
-	dw $34c
+	dtext_tree_pointer TreeBitstreamText_461c0
 	dw -1
 
 Data_bb384:

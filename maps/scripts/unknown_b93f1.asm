@@ -1,133 +1,133 @@
 
 Data_b90b4:
-	warpdef $01, $05, $02, $01, MAP_01_00, $1d, $0c, $1d, $0d, $34
-	warpdef $01, $05, $02, $01, MAP_01_00, $1d, $12, $1d, $13, $34
-	warpdef $01, $05, $02, $01, MAP_03_00, $09, $09, $09, $0a, $34
-	warpdef $01, $05, $02, $01, MAP_03_00, $07, $0d, $07, $0e, $34
-	warpdef $01, $05, $02, $01, MAP_03_00, $05, $11, $05, $12, $34
-	warpdef $01, $05, $02, $01, MAP_03_00, $11, $09, $11, $0a, $34
-	warpdef $01, $05, $02, $01, MAP_03_00, $17, $13, $17, $14, $34
-	warpdef $01, $05, $02, $01, MAP_20_00, $14, $09, $14, $0a, $34
-	warpdef $01, $05, $02, $01, MAP_20_00, $14, $0c, $14, $0d, $34
-	warpdef $01, $05, $02, $01, MAP_23_00, $19, $06, $19, $07, $34
-	warpdef $01, $05, $02, $01, MAP_23_00, $1d, $06, $1d, $07, $34
-	warpdef $01, $05, $02, $01, MAP_23_00, $21, $06, $21, $07, $34
-	warpdef $01, $05, $02, $01, MAP_23_00, $08, $10, $08, $11, $34
-	warpdef $01, $05, $02, $01, MAP_23_00, $0c, $10, $0c, $11, $34
-	warpdef $01, $05, $02, $01, MAP_23_00, $10, $10, $10, $11, $34
-	warpdef $01, $05, $02, $01, MAP_24_00, $17, $11, $17, $12, $34
-	warpdef $01, $05, $02, $01, MAP_24_00, $1b, $11, $1b, $12, $34
-	warpdef $01, $05, $02, $01, MAP_24_00, $1f, $11, $1f, $12, $34
-	warpdef $01, $05, $02, $01, MAP_24_00, $06, $1b, $06, $1c, $34
-	warpdef $01, $05, $02, $01, MAP_24_00, $0a, $1b, $0a, $1c, $34
-	warpdef $01, $05, $02, $01, MAP_24_00, $0e, $1b, $0e, $1c, $34
-	warpdef $01, $05, $02, $01, MAP_11_00, $0f, $0d, $0f, $0e, $34
-	warpdef $01, $05, $02, $01, MAP_11_00, $13, $11, $13, $12, $34
-	warpdef $01, $05, $02, $01, MAP_11_00, $1b, $10, $1b, $11, $34
-	warpdef $01, $05, $02, $01, MAP_11_00, $1c, $0b, $1c, $0c, $34
+	warpdef $01, $05, $02, $01, MAP_01_00, $1d, $0c, $1d, $0d, SFX_34
+	warpdef $01, $05, $02, $01, MAP_01_00, $1d, $12, $1d, $13, SFX_34
+	warpdef $01, $05, $02, $01, MAP_03_00, $09, $09, $09, $0a, SFX_34
+	warpdef $01, $05, $02, $01, MAP_03_00, $07, $0d, $07, $0e, SFX_34
+	warpdef $01, $05, $02, $01, MAP_03_00, $05, $11, $05, $12, SFX_34
+	warpdef $01, $05, $02, $01, MAP_03_00, $11, $09, $11, $0a, SFX_34
+	warpdef $01, $05, $02, $01, MAP_03_00, $17, $13, $17, $14, SFX_34
+	warpdef $01, $05, $02, $01, MAP_20_00, $14, $09, $14, $0a, SFX_34
+	warpdef $01, $05, $02, $01, MAP_20_00, $14, $0c, $14, $0d, SFX_34
+	warpdef $01, $05, $02, $01, MAP_23_00, $19, $06, $19, $07, SFX_34
+	warpdef $01, $05, $02, $01, MAP_23_00, $1d, $06, $1d, $07, SFX_34
+	warpdef $01, $05, $02, $01, MAP_23_00, $21, $06, $21, $07, SFX_34
+	warpdef $01, $05, $02, $01, MAP_23_00, $08, $10, $08, $11, SFX_34
+	warpdef $01, $05, $02, $01, MAP_23_00, $0c, $10, $0c, $11, SFX_34
+	warpdef $01, $05, $02, $01, MAP_23_00, $10, $10, $10, $11, SFX_34
+	warpdef $01, $05, $02, $01, MAP_24_00, $17, $11, $17, $12, SFX_34
+	warpdef $01, $05, $02, $01, MAP_24_00, $1b, $11, $1b, $12, SFX_34
+	warpdef $01, $05, $02, $01, MAP_24_00, $1f, $11, $1f, $12, SFX_34
+	warpdef $01, $05, $02, $01, MAP_24_00, $06, $1b, $06, $1c, SFX_34
+	warpdef $01, $05, $02, $01, MAP_24_00, $0a, $1b, $0a, $1c, SFX_34
+	warpdef $01, $05, $02, $01, MAP_24_00, $0e, $1b, $0e, $1c, SFX_34
+	warpdef $01, $05, $02, $01, MAP_11_00, $0f, $0d, $0f, $0e, SFX_34
+	warpdef $01, $05, $02, $01, MAP_11_00, $13, $11, $13, $12, SFX_34
+	warpdef $01, $05, $02, $01, MAP_11_00, $1b, $10, $1b, $11, SFX_34
+	warpdef $01, $05, $02, $01, MAP_11_00, $1c, $0b, $1c, $0c, SFX_34
 
 Data_b91c7:
-	dw $195
+	dtext_tree_pointer TreeBitstreamText_40094
 	dw -1
 
 Data_b91cb:
-	dw $19c
+	dtext_tree_pointer TreeBitstreamText_4022d
 	dw -1
 
 Data_b91cf:
-	dw $1cb
+	dtext_tree_pointer TreeBitstreamText_41177
 	dw -1
 
 Data_b91d3:
-	dw $1cd
+	dtext_tree_pointer TreeBitstreamText_41271
 	dw -1
 
 Data_b91d7:
-	dw $39a
+	dtext_tree_pointer TreeBitstreamText_3b199
 	dw -1
 
 Data_b91db:
-	dw $1ce
+	dtext_tree_pointer TreeBitstreamText_412d6
 	dw -1
 
 Data_b91df:
-	dw $1cc
+	dtext_tree_pointer TreeBitstreamText_411eb
 	dw -1
 
 Data_b91e3:
-	dw $1eb
+	dtext_tree_pointer TreeBitstreamText_41a1a
 	dw -1
 
 Data_b91e7:
-	dw $1ee
+	dtext_tree_pointer TreeBitstreamText_41b5f
 	dw -1
 
 Data_b91eb:
-	dw $1fd
+	dtext_tree_pointer TreeBitstreamText_41fb4
 	dw -1
 
 Data_b91ef:
-	dw $200
+	dtext_tree_pointer TreeBitstreamText_42075
 	dw -1
 
 Data_b91f3:
-	dw $1fc
+	dtext_tree_pointer TreeBitstreamText_41f81
 	dw -1
 
 Data_b91f7:
-	dw $1fb
+	dtext_tree_pointer TreeBitstreamText_41f57
 	dw -1
 
 Data_b91fb:
-	dw $107
+	dtext_tree_pointer TreeBitstreamText_3d1d1
 	dw -1
 
 Data_b91ff:
-	dw $209
+	dtext_tree_pointer TreeBitstreamText_421dd
 	dw -1
 
 Data_b9203:
-	dw $204
+	dtext_tree_pointer TreeBitstreamText_420d8
 	dw -1
 
 Data_b9207:
-	dw $207
+	dtext_tree_pointer TreeBitstreamText_42148
 	dw -1
 
 Data_b920b:
-	dw $212
+	dtext_tree_pointer TreeBitstreamText_422fd
 	dw -1
 
 Data_b920f:
-	dw $206
+	dtext_tree_pointer TreeBitstreamText_42104
 	dw -1
 
 Data_b9213:
-	dw $3a7
+	dtext_tree_pointer TreeBitstreamText_423a7
 	dw -1
 
 Data_b9217:
-	dw $328
+	dtext_tree_pointer TreeBitstreamText_46e84
 	dw -1
 
 Data_b921b:
-	dw $3a4
+	dtext_tree_pointer TreeBitstreamText_47980
 	dw -1
 
 Data_b921f:
-	dw $3f8
+	dtext_tree_pointer TreeBitstreamText_47a75
 	dw -1
 
 Data_b9223:
-	dw $3a5
+	dtext_tree_pointer TreeBitstreamText_479b4
 	dw -1
 
 Data_b9227:
-	dw $196
+	dtext_tree_pointer TreeBitstreamText_400e4
 	dw -1
 
 Data_b922b:
-	dw $19d
+	dtext_tree_pointer TreeBitstreamText_40261
 	dw -1
 
 Data_b922f:

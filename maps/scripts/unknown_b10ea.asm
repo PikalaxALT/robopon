@@ -1,10 +1,10 @@
 
 Data_b10b4:
-	warpdef $06, $1b, $01, $01, MAP_25_01, $19, $05, $19, $06, $2e
-	warpdef $06, $04, $04, $01, MAP_28_01, $11, $19, $11, $18, $2e
+	warpdef $06, $1b, $01, $01, MAP_25_01, $19, $05, $19, $06, SFX_2E
+	warpdef $06, $04, $04, $01, MAP_28_01, $11, $19, $11, $18, SFX_2E
 
 Data_b10ca:
-	dw $2b2
+	dtext_tree_pointer TreeBitstreamText_46596
 	dw -1
 
 Data_b10ce:

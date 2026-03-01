@@ -1,8 +1,8 @@
 
 Data_9d0b4:
-	warpdef $11, $1c, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
-	warpdef $1b, $0e, $01, $01, MAP_18_01, $03, $0b, $03, $0a, $34
-	warpdef $1e, $1a, $01, $01, MAP_18_10, $05, $15, $05, $14, $2e
+	warpdef $11, $1c, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
+	warpdef $1b, $0e, $01, $01, MAP_18_01, $03, $0b, $03, $0a, SFX_34
+	warpdef $1e, $1a, $01, $01, MAP_18_10, $05, $15, $05, $14, SFX_2E
 
 Data_9d0d5:
 IF DEF(SUN)

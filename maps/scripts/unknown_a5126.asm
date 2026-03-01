@@ -1,27 +1,27 @@
 
 Data_a50b4:
-	warpdef $14, $05, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
-	warpdef $06, $04, $01, $01, MAP_22_01, $03, $0c, $03, $0b, $34
+	warpdef $14, $05, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
+	warpdef $06, $04, $01, $01, MAP_22_01, $03, $0c, $03, $0b, SFX_34
 
 Data_a50ca:
-	dw $2be
+	dtext_tree_pointer TreeBitstreamText_46686
 	dw -1
 
 Data_a50ce:
-	dw $2bf
+	dtext_tree_pointer TreeBitstreamText_466b3
 	dw -1
 
 Data_a50d2:
-	person_event $02, $0c, $08, $06, $01, $01, $02, $04, $00, $0000, $0000
-	person_event $ff, $00, $12, $05, $01, $01, $00, $04, $01, Func_a5264, $0000
-	person_event $ff, $00, $09, $0d, $01, $01, $00, $04, $01, Func_a5264, $0000
+	person_event $02, $0c, $08, $06, $01, $01, $02, $04, $00, NULL, NULL
+	person_event $ff, $00, $12, $05, $01, $01, $00, $04, $01, Func_a5264, NULL
+	person_event $ff, $00, $09, $0d, $01, $01, $00, $04, $01, Func_a5264, NULL
 
 Data_a50fc:
 	person_event $ff, $00, $13, $04, $01, $01, $00, $04, $00, PrintTextFacePlayer_29, Data_a50ca
 	person_event $ff, $00, $13, $06, $01, $01, $00, $04, $00, PrintTextFacePlayer_29, Data_a50ce
 
 Data_a5118:
-	person_event $ff, $00, $09, $0f, $01, $01, $00, $04, $01, Func_a5398, $0000
+	person_event $ff, $00, $09, $0f, $01, $01, $00, $04, $01, Func_a5398, NULL
 
 Func_a5126:: ; a5126
 	ld a, $0a

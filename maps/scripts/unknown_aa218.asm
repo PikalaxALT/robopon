@@ -1,12 +1,12 @@
 
 Data_aa1a2:
-	warpdef $08, $05, $02, $01, MAP_25_20, $0f, $1c, $0f, $1b, $2e
-	warpdef $08, $15, $02, $01, MAP_25_01, $0c, $05, $0c, $06, $2e
-	warpdef $05, $12, $01, $01, MAP_25_04, $09, $04, $09, $05, $2e
-	warpdef $0c, $12, $01, $01, MAP_25_05, $01, $04, $01, $05, $2e
+	warpdef $08, $05, $02, $01, MAP_25_20, $0f, $1c, $0f, $1b, SFX_2E
+	warpdef $08, $15, $02, $01, MAP_25_01, $0c, $05, $0c, $06, SFX_2E
+	warpdef $05, $12, $01, $01, MAP_25_04, $09, $04, $09, $05, SFX_2E
+	warpdef $0c, $12, $01, $01, MAP_25_05, $01, $04, $01, $05, SFX_2E
 
 Data_aa1ce:
-	dw $2b3
+	dtext_tree_pointer TreeBitstreamText_465a4
 	dw -1
 
 Data_aa1d2:

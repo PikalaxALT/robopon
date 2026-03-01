@@ -1,10 +1,10 @@
 
 Data_9ef11:
-	warpdef $05, $02, $01, $01, MAP_19_03, $08, $11, $08, $12, $2e
-	warpdef $04, $1a, $03, $01, MAP_19_22, $13, $16, $13, $17, $2e
+	warpdef $05, $02, $01, $01, MAP_19_03, $08, $11, $08, $12, SFX_2E
+	warpdef $04, $1a, $03, $01, MAP_19_22, $13, $16, $13, $17, SFX_2E
 
 Data_9ef27:
-	dw $3ea
+	dtext_tree_pointer TreeBitstreamText_46db8
 	dw -1
 
 Data_9ef2b:

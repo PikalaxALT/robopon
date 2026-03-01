@@ -1,6 +1,6 @@
 
 Data_9e9a9:
-	warpdef $03, $0e, $03, $01, MAP_18_15, $07, $02, $07, $03, $2e
+	warpdef $03, $0e, $03, $01, MAP_18_15, $07, $02, $07, $03, SFX_2E
 
 Data_9e9b4:
 IF DEF(SUN)

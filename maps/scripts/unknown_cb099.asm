@@ -1,9 +1,9 @@
 
 Data_cafef:
-	warpdef $09, $13, $02, $01, MAP_21_00, $11, $13, $11, $14, $2e
-	warpdef $06, $0a, $01, $01, MAP_21_21, $06, $0a, $06, $0b, $2e
-	warpdef $0a, $0e, $01, $01, MAP_21_21, $0a, $0e, $0a, $0d, $2e
-	warpdef $0d, $0a, $01, $01, MAP_21_21, $0d, $0a, $0d, $09, $2e
+	warpdef $09, $13, $02, $01, MAP_21_00, $11, $13, $11, $14, SFX_2E
+	warpdef $06, $0a, $01, $01, MAP_21_21, $06, $0a, $06, $0b, SFX_2E
+	warpdef $0a, $0e, $01, $01, MAP_21_21, $0a, $0e, $0a, $0d, SFX_2E
+	warpdef $0d, $0a, $01, $01, MAP_21_21, $0d, $0a, $0d, $09, SFX_2E
 
 Data_cb01b:
 IF DEF(SUN)

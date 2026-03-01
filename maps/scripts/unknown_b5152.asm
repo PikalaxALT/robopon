@@ -1,10 +1,10 @@
 
 Data_b50b4:
-	warpdef $00, $1f, $02, $01, MAP_30_02, $01, $00, $01, $01, $2e
-	warpdef $2f, $03, $01, $03, MAP_30_01, $00, $04, $01, $04, $2e
-	warpdef $0c, $0b, $01, $01, MAP_12_00, $0d, $0f, $0d, $0e, $2e
-	warpdef $25, $0b, $01, $01, MAP_02_00, $16, $07, $16, $08, $2e
-	warpdef $2d, $12, $01, $01, MAP_22_01, $0b, $06, $0b, $07, $2e
+	warpdef $00, $1f, $02, $01, MAP_30_02, $01, $00, $01, $01, SFX_2E
+	warpdef $2f, $03, $01, $03, MAP_30_01, $00, $04, $01, $04, SFX_2E
+	warpdef $0c, $0b, $01, $01, MAP_12_00, $0d, $0f, $0d, $0e, SFX_2E
+	warpdef $25, $0b, $01, $01, MAP_02_00, $16, $07, $16, $08, SFX_2E
+	warpdef $2d, $12, $01, $01, MAP_22_01, $0b, $06, $0b, $07, SFX_2E
 
 Data_b50eb:
 IF DEF(SUN)
@@ -27,7 +27,7 @@ Data_b5131:
 	db $4e, $2c, $0c, $01, $41
 
 Data_b5140:
-	dw $472
+	dtext_tree_pointer TreeBitstreamText_4249f
 	dw -1
 
 Data_b5144:

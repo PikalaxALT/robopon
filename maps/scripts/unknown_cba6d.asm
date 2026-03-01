@@ -1,6 +1,6 @@
 
 Data_cb9ed:
-	warpdef $02, $0d, $01, $01, MAP_21_24, $02, $0d, $02, $0c, $2e
+	warpdef $02, $0d, $01, $01, MAP_21_24, $02, $0d, $02, $0c, SFX_2E
 
 Data_cb9f8:
 	db $35, $0e, $07, $03, $0b

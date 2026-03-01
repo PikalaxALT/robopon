@@ -1,9 +1,9 @@
 
 Data_b5315:
-	warpdef $00, $1d, $01, $03, MAP_30_02, $2f, $1e, $2e, $1e, $2e
-	warpdef $2e, $00, $02, $01, MAP_30_01, $2e, $1f, $2e, $1e, $2e
-	warpdef $18, $1e, $01, $01, MAP_11_00, $0e, $09, $0e, $0a, $2e
-	warpdef $2e, $1e, $01, $01, MAP_03_15, $04, $0a, $04, $0b, $2e
+	warpdef $00, $1d, $01, $03, MAP_30_02, $2f, $1e, $2e, $1e, SFX_2E
+	warpdef $2e, $00, $02, $01, MAP_30_01, $2e, $1f, $2e, $1e, SFX_2E
+	warpdef $18, $1e, $01, $01, MAP_11_00, $0e, $09, $0e, $0a, SFX_2E
+	warpdef $2e, $1e, $01, $01, MAP_03_15, $04, $0a, $04, $0b, SFX_2E
 
 Data_b5341:
 	db $54, $07, $16, $02, $1f

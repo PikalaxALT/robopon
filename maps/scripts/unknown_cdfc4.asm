@@ -1,20 +1,20 @@
 
 Data_cdc33:
-	warpdef $13, $10, $01, $01, MAP_29_01, $0e, $04, $0f, $04, $2e
+	warpdef $13, $10, $01, $01, MAP_29_01, $0e, $04, $0f, $04, SFX_2E
 
 Data_cdc3e:
-	warpdef $01, $10, $01, $01, MAP_29_30, $12, $0f, $12, $10, $2e
-	warpdef $01, $10, $01, $01, MAP_29_31, $0f, $0f, $0e, $0f, $2e
-	warpdef $01, $10, $01, $01, MAP_29_33, $0e, $0f, $0d, $0f, $2e
-	warpdef $01, $10, $01, $01, MAP_29_34, $0e, $0e, $0d, $0e, $2e
-	warpdef $14, $1f, $01, $01, MAP_29_30, $12, $0f, $12, $10, $2e
-	warpdef $14, $1f, $01, $01, MAP_29_31, $0f, $0f, $0e, $0f, $2e
-	warpdef $14, $1f, $01, $01, MAP_29_33, $0e, $0f, $0d, $0f, $2e
-	warpdef $14, $1f, $01, $01, MAP_29_34, $0e, $0e, $0d, $0e, $2e
-	warpdef $26, $10, $01, $01, MAP_29_30, $12, $0f, $12, $10, $2e
-	warpdef $26, $10, $01, $01, MAP_29_31, $0f, $0f, $0e, $0f, $2e
-	warpdef $26, $10, $01, $01, MAP_29_33, $0e, $0f, $0d, $0f, $2e
-	warpdef $26, $10, $01, $01, MAP_29_34, $0e, $0e, $0d, $0e, $2e
+	warpdef $01, $10, $01, $01, MAP_29_30, $12, $0f, $12, $10, SFX_2E
+	warpdef $01, $10, $01, $01, MAP_29_31, $0f, $0f, $0e, $0f, SFX_2E
+	warpdef $01, $10, $01, $01, MAP_29_33, $0e, $0f, $0d, $0f, SFX_2E
+	warpdef $01, $10, $01, $01, MAP_29_34, $0e, $0e, $0d, $0e, SFX_2E
+	warpdef $14, $1f, $01, $01, MAP_29_30, $12, $0f, $12, $10, SFX_2E
+	warpdef $14, $1f, $01, $01, MAP_29_31, $0f, $0f, $0e, $0f, SFX_2E
+	warpdef $14, $1f, $01, $01, MAP_29_33, $0e, $0f, $0d, $0f, SFX_2E
+	warpdef $14, $1f, $01, $01, MAP_29_34, $0e, $0e, $0d, $0e, SFX_2E
+	warpdef $26, $10, $01, $01, MAP_29_30, $12, $0f, $12, $10, SFX_2E
+	warpdef $26, $10, $01, $01, MAP_29_31, $0f, $0f, $0e, $0f, SFX_2E
+	warpdef $26, $10, $01, $01, MAP_29_33, $0e, $0f, $0d, $0f, SFX_2E
+	warpdef $26, $10, $01, $01, MAP_29_34, $0e, $0e, $0d, $0e, SFX_2E
 
 Data_cdcc2:
 IF DEF(SUN)

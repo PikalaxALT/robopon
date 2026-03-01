@@ -1,8 +1,8 @@
 
 Data_8348a:
-	warpdef $08, $01, $01, $01, MAP_00_21, $08, $01, $08, $02, $2e
-	warpdef $09, $01, $01, $01, MAP_00_23, $09, $01, $09, $02, $2e
-	warpdef $0a, $01, $01, $01, MAP_32_09, $01, $06, $01, $05, $2e
+	warpdef $08, $01, $01, $01, MAP_00_21, $08, $01, $08, $02, SFX_2E
+	warpdef $09, $01, $01, $01, MAP_00_23, $09, $01, $09, $02, SFX_2E
+	warpdef $0a, $01, $01, $01, MAP_32_09, $01, $06, $01, $05, SFX_2E
 
 Data_834ab:
 	dtext_tree_pointer TreeBitstreamText_423f3

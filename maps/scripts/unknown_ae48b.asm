@@ -1,7 +1,7 @@
 
 Data_ae3c9:
-	warpdef $0e, $29, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
-	warpdef $09, $06, $01, $01, MAP_27_01, $12, $1c, $12, $1b, $2e
+	warpdef $0e, $29, $01, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
+	warpdef $09, $06, $01, $01, MAP_27_01, $12, $1c, $12, $1b, SFX_2E
 
 Data_ae3df:
 IF DEF(SUN)
@@ -17,7 +17,7 @@ ELIF DEF(STAR)
 ENDC
 
 Data_ae417:
-	dw $02e
+	dtext_tree_pointer TreeBitstreamText_46d18
 	dw -1
 
 Data_ae41b:

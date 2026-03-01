@@ -1,9 +1,9 @@
 
 Data_ae875:
-	warpdef $11, $0c, $01, $01, MAP_27_01, $0f, $0c, $0f, $0b, $2e
-	warpdef $16, $0c, $01, $01, MAP_27_01, $14, $0c, $14, $0b, $2e
-	warpdef $19, $14, $01, $01, MAP_27_03, $14, $0c, $14, $0d, $2e
-	warpdef $1e, $14, $01, $01, MAP_27_03, $19, $0c, $19, $0b, $2e
+	warpdef $11, $0c, $01, $01, MAP_27_01, $0f, $0c, $0f, $0b, SFX_2E
+	warpdef $16, $0c, $01, $01, MAP_27_01, $14, $0c, $14, $0b, SFX_2E
+	warpdef $19, $14, $01, $01, MAP_27_03, $14, $0c, $14, $0d, SFX_2E
+	warpdef $1e, $14, $01, $01, MAP_27_03, $19, $0c, $19, $0b, SFX_2E
 
 Data_ae8a1:
 IF DEF(SUN)

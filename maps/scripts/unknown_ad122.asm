@@ -1,7 +1,7 @@
 
 Data_ad0b4:
-	warpdef $06, $0c, $04, $01, MAP_N_A, $ff, $ff, $ff, $ff, $2e
-	warpdef $07, $05, $02, $01, MAP_30_13, $0d, $0f, $0d, $0e, $2e
+	warpdef $06, $0c, $04, $01, MAP_N_A, $ff, $ff, $ff, $ff, SFX_2E
+	warpdef $07, $05, $02, $01, MAP_30_13, $0d, $0f, $0d, $0e, SFX_2E
 
 Data_ad0ca:
 	wildbot $04, $06, $0b, $17, $69, $24, $27, $7a, $05, $0f, $00, $10, $0a, $00
@@ -9,7 +9,7 @@ Data_ad0ca:
 	wildbot $04, $06, $0b, $17, $43, $24, $27, $7a, $06, $07, $00, $10, $0a, $00
 
 Data_ad0f4:
-	dw $2c1
+	dtext_tree_pointer TreeBitstreamText_466f0
 	dw -1
 
 Data_ad0f8:

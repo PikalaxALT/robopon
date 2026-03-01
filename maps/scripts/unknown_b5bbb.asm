@@ -1,6 +1,6 @@
 
 Data_b5b5c:
-	warpdef $0d, $02, $01, $01, MAP_32_09, $01, $06, $01, $05, $2e
+	warpdef $0d, $02, $01, $01, MAP_32_09, $01, $06, $01, $05, SFX_2E
 
 Data_b5b67:
 IF DEF(SUN)
