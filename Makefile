@@ -138,7 +138,8 @@ tidy:
 	$(RM) -r $(ROMS) $(BUILDDIR) $(roms:.gbc=.sym) $(roms:.gbc=.map)
 
 clean: tidy
-	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' -o -iname '*.ctf' \) -exec rm {} +
+	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' -o -iname '*.ctf' -o -iname '*.tm2bpp' -o -iname '*.emote' \) -exec $(RM) {} +
+	$(RM) -r build
 
 %.ctf: %.asm
 	$(PYTHON) textcomp.py $<
@@ -158,7 +159,7 @@ data/base_stats/%.bin: ;
 %.tm2bpp: %.2bpp
 	$(TM) $< $@
 
-%.emote: %_*.2bpp
+%.emote: %.2bpp
 	$(EMOTE) $<
 
 %.rz: %
