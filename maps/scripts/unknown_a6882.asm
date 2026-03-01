@@ -278,14 +278,12 @@ Func_a6a09:
 	playsfx $28
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $0102
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d098
 	playmusic SONG_NONE
 	playmusic $1b
 	move_person 0, Data_a69fb, 0
 	scall WaitNPCStep
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	hideperson 0
 	ld e, $01
 	ld a, $02
@@ -316,8 +314,7 @@ Func_a6a87:
 	scall HideEmote
 	face_player -$01
 	setevent $002e
-	ld hl, $0108
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d204
 	playmusic $0a
 .asm_a6adb:
 	pop bc

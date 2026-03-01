@@ -130,8 +130,7 @@ Func_89b79:
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
-	ld hl, $0001
-	scall ScriptSleep
+	script_sleep 1
 	scall HideEmote
 	setevent $00fc
 	jp .asm_89bc9

@@ -692,8 +692,7 @@ Func_b9fad:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_b9fd1
-	ld hl, $0454
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3b5bf
 	jp .asm_ba023
 .asm_b9fd1:
 	checkevent $00e9
@@ -702,8 +701,7 @@ Func_b9fad:
 	checkevent $00eb
 	or a
 	jp nz, .asm_b9ff7
-	ld hl, $0452
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3b516
 	setevent $00eb
 	jp .asm_ba023
 .asm_b9ff7:
@@ -713,13 +711,11 @@ Func_b9fad:
 	checkevent $00eb
 	or a
 	jp nz, .asm_ba01d
-	ld hl, $0453
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3b560
 	setevent $00eb
 	jp .asm_ba023
 .asm_ba01d:
-	ld hl, $0455
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3b5f0
 .asm_ba023:
 	pop bc
 	ret

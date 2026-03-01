@@ -39,8 +39,7 @@ Func_9ef8d:: ; 9ef8d
 	ld a, $01
 	ld [wc7da], a
 	scall Func_8001c
-	ld hl, $043d
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45b31
 	setevent $00e8
 	xor a
 	ld [wc7da], a

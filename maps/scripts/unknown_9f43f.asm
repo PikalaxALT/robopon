@@ -182,8 +182,7 @@ Func_9f574:
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $0322
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46e0b
 	playmusic $08
 .asm_9f59f:
 	ret

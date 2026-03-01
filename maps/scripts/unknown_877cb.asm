@@ -467,7 +467,7 @@ Func_87b87: ; 87b87 (21:7b87)
 	scall WaitEmote
 	ld a, $1
 	scall Func_80653
-	script_sleep $1
+	script_sleep 1
 	scall HideEmote
 	setevent $fb
 	ret
@@ -484,9 +484,9 @@ Func_87c03: ; 87c03 (21:7c03)
 	loadwarps $4, Data_87bd7
 	scall StartShakingScreen
 	playsfx $64
-	script_sleep $3c
+	script_sleep 60
 	playsfx $64
-	script_sleep $3c
+	script_sleep 60
 	scall StopShakingScreen
 	ret
 

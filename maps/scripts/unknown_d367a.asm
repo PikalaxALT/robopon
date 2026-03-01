@@ -231,7 +231,7 @@ Func_d367a:: ; d367a (34:767a)
 .asm_d37d4: ; d37d4 (34:77d4)
 	scall StartShakingScreen
 	playsfx $64
-	script_sleep $3c
+	script_sleep 60
 	scall StopShakingScreen
 	jp .asm_d385a
 

@@ -48,7 +48,7 @@ Func_83026:
 	call FadeInAudio_20
 	playmusic SONG_WORLD_MAP
 	face_player 0
-	script_sleep $1e
+	script_sleep 30
 	ld c, $c
 	ld e, $17
 	ld a, $15

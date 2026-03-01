@@ -36,8 +36,7 @@ Func_aea1b:: ; aea1b
 	loadpeople $01, Data_aea0d
 	playmusic $08
 	scall Func_8001c
-	ld hl, $0318
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46ba8
 	ret
 
 Func_aea4f:

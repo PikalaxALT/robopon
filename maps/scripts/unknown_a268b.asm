@@ -273,8 +273,7 @@ Func_a268b:: ; a268b
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a27fa
-	ld hl, $00f8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47e17
 	jp .asm_a2803
 .asm_a27fa:
 	ld hl, wc7de

@@ -322,8 +322,7 @@ Func_cd533:: ; cd533
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cd67a
-	ld hl, $00f8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47e17
 	jp .asm_cd683
 .asm_cd67a:
 	ld hl, wc7de

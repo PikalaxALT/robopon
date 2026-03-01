@@ -45,8 +45,7 @@ Func_a34d1:: ; a34d1
 .asm_a3529:
 	loadpeople $01, Data_a34c3
 	scall Func_8001c
-	ld hl, $034a
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4692e
 	ret
 
 Func_a353b:

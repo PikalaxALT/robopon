@@ -101,8 +101,7 @@ Func_8b53d:
 	ld a, $1c
 	scall Func_80dff
 	pop bc
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 .asm_8b58b:
 	ret
 

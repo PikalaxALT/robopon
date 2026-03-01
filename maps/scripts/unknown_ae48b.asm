@@ -96,8 +96,7 @@ Func_ae4fa:
 	ld a, [hl]
 	cp $02
 	jp nz, .asm_ae560
-	ld hl, $035a
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46fe6
 	ld hl, sp+$00
 	ld a, [wMapX]
 	add a, $05
@@ -164,8 +163,7 @@ Func_ae56c:
 	scall FadeInAudio
 	playmusic $14
 	face_player $04
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld c, $07
 	ld e, $04
 	ld a, $01
@@ -190,7 +188,6 @@ Func_ae56c:
 	hideperson $04
 	jp .asm_ae674
 .asm_ae66e:
-	ld hl, $015c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f79e
 .asm_ae674:
 	ret

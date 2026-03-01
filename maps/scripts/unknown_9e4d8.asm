@@ -424,8 +424,7 @@ Func_9e5f6:
 	cp l
 	jp z, .asm_9e7d7
 	scall StartShakingScreen
-	ld hl, $0078
-	scall ScriptSleep
+	script_sleep 120
 	scall StopShakingScreen
 	ld a, $01
 	call Func_9e7f4

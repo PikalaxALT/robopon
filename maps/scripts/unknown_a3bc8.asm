@@ -46,8 +46,7 @@ Func_a3bc8:: ; a3bc8
 .asm_a3c08:
 	playmusic $08
 	scall Func_8001c
-	ld hl, $045d
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46967
 	ret
 
 Func_a3c17:: ; a3c17
@@ -155,32 +154,26 @@ Func_a3cd5:
 	checkevent $00ec
 	or a
 	jp nz, .asm_a3d48
-	ld hl, $045c
-	scall PrintTextWithNPCName
-	ld hl, $001e
-	scall ScriptSleep
+	writenpctext TreeBitstreamText_3c2b2
+	script_sleep 30
 	move_person $01, Data_a3ccb, 1
 	scall WaitNPCStep
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $01, $01
 	setevent $00ec
 	jp .asm_a3d4e
 .asm_a3d48:
-	ld hl, $010f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d897
 .asm_a3d4e:
 	jp .asm_a3d72
 .asm_a3d51:
 	checkevent $00ec
 	cp $01
 	jp nz, .asm_a3d65
-	ld hl, $010f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d897
 	jp .asm_a3d72
 .asm_a3d65:
-	ld hl, $045b
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3c22b
 	sprite_face $00, $01
 .asm_a3d72:
 	ret

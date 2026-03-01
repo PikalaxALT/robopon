@@ -40,8 +40,7 @@ Func_a388c:: ; a388c
 	loadpeople $0b, Data_a37f2
 	playmusic $08
 	scall Func_8001c
-	ld hl, $041e
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4694f
 	ret
 
 Func_a38b8:

@@ -135,15 +135,13 @@ Func_b6117:
 	scall AllocateSpaceForWarps
 	move_player $01, Data_b60fb
 	playmusic $01
-	ld hl, $014a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3eae2
 	startbattle Data_b6260, Data_b60d2
 	or a
 	jp nz, .asm_b6149
 	jp .asm_b625f
 .asm_b6149:
-	ld hl, $014b
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3eb76
 	ld a, $0a
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -157,15 +155,13 @@ Func_b6117:
 	scall WaitEmote
 	scall HideEmote
 	hideperson 0
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	scall StartShakingScreen
 	loademote $01, $01, $05
 	scall WaitEmote
 	playsfx $28
 	scall HideEmote
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	xor a
 .asm_b61a2:
 	cp $04
@@ -180,8 +176,7 @@ Func_b6117:
 .asm_b61b3:
 	showperson $01
 	playmusic $18
-	ld hl, $0078
-	scall ScriptSleep
+	script_sleep 120
 	move_person $01, Data_b60ff, 1
 	scall WaitNPCStep
 	ld a, $03
@@ -220,8 +215,7 @@ Func_b6117:
 	playmusic SONG_NONE
 	playmusic $04
 	scall StopShakingScreen
-	ld hl, $014c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ec56
 	scall StartShakingScreen
 	move_person $01, Data_b610f, 0
 	move_player $01, Data_b610f
@@ -260,23 +254,20 @@ Func_b6291:
 	or a
 	jp nz, .asm_b6312
 	face_player -$01
-	ld hl, $0442
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ef04
 	startbattle Data_b6314, Data_b6264
 	or a
 	jp nz, .asm_b62b3
 	jp .asm_b6312
 .asm_b62b3:
-	ld hl, $0443
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ef47
 	ld a, $0a
 	scall FadeOutAudio
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
 	playmusic $18
-	ld hl, $0078
-	scall ScriptSleep
+	script_sleep 120
 	xor a
 .asm_b62d3:
 	cp $04
@@ -333,23 +324,20 @@ Func_b634c:
 	checkevent $00e1
 	or a
 	jp nz, .asm_b6373
-	ld hl, $017c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b63e6
 .asm_b6373:
-	ld hl, $0444
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ef70
 	startbattle Data_b63e8, Data_b6319
 	or a
 	jp nz, .asm_b6389
 	jp .asm_b63e6
 .asm_b6389:
-	ld hl, $0445
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3efa5
 	xor a
 .asm_b6390:
 	cp $04
@@ -425,23 +413,20 @@ Func_b6422:
 	or a
 	jp nz, .asm_b6453
 .asm_b6442:
-	ld hl, $017c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b64c6
 .asm_b6453:
-	ld hl, $0446
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3eff8
 	startbattle Data_b64c8, Data_b63ed
 	or a
 	jp nz, .asm_b6469
 	jp .asm_b64c6
 .asm_b6469:
-	ld hl, $0447
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3f05a
 	xor a
 .asm_b6470:
 	cp $04
@@ -520,23 +505,20 @@ Func_b6501:
 	or a
 	jp nz, .asm_b653c
 .asm_b652b:
-	ld hl, $017c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b65af
 .asm_b653c:
-	ld hl, $0448
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3f0a6
 	startbattle Data_b65b1, Data_b64ce
 	or a
 	jp nz, .asm_b6552
 	jp .asm_b65af
 .asm_b6552:
-	ld hl, $0449
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3f118
 	xor a
 .asm_b6559:
 	cp $04
@@ -626,23 +608,20 @@ Func_b65e9:
 	or a
 	jp nz, .asm_b662e
 .asm_b661d:
-	ld hl, $017c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b66a1
 .asm_b662e:
-	ld hl, $044a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3f192
 	startbattle Data_b66a3, Data_b65b6
 	or a
 	jp nz, .asm_b6644
 	jp .asm_b66a1
 .asm_b6644:
-	ld hl, $044b
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3f207
 	xor a
 .asm_b664b:
 	cp $04
@@ -729,23 +708,20 @@ Func_b66d1:
 	or a
 	jp nz, .asm_b6720
 .asm_b670f:
-	ld hl, $017c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b6751
 .asm_b6720:
-	ld hl, $044c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3f276
 	startbattle Data_b6753, Data_b66a8
 	or a
 	jp nz, .asm_b6736
 	jp .asm_b6751
 .asm_b6736:
-	ld hl, $044d
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3f2ff
 	setevent $00e6
 	ld l, $1a
 	push hl

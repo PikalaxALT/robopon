@@ -208,8 +208,7 @@ Func_ba7e9:: ; ba7e9
 	xor a
 	scall Func_80653
 	scall Func_8001c
-	ld hl, $02cb
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4680f
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba8f6:
@@ -224,8 +223,7 @@ Func_ba7e9:: ; ba7e9
 	xor a
 	scall Func_80653
 	scall Func_8001c
-	ld hl, $02cc
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46818
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba929:
@@ -253,8 +251,7 @@ Func_ba7e9:: ; ba7e9
 	xor a
 	scall Func_80653
 	scall Func_8001c
-	ld hl, $02cd
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46821
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba97d:
@@ -264,8 +261,7 @@ Func_ba7e9:: ; ba7e9
 	xor a
 	scall Func_80653
 	scall Func_8001c
-	ld hl, $02ce
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4682a
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba99d:
@@ -275,8 +271,7 @@ Func_ba7e9:: ; ba7e9
 	xor a
 	scall Func_80653
 	scall Func_8001c
-	ld hl, $02d2
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4684f
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba9bd:
@@ -291,8 +286,7 @@ Func_ba7e9:: ; ba7e9
 	xor a
 	scall Func_80653
 	scall Func_8001c
-	ld hl, $02d3
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46859
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba9f0:
@@ -322,8 +316,7 @@ Func_ba7e9:: ; ba7e9
 	xor a
 	scall Func_80653
 	scall Func_8001c
-	ld hl, $02d4
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46861
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_baa4a:
@@ -346,8 +339,7 @@ Func_baa60:
 	checkevent $0059
 	cp $01
 	jp nz, .asm_baa79
-	ld hl, $0283
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47037
 	jp .asm_babdb
 .asm_baa79:
 	ld a, [wPlayerFacing]
@@ -532,8 +524,7 @@ Func_babdc:
 	checkevent $0059
 	cp $01
 	jp nz, .asm_babff
-	ld hl, $0283
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47037
 	jp .asm_bad5b
 .asm_babff:
 	xor a
@@ -715,8 +706,7 @@ Func_bad5c:
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
-	ld hl, $0001
-	scall ScriptSleep
+	script_sleep 1
 	scall HideEmote
 	setevent $00fa
 	jp .asm_bad9f
@@ -738,8 +728,7 @@ Func_badb0:
 	or a
 	jp nz, .asm_bae4c
 	face_player -$01
-	ld hl, $006e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ad48
 	push hl
 	push hl
 	ld hl, $0000
@@ -755,16 +744,13 @@ Func_badb0:
 	push hl
 	call CompareStackLongs_Signed
 	jp nc, .asm_bade8
-	ld hl, $0070
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ad91
 	jp .asm_bae4c
 .asm_bade8:
-	ld hl, $006f
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_3ad7f
 	or a
 	jp nz, .asm_bae46
-	ld hl, $041b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3adc0
 	push hl
 	push hl
 	ld hl, $ffff
@@ -776,8 +762,7 @@ Func_badb0:
 	pop bc
 	pop bc
 	pop bc
-	ld hl, $0072
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3add4
 	setevent $0052
 	ld a, [wPlayerFacing]
 	cp $02
@@ -802,8 +787,7 @@ Func_badb0:
 	scall SetPersonVisibilityState
 	jp .asm_bae4c
 .asm_bae46:
-	ld hl, $0071
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3adae
 .asm_bae4c:
 	pop bc
 	ret
@@ -820,8 +804,7 @@ Func_bae5a:
 	or a
 	jp nz, .asm_baea8
 	face_player -$01
-	ld hl, $0073
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ae53
 	resetevent $0052
 	setevent $00ed
 	ld a, [wPlayerFacing]
@@ -861,8 +844,7 @@ Func_baeb6:
 	or a
 	jp nz, .asm_baefc
 	face_player -$01
-	ld hl, $0073
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ae53
 	resetevent $00ed
 	ld a, [wPlayerFacing]
 	cp $02
@@ -899,8 +881,7 @@ Func_baefe:
 	ld a, [wc790]
 	cp $07
 	jp nc, .asm_baf1b
-	ld hl, $03dd
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47041
 	jp .asm_baf51
 .asm_baf1b:
 	checkevent $0059
@@ -908,14 +889,12 @@ Func_baefe:
 	jp nz, .asm_baf3b
 	setevent $0059
 	playsfx $32
-	ld hl, $035b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47029
 	jp .asm_baf4e
 .asm_baf3b:
 	resetevent $0059
 	playsfx $28
-	ld hl, $035c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_4701b
 .asm_baf4e:
 	call Func_bafd6
 .asm_baf51:

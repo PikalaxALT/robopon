@@ -76,6 +76,5 @@ Func_92965:: ; 92965
 	scall LoadPlayerSprite
 	playmusic $08
 	scall Func_8001c
-	ld hl, $02e3
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46973
 	ret

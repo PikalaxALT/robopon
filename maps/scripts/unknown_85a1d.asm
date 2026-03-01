@@ -216,7 +216,7 @@ Func_85b98:
 	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
-	script_sleep $3c
+	script_sleep 60
 	writenpctext TreeBitstreamText_39ed3
 	jp .asm_85c08
 

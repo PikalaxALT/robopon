@@ -316,27 +316,18 @@ Func_b1686:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $01
-	ld hl, $004d
-	scall PrintTextWithNPCName
-	ld hl, $004e
-	scall PrintTextWithNPCName
-	ld hl, $004f
-	scall PrintTextWithNPCName
-	ld hl, $0050
-	scall PrintTextWithNPCName
-	ld hl, $0051
-	scall PrintTextWithNPCName
-	ld hl, $0052
-	scall PrintTextWithNPCName
-	ld hl, $0053
-	scall PrintTextWithNPCName
-	ld hl, $0054
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3a556
+	writenpctext TreeBitstreamText_3a5a7
+	writenpctext TreeBitstreamText_3a5cb
+	writenpctext TreeBitstreamText_3a5e6
+	writenpctext TreeBitstreamText_3a605
+	writenpctext TreeBitstreamText_3a61d
+	writenpctext TreeBitstreamText_3a62c
+	writenpctext TreeBitstreamText_3a64f
 	xor a
 	scall PlayerFace
 	sprite_face $00, $09
-	ld hl, $0057
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3a662
 	xor a
 .asm_b16fd:
 	cp $08
@@ -349,8 +340,7 @@ Func_b1686:
 	inc a
 	jp .asm_b16fd
 .asm_b170e:
-	ld hl, $0055
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3a6a3
 	xor a
 .asm_b1715:
 	cp $08
@@ -363,22 +353,18 @@ Func_b1686:
 	inc a
 	jp .asm_b1715
 .asm_b1727:
-	ld hl, $0056
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3a6e6
 	sprite_face $03, $09
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $01
 	scall PlayerFace
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	startbattle Data_b17c1, Data_b1641
 	or a
 	jp nz, .asm_b1755
 	jp .asm_b17c0
 .asm_b1755:
-	ld hl, $0058
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3a6fa
 	playmusic SONG_NONE
 	playmusic $18
 	move_person $09, Data_b1670, 1
@@ -408,8 +394,7 @@ Data_b17c1:
 	dstr "ヒﾞスコ"
 
 Func_b17c6:
-	ld hl, $005b
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3a7fb
 	setevent $0009
 	ld l, $05
 	push hl
@@ -448,20 +433,16 @@ Func_b1817:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $01
-	ld hl, $007e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3b02c
 	startbattle Data_b18d4, Data_b17e2
 	or a
 	jp nz, .asm_b1862
 	jp .asm_b18d3
 .asm_b1862:
-	ld hl, $007f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3b060
 	playsfx $2a
-	ld hl, $0367
-	scall PrintTextStandard
-	ld hl, $0368
-	scall PrintTextWithNPCName
+	writetext TreeBitstreamText_3b169
+	writenpctext TreeBitstreamText_3b17a
 	move_person $09, Data_b1811, 1
 	scall WaitNPCStep
 	hideperson $09
@@ -533,15 +514,13 @@ Func_b191e:
 	sprite_face $01, $0d
 	sprite_face $02, $0d
 	sprite_face $03, $0d
-	ld hl, $00aa
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3c000
 	startbattle Data_b1a6d, Data_b18d9
 	or a
 	jp nz, .asm_b19a8
 	jp .asm_b1a6c
 .asm_b19a8:
-	ld hl, $00ab
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3c04e
 	sprite_face $00, $0d
 	sprite_face $01, $0d
 	sprite_face $02, $0d
@@ -553,10 +532,8 @@ Func_b191e:
 	sprite_face $00, $0d
 	sprite_face $01, $0d
 	hideperson $0d
-	ld hl, $036a
-	scall PrintTextStandard
-	ld hl, $036b
-	scall PrintTextWithNPCName
+	writetext TreeBitstreamText_3c070
+	writenpctext TreeBitstreamText_3c086
 	move_person $09, Data_b1908, 1
 	scall WaitNPCStep
 	hideperson $09
@@ -619,15 +596,13 @@ Func_b1ab8:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $01
-	ld hl, $00e0
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3cbab
 	startbattle Data_b1b61, Data_b1a73
 	or a
 	jp nz, .asm_b1b03
 	jp .asm_b1b60
 .asm_b1b03:
-	ld hl, $00e1
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3cbf7
 	move_person $09, Data_b1aa2, 1
 	scall WaitNPCStep
 	hideperson $09
@@ -686,15 +661,13 @@ Func_b1b9b:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $01
-	ld hl, $00f9
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d66c
 	startbattle Data_b1c48, Data_b1b66
 	or a
 	jp nz, .asm_b1be6
 	jp .asm_b1c47
 .asm_b1be6:
-	ld hl, $00fa
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d6c8
 	move_person $09, Data_b1b95, 1
 	scall WaitNPCStep
 	hideperson $09
@@ -753,16 +726,12 @@ Func_b1c59:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $13
-	ld hl, $012b
-	scall PrintTextWithNPCName
-	ld hl, $012c
-	scall PrintTextWithNPCName
-	ld hl, $012d
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e1be
+	writenpctext TreeBitstreamText_3e1ff
+	writenpctext TreeBitstreamText_3e289
 	move_person $01, Data_b1c55, 1
 	scall WaitNPCStep
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	hideperson $01
 	playmusic SONG_NONE
 	xor a
@@ -778,8 +747,7 @@ Func_b1c59:
 	jp .asm_b1ccd
 .asm_b1cdf:
 	move_player $01, Data_b1c51
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, 0
 	loademote $01, $01, $05
 	ld e, $0e
@@ -788,16 +756,14 @@ Func_b1c59:
 	playsfx $28
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $012e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e29b
 	ld e, $01
 	xor a
 	scall PlayerStep
 	ld e, $01
 	xor a
 	scall PlayerStep
-	ld hl, $0130
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e324
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
@@ -852,15 +818,13 @@ Func_b1d8b:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $01
-	ld hl, $0133
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e557
 	startbattle Data_b202c, Data_b1d50
 	or a
 	jp nz, .asm_b1dd6
 	jp .asm_b202b
 .asm_b1dd6:
-	ld hl, $0134
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e5b2
 	move_person 0, Data_b1d7f, 1
 	scall WaitNPCStep
 	sprite_face $00, 0
@@ -870,12 +834,10 @@ Func_b1d8b:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $04
-	ld hl, $0135
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e5ff
 	move_person 0, Data_b1d83, 1
 	scall WaitNPCStep
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 	scall PlayerFace
 	ld e, $01
@@ -918,14 +880,11 @@ Func_b1d8b:
 	scall HideEmote
 	sprite_face $03, $02
 	sprite_face $01, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $01, 0
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	sprite_face $03, 0
-	ld hl, $0136
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e624
 	ld a, $0a
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -939,11 +898,9 @@ Func_b1d8b:
 	playsfx $63
 	scall WaitEmote
 	sprite_face $01, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $03, 0
-	ld hl, $0137
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e6a8
 	loademote $01, $07, $19
 	hideperson 0
 	scall WaitEmote
@@ -952,8 +909,7 @@ Func_b1d8b:
 	scall FadeInAudio
 	playmusic $13
 	sprite_face $02, $01
-	ld hl, $0138
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e75b
 	xor a
 .asm_b1f29:
 	cp $02
@@ -981,19 +937,16 @@ Func_b1d8b:
 	jp .asm_b1f41
 .asm_b1f53:
 	loademote $01, $0f, $1a
-	ld hl, $0078
-	scall ScriptSleep
+	script_sleep 120
 	ld a, $03
 	scall PlayerFace
 	scall WaitEmote
-	ld hl, $0139
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e770
 	loademote $01, $30, $1a
 	ld e, $0e
 	ld a, $0c
 	scall MoveEmote
-	ld hl, $0078
-	scall ScriptSleep
+	script_sleep 120
 	ld a, $02
 	scall PlayerFace
 	scall WaitEmote
@@ -1001,8 +954,7 @@ Func_b1d8b:
 	ld e, $01
 	ld a, $01
 	scall PlayerStep
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 .asm_b1f9f:
 	cp $09
@@ -1015,30 +967,26 @@ Func_b1d8b:
 	inc a
 	jp .asm_b1f9f
 .asm_b1fb0:
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $0a
 	scall FadeOutAudio
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
 	playmusic $01
-	ld hl, $03c6
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3e7ac
 	ld c, $00
 	ld e, $01
 	ld a, $06
 	scall Func_80d4d
-	ld hl, $013a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e7c0
 	move_person $01, Data_b1d87, 1
 	scall WaitNPCStep
 	hideperson $01
 	setevent $0023
 	ld a, $02
 	ld [wc790], a
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 .asm_b2006:
 	cp $09
@@ -1094,8 +1042,7 @@ Func_b2038:
 .asm_b206e:
 	scall WaitNPCStep
 	playsfx $69
-	ld hl, $010c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d844
 	ld hl, sp+$03
 	ld a, [hl]
 	cp $04
@@ -1144,8 +1091,7 @@ Func_b20b3:
 .asm_b20e9:
 	scall WaitNPCStep
 	playsfx $69
-	ld hl, $010e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d86d
 	ld hl, sp+$03
 	ld a, [hl]
 	cp $07
@@ -1209,36 +1155,27 @@ Func_b213e:
 	jp z, .asm_b21b6
 	cp $07
 	jp nz, .asm_b21f2
-	ld hl, $0059
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3a765
 	playsfx $2a
-	ld hl, $005a
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3a7e7
 	jp .asm_b21f8
 .asm_b21b6:
-	ld hl, $0081
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3b22d
 	playsfx $2a
-	ld hl, $0080
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3b219
 	jp .asm_b21f8
 .asm_b21ca:
-	ld hl, $00ad
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3c0de
 	playsfx $2a
-	ld hl, $00ac
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c0ca
 	jp .asm_b21f8
 .asm_b21de:
-	ld hl, $00e3
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3cc61
 	playsfx $2a
-	ld hl, $00e2
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3cc4d
 	jp .asm_b21f8
 .asm_b21f2:
-	ld hl, $00ae
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3c13a
 .asm_b21f8:
 	move_person 0, Data_b2130, 1
 	scall WaitNPCStep
@@ -1247,8 +1184,7 @@ Func_b213e:
 	move_person $02, Data_b2136, 1
 	scall WaitNPCStep
 	sprite_face $03, $02
-	ld hl, $01c0
-	scall PrintTextStandard
+	writetext TreeBitstreamText_40d52
 	move_person $02, Data_b213a, 1
 	scall WaitNPCStep
 	hideperson $02
@@ -1303,14 +1239,12 @@ Func_b2275:
 	move_person 0, Data_b2257, 1
 	scall WaitNPCStep
 	sprite_face $03, 0
-	ld hl, $0337
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d713
 	ld c, $00
 	ld e, $01
 	ld a, $05
 	scall Func_80d4d
-	ld hl, $00fb
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d727
 	ld a, $05
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -1320,17 +1254,14 @@ Func_b2275:
 	scall Func_80080
 	move_person $03, Data_b2263, 1
 	scall WaitNPCStep
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, 0
-	ld hl, $00fc
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d76a
 	sprite_face $03, 0
 	ld a, $01
 	scall FadeInAudio
 	playmusic $01
-	ld hl, $00fd
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d793
 	move_person $03, Data_b2269, 0
 	move_person 0, Data_b225d, 1
 	scall WaitNPCStep
@@ -1346,8 +1277,7 @@ Func_b2275:
 	hideperson $04
 	hideperson $05
 	showperson $0b
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $0a
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -1363,30 +1293,22 @@ Func_b2275:
 	inc a
 	jp .asm_b2383
 .asm_b2395:
-	ld hl, $001e
-	scall ScriptSleep
-	ld hl, $0113
-	scall PrintTextStandard
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
+	writetext TreeBitstreamText_3d801
+	script_sleep 30
 	move_person $0b, Data_b226d, 1
 	scall WaitNPCStep
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $01, $0b
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $03, $0b
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $01, $0b
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_person $0b, Data_b2271, 1
 	scall WaitNPCStep
 	hideperson $0b
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 .asm_b23fc:
 	cp $0a

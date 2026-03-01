@@ -172,8 +172,7 @@ Func_c93a1:: ; c93a1
 	loadwilds $05, Data_c9227
 	playmusic $09
 	scall Func_8001c
-	ld hl, $02e6
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46986
 	jp .asm_c9502
 .asm_c946d:
 	loadwarps $02, Data_c91cf
@@ -182,8 +181,7 @@ Func_c93a1:: ; c93a1
 	loadwilds $05, Data_c926d
 	playmusic $0e
 	scall Func_8001c
-	ld hl, $02f5
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46a3e
 	jp .asm_c9502
 .asm_c9493:
 	loadwarps $02, Data_c91e5
@@ -192,8 +190,7 @@ Func_c93a1:: ; c93a1
 	loadwilds $05, Data_c92b3
 	playmusic $0d
 	scall Func_8001c
-	ld hl, $02f0
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_469fd
 	jp .asm_c9502
 .asm_c94b9:
 	loadwarps $02, Data_c91fb
@@ -202,8 +199,7 @@ Func_c93a1:: ; c93a1
 	loadwilds $05, Data_c92f9
 	playmusic $0f
 	scall Func_8001c
-	ld hl, $02eb
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_469c1
 	jp .asm_c9502
 .asm_c94df:
 	loadwarps $02, Data_c9211
@@ -212,8 +208,7 @@ Func_c93a1:: ; c93a1
 	loadwilds $05, Data_c933f
 	playmusic $10
 	scall Func_8001c
-	ld hl, $02fa
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46a7f
 .asm_c9502:
 	ret
 
@@ -324,12 +319,10 @@ Func_c95da:
 	cp $02
 	jp nz, .asm_c9613
 	sprite_face $01, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $03
 	scall PlayerFace
-	ld hl, $00d4
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c983
 	move_player $01, Data_c95d6
 	sprite_face $02, 0
 .asm_c9613:
@@ -355,16 +348,13 @@ Func_c9614:
 	jp z, .asm_c9642
 	or a
 	jp nz, .asm_c9651
-	ld hl, $00d3
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c973
 	jp .asm_c9651
 .asm_c9642:
-	ld hl, $00d4
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c983
 	jp .asm_c9651
 .asm_c964b:
-	ld hl, $010f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d897
 .asm_c9651:
 	pop bc
 	ret

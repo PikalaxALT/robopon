@@ -37,8 +37,7 @@ Func_a36ec:: ; a36ec
 	scall LoadPlayerSprite
 	playmusic $08
 	scall Func_8001c
-	ld hl, $02a9
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46923
 	ret
 
 Data_a371e:

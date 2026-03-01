@@ -52,6 +52,5 @@ Func_aed4a:: ; aed4a
 	loadwilds $05, Data_aed04
 	playmusic $08
 	scall Func_8001c
-	ld hl, $031b
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46bc9
 	ret

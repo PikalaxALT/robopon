@@ -142,22 +142,18 @@ Data_9ddee:
 	db $07, $07, $ff, $ff
 
 Func_9ddf2:
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $68
-	ld hl, $026a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_42e15
 	playsfx $68
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_player $00, Data_9ddea
 	scall WaitNPCStep
 	move_player $00, Data_9ddee
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 .asm_9de33:
 	cp $03
@@ -170,8 +166,7 @@ Func_9ddf2:
 	inc a
 	jp .asm_9de33
 .asm_9de44:
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	loademote $01, $01, $0a
 	ld e, $01
 	ld a, $06
@@ -200,8 +195,7 @@ Func_9ddf2:
 	scall HideEmote
 	playmusic SONG_NONE
 	playmusic $1c
-	ld hl, $00b4
-	scall ScriptSleep
+	script_sleep 180
 	setevent $00ba
 	call Func_9ddbb
 	loademote $01, $03, $27
@@ -222,17 +216,13 @@ Func_9ddf2:
 	ld e, $81
 	ld a, $01
 	scall SetPersonVisibilityState
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	playsfx $69
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playmusic SONG_NONE
 	playmusic $0d
-	ld hl, $026b
-	scall PrintTextWithNPCName
-	ld hl, $003c
-	scall ScriptSleep
+	writenpctext TreeBitstreamText_42e5e
+	script_sleep 60
 	loademote $01, $07, $28
 	ld e, $01
 	ld a, $06
@@ -252,8 +242,7 @@ Func_9ddf2:
 	scall SetPersonVisibilityState
 	call NextOverworldFrame
 	scall Func_801b8
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	xor a
 .asm_9df58:
 	cp $03
@@ -266,16 +255,12 @@ Func_9ddf2:
 	inc a
 	jp .asm_9df58
 .asm_9df6a:
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, $01
-	ld hl, $001e
-	scall ScriptSleep
-	ld hl, $026c
-	scall PrintTextWithNPCName
+	script_sleep 30
+	writenpctext TreeBitstreamText_42ec2
 	ret
 
 Func_9df90:
@@ -289,25 +274,20 @@ Func_9df90:
 	checkevent $00bb
 	cp $01
 	jp nz, .asm_9dfb9
-	ld hl, $037f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_43d46
 	jp .asm_9dfbf
 .asm_9dfb9:
-	ld hl, $0271
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_43156
 .asm_9dfbf:
 	jp .asm_9dfe3
 .asm_9dfc2:
-	ld hl, $026e
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_42ffd
 	or a
 	jp nz, .asm_9dfdd
-	ld hl, $026f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_43084
 	setevent $00b9
 	jp .asm_9dfe3
 .asm_9dfdd:
-	ld hl, $0270
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_430f7
 .asm_9dfe3:
 	ret

@@ -280,8 +280,7 @@ Func_8a480:
 	scall FadeInAudio
 	playmusic SONG_WORLD_MAP
 	face_player -$01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld c, $0e
 	ld e, $0d
 	ld a, $0c

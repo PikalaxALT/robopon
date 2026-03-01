@@ -262,14 +262,12 @@ Func_d121f:
 
 .asm_d13c9: ; d13c9 (34:53c9)
 	writetext TreeBitstreamText_45a76
-	ld hl, $218
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45aff
 	jp .asm_d13fc
 
 .asm_d13d8: ; d13d8 (34:53d8)
 	writetext TreeBitstreamText_45a76
-	ld hl, $241
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45b10
 	jp .asm_d13fc
 
 .asm_d13e7: ; d13e7 (34:53e7)

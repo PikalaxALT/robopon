@@ -321,7 +321,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	hideperson $1
 	hideperson $2
 	playsfx $36
-	script_sleep $1e
+	script_sleep 30
 	scall WaitEmote
 	loademote $1, $2, $20
 	playsfx $36
@@ -338,7 +338,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	loademote $1, $2, $1
 	hideperson 0
 	scall WaitEmote
-	script_sleep $3c
+	script_sleep 60
 	showperson 0
 	scall HideEmote
 	sprite_face $0, 0
@@ -346,21 +346,21 @@ Func_814c1: ; 814c1 (20:54c1)
 	sprite_face $2, 0
 	sprite_face $3, 0
 	sprite_face $2, 0
-	script_sleep $1e
+	script_sleep 30
 	writenpctext TreeBitstreamText_3911a
 	writetext TreeBitstreamText_3914e
 	xor a
 	scall NamingScreen
 	writenpctext TreeBitstreamText_39167
 	writenpctext TreeBitstreamText_3917e
-	script_sleep $3c
+	script_sleep 60
 	loademote $1, $1, $5
 	ld e, $d
 	ld a, $15
 	scall MoveEmote
 	playsfx $28
 	scall WaitEmote
-	script_sleep $1e
+	script_sleep 30
 	scall HideEmote
 	writenpctext TreeBitstreamText_391fd
 	move_person 0, Data_814bb, 0
@@ -423,7 +423,7 @@ Func_81607:
 	playsfx $2e
 	scall WaitNPCStep
 	hideperson $1
-	script_sleep $1e
+	script_sleep 30
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
 	checkevent $3
@@ -443,7 +443,7 @@ Func_81607:
 .asm_816da: ; 816da (20:56da)
 	playsfx $69
 	writenpctext TreeBitstreamText_39718
-	script_sleep $1e
+	script_sleep 30
 	sprite_face FACE_LEFT, 0
 	sprite_face FACE_RIGHT, $1
 	playmusic SONG_NONE
@@ -485,16 +485,16 @@ Func_8172f: ; 8172f (20:572f)
 	scall Func_80080
 	writenpctext TreeBitstreamText_397dc
 	writenpctext TreeBitstreamText_397ed
-	script_sleep $1e
+	script_sleep 30
 	playmusic SONG_ENCOUNTER_UNKNOWN
 	move_person $3, Data_81727, 0
 	scall WaitNPCStep
-	script_sleep $1e
+	script_sleep 30
 	move_player $1, Data_81723
 	scall WaitNPCStep
 	ld a, $2
 	scall PlayerFace
-	script_sleep $1e
+	script_sleep 30
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
 	writenpctext TreeBitstreamText_398d5
@@ -597,7 +597,7 @@ Func_81811:
 .asm_81910: ; 81910 (20:5910)
 	playsfx $69
 	writenpctext TreeBitstreamText_39847
-	script_sleep $1e
+	script_sleep 30
 	sprite_face $2, $3
 	sprite_face $0, $4
 	playmusic SONG_NONE

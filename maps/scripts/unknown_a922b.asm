@@ -245,17 +245,14 @@ Func_a93b6:
 	scall Func_80f02
 	playsfx $65
 	scall StartShakingScreen
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	loademote $01, $01, $05
 	playsfx $24
 	scall WaitEmote
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	scall HideEmote
 	scall StopShakingScreen
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 .asm_a93ee:
 	cp $05
@@ -269,8 +266,7 @@ Func_a93b6:
 	jp .asm_a93ee
 .asm_a9400:
 	scall StartShakingScreen
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $45
 	loademote $01, $04, $12
 	ld e, $16
@@ -281,8 +277,7 @@ Func_a93b6:
 	scall Func_80f02
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $45
 	loademote $01, $04, $12
 	ld e, $16
@@ -295,8 +290,7 @@ Func_a93b6:
 	scall WaitEmote
 	scall HideEmote
 	scall StopShakingScreen
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 .asm_a9473:
 	cp $02
@@ -310,8 +304,7 @@ Func_a93b6:
 	jp .asm_a9473
 .asm_a9485:
 	scall StartShakingScreen
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	loademote $01, $08, $12
 	ld e, $16
 	ld a, $17
@@ -322,8 +315,7 @@ Func_a93b6:
 	call Func_a933a
 	scall Func_80f02
 	scall WaitEmote
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	scall HideEmote
 	scall StopShakingScreen
 	xor a
@@ -338,11 +330,9 @@ Func_a93b6:
 	inc a
 	jp .asm_a94c9
 .asm_a94da:
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_player $01, Data_a93b2
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld l, $0f
 	push hl
 	ld c, $14
@@ -370,21 +360,17 @@ Func_a94fe:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_a9596
-	ld hl, $0415
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44c92
 	ld a, $83
 	scall Func_80e7d
 	cp $01
 	jp nz, .asm_a958d
-	ld hl, $0294
-	scall PrintTextWithNPCName
-	ld hl, $0400
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_44d13
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_a957c
 	playsfx $68
-	ld hl, $040a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44d53
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -414,14 +400,12 @@ ENDC
 	jp .asm_a958a
 .asm_a957c:
 	playsfx $69
-	ld hl, $040b
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44dc8
 	jp .asm_a95d4
 .asm_a958a:
 	jp .asm_a9596
 .asm_a958d:
-	ld hl, $046e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp .asm_a95d4
 .asm_a9596:
 	jp .asm_a95af
@@ -432,8 +416,7 @@ ENDC
 	ld [hl], a
 	cp $ff
 	jp z, .asm_a95af
-	ld hl, $0140
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
 	jp .asm_a95d4
 .asm_a95af:
 	ld hl, sp+$00
@@ -443,14 +426,11 @@ ENDC
 	ld a, [wc796]
 	cp $0f
 	jp nz, .asm_a95c8
-	ld hl, $0430
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44df3
 	jp .asm_a95d4
 .asm_a95c8:
-	ld hl, $0415
-	scall PrintTextWithNPCName
-	ld hl, $042a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44c92
+	writenpctext TreeBitstreamText_44ceb
 .asm_a95d4:
 	pop bc
 	pop bc
@@ -488,8 +468,7 @@ Func_a95d7:
 	scall FadeInAudio
 	playmusic $14
 	face_player $0a
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld c, $0d
 	ld e, $14
 	ld a, $0a
@@ -514,7 +493,6 @@ Func_a95d7:
 	hideperson $0a
 	jp .asm_a96de
 .asm_a96d8:
-	ld hl, $015c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f79e
 .asm_a96de:
 	ret

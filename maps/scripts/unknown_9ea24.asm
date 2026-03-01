@@ -182,27 +182,21 @@ Func_9eb3c:
 	jp z, .asm_9ec22
 	cp $01
 	jp nz, .asm_9ec43
-	ld hl, $028b
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_43f51
 	jp .asm_9ec43
 .asm_9ec22:
-	ld hl, $028a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_43ed7
 	jp .asm_9ec43
 .asm_9ec2b:
-	ld hl, $0289
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_43e7a
 	jp .asm_9ec43
 .asm_9ec34:
-	ld hl, $0288
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_43dee
 	jp .asm_9ec43
 .asm_9ec3d:
-	ld hl, $0287
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_43d8e
 .asm_9ec43:
-	ld hl, $032c
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_9ecf8
 	startbattle Data_9ecfa, Data_9eb13
@@ -301,8 +295,7 @@ Func_9ed0f:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_9ed86
-	ld hl, $032d
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_9ed83
 	ld a, [wPlayerFacing]
@@ -316,19 +309,16 @@ Func_9ed0f:
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	call Func_9ee27
 .asm_9ed83:
 	jp .asm_9ed8c
 .asm_9ed86:
-	ld hl, $0377
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 .asm_9ed8c:
 	jp .asm_9ed95
 .asm_9ed8f:
-	ld hl, $0376
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 .asm_9ed95:
 	ret
 
@@ -365,8 +355,7 @@ Func_9eda0:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_9ee17
-	ld hl, $032d
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_9ee14
 	ld a, [wPlayerFacing]
@@ -380,19 +369,16 @@ Func_9eda0:
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	call Func_9ee27
 .asm_9ee14:
 	jp .asm_9ee1d
 .asm_9ee17:
-	ld hl, $0377
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 .asm_9ee1d:
 	jp .asm_9ee26
 .asm_9ee20:
-	ld hl, $0376
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 .asm_9ee26:
 	ret
 

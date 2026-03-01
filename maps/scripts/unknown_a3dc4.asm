@@ -63,13 +63,11 @@ ELIF DEF(STAR)
 ENDC
 
 Func_a3e3c:
-	ld hl, $043e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45bb0
 	xor a
 	ld [wc7da], a
 	scall Func_80f02
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_player $01, Data_a3e09
 	scall WaitNPCStep
 	startbattle Data_a3f51, Data_a3e13
@@ -77,16 +75,14 @@ Func_a3e3c:
 	jp nz, label_a3e6a
 	ret
 label_a3e6a:
-	ld hl, $043f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45c00
 	playmusic SONG_NONE
 	playmusic $18
 	move_person 0, Data_a3e0d, 1
 	scall WaitNPCStep
 	hideperson 0
 	playmusic $12
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	loademote $01, $01, $05
 	ld e, $06
 	ld a, $05
@@ -94,8 +90,7 @@ label_a3e6a:
 	playsfx $28
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $5e
 	loademote $02, $02, $08
 	ld e, $05
@@ -118,8 +113,7 @@ label_a3e6a:
 	scall WaitNPCStep
 	hideperson $01
 	playsfx $2a
-	ld hl, $0440
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45c64
 	ld c, $28
 	ld e, $00
 IF DEF(SUN)

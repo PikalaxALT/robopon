@@ -70,21 +70,17 @@ Func_951e4:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_95284
-	hltext_tree_pointer TreeBitstreamText_45277
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45277
 	ld a, $4a
 	scall Func_80e7d
 	cp $01
 	jp nz, .asm_9527b
-	hltext_tree_pointer TreeBitstreamText_4531c
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_458e0
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_4531c
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_95262
 	playsfx $68
-	hltext_tree_pointer TreeBitstreamText_4535e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4535e
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -107,8 +103,7 @@ Func_951e4:
 	jp .asm_95278
 .asm_95262:
 	playsfx $69
-	hltext_tree_pointer TreeBitstreamText_453ee
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_453ee
 	ld e, $03
 	ld hl, sp+$03
 	ld a, [hl]
@@ -117,8 +112,7 @@ Func_951e4:
 .asm_95278:
 	jp .asm_95284
 .asm_9527b:
-	hltext_tree_pointer TreeBitstreamText_45a40
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp .asm_95429
 .asm_95284:
 	jp .asm_953d4
@@ -132,21 +126,17 @@ Func_951e4:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_95316
-	hltext_tree_pointer TreeBitstreamText_45277
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45277
 	ld a, $6f
 	scall Func_80e7d
 	cp $01
 	jp nz, .asm_9530d
-	hltext_tree_pointer TreeBitstreamText_4547f
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_458e0
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_4547f
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_952f4
 	playsfx $68
-	hltext_tree_pointer TreeBitstreamText_454c0
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_454c0
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -169,8 +159,7 @@ Func_951e4:
 	jp .asm_9530a
 .asm_952f4:
 	playsfx $69
-	hltext_tree_pointer TreeBitstreamText_453ee
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_453ee
 	ld e, $03
 	ld hl, sp+$03
 	ld a, [hl]
@@ -179,8 +168,7 @@ Func_951e4:
 .asm_9530a:
 	jp .asm_95316
 .asm_9530d:
-	hltext_tree_pointer TreeBitstreamText_45a40
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp .asm_95429
 .asm_95316:
 	jp .asm_953d4
@@ -224,44 +212,31 @@ Func_951e4:
 	cp $01
 	jp nz, .asm_953cb
 .asm_95371:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45acc
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45acc
 	jp .asm_953d1
 .asm_95380:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45add
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45add
 	jp .asm_953d1
 .asm_9538f:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45aee
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45aee
 	jp .asm_953d1
 .asm_9539e:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45aff
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45aff
 	jp .asm_953d1
 .asm_953ad:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45abb
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45abb
 	jp .asm_953d1
 .asm_953bc:
-	hltext_tree_pointer TreeBitstreamText_45a76
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45b20
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45b20
 	jp .asm_953d1
 .asm_953cb:
-	hltext_tree_pointer TreeBitstreamText_45277
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45277
 .asm_953d1:
 	jp .asm_95429
 .asm_953d4:
@@ -275,30 +250,24 @@ Func_951e4:
 	ld a, [wc796]
 	cp $06
 	jp c, .asm_953fb
-	hltext_tree_pointer TreeBitstreamText_45277
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_45418
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45277
+	writenpctext TreeBitstreamText_45418
 	jp .asm_95429
 .asm_953fb:
 	ld a, [wc796]
 	cp $0f
 	jp nz, .asm_9540c
-	hltext_tree_pointer TreeBitstreamText_45277
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45277
 	jp .asm_95429
 .asm_9540c:
 	ld a, [wc796]
 	cp $0b
 	jp c, .asm_9541d
-	hltext_tree_pointer TreeBitstreamText_45511
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45511
 	jp .asm_95429
 .asm_9541d:
-	hltext_tree_pointer TreeBitstreamText_45277
-	scall PrintTextWithNPCName
-	hltext_tree_pointer TreeBitstreamText_452cd
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45277
+	writenpctext TreeBitstreamText_452cd
 .asm_95429:
 	pop bc
 	pop bc
@@ -363,8 +332,7 @@ Func_9542c:
 	ld a, [wc790]
 	cp $05
 	jp nc, .asm_954f4
-	hltext_tree_pointer TreeBitstreamText_470c8
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_470c8
 	or a
 	jp nz, .asm_954f1
 	playmusic SONG_NONE
@@ -386,13 +354,11 @@ Func_9542c:
 .asm_954f1:
 	jp .asm_954fa
 .asm_954f4:
-	hltext_tree_pointer TreeBitstreamText_4714c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_4714c
 .asm_954fa:
 	jp .asm_95503
 .asm_954fd:
-	hltext_tree_pointer TreeBitstreamText_47136
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47136
 .asm_95503:
 	ret
 
@@ -406,8 +372,7 @@ Func_95504:
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
-	hltext_tree_pointer TreeBitstreamText_46e0b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46e0b
 	playmusic SONG_0A
 .asm_9552f:
 	ret
@@ -448,8 +413,7 @@ Func_95540:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_955ec
-	hltext_tree_pointer TreeBitstreamText_46f30
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_955e9
 	ld a, [wPlayerFacing]
@@ -488,13 +452,11 @@ Func_95540:
 .asm_955e9:
 	jp .asm_955f2
 .asm_955ec:
-	hltext_tree_pointer TreeBitstreamText_470f0
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 .asm_955f2:
 	jp .asm_955fb
 .asm_955f5:
-	hltext_tree_pointer TreeBitstreamText_470d8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 .asm_955fb:
 	ret
 
@@ -513,13 +475,10 @@ Func_955fc:
 	checkevent $0114
 	or a
 	jp nz, .asm_9564f
-	hltext_tree_pointer TreeBitstreamText_47722
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45fec
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47722
+	writetext TreeBitstreamText_45fec
 	playsfx $2a
-	hltext_tree_pointer TreeBitstreamText_45ffd
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01
 	ld a, $10
@@ -527,8 +486,7 @@ Func_955fc:
 	setevent $010a
 	jp .asm_95655
 .asm_9564f:
-	hltext_tree_pointer TreeBitstreamText_47722
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47722
 .asm_95655:
 	pop bc
 	ret
@@ -548,13 +506,10 @@ Func_95657:
 	checkevent $0114
 	or a
 	jp nz, .asm_956aa
-	hltext_tree_pointer TreeBitstreamText_47780
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45fec
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47780
+	writetext TreeBitstreamText_45fec
 	playsfx $2a
-	hltext_tree_pointer TreeBitstreamText_45ffd
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01
 	ld a, $10
@@ -562,8 +517,7 @@ Func_95657:
 	setevent $010b
 	jp .asm_956b0
 .asm_956aa:
-	hltext_tree_pointer TreeBitstreamText_47780
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47780
 .asm_956b0:
 	pop bc
 	ret
@@ -583,13 +537,10 @@ Func_956b2:
 	checkevent $0114
 	or a
 	jp nz, .asm_95705
-	hltext_tree_pointer TreeBitstreamText_478bb
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45fec
-	scall PrintTextStandard
+	writetext TreeBitstreamText_478bb
+	writetext TreeBitstreamText_45fec
 	playsfx $2a
-	hltext_tree_pointer TreeBitstreamText_45ffd
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01
 	ld a, $10
@@ -597,8 +548,7 @@ Func_956b2:
 	setevent $010c
 	jp .asm_9570b
 .asm_95705:
-	hltext_tree_pointer TreeBitstreamText_478bb
-	scall PrintTextStandard
+	writetext TreeBitstreamText_478bb
 .asm_9570b:
 	pop bc
 	ret
@@ -618,13 +568,10 @@ Func_9570d:
 	checkevent $0114
 	or a
 	jp nz, .asm_95760
-	hltext_tree_pointer TreeBitstreamText_47943
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_45fec
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47943
+	writetext TreeBitstreamText_45fec
 	playsfx $2a
-	hltext_tree_pointer TreeBitstreamText_45ffd
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01
 	ld a, $10
@@ -632,8 +579,7 @@ Func_9570d:
 	setevent $010d
 	jp .asm_95766
 .asm_95760:
-	hltext_tree_pointer TreeBitstreamText_47943
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47943
 .asm_95766:
 	pop bc
 	ret

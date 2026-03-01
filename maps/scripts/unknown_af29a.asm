@@ -37,8 +37,7 @@ Func_af29a:: ; af29a
 .asm_af2ca:
 	playmusic $08
 	scall Func_8001c
-	ld hl, $031e
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46bea
 	ret
 
 Data_af2d9:
@@ -99,12 +98,10 @@ Func_af34c:
 	checkevent $004e
 	or a
 	jp nz, .asm_af364
-	ld hl, $0145
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e99a
 	jp .asm_af384
 .asm_af364:
-	ld hl, $0146
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e9c4
 	setevent $004f
 	move_person 0, Data_af348, 1
 	scall WaitNPCStep

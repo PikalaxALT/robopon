@@ -365,8 +365,7 @@ Func_ceacc:: ; ceacc
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cecaf
-	ld hl, $00f8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47e17
 	jp .asm_cecb8
 .asm_cecaf:
 	ld hl, wc7de

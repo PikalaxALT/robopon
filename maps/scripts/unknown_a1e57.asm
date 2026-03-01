@@ -273,8 +273,7 @@ Func_a1e57:: ; a1e57
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a1fc6
-	ld hl, $00f8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47e17
 	jp .asm_a1fcf
 .asm_a1fc6:
 	ld hl, wc7de

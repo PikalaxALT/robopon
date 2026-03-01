@@ -10,8 +10,7 @@ Func_95c14:: ; 95c14
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	pop af
 	ld e, a
 	ld a, $01

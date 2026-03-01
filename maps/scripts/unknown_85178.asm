@@ -149,21 +149,21 @@ Data_852a4: ; 852a4
 	db $1c, $0b, $20, $0b, $20, $0a, $ff, $ff
 
 Func_852ac: ; 852ac (21:52ac)
-	script_sleep $3c
+	script_sleep 60
 	loademote $1, $1, $5
 	ld e, $f
 	ld a, $17
 	scall MoveEmote
 	playsfx $28
 	scall WaitEmote
-	script_sleep $3c
+	script_sleep 60
 	scall HideEmote
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	move_person 0, Data_85274, 0
 	move_person $1, Data_85278, 1
 	scall WaitNPCStep
-	script_sleep $3c
+	script_sleep 60
 	writenpctext TreeBitstreamText_399f1
 	writenpctext TreeBitstreamText_39a27
 	writenpctext TreeBitstreamText_39a42
@@ -184,7 +184,7 @@ Func_852ac: ; 852ac (21:52ac)
 	scall WaitNPCStep
 	sprite_face $2, 0
 	sprite_face $2, $1
-	script_sleep $3c
+	script_sleep 60
 	playmusic SONG_NONE
 	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_39a8f
@@ -206,7 +206,7 @@ Func_852ac: ; 852ac (21:52ac)
 	playsfx $33
 	sprite_face $3, $1
 	move_player $1, Data_85298
-	script_sleep $1e
+	script_sleep 30
 	playsfx $2e
 	scall WaitNPCStep
 	sprite_face $2, 0
@@ -219,7 +219,7 @@ Func_852ac: ; 852ac (21:52ac)
 	sprite_face $2, 0
 	sprite_face $2, $1
 	playsfx $5c
-	script_sleep $78
+	script_sleep 120
 	writenpctext TreeBitstreamText_39c6c
 	writenpctext TreeBitstreamText_39c19
 	playmusic SONG_NONE
@@ -260,7 +260,7 @@ Func_854aa:
 	or a
 	jp nz, .asm_8551c
 	writenpctext TreeBitstreamText_3a308
-	script_sleep $1e
+	script_sleep 30
 	startbattle Data_85572, Data_85450
 	or a
 	jp nz, .asm_854eb
@@ -287,7 +287,7 @@ Func_854aa:
 	cp $1
 	jp nz, .asm_85570
 	writenpctext TreeBitstreamText_3a349
-	script_sleep $1e
+	script_sleep 30
 	startbattle Data_8557a, Data_85479
 	or a
 	jp nz, .asm_85540
@@ -377,7 +377,7 @@ Func_855dc:
 	ld a, [hl]
 	cp $3
 	jp nz, .asm_8568d
-	script_sleep $1e
+	script_sleep 30
 	startbattle Data_856dc, Data_855ab
 	or a
 	jp nz, .asm_8565a
@@ -403,7 +403,7 @@ Func_855dc:
 	ld a, [hl]
 	cp $4
 	jp nz, .asm_856d9
-	script_sleep $1e
+	script_sleep 30
 	startbattle Data_856e4, Data_85582
 	or a
 	jp nz, .asm_856ab
@@ -494,7 +494,7 @@ Func_85746:
 	ld a, [hl]
 	cp $2
 	jp nz, .asm_857e3
-	script_sleep $1e
+	script_sleep 30
 	startbattle Data_8581e, Data_85715
 	or a
 	jp nz, .asm_857c4
@@ -512,7 +512,7 @@ Func_85746:
 	ld a, [hl]
 	cp $3
 	jp nz, .asm_8581b
-	script_sleep $1e
+	script_sleep 30
 	startbattle Data_85826, Data_856ec
 	or a
 	jp nz, .asm_85801

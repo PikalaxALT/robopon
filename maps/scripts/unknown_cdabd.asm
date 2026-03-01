@@ -298,8 +298,7 @@ Func_cdabd:: ; cdabd
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cdc01
-	ld hl, $00f8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47e17
 	jp .asm_cdc0a
 .asm_cdc01:
 	ld hl, wc7de

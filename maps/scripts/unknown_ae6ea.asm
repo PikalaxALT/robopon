@@ -31,8 +31,7 @@ Func_ae6ea:: ; ae6ea
 	jp nz, .asm_ae720
 	loadpeople $01, Data_ae6dc
 	scall Func_8001c
-	ld hl, $0315
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b8a
 	call Func_ae74c
 	setevent $0033
 	jp .asm_ae73b
@@ -42,8 +41,7 @@ Func_ae6ea:: ; ae6ea
 	loadwilds $05, Data_ae696
 	playmusic $08
 	scall Func_8001c
-	ld hl, $0315
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b8a
 .asm_ae73b:
 	ret
 
@@ -102,8 +100,7 @@ Func_ae74c:
 	playmusic $01
 	move_person 0, Data_ae748, 1
 	scall WaitNPCStep
-	ld hl, $0131
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e3db
 	ld e, $01
 	ld a, $01
 	scall PlayerStep
@@ -154,10 +151,8 @@ Func_ae74c:
 	playsfx $28
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $001e
-	scall ScriptSleep
-	ld hl, $0132
-	scall PrintTextWithNPCName
+	script_sleep 30
+	writenpctext TreeBitstreamText_3e43a
 	move_person 0, Data_ae744, 1
 	scall WaitNPCStep
 	hideperson 0

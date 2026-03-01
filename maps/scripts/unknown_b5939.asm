@@ -90,8 +90,7 @@ Func_b59d9:
 	ld a, e
 	cp $02
 	jp nz, .asm_b5a17
-	ld hl, $046c
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46d96
 	resetevent $00ff
 	xor a
 	scall Func_80653
@@ -115,8 +114,7 @@ Func_b5a18:
 	ld a, e
 	cp $02
 	jp nz, .asm_b5a56
-	ld hl, $0464
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46d45
 	resetevent $00fd
 	xor a
 	scall Func_80653
@@ -145,8 +143,7 @@ Func_b5a57:
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
-	ld hl, $0001
-	scall ScriptSleep
+	script_sleep 1
 	scall HideEmote
 	setevent $00fe
 	ret

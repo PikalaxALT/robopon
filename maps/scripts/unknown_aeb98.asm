@@ -49,8 +49,7 @@ Func_aeb98:: ; aeb98
 .asm_aebdb:
 	playmusic $08
 	scall Func_8001c
-	ld hl, $031a
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46bbe
 	ret
 
 Data_aebea:
@@ -118,8 +117,7 @@ Func_aec4d:
 	ld e, $01
 	xor a
 	scall PlayerStep
-	ld hl, $0142
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e8f3
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
@@ -145,18 +143,15 @@ Func_aec4d:
 	scall PlayerFace
 	sprite_face $03, $01
 .asm_aecbc:
-	ld hl, $0143
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e940
 	scall Func_81094
 	or a
 	jp nz, .asm_aecf8
 	setevent $00d4
 	call Func_aebfc
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	sprite_face $00, $01
-	ld hl, $0144
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e974
 	move_person $01, Data_aec49, 1
 	hideperson $01
 .asm_aecf8:

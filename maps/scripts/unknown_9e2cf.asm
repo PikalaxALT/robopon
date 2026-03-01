@@ -64,8 +64,7 @@ Func_9e305:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_9e3b9
-	ld hl, $032d
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_9e3b6
 	ld a, [wPlayerFacing]
@@ -104,12 +103,10 @@ Func_9e305:
 .asm_9e3b6:
 	jp .asm_9e3bf
 .asm_9e3b9:
-	ld hl, $0377
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 .asm_9e3bf:
 	jp .asm_9e3c8
 .asm_9e3c2:
-	ld hl, $0376
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 .asm_9e3c8:
 	ret

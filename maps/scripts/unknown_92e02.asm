@@ -55,8 +55,7 @@ Func_92e6d:
 	scall PlayerStep
 	playmusic SONG_NONE
 	playmusic $01
-	hltext_tree_pointer TreeBitstreamText_3be8e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3be8e
 	playmusic SONG_NONE
 	sprite_face $03, 0
 	loademote $01, $01, $10
@@ -64,8 +63,7 @@ Func_92e6d:
 	hideperson 0
 	playsfx $3d
 	scall WaitEmote
-	hltext_tree_pointer TreeBitstreamText_3bf25
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bf25
 	loademote $01, $02, $10
 	playsfx $34
 	scall WaitEmote
@@ -89,15 +87,13 @@ Func_92e6d:
 	playsfx $34
 	hideperson 0
 	scall WaitEmote
-	hltext_tree_pointer TreeBitstreamText_3bf4b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3bf4b
 	playmusic SONG_NONE
 	playmusic $1b
 	loademote $02, $04, $10
 	scall WaitEmote
 	playsfx $69
-	hltext_tree_pointer TreeBitstreamText_3bf50
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bf50
 	playmusic SONG_NONE
 	loademote $01, $02, $10
 	scall WaitEmote
@@ -122,15 +118,13 @@ Func_92e6d:
 	playsfx $34
 	hideperson 0
 	scall WaitEmote
-	hltext_tree_pointer TreeBitstreamText_3bf85
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bf85
 	playmusic SONG_NONE
 	playmusic $1b
 	loademote $02, $08, $10
 	scall WaitEmote
 	playsfx $69
-	hltext_tree_pointer TreeBitstreamText_3bf8e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bf8e
 	playmusic SONG_NONE
 	loademote $01, $02, $10
 	scall WaitEmote
@@ -157,8 +151,7 @@ Func_92e6d:
 	hideperson 0
 	scall WaitEmote
 	playsfx $68
-	hltext_tree_pointer TreeBitstreamText_3bfc1
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bfc1
 	hideperson $01
 	loademote $01, $20, $10
 	playsfx $4d

@@ -124,8 +124,7 @@ Func_8e66b:
 	scall MoveEmote
 	xor a
 	scall Func_80653
-	ld hl, $0096
-	scall ScriptSleep
+	script_sleep 150
 	playsfx $34
 	scall WaitEmote
 	ld a, $01
@@ -154,17 +153,13 @@ Func_8e66b:
 	playmusic SONG_NONE
 	playmusic $1b
 	loademote $01, $0f, $0e
-	ld hl, $005a
-	scall ScriptSleep
+	script_sleep 90
 	playsfx $2b
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $34
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $35
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $69
 	xor a
 	scall Func_80653

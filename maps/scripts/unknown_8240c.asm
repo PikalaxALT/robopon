@@ -124,7 +124,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld a, $3
 	call ChangeSprite_20
 	writenpctext TreeBitstreamText_3f60f
-	script_sleep $1e
+	script_sleep 30
 	ld e, $1
 	ld a, $3
 	call SetPersonVisibilityState_20
@@ -136,7 +136,7 @@ Func_824ca: ; 824ca (20:64ca)
 	sprite_face $0, $3
 	sprite_face $1, $3
 	sprite_face $2, $3
-	script_sleep $1e
+	script_sleep 30
 	move_person $3, Data_82440, 1
 	call WaitNPCStep_20
 	ld e, $0

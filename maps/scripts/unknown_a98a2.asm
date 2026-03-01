@@ -37,12 +37,10 @@ Func_a98c8:
 	cp $02
 	jp nz, .asm_a98f7
 	playsfx $31
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	scall StartShakingScreen
 	playsfx $64
-	ld hl, $005a
-	scall ScriptSleep
+	script_sleep 90
 	scall StopShakingScreen
 	ld l, $08
 	push hl

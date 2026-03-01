@@ -71,8 +71,7 @@ Func_af01b:: ; af01b
 .asm_af074:
 	playmusic $08
 	scall Func_8001c
-	ld hl, $031d
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46bdf
 	ret
 
 Func_af083:
@@ -217,20 +216,16 @@ Func_af161:
 	setevent $004e
 	playsfx $2b
 	hideperson 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $2b
 	hideperson $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $2b
 	hideperson $02
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $2b
 	hideperson $03
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ret
 
 Func_af1b1:
@@ -245,16 +240,13 @@ Func_af1b1:
 	checkevent $004e
 	or a
 	jp nz, .asm_af21d
-	ld hl, $013b
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e85a
 	ld a, $24
 	scall Func_80e5d
 	cp $01
 	jp nz, .asm_af214
-	ld hl, $013c
-	scall PrintTextWithNPCName
-	ld hl, $013d
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext TreeBitstreamText_3e87a
+	writenpctext_yesorno TreeBitstreamText_3e896
 	or a
 	jp nz, .asm_af20b
 	ld c, $01
@@ -262,22 +254,18 @@ Func_af1b1:
 	ld a, $24
 	scall Func_80d4d
 	setevent $004d
-	ld hl, $013e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e8a6
 	jp .asm_af211
 .asm_af20b:
-	ld hl, $013f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e8d4
 .asm_af211:
 	jp .asm_af21a
 .asm_af214:
-	ld hl, $013c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e87a
 .asm_af21a:
 	jp .asm_af223
 .asm_af21d:
-	ld hl, $0141
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e8e5
 .asm_af223:
 	pop bc
 	ret

@@ -114,58 +114,58 @@ Func_81e2b: ; 81e2b (20:5e2b)
 	scall Func_8001c
 	call WaitEmote_20
 	playsfx $67
-	script_sleep $3c
+	script_sleep 60
 	ld a, $66
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	ld a, $34
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	ld a, $35
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	call StartShakingScreen_20
-	script_sleep $1e
+	script_sleep 30
 	ld a, $38
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	ld a, $36
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	ld a, $3a
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	call StopShakingScreen_20
 	loademote $6, $2, $1f
 	call WaitEmote_20
 	writetext TreeBitstreamText_38fae
 	loademote $1, $4, $1f
-	script_sleep $2d
+	script_sleep 45
 	move_player $1, Data_81e23
 	call WaitEmote_20
 	ld a, $3b
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	ld a, $3c
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	call StartShakingScreen_20
-	script_sleep $1e
+	script_sleep 30
 	ld a, $39
 	call OverworldPlaySFX
-	script_sleep $1e
+	script_sleep 30
 	ld a, $3a
 	call OverworldPlaySFX
-	script_sleep $1e
-	script_sleep $1e
+	script_sleep 30
+	script_sleep 30
 	call StopShakingScreen_20
-	script_sleep $1
+	script_sleep 1
 	writetext TreeBitstreamText_38fbd
 	ld a, $1
 	scall Func_80653
-	script_sleep $1
+	script_sleep 1
 	call HideEmote_20
-	script_sleep $1e
+	script_sleep 30
 	move_player $1, Data_81e27
 	call WaitNPCStep_20
 	ret
@@ -234,7 +234,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	loademote $8, $1, $1f
 	scall Func_8001c
 	call WaitEmote_20
-	script_sleep $3c
+	script_sleep 60
 	playsfx $2e
 	ld e, $1
 	xor a
@@ -252,18 +252,18 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	xor a
 	call SetPersonVisibilityState_20
 	loademote $1, $4, $1f
-	script_sleep $2d
+	script_sleep 45
 	move_player $1, Data_81f37
 	call WaitEmote_20
 	xor a
 	call PlayerFace_20
 	ld a, $1
 	scall Func_80653
-	script_sleep $1
+	script_sleep 1
 	call HideEmote_20
-	script_sleep $1e
+	script_sleep 30
 	writetext TreeBitstreamText_3ecd6
-	script_sleep $1e
+	script_sleep 30
 	move_player $1, Data_81f3d
 	playsfx $2e
 	ld l, $1a

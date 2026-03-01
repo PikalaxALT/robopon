@@ -76,8 +76,7 @@ Func_b7b62:
 	sprite_face $3, $2
 	sprite_face $0, $2
 	sprite_face $1, $2
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $5b
 	showperson $3
 	sprite_face $1, $3
@@ -88,8 +87,7 @@ Func_b7b62:
 	sprite_face $2, $3
 	sprite_face $3, $3
 	sprite_face $0, $3
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $66
 	showperson $4
 	sprite_face $0, $4
@@ -100,12 +98,10 @@ Func_b7b62:
 	sprite_face $1, $4
 	sprite_face $2, $4
 	sprite_face $3, $4
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $3
 	scall PlayerFace
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	startbattle Data_b7d76, Data_b7ae3
 	or a
 	jp nz, Func_b7c69
@@ -120,12 +116,10 @@ Func_b7c69:
 	scall WaitEmote
 	scall HideEmote
 	hideperson $2
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $2
 	scall PlayerFace
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	startbattle Data_b7d7b, Data_b7b0c
 	or a
 	jp nz, Func_b7caa
@@ -140,12 +134,10 @@ Func_b7caa:
 	scall WaitEmote
 	scall HideEmote
 	hideperson $3
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $1
 	scall PlayerFace
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	startbattle Data_b7d80, Data_b7b35
 	or a
 	jp nz, Func_b7ceb
@@ -160,12 +152,10 @@ Func_b7ceb:
 	scall WaitEmote
 	scall HideEmote
 	hideperson $4
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 	scall PlayerFace
-	ld hl, $3c
-	scall ScriptSleep
+	script_sleep 60
 	writenpctext TreeBitstreamText_3de23
 	loademote $1, $1, $5
 	ld e, $a
@@ -241,8 +231,7 @@ Func_b7dba:
 
 Func_b7df7:
 	scall StopShakingScreen
-	ld hl, $3c
-	scall ScriptSleep
+	script_sleep 60
 	writenpctext TreeBitstreamText_3e04a
 	loademote $1, $1, $5
 	ld e, $a

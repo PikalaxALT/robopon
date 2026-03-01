@@ -105,8 +105,7 @@ ELIF DEF(STAR)
 ENDC
 
 Func_aa321:
-	ld hl, $010b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d831
 	startbattle Data_aa35f, Data_aa2f8
 	or a
 	jp nz, Func_aa33d
@@ -116,8 +115,7 @@ Func_aa321:
 Func_aa33d:
 	playmusic SONG_NONE
 	playmusic $04
-	ld hl, $010f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d897
 	move_person 0, Data_aa2f4, 1
 	scall WaitNPCStep
 	hideperson 0
@@ -141,8 +139,7 @@ ELIF DEF(STAR)
 ENDC
 
 Func_aa392:
-	ld hl, $010d
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d85e
 	startbattle Data_aa3d2, Data_aa369
 	or a
 	jp nz, .asm_aa3ae
@@ -151,8 +148,7 @@ Func_aa392:
 .asm_aa3ae:
 	playmusic SONG_NONE
 	playmusic $04
-	ld hl, $010f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d897
 	move_person $01, Data_aa365, 1
 	scall WaitNPCStep
 	hideperson $01

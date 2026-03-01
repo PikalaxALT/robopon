@@ -379,14 +379,12 @@ Func_8e2be:
 	jp nz, .asm_8e36d
 	playmusic SONG_NONE
 	showperson $0a
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	playsfx $30
 	call Func_8df6e
 	ld hl, Func_8df6e
 	scall Func_80f11
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	move_person $0a, Data_8e2b2, 1
 	scall WaitNPCStep
 	ld a, [wPlayerFacing]
@@ -435,8 +433,7 @@ Func_8e36e:
 	scall FadeInAudio
 	playmusic $14
 	face_player 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld c, $05
 	ld e, $04
 	ld a, $03

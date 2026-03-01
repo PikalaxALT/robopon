@@ -28,8 +28,7 @@ Func_b5bbb:: ; b5bbb
 	loadpeople $01, Data_b5bad
 	playmusic $09
 	scall Func_8001c
-	ld hl, $030e
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b3b
 	ret
 
 Func_b5be7:
@@ -43,8 +42,7 @@ Func_b5be7:
 	ld a, e
 	cp $02
 	jp nz, .asm_b5c2c
-	ld hl, $0327
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46daf
 	ld hl, sp+$00
 	ld a, [wMapX]
 	add a, $05

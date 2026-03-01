@@ -221,8 +221,7 @@ Func_bb5c2:
 	jp z, .asm_bb615
 	or a
 	jp nz, .asm_bb6fa
-	ld hl, $03e0
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_46496
 	or a
 	jp nz, .asm_bb60c
 	startbattle Data_bb6fc, Data_bb4f5
@@ -230,20 +229,16 @@ Func_bb5c2:
 	jp nz, .asm_bb603
 	jp .asm_bb6fa
 .asm_bb603:
-	ld hl, $03e4
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_464ff
 	jp .asm_bb6fa
 .asm_bb60c:
-	ld hl, $03e3
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_464f1
 	jp .asm_bb6fa
 .asm_bb615:
-	ld hl, $0352
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_463d7
 	or a
 	jp nz, .asm_bb646
-	ld hl, $015e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_471a6
 .asm_bb625:
 	ld de, Data_bb700
 	ld hl, Data_bb51e
@@ -255,20 +250,16 @@ Func_bb5c2:
 	jp nz, .asm_bb625
 	jp .asm_bb6fa
 .asm_bb63d:
-	ld hl, $03e2
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_46480
 	jp .asm_bb6fa
 .asm_bb646:
-	ld hl, $03e1
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4646b
 	jp .asm_bb6fa
 .asm_bb64f:
-	ld hl, $034f
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_46218
 	or a
 	jp nz, .asm_bb680
-	ld hl, $017a
-	scall PrintTextStandard
+	writetext TreeBitstreamText_471cf
 .asm_bb65f:
 	ld de, Data_bb706
 	ld hl, Data_bb547
@@ -280,20 +271,16 @@ Func_bb5c2:
 	jp nz, .asm_bb65f
 	jp .asm_bb6fa
 .asm_bb677:
-	ld hl, $045f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_46294
 	jp .asm_bb6fa
 .asm_bb680:
-	ld hl, $045e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_46285
 	jp .asm_bb6fa
 .asm_bb689:
-	ld hl, $0351
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_46330
 	or a
 	jp nz, .asm_bb6ba
-	ld hl, $016b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_471bb
 .asm_bb699:
 	ld de, Data_bb70b
 	ld hl, Data_bb570
@@ -305,20 +292,16 @@ Func_bb5c2:
 	jp nz, .asm_bb699
 	jp .asm_bb6fa
 .asm_bb6b1:
-	ld hl, $0463
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_463c3
 	jp .asm_bb6fa
 .asm_bb6ba:
-	ld hl, $0462
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_463ad
 	jp .asm_bb6fa
 .asm_bb6c3:
-	ld hl, $0350
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_462a0
 	or a
 	jp nz, .asm_bb6f4
-	ld hl, $015d
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47192
 .asm_bb6d3:
 	ld de, Data_bb712
 	ld hl, Data_bb599
@@ -330,12 +313,10 @@ Func_bb5c2:
 	jp nz, .asm_bb6d3
 	jp .asm_bb6fa
 .asm_bb6eb:
-	ld hl, $0461
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_46322
 	jp .asm_bb6fa
 .asm_bb6f4:
-	ld hl, $0460
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4630b
 .asm_bb6fa:
 	pop bc
 	ret

@@ -640,8 +640,7 @@ Data_b97c0:
 Func_b97c4:
 	ld a, $01
 	scall PlayerFace
-	ld hl, $0103
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d0e0
 	sprite_face $01, 0
 	ld e, $01
 	ld a, $01
@@ -652,13 +651,11 @@ Func_b97c4:
 	ld e, $01
 	ld a, $01
 	scall PlayerStep
-	ld hl, $0104
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d160
 	move_person $01, Data_b97ba, 0
 	scall WaitNPCStep
 	sprite_face $02, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $34
 	hideperson $01
 	ld e, $01
@@ -670,11 +667,9 @@ Func_b97c4:
 	move_person 0, Data_b97c0, 1
 	scall WaitNPCStep
 	sprite_face $03, 0
-	ld hl, $0105
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d187
 	playsfx $2a
-	ld hl, $0106
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d1c4
 	ld c, $00
 	ld e, $01
 	ld a, $2a

@@ -53,8 +53,7 @@ Func_971f5:
 	scall FadeInAudio
 	playmusic SONG_WORLD_MAP
 	face_player 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld c, $02
 	ld e, $01
 	xor a
@@ -79,8 +78,7 @@ Func_971f5:
 	hideperson 0
 	jp .asm_972e7
 .asm_972e1:
-	hltext_tree_pointer TreeBitstreamText_3f79e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f79e
 .asm_972e7:
 	ret
 
@@ -95,8 +93,7 @@ Func_97311:
 	or a
 	jp nz, .asm_97346
 	face_player -$01
-	hltext_tree_pointer TreeBitstreamText_472f0
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_472f0
 	or a
 	jp nz, .asm_97340
 	startbattle Data_97348, Data_972e8
@@ -104,12 +101,10 @@ Func_97311:
 	jp nz, .asm_97337
 	jp .asm_97346
 .asm_97337:
-	hltext_tree_pointer TreeBitstreamText_47319
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47319
 	jp .asm_97346
 .asm_97340:
-	hltext_tree_pointer TreeBitstreamText_47306
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47306
 .asm_97346:
 	pop bc
 	ret
@@ -129,8 +124,7 @@ Func_97379:
 	or a
 	jp nz, .asm_973ae
 	face_player -$01
-	hltext_tree_pointer TreeBitstreamText_472f0
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_472f0
 	or a
 	jp nz, .asm_973a8
 	startbattle Data_973b0, Data_97350
@@ -138,12 +132,10 @@ Func_97379:
 	jp nz, .asm_9739f
 	jp .asm_973ae
 .asm_9739f:
-	hltext_tree_pointer TreeBitstreamText_47319
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47319
 	jp .asm_973ae
 .asm_973a8:
-	hltext_tree_pointer TreeBitstreamText_47306
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47306
 .asm_973ae:
 	pop bc
 	ret
@@ -162,8 +154,7 @@ Func_973e1:
 	or a
 	jp nz, .asm_97416
 	face_player -$01
-	hltext_tree_pointer TreeBitstreamText_472f0
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_472f0
 	or a
 	jp nz, .asm_97410
 	startbattle Data_97418, Data_973b8
@@ -171,12 +162,10 @@ Func_973e1:
 	jp nz, .asm_97407
 	jp .asm_97416
 .asm_97407:
-	hltext_tree_pointer TreeBitstreamText_47319
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47319
 	jp .asm_97416
 .asm_97410:
-	hltext_tree_pointer TreeBitstreamText_47306
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47306
 .asm_97416:
 	pop bc
 	ret
@@ -191,8 +180,7 @@ Func_97420:
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, .asm_97436
-	ld hl, $0308
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4732b
 	jp .asm_97436
 .asm_97436:
 	ret
@@ -204,8 +192,7 @@ Func_97437:
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, .asm_9744d
-	ld hl, $0309
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_47337
 	jp .asm_9744d
 .asm_9744d:
 	ret
@@ -217,8 +204,7 @@ Func_9744e:
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, .asm_97464
-	ld hl, $030a
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_47343
 	jp .asm_97464
 .asm_97464:
 	ret

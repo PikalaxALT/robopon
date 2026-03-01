@@ -74,14 +74,14 @@ Data_81b3d: ; 81b3d
 Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call PlayerFace_20
-	script_sleep $1e
+	script_sleep 30
 	ld e, $1 ; freeze player
 	ld a, FACE_LEFT
 	call PlayerStep_20
 	ld e, $1
 	ld a, FACE_LEFT
 	call PlayerStep_20
-	script_sleep $1e
+	script_sleep 30
 	move_person 0, Data_81b29, 1
 	call WaitNPCStep_20
 	writenpctext TreeBitstreamText_38fc9
@@ -103,11 +103,11 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $1
 	call SetPersonVisibilityState_20
 	playsfx $34
-	script_sleep $3c
+	script_sleep 60
 	ld e, $1
 	xor a
 	call SpriteFace_20
-	script_sleep $1e
+	script_sleep 30
 	ld a, $3
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_3902d
@@ -119,10 +119,10 @@ Func_81b45: ; 81b45 (20:5b45)
 	xor a
 	call SetPersonVisibilityState_20
 	playsfx $34
-	script_sleep $1e
+	script_sleep 30
 	ld a, $2
 	call PlayerFace_20
-	script_sleep $1e
+	script_sleep 30
 	ld e, $0
 	xor a
 	call SpriteFace_20
@@ -143,7 +143,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	xor a
 	call SetPersonVisibilityState_20
 	playsfx $34
-	script_sleep $1e
+	script_sleep 30
 	; scroll screen 32 pixels right, leaving player frozen
 	ld e, $1
 	ld a, FACE_RIGHT
@@ -151,7 +151,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, $1
 	ld a, FACE_RIGHT
 	call PlayerStep_20
-	script_sleep $1e
+	script_sleep 30
 	ld a, $f
 	call FadeOutAudio_20
 	playmusic SONG_NONE
@@ -160,7 +160,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $2
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_390b4
-	script_sleep $1e
+	script_sleep 30
 	move_player $1, Data_81b39
 	call WaitNPCStep_20
 	writetext TreeBitstreamText_390d1

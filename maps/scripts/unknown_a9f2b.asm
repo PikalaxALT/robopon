@@ -41,12 +41,10 @@ Func_a9f59:
 	cp $02
 	jp nz, .asm_a9f88
 	playsfx $31
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	scall StartShakingScreen
 	playsfx $64
-	ld hl, $005a
-	scall ScriptSleep
+	script_sleep 90
 	scall StopShakingScreen
 	ld l, $15
 	push hl

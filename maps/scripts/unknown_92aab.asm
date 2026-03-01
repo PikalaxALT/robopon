@@ -79,8 +79,7 @@ Func_92b55: ; 92b55 (24:6b55)
 	jp Func_92b5e
 
 Func_92b58: ; 92b58 (24:6b58)
-	ld hl, $249
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b0b
 Func_92b5e: ; 92b5e (24:6b5e)
 	pop bc
 	ret
@@ -113,8 +112,7 @@ Func_92b90:
 
 Func_92bc6: ; 92bc6 (24:6bc6)
 	setevent $8f
-	ld hl, $249
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b0b
 	jp Func_92bdd
 
 Func_92bd7: ; 92bd7 (24:6bd7)
@@ -123,8 +121,7 @@ Func_92bdd: ; 92bdd (24:6bdd)
 	jp Func_92be6
 
 Func_92be0: ; 92be0 (24:6be0)
-	ld hl, $245
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42ada
 Func_92be6: ; 92be6 (24:6be6)
 	pop bc
 	ret

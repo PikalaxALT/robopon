@@ -162,8 +162,7 @@ Func_828df:
 	jp .asm_8298b
 
 .asm_82967: ; 82967 (20:6967)
-	ld hl, $487
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45ed5
 	move_player $1, Data_828d7
 	move_person $2, Data_828d3, 1
 	scall WaitNPCStep

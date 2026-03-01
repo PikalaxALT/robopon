@@ -360,7 +360,7 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	ld a, $7
 	scall MoveEmote
 	playsfx $65
-	script_sleep $3c
+	script_sleep 60
 	playsfx $43
 	scall WaitEmote
 	setevent $f1

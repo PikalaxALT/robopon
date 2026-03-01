@@ -49,8 +49,7 @@ Func_cb6d3:: ; cb6d3
 	loadpeople $01, Data_cb6c5
 	playmusic $07
 	scall Func_8001c
-	ld hl, $0302
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46ae0
 	ret
 
 Data_cb719:
@@ -100,16 +99,14 @@ Data_cb780:
 	db $00, $00, $00, $00, $00, $0c
 
 Func_cb7a9:
-	ld hl, $00db
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3ca99
 	startbattle Data_cb801, Data_cb780
 	or a
 	jp nz, Func_cb7bd
 	ret
 
 Func_cb7bd:
-	ld hl, $00dc
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3cac2
 	ld a, [wPlayerFacing]
 	cp $01
 	jp nz, .asm_cb7d7
@@ -139,8 +136,7 @@ Func_cb809:
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $0322
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46e0b
 	playmusic $07
 .asm_cb834:
 	ret

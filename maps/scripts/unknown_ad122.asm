@@ -88,8 +88,7 @@ Func_ad1c6:
 	scall WaitEmote
 	scall HideEmote
 	playsfx $65
-	ld hl, $0128
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e01f
 	scall StopShakingScreen
 	ld l, $0a
 	push hl
@@ -118,8 +117,7 @@ Func_ad225:
 	scall Func_80653
 	scall StartShakingScreen
 	scall Func_8001c
-	ld hl, $0078
-	scall ScriptSleep
+	script_sleep 120
 	playsfx $65
 	loademote $05, $02, $14
 	ld e, $05
@@ -127,14 +125,12 @@ Func_ad225:
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	showperson 0
 	move_person 0, Data_ad215, 1
 	scall WaitNPCStep
 	sprite_face $00, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $65
 	loademote $05, $02, $14
 	ld e, $05
@@ -142,8 +138,7 @@ Func_ad225:
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	ld a, $02
 	scall PlayerFace
 	ld a, $01

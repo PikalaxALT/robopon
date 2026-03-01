@@ -43,8 +43,7 @@ Func_af3e9:: ; af3e9
 .asm_af432:
 	playmusic $08
 	scall Func_8001c
-	ld hl, $031f
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46bf5
 	ret
 
 Data_af441:
@@ -67,20 +66,17 @@ Func_af46a:
 	checkevent $0050
 	or a
 	jp nz, .asm_af4a1
-	ld hl, $0147
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e9e1
 	startbattle Data_af4be, Data_af441
 	or a
 	jp nz, .asm_af490
 	jp .asm_af4bd
 .asm_af490:
 	setevent $0050
-	ld hl, $0148
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ea2f
 	jp .asm_af4bd
 .asm_af4a1:
-	ld hl, $0149
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af4bd
 	playsfx $5a
@@ -110,8 +106,7 @@ Func_af4c3:
 	scall Func_80e5d
 	or a
 	jp z, .asm_af4fc
-	ld hl, $0149
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af4f9
 	ld l, $1b
@@ -124,21 +119,18 @@ Func_af4c3:
 .asm_af4f9:
 	jp .asm_af502
 .asm_af4fc:
-	ld hl, $0148
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ea2f
 .asm_af502:
 	jp .asm_af537
 .asm_af505:
 	checkevent $0100
 	or a
 	jp nz, .asm_af520
-	ld hl, $033a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3eab5
 	setevent $0100
 	jp .asm_af537
 .asm_af520:
-	ld hl, $0149
-	scall PrintTextWithNPCNameAndYesNoBox
+	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af537
 	ld l, $1b

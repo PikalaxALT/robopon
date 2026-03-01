@@ -143,7 +143,7 @@ Func_83a1f:
 	or a
 	jp nz, .asm_83adb
 	playsfx $5c
-	script_sleep $78
+	script_sleep 120
 	writenpctext TreeBitstreamText_39c6c
 	writenpctext TreeBitstreamText_39c82
 	setevent $110

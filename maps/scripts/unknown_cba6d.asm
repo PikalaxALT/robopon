@@ -42,8 +42,7 @@ Func_cba6d:: ; cba6d
 .asm_cbaaa:
 	playmusic $07
 	scall Func_8001c
-	ld hl, $0304
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46af6
 	ret
 
 Data_cbab9:
@@ -64,8 +63,7 @@ Func_cbac1:
 	move_player $01, Data_cbab9
 	scall WaitNPCStep
 	playmusic $01
-	ld hl, $00df
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3cb2d
 	move_person 0, Data_cbabd, 1
 	scall WaitNPCStep
 	sprite_face $00, 0
@@ -99,7 +97,6 @@ Func_cbb24:
 	ld a, $1c
 	scall Func_80dff
 	pop bc
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 .asm_cbb5e:
 	ret

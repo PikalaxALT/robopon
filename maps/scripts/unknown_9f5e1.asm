@@ -54,11 +54,9 @@ Func_9f63b:
 	scall PlayerFace
 	ld a, $01
 	scall Func_80653
-	ld hl, $0001
-	scall ScriptSleep
+	script_sleep 1
 	scall HideEmote
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playmusic SONG_NONE
 	playmusic $13
 	setevent $00f9

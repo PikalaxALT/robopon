@@ -27,6 +27,5 @@ Func_ae8e7:: ; ae8e7
 	loadwilds $05, Data_ae8a1
 	playmusic $08
 	scall Func_8001c
-	ld hl, $0316
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b94
 	ret

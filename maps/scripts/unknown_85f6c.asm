@@ -207,7 +207,7 @@ Func_860c1:
 	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
-	script_sleep $3c
+	script_sleep 60
 	writenpctext TreeBitstreamText_3a024
 	jp .asm_86131
 
@@ -263,7 +263,7 @@ Func_8617b:
 	ld [wc797], a
 	playsfx $28
 	writetext TreeBitstreamText_3a272
-	script_sleep $3c
+	script_sleep 60
 	writenpctext TreeBitstreamText_3a151
 	jp .asm_861eb
 

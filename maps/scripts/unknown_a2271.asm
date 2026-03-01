@@ -275,8 +275,7 @@ Func_a2271:: ; a2271
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a23e0
-	ld hl, $00f8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47e17
 	jp .asm_a23e9
 .asm_a23e0:
 	ld hl, wc7de

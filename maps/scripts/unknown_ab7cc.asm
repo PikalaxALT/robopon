@@ -152,8 +152,7 @@ Func_ab8e1:
 	inc a
 	jp .asm_ab8e2
 .asm_ab8f3:
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	ld c, $15
 	ld e, $0f
 	ld a, $04
@@ -164,23 +163,19 @@ Func_ab904:
 	ld a, $04
 	scall MovePersonAndWait
 	scall WaitNPCStep
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	move_person $05, Data_ab8cd, 1
 	playsfx $2e
 	sprite_face $01, $05
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	sprite_face $03, $04
 	move_person $06, Data_ab8d1, 1
 	playsfx $2e
 	scall WaitNPCStep
 	sprite_face $03, $06
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $01, $04
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_person $04, Data_ab8d5, 1
 	scall WaitNPCStep
 	playsfx $62
@@ -207,8 +202,7 @@ Func_ab904:
 	sprite_face $03, $05
 	hideperson $05
 	playsfx $4e
-	ld hl, $0078
-	scall ScriptSleep
+	script_sleep 120
 	ld c, $15
 	ld e, $11
 	ld a, $03
@@ -216,27 +210,17 @@ Func_ab904:
 	move_person $03, Data_ab8d1, 1
 	scall WaitNPCStep
 	sprite_face $03, $03
-	ld hl, $003c
-	scall ScriptSleep
-	ld hl, $0115
-	scall PrintTextWithNPCName
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 60
+	writenpctext TreeBitstreamText_3d8f1
+	script_sleep 30
 	sprite_face $01, $04
-	ld hl, $0116
-	scall PrintTextWithNPCName
-	ld hl, $0117
-	scall PrintTextWithNPCName
-	ld hl, $0118
-	scall PrintTextWithNPCName
-	ld hl, $0119
-	scall PrintTextWithNPCName
-	ld hl, $011a
-	scall PrintTextWithNPCName
-	ld hl, $011b
-	scall PrintTextWithNPCName
-	ld hl, $011c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d95c
+	writenpctext TreeBitstreamText_3d9b8
+	writenpctext TreeBitstreamText_3d9f7
+	writenpctext TreeBitstreamText_3da77
+	writenpctext TreeBitstreamText_3da85
+	writenpctext TreeBitstreamText_3db5f
+	writenpctext TreeBitstreamText_3db7f
 	ld bc, Data_ab8c9
 Func_aba78:
 	ld e, $2a
@@ -250,11 +234,9 @@ Func_aba78:
 	playsfx $61
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $011d
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3dc1e
 	sprite_face $02, $04
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	sprite_face $02, $03
 	loademote $01, $01, $05
 	ld e, $0f
@@ -281,10 +263,8 @@ Func_aba78:
 	scall Func_80080
 	move_person $02, Data_ab8dd, 1
 	scall WaitNPCStep
-	ld hl, $011e
-	scall PrintTextWithNPCName
-	ld hl, $0120
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3dc47
+	writenpctext TreeBitstreamText_3dcbd
 	loademote $01, $02, $16
 	ld e, $0f
 	ld a, $10
@@ -295,8 +275,7 @@ Func_aba78:
 	scall WaitEmote
 	scall HideEmote
 	sprite_face $01, $04
-	ld hl, $011f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3dc61
 	loademote $01, $04, $16
 	ld e, $0f
 	ld a, $10
@@ -335,8 +314,7 @@ Func_abb74:: ; abb74
 	scall WaitEmote
 	showperson $03
 	scall HideEmote
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	loademote $01, $3f, $1d
 	ld e, $08
 	ld a, $10
@@ -347,18 +325,14 @@ Func_abb74:: ; abb74
 	showperson $02
 	showperson $03
 	scall HideEmote
-	ld hl, $03fe
-	scall PrintTextWithNPCName
-	ld hl, $03fc
-	scall PrintTextStandard
+	writenpctext TreeBitstreamText_427de
+	writetext TreeBitstreamText_427b2
 	give_robot SEABEE, $1e, $00
 	cp $ff
 	jp nz, .asm_abc02
 .asm_abc02:
-	ld hl, $03ff
-	scall PrintTextWithNPCName
-	ld hl, $03fd
-	scall PrintTextStandard
+	writenpctext TreeBitstreamText_42876
+	writetext TreeBitstreamText_427ca
 	ld e, $00
 	ld a, $2c
 	scall Func_80d62
@@ -386,35 +360,29 @@ Func_abc22:
 .asm_abc44:
 	sprite_face $02, $03
 	move_player $01, Data_abc1e
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	checkevent $005a
 	or a
 	jp nz, .asm_abc6b
-	ld hl, $014f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ed13
 .asm_abc6b:
 	checkevent $0048
 	or a
 	jp nz, .asm_abc7b
-	ld hl, $0489
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ed88
 .asm_abc7b:
 	checkevent $005a
 	or a
 	jp nz, .asm_abc9c
-	ld hl, $03aa
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3ede7
 	ld c, $00
 	ld e, $01
 	ld a, $07
 	scall Func_80d4d
 	setevent $005a
 .asm_abc9c:
-	ld hl, $0150
-	scall PrintTextWithNPCName
-	ld hl, $003c
-	scall ScriptSleep
+	writenpctext TreeBitstreamText_3ee04
+	script_sleep 60
 .asm_abca8:
 	ld a, [wRTCTicker]
 	cp $11
@@ -461,12 +429,10 @@ Func_abc22:
 	xor a
 	call FarCall
 	scall Func_80f02
-	ld hl, $0393
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ee24
 	xor a
 	scall Func_8103e
-	ld hl, $0394
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3ee49
 	resetevent $00e1
 	resetevent $00e2
 	resetevent $00e3
@@ -554,8 +520,7 @@ Func_abe67:
 	scall FadeInAudio
 	playmusic $14
 	face_player 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld c, $11
 	ld e, $10
 	ld a, $0f
@@ -580,8 +545,7 @@ Func_abe67:
 	hideperson 0
 	jp .asm_abf5a
 .asm_abf54:
-	ld hl, $015c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f79e
 .asm_abf5a:
 	ret
 
@@ -592,11 +556,9 @@ Func_abf5b:
 	checkevent $0048
 	or a
 	jp nz, .asm_abf73
-	ld hl, $0139
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e770
 	jp .asm_abf79
 .asm_abf73:
-	ld hl, $0419
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_42899
 .asm_abf79:
 	ret

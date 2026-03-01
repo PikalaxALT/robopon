@@ -37,8 +37,7 @@ Func_a544c:: ; a544c
 	ld a, $0a
 	ld [wc7e2], a
 	scall Func_8001c
-	ld hl, $0307
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b14
 	ret
 
 Func_a549d:
@@ -48,19 +47,16 @@ Func_a549d:
 	checkevent $0017
 	or a
 	jp nz, .asm_a54ea
-	ld hl, $00fe
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3cf5a
 	playsfx $2a
-	ld hl, $00ff
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d001
 	ld c, $00
 	ld e, $01
 	ld a, $22
 	scall Func_80d4d
 	cp $ff
 	jp nz, .asm_a54df
-	ld hl, $0290
-	scall PrintTextStandard
+	writetext TreeBitstreamText_446dc
 	ld c, $02
 	ld e, $01
 	ld a, $22
@@ -86,13 +82,11 @@ Func_a5500:
 	or a
 	jp nz, .asm_a5533
 	showperson $01
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	move_person $01, Data_a54f2, 1
 	scall WaitNPCStep
 	sprite_face $02, $01
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	hideperson $01
 .asm_a5533:
 	ret
@@ -127,8 +121,7 @@ Func_a553a:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_a55aa
-	ld hl, $032d
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_a55a7
 	ld a, [wPlayerFacing]
@@ -150,13 +143,11 @@ Func_a553a:
 .asm_a55a7:
 	jp .asm_a55b0
 .asm_a55aa:
-	ld hl, $0377
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 .asm_a55b0:
 	jp .asm_a55b9
 .asm_a55b3:
-	ld hl, $0376
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 .asm_a55b9:
 	ret
 
@@ -191,8 +182,7 @@ Func_a55c0:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_a5630
-	ld hl, $032d
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_a562d
 	ld a, [wPlayerFacing]
@@ -214,13 +204,11 @@ Func_a55c0:
 .asm_a562d:
 	jp .asm_a5636
 .asm_a5630:
-	ld hl, $0377
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 .asm_a5636:
 	jp .asm_a563f
 .asm_a5639:
-	ld hl, $0376
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 .asm_a563f:
 	ret
 

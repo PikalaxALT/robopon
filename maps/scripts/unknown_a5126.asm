@@ -59,8 +59,7 @@ Func_a517c:: ; a517c
 	scall Func_80653
 	loademote $01, $01, $11
 	scall WaitEmote
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	pop af
 	push af
 	cp $02
@@ -69,30 +68,22 @@ Func_a517c:: ; a517c
 	jp z, .asm_a51d6
 	or a
 	jp nz, .asm_a5223
-	ld hl, $001e
-	scall ScriptSleep
-	ld hl, $0332
-	scall PrintTextWithNPCName
-	ld hl, $003c
-	scall ScriptSleep
-	ld hl, $0336
-	scall PrintTextWithNPCName
+	script_sleep 30
+	writenpctext TreeBitstreamText_46f46
+	script_sleep 60
+	writenpctext TreeBitstreamText_46fa5
 	jp .asm_a5223
 .asm_a51d6:
 	loademote $01, $02, $11
 	scall WaitEmote
-	ld hl, $0333
-	scall PrintTextWithNPCName
-	ld hl, $003c
-	scall ScriptSleep
-	ld hl, $0336
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_46f5e
+	script_sleep 60
+	writenpctext TreeBitstreamText_46fa5
 	jp .asm_a5223
 .asm_a51f7:
 	loademote $01, $02, $11
 	scall WaitEmote
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	playsfx $28
 	loademote $01, $04, $11
 	playmusic SONG_NONE
@@ -104,8 +95,7 @@ Func_a517c:: ; a517c
 	cp $02
 	jp nz, .asm_a5247
 	playsfx $45
-	ld hl, $032e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_46f3e
 	ld l, $18
 	push hl
 	ld c, $13
@@ -154,20 +144,16 @@ Func_a5264:
 .asm_a5293:
 	move_person 0, Data_a5256, 1
 	scall WaitNPCStep
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	sprite_face $01, 0
 	ld a, $03
 	scall PlayerFace
-	ld hl, $001e
-	scall ScriptSleep
-	ld hl, $0109
-	scall PrintTextWithNPCName
+	script_sleep 30
+	writenpctext TreeBitstreamText_3d302
 	ld a, $01
 	scall FadeInAudio
 	playmusic $1b
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
@@ -179,17 +165,13 @@ Func_a5264:
 	hideperson 0
 	xor a
 	scall Func_80653
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	playsfx $46
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $46
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $46
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	scall WaitEmote
 	showperson 0
 	ld a, $01
@@ -201,8 +183,7 @@ Func_a5264:
 	ld e, $01
 	xor a
 	scall PlayerStep
-	ld hl, $010a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3d354
 	scall StartShakingScreen
 	playsfx $65
 	playmusic SONG_NONE
@@ -247,13 +228,11 @@ Func_a5398:
 	scall Func_80e5d
 	or a
 	jp z, .asm_a53d7
-	ld hl, $0334
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f73
 	or a
 	jp nz, .asm_a53d4
 	playsfx $45
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld l, $18
 	push hl
 	ld c, $13
@@ -264,7 +243,6 @@ Func_a5398:
 .asm_a53d4:
 	jp .asm_a53dd
 .asm_a53d7:
-	ld hl, $0335
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46f8a
 .asm_a53dd:
 	ret

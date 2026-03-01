@@ -46,8 +46,7 @@ Func_92c92:: ; 92c92
 .asm_92cc6:
 	playmusic $08
 	scall Func_8001c
-	ld hl, $03f2
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46cf6
 	ret
 
 Data_92cd5:
@@ -64,10 +63,8 @@ Func_92cfe:
 	checkevent $0090
 	or a
 	jp nz, .asm_92d4e
-	hltext_tree_pointer TreeBitstreamText_42b16
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_46f28
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42b16
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_92d45
 	startbattle Data_92d56, Data_92cd5
@@ -76,17 +73,14 @@ Func_92cfe:
 	jp .asm_92d54
 .asm_92d34:
 	setevent $0090
-	hltext_tree_pointer TreeBitstreamText_42b16
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b16
 	jp .asm_92d4b
 .asm_92d45:
-	hltext_tree_pointer TreeBitstreamText_42b16
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b16
 .asm_92d4b:
 	jp .asm_92d54
 .asm_92d4e:
-	hltext_tree_pointer TreeBitstreamText_42b16
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b16
 .asm_92d54:
 	pop bc
 	ret
@@ -107,11 +101,9 @@ Func_92d5c:
 	scall Func_80e5d
 	cp $01
 	jp nz, .asm_92daa
-	hltext_tree_pointer TreeBitstreamText_39e1f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_39e1f
 	playsfx $2a
-	hltext_tree_pointer TreeBitstreamText_39e65
-	scall PrintTextStandard
+	writetext TreeBitstreamText_39e65
 	setevent $0014
 	ld c, $01
 	ld e, $01
@@ -123,13 +115,11 @@ Func_92d5c:
 	scall Func_80d4d
 	jp .asm_92db0
 .asm_92daa:
-	hltext_tree_pointer TreeBitstreamText_39e71
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_39e71
 .asm_92db0:
 	jp .asm_92db9
 .asm_92db3:
-	hltext_tree_pointer TreeBitstreamText_39e8c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_39e8c
 .asm_92db9:
 	pop bc
 	ret

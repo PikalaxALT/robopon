@@ -25,6 +25,5 @@ Func_a3b2f:: ; a3b2f
 	loadwilds $05, Data_a3ae9
 	playmusic $08
 	scall Func_8001c
-	ld hl, $041f
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4695b
 	ret

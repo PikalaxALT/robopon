@@ -210,8 +210,7 @@ Func_aa6ee:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_aa7a2
-	ld hl, $032d
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_aa79f
 	ld a, [wPlayerFacing]
@@ -250,13 +249,11 @@ Func_aa6ee:
 .asm_aa79f:
 	jp .asm_aa7a8
 .asm_aa7a2:
-	ld hl, $0377
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 .asm_aa7a8:
 	jp .asm_aa7b1
 .asm_aa7ab:
-	ld hl, $0376
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 .asm_aa7b1:
 	ret
 
@@ -273,13 +270,11 @@ Func_aa7b6:
 	ld a, [hl]
 	dec a
 	scall SpriteFace
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $03
 	scall PlayerFace
 	playsfx $69
-	ld hl, $01bc
-	scall PrintTextStandard
+	writetext TreeBitstreamText_40c1e
 	move_player $01, Data_aa7b2
 	ld e, $02
 	ld hl, sp+$01
@@ -303,13 +298,11 @@ Func_aa7f5:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $01
 	scall PlayerFace
 	playsfx $69
-	ld hl, $01bc
-	scall PrintTextStandard
+	writetext TreeBitstreamText_40c1e
 	move_player $01, Data_aa7f1
 	ld e, $02
 	ld hl, sp+$01
@@ -333,13 +326,11 @@ Func_aa834:
 	ld a, [hl]
 	dec a
 	scall SpriteFace
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $03
 	scall PlayerFace
 	playsfx $69
-	ld hl, $01bd
-	scall PrintTextStandard
+	writetext TreeBitstreamText_40c37
 	move_player $01, Data_aa830
 	ld e, $02
 	ld hl, sp+$01
@@ -368,21 +359,17 @@ Func_aa86f:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_aa907
-	ld hl, $0416
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44e62
 	ld a, $49
 	scall Func_80e7d
 	cp $01
 	jp nz, .asm_aa8fe
-	ld hl, $0295
-	scall PrintTextWithNPCName
-	ld hl, $0400
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_44f10
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_aa8ed
 	playsfx $68
-	ld hl, $040c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44f3f
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -405,14 +392,12 @@ Func_aa86f:
 	jp .asm_aa8fb
 .asm_aa8ed:
 	playsfx $69
-	ld hl, $040d
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44fed
 	jp .asm_aaaa4
 .asm_aa8fb:
 	jp .asm_aa907
 .asm_aa8fe:
-	ld hl, $046e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp .asm_aaaa4
 .asm_aa907:
 	jp .asm_aaa4f
@@ -426,21 +411,17 @@ Func_aa86f:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_aa991
-	ld hl, $0416
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44e62
 	ld a, $7c
 	scall Func_80e7d
 	cp $01
 	jp nz, .asm_aa988
-	ld hl, $0296
-	scall PrintTextWithNPCName
-	ld hl, $0400
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_450bb
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_aa977
 	playsfx $68
-	ld hl, $0432
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_450f4
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -463,14 +444,12 @@ Func_aa86f:
 	jp .asm_aa985
 .asm_aa977:
 	playsfx $69
-	ld hl, $0433
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_45194
 	jp .asm_aaaa4
 .asm_aa985:
 	jp .asm_aa991
 .asm_aa988:
-	ld hl, $046e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp .asm_aaaa4
 .asm_aa991:
 	jp .asm_aaa4f
@@ -514,44 +493,31 @@ Func_aa86f:
 	cp $01
 	jp nz, .asm_aaa46
 .asm_aa9ec:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $034d
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45acc
 	jp .asm_aaa4c
 .asm_aa9fb:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $0205
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45add
 	jp .asm_aaa4c
 .asm_aaa0a:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $020a
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45aee
 	jp .asm_aaa4c
 .asm_aaa19:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $034b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45abb
 	jp .asm_aaa4c
 .asm_aaa28:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $0241
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45b10
 	jp .asm_aaa4c
 .asm_aaa37:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $0244
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45b20
 	jp .asm_aaa4c
 .asm_aaa46:
-	ld hl, $0416
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44e62
 .asm_aaa4c:
 	jp .asm_aaaa4
 .asm_aaa4f:
@@ -565,30 +531,24 @@ Func_aa86f:
 	ld a, [wc796]
 	cp $05
 	jp c, .asm_aaa76
-	ld hl, $0416
-	scall PrintTextWithNPCName
-	ld hl, $0431
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44e62
+	writenpctext TreeBitstreamText_45042
 	jp .asm_aaaa4
 .asm_aaa76:
 	ld a, [wc796]
 	cp $0f
 	jp nz, .asm_aaa87
-	ld hl, $0416
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44e62
 	jp .asm_aaaa4
 .asm_aaa87:
 	ld a, [wc796]
 	cp $0d
 	jp c, .asm_aaa98
-	ld hl, $0434
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_451e9
 	jp .asm_aaaa4
 .asm_aaa98:
-	ld hl, $0416
-	scall PrintTextWithNPCName
-	ld hl, $01ba
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44e62
+	writenpctext TreeBitstreamText_44eb8
 .asm_aaaa4:
 	pop bc
 	pop bc
@@ -635,8 +595,7 @@ Func_aaad6:
 	ld a, $02
 	scall PlayerFace
 	hideperson $0c
-	ld hl, $0112
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d8ce
 	move_player $01, Data_aaad2
 	scall WaitNPCStep
 	setevent $00c2
@@ -658,16 +617,12 @@ Data_aab3b:
 Func_aab3f:
 	move_person $0c, Data_aab37, 1
 	scall WaitNPCStep
-	ld hl, $001e
-	scall ScriptSleep
-	ld hl, $01bf
-	scall PrintTextStandard
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
+	writetext TreeBitstreamText_40c77
+	script_sleep 30
 	move_person $0c, Data_aab3b, 1
 	scall WaitNPCStep
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld l, $06
 	push hl
 	ld c, $07

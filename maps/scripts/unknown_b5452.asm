@@ -54,8 +54,7 @@ Func_b5452:: ; b5452
 	loadpeople $01, Data_b5428
 	loadpeople $02, Data_b5436
 	scall Func_8001c
-	ld hl, $0314
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b7d
 	call Func_b5526
 	setevent $0034
 	jp .asm_b551f
@@ -80,20 +79,17 @@ Func_b5452:: ; b5452
 	xor a
 	scall Func_80653
 	scall Func_8001c
-	ld hl, $0314
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b7d
 	call Func_b55fd
 	jp .asm_b5513
 .asm_b550a:
 	scall Func_8001c
-	ld hl, $0314
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b7d
 .asm_b5513:
 	jp .asm_b551f
 .asm_b5516:
 	scall Func_8001c
-	ld hl, $0314
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46b7d
 .asm_b551f:
 	ret
 
@@ -109,8 +105,7 @@ Func_b5526:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $18
-	ld hl, $012a
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3e0d5
 	playmusic $18
 	move_person 0, Data_b5520, 1
 	scall WaitNPCStep
@@ -139,8 +134,7 @@ Func_b5576:
 	ld a, e
 	cp $02
 	jp nz, .asm_b55bb
-	ld hl, $0327
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46daf
 	ld hl, sp+$00
 	ld a, [wMapX]
 	add a, $05
@@ -173,8 +167,7 @@ Func_b55be:
 	ld a, e
 	cp $02
 	jp nz, .asm_b55fc
-	ld hl, $00b4
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46d3b
 	resetevent $00fe
 	xor a
 	scall Func_80653
@@ -203,8 +196,7 @@ Func_b55fd:
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
-	ld hl, $0001
-	scall ScriptSleep
+	script_sleep 1
 	scall HideEmote
 	setevent $00ff
 	ret

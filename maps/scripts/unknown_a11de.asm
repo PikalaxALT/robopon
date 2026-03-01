@@ -172,21 +172,17 @@ Func_a12b1:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_a1349
-	ld hl, $0414
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4498a
 	ld a, $32
 	scall Func_80e7d
 	cp $01
 	jp nz, .asm_a1340
-	ld hl, $0292
-	scall PrintTextWithNPCName
-	ld hl, $0400
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_44a2d
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_a132f
 	playsfx $68
-	ld hl, $0408
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44a7f
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -210,16 +206,14 @@ Func_a12b1:
 
 .asm_a132f:
 	playsfx $69
-	ld hl, $0409
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44af6
 	jp .asm_a14e6
 
 .asm_a133d:
 	jp .asm_a1349
 
 .asm_a1340:
-	ld hl, $046e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp .asm_a14e6
 
 .asm_a1349:
@@ -235,21 +229,17 @@ Func_a12b1:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_a13d3
-	ld hl, $0414
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4498a
 	ld a, $7e
 	scall Func_80e7d
 	cp $01
 	jp nz, .asm_a13ca
-	ld hl, $0293
-	scall PrintTextWithNPCName
-	ld hl, $0400
-	scall PrintTextWithYesNoBox
+	writenpctext TreeBitstreamText_44b74
+	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_a13b9
 	playsfx $68
-	ld hl, $042d
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44bcf
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -273,16 +263,14 @@ Func_a12b1:
 
 .asm_a13b9:
 	playsfx $69
-	ld hl, $042e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44c2a
 	jp .asm_a14e6
 
 .asm_a13c7:
 	jp .asm_a13d3
 
 .asm_a13ca:
-	ld hl, $046e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a40
 	jp .asm_a14e6
 
 .asm_a13d3:
@@ -328,50 +316,37 @@ Func_a12b1:
 	cp $01
 	jp nz, .asm_a1488
 .asm_a142e:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $034d
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45acc
 	jp .asm_a148e
 
 .asm_a143d:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $0205
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45add
 	jp .asm_a148e
 
 .asm_a144c:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $034b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45abb
 	jp .asm_a148e
 
 .asm_a145b:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $0218
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45aff
 	jp .asm_a148e
 
 .asm_a146a:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $0241
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45b10
 	jp .asm_a148e
 
 .asm_a1479:
-	ld hl, $0140
-	scall PrintTextStandard
-	ld hl, $0244
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45a76
+	writetext TreeBitstreamText_45b20
 	jp .asm_a148e
 
 .asm_a1488:
-	ld hl, $0414
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4498a
 .asm_a148e:
 	jp .asm_a14e6
 
@@ -386,33 +361,27 @@ Func_a12b1:
 	ld a, [$c796]
 	cp $04
 	jp c, .asm_a14b8
-	ld hl, $0414
-	scall PrintTextWithNPCName
-	ld hl, $042c
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4498a
+	writenpctext TreeBitstreamText_44b1c
 	jp .asm_a14e6
 
 .asm_a14b8:
 	ld a, [$c796]
 	cp $0f
 	jp nz, .asm_a14c9
-	ld hl, $0414
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4498a
 	jp .asm_a14e6
 
 .asm_a14c9:
 	ld a, [$c796]
 	cp $0e
 	jp c, .asm_a14da
-	ld hl, $042f
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_44c51
 	jp .asm_a14e6
 
 .asm_a14da:
-	ld hl, $0414
-	scall PrintTextWithNPCName
-	ld hl, $01e6
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_4498a
+	writenpctext TreeBitstreamText_449c9
 .asm_a14e6:
 	pop bc
 	pop bc
@@ -475,8 +444,7 @@ Func_a1514:
 	scall FadeInAudio
 	playmusic $14
 	face_player $07
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld c, $11
 	ld e, $0a
 	ld a, $03
@@ -501,7 +469,6 @@ Func_a1514:
 	hideperson $07
 	jp .asm_a161b
 .asm_a1615:
-	ld hl, $015c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f79e
 .asm_a161b:
 	ret

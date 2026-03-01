@@ -153,14 +153,14 @@ Func_86943: ; 86943 (21:6943)
 	hideperson $4
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
-	script_sleep $1e
+	script_sleep 30
 	move_person $5, Data_8693f, 1
 	scall WaitNPCStep
 	sprite_face $2, $5
-	script_sleep $1e
+	script_sleep 30
 	xor a
 	scall PlayerFace
-	script_sleep $1e
+	script_sleep 30
 	writenpctext TreeBitstreamText_3a481
 	setevent $7
 	ld a, $8
@@ -178,7 +178,7 @@ Func_86ac9:
 	sprite_face $0, $5
 	sprite_face $3, $5
 	sprite_face $2, $5
-	script_sleep $1e
+	script_sleep 30
 	sprite_face $3, $5
 	sprite_face $0, $5
 	sprite_face $1, $5
@@ -218,7 +218,7 @@ Func_86b0d:
 	scall FadeInAudio
 	playmusic SONG_WORLD_MAP
 	face_player 0
-	script_sleep $1e
+	script_sleep 30
 	ld c, $8
 	ld e, $7
 	ld a, $6

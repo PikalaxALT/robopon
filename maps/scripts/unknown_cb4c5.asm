@@ -45,8 +45,7 @@ Func_cb4c5:: ; cb4c5
 .asm_cb4f4:
 	playmusic $07
 	scall Func_8001c
-	ld hl, $0301
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46ad5
 	ret
 
 Data_cb503:
@@ -100,15 +99,13 @@ Func_cb534:
 	playmusic SONG_NONE
 	playmusic $1a
 	face_player 0
-	ld hl, $00dd
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3cae8
 	startbattle Data_cb606, Data_cb503
 	or a
 	jp nz, .asm_cb5a9
 	jp .asm_cb604
 .asm_cb5a9:
-	ld hl, $00de
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3cb14
 	sprite_face $00, 0
 	sprite_face $01, 0
 	sprite_face $02, 0

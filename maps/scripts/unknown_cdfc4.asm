@@ -380,8 +380,7 @@ Func_cdfc4:: ; cdfc4
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_ce1c7
-	ld hl, $00f8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47e17
 	jp .asm_ce1d0
 .asm_ce1c7:
 	ld hl, wc7de

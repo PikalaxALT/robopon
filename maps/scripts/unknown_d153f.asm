@@ -190,7 +190,7 @@ Func_d1680:
 	ld e, $0
 	ld a, $11
 	scall Func_806a0
-	script_sleep $3c
+	script_sleep 60
 	ld e, $2
 	ld hl, sp+$1
 	ld a, [hl]
@@ -277,7 +277,7 @@ Func_d1749: ; d1749 (34:5749)
 	move_player $1, Data_d172b
 	ld a, $2
 	scall PlayerFace
-	script_sleep $1e
+	script_sleep 30
 	face_player 0
 	checkevent $5d
 	cp $1
@@ -298,7 +298,7 @@ Func_d1749: ; d1749 (34:5749)
 	move_player $1, Data_d1731
 	ld a, $2
 	scall PlayerFace
-	script_sleep $1e
+	script_sleep 30
 	face_player 0
 	checkevent $5f
 	cp $1
@@ -319,7 +319,7 @@ Func_d1749: ; d1749 (34:5749)
 	move_player $1, Data_d1737
 	ld a, $2
 	scall PlayerFace
-	script_sleep $1e
+	script_sleep 30
 	face_player 0
 	checkevent $61
 	cp $1
@@ -371,7 +371,7 @@ Func_d18ba:: ; d18ba (34:58ba)
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-	script_sleep $3c
+	script_sleep 60
 	writenpctext TreeBitstreamText_47ddc
 	move_person 0, Data_d18ae, 1
 	scall WaitNPCStep
@@ -408,5 +408,5 @@ Func_d18ba:: ; d18ba (34:58ba)
 .asm_d194d: ; d194d (34:594d)
 	pop af
 	ld [wc791], a
-	script_sleep $3c
+	script_sleep 60
 	ret

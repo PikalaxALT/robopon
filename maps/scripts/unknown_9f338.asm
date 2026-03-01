@@ -29,8 +29,7 @@ Func_9f338:: ; 9f338
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
-	ld hl, $02e3
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46973
 	ret
 
 Func_9f369:
@@ -43,8 +42,7 @@ Func_9f369:
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $0322
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46e0b
 	playmusic $08
 .asm_9f394:
 	ret

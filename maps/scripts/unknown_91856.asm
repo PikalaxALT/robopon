@@ -68,8 +68,7 @@ Func_91856:: ; 91856
 	ld [wc7e2], a
 	playmusic $08
 	scall Func_8001c
-	ld hl, $01b5
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4691c
 	jp .asm_918f4
 .asm_918a0:
 	loadwarps $01, Data_9176f
@@ -92,8 +91,7 @@ Func_91856:: ; 91856
 	hideperson $03
 	hideperson $04
 	scall Func_8001c
-	ld hl, $01b5
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4691c
 .asm_918f4:
 	ret
 
@@ -124,8 +122,7 @@ Func_918f5:
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_91971
-	hltext_tree_pointer TreeBitstreamText_46f30
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_46f30
 	or a
 	jp nz, .asm_9196e
 	playmusic SONG_NONE
@@ -149,13 +146,11 @@ Func_918f5:
 .asm_9196e:
 	jp .asm_91977
 .asm_91971:
-	hltext_tree_pointer TreeBitstreamText_470f0
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470f0
 .asm_91977:
 	jp .asm_91980
 .asm_9197a:
-	hltext_tree_pointer TreeBitstreamText_470d8
-	scall PrintTextStandard
+	writetext TreeBitstreamText_470d8
 .asm_91980:
 	ret
 
@@ -195,15 +190,12 @@ Func_9198b:
 	cp $ff
 	jp z, .asm_91abe
 	push af
-	hltext_tree_pointer TreeBitstreamText_3bc83
-	scall PrintTextWithNPCName
-	ld hl, $001e
-	scall ScriptSleep
+	writenpctext TreeBitstreamText_3bc83
+	script_sleep 30
 	playmusic SONG_NONE
 	playmusic $19
 	showperson $03
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	loademote $01, $01, $29
 	ld e, $15
 	ld a, $02
@@ -211,22 +203,17 @@ Func_9198b:
 	hideperson $01
 	scall WaitEmote
 	hideperson $03
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $68
 	showperson $04
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	showperson $01
-	ld hl, $0001
-	scall ScriptSleep
+	script_sleep 1
 	scall HideEmote
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_player $01, Data_91987
 	scall WaitNPCStep
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	xor a
 	scall PlayerFace
 	call WaitVideoTransfer
@@ -245,35 +232,28 @@ Func_9198b:
 	pop hl
 	give_robot SPEEDY, l, $00
 	setevent $0047
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $2a
 	hideperson $04
-	hltext_tree_pointer TreeBitstreamText_3bd77
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_3bd02
-	scall PrintTextWithNPCName
+	writetext TreeBitstreamText_3bd77
+	writenpctext TreeBitstreamText_3bd02
 	playmusic SONG_NONE
 	playmusic $08
 	jp .asm_91ac4
 .asm_91abe:
-	hltext_tree_pointer TreeBitstreamText_3bd37
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bd37
 .asm_91ac4:
 	jp .asm_91acd
 .asm_91ac7:
-	hltext_tree_pointer TreeBitstreamText_3bd02
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bd02
 .asm_91acd:
 	jp .asm_91ad6
 .asm_91ad0:
-	hltext_tree_pointer TreeBitstreamText_3bbab
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bbab
 .asm_91ad6:
 	jp .asm_91adf
 .asm_91ad9:
-	hltext_tree_pointer TreeBitstreamText_3bbab
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bbab
 .asm_91adf:
 	ret
 
@@ -287,8 +267,7 @@ Func_91ae0:
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
-	hltext_tree_pointer TreeBitstreamText_46e0b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46e0b
 	playmusic $08
 .asm_91b0b:
 	ret
@@ -308,15 +287,11 @@ Func_91b0c:
 	checkevent $0114
 	or a
 	jp nz, .asm_91b65
-	hltext_tree_pointer TreeBitstreamText_3bc38
-	scall PrintTextStandard
-	ld hl, $001e
-	scall ScriptSleep
-	hltext_tree_pointer TreeBitstreamText_45fec
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3bc38
+	script_sleep 30
+	writetext TreeBitstreamText_45fec
 	playsfx $2a
-	hltext_tree_pointer TreeBitstreamText_45ffd
-	scall PrintTextStandard
+	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01
 	ld a, $10
@@ -324,8 +299,7 @@ Func_91b0c:
 	setevent $010f
 	jp .asm_91b6b
 .asm_91b65:
-	hltext_tree_pointer TreeBitstreamText_3bc38
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3bc38
 .asm_91b6b:
 	pop bc
 	ret

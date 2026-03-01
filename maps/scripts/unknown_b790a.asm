@@ -98,8 +98,7 @@ Func_b79b6:
 	scall MoveEmote
 	scall Func_8001c
 	playsfx $65
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	playsfx $43
 	scall WaitEmote
 	scall HideEmote

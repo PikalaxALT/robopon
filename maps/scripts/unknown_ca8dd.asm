@@ -115,8 +115,7 @@ Func_ca8dd:: ; ca8dd
 .asm_ca91f:
 	playmusic $09
 	scall Func_8001c
-	ld hl, $02ea
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_469b5
 	jp .asm_ca9ed
 .asm_ca930:
 	ld a, $03
@@ -129,8 +128,7 @@ Func_ca8dd:: ; ca8dd
 .asm_ca94f:
 	playmusic $0e
 	scall Func_8001c
-	ld hl, $02f9
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46a72
 	jp .asm_ca9ed
 .asm_ca960:
 	ld a, $03
@@ -143,8 +141,7 @@ Func_ca8dd:: ; ca8dd
 .asm_ca97f:
 	playmusic $0d
 	scall Func_8001c
-	ld hl, $02f4
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46a31
 	jp .asm_ca9ed
 .asm_ca990:
 	ld a, $03
@@ -157,8 +154,7 @@ Func_ca8dd:: ; ca8dd
 .asm_ca9af:
 	playmusic $0f
 	scall Func_8001c
-	ld hl, $02ef
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_469f1
 	jp .asm_ca9ed
 .asm_ca9c0:
 	ld a, $03
@@ -171,8 +167,7 @@ Func_ca8dd:: ; ca8dd
 .asm_ca9df:
 	playmusic $10
 	scall Func_8001c
-	ld hl, $02fe
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46ab3
 .asm_ca9ed:
 	ret
 
@@ -195,15 +190,13 @@ Func_caa1f:
 	or a
 	jp nz, .asm_cab02
 	face_player 0
-	ld hl, $00c9
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c7ea
 	startbattle Data_cab03, Data_ca9f6
 	or a
 	jp nz, .asm_caa48
 	jp .asm_cab02
 .asm_caa48:
-	ld hl, $00ca
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c810
 	setevent $0095
 	resetevent $0042
 	ld c, $01
@@ -236,11 +229,9 @@ Func_caa1f:
 	ld e, $01
 	ld a, $21
 	scall Func_80d4d
-	ld hl, $046f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c941
 	playsfx $2a
-	ld hl, $0470
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
 .asm_caaca:
@@ -287,10 +278,8 @@ Func_cab3c:
 	or a
 	jp nz, .asm_cac3b
 	face_player 0
-	ld hl, $00cb
-	scall PrintTextStandard
-	ld hl, $015e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c83b
+	writetext TreeBitstreamText_471a6
 .asm_cab5b:
 	ld de, Data_cac3c
 	ld hl, Data_cab13
@@ -302,8 +291,7 @@ Func_cab3c:
 	jp nz, .asm_cab5b
 	jp .asm_cac3b
 .asm_cab73:
-	ld hl, $00cc
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c859
 	setevent $009a
 	resetevent $0042
 	ld c, $01
@@ -336,11 +324,9 @@ Func_cab3c:
 	ld e, $01
 	ld a, $21
 	scall Func_80d4d
-	ld hl, $046f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c941
 	playsfx $2a
-	ld hl, $0470
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
 .asm_cabf5:
@@ -394,10 +380,8 @@ Func_cac75:
 	or a
 	jp nz, .asm_cad74
 	face_player 0
-	ld hl, $00cd
-	scall PrintTextStandard
-	ld hl, $017a
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c878
+	writetext TreeBitstreamText_471cf
 .asm_cac94:
 	ld de, Data_cad75
 	ld hl, Data_cac4c
@@ -409,8 +393,7 @@ Func_cac75:
 	jp nz, .asm_cac94
 	jp .asm_cad74
 .asm_cacac:
-	ld hl, $00ce
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c8aa
 	setevent $009f
 	resetevent $0042
 	ld c, $01
@@ -443,11 +426,9 @@ Func_cac75:
 	ld e, $01
 	ld a, $21
 	scall Func_80d4d
-	ld hl, $046f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c941
 	playsfx $2a
-	ld hl, $0470
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
 .asm_cad2e:
@@ -501,10 +482,8 @@ Func_cadae:
 	or a
 	jp nz, .asm_caead
 	face_player 0
-	ld hl, $00cf
-	scall PrintTextStandard
-	ld hl, $016b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c8d2
+	writetext TreeBitstreamText_471bb
 .asm_cadcd:
 	ld de, Data_caeae
 	ld hl, Data_cad85
@@ -516,8 +495,7 @@ Func_cadae:
 	jp nz, .asm_cadcd
 	jp .asm_caead
 .asm_cade5:
-	ld hl, $00d0
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c901
 	setevent $00a4
 	resetevent $0042
 	ld c, $01
@@ -550,11 +528,9 @@ Func_cadae:
 	ld e, $01
 	ld a, $21
 	scall Func_80d4d
-	ld hl, $046f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c941
 	playsfx $2a
-	ld hl, $0470
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
 .asm_cae67:
@@ -608,10 +584,8 @@ Func_caee7:
 	or a
 	jp nz, .asm_cafe6
 	face_player 0
-	ld hl, $00d1
-	scall PrintTextStandard
-	ld hl, $015d
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c90e
+	writetext TreeBitstreamText_47192
 .asm_caf06:
 	ld de, Data_cafe7
 	ld hl, Data_caebe
@@ -623,8 +597,7 @@ Func_caee7:
 	jp nz, .asm_caf06
 	jp .asm_cafe6
 .asm_caf1e:
-	ld hl, $00d2
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c925
 	setevent $00a9
 	resetevent $0042
 	ld c, $01
@@ -653,11 +626,9 @@ Func_caee7:
 	checkevent $00a9
 	cp $01
 	jp nz, .asm_cafa0
-	ld hl, $046f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c941
 	playsfx $2a
-	ld hl, $0470
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c963
 	ld c, $00
 	ld e, $01
 	ld a, $21

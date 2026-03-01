@@ -116,8 +116,7 @@ Func_c9d95:: ; c9d95
 	loadpeople $01, Data_c9d41
 	playmusic $09
 	scall Func_8001c
-	ld hl, $02e8
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_4699d
 	jp .asm_c9e73
 .asm_c9dde:
 	ld a, $03
@@ -126,8 +125,7 @@ Func_c9d95:: ; c9d95
 	loadpeople $01, Data_c9d4f
 	playmusic $0e
 	scall Func_8001c
-	ld hl, $02f7
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46a58
 	jp .asm_c9e73
 .asm_c9e04:
 	ld a, $03
@@ -136,8 +134,7 @@ Func_c9d95:: ; c9d95
 	loadpeople $01, Data_c9d5d
 	playmusic $0d
 	scall Func_8001c
-	ld hl, $02f2
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46a17
 	jp .asm_c9e73
 .asm_c9e2a:
 	ld a, $03
@@ -146,8 +143,7 @@ Func_c9d95:: ; c9d95
 	loadpeople $01, Data_c9d6b
 	playmusic $0f
 	scall Func_8001c
-	ld hl, $02ed
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_469d9
 	jp .asm_c9e73
 .asm_c9e50:
 	ld a, $03
@@ -156,8 +152,7 @@ Func_c9d95:: ; c9d95
 	loadpeople $01, Data_c9d79
 	playmusic $10
 	scall Func_8001c
-	ld hl, $02fc
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46a99
 .asm_c9e73:
 	loadpeople $01, Data_c9d87
 	ret
@@ -175,10 +170,8 @@ Func_c9ea5:
 	checkevent $0093
 	or a
 	jp nz, .asm_c9ef2
-	ld hl, $025f
-	scall PrintTextStandard
-	ld hl, $032c
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42c2d
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_c9ee9
 	startbattle Data_c9ef9, Data_c9e7c
@@ -187,17 +180,14 @@ Func_c9ea5:
 	jp .asm_c9ef8
 .asm_c9ed8:
 	setevent $0093
-	ld hl, $0260
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c39
 	jp .asm_c9eef
 .asm_c9ee9:
-	ld hl, $0269
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42cc4
 .asm_c9eef:
 	jp .asm_c9ef8
 .asm_c9ef2:
-	ld hl, $0266
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c8e
 .asm_c9ef8:
 	ret
 
@@ -218,14 +208,11 @@ Func_c9f2b:
 	checkevent $0098
 	or a
 	jp nz, .asm_c9f86
-	ld hl, $0260
-	scall PrintTextStandard
-	ld hl, $032c
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42c39
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_c9f7d
-	ld hl, $015e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_471a6
 .asm_c9f54:
 	ld de, Data_c9f8d
 	ld hl, Data_c9f02
@@ -238,17 +225,14 @@ Func_c9f2b:
 	jp .asm_c9f8c
 .asm_c9f6c:
 	setevent $0098
-	ld hl, $0263
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c65
 	jp .asm_c9f83
 .asm_c9f7d:
-	ld hl, $0267
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42cb1
 .asm_c9f83:
 	jp .asm_c9f8c
 .asm_c9f86:
-	ld hl, $0264
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c72
 .asm_c9f8c:
 	ret
 
@@ -268,14 +252,11 @@ Func_c9fbf:
 	checkevent $009d
 	or a
 	jp nz, .asm_ca01a
-	ld hl, $0263
-	scall PrintTextStandard
-	ld hl, $032c
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42c65
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_ca011
-	ld hl, $017a
-	scall PrintTextStandard
+	writetext TreeBitstreamText_471cf
 .asm_c9fe8:
 	ld de, Data_ca021
 	ld hl, Data_c9f96
@@ -288,17 +269,14 @@ Func_c9fbf:
 	jp .asm_ca020
 .asm_ca000:
 	setevent $009d
-	ld hl, $0264
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c72
 	jp .asm_ca017
 .asm_ca011:
-	ld hl, $0262
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c58
 .asm_ca017:
 	jp .asm_ca020
 .asm_ca01a:
-	ld hl, $0263
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c65
 .asm_ca020:
 	ret
 
@@ -318,14 +296,11 @@ Func_ca053:
 	checkevent $00a2
 	or a
 	jp nz, .asm_ca0ae
-	ld hl, $0260
-	scall PrintTextStandard
-	ld hl, $032c
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42c39
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_ca0a5
-	ld hl, $016b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_471bb
 .asm_ca07c:
 	ld de, Data_ca0b5
 	ld hl, Data_ca02a
@@ -338,17 +313,14 @@ Func_ca053:
 	jp .asm_ca0b4
 .asm_ca094:
 	setevent $00a2
-	ld hl, $0262
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c58
 	jp .asm_ca0ab
 .asm_ca0a5:
-	ld hl, $0268
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42cb8
 .asm_ca0ab:
 	jp .asm_ca0b4
 .asm_ca0ae:
-	ld hl, $0266
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c8e
 .asm_ca0b4:
 	ret
 
@@ -369,14 +341,11 @@ Func_ca0e7:
 	checkevent $00a7
 	or a
 	jp nz, .asm_ca142
-	ld hl, $025f
-	scall PrintTextStandard
-	ld hl, $032c
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42c2d
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_ca139
-	ld hl, $015d
-	scall PrintTextStandard
+	writetext TreeBitstreamText_47192
 .asm_ca110:
 	ld de, Data_ca149
 	ld hl, Data_ca0be
@@ -389,17 +358,14 @@ Func_ca0e7:
 	jp .asm_ca148
 .asm_ca128:
 	setevent $00a7
-	ld hl, $0266
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c8e
 	jp .asm_ca13f
 .asm_ca139:
-	ld hl, $0269
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42cc4
 .asm_ca13f:
 	jp .asm_ca148
 .asm_ca142:
-	ld hl, $0266
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42c8e
 .asm_ca148:
 	ret
 
@@ -416,8 +382,7 @@ Func_ca152:
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
-	ld hl, $0322
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46e0b
 	ld a, [wc78b]
 	cp $03
 	jp z, .asm_ca1a6

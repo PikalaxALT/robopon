@@ -103,15 +103,13 @@ Func_ab51a:
 .asm_ab550:
 	playmusic SONG_NONE
 	playmusic $1a
-	ld hl, $010c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d844
 	startbattle Data_ab5b9, Data_ab4e5
 	or a
 	jp nz, .asm_ab56f
 	jp .asm_ab5b7
 .asm_ab56f:
-	ld hl, $010f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d897
 	ld a, [wPlayerFacing]
 	cp $02
 	jp z, .asm_ab581
@@ -175,15 +173,13 @@ Func_ab5f4:
 .asm_ab62b:
 	playmusic SONG_NONE
 	playmusic $1a
-	ld hl, $010e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d86d
 	startbattle Data_ab697, Data_ab5bf
 	or a
 	jp nz, .asm_ab64a
 	jp .asm_ab695
 .asm_ab64a:
-	ld hl, $010f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3d897
 	ld a, [wPlayerFacing]
 	cp $02
 	jp z, .asm_ab65c

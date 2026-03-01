@@ -232,20 +232,17 @@ Func_92211:
 	checkevent $0088
 	or a
 	jp nz, .asm_9224b
-	hltext_tree_pointer TreeBitstreamText_3babb
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3babb
 	startbattle Data_92252, Data_921e8
 	or a
 	jp nz, .asm_9223a
 	jp .asm_92251
 .asm_9223a:
-	hltext_tree_pointer TreeBitstreamText_3baee
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3baee
 	setevent $0088
 	jp .asm_92251
 .asm_9224b:
-	hltext_tree_pointer TreeBitstreamText_3bb2b
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bb2b
 .asm_92251:
 	ret
 
@@ -369,8 +366,7 @@ Func_9233b:
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_923a1
-	hltext_tree_pointer TreeBitstreamText_46fe6
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46fe6
 	ld hl, sp+$00
 	ld a, [wMapX]
 	add a, $05
@@ -399,8 +395,7 @@ Func_9233b:
 	checkevent $0047
 	or a
 	jp nz, .asm_923e9
-	hltext_tree_pointer TreeBitstreamText_46fe6
-	scall PrintTextStandard
+	writetext TreeBitstreamText_46fe6
 	ld hl, sp+$00
 	ld a, [wMapX]
 	add a, $05
@@ -424,8 +419,7 @@ Func_9233b:
 	reg16swap de, hl
 	ld a, $24
 	scall MovePlayer
-	hltext_tree_pointer TreeBitstreamText_46ffa
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_46ffa
 	jp .asm_923f6
 .asm_923e9:
 	ld a, [wPlayerState]
@@ -452,10 +446,8 @@ Func_92422:
 	checkevent $0089
 	or a
 	jp nz, .asm_92472
-	hltext_tree_pointer TreeBitstreamText_42a37
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_46f28
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42a37
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_92469
 	startbattle Data_9247a, Data_923f9
@@ -464,17 +456,14 @@ Func_92422:
 	jp .asm_92478
 .asm_92458:
 	setevent $0089
-	hltext_tree_pointer TreeBitstreamText_42a4c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42a4c
 	jp .asm_9246f
 .asm_92469:
-	hltext_tree_pointer TreeBitstreamText_42b32
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b32
 .asm_9246f:
 	jp .asm_92478
 .asm_92472:
-	hltext_tree_pointer TreeBitstreamText_42a4c
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42a4c
 .asm_92478:
 	pop bc
 	ret
@@ -496,10 +485,8 @@ Func_924a9:
 	checkevent $008a
 	or a
 	jp nz, .asm_924f9
-	hltext_tree_pointer TreeBitstreamText_42a61
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_46f28
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42a61
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_924f0
 	startbattle Data_92501, Data_92480
@@ -508,17 +495,14 @@ Func_924a9:
 	jp .asm_924ff
 .asm_924df:
 	setevent $008a
-	hltext_tree_pointer TreeBitstreamText_42a6e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42a6e
 	jp .asm_924f6
 .asm_924f0:
-	hltext_tree_pointer TreeBitstreamText_42b41
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b41
 .asm_924f6:
 	jp .asm_924ff
 .asm_924f9:
-	hltext_tree_pointer TreeBitstreamText_42a6e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42a6e
 .asm_924ff:
 	pop bc
 	ret
@@ -540,10 +524,8 @@ Func_92531:
 	checkevent $008b
 	or a
 	jp nz, .asm_92581
-	hltext_tree_pointer TreeBitstreamText_42a7e
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_46f28
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42a7e
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_92578
 	startbattle Data_92589, Data_92508
@@ -552,17 +534,14 @@ Func_92531:
 	jp .asm_92587
 .asm_92567:
 	setevent $008b
-	hltext_tree_pointer TreeBitstreamText_42a9a
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42a9a
 	jp .asm_9257e
 .asm_92578:
-	hltext_tree_pointer TreeBitstreamText_42b24
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b24
 .asm_9257e:
 	jp .asm_92587
 .asm_92581:
-	hltext_tree_pointer TreeBitstreamText_42ab0
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42ab0
 .asm_92587:
 	pop bc
 	ret
@@ -584,10 +563,8 @@ Func_925b8:
 	checkevent $008c
 	or a
 	jp nz, .asm_92608
-	hltext_tree_pointer TreeBitstreamText_42abe
-	scall PrintTextStandard
-	hltext_tree_pointer TreeBitstreamText_46f28
-	scall PrintTextWithYesNoBox
+	writetext TreeBitstreamText_42abe
+	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_925ff
 	startbattle Data_92610, Data_9258f
@@ -596,17 +573,14 @@ Func_925b8:
 	jp .asm_9260e
 .asm_925ee:
 	setevent $008c
-	hltext_tree_pointer TreeBitstreamText_42ad0
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42ad0
 	jp .asm_92605
 .asm_925ff:
-	hltext_tree_pointer TreeBitstreamText_42b32
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b32
 .asm_92605:
 	jp .asm_9260e
 .asm_92608:
-	hltext_tree_pointer TreeBitstreamText_42b0b
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42b0b
 .asm_9260e:
 	pop bc
 	ret
@@ -633,15 +607,13 @@ Func_9264b:
 	or a
 	jp nz, .asm_926b4
 	face_player $0a
-	hltext_tree_pointer TreeBitstreamText_3bd87
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bd87
 	startbattle Data_926b5, Data_92622
 	or a
 	jp nz, .asm_92675
 	jp .asm_926b4
 .asm_92675:
-	hltext_tree_pointer TreeBitstreamText_3bdc2
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3bdc2
 	ld a, [wPlayerFacing]
 	cp $01
 	jp z, .asm_9268b
@@ -694,8 +666,7 @@ Func_926ba:
 	ld a, $01
 	scall FadeInAudio
 	playmusic $14
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	face_player $0e
 	ld c, $01
 	ld e, $13
@@ -721,8 +692,7 @@ Func_926ba:
 	hideperson $0e
 	jp .asm_927c1
 .asm_927bb:
-	hltext_tree_pointer TreeBitstreamText_3f79e
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3f79e
 .asm_927c1:
 	ret
 
@@ -739,19 +709,16 @@ Func_927eb:
 	checkevent $0039
 	or a
 	jp nz, .asm_92808
-	hltext_tree_pointer TreeBitstreamText_3bdf0
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3bdf0
 	jp .asm_92844
 .asm_92808:
 	checkevent $0047
 	or a
 	jp nz, .asm_9281b
-	hltext_tree_pointer TreeBitstreamText_3be3f
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3be3f
 	jp .asm_92844
 .asm_9281b:
-	hltext_tree_pointer TreeBitstreamText_42b02
-	scall PrintTextWithYesNoBox
+	writetext_yesorno TreeBitstreamText_42b02
 	or a
 	jp nz, .asm_9283e
 	startbattle Data_92845, Data_927c2
@@ -759,12 +726,10 @@ Func_927eb:
 	jp nz, .asm_92835
 	jp .asm_92844
 .asm_92835:
-	hltext_tree_pointer TreeBitstreamText_42af6
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42af6
 	jp .asm_92844
 .asm_9283e:
-	hltext_tree_pointer TreeBitstreamText_42903
-	scall PrintTextStandard
+	writetext TreeBitstreamText_42903
 .asm_92844:
 	ret
 

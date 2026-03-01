@@ -45,8 +45,7 @@ Func_a32cf:: ; a32cf
 .asm_a3327:
 	loadpeople $01, Data_a32c1
 	scall Func_8001c
-	ld hl, $03ee
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46939
 	ret
 Func_a3339:
 	push af

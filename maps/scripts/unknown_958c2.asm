@@ -120,8 +120,7 @@ Func_959a9:
 	playsfx $31
 	loademote $1, $2, $c
 	scall WaitEmote
-	ld hl, $1e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, STARTER + 1
 	scall GetRobotSprite
 	ld e, a
@@ -143,8 +142,7 @@ Func_959a9:
 	playsfx $2a
 	playmusic SONG_NONE
 	playmusic $19
-	ld hl, $b4
-	scall ScriptSleep
+	script_sleep 180
 	playmusic SONG_NONE
 	playmusic $c
 IF DEF(SUN)
@@ -228,8 +226,7 @@ Func_95b02:
 	or a
 	jp nz, Func_95b40
 	face_player 0
-	ld hl, $47e
-	scall PrintTextWithNPCName
+	writenpctext TreeBitstreamText_3961c
 	playsfx $2a
 	writetext TreeBitstreamText_3968a
 	ld c, $0

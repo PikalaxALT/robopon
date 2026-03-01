@@ -270,33 +270,26 @@ Data_8d431:
 	db $23, $02, $ff, $ff
 
 Func_8d435:
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	writenpctext TreeBitstreamText_3cd08
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	showperson $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $00, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_person 0, Data_8d42d, 1
 	scall WaitNPCStep
 	sprite_face $03, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_person $01, Data_8d431, 1
 	scall WaitNPCStep
 	sprite_face $01, $01
 	writenpctext TreeBitstreamText_3cdce
 	sprite_face $00, $01
 	sprite_face $02, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $03, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, 0
 	writenpctext TreeBitstreamText_3ce14
 	sprite_face $02, $01
@@ -422,8 +415,7 @@ Func_8d61a:
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	playmusic $01
 	ld c, $14
 	ld e, $23
@@ -435,8 +427,7 @@ Func_8d61a:
 	sprite_face $02, $01
 	writenpctext TreeBitstreamText_3d465
 	sprite_face $03, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	move_person $01, Data_8d608, 1
 	scall WaitNPCStep
 	sprite_face $03, $01
@@ -448,16 +439,14 @@ Func_8d61a:
 	move_person 0, Data_8d60c, 1
 	scall WaitNPCStep
 	sprite_face $00, 0
-	ld hl, $003c
-	scall ScriptSleep
+	script_sleep 60
 	sprite_face $02, 0
 	writenpctext TreeBitstreamText_3d4a3
 	sprite_face $03, $01
 	writenpctext TreeBitstreamText_3d51a
 	sprite_face $02, $01
 	sprite_face $01, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, 0
 	playmusic SONG_NONE
 .asm_8d6e1:
@@ -467,17 +456,13 @@ Func_8d61a:
 	playmusic $03
 	writenpctext TreeBitstreamText_3d59c
 	sprite_face $03, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $03, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	writenpctext TreeBitstreamText_3d5d0
 	writenpctext TreeBitstreamText_3d60c
 	move_person 0, Data_8d612, 0
@@ -560,8 +545,7 @@ Func_8d7b8:
 .asm_8d7df:
 	push hl
 	playsfx $68
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $68
 	writenpctext TreeBitstreamText_3d442
 	xor a
@@ -670,8 +654,7 @@ Func_8d877:
 .asm_8d8a9:
 	push hl
 	playsfx $68
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $68
 	writenpctext TreeBitstreamText_3d2d1
 	xor a
@@ -771,13 +754,11 @@ Func_8d955:
 	jp nz, .asm_8d9b5
 	writenpctext TreeBitstreamText_3d59c
 	sprite_face $01, $01
-	ld hl, $002d
-	scall ScriptSleep
+	script_sleep 45
 	sprite_face $01, 0
 	writenpctext TreeBitstreamText_3d5d0
 	sprite_face $02, 0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	sprite_face $02, $01
 	writenpctext TreeBitstreamText_3d60c
 	move_person 0, Data_8d94d, 0
@@ -1185,16 +1166,14 @@ Func_8dd96:
 	ld a, [wPlayerFacing]
 	cp $03
 	jp nz, .asm_8ddc0
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $2e
 	move_person $08, Data_8dd90, 1
 	scall WaitNPCStep
 	hideperson $08
 	jp .asm_8dddf
 .asm_8ddc0:
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	playsfx $2e
 	move_person $08, Data_8dd8c, 1
 	scall WaitNPCStep

@@ -40,8 +40,7 @@ Func_cb099:: ; cb099
 .asm_cb0ce:
 	playmusic $07
 	scall Func_8001c
-	ld hl, $02ff
-	scall LandmarkSign
+	landmarksign TreeBitstreamText_46ac0
 	ret
 
 Data_cb0dd:
@@ -72,15 +71,13 @@ Func_cb10e:
 	sprite_face $00, 0
 	playmusic SONG_NONE
 	playmusic $1a
-	ld hl, $00d9
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3ca60
 	startbattle Data_cb177, Data_cb0e5
 	or a
 	jp nz, .asm_cb14d
 	jp .asm_cb176
 .asm_cb14d:
-	ld hl, $00da
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3ca8a
 	move_person 0, Data_cb0e1, 1
 	scall WaitNPCStep
 	hideperson 0
@@ -119,12 +116,10 @@ Func_cb183:
 	cp $02
 	jp nz, .asm_cb1e7
 	sprite_face $01, $01
-	ld hl, $001e
-	scall ScriptSleep
+	script_sleep 30
 	ld a, $03
 	scall PlayerFace
-	ld hl, $00be
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c7b1
 	move_player $01, Data_cb17f
 	sprite_face $00, $01
 .asm_cb1e7:
@@ -153,12 +148,10 @@ Func_cb1e9:
 	or a
 	jp nz, .asm_cb230
 .asm_cb227:
-	ld hl, $00be
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c7b1
 	jp .asm_cb236
 .asm_cb230:
-	ld hl, $03be
-	scall PrintTextStandard
+	writetext TreeBitstreamText_3c9b4
 .asm_cb236:
 	pop bc
 	ret
