@@ -28,7 +28,7 @@ Data_9f1bb:
 Func_9f1c9:: ; 9f1c9
 	loadwarps $02, Data_9f155
 	loadpeople $01, Data_9f1bb
-	playmusic $08
+	playmusic SONG_CAVE
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_9f16b

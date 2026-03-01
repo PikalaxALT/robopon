@@ -28,14 +28,12 @@ Data_9587c: ; 9587c
 	person_event $ff, $00, $0a, $05, $02, $02, $02, $04, $00, PrintTextFacePlayer_25, Data_9583c
 
 Func_958c2::
-	call Func_9596a
-	ld hl, Func_9596a
-	scall Func_80f11
+	set_frame_script Func_9596a
 	loadwarps 1, Data_95828
 	ld e, $1
 	ld hl, Data_95833
 	scall Func_80ce7
-	playmusic $c
+	playmusic SONG_CENTER
 	checkevent $f
 	or a
 	jp nz, Func_9590a
@@ -117,7 +115,7 @@ Data_959a5: ; 959a5
 Func_959a9:
 	move_person 0, Data_95999, 0
 	move_player $1, Data_9599d
-	playsfx $31
+	playsfx SFX_31
 	loademote $1, $2, $c
 	scall WaitEmote
 	script_sleep 30
@@ -130,7 +128,7 @@ Func_959a9:
 	showperson $1
 	move_person $1, Data_959a1, 1
 	scall WaitNPCStep
-	playsfx $31
+	playsfx SFX_31
 	loademote $1, $4, $c
 	scall WaitEmote
 	scall HideEmote
@@ -139,12 +137,12 @@ Func_959a9:
 	move_person $1, Data_959a5, 0
 	scall WaitNPCStep
 	hideperson $1
-	playsfx $2a
+	playsfx SFX_2A
 	playmusic SONG_NONE
-	playmusic $19
+	playmusic SONG_ENCOUNTER_UNKNOWN
 	script_sleep 180
 	playmusic SONG_NONE
-	playmusic $c
+	playmusic SONG_CENTER
 IF DEF(SUN)
 	writetext TreeBitstreamText_39295
 ELIF DEF(STAR)
@@ -153,7 +151,7 @@ ENDC
 	ld a, $3
 	scall PlayerFace
 	writenpctext TreeBitstreamText_392ba
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_39321
 	ld a, [wc78c]
 	cp $a
@@ -208,7 +206,7 @@ Func_95ab9:
 	jp nz, Func_95b02
 	face_player 0
 	writenpctext TreeBitstreamText_39559
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_395a3
 	ld c, $0
 	ld e, $1
@@ -227,7 +225,7 @@ Func_95b02:
 	jp nz, Func_95b40
 	face_player 0
 	writenpctext TreeBitstreamText_3961c
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3968a
 	ld c, $0
 	ld e, $1
@@ -245,7 +243,7 @@ Func_95b40:
 	jp nz, Func_95b81
 	face_player 0
 	writenpctext TreeBitstreamText_3949f
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_39545
 	give_robot TEABOT, $1e, $0
 	setevent $e7

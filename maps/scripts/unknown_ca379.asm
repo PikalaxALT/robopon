@@ -111,7 +111,7 @@ Func_ca379:: ; ca379
 	scall Func_80d01
 	loadwilds $05, Data_ca1d5
 	loadpeople $01, Data_ca333
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469a9
 	jp .asm_ca457
@@ -120,7 +120,7 @@ Func_ca379:: ; ca379
 	scall Func_80d01
 	loadwilds $05, Data_ca21b
 	loadpeople $01, Data_ca341
-	playmusic $0e
+	playmusic SONG_JUMP_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a65
 	jp .asm_ca457
@@ -129,7 +129,7 @@ Func_ca379:: ; ca379
 	scall Func_80d01
 	loadwilds $05, Data_ca261
 	loadpeople $01, Data_ca34f
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a24
 	jp .asm_ca457
@@ -138,7 +138,7 @@ Func_ca379:: ; ca379
 	scall Func_80d01
 	loadwilds $05, Data_ca2a7
 	loadpeople $01, Data_ca35d
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469e5
 	jp .asm_ca457
@@ -147,7 +147,7 @@ Func_ca379:: ; ca379
 	scall Func_80d01
 	loadwilds $05, Data_ca2ed
 	loadpeople $01, Data_ca36b
-	playmusic $10
+	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46aa6
 .asm_ca457:

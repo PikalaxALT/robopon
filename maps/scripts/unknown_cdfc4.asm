@@ -320,9 +320,7 @@ Func_cdfc4:: ; cdfc4
 	inc a
 	cp $33
 	jp nc, .asm_ce17e
-	call Func_ce1e3
-	ld hl, Func_ce1e3
-	scall Func_80f11
+	set_frame_script Func_ce1e3
 	ld a, $04
 	scall Random
 	ld l, a
@@ -375,7 +373,7 @@ Func_cdfc4:: ; cdfc4
 	ld a, [wc7a3]
 	call Func_ce409
 	loadpeople $01, Data_cdfb6
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $32
@@ -770,7 +768,7 @@ Func_ce60e:
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce696
-	playsfx $28
+	playsfx SFX_28
 	ld a, $01
 	ld [wc7a3], a
 	ld a, $01
@@ -811,7 +809,7 @@ Func_ce60e:
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce6e7
-	playsfx $28
+	playsfx SFX_28
 	ld a, $02
 	ld [wc7a3], a
 	ld a, $02
@@ -852,7 +850,7 @@ Func_ce60e:
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce738
-	playsfx $28
+	playsfx SFX_28
 	ld a, $03
 	ld [wc7a3], a
 	ld a, $03

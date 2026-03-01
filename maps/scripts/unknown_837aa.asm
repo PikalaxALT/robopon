@@ -5,9 +5,7 @@ Data_83789:
 	warpdef $0a, $01, $01, $01, MAP_32_09, $01, $06, $01, $05, SFX_2E
 
 Func_837aa::
-	call Func_837db
-	ld hl, Func_837db
-	scall Func_80f11
+	set_frame_script Func_837db
 	ld a, $13
 	ld [wc7de], a
 	loadwarps $3, Data_83789

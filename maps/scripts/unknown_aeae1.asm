@@ -29,7 +29,7 @@ Func_aeae1:: ; aeae1
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_aea9b
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bb3
 	ret

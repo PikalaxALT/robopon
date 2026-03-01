@@ -326,9 +326,7 @@ Func_cf14d:: ; cf14d (33:714d)
 	inc a
 	cp $33
 	jp nc, .asm_cf307
-	call Func_cf344
-	ld hl, Func_cf344
-	scall Func_80f11
+	set_frame_script Func_cf344
 	ld a, $4
 	scall Random
 	ld l, a
@@ -365,7 +363,7 @@ Func_cf14d:: ; cf14d (33:714d)
 	scall LoadWarps
 .asm_cf307: ; cf307 (33:7307)
 	loadwarps $1, Data_cedca
-	playmusic $8
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $32

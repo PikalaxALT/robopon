@@ -49,9 +49,7 @@ Func_9e4d8:: ; 9e4d8
 	or a
 	jp z, .asm_9e4f7
 	ld a, $01
-	call Func_9e7f4
-	ld hl, Func_9e7f4
-	scall Func_80f11
+	set_frame_script Func_9e7f4
 .asm_9e4f7:
 	ld a, [wBackupMapNumber]
 	cp $0b
@@ -105,7 +103,7 @@ Func_9e4d8:: ; 9e4d8
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_9e3ea
-	playmusic $08
+	playmusic SONG_CAVE
 	ld a, [wc794]
 	or a
 	jp z, .asm_9e5d2

@@ -12,7 +12,7 @@ Data_b7a1e: ; b7a1e
 Func_b7a64::
 	loadwarps 1, Data_b7a13
 	loadpeople 5, Data_b7a1e
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	hideperson $2
 	hideperson $3
 	hideperson $4
@@ -22,7 +22,7 @@ Func_b7a64::
 	hideperson $2
 	hideperson $3
 	hideperson $4
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	call Func_b7b62
 	jp Func_b7ae2
@@ -31,7 +31,7 @@ Func_b7abb:
 	checkevent $1c
 	or a
 	jp nz, Func_b7ad3
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	call Func_b7d97
 	jp Func_b7ae2
@@ -39,7 +39,7 @@ Func_b7abb:
 Func_b7ad3:
 	xor a
 	scall PlayerFace
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	call Func_b7df7
 Func_b7ae2:
@@ -66,7 +66,7 @@ Data_b7b5e: ; b7b5e
 Func_b7b62:
 	move_player $1, Data_b7b5e
 	writenpctext TreeBitstreamText_3dd0b
-	playsfx $5a
+	playsfx SFX_5A
 	showperson $2
 	sprite_face $2, $2
 	sprite_face $3, $2
@@ -77,7 +77,7 @@ Func_b7b62:
 	sprite_face $0, $2
 	sprite_face $1, $2
 	script_sleep 30
-	playsfx $5b
+	playsfx SFX_5B
 	showperson $3
 	sprite_face $1, $3
 	sprite_face $2, $3
@@ -88,7 +88,7 @@ Func_b7b62:
 	sprite_face $3, $3
 	sprite_face $0, $3
 	script_sleep 30
-	playsfx $66
+	playsfx SFX_66
 	showperson $4
 	sprite_face $0, $4
 	sprite_face $1, $4
@@ -112,7 +112,7 @@ Func_b7c69:
 	ld e, $a
 	ld a, $8
 	scall MoveEmote
-	playsfx $38
+	playsfx SFX_38
 	scall WaitEmote
 	scall HideEmote
 	hideperson $2
@@ -130,7 +130,7 @@ Func_b7caa:
 	ld e, $b
 	ld a, $9
 	scall MoveEmote
-	playsfx $38
+	playsfx SFX_38
 	scall WaitEmote
 	scall HideEmote
 	hideperson $3
@@ -148,7 +148,7 @@ Func_b7ceb:
 	ld e, $a
 	ld a, $a
 	scall MoveEmote
-	playsfx $38
+	playsfx SFX_38
 	scall WaitEmote
 	scall HideEmote
 	hideperson $4
@@ -161,12 +161,12 @@ Func_b7ceb:
 	ld e, $a
 	ld a, $9
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
-	playsfx $35
+	playsfx SFX_35
 	loademote $1, $1, $1b
-	playsfx $37
+	playsfx SFX_37
 	xor a
 	scall Func_80653
 	scall WaitEmote
@@ -216,9 +216,9 @@ Func_b7dba:
 	xor a
 	scall FadeInAudio
 	scall StartShakingScreen
-	playsfx $65
+	playsfx SFX_65
 	move_player $1, Data_b7d89
-	playsfx $65
+	playsfx SFX_65
 	scall StopShakingScreen
 	ld l, $f
 	push hl
@@ -237,13 +237,13 @@ Func_b7df7:
 	ld e, $a
 	ld a, $9
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	xor a
 	scall Func_80653
 	loademote $1, $1, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld l, $b

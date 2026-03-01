@@ -27,7 +27,7 @@ Func_b5215:: ; b5215
 	ld e, $03
 	ld hl, Data_b5206
 	scall Func_80ce7
-	playmusic $0a
+	playmusic SONG_0A
 	ld a, $04
 	scall LoadPlayerSprite
 	scall Func_8001c

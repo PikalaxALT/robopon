@@ -75,7 +75,7 @@ Func_89ac3:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	xor a
@@ -105,12 +105,12 @@ Func_89b28:
 	checkevent $0059
 	if_true .asm_89b65
 	setevent $0059
-	playsfx $32
+	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_89b78
 .asm_89b65:
 	resetevent $0059
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_89b78:
 	ret
@@ -126,7 +126,7 @@ Func_89b79:
 	scall Func_8001c
 	landmarksign TreeBitstreamText_3d76a
 	loademote $01, $02, $09
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653

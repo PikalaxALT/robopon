@@ -44,7 +44,7 @@ Func_92c92:: ; 92c92
 	jp z, .asm_92cc6
 	hideperson $01
 .asm_92cc6:
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46cf6
 	ret
@@ -102,7 +102,7 @@ Func_92d5c:
 	cp $01
 	jp nz, .asm_92daa
 	writenpctext TreeBitstreamText_39e1f
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_39e65
 	setevent $0014
 	ld c, $01

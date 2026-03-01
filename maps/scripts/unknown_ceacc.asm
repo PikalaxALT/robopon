@@ -320,9 +320,7 @@ Func_ceacc:: ; ceacc
 	inc a
 	cp $33
 	jp nc, .asm_cec86
-	call Func_ceccb
-	ld hl, Func_ceccb
-	scall Func_80f11
+	set_frame_script Func_ceccb
 	ld a, $04
 	scall Random
 	ld l, a
@@ -360,7 +358,7 @@ Func_ceacc:: ; ceacc
 .asm_cec86:
 	loadwarps $01, Data_ce73b
 	loadpeople $01, Data_ceabe
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $32

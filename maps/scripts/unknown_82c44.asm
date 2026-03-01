@@ -17,9 +17,7 @@ Data_82c28: ; 82c28
 	db $00, $05, $01, $01, $01, $04, $00, $20, $91, $6c, $00, $00
 
 Func_82c44::
-	call Func_82d22
-	ld hl, Func_82d22
-	scall Func_80f11
+	set_frame_script Func_82d22
 	ld a, $3
 	ld [wc7de], a
 	loadwarps $3, Data_82bc1

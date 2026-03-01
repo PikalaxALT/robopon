@@ -249,9 +249,7 @@ Func_d259b:: ; d259b (34:659b)
 	inc a
 	cp $15
 	jp nc, .asm_d2740
-	call Func_d277d
-	ld hl, Func_d277d
-	scall Func_80f11
+	set_frame_script Func_d277d
 	ld a, $4
 	scall Random
 	ld l, a

@@ -38,7 +38,7 @@ Func_a388c:: ; a388c
 	scall Func_80d01
 	loadwilds $05, Data_a37ac
 	loadpeople $0b, Data_a37f2
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_4694f
 	ret
@@ -50,7 +50,7 @@ Func_a38b8:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -72,7 +72,7 @@ Func_a38e9:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -94,7 +94,7 @@ Func_a391a:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -116,7 +116,7 @@ Func_a394b:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -138,7 +138,7 @@ Func_a397c:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -160,7 +160,7 @@ Func_a39ad:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -182,7 +182,7 @@ Func_a39de:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -204,7 +204,7 @@ Func_a3a0f:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -226,7 +226,7 @@ Func_a3a40:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -248,7 +248,7 @@ Func_a3a71:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -270,7 +270,7 @@ Func_a3aa2:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02

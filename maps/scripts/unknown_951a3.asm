@@ -79,7 +79,7 @@ Func_951e4:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_95262
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_4535e
 	ld hl, sp+$01
 	ld l, [hl]
@@ -102,7 +102,7 @@ Func_951e4:
 	ld [hl], $01
 	jp .asm_95278
 .asm_95262:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_453ee
 	ld e, $03
 	ld hl, sp+$03
@@ -135,7 +135,7 @@ Func_951e4:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_952f4
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_454c0
 	ld hl, sp+$01
 	ld l, [hl]
@@ -158,7 +158,7 @@ Func_951e4:
 	ld [hl], $01
 	jp .asm_9530a
 .asm_952f4:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_453ee
 	ld e, $03
 	ld hl, sp+$03
@@ -477,7 +477,7 @@ Func_955fc:
 	jp nz, .asm_9564f
 	writetext TreeBitstreamText_47722
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01
@@ -508,7 +508,7 @@ Func_95657:
 	jp nz, .asm_956aa
 	writetext TreeBitstreamText_47780
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01
@@ -539,7 +539,7 @@ Func_956b2:
 	jp nz, .asm_95705
 	writetext TreeBitstreamText_478bb
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01
@@ -570,7 +570,7 @@ Func_9570d:
 	jp nz, .asm_95760
 	writetext TreeBitstreamText_47943
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01

@@ -79,9 +79,7 @@ Func_a11de:: ; a11de
 	ld [wc789], a
 	ld a, $8
 	ld [wc7e2], a
-	call Func_a14ef
-	ld hl, Func_a14ef
-	scall Func_80f11
+	set_frame_script Func_a14ef
 	checkevent $42
 	cp $1
 	jp nz, .asm_a120b
@@ -116,7 +114,7 @@ Func_a11de:: ; a11de
 	ld hl, Data_a113f
 	scall Func_80ce7
 	loadpeople $9, Data_a1144
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	ld a, $1
 	scall LoadPlayerSprite
 	hideperson $7
@@ -181,7 +179,7 @@ Func_a12b1:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_a132f
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_44a7f
 	ld hl, sp+$01
 	ld l, [hl]
@@ -205,7 +203,7 @@ Func_a12b1:
 	jp .asm_a133d
 
 .asm_a132f:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_44af6
 	jp .asm_a14e6
 
@@ -238,7 +236,7 @@ Func_a12b1:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_a13b9
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_44bcf
 	ld hl, sp+$01
 	ld l, [hl]
@@ -262,7 +260,7 @@ Func_a12b1:
 	jp .asm_a13c7
 
 .asm_a13b9:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_44c2a
 	jp .asm_a14e6
 
@@ -419,16 +417,16 @@ Func_a1514:
 	checkevent $00dd
 	or a
 	jp nz, .asm_a1615
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $08
 	ld a, $0c
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson $07
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $07
 	sprite_face $00, $07
 	sprite_face $01, $07
@@ -442,7 +440,7 @@ Func_a1514:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	face_player $07
 	script_sleep 30
 	ld c, $11
@@ -450,7 +448,7 @@ Func_a1514:
 	ld a, $03
 	scall Func_80e8d
 	setevent $00dd
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $07
 	sprite_face $00, $07
 	sprite_face $01, $07
@@ -464,7 +462,7 @@ Func_a1514:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	face_player $07
 	hideperson $07
 	jp .asm_a161b

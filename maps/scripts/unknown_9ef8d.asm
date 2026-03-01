@@ -32,7 +32,7 @@ Func_9ef8d:: ; 9ef8d
 	scall Func_80d01
 	loadwilds $05, Data_9ef47
 	loadpeople $02, Data_9ef2b
-	playmusic $08
+	playmusic SONG_CAVE
 	checkevent $00e8
 	or a
 	jp nz, .asm_9efe3

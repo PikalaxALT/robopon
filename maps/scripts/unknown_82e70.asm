@@ -19,9 +19,7 @@ Func_82e70::
 	xor a
 	scall Func_80f24
 	pop bc
-	call Func_82ec2
-	ld hl, Func_82ec2
-	scall Func_80f11
+	set_frame_script Func_82ec2
 	ld a, $5
 	ld [wc7de], a
 	loadwarps $3, Data_82e20

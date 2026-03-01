@@ -35,9 +35,7 @@ Data_b78ee:
 Func_b790a:: ; b790a
 	ld a, $0c
 	ld [wc7e2], a
-	call Func_b79a1
-	ld hl, Func_b79a1
-	scall Func_80f11
+	set_frame_script Func_b79a1
 	loadpeople $02, Data_b78ee
 	checkevent $001b
 	or a
@@ -73,7 +71,7 @@ Func_b790a:: ; b790a
 	call Func_b79b6
 	jp .asm_b799a
 .asm_b7992:
-	playmusic $10
+	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 .asm_b799a:
 	ret
@@ -97,9 +95,9 @@ Func_b79b6:
 	ld a, $07
 	scall MoveEmote
 	scall Func_8001c
-	playsfx $65
+	playsfx SFX_65
 	script_sleep 60
-	playsfx $43
+	playsfx SFX_43
 	scall WaitEmote
 	scall HideEmote
 	ld l, $0e

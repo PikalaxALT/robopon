@@ -332,7 +332,7 @@ Func_86625:
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_3a272
 	script_sleep 60
 	writenpctext TreeBitstreamText_39f4e
@@ -388,7 +388,7 @@ Func_866df:
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_3a272
 	script_sleep 60
 	writenpctext TreeBitstreamText_3a0b1
@@ -444,7 +444,7 @@ Func_86799:
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_3a272
 	script_sleep 60
 	writenpctext TreeBitstreamText_39fc7

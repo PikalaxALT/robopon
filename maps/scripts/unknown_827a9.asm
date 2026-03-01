@@ -19,9 +19,7 @@ Data_8279b: ; 8279b
 	person_event $1a, $04, $02, $02, $01, $01, $01, $04, $00, Func_8299b, NULL
 
 Func_827a9::
-	call Func_82866
-	ld hl, Func_82866
-	scall Func_80f11
+	set_frame_script Func_82866
 	ld a, $1
 	ld [wc7de], a
 	loadwarps $6, Data_8271c
@@ -234,7 +232,7 @@ Func_829fd:
 	writetext_yesorno TreeBitstreamText_45f28
 	or a
 	jp nz, .asm_82a92
-	playsfx $2b
+	playsfx SFX_2B
 	ld c, $1
 	ld e, $1
 	ld a, $10
@@ -264,7 +262,7 @@ Func_829fd:
 	cp $9
 	jp c, .asm_82a8f
 	writetext TreeBitstreamText_45f56
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45f88
 	ld c, $0
 	ld e, $1

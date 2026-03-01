@@ -67,7 +67,7 @@ Func_ae48b:: ; ae48b
 	ld a, $01
 	scall LoadPlayerSprite
 .asm_ae4f1:
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	ret
 
@@ -138,16 +138,16 @@ Func_ae56c:
 	checkevent $00e0
 	or a
 	jp nz, .asm_ae66e
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $21
 	ld a, $0d
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson $04
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $04
 	sprite_face $00, $04
 	sprite_face $01, $04
@@ -158,10 +158,10 @@ Func_ae56c:
 	sprite_face $02, $04
 	ld a, $0f
 	scall FadeOutAudio
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	face_player $04
 	script_sleep 30
 	ld c, $07
@@ -169,7 +169,7 @@ Func_ae56c:
 	ld a, $01
 	scall Func_80e8d
 	setevent $00e0
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $04
 	sprite_face $00, $04
 	sprite_face $01, $04
@@ -183,7 +183,7 @@ Func_ae56c:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	face_player $04
 	hideperson $04
 	jp .asm_ae674

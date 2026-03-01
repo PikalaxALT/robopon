@@ -788,8 +788,11 @@ wEventFlagsEnd::
 	char wScreenIsShaking ; c84e
 	char wNextScreenShakeYDisplacement ; c84f
 	char wScreenShakeFrameTimer ; c850
+
+	; set by Func_bf39
 	char wc851 ; c851
 	short wc852 ; c852
+
 	short wCurBattleSFXScriptPointer ; c854
 	char wCurBattleSFXTimer ; c856
 	char wSlipperyCollision ; c857

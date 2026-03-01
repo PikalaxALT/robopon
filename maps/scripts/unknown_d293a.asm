@@ -242,9 +242,7 @@ Func_d293a:: ; d293a (34:693a)
 	inc a
 	cp $15
 	jp nc, .asm_d2ad2
-	call Func_d2b0f
-	ld hl, Func_d2b0f
-	scall Func_80f11
+	set_frame_script Func_d2b0f
 	ld a, $4
 	scall Random
 	ld l, a

@@ -157,7 +157,7 @@ Func_85b17:
 	jp nz, .asm_85b52
 	face_player -$1
 	writenpctext TreeBitstreamText_39cd9
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_39d70
 	ld c, $0
 	ld e, $1
@@ -214,7 +214,7 @@ Func_85b98:
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_3a272
 	script_sleep 60
 	writenpctext TreeBitstreamText_39ed3

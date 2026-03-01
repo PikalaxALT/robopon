@@ -49,7 +49,7 @@ Func_9f43f:: ; 9f43f
 	scall Func_80d01
 	loadwilds $05, Data_9f3f9
 	loadpeople $04, Data_9f3c1
-	playmusic $08
+	playmusic SONG_CAVE
 	ld a, $44
 	scall Func_80f43
 	scall Func_8001c
@@ -178,11 +178,11 @@ Func_9f574:
 	jp nz, .asm_9f59f
 	heal
 	playmusic SONG_NONE
-	playmusic $16
+	playmusic SONG_HEAL
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
-	playmusic $08
+	playmusic SONG_CAVE
 .asm_9f59f:
 	ret

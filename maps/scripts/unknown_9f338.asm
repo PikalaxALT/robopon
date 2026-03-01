@@ -25,7 +25,7 @@ Func_9f338:: ; 9f338
 	ld a, $03
 	scall Func_80d01
 	loadwilds $04, Data_9f2f2
-	playmusic $08
+	playmusic SONG_CAVE
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -38,11 +38,11 @@ Func_9f369:
 	jp nz, .asm_9f394
 	heal
 	playmusic SONG_NONE
-	playmusic $16
+	playmusic SONG_HEAL
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
-	playmusic $08
+	playmusic SONG_CAVE
 .asm_9f394:
 	ret

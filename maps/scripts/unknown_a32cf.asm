@@ -27,7 +27,7 @@ Func_a32cf:: ; a32cf
 	ld a, $03
 	scall Func_80d01
 	loadwilds $03, Data_a326d
-	playmusic $08
+	playmusic SONG_CAVE
 	checkevent $00cb
 	or a
 	jp z, .asm_a3307
@@ -70,7 +70,7 @@ Func_a3339:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_a3397
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
@@ -109,7 +109,7 @@ Func_a3399:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_a33f7
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
@@ -148,7 +148,7 @@ Func_a33f9:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_a3457
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]

@@ -105,7 +105,7 @@ Func_aedf8:: ; aedf8
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_aedb2
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bd4
 	ret

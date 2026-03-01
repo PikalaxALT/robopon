@@ -132,9 +132,7 @@ Func_bb17a:: ; bb17a
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, .asm_bb239
-	call Func_bb29e
-	ld hl, Func_bb29e
-	scall Func_80f11
+	set_frame_script Func_bb29e
 	ld a, [wBackupMapX]
 	cp $08
 	jp nz, .asm_bb216
@@ -187,7 +185,7 @@ Func_bb17a:: ; bb17a
 	scall Func_80ce7
 .asm_bb27b:
 	loadpeople $04, Data_bb132
-	playmusic $11
+	playmusic SONG_TOWN3
 	scall Func_8001c
 	ret
 

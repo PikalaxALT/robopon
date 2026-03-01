@@ -277,9 +277,7 @@ Func_cd533:: ; cd533
 	inc a
 	cp $33
 	jp nc, .asm_cd651
-	call Func_cd696
-	ld hl, Func_cd696
-	scall Func_80f11
+	set_frame_script Func_cd696
 	ld a, $04
 	scall Random
 	ld l, a
@@ -317,7 +315,7 @@ Func_cd533:: ; cd533
 .asm_cd651:
 	loadwarps $01, Data_cd0b4
 	loadpeople $12, Data_cd437
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $32
@@ -397,7 +395,7 @@ Func_cd6d0:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02

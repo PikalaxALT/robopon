@@ -88,7 +88,7 @@ Func_8b6ae:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $0b
-	playsfx $44
+	playsfx SFX_44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04

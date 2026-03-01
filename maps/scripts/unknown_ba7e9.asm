@@ -123,11 +123,9 @@ Data_ba7bf:
 
 Func_ba7e9:: ; ba7e9
 	resetevent $00fb
-	call Func_bb0b0
-	ld hl, Func_bb0b0
-	scall Func_80f11
+	set_frame_script Func_bb0b0
 	loadpeople $02, Data_ba7a3
-	playmusic $11
+	playmusic SONG_TOWN3
 	ld a, [wc790]
 	or a
 	jp z, .asm_ba839
@@ -139,7 +137,7 @@ Func_ba7e9:: ; ba7e9
 	scall Func_80d01
 	loadwilds $01, Data_ba65d
 	call Func_bafd6
-	playmusic $11
+	playmusic SONG_TOWN3
 	scall Func_8001c
 	jp .asm_baa5f
 .asm_ba839:
@@ -350,7 +348,7 @@ Func_baa60:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	resetevent $00fa
@@ -530,7 +528,7 @@ Func_babdc:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -698,11 +696,11 @@ Func_bad5c:
 	checkevent $00fa
 	or a
 	jp nz, .asm_bad9a
-	playmusic $11
+	playmusic SONG_TOWN3
 	ld a, $02
 	scall PlayerFace
 	loademote $01, $02, $09
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
@@ -888,12 +886,12 @@ Func_baefe:
 	or a
 	jp nz, .asm_baf3b
 	setevent $0059
-	playsfx $32
+	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_baf4e
 .asm_baf3b:
 	resetevent $0059
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_baf4e:
 	call Func_bafd6

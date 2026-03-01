@@ -12,9 +12,7 @@ Data_834af: ; 834af
 	person_event $32, $0c, $01, $03, $01, $01, $01, $04, $00, Func_808fc_20, Data_834ab
 
 Func_834bd::
-	call Func_834f6
-	ld hl, Func_834f6
-	scall Func_80f11
+	set_frame_script Func_834f6
 	ld a, $d
 	ld [wc7de], a
 	loadwarps $3, Data_8348a

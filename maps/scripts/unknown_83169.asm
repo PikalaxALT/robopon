@@ -9,9 +9,7 @@ Data_8313f: ; 8313f
 	db $01, $02, $02, $04, $00, $20, $5f, $48, $3b, $71
 
 Func_83169::
-	call Func_831a2
-	ld hl, Func_831a2
-	scall Func_80f11
+	set_frame_script Func_831a2
 	ld a, $8
 	ld [wc7de], a
 	loadwarps $3, Data_8311a

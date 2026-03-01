@@ -74,7 +74,7 @@ Func_92965:: ; 92965
 	loadwilds $04, Data_9285b
 	ld a, $01
 	scall LoadPlayerSprite
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46973
 	ret

@@ -435,5 +435,5 @@ Func_ba46c:: ; ba46c
 	loadpeople $07, Data_ba3e6
 .asm_ba654:
 	scall Func_8001c
-	playmusic $11
+	playmusic SONG_TOWN3
 	ret

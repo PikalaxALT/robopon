@@ -40,7 +40,7 @@ Func_a167b:: ; a167b
 	hideperson $4
 	hideperson $5
 .asm_a16e5:
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46645
 	ret
@@ -136,7 +136,7 @@ Func_a17a6:
 	jp .asm_a1848
 .asm_a17ef:
 	writetext TreeBitstreamText_3c677
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6dd
 	writetext TreeBitstreamText_3c6ec
 	setevent $003d
@@ -205,7 +205,7 @@ Func_a187b:
 	jp .asm_a192b
 .asm_a18d2:
 	writetext TreeBitstreamText_3c677
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c69d
 	writetext TreeBitstreamText_3c6ec
 	setevent $003e
@@ -273,7 +273,7 @@ Func_a195e:
 	jp .asm_a1a0e
 .asm_a19b5:
 	writetext TreeBitstreamText_3c677
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6ad
 	writetext TreeBitstreamText_3c6ec
 	setevent $003f
@@ -341,7 +341,7 @@ Func_a1a41:
 	jp .asm_a1af1
 .asm_a1a98:
 	writetext TreeBitstreamText_3c677
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6ce
 	writetext TreeBitstreamText_3c6ec
 	setevent $0040
@@ -409,7 +409,7 @@ Func_a1b24:
 	jp .asm_a1bd4
 .asm_a1b7b:
 	writetext TreeBitstreamText_3c677
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6be
 	writetext TreeBitstreamText_3c6ec
 	setevent $0041

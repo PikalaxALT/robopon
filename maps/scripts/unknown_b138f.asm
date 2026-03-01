@@ -111,7 +111,7 @@ Func_b138f:: ; b138f
 	loadpeople $03, Data_b1189
 	loadpeople $06, Data_b11b3
 	loadpeople $04, Data_b1207
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b13da:
@@ -151,7 +151,7 @@ Func_b138f:: ; b138f
 	hideperson 0
 	hideperson $01
 	hideperson $02
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 .asm_b1465:
 	jp .asm_b1640
@@ -168,7 +168,7 @@ Func_b138f:: ; b138f
 	loadpeople $03, Data_b1189
 	loadpeople $06, Data_b11b3
 	loadpeople $02, Data_b123f
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b14ab:
@@ -185,7 +185,7 @@ Func_b138f:: ; b138f
 	loadpeople $06, Data_b11b3
 	loadpeople $05, Data_b125b
 	hideperson $0d
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b14f5:
@@ -201,7 +201,7 @@ Func_b138f:: ; b138f
 	loadpeople $03, Data_b1189
 	loadpeople $06, Data_b11b3
 	loadpeople $04, Data_b12a1
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b1538:
@@ -218,7 +218,7 @@ Func_b138f:: ; b138f
 	loadpeople $06, Data_b11b3
 	loadpeople $03, Data_b12d9
 	hideperson $0b
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b157f:
@@ -238,7 +238,7 @@ Func_b138f:: ; b138f
 	cp $01
 	jp nz, .asm_b15c7
 	loadpeople $06, Data_b1303
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b15c7:
@@ -255,7 +255,7 @@ Func_b138f:: ; b138f
 	cp $01
 	jp nz, .asm_b1605
 	loadpeople $04, Data_b1357
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b1605:
@@ -271,7 +271,7 @@ Func_b138f:: ; b138f
 	hideperson $01
 	hideperson $02
 .asm_b1638:
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 .asm_b1640:
 	ret
@@ -315,7 +315,7 @@ Func_b1686:
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3a556
 	writenpctext TreeBitstreamText_3a5a7
 	writenpctext TreeBitstreamText_3a5cb
@@ -366,7 +366,7 @@ Func_b1686:
 .asm_b1755:
 	writenpctext TreeBitstreamText_3a6fa
 	playmusic SONG_NONE
-	playmusic $18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	move_person $09, Data_b1670, 1
 	scall WaitNPCStep
 	hideperson $09
@@ -432,7 +432,7 @@ Func_b1817:
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3b02c
 	startbattle Data_b18d4, Data_b17e2
 	or a
@@ -440,7 +440,7 @@ Func_b1817:
 	jp .asm_b18d3
 .asm_b1862:
 	writenpctext TreeBitstreamText_3b060
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3b169
 	writenpctext TreeBitstreamText_3b17a
 	move_person $09, Data_b1811, 1
@@ -504,7 +504,7 @@ Func_b191e:
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	playmusic $01
+	playmusic SONG_TITLE
 	showperson $0d
 	sprite_face $00, $0d
 	sprite_face $01, $0d
@@ -595,7 +595,7 @@ Func_b1ab8:
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3cbab
 	startbattle Data_b1b61, Data_b1a73
 	or a
@@ -660,7 +660,7 @@ Func_b1b9b:
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3d66c
 	startbattle Data_b1c48, Data_b1b66
 	or a
@@ -725,7 +725,7 @@ Func_b1c59:
 .asm_b1c92:
 	ld a, $01
 	scall FadeInAudio
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	writenpctext TreeBitstreamText_3e1be
 	writenpctext TreeBitstreamText_3e1ff
 	writenpctext TreeBitstreamText_3e289
@@ -753,7 +753,7 @@ Func_b1c59:
 	ld e, $0e
 	ld a, $12
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	writenpctext TreeBitstreamText_3e29b
@@ -774,7 +774,7 @@ Func_b1c59:
 	ld a, $0e
 	scall Func_80c94
 	setevent $0035
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_b1d4f:
 	ret
 
@@ -817,7 +817,7 @@ Func_b1d8b:
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3e557
 	startbattle Data_b202c, Data_b1d50
 	or a
@@ -833,7 +833,7 @@ Func_b1d8b:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	writenpctext TreeBitstreamText_3e5ff
 	move_person 0, Data_b1d83, 1
 	scall WaitNPCStep
@@ -851,7 +851,7 @@ Func_b1d8b:
 	ld a, $0f
 	scall MoveEmote
 	hideperson 0
-	playsfx $59
+	playsfx SFX_59
 	ld c, $05
 	ld e, $11
 	xor a
@@ -895,7 +895,7 @@ Func_b1d8b:
 	scall WaitEmote
 	loademote $01, $03, $18
 	hideperson $02
-	playsfx $63
+	playsfx SFX_63
 	scall WaitEmote
 	sprite_face $01, $01
 	script_sleep 30
@@ -907,7 +907,7 @@ Func_b1d8b:
 	scall HideEmote
 	ld a, $01
 	scall FadeInAudio
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	sprite_face $02, $01
 	writenpctext TreeBitstreamText_3e75b
 	xor a
@@ -973,7 +973,7 @@ Func_b1d8b:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $01
+	playmusic SONG_TITLE
 	writetext TreeBitstreamText_3e7ac
 	ld c, $00
 	ld e, $01
@@ -1004,7 +1004,7 @@ Func_b1d8b:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_b202b:
 	ret
 
@@ -1041,7 +1041,7 @@ Func_b2038:
 	scall PlayerFace
 .asm_b206e:
 	scall WaitNPCStep
-	playsfx $69
+	playsfx SFX_69
 	writetext TreeBitstreamText_3d844
 	ld hl, sp+$03
 	ld a, [hl]
@@ -1090,7 +1090,7 @@ Func_b20b3:
 	scall PlayerFace
 .asm_b20e9:
 	scall WaitNPCStep
-	playsfx $69
+	playsfx SFX_69
 	writetext TreeBitstreamText_3d86d
 	ld hl, sp+$03
 	ld a, [hl]
@@ -1130,7 +1130,7 @@ Func_b213e:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 	ld c, $09
 	ld e, $0c
 	xor a
@@ -1156,22 +1156,22 @@ Func_b213e:
 	cp $07
 	jp nz, .asm_b21f2
 	writenpctext TreeBitstreamText_3a765
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3a7e7
 	jp .asm_b21f8
 .asm_b21b6:
 	writenpctext TreeBitstreamText_3b22d
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3b219
 	jp .asm_b21f8
 .asm_b21ca:
 	writenpctext TreeBitstreamText_3c0de
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c0ca
 	jp .asm_b21f8
 .asm_b21de:
 	writenpctext TreeBitstreamText_3cc61
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3cc4d
 	jp .asm_b21f8
 .asm_b21f2:
@@ -1193,7 +1193,7 @@ Func_b213e:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	ret
 
 Data_b2253:
@@ -1223,7 +1223,7 @@ Func_b2275:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 	ld c, $09
 	ld e, $0c
 	xor a
@@ -1260,7 +1260,7 @@ Func_b2275:
 	sprite_face $03, 0
 	ld a, $01
 	scall FadeInAudio
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3d793
 	move_person $03, Data_b2269, 0
 	move_person 0, Data_b225d, 1
@@ -1323,5 +1323,5 @@ Func_b2275:
 .asm_b240d:
 	ld a, $01
 	scall FadeInAudio
-	playmusic $07
+	playmusic SONG_TOWN2
 	ret

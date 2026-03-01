@@ -34,7 +34,7 @@ Func_aea1b:: ; aea1b
 	scall Func_80d01
 	loadwilds $05, Data_ae9c7
 	loadpeople $01, Data_aea0d
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ba8
 	ret
@@ -46,7 +46,7 @@ Func_aea4f:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02

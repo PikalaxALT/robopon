@@ -34,7 +34,7 @@ Func_b5391:: ; b5391
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_b534b
-	playmusic $0a
+	playmusic SONG_0A
 	ld a, $04
 	scall LoadPlayerSprite
 	scall Func_8001c

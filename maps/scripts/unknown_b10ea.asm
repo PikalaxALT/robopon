@@ -16,7 +16,7 @@ Func_b10ea:: ; b10ea
 	loadpeople $02, Data_b10ce
 	ld a, $0d
 	ld [wc7e2], a
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 	scall Func_8001c
 	call Func_b110b
 	ret

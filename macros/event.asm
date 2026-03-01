@@ -179,3 +179,9 @@ MACRO if_last_warp_not
 	cp \3
 	jp nz, \4
 	ENDM
+
+MACRO set_frame_script
+	call \1
+	ld hl, \1
+	scall Func_80f11
+	ENDM

@@ -230,7 +230,7 @@ Func_d367a:: ; d367a (34:767a)
 	landmarksign TreeBitstreamText_46d96
 .asm_d37d4: ; d37d4 (34:77d4)
 	scall StartShakingScreen
-	playsfx $64
+	playsfx SFX_64
 	script_sleep 60
 	scall StopShakingScreen
 	jp .asm_d385a

@@ -31,7 +31,7 @@ Func_a544c:: ; a544c
 	hideperson $04
 .asm_a547d:
 	hideperson $01
-	playmusic $0c
+	playmusic SONG_CENTER
 	ld a, $01
 	scall LoadPlayerSprite
 	ld a, $0a
@@ -48,7 +48,7 @@ Func_a549d:
 	or a
 	jp nz, .asm_a54ea
 	writenpctext TreeBitstreamText_3cf5a
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3d001
 	ld c, $00
 	ld e, $01
@@ -214,11 +214,11 @@ Func_a55c0:
 
 Func_a5640:
 	playmusic SONG_NONE
-	playmusic $0a
+	playmusic SONG_0A
 	xor a
 	scall Func_80653
 	loademote $01, $01, $0b
-	playsfx $44
+	playsfx SFX_44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04

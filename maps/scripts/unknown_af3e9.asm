@@ -41,7 +41,7 @@ Func_af3e9:: ; af3e9
 	hideperson $01
 	loadpeople $01, Data_af3db
 .asm_af432:
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bf5
 	ret
@@ -79,7 +79,7 @@ Func_af46a:
 	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af4bd
-	playsfx $5a
+	playsfx SFX_5A
 	ld l, $1b
 	push hl
 	ld c, $12

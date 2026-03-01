@@ -229,9 +229,7 @@ Func_a268b:: ; a268b
 	inc a
 	cp $24
 	jp nc, .asm_a27d9
-	call Func_a2816
-	ld hl, Func_a2816
-	scall Func_80f11
+	set_frame_script Func_a2816
 	ld a, $04
 	scall Random
 	ld l, a
@@ -268,7 +266,7 @@ Func_a268b:: ; a268b
 	scall LoadWarps
 .asm_a27d9:
 	loadwarps $01, Data_a2412
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $23

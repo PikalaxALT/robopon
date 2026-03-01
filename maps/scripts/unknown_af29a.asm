@@ -23,9 +23,7 @@ Data_af28c:
 	person_event $00, $0c, $04, $12, $01, $01, $00, $04, $00, Func_af34c, NULL
 
 Func_af29a:: ; af29a
-	call Func_af309
-	ld hl, Func_af309
-	scall Func_80f11
+	set_frame_script Func_af309
 	loadwarps $03, Data_af225
 	ld a, $03
 	scall Func_80d01
@@ -35,7 +33,7 @@ Func_af29a:: ; af29a
 	jp nz, .asm_af2ca
 	loadpeople $01, Data_af28c
 .asm_af2ca:
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bea
 	ret

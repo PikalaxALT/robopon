@@ -111,7 +111,7 @@ Func_d121f:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_d129d
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_4565b
 	ld hl, sp+$1
 	ld l, [hl]
@@ -135,7 +135,7 @@ Func_d121f:
 	jp .asm_d12ab
 
 .asm_d129d: ; d129d (34:529d)
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_456f4
 	jp .asm_d1454
 
@@ -168,7 +168,7 @@ Func_d121f:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_d1327
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_457de
 	ld hl, sp+$1
 	ld l, [hl]
@@ -192,7 +192,7 @@ Func_d121f:
 	jp .asm_d1335
 
 .asm_d1327: ; d1327 (34:5327)
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_456f4
 	jp .asm_d1454
 

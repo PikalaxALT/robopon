@@ -8,9 +8,7 @@ Data_83628: ; 83628
 	db $6c, $00, $09, $01, $26, $6d, $07, $09, $01, $25
 
 Func_83632::
-	call Func_8366b
-	ld hl, Func_8366b
-	scall Func_80f11
+	set_frame_script Func_8366b
 	ld a, $10
 	ld [wc7de], a
 	loadwarps $3, Data_83607

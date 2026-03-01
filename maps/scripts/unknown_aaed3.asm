@@ -35,7 +35,7 @@ Func_aaed3:: ; aaed3
 	or a
 	jp nz, .asm_aaf44
 	loadpeople $04, Data_aae9b
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	checkevent $00b3
 	or a
 	jp z, .asm_aaf29
@@ -50,7 +50,7 @@ Func_aaed3:: ; aaed3
 .asm_aaf41:
 	jp .asm_aaf49
 .asm_aaf44:
-	playmusic $08
+	playmusic SONG_CAVE
 .asm_aaf49:
 	scall Func_8001c
 	ret
@@ -98,7 +98,7 @@ Func_aaf84:
 	scall PlayerFace
 .asm_aafb8:
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d86d
 	startbattle Data_ab01d, Data_aaf4d
 	or a
@@ -118,7 +118,7 @@ Func_aaf84:
 	hideperson 0
 	hideperson $01
 	playmusic SONG_NONE
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	setevent $00b3
 .asm_ab01b:
 	pop bc
@@ -170,7 +170,7 @@ Func_ab05c:
 	scall PlayerFace
 .asm_ab091:
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d831
 	startbattle Data_ab0f9, Data_ab023
 	or a
@@ -190,7 +190,7 @@ Func_ab05c:
 	hideperson $02
 	hideperson $03
 	playmusic SONG_NONE
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	setevent $00b4
 .asm_ab0f7:
 	pop bc

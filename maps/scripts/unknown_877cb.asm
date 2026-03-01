@@ -139,7 +139,7 @@ Func_8788b:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_878ef
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -183,7 +183,7 @@ Func_878f1:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_87955
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -227,7 +227,7 @@ Func_87957:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_879bb
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -271,7 +271,7 @@ Func_879bd:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_87a21
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -315,7 +315,7 @@ Func_87a23:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_87a71
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -353,7 +353,7 @@ Func_87a73:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_87ac1
-	playsfx $2b
+	playsfx SFX_2B
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
@@ -385,13 +385,13 @@ Func_87ac3:
 	or a
 	jp nz, .asm_87b00
 	setevent $59
-	playsfx $32
+	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_87b13
 
 .asm_87b00: ; 87b00 (21:7b00)
 	resetevent $59
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_87b13: ; 87b13 (21:7b13)
 	ret
@@ -428,7 +428,7 @@ Func_87b14:
 	xor a
 	scall Func_80653
 	loademote $1, $1, $9
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $2
@@ -463,7 +463,7 @@ Func_87b87: ; 87b87 (21:7b87)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46886
 	loademote $1, $2, $9
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	ld a, $1
 	scall Func_80653
@@ -483,9 +483,9 @@ Func_87c03: ; 87c03 (21:7c03)
 	scall AllocateSpaceForWarps
 	loadwarps $4, Data_87bd7
 	scall StartShakingScreen
-	playsfx $64
+	playsfx SFX_64
 	script_sleep 60
-	playsfx $64
+	playsfx SFX_64
 	script_sleep 60
 	scall StopShakingScreen
 	ret

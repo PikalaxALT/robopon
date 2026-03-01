@@ -113,7 +113,7 @@ Func_ca8dd:: ; ca8dd
 	jp nz, .asm_ca91f
 	loadpeople $01, Data_ca897
 .asm_ca91f:
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469b5
 	jp .asm_ca9ed
@@ -126,7 +126,7 @@ Func_ca8dd:: ; ca8dd
 	jp nz, .asm_ca94f
 	loadpeople $01, Data_ca8a5
 .asm_ca94f:
-	playmusic $0e
+	playmusic SONG_JUMP_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a72
 	jp .asm_ca9ed
@@ -139,7 +139,7 @@ Func_ca8dd:: ; ca8dd
 	jp nz, .asm_ca97f
 	loadpeople $01, Data_ca8b3
 .asm_ca97f:
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a31
 	jp .asm_ca9ed
@@ -152,7 +152,7 @@ Func_ca8dd:: ; ca8dd
 	jp nz, .asm_ca9af
 	loadpeople $01, Data_ca8c1
 .asm_ca9af:
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469f1
 	jp .asm_ca9ed
@@ -165,7 +165,7 @@ Func_ca8dd:: ; ca8dd
 	jp nz, .asm_ca9df
 	loadpeople $01, Data_ca8cf
 .asm_ca9df:
-	playmusic $10
+	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ab3
 .asm_ca9ed:
@@ -230,7 +230,7 @@ Func_caa1f:
 	ld a, $21
 	scall Func_80d4d
 	writetext TreeBitstreamText_3c941
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
@@ -243,7 +243,7 @@ Func_caa1f:
 .asm_caade:
 	move_person 0, Data_ca9ee, 1
 .asm_caae7:
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	ld l, $1b
@@ -325,7 +325,7 @@ Func_cab3c:
 	ld a, $21
 	scall Func_80d4d
 	writetext TreeBitstreamText_3c941
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
@@ -345,7 +345,7 @@ Func_cab3c:
 .asm_cac17:
 	move_person 0, Data_cab0f, 1
 .asm_cac20:
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	ld l, $1b
@@ -427,7 +427,7 @@ Func_cac75:
 	ld a, $21
 	scall Func_80d4d
 	writetext TreeBitstreamText_3c941
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
@@ -447,7 +447,7 @@ Func_cac75:
 .asm_cad50:
 	move_person 0, Data_cac48, 1
 .asm_cad59:
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	ld l, $12
@@ -529,7 +529,7 @@ Func_cadae:
 	ld a, $21
 	scall Func_80d4d
 	writetext TreeBitstreamText_3c941
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
@@ -549,7 +549,7 @@ Func_cadae:
 .asm_cae89:
 	move_person 0, Data_cad81, 1
 .asm_cae92:
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	ld l, $12
@@ -627,7 +627,7 @@ Func_caee7:
 	cp $01
 	jp nz, .asm_cafa0
 	writetext TreeBitstreamText_3c941
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3c963
 	ld c, $00
 	ld e, $01
@@ -651,7 +651,7 @@ Func_caee7:
 .asm_cafc2:
 	move_person 0, Data_caeba, 1
 .asm_cafcb:
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	ld l, $0a

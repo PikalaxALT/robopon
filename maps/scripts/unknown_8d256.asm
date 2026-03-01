@@ -75,9 +75,7 @@ Data_8d248:
 	person_event $ff, $00, $07, $11, $01, $01, $00, $04, $01, Func_8dd80, NULL
 
 Func_8d256:: ; 8d256
-	call Func_8da28
-	ld hl, Func_8da28
-	scall Func_80f11
+	set_frame_script Func_8da28
 	xor a
 	ld [wc789], a
 	ld a, $02
@@ -87,7 +85,7 @@ Func_8d256:: ; 8d256
 	hideperson 0
 	hideperson $01
 	loadpeople $0b, Data_8d1a0
-	playmusic $07
+	playmusic SONG_TOWN2
 	ld a, $01
 	scall LoadPlayerSprite
 	checkevent $0046
@@ -159,11 +157,11 @@ Func_8d2f4:
 	move_player $01, Data_8d2ee
 .asm_8d34b:
 	playmusic SONG_NONE
-	playmusic $0a
+	playmusic SONG_0A
 	xor a
 	scall Func_80653
 	loademote $01, $01, $0b
-	playsfx $44
+	playsfx SFX_44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04
@@ -305,7 +303,7 @@ Func_8d4d8:: ; 8d4d8
 	call FarCall
 	playmusic SONG_NONE
 	hideperson $0c
-	playsfx $3a
+	playsfx SFX_3A
 	scall StartShakingScreen
 	loademote $01, $01, $0a
 	ld e, $12
@@ -313,42 +311,42 @@ Func_8d4d8:: ; 8d4d8
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $3a
+	playsfx SFX_3A
 	loademote $01, $01, $0a
 	ld e, $11
 	ld a, $22
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $3a
+	playsfx SFX_3A
 	loademote $01, $01, $0a
 	ld e, $11
 	ld a, $24
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $3a
+	playsfx SFX_3A
 	loademote $01, $01, $0a
 	ld e, $13
 	ld a, $22
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $3a
+	playsfx SFX_3A
 	loademote $01, $01, $0a
 	ld e, $13
 	ld a, $24
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $65
+	playsfx SFX_65
 	scall StopShakingScreen
 	pop af
 	cp $2d
 	jp z, .asm_8d5f5
 	call Func_8da28
 	scall Func_80f02
-	playmusic $07
+	playmusic SONG_TOWN2
 	ld a, [wc78d]
 	cp $01
 	jp z, .asm_8d5dd
@@ -386,7 +384,7 @@ Func_8d4d8:: ; 8d4d8
 .asm_8d5f2:
 	jp .asm_8d5fa
 .asm_8d5f5:
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_8d5fa:
 	call FillVisibleAreaWithBlankTile
 	ret
@@ -416,7 +414,7 @@ Func_8d61a:
 	xor a
 	scall PlayerFace
 	script_sleep 60
-	playmusic $01
+	playmusic SONG_TITLE
 	ld c, $14
 	ld e, $23
 	ld a, $01
@@ -453,7 +451,7 @@ Func_8d61a:
 	writenpctext_yesorno TreeBitstreamText_3d552
 	or a
 	jp nz, .asm_8d75c
-	playmusic $03
+	playmusic SONG_TOWN1
 	writenpctext TreeBitstreamText_3d59c
 	sprite_face $03, $01
 	script_sleep 30
@@ -472,7 +470,7 @@ Func_8d61a:
 	hideperson $01
 	jp .asm_8d76a
 .asm_8d75c:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3d63e
 	jp .asm_8d6e1
 .asm_8d76a:
@@ -501,7 +499,7 @@ Func_8d76b:
 	jp .asm_8d77e
 .asm_8d790:
 	push hl
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3d404
 	xor a
 	pop hl
@@ -544,9 +542,9 @@ Func_8d7b8:
 	jp .asm_8d7cd
 .asm_8d7df:
 	push hl
-	playsfx $68
+	playsfx SFX_68
 	script_sleep 30
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_3d442
 	xor a
 	pop hl
@@ -596,7 +594,7 @@ Func_8d813:
 	jp .asm_8d826
 .asm_8d843:
 	push hl
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3d37a
 	xor a
 	pop hl
@@ -653,9 +651,9 @@ Func_8d877:
 	jp .asm_8d88c
 .asm_8d8a9:
 	push hl
-	playsfx $68
+	playsfx SFX_68
 	script_sleep 30
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_3d2d1
 	xor a
 	pop hl
@@ -712,7 +710,7 @@ Func_8d8e9:
 	jp .asm_8d8fc
 .asm_8d919:
 	push hl
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3d278
 	xor a
 	pop hl
@@ -954,7 +952,7 @@ Func_8db33:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_8dbb3
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_440f4
 	ld hl, sp+$01
 	ld l, [hl]
@@ -978,7 +976,7 @@ Func_8db33:
 	call Func_8dd96
 	jp .asm_8dbc4
 .asm_8dbb3:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_44185
 	call Func_8dd96
 	jp .asm_8dd7d
@@ -1008,7 +1006,7 @@ Func_8db33:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_8dc43
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_44239
 	ld hl, sp+$01
 	ld l, [hl]
@@ -1032,7 +1030,7 @@ Func_8db33:
 	call Func_8dd96
 	jp .asm_8dc54
 .asm_8dc43:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_44185
 	call Func_8dd96
 	jp .asm_8dd7d
@@ -1167,14 +1165,14 @@ Func_8dd96:
 	cp $03
 	jp nz, .asm_8ddc0
 	script_sleep 30
-	playsfx $2e
+	playsfx SFX_2E
 	move_person $08, Data_8dd90, 1
 	scall WaitNPCStep
 	hideperson $08
 	jp .asm_8dddf
 .asm_8ddc0:
 	script_sleep 30
-	playsfx $2e
+	playsfx SFX_2E
 	move_person $08, Data_8dd8c, 1
 	scall WaitNPCStep
 	hideperson $08

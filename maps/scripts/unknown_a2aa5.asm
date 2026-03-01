@@ -229,9 +229,7 @@ Func_a2aa5:: ; a2aa5
 	inc a
 	cp $24
 	jp nc, .asm_a2bf3
-	call Func_a2c30
-	ld hl, Func_a2c30
-	scall Func_80f11
+	set_frame_script Func_a2c30
 	ld a, $04
 	scall Random
 	ld l, a
@@ -268,7 +266,7 @@ Func_a2aa5:: ; a2aa5
 	scall LoadWarps
 .asm_a2bf3:
 	loadwarps $01, Data_a282c
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $23

@@ -270,9 +270,7 @@ Func_d1aff:: ; d1aff (34:5aff)
 	inc a
 	cp $15
 	jp nc, .asm_d1ccb
-	call Func_d1d08
-	ld hl, Func_d1d08
-	scall Func_80f11
+	set_frame_script Func_d1d08
 	ld a, $4
 	scall Random
 	ld l, a

@@ -27,16 +27,14 @@ Data_c9135:
 	person_event $1d, $04, $04, $12, $01, $01, $02, $04, $00, NULL, NULL
 
 Func_c916d:: ; c916d
-	call Func_c91a4
-	ld hl, Func_c91a4
-	scall Func_80f11
+	set_frame_script Func_c91a4
 	ld a, $06
 	ld [wc789], a
 	ld a, $09
 	ld [wc7e2], a
 	loadwarps $0b, Data_c90b4
 	loadpeople $04, Data_c9135
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c

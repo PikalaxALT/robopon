@@ -5,18 +5,18 @@ Func_83026:
 	checkevent $d7
 	or a
 	jp nz, Func_83113
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $2, $2, $8
 	ld e, $2
 	ld a, $3
 	call MoveEmote_20
 	call WaitEmote_20
 	call HideEmote_20
-	playsfx $28
+	playsfx SFX_28
 	ld e, $1
 	xor a
 	call SetPersonVisibilityState_20
-	playsfx $60
+	playsfx SFX_60
 	ld e, $3
 	xor a
 	call SpriteFace_20
@@ -54,7 +54,7 @@ Func_83026:
 	ld a, $15
 	scall Func_80e8d
 	setevent $d7
-	playsfx $60
+	playsfx SFX_60
 	ld e, $3
 	xor a
 	call SpriteFace_20

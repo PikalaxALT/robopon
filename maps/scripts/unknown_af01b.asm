@@ -69,7 +69,7 @@ Func_af01b:: ; af01b
 	jp nz, .asm_af074
 	loadpeople $09, Data_aef9d
 .asm_af074:
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bdf
 	ret
@@ -214,16 +214,16 @@ Func_af113:
 
 Func_af161:
 	setevent $004e
-	playsfx $2b
+	playsfx SFX_2B
 	hideperson 0
 	script_sleep 30
-	playsfx $2b
+	playsfx SFX_2B
 	hideperson $01
 	script_sleep 30
-	playsfx $2b
+	playsfx SFX_2B
 	hideperson $02
 	script_sleep 30
-	playsfx $2b
+	playsfx SFX_2B
 	hideperson $03
 	script_sleep 30
 	ret

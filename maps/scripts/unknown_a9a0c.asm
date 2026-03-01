@@ -26,7 +26,7 @@ Func_a9a0c:: ; a9a0c
 	scall Func_80d01
 	loadwilds $05, Data_a99b8
 	loadpeople $01, Data_a99fe
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ret
 
@@ -34,10 +34,10 @@ Func_a9a32:
 	ld a, e
 	cp $02
 	jp nz, .asm_a9a61
-	playsfx $31
+	playsfx SFX_31
 	script_sleep 30
 	scall StartShakingScreen
-	playsfx $64
+	playsfx SFX_64
 	script_sleep 90
 	scall StopShakingScreen
 	ld l, $0f

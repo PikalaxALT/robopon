@@ -36,10 +36,10 @@ Func_aa218:: ; aa218
 	checkevent $0043
 	or a
 	jp nz, .asm_aa261
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	jp .asm_aa266
 .asm_aa261:
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 .asm_aa266:
 	ld a, $01
 	scall LoadPlayerSprite
@@ -62,7 +62,7 @@ Func_aa277:
 	cp $02
 	jp nz, .asm_aa2f2
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	move_player $01, Data_aa26f
 	sprite_face $01, 0
 	ld a, $03
@@ -114,7 +114,7 @@ Func_aa321:
 
 Func_aa33d:
 	playmusic SONG_NONE
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	writetext TreeBitstreamText_3d897
 	move_person 0, Data_aa2f4, 1
 	scall WaitNPCStep
@@ -147,7 +147,7 @@ Func_aa392:
 	ret
 .asm_aa3ae:
 	playmusic SONG_NONE
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	writetext TreeBitstreamText_3d897
 	move_person $01, Data_aa365, 1
 	scall WaitNPCStep

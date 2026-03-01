@@ -31,7 +31,7 @@ Func_b5939:: ; b5939
 	ld hl, Data_b590e
 	scall Func_80ce7
 	loadpeople $02, Data_b591d
-	playmusic $09
+	playmusic SONG_TOWER
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_b5998
@@ -95,7 +95,7 @@ Func_b59d9:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -119,7 +119,7 @@ Func_b5a18:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -135,11 +135,11 @@ Func_b5a18:
 	ret
 
 Func_b5a57:
-	playmusic $09
+	playmusic SONG_TOWER
 	ld a, $02
 	scall PlayerFace
 	loademote $01, $02, $09
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653

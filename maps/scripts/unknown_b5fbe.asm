@@ -97,7 +97,7 @@ Func_b5fbe:: ; b5fbe
 	jp nz, .asm_b60c9
 	hideperson $05
 .asm_b60c9:
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	ret
 
@@ -134,7 +134,7 @@ Func_b6117:
 	playmusic SONG_NONE
 	scall AllocateSpaceForWarps
 	move_player $01, Data_b60fb
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3eae2
 	startbattle Data_b6260, Data_b60d2
 	or a
@@ -151,7 +151,7 @@ Func_b6117:
 	scall MoveEmote
 	ld a, $01
 	scall FadeInAudio
-	playsfx $43
+	playsfx SFX_43
 	scall WaitEmote
 	scall HideEmote
 	hideperson 0
@@ -159,7 +159,7 @@ Func_b6117:
 	scall StartShakingScreen
 	loademote $01, $01, $05
 	scall WaitEmote
-	playsfx $28
+	playsfx SFX_28
 	scall HideEmote
 	script_sleep 60
 	xor a
@@ -175,7 +175,7 @@ Func_b6117:
 	jp .asm_b61a2
 .asm_b61b3:
 	showperson $01
-	playmusic $18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	script_sleep 120
 	move_person $01, Data_b60ff, 1
 	scall WaitNPCStep
@@ -213,7 +213,7 @@ Func_b6117:
 	move_person $01, Data_b610b, 1
 	scall WaitNPCStep
 	playmusic SONG_NONE
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	scall StopShakingScreen
 	writenpctext TreeBitstreamText_3ec56
 	scall StartShakingScreen
@@ -266,7 +266,7 @@ Func_b6291:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	script_sleep 120
 	xor a
 .asm_b62d3:
@@ -286,7 +286,7 @@ Func_b6291:
 	ld a, [hl]
 	scall SetPersonVisibilityState
 	playmusic SONG_NONE
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	ld bc, Data_b628d
 	ld e, $2d
 	ld hl, sp+$01

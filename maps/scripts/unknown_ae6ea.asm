@@ -39,7 +39,7 @@ Func_ae6ea:: ; ae6ea
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ae696
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b8a
 .asm_ae73b:
@@ -97,7 +97,7 @@ Func_ae74c:
 	ld e, $01
 	ld a, $03
 	scall PlayerStep
-	playmusic $01
+	playmusic SONG_TITLE
 	move_person 0, Data_ae748, 1
 	scall WaitNPCStep
 	writenpctext TreeBitstreamText_3e3db
@@ -148,7 +148,7 @@ Func_ae74c:
 	ld e, $15
 	ld a, $12
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	script_sleep 30
@@ -157,5 +157,5 @@ Func_ae74c:
 	scall WaitNPCStep
 	hideperson 0
 	playmusic SONG_NONE
-	playmusic $08
+	playmusic SONG_CAVE
 	ret

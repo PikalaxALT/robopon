@@ -41,7 +41,7 @@ Func_cb8d6:: ; cb8d6
 	jp nz, .asm_cb905
 	loadpeople $03, Data_cb8ac
 .asm_cb905:
-	playmusic $07
+	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46aeb
 	ret
@@ -61,7 +61,7 @@ Func_cb91e:
 	or a
 	jp nz, .asm_cb969
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	ld hl, sp+$01
 	ld a, [hl]
 	cp $01
@@ -74,7 +74,7 @@ Func_cb91e:
 .asm_cb95d:
 	call Func_cb99c
 	playmusic SONG_NONE
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_cb969:
 	pop bc
 	ret

@@ -160,11 +160,11 @@ Func_bb44e:: ; bb44e
 	cp $0a
 	jp nz, .asm_bb4d7
 	loadpeople $06, Data_bb3ca
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	jp .asm_bb4e4
 .asm_bb4d7:
 	loadpeople $05, Data_bb384
-	playmusic $0c
+	playmusic SONG_CENTER
 .asm_bb4e4:
 	scall Func_8001c
 	ret

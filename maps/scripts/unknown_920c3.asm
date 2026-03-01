@@ -131,7 +131,7 @@ Func_920c3:: ; 920c3
 	ld hl, Data_91ba4
 	scall Func_80ce7
 	loadpeople $11, Data_91fd5
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	ld a, $03
 	scall Func_80d01
 	ld a, $1e
@@ -272,7 +272,7 @@ Func_92257:
 	loademote $01, $01, $1b
 	xor a
 	scall Func_80653
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -328,7 +328,7 @@ Func_92257:
 	loademote $01, $01, $1b
 	xor a
 	scall Func_80653
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -642,16 +642,16 @@ Func_926ba:
 	checkevent $00da
 	or a
 	jp nz, .asm_927bb
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $2b
 	ld a, $0f
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson $0e
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $0e
 	sprite_face $00, $0e
 	sprite_face $01, $0e
@@ -665,7 +665,7 @@ Func_926ba:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	script_sleep 30
 	face_player $0e
 	ld c, $01
@@ -673,7 +673,7 @@ Func_926ba:
 	ld a, $12
 	scall Func_80e8d
 	setevent $00da
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $0e
 	sprite_face $00, $0e
 	sprite_face $01, $0e
@@ -687,7 +687,7 @@ Func_926ba:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	face_player $0e
 	hideperson $0e
 	jp .asm_927c1

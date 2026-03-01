@@ -67,9 +67,7 @@ Data_a9183:
 	person_event $ff, $00, $06, $1f, $01, $01, $02, $04, $00, Func_a95d7, NULL
 
 Func_a922b:: ; a922b
-	call Func_a933a
-	ld hl, Func_a933a
-	scall Func_80f11
+	set_frame_script Func_a933a
 	ld l, $01
 	push hl
 	ld c, $01
@@ -160,7 +158,7 @@ Func_a922b:: ; a922b
 	scall Func_80ce7
 	loadpeople $0c, Data_a9183
 	hideperson $0a
-	playmusic $03
+	playmusic SONG_TOWN1
 	scall Func_8001c
 .asm_a9303:
 	ret
@@ -243,11 +241,11 @@ Data_a93b2:
 Func_a93b6:
 	call Func_a933a
 	scall Func_80f02
-	playsfx $65
+	playsfx SFX_65
 	scall StartShakingScreen
 	script_sleep 30
 	loademote $01, $01, $05
-	playsfx $24
+	playsfx SFX_24
 	scall WaitEmote
 	script_sleep 30
 	scall HideEmote
@@ -267,7 +265,7 @@ Func_a93b6:
 .asm_a9400:
 	scall StartShakingScreen
 	script_sleep 30
-	playsfx $45
+	playsfx SFX_45
 	loademote $01, $04, $12
 	ld e, $16
 	ld a, $18
@@ -278,7 +276,7 @@ Func_a93b6:
 	scall WaitEmote
 	scall HideEmote
 	script_sleep 30
-	playsfx $45
+	playsfx SFX_45
 	loademote $01, $04, $12
 	ld e, $16
 	ld a, $1b
@@ -309,7 +307,7 @@ Func_a93b6:
 	ld e, $16
 	ld a, $17
 	scall MoveEmote
-	playsfx $45
+	playsfx SFX_45
 	resetevent $00c1
 	setevent $0044
 	call Func_a933a
@@ -369,7 +367,7 @@ Func_a94fe:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_a957c
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_44d53
 	ld hl, sp+$01
 	ld l, [hl]
@@ -399,7 +397,7 @@ ENDC
 	ld [hl], $01
 	jp .asm_a958a
 .asm_a957c:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_44dc8
 	jp .asm_a95d4
 .asm_a958a:
@@ -443,16 +441,16 @@ Func_a95d7:
 	checkevent $00de
 	or a
 	jp nz, .asm_a96d8
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $1f
 	ld a, $06
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson $0a
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $0a
 	sprite_face $00, $0a
 	sprite_face $01, $0a
@@ -466,7 +464,7 @@ Func_a95d7:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	face_player $0a
 	script_sleep 30
 	ld c, $0d
@@ -474,7 +472,7 @@ Func_a95d7:
 	ld a, $0a
 	scall Func_80e8d
 	setevent $00de
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $0a
 	sprite_face $00, $0a
 	sprite_face $01, $0a
@@ -488,7 +486,7 @@ Func_a95d7:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $03
+	playmusic SONG_TOWN1
 	face_player $0a
 	hideperson $0a
 	jp .asm_a96de

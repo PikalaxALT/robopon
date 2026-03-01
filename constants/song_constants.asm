@@ -27,3 +27,5 @@
 	const SONG_ENCOUNTER_BEAUTY  ; 18
 	const SONG_ENCOUNTER_UNKNOWN ; 19
 	const SONG_ENCOUNTER_EVIL    ; 1a
+	const SONG_1B                ; 1b
+	const SONG_1C                ; 1c

@@ -88,7 +88,7 @@ Func_9ea24:: ; 9ea24
 	jp nz, .asm_9eb0a
 	loadpeople $02, Data_9ea08
 .asm_9eb0a:
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ret
 
@@ -384,11 +384,11 @@ Func_9eda0:
 
 Func_9ee27:
 	playmusic SONG_NONE
-	playmusic $0a
+	playmusic SONG_0A
 	xor a
 	scall Func_80653
 	loademote $01, $01, $0b
-	playsfx $44
+	playsfx SFX_44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04

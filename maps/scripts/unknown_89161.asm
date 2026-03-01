@@ -175,7 +175,7 @@ Func_89353:
 	loademote $01, $01, $09
 	xor a
 	scall Func_80653
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -209,7 +209,7 @@ Func_893a6:
 	loademote $01, $01, $09
 	xor a
 	scall Func_80653
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -232,12 +232,12 @@ Func_893f9:
 	checkevent $0059
 	if_true .asm_8941e
 	setevent $0059
-	playsfx $31
+	playsfx SFX_31
 	writetext TreeBitstreamText_47029
 	jp .asm_89431
 .asm_8941e:
 	resetevent $0059
-	playsfx $32
+	playsfx SFX_32
 	writetext TreeBitstreamText_4701b
 .asm_89431:
 	ret

@@ -110,9 +110,7 @@ Func_8966d:: ; 8966d
 	ld [wc789], a
 	ld a, $03
 	ld [wc7e2], a
-	call Func_89959
-	ld hl, Func_89959
-	scall Func_80f11
+	set_frame_script Func_89959
 	playmusic SONG_TOWN1
 	ld a, $01
 	scall LoadPlayerSprite
@@ -172,7 +170,7 @@ Func_896f7:
 	writenpctext TreeBitstreamText_44392
 	writetext_yesorno TreeBitstreamText_458e0
 	if_true .asm_89775
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_443c5
 	ld hl, sp+$01
 	ld l, [hl]
@@ -195,7 +193,7 @@ Func_896f7:
 	ld [hl], $01
 	jp .asm_89783
 .asm_89775:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_4445d
 	jp .asm_8992c
 .asm_89783:
@@ -223,7 +221,7 @@ Func_896f7:
 	writenpctext TreeBitstreamText_44507
 	writetext_yesorno TreeBitstreamText_458e0
 	if_true .asm_897ff
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_4453d
 	ld hl, sp+$01
 	ld l, [hl]
@@ -246,7 +244,7 @@ Func_896f7:
 	ld [hl], $01
 	jp .asm_8980d
 .asm_897ff:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_4445d
 	jp .asm_8992c
 .asm_8980d:

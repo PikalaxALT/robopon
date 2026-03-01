@@ -24,7 +24,7 @@ Func_9e2cf:: ; 9e2cf
 	ld a, $03
 	scall Func_80d01
 	loadwilds $04, Data_9e289
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ret
 
@@ -82,11 +82,11 @@ Func_9e305:
 .asm_9e37b:
 	scall WaitNPCStep
 	playmusic SONG_NONE
-	playmusic $0a
+	playmusic SONG_0A
 	xor a
 	scall Func_80653
 	loademote $01, $01, $0b
-	playsfx $44
+	playsfx SFX_44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04

@@ -195,13 +195,13 @@ Func_96f2b:
 	ld a, $09
 	scall MoveEmote
 	script_sleep 360
-	playsfx $68
+	playsfx SFX_68
 	script_sleep 30
-	playsfx $68
+	playsfx SFX_68
 	script_sleep 30
-	playsfx $68
+	playsfx SFX_68
 	script_sleep 30
-	playsfx $68
+	playsfx SFX_68
 	scall WaitEmote
 	scall HideEmote
 	ld a, $0a

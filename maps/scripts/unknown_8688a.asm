@@ -100,13 +100,13 @@ Func_86943: ; 86943 (21:6943)
 	xor a
 	scall PlayerFace
 	loademote $1, $1, $7
-	playsfx $68
+	playsfx SFX_68
 	scall WaitEmote
 	loademote $1, $1, $7
-	playsfx $68
+	playsfx SFX_68
 	scall WaitEmote
 	loademote $1, $1, $7
-	playsfx $68
+	playsfx SFX_68
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3a38a
 	move_person $3, Data_8690f, 0
@@ -125,7 +125,7 @@ Func_86943: ; 86943 (21:6943)
 	ret
 
 .asm_869e7: ; 869e7 (21:69e7)
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3a420
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_BEAUTY
@@ -193,16 +193,16 @@ Func_86b0d:
 	checkevent $d6
 	or a
 	jp nz, .asm_86bfa
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $2, $2, $8
 	ld e, $4
 	ld a, $e
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson 0
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $3, 0
 	sprite_face $0, 0
 	sprite_face $1, 0
@@ -224,7 +224,7 @@ Func_86b0d:
 	ld a, $6
 	scall Func_80e8d
 	setevent $d6
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $3, 0
 	sprite_face $0, 0
 	sprite_face $1, 0

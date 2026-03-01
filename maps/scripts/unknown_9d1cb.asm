@@ -79,15 +79,13 @@ Func_9d1cb:: ; 9d1cb
 	xor a
 	ld [wc795], a
 .asm_9d207:
-	call Func_9d344
-	ld hl, Func_9d344
-	scall Func_80f11
+	set_frame_script Func_9d344
 	resetevent $0010
 	loadwarps $03, Data_9d0b4
 	ld a, $03
 	scall Func_80d01
 	loadwilds $04, Data_9d0d5
-	playmusic $03
+	playmusic SONG_TOWN1
 	ld a, $01
 	scall LoadPlayerSprite
 	loadpeople $02, Data_9d1af
@@ -343,7 +341,7 @@ Data_9d4a3:
 Func_9d4a7:
 	script_sleep 30
 	writenpctext TreeBitstreamText_431d7
-	playsfx $67
+	playsfx SFX_67
 	loademote $01, $01, $2a
 	xor a
 	scall Func_80653
@@ -400,7 +398,7 @@ Func_9d56e:
 	sprite_face $01, $02
 	script_sleep 30
 	writenpctext TreeBitstreamText_432c2
-	playsfx $59
+	playsfx SFX_59
 	loademote $01, $01, $22
 	hideperson $02
 	scall WaitEmote
@@ -414,7 +412,7 @@ Func_9d56e:
 	sprite_face $02, $02
 	script_sleep 30
 	playmusic SONG_NONE
-	playmusic $19
+	playmusic SONG_ENCOUNTER_UNKNOWN
 	loademote $01, $06, $22
 	hideperson $02
 	scall WaitEmote
@@ -424,10 +422,10 @@ Func_9d56e:
 	script_sleep 30
 	writenpctext TreeBitstreamText_432d3
 	playmusic SONG_NONE
-	playmusic $03
-	playsfx $68
+	playmusic SONG_TOWN1
+	playsfx SFX_68
 	script_sleep 45
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_432e2
 	ret
 
@@ -436,7 +434,7 @@ Func_9d61e:
 	sprite_face $01, $02
 	script_sleep 30
 	writenpctext TreeBitstreamText_432c2
-	playsfx $59
+	playsfx SFX_59
 	loademote $01, $01, $22
 	hideperson $02
 	scall WaitEmote
@@ -450,7 +448,7 @@ Func_9d61e:
 	sprite_face $02, $02
 	script_sleep 30
 	playmusic SONG_NONE
-	playmusic $19
+	playmusic SONG_ENCOUNTER_UNKNOWN
 	loademote $01, $18, $22
 	hideperson $02
 	scall WaitEmote
@@ -460,10 +458,10 @@ Func_9d61e:
 	script_sleep 30
 	writenpctext TreeBitstreamText_432d3
 	playmusic SONG_NONE
-	playmusic $03
-	playsfx $68
+	playmusic SONG_TOWN1
+	playsfx SFX_68
 	script_sleep 45
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_4347a
 	ret
 
@@ -472,7 +470,7 @@ Func_9d6ce:
 	script_sleep 30
 	sprite_face $01, $02
 	writenpctext TreeBitstreamText_432c2
-	playsfx $59
+	playsfx SFX_59
 	loademote $01, $01, $22
 	hideperson $02
 	scall WaitEmote
@@ -486,7 +484,7 @@ Func_9d6ce:
 	sprite_face $02, $02
 	script_sleep 30
 	playmusic SONG_NONE
-	playmusic $19
+	playmusic SONG_ENCOUNTER_UNKNOWN
 	loademote $01, $60, $22
 	hideperson $02
 	scall WaitEmote
@@ -496,10 +494,10 @@ Func_9d6ce:
 	script_sleep 30
 	writenpctext TreeBitstreamText_432d3
 	playmusic SONG_NONE
-	playmusic $03
-	playsfx $68
+	playmusic SONG_TOWN1
+	playsfx SFX_68
 	script_sleep 45
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_435b0
 	ret
 
@@ -508,7 +506,7 @@ Func_9d77e:
 	sprite_face $01, $02
 	script_sleep 30
 	writenpctext TreeBitstreamText_43761
-	playsfx $59
+	playsfx SFX_59
 	loademote $01, $01, $22
 	hideperson $02
 	scall WaitEmote
@@ -522,7 +520,7 @@ Func_9d77e:
 	sprite_face $02, $02
 	script_sleep 30
 	playmusic SONG_NONE
-	playmusic $19
+	playmusic SONG_ENCOUNTER_UNKNOWN
 	loademote $01, $03, $23
 	hideperson $02
 	scall WaitEmote
@@ -536,10 +534,10 @@ Func_9d77e:
 	script_sleep 30
 	writenpctext TreeBitstreamText_432d3
 	playmusic SONG_NONE
-	playmusic $03
-	playsfx $68
+	playmusic SONG_TOWN1
+	playsfx SFX_68
 	script_sleep 45
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_4377a
 	ret
 
@@ -551,7 +549,7 @@ Func_9d83b:
 	sprite_face $01, $02
 	script_sleep 30
 	writenpctext TreeBitstreamText_43a21
-	playsfx $59
+	playsfx SFX_59
 	loademote $01, $01, $22
 	hideperson $02
 	scall WaitEmote
@@ -565,7 +563,7 @@ Func_9d83b:
 	sprite_face $02, $02
 	script_sleep 30
 	playmusic SONG_NONE
-	playmusic $19
+	playmusic SONG_ENCOUNTER_UNKNOWN
 	loademote $01, $0c, $23
 	hideperson $02
 	move_person $03, Data_9d837, 0
@@ -575,10 +573,10 @@ Func_9d83b:
 	script_sleep 30
 	writenpctext TreeBitstreamText_432d3
 	playmusic SONG_NONE
-	playmusic $03
-	playsfx $68
+	playmusic SONG_TOWN1
+	playsfx SFX_68
 	script_sleep 45
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_43a5a
 	ret
 
@@ -655,7 +653,7 @@ Func_9d8fa:
 .asm_9d96f:
 	script_sleep 30
 	writenpctext TreeBitstreamText_43362
-	playsfx $59
+	playsfx SFX_59
 	move_person $02, Data_9d8f2, 0
 	move_person $03, Data_9d8f6, 1
 	scall WaitNPCStep
@@ -676,12 +674,12 @@ Func_9d8fa:
 	move_person $03, Data_9d8ee, 0
 	scall WaitNPCStep
 	hideperson $03
-	playsfx $2e
+	playsfx SFX_2E
 	jp .asm_9dae4
 .asm_9d9fd:
 	script_sleep 30
 	writenpctext TreeBitstreamText_43362
-	playsfx $59
+	playsfx SFX_59
 	script_sleep 30
 	loademote $01, $20, $23
 	ld e, $19
@@ -696,7 +694,7 @@ Func_9d8fa:
 	scall WaitNPCStep
 	hideperson $03
 	hideperson $04
-	playsfx $2e
+	playsfx SFX_2E
 	jp .asm_9dae4
 .asm_9da64:
 	script_sleep 30
@@ -709,18 +707,18 @@ Func_9d8fa:
 	ld a, $02
 	scall Func_80080
 	showperson $02
-	playsfx $33
+	playsfx SFX_33
 	script_sleep 30
-	playsfx $33
+	playsfx SFX_33
 	script_sleep 30
-	playsfx $33
+	playsfx SFX_33
 	script_sleep 30
-	playsfx $33
+	playsfx SFX_33
 	scall WaitEmote
 	scall HideEmote
 	script_sleep 60
 	writenpctext TreeBitstreamText_43362
-	playsfx $59
+	playsfx SFX_59
 	loademote $01, $20, $23
 	ld e, $19
 	ld a, $20
@@ -762,16 +760,16 @@ Func_9db30:
 	checkevent $00dc
 	or a
 	jp nz, .asm_9dc1d
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $0e
 	ld a, $1e
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson 0
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
 	sprite_face $01, 0
@@ -785,7 +783,7 @@ Func_9db30:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	face_player 0
 	script_sleep 30
 	ld c, $0c
@@ -793,7 +791,7 @@ Func_9db30:
 	ld a, $06
 	scall Func_80e8d
 	setevent $00dc
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
 	sprite_face $01, 0
@@ -807,7 +805,7 @@ Func_9db30:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $03
+	playmusic SONG_TOWN1
 	face_player 0
 	hideperson 0
 	jp .asm_9dc23

@@ -244,7 +244,7 @@ Func_a6882:: ; a6882
 .asm_a69d9:
 	loadpeople $0a, Data_a67da
 	loadpeople $02, Data_a6866
-	playmusic $0a
+	playmusic SONG_0A
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -275,12 +275,12 @@ Func_a6a09:
 	ld e, $14
 	ld a, $13
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	writenpctext TreeBitstreamText_3d098
 	playmusic SONG_NONE
-	playmusic $1b
+	playmusic SONG_1B
 	move_person 0, Data_a69fb, 0
 	scall WaitNPCStep
 	script_sleep 30
@@ -303,11 +303,11 @@ Func_a6a87:
 	or a
 	jp nz, .asm_a6adb
 	playmusic SONG_NONE
-	playsfx $28
+	playsfx SFX_28
 	loademote $01, $02, $03
 	hideperson 0
 	scall WaitEmote
-	playsfx $28
+	playsfx SFX_28
 	loademote $01, $01, $03
 	scall WaitEmote
 	showperson 0
@@ -315,7 +315,7 @@ Func_a6a87:
 	face_player -$01
 	setevent $002e
 	writenpctext TreeBitstreamText_3d204
-	playmusic $0a
+	playmusic SONG_0A
 .asm_a6adb:
 	pop bc
 	ret

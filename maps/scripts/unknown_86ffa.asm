@@ -182,9 +182,7 @@ Func_86ffa::
 	ld [wc7e2], a
 	ld a, $4
 	scall Func_80c94
-	call Func_870fa
-	ld hl, Func_870fa
-	scall Func_80f11
+	set_frame_script Func_870fa
 	loadwarps $b, Data_86c01
 	ld a, $5
 	scall Func_80d01

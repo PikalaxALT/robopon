@@ -92,9 +92,7 @@ Data_81273: ; 81273
 	person_event $ff, $00, $1b, $14, $01, $01, $00, $04, $01, Func_81a5a, NULL
 
 Func_81281::
-	call Func_81427
-	ld hl, Func_81427
-	scall Func_80f11
+	set_frame_script Func_81427
 	ld e, $4
 	ld hl, Data_81101
 	scall Func_80ce7
@@ -320,13 +318,13 @@ Func_814c1: ; 814c1 (20:54c1)
 	loademote $1, $1, $20
 	hideperson $1
 	hideperson $2
-	playsfx $36
+	playsfx SFX_36
 	script_sleep 30
 	scall WaitEmote
 	loademote $1, $2, $20
-	playsfx $36
+	playsfx SFX_36
 	scall WaitEmote
-	playsfx $39
+	playsfx SFX_39
 	ld a, $f
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -358,7 +356,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	ld e, $d
 	ld a, $15
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	script_sleep 30
 	scall HideEmote
@@ -420,7 +418,7 @@ Func_81607:
 .won
 	writenpctext TreeBitstreamText_396fd
 	move_person $1, Data_81603, 0
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson $1
 	script_sleep 30
@@ -441,7 +439,7 @@ Func_81607:
 	jp .asm_81701
 
 .asm_816da: ; 816da (20:56da)
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_39718
 	script_sleep 30
 	sprite_face FACE_LEFT, 0
@@ -501,7 +499,7 @@ Func_8172f: ; 8172f (20:572f)
 	writenpctext TreeBitstreamText_398e4
 	writenpctext TreeBitstreamText_39944
 	writenpctext TreeBitstreamText_39953
-	playsfx $2e
+	playsfx SFX_2E
 	move_person $3, Data_8172b, 0
 	scall WaitNPCStep
 	hideperson $3
@@ -563,7 +561,7 @@ Func_81811:
 .asm_8187c: ; 8187c (20:587c)
 	writenpctext TreeBitstreamText_3985c
 	move_person $4, Data_817fd, 0
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson $4
 	playmusic SONG_NONE
@@ -583,7 +581,7 @@ Func_81811:
 	writenpctext TreeBitstreamText_398e4
 	writenpctext TreeBitstreamText_39944
 	writenpctext TreeBitstreamText_39953
-	playsfx $2e
+	playsfx SFX_2E
 	move_person $3, Data_81805, 1
 	ld a, $2
 	scall PlayerFace
@@ -595,7 +593,7 @@ Func_81811:
 	jp .asm_81938
 
 .asm_81910: ; 81910 (20:5910)
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_39847
 	script_sleep 30
 	sprite_face $2, $3
@@ -690,7 +688,7 @@ Func_819ea:
 	ld [wSpawnPushX], a
 	ld a, $7
 	ld [wSpawnPushY], a
-	playsfx $2e
+	playsfx SFX_2E
 	ld a, $8
 	ld [wBackupMapX], a
 	ld a, $8
@@ -719,7 +717,7 @@ Func_81a22:
 	ld [wSpawnPushX], a
 	ld a, $7
 	ld [wSpawnPushY], a
-	playsfx $2e
+	playsfx SFX_2E
 	ld a, $8
 	ld [wBackupMapX], a
 	ld a, $f

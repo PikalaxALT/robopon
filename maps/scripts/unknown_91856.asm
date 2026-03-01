@@ -66,7 +66,7 @@ Func_91856:: ; 91856
 	loadpeople $02, Data_9183a
 	ld a, $05
 	ld [wc7e2], a
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_4691c
 	jp .asm_918f4
@@ -87,7 +87,7 @@ Func_91856:: ; 91856
 	loadpeople $05, Data_917e1
 	ld a, $01
 	scall LoadPlayerSprite
-	playmusic $08
+	playmusic SONG_CAVE
 	hideperson $03
 	hideperson $04
 	scall Func_8001c
@@ -126,7 +126,7 @@ Func_918f5:
 	or a
 	jp nz, .asm_9196e
 	playmusic SONG_NONE
-	playmusic $0a
+	playmusic SONG_0A
 	xor a
 	scall Func_80653
 	loademote $01, $01, $0b
@@ -193,7 +193,7 @@ Func_9198b:
 	writenpctext TreeBitstreamText_3bc83
 	script_sleep 30
 	playmusic SONG_NONE
-	playmusic $19
+	playmusic SONG_ENCOUNTER_UNKNOWN
 	showperson $03
 	script_sleep 30
 	loademote $01, $01, $29
@@ -204,7 +204,7 @@ Func_9198b:
 	scall WaitEmote
 	hideperson $03
 	script_sleep 30
-	playsfx $68
+	playsfx SFX_68
 	showperson $04
 	script_sleep 30
 	showperson $01
@@ -233,12 +233,12 @@ Func_9198b:
 	give_robot SPEEDY, l, $00
 	setevent $0047
 	script_sleep 30
-	playsfx $2a
+	playsfx SFX_2A
 	hideperson $04
 	writetext TreeBitstreamText_3bd77
 	writenpctext TreeBitstreamText_3bd02
 	playmusic SONG_NONE
-	playmusic $08
+	playmusic SONG_CAVE
 	jp .asm_91ac4
 .asm_91abe:
 	writenpctext TreeBitstreamText_3bd37
@@ -263,12 +263,12 @@ Func_91ae0:
 	jp nz, .asm_91b0b
 	heal
 	playmusic SONG_NONE
-	playmusic $16
+	playmusic SONG_HEAL
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
-	playmusic $08
+	playmusic SONG_CAVE
 .asm_91b0b:
 	ret
 
@@ -290,7 +290,7 @@ Func_91b0c:
 	writetext TreeBitstreamText_3bc38
 	script_sleep 30
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $00
 	ld e, $01

@@ -110,7 +110,7 @@ Func_c980d:: ; c980d
 	scall Func_80d01
 	loadwilds $05, Data_c9669
 	loadpeople $01, Data_c97c7
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46991
 	jp .asm_c98eb
@@ -119,7 +119,7 @@ Func_c980d:: ; c980d
 	scall Func_80d01
 	loadwilds $05, Data_c96af
 	loadpeople $01, Data_c97d5
-	playmusic $0e
+	playmusic SONG_JUMP_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a4b
 	jp .asm_c98eb
@@ -128,7 +128,7 @@ Func_c980d:: ; c980d
 	scall Func_80d01
 	loadwilds $05, Data_c96f5
 	loadpeople $01, Data_c97e3
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a0a
 	jp .asm_c98eb
@@ -137,7 +137,7 @@ Func_c980d:: ; c980d
 	scall Func_80d01
 	loadwilds $05, Data_c973b
 	loadpeople $01, Data_c97f1
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469cd
 	jp .asm_c98eb
@@ -146,7 +146,7 @@ Func_c980d:: ; c980d
 	scall Func_80d01
 	loadwilds $05, Data_c9781
 	loadpeople $01, Data_c97ff
-	playmusic $10
+	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a8c
 .asm_c98eb:

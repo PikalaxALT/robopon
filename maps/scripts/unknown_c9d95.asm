@@ -114,7 +114,7 @@ Func_c9d95:: ; c9d95
 	scall Func_80d01
 	loadwilds $05, Data_c9be3
 	loadpeople $01, Data_c9d41
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_4699d
 	jp .asm_c9e73
@@ -123,7 +123,7 @@ Func_c9d95:: ; c9d95
 	scall Func_80d01
 	loadwilds $05, Data_c9c29
 	loadpeople $01, Data_c9d4f
-	playmusic $0e
+	playmusic SONG_JUMP_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a58
 	jp .asm_c9e73
@@ -132,7 +132,7 @@ Func_c9d95:: ; c9d95
 	scall Func_80d01
 	loadwilds $05, Data_c9c6f
 	loadpeople $01, Data_c9d5d
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a17
 	jp .asm_c9e73
@@ -141,7 +141,7 @@ Func_c9d95:: ; c9d95
 	scall Func_80d01
 	loadwilds $05, Data_c9cb5
 	loadpeople $01, Data_c9d6b
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469d9
 	jp .asm_c9e73
@@ -150,7 +150,7 @@ Func_c9d95:: ; c9d95
 	scall Func_80d01
 	loadwilds $05, Data_c9cfb
 	loadpeople $01, Data_c9d79
-	playmusic $10
+	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a99
 .asm_c9e73:
@@ -378,7 +378,7 @@ Func_ca152:
 	jp nz, .asm_ca1b3
 	heal
 	playmusic SONG_NONE
-	playmusic $16
+	playmusic SONG_HEAL
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
@@ -392,18 +392,18 @@ Func_ca152:
 	jp z, .asm_ca196
 	or a
 	jp nz, .asm_ca1ae
-	playmusic $09
+	playmusic SONG_TOWER
 	jp .asm_ca1b3
 .asm_ca196:
-	playmusic $0e
+	playmusic SONG_JUMP_MINIGAME
 	jp .asm_ca1b3
 .asm_ca19e:
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	jp .asm_ca1b3
 .asm_ca1a6:
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	jp .asm_ca1b3
 .asm_ca1ae:
-	playmusic $10
+	playmusic SONG_PUNCH_MINIGAME
 .asm_ca1b3:
 	ret

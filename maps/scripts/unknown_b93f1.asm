@@ -624,10 +624,10 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, .asm_b97b4
-	playmusic $0a
+	playmusic SONG_0A
 	jp .asm_b97b9
 .asm_b97b4:
-	playmusic $11
+	playmusic SONG_TOWN3
 .asm_b97b9:
 	ret
 
@@ -656,7 +656,7 @@ Func_b97c4:
 	scall WaitNPCStep
 	sprite_face $02, $01
 	script_sleep 30
-	playsfx $34
+	playsfx SFX_34
 	hideperson $01
 	ld e, $01
 	ld a, $03
@@ -668,7 +668,7 @@ Func_b97c4:
 	scall WaitNPCStep
 	sprite_face $03, 0
 	writenpctext TreeBitstreamText_3d187
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3d1c4
 	ld c, $00
 	ld e, $01

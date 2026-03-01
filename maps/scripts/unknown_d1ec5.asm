@@ -193,9 +193,7 @@ Func_d1ec5:: ; d1ec5 (34:5ec5)
 	inc a
 	cp $15
 	jp nc, .asm_d2002
-	call Func_d203f
-	ld hl, Func_d203f
-	scall Func_80f11
+	set_frame_script Func_d203f
 	ld a, $4
 	scall Random
 	ld l, a

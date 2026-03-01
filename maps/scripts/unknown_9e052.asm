@@ -41,6 +41,6 @@ Func_9e052:: ; 9e052
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_9dffa
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ret

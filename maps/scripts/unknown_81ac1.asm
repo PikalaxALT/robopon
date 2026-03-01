@@ -102,7 +102,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, $0
 	ld a, $1
 	call SetPersonVisibilityState_20
-	playsfx $34
+	playsfx SFX_34
 	script_sleep 60
 	ld e, $1
 	xor a
@@ -118,7 +118,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_20
-	playsfx $34
+	playsfx SFX_34
 	script_sleep 30
 	ld a, $2
 	call PlayerFace_20
@@ -129,7 +129,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, $1
 	xor a
 	call SetPersonVisibilityState_20
-	playsfx $34
+	playsfx SFX_34
 	move_person 0, Data_81b2d, 1
 	call WaitNPCStep_20
 	ld e, $1
@@ -142,7 +142,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_20
-	playsfx $34
+	playsfx SFX_34
 	script_sleep 30
 	; scroll screen 32 pixels right, leaving player frozen
 	ld e, $1

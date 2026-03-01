@@ -46,7 +46,7 @@ Func_ad122:: ; ad122
 	xor a
 	scall Func_80653
 	scall StartShakingScreen
-	playsfx $65
+	playsfx SFX_65
 	scall Func_8001c
 	call Func_ad1c6
 	jp .asm_ad1c5
@@ -63,31 +63,31 @@ Func_ad122:: ; ad122
 	scall Func_8001c
 	call Func_ad302
 	playmusic SONG_NONE
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	jp .asm_ad1c5
 .asm_ad1b8:
 	ld a, $01
 	scall LoadPlayerSprite
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 .asm_ad1c5:
 	ret
 
 Func_ad1c6:
-	playsfx $65
+	playsfx SFX_65
 	loademote $05, $02, $14
 	ld e, $05
 	ld a, $07
 	scall MoveEmote
 	scall WaitEmote
-	playsfx $65
+	playsfx SFX_65
 	loademote $01, $01, $14
 	ld e, $05
 	ld a, $07
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $65
+	playsfx SFX_65
 	writenpctext TreeBitstreamText_3e01f
 	scall StopShakingScreen
 	ld l, $0a
@@ -118,7 +118,7 @@ Func_ad225:
 	scall StartShakingScreen
 	scall Func_8001c
 	script_sleep 120
-	playsfx $65
+	playsfx SFX_65
 	loademote $05, $02, $14
 	ld e, $05
 	ld a, $07
@@ -131,7 +131,7 @@ Func_ad225:
 	scall WaitNPCStep
 	sprite_face $00, 0
 	script_sleep 30
-	playsfx $65
+	playsfx SFX_65
 	loademote $05, $02, $14
 	ld e, $05
 	ld a, $07
@@ -143,7 +143,7 @@ Func_ad225:
 	scall PlayerFace
 	ld a, $01
 	scall Func_80653
-	playsfx $65
+	playsfx SFX_65
 	loademote $01, $01, $14
 	ld e, $05
 	ld a, $07

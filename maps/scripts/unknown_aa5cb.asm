@@ -96,15 +96,13 @@ Func_aa5cb:: ; aa5cb
 	ld [wc789], a
 	ld a, $0d
 	ld [wc7e2], a
-	call Func_aaaad
-	ld hl, Func_aaaad
-	scall Func_80f11
+	set_frame_script Func_aaaad
 	loadwarps $0e, Data_aa3d8
 	loadpeople $09, Data_aa4a5
 	loadpeople $02, Data_aa577
 	ld a, $01
 	scall LoadPlayerSprite
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 	ld a, [wc790]
 	or a
 	jp z, .asm_aa622
@@ -228,11 +226,11 @@ Func_aa6ee:
 .asm_aa764:
 	scall WaitNPCStep
 	playmusic SONG_NONE
-	playmusic $0a
+	playmusic SONG_0A
 	xor a
 	scall Func_80653
 	loademote $01, $01, $0b
-	playsfx $44
+	playsfx SFX_44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04
@@ -273,7 +271,7 @@ Func_aa7b6:
 	script_sleep 30
 	ld a, $03
 	scall PlayerFace
-	playsfx $69
+	playsfx SFX_69
 	writetext TreeBitstreamText_40c1e
 	move_player $01, Data_aa7b2
 	ld e, $02
@@ -301,7 +299,7 @@ Func_aa7f5:
 	script_sleep 30
 	ld a, $01
 	scall PlayerFace
-	playsfx $69
+	playsfx SFX_69
 	writetext TreeBitstreamText_40c1e
 	move_player $01, Data_aa7f1
 	ld e, $02
@@ -329,7 +327,7 @@ Func_aa834:
 	script_sleep 30
 	ld a, $03
 	scall PlayerFace
-	playsfx $69
+	playsfx SFX_69
 	writetext TreeBitstreamText_40c37
 	move_player $01, Data_aa830
 	ld e, $02
@@ -368,7 +366,7 @@ Func_aa86f:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_aa8ed
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_44f3f
 	ld hl, sp+$01
 	ld l, [hl]
@@ -391,7 +389,7 @@ Func_aa86f:
 	ld [hl], $01
 	jp .asm_aa8fb
 .asm_aa8ed:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_44fed
 	jp .asm_aaaa4
 .asm_aa8fb:
@@ -420,7 +418,7 @@ Func_aa86f:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_aa977
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_450f4
 	ld hl, sp+$01
 	ld l, [hl]
@@ -443,7 +441,7 @@ Func_aa86f:
 	ld [hl], $01
 	jp .asm_aa985
 .asm_aa977:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_45194
 	jp .asm_aaaa4
 .asm_aa985:

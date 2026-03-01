@@ -30,19 +30,19 @@ Func_9f5e1:: ; 9f5e1
 	checkevent $00f9
 	or a
 	jp nz, .asm_9f627
-	playmusic $0e
+	playmusic SONG_JUMP_MINIGAME
 	xor a
 	scall Func_80653
 	scall Func_8001c
 	call Func_9f63b
 	jp .asm_9f62f
 .asm_9f627:
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 .asm_9f62f:
 	jp .asm_9f63a
 .asm_9f632:
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 .asm_9f63a:
 	ret
@@ -58,6 +58,6 @@ Func_9f63b:
 	scall HideEmote
 	script_sleep 30
 	playmusic SONG_NONE
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	setevent $00f9
 	ret

@@ -91,7 +91,7 @@ Func_8b53d:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld l, $06
@@ -122,12 +122,12 @@ Func_8b58c:
 	or a
 	jp nz, .asm_8b5c9
 	setevent $0059
-	playsfx $32
+	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_8b5dc
 .asm_8b5c9:
 	resetevent $0059
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_8b5dc:
 	ret

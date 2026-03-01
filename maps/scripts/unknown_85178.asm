@@ -154,7 +154,7 @@ Func_852ac: ; 852ac (21:52ac)
 	ld e, $f
 	ld a, $17
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	script_sleep 60
 	scall HideEmote
@@ -175,7 +175,7 @@ Func_852ac: ; 852ac (21:52ac)
 	sprite_face $0, $1
 	move_person $2, Data_8527c, 1
 	scall WaitNPCStep
-	playsfx $33
+	playsfx SFX_33
 	move_person $1, Data_85286, 1
 	scall WaitNPCStep
 	sprite_face $1, 0
@@ -203,11 +203,11 @@ Func_852ac: ; 852ac (21:52ac)
 	move_person 0, Data_85280, 0
 	move_person $1, Data_8528e, 1
 	scall WaitNPCStep
-	playsfx $33
+	playsfx SFX_33
 	sprite_face $3, $1
 	move_player $1, Data_85298
 	script_sleep 30
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	sprite_face $2, 0
 	sprite_face $2, $1
@@ -218,7 +218,7 @@ Func_852ac: ; 852ac (21:52ac)
 	scall PlayerFace
 	sprite_face $2, 0
 	sprite_face $2, $1
-	playsfx $5c
+	playsfx SFX_5C
 	script_sleep 120
 	writenpctext TreeBitstreamText_39c6c
 	writenpctext TreeBitstreamText_39c19
@@ -250,7 +250,7 @@ Func_854aa:
 	checkevent $14
 	or a
 	jp nz, .asm_854c8
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3a2e2
 	jp .asm_85570
 
@@ -574,7 +574,7 @@ Func_85832:
 	xor a
 	scall Func_80653
 	loademote $1, $1, $b
-	playsfx $44
+	playsfx SFX_44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $4

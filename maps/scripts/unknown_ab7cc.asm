@@ -96,7 +96,7 @@ Func_ab7cc:: ; ab7cc
 	cp $0e
 	jp nz, .asm_ab88a
 .asm_ab87f:
-	playmusic $03
+	playmusic SONG_TOWN1
 	call Func_abc22
 	jp .asm_ab8c8
 .asm_ab88a:
@@ -106,17 +106,17 @@ Func_ab7cc:: ; ab7cc
 	xor a
 	scall Func_80653
 	playmusic SONG_NONE
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	call Func_ab8e1
 	setevent $0043
 	ld a, $0c
 	scall Func_80c94
 	playmusic SONG_NONE
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 	jp .asm_ab8c8
 .asm_ab8c0:
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 	scall Func_8001c
 .asm_ab8c8:
 	ret
@@ -165,12 +165,12 @@ Func_ab904:
 	scall WaitNPCStep
 	script_sleep 60
 	move_person $05, Data_ab8cd, 1
-	playsfx $2e
+	playsfx SFX_2E
 	sprite_face $01, $05
 	script_sleep 60
 	sprite_face $03, $04
 	move_person $06, Data_ab8d1, 1
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	sprite_face $03, $06
 	script_sleep 30
@@ -178,7 +178,7 @@ Func_ab904:
 	script_sleep 30
 	move_person $04, Data_ab8d5, 1
 	scall WaitNPCStep
-	playsfx $62
+	playsfx SFX_62
 	sprite_face $00, $06
 	sprite_face $01, $06
 	sprite_face $02, $06
@@ -188,10 +188,10 @@ Func_ab904:
 	sprite_face $02, $06
 	sprite_face $03, $06
 	hideperson $06
-	playsfx $4e
+	playsfx SFX_4E
 	move_person $04, Data_ab8d9, 1
 	scall WaitNPCStep
-	playsfx $63
+	playsfx SFX_63
 	sprite_face $00, $05
 	sprite_face $01, $05
 	sprite_face $02, $05
@@ -201,7 +201,7 @@ Func_ab904:
 	sprite_face $02, $05
 	sprite_face $03, $05
 	hideperson $05
-	playsfx $4e
+	playsfx SFX_4E
 	script_sleep 120
 	ld c, $15
 	ld e, $11
@@ -231,7 +231,7 @@ Func_aba78:
 	ld e, $0f
 	ld a, $10
 	scall MoveEmote
-	playsfx $61
+	playsfx SFX_61
 	scall WaitEmote
 	scall HideEmote
 	writenpctext TreeBitstreamText_3dc1e
@@ -242,7 +242,7 @@ Func_aba78:
 	ld e, $0f
 	ld a, $11
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	xor a
@@ -269,7 +269,7 @@ Func_aba78:
 	ld e, $0f
 	ld a, $10
 	scall MoveEmote
-	playsfx $60
+	playsfx SFX_60
 	hideperson $02
 	sprite_face $03, $03
 	scall WaitEmote
@@ -309,7 +309,7 @@ Func_abb74:: ; abb74
 	ld e, $08
 	ld a, $10
 	scall MoveEmote
-	playsfx $5e
+	playsfx SFX_5E
 	hideperson $04
 	scall WaitEmote
 	showperson $03
@@ -398,7 +398,7 @@ Func_abc22:
 .asm_abcc2:
 	xor a
 	ld [wc39e], a
-	playmusic $02
+	playmusic SONG_CREDITS
 	ld a, $01
 	ld [wc790], a
 	scall ScriptLibrary
@@ -495,16 +495,16 @@ Func_abe67:
 	checkevent $00df
 	or a
 	jp nz, .asm_abf54
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $14
 	ld a, $16
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson 0
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
 	sprite_face $01, 0
@@ -518,7 +518,7 @@ Func_abe67:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	face_player 0
 	script_sleep 30
 	ld c, $11
@@ -526,7 +526,7 @@ Func_abe67:
 	ld a, $0f
 	scall Func_80e8d
 	setevent $00df
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
 	sprite_face $01, 0
@@ -540,7 +540,7 @@ Func_abe67:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 	face_player 0
 	hideperson 0
 	jp .asm_abf5a

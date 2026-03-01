@@ -23,6 +23,6 @@ Func_9f137:: ; 9f137
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_9f0f1
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	ret

@@ -34,11 +34,11 @@ Func_92e02:: ; 92e02
 	cp $06
 	jp nc, .asm_92e54
 	loadpeople $02, Data_92de6
-	playmusic $11
+	playmusic SONG_TOWN3
 	scall Func_8001c
 	jp .asm_92e5c
 .asm_92e54:
-	playmusic $11
+	playmusic SONG_TOWN3
 	scall Func_8001c
 .asm_92e5c:
 	ret
@@ -54,18 +54,18 @@ Func_92e6d:
 	xor a
 	scall PlayerStep
 	playmusic SONG_NONE
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3be8e
 	playmusic SONG_NONE
 	sprite_face $03, 0
 	loademote $01, $01, $10
-	playsfx $34
+	playsfx SFX_34
 	hideperson 0
-	playsfx $3d
+	playsfx SFX_3D
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3bf25
 	loademote $01, $02, $10
-	playsfx $34
+	playsfx SFX_34
 	scall WaitEmote
 	showperson 0
 	scall HideEmote
@@ -77,27 +77,27 @@ Func_92e6d:
 	ld e, $02
 	ld a, $04
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	move_person 0, Data_92e67, 1
 	scall WaitNPCStep
 	sprite_face $03, 0
 	loademote $01, $01, $10
-	playsfx $34
+	playsfx SFX_34
 	hideperson 0
 	scall WaitEmote
 	writetext TreeBitstreamText_3bf4b
 	playmusic SONG_NONE
-	playmusic $1b
+	playmusic SONG_1B
 	loademote $02, $04, $10
 	scall WaitEmote
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3bf50
 	playmusic SONG_NONE
 	loademote $01, $02, $10
 	scall WaitEmote
-	playsfx $34
+	playsfx SFX_34
 	showperson 0
 	scall HideEmote
 	sprite_face $01, 0
@@ -108,27 +108,27 @@ Func_92e6d:
 	ld e, $02
 	ld a, $04
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	move_person 0, Data_92e67, 1
 	scall WaitNPCStep
 	sprite_face $03, 0
 	loademote $01, $01, $10
-	playsfx $34
+	playsfx SFX_34
 	hideperson 0
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3bf85
 	playmusic SONG_NONE
-	playmusic $1b
+	playmusic SONG_1B
 	loademote $02, $08, $10
 	scall WaitEmote
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3bf8e
 	playmusic SONG_NONE
 	loademote $01, $02, $10
 	scall WaitEmote
-	playsfx $34
+	playsfx SFX_34
 	showperson 0
 	scall HideEmote
 	sprite_face $01, 0
@@ -139,22 +139,22 @@ Func_92e6d:
 	ld e, $02
 	ld a, $04
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	move_person 0, Data_92e67, 1
 	scall WaitNPCStep
-	playsfx $34
+	playsfx SFX_34
 	sprite_face $03, 0
 	loademote $01, $50, $10
-	playsfx $34
+	playsfx SFX_34
 	hideperson 0
 	scall WaitEmote
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_3bfc1
 	hideperson $01
 	loademote $01, $20, $10
-	playsfx $4d
+	playsfx SFX_4D
 	scall WaitEmote
 	scall HideEmote
 	ld e, $01

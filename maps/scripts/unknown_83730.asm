@@ -8,9 +8,7 @@ Data_8372b: ; 8372b
 	db $6f, $04, $02, $12, $34
 
 Func_83730::
-	call Func_83769
-	ld hl, Func_83769
-	scall Func_80f11
+	set_frame_script Func_83769
 	ld a, $12
 	ld [wc7de], a
 	loadwarps $3, Data_8370a

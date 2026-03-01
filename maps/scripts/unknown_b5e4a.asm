@@ -27,7 +27,7 @@ Func_b5e4a:: ; b5e4a
 	scall Func_80d01
 	loadwilds $05, Data_b5df6
 	loadpeople $01, Data_b5e3c
-	playmusic $09
+	playmusic SONG_TOWER
 	ld a, $0f
 	ld [wc7e2], a
 	ld a, [wBackupMapGroup]
@@ -71,7 +71,7 @@ Func_b5ec4:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -87,11 +87,11 @@ Func_b5ec4:
 	ret
 
 Func_b5f03:
-	playmusic $09
+	playmusic SONG_TOWER
 	ld a, $02
 	scall PlayerFace
 	loademote $01, $02, $09
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653

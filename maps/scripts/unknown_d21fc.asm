@@ -249,9 +249,7 @@ Func_d21fc:: ; d21fc (34:61fc)
 	inc a
 	cp $15
 	jp nc, .asm_d23a1
-	call Func_d23de
-	ld hl, Func_d23de
-	scall Func_80f11
+	set_frame_script Func_d23de
 	ld a, $4
 	scall Random
 	ld l, a

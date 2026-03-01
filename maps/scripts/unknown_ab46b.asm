@@ -43,7 +43,7 @@ Func_ab46b:: ; ab46b
 	or a
 	jp nz, .asm_ab4dc
 	loadpeople $04, Data_ab433
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	checkevent $00b5
 	or a
 	jp z, .asm_ab4c1
@@ -58,7 +58,7 @@ Func_ab46b:: ; ab46b
 .asm_ab4d9:
 	jp .asm_ab4e1
 .asm_ab4dc:
-	playmusic $08
+	playmusic SONG_CAVE
 .asm_ab4e1:
 	scall Func_8001c
 	ret
@@ -102,7 +102,7 @@ Func_ab51a:
 	scall PlayerFace
 .asm_ab550:
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d844
 	startbattle Data_ab5b9, Data_ab4e5
 	or a
@@ -125,7 +125,7 @@ Func_ab51a:
 	hideperson 0
 	hideperson $01
 	playmusic SONG_NONE
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	setevent $00b5
 .asm_ab5b7:
 	pop bc
@@ -172,7 +172,7 @@ Func_ab5f4:
 	scall PlayerFace
 .asm_ab62b:
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d86d
 	startbattle Data_ab697, Data_ab5bf
 	or a
@@ -195,7 +195,7 @@ Func_ab5f4:
 	hideperson $02
 	hideperson $03
 	playmusic SONG_NONE
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 	setevent $00b6
 .asm_ab695:
 	pop bc

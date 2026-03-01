@@ -43,7 +43,7 @@ Func_cb4c5:: ; cb4c5
 	jp nz, .asm_cb4f4
 	loadpeople $03, Data_cb49b
 .asm_cb4f4:
-	playmusic $07
+	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ad5
 	ret
@@ -97,7 +97,7 @@ Func_cb534:
 	cp $01
 	jp nz, .asm_cb604
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	face_player 0
 	writetext TreeBitstreamText_3cae8
 	startbattle Data_cb606, Data_cb503
@@ -119,7 +119,7 @@ Func_cb534:
 	hideperson $02
 	setevent $00ac
 	playmusic SONG_NONE
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_cb604:
 	pop bc
 	ret

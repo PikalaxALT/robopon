@@ -38,7 +38,7 @@ Func_cb099:: ; cb099
 	hideperson 0
 	hideperson $02
 .asm_cb0ce:
-	playmusic $07
+	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ac0
 	ret
@@ -70,7 +70,7 @@ Func_cb10e:
 	move_player $01, Data_cb0dd
 	sprite_face $00, 0
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3ca60
 	startbattle Data_cb177, Data_cb0e5
 	or a
@@ -83,7 +83,7 @@ Func_cb10e:
 	hideperson 0
 	setevent $00aa
 	playmusic SONG_NONE
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_cb176:
 	ret
 

@@ -35,9 +35,7 @@ Func_b5452:: ; b5452
 	ld a, [wc790]
 	cp $03
 	jp nc, .asm_b5475
-	call Func_b556c
-	ld hl, Func_b556c
-	scall Func_80f11
+	set_frame_script Func_b556c
 	loadwarps $02, Data_b53cc
 	jp .asm_b547d
 .asm_b5475:
@@ -60,7 +58,7 @@ Func_b5452:: ; b5452
 	jp .asm_b551f
 .asm_b54c0:
 	loadpeople $02, Data_b5436
-	playmusic $09
+	playmusic SONG_TOWER
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_b5516
@@ -104,14 +102,14 @@ Func_b5526:
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	playmusic $18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	writenpctext TreeBitstreamText_3e0d5
-	playmusic $18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	move_person 0, Data_b5520, 1
 	scall WaitNPCStep
-	playsfx $2e
+	playsfx SFX_2E
 	hideperson 0
-	playmusic $09
+	playmusic SONG_TOWER
 	ret
 
 Data_b5566:
@@ -172,7 +170,7 @@ Func_b55be:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -188,11 +186,11 @@ Func_b55be:
 	ret
 
 Func_b55fd:
-	playmusic $09
+	playmusic SONG_TOWER
 	ld a, $02
 	scall PlayerFace
 	loademote $01, $02, $09
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653

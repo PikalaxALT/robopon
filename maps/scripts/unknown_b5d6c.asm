@@ -26,7 +26,7 @@ Func_b5d6c:: ; b5d6c
 	scall Func_80d01
 	loadwilds $05, Data_b5d18
 	loadpeople $01, Data_b5d5e
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b25
 	ret

@@ -170,7 +170,7 @@ Func_c93a1:: ; c93a1
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c9227
-	playmusic $09
+	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46986
 	jp .asm_c9502
@@ -179,7 +179,7 @@ Func_c93a1:: ; c93a1
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c926d
-	playmusic $0e
+	playmusic SONG_JUMP_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a3e
 	jp .asm_c9502
@@ -188,7 +188,7 @@ Func_c93a1:: ; c93a1
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c92b3
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469fd
 	jp .asm_c9502
@@ -197,7 +197,7 @@ Func_c93a1:: ; c93a1
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c92f9
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469c1
 	jp .asm_c9502
@@ -206,7 +206,7 @@ Func_c93a1:: ; c93a1
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c933f
-	playmusic $10
+	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a7f
 .asm_c9502:

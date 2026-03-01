@@ -40,7 +40,7 @@ Func_cba6d:: ; cba6d
 	hideperson 0
 	hideperson $01
 .asm_cbaaa:
-	playmusic $07
+	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46af6
 	ret
@@ -62,7 +62,7 @@ Func_cbac1:
 	sprite_face $03, 0
 	move_player $01, Data_cbab9
 	scall WaitNPCStep
-	playmusic $01
+	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3cb2d
 	move_person 0, Data_cbabd, 1
 	scall WaitNPCStep
@@ -71,7 +71,7 @@ Func_cbac1:
 	hideperson $01
 	setevent $0016
 	playmusic SONG_NONE
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_cbb23:
 	ret
 
@@ -87,7 +87,7 @@ Func_cbb24:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld l, $06

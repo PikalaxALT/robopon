@@ -229,9 +229,7 @@ Func_a2271:: ; a2271
 	inc a
 	cp $24
 	jp nc, .asm_a23bf
-	call Func_a23fc
-	ld hl, Func_a23fc
-	scall Func_80f11
+	set_frame_script Func_a23fc
 	ld a, $04
 	scall Random
 	ld l, a
@@ -270,7 +268,7 @@ Func_a2271:: ; a2271
 	ld e, $01
 	ld hl, $5ff8
 	scall LoadWarps
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $23

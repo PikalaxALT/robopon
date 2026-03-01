@@ -21,9 +21,7 @@ Data_d390f: ; d390f
 Func_d392b:: ; d392b (34:792b)
 	ld a, $f
 	ld [wc7e2], a
-	call Func_d3adf
-	ld hl, Func_d3adf
-	scall Func_80f11
+	set_frame_script Func_d3adf
 	loadwarps $2, Data_d38af
 	ld a, $3
 	scall Func_80d01
@@ -63,47 +61,47 @@ Func_d392b:: ; d392b (34:792b)
 
 Func_d39a6: ; d39a6 (34:79a6)
 	scall StartShakingScreen
-	playsfx $64
+	playsfx SFX_64
 	loademote $3, $1, $13
 	scall Func_80f54
 	scall WaitEmote
 	scall HideEmote
 	loademote $2, $1, $13
-	playsfx $64
+	playsfx SFX_64
 	ld a, $1
 	ld [wc78d + 1], a
 	call Func_d3adf
-	playsfx $4e
+	playsfx SFX_4E
 	scall Func_80f02
 	scall Func_80f54
 	scall WaitEmote
 	scall HideEmote
 	loademote $2, $1, $13
-	playsfx $64
+	playsfx SFX_64
 	ld a, $2
 	ld [wc78d + 1], a
 	call Func_d3adf
-	playsfx $4e
+	playsfx SFX_4E
 	scall Func_80f02
 	scall Func_80f54
 	scall WaitEmote
 	scall HideEmote
 	loademote $2, $1, $13
-	playsfx $64
+	playsfx SFX_64
 	ld a, $3
 	ld [wc78d + 1], a
 	call Func_d3adf
-	playsfx $4e
+	playsfx SFX_4E
 	scall Func_80f02
 	scall Func_80f54
 	scall WaitEmote
 	scall HideEmote
 	loademote $2, $1, $13
-	playsfx $64
+	playsfx SFX_64
 	ld a, $4
 	ld [wc78d + 1], a
 	call Func_d3adf
-	playsfx $4e
+	playsfx SFX_4E
 	scall Func_80f02
 	scall Func_80f54
 	scall WaitEmote
@@ -359,9 +357,9 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	ld e, $e
 	ld a, $7
 	scall MoveEmote
-	playsfx $65
+	playsfx SFX_65
 	script_sleep 60
-	playsfx $43
+	playsfx SFX_43
 	scall WaitEmote
 	setevent $f1
 	ld l, $9

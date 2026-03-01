@@ -25,9 +25,7 @@ Data_8a663:
 	person_event $0b, $0c, $0f, $04, $01, $01, $02, $04, $00, Func_8a892, NULL
 
 Func_8a69b:: ; 8a69b
-	call Func_8a93c
-	ld hl, Func_8a93c
-	scall Func_80f11
+	set_frame_script Func_8a93c
 	loadwarps $02, Data_8a607
 	ld a, $03
 	scall Func_80d01

@@ -252,9 +252,7 @@ Func_cdabd:: ; cdabd
 	inc a
 	cp $33
 	jp nc, .asm_cdbdb
-	call Func_cdc1d
-	ld hl, Func_cdc1d
-	scall Func_80f11
+	set_frame_script Func_cdc1d
 	ld a, $04
 	scall Random
 	ld l, a
@@ -291,7 +289,7 @@ Func_cdabd:: ; cdabd
 	scall LoadWarps
 .asm_cdbdb:
 	loadwarps $01, Data_cd73a
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, $41
 	scall Func_80f43

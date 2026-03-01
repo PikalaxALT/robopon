@@ -340,9 +340,7 @@ Func_b9bbe:: ; b9bbe
 	inc c
 	jp .asm_b9bc0
 .asm_b9c28:
-	call Func_b9f52
-	ld hl, Func_b9f52
-	scall Func_80f11
+	set_frame_script Func_b9f52
 	ld a, [wBackupMapGroup]
 	cp $01
 	jp nz, .asm_b9cee
@@ -622,7 +620,7 @@ Func_b9bbe:: ; b9bbe
 .asm_b9f35:
 	loadpeople $03, Data_b9b44
 	scall Func_8001c
-	playmusic $11
+	playmusic SONG_TOWN3
 	ret
 
 Data_b9f46:
@@ -650,7 +648,7 @@ Func_b9f71:
 	ld a, e
 	cp $02
 	jp nz, .asm_b9f8e
-	playsfx $2e
+	playsfx SFX_2E
 	ld l, $05
 	push hl
 	ld c, $0a
@@ -674,7 +672,7 @@ Func_b9f8f:
 	ld a, $06
 	scall Func_80dff
 	pop bc
-	playsfx $2e
+	playsfx SFX_2E
 	ld a, $01
 	ld [wPlayerFacing], a
 .asm_b9fac:

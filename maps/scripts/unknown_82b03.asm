@@ -9,9 +9,7 @@ Data_82ad9: ; 82ad9
 	db $01, $02, $02, $04, $00, $20, $57, $6b, $00, $00
 
 Func_82b03::
-	call Func_82ba1
-	ld hl, Func_82ba1
-	scall Func_80f11
+	set_frame_script Func_82ba1
 	ld a, $2
 	ld [wc7de], a
 	loadwarps $3, Data_82ab8

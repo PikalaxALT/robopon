@@ -58,12 +58,10 @@ Data_9dccc:
 	person_event $ff, $00, $00, $05, $01, $01, $02, $04, $00, Func_808fc_27, Data_9dc58
 
 Func_9dcf6:: ; 9dcf6
-	call Func_9ddbb
-	ld hl, Func_9ddbb
-	scall Func_80f11
+	set_frame_script Func_9ddbb
 	resetevent $0010
 	loadwarps $01, Data_9dc24
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	checkevent $00ba
 	or a
 	jp nz, .asm_9dd37
@@ -143,9 +141,9 @@ Data_9ddee:
 
 Func_9ddf2:
 	script_sleep 30
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_42e15
-	playsfx $68
+	playsfx SFX_68
 	script_sleep 30
 	move_player $00, Data_9ddea
 	scall WaitNPCStep
@@ -171,7 +169,7 @@ Func_9ddf2:
 	ld e, $01
 	ld a, $06
 	scall MoveEmote
-	playsfx $62
+	playsfx SFX_62
 	scall WaitEmote
 	scall HideEmote
 	loademote $01, $01, $0a
@@ -184,7 +182,7 @@ Func_9ddf2:
 	ld e, $01
 	ld a, $06
 	scall MoveEmote
-	playsfx $62
+	playsfx SFX_62
 	scall WaitEmote
 	scall HideEmote
 	loademote $01, $01, $0a
@@ -194,7 +192,7 @@ Func_9ddf2:
 	scall WaitEmote
 	scall HideEmote
 	playmusic SONG_NONE
-	playmusic $1c
+	playmusic SONG_1C
 	script_sleep 180
 	setevent $00ba
 	call Func_9ddbb
@@ -208,7 +206,7 @@ Func_9ddf2:
 	ld e, $80
 	ld a, $01
 	scall SetPersonVisibilityState
-	playsfx $51
+	playsfx SFX_51
 	scall WaitEmote
 	ld e, $81
 	xor a
@@ -217,10 +215,10 @@ Func_9ddf2:
 	ld a, $01
 	scall SetPersonVisibilityState
 	script_sleep 60
-	playsfx $69
+	playsfx SFX_69
 	script_sleep 30
 	playmusic SONG_NONE
-	playmusic $0d
+	playmusic SONG_MAZE_MINIGAME
 	writenpctext TreeBitstreamText_42e5e
 	script_sleep 60
 	loademote $01, $07, $28

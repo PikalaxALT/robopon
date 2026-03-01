@@ -43,7 +43,7 @@ Func_91189:: ; 91189
 	ld a, $04
 	ld [wc789], a
 	loadwarps $01, Data_910b4
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	ld a, $01
 	scall LoadPlayerSprite
 	ld a, $06
@@ -205,22 +205,22 @@ Func_91342:
 	move_person $01, Data_91334, 1
 	scall WaitNPCStep
 	playmusic SONG_NONE
-	playmusic $19
+	playmusic SONG_ENCOUNTER_UNKNOWN
 	loademote $01, $01, $04
 	hideperson $01
 	scall WaitEmote
 	showperson $01
 	scall HideEmote
 	showperson $02
-	playsfx $68
+	playsfx SFX_68
 	playmusic SONG_NONE
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	move_person $01, Data_91338, 1
 	scall WaitNPCStep
 	sprite_face $02, $01
 	writenpctext TreeBitstreamText_3b942
 	move_player $01, Data_9133c
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3b932
 	pop af
 	push af
@@ -302,7 +302,7 @@ Func_9145b:
 	ld a, $08
 	scall Func_80dff
 	pop bc
-	playsfx $2e
+	playsfx SFX_2E
 	ld a, $02
 	ld [wPlayerFacing], a
 .asm_91477:
@@ -337,7 +337,7 @@ Func_91478:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_91508
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_44733
 	sprite_face $00, $07
 	ld hl, sp+$01
@@ -361,7 +361,7 @@ Func_91478:
 	ld [hl], $01
 	jp .asm_9151d
 .asm_91508:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_447bd
 	sprite_face $00, $07
 	jp .asm_9176c
@@ -394,7 +394,7 @@ Func_91478:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_915b1
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_448b8
 	sprite_face $00, $07
 	ld hl, sp+$01
@@ -418,7 +418,7 @@ Func_91478:
 	ld [hl], $01
 	jp .asm_915cd
 .asm_915b1:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_447bd
 	script_sleep 30
 	ld e, $00

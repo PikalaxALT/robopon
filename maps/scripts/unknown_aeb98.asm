@@ -29,9 +29,7 @@ Data_aeb8a:
 	person_event $ff, $00, $18, $01, $01, $01, $01, $04, $01, Func_aec1d, NULL
 
 Func_aeb98:: ; aeb98
-	call Func_aebfc
-	ld hl, Func_aebfc
-	scall Func_80f11
+	set_frame_script Func_aebfc
 	loadwarps $02, Data_aeb0d
 	ld e, $01
 	ld hl, Data_aeb23
@@ -47,7 +45,7 @@ Func_aeb98:: ; aeb98
 .asm_aebd3:
 	loadpeople $01, Data_aeb8a
 .asm_aebdb:
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bbe
 	ret
@@ -82,7 +80,7 @@ Func_aec1d:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $1b
-	playsfx $37
+	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
 	ld l, $08

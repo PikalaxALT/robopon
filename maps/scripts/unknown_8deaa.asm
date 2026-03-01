@@ -32,9 +32,7 @@ Data_8de64:
 Func_8deaa:: ; 8deaa
 	ld a, $06
 	ld [wc7e2], a
-	call Func_8df6e
-	ld hl, Func_8df6e
-	scall Func_80f11
+	set_frame_script Func_8df6e
 	loadwarps $02, Data_8dde0
 	loadpeople $05, Data_8de64
 	hideperson 0
@@ -71,10 +69,10 @@ Func_8deaa:: ; 8deaa
 	checkevent $0037
 	cp $01
 	jp nz, .asm_8df54
-	playmusic $03
+	playmusic SONG_TOWN1
 	jp .asm_8df59
 .asm_8df54:
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 .asm_8df59:
 	ld a, $01
 	scall LoadPlayerSprite
@@ -380,10 +378,8 @@ Func_8e2be:
 	playmusic SONG_NONE
 	showperson $0a
 	script_sleep 60
-	playsfx $30
-	call Func_8df6e
-	ld hl, Func_8df6e
-	scall Func_80f11
+	playsfx SFX_30
+	set_frame_script Func_8df6e
 	script_sleep 60
 	move_person $0a, Data_8e2b2, 1
 	scall WaitNPCStep
@@ -395,7 +391,7 @@ Func_8e2be:
 	writenpctext TreeBitstreamText_3b605
 	move_person $0a, Data_8e2b8, 1
 	scall WaitNPCStep
-	playsfx $2e
+	playsfx SFX_2E
 	hideperson $0a
 	setevent $0037
 .asm_8e36d:
@@ -408,16 +404,16 @@ Func_8e36e:
 	checkevent $00d9
 	or a
 	jp nz, .asm_8e473
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $05
 	ld a, $06
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson 0
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
 	sprite_face $01, 0
@@ -431,7 +427,7 @@ Func_8e36e:
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	playmusic $14
+	playmusic SONG_WORLD_MAP
 	face_player 0
 	script_sleep 30
 	ld c, $05
@@ -439,7 +435,7 @@ Func_8e36e:
 	ld a, $03
 	scall Func_80e8d
 	setevent $00d9
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
 	sprite_face $01, 0
@@ -456,12 +452,12 @@ Func_8e36e:
 	jp nz, .asm_8e45c
 	ld a, $01
 	scall FadeInAudio
-	playmusic $03
+	playmusic SONG_TOWN1
 	jp .asm_8e466
 .asm_8e45c:
 	ld a, $01
 	scall FadeInAudio
-	playmusic $04
+	playmusic SONG_WILD_BATTLE
 .asm_8e466:
 	face_player 0
 	hideperson 0

@@ -26,16 +26,14 @@ ELIF DEF(STAR)
 ENDC
 
 Func_a36ec:: ; a36ec
-	call Func_a3730
-	ld hl, Func_a3730
-	scall Func_80f11
+	set_frame_script Func_a3730
 	loadwarps $03, Data_a365b
 	ld a, $03
 	scall Func_80d01
 	loadwilds $08, Data_a367c
 	ld a, $01
 	scall LoadPlayerSprite
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46923
 	ret

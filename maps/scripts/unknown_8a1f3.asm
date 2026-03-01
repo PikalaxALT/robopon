@@ -33,9 +33,7 @@ Data_8a1c9:
 	person_event $ff, $00, $0e, $0f, $01, $01, $02, $04, $00, Func_8a480, NULL
 
 Func_8a1f3:: ; 8a1f3
-	call Func_8a5e7
-	ld hl, Func_8a5e7
-	scall Func_80f11
+	set_frame_script Func_8a5e7
 	loadwarps $02, Data_8a130
 	ld e, $01
 	ld hl, Data_8a146
@@ -228,19 +226,19 @@ Func_8a480:
 	checkevent $00d8
 	or a
 	jp nz, .asm_8a59d
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $0f
 	ld a, $0e
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	ld e, $01
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	playsfx $60
+	playsfx SFX_60
 	ld e, $03
 	ld hl, sp+$01
 	ld a, [hl]
@@ -286,7 +284,7 @@ Func_8a480:
 	ld a, $0c
 	scall Func_80e8d
 	setevent $00d8
-	playsfx $60
+	playsfx SFX_60
 	ld e, $03
 	ld hl, sp+$01
 	ld a, [hl]

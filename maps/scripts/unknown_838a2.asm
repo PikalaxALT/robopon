@@ -10,9 +10,7 @@ Data_83894: ; 83894
 	person_event $2a, $0c, $07, $05, $01, $01, $01, $04, $00, Func_83a1f, NULL
 
 Func_838a2::
-	call Func_838f0
-	ld hl, Func_838f0
-	scall Func_80f11
+	set_frame_script Func_838f0
 	xor a
 	ld [wc7de], a
 	loadwarps $2, Data_8386f
@@ -142,7 +140,7 @@ Func_83a1f:
 	checkevent $110
 	or a
 	jp nz, .asm_83adb
-	playsfx $5c
+	playsfx SFX_5C
 	script_sleep 120
 	writenpctext TreeBitstreamText_39c6c
 	writenpctext TreeBitstreamText_39c82
@@ -393,7 +391,7 @@ Func_83a1f:
 	add hl, sp
 	ld a, [hl]
 	scall MovePersonAndWait
-	playsfx $2e
+	playsfx SFX_2E
 	jp .asm_83d57
 
 .asm_83d45: ; 83d45 (20:7d45)
@@ -403,14 +401,14 @@ Func_83a1f:
 	add hl, sp
 	ld a, [hl]
 	scall MovePersonAndWait
-	playsfx $2e
+	playsfx SFX_2E
 .asm_83d57: ; 83d57 (20:7d57)
 	ld e, $0
 	ld hl, $12f
 	add hl, sp
 	ld a, [hl]
 	call SetPersonVisibilityState_20
-	playsfx $2e
+	playsfx SFX_2E
 	push hl
 	push hl
 	ld hl, sp+$f

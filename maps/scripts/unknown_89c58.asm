@@ -69,7 +69,7 @@ Func_89ca9:
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
-	playsfx $5a
+	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -101,12 +101,12 @@ Func_89d04:
 	or a
 	jp nz, .asm_89d41
 	setevent $0059
-	playsfx $32
+	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_89d54
 .asm_89d41:
 	resetevent $0059
-	playsfx $28
+	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_89d54:
 	ret
@@ -144,7 +144,7 @@ Func_89d8a:
 	setevent $006b
 	writenpctext TreeBitstreamText_3afbf
 	move_person 0, Data_89d82, 1
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	playmusic SONG_NONE

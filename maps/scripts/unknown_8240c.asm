@@ -142,7 +142,7 @@ Func_824ca: ; 824ca (20:64ca)
 	ld e, $0
 	ld a, $3
 	call SetPersonVisibilityState_20
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3f665
 	pop af
 	ld e, $0

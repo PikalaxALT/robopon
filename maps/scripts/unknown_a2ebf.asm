@@ -234,9 +234,7 @@ ENDC
 	inc a
 	cp $24
 	jp nc, .asm_a300d
-	call Func_a304a
-	ld hl, Func_a304a
-	scall Func_80f11
+	set_frame_script Func_a304a
 	ld a, $04
 	scall Random
 	ld l, a
@@ -273,7 +271,7 @@ ENDC
 	scall LoadWarps
 .asm_a300d:
 	loadwarps $01, Data_a2c46
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $23

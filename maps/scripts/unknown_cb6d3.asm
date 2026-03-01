@@ -47,7 +47,7 @@ Func_cb6d3:: ; cb6d3
 	loadpeople $03, Data_cb69b
 .asm_cb702:
 	loadpeople $01, Data_cb6c5
-	playmusic $07
+	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ae0
 	ret
@@ -67,7 +67,7 @@ Func_cb721:
 	or a
 	jp nz, .asm_cb774
 	playmusic SONG_NONE
-	playmusic $1a
+	playmusic SONG_ENCOUNTER_EVIL
 	ld hl, sp+$01
 	ld a, [hl]
 	cp $01
@@ -81,7 +81,7 @@ Func_cb721:
 	call Func_cb7a9
 	setevent $00ad
 	playmusic SONG_NONE
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_cb774:
 	pop bc
 	ret
@@ -120,7 +120,7 @@ Func_cb7bd:
 	hideperson $01
 	hideperson $02
 	playmusic SONG_NONE
-	playmusic $07
+	playmusic SONG_TOWN2
 	ret
 
 Data_cb801:
@@ -132,11 +132,11 @@ Func_cb809:
 	jp nz, .asm_cb834
 	heal
 	playmusic SONG_NONE
-	playmusic $16
+	playmusic SONG_HEAL
 	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
-	playmusic $07
+	playmusic SONG_TOWN2
 .asm_cb834:
 	ret

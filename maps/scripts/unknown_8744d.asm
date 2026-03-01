@@ -151,7 +151,7 @@ Func_87574:
 	or a
 	jp nz, .asm_875f0
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
@@ -175,7 +175,7 @@ Func_87574:
 	cp $1
 	jp c, .asm_87636
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1

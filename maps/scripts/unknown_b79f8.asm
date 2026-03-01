@@ -8,6 +8,6 @@ Func_b79f8:: ; b79f8
 	scall Func_80653
 	ld a, $0c
 	ld [wc7e2], a
-	playmusic $13
+	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	ret

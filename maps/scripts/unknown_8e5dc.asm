@@ -80,7 +80,7 @@ Func_8e5dc:: ; 8e5dc
 	checkevent $0088
 	cp $01
 	jp nz, .asm_8e63d
-	playmusic $03
+	playmusic SONG_TOWN1
 	loadpeople $01, Data_8e526
 	loadpeople $0b, Data_8e534
 	ld a, $01
@@ -88,7 +88,7 @@ Func_8e5dc:: ; 8e5dc
 	scall Func_8001c
 	jp .asm_8e65a
 .asm_8e63d:
-	playmusic $03
+	playmusic SONG_TOWN1
 	loadpeople $01, Data_8e518
 	loadpeople $0b, Data_8e534
 	ld a, $01
@@ -110,13 +110,13 @@ Func_8e66b:
 	move_person 0, Data_8e65b, 1
 	scall WaitNPCStep
 	writetext TreeBitstreamText_3b2db
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3b30a
 	writetext TreeBitstreamText_3b31f
 	move_person 0, Data_8e661, 0
 	scall WaitNPCStep
 	hideperson 0
-	playmusic $1b
+	playmusic SONG_1B
 	move_player $01, Data_8e667
 	loademote $01, $0f, $0d
 	ld e, $08
@@ -125,22 +125,22 @@ Func_8e66b:
 	xor a
 	scall Func_80653
 	script_sleep 150
-	playsfx $34
+	playsfx SFX_34
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
 	playmusic SONG_NONE
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	writenpctext_yesorno TreeBitstreamText_3b324
 	or a
 	jp nz, .asm_8e727
 	setevent $00e9
-	playsfx $2b
+	playsfx SFX_2B
 	writetext TreeBitstreamText_3b35d
-	playsfx $68
+	playsfx SFX_68
 	writenpctext TreeBitstreamText_3b36e
 	playmusic SONG_NONE
-	playmusic $1b
+	playmusic SONG_1B
 	loademote $01, $07, $0f
 	scall WaitEmote
 	ld a, $01
@@ -148,28 +148,28 @@ Func_8e66b:
 	scall HideEmote
 	jp .asm_8e7b2
 .asm_8e727:
-	playsfx $69
+	playsfx SFX_69
 	writenpctext TreeBitstreamText_3b3c0
 	playmusic SONG_NONE
-	playmusic $1b
+	playmusic SONG_1B
 	loademote $01, $0f, $0e
 	script_sleep 90
-	playsfx $2b
+	playsfx SFX_2B
 	script_sleep 30
-	playsfx $34
+	playsfx SFX_34
 	script_sleep 30
-	playsfx $35
+	playsfx SFX_35
 	script_sleep 30
-	playsfx $69
+	playsfx SFX_69
 	xor a
 	scall Func_80653
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3b412
 	setevent $00ea
-	playsfx $2b
+	playsfx SFX_2B
 	writetext TreeBitstreamText_3b401
 	playmusic SONG_NONE
-	playmusic $1b
+	playmusic SONG_1B
 	loademote $01, $0f, $0f
 	scall WaitEmote
 	ld a, $01
@@ -179,7 +179,7 @@ Func_8e66b:
 	scall HideEmote
 .asm_8e7b2:
 	playmusic SONG_NONE
-	playmusic $0f
+	playmusic SONG_CARD_MINIGAME
 	loademote $01, $10, $0f
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3b447
@@ -218,7 +218,7 @@ Func_8e826:
 	jp nz, .asm_8e85d
 	xor a
 	scall Func_80653
-	playsfx $2e
+	playsfx SFX_2E
 	ld l, $01
 	push hl
 	ld c, $04
@@ -242,7 +242,7 @@ Func_8e864:
 	ld a, e
 	cp $01
 	jp nz, .asm_8e88b
-	playsfx $2e
+	playsfx SFX_2E
 	ld l, $07
 	push hl
 	ld c, $09
@@ -263,7 +263,7 @@ Func_8e88c:
 	ld a, e
 	cp $01
 	jp nz, .asm_8e8b3
-	playsfx $2e
+	playsfx SFX_2E
 	ld l, $07
 	push hl
 	ld c, $09

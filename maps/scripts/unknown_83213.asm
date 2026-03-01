@@ -8,9 +8,7 @@ Data_83205: ; 83205
 	person_event $08, $04, $03, $02, $01, $01, $01, $04, $00, Func_8326c, NULL
 
 Func_83213::
-	call Func_8324c
-	ld hl, Func_8324c
-	scall Func_80f11
+	set_frame_script Func_8324c
 	ld a, $9
 	ld [wc7de], a
 	loadwarps $3, Data_831e4
@@ -66,7 +64,7 @@ Func_8326c:
 	or a
 	jp nz, .asm_832cb
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1
@@ -89,7 +87,7 @@ Func_8326c:
 	or a
 	jp nz, .asm_83318
 	writetext TreeBitstreamText_45fec
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45ffd
 	ld c, $0
 	ld e, $1

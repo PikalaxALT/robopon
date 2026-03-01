@@ -28,9 +28,7 @@ ELIF DEF(STAR)
 ENDC
 
 Func_a3bc8:: ; a3bc8
-	call Func_a3c8b
-	ld hl, Func_a3c8b
-	scall Func_80f11
+	set_frame_script Func_a3c8b
 	loadwarps $01, Data_a3b53
 	ld e, $01
 	ld hl, Data_a3b61
@@ -44,7 +42,7 @@ Func_a3bc8:: ; a3bc8
 	jp nz, .asm_a3c08
 	hideperson $01
 .asm_a3c08:
-	playmusic $08
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46967
 	ret
@@ -53,7 +51,7 @@ Func_a3c17:: ; a3c17
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-	playsfx $3a
+	playsfx SFX_3A
 	loademote $01, $01, $0a
 	ld a, [wc799]
 	cp $02

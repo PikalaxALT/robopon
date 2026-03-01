@@ -331,7 +331,7 @@ Func_d3055:
 	or a
 	jp nz, .asm_d30e0
 	writetext TreeBitstreamText_3a995
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_3a9e8
 	writetext TreeBitstreamText_3a9f3
 	ld c, $1

@@ -40,7 +40,7 @@ Func_92aab:: ; 92aab (24:6aab)
 	scall Func_80d01
 	loadwilds $7, Data_92a2d
 	loadpeople $2, Data_92a8f
-	playmusic $8
+	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46cec
 	ret

@@ -27,7 +27,7 @@ Func_a5126:: ; a5126
 	ld a, $0a
 	ld [wc7e2], a
 	loadwarps $02, Data_a50b4
-	playmusic $03
+	playmusic SONG_TOWN1
 	checkevent $002e
 	cp $01
 	jp nz, .asm_a5163
@@ -54,7 +54,7 @@ Func_a517c:: ; a517c
 	xor a
 	call FarCall
 	playmusic SONG_NONE
-	playmusic $0a
+	playmusic SONG_0A
 	xor a
 	scall Func_80653
 	loademote $01, $01, $11
@@ -84,17 +84,17 @@ Func_a517c:: ; a517c
 	loademote $01, $02, $11
 	scall WaitEmote
 	script_sleep 60
-	playsfx $28
+	playsfx SFX_28
 	loademote $01, $04, $11
 	playmusic SONG_NONE
-	playmusic $15
+	playmusic SONG_GYM_LEADER_BATTLE
 	scall WaitEmote
 .asm_a5223:
 	scall HideEmote
 	pop af
 	cp $02
 	jp nz, .asm_a5247
-	playsfx $45
+	playsfx SFX_45
 	writenpctext TreeBitstreamText_46f3e
 	ld l, $18
 	push hl
@@ -152,7 +152,7 @@ Func_a5264:
 	writenpctext TreeBitstreamText_3d302
 	ld a, $01
 	scall FadeInAudio
-	playmusic $1b
+	playmusic SONG_1B
 	script_sleep 30
 	ld e, $01
 	ld a, $02
@@ -160,17 +160,17 @@ Func_a5264:
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
-	playsfx $5b
+	playsfx SFX_5B
 	loademote $01, $0f, $15
 	hideperson 0
 	xor a
 	scall Func_80653
 	script_sleep 60
-	playsfx $46
+	playsfx SFX_46
 	script_sleep 30
-	playsfx $46
+	playsfx SFX_46
 	script_sleep 30
-	playsfx $46
+	playsfx SFX_46
 	script_sleep 30
 	scall WaitEmote
 	showperson 0
@@ -185,14 +185,14 @@ Func_a5264:
 	scall PlayerStep
 	writenpctext TreeBitstreamText_3d354
 	scall StartShakingScreen
-	playsfx $65
+	playsfx SFX_65
 	playmusic SONG_NONE
-	playmusic $1b
+	playmusic SONG_1B
 	move_person 0, Data_a525a, 1
-	playsfx $2e
+	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
-	playsfx $65
+	playsfx SFX_65
 	move_player $01, Data_a5260
 	scall WaitNPCStep
 	ld l, $06
@@ -207,7 +207,7 @@ Func_a5264:
 	ret
 
 Func_a5385:
-	playsfx $45
+	playsfx SFX_45
 	ld l, $18
 	push hl
 	ld c, $13
@@ -231,7 +231,7 @@ Func_a5398:
 	writetext_yesorno TreeBitstreamText_46f73
 	or a
 	jp nz, .asm_a53d4
-	playsfx $45
+	playsfx SFX_45
 	script_sleep 30
 	ld l, $18
 	push hl

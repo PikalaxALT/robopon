@@ -28,16 +28,16 @@ Func_971f5:
 	checkevent $00db
 	or a
 	jp nz, .asm_972e1
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $0e
 	ld a, $07
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson 0
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
 	sprite_face $01, 0
@@ -59,7 +59,7 @@ Func_971f5:
 	xor a
 	scall Func_80e8d
 	setevent $00db
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
 	sprite_face $01, 0

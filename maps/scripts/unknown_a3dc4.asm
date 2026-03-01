@@ -24,7 +24,7 @@ ENDC
 
 Func_a3dc4:: ; a3dc4
 	loadwarps $01, Data_a3d73
-	playmusic $08
+	playmusic SONG_CAVE
 	ld a, $03
 	scall Func_80d01
 	loadwilds $03, Data_a3d7e
@@ -77,30 +77,30 @@ Func_a3e3c:
 label_a3e6a:
 	writenpctext TreeBitstreamText_45c00
 	playmusic SONG_NONE
-	playmusic $18
+	playmusic SONG_ENCOUNTER_BEAUTY
 	move_person 0, Data_a3e0d, 1
 	scall WaitNPCStep
 	hideperson 0
-	playmusic $12
+	playmusic SONG_TEIL_TOWN
 	script_sleep 60
 	loademote $01, $01, $05
 	ld e, $06
 	ld a, $05
 	scall MoveEmote
-	playsfx $28
+	playsfx SFX_28
 	scall WaitEmote
 	scall HideEmote
 	script_sleep 30
-	playsfx $5e
+	playsfx SFX_5E
 	loademote $02, $02, $08
 	ld e, $05
 	ld a, $05
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	playsfx $28
+	playsfx SFX_28
 	showperson $01
-	playsfx $60
+	playsfx SFX_60
 	sprite_face $03, $01
 	sprite_face $00, $01
 	sprite_face $01, $01
@@ -112,7 +112,7 @@ label_a3e6a:
 	move_person $01, Data_a3e09, 1
 	scall WaitNPCStep
 	hideperson $01
-	playsfx $2a
+	playsfx SFX_2A
 	writetext TreeBitstreamText_45c64
 	ld c, $28
 	ld e, $00
