@@ -566,14 +566,13 @@ Func_bc392: ; bc392 (2f:4392)
 	ret
 
 Data_bc3a5:
-	db "abcdefghijkl", $a
-	db "ABCDEFGHI", $a, $0
+	dstr "abcdefghijkl\nABCDEFGHI\n"
 
 Data_bc3bd:
-	db "[]:", $a, $0
+	dstr "[]:\n"
 
 Data_bc3c2:
-	db "No[%d]:%d", $a, $0
+	dstr "No[%d]:%d\n"
 
 Func_bc3cd:
 	ld bc, $f
@@ -758,44 +757,93 @@ Func_bc4a6:
 	ret
 
 Data_bc517:
-	db $23, $45, $27, $45, $2c, $45, $31, $45, $35, $45, $3a, $45, $4e, $55, $4d, $00
-	db $42, $41, $53, $4d, $00, $52, $4f, $53, $4d, $00, $45, $42, $4d, $00, $45, $46
-	db $42, $4d, $00, $50, $41, $53, $53, $4d, $00
+	dw Data_bc523
+	dw Data_bc527
+	dw Data_bc52c
+	dw Data_bc531
+	dw Data_bc535
+	dw Data_bc53a
+
+Data_bc523:	dstr "NUM"
+Data_bc527:	dstr "BASM"
+Data_bc52c:	dstr "ROSM"
+Data_bc531:	dstr "EBM"
+Data_bc535:	dstr "EFBM"
+Data_bc53a:	dstr "PASSM"
 
 Data_bc540: ; bc540
-	db $68, $45, $79, $45, $86, $45, $91, $45, $ab, $45, $bc, $45, $c8, $45, $d3, $45
-	db $df, $45, $eb, $45, $f8, $45, $03, $46, $12, $46, $1e, $46, $25, $46, $33, $46
-	db $42, $46, $47, $46, $53, $46, $69, $46, $41, $74, $74, $61, $63, $6b, $50, $61
-	db $72, $61, $5b, $38, $5d, $5b, $34, $5d, $00, $53, $6f, $66, $74, $4c, $65, $76
-	db $65, $6c, $5b, $33, $5d, $00, $53, $6f, $66, $74, $4e, $75, $6d, $5b, $33, $5d
-	db $00, $41, $74, $74, $61, $63, $6b, $4e, $65, $65, $64, $45, $6e, $65, $72, $67
-	db $69, $65, $50, $6f, $69, $6e, $74, $5b, $38, $5d, $00, $41, $74, $74, $61, $63
-	db $6b, $5a, $6f, $6b, $75, $73, $65, $69, $5b, $38, $5d, $00, $53, $6f, $66, $74
-	db $50, $77, $65, $72, $5b, $38, $5d, $00, $48, $69, $74, $52, $61, $74, $65, $5b
-	db $38, $5d, $00, $43, $6f, $6d, $6d, $61, $6e, $64, $6f, $5b, $32, $5d, $00, $41
-	db $74, $74, $61, $63, $6b, $50, $6f, $69, $6e, $74, $00, $44, $65, $66, $65, $6e
-	db $63, $65, $50, $6f, $69, $6e, $74, $00, $53, $70, $65, $65, $64, $50, $6f, $69
-	db $6e, $74, $00, $41, $74, $74, $61, $63, $6b, $5a, $6f, $6b, $75, $73, $65, $69
-	db $32, $00, $50, $61, $72, $74, $73, $53, $70, $43, $6f, $64, $65, $00, $53, $70
-	db $43, $6f, $64, $65, $00, $41, $74, $74, $61, $63, $6b, $48, $69, $74, $52, $61
-	db $74, $65, $00, $41, $74, $74, $61, $63, $6b, $48, $69, $74, $50, $6f, $69, $6e
-	db $74, $00, $46, $6c, $61, $67, $00, $42, $41, $53, $54, $4d, $20, $54, $75, $69
-	db $6b, $61, $00, $42, $41, $53, $54, $4d, $20, $54, $75, $69, $6b, $61, $52, $6f
-	db $62, $6f, $70, $6f, $6e, $5b, $34, $5d, $00, $52, $6f, $62, $6f, $4e, $75, $6d
-	db $00
+	dw Data_bc568
+	dw Data_bc579
+	dw Data_bc586
+	dw Data_bc591
+	dw Data_bc5ab
+	dw Data_bc5bc
+	dw Data_bc5c8
+	dw Data_bc5d3
+	dw Data_bc5df
+	dw Data_bc5eb
+	dw Data_bc5f8
+	dw Data_bc603
+	dw Data_bc612
+	dw Data_bc61e
+	dw Data_bc625
+	dw Data_bc633
+	dw Data_bc642
+	dw Data_bc647
+	dw Data_bc653
+	dw Data_bc669
+
+Data_bc568:	dstr "AttackPara[8][4]"
+Data_bc579:	dstr "SoftLevel[3]"
+Data_bc586:	dstr "SoftNum[3]"
+Data_bc591:	dstr "AttackNeedEnergiePoint[8]"
+Data_bc5ab:	dstr "AttackZokusei[8]"
+Data_bc5bc:	dstr "SoftPwer[8]"
+Data_bc5c8:	dstr "HitRate[8]"
+Data_bc5d3:	dstr "Commando[2]"
+Data_bc5df:	dstr "AttackPoint"
+Data_bc5eb:	dstr "DefencePoint"
+Data_bc5f8:	dstr "SpeedPoint"
+Data_bc603:	dstr "AttackZokusei2"
+Data_bc612:	dstr "PartsSpCode"
+Data_bc61e:	dstr "SpCode"
+Data_bc625:	dstr "AttackHitRate"
+Data_bc633:	dstr "AttackHitPoint"
+Data_bc642:	dstr "Flag"
+Data_bc647:	dstr "BASTM Tuika"
+Data_bc653:	dstr "BASTM TuikaRobopon[4]"
+Data_bc669:	dstr "RoboNum"
 
 Data_bc671: ; bc671
-	db $8d, $46, $92, $46, $99, $46, $a1, $46, $ac, $46, $b4, $46, $bc, $46, $c4, $46
-	db $d0, $46, $de, $46, $ea, $46, $f9, $46, $04, $47, $17, $47, $52, $53, $52, $4d
-	db $00, $73, $69, $6e, $6e, $6b, $61, $00, $45, $6e, $65, $64, $61, $6d, $61, $00
-	db $47, $72, $61, $70, $68, $69, $63, $4e, $75, $6d, $00, $5a, $6f, $6b, $75, $73
-	db $65, $69, $00, $48, $70, $4b, $65, $69, $73, $75, $00, $45, $70, $4b, $65, $69
-	db $73, $75, $00, $41, $74, $61, $63, $6b, $50, $4b, $65, $69, $73, $75, $00, $44
-	db $65, $66, $65, $6e, $63, $65, $50, $4b, $65, $69, $73, $75, $00, $53, $70, $65
-	db $65, $64, $50, $4b, $65, $69, $73, $75, $00, $47, $65, $74, $45, $6e, $65, $64
-	db $61, $6d, $61, $50, $5b, $33, $5d, $00, $47, $65, $74, $49, $74, $65, $6d, $5b
-	db $33, $5d, $00, $47, $65, $74, $49, $74, $65, $6d, $4b, $61, $6b, $75, $72, $69
-	db $74, $75, $5b, $33, $5d, $00, $53, $70, $65, $63, $69, $61, $6c, $00
+	dw Data_bc68d
+	dw Data_bc692
+	dw Data_bc699
+	dw Data_bc6a1
+	dw Data_bc6ac
+	dw Data_bc6b4
+	dw Data_bc6bc
+	dw Data_bc6c4
+	dw Data_bc6d0
+	dw Data_bc6de
+	dw Data_bc6ea
+	dw Data_bc6f9
+	dw Data_bc704
+	dw Data_bc717
+
+Data_bc68d:	dstr "RSRM"
+Data_bc692:	dstr "sinnka"
+Data_bc699:	dstr "Enedama"
+Data_bc6a1:	dstr "GraphicNum"
+Data_bc6ac:	dstr "Zokusei"
+Data_bc6b4:	dstr "HpKeisu"
+Data_bc6bc:	dstr "EpKeisu"
+Data_bc6c4:	dstr "AtackPKeisu"
+Data_bc6d0:	dstr "DefencePKeisu"
+Data_bc6de:	dstr "SpeedPKeisu"
+Data_bc6ea:	dstr "GetEnedamaP[3]"
+Data_bc6f9:	dstr "GetItem[3]"
+Data_bc704:	dstr "GetItemKakuritu[3]"
+Data_bc717:	dstr "Special"
 
 Func_bc71f: ; bc71f (2f:471f)
 	push af
@@ -1954,8 +2002,7 @@ Func_bcc95: ; bcc95 (2f:4c95)
 	ret
 
 Data_bcda9:
-	db "TypeNum:%d", $a
-	db $0
+	dstr "TypeNum:%d\n"
 
 Data_bcdb5:
 	dstr "Soft:"
@@ -1964,64 +2011,49 @@ Data_bcdbb:
 	dstr "[%d]"
 
 Data_bcdc0:
-	db $a
-	db $0
+	dstr "\n"
 
 Data_bcdc2:
-	db "Parts:%d", $a
-	db $0
+	dstr "Parts:%d\n"
 
 Data_bcdcc:
-	db "Level:%d", $a
-	db $0
+	dstr "Level:%d\n"
 
 Data_bcdd6:
-	db "Hp:%d", $a
-	db $0
+	dstr "Hp:%d\n"
 
 Data_bcddd:
-	db "HppMax:%d", $a
-	db $0
+	dstr "HppMax:%d\n"
 
 Data_bcde8:
-	db "Ep:%d", $a
-	db $0
+	dstr "Ep:%d\n"
 
 Data_bcdef:
-	db "EpMax:%d", $a
-	db $0
+	dstr "EpMax:%d\n"
 
 Data_bcdf9:
-	db "Exp:%d", $a
-	db $0
+	dstr "Exp:%d\n"
 
 Data_bce01:
-	db "Mode:%d", $a
-	db $0
+	dstr "Mode:%d\n"
 
 Data_bce0a:
-	db "AtackP:%d", $a
-	db $0
+	dstr "AtackP:%d\n"
 
 Data_bce15:
-	db "DefenceP:%d", $a
-	db $0
+	dstr "DefenceP:%d\n"
 
 Data_bce22:
-	db "SpeedP:%d", $a
-	db $0
+	dstr "SpeedP:%d\n"
 
 Data_bce2d:
-	db "EnedamaP:%d", $a
-	db $0
+	dstr "EnedamaP:%d\n"
 
 Data_bce3a:
-	db "DefenceType:0x%p", $a
-	db $0
+	dstr "DefenceType:0x%p\n"
 
 Data_bce4c:
-	db "CPU:%d", $a
-	db $0
+	dstr "CPU:%d\n"
 
 Func_bce54:
 	push hl
@@ -2052,8 +2084,7 @@ Func_bce54:
 	ret
 
 Data_bce80:
-	db "RSRM ADDRESS:0x%p", $a
-	db $0
+	dstr "RSRM ADDRESS:0x%p\n"
 
 Func_bce93:
 	push hl
@@ -2079,12 +2110,10 @@ Func_bce93:
 	ret
 
 Data_bceb1:
-	db "ADDRESS:0x%p", $a
-	db $0
+	dstr "ADDRESS:0x%p\n"
 
 Data_bcebf:
-	db "sinnka:%d", $a
-	db $0
+	dstr "sinnka:%d\n"
 
 Func_bceca:
 	push hl
@@ -2113,12 +2142,10 @@ Func_bceca:
 	ret
 
 Data_bceea:
-	db "ADDRESS:0x%p", $a
-	db $0
+	dstr "ADDRESS:0x%p\n"
 
 Data_bcef8:
-	db "Enadama:%d", $a
-	db $0
+	dstr "Enadama:%d\n"
 
 Func_bcf04:
 	ret
@@ -2151,12 +2178,10 @@ Func_bcf05:
 	ret
 
 Data_bcf2b:
-	db "ADDRESS:0x%p", $a
-	db $0
+	dstr "ADDRESS:0x%p\n"
 
 Data_bcf39:
-	db "Zokusei:%d", $a
-	db $0
+	dstr "Zokusei:%d\n"
 
 Func_bcf45:
 	push hl
@@ -2186,12 +2211,10 @@ Func_bcf45:
 	ret
 
 Data_bcf6b:
-	db "ADDRESS:0x%p", $a
-	db $0
+	dstr "ADDRESS:0x%p\n"
 
 Data_bcf79:
-	db "HpKeisu:%d", $a
-	db $0
+	dstr "HpKeisu:%d\n"
 
 Func_bcf85:
 	push hl
@@ -2221,12 +2244,10 @@ Func_bcf85:
 	ret
 
 Data_bcfab:
-	db "ADDRESS:0x%p", $a
-	db $0
+	dstr "ADDRESS:0x%p\n"
 
 Data_bcfb9:
-	db "EpKeisu:%d", $a
-	db $0
+	dstr "EpKeisu:%d\n"
 
 Func_bcfc5:
 	push hl
@@ -2256,12 +2277,10 @@ Func_bcfc5:
 	ret
 
 Data_bcfeb:
-	db "ADDRESS:0x%p", $a
-	db $0
+	dstr "ADDRESS:0x%p\n"
 
 Data_bcff9:
-	db "AtackPKeisu:%d", $a
-	db $0
+	dstr "AtackPKeisu:%d\n"
 
 Func_bd009:
 	push hl
@@ -2291,12 +2310,10 @@ Func_bd009:
 	ret
 
 Data_bd02f:
-	db "ADDRESS:0x%p", $a
-	db $0
+	dstr "ADDRESS:0x%p\n"
 
 Data_bd03d:
-	db "DefencePKeisu:%d", $a
-	db $0
+	dstr "DefencePKeisu:%d\n"
 
 Func_bd04f:
 	push hl
@@ -2326,12 +2343,10 @@ Func_bd04f:
 	ret
 
 Data_bd075:
-	db "ADDRESS:0x%p", $a
-	db $0
+	dstr "ADDRESS:0x%p\n"
 
 Data_bd083:
-	db "SpeedPKeisu:%d", $a
-	db $0
+	dstr "SpeedPKeisu:%d\n"
 
 Func_bd093:
 	ret
@@ -2517,54 +2532,43 @@ Func_bd18f: ; bd18f (2f:518f)
 	ret
 
 Data_bd1a7:
-	db "EBM ADDRESS:0x%p", $a
-	db $0
+	dstr "EBM ADDRESS:0x%p\n"
 
 Data_bd1b9:
-	db "DispFlag:%d", $a
-	db $0
+	dstr "DispFlag:%d\n"
 
 Data_bd1c6:
-	db "EBM.efbs2m:0x%p", $a
-	db $0
+	dstr "EBM.efbs2m:0x%p\n"
 
 Data_bd1d7:
-	db "CPU:%d", $a
-	db $0
+	dstr "CPU:%d\n"
 
 Data_bd1df:
-	db "Level:%d", $a
-	db $0
+	dstr "Level:%d\n"
 
 Data_bd1e9:
-	db "Soft[3]", $a
-	db $0
+	dstr "Soft[3]\n"
 
 Data_bd1f2:
 	dstr "[%d]"
 
 Data_bd1f7:
-	db $a
-	db $0
+	dstr "\n"
 
 Data_bd1f9:
-	db "Parts:%d", $a
-	db $0
+	dstr "Parts:%d\n"
 
 Data_bd203:
-	db "EndFlag:0x%p", $a
-	db $0
+	dstr "EndFlag:0x%p\n"
 
 Data_bd211:
-	db "EnterFlag[2]", $a
-	db $0
+	dstr "EnterFlag[2]\n"
 
 Data_bd21f:
 	dstr "[%d]"
 
 Data_bd224:
-	db $a
-	db $0
+	dstr "\n"
 
 Pointers_bd226:
 	dw Func_bce54
@@ -4895,24 +4899,19 @@ Func_be1dc: ; be1dc (2f:61dc)
 	ret
 
 Data_be27f:
-	db "HSRM_TBL:0x%p", $a
-	db $0
+	dstr "HSRM_TBL:0x%p\n"
 
 Data_be28e:
-	db "Robopon:0x%p", $a
-	db $0
+	dstr "Robopon:0x%p\n"
 
 Data_be29c:
-	db "SIRM_TBL:0x%p", $a
-	db $0
+	dstr "SIRM_TBL:0x%p\n"
 
 Data_be2ab:
-	db "SPRM_TBL:0x%p", $a
-	db $0
+	dstr "SPRM_TBL:0x%p\n"
 
 Data_be2ba:
-	db "SSRM_TBL:0x%p", $a
-	db $0
+	dstr "SSRM_TBL:0x%p\n"
 
 DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	push bc

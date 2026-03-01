@@ -60,6 +60,9 @@
 	defchar "ﾞ"
 	defchar "ﾟ" ; df
 
+    char_def $a
+    defchar "\n"
+
     char_def $20
     defchar " "
     defchar "!"
