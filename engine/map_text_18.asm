@@ -137,7 +137,7 @@ PrintMapText:: ; 60621
 	read_hl_from_sp_plus $45
 	reg16swap de, hl
 	ld hl, sp+$4
-	call FarCopyUntilNull
+	call strcpy_far
 	pop bc
 	jp .next
 

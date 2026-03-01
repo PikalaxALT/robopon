@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 15, 2", ROMX [$6ba1], BANK [$15]
+SECTION "Bank 15, 2", ROMX
 INCLUDE "charmap.asm"
 Func_56ba1:: ; 56ba1 (15:6ba1)
 	push hl
@@ -31,7 +31,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2a
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $44
 	mulhlby200
 	ld c, l
@@ -58,7 +58,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	jp nz, Func_56c8f
 	read_hl_from_sp_plus $44
 	ld de, Text_56b9c
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
@@ -90,13 +90,13 @@ Func_56c23: ; 56c23 (15:6c23)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	ld hl, sp+$32
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	jp Func_56c8c
 
@@ -105,21 +105,21 @@ Func_56c6d: ; 56c6d (15:6c6d)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	ld hl, sp+$17
 	push hl
 	read_hl_from_sp_plus $46
 	dec hl
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 Func_56c8c: ; 56c8c (15:6c8c)
 	jp Func_56d4b
 
 Func_56c8f: ; 56c8f (15:6c8f)
 	push bc
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	call GetHLAtSPPlus6
 	reg16swap de, hl
@@ -131,7 +131,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	ld l, [hl]
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$6
@@ -168,7 +168,7 @@ Func_56cf1: ; 56cf1 (15:6cf1)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
@@ -181,13 +181,13 @@ Func_56d03: ; 56d03 (15:6d03)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	ld hl, sp+$32
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	jp Func_56d4b
 
@@ -196,14 +196,14 @@ Func_56d2c: ; 56d2c (15:6d2c)
 	push hl
 	read_hl_from_sp_plus $46
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 	ld hl, sp+$4
 	push hl
 	read_hl_from_sp_plus $46
 	dec hl
 	pop de
-	call CopyUntilNull
+	call strcpy
 	write_hl_to_sp_plus $44
 Func_56d4b: ; 56d4b (15:6d4b)
 	pop hl
@@ -258,14 +258,8 @@ Func_5712f:: ; 5712f (15:712f)
 	and $3f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ld de, Moves - 17
+	mulhlby17
+	ld de, Software - 17
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -378,13 +372,13 @@ Func_5720f: ; 5720f (15:720f)
 	ldh a, [hSRAMBank]
 	push af
 	push bc
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, $3
 	call GetSRAMBank
 	pop hl
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -1327,7 +1321,7 @@ Func_578e9::
 	push bc
 	ld e, c
 	ld hl, sp+$6
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	read_hl_from_sp_plus $34
 	dec hl
 	ld e, l

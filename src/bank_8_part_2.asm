@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 8 part 2", ROMX [$42f0], BANK [$8]
+SECTION "Bank 8 part 2", ROMX
 INCLUDE "charmap.asm"
 
 Func_202f0: ; 202f0 (8:42f0)
@@ -543,7 +543,7 @@ Func_2064c: ; 2064c (8:464c)
 	add hl, bc
 	ld e, [hl]
 	ld hl, sp+$26
-	call Func_241f
+	call GetPart
 	pop af
 	read_hl_from_sp_plus $3e
 	reg16swap de, hl
@@ -577,13 +577,13 @@ Func_20692: ; 20692 (8:4692)
 	jp Func_206d5
 
 Func_206ae: ; 206ae (8:46ae)
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, [hl]
 	ld l, a
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -1075,13 +1075,15 @@ Data_20a54: ; 20a54
 	db $00, $00, $00, $00, $ff, $ff, $04, $00, $04, $00, $ff, $ff, $00, $00, $00
 
 Data_20a63: ; 20a63
-	db $08, $0d, $0c, $05, $08, $76, $44, $00, $00, $00, $08, $99, $45, $05, $81, $52, $08, $17, $44, $08, $46, $46, $08, $40, $46, $00, $00, $00, $00, $00, $00
+	db $08, $0d, $0c, $05, $08, $76, $44, $00, $00, $00, $08, $99, $45, $05, $81, $52
+	db $08, $17, $44, $08, $46, $46, $08, $40, $46, $00, $00, $00, $00, $00, $00
 
 Data_20a82: ; 20a82
 	db $00, $00, $00, $00, $ff, $ff, $04, $00, $04, $00, $ff, $ff, $00, $00, $00
 
 Data_20a91: ; 20a91
-	db $08, $0d, $0c, $05, $08, $54, $47, $00, $00, $00, $08, $e8, $49, $08, $65, $49, $05, $3f, $74, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+	db $08, $0d, $0c, $05, $08, $54, $47, $00, $00, $00, $08, $e8, $49, $08, $65, $49
+	db $05, $3f, $74, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
 Battle_ItemMenu_AButtonReactor: ; 20ab0
 	push hl
@@ -1302,7 +1304,11 @@ Data_20cb4: ; 20cb4
 	dbw 0, 0
 
 Data_29cd3:
-	db $d7, $4c, $de, $4c, $28, $ba, $b3, $b6, $dd, $29, $00, $bd, $c3, $b0, $c0, $bd, $00, $00, $00, $00, $00, $ff, $ff, $02, $00, $02, $00, $00, $00, $d3, $4c, $00, $0b, $0d, $09, $05, $05, $01, $50, $05, $00, $00, $05, $c2, $51, $05, $81, $52, $05, $3f, $74, $05, $00, $00, $05, $00, $00, $00, $00, $00, $00, $00, $00, $ff, $ff, $00, $00, $ff, $ff, $00, $00, $00, $00, $ff, $ff, $10, $00, $14
+	db $d7, $4c, $de, $4c, $28, $ba, $b3, $b6, $dd, $29, $00, $bd, $c3, $b0, $c0, $bd
+	db $00, $00, $00, $00, $00, $ff, $ff, $02, $00, $02, $00, $00, $00, $d3, $4c, $00
+	db $0b, $0d, $09, $05, $05, $01, $50, $05, $00, $00, $05, $c2, $51, $05, $81, $52
+	db $05, $3f, $74, $05, $00, $00, $05, $00, $00, $00, $00, $00, $00, $00, $00, $ff
+	db $ff, $00, $00, $ff, $ff, $00, $00, $00, $00, $ff, $ff, $10, $00, $14
 
 Func_20d21: ; 20d21 (8:4d21)
 	push hl
@@ -2360,13 +2366,7 @@ Func_21441: ; 21441 (8:5441)
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2390,13 +2390,7 @@ Func_21441: ; 21441 (8:5441)
 	push hl
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2416,13 +2410,7 @@ Func_21441: ; 21441 (8:5441)
 	push bc
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2750,13 +2738,7 @@ Func_21744: ; 21744 (8:5744)
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2817,13 +2799,7 @@ Func_21744: ; 21744 (8:5744)
 	push hl
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2885,13 +2861,7 @@ Func_21820: ; 21820 (8:5820)
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2916,13 +2886,7 @@ Func_21820: ; 21820 (8:5820)
 	push hl
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -3024,7 +2988,7 @@ Func_21912: ; 21912 (8:5912)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2016b
-	call CopyUntilNull
+	call strcpy
 	ld hl, sp+$44
 	ld e, [hl]
 	ld hl, sp+$3c
@@ -3533,7 +3497,7 @@ Func_21c7e: ; 21c7e (8:5c7e)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_200fd
-	call CopyUntilNull
+	call strcpy
 	reg16swap de, hl
 	ld hl, $115
 	add hl, sp
@@ -3560,7 +3524,7 @@ Func_21c7e: ; 21c7e (8:5c7e)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20116
-	call CopyUntilNull
+	call strcpy
 	ld hl, $10e
 	add hl, sp
 	ld [hl], $0
@@ -3593,7 +3557,7 @@ Func_21d11: ; 21d11 (8:5d11)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	pop bc
 	ld hl, sp+$2
 	ld a, [hl]
@@ -3647,7 +3611,7 @@ Func_21d47: ; 21d47 (8:5d47)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2015d
-	call CopyUntilNull
+	call strcpy
 Func_21d74: ; 21d74 (8:5d74)
 	ld hl, $f9
 	add hl, sp
@@ -3730,7 +3694,7 @@ Func_21de0: ; 21de0 (8:5de0)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	call GetHLAtSPPlus7
 	write_hl_to_sp_plus $33
 	pop bc
@@ -3805,9 +3769,9 @@ Func_21e76: ; 21e76 (8:5e76)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_20102
-	call CopyUntilNull
+	call strcpy
 	ld hl, $f9
 	add hl, sp
 	ld a, [hl]
@@ -3828,7 +3792,7 @@ Func_21e76: ; 21e76 (8:5e76)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2011d
-	call CopyUntilNull
+	call strcpy
 	ld hl, $f9
 	add hl, sp
 	ld e, [hl]
@@ -3911,7 +3875,7 @@ Func_21f61: ; 21f61 (8:5f61)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld hl, $d5
 	add hl, sp
 	ld a, [hl]
@@ -3932,7 +3896,7 @@ Func_21f61: ; 21f61 (8:5f61)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20116
-	call CopyUntilNull
+	call strcpy
 	ld hl, $eb
 	add hl, sp
 	ld a, [hl]
@@ -3979,7 +3943,7 @@ Func_21ff6: ; 21ff6 (8:5ff6)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20124
-	call CopyUntilNull
+	call strcpy
 Func_2201e: ; 2201e (8:601e)
 	ld hl, $d5
 	add hl, sp
@@ -4036,7 +4000,7 @@ Func_22063: ; 22063 (8:6063)
 	add hl, sp
 	ld e, [hl]
 	ld hl, sp+$0
-	call Func_241f
+	call GetPart
 	ld hl, sp+$0
 	push hl
 	ld hl, $e2
@@ -4059,7 +4023,7 @@ Func_22063: ; 22063 (8:6063)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld hl, $e0
 	add hl, sp
 	ld a, [hl]
@@ -4080,7 +4044,7 @@ Func_22063: ; 22063 (8:6063)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20116
-	call CopyUntilNull
+	call strcpy
 	ld hl, BankSwitch_00f7
 	add hl, sp
 	ld a, [hl]
@@ -4125,7 +4089,7 @@ Func_220f4: ; 220f4 (8:60f4)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20124
-	call CopyUntilNull
+	call strcpy
 Func_2211c: ; 2211c (8:611c)
 	ld hl, $e0
 	add hl, sp
@@ -4311,9 +4275,9 @@ Func_22250: ; 22250 (8:6250)
 	pop de
 	call Func_20d35
 	ld de, Text_20104
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_20116
-	call CopyUntilNull
+	call strcpy
 	ld hl, $c8
 	add hl, sp
 	ld e, [hl]
@@ -4582,7 +4546,7 @@ Func_22430: ; 22430 (8:6430)
 	ld e, a
 	ld hl, $f3
 	add hl, sp
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, $f8
 	add hl, sp
 	ld a, [hl]
@@ -4799,9 +4763,9 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_20102
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	push bc
 	ld hl, $123
@@ -4826,7 +4790,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld h, b
 	call Func_20d35
 	ld de, Text_20134
-	call CopyUntilNull
+	call strcpy
 	ld hl, $123
 	add hl, sp
 	ld e, [hl]
@@ -4844,7 +4808,7 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld e, a
 	ld hl, $ed
 	add hl, sp
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, $d1
 	add hl, sp
@@ -4954,9 +4918,9 @@ Func_225a8: ; 225a8 (8:65a8)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_20102
-	call CopyUntilNull
+	call strcpy
 	pop bc
 Func_22701: ; 22701 (8:6701)
 	read_hl_from_sp_plus $e0
@@ -4991,7 +4955,7 @@ Func_22701: ; 22701 (8:6701)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20106
-	call CopyUntilNull
+	call strcpy
 	reg16swap de, hl
 	ld hl, $d3
 	add hl, sp
@@ -5008,7 +4972,7 @@ Func_22701: ; 22701 (8:6701)
 	reg16swap de, hl
 	reg16swap de, hl
 	ld de, Text_2013f
-	call CopyUntilNull
+	call strcpy
 	reg16swap de, hl
 	ld hl, $123
 	add hl, sp
@@ -5061,7 +5025,7 @@ Func_22701: ; 22701 (8:6701)
 	ld e, a
 	ld hl, $ed
 	add hl, sp
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, $d1
 	add hl, sp
@@ -5468,9 +5432,9 @@ Func_22ae7: ; 22ae7 (8:6ae7)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Text_2010a
-	call CopyUntilNull
+	call strcpy
 	ld hl, $d2
 	add hl, sp
 	ld a, [hl]
@@ -5506,7 +5470,7 @@ Func_22ae7: ; 22ae7 (8:6ae7)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20145
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_dd29
 	ld hl, $d4
 	add hl, sp
@@ -5535,7 +5499,7 @@ Func_22b6f: ; 22b6f (8:6b6f)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20151
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_dd29
 	ld hl, $d4
 	add hl, sp
@@ -5941,13 +5905,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	push hl
 	read_hl_from_sp_plus $18
 	ld de, $82
@@ -5966,13 +5924,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	push hl
 	read_hl_from_sp_plus $18
 	ld de, $82
@@ -6236,13 +6188,7 @@ Func_230ad: ; 230ad (8:70ad)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	push hl
 	read_hl_from_sp_plus $18
 	ld de, $82

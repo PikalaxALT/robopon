@@ -1,3 +1,14 @@
+MACRO lda
+IF \1 == 0
+	xor a
+ELIF \1 < 0
+	ld hl, sp-\1
+	ld a, [hl]
+ELSE
+	ld a, \1
+ENDC
+ENDM
+
 MACRO ldtext_tree_pointer
 	ld \1, (\2_Pointer - TextTreeBitstreams) / 2
 	ENDM
@@ -34,20 +45,12 @@ MACRO script_sleep
 	ENDM
 
 MACRO playmusic
-IF \1 == 0
-	xor a
-ELSE
-	ld a, \1
-ENDC
+	lda \1
 	scall PlayMusic
 	ENDM
 
 MACRO playsfx
-IF \1 == 0
-	xor a
-ELSE
-	ld a, \1
-ENDC
+	lda \1
 	scall PlaySFX
 	ENDM
 
@@ -99,6 +102,18 @@ MACRO move_player
 	scall MovePlayer
 	ENDM
 
+MACRO move_person
+	; person, pointer, wait
+	ld bc, \2
+	ld e, csbnk
+	lda \1
+IF \3 == 0
+	scall MovePerson
+ELSE
+	scall MovePersonAndWait
+ENDC
+	ENDM
+
 MACRO loademote
 	ld c, \1
 	ld e, \2
@@ -111,33 +126,56 @@ MACRO heal
 	ENDM
 
 MACRO face_player
-IF \1 == 0
-	xor a
-ELSE
-	ld a, \1
-ENDC
+	lda \1
 	scall FacePlayer
 	ENDM
 
 MACRO sprite_face
 	ld e, \1
-	ld a, \2
+	lda \2
 	scall SpriteFace
 	ENDM
 
 MACRO showperson
 	ld e, 1
-	ld a, \1
+	lda \1
 	scall SetPersonVisibilityState
 	ENDM
 
 MACRO hideperson
 	ld e, 0
-	ld a, \1
+	lda \1
 	scall SetPersonVisibilityState
+	ENDM
+
+Macro give_robot
+	ld c, \2
+	ld e, \3
+	ld a, \1 + 1
+	scall GiveRobot
 	ENDM
 
 MACRO if_true
 	or a
 	jp nz, \1
+	ENDM
+
+MACRO if_false
+	or a
+	jp z, \1
+	ENDM
+
+MACRO if_last_warp_not
+	ld a, [wBackupMapGroup]
+	cp GROUP_\1
+	jp nz, \4
+	ld a, [wBackupMapNumber]
+	cp MAP_\1
+	jp nz, \4
+	ld a, [wBackupMapX]
+	cp \2
+	jp nz, \4
+	ld a, [wBackupMapY]
+	cp \3
+	jp nz, \4
 	ENDM

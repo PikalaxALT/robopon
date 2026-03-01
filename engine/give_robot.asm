@@ -188,7 +188,7 @@ Func_31c4a: ; 31c4a (c:5c4a)
 	dec a
 	ld e, a
 	ld hl, sp+$29
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$5d
 	ld a, [hl]
 	ld hl, sp+$5a
@@ -420,7 +420,7 @@ Func_31e24: ; 31e24 (c:5e24)
 	dec a
 	ld e, a
 	ld hl, sp+$29
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_6086c
 	pop bc
 	push bc

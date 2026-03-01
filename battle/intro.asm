@@ -168,13 +168,7 @@ Func_fb95: ; fb95 (3:7b95)
 	push af
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $166
@@ -252,13 +246,7 @@ Func_fc31: ; fc31 (3:7c31)
 	ld hl, sp+$2c
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	push hl
 	read_hl_from_sp_plus $32
 	ld de, $82

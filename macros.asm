@@ -1,3 +1,5 @@
+DEF NULL EQUS "0"
+
 INCLUDE "macros/enum.asm"
 INCLUDE "macros/audio.asm"
 INCLUDE "macros/wram.asm"
@@ -183,11 +185,11 @@ MACRO dbbw
 	ENDM
 
 MACRO dstr
-.strStart_\@:
+:
 	db \1
 	IF _NARG == 2
-.strEnd_\@:
-		REPT \2 - (.strEnd_\@ - .strStart_\@)
+:
+		REPT \2 - (:- - :--)
 		db 0
 		ENDR
 	ELSE
@@ -269,6 +271,28 @@ ENDM
 MACRO mulhlby3
 	ld e, l
 	ld d, h
+	add hl, hl
+	add hl, de
+	ENDM
+
+MACRO mulhlby13
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ENDM
+
+MACRO mulhlby17
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
 	add hl, hl
 	add hl, de
 	ENDM

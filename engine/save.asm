@@ -149,7 +149,7 @@ SaveGame:: ; 56d9b (15:6d9b)
 	write_hl_to wcb3b + 2
 	ld de, wPlayerName
 	ld hl, wSaveScratchPlayerName
-	call CopyUntilNull
+	call strcpy
 	ld a, $1
 	call GetSRAMBank
 	ld bc, $214
@@ -314,7 +314,7 @@ LoadGame:: ; 56fc2 (15:6fc2)
 	write_hl_to wGameTimer + 2
 	ld de, wSaveScratchPlayerName
 	ld hl, wPlayerName
-	call CopyUntilNull
+	call strcpy
 	ld a, $1
 	call GetSRAMBank_ReadOnly
 	ld bc, $a0

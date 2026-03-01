@@ -13,7 +13,7 @@ Func_80000_\1:
 GetZodiacSign_\1:
 	jpba_hli GetZodiacSign
 
-FadeInMap_\1: ; 8001c (20:401c)
+Func_8001c_\1: ; 8001c (20:401c)
 	callba_hli Func_ae4d
 	ret
 
@@ -182,7 +182,7 @@ SetPersonVisibilityState_\1: ; 8013d (20:413d)
 	call FarCall
 	ret
 
-Func_80150_\1: ; 80150 (20:4150)
+SetPersonTextPointer_\1: ; 80150 (20:4150)
 	push af
 	push de
 	set_farcall_addrs_hli Func_a580
@@ -306,14 +306,14 @@ Func_802ef_\1:
 	pop hl
 	ld a, [wc793]
 	or a
-	jp z, Func_8030d_\1
+	jp z, .asm_8030d
 	ld a, [wc793]
 	cp $1
-	jp z, Func_8030d_\1
+	jp z, .asm_8030d
 	ld a, [wc793]
 	cp $3
-	jp nz, Func_80341_\1
-Func_8030d_\1: ; 8030d (20:430d)
+	jp nz, .asm_80341
+.asm_8030d: ; 8030d (20:430d)
 	push hl
 	push de
 	set_farcall_addrs_hli Func_bc6d
@@ -322,19 +322,19 @@ Func_8030d_\1: ; 8030d (20:430d)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	or a
-	jp z, Func_80332_\1
+	jp z, .asm_80332
 	ld hl, sp+$0
 	ld [hl], $0
-	jp Func_80341_\1
+	jp .asm_80341
 
-Func_80332_\1: ; 80332 (20:4332)
+.asm_80332: ; 80332 (20:4332)
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-Func_80341_\1: ; 80341 (20:4341)
+.asm_80341: ; 80341 (20:4341)
 	ld hl, sp+$0
 	ld a, [hl]
 	pop bc
@@ -348,14 +348,14 @@ Func_80347_\1:
 	pop hl
 	ld a, [wc793]
 	or a
-	jp z, Func_80364_\1
+	jp z, .asm_80364
 	ld a, [wc793]
 	cp $1
-	jp z, Func_80364_\1
+	jp z, .asm_80364
 	ld a, [wc793]
 	cp $3
-	jp nz, Func_80398_\1
-Func_80364_\1: ; 80364 (20:4364)
+	jp nz, .asm_80398
+.asm_80364: ; 80364 (20:4364)
 	push hl
 	push de
 	set_farcall_addrs_hli Func_bd5d
@@ -364,19 +364,19 @@ Func_80364_\1: ; 80364 (20:4364)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	or a
-	jp z, Func_80389_\1
+	jp z, .asm_80389
 	ld hl, sp+$0
 	ld [hl], $0
-	jp Func_80398_\1
+	jp .asm_80398
 
-Func_80389_\1: ; 80389 (20:4389)
+.asm_80389: ; 80389 (20:4389)
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-Func_80398_\1: ; 80398 (20:4398)
+.asm_80398: ; 80398 (20:4398)
 	ld hl, sp+$0
 	ld a, [hl]
 	pop bc
@@ -390,14 +390,14 @@ Func_8039e_\1:
 	pop hl
 	ld a, [wc793]
 	or a
-	jp z, Func_803bb_\1
+	jp z, .asm_803bb
 	ld a, [wc793]
 	cp $1
-	jp z, Func_803bb_\1
+	jp z, .asm_803bb
 	ld a, [wc793]
 	cp $3
-	jp nz, Func_803ef_\1
-Func_803bb_\1: ; 803bb (20:43bb)
+	jp nz, .asm_803ef
+.asm_803bb: ; 803bb (20:43bb)
 	push hl
 	push de
 	set_farcall_addrs_hli Func_bce5
@@ -406,19 +406,19 @@ Func_803bb_\1: ; 803bb (20:43bb)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	or a
-	jp z, Func_803e0_\1
+	jp z, .asm_803e0
 	ld hl, sp+$0
 	ld [hl], $0
-	jp Func_803ef_\1
+	jp .asm_803ef
 
-Func_803e0_\1: ; 803e0 (20:43e0)
+.asm_803e0: ; 803e0 (20:43e0)
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-Func_803ef_\1: ; 803ef (20:43ef)
+.asm_803ef: ; 803ef (20:43ef)
 	ld hl, sp+$0
 	ld a, [hl]
 	pop bc
@@ -432,14 +432,14 @@ Func_803f5_\1:
 	pop hl
 	ld a, [wc793]
 	or a
-	jp z, Func_80412_\1
+	jp z, .asm_80412
 	ld a, [wc793]
 	cp $1
-	jp z, Func_80412_\1
+	jp z, .asm_80412
 	ld a, [wc793]
 	cp $3
-	jp nz, Func_80446_\1
-Func_80412_\1: ; 80412 (20:4412)
+	jp nz, .asm_80446
+.asm_80412: ; 80412 (20:4412)
 	push hl
 	push de
 	set_farcall_addrs_hli Func_bdd5
@@ -448,19 +448,19 @@ Func_80412_\1: ; 80412 (20:4412)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	or a
-	jp z, Func_80437_\1
+	jp z, .asm_80437
 	ld hl, sp+$0
 	ld [hl], $0
-	jp Func_80446_\1
+	jp .asm_80446
 
-Func_80437_\1: ; 80437 (20:4437)
+.asm_80437: ; 80437 (20:4437)
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-Func_80446_\1: ; 80446 (20:4446)
+.asm_80446: ; 80446 (20:4446)
 	ld hl, sp+$0
 	ld a, [hl]
 	pop bc
@@ -527,7 +527,7 @@ Func_804da_\1:
 	ld d, h
 	ld l, c
 	ld h, b
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_ac35
 	pop bc
 	push bc
@@ -556,13 +556,13 @@ Func_80519_\1: ; 80519 (20:4519)
 	push bc
 	ld l, c
 	ld h, b
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	pop hl
 	push bc
 	reg16swap de, hl
 	ld hl, sp+$2
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_ac36
 	pop bc
 	push bc
@@ -593,7 +593,7 @@ Func_8056f_\1:
 	ld d, h
 	ld l, c
 	ld h, b
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_ac9b
 	pop bc
 	push bc
@@ -626,13 +626,13 @@ Func_805b2_\1: ; 805b2 (20:45b2)
 	push bc
 	ld l, c
 	ld h, b
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	pop hl
 	push bc
 	reg16swap de, hl
 	ld hl, sp+$2
-	call CopyUntilNull
+	call strcpy
 	set_farcall_addrs_hli Func_aca4
 	pop bc
 	push bc
@@ -707,7 +707,7 @@ PlayerFace_\1: ; 80677 (20:4677)
 	call FarCall
 	ret
 
-Func_80688_\1: ; 80688 (20:4688)
+MovePersonAndWait_\1: ; 80688 (20:4688)
 	call MovePerson_\1
 	call WaitNPCStep_\1
 	ret
@@ -730,15 +730,15 @@ Func_806a0_\1:
 	pop de
 	ld a, e
 	cp $3
-	jp c, Func_806ce_\1
+	jp c, .asm_806ce
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-	jp Func_806dc_\1
+	jp .asm_806dc
 
-Func_806ce_\1: ; 806ce (20:46ce)
+.asm_806ce: ; 806ce (20:46ce)
 	callba_hli Func_8f44
-Func_806dc_\1: ; 806dc (20:46dc)
+.asm_806dc: ; 806dc (20:46dc)
 	ret
 
 Func_806dd_\1:
@@ -770,7 +770,7 @@ Func_806dd_\1:
 	pop de
 	ld a, e
 	or a
-	jp nz, Func_80796_\1
+	jp nz, .asm_80796
 	ld a, [wPlayerFacing]
 	add $2
 	and $3
@@ -780,12 +780,12 @@ Func_806dd_\1:
 	call SpriteFace_\1
 	checkevent $c8
 	or a
-	jp nz, Func_80732_\1
+	jp nz, .asm_80732
 	writenpctext TreeBitstreamText_471e4
 	setevent $c8
-	jp Func_80796_\1
+	jp .asm_80796
 
-Func_80732_\1: ; 80732 (20:4732)
+.asm_80732: ; 80732 (20:4732)
 	pop hl
 	push hl
 	ld l, [hl]
@@ -803,14 +803,14 @@ Func_80732_\1: ; 80732 (20:4732)
 	ld a, $1
 	call LeftShiftA
 	and c
-	jp z, Func_8075a_\1
+	jp z, .asm_8075a
 	writenpctext TreeBitstreamText_472b9
-	jp Func_80796_\1
+	jp .asm_80796
 
-Func_8075a_\1: ; 8075a (20:475a)
+.asm_8075a: ; 8075a (20:475a)
 	writenpctext_yesorno TreeBitstreamText_4725f
 	or a
-	jp nz, Func_80796_\1
+	jp nz, .asm_80796
 	set_farcall_addrs_hli Func_9ace0
 	pop hl
 	push hl
@@ -826,15 +826,15 @@ Func_8075a_\1: ; 8075a (20:475a)
 	ld e, [hl]
 	call FarCall
 	cp $2
-	jp nz, Func_8078c_\1
+	jp nz, .asm_8078c
 	writetext TreeBitstreamText_4728d
-	jp Func_80796_\1
+	jp .asm_80796
 
-Func_8078c_\1: ; 8078c (20:478c)
+.asm_8078c: ; 8078c (20:478c)
 	or a
-	jp nz, Func_80796_\1
+	jp nz, .asm_80796
 	writetext TreeBitstreamText_472ce
-Func_80796_\1: ; 80796 (20:4796)
+.asm_80796: ; 80796 (20:4796)
 	pop bc
 	pop bc
 	ret
@@ -866,7 +866,7 @@ Func_80799_\1:
 	pop de
 	ld a, e
 	or a
-	jp nz, Func_8085c_\1
+	jp nz, .asm_8085c
 	push bc
 	ld a, [wPlayerFacing]
 	add $2
@@ -888,7 +888,7 @@ Func_80799_\1:
 	ld e, [hl]
 	ld hl, sp+$2
 	ld [hl], e
-Func_807e7_\1: ; 807e7 (20:47e7)
+.asm_807e7: ; 807e7 (20:47e7)
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
@@ -917,23 +917,23 @@ Func_807e7_\1: ; 807e7 (20:47e7)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_8081a_\1
+	jp nz, .asm_8081a
 	ld hl, sp+$2
 	ld [hl], $fe
-	jp Func_8081d_\1
+	jp .asm_8081d
 
-Func_8081a_\1: ; 8081a (20:481a)
-	jp Func_80828_\1
+.asm_8081a: ; 8081a (20:481a)
+	jp .asm_80828
 
-Func_8081d_\1: ; 8081d (20:481d)
+.asm_8081d: ; 8081d (20:481d)
 	ld hl, sp+$2
 	ld a, [hl]
 	add $2
 	ld hl, sp+$2
 	ld [hl], a
-	jp Func_807e7_\1
+	jp .asm_807e7
 
-Func_80828_\1: ; 80828 (20:4828)
+.asm_80828: ; 80828 (20:4828)
 	pop bc
 	ld hl, sp+$0
 	ld l, [hl]
@@ -969,7 +969,7 @@ Func_80828_\1: ; 80828 (20:4828)
 	inc hl
 	inc hl
 	ld [hl], a
-Func_8085c_\1: ; 8085c (20:485c)
+.asm_8085c: ; 8085c (20:485c)
 	pop bc
 	pop bc
 	ret
@@ -1003,7 +1003,7 @@ PrintTextFacePlayer_\1:
 	pop de
 	ld a, e
 	or a
-	jp nz, Func_808f9_\1
+	jp nz, .asm_808f9
 	ld a, [wPlayerFacing]
 	add $2
 	and $3
@@ -1022,7 +1022,7 @@ PrintTextFacePlayer_\1:
 	inc hl
 	inc hl
 	ld c, [hl]
-Func_808ad_\1: ; 808ad (20:48ad)
+.asm_808ad: ; 808ad (20:48ad)
 	pop hl
 	push hl
 	reg16swap de, hl
@@ -1034,18 +1034,18 @@ Func_808ad_\1: ; 808ad (20:48ad)
 	inc hl
 	and [hl]
 	inc a
-	jp nz, Func_808c4_\1
+	jp nz, .asm_808c4
 	ld c, $ff
-	jp Func_808c7_\1
+	jp .asm_808c7
 
-Func_808c4_\1: ; 808c4 (20:48c4)
-	jp Func_808cb_\1
+.asm_808c4: ; 808c4 (20:48c4)
+	jp .asm_808cb
 
-Func_808c7_\1: ; 808c7 (20:48c7)
+.asm_808c7: ; 808c7 (20:48c7)
 	inc c
-	jp Func_808ad_\1
+	jp .asm_808ad
 
-Func_808cb_\1: ; 808cb (20:48cb)
+.asm_808cb: ; 808cb (20:48cb)
 	push bc
 	call GetHLAtSPPlus4
 	reg16swap de, hl
@@ -1072,7 +1072,7 @@ Func_808cb_\1: ; 808cb (20:48cb)
 	ld e, c
 	inc e
 	ld [hl], e
-Func_808f9_\1: ; 808f9 (20:48f9)
+.asm_808f9: ; 808f9 (20:48f9)
 	pop bc
 	pop bc
 	ret
@@ -1106,7 +1106,7 @@ Func_808fc_\1:
 	pop de
 	ld a, e
 	or a
-	jp nz, Func_80996_\1
+	jp nz, .asm_80996
 	ld a, [wPlayerFacing]
 	add $2
 	and $3
@@ -1125,7 +1125,7 @@ Func_808fc_\1:
 	inc hl
 	inc hl
 	ld c, [hl]
-Func_8094a_\1: ; 8094a (20:494a)
+.asm_8094a: ; 8094a (20:494a)
 	pop hl
 	push hl
 	reg16swap de, hl
@@ -1137,18 +1137,18 @@ Func_8094a_\1: ; 8094a (20:494a)
 	inc hl
 	and [hl]
 	inc a
-	jp nz, Func_80961_\1
+	jp nz, .asm_80961
 	ld c, $ff
-	jp Func_80964_\1
+	jp .asm_80964
 
-Func_80961_\1: ; 80961 (20:4961)
-	jp Func_80968_\1
+.asm_80961: ; 80961 (20:4961)
+	jp .asm_80968
 
-Func_80964_\1: ; 80964 (20:4964)
+.asm_80964: ; 80964 (20:4964)
 	inc c
-	jp Func_8094a_\1
+	jp .asm_8094a
 
-Func_80968_\1: ; 80968 (20:4968)
+.asm_80968: ; 80968 (20:4968)
 	push bc
 	call GetHLAtSPPlus4
 	reg16swap de, hl
@@ -1175,7 +1175,7 @@ Func_80968_\1: ; 80968 (20:4968)
 	ld e, c
 	inc e
 	ld [hl], e
-Func_80996_\1: ; 80996 (20:4996)
+.asm_80996: ; 80996 (20:4996)
 	pop bc
 	pop bc
 	ret
@@ -1209,7 +1209,7 @@ Func_80999_\1:
 	pop de
 	ld a, e
 	or a
-	jp nz, Func_80a79_\1
+	jp nz, .asm_80a79
 	ld a, [wPlayerFacing]
 	add $2
 	and $3
@@ -1229,9 +1229,9 @@ Func_80999_\1:
 	inc hl
 	ld a, [hl]
 	cp $1
-	jp z, Func_80a5d_\1
+	jp z, .asm_80a5d
 	or a
-	jp nz, Func_80a79_\1
+	jp nz, .asm_80a79
 	pop hl
 	push hl
 	inc hl
@@ -1248,7 +1248,7 @@ Func_80999_\1:
 	pop de
 	call Func_805b2_\1
 	or a
-	jp nz, Func_80a3e_\1
+	jp nz, .asm_80a3e
 	pop hl
 	push hl
 	ld de, $6
@@ -1279,9 +1279,9 @@ Func_80999_\1:
 	inc hl
 	inc hl
 	ld [hl], $1
-	jp Func_80a5a_\1
+	jp .asm_80a5a
 
-Func_80a3e_\1: ; 80a3e (20:4a3e)
+.asm_80a3e: ; 80a3e (20:4a3e)
 	pop hl
 	push hl
 	ld de, $a
@@ -1299,10 +1299,10 @@ Func_80a3e_\1: ; 80a3e (20:4a3e)
 	reg16swap de, hl
 	pop de
 	call Func_80519_\1
-Func_80a5a_\1: ; 80a5a (20:4a5a)
-	jp Func_80a79_\1
+.asm_80a5a: ; 80a5a (20:4a5a)
+	jp .asm_80a79
 
-Func_80a5d_\1: ; 80a5d (20:4a5d)
+.asm_80a5d: ; 80a5d (20:4a5d)
 	pop hl
 	push hl
 	ld de, $6
@@ -1322,7 +1322,7 @@ Func_80a5d_\1: ; 80a5d (20:4a5d)
 	reg16swap de, hl
 	pop de
 	call Func_80519_\1
-Func_80a79_\1: ; 80a79 (20:4a79)
+.asm_80a79: ; 80a79 (20:4a79)
 	pop bc
 	pop bc
 	ret
@@ -1356,7 +1356,7 @@ PrintTextFacePlayerYesOrNo_\1:
 	pop de
 	ld a, e
 	or a
-	jp nz, Func_80b2a_\1
+	jp nz, .asm_80b2a
 	ld a, [wPlayerFacing]
 	add $2
 	and $3
@@ -1376,9 +1376,9 @@ PrintTextFacePlayerYesOrNo_\1:
 	inc hl
 	ld a, [hl]
 	cp $1
-	jp z, Func_80b1c_\1
+	jp z, .asm_80b1c
 	or a
-	jp nz, Func_80b2a_\1
+	jp nz, .asm_80b2a
 	pop hl
 	push hl
 	ld e, [hl]
@@ -1387,7 +1387,7 @@ PrintTextFacePlayerYesOrNo_\1:
 	reg16swap de, hl
 	call PrintTextWithYesNoBox_\1
 	or a
-	jp nz, Func_80b09_\1
+	jp nz, .asm_80b09
 	pop hl
 	push hl
 	inc hl
@@ -1408,9 +1408,9 @@ PrintTextFacePlayerYesOrNo_\1:
 	inc hl
 	inc hl
 	ld [hl], $1
-	jp Func_80b19_\1
+	jp .asm_80b19
 
-Func_80b09_\1: ; 80b09 (20:4b09)
+.asm_80b09: ; 80b09 (20:4b09)
 	pop hl
 	push hl
 	inc hl
@@ -1422,10 +1422,10 @@ Func_80b09_\1: ; 80b09 (20:4b09)
 	ld d, [hl]
 	reg16swap de, hl
 	call PrintTextStandard_\1
-Func_80b19_\1: ; 80b19 (20:4b19)
-	jp Func_80b2a_\1
+.asm_80b19: ; 80b19 (20:4b19)
+	jp .asm_80b2a
 
-Func_80b1c_\1: ; 80b1c (20:4b1c)
+.asm_80b1c: ; 80b1c (20:4b1c)
 	pop hl
 	push hl
 	inc hl
@@ -1435,7 +1435,7 @@ Func_80b1c_\1: ; 80b1c (20:4b1c)
 	ld d, [hl]
 	reg16swap de, hl
 	call PrintTextStandard_\1
-Func_80b2a_\1: ; 80b2a (20:4b2a)
+.asm_80b2a: ; 80b2a (20:4b2a)
 	pop bc
 	pop bc
 	ret
@@ -1469,7 +1469,7 @@ Func_80b2d_\1:
 	pop de
 	ld a, e
 	or a
-	jp nz, Func_80bdb_\1
+	jp nz, .asm_80bdb
 	ld a, [wPlayerFacing]
 	add $2
 	and $3
@@ -1489,9 +1489,9 @@ Func_80b2d_\1:
 	inc hl
 	ld a, [hl]
 	cp $1
-	jp z, Func_80bcd_\1
+	jp z, .asm_80bcd
 	or a
-	jp nz, Func_80bdb_\1
+	jp nz, .asm_80bdb
 	pop hl
 	push hl
 	ld e, [hl]
@@ -1500,7 +1500,7 @@ Func_80b2d_\1:
 	reg16swap de, hl
 	call PrintTextWithNPCNameAndYesNoBox_\1
 	or a
-	jp nz, Func_80bba_\1
+	jp nz, .asm_80bba
 	pop hl
 	push hl
 	inc hl
@@ -1521,9 +1521,9 @@ Func_80b2d_\1:
 	inc hl
 	inc hl
 	ld [hl], $1
-	jp Func_80bca_\1
+	jp .asm_80bca
 
-Func_80bba_\1: ; 80bba (20:4bba)
+.asm_80bba: ; 80bba (20:4bba)
 	pop hl
 	push hl
 	inc hl
@@ -1535,10 +1535,10 @@ Func_80bba_\1: ; 80bba (20:4bba)
 	ld d, [hl]
 	reg16swap de, hl
 	call PrintTextWithNPCName_\1
-Func_80bca_\1: ; 80bca (20:4bca)
-	jp Func_80bdb_\1
+.asm_80bca: ; 80bca (20:4bca)
+	jp .asm_80bdb
 
-Func_80bcd_\1: ; 80bcd (20:4bcd)
+.asm_80bcd: ; 80bcd (20:4bcd)
 	pop hl
 	push hl
 	inc hl
@@ -1548,7 +1548,7 @@ Func_80bcd_\1: ; 80bcd (20:4bcd)
 	ld d, [hl]
 	reg16swap de, hl
 	call PrintTextWithNPCName_\1
-Func_80bdb_\1: ; 80bdb (20:4bdb)
+.asm_80bdb: ; 80bdb (20:4bdb)
 	pop bc
 	pop bc
 	ret
@@ -1600,35 +1600,35 @@ Func_80bde_\1:
 	ld [wc849], a
 	ld a, [wPlayerFacing]
 	cp $3
-	jp z, Func_80c5a_\1
+	jp z, .asm_80c5a
 	cp $2
-	jp z, Func_80c50_\1
+	jp z, .asm_80c50
 	cp $1
-	jp z, Func_80c46_\1
+	jp z, .asm_80c46
 	or a
-	jp nz, Func_80c61_\1
+	jp nz, .asm_80c61
 	ld a, [wc847]
 	dec a
 	ld [wc847], a
-	jp Func_80c61_\1
+	jp .asm_80c61
 
-Func_80c46_\1: ; 80c46 (20:4c46)
+.asm_80c46: ; 80c46 (20:4c46)
 	ld a, [wc846]
 	inc a
 	ld [wc846], a
-	jp Func_80c61_\1
+	jp .asm_80c61
 
-Func_80c50_\1: ; 80c50 (20:4c50)
+.asm_80c50: ; 80c50 (20:4c50)
 	ld a, [wc847]
 	inc a
 	ld [wc847], a
-	jp Func_80c61_\1
+	jp .asm_80c61
 
-Func_80c5a_\1: ; 80c5a (20:4c5a)
+.asm_80c5a: ; 80c5a (20:4c5a)
 	ld a, [wc846]
 	dec a
 	ld [wc846], a
-Func_80c61_\1: ; 80c61 (20:4c61)
+.asm_80c61: ; 80c61 (20:4c61)
 	set_farcall_addrs_hli CheckBackgroundCollision
 	ld c, $1
 	ld a, [wc847]
@@ -1636,20 +1636,20 @@ Func_80c61_\1: ; 80c61 (20:4c61)
 	ld a, [wc846]
 	call FarCall
 	or a
-	jp nz, Func_80c91_\1
+	jp nz, .asm_80c91
 	ld a, $33
 	call OverworldPlaySFX
 	ld bc, wc846
-	ld e, BANK(ScriptLibrary_\1)
+	ld e, csbnk
 	ld hl, sp+$1
 	ld a, [hl]
 	call MovePerson_\1
 	ld a, $1
-	jp Func_80c92_\1
+	jp .asm_80c92
 
-Func_80c91_\1: ; 80c91 (20:4c91)
+.asm_80c91: ; 80c91 (20:4c91)
 	xor a
-Func_80c92_\1: ; 80c92 (20:4c92)
+.asm_80c92: ; 80c92 (20:4c92)
 	pop bc
 	ret
 
@@ -1694,7 +1694,7 @@ Func_80ce7_\1: ; 80ce7 (20:4ce7)
 	pop hl
 	ld c, e
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	ret
 
@@ -1702,16 +1702,16 @@ Func_80d01_\1: ; 80d01 (20:4d01)
 	push af
 	ld a, [wc793]
 	or a
-	jp z, Func_80d11_\1
+	jp z, .asm_80d11
 	ld a, [wc793]
 	cp $3
-	jp nz, Func_80d22_\1
-Func_80d11_\1: ; 80d11 (20:4d11)
+	jp nz, .asm_80d22
+.asm_80d11: ; 80d11 (20:4d11)
 	set_farcall_addrs_hli Func_b785
 	ld hl, sp+$1
 	ld a, [hl]
 	call FarCall
-Func_80d22_\1: ; 80d22 (20:4d22)
+.asm_80d22: ; 80d22 (20:4d22)
 	pop bc
 	ret
 
@@ -1730,7 +1730,7 @@ LoadEncounters_\1: ; 80d24 (20:4d24)
 	pop hl
 	ld c, e
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 .quit
 	ret
@@ -1816,11 +1816,11 @@ Func_80d9b_\1: ; 80d9b (20:4d9b)
 ScriptedBattle_\1: ; 80dd3 (20:4dd3)
 	ld a, [wc793]
 	or a
-	jp z, Func_80de2_\1
+	jp z, .asm_80de2
 	ld a, [wc793]
 	cp $3
-	jp nz, Func_80dfd_\1
-Func_80de2_\1: ; 80de2 (20:4de2)
+	jp nz, .asm_80dfd
+.asm_80de2: ; 80de2 (20:4de2)
 	push hl
 	push de
 	set_farcall_addrs_hli StartBattle
@@ -1829,10 +1829,10 @@ Func_80de2_\1: ; 80de2 (20:4de2)
 	ld c, e
 	ld b, d
 	reg16swap de, hl
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	ld l, a
-Func_80dfd_\1: ; 80dfd (20:4dfd)
+.asm_80dfd: ; 80dfd (20:4dfd)
 	ld a, l
 	ret
 
@@ -1960,7 +1960,7 @@ Func_80f11_\1: ; 80f11 (20:4f11)
 	push hl
 	set_farcall_addrs_hli Func_bf39
 	pop de
-	ld a, BANK(ScriptLibrary_\1)
+	ld a, csbnk
 	call FarCall
 	ret
 
@@ -2119,11 +2119,11 @@ Func_8103e_\1:
 Func_8104f_\1:
 	callba_hli DispatchMenu
 	cp $ff
-	jp nz, Func_81071_\1
+	jp nz, .asm_81071
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-Func_81071_\1: ; 81071 (20:5071)
+.asm_81071: ; 81071 (20:5071)
 	ret
 
 Func_81072_\1:

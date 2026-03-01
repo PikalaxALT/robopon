@@ -1,0 +1,25 @@
+INCLUDE "includes.asm"
+INCLUDE "charmap.asm"
+INCLUDE "macros/bank20.asm"
+
+SECTION "Bank 28", ROMX
+	script_library 28
+
+INCLUDE "maps/scripts/unknown_a11de.asm"
+INCLUDE "maps/scripts/unknown_a167b.asm"
+INCLUDE "maps/scripts/unknown_a1e57.asm"
+INCLUDE "maps/scripts/unknown_a2271.asm"
+INCLUDE "maps/scripts/unknown_a268b.asm"
+INCLUDE "maps/scripts/unknown_a2aa5.asm"
+INCLUDE "maps/scripts/unknown_a2ebf.asm"
+INCLUDE "maps/scripts/unknown_a30cd.asm"
+INCLUDE "maps/scripts/unknown_a32cf.asm"
+INCLUDE "maps/scripts/unknown_a34d1.asm"
+INCLUDE "maps/scripts/unknown_a36ec.asm"
+INCLUDE "maps/scripts/unknown_a3788.asm"
+INCLUDE "maps/scripts/unknown_a3789.asm"
+INCLUDE "maps/scripts/unknown_a378a.asm"
+INCLUDE "maps/scripts/unknown_a388c.asm"
+INCLUDE "maps/scripts/unknown_a3b2f.asm"
+INCLUDE "maps/scripts/unknown_a3bc8.asm"
+INCLUDE "maps/scripts/unknown_a3dc4.asm"

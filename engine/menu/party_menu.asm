@@ -1,5 +1,6 @@
 Data_5e4c8:
-	db $00, $00, $14, $12, $17, $14, $5e, $00, $00, $00, $17, $dd, $5b, $17, $21, $60, $17, $fc, $53, $00, $00, $00, $00, $00, $00, $17, $fb, $5f, $17, $a5, $62
+	db $00, $00, $14, $12, $17, $14, $5e, $00, $00, $00, $17, $dd, $5b, $17, $21, $60
+	db $17, $fc, $53, $00, $00, $00, $00, $00, $00, $17, $fb, $5f, $17, $a5, $62
 
 Data_5e4e7:
 	db $00, $00, $00, $00, $ff, $ff, $02, $00, $02, $00, $ff, $ff, $00, $00, $00
@@ -296,13 +297,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -330,13 +325,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhlby17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -414,7 +403,7 @@ Func_5e835: ; 5e835 (17:6835)
 	push hl
 	call GetHLAtSPPlus8
 	pop de
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	call GetHLAtSPPlus6
 	inc hl
 	inc hl
@@ -531,7 +520,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	push hl
 	call GetHLAtSPPlus10
 	pop de
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$49
 	ld [hl], $3
 	ld hl, sp+$48

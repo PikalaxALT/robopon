@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 14", ROMX, BANK [$14]
+SECTION "Bank 14", ROMX
 Func_50000: ; 50000
 	ret
 
@@ -1550,7 +1550,7 @@ GetRobotSprite:: ; 50b19
 	ld e, a
 	dec e
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	pop hl
 	ld a, l
 	call GetSRAMBank
@@ -2101,7 +2101,7 @@ Func_50f58:: ; 50f58 (14:4f58)
 	ld hl, $23
 	call FarCall
 	call WriteHLToSPPlus8
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	call GetHLAtSPPlus8
 	reg16swap de, hl
 	ld hl, sp+$8
@@ -2880,7 +2880,7 @@ Func_515fd: ; 515fd (14:55fd)
 	call FarCall
 	reg16swap de, hl
 	push de
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop de
 	push de
 	ld hl, sp+$5
@@ -2980,7 +2980,7 @@ Func_516e6: ; 516e6 (14:56e6)
 	add sp, -$46
 	push af
 	push de
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop de
 	push de
 	ld a, e
@@ -3070,7 +3070,7 @@ Func_5178a: ; 5178a
 	ld de, $1405
 	ld hl, $d
 	call BackUpTileMapRectangle
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop bc
 	pop hl
 	push bc
@@ -4551,7 +4551,7 @@ Func_524b6:: ; 524b6 (14:64b6)
 	ld e, $9
 	ld hl, $b0a
 	call Func_50185
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	ld hl, sp+$72
 	reg16swap de, hl
 	ld hl, sp+$e
@@ -4588,7 +4588,7 @@ Func_52591: ; 52591 (14:6591)
 	dec a
 	ld e, a
 	ld hl, sp+$45
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	read_hl_from_sp_plus $4a
 	push hl
 	ld hl, sp+$4c
@@ -4609,7 +4609,7 @@ Func_52591: ; 52591 (14:6591)
 	read_hl_from_sp_plus $15
 	reg16swap de, hl
 	ld hl, sp+$1b
-	call FarCopyUntilNull
+	call strcpy_far
 	ld hl, Data_52ac1
 	push hl
 	call PlaceString
@@ -4648,7 +4648,7 @@ Func_52591: ; 52591 (14:6591)
 	read_hl_from_sp_plus $15
 	reg16swap de, hl
 	ld hl, sp+$1b
-	call FarCopyUntilNull
+	call strcpy_far
 	ld de, Data_52ac7
 	ld hl, $903
 	call PlaceStringDEatCoordHL
@@ -4693,7 +4693,7 @@ Func_52591: ; 52591 (14:6591)
 	ld a, [hl]
 	ld e, a
 	ld hl, sp+$2f
-	call Func_241f
+	call GetPart
 	ld hl, sp+$3f
 	ld a, [hl]
 	push af
@@ -5760,7 +5760,7 @@ Func_53d22: ; 53d22 (14:7d22)
 	ld e, a
 	dec e
 	ld hl, sp+$23
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$28
 	ld a, [hl]
 	push af
@@ -5837,7 +5837,7 @@ Func_53e02: ; 53e02 (14:7e02)
 	ld e, a
 	dec e
 	ld hl, sp+$23
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$28
 	ld a, [hl]
 	push af

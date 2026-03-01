@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 15", ROMX, BANK [$15]
+SECTION "Bank 15", ROMX
 Func_54000:
 	ret
 
@@ -853,7 +853,7 @@ Func_54787: ; 54787 (15:4787)
 	ld e, a
 	dec e
 	ld hl, sp+$27
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$2c
 	ld e, [hl]
 	pop af
@@ -1743,7 +1743,7 @@ Func_54ee5: ; 54ee5 (15:4ee5)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$2
 	ld a, [hl]
 	add sp, $52
@@ -1761,7 +1761,7 @@ Func_54f0e:: ; 54f0e (15:4f0e)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$2
 	ld a, [hl]
 	push af
@@ -1833,7 +1833,7 @@ Func_54f0e:: ; 54f0e (15:4f0e)
 	ld e, a
 	dec e
 	ld hl, sp+$4
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_53a0d
 	pop af
 	push af
@@ -2740,7 +2740,7 @@ Func_5575d:: ; 5575d (15:575d)
 	ld e, a
 	ld hl, $3ab
 	add hl, sp
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, wc310
 	ld l, [hl]
 	ld h, 0
@@ -2750,7 +2750,7 @@ Func_5575d:: ; 5575d (15:575d)
 	ld e, [hl]
 	ld hl, $370
 	add hl, sp
-	call Func_241f
+	call GetPart
 	ld hl, $6
 	push hl
 	ld hl, $35e
@@ -3451,7 +3451,7 @@ Func_55dd6:: ; 55dd6 (15:5dd6)
 	ld [hl], $81
 	inc hl
 	write_hl_to_sp_plus $2a
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop hl
 	pop de
 	push hl
@@ -4561,7 +4561,12 @@ Func_566a8:
 	ret
 
 Data_566a9::
-	db $00, $00, $10, $07, $05, $01, $50, $05, $00, $00, $05, $c2, $51, $15, $35, $73, $05, $3f, $74, $05, $00, $00, $05, $00, $00, $00, $00, $00, $00, $00, $00, $ce, $66, $dd, $66, $ec, $66, $28, $bc, $ad, $bc, $de, $dd, $ba, $b3, $c9, $29, $c3, $de, $b0, $c0, $00, $db, $ce, $de, $ce, $df, $dd, $c3, $de, $b0, $c0, $cc, $a7, $b2, $d9, $00, $ca, $de, $c4, $d9, $bc, $de, $aa, $c8, $bc, $bd, $35, $28, $be, $b2, $be, $b7, $29, $00
+	db $00, $00, $10, $07, $05, $01, $50, $05, $00, $00, $05, $c2, $51, $15, $35, $73
+	db $05, $3f, $74, $05, $00, $00, $05, $00, $00, $00, $00, $00, $00, $00, $00, $ce
+	db $66, $dd, $66, $ec, $66, $28, $bc, $ad, $bc, $de, $dd, $ba, $b3, $c9, $29, $c3
+	db $de, $b0, $c0, $00, $db, $ce, $de, $ce, $df, $dd, $c3, $de, $b0, $c0, $cc, $a7
+	db $b2, $d9, $00, $ca, $de, $c4, $d9, $bc, $de, $aa, $c8, $bc, $bd, $35, $28, $be
+	db $b2, $be, $b7, $29, $00
 
 Func_566fe:: ; 566fe (15:66fe)
 	add sp, -$6a
@@ -4615,7 +4620,7 @@ Func_56732: ; 56732 (15:6732)
 	ld e, a
 	dec e
 	ld hl, sp+$3e
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	read_hl_from_sp_plus $43
 	pop de
 	pop af
@@ -4669,7 +4674,7 @@ Func_567d1: ; 567d1 (15:67d1)
 	push af
 	ld e, a
 	ld hl, sp+$2a
-	call Func_241f
+	call GetPart
 	pop af
 	ld e, a
 	ld hl, sp+$a
@@ -4926,7 +4931,7 @@ Func_569d9:: ; 569d9 (15:69d9)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld hl, sp+$5
-	call Func_241f
+	call GetPart
 	ld hl, sp+$15
 	ld a, [hl]
 	ld hl, sp+$3
@@ -5030,7 +5035,7 @@ Func_56abf:: ; 56abf (15:6abf)
 	read_hl_from_sp_plus $1c
 	ld e, l
 	ld hl, sp+$2
-	call Func_241f
+	call GetPart
 	pop af
 	call GetSRAMBank
 	ld hl, sp+$10

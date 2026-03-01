@@ -13,7 +13,7 @@ def load_charmap(infile: pathlib.Path):
     defchar_pattern = re.compile(DEFCHAR)
 
     data = infile.open("r").read().splitlines()
-    charmap = {}
+    charmap: dict[int, list[str]] = {}
     cur_char = 0
     for line in data:
         if "char_def" in line:
@@ -44,6 +44,10 @@ def load_charmap(infile: pathlib.Path):
     return charmap
 
 
+def decode_string(raw: bytes, charmap: dict[int, list[str]]) -> str:
+    return "".join(charmap[b][0] for b in raw if b != 0)
+
+
 my_file = pathlib.Path(__file__)
 repo_root = my_file.parent.parent
 bin_dir = repo_root / "data" / "base_stats"
@@ -52,16 +56,45 @@ charmap = load_charmap(repo_root / "charmap2.asm")
 base_stats_struct = struct.Struct("<")  # size=47
 json_data = {"base_stats": []}
 
-"""
+with (repo_root / "constants" / "robot_constants.asm").open() as robots_file:
+    robots = [m[1] for m in re.finditer(r"const (\w+)", robots_file.read())]
 
 """
-base_stats_struct = struct.Struct("<")
+struct BaseStats {
+    u8 filler_00[6];
+    u8 hp;
+    u8 ep;
+    u8 attack;
+    u8 defense;
+    u8 speed;
+    u8 filler_0B[2];
+    char name[6]; // 0x0D
+    u8 filler_13[28];
+};
+"""
+base_stats_struct = struct.Struct("<13B6s28B")
 
 for i in range(0, 170, 5):
     with (bin_dir / f"base_stats_{i // 5}.bin").open("rb") as binfile:
         bin_data = list(base_stats_struct.iter_unpack(binfile.read()))
     for j, stats in enumerate(bin_data, i):
-        pass
+        json_data["base_stats"].append(
+            {
+                "id": robots[j] if j < len(robots) else None,
+                "unknown_00": stats[:2],
+                "enhances_into": robots[stats[2] - 1] if stats[2] else None,
+                "unknown_03": stats[3:6],
+                "hp": stats[6],
+                "ep": stats[7],
+                "attack": stats[8],
+                "defense": stats[9],
+                "speed": stats[10],
+                "unknown_0B": stats[11],
+                "dex_number": stats[12],
+                "name": decode_string(stats[13], charmap),
+                "unknown_13": stats[14:],
+            }
+        )
 
-with json_src.open("w") as ofp:
-    json.dump(json_data, ofp, indent=4)
+with json_src.open("w", encoding="utf-8") as ofp:
+    json.dump(json_data, ofp, indent=4, ensure_ascii=False)

@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 0d", ROMX, BANK [$d]
+SECTION "Bank 0d", ROMX
 Emotes_34000:: ; 34000
 	dw $0, $0
 	emote_header Emotes_34000, GFX_340b0, $242

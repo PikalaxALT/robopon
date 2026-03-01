@@ -1,4 +1,4 @@
-SECTION "Bank 12 Tree", ROMX [$78ac], BANK [$12]
+SECTION "Bank 12 Tree", ROMX
 Func_4b8ac:: ; 4b8ac (12:78ac)
 	ldh a, [hROMBank]
 	push af

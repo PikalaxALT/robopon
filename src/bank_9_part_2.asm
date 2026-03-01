@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 9 part 2", ROMX [$45c8], BANK [$9]
+SECTION "Bank 9 part 2", ROMX
 INCLUDE "charmap.asm"
 Data_245c8: ; 245c8
 	db $00, $0a, $14, $1e, $28, $32, $3c, $46
@@ -212,13 +212,13 @@ Func_24759: ; 24759 (9:4759)
 	push de
 	call GetHLAtSPPlus4
 	pop de
-	call CopyUntilNull
+	call strcpy
 	pop de
 	push hl
 	pop hl
 	push hl
 	ld de, Text_2426f
-	call CopyUntilNull
+	call strcpy
 	pop bc
 	ret
 
@@ -1014,7 +1014,7 @@ Func_24daf: ; 24daf (9:4daf)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$17
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $39
 	ld de, $2e
 	add hl, de
@@ -2049,7 +2049,7 @@ Func_254f4: ; 254f4 (9:54f4)
 	ld de, $12
 	add hl, de
 	pop de
-	call Func_241f
+	call GetPart
 	call Func_24036
 	ld e, $1
 	ld hl, sp+$1b
@@ -2098,7 +2098,7 @@ Func_25532: ; 25532 (9:5532)
 	ld de, $12
 	add hl, de
 	pop de
-	call Func_241f
+	call GetPart
 	call Func_24036
 	pop bc
 	read_hl_from_sp_plus $18
@@ -2163,13 +2163,13 @@ Func_255c4: ; 255c4 (9:55c4)
 	jp Func_2564a
 
 Func_25604: ; 25604 (9:5604)
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, [bc]
 	ld l, a
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	push hl
 	read_hl_from_sp_plus $1c
@@ -6009,7 +6009,7 @@ Func_27187: ; 27187 (9:7187)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$14
-	call Func_241f
+	call GetPart
 	pop bc
 	read_hl_from_sp_plus $27
 	ld a, l

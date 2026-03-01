@@ -1,5 +1,6 @@
 PYTHON := python3
 POKETOOLS := extras/pokemontools
+COMPARE ?= 0
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
@@ -7,6 +8,27 @@ ifeq ($(UNAME_S),Darwin)
 else
 	MD5 := md5sum -c
 endif
+
+SUN_ROM := robosun.gbc
+STAR_ROM := robostar.gbc
+ROMS := $(SUN_ROM) $(STAR_ROM)
+
+GAME_VERSION ?= SUN
+
+ifeq ($(GAME_VERSION),SUN)
+shortname := sun
+else
+ifeq ($(GAME_VERSION),STAR)
+shortname := star
+else
+$(error unsupported GAME_VERSION=$(GAME_VERSION))
+endif
+endif
+
+BUILDDIR := build/$(shortname)
+BUILD_SUBDIRS := src maps
+ROM := robo$(shortname).gbc
+dummy := $(foreach dir,$(BUILD_SUBDIRS),$(shell mkdir -p $(BUILDDIR)/$(dir)))
 
 RZ       := $(PYTHON) rz.py compress
 TM       := $(PYTHON) tm2bpp.py furl
@@ -16,6 +38,14 @@ EMOTE    := $(PYTHON) emote.py pack
 includes := $(PYTHON) scan_includes.py
 
 SRC_ASM := \
+	hram.asm \
+	wram.asm \
+	sram.asm \
+	vram.asm \
+	gfx.asm \
+	audio.asm \
+	text.asm \
+	home.asm \
 	src/bank_01.asm \
 	src/bank_02.asm \
 	src/bank_03.asm \
@@ -27,6 +57,7 @@ SRC_ASM := \
 	src/bank_8_part_2.asm \
 	src/bank_09.asm \
 	src/bank_9_part_2.asm \
+	maps/block_data.asm \
 	src/bank_0c.asm \
 	src/bank_0d.asm \
 	src/bank_13.asm \
@@ -41,33 +72,46 @@ SRC_ASM := \
 	src/bank_19_2.asm \
 	src/bank_1a.asm \
 	src/bank_1b.asm \
+	maps/bank_20.asm \
+	maps/bank_21.asm \
+	maps/bank_22.asm \
+	maps/bank_23.asm \
+	maps/bank_24.asm \
+	maps/bank_24_2.asm \
+	maps/bank_25.asm \
+	maps/bank_25_2.asm \
+	maps/bank_26.asm \
+	maps/bank_26_2.asm \
+	src/bank_26_3.asm \
+	maps/bank_27.asm \
+	maps/bank_28.asm \
+	maps/bank_29.asm \
+	maps/bank_29_2.asm \
+	maps/bank_2a.asm \
+	maps/bank_2b.asm \
+	maps/bank_2b_2.asm \
+	maps/bank_2c.asm \
+	maps/bank_2d.asm \
+	maps/bank_2d_2.asm \
+	maps/bank_2e.asm \
 	src/bank_2f.asm \
 	src/bank_30.asm \
 	src/bank_31.asm \
+	maps/bank_32.asm \
+	maps/bank_33.asm \
+	maps/bank_34.asm \
 	src/bank_35.asm \
+	maps/bank_36.asm \
+	maps/bank_38.asm \
 	src/bank_39.asm \
 	src/bank_3e_2.asm \
 	src/bank_3f.asm \
 	src/bank_3f_2.asm \
 	src/bank_3f_3.asm
 
-SRC_OBJS := $(SRC_ASM:%.asm=%.o)
+ALL_OBJS := $(SRC_ASM:%.asm=$(BUILDDIR)/%.o)
 
-objs := \
-	wram.o \
-	sram.o \
-	vram.o \
-	gfx.o \
-	audio.o \
-	text.o \
-	maps.o \
-	home.o \
-	$(SRC_OBJS)
-
-sun_objs := $(objs:.o=_sun.o)
-star_objs := $(objs:.o=_star.o)
-
-$(foreach obj, $(objs:.o=), \
+$(foreach obj, $(SRC_ASM:.asm=), \
 	$(eval $(obj)_dep := $(shell $(includes) $(obj).asm)) \
 )
 
@@ -78,25 +122,24 @@ $(foreach obj, $(objs:.o=), \
 .PRECIOUS: %.2bpp %.png %.tm2bpp %.emote
 .PHONY: all clean tidy roms sun star compare
 
-sun  := robosun.gbc
-star := robostar.gbc
+all: $(ROM)
+ifeq ($(COMPARE),1)
+	$(MD5) $(shortname).md5
+endif
 
-all: roms
+sun:  ; @$(MAKE) GAME_VERSION=SUN
+star: ; @$(MAKE) GAME_VERSION=STAR
 
-compare: roms
-	$(MD5) roms.md5
-
-roms: $(sun) $(star)
-
-sun: $(sun)
-
-star: $(star)
+compare:
+	@$(MAKE) COMPARE=1 GAME_VERSION=SUN
+	@$(MAKE) COMPARE=1 GAME_VERSION=STAR
 
 tidy:
-	rm -f $(sun) $(star) $(sun_objs) $(star_objs) $(roms:.gbc=.sym) $(roms:.gbc=.map)
+	$(RM) -r $(ROMS) $(BUILDDIR) $(ROMS:.gbc=.sym) $(ROMS:.gbc=.map)
 
 clean: tidy
-	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' -o -iname '*.ctf' \) -exec rm {} +
+	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' -o -iname '*.ctf' -o -iname '*.tm2bpp' -o -iname '*.emote' \) -exec $(RM) {} +
+	$(RM) -r build
 
 %.ctf: %.asm
 	$(PYTHON) textcomp.py $<
@@ -116,24 +159,18 @@ data/base_stats/%.bin: ;
 %.tm2bpp: %.2bpp
 	$(TM) $< $@
 
-%.emote: %_*.2bpp
+%.emote: %.2bpp
 	$(EMOTE) $<
 
 %.rz: %
 	$(RZ) $< $@
 
-$(sun_objs): %_sun.o: %.asm $$(%_dep)
-	rgbasm -D SUN -o $@ $*.asm
+$(ALL_OBJS): $(BUILDDIR)/%.o: %.asm $$(%_dep)
+	rgbasm -D $(GAME_VERSION) -o $@ $<
 
-$(star_objs): %_star.o: %.asm $$(%_dep)
-	rgbasm -D STAR -o $@ $*.asm
+RGBFIX_OPTS = -csv -k 18 -l 0x33 -m 0xfe -p 0xff -r 0x03
 
-opts = -csv -k 18 -l 0x33 -m 0xfe -p 0x00 -r 0x03
-
-$(sun): $(sun_objs)
-	rgblink -w -n $*.sym -o $@ $^
-	rgbfix $(opts) -t "ROBOPON SUN" $@
-
-$(star): $(star_objs)
-	rgblink -w -n $*.sym -o $@ $^
-	rgbfix $(opts) -t "ROBOPON STAR" $@
+$(ROM): $(ALL_OBJS) | layout.link
+	rgblink -w -l layout.link -n $*.sym -m $*.map -o $@ $^
+	./trim.py $@
+	rgbfix $(RGBFIX_OPTS) -t "ROBOPON $(GAME_VERSION)" $@

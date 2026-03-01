@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 01", ROMX, BANK [$1]
+SECTION "Bank 01", ROMX
 Func_4000:: ; 4000
 	ld a, $0
 	call Func_6169
@@ -3285,7 +3285,7 @@ Func_77c7: ; 77c7 (1:77c7)
 	jp nz, Func_782a
 	ld de, Data_7784
 	ld hl, wc327
-	call CopyUntilNull
+	call strcpy
 	call Func_1c78
 	or a
 	jp z, Func_77ec
@@ -3364,7 +3364,7 @@ Func_7850: ; 7850 (1:7850)
 Func_7865: ; 7865 (1:7865)
 	ld de, Data_7784
 	ld hl, wc327
-	call CopyUntilNull
+	call strcpy
 	call Func_1c78
 	or a
 	jp z, Func_787d
@@ -4034,7 +4034,7 @@ Func_7db0:: ; 7db0 (1:7db0)
 	add sp, $42
 	ret
 
-Func_7dfc:: ; 7dfc (1:7dfc)
+GetRobotFromWarehouse:: ; 7dfc (1:7dfc)
 	add sp, -$24
 	push de
 	push af
@@ -4114,7 +4114,7 @@ Func_7e70:: ; 7e70
 	push de
 	ld hl, sp+$2
 	reg16swap de, hl
-	call Func_7dfc
+	call GetRobotFromWarehouse
 	pop de
 	ld a, e
 	ld hl, sp+$0

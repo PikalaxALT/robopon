@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 1b", ROMX, BANK [$1b]
+SECTION "Bank 1b", ROMX
 Func_6c000:
 	ret
 
@@ -277,7 +277,7 @@ Func_6c11d:: ; 6c11d (1b:411d)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_200fd
-	call FarCopyUntilNull
+	call strcpy_far
 	reg16swap de, hl
 	ld hl, $115
 	add hl, sp
@@ -305,7 +305,7 @@ Func_6c11d:: ; 6c11d (1b:411d)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20116
-	call FarCopyUntilNull
+	call strcpy_far
 	ld hl, $f9
 	add hl, sp
 	ld [hl], $0
@@ -338,7 +338,7 @@ Func_6c273: ; 6c273 (1b:4273)
 	dec a
 	ld e, a
 	ld hl, sp+$4
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	pop bc
 	ld hl, sp+$4
 	ld a, [hl]
@@ -393,7 +393,7 @@ Func_6c2a9: ; 6c2a9 (1b:42a9)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_2015d
-	call FarCopyUntilNull
+	call strcpy_far
 Func_6c2d8: ; 6c2d8 (1b:42d8)
 	ld hl, $fa
 	add hl, sp
@@ -554,7 +554,7 @@ Func_6c3fe: ; 6c3fe (1b:43fe)
 	dec a
 	ld e, a
 	ld hl, sp+$4
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	call GetHLAtSPPlus9
 	reg16swap de, hl
 	pop bc
@@ -618,10 +618,10 @@ Func_6c49d: ; 6c49d (1b:449d)
 	ld h, [hl]
 	ld l, a
 	pop de
-	call CopyUntilNull
+	call strcpy
 	ld de, Func_6c102
 	ld c, $8
-	call FarCopyUntilNull
+	call strcpy_far
 	ld c, $8
 	ld hl, $fa
 	add hl, sp
@@ -643,7 +643,7 @@ Func_6c49d: ; 6c49d (1b:449d)
 	ld h, [hl]
 	ld l, a
 	ld de, Func_6c11d
-	call FarCopyUntilNull
+	call strcpy_far
 	ld hl, $fa
 	add hl, sp
 	ld e, [hl]
@@ -1348,10 +1348,14 @@ Func_6cac6: ; 6cac6 (1b:4ac6)
 	ret
 
 Data_6cac9:
-	db $02, $00, $00, $01, $02, $01, $00, $0a, $03, $00, $00, $01, $04, $00, $01, $06, $ff, $28, $06, $04, $12, $06, $f8, $04, $1c, $06, $00, $02, $02, $00, $00, $01, $05, $01, $00
+	db $02, $00, $00, $01, $02, $01, $00, $0a, $03, $00, $00, $01, $04, $00, $01, $06
+	db $ff, $28, $06, $04, $12, $06, $f8, $04, $1c, $06, $00, $02, $02, $00, $00, $01
+	db $05, $01, $00
 
 Data_6caec:
-	db $02, $00, $00, $01, $02, $01, $00, $0a, $03, $01, $00, $0a, $04, $01, $01, $06, $ff, $28, $06, $04, $12, $06, $f8, $04, $1c, $06, $00, $02, $02, $01, $00, $0a, $05, $01, $00
+	db $02, $00, $00, $01, $02, $01, $00, $0a, $03, $01, $00, $0a, $04, $01, $01, $06
+	db $ff, $28, $06, $04, $12, $06, $f8, $04, $1c, $06, $00, $02, $02, $01, $00, $0a
+	db $05, $01, $00
 
 Func_6cb0f: ; 6cb0f (1b:4b0f)
 	push bc
@@ -1718,12 +1722,12 @@ Func_6cd14: ; 6cd14 (1b:4d14)
 	add hl, sp
 	ld e, [hl]
 	ld hl, sp+$4c
-	call Func_241f
+	call GetPart
 	ld hl, $93
 	add hl, sp
 	ld e, [hl]
 	ld hl, sp+$64
-	call Func_241f
+	call GetPart
 	pop af
 	call GetSRAMBank
 	ld hl, sp+$5a
@@ -6770,7 +6774,7 @@ Func_6f1eb:: ; 6f1eb (1b:71eb)
 	ld c, e
 	ld b, d
 	push bc
-	set_farcall_addrs_hli Func_7dfc
+	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop bc
 	pop af
 	push af
@@ -6809,7 +6813,7 @@ Func_6f244: ; 6f244 (1b:7244)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$38
 	ld e, [hl]
@@ -6937,7 +6941,7 @@ Func_6f32f: ; 6f32f (1b:732f)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$38
 	ld e, [hl]
@@ -7390,7 +7394,7 @@ Func_6f962:: ; 6f962 (1b:7962)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$36
 	ld e, [hl]
@@ -7461,7 +7465,7 @@ Func_6f962:: ; 6f962 (1b:7962)
 	dec a
 	ld e, a
 	ld hl, sp+$0
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	set_farcall_addrs_hli Func_dbe2
 	ld hl, sp+$36
 	ld e, [hl]

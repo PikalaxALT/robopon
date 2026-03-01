@@ -1,6 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
-SECTION "Bank 17", ROMX, BANK [$17]
+SECTION "Bank 17", ROMX
 Func_5c000:
 	ret
 
@@ -11,7 +11,8 @@ Data_5c009:
 	db $50, $5a, $64, $7d, $96, $af, $05, $0f
 
 Data_5c011:
-	db $00, $00, $00, $00, $00, $00, $00, $00, $06, $03, $06, $03, $04, $06, $04, $06, $08, $03, $06, $09, $06, $09
+	db $00, $00, $00, $00, $00, $00, $00, $00, $06, $03, $06, $03, $04, $06, $04, $06
+	db $08, $03, $06, $09, $06, $09
 
 Func_5c027:
 	push hl
@@ -198,7 +199,7 @@ Func_5c40a: ; 5c40a (17:440a)
 	ld hl, sp+$6
 	add hl, de
 	pop de
-	call Func_241f
+	call GetPart
 	ld hl, sp+$36
 	ld a, [hl]
 	inc a
@@ -593,7 +594,7 @@ Func_5c6c3: ; 5c6c3 (17:46c3)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$0
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $15
 	ld a, l
 	and $80
@@ -640,7 +641,7 @@ Func_5c712: ; 5c712 (17:4712)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$0
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $15
 	ld a, l
 	and $80
@@ -799,7 +800,7 @@ Func_5c82f: ; 5c82f (17:482f)
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$24
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $39
 	write_hl_to_sp_plus $4c
 	push hl
@@ -898,13 +899,13 @@ Func_5c8df: ; 5c8df (17:48df)
 	jp Func_5c991
 
 Func_5c8e2: ; 5c8e2 (17:48e2)
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, [bc]
 	ld l, a
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$2
@@ -1824,7 +1825,7 @@ Func_5cfb7: ; 5cfb7 (17:4fb7)
 	read_hl_from_sp_plus $24
 	reg16swap de, hl
 	ld hl, sp+$0
-	call FarCopyUntilNull
+	call strcpy_far
 	read_hl_from_sp_plus $20
 	ld de, $16
 	add hl, de
@@ -1870,7 +1871,7 @@ Func_5d00a: ; 5d00a (17:500a)
 	ld d, [hl]
 	reg16swap de, hl
 	pop de
-	call FarCopyUntilNull
+	call strcpy_far
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $20
@@ -2151,7 +2152,7 @@ Func_5d221: ; 5d221 (17:5221)
 	add hl, bc
 	ld e, [hl]
 	ld hl, sp+$24
-	call Func_241f
+	call GetPart
 	read_hl_from_sp_plus $39
 	read_hl_from_sp_plus $3e
 	ld de, $5f
@@ -2227,13 +2228,13 @@ Func_5d2ae: ; 5d2ae (17:52ae)
 	jp Func_5d348
 
 Func_5d2b1: ; 5d2b1 (17:52b1)
-	ld a, BANK(Data_64c90)
+	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	read_hl_from_sp_plus $40
 	ld l, [hl]
 	ld h, $0
 	mulhlby19
-	ld de, Data_64c90 - $13
+	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -2329,7 +2330,7 @@ Func_5d35f: ; 5d35f (17:535f)
 	ld e, a
 	dec e
 	ld hl, sp+$25
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$2a
 	ld e, [hl]
 	push de
@@ -2674,7 +2675,7 @@ Func_5d4a6:
 	dec a
 	ld e, a
 	ld hl, sp+$14
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$16
 	ld a, [hl]
 	or a
@@ -3755,7 +3756,8 @@ Func_5dd48: ; 5dd48 (17:5d48)
 	ret
 
 Data_5dd4f:
-	db $0b, $0d, $09, $05, $17, $1f, $59, $00, $00, $00, $17, $dd, $5b, $17, $21, $60, $17, $fc, $53, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+	db $0b, $0d, $09, $05, $17, $1f, $59, $00, $00, $00, $17, $dd, $5b, $17, $21, $60
+	db $17, $fc, $53, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
 Data_5dd6e:
 	db $00, $00, $00, $00, $ff, $ff, $02, $00, $02, $00, $ff, $ff, $00, $00, $00
@@ -4244,7 +4246,7 @@ Func_5e135: ; 5e135 (17:6135)
 	dec a
 	ld e, a
 	ld hl, sp+$2
-	call GetRobotOrTrainerBaseStats
+	call GetRobotBaseStats
 	ld hl, sp+$4
 	ld a, [hl]
 	or a

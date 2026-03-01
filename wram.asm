@@ -581,7 +581,7 @@ wVideoTransferQueue:: ; c239
 	short wc3b0 ; c3b0
 	short wSTDLibRNGState ; c3b2
 	char wSTDLibRNGCount ; c3b4
-	
+
 	char wc3b5 ; c3b5
 	char wc3b6 ; c3b6
 	short wc3b7 ; c3b7
@@ -680,21 +680,25 @@ wLCDInterrupt2:: ; c770
 	char wc782 ; c782
 	char wRandomEncounterCooldown ; c783
 	char wc784 ; c784
-	char wc785 ; c785
-	short wc786 ; c786
-	char wc788 ; c788
+
+	; for Func_9b262 (scall Func_80ce7)
+	char wc785 ; c785   bank
+	short wc786 ; c786  addr
+	char wc788 ; c788   count
 
 	char wc789 ; c789
 	char wc78a ; c78a
-	ds $1
+	char wc78b ; c78b
 	char wc78c ; c78c
 	char wc78d ; c78d
-	ds $2
+	ds $1
+	char wc78f ; c78f
 	char wc790 ; c790
 	char wc791 ; c791
-	ds $1
+	char wc792 ; c792
 	char wc793 ; c793
-	ds $2
+	char wc794 ; c794
+	char wc795 ; c795
 	char wc796 ; c796
 	char wc797 ; c797
 	char wSaveFileExists ; c798
@@ -708,7 +712,7 @@ wLCDInterrupt2:: ; c770
 	char wc7a0 ; c7a0
 	char wc7a1 ; c7a1
 	char wc7a2 ; c7a2
-	ds $1
+	char wc7a3 ; c7a3
 	char wc7a4 ; c7a4
 	char wc7a5 ; c7a5
 	ds $b
@@ -844,6 +848,8 @@ NEXTU
 	char wFunc94a9_c88f ; c88f
 	char wFunc94a9_c890 ; c890
 	char wFunc94a9_c891 ; c891
+NEXTU
+	ds $14
 ENDU
 
 SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
@@ -917,7 +923,7 @@ wSaveScratchEnd:: ; ce0a
 
 SECTION "Allocatable Memory", WRAM0 [$ce10]
 	alloc_block wAllocatableBlock0 ; ce10
-	ds $900 - 5
+	ds $a00 - 5
 
 SECTION "Stack", WRAM0 [$d810]
 wStackBottom:: ds $7f0 ; d810

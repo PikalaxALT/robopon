@@ -2,7 +2,7 @@
 DEF const_value = -1
 	mapdef MAP_N_A, -1, -1
 
-	groupdef
+	groupdef ; Capri Town
 	mapdef MAP_00_00, 29, 33 ; 00
 	mapdef MAP_00_01,  8,  8 ; 01
 	mapdef MAP_00_02,  8,  8 ; 02

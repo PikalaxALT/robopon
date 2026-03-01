@@ -6,16 +6,19 @@ Data_81a7c:
 	db $29, $03, $ff, $ff, $2a, $03, $ff, $ff
 
 Data_81a84: ; 81a84
-	db $25, $0c, $04, $03, $01, $01, $02, $04, $00, $20, $00, $00, $00, $00, $00, $0c, $03, $03, $01, $01, $02, $04, $00, $20, $00, $00, $00, $00, $ff, $00, $00, $01, $01, $01, $00, $04, $00, $20, $5f, $48, $7c, $5a, $ff, $00, $01, $01, $01, $01, $00, $04, $00, $20, $5f, $48, $80, $5a
+	db $25, $0c, $04, $03, $01, $01, $02, $04, $00, $20, $00, $00, $00, $00, $00, $0c
+	db $03, $03, $01, $01, $02, $04, $00, $20, $00, $00, $00, $00, $ff, $00, $00, $01
+	db $01, $01, $00, $04, $00, $20, $5f, $48, $7c, $5a, $ff, $00, $01, $01, $01, $01
+	db $00, $04, $00, $20, $5f, $48, $80, $5a
 
 Data_81abc: ; 81abc
 	db $5e, $01, $02, $11, $4c
 
-Func_81ac1:
+Func_81ac1::
 	loadwarps $2, Data_81a66
 	ld e, $1
 	ld hl, Data_81abc
-	call Func_80ce7_20
+	scall Func_80ce7
 	ld a, [wc793]
 	or a
 	jp z, Func_81ae8
@@ -33,20 +36,20 @@ Func_81ae8: ; 81ae8 (20:5ae8)
 	ld a, $2
 	call PlayerFace_20
 	playmusic SONG_TOWN3
-	call FadeInMap_20
+	scall Func_8001c
 	call Func_81b45
 	setevent $b
 	jp Func_81b1d
 
 Func_81b15: ; 81b15 (20:5b15)
 	playmusic SONG_TOWN3
-	call FadeInMap_20
+	scall Func_8001c
 Func_81b1d: ; 81b1d (20:5b1d)
 	jp Func_81b28
 
 Func_81b20: ; 81b20 (20:5b20)
 	playmusic SONG_TOWN3
-	call FadeInMap_20
+	scall Func_8001c
 Func_81b28: ; 81b28 (20:5b28)
 	ret
 
@@ -79,26 +82,17 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, FACE_LEFT
 	call PlayerStep_20
 	script_sleep $1e
-	ld bc, Data_81b29
-	ld e, BANK(Data_81b29)
-	xor a
-	call Func_80688_20
+	move_person 0, Data_81b29, 1
 	call WaitNPCStep_20
 	writenpctext TreeBitstreamText_38fc9
 	sprite_face $1, $1
 	writenpctext TreeBitstreamText_38fe6
-	ld bc, Data_81b2d
-	ld e, BANK(Data_81b2d)
-	ld a, $1
-	call Func_80688_20
+	move_person $1, Data_81b2d, 1
 	call WaitNPCStep_20
 	ld e, $3
 	xor a
 	call SpriteFace_20
-	ld bc, Data_81b31
-	ld e, BANK(Data_81b31)
-	ld a, $1
-	call Func_80688_20
+	move_person $1, Data_81b31, 1
 	call WaitNPCStep_20
 	ld e, $2
 	xor a
@@ -117,15 +111,9 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_3902d
-	ld bc, Data_81b2d
-	ld e, BANK(Data_81b2d)
-	xor a
-	call Func_80688_20
+	move_person 0, Data_81b2d, 1
 	call WaitNPCStep_20
-	ld bc, Data_81b31
-	ld e, BANK(Data_81b31)
-	xor a
-	call Func_80688_20
+	move_person 0, Data_81b31, 1
 	call WaitNPCStep_20
 	ld e, $0
 	xor a
@@ -142,10 +130,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	xor a
 	call SetPersonVisibilityState_20
 	playsfx $34
-	ld bc, Data_81b2d
-	ld e, BANK(Data_81b2d)
-	xor a
-	call Func_80688_20
+	move_person 0, Data_81b2d, 1
 	call WaitNPCStep_20
 	ld e, $1
 	xor a
@@ -153,10 +138,7 @@ Func_81b45: ; 81b45 (20:5b45)
 	ld a, $3
 	call PlayerFace_20
 	writenpctext TreeBitstreamText_39084
-	ld bc, Data_81b31
-	ld e, BANK(Data_81b31)
-	xor a
-	call Func_80688_20
+	move_person 0, Data_81b31, 1
 	ld e, $0
 	xor a
 	call SetPersonVisibilityState_20

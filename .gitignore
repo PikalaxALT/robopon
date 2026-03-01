@@ -25,6 +25,7 @@
 *.sav
 *.rtc
 *.sn*
+*.ss*
 
 # rgbds extras
 *.map
@@ -41,3 +42,5 @@ pokecrystal.txt
 .*.swp
 # swap files for gedit
 *~
+tools/unidasm
+.vscode
