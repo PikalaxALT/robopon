@@ -1671,7 +1671,7 @@ Func_ca481:
 	ret  ; CA4D4 (32:64d4) -> C9
 
 Data_ca4d5:
-	db $28, $b8, $de, $dd, $bc, $de, $dd, $29, $00
+	dstr "(くﾞんしﾞん)"
 
 Data_ca4de:
 	db $00, $00, $00, $01, $00, $c5, $ba, $00, $00, $07, $01, $07, $04, $1c, $01, $13
@@ -1725,7 +1725,7 @@ Func_ca507:
 	ret  ; CA568 (32:6568) -> C9
 
 Data_ca569:
-	db $28, $b8, $de, $dd, $bc, $de, $dd, $29, $00
+	dstr "(くﾞんしﾞん)"
 
 Data_ca572:
 	db $00, $00, $00, $01, $00, $c5, $ba, $00, $00, $4a, $01, $4a, $04, $1c, $0e, $08
@@ -1779,7 +1779,7 @@ Func_ca59b:
 	ret  ; CA5FC (32:65fc) -> C9
 
 Data_ca5fd:
-	db $28, $b8, $de, $dd, $bc, $de, $dd, $29, $00
+	dstr "(くﾞんしﾞん)"
 
 Data_ca606:
 	db $00, $00, $00, $01, $00, $c5, $ba, $00, $00, $33, $01, $33, $04, $1c, $17, $05
@@ -1887,185 +1887,847 @@ Func_ca6c3:
 	ret  ; CA724 (32:6724) -> C9
 
 Data_ca725:
-	db $28, $b8, $de, $dd, $bc, $de, $dd, $29, $00
+	dstr "(くﾞんしﾞん)"
 
 Data_ca72e:
+	warpdef $06, $03, $01, $01, MAP_21_13, $06, $03, $07, $03, $2e
+
+Data_ca739:
 IF DEF(SUN)
-	db $06, $03, $01, $01, $15, $0d, $06, $03, $07, $03, $2e
-	db $00, $03, $14, $11, $2c, $16, $18, $78, $06, $11, $00, $04, $0a, $00, $00, $03
-	db $14, $11, $7e, $17, $19, $3b, $03, $00, $00, $0e, $05, $00, $00, $03, $14, $11
-	db $2f, $18, $1a, $3b, $04, $0e, $00, $04, $05, $00, $00, $03, $14, $11, $30, $19
-	db $1b, $3b, $17, $1b, $1c, $04, $05, $00, $00, $03, $14, $11, $2e, $1a, $1c, $0f
-	db $05, $09, $1b, $04, $05, $00, $00, $03, $14, $11, $04, $16, $18, $5c, $01, $18
-	db $00, $04, $0a, $00, $00, $03, $14, $11, $08, $17, $19, $5c, $01, $13, $00, $0e
-	db $08, $00, $00, $03, $14, $11, $27, $18, $1a, $5c, $01, $00, $00, $04, $07, $00
-	db $00, $03, $14, $11, $02, $19, $1b, $5c, $17, $17, $17, $04, $06, $00, $00, $03
-	db $14, $11, $8f, $1a, $1c, $5c, $0f, $0d, $14, $0f, $03, $00, $00, $03, $14, $11
-	db $7f, $17, $19, $71, $28, $00, $00, $0e, $0a, $00, $00, $03, $14, $11, $20, $18
-	db $1a, $71, $17, $00, $00, $04, $08, $00, $00, $03, $14, $11, $21, $19, $1b, $71
-	db $17, $00, $00, $04, $07, $00, $00, $03, $14, $11, $1f, $19, $1b, $71, $17, $00
-	db $00, $04, $06, $00, $00, $03, $14, $11, $22, $1c, $1e, $71, $0c, $00, $00, $04
-	db $02, $00, $00, $03, $14, $11, $71, $18, $1a, $78, $07, $12, $00, $0e, $0a, $00
-	db $00, $03, $14, $11, $88, $18, $1a, $78, $04, $04, $00, $04, $09, $00, $00, $03
-	db $14, $11, $73, $19, $1b, $0f, $06, $09, $0b, $0f, $08, $00, $00, $03, $14, $11
-	db $91, $19, $1b, $3b, $04, $17, $00, $04, $07, $00, $00, $03, $14, $11, $80, $1b
-	db $1d, $78, $1f, $1e, $07, $04, $06, $00, $00, $03, $14, $11, $11, $19, $1b, $03
-	db $1f, $1e, $18, $0e, $0a, $00, $00, $03, $14, $11, $4c, $19, $1b, $46, $01, $01
-	db $01, $04, $09, $00, $00, $03, $14, $11, $12, $1a, $1c, $03, $1f, $07, $16, $0f
-	db $08, $00, $00, $03, $14, $11, $62, $1b, $1d, $03, $14, $1e, $1e, $04, $06, $00
-	db $00, $03, $14, $11, $57, $1d, $1f, $46, $1f, $17, $11, $0e, $04, $00, $09, $0c
-	db $0a, $0b, $01, $01, $02, $04, $00, $32, $1f, $6a, $00, $00, $09, $0c, $0a, $0b
-	db $01, $01, $02, $04, $00, $32, $3c, $6b, $00, $00, $09, $0c, $0a, $0b, $01, $01
-	db $02, $04, $00, $32, $75, $6c, $00, $00, $09, $0c, $0a, $0b, $01, $01, $02, $04
-	db $00, $32, $ae, $6d, $00, $00, $09, $0c, $0a, $0b, $01, $01, $02, $04, $00, $32
-	db $e7, $6e, $00, $00
+	wildbot $00, $03, $14, $11, $2c, $16, $18, $78, $06, $11, $00, $04, $0a, $00
+	wildbot $00, $03, $14, $11, $7e, $17, $19, $3b, $03, $00, $00, $0e, $05, $00
+	wildbot $00, $03, $14, $11, $2f, $18, $1a, $3b, $04, $0e, $00, $04, $05, $00
+	wildbot $00, $03, $14, $11, $30, $19, $1b, $3b, $17, $1b, $1c, $04, $05, $00
+	wildbot $00, $03, $14, $11, $2e, $1a, $1c, $0f, $05, $09, $1b, $04, $05, $00
 ELIF DEF(STAR)
-	db $06, $03, $01, $01, $15, $0d, $06, $03, $07, $03, $2e
-	db $00, $03, $14, $11, $2c, $16, $18, $78, $06, $11, $00, $04, $0a, $00, $00, $03
-	db $14, $11, $15, $17, $19, $0f, $14, $0f, $17, $04, $05, $00, $00, $03, $14, $11
-	db $5d, $18, $1a, $0d, $09, $0b, $00, $04, $05, $00, $00, $03, $14, $11, $6d, $19
-	db $1b, $03, $09, $0e, $00, $04, $05, $00, $00, $03, $14, $11, $5b, $1a, $1c, $3b
-	db $18, $18, $1e, $04, $05, $00, $00, $03, $14, $11, $02, $16, $18, $5c, $17, $17
-	db $17, $04, $0a, $00, $00, $03, $14, $11, $08, $17, $19, $5c, $01, $13, $00, $0e
-	db $08, $00, $00, $03, $14, $11, $27, $18, $1a, $5c, $01, $00, $00, $04, $07, $00
-	db $00, $03, $14, $11, $04, $19, $1b, $5c, $01, $18, $00, $04, $06, $00, $00, $03
-	db $14, $11, $8f, $1a, $1c, $5c, $0f, $0d, $14, $0f, $03, $00, $00, $03, $14, $11
-	db $7f, $17, $19, $71, $28, $00, $00, $0e, $0a, $00, $00, $03, $14, $11, $20, $18
-	db $1a, $71, $17, $00, $00, $04, $08, $00, $00, $03, $14, $11, $21, $19, $1b, $71
-	db $17, $00, $00, $04, $07, $00, $00, $03, $14, $11, $1f, $19, $1b, $71, $17, $00
-	db $00, $04, $06, $00, $00, $03, $14, $11, $22, $1c, $1e, $71, $0c, $00, $00, $04
-	db $02, $00, $00, $03, $14, $11, $80, $18, $1a, $78, $1f, $1e, $07, $04, $0a, $00
-	db $00, $03, $14, $11, $85, $18, $1a, $7b, $14, $0d, $1f, $0e, $09, $00, $00, $03
-	db $14, $11, $73, $19, $1b, $0f, $06, $09, $0b, $0f, $08, $00, $00, $03, $14, $11
-	db $93, $19, $1b, $2e, $14, $14, $0d, $0e, $07, $00, $00, $03, $14, $11, $71, $1b
-	db $1d, $78, $07, $12, $00, $0f, $06, $00, $00, $03, $14, $11, $11, $19, $1b, $03
-	db $1f, $1e, $18, $0e, $0a, $00, $00, $03, $14, $11, $4d, $19, $1b, $30, $2a, $12
-	db $00, $0f, $09, $00, $00, $03, $14, $11, $12, $1a, $1c, $03, $1f, $07, $16, $0e
-	db $08, $00, $00, $03, $14, $11, $62, $1b, $1d, $03, $14, $1e, $1e, $04, $06, $00
-	db $00, $03, $14, $11, $6c, $1d, $1f, $03, $17, $17, $0a, $04, $04, $00, $09, $0c
-	db $0a, $0b, $01, $01, $02, $04, $00, $32, $1f, $6a, $00, $00, $09, $0c, $0a, $0b
-	db $01, $01, $02, $04, $00, $32, $3c, $6b, $00, $00, $09, $0c, $0a, $0b, $01, $01
-	db $02, $04, $00, $32, $75, $6c, $00, $00, $09, $0c, $0a, $0b, $01, $01, $02, $04
-	db $00, $32, $ae, $6d, $00, $00, $09, $0c, $0a, $0b, $01, $01, $02, $04, $00, $32
-	db $e7, $6e, $00, $00
+	wildbot $00, $03, $14, $11, $2c, $16, $18, $78, $06, $11, $00, $04, $0a, $00
+	wildbot $00, $03, $14, $11, $15, $17, $19, $0f, $14, $0f, $17, $04, $05, $00
+	wildbot $00, $03, $14, $11, $5d, $18, $1a, $0d, $09, $0b, $00, $04, $05, $00
+	wildbot $00, $03, $14, $11, $6d, $19, $1b, $03, $09, $0e, $00, $04, $05, $00
+	wildbot $00, $03, $14, $11, $5b, $1a, $1c, $3b, $18, $18, $1e, $04, $05, $00
 ENDC
 
-Func_ca8dd:: ; ca8dd
+Data_ca77f:
 IF DEF(SUN)
-	db $1e, $01, $21, $2e, $67, $cd, $3a, $40, $fa, $8b, $c7, $fe, $04, $ca, $c0, $69
-	db $fe, $03, $ca, $90, $69, $fe, $02, $ca, $60, $69, $fe, $01, $ca, $30, $69, $b7
-	db $c2, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $39, $67, $cd, $24, $4d
-	db $21, $95, $00, $cd, $2e, $46, $b7, $c2, $1f, $69, $1e, $01, $21, $97, $68, $cd
-	db $fb, $40, $3e, $09, $cd, $e6, $4e, $cd, $1c, $40, $21, $ea, $02, $cd, $72, $4f
-	db $c3, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $7f, $67, $cd, $24, $4d
-	db $21, $9a, $00, $cd, $2e, $46, $b7, $c2, $4f, $69, $1e, $01, $21, $a5, $68, $cd
-	db $fb, $40, $3e, $0e, $cd, $e6, $4e, $cd, $1c, $40, $21, $f9, $02, $cd, $72, $4f
-	db $c3, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $c5, $67, $cd, $24, $4d
-	db $21, $9f, $00, $cd, $2e, $46, $b7, $c2, $7f, $69, $1e, $01, $21, $b3, $68, $cd
-	db $fb, $40, $3e, $0d, $cd, $e6, $4e, $cd, $1c, $40, $21, $f4, $02, $cd, $72, $4f
-	db $c3, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $0b, $68, $cd, $24, $4d
-	db $21, $a4, $00, $cd, $2e, $46, $b7, $c2, $af, $69, $1e, $01, $21, $c1, $68, $cd
-	db $fb, $40, $3e, $0f, $cd, $e6, $4e, $cd, $1c, $40, $21, $ef, $02, $cd, $72, $4f
-	db $c3, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $51, $68, $cd, $24, $4d
-	db $21, $a9, $00, $cd, $2e, $46, $b7, $c2, $df, $69, $1e, $01, $21, $cf, $68, $cd
-	db $fb, $40, $3e, $10, $cd, $e6, $4e, $cd, $1c, $40, $21, $fe, $02, $cd, $72, $4f
-	db $c9, $0a, $05, $ff, $ff, $0b, $05, $ff, $ff, $00, $00, $00, $01, $00, $c5, $ca
-	db $00, $00, $4f, $01, $4f, $05, $1d, $14, $14, $00, $05, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $0c, $7b, $b7, $c2, $02, $6b, $21, $95, $00, $cd, $2e, $46, $b7, $c2, $02
-	db $6b, $af, $cd, $4b, $44, $21, $c9, $00, $cd, $98, $44, $11, $03, $6b, $21, $f6
-	db $69, $cd, $d3, $4d, $b7, $c2, $48, $6a, $c3, $02, $6b, $21, $ca, $00, $cd, $98
-	db $44, $1e, $01, $21, $95, $00, $cd, $1b, $46, $1e, $00, $21, $42, $00, $cd, $1b
-	db $46, $0e, $01, $1e, $01, $3e, $1e, $cd, $4d, $4d, $fe, $ff, $c2, $75, $6a, $0e
-	db $03, $1e, $01, $3e, $1e, $cd, $4d, $4d, $21, $95, $00, $cd, $2e, $46, $fe, $01
-	db $c2, $ca, $6a, $21, $9a, $00, $cd, $2e, $46, $fe, $01, $c2, $ca, $6a, $21, $9f
-	db $00, $cd, $2e, $46, $fe, $01, $c2, $ca, $6a, $21, $a4, $00, $cd, $2e, $46, $fe
-	db $01, $c2, $ca, $6a, $21, $a9, $00, $cd, $2e, $46, $fe, $01, $c2, $ca, $6a, $0e
-	db $00, $1e, $01, $3e, $21, $cd, $4d, $4d, $21, $6f, $04, $cd, $98, $44, $3e, $2a
-	db $cd, $fe, $4e, $21, $70, $04, $cd, $98, $44, $af, $ea, $8f, $c7, $fa, $38, $c8
-	db $fe, $02, $c2, $de, $6a, $01, $f2, $69, $1e, $32, $af, $cd, $88, $46, $c3, $e7
-	db $6a, $01, $ee, $69, $1e, $32, $af, $cd, $88, $46, $3e, $2e, $cd, $fe, $4e, $cd
-	db $0c, $42, $1e, $00, $af, $cd, $3d, $41, $2e, $1b, $e5, $0e, $17, $1e, $00, $3e
-	db $15, $cd, $ff, $4d, $c1, $c9, $28, $b8, $de, $dd, $bf, $b3, $29, $00, $0a, $05
-	db $ff, $ff, $0b, $05, $ff, $ff, $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $03
-	db $01, $03, $05, $1e, $01, $18, $00, $71, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c, $7b
-	db $b7, $c2, $3b, $6c, $21, $9a, $00, $cd, $2e, $46, $b7, $c2, $3b, $6c, $af, $cd
-	db $4b, $44, $21, $cb, $00, $cd, $98, $44, $21, $5e, $01, $cd, $98, $44, $11, $3c
-	db $6c, $21, $13, $6b, $cd, $f4, $43, $b7, $c2, $73, $6b, $fa, $c4, $c7, $fe, $01
-	db $c2, $5b, $6b, $c3, $3b, $6c, $21, $cc, $00, $cd, $98, $44, $1e, $01, $21, $9a
-	db $00, $cd, $1b, $46, $1e, $00, $21, $42, $00, $cd, $1b, $46, $0e, $01, $1e, $01
-	db $3e, $1c, $cd, $4d, $4d, $fe, $ff, $c2, $a0, $6b, $0e, $03, $1e, $01, $3e, $1c
-	db $cd, $4d, $4d, $21, $95, $00, $cd, $2e, $46, $fe, $01, $c2, $f5, $6b, $21, $9a
-	db $00, $cd, $2e, $46, $fe, $01, $c2, $f5, $6b, $21, $9f, $00, $cd, $2e, $46, $fe
-	db $01, $c2, $f5, $6b, $21, $a4, $00, $cd, $2e, $46, $fe, $01, $c2, $f5, $6b, $21
-	db $a9, $00, $cd, $2e, $46, $fe, $01, $c2, $f5, $6b, $0e, $00, $1e, $01, $3e, $21
-	db $cd, $4d, $4d, $21, $6f, $04, $cd, $98, $44, $3e, $2a, $cd, $fe, $4e, $21, $70
-	db $04, $cd, $98, $44, $af, $ea, $8f, $c7, $fa, $38, $c8, $fe, $02, $ca, $17, $6c
-	db $fe, $03, $ca, $0b, $6c, $fe, $01, $ca, $0b, $6c, $b7, $c2, $20, $6c, $01, $0b
-	db $6b, $1e, $32, $af, $cd, $88, $46, $c3, $20, $6c, $01, $0f, $6b, $1e, $32, $af
-	db $cd, $88, $46, $3e, $2e, $cd, $fe, $4e, $cd, $0c, $42, $1e, $00, $af, $cd, $3d
-	db $41, $2e, $1b, $e5, $0e, $0b, $1e, $00, $3e, $15, $cd, $ff, $4d, $c1, $c9, $28
-	db $b8, $de, $dd, $bf, $b3, $29, $00, $0a, $05, $ff, $ff, $0b, $05, $ff, $ff, $00
-	db $00, $00, $01, $00, $c5, $ca, $00, $00, $1f, $01, $1f, $05, $1d, $17, $17, $00
-	db $71, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $0c, $7b, $b7, $c2, $74, $6d, $21, $9f, $00
-	db $cd, $2e, $46, $b7, $c2, $74, $6d, $af, $cd, $4b, $44, $21, $cd, $00, $cd, $98
-	db $44, $21, $7a, $01, $cd, $98, $44, $11, $75, $6d, $21, $4c, $6c, $cd, $ef, $42
-	db $b7, $c2, $ac, $6c, $fa, $c4, $c7, $fe, $01, $c2, $94, $6c, $c3, $74, $6d, $21
-	db $ce, $00, $cd, $98, $44, $1e, $01, $21, $9f, $00, $cd, $1b, $46, $1e, $00, $21
-	db $42, $00, $cd, $1b, $46, $0e, $01, $1e, $01, $3e, $1d, $cd, $4d, $4d, $fe, $ff
-	db $c2, $d9, $6c, $0e, $03, $1e, $01, $3e, $1d, $cd, $4d, $4d, $21, $95, $00, $cd
-	db $2e, $46, $fe, $01, $c2, $2e, $6d, $21, $9a, $00, $cd, $2e, $46, $fe, $01, $c2
-	db $2e, $6d, $21, $9f, $00, $cd, $2e, $46, $fe, $01, $c2, $2e, $6d, $21, $a4, $00
-	db $cd, $2e, $46, $fe, $01, $c2, $2e, $6d, $21, $a9, $00, $cd, $2e, $46, $fe, $01
-	db $c2, $2e, $6d, $0e, $00, $1e, $01, $3e, $21, $cd, $4d, $4d, $21, $6f, $04, $cd
-	db $98, $44, $3e, $2a, $cd, $fe, $4e, $21, $70, $04, $cd, $98, $44, $af, $ea, $8f
-	db $c7, $fa, $38, $c8, $fe, $02, $ca, $50, $6d, $fe, $03, $ca, $44, $6d, $fe, $01
-	db $ca, $44, $6d, $b7, $c2, $59, $6d, $01, $44, $6c, $1e, $32, $af, $cd, $88, $46
-	db $c3, $59, $6d, $01, $48, $6c, $1e, $32, $af, $cd, $88, $46, $3e, $2e, $cd, $fe
-	db $4e, $cd, $0c, $42, $1e, $00, $af, $cd, $3d, $41, $2e, $12, $e5, $0e, $1d, $1e
-	db $00, $3e, $15, $cd, $ff, $4d, $c1, $c9, $28, $b8, $de, $dd, $bf, $b3, $29, $00
-	db $0a, $05, $ff, $ff, $0b, $05, $ff, $ff, $00, $00, $00, $01, $00, $c5, $ca, $00
-	db $00, $8b, $01, $8b, $05, $1d, $26, $12, $00, $04, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $0c, $7b, $b7, $c2, $ad, $6e, $21, $a4, $00, $cd, $2e, $46, $b7, $c2, $ad, $6e
-	db $af, $cd, $4b, $44, $21, $cf, $00, $cd, $98, $44, $21, $6b, $01, $cd, $98, $44
-	db $11, $ae, $6e, $21, $85, $6d, $cd, $46, $43, $b7, $c2, $e5, $6d, $fa, $c4, $c7
-	db $fe, $01, $c2, $cd, $6d, $c3, $ad, $6e, $21, $d0, $00, $cd, $98, $44, $1e, $01
-	db $21, $a4, $00, $cd, $1b, $46, $1e, $00, $21, $42, $00, $cd, $1b, $46, $0e, $01
-	db $1e, $01, $3e, $20, $cd, $4d, $4d, $fe, $ff, $c2, $12, $6e, $0e, $03, $1e, $01
-	db $3e, $20, $cd, $4d, $4d, $21, $95, $00, $cd, $2e, $46, $fe, $01, $c2, $67, $6e
-	db $21, $9a, $00, $cd, $2e, $46, $fe, $01, $c2, $67, $6e, $21, $9f, $00, $cd, $2e
-	db $46, $fe, $01, $c2, $67, $6e, $21, $a4, $00, $cd, $2e, $46, $fe, $01, $c2, $67
-	db $6e, $21, $a9, $00, $cd, $2e, $46, $fe, $01, $c2, $67, $6e, $0e, $00, $1e, $01
-	db $3e, $21, $cd, $4d, $4d, $21, $6f, $04, $cd, $98, $44, $3e, $2a, $cd, $fe, $4e
-	db $21, $70, $04, $cd, $98, $44, $af, $ea, $8f, $c7, $fa, $38, $c8, $fe, $02, $ca
-	db $89, $6e, $fe, $03, $ca, $7d, $6e, $fe, $01, $ca, $7d, $6e, $b7, $c2, $92, $6e
-	db $01, $7d, $6d, $1e, $32, $af, $cd, $88, $46, $c3, $92, $6e, $01, $81, $6d, $1e
-	db $32, $af, $cd, $88, $46, $3e, $2e, $cd, $fe, $4e, $cd, $0c, $42, $1e, $00, $af
-	db $cd, $3d, $41, $2e, $12, $e5, $0e, $05, $1e, $00, $3e, $15, $cd, $ff, $4d, $c1
-	db $c9, $28, $b8, $de, $dd, $bf, $b3, $29, $00, $0a, $05, $ff, $ff, $0b, $05, $ff
-	db $ff, $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $61, $01, $61, $04, $1d, $14
-	db $1e, $1e, $06, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c, $7b, $b7, $c2, $e6, $6f, $21
-	db $a9, $00, $cd, $2e, $46, $b7, $c2, $e6, $6f, $af, $cd, $4b, $44, $21, $d1, $00
-	db $cd, $98, $44, $21, $5d, $01, $cd, $98, $44, $11, $e7, $6f, $21, $be, $6e, $cd
-	db $9d, $43, $b7, $c2, $1e, $6f, $fa, $c4, $c7, $fe, $01, $c2, $06, $6f, $c3, $e6
-	db $6f, $21, $d2, $00, $cd, $98, $44, $1e, $01, $21, $a9, $00, $cd, $1b, $46, $1e
-	db $00, $21, $42, $00, $cd, $1b, $46, $0e, $01, $1e, $01, $3e, $1f, $cd, $4d, $4d
-	db $fe, $ff, $c2, $4b, $6f, $0e, $03, $1e, $01, $3e, $1f, $cd, $4d, $4d, $21, $95
-	db $00, $cd, $2e, $46, $fe, $01, $c2, $a0, $6f, $21, $9a, $00, $cd, $2e, $46, $fe
-	db $01, $c2, $a0, $6f, $21, $9f, $00, $cd, $2e, $46, $fe, $01, $c2, $a0, $6f, $21
-	db $a4, $00, $cd, $2e, $46, $fe, $01, $c2, $a0, $6f, $21, $a9, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $a0, $6f, $21, $6f, $04, $cd, $98, $44, $3e, $2a, $cd, $fe, $4e
-	db $21, $70, $04, $cd, $98, $44, $0e, $00, $1e, $01, $3e, $21, $cd, $4d, $4d, $af
-	db $ea, $8f, $c7, $fa, $38, $c8, $fe, $02, $ca, $c2, $6f, $fe, $03, $ca, $b6, $6f
-	db $fe, $01, $ca, $b6, $6f, $b7, $c2, $cb, $6f, $01, $b6, $6e, $1e, $32, $af, $cd
-	db $88, $46, $c3, $cb, $6f, $01, $ba, $6e, $1e, $32, $af, $cd, $88, $46, $3e, $2e
-	db $cd, $fe, $4e, $cd, $0c, $42, $1e, $00, $af, $cd, $3d, $41, $2e, $0a, $e5, $0e
-	db $11, $1e, $00, $3e, $15, $cd, $ff, $4d, $c1, $c9, $28, $b8, $de, $dd, $bf, $b3
-	db $29, $00, $09, $13, $02, $01, $15, $00, $11, $13, $11, $14, $2e, $06, $0a, $01
+	wildbot $00, $03, $14, $11, $04, $16, $18, $5c, $01, $18, $00, $04, $0a, $00
+	wildbot $00, $03, $14, $11, $08, $17, $19, $5c, $01, $13, $00, $0e, $08, $00
+	wildbot $00, $03, $14, $11, $27, $18, $1a, $5c, $01, $00, $00, $04, $07, $00
+	wildbot $00, $03, $14, $11, $02, $19, $1b, $5c, $17, $17, $17, $04, $06, $00
+	wildbot $00, $03, $14, $11, $8f, $1a, $1c, $5c, $0f, $0d, $14, $0f, $03, $00
+ELIF DEF(STAR)
+	wildbot $00, $03, $14, $11, $02, $16, $18, $5c, $17, $17, $17, $04, $0a, $00
+	wildbot $00, $03, $14, $11, $08, $17, $19, $5c, $01, $13, $00, $0e, $08, $00
+	wildbot $00, $03, $14, $11, $27, $18, $1a, $5c, $01, $00, $00, $04, $07, $00
+	wildbot $00, $03, $14, $11, $04, $19, $1b, $5c, $01, $18, $00, $04, $06, $00
+	wildbot $00, $03, $14, $11, $8f, $1a, $1c, $5c, $0f, $0d, $14, $0f, $03, $00
+ENDC
+
+Data_ca7c5:
+IF DEF(SUN)
+	wildbot $00, $03, $14, $11, $7f, $17, $19, $71, $28, $00, $00, $0e, $0a, $00
+	wildbot $00, $03, $14, $11, $20, $18, $1a, $71, $17, $00, $00, $04, $08, $00
+	wildbot $00, $03, $14, $11, $21, $19, $1b, $71, $17, $00, $00, $04, $07, $00
+	wildbot $00, $03, $14, $11, $1f, $19, $1b, $71, $17, $00, $00, $04, $06, $00
+	wildbot $00, $03, $14, $11, $22, $1c, $1e, $71, $0c, $00, $00, $04, $02, $00
+ELIF DEF(STAR)
+	wildbot $00, $03, $14, $11, $7f, $17, $19, $71, $28, $00, $00, $0e, $0a, $00
+	wildbot $00, $03, $14, $11, $20, $18, $1a, $71, $17, $00, $00, $04, $08, $00
+	wildbot $00, $03, $14, $11, $21, $19, $1b, $71, $17, $00, $00, $04, $07, $00
+	wildbot $00, $03, $14, $11, $1f, $19, $1b, $71, $17, $00, $00, $04, $06, $00
+	wildbot $00, $03, $14, $11, $22, $1c, $1e, $71, $0c, $00, $00, $04, $02, $00
+ENDC
+
+Data_ca80b:
+IF DEF(SUN)
+	wildbot $00, $03, $14, $11, $71, $18, $1a, $78, $07, $12, $00, $0e, $0a, $00
+	wildbot $00, $03, $14, $11, $88, $18, $1a, $78, $04, $04, $00, $04, $09, $00
+	wildbot $00, $03, $14, $11, $73, $19, $1b, $0f, $06, $09, $0b, $0f, $08, $00
+	wildbot $00, $03, $14, $11, $91, $19, $1b, $3b, $04, $17, $00, $04, $07, $00
+	wildbot $00, $03, $14, $11, $80, $1b, $1d, $78, $1f, $1e, $07, $04, $06, $00
+ELIF DEF(STAR)
+	wildbot $00, $03, $14, $11, $80, $18, $1a, $78, $1f, $1e, $07, $04, $0a, $00
+	wildbot $00, $03, $14, $11, $85, $18, $1a, $7b, $14, $0d, $1f, $0e, $09, $00
+	wildbot $00, $03, $14, $11, $73, $19, $1b, $0f, $06, $09, $0b, $0f, $08, $00
+	wildbot $00, $03, $14, $11, $93, $19, $1b, $2e, $14, $14, $0d, $0e, $07, $00
+	wildbot $00, $03, $14, $11, $71, $1b, $1d, $78, $07, $12, $00, $0f, $06, $00
+ENDC
+
+Data_ca851:
+IF DEF(SUN)
+	wildbot $00, $03, $14, $11, $11, $19, $1b, $03, $1f, $1e, $18, $0e, $0a, $00
+	wildbot $00, $03, $14, $11, $4c, $19, $1b, $46, $01, $01, $01, $04, $09, $00
+	wildbot $00, $03, $14, $11, $12, $1a, $1c, $03, $1f, $07, $16, $0f, $08, $00
+	wildbot $00, $03, $14, $11, $62, $1b, $1d, $03, $14, $1e, $1e, $04, $06, $00
+	wildbot $00, $03, $14, $11, $57, $1d, $1f, $46, $1f, $17, $11, $0e, $04, $00
+ELIF DEF(STAR)
+	wildbot $00, $03, $14, $11, $11, $19, $1b, $03, $1f, $1e, $18, $0e, $0a, $00
+	wildbot $00, $03, $14, $11, $4d, $19, $1b, $30, $2a, $12, $00, $0f, $09, $00
+	wildbot $00, $03, $14, $11, $12, $1a, $1c, $03, $1f, $07, $16, $0e, $08, $00
+	wildbot $00, $03, $14, $11, $62, $1b, $1d, $03, $14, $1e, $1e, $04, $06, $00
+	wildbot $00, $03, $14, $11, $6c, $1d, $1f, $03, $17, $17, $0a, $04, $04, $00
+ENDC
+
+Data_ca897:
+	person_event $09, $0c, $0a, $0b, $01, $01, $02, $04, $00, Func_caa1f, NULL
+
+Data_ca8a5:
+	person_event $09, $0c, $0a, $0b, $01, $01, $02, $04, $00, Func_cab3c, NULL
+
+Data_ca8b3:
+	person_event $09, $0c, $0a, $0b, $01, $01, $02, $04, $00, Func_cac75, NULL
+
+Data_ca8c1:
+	person_event $09, $0c, $0a, $0b, $01, $01, $02, $04, $00, Func_cadae, NULL
+
+Data_ca8cf:
+	person_event $09, $0c, $0a, $0b, $01, $01, $02, $04, $00, Func_caee7, NULL
+
+Func_ca8dd:: ; ca8dd
+	ld e, $01 ; CA8DD (32:68dd) -> 1E 01
+	ld hl, Data_ca72e ; CA8DF (32:68df) -> 21 2E 67
+	scall LoadWarps ; CA8E2 (32:68e2) -> CD 3A 40
+	ld a, [wc78b] ; CA8E5 (32:68e5) -> FA 8B C7
+	cp $04 ; CA8E8 (32:68e8) -> FE 04
+	jp z, .asm_ca9c0 ; CA8EA (32:68ea) -> CA C0 69
+	cp $03 ; CA8ED (32:68ed) -> FE 03
+	jp z, .asm_ca990 ; CA8EF (32:68ef) -> CA 90 69
+	cp $02 ; CA8F2 (32:68f2) -> FE 02
+	jp z, .asm_ca960 ; CA8F4 (32:68f4) -> CA 60 69
+	cp $01 ; CA8F7 (32:68f7) -> FE 01
+	jp z, .asm_ca930 ; CA8F9 (32:68f9) -> CA 30 69
+	or a ; CA8FC (32:68fc) -> B7
+	jp nz, .asm_ca9ed ; CA8FD (32:68fd) -> C2 ED 69
+	ld a, $03 ; CA900 (32:6900) -> 3E 03
+	scall Func_80d01 ; CA902 (32:6902) -> CD 01 4D
+	ld e, $05 ; CA905 (32:6905) -> 1E 05
+	ld hl, Data_ca739 ; CA907 (32:6907) -> 21 39 67
+	scall LoadEncounters ; CA90A (32:690a) -> CD 24 4D
+	ld hl, $0095 ; CA90D (32:690d) -> 21 95 00
+	scall CheckEventFlag ; CA910 (32:6910) -> CD 2E 46
+	or a ; CA913 (32:6913) -> B7
+	jp nz, .asm_ca91f ; CA914 (32:6914) -> C2 1F 69
+	ld e, $01 ; CA917 (32:6917) -> 1E 01
+	ld hl, Data_ca897 ; CA919 (32:6919) -> 21 97 68
+	scall LoadMapObjects ; CA91C (32:691c) -> CD FB 40
+.asm_ca91f:
+	ld a, $09 ; CA91F (32:691f) -> 3E 09
+	scall PlayMusic ; CA921 (32:6921) -> CD E6 4E
+	scall Func_8001c ; CA924 (32:6924) -> CD 1C 40
+	ld hl, $02ea ; CA927 (32:6927) -> 21 EA 02
+	scall LandmarkSign ; CA92A (32:692a) -> CD 72 4F
+	jp .asm_ca9ed ; CA92D (32:692d) -> C3 ED 69
+.asm_ca930:
+	ld a, $03 ; CA930 (32:6930) -> 3E 03
+	scall Func_80d01 ; CA932 (32:6932) -> CD 01 4D
+	ld e, $05 ; CA935 (32:6935) -> 1E 05
+	ld hl, Data_ca77f ; CA937 (32:6937) -> 21 7F 67
+	scall LoadEncounters ; CA93A (32:693a) -> CD 24 4D
+	ld hl, $009a ; CA93D (32:693d) -> 21 9A 00
+	scall CheckEventFlag ; CA940 (32:6940) -> CD 2E 46
+	or a ; CA943 (32:6943) -> B7
+	jp nz, .asm_ca94f ; CA944 (32:6944) -> C2 4F 69
+	ld e, $01 ; CA947 (32:6947) -> 1E 01
+	ld hl, Data_ca8a5 ; CA949 (32:6949) -> 21 A5 68
+	scall LoadMapObjects ; CA94C (32:694c) -> CD FB 40
+.asm_ca94f:
+	ld a, $0e ; CA94F (32:694f) -> 3E 0E
+	scall PlayMusic ; CA951 (32:6951) -> CD E6 4E
+	scall Func_8001c ; CA954 (32:6954) -> CD 1C 40
+	ld hl, $02f9 ; CA957 (32:6957) -> 21 F9 02
+	scall LandmarkSign ; CA95A (32:695a) -> CD 72 4F
+	jp .asm_ca9ed ; CA95D (32:695d) -> C3 ED 69
+.asm_ca960:
+	ld a, $03 ; CA960 (32:6960) -> 3E 03
+	scall Func_80d01 ; CA962 (32:6962) -> CD 01 4D
+	ld e, $05 ; CA965 (32:6965) -> 1E 05
+	ld hl, Data_ca7c5 ; CA967 (32:6967) -> 21 C5 67
+	scall LoadEncounters ; CA96A (32:696a) -> CD 24 4D
+	ld hl, $009f ; CA96D (32:696d) -> 21 9F 00
+	scall CheckEventFlag ; CA970 (32:6970) -> CD 2E 46
+	or a ; CA973 (32:6973) -> B7
+	jp nz, .asm_ca97f ; CA974 (32:6974) -> C2 7F 69
+	ld e, $01 ; CA977 (32:6977) -> 1E 01
+	ld hl, Data_ca8b3 ; CA979 (32:6979) -> 21 B3 68
+	scall LoadMapObjects ; CA97C (32:697c) -> CD FB 40
+.asm_ca97f:
+	ld a, $0d ; CA97F (32:697f) -> 3E 0D
+	scall PlayMusic ; CA981 (32:6981) -> CD E6 4E
+	scall Func_8001c ; CA984 (32:6984) -> CD 1C 40
+	ld hl, $02f4 ; CA987 (32:6987) -> 21 F4 02
+	scall LandmarkSign ; CA98A (32:698a) -> CD 72 4F
+	jp .asm_ca9ed ; CA98D (32:698d) -> C3 ED 69
+.asm_ca990:
+	ld a, $03 ; CA990 (32:6990) -> 3E 03
+	scall Func_80d01 ; CA992 (32:6992) -> CD 01 4D
+	ld e, $05 ; CA995 (32:6995) -> 1E 05
+	ld hl, Data_ca80b ; CA997 (32:6997) -> 21 0B 68
+	scall LoadEncounters ; CA99A (32:699a) -> CD 24 4D
+	ld hl, $00a4 ; CA99D (32:699d) -> 21 A4 00
+	scall CheckEventFlag ; CA9A0 (32:69a0) -> CD 2E 46
+	or a ; CA9A3 (32:69a3) -> B7
+	jp nz, .asm_ca9af ; CA9A4 (32:69a4) -> C2 AF 69
+	ld e, $01 ; CA9A7 (32:69a7) -> 1E 01
+	ld hl, Data_ca8c1 ; CA9A9 (32:69a9) -> 21 C1 68
+	scall LoadMapObjects ; CA9AC (32:69ac) -> CD FB 40
+.asm_ca9af:
+	ld a, $0f ; CA9AF (32:69af) -> 3E 0F
+	scall PlayMusic ; CA9B1 (32:69b1) -> CD E6 4E
+	scall Func_8001c ; CA9B4 (32:69b4) -> CD 1C 40
+	ld hl, $02ef ; CA9B7 (32:69b7) -> 21 EF 02
+	scall LandmarkSign ; CA9BA (32:69ba) -> CD 72 4F
+	jp .asm_ca9ed ; CA9BD (32:69bd) -> C3 ED 69
+.asm_ca9c0:
+	ld a, $03 ; CA9C0 (32:69c0) -> 3E 03
+	scall Func_80d01 ; CA9C2 (32:69c2) -> CD 01 4D
+	ld e, $05 ; CA9C5 (32:69c5) -> 1E 05
+	ld hl, Data_ca851 ; CA9C7 (32:69c7) -> 21 51 68
+	scall LoadEncounters ; CA9CA (32:69ca) -> CD 24 4D
+	ld hl, $00a9 ; CA9CD (32:69cd) -> 21 A9 00
+	scall CheckEventFlag ; CA9D0 (32:69d0) -> CD 2E 46
+	or a ; CA9D3 (32:69d3) -> B7
+	jp nz, .asm_ca9df ; CA9D4 (32:69d4) -> C2 DF 69
+	ld e, $01 ; CA9D7 (32:69d7) -> 1E 01
+	ld hl, Data_ca8cf ; CA9D9 (32:69d9) -> 21 CF 68
+	scall LoadMapObjects ; CA9DC (32:69dc) -> CD FB 40
+.asm_ca9df:
+	ld a, $10 ; CA9DF (32:69df) -> 3E 10
+	scall PlayMusic ; CA9E1 (32:69e1) -> CD E6 4E
+	scall Func_8001c ; CA9E4 (32:69e4) -> CD 1C 40
+	ld hl, $02fe ; CA9E7 (32:69e7) -> 21 FE 02
+	scall LandmarkSign ; CA9EA (32:69ea) -> CD 72 4F
+.asm_ca9ed:
+	ret  ; CA9ED (32:69ed) -> C9
+
+Data_ca9ee:
+	db $0a, $05, $ff, $ff
+
+Data_ca9f2:
+	db $0b, $05, $ff, $ff
+
+Data_ca9f6:
+	db $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $4f, $01, $4f, $05, $1d, $14, $14
+	db $00, $05, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_caa1f:
+	ld a, e ; CAA1F (32:6a1f) -> 7B
+	or a ; CAA20 (32:6a20) -> B7
+	jp nz, .asm_cab02 ; CAA21 (32:6a21) -> C2 02 6B
+	ld hl, $0095 ; CAA24 (32:6a24) -> 21 95 00
+	scall CheckEventFlag ; CAA27 (32:6a27) -> CD 2E 46
+	or a ; CAA2A (32:6a2a) -> B7
+	jp nz, .asm_cab02 ; CAA2B (32:6a2b) -> C2 02 6B
+	xor a ; CAA2E (32:6a2e) -> AF
+	scall FacePlayer ; CAA2F (32:6a2f) -> CD 4B 44
+	ld hl, $00c9 ; CAA32 (32:6a32) -> 21 C9 00
+	scall PrintTextStandard ; CAA35 (32:6a35) -> CD 98 44
+	ld de, Data_cab03 ; CAA38 (32:6a38) -> 11 03 6B
+	ld hl, Data_ca9f6 ; CAA3B (32:6a3b) -> 21 F6 69
+	scall ScriptedBattle ; CAA3E (32:6a3e) -> CD D3 4D
+	or a ; CAA41 (32:6a41) -> B7
+	jp nz, .asm_caa48 ; CAA42 (32:6a42) -> C2 48 6A
+	jp .asm_cab02 ; CAA45 (32:6a45) -> C3 02 6B
+.asm_caa48:
+	ld hl, $00ca ; CAA48 (32:6a48) -> 21 CA 00
+	scall PrintTextStandard ; CAA4B (32:6a4b) -> CD 98 44
+	ld e, $01 ; CAA4E (32:6a4e) -> 1E 01
+	ld hl, $0095 ; CAA50 (32:6a50) -> 21 95 00
+	scall EventFlagAction ; CAA53 (32:6a53) -> CD 1B 46
+	ld e, $00 ; CAA56 (32:6a56) -> 1E 00
+	ld hl, $0042 ; CAA58 (32:6a58) -> 21 42 00
+	scall EventFlagAction ; CAA5B (32:6a5b) -> CD 1B 46
+	ld c, $01 ; CAA5E (32:6a5e) -> 0E 01
+	ld e, $01 ; CAA60 (32:6a60) -> 1E 01
+	ld a, $1e ; CAA62 (32:6a62) -> 3E 1E
+	scall Func_80d4d ; CAA64 (32:6a64) -> CD 4D 4D
+	cp $ff ; CAA67 (32:6a67) -> FE FF
+	jp nz, .asm_caa75 ; CAA69 (32:6a69) -> C2 75 6A
+	ld c, $03 ; CAA6C (32:6a6c) -> 0E 03
+	ld e, $01 ; CAA6E (32:6a6e) -> 1E 01
+	ld a, $1e ; CAA70 (32:6a70) -> 3E 1E
+	scall Func_80d4d ; CAA72 (32:6a72) -> CD 4D 4D
+.asm_caa75:
+	ld hl, $0095 ; CAA75 (32:6a75) -> 21 95 00
+	scall CheckEventFlag ; CAA78 (32:6a78) -> CD 2E 46
+	cp $01 ; CAA7B (32:6a7b) -> FE 01
+	jp nz, .asm_caaca ; CAA7D (32:6a7d) -> C2 CA 6A
+	ld hl, $009a ; CAA80 (32:6a80) -> 21 9A 00
+	scall CheckEventFlag ; CAA83 (32:6a83) -> CD 2E 46
+	cp $01 ; CAA86 (32:6a86) -> FE 01
+	jp nz, .asm_caaca ; CAA88 (32:6a88) -> C2 CA 6A
+	ld hl, $009f ; CAA8B (32:6a8b) -> 21 9F 00
+	scall CheckEventFlag ; CAA8E (32:6a8e) -> CD 2E 46
+	cp $01 ; CAA91 (32:6a91) -> FE 01
+	jp nz, .asm_caaca ; CAA93 (32:6a93) -> C2 CA 6A
+	ld hl, $00a4 ; CAA96 (32:6a96) -> 21 A4 00
+	scall CheckEventFlag ; CAA99 (32:6a99) -> CD 2E 46
+	cp $01 ; CAA9C (32:6a9c) -> FE 01
+	jp nz, .asm_caaca ; CAA9E (32:6a9e) -> C2 CA 6A
+	ld hl, $00a9 ; CAAA1 (32:6aa1) -> 21 A9 00
+	scall CheckEventFlag ; CAAA4 (32:6aa4) -> CD 2E 46
+	cp $01 ; CAAA7 (32:6aa7) -> FE 01
+	jp nz, .asm_caaca ; CAAA9 (32:6aa9) -> C2 CA 6A
+	ld c, $00 ; CAAAC (32:6aac) -> 0E 00
+	ld e, $01 ; CAAAE (32:6aae) -> 1E 01
+	ld a, $21 ; CAAB0 (32:6ab0) -> 3E 21
+	scall Func_80d4d ; CAAB2 (32:6ab2) -> CD 4D 4D
+	ld hl, $046f ; CAAB5 (32:6ab5) -> 21 6F 04
+	scall PrintTextStandard ; CAAB8 (32:6ab8) -> CD 98 44
+	ld a, $2a ; CAABB (32:6abb) -> 3E 2A
+	scall PlaySFX ; CAABD (32:6abd) -> CD FE 4E
+	ld hl, $0470 ; CAAC0 (32:6ac0) -> 21 70 04
+	scall PrintTextStandard ; CAAC3 (32:6ac3) -> CD 98 44
+	xor a ; CAAC6 (32:6ac6) -> AF
+	ld [wc78f], a ; CAAC7 (32:6ac7) -> EA 8F C7
+.asm_caaca:
+	ld a, [wPlayerFacing] ; CAACA (32:6aca) -> FA 38 C8
+	cp $02 ; CAACD (32:6acd) -> FE 02
+	jp nz, .asm_caade ; CAACF (32:6acf) -> C2 DE 6A
+	ld bc, Data_ca9f2 ; CAAD2 (32:6ad2) -> 01 F2 69
+	ld e, $32 ; CAAD5 (32:6ad5) -> 1E 32
+	xor a ; CAAD7 (32:6ad7) -> AF
+	scall MovePersonAndWait ; CAAD8 (32:6ad8) -> CD 88 46
+	jp .asm_caae7 ; CAADB (32:6adb) -> C3 E7 6A
+.asm_caade:
+	ld bc, Data_ca9ee ; CAADE (32:6ade) -> 01 EE 69
+	ld e, $32 ; CAAE1 (32:6ae1) -> 1E 32
+	xor a ; CAAE3 (32:6ae3) -> AF
+	scall MovePersonAndWait ; CAAE4 (32:6ae4) -> CD 88 46
+.asm_caae7:
+	ld a, $2e ; CAAE7 (32:6ae7) -> 3E 2E
+	scall PlaySFX ; CAAE9 (32:6ae9) -> CD FE 4E
+	scall WaitNPCStep ; CAAEC (32:6aec) -> CD 0C 42
+	ld e, $00 ; CAAEF (32:6aef) -> 1E 00
+	xor a ; CAAF1 (32:6af1) -> AF
+	scall SetPersonVisibilityState ; CAAF2 (32:6af2) -> CD 3D 41
+	ld l, $1b ; CAAF5 (32:6af5) -> 2E 1B
+	push hl ; CAAF7 (32:6af7) -> E5
+	ld c, $17 ; CAAF8 (32:6af8) -> 0E 17
+	ld e, $00 ; CAAFA (32:6afa) -> 1E 00
+	ld a, $15 ; CAAFC (32:6afc) -> 3E 15
+	scall Func_80dff ; CAAFE (32:6afe) -> CD FF 4D
+	pop bc ; CAB01 (32:6b01) -> C1
+.asm_cab02:
+	ret  ; CAB02 (32:6b02) -> C9
+
+Data_cab03:
+	dstr "(くﾞんそう)"
+
+Data_cab0b:
+	db $0a, $05, $ff, $ff
+
+Data_cab0f:
+	db $0b, $05, $ff, $ff
+
+Data_cab13:
+	db $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $03, $01, $03, $05, $1e, $01, $18
+	db $00, $71, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_cab3c:
+	ld a, e ; CAB3C (32:6b3c) -> 7B
+	or a ; CAB3D (32:6b3d) -> B7
+	jp nz, .asm_cac3b ; CAB3E (32:6b3e) -> C2 3B 6C
+	ld hl, $009a ; CAB41 (32:6b41) -> 21 9A 00
+	scall CheckEventFlag ; CAB44 (32:6b44) -> CD 2E 46
+	or a ; CAB47 (32:6b47) -> B7
+	jp nz, .asm_cac3b ; CAB48 (32:6b48) -> C2 3B 6C
+	xor a ; CAB4B (32:6b4b) -> AF
+	scall FacePlayer ; CAB4C (32:6b4c) -> CD 4B 44
+	ld hl, $00cb ; CAB4F (32:6b4f) -> 21 CB 00
+	scall PrintTextStandard ; CAB52 (32:6b52) -> CD 98 44
+	ld hl, $015e ; CAB55 (32:6b55) -> 21 5E 01
+	scall PrintTextStandard ; CAB58 (32:6b58) -> CD 98 44
+.asm_cab5b:
+	ld de, Data_cac3c ; CAB5B (32:6b5b) -> 11 3C 6C
+	ld hl, Data_cab13 ; CAB5E (32:6b5e) -> 21 13 6B
+	scall Func_803f5 ; CAB61 (32:6b61) -> CD F4 43
+	or a ; CAB64 (32:6b64) -> B7
+	jp nz, .asm_cab73 ; CAB65 (32:6b65) -> C2 73 6B
+	ld a, [wc7c4] ; CAB68 (32:6b68) -> FA C4 C7
+	cp $01 ; CAB6B (32:6b6b) -> FE 01
+	jp nz, .asm_cab5b ; CAB6D (32:6b6d) -> C2 5B 6B
+	jp .asm_cac3b ; CAB70 (32:6b70) -> C3 3B 6C
+.asm_cab73:
+	ld hl, $00cc ; CAB73 (32:6b73) -> 21 CC 00
+	scall PrintTextStandard ; CAB76 (32:6b76) -> CD 98 44
+	ld e, $01 ; CAB79 (32:6b79) -> 1E 01
+	ld hl, $009a ; CAB7B (32:6b7b) -> 21 9A 00
+	scall EventFlagAction ; CAB7E (32:6b7e) -> CD 1B 46
+	ld e, $00 ; CAB81 (32:6b81) -> 1E 00
+	ld hl, $0042 ; CAB83 (32:6b83) -> 21 42 00
+	scall EventFlagAction ; CAB86 (32:6b86) -> CD 1B 46
+	ld c, $01 ; CAB89 (32:6b89) -> 0E 01
+	ld e, $01 ; CAB8B (32:6b8b) -> 1E 01
+	ld a, $1c ; CAB8D (32:6b8d) -> 3E 1C
+	scall Func_80d4d ; CAB8F (32:6b8f) -> CD 4D 4D
+	cp $ff ; CAB92 (32:6b92) -> FE FF
+	jp nz, .asm_caba0 ; CAB94 (32:6b94) -> C2 A0 6B
+	ld c, $03 ; CAB97 (32:6b97) -> 0E 03
+	ld e, $01 ; CAB99 (32:6b99) -> 1E 01
+	ld a, $1c ; CAB9B (32:6b9b) -> 3E 1C
+	scall Func_80d4d ; CAB9D (32:6b9d) -> CD 4D 4D
+.asm_caba0:
+	ld hl, $0095 ; CABA0 (32:6ba0) -> 21 95 00
+	scall CheckEventFlag ; CABA3 (32:6ba3) -> CD 2E 46
+	cp $01 ; CABA6 (32:6ba6) -> FE 01
+	jp nz, .asm_cabf5 ; CABA8 (32:6ba8) -> C2 F5 6B
+	ld hl, $009a ; CABAB (32:6bab) -> 21 9A 00
+	scall CheckEventFlag ; CABAE (32:6bae) -> CD 2E 46
+	cp $01 ; CABB1 (32:6bb1) -> FE 01
+	jp nz, .asm_cabf5 ; CABB3 (32:6bb3) -> C2 F5 6B
+	ld hl, $009f ; CABB6 (32:6bb6) -> 21 9F 00
+	scall CheckEventFlag ; CABB9 (32:6bb9) -> CD 2E 46
+	cp $01 ; CABBC (32:6bbc) -> FE 01
+	jp nz, .asm_cabf5 ; CABBE (32:6bbe) -> C2 F5 6B
+	ld hl, $00a4 ; CABC1 (32:6bc1) -> 21 A4 00
+	scall CheckEventFlag ; CABC4 (32:6bc4) -> CD 2E 46
+	cp $01 ; CABC7 (32:6bc7) -> FE 01
+	jp nz, .asm_cabf5 ; CABC9 (32:6bc9) -> C2 F5 6B
+	ld hl, $00a9 ; CABCC (32:6bcc) -> 21 A9 00
+	scall CheckEventFlag ; CABCF (32:6bcf) -> CD 2E 46
+	cp $01 ; CABD2 (32:6bd2) -> FE 01
+	jp nz, .asm_cabf5 ; CABD4 (32:6bd4) -> C2 F5 6B
+	ld c, $00 ; CABD7 (32:6bd7) -> 0E 00
+	ld e, $01 ; CABD9 (32:6bd9) -> 1E 01
+	ld a, $21 ; CABDB (32:6bdb) -> 3E 21
+	scall Func_80d4d ; CABDD (32:6bdd) -> CD 4D 4D
+	ld hl, $046f ; CABE0 (32:6be0) -> 21 6F 04
+	scall PrintTextStandard ; CABE3 (32:6be3) -> CD 98 44
+	ld a, $2a ; CABE6 (32:6be6) -> 3E 2A
+	scall PlaySFX ; CABE8 (32:6be8) -> CD FE 4E
+	ld hl, $0470 ; CABEB (32:6beb) -> 21 70 04
+	scall PrintTextStandard ; CABEE (32:6bee) -> CD 98 44
+	xor a ; CABF1 (32:6bf1) -> AF
+	ld [wc78f], a ; CABF2 (32:6bf2) -> EA 8F C7
+.asm_cabf5:
+	ld a, [wPlayerFacing] ; CABF5 (32:6bf5) -> FA 38 C8
+	cp $02 ; CABF8 (32:6bf8) -> FE 02
+	jp z, .asm_cac17 ; CABFA (32:6bfa) -> CA 17 6C
+	cp $03 ; CABFD (32:6bfd) -> FE 03
+	jp z, .asm_cac0b ; CABFF (32:6bff) -> CA 0B 6C
+	cp $01 ; CAC02 (32:6c02) -> FE 01
+	jp z, .asm_cac0b ; CAC04 (32:6c04) -> CA 0B 6C
+	or a ; CAC07 (32:6c07) -> B7
+	jp nz, .asm_cac20 ; CAC08 (32:6c08) -> C2 20 6C
+.asm_cac0b:
+	ld bc, Data_cab0b ; CAC0B (32:6c0b) -> 01 0B 6B
+	ld e, $32 ; CAC0E (32:6c0e) -> 1E 32
+	xor a ; CAC10 (32:6c10) -> AF
+	scall MovePersonAndWait ; CAC11 (32:6c11) -> CD 88 46
+	jp .asm_cac20 ; CAC14 (32:6c14) -> C3 20 6C
+.asm_cac17:
+	ld bc, Data_cab0f ; CAC17 (32:6c17) -> 01 0F 6B
+	ld e, $32 ; CAC1A (32:6c1a) -> 1E 32
+	xor a ; CAC1C (32:6c1c) -> AF
+	scall MovePersonAndWait ; CAC1D (32:6c1d) -> CD 88 46
+.asm_cac20:
+	ld a, $2e ; CAC20 (32:6c20) -> 3E 2E
+	scall PlaySFX ; CAC22 (32:6c22) -> CD FE 4E
+	scall WaitNPCStep ; CAC25 (32:6c25) -> CD 0C 42
+	ld e, $00 ; CAC28 (32:6c28) -> 1E 00
+	xor a ; CAC2A (32:6c2a) -> AF
+	scall SetPersonVisibilityState ; CAC2B (32:6c2b) -> CD 3D 41
+	ld l, $1b ; CAC2E (32:6c2e) -> 2E 1B
+	push hl ; CAC30 (32:6c30) -> E5
+	ld c, $0b ; CAC31 (32:6c31) -> 0E 0B
+	ld e, $00 ; CAC33 (32:6c33) -> 1E 00
+	ld a, $15 ; CAC35 (32:6c35) -> 3E 15
+	scall Func_80dff ; CAC37 (32:6c37) -> CD FF 4D
+	pop bc ; CAC3A (32:6c3a) -> C1
+.asm_cac3b:
+	ret  ; CAC3B (32:6c3b) -> C9
+
+Data_cac3c:
+	dstr "(くﾞんそう)"
+
+Data_cac44:
+	db $0a, $05, $ff, $ff
+
+Data_cac48:
+	db $0b, $05, $ff, $ff
+
+Data_cac4c:
+	db $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $1f, $01, $1f, $05, $1d, $17, $17
+	db $00, $71, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_cac75:
+	ld a, e ; CAC75 (32:6c75) -> 7B
+	or a ; CAC76 (32:6c76) -> B7
+	jp nz, .asm_cad74 ; CAC77 (32:6c77) -> C2 74 6D
+	ld hl, $009f ; CAC7A (32:6c7a) -> 21 9F 00
+	scall CheckEventFlag ; CAC7D (32:6c7d) -> CD 2E 46
+	or a ; CAC80 (32:6c80) -> B7
+	jp nz, .asm_cad74 ; CAC81 (32:6c81) -> C2 74 6D
+	xor a ; CAC84 (32:6c84) -> AF
+	scall FacePlayer ; CAC85 (32:6c85) -> CD 4B 44
+	ld hl, $00cd ; CAC88 (32:6c88) -> 21 CD 00
+	scall PrintTextStandard ; CAC8B (32:6c8b) -> CD 98 44
+	ld hl, $017a ; CAC8E (32:6c8e) -> 21 7A 01
+	scall PrintTextStandard ; CAC91 (32:6c91) -> CD 98 44
+.asm_cac94:
+	ld de, Data_cad75 ; CAC94 (32:6c94) -> 11 75 6D
+	ld hl, Data_cac4c ; CAC97 (32:6c97) -> 21 4C 6C
+	scall Func_802ef ; CAC9A (32:6c9a) -> CD EF 42
+	or a ; CAC9D (32:6c9d) -> B7
+	jp nz, .asm_cacac ; CAC9E (32:6c9e) -> C2 AC 6C
+	ld a, [wc7c4] ; CACA1 (32:6ca1) -> FA C4 C7
+	cp $01 ; CACA4 (32:6ca4) -> FE 01
+	jp nz, .asm_cac94 ; CACA6 (32:6ca6) -> C2 94 6C
+	jp .asm_cad74 ; CACA9 (32:6ca9) -> C3 74 6D
+.asm_cacac:
+	ld hl, $00ce ; CACAC (32:6cac) -> 21 CE 00
+	scall PrintTextStandard ; CACAF (32:6caf) -> CD 98 44
+	ld e, $01 ; CACB2 (32:6cb2) -> 1E 01
+	ld hl, $009f ; CACB4 (32:6cb4) -> 21 9F 00
+	scall EventFlagAction ; CACB7 (32:6cb7) -> CD 1B 46
+	ld e, $00 ; CACBA (32:6cba) -> 1E 00
+	ld hl, $0042 ; CACBC (32:6cbc) -> 21 42 00
+	scall EventFlagAction ; CACBF (32:6cbf) -> CD 1B 46
+	ld c, $01 ; CACC2 (32:6cc2) -> 0E 01
+	ld e, $01 ; CACC4 (32:6cc4) -> 1E 01
+	ld a, $1d ; CACC6 (32:6cc6) -> 3E 1D
+	scall Func_80d4d ; CACC8 (32:6cc8) -> CD 4D 4D
+	cp $ff ; CACCB (32:6ccb) -> FE FF
+	jp nz, .asm_cacd9 ; CACCD (32:6ccd) -> C2 D9 6C
+	ld c, $03 ; CACD0 (32:6cd0) -> 0E 03
+	ld e, $01 ; CACD2 (32:6cd2) -> 1E 01
+	ld a, $1d ; CACD4 (32:6cd4) -> 3E 1D
+	scall Func_80d4d ; CACD6 (32:6cd6) -> CD 4D 4D
+.asm_cacd9:
+	ld hl, $0095 ; CACD9 (32:6cd9) -> 21 95 00
+	scall CheckEventFlag ; CACDC (32:6cdc) -> CD 2E 46
+	cp $01 ; CACDF (32:6cdf) -> FE 01
+	jp nz, .asm_cad2e ; CACE1 (32:6ce1) -> C2 2E 6D
+	ld hl, $009a ; CACE4 (32:6ce4) -> 21 9A 00
+	scall CheckEventFlag ; CACE7 (32:6ce7) -> CD 2E 46
+	cp $01 ; CACEA (32:6cea) -> FE 01
+	jp nz, .asm_cad2e ; CACEC (32:6cec) -> C2 2E 6D
+	ld hl, $009f ; CACEF (32:6cef) -> 21 9F 00
+	scall CheckEventFlag ; CACF2 (32:6cf2) -> CD 2E 46
+	cp $01 ; CACF5 (32:6cf5) -> FE 01
+	jp nz, .asm_cad2e ; CACF7 (32:6cf7) -> C2 2E 6D
+	ld hl, $00a4 ; CACFA (32:6cfa) -> 21 A4 00
+	scall CheckEventFlag ; CACFD (32:6cfd) -> CD 2E 46
+	cp $01 ; CAD00 (32:6d00) -> FE 01
+	jp nz, .asm_cad2e ; CAD02 (32:6d02) -> C2 2E 6D
+	ld hl, $00a9 ; CAD05 (32:6d05) -> 21 A9 00
+	scall CheckEventFlag ; CAD08 (32:6d08) -> CD 2E 46
+	cp $01 ; CAD0B (32:6d0b) -> FE 01
+	jp nz, .asm_cad2e ; CAD0D (32:6d0d) -> C2 2E 6D
+	ld c, $00 ; CAD10 (32:6d10) -> 0E 00
+	ld e, $01 ; CAD12 (32:6d12) -> 1E 01
+	ld a, $21 ; CAD14 (32:6d14) -> 3E 21
+	scall Func_80d4d ; CAD16 (32:6d16) -> CD 4D 4D
+	ld hl, $046f ; CAD19 (32:6d19) -> 21 6F 04
+	scall PrintTextStandard ; CAD1C (32:6d1c) -> CD 98 44
+	ld a, $2a ; CAD1F (32:6d1f) -> 3E 2A
+	scall PlaySFX ; CAD21 (32:6d21) -> CD FE 4E
+	ld hl, $0470 ; CAD24 (32:6d24) -> 21 70 04
+	scall PrintTextStandard ; CAD27 (32:6d27) -> CD 98 44
+	xor a ; CAD2A (32:6d2a) -> AF
+	ld [wc78f], a ; CAD2B (32:6d2b) -> EA 8F C7
+.asm_cad2e:
+	ld a, [wPlayerFacing] ; CAD2E (32:6d2e) -> FA 38 C8
+	cp $02 ; CAD31 (32:6d31) -> FE 02
+	jp z, .asm_cad50 ; CAD33 (32:6d33) -> CA 50 6D
+	cp $03 ; CAD36 (32:6d36) -> FE 03
+	jp z, .asm_cad44 ; CAD38 (32:6d38) -> CA 44 6D
+	cp $01 ; CAD3B (32:6d3b) -> FE 01
+	jp z, .asm_cad44 ; CAD3D (32:6d3d) -> CA 44 6D
+	or a ; CAD40 (32:6d40) -> B7
+	jp nz, .asm_cad59 ; CAD41 (32:6d41) -> C2 59 6D
+.asm_cad44:
+	ld bc, Data_cac44 ; CAD44 (32:6d44) -> 01 44 6C
+	ld e, $32 ; CAD47 (32:6d47) -> 1E 32
+	xor a ; CAD49 (32:6d49) -> AF
+	scall MovePersonAndWait ; CAD4A (32:6d4a) -> CD 88 46
+	jp .asm_cad59 ; CAD4D (32:6d4d) -> C3 59 6D
+.asm_cad50:
+	ld bc, Data_cac48 ; CAD50 (32:6d50) -> 01 48 6C
+	ld e, $32 ; CAD53 (32:6d53) -> 1E 32
+	xor a ; CAD55 (32:6d55) -> AF
+	scall MovePersonAndWait ; CAD56 (32:6d56) -> CD 88 46
+.asm_cad59:
+	ld a, $2e ; CAD59 (32:6d59) -> 3E 2E
+	scall PlaySFX ; CAD5B (32:6d5b) -> CD FE 4E
+	scall WaitNPCStep ; CAD5E (32:6d5e) -> CD 0C 42
+	ld e, $00 ; CAD61 (32:6d61) -> 1E 00
+	xor a ; CAD63 (32:6d63) -> AF
+	scall SetPersonVisibilityState ; CAD64 (32:6d64) -> CD 3D 41
+	ld l, $12 ; CAD67 (32:6d67) -> 2E 12
+	push hl ; CAD69 (32:6d69) -> E5
+	ld c, $1d ; CAD6A (32:6d6a) -> 0E 1D
+	ld e, $00 ; CAD6C (32:6d6c) -> 1E 00
+	ld a, $15 ; CAD6E (32:6d6e) -> 3E 15
+	scall Func_80dff ; CAD70 (32:6d70) -> CD FF 4D
+	pop bc ; CAD73 (32:6d73) -> C1
+.asm_cad74:
+	ret  ; CAD74 (32:6d74) -> C9
+
+Data_cad75:
+	dstr "(くﾞんそう)"
+
+Data_cad7d:
+	db $0a, $05, $ff, $ff
+
+Data_cad81:
+	db $0b, $05, $ff, $ff
+
+Data_cad85:
+	db $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $8b, $01, $8b, $05, $1d, $26, $12
+	db $00, $04, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_cadae:
+	ld a, e ; CADAE (32:6dae) -> 7B
+	or a ; CADAF (32:6daf) -> B7
+	jp nz, .asm_caead ; CADB0 (32:6db0) -> C2 AD 6E
+	ld hl, $00a4 ; CADB3 (32:6db3) -> 21 A4 00
+	scall CheckEventFlag ; CADB6 (32:6db6) -> CD 2E 46
+	or a ; CADB9 (32:6db9) -> B7
+	jp nz, .asm_caead ; CADBA (32:6dba) -> C2 AD 6E
+	xor a ; CADBD (32:6dbd) -> AF
+	scall FacePlayer ; CADBE (32:6dbe) -> CD 4B 44
+	ld hl, $00cf ; CADC1 (32:6dc1) -> 21 CF 00
+	scall PrintTextStandard ; CADC4 (32:6dc4) -> CD 98 44
+	ld hl, $016b ; CADC7 (32:6dc7) -> 21 6B 01
+	scall PrintTextStandard ; CADCA (32:6dca) -> CD 98 44
+.asm_cadcd:
+	ld de, Data_caeae ; CADCD (32:6dcd) -> 11 AE 6E
+	ld hl, Data_cad85 ; CADD0 (32:6dd0) -> 21 85 6D
+	scall Func_80347 ; CADD3 (32:6dd3) -> CD 46 43
+	or a ; CADD6 (32:6dd6) -> B7
+	jp nz, .asm_cade5 ; CADD7 (32:6dd7) -> C2 E5 6D
+	ld a, [wc7c4] ; CADDA (32:6dda) -> FA C4 C7
+	cp $01 ; CADDD (32:6ddd) -> FE 01
+	jp nz, .asm_cadcd ; CADDF (32:6ddf) -> C2 CD 6D
+	jp .asm_caead ; CADE2 (32:6de2) -> C3 AD 6E
+.asm_cade5:
+	ld hl, $00d0 ; CADE5 (32:6de5) -> 21 D0 00
+	scall PrintTextStandard ; CADE8 (32:6de8) -> CD 98 44
+	ld e, $01 ; CADEB (32:6deb) -> 1E 01
+	ld hl, $00a4 ; CADED (32:6ded) -> 21 A4 00
+	scall EventFlagAction ; CADF0 (32:6df0) -> CD 1B 46
+	ld e, $00 ; CADF3 (32:6df3) -> 1E 00
+	ld hl, $0042 ; CADF5 (32:6df5) -> 21 42 00
+	scall EventFlagAction ; CADF8 (32:6df8) -> CD 1B 46
+	ld c, $01 ; CADFB (32:6dfb) -> 0E 01
+	ld e, $01 ; CADFD (32:6dfd) -> 1E 01
+	ld a, $20 ; CADFF (32:6dff) -> 3E 20
+	scall Func_80d4d ; CAE01 (32:6e01) -> CD 4D 4D
+	cp $ff ; CAE04 (32:6e04) -> FE FF
+	jp nz, .asm_cae12 ; CAE06 (32:6e06) -> C2 12 6E
+	ld c, $03 ; CAE09 (32:6e09) -> 0E 03
+	ld e, $01 ; CAE0B (32:6e0b) -> 1E 01
+	ld a, $20 ; CAE0D (32:6e0d) -> 3E 20
+	scall Func_80d4d ; CAE0F (32:6e0f) -> CD 4D 4D
+.asm_cae12:
+	ld hl, $0095 ; CAE12 (32:6e12) -> 21 95 00
+	scall CheckEventFlag ; CAE15 (32:6e15) -> CD 2E 46
+	cp $01 ; CAE18 (32:6e18) -> FE 01
+	jp nz, .asm_cae67 ; CAE1A (32:6e1a) -> C2 67 6E
+	ld hl, $009a ; CAE1D (32:6e1d) -> 21 9A 00
+	scall CheckEventFlag ; CAE20 (32:6e20) -> CD 2E 46
+	cp $01 ; CAE23 (32:6e23) -> FE 01
+	jp nz, .asm_cae67 ; CAE25 (32:6e25) -> C2 67 6E
+	ld hl, $009f ; CAE28 (32:6e28) -> 21 9F 00
+	scall CheckEventFlag ; CAE2B (32:6e2b) -> CD 2E 46
+	cp $01 ; CAE2E (32:6e2e) -> FE 01
+	jp nz, .asm_cae67 ; CAE30 (32:6e30) -> C2 67 6E
+	ld hl, $00a4 ; CAE33 (32:6e33) -> 21 A4 00
+	scall CheckEventFlag ; CAE36 (32:6e36) -> CD 2E 46
+	cp $01 ; CAE39 (32:6e39) -> FE 01
+	jp nz, .asm_cae67 ; CAE3B (32:6e3b) -> C2 67 6E
+	ld hl, $00a9 ; CAE3E (32:6e3e) -> 21 A9 00
+	scall CheckEventFlag ; CAE41 (32:6e41) -> CD 2E 46
+	cp $01 ; CAE44 (32:6e44) -> FE 01
+	jp nz, .asm_cae67 ; CAE46 (32:6e46) -> C2 67 6E
+	ld c, $00 ; CAE49 (32:6e49) -> 0E 00
+	ld e, $01 ; CAE4B (32:6e4b) -> 1E 01
+	ld a, $21 ; CAE4D (32:6e4d) -> 3E 21
+	scall Func_80d4d ; CAE4F (32:6e4f) -> CD 4D 4D
+	ld hl, $046f ; CAE52 (32:6e52) -> 21 6F 04
+	scall PrintTextStandard ; CAE55 (32:6e55) -> CD 98 44
+	ld a, $2a ; CAE58 (32:6e58) -> 3E 2A
+	scall PlaySFX ; CAE5A (32:6e5a) -> CD FE 4E
+	ld hl, $0470 ; CAE5D (32:6e5d) -> 21 70 04
+	scall PrintTextStandard ; CAE60 (32:6e60) -> CD 98 44
+	xor a ; CAE63 (32:6e63) -> AF
+	ld [wc78f], a ; CAE64 (32:6e64) -> EA 8F C7
+.asm_cae67:
+	ld a, [wPlayerFacing] ; CAE67 (32:6e67) -> FA 38 C8
+	cp $02 ; CAE6A (32:6e6a) -> FE 02
+	jp z, .asm_cae89 ; CAE6C (32:6e6c) -> CA 89 6E
+	cp $03 ; CAE6F (32:6e6f) -> FE 03
+	jp z, .asm_cae7d ; CAE71 (32:6e71) -> CA 7D 6E
+	cp $01 ; CAE74 (32:6e74) -> FE 01
+	jp z, .asm_cae7d ; CAE76 (32:6e76) -> CA 7D 6E
+	or a ; CAE79 (32:6e79) -> B7
+	jp nz, .asm_cae92 ; CAE7A (32:6e7a) -> C2 92 6E
+.asm_cae7d:
+	ld bc, Data_cad7d ; CAE7D (32:6e7d) -> 01 7D 6D
+	ld e, $32 ; CAE80 (32:6e80) -> 1E 32
+	xor a ; CAE82 (32:6e82) -> AF
+	scall MovePersonAndWait ; CAE83 (32:6e83) -> CD 88 46
+	jp .asm_cae92 ; CAE86 (32:6e86) -> C3 92 6E
+.asm_cae89:
+	ld bc, Data_cad81 ; CAE89 (32:6e89) -> 01 81 6D
+	ld e, $32 ; CAE8C (32:6e8c) -> 1E 32
+	xor a ; CAE8E (32:6e8e) -> AF
+	scall MovePersonAndWait ; CAE8F (32:6e8f) -> CD 88 46
+.asm_cae92:
+	ld a, $2e ; CAE92 (32:6e92) -> 3E 2E
+	scall PlaySFX ; CAE94 (32:6e94) -> CD FE 4E
+	scall WaitNPCStep ; CAE97 (32:6e97) -> CD 0C 42
+	ld e, $00 ; CAE9A (32:6e9a) -> 1E 00
+	xor a ; CAE9C (32:6e9c) -> AF
+	scall SetPersonVisibilityState ; CAE9D (32:6e9d) -> CD 3D 41
+	ld l, $12 ; CAEA0 (32:6ea0) -> 2E 12
+	push hl ; CAEA2 (32:6ea2) -> E5
+	ld c, $05 ; CAEA3 (32:6ea3) -> 0E 05
+	ld e, $00 ; CAEA5 (32:6ea5) -> 1E 00
+	ld a, $15 ; CAEA7 (32:6ea7) -> 3E 15
+	scall Func_80dff ; CAEA9 (32:6ea9) -> CD FF 4D
+	pop bc ; CAEAC (32:6eac) -> C1
+.asm_caead:
+	ret  ; CAEAD (32:6ead) -> C9
+
+Data_caeae:
+	dstr "(くﾞんそう)"
+
+Data_caeb6:
+	db $0a, $05, $ff, $ff
+
+Data_caeba:
+	db $0b, $05, $ff, $ff
+
+Data_caebe:
+	db $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $61, $01, $61, $04, $1d, $14, $1e
+	db $1e, $06, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
+	db $00, $00, $00, $00, $00, $00, $00, $00, $0c
+
+Func_caee7:
+	ld a, e ; CAEE7 (32:6ee7) -> 7B
+	or a ; CAEE8 (32:6ee8) -> B7
+	jp nz, .asm_cafe6 ; CAEE9 (32:6ee9) -> C2 E6 6F
+	ld hl, $00a9 ; CAEEC (32:6eec) -> 21 A9 00
+	scall CheckEventFlag ; CAEEF (32:6eef) -> CD 2E 46
+	or a ; CAEF2 (32:6ef2) -> B7
+	jp nz, .asm_cafe6 ; CAEF3 (32:6ef3) -> C2 E6 6F
+	xor a ; CAEF6 (32:6ef6) -> AF
+	scall FacePlayer ; CAEF7 (32:6ef7) -> CD 4B 44
+	ld hl, $00d1 ; CAEFA (32:6efa) -> 21 D1 00
+	scall PrintTextStandard ; CAEFD (32:6efd) -> CD 98 44
+	ld hl, $015d ; CAF00 (32:6f00) -> 21 5D 01
+	scall PrintTextStandard ; CAF03 (32:6f03) -> CD 98 44
+.asm_caf06:
+	ld de, Data_cafe7 ; CAF06 (32:6f06) -> 11 E7 6F
+	ld hl, Data_caebe ; CAF09 (32:6f09) -> 21 BE 6E
+	scall Func_8039e ; CAF0C (32:6f0c) -> CD 9D 43
+	or a ; CAF0F (32:6f0f) -> B7
+	jp nz, .asm_caf1e ; CAF10 (32:6f10) -> C2 1E 6F
+	ld a, [wc7c4] ; CAF13 (32:6f13) -> FA C4 C7
+	cp $01 ; CAF16 (32:6f16) -> FE 01
+	jp nz, .asm_caf06 ; CAF18 (32:6f18) -> C2 06 6F
+	jp .asm_cafe6 ; CAF1B (32:6f1b) -> C3 E6 6F
+.asm_caf1e:
+	ld hl, $00d2 ; CAF1E (32:6f1e) -> 21 D2 00
+	scall PrintTextStandard ; CAF21 (32:6f21) -> CD 98 44
+	ld e, $01 ; CAF24 (32:6f24) -> 1E 01
+	ld hl, $00a9 ; CAF26 (32:6f26) -> 21 A9 00
+	scall EventFlagAction ; CAF29 (32:6f29) -> CD 1B 46
+	ld e, $00 ; CAF2C (32:6f2c) -> 1E 00
+	ld hl, $0042 ; CAF2E (32:6f2e) -> 21 42 00
+	scall EventFlagAction ; CAF31 (32:6f31) -> CD 1B 46
+	ld c, $01 ; CAF34 (32:6f34) -> 0E 01
+	ld e, $01 ; CAF36 (32:6f36) -> 1E 01
+	ld a, $1f ; CAF38 (32:6f38) -> 3E 1F
+	scall Func_80d4d ; CAF3A (32:6f3a) -> CD 4D 4D
+	cp $ff ; CAF3D (32:6f3d) -> FE FF
+	jp nz, .asm_caf4b ; CAF3F (32:6f3f) -> C2 4B 6F
+	ld c, $03 ; CAF42 (32:6f42) -> 0E 03
+	ld e, $01 ; CAF44 (32:6f44) -> 1E 01
+	ld a, $1f ; CAF46 (32:6f46) -> 3E 1F
+	scall Func_80d4d ; CAF48 (32:6f48) -> CD 4D 4D
+.asm_caf4b:
+	ld hl, $0095 ; CAF4B (32:6f4b) -> 21 95 00
+	scall CheckEventFlag ; CAF4E (32:6f4e) -> CD 2E 46
+	cp $01 ; CAF51 (32:6f51) -> FE 01
+	jp nz, .asm_cafa0 ; CAF53 (32:6f53) -> C2 A0 6F
+	ld hl, $009a ; CAF56 (32:6f56) -> 21 9A 00
+	scall CheckEventFlag ; CAF59 (32:6f59) -> CD 2E 46
+	cp $01 ; CAF5C (32:6f5c) -> FE 01
+	jp nz, .asm_cafa0 ; CAF5E (32:6f5e) -> C2 A0 6F
+	ld hl, $009f ; CAF61 (32:6f61) -> 21 9F 00
+	scall CheckEventFlag ; CAF64 (32:6f64) -> CD 2E 46
+	cp $01 ; CAF67 (32:6f67) -> FE 01
+	jp nz, .asm_cafa0 ; CAF69 (32:6f69) -> C2 A0 6F
+	ld hl, $00a4 ; CAF6C (32:6f6c) -> 21 A4 00
+	scall CheckEventFlag ; CAF6F (32:6f6f) -> CD 2E 46
+	cp $01 ; CAF72 (32:6f72) -> FE 01
+	jp nz, .asm_cafa0 ; CAF74 (32:6f74) -> C2 A0 6F
+	ld hl, $00a9 ; CAF77 (32:6f77) -> 21 A9 00
+	scall CheckEventFlag ; CAF7A (32:6f7a) -> CD 2E 46
+	cp $01 ; CAF7D (32:6f7d) -> FE 01
+	jp nz, .asm_cafa0 ; CAF7F (32:6f7f) -> C2 A0 6F
+	ld hl, $046f ; CAF82 (32:6f82) -> 21 6F 04
+	scall PrintTextStandard ; CAF85 (32:6f85) -> CD 98 44
+	ld a, $2a ; CAF88 (32:6f88) -> 3E 2A
+	scall PlaySFX ; CAF8A (32:6f8a) -> CD FE 4E
+	ld hl, $0470 ; CAF8D (32:6f8d) -> 21 70 04
+	scall PrintTextStandard ; CAF90 (32:6f90) -> CD 98 44
+	ld c, $00 ; CAF93 (32:6f93) -> 0E 00
+	ld e, $01 ; CAF95 (32:6f95) -> 1E 01
+	ld a, $21 ; CAF97 (32:6f97) -> 3E 21
+	scall Func_80d4d ; CAF99 (32:6f99) -> CD 4D 4D
+	xor a ; CAF9C (32:6f9c) -> AF
+	ld [wc78f], a ; CAF9D (32:6f9d) -> EA 8F C7
+.asm_cafa0:
+	ld a, [wPlayerFacing] ; CAFA0 (32:6fa0) -> FA 38 C8
+	cp $02 ; CAFA3 (32:6fa3) -> FE 02
+	jp z, .asm_cafc2 ; CAFA5 (32:6fa5) -> CA C2 6F
+	cp $03 ; CAFA8 (32:6fa8) -> FE 03
+	jp z, .asm_cafb6 ; CAFAA (32:6faa) -> CA B6 6F
+	cp $01 ; CAFAD (32:6fad) -> FE 01
+	jp z, .asm_cafb6 ; CAFAF (32:6faf) -> CA B6 6F
+	or a ; CAFB2 (32:6fb2) -> B7
+	jp nz, .asm_cafcb ; CAFB3 (32:6fb3) -> C2 CB 6F
+.asm_cafb6:
+	ld bc, Data_caeb6 ; CAFB6 (32:6fb6) -> 01 B6 6E
+	ld e, $32 ; CAFB9 (32:6fb9) -> 1E 32
+	xor a ; CAFBB (32:6fbb) -> AF
+	scall MovePersonAndWait ; CAFBC (32:6fbc) -> CD 88 46
+	jp .asm_cafcb ; CAFBF (32:6fbf) -> C3 CB 6F
+.asm_cafc2:
+	ld bc, Data_caeba ; CAFC2 (32:6fc2) -> 01 BA 6E
+	ld e, $32 ; CAFC5 (32:6fc5) -> 1E 32
+	xor a ; CAFC7 (32:6fc7) -> AF
+	scall MovePersonAndWait ; CAFC8 (32:6fc8) -> CD 88 46
+.asm_cafcb:
+	ld a, $2e ; CAFCB (32:6fcb) -> 3E 2E
+	scall PlaySFX ; CAFCD (32:6fcd) -> CD FE 4E
+	scall WaitNPCStep ; CAFD0 (32:6fd0) -> CD 0C 42
+	ld e, $00 ; CAFD3 (32:6fd3) -> 1E 00
+	xor a ; CAFD5 (32:6fd5) -> AF
+	scall SetPersonVisibilityState ; CAFD6 (32:6fd6) -> CD 3D 41
+	ld l, $0a ; CAFD9 (32:6fd9) -> 2E 0A
+	push hl ; CAFDB (32:6fdb) -> E5
+	ld c, $11 ; CAFDC (32:6fdc) -> 0E 11
+	ld e, $00 ; CAFDE (32:6fde) -> 1E 00
+	ld a, $15 ; CAFE0 (32:6fe0) -> 3E 15
+	scall Func_80dff ; CAFE2 (32:6fe2) -> CD FF 4D
+	pop bc ; CAFE5 (32:6fe5) -> C1
+.asm_cafe6:
+	ret  ; CAFE6 (32:6fe6) -> C9
+
+Data_cafe7:
+	dstr "(くﾞんそう)"
+
+Data_cafef:
+IF DEF(SUN)
+	db $09, $13, $02, $01, $15, $00, $11, $13, $11, $14, $2e, $06, $0a, $01
 	db $01, $15, $15, $06, $0a, $06, $0b, $2e, $0a, $0e, $01, $01, $15, $15, $0a, $0e
 	db $0a, $0d, $2e, $0d, $0a, $01, $01, $15, $15, $0d, $0a, $0d, $09, $2e, $00, $03
 	db $14, $11, $77, $1a, $1c, $78, $09, $18, $00, $04, $0a, $00, $00, $03, $14, $11
@@ -2077,120 +2739,7 @@ IF DEF(SUN)
 	db $ff, $00, $09, $08, $02, $01, $02, $04, $01, $32, $0e, $71, $00, $00, $ff, $00
 	db $0a, $06, $01, $01, $00, $04, $01, $32, $83, $71, $00, $00
 ELIF DEF(STAR)
-	db $1e, $01, $21, $2e, $67, $cd, $3a, $40, $fa, $8b, $c7, $fe, $04, $ca, $c0, $69
-	db $fe, $03, $ca, $90, $69, $fe, $02, $ca, $60, $69, $fe, $01, $ca, $30, $69, $b7
-	db $c2, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $39, $67, $cd, $24, $4d
-	db $21, $95, $00, $cd, $2e, $46, $b7, $c2, $1f, $69, $1e, $01, $21, $97, $68, $cd
-	db $fb, $40, $3e, $09, $cd, $e6, $4e, $cd, $1c, $40, $21, $ea, $02, $cd, $72, $4f
-	db $c3, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $7f, $67, $cd, $24, $4d
-	db $21, $9a, $00, $cd, $2e, $46, $b7, $c2, $4f, $69, $1e, $01, $21, $a5, $68, $cd
-	db $fb, $40, $3e, $0e, $cd, $e6, $4e, $cd, $1c, $40, $21, $f9, $02, $cd, $72, $4f
-	db $c3, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $c5, $67, $cd, $24, $4d
-	db $21, $9f, $00, $cd, $2e, $46, $b7, $c2, $7f, $69, $1e, $01, $21, $b3, $68, $cd
-	db $fb, $40, $3e, $0d, $cd, $e6, $4e, $cd, $1c, $40, $21, $f4, $02, $cd, $72, $4f
-	db $c3, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $0b, $68, $cd, $24, $4d
-	db $21, $a4, $00, $cd, $2e, $46, $b7, $c2, $af, $69, $1e, $01, $21, $c1, $68, $cd
-	db $fb, $40, $3e, $0f, $cd, $e6, $4e, $cd, $1c, $40, $21, $ef, $02, $cd, $72, $4f
-	db $c3, $ed, $69, $3e, $03, $cd, $01, $4d, $1e, $05, $21, $51, $68, $cd, $24, $4d
-	db $21, $a9, $00, $cd, $2e, $46, $b7, $c2, $df, $69, $1e, $01, $21, $cf, $68, $cd
-	db $fb, $40, $3e, $10, $cd, $e6, $4e, $cd, $1c, $40, $21, $fe, $02, $cd, $72, $4f
-	db $c9, $0a, $05, $ff, $ff, $0b, $05, $ff, $ff, $00, $00, $00, $01, $00, $c5, $ca
-	db $00, $00, $4f, $01, $4f, $05, $1d, $14, $14, $00, $05, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $0c, $7b, $b7, $c2, $02, $6b, $21, $95, $00, $cd, $2e, $46, $b7, $c2, $02
-	db $6b, $af, $cd, $4b, $44, $21, $c9, $00, $cd, $98, $44, $11, $03, $6b, $21, $f6
-	db $69, $cd, $d3, $4d, $b7, $c2, $48, $6a, $c3, $02, $6b, $21, $ca, $00, $cd, $98
-	db $44, $1e, $01, $21, $95, $00, $cd, $1b, $46, $1e, $00, $21, $42, $00, $cd, $1b
-	db $46, $0e, $01, $1e, $01, $3e, $1e, $cd, $4d, $4d, $fe, $ff, $c2, $75, $6a, $0e
-	db $03, $1e, $01, $3e, $1e, $cd, $4d, $4d, $21, $95, $00, $cd, $2e, $46, $fe, $01
-	db $c2, $ca, $6a, $21, $9a, $00, $cd, $2e, $46, $fe, $01, $c2, $ca, $6a, $21, $9f
-	db $00, $cd, $2e, $46, $fe, $01, $c2, $ca, $6a, $21, $a4, $00, $cd, $2e, $46, $fe
-	db $01, $c2, $ca, $6a, $21, $a9, $00, $cd, $2e, $46, $fe, $01, $c2, $ca, $6a, $0e
-	db $00, $1e, $01, $3e, $21, $cd, $4d, $4d, $21, $6f, $04, $cd, $98, $44, $3e, $2a
-	db $cd, $fe, $4e, $21, $70, $04, $cd, $98, $44, $af, $ea, $8f, $c7, $fa, $38, $c8
-	db $fe, $02, $c2, $de, $6a, $01, $f2, $69, $1e, $32, $af, $cd, $88, $46, $c3, $e7
-	db $6a, $01, $ee, $69, $1e, $32, $af, $cd, $88, $46, $3e, $2e, $cd, $fe, $4e, $cd
-	db $0c, $42, $1e, $00, $af, $cd, $3d, $41, $2e, $1b, $e5, $0e, $17, $1e, $00, $3e
-	db $15, $cd, $ff, $4d, $c1, $c9, $28, $b8, $de, $dd, $bf, $b3, $29, $00, $0a, $05
-	db $ff, $ff, $0b, $05, $ff, $ff, $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $03
-	db $01, $03, $05, $1e, $01, $18, $00, $71, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c, $7b
-	db $b7, $c2, $3b, $6c, $21, $9a, $00, $cd, $2e, $46, $b7, $c2, $3b, $6c, $af, $cd
-	db $4b, $44, $21, $cb, $00, $cd, $98, $44, $21, $5e, $01, $cd, $98, $44, $11, $3c
-	db $6c, $21, $13, $6b, $cd, $f4, $43, $b7, $c2, $73, $6b, $fa, $c4, $c7, $fe, $01
-	db $c2, $5b, $6b, $c3, $3b, $6c, $21, $cc, $00, $cd, $98, $44, $1e, $01, $21, $9a
-	db $00, $cd, $1b, $46, $1e, $00, $21, $42, $00, $cd, $1b, $46, $0e, $01, $1e, $01
-	db $3e, $1c, $cd, $4d, $4d, $fe, $ff, $c2, $a0, $6b, $0e, $03, $1e, $01, $3e, $1c
-	db $cd, $4d, $4d, $21, $95, $00, $cd, $2e, $46, $fe, $01, $c2, $f5, $6b, $21, $9a
-	db $00, $cd, $2e, $46, $fe, $01, $c2, $f5, $6b, $21, $9f, $00, $cd, $2e, $46, $fe
-	db $01, $c2, $f5, $6b, $21, $a4, $00, $cd, $2e, $46, $fe, $01, $c2, $f5, $6b, $21
-	db $a9, $00, $cd, $2e, $46, $fe, $01, $c2, $f5, $6b, $0e, $00, $1e, $01, $3e, $21
-	db $cd, $4d, $4d, $21, $6f, $04, $cd, $98, $44, $3e, $2a, $cd, $fe, $4e, $21, $70
-	db $04, $cd, $98, $44, $af, $ea, $8f, $c7, $fa, $38, $c8, $fe, $02, $ca, $17, $6c
-	db $fe, $03, $ca, $0b, $6c, $fe, $01, $ca, $0b, $6c, $b7, $c2, $20, $6c, $01, $0b
-	db $6b, $1e, $32, $af, $cd, $88, $46, $c3, $20, $6c, $01, $0f, $6b, $1e, $32, $af
-	db $cd, $88, $46, $3e, $2e, $cd, $fe, $4e, $cd, $0c, $42, $1e, $00, $af, $cd, $3d
-	db $41, $2e, $1b, $e5, $0e, $0b, $1e, $00, $3e, $15, $cd, $ff, $4d, $c1, $c9, $28
-	db $b8, $de, $dd, $bf, $b3, $29, $00, $0a, $05, $ff, $ff, $0b, $05, $ff, $ff, $00
-	db $00, $00, $01, $00, $c5, $ca, $00, $00, $1f, $01, $1f, $05, $1d, $17, $17, $00
-	db $71, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $0c, $7b, $b7, $c2, $74, $6d, $21, $9f, $00
-	db $cd, $2e, $46, $b7, $c2, $74, $6d, $af, $cd, $4b, $44, $21, $cd, $00, $cd, $98
-	db $44, $21, $7a, $01, $cd, $98, $44, $11, $75, $6d, $21, $4c, $6c, $cd, $ef, $42
-	db $b7, $c2, $ac, $6c, $fa, $c4, $c7, $fe, $01, $c2, $94, $6c, $c3, $74, $6d, $21
-	db $ce, $00, $cd, $98, $44, $1e, $01, $21, $9f, $00, $cd, $1b, $46, $1e, $00, $21
-	db $42, $00, $cd, $1b, $46, $0e, $01, $1e, $01, $3e, $1d, $cd, $4d, $4d, $fe, $ff
-	db $c2, $d9, $6c, $0e, $03, $1e, $01, $3e, $1d, $cd, $4d, $4d, $21, $95, $00, $cd
-	db $2e, $46, $fe, $01, $c2, $2e, $6d, $21, $9a, $00, $cd, $2e, $46, $fe, $01, $c2
-	db $2e, $6d, $21, $9f, $00, $cd, $2e, $46, $fe, $01, $c2, $2e, $6d, $21, $a4, $00
-	db $cd, $2e, $46, $fe, $01, $c2, $2e, $6d, $21, $a9, $00, $cd, $2e, $46, $fe, $01
-	db $c2, $2e, $6d, $0e, $00, $1e, $01, $3e, $21, $cd, $4d, $4d, $21, $6f, $04, $cd
-	db $98, $44, $3e, $2a, $cd, $fe, $4e, $21, $70, $04, $cd, $98, $44, $af, $ea, $8f
-	db $c7, $fa, $38, $c8, $fe, $02, $ca, $50, $6d, $fe, $03, $ca, $44, $6d, $fe, $01
-	db $ca, $44, $6d, $b7, $c2, $59, $6d, $01, $44, $6c, $1e, $32, $af, $cd, $88, $46
-	db $c3, $59, $6d, $01, $48, $6c, $1e, $32, $af, $cd, $88, $46, $3e, $2e, $cd, $fe
-	db $4e, $cd, $0c, $42, $1e, $00, $af, $cd, $3d, $41, $2e, $12, $e5, $0e, $1d, $1e
-	db $00, $3e, $15, $cd, $ff, $4d, $c1, $c9, $28, $b8, $de, $dd, $bf, $b3, $29, $00
-	db $0a, $05, $ff, $ff, $0b, $05, $ff, $ff, $00, $00, $00, $01, $00, $c5, $ca, $00
-	db $00, $8b, $01, $8b, $05, $1d, $26, $12, $00, $04, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $0c, $7b, $b7, $c2, $ad, $6e, $21, $a4, $00, $cd, $2e, $46, $b7, $c2, $ad, $6e
-	db $af, $cd, $4b, $44, $21, $cf, $00, $cd, $98, $44, $21, $6b, $01, $cd, $98, $44
-	db $11, $ae, $6e, $21, $85, $6d, $cd, $46, $43, $b7, $c2, $e5, $6d, $fa, $c4, $c7
-	db $fe, $01, $c2, $cd, $6d, $c3, $ad, $6e, $21, $d0, $00, $cd, $98, $44, $1e, $01
-	db $21, $a4, $00, $cd, $1b, $46, $1e, $00, $21, $42, $00, $cd, $1b, $46, $0e, $01
-	db $1e, $01, $3e, $20, $cd, $4d, $4d, $fe, $ff, $c2, $12, $6e, $0e, $03, $1e, $01
-	db $3e, $20, $cd, $4d, $4d, $21, $95, $00, $cd, $2e, $46, $fe, $01, $c2, $67, $6e
-	db $21, $9a, $00, $cd, $2e, $46, $fe, $01, $c2, $67, $6e, $21, $9f, $00, $cd, $2e
-	db $46, $fe, $01, $c2, $67, $6e, $21, $a4, $00, $cd, $2e, $46, $fe, $01, $c2, $67
-	db $6e, $21, $a9, $00, $cd, $2e, $46, $fe, $01, $c2, $67, $6e, $0e, $00, $1e, $01
-	db $3e, $21, $cd, $4d, $4d, $21, $6f, $04, $cd, $98, $44, $3e, $2a, $cd, $fe, $4e
-	db $21, $70, $04, $cd, $98, $44, $af, $ea, $8f, $c7, $fa, $38, $c8, $fe, $02, $ca
-	db $89, $6e, $fe, $03, $ca, $7d, $6e, $fe, $01, $ca, $7d, $6e, $b7, $c2, $92, $6e
-	db $01, $7d, $6d, $1e, $32, $af, $cd, $88, $46, $c3, $92, $6e, $01, $81, $6d, $1e
-	db $32, $af, $cd, $88, $46, $3e, $2e, $cd, $fe, $4e, $cd, $0c, $42, $1e, $00, $af
-	db $cd, $3d, $41, $2e, $12, $e5, $0e, $05, $1e, $00, $3e, $15, $cd, $ff, $4d, $c1
-	db $c9, $28, $b8, $de, $dd, $bf, $b3, $29, $00, $0a, $05, $ff, $ff, $0b, $05, $ff
-	db $ff, $00, $00, $00, $01, $00, $c5, $ca, $00, $00, $61, $01, $61, $04, $1d, $14
-	db $1e, $1e, $06, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
-	db $00, $00, $00, $00, $00, $00, $00, $00, $00, $0c, $7b, $b7, $c2, $e6, $6f, $21
-	db $a9, $00, $cd, $2e, $46, $b7, $c2, $e6, $6f, $af, $cd, $4b, $44, $21, $d1, $00
-	db $cd, $98, $44, $21, $5d, $01, $cd, $98, $44, $11, $e7, $6f, $21, $be, $6e, $cd
-	db $9d, $43, $b7, $c2, $1e, $6f, $fa, $c4, $c7, $fe, $01, $c2, $06, $6f, $c3, $e6
-	db $6f, $21, $d2, $00, $cd, $98, $44, $1e, $01, $21, $a9, $00, $cd, $1b, $46, $1e
-	db $00, $21, $42, $00, $cd, $1b, $46, $0e, $01, $1e, $01, $3e, $1f, $cd, $4d, $4d
-	db $fe, $ff, $c2, $4b, $6f, $0e, $03, $1e, $01, $3e, $1f, $cd, $4d, $4d, $21, $95
-	db $00, $cd, $2e, $46, $fe, $01, $c2, $a0, $6f, $21, $9a, $00, $cd, $2e, $46, $fe
-	db $01, $c2, $a0, $6f, $21, $9f, $00, $cd, $2e, $46, $fe, $01, $c2, $a0, $6f, $21
-	db $a4, $00, $cd, $2e, $46, $fe, $01, $c2, $a0, $6f, $21, $a9, $00, $cd, $2e, $46
-	db $fe, $01, $c2, $a0, $6f, $21, $6f, $04, $cd, $98, $44, $3e, $2a, $cd, $fe, $4e
-	db $21, $70, $04, $cd, $98, $44, $0e, $00, $1e, $01, $3e, $21, $cd, $4d, $4d, $af
-	db $ea, $8f, $c7, $fa, $38, $c8, $fe, $02, $ca, $c2, $6f, $fe, $03, $ca, $b6, $6f
-	db $fe, $01, $ca, $b6, $6f, $b7, $c2, $cb, $6f, $01, $b6, $6e, $1e, $32, $af, $cd
-	db $88, $46, $c3, $cb, $6f, $01, $ba, $6e, $1e, $32, $af, $cd, $88, $46, $3e, $2e
-	db $cd, $fe, $4e, $cd, $0c, $42, $1e, $00, $af, $cd, $3d, $41, $2e, $0a, $e5, $0e
-	db $11, $1e, $00, $3e, $15, $cd, $ff, $4d, $c1, $c9, $28, $b8, $de, $dd, $bf, $b3
-	db $29, $00, $09, $13, $02, $01, $15, $00, $11, $13, $11, $14, $2e, $06, $0a, $01
+	db $09, $13, $02, $01, $15, $00, $11, $13, $11, $14, $2e, $06, $0a, $01
 	db $01, $15, $15, $06, $0a, $06, $0b, $2e, $0a, $0e, $01, $01, $15, $15, $0a, $0e
 	db $0a, $0d, $2e, $0d, $0a, $01, $01, $15, $15, $0d, $0a, $0d, $09, $2e, $00, $03
 	db $14, $11, $77, $1a, $1c, $78, $09, $18, $00, $04, $0a, $00, $00, $03, $14, $11
