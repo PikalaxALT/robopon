@@ -1,5 +1,6 @@
 PYTHON := python3
 POKETOOLS := extras/pokemontools
+COMPARE ?= 0
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
@@ -108,7 +109,7 @@ SRC_ASM := \
 	src/bank_3f_2.asm \
 	src/bank_3f_3.asm
 
-objs := $(SRC_ASM:%.asm=$(BUILDDIR)/%.o)
+ALL_OBJS := $(SRC_ASM:%.asm=$(BUILDDIR)/%.o)
 
 $(foreach obj, $(SRC_ASM:.asm=), \
 	$(eval $(obj)_dep := $(shell $(includes) $(obj).asm)) \
@@ -122,20 +123,19 @@ $(foreach obj, $(SRC_ASM:.asm=), \
 .PHONY: all clean tidy roms sun star compare
 
 all: $(ROM)
+ifeq ($(COMPARE),1)
+	$(MD5) $(shortname).md5
+endif
 
-compare: roms
-	$(MD5) roms.md5
+sun:  ; @$(MAKE) GAME_VERSION=SUN
+star: ; @$(MAKE) GAME_VERSION=STAR
 
-roms: sun star
-
-sun:
-	$(MAKE) GAME_VERSION=SUN
-
-star:
-	$(MAKE) GAME_VERSION=STAR
+compare:
+	@$(MAKE) COMPARE=1 GAME_VERSION=SUN
+	@$(MAKE) COMPARE=1 GAME_VERSION=STAR
 
 tidy:
-	$(RM) -r $(ROMS) $(BUILDDIR) $(roms:.gbc=.sym) $(roms:.gbc=.map)
+	$(RM) -r $(ROMS) $(BUILDDIR) $(ROMS:.gbc=.sym) $(ROMS:.gbc=.map)
 
 clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' -o -iname '*.pcm' -o -iname '*.rz' -o -iname '*.ctf' -o -iname '*.tm2bpp' -o -iname '*.emote' \) -exec $(RM) {} +
@@ -165,12 +165,12 @@ data/base_stats/%.bin: ;
 %.rz: %
 	$(RZ) $< $@
 
-$(objs): $(BUILDDIR)/%.o: %.asm $$(%_dep)
+$(ALL_OBJS): $(BUILDDIR)/%.o: %.asm $$(%_dep)
 	rgbasm -D $(GAME_VERSION) -o $@ $<
 
-opts = -csv -k 18 -l 0x33 -m 0xfe -p 0xff -r 0x03
+RGBFIX_OPTS = -csv -k 18 -l 0x33 -m 0xfe -p 0xff -r 0x03
 
-$(ROM): $(objs) | layout.link
+$(ROM): $(ALL_OBJS) | layout.link
 	rgblink -w -l layout.link -n $*.sym -m $*.map -o $@ $^
 	./trim.py $@
-	rgbfix $(opts) -t "ROBOPON $(GAME_VERSION)" $@
+	rgbfix $(RGBFIX_OPTS) -t "ROBOPON $(GAME_VERSION)" $@
