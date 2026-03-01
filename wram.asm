@@ -712,7 +712,7 @@ wLCDInterrupt2:: ; c770
 	char wc7a0 ; c7a0
 	char wc7a1 ; c7a1
 	char wc7a2 ; c7a2
-	ds $1
+	char wc7a3 ; c7a3
 	char wc7a4 ; c7a4
 	char wc7a5 ; c7a5
 	ds $b
