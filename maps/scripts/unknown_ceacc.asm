@@ -191,9 +191,7 @@ Func_ceacc:: ; ceacc
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_ceaf2
-	ld e, $01
-	ld hl, $0061
-	scall EventFlagAction
+	setevent $0061
 .asm_ceaf2:
 	ld a, $02
 	scall Func_80d01
@@ -289,54 +287,34 @@ Func_ceacc:: ; ceacc
 	cp $01
 	jp nz, .asm_cec3e
 .asm_cebdb:
-	ld e, $05
-	ld hl, Data_ce7ca
-	scall LoadEncounters
+	loadwilds $05, Data_ce7ca
 	jp .asm_cec46
 .asm_cebe6:
-	ld e, $05
-	ld hl, Data_ce810
-	scall LoadEncounters
+	loadwilds $05, Data_ce810
 	jp .asm_cec46
 .asm_cebf1:
-	ld e, $05
-	ld hl, Data_ce856
-	scall LoadEncounters
+	loadwilds $05, Data_ce856
 	jp .asm_cec46
 .asm_cebfc:
-	ld e, $05
-	ld hl, Data_ce89c
-	scall LoadEncounters
+	loadwilds $05, Data_ce89c
 	jp .asm_cec46
 .asm_cec07:
-	ld e, $05
-	ld hl, Data_ce8e2
-	scall LoadEncounters
+	loadwilds $05, Data_ce8e2
 	jp .asm_cec46
 .asm_cec12:
-	ld e, $05
-	ld hl, Data_ce928
-	scall LoadEncounters
+	loadwilds $05, Data_ce928
 	jp .asm_cec46
 .asm_cec1d:
-	ld e, $05
-	ld hl, Data_ce96e
-	scall LoadEncounters
+	loadwilds $05, Data_ce96e
 	jp .asm_cec46
 .asm_cec28:
-	ld e, $05
-	ld hl, Data_ce9b4
-	scall LoadEncounters
+	loadwilds $05, Data_ce9b4
 	jp .asm_cec46
 .asm_cec33:
-	ld e, $05
-	ld hl, Data_ce9fa
-	scall LoadEncounters
+	loadwilds $05, Data_ce9fa
 	jp .asm_cec46
 .asm_cec3e:
-	ld e, $09
-	ld hl, Data_cea40
-	scall LoadEncounters
+	loadwilds $09, Data_cea40
 .asm_cec46:
 	ld a, [wc7de]
 	inc a
@@ -380,14 +358,9 @@ Func_ceacc:: ; ceacc
 	ld e, $01
 	scall LoadWarps
 .asm_cec86:
-	ld e, $01
-	ld hl, Data_ce73b
-	scall LoadWarps
-	ld e, $01
-	ld hl, Data_ceabe
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwarps $01, Data_ce73b
+	loadpeople $01, Data_ceabe
+	playmusic $08
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $32
@@ -476,10 +449,7 @@ Func_ced03:
 	ld a, c
 	cp $ff
 	jp nz, .asm_cedc7
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	loademote $01, $01, $0a
 	ld a, $35
 	call OverworldPlaySFX
 	scall StartShakingScreen

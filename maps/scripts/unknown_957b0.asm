@@ -19,28 +19,19 @@ Data_95794:
 	person_event $ff, $00, $08, $01, $01, $01, $01, $04, $00, PrintTextFacePlayer_25, Data_95782
 
 Func_957b0:: ; 957b0
-	ld e, $02
-	ld hl, Data_95768
-	scall LoadWarps
-	ld hl, $000e
-	scall CheckEventFlag
+	loadwarps $02, Data_95768
+	checkevent $000e
 	or a
 	jp nz, .asm_957e0
-	ld e, $01
-	ld hl, Data_95786
-	scall LoadMapObjects
+	loadpeople $01, Data_95786
 	playmusic SONG_SHOP
 	scall Func_8001c
 	call Func_957f5
-	ld e, $01
-	ld hl, $000e
-	scall EventFlagAction
+	setevent $000e
 	jp .asm_957f0
 .asm_957e0:
 	playmusic SONG_SHOP
-	ld e, $02
-	ld hl, Data_95794
-	scall LoadMapObjects
+	loadpeople $02, Data_95794
 	scall Func_8001c
 .asm_957f0:
 	ret
@@ -49,13 +40,7 @@ Data_957f1:
 	db $05, $01, $ff, $ff
 
 Func_957f5:
-	ld bc, Data_957f1
-	ld e, $25
-	xor a
-	scall MovePerson
-	ld c, $01
-	ld de, Data_957f1
-	ld a, $25
-	scall MovePlayer
+	move_person 0, Data_957f1, 0
+	move_player $01, Data_957f1
 	scall WaitNPCStep
 	ret

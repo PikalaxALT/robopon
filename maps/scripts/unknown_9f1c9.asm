@@ -26,19 +26,12 @@ Data_9f1bb:
 	person_event $ff, $00, $00, $00, $64, $64, $00, $04, $01, Func_9f214, NULL
 
 Func_9f1c9:: ; 9f1c9
-	ld e, $02
-	ld hl, Data_9f155
-	scall LoadWarps
-	ld e, $01
-	ld hl, Data_9f1bb
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwarps $02, Data_9f155
+	loadpeople $01, Data_9f1bb
+	playmusic $08
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_9f16b
-	scall LoadEncounters
+	loadwilds $05, Data_9f16b
 	ld e, $02
 	ld hl, Data_9f1b1
 	scall Func_80ce7
@@ -97,10 +90,7 @@ Func_9f214:
 	ld a, c
 	cp $ff
 	jp nz, .asm_9f2d9
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	loademote $01, $01, $0a
 	ld a, $35
 	call OverworldPlaySFX
 	scall StartShakingScreen

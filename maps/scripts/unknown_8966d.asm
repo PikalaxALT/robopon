@@ -188,10 +188,7 @@ Func_896f7:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $13
-	scall GiveRobot
+	give_robot CARD, a, $00
 	ld a, $02
 	ld [wc796], a
 	ld hl, sp+$00
@@ -242,10 +239,7 @@ Func_896f7:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $6f
-	scall GiveRobot
+	give_robot SCORCH, a, $00
 	ld a, $0a
 	ld [wc796], a
 	ld hl, sp+$00

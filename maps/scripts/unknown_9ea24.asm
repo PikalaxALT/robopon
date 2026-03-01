@@ -24,92 +24,61 @@ Data_9ea08:
 	person_event $ff, $00, $05, $08, $04, $01, $00, $04, $00, Func_9eda0, NULL
 
 Func_9ea24:: ; 9ea24
-	ld e, $00
-	ld hl, $0045
-	scall EventFlagAction
-	ld e, $01
-	ld hl, Data_9e9a9
-	scall LoadWarps
+	resetevent $0045
+	loadwarps $01, Data_9e9a9
 	ld a, $03
 	scall Func_80d01
-	ld e, $04
-	ld hl, Data_9e9b4
-	scall LoadEncounters
+	loadwilds $04, Data_9e9b4
 	ld a, $01
 	scall LoadPlayerSprite
 	ld a, [wc794]
 	cp $02
 	jp nz, .asm_9ea69
-	ld hl, $0053
-	scall CheckEventFlag
+	checkevent $0053
 	or a
 	jp nz, .asm_9ea69
-	ld e, $02
-	ld hl, Data_9e9ec
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	loadpeople $02, Data_9e9ec
+	hideperson 0
 	jp .asm_9eaf2
 .asm_9ea69:
 	ld a, [wc794]
 	cp $03
 	jp nz, .asm_9ea8c
-	ld hl, $0054
-	scall CheckEventFlag
+	checkevent $0054
 	or a
 	jp nz, .asm_9ea8c
-	ld e, $02
-	ld hl, Data_9e9ec
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	loadpeople $02, Data_9e9ec
+	hideperson 0
 	jp .asm_9eaf2
 .asm_9ea8c:
 	ld a, [wc794]
 	cp $05
 	jp nz, .asm_9eaaf
-	ld hl, $0055
-	scall CheckEventFlag
+	checkevent $0055
 	or a
 	jp nz, .asm_9eaaf
-	ld e, $02
-	ld hl, Data_9e9ec
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	loadpeople $02, Data_9e9ec
+	hideperson 0
 	jp .asm_9eaf2
 .asm_9eaaf:
 	ld a, [wc794]
 	cp $06
 	jp nz, .asm_9ead2
-	ld hl, $0056
-	scall CheckEventFlag
+	checkevent $0056
 	or a
 	jp nz, .asm_9ead2
-	ld e, $02
-	ld hl, Data_9e9ec
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	loadpeople $02, Data_9e9ec
+	hideperson 0
 	jp .asm_9eaf2
 .asm_9ead2:
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9eaf2
-	ld hl, $0057
-	scall CheckEventFlag
+	checkevent $0057
 	or a
 	jp nz, .asm_9eaf2
-	ld e, $02
-	ld hl, Data_9e9ec
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	loadpeople $02, Data_9e9ec
+	hideperson 0
 .asm_9eaf2:
 	ld a, [wBackupMapGroup]
 	cp $12
@@ -117,12 +86,9 @@ Func_9ea24:: ; 9ea24
 	ld a, [wBackupMapNumber]
 	cp $0e
 	jp nz, .asm_9eb0a
-	ld e, $02
-	ld hl, Data_9ea08
-	scall LoadMapObjects
+	loadpeople $02, Data_9ea08
 .asm_9eb0a:
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ret
 
@@ -136,56 +102,30 @@ Func_9eb3c:
 	ld a, e
 	or a
 	jp nz, .asm_9ecf8
-	ld hl, $0045
-	scall CheckEventFlag
+	checkevent $0045
 	or a
 	jp nz, .asm_9eba0
-	ld c, $03
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	loademote $03, $02, $08
 	ld e, $04
 	ld a, $04
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld e, $01
-	ld hl, $0045
-	scall EventFlagAction
+	showperson 0
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
+	setevent $0045
 .asm_9eba0:
-	xor a
-	scall FacePlayer
+	face_player 0
 	ld hl, sp+$00
 	ld [hl], $00
-	ld hl, $0053
-	scall CheckEventFlag
+	checkevent $0053
 	or a
 	jp nz, .asm_9ebb9
 	ld hl, sp+$00
@@ -194,8 +134,7 @@ Func_9eb3c:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9ebb9:
-	ld hl, $0054
-	scall CheckEventFlag
+	checkevent $0054
 	or a
 	jp nz, .asm_9ebca
 	ld hl, sp+$00
@@ -204,8 +143,7 @@ Func_9eb3c:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9ebca:
-	ld hl, $0055
-	scall CheckEventFlag
+	checkevent $0055
 	or a
 	jp nz, .asm_9ebdb
 	ld hl, sp+$00
@@ -214,8 +152,7 @@ Func_9eb3c:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9ebdb:
-	ld hl, $0056
-	scall CheckEventFlag
+	checkevent $0056
 	or a
 	jp nz, .asm_9ebec
 	ld hl, sp+$00
@@ -224,8 +161,7 @@ Func_9eb3c:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9ebec:
-	ld hl, $0057
-	scall CheckEventFlag
+	checkevent $0057
 	or a
 	jp nz, .asm_9ebfd
 	ld hl, sp+$00
@@ -269,9 +205,7 @@ Func_9eb3c:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_9ecf8
-	ld de, Data_9ecfa
-	ld hl, Data_9eb13
-	scall ScriptedBattle
+	startbattle Data_9ecfa, Data_9eb13
 	or a
 	jp nz, .asm_9ec5d
 	jp .asm_9ecf8
@@ -279,61 +213,46 @@ Func_9eb3c:
 	ld a, [wc794]
 	cp $02
 	jp nz, .asm_9ec7a
-	ld hl, $0053
-	scall CheckEventFlag
+	checkevent $0053
 	or a
 	jp nz, .asm_9ec7a
-	ld e, $01
-	ld hl, $0053
-	scall EventFlagAction
+	setevent $0053
 	jp .asm_9eceb
 .asm_9ec7a:
 	ld a, [wc794]
 	cp $03
 	jp nz, .asm_9ec97
-	ld hl, $0054
-	scall CheckEventFlag
+	checkevent $0054
 	or a
 	jp nz, .asm_9ec97
-	ld e, $01
-	ld hl, $0054
-	scall EventFlagAction
+	setevent $0054
 	jp .asm_9eceb
 .asm_9ec97:
 	ld a, [wc794]
 	cp $05
 	jp nz, .asm_9ecb4
-	ld hl, $0055
-	scall CheckEventFlag
+	checkevent $0055
 	or a
 	jp nz, .asm_9ecb4
-	ld e, $01
-	ld hl, $0055
-	scall EventFlagAction
+	setevent $0055
 	jp .asm_9eceb
 .asm_9ecb4:
 	ld a, [wc794]
 	cp $06
 	jp nz, .asm_9ecd1
-	ld hl, $0056
-	scall CheckEventFlag
+	checkevent $0056
 	or a
 	jp nz, .asm_9ecd1
-	ld e, $01
-	ld hl, $0056
-	scall EventFlagAction
+	setevent $0056
 	jp .asm_9eceb
 .asm_9ecd1:
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9eceb
-	ld hl, $0057
-	scall CheckEventFlag
+	checkevent $0057
 	or a
 	jp nz, .asm_9eceb
-	ld e, $01
-	ld hl, $0057
-	scall EventFlagAction
+	setevent $0057
 .asm_9eceb:
 	ld l, $1b
 	push hl
@@ -389,16 +308,10 @@ Func_9ed0f:
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, .asm_9ed69
-	ld c, $01
-	ld de, Data_9ed0b
-	ld a, $27
-	scall MovePlayer
+	move_player $01, Data_9ed0b
 	jp .asm_9ed73
 .asm_9ed69:
-	ld c, $01
-	ld de, Data_9ed05
-	ld a, $27
-	scall MovePlayer
+	move_player $01, Data_9ed05
 .asm_9ed73:
 	scall WaitNPCStep
 	xor a
@@ -459,16 +372,10 @@ Func_9eda0:
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, .asm_9edfa
-	ld c, $01
-	ld de, Data_9ed9c
-	ld a, $27
-	scall MovePlayer
+	move_player $01, Data_9ed9c
 	jp .asm_9ee04
 .asm_9edfa:
-	ld c, $01
-	ld de, Data_9ed96
-	ld a, $27
-	scall MovePlayer
+	move_player $01, Data_9ed96
 .asm_9ee04:
 	scall WaitNPCStep
 	xor a
@@ -490,18 +397,12 @@ Func_9eda0:
 	ret
 
 Func_9ee27:
-	xor a
-	scall PlayMusic
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $0a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $0b
-	scall LoadEmote
-	ld a, $44
-	scall PlaySFX
+	loademote $01, $01, $0b
+	playsfx $44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04

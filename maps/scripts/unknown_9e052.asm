@@ -35,21 +35,12 @@ Func_9e052:: ; 9e052
 	pop bc
 	ld a, $01
 	ld [wc792], a
-	ld e, $02
-	ld hl, Data_9dfe4
-	scall LoadWarps
-	ld e, $00
-	ld hl, $0010
-	scall EventFlagAction
-	ld e, $01
-	ld hl, Data_9e044
-	scall LoadMapObjects
+	loadwarps $02, Data_9dfe4
+	resetevent $0010
+	loadpeople $01, Data_9e044
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_9dffa
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_9dffa
+	playmusic $08
 	scall Func_8001c
 	ret

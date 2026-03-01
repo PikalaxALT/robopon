@@ -20,30 +20,18 @@ Data_a53f8:
 Func_a544c:: ; a544c
 	ld a, $10
 	ld [wc789], a
-	ld e, $06
-	ld hl, Data_a53f8
-	scall LoadMapObjects
-	ld hl, $0044
-	scall CheckEventFlag
+	loadpeople $06, Data_a53f8
+	checkevent $0044
 	or a
 	jp nz, .asm_a546e
-	ld e, $01
-	ld hl, Data_a53de
-	scall LoadWarps
+	loadwarps $01, Data_a53de
 	jp .asm_a547d
 .asm_a546e:
-	ld e, $01
-	ld hl, Data_a53e9
-	scall LoadWarps
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
+	loadwarps $01, Data_a53e9
+	hideperson $04
 .asm_a547d:
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld a, $0c
-	scall PlayMusic
+	hideperson $01
+	playmusic $0c
 	ld a, $01
 	scall LoadPlayerSprite
 	ld a, $0a
@@ -57,14 +45,12 @@ Func_a549d:
 	ld a, e
 	or a
 	jp nz, .asm_a54f1
-	ld hl, $0017
-	scall CheckEventFlag
+	checkevent $0017
 	or a
 	jp nz, .asm_a54ea
 	ld hl, $00fe
 	scall PrintTextWithNPCName
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $00ff
 	scall PrintTextStandard
 	ld c, $00
@@ -82,9 +68,7 @@ Func_a549d:
 	cp $ff
 	jp nz, .asm_a54df
 .asm_a54df:
-	ld e, $01
-	ld hl, $0017
-	scall EventFlagAction
+	setevent $0017
 	jp .asm_a54f1
 .asm_a54ea:
 	ld e, $00
@@ -101,24 +85,15 @@ Func_a5500:
 	ld a, e
 	or a
 	jp nz, .asm_a5533
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
+	showperson $01
 	ld hl, $003c
 	scall ScriptSleep
-	ld bc, Data_a54f2
-	ld e, $29
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_a54f2, 1
 	scall WaitNPCStep
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 .asm_a5533:
 	ret
 
@@ -161,10 +136,7 @@ Func_a553a:
 	jp nz, .asm_a558a
 	jp .asm_a5597
 .asm_a558a:
-	ld c, $01
-	ld de, Data_a5534
-	ld a, $29
-	scall MovePlayer
+	move_player $01, Data_a5534
 	scall WaitNPCStep
 .asm_a5597:
 	call Func_a5640
@@ -228,10 +200,7 @@ Func_a55c0:
 	jp nz, .asm_a5610
 	jp .asm_a561d
 .asm_a5610:
-	ld c, $01
-	ld de, $55ba
-	ld a, $29
-	scall MovePlayer
+	move_player $01, $55ba
 	scall WaitNPCStep
 .asm_a561d:
 	call Func_a5640
@@ -256,18 +225,12 @@ Func_a55c0:
 	ret
 
 Func_a5640:
-	xor a
-	scall PlayMusic
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $0a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $0b
-	scall LoadEmote
-	ld a, $44
-	scall PlaySFX
+	loademote $01, $01, $0b
+	playsfx $44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04

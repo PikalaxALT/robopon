@@ -98,49 +98,33 @@ Data_b1357:
 	person_event $ff, $ff, $11, $11, $01, $01, $00, $04, $01, $5d8b, NULL
 
 Func_b138f:: ; b138f
-	ld e, $05
-	ld hl, Data_b112e
-	scall LoadWarps
-	ld hl, $0014
-	scall CheckEventFlag
+	loadwarps $05, Data_b112e
+	checkevent $0014
 	cp $01
 	jp nz, .asm_b13da
-	ld hl, $0007
-	scall CheckEventFlag
+	checkevent $0007
 	cp $01
 	jp nz, .asm_b13da
-	ld hl, $001e
-	scall CheckEventFlag
+	checkevent $001e
 	or a
 	jp nz, .asm_b13da
-	ld e, $03
-	ld hl, Data_b1189
-	scall LoadMapObjects
-	ld e, $06
-	ld hl, Data_b11b3
-	scall LoadMapObjects
-	ld e, $04
-	ld hl, Data_b1207
-	scall LoadMapObjects
-	ld a, $14
-	scall PlayMusic
+	loadpeople $03, Data_b1189
+	loadpeople $06, Data_b11b3
+	loadpeople $04, Data_b1207
+	playmusic $14
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b13da:
-	ld hl, $0014
-	scall CheckEventFlag
+	checkevent $0014
 	cp $01
 	jp nz, .asm_b1468
-	ld hl, $0007
-	scall CheckEventFlag
+	checkevent $0007
 	cp $01
 	jp nz, .asm_b1468
-	ld hl, $001e
-	scall CheckEventFlag
+	checkevent $001e
 	cp $01
 	jp nz, .asm_b1468
-	ld hl, $0009
-	scall CheckEventFlag
+	checkevent $0009
 	or a
 	jp nz, .asm_b1468
 	ld a, [wBackupMapGroup]
@@ -155,194 +139,123 @@ Func_b138f:: ; b138f
 	ld a, [wBackupMapY]
 	cp $05
 	jp nz, .asm_b1439
-	ld e, $03
-	ld hl, Data_b1189
-	scall LoadMapObjects
+	loadpeople $03, Data_b1189
 	xor a
 	scall Func_80653
 	scall Func_8001c
 	call Func_b17c6
 	jp .asm_b1465
 .asm_b1439:
-	ld e, $03
-	ld hl, Data_b1189
-	scall LoadMapObjects
-	ld e, $06
-	ld hl, Data_b11b3
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld a, $14
-	scall PlayMusic
+	loadpeople $03, Data_b1189
+	loadpeople $06, Data_b11b3
+	hideperson 0
+	hideperson $01
+	hideperson $02
+	playmusic $14
 	scall Func_8001c
 .asm_b1465:
 	jp .asm_b1640
 .asm_b1468:
-	ld hl, $003c
-	scall CheckEventFlag
+	checkevent $003c
 	cp $01
 	jp nz, .asm_b14ab
-	ld hl, $001e
-	scall CheckEventFlag
+	checkevent $001e
 	cp $01
 	jp nz, .asm_b14ab
-	ld hl, $001f
-	scall CheckEventFlag
+	checkevent $001f
 	or a
 	jp nz, .asm_b14ab
-	ld e, $03
-	ld hl, Data_b1189
-	scall LoadMapObjects
-	ld e, $06
-	ld hl, Data_b11b3
-	scall LoadMapObjects
-	ld e, $02
-	ld hl, Data_b123f
-	scall LoadMapObjects
-	ld a, $14
-	scall PlayMusic
+	loadpeople $03, Data_b1189
+	loadpeople $06, Data_b11b3
+	loadpeople $02, Data_b123f
+	playmusic $14
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b14ab:
-	ld hl, $0015
-	scall CheckEventFlag
+	checkevent $0015
 	cp $01
 	jp nz, .asm_b14f5
-	ld hl, $001f
-	scall CheckEventFlag
+	checkevent $001f
 	cp $01
 	jp nz, .asm_b14f5
-	ld hl, $0020
-	scall CheckEventFlag
+	checkevent $0020
 	or a
 	jp nz, .asm_b14f5
-	ld e, $03
-	ld hl, Data_b1189
-	scall LoadMapObjects
-	ld e, $06
-	ld hl, Data_b11b3
-	scall LoadMapObjects
-	ld e, $05
-	ld hl, Data_b125b
-	scall LoadMapObjects
-	ld e, $00
-	ld a, $0d
-	scall SetPersonVisibilityState
-	ld a, $14
-	scall PlayMusic
+	loadpeople $03, Data_b1189
+	loadpeople $06, Data_b11b3
+	loadpeople $05, Data_b125b
+	hideperson $0d
+	playmusic $14
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b14f5:
-	ld hl, $0016
-	scall CheckEventFlag
+	checkevent $0016
 	cp $01
 	jp nz, .asm_b1538
-	ld hl, $0020
-	scall CheckEventFlag
+	checkevent $0020
 	cp $01
 	jp nz, .asm_b1538
-	ld hl, $0021
-	scall CheckEventFlag
+	checkevent $0021
 	or a
 	jp nz, .asm_b1538
-	ld e, $03
-	ld hl, Data_b1189
-	scall LoadMapObjects
-	ld e, $06
-	ld hl, Data_b11b3
-	scall LoadMapObjects
-	ld e, $04
-	ld hl, Data_b12a1
-	scall LoadMapObjects
-	ld a, $14
-	scall PlayMusic
+	loadpeople $03, Data_b1189
+	loadpeople $06, Data_b11b3
+	loadpeople $04, Data_b12a1
+	playmusic $14
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b1538:
 	ld a, [wc78d]
 	cp $01
 	jp nz, .asm_b157f
-	ld hl, $0021
-	scall CheckEventFlag
+	checkevent $0021
 	cp $01
 	jp nz, .asm_b157f
-	ld hl, $0022
-	scall CheckEventFlag
+	checkevent $0022
 	or a
 	jp nz, .asm_b157f
-	ld e, $03
-	ld hl, Data_b1189
-	scall LoadMapObjects
-	ld e, $06
-	ld hl, Data_b11b3
-	scall LoadMapObjects
-	ld e, $03
-	ld hl, Data_b12d9
-	scall LoadMapObjects
-	ld e, $00
-	ld a, $0b
-	scall SetPersonVisibilityState
-	ld a, $14
-	scall PlayMusic
+	loadpeople $03, Data_b1189
+	loadpeople $06, Data_b11b3
+	loadpeople $03, Data_b12d9
+	hideperson $0b
+	playmusic $14
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b157f:
-	ld hl, $0034
-	scall CheckEventFlag
+	checkevent $0034
 	cp $01
 	jp nz, .asm_b15c7
-	ld hl, $0022
-	scall CheckEventFlag
+	checkevent $0022
 	cp $01
 	jp nz, .asm_b15c7
-	ld hl, $0023
-	scall CheckEventFlag
+	checkevent $0023
 	or a
 	jp nz, .asm_b15c7
-	ld hl, $0035
-	scall CheckEventFlag
+	checkevent $0035
 	or a
 	jp nz, .asm_b15c7
-	ld hl, $00c3
-	scall CheckEventFlag
+	checkevent $00c3
 	cp $01
 	jp nz, .asm_b15c7
-	ld e, $06
-	ld hl, Data_b1303
-	scall LoadMapObjects
-	ld a, $14
-	scall PlayMusic
+	loadpeople $06, Data_b1303
+	playmusic $14
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b15c7:
-	ld hl, $0033
-	scall CheckEventFlag
+	checkevent $0033
 	cp $01
 	jp nz, .asm_b1605
-	ld hl, $0022
-	scall CheckEventFlag
+	checkevent $0022
 	cp $01
 	jp nz, .asm_b1605
-	ld hl, $0023
-	scall CheckEventFlag
+	checkevent $0023
 	or a
 	jp nz, .asm_b1605
-	ld hl, $0035
-	scall CheckEventFlag
+	checkevent $0035
 	cp $01
 	jp nz, .asm_b1605
-	ld e, $04
-	ld hl, Data_b1357
-	scall LoadMapObjects
-	ld a, $14
-	scall PlayMusic
+	loadpeople $04, Data_b1357
+	playmusic $14
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b1605:
@@ -352,24 +265,13 @@ Func_b138f:: ; b138f
 	ld a, [wc790]
 	cp $04
 	jp c, .asm_b1638
-	ld e, $03
-	ld hl, Data_b1189
-	scall LoadMapObjects
-	ld e, $06
-	ld hl, Data_b11b3
-	scall LoadMapObjects
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	loadpeople $03, Data_b1189
+	loadpeople $06, Data_b11b3
+	hideperson 0
+	hideperson $01
+	hideperson $02
 .asm_b1638:
-	ld a, $14
-	scall PlayMusic
+	playmusic $14
 	scall Func_8001c
 .asm_b1640:
 	ret
@@ -401,25 +303,19 @@ Func_b1686:
 	ld a, e
 	cp $02
 	jp nz, .asm_b17c0
-	ld hl, $001e
-	scall CheckEventFlag
+	checkevent $001e
 	or a
 	jp nz, .asm_b17c0
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_b166a
-	ld a, $2c
-	scall MovePlayer
+	playmusic SONG_NONE
+	move_player $01, Data_b166a
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld hl, $004d
 	scall PrintTextWithNPCName
 	ld hl, $004e
@@ -438,9 +334,7 @@ Func_b1686:
 	scall PrintTextWithNPCName
 	xor a
 	scall PlayerFace
-	ld e, $00
-	ld a, $09
-	scall SpriteFace
+	sprite_face $00, $09
 	ld hl, $0057
 	scall PrintTextWithNPCName
 	xor a
@@ -471,57 +365,34 @@ Func_b1686:
 .asm_b1727:
 	ld hl, $0056
 	scall PrintTextWithNPCName
-	ld e, $03
-	ld a, $09
-	scall SpriteFace
+	sprite_face $03, $09
 	ld hl, $001e
 	scall ScriptSleep
 	ld a, $01
 	scall PlayerFace
 	ld hl, $001e
 	scall ScriptSleep
-	ld de, Data_b17c1
-	ld hl, Data_b1641
-	scall ScriptedBattle
+	startbattle Data_b17c1, Data_b1641
 	or a
 	jp nz, .asm_b1755
 	jp .asm_b17c0
 .asm_b1755:
 	ld hl, $0058
 	scall PrintTextWithNPCName
-	xor a
-	scall PlayMusic
-	ld a, $18
-	scall PlayMusic
-	ld bc, Data_b1670
-	ld e, $2c
-	ld a, $09
-	scall MovePersonAndWait
+	playmusic SONG_NONE
+	playmusic $18
+	move_person $09, Data_b1670, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
-	ld bc, Data_b1676
-	ld e, $2c
-	ld a, $0a
-	scall MovePerson
-	ld bc, Data_b167e
-	ld e, $2c
-	ld a, $0b
-	scall MovePersonAndWait
+	hideperson $09
+	move_person $0a, Data_b1676, 0
+	move_person $0b, Data_b167e, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $0b
-	scall SetPersonVisibilityState
+	hideperson $0a
+	hideperson $0b
 	ld a, $07
 	ld [wc790], a
 	call Func_b213e
-	ld e, $01
-	ld hl, $001e
-	scall EventFlagAction
+	setevent $001e
 	ld a, $03
 	scall Func_80c94
 	ld a, $12
@@ -539,9 +410,7 @@ Data_b17c1:
 Func_b17c6:
 	ld hl, $005b
 	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $0009
-	scall EventFlagAction
+	setevent $0009
 	ld l, $05
 	push hl
 	ld c, $07
@@ -566,79 +435,55 @@ Func_b1817:
 	ld a, e
 	cp $02
 	jp nz, .asm_b18d3
-	ld hl, $001f
-	scall CheckEventFlag
+	checkevent $001f
 	or a
 	jp nz, .asm_b18d3
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_b180b
-	ld a, $2c
-	scall MovePlayer
+	playmusic SONG_NONE
+	move_player $01, Data_b180b
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld hl, $007e
 	scall PrintTextWithNPCName
-	ld de, Data_b18d4
-	ld hl, Data_b17e2
-	scall ScriptedBattle
+	startbattle Data_b18d4, Data_b17e2
 	or a
 	jp nz, .asm_b1862
 	jp .asm_b18d3
 .asm_b1862:
 	ld hl, $007f
 	scall PrintTextWithNPCName
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $0367
 	scall PrintTextStandard
 	ld hl, $0368
 	scall PrintTextWithNPCName
-	ld bc, Data_b1811
-	ld e, $2c
-	ld a, $09
-	scall MovePersonAndWait
+	move_person $09, Data_b1811, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
-	ld c, $0f
-	ld e, $00
-	ld a, $1e
-	scall GiveRobot
+	hideperson $09
+	give_robot UNIBOT, $0f, $00
 	cp $ff
 	jp nz, .asm_b189b
 .asm_b189b:
 	ld a, $06
 	ld [wc790], a
 	call Func_b213e
-	ld e, $01
-	ld hl, $001f
-	scall EventFlagAction
+	setevent $001f
 	ld a, $05
 	scall Func_80c94
 	ld c, $00
 	ld e, $01
 	ld a, $02
 	scall Func_80d4d
-	ld e, $01
-	ld hl, $0059
-	scall EventFlagAction
-	ld hl, $0086
-	scall CheckEventFlag
+	setevent $0059
+	checkevent $0086
 	or a
 	jp nz, .asm_b18d3
-	ld e, $01
-	ld hl, $0086
-	scall EventFlagAction
+	setevent $0086
 .asm_b18d3:
 	ret
 
@@ -666,136 +511,68 @@ Func_b191e:
 	ld a, e
 	cp $02
 	jp nz, .asm_b1a6c
-	ld hl, $0020
-	scall CheckEventFlag
+	checkevent $0020
 	or a
 	jp nz, .asm_b1a6c
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_b1902
-	ld a, $2c
-	scall MovePlayer
+	playmusic SONG_NONE
+	move_player $01, Data_b1902
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	ld a, $01
-	scall PlayMusic
-	ld e, $01
-	ld a, $0d
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $0d
-	scall SpriteFace
-	ld e, $01
-	ld a, $0d
-	scall SpriteFace
-	ld e, $02
-	ld a, $0d
-	scall SpriteFace
-	ld e, $03
-	ld a, $0d
-	scall SpriteFace
-	ld e, $00
-	ld a, $0d
-	scall SpriteFace
-	ld e, $01
-	ld a, $0d
-	scall SpriteFace
-	ld e, $02
-	ld a, $0d
-	scall SpriteFace
-	ld e, $03
-	ld a, $0d
-	scall SpriteFace
+	playmusic $01
+	showperson $0d
+	sprite_face $00, $0d
+	sprite_face $01, $0d
+	sprite_face $02, $0d
+	sprite_face $03, $0d
+	sprite_face $00, $0d
+	sprite_face $01, $0d
+	sprite_face $02, $0d
+	sprite_face $03, $0d
 	ld hl, $00aa
 	scall PrintTextWithNPCName
-	ld de, Data_b1a6d
-	ld hl, Data_b18d9
-	scall ScriptedBattle
+	startbattle Data_b1a6d, Data_b18d9
 	or a
 	jp nz, .asm_b19a8
 	jp .asm_b1a6c
 .asm_b19a8:
 	ld hl, $00ab
 	scall PrintTextWithNPCName
-	ld e, $00
-	ld a, $0d
-	scall SpriteFace
-	ld e, $01
-	ld a, $0d
-	scall SpriteFace
-	ld e, $02
-	ld a, $0d
-	scall SpriteFace
-	ld e, $03
-	ld a, $0d
-	scall SpriteFace
-	ld e, $00
-	ld a, $0d
-	scall SpriteFace
-	ld e, $01
-	ld a, $0d
-	scall SpriteFace
-	ld e, $02
-	ld a, $0d
-	scall SpriteFace
-	ld e, $03
-	ld a, $0d
-	scall SpriteFace
-	ld e, $00
-	ld a, $0d
-	scall SpriteFace
-	ld e, $01
-	ld a, $0d
-	scall SpriteFace
-	ld e, $00
-	ld a, $0d
-	scall SetPersonVisibilityState
+	sprite_face $00, $0d
+	sprite_face $01, $0d
+	sprite_face $02, $0d
+	sprite_face $03, $0d
+	sprite_face $00, $0d
+	sprite_face $01, $0d
+	sprite_face $02, $0d
+	sprite_face $03, $0d
+	sprite_face $00, $0d
+	sprite_face $01, $0d
+	hideperson $0d
 	ld hl, $036a
 	scall PrintTextStandard
 	ld hl, $036b
 	scall PrintTextWithNPCName
-	ld bc, Data_b1908
-	ld e, $2c
-	ld a, $09
-	scall MovePersonAndWait
+	move_person $09, Data_b1908, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
-	ld bc, Data_b190e
-	ld e, $2c
-	ld a, $0a
-	scall MovePerson
-	ld bc, Data_b1916
-	ld e, $2c
-	ld a, $0b
-	scall MovePersonAndWait
+	hideperson $09
+	move_person $0a, Data_b190e, 0
+	move_person $0b, Data_b1916, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $0b
-	scall SetPersonVisibilityState
-	ld c, $19
-	ld e, $00
-	ld a, $0f
-	scall GiveRobot
+	hideperson $0a
+	hideperson $0b
+	give_robot DOSBOT, $19, $00
 	cp $ff
 	jp nz, .asm_b1a4e
 .asm_b1a4e:
 	ld a, $05
 	ld [wc790], a
 	call Func_b213e
-	ld e, $01
-	ld hl, $0020
-	scall EventFlagAction
+	setevent $0020
 	ld a, $08
 	scall Func_80c94
 	ld c, $00
@@ -829,65 +606,40 @@ Func_b1ab8:
 	ld a, e
 	cp $02
 	jp nz, .asm_b1b60
-	ld hl, $0021
-	scall CheckEventFlag
+	checkevent $0021
 	or a
 	jp nz, .asm_b1b60
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_b1a9c
-	ld a, $2c
-	scall MovePlayer
+	playmusic SONG_NONE
+	move_player $01, Data_b1a9c
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld hl, $00e0
 	scall PrintTextWithNPCName
-	ld de, Data_b1b61
-	ld hl, Data_b1a73
-	scall ScriptedBattle
+	startbattle Data_b1b61, Data_b1a73
 	or a
 	jp nz, .asm_b1b03
 	jp .asm_b1b60
 .asm_b1b03:
 	ld hl, $00e1
 	scall PrintTextWithNPCName
-	ld bc, Data_b1aa2
-	ld e, $2c
-	ld a, $09
-	scall MovePersonAndWait
+	move_person $09, Data_b1aa2, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
-	ld bc, Data_b1aa8
-	ld e, $2c
-	ld a, $0a
-	scall MovePerson
-	ld bc, Data_b1ab0
-	ld e, $2c
-	ld a, $0b
-	scall MovePersonAndWait
+	hideperson $09
+	move_person $0a, Data_b1aa8, 0
+	move_person $0b, Data_b1ab0, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $0b
-	scall SetPersonVisibilityState
+	hideperson $0a
+	hideperson $0b
 	ld a, $04
 	ld [wc790], a
 	call Func_b213e
-	ld e, $01
-	ld hl, $0021
-	scall EventFlagAction
+	setevent $0021
 	ld a, $07
 	ld [wc78d], a
 	ld c, $00
@@ -921,74 +673,43 @@ Func_b1b9b:
 	ld a, e
 	cp $02
 	jp nz, .asm_b1c47
-	ld hl, $0022
-	scall CheckEventFlag
+	checkevent $0022
 	or a
 	jp nz, .asm_b1c47
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_b1b8f
-	ld a, $2c
-	scall MovePlayer
+	playmusic SONG_NONE
+	move_player $01, Data_b1b8f
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld hl, $00f9
 	scall PrintTextWithNPCName
-	ld de, Data_b1c48
-	ld hl, Data_b1b66
-	scall ScriptedBattle
+	startbattle Data_b1c48, Data_b1b66
 	or a
 	jp nz, .asm_b1be6
 	jp .asm_b1c47
 .asm_b1be6:
 	ld hl, $00fa
 	scall PrintTextWithNPCName
-	ld bc, Data_b1b95
-	ld e, $2c
-	ld a, $09
-	scall MovePersonAndWait
+	move_person $09, Data_b1b95, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
+	hideperson $09
 	call Func_b2275
-	ld e, $01
-	ld hl, $0022
-	scall EventFlagAction
+	setevent $0022
 	ld a, $03
 	ld [wc790], a
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $05
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $06
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $07
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $08
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $01
+	hideperson $03
+	hideperson $04
+	hideperson $05
+	hideperson $06
+	hideperson $07
+	hideperson $08
 .asm_b1c47:
 	ret
 
@@ -1008,18 +729,13 @@ Func_b1c59:
 	ld a, e
 	cp $02
 	jp nz, .asm_b1d4f
-	ld hl, $0035
-	scall CheckEventFlag
+	checkevent $0035
 	or a
 	jp nz, .asm_b1d4f
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_b1c4d
-	ld a, $2c
-	scall MovePlayer
+	playmusic SONG_NONE
+	move_player $01, Data_b1c4d
 	xor a
 	scall PlayerFace
 	xor a
@@ -1036,26 +752,19 @@ Func_b1c59:
 .asm_b1c92:
 	ld a, $01
 	scall FadeInAudio
-	ld a, $13
-	scall PlayMusic
+	playmusic $13
 	ld hl, $012b
 	scall PrintTextWithNPCName
 	ld hl, $012c
 	scall PrintTextWithNPCName
 	ld hl, $012d
 	scall PrintTextWithNPCName
-	ld bc, Data_b1c55
-	ld e, $2c
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_b1c55, 1
 	scall WaitNPCStep
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	xor a
-	scall PlayMusic
+	hideperson $01
+	playmusic SONG_NONE
 	xor a
 .asm_b1ccd:
 	cp $05
@@ -1068,24 +777,15 @@ Func_b1c59:
 	inc a
 	jp .asm_b1ccd
 .asm_b1cdf:
-	ld c, $01
-	ld de, Data_b1c51
-	ld a, $2c
-	scall MovePlayer
+	move_player $01, Data_b1c51
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld c, $01
-	ld e, $01
-	ld a, $05
-	scall LoadEmote
+	sprite_face $02, 0
+	loademote $01, $01, $05
 	ld e, $0e
 	ld a, $12
 	scall MoveEmote
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	scall WaitEmote
 	scall HideEmote
 	ld hl, $012e
@@ -1104,16 +804,11 @@ Func_b1c59:
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
-	ld e, $02
-	ld a, $02
-	scall SpriteFace
+	sprite_face $02, $02
 	ld a, $0e
 	scall Func_80c94
-	ld e, $01
-	ld hl, $0035
-	scall EventFlagAction
-	ld a, $07
-	scall PlayMusic
+	setevent $0035
+	playmusic $07
 .asm_b1d4f:
 	ret
 
@@ -1144,58 +839,40 @@ Func_b1d8b:
 	ld a, e
 	cp $02
 	jp nz, .asm_b202b
-	ld hl, $0023
-	scall CheckEventFlag
+	checkevent $0023
 	or a
 	jp nz, .asm_b202b
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_b1d79
-	ld a, $2c
-	scall MovePlayer
+	playmusic SONG_NONE
+	move_player $01, Data_b1d79
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld hl, $0133
 	scall PrintTextWithNPCName
-	ld de, Data_b202c
-	ld hl, Data_b1d50
-	scall ScriptedBattle
+	startbattle Data_b202c, Data_b1d50
 	or a
 	jp nz, .asm_b1dd6
 	jp .asm_b202b
 .asm_b1dd6:
 	ld hl, $0134
 	scall PrintTextWithNPCName
-	ld bc, Data_b1d7f
-	ld e, $2c
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_b1d7f, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SpriteFace
+	sprite_face $00, 0
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $04
-	scall PlayMusic
+	playmusic $04
 	ld hl, $0135
 	scall PrintTextWithNPCName
-	ld bc, Data_b1d83
-	ld e, $2c
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_b1d83, 1
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
@@ -1207,18 +884,12 @@ Func_b1d8b:
 	ld e, $01
 	ld a, $01
 	scall PlayerStep
-	ld c, $01
-	ld e, $01
-	ld a, $17
-	scall LoadEmote
+	loademote $01, $01, $17
 	ld e, $0d
 	ld a, $0f
 	scall MoveEmote
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld a, $59
-	scall PlaySFX
+	hideperson 0
+	playsfx $59
 	ld c, $05
 	ld e, $11
 	xor a
@@ -1243,82 +914,44 @@ Func_b1d8b:
 	jp .asm_b1e4e
 .asm_b1e6a:
 	scall WaitEmote
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	scall HideEmote
-	ld e, $03
-	ld a, $02
-	scall SpriteFace
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
+	sprite_face $03, $02
+	sprite_face $01, $01
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $03
-	xor a
-	scall SpriteFace
+	sprite_face $03, 0
 	ld hl, $0136
 	scall PrintTextWithNPCName
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $00
-	ld a, $02
-	scall SpriteFace
-	ld c, $01
-	ld e, $01
-	ld a, $18
-	scall LoadEmote
+	playmusic SONG_NONE
+	sprite_face $00, $01
+	sprite_face $00, 0
+	sprite_face $00, $02
+	loademote $01, $01, $18
 	scall WaitEmote
-	ld c, $01
-	ld e, $03
-	ld a, $18
-	scall LoadEmote
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld a, $63
-	scall PlaySFX
+	loademote $01, $03, $18
+	hideperson $02
+	playsfx $63
 	scall WaitEmote
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
+	sprite_face $01, $01
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $03
-	xor a
-	scall SpriteFace
+	sprite_face $03, 0
 	ld hl, $0137
 	scall PrintTextWithNPCName
-	ld c, $01
-	ld e, $07
-	ld a, $19
-	scall LoadEmote
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	loademote $01, $07, $19
+	hideperson 0
 	scall WaitEmote
 	scall HideEmote
 	ld a, $01
 	scall FadeInAudio
-	ld a, $13
-	scall PlayMusic
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	playmusic $13
+	sprite_face $02, $01
 	ld hl, $0138
 	scall PrintTextWithNPCName
 	xor a
@@ -1347,10 +980,7 @@ Func_b1d8b:
 	inc a
 	jp .asm_b1f41
 .asm_b1f53:
-	ld c, $01
-	ld e, $0f
-	ld a, $1a
-	scall LoadEmote
+	loademote $01, $0f, $1a
 	ld hl, $0078
 	scall ScriptSleep
 	ld a, $03
@@ -1358,10 +988,7 @@ Func_b1d8b:
 	scall WaitEmote
 	ld hl, $0139
 	scall PrintTextWithNPCName
-	ld c, $01
-	ld e, $30
-	ld a, $1a
-	scall LoadEmote
+	loademote $01, $30, $1a
 	ld e, $0e
 	ld a, $0c
 	scall MoveEmote
@@ -1392,12 +1019,10 @@ Func_b1d8b:
 	scall ScriptSleep
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld hl, $03c6
 	scall PrintTextStandard
 	ld c, $00
@@ -1406,17 +1031,10 @@ Func_b1d8b:
 	scall Func_80d4d
 	ld hl, $013a
 	scall PrintTextWithNPCName
-	ld bc, Data_b1d87
-	ld e, $2c
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_b1d87, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $0023
-	scall EventFlagAction
+	hideperson $01
+	setevent $0023
 	ld a, $02
 	ld [wc790], a
 	ld hl, $001e
@@ -1435,12 +1053,10 @@ Func_b1d8b:
 .asm_b2018:
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 .asm_b202b:
 	ret
 
@@ -1456,8 +1072,7 @@ Data_b2034:
 Func_b2038:
 	push af
 	push de
-	ld hl, $0022
-	scall CheckEventFlag
+	checkevent $0022
 	or a
 	jp nz, .asm_b20a8
 	ld hl, sp+$00
@@ -1468,43 +1083,30 @@ Func_b2038:
 	ld a, [hl]
 	cp $04
 	jp nz, .asm_b2063
-	ld e, $00
-	ld a, $03
-	scall SpriteFace
+	sprite_face $00, $03
 	ld a, $02
 	scall PlayerFace
 	jp .asm_b206e
 .asm_b2063:
-	ld e, $02
-	ld a, $03
-	scall SpriteFace
+	sprite_face $02, $03
 	xor a
 	scall PlayerFace
 .asm_b206e:
 	scall WaitNPCStep
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	ld hl, $010c
 	scall PrintTextStandard
 	ld hl, sp+$03
 	ld a, [hl]
 	cp $04
 	jp nz, .asm_b2091
-	ld c, $01
-	ld de, Data_b2030
-	ld a, $2c
-	scall MovePlayer
+	move_player $01, Data_b2030
 	jp .asm_b209b
 .asm_b2091:
-	ld c, $01
-	ld de, Data_b2034
-	ld a, $2c
-	scall MovePlayer
+	move_player $01, Data_b2034
 .asm_b209b:
 	scall WaitNPCStep
-	ld e, $01
-	ld a, $03
-	scall SpriteFace
+	sprite_face $01, $03
 	scall WaitNPCStep
 .asm_b20a8:
 	pop bc
@@ -1520,8 +1122,7 @@ Data_b20af:
 Func_b20b3:
 	push af
 	push de
-	ld hl, $0022
-	scall CheckEventFlag
+	checkevent $0022
 	or a
 	jp nz, .asm_b2123
 	ld hl, sp+$00
@@ -1532,43 +1133,30 @@ Func_b20b3:
 	ld a, [hl]
 	cp $07
 	jp nz, .asm_b20de
-	ld e, $00
-	ld a, $06
-	scall SpriteFace
+	sprite_face $00, $06
 	ld a, $02
 	scall PlayerFace
 	jp .asm_b20e9
 .asm_b20de:
-	ld e, $02
-	ld a, $06
-	scall SpriteFace
+	sprite_face $02, $06
 	xor a
 	scall PlayerFace
 .asm_b20e9:
 	scall WaitNPCStep
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	ld hl, $010e
 	scall PrintTextStandard
 	ld hl, sp+$03
 	ld a, [hl]
 	cp $07
 	jp nz, .asm_b210c
-	ld c, $01
-	ld de, Data_b20ab
-	ld a, $2c
-	scall MovePlayer
+	move_player $01, Data_b20ab
 	jp .asm_b2116
 .asm_b210c:
-	ld c, $01
-	ld de, Data_b20af
-	ld a, $2c
-	scall MovePlayer
+	move_player $01, Data_b20af
 .asm_b2116:
 	scall WaitNPCStep
-	ld e, $03
-	ld a, $06
-	scall SpriteFace
+	sprite_face $03, $06
 	scall WaitNPCStep
 .asm_b2123:
 	pop bc
@@ -1593,39 +1181,25 @@ Data_b213a:
 Func_b213e:
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $12
-	scall PlayMusic
+	playmusic $12
 	ld c, $09
 	ld e, $0c
 	xor a
 	scall Func_80080
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld bc, Data_b2126
-	ld e, $2c
-	xor a
-	scall MovePersonAndWait
+	sprite_face $02, 0
+	move_person 0, Data_b2126, 1
 	scall WaitNPCStep
 	ld c, $14
 	ld e, $11
 	xor a
 	scall Func_80080
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld bc, Data_b212a
-	ld e, $2c
-	xor a
-	scall MovePersonAndWait
+	sprite_face $00, 0
+	move_person 0, Data_b212a, 1
 	scall WaitNPCStep
-	ld e, $03
-	xor a
-	scall SpriteFace
+	sprite_face $03, 0
 	ld a, [wc790]
 	cp $04
 	jp z, .asm_b21de
@@ -1637,32 +1211,28 @@ Func_b213e:
 	jp nz, .asm_b21f2
 	ld hl, $0059
 	scall PrintTextWithNPCName
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $005a
 	scall PrintTextStandard
 	jp .asm_b21f8
 .asm_b21b6:
 	ld hl, $0081
 	scall PrintTextWithNPCName
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $0080
 	scall PrintTextStandard
 	jp .asm_b21f8
 .asm_b21ca:
 	ld hl, $00ad
 	scall PrintTextWithNPCName
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $00ac
 	scall PrintTextStandard
 	jp .asm_b21f8
 .asm_b21de:
 	ld hl, $00e3
 	scall PrintTextWithNPCName
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $00e2
 	scall PrintTextStandard
 	jp .asm_b21f8
@@ -1670,43 +1240,24 @@ Func_b213e:
 	ld hl, $00ae
 	scall PrintTextWithNPCName
 .asm_b21f8:
-	ld bc, Data_b2130
-	ld e, $2c
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_b2130, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld bc, Data_b2136
-	ld e, $2c
-	ld a, $02
-	scall MovePersonAndWait
+	hideperson 0
+	hideperson $01
+	move_person $02, Data_b2136, 1
 	scall WaitNPCStep
-	ld e, $03
-	ld a, $02
-	scall SpriteFace
+	sprite_face $03, $02
 	ld hl, $01c0
 	scall PrintTextStandard
-	ld bc, Data_b213a
-	ld e, $2c
-	ld a, $02
-	scall MovePersonAndWait
+	move_person $02, Data_b213a, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	hideperson $02
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $14
-	scall PlayMusic
+	playmusic $14
 	ret
 
 Data_b2253:
@@ -1733,39 +1284,25 @@ Data_b2271:
 Func_b2275:
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $12
-	scall PlayMusic
+	playmusic $12
 	ld c, $09
 	ld e, $0c
 	xor a
 	scall Func_80080
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld bc, Data_b2253
-	ld e, $2c
-	xor a
-	scall MovePersonAndWait
+	sprite_face $02, 0
+	move_person 0, Data_b2253, 1
 	scall WaitNPCStep
 	ld c, $14
 	ld e, $11
 	xor a
 	scall Func_80080
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld bc, Data_b2257
-	ld e, $2c
-	xor a
-	scall MovePersonAndWait
+	sprite_face $00, 0
+	move_person 0, Data_b2257, 1
 	scall WaitNPCStep
-	ld e, $03
-	xor a
-	scall SpriteFace
+	sprite_face $03, 0
 	ld hl, $0337
 	scall PrintTextStandard
 	ld c, $00
@@ -1776,75 +1313,44 @@ Func_b2275:
 	scall PrintTextWithNPCName
 	ld a, $05
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld c, $14
 	ld e, $11
 	ld a, $03
 	scall Func_80080
-	ld bc, Data_b2263
-	ld e, $2c
-	ld a, $03
-	scall MovePersonAndWait
+	move_person $03, Data_b2263, 1
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $02
-	xor a
-	scall SpriteFace
+	sprite_face $02, 0
 	ld hl, $00fc
 	scall PrintTextStandard
-	ld e, $03
-	xor a
-	scall SpriteFace
+	sprite_face $03, 0
 	ld a, $01
 	scall FadeInAudio
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld hl, $00fd
 	scall PrintTextWithNPCName
-	ld bc, Data_b2269
-	ld e, $2c
-	ld a, $03
-	scall MovePerson
-	ld bc, Data_b225d
-	ld e, $2c
-	xor a
-	scall MovePersonAndWait
+	move_person $03, Data_b2269, 0
+	move_person 0, Data_b225d, 1
 	scall WaitNPCStep
 	ld c, $09
 	ld e, $0c
 	ld a, $01
 	scall Func_80080
-	ld bc, Data_b2253
-	ld e, $2c
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_b2253, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $05
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld a, $0b
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $01
+	hideperson $03
+	hideperson $04
+	hideperson $05
+	showperson $0b
 	ld hl, $001e
 	scall ScriptSleep
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	xor a
 .asm_b2383:
 	cp $0a
@@ -1863,36 +1369,22 @@ Func_b2275:
 	scall PrintTextStandard
 	ld hl, $001e
 	scall ScriptSleep
-	ld bc, Data_b226d
-	ld e, $2c
-	ld a, $0b
-	scall MovePersonAndWait
+	move_person $0b, Data_b226d, 1
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $01
-	ld a, $0b
-	scall SpriteFace
+	sprite_face $01, $0b
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $03
-	ld a, $0b
-	scall SpriteFace
+	sprite_face $03, $0b
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $01
-	ld a, $0b
-	scall SpriteFace
+	sprite_face $01, $0b
 	ld hl, $001e
 	scall ScriptSleep
-	ld bc, Data_b2271
-	ld e, $2c
-	ld a, $0b
-	scall MovePersonAndWait
+	move_person $0b, Data_b2271, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $0b
-	scall SetPersonVisibilityState
+	hideperson $0b
 	ld hl, $001e
 	scall ScriptSleep
 	xor a
@@ -1909,6 +1401,5 @@ Func_b2275:
 .asm_b240d:
 	ld a, $01
 	scall FadeInAudio
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 	ret

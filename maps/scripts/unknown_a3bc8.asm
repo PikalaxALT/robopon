@@ -31,30 +31,20 @@ Func_a3bc8:: ; a3bc8
 	call Func_a3c8b
 	ld hl, Func_a3c8b
 	scall Func_80f11
-	ld e, $01
-	ld hl, Data_a3b53
-	scall LoadWarps
+	loadwarps $01, Data_a3b53
 	ld e, $01
 	ld hl, Data_a3b61
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_a3b82
-	scall LoadEncounters
-	ld e, $02
-	ld hl, Data_a3b66
-	scall LoadMapObjects
-	ld hl, $00ec
-	scall CheckEventFlag
+	loadwilds $05, Data_a3b82
+	loadpeople $02, Data_a3b66
+	checkevent $00ec
 	cp $01
 	jp nz, .asm_a3c08
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 .asm_a3c08:
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $045d
 	scall LandmarkSign
@@ -64,12 +54,8 @@ Func_a3c17:: ; a3c17
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-	ld a, $3a
-	scall PlaySFX
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	playsfx $3a
+	loademote $01, $01, $0a
 	ld a, [wc799]
 	cp $02
 	jp z, .asm_a3c63
@@ -152,17 +138,13 @@ Func_a3cd5:
 	ld a, [wPlayerFacing]
 	cp $01
 	jp nz, .asm_a3cf6
-	ld c, $01
-	ld de, Data_a3ccf
-	ld a, $28
-	scall MovePlayer
+	move_player $01, Data_a3ccf
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
 	jp .asm_a3cf6
 .asm_a3cf6:
-	ld a, $01
-	scall FacePlayer
+	face_player $01
 	ld a, [wc790]
 	cp $05
 	jp nc, .asm_a3d51
@@ -170,27 +152,19 @@ Func_a3cd5:
 	scall Func_80e5d
 	cp $01
 	jp nz, .asm_a3d51
-	ld hl, $00ec
-	scall CheckEventFlag
+	checkevent $00ec
 	or a
 	jp nz, .asm_a3d48
 	ld hl, $045c
 	scall PrintTextWithNPCName
 	ld hl, $001e
 	scall ScriptSleep
-	ld bc, Data_a3ccb
-	ld e, $28
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_a3ccb, 1
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
-	ld e, $01
-	ld hl, $00ec
-	scall EventFlagAction
+	sprite_face $01, $01
+	setevent $00ec
 	jp .asm_a3d4e
 .asm_a3d48:
 	ld hl, $010f
@@ -198,8 +172,7 @@ Func_a3cd5:
 .asm_a3d4e:
 	jp .asm_a3d72
 .asm_a3d51:
-	ld hl, $00ec
-	scall CheckEventFlag
+	checkevent $00ec
 	cp $01
 	jp nz, .asm_a3d65
 	ld hl, $010f
@@ -208,8 +181,6 @@ Func_a3cd5:
 .asm_a3d65:
 	ld hl, $045b
 	scall PrintTextWithNPCName
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
+	sprite_face $00, $01
 .asm_a3d72:
 	ret

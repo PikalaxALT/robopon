@@ -26,33 +26,21 @@ Data_cba43:
 	person_event $ff, $00, $0e, $03, $01, $01, $00, $04, $00, Func_cbb24, NULL
 
 Func_cba6d:: ; cba6d
-	ld e, $01
-	ld hl, Data_cb9ed
-	scall LoadWarps
+	loadwarps $01, Data_cb9ed
 	ld e, $01
 	ld hl, Data_cb9f8
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_cb9fd
-	scall LoadEncounters
-	ld e, $03
-	ld hl, Data_cba43
-	scall LoadMapObjects
-	ld hl, $0016
-	scall CheckEventFlag
+	loadwilds $05, Data_cb9fd
+	loadpeople $03, Data_cba43
+	checkevent $0016
 	cp $01
 	jp nz, .asm_cbaaa
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $01
 .asm_cbaaa:
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 	scall Func_8001c
 	ld hl, $0304
 	scall LandmarkSign
@@ -68,45 +56,24 @@ Func_cbac1:
 	ld a, e
 	cp $02
 	jp nz, .asm_cbb23
-	ld hl, $0016
-	scall CheckEventFlag
+	checkevent $0016
 	or a
 	jp nz, .asm_cbb23
-	xor a
-	scall PlayMusic
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld c, $01
-	ld de, Data_cbab9
-	ld a, $32
-	scall MovePlayer
+	playmusic SONG_NONE
+	sprite_face $03, 0
+	move_player $01, Data_cbab9
 	scall WaitNPCStep
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld hl, $00df
 	scall PrintTextWithNPCName
-	ld bc, Data_cbabd
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cbabd, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $0016
-	scall EventFlagAction
-	xor a
-	scall PlayMusic
-	ld a, $07
-	scall PlayMusic
+	sprite_face $00, 0
+	hideperson 0
+	hideperson $01
+	setevent $0016
+	playmusic SONG_NONE
+	playmusic $07
 .asm_cbb23:
 	ret
 
@@ -121,12 +88,8 @@ Func_cbb24:
 .asm_cbb33:
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
-	ld a, $5a
-	scall PlaySFX
+	loademote $01, $01, $09
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
 	ld l, $06

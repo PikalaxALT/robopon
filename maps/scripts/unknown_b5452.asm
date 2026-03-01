@@ -38,46 +38,30 @@ Func_b5452:: ; b5452
 	call Func_b556c
 	ld hl, Func_b556c
 	scall Func_80f11
-	ld e, $02
-	ld hl, Data_b53cc
-	scall LoadWarps
+	loadwarps $02, Data_b53cc
 	jp .asm_b547d
 .asm_b5475:
-	ld e, $01
-	ld hl, Data_b53c1
-	scall LoadWarps
+	loadwarps $01, Data_b53c1
 .asm_b547d:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_b53e2
-	scall LoadEncounters
+	loadwilds $05, Data_b53e2
 	ld a, $0f
 	ld [wc7e2], a
-	ld hl, $0034
-	scall CheckEventFlag
+	checkevent $0034
 	or a
 	jp nz, .asm_b54c0
-	ld e, $01
-	ld hl, Data_b5428
-	scall LoadMapObjects
-	ld e, $02
-	ld hl, Data_b5436
-	scall LoadMapObjects
+	loadpeople $01, Data_b5428
+	loadpeople $02, Data_b5436
 	scall Func_8001c
 	ld hl, $0314
 	scall LandmarkSign
 	call Func_b5526
-	ld e, $01
-	ld hl, $0034
-	scall EventFlagAction
+	setevent $0034
 	jp .asm_b551f
 .asm_b54c0:
-	ld e, $02
-	ld hl, Data_b5436
-	scall LoadMapObjects
-	ld a, $09
-	scall PlayMusic
+	loadpeople $02, Data_b5436
+	playmusic $09
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_b5516
@@ -90,8 +74,7 @@ Func_b5452:: ; b5452
 	ld a, [wBackupMapY]
 	cp $0c
 	jp nz, .asm_b5516
-	ld hl, $00ff
-	scall CheckEventFlag
+	checkevent $00ff
 	or a
 	jp nz, .asm_b550a
 	xor a
@@ -120,30 +103,20 @@ Data_b5520:
 Func_b5526:
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall PlayerFace
 	ld a, $01
 	scall FadeInAudio
-	ld a, $18
-	scall PlayMusic
+	playmusic $18
 	ld hl, $012a
 	scall PrintTextWithNPCName
-	ld a, $18
-	scall PlayMusic
-	ld bc, Data_b5520
-	ld e, $2d
-	xor a
-	scall MovePersonAndWait
+	playmusic $18
+	move_person 0, Data_b5520, 1
 	scall WaitNPCStep
-	ld a, $2e
-	scall PlaySFX
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld a, $09
-	scall PlayMusic
+	playsfx $2e
+	hideperson 0
+	playmusic $09
 	ret
 
 Data_b5566:
@@ -202,17 +175,11 @@ Func_b55be:
 	jp nz, .asm_b55fc
 	ld hl, $00b4
 	scall LandmarkSign
-	ld e, $00
-	ld hl, $00fe
-	scall EventFlagAction
+	resetevent $00fe
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
-	ld a, $5a
-	scall PlaySFX
+	loademote $01, $01, $09
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -228,23 +195,16 @@ Func_b55be:
 	ret
 
 Func_b55fd:
-	ld a, $09
-	scall PlayMusic
+	playmusic $09
 	ld a, $02
 	scall PlayerFace
-	ld c, $01
-	ld e, $02
-	ld a, $09
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $02, $09
+	playsfx $37
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
 	ld hl, $0001
 	scall ScriptSleep
 	scall HideEmote
-	ld e, $01
-	ld hl, $00ff
-	scall EventFlagAction
+	setevent $00ff
 	ret

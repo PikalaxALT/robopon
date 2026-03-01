@@ -68,10 +68,7 @@ Func_89ca9:
 	resetevent $00fc
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
+	loademote $01, $01, $09
 	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
@@ -134,10 +131,7 @@ Func_89d8a:
 	jp nz, .asm_89df8
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
-	ld c, $01
-	ld de, Data_89d7e
-	ld a, $22
-	scall MovePlayer
+	move_player $01, Data_89d7e
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace

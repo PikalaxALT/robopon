@@ -219,9 +219,7 @@ Func_d1680:
 	move_player $1, Data_d1678
 	move_person 0, Data_d167c, 1
 	scall WaitNPCStep
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 	showperson $1
 	showperson $2
 	showperson $3
@@ -347,15 +345,11 @@ ENDC
 .asm_d1866: ; d1866 (34:5866)
 	move_person 0, Data_d173d, 1
 	scall WaitNPCStep
-	ld e, $1
-	xor a
-	scall SpriteFace
+	sprite_face $1, 0
 	move_player $1, Data_d1741
 	move_person 0, Data_d1745, 1
 	scall WaitNPCStep
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 	showperson $1
 	showperson $2
 	showperson $3
@@ -381,15 +375,11 @@ Func_d18ba:: ; d18ba (34:58ba)
 	writenpctext TreeBitstreamText_47ddc
 	move_person 0, Data_d18ae, 1
 	scall WaitNPCStep
-	ld e, $1
-	xor a
-	scall SpriteFace
+	sprite_face $1, 0
 	move_player $1, Data_d18b2
 	move_person 0, Data_d18b6, 1
 	scall WaitNPCStep
-	ld e, $0
-	xor a
-	scall SpriteFace
+	sprite_face $0, 0
 	pop af
 	push af
 	cp $4

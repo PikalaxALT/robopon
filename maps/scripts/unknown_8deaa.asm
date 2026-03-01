@@ -71,12 +71,10 @@ Func_8deaa:: ; 8deaa
 	checkevent $0037
 	cp $01
 	jp nz, .asm_8df54
-	ld a, $03
-	scall PlayMusic
+	playmusic $03
 	jp .asm_8df59
 .asm_8df54:
-	ld a, $04
-	scall PlayMusic
+	playmusic $04
 .asm_8df59:
 	ld a, $01
 	scall LoadPlayerSprite
@@ -379,13 +377,11 @@ Func_8e2be:
 	checkevent $0037
 	or a
 	jp nz, .asm_8e36d
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	showperson $0a
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $30
-	scall PlaySFX
+	playsfx $30
 	call Func_8df6e
 	ld hl, Func_8df6e
 	scall Func_80f11
@@ -396,15 +392,12 @@ Func_8e2be:
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_8e346
-	ld e, $00
-	ld a, $0a
-	scall SpriteFace
+	sprite_face $00, $0a
 .asm_8e346:
 	writenpctext TreeBitstreamText_3b605
 	move_person $0a, Data_8e2b8, 1
 	scall WaitNPCStep
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	hideperson $0a
 	setevent $0037
 .asm_8e36d:
@@ -417,54 +410,30 @@ Func_8e36e:
 	checkevent $00d9
 	or a
 	jp nz, .asm_8e473
-	ld a, $5e
-	scall PlaySFX
-	ld c, $02
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	playsfx $5e
+	loademote $02, $02, $08
 	ld e, $05
 	ld a, $06
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	showperson 0
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
+	playsfx $60
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $14
-	scall PlayMusic
+	playmusic $14
 	face_player 0
 	ld hl, $001e
 	scall ScriptSleep
@@ -473,49 +442,29 @@ Func_8e36e:
 	ld a, $03
 	scall Func_80e8d
 	setevent $00d9
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
+	playsfx $60
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	checkevent $0037
 	cp $01
 	jp nz, .asm_8e45c
 	ld a, $01
 	scall FadeInAudio
-	ld a, $03
-	scall PlayMusic
+	playmusic $03
 	jp .asm_8e466
 .asm_8e45c:
 	ld a, $01
 	scall FadeInAudio
-	ld a, $04
-	scall PlayMusic
+	playmusic $04
 .asm_8e466:
 	face_player 0
 	hideperson 0

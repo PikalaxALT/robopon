@@ -21,19 +21,12 @@ Data_a9e63:
 	person_event $ff, $00, $0c, $15, $01, $01, $00, $04, $01, Func_a9e97, NULL
 
 Func_a9e71:: ; a9e71
-	ld e, $01
-	ld hl, Data_a9e12
-	scall LoadWarps
+	loadwarps $01, Data_a9e12
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_a9e1d
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_a9e63
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_a9e1d
+	loadpeople $01, Data_a9e63
+	playmusic $08
 	scall Func_8001c
 	ret
 
@@ -41,13 +34,11 @@ Func_a9e97:
 	ld a, e
 	cp $02
 	jp nz, .asm_a9ec6
-	ld a, $31
-	scall PlaySFX
+	playsfx $31
 	ld hl, $001e
 	scall ScriptSleep
 	scall StartShakingScreen
-	ld a, $64
-	scall PlaySFX
+	playsfx $64
 	ld hl, $005a
 	scall ScriptSleep
 	scall StopShakingScreen

@@ -23,34 +23,23 @@ Func_aa218:: ; aa218
 	ld [wc789], a
 	ld a, $0d
 	ld [wc7e2], a
-	ld e, $04
-	ld hl, Data_aa1a2
-	scall LoadWarps
-	ld hl, $00b7
-	scall CheckEventFlag
+	loadwarps $04, Data_aa1a2
+	checkevent $00b7
 	or a
 	jp nz, .asm_aa23c
-	ld e, $03
-	ld hl, Data_aa1d2
-	scall LoadMapObjects
+	loadpeople $03, Data_aa1d2
 .asm_aa23c:
-	ld e, $02
-	ld hl, Data_aa1fc
-	scall LoadMapObjects
-	ld hl, $0022
-	scall CheckEventFlag
+	loadpeople $02, Data_aa1fc
+	checkevent $0022
 	cp $01
 	jp nz, .asm_aa261
-	ld hl, $0043
-	scall CheckEventFlag
+	checkevent $0043
 	or a
 	jp nz, .asm_aa261
-	ld a, $04
-	scall PlayMusic
+	playmusic $04
 	jp .asm_aa266
 .asm_aa261:
-	ld a, $12
-	scall PlayMusic
+	playmusic $12
 .asm_aa266:
 	ld a, $01
 	scall LoadPlayerSprite
@@ -65,57 +54,38 @@ Data_aa273:
 
 Func_aa277:
 	push de
-	ld hl, $00b7
-	scall CheckEventFlag
+	checkevent $00b7
 	or a
 	jp nz, .asm_aa2f2
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $02
 	jp nz, .asm_aa2f2
-	xor a
-	scall PlayMusic
-	ld a, $1a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_aa26f
-	ld a, $2a
-	scall MovePlayer
-	ld e, $01
-	xor a
-	scall SpriteFace
+	playmusic SONG_NONE
+	playmusic $1a
+	move_player $01, Data_aa26f
+	sprite_face $01, 0
 	ld a, $03
 	scall PlayerFace
-	ld e, $00
-	ld hl, $00f7
-	scall EventFlagAction
+	resetevent $00f7
 	call Func_aa321
-	ld hl, $00f7
-	scall CheckEventFlag
+	checkevent $00f7
 	or a
 	jp z, .asm_aa2c0
 	jp .asm_aa2f2
 .asm_aa2c0:
-	ld bc, Data_aa273
-	ld e, $2a
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_aa273, 1
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
-	ld e, $00
-	ld hl, $00f7
-	scall EventFlagAction
+	resetevent $00f7
 	call Func_aa392
-	ld hl, $00f7
-	scall CheckEventFlag
+	checkevent $00f7
 	or a
 	jp z, .asm_aa2ea
 	jp .asm_aa2f2
 .asm_aa2ea:
-	ld e, $01
-	ld hl, $00b7
-	scall EventFlagAction
+	setevent $00b7
 .asm_aa2f2:
 	pop bc
 	ret
@@ -137,31 +107,20 @@ ENDC
 Func_aa321:
 	ld hl, $010b
 	scall PrintTextStandard
-	ld de, Data_aa35f
-	ld hl, Data_aa2f8
-	scall ScriptedBattle
+	startbattle Data_aa35f, Data_aa2f8
 	or a
 	jp nz, Func_aa33d
-	ld e, $01
-	ld hl, $00f7
-	scall EventFlagAction
+	setevent $00f7
 	ret
 
 Func_aa33d:
-	xor a
-	scall PlayMusic
-	ld a, $04
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $04
 	ld hl, $010f
 	scall PrintTextStandard
-	ld bc, Data_aa2f4
-	ld e, $2a
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_aa2f4, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ret
 
 Data_aa35f:
@@ -184,30 +143,19 @@ ENDC
 Func_aa392:
 	ld hl, $010d
 	scall PrintTextStandard
-	ld de, Data_aa3d2
-	ld hl, Data_aa369
-	scall ScriptedBattle
+	startbattle Data_aa3d2, Data_aa369
 	or a
 	jp nz, .asm_aa3ae
-	ld e, $01
-	ld hl, $00f7
-	scall EventFlagAction
+	setevent $00f7
 	ret
 .asm_aa3ae:
-	xor a
-	scall PlayMusic
-	ld a, $04
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $04
 	ld hl, $010f
 	scall PrintTextStandard
-	ld bc, Data_aa365
-	ld e, $2a
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_aa365, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 	ret
 
 Data_aa3d2:

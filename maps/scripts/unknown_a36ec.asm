@@ -29,18 +29,13 @@ Func_a36ec:: ; a36ec
 	call Func_a3730
 	ld hl, Func_a3730
 	scall Func_80f11
-	ld e, $03
-	ld hl, Data_a365b
-	scall LoadWarps
+	loadwarps $03, Data_a365b
 	ld a, $03
 	scall Func_80d01
-	ld e, $08
-	ld hl, Data_a367c
-	scall LoadEncounters
+	loadwilds $08, Data_a367c
 	ld a, $01
 	scall LoadPlayerSprite
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $02a9
 	scall LandmarkSign
@@ -56,35 +51,29 @@ Data_a372a:
 	db $0a, $0b, $03, $01, $03, $0a
 
 Func_a3730:
-	ld hl, $00d1
-	scall CheckEventFlag
+	checkevent $00d1
 	cp $01
 	jp z, .asm_a3751
-	ld hl, $00d2
-	scall CheckEventFlag
+	checkevent $00d2
 	cp $01
 	jp z, .asm_a3751
-	ld hl, $00d3
-	scall CheckEventFlag
+	checkevent $00d3
 	cp $01
 	jp nz, .asm_a3787
 .asm_a3751:
-	ld hl, $00d1
-	scall CheckEventFlag
+	checkevent $00d1
 	cp $01
 	jp nz, .asm_a3762
 	ld hl, Data_a371e
 	scall Func_80d9b
 .asm_a3762:
-	ld hl, $00d2
-	scall CheckEventFlag
+	checkevent $00d2
 	cp $01
 	jp nz, .asm_a3773
 	ld hl, Data_a3724
 	scall Func_80d9b
 .asm_a3773:
-	ld hl, $00d3
-	scall CheckEventFlag
+	checkevent $00d3
 	cp $01
 	jp nz, .asm_a3784
 	ld hl, Data_a372a

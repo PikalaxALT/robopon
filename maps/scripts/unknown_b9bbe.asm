@@ -355,9 +355,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $0c
 	jp nz, .asm_b9c71
-	ld e, $01
-	ld hl, Data_b99bc
-	scall LoadMapObjects
+	loadpeople $01, Data_b99bc
 	ld a, [wc790]
 	or a
 	jp z, .asm_b9c6e
@@ -376,9 +374,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $0c
 	jp nz, .asm_b9ca2
-	ld e, $01
-	ld hl, Data_b99ca
-	scall LoadMapObjects
+	loadpeople $01, Data_b99ca
 	ld a, [wc790]
 	or a
 	jp z, .asm_b9c9f
@@ -397,9 +393,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $12
 	jp nz, .asm_b9cbd
-	ld e, $01
-	ld hl, Data_b99d8
-	scall LoadMapObjects
+	loadpeople $01, Data_b99d8
 	jp .asm_b9ceb
 .asm_b9cbd:
 	ld a, [wBackupMapX]
@@ -408,9 +402,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $12
 	jp nz, .asm_b9ceb
-	ld e, $01
-	ld hl, Data_b99e6
-	scall LoadMapObjects
+	loadpeople $01, Data_b99e6
 	ld a, [wc790]
 	or a
 	jp z, .asm_b9ceb
@@ -435,9 +427,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_b9d1e
-	ld e, $02
-	ld hl, Data_b99f4
-	scall LoadMapObjects
+	loadpeople $02, Data_b99f4
 	call Func_b9f52
 	scall Func_80f02
 	jp .asm_b9d3c
@@ -448,9 +438,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_b9d3c
-	ld e, $02
-	ld hl, Data_b9a10
-	scall LoadMapObjects
+	loadpeople $02, Data_b9a10
 	call Func_b9f52
 	scall Func_80f02
 .asm_b9d3c:
@@ -468,9 +456,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $04
 	jp nz, .asm_b9d69
-	ld e, $01
-	ld hl, Data_b9a2c
-	scall LoadMapObjects
+	loadpeople $01, Data_b9a2c
 	jp .asm_b9d81
 .asm_b9d69:
 	ld a, [wBackupMapX]
@@ -479,9 +465,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $04
 	jp nz, .asm_b9d81
-	ld e, $01
-	ld hl, Data_b9a3a
-	scall LoadMapObjects
+	loadpeople $01, Data_b9a3a
 .asm_b9d81:
 	jp .asm_b9f35
 .asm_b9d84:
@@ -497,9 +481,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_b9dcb
-	ld e, $02
-	ld hl, Data_b9a48
-	scall LoadMapObjects
+	loadpeople $02, Data_b9a48
 	ld a, [wc790]
 	or a
 	jp z, .asm_b9dc8
@@ -509,9 +491,7 @@ Func_b9bbe:: ; b9bbe
 	ld de, Data_b99b0
 	xor a
 	scall SetPersonTextPointer
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 .asm_b9dc8:
 	jp .asm_b9e08
 .asm_b9dcb:
@@ -521,9 +501,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_b9e08
-	ld e, $03
-	ld hl, Data_b9a64
-	scall LoadMapObjects
+	loadpeople $03, Data_b9a64
 	ld a, [wc790]
 	or a
 	jp z, .asm_b9e08
@@ -536,9 +514,7 @@ Func_b9bbe:: ; b9bbe
 	ld de, Data_b99b4
 	ld a, $02
 	scall SetPersonTextPointer
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 .asm_b9e08:
 	jp .asm_b9f35
 .asm_b9e0b:
@@ -554,9 +530,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $0a
 	jp nz, .asm_b9e36
-	ld e, $02
-	ld hl, Data_b9a8e
-	scall LoadMapObjects
+	loadpeople $02, Data_b9a8e
 	jp .asm_b9ed5
 .asm_b9e36:
 	ld a, [wBackupMapX]
@@ -565,9 +539,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $0a
 	jp nz, .asm_b9e51
-	ld e, $01
-	ld hl, Data_b9aaa
-	scall LoadMapObjects
+	loadpeople $01, Data_b9aaa
 	jp .asm_b9ed5
 .asm_b9e51:
 	ld a, [wBackupMapX]
@@ -576,9 +548,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $15
 	jp nz, .asm_b9e6c
-	ld e, $01
-	ld hl, Data_b9ab8
-	scall LoadMapObjects
+	loadpeople $01, Data_b9ab8
 	jp .asm_b9ed5
 .asm_b9e6c:
 	ld a, [wBackupMapX]
@@ -587,9 +557,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $15
 	jp nz, .asm_b9e87
-	ld e, $02
-	ld hl, Data_b9ac6
-	scall LoadMapObjects
+	loadpeople $02, Data_b9ac6
 	jp .asm_b9ed5
 .asm_b9e87:
 	ld a, [wBackupMapX]
@@ -598,9 +566,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $15
 	jp nz, .asm_b9ea2
-	ld e, $01
-	ld hl, Data_b9ae2
-	scall LoadMapObjects
+	loadpeople $01, Data_b9ae2
 	jp .asm_b9ed5
 .asm_b9ea2:
 	ld a, [wBackupMapX]
@@ -609,9 +575,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $15
 	jp nz, .asm_b9ebd
-	ld e, $01
-	ld hl, Data_b9afe
-	scall LoadMapObjects
+	loadpeople $01, Data_b9afe
 	jp .asm_b9ed5
 .asm_b9ebd:
 	ld a, [wBackupMapX]
@@ -620,9 +584,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $15
 	jp nz, .asm_b9ed5
-	ld e, $01
-	ld hl, Data_b9af0
-	scall LoadMapObjects
+	loadpeople $01, Data_b9af0
 .asm_b9ed5:
 	jp .asm_b9f35
 .asm_b9ed8:
@@ -638,9 +600,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $13
 	jp nz, .asm_b9f02
-	ld e, $01
-	ld hl, Data_b9b0c
-	scall LoadMapObjects
+	loadpeople $01, Data_b9b0c
 	jp .asm_b9f35
 .asm_b9f02:
 	ld a, [wBackupMapX]
@@ -649,9 +609,7 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $19
 	jp nz, .asm_b9f1d
-	ld e, $01
-	ld hl, Data_b9b1a
-	scall LoadMapObjects
+	loadpeople $01, Data_b9b1a
 	jp .asm_b9f35
 .asm_b9f1d:
 	ld a, [wBackupMapX]
@@ -660,16 +618,11 @@ Func_b9bbe:: ; b9bbe
 	ld a, [wBackupMapY]
 	cp $19
 	jp nz, .asm_b9f35
-	ld e, $02
-	ld hl, Data_b9b28
-	scall LoadMapObjects
+	loadpeople $02, Data_b9b28
 .asm_b9f35:
-	ld e, $03
-	ld hl, Data_b9b44
-	scall LoadMapObjects
+	loadpeople $03, Data_b9b44
 	scall Func_8001c
-	ld a, $11
-	scall PlayMusic
+	playmusic $11
 	ret
 
 Data_b9f46:
@@ -697,8 +650,7 @@ Func_b9f71:
 	ld a, e
 	cp $02
 	jp nz, .asm_b9f8e
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	ld l, $05
 	push hl
 	ld c, $0a
@@ -722,8 +674,7 @@ Func_b9f8f:
 	ld a, $06
 	scall Func_80dff
 	pop bc
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	ld a, $01
 	ld [wPlayerFacing], a
 .asm_b9fac:
@@ -734,9 +685,7 @@ Func_b9fad:
 	ld a, e
 	or a
 	jp nz, .asm_ba023
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld a, [wc790]
 	or a
 	jp z, .asm_b9fd1
@@ -747,34 +696,26 @@ Func_b9fad:
 	scall PrintTextStandard
 	jp .asm_ba023
 .asm_b9fd1:
-	ld hl, $00e9
-	scall CheckEventFlag
+	checkevent $00e9
 	cp $01
 	jp nz, .asm_b9ff7
-	ld hl, $00eb
-	scall CheckEventFlag
+	checkevent $00eb
 	or a
 	jp nz, .asm_b9ff7
 	ld hl, $0452
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $00eb
-	scall EventFlagAction
+	setevent $00eb
 	jp .asm_ba023
 .asm_b9ff7:
-	ld hl, $00ea
-	scall CheckEventFlag
+	checkevent $00ea
 	cp $01
 	jp nz, .asm_ba01d
-	ld hl, $00eb
-	scall CheckEventFlag
+	checkevent $00eb
 	or a
 	jp nz, .asm_ba01d
 	ld hl, $0453
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $00eb
-	scall EventFlagAction
+	setevent $00eb
 	jp .asm_ba023
 .asm_ba01d:
 	ld hl, $0455

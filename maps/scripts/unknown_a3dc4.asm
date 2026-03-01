@@ -23,28 +23,18 @@ ELIF DEF(STAR)
 ENDC
 
 Func_a3dc4:: ; a3dc4
-	ld e, $01
-	ld hl, Data_a3d73
-	scall LoadWarps
-	ld a, $08
-	scall PlayMusic
+	loadwarps $01, Data_a3d73
+	playmusic $08
 	ld a, $03
 	scall Func_80d01
-	ld e, $03
-	ld hl, Data_a3d7e
-	scall LoadEncounters
-	ld hl, $00c7
-	scall CheckEventFlag
+	loadwilds $03, Data_a3d7e
+	checkevent $00c7
 	or a
 	jp nz, .asm_a3e05
-	ld e, $02
-	ld hl, Data_a3da8
-	scall LoadMapObjects
+	loadpeople $02, Data_a3da8
 	ld a, $01
 	ld [wc7da], a
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 	scall Func_8001c
 	call Func_a3e3c
 	jp .asm_a3e08
@@ -80,101 +70,54 @@ Func_a3e3c:
 	scall Func_80f02
 	ld hl, $001e
 	scall ScriptSleep
-	ld c, $01
-	ld de, Data_a3e09
-	ld a, $28
-	scall MovePlayer
+	move_player $01, Data_a3e09
 	scall WaitNPCStep
-	ld de, Data_a3f51
-	ld hl, Data_a3e13
-	scall ScriptedBattle
+	startbattle Data_a3f51, Data_a3e13
 	or a
 	jp nz, label_a3e6a
 	ret
 label_a3e6a:
 	ld hl, $043f
 	scall PrintTextWithNPCName
-	xor a
-	scall PlayMusic
-	ld a, $18
-	scall PlayMusic
-	ld bc, Data_a3e0d
-	ld e, $28
-	xor a
-	scall MovePersonAndWait
+	playmusic SONG_NONE
+	playmusic $18
+	move_person 0, Data_a3e0d, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld a, $12
-	scall PlayMusic
+	hideperson 0
+	playmusic $12
 	ld hl, $003c
 	scall ScriptSleep
-	ld c, $01
-	ld e, $01
-	ld a, $05
-	scall LoadEmote
+	loademote $01, $01, $05
 	ld e, $06
 	ld a, $05
 	scall MoveEmote
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	scall WaitEmote
 	scall HideEmote
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $5e
-	scall PlaySFX
-	ld c, $02
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	playsfx $5e
+	loademote $02, $02, $08
 	ld e, $05
 	ld a, $05
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $28
-	scall PlaySFX
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	ld a, $01
-	scall SpriteFace
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
-	ld e, $03
-	ld a, $01
-	scall SpriteFace
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
-	ld bc, Data_a3e09
-	ld e, $28
-	ld a, $01
-	scall MovePersonAndWait
+	playsfx $28
+	showperson $01
+	playsfx $60
+	sprite_face $03, $01
+	sprite_face $00, $01
+	sprite_face $01, $01
+	sprite_face $02, $01
+	sprite_face $03, $01
+	sprite_face $00, $01
+	sprite_face $01, $01
+	sprite_face $02, $01
+	move_person $01, Data_a3e09, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld a, $2a
-	scall PlaySFX
+	hideperson $01
+	playsfx $2a
 	ld hl, $0440
 	scall PrintTextStandard
 	ld c, $28
@@ -188,9 +131,7 @@ ENDC
 	cp $ff
 	jp nz, label_a3f48
 label_a3f48:
-	ld e, $01
-	ld hl, $00c7
-	scall EventFlagAction
+	setevent $00c7
 	ret
 
 Data_a3f51:

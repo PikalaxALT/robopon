@@ -24,95 +24,70 @@ Func_ad122:: ; ad122
 	ld [wc7e2], a
 	ld a, $03
 	scall Func_80d01
-	ld e, $03
-	ld hl, Data_ad0ca
-	scall LoadEncounters
+	loadwilds $03, Data_ad0ca
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_ad152
 	ld a, [wBackupMapNumber]
 	cp $0e
 	jp nz, .asm_ad152
-	ld e, $01
-	ld hl, Data_ad114
-	scall LoadMapObjects
+	loadpeople $01, Data_ad114
 	call Func_ad225
 	jp .asm_ad1c5
 .asm_ad152:
-	ld e, $02
-	ld hl, Data_ad0b4
-	scall LoadWarps
-	ld e, $02
-	ld hl, Data_ad0f8
-	scall LoadMapObjects
-	ld hl, $0034
-	scall CheckEventFlag
+	loadwarps $02, Data_ad0b4
+	loadpeople $02, Data_ad0f8
+	checkevent $0034
 	or a
 	jp nz, .asm_ad18a
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall LoadPlayerSprite
 	xor a
 	scall Func_80653
 	scall StartShakingScreen
-	ld a, $65
-	scall PlaySFX
+	playsfx $65
 	scall Func_8001c
 	call Func_ad1c6
 	jp .asm_ad1c5
 .asm_ad18a:
-	ld hl, $00c3
-	scall CheckEventFlag
+	checkevent $00c3
 	or a
 	jp nz, .asm_ad1b8
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_ad1b8
-	ld hl, $0035
-	scall CheckEventFlag
+	checkevent $0035
 	or a
 	jp nz, .asm_ad1b8
 	scall Func_8001c
 	call Func_ad302
-	xor a
-	scall PlayMusic
-	ld a, $13
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $13
 	jp .asm_ad1c5
 .asm_ad1b8:
 	ld a, $01
 	scall LoadPlayerSprite
-	ld a, $13
-	scall PlayMusic
+	playmusic $13
 	scall Func_8001c
 .asm_ad1c5:
 	ret
 
 Func_ad1c6:
-	ld a, $65
-	scall PlaySFX
-	ld c, $05
-	ld e, $02
-	ld a, $14
-	scall LoadEmote
+	playsfx $65
+	loademote $05, $02, $14
 	ld e, $05
 	ld a, $07
 	scall MoveEmote
 	scall WaitEmote
-	ld a, $65
-	scall PlaySFX
-	ld c, $01
-	ld e, $01
-	ld a, $14
-	scall LoadEmote
+	playsfx $65
+	loademote $01, $01, $14
 	ld e, $05
 	ld a, $07
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $65
-	scall PlaySFX
+	playsfx $65
 	ld hl, $0128
 	scall PrintTextWithNPCName
 	scall StopShakingScreen
@@ -138,21 +113,15 @@ Data_ad221:
 	db $07, $0c, $ff, $ff
 
 Func_ad225:
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	xor a
 	scall Func_80653
 	scall StartShakingScreen
 	scall Func_8001c
 	ld hl, $0078
 	scall ScriptSleep
-	ld a, $65
-	scall PlaySFX
-	ld c, $05
-	ld e, $02
-	ld a, $14
-	scall LoadEmote
+	playsfx $65
+	loademote $05, $02, $14
 	ld e, $05
 	ld a, $07
 	scall MoveEmote
@@ -160,25 +129,14 @@ Func_ad225:
 	scall HideEmote
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
-	ld bc, Data_ad215
-	ld e, $2b
-	xor a
-	scall MovePersonAndWait
+	showperson 0
+	move_person 0, Data_ad215, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SpriteFace
+	sprite_face $00, 0
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $65
-	scall PlaySFX
-	ld c, $05
-	ld e, $02
-	ld a, $14
-	scall LoadEmote
+	playsfx $65
+	loademote $05, $02, $14
 	ld e, $05
 	ld a, $07
 	scall MoveEmote
@@ -190,39 +148,24 @@ Func_ad225:
 	scall PlayerFace
 	ld a, $01
 	scall Func_80653
-	ld a, $65
-	scall PlaySFX
-	ld c, $01
-	ld e, $01
-	ld a, $14
-	scall LoadEmote
+	playsfx $65
+	loademote $01, $01, $14
 	ld e, $05
 	ld a, $07
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld c, $01
-	ld de, Data_ad219
-	ld a, $2b
-	scall MovePlayer
-	ld bc, Data_ad21d
-	ld e, $2b
-	xor a
-	scall MovePerson
-	ld c, $01
-	ld de, Data_ad221
-	ld a, $2b
-	scall MovePlayer
+	move_player $01, Data_ad219
+	move_person 0, Data_ad21d, 0
+	move_player $01, Data_ad221
 	scall WaitNPCStep
 	scall StopShakingScreen
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld l, $05
 	push hl
 	ld c, $04

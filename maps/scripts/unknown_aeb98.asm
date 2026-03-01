@@ -32,32 +32,22 @@ Func_aeb98:: ; aeb98
 	call Func_aebfc
 	ld hl, Func_aebfc
 	scall Func_80f11
-	ld e, $02
-	ld hl, Data_aeb0d
-	scall LoadWarps
+	loadwarps $02, Data_aeb0d
 	ld e, $01
 	ld hl, Data_aeb23
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_aeb28
-	scall LoadEncounters
-	ld hl, $00d4
-	scall CheckEventFlag
+	loadwilds $05, Data_aeb28
+	checkevent $00d4
 	or a
 	jp nz, .asm_aebd3
-	ld e, $02
-	ld hl, Data_aeb6e
-	scall LoadMapObjects
+	loadpeople $02, Data_aeb6e
 	jp .asm_aebdb
 .asm_aebd3:
-	ld e, $01
-	ld hl, Data_aeb8a
-	scall LoadMapObjects
+	loadpeople $01, Data_aeb8a
 .asm_aebdb:
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $031a
 	scall LandmarkSign
@@ -73,8 +63,7 @@ Data_aebf6:
 	db $00, $00, $01, $01, $18, $05
 
 Func_aebfc:
-	ld hl, $00d4
-	scall CheckEventFlag
+	checkevent $00d4
 	cp $01
 	jp nz, .asm_aec1c
 	ld hl, Data_aebea
@@ -93,12 +82,8 @@ Func_aec1d:
 	jp nz, .asm_aec48
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld l, $08
@@ -120,9 +105,7 @@ Func_aec4d:
 	jp nz, .asm_aecf8
 	xor a
 	scall PlayerFace
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
+	sprite_face $00, $01
 	ld e, $01
 	xor a
 	scall PlayerStep
@@ -155,39 +138,26 @@ Func_aec4d:
 	jp nz, .asm_aecb0
 	ld a, $03
 	scall PlayerFace
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
+	sprite_face $01, $01
 	jp .asm_aecbc
 .asm_aecb0:
 	ld a, $01
 	scall PlayerFace
-	ld e, $03
-	ld a, $01
-	scall SpriteFace
+	sprite_face $03, $01
 .asm_aecbc:
 	ld hl, $0143
 	scall PrintTextWithNPCName
 	scall Func_81094
 	or a
 	jp nz, .asm_aecf8
-	ld e, $01
-	ld hl, $00d4
-	scall EventFlagAction
+	setevent $00d4
 	call Func_aebfc
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
+	sprite_face $00, $01
 	ld hl, $0144
 	scall PrintTextWithNPCName
-	ld bc, Data_aec49
-	ld e, $2b
-	ld a, $01
-	scall MovePersonAndWait
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	move_person $01, Data_aec49, 1
+	hideperson $01
 .asm_aecf8:
 	ret

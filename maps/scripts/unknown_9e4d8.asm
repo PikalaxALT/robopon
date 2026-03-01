@@ -56,9 +56,7 @@ Func_9e4d8:: ; 9e4d8
 	ld a, [wBackupMapNumber]
 	cp $0b
 	jp nz, .asm_9e50f
-	ld e, $01
-	ld hl, Data_9e3c9
-	scall LoadWarps
+	loadwarps $01, Data_9e3c9
 	ld a, $04
 	ld [wc792], a
 	jp .asm_9e585
@@ -66,9 +64,7 @@ Func_9e4d8:: ; 9e4d8
 	ld a, [wBackupMapNumber]
 	cp $0c
 	jp nz, .asm_9e527
-	ld e, $01
-	ld hl, Data_9e3d4
-	scall LoadWarps
+	loadwarps $01, Data_9e3d4
 	ld a, $07
 	ld [wc792], a
 	jp .asm_9e585
@@ -76,9 +72,7 @@ Func_9e4d8:: ; 9e4d8
 	ld a, [wBackupMapNumber]
 	cp $0d
 	jp nz, .asm_9e53f
-	ld e, $01
-	ld hl, Data_9e3df
-	scall LoadWarps
+	loadwarps $01, Data_9e3df
 	ld a, $08
 	ld [wc792], a
 	jp .asm_9e585
@@ -93,36 +87,25 @@ Func_9e4d8:: ; 9e4d8
 	ld a, [wc792]
 	cp $04
 	jp nz, .asm_9e562
-	ld e, $01
-	ld hl, Data_9e3c9
-	scall LoadWarps
+	loadwarps $01, Data_9e3c9
 	jp .asm_9e585
 .asm_9e562:
 	ld a, [wc792]
 	cp $07
 	jp nz, .asm_9e575
-	ld e, $01
-	ld hl, Data_9e3d4
-	scall LoadWarps
+	loadwarps $01, Data_9e3d4
 	jp .asm_9e585
 .asm_9e575:
 	ld a, [wc792]
 	cp $08
 	jp nz, .asm_9e585
-	ld e, $01
-	ld hl, Data_9e3df
-	scall LoadWarps
+	loadwarps $01, Data_9e3df
 .asm_9e585:
-	ld e, $0c
-	ld hl, Data_9e430
-	scall LoadMapObjects
+	loadpeople $0c, Data_9e430
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_9e3ea
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_9e3ea
+	playmusic $08
 	ld a, [wc794]
 	or a
 	jp z, .asm_9e5d2
@@ -510,14 +493,10 @@ Func_9e88f:
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9e8ad
-	ld e, $02
-	ld hl, Data_9e821
-	scall LoadWarps
+	loadwarps $02, Data_9e821
 	jp .asm_9e8b5
 .asm_9e8ad:
-	ld e, $02
-	ld hl, Data_9e80b
-	scall LoadWarps
+	loadwarps $02, Data_9e80b
 .asm_9e8b5:
 	jp .asm_9e8f9
 .asm_9e8b8:
@@ -527,27 +506,19 @@ Func_9e88f:
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9e8d3
-	ld e, $02
-	ld hl, Data_9e84d
-	scall LoadWarps
+	loadwarps $02, Data_9e84d
 	jp .asm_9e8db
 .asm_9e8d3:
-	ld e, $02
-	ld hl, Data_9e837
-	scall LoadWarps
+	loadwarps $02, Data_9e837
 .asm_9e8db:
 	jp .asm_9e8f9
 .asm_9e8de:
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9e8f1
-	ld e, $02
-	ld hl, Data_9e879
-	scall LoadWarps
+	loadwarps $02, Data_9e879
 	jp .asm_9e8f9
 .asm_9e8f1:
-	ld e, $02
-	ld hl, Data_9e863
-	scall LoadWarps
+	loadwarps $02, Data_9e863
 .asm_9e8f9:
 	ret

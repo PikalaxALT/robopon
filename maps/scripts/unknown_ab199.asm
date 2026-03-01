@@ -29,56 +29,36 @@ Data_ab161:
 	person_event $ff, $00, $09, $0c, $02, $01, $00, $04, $01, Func_ab327, NULL
 
 Func_ab199:: ; ab199
-	ld e, $02
-	ld hl, Data_ab0ff
-	scall LoadWarps
+	loadwarps $02, Data_ab0ff
 	ld e, $04
 	ld hl, Data_ab115
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $04
-	ld hl, Data_ab129
-	scall LoadEncounters
-	ld hl, $0022
-	scall CheckEventFlag
+	loadwilds $04, Data_ab129
+	checkevent $0022
 	cp $01
 	jp nz, .asm_ab20a
-	ld hl, $0043
-	scall CheckEventFlag
+	checkevent $0043
 	or a
 	jp nz, .asm_ab20a
-	ld e, $04
-	ld hl, Data_ab161
-	scall LoadMapObjects
-	ld a, $04
-	scall PlayMusic
-	ld hl, $00b1
-	scall CheckEventFlag
+	loadpeople $04, Data_ab161
+	playmusic $04
+	checkevent $00b1
 	or a
 	jp z, .asm_ab1ef
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $01
 .asm_ab1ef:
-	ld hl, $00b2
-	scall CheckEventFlag
+	checkevent $00b2
 	or a
 	jp z, .asm_ab207
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
+	hideperson $02
+	hideperson $03
 .asm_ab207:
 	jp .asm_ab20f
 .asm_ab20a:
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 .asm_ab20f:
 	scall Func_8001c
 	ret
@@ -107,8 +87,7 @@ Data_ab246:
 
 Func_ab24a:
 	push de
-	ld hl, $00b1
-	scall CheckEventFlag
+	checkevent $00b1
 	or a
 	jp nz, .asm_ab2e8
 	ld hl, sp+$00
@@ -122,26 +101,18 @@ Func_ab24a:
 	add a, $05
 	cp $08
 	jp nz, .asm_ab272
-	xor a
-	scall FacePlayer
+	face_player 0
 	jp .asm_ab281
 .asm_ab272:
-	ld c, $01
-	ld de, Data_ab23c
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_ab23c
 	ld a, $03
 	scall PlayerFace
 .asm_ab281:
-	xor a
-	scall PlayMusic
-	ld a, $1a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $1a
 	ld hl, $010c
 	scall PrintTextStandard
-	ld de, Data_ab2ea
-	ld hl, Data_ab213
-	scall ScriptedBattle
+	startbattle Data_ab2ea, Data_ab213
 	or a
 	jp nz, .asm_ab2a0
 	jp .asm_ab2e8
@@ -154,31 +125,17 @@ Func_ab24a:
 	or a
 	jp nz, .asm_ab2be
 .asm_ab2b2:
-	ld bc, Data_ab240
-	ld e, $2a
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_ab240, 1
 	jp .asm_ab2c7
 .asm_ab2be:
-	ld bc, Data_ab246
-	ld e, $2a
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_ab246, 1
 .asm_ab2c7:
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	xor a
-	scall PlayMusic
-	ld a, $04
-	scall PlayMusic
-	ld e, $01
-	ld hl, $00b1
-	scall EventFlagAction
+	hideperson 0
+	hideperson $01
+	playmusic SONG_NONE
+	playmusic $04
+	setevent $00b1
 .asm_ab2e8:
 	pop bc
 	ret
@@ -208,8 +165,7 @@ Data_ab323:
 
 Func_ab327:
 	push de
-	ld hl, $00b2
-	scall CheckEventFlag
+	checkevent $00b2
 	or a
 	jp nz, .asm_ab3c9
 	ld hl, sp+$00
@@ -223,26 +179,18 @@ Func_ab327:
 	add a, $05
 	cp $08
 	jp nz, .asm_ab350
-	ld a, $02
-	scall FacePlayer
+	face_player $02
 	jp .asm_ab35f
 .asm_ab350:
-	ld c, $01
-	ld de, Data_ab319
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_ab319
 	ld a, $03
 	scall PlayerFace
 .asm_ab35f:
-	xor a
-	scall PlayMusic
-	ld a, $1a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $1a
 	ld hl, $010d
 	scall PrintTextStandard
-	ld de, Data_ab3cb
-	ld hl, Data_ab2f0
-	scall ScriptedBattle
+	startbattle Data_ab3cb, Data_ab2f0
 	or a
 	jp nz, .asm_ab37e
 	jp .asm_ab3c9
@@ -255,31 +203,17 @@ Func_ab327:
 	or a
 	jp nz, .asm_ab39d
 .asm_ab390:
-	ld bc, Data_ab31d
-	ld e, $2a
-	ld a, $02
-	scall MovePersonAndWait
+	move_person $02, Data_ab31d, 1
 	jp .asm_ab3a7
 .asm_ab39d:
-	ld bc, Data_ab323
-	ld e, $2a
-	ld a, $02
-	scall MovePersonAndWait
+	move_person $02, Data_ab323, 1
 .asm_ab3a7:
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
-	xor a
-	scall PlayMusic
-	ld a, $04
-	scall PlayMusic
-	ld e, $01
-	ld hl, $00b2
-	scall EventFlagAction
+	hideperson $02
+	hideperson $03
+	playmusic SONG_NONE
+	playmusic $04
+	setevent $00b2
 .asm_ab3c9:
 	pop bc
 	ret

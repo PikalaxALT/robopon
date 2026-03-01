@@ -24,38 +24,24 @@ Data_af3db:
 	person_event $00, $04, $04, $08, $01, $01, $02, $04, $00, Func_af4c3, NULL
 
 Func_af3e9:: ; af3e9
-	ld e, $01
-	ld hl, Data_af385
-	scall LoadWarps
+	loadwarps $01, Data_af385
 	ld e, $01
 	ld hl, Data_af390
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $03
-	ld hl, Data_af395
-	scall LoadEncounters
-	ld hl, $0050
-	scall CheckEventFlag
+	loadwilds $03, Data_af395
+	checkevent $0050
 	or a
 	jp nz, .asm_af41b
-	ld e, $02
-	ld hl, Data_af3bf
-	scall LoadMapObjects
+	loadpeople $02, Data_af3bf
 	jp .asm_af432
 .asm_af41b:
-	ld e, $02
-	ld hl, Data_af3bf
-	scall LoadMapObjects
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, Data_af3db
-	scall LoadMapObjects
+	loadpeople $02, Data_af3bf
+	hideperson $01
+	loadpeople $01, Data_af3db
 .asm_af432:
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $031f
 	scall LandmarkSign
@@ -78,22 +64,17 @@ Func_af46a:
 	ld a, e
 	cp $02
 	jp nz, .asm_af4bd
-	ld hl, $0050
-	scall CheckEventFlag
+	checkevent $0050
 	or a
 	jp nz, .asm_af4a1
 	ld hl, $0147
 	scall PrintTextWithNPCName
-	ld de, Data_af4be
-	ld hl, Data_af441
-	scall ScriptedBattle
+	startbattle Data_af4be, Data_af441
 	or a
 	jp nz, .asm_af490
 	jp .asm_af4bd
 .asm_af490:
-	ld e, $01
-	ld hl, $0050
-	scall EventFlagAction
+	setevent $0050
 	ld hl, $0148
 	scall PrintTextWithNPCName
 	jp .asm_af4bd
@@ -102,8 +83,7 @@ Func_af46a:
 	scall PrintTextWithNPCNameAndYesNoBox
 	or a
 	jp nz, .asm_af4bd
-	ld a, $5a
-	scall PlaySFX
+	playsfx $5a
 	ld l, $1b
 	push hl
 	ld c, $12
@@ -122,11 +102,8 @@ Func_af4c3:
 	ld a, e
 	or a
 	jp nz, .asm_af537
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $0048
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $0048
 	or a
 	jp nz, .asm_af505
 	ld a, $15
@@ -152,15 +129,12 @@ Func_af4c3:
 .asm_af502:
 	jp .asm_af537
 .asm_af505:
-	ld hl, $0100
-	scall CheckEventFlag
+	checkevent $0100
 	or a
 	jp nz, .asm_af520
 	ld hl, $033a
 	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $0100
-	scall EventFlagAction
+	setevent $0100
 	jp .asm_af537
 .asm_af520:
 	ld hl, $0149

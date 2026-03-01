@@ -34,24 +34,13 @@ Func_a167b:: ; a167b
 	checkevent $00a9
 	cp $1
 	jp nz, .asm_a16e5
-	ld e, $0
-	ld a, $1
-	scall SetPersonVisibilityState
-	ld e, $0
-	ld a, $2
-	scall SetPersonVisibilityState
-	ld e, $0
-	ld a, $3
-	scall SetPersonVisibilityState
-	ld e, $0
-	ld a, $4
-	scall SetPersonVisibilityState
-	ld e, $0
-	ld a, $5
-	scall SetPersonVisibilityState
+	hideperson $1
+	hideperson $2
+	hideperson $3
+	hideperson $4
+	hideperson $5
 .asm_a16e5:
-	ld a, $14
-	scall PlayMusic
+	playmusic $14
 	scall Func_8001c
 	ld hl, $02bb
 	scall LandmarkSign
@@ -61,8 +50,7 @@ Func_a16f4:
 	ld a, e
 	or a
 	jp nz, .asm_a177c
-	ld hl, $003b
-	scall CheckEventFlag
+	checkevent $003b
 	or a
 	jp nz, .asm_a175e
 	ld hl, $00af
@@ -101,9 +89,7 @@ Func_a16f4:
 	pop bc
 	ld hl, $00b2
 	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $003b
-	scall EventFlagAction
+	setevent $003b
 .asm_a1752:
 	jp .asm_a175b
 .asm_a1755:
@@ -137,18 +123,14 @@ Func_a17a6:
 	ld a, e
 	or a
 	jp nz, .asm_a1848
-	ld a, $01
-	scall FacePlayer
-	ld hl, $003b
-	scall CheckEventFlag
+	face_player $01
+	checkevent $003b
 	cp $01
 	jp nz, .asm_a1842
-	ld hl, $0042
-	scall CheckEventFlag
+	checkevent $0042
 	or a
 	jp nz, .asm_a1839
-	ld hl, $003d
-	scall CheckEventFlag
+	checkevent $003d
 	or a
 	jp nz, .asm_a1830
 	ld hl, $00c1
@@ -157,27 +139,20 @@ Func_a17a6:
 	jp nz, .asm_a1827
 	ld hl, $00c6
 	scall PrintTextStandard
-	ld de, Data_a1849
-	ld hl, Data_a177d
-	scall ScriptedBattle
+	startbattle Data_a1849, Data_a177d
 	or a
 	jp nz, .asm_a17ef
 	jp .asm_a1848
 .asm_a17ef:
 	ld hl, $00c8
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $00bb
 	scall PrintTextStandard
 	ld hl, $00bc
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $003d
-	scall EventFlagAction
-	ld e, $01
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $003d
+	setevent $0042
 	ld c, $00
 	ld e, $01
 	ld a, $1e
@@ -219,18 +194,14 @@ Func_a187b:
 	ld a, e
 	or a
 	jp nz, .asm_a192b
-	ld a, $02
-	scall FacePlayer
-	ld hl, $003b
-	scall CheckEventFlag
+	face_player $02
+	checkevent $003b
 	cp $01
 	jp nz, .asm_a1925
-	ld hl, $0042
-	scall CheckEventFlag
+	checkevent $0042
 	or a
 	jp nz, .asm_a191c
-	ld hl, $003e
-	scall CheckEventFlag
+	checkevent $003e
 	or a
 	jp nz, .asm_a1913
 	ld hl, $00c2
@@ -254,18 +225,13 @@ Func_a187b:
 .asm_a18d2:
 	ld hl, $00c8
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $00b6
 	scall PrintTextStandard
 	ld hl, $00bc
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $003e
-	scall EventFlagAction
-	ld e, $01
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $003e
+	setevent $0042
 	ld c, $00
 	ld e, $01
 	ld a, $1c
@@ -306,18 +272,14 @@ Func_a195e:
 	ld a, e
 	or a
 	jp nz, .asm_a1a0e
-	ld a, $03
-	scall FacePlayer
-	ld hl, $003b
-	scall CheckEventFlag
+	face_player $03
+	checkevent $003b
 	cp $01
 	jp nz, .asm_a1a08
-	ld hl, $0042
-	scall CheckEventFlag
+	checkevent $0042
 	or a
 	jp nz, .asm_a19ff
-	ld hl, $003f
-	scall CheckEventFlag
+	checkevent $003f
 	or a
 	jp nz, .asm_a19f6
 	ld hl, $00c3
@@ -341,18 +303,13 @@ Func_a195e:
 .asm_a19b5:
 	ld hl, $00c8
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $00b8
 	scall PrintTextStandard
 	ld hl, $00bc
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $003f
-	scall EventFlagAction
-	ld e, $01
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $003f
+	setevent $0042
 	ld c, $00
 	ld e, $01
 	ld a, $1d
@@ -393,18 +350,14 @@ Func_a1a41:
 	ld a, e
 	or a
 	jp nz, .asm_a1af1
-	ld a, $04
-	scall FacePlayer
-	ld hl, $003b
-	scall CheckEventFlag
+	face_player $04
+	checkevent $003b
 	cp $01
 	jp nz, .asm_a1aeb
-	ld hl, $0042
-	scall CheckEventFlag
+	checkevent $0042
 	or a
 	jp nz, .asm_a1ae2
-	ld hl, $0040
-	scall CheckEventFlag
+	checkevent $0040
 	or a
 	jp nz, .asm_a1ad9
 	ld hl, $00c4
@@ -428,18 +381,13 @@ Func_a1a41:
 .asm_a1a98:
 	ld hl, $00c8
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $00ba
 	scall PrintTextStandard
 	ld hl, $00bc
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $0040
-	scall EventFlagAction
-	ld e, $01
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $0040
+	setevent $0042
 	ld c, $00
 	ld e, $01
 	ld a, $20
@@ -480,18 +428,14 @@ Func_a1b24:
 	ld a, e
 	or a
 	jp nz, .asm_a1bd4
-	ld a, $05
-	scall FacePlayer
-	ld hl, $003b
-	scall CheckEventFlag
+	face_player $05
+	checkevent $003b
 	cp $01
 	jp nz, .asm_a1bce
-	ld hl, $0042
-	scall CheckEventFlag
+	checkevent $0042
 	or a
 	jp nz, .asm_a1bc5
-	ld hl, $0041
-	scall CheckEventFlag
+	checkevent $0041
 	or a
 	jp nz, .asm_a1bbc
 	ld hl, $00c5
@@ -515,18 +459,13 @@ Func_a1b24:
 .asm_a1b7b:
 	ld hl, $00c8
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $00b9
 	scall PrintTextStandard
 	ld hl, $00bc
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $0041
-	scall EventFlagAction
-	ld e, $01
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $0041
+	setevent $0042
 	ld c, $00
 	ld e, $01
 	ld a, $1f

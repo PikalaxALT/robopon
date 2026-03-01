@@ -22,45 +22,27 @@ Data_a30bf:
 	person_event $ff, $00, $04, $06, $01, $01, $00, $04, $01, NULL, NULL
 
 Func_a30cd:: ; a30cd
-	ld e, $01
-	ld hl, Data_a3060
-	scall LoadWarps
+	loadwarps $01, Data_a3060
 	ld a, $03
 	scall Func_80d01
-	ld e, $03
-	ld hl, Data_a306b
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
-	ld hl, $00c8
-	scall CheckEventFlag
+	loadwilds $03, Data_a306b
+	playmusic $08
+	checkevent $00c8
 	or a
 	jp z, .asm_a3105
-	ld hl, $00c9
-	scall CheckEventFlag
+	checkevent $00c9
 	or a
 	jp z, .asm_a3105
-	ld hl, $00ca
-	scall CheckEventFlag
+	checkevent $00ca
 	or a
 	jp nz, .asm_a3125
 .asm_a3105:
-	ld e, $00
-	ld hl, $00c8
-	scall EventFlagAction
-	ld e, $00
-	ld hl, $00c9
-	scall EventFlagAction
-	ld e, $00
-	ld hl, $00ca
-	scall EventFlagAction
-	ld e, $03
-	ld hl, Data_a3095
-	scall LoadMapObjects
+	resetevent $00c8
+	resetevent $00c9
+	resetevent $00ca
+	loadpeople $03, Data_a3095
 .asm_a3125:
-	ld e, $01
-	ld hl, Data_a30bf
-	scall LoadMapObjects
+	loadpeople $01, Data_a30bf
 	scall Func_8001c
 	ld hl, $041c
 	scall LandmarkSign
@@ -89,26 +71,19 @@ Func_a3137:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_a3195
-	ld a, $2b
-	scall PlaySFX
+	playsfx $2b
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $00c8
-	scall EventFlagAction
-	ld hl, $00c9
-	scall CheckEventFlag
+	setevent $00c8
+	checkevent $00c9
 	cp $01
 	jp nz, .asm_a3195
-	ld hl, $00ca
-	scall CheckEventFlag
+	checkevent $00ca
 	cp $01
 	jp nz, .asm_a3195
-	ld e, $01
-	ld hl, $00d1
-	scall EventFlagAction
+	setevent $00d1
 .asm_a3195:
 	pop bc
 	ret
@@ -136,26 +111,19 @@ Func_a3197:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_a31f5
-	ld a, $2b
-	scall PlaySFX
+	playsfx $2b
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $00c9
-	scall EventFlagAction
-	ld hl, $00c8
-	scall CheckEventFlag
+	setevent $00c9
+	checkevent $00c8
 	cp $01
 	jp nz, .asm_a31f5
-	ld hl, $00ca
-	scall CheckEventFlag
+	checkevent $00ca
 	cp $01
 	jp nz, .asm_a31f5
-	ld e, $01
-	ld hl, $00d1
-	scall EventFlagAction
+	setevent $00d1
 .asm_a31f5:
 	pop bc
 	ret
@@ -183,26 +151,19 @@ Func_a31f7:
 	scall CheckObjectsOccupyingSameTile
 	or a
 	jp z, .asm_a3255
-	ld a, $2b
-	scall PlaySFX
+	playsfx $2b
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $00ca
-	scall EventFlagAction
-	ld hl, $00c8
-	scall CheckEventFlag
+	setevent $00ca
+	checkevent $00c8
 	cp $01
 	jp nz, .asm_a3255
-	ld hl, $00c9
-	scall CheckEventFlag
+	checkevent $00c9
 	cp $01
 	jp nz, .asm_a3255
-	ld e, $01
-	ld hl, $00d1
-	scall EventFlagAction
+	setevent $00d1
 .asm_a3255:
 	pop bc
 	ret

@@ -143,22 +143,14 @@ Func_81281::
 	checkevent $3
 	cp $1
 	jp nz, .asm_8132e
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $0
-	ld a, $2
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $2
 	jp .asm_81334
 
 .asm_8132e: ; 8132e (20:532e)
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 .asm_81334: ; 81334 (20:5334)
-	ld e, $0
-	ld a, $1
-	scall SetPersonVisibilityState
+	hideperson $1
 .asm_8133b: ; 8133b (20:533b)
 	checkevent $3
 	cp $1
@@ -170,20 +162,14 @@ Func_81281::
 	cp $1
 	jp nz, .asm_8136d
 .asm_8135c: ; 8135c (20:535c)
-	ld e, $0
-	ld a, $3
-	scall SetPersonVisibilityState
-	ld e, $0
-	ld a, $5
-	scall SetPersonVisibilityState
+	hideperson $3
+	hideperson $5
 	jp .asm_81374
 
 .asm_8136d: ; 8136d (20:536d)
 	sprite_face $3, $3
 .asm_81374: ; 81374 (20:5374)
-	ld e, $0
-	ld a, $4
-	scall SetPersonVisibilityState
+	hideperson $4
 .asm_8137b: ; 8137b (20:537b)
 	loadpeople $6, Data_811bd
 	checkevent $21
@@ -332,12 +318,8 @@ Func_814c1: ; 814c1 (20:54c1)
 	xor a
 	scall PlayerFace
 	loademote $1, $1, $20
-	ld e, $0
-	ld a, $1
-	scall SetPersonVisibilityState
-	ld e, $0
-	ld a, $2
-	scall SetPersonVisibilityState
+	hideperson $1
+	hideperson $2
 	playsfx $36
 	script_sleep $1e
 	scall WaitEmote
@@ -354,30 +336,16 @@ Func_814c1: ; 814c1 (20:54c1)
 	scall FadeInAudio
 	playmusic SONG_TOWN1
 	loademote $1, $2, $1
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	scall WaitEmote
 	script_sleep $3c
-	ld e, $1
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	scall HideEmote
-	ld e, $0
-	xor a
-	scall SpriteFace
-	ld e, $1
-	xor a
-	scall SpriteFace
-	ld e, $2
-	xor a
-	scall SpriteFace
-	ld e, $3
-	xor a
-	scall SpriteFace
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $0, 0
+	sprite_face $1, 0
+	sprite_face $2, 0
+	sprite_face $3, 0
+	sprite_face $2, 0
 	script_sleep $1e
 	writenpctext TreeBitstreamText_3911a
 	writetext TreeBitstreamText_3914e
@@ -395,10 +363,7 @@ Func_814c1: ; 814c1 (20:54c1)
 	script_sleep $1e
 	scall HideEmote
 	writenpctext TreeBitstreamText_391fd
-	ld bc, Data_814bb
-	ld e, BANK(Data_814bb)
-	xor a
-	scall MovePerson
+	move_person 0, Data_814bb, 0
 	move_player $1, Data_814b3
 	ret
 
@@ -437,12 +402,8 @@ Func_81607:
 	ld a, $a
 	scall FadeOutAudio
 	playmusic SONG_NONE
-	ld e, FACE_DOWN
-	xor a
-	scall SpriteFace
-	ld e, FACE_DOWN
-	ld a, $1
-	scall SpriteFace
+	sprite_face FACE_DOWN, 0
+	sprite_face FACE_DOWN, $1
 	ld a, $1
 	scall FadeInAudio
 	playmusic SONG_ENCOUNTER_EVIL
@@ -458,15 +419,10 @@ Func_81607:
 
 .won
 	writenpctext TreeBitstreamText_396fd
-	ld bc, Data_81603
-	ld e, BANK(Data_81603)
-	ld a, $1
-	scall MovePerson
+	move_person $1, Data_81603, 0
 	playsfx $2e
 	scall WaitNPCStep
-	ld e, $0
-	ld a, $1
-	scall SetPersonVisibilityState
+	hideperson $1
 	script_sleep $1e
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
@@ -488,12 +444,8 @@ Func_81607:
 	playsfx $69
 	writenpctext TreeBitstreamText_39718
 	script_sleep $1e
-	ld e, FACE_LEFT
-	xor a
-	scall SpriteFace
-	ld e, FACE_RIGHT
-	ld a, $1
-	scall SpriteFace
+	sprite_face FACE_LEFT, 0
+	sprite_face FACE_RIGHT, $1
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
 .asm_81701: ; 81701 (20:5701)
@@ -535,10 +487,7 @@ Func_8172f: ; 8172f (20:572f)
 	writenpctext TreeBitstreamText_397ed
 	script_sleep $1e
 	playmusic SONG_ENCOUNTER_UNKNOWN
-	ld bc, Data_81727
-	ld e, BANK(Data_81727)
-	ld a, $3
-	scall MovePerson
+	move_person $3, Data_81727, 0
 	scall WaitNPCStep
 	script_sleep $1e
 	move_player $1, Data_81723
@@ -553,14 +502,9 @@ Func_8172f: ; 8172f (20:572f)
 	writenpctext TreeBitstreamText_39944
 	writenpctext TreeBitstreamText_39953
 	playsfx $2e
-	ld bc, Data_8172b
-	ld e, BANK(Data_8172b)
-	ld a, $3
-	scall MovePerson
+	move_person $3, Data_8172b, 0
 	scall WaitNPCStep
-	ld e, $0
-	ld a, $3
-	scall SetPersonVisibilityState
+	hideperson $3
 	setevent $4
 	jp .asm_817d3
 
@@ -618,15 +562,10 @@ Func_81811:
 
 .asm_8187c: ; 8187c (20:587c)
 	writenpctext TreeBitstreamText_3985c
-	ld bc, Data_817fd
-	ld e, BANK(Data_817fd)
-	ld a, $4
-	scall MovePerson
+	move_person $4, Data_817fd, 0
 	playsfx $2e
 	scall WaitNPCStep
-	ld e, $0
-	ld a, $4
-	scall SetPersonVisibilityState
+	hideperson $4
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
 	checkevent $2
@@ -649,12 +588,8 @@ Func_81811:
 	ld a, $2
 	scall PlayerFace
 	scall WaitNPCStep
-	ld e, $0
-	ld a, $3
-	scall SetPersonVisibilityState
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
+	hideperson $3
+	hideperson 0
 .asm_81905: ; 81905 (20:5905)
 	setevent $3
 	jp .asm_81938
@@ -700,17 +635,13 @@ Func_81973:
 	ld a, [hl]
 	cp $2
 	jp nz, .asm_819aa
-	ld e, $3
-	xor a
-	scall SpriteFace
+	sprite_face $3, 0
 	writenpctext TreeBitstreamText_3976c
 	ld a, $1
 	scall PlayerFace
 	move_player $1, Data_8196f
 	scall WaitNPCStep
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 .asm_819aa: ; 819aa (20:59aa)
 	pop bc
 	ret

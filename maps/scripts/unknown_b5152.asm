@@ -36,27 +36,19 @@ Data_b5144:
 Func_b5152:: ; b5152
 	ld a, $14
 	ld [wc7e2], a
-	ld e, $05
-	ld hl, Data_b50b4
-	scall LoadWarps
+	loadwarps $05, Data_b50b4
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_b50eb
-	scall LoadEncounters
+	loadwilds $05, Data_b50eb
 	ld e, $03
 	ld hl, Data_b5131
 	scall Func_80ce7
-	ld hl, $0021
-	scall CheckEventFlag
+	checkevent $0021
 	or a
 	jp nz, .asm_b5186
-	ld e, $01
-	ld hl, Data_b5144
-	scall LoadMapObjects
+	loadpeople $01, Data_b5144
 .asm_b5186:
-	ld a, $0a
-	scall PlayMusic
+	playmusic $0a
 	ld a, $04
 	scall LoadPlayerSprite
 	scall Func_8001c

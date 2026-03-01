@@ -61,9 +61,7 @@ Func_8a69b:: ; 8a69b
 	ld e, $10
 	ld a, $03
 	scall Func_80080
-	ld e, $03
-	ld a, $03
-	scall SpriteFace
+	sprite_face $03, $03
 .asm_8a71a:
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468e0
@@ -73,13 +71,10 @@ Func_8a724:
 	ld a, e
 	or a
 	jp nz, .asm_8a74f
-	scall RepairRobots
+	heal
 	playmusic SONG_NONE
 	playmusic SONG_HEAL
-	ld c, $01
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b

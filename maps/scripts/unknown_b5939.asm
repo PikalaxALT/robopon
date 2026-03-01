@@ -26,17 +26,12 @@ Data_b591d:
 Func_b5939:: ; b5939
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_b58c8
-	scall LoadEncounters
+	loadwilds $05, Data_b58c8
 	ld e, $03
 	ld hl, Data_b590e
 	scall Func_80ce7
-	ld e, $02
-	ld hl, Data_b591d
-	scall LoadMapObjects
-	ld a, $09
-	scall PlayMusic
+	loadpeople $02, Data_b591d
+	playmusic $09
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_b5998
@@ -49,8 +44,7 @@ Func_b5939:: ; b5939
 	ld a, [wBackupMapY]
 	cp $0a
 	jp nz, .asm_b5998
-	ld hl, $00fe
-	scall CheckEventFlag
+	checkevent $00fe
 	or a
 	jp nz, .asm_b5992
 	xor a
@@ -75,8 +69,7 @@ Func_b5939:: ; b5939
 	ld a, [wBackupMapY]
 	cp $0c
 	jp nz, .asm_b59d5
-	ld hl, $00fe
-	scall CheckEventFlag
+	checkevent $00fe
 	or a
 	jp nz, .asm_b59cf
 	xor a
@@ -99,17 +92,11 @@ Func_b59d9:
 	jp nz, .asm_b5a17
 	ld hl, $046c
 	scall LandmarkSign
-	ld e, $00
-	ld hl, $00ff
-	scall EventFlagAction
+	resetevent $00ff
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
-	ld a, $5a
-	scall PlaySFX
+	loademote $01, $01, $09
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -130,17 +117,11 @@ Func_b5a18:
 	jp nz, .asm_b5a56
 	ld hl, $0464
 	scall LandmarkSign
-	ld e, $00
-	ld hl, $00fd
-	scall EventFlagAction
+	resetevent $00fd
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
-	ld a, $5a
-	scall PlaySFX
+	loademote $01, $01, $09
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -156,23 +137,16 @@ Func_b5a18:
 	ret
 
 Func_b5a57:
-	ld a, $09
-	scall PlayMusic
+	playmusic $09
 	ld a, $02
 	scall PlayerFace
-	ld c, $01
-	ld e, $02
-	ld a, $09
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $02, $09
+	playsfx $37
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
 	ld hl, $0001
 	scall ScriptSleep
 	scall HideEmote
-	ld e, $01
-	ld hl, $00fe
-	scall EventFlagAction
+	setevent $00fe
 	ret

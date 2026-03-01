@@ -55,9 +55,7 @@ Func_9590a:
 	ld e, $9
 	xor a
 	scall Func_80080
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 	hideperson $1
 	scall Func_8001c
 	jp Func_95957
@@ -117,14 +115,8 @@ Data_959a5: ; 959a5
 	db $06, $04, $ff, $ff
 
 Func_959a9:
-	ld bc, Data_95999
-	ld e, BANK(Data_95999)
-	xor a
-	scall MovePerson
-	ld c, $1
-	ld de, Data_9599d
-	ld a, BANK(Data_9599d)
-	scall MovePlayer
+	move_person 0, Data_95999, 0
+	move_player $1, Data_9599d
 	playsfx $31
 	loademote $1, $2, $c
 	scall WaitEmote
@@ -135,9 +127,7 @@ Func_959a9:
 	ld e, a
 	ld a, $1
 	scall ChangeSprite
-	ld e, $2
-	ld a, $1
-	scall SpriteFace
+	sprite_face $2, $1
 	showperson $1
 	move_person $1, Data_959a1, 1
 	scall WaitNPCStep
@@ -145,14 +135,9 @@ Func_959a9:
 	loademote $1, $4, $c
 	scall WaitEmote
 	scall HideEmote
-	ld e, $1
-	xor a
-	scall SpriteFace
+	sprite_face $1, 0
 	writenpctext TreeBitstreamText_3926c
-	ld bc, Data_959a5
-	ld e, BANK(Data_959a5)
-	ld a, $1
-	scall MovePerson
+	move_person $1, Data_959a5, 0
 	scall WaitNPCStep
 	hideperson $1
 	playsfx $2a
@@ -223,8 +208,7 @@ Func_95ab9:
 	checkevent $f5
 	or a
 	jp nz, Func_95b02
-	xor a
-	scall FacePlayer
+	face_player 0
 	writenpctext TreeBitstreamText_39559
 	playsfx $2a
 	writetext TreeBitstreamText_395a3
@@ -243,9 +227,8 @@ Func_95b02:
 	checkevent $f6
 	or a
 	jp nz, Func_95b40
-	xor a
-	scall FacePlayer
-	ld hl, CopyFromDEtoHL
+	face_player 0
+	ld hl, $47e
 	scall PrintTextWithNPCName
 	playsfx $2a
 	writetext TreeBitstreamText_3968a
@@ -263,19 +246,13 @@ Func_95b40:
 	checkevent $e7
 	or a
 	jp nz, Func_95b81
-	xor a
-	scall FacePlayer
+	face_player 0
 	writenpctext TreeBitstreamText_3949f
 	playsfx $2a
 	writetext TreeBitstreamText_39545
-	ld c, $1e
-	ld e, $0
-	ld a, $16
-	scall GiveRobot
+	give_robot TEABOT, $1e, $0
 	setevent $e7
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 	jp Func_95c0b
 
 Func_95b81:
@@ -288,16 +265,11 @@ Func_95b81:
 	cp $1
 	jp nz, Func_95ba4
 Func_95b96:
-	ld c, $1
-	ld de, Data_95ab3
-	ld a, BANK(Data_95ab3)
-	scall MovePlayer
+	move_player $1, Data_95ab3
 	xor a
 	scall PlayerFace
 Func_95ba4:
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 	checkevent $c4
 	or a
 	jp nz, Func_95bc2
@@ -316,8 +288,7 @@ Func_95bd8:
 	jp Func_95c0b
 
 Func_95bdb:
-	xor a
-	scall FacePlayer
+	face_player 0
 	heal
 	playmusic SONG_NONE
 	playmusic SONG_HEAL

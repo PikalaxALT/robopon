@@ -126,17 +126,12 @@ Data_91fe3:
 Func_920c3:: ; 920c3
 	ld a, $07
 	ld [wc7e2], a
-	ld e, $05
-	ld hl, Data_91b6d
-	scall LoadWarps
+	loadwarps $05, Data_91b6d
 	ld e, $03
 	ld hl, Data_91ba4
 	scall Func_80ce7
-	ld e, $11
-	ld hl, Data_91fd5
-	scall LoadMapObjects
-	ld a, $0d
-	scall PlayMusic
+	loadpeople $11, Data_91fd5
+	playmusic $0d
 	ld a, $03
 	scall Func_80d01
 	ld a, $1e
@@ -155,36 +150,25 @@ Func_920c3:: ; 920c3
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_92147
-	ld hl, $0039
-	scall CheckEventFlag
+	checkevent $0039
 	or a
 	jp nz, .asm_92127
-	ld e, $13
-	ld hl, Data_91caf
-	scall LoadEncounters
+	loadwilds $13, Data_91caf
 	jp .asm_92144
 .asm_92127:
-	ld hl, $0047
-	scall CheckEventFlag
+	checkevent $0047
 	or a
 	jp nz, .asm_9213c
-	ld e, $13
-	ld hl, Data_91db9
-	scall LoadEncounters
+	loadwilds $13, Data_91db9
 	jp .asm_92144
 .asm_9213c:
-	ld e, $13
-	ld hl, Data_91ec3
-	scall LoadEncounters
+	loadwilds $13, Data_91ec3
 .asm_92144:
 	jp .asm_9214f
 .asm_92147:
-	ld e, $12
-	ld hl, Data_91bb3
-	scall LoadEncounters
+	loadwilds $12, Data_91bb3
 .asm_9214f:
-	ld hl, $0047
-	scall CheckEventFlag
+	checkevent $0047
 	cp $01
 	jp nz, .asm_92180
 	ld a, $20
@@ -204,8 +188,7 @@ Func_920c3:: ; 920c3
 	scall LoadPlayerSprite
 	jp .asm_9219a
 .asm_92180:
-	ld hl, $0039
-	scall CheckEventFlag
+	checkevent $0039
 	cp $01
 	jp nz, .asm_9219a
 	ld a, $1f
@@ -215,13 +198,10 @@ Func_920c3:: ; 920c3
 	ld a, $02
 	scall LoadPlayerSprite
 .asm_9219a:
-	ld hl, $008d
-	scall CheckEventFlag
+	checkevent $008d
 	cp $01
 	jp nz, .asm_921ac
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
+	hideperson $0a
 .asm_921ac:
 	ld a, [wc790]
 	or a
@@ -229,25 +209,13 @@ Func_920c3:: ; 920c3
 	ld a, [wc790]
 	cp $06
 	jp nc, .asm_921dd
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $06
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $07
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $08
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $06
+	hideperson $07
+	hideperson $08
+	hideperson $09
 .asm_921dd:
-	ld e, $00
-	ld a, $0e
-	scall SetPersonVisibilityState
+	hideperson $0e
 	scall Func_8001c
 	ret
 
@@ -260,26 +228,20 @@ Func_92211:
 	ld a, e
 	or a
 	jp nz, .asm_92251
-	xor a
-	scall FacePlayer
-	ld hl, $0088
-	scall CheckEventFlag
+	face_player 0
+	checkevent $0088
 	or a
 	jp nz, .asm_9224b
 	hltext_tree_pointer TreeBitstreamText_3babb
 	scall PrintTextWithNPCName
-	ld de, Data_92252
-	ld hl, Data_921e8
-	scall ScriptedBattle
+	startbattle Data_92252, Data_921e8
 	or a
 	jp nz, .asm_9223a
 	jp .asm_92251
 .asm_9223a:
 	hltext_tree_pointer TreeBitstreamText_3baee
 	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $0088
-	scall EventFlagAction
+	setevent $0088
 	jp .asm_92251
 .asm_9224b:
 	hltext_tree_pointer TreeBitstreamText_3bb2b
@@ -310,14 +272,10 @@ Func_92257:
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_922b2
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
+	loademote $01, $01, $1b
 	xor a
 	scall Func_80653
-	ld a, $37
-	scall PlaySFX
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -331,8 +289,7 @@ Func_92257:
 	pop bc
 	jp .asm_9233a
 .asm_922b2:
-	ld hl, $0047
-	scall CheckEventFlag
+	checkevent $0047
 	cp $01
 	jp nz, .asm_922eb
 	ld a, $20
@@ -360,8 +317,7 @@ Func_92257:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_92310
-	ld hl, $0039
-	scall CheckEventFlag
+	checkevent $0039
 	cp $01
 	jp nz, .asm_92310
 	ld a, [wPlayerState]
@@ -372,14 +328,10 @@ Func_92257:
 .asm_9230d:
 	jp .asm_9233a
 .asm_92310:
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
+	loademote $01, $01, $1b
 	xor a
 	scall Func_80653
-	ld a, $37
-	scall PlaySFX
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -444,8 +396,7 @@ Func_9233b:
 	scall MovePlayer
 	jp .asm_923f6
 .asm_923a1:
-	ld hl, $0047
-	scall CheckEventFlag
+	checkevent $0047
 	or a
 	jp nz, .asm_923e9
 	hltext_tree_pointer TreeBitstreamText_46fe6
@@ -497,11 +448,8 @@ Func_92422:
 	ld a, e
 	or a
 	jp nz, .asm_92478
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $0089
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $0089
 	or a
 	jp nz, .asm_92472
 	hltext_tree_pointer TreeBitstreamText_42a37
@@ -510,16 +458,12 @@ Func_92422:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_92469
-	ld de, Data_9247a
-	ld hl, Data_923f9
-	scall ScriptedBattle
+	startbattle Data_9247a, Data_923f9
 	or a
 	jp nz, .asm_92458
 	jp .asm_92478
 .asm_92458:
-	ld e, $01
-	ld hl, $0089
-	scall EventFlagAction
+	setevent $0089
 	hltext_tree_pointer TreeBitstreamText_42a4c
 	scall PrintTextStandard
 	jp .asm_9246f
@@ -548,11 +492,8 @@ Func_924a9:
 	ld a, e
 	or a
 	jp nz, .asm_924ff
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $008a
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $008a
 	or a
 	jp nz, .asm_924f9
 	hltext_tree_pointer TreeBitstreamText_42a61
@@ -561,16 +502,12 @@ Func_924a9:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_924f0
-	ld de, Data_92501
-	ld hl, Data_92480
-	scall ScriptedBattle
+	startbattle Data_92501, Data_92480
 	or a
 	jp nz, .asm_924df
 	jp .asm_924ff
 .asm_924df:
-	ld e, $01
-	ld hl, $008a
-	scall EventFlagAction
+	setevent $008a
 	hltext_tree_pointer TreeBitstreamText_42a6e
 	scall PrintTextStandard
 	jp .asm_924f6
@@ -599,11 +536,8 @@ Func_92531:
 	ld a, e
 	or a
 	jp nz, .asm_92587
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $008b
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $008b
 	or a
 	jp nz, .asm_92581
 	hltext_tree_pointer TreeBitstreamText_42a7e
@@ -612,16 +546,12 @@ Func_92531:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_92578
-	ld de, Data_92589
-	ld hl, Data_92508
-	scall ScriptedBattle
+	startbattle Data_92589, Data_92508
 	or a
 	jp nz, .asm_92567
 	jp .asm_92587
 .asm_92567:
-	ld e, $01
-	ld hl, $008b
-	scall EventFlagAction
+	setevent $008b
 	hltext_tree_pointer TreeBitstreamText_42a9a
 	scall PrintTextStandard
 	jp .asm_9257e
@@ -650,11 +580,8 @@ Func_925b8:
 	ld a, e
 	or a
 	jp nz, .asm_9260e
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $008c
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $008c
 	or a
 	jp nz, .asm_92608
 	hltext_tree_pointer TreeBitstreamText_42abe
@@ -663,16 +590,12 @@ Func_925b8:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_925ff
-	ld de, Data_92610
-	ld hl, Data_9258f
-	scall ScriptedBattle
+	startbattle Data_92610, Data_9258f
 	or a
 	jp nz, .asm_925ee
 	jp .asm_9260e
 .asm_925ee:
-	ld e, $01
-	ld hl, $008c
-	scall EventFlagAction
+	setevent $008c
 	hltext_tree_pointer TreeBitstreamText_42ad0
 	scall PrintTextStandard
 	jp .asm_92605
@@ -706,17 +629,13 @@ Func_9264b:
 	ld a, e
 	or a
 	jp nz, .asm_926b4
-	ld hl, $008d
-	scall CheckEventFlag
+	checkevent $008d
 	or a
 	jp nz, .asm_926b4
-	ld a, $0a
-	scall FacePlayer
+	face_player $0a
 	hltext_tree_pointer TreeBitstreamText_3bd87
 	scall PrintTextWithNPCName
-	ld de, Data_926b5
-	ld hl, Data_92622
-	scall ScriptedBattle
+	startbattle Data_926b5, Data_92622
 	or a
 	jp nz, .asm_92675
 	jp .asm_926b4
@@ -730,24 +649,14 @@ Func_9264b:
 	cp $03
 	jp nz, .asm_92698
 .asm_9268b:
-	ld bc, Data_92616
-	ld e, $24
-	ld a, $0a
-	scall MovePersonAndWait
+	move_person $0a, Data_92616, 1
 	jp .asm_926a2
 .asm_92698:
-	ld bc, Data_9261c
-	ld e, $24
-	ld a, $0a
-	scall MovePersonAndWait
+	move_person $0a, Data_9261c, 1
 .asm_926a2:
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $008d
-	scall EventFlagAction
+	hideperson $0a
+	setevent $008d
 .asm_926b4:
 	ret
 
@@ -758,110 +667,58 @@ Func_926ba:
 	ld a, e
 	or a
 	jp nz, .asm_927c1
-	ld hl, $00da
-	scall CheckEventFlag
+	checkevent $00da
 	or a
 	jp nz, .asm_927bb
-	ld a, $5e
-	scall PlaySFX
-	ld c, $02
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	playsfx $5e
+	loademote $02, $02, $08
 	ld e, $2b
 	ld a, $0f
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $28
-	scall PlaySFX
-	ld e, $01
-	ld a, $0e
-	scall SetPersonVisibilityState
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	ld a, $0e
-	scall SpriteFace
-	ld e, $00
-	ld a, $0e
-	scall SpriteFace
-	ld e, $01
-	ld a, $0e
-	scall SpriteFace
-	ld e, $02
-	ld a, $0e
-	scall SpriteFace
-	ld e, $03
-	ld a, $0e
-	scall SpriteFace
-	ld e, $00
-	ld a, $0e
-	scall SpriteFace
-	ld e, $01
-	ld a, $0e
-	scall SpriteFace
-	ld e, $02
-	ld a, $0e
-	scall SpriteFace
+	playsfx $28
+	showperson $0e
+	playsfx $60
+	sprite_face $03, $0e
+	sprite_face $00, $0e
+	sprite_face $01, $0e
+	sprite_face $02, $0e
+	sprite_face $03, $0e
+	sprite_face $00, $0e
+	sprite_face $01, $0e
+	sprite_face $02, $0e
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $14
-	scall PlayMusic
+	playmusic $14
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $0e
-	scall FacePlayer
+	face_player $0e
 	ld c, $01
 	ld e, $13
 	ld a, $12
 	scall Func_80e8d
-	ld e, $01
-	ld hl, $00da
-	scall EventFlagAction
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	ld a, $0e
-	scall SpriteFace
-	ld e, $00
-	ld a, $0e
-	scall SpriteFace
-	ld e, $01
-	ld a, $0e
-	scall SpriteFace
-	ld e, $02
-	ld a, $0e
-	scall SpriteFace
-	ld e, $03
-	ld a, $0e
-	scall SpriteFace
-	ld e, $00
-	ld a, $0e
-	scall SpriteFace
-	ld e, $01
-	ld a, $0e
-	scall SpriteFace
-	ld e, $02
-	ld a, $0e
-	scall SpriteFace
+	setevent $00da
+	playsfx $60
+	sprite_face $03, $0e
+	sprite_face $00, $0e
+	sprite_face $01, $0e
+	sprite_face $02, $0e
+	sprite_face $03, $0e
+	sprite_face $00, $0e
+	sprite_face $01, $0e
+	sprite_face $02, $0e
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $0d
-	scall PlayMusic
-	ld a, $0e
-	scall FacePlayer
-	ld e, $00
-	ld a, $0e
-	scall SetPersonVisibilityState
+	playmusic $0d
+	face_player $0e
+	hideperson $0e
 	jp .asm_927c1
 .asm_927bb:
 	hltext_tree_pointer TreeBitstreamText_3f79e
@@ -878,18 +735,15 @@ Func_927eb:
 	ld a, e
 	or a
 	jp nz, .asm_92844
-	ld a, $10
-	scall FacePlayer
-	ld hl, $0039
-	scall CheckEventFlag
+	face_player $10
+	checkevent $0039
 	or a
 	jp nz, .asm_92808
 	hltext_tree_pointer TreeBitstreamText_3bdf0
 	scall PrintTextStandard
 	jp .asm_92844
 .asm_92808:
-	ld hl, $0047
-	scall CheckEventFlag
+	checkevent $0047
 	or a
 	jp nz, .asm_9281b
 	hltext_tree_pointer TreeBitstreamText_3be3f
@@ -900,9 +754,7 @@ Func_927eb:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_9283e
-	ld de, Data_92845
-	ld hl, Data_927c2
-	scall ScriptedBattle
+	startbattle Data_92845, Data_927c2
 	or a
 	jp nz, .asm_92835
 	jp .asm_92844

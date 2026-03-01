@@ -213,87 +213,65 @@ Func_cd533:: ; cd533
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cd559
-	ld e, $01
-	ld hl, $0061
-	scall EventFlagAction
+	setevent $0061
 .asm_cd559:
 	ld a, $03
 	scall Func_80d01
 	ld a, [wc7de]
 	cp $06
 	jp nc, .asm_cd571
-	ld e, $05
-	ld hl, Data_cd143
-	scall LoadEncounters
+	loadwilds $05, Data_cd143
 	jp .asm_cd611
 .asm_cd571:
 	ld a, [wc7de]
 	cp $0b
 	jp nc, .asm_cd584
-	ld e, $05
-	ld hl, Data_cd189
-	scall LoadEncounters
+	loadwilds $05, Data_cd189
 	jp .asm_cd611
 .asm_cd584:
 	ld a, [wc7de]
 	cp $10
 	jp nc, .asm_cd597
-	ld e, $05
-	ld hl, Data_cd1cf
-	scall LoadEncounters
+	loadwilds $05, Data_cd1cf
 	jp .asm_cd611
 .asm_cd597:
 	ld a, [wc7de]
 	cp $15
 	jp nc, .asm_cd5aa
-	ld e, $05
-	ld hl, Data_cd215
-	scall LoadEncounters
+	loadwilds $05, Data_cd215
 	jp .asm_cd611
 .asm_cd5aa:
 	ld a, [wc7de]
 	cp $1a
 	jp nc, .asm_cd5bd
-	ld e, $05
-	ld hl, Data_cd25b
-	scall LoadEncounters
+	loadwilds $05, Data_cd25b
 	jp .asm_cd611
 .asm_cd5bd:
 	ld a, [wc7de]
 	cp $1f
 	jp nc, .asm_cd5d0
-	ld e, $05
-	ld hl, Data_cd2a1
-	scall LoadEncounters
+	loadwilds $05, Data_cd2a1
 	jp .asm_cd611
 .asm_cd5d0:
 	ld a, [wc7de]
 	cp $24
 	jp nc, .asm_cd5e3
-	ld e, $05
-	ld hl, Data_cd2e7
-	scall LoadEncounters
+	loadwilds $05, Data_cd2e7
 	jp .asm_cd611
 .asm_cd5e3:
 	ld a, [wc7de]
 	cp $29
 	jp nc, .asm_cd5f6
-	ld e, $05
-	ld hl, Data_cd32d
-	scall LoadEncounters
+	loadwilds $05, Data_cd32d
 	jp .asm_cd611
 .asm_cd5f6:
 	ld a, [wc7de]
 	cp $2e
 	jp nc, .asm_cd609
-	ld e, $05
-	ld hl, Data_cd373
-	scall LoadEncounters
+	loadwilds $05, Data_cd373
 	jp .asm_cd611
 .asm_cd609:
-	ld e, $09
-	ld hl, Data_cd3b9
-	scall LoadEncounters
+	loadwilds $09, Data_cd3b9
 .asm_cd611:
 	ld a, [wc7de]
 	inc a
@@ -337,14 +315,9 @@ Func_cd533:: ; cd533
 	ld e, $01
 	scall LoadWarps
 .asm_cd651:
-	ld e, $01
-	ld hl, Data_cd0b4
-	scall LoadWarps
-	ld e, $12
-	ld hl, Data_cd437
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwarps $01, Data_cd0b4
+	loadpeople $12, Data_cd437
+	playmusic $08
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $32
@@ -424,12 +397,8 @@ Func_cd6d0:
 	ld [hl], a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
-	ld a, $5a
-	scall PlaySFX
+	loademote $01, $01, $09
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02

@@ -22,19 +22,14 @@ ELIF DEF(STAR)
 ENDC
 
 Func_aeae1:: ; aeae1
-	ld e, $02
-	ld hl, Data_aea80
-	scall LoadWarps
+	loadwarps $02, Data_aea80
 	ld e, $01
 	ld hl, Data_aea96
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_aea9b
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_aea9b
+	playmusic $08
 	scall Func_8001c
 	ld hl, $0319
 	scall LandmarkSign

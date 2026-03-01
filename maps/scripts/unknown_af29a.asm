@@ -26,24 +26,16 @@ Func_af29a:: ; af29a
 	call Func_af309
 	ld hl, Func_af309
 	scall Func_80f11
-	ld e, $03
-	ld hl, Data_af225
-	scall LoadWarps
+	loadwarps $03, Data_af225
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_af246
-	scall LoadEncounters
-	ld hl, $004f
-	scall CheckEventFlag
+	loadwilds $05, Data_af246
+	checkevent $004f
 	or a
 	jp nz, .asm_af2ca
-	ld e, $01
-	ld hl, Data_af28c
-	scall LoadMapObjects
+	loadpeople $01, Data_af28c
 .asm_af2ca:
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $031e
 	scall LandmarkSign
@@ -74,8 +66,7 @@ Data_af303:
 	db $12, $1e, $01, $01, $04, $11
 
 Func_af309:
-	ld hl, $004e
-	scall CheckEventFlag
+	checkevent $004e
 	cp $01
 	jp nz, .asm_af347
 	ld hl, Data_af2d9
@@ -105,8 +96,7 @@ Func_af34c:
 	ld a, e
 	or a
 	jp nz, .asm_af384
-	ld hl, $004e
-	scall CheckEventFlag
+	checkevent $004e
 	or a
 	jp nz, .asm_af364
 	ld hl, $0145
@@ -115,16 +105,9 @@ Func_af34c:
 .asm_af364:
 	ld hl, $0146
 	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $004f
-	scall EventFlagAction
-	ld bc, Data_af348
-	ld e, $2b
-	xor a
-	scall MovePersonAndWait
+	setevent $004f
+	move_person 0, Data_af348, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 .asm_af384:
 	ret

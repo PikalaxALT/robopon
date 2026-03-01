@@ -304,9 +304,7 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $07
 	jp nz, .asm_ba4fc
-	ld e, $07
-	ld hl, Data_ba100
-	scall LoadMapObjects
+	loadpeople $07, Data_ba100
 .asm_ba4fc:
 	jp .asm_ba654
 .asm_ba4ff:
@@ -322,9 +320,7 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_ba53f
-	ld e, $07
-	ld hl, Data_ba162
-	scall LoadMapObjects
+	loadpeople $07, Data_ba162
 	ld a, [wc790]
 	or a
 	jp z, .asm_ba53c
@@ -343,9 +339,7 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_ba575
-	ld e, $07
-	ld hl, Data_ba1c4
-	scall LoadMapObjects
+	loadpeople $07, Data_ba1c4
 	ld a, [wc790]
 	or a
 	jp z, .asm_ba575
@@ -373,9 +367,7 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $12
 	jp nz, .asm_ba5a2
-	ld e, $07
-	ld hl, Data_ba226
-	scall LoadMapObjects
+	loadpeople $07, Data_ba226
 	jp .asm_ba5ba
 .asm_ba5a2:
 	ld a, [wBackupMapX]
@@ -384,9 +376,7 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $0e
 	jp nz, .asm_ba5ba
-	ld e, $08
-	ld hl, Data_ba288
-	scall LoadMapObjects
+	loadpeople $08, Data_ba288
 .asm_ba5ba:
 	jp .asm_ba654
 .asm_ba5bd:
@@ -402,9 +392,7 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $05
 	jp nz, .asm_ba5ef
-	ld e, $05
-	ld hl, Data_ba2f8
-	scall LoadMapObjects
+	loadpeople $05, Data_ba2f8
 	ld e, $02
 	ld hl, Data_ba088
 	scall Func_80ce7
@@ -416,9 +404,7 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $0e
 	jp nz, .asm_ba60f
-	ld e, $05
-	ld hl, Data_ba33e
-	scall LoadMapObjects
+	loadpeople $05, Data_ba33e
 	ld e, $02
 	ld hl, Data_ba092
 	scall Func_80ce7
@@ -437,9 +423,7 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $10
 	jp nz, .asm_ba63c
-	ld e, $07
-	ld hl, Data_ba384
-	scall LoadMapObjects
+	loadpeople $07, Data_ba384
 	jp .asm_ba654
 .asm_ba63c:
 	ld a, [wBackupMapX]
@@ -448,11 +432,8 @@ Func_ba46c:: ; ba46c
 	ld a, [wBackupMapY]
 	cp $19
 	jp nz, .asm_ba654
-	ld e, $07
-	ld hl, Data_ba3e6
-	scall LoadMapObjects
+	loadpeople $07, Data_ba3e6
 .asm_ba654:
 	scall Func_8001c
-	ld a, $11
-	scall PlayMusic
+	playmusic $11
 	ret

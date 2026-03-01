@@ -191,9 +191,7 @@ Func_cdfc4:: ; cdfc4
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cdfea
-	ld e, $01
-	ld hl, $0061
-	scall EventFlagAction
+	setevent $0061
 .asm_cdfea:
 	ld a, $03
 	scall Func_80d01
@@ -289,54 +287,34 @@ Func_cdfc4:: ; cdfc4
 	cp $01
 	jp nz, .asm_ce136
 .asm_ce0d3:
-	ld e, $05
-	ld hl, Data_cdcc2
-	scall LoadEncounters
+	loadwilds $05, Data_cdcc2
 	jp .asm_ce13e
 .asm_ce0de:
-	ld e, $05
-	ld hl, Data_cdd08
-	scall LoadEncounters
+	loadwilds $05, Data_cdd08
 	jp .asm_ce13e
 .asm_ce0e9:
-	ld e, $05
-	ld hl, Data_cdd4e
-	scall LoadEncounters
+	loadwilds $05, Data_cdd4e
 	jp .asm_ce13e
 .asm_ce0f4:
-	ld e, $05
-	ld hl, Data_cdd94
-	scall LoadEncounters
+	loadwilds $05, Data_cdd94
 	jp .asm_ce13e
 .asm_ce0ff:
-	ld e, $05
-	ld hl, Data_cddda
-	scall LoadEncounters
+	loadwilds $05, Data_cddda
 	jp .asm_ce13e
 .asm_ce10a:
-	ld e, $05
-	ld hl, Data_cde20
-	scall LoadEncounters
+	loadwilds $05, Data_cde20
 	jp .asm_ce13e
 .asm_ce115:
-	ld e, $05
-	ld hl, Data_cde66
-	scall LoadEncounters
+	loadwilds $05, Data_cde66
 	jp .asm_ce13e
 .asm_ce120:
-	ld e, $05
-	ld hl, Data_cdeac
-	scall LoadEncounters
+	loadwilds $05, Data_cdeac
 	jp .asm_ce13e
 .asm_ce12b:
-	ld e, $05
-	ld hl, Data_cdef2
-	scall LoadEncounters
+	loadwilds $05, Data_cdef2
 	jp .asm_ce13e
 .asm_ce136:
-	ld e, $09
-	ld hl, Data_cdf38
-	scall LoadEncounters
+	loadwilds $09, Data_cdf38
 .asm_ce13e:
 	ld a, [wc7de]
 	inc a
@@ -380,9 +358,7 @@ Func_cdfc4:: ; cdfc4
 	ld e, $01
 	scall LoadWarps
 .asm_ce17e:
-	ld e, $01
-	ld hl, Data_cdc33
-	scall LoadWarps
+	loadwarps $01, Data_cdc33
 	ld a, [wc7a3]
 	cp $03
 	jp z, .asm_ce198
@@ -398,11 +374,8 @@ Func_cdfc4:: ; cdfc4
 .asm_ce1a0:
 	ld a, [wc7a3]
 	call Func_ce409
-	ld e, $01
-	ld hl, Data_cdfb6
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadpeople $01, Data_cdfb6
+	playmusic $08
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $32
@@ -798,8 +771,7 @@ Func_ce60e:
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce696
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	ld a, $01
 	ld [wc7a3], a
 	ld a, $01
@@ -840,8 +812,7 @@ Func_ce60e:
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce6e7
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	ld a, $02
 	ld [wc7a3], a
 	ld a, $02
@@ -882,8 +853,7 @@ Func_ce60e:
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce738
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	ld a, $03
 	ld [wc7a3], a
 	ld a, $03

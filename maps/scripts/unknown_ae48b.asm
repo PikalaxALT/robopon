@@ -33,20 +33,12 @@ Data_ae41b:
 Func_ae48b:: ; ae48b
 	ld a, $0e
 	ld [wc7e2], a
-	ld e, $02
-	ld hl, Data_ae3c9
-	scall LoadWarps
+	loadwarps $02, Data_ae3c9
 	ld a, $03
 	scall Func_80d01
-	ld e, $04
-	ld hl, Data_ae3df
-	scall LoadEncounters
-	ld e, $08
-	ld hl, Data_ae41b
-	scall LoadMapObjects
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
+	loadwilds $04, Data_ae3df
+	loadpeople $08, Data_ae41b
+	hideperson $04
 	ld a, $20
 	scall Func_80e6d
 	cp $ff
@@ -75,8 +67,7 @@ Func_ae48b:: ; ae48b
 	ld a, $01
 	scall LoadPlayerSprite
 .asm_ae4f1:
-	ld a, $13
-	scall PlayMusic
+	playmusic $13
 	scall Func_8001c
 	ret
 
@@ -145,110 +136,58 @@ Func_ae56c:
 	ld a, e
 	or a
 	jp nz, .asm_ae674
-	ld hl, $00e0
-	scall CheckEventFlag
+	checkevent $00e0
 	or a
 	jp nz, .asm_ae66e
-	ld a, $5e
-	scall PlaySFX
-	ld c, $02
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	playsfx $5e
+	loademote $02, $02, $08
 	ld e, $21
 	ld a, $0d
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $28
-	scall PlaySFX
-	ld e, $01
-	ld a, $04
-	scall SetPersonVisibilityState
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	ld a, $04
-	scall SpriteFace
-	ld e, $00
-	ld a, $04
-	scall SpriteFace
-	ld e, $01
-	ld a, $04
-	scall SpriteFace
-	ld e, $02
-	ld a, $04
-	scall SpriteFace
-	ld e, $03
-	ld a, $04
-	scall SpriteFace
-	ld e, $00
-	ld a, $04
-	scall SpriteFace
-	ld e, $01
-	ld a, $04
-	scall SpriteFace
-	ld e, $02
-	ld a, $04
-	scall SpriteFace
+	playsfx $28
+	showperson $04
+	playsfx $60
+	sprite_face $03, $04
+	sprite_face $00, $04
+	sprite_face $01, $04
+	sprite_face $02, $04
+	sprite_face $03, $04
+	sprite_face $00, $04
+	sprite_face $01, $04
+	sprite_face $02, $04
 	ld a, $0f
 	scall FadeOutAudio
-	ld a, $04
-	scall PlayMusic
+	playmusic $04
 	ld a, $01
 	scall FadeInAudio
-	ld a, $14
-	scall PlayMusic
-	ld a, $04
-	scall FacePlayer
+	playmusic $14
+	face_player $04
 	ld hl, $001e
 	scall ScriptSleep
 	ld c, $07
 	ld e, $04
 	ld a, $01
 	scall Func_80e8d
-	ld e, $01
-	ld hl, $00e0
-	scall EventFlagAction
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	ld a, $04
-	scall SpriteFace
-	ld e, $00
-	ld a, $04
-	scall SpriteFace
-	ld e, $01
-	ld a, $04
-	scall SpriteFace
-	ld e, $02
-	ld a, $04
-	scall SpriteFace
-	ld e, $03
-	ld a, $04
-	scall SpriteFace
-	ld e, $00
-	ld a, $04
-	scall SpriteFace
-	ld e, $01
-	ld a, $04
-	scall SpriteFace
-	ld e, $02
-	ld a, $04
-	scall SpriteFace
+	setevent $00e0
+	playsfx $60
+	sprite_face $03, $04
+	sprite_face $00, $04
+	sprite_face $01, $04
+	sprite_face $02, $04
+	sprite_face $03, $04
+	sprite_face $00, $04
+	sprite_face $01, $04
+	sprite_face $02, $04
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $13
-	scall PlayMusic
-	ld a, $04
-	scall FacePlayer
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
+	playmusic $13
+	face_player $04
+	hideperson $04
 	jp .asm_ae674
 .asm_ae66e:
 	ld hl, $015c

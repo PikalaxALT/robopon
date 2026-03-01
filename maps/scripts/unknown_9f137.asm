@@ -19,15 +19,10 @@ ELIF DEF(STAR)
 ENDC
 
 Func_9f137:: ; 9f137
-	ld e, $02
-	ld hl, Data_9f0db
-	scall LoadWarps
+	loadwarps $02, Data_9f0db
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_9f0f1
-	scall LoadEncounters
-	ld a, $13
-	scall PlayMusic
+	loadwilds $05, Data_9f0f1
+	playmusic $13
 	scall Func_8001c
 	ret

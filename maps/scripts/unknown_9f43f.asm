@@ -38,9 +38,7 @@ ELIF DEF(STAR)
 ENDC
 
 Func_9f43f:: ; 9f43f
-	ld e, $02
-	ld hl, Data_9f395
-	scall LoadWarps
+	loadwarps $02, Data_9f395
 	ld e, $01
 	ld hl, Data_9f3ae
 	scall Func_80ce7
@@ -49,14 +47,9 @@ Func_9f43f:: ; 9f43f
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_9f3f9
-	scall LoadEncounters
-	ld e, $04
-	ld hl, Data_9f3c1
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_9f3f9
+	loadpeople $04, Data_9f3c1
+	playmusic $08
 	ld a, $44
 	scall Func_80f43
 	scall Func_8001c
@@ -114,10 +107,7 @@ Func_9f4ac:
 	ld a, c
 	cp $ff
 	jp nz, .asm_9f571
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	loademote $01, $01, $0a
 	ld a, $35
 	call OverworldPlaySFX
 	scall StartShakingScreen
@@ -186,20 +176,14 @@ Func_9f574:
 	ld a, e
 	or a
 	jp nz, .asm_9f59f
-	scall RepairRobots
-	xor a
-	scall PlayMusic
-	ld a, $16
-	scall PlayMusic
-	ld c, $01
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	heal
+	playmusic SONG_NONE
+	playmusic $16
+	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	ld hl, $0322
 	scall PrintTextStandard
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 .asm_9f59f:
 	ret

@@ -31,29 +31,20 @@ Data_92c76:
 	person_event $0f, $04, $01, $1c, $01, $01, $00, $04, $00, Func_92d5c, NULL
 
 Func_92c92:: ; 92c92
-	ld e, $03
-	ld hl, Data_92bee
-	scall LoadWarps
+	loadwarps $03, Data_92bee
 	ld e, $01
 	ld hl, Data_92c0f
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $07
-	ld hl, Data_92c14
-	scall LoadEncounters
-	ld e, $02
-	ld hl, Data_92c76
-	scall LoadMapObjects
+	loadwilds $07, Data_92c14
+	loadpeople $02, Data_92c76
 	ld a, [wc797]
 	cp $07
 	jp z, .asm_92cc6
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 .asm_92cc6:
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $03f2
 	scall LandmarkSign
@@ -69,11 +60,8 @@ Func_92cfe:
 	ld a, e
 	or a
 	jp nz, .asm_92d54
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $0090
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $0090
 	or a
 	jp nz, .asm_92d4e
 	hltext_tree_pointer TreeBitstreamText_42b16
@@ -82,16 +70,12 @@ Func_92cfe:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_92d45
-	ld de, Data_92d56
-	ld hl, Data_92cd5
-	scall ScriptedBattle
+	startbattle Data_92d56, Data_92cd5
 	or a
 	jp nz, .asm_92d34
 	jp .asm_92d54
 .asm_92d34:
-	ld e, $01
-	ld hl, $0090
-	scall EventFlagAction
+	setevent $0090
 	hltext_tree_pointer TreeBitstreamText_42b16
 	scall PrintTextStandard
 	jp .asm_92d4b
@@ -115,11 +99,8 @@ Func_92d5c:
 	ld a, e
 	or a
 	jp nz, .asm_92db9
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $0014
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $0014
 	or a
 	jp nz, .asm_92db3
 	ld a, $17
@@ -128,13 +109,10 @@ Func_92d5c:
 	jp nz, .asm_92daa
 	hltext_tree_pointer TreeBitstreamText_39e1f
 	scall PrintTextWithNPCName
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	hltext_tree_pointer TreeBitstreamText_39e65
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $0014
-	scall EventFlagAction
+	setevent $0014
 	ld c, $01
 	ld e, $01
 	ld a, $17

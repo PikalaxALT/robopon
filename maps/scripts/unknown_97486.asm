@@ -12,15 +12,11 @@ Data_97478:
     person_event $00, $04, $02, $03, $01, $01, $03, $04, $00, Func_806dd_25_2, Data_97470
 
 Func_97486:: ; 97486
-	ld e, $01
-	ld hl, Data_97465
-	scall LoadWarps
+	loadwarps $01, Data_97465
 	ld e, $01
 	ld hl, Data_97473
 	scall Func_80ce7
-	ld e, $01
-	ld hl, Data_97478
-	scall LoadMapObjects
+	loadpeople $01, Data_97478
 	playmusic SONG_TOWN2
 	scall Func_8001c
 	ret

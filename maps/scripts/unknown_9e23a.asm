@@ -39,21 +39,14 @@ Func_9e23a:: ; 9e23a
 	ld [wc792], a
 	xor a
 	ld [wc794], a
-	ld e, $02
-	ld hl, Data_9e1c8
-	scall LoadWarps
+	loadwarps $02, Data_9e1c8
 	ld e, $01
 	ld hl, Data_9e1e1
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_9e1f4
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_9e1e6
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_9e1f4
+	loadpeople $01, Data_9e1e6
+	playmusic $08
 	scall Func_8001c
 	ret

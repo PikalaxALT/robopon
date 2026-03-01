@@ -17,49 +17,38 @@ ENDC
 Func_9f5e1:: ; 9f5e1
 	ld a, $11
 	ld [wc7e2], a
-	ld e, $02
-	ld hl, Data_9f5a1
-	scall LoadWarps
+	loadwarps $02, Data_9f5a1
 	ld a, $03
 	scall Func_80d01
-	ld e, $03
-	ld hl, Data_9f5b7
-	scall LoadEncounters
+	loadwilds $03, Data_9f5b7
 	ld a, [wBackupMapGroup]
 	cp $20
 	jp nz, .asm_9f632
 	ld a, [wBackupMapNumber]
 	cp $0b
 	jp nz, .asm_9f632
-	ld hl, $00f9
-	scall CheckEventFlag
+	checkevent $00f9
 	or a
 	jp nz, .asm_9f627
-	ld a, $0e
-	scall PlayMusic
+	playmusic $0e
 	xor a
 	scall Func_80653
 	scall Func_8001c
 	call Func_9f63b
 	jp .asm_9f62f
 .asm_9f627:
-	ld a, $13
-	scall PlayMusic
+	playmusic $13
 	scall Func_8001c
 .asm_9f62f:
 	jp .asm_9f63a
 .asm_9f632:
-	ld a, $13
-	scall PlayMusic
+	playmusic $13
 	scall Func_8001c
 .asm_9f63a:
 	ret
 
 Func_9f63b:
-	ld c, $01
-	ld e, $08
-	ld a, $26
-	scall LoadEmote
+	loademote $01, $08, $26
 	scall WaitEmote
 	ld a, $02
 	scall PlayerFace
@@ -70,11 +59,7 @@ Func_9f63b:
 	scall HideEmote
 	ld hl, $001e
 	scall ScriptSleep
-	xor a
-	scall PlayMusic
-	ld a, $13
-	scall PlayMusic
-	ld e, $01
-	ld hl, $00f9
-	scall EventFlagAction
+	playmusic SONG_NONE
+	playmusic $13
+	setevent $00f9
 	ret

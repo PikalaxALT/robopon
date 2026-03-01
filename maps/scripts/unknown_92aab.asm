@@ -32,22 +32,15 @@ Data_92a8f: ; 92a8f
 	person_event $0b, $04, $21, $18, $01, $01, $03, $04, $00, Func_92b90, NULL
 
 Func_92aab:: ; 92aab (24:6aab)
-	ld e, $4
-	ld hl, Data_929fc
-	scall LoadWarps
+	loadwarps $4, Data_929fc
 	ld e, $1
 	ld hl, Data_92a28
 	scall Func_80ce7
 	ld a, $3
 	scall Func_80d01
-	ld e, $7
-	ld hl, Data_92a2d
-	scall LoadEncounters
-	ld e, $2
-	ld hl, Data_92a8f
-	scall LoadMapObjects
-	ld a, $8
-	scall PlayMusic
+	loadwilds $7, Data_92a2d
+	loadpeople $2, Data_92a8f
+	playmusic $8
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46cec
 	ret
@@ -62,28 +55,21 @@ Func_92b08:
 	ld a, e
 	or a
 	jp nz, Func_92b5e
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $8e
-	scall CheckEventFlag
+	face_player -$1
+	checkevent $8e
 	or a
 	jp nz, Func_92b58
 	writetext TreeBitstreamText_42ae8
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_92b4f
-	ld de, Data_92b60
-	ld hl, Data_92adf
-	scall ScriptedBattle
+	startbattle Data_92b60, Data_92adf
 	or a
 	jp nz, Func_92b3e
 	jp Func_92b5e
 
 Func_92b3e: ; 92b3e (24:6b3e)
-	ld e, $1
-	ld hl, $8e
-	scall EventFlagAction
+	setevent $8e
 	writetext TreeBitstreamText_42af6
 	jp Func_92b55
 
@@ -93,7 +79,7 @@ Func_92b55: ; 92b55 (24:6b55)
 	jp Func_92b5e
 
 Func_92b58: ; 92b58 (24:6b58)
-	ld hl, CheckSFXFinishedPredef
+	ld hl, $249
 	scall PrintTextStandard
 Func_92b5e: ; 92b5e (24:6b5e)
 	pop bc
@@ -112,29 +98,22 @@ Func_92b90:
 	ld a, e
 	or a
 	jp nz, Func_92be6
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $8f
-	scall CheckEventFlag
+	face_player -$1
+	checkevent $8f
 	or a
 	jp nz, Func_92be0
 	writetext TreeBitstreamText_42b02
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, Func_92bd7
-	ld de, Data_92be8
-	ld hl, Data_92b67
-	scall ScriptedBattle
+	startbattle Data_92be8, Data_92b67
 	or a
 	jp nz, Func_92bc6
 	jp Func_92be6
 
 Func_92bc6: ; 92bc6 (24:6bc6)
-	ld e, $1
-	ld hl, $8f
-	scall EventFlagAction
-	ld hl, CheckSFXFinishedPredef
+	setevent $8f
+	ld hl, $249
 	scall PrintTextStandard
 	jp Func_92bdd
 
@@ -144,7 +123,7 @@ Func_92bdd: ; 92bdd (24:6bdd)
 	jp Func_92be6
 
 Func_92be0: ; 92be0 (24:6be0)
-	ld hl, CheckSongFinishedPredef
+	ld hl, $245
 	scall PrintTextStandard
 Func_92be6: ; 92be6 (24:6be6)
 	pop bc

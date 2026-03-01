@@ -27,21 +27,13 @@ ELIF DEF(STAR)
 ENDC
 
 Func_9ef8d:: ; 9ef8d
-	ld e, $02
-	ld hl, Data_9ef11
-	scall LoadWarps
+	loadwarps $02, Data_9ef11
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_9ef47
-	scall LoadEncounters
-	ld e, $02
-	ld hl, Data_9ef2b
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
-	ld hl, $00e8
-	scall CheckEventFlag
+	loadwilds $05, Data_9ef47
+	loadpeople $02, Data_9ef2b
+	playmusic $08
+	checkevent $00e8
 	or a
 	jp nz, .asm_9efe3
 	ld a, $01
@@ -49,9 +41,7 @@ Func_9ef8d:: ; 9ef8d
 	scall Func_8001c
 	ld hl, $043d
 	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $00e8
-	scall EventFlagAction
+	setevent $00e8
 	xor a
 	ld [wc7da], a
 	ld l, $19
@@ -118,10 +108,7 @@ Func_9f017:
 	ld a, c
 	cp $ff
 	jp nz, .asm_9f0d8
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	loademote $01, $01, $0a
 	ld a, $35
 	call OverworldPlaySFX
 	scall StartShakingScreen

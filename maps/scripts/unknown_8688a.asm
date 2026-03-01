@@ -28,9 +28,7 @@ Func_8688a::
 	scall Func_80f24
 	pop bc
 	loadpeople $2, Data_8686e
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	loadwarps $1, Data_8682b
 	checkevent $7
 	or a
@@ -203,34 +201,16 @@ Func_86b0d:
 	scall WaitEmote
 	scall HideEmote
 	playsfx $28
-	ld e, $1
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	playsfx $60
-	ld e, $3
-	xor a
-	scall SpriteFace
-	ld e, $0
-	xor a
-	scall SpriteFace
-	ld e, $1
-	xor a
-	scall SpriteFace
-	ld e, $2
-	xor a
-	scall SpriteFace
-	ld e, $3
-	xor a
-	scall SpriteFace
-	ld e, $0
-	xor a
-	scall SpriteFace
-	ld e, $1
-	xor a
-	scall SpriteFace
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $3, 0
+	sprite_face $0, 0
+	sprite_face $1, 0
+	sprite_face $2, 0
+	sprite_face $3, 0
+	sprite_face $0, 0
+	sprite_face $1, 0
+	sprite_face $2, 0
 	ld a, $f
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -245,30 +225,14 @@ Func_86b0d:
 	scall Func_80e8d
 	setevent $d6
 	playsfx $60
-	ld e, $3
-	xor a
-	scall SpriteFace
-	ld e, $0
-	xor a
-	scall SpriteFace
-	ld e, $1
-	xor a
-	scall SpriteFace
-	ld e, $2
-	xor a
-	scall SpriteFace
-	ld e, $3
-	xor a
-	scall SpriteFace
-	ld e, $0
-	xor a
-	scall SpriteFace
-	ld e, $1
-	xor a
-	scall SpriteFace
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $3, 0
+	sprite_face $0, 0
+	sprite_face $1, 0
+	sprite_face $2, 0
+	sprite_face $3, 0
+	sprite_face $0, 0
+	sprite_face $1, 0
+	sprite_face $2, 0
 	ld a, $f
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -276,9 +240,7 @@ Func_86b0d:
 	scall FadeInAudio
 	playmusic SONG_TOWN2
 	face_player 0
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	jp .asm_86c00
 
 .asm_86bfa: ; 86bfa (21:6bfa)

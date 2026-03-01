@@ -31,25 +31,18 @@ Func_9e95e:: ; 9e95e
 	cp $02
 	jp nz, .asm_9e986
 .asm_9e976:
-	ld e, $02
-	ld hl, Data_9e8fa
-	scall LoadWarps
+	loadwarps $02, Data_9e8fa
 	ld a, $02
 	ld [wc792], a
 	jp .asm_9e993
 .asm_9e986:
-	ld e, $02
-	ld hl, Data_9e910
-	scall LoadWarps
+	loadwarps $02, Data_9e910
 	ld a, $05
 	ld [wc792], a
 .asm_9e993:
 	ld a, $03
 	scall Func_80d01
-	ld e, $04
-	ld hl, Data_9e926
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $04, Data_9e926
+	playmusic $08
 	scall Func_8001c
 	ret

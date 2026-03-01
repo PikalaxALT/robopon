@@ -154,9 +154,7 @@ Func_c93a1:: ; c93a1
 	xor a
 	ld [wc78b], a
 .asm_c9424:
-	ld e, $02
-	ld hl, Data_c9385
-	scall LoadMapObjects
+	loadpeople $02, Data_c9385
 	ld a, [wc78b]
 	cp $04
 	jp z, .asm_c94df
@@ -168,76 +166,51 @@ Func_c93a1:: ; c93a1
 	jp z, .asm_c946d
 	or a
 	jp nz, .asm_c9502
-	ld e, $02
-	ld hl, Data_c91b9
-	scall LoadWarps
+	loadwarps $02, Data_c91b9
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c9227
-	scall LoadEncounters
-	ld a, $09
-	scall PlayMusic
+	loadwilds $05, Data_c9227
+	playmusic $09
 	scall Func_8001c
 	ld hl, $02e6
 	scall LandmarkSign
 	jp .asm_c9502
 .asm_c946d:
-	ld e, $02
-	ld hl, Data_c91cf
-	scall LoadWarps
+	loadwarps $02, Data_c91cf
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c926d
-	scall LoadEncounters
-	ld a, $0e
-	scall PlayMusic
+	loadwilds $05, Data_c926d
+	playmusic $0e
 	scall Func_8001c
 	ld hl, $02f5
 	scall LandmarkSign
 	jp .asm_c9502
 .asm_c9493:
-	ld e, $02
-	ld hl, Data_c91e5
-	scall LoadWarps
+	loadwarps $02, Data_c91e5
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c92b3
-	scall LoadEncounters
-	ld a, $0d
-	scall PlayMusic
+	loadwilds $05, Data_c92b3
+	playmusic $0d
 	scall Func_8001c
 	ld hl, $02f0
 	scall LandmarkSign
 	jp .asm_c9502
 .asm_c94b9:
-	ld e, $02
-	ld hl, Data_c91fb
-	scall LoadWarps
+	loadwarps $02, Data_c91fb
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c92f9
-	scall LoadEncounters
-	ld a, $0f
-	scall PlayMusic
+	loadwilds $05, Data_c92f9
+	playmusic $0f
 	scall Func_8001c
 	ld hl, $02eb
 	scall LandmarkSign
 	jp .asm_c9502
 .asm_c94df:
-	ld e, $02
-	ld hl, Data_c9211
-	scall LoadWarps
+	loadwarps $02, Data_c9211
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c933f
-	scall LoadEncounters
-	ld a, $10
-	scall PlayMusic
+	loadwilds $05, Data_c933f
+	playmusic $10
 	scall Func_8001c
 	ld hl, $02fa
 	scall LandmarkSign
@@ -256,15 +229,13 @@ Func_c9503:
 	jp z, .asm_c9543
 	or a
 	jp nz, .asm_c95d4
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	cp $01
 	jp nz, .asm_c952e
 	ld l, $02
 	jp .asm_c9540
 .asm_c952e:
-	ld hl, $003d
-	scall CheckEventFlag
+	checkevent $003d
 	cp $01
 	jp nz, .asm_c953e
 	ld l, $00
@@ -274,15 +245,13 @@ Func_c9503:
 .asm_c9540:
 	jp .asm_c95d4
 .asm_c9543:
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	cp $01
 	jp nz, .asm_c9553
 	ld l, $02
 	jp .asm_c9565
 .asm_c9553:
-	ld hl, $003e
-	scall CheckEventFlag
+	checkevent $003e
 	cp $01
 	jp nz, .asm_c9563
 	ld l, $00
@@ -292,15 +261,13 @@ Func_c9503:
 .asm_c9565:
 	jp .asm_c95d4
 .asm_c9568:
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	cp $01
 	jp nz, .asm_c9578
 	ld l, $02
 	jp .asm_c958a
 .asm_c9578:
-	ld hl, $003f
-	scall CheckEventFlag
+	checkevent $003f
 	cp $01
 	jp nz, .asm_c9588
 	ld l, $00
@@ -310,15 +277,13 @@ Func_c9503:
 .asm_c958a:
 	jp .asm_c95d4
 .asm_c958d:
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	cp $01
 	jp nz, .asm_c959d
 	ld l, $02
 	jp .asm_c95af
 .asm_c959d:
-	ld hl, $0040
-	scall CheckEventFlag
+	checkevent $0040
 	cp $01
 	jp nz, .asm_c95ad
 	ld l, $00
@@ -328,15 +293,13 @@ Func_c9503:
 .asm_c95af:
 	jp .asm_c95d4
 .asm_c95b2:
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	cp $01
 	jp nz, .asm_c95c2
 	ld l, $02
 	jp .asm_c95d4
 .asm_c95c2:
-	ld hl, $0041
-	scall CheckEventFlag
+	checkevent $0041
 	cp $01
 	jp nz, .asm_c95d2
 	ld l, $00
@@ -360,22 +323,15 @@ Func_c95da:
 	ld a, e
 	cp $02
 	jp nz, .asm_c9613
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 	ld hl, $001e
 	scall ScriptSleep
 	ld a, $03
 	scall PlayerFace
 	ld hl, $00d4
 	scall PrintTextStandard
-	ld c, $01
-	ld de, Data_c95d6
-	ld a, $32
-	scall MovePlayer
-	ld e, $02
-	xor a
-	scall SpriteFace
+	move_player $01, Data_c95d6
+	sprite_face $02, 0
 .asm_c9613:
 	ret
 
@@ -390,9 +346,7 @@ Func_c9614:
 	or a
 	jp nz, .asm_c9651
 	push hl
-	ld hl, sp+$03
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$03
 	pop hl
 	ld a, l
 	cp $02

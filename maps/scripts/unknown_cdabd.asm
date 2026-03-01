@@ -188,87 +188,65 @@ Func_cdabd:: ; cdabd
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cdae3
-	ld e, $01
-	ld hl, $0061
-	scall EventFlagAction
+	setevent $0061
 .asm_cdae3:
 	ld a, $03
 	scall Func_80d01
 	ld a, [wc7de]
 	cp $06
 	jp nc, .asm_cdafb
-	ld e, $05
-	ld hl, Data_cd7c9
-	scall LoadEncounters
+	loadwilds $05, Data_cd7c9
 	jp .asm_cdb9b
 .asm_cdafb:
 	ld a, [wc7de]
 	cp $0b
 	jp nc, .asm_cdb0e
-	ld e, $05
-	ld hl, Data_cd80f
-	scall LoadEncounters
+	loadwilds $05, Data_cd80f
 	jp .asm_cdb9b
 .asm_cdb0e:
 	ld a, [wc7de]
 	cp $10
 	jp nc, .asm_cdb21
-	ld e, $05
-	ld hl, Data_cd855
-	scall LoadEncounters
+	loadwilds $05, Data_cd855
 	jp .asm_cdb9b
 .asm_cdb21:
 	ld a, [wc7de]
 	cp $15
 	jp nc, .asm_cdb34
-	ld e, $05
-	ld hl, Data_cd89b
-	scall LoadEncounters
+	loadwilds $05, Data_cd89b
 	jp .asm_cdb9b
 .asm_cdb34:
 	ld a, [wc7de]
 	cp $1a
 	jp nc, .asm_cdb47
-	ld e, $05
-	ld hl, Data_cd8e1
-	scall LoadEncounters
+	loadwilds $05, Data_cd8e1
 	jp .asm_cdb9b
 .asm_cdb47:
 	ld a, [wc7de]
 	cp $1f
 	jp nc, .asm_cdb5a
-	ld e, $05
-	ld hl, Data_cd927
-	scall LoadEncounters
+	loadwilds $05, Data_cd927
 	jp .asm_cdb9b
 .asm_cdb5a:
 	ld a, [wc7de]
 	cp $24
 	jp nc, .asm_cdb6d
-	ld e, $05
-	ld hl, Data_cd96d
-	scall LoadEncounters
+	loadwilds $05, Data_cd96d
 	jp .asm_cdb9b
 .asm_cdb6d:
 	ld a, [wc7de]
 	cp $29
 	jp nc, .asm_cdb80
-	ld e, $05
-	ld hl, Data_cd9b3
-	scall LoadEncounters
+	loadwilds $05, Data_cd9b3
 	jp .asm_cdb9b
 .asm_cdb80:
 	ld a, [wc7de]
 	cp $2e
 	jp nc, .asm_cdb93
-	ld e, $05
-	ld hl, Data_cd9f9
-	scall LoadEncounters
+	loadwilds $05, Data_cd9f9
 	jp .asm_cdb9b
 .asm_cdb93:
-	ld e, $09
-	ld hl, Data_cda3f
-	scall LoadEncounters
+	loadwilds $09, Data_cda3f
 .asm_cdb9b:
 	ld a, [wc7de]
 	inc a
@@ -312,11 +290,8 @@ Func_cdabd:: ; cdabd
 	ld e, $01
 	scall LoadWarps
 .asm_cdbdb:
-	ld e, $01
-	ld hl, Data_cd73a
-	scall LoadWarps
-	ld a, $08
-	scall PlayMusic
+	loadwarps $01, Data_cd73a
+	playmusic $08
 	scall Func_8001c
 	ld a, $41
 	scall Func_80f43

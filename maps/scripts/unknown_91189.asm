@@ -42,43 +42,30 @@ Data_910fd:
 Func_91189:: ; 91189
 	ld a, $04
 	ld [wc789], a
-	ld e, $01
-	ld hl, Data_910b4
-	scall LoadWarps
-	ld a, $0f
-	scall PlayMusic
+	loadwarps $01, Data_910b4
+	playmusic $0f
 	ld a, $01
 	scall LoadPlayerSprite
 	ld a, $06
 	ld [wc7e2], a
-	ld hl, $0036
-	scall CheckEventFlag
+	checkevent $0036
 	or a
 	jp nz, .asm_911c0
-	ld e, $03
-	ld hl, Data_910d3
-	scall LoadMapObjects
+	loadpeople $03, Data_910d3
 	scall Func_8001c
 	call Func_91219
 	jp .asm_9120c
 .asm_911c0:
-	ld e, $0a
-	ld hl, Data_910fd
-	scall LoadMapObjects
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld hl, $0039
-	scall CheckEventFlag
+	loadpeople $0a, Data_910fd
+	hideperson $02
+	checkevent $0039
 	cp $01
 	jp nz, .asm_911ea
 	ld c, $0c
 	ld e, $02
 	ld a, $01
 	scall Func_80080
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 .asm_911ea:
 	ld a, [wc790]
 	or a
@@ -107,10 +94,7 @@ Data_91215:
 	db $11, $04, $ff, $ff
 
 Func_91219:
-	ld c, $01
-	ld de, Data_9120d
-	ld a, $24
-	scall MovePlayer
+	move_player $01, Data_9120d
 	scall WaitNPCStep
 	ld a, $03
 	scall PlayerFace
@@ -136,35 +120,21 @@ Func_91219:
 	scall PrintTextWithNPCName
 	hltext_tree_pointer TreeBitstreamText_3b6ef
 	scall PrintTextWithNPCName
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 	hltext_tree_pointer TreeBitstreamText_3b731
 	scall PrintTextWithNPCName
-	ld e, $02
-	xor a
-	scall SpriteFace
+	sprite_face $02, 0
 	hltext_tree_pointer TreeBitstreamText_3b6ef
 	scall PrintTextWithNPCName
 	hltext_tree_pointer TreeBitstreamText_3b762
 	scall PrintTextWithNPCName
 	hltext_tree_pointer TreeBitstreamText_3b77b
 	scall PrintTextWithNPCName
-	ld bc, Data_91211
-	ld e, $24
-	ld a, $01
-	scall MovePerson
-	ld bc, Data_91215
-	ld e, $24
-	ld a, $02
-	scall MovePersonAndWait
+	move_person $01, Data_91211, 0
+	move_person $02, Data_91215, 1
 	scall WaitNPCStep
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
-	ld e, $02
-	ld a, $02
-	scall SpriteFace
+	sprite_face $02, $01
+	sprite_face $02, $02
 	ld e, $01
 	ld a, $01
 	scall PlayerStep
@@ -177,9 +147,7 @@ Func_91219:
 	ld e, $01
 	ld a, $01
 	scall PlayerStep
-	ld e, $01
-	ld hl, $0036
-	scall EventFlagAction
+	setevent $0036
 	ld a, $07
 	scall Func_80c94
 	ld l, $07
@@ -196,24 +164,18 @@ Func_912e5:
 	ld a, e
 	or a
 	jp nz, .asm_91332
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $0039
-	scall CheckEventFlag
+	face_player -1
+	checkevent $0039
 	or a
 	jp nz, .asm_9132c
-	ld hl, $005c
-	scall CheckEventFlag
+	checkevent $005c
 	or a
 	jp nz, .asm_91326
 	hltext_tree_pointer TreeBitstreamText_3b7f7
 	scall PrintTextWithNPCNameAndYesNoBox
 	or a
 	jp nz, .asm_9131d
-	ld e, $01
-	ld hl, $005c
-	scall EventFlagAction
+	setevent $005c
 	call Func_91342
 	jp .asm_91323
 .asm_9131d:
@@ -253,52 +215,26 @@ Func_91342:
 	push af
 	hltext_tree_pointer TreeBitstreamText_3b8f2
 	scall PrintTextWithNPCName
-	ld bc, Data_91334
-	ld e, $24
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_91334, 1
 	scall WaitNPCStep
-	xor a
-	scall PlayMusic
-	ld a, $19
-	scall PlayMusic
-	ld c, $01
-	ld e, $01
-	ld a, $04
-	scall LoadEmote
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	playmusic SONG_NONE
+	playmusic $19
+	loademote $01, $01, $04
+	hideperson $01
 	scall WaitEmote
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
+	showperson $01
 	scall HideEmote
-	ld e, $01
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld a, $68
-	scall PlaySFX
-	xor a
-	scall PlayMusic
-	ld a, $0f
-	scall PlayMusic
-	ld bc, Data_91338
-	ld e, $24
-	ld a, $01
-	scall MovePersonAndWait
+	showperson $02
+	playsfx $68
+	playmusic SONG_NONE
+	playmusic $0f
+	move_person $01, Data_91338, 1
 	scall WaitNPCStep
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	hltext_tree_pointer TreeBitstreamText_3b942
 	scall PrintTextWithNPCName
-	ld c, $01
-	ld de, Data_9133c
-	ld a, $24
-	scall MovePlayer
-	ld a, $2a
-	scall PlaySFX
+	move_player $01, Data_9133c
+	playsfx $2a
 	hltext_tree_pointer TreeBitstreamText_3b932
 	scall PrintTextStandard
 	pop af
@@ -314,20 +250,13 @@ Func_91342:
 	ld c, $00
 	scall GiveRobot
 	pop hl
-	ld c, l
-	ld e, $00
-	ld a, $1f
-	scall GiveRobot
+	give_robot CYCOOL, l, $00
 	ld c, $01
 	ld e, $01
 	ld a, $13
 	scall Func_80d4d
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $0039
-	scall EventFlagAction
+	hideperson $02
+	setevent $0039
 	jp .asm_91412
 .asm_9140c:
 	hltext_tree_pointer TreeBitstreamText_3b9d7
@@ -345,9 +274,7 @@ Func_9141c:
 	ld a, e
 	or a
 	jp nz, .asm_9142f
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld e, $00
 	ld a, $04
 	scall Func_806a0
@@ -360,9 +287,7 @@ Func_91431:
 	ld a, e
 	or a
 	jp nz, .asm_91444
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld e, $02
 	ld a, $04
 	scall Func_806a0
@@ -375,9 +300,7 @@ Func_91446:
 	ld a, e
 	or a
 	jp nz, .asm_91459
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld e, $01
 	ld a, $04
 	scall Func_806a0
@@ -396,8 +319,7 @@ Func_9145b:
 	ld a, $08
 	scall Func_80dff
 	pop bc
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	ld a, $02
 	ld [wPlayerFacing], a
 .asm_91477:
@@ -424,8 +346,7 @@ Func_91478:
 	scall PrintTextWithNPCName
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $07
-	scall FacePlayer
+	face_player $07
 	hltext_tree_pointer TreeBitstreamText_4461b
 	scall PrintTextWithNPCName
 	ld a, $13
@@ -438,13 +359,10 @@ Func_91478:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_91508
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	hltext_tree_pointer TreeBitstreamText_44733
 	scall PrintTextWithNPCName
-	ld e, $00
-	ld a, $07
-	scall SpriteFace
+	sprite_face $00, $07
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -459,23 +377,17 @@ Func_91478:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $32
-	scall GiveRobot
+	give_robot PIRATE, a, $00
 	ld a, $03
 	ld [wc796], a
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_9151d
 .asm_91508:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	hltext_tree_pointer TreeBitstreamText_447bd
 	scall PrintTextWithNPCName
-	ld e, $00
-	ld a, $07
-	scall SpriteFace
+	sprite_face $00, $07
 	jp .asm_9176c
 .asm_9151d:
 	jp .asm_91529
@@ -499,8 +411,7 @@ Func_91478:
 	scall PrintTextWithNPCName
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $07
-	scall FacePlayer
+	face_player $07
 	hltext_tree_pointer TreeBitstreamText_4461b
 	scall PrintTextWithNPCName
 	ld a, $72
@@ -513,13 +424,10 @@ Func_91478:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_915b1
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	hltext_tree_pointer TreeBitstreamText_448b8
 	scall PrintTextWithNPCName
-	ld e, $00
-	ld a, $07
-	scall SpriteFace
+	sprite_face $00, $07
 	ld hl, sp+$01
 	ld l, [hl]
 	ld h, $00
@@ -534,18 +442,14 @@ Func_91478:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $7c
-	scall GiveRobot
+	give_robot SLOTS, a, $00
 	ld a, $0c
 	ld [wc796], a
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_915cd
 .asm_915b1:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	hltext_tree_pointer TreeBitstreamText_447bd
 	scall PrintTextWithNPCName
 	ld hl, $001e
@@ -577,8 +481,7 @@ Func_91478:
 	cp $ff
 	jp z, .asm_916a9
 .asm_915f6:
-	ld a, $07
-	scall FacePlayer
+	face_player $07
 	ld a, [wc796]
 	cp $08
 	jp z, .asm_91684
@@ -646,9 +549,7 @@ Func_91478:
 .asm_91699:
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $00
-	ld a, $07
-	scall SpriteFace
+	sprite_face $00, $07
 	jp .asm_9176c
 .asm_916a9:
 	ld hl, sp+$00
@@ -665,17 +566,14 @@ Func_91478:
 	scall PrintTextWithNPCName
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $07
-	scall FacePlayer
+	face_player $07
 	hltext_tree_pointer TreeBitstreamText_4461b
 	scall PrintTextWithNPCName
 	hltext_tree_pointer TreeBitstreamText_447ed
 	scall PrintTextWithNPCName
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $00
-	ld a, $07
-	scall SpriteFace
+	sprite_face $00, $07
 	jp .asm_9176c
 .asm_916ee:
 	ld a, [wc796]
@@ -685,8 +583,7 @@ Func_91478:
 	scall PrintTextWithNPCName
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $07
-	scall FacePlayer
+	face_player $07
 	hltext_tree_pointer TreeBitstreamText_4461b
 	scall PrintTextWithNPCName
 	ld hl, $001e
@@ -700,8 +597,7 @@ Func_91478:
 	ld a, [wc796]
 	cp $0c
 	jp c, .asm_91742
-	ld a, $07
-	scall FacePlayer
+	face_player $07
 	hltext_tree_pointer TreeBitstreamText_44937
 	scall PrintTextWithNPCName
 	ld hl, $001e
@@ -716,17 +612,14 @@ Func_91478:
 	scall PrintTextWithNPCName
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $07
-	scall FacePlayer
+	face_player $07
 	hltext_tree_pointer TreeBitstreamText_4461b
 	scall PrintTextWithNPCName
 	hltext_tree_pointer TreeBitstreamText_44657
 	scall PrintTextWithNPCName
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $00
-	ld a, $07
-	scall SpriteFace
+	sprite_face $00, $07
 .asm_9176c:
 	pop bc
 	pop bc

@@ -155,9 +155,7 @@ Func_bb17a:: ; bb17a
 	ld e, $01
 	ld hl, Data_bb115
 	scall Func_80ce7
-	ld e, $01
-	ld hl, Data_bb124
-	scall LoadMapObjects
+	loadpeople $01, Data_bb124
 .asm_bb236:
 	jp .asm_bb27b
 .asm_bb239:
@@ -188,11 +186,8 @@ Func_bb17a:: ; bb17a
 	ld hl, Data_bb11f
 	scall Func_80ce7
 .asm_bb27b:
-	ld e, $04
-	ld hl, Data_bb132
-	scall LoadMapObjects
-	ld a, $11
-	scall PlayMusic
+	loadpeople $04, Data_bb132
+	playmusic $11
 	scall Func_8001c
 	ret
 

@@ -140,21 +140,17 @@ Func_a922b:: ; a922b
 	ld a, $19
 	scall Func_80f24
 	pop bc
-	ld e, $0f
-	ld hl, Data_a90b4
-	scall LoadWarps
+	loadwarps $0f, Data_a90b4
 	ld a, $01
 	scall LoadPlayerSprite
 	ld a, $0a
 	ld [wc7e2], a
 	ld a, $07
 	ld [wc789], a
-	ld hl, $0044
-	scall CheckEventFlag
+	checkevent $0044
 	or a
 	jp nz, .asm_a92e4
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	scall Func_8001c
 	call Func_a93b6
 	jp .asm_a9303
@@ -162,14 +158,9 @@ Func_a922b:: ; a922b
 	ld e, $02
 	ld hl, Data_a9179
 	scall Func_80ce7
-	ld e, $0c
-	ld hl, Data_a9183
-	scall LoadMapObjects
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
-	ld a, $03
-	scall PlayMusic
+	loadpeople $0c, Data_a9183
+	hideperson $0a
+	playmusic $03
 	scall Func_8001c
 .asm_a9303:
 	ret
@@ -202,8 +193,7 @@ Data_a9334:
 	db $1a, $14, $02, $01, $14, $11
 
 Func_a933a:
-	ld hl, $00bf
-	scall CheckEventFlag
+	checkevent $00bf
 	cp $01
 	jp nz, .asm_a9351
 	ld hl, Data_a931c
@@ -211,8 +201,7 @@ Func_a933a:
 	scall Func_80f02
 	jp .asm_a93b1
 .asm_a9351:
-	ld hl, $00c1
-	scall CheckEventFlag
+	checkevent $00c1
 	cp $01
 	jp nz, .asm_a9368
 	ld hl, Data_a9322
@@ -220,8 +209,7 @@ Func_a933a:
 	scall Func_80f02
 	jp .asm_a93b1
 .asm_a9368:
-	ld hl, $0044
-	scall CheckEventFlag
+	checkevent $0044
 	or a
 	jp nz, .asm_a9390
 	ld hl, Data_a9304
@@ -255,17 +243,12 @@ Data_a93b2:
 Func_a93b6:
 	call Func_a933a
 	scall Func_80f02
-	ld a, $65
-	scall PlaySFX
+	playsfx $65
 	scall StartShakingScreen
 	ld hl, $001e
 	scall ScriptSleep
-	ld c, $01
-	ld e, $01
-	ld a, $05
-	scall LoadEmote
-	ld a, $24
-	scall PlaySFX
+	loademote $01, $01, $05
+	playsfx $24
 	scall WaitEmote
 	ld hl, $001e
 	scall ScriptSleep
@@ -288,39 +271,25 @@ Func_a93b6:
 	scall StartShakingScreen
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $45
-	scall PlaySFX
-	ld c, $01
-	ld e, $04
-	ld a, $12
-	scall LoadEmote
+	playsfx $45
+	loademote $01, $04, $12
 	ld e, $16
 	ld a, $18
 	scall MoveEmote
-	ld e, $01
-	ld hl, $00bf
-	scall EventFlagAction
+	setevent $00bf
 	call Func_a933a
 	scall Func_80f02
 	scall WaitEmote
 	scall HideEmote
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $45
-	scall PlaySFX
-	ld c, $01
-	ld e, $04
-	ld a, $12
-	scall LoadEmote
+	playsfx $45
+	loademote $01, $04, $12
 	ld e, $16
 	ld a, $1b
 	scall MoveEmote
-	ld e, $00
-	ld hl, $00bf
-	scall EventFlagAction
-	ld e, $01
-	ld hl, $00c1
-	scall EventFlagAction
+	resetevent $00bf
+	setevent $00c1
 	call Func_a933a
 	scall Func_80f02
 	scall WaitEmote
@@ -343,21 +312,13 @@ Func_a93b6:
 	scall StartShakingScreen
 	ld hl, $001e
 	scall ScriptSleep
-	ld c, $01
-	ld e, $08
-	ld a, $12
-	scall LoadEmote
+	loademote $01, $08, $12
 	ld e, $16
 	ld a, $17
 	scall MoveEmote
-	ld a, $45
-	scall PlaySFX
-	ld e, $00
-	ld hl, $00c1
-	scall EventFlagAction
-	ld e, $01
-	ld hl, $0044
-	scall EventFlagAction
+	playsfx $45
+	resetevent $00c1
+	setevent $0044
 	call Func_a933a
 	scall Func_80f02
 	scall WaitEmote
@@ -379,10 +340,7 @@ Func_a93b6:
 .asm_a94da:
 	ld hl, $001e
 	scall ScriptSleep
-	ld c, $01
-	ld de, Data_a93b2
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_a93b2
 	ld hl, $001e
 	scall ScriptSleep
 	ld l, $0f
@@ -402,9 +360,7 @@ Func_a94fe:
 	ld a, e
 	or a
 	jp nz, .asm_a95d4
-	ld hl, sp+$03
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$03
 	ld a, [wc796]
 	cp $0e
 	jp nz, .asm_a9599
@@ -426,8 +382,7 @@ Func_a94fe:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_a957c
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	ld hl, $040a
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
@@ -458,8 +413,7 @@ ENDC
 	ld [hl], $01
 	jp .asm_a958a
 .asm_a957c:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	ld hl, $040b
 	scall PrintTextWithNPCName
 	jp .asm_a95d4
@@ -506,110 +460,58 @@ Func_a95d7:
 	ld a, e
 	or a
 	jp nz, .asm_a96de
-	ld hl, $00de
-	scall CheckEventFlag
+	checkevent $00de
 	or a
 	jp nz, .asm_a96d8
-	ld a, $5e
-	scall PlaySFX
-	ld c, $02
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	playsfx $5e
+	loademote $02, $02, $08
 	ld e, $1f
 	ld a, $06
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $28
-	scall PlaySFX
-	ld e, $01
-	ld a, $0a
-	scall SetPersonVisibilityState
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	ld a, $0a
-	scall SpriteFace
-	ld e, $00
-	ld a, $0a
-	scall SpriteFace
-	ld e, $01
-	ld a, $0a
-	scall SpriteFace
-	ld e, $02
-	ld a, $0a
-	scall SpriteFace
-	ld e, $03
-	ld a, $0a
-	scall SpriteFace
-	ld e, $00
-	ld a, $0a
-	scall SpriteFace
-	ld e, $01
-	ld a, $0a
-	scall SpriteFace
-	ld e, $02
-	ld a, $0a
-	scall SpriteFace
+	playsfx $28
+	showperson $0a
+	playsfx $60
+	sprite_face $03, $0a
+	sprite_face $00, $0a
+	sprite_face $01, $0a
+	sprite_face $02, $0a
+	sprite_face $03, $0a
+	sprite_face $00, $0a
+	sprite_face $01, $0a
+	sprite_face $02, $0a
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $14
-	scall PlayMusic
-	ld a, $0a
-	scall FacePlayer
+	playmusic $14
+	face_player $0a
 	ld hl, $001e
 	scall ScriptSleep
 	ld c, $0d
 	ld e, $14
 	ld a, $0a
 	scall Func_80e8d
-	ld e, $01
-	ld hl, $00de
-	scall EventFlagAction
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	ld a, $0a
-	scall SpriteFace
-	ld e, $00
-	ld a, $0a
-	scall SpriteFace
-	ld e, $01
-	ld a, $0a
-	scall SpriteFace
-	ld e, $02
-	ld a, $0a
-	scall SpriteFace
-	ld e, $03
-	ld a, $0a
-	scall SpriteFace
-	ld e, $00
-	ld a, $0a
-	scall SpriteFace
-	ld e, $01
-	ld a, $0a
-	scall SpriteFace
-	ld e, $02
-	ld a, $0a
-	scall SpriteFace
+	setevent $00de
+	playsfx $60
+	sprite_face $03, $0a
+	sprite_face $00, $0a
+	sprite_face $01, $0a
+	sprite_face $02, $0a
+	sprite_face $03, $0a
+	sprite_face $00, $0a
+	sprite_face $01, $0a
+	sprite_face $02, $0a
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $03
-	scall PlayMusic
-	ld a, $0a
-	scall FacePlayer
-	ld e, $00
-	ld a, $0a
-	scall SetPersonVisibilityState
+	playmusic $03
+	face_player $0a
+	hideperson $0a
 	jp .asm_a96de
 .asm_a96d8:
 	ld hl, $015c

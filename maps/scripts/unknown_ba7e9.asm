@@ -122,40 +122,28 @@ Data_ba7bf:
 	person_event $ff, $00, $05, $02, $01, $01, $00, $04, $00, $6efe, NULL
 
 Func_ba7e9:: ; ba7e9
-	ld e, $00
-	ld hl, $00fb
-	scall EventFlagAction
+	resetevent $00fb
 	call Func_bb0b0
 	ld hl, Func_bb0b0
 	scall Func_80f11
-	ld e, $02
-	ld hl, Data_ba7a3
-	scall LoadMapObjects
-	ld a, $11
-	scall PlayMusic
+	loadpeople $02, Data_ba7a3
+	playmusic $11
 	ld a, [wc790]
 	or a
 	jp z, .asm_ba839
 	ld a, [wc790]
 	cp $07
 	jp nc, .asm_ba839
-	ld e, $03
-	ld hl, Data_ba7bf
-	scall LoadMapObjects
+	loadpeople $03, Data_ba7bf
 	ld a, $01
 	scall Func_80d01
-	ld e, $01
-	ld hl, Data_ba65d
-	scall LoadEncounters
+	loadwilds $01, Data_ba65d
 	call Func_bafd6
-	ld a, $11
-	scall PlayMusic
+	playmusic $11
 	scall Func_8001c
 	jp .asm_baa5f
 .asm_ba839:
-	ld e, $03
-	ld hl, Data_ba6a7
-	scall LoadMapObjects
+	loadpeople $03, Data_ba6a7
 	ld a, [wc78a]
 	cp $0f
 	jp z, .asm_baa4a
@@ -192,9 +180,7 @@ Func_ba7e9:: ; ba7e9
 	scall Func_8001c
 	call Func_bad5c
 .asm_ba898:
-	ld e, $01
-	ld hl, Data_ba75d
-	scall LoadMapObjects
+	loadpeople $01, Data_ba75d
 	ld a, $04
 	ld [wc7e2], a
 	xor a
@@ -211,16 +197,11 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba8c4:
-	ld e, $01
-	ld hl, Data_ba6fb
-	scall LoadMapObjects
-	ld hl, $0052
-	scall CheckEventFlag
+	loadpeople $01, Data_ba6fb
+	checkevent $0052
 	or a
 	jp nz, .asm_ba8de
-	ld e, $01
-	ld hl, Data_ba6d1
-	scall LoadMapObjects
+	loadpeople $01, Data_ba6d1
 .asm_ba8de:
 	ld a, $03
 	ld [wc7e2], a
@@ -232,16 +213,11 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba8f6:
-	ld e, $01
-	ld hl, Data_ba709
-	scall LoadMapObjects
-	ld hl, $0052
-	scall CheckEventFlag
+	loadpeople $01, Data_ba709
+	checkevent $0052
 	cp $01
 	jp nz, .asm_ba911
-	ld e, $01
-	ld hl, Data_ba6df
-	scall LoadMapObjects
+	loadpeople $01, Data_ba6df
 .asm_ba911:
 	ld a, $03
 	ld [wc7e2], a
@@ -253,9 +229,7 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba929:
-	ld e, $01
-	ld hl, Data_ba76b
-	scall LoadMapObjects
+	loadpeople $01, Data_ba76b
 	ld a, $01
 	ld [wc7e2], a
 	xor a
@@ -264,9 +238,7 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba943:
-	ld e, $01
-	ld hl, Data_ba779
-	scall LoadMapObjects
+	loadpeople $01, Data_ba779
 	ld a, $02
 	ld [wc7e2], a
 	xor a
@@ -275,9 +247,7 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba95d:
-	ld e, $01
-	ld hl, Data_ba717
-	scall LoadMapObjects
+	loadpeople $01, Data_ba717
 	ld a, $03
 	ld [wc7e2], a
 	xor a
@@ -288,9 +258,7 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba97d:
-	ld e, $01
-	ld hl, Data_ba725
-	scall LoadMapObjects
+	loadpeople $01, Data_ba725
 	ld a, $03
 	ld [wc7e2], a
 	xor a
@@ -301,9 +269,7 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba99d:
-	ld e, $01
-	ld hl, Data_ba733
-	scall LoadMapObjects
+	loadpeople $01, Data_ba733
 	ld a, $03
 	ld [wc7e2], a
 	xor a
@@ -314,16 +280,11 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba9bd:
-	ld e, $01
-	ld hl, Data_ba741
-	scall LoadMapObjects
-	ld hl, $00ed
-	scall CheckEventFlag
+	loadpeople $01, Data_ba741
+	checkevent $00ed
 	cp $01
 	jp nz, .asm_ba9d8
-	ld e, $01
-	ld hl, Data_ba6ed
-	scall LoadMapObjects
+	loadpeople $01, Data_ba6ed
 .asm_ba9d8:
 	ld a, $03
 	ld [wc7e2], a
@@ -335,9 +296,7 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_ba9f0:
-	ld e, $01
-	ld hl, Data_ba787
-	scall LoadMapObjects
+	loadpeople $01, Data_ba787
 	ld a, $0d
 	ld [wc7e2], a
 	xor a
@@ -346,9 +305,7 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_baa0a:
-	ld e, $01
-	ld hl, Data_ba795
-	scall LoadMapObjects
+	loadpeople $01, Data_ba795
 	ld a, $08
 	ld [wc7e2], a
 	xor a
@@ -359,9 +316,7 @@ Func_ba7e9:: ; ba7e9
 	call Func_bad5c
 	jp .asm_baa5f
 .asm_baa2a:
-	ld e, $01
-	ld hl, Data_ba74f
-	scall LoadMapObjects
+	loadpeople $01, Data_ba74f
 	ld a, $03
 	ld [wc7e2], a
 	xor a
@@ -388,8 +343,7 @@ Func_baa60:
 	ld a, e
 	or a
 	jp nz, .asm_babdb
-	ld hl, $0059
-	scall CheckEventFlag
+	checkevent $0059
 	cp $01
 	jp nz, .asm_baa79
 	ld hl, $0283
@@ -403,17 +357,11 @@ Func_baa60:
 .asm_baa83:
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
-	ld a, $5a
-	scall PlaySFX
+	loademote $01, $01, $09
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
-	ld e, $00
-	ld hl, $00fa
-	scall EventFlagAction
+	resetevent $00fa
 	ld a, [wc78a]
 	cp $0e
 	jp z, .asm_babc9
@@ -581,8 +529,7 @@ Func_babdc:
 	jp z, .asm_babeb
 	jp .asm_bad5b
 .asm_babeb:
-	ld hl, $0059
-	scall CheckEventFlag
+	checkevent $0059
 	cp $01
 	jp nz, .asm_babff
 	ld hl, $0283
@@ -591,19 +538,13 @@ Func_babdc:
 .asm_babff:
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
-	ld a, $5a
-	scall PlaySFX
+	loademote $01, $01, $09
+	playsfx $5a
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
 	scall PlayerFace
-	ld e, $00
-	ld hl, $00fa
-	scall EventFlagAction
+	resetevent $00fa
 	ld a, [wc78a]
 	cp $0e
 	jp z, .asm_bad49
@@ -763,29 +704,21 @@ Func_babdc:
 	ret
 
 Func_bad5c:
-	ld hl, $00fa
-	scall CheckEventFlag
+	checkevent $00fa
 	or a
 	jp nz, .asm_bad9a
-	ld a, $11
-	scall PlayMusic
+	playmusic $11
 	ld a, $02
 	scall PlayerFace
-	ld c, $01
-	ld e, $02
-	ld a, $09
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $02, $09
+	playsfx $37
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
 	ld hl, $0001
 	scall ScriptSleep
 	scall HideEmote
-	ld e, $01
-	ld hl, $00fa
-	scall EventFlagAction
+	setevent $00fa
 	jp .asm_bad9f
 .asm_bad9a:
 	ld a, $01
@@ -804,9 +737,7 @@ Func_badb0:
 	ld a, e
 	or a
 	jp nz, .asm_bae4c
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld hl, $006e
 	scall PrintTextWithNPCName
 	push hl
@@ -847,9 +778,7 @@ Func_badb0:
 	pop bc
 	ld hl, $0072
 	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $0052
-	scall EventFlagAction
+	setevent $0052
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_bae2d
@@ -890,17 +819,11 @@ Func_bae5a:
 	ld a, e
 	or a
 	jp nz, .asm_baea8
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld hl, $0073
 	scall PrintTextWithNPCName
-	ld e, $00
-	ld hl, $0052
-	scall EventFlagAction
-	ld e, $01
-	ld hl, $00ed
-	scall EventFlagAction
+	resetevent $0052
+	setevent $00ed
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_bae92
@@ -937,14 +860,10 @@ Func_baeb6:
 	ld a, e
 	or a
 	jp nz, .asm_baefc
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld hl, $0073
 	scall PrintTextWithNPCName
-	ld e, $00
-	ld hl, $00ed
-	scall EventFlagAction
+	resetevent $00ed
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_baee6
@@ -984,24 +903,17 @@ Func_baefe:
 	scall PrintTextStandard
 	jp .asm_baf51
 .asm_baf1b:
-	ld hl, $0059
-	scall CheckEventFlag
+	checkevent $0059
 	or a
 	jp nz, .asm_baf3b
-	ld e, $01
-	ld hl, $0059
-	scall EventFlagAction
-	ld a, $32
-	scall PlaySFX
+	setevent $0059
+	playsfx $32
 	ld hl, $035b
 	scall PrintTextStandard
 	jp .asm_baf4e
 .asm_baf3b:
-	ld e, $00
-	ld hl, $0059
-	scall EventFlagAction
-	ld a, $28
-	scall PlaySFX
+	resetevent $0059
+	playsfx $28
 	ld hl, $035c
 	scall PrintTextStandard
 .asm_baf4e:
@@ -1046,8 +958,7 @@ Data_bafcb:
 	warpdef $01, $08, $02, $01, MAP_05_00, $10, $15, $10, $16, SFX_34
 
 Func_bafd6:
-	ld hl, $0059
-	scall CheckEventFlag
+	checkevent $0059
 	or a
 	jp nz, .asm_bafe6
 	scall AllocateSpaceForWarps
@@ -1079,64 +990,40 @@ Func_bafd6:
 	jp z, .asm_bb033
 	cp $01
 	jp nz, .asm_bb0a9
-	ld e, $01
-	ld hl, Data_baf52
-	scall LoadWarps
+	loadwarps $01, Data_baf52
 	jp .asm_bb0a9
 .asm_bb033:
-	ld e, $01
-	ld hl, Data_baf5d
-	scall LoadWarps
+	loadwarps $01, Data_baf5d
 	jp .asm_bb0a9
 .asm_bb03e:
-	ld e, $01
-	ld hl, Data_baf68
-	scall LoadWarps
+	loadwarps $01, Data_baf68
 	jp .asm_bb0a9
 .asm_bb049:
-	ld e, $01
-	ld hl, Data_baf73
-	scall LoadWarps
+	loadwarps $01, Data_baf73
 	jp .asm_bb0a9
 .asm_bb054:
-	ld e, $01
-	ld hl, Data_bafb5
-	scall LoadWarps
+	loadwarps $01, Data_bafb5
 	jp .asm_bb0a9
 .asm_bb05f:
-	ld e, $01
-	ld hl, Data_baf89
-	scall LoadWarps
+	loadwarps $01, Data_baf89
 	jp .asm_bb0a9
 .asm_bb06a:
-	ld e, $01
-	ld hl, Data_baf94
-	scall LoadWarps
+	loadwarps $01, Data_baf94
 	jp .asm_bb0a9
 .asm_bb075:
-	ld e, $01
-	ld hl, Data_baf9f
-	scall LoadWarps
+	loadwarps $01, Data_baf9f
 	jp .asm_bb0a9
 .asm_bb080:
-	ld e, $01
-	ld hl, Data_bafaa
-	scall LoadWarps
+	loadwarps $01, Data_bafaa
 	jp .asm_bb0a9
 .asm_bb08b:
-	ld e, $01
-	ld hl, Data_baf7e
-	scall LoadWarps
+	loadwarps $01, Data_baf7e
 	jp .asm_bb0a9
 .asm_bb096:
-	ld e, $01
-	ld hl, Data_bafc0
-	scall LoadWarps
+	loadwarps $01, Data_bafc0
 	jp .asm_bb0a9
 .asm_bb0a1:
-	ld e, $01
-	ld hl, Data_bafcb
-	scall LoadWarps
+	loadwarps $01, Data_bafcb
 .asm_bb0a9:
 	ret
 

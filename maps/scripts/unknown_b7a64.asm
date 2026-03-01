@@ -68,95 +68,45 @@ Func_b7b62:
 	writenpctext TreeBitstreamText_3dd0b
 	playsfx $5a
 	showperson $2
-	ld e, $2
-	ld a, $2
-	scall SpriteFace
-	ld e, $3
-	ld a, $2
-	scall SpriteFace
-	ld e, $0
-	ld a, $2
-	scall SpriteFace
-	ld e, $1
-	ld a, $2
-	scall SpriteFace
-	ld e, $2
-	ld a, $2
-	scall SpriteFace
-	ld e, $3
-	ld a, $2
-	scall SpriteFace
-	ld e, $0
-	ld a, $2
-	scall SpriteFace
-	ld e, $1
-	ld a, $2
-	scall SpriteFace
+	sprite_face $2, $2
+	sprite_face $3, $2
+	sprite_face $0, $2
+	sprite_face $1, $2
+	sprite_face $2, $2
+	sprite_face $3, $2
+	sprite_face $0, $2
+	sprite_face $1, $2
 	ld hl, $1e
 	scall ScriptSleep
 	playsfx $5b
 	showperson $3
-	ld e, $1
-	ld a, $3
-	scall SpriteFace
-	ld e, $2
-	ld a, $3
-	scall SpriteFace
-	ld e, $3
-	ld a, $3
-	scall SpriteFace
-	ld e, $0
-	ld a, $3
-	scall SpriteFace
-	ld e, $1
-	ld a, $3
-	scall SpriteFace
-	ld e, $2
-	ld a, $3
-	scall SpriteFace
-	ld e, $3
-	ld a, $3
-	scall SpriteFace
-	ld e, $0
-	ld a, $3
-	scall SpriteFace
+	sprite_face $1, $3
+	sprite_face $2, $3
+	sprite_face $3, $3
+	sprite_face $0, $3
+	sprite_face $1, $3
+	sprite_face $2, $3
+	sprite_face $3, $3
+	sprite_face $0, $3
 	ld hl, $1e
 	scall ScriptSleep
 	playsfx $66
 	showperson $4
-	ld e, $0
-	ld a, $4
-	scall SpriteFace
-	ld e, $1
-	ld a, $4
-	scall SpriteFace
-	ld e, $2
-	ld a, $4
-	scall SpriteFace
-	ld e, $3
-	ld a, $4
-	scall SpriteFace
-	ld e, $0
-	ld a, $4
-	scall SpriteFace
-	ld e, $1
-	ld a, $4
-	scall SpriteFace
-	ld e, $2
-	ld a, $4
-	scall SpriteFace
-	ld e, $3
-	ld a, $4
-	scall SpriteFace
+	sprite_face $0, $4
+	sprite_face $1, $4
+	sprite_face $2, $4
+	sprite_face $3, $4
+	sprite_face $0, $4
+	sprite_face $1, $4
+	sprite_face $2, $4
+	sprite_face $3, $4
 	ld hl, $1e
 	scall ScriptSleep
 	ld a, $3
 	scall PlayerFace
 	ld hl, $1e
 	scall ScriptSleep
-	ld de, Data_b7d76
-	ld hl, Data_b7ae3
-	scall ScriptedBattle
+	startbattle Data_b7d76, Data_b7ae3
 	or a
 	jp nz, Func_b7c69
 	ret
@@ -176,9 +126,7 @@ Func_b7c69:
 	scall PlayerFace
 	ld hl, $1e
 	scall ScriptSleep
-	ld de, Data_b7d7b
-	ld hl, Data_b7b0c
-	scall ScriptedBattle
+	startbattle Data_b7d7b, Data_b7b0c
 	or a
 	jp nz, Func_b7caa
 	ret
@@ -198,9 +146,7 @@ Func_b7caa:
 	scall PlayerFace
 	ld hl, $1e
 	scall ScriptSleep
-	ld de, Data_b7d80
-	ld hl, Data_b7b35
-	scall ScriptedBattle
+	startbattle Data_b7d80, Data_b7b35
 	or a
 	jp nz, Func_b7ceb
 	ret
@@ -276,8 +222,7 @@ Func_b7dba:
 	setevent $1c
 	ld a, $a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	xor a
 	scall FadeInAudio
 	scall StartShakingScreen

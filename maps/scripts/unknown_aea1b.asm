@@ -26,22 +26,15 @@ Data_aea0d:
 	person_event $ff, $00, $06, $0f, $03, $01, $01, $04, $01, Func_aea4f, NULL
 
 Func_aea1b:: ; aea1b
-	ld e, $03
-	ld hl, Data_ae9a1
-	scall LoadWarps
+	loadwarps $03, Data_ae9a1
 	ld e, $01
 	ld hl, Data_ae9c2
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ae9c7
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_aea0d
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_ae9c7
+	loadpeople $01, Data_aea0d
+	playmusic $08
 	scall Func_8001c
 	ld hl, $0318
 	scall LandmarkSign
@@ -53,12 +46,8 @@ Func_aea4f:
 	jp nz, .asm_aea7f
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02

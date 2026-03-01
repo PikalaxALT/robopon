@@ -58,18 +58,13 @@ Func_8b4ea:
 	cp $02
 	jp nz, .asm_8b53c
 	playmusic SONG_NONE
-	ld c, $01
-	ld de, Data_8b4e2
-	ld a, $22
-	scall MovePlayer
+	move_player $01, Data_8b4e2
 	scall WaitNPCStep
 	playmusic SONG_TITLE
 	writenpctext TreeBitstreamText_3afdd
 	move_person 0, Data_8b4e6, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SpriteFace
+	sprite_face $00, 0
 	hideperson 0
 	hideperson $01
 	playmusic SONG_NONE
@@ -95,10 +90,7 @@ Func_8b53d:
 .asm_8b560:
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $09
-	scall LoadEmote
+	loademote $01, $01, $09
 	playsfx $5a
 	scall WaitEmote
 	scall HideEmote

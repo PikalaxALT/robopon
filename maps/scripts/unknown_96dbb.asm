@@ -16,12 +16,8 @@ Data_96d9f:
 	person_event $ff, $00, $10, $0e, $01, $01, $00, $04, $00, PrintTextFacePlayer_25_2, Data_96d9b
 
 Func_96dbb:: ; 96dbb
-	ld e, $06
-	ld hl, Data_96d59
-	scall LoadWarps
-	ld e, $02
-	ld hl, Data_96d9f
-	scall LoadMapObjects
+	loadwarps $06, Data_96d59
+	loadpeople $02, Data_96d9f
 	playmusic SONG_0A
 	ld a, $04
 	scall LoadPlayerSprite
@@ -115,27 +111,16 @@ Func_96e97:: ; 96e97
 	ld a, $10
 	scall Func_80f24
 	pop bc
-	ld e, $02
-	ld hl, Data_96dd9
-	scall LoadWarps
-	ld e, $0a
-	ld hl, Data_96e0b
-	scall LoadMapObjects
-	ld hl, $010e
-	scall CheckEventFlag
+	loadwarps $02, Data_96dd9
+	loadpeople $0a, Data_96e0b
+	checkevent $010e
 	cp $01
 	jp nz, .asm_96f11
-	ld e, $00
-	ld a, $07
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $08
-	scall SetPersonVisibilityState
+	hideperson $07
+	hideperson $08
 	jp .asm_96f18
 .asm_96f11:
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
+	hideperson $09
 .asm_96f18:
 	playmusic SONG_TOWN2
 	scall Func_8001c
@@ -151,8 +136,7 @@ Func_96f2b:
 	ld a, e
 	or a
 	jp nz, .asm_970c9
-	xor a
-	scall FacePlayer
+	face_player 0
 	hltext_tree_pointer TreeBitstreamText_47aea
 	scall PrintTextWithYesNoBox
 	or a
@@ -162,19 +146,13 @@ Func_96f2b:
 	ld a, [wPlayerFacing]
 	cp $01
 	jp nz, .asm_96f60
-	ld c, $01
-	ld de, Data_96f25
-	ld a, $25
-	scall MovePlayer
+	move_player $01, Data_96f25
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
 	jp .asm_96f71
 .asm_96f60:
-	ld c, $01
-	ld de, Data_96f21
-	ld a, $25
-	scall MovePlayer
+	move_player $01, Data_96f21
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
@@ -203,64 +181,36 @@ Func_96f2b:
 .asm_96fa2:
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $05
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $06
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $07
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $08
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $09
-	scall SetPersonVisibilityState
-	ld c, $01
-	ld e, $0f
-	ld a, $24
-	scall LoadEmote
+	hideperson $01
+	hideperson $02
+	hideperson $03
+	hideperson $04
+	hideperson $05
+	hideperson $06
+	hideperson $07
+	hideperson $08
+	hideperson $09
+	loademote $01, $0f, $24
 	ld e, $06
 	ld a, $09
 	scall MoveEmote
 	scall WaitEmote
-	ld c, $01
-	ld e, $4f
-	ld a, $25
-	scall LoadEmote
+	loademote $01, $4f, $25
 	ld e, $06
 	ld a, $09
 	scall MoveEmote
 	ld hl, $0168
 	scall ScriptSleep
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	scall WaitEmote
 	scall HideEmote
 	ld a, $0a
@@ -268,12 +218,8 @@ Func_96f2b:
 	playmusic SONG_NONE
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $01
-	ld a, $03
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld a, $04
-	scall SetPersonVisibilityState
+	showperson $03
+	showperson $04
 	xor a
 .asm_9705a:
 	cp $05
@@ -288,34 +234,21 @@ Func_96f2b:
 .asm_9706c:
 	ld hl, $001e
 	scall ScriptSleep
-	scall RepairRobots
+	heal
 	ld a, $01
 	scall FadeInAudio
 	playmusic SONG_NONE
 	playmusic SONG_HEAL
-	ld c, $01
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	hltext_tree_pointer TreeBitstreamText_46e0b
 	scall PrintTextStandard
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld a, $05
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld a, $06
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld a, $09
-	scall SetPersonVisibilityState
+	showperson $01
+	showperson $02
+	showperson $05
+	showperson $06
+	showperson $09
 	playmusic SONG_TOWN2
 	jp .asm_970c9
 .asm_970c3:
@@ -337,10 +270,7 @@ Func_970d8:
 	ld a, e
 	cp $02
 	jp nz, .asm_9714f
-	ld c, $01
-	ld de, Data_970d0
-	ld a, $25
-	scall MovePlayer
+	move_player $01, Data_970d0
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
@@ -352,19 +282,12 @@ Func_970d8:
 	scall PrintTextWithNPCName
 	ld hl, $001e
 	scall ScriptSleep
-	ld bc, Data_970ca
-	ld e, $25
-	ld a, $07
-	scall MovePersonAndWait
+	move_person $07, Data_970ca, 1
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $01
-	ld a, $07
-	scall SpriteFace
-	ld e, $01
-	ld hl, $010e
-	scall EventFlagAction
+	sprite_face $01, $07
+	setevent $010e
 	ld l, $24
 	push hl
 	ld c, $09
@@ -378,10 +301,7 @@ Func_970d8:
 	scall PrintTextWithNPCName
 	ld hl, $001e
 	scall ScriptSleep
-	ld c, $01
-	ld de, Data_970d4
-	ld a, $25
-	scall MovePlayer
+	move_player $01, Data_970d4
 	scall WaitNPCStep
 .asm_9714f:
 	ret

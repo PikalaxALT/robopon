@@ -72,8 +72,7 @@ Func_8e5dc:: ; 8e5dc
 	loadpeople $01, Data_8e5ce
 	ld a, $01
 	scall LoadPlayerSprite
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	scall Func_8001c
 	call Func_8e66b
 	jp .asm_8e65a
@@ -81,8 +80,7 @@ Func_8e5dc:: ; 8e5dc
 	checkevent $0088
 	cp $01
 	jp nz, .asm_8e63d
-	ld a, $03
-	scall PlayMusic
+	playmusic $03
 	loadpeople $01, Data_8e526
 	loadpeople $0b, Data_8e534
 	ld a, $01
@@ -90,8 +88,7 @@ Func_8e5dc:: ; 8e5dc
 	scall Func_8001c
 	jp .asm_8e65a
 .asm_8e63d:
-	ld a, $03
-	scall PlayMusic
+	playmusic $03
 	loadpeople $01, Data_8e518
 	loadpeople $0b, Data_8e534
 	ld a, $01
@@ -113,23 +110,15 @@ Func_8e66b:
 	move_person 0, Data_8e65b, 1
 	scall WaitNPCStep
 	writetext TreeBitstreamText_3b2db
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	writetext TreeBitstreamText_3b30a
 	writetext TreeBitstreamText_3b31f
 	move_person 0, Data_8e661, 0
 	scall WaitNPCStep
 	hideperson 0
-	ld a, $1b
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_8e667
-	ld a, $23
-	scall MovePlayer
-	ld c, $01
-	ld e, $0f
-	ld a, $0d
-	scall LoadEmote
+	playmusic $1b
+	move_player $01, Data_8e667
+	loademote $01, $0f, $0d
 	ld e, $08
 	ld a, $1b
 	scall MoveEmote
@@ -137,82 +126,56 @@ Func_8e66b:
 	scall Func_80653
 	ld hl, $0096
 	scall ScriptSleep
-	ld a, $34
-	scall PlaySFX
+	playsfx $34
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
-	xor a
-	scall PlayMusic
-	ld a, $0f
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $0f
 	writenpctext_yesorno TreeBitstreamText_3b324
 	or a
 	jp nz, .asm_8e727
 	setevent $00e9
-	ld a, $2b
-	scall PlaySFX
+	playsfx $2b
 	writetext TreeBitstreamText_3b35d
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	writenpctext TreeBitstreamText_3b36e
-	xor a
-	scall PlayMusic
-	ld a, $1b
-	scall PlayMusic
-	ld c, $01
-	ld e, $07
-	ld a, $0f
-	scall LoadEmote
+	playmusic SONG_NONE
+	playmusic $1b
+	loademote $01, $07, $0f
 	scall WaitEmote
 	ld a, $01
 	scall PlayerFace
 	scall HideEmote
 	jp .asm_8e7b2
 .asm_8e727:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	writenpctext TreeBitstreamText_3b3c0
-	xor a
-	scall PlayMusic
-	ld a, $1b
-	scall PlayMusic
-	ld c, $01
-	ld e, $0f
-	ld a, $0e
-	scall LoadEmote
+	playmusic SONG_NONE
+	playmusic $1b
+	loademote $01, $0f, $0e
 	ld hl, $005a
 	scall ScriptSleep
-	ld a, $2b
-	scall PlaySFX
+	playsfx $2b
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $34
-	scall PlaySFX
+	playsfx $34
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $35
-	scall PlaySFX
+	playsfx $35
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	xor a
 	scall Func_80653
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3b412
 	setevent $00ea
-	ld a, $2b
-	scall PlaySFX
+	playsfx $2b
 	writetext TreeBitstreamText_3b401
-	xor a
-	scall PlayMusic
-	ld a, $1b
-	scall PlayMusic
-	ld c, $01
-	ld e, $0f
-	ld a, $0f
-	scall LoadEmote
+	playmusic SONG_NONE
+	playmusic $1b
+	loademote $01, $0f, $0f
 	scall WaitEmote
 	ld a, $01
 	scall Func_80653
@@ -220,32 +183,18 @@ Func_8e66b:
 	scall PlayerFace
 	scall HideEmote
 .asm_8e7b2:
-	xor a
-	scall PlayMusic
-	ld a, $0f
-	scall PlayMusic
-	ld c, $01
-	ld e, $10
-	ld a, $0f
-	scall LoadEmote
+	playmusic SONG_NONE
+	playmusic $0f
+	loademote $01, $10, $0f
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3b447
-	ld c, $01
-	ld e, $20
-	ld a, $0f
-	scall LoadEmote
+	loademote $01, $20, $0f
 	scall WaitEmote
 	scall HideEmote
-	ld c, $01
-	ld e, $10
-	ld a, $0f
-	scall LoadEmote
+	loademote $01, $10, $0f
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3b481
-	ld c, $01
-	ld e, $20
-	ld a, $0f
-	scall LoadEmote
+	loademote $01, $20, $0f
 	scall WaitEmote
 	scall HideEmote
 	ld a, $06
@@ -260,8 +209,7 @@ Func_8e66b:
 	pop bc
 	ld a, $0f
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
 	ret
@@ -275,8 +223,7 @@ Func_8e826:
 	jp nz, .asm_8e85d
 	xor a
 	scall Func_80653
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	ld l, $01
 	push hl
 	ld c, $04
@@ -300,8 +247,7 @@ Func_8e864:
 	ld a, e
 	cp $01
 	jp nz, .asm_8e88b
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	ld l, $07
 	push hl
 	ld c, $09
@@ -322,8 +268,7 @@ Func_8e88c:
 	ld a, e
 	cp $01
 	jp nz, .asm_8e8b3
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	ld l, $07
 	push hl
 	ld c, $09

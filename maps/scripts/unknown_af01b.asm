@@ -45,44 +45,31 @@ Data_aef9d:
 	person_event $00, $04, $03, $0a, $01, $01, $01, $04, $00, Func_af1b1, NULL
 
 Func_af01b:: ; af01b
-	ld e, $03
-	ld hl, Data_aeeb3
-	scall LoadWarps
+	loadwarps $03, Data_aeeb3
 	ld e, $01
 	ld hl, Data_aeed4
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_aeed9
-	scall LoadEncounters
-	ld hl, $004e
-	scall CheckEventFlag
+	loadwilds $05, Data_aeed9
+	checkevent $004e
 	or a
 	jp nz, .asm_af057
-	ld hl, $004d
-	scall CheckEventFlag
+	checkevent $004d
 	or a
 	jp nz, .asm_af057
-	ld e, $09
-	ld hl, Data_aef1f
-	scall LoadMapObjects
+	loadpeople $09, Data_aef1f
 	jp .asm_af074
 .asm_af057:
-	ld hl, $004e
-	scall CheckEventFlag
+	checkevent $004e
 	or a
 	jp nz, .asm_af074
-	ld hl, $004d
-	scall CheckEventFlag
+	checkevent $004d
 	cp $01
 	jp nz, .asm_af074
-	ld e, $09
-	ld hl, Data_aef9d
-	scall LoadMapObjects
+	loadpeople $09, Data_aef9d
 .asm_af074:
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $031d
 	scall LandmarkSign
@@ -227,35 +214,21 @@ Func_af113:
 	ret
 
 Func_af161:
-	ld e, $01
-	ld hl, $004e
-	scall EventFlagAction
-	ld a, $2b
-	scall PlaySFX
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	setevent $004e
+	playsfx $2b
+	hideperson 0
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $2b
-	scall PlaySFX
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	playsfx $2b
+	hideperson $01
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $2b
-	scall PlaySFX
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	playsfx $2b
+	hideperson $02
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $2b
-	scall PlaySFX
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
+	playsfx $2b
+	hideperson $03
 	ld hl, $001e
 	scall ScriptSleep
 	ret
@@ -265,15 +238,11 @@ Func_af1b1:
 	ld a, e
 	or a
 	jp nz, .asm_af223
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $004d
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $004d
 	or a
 	jp nz, .asm_af21d
-	ld hl, $004e
-	scall CheckEventFlag
+	checkevent $004e
 	or a
 	jp nz, .asm_af21d
 	ld hl, $013b
@@ -292,9 +261,7 @@ Func_af1b1:
 	ld e, $01
 	ld a, $24
 	scall Func_80d4d
-	ld e, $01
-	ld hl, $004d
-	scall EventFlagAction
+	setevent $004d
 	ld hl, $013e
 	scall PrintTextWithNPCName
 	jp .asm_af211

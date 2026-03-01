@@ -139,9 +139,7 @@ Func_a2271:: ; a2271
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a2297
-	ld e, $01
-	ld hl, $005f
-	scall EventFlagAction
+	setevent $005f
 .asm_a2297:
 	ld a, $03
 	scall Func_80d01
@@ -207,39 +205,25 @@ Func_a2271:: ; a2271
 	cp $01
 	jp nz, .asm_a2377
 .asm_a2335:
-	ld e, $05
-	ld hl, Data_a2087
-	scall LoadEncounters
+	loadwilds $05, Data_a2087
 	jp .asm_a237f
 .asm_a2340:
-	ld e, $05
-	ld hl, Data_a20cd
-	scall LoadEncounters
+	loadwilds $05, Data_a20cd
 	jp .asm_a237f
 .asm_a234b:
-	ld e, $05
-	ld hl, Data_a2113
-	scall LoadEncounters
+	loadwilds $05, Data_a2113
 	jp .asm_a237f
 .asm_a2356:
-	ld e, $05
-	ld hl, Data_a2159
-	scall LoadEncounters
+	loadwilds $05, Data_a2159
 	jp .asm_a237f
 .asm_a2361:
-	ld e, $05
-	ld hl, Data_a219f
-	scall LoadEncounters
+	loadwilds $05, Data_a219f
 	jp .asm_a237f
 .asm_a236c:
-	ld e, $05
-	ld hl, Data_a21e5
-	scall LoadEncounters
+	loadwilds $05, Data_a21e5
 	jp .asm_a237f
 .asm_a2377:
-	ld e, $05
-	ld hl, Data_a222b
-	scall LoadEncounters
+	loadwilds $05, Data_a222b
 .asm_a237f:
 	ld a, [wc7de]
 	inc a
@@ -286,8 +270,7 @@ Func_a2271:: ; a2271
 	ld e, $01
 	ld hl, $5ff8
 	scall LoadWarps
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $23

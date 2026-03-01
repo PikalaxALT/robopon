@@ -14,16 +14,10 @@ Data_97166:
     person_event $ff, $00, $17, $09, $01, $01, $02, $04, $01, Func_9744e, NULL
 
 Func_971d6:: ; 971d6
-	ld e, $02
-	ld hl, Data_97150
-	scall LoadWarps
-	ld e, $08
-	ld hl, Data_97166
-	scall LoadMapObjects
+	loadwarps $02, Data_97150
+	loadpeople $08, Data_97166
 	playmusic SONG_TOWN2
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	scall Func_8001c
 	ret
 
@@ -31,106 +25,58 @@ Func_971f5:
 	ld a, e
 	or a
 	jp nz, .asm_972e7
-	ld hl, $00db
-	scall CheckEventFlag
+	checkevent $00db
 	or a
 	jp nz, .asm_972e1
-	ld a, $5e
-	scall PlaySFX
-	ld c, $02
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	playsfx $5e
+	loademote $02, $02, $08
 	ld e, $0e
 	ld a, $07
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $28
-	scall PlaySFX
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
+	playsfx $28
+	showperson 0
+	playsfx $60
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
 	ld a, $0f
 	scall FadeOutAudio
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
 	playmusic SONG_WORLD_MAP
-	xor a
-	scall FacePlayer
+	face_player 0
 	ld hl, $001e
 	scall ScriptSleep
 	ld c, $02
 	ld e, $01
 	xor a
 	scall Func_80e8d
-	ld e, $01
-	ld hl, $00db
-	scall EventFlagAction
-	ld a, $60
-	scall PlaySFX
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
+	setevent $00db
+	playsfx $60
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
 	ld a, $0f
 	scall FadeOutAudio
 	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
 	playmusic SONG_TOWN2
-	xor a
-	scall FacePlayer
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	face_player 0
+	hideperson 0
 	jp .asm_972e7
 .asm_972e1:
 	hltext_tree_pointer TreeBitstreamText_3f79e
@@ -148,16 +94,12 @@ Func_97311:
 	ld a, e
 	or a
 	jp nz, .asm_97346
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	hltext_tree_pointer TreeBitstreamText_472f0
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_97340
-	ld de, Data_97348
-	ld hl, Data_972e8
-	scall ScriptedBattle
+	startbattle Data_97348, Data_972e8
 	or a
 	jp nz, .asm_97337
 	jp .asm_97346
@@ -186,16 +128,12 @@ Func_97379:
 	ld a, e
 	or a
 	jp nz, .asm_973ae
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	hltext_tree_pointer TreeBitstreamText_472f0
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_973a8
-	ld de, Data_973b0
-	ld hl, Data_97350
-	scall ScriptedBattle
+	startbattle Data_973b0, Data_97350
 	or a
 	jp nz, .asm_9739f
 	jp .asm_973ae
@@ -223,16 +161,12 @@ Func_973e1:
 	ld a, e
 	or a
 	jp nz, .asm_97416
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	hltext_tree_pointer TreeBitstreamText_472f0
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_97410
-	ld de, Data_97418
-	ld hl, Data_973b8
-	scall ScriptedBattle
+	startbattle Data_97418, Data_973b8
 	or a
 	jp nz, .asm_97407
 	jp .asm_97416

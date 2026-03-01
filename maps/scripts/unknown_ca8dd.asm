@@ -93,9 +93,7 @@ Data_ca8cf:
 	person_event $09, $0c, $0a, $0b, $01, $01, $02, $04, $00, Func_caee7, NULL
 
 Func_ca8dd:: ; ca8dd
-	ld e, $01
-	ld hl, Data_ca72e
-	scall LoadWarps
+	loadwarps $01, Data_ca72e
 	ld a, [wc78b]
 	cp $04
 	jp z, .asm_ca9c0
@@ -109,19 +107,13 @@ Func_ca8dd:: ; ca8dd
 	jp nz, .asm_ca9ed
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca739
-	scall LoadEncounters
-	ld hl, $0095
-	scall CheckEventFlag
+	loadwilds $05, Data_ca739
+	checkevent $0095
 	or a
 	jp nz, .asm_ca91f
-	ld e, $01
-	ld hl, Data_ca897
-	scall LoadMapObjects
+	loadpeople $01, Data_ca897
 .asm_ca91f:
-	ld a, $09
-	scall PlayMusic
+	playmusic $09
 	scall Func_8001c
 	ld hl, $02ea
 	scall LandmarkSign
@@ -129,19 +121,13 @@ Func_ca8dd:: ; ca8dd
 .asm_ca930:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca77f
-	scall LoadEncounters
-	ld hl, $009a
-	scall CheckEventFlag
+	loadwilds $05, Data_ca77f
+	checkevent $009a
 	or a
 	jp nz, .asm_ca94f
-	ld e, $01
-	ld hl, Data_ca8a5
-	scall LoadMapObjects
+	loadpeople $01, Data_ca8a5
 .asm_ca94f:
-	ld a, $0e
-	scall PlayMusic
+	playmusic $0e
 	scall Func_8001c
 	ld hl, $02f9
 	scall LandmarkSign
@@ -149,19 +135,13 @@ Func_ca8dd:: ; ca8dd
 .asm_ca960:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca7c5
-	scall LoadEncounters
-	ld hl, $009f
-	scall CheckEventFlag
+	loadwilds $05, Data_ca7c5
+	checkevent $009f
 	or a
 	jp nz, .asm_ca97f
-	ld e, $01
-	ld hl, Data_ca8b3
-	scall LoadMapObjects
+	loadpeople $01, Data_ca8b3
 .asm_ca97f:
-	ld a, $0d
-	scall PlayMusic
+	playmusic $0d
 	scall Func_8001c
 	ld hl, $02f4
 	scall LandmarkSign
@@ -169,19 +149,13 @@ Func_ca8dd:: ; ca8dd
 .asm_ca990:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca80b
-	scall LoadEncounters
-	ld hl, $00a4
-	scall CheckEventFlag
+	loadwilds $05, Data_ca80b
+	checkevent $00a4
 	or a
 	jp nz, .asm_ca9af
-	ld e, $01
-	ld hl, Data_ca8c1
-	scall LoadMapObjects
+	loadpeople $01, Data_ca8c1
 .asm_ca9af:
-	ld a, $0f
-	scall PlayMusic
+	playmusic $0f
 	scall Func_8001c
 	ld hl, $02ef
 	scall LandmarkSign
@@ -189,19 +163,13 @@ Func_ca8dd:: ; ca8dd
 .asm_ca9c0:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca851
-	scall LoadEncounters
-	ld hl, $00a9
-	scall CheckEventFlag
+	loadwilds $05, Data_ca851
+	checkevent $00a9
 	or a
 	jp nz, .asm_ca9df
-	ld e, $01
-	ld hl, Data_ca8cf
-	scall LoadMapObjects
+	loadpeople $01, Data_ca8cf
 .asm_ca9df:
-	ld a, $10
-	scall PlayMusic
+	playmusic $10
 	scall Func_8001c
 	ld hl, $02fe
 	scall LandmarkSign
@@ -223,29 +191,21 @@ Func_caa1f:
 	ld a, e
 	or a
 	jp nz, .asm_cab02
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	or a
 	jp nz, .asm_cab02
-	xor a
-	scall FacePlayer
+	face_player 0
 	ld hl, $00c9
 	scall PrintTextStandard
-	ld de, Data_cab03
-	ld hl, Data_ca9f6
-	scall ScriptedBattle
+	startbattle Data_cab03, Data_ca9f6
 	or a
 	jp nz, .asm_caa48
 	jp .asm_cab02
 .asm_caa48:
 	ld hl, $00ca
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $0095
-	scall EventFlagAction
-	ld e, $00
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $0095
+	resetevent $0042
 	ld c, $01
 	ld e, $01
 	ld a, $1e
@@ -257,24 +217,19 @@ Func_caa1f:
 	ld a, $1e
 	scall Func_80d4d
 .asm_caa75:
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	cp $01
 	jp nz, .asm_caaca
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	cp $01
 	jp nz, .asm_caaca
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	cp $01
 	jp nz, .asm_caaca
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	cp $01
 	jp nz, .asm_caaca
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	cp $01
 	jp nz, .asm_caaca
 	ld c, $00
@@ -283,8 +238,7 @@ Func_caa1f:
 	scall Func_80d4d
 	ld hl, $046f
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $0470
 	scall PrintTextStandard
 	xor a
@@ -293,23 +247,14 @@ Func_caa1f:
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_caade
-	ld bc, Data_ca9f2
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_ca9f2, 1
 	jp .asm_caae7
 .asm_caade:
-	ld bc, Data_ca9ee
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_ca9ee, 1
 .asm_caae7:
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld l, $1b
 	push hl
 	ld c, $17
@@ -338,12 +283,10 @@ Func_cab3c:
 	ld a, e
 	or a
 	jp nz, .asm_cac3b
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	or a
 	jp nz, .asm_cac3b
-	xor a
-	scall FacePlayer
+	face_player 0
 	ld hl, $00cb
 	scall PrintTextStandard
 	ld hl, $015e
@@ -361,12 +304,8 @@ Func_cab3c:
 .asm_cab73:
 	ld hl, $00cc
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $009a
-	scall EventFlagAction
-	ld e, $00
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $009a
+	resetevent $0042
 	ld c, $01
 	ld e, $01
 	ld a, $1c
@@ -378,24 +317,19 @@ Func_cab3c:
 	ld a, $1c
 	scall Func_80d4d
 .asm_caba0:
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	cp $01
 	jp nz, .asm_cabf5
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	cp $01
 	jp nz, .asm_cabf5
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	cp $01
 	jp nz, .asm_cabf5
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	cp $01
 	jp nz, .asm_cabf5
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	cp $01
 	jp nz, .asm_cabf5
 	ld c, $00
@@ -404,8 +338,7 @@ Func_cab3c:
 	scall Func_80d4d
 	ld hl, $046f
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $0470
 	scall PrintTextStandard
 	xor a
@@ -421,23 +354,14 @@ Func_cab3c:
 	or a
 	jp nz, .asm_cac20
 .asm_cac0b:
-	ld bc, Data_cab0b
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cab0b, 1
 	jp .asm_cac20
 .asm_cac17:
-	ld bc, Data_cab0f
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cab0f, 1
 .asm_cac20:
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld l, $1b
 	push hl
 	ld c, $0b
@@ -466,12 +390,10 @@ Func_cac75:
 	ld a, e
 	or a
 	jp nz, .asm_cad74
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	or a
 	jp nz, .asm_cad74
-	xor a
-	scall FacePlayer
+	face_player 0
 	ld hl, $00cd
 	scall PrintTextStandard
 	ld hl, $017a
@@ -489,12 +411,8 @@ Func_cac75:
 .asm_cacac:
 	ld hl, $00ce
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $009f
-	scall EventFlagAction
-	ld e, $00
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $009f
+	resetevent $0042
 	ld c, $01
 	ld e, $01
 	ld a, $1d
@@ -506,24 +424,19 @@ Func_cac75:
 	ld a, $1d
 	scall Func_80d4d
 .asm_cacd9:
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	cp $01
 	jp nz, .asm_cad2e
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	cp $01
 	jp nz, .asm_cad2e
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	cp $01
 	jp nz, .asm_cad2e
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	cp $01
 	jp nz, .asm_cad2e
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	cp $01
 	jp nz, .asm_cad2e
 	ld c, $00
@@ -532,8 +445,7 @@ Func_cac75:
 	scall Func_80d4d
 	ld hl, $046f
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $0470
 	scall PrintTextStandard
 	xor a
@@ -549,23 +461,14 @@ Func_cac75:
 	or a
 	jp nz, .asm_cad59
 .asm_cad44:
-	ld bc, Data_cac44
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cac44, 1
 	jp .asm_cad59
 .asm_cad50:
-	ld bc, Data_cac48
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cac48, 1
 .asm_cad59:
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld l, $12
 	push hl
 	ld c, $1d
@@ -594,12 +497,10 @@ Func_cadae:
 	ld a, e
 	or a
 	jp nz, .asm_caead
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	or a
 	jp nz, .asm_caead
-	xor a
-	scall FacePlayer
+	face_player 0
 	ld hl, $00cf
 	scall PrintTextStandard
 	ld hl, $016b
@@ -617,12 +518,8 @@ Func_cadae:
 .asm_cade5:
 	ld hl, $00d0
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $00a4
-	scall EventFlagAction
-	ld e, $00
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $00a4
+	resetevent $0042
 	ld c, $01
 	ld e, $01
 	ld a, $20
@@ -634,24 +531,19 @@ Func_cadae:
 	ld a, $20
 	scall Func_80d4d
 .asm_cae12:
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	cp $01
 	jp nz, .asm_cae67
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	cp $01
 	jp nz, .asm_cae67
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	cp $01
 	jp nz, .asm_cae67
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	cp $01
 	jp nz, .asm_cae67
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	cp $01
 	jp nz, .asm_cae67
 	ld c, $00
@@ -660,8 +552,7 @@ Func_cadae:
 	scall Func_80d4d
 	ld hl, $046f
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $0470
 	scall PrintTextStandard
 	xor a
@@ -677,23 +568,14 @@ Func_cadae:
 	or a
 	jp nz, .asm_cae92
 .asm_cae7d:
-	ld bc, Data_cad7d
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cad7d, 1
 	jp .asm_cae92
 .asm_cae89:
-	ld bc, Data_cad81
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cad81, 1
 .asm_cae92:
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld l, $12
 	push hl
 	ld c, $05
@@ -722,12 +604,10 @@ Func_caee7:
 	ld a, e
 	or a
 	jp nz, .asm_cafe6
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	or a
 	jp nz, .asm_cafe6
-	xor a
-	scall FacePlayer
+	face_player 0
 	ld hl, $00d1
 	scall PrintTextStandard
 	ld hl, $015d
@@ -745,12 +625,8 @@ Func_caee7:
 .asm_caf1e:
 	ld hl, $00d2
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $00a9
-	scall EventFlagAction
-	ld e, $00
-	ld hl, $0042
-	scall EventFlagAction
+	setevent $00a9
+	resetevent $0042
 	ld c, $01
 	ld e, $01
 	ld a, $1f
@@ -762,30 +638,24 @@ Func_caee7:
 	ld a, $1f
 	scall Func_80d4d
 .asm_caf4b:
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	cp $01
 	jp nz, .asm_cafa0
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	cp $01
 	jp nz, .asm_cafa0
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	cp $01
 	jp nz, .asm_cafa0
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	cp $01
 	jp nz, .asm_cafa0
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	cp $01
 	jp nz, .asm_cafa0
 	ld hl, $046f
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $0470
 	scall PrintTextStandard
 	ld c, $00
@@ -805,23 +675,14 @@ Func_caee7:
 	or a
 	jp nz, .asm_cafcb
 .asm_cafb6:
-	ld bc, Data_caeb6
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_caeb6, 1
 	jp .asm_cafcb
 .asm_cafc2:
-	ld bc, Data_caeba
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_caeba, 1
 .asm_cafcb:
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld l, $0a
 	push hl
 	ld c, $11

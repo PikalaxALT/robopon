@@ -229,10 +229,7 @@ Func_8a480:
 	or a
 	jp nz, .asm_8a59d
 	playsfx $5e
-	ld c, $02
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	loademote $02, $02, $08
 	ld e, $0f
 	ld a, $0e
 	scall MoveEmote

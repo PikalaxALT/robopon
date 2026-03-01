@@ -16,123 +16,88 @@ Data_b5f6a:
 	person_event $0d, $0c, $0e, $09, $01, $01, $02, $04, $00, Func_b66d1, NULL
 
 Func_b5fbe:: ; b5fbe
-	ld e, $01
-	ld hl, Data_b5f35
-	scall LoadWarps
-	ld hl, $005a
-	scall CheckEventFlag
+	loadwarps $01, Data_b5f35
+	checkevent $005a
 	or a
 	jp nz, .asm_b5fe2
-	ld e, $03
-	ld hl, Data_b5f40
-	scall LoadMapObjects
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	loadpeople $03, Data_b5f40
+	hideperson $01
 	jp .asm_b60c9
 .asm_b5fe2:
-	ld hl, $005a
-	scall CheckEventFlag
+	checkevent $005a
 	cp $01
 	jp nz, .asm_b60c9
-	ld hl, $00e1
-	scall CheckEventFlag
+	checkevent $00e1
 	or a
 	jp z, .asm_b6029
-	ld hl, $00e2
-	scall CheckEventFlag
+	checkevent $00e2
 	or a
 	jp z, .asm_b6029
-	ld hl, $00e3
-	scall CheckEventFlag
+	checkevent $00e3
 	or a
 	jp z, .asm_b6029
-	ld hl, $00e4
-	scall CheckEventFlag
+	checkevent $00e4
 	or a
 	jp z, .asm_b6029
-	ld hl, $00e5
-	scall CheckEventFlag
+	checkevent $00e5
 	or a
 	jp z, .asm_b6029
-	ld hl, $00e6
-	scall CheckEventFlag
+	checkevent $00e6
 	or a
 	jp nz, .asm_b60c9
 .asm_b6029:
-	ld e, $06
-	ld hl, Data_b5f6a
-	scall LoadMapObjects
-	ld hl, $00e1
-	scall CheckEventFlag
+	loadpeople $06, Data_b5f6a
+	checkevent $00e1
 	cp $01
 	jp nz, .asm_b604b
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld c, $0b
 	ld e, $0c
 	ld a, $01
 	scall Func_80080
 .asm_b604b:
-	ld hl, $00e2
-	scall CheckEventFlag
+	checkevent $00e2
 	cp $01
 	jp nz, .asm_b6066
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 	ld c, $0b
 	ld e, $0c
 	ld a, $02
 	scall Func_80080
 .asm_b6066:
-	ld hl, $00e3
-	scall CheckEventFlag
+	checkevent $00e3
 	cp $01
 	jp nz, .asm_b6081
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	hideperson $02
 	ld c, $0b
 	ld e, $0c
 	ld a, $03
 	scall Func_80080
 .asm_b6081:
-	ld hl, $00e4
-	scall CheckEventFlag
+	checkevent $00e4
 	cp $01
 	jp nz, .asm_b609c
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
+	hideperson $03
 	ld c, $0b
 	ld e, $0c
 	ld a, $04
 	scall Func_80080
 .asm_b609c:
-	ld hl, $00e5
-	scall CheckEventFlag
+	checkevent $00e5
 	cp $01
 	jp nz, .asm_b60b7
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
+	hideperson $04
 	ld c, $0b
 	ld e, $0c
 	ld a, $05
 	scall Func_80080
 .asm_b60b7:
-	ld hl, $00e6
-	scall CheckEventFlag
+	checkevent $00e6
 	cp $01
 	jp nz, .asm_b60c9
-	ld e, $00
-	ld a, $05
-	scall SetPersonVisibilityState
+	hideperson $05
 .asm_b60c9:
-	ld a, $13
-	scall PlayMusic
+	playmusic $13
 	scall Func_8001c
 	ret
 
@@ -166,20 +131,13 @@ Func_b6117:
 	ld a, e
 	cp $02
 	jp nz, .asm_b625f
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	scall AllocateSpaceForWarps
-	ld c, $01
-	ld de, Data_b60fb
-	ld a, $2d
-	scall MovePlayer
-	ld a, $01
-	scall PlayMusic
+	move_player $01, Data_b60fb
+	playmusic $01
 	ld hl, $014a
 	scall PrintTextWithNPCName
-	ld de, Data_b6260
-	ld hl, Data_b60d2
-	scall ScriptedBattle
+	startbattle Data_b6260, Data_b60d2
 	or a
 	jp nz, .asm_b6149
 	jp .asm_b625f
@@ -188,34 +146,23 @@ Func_b6117:
 	scall PrintTextWithNPCName
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	playmusic SONG_NONE
+	loademote $01, $01, $0a
 	ld e, $0a
 	ld a, $0c
 	scall MoveEmote
 	ld a, $01
 	scall FadeInAudio
-	ld a, $43
-	scall PlaySFX
+	playsfx $43
 	scall WaitEmote
 	scall HideEmote
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld hl, $003c
 	scall ScriptSleep
 	scall StartShakingScreen
-	ld c, $01
-	ld e, $01
-	ld a, $05
-	scall LoadEmote
+	loademote $01, $01, $05
 	scall WaitEmote
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	scall HideEmote
 	ld hl, $003c
 	scall ScriptSleep
@@ -231,28 +178,17 @@ Func_b6117:
 	inc a
 	jp .asm_b61a2
 .asm_b61b3:
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld a, $18
-	scall PlayMusic
+	showperson $01
+	playmusic $18
 	ld hl, $0078
 	scall ScriptSleep
-	ld bc, Data_b60ff
-	ld e, $2d
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_b60ff, 1
 	scall WaitNPCStep
 	ld a, $03
 	scall PlayerFace
-	ld bc, Data_b6105
-	ld e, $2d
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_b6105, 1
 	scall WaitNPCStep
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
+	sprite_face $01, $01
 	xor a
 .asm_b61ec:
 	cp $02
@@ -279,27 +215,16 @@ Func_b6117:
 	inc a
 	jp .asm_b6204
 .asm_b6216:
-	ld bc, Data_b610b
-	ld e, $2d
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_b610b, 1
 	scall WaitNPCStep
-	xor a
-	scall PlayMusic
-	ld a, $04
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $04
 	scall StopShakingScreen
 	ld hl, $014c
 	scall PrintTextWithNPCName
 	scall StartShakingScreen
-	ld bc, Data_b610f
-	ld e, $2d
-	ld a, $01
-	scall MovePerson
-	ld c, $01
-	ld de, Data_b610f
-	ld a, $2d
-	scall MovePlayer
+	move_person $01, Data_b610f, 0
+	move_player $01, Data_b610f
 	scall WaitNPCStep
 	scall StopShakingScreen
 	ld l, $05
@@ -334,14 +259,10 @@ Func_b6291:
 	ld a, e
 	or a
 	jp nz, .asm_b6312
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld hl, $0442
 	scall PrintTextWithNPCName
-	ld de, Data_b6314
-	ld hl, Data_b6264
-	scall ScriptedBattle
+	startbattle Data_b6314, Data_b6264
 	or a
 	jp nz, .asm_b62b3
 	jp .asm_b6312
@@ -350,12 +271,10 @@ Func_b6291:
 	scall PrintTextWithNPCName
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $01
 	scall FadeInAudio
-	ld a, $18
-	scall PlayMusic
+	playmusic $18
 	ld hl, $0078
 	scall ScriptSleep
 	xor a
@@ -375,10 +294,8 @@ Func_b6291:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	xor a
-	scall PlayMusic
-	ld a, $13
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $13
 	ld bc, Data_b628d
 	ld e, $2d
 	ld hl, sp+$01
@@ -386,9 +303,7 @@ Func_b6291:
 	inc a
 	scall MovePersonAndWait
 	scall WaitNPCStep
-	ld e, $01
-	ld hl, $00e1
-	scall EventFlagAction
+	setevent $00e1
 	ld a, $01
 	ld [wc7c4], a
 .asm_b6312:
@@ -414,11 +329,8 @@ Func_b634c:
 	ld a, e
 	or a
 	jp nz, .asm_b63e6
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $00e1
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $00e1
 	or a
 	jp nz, .asm_b6373
 	ld hl, $017c
@@ -431,9 +343,7 @@ Func_b634c:
 .asm_b6373:
 	ld hl, $0444
 	scall PrintTextWithNPCName
-	ld de, Data_b63e8
-	ld hl, Data_b6319
-	scall ScriptedBattle
+	startbattle Data_b63e8, Data_b6319
 	or a
 	jp nz, .asm_b6389
 	jp .asm_b63e6
@@ -481,9 +391,7 @@ Func_b634c:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	ld e, $01
-	ld hl, $00e2
-	scall EventFlagAction
+	setevent $00e2
 	ld a, $01
 	ld [wc7c4], a
 .asm_b63e6:
@@ -509,15 +417,11 @@ Func_b6422:
 	ld a, e
 	or a
 	jp nz, .asm_b64c6
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $00e1
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $00e1
 	or a
 	jp z, .asm_b6442
-	ld hl, $00e2
-	scall CheckEventFlag
+	checkevent $00e2
 	or a
 	jp nz, .asm_b6453
 .asm_b6442:
@@ -531,9 +435,7 @@ Func_b6422:
 .asm_b6453:
 	ld hl, $0446
 	scall PrintTextWithNPCName
-	ld de, Data_b64c8
-	ld hl, Data_b63ed
-	scall ScriptedBattle
+	startbattle Data_b64c8, Data_b63ed
 	or a
 	jp nz, .asm_b6469
 	jp .asm_b64c6
@@ -581,9 +483,7 @@ Func_b6422:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	ld e, $01
-	ld hl, $00e3
-	scall EventFlagAction
+	setevent $00e3
 	ld a, $01
 	ld [wc7c4], a
 .asm_b64c6:
@@ -609,19 +509,14 @@ Func_b6501:
 	ld a, e
 	or a
 	jp nz, .asm_b65af
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $00e1
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $00e1
 	or a
 	jp z, .asm_b652b
-	ld hl, $00e2
-	scall CheckEventFlag
+	checkevent $00e2
 	or a
 	jp z, .asm_b652b
-	ld hl, $00e3
-	scall CheckEventFlag
+	checkevent $00e3
 	or a
 	jp nz, .asm_b653c
 .asm_b652b:
@@ -635,9 +530,7 @@ Func_b6501:
 .asm_b653c:
 	ld hl, $0448
 	scall PrintTextWithNPCName
-	ld de, Data_b65b1
-	ld hl, Data_b64ce
-	scall ScriptedBattle
+	startbattle Data_b65b1, Data_b64ce
 	or a
 	jp nz, .asm_b6552
 	jp .asm_b65af
@@ -685,9 +578,7 @@ Func_b6501:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	ld e, $01
-	ld hl, $00e4
-	scall EventFlagAction
+	setevent $00e4
 	ld a, $01
 	ld [wc7c4], a
 .asm_b65af:
@@ -721,23 +612,17 @@ Func_b65e9:
 	ld a, e
 	or a
 	jp nz, .asm_b66a1
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $00e1
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $00e1
 	or a
 	jp z, .asm_b661d
-	ld hl, $00e2
-	scall CheckEventFlag
+	checkevent $00e2
 	or a
 	jp z, .asm_b661d
-	ld hl, $00e3
-	scall CheckEventFlag
+	checkevent $00e3
 	or a
 	jp z, .asm_b661d
-	ld hl, $00e4
-	scall CheckEventFlag
+	checkevent $00e4
 	or a
 	jp nz, .asm_b662e
 .asm_b661d:
@@ -751,9 +636,7 @@ Func_b65e9:
 .asm_b662e:
 	ld hl, $044a
 	scall PrintTextWithNPCName
-	ld de, Data_b66a3
-	ld hl, Data_b65b6
-	scall ScriptedBattle
+	startbattle Data_b66a3, Data_b65b6
 	or a
 	jp nz, .asm_b6644
 	jp .asm_b66a1
@@ -801,9 +684,7 @@ Func_b65e9:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	ld e, $01
-	ld hl, $00e5
-	scall EventFlagAction
+	setevent $00e5
 	ld a, $01
 	ld [wc7c4], a
 .asm_b66a1:
@@ -831,27 +712,20 @@ Func_b66d1:
 	ld a, e
 	or a
 	jp nz, .asm_b6751
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $00e1
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $00e1
 	or a
 	jp z, .asm_b670f
-	ld hl, $00e2
-	scall CheckEventFlag
+	checkevent $00e2
 	or a
 	jp z, .asm_b670f
-	ld hl, $00e3
-	scall CheckEventFlag
+	checkevent $00e3
 	or a
 	jp z, .asm_b670f
-	ld hl, $00e4
-	scall CheckEventFlag
+	checkevent $00e4
 	or a
 	jp z, .asm_b670f
-	ld hl, $00e5
-	scall CheckEventFlag
+	checkevent $00e5
 	or a
 	jp nz, .asm_b6720
 .asm_b670f:
@@ -865,18 +739,14 @@ Func_b66d1:
 .asm_b6720:
 	ld hl, $044c
 	scall PrintTextWithNPCName
-	ld de, Data_b6753
-	ld hl, Data_b66a8
-	scall ScriptedBattle
+	startbattle Data_b6753, Data_b66a8
 	or a
 	jp nz, .asm_b6736
 	jp .asm_b6751
 .asm_b6736:
 	ld hl, $044d
 	scall PrintTextWithNPCName
-	ld e, $01
-	ld hl, $00e6
-	scall EventFlagAction
+	setevent $00e6
 	ld l, $1a
 	push hl
 	ld c, $0f

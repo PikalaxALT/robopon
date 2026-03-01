@@ -29,27 +29,19 @@ Data_cb8ac:
 	person_event $ff, $00, $00, $0a, $03, $01, $00, $04, $01, Func_cb91e, NULL
 
 Func_cb8d6:: ; cb8d6
-	ld e, $04
-	ld hl, Data_cb835
-	scall LoadWarps
+	loadwarps $04, Data_cb835
 	ld e, $01
 	ld hl, Data_cb861
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_cb866
-	scall LoadEncounters
-	ld hl, $00ae
-	scall CheckEventFlag
+	loadwilds $05, Data_cb866
+	checkevent $00ae
 	or a
 	jp nz, .asm_cb905
-	ld e, $03
-	ld hl, Data_cb8ac
-	scall LoadMapObjects
+	loadpeople $03, Data_cb8ac
 .asm_cb905:
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 	scall Func_8001c
 	ld hl, $0303
 	scall LandmarkSign
@@ -66,37 +58,24 @@ Func_cb91e:
 	ld a, e
 	cp $02
 	jp nz, .asm_cb969
-	ld hl, $00ae
-	scall CheckEventFlag
+	checkevent $00ae
 	or a
 	jp nz, .asm_cb969
-	xor a
-	scall PlayMusic
-	ld a, $1a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $1a
 	ld hl, sp+$01
 	ld a, [hl]
 	cp $01
 	jp nz, .asm_cb94d
-	ld c, $01
-	ld de, Data_cb914
-	ld a, $32
-	scall MovePlayer
+	move_player $01, Data_cb914
 	jp .asm_cb95d
 .asm_cb94d:
-	ld c, $01
-	ld de, Data_cb91a
-	ld a, $32
-	scall MovePlayer
-	ld e, $02
-	xor a
-	scall SpriteFace
+	move_player $01, Data_cb91a
+	sprite_face $02, 0
 .asm_cb95d:
 	call Func_cb99c
-	xor a
-	scall PlayMusic
-	ld a, $07
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $07
 .asm_cb969:
 	pop bc
 	ret
@@ -116,36 +95,24 @@ Data_cb973:
 Func_cb99c:
 	ld hl, $00d5
 	scall PrintTextStandard
-	ld de, Data_cb9e5
-	ld hl, Data_cb973
-	scall ScriptedBattle
+	startbattle Data_cb9e5, Data_cb973
 	or a
 	jp nz, .asm_cb9b0
 	ret
 .asm_cb9b0:
 	ld hl, $00d6
 	scall PrintTextStandard
-	ld e, $01
-	ld hl, $00ae
-	scall EventFlagAction
+	setevent $00ae
 	ld a, [wPlayerFacing]
 	cp $03
 	jp nz, .asm_cb9d2
-	ld bc, Data_cb96b
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cb96b, 1
 	jp .asm_cb9db
 .asm_cb9d2:
-	ld bc, Data_cb96f
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cb96f, 1
 .asm_cb9db:
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ret
 
 Data_cb9e5:

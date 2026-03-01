@@ -19,19 +19,12 @@ Data_9e2c1:
 	person_event $ff, $00, $02, $04, $05, $04, $00, $04, $00, Func_9e305, NULL
 
 Func_9e2cf:: ; 9e2cf
-	ld e, $01
-	ld hl, Data_9e27e
-	scall LoadWarps
-	ld e, $01
-	ld hl, Data_9e2c1
-	scall LoadMapObjects
+	loadwarps $01, Data_9e27e
+	loadpeople $01, Data_9e2c1
 	ld a, $03
 	scall Func_80d01
-	ld e, $04
-	ld hl, Data_9e289
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $04, Data_9e289
+	playmusic $08
 	scall Func_8001c
 	ret
 
@@ -80,36 +73,21 @@ Func_9e305:
 	jp z, .asm_9e364
 	or a
 	jp nz, .asm_9e371
-	ld c, $01
-	ld de, Data_9e2fb
-	ld a, $27
-	scall MovePlayer
+	move_player $01, Data_9e2fb
 	jp .asm_9e37b
 .asm_9e364:
-	ld c, $01
-	ld de, Data_9e2ff
-	ld a, $27
-	scall MovePlayer
+	move_player $01, Data_9e2ff
 	jp .asm_9e37b
 .asm_9e371:
-	ld c, $01
-	ld de, Data_9e2f5
-	ld a, $27
-	scall MovePlayer
+	move_player $01, Data_9e2f5
 .asm_9e37b:
 	scall WaitNPCStep
-	xor a
-	scall PlayMusic
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $0a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $0b
-	scall LoadEmote
-	ld a, $44
-	scall PlaySFX
+	loademote $01, $01, $0b
+	playsfx $44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04

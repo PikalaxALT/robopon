@@ -87,8 +87,7 @@ Func_8d256:: ; 8d256
 	hideperson 0
 	hideperson $01
 	loadpeople $0b, Data_8d1a0
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 	ld a, $01
 	scall LoadPlayerSprite
 	checkevent $0046
@@ -157,23 +156,14 @@ Func_8d2f4:
 	ld a, [wPlayerFacing]
 	or a
 	jp z, .asm_8d34b
-	ld c, $01
-	ld de, Data_8d2ee
-	ld a, $23
-	scall MovePlayer
+	move_player $01, Data_8d2ee
 .asm_8d34b:
-	xor a
-	scall PlayMusic
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $0a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $0b
-	scall LoadEmote
-	ld a, $44
-	scall PlaySFX
+	loademote $01, $01, $0b
+	playsfx $44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04
@@ -288,44 +278,28 @@ Func_8d435:
 	showperson $01
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $00
-	xor a
-	scall SpriteFace
+	sprite_face $00, 0
 	ld hl, $001e
 	scall ScriptSleep
 	move_person 0, Data_8d42d, 1
 	scall WaitNPCStep
-	ld e, $03
-	xor a
-	scall SpriteFace
+	sprite_face $03, 0
 	ld hl, $001e
 	scall ScriptSleep
 	move_person $01, Data_8d431, 1
 	scall WaitNPCStep
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
+	sprite_face $01, $01
 	writenpctext TreeBitstreamText_3cdce
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
+	sprite_face $00, $01
+	sprite_face $02, 0
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $03
-	xor a
-	scall SpriteFace
+	sprite_face $03, 0
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $02
-	xor a
-	scall SpriteFace
+	sprite_face $02, 0
 	writenpctext TreeBitstreamText_3ce14
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	writenpctext TreeBitstreamText_3cec2
 	writenpctext TreeBitstreamText_3cefd
 	hideperson $02
@@ -336,75 +310,52 @@ Func_8d4d8:: ; 8d4d8
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	hideperson $0c
-	ld a, $3a
-	scall PlaySFX
+	playsfx $3a
 	scall StartShakingScreen
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	loademote $01, $01, $0a
 	ld e, $12
 	ld a, $23
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $3a
-	scall PlaySFX
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	playsfx $3a
+	loademote $01, $01, $0a
 	ld e, $11
 	ld a, $22
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $3a
-	scall PlaySFX
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	playsfx $3a
+	loademote $01, $01, $0a
 	ld e, $11
 	ld a, $24
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $3a
-	scall PlaySFX
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	playsfx $3a
+	loademote $01, $01, $0a
 	ld e, $13
 	ld a, $22
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $3a
-	scall PlaySFX
-	ld c, $01
-	ld e, $01
-	ld a, $0a
-	scall LoadEmote
+	playsfx $3a
+	loademote $01, $01, $0a
 	ld e, $13
 	ld a, $24
 	scall MoveEmote
 	scall WaitEmote
 	scall HideEmote
-	ld a, $65
-	scall PlaySFX
+	playsfx $65
 	scall StopShakingScreen
 	pop af
 	cp $2d
 	jp z, .asm_8d5f5
 	call Func_8da28
 	scall Func_80f02
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 	ld a, [wc78d]
 	cp $01
 	jp z, .asm_8d5dd
@@ -442,8 +393,7 @@ Func_8d4d8:: ; 8d4d8
 .asm_8d5f2:
 	jp .asm_8d5fa
 .asm_8d5f5:
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 .asm_8d5fa:
 	call FillVisibleAreaWithBlankTile
 	ret
@@ -467,19 +417,14 @@ Data_8d616:
 	db $1d, $15, $ff, $ff
 
 Func_8d61a:
-	xor a
-	scall PlayMusic
-	ld c, $01
-	ld de, Data_8d5fe
-	ld a, $23
-	scall MovePlayer
+	playmusic SONG_NONE
+	move_player $01, Data_8d5fe
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $01
-	scall PlayMusic
+	playmusic $01
 	ld c, $14
 	ld e, $23
 	ld a, $01
@@ -487,20 +432,14 @@ Func_8d61a:
 	showperson $01
 	move_person $01, Data_8d602, 1
 	scall WaitNPCStep
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	writenpctext TreeBitstreamText_3d465
-	ld e, $03
-	ld a, $01
-	scall SpriteFace
+	sprite_face $03, $01
 	ld hl, $001e
 	scall ScriptSleep
 	move_person $01, Data_8d608, 1
 	scall WaitNPCStep
-	ld e, $03
-	ld a, $01
-	scall SpriteFace
+	sprite_face $03, $01
 	ld c, $14
 	ld e, $23
 	xor a
@@ -508,57 +447,35 @@ Func_8d61a:
 	showperson 0
 	move_person 0, Data_8d60c, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SpriteFace
+	sprite_face $00, 0
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $02
-	xor a
-	scall SpriteFace
+	sprite_face $02, 0
 	writenpctext TreeBitstreamText_3d4a3
-	ld e, $03
-	ld a, $01
-	scall SpriteFace
+	sprite_face $03, $01
 	writenpctext TreeBitstreamText_3d51a
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $02, $01
+	sprite_face $01, 0
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $02
-	xor a
-	scall SpriteFace
-	xor a
-	scall PlayMusic
+	sprite_face $02, 0
+	playmusic SONG_NONE
 .asm_8d6e1:
 	writenpctext_yesorno TreeBitstreamText_3d552
 	or a
 	jp nz, .asm_8d75c
-	ld a, $03
-	scall PlayMusic
+	playmusic $03
 	writenpctext TreeBitstreamText_3d59c
-	ld e, $03
-	ld a, $01
-	scall SpriteFace
+	sprite_face $03, $01
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $03
-	ld a, $01
-	scall SpriteFace
+	sprite_face $03, $01
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	ld hl, $001e
 	scall ScriptSleep
 	writenpctext TreeBitstreamText_3d5d0
@@ -570,8 +487,7 @@ Func_8d61a:
 	hideperson $01
 	jp .asm_8d76a
 .asm_8d75c:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	writenpctext TreeBitstreamText_3d63e
 	jp .asm_8d6e1
 .asm_8d76a:
@@ -600,8 +516,7 @@ Func_8d76b:
 	jp .asm_8d77e
 .asm_8d790:
 	push hl
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	writenpctext TreeBitstreamText_3d404
 	xor a
 	pop hl
@@ -644,12 +559,10 @@ Func_8d7b8:
 	jp .asm_8d7cd
 .asm_8d7df:
 	push hl
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	writenpctext TreeBitstreamText_3d442
 	xor a
 	pop hl
@@ -699,8 +612,7 @@ Func_8d813:
 	jp .asm_8d826
 .asm_8d843:
 	push hl
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	writenpctext TreeBitstreamText_3d37a
 	xor a
 	pop hl
@@ -757,12 +669,10 @@ Func_8d877:
 	jp .asm_8d88c
 .asm_8d8a9:
 	push hl
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	writenpctext TreeBitstreamText_3d2d1
 	xor a
 	pop hl
@@ -819,8 +729,7 @@ Func_8d8e9:
 	jp .asm_8d8fc
 .asm_8d919:
 	push hl
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	writenpctext TreeBitstreamText_3d278
 	xor a
 	pop hl
@@ -861,23 +770,15 @@ Func_8d955:
 	or a
 	jp nz, .asm_8d9b5
 	writenpctext TreeBitstreamText_3d59c
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
+	sprite_face $01, $01
 	ld hl, $002d
 	scall ScriptSleep
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 	writenpctext TreeBitstreamText_3d5d0
-	ld e, $02
-	xor a
-	scall SpriteFace
+	sprite_face $02, 0
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	writenpctext TreeBitstreamText_3d60c
 	move_person 0, Data_8d94d, 0
 	move_person $01, Data_8d951, 1
@@ -1072,8 +973,7 @@ Func_8db33:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_8dbb3
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	writenpctext TreeBitstreamText_440f4
 	ld hl, sp+$01
 	ld l, [hl]
@@ -1089,10 +989,7 @@ Func_8db33:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $26
-	scall GiveRobot
+	give_robot ROTOR, a, $00
 	ld a, $01
 	ld [wc796], a
 	ld hl, sp+$00
@@ -1100,8 +997,7 @@ Func_8db33:
 	call Func_8dd96
 	jp .asm_8dbc4
 .asm_8dbb3:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	writenpctext TreeBitstreamText_44185
 	call Func_8dd96
 	jp .asm_8dd7d
@@ -1131,8 +1027,7 @@ Func_8db33:
 	writetext_yesorno TreeBitstreamText_458e0
 	or a
 	jp nz, .asm_8dc43
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	writenpctext TreeBitstreamText_44239
 	ld hl, sp+$01
 	ld l, [hl]
@@ -1148,10 +1043,7 @@ Func_8db33:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $51
-	scall GiveRobot
+	give_robot SUMISU, a, $00
 	ld a, $08
 	ld [wc796], a
 	ld hl, sp+$00
@@ -1159,8 +1051,7 @@ Func_8db33:
 	call Func_8dd96
 	jp .asm_8dc54
 .asm_8dc43:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	writenpctext TreeBitstreamText_44185
 	call Func_8dd96
 	jp .asm_8dd7d
@@ -1296,8 +1187,7 @@ Func_8dd96:
 	jp nz, .asm_8ddc0
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	move_person $08, Data_8dd90, 1
 	scall WaitNPCStep
 	hideperson $08
@@ -1305,8 +1195,7 @@ Func_8dd96:
 .asm_8ddc0:
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $2e
-	scall PlaySFX
+	playsfx $2e
 	move_person $08, Data_8dd8c, 1
 	scall WaitNPCStep
 	hideperson $08

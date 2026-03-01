@@ -101,9 +101,7 @@ Func_8aae9:
 	jp z, .asm_8ab15
 	cp $09
 	jp nz, .asm_8ab30
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 	jp .asm_8ab30
 .asm_8ab15:
 	move_person 0, Data_8aae1, 1
@@ -179,16 +177,12 @@ Func_8abcc:
 	jp z, .asm_8abfe
 	cp $08
 	jp nz, .asm_8ac1f
-	ld e, $03
-	ld a, $02
-	scall SpriteFace
+	sprite_face $03, $02
 	ld a, $01
 	scall PlayerFace
 	jp .asm_8ac1f
 .asm_8abfe:
-	ld e, $01
-	ld a, $02
-	scall SpriteFace
+	sprite_face $01, $02
 	ld a, $03
 	scall PlayerFace
 	jp .asm_8ac1f
@@ -269,16 +263,12 @@ Func_8acc0:
 	scall PlayerFace
 	jp .asm_8ad13
 .asm_8acf8:
-	ld e, $03
-	ld a, $05
-	scall SpriteFace
+	sprite_face $03, $05
 	ld a, $01
 	scall PlayerFace
 	jp .asm_8ad13
 .asm_8ad07:
-	ld e, $01
-	ld a, $05
-	scall SpriteFace
+	sprite_face $01, $05
 	ld a, $03
 	scall PlayerFace
 .asm_8ad13:
@@ -363,9 +353,7 @@ Func_8adc4:
 	scall PlayerFace
 	jp .asm_8ae1d
 .asm_8ae11:
-	ld e, $03
-	ld a, $08
-	scall SpriteFace
+	sprite_face $03, $08
 	ld a, $01
 	scall PlayerFace
 .asm_8ae1d:

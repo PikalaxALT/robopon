@@ -138,9 +138,7 @@ Func_a2ebf:: ; a2ebf
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a2ee5
-	ld e, $01
-	ld hl, $005f
-	scall EventFlagAction
+	setevent $005f
 .asm_a2ee5:
 	ld a, $03
 	scall Func_80d01
@@ -206,34 +204,22 @@ Func_a2ebf:: ; a2ebf
 	cp $01
 	jp nz, .asm_a2fc5
 .asm_a2f83:
-	ld e, $05
-	ld hl, Data_a2cd5
-	scall LoadEncounters
+	loadwilds $05, Data_a2cd5
 	jp .asm_a2fcd
 .asm_a2f8e:
-	ld e, $05
-	ld hl, Data_a2d1b
-	scall LoadEncounters
+	loadwilds $05, Data_a2d1b
 	jp .asm_a2fcd
 .asm_a2f99:
-	ld e, $05
-	ld hl, Data_a2d61
-	scall LoadEncounters
+	loadwilds $05, Data_a2d61
 	jp .asm_a2fcd
 .asm_a2fa4:
-	ld e, $05
-	ld hl, Data_a2da7
-	scall LoadEncounters
+	loadwilds $05, Data_a2da7
 	jp .asm_a2fcd
 .asm_a2faf:
-	ld e, $05
-	ld hl, Data_a2ded
-	scall LoadEncounters
+	loadwilds $05, Data_a2ded
 	jp .asm_a2fcd
 .asm_a2fba:
-	ld e, $05
-	ld hl, Data_a2e33
-	scall LoadEncounters
+	loadwilds $05, Data_a2e33
 	jp .asm_a2fcd
 .asm_a2fc5:
 IF DEF(SUN)
@@ -286,11 +272,8 @@ ENDC
 	ld e, $01
 	scall LoadWarps
 .asm_a300d:
-	ld e, $01
-	ld hl, Data_a2c46
-	scall LoadWarps
-	ld a, $08
-	scall PlayMusic
+	loadwarps $01, Data_a2c46
+	playmusic $08
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $23

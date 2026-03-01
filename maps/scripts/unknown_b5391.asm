@@ -27,19 +27,14 @@ ENDC
 Func_b5391:: ; b5391
 	ld a, $14
 	ld [wc7e2], a
-	ld e, $04
-	ld hl, Data_b5315
-	scall LoadWarps
+	loadwarps $04, Data_b5315
 	ld e, $02
 	ld hl, Data_b5341
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_b534b
-	scall LoadEncounters
-	ld a, $0a
-	scall PlayMusic
+	loadwilds $05, Data_b534b
+	playmusic $0a
 	ld a, $04
 	scall LoadPlayerSprite
 	scall Func_8001c

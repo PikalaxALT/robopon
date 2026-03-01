@@ -16,30 +16,14 @@ Func_95c14:: ; 95c14
 	ld e, a
 	ld a, $01
 	scall ChangeSprite
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld bc, Data_95c0c
-	ld e, $25
-	ld a, $01
-	scall MovePersonAndWait
+	sprite_face $02, $01
+	showperson $01
+	move_person $01, Data_95c0c, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
-	ld e, $01
-	ld hl, $005b
-	scall EventFlagAction
+	sprite_face $00, $01
+	setevent $005b
 	call Func_9596a
-	ld bc, Data_95c10
-	ld e, $25
-	ld a, $01
-	scall MovePersonAndWait
+	move_person $01, Data_95c10, 1
 	scall WaitNPCStep
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 	ret

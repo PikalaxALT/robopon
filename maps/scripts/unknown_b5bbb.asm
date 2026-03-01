@@ -21,19 +21,12 @@ Data_b5bad:
 	person_event $ff, $00, $01, $02, $01, $01, $00, $04, $01, Func_b5be7, NULL
 
 Func_b5bbb:: ; b5bbb
-	ld e, $01
-	ld hl, Data_b5b5c
-	scall LoadWarps
+	loadwarps $01, Data_b5b5c
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_b5b67
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_b5bad
-	scall LoadMapObjects
-	ld a, $09
-	scall PlayMusic
+	loadwilds $05, Data_b5b67
+	loadpeople $01, Data_b5bad
+	playmusic $09
 	scall Func_8001c
 	ld hl, $030e
 	scall LandmarkSign

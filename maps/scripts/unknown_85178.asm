@@ -85,9 +85,7 @@ Func_85178::
 	checkevent $5
 	cp $1
 	jp nz, .asm_8523a
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	jp .asm_85242
 
 .asm_8523a: ; 8523a (21:523a)
@@ -173,24 +171,18 @@ Func_852ac: ; 852ac (21:52ac)
 	playmusic SONG_NONE
 	writenpctext TreeBitstreamText_39a7b
 	playmusic SONG_ENCOUNTER_BEAUTY
-	ld e, $0
-	xor a
-	scall SpriteFace
+	sprite_face $0, 0
 	sprite_face $0, $1
 	move_person $2, Data_8527c, 1
 	scall WaitNPCStep
 	playsfx $33
 	move_person $1, Data_85286, 1
 	scall WaitNPCStep
-	ld e, $1
-	xor a
-	scall SpriteFace
+	sprite_face $1, 0
 	sprite_face $3, $1
 	move_person $2, Data_8528a, 1
 	scall WaitNPCStep
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 	sprite_face $2, $1
 	script_sleep $3c
 	playmusic SONG_NONE
@@ -217,18 +209,14 @@ Func_852ac: ; 852ac (21:52ac)
 	script_sleep $1e
 	playsfx $2e
 	scall WaitNPCStep
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 	sprite_face $2, $1
 	move_person 0, Data_8529c, 0
 	move_person $1, Data_852a4, 1
 	scall WaitNPCStep
 	ld a, $1
 	scall PlayerFace
-	ld e, $2
-	xor a
-	scall SpriteFace
+	sprite_face $2, 0
 	sprite_face $2, $1
 	playsfx $5c
 	script_sleep $78
@@ -281,9 +269,7 @@ Func_854aa:
 .asm_854eb: ; 854eb (21:54eb)
 	move_person 0, Data_854a2, 1
 	scall WaitNPCStep
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	setevent $5
 	checkevent $6
 	or a
@@ -376,9 +362,7 @@ Func_855dc:
 	checkevent $5
 	or a
 	jp nz, .asm_8562e
-	ld e, $1
-	xor a
-	scall SpriteFace
+	sprite_face $1, 0
 	ld a, $3
 	scall PlayerFace
 	ld hl, sp+$0
@@ -428,9 +412,7 @@ Func_855dc:
 .asm_856ab: ; 856ab (21:56ab)
 	move_person 0, Data_855d4, 1
 	scall WaitNPCStep
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	setevent $5
 	checkevent $6
 	or a
@@ -497,9 +479,7 @@ Func_85746:
 	checkevent $5
 	or a
 	jp nz, .asm_85798
-	ld e, $1
-	xor a
-	scall SpriteFace
+	sprite_face $1, 0
 	ld a, $3
 	scall PlayerFace
 	ld hl, sp+$0
@@ -541,9 +521,7 @@ Func_85746:
 .asm_85801: ; 85801 (21:5801)
 	move_person 0, Data_8573e, 1
 	scall WaitNPCStep
-	ld e, $0
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	setevent $5
 .asm_8581b: ; 8581b (21:581b)
 	pop bc

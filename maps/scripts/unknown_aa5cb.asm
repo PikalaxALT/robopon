@@ -99,105 +99,73 @@ Func_aa5cb:: ; aa5cb
 	call Func_aaaad
 	ld hl, Func_aaaad
 	scall Func_80f11
-	ld e, $0e
-	ld hl, Data_aa3d8
-	scall LoadWarps
-	ld e, $09
-	ld hl, Data_aa4a5
-	scall LoadMapObjects
-	ld e, $02
-	ld hl, Data_aa577
-	scall LoadMapObjects
+	loadwarps $0e, Data_aa3d8
+	loadpeople $09, Data_aa4a5
+	loadpeople $02, Data_aa577
 	ld a, $01
 	scall LoadPlayerSprite
-	ld a, $12
-	scall PlayMusic
+	playmusic $12
 	ld a, [wc790]
 	or a
 	jp z, .asm_aa622
 	ld a, [wc790]
 	cp $07
 	jp nc, .asm_aa622
-	ld e, $01
-	ld hl, Data_aa472
-	scall LoadWarps
-	ld e, $01
-	ld hl, Data_aa5bd
-	scall LoadMapObjects
+	loadwarps $01, Data_aa472
+	loadpeople $01, Data_aa5bd
 	jp .asm_aa62a
 .asm_aa622:
-	ld e, $01
-	ld hl, Data_aa5af
-	scall LoadMapObjects
+	loadpeople $01, Data_aa5af
 .asm_aa62a:
-	ld hl, $0034
-	scall CheckEventFlag
+	checkevent $0034
 	cp $01
 	jp nz, .asm_aa666
-	ld hl, $00c3
-	scall CheckEventFlag
+	checkevent $00c3
 	or a
 	jp nz, .asm_aa666
 	ld a, [wBackupMapGroup]
 	cp $1a
 	jp nz, .asm_aa666
-	ld hl, $0035
-	scall CheckEventFlag
+	checkevent $0035
 	or a
 	jp nz, .asm_aa666
-	ld e, $01
-	ld hl, Data_aa5a1
-	scall LoadMapObjects
+	loadpeople $01, Data_aa5a1
 	xor a
 	scall Func_80653
 	scall Func_8001c
 	call Func_aab3f
 	jp .asm_aa6dd
 .asm_aa666:
-	ld hl, $0022
-	scall CheckEventFlag
+	checkevent $0022
 	cp $01
 	jp nz, .asm_aa69e
-	ld hl, $0043
-	scall CheckEventFlag
+	checkevent $0043
 	or a
 	jp nz, .asm_aa69e
-	ld hl, $00c2
-	scall CheckEventFlag
+	checkevent $00c2
 	or a
 	jp nz, .asm_aa69e
 	ld a, [wBackupMapGroup]
 	cp $ff
 	jp z, .asm_aa69b
-	ld e, $01
-	ld hl, Data_aa593
-	scall LoadMapObjects
+	loadpeople $01, Data_aa593
 	scall Func_8001c
 	call Func_aaad6
 .asm_aa69b:
 	jp .asm_aa6dd
 .asm_aa69e:
-	ld hl, $0022
-	scall CheckEventFlag
+	checkevent $0022
 	or a
 	jp nz, .asm_aa6da
-	ld e, $06
-	ld hl, Data_aa523
-	scall LoadMapObjects
-	ld hl, $0014
-	scall CheckEventFlag
+	loadpeople $06, Data_aa523
+	checkevent $0014
 	cp $01
 	jp nz, .asm_aa6d4
-	ld hl, $0007
-	scall CheckEventFlag
+	checkevent $0007
 	cp $01
 	jp nz, .asm_aa6d4
-	ld e, $00
-	ld a, $10
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $11
-	scall SetPersonVisibilityState
+	hideperson $10
+	hideperson $11
 .asm_aa6d4:
 	scall Func_8001c
 	jp .asm_aa6dd
@@ -251,36 +219,21 @@ Func_aa6ee:
 	jp z, .asm_aa74d
 	or a
 	jp nz, .asm_aa75a
-	ld c, $01
-	ld de, Data_aa6de
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_aa6de
 	jp .asm_aa764
 .asm_aa74d:
-	ld c, $01
-	ld de, Data_aa6e2
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_aa6e2
 	jp .asm_aa764
 .asm_aa75a:
-	ld c, $01
-	ld de, Data_aa6e8
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_aa6e8
 .asm_aa764:
 	scall WaitNPCStep
-	xor a
-	scall PlayMusic
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $0a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $0b
-	scall LoadEmote
-	ld a, $44
-	scall PlaySFX
+	loademote $01, $01, $0b
+	playsfx $44
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04
@@ -324,14 +277,10 @@ Func_aa7b6:
 	scall ScriptSleep
 	ld a, $03
 	scall PlayerFace
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	ld hl, $01bc
 	scall PrintTextStandard
-	ld c, $01
-	ld de, Data_aa7b2
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_aa7b2
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
@@ -358,14 +307,10 @@ Func_aa7f5:
 	scall ScriptSleep
 	ld a, $01
 	scall PlayerFace
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	ld hl, $01bc
 	scall PrintTextStandard
-	ld c, $01
-	ld de, Data_aa7f1
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_aa7f1
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
@@ -392,14 +337,10 @@ Func_aa834:
 	scall ScriptSleep
 	ld a, $03
 	scall PlayerFace
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	ld hl, $01bd
 	scall PrintTextStandard
-	ld c, $01
-	ld de, Data_aa830
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_aa830
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
@@ -417,9 +358,7 @@ Func_aa86f:
 	ld a, e
 	or a
 	jp nz, .asm_aaaa4
-	ld hl, sp+$03
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$03
 	ld a, [wc796]
 	cp $04
 	jp nz, .asm_aa90a
@@ -441,8 +380,7 @@ Func_aa86f:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_aa8ed
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	ld hl, $040c
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
@@ -459,18 +397,14 @@ Func_aa86f:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $4a
-	scall GiveRobot
+	give_robot FILRUP, a, $00
 	ld a, $05
 	ld [wc796], a
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_aa8fb
 .asm_aa8ed:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	ld hl, $040d
 	scall PrintTextWithNPCName
 	jp .asm_aaaa4
@@ -504,8 +438,7 @@ Func_aa86f:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_aa977
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	ld hl, $0432
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
@@ -522,18 +455,14 @@ Func_aa86f:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $7e
-	scall GiveRobot
+	give_robot MACK, a, $00
 	ld a, $0d
 	ld [wc796], a
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_aa985
 .asm_aa977:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	ld hl, $0433
 	scall PrintTextWithNPCName
 	jp .asm_aaaa4
@@ -695,38 +624,22 @@ Data_aaad2:
 	db $19, $07, $ff, $ff
 
 Func_aaad6:
-	ld bc, Data_aaac6
-	ld e, $2a
-	ld a, $0c
-	scall MovePersonAndWait
+	move_person $0c, Data_aaac6, 1
 	scall WaitNPCStep
-	ld c, $01
-	ld de, Data_aaace
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_aaace
 	scall WaitNPCStep
 	ld a, $03
 	scall PlayerFace
-	ld bc, Data_aaaca
-	ld e, $2a
-	ld a, $0c
-	scall MovePersonAndWait
+	move_person $0c, Data_aaaca, 1
 	scall WaitNPCStep
 	ld a, $02
 	scall PlayerFace
-	ld e, $00
-	ld a, $0c
-	scall SetPersonVisibilityState
+	hideperson $0c
 	ld hl, $0112
 	scall PrintTextStandard
-	ld c, $01
-	ld de, Data_aaad2
-	ld a, $2a
-	scall MovePlayer
+	move_player $01, Data_aaad2
 	scall WaitNPCStep
-	ld e, $01
-	ld hl, $00c2
-	scall EventFlagAction
+	setevent $00c2
 	ld l, $07
 	push hl
 	ld c, $19
@@ -743,10 +656,7 @@ Data_aab3b:
 	db $19, $0d, $ff, $ff
 
 Func_aab3f:
-	ld bc, Data_aab37
-	ld e, $2a
-	ld a, $0c
-	scall MovePersonAndWait
+	move_person $0c, Data_aab37, 1
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
@@ -754,10 +664,7 @@ Func_aab3f:
 	scall PrintTextStandard
 	ld hl, $001e
 	scall ScriptSleep
-	ld bc, Data_aab3b
-	ld e, $2a
-	ld a, $0c
-	scall MovePersonAndWait
+	move_person $0c, Data_aab3b, 1
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
@@ -768,9 +675,7 @@ Func_aab3f:
 	ld a, $1a
 	scall Func_80dff
 	pop bc
-	ld e, $01
-	ld hl, $00c3
-	scall EventFlagAction
+	setevent $00c3
 	ret
 
 Func_aab87:

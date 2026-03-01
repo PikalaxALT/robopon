@@ -95,9 +95,7 @@ Data_ca36b:
 	person_event $09, $04, $0c, $08, $01, $01, $02, $04, $00, Func_ca6c3, NULL
 
 Func_ca379:: ; ca379
-	ld e, $03
-	ld hl, Data_ca1b4
-	scall LoadWarps
+	loadwarps $03, Data_ca1b4
 	ld a, [wc78b]
 	cp $04
 	jp z, .asm_ca434
@@ -111,14 +109,9 @@ Func_ca379:: ; ca379
 	jp nz, .asm_ca457
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca1d5
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_ca333
-	scall LoadMapObjects
-	ld a, $09
-	scall PlayMusic
+	loadwilds $05, Data_ca1d5
+	loadpeople $01, Data_ca333
+	playmusic $09
 	scall Func_8001c
 	ld hl, $02e9
 	scall LandmarkSign
@@ -126,14 +119,9 @@ Func_ca379:: ; ca379
 .asm_ca3c2:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca21b
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_ca341
-	scall LoadMapObjects
-	ld a, $0e
-	scall PlayMusic
+	loadwilds $05, Data_ca21b
+	loadpeople $01, Data_ca341
+	playmusic $0e
 	scall Func_8001c
 	ld hl, $02f8
 	scall LandmarkSign
@@ -141,14 +129,9 @@ Func_ca379:: ; ca379
 .asm_ca3e8:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca261
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_ca34f
-	scall LoadMapObjects
-	ld a, $0d
-	scall PlayMusic
+	loadwilds $05, Data_ca261
+	loadpeople $01, Data_ca34f
+	playmusic $0d
 	scall Func_8001c
 	ld hl, $02f3
 	scall LandmarkSign
@@ -156,14 +139,9 @@ Func_ca379:: ; ca379
 .asm_ca40e:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca2a7
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_ca35d
-	scall LoadMapObjects
-	ld a, $0f
-	scall PlayMusic
+	loadwilds $05, Data_ca2a7
+	loadpeople $01, Data_ca35d
+	playmusic $0f
 	scall Func_8001c
 	ld hl, $02ee
 	scall LandmarkSign
@@ -171,14 +149,9 @@ Func_ca379:: ; ca379
 .asm_ca434:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ca2ed
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_ca36b
-	scall LoadMapObjects
-	ld a, $10
-	scall PlayMusic
+	loadwilds $05, Data_ca2ed
+	loadpeople $01, Data_ca36b
+	playmusic $10
 	scall Func_8001c
 	ld hl, $02fd
 	scall LandmarkSign
@@ -194,10 +167,8 @@ Func_ca481:
 	ld a, e
 	or a
 	jp nz, .asm_ca4d4
-	xor a
-	scall FacePlayer
-	ld hl, $0094
-	scall CheckEventFlag
+	face_player 0
+	checkevent $0094
 	or a
 	jp nz, .asm_ca4ce
 	ld hl, $0260
@@ -206,16 +177,12 @@ Func_ca481:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_ca4c5
-	ld de, Data_ca4d5
-	ld hl, Data_ca458
-	scall ScriptedBattle
+	startbattle Data_ca4d5, Data_ca458
 	or a
 	jp nz, .asm_ca4b4
 	jp .asm_ca4d4
 .asm_ca4b4:
-	ld e, $01
-	ld hl, $0094
-	scall EventFlagAction
+	setevent $0094
 	ld hl, $0264
 	scall PrintTextStandard
 	jp .asm_ca4cb
@@ -242,10 +209,8 @@ Func_ca507:
 	ld a, e
 	or a
 	jp nz, .asm_ca568
-	xor a
-	scall FacePlayer
-	ld hl, $0099
-	scall CheckEventFlag
+	face_player 0
+	checkevent $0099
 	or a
 	jp nz, .asm_ca562
 	ld hl, $0262
@@ -267,9 +232,7 @@ Func_ca507:
 	jp nz, .asm_ca530
 	jp .asm_ca568
 .asm_ca548:
-	ld e, $01
-	ld hl, $0099
-	scall EventFlagAction
+	setevent $0099
 	ld hl, $0264
 	scall PrintTextStandard
 	jp .asm_ca55f
@@ -296,10 +259,8 @@ Func_ca59b:
 	ld a, e
 	or a
 	jp nz, .asm_ca5fc
-	xor a
-	scall FacePlayer
-	ld hl, $009e
-	scall CheckEventFlag
+	face_player 0
+	checkevent $009e
 	or a
 	jp nz, .asm_ca5f6
 	ld hl, $0265
@@ -321,9 +282,7 @@ Func_ca59b:
 	jp nz, .asm_ca5c4
 	jp .asm_ca5fc
 .asm_ca5dc:
-	ld e, $01
-	ld hl, $009e
-	scall EventFlagAction
+	setevent $009e
 	ld hl, $0266
 	scall PrintTextStandard
 	jp .asm_ca5f3
@@ -350,10 +309,8 @@ Func_ca62f:
 	ld a, e
 	or a
 	jp nz, .asm_ca690
-	xor a
-	scall FacePlayer
-	ld hl, $00a3
-	scall CheckEventFlag
+	face_player 0
+	checkevent $00a3
 	or a
 	jp nz, .asm_ca68a
 	ld hl, $025f
@@ -375,9 +332,7 @@ Func_ca62f:
 	jp nz, .asm_ca658
 	jp .asm_ca690
 .asm_ca670:
-	ld e, $01
-	ld hl, $00a3
-	scall EventFlagAction
+	setevent $00a3
 	ld hl, $0266
 	scall PrintTextStandard
 	jp .asm_ca687
@@ -404,10 +359,8 @@ Func_ca6c3:
 	ld a, e
 	or a
 	jp nz, .asm_ca724
-	xor a
-	scall FacePlayer
-	ld hl, $00a8
-	scall CheckEventFlag
+	face_player 0
+	checkevent $00a8
 	or a
 	jp nz, .asm_ca71e
 	ld hl, $0263
@@ -429,9 +382,7 @@ Func_ca6c3:
 	jp nz, .asm_ca6ec
 	jp .asm_ca724
 .asm_ca704:
-	ld e, $01
-	ld hl, $00a8
-	scall EventFlagAction
+	setevent $00a8
 	ld hl, $0264
 	scall PrintTextStandard
 	jp .asm_ca71b

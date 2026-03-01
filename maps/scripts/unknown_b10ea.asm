@@ -12,27 +12,20 @@ Data_b10ce:
 	person_event $ff, $00, $07, $1a, $01, $01, $00, $04, $01, PrintTextFacePlayer_2c, Data_b10ca
 
 Func_b10ea:: ; b10ea
-	ld e, $02
-	ld hl, Data_b10b4
-	scall LoadWarps
-	ld e, $02
-	ld hl, Data_b10ce
-	scall LoadMapObjects
+	loadwarps $02, Data_b10b4
+	loadpeople $02, Data_b10ce
 	ld a, $0d
 	ld [wc7e2], a
-	ld a, $12
-	scall PlayMusic
+	playmusic $12
 	scall Func_8001c
 	call Func_b110b
 	ret
 
 Func_b110b:
-	ld hl, $001e
-	scall CheckEventFlag
+	checkevent $001e
 	cp $01
 	jp nz, .asm_b112d
-	ld hl, $0009
-	scall CheckEventFlag
+	checkevent $0009
 	or a
 	jp nz, .asm_b112d
 	ld l, $04

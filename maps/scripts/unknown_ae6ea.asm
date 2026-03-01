@@ -23,34 +23,24 @@ Data_ae6dc:
 	person_event $0d, $0c, $0a, $11, $01, $01, $02, $04, $00, NULL, NULL
 
 Func_ae6ea:: ; ae6ea
-	ld e, $03
-	ld hl, Data_ae675
-	scall LoadWarps
+	loadwarps $03, Data_ae675
 	ld a, $01
 	scall LoadPlayerSprite
-	ld hl, $0033
-	scall CheckEventFlag
+	checkevent $0033
 	or a
 	jp nz, .asm_ae720
-	ld e, $01
-	ld hl, Data_ae6dc
-	scall LoadMapObjects
+	loadpeople $01, Data_ae6dc
 	scall Func_8001c
 	ld hl, $0315
 	scall LandmarkSign
 	call Func_ae74c
-	ld e, $01
-	ld hl, $0033
-	scall EventFlagAction
+	setevent $0033
 	jp .asm_ae73b
 .asm_ae720:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_ae696
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_ae696
+	playmusic $08
 	scall Func_8001c
 	ld hl, $0315
 	scall LandmarkSign
@@ -70,8 +60,7 @@ Data_ae748:
 	db $0a, $15, $ff, $ff
 
 Func_ae74c:
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld e, $01
 	xor a
 	scall PlayerStep
@@ -110,12 +99,8 @@ Func_ae74c:
 	ld e, $01
 	ld a, $03
 	scall PlayerStep
-	ld a, $01
-	scall PlayMusic
-	ld bc, Data_ae748
-	ld e, $2b
-	xor a
-	scall MovePersonAndWait
+	playmusic $01
+	move_person 0, Data_ae748, 1
 	scall WaitNPCStep
 	ld hl, $0131
 	scall PrintTextWithNPCName
@@ -157,44 +142,25 @@ Func_ae74c:
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
-	ld c, $01
-	ld de, Data_ae73c
-	ld a, $2b
-	scall MovePlayer
+	move_player $01, Data_ae73c
 	scall WaitNPCStep
-	ld bc, Data_ae740
-	ld e, $2b
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_ae740, 1
 	scall WaitNPCStep
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld c, $01
-	ld e, $01
-	ld a, $05
-	scall LoadEmote
+	sprite_face $02, 0
+	loademote $01, $01, $05
 	ld e, $15
 	ld a, $12
 	scall MoveEmote
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	scall WaitEmote
 	scall HideEmote
 	ld hl, $001e
 	scall ScriptSleep
 	ld hl, $0132
 	scall PrintTextWithNPCName
-	ld bc, Data_ae744
-	ld e, $2b
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_ae744, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	xor a
-	scall PlayMusic
-	ld a, $08
-	scall PlayMusic
+	hideperson 0
+	playmusic SONG_NONE
+	playmusic $08
 	ret

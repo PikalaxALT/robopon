@@ -31,15 +31,10 @@ Func_9e0f9:: ; 9e0f9
 	ld [wc792], a
 	xor a
 	ld [wc794], a
-	ld e, $03
-	ld hl, Data_9e092
-	scall LoadWarps
+	loadwarps $03, Data_9e092
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_9e0b3
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_9e0b3
+	playmusic $08
 	scall Func_8001c
 	ret

@@ -159,18 +159,12 @@ Func_bb44e:: ; bb44e
 	ld a, [wBackupMapNumber]
 	cp $0a
 	jp nz, .asm_bb4d7
-	ld e, $06
-	ld hl, Data_bb3ca
-	scall LoadMapObjects
-	ld a, $14
-	scall PlayMusic
+	loadpeople $06, Data_bb3ca
+	playmusic $14
 	jp .asm_bb4e4
 .asm_bb4d7:
-	ld e, $05
-	ld hl, Data_bb384
-	scall LoadMapObjects
-	ld a, $0c
-	scall PlayMusic
+	loadpeople $05, Data_bb384
+	playmusic $0c
 .asm_bb4e4:
 	scall Func_8001c
 	ret
@@ -179,8 +173,7 @@ Func_bb4e8:
 	ld a, e
 	or a
 	jp nz, .asm_bb4f4
-	xor a
-	scall FacePlayer
+	face_player 0
 	scall AskRepairRobots
 .asm_bb4f4:
 	ret
@@ -215,9 +208,7 @@ Func_bb5c2:
 	ld a, e
 	or a
 	jp nz, .asm_bb6fa
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$01
 	ld hl, sp+$01
 	ld a, [hl]
 	cp $04
@@ -234,9 +225,7 @@ Func_bb5c2:
 	scall PrintTextWithNPCNameAndYesNoBox
 	or a
 	jp nz, .asm_bb60c
-	ld de, Data_bb6fc
-	ld hl, Data_bb4f5
-	scall ScriptedBattle
+	startbattle Data_bb6fc, Data_bb4f5
 	or a
 	jp nz, .asm_bb603
 	jp .asm_bb6fa

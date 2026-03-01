@@ -26,37 +26,25 @@ Data_a5118:
 Func_a5126:: ; a5126
 	ld a, $0a
 	ld [wc7e2], a
-	ld e, $02
-	ld hl, Data_a50b4
-	scall LoadWarps
-	ld a, $03
-	scall PlayMusic
-	ld hl, $002e
-	scall CheckEventFlag
+	loadwarps $02, Data_a50b4
+	playmusic $03
+	checkevent $002e
 	cp $01
 	jp nz, .asm_a5163
-	ld hl, $002f
-	scall CheckEventFlag
+	checkevent $002f
 	cp $01
 	jp nz, .asm_a5163
-	ld hl, $0044
-	scall CheckEventFlag
+	checkevent $0044
 	or a
 	jp nz, .asm_a5163
-	ld e, $03
-	ld hl, Data_a50d2
-	scall LoadMapObjects
+	loadpeople $03, Data_a50d2
 	jp .asm_a516b
 .asm_a5163:
-	ld e, $01
-	ld hl, Data_a5118
-	scall LoadMapObjects
+	loadpeople $01, Data_a5118
 .asm_a516b:
 	ld a, $01
 	scall LoadPlayerSprite
-	ld e, $02
-	ld hl, Data_a50fc
-	scall LoadMapObjects
+	loadpeople $02, Data_a50fc
 	scall Func_8001c
 	ret
 
@@ -65,16 +53,11 @@ Func_a517c:: ; a517c
 	set_farcall_addrs_hli FadeInMap
 	xor a
 	call FarCall
-	xor a
-	scall PlayMusic
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $0a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $11
-	scall LoadEmote
+	loademote $01, $01, $11
 	scall WaitEmote
 	ld hl, $003c
 	scall ScriptSleep
@@ -96,10 +79,7 @@ Func_a517c:: ; a517c
 	scall PrintTextWithNPCName
 	jp .asm_a5223
 .asm_a51d6:
-	ld c, $01
-	ld e, $02
-	ld a, $11
-	scall LoadEmote
+	loademote $01, $02, $11
 	scall WaitEmote
 	ld hl, $0333
 	scall PrintTextWithNPCName
@@ -109,31 +89,21 @@ Func_a517c:: ; a517c
 	scall PrintTextWithNPCName
 	jp .asm_a5223
 .asm_a51f7:
-	ld c, $01
-	ld e, $02
-	ld a, $11
-	scall LoadEmote
+	loademote $01, $02, $11
 	scall WaitEmote
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $28
-	scall PlaySFX
-	ld c, $01
-	ld e, $04
-	ld a, $11
-	scall LoadEmote
-	xor a
-	scall PlayMusic
-	ld a, $15
-	scall PlayMusic
+	playsfx $28
+	loademote $01, $04, $11
+	playmusic SONG_NONE
+	playmusic $15
 	scall WaitEmote
 .asm_a5223:
 	scall HideEmote
 	pop af
 	cp $02
 	jp nz, .asm_a5247
-	ld a, $45
-	scall PlaySFX
+	playsfx $45
 	ld hl, $032e
 	scall PrintTextWithNPCName
 	ld l, $18
@@ -172,33 +142,21 @@ Func_a5264:
 	jp nz, .asm_a5383
 	ld a, $0a
 	scall FadeOutAudio
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld hl, sp+$01
 	ld a, [hl]
 	cp $01
 	jp nz, .asm_a5289
-	ld c, $01
-	ld de, Data_a524d
-	ld a, $29
-	scall MovePlayer
+	move_player $01, Data_a524d
 	jp .asm_a5293
 .asm_a5289:
-	ld c, $01
-	ld de, Data_a5251
-	ld a, $29
-	scall MovePlayer
+	move_player $01, Data_a5251
 .asm_a5293:
-	ld bc, Data_a5256
-	ld e, $29
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_a5256, 1
 	scall WaitNPCStep
 	ld hl, $003c
 	scall ScriptSleep
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 	ld a, $03
 	scall PlayerFace
 	ld hl, $001e
@@ -207,8 +165,7 @@ Func_a5264:
 	scall PrintTextWithNPCName
 	ld a, $01
 	scall FadeInAudio
-	ld a, $1b
-	scall PlayMusic
+	playmusic $1b
 	ld hl, $001e
 	scall ScriptSleep
 	ld e, $01
@@ -217,35 +174,24 @@ Func_a5264:
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
-	ld a, $5b
-	scall PlaySFX
-	ld c, $01
-	ld e, $0f
-	ld a, $15
-	scall LoadEmote
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	playsfx $5b
+	loademote $01, $0f, $15
+	hideperson 0
 	xor a
 	scall Func_80653
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $46
-	scall PlaySFX
+	playsfx $46
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $46
-	scall PlaySFX
+	playsfx $46
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $46
-	scall PlaySFX
+	playsfx $46
 	ld hl, $001e
 	scall ScriptSleep
 	scall WaitEmote
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	ld a, $01
 	scall Func_80653
 	scall HideEmote
@@ -258,28 +204,15 @@ Func_a5264:
 	ld hl, $010a
 	scall PrintTextWithNPCName
 	scall StartShakingScreen
-	ld a, $65
-	scall PlaySFX
-	xor a
-	scall PlayMusic
-	ld a, $1b
-	scall PlayMusic
-	ld bc, Data_a525a
-	ld e, $29
-	xor a
-	scall MovePersonAndWait
-	ld a, $2e
-	scall PlaySFX
+	playsfx $65
+	playmusic SONG_NONE
+	playmusic $1b
+	move_person 0, Data_a525a, 1
+	playsfx $2e
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld a, $65
-	scall PlaySFX
-	ld c, $01
-	ld de, Data_a5260
-	ld a, $29
-	scall MovePlayer
+	hideperson 0
+	playsfx $65
+	move_player $01, Data_a5260
 	scall WaitNPCStep
 	ld l, $06
 	push hl
@@ -293,8 +226,7 @@ Func_a5264:
 	ret
 
 Func_a5385:
-	ld a, $45
-	scall PlaySFX
+	playsfx $45
 	ld l, $18
 	push hl
 	ld c, $13
@@ -308,8 +240,7 @@ Func_a5398:
 	ld a, e
 	cp $02
 	jp nz, .asm_a53dd
-	ld hl, $002d
-	scall CheckEventFlag
+	checkevent $002d
 	cp $01
 	jp nz, .asm_a53dd
 	ld a, $2a
@@ -320,8 +251,7 @@ Func_a5398:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_a53d4
-	ld a, $45
-	scall PlaySFX
+	playsfx $45
 	ld hl, $001e
 	scall ScriptSleep
 	ld l, $18

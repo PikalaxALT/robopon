@@ -98,9 +98,7 @@ Data_c9d87:
 	person_event $ff, $00, $11, $09, $03, $03, $00, $04, $00, Func_ca152, NULL
 
 Func_c9d95:: ; c9d95
-	ld e, $03
-	ld hl, Data_c9bc2
-	scall LoadWarps
+	loadwarps $03, Data_c9bc2
 	ld a, [wc78b]
 	cp $04
 	jp z, .asm_c9e50
@@ -114,14 +112,9 @@ Func_c9d95:: ; c9d95
 	jp nz, .asm_c9e73
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c9be3
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c9d41
-	scall LoadMapObjects
-	ld a, $09
-	scall PlayMusic
+	loadwilds $05, Data_c9be3
+	loadpeople $01, Data_c9d41
+	playmusic $09
 	scall Func_8001c
 	ld hl, $02e8
 	scall LandmarkSign
@@ -129,14 +122,9 @@ Func_c9d95:: ; c9d95
 .asm_c9dde:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c9c29
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c9d4f
-	scall LoadMapObjects
-	ld a, $0e
-	scall PlayMusic
+	loadwilds $05, Data_c9c29
+	loadpeople $01, Data_c9d4f
+	playmusic $0e
 	scall Func_8001c
 	ld hl, $02f7
 	scall LandmarkSign
@@ -144,14 +132,9 @@ Func_c9d95:: ; c9d95
 .asm_c9e04:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c9c6f
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c9d5d
-	scall LoadMapObjects
-	ld a, $0d
-	scall PlayMusic
+	loadwilds $05, Data_c9c6f
+	loadpeople $01, Data_c9d5d
+	playmusic $0d
 	scall Func_8001c
 	ld hl, $02f2
 	scall LandmarkSign
@@ -159,14 +142,9 @@ Func_c9d95:: ; c9d95
 .asm_c9e2a:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c9cb5
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c9d6b
-	scall LoadMapObjects
-	ld a, $0f
-	scall PlayMusic
+	loadwilds $05, Data_c9cb5
+	loadpeople $01, Data_c9d6b
+	playmusic $0f
 	scall Func_8001c
 	ld hl, $02ed
 	scall LandmarkSign
@@ -174,21 +152,14 @@ Func_c9d95:: ; c9d95
 .asm_c9e50:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c9cfb
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c9d79
-	scall LoadMapObjects
-	ld a, $10
-	scall PlayMusic
+	loadwilds $05, Data_c9cfb
+	loadpeople $01, Data_c9d79
+	playmusic $10
 	scall Func_8001c
 	ld hl, $02fc
 	scall LandmarkSign
 .asm_c9e73:
-	ld e, $01
-	ld hl, Data_c9d87
-	scall LoadMapObjects
+	loadpeople $01, Data_c9d87
 	ret
 
 Data_c9e7c:
@@ -200,10 +171,8 @@ Func_c9ea5:
 	ld a, e
 	or a
 	jp nz, .asm_c9ef8
-	xor a
-	scall FacePlayer
-	ld hl, $0093
-	scall CheckEventFlag
+	face_player 0
+	checkevent $0093
 	or a
 	jp nz, .asm_c9ef2
 	ld hl, $025f
@@ -212,16 +181,12 @@ Func_c9ea5:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_c9ee9
-	ld de, Data_c9ef9
-	ld hl, Data_c9e7c
-	scall ScriptedBattle
+	startbattle Data_c9ef9, Data_c9e7c
 	or a
 	jp nz, .asm_c9ed8
 	jp .asm_c9ef8
 .asm_c9ed8:
-	ld e, $01
-	ld hl, $0093
-	scall EventFlagAction
+	setevent $0093
 	ld hl, $0260
 	scall PrintTextStandard
 	jp .asm_c9eef
@@ -249,10 +214,8 @@ Func_c9f2b:
 	ld a, e
 	or a
 	jp nz, .asm_c9f8c
-	xor a
-	scall FacePlayer
-	ld hl, $0098
-	scall CheckEventFlag
+	face_player 0
+	checkevent $0098
 	or a
 	jp nz, .asm_c9f86
 	ld hl, $0260
@@ -274,9 +237,7 @@ Func_c9f2b:
 	jp nz, .asm_c9f54
 	jp .asm_c9f8c
 .asm_c9f6c:
-	ld e, $01
-	ld hl, $0098
-	scall EventFlagAction
+	setevent $0098
 	ld hl, $0263
 	scall PrintTextStandard
 	jp .asm_c9f83
@@ -303,10 +264,8 @@ Func_c9fbf:
 	ld a, e
 	or a
 	jp nz, .asm_ca020
-	xor a
-	scall FacePlayer
-	ld hl, $009d
-	scall CheckEventFlag
+	face_player 0
+	checkevent $009d
 	or a
 	jp nz, .asm_ca01a
 	ld hl, $0263
@@ -328,9 +287,7 @@ Func_c9fbf:
 	jp nz, .asm_c9fe8
 	jp .asm_ca020
 .asm_ca000:
-	ld e, $01
-	ld hl, $009d
-	scall EventFlagAction
+	setevent $009d
 	ld hl, $0264
 	scall PrintTextStandard
 	jp .asm_ca017
@@ -357,10 +314,8 @@ Func_ca053:
 	ld a, e
 	or a
 	jp nz, .asm_ca0b4
-	xor a
-	scall FacePlayer
-	ld hl, $00a2
-	scall CheckEventFlag
+	face_player 0
+	checkevent $00a2
 	or a
 	jp nz, .asm_ca0ae
 	ld hl, $0260
@@ -382,9 +337,7 @@ Func_ca053:
 	jp nz, .asm_ca07c
 	jp .asm_ca0b4
 .asm_ca094:
-	ld e, $01
-	ld hl, $00a2
-	scall EventFlagAction
+	setevent $00a2
 	ld hl, $0262
 	scall PrintTextStandard
 	jp .asm_ca0ab
@@ -412,10 +365,8 @@ Func_ca0e7:
 	ld a, e
 	or a
 	jp nz, .asm_ca148
-	xor a
-	scall FacePlayer
-	ld hl, $00a7
-	scall CheckEventFlag
+	face_player 0
+	checkevent $00a7
 	or a
 	jp nz, .asm_ca142
 	ld hl, $025f
@@ -437,9 +388,7 @@ Func_ca0e7:
 	jp nz, .asm_ca110
 	jp .asm_ca148
 .asm_ca128:
-	ld e, $01
-	ld hl, $00a7
-	scall EventFlagAction
+	setevent $00a7
 	ld hl, $0266
 	scall PrintTextStandard
 	jp .asm_ca13f
@@ -461,15 +410,10 @@ Func_ca152:
 	ld a, e
 	or a
 	jp nz, .asm_ca1b3
-	scall RepairRobots
-	xor a
-	scall PlayMusic
-	ld a, $16
-	scall PlayMusic
-	ld c, $01
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	heal
+	playmusic SONG_NONE
+	playmusic $16
+	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	ld hl, $0322
@@ -483,23 +427,18 @@ Func_ca152:
 	jp z, .asm_ca196
 	or a
 	jp nz, .asm_ca1ae
-	ld a, $09
-	scall PlayMusic
+	playmusic $09
 	jp .asm_ca1b3
 .asm_ca196:
-	ld a, $0e
-	scall PlayMusic
+	playmusic $0e
 	jp .asm_ca1b3
 .asm_ca19e:
-	ld a, $0d
-	scall PlayMusic
+	playmusic $0d
 	jp .asm_ca1b3
 .asm_ca1a6:
-	ld a, $0f
-	scall PlayMusic
+	playmusic $0f
 	jp .asm_ca1b3
 .asm_ca1ae:
-	ld a, $10
-	scall PlayMusic
+	playmusic $10
 .asm_ca1b3:
 	ret

@@ -206,10 +206,7 @@ Func_aa083:: ; aa083
 .asm_aa18c:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_aa025
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_aa025
+	playmusic $08
 	scall Func_8001c
 	ret

@@ -46,9 +46,7 @@ Func_827a9::
 	ld a, [wBackupMapNumber]
 	cp $5
 	jp nz, .asm_82811
-	ld e, $0
-	ld a, $1
-	scall SetPersonVisibilityState
+	hideperson $1
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ce3
 	call Func_829dd
@@ -64,9 +62,7 @@ Func_827a9::
 	jp .asm_8283c
 
 .asm_8282c: ; 8282c (20:682c)
-	ld e, $0
-	ld a, $1
-	scall SetPersonVisibilityState
+	hideperson $1
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ce3
 .asm_8283c: ; 8283c (20:683c)
@@ -75,9 +71,7 @@ Func_827a9::
 .asm_8283f: ; 8283f (20:683f)
 	loadpeople $4, Data_82763
 	loadpeople $1, Data_8279b
-	ld e, $0
-	ld a, $1
-	scall SetPersonVisibilityState
+	hideperson $1
 	scall Func_8001c
 .asm_82859: ; 82859 (20:6859)
 	ret
@@ -114,18 +108,12 @@ Data_82890: ; 82890
 	db $03, $01, $ff, $ff
 
 Func_82894: ; 82894 (20:6894)
-	ld bc, Data_82886
-	ld e, BANK(Data_82886)
-	ld a, $1
-	scall MovePerson
+	move_person $1, Data_82886, 0
 	move_player $1, Data_8288a
 	scall WaitNPCStep
 	writenpctext TreeBitstreamText_39235
 	writenpctext TreeBitstreamText_39257
-	ld bc, Data_82890
-	ld e, BANK(Data_82890)
-	ld a, $1
-	scall MovePerson
+	move_person $1, Data_82890, 0
 	move_player $3, Data_82890
 	scall WaitNPCStep
 	ret
@@ -174,7 +162,7 @@ Func_828df:
 	jp .asm_8298b
 
 .asm_82967: ; 82967 (20:6967)
-	ld hl, FillMemory
+	ld hl, $487
 	scall PrintTextWithNPCName
 	move_player $1, Data_828d7
 	move_person $2, Data_828d3, 1
@@ -236,9 +224,7 @@ Func_829fd:
 	ld a, e
 	or a
 	jp nz, .asm_82ab6
-	ld hl, sp+$1
-	ld a, [hl]
-	scall FacePlayer
+	face_player -1
 	checkevent $114
 	or a
 	jp nz, .asm_82ab0

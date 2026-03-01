@@ -139,9 +139,7 @@ Func_a2aa5:: ; a2aa5
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a2acb
-	ld e, $01
-	ld hl, $005f
-	scall EventFlagAction
+	setevent $005f
 .asm_a2acb:
 	ld a, $03
 	scall Func_80d01
@@ -207,39 +205,25 @@ Func_a2aa5:: ; a2aa5
 	cp $01
 	jp nz, .asm_a2bab
 .asm_a2b69:
-	ld e, $05
-	ld hl, Data_a28bb
-	scall LoadEncounters
+	loadwilds $05, Data_a28bb
 	jp .asm_a2bb3
 .asm_a2b74:
-	ld e, $05
-	ld hl, Data_a2901
-	scall LoadEncounters
+	loadwilds $05, Data_a2901
 	jp .asm_a2bb3
 .asm_a2b7f:
-	ld e, $05
-	ld hl, Data_a2947
-	scall LoadEncounters
+	loadwilds $05, Data_a2947
 	jp .asm_a2bb3
 .asm_a2b8a:
-	ld e, $05
-	ld hl, Data_a298d
-	scall LoadEncounters
+	loadwilds $05, Data_a298d
 	jp .asm_a2bb3
 .asm_a2b95:
-	ld e, $05
-	ld hl, Data_a29d3
-	scall LoadEncounters
+	loadwilds $05, Data_a29d3
 	jp .asm_a2bb3
 .asm_a2ba0:
-	ld e, $05
-	ld hl, Data_a2a19
-	scall LoadEncounters
+	loadwilds $05, Data_a2a19
 	jp .asm_a2bb3
 .asm_a2bab:
-	ld e, $05
-	ld hl, Data_a2a5f
-	scall LoadEncounters
+	loadwilds $05, Data_a2a5f
 .asm_a2bb3:
 	ld a, [wc7de]
 	inc a
@@ -283,11 +267,8 @@ Func_a2aa5:: ; a2aa5
 	ld e, $01
 	scall LoadWarps
 .asm_a2bf3:
-	ld e, $01
-	ld hl, Data_a282c
-	scall LoadWarps
-	ld a, $08
-	scall PlayMusic
+	loadwarps $01, Data_a282c
+	playmusic $08
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $23

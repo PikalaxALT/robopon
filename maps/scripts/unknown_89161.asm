@@ -85,13 +85,8 @@ Func_89237:
 	if_true .asm_89348
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
-	ld c, $01
-	ld de, Data_891a4
-	ld a, $22
-	scall MovePlayer
-	ld e, $03
-	ld a, $02
-	scall SpriteFace
+	move_player $01, Data_891a4
+	sprite_face $03, $02
 	ld a, $01
 	scall PlayerFace
 	writetext TreeBitstreamText_42972
@@ -110,9 +105,7 @@ Func_89237:
 	move_person $02, Data_891ac, 1
 	scall WaitNPCStep
 	hideperson $02
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 	ld a, $03
 	scall PlayerFace
 	writetext TreeBitstreamText_42972

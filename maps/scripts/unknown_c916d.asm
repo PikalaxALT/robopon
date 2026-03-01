@@ -34,14 +34,9 @@ Func_c916d:: ; c916d
 	ld [wc789], a
 	ld a, $09
 	ld [wc7e2], a
-	ld e, $0b
-	ld hl, Data_c90b4
-	scall LoadWarps
-	ld e, $04
-	ld hl, Data_c9135
-	scall LoadMapObjects
-	ld a, $13
-	scall PlayMusic
+	loadwarps $0b, Data_c90b4
+	loadpeople $04, Data_c9135
+	playmusic $13
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -51,8 +46,7 @@ Data_c919e:
 	db $10, $1e, $03, $01, $10, $1d
 
 Func_c91a4:
-	ld hl, $001f
-	scall CheckEventFlag
+	checkevent $001f
 	cp $01
 	jp nz, .asm_c91b8
 	ld hl, Data_c919e

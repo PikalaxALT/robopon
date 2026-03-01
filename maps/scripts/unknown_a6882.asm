@@ -229,35 +229,22 @@ Func_a6882:: ; a6882
 	pop bc
 	ld a, $08
 	ld [wc789], a
-	ld e, $0c
-	ld hl, Data_a6720
-	scall LoadWarps
-	ld hl, $002d
-	scall CheckEventFlag
+	loadwarps $0c, Data_a6720
+	checkevent $002d
 	or a
 	jp nz, .asm_a69d9
-	ld e, $01
-	ld hl, Data_a67cc
-	scall LoadMapObjects
-	ld e, $02
-	ld hl, Data_a6866
-	scall LoadMapObjects
-	xor a
-	scall PlayMusic
+	loadpeople $01, Data_a67cc
+	loadpeople $02, Data_a6866
+	playmusic SONG_NONE
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
 	call Func_a6a09
 	jp .asm_a69f6
 .asm_a69d9:
-	ld e, $0a
-	ld hl, Data_a67da
-	scall LoadMapObjects
-	ld e, $02
-	ld hl, Data_a6866
-	scall LoadMapObjects
-	ld a, $0a
-	scall PlayMusic
+	loadpeople $0a, Data_a67da
+	loadpeople $02, Data_a6866
+	playmusic $0a
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -274,10 +261,7 @@ Data_a6a01:
 	db $13, $13, $0e, $11, $10, $10, $ff, $ff
 
 Func_a6a09:
-	ld c, $01
-	ld de, Data_a69f7
-	ld a, $29
-	scall MovePlayer
+	move_player $01, Data_a69f7
 	ld e, $01
 	xor a
 	scall PlayerStep
@@ -287,33 +271,22 @@ Func_a6a09:
 	ld e, $01
 	xor a
 	scall PlayerStep
-	ld c, $01
-	ld e, $01
-	ld a, $05
-	scall LoadEmote
+	loademote $01, $01, $05
 	ld e, $14
 	ld a, $13
 	scall MoveEmote
-	ld a, $28
-	scall PlaySFX
+	playsfx $28
 	scall WaitEmote
 	scall HideEmote
 	ld hl, $0102
 	scall PrintTextWithNPCName
-	xor a
-	scall PlayMusic
-	ld a, $1b
-	scall PlayMusic
-	ld bc, Data_a69fb
-	ld e, $29
-	xor a
-	scall MovePerson
+	playmusic SONG_NONE
+	playmusic $1b
+	move_person 0, Data_a69fb, 0
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
@@ -323,10 +296,7 @@ Func_a6a09:
 	ld e, $01
 	ld a, $02
 	scall PlayerStep
-	ld c, $01
-	ld de, Data_a6a01
-	ld a, $29
-	scall MovePlayer
+	move_player $01, Data_a6a01
 	ret
 
 Func_a6a87:
@@ -334,39 +304,21 @@ Func_a6a87:
 	ld a, e
 	or a
 	jp nz, .asm_a6adb
-	xor a
-	scall PlayMusic
-	ld a, $28
-	scall PlaySFX
-	ld c, $01
-	ld e, $02
-	ld a, $03
-	scall LoadEmote
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	playmusic SONG_NONE
+	playsfx $28
+	loademote $01, $02, $03
+	hideperson 0
 	scall WaitEmote
-	ld a, $28
-	scall PlaySFX
-	ld c, $01
-	ld e, $01
-	ld a, $03
-	scall LoadEmote
+	playsfx $28
+	loademote $01, $01, $03
 	scall WaitEmote
-	ld e, $01
-	xor a
-	scall SetPersonVisibilityState
+	showperson 0
 	scall HideEmote
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld e, $01
-	ld hl, $002e
-	scall EventFlagAction
+	face_player -$01
+	setevent $002e
 	ld hl, $0108
 	scall PrintTextWithNPCName
-	ld a, $0a
-	scall PlayMusic
+	playmusic $0a
 .asm_a6adb:
 	pop bc
 	ret

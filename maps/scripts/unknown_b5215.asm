@@ -20,19 +20,14 @@ Data_b5206:
 Func_b5215:: ; b5215
 	ld a, $14
 	ld [wc7e2], a
-	ld e, $04
-	ld hl, Data_b5194
-	scall LoadWarps
+	loadwarps $04, Data_b5194
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_b51c0
-	scall LoadEncounters
+	loadwilds $05, Data_b51c0
 	ld e, $03
 	ld hl, Data_b5206
 	scall Func_80ce7
-	ld a, $0a
-	scall PlayMusic
+	playmusic $0a
 	ld a, $04
 	scall LoadPlayerSprite
 	scall Func_8001c

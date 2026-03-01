@@ -21,19 +21,12 @@ Data_b5680:
 	person_event $ff, $00, $01, $02, $01, $01, $00, $04, $01, Func_b56ba, NULL
 
 Func_b568e:: ; b568e
-	ld e, $01
-	ld hl, Data_b562f
-	scall LoadWarps
+	loadwarps $01, Data_b562f
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_b563a
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_b5680
-	scall LoadMapObjects
-	ld a, $09
-	scall PlayMusic
+	loadwilds $05, Data_b563a
+	loadpeople $01, Data_b5680
+	playmusic $09
 	scall Func_8001c
 	ld hl, $0313
 	scall LandmarkSign

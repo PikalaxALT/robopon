@@ -38,59 +38,42 @@ Func_b790a:: ; b790a
 	call Func_b79a1
 	ld hl, Func_b79a1
 	scall Func_80f11
-	ld e, $02
-	ld hl, Data_b78ee
-	scall LoadMapObjects
-	ld hl, $001b
-	scall CheckEventFlag
+	loadpeople $02, Data_b78ee
+	checkevent $001b
 	or a
 	jp nz, .asm_b7935
-	ld e, $02
-	ld hl, Data_b780b
-	scall LoadWarps
+	loadwarps $02, Data_b780b
 	jp .asm_b795d
 .asm_b7935:
-	ld hl, $001b
-	scall CheckEventFlag
+	checkevent $001b
 	cp $01
 	jp nz, .asm_b795d
-	ld hl, $0034
-	scall CheckEventFlag
+	checkevent $0034
 	or a
 	jp nz, .asm_b7955
-	ld e, $02
-	ld hl, Data_b7821
-	scall LoadWarps
+	loadwarps $02, Data_b7821
 	jp .asm_b795d
 .asm_b7955:
-	ld e, $01
-	ld hl, Data_b7837
-	scall LoadWarps
+	loadwarps $01, Data_b7837
 .asm_b795d:
 	ld a, $03
 	scall Func_80d01
-	ld e, $0c
-	ld hl, Data_b7842
-	scall LoadEncounters
+	loadwilds $0c, Data_b7842
 	ld a, $01
 	scall LoadPlayerSprite
-	ld hl, $001b
-	scall CheckEventFlag
+	checkevent $001b
 	cp $01
 	jp nz, .asm_b7992
-	ld hl, $00f1
-	scall CheckEventFlag
+	checkevent $00f1
 	or a
 	jp nz, .asm_b7992
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	xor a
 	scall Func_80653
 	call Func_b79b6
 	jp .asm_b799a
 .asm_b7992:
-	ld a, $10
-	scall PlayMusic
+	playmusic $10
 	scall Func_8001c
 .asm_b799a:
 	ret
@@ -99,8 +82,7 @@ Data_b799b:
 	db $00, $15, $03, $02, $06, $03
 
 Func_b79a1:
-	ld hl, $001b
-	scall CheckEventFlag
+	checkevent $001b
 	cp $01
 	jp nz, .asm_b79b5
 	ld hl, Data_b799b
@@ -110,20 +92,15 @@ Func_b79a1:
 	ret
 
 Func_b79b6:
-	ld c, $01
-	ld e, $01
-	ld a, $2b
-	scall LoadEmote
+	loademote $01, $01, $2b
 	ld e, $04
 	ld a, $07
 	scall MoveEmote
 	scall Func_8001c
-	ld a, $65
-	scall PlaySFX
+	playsfx $65
 	ld hl, $003c
 	scall ScriptSleep
-	ld a, $43
-	scall PlaySFX
+	playsfx $43
 	scall WaitEmote
 	scall HideEmote
 	ld l, $0e

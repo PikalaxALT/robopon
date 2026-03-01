@@ -87,10 +87,7 @@ Func_8b6ae:
 	playmusic SONG_0A
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $0b
-	scall LoadEmote
+	loademote $01, $01, $0b
 	playsfx $44
 	scall WaitEmote
 	scall HideEmote

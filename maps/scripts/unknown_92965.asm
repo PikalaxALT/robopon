@@ -33,9 +33,7 @@ Data_9291f:
 	wildbot $09, $03, $09, $0a, $3e, $0f, $12, $23, $1f, $17, $00, $03, $08, $00
 
 Func_92965:: ; 92965
-	ld e, $01
-	ld hl, Data_9284b
-	scall LoadWarps
+	loadwarps $01, Data_9284b
 	ld e, $01
 	ld hl, Data_92856
 	scall Func_80ce7
@@ -45,52 +43,38 @@ Func_92965:: ; 92965
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_92999
-	ld hl, $0039
-	scall CheckEventFlag
+	checkevent $0039
 	or a
 	jp nz, .asm_92999
-	ld e, $05
-	ld hl, Data_92893
-	scall LoadEncounters
+	loadwilds $05, Data_92893
 	jp .asm_929e0
 .asm_92999:
 	ld a, $20
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_929b8
-	ld hl, $0047
-	scall CheckEventFlag
+	checkevent $0047
 	or a
 	jp nz, .asm_929b8
-	ld e, $05
-	ld hl, Data_928d9
-	scall LoadEncounters
+	loadwilds $05, Data_928d9
 	jp .asm_929e0
 .asm_929b8:
 	ld a, $21
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_929d8
-	ld hl, $0047
-	scall CheckEventFlag
+	checkevent $0047
 	cp $01
 	jp nz, .asm_929d8
-	ld e, $05
-	ld hl, Data_9291f
-	scall LoadEncounters
+	loadwilds $05, Data_9291f
 	jp .asm_929e0
 .asm_929d8:
-	ld e, $04
-	ld hl, Data_9285b
-	scall LoadEncounters
+	loadwilds $04, Data_9285b
 .asm_929e0:
-	ld e, $04
-	ld hl, Data_9285b
-	scall LoadEncounters
+	loadwilds $04, Data_9285b
 	ld a, $01
 	scall LoadPlayerSprite
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $02e3
 	scall LandmarkSign

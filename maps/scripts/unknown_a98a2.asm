@@ -26,14 +26,9 @@ Func_a98a2:: ; a98a2
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_a984e
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_a9894
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_a984e
+	loadpeople $01, Data_a9894
+	playmusic $08
 	scall Func_8001c
 	ret
 
@@ -41,13 +36,11 @@ Func_a98c8:
 	ld a, e
 	cp $02
 	jp nz, .asm_a98f7
-	ld a, $31
-	scall PlaySFX
+	playsfx $31
 	ld hl, $001e
 	scall ScriptSleep
 	scall StartShakingScreen
-	ld a, $64
-	scall PlaySFX
+	playsfx $64
 	ld hl, $005a
 	scall ScriptSleep
 	scall StopShakingScreen

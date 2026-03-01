@@ -94,9 +94,7 @@ Data_c97ff:
 	person_event $09, $04, $06, $04, $01, $01, $01, $04, $00, Func_c9b57, NULL
 
 Func_c980d:: ; c980d
-	ld e, $02
-	ld hl, Data_c9653
-	scall LoadWarps
+	loadwarps $02, Data_c9653
 	ld a, [wc78b]
 	cp $04
 	jp z, .asm_c98c8
@@ -110,14 +108,9 @@ Func_c980d:: ; c980d
 	jp nz, .asm_c98eb
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c9669
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c97c7
-	scall LoadMapObjects
-	ld a, $09
-	scall PlayMusic
+	loadwilds $05, Data_c9669
+	loadpeople $01, Data_c97c7
+	playmusic $09
 	scall Func_8001c
 	ld hl, $02e7
 	scall LandmarkSign
@@ -125,14 +118,9 @@ Func_c980d:: ; c980d
 .asm_c9856:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c96af
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c97d5
-	scall LoadMapObjects
-	ld a, $0e
-	scall PlayMusic
+	loadwilds $05, Data_c96af
+	loadpeople $01, Data_c97d5
+	playmusic $0e
 	scall Func_8001c
 	ld hl, $02f6
 	scall LandmarkSign
@@ -140,14 +128,9 @@ Func_c980d:: ; c980d
 .asm_c987c:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c96f5
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c97e3
-	scall LoadMapObjects
-	ld a, $0d
-	scall PlayMusic
+	loadwilds $05, Data_c96f5
+	loadpeople $01, Data_c97e3
+	playmusic $0d
 	scall Func_8001c
 	ld hl, $02f1
 	scall LandmarkSign
@@ -155,14 +138,9 @@ Func_c980d:: ; c980d
 .asm_c98a2:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c973b
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c97f1
-	scall LoadMapObjects
-	ld a, $0f
-	scall PlayMusic
+	loadwilds $05, Data_c973b
+	loadpeople $01, Data_c97f1
+	playmusic $0f
 	scall Func_8001c
 	ld hl, $02ec
 	scall LandmarkSign
@@ -170,14 +148,9 @@ Func_c980d:: ; c980d
 .asm_c98c8:
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_c9781
-	scall LoadEncounters
-	ld e, $01
-	ld hl, Data_c97ff
-	scall LoadMapObjects
-	ld a, $10
-	scall PlayMusic
+	loadwilds $05, Data_c9781
+	loadpeople $01, Data_c97ff
+	playmusic $10
 	scall Func_8001c
 	ld hl, $02fb
 	scall LandmarkSign
@@ -193,10 +166,8 @@ Func_c9915:
 	ld a, e
 	or a
 	jp nz, .asm_c9968
-	xor a
-	scall FacePlayer
-	ld hl, $0092
-	scall CheckEventFlag
+	face_player 0
+	checkevent $0092
 	or a
 	jp nz, .asm_c9962
 	ld hl, $025f
@@ -205,16 +176,12 @@ Func_c9915:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_c9959
-	ld de, Data_c9969
-	ld hl, Data_c98ec
-	scall ScriptedBattle
+	startbattle Data_c9969, Data_c98ec
 	or a
 	jp nz, .asm_c9948
 	jp .asm_c9968
 .asm_c9948:
-	ld e, $01
-	ld hl, $0092
-	scall EventFlagAction
+	setevent $0092
 	ld hl, $0266
 	scall PrintTextStandard
 	jp .asm_c995f
@@ -241,10 +208,8 @@ Func_c999b:
 	ld a, e
 	or a
 	jp nz, .asm_c99fc
-	xor a
-	scall FacePlayer
-	ld hl, $0097
-	scall CheckEventFlag
+	face_player 0
+	checkevent $0097
 	or a
 	jp nz, .asm_c99f6
 	ld hl, $0261
@@ -266,9 +231,7 @@ Func_c999b:
 	jp nz, .asm_c99c4
 	jp .asm_c99fc
 .asm_c99dc:
-	ld e, $01
-	ld hl, $0097
-	scall EventFlagAction
+	setevent $0097
 	ld hl, $0262
 	scall PrintTextStandard
 	jp .asm_c99f3
@@ -296,10 +259,8 @@ Func_c9a2f:
 	ld a, e
 	or a
 	jp nz, .asm_c9a90
-	xor a
-	scall FacePlayer
-	ld hl, $009c
-	scall CheckEventFlag
+	face_player 0
+	checkevent $009c
 	or a
 	jp nz, .asm_c9a8a
 	ld hl, $0261
@@ -321,9 +282,7 @@ Func_c9a2f:
 	jp nz, .asm_c9a58
 	jp .asm_c9a90
 .asm_c9a70:
-	ld e, $01
-	ld hl, $009c
-	scall EventFlagAction
+	setevent $009c
 	ld hl, $0262
 	scall PrintTextStandard
 	jp .asm_c9a87
@@ -351,10 +310,8 @@ Func_c9ac3:
 	ld a, e
 	or a
 	jp nz, .asm_c9b24
-	xor a
-	scall FacePlayer
-	ld hl, $00a1
-	scall CheckEventFlag
+	face_player 0
+	checkevent $00a1
 	or a
 	jp nz, .asm_c9b1e
 	ld hl, $0261
@@ -376,9 +333,7 @@ Func_c9ac3:
 	jp nz, .asm_c9aec
 	jp .asm_c9b24
 .asm_c9b04:
-	ld e, $01
-	ld hl, $00a1
-	scall EventFlagAction
+	setevent $00a1
 	ld hl, $0266
 	scall PrintTextStandard
 	jp .asm_c9b1b
@@ -405,10 +360,8 @@ Func_c9b57:
 	ld a, e
 	or a
 	jp nz, .asm_c9bb8
-	xor a
-	scall FacePlayer
-	ld hl, $00a6
-	scall CheckEventFlag
+	face_player 0
+	checkevent $00a6
 	or a
 	jp nz, .asm_c9bb2
 	ld hl, $0261
@@ -430,9 +383,7 @@ Func_c9b57:
 	jp nz, .asm_c9b80
 	jp .asm_c9bb8
 .asm_c9b98:
-	ld e, $01
-	ld hl, $00a6
-	scall EventFlagAction
+	setevent $00a6
 	ld hl, $0260
 	scall PrintTextStandard
 	jp .asm_c9baf

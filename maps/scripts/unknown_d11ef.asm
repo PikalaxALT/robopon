@@ -127,10 +127,7 @@ Func_d121f:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $0
-	ld a, $50
-	scall GiveRobot
+	give_robot SUBRIO, a, $0
 	ld a, $7
 	ld [wc796], a
 	ld hl, sp+$0
@@ -187,10 +184,7 @@ Func_d121f:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $0
-	ld a, $69
-	scall GiveRobot
+	give_robot VIPER, a, $0
 	ld a, $9
 	ld [wc796], a
 	ld hl, sp+$0
@@ -268,13 +262,13 @@ Func_d121f:
 
 .asm_d13c9: ; d13c9 (34:53c9)
 	writetext TreeBitstreamText_45a76
-	ld hl, Func_0218
+	ld hl, $218
 	scall PrintTextStandard
 	jp .asm_d13fc
 
 .asm_d13d8: ; d13d8 (34:53d8)
 	writetext TreeBitstreamText_45a76
-	ld hl, SelectChannelsPredef
+	ld hl, $241
 	scall PrintTextStandard
 	jp .asm_d13fc
 

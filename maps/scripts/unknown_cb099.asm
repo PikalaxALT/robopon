@@ -27,30 +27,18 @@ Data_cb061:
 	person_event $ff, $00, $0a, $06, $01, $01, $00, $04, $01, Func_cb183, NULL
 
 Func_cb099:: ; cb099
-	ld e, $04
-	ld hl, Data_cafef
-	scall LoadWarps
+	loadwarps $04, Data_cafef
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_cb01b
-	scall LoadEncounters
-	ld e, $04
-	ld hl, Data_cb061
-	scall LoadMapObjects
-	ld hl, $00aa
-	scall CheckEventFlag
+	loadwilds $05, Data_cb01b
+	loadpeople $04, Data_cb061
+	checkevent $00aa
 	cp $01
 	jp nz, .asm_cb0ce
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
+	hideperson 0
+	hideperson $02
 .asm_cb0ce:
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 	scall Func_8001c
 	ld hl, $02ff
 	scall LandmarkSign
@@ -77,47 +65,28 @@ Func_cb10e:
 	ld a, e
 	cp $02
 	jp nz, .asm_cb176
-	ld hl, $00aa
-	scall CheckEventFlag
+	checkevent $00aa
 	or a
 	jp nz, .asm_cb176
-	ld c, $01
-	ld de, Data_cb0dd
-	ld a, $32
-	scall MovePlayer
-	ld e, $00
-	xor a
-	scall SpriteFace
-	xor a
-	scall PlayMusic
-	ld a, $1a
-	scall PlayMusic
+	move_player $01, Data_cb0dd
+	sprite_face $00, 0
+	playmusic SONG_NONE
+	playmusic $1a
 	ld hl, $00d9
 	scall PrintTextStandard
-	ld de, Data_cb177
-	ld hl, Data_cb0e5
-	scall ScriptedBattle
+	startbattle Data_cb177, Data_cb0e5
 	or a
 	jp nz, .asm_cb14d
 	jp .asm_cb176
 .asm_cb14d:
 	ld hl, $00da
 	scall PrintTextStandard
-	ld bc, Data_cb0e1
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cb0e1, 1
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $00aa
-	scall EventFlagAction
-	xor a
-	scall PlayMusic
-	ld a, $07
-	scall PlayMusic
+	hideperson 0
+	setevent $00aa
+	playmusic SONG_NONE
+	playmusic $07
 .asm_cb176:
 	ret
 
@@ -129,24 +98,19 @@ Data_cb17f:
 
 Func_cb183:
 	push de
-	ld hl, $0095
-	scall CheckEventFlag
+	checkevent $0095
 	or a
 	jp z, .asm_cb1b6
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	or a
 	jp z, .asm_cb1b6
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	or a
 	jp z, .asm_cb1b6
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	or a
 	jp z, .asm_cb1b6
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	or a
 	jp nz, .asm_cb1e7
 .asm_cb1b6:
@@ -154,22 +118,15 @@ Func_cb183:
 	ld a, [hl]
 	cp $02
 	jp nz, .asm_cb1e7
-	ld e, $01
-	ld a, $01
-	scall SpriteFace
+	sprite_face $01, $01
 	ld hl, $001e
 	scall ScriptSleep
 	ld a, $03
 	scall PlayerFace
 	ld hl, $00be
 	scall PrintTextStandard
-	ld c, $01
-	ld de, Data_cb17f
-	ld a, $32
-	scall MovePlayer
-	ld e, $00
-	ld a, $01
-	scall SpriteFace
+	move_player $01, Data_cb17f
+	sprite_face $00, $01
 .asm_cb1e7:
 	pop bc
 	ret
@@ -179,27 +136,20 @@ Func_cb1e9:
 	ld a, e
 	or a
 	jp nz, .asm_cb236
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $0095
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $0095
 	or a
 	jp z, .asm_cb227
-	ld hl, $009a
-	scall CheckEventFlag
+	checkevent $009a
 	or a
 	jp z, .asm_cb227
-	ld hl, $009f
-	scall CheckEventFlag
+	checkevent $009f
 	or a
 	jp z, .asm_cb227
-	ld hl, $00a4
-	scall CheckEventFlag
+	checkevent $00a4
 	or a
 	jp z, .asm_cb227
-	ld hl, $00a9
-	scall CheckEventFlag
+	checkevent $00a9
 	or a
 	jp nz, .asm_cb230
 .asm_cb227:

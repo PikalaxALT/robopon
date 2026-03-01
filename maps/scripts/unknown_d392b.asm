@@ -32,8 +32,7 @@ Func_d392b:: ; d392b (34:792b)
 	checkevent $f1
 	or a
 	jp nz, .asm_d3977
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	xor a
 	scall Func_80653
 	scall Func_8001c
@@ -45,8 +44,7 @@ Func_d392b:: ; d392b (34:792b)
 	checkevent $1c
 	cp $1
 	jp nz, .asm_d3998
-	xor a
-	scall PlayMusic
+	playmusic SONG_NONE
 	ld a, $1
 	scall LoadPlayerSprite
 	xor a

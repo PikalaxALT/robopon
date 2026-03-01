@@ -20,19 +20,12 @@ Data_9f32a:
 	person_event $ff, $00, $12, $11, $03, $03, $00, $04, $00, Func_9f369, NULL
 
 Func_9f338:: ; 9f338
-	ld e, $02
-	ld hl, Data_9f2dc
-	scall LoadWarps
-	ld e, $01
-	ld hl, Data_9f32a
-	scall LoadMapObjects
+	loadwarps $02, Data_9f2dc
+	loadpeople $01, Data_9f32a
 	ld a, $03
 	scall Func_80d01
-	ld e, $04
-	ld hl, Data_9f2f2
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $04, Data_9f2f2
+	playmusic $08
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -44,20 +37,14 @@ Func_9f369:
 	ld a, e
 	or a
 	jp nz, .asm_9f394
-	scall RepairRobots
-	xor a
-	scall PlayMusic
-	ld a, $16
-	scall PlayMusic
-	ld c, $01
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	heal
+	playmusic SONG_NONE
+	playmusic $16
+	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	ld hl, $0322
 	scall PrintTextStandard
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 .asm_9f394:
 	ret

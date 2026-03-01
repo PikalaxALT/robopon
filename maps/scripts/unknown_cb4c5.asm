@@ -31,27 +31,19 @@ Data_cb49b:
 	person_event $ff, $00, $0b, $0c, $01, $03, $00, $04, $01, Func_cb534, NULL
 
 Func_cb4c5:: ; cb4c5
-	ld e, $06
-	ld hl, Data_cb40e
-	scall LoadWarps
+	loadwarps $06, Data_cb40e
 	ld e, $01
 	ld hl, Data_cb450
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_cb455
-	scall LoadEncounters
-	ld hl, $00ac
-	scall CheckEventFlag
+	loadwilds $05, Data_cb455
+	checkevent $00ac
 	or a
 	jp nz, .asm_cb4f4
-	ld e, $03
-	ld hl, Data_cb49b
-	scall LoadMapObjects
+	loadpeople $03, Data_cb49b
 .asm_cb4f4:
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 	scall Func_8001c
 	ld hl, $0301
 	scall LandmarkSign
@@ -91,18 +83,12 @@ Func_cb534:
 	ld a, [hl]
 	cp $01
 	jp nz, .asm_cb570
-	ld c, $01
-	ld de, Data_cb52c
-	ld a, $32
-	scall MovePlayer
+	move_player $01, Data_cb52c
 	ld a, $02
 	scall PlayerFace
 	jp .asm_cb57e
 .asm_cb570:
-	ld c, $01
-	ld de, Data_cb530
-	ld a, $32
-	scall MovePlayer
+	move_player $01, Data_cb530
 	xor a
 	scall PlayerFace
 .asm_cb57e:
@@ -111,63 +97,32 @@ Func_cb534:
 	ld a, l
 	cp $01
 	jp nz, .asm_cb604
-	xor a
-	scall PlayMusic
-	ld a, $1a
-	scall PlayMusic
-	xor a
-	scall FacePlayer
+	playmusic SONG_NONE
+	playmusic $1a
+	face_player 0
 	ld hl, $00dd
 	scall PrintTextStandard
-	ld de, Data_cb606
-	ld hl, Data_cb503
-	scall ScriptedBattle
+	startbattle Data_cb606, Data_cb503
 	or a
 	jp nz, .asm_cb5a9
 	jp .asm_cb604
 .asm_cb5a9:
 	ld hl, $00de
 	scall PrintTextStandard
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SpriteFace
-	ld e, $01
-	xor a
-	scall SpriteFace
-	ld e, $02
-	xor a
-	scall SpriteFace
-	ld e, $03
-	xor a
-	scall SpriteFace
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $02
-	scall SetPersonVisibilityState
-	ld e, $01
-	ld hl, $00ac
-	scall EventFlagAction
-	xor a
-	scall PlayMusic
-	ld a, $07
-	scall PlayMusic
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
+	sprite_face $03, 0
+	sprite_face $00, 0
+	sprite_face $01, 0
+	sprite_face $02, 0
+	sprite_face $03, 0
+	hideperson 0
+	hideperson $01
+	hideperson $02
+	setevent $00ac
+	playmusic SONG_NONE
+	playmusic $07
 .asm_cb604:
 	pop bc
 	ret

@@ -30,8 +30,7 @@ Data_95109:
 	person_event $ff, $00, $22, $0f, $01, $01, $02, $04, $00, PrintTextFacePlayer_25, Data_95101
 
 Func_951a3:: ; 951a3
-	ld hl, $0042
-	scall CheckEventFlag
+	checkevent $0042
 	or a
 	jp nz, .asm_951bc
 	ld a, $09
@@ -45,12 +44,8 @@ Func_951a3:: ; 951a3
 	ld [wc789], a
 	ld a, $10
 	ld [wc7e2], a
-	ld e, $0b
-	ld hl, Data_95109
-	scall LoadMapObjects
-	ld e, $07
-	ld hl, Data_950b4
-	scall LoadWarps
+	loadpeople $0b, Data_95109
+	loadwarps $07, Data_950b4
 	playmusic SONG_0A
 	ld a, $01
 	scall LoadPlayerSprite
@@ -65,9 +60,7 @@ Func_951e4:
 	ld a, e
 	or a
 	jp nz, .asm_95429
-	ld hl, sp+$03
-	ld a, [hl]
-	scall FacePlayer
+	face_player -$03
 	ld a, [wc796]
 	cp $05
 	jp nz, .asm_95287
@@ -89,8 +82,7 @@ Func_951e4:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_95262
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	hltext_tree_pointer TreeBitstreamText_4535e
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
@@ -107,18 +99,14 @@ Func_951e4:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $4e
-	scall GiveRobot
+	give_robot BOILER, a, $00
 	ld a, $06
 	ld [wc796], a
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_95278
 .asm_95262:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	hltext_tree_pointer TreeBitstreamText_453ee
 	scall PrintTextWithNPCName
 	ld e, $03
@@ -156,8 +144,7 @@ Func_951e4:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_952f4
-	ld a, $68
-	scall PlaySFX
+	playsfx $68
 	hltext_tree_pointer TreeBitstreamText_454c0
 	scall PrintTextWithNPCName
 	ld hl, sp+$01
@@ -174,18 +161,14 @@ Func_951e4:
 	ld a, [hl]
 	scall GiveRobot
 	pop af
-	ld c, a
-	ld e, $00
-	ld a, $72
-	scall GiveRobot
+	give_robot GRANIT, a, $00
 	ld a, $0b
 	ld [wc796], a
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_9530a
 .asm_952f4:
-	ld a, $69
-	scall PlaySFX
+	playsfx $69
 	hltext_tree_pointer TreeBitstreamText_453ee
 	scall PrintTextWithNPCName
 	ld e, $03
@@ -388,10 +371,7 @@ Func_9542c:
 	playmusic SONG_JUMP_MINIGAME
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $26
-	scall LoadEmote
+	loademote $01, $01, $26
 	scall WaitEmote
 	scall HideEmote
 	ld a, $01
@@ -420,13 +400,10 @@ Func_95504:
 	ld a, e
 	or a
 	jp nz, .asm_9552f
-	scall RepairRobots
+	heal
 	playmusic SONG_NONE
 	playmusic SONG_HEAL
-	ld c, $01
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	hltext_tree_pointer TreeBitstreamText_46e0b
@@ -480,22 +457,13 @@ Func_95540:
 	jp z, .asm_9559f
 	or a
 	jp nz, .asm_955ac
-	ld c, $01
-	ld de, Data_95530
-	ld a, $25
-	scall MovePlayer
+	move_player $01, Data_95530
 	jp .asm_955b6
 .asm_9559f:
-	ld c, $01
-	ld de, Data_95534
-	ld a, $25
-	scall MovePlayer
+	move_player $01, Data_95534
 	jp .asm_955b6
 .asm_955ac:
-	ld c, $01
-	ld de, Data_9553a
-	ld a, $25
-	scall MovePlayer
+	move_player $01, Data_9553a
 .asm_955b6:
 	scall WaitNPCStep
 	scall WaitNPCStep
@@ -503,10 +471,7 @@ Func_95540:
 	scall PlayerFace
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $0b
-	scall LoadEmote
+	loademote $01, $01, $0b
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04
@@ -538,35 +503,28 @@ Func_955fc:
 	ld a, e
 	or a
 	jp nz, .asm_95655
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $010a
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $010a
 	or a
 	jp nz, .asm_9564f
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_9564f
-	ld hl, $0114
-	scall CheckEventFlag
+	checkevent $0114
 	or a
 	jp nz, .asm_9564f
 	hltext_tree_pointer TreeBitstreamText_47722
 	scall PrintTextStandard
 	hltext_tree_pointer TreeBitstreamText_45fec
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	hltext_tree_pointer TreeBitstreamText_45ffd
 	scall PrintTextStandard
 	ld c, $00
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	ld e, $01
-	ld hl, $010a
-	scall EventFlagAction
+	setevent $010a
 	jp .asm_95655
 .asm_9564f:
 	hltext_tree_pointer TreeBitstreamText_47722
@@ -580,35 +538,28 @@ Func_95657:
 	ld a, e
 	or a
 	jp nz, .asm_956b0
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $010b
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $010b
 	or a
 	jp nz, .asm_956aa
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_956aa
-	ld hl, $0114
-	scall CheckEventFlag
+	checkevent $0114
 	or a
 	jp nz, .asm_956aa
 	hltext_tree_pointer TreeBitstreamText_47780
 	scall PrintTextStandard
 	hltext_tree_pointer TreeBitstreamText_45fec
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	hltext_tree_pointer TreeBitstreamText_45ffd
 	scall PrintTextStandard
 	ld c, $00
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	ld e, $01
-	ld hl, $010b
-	scall EventFlagAction
+	setevent $010b
 	jp .asm_956b0
 .asm_956aa:
 	hltext_tree_pointer TreeBitstreamText_47780
@@ -622,35 +573,28 @@ Func_956b2:
 	ld a, e
 	or a
 	jp nz, .asm_9570b
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $010c
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $010c
 	or a
 	jp nz, .asm_95705
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_95705
-	ld hl, $0114
-	scall CheckEventFlag
+	checkevent $0114
 	or a
 	jp nz, .asm_95705
 	hltext_tree_pointer TreeBitstreamText_478bb
 	scall PrintTextStandard
 	hltext_tree_pointer TreeBitstreamText_45fec
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	hltext_tree_pointer TreeBitstreamText_45ffd
 	scall PrintTextStandard
 	ld c, $00
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	ld e, $01
-	ld hl, $010c
-	scall EventFlagAction
+	setevent $010c
 	jp .asm_9570b
 .asm_95705:
 	hltext_tree_pointer TreeBitstreamText_478bb
@@ -664,35 +608,28 @@ Func_9570d:
 	ld a, e
 	or a
 	jp nz, .asm_95766
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $010d
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $010d
 	or a
 	jp nz, .asm_95760
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_95760
-	ld hl, $0114
-	scall CheckEventFlag
+	checkevent $0114
 	or a
 	jp nz, .asm_95760
 	hltext_tree_pointer TreeBitstreamText_47943
 	scall PrintTextStandard
 	hltext_tree_pointer TreeBitstreamText_45fec
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	hltext_tree_pointer TreeBitstreamText_45ffd
 	scall PrintTextStandard
 	ld c, $00
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	ld e, $01
-	ld hl, $010d
-	scall EventFlagAction
+	setevent $010d
 	jp .asm_95766
 .asm_95760:
 	hltext_tree_pointer TreeBitstreamText_47943

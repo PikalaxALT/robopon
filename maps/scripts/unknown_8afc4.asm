@@ -120,9 +120,7 @@ Func_8b05e:
 	hideperson 0
 	xor a
 	scall PlayerFace
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	writetext TreeBitstreamText_429aa
 	writetext TreeBitstreamText_471a6
 .asm_8b0c6:
@@ -198,9 +196,7 @@ Func_8b150:
 .asm_8b1a7:
 	move_person 0, Data_8b123, 1
 	scall WaitNPCStep
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 .asm_8b1b9:
 	writetext TreeBitstreamText_42972
 	writetext TreeBitstreamText_471a6
@@ -270,9 +266,7 @@ Func_8b243:
 	hideperson $02
 	move_person $03, Data_8b210, 1
 	scall WaitNPCStep
-	ld e, $03
-	ld a, $03
-	scall SpriteFace
+	sprite_face $03, $03
 	ld a, $01
 	scall PlayerFace
 	writetext TreeBitstreamText_429aa
@@ -346,9 +340,7 @@ Func_8b345:
 	hideperson $03
 	move_person $02, Data_8b312, 1
 	scall WaitNPCStep
-	ld e, $01
-	ld a, $02
-	scall SpriteFace
+	sprite_face $01, $02
 	ld a, $03
 	scall PlayerFace
 	writetext TreeBitstreamText_42972

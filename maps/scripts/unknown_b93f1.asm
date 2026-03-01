@@ -335,9 +335,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $0c
 	jp nz, .asm_b949b
-	ld e, $01
-	ld hl, Data_b922f
-	scall LoadMapObjects
+	loadpeople $01, Data_b922f
 	ld a, [wc790]
 	or a
 	jp z, .asm_b9498
@@ -356,9 +354,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $12
 	jp nz, .asm_b94c9
-	ld e, $01
-	ld hl, Data_b923d
-	scall LoadMapObjects
+	loadpeople $01, Data_b923d
 	ld a, [wc790]
 	or a
 	jp z, .asm_b94c9
@@ -383,9 +379,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $09
 	jp nz, .asm_b94f6
-	ld e, $01
-	ld hl, Data_b924b
-	scall LoadMapObjects
+	loadpeople $01, Data_b924b
 	jp .asm_b956e
 .asm_b94f6:
 	ld a, [wBackupMapX]
@@ -394,9 +388,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $0d
 	jp nz, .asm_b9511
-	ld e, $01
-	ld hl, Data_b9259
-	scall LoadMapObjects
+	loadpeople $01, Data_b9259
 	jp .asm_b956e
 .asm_b9511:
 	ld a, [wBackupMapX]
@@ -411,9 +403,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wc790]
 	cp $07
 	jp nc, .asm_b9538
-	ld e, $01
-	ld hl, Data_b9267
-	scall LoadMapObjects
+	loadpeople $01, Data_b9267
 .asm_b9538:
 	jp .asm_b956e
 .asm_b953b:
@@ -423,9 +413,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $09
 	jp nz, .asm_b9556
-	ld e, $01
-	ld hl, Data_b9275
-	scall LoadMapObjects
+	loadpeople $01, Data_b9275
 	jp .asm_b956e
 .asm_b9556:
 	ld a, [wBackupMapX]
@@ -434,9 +422,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $13
 	jp nz, .asm_b956e
-	ld e, $01
-	ld hl, Data_b9283
-	scall LoadMapObjects
+	loadpeople $01, Data_b9283
 .asm_b956e:
 	jp .asm_b975a
 .asm_b9571:
@@ -452,9 +438,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $09
 	jp nz, .asm_b959b
-	ld e, $01
-	ld hl, Data_b9291
-	scall LoadMapObjects
+	loadpeople $01, Data_b9291
 	jp .asm_b95b3
 .asm_b959b:
 	ld a, [wBackupMapX]
@@ -463,9 +447,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $0c
 	jp nz, .asm_b95b3
-	ld e, $01
-	ld hl, Data_b929f
-	scall LoadMapObjects
+	loadpeople $01, Data_b929f
 .asm_b95b3:
 	jp .asm_b975a
 .asm_b95b6:
@@ -481,9 +463,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_b95e0
-	ld e, $01
-	ld hl, Data_b92ad
-	scall LoadMapObjects
+	loadpeople $01, Data_b92ad
 	jp .asm_b9649
 .asm_b95e0:
 	ld a, [wBackupMapX]
@@ -492,9 +472,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_b95fb
-	ld e, $01
-	ld hl, Data_b92bb
-	scall LoadMapObjects
+	loadpeople $01, Data_b92bb
 	jp .asm_b9649
 .asm_b95fb:
 	ld a, [wBackupMapX]
@@ -503,9 +481,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $06
 	jp nz, .asm_b9616
-	ld e, $01
-	ld hl, Data_b92c9
-	scall LoadMapObjects
+	loadpeople $01, Data_b92c9
 	jp .asm_b9649
 .asm_b9616:
 	ld a, [wBackupMapX]
@@ -514,9 +490,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $10
 	jp nz, .asm_b9631
-	ld e, $01
-	ld hl, Data_b92d7
-	scall LoadMapObjects
+	loadpeople $01, Data_b92d7
 	jp .asm_b9649
 .asm_b9631:
 	ld a, [wBackupMapX]
@@ -525,9 +499,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $10
 	jp nz, .asm_b9649
-	ld e, $02
-	ld hl, Data_b92e5
-	scall LoadMapObjects
+	loadpeople $02, Data_b92e5
 .asm_b9649:
 	jp .asm_b975a
 .asm_b964c:
@@ -543,9 +515,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $11
 	jp nz, .asm_b9676
-	ld e, $01
-	ld hl, Data_b9301
-	scall LoadMapObjects
+	loadpeople $01, Data_b9301
 	jp .asm_b96fa
 .asm_b9676:
 	ld a, [wBackupMapX]
@@ -554,9 +524,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $11
 	jp nz, .asm_b9691
-	ld e, $01
-	ld hl, Data_b930f
-	scall LoadMapObjects
+	loadpeople $01, Data_b930f
 	jp .asm_b96fa
 .asm_b9691:
 	ld a, [wBackupMapX]
@@ -565,9 +533,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $11
 	jp nz, .asm_b96ac
-	ld e, $01
-	ld hl, Data_b931d
-	scall LoadMapObjects
+	loadpeople $01, Data_b931d
 	jp .asm_b96fa
 .asm_b96ac:
 	ld a, [wBackupMapX]
@@ -576,9 +542,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $1b
 	jp nz, .asm_b96c7
-	ld e, $01
-	ld hl, Data_b932b
-	scall LoadMapObjects
+	loadpeople $01, Data_b932b
 	jp .asm_b96fa
 .asm_b96c7:
 	ld a, [wBackupMapX]
@@ -587,9 +551,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $1b
 	jp nz, .asm_b96e2
-	ld e, $01
-	ld hl, Data_b9339
-	scall LoadMapObjects
+	loadpeople $01, Data_b9339
 	jp .asm_b96fa
 .asm_b96e2:
 	ld a, [wBackupMapX]
@@ -598,9 +560,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $1b
 	jp nz, .asm_b96fa
-	ld e, $01
-	ld hl, Data_b9347
-	scall LoadMapObjects
+	loadpeople $01, Data_b9347
 .asm_b96fa:
 	jp .asm_b975a
 .asm_b96fd:
@@ -616,9 +576,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $0d
 	jp nz, .asm_b9727
-	ld e, $01
-	ld hl, Data_b9363
-	scall LoadMapObjects
+	loadpeople $01, Data_b9363
 	jp .asm_b975a
 .asm_b9727:
 	ld a, [wBackupMapX]
@@ -627,9 +585,7 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $11
 	jp nz, .asm_b9742
-	ld e, $01
-	ld hl, Data_b9371
-	scall LoadMapObjects
+	loadpeople $01, Data_b9371
 	jp .asm_b975a
 .asm_b9742:
 	ld a, [wBackupMapX]
@@ -638,34 +594,25 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $10
 	jp nz, .asm_b975a
-	ld e, $01
-	ld hl, Data_b937f
-	scall LoadMapObjects
+	loadpeople $01, Data_b937f
 .asm_b975a:
-	ld e, $01
-	ld hl, Data_b9355
-	scall LoadMapObjects
+	loadpeople $01, Data_b9355
 	ld a, [wBackupMapX]
 	cp $10
 	jp nz, .asm_b979a
 	ld a, [wBackupMapY]
 	cp $10
 	jp nz, .asm_b979a
-	ld hl, $002d
-	scall CheckEventFlag
+	checkevent $002d
 	or a
 	jp nz, .asm_b978d
 	scall Func_8001c
 	call Func_b97c4
-	ld e, $01
-	ld hl, $002d
-	scall EventFlagAction
+	setevent $002d
 	jp .asm_b9797
 .asm_b978d:
 	scall Func_8001c
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 .asm_b9797:
 	jp .asm_b979d
 .asm_b979a:
@@ -677,12 +624,10 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, .asm_b97b4
-	ld a, $0a
-	scall PlayMusic
+	playmusic $0a
 	jp .asm_b97b9
 .asm_b97b4:
-	ld a, $11
-	scall PlayMusic
+	playmusic $11
 .asm_b97b9:
 	ret
 
@@ -697,9 +642,7 @@ Func_b97c4:
 	scall PlayerFace
 	ld hl, $0103
 	scall PrintTextWithNPCName
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 	ld e, $01
 	ld a, $01
 	scall PlayerStep
@@ -711,39 +654,25 @@ Func_b97c4:
 	scall PlayerStep
 	ld hl, $0104
 	scall PrintTextWithNPCName
-	ld bc, Data_b97ba
-	ld e, $2e
-	ld a, $01
-	scall MovePerson
+	move_person $01, Data_b97ba, 0
 	scall WaitNPCStep
-	ld e, $02
-	ld a, $01
-	scall SpriteFace
+	sprite_face $02, $01
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $34
-	scall PlaySFX
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	playsfx $34
+	hideperson $01
 	ld e, $01
 	ld a, $03
 	scall PlayerStep
 	ld e, $01
 	ld a, $03
 	scall PlayerStep
-	ld bc, Data_b97c0
-	ld e, $2e
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_b97c0, 1
 	scall WaitNPCStep
-	ld e, $03
-	xor a
-	scall SpriteFace
+	sprite_face $03, 0
 	ld hl, $0105
 	scall PrintTextWithNPCName
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	ld hl, $0106
 	scall PrintTextStandard
 	ld c, $00

@@ -46,16 +46,11 @@ Func_aed4a:: ; aed4a
 	ld a, $0c
 	scall Func_80f24
 	pop bc
-	ld e, $01
-	ld hl, Data_aecf9
-	scall LoadWarps
+	loadwarps $01, Data_aecf9
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_aed04
-	scall LoadEncounters
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_aed04
+	playmusic $08
 	scall Func_8001c
 	ld hl, $031b
 	scall LandmarkSign

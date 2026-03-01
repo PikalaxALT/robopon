@@ -56,59 +56,41 @@ Func_91856:: ; 91856
 	ld a, [wBackupMapNumber]
 	or a
 	jp nz, .asm_918a0
-	ld e, $01
-	ld hl, Data_91827
-	scall LoadWarps
+	loadwarps $01, Data_91827
 	ld e, $01
 	ld hl, Data_91835
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $04
-	ld hl, Data_917a9
-	scall LoadEncounters
-	ld e, $02
-	ld hl, Data_9183a
-	scall LoadMapObjects
+	loadwilds $04, Data_917a9
+	loadpeople $02, Data_9183a
 	ld a, $05
 	ld [wc7e2], a
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 	scall Func_8001c
 	ld hl, $01b5
 	scall LandmarkSign
 	jp .asm_918f4
 .asm_918a0:
-	ld e, $01
-	ld hl, Data_9176f
-	scall LoadWarps
+	loadwarps $01, Data_9176f
 	ld e, $01
 	ld hl, Data_9177a
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $03
-	ld hl, Data_9177f
-	scall LoadEncounters
+	loadwilds $03, Data_9177f
 	ld a, $08
 	ld [wBackupMapGroup], a
 	xor a
 	ld [wBackupMapNumber], a
 	ld a, $06
 	ld [wc7e2], a
-	ld e, $05
-	ld hl, Data_917e1
-	scall LoadMapObjects
+	loadpeople $05, Data_917e1
 	ld a, $01
 	scall LoadPlayerSprite
-	ld a, $08
-	scall PlayMusic
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
+	playmusic $08
+	hideperson $03
+	hideperson $04
 	scall Func_8001c
 	ld hl, $01b5
 	scall LandmarkSign
@@ -146,16 +128,11 @@ Func_918f5:
 	scall PrintTextWithYesNoBox
 	or a
 	jp nz, .asm_9196e
-	xor a
-	scall PlayMusic
-	ld a, $0a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $0a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $0b
-	scall LoadEmote
+	loademote $01, $01, $0b
 	scall WaitEmote
 	scall HideEmote
 	ld a, $04
@@ -195,30 +172,22 @@ Func_9198b:
 	ld a, [wPlayerFacing]
 	cp $01
 	jp nz, .asm_919a9
-	ld c, $01
-	ld de, Data_91981
-	ld a, $24
-	scall MovePlayer
+	move_player $01, Data_91981
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
 .asm_919a9:
-	ld a, $01
-	scall FacePlayer
-	ld hl, $0039
-	scall CheckEventFlag
+	face_player $01
+	checkevent $0039
 	cp $01
 	jp nz, .asm_91ad9
-	ld hl, $0020
-	scall CheckEventFlag
+	checkevent $0020
 	or a
 	jp nz, .asm_91ad9
-	ld hl, $003a
-	scall CheckEventFlag
+	checkevent $003a
 	cp $01
 	jp nz, .asm_91ad0
-	ld hl, $0047
-	scall CheckEventFlag
+	checkevent $0047
 	or a
 	jp nz, .asm_91ac7
 	ld a, $1f
@@ -230,50 +199,31 @@ Func_9198b:
 	scall PrintTextWithNPCName
 	ld hl, $001e
 	scall ScriptSleep
-	xor a
-	scall PlayMusic
-	ld a, $19
-	scall PlayMusic
-	ld e, $01
-	ld a, $03
-	scall SetPersonVisibilityState
+	playmusic SONG_NONE
+	playmusic $19
+	showperson $03
 	ld hl, $001e
 	scall ScriptSleep
-	ld c, $01
-	ld e, $01
-	ld a, $29
-	scall LoadEmote
+	loademote $01, $01, $29
 	ld e, $15
 	ld a, $02
 	scall MoveEmote
-	ld e, $00
-	ld a, $01
-	scall SetPersonVisibilityState
+	hideperson $01
 	scall WaitEmote
-	ld e, $00
-	ld a, $03
-	scall SetPersonVisibilityState
+	hideperson $03
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $68
-	scall PlaySFX
-	ld e, $01
-	ld a, $04
-	scall SetPersonVisibilityState
+	playsfx $68
+	showperson $04
 	ld hl, $001e
 	scall ScriptSleep
-	ld e, $01
-	ld a, $01
-	scall SetPersonVisibilityState
+	showperson $01
 	ld hl, $0001
 	scall ScriptSleep
 	scall HideEmote
 	ld hl, $001e
 	scall ScriptSleep
-	ld c, $01
-	ld de, Data_91987
-	ld a, $24
-	scall MovePlayer
+	move_player $01, Data_91987
 	scall WaitNPCStep
 	ld hl, $001e
 	scall ScriptSleep
@@ -293,28 +243,18 @@ Func_9198b:
 	ld c, $00
 	scall GiveRobot
 	pop hl
-	ld c, l
-	ld e, $00
-	ld a, $20
-	scall GiveRobot
-	ld e, $01
-	ld hl, $0047
-	scall EventFlagAction
+	give_robot SPEEDY, l, $00
+	setevent $0047
 	ld hl, $001e
 	scall ScriptSleep
-	ld a, $2a
-	scall PlaySFX
-	ld e, $00
-	ld a, $04
-	scall SetPersonVisibilityState
+	playsfx $2a
+	hideperson $04
 	hltext_tree_pointer TreeBitstreamText_3bd77
 	scall PrintTextStandard
 	hltext_tree_pointer TreeBitstreamText_3bd02
 	scall PrintTextWithNPCName
-	xor a
-	scall PlayMusic
-	ld a, $08
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $08
 	jp .asm_91ac4
 .asm_91abe:
 	hltext_tree_pointer TreeBitstreamText_3bd37
@@ -341,21 +281,15 @@ Func_91ae0:
 	ld a, e
 	or a
 	jp nz, .asm_91b0b
-	scall RepairRobots
-	xor a
-	scall PlayMusic
-	ld a, $16
-	scall PlayMusic
-	ld c, $01
-	ld e, $02
-	ld a, $08
-	scall LoadEmote
+	heal
+	playmusic SONG_NONE
+	playmusic $16
+	loademote $01, $02, $08
 	scall WaitEmote
 	scall HideEmote
 	hltext_tree_pointer TreeBitstreamText_46e0b
 	scall PrintTextStandard
-	ld a, $08
-	scall PlayMusic
+	playmusic $08
 .asm_91b0b:
 	ret
 
@@ -364,18 +298,14 @@ Func_91b0c:
 	ld a, e
 	or a
 	jp nz, .asm_91b6b
-	ld hl, sp+$01
-	ld a, [hl]
-	scall FacePlayer
-	ld hl, $010f
-	scall CheckEventFlag
+	face_player -$01
+	checkevent $010f
 	or a
 	jp nz, .asm_91b65
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_91b65
-	ld hl, $0114
-	scall CheckEventFlag
+	checkevent $0114
 	or a
 	jp nz, .asm_91b65
 	hltext_tree_pointer TreeBitstreamText_3bc38
@@ -384,17 +314,14 @@ Func_91b0c:
 	scall ScriptSleep
 	hltext_tree_pointer TreeBitstreamText_45fec
 	scall PrintTextStandard
-	ld a, $2a
-	scall PlaySFX
+	playsfx $2a
 	hltext_tree_pointer TreeBitstreamText_45ffd
 	scall PrintTextStandard
 	ld c, $00
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	ld e, $01
-	ld hl, $010f
-	scall EventFlagAction
+	setevent $010f
 	jp .asm_91b6b
 .asm_91b65:
 	hltext_tree_pointer TreeBitstreamText_3bc38

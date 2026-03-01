@@ -34,27 +34,19 @@ Data_b52c5:
 Func_b52d3:: ; b52d3
 	ld a, $14
 	ld [wc7e2], a
-	ld e, $04
-	ld hl, Data_b5245
-	scall LoadWarps
+	loadwarps $04, Data_b5245
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_b5271
-	scall LoadEncounters
+	loadwilds $05, Data_b5271
 	ld e, $02
 	ld hl, Data_b52b7
 	scall Func_80ce7
-	ld hl, $0021
-	scall CheckEventFlag
+	checkevent $0021
 	or a
 	jp nz, .asm_b5307
-	ld e, $01
-	ld hl, Data_b52c5
-	scall LoadMapObjects
+	loadpeople $01, Data_b52c5
 .asm_b5307:
-	ld a, $0a
-	scall PlayMusic
+	playmusic $0a
 	ld a, $04
 	scall LoadPlayerSprite
 	scall Func_8001c

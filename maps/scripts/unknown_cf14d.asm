@@ -188,9 +188,7 @@ Func_cf14d:: ; cf14d (33:714d)
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cf173
-	ld e, $1
-	ld hl, $61
-	scall EventFlagAction
+	setevent $61
 .asm_cf173: ; cf173 (33:7173)
 	ld a, $2
 	scall Func_80d01
@@ -286,63 +284,43 @@ Func_cf14d:: ; cf14d (33:714d)
 	cp $1
 	jp nz, .asm_cf2bf
 .asm_cf25c: ; cf25c (33:725c)
-	ld e, $5
-	ld hl, Data_cee59
-	scall LoadEncounters
+	loadwilds $5, Data_cee59
 	jp .asm_cf2c7
 
 .asm_cf267: ; cf267 (33:7267)
-	ld e, $5
-	ld hl, Data_cee9f
-	scall LoadEncounters
+	loadwilds $5, Data_cee9f
 	jp .asm_cf2c7
 
 .asm_cf272: ; cf272 (33:7272)
-	ld e, $5
-	ld hl, Data_ceee5
-	scall LoadEncounters
+	loadwilds $5, Data_ceee5
 	jp .asm_cf2c7
 
 .asm_cf27d: ; cf27d (33:727d)
-	ld e, $5
-	ld hl, Data_cef2b
-	scall LoadEncounters
+	loadwilds $5, Data_cef2b
 	jp .asm_cf2c7
 
 .asm_cf288: ; cf288 (33:7288)
-	ld e, $5
-	ld hl, Data_cef71
-	scall LoadEncounters
+	loadwilds $5, Data_cef71
 	jp .asm_cf2c7
 
 .asm_cf293: ; cf293 (33:7293)
-	ld e, $5
-	ld hl, Data_cefb7
-	scall LoadEncounters
+	loadwilds $5, Data_cefb7
 	jp .asm_cf2c7
 
 .asm_cf29e: ; cf29e (33:729e)
-	ld e, $5
-	ld hl, Data_ceffd
-	scall LoadEncounters
+	loadwilds $5, Data_ceffd
 	jp .asm_cf2c7
 
 .asm_cf2a9: ; cf2a9 (33:72a9)
-	ld e, $5
-	ld hl, Data_cf043
-	scall LoadEncounters
+	loadwilds $5, Data_cf043
 	jp .asm_cf2c7
 
 .asm_cf2b4: ; cf2b4 (33:72b4)
-	ld e, $5
-	ld hl, Data_cf089
-	scall LoadEncounters
+	loadwilds $5, Data_cf089
 	jp .asm_cf2c7
 
 .asm_cf2bf: ; cf2bf (33:72bf)
-	ld e, $9
-	ld hl, Data_cf0cf
-	scall LoadEncounters
+	loadwilds $9, Data_cf0cf
 .asm_cf2c7: ; cf2c7 (33:72c7)
 	ld a, [wc7de]
 	inc a
@@ -386,11 +364,8 @@ Func_cf14d:: ; cf14d (33:714d)
 	ld e, $1
 	scall LoadWarps
 .asm_cf307: ; cf307 (33:7307)
-	ld e, $1
-	ld hl, Data_cedca
-	scall LoadWarps
-	ld a, $8
-	scall PlayMusic
+	loadwarps $1, Data_cedca
+	playmusic $8
 	scall Func_8001c
 	ld a, [wc7de]
 	cp $32

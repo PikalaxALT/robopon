@@ -31,27 +31,19 @@ Data_cb2c5:
 	person_event $ff, $00, $04, $04, $01, $05, $00, $04, $01, Func_cb335, NULL
 
 Func_cb2ef:: ; cb2ef
-	ld e, $06
-	ld hl, Data_cb238
-	scall LoadWarps
+	loadwarps $06, Data_cb238
 	ld e, $01
 	ld hl, Data_cb27a
 	scall Func_80ce7
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_cb27f
-	scall LoadEncounters
-	ld hl, $00ab
-	scall CheckEventFlag
+	loadwilds $05, Data_cb27f
+	checkevent $00ab
 	or a
 	jp nz, .asm_cb31e
-	ld e, $03
-	ld hl, Data_cb2c5
-	scall LoadMapObjects
+	loadpeople $03, Data_cb2c5
 .asm_cb31e:
-	ld a, $07
-	scall PlayMusic
+	playmusic $07
 	scall Func_8001c
 	ld hl, $0300
 	scall LandmarkSign
@@ -68,44 +60,29 @@ Func_cb335:
 	ld a, e
 	cp $02
 	jp nz, .asm_cb391
-	ld hl, $00ab
-	scall CheckEventFlag
+	checkevent $00ab
 	or a
 	jp nz, .asm_cb391
-	xor a
-	scall PlayMusic
-	ld a, $1a
-	scall PlayMusic
+	playmusic SONG_NONE
+	playmusic $1a
 	ld hl, sp+$01
 	ld a, [hl]
 	cp $01
 	jp nz, .asm_cb368
-	ld c, $01
-	ld de, Data_cb32d
-	ld a, $32
-	scall MovePlayer
+	move_player $01, Data_cb32d
 	xor a
 	scall PlayerFace
 	jp .asm_cb37d
 .asm_cb368:
-	ld c, $01
-	ld de, Data_cb331
-	ld a, $32
-	scall MovePlayer
+	move_player $01, Data_cb331
 	ld a, $03
 	scall PlayerFace
-	ld e, $01
-	xor a
-	scall SpriteFace
+	sprite_face $01, 0
 .asm_cb37d:
 	call Func_cb3c6
-	ld e, $01
-	ld hl, $00ab
-	scall EventFlagAction
-	xor a
-	scall PlayMusic
-	ld a, $07
-	scall PlayMusic
+	setevent $00ab
+	playmusic SONG_NONE
+	playmusic $07
 .asm_cb391:
 	pop bc
 	ret
@@ -124,9 +101,7 @@ Data_cb39d:
 Func_cb3c6:
 	ld hl, $00d7
 	scall PrintTextStandard
-	ld de, Data_cb406
-	ld hl, Data_cb39d
-	scall ScriptedBattle
+	startbattle Data_cb406, Data_cb39d
 	or a
 	jp nz, Func_cb3da
 	ret
@@ -137,21 +112,13 @@ Func_cb3da:
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, .asm_cb3f3
-	ld bc, Data_cb393
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cb393, 1
 	jp .asm_cb3fc
 .asm_cb3f3:
-	ld bc, Data_cb397
-	ld e, $32
-	xor a
-	scall MovePersonAndWait
+	move_person 0, Data_cb397, 1
 .asm_cb3fc:
 	scall WaitNPCStep
-	ld e, $00
-	xor a
-	scall SetPersonVisibilityState
+	hideperson 0
 	ret
 
 Data_cb406:

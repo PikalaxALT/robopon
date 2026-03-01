@@ -33,19 +33,12 @@ Data_a37f2:
 	person_event $ff, $00, $0a, $0a, $01, $01, $00, $04, $01, Func_a3aa2, NULL
 
 Func_a388c:: ; a388c
-	ld e, $03
-	ld hl, Data_a378b
-	scall LoadWarps
+	loadwarps $03, Data_a378b
 	ld a, $03
 	scall Func_80d01
-	ld e, $05
-	ld hl, Data_a37ac
-	scall LoadEncounters
-	ld e, $0b
-	ld hl, Data_a37f2
-	scall LoadMapObjects
-	ld a, $08
-	scall PlayMusic
+	loadwilds $05, Data_a37ac
+	loadpeople $0b, Data_a37f2
+	playmusic $08
 	scall Func_8001c
 	ld hl, $041e
 	scall LandmarkSign
@@ -57,12 +50,8 @@ Func_a38b8:
 	jp nz, .asm_a38e8
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -83,12 +72,8 @@ Func_a38e9:
 	jp nz, .asm_a3919
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -109,12 +94,8 @@ Func_a391a:
 	jp nz, .asm_a394a
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -135,12 +116,8 @@ Func_a394b:
 	jp nz, .asm_a397b
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -161,12 +138,8 @@ Func_a397c:
 	jp nz, .asm_a39ac
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -187,12 +160,8 @@ Func_a39ad:
 	jp nz, .asm_a39dd
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -213,12 +182,8 @@ Func_a39de:
 	jp nz, .asm_a3a0e
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -239,12 +204,8 @@ Func_a3a0f:
 	jp nz, .asm_a3a3f
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -265,12 +226,8 @@ Func_a3a40:
 	jp nz, .asm_a3a70
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -291,12 +248,8 @@ Func_a3a71:
 	jp nz, .asm_a3aa1
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
@@ -317,12 +270,8 @@ Func_a3aa2:
 	jp nz, .asm_a3ad2
 	xor a
 	scall Func_80653
-	ld c, $01
-	ld e, $01
-	ld a, $1b
-	scall LoadEmote
-	ld a, $37
-	scall PlaySFX
+	loademote $01, $01, $1b
+	playsfx $37
 	scall WaitEmote
 	scall HideEmote
 	ld a, $02
