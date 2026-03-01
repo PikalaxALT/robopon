@@ -2049,8 +2049,7 @@ Func_61211: ; 61211 (18:5211)
 
 Func_6123f: ; 6123f (18:523f)
 	ld hl, $0
-	call WriteHLToSPPlusParam8
-	dec bc
+	write_hl_to_sp_plus $b
 	xor a
 	pop de
 Func_61248: ; 61248 (18:5248)
@@ -4625,9 +4624,7 @@ asm_62e05:
 	add hl, bc
 	ld a, [hl]
 	or e
-	ld e, a
-	ld a, c
-	ld c, e
+	reg8rot e, a, c
 	ld b, d
 	pop de
 	pop hl

@@ -9472,9 +9472,7 @@ Func_7d1e4:: ; 7d1e4 (1f:51e4)
 	ld d, [hl]
 	inc l
 	ld h, a
-	ld a, l
-	ld l, c
-	ld c, a
+	reg8rot a, l, c
 	ret
 
 DivideShortByCharPredef:: ; 7d25a (1f:525a)

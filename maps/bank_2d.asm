@@ -403,10 +403,7 @@ Func_b5576:
 .asm_b55ae:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b55bb:
@@ -540,10 +537,7 @@ Func_b56ba:
 .asm_b56f2:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b56ff:
@@ -625,10 +619,7 @@ Func_b5798:
 .asm_b57d0:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b57dd:
@@ -710,10 +701,7 @@ Func_b5876:
 .asm_b58ae:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b58bb:
@@ -978,10 +966,7 @@ Func_b5b14:
 .asm_b5b4c:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b5b59:
@@ -1062,10 +1047,7 @@ Func_b5be7:
 .asm_b5c1f:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b5c2c:
@@ -1147,10 +1129,7 @@ Func_b5cc5:
 .asm_b5cfd:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b5d0a:
@@ -1231,10 +1210,7 @@ Func_b5d98:
 .asm_b5dd0:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b5ddd:

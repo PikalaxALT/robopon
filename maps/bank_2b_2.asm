@@ -133,10 +133,7 @@ Func_ae4fa:
 .asm_ae553:
 	ld c, $01
 	ld hl, sp+$00
-	push de
-	push hl
-	pop de
-	pop hl
+	reg16swap de, hl
 	ld a, $2b
 	scall MovePlayer
 .asm_ae560:
