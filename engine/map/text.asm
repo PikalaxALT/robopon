@@ -42,6 +42,7 @@ Func_aaa1: ; aaa1 (2:6aa1)
 	jp Func_aad8
 
 Func_aaaf: ; aaaf (2:6aaf)
+IF DEF(LANG_JP)
 	ld e, c
 	ld d, $0
 	ld hl, sp+$5
@@ -59,6 +60,7 @@ Func_aaca: ; aaca (2:6aca)
 	jp Func_aad4
 
 Func_aacd: ; aacd (2:6acd)
+ENDC
 	ld hl, sp+$4
 	ld a, [hl]
 	inc a

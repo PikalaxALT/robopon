@@ -18,16 +18,32 @@ Data_8001: ; 8001
 	dbw 0, 0
 
 Data_8020:
+IF DEF(LANG_JP)
 	dstr "フィールトﾞテスト"
+ELIF DEF(LANG_EN)
+	dstr "Field"
+ENDC
 
 Data_802a:
+IF DEF(LANG_JP)
 	dstr "スフﾟライトテスト"
+ELIF DEF(LANG_EN)
+	dstr "Sprite"
+ENDC
 
 Data_8034:
+IF DEF(LANG_JP)
 	dstr "ワールトﾞマッフﾟテスト"
+ELIF DEF(LANG_EN)
+	dstr "WorldMap"
+ENDC
 
 Data_8041:
+IF DEF(LANG_JP)
 	dstr "コンティニューテスト"
+ELIF DEF(LANG_EN)
+	dstr "Continue"
+ENDC
 
 Func_804c:: ; 804c (2:404c)
 	add sp, -$64

@@ -245,4 +245,8 @@ OverworldLoop:: ; 81cf (2:41cf)
 	jp .loop3
 
 Data_840f: ; 840f
+IF DEF(LANG_JP)
 	dstr "(なう ろーてﾞぃんくﾞ)"
+ELIF DEF(LANG_EN)
+	dstr "Loading"
+ENDC

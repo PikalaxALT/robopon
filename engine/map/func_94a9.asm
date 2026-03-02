@@ -1,3 +1,12 @@
+
+IF DEF(LANG_EN)
+Data_9a36:
+	db $02, $01, $07, $06, $05, $06, $03, $01, $07, $04, $02, $04, $01
+	db $05, $07, $03, $06, $02, $03, $02, $06, $00, $04, $06, $00, $02
+	db $04, $07, $02, $07, $00, $00, $01, $05, $06, $01, $00, $06, $02
+	db $00, $04, $00, $02, $01, $04, $01, $04, $03, $05, $02, $00
+ENDC
+
 UpdateSprites:: ; 9a49 (2:5a49)
 	push bc
 	push af
@@ -249,6 +258,23 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	jr .done_player_facing
 
 .done_player_facing
+IF DEF(LANG_EN)
+	push hl
+	push de
+	ld a, [wFunc94a9_c88a]
+	ld l, a
+	ld a, [wFunc94a9_c88a + 1]
+	ld h, a
+	ld a, [hl]
+	ld l, a
+	ld h, $0
+	ld de, Data_9a36
+	add hl, de
+	ld a, [hl]
+	ld [wMapObjectCGBAttrsOverride], a
+	pop de
+	pop hl
+ENDC
 	push hl
 	set_farcall_addrs_hli UpdateCurSprite
 	pop hl
