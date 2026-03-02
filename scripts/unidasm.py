@@ -226,7 +226,7 @@ class Namespace(argparse.Namespace):
     @classmethod
     def from_cli(cls, args: list[str] | None = None):
         parser = argparse.ArgumentParser()
-        parser.add_argument("version", choices=["sun", "star"])
+        parser.add_argument("version", choices=["sun", "star", "sun-en"])
         parser.add_argument("start", type=any_int)
         parser.add_argument("end", type=any_int)
         parser.add_argument("--unidasm", type=pathlib.Path)
@@ -240,13 +240,13 @@ def check_md5sum(rom: pathlib.Path, target: str):
     return checksum == target
 
 
-def verify_paths(version: Literal["sun", "star"], unidasm: pathlib.Path):
+def verify_paths(version: Literal["sun", "star", "sun-en"], unidasm: pathlib.Path):
     if not unidasm.exists():
         raise FileNotFoundError(unidasm)
     symfile = root_dir / f"robo{version}.sym"
     if not symfile.exists():
         raise FileNotFoundError("please run `make` before running this script")
-    checksums = root_dir / "roms.md5"
+    checksums = root_dir / f"{version}.md5"
     with checksums.open() as md5file:
         for line in md5file:
             target, path = line.rstrip("\n").split(None, 1)

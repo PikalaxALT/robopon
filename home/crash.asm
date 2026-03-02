@@ -1,4 +1,5 @@
 Crash:: ; 1d00 (0:1d00)
+IF DEF(LANG_JP)
 	push de
 	push bc
 	push hl
@@ -59,18 +60,44 @@ Crash:: ; 1d00 (0:1d00)
 	call PushBGMapRegion
 	pop bc
 	jp @ ; better luck next time
+ELIF DEF(LANG_EN)
+	REPT $90
+	db $ff
+	ENDR
+	ret
+ENDC
 
 Data_1d8d:: ; 1d8d
+IF DEF(LANG_JP)
 	dstr "(あれ) ?"
+ELIF DEF(LANG_EN)
+	dstr "What?"
+ENDC
 
 Data_1d94:: ; 1d94
+IF DEF(LANG_JP)
 	dstr "(てﾞんけﾞんきってね)!"
+ELIF DEF(LANG_EN)
+	dstr "Cut off the power!"
+ENDC
 
 Data_1da2:: ; 1da2
+IF DEF(LANG_JP)
 	dstr "スタック:%d"
+ELIF DEF(LANG_EN)
+	dstr "Stack:%d"
+ENDC
 
 Data_1daa:: ; 1daa
+IF DEF(LANG_JP)
 	dstr "ロム:%d"
+ELIF DEF(LANG_EN)
+	dstr "Rom:%d"
+ENDC
 
 Data_1db0:: ; 1db0
+IF DEF(LANG_JP)
 	dstr "アトﾞレス:%d"
+ELIF DEF(LANG_EN)
+	dstr "Address:%d"
+ENDC
