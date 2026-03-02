@@ -1146,16 +1146,16 @@ Func_1f30:: ; 1f30
 	call FarCall
 	write_hl_to wc30e
 	call WaitVideoTransfer
-	ld a, BANK(GFX_4a12)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $f0
 	ld de, $88f0
 	read_hl_from wc30e
 	call FarRequestVideoData
-	ld a, BANK(GFX_4a12)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $f0
-	ld de, GFX_4a12
+	ld de, GFX_4122 + $8f0
 	ld hl, $88f0
 	call FarRequestVideoData
 	call WaitVideoTransfer
@@ -1194,16 +1194,16 @@ Func_1fbe:: ; 1fbe
 	call FarCall
 	write_hl_to wc2f2
 	call WaitVideoTransfer
-	ld a, BANK(GFX_4b22)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $1ba
 	ld de, $8cc0
 	read_hl_from wc2f2
 	call FarRequestVideoData
-	ld a, BANK(GFX_4b22)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $1ba
-	ld de, GFX_4b22
+	ld de, GFX_4122 + $a00
 	ld hl, $8cc0
 	call FarRequestVideoData
 	call WaitVideoTransfer
@@ -1242,7 +1242,7 @@ Func_204c:: ; 204c
 	call FarCall
 	write_hl_to wc2f2
 	call WaitVideoTransfer
-	ld a, BANK(GFX_4e02)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $50
 	ld de, $8fa0
@@ -1251,7 +1251,7 @@ Func_204c:: ; 204c
 	ld a, $1
 	ld [wFarCallDestBank], a
 	ld bc, $50
-	ld de, GFX_4e02
+	ld de, GFX_4122 + $ce0
 	ld hl, $8fa0
 	call FarRequestVideoData
 	call WaitVideoTransfer

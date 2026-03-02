@@ -6279,13 +6279,13 @@ Func_23197: ; 23197 (8:7197)
 	call FarCall
 Func_231ab: ; 231ab (8:71ab)
 	call Func_1fbe
-	ld a, BANK(GFX_4ce2)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $10
 IF DEF(SUN)
-	ld de, GFX_4ce2 + $f0
+	ld de, GFX_4122 + $cb0
 ELIF DEF(STAR)
-	ld de, GFX_4ce2 + $100
+	ld de, GFX_4122 + $cc0
 ENDC
 	ld hl, $88e0
 	call FarRequestVideoData
@@ -6320,10 +6320,10 @@ Func_231f9: ; 231f9 (8:71f9)
 	call FarCall
 Func_2320d: ; 2320d (8:720d)
 	call Func_2009
-	ld a, BANK(GFX_4a02)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $10
-	ld de, GFX_4a02
+	ld de, GFX_4122 + $8e0
 	ld hl, $88e0
 	call FarRequestVideoData
 	set_farcall_addrs_hli Func_dc0a

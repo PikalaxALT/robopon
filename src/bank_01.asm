@@ -160,22 +160,12 @@ LoadFontGFX: ; 410c (1:410c)
 	call CopyFromDEtoHL
 	ret
 
-GFX_4122:: INCBIN "gfx/font/4122.2bpp", $0, $7d0
-GFX_48f2:: INCBIN "gfx/font/4122.2bpp", $7d0, $30
-GFX_4922:: INCBIN "gfx/font/4122.2bpp", $800, $c0
-GFX_49e2:: INCBIN "gfx/font/4122.2bpp", $8c0, $20
-GFX_4a02:: INCBIN "gfx/font/4122.2bpp", $8e0, $10
-GFX_4a12:: INCBIN "gfx/font/4122.2bpp", $8f0, $80
-GFX_4a92:: INCBIN "gfx/font/4122.2bpp", $970, $10
-GFX_4aa2:: INCBIN "gfx/font/4122.2bpp", $980, $10
-GFX_4ab2:: INCBIN "gfx/font/4122.2bpp", $990, $20
-GFX_4ad2: INCBIN "gfx/font/4122.2bpp", $9b0, $50
-GFX_4b22:: INCBIN "gfx/font/4122.2bpp", $a00, $1b0
-GFX_4cd2:: INCBIN "gfx/font/4122.2bpp", $bb0, $10
-GFX_4ce2:: INCBIN "gfx/font/4122.2bpp", $bc0, $50
-GFX_4d32:: INCBIN "gfx/font/4122.2bpp", $c10, $70
-GFX_4da2:: INCBIN "gfx/font/4122.2bpp", $c80, $60
-GFX_4e02:: INCBIN "gfx/font/4122.2bpp", $ce0, $1320
+GFX_4122::
+IF DEF(LANG_JP)
+	INCBIN "gfx/font/4122.2bpp"
+ELIF DEF(LANG_EN)
+	INCBIN "gfx/font/4122-en.2bpp"
+ENDC
 
 GetBGMapAddresses: ; 6122 (1:6122)
 	or a
@@ -612,6 +602,12 @@ Func_6392: ; 6392
 	call Decompress_ReadCBits
 	ld [de], a
 	inc de
+IF DEF(LANG_EN)
+	ld c, $8
+	call Decompress_ReadCBits
+	ld [de], a
+	inc de
+ENDC
 	ld c, $7
 	call Decompress_ReadCBits
 	ld [de], a
@@ -956,6 +952,14 @@ Func_6493: ; 6493
 	call ApplyBitMaskToDE
 	pop hl
 	dec hl
+IF DEF(LANG_EN)
+	push hl
+	ld l, [hl]
+	ld c, $8
+	call ApplyBitMaskToDE
+	pop hl
+	dec hl
+ENDC
 	ret
 
 FixAndLoadPoncotPicWithTilemap:: ; 65db (1:65db)
@@ -1183,6 +1187,7 @@ Func_667d:: ; 667d
 	ret
 
 PoncotNameCharacters:
+IF DEF(LANG_JP)
 	db "0123456789をぁぃぅぇぉ" ; 00-0f
 	db "ゃゅょっーあいうえおかきくけこさ" ; 10-1f
 	db "しすせそたちつてとなにぬねのはひ" ; 20-2f
@@ -1197,12 +1202,34 @@ PoncotNameCharacters:
 	db "ひふへほはひふへほ@@@@@@@" ; b0-bf
 	db "かきくけこさしすせそたちつてとは" ; c0-cf
 	db "ひふへほはひふへほうcABM#a" ; d0-df
+ELIF DEF(LANG_EN)
+DEF x = 1
+REPT $5F
+	db x
+DEF x = x + 1
+ENDR
+	db " "
+DEF x = $61
+REPT $7c - $61
+	db x
+DEF x = x + 1
+ENDR
+	db "~}|X"
+DEF x = $7f
+REPT $100 - $7f
+	db x
+DEF x = x + 1
+ENDR
+PURGE x
+	db $ff
+ENDC
 
 PoncotNameAttributes:
 ; bit 0: hiragana if set else katakana
 ; bit 1: dakuten
 ; bit 2: handakuten
 ; all three bits set: no special attributes
+IF DEF(LANG_JP)
 	db %111, %111, %111, %111, %111, %111, %111, %111 ; 00-07
 	db %111, %111, %001, %001, %001, %001, %001, %001 ; 08-0f
 	db %001, %001, %001, %001, %111, %001, %001, %001 ; 10-17
@@ -1231,6 +1258,11 @@ PoncotNameAttributes:
 	db %010, %010, %010, %010, %010, %010, %010, %010 ; c8-cf
 	db %010, %010, %010, %010, %100, %100, %100, %100 ; d0-d7
 	db %100, %010, %111, %111, %111, %111, %111, %111 ; d8-df
+ELIF DEF(LANG_EN)
+REPT $e0
+	db 0
+ENDR
+ENDC
 
 ApplyPoncotNameCharmap:: ; 68b6 (1:68b6)
 	; Convert character a and append to (hl)
@@ -1747,7 +1779,7 @@ GetRobotInParty:: ; 6b55 (1:6b55)
 	ld h, 0
 	get_party_bot
 	pop de
-	ld bc, $23
+	ld bc, partyRobot_SIZEOF
 	call MemCopy
 	pop bc
 	ret
@@ -1760,7 +1792,7 @@ StackGetRobotInParty:: ; 6b74 (1:6b74)
 	push hl
 	call GetHLAtSPPlus4
 	pop de
-	ld bc, $23
+	ld bc, partyRobot_SIZEOF
 	call MemCopy
 	pop bc
 	ret
@@ -1778,25 +1810,25 @@ Func_6b94:: ; 6b94
 	call GetRobotInParty
 	pop af
 	cp $9
-	jp z, Func_6dd2
+	jp z, .asm_6dd2
 	cp $8
-	jp z, Func_6d94
+	jp z, .asm_6d94
 	cp $7
-	jp z, Func_6d56
+	jp z, .asm_6d56
 	cp $6
-	jp z, Func_6d18
+	jp z, .asm_6d18
 	cp $5
-	jp z, Func_6cda
+	jp z, .asm_6cda
 	cp $4
-	jp z, Func_6c9c
+	jp z, .asm_6c9c
 	cp $3
-	jp z, Func_6c91
+	jp z, .asm_6c91
 	cp $2
-	jp z, Func_6c53
+	jp z, .asm_6c53
 	cp $1
-	jp z, Func_6c15
+	jp z, .asm_6c15
 	or a
-	jp nz, Func_6e0d
+	jp nz, .asm_6e0d
 
 MACRO macro_6b94
 	read_hl_from_sp_plus $28
@@ -1825,47 +1857,83 @@ MACRO macro_6b94
 .done_\@
 ENDM
 
-	macro_6b94 $10
-	jp Func_6e0d
+IF DEF(LANG_JP)
+macro_6b94 $10
+ELIF DEF(LANG_EN)
+	macro_6b94 $11
+ENDC
+	jp .asm_6e0d
 
-Func_6c15: ; 6c15 (1:6c15)
+.asm_6c15: ; 6c15 (1:6c15)
+IF DEF(LANG_JP)
 	macro_6b94 $14
-	jp Func_6e0d
+ELIF DEF(LANG_EN)
+	macro_6b94 $15
+ENDC
+	jp .asm_6e0d
 
-Func_6c53: ; 6c53 (1:6c53)
+.asm_6c53: ; 6c53 (1:6c53)
+IF DEF(LANG_JP)
 	macro_6b94 $18
-	jp Func_6e0d
+ELIF DEF(LANG_EN)
+	macro_6b94 $19
+ENDC
+	jp .asm_6e0d
 
-Func_6c91: ; 6c91 (1:6c91)
+.asm_6c91: ; 6c91 (1:6c91)
 	read_hl_from_sp_plus $28
 	ld e, l
 	ld hl, sp+$18
 	ld [hl], e
-	jp Func_6e0d
+	jp .asm_6e0d
 
-Func_6c9c: ; 6c9c (1:6c9c)
+.asm_6c9c: ; 6c9c (1:6c9c)
+IF DEF(LANG_JP)
 	macro_6b94 $12
-	jp Func_6e0d
+ELIF DEF(LANG_EN)
+	macro_6b94 $13
+ENDC
+	jp .asm_6e0d
 
-Func_6cda: ; 6cda (1:6cda)
+.asm_6cda: ; 6cda (1:6cda)
+IF DEF(LANG_JP)
 	macro_6b94 $16
-	jp Func_6e0d
+ELIF DEF(LANG_EN)
+	macro_6b94 $17
+ENDC
+	jp .asm_6e0d
 
-Func_6d18: ; 6d18 (1:6d18)
+.asm_6d18: ; 6d18 (1:6d18)
+IF DEF(LANG_JP)
 	macro_6b94 $1b
-	jp Func_6e0d
+ELIF DEF(LANG_EN)
+	macro_6b94 $1c
+ENDC
+	jp .asm_6e0d
 
-Func_6d56: ; 6d56 (1:6d56)
+.asm_6d56: ; 6d56 (1:6d56)
+IF DEF(LANG_JP)
 	macro_6b94 $1d
-	jp Func_6e0d
+ELIF DEF(LANG_EN)
+	macro_6b94 $1e
+ENDC
+	jp .asm_6e0d
 
-Func_6d94: ; 6d94 (1:6d94)
+.asm_6d94: ; 6d94 (1:6d94)
+IF DEF(LANG_JP)
 	macro_6b94 $1f
-	jp Func_6e0d
+ELIF DEF(LANG_EN)
+	macro_6b94 $20
+ENDC
+	jp .asm_6e0d
 
-Func_6dd2: ; 6dd2 (1:6dd2)
+.asm_6dd2: ; 6dd2 (1:6dd2)
+IF DEF(LANG_JP)
 	macro_6b94 $21
-Func_6e0d: ; 6e0d (1:6e0d)
+ELIF DEF(LANG_EN)
+	macro_6b94 $22
+ENDC
+.asm_6e0d: ; 6e0d (1:6e0d)
 	pop hl
 	ld a, l
 	ld hl, sp+$0

@@ -352,6 +352,17 @@ MACRO mulhlby35
 	add hl, bc
 	ENDM
 
+MACRO mulhlby36
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, de
+	ENDM
+
 MACRO mulhlby200
 	add hl, hl
 	add hl, hl
@@ -370,7 +381,11 @@ MACRO mulhlby200
 
 	; optional arg: byte offset within struct
 MACRO get_party_bot
+IF DEF(LANG_JP)
 	mulhlby35
+ELIF DEF(LANG_EN)
+	mulhlby36
+ENDC
 IF _NARG > 0
 	ld de, \1
 	add hl, de

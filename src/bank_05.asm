@@ -4161,13 +4161,13 @@ Func_1746c:: ; 1746c
 
 Func_17470:: ; 17470 (5:7470)
 	call WaitVideoTransfer
-	ld a, BANK(GFX_4ce2)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $10
 IF DEF(SUN)
-	ld de, GFX_4ce2 + $f0
+	ld de, GFX_4122 + $cb0
 ELIF DEF(STAR)
-	ld de, GFX_4ce2 + $100
+	ld de, GFX_4122 + $cc0
 ENDC
 	ld hl, $88e0
 	call FarRequestVideoData
@@ -4177,10 +4177,10 @@ ENDC
 Func_17488:: ; 17488 (5:7488)
 	call FillVisibleAreaWithBlankTile
 	call WaitVideoTransfer
-	ld a, BANK(GFX_4a02)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $10
-	ld de, GFX_4a02
+	ld de, GFX_4122 + $8e0
 	ld hl, $88e0
 	call FarRequestVideoData
 	call WaitVideoTransfer

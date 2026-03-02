@@ -5718,18 +5718,18 @@ Func_332aa: ; 332aa (c:72aa)
 
 Func_332ab: ; 332ab (c:72ab)
 	push af
-	ld a, BANK(GFX_4aa2)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $10
-	ld de, GFX_4aa2
+	ld de, GFX_4122 + $980
 	ld hl, $88e0
 	call FarRequestVideoData
 	ld bc, $10
-	ld de, GFX_4ab2
+	ld de, GFX_4122 + $990
 	ld hl, $88c0
 	call FarRequestVideoData
 	ld bc, $10
-	ld de, GFX_4a92
+	ld de, GFX_4122 + $970
 	ld hl, $97d0
 	call FarRequestVideoData
 	call Func_1fbe
@@ -5751,18 +5751,18 @@ Func_332f6: ; 332f6 (c:72f6)
 	call FarCall
 Func_3330c: ; 3330c (c:730c)
 	call Func_2009
-	ld a, BANK(GFX_4a02)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $10
-	ld de, GFX_4a02
+	ld de, GFX_4122 + $8e0
 	ld hl, $88e0
 	call FarRequestVideoData
 	ld bc, $10
-	ld de, GFX_49e2
+	ld de, GFX_4122 + $8c0
 	ld hl, $88c0
 	call FarRequestVideoData
 	ld bc, $10
-	ld de, GFX_48f2
+	ld de, GFX_4122 + $7d0
 	ld hl, $97d0
 	call FarRequestVideoData
 	ret

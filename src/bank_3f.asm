@@ -2118,22 +2118,22 @@ ENDC
 	or $10
 	ld [wNextVBlankFlags], a
 	call Func_fc092
-	ld a, BANK(GFX_4d32)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $70
-	ld de, GFX_4d32
+	ld de, GFX_4122 + $c10
 	ld hl, $8000
 	call FarRequestVideoData
-	ld a, BANK(GFX_4a12)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $10
-	ld de, GFX_4a12
+	ld de, GFX_4122 + $8f0
 	ld hl, $8070
 	call FarRequestVideoData
-	ld a, BANK(GFX_4da2)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $30
-	ld de, GFX_4da2
+	ld de, GFX_4122 + $c80
 	ld hl, $8080
 	call FarRequestVideoData
 	ld a, $3a
@@ -2187,10 +2187,10 @@ Func_fd03d:
 	ld e, $8f
 	hlbgcoord 0, 0
 	call FillMemory
-	ld a, BANK(GFX_4cd2)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $60
-	ld de, GFX_4cd2
+	ld de, GFX_4122 + $bb0
 	ld hl, $9000
 	call FarCopyVideoData
 	check_cgb
@@ -2430,7 +2430,7 @@ TitleScreen:: ; fd213 (3f:5213)
 	ld hl, $9000
 	call FarCopyVideoData
 	ld bc, $100
-	ld de, GFX_4922
+	ld de, GFX_4122 + $800
 	ld hl, $8800
 	call FarCopyVideoData
 	di

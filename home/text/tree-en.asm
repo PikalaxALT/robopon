@@ -8,13 +8,13 @@
 	jr c, .bits0001
 	call .GetNextBit
 	jr c, .bits00001
-	ld a, "d"
+	ld a, CHARVAL("d")
 	jp .queue_character
 .bits00001:
-	ld a, "y"
+	ld a, CHARVAL("y")
 	jp .queue_character
 .bits0001:
-	ld a, "n"
+	ld a, CHARVAL("n")
 	jp .queue_character
 .bits001:
 	call .GetNextBit
@@ -27,41 +27,41 @@
 	jr c, .bits0010001
 	call .GetNextBit
 	jr c, .bits00100001
-	ld a, "H"
+	ld a, CHARVAL("H")
 	jp .queue_character
 .bits00100001:
 	call .GetNextBit
 	jr c, .bits001000011
 	call .GetNextBit
 	jr c, .bits0010000101
-	ld a, "x"
+	ld a, CHARVAL("x")
 	jp .queue_character
 .bits0010000101:
-	ld a, "N"
+	ld a, CHARVAL("N")
 	jp .queue_character
 .bits001000011:
 	ld a, 1
 	jp .queue_character
 .bits0010001:
-	ld a, "T"
+	ld a, CHARVAL("T")
 	jp .queue_character
 .bits001001:
-	ld a, "p"
+	ld a, CHARVAL("p")
 	jp .queue_character
 .bits00101:
 	call .GetNextBit
 	jr c, .bits001011
-	ld a, "b"
+	ld a, CHARVAL("b")
 	jp .queue_character
 .bits001011:
 	call .GetNextBit
 	jr c, .bits0010111
 	call .GetNextBit
 	jr c, .bits00101101
-	ld a, "D"
+	ld a, CHARVAL("D")
 	jp .queue_character
 .bits00101101:
-	ld a, "W"
+	ld a, CHARVAL("W")
 	jp .queue_character
 .bits0010111:
 	call .GetNextBit
@@ -72,7 +72,7 @@
 	jp c, .bits0010111001
 	call .GetNextBit
 	jr c, .bits00101110001
-	ld a, "8"
+	ld a, CHARVAL("8")
 	jp .queue_character
 .bits00101110001:
 	call .GetNextBit
@@ -81,40 +81,40 @@
 	jr c, .bits0010111000101
 	call .GetNextBit
 	jr c, .bits00101110001001
-	ld a, "Q"
+	ld a, CHARVAL("Q")
 	jp .queue_character
 .bits00101110001001:
 	call .GetNextBit
 	jr c, .bits001011100010011
-	ld a, "X"
+	ld a, CHARVAL("X")
 	jp .queue_character
 .bits001011100010011:
 	call .GetNextBit
 	jr c, .bits0010111000100111
-	ld a, "%"
+	ld a, CHARVAL("%")
 	jp .queue_character
 .bits0010111000100111:
-	ld a, ";"
+	ld a, CHARVAL(";")
 	jp .queue_character
 .bits0010111000101:
-	ld a, "<"
+	ld a, CHARVAL("<")
 	jp .queue_character
 .bits001011100011:
-	ld a, "6"
+	ld a, CHARVAL("6")
 	jp .queue_character
 .bits0010111001:
-	ld a, "K"
+	ld a, CHARVAL("K")
 	jp .queue_character
 .bits001011101:
-	ld a, "G"
+	ld a, CHARVAL("G")
 	jp .queue_character
 .bits00101111:
-	ld a, "R"
+	ld a, CHARVAL("R")
 	jp .queue_character
 .bits0011:
 	call .GetNextBit
 	jr c, .bits00111
-	ld a, "u"
+	ld a, CHARVAL("u")
 	jp .queue_character
 .bits00111:
 	call .GetNextBit
@@ -122,20 +122,20 @@
 	ld a, 0
 	jp .queue_character
 .bits001111:
-	ld a, ","
+	ld a, CHARVAL(",")
 	jp .queue_character
 .bits01:
 	call .GetNextBit
 	jr c, .bits011
 	call .GetNextBit
 	jr c, .bits0101
-	ld a, "a"
+	ld a, CHARVAL("a")
 	jp .queue_character
 .bits0101:
-	ld a, "\n"
+	ld a, CHARVAL("\n")
 	jp .queue_character
 .bits011:
-	ld a, " "
+	ld a, CHARVAL(" ")
 	jp .queue_character
 .bits1:
 	call .GetNextBit
@@ -148,12 +148,12 @@
 	jp c, .bits10001
 	call .GetNextBit
 	jr c, .bits100001
-	ld a, "w"
+	ld a, CHARVAL("w")
 	jp .queue_character
 .bits100001:
 	call .GetNextBit
 	jr c, .bits1000011
-	ld a, "v"
+	ld a, CHARVAL("v")
 	jp .queue_character
 .bits1000011:
 	call .GetNextBit
@@ -164,39 +164,39 @@
 	jr c, .bits1000011001
 	call .GetNextBit
 	jr c, .bits10000110001
-	ld a, "3"
+	ld a, CHARVAL("3")
 	jp .queue_character
 .bits10000110001:
-	ld a, "2"
+	ld a, CHARVAL("2")
 	jp .queue_character
 .bits1000011001:
-	ld a, "j"
+	ld a, CHARVAL("j")
 	jp .queue_character
 .bits100001101:
-	ld a, "F"
+	ld a, CHARVAL("F")
 	jp .queue_character
 .bits10000111:
 	call .GetNextBit
 	jr c, .bits100001111
-	ld a, "O"
+	ld a, CHARVAL("O")
 	jp .queue_character
 .bits100001111:
 	call .GetNextBit
 	jr c, .bits1000011111
-	ld a, "E"
+	ld a, CHARVAL("E")
 	jp .queue_character
 .bits1000011111:
 	call .GetNextBit
 	jr c, .bits10000111111
-	ld a, "J"
+	ld a, CHARVAL("J")
 	jp .queue_character
 .bits10000111111:
-	ld a, "U"
+	ld a, CHARVAL("U")
 	jp .queue_character
 .bits10001:
 	call .GetNextBit
 	jr c, .bits100011
-	ld a, "g"
+	ld a, CHARVAL("g")
 	jp .queue_character
 .bits100011:
 	call .GetNextBit
@@ -205,76 +205,76 @@
 	jr c, .bits10001101
 	call .GetNextBit
 	jr c, .bits100011001
-	ld a, "L"
+	ld a, CHARVAL("L")
 	jp .queue_character
 .bits100011001:
-	ld a, "C"
+	ld a, CHARVAL("C")
 	jp .queue_character
 .bits10001101:
 	call .GetNextBit
 	jr c, .bits100011011
-	ld a, "M"
+	ld a, CHARVAL("M")
 	jp .queue_character
 .bits100011011:
-	ld a, "A"
+	ld a, CHARVAL("A")
 	jp .queue_character
 .bits1000111:
-	ld a, "k"
+	ld a, CHARVAL("k")
 	jp .queue_character
 .bits1001:
-	ld a, "t"
+	ld a, CHARVAL("t")
 	jp .queue_character
 .bits101:
 	call .GetNextBit
 	jr c, .bits1011
 	call .GetNextBit
 	jr c, .bits10101
-	ld a, "l"
+	ld a, CHARVAL("l")
 	jp .queue_character
 .bits10101:
-	ld a, "h"
+	ld a, CHARVAL("h")
 	jp .queue_character
 .bits1011:
 	call .GetNextBit
 	jr c, .bits10111
-	ld a, "s"
+	ld a, CHARVAL("s")
 	jp .queue_character
 .bits10111:
 	call .GetNextBit
 	jr c, .bits101111
-	ld a, "m"
+	ld a, CHARVAL("m")
 	jp .queue_character
 .bits101111:
 	call .GetNextBit
 	jr c, .bits1011111
-	ld a, "I"
+	ld a, CHARVAL("I")
 	jp .queue_character
 .bits1011111:
-	ld a, "'"
+	ld a, CHARVAL("'")
 	jp .queue_character
 .bits11:
 	call .GetNextBit
 	jp c, .bits111
 	call .GetNextBit
 	jr c, .bits1101
-	ld a, "o"
+	ld a, CHARVAL("o")
 	jp .queue_character
 .bits1101:
 	call .GetNextBit
 	jr c, .bits11011
 	call .GetNextBit
 	jr c, .bits110101
-	ld a, "c"
+	ld a, CHARVAL("c")
 	jp .queue_character
 .bits110101:
-	ld a, "!"
+	ld a, CHARVAL("!")
 	jp .queue_character
 .bits11011:
 	call .GetNextBit
 	jp c, .bits110111
 	call .GetNextBit
 	jr c, .bits1101101
-	ld a, ","
+	ld a, CHARVAL(",")
 	jp .queue_character
 .bits1101101:
 	call .GetNextBit
@@ -289,40 +289,40 @@
 	jr c, .bits110110100001
 	call .GetNextBit
 	jr c, .bits1101101000001
-	ld a, ">"
+	ld a, CHARVAL(">")
 	jp .queue_character
 .bits1101101000001:
 	call .GetNextBit
 	jr c, .bits11011010000011
-	ld a, "9"
+	ld a, CHARVAL("9")
 	jp .queue_character
 .bits11011010000011:
-	ld a, ":"
+	ld a, CHARVAL(":")
 	jp .queue_character
 .bits110110100001:
-	ld a, "0"
+	ld a, CHARVAL("0")
 	jp .queue_character
 .bits11011010001:
-	ld a, "z"
+	ld a, CHARVAL("z")
 	jp .queue_character
 .bits1101101001:
 	call .GetNextBit
 	jr c, .bits11011010011
-	ld a, "Z"
+	ld a, CHARVAL("Z")
 	jp .queue_character
 .bits11011010011:
 	call .GetNextBit
 	jr c, .bits110110100111
-	ld a, "5"
+	ld a, CHARVAL("5")
 	jp .queue_character
 .bits110110100111:
-	ld a, "7"
+	ld a, CHARVAL("7")
 	jp .queue_character
 .bits110110101:
-	ld a, "P"
+	ld a, CHARVAL("P")
 	jp .queue_character
 .bits11011011:
-	ld a, "?"
+	ld a, CHARVAL("?")
 	jp .queue_character
 .bits110111:
 	call .GetNextBit
@@ -331,52 +331,52 @@
 	jp c, .bits11011101
 	call .GetNextBit
 	jr c, .bits110111001
-	ld a, "Y"
+	ld a, CHARVAL("Y")
 	jp .queue_character
 .bits110111001:
 	call .GetNextBit
 	jr c, .bits1101110011
 	call .GetNextBit
 	jr c, .bits11011100101
-	ld a, "-"
+	ld a, CHARVAL("-")
 	jp .queue_character
 .bits11011100101:
-	ld a, "1"
+	ld a, CHARVAL("1")
 	jp .queue_character
 .bits1101110011:
 	call .GetNextBit
 	jr c, .bits11011100111
-	ld a, "V"
+	ld a, CHARVAL("V")
 	jp .queue_character
 .bits11011100111:
 	call .GetNextBit
 	jr c, .bits110111001111
-	ld a, "q"
+	ld a, CHARVAL("q")
 	jp .queue_character
 .bits110111001111:
-	ld a, "4"
+	ld a, CHARVAL("4")
 	jp .queue_character
 .bits11011101:
 	call .GetNextBit
 	jr c, .bits110111011
-	ld a, "S"
+	ld a, CHARVAL("S")
 	jp .queue_character
 .bits110111011:
-	ld a, "B"
+	ld a, CHARVAL("B")
 	jp .queue_character
 .bits1101111:
-	ld a, "f"
+	ld a, CHARVAL("f")
 	jp .queue_character
 .bits111:
 	call .GetNextBit
 	jr c, .bits1111
 	call .GetNextBit
 	jr c, .bits11101
-	ld a, "i"
+	ld a, CHARVAL("i")
 	jp .queue_character
 .bits11101:
-	ld a, "r"
+	ld a, CHARVAL("r")
 	jp .queue_character
 .bits1111:
-	ld a, "e"
+	ld a, CHARVAL("e")
 	jp .queue_character

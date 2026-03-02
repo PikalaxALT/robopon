@@ -249,10 +249,10 @@ Func_e20d: ; e20d (3:620d)
 	set_farcall_addrs_hli Func_6183
 	pop af
 	call FarCall
-	ld a, BANK(GFX_4a02)
+	ld a, BANK(GFX_4122)
 	ld [wFarCallDestBank], a
 	ld bc, $d0
-	ld de, GFX_4a02
+	ld de, GFX_4122 + $8e0
 	ld hl, $88e0
 	call FarRequestVideoData
 	call WaitVideoTransfer
