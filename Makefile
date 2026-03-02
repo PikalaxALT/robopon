@@ -9,11 +9,13 @@ else
 	MD5 := md5sum -c
 endif
 
-SUN_ROM := robosun.gbc
-STAR_ROM := robostar.gbc
-ROMS := $(SUN_ROM) $(STAR_ROM)
+SUN_ROM := robosun-jp.gbc
+STAR_ROM := robostar-jp.gbc
+SUN_EN_ROM := roboson-en.gbc
+ROMS := $(SUN_ROM) $(STAR_ROM) $(SUN_EN_ROM)
 
-GAME_VERSION ?= SUN
+GAME_VERSION  ?= SUN
+GAME_LANGUAGE ?= JP
 
 ifeq ($(GAME_VERSION),SUN)
 shortname := sun
@@ -25,10 +27,33 @@ $(error unsupported GAME_VERSION=$(GAME_VERSION))
 endif
 endif
 
+
+ifeq ($(GAME_LANGUAGE),JP)
+shortname  := $(shortname)-jp
+LINK_PAD   := 0
+GAME_TITLE := "ROBOPON $(GAME_VERSION)"
+GAME_ID    :=
+LANG_FLAG  :=
+else
+ifeq ($(GAME_LANGUAGE),EN)
+shortname  := $(shortname)-en
+LINK_PAD   := 255
+GAME_TITLE := $(GAME_VERSION)
+GAME_ID    := -i HREE
+LANG_FLAG  := -j
+else
+$(error unsupported GAME_LANGUAGE=$(GAME_LANGUAGE))
+endif
+endif
+
 BUILDDIR := build/$(shortname)
 BUILD_SUBDIRS := src maps
 ROM := robo$(shortname).gbc
 dummy := $(foreach dir,$(BUILD_SUBDIRS),$(shell mkdir -p $(BUILDDIR)/$(dir)))
+
+RGBASM_OPTS  = -D $(GAME_VERSION) -D LANG_$(GAME_LANGUAGE)
+RGBLINK_OPTS = -w -p $(LINK_PAD)
+RGBFIX_OPTS  = -csv -k 18 -l 0x33 -m 0xfe -p 0xff -r 0x03 -t $(GAME_TITLE) $(GAME_ID) $(LANG_FLAG)
 
 RZ       := $(PYTHON) rz.py compress
 TM       := $(PYTHON) tm2bpp.py furl
@@ -127,8 +152,10 @@ ifeq ($(COMPARE),1)
 	$(MD5) $(shortname).md5
 endif
 
-sun:  ; @$(MAKE) GAME_VERSION=SUN
-star: ; @$(MAKE) GAME_VERSION=STAR
+sun:     ; @$(MAKE) GAME_VERSION=SUN
+star:    ; @$(MAKE) GAME_VERSION=STAR
+sun-en:  ; @$(MAKE) GAME_VERSION=SUN GAME_LANGUAGE=EN
+star-en: ; @$(MAKE) GAME_VERSION=STAR GAME_LANGUAGE=EN
 
 compare:
 	@$(MAKE) COMPARE=1 GAME_VERSION=SUN
@@ -166,11 +193,9 @@ data/base_stats/%.bin: ;
 	$(RZ) $< $@
 
 $(ALL_OBJS): $(BUILDDIR)/%.o: %.asm $$(%_dep)
-	rgbasm -D $(GAME_VERSION) -o $@ $<
+	rgbasm $(RGBASM_OPTS) -o $@ $<
 
-RGBFIX_OPTS = -csv -k 18 -l 0x33 -m 0xfe -p 0xff -r 0x03
-
-$(ROM): $(ALL_OBJS) | layout.link
-	rgblink -w -l layout.link -n $*.sym -m $*.map -o $@ $^
+$(ROM): $(ALL_OBJS) layout.link
+	rgblink $(RGBLINK_OPTS) -l layout.link -n $*.sym -m $*.map -o $@ $(ALL_OBJS)
 	./trim.py $@
-	rgbfix $(RGBFIX_OPTS) -t "ROBOPON $(GAME_VERSION)" $@
+	rgbfix $(RGBFIX_OPTS) $@
