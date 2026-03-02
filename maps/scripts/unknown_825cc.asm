@@ -26,10 +26,10 @@ Func_825eb: ; 825eb (20:65eb)
 	xor a
 	call SetPersonVisibilityState_20
 Func_825f9: ; 825f9 (20:65f9)
-	checkevent $2
+	checkevent EVENT_002
 	cp $1
 	jp nz, Func_8261f
-	checkevent $3
+	checkevent EVENT_003
 	cp $1
 	jp nz, Func_8261f
 	ld a, [wc790]

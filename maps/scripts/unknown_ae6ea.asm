@@ -26,14 +26,14 @@ Func_ae6ea:: ; ae6ea
 	loadwarps $03, Data_ae675
 	ld a, $01
 	scall LoadPlayerSprite
-	checkevent $0033
+	checkevent EVENT_033
 	or a
 	jp nz, .asm_ae720
 	loadpeople $01, Data_ae6dc
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b8a
 	call Func_ae74c
-	setevent $0033
+	setevent EVENT_033
 	jp .asm_ae73b
 .asm_ae720:
 	ld a, $03

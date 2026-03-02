@@ -133,11 +133,11 @@ Func_863fb::
 	call CompareHLtoDE
 	jp c, .asm_86437
 .asm_8642c: ; 8642c (21:642c)
-	setevent $38
+	setevent EVENT_038
 	jp .asm_8643f
 
 .asm_86437: ; 86437 (21:6437)
-	resetevent $38
+	resetevent EVENT_038
 .asm_8643f: ; 8643f (21:643f)
 	ld a, [wSaveFileExists]
 	or a
@@ -158,14 +158,14 @@ Func_863fb::
 	inc a
 	ld [wc7de], a
 .asm_86467: ; 86467 (21:6467)
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_8649b
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_8649b
 	playmusic SONG_CAVE
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_86494
 	ld a, $1
@@ -189,10 +189,10 @@ Func_863fb::
 	cp $2
 	jp nz, .asm_86575
 	loadwarps $3, Data_862fe
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_864e0
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_864e0
 	ld a, $3
@@ -209,10 +209,10 @@ Func_863fb::
 
 .asm_864f4: ; 864f4 (21:64f4)
 	loadwarps $3, Data_8631f
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_86522
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_86522
 	ld a, $3
@@ -229,10 +229,10 @@ Func_863fb::
 
 .asm_86536: ; 86536 (21:6536)
 	loadwarps $3, Data_86340
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_86564
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_86564
 	ld a, $3
@@ -257,10 +257,10 @@ Func_86579:
 	or a
 	jp nz, .asm_865fa
 	face_player -$1
-	checkevent $14
+	checkevent EVENT_014
 	or a
 	jp nz, .asm_865f4
-	checkevent $c5
+	checkevent EVENT_0C5
 	or a
 	jp nz, .asm_865eb
 	ld a, $3b
@@ -271,7 +271,7 @@ Func_86579:
 	or a
 	jp nz, .asm_865be
 	writenpctext TreeBitstreamText_3f85e
-	setevent $c5
+	setevent EVENT_0C5
 	jp .asm_865df
 
 .asm_865be: ; 865be (21:65be)
@@ -281,7 +281,7 @@ Func_86579:
 	ld a, $7f
 	scall Func_80d74
 	writenpctext TreeBitstreamText_3f901
-	setevent $c5
+	setevent EVENT_0C5
 .asm_865df: ; 865df (21:65df)
 	jp .asm_865e8
 
@@ -312,10 +312,10 @@ Func_86625:
 	or a
 	jp nz, .asm_866a7
 	face_player -$1
-	checkevent $c0
+	checkevent EVENT_0C0
 	cp $1
 	jp nz, .asm_866a1
-	checkevent $65
+	checkevent EVENT_065
 	or a
 	jp nz, .asm_86698
 	writenpctext TreeBitstreamText_39f37
@@ -328,7 +328,7 @@ Func_86625:
 	jp .asm_866a7
 
 .asm_86666: ; 86666 (21:6666)
-	setevent $65
+	setevent EVENT_065
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -368,10 +368,10 @@ Func_866df:
 	or a
 	jp nz, .asm_86761
 	face_player -$1
-	checkevent $c0
+	checkevent EVENT_0C0
 	cp $1
 	jp nz, .asm_8675b
-	checkevent $67
+	checkevent EVENT_067
 	or a
 	jp nz, .asm_86752
 	writenpctext TreeBitstreamText_3a097
@@ -384,7 +384,7 @@ Func_866df:
 	jp .asm_86761
 
 .asm_86720: ; 86720 (21:6720)
-	setevent $67
+	setevent EVENT_067
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -424,10 +424,10 @@ Func_86799:
 	or a
 	jp nz, .asm_8681b
 	face_player -$1
-	checkevent $c0
+	checkevent EVENT_0C0
 	cp $1
 	jp nz, .asm_86815
-	checkevent $69
+	checkevent EVENT_069
 	or a
 	jp nz, .asm_8680c
 	writenpctext TreeBitstreamText_39fb2
@@ -440,7 +440,7 @@ Func_86799:
 	jp .asm_8681b
 
 .asm_867da: ; 867da (21:67da)
-	setevent $69
+	setevent EVENT_069
 	ld a, [wc797]
 	inc a
 	ld [wc797], a

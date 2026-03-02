@@ -19,19 +19,19 @@ Func_a167b:: ; a167b
 	ld e, (Data_a1627_end - Data_a1627) / 14
 	ld hl, Data_a1627
 	scall LoadMapObjects
-	checkevent $0095
+	checkevent EVENT_095
 	cp $1
 	jp nz, .asm_a16e5
-	checkevent $009a
+	checkevent EVENT_09A
 	cp $1
 	jp nz, .asm_a16e5
-	checkevent $009f
+	checkevent EVENT_09F
 	cp $1
 	jp nz, .asm_a16e5
-	checkevent $00a4
+	checkevent EVENT_0A4
 	cp $1
 	jp nz, .asm_a16e5
-	checkevent $00a9
+	checkevent EVENT_0A9
 	cp $1
 	jp nz, .asm_a16e5
 	hideperson $1
@@ -49,7 +49,7 @@ Func_a16f4:
 	ld a, e
 	or a
 	jp nz, .asm_a177c
-	checkevent $003b
+	checkevent EVENT_03B
 	or a
 	jp nz, .asm_a175e
 	writenpctext_yesorno TreeBitstreamText_3c305
@@ -85,7 +85,7 @@ Func_a16f4:
 	pop bc
 	pop bc
 	writenpctext TreeBitstreamText_3c3bd
-	setevent $003b
+	setevent EVENT_03B
 .asm_a1752:
 	jp .asm_a175b
 .asm_a1755:
@@ -117,13 +117,13 @@ Func_a17a6:
 	or a
 	jp nz, .asm_a1848
 	face_player $01
-	checkevent $003b
+	checkevent EVENT_03B
 	cp $01
 	jp nz, .asm_a1842
-	checkevent $0042
+	checkevent EVENT_042
 	or a
 	jp nz, .asm_a1839
-	checkevent $003d
+	checkevent EVENT_03D
 	or a
 	jp nz, .asm_a1830
 	writetext_yesorno TreeBitstreamText_3c51f
@@ -139,8 +139,8 @@ Func_a17a6:
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6dd
 	writetext TreeBitstreamText_3c6ec
-	setevent $003d
-	setevent $0042
+	setevent EVENT_03D
+	setevent EVENT_042
 	ld c, $00
 	ld e, $01
 	ld a, $1e
@@ -179,13 +179,13 @@ Func_a187b:
 	or a
 	jp nz, .asm_a192b
 	face_player $02
-	checkevent $003b
+	checkevent EVENT_03B
 	cp $01
 	jp nz, .asm_a1925
-	checkevent $0042
+	checkevent EVENT_042
 	or a
 	jp nz, .asm_a191c
-	checkevent $003e
+	checkevent EVENT_03E
 	or a
 	jp nz, .asm_a1913
 	writetext_yesorno TreeBitstreamText_3c552
@@ -208,8 +208,8 @@ Func_a187b:
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c69d
 	writetext TreeBitstreamText_3c6ec
-	setevent $003e
-	setevent $0042
+	setevent EVENT_03E
+	setevent EVENT_042
 	ld c, $00
 	ld e, $01
 	ld a, $1c
@@ -247,13 +247,13 @@ Func_a195e:
 	or a
 	jp nz, .asm_a1a0e
 	face_player $03
-	checkevent $003b
+	checkevent EVENT_03B
 	cp $01
 	jp nz, .asm_a1a08
-	checkevent $0042
+	checkevent EVENT_042
 	or a
 	jp nz, .asm_a19ff
-	checkevent $003f
+	checkevent EVENT_03F
 	or a
 	jp nz, .asm_a19f6
 	writetext_yesorno TreeBitstreamText_3c5a0
@@ -276,8 +276,8 @@ Func_a195e:
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6ad
 	writetext TreeBitstreamText_3c6ec
-	setevent $003f
-	setevent $0042
+	setevent EVENT_03F
+	setevent EVENT_042
 	ld c, $00
 	ld e, $01
 	ld a, $1d
@@ -315,13 +315,13 @@ Func_a1a41:
 	or a
 	jp nz, .asm_a1af1
 	face_player $04
-	checkevent $003b
+	checkevent EVENT_03B
 	cp $01
 	jp nz, .asm_a1aeb
-	checkevent $0042
+	checkevent EVENT_042
 	or a
 	jp nz, .asm_a1ae2
-	checkevent $0040
+	checkevent EVENT_040
 	or a
 	jp nz, .asm_a1ad9
 	writetext_yesorno TreeBitstreamText_3c5cf
@@ -344,8 +344,8 @@ Func_a1a41:
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6ce
 	writetext TreeBitstreamText_3c6ec
-	setevent $0040
-	setevent $0042
+	setevent EVENT_040
+	setevent EVENT_042
 	ld c, $00
 	ld e, $01
 	ld a, $20
@@ -383,13 +383,13 @@ Func_a1b24:
 	or a
 	jp nz, .asm_a1bd4
 	face_player $05
-	checkevent $003b
+	checkevent EVENT_03B
 	cp $01
 	jp nz, .asm_a1bce
-	checkevent $0042
+	checkevent EVENT_042
 	or a
 	jp nz, .asm_a1bc5
-	checkevent $0041
+	checkevent EVENT_041
 	or a
 	jp nz, .asm_a1bbc
 	writetext_yesorno TreeBitstreamText_3c61c
@@ -412,8 +412,8 @@ Func_a1b24:
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6be
 	writetext TreeBitstreamText_3c6ec
-	setevent $0041
-	setevent $0042
+	setevent EVENT_041
+	setevent EVENT_042
 	ld c, $00
 	ld e, $01
 	ld a, $1f

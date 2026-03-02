@@ -193,4 +193,5 @@ MACRO warp_player
 	ld e, MAP_\1
 	lda GROUP_\1
 	scall Func_80dff
+	pop bc
 	ENDM

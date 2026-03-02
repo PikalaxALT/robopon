@@ -37,16 +37,16 @@ Func_b790a:: ; b790a
 	ld [wc7e2], a
 	set_frame_script Func_b79a1
 	loadpeople $02, Data_b78ee
-	checkevent $001b
+	checkevent EVENT_01B
 	or a
 	jp nz, .asm_b7935
 	loadwarps $02, Data_b780b
 	jp .asm_b795d
 .asm_b7935:
-	checkevent $001b
+	checkevent EVENT_01B
 	cp $01
 	jp nz, .asm_b795d
-	checkevent $0034
+	checkevent EVENT_034
 	or a
 	jp nz, .asm_b7955
 	loadwarps $02, Data_b7821
@@ -59,10 +59,10 @@ Func_b790a:: ; b790a
 	loadwilds $0c, Data_b7842
 	ld a, $01
 	scall LoadPlayerSprite
-	checkevent $001b
+	checkevent EVENT_01B
 	cp $01
 	jp nz, .asm_b7992
-	checkevent $00f1
+	checkevent EVENT_0F1
 	or a
 	jp nz, .asm_b7992
 	playmusic SONG_NONE
@@ -80,7 +80,7 @@ Data_b799b:
 	db $00, $15, $03, $02, $06, $03
 
 Func_b79a1:
-	checkevent $001b
+	checkevent EVENT_01B
 	cp $01
 	jp nz, .asm_b79b5
 	ld hl, Data_b799b
@@ -101,5 +101,4 @@ Func_b79b6:
 	scall WaitEmote
 	scall HideEmote
 	warp_player MAP_32_10, $07, $0e
-	pop bc
 	ret

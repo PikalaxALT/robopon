@@ -195,7 +195,7 @@ Func_d21fc:: ; d21fc (34:61fc)
 	ld a, [wc7de]
 	cp $14
 	jp nz, .asm_d22e5
-	setevent $5d
+	setevent EVENT_05D
 .asm_d22e5: ; d22e5 (34:62e5)
 	ld a, $3
 	scall Func_80d01

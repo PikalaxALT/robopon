@@ -28,13 +28,13 @@ Func_a5126:: ; a5126
 	ld [wc7e2], a
 	loadwarps $02, Data_a50b4
 	playmusic SONG_TOWN1
-	checkevent $002e
+	checkevent EVENT_02E
 	cp $01
 	jp nz, .asm_a5163
-	checkevent $002f
+	checkevent EVENT_02F
 	cp $01
 	jp nz, .asm_a5163
-	checkevent $0044
+	checkevent EVENT_044
 	or a
 	jp nz, .asm_a5163
 	loadpeople $03, Data_a50d2
@@ -97,7 +97,6 @@ Func_a517c:: ; a517c
 	playsfx SFX_45
 	writenpctext TreeBitstreamText_46f3e
 	warp_player MAP_23_00, $13, $18
-	pop bc
 	jp .asm_a524c
 .asm_a5247:
 	ld a, $01
@@ -191,7 +190,6 @@ Func_a5264:
 	move_player $01, Data_a5260
 	scall WaitNPCStep
 	warp_player MAP_24_00, $16, $06
-	pop bc
 .asm_a5383:
 	pop bc
 	ret
@@ -199,14 +197,13 @@ Func_a5264:
 Func_a5385:
 	playsfx SFX_45
 	warp_player MAP_23_00, $13, $18
-	pop bc
 	ret
 
 Func_a5398:
 	ld a, e
 	cp $02
 	jp nz, .asm_a53dd
-	checkevent $002d
+	checkevent EVENT_02D
 	cp $01
 	jp nz, .asm_a53dd
 	ld a, $2a
@@ -219,7 +216,6 @@ Func_a5398:
 	playsfx SFX_45
 	script_sleep 30
 	warp_player MAP_23_00, $13, $18
-	pop bc
 .asm_a53d4:
 	jp .asm_a53dd
 .asm_a53d7:

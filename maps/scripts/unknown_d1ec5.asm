@@ -139,7 +139,7 @@ Func_d1ec5:: ; d1ec5 (34:5ec5)
 	ld a, [wc7de]
 	cp $14
 	jp nz, .asm_d1f46
-	setevent $5d
+	setevent EVENT_05D
 .asm_d1f46: ; d1f46 (34:5f46)
 	ld a, $3
 	scall Func_80d01

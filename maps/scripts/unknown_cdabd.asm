@@ -188,7 +188,7 @@ Func_cdabd:: ; cdabd
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cdae3
-	setevent $0061
+	setevent EVENT_061
 .asm_cdae3:
 	ld a, $03
 	scall Func_80d01

@@ -21,7 +21,7 @@ Func_87d88::
 	ld a, $3
 	scall Func_80d01
 	loadwilds $3, Data_87d50
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_87daf
 	ld a, $1
@@ -44,7 +44,7 @@ Func_87dca:
 	or a
 	jp nz, .asm_87e32
 	face_player -$1
-	checkevent $51
+	checkevent EVENT_051
 	or a
 	jp nz, .asm_87e2c
 	writenpctext TreeBitstreamText_3ae6a
@@ -60,7 +60,7 @@ Func_87dca:
 	ld e, $1
 	ld a, $b
 	scall Func_80d4d
-	setevent $51
+	setevent EVENT_051
 	writenpctext TreeBitstreamText_3af20
 	jp .asm_87e20
 

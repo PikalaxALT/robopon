@@ -56,7 +56,7 @@ Func_92b08:
 	or a
 	jp nz, Func_92b5e
 	face_player -$1
-	checkevent $8e
+	checkevent EVENT_08E
 	or a
 	jp nz, Func_92b58
 	writetext TreeBitstreamText_42ae8
@@ -69,7 +69,7 @@ Func_92b08:
 	jp Func_92b5e
 
 Func_92b3e: ; 92b3e (24:6b3e)
-	setevent $8e
+	setevent EVENT_08E
 	writetext TreeBitstreamText_42af6
 	jp Func_92b55
 
@@ -98,7 +98,7 @@ Func_92b90:
 	or a
 	jp nz, Func_92be6
 	face_player -$1
-	checkevent $8f
+	checkevent EVENT_08F
 	or a
 	jp nz, Func_92be0
 	writetext TreeBitstreamText_42b02
@@ -111,7 +111,7 @@ Func_92b90:
 	jp Func_92be6
 
 Func_92bc6: ; 92bc6 (24:6bc6)
-	setevent $8f
+	setevent EVENT_08F
 	writetext TreeBitstreamText_42b0b
 	jp Func_92bdd
 

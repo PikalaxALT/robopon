@@ -41,7 +41,7 @@ Func_cb6d3:: ; cb6d3
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_cb655
-	checkevent $00ad
+	checkevent EVENT_0AD
 	or a
 	jp nz, .asm_cb702
 	loadpeople $03, Data_cb69b
@@ -63,7 +63,7 @@ Func_cb721:
 	ld a, e
 	cp $02
 	jp nz, .asm_cb774
-	checkevent $00ad
+	checkevent EVENT_0AD
 	or a
 	jp nz, .asm_cb774
 	playmusic SONG_NONE
@@ -79,7 +79,7 @@ Func_cb721:
 	move_player $01, Data_cb71d
 .asm_cb760:
 	call Func_cb7a9
-	setevent $00ad
+	setevent EVENT_0AD
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
 .asm_cb774:

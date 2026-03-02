@@ -24,7 +24,7 @@ Data_9ea08:
 	person_event $ff, $00, $05, $08, $04, $01, $00, $04, $00, Func_9eda0, NULL
 
 Func_9ea24:: ; 9ea24
-	resetevent $0045
+	resetevent EVENT_045
 	loadwarps $01, Data_9e9a9
 	ld a, $03
 	scall Func_80d01
@@ -34,7 +34,7 @@ Func_9ea24:: ; 9ea24
 	ld a, [wc794]
 	cp $02
 	jp nz, .asm_9ea69
-	checkevent $0053
+	checkevent EVENT_053
 	or a
 	jp nz, .asm_9ea69
 	loadpeople $02, Data_9e9ec
@@ -44,7 +44,7 @@ Func_9ea24:: ; 9ea24
 	ld a, [wc794]
 	cp $03
 	jp nz, .asm_9ea8c
-	checkevent $0054
+	checkevent EVENT_054
 	or a
 	jp nz, .asm_9ea8c
 	loadpeople $02, Data_9e9ec
@@ -54,7 +54,7 @@ Func_9ea24:: ; 9ea24
 	ld a, [wc794]
 	cp $05
 	jp nz, .asm_9eaaf
-	checkevent $0055
+	checkevent EVENT_055
 	or a
 	jp nz, .asm_9eaaf
 	loadpeople $02, Data_9e9ec
@@ -64,7 +64,7 @@ Func_9ea24:: ; 9ea24
 	ld a, [wc794]
 	cp $06
 	jp nz, .asm_9ead2
-	checkevent $0056
+	checkevent EVENT_056
 	or a
 	jp nz, .asm_9ead2
 	loadpeople $02, Data_9e9ec
@@ -74,7 +74,7 @@ Func_9ea24:: ; 9ea24
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9eaf2
-	checkevent $0057
+	checkevent EVENT_057
 	or a
 	jp nz, .asm_9eaf2
 	loadpeople $02, Data_9e9ec
@@ -102,7 +102,7 @@ Func_9eb3c:
 	ld a, e
 	or a
 	jp nz, .asm_9ecf8
-	checkevent $0045
+	checkevent EVENT_045
 	or a
 	jp nz, .asm_9eba0
 	loademote $03, $02, $08
@@ -120,12 +120,12 @@ Func_9eb3c:
 	sprite_face $00, 0
 	sprite_face $01, 0
 	sprite_face $02, 0
-	setevent $0045
+	setevent EVENT_045
 .asm_9eba0:
 	face_player 0
 	ld hl, sp+$00
 	ld [hl], $00
-	checkevent $0053
+	checkevent EVENT_053
 	or a
 	jp nz, .asm_9ebb9
 	ld hl, sp+$00
@@ -134,7 +134,7 @@ Func_9eb3c:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9ebb9:
-	checkevent $0054
+	checkevent EVENT_054
 	or a
 	jp nz, .asm_9ebca
 	ld hl, sp+$00
@@ -143,7 +143,7 @@ Func_9eb3c:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9ebca:
-	checkevent $0055
+	checkevent EVENT_055
 	or a
 	jp nz, .asm_9ebdb
 	ld hl, sp+$00
@@ -152,7 +152,7 @@ Func_9eb3c:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9ebdb:
-	checkevent $0056
+	checkevent EVENT_056
 	or a
 	jp nz, .asm_9ebec
 	ld hl, sp+$00
@@ -161,7 +161,7 @@ Func_9eb3c:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9ebec:
-	checkevent $0057
+	checkevent EVENT_057
 	or a
 	jp nz, .asm_9ebfd
 	ld hl, sp+$00
@@ -207,49 +207,48 @@ Func_9eb3c:
 	ld a, [wc794]
 	cp $02
 	jp nz, .asm_9ec7a
-	checkevent $0053
+	checkevent EVENT_053
 	or a
 	jp nz, .asm_9ec7a
-	setevent $0053
+	setevent EVENT_053
 	jp .asm_9eceb
 .asm_9ec7a:
 	ld a, [wc794]
 	cp $03
 	jp nz, .asm_9ec97
-	checkevent $0054
+	checkevent EVENT_054
 	or a
 	jp nz, .asm_9ec97
-	setevent $0054
+	setevent EVENT_054
 	jp .asm_9eceb
 .asm_9ec97:
 	ld a, [wc794]
 	cp $05
 	jp nz, .asm_9ecb4
-	checkevent $0055
+	checkevent EVENT_055
 	or a
 	jp nz, .asm_9ecb4
-	setevent $0055
+	setevent EVENT_055
 	jp .asm_9eceb
 .asm_9ecb4:
 	ld a, [wc794]
 	cp $06
 	jp nz, .asm_9ecd1
-	checkevent $0056
+	checkevent EVENT_056
 	or a
 	jp nz, .asm_9ecd1
-	setevent $0056
+	setevent EVENT_056
 	jp .asm_9eceb
 .asm_9ecd1:
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9eceb
-	checkevent $0057
+	checkevent EVENT_057
 	or a
 	jp nz, .asm_9eceb
-	setevent $0057
+	setevent EVENT_057
 .asm_9eceb:
 	warp_player MAP_18_00, $1e, $1b
-	pop bc
 .asm_9ecf8:
 	pop bc
 	ret
@@ -391,5 +390,4 @@ Func_9ee27:
 	ld a, $03
 	scall PlayerFace
 	warp_player MAP_18_14, $04, $08
-	pop bc
 	ret

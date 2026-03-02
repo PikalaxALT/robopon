@@ -191,7 +191,7 @@ Func_ceacc:: ; ceacc
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_ceaf2
-	setevent $0061
+	setevent EVENT_061
 .asm_ceaf2:
 	ld a, $02
 	scall Func_80d01

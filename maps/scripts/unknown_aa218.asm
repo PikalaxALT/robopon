@@ -24,16 +24,16 @@ Func_aa218:: ; aa218
 	ld a, $0d
 	ld [wc7e2], a
 	loadwarps $04, Data_aa1a2
-	checkevent $00b7
+	checkevent EVENT_0B7
 	or a
 	jp nz, .asm_aa23c
 	loadpeople $03, Data_aa1d2
 .asm_aa23c:
 	loadpeople $02, Data_aa1fc
-	checkevent $0022
+	checkevent EVENT_022
 	cp $01
 	jp nz, .asm_aa261
-	checkevent $0043
+	checkevent EVENT_043
 	or a
 	jp nz, .asm_aa261
 	playmusic SONG_WILD_BATTLE
@@ -54,7 +54,7 @@ Data_aa273:
 
 Func_aa277:
 	push de
-	checkevent $00b7
+	checkevent EVENT_0B7
 	or a
 	jp nz, .asm_aa2f2
 	ld hl, sp+$00
@@ -67,9 +67,9 @@ Func_aa277:
 	sprite_face $01, 0
 	ld a, $03
 	scall PlayerFace
-	resetevent $00f7
+	resetevent EVENT_0F7
 	call Func_aa321
-	checkevent $00f7
+	checkevent EVENT_0F7
 	or a
 	jp z, .asm_aa2c0
 	jp .asm_aa2f2
@@ -78,14 +78,14 @@ Func_aa277:
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
-	resetevent $00f7
+	resetevent EVENT_0F7
 	call Func_aa392
-	checkevent $00f7
+	checkevent EVENT_0F7
 	or a
 	jp z, .asm_aa2ea
 	jp .asm_aa2f2
 .asm_aa2ea:
-	setevent $00b7
+	setevent EVENT_0B7
 .asm_aa2f2:
 	pop bc
 	ret
@@ -109,7 +109,7 @@ Func_aa321:
 	startbattle Data_aa35f, Data_aa2f8
 	or a
 	jp nz, Func_aa33d
-	setevent $00f7
+	setevent EVENT_0F7
 	ret
 
 Func_aa33d:
@@ -143,7 +143,7 @@ Func_aa392:
 	startbattle Data_aa3d2, Data_aa369
 	or a
 	jp nz, .asm_aa3ae
-	setevent $00f7
+	setevent EVENT_0F7
 	ret
 .asm_aa3ae:
 	playmusic SONG_NONE

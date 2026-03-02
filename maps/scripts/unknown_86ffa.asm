@@ -187,7 +187,7 @@ Func_86ffa::
 	ld a, $5
 	scall Func_80d01
 	loadwilds $2d, Data_86d84
-	checkevent $1
+	checkevent EVENT_001
 	cp $1
 	jp nz, .asm_8703a
 	ld e, $12
@@ -244,7 +244,7 @@ Data_87088: ; 87088
 	db $02, $13, $02, $04, $13, $17
 
 Func_870fa: ; 870fa (21:70fa)
-	checkevent $1
+	checkevent EVENT_001
 	or a
 	jp nz, .asm_87122
 	xor a
@@ -289,9 +289,9 @@ Func_87141:
 	jp nz, .asm_87163
 	face_player $5
 	writetext TreeBitstreamText_414b4
-	checkevent $f0
+	checkevent EVENT_0F0
 	or a
 	jp nz, .asm_87163
-	setevent $f0
+	setevent EVENT_0F0
 .asm_87163: ; 87163 (21:7163)
 	ret

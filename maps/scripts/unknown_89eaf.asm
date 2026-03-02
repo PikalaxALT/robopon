@@ -39,7 +39,7 @@ Func_89eaf:: ; 89eaf
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_89e23
-	checkevent $001f
+	checkevent EVENT_01F
 	or a
 	jp nz, .asm_89ede
 	loadpeople $04, Data_89e69
@@ -66,7 +66,7 @@ Func_89f1e:	push af
 	or a
 	jp nz, .asm_89f74
 	face_player -$01
-	checkevent $0076
+	checkevent EVENT_076
 	or a
 	jp nz, .asm_89f6e
 	writetext TreeBitstreamText_4297c
@@ -78,7 +78,7 @@ Func_89f1e:	push af
 	jp nz, .asm_89f54
 	jp .asm_89f74
 .asm_89f54:
-	setevent $0076
+	setevent EVENT_076
 	writetext TreeBitstreamText_4298a
 	jp .asm_89f6b
 .asm_89f65:
@@ -105,7 +105,7 @@ Func_89fa8:
 	or a
 	jp nz, .asm_89ffe
 	face_player -$01
-	checkevent $0077
+	checkevent EVENT_077
 	or a
 	jp nz, .asm_89ff8
 	writetext TreeBitstreamText_42998
@@ -117,7 +117,7 @@ Func_89fa8:
 	jp nz, .asm_89fde
 	jp .asm_89ffe
 .asm_89fde:
-	setevent $0077
+	setevent EVENT_077
 	writetext TreeBitstreamText_429a1
 	jp .asm_89ff5
 .asm_89fef:
@@ -144,7 +144,7 @@ Func_8a031:
 	or a
 	jp nz, .asm_8a087
 	face_player -$01
-	checkevent $0078
+	checkevent EVENT_078
 	or a
 	jp nz, .asm_8a081
 	writetext TreeBitstreamText_429aa
@@ -156,7 +156,7 @@ Func_8a031:
 	jp nz, .asm_8a067
 	jp .asm_8a087
 .asm_8a067:
-	setevent $0078
+	setevent EVENT_078
 	writetext TreeBitstreamText_429b8
 	jp .asm_8a07e
 .asm_8a078:
@@ -183,7 +183,7 @@ Func_8a0b7:
 	or a
 	jp nz, .asm_8a10d
 	face_player -$01
-	checkevent $0079
+	checkevent EVENT_079
 	or a
 	jp nz, .asm_8a107
 	writetext TreeBitstreamText_42972
@@ -195,7 +195,7 @@ Func_8a0b7:
 	jp nz, .asm_8a0ed
 	jp .asm_8a10d
 .asm_8a0ed:
-	setevent $0079
+	setevent EVENT_079
 	writetext TreeBitstreamText_42972
 	jp .asm_8a104
 .asm_8a0fe:

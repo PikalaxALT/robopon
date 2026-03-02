@@ -150,13 +150,13 @@ Func_920c3:: ; 920c3
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_92147
-	checkevent $0039
+	checkevent EVENT_039
 	or a
 	jp nz, .asm_92127
 	loadwilds $13, Data_91caf
 	jp .asm_92144
 .asm_92127:
-	checkevent $0047
+	checkevent EVENT_047
 	or a
 	jp nz, .asm_9213c
 	loadwilds $13, Data_91db9
@@ -168,7 +168,7 @@ Func_920c3:: ; 920c3
 .asm_92147:
 	loadwilds $12, Data_91bb3
 .asm_9214f:
-	checkevent $0047
+	checkevent EVENT_047
 	cp $01
 	jp nz, .asm_92180
 	ld a, $20
@@ -188,7 +188,7 @@ Func_920c3:: ; 920c3
 	scall LoadPlayerSprite
 	jp .asm_9219a
 .asm_92180:
-	checkevent $0039
+	checkevent EVENT_039
 	cp $01
 	jp nz, .asm_9219a
 	ld a, $1f
@@ -198,7 +198,7 @@ Func_920c3:: ; 920c3
 	ld a, $02
 	scall LoadPlayerSprite
 .asm_9219a:
-	checkevent $008d
+	checkevent EVENT_08D
 	cp $01
 	jp nz, .asm_921ac
 	hideperson $0a
@@ -229,7 +229,7 @@ Func_92211:
 	or a
 	jp nz, .asm_92251
 	face_player 0
-	checkevent $0088
+	checkevent EVENT_088
 	or a
 	jp nz, .asm_9224b
 	writenpctext TreeBitstreamText_3babb
@@ -239,7 +239,7 @@ Func_92211:
 	jp .asm_92251
 .asm_9223a:
 	writenpctext TreeBitstreamText_3baee
-	setevent $0088
+	setevent EVENT_088
 	jp .asm_92251
 .asm_9224b:
 	writenpctext TreeBitstreamText_3bb2b
@@ -278,10 +278,9 @@ Func_92257:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_09_01, $0d, $06
-	pop bc
 	jp .asm_9233a
 .asm_922b2:
-	checkevent $0047
+	checkevent EVENT_047
 	cp $01
 	jp nz, .asm_922eb
 	ld a, $20
@@ -309,7 +308,7 @@ Func_92257:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_92310
-	checkevent $0039
+	checkevent EVENT_039
 	cp $01
 	jp nz, .asm_92310
 	ld a, [wPlayerState]
@@ -329,7 +328,6 @@ Func_92257:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_09_01, $0d, $06
-	pop bc
 .asm_9233a:
 	ret
 
@@ -382,7 +380,7 @@ Func_9233b:
 	scall MovePlayer
 	jp .asm_923f6
 .asm_923a1:
-	checkevent $0047
+	checkevent EVENT_047
 	or a
 	jp nz, .asm_923e9
 	writetext TreeBitstreamText_46fe6
@@ -433,7 +431,7 @@ Func_92422:
 	or a
 	jp nz, .asm_92478
 	face_player -$01
-	checkevent $0089
+	checkevent EVENT_089
 	or a
 	jp nz, .asm_92472
 	writetext TreeBitstreamText_42a37
@@ -445,7 +443,7 @@ Func_92422:
 	jp nz, .asm_92458
 	jp .asm_92478
 .asm_92458:
-	setevent $0089
+	setevent EVENT_089
 	writetext TreeBitstreamText_42a4c
 	jp .asm_9246f
 .asm_92469:
@@ -472,7 +470,7 @@ Func_924a9:
 	or a
 	jp nz, .asm_924ff
 	face_player -$01
-	checkevent $008a
+	checkevent EVENT_08A
 	or a
 	jp nz, .asm_924f9
 	writetext TreeBitstreamText_42a61
@@ -484,7 +482,7 @@ Func_924a9:
 	jp nz, .asm_924df
 	jp .asm_924ff
 .asm_924df:
-	setevent $008a
+	setevent EVENT_08A
 	writetext TreeBitstreamText_42a6e
 	jp .asm_924f6
 .asm_924f0:
@@ -511,7 +509,7 @@ Func_92531:
 	or a
 	jp nz, .asm_92587
 	face_player -$01
-	checkevent $008b
+	checkevent EVENT_08B
 	or a
 	jp nz, .asm_92581
 	writetext TreeBitstreamText_42a7e
@@ -523,7 +521,7 @@ Func_92531:
 	jp nz, .asm_92567
 	jp .asm_92587
 .asm_92567:
-	setevent $008b
+	setevent EVENT_08B
 	writetext TreeBitstreamText_42a9a
 	jp .asm_9257e
 .asm_92578:
@@ -550,7 +548,7 @@ Func_925b8:
 	or a
 	jp nz, .asm_9260e
 	face_player -$01
-	checkevent $008c
+	checkevent EVENT_08C
 	or a
 	jp nz, .asm_92608
 	writetext TreeBitstreamText_42abe
@@ -562,7 +560,7 @@ Func_925b8:
 	jp nz, .asm_925ee
 	jp .asm_9260e
 .asm_925ee:
-	setevent $008c
+	setevent EVENT_08C
 	writetext TreeBitstreamText_42ad0
 	jp .asm_92605
 .asm_925ff:
@@ -593,7 +591,7 @@ Func_9264b:
 	ld a, e
 	or a
 	jp nz, .asm_926b4
-	checkevent $008d
+	checkevent EVENT_08D
 	or a
 	jp nz, .asm_926b4
 	face_player $0a
@@ -618,7 +616,7 @@ Func_9264b:
 .asm_926a2:
 	scall WaitNPCStep
 	hideperson $0a
-	setevent $008d
+	setevent EVENT_08D
 .asm_926b4:
 	ret
 
@@ -629,7 +627,7 @@ Func_926ba:
 	ld a, e
 	or a
 	jp nz, .asm_927c1
-	checkevent $00da
+	checkevent EVENT_0DA
 	or a
 	jp nz, .asm_927bb
 	playsfx SFX_5E
@@ -662,7 +660,7 @@ Func_926ba:
 	ld e, $13
 	ld a, $12
 	scall Func_80e8d
-	setevent $00da
+	setevent EVENT_0DA
 	playsfx SFX_60
 	sprite_face $03, $0e
 	sprite_face $00, $0e
@@ -696,13 +694,13 @@ Func_927eb:
 	or a
 	jp nz, .asm_92844
 	face_player $10
-	checkevent $0039
+	checkevent EVENT_039
 	or a
 	jp nz, .asm_92808
 	writetext TreeBitstreamText_3bdf0
 	jp .asm_92844
 .asm_92808:
-	checkevent $0047
+	checkevent EVENT_047
 	or a
 	jp nz, .asm_9281b
 	writetext TreeBitstreamText_3be3f

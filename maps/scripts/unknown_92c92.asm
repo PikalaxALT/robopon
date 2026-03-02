@@ -60,7 +60,7 @@ Func_92cfe:
 	or a
 	jp nz, .asm_92d54
 	face_player -$01
-	checkevent $0090
+	checkevent EVENT_090
 	or a
 	jp nz, .asm_92d4e
 	writetext TreeBitstreamText_42b16
@@ -72,7 +72,7 @@ Func_92cfe:
 	jp nz, .asm_92d34
 	jp .asm_92d54
 .asm_92d34:
-	setevent $0090
+	setevent EVENT_090
 	writetext TreeBitstreamText_42b16
 	jp .asm_92d4b
 .asm_92d45:
@@ -94,7 +94,7 @@ Func_92d5c:
 	or a
 	jp nz, .asm_92db9
 	face_player -$01
-	checkevent $0014
+	checkevent EVENT_014
 	or a
 	jp nz, .asm_92db3
 	ld a, $17
@@ -104,7 +104,7 @@ Func_92d5c:
 	writenpctext TreeBitstreamText_39e1f
 	playsfx SFX_2A
 	writetext TreeBitstreamText_39e65
-	setevent $0014
+	setevent EVENT_014
 	ld c, $01
 	ld e, $01
 	ld a, $17

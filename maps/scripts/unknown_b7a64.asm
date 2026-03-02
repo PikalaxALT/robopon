@@ -16,7 +16,7 @@ Func_b7a64::
 	hideperson $2
 	hideperson $3
 	hideperson $4
-	checkevent $1b
+	checkevent EVENT_01B
 	or a
 	jp nz, Func_b7abb
 	hideperson $2
@@ -28,7 +28,7 @@ Func_b7a64::
 	jp Func_b7ae2
 
 Func_b7abb:
-	checkevent $1c
+	checkevent EVENT_01C
 	or a
 	jp nz, Func_b7ad3
 	playmusic SONG_PRINCE_TEIL
@@ -171,11 +171,10 @@ Func_b7ceb:
 	scall Func_80653
 	scall WaitEmote
 	scall HideEmote
-	setevent $1b
+	setevent EVENT_01B
 	ld a, $f
 	scall Func_80c94
 	warp_player MAP_31_00, $7, $4
-	pop bc
 	ret
 
 Data_b7d76: ; b7d76
@@ -204,7 +203,7 @@ Func_b7d97:
 Func_b7db4:
 	writenpctext TreeBitstreamText_3dfb9
 Func_b7dba:
-	setevent $1c
+	setevent EVENT_01C
 	ld a, $a
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -216,7 +215,6 @@ Func_b7dba:
 	playsfx SFX_65
 	scall StopShakingScreen
 	warp_player MAP_32_10, $7, $f
-	pop bc
 	ret
 
 Func_b7df7:
@@ -237,5 +235,4 @@ Func_b7df7:
 	scall WaitEmote
 	scall HideEmote
 	warp_player MAP_30_04, $9, $b
-	pop bc
 	ret

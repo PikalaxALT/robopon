@@ -48,7 +48,7 @@ Func_91189:: ; 91189
 	scall LoadPlayerSprite
 	ld a, $06
 	ld [wc7e2], a
-	checkevent $0036
+	checkevent EVENT_036
 	or a
 	jp nz, .asm_911c0
 	loadpeople $03, Data_910d3
@@ -58,7 +58,7 @@ Func_91189:: ; 91189
 .asm_911c0:
 	loadpeople $0a, Data_910fd
 	hideperson $02
-	checkevent $0039
+	checkevent EVENT_039
 	cp $01
 	jp nz, .asm_911ea
 	ld c, $0c
@@ -138,11 +138,10 @@ Func_91219:
 	ld e, $01
 	ld a, $01
 	scall PlayerStep
-	setevent $0036
+	setevent EVENT_036
 	ld a, $07
 	scall Func_80c94
 	warp_player MAP_08_00, $0e, $07
-	pop bc
 	ret
 
 Func_912e5:
@@ -151,16 +150,16 @@ Func_912e5:
 	or a
 	jp nz, .asm_91332
 	face_player -1
-	checkevent $0039
+	checkevent EVENT_039
 	or a
 	jp nz, .asm_9132c
-	checkevent $005c
+	checkevent EVENT_05C
 	or a
 	jp nz, .asm_91326
 	writenpctext_yesorno TreeBitstreamText_3b7f7
 	or a
 	jp nz, .asm_9131d
-	setevent $005c
+	setevent EVENT_05C
 	call Func_91342
 	jp .asm_91323
 .asm_9131d:
@@ -236,7 +235,7 @@ Func_91342:
 	ld a, $13
 	scall Func_80d4d
 	hideperson $02
-	setevent $0039
+	setevent EVENT_039
 	jp .asm_91412
 .asm_9140c:
 	writenpctext TreeBitstreamText_3b9d7
@@ -291,7 +290,6 @@ Func_9145b:
 	or a
 	jp nz, .asm_91477
 	warp_player MAP_08_01, $04, $01
-	pop bc
 	playsfx SFX_2E
 	ld a, $02
 	ld [wPlayerFacing], a

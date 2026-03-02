@@ -778,11 +778,11 @@ Func_806dd_\1:
 	ld hl, sp+$3
 	ld a, [hl]
 	call SpriteFace_\1
-	checkevent $c8
+	checkevent EVENT_0C8
 	or a
 	jp nz, .asm_80732
 	writenpctext TreeBitstreamText_471e4
-	setevent $c8
+	setevent EVENT_0C8
 	jp .asm_80796
 
 .asm_80732: ; 80732 (20:4732)

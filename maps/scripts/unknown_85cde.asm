@@ -70,26 +70,26 @@ Func_85cde::
 	call CompareHLtoDE
 	jp c, .asm_85d1a
 .asm_85d0f: ; 85d0f (21:5d0f)
-	setevent $38
+	setevent EVENT_038
 	jp .asm_85d22
 
 .asm_85d1a: ; 85d1a (21:5d1a)
-	resetevent $38
+	resetevent EVENT_038
 .asm_85d22: ; 85d22 (21:5d22)
 	ld a, $7
 	ld [wc7de], a
 	loadwarps $2, Data_85c82
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_85d70
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_85d70
 	ld a, $3
 	scall Func_80d01
 	loadwilds $5, Data_85c28
 	playmusic SONG_CAVE
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_85d69
 	ld a, $1
@@ -106,7 +106,7 @@ Func_85cde::
 	loadpeople $5, Data_85c98
 	playmusic SONG_TOWN3
 .asm_85d7d: ; 85d7d (21:5d7d)
-	checkevent $14
+	checkevent EVENT_014
 	or a
 	jp nz, .asm_85d97
 	ld a, [wc797]
@@ -134,13 +134,13 @@ Func_85dcd:
 	or a
 	jp nz, .asm_85e60
 	face_player -$1
-	checkevent $c0
+	checkevent EVENT_0C0
 	cp $1
 	jp nz, .asm_85e5a
 	ld a, [wc797]
 	cp $6
 	jp c, .asm_85e51
-	checkevent $6a
+	checkevent EVENT_06A
 	or a
 	jp nz, .asm_85e48
 	writenpctext TreeBitstreamText_3a1de
@@ -153,7 +153,7 @@ Func_85dcd:
 	jp .asm_85e60
 
 .asm_85e16: ; 85e16 (21:5e16)
-	setevent $6a
+	setevent EVENT_06A
 	ld a, [wc797]
 	inc a
 	ld [wc797], a

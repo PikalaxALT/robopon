@@ -43,7 +43,7 @@ Func_92965:: ; 92965
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_92999
-	checkevent $0039
+	checkevent EVENT_039
 	or a
 	jp nz, .asm_92999
 	loadwilds $05, Data_92893
@@ -53,7 +53,7 @@ Func_92965:: ; 92965
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_929b8
-	checkevent $0047
+	checkevent EVENT_047
 	or a
 	jp nz, .asm_929b8
 	loadwilds $05, Data_928d9
@@ -63,7 +63,7 @@ Func_92965:: ; 92965
 	scall Func_80e6d
 	cp $ff
 	jp nz, .asm_929d8
-	checkevent $0047
+	checkevent EVENT_047
 	cp $01
 	jp nz, .asm_929d8
 	loadwilds $05, Data_9291f

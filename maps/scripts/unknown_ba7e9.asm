@@ -122,7 +122,7 @@ Data_ba7bf:
 	person_event $ff, $00, $05, $02, $01, $01, $00, $04, $00, $6efe, NULL
 
 Func_ba7e9:: ; ba7e9
-	resetevent $00fb
+	resetevent EVENT_0FB
 	set_frame_script Func_bb0b0
 	loadpeople $02, Data_ba7a3
 	playmusic SONG_TOWN3
@@ -196,7 +196,7 @@ Func_ba7e9:: ; ba7e9
 	jp .asm_baa5f
 .asm_ba8c4:
 	loadpeople $01, Data_ba6fb
-	checkevent $0052
+	checkevent EVENT_052
 	or a
 	jp nz, .asm_ba8de
 	loadpeople $01, Data_ba6d1
@@ -211,7 +211,7 @@ Func_ba7e9:: ; ba7e9
 	jp .asm_baa5f
 .asm_ba8f6:
 	loadpeople $01, Data_ba709
-	checkevent $0052
+	checkevent EVENT_052
 	cp $01
 	jp nz, .asm_ba911
 	loadpeople $01, Data_ba6df
@@ -274,7 +274,7 @@ Func_ba7e9:: ; ba7e9
 	jp .asm_baa5f
 .asm_ba9bd:
 	loadpeople $01, Data_ba741
-	checkevent $00ed
+	checkevent EVENT_0ED
 	cp $01
 	jp nz, .asm_ba9d8
 	loadpeople $01, Data_ba6ed
@@ -334,7 +334,7 @@ Func_baa60:
 	ld a, e
 	or a
 	jp nz, .asm_babdb
-	checkevent $0059
+	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_baa79
 	writetext TreeBitstreamText_47037
@@ -351,7 +351,7 @@ Func_baa60:
 	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
-	resetevent $00fa
+	resetevent EVENT_0FA
 	ld a, [wc78a]
 	cp $0e
 	jp z, .asm_babc9
@@ -380,73 +380,61 @@ Func_baa60:
 	ld a, $02
 	ld [wc78a], a
 	warp_player MAP_05_20, $09, $0c
-	pop bc
 	jp .asm_babdb
 .asm_baaf7:
 	ld a, $05
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_bab0c:
 	ld a, $06
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_bab21:
 	ld a, $07
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_bab36:
 	ld a, $05
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_bab4b:
 	ld a, $09
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_bab60:
 	ld a, $0a
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_bab75:
 	ld a, $0b
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_bab8a:
 	ld a, $0c
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_bab9f:
 	ld a, $0d
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_babb4:
 	ld a, $0b
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_babdb
 .asm_babc9:
 	ld a, $0f
 	ld [wc78a], a
 	warp_player MAP_04_01, $0c, $04
-	pop bc
 .asm_babdb:
 	ret
 
@@ -459,7 +447,7 @@ Func_babdc:
 	jp z, .asm_babeb
 	jp .asm_bad5b
 .asm_babeb:
-	checkevent $0059
+	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_babff
 	writetext TreeBitstreamText_47037
@@ -473,7 +461,7 @@ Func_babdc:
 	scall HideEmote
 	ld a, $02
 	scall PlayerFace
-	resetevent $00fa
+	resetevent EVENT_0FA
 	ld a, [wc78a]
 	cp $0e
 	jp z, .asm_bad49
@@ -502,78 +490,66 @@ Func_babdc:
 	xor a
 	scall PlayerFace
 	warp_player MAP_05_21, $09, $10
-	pop bc
 	jp .asm_bad5b
 .asm_bac77:
 	ld a, $03
 	ld [wc78a], a
 	warp_player MAP_03_12, $16, $0f
-	pop bc
 	jp .asm_bad5b
 .asm_bac8c:
 	ld a, $08
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_baca1:
 	ld a, $05
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_bacb6:
 	ld a, $06
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_baccb:
 	ld a, $05
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_bace0:
 	ld a, $08
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_bacf5:
 	ld a, $09
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_bad0a:
 	ld a, $0e
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_bad1f:
 	ld a, $0b
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_bad34:
 	ld a, $0c
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 	jp .asm_bad5b
 .asm_bad49:
 	ld a, $0b
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 .asm_bad5b:
 	ret
 
 Func_bad5c:
-	checkevent $00fa
+	checkevent EVENT_0FA
 	or a
 	jp nz, .asm_bad9a
 	playmusic SONG_TOWN3
@@ -586,7 +562,7 @@ Func_bad5c:
 	scall Func_80653
 	script_sleep 1
 	scall HideEmote
-	setevent $00fa
+	setevent EVENT_0FA
 	jp .asm_bad9f
 .asm_bad9a:
 	ld a, $01
@@ -641,7 +617,7 @@ Func_badb0:
 	pop bc
 	pop bc
 	writenpctext TreeBitstreamText_3add4
-	setevent $0052
+	setevent EVENT_052
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_bae2d
@@ -683,8 +659,8 @@ Func_bae5a:
 	jp nz, .asm_baea8
 	face_player -$01
 	writenpctext TreeBitstreamText_3ae53
-	resetevent $0052
-	setevent $00ed
+	resetevent EVENT_052
+	setevent EVENT_0ED
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_bae92
@@ -723,7 +699,7 @@ Func_baeb6:
 	jp nz, .asm_baefc
 	face_player -$01
 	writenpctext TreeBitstreamText_3ae53
-	resetevent $00ed
+	resetevent EVENT_0ED
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_baee6
@@ -762,15 +738,15 @@ Func_baefe:
 	writetext TreeBitstreamText_47041
 	jp .asm_baf51
 .asm_baf1b:
-	checkevent $0059
+	checkevent EVENT_059
 	or a
 	jp nz, .asm_baf3b
-	setevent $0059
+	setevent EVENT_059
 	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_baf4e
 .asm_baf3b:
-	resetevent $0059
+	resetevent EVENT_059
 	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_baf4e:
@@ -815,7 +791,7 @@ Data_bafcb:
 	warpdef $01, $08, $02, $01, MAP_05_00, $10, $15, $10, $16, SFX_34
 
 Func_bafd6:
-	checkevent $0059
+	checkevent EVENT_059
 	or a
 	jp nz, .asm_bafe6
 	scall AllocateSpaceForWarps

@@ -36,7 +36,7 @@ Func_9e052:: ; 9e052
 	ld a, $01
 	ld [wc792], a
 	loadwarps $02, Data_9dfe4
-	resetevent $0010
+	resetevent EVENT_010
 	loadpeople $01, Data_9e044
 	ld a, $03
 	scall Func_80d01

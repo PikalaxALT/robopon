@@ -20,14 +20,14 @@ Data_95794:
 
 Func_957b0:: ; 957b0
 	loadwarps $02, Data_95768
-	checkevent $000e
+	checkevent EVENT_00E
 	or a
 	jp nz, .asm_957e0
 	loadpeople $01, Data_95786
 	playmusic SONG_SHOP
 	scall Func_8001c
 	call Func_957f5
-	setevent $000e
+	setevent EVENT_00E
 	jp .asm_957f0
 .asm_957e0:
 	playmusic SONG_SHOP

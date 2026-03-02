@@ -29,7 +29,7 @@ Func_81ac1::
 	cp $3
 	jp nz, Func_81b20
 Func_81ae8: ; 81ae8 (20:5ae8)
-	checkevent $b
+	checkevent EVENT_00B
 	or a
 	jp nz, Func_81b15
 	loadpeople $4, Data_81a84
@@ -38,7 +38,7 @@ Func_81ae8: ; 81ae8 (20:5ae8)
 	playmusic SONG_TOWN3
 	scall Func_8001c
 	call Func_81b45
-	setevent $b
+	setevent EVENT_00B
 	jp Func_81b1d
 
 Func_81b15: ; 81b15 (20:5b15)

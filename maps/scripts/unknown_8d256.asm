@@ -88,7 +88,7 @@ Func_8d256:: ; 8d256
 	playmusic SONG_TOWN2
 	ld a, $01
 	scall LoadPlayerSprite
-	checkevent $0046
+	checkevent EVENT_046
 	cp $01
 	jp nz, .asm_8d2a9
 	hideperson $02
@@ -169,7 +169,6 @@ Func_8d2f4:
 	ld a, $03
 	scall PlayerFace
 	warp_player MAP_30_02, $2d, $09
-	pop bc
 .asm_8d383:
 	jp .asm_8d38c
 .asm_8d386:
@@ -184,7 +183,7 @@ Func_8d2f4:
 Func_8d396:
 	push de
 	xor a
-	checkevent $0046
+	checkevent EVENT_046
 	or a
 	jp nz, .asm_8d42b
 	ld hl, sp+$00
@@ -251,7 +250,7 @@ Func_8d396:
 	scall Func_80c94
 	ld a, $0b
 	scall Func_80c94
-	setevent $0046
+	setevent EVENT_046
 .asm_8d42b:
 	pop bc
 	ret
@@ -359,7 +358,7 @@ Func_8d4d8:: ; 8d4d8
 	jp .asm_8d5f2
 .asm_8d5bd:
 	call Func_8d877
-	setevent $002f
+	setevent EVENT_02F
 	jp .asm_8d5f2
 .asm_8d5cb:
 	call Func_8d813
@@ -371,11 +370,11 @@ Func_8d4d8:: ; 8d4d8
 	call Func_8d76b
 	jp .asm_8d5f2
 .asm_8d5dd:
-	checkevent $0049
+	checkevent EVENT_049
 	or a
 	jp nz, .asm_8d5f2
 	call Func_8d61a
-	setevent $0049
+	setevent EVENT_049
 .asm_8d5f2:
 	jp .asm_8d5fa
 .asm_8d5f5:

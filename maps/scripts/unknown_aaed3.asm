@@ -27,22 +27,22 @@ Func_aaed3:: ; aaed3
 	ld a, $03
 	scall Func_80d01
 	loadwilds $04, Data_aae63
-	setevent $00c2
-	checkevent $0022
+	setevent EVENT_0C2
+	checkevent EVENT_022
 	cp $01
 	jp nz, .asm_aaf44
-	checkevent $0043
+	checkevent EVENT_043
 	or a
 	jp nz, .asm_aaf44
 	loadpeople $04, Data_aae9b
 	playmusic SONG_WILD_BATTLE
-	checkevent $00b3
+	checkevent EVENT_0B3
 	or a
 	jp z, .asm_aaf29
 	hideperson 0
 	hideperson $01
 .asm_aaf29:
-	checkevent $00b4
+	checkevent EVENT_0B4
 	or a
 	jp z, .asm_aaf41
 	hideperson $02
@@ -77,7 +77,7 @@ Data_aaf80:
 
 Func_aaf84:
 	push de
-	checkevent $00b3
+	checkevent EVENT_0B3
 	or a
 	jp nz, .asm_ab01b
 	ld hl, sp+$00
@@ -119,7 +119,7 @@ Func_aaf84:
 	hideperson $01
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
-	setevent $00b3
+	setevent EVENT_0B3
 .asm_ab01b:
 	pop bc
 	ret
@@ -149,7 +149,7 @@ Data_ab056:
 
 Func_ab05c:
 	push de
-	checkevent $00b4
+	checkevent EVENT_0B4
 	or a
 	jp nz, .asm_ab0f7
 	ld hl, sp+$00
@@ -191,7 +191,7 @@ Func_ab05c:
 	hideperson $03
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
-	setevent $00b4
+	setevent EVENT_0B4
 .asm_ab0f7:
 	pop bc
 	ret

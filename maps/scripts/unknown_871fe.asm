@@ -34,7 +34,7 @@ Data_871d4: ; 871d4
 Func_871fe::
 	loadwarps $3, Data_87164
 	playmusic SONG_CAVE
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_8723b
 	ld a, $1
@@ -42,10 +42,10 @@ Func_871fe::
 	scall Func_8001c
 	writenpctext TreeBitstreamText_3a89f
 	call Func_8737a
-	checkevent $f0
+	checkevent EVENT_0F0
 	or a
 	jp nz, .asm_87238
-	setevent $f0
+	setevent EVENT_0F0
 .asm_87238: ; 87238 (21:7238)
 	jp .asm_87265
 
@@ -75,7 +75,7 @@ Func_8728f:
 	or a
 	jp nz, .asm_872e5
 	face_player -$1
-	checkevent $6c
+	checkevent EVENT_06C
 	or a
 	jp nz, .asm_872df
 	writetext TreeBitstreamText_42bb7
@@ -88,7 +88,7 @@ Func_8728f:
 	jp .asm_872e5
 
 .asm_872c5: ; 872c5 (21:72c5)
-	setevent $6c
+	setevent EVENT_06C
 	writetext TreeBitstreamText_42bc8
 	jp .asm_872dc
 
@@ -117,7 +117,7 @@ Func_87317:
 	or a
 	jp nz, .asm_8736d
 	face_player -$1
-	checkevent $6d
+	checkevent EVENT_06D
 	or a
 	jp nz, .asm_87367
 	writetext TreeBitstreamText_42ba0
@@ -130,7 +130,7 @@ Func_87317:
 	jp .asm_8736d
 
 .asm_8734d: ; 8734d (21:734d)
-	setevent $6d
+	setevent EVENT_06D
 	writetext TreeBitstreamText_42baa
 	jp .asm_87364
 

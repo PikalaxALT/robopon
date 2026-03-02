@@ -43,7 +43,7 @@ Func_8744d::
 	scall Func_80d01
 	loadwilds $8, Data_873b3
 	loadpeople $3, Data_87423
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_87484
 	ld a, $1
@@ -85,7 +85,7 @@ Func_874ec:
 	or a
 	jp nz, .asm_87542
 	face_player -$1
-	checkevent $6e
+	checkevent EVENT_06E
 	or a
 	jp nz, .asm_8753c
 	writetext TreeBitstreamText_42be8
@@ -98,7 +98,7 @@ Func_874ec:
 	jp .asm_87542
 
 .asm_87522: ; 87522 (21:7522)
-	setevent $6e
+	setevent EVENT_06E
 	writetext TreeBitstreamText_42bf7
 	jp .asm_87539
 
@@ -127,7 +127,7 @@ Func_87574:
 	or a
 	jp nz, .asm_8763c
 	face_player -$1
-	checkevent $6f
+	checkevent EVENT_06F
 	or a
 	jp nz, .asm_87602
 	writetext TreeBitstreamText_42b8f
@@ -140,14 +140,14 @@ Func_87574:
 	jp .asm_8763c
 
 .asm_875aa: ; 875aa (21:75aa)
-	setevent $6f
-	checkevent $109
+	setevent EVENT_06F
+	checkevent EVENT_109
 	or a
 	jp nz, .asm_875f0
 	ld a, [wc79c]
 	cp $1
 	jp c, .asm_875f0
-	checkevent $114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_875f0
 	writetext TreeBitstreamText_45fec
@@ -157,7 +157,7 @@ Func_87574:
 	ld e, $1
 	ld a, $10
 	scall Func_80d4d
-	setevent $109
+	setevent EVENT_109
 .asm_875f0: ; 875f0 (21:75f0)
 	writetext TreeBitstreamText_42b98
 	jp .asm_875ff
@@ -168,7 +168,7 @@ Func_87574:
 	jp .asm_8763c
 
 .asm_87602: ; 87602 (21:7602)
-	checkevent $109
+	checkevent EVENT_109
 	or a
 	jp nz, .asm_87636
 	ld a, [wc79c]
@@ -181,7 +181,7 @@ Func_87574:
 	ld e, $1
 	ld a, $10
 	scall Func_80d4d
-	setevent $109
+	setevent EVENT_109
 .asm_87636: ; 87636 (21:7636)
 	writetext TreeBitstreamText_42bc8
 .asm_8763c: ; 8763c (21:763c)
@@ -192,8 +192,8 @@ Data_8763e:
 	dstr "(かいてーしﾞん)"
 
 Func_87648: ; 87648 (21:7648)
-	resetevent $18
-	resetevent $19
-	resetevent $1a
-	resetevent $4b
+	resetevent EVENT_018
+	resetevent EVENT_019
+	resetevent EVENT_01A
+	resetevent EVENT_04B
 	ret

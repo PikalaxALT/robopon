@@ -28,19 +28,19 @@ Func_a34d1:: ; a34d1
 	scall Func_80d01
 	loadwilds $03, Data_a346f
 	playmusic SONG_CAVE
-	checkevent $00ce
+	checkevent EVENT_0CE
 	or a
 	jp z, .asm_a3509
-	checkevent $00cf
+	checkevent EVENT_0CF
 	or a
 	jp z, .asm_a3509
-	checkevent $00d0
+	checkevent EVENT_0D0
 	or a
 	jp nz, .asm_a3529
 .asm_a3509:
-	resetevent $00ce
-	resetevent $00cf
-	resetevent $00d0
+	resetevent EVENT_0CE
+	resetevent EVENT_0CF
+	resetevent EVENT_0D0
 	loadpeople $03, Data_a3499
 .asm_a3529:
 	loadpeople $01, Data_a34c3
@@ -76,14 +76,14 @@ Func_a353b:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $00ce
-	checkevent $00cf
+	setevent EVENT_0CE
+	checkevent EVENT_0CF
 	cp $01
 	jp nz, .asm_a3599
-	checkevent $00d0
+	checkevent EVENT_0D0
 	cp $01
 	jp nz, .asm_a3599
-	setevent $00d3
+	setevent EVENT_0D3
 .asm_a3599:
 	pop bc
 	ret
@@ -116,14 +116,14 @@ Func_a359b:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $00cf
-	checkevent $00ce
+	setevent EVENT_0CF
+	checkevent EVENT_0CE
 	cp $01
 	jp nz, .asm_a35f9
-	checkevent $00d0
+	checkevent EVENT_0D0
 	cp $01
 	jp nz, .asm_a35f9
-	setevent $00d3
+	setevent EVENT_0D3
 .asm_a35f9:
 	pop bc
 	ret
@@ -156,14 +156,14 @@ Func_a35fb:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $00d0
-	checkevent $00ce
+	setevent EVENT_0D0
+	checkevent EVENT_0CE
 	cp $01
 	jp nz, .asm_a3659
-	checkevent $00cf
+	checkevent EVENT_0CF
 	cp $01
 	jp nz, .asm_a3659
-	setevent $00d3
+	setevent EVENT_0D3
 .asm_a3659:
 	pop bc
 	ret

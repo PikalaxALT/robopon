@@ -18,13 +18,13 @@ Func_92e02:: ; 92e02
 	loadwarps $01, Data_92dbb
 	ld a, $01
 	scall LoadPlayerSprite
-	checkevent $0015
+	checkevent EVENT_015
 	or a
 	jp nz, .asm_92e32
 	loadpeople $02, Data_92dca
 	scall Func_8001c
 	call Func_92e6d
-	setevent $0015
+	setevent EVENT_015
 	jp .asm_92e5c
 .asm_92e32:
 	ld a, [wc790]

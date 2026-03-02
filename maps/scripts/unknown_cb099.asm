@@ -32,7 +32,7 @@ Func_cb099:: ; cb099
 	scall Func_80d01
 	loadwilds $05, Data_cb01b
 	loadpeople $04, Data_cb061
-	checkevent $00aa
+	checkevent EVENT_0AA
 	cp $01
 	jp nz, .asm_cb0ce
 	hideperson 0
@@ -64,7 +64,7 @@ Func_cb10e:
 	ld a, e
 	cp $02
 	jp nz, .asm_cb176
-	checkevent $00aa
+	checkevent EVENT_0AA
 	or a
 	jp nz, .asm_cb176
 	move_player $01, Data_cb0dd
@@ -81,7 +81,7 @@ Func_cb10e:
 	move_person 0, Data_cb0e1, 1
 	scall WaitNPCStep
 	hideperson 0
-	setevent $00aa
+	setevent EVENT_0AA
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
 .asm_cb176:
@@ -95,19 +95,19 @@ Data_cb17f:
 
 Func_cb183:
 	push de
-	checkevent $0095
+	checkevent EVENT_095
 	or a
 	jp z, .asm_cb1b6
-	checkevent $009a
+	checkevent EVENT_09A
 	or a
 	jp z, .asm_cb1b6
-	checkevent $009f
+	checkevent EVENT_09F
 	or a
 	jp z, .asm_cb1b6
-	checkevent $00a4
+	checkevent EVENT_0A4
 	or a
 	jp z, .asm_cb1b6
-	checkevent $00a9
+	checkevent EVENT_0A9
 	or a
 	jp nz, .asm_cb1e7
 .asm_cb1b6:
@@ -132,19 +132,19 @@ Func_cb1e9:
 	or a
 	jp nz, .asm_cb236
 	face_player -$01
-	checkevent $0095
+	checkevent EVENT_095
 	or a
 	jp z, .asm_cb227
-	checkevent $009a
+	checkevent EVENT_09A
 	or a
 	jp z, .asm_cb227
-	checkevent $009f
+	checkevent EVENT_09F
 	or a
 	jp z, .asm_cb227
-	checkevent $00a4
+	checkevent EVENT_0A4
 	or a
 	jp z, .asm_cb227
-	checkevent $00a9
+	checkevent EVENT_0A9
 	or a
 	jp nz, .asm_cb230
 .asm_cb227:

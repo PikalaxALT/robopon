@@ -43,10 +43,10 @@ Func_8a69b:: ; 8a69b
 	playmusic SONG_TOWER
 	ld a, $03
 	ld [wc7e2], a
-	checkevent $0086
+	checkevent EVENT_086
 	cp $01
 	jp nz, .asm_8a71a
-	checkevent $0107
+	checkevent EVENT_107
 	cp $01
 	jp nz, .asm_8a70a
 	ld c, $03
@@ -91,7 +91,7 @@ Func_8a779:
 	or a
 	jp nz, .asm_8a7cf
 	face_player -$01
-	checkevent $007e
+	checkevent EVENT_07E
 	or a
 	jp nz, .asm_8a7c9
 	writetext TreeBitstreamText_429aa
@@ -103,7 +103,7 @@ Func_8a779:
 	jp nz, .asm_8a7af
 	jp .asm_8a7cf
 .asm_8a7af:
-	setevent $007e
+	setevent EVENT_07E
 	writetext TreeBitstreamText_429b8
 	jp .asm_8a7c6
 .asm_8a7c0:
@@ -130,7 +130,7 @@ Func_8a801:
 	or a
 	jp nz, .asm_8a857
 	face_player -$01
-	checkevent $007f
+	checkevent EVENT_07F
 	or a
 	jp nz, .asm_8a851
 	writetext TreeBitstreamText_42998
@@ -142,7 +142,7 @@ Func_8a801:
 	jp nz, .asm_8a837
 	jp .asm_8a857
 .asm_8a837:
-	setevent $007f
+	setevent EVENT_07F
 	writetext TreeBitstreamText_4297c
 	jp .asm_8a84e
 .asm_8a848:
@@ -175,7 +175,7 @@ Func_8a892:
 	or a
 	jp nz, .asm_8a92e
 	face_player -$01
-	checkevent $0086
+	checkevent EVENT_086
 	or a
 	jp nz, .asm_8a915
 	writetext TreeBitstreamText_42cd5
@@ -192,7 +192,7 @@ Func_8a892:
 	or a
 	jp nz, .asm_8a8eb
 	move_person -$01, Data_8a888, 1
-	setevent $0107
+	setevent EVENT_107
 	jp .asm_8a8f6
 .asm_8a8eb:
 	move_person -$01, Data_8a88c, 1
@@ -202,14 +202,14 @@ Func_8a892:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
-	setevent $0086
+	setevent EVENT_086
 	jp .asm_8a912
 .asm_8a90c:
 	writetext TreeBitstreamText_42d11
 .asm_8a912:
 	jp .asm_8a92e
 .asm_8a915:
-	checkevent $001f
+	checkevent EVENT_01F
 	or a
 	jp nz, .asm_8a928
 	writetext TreeBitstreamText_42d27

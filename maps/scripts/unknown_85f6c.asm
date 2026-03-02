@@ -80,11 +80,11 @@ Func_85f6c::
 	call CompareHLtoDE
 	jp c, .asm_85fa8
 .asm_85f9d: ; 85f9d (21:5f9d)
-	setevent $38
+	setevent EVENT_038
 	jp .asm_85fb0
 
 .asm_85fa8: ; 85fa8 (21:5fa8)
-	resetevent $38
+	resetevent EVENT_038
 .asm_85fb0: ; 85fb0 (21:5fb0)
 	ld a, [wSaveFileExists]
 	or a
@@ -106,14 +106,14 @@ Func_85f6c::
 	ld [wc7de], a
 .asm_85fd8: ; 85fd8 (21:5fd8)
 	loadwarps $3, Data_85f05
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_86014
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_86014
 	playmusic SONG_CAVE
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_8600d
 	ld a, $1
@@ -135,10 +135,10 @@ Func_85f6c::
 	jp z, .asm_86060
 	cp $3
 	jp nz, .asm_86094
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_8604f
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_8604f
 	ld a, $3
@@ -153,10 +153,10 @@ Func_85f6c::
 	jp .asm_86094
 
 .asm_86060: ; 86060 (21:6060)
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_86086
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_86086
 	ld a, $3
@@ -185,10 +185,10 @@ Func_860c1:
 	or a
 	jp nz, .asm_86143
 	face_player -$1
-	checkevent $c0
+	checkevent EVENT_0C0
 	cp $1
 	jp nz, .asm_8613d
-	checkevent $66
+	checkevent EVENT_066
 	or a
 	jp nz, .asm_86134
 	writenpctext TreeBitstreamText_3a00a
@@ -201,7 +201,7 @@ Func_860c1:
 	jp .asm_86143
 
 .asm_86102: ; 86102 (21:6102)
-	setevent $66
+	setevent EVENT_066
 	ld a, [wc797]
 	inc a
 	ld [wc797], a
@@ -241,10 +241,10 @@ Func_8617b:
 	or a
 	jp nz, .asm_861fd
 	face_player -$1
-	checkevent $c0
+	checkevent EVENT_0C0
 	cp $1
 	jp nz, .asm_861f7
-	checkevent $68
+	checkevent EVENT_068
 	or a
 	jp nz, .asm_861ee
 	writenpctext TreeBitstreamText_3a138
@@ -257,7 +257,7 @@ Func_8617b:
 	jp .asm_861fd
 
 .asm_861bc: ; 861bc (21:61bc)
-	setevent $68
+	setevent EVENT_068
 	ld a, [wc797]
 	inc a
 	ld [wc797], a

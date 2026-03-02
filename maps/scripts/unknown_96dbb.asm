@@ -113,7 +113,7 @@ Func_96e97:: ; 96e97
 	pop bc
 	loadwarps $02, Data_96dd9
 	loadpeople $0a, Data_96e0b
-	checkevent $010e
+	checkevent EVENT_10E
 	cp $01
 	jp nz, .asm_96f11
 	hideperson $07
@@ -271,9 +271,8 @@ Func_970d8:
 	scall WaitNPCStep
 	script_sleep 30
 	sprite_face $01, $07
-	setevent $010e
+	setevent EVENT_10E
 	warp_player MAP_12_01, $09, $24
-	pop bc
 	jp .asm_9714f
 .asm_97136:
 	writenpctext TreeBitstreamText_47c51

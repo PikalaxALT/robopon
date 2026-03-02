@@ -213,7 +213,7 @@ Func_cd533:: ; cd533
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cd559
-	setevent $0061
+	setevent EVENT_061
 .asm_cd559:
 	ld a, $03
 	scall Func_80d01

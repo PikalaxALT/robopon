@@ -21,7 +21,7 @@ Func_a544c:: ; a544c
 	ld a, $10
 	ld [wc789], a
 	loadpeople $06, Data_a53f8
-	checkevent $0044
+	checkevent EVENT_044
 	or a
 	jp nz, .asm_a546e
 	loadwarps $01, Data_a53de
@@ -44,7 +44,7 @@ Func_a549d:
 	ld a, e
 	or a
 	jp nz, .asm_a54f1
-	checkevent $0017
+	checkevent EVENT_017
 	or a
 	jp nz, .asm_a54ea
 	writenpctext TreeBitstreamText_3cf5a
@@ -64,7 +64,7 @@ Func_a549d:
 	cp $ff
 	jp nz, .asm_a54df
 .asm_a54df:
-	setevent $0017
+	setevent EVENT_017
 	jp .asm_a54f1
 .asm_a54ea:
 	ld e, $00
@@ -134,7 +134,6 @@ Func_a553a:
 .asm_a5597:
 	call Func_a5640
 	warp_player MAP_30_02, $01, $10
-	pop bc
 .asm_a55a7:
 	jp .asm_a55b0
 .asm_a55aa:
@@ -190,7 +189,6 @@ Func_a55c0:
 .asm_a561d:
 	call Func_a5640
 	warp_player MAP_30_00, $2d, $12
-	pop bc
 .asm_a562d:
 	jp .asm_a5636
 .asm_a5630:

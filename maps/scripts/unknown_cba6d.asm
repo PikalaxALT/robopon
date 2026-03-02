@@ -34,7 +34,7 @@ Func_cba6d:: ; cba6d
 	scall Func_80d01
 	loadwilds $05, Data_cb9fd
 	loadpeople $03, Data_cba43
-	checkevent $0016
+	checkevent EVENT_016
 	cp $01
 	jp nz, .asm_cbaaa
 	hideperson 0
@@ -55,7 +55,7 @@ Func_cbac1:
 	ld a, e
 	cp $02
 	jp nz, .asm_cbb23
-	checkevent $0016
+	checkevent EVENT_016
 	or a
 	jp nz, .asm_cbb23
 	playmusic SONG_NONE
@@ -69,7 +69,7 @@ Func_cbac1:
 	sprite_face $00, 0
 	hideperson 0
 	hideperson $01
-	setevent $0016
+	setevent EVENT_016
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
 .asm_cbb23:
@@ -91,7 +91,6 @@ Func_cbb24:
 	scall WaitEmote
 	scall HideEmote
 	warp_player MAP_28_00, $07, $06
-	pop bc
 	script_sleep 30
 .asm_cbb5e:
 	ret

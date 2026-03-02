@@ -135,7 +135,7 @@ Func_ae56c:
 	ld a, e
 	or a
 	jp nz, .asm_ae674
-	checkevent $00e0
+	checkevent EVENT_0E0
 	or a
 	jp nz, .asm_ae66e
 	playsfx SFX_5E
@@ -168,7 +168,7 @@ Func_ae56c:
 	ld e, $04
 	ld a, $01
 	scall Func_80e8d
-	setevent $00e0
+	setevent EVENT_0E0
 	playsfx SFX_60
 	sprite_face $03, $04
 	sprite_face $00, $04

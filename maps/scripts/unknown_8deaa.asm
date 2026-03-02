@@ -36,37 +36,37 @@ Func_8deaa:: ; 8deaa
 	loadwarps $02, Data_8dde0
 	loadpeople $05, Data_8de64
 	hideperson 0
-	checkevent $0037
+	checkevent EVENT_037
 	or a
 	jp nz, .asm_8df41
 	loadpeople $07, Data_8de02
 	hideperson $0a
-	checkevent $0028
+	checkevent EVENT_028
 	cp $01
 	jp nz, .asm_8def9
 	hideperson $05
 .asm_8def9:
-	checkevent $0029
+	checkevent EVENT_029
 	cp $01
 	jp nz, .asm_8df0b
 	hideperson $06
 .asm_8df0b:
-	checkevent $002a
+	checkevent EVENT_02A
 	cp $01
 	jp nz, .asm_8df1d
 	hideperson $07
 .asm_8df1d:
-	checkevent $002b
+	checkevent EVENT_02B
 	cp $01
 	jp nz, .asm_8df2f
 	hideperson $08
 .asm_8df2f:
-	checkevent $002c
+	checkevent EVENT_02C
 	cp $01
 	jp nz, .asm_8df41
 	hideperson $09
 .asm_8df41:
-	checkevent $0037
+	checkevent EVENT_037
 	cp $01
 	jp nz, .asm_8df54
 	playmusic SONG_TOWN1
@@ -86,19 +86,19 @@ Data_8df68:
 	db $11, $12, $01, $01, $12, $12
 
 Func_8df6e:
-	checkevent $0028
+	checkevent EVENT_028
 	or a
 	jp z, .asm_8dfa0
-	checkevent $0029
+	checkevent EVENT_029
 	or a
 	jp z, .asm_8dfa0
-	checkevent $002a
+	checkevent EVENT_02A
 	or a
 	jp z, .asm_8dfa0
-	checkevent $002b
+	checkevent EVENT_02B
 	or a
 	jp z, .asm_8dfa0
-	checkevent $002c
+	checkevent EVENT_02C
 	or a
 	jp nz, .asm_8dfa9
 .asm_8dfa0:
@@ -128,7 +128,7 @@ Func_8dfe6:
 	ld a, e
 	or a
 	jp nz, .asm_8e046
-	checkevent $0028
+	checkevent EVENT_028
 	or a
 	jp nz, .asm_8e046
 	face_player -$01
@@ -151,7 +151,7 @@ Func_8dfe6:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $0028
+	setevent EVENT_028
 .asm_8e046:
 	pop bc
 	ret
@@ -175,7 +175,7 @@ Func_8e080:
 	ld a, e
 	or a
 	jp nz, .asm_8e0e0
-	checkevent $0029
+	checkevent EVENT_029
 	or a
 	jp nz, .asm_8e0e0
 	face_player -$01
@@ -198,7 +198,7 @@ Func_8e080:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $0029
+	setevent EVENT_029
 .asm_8e0e0:
 	pop bc
 	ret
@@ -222,7 +222,7 @@ Func_8e11a:
 	ld a, e
 	or a
 	jp nz, .asm_8e17a
-	checkevent $002a
+	checkevent EVENT_02A
 	or a
 	jp nz, .asm_8e17a
 	face_player -$01
@@ -245,7 +245,7 @@ Func_8e11a:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $002a
+	setevent EVENT_02A
 .asm_8e17a:
 	pop bc
 	ret
@@ -269,7 +269,7 @@ Func_8e1b2:
 	ld a, e
 	or a
 	jp nz, .asm_8e212
-	checkevent $002b
+	checkevent EVENT_02B
 	or a
 	jp nz, .asm_8e212
 	face_player -$01
@@ -292,7 +292,7 @@ Func_8e1b2:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $002b
+	setevent EVENT_02B
 .asm_8e212:
 	pop bc
 	ret
@@ -316,7 +316,7 @@ Func_8e24c:
 	ld a, e
 	or a
 	jp nz, .asm_8e2ab
-	checkevent $002c
+	checkevent EVENT_02C
 	or a
 	jp nz, .asm_8e2ab
 	face_player -$01
@@ -339,7 +339,7 @@ Func_8e24c:
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $002c
+	setevent EVENT_02C
 .asm_8e2ab:
 	pop bc
 	ret
@@ -357,22 +357,22 @@ Func_8e2be:
 	ld a, e
 	cp $02
 	jp nz, .asm_8e36d
-	checkevent $0028
+	checkevent EVENT_028
 	cp $01
 	jp nz, .asm_8e36d
-	checkevent $0029
+	checkevent EVENT_029
 	cp $01
 	jp nz, .asm_8e36d
-	checkevent $002a
+	checkevent EVENT_02A
 	cp $01
 	jp nz, .asm_8e36d
-	checkevent $002b
+	checkevent EVENT_02B
 	cp $01
 	jp nz, .asm_8e36d
-	checkevent $002c
+	checkevent EVENT_02C
 	cp $01
 	jp nz, .asm_8e36d
-	checkevent $0037
+	checkevent EVENT_037
 	or a
 	jp nz, .asm_8e36d
 	playmusic SONG_NONE
@@ -393,7 +393,7 @@ Func_8e2be:
 	scall WaitNPCStep
 	playsfx SFX_2E
 	hideperson $0a
-	setevent $0037
+	setevent EVENT_037
 .asm_8e36d:
 	ret
 
@@ -401,7 +401,7 @@ Func_8e36e:
 	ld a, e
 	or a
 	jp nz, .asm_8e479
-	checkevent $00d9
+	checkevent EVENT_0D9
 	or a
 	jp nz, .asm_8e473
 	playsfx SFX_5E
@@ -434,7 +434,7 @@ Func_8e36e:
 	ld e, $04
 	ld a, $03
 	scall Func_80e8d
-	setevent $00d9
+	setevent EVENT_0D9
 	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
@@ -447,7 +447,7 @@ Func_8e36e:
 	ld a, $0f
 	scall FadeOutAudio
 	playmusic SONG_NONE
-	checkevent $0037
+	checkevent EVENT_037
 	cp $01
 	jp nz, .asm_8e45c
 	ld a, $01

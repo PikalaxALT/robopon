@@ -42,27 +42,27 @@ Func_8aa33:: ; 8aa33
 	scall Func_80d01
 	loadwilds $05, Data_8a961
 	loadpeople $0a, Data_8a9a7
-	checkevent $0080
+	checkevent EVENT_080
 	cp $01
 	jp nz, .asm_8aa70
 	hideperson 0
 	hideperson $01
 .asm_8aa70:
-	checkevent $0081
+	checkevent EVENT_081
 	cp $01
 	jp nz, .asm_8aa90
 	hideperson $02
 	hideperson $03
 	hideperson $04
 .asm_8aa90:
-	checkevent $0082
+	checkevent EVENT_082
 	cp $01
 	jp nz, .asm_8aab0
 	hideperson $05
 	hideperson $06
 	hideperson $07
 .asm_8aab0:
-	checkevent $0083
+	checkevent EVENT_083
 	cp $01
 	jp nz, .asm_8aac9
 	hideperson $08
@@ -144,7 +144,7 @@ Func_8ab66:
 	scall WaitNPCStep
 	hideperson 0
 	hideperson $01
-	setevent $0080
+	setevent EVENT_080
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
 	ret
@@ -226,7 +226,7 @@ Func_8ac50:
 	hideperson $04
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-	setevent $0081
+	setevent EVENT_081
 	ret
 
 Data_8acac:
@@ -307,7 +307,7 @@ Func_8ad46:
 	hideperson $07
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-	setevent $0082
+	setevent EVENT_082
 	ret
 
 Data_8ada8:
@@ -390,7 +390,7 @@ Func_8ae50:
 	hideperson $09
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-	setevent $0083
+	setevent EVENT_083
 	ret
 
 Data_8aea5:

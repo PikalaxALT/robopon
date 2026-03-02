@@ -20,7 +20,7 @@ Func_95c14:: ; 95c14
 	move_person $01, Data_95c0c, 1
 	scall WaitNPCStep
 	sprite_face $00, $01
-	setevent $005b
+	setevent EVENT_05B
 	call Func_9596a
 	move_person $01, Data_95c10, 1
 	scall WaitNPCStep

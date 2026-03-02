@@ -50,10 +50,10 @@ Data_87785: ; 87785
     person_event $04, $04, $01, $09, $01, $01, $01, $04, $00, Func_87ce5, NULL
 
 Func_877cb::
-	checkevent $51
+	checkevent EVENT_051
 	or a
 	jp nz, .asm_877f5
-	checkevent $4c
+	checkevent EVENT_04C
 	or a
 	jp nz, .asm_877f5
 	call Func_87648
@@ -62,10 +62,10 @@ Func_877cb::
 	jp .asm_87828
 
 .asm_877f5: ; 877f5 (21:77f5)
-	checkevent $51
+	checkevent EVENT_051
 	cp $1
 	jp nz, .asm_87820
-	checkevent $4c
+	checkevent EVENT_04C
 	or a
 	jp nz, .asm_87820
 	call Func_87648
@@ -86,7 +86,7 @@ Func_877cb::
 	ld a, [wc78a]
 	cp $3
 	jp nz, .asm_8786b
-	checkevent $fb
+	checkevent EVENT_0FB
 	or a
 	jp nz, .asm_8785f
 	call Func_87b87
@@ -99,7 +99,7 @@ Func_877cb::
 	jp .asm_8788a
 
 .asm_8786b: ; 8786b (21:786b)
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_8787d
 	ld a, $1
@@ -144,14 +144,14 @@ Func_8788b:
 	ld hl, sp+$1
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $18
-	checkevent $19
+	setevent EVENT_018
+	checkevent EVENT_019
 	cp $1
 	jp nz, .asm_878ef
-	checkevent $1a
+	checkevent EVENT_01A
 	cp $1
 	jp nz, .asm_878ef
-	checkevent $4b
+	checkevent EVENT_04B
 	cp $1
 	jp nz, .asm_878ef
 	call Func_87c03
@@ -188,14 +188,14 @@ Func_878f1:
 	ld hl, sp+$1
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $19
-	checkevent $18
+	setevent EVENT_019
+	checkevent EVENT_018
 	cp $1
 	jp nz, .asm_87955
-	checkevent $1a
+	checkevent EVENT_01A
 	cp $1
 	jp nz, .asm_87955
-	checkevent $4b
+	checkevent EVENT_04B
 	cp $1
 	jp nz, .asm_87955
 	call Func_87c03
@@ -232,14 +232,14 @@ Func_87957:
 	ld hl, sp+$1
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $1a
-	checkevent $18
+	setevent EVENT_01A
+	checkevent EVENT_018
 	cp $1
 	jp nz, .asm_879bb
-	checkevent $19
+	checkevent EVENT_019
 	cp $1
 	jp nz, .asm_879bb
-	checkevent $4b
+	checkevent EVENT_04B
 	cp $1
 	jp nz, .asm_879bb
 	call Func_87c03
@@ -276,14 +276,14 @@ Func_879bd:
 	ld hl, sp+$1
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $4b
-	checkevent $18
+	setevent EVENT_04B
+	checkevent EVENT_018
 	cp $1
 	jp nz, .asm_87a21
-	checkevent $19
+	checkevent EVENT_019
 	cp $1
 	jp nz, .asm_87a21
-	checkevent $1a
+	checkevent EVENT_01A
 	cp $1
 	jp nz, .asm_87a21
 	call Func_87c03
@@ -320,8 +320,8 @@ Func_87a23:
 	ld hl, sp+$1
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $18
-	checkevent $19
+	setevent EVENT_018
+	checkevent EVENT_019
 	cp $1
 	jp nz, .asm_87a71
 	call Func_87c03
@@ -358,8 +358,8 @@ Func_87a73:
 	ld hl, sp+$1
 	ld a, [hl]
 	scall SetPersonVisibilityState
-	setevent $19
-	checkevent $18
+	setevent EVENT_019
+	checkevent EVENT_018
 	cp $1
 	jp nz, .asm_87ac1
 	call Func_87c03
@@ -381,16 +381,16 @@ Func_87ac3:
 	jp .asm_87b13
 
 .asm_87ae0: ; 87ae0 (21:7ae0)
-	checkevent $59
+	checkevent EVENT_059
 	or a
 	jp nz, .asm_87b00
-	setevent $59
+	setevent EVENT_059
 	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_87b13
 
 .asm_87b00: ; 87b00 (21:7b00)
-	resetevent $59
+	resetevent EVENT_059
 	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_87b13: ; 87b13 (21:7b13)
@@ -406,7 +406,7 @@ Func_87b14:
 	jp .asm_87b86
 
 .asm_87b23: ; 87b23 (21:7b23)
-	checkevent $59
+	checkevent EVENT_059
 	cp $1
 	jp nz, .asm_87b37
 	writetext TreeBitstreamText_47037
@@ -433,14 +433,13 @@ Func_87b14:
 	scall HideEmote
 	ld a, $2
 	scall PlayerFace
-	resetevent $fa
+	resetevent EVENT_0FA
 	warp_player MAP_32_03, $3, $3
-	pop bc
 .asm_87b86: ; 87b86 (21:7b86)
 	ret
 
 Func_87b87: ; 87b87 (21:7b87)
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_87b99
 	ld a, $1
@@ -464,7 +463,7 @@ Func_87b87: ; 87b87 (21:7b87)
 	scall Func_80653
 	script_sleep 1
 	scall HideEmote
-	setevent $fb
+	setevent EVENT_0FB
 	ret
 
 Data_87bd7:
@@ -474,7 +473,7 @@ Data_87bd7:
 	warpdef $16, $0e, $01, $01, MAP_32_03, $04, $02, $04, $03, SFX_2E
 
 Func_87c03: ; 87c03 (21:7c03)
-	setevent $4c
+	setevent EVENT_04C
 	scall AllocateSpaceForWarps
 	loadwarps $4, Data_87bd7
 	scall StartShakingScreen
@@ -496,7 +495,7 @@ Func_87c5c:
 	or a
 	jp nz, .asm_87cb2
 	face_player -$1
-	checkevent $70
+	checkevent EVENT_070
 	or a
 	jp nz, .asm_87cac
 	writetext TreeBitstreamText_42b4c
@@ -509,7 +508,7 @@ Func_87c5c:
 	jp .asm_87cb2
 
 .asm_87c92: ; 87c92 (21:7c92)
-	setevent $70
+	setevent EVENT_070
 	writetext TreeBitstreamText_42b64
 	jp .asm_87ca9
 
@@ -538,7 +537,7 @@ Func_87ce5:
 	or a
 	jp nz, .asm_87d3b
 	face_player -$1
-	checkevent $71
+	checkevent EVENT_071
 	or a
 	jp nz, .asm_87d35
 	writetext TreeBitstreamText_42bd2
@@ -551,7 +550,7 @@ Func_87ce5:
 	jp .asm_87d3b
 
 .asm_87d1b: ; 87d1b (21:7d1b)
-	setevent $71
+	setevent EVENT_071
 	writetext TreeBitstreamText_42bdd
 	jp .asm_87d32
 

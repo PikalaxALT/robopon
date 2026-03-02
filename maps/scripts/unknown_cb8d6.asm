@@ -36,7 +36,7 @@ Func_cb8d6:: ; cb8d6
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_cb866
-	checkevent $00ae
+	checkevent EVENT_0AE
 	or a
 	jp nz, .asm_cb905
 	loadpeople $03, Data_cb8ac
@@ -57,7 +57,7 @@ Func_cb91e:
 	ld a, e
 	cp $02
 	jp nz, .asm_cb969
-	checkevent $00ae
+	checkevent EVENT_0AE
 	or a
 	jp nz, .asm_cb969
 	playmusic SONG_NONE
@@ -99,7 +99,7 @@ Func_cb99c:
 	ret
 .asm_cb9b0:
 	writetext TreeBitstreamText_3ca00
-	setevent $00ae
+	setevent EVENT_0AE
 	ld a, [wPlayerFacing]
 	cp $03
 	jp nz, .asm_cb9d2

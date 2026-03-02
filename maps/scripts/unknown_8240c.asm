@@ -45,7 +45,7 @@ Func_82446:
 	ld a, e
 	or a
 	jp nz, Func_82592
-	checkevent $c6
+	checkevent EVENT_0C6
 	or a
 	jp nz, Func_82562
 	ld a, [wPlayerFacing]
@@ -152,7 +152,7 @@ Func_824ca: ; 824ca (20:64ca)
 	jp nz, Func_82551
 Func_82551: ; 82551 (20:6551)
 	writenpctext TreeBitstreamText_3f679
-	setevent $c6
+	setevent EVENT_0C6
 	jp Func_82592
 
 Func_82562: ; 82562 (20:6562)

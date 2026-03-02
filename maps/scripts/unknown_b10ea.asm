@@ -22,13 +22,12 @@ Func_b10ea:: ; b10ea
 	ret
 
 Func_b110b:
-	checkevent $001e
+	checkevent EVENT_01E
 	cp $01
 	jp nz, .asm_b112d
-	checkevent $0009
+	checkevent EVENT_009
 	or a
 	jp nz, .asm_b112d
 	warp_player MAP_28_01, $11, $04
-	pop bc
 .asm_b112d:
 	ret

@@ -49,18 +49,18 @@ Func_85178::
 	call CompareHLtoDE
 	jp c, .asm_851b4
 .asm_851a9: ; 851a9 (21:51a9)
-	setevent $38
+	setevent EVENT_038
 	jp .asm_851bc
 
 .asm_851b4: ; 851b4 (21:51b4)
-	resetevent $38
+	resetevent EVENT_038
 .asm_851bc: ; 851bc (21:51bc)
 	loadwarps $6, Data_850b4
 	ld a, $1
 	scall LoadPlayerSprite
 	ld a, $2
 	ld [wc7e2], a
-	checkevent $32
+	checkevent EVENT_032
 	or a
 	jp nz, .asm_851fe
 	loadpeople $5, Data_850fa
@@ -68,21 +68,21 @@ Func_85178::
 	playmusic SONG_TOWN1
 	scall Func_8001c
 	call Func_852ac
-	setevent $32
+	setevent EVENT_032
 	jp .asm_85270
 
 .asm_851fe: ; 851fe (21:51fe)
-	checkevent $5
+	checkevent EVENT_005
 	or a
 	jp z, .asm_85212
-	checkevent $6
+	checkevent EVENT_006
 	or a
 	jp nz, .asm_85260
 .asm_85212: ; 85212 (21:5212)
 	loadpeople $5, Data_850fa
 	playmusic SONG_TOWN1
 	hideperson $2
-	checkevent $5
+	checkevent EVENT_005
 	cp $1
 	jp nz, .asm_8523a
 	hideperson 0
@@ -94,7 +94,7 @@ Func_85178::
 	xor a
 	scall Func_80080
 .asm_85242: ; 85242 (21:5242)
-	checkevent $6
+	checkevent EVENT_006
 	cp $1
 	jp nz, .asm_85257
 	hideperson $1
@@ -247,7 +247,7 @@ Func_854aa:
 	ld a, e
 	or a
 	jp nz, .asm_85570
-	checkevent $14
+	checkevent EVENT_014
 	or a
 	jp nz, .asm_854c8
 	playsfx SFX_69
@@ -270,8 +270,8 @@ Func_854aa:
 	move_person 0, Data_854a2, 1
 	scall WaitNPCStep
 	hideperson 0
-	setevent $5
-	checkevent $6
+	setevent EVENT_005
+	checkevent EVENT_006
 	or a
 	jp nz, .asm_85519
 	ld a, $2
@@ -297,8 +297,8 @@ Func_854aa:
 	move_person $1, Data_854a6, 1
 	scall WaitNPCStep
 	hideperson $1
-	setevent $6
-	checkevent $5
+	setevent EVENT_006
+	checkevent EVENT_005
 	or a
 	jp nz, .asm_85570
 	ld a, $2
@@ -343,7 +343,7 @@ Func_855dc:
 	ld a, [hl]
 	cp $3
 	jp nz, .asm_8560d
-	checkevent $6
+	checkevent EVENT_006
 	or a
 	jp nz, .asm_8560a
 	sprite_face $3, $1
@@ -359,7 +359,7 @@ Func_855dc:
 	ld a, [hl]
 	cp $4
 	jp nz, .asm_8562e
-	checkevent $5
+	checkevent EVENT_005
 	or a
 	jp nz, .asm_8562e
 	sprite_face $1, 0
@@ -387,8 +387,8 @@ Func_855dc:
 	move_person $1, Data_855d8, 1
 	scall WaitNPCStep
 	hideperson $1
-	setevent $6
-	checkevent $5
+	setevent EVENT_006
+	checkevent EVENT_005
 	or a
 	jp nz, .asm_8568a
 	ld a, $2
@@ -413,8 +413,8 @@ Func_855dc:
 	move_person 0, Data_855d4, 1
 	scall WaitNPCStep
 	hideperson 0
-	setevent $5
-	checkevent $6
+	setevent EVENT_005
+	checkevent EVENT_006
 	or a
 	jp nz, .asm_856d9
 	ld a, $2
@@ -460,7 +460,7 @@ Func_85746:
 	ld a, [hl]
 	cp $2
 	jp nz, .asm_85777
-	checkevent $6
+	checkevent EVENT_006
 	or a
 	jp nz, .asm_85774
 	sprite_face $3, $1
@@ -476,7 +476,7 @@ Func_85746:
 	ld a, [hl]
 	cp $3
 	jp nz, .asm_85798
-	checkevent $5
+	checkevent EVENT_005
 	or a
 	jp nz, .asm_85798
 	sprite_face $1, 0
@@ -504,7 +504,7 @@ Func_85746:
 	move_person $1, Data_85742, 1
 	scall WaitNPCStep
 	hideperson $1
-	setevent $6
+	setevent EVENT_006
 	jp .asm_8581b
 
 .asm_857e3: ; 857e3 (21:57e3)
@@ -522,7 +522,7 @@ Func_85746:
 	move_person 0, Data_8573e, 1
 	scall WaitNPCStep
 	hideperson 0
-	setevent $5
+	setevent EVENT_005
 .asm_8581b: ; 8581b (21:581b)
 	pop bc
 	pop bc
@@ -582,7 +582,6 @@ Func_85832:
 	ld a, $1
 	scall PlayerFace
 	warp_player MAP_30_00, $25, $b
-	pop bc
 .asm_858bd: ; 858bd (21:58bd)
 	jp .asm_858c6
 

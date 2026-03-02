@@ -28,7 +28,7 @@ Func_af29a:: ; af29a
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_af246
-	checkevent $004f
+	checkevent EVENT_04F
 	or a
 	jp nz, .asm_af2ca
 	loadpeople $01, Data_af28c
@@ -63,7 +63,7 @@ Data_af303:
 	db $12, $1e, $01, $01, $04, $11
 
 Func_af309:
-	checkevent $004e
+	checkevent EVENT_04E
 	cp $01
 	jp nz, .asm_af347
 	ld hl, Data_af2d9
@@ -93,14 +93,14 @@ Func_af34c:
 	ld a, e
 	or a
 	jp nz, .asm_af384
-	checkevent $004e
+	checkevent EVENT_04E
 	or a
 	jp nz, .asm_af364
 	writenpctext TreeBitstreamText_3e99a
 	jp .asm_af384
 .asm_af364:
 	writenpctext TreeBitstreamText_3e9c4
-	setevent $004f
+	setevent EVENT_04F
 	move_person 0, Data_af348, 1
 	scall WaitNPCStep
 	hideperson 0

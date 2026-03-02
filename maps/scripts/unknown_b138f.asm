@@ -99,13 +99,13 @@ Data_b1357:
 
 Func_b138f:: ; b138f
 	loadwarps $05, Data_b112e
-	checkevent $0014
+	checkevent EVENT_014
 	cp $01
 	jp nz, .asm_b13da
-	checkevent $0007
+	checkevent EVENT_007
 	cp $01
 	jp nz, .asm_b13da
-	checkevent $001e
+	checkevent EVENT_01E
 	or a
 	jp nz, .asm_b13da
 	loadpeople $03, Data_b1189
@@ -115,16 +115,16 @@ Func_b138f:: ; b138f
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b13da:
-	checkevent $0014
+	checkevent EVENT_014
 	cp $01
 	jp nz, .asm_b1468
-	checkevent $0007
+	checkevent EVENT_007
 	cp $01
 	jp nz, .asm_b1468
-	checkevent $001e
+	checkevent EVENT_01E
 	cp $01
 	jp nz, .asm_b1468
-	checkevent $0009
+	checkevent EVENT_009
 	or a
 	jp nz, .asm_b1468
 	ld a, [wBackupMapGroup]
@@ -156,13 +156,13 @@ Func_b138f:: ; b138f
 .asm_b1465:
 	jp .asm_b1640
 .asm_b1468:
-	checkevent $003c
+	checkevent EVENT_03C
 	cp $01
 	jp nz, .asm_b14ab
-	checkevent $001e
+	checkevent EVENT_01E
 	cp $01
 	jp nz, .asm_b14ab
-	checkevent $001f
+	checkevent EVENT_01F
 	or a
 	jp nz, .asm_b14ab
 	loadpeople $03, Data_b1189
@@ -172,13 +172,13 @@ Func_b138f:: ; b138f
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b14ab:
-	checkevent $0015
+	checkevent EVENT_015
 	cp $01
 	jp nz, .asm_b14f5
-	checkevent $001f
+	checkevent EVENT_01F
 	cp $01
 	jp nz, .asm_b14f5
-	checkevent $0020
+	checkevent EVENT_020
 	or a
 	jp nz, .asm_b14f5
 	loadpeople $03, Data_b1189
@@ -189,13 +189,13 @@ Func_b138f:: ; b138f
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b14f5:
-	checkevent $0016
+	checkevent EVENT_016
 	cp $01
 	jp nz, .asm_b1538
-	checkevent $0020
+	checkevent EVENT_020
 	cp $01
 	jp nz, .asm_b1538
-	checkevent $0021
+	checkevent EVENT_021
 	or a
 	jp nz, .asm_b1538
 	loadpeople $03, Data_b1189
@@ -208,10 +208,10 @@ Func_b138f:: ; b138f
 	ld a, [wc78d]
 	cp $01
 	jp nz, .asm_b157f
-	checkevent $0021
+	checkevent EVENT_021
 	cp $01
 	jp nz, .asm_b157f
-	checkevent $0022
+	checkevent EVENT_022
 	or a
 	jp nz, .asm_b157f
 	loadpeople $03, Data_b1189
@@ -222,19 +222,19 @@ Func_b138f:: ; b138f
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b157f:
-	checkevent $0034
+	checkevent EVENT_034
 	cp $01
 	jp nz, .asm_b15c7
-	checkevent $0022
+	checkevent EVENT_022
 	cp $01
 	jp nz, .asm_b15c7
-	checkevent $0023
+	checkevent EVENT_023
 	or a
 	jp nz, .asm_b15c7
-	checkevent $0035
+	checkevent EVENT_035
 	or a
 	jp nz, .asm_b15c7
-	checkevent $00c3
+	checkevent EVENT_0C3
 	cp $01
 	jp nz, .asm_b15c7
 	loadpeople $06, Data_b1303
@@ -242,16 +242,16 @@ Func_b138f:: ; b138f
 	scall Func_8001c
 	jp .asm_b1640
 .asm_b15c7:
-	checkevent $0033
+	checkevent EVENT_033
 	cp $01
 	jp nz, .asm_b1605
-	checkevent $0022
+	checkevent EVENT_022
 	cp $01
 	jp nz, .asm_b1605
-	checkevent $0023
+	checkevent EVENT_023
 	or a
 	jp nz, .asm_b1605
-	checkevent $0035
+	checkevent EVENT_035
 	cp $01
 	jp nz, .asm_b1605
 	loadpeople $04, Data_b1357
@@ -303,7 +303,7 @@ Func_b1686:
 	ld a, e
 	cp $02
 	jp nz, .asm_b17c0
-	checkevent $001e
+	checkevent EVENT_01E
 	or a
 	jp nz, .asm_b17c0
 	ld a, $0a
@@ -378,7 +378,7 @@ Func_b1686:
 	ld a, $07
 	ld [wc790], a
 	call Func_b213e
-	setevent $001e
+	setevent EVENT_01E
 	ld a, $03
 	scall Func_80c94
 	ld a, $12
@@ -395,9 +395,8 @@ Data_b17c1:
 
 Func_b17c6:
 	writenpctext TreeBitstreamText_3a7fb
-	setevent $0009
+	setevent EVENT_009
 	warp_player MAP_28_00, $07, $05
-	pop bc
 	ret
 
 Data_b17e2:
@@ -415,7 +414,7 @@ Func_b1817:
 	ld a, e
 	cp $02
 	jp nz, .asm_b18d3
-	checkevent $001f
+	checkevent EVENT_01F
 	or a
 	jp nz, .asm_b18d3
 	ld a, $0a
@@ -448,18 +447,18 @@ Func_b1817:
 	ld a, $06
 	ld [wc790], a
 	call Func_b213e
-	setevent $001f
+	setevent EVENT_01F
 	ld a, $05
 	scall Func_80c94
 	ld c, $00
 	ld e, $01
 	ld a, $02
 	scall Func_80d4d
-	setevent $0059
-	checkevent $0086
+	setevent EVENT_059
+	checkevent EVENT_086
 	or a
 	jp nz, .asm_b18d3
-	setevent $0086
+	setevent EVENT_086
 .asm_b18d3:
 	ret
 
@@ -487,7 +486,7 @@ Func_b191e:
 	ld a, e
 	cp $02
 	jp nz, .asm_b1a6c
-	checkevent $0020
+	checkevent EVENT_020
 	or a
 	jp nz, .asm_b1a6c
 	ld a, $0a
@@ -544,7 +543,7 @@ Func_b191e:
 	ld a, $05
 	ld [wc790], a
 	call Func_b213e
-	setevent $0020
+	setevent EVENT_020
 	ld a, $08
 	scall Func_80c94
 	ld c, $00
@@ -578,7 +577,7 @@ Func_b1ab8:
 	ld a, e
 	cp $02
 	jp nz, .asm_b1b60
-	checkevent $0021
+	checkevent EVENT_021
 	or a
 	jp nz, .asm_b1b60
 	ld a, $0a
@@ -609,7 +608,7 @@ Func_b1ab8:
 	ld a, $04
 	ld [wc790], a
 	call Func_b213e
-	setevent $0021
+	setevent EVENT_021
 	ld a, $07
 	ld [wc78d], a
 	ld c, $00
@@ -643,7 +642,7 @@ Func_b1b9b:
 	ld a, e
 	cp $02
 	jp nz, .asm_b1c47
-	checkevent $0022
+	checkevent EVENT_022
 	or a
 	jp nz, .asm_b1c47
 	ld a, $0a
@@ -667,7 +666,7 @@ Func_b1b9b:
 	scall WaitNPCStep
 	hideperson $09
 	call Func_b2275
-	setevent $0022
+	setevent EVENT_022
 	ld a, $03
 	ld [wc790], a
 	hideperson 0
@@ -697,7 +696,7 @@ Func_b1c59:
 	ld a, e
 	cp $02
 	jp nz, .asm_b1d4f
-	checkevent $0035
+	checkevent EVENT_035
 	or a
 	jp nz, .asm_b1d4f
 	ld a, $0a
@@ -768,7 +767,7 @@ Func_b1c59:
 	sprite_face $02, $02
 	ld a, $0e
 	scall Func_80c94
-	setevent $0035
+	setevent EVENT_035
 	playmusic SONG_TOWN2
 .asm_b1d4f:
 	ret
@@ -800,7 +799,7 @@ Func_b1d8b:
 	ld a, e
 	cp $02
 	jp nz, .asm_b202b
-	checkevent $0023
+	checkevent EVENT_023
 	or a
 	jp nz, .asm_b202b
 	ld a, $0a
@@ -978,7 +977,7 @@ Func_b1d8b:
 	move_person $01, Data_b1d87, 1
 	scall WaitNPCStep
 	hideperson $01
-	setevent $0023
+	setevent EVENT_023
 	ld a, $02
 	ld [wc790], a
 	script_sleep 30
@@ -1015,7 +1014,7 @@ Data_b2034:
 Func_b2038:
 	push af
 	push de
-	checkevent $0022
+	checkevent EVENT_022
 	or a
 	jp nz, .asm_b20a8
 	ld hl, sp+$00
@@ -1064,7 +1063,7 @@ Data_b20af:
 Func_b20b3:
 	push af
 	push de
-	checkevent $0022
+	checkevent EVENT_022
 	or a
 	jp nz, .asm_b2123
 	ld hl, sp+$00

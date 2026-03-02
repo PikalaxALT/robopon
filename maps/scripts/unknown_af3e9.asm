@@ -31,7 +31,7 @@ Func_af3e9:: ; af3e9
 	ld a, $03
 	scall Func_80d01
 	loadwilds $03, Data_af395
-	checkevent $0050
+	checkevent EVENT_050
 	or a
 	jp nz, .asm_af41b
 	loadpeople $02, Data_af3bf
@@ -63,7 +63,7 @@ Func_af46a:
 	ld a, e
 	cp $02
 	jp nz, .asm_af4bd
-	checkevent $0050
+	checkevent EVENT_050
 	or a
 	jp nz, .asm_af4a1
 	writenpctext TreeBitstreamText_3e9e1
@@ -72,7 +72,7 @@ Func_af46a:
 	jp nz, .asm_af490
 	jp .asm_af4bd
 .asm_af490:
-	setevent $0050
+	setevent EVENT_050
 	writenpctext TreeBitstreamText_3ea2f
 	jp .asm_af4bd
 .asm_af4a1:
@@ -81,7 +81,6 @@ Func_af46a:
 	jp nz, .asm_af4bd
 	playsfx SFX_5A
 	warp_player MAP_27_01, $12, $1b
-	pop bc
 .asm_af4bd:
 	ret
 
@@ -94,7 +93,7 @@ Func_af4c3:
 	or a
 	jp nz, .asm_af537
 	face_player -$01
-	checkevent $0048
+	checkevent EVENT_048
 	or a
 	jp nz, .asm_af505
 	ld a, $15
@@ -105,7 +104,6 @@ Func_af4c3:
 	or a
 	jp nz, .asm_af4f9
 	warp_player MAP_27_01, $12, $1b
-	pop bc
 .asm_af4f9:
 	jp .asm_af502
 .asm_af4fc:
@@ -113,18 +111,17 @@ Func_af4c3:
 .asm_af502:
 	jp .asm_af537
 .asm_af505:
-	checkevent $0100
+	checkevent EVENT_100
 	or a
 	jp nz, .asm_af520
 	writenpctext TreeBitstreamText_3eab5
-	setevent $0100
+	setevent EVENT_100
 	jp .asm_af537
 .asm_af520:
 	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af537
 	warp_player MAP_27_01, $12, $1b
-	pop bc
 .asm_af537:
 	pop bc
 	ret

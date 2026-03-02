@@ -167,7 +167,7 @@ Func_c9ea5:
 	or a
 	jp nz, .asm_c9ef8
 	face_player 0
-	checkevent $0093
+	checkevent EVENT_093
 	or a
 	jp nz, .asm_c9ef2
 	writetext TreeBitstreamText_42c2d
@@ -179,7 +179,7 @@ Func_c9ea5:
 	jp nz, .asm_c9ed8
 	jp .asm_c9ef8
 .asm_c9ed8:
-	setevent $0093
+	setevent EVENT_093
 	writetext TreeBitstreamText_42c39
 	jp .asm_c9eef
 .asm_c9ee9:
@@ -205,7 +205,7 @@ Func_c9f2b:
 	or a
 	jp nz, .asm_c9f8c
 	face_player 0
-	checkevent $0098
+	checkevent EVENT_098
 	or a
 	jp nz, .asm_c9f86
 	writetext TreeBitstreamText_42c39
@@ -224,7 +224,7 @@ Func_c9f2b:
 	jp nz, .asm_c9f54
 	jp .asm_c9f8c
 .asm_c9f6c:
-	setevent $0098
+	setevent EVENT_098
 	writetext TreeBitstreamText_42c65
 	jp .asm_c9f83
 .asm_c9f7d:
@@ -249,7 +249,7 @@ Func_c9fbf:
 	or a
 	jp nz, .asm_ca020
 	face_player 0
-	checkevent $009d
+	checkevent EVENT_09D
 	or a
 	jp nz, .asm_ca01a
 	writetext TreeBitstreamText_42c65
@@ -268,7 +268,7 @@ Func_c9fbf:
 	jp nz, .asm_c9fe8
 	jp .asm_ca020
 .asm_ca000:
-	setevent $009d
+	setevent EVENT_09D
 	writetext TreeBitstreamText_42c72
 	jp .asm_ca017
 .asm_ca011:
@@ -293,7 +293,7 @@ Func_ca053:
 	or a
 	jp nz, .asm_ca0b4
 	face_player 0
-	checkevent $00a2
+	checkevent EVENT_0A2
 	or a
 	jp nz, .asm_ca0ae
 	writetext TreeBitstreamText_42c39
@@ -312,7 +312,7 @@ Func_ca053:
 	jp nz, .asm_ca07c
 	jp .asm_ca0b4
 .asm_ca094:
-	setevent $00a2
+	setevent EVENT_0A2
 	writetext TreeBitstreamText_42c58
 	jp .asm_ca0ab
 .asm_ca0a5:
@@ -338,7 +338,7 @@ Func_ca0e7:
 	or a
 	jp nz, .asm_ca148
 	face_player 0
-	checkevent $00a7
+	checkevent EVENT_0A7
 	or a
 	jp nz, .asm_ca142
 	writetext TreeBitstreamText_42c2d
@@ -357,7 +357,7 @@ Func_ca0e7:
 	jp nz, .asm_ca110
 	jp .asm_ca148
 .asm_ca128:
-	setevent $00a7
+	setevent EVENT_0A7
 	writetext TreeBitstreamText_42c8e
 	jp .asm_ca13f
 .asm_ca139:

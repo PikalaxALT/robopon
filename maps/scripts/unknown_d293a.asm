@@ -188,7 +188,7 @@ Func_d293a:: ; d293a (34:693a)
 	ld a, [wc7de]
 	cp $14
 	jp nz, .asm_d2a16
-	setevent $5d
+	setevent EVENT_05D
 .asm_d2a16: ; d2a16 (34:6a16)
 	ld a, $3
 	scall Func_80d01

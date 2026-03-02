@@ -30,7 +30,7 @@ Func_8688a::
 	loadpeople $2, Data_8686e
 	hideperson 0
 	loadwarps $1, Data_8682b
-	checkevent $7
+	checkevent EVENT_007
 	or a
 	jp nz, .asm_868d5
 	loadpeople $4, Data_86836
@@ -162,7 +162,7 @@ Func_86943: ; 86943 (21:6943)
 	scall PlayerFace
 	script_sleep 30
 	writenpctext TreeBitstreamText_3a481
-	setevent $7
+	setevent EVENT_007
 	ld a, $8
 	ld [wc790], a
 	ret
@@ -190,7 +190,7 @@ Func_86b0d:
 	ld a, e
 	or a
 	jp nz, .asm_86c00
-	checkevent $d6
+	checkevent EVENT_0D6
 	or a
 	jp nz, .asm_86bfa
 	playsfx SFX_5E
@@ -223,7 +223,7 @@ Func_86b0d:
 	ld e, $7
 	ld a, $6
 	scall Func_80e8d
-	setevent $d6
+	setevent EVENT_0D6
 	playsfx SFX_60
 	sprite_face $3, 0
 	sprite_face $0, 0

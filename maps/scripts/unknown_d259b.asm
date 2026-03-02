@@ -195,7 +195,7 @@ Func_d259b:: ; d259b (34:659b)
 	ld a, [wc7de]
 	cp $14
 	jp nz, .asm_d2684
-	setevent $5d
+	setevent EVENT_05D
 .asm_d2684: ; d2684 (34:6684)
 	ld a, $3
 	scall Func_80d01

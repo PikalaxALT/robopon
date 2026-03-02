@@ -230,7 +230,7 @@ Func_a6882:: ; a6882
 	ld a, $08
 	ld [wc789], a
 	loadwarps $0c, Data_a6720
-	checkevent $002d
+	checkevent EVENT_02D
 	or a
 	jp nz, .asm_a69d9
 	loadpeople $01, Data_a67cc
@@ -313,7 +313,7 @@ Func_a6a87:
 	showperson 0
 	scall HideEmote
 	face_player -$01
-	setevent $002e
+	setevent EVENT_02E
 	writenpctext TreeBitstreamText_3d204
 	playmusic SONG_0A
 .asm_a6adb:

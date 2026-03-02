@@ -54,13 +54,13 @@ Func_8326c:
 	writetext TreeBitstreamText_46031
 	ld a, $1
 	call NamingScreen_20
-	checkevent $108
+	checkevent EVENT_108
 	or a
 	jp nz, .asm_832cb
 	ld a, [wc79c]
 	cp $1
 	jp c, .asm_832cb
-	checkevent $114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_832cb
 	writetext TreeBitstreamText_45fec
@@ -70,20 +70,20 @@ Func_8326c:
 	ld e, $1
 	ld a, $10
 	scall Func_80d4d
-	setevent $108
+	setevent EVENT_108
 .asm_832cb: ; 832cb (20:72cb)
 	writetext TreeBitstreamText_4604f
 	jp .asm_83318
 
 .asm_832d4: ; 832d4 (20:72d4)
 	writetext TreeBitstreamText_46040
-	checkevent $108
+	checkevent EVENT_108
 	or a
 	jp nz, .asm_83318
 	ld a, [wc79c]
 	cp $1
 	jp c, .asm_83318
-	checkevent $114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_83318
 	writetext TreeBitstreamText_45fec
@@ -93,7 +93,7 @@ Func_8326c:
 	ld e, $1
 	ld a, $10
 	scall Func_80d4d
-	setevent $108
+	setevent EVENT_108
 .asm_83318: ; 83318 (20:7318)
 	pop bc
 	ret

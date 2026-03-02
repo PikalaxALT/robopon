@@ -139,7 +139,7 @@ Func_a1e57:: ; a1e57
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a1e7d
-	setevent $005f
+	setevent EVENT_05F
 .asm_a1e7d:
 	ld a, $03
 	scall Func_80d01

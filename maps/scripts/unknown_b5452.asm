@@ -46,7 +46,7 @@ Func_b5452:: ; b5452
 	loadwilds $05, Data_b53e2
 	ld a, $0f
 	ld [wc7e2], a
-	checkevent $0034
+	checkevent EVENT_034
 	or a
 	jp nz, .asm_b54c0
 	loadpeople $01, Data_b5428
@@ -54,7 +54,7 @@ Func_b5452:: ; b5452
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b7d
 	call Func_b5526
-	setevent $0034
+	setevent EVENT_034
 	jp .asm_b551f
 .asm_b54c0:
 	loadpeople $02, Data_b5436
@@ -71,7 +71,7 @@ Func_b5452:: ; b5452
 	ld a, [wBackupMapY]
 	cp $0c
 	jp nz, .asm_b5516
-	checkevent $00ff
+	checkevent EVENT_0FF
 	or a
 	jp nz, .asm_b550a
 	xor a
@@ -166,7 +166,7 @@ Func_b55be:
 	cp $02
 	jp nz, .asm_b55fc
 	landmarksign TreeBitstreamText_46d3b
-	resetevent $00fe
+	resetevent EVENT_0FE
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
@@ -176,7 +176,6 @@ Func_b55be:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_08, $0b, $0c
-	pop bc
 .asm_b55fc:
 	ret
 
@@ -191,5 +190,5 @@ Func_b55fd:
 	scall Func_80653
 	script_sleep 1
 	scall HideEmote
-	setevent $00ff
+	setevent EVENT_0FF
 	ret

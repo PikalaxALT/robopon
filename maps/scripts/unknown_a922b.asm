@@ -145,7 +145,7 @@ Func_a922b:: ; a922b
 	ld [wc7e2], a
 	ld a, $07
 	ld [wc789], a
-	checkevent $0044
+	checkevent EVENT_044
 	or a
 	jp nz, .asm_a92e4
 	playmusic SONG_NONE
@@ -191,7 +191,7 @@ Data_a9334:
 	db $1a, $14, $02, $01, $14, $11
 
 Func_a933a:
-	checkevent $00bf
+	checkevent EVENT_0BF
 	cp $01
 	jp nz, .asm_a9351
 	ld hl, Data_a931c
@@ -199,7 +199,7 @@ Func_a933a:
 	scall Func_80f02
 	jp .asm_a93b1
 .asm_a9351:
-	checkevent $00c1
+	checkevent EVENT_0C1
 	cp $01
 	jp nz, .asm_a9368
 	ld hl, Data_a9322
@@ -207,7 +207,7 @@ Func_a933a:
 	scall Func_80f02
 	jp .asm_a93b1
 .asm_a9368:
-	checkevent $0044
+	checkevent EVENT_044
 	or a
 	jp nz, .asm_a9390
 	ld hl, Data_a9304
@@ -270,7 +270,7 @@ Func_a93b6:
 	ld e, $16
 	ld a, $18
 	scall MoveEmote
-	setevent $00bf
+	setevent EVENT_0BF
 	call Func_a933a
 	scall Func_80f02
 	scall WaitEmote
@@ -281,8 +281,8 @@ Func_a93b6:
 	ld e, $16
 	ld a, $1b
 	scall MoveEmote
-	resetevent $00bf
-	setevent $00c1
+	resetevent EVENT_0BF
+	setevent EVENT_0C1
 	call Func_a933a
 	scall Func_80f02
 	scall WaitEmote
@@ -308,8 +308,8 @@ Func_a93b6:
 	ld a, $17
 	scall MoveEmote
 	playsfx SFX_45
-	resetevent $00c1
-	setevent $0044
+	resetevent EVENT_0C1
+	setevent EVENT_044
 	call Func_a933a
 	scall Func_80f02
 	scall WaitEmote
@@ -332,7 +332,6 @@ Func_a93b6:
 	move_player $01, Data_a93b2
 	script_sleep 30
 	warp_player MAP_24_00, $14, $0f
-	pop bc
 	ret
 
 Func_a94fe:
@@ -433,7 +432,7 @@ Func_a95d7:
 	ld a, e
 	or a
 	jp nz, .asm_a96de
-	checkevent $00de
+	checkevent EVENT_0DE
 	or a
 	jp nz, .asm_a96d8
 	playsfx SFX_5E
@@ -466,7 +465,7 @@ Func_a95d7:
 	ld e, $14
 	ld a, $0a
 	scall Func_80e8d
-	setevent $00de
+	setevent EVENT_0DE
 	playsfx SFX_60
 	sprite_face $03, $0a
 	sprite_face $00, $0a

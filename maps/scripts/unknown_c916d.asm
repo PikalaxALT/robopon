@@ -44,7 +44,7 @@ Data_c919e:
 	db $10, $1e, $03, $01, $10, $1d
 
 Func_c91a4:
-	checkevent $001f
+	checkevent EVENT_01F
 	cp $01
 	jp nz, .asm_c91b8
 	ld hl, Data_c919e

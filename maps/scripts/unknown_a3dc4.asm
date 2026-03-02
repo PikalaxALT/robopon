@@ -28,7 +28,7 @@ Func_a3dc4:: ; a3dc4
 	ld a, $03
 	scall Func_80d01
 	loadwilds $03, Data_a3d7e
-	checkevent $00c7
+	checkevent EVENT_0C7
 	or a
 	jp nz, .asm_a3e05
 	loadpeople $02, Data_a3da8
@@ -125,7 +125,7 @@ ENDC
 	cp $ff
 	jp nz, label_a3f48
 label_a3f48:
-	setevent $00c7
+	setevent EVENT_0C7
 	ret
 
 Data_a3f51:

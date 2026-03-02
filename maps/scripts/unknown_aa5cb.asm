@@ -115,16 +115,16 @@ Func_aa5cb:: ; aa5cb
 .asm_aa622:
 	loadpeople $01, Data_aa5af
 .asm_aa62a:
-	checkevent $0034
+	checkevent EVENT_034
 	cp $01
 	jp nz, .asm_aa666
-	checkevent $00c3
+	checkevent EVENT_0C3
 	or a
 	jp nz, .asm_aa666
 	ld a, [wBackupMapGroup]
 	cp $1a
 	jp nz, .asm_aa666
-	checkevent $0035
+	checkevent EVENT_035
 	or a
 	jp nz, .asm_aa666
 	loadpeople $01, Data_aa5a1
@@ -134,13 +134,13 @@ Func_aa5cb:: ; aa5cb
 	call Func_aab3f
 	jp .asm_aa6dd
 .asm_aa666:
-	checkevent $0022
+	checkevent EVENT_022
 	cp $01
 	jp nz, .asm_aa69e
-	checkevent $0043
+	checkevent EVENT_043
 	or a
 	jp nz, .asm_aa69e
-	checkevent $00c2
+	checkevent EVENT_0C2
 	or a
 	jp nz, .asm_aa69e
 	ld a, [wBackupMapGroup]
@@ -152,14 +152,14 @@ Func_aa5cb:: ; aa5cb
 .asm_aa69b:
 	jp .asm_aa6dd
 .asm_aa69e:
-	checkevent $0022
+	checkevent EVENT_022
 	or a
 	jp nz, .asm_aa6da
 	loadpeople $06, Data_aa523
-	checkevent $0014
+	checkevent EVENT_014
 	cp $01
 	jp nz, .asm_aa6d4
-	checkevent $0007
+	checkevent EVENT_007
 	cp $01
 	jp nz, .asm_aa6d4
 	hideperson $10
@@ -238,7 +238,6 @@ Func_aa6ee:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_01, $0a, $12
-	pop bc
 .asm_aa79f:
 	jp .asm_aa7a8
 .asm_aa7a2:
@@ -591,9 +590,8 @@ Func_aaad6:
 	writetext TreeBitstreamText_3d8ce
 	move_player $01, Data_aaad2
 	scall WaitNPCStep
-	setevent $00c2
+	setevent EVENT_0C2
 	warp_player MAP_25_01, $19, $07
-	pop bc
 	ret
 
 Data_aab37:
@@ -612,8 +610,7 @@ Func_aab3f:
 	scall WaitNPCStep
 	script_sleep 30
 	warp_player MAP_26_00, $07, $06
-	pop bc
-	setevent $00c3
+	setevent EVENT_0C3
 	ret
 
 Func_aab87:

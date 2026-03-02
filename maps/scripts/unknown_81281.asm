@@ -117,28 +117,28 @@ Func_81281::
 	cp $3
 	jp nz, .asm_813ff
 .asm_812c9: ; 812c9 (20:52c9)
-	checkevent $c
+	checkevent EVENT_00C
 	or a
 	jp nz, .asm_812ec
 	loadpeople $3, Data_8113f
 	scall Func_8001c
 	call Func_814c1
-	setevent $c
+	setevent EVENT_00C
 	jp .asm_813fc
 
 .asm_812ec: ; 812ec (20:52ec)
-	checkevent $2
+	checkevent EVENT_002
 	or a
 	jp z, .asm_81300
-	checkevent $3
+	checkevent EVENT_003
 	or a
 	jp nz, .asm_8137b
 .asm_81300: ; 81300 (20:5300)
 	loadpeople $6, Data_81169
-	checkevent $2
+	checkevent EVENT_002
 	cp $1
 	jp nz, .asm_8133b
-	checkevent $3
+	checkevent EVENT_003
 	cp $1
 	jp nz, .asm_8132e
 	hideperson 0
@@ -150,13 +150,13 @@ Func_81281::
 .asm_81334: ; 81334 (20:5334)
 	hideperson $1
 .asm_8133b: ; 8133b (20:533b)
-	checkevent $3
+	checkevent EVENT_003
 	cp $1
 	jp nz, .asm_8137b
-	checkevent $4
+	checkevent EVENT_004
 	cp $1
 	jp z, .asm_8135c
-	checkevent $2
+	checkevent EVENT_002
 	cp $1
 	jp nz, .asm_8136d
 .asm_8135c: ; 8135c (20:535c)
@@ -170,10 +170,10 @@ Func_81281::
 	hideperson $4
 .asm_8137b: ; 8137b (20:537b)
 	loadpeople $6, Data_811bd
-	checkevent $21
+	checkevent EVENT_021
 	cp $1
 	jp nz, .asm_813ba
-	checkevent $46
+	checkevent EVENT_046
 	or a
 	jp nz, .asm_813ba
 	loadpeople $4, Data_8122d
@@ -383,7 +383,7 @@ Func_81607:
 	ld a, e
 	or a
 	jp nz, .asm_8171a
-	checkevent $2
+	checkevent EVENT_002
 	or a
 	jp nz, .asm_81704
 	ld a, [wPlayerFacing]
@@ -424,7 +424,7 @@ Func_81607:
 	script_sleep 30
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
-	checkevent $3
+	checkevent EVENT_003
 	or a
 	jp nz, .asm_816cc
 	writenpctext TreeBitstreamText_3972e
@@ -435,7 +435,7 @@ Func_81607:
 .asm_816cc: ; 816cc (20:56cc)
 	call Func_8172f
 .asm_816cf: ; 816cf (20:56cf)
-	setevent $2
+	setevent EVENT_002
 	jp .asm_81701
 
 .asm_816da: ; 816da (20:56da)
@@ -450,7 +450,7 @@ Func_81607:
 	jp .asm_8171a
 
 .asm_81704: ; 81704 (20:5704)
-	checkevent $3
+	checkevent EVENT_003
 	or a
 	jp nz, .asm_81717
 	writenpctext TreeBitstreamText_397b1
@@ -474,7 +474,7 @@ Data_8172b: ; 8172b
 	db $0c, $0e, $ff, $ff
 
 Func_8172f: ; 8172f (20:572f)
-	checkevent $4
+	checkevent EVENT_004
 	or a
 	jp nz, .asm_817c9
 	ld c, $e
@@ -503,7 +503,7 @@ Func_8172f: ; 8172f (20:572f)
 	move_person $3, Data_8172b, 0
 	scall WaitNPCStep
 	hideperson $3
-	setevent $4
+	setevent EVENT_004
 	jp .asm_817d3
 
 .asm_817c9: ; 817c9 (20:57c9)
@@ -533,7 +533,7 @@ Func_81811:
 	ld a, e
 	or a
 	jp nz, .asm_81966
-	checkevent $3
+	checkevent EVENT_003
 	or a
 	jp nz, .asm_8193b
 	move_player $1, Data_8180d
@@ -566,7 +566,7 @@ Func_81811:
 	hideperson $4
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
-	checkevent $2
+	checkevent EVENT_002
 	or a
 	jp nz, .asm_818b7
 	writenpctext TreeBitstreamText_39889
@@ -589,7 +589,7 @@ Func_81811:
 	hideperson $3
 	hideperson 0
 .asm_81905: ; 81905 (20:5905)
-	setevent $3
+	setevent EVENT_003
 	jp .asm_81938
 
 .asm_81910: ; 81910 (20:5910)
@@ -604,7 +604,7 @@ Func_81811:
 	jp .asm_81966
 
 .asm_8193b: ; 8193b (20:593b)
-	checkevent $2
+	checkevent EVENT_002
 	or a
 	jp nz, .asm_8194e
 	writenpctext TreeBitstreamText_39889
@@ -626,7 +626,7 @@ Data_8196f: ; 8196f
 
 Func_81973:
 	push de
-	checkevent $3
+	checkevent EVENT_003
 	or a
 	jp nz, .asm_819aa
 	ld hl, sp+$0
@@ -649,7 +649,7 @@ Data_819ac:
 
 Func_819b0:
 	push de
-	checkevent $2
+	checkevent EVENT_002
 	or a
 	jp nz, .asm_819e8
 	ld hl, sp+$0
@@ -678,7 +678,6 @@ Func_819ea:
 
 .asm_819fb: ; 819fb (20:59fb)
 	warp_player MAP_32_04, $0, $7
-	pop bc
 	ld a, $1
 	ld [wSpawnPushX], a
 	ld a, $7
@@ -702,7 +701,6 @@ Func_81a22:
 
 .asm_81a33: ; 81a33 (20:5a33)
 	warp_player MAP_32_04, $0, $7
-	pop bc
 	ld a, $1
 	ld [wSpawnPushX], a
 	ld a, $7

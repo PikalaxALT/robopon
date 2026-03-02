@@ -51,12 +51,12 @@ Func_827a9::
 	jp .asm_8283c
 
 .asm_82811: ; 82811 (20:6811)
-	checkevent $d
+	checkevent EVENT_00D
 	or a
 	jp nz, .asm_8282c
 	scall Func_8001c
 	call Func_82894
-	setevent $d
+	setevent EVENT_00D
 	jp .asm_8283c
 
 .asm_8282c: ; 8282c (20:682c)
@@ -135,7 +135,7 @@ Func_828df:
 	move_person $2, Data_828cf, 1
 	scall WaitNPCStep
 	sprite_face $2, $2
-	checkevent $32
+	checkevent EVENT_032
 	cp $1
 	jp nz, .asm_82967
 	writenpctext_yesorno TreeBitstreamText_45e91
@@ -147,7 +147,7 @@ Func_828df:
 	sprite_face $2, $2
 	move_player $1, Data_828db
 	scall WaitNPCStep
-	resetevent $f8
+	resetevent EVENT_0F8
 	jp .asm_82964
 
 .asm_82940: ; 82940 (20:6940)
@@ -207,12 +207,12 @@ Data_829d9: ; 829d9
 	db $09, $04, $ff, $ff
 
 Func_829dd: ; 829dd (20:69dd)
-	checkevent $f8
+	checkevent EVENT_0F8
 	or a
 	jp nz, .asm_829fc
 	move_player $1, Data_829d9
 	scall WaitNPCStep
-	setevent $f8
+	setevent EVENT_0F8
 .asm_829fc
 	ret
 
@@ -222,7 +222,7 @@ Func_829fd:
 	or a
 	jp nz, .asm_82ab6
 	face_player -1
-	checkevent $114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_82ab0
 	ld a, $10
@@ -268,7 +268,7 @@ Func_829fd:
 	ld e, $1
 	ld a, $18
 	scall Func_80d4d
-	setevent $114
+	setevent EVENT_114
 	writetext TreeBitstreamText_45f98
 .asm_82a8f: ; 82a8f (20:6a8f)
 	jp .asm_82a98

@@ -36,7 +36,7 @@ Func_8b65a:: ; 8b65a
 	loadwilds $05, Data_8b5f8
 	ld a, $04
 	ld [wc7e2], a
-	checkevent $0000
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_8b696
 	ld a, $01
@@ -96,7 +96,6 @@ Func_8b6ae:
 	xor a
 	scall PlayerFace
 	warp_player MAP_30_03, $2e, $1e
-	pop bc
 .asm_8b72b:
 	jp .asm_8b734
 .asm_8b72e:
@@ -119,7 +118,7 @@ Func_8b767:
 	or a
 	jp nz, .asm_8b7bd
 	face_player -$01
-	checkevent $0072
+	checkevent EVENT_072
 	or a
 	jp nz, .asm_8b7b7
 	writetext TreeBitstreamText_42b7b
@@ -131,7 +130,7 @@ Func_8b767:
 	jp nz, .asm_8b79d
 	jp .asm_8b7bd
 .asm_8b79d:
-	setevent $0072
+	setevent EVENT_072
 	writetext TreeBitstreamText_42b85
 	jp .asm_8b7b4
 .asm_8b7ae:

@@ -27,7 +27,7 @@ Func_9f5e1:: ; 9f5e1
 	ld a, [wBackupMapNumber]
 	cp $0b
 	jp nz, .asm_9f632
-	checkevent $00f9
+	checkevent EVENT_0F9
 	or a
 	jp nz, .asm_9f627
 	playmusic SONG_JUMP_MINIGAME
@@ -59,5 +59,5 @@ Func_9f63b:
 	script_sleep 30
 	playmusic SONG_NONE
 	playmusic SONG_PRINCE_TEIL
-	setevent $00f9
+	setevent EVENT_0F9
 	ret

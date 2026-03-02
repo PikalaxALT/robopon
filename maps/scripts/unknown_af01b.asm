@@ -52,19 +52,19 @@ Func_af01b:: ; af01b
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_aeed9
-	checkevent $004e
+	checkevent EVENT_04E
 	or a
 	jp nz, .asm_af057
-	checkevent $004d
+	checkevent EVENT_04D
 	or a
 	jp nz, .asm_af057
 	loadpeople $09, Data_aef1f
 	jp .asm_af074
 .asm_af057:
-	checkevent $004e
+	checkevent EVENT_04E
 	or a
 	jp nz, .asm_af074
-	checkevent $004d
+	checkevent EVENT_04D
 	cp $01
 	jp nz, .asm_af074
 	loadpeople $09, Data_aef9d
@@ -213,7 +213,7 @@ Func_af113:
 	ret
 
 Func_af161:
-	setevent $004e
+	setevent EVENT_04E
 	playsfx SFX_2B
 	hideperson 0
 	script_sleep 30
@@ -234,10 +234,10 @@ Func_af1b1:
 	or a
 	jp nz, .asm_af223
 	face_player -$01
-	checkevent $004d
+	checkevent EVENT_04D
 	or a
 	jp nz, .asm_af21d
-	checkevent $004e
+	checkevent EVENT_04E
 	or a
 	jp nz, .asm_af21d
 	writenpctext TreeBitstreamText_3e85a
@@ -253,7 +253,7 @@ Func_af1b1:
 	ld e, $01
 	ld a, $24
 	scall Func_80d4d
-	setevent $004d
+	setevent EVENT_04D
 	writenpctext TreeBitstreamText_3e8a6
 	jp .asm_af211
 .asm_af20b:

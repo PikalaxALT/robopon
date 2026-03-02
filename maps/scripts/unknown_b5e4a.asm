@@ -42,7 +42,7 @@ Func_b5e4a:: ; b5e4a
 	ld a, [wBackupMapY]
 	cp $0a
 	jp nz, .asm_b5eba
-	checkevent $00fd
+	checkevent EVENT_0FD
 	or a
 	jp nz, .asm_b5eae
 	xor a
@@ -67,7 +67,7 @@ Func_b5ec4:
 	cp $02
 	jp nz, .asm_b5f02
 	landmarksign TreeBitstreamText_46d3b
-	resetevent $00fe
+	resetevent EVENT_0FE
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
@@ -77,7 +77,6 @@ Func_b5ec4:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_08, $09, $0a
-	pop bc
 .asm_b5f02:
 	ret
 
@@ -92,5 +91,5 @@ Func_b5f03:
 	scall Func_80653
 	script_sleep 1
 	scall HideEmote
-	setevent $00fd
+	setevent EVENT_0FD
 	ret

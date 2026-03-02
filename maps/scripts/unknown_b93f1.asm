@@ -603,12 +603,12 @@ Func_b93f1:: ; b93f1
 	ld a, [wBackupMapY]
 	cp $10
 	jp nz, .asm_b979a
-	checkevent $002d
+	checkevent EVENT_02D
 	or a
 	jp nz, .asm_b978d
 	scall Func_8001c
 	call Func_b97c4
-	setevent $002d
+	setevent EVENT_02D
 	jp .asm_b9797
 .asm_b978d:
 	scall Func_8001c

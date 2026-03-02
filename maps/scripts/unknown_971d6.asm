@@ -25,7 +25,7 @@ Func_971f5:
 	ld a, e
 	or a
 	jp nz, .asm_972e7
-	checkevent $00db
+	checkevent EVENT_0DB
 	or a
 	jp nz, .asm_972e1
 	playsfx SFX_5E
@@ -58,7 +58,7 @@ Func_971f5:
 	ld e, $01
 	xor a
 	scall Func_80e8d
-	setevent $00db
+	setevent EVENT_0DB
 	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0

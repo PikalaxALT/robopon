@@ -303,15 +303,15 @@ Func_d3055:
 	ld a, e
 	or a
 	jp nz, .asm_d30f8
-	checkevent $1
+	checkevent EVENT_001
 	or a
 	jp nz, .asm_d3086
 	writetext TreeBitstreamText_3a8c3
-	checkevent $f0
+	checkevent EVENT_0F0
 	cp $1
 	jp nz, .asm_d3083
 	writetext TreeBitstreamText_3a8e1
-	setevent $1
+	setevent EVENT_001
 .asm_d3083: ; d3083 (34:7083)
 	jp .asm_d30f8
 
@@ -324,7 +324,7 @@ Func_d3055:
 	jp .asm_d30f8
 
 .asm_d3098: ; d3098 (34:7098)
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_d30e9
 	writetext_yesorno TreeBitstreamText_3a966
@@ -342,7 +342,7 @@ Func_d3055:
 	ld e, $1
 	ld a, $12
 	scall Func_80d4d
-	setevent $0
+	setevent EVENT_000
 	jp .asm_d30e6
 
 .asm_d30e0: ; d30e0 (34:70e0)

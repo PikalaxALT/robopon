@@ -37,7 +37,7 @@ Func_ad122:: ; ad122
 .asm_ad152:
 	loadwarps $02, Data_ad0b4
 	loadpeople $02, Data_ad0f8
-	checkevent $0034
+	checkevent EVENT_034
 	or a
 	jp nz, .asm_ad18a
 	playmusic SONG_NONE
@@ -51,13 +51,13 @@ Func_ad122:: ; ad122
 	call Func_ad1c6
 	jp .asm_ad1c5
 .asm_ad18a:
-	checkevent $00c3
+	checkevent EVENT_0C3
 	or a
 	jp nz, .asm_ad1b8
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_ad1b8
-	checkevent $0035
+	checkevent EVENT_035
 	or a
 	jp nz, .asm_ad1b8
 	scall Func_8001c
@@ -91,7 +91,6 @@ Func_ad1c6:
 	writenpctext TreeBitstreamText_3e01f
 	scall StopShakingScreen
 	warp_player MAP_31_02, $09, $0a
-	pop bc
 	ret
 
 Data_ad215:
@@ -157,9 +156,8 @@ Func_ad225:
 	scall FadeInAudio
 	playmusic SONG_NONE
 	warp_player MAP_00_02, $04, $05
-	pop bc
 	ret
+
 Func_ad302:
 	warp_player MAP_25_01, $19, $06
-	pop bc
 	ret

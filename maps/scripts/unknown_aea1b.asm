@@ -52,6 +52,5 @@ Func_aea4f:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_27_07, $0e, $04
-	pop bc
 .asm_aea7f:
 	ret

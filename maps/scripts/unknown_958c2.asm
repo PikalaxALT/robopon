@@ -34,14 +34,14 @@ Func_958c2::
 	ld hl, Data_95833
 	scall Func_80ce7
 	playmusic SONG_CENTER
-	checkevent $f
+	checkevent EVENT_00F
 	or a
 	jp nz, Func_9590a
 	loadpeople 4, Data_95844
 	hideperson $1
 	scall Func_8001c
 	call Func_959a9
-	setevent $f
+	setevent EVENT_00F
 	jp Func_95957
 
 Func_9590a:
@@ -89,7 +89,7 @@ Func_9596a:
 	jp Func_95998
 
 Func_9597e:
-	checkevent $5b
+	checkevent EVENT_05B
 	cp $1
 	jp nz, Func_95998
 	ld hl, Data_95958
@@ -156,7 +156,7 @@ ENDC
 	ld a, [wc78c]
 	cp $a
 	jp nc, Func_95a7f
-	checkevent $63
+	checkevent EVENT_063
 	cp $1
 	jp nz, Func_95a7f
 	writenpctext TreeBitstreamText_3933b
@@ -198,10 +198,10 @@ Func_95ab9:
 	ld a, e
 	or a
 	jp nz, Func_95c0b
-	checkevent $f3
+	checkevent EVENT_0F3
 	cp $1
 	jp nz, Func_95b02
-	checkevent $f5
+	checkevent EVENT_0F5
 	or a
 	jp nz, Func_95b02
 	face_player 0
@@ -213,14 +213,14 @@ Func_95ab9:
 	ld a, $1b
 	scall Func_80d4d
 	writenpctext TreeBitstreamText_395b4
-	setevent $f5
+	setevent EVENT_0F5
 	jp Func_95c0b
 
 Func_95b02:
-	checkevent $f4
+	checkevent EVENT_0F4
 	cp $1
 	jp nz, Func_95b40
-	checkevent $f6
+	checkevent EVENT_0F6
 	or a
 	jp nz, Func_95b40
 	face_player 0
@@ -231,14 +231,14 @@ Func_95b02:
 	ld e, $1
 	ld a, $1a
 	scall Func_80d4d
-	setevent $f6
+	setevent EVENT_0F6
 	jp Func_95c0b
 
 Func_95b40:
 	ld a, [wc78c]
 	cp $14
 	jp nz, Func_95b81
-	checkevent $e7
+	checkevent EVENT_0E7
 	or a
 	jp nz, Func_95b81
 	face_player 0
@@ -246,7 +246,7 @@ Func_95b40:
 	playsfx SFX_2A
 	writetext TreeBitstreamText_39545
 	give_robot TEABOT, $1e, $0
-	setevent $e7
+	setevent EVENT_0E7
 	sprite_face $2, 0
 	jp Func_95c0b
 
@@ -265,11 +265,11 @@ Func_95b96:
 	scall PlayerFace
 Func_95ba4:
 	sprite_face $2, 0
-	checkevent $c4
+	checkevent EVENT_0C4
 	or a
 	jp nz, Func_95bc2
 	writenpctext TreeBitstreamText_393e9
-	setevent $c4
+	setevent EVENT_0C4
 Func_95bc2:
 	writenpctext_yesorno TreeBitstreamText_3945b
 	or a

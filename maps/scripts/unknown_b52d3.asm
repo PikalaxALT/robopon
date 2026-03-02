@@ -41,7 +41,7 @@ Func_b52d3:: ; b52d3
 	ld e, $02
 	ld hl, Data_b52b7
 	scall Func_80ce7
-	checkevent $0021
+	checkevent EVENT_021
 	or a
 	jp nz, .asm_b5307
 	loadpeople $01, Data_b52c5

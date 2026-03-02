@@ -30,7 +30,7 @@ Func_87ea2::
 	ld a, $3
 	scall Func_80d01
 	loadwilds $5, Data_87e4a
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_87ec9
 	ld a, $1

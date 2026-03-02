@@ -76,26 +76,26 @@ Func_85a1d::
 	call CompareHLtoDE
 	jp c, .asm_85a59
 .asm_85a4e: ; 85a4e (21:5a4e)
-	setevent $38
+	setevent EVENT_038
 	jp .asm_85a61
 
 .asm_85a59: ; 85a59 (21:5a59)
-	resetevent $38
+	resetevent EVENT_038
 .asm_85a61: ; 85a61 (21:5a61)
 	ld a, $1
 	ld [wc7de], a
 	loadwarps $5, Data_85992
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_85aaf
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp nz, .asm_85aaf
 	ld a, $3
 	scall Func_80d01
 	loadwilds $5, Data_85938
 	playmusic SONG_CAVE
-	checkevent $0
+	checkevent EVENT_000
 	or a
 	jp nz, .asm_85aa8
 	ld a, $1
@@ -115,16 +115,16 @@ Func_85a1d::
 	ld a, [wc797]
 	cp $7
 	jp c, .asm_85afc
-	checkevent $38
+	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_85ada
-	checkevent $7
+	checkevent EVENT_007
 	cp $1
 	jp z, .asm_85afc
 .asm_85ada: ; 85ada (21:5ada)
 	hideperson $4
 	loadpeople $1, Data_85a0f
-	checkevent $14
+	checkevent EVENT_014
 	cp $1
 	jp nz, .asm_85afc
 	ld de, Data_8598e
@@ -152,7 +152,7 @@ Func_85b17:
 	ld a, e
 	or a
 	jp nz, .asm_85b6d
-	checkevent $c0
+	checkevent EVENT_0C0
 	or a
 	jp nz, .asm_85b52
 	face_player -$1
@@ -163,7 +163,7 @@ Func_85b17:
 	ld e, $1
 	ld a, $17
 	scall Func_80d4d
-	setevent $c0
+	setevent EVENT_0C0
 	jp .asm_85b6d
 
 .asm_85b52: ; 85b52 (21:5b52)
@@ -194,10 +194,10 @@ Func_85b98:
 	or a
 	jp nz, .asm_85c1a
 	face_player -$1
-	checkevent $c0
+	checkevent EVENT_0C0
 	cp $1
 	jp nz, .asm_85c14
-	checkevent $64
+	checkevent EVENT_064
 	or a
 	jp nz, .asm_85c0b
 	writenpctext TreeBitstreamText_39eb7
@@ -210,7 +210,7 @@ Func_85b98:
 	jp .asm_85c1a
 
 .asm_85bd9: ; 85bd9 (21:5bd9)
-	setevent $64
+	setevent EVENT_064
 	ld a, [wc797]
 	inc a
 	ld [wc797], a

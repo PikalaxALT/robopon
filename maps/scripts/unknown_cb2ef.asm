@@ -38,7 +38,7 @@ Func_cb2ef:: ; cb2ef
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_cb27f
-	checkevent $00ab
+	checkevent EVENT_0AB
 	or a
 	jp nz, .asm_cb31e
 	loadpeople $03, Data_cb2c5
@@ -59,7 +59,7 @@ Func_cb335:
 	ld a, e
 	cp $02
 	jp nz, .asm_cb391
-	checkevent $00ab
+	checkevent EVENT_0AB
 	or a
 	jp nz, .asm_cb391
 	playmusic SONG_NONE
@@ -79,7 +79,7 @@ Func_cb335:
 	sprite_face $01, 0
 .asm_cb37d:
 	call Func_cb3c6
-	setevent $00ab
+	setevent EVENT_0AB
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
 .asm_cb391:

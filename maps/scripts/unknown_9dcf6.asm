@@ -59,10 +59,10 @@ Data_9dccc:
 
 Func_9dcf6:: ; 9dcf6
 	set_frame_script Func_9ddbb
-	resetevent $0010
+	resetevent EVENT_010
 	loadwarps $01, Data_9dc24
 	playmusic SONG_MAZE_MINIGAME
-	checkevent $00ba
+	checkevent EVENT_0BA
 	or a
 	jp nz, .asm_9dd37
 	loadpeople $02, Data_9dc5c
@@ -71,10 +71,10 @@ Func_9dcf6:: ; 9dcf6
 	call Func_9ddf2
 	jp .asm_9dda8
 .asm_9dd37:
-	checkevent $00be
+	checkevent EVENT_0BE
 	cp $01
 	jp nz, .asm_9dd62
-	checkevent $00ee
+	checkevent EVENT_0EE
 	or a
 	jp nz, .asm_9dd62
 	loadpeople $03, Data_9dc94
@@ -82,7 +82,7 @@ Func_9dcf6:: ; 9dcf6
 	scall Func_8001c
 	jp .asm_9dda8
 .asm_9dd62:
-	checkevent $00ee
+	checkevent EVENT_0EE
 	cp $01
 	jp nz, .asm_9dd83
 	loadpeople $01, Data_9dcbe
@@ -94,7 +94,7 @@ Func_9dcf6:: ; 9dcf6
 .asm_9dd83:
 	loadpeople $02, Data_9dc78
 	loadpeople $03, Data_9dccc
-	checkevent $00bb
+	checkevent EVENT_0BB
 	cp $01
 	jp nz, .asm_9dda5
 	ld de, Data_9dc54
@@ -115,7 +115,7 @@ Data_9ddb5:
 	db $16, $0a, $01, $02, $03, $04
 
 Func_9ddbb:
-	checkevent $00ba
+	checkevent EVENT_0BA
 	cp $01
 	jp nz, .asm_9ddd5
 	ld hl, Data_9dda9
@@ -124,7 +124,7 @@ Func_9ddbb:
 	scall Func_80d9b
 	scall Func_80f02
 .asm_9ddd5:
-	checkevent $00ee
+	checkevent EVENT_0EE
 	cp $01
 	jp nz, .asm_9dde9
 	ld hl, Data_9ddb5
@@ -194,7 +194,7 @@ Func_9ddf2:
 	playmusic SONG_NONE
 	playmusic SONG_1C
 	script_sleep 180
-	setevent $00ba
+	setevent EVENT_0BA
 	call Func_9ddbb
 	loademote $01, $03, $27
 	ld e, $01
@@ -266,10 +266,10 @@ Func_9df90:
 	or a
 	jp nz, .asm_9dfe3
 	face_player $01
-	checkevent $00b9
+	checkevent EVENT_0B9
 	cp $01
 	jp nz, .asm_9dfc2
-	checkevent $00bb
+	checkevent EVENT_0BB
 	cp $01
 	jp nz, .asm_9dfb9
 	writenpctext TreeBitstreamText_43d46
@@ -283,7 +283,7 @@ Func_9df90:
 	or a
 	jp nz, .asm_9dfdd
 	writenpctext TreeBitstreamText_43084
-	setevent $00b9
+	setevent EVENT_0B9
 	jp .asm_9dfe3
 .asm_9dfdd:
 	writenpctext TreeBitstreamText_430f7

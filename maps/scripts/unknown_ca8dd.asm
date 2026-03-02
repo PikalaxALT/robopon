@@ -108,7 +108,7 @@ Func_ca8dd:: ; ca8dd
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca739
-	checkevent $0095
+	checkevent EVENT_095
 	or a
 	jp nz, .asm_ca91f
 	loadpeople $01, Data_ca897
@@ -121,7 +121,7 @@ Func_ca8dd:: ; ca8dd
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca77f
-	checkevent $009a
+	checkevent EVENT_09A
 	or a
 	jp nz, .asm_ca94f
 	loadpeople $01, Data_ca8a5
@@ -134,7 +134,7 @@ Func_ca8dd:: ; ca8dd
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca7c5
-	checkevent $009f
+	checkevent EVENT_09F
 	or a
 	jp nz, .asm_ca97f
 	loadpeople $01, Data_ca8b3
@@ -147,7 +147,7 @@ Func_ca8dd:: ; ca8dd
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca80b
-	checkevent $00a4
+	checkevent EVENT_0A4
 	or a
 	jp nz, .asm_ca9af
 	loadpeople $01, Data_ca8c1
@@ -160,7 +160,7 @@ Func_ca8dd:: ; ca8dd
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca851
-	checkevent $00a9
+	checkevent EVENT_0A9
 	or a
 	jp nz, .asm_ca9df
 	loadpeople $01, Data_ca8cf
@@ -186,7 +186,7 @@ Func_caa1f:
 	ld a, e
 	or a
 	jp nz, .asm_cab02
-	checkevent $0095
+	checkevent EVENT_095
 	or a
 	jp nz, .asm_cab02
 	face_player 0
@@ -197,8 +197,8 @@ Func_caa1f:
 	jp .asm_cab02
 .asm_caa48:
 	writetext TreeBitstreamText_3c810
-	setevent $0095
-	resetevent $0042
+	setevent EVENT_095
+	resetevent EVENT_042
 	ld c, $01
 	ld e, $01
 	ld a, $1e
@@ -210,19 +210,19 @@ Func_caa1f:
 	ld a, $1e
 	scall Func_80d4d
 .asm_caa75:
-	checkevent $0095
+	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_caaca
-	checkevent $009a
+	checkevent EVENT_09A
 	cp $01
 	jp nz, .asm_caaca
-	checkevent $009f
+	checkevent EVENT_09F
 	cp $01
 	jp nz, .asm_caaca
-	checkevent $00a4
+	checkevent EVENT_0A4
 	cp $01
 	jp nz, .asm_caaca
-	checkevent $00a9
+	checkevent EVENT_0A9
 	cp $01
 	jp nz, .asm_caaca
 	ld c, $00
@@ -247,7 +247,6 @@ Func_caa1f:
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $17, $1b
-	pop bc
 .asm_cab02:
 	ret
 
@@ -269,7 +268,7 @@ Func_cab3c:
 	ld a, e
 	or a
 	jp nz, .asm_cac3b
-	checkevent $009a
+	checkevent EVENT_09A
 	or a
 	jp nz, .asm_cac3b
 	face_player 0
@@ -287,8 +286,8 @@ Func_cab3c:
 	jp .asm_cac3b
 .asm_cab73:
 	writetext TreeBitstreamText_3c859
-	setevent $009a
-	resetevent $0042
+	setevent EVENT_09A
+	resetevent EVENT_042
 	ld c, $01
 	ld e, $01
 	ld a, $1c
@@ -300,19 +299,19 @@ Func_cab3c:
 	ld a, $1c
 	scall Func_80d4d
 .asm_caba0:
-	checkevent $0095
+	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_cabf5
-	checkevent $009a
+	checkevent EVENT_09A
 	cp $01
 	jp nz, .asm_cabf5
-	checkevent $009f
+	checkevent EVENT_09F
 	cp $01
 	jp nz, .asm_cabf5
-	checkevent $00a4
+	checkevent EVENT_0A4
 	cp $01
 	jp nz, .asm_cabf5
-	checkevent $00a9
+	checkevent EVENT_0A9
 	cp $01
 	jp nz, .asm_cabf5
 	ld c, $00
@@ -344,7 +343,6 @@ Func_cab3c:
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $0b, $1b
-	pop bc
 .asm_cac3b:
 	ret
 
@@ -366,7 +364,7 @@ Func_cac75:
 	ld a, e
 	or a
 	jp nz, .asm_cad74
-	checkevent $009f
+	checkevent EVENT_09F
 	or a
 	jp nz, .asm_cad74
 	face_player 0
@@ -384,8 +382,8 @@ Func_cac75:
 	jp .asm_cad74
 .asm_cacac:
 	writetext TreeBitstreamText_3c8aa
-	setevent $009f
-	resetevent $0042
+	setevent EVENT_09F
+	resetevent EVENT_042
 	ld c, $01
 	ld e, $01
 	ld a, $1d
@@ -397,19 +395,19 @@ Func_cac75:
 	ld a, $1d
 	scall Func_80d4d
 .asm_cacd9:
-	checkevent $0095
+	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_cad2e
-	checkevent $009a
+	checkevent EVENT_09A
 	cp $01
 	jp nz, .asm_cad2e
-	checkevent $009f
+	checkevent EVENT_09F
 	cp $01
 	jp nz, .asm_cad2e
-	checkevent $00a4
+	checkevent EVENT_0A4
 	cp $01
 	jp nz, .asm_cad2e
-	checkevent $00a9
+	checkevent EVENT_0A9
 	cp $01
 	jp nz, .asm_cad2e
 	ld c, $00
@@ -441,7 +439,6 @@ Func_cac75:
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $1d, $12
-	pop bc
 .asm_cad74:
 	ret
 
@@ -463,7 +460,7 @@ Func_cadae:
 	ld a, e
 	or a
 	jp nz, .asm_caead
-	checkevent $00a4
+	checkevent EVENT_0A4
 	or a
 	jp nz, .asm_caead
 	face_player 0
@@ -481,8 +478,8 @@ Func_cadae:
 	jp .asm_caead
 .asm_cade5:
 	writetext TreeBitstreamText_3c901
-	setevent $00a4
-	resetevent $0042
+	setevent EVENT_0A4
+	resetevent EVENT_042
 	ld c, $01
 	ld e, $01
 	ld a, $20
@@ -494,19 +491,19 @@ Func_cadae:
 	ld a, $20
 	scall Func_80d4d
 .asm_cae12:
-	checkevent $0095
+	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_cae67
-	checkevent $009a
+	checkevent EVENT_09A
 	cp $01
 	jp nz, .asm_cae67
-	checkevent $009f
+	checkevent EVENT_09F
 	cp $01
 	jp nz, .asm_cae67
-	checkevent $00a4
+	checkevent EVENT_0A4
 	cp $01
 	jp nz, .asm_cae67
-	checkevent $00a9
+	checkevent EVENT_0A9
 	cp $01
 	jp nz, .asm_cae67
 	ld c, $00
@@ -538,7 +535,6 @@ Func_cadae:
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $05, $12
-	pop bc
 .asm_caead:
 	ret
 
@@ -560,7 +556,7 @@ Func_caee7:
 	ld a, e
 	or a
 	jp nz, .asm_cafe6
-	checkevent $00a9
+	checkevent EVENT_0A9
 	or a
 	jp nz, .asm_cafe6
 	face_player 0
@@ -578,8 +574,8 @@ Func_caee7:
 	jp .asm_cafe6
 .asm_caf1e:
 	writetext TreeBitstreamText_3c925
-	setevent $00a9
-	resetevent $0042
+	setevent EVENT_0A9
+	resetevent EVENT_042
 	ld c, $01
 	ld e, $01
 	ld a, $1f
@@ -591,19 +587,19 @@ Func_caee7:
 	ld a, $1f
 	scall Func_80d4d
 .asm_caf4b:
-	checkevent $0095
+	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_cafa0
-	checkevent $009a
+	checkevent EVENT_09A
 	cp $01
 	jp nz, .asm_cafa0
-	checkevent $009f
+	checkevent EVENT_09F
 	cp $01
 	jp nz, .asm_cafa0
-	checkevent $00a4
+	checkevent EVENT_0A4
 	cp $01
 	jp nz, .asm_cafa0
-	checkevent $00a9
+	checkevent EVENT_0A9
 	cp $01
 	jp nz, .asm_cafa0
 	writetext TreeBitstreamText_3c941
@@ -635,7 +631,6 @@ Func_caee7:
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $11, $0a
-	pop bc
 .asm_cafe6:
 	ret
 

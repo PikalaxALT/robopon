@@ -43,7 +43,7 @@ Func_b5152:: ; b5152
 	ld e, $03
 	ld hl, Data_b5131
 	scall Func_80ce7
-	checkevent $0021
+	checkevent EVENT_021
 	or a
 	jp nz, .asm_b5186
 	loadpeople $01, Data_b5144

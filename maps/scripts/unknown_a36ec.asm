@@ -48,29 +48,29 @@ Data_a372a:
 	db $0a, $0b, $03, $01, $03, $0a
 
 Func_a3730:
-	checkevent $00d1
+	checkevent EVENT_0D1
 	cp $01
 	jp z, .asm_a3751
-	checkevent $00d2
+	checkevent EVENT_0D2
 	cp $01
 	jp z, .asm_a3751
-	checkevent $00d3
+	checkevent EVENT_0D3
 	cp $01
 	jp nz, .asm_a3787
 .asm_a3751:
-	checkevent $00d1
+	checkevent EVENT_0D1
 	cp $01
 	jp nz, .asm_a3762
 	ld hl, Data_a371e
 	scall Func_80d9b
 .asm_a3762:
-	checkevent $00d2
+	checkevent EVENT_0D2
 	cp $01
 	jp nz, .asm_a3773
 	ld hl, Data_a3724
 	scall Func_80d9b
 .asm_a3773:
-	checkevent $00d3
+	checkevent EVENT_0D3
 	cp $01
 	jp nz, .asm_a3784
 	ld hl, Data_a372a

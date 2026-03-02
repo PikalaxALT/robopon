@@ -2,7 +2,7 @@ Func_82628:
 	ld a, e
 	or a
 	jp nz, Func_8271b
-	checkevent $d5
+	checkevent EVENT_0D5
 	or a
 	jp nz, Func_82715
 	playsfx SFX_5E
@@ -53,7 +53,7 @@ Func_82628:
 	ld e, $a
 	ld a, $9
 	scall Func_80e8d
-	setevent $d5
+	setevent EVENT_0D5
 	playsfx SFX_60
 	ld e, $3
 	xor a

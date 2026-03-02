@@ -66,7 +66,7 @@ Func_8e5dc:: ; 8e5dc
 	ld a, $05
 	ld [wc7e2], a
 	loadwarps $0c, Data_8e47a
-	checkevent $0008
+	checkevent EVENT_008
 	or a
 	jp nz, .asm_8e612
 	loadpeople $01, Data_8e5ce
@@ -77,7 +77,7 @@ Func_8e5dc:: ; 8e5dc
 	call Func_8e66b
 	jp .asm_8e65a
 .asm_8e612:
-	checkevent $0088
+	checkevent EVENT_088
 	cp $01
 	jp nz, .asm_8e63d
 	playmusic SONG_TOWN1
@@ -134,7 +134,7 @@ Func_8e66b:
 	writenpctext_yesorno TreeBitstreamText_3b324
 	or a
 	jp nz, .asm_8e727
-	setevent $00e9
+	setevent EVENT_0E9
 	playsfx SFX_2B
 	writetext TreeBitstreamText_3b35d
 	playsfx SFX_68
@@ -165,7 +165,7 @@ Func_8e66b:
 	scall Func_80653
 	scall WaitEmote
 	writenpctext TreeBitstreamText_3b412
-	setevent $00ea
+	setevent EVENT_0EA
 	playsfx SFX_2B
 	writetext TreeBitstreamText_3b401
 	playmusic SONG_NONE
@@ -194,9 +194,8 @@ Func_8e66b:
 	scall HideEmote
 	ld a, $06
 	scall Func_80c94
-	setevent $0008
+	setevent EVENT_008
 	warp_player MAP_06_00, $1b, $08
-	pop bc
 	ld a, $0f
 	scall FadeOutAudio
 	playmusic SONG_NONE
@@ -215,7 +214,6 @@ Func_8e826:
 	scall Func_80653
 	playsfx SFX_2E
 	warp_player MAP_08_01, $04, $01
-	pop bc
 	ld a, $02
 	ld [wPlayerFacing], a
 	ld a, $10
@@ -234,7 +232,6 @@ Func_8e864:
 	jp nz, .asm_8e88b
 	playsfx SFX_2E
 	warp_player MAP_32_01, $09, $07
-	pop bc
 	ld a, $03
 	ld [wPlayerFacing], a
 	ld a, $08
@@ -250,7 +247,6 @@ Func_8e88c:
 	jp nz, .asm_8e8b3
 	playsfx SFX_2E
 	warp_player MAP_32_01, $09, $07
-	pop bc
 	ld a, $03
 	ld [wPlayerFacing], a
 	ld a, $15
@@ -266,6 +262,6 @@ Func_8e8b4:
 	jp nz, .asm_8e8cc
 	face_player $01
 	writenpctext TreeBitstreamText_3ba23
-	setevent $003a
+	setevent EVENT_03A
 .asm_8e8cc:
 	ret

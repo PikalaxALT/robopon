@@ -41,7 +41,7 @@ Func_8a1f3:: ; 8a1f3
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_8a14b
-	checkevent $001f
+	checkevent EVENT_01F
 	or a
 	jp nz, .asm_8a23d
 	loadpeople $04, Data_8a191
@@ -68,7 +68,7 @@ Func_8a284:
 	or a
 	jp nz, .asm_8a2da
 	face_player -$01
-	checkevent $007a
+	checkevent EVENT_07A
 	or a
 	jp nz, .asm_8a2d4
 	writetext TreeBitstreamText_42998
@@ -80,7 +80,7 @@ Func_8a284:
 	jp nz, .asm_8a2ba
 	jp .asm_8a2da
 .asm_8a2ba:
-	setevent $007a
+	setevent EVENT_07A
 	writetext TreeBitstreamText_429a1
 	jp .asm_8a2d1
 .asm_8a2cb:
@@ -107,7 +107,7 @@ Func_8a30a:
 	or a
 	jp nz, .asm_8a360
 	face_player -$01
-	checkevent $007b
+	checkevent EVENT_07B
 	or a
 	jp nz, .asm_8a35a
 	writetext TreeBitstreamText_429aa
@@ -119,7 +119,7 @@ Func_8a30a:
 	jp nz, .asm_8a340
 	jp .asm_8a360
 .asm_8a340:
-	setevent $007b
+	setevent EVENT_07B
 	writetext TreeBitstreamText_429b8
 	jp .asm_8a357
 .asm_8a351:
@@ -146,7 +146,7 @@ Func_8a394:
 	or a
 	jp nz, .asm_8a3ea
 	face_player -$01
-	checkevent $007c
+	checkevent EVENT_07C
 	or a
 	jp nz, .asm_8a3e4
 	writetext TreeBitstreamText_42972
@@ -158,7 +158,7 @@ Func_8a394:
 	jp nz, .asm_8a3ca
 	jp .asm_8a3ea
 .asm_8a3ca:
-	setevent $007c
+	setevent EVENT_07C
 	writetext TreeBitstreamText_42972
 	jp .asm_8a3e1
 .asm_8a3db:
@@ -185,7 +185,7 @@ Func_8a41d:
 	or a
 	jp nz, .asm_8a473
 	face_player -$01
-	checkevent $007d
+	checkevent EVENT_07D
 	or a
 	jp nz, .asm_8a46d
 	writetext TreeBitstreamText_4297c
@@ -197,7 +197,7 @@ Func_8a41d:
 	jp nz, .asm_8a453
 	jp .asm_8a473
 .asm_8a453:
-	setevent $007d
+	setevent EVENT_07D
 	writetext TreeBitstreamText_4298a
 	jp .asm_8a46a
 .asm_8a464:
@@ -223,7 +223,7 @@ Func_8a480:
 	ld a, e
 	or a
 	jp nz, .asm_8a5a3
-	checkevent $00d8
+	checkevent EVENT_0D8
 	or a
 	jp nz, .asm_8a59d
 	playsfx SFX_5E
@@ -283,7 +283,7 @@ Func_8a480:
 	ld e, $0d
 	ld a, $0c
 	scall Func_80e8d
-	setevent $00d8
+	setevent EVENT_0D8
 	playsfx SFX_60
 	ld e, $03
 	ld hl, sp+$01
@@ -359,7 +359,7 @@ Data_8a5e1:
 	db $13, $13, $01, $01, $0f, $04
 
 Func_8a5e7:
-	checkevent $0086
+	checkevent EVENT_086
 	cp $01
 	jp nz, .asm_8a606
 	ld hl, Data_8a5e1

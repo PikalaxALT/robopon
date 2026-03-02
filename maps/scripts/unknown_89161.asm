@@ -34,7 +34,7 @@ Func_89161::
 	scall Func_80ce7
 	ld a, $04
 	ld [wc7e2], a
-	checkevent $0073
+	checkevent EVENT_073
 	if_true .asm_89180
 	loadpeople $04, MapObjects_890b9
 .asm_89180:
@@ -81,7 +81,7 @@ Func_89237:
 	ld a, e
 	cp $02
 	jp nz, .asm_89348
-	checkevent $0073
+	checkevent EVENT_073
 	if_true .asm_89348
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
@@ -140,7 +140,7 @@ Func_89237:
 	jp .asm_89348
 .asm_8931d:
 	writetext TreeBitstreamText_42972
-	setevent $0073
+	setevent EVENT_073
 	move_person $01, Data_891b8, 1
 	scall WaitNPCStep
 	hideperson $01
@@ -166,7 +166,7 @@ Func_89353:
 	jp z, .asm_89362
 	jp .asm_893a5
 .asm_89362:
-	checkevent $0059
+	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_89376
 	writetext TreeBitstreamText_47037
@@ -183,7 +183,6 @@ Func_89353:
 	ld a, $0e
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-	pop bc
 .asm_893a5:
 	ret
 
@@ -195,7 +194,7 @@ Func_893a6:
 	jp z, .asm_893b5
 	jp .asm_893f8
 .asm_893b5:
-	checkevent $0059
+	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_893c9
 	writetext TreeBitstreamText_47037
@@ -212,21 +211,20 @@ Func_893a6:
 	ld a, $0f
 	ld [wc78a], a
 	warp_player MAP_05_32, $11, $09
-	pop bc
 .asm_893f8:
 	ret
 
 Func_893f9:
 	ld a, e
 	if_true .asm_89431
-	checkevent $0059
+	checkevent EVENT_059
 	if_true .asm_8941e
-	setevent $0059
+	setevent EVENT_059
 	playsfx SFX_31
 	writetext TreeBitstreamText_47029
 	jp .asm_89431
 .asm_8941e:
-	resetevent $0059
+	resetevent EVENT_059
 	playsfx SFX_32
 	writetext TreeBitstreamText_4701b
 .asm_89431:

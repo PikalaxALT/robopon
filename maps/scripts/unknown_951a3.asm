@@ -30,7 +30,7 @@ Data_95109:
 	person_event $ff, $00, $22, $0f, $01, $01, $02, $04, $00, PrintTextFacePlayer_25, Data_95101
 
 Func_951a3:: ; 951a3
-	checkevent $0042
+	checkevent EVENT_042
 	or a
 	jp nz, .asm_951bc
 	ld a, $09
@@ -345,7 +345,6 @@ Func_9542c:
 	ld a, $01
 	scall PlayerFace
 	warp_player MAP_32_11, $05, $04
-	pop bc
 .asm_954f1:
 	jp .asm_954fa
 .asm_954f4:
@@ -438,7 +437,6 @@ Func_95540:
 	xor a
 	scall PlayerFace
 	warp_player MAP_30_03, $18, $1e
-	pop bc
 .asm_955e9:
 	jp .asm_955f2
 .asm_955ec:
@@ -456,13 +454,13 @@ Func_955fc:
 	or a
 	jp nz, .asm_95655
 	face_player -$01
-	checkevent $010a
+	checkevent EVENT_10A
 	or a
 	jp nz, .asm_9564f
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_9564f
-	checkevent $0114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_9564f
 	writetext TreeBitstreamText_47722
@@ -473,7 +471,7 @@ Func_955fc:
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	setevent $010a
+	setevent EVENT_10A
 	jp .asm_95655
 .asm_9564f:
 	writetext TreeBitstreamText_47722
@@ -487,13 +485,13 @@ Func_95657:
 	or a
 	jp nz, .asm_956b0
 	face_player -$01
-	checkevent $010b
+	checkevent EVENT_10B
 	or a
 	jp nz, .asm_956aa
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_956aa
-	checkevent $0114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_956aa
 	writetext TreeBitstreamText_47780
@@ -504,7 +502,7 @@ Func_95657:
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	setevent $010b
+	setevent EVENT_10B
 	jp .asm_956b0
 .asm_956aa:
 	writetext TreeBitstreamText_47780
@@ -518,13 +516,13 @@ Func_956b2:
 	or a
 	jp nz, .asm_9570b
 	face_player -$01
-	checkevent $010c
+	checkevent EVENT_10C
 	or a
 	jp nz, .asm_95705
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_95705
-	checkevent $0114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_95705
 	writetext TreeBitstreamText_478bb
@@ -535,7 +533,7 @@ Func_956b2:
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	setevent $010c
+	setevent EVENT_10C
 	jp .asm_9570b
 .asm_95705:
 	writetext TreeBitstreamText_478bb
@@ -549,13 +547,13 @@ Func_9570d:
 	or a
 	jp nz, .asm_95766
 	face_player -$01
-	checkevent $010d
+	checkevent EVENT_10D
 	or a
 	jp nz, .asm_95760
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_95760
-	checkevent $0114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_95760
 	writetext TreeBitstreamText_47943
@@ -566,7 +564,7 @@ Func_9570d:
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	setevent $010d
+	setevent EVENT_10D
 	jp .asm_95766
 .asm_95760:
 	writetext TreeBitstreamText_47943

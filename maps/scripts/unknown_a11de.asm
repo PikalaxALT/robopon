@@ -80,7 +80,7 @@ Func_a11de:: ; a11de
 	ld a, $8
 	ld [wc7e2], a
 	set_frame_script Func_a14ef
-	checkevent $42
+	checkevent EVENT_042
 	cp $1
 	jp nz, .asm_a120b
 	ld a, $9
@@ -414,7 +414,7 @@ Func_a1514:
 	ld a, e
 	or a
 	jp nz, .asm_a161b
-	checkevent $00dd
+	checkevent EVENT_0DD
 	or a
 	jp nz, .asm_a1615
 	playsfx SFX_5E
@@ -447,7 +447,7 @@ Func_a1514:
 	ld e, $0a
 	ld a, $03
 	scall Func_80e8d
-	setevent $00dd
+	setevent EVENT_0DD
 	playsfx SFX_60
 	sprite_face $03, $07
 	sprite_face $00, $07

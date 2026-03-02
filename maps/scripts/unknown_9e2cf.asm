@@ -94,7 +94,6 @@ Func_9e305:
 	ld a, $03
 	scall PlayerFace
 	warp_player MAP_18_17, $07, $09
-	pop bc
 .asm_9e3b6:
 	jp .asm_9e3bf
 .asm_9e3b9:

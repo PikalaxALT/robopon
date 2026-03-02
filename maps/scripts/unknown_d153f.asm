@@ -279,10 +279,10 @@ Func_d1749: ; d1749 (34:5749)
 	scall PlayerFace
 	script_sleep 30
 	face_player 0
-	checkevent $5d
+	checkevent EVENT_05D
 	cp $1
 	jp nz, .asm_d17c7
-	checkevent $5e
+	checkevent EVENT_05E
 	or a
 	jp nz, .asm_d17c7
 	writenpctext TreeBitstreamText_47ce9
@@ -290,7 +290,7 @@ Func_d1749: ; d1749 (34:5749)
 	ld a, $2d
 	scall Func_80d62
 	writetext TreeBitstreamText_47d38
-	setevent $5e
+	setevent EVENT_05E
 .asm_d17c7: ; d17c7 (34:57c7)
 	jp .asm_d1866
 
@@ -300,10 +300,10 @@ Func_d1749: ; d1749 (34:5749)
 	scall PlayerFace
 	script_sleep 30
 	face_player 0
-	checkevent $5f
+	checkevent EVENT_05F
 	cp $1
 	jp nz, .asm_d1813
-	checkevent $60
+	checkevent EVENT_060
 	or a
 	jp nz, .asm_d1813
 	writenpctext TreeBitstreamText_47ce9
@@ -311,7 +311,7 @@ Func_d1749: ; d1749 (34:5749)
 	ld a, $9
 	scall Func_80d74
 	writetext TreeBitstreamText_47d46
-	setevent $60
+	setevent EVENT_060
 .asm_d1813: ; d1813 (34:5813)
 	jp .asm_d1866
 
@@ -321,10 +321,10 @@ Func_d1749: ; d1749 (34:5749)
 	scall PlayerFace
 	script_sleep 30
 	face_player 0
-	checkevent $61
+	checkevent EVENT_061
 	cp $1
 	jp nz, .asm_d1866
-	checkevent $62
+	checkevent EVENT_062
 	or a
 	jp nz, .asm_d1866
 	writenpctext TreeBitstreamText_47ce9
@@ -341,7 +341,7 @@ IF DEF(SUN)
 ELIF DEF(STAR)
 	writetext TreeBitstreamText_47d6a
 ENDC
-	setevent $62
+	setevent EVENT_062
 .asm_d1866: ; d1866 (34:5866)
 	move_person 0, Data_d173d, 1
 	scall WaitNPCStep

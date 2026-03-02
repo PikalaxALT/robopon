@@ -36,7 +36,7 @@ Func_8b49c:: ; 8b49c
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_8b41e
-	checkevent $003c
+	checkevent EVENT_03C
 	or a
 	jp nz, .asm_8b4cb
 	loadpeople $02, Data_8b464
@@ -69,7 +69,7 @@ Func_8b4ea:
 	hideperson $01
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-	setevent $003c
+	setevent EVENT_03C
 .asm_8b53c:
 	ret
 
@@ -82,7 +82,7 @@ Func_8b53d:
 	jp z, .asm_8b54c
 	jp .asm_8b58b
 .asm_8b54c:
-	checkevent $0059
+	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_8b560
 	writetext TreeBitstreamText_47037
@@ -95,7 +95,6 @@ Func_8b53d:
 	scall WaitEmote
 	scall HideEmote
 	warp_player MAP_28_00, $07, $06
-	pop bc
 	script_sleep 30
 .asm_8b58b:
 	ret
@@ -113,15 +112,15 @@ Func_8b58c:
 	writetext TreeBitstreamText_47041
 	jp .asm_8b5dc
 .asm_8b5a9:
-	checkevent $0059
+	checkevent EVENT_059
 	or a
 	jp nz, .asm_8b5c9
-	setevent $0059
+	setevent EVENT_059
 	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_8b5dc
 .asm_8b5c9:
-	resetevent $0059
+	resetevent EVENT_059
 	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_8b5dc:

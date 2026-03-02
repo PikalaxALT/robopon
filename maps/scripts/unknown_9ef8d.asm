@@ -33,18 +33,17 @@ Func_9ef8d:: ; 9ef8d
 	loadwilds $05, Data_9ef47
 	loadpeople $02, Data_9ef2b
 	playmusic SONG_CAVE
-	checkevent $00e8
+	checkevent EVENT_0E8
 	or a
 	jp nz, .asm_9efe3
 	ld a, $01
 	ld [wc7da], a
 	scall Func_8001c
 	writenpctext TreeBitstreamText_45b31
-	setevent $00e8
+	setevent EVENT_0E8
 	xor a
 	ld [wc7da], a
 	warp_player MAP_19_02, $05, $19
-	pop bc
 	jp .asm_9efe6
 .asm_9efe3:
 	scall Func_8001c

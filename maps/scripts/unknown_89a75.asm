@@ -57,7 +57,7 @@ Func_89ac3:
 	jp z, .asm_89ad2
 	jp .asm_89b27
 .asm_89ad2:
-	checkevent $0059
+	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_89ae6
 	writetext TreeBitstreamText_47037
@@ -81,7 +81,6 @@ Func_89ac3:
 	xor a
 	scall PlayerFace
 	warp_player MAP_05_21, $09, $10
-	pop bc
 .asm_89b27:
 	ret
 
@@ -97,21 +96,21 @@ Func_89b28:
 	writetext TreeBitstreamText_47041
 	jp .asm_89b78
 .asm_89b45:
-	checkevent $0059
+	checkevent EVENT_059
 	if_true .asm_89b65
-	setevent $0059
+	setevent EVENT_059
 	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_89b78
 .asm_89b65:
-	resetevent $0059
+	resetevent EVENT_059
 	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
 .asm_89b78:
 	ret
 
 Func_89b79:
-	checkevent $00fc
+	checkevent EVENT_0FC
 	if_true .asm_89bc4
 	playmusic SONG_TOWER
 	xor a
@@ -127,7 +126,7 @@ Func_89b79:
 	scall Func_80653
 	script_sleep 1
 	scall HideEmote
-	setevent $00fc
+	setevent EVENT_0FC
 	jp .asm_89bc9
 .asm_89bc4:
 	ld a, $01

@@ -191,7 +191,7 @@ Func_cdfc4:: ; cdfc4
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cdfea
-	setevent $0061
+	setevent EVENT_061
 .asm_cdfea:
 	ld a, $03
 	scall Func_80d01

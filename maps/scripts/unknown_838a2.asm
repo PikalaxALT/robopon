@@ -96,11 +96,11 @@ Func_83a1f:
 	add hl, sp
 	ld a, [hl]
 	call FacePlayer_20
-	checkevent $58
+	checkevent EVENT_058
 	or a
 	jp nz, .asm_83a5e
 	writenpctext TreeBitstreamText_45c80
-	setevent $58
+	setevent EVENT_058
 	jp .asm_83e48
 
 .asm_83a5e: ; 83a5e (20:7a5e)
@@ -137,50 +137,50 @@ Func_83a1f:
 	jp z, .asm_83adb
 	cp $a
 	jp nz, .asm_83b6e
-	checkevent $110
+	checkevent EVENT_110
 	or a
 	jp nz, .asm_83adb
 	playsfx SFX_5C
 	script_sleep 120
 	writenpctext TreeBitstreamText_39c6c
 	writenpctext TreeBitstreamText_39c82
-	setevent $110
+	setevent EVENT_110
 .asm_83adb: ; 83adb (20:7adb)
-	checkevent $106
+	checkevent EVENT_106
 	or a
 	jp nz, .asm_83af3
 	landmarksign TreeBitstreamText_461a9
-	setevent $106
+	setevent EVENT_106
 .asm_83af3: ; 83af3 (20:7af3)
-	checkevent $105
+	checkevent EVENT_105
 	or a
 	jp nz, .asm_83b0b
 	landmarksign TreeBitstreamText_461b4
-	setevent $105
+	setevent EVENT_105
 .asm_83b0b: ; 83b0b (20:7b0b)
-	checkevent $104
+	checkevent EVENT_104
 	or a
 	jp nz, .asm_83b23
 	landmarksign TreeBitstreamText_46175
-	setevent $104
+	setevent EVENT_104
 .asm_83b23: ; 83b23 (20:7b23)
-	checkevent $103
+	checkevent EVENT_103
 	or a
 	jp nz, .asm_83b3b
 	landmarksign TreeBitstreamText_4619b
-	setevent $103
+	setevent EVENT_103
 .asm_83b3b: ; 83b3b (20:7b3b)
-	checkevent $102
+	checkevent EVENT_102
 	or a
 	jp nz, .asm_83b53
 	landmarksign TreeBitstreamText_4618f
-	setevent $102
+	setevent EVENT_102
 .asm_83b53: ; 83b53 (20:7b53)
-	checkevent $101
+	checkevent EVENT_101
 	or a
 	jp nz, .asm_83b6b
 	landmarksign TreeBitstreamText_46183
-	setevent $101
+	setevent EVENT_101
 .asm_83b6b: ; 83b6b (20:7b6b)
 	jp .asm_83b6e
 
@@ -191,7 +191,7 @@ Func_83a1f:
 	ld a, [wc78c]
 	cp $14
 	jp nz, .asm_83b96
-	checkevent $e7
+	checkevent EVENT_0E7
 	cp $1
 	jp nz, .asm_83b8d
 	writenpctext TreeBitstreamText_45db0

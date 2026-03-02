@@ -224,13 +224,13 @@ Func_c9503:
 	jp z, .asm_c9543
 	or a
 	jp nz, .asm_c95d4
-	checkevent $0095
+	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_c952e
 	ld l, $02
 	jp .asm_c9540
 .asm_c952e:
-	checkevent $003d
+	checkevent EVENT_03D
 	cp $01
 	jp nz, .asm_c953e
 	ld l, $00
@@ -240,13 +240,13 @@ Func_c9503:
 .asm_c9540:
 	jp .asm_c95d4
 .asm_c9543:
-	checkevent $009a
+	checkevent EVENT_09A
 	cp $01
 	jp nz, .asm_c9553
 	ld l, $02
 	jp .asm_c9565
 .asm_c9553:
-	checkevent $003e
+	checkevent EVENT_03E
 	cp $01
 	jp nz, .asm_c9563
 	ld l, $00
@@ -256,13 +256,13 @@ Func_c9503:
 .asm_c9565:
 	jp .asm_c95d4
 .asm_c9568:
-	checkevent $009f
+	checkevent EVENT_09F
 	cp $01
 	jp nz, .asm_c9578
 	ld l, $02
 	jp .asm_c958a
 .asm_c9578:
-	checkevent $003f
+	checkevent EVENT_03F
 	cp $01
 	jp nz, .asm_c9588
 	ld l, $00
@@ -272,13 +272,13 @@ Func_c9503:
 .asm_c958a:
 	jp .asm_c95d4
 .asm_c958d:
-	checkevent $00a4
+	checkevent EVENT_0A4
 	cp $01
 	jp nz, .asm_c959d
 	ld l, $02
 	jp .asm_c95af
 .asm_c959d:
-	checkevent $0040
+	checkevent EVENT_040
 	cp $01
 	jp nz, .asm_c95ad
 	ld l, $00
@@ -288,13 +288,13 @@ Func_c9503:
 .asm_c95af:
 	jp .asm_c95d4
 .asm_c95b2:
-	checkevent $00a9
+	checkevent EVENT_0A9
 	cp $01
 	jp nz, .asm_c95c2
 	ld l, $02
 	jp .asm_c95d4
 .asm_c95c2:
-	checkevent $0041
+	checkevent EVENT_041
 	cp $01
 	jp nz, .asm_c95d2
 	ld l, $00

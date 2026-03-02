@@ -37,7 +37,7 @@ Func_aeb98:: ; aeb98
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_aeb28
-	checkevent $00d4
+	checkevent EVENT_0D4
 	or a
 	jp nz, .asm_aebd3
 	loadpeople $02, Data_aeb6e
@@ -60,7 +60,7 @@ Data_aebf6:
 	db $00, $00, $01, $01, $18, $05
 
 Func_aebfc:
-	checkevent $00d4
+	checkevent EVENT_0D4
 	cp $01
 	jp nz, .asm_aec1c
 	ld hl, Data_aebea
@@ -84,7 +84,6 @@ Func_aec1d:
 	scall WaitEmote
 	scall HideEmote
 	warp_player MAP_27_08, $06, $08
-	pop bc
 .asm_aec48:
 	ret
 
@@ -140,7 +139,7 @@ Func_aec4d:
 	scall Func_81094
 	or a
 	jp nz, .asm_aecf8
-	setevent $00d4
+	setevent EVENT_0D4
 	call Func_aebfc
 	script_sleep 60
 	sprite_face $00, $01

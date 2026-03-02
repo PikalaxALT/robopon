@@ -62,17 +62,17 @@ Func_ab7cc:: ; ab7cc
 	jp .asm_ab860
 .asm_ab804:
 	loadwarps $01, Data_ab69d
-	checkevent $0043
+	checkevent EVENT_043
 	or a
 	jp nz, .asm_ab829
 	loadpeople $05, Data_ab6b4
 	loadpeople $02, Data_ab794
 	jp .asm_ab860
 .asm_ab829:
-	checkevent $0023
+	checkevent EVENT_023
 	cp $01
 	jp nz, .asm_ab858
-	checkevent $0048
+	checkevent EVENT_048
 	or a
 	jp nz, .asm_ab858
 	loadpeople $03, Data_ab6fa
@@ -100,7 +100,7 @@ Func_ab7cc:: ; ab7cc
 	call Func_abc22
 	jp .asm_ab8c8
 .asm_ab88a:
-	checkevent $0043
+	checkevent EVENT_043
 	or a
 	jp nz, .asm_ab8c0
 	xor a
@@ -109,7 +109,7 @@ Func_ab7cc:: ; ab7cc
 	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	call Func_ab8e1
-	setevent $0043
+	setevent EVENT_043
 	ld a, $0c
 	scall Func_80c94
 	playmusic SONG_NONE
@@ -336,7 +336,7 @@ Func_abb74:: ; abb74
 	ld e, $00
 	ld a, $2c
 	scall Func_80d62
-	setevent $0048
+	setevent EVENT_048
 	ret
 
 Data_abc1e:
@@ -346,7 +346,7 @@ Func_abc22:
 	xor a
 	scall PlayerFace
 	scall Func_8001c
-	checkevent $0048
+	checkevent EVENT_048
 	or a
 	jp nz, .asm_abc3d
 	ld e, $1c
@@ -361,17 +361,17 @@ Func_abc22:
 	sprite_face $02, $03
 	move_player $01, Data_abc1e
 	script_sleep 60
-	checkevent $005a
+	checkevent EVENT_05A
 	or a
 	jp nz, .asm_abc6b
 	writenpctext TreeBitstreamText_3ed13
 .asm_abc6b:
-	checkevent $0048
+	checkevent EVENT_048
 	or a
 	jp nz, .asm_abc7b
 	writenpctext TreeBitstreamText_3ed88
 .asm_abc7b:
-	checkevent $005a
+	checkevent EVENT_05A
 	or a
 	jp nz, .asm_abc9c
 	writetext TreeBitstreamText_3ede7
@@ -379,7 +379,7 @@ Func_abc22:
 	ld e, $01
 	ld a, $07
 	scall Func_80d4d
-	setevent $005a
+	setevent EVENT_05A
 .asm_abc9c:
 	writenpctext TreeBitstreamText_3ee04
 	script_sleep 60
@@ -433,14 +433,13 @@ Func_abc22:
 	xor a
 	scall Func_8103e
 	writenpctext TreeBitstreamText_3ee49
-	resetevent $00e1
-	resetevent $00e2
-	resetevent $00e3
-	resetevent $00e4
-	resetevent $00e5
-	resetevent $00e6
+	resetevent EVENT_0E1
+	resetevent EVENT_0E2
+	resetevent EVENT_0E3
+	resetevent EVENT_0E4
+	resetevent EVENT_0E5
+	resetevent EVENT_0E6
 	warp_player MAP_00_00, $10, $0d
-	pop bc
 	callba_hli SaveGame
 	callba_hli Func_b6f2
 	call FillVisibleAreaWithBlankTile
@@ -454,16 +453,15 @@ Func_abc22:
 	callba_hli Credits2
 	jp .asm_abe66
 .asm_abdda:
-	resetevent $00e1
-	resetevent $00e2
-	resetevent $00e3
-	resetevent $00e4
-	resetevent $00e5
-	resetevent $00e6
+	resetevent EVENT_0E1
+	resetevent EVENT_0E2
+	resetevent EVENT_0E3
+	resetevent EVENT_0E4
+	resetevent EVENT_0E5
+	resetevent EVENT_0E6
 	ld a, $01
 	ld [wc79a], a
 	warp_player MAP_00_00, $10, $0d
-	pop bc
 	callba_hli SaveGame
 	callba_hli Func_b6f2
 	call FillVisibleAreaWithBlankTile
@@ -482,7 +480,7 @@ Func_abe67:
 	ld a, e
 	or a
 	jp nz, .asm_abf5a
-	checkevent $00df
+	checkevent EVENT_0DF
 	or a
 	jp nz, .asm_abf54
 	playsfx SFX_5E
@@ -515,7 +513,7 @@ Func_abe67:
 	ld e, $10
 	ld a, $0f
 	scall Func_80e8d
-	setevent $00df
+	setevent EVENT_0DF
 	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0
@@ -543,7 +541,7 @@ Func_abf5b:
 	ld a, e
 	or a
 	jp nz, .asm_abf79
-	checkevent $0048
+	checkevent EVENT_048
 	or a
 	jp nz, .asm_abf73
 	writenpctext TreeBitstreamText_3e770

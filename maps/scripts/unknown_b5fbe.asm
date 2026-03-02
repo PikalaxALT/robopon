@@ -17,37 +17,37 @@ Data_b5f6a:
 
 Func_b5fbe:: ; b5fbe
 	loadwarps $01, Data_b5f35
-	checkevent $005a
+	checkevent EVENT_05A
 	or a
 	jp nz, .asm_b5fe2
 	loadpeople $03, Data_b5f40
 	hideperson $01
 	jp .asm_b60c9
 .asm_b5fe2:
-	checkevent $005a
+	checkevent EVENT_05A
 	cp $01
 	jp nz, .asm_b60c9
-	checkevent $00e1
+	checkevent EVENT_0E1
 	or a
 	jp z, .asm_b6029
-	checkevent $00e2
+	checkevent EVENT_0E2
 	or a
 	jp z, .asm_b6029
-	checkevent $00e3
+	checkevent EVENT_0E3
 	or a
 	jp z, .asm_b6029
-	checkevent $00e4
+	checkevent EVENT_0E4
 	or a
 	jp z, .asm_b6029
-	checkevent $00e5
+	checkevent EVENT_0E5
 	or a
 	jp z, .asm_b6029
-	checkevent $00e6
+	checkevent EVENT_0E6
 	or a
 	jp nz, .asm_b60c9
 .asm_b6029:
 	loadpeople $06, Data_b5f6a
-	checkevent $00e1
+	checkevent EVENT_0E1
 	cp $01
 	jp nz, .asm_b604b
 	hideperson 0
@@ -56,7 +56,7 @@ Func_b5fbe:: ; b5fbe
 	ld a, $01
 	scall Func_80080
 .asm_b604b:
-	checkevent $00e2
+	checkevent EVENT_0E2
 	cp $01
 	jp nz, .asm_b6066
 	hideperson $01
@@ -65,7 +65,7 @@ Func_b5fbe:: ; b5fbe
 	ld a, $02
 	scall Func_80080
 .asm_b6066:
-	checkevent $00e3
+	checkevent EVENT_0E3
 	cp $01
 	jp nz, .asm_b6081
 	hideperson $02
@@ -74,7 +74,7 @@ Func_b5fbe:: ; b5fbe
 	ld a, $03
 	scall Func_80080
 .asm_b6081:
-	checkevent $00e4
+	checkevent EVENT_0E4
 	cp $01
 	jp nz, .asm_b609c
 	hideperson $03
@@ -83,7 +83,7 @@ Func_b5fbe:: ; b5fbe
 	ld a, $04
 	scall Func_80080
 .asm_b609c:
-	checkevent $00e5
+	checkevent EVENT_0E5
 	cp $01
 	jp nz, .asm_b60b7
 	hideperson $04
@@ -92,7 +92,7 @@ Func_b5fbe:: ; b5fbe
 	ld a, $05
 	scall Func_80080
 .asm_b60b7:
-	checkevent $00e6
+	checkevent EVENT_0E6
 	cp $01
 	jp nz, .asm_b60c9
 	hideperson $05
@@ -222,7 +222,6 @@ Func_b6117:
 	scall WaitNPCStep
 	scall StopShakingScreen
 	warp_player MAP_26_00, $07, $05
-	pop bc
 .asm_b625f:
 	ret
 
@@ -289,7 +288,7 @@ Func_b6291:
 	inc a
 	scall MovePersonAndWait
 	scall WaitNPCStep
-	setevent $00e1
+	setevent EVENT_0E1
 	ld a, $01
 	ld [wc7c4], a
 .asm_b6312:
@@ -316,7 +315,7 @@ Func_b634c:
 	or a
 	jp nz, .asm_b63e6
 	face_player -$01
-	checkevent $00e1
+	checkevent EVENT_0E1
 	or a
 	jp nz, .asm_b6373
 	writetext TreeBitstreamText_3f36a
@@ -374,7 +373,7 @@ Func_b634c:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	setevent $00e2
+	setevent EVENT_0E2
 	ld a, $01
 	ld [wc7c4], a
 .asm_b63e6:
@@ -401,10 +400,10 @@ Func_b6422:
 	or a
 	jp nz, .asm_b64c6
 	face_player -$01
-	checkevent $00e1
+	checkevent EVENT_0E1
 	or a
 	jp z, .asm_b6442
-	checkevent $00e2
+	checkevent EVENT_0E2
 	or a
 	jp nz, .asm_b6453
 .asm_b6442:
@@ -463,7 +462,7 @@ Func_b6422:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	setevent $00e3
+	setevent EVENT_0E3
 	ld a, $01
 	ld [wc7c4], a
 .asm_b64c6:
@@ -490,13 +489,13 @@ Func_b6501:
 	or a
 	jp nz, .asm_b65af
 	face_player -$01
-	checkevent $00e1
+	checkevent EVENT_0E1
 	or a
 	jp z, .asm_b652b
-	checkevent $00e2
+	checkevent EVENT_0E2
 	or a
 	jp z, .asm_b652b
-	checkevent $00e3
+	checkevent EVENT_0E3
 	or a
 	jp nz, .asm_b653c
 .asm_b652b:
@@ -555,7 +554,7 @@ Func_b6501:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	setevent $00e4
+	setevent EVENT_0E4
 	ld a, $01
 	ld [wc7c4], a
 .asm_b65af:
@@ -590,16 +589,16 @@ Func_b65e9:
 	or a
 	jp nz, .asm_b66a1
 	face_player -$01
-	checkevent $00e1
+	checkevent EVENT_0E1
 	or a
 	jp z, .asm_b661d
-	checkevent $00e2
+	checkevent EVENT_0E2
 	or a
 	jp z, .asm_b661d
-	checkevent $00e3
+	checkevent EVENT_0E3
 	or a
 	jp z, .asm_b661d
-	checkevent $00e4
+	checkevent EVENT_0E4
 	or a
 	jp nz, .asm_b662e
 .asm_b661d:
@@ -658,7 +657,7 @@ Func_b65e9:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-	setevent $00e5
+	setevent EVENT_0E5
 	ld a, $01
 	ld [wc7c4], a
 .asm_b66a1:
@@ -687,19 +686,19 @@ Func_b66d1:
 	or a
 	jp nz, .asm_b6751
 	face_player -$01
-	checkevent $00e1
+	checkevent EVENT_0E1
 	or a
 	jp z, .asm_b670f
-	checkevent $00e2
+	checkevent EVENT_0E2
 	or a
 	jp z, .asm_b670f
-	checkevent $00e3
+	checkevent EVENT_0E3
 	or a
 	jp z, .asm_b670f
-	checkevent $00e4
+	checkevent EVENT_0E4
 	or a
 	jp z, .asm_b670f
-	checkevent $00e5
+	checkevent EVENT_0E5
 	or a
 	jp nz, .asm_b6720
 .asm_b670f:
@@ -717,9 +716,8 @@ Func_b66d1:
 	jp .asm_b6751
 .asm_b6736:
 	writenpctext TreeBitstreamText_3f2ff
-	setevent $00e6
+	setevent EVENT_0E6
 	warp_player MAP_25_10, $0f, $1a
-	pop bc
 .asm_b6751:
 	pop bc
 	ret

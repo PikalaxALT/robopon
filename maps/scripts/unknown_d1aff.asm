@@ -216,7 +216,7 @@ Func_d1aff:: ; d1aff (34:5aff)
 	ld a, [wc7de]
 	cp $14
 	jp nz, .asm_d1c0f
-	setevent $5d
+	setevent EVENT_05D
 .asm_d1c0f: ; d1c0f (34:5c0f)
 	ld a, $3
 	scall Func_80d01

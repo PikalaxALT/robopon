@@ -27,7 +27,7 @@ Func_d392b:: ; d392b (34:792b)
 	scall Func_80d01
 	loadwilds $5, Data_d38c9
 	loadpeople $2, Data_d390f
-	checkevent $f1
+	checkevent EVENT_0F1
 	or a
 	jp nz, .asm_d3977
 	playmusic SONG_NONE
@@ -39,7 +39,7 @@ Func_d392b:: ; d392b (34:792b)
 	jp .asm_d39a5
 
 .asm_d3977: ; d3977 (34:7977)
-	checkevent $1c
+	checkevent EVENT_01C
 	cp $1
 	jp nz, .asm_d3998
 	playmusic SONG_NONE
@@ -108,7 +108,6 @@ Func_d39a6: ; d39a6 (34:79a6)
 	scall HideEmote
 	scall StopShakingScreen
 	warp_player MAP_26_00, $8, $6
-	pop bc
 	ret
 
 Data_d3a6d: ; d3a6d
@@ -169,7 +168,7 @@ Data_d3ad9: ; d3ad9
 	db $06, $0f, $03, $02, $06, $0d
 
 Func_d3adf: ; d3adf (34:7adf)
-	checkevent $f1
+	checkevent EVENT_0F1
 	or a
 	jp nz, .asm_d3af2
 	ld hl, Data_d3ad9
@@ -356,13 +355,12 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	script_sleep 60
 	playsfx SFX_43
 	scall WaitEmote
-	setevent $f1
+	setevent EVENT_0F1
 	warp_player MAP_31_01, $9, $9
-	pop bc
 	ret
 
 Func_d3ceb:: ; d3ceb (34:7ceb)
-	resetevent $f9
+	resetevent EVENT_0F9
 	playmusic SONG_JUMP_MINIGAME
 	xor a
 	scall Func_80653
@@ -372,5 +370,4 @@ Func_d3ceb:: ; d3ceb (34:7ceb)
 	ld a, $1
 	scall PlayerFace
 	warp_player MAP_19_22, $f, $5
-	pop bc
 	ret

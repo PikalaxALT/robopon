@@ -38,7 +38,7 @@ Func_cb4c5:: ; cb4c5
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_cb455
-	checkevent $00ac
+	checkevent EVENT_0AC
 	or a
 	jp nz, .asm_cb4f4
 	loadpeople $03, Data_cb49b
@@ -117,7 +117,7 @@ Func_cb534:
 	hideperson 0
 	hideperson $01
 	hideperson $02
-	setevent $00ac
+	setevent EVENT_0AC
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
 .asm_cb604:

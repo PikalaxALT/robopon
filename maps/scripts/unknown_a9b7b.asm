@@ -47,6 +47,5 @@ Func_a9ba9:
 	script_sleep 90
 	scall StopShakingScreen
 	warp_player MAP_24_17, $05, $08
-	pop bc
 .asm_a9bd8:
 	ret

@@ -137,7 +137,6 @@ Func_918f5:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_01, $2e, $04
-	pop bc
 .asm_9196e:
 	jp .asm_91977
 .asm_91971:
@@ -168,16 +167,16 @@ Func_9198b:
 	scall PlayerFace
 .asm_919a9:
 	face_player $01
-	checkevent $0039
+	checkevent EVENT_039
 	cp $01
 	jp nz, .asm_91ad9
-	checkevent $0020
+	checkevent EVENT_020
 	or a
 	jp nz, .asm_91ad9
-	checkevent $003a
+	checkevent EVENT_03A
 	cp $01
 	jp nz, .asm_91ad0
-	checkevent $0047
+	checkevent EVENT_047
 	or a
 	jp nz, .asm_91ac7
 	ld a, $1f
@@ -226,7 +225,7 @@ Func_9198b:
 	scall GiveRobot
 	pop hl
 	give_robot SPEEDY, l, $00
-	setevent $0047
+	setevent EVENT_047
 	script_sleep 30
 	playsfx SFX_2A
 	hideperson $04
@@ -273,13 +272,13 @@ Func_91b0c:
 	or a
 	jp nz, .asm_91b6b
 	face_player -$01
-	checkevent $010f
+	checkevent EVENT_10F
 	or a
 	jp nz, .asm_91b65
 	ld a, [wc79c]
 	cp $01
 	jp c, .asm_91b65
-	checkevent $0114
+	checkevent EVENT_114
 	or a
 	jp nz, .asm_91b65
 	writetext TreeBitstreamText_3bc38
@@ -291,7 +290,7 @@ Func_91b0c:
 	ld e, $01
 	ld a, $10
 	scall Func_80d4d
-	setevent $010f
+	setevent EVENT_10F
 	jp .asm_91b6b
 .asm_91b65:
 	writetext TreeBitstreamText_3bc38

@@ -69,7 +69,7 @@ Func_9d1cb:: ; 9d1cb
 	push hl
 	ld a, $0b
 	ld [wc7e2], a
-	checkevent $00f2
+	checkevent EVENT_0F2
 	cp $01
 	jp nz, .asm_9d203
 	ld a, $06
@@ -80,7 +80,7 @@ Func_9d1cb:: ; 9d1cb
 	ld [wc795], a
 .asm_9d207:
 	set_frame_script Func_9d344
-	resetevent $0010
+	resetevent EVENT_010
 	loadwarps $03, Data_9d0b4
 	ld a, $03
 	scall Func_80d01
@@ -101,7 +101,7 @@ Func_9d1cb:: ; 9d1cb
 	cp $ff
 	jp nz, .asm_9d2ab
 .asm_9d25d:
-	checkevent $00b9
+	checkevent EVENT_0B9
 	cp $01
 	jp nz, .asm_9d29d
 	loadpeople $02, Data_9d193
@@ -134,19 +134,19 @@ Func_9d1cb:: ; 9d1cb
 	ld a, [wBackupMapNumber]
 	cp $11
 	jp nz, .asm_9d31c
-	checkevent $00bb
+	checkevent EVENT_0BB
 	or a
 	jp z, .asm_9d2ed
-	checkevent $00bc
+	checkevent EVENT_0BC
 	or a
 	jp z, .asm_9d2ed
-	checkevent $00bd
+	checkevent EVENT_0BD
 	or a
 	jp z, .asm_9d2ed
-	checkevent $00be
+	checkevent EVENT_0BE
 	or a
 	jp z, .asm_9d2ed
-	checkevent $00ee
+	checkevent EVENT_0EE
 	or a
 	jp nz, .asm_9d316
 .asm_9d2ed:
@@ -322,7 +322,7 @@ Func_9d42b:
 	writetext TreeBitstreamText_42dc8
 	scall StopShakingScreen
 	call Func_9d344
-	setevent $00f2
+	setevent EVENT_0F2
 	jp .asm_9d499
 .asm_9d48e:
 	ld a, $01
@@ -356,39 +356,39 @@ Func_9d4a7:
 	scall PlayerFace
 	scall WaitNPCStep
 	script_sleep 30
-	checkevent $00bb
+	checkevent EVENT_0BB
 	or a
 	jp nz, .asm_9d50d
 	call Func_9d56e
-	setevent $00bb
+	setevent EVENT_0BB
 	jp .asm_9d56a
 .asm_9d50d:
-	checkevent $00bc
+	checkevent EVENT_0BC
 	or a
 	jp nz, .asm_9d525
 	call Func_9d61e
-	setevent $00bc
+	setevent EVENT_0BC
 	jp .asm_9d56a
 .asm_9d525:
-	checkevent $00bd
+	checkevent EVENT_0BD
 	or a
 	jp nz, .asm_9d53d
 	call Func_9d6ce
-	setevent $00bd
+	setevent EVENT_0BD
 	jp .asm_9d56a
 .asm_9d53d:
-	checkevent $00be
+	checkevent EVENT_0BE
 	or a
 	jp nz, .asm_9d555
 	call Func_9d77e
-	setevent $00be
+	setevent EVENT_0BE
 	jp .asm_9d56a
 .asm_9d555:
-	checkevent $00ee
+	checkevent EVENT_0EE
 	or a
 	jp nz, .asm_9d56a
 	call Func_9d83b
-	setevent $00ee
+	setevent EVENT_0EE
 .asm_9d56a:
 	call Func_9d8fa
 	ret
@@ -593,7 +593,7 @@ Func_9d8fa:
 	push bc
 	ld hl, sp+$00
 	ld [hl], $00
-	checkevent $0053
+	checkevent EVENT_053
 	or a
 	jp nz, .asm_9d910
 	ld hl, sp+$00
@@ -602,7 +602,7 @@ Func_9d8fa:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9d910:
-	checkevent $0054
+	checkevent EVENT_054
 	or a
 	jp nz, .asm_9d921
 	ld hl, sp+$00
@@ -611,7 +611,7 @@ Func_9d8fa:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9d921:
-	checkevent $0055
+	checkevent EVENT_055
 	or a
 	jp nz, .asm_9d932
 	ld hl, sp+$00
@@ -620,7 +620,7 @@ Func_9d8fa:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9d932:
-	checkevent $0056
+	checkevent EVENT_056
 	or a
 	jp nz, .asm_9d943
 	ld hl, sp+$00
@@ -629,7 +629,7 @@ Func_9d8fa:
 	ld hl, sp+$00
 	ld [hl], a
 .asm_9d943:
-	checkevent $0057
+	checkevent EVENT_057
 	or a
 	jp nz, .asm_9d954
 	ld hl, sp+$00
@@ -738,7 +738,7 @@ Func_9daea:
 	or a
 	jp nz, .asm_9db2f
 	face_player $02
-	checkevent $0010
+	checkevent EVENT_010
 	or a
 	jp nz, .asm_9db29
 	writenpctext TreeBitstreamText_43c04
@@ -746,7 +746,7 @@ Func_9daea:
 	move_person $02, Data_9dae6, 0
 	scall WaitNPCStep
 	sprite_face $01, $02
-	setevent $0010
+	setevent EVENT_010
 	jp .asm_9db2f
 .asm_9db29:
 	writenpctext TreeBitstreamText_43c04
@@ -757,7 +757,7 @@ Func_9db30:
 	ld a, e
 	or a
 	jp nz, .asm_9dc23
-	checkevent $00dc
+	checkevent EVENT_0DC
 	or a
 	jp nz, .asm_9dc1d
 	playsfx SFX_5E
@@ -790,7 +790,7 @@ Func_9db30:
 	ld e, $09
 	ld a, $06
 	scall Func_80e8d
-	setevent $00dc
+	setevent EVENT_0DC
 	playsfx SFX_60
 	sprite_face $03, 0
 	sprite_face $00, 0

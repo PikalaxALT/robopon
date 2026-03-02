@@ -650,7 +650,6 @@ Func_b9f71:
 	jp nz, .asm_b9f8e
 	playsfx SFX_2E
 	warp_player MAP_06_00, $0a, $05
-	pop bc
 	ld a, $01
 	ld [wPlayerFacing], a
 .asm_b9f8e:
@@ -661,7 +660,6 @@ Func_b9f8f:
 	cp $02
 	jp nz, .asm_b9fac
 	warp_player MAP_06_00, $17, $05
-	pop bc
 	playsfx SFX_2E
 	ld a, $01
 	ld [wPlayerFacing], a
@@ -683,24 +681,24 @@ Func_b9fad:
 	writetext TreeBitstreamText_3b5bf
 	jp .asm_ba023
 .asm_b9fd1:
-	checkevent $00e9
+	checkevent EVENT_0E9
 	cp $01
 	jp nz, .asm_b9ff7
-	checkevent $00eb
+	checkevent EVENT_0EB
 	or a
 	jp nz, .asm_b9ff7
 	writetext TreeBitstreamText_3b516
-	setevent $00eb
+	setevent EVENT_0EB
 	jp .asm_ba023
 .asm_b9ff7:
-	checkevent $00ea
+	checkevent EVENT_0EA
 	cp $01
 	jp nz, .asm_ba01d
-	checkevent $00eb
+	checkevent EVENT_0EB
 	or a
 	jp nz, .asm_ba01d
 	writetext TreeBitstreamText_3b560
-	setevent $00eb
+	setevent EVENT_0EB
 	jp .asm_ba023
 .asm_ba01d:
 	writetext TreeBitstreamText_3b5f0

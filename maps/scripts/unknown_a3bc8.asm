@@ -37,7 +37,7 @@ Func_a3bc8:: ; a3bc8
 	scall Func_80d01
 	loadwilds $05, Data_a3b82
 	loadpeople $02, Data_a3b66
-	checkevent $00ec
+	checkevent EVENT_0EC
 	cp $01
 	jp nz, .asm_a3c08
 	hideperson $01
@@ -149,7 +149,7 @@ Func_a3cd5:
 	scall Func_80e5d
 	cp $01
 	jp nz, .asm_a3d51
-	checkevent $00ec
+	checkevent EVENT_0EC
 	or a
 	jp nz, .asm_a3d48
 	writenpctext TreeBitstreamText_3c2b2
@@ -158,14 +158,14 @@ Func_a3cd5:
 	scall WaitNPCStep
 	script_sleep 30
 	sprite_face $01, $01
-	setevent $00ec
+	setevent EVENT_0EC
 	jp .asm_a3d4e
 .asm_a3d48:
 	writetext TreeBitstreamText_3d897
 .asm_a3d4e:
 	jp .asm_a3d72
 .asm_a3d51:
-	checkevent $00ec
+	checkevent EVENT_0EC
 	cp $01
 	jp nz, .asm_a3d65
 	writetext TreeBitstreamText_3d897

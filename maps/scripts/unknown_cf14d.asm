@@ -188,7 +188,7 @@ Func_cf14d:: ; cf14d (33:714d)
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cf173
-	setevent $61
+	setevent EVENT_061
 .asm_cf173: ; cf173 (33:7173)
 	ld a, $2
 	scall Func_80d01
