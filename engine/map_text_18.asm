@@ -174,7 +174,7 @@ PrintMapText:: ; 60621
 	pop bc
 	jp .asm_607dc
 
-.stack_manip: ; 60744 (18:4744)
+.stack_manip ; 60744 (18:4744)
 	read_hl_from_sp_plus $45
 	ld a, [hl]
 	inc hl
@@ -187,7 +187,7 @@ PrintMapText:: ; 60621
 	jp nz, .asm_6075b
 	jp .asm_607dc
 
-.asm_6075b: ; 6075b (18:475b)
+.asm_6075b ; 6075b (18:475b)
 	ld hl, sp+$46
 	push hl
 	call PlaceString
@@ -200,10 +200,10 @@ PrintMapText:: ; 60621
 	ld a, [hl]
 	cp $29
 	jp nz, .asm_60775
-.asm_60772: ; 60772 (18:4772)
+.asm_60772 ; 60772 (18:4772)
 	jp .asm_607d9
 
-.asm_60775: ; 60775 (18:4775)
+.asm_60775 ; 60775 (18:4775)
 	read_hl_from_sp_plus $45
 	ld e, [hl]
 	ld hl, sp+$46
@@ -216,7 +216,7 @@ PrintMapText:: ; 60621
 	ld a, [hl]
 	cp CHARVAL("ﾟ")
 	jp nz, .asm_6079d
-.asm_6078d: ; 6078d (18:478d)
+.asm_6078d ; 6078d (18:478d)
 	ld hl, sp+$46
 	push hl
 	call PlaceString
@@ -224,7 +224,7 @@ PrintMapText:: ; 60621
 	read_hl_from_sp_plus $45
 	inc hl
 	write_hl_to_sp_plus $45
-.asm_6079d: ; 6079d (18:479d)
+.asm_6079d ; 6079d (18:479d)
 	ld l, $2
 	push hl
 	ld c, $2
@@ -258,10 +258,10 @@ PrintMapText:: ; 60621
 	pop bc
 	jp .asm_607dc
 
-.asm_607d9: ; 607d9 (18:47d9)
+.asm_607d9 ; 607d9 (18:47d9)
 	jp .stack_manip
 
-.asm_607dc: ; 607dc (18:47dc)
+.asm_607dc ; 607dc (18:47dc)
 	pop bc
 	pop de
 	push bc
@@ -271,7 +271,7 @@ PrintMapText:: ; 60621
 	jp z, .asm_607ea
 	or a
 	jp nz, .check_done_string
-.asm_607ea: ; 607ea (18:47ea)
+.asm_607ea ; 607ea (18:47ea)
 	ld hl, sp+$45
 	ld a, [hl]
 	ld [wFarCallDestBank], a
@@ -286,7 +286,7 @@ PrintMapText:: ; 60621
 	jp nz, .check_done_string
 	ld hl, sp+$4d
 	ld [hl], $0
-.check_done_string: ; 6080d (18:480d)
+.check_done_string ; 6080d (18:480d)
 	pop de
 	pop bc
 	ld hl, sp+$49
@@ -295,7 +295,7 @@ PrintMapText:: ; 60621
 	jp nz, .text_continues
 	jp .blink_and_return
 
-.text_continues: ; 60819 (18:4819)
+.text_continues ; 60819 (18:4819)
 	push bc
 	push de
 	ld hl, sp+$48
@@ -322,7 +322,7 @@ PrintMapText:: ; 60621
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-.not_newline: ; 6084a (18:484a)
+.not_newline ; 6084a (18:484a)
 	ld hl, sp+$48
 	ld a, [hl]
 	add $2
@@ -332,14 +332,14 @@ PrintMapText:: ; 60621
 	pop bc
 	jp .put_ffff_on_stack
 
-.blink_and_return: ; 60857 (18:4857)
+.blink_and_return ; 60857 (18:4857)
 	ld hl, sp+$4a
 	ld a, [hl]
 	ld hl, sp+$46
 	add [hl]
 	call StartCursorBlinking
 	push af
-.blink_loop_before_return: ; 60861 (18:4861)
+.blink_loop_before_return ; 60861 (18:4861)
 	call CheckButton
 	or a
 	jp nz, .blink_loop_before_return

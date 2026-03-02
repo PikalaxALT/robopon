@@ -116,17 +116,17 @@ Func_d153f:: ; d153f (34:553f)
 	jp z, .asm_d15ef
 	cp $a
 	jp nz, .asm_d160a
-.asm_d15ef: ; d15ef (34:55ef)
+.asm_d15ef ; d15ef (34:55ef)
 	hideperson $1
 	jp .asm_d160a
 
-.asm_d15f9: ; d15f9 (34:55f9)
+.asm_d15f9 ; d15f9 (34:55f9)
 	hideperson $2
 	jp .asm_d160a
 
-.asm_d1603: ; d1603 (34:5603)
+.asm_d1603 ; d1603 (34:5603)
 	hideperson $3
-.asm_d160a: ; d160a (34:560a)
+.asm_d160a ; d160a (34:560a)
 	ld a, [wc791]
 	cp $4
 	jp z, .asm_d163f
@@ -139,19 +139,19 @@ Func_d153f:: ; d153f (34:553f)
 	hideperson $1
 	jp .asm_d1654
 
-.asm_d162b: ; d162b (34:562b)
+.asm_d162b ; d162b (34:562b)
 	hideperson $2
 	jp .asm_d1654
 
-.asm_d1635: ; d1635 (34:5635)
+.asm_d1635 ; d1635 (34:5635)
 	hideperson $3
 	jp .asm_d1654
 
-.asm_d163f: ; d163f (34:563f)
+.asm_d163f ; d163f (34:563f)
 	hideperson $1
 	hideperson $2
 	hideperson $3
-.asm_d1654: ; d1654 (34:5654)
+.asm_d1654 ; d1654 (34:5654)
 	ld a, $1
 	ld [wc7a2 + 1], a
 	playmusic SONG_TOWN2
@@ -162,7 +162,7 @@ Func_d153f:: ; d153f (34:553f)
 	call Func_d1749
 	xor a
 	ld [wBackupMapNumber], a
-.asm_d166f: ; d166f (34:566f)
+.asm_d166f ; d166f (34:566f)
 	ret
 
 Data_d1670:
@@ -197,7 +197,7 @@ Func_d1680:
 	scall SpriteFace
 	jp .asm_d1729
 
-.asm_d16b1: ; d16b1 (34:56b1)
+.asm_d16b1 ; d16b1 (34:56b1)
 	writenpctext_yesorno TreeBitstreamText_47dc3
 	or a
 	jp nz, .asm_d1723
@@ -212,9 +212,9 @@ Func_d1680:
 	move_person 0, Data_d1674, 1
 	jp .asm_d16e8
 
-.asm_d16df: ; d16df (34:56df)
+.asm_d16df ; d16df (34:56df)
 	move_person 0, Data_d1670, 1
-.asm_d16e8: ; d16e8 (34:56e8)
+.asm_d16e8 ; d16e8 (34:56e8)
 	scall WaitNPCStep
 	move_player $1, Data_d1678
 	move_person 0, Data_d167c, 1
@@ -227,9 +227,9 @@ Func_d1680:
 	ld [wc791], a
 	jp .asm_d1729
 
-.asm_d1723: ; d1723 (34:5723)
+.asm_d1723 ; d1723 (34:5723)
 	writenpctext TreeBitstreamText_47dfa
-.asm_d1729: ; d1729 (34:5729)
+.asm_d1729 ; d1729 (34:5729)
 	pop bc
 	ret
 
@@ -273,7 +273,7 @@ Func_d1749: ; d1749 (34:5749)
 	jp z, .asm_d177e
 	cp $a
 	jp nz, .asm_d1816
-.asm_d177e: ; d177e (34:577e)
+.asm_d177e ; d177e (34:577e)
 	move_player $1, Data_d172b
 	ld a, $2
 	scall PlayerFace
@@ -291,10 +291,10 @@ Func_d1749: ; d1749 (34:5749)
 	scall Func_80d62
 	writetext TreeBitstreamText_47d38
 	setevent EVENT_05E
-.asm_d17c7: ; d17c7 (34:57c7)
+.asm_d17c7 ; d17c7 (34:57c7)
 	jp .asm_d1866
 
-.asm_d17ca: ; d17ca (34:57ca)
+.asm_d17ca ; d17ca (34:57ca)
 	move_player $1, Data_d1731
 	ld a, $2
 	scall PlayerFace
@@ -312,10 +312,10 @@ Func_d1749: ; d1749 (34:5749)
 	scall Func_80d74
 	writetext TreeBitstreamText_47d46
 	setevent EVENT_060
-.asm_d1813: ; d1813 (34:5813)
+.asm_d1813 ; d1813 (34:5813)
 	jp .asm_d1866
 
-.asm_d1816: ; d1816 (34:5816)
+.asm_d1816 ; d1816 (34:5816)
 	move_player $1, Data_d1737
 	ld a, $2
 	scall PlayerFace
@@ -335,14 +335,14 @@ ELIF DEF(STAR)
 ENDC
 	cp $ff
 	jp nz, .asm_d1858
-.asm_d1858: ; d1858 (34:5858)
+.asm_d1858 ; d1858 (34:5858)
 IF DEF(SUN)
 	writetext TreeBitstreamText_47d58
 ELIF DEF(STAR)
 	writetext TreeBitstreamText_47d6a
 ENDC
 	setevent EVENT_062
-.asm_d1866: ; d1866 (34:5866)
+.asm_d1866 ; d1866 (34:5866)
 	move_person 0, Data_d173d, 1
 	scall WaitNPCStep
 	sprite_face $1, 0
@@ -393,19 +393,19 @@ Func_d18ba:: ; d18ba (34:58ba)
 	hideperson $1
 	jp .asm_d194d
 
-.asm_d1924: ; d1924 (34:5924)
+.asm_d1924 ; d1924 (34:5924)
 	hideperson $2
 	jp .asm_d194d
 
-.asm_d192e: ; d192e (34:592e)
+.asm_d192e ; d192e (34:592e)
 	hideperson $3
 	jp .asm_d194d
 
-.asm_d1938: ; d1938 (34:5938)
+.asm_d1938 ; d1938 (34:5938)
 	hideperson $1
 	hideperson $2
 	hideperson $3
-.asm_d194d: ; d194d (34:594d)
+.asm_d194d ; d194d (34:594d)
 	pop af
 	ld [wc791], a
 	script_sleep 60

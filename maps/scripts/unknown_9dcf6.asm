@@ -70,7 +70,7 @@ Func_9dcf6:: ; 9dcf6
 	scall Func_8001c
 	call Func_9ddf2
 	jp .asm_9dda8
-.asm_9dd37:
+.asm_9dd37
 	checkevent EVENT_0BE
 	cp $01
 	jp nz, .asm_9dd62
@@ -81,7 +81,7 @@ Func_9dcf6:: ; 9dcf6
 	loadpeople $03, Data_9dccc
 	scall Func_8001c
 	jp .asm_9dda8
-.asm_9dd62:
+.asm_9dd62
 	checkevent EVENT_0EE
 	cp $01
 	jp nz, .asm_9dd83
@@ -91,7 +91,7 @@ Func_9dcf6:: ; 9dcf6
 	scall Func_80ce7
 	scall Func_8001c
 	jp .asm_9dda8
-.asm_9dd83:
+.asm_9dd83
 	loadpeople $02, Data_9dc78
 	loadpeople $03, Data_9dccc
 	checkevent EVENT_0BB
@@ -100,9 +100,9 @@ Func_9dcf6:: ; 9dcf6
 	ld de, Data_9dc54
 	xor a
 	scall SetPersonTextPointer
-.asm_9dda5:
+.asm_9dda5
 	scall Func_8001c
-.asm_9dda8:
+.asm_9dda8
 	ret
 
 Data_9dda9:
@@ -123,14 +123,14 @@ Func_9ddbb:
 	ld hl, Data_9ddaf
 	scall Func_80d9b
 	scall Func_80f02
-.asm_9ddd5:
+.asm_9ddd5
 	checkevent EVENT_0EE
 	cp $01
 	jp nz, .asm_9dde9
 	ld hl, Data_9ddb5
 	scall Func_80d9b
 	scall Func_80f02
-.asm_9dde9:
+.asm_9dde9
 	ret
 
 Data_9ddea:
@@ -153,7 +153,7 @@ Func_9ddf2:
 	scall PlayerFace
 	script_sleep 30
 	xor a
-.asm_9de33:
+.asm_9de33
 	cp $03
 	jp nc, .asm_9de44
 	push af
@@ -163,7 +163,7 @@ Func_9ddf2:
 	pop af
 	inc a
 	jp .asm_9de33
-.asm_9de44:
+.asm_9de44
 	script_sleep 30
 	loademote $01, $01, $0a
 	ld e, $01
@@ -242,7 +242,7 @@ Func_9ddf2:
 	scall Func_801b8
 	script_sleep 60
 	xor a
-.asm_9df58:
+.asm_9df58
 	cp $03
 	jp nc, .asm_9df6a
 	push af
@@ -252,7 +252,7 @@ Func_9ddf2:
 	pop af
 	inc a
 	jp .asm_9df58
-.asm_9df6a:
+.asm_9df6a
 	script_sleep 30
 	sprite_face $02, 0
 	script_sleep 30
@@ -274,18 +274,18 @@ Func_9df90:
 	jp nz, .asm_9dfb9
 	writenpctext TreeBitstreamText_43d46
 	jp .asm_9dfbf
-.asm_9dfb9:
+.asm_9dfb9
 	writenpctext TreeBitstreamText_43156
-.asm_9dfbf:
+.asm_9dfbf
 	jp .asm_9dfe3
-.asm_9dfc2:
+.asm_9dfc2
 	writenpctext_yesorno TreeBitstreamText_42ffd
 	or a
 	jp nz, .asm_9dfdd
 	writenpctext TreeBitstreamText_43084
 	setevent EVENT_0B9
 	jp .asm_9dfe3
-.asm_9dfdd:
+.asm_9dfdd
 	writenpctext TreeBitstreamText_430f7
-.asm_9dfe3:
+.asm_9dfe3
 	ret

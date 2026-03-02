@@ -257,7 +257,7 @@ Data_b938d:
 
 Func_b93f1:: ; b93f1
 	ld c, $00
-.asm_b93f3:
+.asm_b93f3
 	ld a, c
 	cp $19
 	jp nc, .asm_b945b
@@ -319,10 +319,10 @@ Func_b93f1:: ; b93f1
 	ld e, $01
 	scall LoadWarps
 	jp .asm_b945b
-.asm_b9457:
+.asm_b9457
 	inc c
 	jp .asm_b93f3
-.asm_b945b:
+.asm_b945b
 	ld a, [wBackupMapGroup]
 	cp $01
 	jp nz, .asm_b94cc
@@ -345,9 +345,9 @@ Func_b93f1:: ; b93f1
 	ld de, Data_b9227
 	xor a
 	scall SetPersonTextPointer
-.asm_b9498:
+.asm_b9498
 	jp .asm_b94c9
-.asm_b949b:
+.asm_b949b
 	ld a, [wBackupMapX]
 	cp $1d
 	jp nz, .asm_b94c9
@@ -364,9 +364,9 @@ Func_b93f1:: ; b93f1
 	ld de, Data_b922b
 	xor a
 	scall SetPersonTextPointer
-.asm_b94c9:
+.asm_b94c9
 	jp .asm_b975a
-.asm_b94cc:
+.asm_b94cc
 	ld a, [wBackupMapGroup]
 	cp $03
 	jp nz, .asm_b9571
@@ -381,7 +381,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b94f6
 	loadpeople $01, Data_b924b
 	jp .asm_b956e
-.asm_b94f6:
+.asm_b94f6
 	ld a, [wBackupMapX]
 	cp $07
 	jp nz, .asm_b9511
@@ -390,7 +390,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b9511
 	loadpeople $01, Data_b9259
 	jp .asm_b956e
-.asm_b9511:
+.asm_b9511
 	ld a, [wBackupMapX]
 	cp $05
 	jp nz, .asm_b953b
@@ -404,9 +404,9 @@ Func_b93f1:: ; b93f1
 	cp $07
 	jp nc, .asm_b9538
 	loadpeople $01, Data_b9267
-.asm_b9538:
+.asm_b9538
 	jp .asm_b956e
-.asm_b953b:
+.asm_b953b
 	ld a, [wBackupMapX]
 	cp $11
 	jp nz, .asm_b9556
@@ -415,7 +415,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b9556
 	loadpeople $01, Data_b9275
 	jp .asm_b956e
-.asm_b9556:
+.asm_b9556
 	ld a, [wBackupMapX]
 	cp $17
 	jp nz, .asm_b956e
@@ -423,9 +423,9 @@ Func_b93f1:: ; b93f1
 	cp $13
 	jp nz, .asm_b956e
 	loadpeople $01, Data_b9283
-.asm_b956e:
+.asm_b956e
 	jp .asm_b975a
-.asm_b9571:
+.asm_b9571
 	ld a, [wBackupMapGroup]
 	cp $14
 	jp nz, .asm_b95b6
@@ -440,7 +440,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b959b
 	loadpeople $01, Data_b9291
 	jp .asm_b95b3
-.asm_b959b:
+.asm_b959b
 	ld a, [wBackupMapX]
 	cp $14
 	jp nz, .asm_b95b3
@@ -448,9 +448,9 @@ Func_b93f1:: ; b93f1
 	cp $0c
 	jp nz, .asm_b95b3
 	loadpeople $01, Data_b929f
-.asm_b95b3:
+.asm_b95b3
 	jp .asm_b975a
-.asm_b95b6:
+.asm_b95b6
 	ld a, [wBackupMapGroup]
 	cp $17
 	jp nz, .asm_b964c
@@ -465,7 +465,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b95e0
 	loadpeople $01, Data_b92ad
 	jp .asm_b9649
-.asm_b95e0:
+.asm_b95e0
 	ld a, [wBackupMapX]
 	cp $1d
 	jp nz, .asm_b95fb
@@ -474,7 +474,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b95fb
 	loadpeople $01, Data_b92bb
 	jp .asm_b9649
-.asm_b95fb:
+.asm_b95fb
 	ld a, [wBackupMapX]
 	cp $21
 	jp nz, .asm_b9616
@@ -483,7 +483,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b9616
 	loadpeople $01, Data_b92c9
 	jp .asm_b9649
-.asm_b9616:
+.asm_b9616
 	ld a, [wBackupMapX]
 	cp $08
 	jp nz, .asm_b9631
@@ -492,7 +492,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b9631
 	loadpeople $01, Data_b92d7
 	jp .asm_b9649
-.asm_b9631:
+.asm_b9631
 	ld a, [wBackupMapX]
 	cp $10
 	jp nz, .asm_b9649
@@ -500,9 +500,9 @@ Func_b93f1:: ; b93f1
 	cp $10
 	jp nz, .asm_b9649
 	loadpeople $02, Data_b92e5
-.asm_b9649:
+.asm_b9649
 	jp .asm_b975a
-.asm_b964c:
+.asm_b964c
 	ld a, [wBackupMapGroup]
 	cp $18
 	jp nz, .asm_b96fd
@@ -517,7 +517,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b9676
 	loadpeople $01, Data_b9301
 	jp .asm_b96fa
-.asm_b9676:
+.asm_b9676
 	ld a, [wBackupMapX]
 	cp $1b
 	jp nz, .asm_b9691
@@ -526,7 +526,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b9691
 	loadpeople $01, Data_b930f
 	jp .asm_b96fa
-.asm_b9691:
+.asm_b9691
 	ld a, [wBackupMapX]
 	cp $1f
 	jp nz, .asm_b96ac
@@ -535,7 +535,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b96ac
 	loadpeople $01, Data_b931d
 	jp .asm_b96fa
-.asm_b96ac:
+.asm_b96ac
 	ld a, [wBackupMapX]
 	cp $06
 	jp nz, .asm_b96c7
@@ -544,7 +544,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b96c7
 	loadpeople $01, Data_b932b
 	jp .asm_b96fa
-.asm_b96c7:
+.asm_b96c7
 	ld a, [wBackupMapX]
 	cp $0a
 	jp nz, .asm_b96e2
@@ -553,7 +553,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b96e2
 	loadpeople $01, Data_b9339
 	jp .asm_b96fa
-.asm_b96e2:
+.asm_b96e2
 	ld a, [wBackupMapX]
 	cp $0e
 	jp nz, .asm_b96fa
@@ -561,9 +561,9 @@ Func_b93f1:: ; b93f1
 	cp $1b
 	jp nz, .asm_b96fa
 	loadpeople $01, Data_b9347
-.asm_b96fa:
+.asm_b96fa
 	jp .asm_b975a
-.asm_b96fd:
+.asm_b96fd
 	ld a, [wBackupMapGroup]
 	cp $0b
 	jp nz, .asm_b975a
@@ -578,7 +578,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b9727
 	loadpeople $01, Data_b9363
 	jp .asm_b975a
-.asm_b9727:
+.asm_b9727
 	ld a, [wBackupMapX]
 	cp $13
 	jp nz, .asm_b9742
@@ -587,7 +587,7 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b9742
 	loadpeople $01, Data_b9371
 	jp .asm_b975a
-.asm_b9742:
+.asm_b9742
 	ld a, [wBackupMapX]
 	cp $1b
 	jp nz, .asm_b975a
@@ -595,7 +595,7 @@ Func_b93f1:: ; b93f1
 	cp $10
 	jp nz, .asm_b975a
 	loadpeople $01, Data_b937f
-.asm_b975a:
+.asm_b975a
 	loadpeople $01, Data_b9355
 	ld a, [wBackupMapX]
 	cp $10
@@ -610,14 +610,14 @@ Func_b93f1:: ; b93f1
 	call Func_b97c4
 	setevent EVENT_02D
 	jp .asm_b9797
-.asm_b978d:
+.asm_b978d
 	scall Func_8001c
 	hideperson $01
-.asm_b9797:
+.asm_b9797
 	jp .asm_b979d
-.asm_b979a:
+.asm_b979a
 	scall Func_8001c
-.asm_b979d:
+.asm_b979d
 	ld a, [wBackupMapGroup]
 	cp $17
 	jp nz, .asm_b97b4
@@ -626,9 +626,9 @@ Func_b93f1:: ; b93f1
 	jp nz, .asm_b97b4
 	playmusic SONG_0A
 	jp .asm_b97b9
-.asm_b97b4:
+.asm_b97b4
 	playmusic SONG_TOWN3
-.asm_b97b9:
+.asm_b97b9
 	ret
 
 Data_b97ba:

@@ -102,7 +102,7 @@ Data_d2e6d: ; d2e6d
 
 Func_d2e9d:: ; d2e9d (34:6e9d)
 	ld c, $0
-.asm_d2e9f: ; d2e9f (34:6e9f)
+.asm_d2e9f ; d2e9f (34:6e9f)
 	ld a, c
 	cp $c
 	jp nc, .asm_d2f07
@@ -165,11 +165,11 @@ Func_d2e9d:: ; d2e9d (34:6e9d)
 	scall LoadWarps
 	jp .asm_d2f07
 
-.asm_d2f03: ; d2f03 (34:6f03)
+.asm_d2f03 ; d2f03 (34:6f03)
 	inc c
 	jp .asm_d2e9f
 
-.asm_d2f07: ; d2f07 (34:6f07)
+.asm_d2f07 ; d2f07 (34:6f07)
 	loadpeople $8, Data_d2def
 	ld a, [wBackupMapGroup]
 	cp $1
@@ -183,9 +183,9 @@ Func_d2e9d:: ; d2e9d (34:6e9d)
 	ld a, [wBackupMapNumber]
 	cp $19
 	jp nz, .asm_d2f37
-.asm_d2f2f: ; d2f2f (34:6f2f)
+.asm_d2f2f ; d2f2f (34:6f2f)
 	loadpeople $1, Data_d2e5f
-.asm_d2f37: ; d2f37 (34:6f37)
+.asm_d2f37 ; d2f37 (34:6f37)
 	ld a, [wBackupMapGroup]
 	cp $15
 	jp z, .asm_d2f5f
@@ -198,23 +198,23 @@ Func_d2e9d:: ; d2e9d (34:6e9d)
 	scall SetPersonTextPointer
 	jp .asm_d2f72
 
-.asm_d2f54: ; d2f54 (34:6f54)
+.asm_d2f54 ; d2f54 (34:6f54)
 	ld de, Data_d2d85
 	ld a, $8
 	scall SetPersonTextPointer
 	jp .asm_d2f72
 
-.asm_d2f5f: ; d2f5f (34:6f5f)
+.asm_d2f5f ; d2f5f (34:6f5f)
 	ld de, Data_d2d89
 	ld a, $8
 	scall SetPersonTextPointer
 	jp .asm_d2f72
 
-.asm_d2f6a: ; d2f6a (34:6f6a)
+.asm_d2f6a ; d2f6a (34:6f6a)
 	ld de, Data_d2d75
 	ld a, $8
 	scall SetPersonTextPointer
-.asm_d2f72: ; d2f72 (34:6f72)
+.asm_d2f72 ; d2f72 (34:6f72)
 	ld a, [wBackupMapGroup]
 	cp $5
 	jp nz, .asm_d2fae
@@ -231,12 +231,12 @@ Func_d2e9d:: ; d2e9d (34:6e9d)
 	hideperson $8
 	jp .asm_d2fab
 
-.asm_d2fa3: ; d2fa3 (34:6fa3)
+.asm_d2fa3 ; d2fa3 (34:6fa3)
 	loadpeople $1, Data_d2d8d
-.asm_d2fab: ; d2fab (34:6fab)
+.asm_d2fab ; d2fab (34:6fab)
 	jp .asm_d3019
 
-.asm_d2fae: ; d2fae (34:6fae)
+.asm_d2fae ; d2fae (34:6fae)
 	ld a, [wBackupMapGroup]
 	cp $1d
 	jp nz, .asm_d3011
@@ -255,22 +255,22 @@ Func_d2e9d:: ; d2e9d (34:6e9d)
 	jp z, .asm_d2fe1
 	cp $7
 	jp nz, .asm_d300e
-.asm_d2fe1: ; d2fe1 (34:6fe1)
+.asm_d2fe1 ; d2fe1 (34:6fe1)
 	hideperson $9
 	hideperson $a
 	hideperson $b
 	hideperson $c
 	jp .asm_d300e
 
-.asm_d3000: ; d3000 (34:7000)
+.asm_d3000 ; d3000 (34:7000)
 	hideperson $b
 	hideperson $c
-.asm_d300e: ; d300e (34:700e)
+.asm_d300e ; d300e (34:700e)
 	jp .asm_d3019
 
-.asm_d3011: ; d3011 (34:7011)
+.asm_d3011 ; d3011 (34:7011)
 	loadpeople $1, Data_d2d8d
-.asm_d3019: ; d3019 (34:7019)
+.asm_d3019 ; d3019 (34:7019)
 	playmusic SONG_CENTER
 	scall Func_8001c
 	ld a, [wBackupMapGroup]
@@ -286,7 +286,7 @@ Func_d2e9d:: ; d2e9d (34:6e9d)
 	cp $7
 	jp nz, .asm_d3046
 	landmarksign TreeBitstreamText_465ae
-.asm_d3046: ; d3046 (34:7046)
+.asm_d3046 ; d3046 (34:7046)
 	ret
 
 Func_d3047:
@@ -296,7 +296,7 @@ Func_d3047:
 	ld e, $0
 	ld a, [wc789]
 	scall Func_806a0
-.asm_d3054: ; d3054 (34:7054)
+.asm_d3054 ; d3054 (34:7054)
 	ret
 
 Func_d3055:
@@ -312,10 +312,10 @@ Func_d3055:
 	jp nz, .asm_d3083
 	writetext TreeBitstreamText_3a8e1
 	setevent EVENT_001
-.asm_d3083: ; d3083 (34:7083)
+.asm_d3083 ; d3083 (34:7083)
 	jp .asm_d30f8
 
-.asm_d3086: ; d3086 (34:7086)
+.asm_d3086 ; d3086 (34:7086)
 	ld a, $e
 	scall Func_80e5d
 	or a
@@ -323,7 +323,7 @@ Func_d3055:
 	writetext TreeBitstreamText_3a92f
 	jp .asm_d30f8
 
-.asm_d3098: ; d3098 (34:7098)
+.asm_d3098 ; d3098 (34:7098)
 	checkevent EVENT_000
 	or a
 	jp nz, .asm_d30e9
@@ -345,18 +345,18 @@ Func_d3055:
 	setevent EVENT_000
 	jp .asm_d30e6
 
-.asm_d30e0: ; d30e0 (34:70e0)
+.asm_d30e0 ; d30e0 (34:70e0)
 	writetext TreeBitstreamText_3a97f
-.asm_d30e6: ; d30e6 (34:70e6)
+.asm_d30e6 ; d30e6 (34:70e6)
 	jp .asm_d30f8
 
-.asm_d30e9: ; d30e9 (34:70e9)
+.asm_d30e9 ; d30e9 (34:70e9)
 	writetext TreeBitstreamText_3aa23
 	ld c, $1
 	ld e, $1
 	ld a, $e
 	scall Func_80d4d
-.asm_d30f8: ; d30f8 (34:70f8)
+.asm_d30f8 ; d30f8 (34:70f8)
 	ret
 
 Func_d30f9:
@@ -367,13 +367,13 @@ Func_d30f9:
 	ld l, $9
 	jp .asm_d310e
 
-.asm_d3108: ; d3108 (34:7108)
+.asm_d3108 ; d3108 (34:7108)
 	ld l, $b
 	jp .asm_d310e
 
-.asm_d310d: ; d310d (34:710d)
+.asm_d310d ; d310d (34:710d)
 	ld l, a
-.asm_d310e: ; d310e (34:710e)
+.asm_d310e ; d310e (34:710e)
 	ld a, e
 	or a
 	jp nz, .asm_d3144
@@ -393,15 +393,15 @@ Func_d30f9:
 	scall Func_806a0
 	jp .asm_d3144
 
-.asm_d3133: ; d3133 (34:7133)
+.asm_d3133 ; d3133 (34:7133)
 	ld e, $0
 	ld a, $e
 	scall Func_806a0
 	jp .asm_d3144
 
-.asm_d313d: ; d313d (34:713d)
+.asm_d313d ; d313d (34:713d)
 	ld e, $0
 	ld a, $f
 	scall Func_806a0
-.asm_d3144: ; d3144 (34:7144)
+.asm_d3144 ; d3144 (34:7144)
 	ret

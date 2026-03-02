@@ -45,35 +45,35 @@ Func_8deaa:: ; 8deaa
 	cp $01
 	jp nz, .asm_8def9
 	hideperson $05
-.asm_8def9:
+.asm_8def9
 	checkevent EVENT_029
 	cp $01
 	jp nz, .asm_8df0b
 	hideperson $06
-.asm_8df0b:
+.asm_8df0b
 	checkevent EVENT_02A
 	cp $01
 	jp nz, .asm_8df1d
 	hideperson $07
-.asm_8df1d:
+.asm_8df1d
 	checkevent EVENT_02B
 	cp $01
 	jp nz, .asm_8df2f
 	hideperson $08
-.asm_8df2f:
+.asm_8df2f
 	checkevent EVENT_02C
 	cp $01
 	jp nz, .asm_8df41
 	hideperson $09
-.asm_8df41:
+.asm_8df41
 	checkevent EVENT_037
 	cp $01
 	jp nz, .asm_8df54
 	playmusic SONG_TOWN1
 	jp .asm_8df59
-.asm_8df54:
+.asm_8df54
 	playmusic SONG_WILD_BATTLE
-.asm_8df59:
+.asm_8df59
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -101,14 +101,14 @@ Func_8df6e:
 	checkevent EVENT_02C
 	or a
 	jp nz, .asm_8dfa9
-.asm_8dfa0:
+.asm_8dfa0
 	ld hl, Data_8df62
 	scall Func_80d9b
 	jp .asm_8dfaf
-.asm_8dfa9:
+.asm_8dfa9
 	ld hl, Data_8df68
 	scall Func_80d9b
-.asm_8dfaf:
+.asm_8dfaf
 	scall Func_80f02
 	ret
 
@@ -137,22 +137,22 @@ Func_8dfe6:
 	or a
 	jp nz, .asm_8e012
 	jp .asm_8e046
-.asm_8e012:
+.asm_8e012
 	ld a, [wPlayerFacing]
 	cp $01
 	jp nz, .asm_8e028
 	move_person -$01, Data_8dfb7, 1
 	jp .asm_8e033
-.asm_8e028:
+.asm_8e028
 	move_person -$01, Data_8dfb3, 1
-.asm_8e033:
+.asm_8e033
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
 	setevent EVENT_028
-.asm_8e046:
+.asm_8e046
 	pop bc
 	ret
 
@@ -184,22 +184,22 @@ Func_8e080:
 	or a
 	jp nz, .asm_8e0ac
 	jp .asm_8e0e0
-.asm_8e0ac:
+.asm_8e0ac
 	ld a, [wPlayerFacing]
 	cp $03
 	jp nz, .asm_8e0c2
 	move_person -$01, Data_8e04d, 1
 	jp .asm_8e0cd
-.asm_8e0c2:
+.asm_8e0c2
 	move_person -$01, Data_8e053, 1
-.asm_8e0cd:
+.asm_8e0cd
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
 	setevent EVENT_029
-.asm_8e0e0:
+.asm_8e0e0
 	pop bc
 	ret
 
@@ -231,22 +231,22 @@ Func_8e11a:
 	or a
 	jp nz, .asm_8e146
 	jp .asm_8e17a
-.asm_8e146:
+.asm_8e146
 	ld a, [wPlayerFacing]
 	cp $03
 	jp nz, .asm_8e15c
 	move_person -$01, Data_8e0e7, 1
 	jp .asm_8e167
-.asm_8e15c:
+.asm_8e15c
 	move_person -$01, Data_8e0ed, 1
-.asm_8e167:
+.asm_8e167
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
 	setevent EVENT_02A
-.asm_8e17a:
+.asm_8e17a
 	pop bc
 	ret
 
@@ -278,22 +278,22 @@ Func_8e1b2:
 	or a
 	jp nz, .asm_8e1de
 	jp .asm_8e212
-.asm_8e1de:
+.asm_8e1de
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_8e1f4
 	move_person -$01, Data_8e181, 1
 	jp .asm_8e1ff
-.asm_8e1f4:
+.asm_8e1f4
 	move_person -$01, Data_8e185, 1
-.asm_8e1ff:
+.asm_8e1ff
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
 	setevent EVENT_02B
-.asm_8e212:
+.asm_8e212
 	pop bc
 	ret
 
@@ -325,22 +325,22 @@ Func_8e24c:
 	or a
 	jp nz, .asm_8e278
 	jp .asm_8e2ab
-.asm_8e278:
+.asm_8e278
 	ld a, [wPlayerFacing]
 	or a
 	jp nz, .asm_8e28d
 	move_person -$01, Data_8e219, 1
 	jp .asm_8e298
-.asm_8e28d:
+.asm_8e28d
 	move_person -$01, Data_8e21d, 1
-.asm_8e298:
+.asm_8e298
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
 	setevent EVENT_02C
-.asm_8e2ab:
+.asm_8e2ab
 	pop bc
 	ret
 
@@ -387,14 +387,14 @@ Func_8e2be:
 	cp $02
 	jp nz, .asm_8e346
 	sprite_face $00, $0a
-.asm_8e346:
+.asm_8e346
 	writenpctext TreeBitstreamText_3b605
 	move_person $0a, Data_8e2b8, 1
 	scall WaitNPCStep
 	playsfx SFX_2E
 	hideperson $0a
 	setevent EVENT_037
-.asm_8e36d:
+.asm_8e36d
 	ret
 
 Func_8e36e:
@@ -454,15 +454,15 @@ Func_8e36e:
 	scall FadeInAudio
 	playmusic SONG_TOWN1
 	jp .asm_8e466
-.asm_8e45c:
+.asm_8e45c
 	ld a, $01
 	scall FadeInAudio
 	playmusic SONG_WILD_BATTLE
-.asm_8e466:
+.asm_8e466
 	face_player 0
 	hideperson 0
 	jp .asm_8e479
-.asm_8e473:
+.asm_8e473
 	writetext TreeBitstreamText_3f79e
-.asm_8e479:
+.asm_8e479
 	ret

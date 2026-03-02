@@ -43,7 +43,7 @@ Func_89c58:: ; 89c58
 	jp nz, .asm_89c9f
 	hideperson 0
 	hideperson $01
-.asm_89c9f:
+.asm_89c9f
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468ba
 	ret
@@ -56,13 +56,13 @@ Func_89ca9:
 	or a
 	jp z, .asm_89cb8
 	jp .asm_89d03
-.asm_89cb8:
+.asm_89cb8
 	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_89ccc
 	writetext TreeBitstreamText_47037
 	jp .asm_89d03
-.asm_89ccc:
+.asm_89ccc
 	ld a, $01
 	ld [wc78a], a
 	resetevent EVENT_0FC
@@ -75,7 +75,7 @@ Func_89ca9:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_32_03, $03, $03
-.asm_89d03:
+.asm_89d03
 	ret
 
 Func_89d04:
@@ -90,7 +90,7 @@ Func_89d04:
 	jp nc, .asm_89d21
 	writetext TreeBitstreamText_47041
 	jp .asm_89d54
-.asm_89d21:
+.asm_89d21
 	checkevent EVENT_059
 	or a
 	jp nz, .asm_89d41
@@ -98,11 +98,11 @@ Func_89d04:
 	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_89d54
-.asm_89d41:
+.asm_89d41
 	resetevent EVENT_059
 	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
-.asm_89d54:
+.asm_89d54
 	ret
 
 Data_89d55:
@@ -134,7 +134,7 @@ Func_89d8a:
 	or a
 	jp nz, .asm_89dca
 	jp .asm_89df8
-.asm_89dca:
+.asm_89dca
 	setevent EVENT_06B
 	writenpctext TreeBitstreamText_3afbf
 	move_person 0, Data_89d82, 1
@@ -143,7 +143,7 @@ Func_89d8a:
 	hideperson 0
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-.asm_89df8:
+.asm_89df8
 	ret
 
 Data_89df9:

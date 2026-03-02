@@ -224,7 +224,7 @@ DivideHLByDESigned:: ; 36c6 (0:36c6)
 	call NegativeHL
 	ret
 
-.AbsoluteValueHL: ; 36fa (0:36fa)
+.AbsoluteValueHL ; 36fa (0:36fa)
 	ld a, h
 	and $80
 	ret z

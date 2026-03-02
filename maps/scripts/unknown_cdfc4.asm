@@ -187,12 +187,12 @@ Func_cdfc4:: ; cdfc4
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_cdfda:
+.asm_cdfda
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cdfea
 	setevent EVENT_061
-.asm_cdfea:
+.asm_cdfea
 	ld a, $03
 	scall Func_80d01
 	ld a, [wc7de]
@@ -286,36 +286,36 @@ Func_cdfc4:: ; cdfc4
 	jp z, .asm_ce0d3
 	cp $01
 	jp nz, .asm_ce136
-.asm_ce0d3:
+.asm_ce0d3
 	loadwilds $05, Data_cdcc2
 	jp .asm_ce13e
-.asm_ce0de:
+.asm_ce0de
 	loadwilds $05, Data_cdd08
 	jp .asm_ce13e
-.asm_ce0e9:
+.asm_ce0e9
 	loadwilds $05, Data_cdd4e
 	jp .asm_ce13e
-.asm_ce0f4:
+.asm_ce0f4
 	loadwilds $05, Data_cdd94
 	jp .asm_ce13e
-.asm_ce0ff:
+.asm_ce0ff
 	loadwilds $05, Data_cddda
 	jp .asm_ce13e
-.asm_ce10a:
+.asm_ce10a
 	loadwilds $05, Data_cde20
 	jp .asm_ce13e
-.asm_ce115:
+.asm_ce115
 	loadwilds $05, Data_cde66
 	jp .asm_ce13e
-.asm_ce120:
+.asm_ce120
 	loadwilds $05, Data_cdeac
 	jp .asm_ce13e
-.asm_ce12b:
+.asm_ce12b
 	loadwilds $05, Data_cdef2
 	jp .asm_ce13e
-.asm_ce136:
+.asm_ce136
 	loadwilds $09, Data_cdf38
-.asm_ce13e:
+.asm_ce13e
 	ld a, [wc7de]
 	inc a
 	cp $33
@@ -355,7 +355,7 @@ Func_cdfc4:: ; cdfc4
 	add hl, de
 	ld e, $01
 	scall LoadWarps
-.asm_ce17e:
+.asm_ce17e
 	loadwarps $01, Data_cdc33
 	ld a, [wc7a3]
 	cp $03
@@ -364,12 +364,12 @@ Func_cdfc4:: ; cdfc4
 	jp z, .asm_ce198
 	cp $01
 	jp nz, .asm_ce19b
-.asm_ce198:
+.asm_ce198
 	jp .asm_ce1a0
-.asm_ce19b:
+.asm_ce19b
 	ld a, $01
 	ld [wc7a3], a
-.asm_ce1a0:
+.asm_ce1a0
 	ld a, [wc7a3]
 	call Func_ce409
 	loadpeople $01, Data_cdfb6
@@ -380,12 +380,12 @@ Func_cdfc4:: ; cdfc4
 	jp nz, .asm_ce1c7
 	writetext TreeBitstreamText_47e17
 	jp .asm_ce1d0
-.asm_ce1c7:
+.asm_ce1c7
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $00
 	scall Func_80f83
-.asm_ce1d0:
+.asm_ce1d0
 	ret
 
 Data_ce1d1:
@@ -502,7 +502,7 @@ Func_ce409:
 	cp $01
 	jp nz, .asm_ce5a8
 	xor a
-.asm_ce482:
+.asm_ce482
 	cp $0f
 	jp nc, .asm_ce4a1
 	push af
@@ -521,9 +521,9 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce482
-.asm_ce4a1:
+.asm_ce4a1
 	xor a
-.asm_ce4a2:
+.asm_ce4a2
 	cp $0f
 	jp nc, .asm_ce4bf
 	push af
@@ -541,9 +541,9 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce4a2
-.asm_ce4bf:
+.asm_ce4bf
 	xor a
-.asm_ce4c0:
+.asm_ce4c0
 	cp $0e
 	jp nc, .asm_ce4dd
 	push af
@@ -561,12 +561,12 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce4c0
-.asm_ce4dd:
+.asm_ce4dd
 	scall Func_80f02
 	jp .asm_ce5a8
-.asm_ce4e3:
+.asm_ce4e3
 	xor a
-.asm_ce4e4:
+.asm_ce4e4
 	cp $0f
 	jp nc, .asm_ce503
 	push af
@@ -585,9 +585,9 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce4e4
-.asm_ce503:
+.asm_ce503
 	xor a
-.asm_ce504:
+.asm_ce504
 	cp $0f
 	jp nc, .asm_ce523
 	push af
@@ -606,9 +606,9 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce504
-.asm_ce523:
+.asm_ce523
 	xor a
-.asm_ce524:
+.asm_ce524
 	cp $0e
 	jp nc, .asm_ce541
 	push af
@@ -626,12 +626,12 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce524
-.asm_ce541:
+.asm_ce541
 	scall Func_80f02
 	jp .asm_ce5a8
-.asm_ce547:
+.asm_ce547
 	xor a
-.asm_ce548:
+.asm_ce548
 	cp $0e
 	jp nc, .asm_ce567
 	push af
@@ -650,9 +650,9 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce548
-.asm_ce567:
+.asm_ce567
 	xor a
-.asm_ce568:
+.asm_ce568
 	cp $0f
 	jp nc, .asm_ce587
 	push af
@@ -671,9 +671,9 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce568
-.asm_ce587:
+.asm_ce587
 	xor a
-.asm_ce588:
+.asm_ce588
 	cp $0f
 	jp nc, .asm_ce5a5
 	push af
@@ -691,9 +691,9 @@ Func_ce409:
 	pop af
 	inc a
 	jp .asm_ce588
-.asm_ce5a5:
+.asm_ce5a5
 	scall Func_80f02
-.asm_ce5a8:
+.asm_ce5a8
 	ld hl, $0210
 	add hl, sp
 	ld sp, hl
@@ -735,7 +735,7 @@ Func_ce60e:
 	cp $02
 	jp nz, .asm_ce738
 	ld c, $00
-.asm_ce647:
+.asm_ce647
 	ld a, c
 	cp $15
 	jp nc, .asm_ce67e
@@ -761,10 +761,10 @@ Func_ce60e:
 	jp nz, .asm_ce67a
 	ld c, $ff
 	jp .asm_ce67e
-.asm_ce67a:
+.asm_ce67a
 	inc c
 	jp .asm_ce647
-.asm_ce67e:
+.asm_ce67e
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce696
@@ -774,9 +774,9 @@ Func_ce60e:
 	ld a, $01
 	call Func_ce409
 	jp .asm_ce738
-.asm_ce696:
+.asm_ce696
 	ld c, $00
-.asm_ce698:
+.asm_ce698
 	ld a, c
 	cp $0d
 	jp nc, .asm_ce6cf
@@ -802,10 +802,10 @@ Func_ce60e:
 	jp nz, .asm_ce6cb
 	ld c, $ff
 	jp .asm_ce6cf
-.asm_ce6cb:
+.asm_ce6cb
 	inc c
 	jp .asm_ce698
-.asm_ce6cf:
+.asm_ce6cf
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce6e7
@@ -815,9 +815,9 @@ Func_ce60e:
 	ld a, $02
 	call Func_ce409
 	jp .asm_ce738
-.asm_ce6e7:
+.asm_ce6e7
 	ld c, $00
-.asm_ce6e9:
+.asm_ce6e9
 	ld a, c
 	cp $0e
 	jp nc, .asm_ce720
@@ -843,10 +843,10 @@ Func_ce60e:
 	jp nz, .asm_ce71c
 	ld c, $ff
 	jp .asm_ce720
-.asm_ce71c:
+.asm_ce71c
 	inc c
 	jp .asm_ce6e9
-.asm_ce720:
+.asm_ce720
 	ld a, c
 	cp $ff
 	jp nz, .asm_ce738
@@ -856,6 +856,6 @@ Func_ce60e:
 	ld a, $03
 	call Func_ce409
 	jp .asm_ce738
-.asm_ce738:
+.asm_ce738
 	add sp, $60
 	ret

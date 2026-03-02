@@ -48,7 +48,7 @@ Func_92965:: ; 92965
 	jp nz, .asm_92999
 	loadwilds $05, Data_92893
 	jp .asm_929e0
-.asm_92999:
+.asm_92999
 	ld a, $20
 	scall Func_80e6d
 	cp $ff
@@ -58,7 +58,7 @@ Func_92965:: ; 92965
 	jp nz, .asm_929b8
 	loadwilds $05, Data_928d9
 	jp .asm_929e0
-.asm_929b8:
+.asm_929b8
 	ld a, $21
 	scall Func_80e6d
 	cp $ff
@@ -68,9 +68,9 @@ Func_92965:: ; 92965
 	jp nz, .asm_929d8
 	loadwilds $05, Data_9291f
 	jp .asm_929e0
-.asm_929d8:
+.asm_929d8
 	loadwilds $04, Data_9285b
-.asm_929e0:
+.asm_929e0
 	loadwilds $04, Data_9285b
 	ld a, $01
 	scall LoadPlayerSprite

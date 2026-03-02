@@ -37,7 +37,7 @@ Func_89161::
 	checkevent EVENT_073
 	if_true .asm_89180
 	loadpeople $04, MapObjects_890b9
-.asm_89180:
+.asm_89180
 	loadpeople $03, MapObjects_890f1
 	ld a, $03
 	scall Func_80d01
@@ -91,7 +91,7 @@ Func_89237:
 	scall PlayerFace
 	writetext TreeBitstreamText_42972
 	writetext TreeBitstreamText_47192
-.asm_89272:
+.asm_89272
 	ld de, Data_89349
 	ld hl, Data_891bc
 	scall Func_8039e
@@ -100,7 +100,7 @@ Func_89237:
 	cp $01
 	jp nz, .asm_89272
 	jp .asm_89348
-.asm_8928a:
+.asm_8928a
 	writetext TreeBitstreamText_42972
 	move_person $02, Data_891ac, 1
 	scall WaitNPCStep
@@ -110,7 +110,7 @@ Func_89237:
 	scall PlayerFace
 	writetext TreeBitstreamText_42972
 	writetext TreeBitstreamText_47192
-.asm_892bb:
+.asm_892bb
 	ld de, Data_8934c
 	ld hl, Data_891e5
 	scall Func_8039e
@@ -119,7 +119,7 @@ Func_89237:
 	cp $01
 	jp nz, .asm_892bb
 	jp .asm_89348
-.asm_892d3:
+.asm_892d3
 	writetext TreeBitstreamText_42972
 	move_person 0, Data_891b0, 1
 	scall WaitNPCStep
@@ -129,7 +129,7 @@ Func_89237:
 	scall PlayerFace
 	writetext TreeBitstreamText_42972
 	writetext TreeBitstreamText_47192
-.asm_89305:
+.asm_89305
 	ld de, Data_89350
 	ld hl, Data_8920e
 	scall Func_8039e
@@ -138,7 +138,7 @@ Func_89237:
 	cp $01
 	jp nz, .asm_89305
 	jp .asm_89348
-.asm_8931d:
+.asm_8931d
 	writetext TreeBitstreamText_42972
 	setevent EVENT_073
 	move_person $01, Data_891b8, 1
@@ -146,7 +146,7 @@ Func_89237:
 	hideperson $01
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-.asm_89348:
+.asm_89348
 	ret
 
 Data_89349:
@@ -165,13 +165,13 @@ Func_89353:
 	or a
 	jp z, .asm_89362
 	jp .asm_893a5
-.asm_89362:
+.asm_89362
 	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_89376
 	writetext TreeBitstreamText_47037
 	jp .asm_893a5
-.asm_89376:
+.asm_89376
 	loademote $01, $01, $09
 	xor a
 	scall Func_80653
@@ -183,7 +183,7 @@ Func_89353:
 	ld a, $0e
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-.asm_893a5:
+.asm_893a5
 	ret
 
 Func_893a6:
@@ -193,13 +193,13 @@ Func_893a6:
 	or a
 	jp z, .asm_893b5
 	jp .asm_893f8
-.asm_893b5:
+.asm_893b5
 	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_893c9
 	writetext TreeBitstreamText_47037
 	jp .asm_893f8
-.asm_893c9:
+.asm_893c9
 	loademote $01, $01, $09
 	xor a
 	scall Func_80653
@@ -211,7 +211,7 @@ Func_893a6:
 	ld a, $0f
 	ld [wc78a], a
 	warp_player MAP_05_32, $11, $09
-.asm_893f8:
+.asm_893f8
 	ret
 
 Func_893f9:
@@ -223,9 +223,9 @@ Func_893f9:
 	playsfx SFX_31
 	writetext TreeBitstreamText_47029
 	jp .asm_89431
-.asm_8941e:
+.asm_8941e
 	resetevent EVENT_059
 	playsfx SFX_32
 	writetext TreeBitstreamText_4701b
-.asm_89431:
+.asm_89431
 	ret

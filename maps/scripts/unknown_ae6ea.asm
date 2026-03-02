@@ -35,14 +35,14 @@ Func_ae6ea:: ; ae6ea
 	call Func_ae74c
 	setevent EVENT_033
 	jp .asm_ae73b
-.asm_ae720:
+.asm_ae720
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ae696
 	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b8a
-.asm_ae73b:
+.asm_ae73b
 	ret
 
 Data_ae73c:

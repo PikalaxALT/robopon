@@ -39,7 +39,7 @@ Func_cba6d:: ; cba6d
 	jp nz, .asm_cbaaa
 	hideperson 0
 	hideperson $01
-.asm_cbaaa:
+.asm_cbaaa
 	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46af6
@@ -72,7 +72,7 @@ Func_cbac1:
 	setevent EVENT_016
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
-.asm_cbb23:
+.asm_cbb23
 	ret
 
 Func_cbb24:
@@ -83,7 +83,7 @@ Func_cbb24:
 	or a
 	jp z, .asm_cbb33
 	jp .asm_cbb5e
-.asm_cbb33:
+.asm_cbb33
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
@@ -92,5 +92,5 @@ Func_cbb24:
 	scall HideEmote
 	warp_player MAP_28_00, $07, $06
 	script_sleep 30
-.asm_cbb5e:
+.asm_cbb5e
 	ret

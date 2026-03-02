@@ -28,7 +28,7 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	ld [wFunc94a9_c88c], a
 	ld a, d
 	ld [wFunc94a9_c88c + 1], a
-.loop: ; 9a86 (2:5a86)
+.loop ; 9a86 (2:5a86)
 	ld a, [wNumPeopleLoaded]
 	ld b, a
 	ld a, [wFunc94a9_c889]
@@ -272,7 +272,7 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	ld b, $4
 	add b
 	ld [wFunc94a9_c888], a
-.next: ; 9c04 (2:5c04)
+.next ; 9c04 (2:5c04)
 	ld a, [wFunc94a9_c889]
 	inc a
 	ld [wFunc94a9_c889], a
@@ -298,7 +298,7 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	ld [wFunc94a9_c88c + 1], a
 	jp .loop
 
-.done: ; 9c36 (2:5c36)
+.done ; 9c36 (2:5c36)
 	; Handle screen shake
 	ld a, [wScreenIsShaking]
 	cp $1
@@ -328,7 +328,7 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	ld [wNextScreenShakeYDisplacement], a
 	xor a
 	ld [wScreenShakeFrameTimer], a
-.skip_multiply: ; 9c78 (2:5c78)
+.skip_multiply ; 9c78 (2:5c78)
 	call Func_a1fa
 	pop de
 	pop af
@@ -352,7 +352,7 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	pop de
 	jp .finish
 
-.asm_9cbc: ; 9cbc (2:5cbc)
+.asm_9cbc ; 9cbc (2:5cbc)
 	ld a, [wc834]
 	ld hl, wc836
 	add [hl]
@@ -387,11 +387,11 @@ UpdateSprites:: ; 9a49 (2:5a49)
 	ld e, a
 	jp .finish
 
-.asm_9d0e: ; 9d0e (2:5d0e)
+.asm_9d0e ; 9d0e (2:5d0e)
 	push de
 	callba_hli Func_da4fc
 	pop de
-.finish: ; 9d1e (2:5d1e)
+.finish ; 9d1e (2:5d1e)
 	ld a, [wLCDC]
 	or $3
 	ld [wLCDC], a

@@ -43,7 +43,7 @@ Func_92c92:: ; 92c92
 	cp $07
 	jp z, .asm_92cc6
 	hideperson $01
-.asm_92cc6:
+.asm_92cc6
 	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46cf6
@@ -71,17 +71,17 @@ Func_92cfe:
 	or a
 	jp nz, .asm_92d34
 	jp .asm_92d54
-.asm_92d34:
+.asm_92d34
 	setevent EVENT_090
 	writetext TreeBitstreamText_42b16
 	jp .asm_92d4b
-.asm_92d45:
+.asm_92d45
 	writetext TreeBitstreamText_42b16
-.asm_92d4b:
+.asm_92d4b
 	jp .asm_92d54
-.asm_92d4e:
+.asm_92d4e
 	writetext TreeBitstreamText_42b16
-.asm_92d54:
+.asm_92d54
 	pop bc
 	ret
 
@@ -114,12 +114,12 @@ Func_92d5c:
 	ld a, $16
 	scall Func_80d4d
 	jp .asm_92db0
-.asm_92daa:
+.asm_92daa
 	writenpctext TreeBitstreamText_39e71
-.asm_92db0:
+.asm_92db0
 	jp .asm_92db9
-.asm_92db3:
+.asm_92db3
 	writenpctext TreeBitstreamText_39e8c
-.asm_92db9:
+.asm_92db9
 	pop bc
 	ret

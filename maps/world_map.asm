@@ -131,7 +131,7 @@ Func_e20de:
 	ld c, a
 	ld l, $0
 	pop de
-.asm_e20e8: ; e20e8 (38:60e8)
+.asm_e20e8 ; e20e8 (38:60e8)
 	ld a, l
 	cp $8
 	jp nc, .asm_e2110
@@ -150,11 +150,11 @@ Func_e20de:
 	call LeftShiftA
 	or e
 	ld e, a
-.asm_e210c: ; e210c (38:610c)
+.asm_e210c ; e210c (38:610c)
 	inc l
 	jp .asm_e20e8
 
-.asm_e2110: ; e2110 (38:6110)
+.asm_e2110 ; e2110 (38:6110)
 	ld a, c
 	ld [wc874], a
 	ld a, e
@@ -308,12 +308,12 @@ WorldMap:: ; e220d
 	ld a, $1
 	jp .asm_e2288
 
-.asm_e2287: ; e2287 (38:6287)
+.asm_e2287 ; e2287 (38:6287)
 	xor a
-.asm_e2288: ; e2288 (38:6288)
+.asm_e2288 ; e2288 (38:6288)
 	ld hl, sp+$6f
 	ld [hl], a
-.asm_e228b: ; e228b (38:628b)
+.asm_e228b ; e228b (38:628b)
 	ld a, [wNextVBlankFlags]
 	and $40
 	jp nz, .asm_e228b
@@ -326,7 +326,7 @@ WorldMap:: ; e220d
 	or $40
 	ld [wNextVBlankFlags], a
 	ei
-.asm_e22a9: ; e22a9 (38:62a9)
+.asm_e22a9 ; e22a9 (38:62a9)
 	ld a, [wNextVBlankFlags]
 	and $40
 	jp nz, .asm_e22a9
@@ -341,7 +341,7 @@ WorldMap:: ; e220d
 	jp nz, .asm_e22c8
 	ld hl, sp+$6f
 	ld [hl], $1
-.asm_e22c8: ; e22c8 (38:62c8)
+.asm_e22c8 ; e22c8 (38:62c8)
 	xor a
 	call Func_e1f07
 	ld a, BANK(GFX_e0000)
@@ -357,7 +357,7 @@ WorldMap:: ; e220d
 	write_hl_to_sp_plus $7c
 	ld de, Data_e06f0
 	xor a
-.asm_e22f2: ; e22f2 (38:62f2)
+.asm_e22f2 ; e22f2 (38:62f2)
 	cp $12
 	jp nc, .asm_e2350
 	push af
@@ -369,7 +369,7 @@ WorldMap:: ; e220d
 	ld bc, $14
 	call FarCopyVideoData
 	ld c, $0
-.asm_e230a: ; e230a (38:630a)
+.asm_e230a ; e230a (38:630a)
 	ld a, c
 	cp $14
 	jp nc, .asm_e2342
@@ -401,7 +401,7 @@ WorldMap:: ; e220d
 	inc c
 	jp .asm_e230a
 
-.asm_e2342: ; e2342 (38:6342)
+.asm_e2342 ; e2342 (38:6342)
 	pop de
 	ld hl, $14
 	add hl, de
@@ -410,11 +410,11 @@ WorldMap:: ; e220d
 	inc a
 	jp .asm_e22f2
 
-.asm_e2350: ; e2350 (38:6350)
+.asm_e2350 ; e2350 (38:6350)
 	ld hl, $94
 	add hl, sp
 	ld [hl], $1
-.asm_e2356: ; e2356 (38:6356)
+.asm_e2356 ; e2356 (38:6356)
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
@@ -429,7 +429,7 @@ WorldMap:: ; e220d
 	ld hl, $95
 	add hl, sp
 	ld [hl], $0
-.asm_e2372: ; e2372 (38:6372)
+.asm_e2372 ; e2372 (38:6372)
 	ld hl, $95
 	add hl, sp
 	ld a, [hl]
@@ -461,7 +461,7 @@ WorldMap:: ; e220d
 	jp nc, .asm_e23a8
 	jp .asm_e2422
 
-.asm_e23a8: ; e23a8 (38:63a8)
+.asm_e23a8 ; e23a8 (38:63a8)
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
@@ -472,7 +472,7 @@ WorldMap:: ; e220d
 	ld a, [hl]
 	cp $11
 	jp nz, .asm_e23d7
-.asm_e23bc: ; e23bc (38:63bc)
+.asm_e23bc ; e23bc (38:63bc)
 	ld hl, sp+$78
 	ld a, [hl]
 	cp $10
@@ -481,14 +481,14 @@ WorldMap:: ; e220d
 	ld a, [hl]
 	cp $11
 	jp nz, .asm_e23d7
-.asm_e23cc: ; e23cc (38:63cc)
+.asm_e23cc ; e23cc (38:63cc)
 	ld hl, sp+$79
 	ld a, [hl]
 	cp $11
 	jp z, .asm_e23d7
 	jp .asm_e2422
 
-.asm_e23d7: ; e23d7 (38:63d7)
+.asm_e23d7 ; e23d7 (38:63d7)
 	ld hl, sp+$6f
 	ld a, [hl]
 	or a
@@ -503,7 +503,7 @@ WorldMap:: ; e220d
 	ld a, [hl]
 	cp $12
 	jp nz, .asm_e240d
-.asm_e23f2: ; e23f2 (38:63f2)
+.asm_e23f2 ; e23f2 (38:63f2)
 	ld hl, sp+$78
 	ld a, [hl]
 	cp $2
@@ -512,14 +512,14 @@ WorldMap:: ; e220d
 	ld a, [hl]
 	cp $12
 	jp nz, .asm_e240d
-.asm_e2402: ; e2402 (38:6402)
+.asm_e2402 ; e2402 (38:6402)
 	ld hl, sp+$79
 	ld a, [hl]
 	cp $12
 	jp z, .asm_e240d
 	jp .asm_e2422
 
-.asm_e240d: ; e240d (38:640d)
+.asm_e240d ; e240d (38:640d)
 	ld hl, sp+$78
 	ld a, [hl]
 	call CheckUnlockedArea
@@ -531,7 +531,7 @@ WorldMap:: ; e220d
 	add hl, sp
 	ld a, [hl]
 	call Func_e2851
-.asm_e2422: ; e2422 (38:6422)
+.asm_e2422 ; e2422 (38:6422)
 	ld hl, $95
 	add hl, sp
 	ld a, [hl]
@@ -541,7 +541,7 @@ WorldMap:: ; e220d
 	ld [hl], a
 	jp .asm_e2372
 
-.asm_e2430: ; e2430 (38:6430)
+.asm_e2430 ; e2430 (38:6430)
 	ld hl, $94
 	add hl, sp
 	ld a, [hl]
@@ -551,7 +551,7 @@ WorldMap:: ; e220d
 	ld [hl], a
 	jp .asm_e2356
 
-.asm_e243e: ; e243e (38:643e)
+.asm_e243e ; e243e (38:643e)
 	ld hl, sp+$79
 	ld a, [hl]
 	call Func_e262f
@@ -590,7 +590,7 @@ WorldMap:: ; e220d
 	xor a
 	ld [wc874], a
 	pop de
-.asm_e24a3: ; e24a3 (38:64a3)
+.asm_e24a3 ; e24a3 (38:64a3)
 	push de
 	call NextOverworldFrame
 	call CheckButton
@@ -599,7 +599,7 @@ WorldMap:: ; e220d
 	ld hl, $97
 	add hl, sp
 	ld [hl], $0
-.asm_e24b3: ; e24b3 (38:64b3)
+.asm_e24b3 ; e24b3 (38:64b3)
 	ld hl, $97
 	add hl, sp
 	ld a, [hl]
@@ -651,7 +651,7 @@ WorldMap:: ; e220d
 	jp nz, .asm_e250b
 	jp .asm_e2581
 
-.asm_e250b: ; e250b (38:650b)
+.asm_e250b ; e250b (38:650b)
 	ld hl, sp+$71
 	ld a, [hl]
 	or a
@@ -677,7 +677,7 @@ WorldMap:: ; e220d
 	jp nz, .asm_e2536
 	jp .asm_e2581
 
-.asm_e2536: ; e2536 (38:6536)
+.asm_e2536 ; e2536 (38:6536)
 	ld hl, $97
 	add hl, sp
 	ld c, [hl]
@@ -722,7 +722,7 @@ WorldMap:: ; e220d
 	call NextOverworldFrame
 	jp .asm_e258f
 
-.asm_e2581: ; e2581 (38:6581)
+.asm_e2581 ; e2581 (38:6581)
 	ld hl, $97
 	add hl, sp
 	ld a, [hl]
@@ -732,7 +732,7 @@ WorldMap:: ; e220d
 	ld [hl], a
 	jp .asm_e24b3
 
-.asm_e258f: ; e258f (38:658f)
+.asm_e258f ; e258f (38:658f)
 	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
@@ -804,10 +804,10 @@ WorldMap:: ; e220d
 	dec a
 	jp .asm_e2629
 
-.asm_e2626: ; e2626 (38:6626)
+.asm_e2626 ; e2626 (38:6626)
 	jp .asm_e24a3
 
-.asm_e2629: ; e2629 (38:6629)
+.asm_e2629 ; e2629 (38:6629)
 	ld hl, $96
 	add hl, sp
 	ld sp, hl

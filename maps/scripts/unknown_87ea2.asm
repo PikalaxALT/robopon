@@ -37,10 +37,10 @@ Func_87ea2::
 	ld [wc7da], a
 	jp .asm_87ecd
 
-.asm_87ec9: ; 87ec9 (21:7ec9)
+.asm_87ec9 ; 87ec9 (21:7ec9)
 	xor a
 	ld [wc7da], a
-.asm_87ecd: ; 87ecd (21:7ecd)
+.asm_87ecd ; 87ecd (21:7ecd)
 	loadpeople $1, Data_87e94
 	playmusic SONG_CAVE
 	scall Func_8001c

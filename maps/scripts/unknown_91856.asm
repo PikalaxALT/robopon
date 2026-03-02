@@ -70,7 +70,7 @@ Func_91856:: ; 91856
 	scall Func_8001c
 	landmarksign TreeBitstreamText_4691c
 	jp .asm_918f4
-.asm_918a0:
+.asm_918a0
 	loadwarps $01, Data_9176f
 	ld e, $01
 	ld hl, Data_9177a
@@ -92,7 +92,7 @@ Func_91856:: ; 91856
 	hideperson $04
 	scall Func_8001c
 	landmarksign TreeBitstreamText_4691c
-.asm_918f4:
+.asm_918f4
 	ret
 
 Func_918f5:
@@ -115,7 +115,7 @@ Func_918f5:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_9197a
-.asm_91922:
+.asm_91922
 	ld a, [wc790]
 	or a
 	jp z, .asm_91971
@@ -137,15 +137,15 @@ Func_918f5:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_01, $2e, $04
-.asm_9196e:
+.asm_9196e
 	jp .asm_91977
-.asm_91971:
+.asm_91971
 	writetext TreeBitstreamText_470f0
-.asm_91977:
+.asm_91977
 	jp .asm_91980
-.asm_9197a:
+.asm_9197a
 	writetext TreeBitstreamText_470d8
-.asm_91980:
+.asm_91980
 	ret
 
 Data_91981:
@@ -165,7 +165,7 @@ Func_9198b:
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
-.asm_919a9:
+.asm_919a9
 	face_player $01
 	checkevent EVENT_039
 	cp $01
@@ -234,21 +234,21 @@ Func_9198b:
 	playmusic SONG_NONE
 	playmusic SONG_CAVE
 	jp .asm_91ac4
-.asm_91abe:
+.asm_91abe
 	writenpctext TreeBitstreamText_3bd37
-.asm_91ac4:
+.asm_91ac4
 	jp .asm_91acd
-.asm_91ac7:
+.asm_91ac7
 	writenpctext TreeBitstreamText_3bd02
-.asm_91acd:
+.asm_91acd
 	jp .asm_91ad6
-.asm_91ad0:
+.asm_91ad0
 	writenpctext TreeBitstreamText_3bbab
-.asm_91ad6:
+.asm_91ad6
 	jp .asm_91adf
-.asm_91ad9:
+.asm_91ad9
 	writenpctext TreeBitstreamText_3bbab
-.asm_91adf:
+.asm_91adf
 	ret
 
 Func_91ae0:
@@ -263,7 +263,7 @@ Func_91ae0:
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
 	playmusic SONG_CAVE
-.asm_91b0b:
+.asm_91b0b
 	ret
 
 Func_91b0c:
@@ -292,8 +292,8 @@ Func_91b0c:
 	scall Func_80d4d
 	setevent EVENT_10F
 	jp .asm_91b6b
-.asm_91b65:
+.asm_91b65
 	writetext TreeBitstreamText_3bc38
-.asm_91b6b:
+.asm_91b6b
 	pop bc
 	ret

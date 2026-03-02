@@ -152,7 +152,7 @@ Func_a922b:: ; a922b
 	scall Func_8001c
 	call Func_a93b6
 	jp .asm_a9303
-.asm_a92e4:
+.asm_a92e4
 	ld e, $02
 	ld hl, Data_a9179
 	scall Func_80ce7
@@ -160,7 +160,7 @@ Func_a922b:: ; a922b
 	hideperson $0a
 	playmusic SONG_TOWN1
 	scall Func_8001c
-.asm_a9303:
+.asm_a9303
 	ret
 
 Data_a9304:
@@ -198,7 +198,7 @@ Func_a933a:
 	scall Func_80d9b
 	scall Func_80f02
 	jp .asm_a93b1
-.asm_a9351:
+.asm_a9351
 	checkevent EVENT_0C1
 	cp $01
 	jp nz, .asm_a9368
@@ -206,7 +206,7 @@ Func_a933a:
 	scall Func_80d9b
 	scall Func_80f02
 	jp .asm_a93b1
-.asm_a9368:
+.asm_a9368
 	checkevent EVENT_044
 	or a
 	jp nz, .asm_a9390
@@ -220,7 +220,7 @@ Func_a933a:
 	scall Func_80d9b
 	scall Func_80f02
 	jp .asm_a93b1
-.asm_a9390:
+.asm_a9390
 	ld hl, Data_a931c
 	scall Func_80d9b
 	ld hl, Data_a9322
@@ -232,7 +232,7 @@ Func_a933a:
 	ld hl, Data_a9334
 	scall Func_80d9b
 	scall Func_80f02
-.asm_a93b1:
+.asm_a93b1
 	ret
 
 Data_a93b2:
@@ -252,7 +252,7 @@ Func_a93b6:
 	scall StopShakingScreen
 	script_sleep 30
 	xor a
-.asm_a93ee:
+.asm_a93ee
 	cp $05
 	jp nc, .asm_a9400
 	push af
@@ -262,7 +262,7 @@ Func_a93b6:
 	pop af
 	inc a
 	jp .asm_a93ee
-.asm_a9400:
+.asm_a9400
 	scall StartShakingScreen
 	script_sleep 30
 	playsfx SFX_45
@@ -290,7 +290,7 @@ Func_a93b6:
 	scall StopShakingScreen
 	script_sleep 30
 	xor a
-.asm_a9473:
+.asm_a9473
 	cp $02
 	jp nc, .asm_a9485
 	push af
@@ -300,7 +300,7 @@ Func_a93b6:
 	pop af
 	inc a
 	jp .asm_a9473
-.asm_a9485:
+.asm_a9485
 	scall StartShakingScreen
 	script_sleep 30
 	loademote $01, $08, $12
@@ -317,7 +317,7 @@ Func_a93b6:
 	scall HideEmote
 	scall StopShakingScreen
 	xor a
-.asm_a94c9:
+.asm_a94c9
 	cp $07
 	jp nc, .asm_a94da
 	push af
@@ -327,7 +327,7 @@ Func_a93b6:
 	pop af
 	inc a
 	jp .asm_a94c9
-.asm_a94da:
+.asm_a94da
 	script_sleep 30
 	move_player $01, Data_a93b2
 	script_sleep 30
@@ -390,18 +390,18 @@ ENDC
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_a958a
-.asm_a957c:
+.asm_a957c
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_44dc8
 	jp .asm_a95d4
-.asm_a958a:
+.asm_a958a
 	jp .asm_a9596
-.asm_a958d:
+.asm_a958d
 	writetext TreeBitstreamText_45a40
 	jp .asm_a95d4
-.asm_a9596:
+.asm_a9596
 	jp .asm_a95af
-.asm_a9599:
+.asm_a9599
 	ld a, $83
 	scall Func_80e6d
 	ld hl, sp+$01
@@ -410,7 +410,7 @@ ENDC
 	jp z, .asm_a95af
 	writetext TreeBitstreamText_45a76
 	jp .asm_a95d4
-.asm_a95af:
+.asm_a95af
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $ff
@@ -420,10 +420,10 @@ ENDC
 	jp nz, .asm_a95c8
 	writenpctext TreeBitstreamText_44df3
 	jp .asm_a95d4
-.asm_a95c8:
+.asm_a95c8
 	writenpctext TreeBitstreamText_44c92
 	writenpctext TreeBitstreamText_44ceb
-.asm_a95d4:
+.asm_a95d4
 	pop bc
 	pop bc
 	ret
@@ -484,7 +484,7 @@ Func_a95d7:
 	face_player $0a
 	hideperson $0a
 	jp .asm_a96de
-.asm_a96d8:
+.asm_a96d8
 	writetext TreeBitstreamText_3f79e
-.asm_a96de:
+.asm_a96de
 	ret

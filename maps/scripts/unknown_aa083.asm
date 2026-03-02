@@ -73,7 +73,7 @@ Data_aa06b:
 
 Func_aa083:: ; aa083
 	ld c, $00
-.asm_aa085:
+.asm_aa085
 	ld a, c
 	cp $06
 	jp nc, .asm_aa0ed
@@ -135,10 +135,10 @@ Func_aa083:: ; aa083
 	ld e, $01
 	scall LoadWarps
 	jp .asm_aa0ed
-.asm_aa0e9:
+.asm_aa0e9
 	inc c
 	jp .asm_aa085
-.asm_aa0ed:
+.asm_aa0ed
 	ld a, [wBackupMapGroup]
 	cp $18
 	jp nz, .asm_aa108
@@ -149,7 +149,7 @@ Func_aa083:: ; aa083
 	ld hl, Data_a9fcb
 	scall Func_80ce7
 	jp .asm_aa18c
-.asm_aa108:
+.asm_aa108
 	ld a, [wBackupMapGroup]
 	cp $18
 	jp nz, .asm_aa123
@@ -160,7 +160,7 @@ Func_aa083:: ; aa083
 	ld hl, Data_a9fda
 	scall Func_80ce7
 	jp .asm_aa18c
-.asm_aa123:
+.asm_aa123
 	ld a, [wBackupMapGroup]
 	cp $18
 	jp nz, .asm_aa13e
@@ -171,7 +171,7 @@ Func_aa083:: ; aa083
 	ld hl, Data_a9fe9
 	scall Func_80ce7
 	jp .asm_aa18c
-.asm_aa13e:
+.asm_aa13e
 	ld a, [wBackupMapGroup]
 	cp $18
 	jp nz, .asm_aa159
@@ -182,7 +182,7 @@ Func_aa083:: ; aa083
 	ld hl, Data_a9ff8
 	scall Func_80ce7
 	jp .asm_aa18c
-.asm_aa159:
+.asm_aa159
 	ld a, [wBackupMapGroup]
 	cp $18
 	jp nz, .asm_aa174
@@ -193,7 +193,7 @@ Func_aa083:: ; aa083
 	ld hl, Data_aa007
 	scall Func_80ce7
 	jp .asm_aa18c
-.asm_aa174:
+.asm_aa174
 	ld a, [wBackupMapGroup]
 	cp $18
 	jp nz, .asm_aa18c
@@ -203,7 +203,7 @@ Func_aa083:: ; aa083
 	ld e, $03
 	ld hl, Data_aa016
 	scall Func_80ce7
-.asm_aa18c:
+.asm_aa18c
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_aa025

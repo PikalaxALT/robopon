@@ -51,15 +51,15 @@ Func_b5e4a:: ; b5e4a
 	landmarksign TreeBitstreamText_46b1a
 	call Func_b5f03
 	jp .asm_b5eb7
-.asm_b5eae:
+.asm_b5eae
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b1a
-.asm_b5eb7:
+.asm_b5eb7
 	jp .asm_b5ec3
-.asm_b5eba:
+.asm_b5eba
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b1a
-.asm_b5ec3:
+.asm_b5ec3
 	ret
 
 Func_b5ec4:
@@ -77,7 +77,7 @@ Func_b5ec4:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_08, $09, $0a
-.asm_b5f02:
+.asm_b5f02
 	ret
 
 Func_b5f03:

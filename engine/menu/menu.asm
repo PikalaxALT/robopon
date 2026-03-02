@@ -77,7 +77,7 @@ Menu: ; 14028 (5:4028)
 	jp nz, .dont_write_m1_a
 	ld hl, -1
 	write_hl_to_sp_plus $13
-.dont_write_m1_a: ; 1408f (5:408f)
+.dont_write_m1_a ; 1408f (5:408f)
 	read_hl_from_sp_plus $b
 	ld a, l
 	inc a
@@ -85,7 +85,7 @@ Menu: ; 14028 (5:4028)
 	jp nz, .dont_write_m1_b
 	ld hl, -1
 	write_hl_to_sp_plus $b
-.dont_write_m1_b: ; 140a0 (5:40a0)
+.dont_write_m1_b ; 140a0 (5:40a0)
 	read_hl_from_sp_plus $d
 	ld a, l
 	inc a
@@ -93,7 +93,7 @@ Menu: ; 14028 (5:4028)
 	jp nz, .dont_write_m1_c
 	ld hl, -1
 	write_hl_to_sp_plus $d
-.dont_write_m1_c: ; 140b1 (5:40b1)
+.dont_write_m1_c ; 140b1 (5:40b1)
 	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
@@ -182,11 +182,11 @@ Menu: ; 14028 (5:4028)
 	jp z, .getPartyBots
 	cp $13
 	jp nz, Func_14366
-.getPartyBots: ; 14180 (5:4180)
+.getPartyBots ; 14180 (5:4180)
 	ld hl, $0
 	write_hl_to_sp_plus $f
 	ld hl, $0
-.partyLoop: ; 1418a (5:418a)
+.partyLoop ; 1418a (5:418a)
 	ld de, $4
 	call CompareHLtoDE
 	jp nc, .partyBreak
@@ -198,12 +198,12 @@ Menu: ; 14028 (5:4028)
 	read_hl_from_sp_plus $11
 	inc hl
 	write_hl_to_sp_plus $11
-.next_bot: ; 141b1 (5:41b1)
+.next_bot ; 141b1 (5:41b1)
 	pop hl
 	inc hl
 	jp .partyLoop
 
-.partyBreak: ; 141b6 (5:41b6)
+.partyBreak ; 141b6 (5:41b6)
 	jp Func_14366
 
 Func_141b9: ; 141b9 (5:41b9)
@@ -2110,18 +2110,18 @@ BagSubmenu:: ; 14f0e
 	ld bc, $8000
 	jp .done_use
 
-.skip_use: ; 14fc5 (5:4fc5)
+.skip_use ; 14fc5 (5:4fc5)
 	ld bc, -1
-.done_use: ; 14fc8 (5:4fc8)
+.done_use ; 14fc8 (5:4fc8)
 	jp .pressed_b
 
-.toss: ; 14fcb (5:4fcb)
+.toss ; 14fcb (5:4fcb)
 	push bc
 	set_farcall_addrs_hli Func_33db7
 	call GetHLAtSPPlus6
 	call FarCall
 	pop bc
-.pressed_b: ; 14fde (5:4fde)
+.pressed_b ; 14fde (5:4fde)
 	pop de
 	push bc
 	push de

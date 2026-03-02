@@ -42,7 +42,7 @@ Func_cb4c5:: ; cb4c5
 	or a
 	jp nz, .asm_cb4f4
 	loadpeople $03, Data_cb49b
-.asm_cb4f4:
+.asm_cb4f4
 	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ad5
@@ -67,14 +67,14 @@ Func_cb534:
 	jp z, .asm_cb541
 	or a
 	jp nz, .asm_cb580
-.asm_cb541:
+.asm_cb541
 	ld a, [wMapY]
 	add a, $04
 	cp $0b
 	jp nz, .asm_cb550
 	ld l, $01
 	jp .asm_cb580
-.asm_cb550:
+.asm_cb550
 	ld a, e
 	cp $02
 	jp nz, .asm_cb580
@@ -86,13 +86,13 @@ Func_cb534:
 	ld a, $02
 	scall PlayerFace
 	jp .asm_cb57e
-.asm_cb570:
+.asm_cb570
 	move_player $01, Data_cb530
 	xor a
 	scall PlayerFace
-.asm_cb57e:
+.asm_cb57e
 	ld l, $01
-.asm_cb580:
+.asm_cb580
 	ld a, l
 	cp $01
 	jp nz, .asm_cb604
@@ -104,7 +104,7 @@ Func_cb534:
 	or a
 	jp nz, .asm_cb5a9
 	jp .asm_cb604
-.asm_cb5a9:
+.asm_cb5a9
 	writetext TreeBitstreamText_3cb14
 	sprite_face $00, 0
 	sprite_face $01, 0
@@ -120,7 +120,7 @@ Func_cb534:
 	setevent EVENT_0AC
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
-.asm_cb604:
+.asm_cb604
 	pop bc
 	ret
 

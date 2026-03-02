@@ -30,13 +30,13 @@ Func_8324c: ; 8324c (20:724c)
 	jp nc, .asm_8325a
 	ld hl, Data_83240
 	scall Func_80d9b
-.asm_8325a: ; 8325a (20:725a)
+.asm_8325a ; 8325a (20:725a)
 	ld a, [wc78c]
 	cp $5
 	jp nc, .asm_83268
 	ld hl, Data_83246
 	scall Func_80d9b
-.asm_83268: ; 83268 (20:7268)
+.asm_83268 ; 83268 (20:7268)
 	scall Func_80f02
 	ret
 
@@ -71,11 +71,11 @@ Func_8326c:
 	ld a, $10
 	scall Func_80d4d
 	setevent EVENT_108
-.asm_832cb: ; 832cb (20:72cb)
+.asm_832cb ; 832cb (20:72cb)
 	writetext TreeBitstreamText_4604f
 	jp .asm_83318
 
-.asm_832d4: ; 832d4 (20:72d4)
+.asm_832d4 ; 832d4 (20:72d4)
 	writetext TreeBitstreamText_46040
 	checkevent EVENT_108
 	or a
@@ -94,6 +94,6 @@ Func_8326c:
 	ld a, $10
 	scall Func_80d4d
 	setevent EVENT_108
-.asm_83318: ; 83318 (20:7318)
+.asm_83318 ; 83318 (20:7318)
 	pop bc
 	ret

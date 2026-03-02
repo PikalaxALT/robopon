@@ -45,7 +45,7 @@ Func_cb6d3:: ; cb6d3
 	or a
 	jp nz, .asm_cb702
 	loadpeople $03, Data_cb69b
-.asm_cb702:
+.asm_cb702
 	loadpeople $01, Data_cb6c5
 	playmusic SONG_TOWN2
 	scall Func_8001c
@@ -75,14 +75,14 @@ Func_cb721:
 	move_player $01, Data_cb719
 	sprite_face $03, 0
 	jp .asm_cb760
-.asm_cb756:
+.asm_cb756
 	move_player $01, Data_cb71d
-.asm_cb760:
+.asm_cb760
 	call Func_cb7a9
 	setevent EVENT_0AD
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
-.asm_cb774:
+.asm_cb774
 	pop bc
 	ret
 
@@ -112,9 +112,9 @@ Func_cb7bd:
 	jp nz, .asm_cb7d7
 	move_person 0, Data_cb776, 1
 	jp .asm_cb7e0
-.asm_cb7d7:
+.asm_cb7d7
 	move_person 0, Data_cb77c, 1
-.asm_cb7e0:
+.asm_cb7e0
 	scall WaitNPCStep
 	hideperson 0
 	hideperson $01
@@ -138,5 +138,5 @@ Func_cb809:
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
 	playmusic SONG_TOWN2
-.asm_cb834:
+.asm_cb834
 	ret

@@ -939,7 +939,7 @@ ItemEffects_SelectPartyMember: ; 4f6dc (13:76dc)
 	xor a
 	ret
 
-.did_not_select_party_member: ; 4f70d (13:770d)
+.did_not_select_party_member ; 4f70d (13:770d)
 	call Func_3af6
 	ld a, $ff
 	ret

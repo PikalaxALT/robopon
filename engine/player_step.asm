@@ -346,14 +346,14 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld [wNextVBlankFlags], a
 	ei
 	pop bc
-.dontScrollUp: ; 9670 (2:5670)
+.dontScrollUp ; 9670 (2:5670)
 	pop hl
 	ld a, h
 	add $2
 	ld h, a
 	jp .DoMovementRate
 
-.scrollMapRight: ; 9678 (2:5678)
+.scrollMapRight ; 9678 (2:5678)
 	push bc
 	push hl
 	ld a, [wc870]
@@ -438,7 +438,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld l, a
 	jp .DoMovementRate
 
-.scrollMapDown: ; 9716 (2:5716)
+.scrollMapDown ; 9716 (2:5716)
 	ld a, c
 	cp $c
 	jp nc, .dontScrollDown
@@ -509,14 +509,14 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld [wNextVBlankFlags], a
 	ei
 	pop bc
-.dontScrollDown: ; 979f (2:579f)
+.dontScrollDown ; 979f (2:579f)
 	pop hl
 	ld a, h
 	add $2
 	ld h, a
 	jp .DoMovementRate
 
-.scrollMapLeft: ; 97a7 (2:57a7)
+.scrollMapLeft ; 97a7 (2:57a7)
 	push bc
 	push hl
 	ld a, [wc872]
@@ -601,7 +601,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld l, a
 	jr .DoMovementRate
 
-.DoMovementRate: ; 9844 (2:5844)
+.DoMovementRate ; 9844 (2:5844)
 	ld a, [wPlayerMovementRate]
 	cp $1
 	jr z, .normal_movement_rate
@@ -693,7 +693,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	ld a, c
 	inc a
 	ld [wc83a], a
-.stepDidNotSucceed: ; 98f3 (2:58f3)
+.stepDidNotSucceed ; 98f3 (2:58f3)
 	push bc
 	push de
 	push hl
@@ -704,7 +704,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	pop hl
 	pop de
 	pop bc
-.acceleratedMovementRate: ; 9900 (2:5900)
+.acceleratedMovementRate ; 9900 (2:5900)
 	ld a, [wLastStepSucceeded]
 	cp $0
 	jp z, .skip_step_vector
@@ -833,7 +833,7 @@ HandlePlayerStep:: ; 943f (2:543f)
 	jr nz, .dontResetSliding
 	xor a
 	ld [wSliding], a
-.dontResetSliding: ; 99de (2:59de)
+.dontResetSliding ; 99de (2:59de)
 	pop hl
 	pop de
 	pop bc

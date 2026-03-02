@@ -191,12 +191,12 @@ Func_d259b:: ; d259b (34:659b)
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_d2674: ; d2674 (34:6674)
+.asm_d2674 ; d2674 (34:6674)
 	ld a, [wc7de]
 	cp $14
 	jp nz, .asm_d2684
 	setevent EVENT_05D
-.asm_d2684: ; d2684 (34:6684)
+.asm_d2684 ; d2684 (34:6684)
 	ld a, $3
 	scall Func_80d01
 	ld a, [wc7de]
@@ -230,21 +230,21 @@ Func_d259b:: ; d259b (34:659b)
 	jp z, .asm_d26d7
 	cp $1
 	jp nz, .asm_d26f8
-.asm_d26d7: ; d26d7 (34:66d7)
+.asm_d26d7 ; d26d7 (34:66d7)
 	loadwilds $5, Data_d2483
 	jp .asm_d2700
 
-.asm_d26e2: ; d26e2 (34:66e2)
+.asm_d26e2 ; d26e2 (34:66e2)
 	loadwilds $5, Data_d24c9
 	jp .asm_d2700
 
-.asm_d26ed: ; d26ed (34:66ed)
+.asm_d26ed ; d26ed (34:66ed)
 	loadwilds $5, Data_d250f
 	jp .asm_d2700
 
-.asm_d26f8: ; d26f8 (34:66f8)
+.asm_d26f8 ; d26f8 (34:66f8)
 	loadwilds $5, Data_d2555
-.asm_d2700: ; d2700 (34:6700)
+.asm_d2700 ; d2700 (34:6700)
 	ld a, [wc7de]
 	inc a
 	cp $15
@@ -284,7 +284,7 @@ Func_d259b:: ; d259b (34:659b)
 	add hl, de
 	ld e, $1
 	scall LoadWarps
-.asm_d2740: ; d2740 (34:6740)
+.asm_d2740 ; d2740 (34:6740)
 	loadwarps $1, Data_d23f4
 	playmusic SONG_CAVE
 	scall Func_8001c
@@ -294,12 +294,12 @@ Func_d259b:: ; d259b (34:659b)
 	writetext TreeBitstreamText_47e17
 	jp .asm_d276a
 
-.asm_d2761: ; d2761 (34:6761)
+.asm_d2761 ; d2761 (34:6761)
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 	scall Func_80f83
-.asm_d276a: ; d276a (34:676a)
+.asm_d276a ; d276a (34:676a)
 	ret
 
 Data_d276b:

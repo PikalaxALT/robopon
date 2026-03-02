@@ -47,27 +47,27 @@ Func_8aa33:: ; 8aa33
 	jp nz, .asm_8aa70
 	hideperson 0
 	hideperson $01
-.asm_8aa70:
+.asm_8aa70
 	checkevent EVENT_081
 	cp $01
 	jp nz, .asm_8aa90
 	hideperson $02
 	hideperson $03
 	hideperson $04
-.asm_8aa90:
+.asm_8aa90
 	checkevent EVENT_082
 	cp $01
 	jp nz, .asm_8aab0
 	hideperson $05
 	hideperson $06
 	hideperson $07
-.asm_8aab0:
+.asm_8aab0
 	checkevent EVENT_083
 	cp $01
 	jp nz, .asm_8aac9
 	hideperson $08
 	hideperson $09
-.asm_8aac9:
+.asm_8aac9
 	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468ec
@@ -78,7 +78,7 @@ Func_8aad8:
 	or a
 	jp nz, .asm_8aae0
 	call Func_8ab66
-.asm_8aae0:
+.asm_8aae0
 	ret
 
 Data_8aae1:
@@ -103,18 +103,18 @@ Func_8aae9:
 	jp nz, .asm_8ab30
 	sprite_face $01, 0
 	jp .asm_8ab30
-.asm_8ab15:
+.asm_8ab15
 	move_person 0, Data_8aae1, 1
 	scall WaitNPCStep
 	jp .asm_8ab30
-.asm_8ab24:
+.asm_8ab24
 	move_person 0, Data_8aae5, 1
 	scall WaitNPCStep
-.asm_8ab30:
+.asm_8ab30
 	ld a, $03
 	scall PlayerFace
 	call Func_8ab66
-.asm_8ab38:
+.asm_8ab38
 	ret
 
 Data_8ab39:
@@ -128,7 +128,7 @@ Data_8ab62:
 Func_8ab66:
 	writetext TreeBitstreamText_429a1
 	writetext TreeBitstreamText_471cf
-.asm_8ab72:
+.asm_8ab72
 	ld de, Data_8abb9
 	ld hl, Data_8ab39
 	scall Func_802ef
@@ -138,7 +138,7 @@ Func_8ab66:
 	cp $01
 	jp nz, .asm_8ab72
 	ret
-.asm_8ab88:
+.asm_8ab88
 	writetext TreeBitstreamText_429a1
 	move_person 0, Data_8ab62, 1
 	scall WaitNPCStep
@@ -157,7 +157,7 @@ Func_8abbf:
 	or a
 	jp nz, .asm_8abc7
 	call Func_8ac50
-.asm_8abc7:
+.asm_8abc7
 	ret
 
 Data_8abc8:
@@ -181,19 +181,19 @@ Func_8abcc:
 	ld a, $01
 	scall PlayerFace
 	jp .asm_8ac1f
-.asm_8abfe:
+.asm_8abfe
 	sprite_face $01, $02
 	ld a, $03
 	scall PlayerFace
 	jp .asm_8ac1f
-.asm_8ac0d:
+.asm_8ac0d
 	move_person $02, Data_8abc8, 1
 	scall WaitNPCStep
 	ld a, $03
 	scall PlayerFace
-.asm_8ac1f:
+.asm_8ac1f
 	call Func_8ac50
-.asm_8ac22:
+.asm_8ac22
 	ret
 
 Data_8ac23:
@@ -207,7 +207,7 @@ Data_8ac4c:
 Func_8ac50:
 	writetext TreeBitstreamText_4298a
 	writetext TreeBitstreamText_471cf
-.asm_8ac5c:
+.asm_8ac5c
 	ld de, Data_8acac
 	ld hl, Data_8ac23
 	scall Func_802ef
@@ -217,7 +217,7 @@ Func_8ac50:
 	cp $01
 	jp nz, .asm_8ac5c
 	ret
-.asm_8ac72:
+.asm_8ac72
 	writetext TreeBitstreamText_4298a
 	move_person $02, Data_8ac4c, 1
 	scall WaitNPCStep
@@ -237,7 +237,7 @@ Func_8acb3:
 	or a
 	jp nz, .asm_8acbb
 	call Func_8ad46
-.asm_8acbb:
+.asm_8acbb
 	ret
 
 Data_8acbc:
@@ -262,18 +262,18 @@ Func_8acc0:
 	ld a, $01
 	scall PlayerFace
 	jp .asm_8ad13
-.asm_8acf8:
+.asm_8acf8
 	sprite_face $03, $05
 	ld a, $01
 	scall PlayerFace
 	jp .asm_8ad13
-.asm_8ad07:
+.asm_8ad07
 	sprite_face $01, $05
 	ld a, $03
 	scall PlayerFace
-.asm_8ad13:
+.asm_8ad13
 	call Func_8ad46
-.asm_8ad16:
+.asm_8ad16
 	ret
 
 Data_8ad17:
@@ -287,7 +287,7 @@ Data_8ad40:
 Func_8ad46:
 	writetext TreeBitstreamText_429d1
 	writetext TreeBitstreamText_471cf
-.asm_8ad52:
+.asm_8ad52
 	ld de, Data_8ada8
 	ld hl, Data_8ad17
 	scall Func_802ef
@@ -297,7 +297,7 @@ Func_8ad46:
 	cp $01
 	jp nz, .asm_8ad52
 	ret
-.asm_8ad68:
+.asm_8ad68
 	writetext TreeBitstreamText_4297c
 	writetext TreeBitstreamText_429dc
 	move_person $05, Data_8ad40, 1
@@ -318,7 +318,7 @@ Func_8adb3:
 	or a
 	jp nz, .asm_8adbb
 	call Func_8ae50
-.asm_8adbb:
+.asm_8adbb
 	ret
 
 Data_8adbc:
@@ -346,19 +346,19 @@ Func_8adc4:
 	ld a, $01
 	scall PlayerFace
 	jp .asm_8ae1d
-.asm_8adfc:
+.asm_8adfc
 	move_person $08, Data_8adc0, 1
 	scall WaitNPCStep
 	ld a, $01
 	scall PlayerFace
 	jp .asm_8ae1d
-.asm_8ae11:
+.asm_8ae11
 	sprite_face $03, $08
 	ld a, $01
 	scall PlayerFace
-.asm_8ae1d:
+.asm_8ae1d
 	call Func_8ae50
-.asm_8ae20:
+.asm_8ae20
 	ret
 
 Data_8ae21:
@@ -372,7 +372,7 @@ Data_8ae4a:
 Func_8ae50:
 	writetext TreeBitstreamText_42998
 	writetext TreeBitstreamText_471cf
-.asm_8ae5c:
+.asm_8ae5c
 	ld de, Data_8aea5
 	ld hl, Data_8ae21
 	scall Func_802ef
@@ -382,7 +382,7 @@ Func_8ae50:
 	cp $01
 	jp nz, .asm_8ae5c
 	ret
-.asm_8ae72:
+.asm_8ae72
 	writetext TreeBitstreamText_42998
 	move_person $08, Data_8ae4a, 1
 	scall WaitNPCStep

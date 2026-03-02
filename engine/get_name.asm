@@ -49,7 +49,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.getMoveName: ; 15b3b (5:5b3b)
+.getMoveName ; 15b3b (5:5b3b)
 	ld h, $0
 	mulhlby19
 	ld de, Moves
@@ -57,7 +57,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.getPartClassName: ; 15b52 (5:5b52)
+.getPartClassName ; 15b52 (5:5b52)
 	ld e, l
 	ld hl, sp+$54
 	call GetPart
@@ -65,7 +65,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.getPartName: ; 15b61 (5:5b61)
+.getPartName ; 15b61 (5:5b61)
 	ld e, l
 	ld hl, sp+$54
 	call GetPart
@@ -73,7 +73,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.getItemName: ; 15b70 (5:5b70)
+.getItemName ; 15b70 (5:5b70)
 	ld h, $0
 	mulhlby13
 	ld de, ItemAttributes
@@ -81,14 +81,14 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.getPartyNickname: ; 15b86 (5:5b86)
+.getPartyNickname ; 15b86 (5:5b86)
 	ld h, $0
 	get_party_bot
 	inc hl
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.getRobotName: ; 15b9f (5:5b9f)
+.getRobotName ; 15b9f (5:5b9f)
 	ld e, l
 	ld hl, sp+$25
 	call GetRobotBaseStats
@@ -96,7 +96,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	write_hl_to_sp_plus $6e
 	jp .gotName
 
-.getWarehouseNickname: ; 15bae (5:5bae)
+.getWarehouseNickname ; 15bae (5:5bae)
 	push hl
 	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop hl
@@ -106,7 +106,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	call FarCall
 	ld hl, sp+$3
 	write_hl_to_sp_plus $6e
-.gotName: ; 15bcb (5:5bcb)
+.gotName ; 15bcb (5:5bcb)
 	pop bc
 	ld b, $0
 	read_hl_from_sp_plus $6c

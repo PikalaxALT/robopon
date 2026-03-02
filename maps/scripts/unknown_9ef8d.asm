@@ -45,9 +45,9 @@ Func_9ef8d:: ; 9ef8d
 	ld [wc7da], a
 	warp_player MAP_19_02, $05, $19
 	jp .asm_9efe6
-.asm_9efe3:
+.asm_9efe3
 	scall Func_8001c
-.asm_9efe6:
+.asm_9efe6
 	ret
 
 Data_9efe7:
@@ -68,7 +68,7 @@ Func_9f017:
 	cp $02
 	jp nz, .asm_9f0d8
 	ld c, $00
-.asm_9f032:
+.asm_9f032
 	ld a, c
 	cp $18
 	jp nc, .asm_9f069
@@ -94,10 +94,10 @@ Func_9f017:
 	jp nz, .asm_9f065
 	ld c, $ff
 	jp .asm_9f069
-.asm_9f065:
+.asm_9f065
 	inc c
 	jp .asm_9f032
-.asm_9f069:
+.asm_9f069
 	ld a, c
 	cp $ff
 	jp nz, .asm_9f0d8
@@ -109,7 +109,7 @@ Func_9f017:
 	scall StopShakingScreen
 	scall HideEmote
 	ld c, $00
-.asm_9f08b:
+.asm_9f08b
 	ld a, c
 	cp $04
 	jp nc, .asm_9f0d8
@@ -125,7 +125,7 @@ Func_9f017:
 	or h
 	jp nz, .asm_9f0a6
 	jp .asm_9f0d4
-.asm_9f0a6:
+.asm_9f0a6
 	pop hl
 	push hl
 	reg16swap de, hl
@@ -138,11 +138,11 @@ Func_9f017:
 	pop de
 	push hl
 	jp .asm_9f0c2
-.asm_9f0bd:
+.asm_9f0bd
 	ld hl, $0014
 	pop de
 	push hl
-.asm_9f0c2:
+.asm_9f0c2
 	push bc
 	call GetHLAtSPPlus4
 	ld a, l
@@ -156,9 +156,9 @@ Func_9f017:
 	ld d, $00
 	scall Func_80e31
 	pop bc
-.asm_9f0d4:
+.asm_9f0d4
 	inc c
 	jp .asm_9f08b
-.asm_9f0d8:
+.asm_9f0d8
 	add sp, $32
 	ret

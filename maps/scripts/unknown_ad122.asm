@@ -34,7 +34,7 @@ Func_ad122:: ; ad122
 	loadpeople $01, Data_ad114
 	call Func_ad225
 	jp .asm_ad1c5
-.asm_ad152:
+.asm_ad152
 	loadwarps $02, Data_ad0b4
 	loadpeople $02, Data_ad0f8
 	checkevent EVENT_034
@@ -50,7 +50,7 @@ Func_ad122:: ; ad122
 	scall Func_8001c
 	call Func_ad1c6
 	jp .asm_ad1c5
-.asm_ad18a:
+.asm_ad18a
 	checkevent EVENT_0C3
 	or a
 	jp nz, .asm_ad1b8
@@ -65,12 +65,12 @@ Func_ad122:: ; ad122
 	playmusic SONG_NONE
 	playmusic SONG_PRINCE_TEIL
 	jp .asm_ad1c5
-.asm_ad1b8:
+.asm_ad1b8
 	ld a, $01
 	scall LoadPlayerSprite
 	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
-.asm_ad1c5:
+.asm_ad1c5
 	ret
 
 Func_ad1c6:

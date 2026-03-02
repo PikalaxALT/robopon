@@ -55,18 +55,18 @@ Func_b56ba:
 	add a, $05
 	ld [hl], a
 	jp .asm_b56f2
-.asm_b56ea:
+.asm_b56ea
 	ld hl, sp+$01
 	ld a, [wMapY]
 	add a, $03
 	ld [hl], a
-.asm_b56f2:
+.asm_b56f2
 	ld c, $01
 	ld hl, sp+$00
 	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
-.asm_b56ff:
+.asm_b56ff
 	pop bc
 	pop bc
 	ret

@@ -38,9 +38,9 @@ Func_a3dc4:: ; a3dc4
 	scall Func_8001c
 	call Func_a3e3c
 	jp .asm_a3e08
-.asm_a3e05:
+.asm_a3e05
 	scall Func_8001c
-.asm_a3e08:
+.asm_a3e08
 	ret
 
 Data_a3e09:

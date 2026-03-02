@@ -56,18 +56,18 @@ Func_b5876:
 	add a, $05
 	ld [hl], a
 	jp .asm_b58ae
-.asm_b58a6:
+.asm_b58a6
 	ld hl, sp+$01
 	ld a, [wMapY]
 	add a, $03
 	ld [hl], a
-.asm_b58ae:
+.asm_b58ae
 	ld c, $01
 	ld hl, sp+$00
 	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
-.asm_b58bb:
+.asm_b58bb
 	pop bc
 	pop bc
 	ret

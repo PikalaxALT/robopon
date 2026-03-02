@@ -42,7 +42,7 @@ Func_b790a:: ; b790a
 	jp nz, .asm_b7935
 	loadwarps $02, Data_b780b
 	jp .asm_b795d
-.asm_b7935:
+.asm_b7935
 	checkevent EVENT_01B
 	cp $01
 	jp nz, .asm_b795d
@@ -51,9 +51,9 @@ Func_b790a:: ; b790a
 	jp nz, .asm_b7955
 	loadwarps $02, Data_b7821
 	jp .asm_b795d
-.asm_b7955:
+.asm_b7955
 	loadwarps $01, Data_b7837
-.asm_b795d:
+.asm_b795d
 	ld a, $03
 	scall Func_80d01
 	loadwilds $0c, Data_b7842
@@ -70,10 +70,10 @@ Func_b790a:: ; b790a
 	scall Func_80653
 	call Func_b79b6
 	jp .asm_b799a
-.asm_b7992:
+.asm_b7992
 	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
-.asm_b799a:
+.asm_b799a
 	ret
 
 Data_b799b:
@@ -86,7 +86,7 @@ Func_b79a1:
 	ld hl, Data_b799b
 	scall Func_80d9b
 	scall Func_80f02
-.asm_b79b5:
+.asm_b79b5
 	ret
 
 Func_b79b6:

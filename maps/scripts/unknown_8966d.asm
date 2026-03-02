@@ -137,11 +137,11 @@ Func_8966d:: ; 8966d
 	ld a, $09
 	scall SetPersonTextPointer
 	jp .asm_896f3
-.asm_896db:
+.asm_896db
 	loadwarps $08, Data_89432
 	loadpeople $0b, MapObjects_8950f
 	loadpeople $07, MapObjects_895a9
-.asm_896f3:
+.asm_896f3
 	scall Func_8001c
 	ret
 
@@ -192,18 +192,18 @@ Func_896f7:
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_89783
-.asm_89775:
+.asm_89775
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_4445d
 	jp .asm_8992c
-.asm_89783:
+.asm_89783
 	jp .asm_8978f
-.asm_89786:
+.asm_89786
 	writetext TreeBitstreamText_45a40
 	jp .asm_8992c
-.asm_8978f:
+.asm_8978f
 	jp .asm_898d7
-.asm_89792:
+.asm_89792
 	ld a, [wc796]
 	cp $09
 	jp nz, .asm_8981c
@@ -243,18 +243,18 @@ Func_896f7:
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_8980d
-.asm_897ff:
+.asm_897ff
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_4445d
 	jp .asm_8992c
-.asm_8980d:
+.asm_8980d
 	jp .asm_89819
-.asm_89810:
+.asm_89810
 	writetext TreeBitstreamText_45a40
 	jp .asm_8992c
-.asm_89819:
+.asm_89819
 	jp .asm_898d7
-.asm_8981c:
+.asm_8981c
 	ld a, $26
 	scall Func_80e6d
 	ld hl, sp+$01
@@ -267,7 +267,7 @@ Func_896f7:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_898d7
-.asm_89836:
+.asm_89836
 	ld a, [wc796]
 	cp $08
 	jp z, .asm_898bf
@@ -292,35 +292,35 @@ Func_896f7:
 	cp $07
 	jp z, .asm_89874
 	if_true .asm_898ce
-.asm_89874:
+.asm_89874
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45abb
 	jp .asm_898d4
-.asm_89883:
+.asm_89883
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45add
 	jp .asm_898d4
-.asm_89892:
+.asm_89892
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aee
 	jp .asm_898d4
-.asm_898a1:
+.asm_898a1
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aff
 	jp .asm_898d4
-.asm_898b0:
+.asm_898b0
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b10
 	jp .asm_898d4
-.asm_898bf:
+.asm_898bf
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b20
 	jp .asm_898d4
-.asm_898ce:
+.asm_898ce
 	writenpctext TreeBitstreamText_442ef
-.asm_898d4:
+.asm_898d4
 	jp .asm_8992c
-.asm_898d7:
+.asm_898d7
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $ff
@@ -334,22 +334,22 @@ Func_896f7:
 	writenpctext TreeBitstreamText_442ef
 	writenpctext TreeBitstreamText_44486
 	jp .asm_8992c
-.asm_898fe:
+.asm_898fe
 	ld a, [wc796]
 	cp $0f
 	jp nz, .asm_8990f
 	writenpctext TreeBitstreamText_442ef
 	jp .asm_8992c
-.asm_8990f:
+.asm_8990f
 	ld a, [wc796]
 	cp $0a
 	jp c, .asm_89920
 	writenpctext TreeBitstreamText_445b1
 	jp .asm_8992c
-.asm_89920:
+.asm_89920
 	writenpctext TreeBitstreamText_442ef
 	writenpctext TreeBitstreamText_4434a
-.asm_8992c:
+.asm_8992c
 	pop bc
 	pop bc
 	ret
@@ -397,7 +397,7 @@ Func_89959:
 	ld hl, Data_89953
 	scall Func_80d9b
 	scall Func_80f02
-.asm_89995:
+.asm_89995
 	ret
 
 Func_89996:	ld a, e
@@ -422,31 +422,31 @@ Func_89996:	ld a, e
 	ld a, $04
 	ld [wc78a], a
 	jp .asm_89a02
-.asm_899cc:
+.asm_899cc
 	ld a, $08
 	ld [wc78a], a
 	jp .asm_89a02
-.asm_899d4:
+.asm_899d4
 	ld a, $0a
 	ld [wc78a], a
 	jp .asm_89a02
-.asm_899dc:
+.asm_899dc
 	ld a, $0e
 	ld [wc78a], a
 	jp .asm_89a02
-.asm_899e4:
+.asm_899e4
 	ld a, $0b
 	ld [wc78a], a
 	jp .asm_89a02
-.asm_899ec:
+.asm_899ec
 	ld a, $09
 	ld [wc78a], a
 	jp .asm_89a02
-.asm_899f4:
+.asm_899f4
 	ld a, $05
 	ld [wc78a], a
 	jp .asm_89a02
-.asm_899fc:
+.asm_899fc
 	writetext DummyTextTreeBitstream_001
-.asm_89a02:
+.asm_89a02
 	ret

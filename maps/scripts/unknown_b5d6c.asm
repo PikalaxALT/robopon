@@ -55,18 +55,18 @@ Func_b5d98:
 	add a, $05
 	ld [hl], a
 	jp .asm_b5dd0
-.asm_b5dc8:
+.asm_b5dc8
 	ld hl, sp+$01
 	ld a, [wMapY]
 	add a, $03
 	ld [hl], a
-.asm_b5dd0:
+.asm_b5dd0
 	ld c, $01
 	ld hl, sp+$00
 	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
-.asm_b5ddd:
+.asm_b5ddd
 	pop bc
 	pop bc
 	ret

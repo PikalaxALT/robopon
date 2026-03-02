@@ -140,7 +140,7 @@ Func_ba7e9:: ; ba7e9
 	playmusic SONG_TOWN3
 	scall Func_8001c
 	jp .asm_baa5f
-.asm_ba839:
+.asm_ba839
 	loadpeople $03, Data_ba6a7
 	ld a, [wc78a]
 	cp $0f
@@ -177,7 +177,7 @@ Func_ba7e9:: ; ba7e9
 	scall Func_80653
 	scall Func_8001c
 	call Func_bad5c
-.asm_ba898:
+.asm_ba898
 	loadpeople $01, Data_ba75d
 	ld a, $04
 	ld [wc7e2], a
@@ -186,7 +186,7 @@ Func_ba7e9:: ; ba7e9
 	scall Func_8001c
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba8b2:
+.asm_ba8b2
 	ld a, $04
 	ld [wc7e2], a
 	xor a
@@ -194,13 +194,13 @@ Func_ba7e9:: ; ba7e9
 	scall Func_8001c
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba8c4:
+.asm_ba8c4
 	loadpeople $01, Data_ba6fb
 	checkevent EVENT_052
 	or a
 	jp nz, .asm_ba8de
 	loadpeople $01, Data_ba6d1
-.asm_ba8de:
+.asm_ba8de
 	ld a, $03
 	ld [wc7e2], a
 	xor a
@@ -209,13 +209,13 @@ Func_ba7e9:: ; ba7e9
 	landmarksign TreeBitstreamText_4680f
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba8f6:
+.asm_ba8f6
 	loadpeople $01, Data_ba709
 	checkevent EVENT_052
 	cp $01
 	jp nz, .asm_ba911
 	loadpeople $01, Data_ba6df
-.asm_ba911:
+.asm_ba911
 	ld a, $03
 	ld [wc7e2], a
 	xor a
@@ -224,7 +224,7 @@ Func_ba7e9:: ; ba7e9
 	landmarksign TreeBitstreamText_46818
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba929:
+.asm_ba929
 	loadpeople $01, Data_ba76b
 	ld a, $01
 	ld [wc7e2], a
@@ -233,7 +233,7 @@ Func_ba7e9:: ; ba7e9
 	scall Func_8001c
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba943:
+.asm_ba943
 	loadpeople $01, Data_ba779
 	ld a, $02
 	ld [wc7e2], a
@@ -242,7 +242,7 @@ Func_ba7e9:: ; ba7e9
 	scall Func_8001c
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba95d:
+.asm_ba95d
 	loadpeople $01, Data_ba717
 	ld a, $03
 	ld [wc7e2], a
@@ -252,7 +252,7 @@ Func_ba7e9:: ; ba7e9
 	landmarksign TreeBitstreamText_46821
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba97d:
+.asm_ba97d
 	loadpeople $01, Data_ba725
 	ld a, $03
 	ld [wc7e2], a
@@ -262,7 +262,7 @@ Func_ba7e9:: ; ba7e9
 	landmarksign TreeBitstreamText_4682a
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba99d:
+.asm_ba99d
 	loadpeople $01, Data_ba733
 	ld a, $03
 	ld [wc7e2], a
@@ -272,13 +272,13 @@ Func_ba7e9:: ; ba7e9
 	landmarksign TreeBitstreamText_4684f
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba9bd:
+.asm_ba9bd
 	loadpeople $01, Data_ba741
 	checkevent EVENT_0ED
 	cp $01
 	jp nz, .asm_ba9d8
 	loadpeople $01, Data_ba6ed
-.asm_ba9d8:
+.asm_ba9d8
 	ld a, $03
 	ld [wc7e2], a
 	xor a
@@ -287,7 +287,7 @@ Func_ba7e9:: ; ba7e9
 	landmarksign TreeBitstreamText_46859
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_ba9f0:
+.asm_ba9f0
 	loadpeople $01, Data_ba787
 	ld a, $0d
 	ld [wc7e2], a
@@ -296,7 +296,7 @@ Func_ba7e9:: ; ba7e9
 	scall Func_8001c
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_baa0a:
+.asm_baa0a
 	loadpeople $01, Data_ba795
 	ld a, $08
 	ld [wc7e2], a
@@ -307,7 +307,7 @@ Func_ba7e9:: ; ba7e9
 	scall Func_8001c
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_baa2a:
+.asm_baa2a
 	loadpeople $01, Data_ba74f
 	ld a, $03
 	ld [wc7e2], a
@@ -317,7 +317,7 @@ Func_ba7e9:: ; ba7e9
 	landmarksign TreeBitstreamText_46861
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_baa4a:
+.asm_baa4a
 	ld a, $03
 	ld [wc7e2], a
 	xor a
@@ -325,9 +325,9 @@ Func_ba7e9:: ; ba7e9
 	scall Func_8001c
 	call Func_bad5c
 	jp .asm_baa5f
-.asm_baa5c:
+.asm_baa5c
 	scall Func_8001c
-.asm_baa5f:
+.asm_baa5f
 	ret
 
 Func_baa60:
@@ -339,12 +339,12 @@ Func_baa60:
 	jp nz, .asm_baa79
 	writetext TreeBitstreamText_47037
 	jp .asm_babdb
-.asm_baa79:
+.asm_baa79
 	ld a, [wPlayerFacing]
 	or a
 	jp z, .asm_baa83
 	jp .asm_babdb
-.asm_baa83:
+.asm_baa83
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
@@ -381,61 +381,61 @@ Func_baa60:
 	ld [wc78a], a
 	warp_player MAP_05_20, $09, $0c
 	jp .asm_babdb
-.asm_baaf7:
+.asm_baaf7
 	ld a, $05
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_bab0c:
+.asm_bab0c
 	ld a, $06
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_bab21:
+.asm_bab21
 	ld a, $07
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_bab36:
+.asm_bab36
 	ld a, $05
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_bab4b:
+.asm_bab4b
 	ld a, $09
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_bab60:
+.asm_bab60
 	ld a, $0a
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_bab75:
+.asm_bab75
 	ld a, $0b
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_bab8a:
+.asm_bab8a
 	ld a, $0c
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_bab9f:
+.asm_bab9f
 	ld a, $0d
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_babb4:
+.asm_babb4
 	ld a, $0b
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_babdb
-.asm_babc9:
+.asm_babc9
 	ld a, $0f
 	ld [wc78a], a
 	warp_player MAP_04_01, $0c, $04
-.asm_babdb:
+.asm_babdb
 	ret
 
 Func_babdc:
@@ -446,13 +446,13 @@ Func_babdc:
 	or a
 	jp z, .asm_babeb
 	jp .asm_bad5b
-.asm_babeb:
+.asm_babeb
 	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_babff
 	writetext TreeBitstreamText_47037
 	jp .asm_bad5b
-.asm_babff:
+.asm_babff
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
@@ -491,61 +491,61 @@ Func_babdc:
 	scall PlayerFace
 	warp_player MAP_05_21, $09, $10
 	jp .asm_bad5b
-.asm_bac77:
+.asm_bac77
 	ld a, $03
 	ld [wc78a], a
 	warp_player MAP_03_12, $16, $0f
 	jp .asm_bad5b
-.asm_bac8c:
+.asm_bac8c
 	ld a, $08
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_baca1:
+.asm_baca1
 	ld a, $05
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_bacb6:
+.asm_bacb6
 	ld a, $06
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_baccb:
+.asm_baccb
 	ld a, $05
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_bace0:
+.asm_bace0
 	ld a, $08
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_bacf5:
+.asm_bacf5
 	ld a, $09
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_bad0a:
+.asm_bad0a
 	ld a, $0e
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_bad1f:
+.asm_bad1f
 	ld a, $0b
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_bad34:
+.asm_bad34
 	ld a, $0c
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
 	jp .asm_bad5b
-.asm_bad49:
+.asm_bad49
 	ld a, $0b
 	ld [wc78a], a
 	warp_player MAP_32_03, $03, $03
-.asm_bad5b:
+.asm_bad5b
 	ret
 
 Func_bad5c:
@@ -564,10 +564,10 @@ Func_bad5c:
 	scall HideEmote
 	setevent EVENT_0FA
 	jp .asm_bad9f
-.asm_bad9a:
+.asm_bad9a
 	ld a, $01
 	scall Func_80653
-.asm_bad9f:
+.asm_bad9f
 	ret
 
 Data_bada0:
@@ -600,7 +600,7 @@ Func_badb0:
 	jp nc, .asm_bade8
 	writenpctext TreeBitstreamText_3ad91
 	jp .asm_bae4c
-.asm_bade8:
+.asm_bade8
 	writenpctext_yesorno TreeBitstreamText_3ad7f
 	or a
 	jp nz, .asm_bae46
@@ -627,22 +627,22 @@ Func_badb0:
 	ld a, [hl]
 	scall MovePersonAndWait
 	jp .asm_bae38
-.asm_bae2d:
+.asm_bae2d
 	ld bc, Data_bada8
 	ld e, $2e
 	ld hl, sp+$01
 	ld a, [hl]
 	scall MovePersonAndWait
-.asm_bae38:
+.asm_bae38
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
 	jp .asm_bae4c
-.asm_bae46:
+.asm_bae46
 	writenpctext TreeBitstreamText_3adae
-.asm_bae4c:
+.asm_bae4c
 	pop bc
 	ret
 
@@ -670,19 +670,19 @@ Func_bae5a:
 	ld a, [hl]
 	scall MovePersonAndWait
 	jp .asm_bae9d
-.asm_bae92:
+.asm_bae92
 	ld bc, Data_bae54
 	ld e, $2e
 	ld hl, sp+$01
 	ld a, [hl]
 	scall MovePersonAndWait
-.asm_bae9d:
+.asm_bae9d
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-.asm_baea8:
+.asm_baea8
 	pop bc
 	ret
 
@@ -709,19 +709,19 @@ Func_baeb6:
 	ld a, [hl]
 	scall MovePersonAndWait
 	jp .asm_baef1
-.asm_baee6:
+.asm_baee6
 	ld bc, Data_baeb0
 	ld e, $2e
 	ld hl, sp+$01
 	ld a, [hl]
 	scall MovePersonAndWait
-.asm_baef1:
+.asm_baef1
 	scall WaitNPCStep
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SetPersonVisibilityState
-.asm_baefc:
+.asm_baefc
 	pop bc
 	ret
 
@@ -737,7 +737,7 @@ Func_baefe:
 	jp nc, .asm_baf1b
 	writetext TreeBitstreamText_47041
 	jp .asm_baf51
-.asm_baf1b:
+.asm_baf1b
 	checkevent EVENT_059
 	or a
 	jp nz, .asm_baf3b
@@ -745,13 +745,13 @@ Func_baefe:
 	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_baf4e
-.asm_baf3b:
+.asm_baf3b
 	resetevent EVENT_059
 	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
-.asm_baf4e:
+.asm_baf4e
 	call Func_bafd6
-.asm_baf51:
+.asm_baf51
 	ret
 
 Data_baf52:
@@ -796,7 +796,7 @@ Func_bafd6:
 	jp nz, .asm_bafe6
 	scall AllocateSpaceForWarps
 	jp .asm_bb0a9
-.asm_bafe6:
+.asm_bafe6
 	scall AllocateSpaceForWarps
 	ld a, [wc78a]
 	cp $0e
@@ -825,39 +825,39 @@ Func_bafd6:
 	jp nz, .asm_bb0a9
 	loadwarps $01, Data_baf52
 	jp .asm_bb0a9
-.asm_bb033:
+.asm_bb033
 	loadwarps $01, Data_baf5d
 	jp .asm_bb0a9
-.asm_bb03e:
+.asm_bb03e
 	loadwarps $01, Data_baf68
 	jp .asm_bb0a9
-.asm_bb049:
+.asm_bb049
 	loadwarps $01, Data_baf73
 	jp .asm_bb0a9
-.asm_bb054:
+.asm_bb054
 	loadwarps $01, Data_bafb5
 	jp .asm_bb0a9
-.asm_bb05f:
+.asm_bb05f
 	loadwarps $01, Data_baf89
 	jp .asm_bb0a9
-.asm_bb06a:
+.asm_bb06a
 	loadwarps $01, Data_baf94
 	jp .asm_bb0a9
-.asm_bb075:
+.asm_bb075
 	loadwarps $01, Data_baf9f
 	jp .asm_bb0a9
-.asm_bb080:
+.asm_bb080
 	loadwarps $01, Data_bafaa
 	jp .asm_bb0a9
-.asm_bb08b:
+.asm_bb08b
 	loadwarps $01, Data_baf7e
 	jp .asm_bb0a9
-.asm_bb096:
+.asm_bb096
 	loadwarps $01, Data_bafc0
 	jp .asm_bb0a9
-.asm_bb0a1:
+.asm_bb0a1
 	loadwarps $01, Data_bafcb
-.asm_bb0a9:
+.asm_bb0a9
 	ret
 
 Data_bb0aa:
@@ -876,5 +876,5 @@ Func_bb0b0:
 	ld hl, Data_bb0aa
 	scall Func_80d9b
 	scall Func_80f02
-.asm_bb0d0:
+.asm_bb0d0
 	ret

@@ -79,70 +79,70 @@ Func_d367a:: ; d367a (34:767a)
 	ld l, $0
 	jp .asm_d36c6
 
-.asm_d36c4: ; d36c4 (34:76c4)
+.asm_d36c4 ; d36c4 (34:76c4)
 	ld l, $9
-.asm_d36c6: ; d36c6 (34:76c6)
+.asm_d36c6 ; d36c6 (34:76c6)
 	jp .asm_d371a
 
-.asm_d36c9: ; d36c9 (34:76c9)
+.asm_d36c9 ; d36c9 (34:76c9)
 	ld l, $1
 	jp .asm_d371a
 
-.asm_d36ce: ; d36ce (34:76ce)
+.asm_d36ce ; d36ce (34:76ce)
 	ld a, [wBackupMapX]
 	cp $7
 	jp nz, .asm_d36db
 	ld l, $2
 	jp .asm_d36dd
 
-.asm_d36db: ; d36db (34:76db)
+.asm_d36db ; d36db (34:76db)
 	ld l, $3
-.asm_d36dd: ; d36dd (34:76dd)
+.asm_d36dd ; d36dd (34:76dd)
 	jp .asm_d371a
 
-.asm_d36e0: ; d36e0 (34:76e0)
+.asm_d36e0 ; d36e0 (34:76e0)
 	ld a, [wBackupMapX]
 	cp $7
 	jp nz, .asm_d36ed
 	ld l, $4
 	jp .asm_d36ef
 
-.asm_d36ed: ; d36ed (34:76ed)
+.asm_d36ed ; d36ed (34:76ed)
 	ld l, $5
-.asm_d36ef: ; d36ef (34:76ef)
+.asm_d36ef ; d36ef (34:76ef)
 	jp .asm_d371a
 
-.asm_d36f2: ; d36f2 (34:76f2)
+.asm_d36f2 ; d36f2 (34:76f2)
 	ld l, $6
 	jp .asm_d371a
 
-.asm_d36f7: ; d36f7 (34:76f7)
+.asm_d36f7 ; d36f7 (34:76f7)
 	ld l, $7
 	jp .asm_d371a
 
-.asm_d36fc: ; d36fc (34:76fc)
+.asm_d36fc ; d36fc (34:76fc)
 	ld a, [wBackupMapX]
 	cp $7
 	jp nz, .asm_d3709
 	ld l, $2
 	jp .asm_d370b
 
-.asm_d3709: ; d3709 (34:7709)
+.asm_d3709 ; d3709 (34:7709)
 	ld l, $5
-.asm_d370b: ; d370b (34:770b)
+.asm_d370b ; d370b (34:770b)
 	jp .asm_d371a
 
-.asm_d370e: ; d370e (34:770e)
+.asm_d370e ; d370e (34:770e)
 	ld l, $3
 	jp .asm_d371a
 
-.asm_d3713: ; d3713 (34:7713)
+.asm_d3713 ; d3713 (34:7713)
 	ld l, $8
 	jp .asm_d371a
 
-.asm_d3718: ; d3718 (34:7718)
+.asm_d3718 ; d3718 (34:7718)
 	ld l, $a
-.asm_d371a: ; d371a (34:771a)
+.asm_d371a ; d371a (34:771a)
 	push hl
 	scall AllocateSpaceForWarps
 	pop hl
@@ -190,52 +190,52 @@ Func_d367a:: ; d367a (34:767a)
 	landmarksign TreeBitstreamText_46d81
 	jp .asm_d37d4
 
-.asm_d377d: ; d377d (34:777d)
+.asm_d377d ; d377d (34:777d)
 	landmarksign TreeBitstreamText_46d63
 	jp .asm_d37d4
 
-.asm_d3786: ; d3786 (34:7786)
+.asm_d3786 ; d3786 (34:7786)
 	landmarksign TreeBitstreamText_46d6d
 	jp .asm_d37d4
 
-.asm_d378f: ; d378f (34:778f)
+.asm_d378f ; d378f (34:778f)
 	landmarksign TreeBitstreamText_46d8b
 	jp .asm_d37d4
 
-.asm_d3798: ; d3798 (34:7798)
+.asm_d3798 ; d3798 (34:7798)
 	landmarksign TreeBitstreamText_46d59
 	jp .asm_d37d4
 
-.asm_d37a1: ; d37a1 (34:77a1)
+.asm_d37a1 ; d37a1 (34:77a1)
 	landmarksign TreeBitstreamText_46d4f
 	jp .asm_d37d4
 
-.asm_d37aa: ; d37aa (34:77aa)
+.asm_d37aa ; d37aa (34:77aa)
 	landmarksign TreeBitstreamText_46d77
 	jp .asm_d37d4
 
-.asm_d37b3: ; d37b3 (34:77b3)
+.asm_d37b3 ; d37b3 (34:77b3)
 	landmarksign TreeBitstreamText_46d45
 	jp .asm_d37d4
 
-.asm_d37bc: ; d37bc (34:77bc)
+.asm_d37bc ; d37bc (34:77bc)
 	landmarksign TreeBitstreamText_46d96
 	jp .asm_d37d4
 
-.asm_d37c5: ; d37c5 (34:77c5)
+.asm_d37c5 ; d37c5 (34:77c5)
 	landmarksign TreeBitstreamText_46da2
 	jp .asm_d37d4
 
-.asm_d37ce: ; d37ce (34:77ce)
+.asm_d37ce ; d37ce (34:77ce)
 	landmarksign TreeBitstreamText_46d96
-.asm_d37d4: ; d37d4 (34:77d4)
+.asm_d37d4 ; d37d4 (34:77d4)
 	scall StartShakingScreen
 	playsfx SFX_64
 	script_sleep 60
 	scall StopShakingScreen
 	jp .asm_d385a
 
-.asm_d37e8: ; d37e8 (34:77e8)
+.asm_d37e8 ; d37e8 (34:77e8)
 	ld a, [wBackupMapGroup]
 	cp $2
 	jp nz, .asm_d381e
@@ -261,18 +261,18 @@ Func_d367a:: ; d367a (34:767a)
 	scall Func_8001c
 	jp .asm_d385a
 
-.asm_d381e: ; d381e (34:781e)
+.asm_d381e ; d381e (34:781e)
 	ld a, [wBackupMapNumber]
 	cp $1e
 	jp nz, .asm_d382b
 	ld l, $0
 	jp .asm_d3831
 
-.asm_d382b: ; d382b (34:782b)
+.asm_d382b ; d382b (34:782b)
 	ld a, [wBackupMapNumber]
 	add $f7
 	ld l, a
-.asm_d3831: ; d3831 (34:7831)
+.asm_d3831 ; d3831 (34:7831)
 	push hl
 	scall AllocateSpaceForWarps
 	pop hl
@@ -293,7 +293,7 @@ Func_d367a:: ; d367a (34:767a)
 	loadpeople $2, Data_d365e
 	playmusic SONG_SHOP
 	scall Func_8001c
-.asm_d385a: ; d385a (34:785a)
+.asm_d385a ; d385a (34:785a)
 	ret
 
 Func_d385b:
@@ -330,7 +330,7 @@ Func_d385b:
 	scall LoadWarps
 	jp .asm_d38ae
 
-.asm_d3895: ; d3895 (34:7895)
+.asm_d3895 ; d3895 (34:7895)
 	push hl
 	scall AllocateSpaceForWarps
 	pop hl
@@ -348,5 +348,5 @@ Func_d385b:
 	add hl, de
 	ld e, $1
 	scall LoadWarps
-.asm_d38ae: ; d38ae (34:78ae)
+.asm_d38ae ; d38ae (34:78ae)
 	ret

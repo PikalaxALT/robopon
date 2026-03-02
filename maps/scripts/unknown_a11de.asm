@@ -89,14 +89,14 @@ Func_a11de:: ; a11de
 	scall Func_80c94
 	ld a, $11
 	scall Func_80c94
-.asm_a120b:
+.asm_a120b
 	ld a, [wc793]
 	cp $1
 	jp z, .asm_a121b
 	ld a, [wc793]
 	cp $2
 	jp nz, .asm_a122c
-.asm_a121b:
+.asm_a121b
 	push hl
 	push hl
 	ld hl, $0
@@ -108,7 +108,7 @@ Func_a11de:: ; a11de
 	pop bc
 	pop bc
 	pop bc
-.asm_a122c:
+.asm_a122c
 	loadwarps $8, Data_a10b4
 	ld e, $1
 	ld hl, Data_a113f
@@ -136,7 +136,7 @@ Func_a11de:: ; a11de
 	ld de, Data_a113b
 	ld a, $4
 	scall SetPersonTextPointer
-.asm_a1283:
+.asm_a1283
 	ld a, [wc790]
 	or a
 	jp z, .asm_a12a5
@@ -146,9 +146,9 @@ Func_a11de:: ; a11de
 	loadwarps $1, Data_a110c
 	loadpeople $1, Data_a11d0
 	jp .asm_a12ad
-.asm_a12a5:
+.asm_a12a5
 	loadpeople $1, Data_a11c2
-.asm_a12ad:
+.asm_a12ad
 	scall Func_8001c
 	ret
 
@@ -202,22 +202,22 @@ Func_a12b1:
 	ld [hl], $01
 	jp .asm_a133d
 
-.asm_a132f:
+.asm_a132f
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_44af6
 	jp .asm_a14e6
 
-.asm_a133d:
+.asm_a133d
 	jp .asm_a1349
 
-.asm_a1340:
+.asm_a1340
 	writetext TreeBitstreamText_45a40
 	jp .asm_a14e6
 
-.asm_a1349:
+.asm_a1349
 	jp .asm_a1491
 
-.asm_a134c:
+.asm_a134c
 	ld a, [$c796]
 	cp $0d
 	jp nz, .asm_a13d6
@@ -259,22 +259,22 @@ Func_a12b1:
 	ld [hl], $01
 	jp .asm_a13c7
 
-.asm_a13b9:
+.asm_a13b9
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_44c2a
 	jp .asm_a14e6
 
-.asm_a13c7:
+.asm_a13c7
 	jp .asm_a13d3
 
-.asm_a13ca:
+.asm_a13ca
 	writetext TreeBitstreamText_45a40
 	jp .asm_a14e6
 
-.asm_a13d3:
+.asm_a13d3
 	jp .asm_a1491
 
-.asm_a13d6:
+.asm_a13d6
 	ld a, $32
 	scall Func_80e6d
 	ld hl, sp+$01
@@ -287,7 +287,7 @@ Func_a12b1:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_a1491
-.asm_a13f0:
+.asm_a13f0
 	ld a, [$c796]
 	cp $08
 	jp z, .asm_a1479
@@ -313,42 +313,42 @@ Func_a12b1:
 	jp z, .asm_a142e
 	cp $01
 	jp nz, .asm_a1488
-.asm_a142e:
+.asm_a142e
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45acc
 	jp .asm_a148e
 
-.asm_a143d:
+.asm_a143d
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45add
 	jp .asm_a148e
 
-.asm_a144c:
+.asm_a144c
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45abb
 	jp .asm_a148e
 
-.asm_a145b:
+.asm_a145b
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aff
 	jp .asm_a148e
 
-.asm_a146a:
+.asm_a146a
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b10
 	jp .asm_a148e
 
-.asm_a1479:
+.asm_a1479
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b20
 	jp .asm_a148e
 
-.asm_a1488:
+.asm_a1488
 	writenpctext TreeBitstreamText_4498a
-.asm_a148e:
+.asm_a148e
 	jp .asm_a14e6
 
-.asm_a1491:
+.asm_a1491
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $ff
@@ -363,24 +363,24 @@ Func_a12b1:
 	writenpctext TreeBitstreamText_44b1c
 	jp .asm_a14e6
 
-.asm_a14b8:
+.asm_a14b8
 	ld a, [$c796]
 	cp $0f
 	jp nz, .asm_a14c9
 	writenpctext TreeBitstreamText_4498a
 	jp .asm_a14e6
 
-.asm_a14c9:
+.asm_a14c9
 	ld a, [$c796]
 	cp $0e
 	jp c, .asm_a14da
 	writenpctext TreeBitstreamText_44c51
 	jp .asm_a14e6
 
-.asm_a14da:
+.asm_a14da
 	writenpctext TreeBitstreamText_4498a
 	writenpctext TreeBitstreamText_449c9
-.asm_a14e6:
+.asm_a14e6
 	pop bc
 	pop bc
 	ret
@@ -398,7 +398,7 @@ Func_a14ef:
 	ld hl, Data_a14e9
 	scall Func_80d9b
 	scall Func_80f02
-.asm_a1507:
+.asm_a1507
 	ret
 
 Func_a1508:
@@ -407,7 +407,7 @@ Func_a1508:
 	jp nz, .asm_a1513
 	ld a, $0d
 	ld [wc78a], a
-.asm_a1513:
+.asm_a1513
 	ret
 
 Func_a1514:
@@ -466,7 +466,7 @@ Func_a1514:
 	face_player $07
 	hideperson $07
 	jp .asm_a161b
-.asm_a1615:
+.asm_a1615
 	writetext TreeBitstreamText_3f79e
-.asm_a161b:
+.asm_a161b
 	ret

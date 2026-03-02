@@ -50,5 +50,5 @@ Func_c91a4:
 	ld hl, Data_c919e
 	scall Func_80d9b
 	scall Func_80f02
-.asm_c91b8:
+.asm_c91b8
 	ret

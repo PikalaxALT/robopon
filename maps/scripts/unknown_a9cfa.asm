@@ -41,5 +41,5 @@ Func_a9d20:
 	script_sleep 90
 	scall StopShakingScreen
 	warp_player MAP_24_21, $05, $0f
-.asm_a9d4f:
+.asm_a9d4f
 	ret

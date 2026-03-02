@@ -103,7 +103,7 @@ Func_83a1f:
 	setevent EVENT_058
 	jp .asm_83e48
 
-.asm_83a5e: ; 83a5e (20:7a5e)
+.asm_83a5e ; 83a5e (20:7a5e)
 	ld a, [wc79d]
 	cp $1
 	jp nz, .asm_83b71
@@ -115,7 +115,7 @@ Func_83a1f:
 	ld [wc79d], a
 	jp .asm_83b6e
 
-.asm_83a7b: ; 83a7b (20:7a7b)
+.asm_83a7b ; 83a7b (20:7a7b)
 	writenpctext TreeBitstreamText_45e29
 	ld a, [wc78c]
 	inc a
@@ -145,49 +145,49 @@ Func_83a1f:
 	writenpctext TreeBitstreamText_39c6c
 	writenpctext TreeBitstreamText_39c82
 	setevent EVENT_110
-.asm_83adb: ; 83adb (20:7adb)
+.asm_83adb ; 83adb (20:7adb)
 	checkevent EVENT_106
 	or a
 	jp nz, .asm_83af3
 	landmarksign TreeBitstreamText_461a9
 	setevent EVENT_106
-.asm_83af3: ; 83af3 (20:7af3)
+.asm_83af3 ; 83af3 (20:7af3)
 	checkevent EVENT_105
 	or a
 	jp nz, .asm_83b0b
 	landmarksign TreeBitstreamText_461b4
 	setevent EVENT_105
-.asm_83b0b: ; 83b0b (20:7b0b)
+.asm_83b0b ; 83b0b (20:7b0b)
 	checkevent EVENT_104
 	or a
 	jp nz, .asm_83b23
 	landmarksign TreeBitstreamText_46175
 	setevent EVENT_104
-.asm_83b23: ; 83b23 (20:7b23)
+.asm_83b23 ; 83b23 (20:7b23)
 	checkevent EVENT_103
 	or a
 	jp nz, .asm_83b3b
 	landmarksign TreeBitstreamText_4619b
 	setevent EVENT_103
-.asm_83b3b: ; 83b3b (20:7b3b)
+.asm_83b3b ; 83b3b (20:7b3b)
 	checkevent EVENT_102
 	or a
 	jp nz, .asm_83b53
 	landmarksign TreeBitstreamText_4618f
 	setevent EVENT_102
-.asm_83b53: ; 83b53 (20:7b53)
+.asm_83b53 ; 83b53 (20:7b53)
 	checkevent EVENT_101
 	or a
 	jp nz, .asm_83b6b
 	landmarksign TreeBitstreamText_46183
 	setevent EVENT_101
-.asm_83b6b: ; 83b6b (20:7b6b)
+.asm_83b6b ; 83b6b (20:7b6b)
 	jp .asm_83b6e
 
-.asm_83b6e: ; 83b6e (20:7b6e)
+.asm_83b6e ; 83b6e (20:7b6e)
 	jp .asm_83e48
 
-.asm_83b71: ; 83b71 (20:7b71)
+.asm_83b71 ; 83b71 (20:7b71)
 	ld a, [wc78c]
 	cp $14
 	jp nz, .asm_83b96
@@ -197,12 +197,12 @@ Func_83a1f:
 	writenpctext TreeBitstreamText_45db0
 	jp .asm_83b93
 
-.asm_83b8d: ; 83b8d (20:7b8d)
+.asm_83b8d ; 83b8d (20:7b8d)
 	writenpctext TreeBitstreamText_45dff
-.asm_83b93: ; 83b93 (20:7b93)
+.asm_83b93 ; 83b93 (20:7b93)
 	jp .asm_83e48
 
-.asm_83b96: ; 83b96 (20:7b96)
+.asm_83b96 ; 83b96 (20:7b96)
 	push hl
 	push hl
 	ld hl, $0
@@ -270,7 +270,7 @@ Func_83a1f:
 	call MemCopy
 	jp .asm_83c6f
 
-.asm_83c1e: ; 83c1e (20:7c1e)
+.asm_83c1e ; 83c1e (20:7c1e)
 	writenpctext TreeBitstreamText_45d3d
 	ld hl, sp+$b
 	push hl
@@ -295,7 +295,7 @@ Func_83a1f:
 	call MemCopy
 	jp .asm_83c6f
 
-.asm_83c48: ; 83c48 (20:7c48)
+.asm_83c48 ; 83c48 (20:7c48)
 	writenpctext TreeBitstreamText_45d61
 	ld hl, sp+$b
 	push hl
@@ -316,7 +316,7 @@ Func_83a1f:
 	pop de
 	ld bc, $4
 	call MemCopy
-.asm_83c6f: ; 83c6f (20:7c6f)
+.asm_83c6f ; 83c6f (20:7c6f)
 	ld hl, sp+$b
 	call PutLongFromHLOnStack
 	ld hl, sp+$13
@@ -394,7 +394,7 @@ Func_83a1f:
 	playsfx SFX_2E
 	jp .asm_83d57
 
-.asm_83d45: ; 83d45 (20:7d45)
+.asm_83d45 ; 83d45 (20:7d45)
 	ld bc, Data_83a13
 	ld e, BANK(Data_83a13)
 	ld hl, $12f
@@ -402,7 +402,7 @@ Func_83a1f:
 	ld a, [hl]
 	scall MovePersonAndWait
 	playsfx SFX_2E
-.asm_83d57: ; 83d57 (20:7d57)
+.asm_83d57 ; 83d57 (20:7d57)
 	ld e, $0
 	ld hl, $12f
 	add hl, sp
@@ -468,7 +468,7 @@ Func_83a1f:
 	add hl, bc
 	ld c, l
 	ld b, h
-.asm_83dd5: ; 83dd5 (20:7dd5)
+.asm_83dd5 ; 83dd5 (20:7dd5)
 	push bc
 	set_farcall_addrs_hli FixDays
 	ld hl, sp+$4
@@ -512,14 +512,14 @@ Func_83a1f:
 	call FarCall
 	jp .asm_83e3f
 
-.asm_83e39: ; 83e39 (20:7e39)
+.asm_83e39 ; 83e39 (20:7e39)
 	writenpctext TreeBitstreamText_45cff
-.asm_83e3f: ; 83e3f (20:7e3f)
+.asm_83e3f ; 83e3f (20:7e3f)
 	jp .asm_83e48
 
-.asm_83e42: ; 83e42 (20:7e42)
+.asm_83e42 ; 83e42 (20:7e42)
 	writenpctext TreeBitstreamText_45cd8
-.asm_83e48: ; 83e48 (20:7e48)
+.asm_83e48 ; 83e48 (20:7e48)
 	ld hl, $130
 	add hl, sp
 	ld sp, hl

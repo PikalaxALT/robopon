@@ -32,7 +32,7 @@ Func_af29a:: ; af29a
 	or a
 	jp nz, .asm_af2ca
 	loadpeople $01, Data_af28c
-.asm_af2ca:
+.asm_af2ca
 	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bea
@@ -83,7 +83,7 @@ Func_af309:
 	ld hl, Data_af303
 	scall Func_80d9b
 	scall Func_80f02
-.asm_af347:
+.asm_af347
 	ret
 
 Data_af348:
@@ -98,11 +98,11 @@ Func_af34c:
 	jp nz, .asm_af364
 	writenpctext TreeBitstreamText_3e99a
 	jp .asm_af384
-.asm_af364:
+.asm_af364
 	writenpctext TreeBitstreamText_3e9c4
 	setevent EVENT_04F
 	move_person 0, Data_af348, 1
 	scall WaitNPCStep
 	hideperson 0
-.asm_af384:
+.asm_af384
 	ret

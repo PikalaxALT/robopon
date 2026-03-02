@@ -28,10 +28,10 @@ Func_87d88::
 	ld [wc7da], a
 	jp .asm_87db3
 
-.asm_87daf: ; 87daf (21:7daf)
+.asm_87daf ; 87daf (21:7daf)
 	xor a
 	ld [wc7da], a
-.asm_87db3: ; 87db3 (21:7db3)
+.asm_87db3 ; 87db3 (21:7db3)
 	loadpeople $1, Data_87d7a
 	playmusic SONG_CAVE
 	scall Func_8001c
@@ -64,18 +64,18 @@ Func_87dca:
 	writenpctext TreeBitstreamText_3af20
 	jp .asm_87e20
 
-.asm_87e1a: ; 87e1a (21:7e1a)
+.asm_87e1a ; 87e1a (21:7e1a)
 	writenpctext TreeBitstreamText_3af00
-.asm_87e20: ; 87e20 (21:7e20)
+.asm_87e20 ; 87e20 (21:7e20)
 	jp .asm_87e29
 
-.asm_87e23: ; 87e23 (21:7e23)
+.asm_87e23 ; 87e23 (21:7e23)
 	writenpctext TreeBitstreamText_3aea4
-.asm_87e29: ; 87e29 (21:7e29)
+.asm_87e29 ; 87e29 (21:7e29)
 	jp .asm_87e32
 
-.asm_87e2c: ; 87e2c (21:7e2c)
+.asm_87e2c ; 87e2c (21:7e2c)
 	writenpctext TreeBitstreamText_3af3a
-.asm_87e32: ; 87e32 (21:7e32)
+.asm_87e32 ; 87e32 (21:7e32)
 	pop bc
 	ret

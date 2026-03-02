@@ -37,12 +37,12 @@ Func_a32cf:: ; a32cf
 	checkevent EVENT_0CD
 	or a
 	jp nz, .asm_a3327
-.asm_a3307:
+.asm_a3307
 	resetevent EVENT_0CB
 	resetevent EVENT_0CC
 	resetevent EVENT_0CD
 	loadpeople $03, Data_a3297
-.asm_a3327:
+.asm_a3327
 	loadpeople $01, Data_a32c1
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46939
@@ -61,9 +61,9 @@ Func_a3339:
 	jp nz, .asm_a3355
 	ld a, $01
 	ld [wc7c4], a
-.asm_a3355:
+.asm_a3355
 	jp .asm_a3397
-.asm_a3358:
+.asm_a3358
 	ld e, $03
 	ld hl, sp+$01
 	ld a, [hl]
@@ -83,7 +83,7 @@ Func_a3339:
 	cp $01
 	jp nz, .asm_a3397
 	setevent EVENT_0D2
-.asm_a3397:
+.asm_a3397
 	pop bc
 	ret
 Func_a3399:
@@ -100,9 +100,9 @@ Func_a3399:
 	jp nz, .asm_a33b5
 	ld a, $01
 	ld [wc7c4], a
-.asm_a33b5:
+.asm_a33b5
 	jp .asm_a33f7
-.asm_a33b8:
+.asm_a33b8
 	ld e, $03
 	ld hl, sp+$01
 	ld a, [hl]
@@ -122,7 +122,7 @@ Func_a3399:
 	cp $01
 	jp nz, .asm_a33f7
 	setevent EVENT_0D2
-.asm_a33f7:
+.asm_a33f7
 	pop bc
 	ret
 Func_a33f9:
@@ -139,9 +139,9 @@ Func_a33f9:
 	jp nz, .asm_a3415
 	ld a, $01
 	ld [wc7c4], a
-.asm_a3415:
+.asm_a3415
 	jp .asm_a3457
-.asm_a3418:
+.asm_a3418
 	ld e, $03
 	ld hl, sp+$01
 	ld a, [hl]
@@ -161,6 +161,6 @@ Func_a33f9:
 	cp $01
 	jp nz, .asm_a3457
 	setevent EVENT_0D2
-.asm_a3457:
+.asm_a3457
 	pop bc
 	ret

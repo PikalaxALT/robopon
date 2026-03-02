@@ -41,17 +41,17 @@ Func_aaed3:: ; aaed3
 	jp z, .asm_aaf29
 	hideperson 0
 	hideperson $01
-.asm_aaf29:
+.asm_aaf29
 	checkevent EVENT_0B4
 	or a
 	jp z, .asm_aaf41
 	hideperson $02
 	hideperson $03
-.asm_aaf41:
+.asm_aaf41
 	jp .asm_aaf49
-.asm_aaf44:
+.asm_aaf44
 	playmusic SONG_CAVE
-.asm_aaf49:
+.asm_aaf49
 	scall Func_8001c
 	ret
 
@@ -86,17 +86,17 @@ Func_aaf84:
 	jp z, .asm_aaf9b
 	or a
 	jp nz, .asm_ab01b
-.asm_aaf9b:
+.asm_aaf9b
 	ld a, [wMapY]
 	cp $ff
 	jp nz, .asm_aafaa
 	face_player 0
 	jp .asm_aafb8
-.asm_aafaa:
+.asm_aafaa
 	move_player $01, Data_aaf76
 	xor a
 	scall PlayerFace
-.asm_aafb8:
+.asm_aafb8
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d86d
@@ -104,23 +104,23 @@ Func_aaf84:
 	or a
 	jp nz, .asm_aafd7
 	jp .asm_ab01b
-.asm_aafd7:
+.asm_aafd7
 	writetext TreeBitstreamText_3d897
 	ld a, [wMapY]
 	cp $ff
 	jp nz, .asm_aaff1
 	move_person 0, Data_aaf7a, 1
 	jp .asm_aaffa
-.asm_aaff1:
+.asm_aaff1
 	move_person 0, Data_aaf80, 1
-.asm_aaffa:
+.asm_aaffa
 	scall WaitNPCStep
 	hideperson 0
 	hideperson $01
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
 	setevent EVENT_0B3
-.asm_ab01b:
+.asm_ab01b
 	pop bc
 	ret
 
@@ -158,17 +158,17 @@ Func_ab05c:
 	jp z, .asm_ab073
 	or a
 	jp nz, .asm_ab0f7
-.asm_ab073:
+.asm_ab073
 	ld a, [wMapY]
 	cp $ff
 	jp nz, .asm_ab083
 	face_player $02
 	jp .asm_ab091
-.asm_ab083:
+.asm_ab083
 	move_player $01, Data_ab04c
 	xor a
 	scall PlayerFace
-.asm_ab091:
+.asm_ab091
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d831
@@ -176,23 +176,23 @@ Func_ab05c:
 	or a
 	jp nz, .asm_ab0b0
 	jp .asm_ab0f7
-.asm_ab0b0:
+.asm_ab0b0
 	writetext TreeBitstreamText_3d897
 	ld a, [wMapY]
 	cp $ff
 	jp nz, .asm_ab0cb
 	move_person $02, Data_ab050, 1
 	jp .asm_ab0d5
-.asm_ab0cb:
+.asm_ab0cb
 	move_person $02, Data_ab056, 1
-.asm_ab0d5:
+.asm_ab0d5
 	scall WaitNPCStep
 	hideperson $02
 	hideperson $03
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
 	setevent EVENT_0B4
-.asm_ab0f7:
+.asm_ab0f7
 	pop bc
 	ret
 

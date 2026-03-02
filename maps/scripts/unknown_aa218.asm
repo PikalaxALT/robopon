@@ -28,7 +28,7 @@ Func_aa218:: ; aa218
 	or a
 	jp nz, .asm_aa23c
 	loadpeople $03, Data_aa1d2
-.asm_aa23c:
+.asm_aa23c
 	loadpeople $02, Data_aa1fc
 	checkevent EVENT_022
 	cp $01
@@ -38,9 +38,9 @@ Func_aa218:: ; aa218
 	jp nz, .asm_aa261
 	playmusic SONG_WILD_BATTLE
 	jp .asm_aa266
-.asm_aa261:
+.asm_aa261
 	playmusic SONG_TEIL_TOWN
-.asm_aa266:
+.asm_aa266
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
@@ -73,7 +73,7 @@ Func_aa277:
 	or a
 	jp z, .asm_aa2c0
 	jp .asm_aa2f2
-.asm_aa2c0:
+.asm_aa2c0
 	move_person $01, Data_aa273, 1
 	scall WaitNPCStep
 	ld a, $01
@@ -84,9 +84,9 @@ Func_aa277:
 	or a
 	jp z, .asm_aa2ea
 	jp .asm_aa2f2
-.asm_aa2ea:
+.asm_aa2ea
 	setevent EVENT_0B7
-.asm_aa2f2:
+.asm_aa2f2
 	pop bc
 	ret
 
@@ -145,7 +145,7 @@ Func_aa392:
 	jp nz, .asm_aa3ae
 	setevent EVENT_0F7
 	ret
-.asm_aa3ae:
+.asm_aa3ae
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
 	writetext TreeBitstreamText_3d897

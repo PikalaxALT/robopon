@@ -29,11 +29,11 @@ Func_957b0:: ; 957b0
 	call Func_957f5
 	setevent EVENT_00E
 	jp .asm_957f0
-.asm_957e0:
+.asm_957e0
 	playmusic SONG_SHOP
 	loadpeople $02, Data_95794
 	scall Func_8001c
-.asm_957f0:
+.asm_957f0
 	ret
 
 Data_957f1:

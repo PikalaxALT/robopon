@@ -74,7 +74,7 @@ Func_9f4ac:
 	cp $02
 	jp nz, .asm_9f571
 	ld c, $00
-.asm_9f4c7:
+.asm_9f4c7
 	ld a, c
 	cp $19
 	jp nc, .asm_9f4fe
@@ -100,10 +100,10 @@ Func_9f4ac:
 	jp nz, .asm_9f4fa
 	ld c, $ff
 	jp .asm_9f4fe
-.asm_9f4fa:
+.asm_9f4fa
 	inc c
 	jp .asm_9f4c7
-.asm_9f4fe:
+.asm_9f4fe
 	ld a, c
 	cp $ff
 	jp nz, .asm_9f571
@@ -115,7 +115,7 @@ Func_9f4ac:
 	scall StopShakingScreen
 	scall HideEmote
 	ld c, $00
-.asm_9f520:
+.asm_9f520
 	ld a, c
 	cp $04
 	jp nc, .asm_9f56d
@@ -131,7 +131,7 @@ Func_9f4ac:
 	or h
 	jp nz, .asm_9f53b
 	jp .asm_9f569
-.asm_9f53b:
+.asm_9f53b
 	pop hl
 	push hl
 	reg16swap de, hl
@@ -144,11 +144,11 @@ Func_9f4ac:
 	pop de
 	push hl
 	jp .asm_9f557
-.asm_9f552:
+.asm_9f552
 	ld hl, $0014
 	pop de
 	push hl
-.asm_9f557:
+.asm_9f557
 	push bc
 	call GetHLAtSPPlus4
 	ld a, l
@@ -162,13 +162,13 @@ Func_9f4ac:
 	ld d, $00
 	scall Func_80e31
 	pop bc
-.asm_9f569:
+.asm_9f569
 	inc c
 	jp .asm_9f520
-.asm_9f56d:
+.asm_9f56d
 	xor a
 	ld [wSliding], a
-.asm_9f571:
+.asm_9f571
 	add sp, $34
 	ret
 
@@ -184,5 +184,5 @@ Func_9f574:
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
 	playmusic SONG_CAVE
-.asm_9f59f:
+.asm_9f59f
 	ret

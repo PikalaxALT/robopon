@@ -8,7 +8,7 @@ HandleMap: ; 90e9 (2:50e9)
 	call UpdateSprites
 	ld hl, sp+$e
 	ld [hl], $ff
-.loop: ; 90fe (2:50fe)
+.loop ; 90fe (2:50fe)
 	ld a, [wRemainInMap]
 	cp $1
 	jp nz, .quit
@@ -17,7 +17,7 @@ HandleMap: ; 90e9 (2:50e9)
 	cp $ff
 	jp nz, .skip_frame
 	call NextOverworldFrame
-.skip_frame: ; 9111 (2:5111)
+.skip_frame ; 9111 (2:5111)
 	call Func_b44d
 	ld hl, sp+$e
 	ld [hl], a
@@ -33,7 +33,7 @@ HandleMap: ; 90e9 (2:50e9)
 	write_hl_to wMovementDataAddr
 	jp .quit
 
-.doPlayerStep: ; 9134 (2:5134)
+.doPlayerStep ; 9134 (2:5134)
 	ld e, $ff
 	ld hl, sp+$e
 	ld a, [hl]
@@ -44,7 +44,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld e, a
 	jp .done_player_step
 
-.check_step_down: ; 9146 (2:5146)
+.check_step_down ; 9146 (2:5146)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $8
@@ -54,7 +54,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld e, a
 	jp .done_player_step
 
-.check_step_left: ; 9157 (2:5157)
+.check_step_left ; 9157 (2:5157)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $2
@@ -64,7 +64,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld e, a
 	jp .done_player_step
 
-.check_step_right: ; 9168 (2:5168)
+.check_step_right ; 9168 (2:5168)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $1
@@ -74,7 +74,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld e, a
 	jp .done_player_step
 
-.player_step_invalid: ; 9179 (2:5179)
+.player_step_invalid ; 9179 (2:5179)
 	push de
 	ld a, [wPlayerFacing]
 	ld [wLastPlayerFacing], a
@@ -84,7 +84,7 @@ HandleMap: ; 90e9 (2:50e9)
 	call UpdateSprites
 	call HandleNPCStep
 	pop de
-.done_player_step: ; 918e (2:518e)
+.done_player_step ; 918e (2:518e)
 	push de
 	ld a, [wLastPlayerFacing]
 	ld hl, wPlayerFacing
@@ -102,7 +102,7 @@ HandleMap: ; 90e9 (2:50e9)
 	call GetPlayerSprite
 	ld a, [wPlayerFacing]
 	ld [wLastPlayerFacing], a
-.skip_player_sprite_reload: ; 91ba (2:51ba)
+.skip_player_sprite_reload ; 91ba (2:51ba)
 	call MoveEmote_
 	pop de
 	ld hl, sp+$e
@@ -119,13 +119,13 @@ HandleMap: ; 90e9 (2:50e9)
 	jp nz, .continue_map
 	jp .quit
 
-.continue_map: ; 91db (2:51db)
+.continue_map ; 91db (2:51db)
 	callba_hli Func_9b326
 	ld hl, sp+$e
 	ld [hl], $ff
 	jp .loop
 
-.notPressingA: ; 91f0 (2:51f0)
+.notPressingA ; 91f0 (2:51f0)
 	ld hl, sp+$e
 	ld a, [hl]
 	and $40
@@ -146,11 +146,11 @@ HandleMap: ; 90e9 (2:50e9)
 	ld de, $1403
 	ld hl, $0
 	call FarCall
-.asm_9222: ; 9222 (2:5222)
+.asm_9222 ; 9222 (2:5222)
 	push hl
 	ld hl, sp+$4
 	ld [hl], $ff
-.whileHoldingSelect: ; 9227 (2:5227)
+.whileHoldingSelect ; 9227 (2:5227)
 	call GetJoyPressed
 	and $40
 	jp z, .releasedSelect
@@ -165,7 +165,7 @@ HandleMap: ; 90e9 (2:50e9)
 	jp nz, .asm_924e
 	jp .whileHoldingSelect
 
-.asm_924e: ; 924e (2:524e)
+.asm_924e ; 924e (2:524e)
 	ld hl, sp+$9
 	ld a, [hl]
 	ld hl, sp+$4
@@ -214,7 +214,7 @@ HandleMap: ; 90e9 (2:50e9)
 	pop bc
 	jp .asm_92ba
 
-.asm_92ab: ; 92ab (2:52ab)
+.asm_92ab ; 92ab (2:52ab)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
@@ -224,7 +224,7 @@ HandleMap: ; 90e9 (2:50e9)
 	call PlaceString
 	pop bc
 	pop bc
-.asm_92ba: ; 92ba (2:52ba)
+.asm_92ba ; 92ba (2:52ba)
 	ld hl, sp+$9
 	ld a, [hl]
 	cp $a
@@ -240,7 +240,7 @@ HandleMap: ; 90e9 (2:50e9)
 	pop bc
 	jp .asm_92e3
 
-.asm_92d4: ; 92d4 (2:52d4)
+.asm_92d4 ; 92d4 (2:52d4)
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -250,7 +250,7 @@ HandleMap: ; 90e9 (2:50e9)
 	call PlaceString
 	pop bc
 	pop bc
-.asm_92e3: ; 92e3 (2:52e3)
+.asm_92e3 ; 92e3 (2:52e3)
 	ld a, $1
 	ld [wEnableAttrMapTransfer], a
 	ld l, $3
@@ -262,7 +262,7 @@ HandleMap: ; 90e9 (2:50e9)
 	pop bc
 	jp .whileHoldingSelect
 
-.releasedSelect: ; 92f7 (2:52f7)
+.releasedSelect ; 92f7 (2:52f7)
 	call Func_8f44
 	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop hl
@@ -270,7 +270,7 @@ HandleMap: ; 90e9 (2:50e9)
 	pop de
 	jp .doneJoypadCheck
 
-.notPressingSelect: ; 930d (2:530d)
+.notPressingSelect ; 930d (2:530d)
 	ld hl, sp+$e
 	ld a, [hl]
 	and START
@@ -306,7 +306,7 @@ HandleMap: ; 90e9 (2:50e9)
 	set_farcall_addrs_hli Func_c7bd0
 	ld a, [wc867]
 	call FarCall
-.skip_flash: ; 9371 (2:5371)
+.skip_flash ; 9371 (2:5371)
 	ld hl, sp+$c
 	ld a, [wSpawnX]
 	ld [hl], a
@@ -334,12 +334,12 @@ HandleMap: ; 90e9 (2:50e9)
 	jp nz, .did_not_quit
 	jp .quit
 
-.did_not_quit: ; 93ba (2:53ba)
+.did_not_quit ; 93ba (2:53ba)
 	push de
 	xor a
 	call FadeInMap
 	pop de
-.doneJoypadCheck: ; 93c0 (2:53c0)
+.doneJoypadCheck ; 93c0 (2:53c0)
 	ld a, e
 	cp $ff
 	jp nz, .step
@@ -360,13 +360,13 @@ HandleMap: ; 90e9 (2:50e9)
 	jp nz, .asm_93e7
 	jp .quit
 
-.asm_93e7: ; 93e7 (2:53e7)
+.asm_93e7 ; 93e7 (2:53e7)
 	call CheckWarpTile
 	cp $1
 	jp nz, .asm_93f2
 	jp .quit
 
-.asm_93f2: ; 93f2 (2:53f2)
+.asm_93f2 ; 93f2 (2:53f2)
 	call RollRandomEncounter
 	cp $1
 	jp z, .asm_9409
@@ -376,18 +376,18 @@ HandleMap: ; 90e9 (2:50e9)
 	jp nz, .asm_940c
 	jp .quit
 
-.asm_9406: ; 9406 (2:5406)
+.asm_9406 ; 9406 (2:5406)
 	jp .asm_940c
 
-.asm_9409: ; 9409 (2:5409)
+.asm_9409 ; 9409 (2:5409)
 	jp .loop
 
-.asm_940c: ; 940c (2:540c)
+.asm_940c ; 940c (2:540c)
 	ld hl, sp+$e
 	ld [hl], $0
 	jp .loop
 
-.quit: ; 9413 (2:5413)
+.quit ; 9413 (2:5413)
 	add sp, $10
 	ret
 

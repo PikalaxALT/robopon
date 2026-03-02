@@ -21,7 +21,7 @@ Func_bc00a:
 	inc h
 	call FarCall
 	call WaitVideoTransfer
-.asm_bc029: ; bc029 (2f:4029)
+.asm_bc029 ; bc029 (2f:4029)
 	call CheckButton
 	or a
 	jp z, .asm_bc029
@@ -202,11 +202,11 @@ Func_bc14e: ; bc14e (2f:414e)
 	ret
 
 Func_bc160: ; bc160 (2f:4160)
-.asm_bc160:
+.asm_bc160
 	call CheckButton
 	or a
 	jp nz, .asm_bc160
-.asm_bc167: ; bc167 (2f:4167)
+.asm_bc167 ; bc167 (2f:4167)
 	call CheckButton
 	and $10
 	jp z, .asm_bc167
@@ -223,7 +223,7 @@ Func_bc170: ; bc170 (2f:4170)
 	ld [hl], a
 	jp .placeDirectly
 
-.checkCapital: ; bc183 (2f:4183)
+.checkCapital ; bc183 (2f:4183)
 	cp CHARVAL("A")
 	jp c, .checkLeftParenthesis
 	cp CHARVAL("Z") + 1
@@ -233,35 +233,35 @@ Func_bc170: ; bc170 (2f:4170)
 	ld [hl], a
 	jp .placeDirectly
 
-.checkLeftParenthesis: ; bc195 (2f:4195)
+.checkLeftParenthesis ; bc195 (2f:4195)
 	cp CHARVAL("[")
 	jp nz, .checkRightParenthesis
 	ld hl, sp+$0
 	ld [hl], $3e
 	jp .placeDirectly
 
-.checkRightParenthesis: ; bc1a1 (2f:41a1)
+.checkRightParenthesis ; bc1a1 (2f:41a1)
 	cp CHARVAL("]")
 	jp nz, .checkColon
 	ld hl, sp+$0
 	ld [hl], $3f
 	jp .placeDirectly
 
-.checkColon: ; bc1ad (2f:41ad)
+.checkColon ; bc1ad (2f:41ad)
 	cp CHARVAL(":")
 	jp nz, .checkPeriod
 	ld hl, sp+$0
 	ld [hl], $40
 	jp .placeDirectly
 
-.checkPeriod: ; bc1b9 (2f:41b9)
+.checkPeriod ; bc1b9 (2f:41b9)
 	cp CHARVAL(".")
 	jp nz, .autoCharacter
 	ld hl, sp+$0
 	ld [hl], $41
 	jp .placeDirectly
 
-.autoCharacter: ; bc1c5 (2f:41c5)
+.autoCharacter ; bc1c5 (2f:41c5)
 	ld l, a
 	ld h, $0
 	push hl
@@ -272,7 +272,7 @@ Func_bc170: ; bc170 (2f:4170)
 	pop bc
 	jp .quit
 
-.placeDirectly: ; bc1d5 (2f:41d5)
+.placeDirectly ; bc1d5 (2f:41d5)
 	ld a, [wStringDestY]
 	ld l, a
 	ld a, [wStringDestX]
@@ -285,7 +285,7 @@ Func_bc170: ; bc170 (2f:4170)
 	ld a, [wStringDestX]
 	inc a
 	ld [wStringDestX], a
-.quit: ; bc1ef (2f:41ef)
+.quit ; bc1ef (2f:41ef)
 	pop bc
 	ret
 
@@ -304,7 +304,7 @@ Func_bc1f4: ; bc1f4 (2f:41f4)
 	dec hl
 	ld c, l
 	ld b, h
-.loop: ; bc205 (2f:4205)
+.loop ; bc205 (2f:4205)
 	pop hl
 	push hl
 	ld e, c
@@ -343,7 +343,7 @@ Func_bc1f4: ; bc1f4 (2f:41f4)
 	dec bc
 	jp .loop
 
-.break: ; bc23d (2f:423d)
+.break ; bc23d (2f:423d)
 	pop bc
 	pop bc
 	pop bc
@@ -358,7 +358,7 @@ Func_bc241: ; bc241 (2f:4241)
 	call WriteHLToSPPlus4
 	ld hl, sp+$1
 	ld [hl], $0
-.loop: ; bc24f (2f:424f)
+.loop ; bc24f (2f:424f)
 	call GetHLAtSPPlus4
 	push hl
 	call GetHLAtSPPlus10
@@ -377,13 +377,13 @@ Func_bc241: ; bc241 (2f:4241)
 	ld [hl], a
 	jp .next
 
-.more_than_10: ; bc270 (2f:4270)
+.more_than_10 ; bc270 (2f:4270)
 	ld hl, sp+$0
 	ld a, [hl]
 	add CHARVAL("A") - 10
 	ld hl, sp+$0
 	ld [hl], a
-.next: ; bc278 (2f:4278)
+.next ; bc278 (2f:4278)
 	ld hl, sp+$1
 	ld a, [hl]
 	inc a
@@ -443,13 +443,13 @@ PrintDebugMenuText: ; bc2be (2f:42be)
 	ld [wStringDestY], a
 	jp .incrementPointer
 
-.not_newline: ; bc2e3 (2f:42e3)
+.not_newline ; bc2e3 (2f:42e3)
 	ld a, [wStringDestX]
 	cp $12
 	jp c, .xCoordOnScreen
 	jp .incrementPointer
 
-.xCoordOnScreen: ; bc2ee (2f:42ee)
+.xCoordOnScreen ; bc2ee (2f:42ee)
 	ld a, [hl]
 	cp $25
 	jp z, .specialCommand
@@ -459,7 +459,7 @@ PrintDebugMenuText: ; bc2be (2f:42be)
 	pop hl
 	jp .incrementPointer
 
-.specialCommand: ; bc2fd (2f:42fd)
+.specialCommand ; bc2fd (2f:42fd)
 	inc hl
 	ld a, [hl]
 	cp $70
@@ -487,7 +487,7 @@ PrintDebugMenuText: ; bc2be (2f:42be)
 	pop hl
 	jp .incrementPointer
 
-.printHex: ; bc32d (2f:432d)
+.printHex ; bc32d (2f:432d)
 	push hl
 	ld hl, sp+$2
 	push hl
@@ -507,11 +507,11 @@ PrintDebugMenuText: ; bc2be (2f:42be)
 	call PrintDebugMenuText
 	pop bc
 	pop hl
-.incrementPointer: ; bc34e (2f:434e)
+.incrementPointer ; bc34e (2f:434e)
 	inc hl
 	jp .nextCharacter
 
-.asm_bc352: ; bc352 (2f:4352)
+.asm_bc352 ; bc352 (2f:4352)
 	add sp, $e
 	ret
 
@@ -533,7 +533,7 @@ Func_bc35d: ; bc35d
 	call PrintDebugMenuText
 	pop bc
 	xor a
-.asm_bc374: ; bc374 (2f:4374)
+.asm_bc374 ; bc374 (2f:4374)
 	cp $5
 	jp nc, .asm_bc392
 	push af
@@ -554,7 +554,7 @@ Func_bc35d: ; bc35d
 	inc a
 	jp .asm_bc374
 
-.asm_bc392: ; bc392 (2f:4392)
+.asm_bc392 ; bc392 (2f:4392)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -625,7 +625,7 @@ Func_bc3db:
 	sub l
 	ld hl, sp+$8
 	ld [hl], a
-.asm_bc41b: ; bc41b (2f:441b)
+.asm_bc41b ; bc41b (2f:441b)
 	ld hl, sp+$8
 	ld c, [hl]
 	ld b, $0
@@ -698,7 +698,7 @@ Func_bc486:
 	ret
 
 Func_bc49b: ; bc49b (2f:449b)
-.asm_bc49b:
+.asm_bc49b
 	ld a, [wNextVBlankFlags]
 	ld hl, wLastVBlankFlags
 	cp [hl]
@@ -864,7 +864,7 @@ Func_bc71f: ; bc71f (2f:471f)
 	jp z, .asm_bc738
 	jp .asm_bc773
 
-.asm_bc738: ; bc738 (2f:4738)
+.asm_bc738 ; bc738 (2f:4738)
 	push bc
 	ld hl, $d
 	add hl, bc
@@ -908,7 +908,7 @@ Func_bc71f: ; bc71f (2f:471f)
 	call PrintDebugMenuText
 	pop bc
 	pop bc
-.asm_bc773: ; bc773 (2f:4773)
+.asm_bc773 ; bc773 (2f:4773)
 	pop bc
 	pop bc
 	ret
@@ -1029,7 +1029,7 @@ Func_bc788: ; bc788 (2f:4788)
 	call FarCall
 	ld c, $0
 	pop de
-.asm_bc81b: ; bc81b (2f:481b)
+.asm_bc81b ; bc81b (2f:481b)
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
@@ -1082,13 +1082,13 @@ Func_bc788: ; bc788 (2f:4788)
 	ld hl, sp+$7
 	ld a, [hl]
 	call Func_bc71f
-.asm_bc86e: ; bc86e (2f:486e)
+.asm_bc86e ; bc86e (2f:486e)
 	pop bc
 	inc c
 	pop de
 	jp .asm_bc81b
 
-.asm_bc874: ; bc874 (2f:4874)
+.asm_bc874 ; bc874 (2f:4874)
 	pop bc
 	pop bc
 	pop bc
@@ -1202,7 +1202,7 @@ Func_bc878:
 	call SetStringStartState
 	ld a, $8f
 	call Func_bc170
-.asm_bc8ff: ; bc8ff (2f:48ff)
+.asm_bc8ff ; bc8ff (2f:48ff)
 	pop de
 	push de
 	ld hl, sp+$a
@@ -1362,7 +1362,7 @@ Func_bc934:
 .asm_bc9f5
 	jp .asm_bca2f
 
-.asm_bc9f8: ; bc9f8 (2f:49f8)
+.asm_bc9f8 ; bc9f8 (2f:49f8)
 	call GetHLAtSPPlus6
 	inc hl
 	call WriteHLToSPPlus6
@@ -1390,7 +1390,7 @@ Func_bc934:
 	call GetHLAtSPPlus4
 	dec hl
 	call WriteHLToSPPlus4
-.asm_bca2f: ; bca2f (2f:4a2f)
+.asm_bca2f ; bca2f (2f:4a2f)
 	read_hl_from_sp_plus $f
 	ld de, $5
 	add hl, de
@@ -1420,7 +1420,7 @@ Func_bc934:
 	call Func_bc788
 	jp .asm_bcaa2
 
-.asm_bca6b: ; bca6b (2f:4a6b)
+.asm_bca6b ; bca6b (2f:4a6b)
 	call GetHLAtSPPlus8
 	ld a, l
 	and h
@@ -1439,7 +1439,7 @@ Func_bc934:
 	call SetStringStartState
 	ld a, $8f
 	call Func_bc170
-.asm_bca8b: ; bca8b (2f:4a8b)
+.asm_bca8b ; bca8b (2f:4a8b)
 	ld hl, sp+$b
 	ld c, [hl]
 	ld b, $0
@@ -1453,7 +1453,7 @@ Func_bc934:
 	call SetStringStartState
 	ld a, $8b
 	call Func_bc170
-.asm_bcaa2: ; bcaa2 (2f:4aa2)
+.asm_bcaa2 ; bcaa2 (2f:4aa2)
 	call GetHLAtSPPlus6
 	ld c, l
 	ld b, h
@@ -1648,7 +1648,7 @@ Func_bcb7d:
 	jp z, .asm_bcbba
 	or a
 	jp nz, .asm_bcbc8
-.asm_bcbba: ; bcbba (2f:4bba)
+.asm_bcbba ; bcbba (2f:4bba)
 	ld hl, $d
 	add hl, bc
 	ld a, [hl]
@@ -1660,7 +1660,7 @@ Func_bcb7d:
 	ld a, $1
 	xor [hl]
 	ld [hl], a
-.asm_bcbc8: ; bcbc8 (2f:4bc8)
+.asm_bcbc8 ; bcbc8 (2f:4bc8)
 	ld hl, sp+$3
 	ld e, [hl]
 	ld hl, sp+$4
@@ -1677,7 +1677,7 @@ Func_bcb7d:
 	ld a, [hl]
 	call DoublePushBGMapRegion
 	pop bc
-.asm_bcbe1: ; bcbe1 (2f:4be1)
+.asm_bcbe1 ; bcbe1 (2f:4be1)
 	call CheckButton
 	or a
 	jp nz, .asm_bcbe1
@@ -1795,7 +1795,7 @@ Func_bcc59: ; bcc59 (2f:4c59)
 	call PrintDebugMenuText
 	pop bc
 	xor a
-.asm_bcc72: ; bcc72 (2f:4c72)
+.asm_bcc72 ; bcc72 (2f:4c72)
 	cp $3
 	jp nc, .asm_bcc95
 	push af
@@ -1817,7 +1817,7 @@ Func_bcc59: ; bcc59 (2f:4c59)
 	inc a
 	jp .asm_bcc72
 
-.asm_bcc95: ; bcc95 (2f:4c95)
+.asm_bcc95 ; bcc95 (2f:4c95)
 	ld hl, Data_bcdc0
 	push hl
 	call PrintDebugMenuText
@@ -2434,7 +2434,7 @@ Func_bd097: ; bd097 (2f:5097)
 	pop bc
 	xor a
 	pop de
-.asm_bd10f: ; bd10f (2f:510f)
+.asm_bd10f ; bd10f (2f:510f)
 	cp $3
 	jp nc, .asm_bd134
 	push de
@@ -2459,7 +2459,7 @@ Func_bd097: ; bd097 (2f:5097)
 	pop de
 	jp .asm_bd10f
 
-.asm_bd134: ; bd134 (2f:5134)
+.asm_bd134 ; bd134 (2f:5134)
 	push de
 	ld hl, Data_bd1f7
 	push hl
@@ -2495,7 +2495,7 @@ Func_bd097: ; bd097 (2f:5097)
 	pop bc
 	xor a
 	pop de
-.asm_bd16d: ; bd16d (2f:516d)
+.asm_bd16d ; bd16d (2f:516d)
 	cp $2
 	jp nc, .asm_bd18f
 	push de
@@ -2518,7 +2518,7 @@ Func_bd097: ; bd097 (2f:5097)
 	pop de
 	jp .asm_bd16d
 
-.asm_bd18f: ; bd18f (2f:518f)
+.asm_bd18f ; bd18f (2f:518f)
 	ld hl, Data_bd224
 	push hl
 	call PrintDebugMenuText
@@ -2636,7 +2636,7 @@ Func_bd242:
 	ld a, l
 	ld hl, sp+$a
 	ld [hl], a
-.asm_bd2c7: ; bd2c7 (2f:52c7)
+.asm_bd2c7 ; bd2c7 (2f:52c7)
 	call GetHLAtSPPlus6
 	ld de, Data_bcaec
 	call Func_bc3cd
@@ -2728,7 +2728,7 @@ Func_bd242:
 	reg16swap de, hl
 	jp .asm_bd2c7
 
-.asm_bd37b: ; bd37b (2f:537b)
+.asm_bd37b ; bd37b (2f:537b)
 	call GetHLAtSPPlus6
 	ld de, Data_bcaec
 	call Func_bc3cd
@@ -2810,7 +2810,7 @@ Func_bd242:
 	call Func_bc160
 	jp .asm_bd37b
 
-.asm_bd40e: ; bd40e (2f:540e)
+.asm_bd40e ; bd40e (2f:540e)
 	ld hl, sp+$6
 	ld de, Data_bc517
 	ld [hl], e
@@ -2822,7 +2822,7 @@ Func_bd242:
 	ld [hl], a
 	jp .asm_bd2c7
 
-.asm_bd424: ; bd424 (2f:5424)
+.asm_bd424 ; bd424 (2f:5424)
 	call GetHLAtSPPlus6
 	ld de, Data_bcaec
 	call Func_bc3cd
@@ -2891,9 +2891,9 @@ Func_bd242:
 	ld hl, $0
 	jp .asm_bd4ab
 
-.asm_bd4a8: ; bd4a8 (2f:54a8)
+.asm_bd4a8 ; bd4a8 (2f:54a8)
 	ld hl, $2f
-.asm_bd4ab: ; bd4ab (2f:54ab)
+.asm_bd4ab ; bd4ab (2f:54ab)
 	add hl, de
 	ld c, l
 	ld b, h
@@ -2923,7 +2923,7 @@ Func_bd242:
 	call Func_bc160
 	jp .asm_bd424
 
-.asm_bd4d5: ; bd4d5 (2f:54d5)
+.asm_bd4d5 ; bd4d5 (2f:54d5)
 	ld hl, sp+$6
 	ld de, Data_bc517
 	ld [hl], e
@@ -2935,11 +2935,11 @@ Func_bd242:
 	ld [hl], a
 	jp .asm_bd2c7
 
-.asm_bd4eb: ; bd4eb (2f:54eb)
+.asm_bd4eb ; bd4eb (2f:54eb)
 	call Func_bd097
 	jp .asm_bd2c7
 
-.asm_bd4f1: ; bd4f1 (2f:54f1)
+.asm_bd4f1 ; bd4f1 (2f:54f1)
 	call Func_bc14e
 	pop hl
 	push hl
@@ -3102,7 +3102,7 @@ Func_bd5b7:
 	call FillVisibleAreaWithBlankTile
 	pop bc
 	pop hl
-.asm_bd66d: ; bd66d (2f:566d)
+.asm_bd66d ; bd66d (2f:566d)
 	push hl
 	push bc
 	ld e, c
@@ -3143,7 +3143,7 @@ Func_bd5b7:
 	pop hl
 	jp .asm_bd66d
 
-.asm_bd6ac: ; bd6ac (2f:56ac)
+.asm_bd6ac ; bd6ac (2f:56ac)
 	pop de
 	push hl
 	push bc
@@ -3224,7 +3224,7 @@ Func_bd72d:
 	call CopyFromDEtoHL
 	call FillVisibleAreaWithBlankTile
 	call Func_bc092
-.asm_bd75c: ; bd75c (2f:575c)
+.asm_bd75c ; bd75c (2f:575c)
 	call GetHLAtSPPlus6
 	reg16swap de, hl
 	ld hl, $0
@@ -3252,7 +3252,7 @@ Func_bd72d:
 	xor a
 	ld [wStringDestY], a
 	call FillVisibleAreaWithBlankTile
-.asm_bd79c: ; bd79c (2f:579c)
+.asm_bd79c ; bd79c (2f:579c)
 	call GetHLAtSPPlus4
 	ld l, [hl]
 	ld h, $0
@@ -3270,7 +3270,7 @@ Func_bd72d:
 	call WriteHLToSPPlus4
 	jp .asm_bd75c
 
-.asm_bd7bd: ; bd7bd (2f:57bd)
+.asm_bd7bd ; bd7bd (2f:57bd)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3346,7 +3346,7 @@ Func_bd800: ; bd800 (2f:5800)
 	call DivideAbyB
 	ld hl, sp+$8
 	ld [hl], a
-.asm_bd846: ; bd846 (2f:5846)
+.asm_bd846 ; bd846 (2f:5846)
 	ld hl, sp+$8
 	ld c, [hl]
 	ld b, $0
@@ -3416,7 +3416,7 @@ Func_bd8ab: ; bd8ab (2f:58ab)
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
-.asm_bd8b3: ; bd8b3 (2f:58b3)
+.asm_bd8b3 ; bd8b3 (2f:58b3)
 	ld hl, sp+$0
 	ld a, [hl]
 	ld hl, sp+$2
@@ -3453,7 +3453,7 @@ Func_bd8ab: ; bd8ab (2f:58ab)
 	ld [hl], a
 	jp .asm_bd8b3
 
-.asm_bd8ec: ; bd8ec (2f:58ec)
+.asm_bd8ec ; bd8ec (2f:58ec)
 	pop bc
 	pop bc
 	pop bc
@@ -3466,7 +3466,7 @@ Func_bd8f1: ; bd8f1 (2f:58f1)
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
-.asm_bd8f8: ; bd8f8 (2f:58f8)
+.asm_bd8f8 ; bd8f8 (2f:58f8)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp c
@@ -3494,7 +3494,7 @@ Func_bd8f1: ; bd8f1 (2f:58f1)
 	pop bc
 	jp .asm_bd8f8
 
-.asm_bd92b: ; bd92b (2f:592b)
+.asm_bd92b ; bd92b (2f:592b)
 	pop bc
 	pop bc
 	pop bc
@@ -3562,7 +3562,7 @@ Func_bd92f:
 	and $10
 	jp nz, .asm_bd9a2
 	call Func_1fbe
-.asm_bd9a2: ; bd9a2 (2f:59a2)
+.asm_bd9a2 ; bd9a2 (2f:59a2)
 	read_hl_from_sp_plus $16
 	ld de, $5
 	add hl, de
@@ -3604,9 +3604,9 @@ Func_bd92f:
 	inc hl
 	ld de, Data_bdd87
 	call PlaceStringDEatCoordHL
-.asm_bd9e8: ; bd9e8 (2f:59e8)
+.asm_bd9e8 ; bd9e8 (2f:59e8)
 	ld c, $0
-.asm_bd9ea: ; bd9ea (2f:59ea)
+.asm_bd9ea ; bd9ea (2f:59ea)
 	ld hl, sp+$12
 	ld a, [hl]
 	or a
@@ -3663,18 +3663,18 @@ Func_bd92f:
 	jp z, .asm_bda61
 	ld hl, sp+$0
 	ld [hl], $0
-.asm_bda57: ; bda57 (2f:5a57)
+.asm_bda57 ; bda57 (2f:5a57)
 	call DebugMenu_GetJoypad
 	or a
 	jp nz, .asm_bda57
 	jp .asm_bda84
 
-.asm_bda61: ; bda61 (2f:5a61)
+.asm_bda61 ; bda61 (2f:5a61)
 	ld hl, sp+$0
 	ld a, [hl]
 	ld hl, sp+$6
 	ld [hl], a
-.asm_bda67: ; bda67 (2f:5a67)
+.asm_bda67 ; bda67 (2f:5a67)
 	call DebugMenu_GetJoypad
 	or a
 	jp z, .asm_bda80
@@ -3689,16 +3689,16 @@ Func_bd92f:
 	ld [hl], a
 	jp .asm_bda67
 
-.asm_bda80: ; bda80 (2f:5a80)
+.asm_bda80 ; bda80 (2f:5a80)
 	ld hl, sp+$0
 	ld [hl], $f
-.asm_bda84: ; bda84 (2f:5a84)
+.asm_bda84 ; bda84 (2f:5a84)
 	jp .asm_bda8b
 
-.asm_bda87: ; bda87 (2f:5a87)
+.asm_bda87 ; bda87 (2f:5a87)
 	ld hl, sp+$0
 	ld [hl], $0
-.asm_bda8b: ; bda8b (2f:5a8b)
+.asm_bda8b ; bda8b (2f:5a8b)
 	call DebugMenu_GetJoypad
 	ld c, a
 	inc c
@@ -3730,7 +3730,7 @@ Func_bd92f:
 	ld [hl], $1
 	jp .asm_bdc0f
 
-.asm_bdac9: ; bdac9 (2f:5ac9)
+.asm_bdac9 ; bdac9 (2f:5ac9)
 	read_hl_from_sp_plus $16
 	ld de, $d
 	add hl, de
@@ -3757,7 +3757,7 @@ Func_bd92f:
 	ld [hl], a
 	jp .asm_bdb15
 
-.asm_bdafb: ; bdafb (2f:5afb)
+.asm_bdafb ; bdafb (2f:5afb)
 	read_hl_from_sp_plus $16
 	ld de, $e
 	add hl, de
@@ -3773,7 +3773,7 @@ Func_bd92f:
 	ld a, [hl]
 	sub e
 	ld [hl], a
-.asm_bdb15: ; bdb15 (2f:5b15)
+.asm_bdb15 ; bdb15 (2f:5b15)
 	push bc
 	ld hl, sp+$10
 	ld e, [hl]
@@ -3797,7 +3797,7 @@ Func_bd92f:
 	ld a, [hl]
 	inc a
 	ld c, a
-.asm_bdb3b: ; bdb3b (2f:5b3b)
+.asm_bdb3b ; bdb3b (2f:5b3b)
 	ld a, c
 	ld hl, sp+$11
 	cp [hl]
@@ -3819,17 +3819,17 @@ Func_bd92f:
 	ld [hl], $9
 	jp .asm_bdb60
 
-.asm_bdb5d: ; bdb5d (2f:5b5d)
+.asm_bdb5d ; bdb5d (2f:5b5d)
 	jp .asm_bdb64
 
-.asm_bdb60: ; bdb60 (2f:5b60)
+.asm_bdb60 ; bdb60 (2f:5b60)
 	inc c
 	jp .asm_bdb3b
 
-.asm_bdb64: ; bdb64 (2f:5b64)
+.asm_bdb64 ; bdb64 (2f:5b64)
 	jp .asm_bdbb4
 
-.asm_bdb67: ; bdb67 (2f:5b67)
+.asm_bdb67 ; bdb67 (2f:5b67)
 	ld hl, sp+$10
 	ld e, [hl]
 	ld d, $0
@@ -3852,7 +3852,7 @@ Func_bd92f:
 	ld a, [hl]
 	inc a
 	ld c, a
-.asm_bdb8c: ; bdb8c (2f:5b8c)
+.asm_bdb8c ; bdb8c (2f:5b8c)
 	ld a, c
 	ld hl, sp+$11
 	cp [hl]
@@ -3873,18 +3873,18 @@ Func_bd92f:
 	ld [hl], $0
 	jp .asm_bdbb0
 
-.asm_bdbad: ; bdbad (2f:5bad)
+.asm_bdbad ; bdbad (2f:5bad)
 	jp .asm_bdbb4
 
-.asm_bdbb0: ; bdbb0 (2f:5bb0)
+.asm_bdbb0 ; bdbb0 (2f:5bb0)
 	inc c
 	jp .asm_bdb8c
 
-.asm_bdbb4: ; bdbb4 (2f:5bb4)
+.asm_bdbb4 ; bdbb4 (2f:5bb4)
 	pop bc
 	jp .asm_bdc0f
 
-.asm_bdbb8: ; bdbb8 (2f:5bb8)
+.asm_bdbb8 ; bdbb8 (2f:5bb8)
 	ld a, c
 	and $2
 	jp z, .asm_bdbe1
@@ -3907,10 +3907,10 @@ Func_bd92f:
 	jp z, .asm_bdbde
 	ld hl, sp+$12
 	ld [hl], $1
-.asm_bdbde: ; bdbde (2f:5bde)
+.asm_bdbde ; bdbde (2f:5bde)
 	jp .asm_bdc0f
 
-.asm_bdbe1: ; bdbe1 (2f:5be1)
+.asm_bdbe1 ; bdbe1 (2f:5be1)
 	ld a, c
 	and $1
 	jp z, .asm_bdc06
@@ -3929,16 +3929,16 @@ Func_bd92f:
 	jp z, .asm_bdc03
 	ld hl, sp+$12
 	ld [hl], $1
-.asm_bdc03: ; bdc03 (2f:5c03)
+.asm_bdc03 ; bdc03 (2f:5c03)
 	jp .asm_bdc0f
 
-.asm_bdc06: ; bdc06 (2f:5c06)
+.asm_bdc06 ; bdc06 (2f:5c06)
 	ld a, c
 	and $20
 	jp z, .asm_bdc0f
 	jp .asm_bdc9d
 
-.asm_bdc0f: ; bdc0f (2f:5c0f)
+.asm_bdc0f ; bdc0f (2f:5c0f)
 	push bc
 	ld hl, sp+$9
 	ld a, [hl]
@@ -3947,7 +3947,7 @@ Func_bd92f:
 	ld hl, $0
 	write_hl_to_sp_plus $10
 	xor a
-.asm_bdc20: ; bdc20 (2f:5c20)
+.asm_bdc20 ; bdc20 (2f:5c20)
 	ld hl, sp+$11
 	cp [hl]
 	jp nc, .asm_bdc58
@@ -3983,7 +3983,7 @@ Func_bd92f:
 	inc a
 	jp .asm_bdc20
 
-.asm_bdc58: ; bdc58 (2f:5c58)
+.asm_bdc58 ; bdc58 (2f:5c58)
 	read_hl_from_sp_plus $10
 	push hl
 	read_hl_from_sp_plus $10
@@ -3994,7 +3994,7 @@ Func_bd92f:
 	write_hl_to_sp_plus $10
 	jp .asm_bdc8b
 
-.asm_bdc73: ; bdc73 (2f:5c73)
+.asm_bdc73 ; bdc73 (2f:5c73)
 	read_hl_from_sp_plus $c
 	push hl
 	read_hl_from_sp_plus $12
@@ -4003,7 +4003,7 @@ Func_bd92f:
 	jp nc, .asm_bdc8b
 	read_hl_from_sp_plus $c
 	write_hl_to_sp_plus $10
-.asm_bdc8b: ; bdc8b (2f:5c8b)
+.asm_bdc8b ; bdc8b (2f:5c8b)
 	ld hl, sp+$11
 	ld c, [hl]
 	ld hl, sp+$3
@@ -4011,11 +4011,11 @@ Func_bd92f:
 	read_hl_from_sp_plus $12
 	pop de
 	call Func_bd8f1
-.asm_bdc99: ; bdc99 (2f:5c99)
+.asm_bdc99 ; bdc99 (2f:5c99)
 	pop bc
 	jp .asm_bd9ea
 
-.asm_bdc9d: ; bdc9d (2f:5c9d)
+.asm_bdc9d ; bdc9d (2f:5c9d)
 	call CheckButton
 	push af
 	ld hl, sp+$14
@@ -4025,7 +4025,7 @@ Func_bd92f:
 	ld hl, $0
 	write_hl_to_sp_plus $10
 	xor a
-.asm_bdcb0: ; bdcb0 (2f:5cb0)
+.asm_bdcb0 ; bdcb0 (2f:5cb0)
 	ld hl, sp+$11
 	cp [hl]
 	jp nc, .asm_bdce8
@@ -4061,7 +4061,7 @@ Func_bd92f:
 	inc a
 	jp .asm_bdcb0
 
-.asm_bdce8: ; bdce8 (2f:5ce8)
+.asm_bdce8 ; bdce8 (2f:5ce8)
 	read_hl_from_sp_plus $10
 	push hl
 	read_hl_from_sp_plus $1a
@@ -4073,7 +4073,7 @@ Func_bd92f:
 	ld [hl], d
 	jp .asm_bdd0c
 
-.asm_bdcfc: ; bdcfc (2f:5cfc)
+.asm_bdcfc ; bdcfc (2f:5cfc)
 	read_hl_from_sp_plus $18
 	ld de, $6
 	add hl, de
@@ -4082,7 +4082,7 @@ Func_bd92f:
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $10
-.asm_bdd0c: ; bdd0c (2f:5d0c)
+.asm_bdd0c ; bdd0c (2f:5d0c)
 	ld hl, sp+$11
 	ld c, [hl]
 	ld hl, sp+$3
@@ -4136,7 +4136,7 @@ Func_bd92f:
 	call Coord2TileMap
 	ld a, [wBlinkerOffTile]
 	ld [hl], a
-.asm_bdd68: ; bdd68 (2f:5d68)
+.asm_bdd68 ; bdd68 (2f:5d68)
 	ld l, $2
 	push hl
 	ld hl, sp+$13
@@ -4152,7 +4152,7 @@ Func_bd92f:
 	and $10
 	jp nz, .asm_bdd83
 	call Func_2009
-.asm_bdd83: ; bdd83 (2f:5d83)
+.asm_bdd83 ; bdd83 (2f:5d83)
 	pop af
 	add sp, $16
 	ret
@@ -4335,7 +4335,7 @@ Func_bde59: ; bde59 (2f:5e59)
 	call FarCall
 	ld c, $0
 	pop de
-.asm_bdeec: ; bdeec (2f:5eec)
+.asm_bdeec ; bdeec (2f:5eec)
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
@@ -4371,7 +4371,7 @@ Func_bde59: ; bde59 (2f:5e59)
 	pop de
 	jp .asm_bdeec
 
-.asm_bdf23: ; bdf23 (2f:5f23)
+.asm_bdf23 ; bdf23 (2f:5f23)
 	pop bc
 	pop bc
 	pop bc
@@ -4484,7 +4484,7 @@ Func_bdf27:
 	call SetStringStartState
 	ld a, $8f
 	call Func_bc170
-.asm_bdfaf: ; bdfaf (2f:5faf)
+.asm_bdfaf ; bdfaf (2f:5faf)
 	ld hl, sp+$a
 	ld c, [hl]
 	ld b, $0
@@ -4647,7 +4647,7 @@ Func_bdfea:
 .asm_be0af
 	jp .asm_be0f0
 
-.asm_be0b2: ; be0b2 (2f:60b2)
+.asm_be0b2 ; be0b2 (2f:60b2)
 	read_hl_from_sp_plus $e
 	push hl
 	call GetHLAtSPPlus10
@@ -4675,7 +4675,7 @@ Func_bdfea:
 	call GetHLAtSPPlus6
 	dec hl
 	call WriteHLToSPPlus6
-.asm_be0f0: ; be0f0 (2f:60f0)
+.asm_be0f0 ; be0f0 (2f:60f0)
 	read_hl_from_sp_plus $12
 	ld de, $5
 	add hl, de
@@ -4705,7 +4705,7 @@ Func_bdfea:
 	call Func_bde59
 	jp .asm_be165
 
-.asm_be12c: ; be12c (2f:612c)
+.asm_be12c ; be12c (2f:612c)
 	call GetHLAtSPPlus10
 	ld a, l
 	and h
@@ -4725,7 +4725,7 @@ Func_bdfea:
 	call SetStringStartState
 	ld a, $8f
 	call Func_bc170
-.asm_be14d: ; be14d (2f:614d)
+.asm_be14d ; be14d (2f:614d)
 	ld hl, sp+$e
 	ld c, [hl]
 	ld b, $0
@@ -4740,7 +4740,7 @@ Func_bdfea:
 	call SetStringStartState
 	ld a, $8b
 	call Func_bc170
-.asm_be165: ; be165 (2f:6165)
+.asm_be165 ; be165 (2f:6165)
 	call GetHLAtSPPlus8
 	ld c, l
 	ld b, h
@@ -4930,7 +4930,7 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	call FarCall
 	ld hl, $0
 	call WriteHLToSPPlus4
-.asm_be309: ; be309 (2f:6309)
+.asm_be309 ; be309 (2f:6309)
 	call GetHLAtSPPlus4
 	ld de, $168
 	call CompareHLtoDE
@@ -4948,12 +4948,12 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	call WriteHLToSPPlus4
 	jp .asm_be309
 
-.asm_be32e: ; be32e (2f:632e)
+.asm_be32e ; be32e (2f:632e)
 	ld a, [wc319]
 	cp $80
 	jp nz, .asm_be381
 	ld bc, $0
-.asm_be339: ; be339 (2f:6339)
+.asm_be339 ; be339 (2f:6339)
 	ld l, c
 	ld h, b
 	ld de, $168
@@ -4969,7 +4969,7 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	inc bc
 	jp .asm_be339
 
-.asm_be351: ; be351 (2f:6351)
+.asm_be351 ; be351 (2f:6351)
 	set_farcall_addrs_hli Func_7766
 	ld c, $1
 	pop hl
@@ -4989,7 +4989,7 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	call Func_2a3e
 	jp .asm_be3c9
 
-.asm_be381: ; be381 (2f:6381)
+.asm_be381 ; be381 (2f:6381)
 	set_farcall_addrs_hli Func_7748
 	ld c, $1
 	pop hl
@@ -4998,7 +4998,7 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	ld hl, $168
 	call FarCall
 	ld bc, $0
-.asm_be39d: ; be39d (2f:639d)
+.asm_be39d ; be39d (2f:639d)
 	ld l, c
 	ld h, b
 	ld de, $168
@@ -5014,7 +5014,7 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	inc bc
 	jp .asm_be39d
 
-.asm_be3b5: ; be3b5 (2f:63b5)
+.asm_be3b5 ; be3b5 (2f:63b5)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -5025,7 +5025,7 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	ld e, $0
 	ld hl, Data_be3e9
 	call Func_2a3e
-.asm_be3c9: ; be3c9 (2f:63c9)
+.asm_be3c9 ; be3c9 (2f:63c9)
 	set_farcall_addrs_hli free
 	pop hl
 	push hl
@@ -5082,7 +5082,7 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	ld a, [wc326]
 	cp $80
 	jp nz, .asm_be579
-.asm_be53e: ; be53e (2f:653e)
+.asm_be53e ; be53e (2f:653e)
 	call CheckButton
 	and B_BUTTON
 	jp nz, .asm_be53e
@@ -5100,12 +5100,12 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	call FarCall
 	jp .asm_be621
 
-.asm_be579: ; be579 (2f:6579)
+.asm_be579 ; be579 (2f:6579)
 	ld a, [wc326]
 	cp $80
 	jp nz, .asm_be5b1
 	ld de, $0
-.asm_be584: ; be584 (2f:6584)
+.asm_be584 ; be584 (2f:6584)
 	ld a, e
 	sub $0
 	ld a, d
@@ -5117,7 +5117,7 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	inc de
 	jp .asm_be584
 
-.asm_be595: ; be595 (2f:6595)
+.asm_be595 ; be595 (2f:6595)
 	set_farcall_addrs_hli Func_790f
 	ld c, $5
 	ld hl, sp+$0
@@ -5126,14 +5126,14 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	call FarCall
 	jp .asm_be5ca
 
-.asm_be5b1: ; be5b1 (2f:65b1)
+.asm_be5b1 ; be5b1 (2f:65b1)
 	set_farcall_addrs_hli Func_7882
 	ld c, $5
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld hl, $100
 	call FarCall
-.asm_be5ca: ; be5ca (2f:65ca)
+.asm_be5ca ; be5ca (2f:65ca)
 	push af
 	read_hl_from_sp_plus $104
 	call Func_2887
@@ -5154,7 +5154,7 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	call FarCall
 	jp .asm_be61e
 
-.asm_be608: ; be608 (2f:6608)
+.asm_be608 ; be608 (2f:6608)
 	push af
 	set_farcall_addrs_hli Func_bd6fa
 	pop af
@@ -5162,9 +5162,9 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	ld d, $0
 	ld hl, Data_be652
 	call FarCall
-.asm_be61e: ; be61e (2f:661e)
+.asm_be61e ; be61e (2f:661e)
 	call Func_2009
-.asm_be621: ; be621 (2f:6621)
+.asm_be621 ; be621 (2f:6621)
 	ld hl, $102
 	add hl, sp
 	ld sp, hl
@@ -5320,7 +5320,7 @@ Func_be6ab: ; be6ab (2f:66ab)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-.asm_be7ee: ; be7ee (2f:67ee)
+.asm_be7ee ; be7ee (2f:67ee)
 	ld hl, sp+$0
 	ld a, [hl]
 	or a
@@ -5332,7 +5332,7 @@ Func_be6ab: ; be6ab (2f:66ab)
 	jp z, .asm_be803
 	jp .asm_be855
 
-.asm_be803: ; be803 (2f:6803)
+.asm_be803 ; be803 (2f:6803)
 	ld a, l
 	and $10
 	jp z, .asm_be820
@@ -5343,16 +5343,16 @@ Func_be6ab: ; be6ab (2f:66ab)
 	call FarCall
 	jp .asm_be828
 
-.asm_be820: ; be820 (2f:6820)
+.asm_be820 ; be820 (2f:6820)
 	ld hl, sp+$0
 	ld a, [hl]
 	xor $1
 	ld hl, sp+$0
 	ld [hl], a
-.asm_be828: ; be828 (2f:6828)
+.asm_be828 ; be828 (2f:6828)
 	jp .asm_be852
 
-.asm_be82b: ; be82b (2f:682b)
+.asm_be82b ; be82b (2f:682b)
 	ld hl, sp+$31
 	call Func_bd92f
 	ld l, a
@@ -5360,7 +5360,7 @@ Func_be6ab: ; be6ab (2f:66ab)
 	jp z, .asm_be839
 	jp .asm_be855
 
-.asm_be839: ; be839 (2f:6839)
+.asm_be839 ; be839 (2f:6839)
 	ld a, l
 	and $10
 	jp z, .asm_be84a
@@ -5369,16 +5369,16 @@ Func_be6ab: ; be6ab (2f:66ab)
 	call OverworldPlaySong
 	jp .asm_be852
 
-.asm_be84a: ; be84a (2f:684a)
+.asm_be84a ; be84a (2f:684a)
 	ld hl, sp+$0
 	ld a, [hl]
 	xor $1
 	ld hl, sp+$0
 	ld [hl], a
-.asm_be852: ; be852 (2f:6852)
+.asm_be852 ; be852 (2f:6852)
 	jp .asm_be7ee
 
-.asm_be855: ; be855 (2f:6855)
+.asm_be855 ; be855 (2f:6855)
 	callba_hli FreeMonsterStruct
 	xor a
 	ld [wInBattle], a
@@ -5525,7 +5525,7 @@ Func_be965: ; be965 (2f:6965)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
-.asm_bea04: ; bea04 (2f:6a04)
+.asm_bea04 ; bea04 (2f:6a04)
 	ld hl, sp+$0
 	ld a, [hl]
 	or a
@@ -5537,7 +5537,7 @@ Func_be965: ; be965 (2f:6965)
 	jp z, .asm_bea19
 	jp .asm_bea5e
 
-.asm_bea19: ; bea19 (2f:6a19)
+.asm_bea19 ; bea19 (2f:6a19)
 	ld a, l
 	and $10
 	jp z, .asm_bea2a
@@ -5546,16 +5546,16 @@ Func_be965: ; be965 (2f:6965)
 	call OverworldPlaySong
 	jp .asm_bea32
 
-.asm_bea2a: ; bea2a (2f:6a2a)
+.asm_bea2a ; bea2a (2f:6a2a)
 	ld hl, sp+$0
 	ld a, [hl]
 	xor $1
 	ld hl, sp+$0
 	ld [hl], a
-.asm_bea32: ; bea32 (2f:6a32)
+.asm_bea32 ; bea32 (2f:6a32)
 	jp .asm_bea5b
 
-.asm_bea35: ; bea35 (2f:6a35)
+.asm_bea35 ; bea35 (2f:6a35)
 	ld hl, sp+$1
 	call Func_bd92f
 	ld l, a
@@ -5563,7 +5563,7 @@ Func_be965: ; be965 (2f:6965)
 	jp z, .asm_bea43
 	jp .asm_bea5e
 
-.asm_bea43: ; bea43 (2f:6a43)
+.asm_bea43 ; bea43 (2f:6a43)
 	ld a, l
 	and $10
 	jp z, .asm_bea53
@@ -5572,16 +5572,16 @@ Func_be965: ; be965 (2f:6965)
 	call OverworldPlaySFX
 	jp .asm_bea5b
 
-.asm_bea53: ; bea53 (2f:6a53)
+.asm_bea53 ; bea53 (2f:6a53)
 	ld hl, sp+$0
 	ld a, [hl]
 	xor $1
 	ld hl, sp+$0
 	ld [hl], a
-.asm_bea5b: ; bea5b (2f:6a5b)
+.asm_bea5b ; bea5b (2f:6a5b)
 	jp .asm_bea04
 
-.asm_bea5e: ; bea5e (2f:6a5e)
+.asm_bea5e ; bea5e (2f:6a5e)
 	xor a
 	call OverworldPlaySong
 	xor a
@@ -5699,7 +5699,7 @@ Func_bebdb: ; bebdb (2f:6bdb)
 	ld e, $14
 	ld hl, $0
 	call Func_bc486
-.asm_bebe5: ; bebe5 (2f:6be5)
+.asm_bebe5 ; bebe5 (2f:6be5)
 	ld e, $1
 	ld a, $1
 	call SetStringStartState
@@ -5738,10 +5738,10 @@ Func_bebdb: ; bebdb (2f:6bdb)
 	jp z, .asm_bec57
 	jp .asm_bec5a
 
-.asm_bec57: ; bec57 (2f:6c57)
+.asm_bec57 ; bec57 (2f:6c57)
 	jp .asm_bebe5
 
-.asm_bec5a: ; bec5a (2f:6c5a)
+.asm_bec5a ; bec5a (2f:6c5a)
 	ret
 
 Data_bec5b:
@@ -5762,7 +5762,7 @@ Func_bec61: ; bec61 (2f:6c61)
 	ld a, [wNextVBlankFlags]
 	or $20
 	ld [wNextVBlankFlags], a
-.wait: ; bec8a (2f:6c8a)
+.wait ; bec8a (2f:6c8a)
 	ld a, [wNextVBlankFlags]
 	ld hl, wLastVBlankFlags
 	cp [hl]
@@ -5916,7 +5916,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	ld a, $1
 	ld [wPoncotPicAlignment], a
 	call FillVisibleAreaWithBlankTile
-.asm_bee08: ; bee08 (2f:6e08)
+.asm_bee08 ; bee08 (2f:6e08)
 	ld de, Data_befd3
 	ld hl, $10f
 	call PlaceStringDEatCoordHL
@@ -5958,7 +5958,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	call FarCall
 	jp .asm_bee8a
 
-.asm_bee6f: ; bee6f (2f:6e6f)
+.asm_bee6f ; bee6f (2f:6e6f)
 	ld hl, sp+$2
 	ld c, [hl]
 	ld b, $0
@@ -5971,7 +5971,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	write_hl_to_sp_plus $b
 	read_hl_from_sp_plus $1b
 	ld a, l
-.asm_bee8a: ; bee8a (2f:6e8a)
+.asm_bee8a ; bee8a (2f:6e8a)
 	ld de, Data_befd8
 	ld hl, $a0f
 	call PlaceStringDEatCoordHL
@@ -6009,9 +6009,9 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	ld hl, $0
 	jp .asm_beee0
 
-.asm_beedd: ; beedd (2f:6edd)
+.asm_beedd ; beedd (2f:6edd)
 	ld hl, $40
-.asm_beee0: ; beee0 (2f:6ee0)
+.asm_beee0 ; beee0 (2f:6ee0)
 	add hl, de
 	reg16swap de, hl
 	ld hl, $105
@@ -6046,10 +6046,10 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	jp z, .asm_bef2c
 	jp .asm_befa5
 
-.asm_bef2c: ; bef2c (2f:6f2c)
+.asm_bef2c ; bef2c (2f:6f2c)
 	jp .asm_bef3d
 
-.asm_bef2f: ; bef2f (2f:6f2f)
+.asm_bef2f ; bef2f (2f:6f2f)
 	ld hl, sp+$3
 	call Func_bd92f
 	ld e, a
@@ -6057,7 +6057,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	jp z, .asm_bef3d
 	jp .asm_befa5
 
-.asm_bef3d: ; bef3d (2f:6f3d)
+.asm_bef3d ; bef3d (2f:6f3d)
 	ld a, e
 	and $40
 	jp z, .asm_bef4b
@@ -6066,7 +6066,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	xor $1
 	ld hl, sp+$1
 	ld [hl], a
-.asm_bef4b: ; bef4b (2f:6f4b)
+.asm_bef4b ; bef4b (2f:6f4b)
 	ld a, e
 	and $80
 	jp z, .asm_bef9a
@@ -6075,14 +6075,14 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	ld e, l
 	ld hl, sp+$0
 	ld [hl], e
-.asm_bef5a: ; bef5a (2f:6f5a)
+.asm_bef5a ; bef5a (2f:6f5a)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $aa
 	jp c, .asm_bef66
 	ld hl, sp+$0
 	ld [hl], $1
-.asm_bef66: ; bef66 (2f:6f66)
+.asm_bef66 ; bef66 (2f:6f66)
 	set_farcall_addrs_hli Func_615be
 	ld hl, sp+$0
 	ld a, [hl]
@@ -6094,7 +6094,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	call OverworldPlaySFX
 	jp .asm_bef91
 
-.asm_bef87: ; bef87 (2f:6f87)
+.asm_bef87 ; bef87 (2f:6f87)
 	ld hl, sp+$0
 	ld a, [hl]
 	inc a
@@ -6102,12 +6102,12 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	ld [hl], a
 	jp .asm_bef5a
 
-.asm_bef91: ; bef91 (2f:6f91)
+.asm_bef91 ; bef91 (2f:6f91)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
 	write_hl_to_sp_plus $1b
-.asm_bef9a: ; bef9a (2f:6f9a)
+.asm_bef9a ; bef9a (2f:6f9a)
 	ld hl, sp+$2
 	ld a, [hl]
 	xor $1
@@ -6115,7 +6115,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	ld [hl], a
 	jp .asm_bee08
 
-.asm_befa5: ; befa5 (2f:6fa5)
+.asm_befa5 ; befa5 (2f:6fa5)
 	xor a
 	ld [wPoncotPicAlignment], a
 	callba_hli FreeMonsterStruct
@@ -6165,7 +6165,7 @@ Func_bf01e: ; bf01e (2f:701e)
 	ld hl, Pointers_befdc
 	ld bc, $a
 	call MemCopy
-.asm_bf032: ; bf032 (2f:7032)
+.asm_bf032 ; bf032 (2f:7032)
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
 	ld e, $14
@@ -6211,7 +6211,7 @@ Func_bf094: ; bf094 (2f:7094)
 	call FillVisibleAreaWithBlankTile
 	pop hl
 	pop de
-.asm_bf0cc: ; bf0cc (2f:70cc)
+.asm_bf0cc ; bf0cc (2f:70cc)
 	push de
 	push hl
 	ld de, Data_bf206
@@ -6309,24 +6309,24 @@ Func_bf094: ; bf094 (2f:7094)
 	ld e, a
 	jp .asm_bf1a7
 
-.asm_bf198: ; bf198 (2f:7198)
+.asm_bf198 ; bf198 (2f:7198)
 	ld hl, sp+$12
 	call Func_bd92f
 	ld e, a
 	jp .asm_bf1a7
 
-.asm_bf1a1: ; bf1a1 (2f:71a1)
+.asm_bf1a1 ; bf1a1 (2f:71a1)
 	ld hl, sp+$2
 	call Func_bd92f
 	ld e, a
-.asm_bf1a7: ; bf1a7 (2f:71a7)
+.asm_bf1a7 ; bf1a7 (2f:71a7)
 	pop hl
 	ld a, e
 	and $20
 	jp z, .asm_bf1b1
 	jp .asm_bf203
 
-.asm_bf1b1: ; bf1b1 (2f:71b1)
+.asm_bf1b1 ; bf1b1 (2f:71b1)
 	push de
 	ld a, e
 	and $40
@@ -6336,10 +6336,10 @@ Func_bf094: ; bf094 (2f:7094)
 	cp $3
 	jp c, .asm_bf1c1
 	ld l, $0
-.asm_bf1c1: ; bf1c1 (2f:71c1)
+.asm_bf1c1 ; bf1c1 (2f:71c1)
 	push hl
 	call WaitVideoTransfer
-.asm_bf1c5: ; bf1c5 (2f:71c5)
+.asm_bf1c5 ; bf1c5 (2f:71c5)
 	ld a, [wNextVBlankFlags]
 	and $40
 	jp nz, .asm_bf1c5
@@ -6365,7 +6365,7 @@ Func_bf094: ; bf094 (2f:7094)
 	ld a, [wNextVBlankFlags]
 	or $40
 	ld [wNextVBlankFlags], a
-.asm_bf1f6: ; bf1f6 (2f:71f6)
+.asm_bf1f6 ; bf1f6 (2f:71f6)
 	ld a, [wNextVBlankFlags]
 	and $40
 	jp nz, .asm_bf1f6
@@ -6373,7 +6373,7 @@ Func_bf094: ; bf094 (2f:7094)
 	pop de
 	jp .asm_bf0cc
 
-.asm_bf203: ; bf203 (2f:7203)
+.asm_bf203 ; bf203 (2f:7203)
 	add sp, $30
 	ret
 
@@ -6449,7 +6449,7 @@ Func_bf214:: ; bf214 (2f:7214)
 	pop bc
 	pop bc
 	pop bc
-.asm_bf297: ; bf297 (2f:7297)
+.asm_bf297 ; bf297 (2f:7297)
 	push bc
 	call GetHLAtSPPlus4
 	reg16swap de, hl
@@ -6493,91 +6493,91 @@ Func_bf214:: ; bf214 (2f:7214)
 	pop bc
 	jp .asm_bf297
 
-.asm_bf2f8: ; bf2f8 (2f:72f8)
+.asm_bf2f8 ; bf2f8 (2f:72f8)
 	push bc
 	call DebugMenu_SerialTest
 	pop bc
 	jp .asm_bf297
 
-.asm_bf300: ; bf300 (2f:7300)
+.asm_bf300 ; bf300 (2f:7300)
 	push bc
 	call DebugMenu_IRTest
 	pop bc
 	jp .asm_bf297
 
-.asm_bf308: ; bf308 (2f:7308)
+.asm_bf308 ; bf308 (2f:7308)
 	push bc
 	call Func_be6ab
 	pop bc
 	jp .asm_bf297
 
-.asm_bf310: ; bf310 (2f:7310)
+.asm_bf310 ; bf310 (2f:7310)
 	push bc
 	call Func_be8c0
 	pop bc
 	jp .asm_bf297
 
-.asm_bf318: ; bf318 (2f:7318)
+.asm_bf318 ; bf318 (2f:7318)
 	push bc
 	call Func_be965
 	pop bc
 	jp .asm_bf297
 
-.asm_bf320: ; bf320 (2f:7320)
+.asm_bf320 ; bf320 (2f:7320)
 	push bc
 	call Func_bea7d
 	pop bc
 	jp .asm_bf297
 
-.asm_bf328: ; bf328 (2f:7328)
+.asm_bf328 ; bf328 (2f:7328)
 	push bc
 	call Func_beba0
 	pop bc
 	jp .asm_bf297
 
-.asm_bf330: ; bf330 (2f:7330)
+.asm_bf330 ; bf330 (2f:7330)
 	push bc
 	call Func_bebdb
 	pop bc
 	jp .asm_bf297
 
-.asm_bf338: ; bf338 (2f:7338)
+.asm_bf338 ; bf338 (2f:7338)
 	push bc
 	call Func_bec61
 	pop bc
 	jp .asm_bf297
 
-.asm_bf340: ; bf340 (2f:7340)
+.asm_bf340 ; bf340 (2f:7340)
 	push bc
 	call Func_becc2
 	pop bc
 	jp .asm_bf297
 
-.asm_bf348: ; bf348 (2f:7348)
+.asm_bf348 ; bf348 (2f:7348)
 	push bc
 	call Func_bed16
 	pop bc
 	jp .asm_bf297
 
-.asm_bf350: ; bf350 (2f:7350)
+.asm_bf350 ; bf350 (2f:7350)
 	push bc
 	call DebugTest_SeeBattleChara
 	pop bc
 	jp .asm_bf297
 
-.asm_bf358: ; bf358 (2f:7358)
+.asm_bf358 ; bf358 (2f:7358)
 	push bc
 	call Func_bf01e
 	pop bc
 	jp .asm_bf297
 
-.asm_bf360: ; bf360 (2f:7360)
+.asm_bf360 ; bf360 (2f:7360)
 	push bc
 	call Func_bf094
 	pop bc
 	jp .asm_bf297
 
-.asm_bf368: ; bf368 (2f:7368)
+.asm_bf368 ; bf368 (2f:7368)
 	push bc
 	ld l, $12
 	push hl
@@ -6611,7 +6611,7 @@ Func_bf397: ; bf397 (2f:7397)
 	ld hl, $0
 	pop de
 	push hl
-.asm_bf3b6: ; bf3b6 (2f:73b6)
+.asm_bf3b6 ; bf3b6 (2f:73b6)
 	call GetHLAtSPPlus8
 	ld a, l
 	or h
@@ -6637,7 +6637,7 @@ Func_bf397: ; bf397 (2f:7397)
 	ld b, h
 	jp .asm_bf3f1
 
-.asm_bf3e1: ; bf3e1 (2f:73e1)
+.asm_bf3e1 ; bf3e1 (2f:73e1)
 	push bc
 	call GetHLAtSPPlus10
 	inc hl
@@ -6648,7 +6648,7 @@ Func_bf397: ; bf397 (2f:7397)
 	add hl, bc
 	call WriteHLToSPPlus6
 	pop bc
-.asm_bf3f1: ; bf3f1 (2f:73f1)
+.asm_bf3f1 ; bf3f1 (2f:73f1)
 	push bc
 	call GetHLAtSPPlus10
 	inc hl
@@ -6665,15 +6665,15 @@ Func_bf397: ; bf397 (2f:7397)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
-.asm_bf40d: ; bf40d (2f:740d)
+.asm_bf40d ; bf40d (2f:740d)
 	pop bc
 	jp .asm_bf418
 
-.asm_bf411: ; bf411 (2f:7411)
+.asm_bf411 ; bf411 (2f:7411)
 	call GetHLAtSPPlus6
 	inc hl
 	call WriteHLToSPPlus6
-.asm_bf418: ; bf418 (2f:7418)
+.asm_bf418 ; bf418 (2f:7418)
 	call GetHLAtSPPlus8
 	inc hl
 	inc hl
@@ -6685,7 +6685,7 @@ Func_bf397: ; bf397 (2f:7397)
 	call WriteHLToSPPlus8
 	jp .asm_bf3b6
 
-.asm_bf428: ; bf428 (2f:7428)
+.asm_bf428 ; bf428 (2f:7428)
 	call GetHLAtSPPlus4
 	add hl, bc
 	pop bc
@@ -6721,7 +6721,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	read_hl_from wHeapPtr
 	pop de
 	push hl
-.asm_bf460: ; bf460 (2f:7460)
+.asm_bf460 ; bf460 (2f:7460)
 	pop hl
 	push hl
 	ld a, l
@@ -6739,7 +6739,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	ld a, [hl]
 	cp $55
 	jp z, .asm_bf4d8
-.asm_bf47b: ; bf47b (2f:747b)
+.asm_bf47b ; bf47b (2f:747b)
 	call FillVisibleAreaWithBlankTile
 	ld a, $1
 	ld [wFarCallDestBank], a
@@ -6787,10 +6787,10 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	xor a
 	call PushBGMapRegion
 	pop bc
-.asm_bf4d5: ; bf4d5 (2f:74d5)
+.asm_bf4d5 ; bf4d5 (2f:74d5)
 	jp .asm_bf4d5
 
-.asm_bf4d8: ; bf4d8 (2f:74d8)
+.asm_bf4d8 ; bf4d8 (2f:74d8)
 	ld hl, sp+$7
 	ld [hl], $1
 	pop hl
@@ -6809,7 +6809,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	jp c, .asm_bf4f4
 	jp .asm_bf517
 
-.asm_bf4f4: ; bf4f4 (2f:74f4)
+.asm_bf4f4 ; bf4f4 (2f:74f4)
 	ld hl, sp+$7
 	ld [hl], $2
 	pop hl
@@ -6828,12 +6828,12 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	jp c, .asm_bf510
 	jp .asm_bf517
 
-.asm_bf510: ; bf510 (2f:7510)
+.asm_bf510 ; bf510 (2f:7510)
 	ld hl, sp+$7
 	ld [hl], $3
 	jp .asm_bf47b
 
-.asm_bf517: ; bf517 (2f:7517)
+.asm_bf517 ; bf517 (2f:7517)
 	ld hl, sp+$7
 	ld [hl], $4
 	call GetHLAtSPPlus5
@@ -6853,7 +6853,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	jp c, .asm_bf535
 	jp .asm_bf47b
 
-.asm_bf535: ; bf535 (2f:7535)
+.asm_bf535 ; bf535 (2f:7535)
 	pop hl
 	push hl
 	call WriteHLToSPPlus5
@@ -6879,7 +6879,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus7
-.asm_bf55b: ; bf55b (2f:755b)
+.asm_bf55b ; bf55b (2f:755b)
 	pop hl
 	push hl
 	inc hl
@@ -6896,7 +6896,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	jp nz, .asm_bf575
 	ld hl, -1
 	call WriteHLToSPPlus5
-.asm_bf575: ; bf575 (2f:7575)
+.asm_bf575 ; bf575 (2f:7575)
 	pop hl
 	push hl
 	inc hl
@@ -6910,7 +6910,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	push hl
 	jp .asm_bf460
 
-.asm_bf583: ; bf583 (2f:7583)
+.asm_bf583 ; bf583 (2f:7583)
 	ld hl, sp+$7
 	ld [hl], $5
 	call GetHLAtSPPlus7
@@ -6919,10 +6919,10 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	jp nc, .asm_bf596
 	jp .asm_bf47b
 
-.asm_bf596: ; bf596 (2f:7596)
+.asm_bf596 ; bf596 (2f:7596)
 	jp .asm_bf701
 
-.asm_bf599: ; bf599 (2f:7599)
+.asm_bf599 ; bf599 (2f:7599)
 	push hl
 	ldh a, [rLCDC]
 	ld [wLCDC], a
@@ -6939,9 +6939,9 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	xor a
 	jp .asm_bf5ba
 
-.asm_bf5b8: ; bf5b8 (2f:75b8)
+.asm_bf5b8 ; bf5b8 (2f:75b8)
 	ld a, $1
-.asm_bf5ba: ; bf5ba (2f:75ba)
+.asm_bf5ba ; bf5ba (2f:75ba)
 	push af
 	ld hl, sp+$e
 	ldh a, [rIE]
@@ -7034,7 +7034,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	ld de, $1303
 	ld bc, $0
 	call FarCall
-.asm_bf680: ; bf680 (2f:7680)
+.asm_bf680 ; bf680 (2f:7680)
 	call CheckButton
 	and $30
 	jp z, .asm_bf680
@@ -7082,7 +7082,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	ld a, [hl]
 	ldh [rIE], a
 	set_farcall_addrs_hli malloc
-.asm_bf701: ; bf701 (2f:7701)
+.asm_bf701 ; bf701 (2f:7701)
 	ld hl, $14a
 	add hl, sp
 	ld sp, hl

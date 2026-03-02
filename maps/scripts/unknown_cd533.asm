@@ -209,12 +209,12 @@ Func_cd533:: ; cd533
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_cd549:
+.asm_cd549
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cd559
 	setevent EVENT_061
-.asm_cd559:
+.asm_cd559
 	ld a, $03
 	scall Func_80d01
 	ld a, [wc7de]
@@ -222,57 +222,57 @@ Func_cd533:: ; cd533
 	jp nc, .asm_cd571
 	loadwilds $05, Data_cd143
 	jp .asm_cd611
-.asm_cd571:
+.asm_cd571
 	ld a, [wc7de]
 	cp $0b
 	jp nc, .asm_cd584
 	loadwilds $05, Data_cd189
 	jp .asm_cd611
-.asm_cd584:
+.asm_cd584
 	ld a, [wc7de]
 	cp $10
 	jp nc, .asm_cd597
 	loadwilds $05, Data_cd1cf
 	jp .asm_cd611
-.asm_cd597:
+.asm_cd597
 	ld a, [wc7de]
 	cp $15
 	jp nc, .asm_cd5aa
 	loadwilds $05, Data_cd215
 	jp .asm_cd611
-.asm_cd5aa:
+.asm_cd5aa
 	ld a, [wc7de]
 	cp $1a
 	jp nc, .asm_cd5bd
 	loadwilds $05, Data_cd25b
 	jp .asm_cd611
-.asm_cd5bd:
+.asm_cd5bd
 	ld a, [wc7de]
 	cp $1f
 	jp nc, .asm_cd5d0
 	loadwilds $05, Data_cd2a1
 	jp .asm_cd611
-.asm_cd5d0:
+.asm_cd5d0
 	ld a, [wc7de]
 	cp $24
 	jp nc, .asm_cd5e3
 	loadwilds $05, Data_cd2e7
 	jp .asm_cd611
-.asm_cd5e3:
+.asm_cd5e3
 	ld a, [wc7de]
 	cp $29
 	jp nc, .asm_cd5f6
 	loadwilds $05, Data_cd32d
 	jp .asm_cd611
-.asm_cd5f6:
+.asm_cd5f6
 	ld a, [wc7de]
 	cp $2e
 	jp nc, .asm_cd609
 	loadwilds $05, Data_cd373
 	jp .asm_cd611
-.asm_cd609:
+.asm_cd609
 	loadwilds $09, Data_cd3b9
-.asm_cd611:
+.asm_cd611
 	ld a, [wc7de]
 	inc a
 	cp $33
@@ -312,7 +312,7 @@ Func_cd533:: ; cd533
 	add hl, de
 	ld e, $01
 	scall LoadWarps
-.asm_cd651:
+.asm_cd651
 	loadwarps $01, Data_cd0b4
 	loadpeople $12, Data_cd437
 	playmusic SONG_CAVE
@@ -322,12 +322,12 @@ Func_cd533:: ; cd533
 	jp nz, .asm_cd67a
 	writetext TreeBitstreamText_47e17
 	jp .asm_cd683
-.asm_cd67a:
+.asm_cd67a
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $00
 	scall Func_80f83
-.asm_cd683:
+.asm_cd683
 	ret
 
 Data_cd684:
@@ -379,7 +379,7 @@ Func_cd6d0:
 	or a
 	jp z, .asm_cd6e0
 	jp .asm_cd738
-.asm_cd6e0:
+.asm_cd6e0
 	ld hl, sp+$01
 	ld a, [hl]
 	add a, $09
@@ -419,6 +419,6 @@ Func_cd6d0:
 	scall Func_80f54
 	ld a, $01
 	ld [wc7c4], a
-.asm_cd738:
+.asm_cd738
 	pop bc
 	ret

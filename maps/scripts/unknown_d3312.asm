@@ -92,7 +92,7 @@ Data_d32e6: ; d32e6
 
 Func_d3312:: ; d3312 (34:7312)
 	ld c, $0
-.asm_d3314: ; d3314 (34:7314)
+.asm_d3314 ; d3314 (34:7314)
 	ld a, c
 	cp $b
 	jp nc, .asm_d337c
@@ -155,11 +155,11 @@ Func_d3312:: ; d3312 (34:7312)
 	scall LoadWarps
 	jp .asm_d337c
 
-.asm_d3378: ; d3378 (34:7378)
+.asm_d3378 ; d3378 (34:7378)
 	inc c
 	jp .asm_d3314
 
-.asm_d337c: ; d337c (34:737c)
+.asm_d337c ; d337c (34:737c)
 	ld a, [wBackupMapGroup]
 	cp $1d
 	jp nz, .asm_d33ed
@@ -178,7 +178,7 @@ Func_d3312:: ; d3312 (34:7312)
 	jp z, .asm_d33af
 	cp $7
 	jp nz, .asm_d33ea
-.asm_d33af: ; d33af (34:73af)
+.asm_d33af ; d33af (34:73af)
 	hideperson $2
 	hideperson $3
 	hideperson $4
@@ -187,15 +187,15 @@ Func_d3312:: ; d3312 (34:7312)
 	hideperson $7
 	jp .asm_d33ea
 
-.asm_d33dc: ; d33dc (34:73dc)
+.asm_d33dc ; d33dc (34:73dc)
 	hideperson $6
 	hideperson $7
-.asm_d33ea: ; d33ea (34:73ea)
+.asm_d33ea ; d33ea (34:73ea)
 	jp .asm_d33f5
 
-.asm_d33ed: ; d33ed (34:73ed)
+.asm_d33ed ; d33ed (34:73ed)
 	loadpeople $2, Data_d31ce
-.asm_d33f5: ; d33f5 (34:73f5)
+.asm_d33f5 ; d33f5 (34:73f5)
 	ld a, [wBackupMapGroup]
 	cp $1
 	jp nz, .asm_d340c
@@ -203,7 +203,7 @@ Func_d3312:: ; d3312 (34:7312)
 	or a
 	jp nz, .asm_d340c
 	loadpeople $2, Data_d32ca
-.asm_d340c: ; d340c (34:740c)
+.asm_d340c ; d340c (34:740c)
 	loadpeople $8, Data_d325a
 	playmusic SONG_CENTER
 	scall Func_8001c
@@ -216,7 +216,7 @@ Func_d341d:
 	ld e, $2
 	ld a, [wc789]
 	scall Func_806a0
-.asm_d342a: ; d342a (34:742a)
+.asm_d342a ; d342a (34:742a)
 	ret
 
 Func_d342b:
@@ -226,7 +226,7 @@ Func_d342b:
 	ld e, $1
 	ld a, [wc789]
 	scall Func_806a0
-.asm_d3438: ; d3438 (34:7438)
+.asm_d3438 ; d3438 (34:7438)
 	ret
 
 Func_d3439:
@@ -237,13 +237,13 @@ Func_d3439:
 	ld l, $2
 	jp .asm_d344e
 
-.asm_d3448: ; d3448 (34:7448)
+.asm_d3448 ; d3448 (34:7448)
 	ld l, $4
 	jp .asm_d344e
 
-.asm_d344d: ; d344d (34:744d)
+.asm_d344d ; d344d (34:744d)
 	ld l, a
-.asm_d344e: ; d344e (34:744e)
+.asm_d344e ; d344e (34:744e)
 	ld a, e
 	or a
 	jp nz, .asm_d34b0
@@ -269,33 +269,33 @@ Func_d3439:
 	scall Func_806a0
 	jp .asm_d34b0
 
-.asm_d3481: ; d3481 (34:7481)
+.asm_d3481 ; d3481 (34:7481)
 	ld e, $1
 	ld a, $d
 	scall Func_806a0
 	jp .asm_d34b0
 
-.asm_d348b: ; d348b (34:748b)
+.asm_d348b ; d348b (34:748b)
 	ld e, $2
 	ld a, $e
 	scall Func_806a0
 	jp .asm_d34b0
 
-.asm_d3495: ; d3495 (34:7495)
+.asm_d3495 ; d3495 (34:7495)
 	ld e, $1
 	ld a, $e
 	scall Func_806a0
 	jp .asm_d34b0
 
-.asm_d349f: ; d349f (34:749f)
+.asm_d349f ; d349f (34:749f)
 	ld e, $2
 	ld a, $f
 	scall Func_806a0
 	jp .asm_d34b0
 
-.asm_d34a9: ; d34a9 (34:74a9)
+.asm_d34a9 ; d34a9 (34:74a9)
 	ld e, $1
 	ld a, $f
 	scall Func_806a0
-.asm_d34b0: ; d34b0 (34:74b0)
+.asm_d34b0 ; d34b0 (34:74b0)
 	ret

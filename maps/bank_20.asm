@@ -99,10 +99,10 @@ Func_83e56:: ; 83e56 (20:7e56)
 	sbc d
 	jp nc, .asm_83ee6
 	ld c, $1
-.asm_83ee6: ; 83ee6 (20:7ee6)
+.asm_83ee6 ; 83ee6 (20:7ee6)
 	jp .asm_83f30
 
-.asm_83ee9: ; 83ee9 (20:7ee9)
+.asm_83ee9 ; 83ee9 (20:7ee9)
 	ld a, l
 	sub e
 	ld a, h
@@ -124,7 +124,7 @@ Func_83e56:: ; 83e56 (20:7e56)
 	ld c, $ff
 	jp .asm_83f30
 
-.asm_83f06: ; 83f06 (20:7f06)
+.asm_83f06 ; 83f06 (20:7f06)
 	call GetHLAtSPPlus6
 	ld c, l
 	ld b, h
@@ -149,14 +149,14 @@ Func_83e56:: ; 83e56 (20:7e56)
 	ld c, $ff
 	jp .asm_83f30
 
-.asm_83f2e: ; 83f2e (20:7f2e)
+.asm_83f2e ; 83f2e (20:7f2e)
 	ld c, $1
-.asm_83f30: ; 83f30 (20:7f30)
+.asm_83f30 ; 83f30 (20:7f30)
 	jp .asm_83f35
 
-.asm_83f33: ; 83f33 (20:7f33)
+.asm_83f33 ; 83f33 (20:7f33)
 	ld c, $2
-.asm_83f35: ; 83f35 (20:7f35)
+.asm_83f35 ; 83f35 (20:7f35)
 	ld a, c
 	add sp, $c
 	ret

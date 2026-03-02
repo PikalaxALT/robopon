@@ -60,7 +60,7 @@ Data_bb16a:
 
 Func_bb17a:: ; bb17a
 	ld c, $00
-.asm_bb17c:
+.asm_bb17c
 	ld a, c
 	cp $04
 	jp nc, .asm_bb1e4
@@ -122,10 +122,10 @@ Func_bb17a:: ; bb17a
 	ld e, $01
 	scall LoadWarps
 	jp .asm_bb1e4
-.asm_bb1e0:
+.asm_bb1e0
 	inc c
 	jp .asm_bb17c
-.asm_bb1e4:
+.asm_bb1e4
 	ld a, [wBackupMapGroup]
 	or a
 	jp nz, .asm_bb239
@@ -143,7 +143,7 @@ Func_bb17a:: ; bb17a
 	ld hl, Data_bb10d
 	scall Func_80ce7
 	jp .asm_bb236
-.asm_bb216:
+.asm_bb216
 	ld a, [wBackupMapX]
 	cp $08
 	jp nz, .asm_bb236
@@ -154,9 +154,9 @@ Func_bb17a:: ; bb17a
 	ld hl, Data_bb115
 	scall Func_80ce7
 	loadpeople $01, Data_bb124
-.asm_bb236:
+.asm_bb236
 	jp .asm_bb27b
-.asm_bb239:
+.asm_bb239
 	ld a, [wBackupMapGroup]
 	cp $06
 	jp nz, .asm_bb27b
@@ -173,7 +173,7 @@ Func_bb17a:: ; bb17a
 	ld hl, Data_bb11a
 	scall Func_80ce7
 	jp .asm_bb27b
-.asm_bb263:
+.asm_bb263
 	ld a, [wBackupMapX]
 	cp $19
 	jp nz, .asm_bb27b
@@ -183,7 +183,7 @@ Func_bb17a:: ; bb17a
 	ld e, $01
 	ld hl, Data_bb11f
 	scall Func_80ce7
-.asm_bb27b:
+.asm_bb27b
 	loadpeople $04, Data_bb132
 	playmusic SONG_TOWN3
 	scall Func_8001c
@@ -213,7 +213,7 @@ Func_bb29e:
 	scall Func_80d9b
 	scall Func_80f02
 	jp .asm_bb2eb
-.asm_bb2c6:
+.asm_bb2c6
 	ld a, [wBackupMapX]
 	cp $08
 	jp nz, .asm_bb2eb
@@ -227,5 +227,5 @@ Func_bb29e:
 	ld hl, Data_bb298
 	scall Func_80d9b
 	scall Func_80f02
-.asm_bb2eb:
+.asm_bb2eb
 	ret

@@ -49,7 +49,7 @@ Data_d2c0e: ; d2c0e
 
 Func_d2c2a:: ; d2c2a (34:6c2a)
 	ld c, $0
-.asm_d2c2c: ; d2c2c (34:6c2c)
+.asm_d2c2c ; d2c2c (34:6c2c)
 	ld a, c
 	cp $7
 	jp nc, .asm_d2c9b
@@ -117,11 +117,11 @@ Func_d2c2a:: ; d2c2a (34:6c2a)
 	ld [wCurShop], a
 	jp .asm_d2c9b
 
-.asm_d2c97: ; d2c97 (34:6c97)
+.asm_d2c97 ; d2c97 (34:6c97)
 	inc c
 	jp .asm_d2c2c
 
-.asm_d2c9b: ; d2c9b (34:6c9b)
+.asm_d2c9b ; d2c9b (34:6c9b)
 	loadpeople $8, Data_d2b82
 	ld a, [wBackupMapGroup]
 	cp $1
@@ -130,7 +130,7 @@ Func_d2c2a:: ; d2c2a (34:6c2a)
 	or a
 	jp nz, .asm_d2cba
 	loadpeople $2, Data_d2bf2
-.asm_d2cba: ; d2cba (34:6cba)
+.asm_d2cba ; d2cba (34:6cba)
 	playmusic SONG_CENTER
 	scall Func_8001c
 	ret
@@ -151,10 +151,10 @@ Func_d2cc3:
 	scall Func_806a0
 	jp .asm_d2cef
 
-.asm_d2ce7: ; d2ce7 (34:6ce7)
+.asm_d2ce7 ; d2ce7 (34:6ce7)
 	ld e, $4
 	ld a, [wCurShop]
 	scall Func_806a0
-.asm_d2cef: ; d2cef (34:6cef)
+.asm_d2cef ; d2cef (34:6cef)
 	pop bc
 	ret

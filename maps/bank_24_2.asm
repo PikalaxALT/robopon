@@ -982,10 +982,10 @@ FixDays:: ; 93792 (24:7792)
 	ld [hl], $3
 	jp .query_leap_year
 
-.not_1924: ; 937f3 (24:77f3)
+.not_1924 ; 937f3 (24:77f3)
 	ld hl, sp+$3
 	ld [hl], $1
-.query_leap_year: ; 937f7 (24:77f7)
+.query_leap_year ; 937f7 (24:77f7)
 	; this is queried twice for some reason
 	ld hl, sp+$4
 	ld l, [hl]
@@ -1001,7 +1001,7 @@ FixDays:: ; 93792 (24:7792)
 	call IsLeapYear
 	ld hl, sp+$2
 	ld [hl], a
-.loop: ; 93812 (24:7812)
+.loop ; 93812 (24:7812)
 	call GetHLAtSPPlus8
 	ld a, l
 	or h
@@ -1021,7 +1021,7 @@ FixDays:: ; 93792 (24:7792)
 	ld b, h
 	jp .got_month
 
-.common_year: ; 93833 (24:7833)
+.common_year ; 93833 (24:7833)
 	ld hl, sp+$3
 	ld e, [hl]
 	ld d, $0
@@ -1031,7 +1031,7 @@ FixDays:: ; 93792 (24:7792)
 	ld h, $0
 	ld c, l
 	ld b, h
-.got_month: ; 93841 (24:7841)
+.got_month ; 93841 (24:7841)
 	call GetHLAtSPPlus8
 	ld a, l
 	sub c
@@ -1053,13 +1053,13 @@ FixDays:: ; 93792 (24:7792)
 	ld [hl], a
 	jp .continue
 
-.break_: ; 93861 (24:7861)
+.break_ ; 93861 (24:7861)
 	jp .break
 
-.continue: ; 93864 (24:7864)
+.continue ; 93864 (24:7864)
 	jp .loop
 
-.break: ; 93867 (24:7867)
+.break ; 93867 (24:7867)
 	call GetHLAtSPPlus8
 	inc hl
 	ld c, l

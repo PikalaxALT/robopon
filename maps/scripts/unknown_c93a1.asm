@@ -114,7 +114,7 @@ Func_c93a1:: ; c93a1
 	ld a, $04
 	ld [wc78b], a
 	jp .asm_c9424
-.asm_c93c8:
+.asm_c93c8
 	ld a, [wBackupMapX]
 	cp $05
 	jp nz, .asm_c93e0
@@ -124,7 +124,7 @@ Func_c93a1:: ; c93a1
 	ld a, $03
 	ld [wc78b], a
 	jp .asm_c9424
-.asm_c93e0:
+.asm_c93e0
 	ld a, [wBackupMapX]
 	cp $1d
 	jp nz, .asm_c93f8
@@ -134,7 +134,7 @@ Func_c93a1:: ; c93a1
 	ld a, $02
 	ld [wc78b], a
 	jp .asm_c9424
-.asm_c93f8:
+.asm_c93f8
 	ld a, [wBackupMapX]
 	cp $0b
 	jp nz, .asm_c9410
@@ -144,7 +144,7 @@ Func_c93a1:: ; c93a1
 	ld a, $01
 	ld [wc78b], a
 	jp .asm_c9424
-.asm_c9410:
+.asm_c9410
 	ld a, [wBackupMapX]
 	cp $17
 	jp nz, .asm_c9424
@@ -153,7 +153,7 @@ Func_c93a1:: ; c93a1
 	jp nz, .asm_c9424
 	xor a
 	ld [wc78b], a
-.asm_c9424:
+.asm_c9424
 	loadpeople $02, Data_c9385
 	ld a, [wc78b]
 	cp $04
@@ -174,7 +174,7 @@ Func_c93a1:: ; c93a1
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46986
 	jp .asm_c9502
-.asm_c946d:
+.asm_c946d
 	loadwarps $02, Data_c91cf
 	ld a, $03
 	scall Func_80d01
@@ -183,7 +183,7 @@ Func_c93a1:: ; c93a1
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a3e
 	jp .asm_c9502
-.asm_c9493:
+.asm_c9493
 	loadwarps $02, Data_c91e5
 	ld a, $03
 	scall Func_80d01
@@ -192,7 +192,7 @@ Func_c93a1:: ; c93a1
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469fd
 	jp .asm_c9502
-.asm_c94b9:
+.asm_c94b9
 	loadwarps $02, Data_c91fb
 	ld a, $03
 	scall Func_80d01
@@ -201,7 +201,7 @@ Func_c93a1:: ; c93a1
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469c1
 	jp .asm_c9502
-.asm_c94df:
+.asm_c94df
 	loadwarps $02, Data_c9211
 	ld a, $03
 	scall Func_80d01
@@ -209,7 +209,7 @@ Func_c93a1:: ; c93a1
 	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a7f
-.asm_c9502:
+.asm_c9502
 	ret
 
 Func_c9503:
@@ -229,79 +229,79 @@ Func_c9503:
 	jp nz, .asm_c952e
 	ld l, $02
 	jp .asm_c9540
-.asm_c952e:
+.asm_c952e
 	checkevent EVENT_03D
 	cp $01
 	jp nz, .asm_c953e
 	ld l, $00
 	jp .asm_c9540
-.asm_c953e:
+.asm_c953e
 	ld l, $01
-.asm_c9540:
+.asm_c9540
 	jp .asm_c95d4
-.asm_c9543:
+.asm_c9543
 	checkevent EVENT_09A
 	cp $01
 	jp nz, .asm_c9553
 	ld l, $02
 	jp .asm_c9565
-.asm_c9553:
+.asm_c9553
 	checkevent EVENT_03E
 	cp $01
 	jp nz, .asm_c9563
 	ld l, $00
 	jp .asm_c9565
-.asm_c9563:
+.asm_c9563
 	ld l, $01
-.asm_c9565:
+.asm_c9565
 	jp .asm_c95d4
-.asm_c9568:
+.asm_c9568
 	checkevent EVENT_09F
 	cp $01
 	jp nz, .asm_c9578
 	ld l, $02
 	jp .asm_c958a
-.asm_c9578:
+.asm_c9578
 	checkevent EVENT_03F
 	cp $01
 	jp nz, .asm_c9588
 	ld l, $00
 	jp .asm_c958a
-.asm_c9588:
+.asm_c9588
 	ld l, $01
-.asm_c958a:
+.asm_c958a
 	jp .asm_c95d4
-.asm_c958d:
+.asm_c958d
 	checkevent EVENT_0A4
 	cp $01
 	jp nz, .asm_c959d
 	ld l, $02
 	jp .asm_c95af
-.asm_c959d:
+.asm_c959d
 	checkevent EVENT_040
 	cp $01
 	jp nz, .asm_c95ad
 	ld l, $00
 	jp .asm_c95af
-.asm_c95ad:
+.asm_c95ad
 	ld l, $01
-.asm_c95af:
+.asm_c95af
 	jp .asm_c95d4
-.asm_c95b2:
+.asm_c95b2
 	checkevent EVENT_0A9
 	cp $01
 	jp nz, .asm_c95c2
 	ld l, $02
 	jp .asm_c95d4
-.asm_c95c2:
+.asm_c95c2
 	checkevent EVENT_041
 	cp $01
 	jp nz, .asm_c95d2
 	ld l, $00
 	jp .asm_c95d4
-.asm_c95d2:
+.asm_c95d2
 	ld l, $01
-.asm_c95d4:
+.asm_c95d4
 	ld a, l
 	ret
 
@@ -325,7 +325,7 @@ Func_c95da:
 	writetext TreeBitstreamText_3c983
 	move_player $01, Data_c95d6
 	sprite_face $02, 0
-.asm_c9613:
+.asm_c9613
 	ret
 
 Func_c9614:
@@ -350,11 +350,11 @@ Func_c9614:
 	jp nz, .asm_c9651
 	writetext TreeBitstreamText_3c973
 	jp .asm_c9651
-.asm_c9642:
+.asm_c9642
 	writetext TreeBitstreamText_3c983
 	jp .asm_c9651
-.asm_c964b:
+.asm_c964b
 	writetext TreeBitstreamText_3d897
-.asm_c9651:
+.asm_c9651
 	pop bc
 	ret

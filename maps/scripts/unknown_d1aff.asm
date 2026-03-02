@@ -212,12 +212,12 @@ Func_d1aff:: ; d1aff (34:5aff)
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_d1bff: ; d1bff (34:5bff)
+.asm_d1bff ; d1bff (34:5bff)
 	ld a, [wc7de]
 	cp $14
 	jp nz, .asm_d1c0f
 	setevent EVENT_05D
-.asm_d1c0f: ; d1c0f (34:5c0f)
+.asm_d1c0f ; d1c0f (34:5c0f)
 	ld a, $3
 	scall Func_80d01
 	ld a, [wc7de]
@@ -251,21 +251,21 @@ Func_d1aff:: ; d1aff (34:5aff)
 	jp z, .asm_d1c62
 	cp $1
 	jp nz, .asm_d1c83
-.asm_d1c62: ; d1c62 (34:5c62)
+.asm_d1c62 ; d1c62 (34:5c62)
 	loadwilds $5, Data_d19e7
 	jp .asm_d1c8b
 
-.asm_d1c6d: ; d1c6d (34:5c6d)
+.asm_d1c6d ; d1c6d (34:5c6d)
 	loadwilds $5, Data_d1a2d
 	jp .asm_d1c8b
 
-.asm_d1c78: ; d1c78 (34:5c78)
+.asm_d1c78 ; d1c78 (34:5c78)
 	loadwilds $5, Data_d1a73
 	jp .asm_d1c8b
 
-.asm_d1c83: ; d1c83 (34:5c83)
+.asm_d1c83 ; d1c83 (34:5c83)
 	loadwilds $5, Data_d1ab9
-.asm_d1c8b: ; d1c8b (34:5c8b)
+.asm_d1c8b ; d1c8b (34:5c8b)
 	ld a, [wc7de]
 	inc a
 	cp $15
@@ -305,7 +305,7 @@ Func_d1aff:: ; d1aff (34:5aff)
 	add hl, de
 	ld e, $1
 	scall LoadWarps
-.asm_d1ccb: ; d1ccb (34:5ccb)
+.asm_d1ccb ; d1ccb (34:5ccb)
 	loadwarps $1, Data_d1958
 	playmusic SONG_CAVE
 	scall Func_8001c
@@ -315,12 +315,12 @@ Func_d1aff:: ; d1aff (34:5aff)
 	writetext TreeBitstreamText_47e17
 	jp .asm_d1cf5
 
-.asm_d1cec: ; d1cec (34:5cec)
+.asm_d1cec ; d1cec (34:5cec)
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 	scall Func_80f83
-.asm_d1cf5: ; d1cf5 (34:5cf5)
+.asm_d1cf5 ; d1cf5 (34:5cf5)
 	ret
 
 Data_d1cf6:

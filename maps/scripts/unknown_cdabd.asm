@@ -184,12 +184,12 @@ Func_cdabd:: ; cdabd
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_cdad3:
+.asm_cdad3
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cdae3
 	setevent EVENT_061
-.asm_cdae3:
+.asm_cdae3
 	ld a, $03
 	scall Func_80d01
 	ld a, [wc7de]
@@ -197,57 +197,57 @@ Func_cdabd:: ; cdabd
 	jp nc, .asm_cdafb
 	loadwilds $05, Data_cd7c9
 	jp .asm_cdb9b
-.asm_cdafb:
+.asm_cdafb
 	ld a, [wc7de]
 	cp $0b
 	jp nc, .asm_cdb0e
 	loadwilds $05, Data_cd80f
 	jp .asm_cdb9b
-.asm_cdb0e:
+.asm_cdb0e
 	ld a, [wc7de]
 	cp $10
 	jp nc, .asm_cdb21
 	loadwilds $05, Data_cd855
 	jp .asm_cdb9b
-.asm_cdb21:
+.asm_cdb21
 	ld a, [wc7de]
 	cp $15
 	jp nc, .asm_cdb34
 	loadwilds $05, Data_cd89b
 	jp .asm_cdb9b
-.asm_cdb34:
+.asm_cdb34
 	ld a, [wc7de]
 	cp $1a
 	jp nc, .asm_cdb47
 	loadwilds $05, Data_cd8e1
 	jp .asm_cdb9b
-.asm_cdb47:
+.asm_cdb47
 	ld a, [wc7de]
 	cp $1f
 	jp nc, .asm_cdb5a
 	loadwilds $05, Data_cd927
 	jp .asm_cdb9b
-.asm_cdb5a:
+.asm_cdb5a
 	ld a, [wc7de]
 	cp $24
 	jp nc, .asm_cdb6d
 	loadwilds $05, Data_cd96d
 	jp .asm_cdb9b
-.asm_cdb6d:
+.asm_cdb6d
 	ld a, [wc7de]
 	cp $29
 	jp nc, .asm_cdb80
 	loadwilds $05, Data_cd9b3
 	jp .asm_cdb9b
-.asm_cdb80:
+.asm_cdb80
 	ld a, [wc7de]
 	cp $2e
 	jp nc, .asm_cdb93
 	loadwilds $05, Data_cd9f9
 	jp .asm_cdb9b
-.asm_cdb93:
+.asm_cdb93
 	loadwilds $09, Data_cda3f
-.asm_cdb9b:
+.asm_cdb9b
 	ld a, [wc7de]
 	inc a
 	cp $33
@@ -287,7 +287,7 @@ Func_cdabd:: ; cdabd
 	add hl, de
 	ld e, $01
 	scall LoadWarps
-.asm_cdbdb:
+.asm_cdbdb
 	loadwarps $01, Data_cd73a
 	playmusic SONG_CAVE
 	scall Func_8001c
@@ -298,12 +298,12 @@ Func_cdabd:: ; cdabd
 	jp nz, .asm_cdc01
 	writetext TreeBitstreamText_47e17
 	jp .asm_cdc0a
-.asm_cdc01:
+.asm_cdc01
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $00
 	scall Func_80f83
-.asm_cdc0a:
+.asm_cdc0a
 	ret
 
 Data_cdc0b:

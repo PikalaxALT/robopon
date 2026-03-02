@@ -155,19 +155,19 @@ Func_920c3:: ; 920c3
 	jp nz, .asm_92127
 	loadwilds $13, Data_91caf
 	jp .asm_92144
-.asm_92127:
+.asm_92127
 	checkevent EVENT_047
 	or a
 	jp nz, .asm_9213c
 	loadwilds $13, Data_91db9
 	jp .asm_92144
-.asm_9213c:
+.asm_9213c
 	loadwilds $13, Data_91ec3
-.asm_92144:
+.asm_92144
 	jp .asm_9214f
-.asm_92147:
+.asm_92147
 	loadwilds $12, Data_91bb3
-.asm_9214f:
+.asm_9214f
 	checkevent EVENT_047
 	cp $01
 	jp nz, .asm_92180
@@ -183,11 +183,11 @@ Func_920c3:: ; 920c3
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_92180
-.asm_92178:
+.asm_92178
 	ld a, $03
 	scall LoadPlayerSprite
 	jp .asm_9219a
-.asm_92180:
+.asm_92180
 	checkevent EVENT_039
 	cp $01
 	jp nz, .asm_9219a
@@ -197,12 +197,12 @@ Func_920c3:: ; 920c3
 	jp z, .asm_9219a
 	ld a, $02
 	scall LoadPlayerSprite
-.asm_9219a:
+.asm_9219a
 	checkevent EVENT_08D
 	cp $01
 	jp nz, .asm_921ac
 	hideperson $0a
-.asm_921ac:
+.asm_921ac
 	ld a, [wc790]
 	or a
 	jp z, .asm_921dd
@@ -214,7 +214,7 @@ Func_920c3:: ; 920c3
 	hideperson $07
 	hideperson $08
 	hideperson $09
-.asm_921dd:
+.asm_921dd
 	hideperson $0e
 	scall Func_8001c
 	ret
@@ -237,13 +237,13 @@ Func_92211:
 	or a
 	jp nz, .asm_9223a
 	jp .asm_92251
-.asm_9223a:
+.asm_9223a
 	writenpctext TreeBitstreamText_3baee
 	setevent EVENT_088
 	jp .asm_92251
-.asm_9224b:
+.asm_9224b
 	writenpctext TreeBitstreamText_3bb2b
-.asm_92251:
+.asm_92251
 	ret
 
 Data_92252:
@@ -279,7 +279,7 @@ Func_92257:
 	scall PlayerFace
 	warp_player MAP_09_01, $0d, $06
 	jp .asm_9233a
-.asm_922b2:
+.asm_922b2
 	checkevent EVENT_047
 	cp $01
 	jp nz, .asm_922eb
@@ -295,15 +295,15 @@ Func_92257:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_922eb
-.asm_922db:
+.asm_922db
 	ld a, [wPlayerState]
 	cp $03
 	jp z, .asm_922e8
 	ld a, $03
 	scall LoadPlayerSprite
-.asm_922e8:
+.asm_922e8
 	jp .asm_9233a
-.asm_922eb:
+.asm_922eb
 	ld a, $1f
 	scall Func_80e6d
 	cp $ff
@@ -316,9 +316,9 @@ Func_92257:
 	jp z, .asm_9230d
 	ld a, $02
 	scall LoadPlayerSprite
-.asm_9230d:
+.asm_9230d
 	jp .asm_9233a
-.asm_92310:
+.asm_92310
 	loademote $01, $01, $1b
 	xor a
 	scall Func_80653
@@ -328,7 +328,7 @@ Func_92257:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_09_01, $0d, $06
-.asm_9233a:
+.asm_9233a
 	ret
 
 Func_9233b:
@@ -367,19 +367,19 @@ Func_9233b:
 	add a, $05
 	ld [hl], a
 	jp .asm_92391
-.asm_92389:
+.asm_92389
 	ld hl, sp+$01
 	ld a, [wMapY]
 	add a, $03
 	ld [hl], a
-.asm_92391:
+.asm_92391
 	ld c, $01
 	ld hl, sp+$00
 	reg16swap de, hl
 	ld a, $24
 	scall MovePlayer
 	jp .asm_923f6
-.asm_923a1:
+.asm_923a1
 	checkevent EVENT_047
 	or a
 	jp nz, .asm_923e9
@@ -396,12 +396,12 @@ Func_9233b:
 	add a, $05
 	ld [hl], a
 	jp .asm_923d3
-.asm_923cb:
+.asm_923cb
 	ld hl, sp+$01
 	ld a, [wMapY]
 	add a, $03
 	ld [hl], a
-.asm_923d3:
+.asm_923d3
 	ld c, $01
 	ld hl, sp+$00
 	reg16swap de, hl
@@ -409,13 +409,13 @@ Func_9233b:
 	scall MovePlayer
 	writenpctext TreeBitstreamText_46ffa
 	jp .asm_923f6
-.asm_923e9:
+.asm_923e9
 	ld a, [wPlayerState]
 	cp $03
 	jp z, .asm_923f6
 	ld a, $03
 	scall LoadPlayerSprite
-.asm_923f6:
+.asm_923f6
 	pop bc
 	pop bc
 	ret
@@ -442,17 +442,17 @@ Func_92422:
 	or a
 	jp nz, .asm_92458
 	jp .asm_92478
-.asm_92458:
+.asm_92458
 	setevent EVENT_089
 	writetext TreeBitstreamText_42a4c
 	jp .asm_9246f
-.asm_92469:
+.asm_92469
 	writetext TreeBitstreamText_42b32
-.asm_9246f:
+.asm_9246f
 	jp .asm_92478
-.asm_92472:
+.asm_92472
 	writetext TreeBitstreamText_42a4c
-.asm_92478:
+.asm_92478
 	pop bc
 	ret
 
@@ -481,17 +481,17 @@ Func_924a9:
 	or a
 	jp nz, .asm_924df
 	jp .asm_924ff
-.asm_924df:
+.asm_924df
 	setevent EVENT_08A
 	writetext TreeBitstreamText_42a6e
 	jp .asm_924f6
-.asm_924f0:
+.asm_924f0
 	writetext TreeBitstreamText_42b41
-.asm_924f6:
+.asm_924f6
 	jp .asm_924ff
-.asm_924f9:
+.asm_924f9
 	writetext TreeBitstreamText_42a6e
-.asm_924ff:
+.asm_924ff
 	pop bc
 	ret
 
@@ -520,17 +520,17 @@ Func_92531:
 	or a
 	jp nz, .asm_92567
 	jp .asm_92587
-.asm_92567:
+.asm_92567
 	setevent EVENT_08B
 	writetext TreeBitstreamText_42a9a
 	jp .asm_9257e
-.asm_92578:
+.asm_92578
 	writetext TreeBitstreamText_42b24
-.asm_9257e:
+.asm_9257e
 	jp .asm_92587
-.asm_92581:
+.asm_92581
 	writetext TreeBitstreamText_42ab0
-.asm_92587:
+.asm_92587
 	pop bc
 	ret
 
@@ -559,17 +559,17 @@ Func_925b8:
 	or a
 	jp nz, .asm_925ee
 	jp .asm_9260e
-.asm_925ee:
+.asm_925ee
 	setevent EVENT_08C
 	writetext TreeBitstreamText_42ad0
 	jp .asm_92605
-.asm_925ff:
+.asm_925ff
 	writetext TreeBitstreamText_42b32
-.asm_92605:
+.asm_92605
 	jp .asm_9260e
-.asm_92608:
+.asm_92608
 	writetext TreeBitstreamText_42b0b
-.asm_9260e:
+.asm_9260e
 	pop bc
 	ret
 
@@ -600,7 +600,7 @@ Func_9264b:
 	or a
 	jp nz, .asm_92675
 	jp .asm_926b4
-.asm_92675:
+.asm_92675
 	writenpctext TreeBitstreamText_3bdc2
 	ld a, [wPlayerFacing]
 	cp $01
@@ -608,16 +608,16 @@ Func_9264b:
 	ld a, [wPlayerFacing]
 	cp $03
 	jp nz, .asm_92698
-.asm_9268b:
+.asm_9268b
 	move_person $0a, Data_92616, 1
 	jp .asm_926a2
-.asm_92698:
+.asm_92698
 	move_person $0a, Data_9261c, 1
-.asm_926a2:
+.asm_926a2
 	scall WaitNPCStep
 	hideperson $0a
 	setevent EVENT_08D
-.asm_926b4:
+.asm_926b4
 	ret
 
 Data_926b5:
@@ -679,9 +679,9 @@ Func_926ba:
 	face_player $0e
 	hideperson $0e
 	jp .asm_927c1
-.asm_927bb:
+.asm_927bb
 	writetext TreeBitstreamText_3f79e
-.asm_927c1:
+.asm_927c1
 	ret
 
 Data_927c2:
@@ -699,13 +699,13 @@ Func_927eb:
 	jp nz, .asm_92808
 	writetext TreeBitstreamText_3bdf0
 	jp .asm_92844
-.asm_92808:
+.asm_92808
 	checkevent EVENT_047
 	or a
 	jp nz, .asm_9281b
 	writetext TreeBitstreamText_3be3f
 	jp .asm_92844
-.asm_9281b:
+.asm_9281b
 	writetext_yesorno TreeBitstreamText_42b02
 	or a
 	jp nz, .asm_9283e
@@ -713,12 +713,12 @@ Func_927eb:
 	or a
 	jp nz, .asm_92835
 	jp .asm_92844
-.asm_92835:
+.asm_92835
 	writetext TreeBitstreamText_42af6
 	jp .asm_92844
-.asm_9283e:
+.asm_9283e
 	writetext TreeBitstreamText_42903
-.asm_92844:
+.asm_92844
 	ret
 
 Data_92845:

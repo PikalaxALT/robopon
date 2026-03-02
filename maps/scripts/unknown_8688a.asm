@@ -38,10 +38,10 @@ Func_8688a::
 	call Func_86943
 	jp .asm_868dd
 
-.asm_868d5: ; 868d5 (21:68d5)
+.asm_868d5 ; 868d5 (21:68d5)
 	playmusic SONG_TOWN2
 	scall Func_8001c
-.asm_868dd: ; 868dd (21:68dd)
+.asm_868dd ; 868dd (21:68dd)
 	ret
 
 Data_868de:
@@ -124,7 +124,7 @@ Func_86943: ; 86943 (21:6943)
 	jp nz, .asm_869e7
 	ret
 
-.asm_869e7: ; 869e7 (21:69e7)
+.asm_869e7 ; 869e7 (21:69e7)
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_3a420
 	playmusic SONG_NONE
@@ -183,7 +183,7 @@ Func_86ac9:
 	sprite_face $0, $5
 	sprite_face $1, $5
 	sprite_face $2, $5
-.asm_86b0c: ; 86b0c (21:6b0c)
+.asm_86b0c ; 86b0c (21:6b0c)
 	ret
 
 Func_86b0d:
@@ -243,7 +243,7 @@ Func_86b0d:
 	hideperson 0
 	jp .asm_86c00
 
-.asm_86bfa: ; 86bfa (21:6bfa)
+.asm_86bfa ; 86bfa (21:6bfa)
 	writetext TreeBitstreamText_3f79e
-.asm_86c00: ; 86c00 (21:6c00)
+.asm_86c00 ; 86c00 (21:6c00)
 	ret

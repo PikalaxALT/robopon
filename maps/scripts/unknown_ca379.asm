@@ -115,7 +115,7 @@ Func_ca379:: ; ca379
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469a9
 	jp .asm_ca457
-.asm_ca3c2:
+.asm_ca3c2
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca21b
@@ -124,7 +124,7 @@ Func_ca379:: ; ca379
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a65
 	jp .asm_ca457
-.asm_ca3e8:
+.asm_ca3e8
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca261
@@ -133,7 +133,7 @@ Func_ca379:: ; ca379
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a24
 	jp .asm_ca457
-.asm_ca40e:
+.asm_ca40e
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca2a7
@@ -142,7 +142,7 @@ Func_ca379:: ; ca379
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469e5
 	jp .asm_ca457
-.asm_ca434:
+.asm_ca434
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca2ed
@@ -150,7 +150,7 @@ Func_ca379:: ; ca379
 	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46aa6
-.asm_ca457:
+.asm_ca457
 	ret
 
 Data_ca458:
@@ -174,17 +174,17 @@ Func_ca481:
 	or a
 	jp nz, .asm_ca4b4
 	jp .asm_ca4d4
-.asm_ca4b4:
+.asm_ca4b4
 	setevent EVENT_094
 	writetext TreeBitstreamText_42c72
 	jp .asm_ca4cb
-.asm_ca4c5:
+.asm_ca4c5
 	writetext TreeBitstreamText_42cc4
-.asm_ca4cb:
+.asm_ca4cb
 	jp .asm_ca4d4
-.asm_ca4ce:
+.asm_ca4ce
 	writetext TreeBitstreamText_42cb1
-.asm_ca4d4:
+.asm_ca4d4
 	ret
 
 Data_ca4d5:
@@ -208,7 +208,7 @@ Func_ca507:
 	or a
 	jp nz, .asm_ca559
 	writetext TreeBitstreamText_471a6
-.asm_ca530:
+.asm_ca530
 	ld de, Data_ca569
 	ld hl, Data_ca4de
 	scall Func_803f5
@@ -218,17 +218,17 @@ Func_ca507:
 	cp $01
 	jp nz, .asm_ca530
 	jp .asm_ca568
-.asm_ca548:
+.asm_ca548
 	setevent EVENT_099
 	writetext TreeBitstreamText_42c72
 	jp .asm_ca55f
-.asm_ca559:
+.asm_ca559
 	writetext TreeBitstreamText_42cb8
-.asm_ca55f:
+.asm_ca55f
 	jp .asm_ca568
-.asm_ca562:
+.asm_ca562
 	writetext TreeBitstreamText_42c58
-.asm_ca568:
+.asm_ca568
 	ret
 
 Data_ca569:
@@ -252,7 +252,7 @@ Func_ca59b:
 	or a
 	jp nz, .asm_ca5ed
 	writetext TreeBitstreamText_471cf
-.asm_ca5c4:
+.asm_ca5c4
 	ld de, Data_ca5fd
 	ld hl, Data_ca572
 	scall Func_802ef
@@ -262,17 +262,17 @@ Func_ca59b:
 	cp $01
 	jp nz, .asm_ca5c4
 	jp .asm_ca5fc
-.asm_ca5dc:
+.asm_ca5dc
 	setevent EVENT_09E
 	writetext TreeBitstreamText_42c8e
 	jp .asm_ca5f3
-.asm_ca5ed:
+.asm_ca5ed
 	writetext TreeBitstreamText_42cc4
-.asm_ca5f3:
+.asm_ca5f3
 	jp .asm_ca5fc
-.asm_ca5f6:
+.asm_ca5f6
 	writetext TreeBitstreamText_42c8e
-.asm_ca5fc:
+.asm_ca5fc
 	ret
 
 Data_ca5fd:
@@ -296,7 +296,7 @@ Func_ca62f:
 	or a
 	jp nz, .asm_ca681
 	writetext TreeBitstreamText_471bb
-.asm_ca658:
+.asm_ca658
 	ld de, Data_ca691
 	ld hl, Data_ca606
 	scall Func_80347
@@ -306,17 +306,17 @@ Func_ca62f:
 	cp $01
 	jp nz, .asm_ca658
 	jp .asm_ca690
-.asm_ca670:
+.asm_ca670
 	setevent EVENT_0A3
 	writetext TreeBitstreamText_42c8e
 	jp .asm_ca687
-.asm_ca681:
+.asm_ca681
 	writetext TreeBitstreamText_42cb8
-.asm_ca687:
+.asm_ca687
 	jp .asm_ca690
-.asm_ca68a:
+.asm_ca68a
 	writetext TreeBitstreamText_42c8e
-.asm_ca690:
+.asm_ca690
 	ret
 
 Data_ca691:
@@ -340,7 +340,7 @@ Func_ca6c3:
 	or a
 	jp nz, .asm_ca715
 	writetext TreeBitstreamText_47192
-.asm_ca6ec:
+.asm_ca6ec
 	ld de, Data_ca725
 	ld hl, Data_ca69a
 	scall Func_8039e
@@ -350,17 +350,17 @@ Func_ca6c3:
 	cp $01
 	jp nz, .asm_ca6ec
 	jp .asm_ca724
-.asm_ca704:
+.asm_ca704
 	setevent EVENT_0A8
 	writetext TreeBitstreamText_42c72
 	jp .asm_ca71b
-.asm_ca715:
+.asm_ca715
 	writetext TreeBitstreamText_42c65
-.asm_ca71b:
+.asm_ca71b
 	jp .asm_ca724
-.asm_ca71e:
+.asm_ca71e
 	writetext TreeBitstreamText_42c65
-.asm_ca724:
+.asm_ca724
 	ret
 
 Data_ca725:

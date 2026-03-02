@@ -33,12 +33,12 @@ Func_83379:
 	jp nc, .asm_83387
 	ld hl, Data_8336d
 	scall Func_80d9b
-.asm_83387: ; 83387 (20:7387)
+.asm_83387 ; 83387 (20:7387)
 	ld a, [wc78c]
 	cp $5
 	jp nc, .asm_83395
 	ld hl, Data_83373
 	scall Func_80d9b
-.asm_83395: ; 83395 (20:7395)
+.asm_83395 ; 83395 (20:7395)
 	scall Func_80f02
 	ret

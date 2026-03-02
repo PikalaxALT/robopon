@@ -40,7 +40,7 @@ Func_9ea24:: ; 9ea24
 	loadpeople $02, Data_9e9ec
 	hideperson 0
 	jp .asm_9eaf2
-.asm_9ea69:
+.asm_9ea69
 	ld a, [wc794]
 	cp $03
 	jp nz, .asm_9ea8c
@@ -50,7 +50,7 @@ Func_9ea24:: ; 9ea24
 	loadpeople $02, Data_9e9ec
 	hideperson 0
 	jp .asm_9eaf2
-.asm_9ea8c:
+.asm_9ea8c
 	ld a, [wc794]
 	cp $05
 	jp nz, .asm_9eaaf
@@ -60,7 +60,7 @@ Func_9ea24:: ; 9ea24
 	loadpeople $02, Data_9e9ec
 	hideperson 0
 	jp .asm_9eaf2
-.asm_9eaaf:
+.asm_9eaaf
 	ld a, [wc794]
 	cp $06
 	jp nz, .asm_9ead2
@@ -70,7 +70,7 @@ Func_9ea24:: ; 9ea24
 	loadpeople $02, Data_9e9ec
 	hideperson 0
 	jp .asm_9eaf2
-.asm_9ead2:
+.asm_9ead2
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9eaf2
@@ -79,7 +79,7 @@ Func_9ea24:: ; 9ea24
 	jp nz, .asm_9eaf2
 	loadpeople $02, Data_9e9ec
 	hideperson 0
-.asm_9eaf2:
+.asm_9eaf2
 	ld a, [wBackupMapGroup]
 	cp $12
 	jp nz, .asm_9eb0a
@@ -87,7 +87,7 @@ Func_9ea24:: ; 9ea24
 	cp $0e
 	jp nz, .asm_9eb0a
 	loadpeople $02, Data_9ea08
-.asm_9eb0a:
+.asm_9eb0a
 	playmusic SONG_CAVE
 	scall Func_8001c
 	ret
@@ -121,7 +121,7 @@ Func_9eb3c:
 	sprite_face $01, 0
 	sprite_face $02, 0
 	setevent EVENT_045
-.asm_9eba0:
+.asm_9eba0
 	face_player 0
 	ld hl, sp+$00
 	ld [hl], $00
@@ -133,7 +133,7 @@ Func_9eb3c:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9ebb9:
+.asm_9ebb9
 	checkevent EVENT_054
 	or a
 	jp nz, .asm_9ebca
@@ -142,7 +142,7 @@ Func_9eb3c:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9ebca:
+.asm_9ebca
 	checkevent EVENT_055
 	or a
 	jp nz, .asm_9ebdb
@@ -151,7 +151,7 @@ Func_9eb3c:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9ebdb:
+.asm_9ebdb
 	checkevent EVENT_056
 	or a
 	jp nz, .asm_9ebec
@@ -160,7 +160,7 @@ Func_9eb3c:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9ebec:
+.asm_9ebec
 	checkevent EVENT_057
 	or a
 	jp nz, .asm_9ebfd
@@ -169,7 +169,7 @@ Func_9eb3c:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9ebfd:
+.asm_9ebfd
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $05
@@ -184,18 +184,18 @@ Func_9eb3c:
 	jp nz, .asm_9ec43
 	writenpctext TreeBitstreamText_43f51
 	jp .asm_9ec43
-.asm_9ec22:
+.asm_9ec22
 	writenpctext TreeBitstreamText_43ed7
 	jp .asm_9ec43
-.asm_9ec2b:
+.asm_9ec2b
 	writenpctext TreeBitstreamText_43e7a
 	jp .asm_9ec43
-.asm_9ec34:
+.asm_9ec34
 	writenpctext TreeBitstreamText_43dee
 	jp .asm_9ec43
-.asm_9ec3d:
+.asm_9ec3d
 	writenpctext TreeBitstreamText_43d8e
-.asm_9ec43:
+.asm_9ec43
 	writetext_yesorno TreeBitstreamText_46f28
 	or a
 	jp nz, .asm_9ecf8
@@ -203,7 +203,7 @@ Func_9eb3c:
 	or a
 	jp nz, .asm_9ec5d
 	jp .asm_9ecf8
-.asm_9ec5d:
+.asm_9ec5d
 	ld a, [wc794]
 	cp $02
 	jp nz, .asm_9ec7a
@@ -212,7 +212,7 @@ Func_9eb3c:
 	jp nz, .asm_9ec7a
 	setevent EVENT_053
 	jp .asm_9eceb
-.asm_9ec7a:
+.asm_9ec7a
 	ld a, [wc794]
 	cp $03
 	jp nz, .asm_9ec97
@@ -221,7 +221,7 @@ Func_9eb3c:
 	jp nz, .asm_9ec97
 	setevent EVENT_054
 	jp .asm_9eceb
-.asm_9ec97:
+.asm_9ec97
 	ld a, [wc794]
 	cp $05
 	jp nz, .asm_9ecb4
@@ -230,7 +230,7 @@ Func_9eb3c:
 	jp nz, .asm_9ecb4
 	setevent EVENT_055
 	jp .asm_9eceb
-.asm_9ecb4:
+.asm_9ecb4
 	ld a, [wc794]
 	cp $06
 	jp nz, .asm_9ecd1
@@ -239,7 +239,7 @@ Func_9eb3c:
 	jp nz, .asm_9ecd1
 	setevent EVENT_056
 	jp .asm_9eceb
-.asm_9ecd1:
+.asm_9ecd1
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9eceb
@@ -247,9 +247,9 @@ Func_9eb3c:
 	or a
 	jp nz, .asm_9eceb
 	setevent EVENT_057
-.asm_9eceb:
+.asm_9eceb
 	warp_player MAP_18_00, $1e, $1b
-.asm_9ecf8:
+.asm_9ecf8
 	pop bc
 	ret
 
@@ -282,7 +282,7 @@ Func_9ed0f:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_9ed8f
-.asm_9ed3c:
+.asm_9ed3c
 	ld a, [wc790]
 	or a
 	jp z, .asm_9ed86
@@ -297,23 +297,23 @@ Func_9ed0f:
 	jp nz, .asm_9ed69
 	move_player $01, Data_9ed0b
 	jp .asm_9ed73
-.asm_9ed69:
+.asm_9ed69
 	move_player $01, Data_9ed05
-.asm_9ed73:
+.asm_9ed73
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
 	script_sleep 30
 	call Func_9ee27
-.asm_9ed83:
+.asm_9ed83
 	jp .asm_9ed8c
-.asm_9ed86:
+.asm_9ed86
 	writetext TreeBitstreamText_470f0
-.asm_9ed8c:
+.asm_9ed8c
 	jp .asm_9ed95
-.asm_9ed8f:
+.asm_9ed8f
 	writetext TreeBitstreamText_470d8
-.asm_9ed95:
+.asm_9ed95
 	ret
 
 Data_9ed96:
@@ -342,7 +342,7 @@ Func_9eda0:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_9ee20
-.asm_9edcd:
+.asm_9edcd
 	ld a, [wc790]
 	or a
 	jp z, .asm_9ee17
@@ -357,23 +357,23 @@ Func_9eda0:
 	jp nz, .asm_9edfa
 	move_player $01, Data_9ed9c
 	jp .asm_9ee04
-.asm_9edfa:
+.asm_9edfa
 	move_player $01, Data_9ed96
-.asm_9ee04:
+.asm_9ee04
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
 	script_sleep 30
 	call Func_9ee27
-.asm_9ee14:
+.asm_9ee14
 	jp .asm_9ee1d
-.asm_9ee17:
+.asm_9ee17
 	writetext TreeBitstreamText_470f0
-.asm_9ee1d:
+.asm_9ee1d
 	jp .asm_9ee26
-.asm_9ee20:
+.asm_9ee20
 	writetext TreeBitstreamText_470d8
-.asm_9ee26:
+.asm_9ee26
 	ret
 
 Func_9ee27:

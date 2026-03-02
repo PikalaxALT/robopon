@@ -41,7 +41,7 @@ Func_a3bc8:: ; a3bc8
 	cp $01
 	jp nz, .asm_a3c08
 	hideperson $01
-.asm_a3c08:
+.asm_a3c08
 	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46967
@@ -66,20 +66,20 @@ Func_a3c17:: ; a3c17
 	ld a, $01
 	ld [wc799], a
 	jp .asm_a3c6f
-.asm_a3c54:
+.asm_a3c54
 	ld e, $14
 	ld a, $03
 	scall MoveEmote
 	ld a, $02
 	ld [wc799], a
 	jp .asm_a3c6f
-.asm_a3c63:
+.asm_a3c63
 	ld e, $0f
 	ld a, $03
 	scall MoveEmote
 	ld a, $03
 	ld [wc799], a
-.asm_a3c6f:
+.asm_a3c6f
 	scall WaitEmote
 	scall HideEmote
 	call Func_a3c8b
@@ -105,20 +105,20 @@ Func_a3c8b:
 	ld hl, Data_a3c79
 	scall Func_80d9b
 	jp .asm_a3cc7
-.asm_a3ca6:
+.asm_a3ca6
 	ld hl, Data_a3c79
 	scall Func_80d9b
 	ld hl, Data_a3c7f
 	scall Func_80d9b
 	jp .asm_a3cc7
-.asm_a3cb5:
+.asm_a3cb5
 	ld hl, Data_a3c79
 	scall Func_80d9b
 	ld hl, Data_a3c7f
 	scall Func_80d9b
 	ld hl, Data_a3c85
 	scall Func_80d9b
-.asm_a3cc7:
+.asm_a3cc7
 	scall Func_80f02
 	ret
 
@@ -140,7 +140,7 @@ Func_a3cd5:
 	xor a
 	scall PlayerFace
 	jp .asm_a3cf6
-.asm_a3cf6:
+.asm_a3cf6
 	face_player $01
 	ld a, [wc790]
 	cp $05
@@ -160,18 +160,18 @@ Func_a3cd5:
 	sprite_face $01, $01
 	setevent EVENT_0EC
 	jp .asm_a3d4e
-.asm_a3d48:
+.asm_a3d48
 	writetext TreeBitstreamText_3d897
-.asm_a3d4e:
+.asm_a3d4e
 	jp .asm_a3d72
-.asm_a3d51:
+.asm_a3d51
 	checkevent EVENT_0EC
 	cp $01
 	jp nz, .asm_a3d65
 	writetext TreeBitstreamText_3d897
 	jp .asm_a3d72
-.asm_a3d65:
+.asm_a3d65
 	writenpctext TreeBitstreamText_3c22b
 	sprite_face $00, $01
-.asm_a3d72:
+.asm_a3d72
 	ret

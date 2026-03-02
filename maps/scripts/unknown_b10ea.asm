@@ -29,5 +29,5 @@ Func_b110b:
 	or a
 	jp nz, .asm_b112d
 	warp_player MAP_28_01, $11, $04
-.asm_b112d:
+.asm_b112d
 	ret

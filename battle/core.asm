@@ -311,7 +311,7 @@ Func_234c2: ; 234c2 (8:74c2)
 	ld [hl], $ff
 	jp Func_23654
 
-.parse_battle_menu: ; 23508 (8:7508)
+.parse_battle_menu ; 23508 (8:7508)
 	ld de, $1311
 	ld hl, $d
 	call Func_2036d

@@ -41,17 +41,17 @@ Func_aac19:: ; aac19
 	jp z, .asm_aac6f
 	hideperson 0
 	hideperson $01
-.asm_aac6f:
+.asm_aac6f
 	checkevent EVENT_0B0
 	or a
 	jp z, .asm_aac87
 	hideperson $02
 	hideperson $03
-.asm_aac87:
+.asm_aac87
 	jp .asm_aac8f
-.asm_aac8a:
+.asm_aac8a
 	playmusic SONG_CAVE
-.asm_aac8f:
+.asm_aac8f
 	scall Func_8001c
 	ret
 
@@ -88,18 +88,18 @@ Func_aaccc:
 	jp z, .asm_aace3
 	or a
 	jp nz, .asm_aad67
-.asm_aace3:
+.asm_aace3
 	ld a, [wMapY]
 	add a, $04
 	cp $03
 	jp nz, .asm_aacf4
 	face_player 0
 	jp .asm_aad02
-.asm_aacf4:
+.asm_aacf4
 	move_player $01, Data_aacbc
 	xor a
 	scall PlayerFace
-.asm_aad02:
+.asm_aad02
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d8ab
@@ -107,7 +107,7 @@ Func_aaccc:
 	or a
 	jp nz, .asm_aad21
 	jp .asm_aad67
-.asm_aad21:
+.asm_aad21
 	writetext TreeBitstreamText_3d897
 	ld a, [wMapY]
 	add a, $04
@@ -115,16 +115,16 @@ Func_aaccc:
 	jp nz, .asm_aad3d
 	move_person 0, Data_aacc0, 1
 	jp .asm_aad46
-.asm_aad3d:
+.asm_aad3d
 	move_person 0, Data_aacc6, 1
-.asm_aad46:
+.asm_aad46
 	scall WaitNPCStep
 	hideperson 0
 	hideperson $01
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
 	setevent EVENT_0AF
-.asm_aad67:
+.asm_aad67
 	pop bc
 	ret
 
@@ -162,18 +162,18 @@ Func_aada6:
 	jp z, .asm_aadbd
 	or a
 	jp nz, .asm_aae45
-.asm_aadbd:
+.asm_aadbd
 	ld a, [wMapY]
 	add a, $04
 	cp $03
 	jp nz, .asm_aadcf
 	face_player $02
 	jp .asm_aaddd
-.asm_aadcf:
+.asm_aadcf
 	move_player $01, Data_aad98
 	xor a
 	scall PlayerFace
-.asm_aaddd:
+.asm_aaddd
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d844
@@ -181,7 +181,7 @@ Func_aada6:
 	or a
 	jp nz, .asm_aadfc
 	jp .asm_aae45
-.asm_aadfc:
+.asm_aadfc
 	writetext TreeBitstreamText_3d897
 	ld a, [wMapY]
 	add a, $04
@@ -189,16 +189,16 @@ Func_aada6:
 	jp nz, .asm_aae19
 	move_person $02, Data_aad9c, 1
 	jp .asm_aae23
-.asm_aae19:
+.asm_aae19
 	move_person $02, Data_aada2, 1
-.asm_aae23:
+.asm_aae23
 	scall WaitNPCStep
 	hideperson $02
 	hideperson $03
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
 	setevent EVENT_0B0
-.asm_aae45:
+.asm_aae45
 	pop bc
 	ret
 

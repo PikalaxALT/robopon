@@ -77,9 +77,9 @@ Func_971f5:
 	face_player 0
 	hideperson 0
 	jp .asm_972e7
-.asm_972e1:
+.asm_972e1
 	writetext TreeBitstreamText_3f79e
-.asm_972e7:
+.asm_972e7
 	ret
 
 Data_972e8:
@@ -100,12 +100,12 @@ Func_97311:
 	or a
 	jp nz, .asm_97337
 	jp .asm_97346
-.asm_97337:
+.asm_97337
 	writetext TreeBitstreamText_47319
 	jp .asm_97346
-.asm_97340:
+.asm_97340
 	writetext TreeBitstreamText_47306
-.asm_97346:
+.asm_97346
 	pop bc
 	ret
 
@@ -131,12 +131,12 @@ Func_97379:
 	or a
 	jp nz, .asm_9739f
 	jp .asm_973ae
-.asm_9739f:
+.asm_9739f
 	writetext TreeBitstreamText_47319
 	jp .asm_973ae
-.asm_973a8:
+.asm_973a8
 	writetext TreeBitstreamText_47306
-.asm_973ae:
+.asm_973ae
 	pop bc
 	ret
 
@@ -161,12 +161,12 @@ Func_973e1:
 	or a
 	jp nz, .asm_97407
 	jp .asm_97416
-.asm_97407:
+.asm_97407
 	writetext TreeBitstreamText_47319
 	jp .asm_97416
-.asm_97410:
+.asm_97410
 	writetext TreeBitstreamText_47306
-.asm_97416:
+.asm_97416
 	pop bc
 	ret
 
@@ -182,7 +182,7 @@ Func_97420:
 	jp nz, .asm_97436
 	landmarksign TreeBitstreamText_4732b
 	jp .asm_97436
-.asm_97436:
+.asm_97436
 	ret
 
 Func_97437:
@@ -194,7 +194,7 @@ Func_97437:
 	jp nz, .asm_9744d
 	landmarksign TreeBitstreamText_47337
 	jp .asm_9744d
-.asm_9744d:
+.asm_9744d
 	ret
 
 Func_9744e:
@@ -206,5 +206,5 @@ Func_9744e:
 	jp nz, .asm_97464
 	landmarksign TreeBitstreamText_47343
 	jp .asm_97464
-.asm_97464:
+.asm_97464
 	ret

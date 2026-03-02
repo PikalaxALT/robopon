@@ -53,7 +53,7 @@ Func_81d6a::
 	ld a, [wc793]
 	cp $3
 	jp nz, Func_81df9
-.check_dr_zero: ; 81d95 (20:5d95)
+.check_dr_zero ; 81d95 (20:5d95)
 	ld a, [wBackupMapGroup]
 	cp GROUP_MAP_26_00 ; where you fight Dr. Zero
 	jp nz, .not_dr_zero
@@ -64,7 +64,7 @@ Func_81d6a::
 	call Func_81f41
 	jp Func_81df6
 
-.not_dr_zero: ; 81db2 (20:5db2)
+.not_dr_zero ; 81db2 (20:5db2)
 	loadwarps $1, Data_81cb4
 	checkevent EVENT_00A
 	or a

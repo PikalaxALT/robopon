@@ -52,11 +52,11 @@ Func_b5939:: ; b5939
 	call Func_b58be
 	call Func_b5a57
 	jp .asm_b5995
-.asm_b5992:
+.asm_b5992
 	call Func_b58be
-.asm_b5995:
+.asm_b5995
 	jp .asm_b59d8
-.asm_b5998:
+.asm_b5998
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_b59d5
@@ -77,13 +77,13 @@ Func_b5939:: ; b5939
 	call Func_b58be
 	call Func_b5a57
 	jp .asm_b59d2
-.asm_b59cf:
+.asm_b59cf
 	call Func_b58be
-.asm_b59d2:
+.asm_b59d2
 	jp .asm_b59d8
-.asm_b59d5:
+.asm_b59d5
 	call Func_b58be
-.asm_b59d8:
+.asm_b59d8
 	ret
 
 Func_b59d9:
@@ -101,7 +101,7 @@ Func_b59d9:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_04, $0b, $0c
-.asm_b5a17:
+.asm_b5a17
 	ret
 
 Func_b5a18:
@@ -119,7 +119,7 @@ Func_b5a18:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_13, $09, $0a
-.asm_b5a56:
+.asm_b5a56
 	ret
 
 Func_b5a57:

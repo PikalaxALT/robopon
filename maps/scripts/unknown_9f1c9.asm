@@ -57,7 +57,7 @@ Func_9f214:
 	cp $02
 	jp nz, .asm_9f2d9
 	ld c, $00
-.asm_9f22f:
+.asm_9f22f
 	ld a, c
 	cp $0c
 	jp nc, .asm_9f266
@@ -83,10 +83,10 @@ Func_9f214:
 	jp nz, .asm_9f262
 	ld c, $ff
 	jp .asm_9f266
-.asm_9f262:
+.asm_9f262
 	inc c
 	jp .asm_9f22f
-.asm_9f266:
+.asm_9f266
 	ld a, c
 	cp $ff
 	jp nz, .asm_9f2d9
@@ -98,7 +98,7 @@ Func_9f214:
 	scall StopShakingScreen
 	scall HideEmote
 	ld c, $00
-.asm_9f288:
+.asm_9f288
 	ld a, c
 	cp $04
 	jp nc, .asm_9f2d5
@@ -114,7 +114,7 @@ Func_9f214:
 	or h
 	jp nz, .asm_9f2a3
 	jp .asm_9f2d1
-.asm_9f2a3:
+.asm_9f2a3
 	pop hl
 	push hl
 	reg16swap de, hl
@@ -127,11 +127,11 @@ Func_9f214:
 	pop de
 	push hl
 	jp .asm_9f2bf
-.asm_9f2ba:
+.asm_9f2ba
 	ld hl, $0014
 	pop de
 	push hl
-.asm_9f2bf:
+.asm_9f2bf
 	push bc
 	call GetHLAtSPPlus4
 	ld a, l
@@ -145,12 +145,12 @@ Func_9f214:
 	ld d, $00
 	scall Func_80e31
 	pop bc
-.asm_9f2d1:
+.asm_9f2d1
 	inc c
 	jp .asm_9f288
-.asm_9f2d5:
+.asm_9f2d5
 	xor a
 	ld [wSliding], a
-.asm_9f2d9:
+.asm_9f2d9
 	add sp, $1a
 	ret

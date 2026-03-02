@@ -367,7 +367,7 @@ DivideLong:: ; 346d (0:346d)
 	ld d, b
 	ld e, b
 	ld a, $20
-.loop: ; 3474 (0:3474)
+.loop ; 3474 (0:3474)
 	push af
 	push hl
 	ld a, [hl]
@@ -456,7 +456,7 @@ MultiplyLongs::
 	push hl
 	jp .handleLoop
 
-.loop: ; 34d4 (0:34d4)
+.loop ; 34d4 (0:34d4)
 	ld a, [hl]
 	rra
 	ld [hl], a
@@ -490,7 +490,7 @@ MultiplyLongs::
 	ld a, b
 	adc [hl]
 	ld b, a
-.next: ; 34f7 (0:34f7)
+.next ; 34f7 (0:34f7)
 	pop hl
 	push hl
 	ld a, [hl]
@@ -508,7 +508,7 @@ MultiplyLongs::
 	ld a, [hl]
 	rla
 	ld [hl], a
-.handleLoop: ; 3508 (0:3508)
+.handleLoop ; 3508 (0:3508)
 	ld hl, $4
 	add hl, sp
 	ld a, [hl]

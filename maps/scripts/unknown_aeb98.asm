@@ -42,9 +42,9 @@ Func_aeb98:: ; aeb98
 	jp nz, .asm_aebd3
 	loadpeople $02, Data_aeb6e
 	jp .asm_aebdb
-.asm_aebd3:
+.asm_aebd3
 	loadpeople $01, Data_aeb8a
-.asm_aebdb:
+.asm_aebdb
 	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bbe
@@ -70,7 +70,7 @@ Func_aebfc:
 	ld hl, Data_aebf6
 	scall Func_80d9b
 	scall Func_80f02
-.asm_aec1c:
+.asm_aec1c
 	ret
 
 Func_aec1d:
@@ -84,7 +84,7 @@ Func_aec1d:
 	scall WaitEmote
 	scall HideEmote
 	warp_player MAP_27_08, $06, $08
-.asm_aec48:
+.asm_aec48
 	ret
 
 Data_aec49:
@@ -130,11 +130,11 @@ Func_aec4d:
 	scall PlayerFace
 	sprite_face $01, $01
 	jp .asm_aecbc
-.asm_aecb0:
+.asm_aecb0
 	ld a, $01
 	scall PlayerFace
 	sprite_face $03, $01
-.asm_aecbc:
+.asm_aecbc
 	writenpctext TreeBitstreamText_3e940
 	scall Func_81094
 	or a
@@ -146,5 +146,5 @@ Func_aec4d:
 	writenpctext TreeBitstreamText_3e974
 	move_person $01, Data_aec49, 1
 	hideperson $01
-.asm_aecf8:
+.asm_aecf8
 	ret

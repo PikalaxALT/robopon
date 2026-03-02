@@ -50,10 +50,10 @@ Func_8744d::
 	ld [wc7da], a
 	jp .asm_87488
 
-.asm_87484: ; 87484 (21:7484)
+.asm_87484 ; 87484 (21:7484)
 	xor a
 	ld [wc7da], a
-.asm_87488: ; 87488 (21:7488)
+.asm_87488 ; 87488 (21:7488)
 	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46878
@@ -71,7 +71,7 @@ Func_87497:
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
 	playmusic SONG_CAVE
-.asm_874c2: ; 874c2 (21:74c2)
+.asm_874c2 ; 874c2 (21:74c2)
 	ret
 
 Data_874c3:
@@ -97,19 +97,19 @@ Func_874ec:
 	jp nz, .asm_87522
 	jp .asm_87542
 
-.asm_87522: ; 87522 (21:7522)
+.asm_87522 ; 87522 (21:7522)
 	setevent EVENT_06E
 	writetext TreeBitstreamText_42bf7
 	jp .asm_87539
 
-.asm_87533: ; 87533 (21:7533)
+.asm_87533 ; 87533 (21:7533)
 	writetext TreeBitstreamText_42bf7
-.asm_87539: ; 87539 (21:7539)
+.asm_87539 ; 87539 (21:7539)
 	jp .asm_87542
 
-.asm_8753c: ; 8753c (21:753c)
+.asm_8753c ; 8753c (21:753c)
 	writetext TreeBitstreamText_42c09
-.asm_87542: ; 87542 (21:7542)
+.asm_87542 ; 87542 (21:7542)
 	pop bc
 	ret
 
@@ -139,7 +139,7 @@ Func_87574:
 	jp nz, .asm_875aa
 	jp .asm_8763c
 
-.asm_875aa: ; 875aa (21:75aa)
+.asm_875aa ; 875aa (21:75aa)
 	setevent EVENT_06F
 	checkevent EVENT_109
 	or a
@@ -158,16 +158,16 @@ Func_87574:
 	ld a, $10
 	scall Func_80d4d
 	setevent EVENT_109
-.asm_875f0: ; 875f0 (21:75f0)
+.asm_875f0 ; 875f0 (21:75f0)
 	writetext TreeBitstreamText_42b98
 	jp .asm_875ff
 
-.asm_875f9: ; 875f9 (21:75f9)
+.asm_875f9 ; 875f9 (21:75f9)
 	writetext TreeBitstreamText_42b7b
-.asm_875ff: ; 875ff (21:75ff)
+.asm_875ff ; 875ff (21:75ff)
 	jp .asm_8763c
 
-.asm_87602: ; 87602 (21:7602)
+.asm_87602 ; 87602 (21:7602)
 	checkevent EVENT_109
 	or a
 	jp nz, .asm_87636
@@ -182,9 +182,9 @@ Func_87574:
 	ld a, $10
 	scall Func_80d4d
 	setevent EVENT_109
-.asm_87636: ; 87636 (21:7636)
+.asm_87636 ; 87636 (21:7636)
 	writetext TreeBitstreamText_42bc8
-.asm_8763c: ; 8763c (21:763c)
+.asm_8763c ; 8763c (21:763c)
 	pop bc
 	ret
 

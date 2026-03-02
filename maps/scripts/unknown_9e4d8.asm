@@ -50,7 +50,7 @@ Func_9e4d8:: ; 9e4d8
 	jp z, .asm_9e4f7
 	ld a, $01
 	set_frame_script Func_9e7f4
-.asm_9e4f7:
+.asm_9e4f7
 	ld a, [wBackupMapNumber]
 	cp $0b
 	jp nz, .asm_9e50f
@@ -58,7 +58,7 @@ Func_9e4d8:: ; 9e4d8
 	ld a, $04
 	ld [wc792], a
 	jp .asm_9e585
-.asm_9e50f:
+.asm_9e50f
 	ld a, [wBackupMapNumber]
 	cp $0c
 	jp nz, .asm_9e527
@@ -66,7 +66,7 @@ Func_9e4d8:: ; 9e4d8
 	ld a, $07
 	ld [wc792], a
 	jp .asm_9e585
-.asm_9e527:
+.asm_9e527
 	ld a, [wBackupMapNumber]
 	cp $0d
 	jp nz, .asm_9e53f
@@ -74,31 +74,31 @@ Func_9e4d8:: ; 9e4d8
 	ld a, $08
 	ld [wc792], a
 	jp .asm_9e585
-.asm_9e53f:
+.asm_9e53f
 	ld a, [wBackupMapNumber]
 	cp $11
 	jp z, .asm_9e54f
 	ld a, [wBackupMapNumber]
 	cp $0e
 	jp nz, .asm_9e585
-.asm_9e54f:
+.asm_9e54f
 	ld a, [wc792]
 	cp $04
 	jp nz, .asm_9e562
 	loadwarps $01, Data_9e3c9
 	jp .asm_9e585
-.asm_9e562:
+.asm_9e562
 	ld a, [wc792]
 	cp $07
 	jp nz, .asm_9e575
 	loadwarps $01, Data_9e3d4
 	jp .asm_9e585
-.asm_9e575:
+.asm_9e575
 	ld a, [wc792]
 	cp $08
 	jp nz, .asm_9e585
 	loadwarps $01, Data_9e3df
-.asm_9e585:
+.asm_9e585
 	loadpeople $0c, Data_9e430
 	ld a, $03
 	scall Func_80d01
@@ -113,28 +113,28 @@ Func_9e4d8:: ; 9e4d8
 	ld a, [wBackupMapNumber]
 	cp $0e
 	jp nz, .asm_9e5c4
-.asm_9e5b6:
+.asm_9e5b6
 	scall Func_8001c
 	xor a
 	call Func_9e7f4
 	xor a
 	ld [wc794], a
 	jp .asm_9e5cf
-.asm_9e5c4:
+.asm_9e5c4
 	xor a
 	ld [wc794], a
 	xor a
 	call Func_9e7f4
 	scall Func_8001c
-.asm_9e5cf:
+.asm_9e5cf
 	jp .asm_9e5dd
-.asm_9e5d2:
+.asm_9e5d2
 	xor a
 	ld [wc794], a
 	xor a
 	call Func_9e7f4
 	scall Func_8001c
-.asm_9e5dd:
+.asm_9e5dd
 	ret
 
 Data_9e5de:
@@ -193,9 +193,9 @@ Func_9e5f6:
 	jp nz, .asm_9e63a
 	ld a, $01
 	ld [wc7c4], a
-.asm_9e63a:
+.asm_9e63a
 	jp .asm_9e7e5
-.asm_9e63d:
+.asm_9e63d
 	ld a, [wc794]
 	ld l, a
 	push hl
@@ -205,7 +205,7 @@ Func_9e5f6:
 	ld [hl], $00
 	ld hl, sp+$08
 	ld [hl], $04
-.asm_9e64e:
+.asm_9e64e
 	ld hl, sp+$08
 	ld a, [hl]
 	cp $0b
@@ -234,7 +234,7 @@ Func_9e5f6:
 	scall CheckObjectsOccupyingSameTile
 	cp $01
 	jp nz, .asm_9e69c
-.asm_9e689:
+.asm_9e689
 	ld hl, sp+$08
 	ld a, [hl]
 	ld hl, sp+$07
@@ -248,17 +248,17 @@ Func_9e5f6:
 	inc a
 	ld hl, sp+$07
 	ld [hl], a
-.asm_9e69c:
+.asm_9e69c
 	ld hl, sp+$08
 	ld a, [hl]
 	inc a
 	ld hl, sp+$08
 	ld [hl], a
 	jp .asm_9e64e
-.asm_9e6a6:
+.asm_9e6a6
 	ld hl, sp+$08
 	ld [hl], $00
-.asm_9e6aa:
+.asm_9e6aa
 	ld hl, sp+$08
 	ld a, [hl]
 	cp $04
@@ -273,16 +273,16 @@ Func_9e5f6:
 	ld hl, sp+$08
 	ld a, [hl]
 	scall SetPersonVisibilityState
-.asm_9e6c7:
+.asm_9e6c7
 	ld hl, sp+$08
 	ld a, [hl]
 	inc a
 	ld hl, sp+$08
 	ld [hl], a
 	jp .asm_9e6aa
-.asm_9e6d1:
+.asm_9e6d1
 	ld c, $00
-.asm_9e6d3:
+.asm_9e6d3
 	ld a, c
 	cp $04
 	jp nc, .asm_9e773
@@ -303,7 +303,7 @@ Func_9e5f6:
 	jp z, .asm_9e6f7
 	ld hl, sp+$06
 	ld [hl], $00
-.asm_9e6f7:
+.asm_9e6f7
 	ld hl, sp+$05
 	ld a, [hl]
 	cp $ff
@@ -321,7 +321,7 @@ Func_9e5f6:
 	jp z, .asm_9e715
 	ld hl, sp+$05
 	ld [hl], $00
-.asm_9e715:
+.asm_9e715
 	ld hl, sp+$04
 	ld a, [hl]
 	cp $ff
@@ -339,7 +339,7 @@ Func_9e5f6:
 	jp z, .asm_9e733
 	ld hl, sp+$04
 	ld [hl], $00
-.asm_9e733:
+.asm_9e733
 	ld hl, sp+$03
 	ld a, [hl]
 	cp $ff
@@ -357,7 +357,7 @@ Func_9e5f6:
 	jp z, .asm_9e751
 	ld hl, sp+$03
 	ld [hl], $00
-.asm_9e751:
+.asm_9e751
 	ld hl, sp+$02
 	ld a, [hl]
 	cp $ff
@@ -375,45 +375,45 @@ Func_9e5f6:
 	jp z, .asm_9e76f
 	ld hl, sp+$02
 	ld [hl], $00
-.asm_9e76f:
+.asm_9e76f
 	inc c
 	jp .asm_9e6d3
-.asm_9e773:
+.asm_9e773
 	ld hl, sp+$06
 	ld a, [hl]
 	cp $ff
 	jp nz, .asm_9e780
 	ld a, $02
 	ld [wc794], a
-.asm_9e780:
+.asm_9e780
 	ld hl, sp+$05
 	ld a, [hl]
 	cp $ff
 	jp nz, .asm_9e78d
 	ld a, $03
 	ld [wc794], a
-.asm_9e78d:
+.asm_9e78d
 	ld hl, sp+$04
 	ld a, [hl]
 	cp $ff
 	jp nz, .asm_9e79a
 	ld a, $05
 	ld [wc794], a
-.asm_9e79a:
+.asm_9e79a
 	ld hl, sp+$03
 	ld a, [hl]
 	cp $ff
 	jp nz, .asm_9e7a7
 	ld a, $06
 	ld [wc794], a
-.asm_9e7a7:
+.asm_9e7a7
 	ld hl, sp+$02
 	ld a, [hl]
 	cp $ff
 	jp nz, .asm_9e7b4
 	ld a, $09
 	ld [wc794], a
-.asm_9e7b4:
+.asm_9e7b4
 	pop hl
 	ld a, [wc794]
 	or a
@@ -427,15 +427,15 @@ Func_9e5f6:
 	ld a, $01
 	call Func_9e7f4
 	call Func_9e88f
-.asm_9e7d7:
+.asm_9e7d7
 	jp .asm_9e7e5
-.asm_9e7da:
+.asm_9e7da
 	ld a, [wc794]
 	cp l
 	jp z, .asm_9e7e5
 	xor a
 	call Func_9e7f4
-.asm_9e7e5:
+.asm_9e7e5
 	add sp, $0e
 	ret
 
@@ -451,10 +451,10 @@ Func_9e7f4:
 	ld hl, Data_9e7e8
 	scall Func_80d9b
 	jp .asm_9e807
-.asm_9e801:
+.asm_9e801
 	ld hl, Data_9e7ee
 	scall Func_80d9b
-.asm_9e807:
+.asm_9e807
 	scall Func_80f02
 	ret
 
@@ -492,11 +492,11 @@ Func_9e88f:
 	jp nz, .asm_9e8ad
 	loadwarps $02, Data_9e821
 	jp .asm_9e8b5
-.asm_9e8ad:
+.asm_9e8ad
 	loadwarps $02, Data_9e80b
-.asm_9e8b5:
+.asm_9e8b5
 	jp .asm_9e8f9
-.asm_9e8b8:
+.asm_9e8b8
 	ld a, [wc792]
 	cp $07
 	jp nz, .asm_9e8de
@@ -505,17 +505,17 @@ Func_9e88f:
 	jp nz, .asm_9e8d3
 	loadwarps $02, Data_9e84d
 	jp .asm_9e8db
-.asm_9e8d3:
+.asm_9e8d3
 	loadwarps $02, Data_9e837
-.asm_9e8db:
+.asm_9e8db
 	jp .asm_9e8f9
-.asm_9e8de:
+.asm_9e8de
 	ld a, [wc794]
 	cp $09
 	jp nz, .asm_9e8f1
 	loadwarps $02, Data_9e879
 	jp .asm_9e8f9
-.asm_9e8f1:
+.asm_9e8f1
 	loadwarps $02, Data_9e863
-.asm_9e8f9:
+.asm_9e8f9
 	ret

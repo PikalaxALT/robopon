@@ -48,10 +48,10 @@ Func_8a1f3:: ; 8a1f3
 	loadpeople $03, Data_8a1c9
 	hideperson $05
 	jp .asm_8a24c
-.asm_8a23d:
+.asm_8a23d
 	loadpeople $03, Data_8a1c9
 	hideperson $01
-.asm_8a24c:
+.asm_8a24c
 	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468d4
@@ -79,17 +79,17 @@ Func_8a284:
 	or a
 	jp nz, .asm_8a2ba
 	jp .asm_8a2da
-.asm_8a2ba:
+.asm_8a2ba
 	setevent EVENT_07A
 	writetext TreeBitstreamText_429a1
 	jp .asm_8a2d1
-.asm_8a2cb:
+.asm_8a2cb
 	writetext TreeBitstreamText_429d1
-.asm_8a2d1:
+.asm_8a2d1
 	jp .asm_8a2da
-.asm_8a2d4:
+.asm_8a2d4
 	writetext TreeBitstreamText_4298a
-.asm_8a2da:
+.asm_8a2da
 	pop bc
 	ret
 
@@ -118,17 +118,17 @@ Func_8a30a:
 	or a
 	jp nz, .asm_8a340
 	jp .asm_8a360
-.asm_8a340:
+.asm_8a340
 	setevent EVENT_07B
 	writetext TreeBitstreamText_429b8
 	jp .asm_8a357
-.asm_8a351:
+.asm_8a351
 	writetext TreeBitstreamText_429d1
-.asm_8a357:
+.asm_8a357
 	jp .asm_8a360
-.asm_8a35a:
+.asm_8a35a
 	writetext TreeBitstreamText_429b8
-.asm_8a360:
+.asm_8a360
 	pop bc
 	ret
 
@@ -157,17 +157,17 @@ Func_8a394:
 	or a
 	jp nz, .asm_8a3ca
 	jp .asm_8a3ea
-.asm_8a3ca:
+.asm_8a3ca
 	setevent EVENT_07C
 	writetext TreeBitstreamText_42972
 	jp .asm_8a3e1
-.asm_8a3db:
+.asm_8a3db
 	writetext TreeBitstreamText_42972
-.asm_8a3e1:
+.asm_8a3e1
 	jp .asm_8a3ea
-.asm_8a3e4:
+.asm_8a3e4
 	writetext TreeBitstreamText_42972
-.asm_8a3ea:
+.asm_8a3ea
 	pop bc
 	ret
 
@@ -196,17 +196,17 @@ Func_8a41d:
 	or a
 	jp nz, .asm_8a453
 	jp .asm_8a473
-.asm_8a453:
+.asm_8a453
 	setevent EVENT_07D
 	writetext TreeBitstreamText_4298a
 	jp .asm_8a46a
-.asm_8a464:
+.asm_8a464
 	writetext TreeBitstreamText_429ca
-.asm_8a46a:
+.asm_8a46a
 	jp .asm_8a473
-.asm_8a46d:
+.asm_8a46d
 	writetext TreeBitstreamText_429dc
-.asm_8a473:
+.asm_8a473
 	pop bc
 	ret
 
@@ -329,9 +329,9 @@ Func_8a480:
 	ld a, [hl]
 	scall SetPersonVisibilityState
 	jp .asm_8a5a3
-.asm_8a59d:
+.asm_8a59d
 	writetext TreeBitstreamText_3f79e
-.asm_8a5a3:
+.asm_8a5a3
 	pop bc
 	ret
 
@@ -345,9 +345,9 @@ Func_8a5a5:
 	ld a, [wc790]
 	cp $07
 	jp nz, .asm_8a5bf
-.asm_8a5b9:
+.asm_8a5b9
 	writetext TreeBitstreamText_4706a
-.asm_8a5bf:
+.asm_8a5bf
 	ret
 
 Data_8a5c0:
@@ -367,5 +367,5 @@ Func_8a5e7:
 	scall Func_80f02
 	scall AllocateSpaceForWarps
 	loadwarps $03, Data_8a5c0
-.asm_8a606:
+.asm_8a606
 	ret

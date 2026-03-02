@@ -274,7 +274,7 @@ Data_b9b6e:
 
 Func_b9bbe:: ; b9bbe
 	ld c, $00
-.asm_b9bc0:
+.asm_b9bc0
 	ld a, c
 	cp $14
 	jp nc, .asm_b9c28
@@ -336,10 +336,10 @@ Func_b9bbe:: ; b9bbe
 	ld e, $01
 	scall LoadWarps
 	jp .asm_b9c28
-.asm_b9c24:
+.asm_b9c24
 	inc c
 	jp .asm_b9bc0
-.asm_b9c28:
+.asm_b9c28
 	set_frame_script Func_b9f52
 	ld a, [wBackupMapGroup]
 	cp $01
@@ -363,9 +363,9 @@ Func_b9bbe:: ; b9bbe
 	ld de, Data_b99a4
 	xor a
 	scall SetPersonTextPointer
-.asm_b9c6e:
+.asm_b9c6e
 	jp .asm_b9ceb
-.asm_b9c71:
+.asm_b9c71
 	ld a, [wBackupMapX]
 	cp $19
 	jp nz, .asm_b9ca2
@@ -382,9 +382,9 @@ Func_b9bbe:: ; b9bbe
 	ld de, Data_b99a8
 	xor a
 	scall SetPersonTextPointer
-.asm_b9c9f:
+.asm_b9c9f
 	jp .asm_b9ceb
-.asm_b9ca2:
+.asm_b9ca2
 	ld a, [wBackupMapX]
 	cp $11
 	jp nz, .asm_b9cbd
@@ -393,7 +393,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9cbd
 	loadpeople $01, Data_b99d8
 	jp .asm_b9ceb
-.asm_b9cbd:
+.asm_b9cbd
 	ld a, [wBackupMapX]
 	cp $19
 	jp nz, .asm_b9ceb
@@ -410,9 +410,9 @@ Func_b9bbe:: ; b9bbe
 	ld de, Data_b99ac
 	xor a
 	scall SetPersonTextPointer
-.asm_b9ceb:
+.asm_b9ceb
 	jp .asm_b9f35
-.asm_b9cee:
+.asm_b9cee
 	ld a, [wBackupMapGroup]
 	cp $06
 	jp nz, .asm_b9d3f
@@ -429,7 +429,7 @@ Func_b9bbe:: ; b9bbe
 	call Func_b9f52
 	scall Func_80f02
 	jp .asm_b9d3c
-.asm_b9d1e:
+.asm_b9d1e
 	ld a, [wBackupMapX]
 	cp $15
 	jp nz, .asm_b9d3c
@@ -439,9 +439,9 @@ Func_b9bbe:: ; b9bbe
 	loadpeople $02, Data_b9a10
 	call Func_b9f52
 	scall Func_80f02
-.asm_b9d3c:
+.asm_b9d3c
 	jp .asm_b9f35
-.asm_b9d3f:
+.asm_b9d3f
 	ld a, [wBackupMapGroup]
 	cp $11
 	jp nz, .asm_b9d84
@@ -456,7 +456,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9d69
 	loadpeople $01, Data_b9a2c
 	jp .asm_b9d81
-.asm_b9d69:
+.asm_b9d69
 	ld a, [wBackupMapX]
 	cp $0f
 	jp nz, .asm_b9d81
@@ -464,9 +464,9 @@ Func_b9bbe:: ; b9bbe
 	cp $04
 	jp nz, .asm_b9d81
 	loadpeople $01, Data_b9a3a
-.asm_b9d81:
+.asm_b9d81
 	jp .asm_b9f35
-.asm_b9d84:
+.asm_b9d84
 	ld a, [wBackupMapGroup]
 	cp $14
 	jp nz, .asm_b9e0b
@@ -490,9 +490,9 @@ Func_b9bbe:: ; b9bbe
 	xor a
 	scall SetPersonTextPointer
 	hideperson $01
-.asm_b9dc8:
+.asm_b9dc8
 	jp .asm_b9e08
-.asm_b9dcb:
+.asm_b9dcb
 	ld a, [wBackupMapX]
 	cp $15
 	jp nz, .asm_b9e08
@@ -513,9 +513,9 @@ Func_b9bbe:: ; b9bbe
 	ld a, $02
 	scall SetPersonTextPointer
 	hideperson 0
-.asm_b9e08:
+.asm_b9e08
 	jp .asm_b9f35
-.asm_b9e0b:
+.asm_b9e0b
 	ld a, [wBackupMapGroup]
 	cp $19
 	jp nz, .asm_b9ed8
@@ -530,7 +530,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9e36
 	loadpeople $02, Data_b9a8e
 	jp .asm_b9ed5
-.asm_b9e36:
+.asm_b9e36
 	ld a, [wBackupMapX]
 	cp $21
 	jp nz, .asm_b9e51
@@ -539,7 +539,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9e51
 	loadpeople $01, Data_b9aaa
 	jp .asm_b9ed5
-.asm_b9e51:
+.asm_b9e51
 	ld a, [wBackupMapX]
 	cp $05
 	jp nz, .asm_b9e6c
@@ -548,7 +548,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9e6c
 	loadpeople $01, Data_b9ab8
 	jp .asm_b9ed5
-.asm_b9e6c:
+.asm_b9e6c
 	ld a, [wBackupMapX]
 	cp $08
 	jp nz, .asm_b9e87
@@ -557,7 +557,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9e87
 	loadpeople $02, Data_b9ac6
 	jp .asm_b9ed5
-.asm_b9e87:
+.asm_b9e87
 	ld a, [wBackupMapX]
 	cp $11
 	jp nz, .asm_b9ea2
@@ -566,7 +566,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9ea2
 	loadpeople $01, Data_b9ae2
 	jp .asm_b9ed5
-.asm_b9ea2:
+.asm_b9ea2
 	ld a, [wBackupMapX]
 	cp $14
 	jp nz, .asm_b9ebd
@@ -575,7 +575,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9ebd
 	loadpeople $01, Data_b9afe
 	jp .asm_b9ed5
-.asm_b9ebd:
+.asm_b9ebd
 	ld a, [wBackupMapX]
 	cp $17
 	jp nz, .asm_b9ed5
@@ -583,9 +583,9 @@ Func_b9bbe:: ; b9bbe
 	cp $15
 	jp nz, .asm_b9ed5
 	loadpeople $01, Data_b9af0
-.asm_b9ed5:
+.asm_b9ed5
 	jp .asm_b9f35
-.asm_b9ed8:
+.asm_b9ed8
 	ld a, [wBackupMapGroup]
 	cp $1d
 	jp nz, .asm_b9f35
@@ -600,7 +600,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9f02
 	loadpeople $01, Data_b9b0c
 	jp .asm_b9f35
-.asm_b9f02:
+.asm_b9f02
 	ld a, [wBackupMapX]
 	cp $0a
 	jp nz, .asm_b9f1d
@@ -609,7 +609,7 @@ Func_b9bbe:: ; b9bbe
 	jp nz, .asm_b9f1d
 	loadpeople $01, Data_b9b1a
 	jp .asm_b9f35
-.asm_b9f1d:
+.asm_b9f1d
 	ld a, [wBackupMapX]
 	cp $12
 	jp nz, .asm_b9f35
@@ -617,7 +617,7 @@ Func_b9bbe:: ; b9bbe
 	cp $19
 	jp nz, .asm_b9f35
 	loadpeople $02, Data_b9b28
-.asm_b9f35:
+.asm_b9f35
 	loadpeople $03, Data_b9b44
 	scall Func_8001c
 	playmusic SONG_TOWN3
@@ -641,7 +641,7 @@ Func_b9f52:
 	ld hl, Data_b9f4c
 	scall Func_80d9b
 	scall Func_80f02
-.asm_b9f70:
+.asm_b9f70
 	ret
 
 Func_b9f71:
@@ -652,7 +652,7 @@ Func_b9f71:
 	warp_player MAP_06_00, $0a, $05
 	ld a, $01
 	ld [wPlayerFacing], a
-.asm_b9f8e:
+.asm_b9f8e
 	ret
 
 Func_b9f8f:
@@ -663,7 +663,7 @@ Func_b9f8f:
 	playsfx SFX_2E
 	ld a, $01
 	ld [wPlayerFacing], a
-.asm_b9fac:
+.asm_b9fac
 	ret
 
 Func_b9fad:
@@ -680,7 +680,7 @@ Func_b9fad:
 	jp nc, .asm_b9fd1
 	writetext TreeBitstreamText_3b5bf
 	jp .asm_ba023
-.asm_b9fd1:
+.asm_b9fd1
 	checkevent EVENT_0E9
 	cp $01
 	jp nz, .asm_b9ff7
@@ -690,7 +690,7 @@ Func_b9fad:
 	writetext TreeBitstreamText_3b516
 	setevent EVENT_0EB
 	jp .asm_ba023
-.asm_b9ff7:
+.asm_b9ff7
 	checkevent EVENT_0EA
 	cp $01
 	jp nz, .asm_ba01d
@@ -700,8 +700,8 @@ Func_b9fad:
 	writetext TreeBitstreamText_3b560
 	setevent EVENT_0EB
 	jp .asm_ba023
-.asm_ba01d:
+.asm_ba01d
 	writetext TreeBitstreamText_3b5f0
-.asm_ba023:
+.asm_ba023
 	pop bc
 	ret

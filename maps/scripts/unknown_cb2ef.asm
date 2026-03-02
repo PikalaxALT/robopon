@@ -42,7 +42,7 @@ Func_cb2ef:: ; cb2ef
 	or a
 	jp nz, .asm_cb31e
 	loadpeople $03, Data_cb2c5
-.asm_cb31e:
+.asm_cb31e
 	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46aca
@@ -72,17 +72,17 @@ Func_cb335:
 	xor a
 	scall PlayerFace
 	jp .asm_cb37d
-.asm_cb368:
+.asm_cb368
 	move_player $01, Data_cb331
 	ld a, $03
 	scall PlayerFace
 	sprite_face $01, 0
-.asm_cb37d:
+.asm_cb37d
 	call Func_cb3c6
 	setevent EVENT_0AB
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
-.asm_cb391:
+.asm_cb391
 	pop bc
 	ret
 
@@ -111,9 +111,9 @@ Func_cb3da:
 	jp nz, .asm_cb3f3
 	move_person 0, Data_cb393, 1
 	jp .asm_cb3fc
-.asm_cb3f3:
+.asm_cb3f3
 	move_person 0, Data_cb397, 1
-.asm_cb3fc:
+.asm_cb3fc
 	scall WaitNPCStep
 	hideperson 0
 	ret

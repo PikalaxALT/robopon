@@ -23,7 +23,7 @@ Func_b5fbe:: ; b5fbe
 	loadpeople $03, Data_b5f40
 	hideperson $01
 	jp .asm_b60c9
-.asm_b5fe2:
+.asm_b5fe2
 	checkevent EVENT_05A
 	cp $01
 	jp nz, .asm_b60c9
@@ -45,7 +45,7 @@ Func_b5fbe:: ; b5fbe
 	checkevent EVENT_0E6
 	or a
 	jp nz, .asm_b60c9
-.asm_b6029:
+.asm_b6029
 	loadpeople $06, Data_b5f6a
 	checkevent EVENT_0E1
 	cp $01
@@ -55,7 +55,7 @@ Func_b5fbe:: ; b5fbe
 	ld e, $0c
 	ld a, $01
 	scall Func_80080
-.asm_b604b:
+.asm_b604b
 	checkevent EVENT_0E2
 	cp $01
 	jp nz, .asm_b6066
@@ -64,7 +64,7 @@ Func_b5fbe:: ; b5fbe
 	ld e, $0c
 	ld a, $02
 	scall Func_80080
-.asm_b6066:
+.asm_b6066
 	checkevent EVENT_0E3
 	cp $01
 	jp nz, .asm_b6081
@@ -73,7 +73,7 @@ Func_b5fbe:: ; b5fbe
 	ld e, $0c
 	ld a, $03
 	scall Func_80080
-.asm_b6081:
+.asm_b6081
 	checkevent EVENT_0E4
 	cp $01
 	jp nz, .asm_b609c
@@ -82,7 +82,7 @@ Func_b5fbe:: ; b5fbe
 	ld e, $0c
 	ld a, $04
 	scall Func_80080
-.asm_b609c:
+.asm_b609c
 	checkevent EVENT_0E5
 	cp $01
 	jp nz, .asm_b60b7
@@ -91,12 +91,12 @@ Func_b5fbe:: ; b5fbe
 	ld e, $0c
 	ld a, $05
 	scall Func_80080
-.asm_b60b7:
+.asm_b60b7
 	checkevent EVENT_0E6
 	cp $01
 	jp nz, .asm_b60c9
 	hideperson $05
-.asm_b60c9:
+.asm_b60c9
 	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	ret
@@ -140,7 +140,7 @@ Func_b6117:
 	or a
 	jp nz, .asm_b6149
 	jp .asm_b625f
-.asm_b6149:
+.asm_b6149
 	writenpctext TreeBitstreamText_3eb76
 	ld a, $0a
 	scall FadeOutAudio
@@ -163,7 +163,7 @@ Func_b6117:
 	scall HideEmote
 	script_sleep 60
 	xor a
-.asm_b61a2:
+.asm_b61a2
 	cp $04
 	jp nc, .asm_b61b3
 	push af
@@ -173,7 +173,7 @@ Func_b6117:
 	pop af
 	inc a
 	jp .asm_b61a2
-.asm_b61b3:
+.asm_b61b3
 	showperson $01
 	playmusic SONG_ENCOUNTER_BEAUTY
 	script_sleep 120
@@ -185,7 +185,7 @@ Func_b6117:
 	scall WaitNPCStep
 	sprite_face $01, $01
 	xor a
-.asm_b61ec:
+.asm_b61ec
 	cp $02
 	jp nc, .asm_b61fe
 	push af
@@ -195,11 +195,11 @@ Func_b6117:
 	pop af
 	inc a
 	jp .asm_b61ec
-.asm_b61fe:
+.asm_b61fe
 	ld a, $02
 	scall PlayerFace
 	xor a
-.asm_b6204:
+.asm_b6204
 	cp $02
 	jp nc, .asm_b6216
 	push af
@@ -209,7 +209,7 @@ Func_b6117:
 	pop af
 	inc a
 	jp .asm_b6204
-.asm_b6216:
+.asm_b6216
 	move_person $01, Data_b610b, 1
 	scall WaitNPCStep
 	playmusic SONG_NONE
@@ -222,7 +222,7 @@ Func_b6117:
 	scall WaitNPCStep
 	scall StopShakingScreen
 	warp_player MAP_26_00, $07, $05
-.asm_b625f:
+.asm_b625f
 	ret
 
 Data_b6260:
@@ -253,7 +253,7 @@ Func_b6291:
 	or a
 	jp nz, .asm_b62b3
 	jp .asm_b6312
-.asm_b62b3:
+.asm_b62b3
 	writenpctext TreeBitstreamText_3ef47
 	ld a, $0a
 	scall FadeOutAudio
@@ -263,7 +263,7 @@ Func_b6291:
 	playmusic SONG_ENCOUNTER_BEAUTY
 	script_sleep 120
 	xor a
-.asm_b62d3:
+.asm_b62d3
 	cp $04
 	jp nc, .asm_b62e5
 	push af
@@ -274,7 +274,7 @@ Func_b6291:
 	pop af
 	inc a
 	jp .asm_b62d3
-.asm_b62e5:
+.asm_b62e5
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
@@ -291,7 +291,7 @@ Func_b6291:
 	setevent EVENT_0E1
 	ld a, $01
 	ld [wc7c4], a
-.asm_b6312:
+.asm_b6312
 	pop bc
 	ret
 
@@ -324,16 +324,16 @@ Func_b634c:
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b63e6
-.asm_b6373:
+.asm_b6373
 	writenpctext TreeBitstreamText_3ef70
 	startbattle Data_b63e8, Data_b6319
 	or a
 	jp nz, .asm_b6389
 	jp .asm_b63e6
-.asm_b6389:
+.asm_b6389
 	writenpctext TreeBitstreamText_3efa5
 	xor a
-.asm_b6390:
+.asm_b6390
 	cp $04
 	jp nc, .asm_b63a2
 	push af
@@ -344,7 +344,7 @@ Func_b634c:
 	pop af
 	inc a
 	jp .asm_b6390
-.asm_b63a2:
+.asm_b63a2
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
@@ -359,14 +359,14 @@ Func_b634c:
 	inc a
 	scall MovePersonAndWait
 	jp .asm_b63cd
-.asm_b63c1:
+.asm_b63c1
 	ld bc, Data_b6348
 	ld e, $2d
 	ld hl, sp+$01
 	ld a, [hl]
 	inc a
 	scall MovePersonAndWait
-.asm_b63cd:
+.asm_b63cd
 	scall WaitNPCStep
 	ld e, $02
 	ld hl, sp+$01
@@ -376,7 +376,7 @@ Func_b634c:
 	setevent EVENT_0E2
 	ld a, $01
 	ld [wc7c4], a
-.asm_b63e6:
+.asm_b63e6
 	pop bc
 	ret
 
@@ -406,23 +406,23 @@ Func_b6422:
 	checkevent EVENT_0E2
 	or a
 	jp nz, .asm_b6453
-.asm_b6442:
+.asm_b6442
 	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b64c6
-.asm_b6453:
+.asm_b6453
 	writenpctext TreeBitstreamText_3eff8
 	startbattle Data_b64c8, Data_b63ed
 	or a
 	jp nz, .asm_b6469
 	jp .asm_b64c6
-.asm_b6469:
+.asm_b6469
 	writenpctext TreeBitstreamText_3f05a
 	xor a
-.asm_b6470:
+.asm_b6470
 	cp $04
 	jp nc, .asm_b6482
 	push af
@@ -433,7 +433,7 @@ Func_b6422:
 	pop af
 	inc a
 	jp .asm_b6470
-.asm_b6482:
+.asm_b6482
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
@@ -448,14 +448,14 @@ Func_b6422:
 	inc a
 	scall MovePersonAndWait
 	jp .asm_b64ad
-.asm_b64a1:
+.asm_b64a1
 	ld bc, Data_b641c
 	ld e, $2d
 	ld hl, sp+$01
 	ld a, [hl]
 	inc a
 	scall MovePersonAndWait
-.asm_b64ad:
+.asm_b64ad
 	scall WaitNPCStep
 	ld e, $02
 	ld hl, sp+$01
@@ -465,7 +465,7 @@ Func_b6422:
 	setevent EVENT_0E3
 	ld a, $01
 	ld [wc7c4], a
-.asm_b64c6:
+.asm_b64c6
 	pop bc
 	ret
 
@@ -498,23 +498,23 @@ Func_b6501:
 	checkevent EVENT_0E3
 	or a
 	jp nz, .asm_b653c
-.asm_b652b:
+.asm_b652b
 	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b65af
-.asm_b653c:
+.asm_b653c
 	writenpctext TreeBitstreamText_3f0a6
 	startbattle Data_b65b1, Data_b64ce
 	or a
 	jp nz, .asm_b6552
 	jp .asm_b65af
-.asm_b6552:
+.asm_b6552
 	writenpctext TreeBitstreamText_3f118
 	xor a
-.asm_b6559:
+.asm_b6559
 	cp $04
 	jp nc, .asm_b656b
 	push af
@@ -525,7 +525,7 @@ Func_b6501:
 	pop af
 	inc a
 	jp .asm_b6559
-.asm_b656b:
+.asm_b656b
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
@@ -540,14 +540,14 @@ Func_b6501:
 	inc a
 	scall MovePersonAndWait
 	jp .asm_b6596
-.asm_b658a:
+.asm_b658a
 	ld bc, Data_b64fd
 	ld e, $2d
 	ld hl, sp+$01
 	ld a, [hl]
 	inc a
 	scall MovePersonAndWait
-.asm_b6596:
+.asm_b6596
 	scall WaitNPCStep
 	ld e, $02
 	ld hl, sp+$01
@@ -557,7 +557,7 @@ Func_b6501:
 	setevent EVENT_0E4
 	ld a, $01
 	ld [wc7c4], a
-.asm_b65af:
+.asm_b65af
 	pop bc
 	ret
 
@@ -601,23 +601,23 @@ Func_b65e9:
 	checkevent EVENT_0E4
 	or a
 	jp nz, .asm_b662e
-.asm_b661d:
+.asm_b661d
 	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b66a1
-.asm_b662e:
+.asm_b662e
 	writenpctext TreeBitstreamText_3f192
 	startbattle Data_b66a3, Data_b65b6
 	or a
 	jp nz, .asm_b6644
 	jp .asm_b66a1
-.asm_b6644:
+.asm_b6644
 	writenpctext TreeBitstreamText_3f207
 	xor a
-.asm_b664b:
+.asm_b664b
 	cp $04
 	jp nc, .asm_b665d
 	push af
@@ -628,7 +628,7 @@ Func_b65e9:
 	pop af
 	inc a
 	jp .asm_b664b
-.asm_b665d:
+.asm_b665d
 	ld e, $00
 	ld hl, sp+$01
 	ld a, [hl]
@@ -643,14 +643,14 @@ Func_b65e9:
 	inc a
 	scall MovePersonAndWait
 	jp .asm_b6688
-.asm_b667c:
+.asm_b667c
 	ld bc, Data_b65e5
 	ld e, $2d
 	ld hl, sp+$01
 	ld a, [hl]
 	inc a
 	scall MovePersonAndWait
-.asm_b6688:
+.asm_b6688
 	scall WaitNPCStep
 	ld e, $02
 	ld hl, sp+$01
@@ -660,7 +660,7 @@ Func_b65e9:
 	setevent EVENT_0E5
 	ld a, $01
 	ld [wc7c4], a
-.asm_b66a1:
+.asm_b66a1
 	pop bc
 	ret
 
@@ -701,24 +701,24 @@ Func_b66d1:
 	checkevent EVENT_0E5
 	or a
 	jp nz, .asm_b6720
-.asm_b670f:
+.asm_b670f
 	writetext TreeBitstreamText_3f36a
 	ld e, $02
 	ld hl, sp+$01
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_b6751
-.asm_b6720:
+.asm_b6720
 	writenpctext TreeBitstreamText_3f276
 	startbattle Data_b6753, Data_b66a8
 	or a
 	jp nz, .asm_b6736
 	jp .asm_b6751
-.asm_b6736:
+.asm_b6736
 	writenpctext TreeBitstreamText_3f2ff
 	setevent EVENT_0E6
 	warp_player MAP_25_10, $0f, $1a
-.asm_b6751:
+.asm_b6751
 	pop bc
 	ret
 

@@ -56,7 +56,7 @@ Func_a38b8:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $00, $04
-.asm_a38e8:
+.asm_a38e8
 	ret
 
 Func_a38e9:
@@ -72,7 +72,7 @@ Func_a38e9:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $01, $08
-.asm_a3919:
+.asm_a3919
 	ret
 
 Func_a391a:
@@ -88,7 +88,7 @@ Func_a391a:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $02, $0a
-.asm_a394a:
+.asm_a394a
 	ret
 
 Func_a394b:
@@ -104,7 +104,7 @@ Func_a394b:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $04, $0c
-.asm_a397b:
+.asm_a397b
 	ret
 
 Func_a397c:
@@ -120,7 +120,7 @@ Func_a397c:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $05, $05
-.asm_a39ac:
+.asm_a39ac
 	ret
 
 Func_a39ad:
@@ -136,7 +136,7 @@ Func_a39ad:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $05, $07
-.asm_a39dd:
+.asm_a39dd
 	ret
 
 Func_a39de:
@@ -152,7 +152,7 @@ Func_a39de:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $06, $0a
-.asm_a3a0e:
+.asm_a3a0e
 	ret
 
 Func_a3a0f:
@@ -168,7 +168,7 @@ Func_a3a0f:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $07, $04
-.asm_a3a3f:
+.asm_a3a3f
 	ret
 
 Func_a3a40:
@@ -184,7 +184,7 @@ Func_a3a40:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $07, $0c
-.asm_a3a70:
+.asm_a3a70
 	ret
 
 Func_a3a71:
@@ -200,7 +200,7 @@ Func_a3a71:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $09, $07
-.asm_a3aa1:
+.asm_a3aa1
 	ret
 
 Func_a3aa2:
@@ -216,5 +216,5 @@ Func_a3aa2:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_19_38, $0a, $0a
-.asm_a3ad2:
+.asm_a3ad2
 	ret

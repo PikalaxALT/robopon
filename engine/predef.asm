@@ -5517,7 +5517,7 @@ asm_7b7f4:
 	push de
 	jp hl
 
-.Return: ; 7b809 (1e:7809)
+.Return ; 7b809 (1e:7809)
 	jr nc, .asm_7b80e
 	ld hl, sp+$0
 	ld [hl], a
@@ -9811,7 +9811,7 @@ HexToIntPredef:: ; 7d3c9 (1f:53c9)
 	ld [hli], a
 	jr .loop
 
-.ConvertAndLoadChar:
+.ConvertAndLoadChar
 	ld c, $0
 	ld a, [de]
 	call .ConvertChar
@@ -9831,7 +9831,7 @@ HexToIntPredef:: ; 7d3c9 (1f:53c9)
 	or b
 	ret
 
-.ConvertChar:
+.ConvertChar
 	or CHARVAL(" ")
 	sub CHARVAL("0")
 	ret c
@@ -9898,7 +9898,7 @@ StrToIntPredef:: ; 7d3f9 (1f:53f9)
 	inc de
 	jr .find_trailing_apostrophe
 
-.ParsePositiveNumber:
+.ParsePositiveNumber
 	ld hl, $0
 .positive_number_loop
 	ld a, [de]
@@ -9929,7 +9929,7 @@ StrToIntPredef:: ; 7d3f9 (1f:53f9)
 	jr nc, .positive_number_loop
 	ret
 
-.ParseHexidecimalNumber:
+.ParseHexidecimalNumber
 	ld hl, $0
 .hex_loop
 	ld a, [de]
@@ -10113,7 +10113,7 @@ PrintNumLongPredef:: ; 7d4e0 (1f:54e0)
 	ld [hl], a
 	ret
 
-.GetDigitLong: ; 7d574 (1f:5574)
+.GetDigitLong ; 7d574 (1f:5574)
 	ld a, CHARVAL("0") - 1
 	push af
 .loop
@@ -10175,7 +10175,7 @@ PrintHexShortPredef:: ; 7d5a6 (1f:55a6)
 	inc hl
 	ret
 
-.PrintHexChar:
+.PrintHexChar
 	push af
 	and $f0
 	rrca
@@ -10192,7 +10192,7 @@ PrintHexShortPredef:: ; 7d5a6 (1f:55a6)
 	inc de
 	ret
 
-.GetHexChar:
+.GetHexChar
 	cp 10
 	jr nc, .high_hex
 	add CHARVAL("0")
@@ -11008,7 +11008,7 @@ Func_7d9f9:: ; 7d9f9 (1f:59f9)
 	pop bc
 	ret
 
-.Function: ; 7da03 (1f:5a03)
+.Function ; 7da03 (1f:5a03)
 	ld hl, hFF92
 	bit 7, [hl]
 	jr z, .asm_7da19

@@ -48,13 +48,13 @@ Func_85178::
 	ld d, b
 	call CompareHLtoDE
 	jp c, .asm_851b4
-.asm_851a9: ; 851a9 (21:51a9)
+.asm_851a9 ; 851a9 (21:51a9)
 	setevent EVENT_038
 	jp .asm_851bc
 
-.asm_851b4: ; 851b4 (21:51b4)
+.asm_851b4 ; 851b4 (21:51b4)
 	resetevent EVENT_038
-.asm_851bc: ; 851bc (21:51bc)
+.asm_851bc ; 851bc (21:51bc)
 	loadwarps $6, Data_850b4
 	ld a, $1
 	scall LoadPlayerSprite
@@ -71,14 +71,14 @@ Func_85178::
 	setevent EVENT_032
 	jp .asm_85270
 
-.asm_851fe: ; 851fe (21:51fe)
+.asm_851fe ; 851fe (21:51fe)
 	checkevent EVENT_005
 	or a
 	jp z, .asm_85212
 	checkevent EVENT_006
 	or a
 	jp nz, .asm_85260
-.asm_85212: ; 85212 (21:5212)
+.asm_85212 ; 85212 (21:5212)
 	loadpeople $5, Data_850fa
 	playmusic SONG_TOWN1
 	hideperson $2
@@ -88,28 +88,28 @@ Func_85178::
 	hideperson 0
 	jp .asm_85242
 
-.asm_8523a: ; 8523a (21:523a)
+.asm_8523a ; 8523a (21:523a)
 	ld c, $a
 	ld e, $1f
 	xor a
 	scall Func_80080
-.asm_85242: ; 85242 (21:5242)
+.asm_85242 ; 85242 (21:5242)
 	checkevent EVENT_006
 	cp $1
 	jp nz, .asm_85257
 	hideperson $1
 	jp .asm_85260
 
-.asm_85257: ; 85257 (21:5257)
+.asm_85257 ; 85257 (21:5257)
 	ld c, $a
 	ld e, $20
 	ld a, $1
 	scall Func_80080
-.asm_85260: ; 85260 (21:5260)
+.asm_85260 ; 85260 (21:5260)
 	playmusic SONG_TOWN1
 	loadpeople $4, Data_85140
 	scall Func_8001c
-.asm_85270: ; 85270 (21:5270)
+.asm_85270 ; 85270 (21:5270)
 	pop bc
 	pop bc
 	pop bc
@@ -254,7 +254,7 @@ Func_854aa:
 	writenpctext TreeBitstreamText_3a2e2
 	jp .asm_85570
 
-.asm_854c8: ; 854c8 (21:54c8)
+.asm_854c8 ; 854c8 (21:54c8)
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
@@ -266,7 +266,7 @@ Func_854aa:
 	jp nz, .asm_854eb
 	jp .asm_85570
 
-.asm_854eb: ; 854eb (21:54eb)
+.asm_854eb ; 854eb (21:54eb)
 	move_person 0, Data_854a2, 1
 	scall WaitNPCStep
 	hideperson 0
@@ -278,10 +278,10 @@ Func_854aa:
 	scall Func_80c94
 	ld a, $d
 	scall Func_80c94
-.asm_85519: ; 85519 (21:5519)
+.asm_85519 ; 85519 (21:5519)
 	jp .asm_85570
 
-.asm_8551c: ; 8551c (21:551c)
+.asm_8551c ; 8551c (21:551c)
 	ld hl, sp+$1
 	ld a, [hl]
 	cp $1
@@ -293,7 +293,7 @@ Func_854aa:
 	jp nz, .asm_85540
 	jp .asm_85570
 
-.asm_85540: ; 85540 (21:5540)
+.asm_85540 ; 85540 (21:5540)
 	move_person $1, Data_854a6, 1
 	scall WaitNPCStep
 	hideperson $1
@@ -305,7 +305,7 @@ Func_854aa:
 	scall Func_80c94
 	ld a, $d
 	scall Func_80c94
-.asm_85570: ; 85570 (21:5570)
+.asm_85570 ; 85570 (21:5570)
 	pop bc
 	ret
 
@@ -351,10 +351,10 @@ Func_855dc:
 	scall PlayerFace
 	ld hl, sp+$0
 	ld [hl], $1
-.asm_8560a: ; 8560a (21:560a)
+.asm_8560a ; 8560a (21:560a)
 	jp .asm_8562e
 
-.asm_8560d: ; 8560d (21:560d)
+.asm_8560d ; 8560d (21:560d)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $4
@@ -367,7 +367,7 @@ Func_855dc:
 	scall PlayerFace
 	ld hl, sp+$0
 	ld [hl], $1
-.asm_8562e: ; 8562e (21:562e)
+.asm_8562e ; 8562e (21:562e)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $1
@@ -383,7 +383,7 @@ Func_855dc:
 	jp nz, .asm_8565a
 	jp .asm_856d9
 
-.asm_8565a: ; 8565a (21:565a)
+.asm_8565a ; 8565a (21:565a)
 	move_person $1, Data_855d8, 1
 	scall WaitNPCStep
 	hideperson $1
@@ -395,10 +395,10 @@ Func_855dc:
 	scall Func_80c94
 	ld a, $d
 	scall Func_80c94
-.asm_8568a: ; 8568a (21:568a)
+.asm_8568a ; 8568a (21:568a)
 	jp .asm_856d9
 
-.asm_8568d: ; 8568d (21:568d)
+.asm_8568d ; 8568d (21:568d)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $4
@@ -409,7 +409,7 @@ Func_855dc:
 	jp nz, .asm_856ab
 	jp .asm_856d9
 
-.asm_856ab: ; 856ab (21:56ab)
+.asm_856ab ; 856ab (21:56ab)
 	move_person 0, Data_855d4, 1
 	scall WaitNPCStep
 	hideperson 0
@@ -421,7 +421,7 @@ Func_855dc:
 	scall Func_80c94
 	ld a, $d
 	scall Func_80c94
-.asm_856d9: ; 856d9 (21:56d9)
+.asm_856d9 ; 856d9 (21:56d9)
 	pop bc
 	pop bc
 	ret
@@ -468,10 +468,10 @@ Func_85746:
 	scall PlayerFace
 	ld hl, sp+$0
 	ld [hl], $1
-.asm_85774: ; 85774 (21:5774)
+.asm_85774 ; 85774 (21:5774)
 	jp .asm_85798
 
-.asm_85777: ; 85777 (21:5777)
+.asm_85777 ; 85777 (21:5777)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
@@ -484,7 +484,7 @@ Func_85746:
 	scall PlayerFace
 	ld hl, sp+$0
 	ld [hl], $1
-.asm_85798: ; 85798 (21:5798)
+.asm_85798 ; 85798 (21:5798)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $1
@@ -500,14 +500,14 @@ Func_85746:
 	jp nz, .asm_857c4
 	jp .asm_8581b
 
-.asm_857c4: ; 857c4 (21:57c4)
+.asm_857c4 ; 857c4 (21:57c4)
 	move_person $1, Data_85742, 1
 	scall WaitNPCStep
 	hideperson $1
 	setevent EVENT_006
 	jp .asm_8581b
 
-.asm_857e3: ; 857e3 (21:57e3)
+.asm_857e3 ; 857e3 (21:57e3)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
@@ -518,12 +518,12 @@ Func_85746:
 	jp nz, .asm_85801
 	jp .asm_8581b
 
-.asm_85801: ; 85801 (21:5801)
+.asm_85801 ; 85801 (21:5801)
 	move_person 0, Data_8573e, 1
 	scall WaitNPCStep
 	hideperson 0
 	setevent EVENT_005
-.asm_8581b: ; 8581b (21:581b)
+.asm_8581b ; 8581b (21:581b)
 	pop bc
 	pop bc
 	ret
@@ -557,7 +557,7 @@ Func_85832:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_858c9
-.asm_8585f: ; 8585f (21:585f)
+.asm_8585f ; 8585f (21:585f)
 	ld a, [wc790]
 	or a
 	jp z, .asm_858c0
@@ -582,17 +582,17 @@ Func_85832:
 	ld a, $1
 	scall PlayerFace
 	warp_player MAP_30_00, $25, $b
-.asm_858bd: ; 858bd (21:58bd)
+.asm_858bd ; 858bd (21:58bd)
 	jp .asm_858c6
 
-.asm_858c0: ; 858c0 (21:58c0)
+.asm_858c0 ; 858c0 (21:58c0)
 	writetext TreeBitstreamText_470f0
-.asm_858c6: ; 858c6 (21:58c6)
+.asm_858c6 ; 858c6 (21:58c6)
 	jp .asm_858cf
 
-.asm_858c9: ; 858c9 (21:58c9)
+.asm_858c9 ; 858c9 (21:58c9)
 	writetext TreeBitstreamText_470d8
-.asm_858cf: ; 858cf (21:58cf)
+.asm_858cf ; 858cf (21:58cf)
 	ret
 
 Data_858d0:
@@ -614,13 +614,13 @@ Func_858f9:
 	jp nz, .asm_8591f
 	jp .asm_8592e
 
-.asm_8591f: ; 8591f (21:591f)
+.asm_8591f ; 8591f (21:591f)
 	writetext TreeBitstreamText_47319
 	jp .asm_8592e
 
-.asm_85928: ; 85928 (21:5928)
+.asm_85928 ; 85928 (21:5928)
 	writetext TreeBitstreamText_47306
-.asm_8592e: ; 8592e (21:592e)
+.asm_8592e ; 8592e (21:592e)
 	pop bc
 	ret
 

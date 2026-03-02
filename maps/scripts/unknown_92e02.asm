@@ -26,7 +26,7 @@ Func_92e02:: ; 92e02
 	call Func_92e6d
 	setevent EVENT_015
 	jp .asm_92e5c
-.asm_92e32:
+.asm_92e32
 	ld a, [wc790]
 	or a
 	jp z, .asm_92e54
@@ -37,10 +37,10 @@ Func_92e02:: ; 92e02
 	playmusic SONG_TOWN3
 	scall Func_8001c
 	jp .asm_92e5c
-.asm_92e54:
+.asm_92e54
 	playmusic SONG_TOWN3
 	scall Func_8001c
-.asm_92e5c:
+.asm_92e5c
 	ret
 
 Data_92e5d:

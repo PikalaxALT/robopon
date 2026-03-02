@@ -41,7 +41,7 @@ LoadSpriteGFX:: ; a26c (2:626c)
 	call WriteHLToSPPlus4
 	jp .asm_a2b0
 
-.asm_a296: ; a296 (2:6296)
+.asm_a296 ; a296 (2:6296)
 	ld a, BANK(OverworldSprieGFX_2)
 	ld [wFarCallDestBank], a
 	ld h, $0
@@ -60,7 +60,7 @@ LoadSpriteGFX:: ; a26c (2:626c)
 	ld de, OverworldSprieGFX_2 - $1a * $240
 	add hl, de
 	call WriteHLToSPPlus4
-.asm_a2b0: ; a2b0 (2:62b0)
+.asm_a2b0 ; a2b0 (2:62b0)
 	call Bank2_WaitVideoTransferIfLCDEnabled
 	pop bc
 	ld l, c
@@ -337,7 +337,7 @@ SetPersonVisibilityState:: ; a444
 	jp c, .asm_a460
 	jp .asm_a57b
 
-.asm_a460: ; a460 (2:6460)
+.asm_a460 ; a460 (2:6460)
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
@@ -373,7 +373,7 @@ SetPersonVisibilityState:: ; a444
 	ld e, $0
 	ld a, [wPlayerFacing]
 	call UpdateSprites
-.asm_a4a0: ; a4a0 (2:64a0)
+.asm_a4a0 ; a4a0 (2:64a0)
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
@@ -441,14 +441,14 @@ SetPersonVisibilityState:: ; a444
 	cp $1
 	jp nz, .asm_a540
 	xor a
-.asm_a510: ; a510 (2:6510)
+.asm_a510 ; a510 (2:6510)
 	ld hl, sp+$1
 	cp [hl]
 	jp nc, .asm_a540
 	push af
 	push de
 	ld c, $0
-.asm_a51a: ; a51a (2:651a)
+.asm_a51a ; a51a (2:651a)
 	ld a, c
 	ld hl, sp+$6
 	cp [hl]
@@ -464,7 +464,7 @@ SetPersonVisibilityState:: ; a444
 	inc c
 	jp .asm_a51a
 
-.asm_a52f: ; a52f (2:652f)
+.asm_a52f ; a52f (2:652f)
 	pop de
 	ld hl, wMapWidth
 	ld l, [hl]
@@ -475,23 +475,23 @@ SetPersonVisibilityState:: ; a444
 	inc a
 	jp .asm_a510
 
-.asm_a540: ; a540 (2:6540)
+.asm_a540 ; a540 (2:6540)
 	jp .asm_a57b
 
-.asm_a543: ; a543 (2:6543)
+.asm_a543 ; a543 (2:6543)
 	ld hl, sp+$0
 	ld a, [hl]
 	or a
 	jp nz, .asm_a57b
 	xor a
-.asm_a54b: ; a54b (2:654b)
+.asm_a54b ; a54b (2:654b)
 	ld hl, sp+$1
 	cp [hl]
 	jp nc, .asm_a57b
 	push af
 	push de
 	ld c, $0
-.asm_a555: ; a555 (2:6555)
+.asm_a555 ; a555 (2:6555)
 	ld a, c
 	ld hl, sp+$6
 	cp [hl]
@@ -507,7 +507,7 @@ SetPersonVisibilityState:: ; a444
 	inc c
 	jp .asm_a555
 
-.asm_a56a: ; a56a (2:656a)
+.asm_a56a ; a56a (2:656a)
 	pop de
 	ld hl, wMapWidth
 	ld l, [hl]
@@ -518,7 +518,7 @@ SetPersonVisibilityState:: ; a444
 	inc a
 	jp .asm_a54b
 
-.asm_a57b: ; a57b (2:657b)
+.asm_a57b ; a57b (2:657b)
 	pop bc
 	pop bc
 	pop bc
@@ -559,7 +559,7 @@ Func_a5a4:: ; a5a4
 	push bc
 	ld hl, sp+$0
 	ld [hl], $0
-.asm_a5ab: ; a5ab (2:65ab)
+.asm_a5ab ; a5ab (2:65ab)
 	ld hl, sp+$0
 	ld a, [hl]
 	ld hl, wNumPeopleLoaded
@@ -611,7 +611,7 @@ Func_a5a4:: ; a5a4
 	ld [hl], e
 	inc hl
 	ld [hl], d
-.asm_a601: ; a601 (2:6601)
+.asm_a601 ; a601 (2:6601)
 	ld hl, sp+$0
 	ld a, [hl]
 	inc a
@@ -619,7 +619,7 @@ Func_a5a4:: ; a5a4
 	ld [hl], a
 	jp .asm_a5ab
 
-.asm_a60b: ; a60b (2:660b)
+.asm_a60b ; a60b (2:660b)
 	pop bc
 	pop bc
 	pop bc

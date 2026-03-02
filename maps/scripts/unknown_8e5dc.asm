@@ -76,7 +76,7 @@ Func_8e5dc:: ; 8e5dc
 	scall Func_8001c
 	call Func_8e66b
 	jp .asm_8e65a
-.asm_8e612:
+.asm_8e612
 	checkevent EVENT_088
 	cp $01
 	jp nz, .asm_8e63d
@@ -87,14 +87,14 @@ Func_8e5dc:: ; 8e5dc
 	scall LoadPlayerSprite
 	scall Func_8001c
 	jp .asm_8e65a
-.asm_8e63d:
+.asm_8e63d
 	playmusic SONG_TOWN1
 	loadpeople $01, Data_8e518
 	loadpeople $0b, Data_8e534
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
-.asm_8e65a:
+.asm_8e65a
 	ret
 
 Data_8e65b:
@@ -147,7 +147,7 @@ Func_8e66b:
 	scall PlayerFace
 	scall HideEmote
 	jp .asm_8e7b2
-.asm_8e727:
+.asm_8e727
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_3b3c0
 	playmusic SONG_NONE
@@ -177,7 +177,7 @@ Func_8e66b:
 	ld a, $01
 	scall PlayerFace
 	scall HideEmote
-.asm_8e7b2:
+.asm_8e7b2
 	playmusic SONG_NONE
 	playmusic SONG_CARD_MINIGAME
 	loademote $01, $10, $0f
@@ -221,9 +221,9 @@ Func_8e826:
 	ld a, $09
 	ld [wBackupMapY], a
 	jp .asm_8e863
-.asm_8e85d:
+.asm_8e85d
 	writetext TreeBitstreamText_46e5d
-.asm_8e863:
+.asm_8e863
 	ret
 
 Func_8e864:
@@ -238,7 +238,7 @@ Func_8e864:
 	ld [wBackupMapX], a
 	ld a, $06
 	ld [wBackupMapY], a
-.asm_8e88b:
+.asm_8e88b
 	ret
 
 Func_8e88c:
@@ -253,7 +253,7 @@ Func_8e88c:
 	ld [wBackupMapX], a
 	ld a, $06
 	ld [wBackupMapY], a
-.asm_8e8b3:
+.asm_8e8b3
 	ret
 
 Func_8e8b4:
@@ -263,5 +263,5 @@ Func_8e8b4:
 	face_player $01
 	writenpctext TreeBitstreamText_3ba23
 	setevent EVENT_03A
-.asm_8e8cc:
+.asm_8e8cc
 	ret

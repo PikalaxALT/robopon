@@ -119,9 +119,9 @@ Func_96e97:: ; 96e97
 	hideperson $07
 	hideperson $08
 	jp .asm_96f18
-.asm_96f11:
+.asm_96f11
 	hideperson $09
-.asm_96f18:
+.asm_96f18
 	playmusic SONG_TOWN2
 	scall Func_8001c
 	ret
@@ -149,12 +149,12 @@ Func_96f2b:
 	xor a
 	scall PlayerFace
 	jp .asm_96f71
-.asm_96f60:
+.asm_96f60
 	move_player $01, Data_96f21
 	scall WaitNPCStep
 	xor a
 	scall PlayerFace
-.asm_96f71:
+.asm_96f71
 	writetext TreeBitstreamText_47b05
 	script_sleep 30
 	ld a, $0a
@@ -164,7 +164,7 @@ Func_96f2b:
 	scall FadeInAudio
 	playmusic SONG_MAZE_MINIGAME
 	xor a
-.asm_96f91:
+.asm_96f91
 	cp $05
 	jp nc, .asm_96fa2
 	push af
@@ -174,7 +174,7 @@ Func_96f2b:
 	pop af
 	inc a
 	jp .asm_96f91
-.asm_96fa2:
+.asm_96fa2
 	script_sleep 30
 	hideperson $01
 	hideperson $02
@@ -211,7 +211,7 @@ Func_96f2b:
 	showperson $03
 	showperson $04
 	xor a
-.asm_9705a:
+.asm_9705a
 	cp $05
 	jp nc, .asm_9706c
 	push af
@@ -221,7 +221,7 @@ Func_96f2b:
 	pop af
 	inc a
 	jp .asm_9705a
-.asm_9706c:
+.asm_9706c
 	script_sleep 30
 	heal
 	ld a, $01
@@ -239,9 +239,9 @@ Func_96f2b:
 	showperson $09
 	playmusic SONG_TOWN2
 	jp .asm_970c9
-.asm_970c3:
+.asm_970c3
 	writetext TreeBitstreamText_47b1d
-.asm_970c9:
+.asm_970c9
 	ret
 
 Data_970ca:
@@ -274,10 +274,10 @@ Func_970d8:
 	setevent EVENT_10E
 	warp_player MAP_12_01, $09, $24
 	jp .asm_9714f
-.asm_97136:
+.asm_97136
 	writenpctext TreeBitstreamText_47c51
 	script_sleep 30
 	move_player $01, Data_970d4
 	scall WaitNPCStep
-.asm_9714f:
+.asm_9714f
 	ret

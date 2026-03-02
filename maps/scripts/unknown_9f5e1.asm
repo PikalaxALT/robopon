@@ -36,15 +36,15 @@ Func_9f5e1:: ; 9f5e1
 	scall Func_8001c
 	call Func_9f63b
 	jp .asm_9f62f
-.asm_9f627:
+.asm_9f627
 	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
-.asm_9f62f:
+.asm_9f62f
 	jp .asm_9f63a
-.asm_9f632:
+.asm_9f632
 	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
-.asm_9f63a:
+.asm_9f63a
 	ret
 
 Func_9f63b:

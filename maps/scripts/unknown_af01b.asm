@@ -60,7 +60,7 @@ Func_af01b:: ; af01b
 	jp nz, .asm_af057
 	loadpeople $09, Data_aef1f
 	jp .asm_af074
-.asm_af057:
+.asm_af057
 	checkevent EVENT_04E
 	or a
 	jp nz, .asm_af074
@@ -68,7 +68,7 @@ Func_af01b:: ; af01b
 	cp $01
 	jp nz, .asm_af074
 	loadpeople $09, Data_aef9d
-.asm_af074:
+.asm_af074
 	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bdf
@@ -88,11 +88,11 @@ Func_af083:
 	jp nz, .asm_af09f
 	ld a, $01
 	ld [wc7c4], a
-.asm_af09f:
+.asm_af09f
 	jp .asm_af0a5
-.asm_af0a2:
+.asm_af0a2
 	call Func_af113
-.asm_af0a5:
+.asm_af0a5
 	pop bc
 	ret
 
@@ -110,11 +110,11 @@ Func_af0a7:
 	jp nz, .asm_af0c3
 	ld a, $01
 	ld [wc7c4], a
-.asm_af0c3:
+.asm_af0c3
 	jp .asm_af0c9
-.asm_af0c6:
+.asm_af0c6
 	call Func_af113
-.asm_af0c9:
+.asm_af0c9
 	pop bc
 	ret
 
@@ -132,11 +132,11 @@ Func_af0cb:
 	jp nz, .asm_af0e7
 	ld a, $01
 	ld [wc7c4], a
-.asm_af0e7:
+.asm_af0e7
 	jp .asm_af0ed
-.asm_af0ea:
+.asm_af0ea
 	call Func_af113
-.asm_af0ed:
+.asm_af0ed
 	pop bc
 	ret
 
@@ -154,11 +154,11 @@ Func_af0ef:
 	jp nz, .asm_af10b
 	ld a, $01
 	ld [wc7c4], a
-.asm_af10b:
+.asm_af10b
 	jp .asm_af111
-.asm_af10e:
+.asm_af10e
 	call Func_af113
-.asm_af111:
+.asm_af111
 	pop bc
 	ret
 
@@ -166,14 +166,14 @@ Func_af113:
 	push bc
 	ld hl, sp+$01
 	ld [hl], $04
-.asm_af118:
+.asm_af118
 	ld hl, sp+$01
 	ld a, [hl]
 	cp $08
 	jp nc, .asm_af15c
 	ld hl, sp+$00
 	ld [hl], $00
-.asm_af124:
+.asm_af124
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $04
@@ -186,29 +186,29 @@ Func_af113:
 	cp $01
 	jp nz, .asm_af13d
 	jp .asm_af152
-.asm_af13d:
+.asm_af13d
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $03
 	jp nz, .asm_af148
 	jp .asm_af15f
-.asm_af148:
+.asm_af148
 	ld hl, sp+$00
 	ld a, [hl]
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
 	jp .asm_af124
-.asm_af152:
+.asm_af152
 	ld hl, sp+$01
 	ld a, [hl]
 	inc a
 	ld hl, sp+$01
 	ld [hl], a
 	jp .asm_af118
-.asm_af15c:
+.asm_af15c
 	call Func_af161
-.asm_af15f:
+.asm_af15f
 	pop bc
 	ret
 
@@ -256,16 +256,16 @@ Func_af1b1:
 	setevent EVENT_04D
 	writenpctext TreeBitstreamText_3e8a6
 	jp .asm_af211
-.asm_af20b:
+.asm_af20b
 	writenpctext TreeBitstreamText_3e8d4
-.asm_af211:
+.asm_af211
 	jp .asm_af21a
-.asm_af214:
+.asm_af214
 	writenpctext TreeBitstreamText_3e87a
-.asm_af21a:
+.asm_af21a
 	jp .asm_af223
-.asm_af21d:
+.asm_af21d
 	writenpctext TreeBitstreamText_3e8e5
-.asm_af223:
+.asm_af223
 	pop bc
 	ret

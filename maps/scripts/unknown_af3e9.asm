@@ -36,11 +36,11 @@ Func_af3e9:: ; af3e9
 	jp nz, .asm_af41b
 	loadpeople $02, Data_af3bf
 	jp .asm_af432
-.asm_af41b:
+.asm_af41b
 	loadpeople $02, Data_af3bf
 	hideperson $01
 	loadpeople $01, Data_af3db
-.asm_af432:
+.asm_af432
 	playmusic SONG_CAVE
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46bf5
@@ -71,17 +71,17 @@ Func_af46a:
 	or a
 	jp nz, .asm_af490
 	jp .asm_af4bd
-.asm_af490:
+.asm_af490
 	setevent EVENT_050
 	writenpctext TreeBitstreamText_3ea2f
 	jp .asm_af4bd
-.asm_af4a1:
+.asm_af4a1
 	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af4bd
 	playsfx SFX_5A
 	warp_player MAP_27_01, $12, $1b
-.asm_af4bd:
+.asm_af4bd
 	ret
 
 Data_af4be:
@@ -104,24 +104,24 @@ Func_af4c3:
 	or a
 	jp nz, .asm_af4f9
 	warp_player MAP_27_01, $12, $1b
-.asm_af4f9:
+.asm_af4f9
 	jp .asm_af502
-.asm_af4fc:
+.asm_af4fc
 	writenpctext TreeBitstreamText_3ea2f
-.asm_af502:
+.asm_af502
 	jp .asm_af537
-.asm_af505:
+.asm_af505
 	checkevent EVENT_100
 	or a
 	jp nz, .asm_af520
 	writenpctext TreeBitstreamText_3eab5
 	setevent EVENT_100
 	jp .asm_af537
-.asm_af520:
+.asm_af520
 	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af537
 	warp_player MAP_27_01, $12, $1b
-.asm_af537:
+.asm_af537
 	pop bc
 	ret

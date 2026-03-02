@@ -214,7 +214,7 @@ CopyPredef::
 
 .next
 	pop af
-.HBlankCopy: ; 1a6 (0:01a6)
+.HBlankCopy ; 1a6 (0:01a6)
 	predef Func_7ce36
 .hblank_copy_loop
 	ld a, [de]
@@ -353,11 +353,11 @@ Start:: ; 323 (0:0323)
 	ld sp, wStackTop
 	ldh [hSystemType], a
 	push af
-.asm_032a: ; 32a (0:032a)
+.asm_032a ; 32a (0:032a)
 	ldh a, [rLY]
 	cp $91
 	jp nc, .asm_032a
-.asm_0331: ; 331 (0:0331)
+.asm_0331 ; 331 (0:0331)
 	ldh a, [rLY]
 	cp $91
 	jp c, .asm_0331
@@ -518,7 +518,7 @@ FarCall::
 	ld a, [wFarCallSavedA]
 	ret
 
-.Return:
+.Return
 	ld [wFarCallSavedA], a
 	pop af
 	call BankSwitch
@@ -1077,7 +1077,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	call FillMemory
 	ld a, $1
 	ld [wc39e], a
-.asm_1ea8: ; 1ea8 (0:1ea8)
+.asm_1ea8 ; 1ea8 (0:1ea8)
 	ld a, [wRTCTicker]
 	cp $11
 	jp z, .asm_1ec2
@@ -1086,11 +1086,11 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	jp nz, .asm_1ebc
 	ld a, $1
 	ld [wRTCTicker], a
-.asm_1ebc: ; 1ebc (0:1ebc)
+.asm_1ebc ; 1ebc (0:1ebc)
 	call NextOverworldFrame
 	jp .asm_1ea8
 
-.asm_1ec2: ; 1ec2 (0:1ec2)
+.asm_1ec2 ; 1ec2 (0:1ec2)
 	call NextOverworldFrame
 	xor a
 .loop
@@ -1128,9 +1128,9 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	call FarCall
 	cp $ff
 	jp nz, .asm_1f27
-.asm_1f25: ; 1f25 (0:1f25)
+.asm_1f25 ; 1f25 (0:1f25)
 	ld a, $1
-.asm_1f27: ; 1f27 (0:1f27)
+.asm_1f27 ; 1f27 (0:1f27)
 	ld a, $ff
 	ld [wc39b], a
 	call Func_144fd
@@ -1159,7 +1159,7 @@ Func_1f30:: ; 1f30
 	ld hl, $88f0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-.asm_1f7a: ; 1f7a (0:1f7a)
+.asm_1f7a ; 1f7a (0:1f7a)
 	ret
 
 Func_1f7b:: ; 1f7b
@@ -1181,7 +1181,7 @@ Func_1f7b:: ; 1f7b
 	call FarCall
 	ld hl, $0
 	write_hl_to wc30e
-.asm_1fbd: ; 1fbd (0:1fbd)
+.asm_1fbd ; 1fbd (0:1fbd)
 	ret
 
 Func_1fbe:: ; 1fbe
@@ -1207,7 +1207,7 @@ Func_1fbe:: ; 1fbe
 	ld hl, $8cc0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-.asm_2008: ; 2008 (0:2008)
+.asm_2008 ; 2008 (0:2008)
 	ret
 
 Func_2009:: ; 2009
@@ -1229,7 +1229,7 @@ Func_2009:: ; 2009
 	call FarCall
 	ld hl, $0
 	write_hl_to wc2f2
-.asm_204b: ; 204b
+.asm_204b ; 204b
 	ret
 
 Func_204c:: ; 204c
@@ -1255,7 +1255,7 @@ Func_204c:: ; 204c
 	ld hl, $8fa0
 	call FarRequestVideoData
 	call WaitVideoTransfer
-.asm_2096: ; 2096 (0:2096)
+.asm_2096 ; 2096 (0:2096)
 	ret
 
 Func_2097:: ; 2097
@@ -1277,7 +1277,7 @@ Func_2097:: ; 2097
 	call FarCall
 	ld hl, $0
 	write_hl_to wc2f2
-.asm_20d9: ; 20d9 (0:20d9)
+.asm_20d9 ; 20d9 (0:20d9)
 	ret
 
 INCLUDE "home/tilemap_backup.asm"
@@ -1309,7 +1309,7 @@ Func_2230:: ; 2230
 	ld [hl], a
 	jp .asm_225f
 
-.asm_224f: ; 224f (0:224f)
+.asm_224f ; 224f (0:224f)
 	read_hl_from_sp_plus $c
 	ld e, h
 	ld hl, sp+$4
@@ -1318,7 +1318,7 @@ Func_2230:: ; 2230
 	ld e, l
 	ld hl, sp+$3
 	ld [hl], e
-.asm_225f: ; 225f (0:225f)
+.asm_225f ; 225f (0:225f)
 	pop de
 	ld c, e
 	ld hl, sp+$0
@@ -1341,7 +1341,7 @@ Func_2230:: ; 2230
 	pop bc
 	jp .asm_22fe
 
-.asm_2285: ; 2285 (0:2285)
+.asm_2285 ; 2285 (0:2285)
 	ld e, c
 	ld d, $0
 	ld hl, $5
@@ -1355,7 +1355,7 @@ Func_2230:: ; 2230
 	ld de, Data_2226
 	add hl, de
 	call WriteHLToSPPlus5
-.asm_2299: ; 2299 (0:2299)
+.asm_2299 ; 2299 (0:2299)
 	call GetHLAtSPPlus5
 	ld a, [hl]
 	dec a
@@ -1384,12 +1384,12 @@ Func_2230:: ; 2230
 	pop bc
 	jp .asm_22d6
 
-.asm_22ce: ; 22ce (0:22ce)
+.asm_22ce ; 22ce (0:22ce)
 	ld hl, Data_2309
 	push hl
 	call PlaceString
 	pop bc
-.asm_22d6: ; 22d6 (0:22d6)
+.asm_22d6 ; 22d6 (0:22d6)
 	call GetHLAtSPPlus5
 	inc hl
 	inc hl
@@ -1401,7 +1401,7 @@ Func_2230:: ; 2230
 	ld [hl], a
 	jp .asm_2299
 
-.asm_22e8: ; 22e8 (0:22e8)
+.asm_22e8 ; 22e8 (0:22e8)
 	ld hl, sp+$1
 	ld e, [hl]
 	ld hl, sp+$2
@@ -1414,7 +1414,7 @@ Func_2230:: ; 2230
 	call PlaceString
 	pop bc
 	pop bc
-.asm_22fe: ; 22fe (0:22fe)
+.asm_22fe ; 22fe (0:22fe)
 	pop bc
 	pop bc
 	pop bc
@@ -1853,16 +1853,16 @@ Func_2515:: ; 2515
 	ld e, $0
 	jp .asm_256f
 
-.asm_256d: ; 256d (0:256d)
+.asm_256d ; 256d (0:256d)
 	ld e, $69
-.asm_256f: ; 256f (0:256f)
+.asm_256f ; 256f (0:256f)
 	ld hl, sp+$c
 	ld a, [hl]
 	add $94
 	add e
 	ld hl, sp+$b
 	ld [hl], a
-.asm_2578: ; 2578 (0:2578)
+.asm_2578 ; 2578 (0:2578)
 	read_hl_from_sp_plus $12
 	ld de, -8
 	add hl, de
@@ -1884,10 +1884,10 @@ Func_2515:: ; 2515
 .asm_25a1
 	jp .asm_25a7
 
-.asm_25a4: ; 25a4 (0:25a4)
+.asm_25a4 ; 25a4 (0:25a4)
 	jp .asm_2578
 
-.asm_25a7: ; 25a7 (0:25a7)
+.asm_25a7 ; 25a7 (0:25a7)
 	read_hl_from_sp_plus $12
 	ld a, l
 	or h
@@ -1926,7 +1926,7 @@ Func_2515:: ; 2515
 	pop de
 	call FarRequestVideoData
 	pop bc
-.asm_25eb: ; 25eb (0:25eb)
+.asm_25eb ; 25eb (0:25eb)
 	ld a, c
 	cp $6
 	jp nc, .asm_2600
@@ -1937,7 +1937,7 @@ Func_2515:: ; 2515
 	inc c
 	jp .asm_25eb
 
-.asm_2600: ; 2600 (0:2600)
+.asm_2600 ; 2600 (0:2600)
 	pop hl
 	call Coord2TileMap
 	ld c, l
@@ -1974,21 +1974,21 @@ Func_2617:: ; 2617
 	ld [hl], $0
 	jp .asm_26d3
 
-.asm_2642: ; 2642 (0:2642)
+.asm_2642 ; 2642 (0:2642)
 	push de
 	ld c, $0
-.asm_2645: ; 2645 (0:2645)
+.asm_2645 ; 2645 (0:2645)
 	ld a, h
 	and $40
 	jp z, .asm_264e
 	jp .asm_2653
 
-.asm_264e: ; 264e (0:264e)
+.asm_264e ; 264e (0:264e)
 	inc c
 	add hl, hl
 	jp .asm_2645
 
-.asm_2653: ; 2653 (0:2653)
+.asm_2653 ; 2653 (0:2653)
 	push bc
 	ld bc, $0
 	inc h
@@ -2025,7 +2025,7 @@ Func_2617:: ; 2617
 	inc hl
 	call WriteHLToSPPlus8
 	pop bc
-.asm_2690: ; 2690 (0:2690)
+.asm_2690 ; 2690 (0:2690)
 	ld a, c
 	cp $1
 	jp c, .asm_26a3
@@ -2037,9 +2037,9 @@ Func_2617:: ; 2617
 	dec c
 	jp .asm_2690
 
-.asm_26a3: ; 26a3 (0:26a3)
+.asm_26a3 ; 26a3 (0:26a3)
 	xor a
-.asm_26a4: ; 26a4 (0:26a4)
+.asm_26a4 ; 26a4 (0:26a4)
 	cp $4
 	jp nc, .asm_26d3
 	push af
@@ -2061,7 +2061,7 @@ Func_2617:: ; 2617
 	inc a
 	jp .asm_26a4
 
-.asm_26d3: ; 26d3 (0:26d3)
+.asm_26d3 ; 26d3 (0:26d3)
 	pop bc
 	pop bc
 	pop bc
@@ -2135,22 +2135,22 @@ Func_270a:: ; 270a
 	ld bc, $9
 	jp .asm_273e
 
-.asm_2730: ; 2730 (0:2730)
+.asm_2730 ; 2730 (0:2730)
 	cp $b
 	jp nc, .asm_273b
 	ld bc, $8
 	jp .asm_273e
 
-.asm_273b: ; 273b (0:273b)
+.asm_273b ; 273b (0:273b)
 	ld bc, $7
-.asm_273e: ; 273e (0:273e)
+.asm_273e ; 273e (0:273e)
 	ld a, c
-.asm_273f: ; 273f (0:273f)
+.asm_273f ; 273f (0:273f)
 	dec e
 	jp nz, .asm_2746
 	jp .asm_2761
 
-.asm_2746: ; 2746 (0:2746)
+.asm_2746 ; 2746 (0:2746)
 	push bc
 	push de
 	call GetHLAtSPPlus8
@@ -2166,7 +2166,7 @@ Func_270a:: ; 270a
 	pop bc
 	jp .asm_273f
 
-.asm_2761: ; 2761 (0:2761)
+.asm_2761 ; 2761 (0:2761)
 	pop de
 	push bc
 	ld a, e
@@ -2175,7 +2175,7 @@ Func_270a:: ; 270a
 	ld hl, sp+$4
 	ld bc, $4
 	call MemCopy
-.asm_2770: ; 2770 (0:2770)
+.asm_2770 ; 2770 (0:2770)
 	pop bc
 	pop hl
 
@@ -2218,7 +2218,7 @@ AdjustMoney:: ; 277c
 	call PutLongFromStackToHL
 	jp .asm_27e0
 
-.asm_27c0: ; 27c0 (0:27c0)
+.asm_27c0 ; 27c0 (0:27c0)
 	ld hl, sp+$8
 	call PutLongFromHLOnStack
 	push_long 0
@@ -2227,7 +2227,7 @@ AdjustMoney:: ; 277c
 	push_long 0
 	ld hl, sp+$c
 	call PutLongFromStackToHL
-.asm_27e0: ; 27e0 (0:27e0)
+.asm_27e0 ; 27e0 (0:27e0)
 	ld a, $3
 	call GetSRAMBank
 	ld de, wSaveScratchMoney
@@ -2423,7 +2423,7 @@ Func_2887:: ; 2887 (0:2887)
 
 Func_292b:: ; 292b (0:292b)
 	ld e, $0
-.asm_292d: ; 292d (0:292d)
+.asm_292d ; 292d (0:292d)
 	ld a, [hl]
 	or a
 	jp z, .asm_294f
@@ -2438,20 +2438,20 @@ IF DEF(LANG_JP)
 	jp z, .asm_2948
 	cp $df
 	jp nz, .asm_294b
-.asm_2948: ; 2948 (0:2948)
+.asm_2948 ; 2948 (0:2948)
 	jp .asm_292d
 
-.asm_294b: ; 294b (0:294b)
+.asm_294b ; 294b (0:294b)
 ENDC
 	inc e
 	jp .asm_292d
 
-.asm_294f: ; 294f (0:294f)
+.asm_294f ; 294f (0:294f)
 	ld a, e
 	ret
 
 Func_2951:: ; 2951 (0:2951)
-.asm_2951:
+.asm_2951
 	push de
 	push bc
 	push hl
@@ -2475,7 +2475,7 @@ Func_2951:: ; 2951 (0:2951)
 	call DivideAbyB
 	ld hl, sp+$9
 	ld [hl], a
-.asm_2976: ; 2976 (0:2976)
+.asm_2976 ; 2976 (0:2976)
 	pop hl
 	ld a, l
 	ld hl, sp+$6
@@ -2484,7 +2484,7 @@ Func_2951:: ; 2951 (0:2951)
 	jp nz, .asm_2984
 	ld hl, sp+$6
 	ld [hl], $7
-.asm_2984: ; 2984 (0:2984)
+.asm_2984 ; 2984 (0:2984)
 	pop de
 	pop bc
 	pop hl
@@ -2507,7 +2507,7 @@ Func_2951:: ; 2951 (0:2951)
 	ld l, [hl]
 	ld h, a
 	call Func_2801
-.asm_29a6: ; 29a6 (0:29a6)
+.asm_29a6 ; 29a6 (0:29a6)
 	pop bc
 	pop de
 	push hl
@@ -2527,7 +2527,7 @@ Func_2951:: ; 2951 (0:2951)
 	ld c, $3
 	call FarCall
 	pop de
-.asm_29cb: ; 29cb (0:29cb)
+.asm_29cb ; 29cb (0:29cb)
 	push de
 	ld a, $2
 	ld [wEnableAttrMapTransfer], a
@@ -2579,11 +2579,11 @@ Func_2951:: ; 2951 (0:2951)
 	ld a, c
 	and $1
 	jp nz, .asm_2a2e
-.asm_2a26: ; 2a26 (0:2a26)
+.asm_2a26 ; 2a26 (0:2a26)
 	call CheckButton
 	and $30
 	jp z, .asm_2a26
-.asm_2a2e: ; 2a2e (0:2a2e)
+.asm_2a2e ; 2a2e (0:2a2e)
 	pop bc
 	pop hl
 	push hl
@@ -2591,7 +2591,7 @@ Func_2951:: ; 2951 (0:2951)
 	and $4
 	jp nz, .asm_2a3a
 	call Func_2887
-.asm_2a3a: ; 2a3a (0:2a3a)
+.asm_2a3a ; 2a3a (0:2a3a)
 	pop hl
 	pop bc
 	pop bc
@@ -2612,7 +2612,7 @@ Func_2a49:: ; 2a49 (0:2a49)
 	call CompareStackLongs_Signed
 	jp nc, .asm_2a78
 	write_long_to wGameTimer, 108420000
-.asm_2a78: ; 2a78 (0:2a78)
+.asm_2a78 ; 2a78 (0:2a78)
 	ret
 
 Func_2a79:: ; 2a79 (0:2a79)
@@ -2794,21 +2794,21 @@ Func_2b97:: ; 2b97
 	ld a, e
 	cp $35
 	jp c, .asm_2bc6
-.asm_2bb5: ; 2bb5 (0:2bb5)
+.asm_2bb5 ; 2bb5 (0:2bb5)
 	inc hl
 	ld a, [hl]
 	and $80
 	ld [hl], a
 	ld b, $7
 	xor a
-.asm_2bbd: ; 2bbd (0:2bbd)
+.asm_2bbd ; 2bbd (0:2bbd)
 	dec hl
 	ld [hl], a
 	dec b
 	jp nz, .asm_2bbd
 	jp .asm_2c0b
 
-.asm_2bc6: ; 2bc6 (0:2bc6)
+.asm_2bc6 ; 2bc6 (0:2bc6)
 	inc e
 	ld hl, $4
 	add hl, sp
@@ -2819,7 +2819,7 @@ Func_2b97:: ; 2b97
 .asm_2bd4
 	jp .asm_2bea
 
-.asm_2bd7: ; 2bd7 (0:2bd7)
+.asm_2bd7 ; 2bd7 (0:2bd7)
 	ld hl, wOAMBuffer
 	add hl, bc
 	reg16swap de, hl
@@ -2829,7 +2829,7 @@ Func_2b97:: ; 2b97
 	cp $8
 	jp c, .asm_2bea
 	ld de, $7ff
-.asm_2bea: ; 2bea (0:2bea)
+.asm_2bea ; 2bea (0:2bea)
 	ld hl, $4
 	add hl, sp
 	ld bc, $509
@@ -2850,7 +2850,7 @@ Func_2b97:: ; 2b97
 	and $80
 	or h
 	ld [de], a
-.asm_2c0b: ; 2c0b (0:2c0b)
+.asm_2c0b ; 2c0b (0:2c0b)
 	pop hl
 	pop bc
 	pop af
@@ -2895,15 +2895,15 @@ Func_2c10:: ; 2c10
 	dec hl
 	jp nz, .asm_2c45
 	ld hl, $43fe
-.asm_2c45: ; 2c45 (0:2c45)
+.asm_2c45 ; 2c45 (0:2c45)
 	ld a, b
-.asm_2c46: ; 2c46 (0:2c46)
+.asm_2c46 ; 2c46 (0:2c46)
 	ld bc, $3c01
 	add hl, bc
 	reg16swap de, hl
 	push de
 	ld b, $7
-.asm_2c51: ; 2c51 (0:2c51)
+.asm_2c51 ; 2c51 (0:2c51)
 	dec hl
 	ld d, a
 	ld e, [hl]
@@ -2944,7 +2944,7 @@ Func_2c72:: ; 2c72
 	ld a, e
 	cp $18
 	jp c, .asm_2c9f
-.asm_2c90: ; 2c90 (0:2c90)
+.asm_2c90 ; 2c90 (0:2c90)
 	inc hl
 	ld a, [hl]
 	and $80
@@ -2958,7 +2958,7 @@ Func_2c72:: ; 2c72
 	ld [hl], a
 	jp .asm_2ce0
 
-.asm_2c9f: ; 2c9f (0:2c9f)
+.asm_2c9f ; 2c9f (0:2c9f)
 	inc e
 	dec hl
 	dec hl
@@ -2972,7 +2972,7 @@ Func_2c72:: ; 2c72
 	ld e, $0
 	jp .asm_2cc4
 
-.asm_2cb1: ; 2cb1 (0:2cb1)
+.asm_2cb1 ; 2cb1 (0:2cb1)
 	reg16swap de, hl
 	ld hl, $c080
 	add hl, bc
@@ -2981,11 +2981,11 @@ Func_2c72:: ; 2c72
 	or a
 	jp z, .asm_2cc4
 	ld e, $ff
-.asm_2cc4: ; 2cc4 (0:2cc4)
+.asm_2cc4 ; 2cc4 (0:2cc4)
 	ld b, h
 	ld c, l
 	ld d, $3
-.asm_2cc8: ; 2cc8 (0:2cc8)
+.asm_2cc8 ; 2cc8 (0:2cc8)
 	dec hl
 	ld a, [hl]
 	ld [bc], a
@@ -3008,7 +3008,7 @@ Func_2c72:: ; 2c72
 	rra
 	dec hl
 	ld [hl], a
-.asm_2ce0: ; 2ce0 (0:2ce0)
+.asm_2ce0 ; 2ce0 (0:2ce0)
 	pop hl
 	pop bc
 	pop af
@@ -3047,7 +3047,7 @@ Func_2ce7:: ; 2ce7
 	inc a
 	jp nz, .asm_2d10
 	ld bc, $407e
-.asm_2d10: ; 2d10 (0:2d10)
+.asm_2d10 ; 2d10 (0:2d10)
 	reg16swap de, hl
 	ld hl, $3f81
 	add hl, bc
@@ -3078,7 +3078,7 @@ Func_2d31:: ; 2d31
 	ld de, $400e
 	jp .asm_2d47
 
-.asm_2d3d: ; 2d3d
+.asm_2d3d ; 2d3d
 	pop bc
 	pop hl
 	pop de
@@ -3086,7 +3086,7 @@ Func_2d31:: ; 2d31
 	push de
 	push de
 	ld de, $401e
-.asm_2d47: ; 2d47 (0:2d47)
+.asm_2d47 ; 2d47 (0:2d47)
 	push hl
 	ld hl, $0
 	add hl, sp
@@ -3102,16 +3102,16 @@ Func_2d31:: ; 2d31
 	ld c, $8
 	jp Func_3106
 
-.asm_2d60: ; 2d60
+.asm_2d60 ; 2d60
 	pop bc
 	ld de, $0
 	jp .asm_2d69
 
-.asm_2d66: ; 2d66
+.asm_2d66 ; 2d66
 	pop bc
 	pop hl
 	pop de
-.asm_2d69: ; 2d69 (0:2d69)
+.asm_2d69 ; 2d69 (0:2d69)
 	push de
 	push de
 	push hl
@@ -3125,7 +3125,7 @@ Func_2d31:: ; 2d31
 	ld c, $8
 	jp Func_3106
 
-.asm_2d7c: ; 2d7c
+.asm_2d7c ; 2d7c
 	ld bc, $10
 	call Func_2dc3
 	pop bc
@@ -3139,12 +3139,12 @@ Func_2d31:: ; 2d31
 	ld hl, $0
 	ret
 
-.asm_2d90: ; 2d90 (0:2d90)
+.asm_2d90 ; 2d90 (0:2d90)
 	and $80
 	ret z
 	jp NegativeHL
 
-.asm_2d96: ; 2d96
+.asm_2d96 ; 2d96
 	ld bc, $20
 	call Func_2dc3
 	pop bc
@@ -3156,7 +3156,7 @@ Func_2d31:: ; 2d31
 	ld de, $0
 	ld hl, $0
 	xor a
-.asm_2dab: ; 2dab (0:2dab)
+.asm_2dab ; 2dab (0:2dab)
 	push af
 	push de
 	push hl
@@ -3202,7 +3202,7 @@ Func_2dc3:: ; 2dc3 (0:2dc3)
 	and a
 	ret
 
-.asm_2dec: ; 2dec (0:2dec)
+.asm_2dec ; 2dec (0:2dec)
 	pop af
 	scf
 	ret
@@ -3215,7 +3215,7 @@ Func_2def:: ; 2def
 	jp nz, .asm_2e09
 	push hl
 	ld c, $9
-.asm_2dfc: ; 2dfc (0:2dfc)
+.asm_2dfc ; 2dfc (0:2dfc)
 	dec hl
 	or [hl]
 	dec c
@@ -3224,7 +3224,7 @@ Func_2def:: ; 2def
 	or a
 	jp nz, .asm_2e09
 	ld [hl], $0
-.asm_2e09: ; 2e09 (0:2e09)
+.asm_2e09 ; 2e09 (0:2e09)
 	reg16swap de, hl
 	ld hl, $16
 	add hl, sp
@@ -3235,7 +3235,7 @@ Func_2def:: ; 2def
 	jp nz, .asm_2e29
 	push hl
 	ld c, $9
-.asm_2e1c: ; 2e1c (0:2e1c)
+.asm_2e1c ; 2e1c (0:2e1c)
 	dec hl
 	or [hl]
 	dec c
@@ -3244,15 +3244,15 @@ Func_2def:: ; 2def
 	or a
 	jp nz, .asm_2e29
 	ld [hl], $0
-.asm_2e29: ; 2e29 (0:2e29)
+.asm_2e29 ; 2e29 (0:2e29)
 	ld a, [de]
 	or [hl]
 	bit 7, a
 	jp nz, .asm_2e34
 	reg16swap de, hl
-.asm_2e34: ; 2e34 (0:2e34)
+.asm_2e34 ; 2e34 (0:2e34)
 	ld c, $a
-.asm_2e36: ; 2e36 (0:2e36)
+.asm_2e36 ; 2e36 (0:2e36)
 	ld a, [de]
 	cp [hl]
 	jp nz, .asm_2e41
@@ -3260,7 +3260,7 @@ Func_2def:: ; 2def
 	dec de
 	dec c
 	jp nz, .asm_2e36
-.asm_2e41: ; 2e41 (0:2e41)
+.asm_2e41 ; 2e41 (0:2e41)
 	pop hl
 	pop bc
 	ld sp, hl
@@ -3275,7 +3275,7 @@ Func_2e46:: ; 2e46
 	jp nz, .asm_2e5c
 	push hl
 	ld c, $9
-.asm_2e52: ; 2e52 (0:2e52)
+.asm_2e52 ; 2e52 (0:2e52)
 	dec hl
 	or [hl]
 	dec c
@@ -3284,7 +3284,7 @@ Func_2e46:: ; 2e46
 	or a
 	ret z
 	ld a, [hl]
-.asm_2e5c: ; 2e5c (0:2e5c)
+.asm_2e5c ; 2e5c (0:2e5c)
 	xor $80
 	ld [hl], a
 	ret
@@ -3293,7 +3293,7 @@ Func_2e60:: ; 2e60
 	pop bc
 	ld de, $0
 	ld a, $c
-.asm_2e66: ; 2e66 (0:2e66)
+.asm_2e66 ; 2e66 (0:2e66)
 	push de
 	dec a
 	jp nz, .asm_2e66
@@ -3306,7 +3306,7 @@ Func_2e60:: ; 2e60
 	ld hl, $e
 	add hl, sp
 	ld c, $8
-.asm_2e7c: ; 2e7c (0:2e7c)
+.asm_2e7c ; 2e7c (0:2e7c)
 	ld a, [de]
 	inc de
 	ld [hl], a
@@ -3333,7 +3333,7 @@ Func_2e60:: ; 2e60
 	ld hl, $1c
 	add hl, sp
 	ld a, $48
-.asm_2ea7: ; 2ea7 (0:2ea7)
+.asm_2ea7 ; 2ea7 (0:2ea7)
 	push af
 	push bc
 	push hl
@@ -3351,9 +3351,9 @@ Func_2e60:: ; 2e60
 	ccf
 	jp .asm_2ec7
 
-.asm_2ec4: ; 2ec4 (0:2ec4)
+.asm_2ec4 ; 2ec4 (0:2ec4)
 	call AddArbitrarySize
-.asm_2ec7: ; 2ec7 (0:2ec7)
+.asm_2ec7 ; 2ec7 (0:2ec7)
 	sbc a
 	ld c, a
 	jp z, .asm_2ed6
@@ -3364,7 +3364,7 @@ Func_2e60:: ; 2e60
 	or $1
 	ld [hl], a
 	pop hl
-.asm_2ed6: ; 2ed6 (0:2ed6)
+.asm_2ed6 ; 2ed6 (0:2ed6)
 	push bc
 	reg16swap de, hl
 	ld bc, $110
@@ -3388,16 +3388,16 @@ Func_2e60:: ; 2e60
 	ld de, $4001
 	call CompareHLtoDE
 	jp c, .asm_2f07
-.asm_2f01: ; 2f01 (0:2f01)
+.asm_2f01 ; 2f01 (0:2f01)
 	ld hl, $4000
 	jp .asm_2f14
 
-.asm_2f07: ; 2f07 (0:2f07)
+.asm_2f07 ; 2f07 (0:2f07)
 	ld de, $c001
 	call CompareHLtoDE
 	jp nc, .asm_2f14
 	reg16swap de, hl
-.asm_2f14: ; 2f14 (0:2f14)
+.asm_2f14 ; 2f14 (0:2f14)
 	ld de, $3fff
 	add hl, de
 	reg16swap de, hl
@@ -3419,7 +3419,7 @@ Func_2f2f:: ; 2f2f
 	pop bc
 	ld de, $0
 	ld a, $9
-.asm_2f35: ; 2f35 (0:2f35)
+.asm_2f35 ; 2f35 (0:2f35)
 	push de
 	dec a
 	jp nz, .asm_2f35
@@ -3432,7 +3432,7 @@ Func_2f2f:: ; 2f2f
 	add hl, sp
 	ld b, $80
 	ld a, $40
-.asm_2f4c: ; 2f4c (0:2f4c)
+.asm_2f4c ; 2f4c (0:2f4c)
 	push af
 	push bc
 	ld bc, $110
@@ -3455,15 +3455,15 @@ Func_2f2f:: ; 2f2f
 	add hl, bc
 	call IncrementArbitrarySize
 	pop hl
-.asm_2f78: ; 2f78 (0:2f78)
+.asm_2f78 ; 2f78 (0:2f78)
 	pop bc
-.asm_2f79: ; 2f79 (0:2f79)
+.asm_2f79 ; 2f79 (0:2f79)
 	ld a, b
 	rrca
 	ld b, a
 	jp nc, .asm_2f80
 	dec de
-.asm_2f80: ; 2f80 (0:2f80)
+.asm_2f80 ; 2f80 (0:2f80)
 	pop af
 	dec a
 	jp nz, .asm_2f4c
@@ -3507,14 +3507,14 @@ Func_2f2f:: ; 2f2f
 	ld hl, $7fff + $3fff
 	jp .asm_2fcc
 
-.asm_2fc0: ; 2fc0 (0:2fc0)
+.asm_2fc0 ; 2fc0 (0:2fc0)
 	ld a, l
 	sub $fe
 	ld a, h
 	sbc $bf
 	jp nc, .asm_2fcc
 	ld hl, $3fff
-.asm_2fcc: ; 2fcc (0:2fcc)
+.asm_2fcc ; 2fcc (0:2fcc)
 	ld de, -$3fff
 	add hl, de
 	reg16swap de, hl
@@ -3524,7 +3524,7 @@ Func_2f2f:: ; 2f2f
 	call Func_3106
 	pop de
 	ld c, $a
-.asm_2fde: ; 2fde (0:2fde)
+.asm_2fde ; 2fde (0:2fde)
 	ld a, [hl]
 	dec hl
 	ld [de], a
@@ -3566,14 +3566,14 @@ Func_2ff4:: ; 2ff4
 	ld de, $0
 	jp c, .asm_3026
 	ld de, $7fff
-.asm_3026: ; 3026 (0:3026)
+.asm_3026 ; 3026 (0:3026)
 	ld a, [hl]
 	and $80
 	or d
 	ld [hl], a
 	dec hl
 	ld [hl], e
-.asm_302d: ; 302d (0:302d)
+.asm_302d ; 302d (0:302d)
 	pop hl
 	ret
 
@@ -3614,11 +3614,11 @@ Func_302f:: ; 302f
 	ld hl, $9
 	jp .asm_307b
 
-.asm_3076: ; 3076 (0:3076)
+.asm_3076 ; 3076 (0:3076)
 	ld b, h
 	ld c, l
 	ld hl, Byte_0013
-.asm_307b: ; 307b (0:307b)
+.asm_307b ; 307b (0:307b)
 	add hl, sp
 	push de
 	ld a, e
@@ -3637,18 +3637,18 @@ Func_302f:: ; 302f
 	call RightShiftArbitrarySize
 	jp .asm_30a2
 
-.asm_3097: ; 3097 (0:3097)
+.asm_3097 ; 3097 (0:3097)
 	xor a
-.asm_3098: ; 3098 (0:3098)
+.asm_3098 ; 3098 (0:3098)
 	ld [hl], a
 	inc hl
 	dec c
 	jp nz, .asm_3098
 	jp .asm_30a2
 
-.asm_30a1: ; 30a1 (0:30a1)
+.asm_30a1 ; 30a1 (0:30a1)
 	push hl
-.asm_30a2: ; 30a2 (0:30a2)
+.asm_30a2 ; 30a2 (0:30a2)
 	ld hl, $b
 	add hl, sp
 	reg16swap de, hl
@@ -3665,14 +3665,14 @@ Func_302f:: ; 302f
 	call c, Func_30ec
 	jp .asm_30db
 
-.asm_30c2: ; 30c2 (0:30c2)
+.asm_30c2 ; 30c2 (0:30c2)
 	call SubtractArbitrarySize
 	pop de
 	jp nc, .asm_30db
 	push hl
 	ld b, c
 	and a
-.asm_30cc: ; 30cc (0:30cc)
+.asm_30cc ; 30cc (0:30cc)
 	ld a, $0
 	sbc [hl]
 	ld [hl], a
@@ -3684,7 +3684,7 @@ Func_302f:: ; 302f
 	pop af
 	xor $80
 	push af
-.asm_30db: ; 30db (0:30db)
+.asm_30db ; 30db (0:30db)
 	pop af
 	call Func_3106
 	pop de
@@ -3731,7 +3731,7 @@ Func_3106:: ; 3106 (0:3106)
 	ld b, $0
 	add hl, bc
 	ld d, c
-.asm_311a: ; 311a (0:311a)
+.asm_311a ; 311a (0:311a)
 	dec hl
 	ld a, [hl]
 	or a
@@ -3743,9 +3743,9 @@ Func_3106:: ; 3106 (0:3106)
 	jp nz, .asm_311a
 	jp .asm_3196
 
-.asm_312b: ; 312b (0:312b)
+.asm_312b ; 312b (0:312b)
 	dec b
-.asm_312c: ; 312c (0:312c)
+.asm_312c ; 312c (0:312c)
 	inc b
 	add a
 	jp nc, .asm_312c
@@ -3783,16 +3783,16 @@ Func_3106:: ; 3106 (0:3106)
 	xor a
 	jp .asm_3160
 
-.asm_315e: ; 315e (0:315e)
+.asm_315e ; 315e (0:315e)
 	or [hl]
 	inc hl
-.asm_3160: ; 3160 (0:3160)
+.asm_3160 ; 3160 (0:3160)
 	dec b
 	jp nz, .asm_315e
 	or a
 	jp z, .asm_316a
 	ld a, $1
-.asm_316a: ; 316a (0:316a)
+.asm_316a ; 316a (0:316a)
 	or [hl]
 	inc hl
 	ld bc, $8
@@ -3803,7 +3803,7 @@ Func_3106:: ; 3106 (0:3106)
 	ld a, [hl]
 	rra
 	jp nc, .asm_318d
-.asm_317e: ; 317e (0:317e)
+.asm_317e ; 317e (0:317e)
 	call IncrementArbitrarySize
 	jp nz, .asm_318d
 	add hl, bc
@@ -3813,10 +3813,10 @@ Func_3106:: ; 3106 (0:3106)
 	inc hl
 	jp .asm_3190
 
-.asm_318d: ; 318d (0:318d)
+.asm_318d ; 318d (0:318d)
 	ld b, $0
 	add hl, bc
-.asm_3190: ; 3190 (0:3190)
+.asm_3190 ; 3190 (0:3190)
 	ld [hl], e
 	inc hl
 	pop af
@@ -3824,13 +3824,13 @@ Func_3106:: ; 3106 (0:3106)
 	ld [hl], a
 	ret
 
-.asm_3196: ; 3196 (0:3196)
+.asm_3196 ; 3196 (0:3196)
 	pop hl
 	pop de
-.asm_3198: ; 3198 (0:3198)
+.asm_3198 ; 3198 (0:3198)
 	pop af
 	xor a
-.asm_319a: ; 319a (0:319a)
+.asm_319a ; 319a (0:319a)
 	ld [hl], a
 	inc hl
 	dec c
@@ -4143,9 +4143,9 @@ PushBGMapRegion_NoWaitBefore:: ; 3afc (0:3afc)
 	xor a
 	jp .asm_3b0f
 
-.asm_3b0d: ; 3b0d (0:3b0d)
+.asm_3b0d ; 3b0d (0:3b0d)
 	ld a, $1
-.asm_3b0f: ; 3b0f (0:3b0f)
+.asm_3b0f ; 3b0f (0:3b0f)
 	ld [hl], a
 	ld hl, sp+$0
 	ld [hl], $2
@@ -4238,7 +4238,7 @@ PushBGMapRegion_NoWaitBefore:: ; 3afc (0:3afc)
 	ld a, [wEnableAttrMapTransfer]
 	dec a
 	ld [wEnableAttrMapTransfer], a
-.asm_3bc0: ; 3bc0 (0:3bc0)
+.asm_3bc0 ; 3bc0 (0:3bc0)
 	pop bc
 	pop bc
 	pop bc

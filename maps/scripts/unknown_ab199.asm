@@ -49,17 +49,17 @@ Func_ab199:: ; ab199
 	jp z, .asm_ab1ef
 	hideperson 0
 	hideperson $01
-.asm_ab1ef:
+.asm_ab1ef
 	checkevent EVENT_0B2
 	or a
 	jp z, .asm_ab207
 	hideperson $02
 	hideperson $03
-.asm_ab207:
+.asm_ab207
 	jp .asm_ab20f
-.asm_ab20a:
+.asm_ab20a
 	playmusic SONG_CAVE
-.asm_ab20f:
+.asm_ab20f
 	scall Func_8001c
 	ret
 
@@ -96,18 +96,18 @@ Func_ab24a:
 	jp z, .asm_ab261
 	or a
 	jp nz, .asm_ab2e8
-.asm_ab261:
+.asm_ab261
 	ld a, [wMapX]
 	add a, $05
 	cp $08
 	jp nz, .asm_ab272
 	face_player 0
 	jp .asm_ab281
-.asm_ab272:
+.asm_ab272
 	move_player $01, Data_ab23c
 	ld a, $03
 	scall PlayerFace
-.asm_ab281:
+.asm_ab281
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d844
@@ -115,26 +115,26 @@ Func_ab24a:
 	or a
 	jp nz, .asm_ab2a0
 	jp .asm_ab2e8
-.asm_ab2a0:
+.asm_ab2a0
 	writetext TreeBitstreamText_3d897
 	ld a, [wPlayerFacing]
 	cp $02
 	jp z, .asm_ab2b2
 	or a
 	jp nz, .asm_ab2be
-.asm_ab2b2:
+.asm_ab2b2
 	move_person 0, Data_ab240, 1
 	jp .asm_ab2c7
-.asm_ab2be:
+.asm_ab2be
 	move_person 0, Data_ab246, 1
-.asm_ab2c7:
+.asm_ab2c7
 	scall WaitNPCStep
 	hideperson 0
 	hideperson $01
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
 	setevent EVENT_0B1
-.asm_ab2e8:
+.asm_ab2e8
 	pop bc
 	ret
 
@@ -172,18 +172,18 @@ Func_ab327:
 	jp z, .asm_ab33e
 	or a
 	jp nz, .asm_ab3c9
-.asm_ab33e:
+.asm_ab33e
 	ld a, [wMapX]
 	add a, $05
 	cp $08
 	jp nz, .asm_ab350
 	face_player $02
 	jp .asm_ab35f
-.asm_ab350:
+.asm_ab350
 	move_player $01, Data_ab319
 	ld a, $03
 	scall PlayerFace
-.asm_ab35f:
+.asm_ab35f
 	playmusic SONG_NONE
 	playmusic SONG_ENCOUNTER_EVIL
 	writetext TreeBitstreamText_3d85e
@@ -191,26 +191,26 @@ Func_ab327:
 	or a
 	jp nz, .asm_ab37e
 	jp .asm_ab3c9
-.asm_ab37e:
+.asm_ab37e
 	writetext TreeBitstreamText_3d897
 	ld a, [wPlayerFacing]
 	cp $02
 	jp z, .asm_ab390
 	or a
 	jp nz, .asm_ab39d
-.asm_ab390:
+.asm_ab390
 	move_person $02, Data_ab31d, 1
 	jp .asm_ab3a7
-.asm_ab39d:
+.asm_ab39d
 	move_person $02, Data_ab323, 1
-.asm_ab3a7:
+.asm_ab3a7
 	scall WaitNPCStep
 	hideperson $02
 	hideperson $03
 	playmusic SONG_NONE
 	playmusic SONG_WILD_BATTLE
 	setevent EVENT_0B2
-.asm_ab3c9:
+.asm_ab3c9
 	pop bc
 	ret
 

@@ -44,7 +44,7 @@ callMusicEngine_predef:
 	ld a, h
 	jr .BankSwitchBack
 
-.Bank1CCall: ; 25e (0:025e)
+.Bank1CCall ; 25e (0:025e)
 	push hl
 	push af
 	ldh a, [hROMBank]

@@ -19,7 +19,9 @@ DEF part_SIZEOF EQU 26
 ENDC
 
 IF DEF(LANG_JP)
-DEF partyRobot_SIZEOF EQU 35
+DEF warehouseRobot_SIZEOF EQU 28
 ELIF DEF(LANG_EN)
-DEF partyRobot_SIZEOF EQU 36
+DEF warehouseRobot_SIZEOF EQU 29
 ENDC
+
+DEF partyRobot_SIZEOF EQU warehouseRobot_SIZEOF + 7

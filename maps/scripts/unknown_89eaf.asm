@@ -43,7 +43,7 @@ Func_89eaf:: ; 89eaf
 	or a
 	jp nz, .asm_89ede
 	loadpeople $04, Data_89e69
-.asm_89ede:
+.asm_89ede
 	loadpeople $01, Data_89ea1
 	playmusic SONG_TOWER
 	scall Func_8001c
@@ -77,17 +77,17 @@ Func_89f1e:	push af
 	or a
 	jp nz, .asm_89f54
 	jp .asm_89f74
-.asm_89f54:
+.asm_89f54
 	setevent EVENT_076
 	writetext TreeBitstreamText_4298a
 	jp .asm_89f6b
-.asm_89f65:
+.asm_89f65
 	writetext TreeBitstreamText_429ca
-.asm_89f6b:
+.asm_89f6b
 	jp .asm_89f74
-.asm_89f6e:
+.asm_89f6e
 	writetext TreeBitstreamText_429dc
-.asm_89f74:
+.asm_89f74
 	pop bc
 	ret
 
@@ -116,17 +116,17 @@ Func_89fa8:
 	or a
 	jp nz, .asm_89fde
 	jp .asm_89ffe
-.asm_89fde:
+.asm_89fde
 	setevent EVENT_077
 	writetext TreeBitstreamText_429a1
 	jp .asm_89ff5
-.asm_89fef:
+.asm_89fef
 	writetext TreeBitstreamText_429d1
-.asm_89ff5:
+.asm_89ff5
 	jp .asm_89ffe
-.asm_89ff8:
+.asm_89ff8
 	writetext TreeBitstreamText_42937
-.asm_89ffe:
+.asm_89ffe
 	pop bc
 	ret
 
@@ -155,17 +155,17 @@ Func_8a031:
 	or a
 	jp nz, .asm_8a067
 	jp .asm_8a087
-.asm_8a067:
+.asm_8a067
 	setevent EVENT_078
 	writetext TreeBitstreamText_429b8
 	jp .asm_8a07e
-.asm_8a078:
+.asm_8a078
 	writetext TreeBitstreamText_429d1
-.asm_8a07e:
+.asm_8a07e
 	jp .asm_8a087
-.asm_8a081:
+.asm_8a081
 	writetext TreeBitstreamText_4290f
-.asm_8a087:
+.asm_8a087
 	pop bc
 	ret
 
@@ -194,17 +194,17 @@ Func_8a0b7:
 	or a
 	jp nz, .asm_8a0ed
 	jp .asm_8a10d
-.asm_8a0ed:
+.asm_8a0ed
 	setevent EVENT_079
 	writetext TreeBitstreamText_42972
 	jp .asm_8a104
-.asm_8a0fe:
+.asm_8a0fe
 	writetext TreeBitstreamText_42972
-.asm_8a104:
+.asm_8a104
 	jp .asm_8a10d
-.asm_8a107:
+.asm_8a107
 	writetext TreeBitstreamText_42972
-.asm_8a10d:
+.asm_8a10d
 	pop bc
 	ret
 
@@ -221,7 +221,7 @@ Func_8a115:
 	ld a, [wc790]
 	cp $07
 	jp nz, .asm_8a12f
-.asm_8a129:
+.asm_8a129
 	writetext TreeBitstreamText_4706a
-.asm_8a12f:
+.asm_8a12f
 	ret

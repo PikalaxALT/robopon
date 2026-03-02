@@ -241,14 +241,14 @@ Func_a6882:: ; a6882
 	scall Func_8001c
 	call Func_a6a09
 	jp .asm_a69f6
-.asm_a69d9:
+.asm_a69d9
 	loadpeople $0a, Data_a67da
 	loadpeople $02, Data_a6866
 	playmusic SONG_0A
 	ld a, $01
 	scall LoadPlayerSprite
 	scall Func_8001c
-.asm_a69f6:
+.asm_a69f6
 	ret
 
 Data_a69f7:
@@ -316,6 +316,6 @@ Func_a6a87:
 	setevent EVENT_02E
 	writenpctext TreeBitstreamText_3d204
 	playmusic SONG_0A
-.asm_a6adb:
+.asm_a6adb
 	pop bc
 	ret

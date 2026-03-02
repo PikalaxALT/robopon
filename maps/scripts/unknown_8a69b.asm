@@ -39,7 +39,7 @@ Func_8a69b:: ; 8a69b
 	jp nc, .asm_8a6de
 	hideperson $01
 	hideperson $02
-.asm_8a6de:
+.asm_8a6de
 	playmusic SONG_TOWER
 	ld a, $03
 	ld [wc7e2], a
@@ -54,13 +54,13 @@ Func_8a69b:: ; 8a69b
 	ld a, $03
 	scall Func_80080
 	jp .asm_8a71a
-.asm_8a70a:
+.asm_8a70a
 	ld c, $05
 	ld e, $10
 	ld a, $03
 	scall Func_80080
 	sprite_face $03, $03
-.asm_8a71a:
+.asm_8a71a
 	scall Func_8001c
 	landmarksign TreeBitstreamText_468e0
 	ret
@@ -77,7 +77,7 @@ Func_8a724:
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
 	playmusic SONG_TOWER
-.asm_8a74f:
+.asm_8a74f
 	ret
 
 Data_8a750:
@@ -102,17 +102,17 @@ Func_8a779:
 	or a
 	jp nz, .asm_8a7af
 	jp .asm_8a7cf
-.asm_8a7af:
+.asm_8a7af
 	setevent EVENT_07E
 	writetext TreeBitstreamText_429b8
 	jp .asm_8a7c6
-.asm_8a7c0:
+.asm_8a7c0
 	writetext TreeBitstreamText_42998
-.asm_8a7c6:
+.asm_8a7c6
 	jp .asm_8a7cf
-.asm_8a7c9:
+.asm_8a7c9
 	writetext TreeBitstreamText_4298a
-.asm_8a7cf:
+.asm_8a7cf
 	pop bc
 	ret
 
@@ -141,17 +141,17 @@ Func_8a801:
 	or a
 	jp nz, .asm_8a837
 	jp .asm_8a857
-.asm_8a837:
+.asm_8a837
 	setevent EVENT_07F
 	writetext TreeBitstreamText_4297c
 	jp .asm_8a84e
-.asm_8a848:
+.asm_8a848
 	writetext TreeBitstreamText_429ca
-.asm_8a84e:
+.asm_8a84e
 	jp .asm_8a857
-.asm_8a851:
+.asm_8a851
 	writetext TreeBitstreamText_429a1
-.asm_8a857:
+.asm_8a857
 	pop bc
 	ret
 
@@ -186,7 +186,7 @@ Func_8a892:
 	or a
 	jp nz, .asm_8a8c8
 	jp .asm_8a92e
-.asm_8a8c8:
+.asm_8a8c8
 	writetext TreeBitstreamText_42d27
 	ld a, [wPlayerFacing]
 	or a
@@ -194,9 +194,9 @@ Func_8a892:
 	move_person -$01, Data_8a888, 1
 	setevent EVENT_107
 	jp .asm_8a8f6
-.asm_8a8eb:
+.asm_8a8eb
 	move_person -$01, Data_8a88c, 1
-.asm_8a8f6:
+.asm_8a8f6
 	scall WaitNPCStep
 	ld e, $02
 	ld hl, sp+$01
@@ -204,19 +204,19 @@ Func_8a892:
 	scall SpriteFace
 	setevent EVENT_086
 	jp .asm_8a912
-.asm_8a90c:
+.asm_8a90c
 	writetext TreeBitstreamText_42d11
-.asm_8a912:
+.asm_8a912
 	jp .asm_8a92e
-.asm_8a915:
+.asm_8a915
 	checkevent EVENT_01F
 	or a
 	jp nz, .asm_8a928
 	writetext TreeBitstreamText_42d27
 	jp .asm_8a92e
-.asm_8a928:
+.asm_8a928
 	writetext TreeBitstreamText_3d897
-.asm_8a92e:
+.asm_8a92e
 	pop bc
 	ret
 

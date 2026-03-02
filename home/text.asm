@@ -195,7 +195,7 @@ IF DEF(LANG_JP)
 ELIF DEF(LANG_EN)
 	jr .skip_dakuten
 ENDC
-.skip_dakuten:
+.skip_dakuten
 	ld [hli], a
 	ld a, [wStringDestX]
 	inc a
@@ -266,7 +266,7 @@ ENDC
 	ld [hl], a
 	jr .after_dakuten_restore_pointer
 
-.SpecialCharacter: ; 15db (0:15db)
+.SpecialCharacter ; 15db (0:15db)
 ; This is where the format codes are handled.
 ; %d: short
 ; %c: char
@@ -495,7 +495,7 @@ ENDC
 	ld a, b
 	ret
 
-.GetNextBit: ; 19fd (0:19fd)
+.GetNextBit ; 19fd (0:19fd)
 	sla c
 	dec b
 	ret nz

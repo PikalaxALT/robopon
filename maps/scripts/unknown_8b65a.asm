@@ -42,10 +42,10 @@ Func_8b65a:: ; 8b65a
 	ld a, $01
 	ld [wc7da], a
 	jp .asm_8b69a
-.asm_8b696:
+.asm_8b696
 	xor a
 	ld [wc7da], a
-.asm_8b69a:
+.asm_8b69a
 	ld a, $01
 	scall LoadPlayerSprite
 	playmusic SONG_CAVE
@@ -73,7 +73,7 @@ Func_8b6ae:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_8b737
-.asm_8b6db:
+.asm_8b6db
 	ld a, [wc790]
 	or a
 	jp z, .asm_8b72e
@@ -96,15 +96,15 @@ Func_8b6ae:
 	xor a
 	scall PlayerFace
 	warp_player MAP_30_03, $2e, $1e
-.asm_8b72b:
+.asm_8b72b
 	jp .asm_8b734
-.asm_8b72e:
+.asm_8b72e
 	writetext TreeBitstreamText_470f0
-.asm_8b734:
+.asm_8b734
 	jp .asm_8b73d
-.asm_8b737:
+.asm_8b737
 	writetext TreeBitstreamText_470d8
-.asm_8b73d:
+.asm_8b73d
 	ret
 
 Data_8b73e:
@@ -129,17 +129,17 @@ Func_8b767:
 	or a
 	jp nz, .asm_8b79d
 	jp .asm_8b7bd
-.asm_8b79d:
+.asm_8b79d
 	setevent EVENT_072
 	writetext TreeBitstreamText_42b85
 	jp .asm_8b7b4
-.asm_8b7ae:
+.asm_8b7ae
 	writetext TreeBitstreamText_42c16
-.asm_8b7b4:
+.asm_8b7b4
 	jp .asm_8b7bd
-.asm_8b7b7:
+.asm_8b7b7
 	writetext TreeBitstreamText_42b85
-.asm_8b7bd:
+.asm_8b7bd
 	pop bc
 	ret
 

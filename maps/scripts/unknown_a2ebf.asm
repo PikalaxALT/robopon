@@ -134,12 +134,12 @@ Func_a2ebf:: ; a2ebf
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_a2ed5:
+.asm_a2ed5
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a2ee5
 	setevent EVENT_05F
-.asm_a2ee5:
+.asm_a2ee5
 	ld a, $03
 	scall Func_80d01
 	ld a, [wc7de]
@@ -203,25 +203,25 @@ Func_a2ebf:: ; a2ebf
 	jp z, .asm_a2f83
 	cp $01
 	jp nz, .asm_a2fc5
-.asm_a2f83:
+.asm_a2f83
 	loadwilds $05, Data_a2cd5
 	jp .asm_a2fcd
-.asm_a2f8e:
+.asm_a2f8e
 	loadwilds $05, Data_a2d1b
 	jp .asm_a2fcd
-.asm_a2f99:
+.asm_a2f99
 	loadwilds $05, Data_a2d61
 	jp .asm_a2fcd
-.asm_a2fa4:
+.asm_a2fa4
 	loadwilds $05, Data_a2da7
 	jp .asm_a2fcd
-.asm_a2faf:
+.asm_a2faf
 	loadwilds $05, Data_a2ded
 	jp .asm_a2fcd
-.asm_a2fba:
+.asm_a2fba
 	loadwilds $05, Data_a2e33
 	jp .asm_a2fcd
-.asm_a2fc5:
+.asm_a2fc5
 IF DEF(SUN)
 	ld e, $05
 ELIF DEF(STAR)
@@ -229,7 +229,7 @@ ELIF DEF(STAR)
 ENDC
 	ld hl, Data_a2e79
 	scall LoadEncounters
-.asm_a2fcd:
+.asm_a2fcd
 	ld a, [wc7de]
 	inc a
 	cp $24
@@ -269,7 +269,7 @@ ENDC
 	add hl, de
 	ld e, $01
 	scall LoadWarps
-.asm_a300d:
+.asm_a300d
 	loadwarps $01, Data_a2c46
 	playmusic SONG_CAVE
 	scall Func_8001c
@@ -278,12 +278,12 @@ ENDC
 	jp nz, .asm_a302e
 	writetext TreeBitstreamText_47e17
 	jp .asm_a3037
-.asm_a302e:
+.asm_a302e
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $00
 	scall Func_80f83
-.asm_a3037:
+.asm_a3037
 	ret
 
 Data_a3038:

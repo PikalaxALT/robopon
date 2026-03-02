@@ -1080,7 +1080,7 @@ UpdatePlayerSprite: ; 9d80 (2:5d80)
 	ld [wCurrentDirectionalInputHeldFramesCounter], a
 	ret
 
-.bail: ; 9ea0 (2:5ea0)
+.bail ; 9ea0 (2:5ea0)
 	pop af
 	ld hl, wOAM00YCoord
 	ld b, $10
@@ -1375,7 +1375,7 @@ Func_ae4d:: ; ae4d
 	jp nz, .asm_aef5
 	ld hl, sp+$2
 	ld [hl], $0
-.asm_ae66: ; ae66 (2:6e66)
+.asm_ae66 ; ae66 (2:6e66)
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $9
@@ -1408,14 +1408,14 @@ Func_ae4d:: ; ae4d
 	jp nz, .asm_aea0
 	jp .asm_aeaa
 
-.asm_aea0: ; aea0 (2:6ea0)
+.asm_aea0 ; aea0 (2:6ea0)
 	ld hl, sp+$2
 	ld a, [hl]
 	inc a
 	ld hl, sp+$2
 	ld [hl], a
 	jp .asm_ae66
-.asm_aeaa: ; aeaa (2:6eaa)
+.asm_aeaa ; aeaa (2:6eaa)
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $9
@@ -1452,7 +1452,7 @@ Func_ae4d:: ; ae4d
 	ld hl, sp+$0
 	ld a, [hl]
 	ld [wSpawnPushY], a
-.asm_aef5: ; aef5 (2:6ef5)
+.asm_aef5 ; aef5 (2:6ef5)
 	ld hl, sp+$3
 	ld a, [wSpawnPushX]
 	ld [hl], a
@@ -1477,7 +1477,7 @@ Func_ae4d:: ; ae4d
 	call Func_b65f
 	jp .asm_af68
 
-.asm_af33: ; af33 (2:6f33)
+.asm_af33 ; af33 (2:6f33)
 	callba_hli Func_9a41d
 	ld a, $1
 	call Func_bbc8
@@ -1491,7 +1491,7 @@ Func_ae4d:: ; ae4d
 	ld e, $fe
 	ld a, $fe
 	call Func_b60d
-.asm_af68: ; af68 (2:6f68)
+.asm_af68 ; af68 (2:6f68)
 	ld c, $1
 	ld hl, sp+$3
 	reg16swap de, hl
@@ -2316,7 +2316,7 @@ CheckBlackedOut: ; bf4a (2:7f4a)
 	add sp, -$24
 	ld c, $0
 	ld e, $0
-.loop: ; bf50 (2:7f50)
+.loop ; bf50 (2:7f50)
 	ld a, e
 	cp $4
 	jp nc, .check_blackout
@@ -2337,7 +2337,7 @@ CheckBlackedOut: ; bf4a (2:7f4a)
 	jp nz, .continue
 	jp .next
 
-.continue: ; bf7b (2:7f7b)
+.continue ; bf7b (2:7f7b)
 	push bc
 	push de
 	set_farcall_addrs_hli Func_6e1b
@@ -2352,11 +2352,11 @@ CheckBlackedOut: ; bf4a (2:7f4a)
 	or h
 	jp z, .next
 	inc c
-.next: ; bf98 (2:7f98)
+.next ; bf98 (2:7f98)
 	inc e
 	jp .loop
 
-.check_blackout: ; bf9c (2:7f9c)
+.check_blackout ; bf9c (2:7f9c)
 	inc c
 	dec c
 	jp nz, .won
@@ -2365,9 +2365,9 @@ CheckBlackedOut: ; bf4a (2:7f4a)
 	ld a, $1
 	jp .done
 
-.won: ; bfab (2:7fab)
+.won ; bfab (2:7fab)
 	xor a
-.done: ; bfac (2:7fac)
+.done ; bfac (2:7fac)
 	add sp, $24
 	ret
 

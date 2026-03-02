@@ -44,5 +44,5 @@ Func_9f369:
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
 	playmusic SONG_CAVE
-.asm_9f394:
+.asm_9f394
 	ret

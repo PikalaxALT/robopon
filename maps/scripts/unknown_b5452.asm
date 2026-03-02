@@ -38,9 +38,9 @@ Func_b5452:: ; b5452
 	set_frame_script Func_b556c
 	loadwarps $02, Data_b53cc
 	jp .asm_b547d
-.asm_b5475:
+.asm_b5475
 	loadwarps $01, Data_b53c1
-.asm_b547d:
+.asm_b547d
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_b53e2
@@ -56,7 +56,7 @@ Func_b5452:: ; b5452
 	call Func_b5526
 	setevent EVENT_034
 	jp .asm_b551f
-.asm_b54c0:
+.asm_b54c0
 	loadpeople $02, Data_b5436
 	playmusic SONG_TOWER
 	ld a, [wBackupMapGroup]
@@ -80,15 +80,15 @@ Func_b5452:: ; b5452
 	landmarksign TreeBitstreamText_46b7d
 	call Func_b55fd
 	jp .asm_b5513
-.asm_b550a:
+.asm_b550a
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b7d
-.asm_b5513:
+.asm_b5513
 	jp .asm_b551f
-.asm_b5516:
+.asm_b5516
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46b7d
-.asm_b551f:
+.asm_b551f
 	ret
 
 Data_b5520:
@@ -145,18 +145,18 @@ Func_b5576:
 	add a, $05
 	ld [hl], a
 	jp .asm_b55ae
-.asm_b55a6:
+.asm_b55a6
 	ld hl, sp+$01
 	ld a, [wMapY]
 	add a, $03
 	ld [hl], a
-.asm_b55ae:
+.asm_b55ae
 	ld c, $01
 	ld hl, sp+$00
 	reg16swap de, hl
 	ld a, $2d
 	scall MovePlayer
-.asm_b55bb:
+.asm_b55bb
 	pop bc
 	pop bc
 	ret
@@ -176,7 +176,7 @@ Func_b55be:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_08, $0b, $0c
-.asm_b55fc:
+.asm_b55fc
 	ret
 
 Func_b55fd:

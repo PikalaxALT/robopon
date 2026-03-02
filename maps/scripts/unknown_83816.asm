@@ -31,12 +31,12 @@ Func_8384f:
 	jp nc, .asm_8385d
 	ld hl, Data_83843
 	scall Func_80d9b
-.asm_8385d: ; 8385d (20:785d)
+.asm_8385d ; 8385d (20:785d)
 	ld a, [wc78c]
 	cp $5
 	jp nc, .asm_8386b
 	ld hl, Data_83849
 	scall Func_80d9b
-.asm_8386b: ; 8386b (20:786b)
+.asm_8386b ; 8386b (20:786b)
 	scall Func_80f02
 	ret

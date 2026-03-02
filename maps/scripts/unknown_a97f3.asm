@@ -41,5 +41,5 @@ Func_a9819:
 	script_sleep 90
 	scall StopShakingScreen
 	warp_player MAP_24_12, $05, $14
-.asm_a9848:
+.asm_a9848
 	ret

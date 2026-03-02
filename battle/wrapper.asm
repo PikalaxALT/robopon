@@ -30,18 +30,18 @@ StartBattle:: ; bbee (2:7bee)
 	call Func_bb37
 	jp .get_return_value
 
-.won: ; bc5a (2:7c5a)
+.won ; bc5a (2:7c5a)
 	xor a
 	call FadeInMap
-.get_return_value: ; bc5e (2:7c5e)
+.get_return_value ; bc5e (2:7c5e)
 	pop af
 	cp $1
 	jp nz, .return_success
 	xor a
 	jp .quit
 
-.return_success: ; bc68 (2:7c68)
+.return_success ; bc68 (2:7c68)
 	ld a, $1
-.quit: ; bc6a (2:7c6a)
+.quit ; bc6a (2:7c6a)
 	add sp, $20
 	ret

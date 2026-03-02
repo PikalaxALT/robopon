@@ -1900,7 +1900,7 @@ UpdateCurSprite:: ; da839 (36:6839)
 	ld [wOAMEntryCurrentlyBeingUpdated], a
 	ret
 
-.XFlip: ; da89f (36:689f)
+.XFlip ; da89f (36:689f)
 	ld a, c
 	add a
 	add a

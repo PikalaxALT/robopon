@@ -69,13 +69,13 @@ Func_85cde::
 	ld d, b
 	call CompareHLtoDE
 	jp c, .asm_85d1a
-.asm_85d0f: ; 85d0f (21:5d0f)
+.asm_85d0f ; 85d0f (21:5d0f)
 	setevent EVENT_038
 	jp .asm_85d22
 
-.asm_85d1a: ; 85d1a (21:5d1a)
+.asm_85d1a ; 85d1a (21:5d1a)
 	resetevent EVENT_038
-.asm_85d22: ; 85d22 (21:5d22)
+.asm_85d22 ; 85d22 (21:5d22)
 	ld a, $7
 	ld [wc7de], a
 	loadwarps $2, Data_85c82
@@ -96,16 +96,16 @@ Func_85cde::
 	ld [wc7da], a
 	jp .asm_85d6d
 
-.asm_85d69: ; 85d69 (21:5d69)
+.asm_85d69 ; 85d69 (21:5d69)
 	xor a
 	ld [wc7da], a
-.asm_85d6d: ; 85d6d (21:5d6d)
+.asm_85d6d ; 85d6d (21:5d6d)
 	jp .asm_85d7d
 
-.asm_85d70: ; 85d70 (21:5d70)
+.asm_85d70 ; 85d70 (21:5d70)
 	loadpeople $5, Data_85c98
 	playmusic SONG_TOWN3
-.asm_85d7d: ; 85d7d (21:5d7d)
+.asm_85d7d ; 85d7d (21:5d7d)
 	checkevent EVENT_014
 	or a
 	jp nz, .asm_85d97
@@ -115,7 +115,7 @@ Func_85cde::
 	ld de, Data_85c7e
 	ld a, $3
 	scall SetPersonTextPointer
-.asm_85d97: ; 85d97 (21:5d97)
+.asm_85d97 ; 85d97 (21:5d97)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46803
 	pop bc
@@ -152,7 +152,7 @@ Func_85dcd:
 	jp nz, .asm_85e16
 	jp .asm_85e60
 
-.asm_85e16: ; 85e16 (21:5e16)
+.asm_85e16 ; 85e16 (21:5e16)
 	setevent EVENT_06A
 	ld a, [wc797]
 	inc a
@@ -163,24 +163,24 @@ Func_85dcd:
 	writenpctext TreeBitstreamText_3a202
 	jp .asm_85e45
 
-.asm_85e3f: ; 85e3f (21:5e3f)
+.asm_85e3f ; 85e3f (21:5e3f)
 	writenpctext TreeBitstreamText_3a215
-.asm_85e45: ; 85e45 (21:5e45)
+.asm_85e45 ; 85e45 (21:5e45)
 	jp .asm_85e4e
 
-.asm_85e48: ; 85e48 (21:5e48)
+.asm_85e48 ; 85e48 (21:5e48)
 	writenpctext TreeBitstreamText_3a22e
-.asm_85e4e: ; 85e4e (21:5e4e)
+.asm_85e4e ; 85e4e (21:5e4e)
 	jp .asm_85e57
 
-.asm_85e51: ; 85e51 (21:5e51)
+.asm_85e51 ; 85e51 (21:5e51)
 	writenpctext TreeBitstreamText_3a1b9
-.asm_85e57: ; 85e57 (21:5e57)
+.asm_85e57 ; 85e57 (21:5e57)
 	jp .asm_85e60
 
-.asm_85e5a: ; 85e5a (21:5e5a)
+.asm_85e5a ; 85e5a (21:5e5a)
 	writetext TreeBitstreamText_3a27f
-.asm_85e60: ; 85e60 (21:5e60)
+.asm_85e60 ; 85e60 (21:5e60)
 	pop bc
 	ret
 

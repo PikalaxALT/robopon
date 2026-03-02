@@ -39,9 +39,9 @@ Func_a5126:: ; a5126
 	jp nz, .asm_a5163
 	loadpeople $03, Data_a50d2
 	jp .asm_a516b
-.asm_a5163:
+.asm_a5163
 	loadpeople $01, Data_a5118
-.asm_a516b:
+.asm_a516b
 	ld a, $01
 	scall LoadPlayerSprite
 	loadpeople $02, Data_a50fc
@@ -73,14 +73,14 @@ Func_a517c:: ; a517c
 	script_sleep 60
 	writenpctext TreeBitstreamText_46fa5
 	jp .asm_a5223
-.asm_a51d6:
+.asm_a51d6
 	loademote $01, $02, $11
 	scall WaitEmote
 	writenpctext TreeBitstreamText_46f5e
 	script_sleep 60
 	writenpctext TreeBitstreamText_46fa5
 	jp .asm_a5223
-.asm_a51f7:
+.asm_a51f7
 	loademote $01, $02, $11
 	scall WaitEmote
 	script_sleep 60
@@ -89,7 +89,7 @@ Func_a517c:: ; a517c
 	playmusic SONG_NONE
 	playmusic SONG_GYM_LEADER_BATTLE
 	scall WaitEmote
-.asm_a5223:
+.asm_a5223
 	scall HideEmote
 	pop af
 	cp $02
@@ -98,10 +98,10 @@ Func_a517c:: ; a517c
 	writenpctext TreeBitstreamText_46f3e
 	warp_player MAP_23_00, $13, $18
 	jp .asm_a524c
-.asm_a5247:
+.asm_a5247
 	ld a, $01
 	scall Func_80653
-.asm_a524c:
+.asm_a524c
 	ret
 
 Data_a524d:
@@ -133,9 +133,9 @@ Func_a5264:
 	jp nz, .asm_a5289
 	move_player $01, Data_a524d
 	jp .asm_a5293
-.asm_a5289:
+.asm_a5289
 	move_player $01, Data_a5251
-.asm_a5293:
+.asm_a5293
 	move_person 0, Data_a5256, 1
 	scall WaitNPCStep
 	script_sleep 60
@@ -190,7 +190,7 @@ Func_a5264:
 	move_player $01, Data_a5260
 	scall WaitNPCStep
 	warp_player MAP_24_00, $16, $06
-.asm_a5383:
+.asm_a5383
 	pop bc
 	ret
 
@@ -216,9 +216,9 @@ Func_a5398:
 	playsfx SFX_45
 	script_sleep 30
 	warp_player MAP_23_00, $13, $18
-.asm_a53d4:
+.asm_a53d4
 	jp .asm_a53dd
-.asm_a53d7:
+.asm_a53d7
 	writetext TreeBitstreamText_46f8a
-.asm_a53dd:
+.asm_a53dd
 	ret

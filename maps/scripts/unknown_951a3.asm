@@ -39,7 +39,7 @@ Func_951a3:: ; 951a3
 	scall Func_80c94
 	ld a, $11
 	scall Func_80c94
-.asm_951bc:
+.asm_951bc
 	ld a, $08
 	ld [wc789], a
 	ld a, $10
@@ -101,7 +101,7 @@ Func_951e4:
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_95278
-.asm_95262:
+.asm_95262
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_453ee
 	ld e, $03
@@ -109,14 +109,14 @@ Func_951e4:
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_95429
-.asm_95278:
+.asm_95278
 	jp .asm_95284
-.asm_9527b:
+.asm_9527b
 	writetext TreeBitstreamText_45a40
 	jp .asm_95429
-.asm_95284:
+.asm_95284
 	jp .asm_953d4
-.asm_95287:
+.asm_95287
 	ld a, [wc796]
 	cp $0a
 	jp nz, .asm_95319
@@ -157,7 +157,7 @@ Func_951e4:
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_9530a
-.asm_952f4:
+.asm_952f4
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_453ee
 	ld e, $03
@@ -165,14 +165,14 @@ Func_951e4:
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_95429
-.asm_9530a:
+.asm_9530a
 	jp .asm_95316
-.asm_9530d:
+.asm_9530d
 	writetext TreeBitstreamText_45a40
 	jp .asm_95429
-.asm_95316:
+.asm_95316
 	jp .asm_953d4
-.asm_95319:
+.asm_95319
 	ld a, $4a
 	scall Func_80e6d
 	ld hl, sp+$01
@@ -185,7 +185,7 @@ Func_951e4:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_953d4
-.asm_95333:
+.asm_95333
 	ld a, [wc796]
 	cp $08
 	jp z, .asm_953bc
@@ -211,35 +211,35 @@ Func_951e4:
 	jp z, .asm_95371
 	cp $01
 	jp nz, .asm_953cb
-.asm_95371:
+.asm_95371
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45acc
 	jp .asm_953d1
-.asm_95380:
+.asm_95380
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45add
 	jp .asm_953d1
-.asm_9538f:
+.asm_9538f
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aee
 	jp .asm_953d1
-.asm_9539e:
+.asm_9539e
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aff
 	jp .asm_953d1
-.asm_953ad:
+.asm_953ad
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45abb
 	jp .asm_953d1
-.asm_953bc:
+.asm_953bc
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b20
 	jp .asm_953d1
-.asm_953cb:
+.asm_953cb
 	writenpctext TreeBitstreamText_45277
-.asm_953d1:
+.asm_953d1
 	jp .asm_95429
-.asm_953d4:
+.asm_953d4
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $ff
@@ -253,22 +253,22 @@ Func_951e4:
 	writenpctext TreeBitstreamText_45277
 	writenpctext TreeBitstreamText_45418
 	jp .asm_95429
-.asm_953fb:
+.asm_953fb
 	ld a, [wc796]
 	cp $0f
 	jp nz, .asm_9540c
 	writenpctext TreeBitstreamText_45277
 	jp .asm_95429
-.asm_9540c:
+.asm_9540c
 	ld a, [wc796]
 	cp $0b
 	jp c, .asm_9541d
 	writenpctext TreeBitstreamText_45511
 	jp .asm_95429
-.asm_9541d:
+.asm_9541d
 	writenpctext TreeBitstreamText_45277
 	writenpctext TreeBitstreamText_452cd
-.asm_95429:
+.asm_95429
 	pop bc
 	pop bc
 	ret
@@ -325,7 +325,7 @@ Func_9542c:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_954fd
-.asm_954aa:
+.asm_954aa
 	ld a, [wc790]
 	or a
 	jp z, .asm_954f4
@@ -345,15 +345,15 @@ Func_9542c:
 	ld a, $01
 	scall PlayerFace
 	warp_player MAP_32_11, $05, $04
-.asm_954f1:
+.asm_954f1
 	jp .asm_954fa
-.asm_954f4:
+.asm_954f4
 	writetext TreeBitstreamText_4714c
-.asm_954fa:
+.asm_954fa
 	jp .asm_95503
-.asm_954fd:
+.asm_954fd
 	writetext TreeBitstreamText_47136
-.asm_95503:
+.asm_95503
 	ret
 
 Func_95504:
@@ -368,7 +368,7 @@ Func_95504:
 	scall HideEmote
 	writetext TreeBitstreamText_46e0b
 	playmusic SONG_0A
-.asm_9552f:
+.asm_9552f
 	ret
 
 Data_95530:
@@ -400,7 +400,7 @@ Func_95540:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_955f5
-.asm_9556d:
+.asm_9556d
 	ld a, [wc790]
 	or a
 	jp z, .asm_955ec
@@ -417,12 +417,12 @@ Func_95540:
 	jp nz, .asm_955ac
 	move_player $01, Data_95530
 	jp .asm_955b6
-.asm_9559f:
+.asm_9559f
 	move_player $01, Data_95534
 	jp .asm_955b6
-.asm_955ac:
+.asm_955ac
 	move_player $01, Data_9553a
-.asm_955b6:
+.asm_955b6
 	scall WaitNPCStep
 	scall WaitNPCStep
 	xor a
@@ -437,15 +437,15 @@ Func_95540:
 	xor a
 	scall PlayerFace
 	warp_player MAP_30_03, $18, $1e
-.asm_955e9:
+.asm_955e9
 	jp .asm_955f2
-.asm_955ec:
+.asm_955ec
 	writetext TreeBitstreamText_470f0
-.asm_955f2:
+.asm_955f2
 	jp .asm_955fb
-.asm_955f5:
+.asm_955f5
 	writetext TreeBitstreamText_470d8
-.asm_955fb:
+.asm_955fb
 	ret
 
 Func_955fc:
@@ -473,9 +473,9 @@ Func_955fc:
 	scall Func_80d4d
 	setevent EVENT_10A
 	jp .asm_95655
-.asm_9564f:
+.asm_9564f
 	writetext TreeBitstreamText_47722
-.asm_95655:
+.asm_95655
 	pop bc
 	ret
 
@@ -504,9 +504,9 @@ Func_95657:
 	scall Func_80d4d
 	setevent EVENT_10B
 	jp .asm_956b0
-.asm_956aa:
+.asm_956aa
 	writetext TreeBitstreamText_47780
-.asm_956b0:
+.asm_956b0
 	pop bc
 	ret
 
@@ -535,9 +535,9 @@ Func_956b2:
 	scall Func_80d4d
 	setevent EVENT_10C
 	jp .asm_9570b
-.asm_95705:
+.asm_95705
 	writetext TreeBitstreamText_478bb
-.asm_9570b:
+.asm_9570b
 	pop bc
 	ret
 
@@ -566,8 +566,8 @@ Func_9570d:
 	scall Func_80d4d
 	setevent EVENT_10D
 	jp .asm_95766
-.asm_95760:
+.asm_95760
 	writetext TreeBitstreamText_47943
-.asm_95766:
+.asm_95766
 	pop bc
 	ret

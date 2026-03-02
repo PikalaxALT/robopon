@@ -40,7 +40,7 @@ Func_cb8d6:: ; cb8d6
 	or a
 	jp nz, .asm_cb905
 	loadpeople $03, Data_cb8ac
-.asm_cb905:
+.asm_cb905
 	playmusic SONG_TOWN2
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46aeb
@@ -68,14 +68,14 @@ Func_cb91e:
 	jp nz, .asm_cb94d
 	move_player $01, Data_cb914
 	jp .asm_cb95d
-.asm_cb94d:
+.asm_cb94d
 	move_player $01, Data_cb91a
 	sprite_face $02, 0
-.asm_cb95d:
+.asm_cb95d
 	call Func_cb99c
 	playmusic SONG_NONE
 	playmusic SONG_TOWN2
-.asm_cb969:
+.asm_cb969
 	pop bc
 	ret
 
@@ -97,7 +97,7 @@ Func_cb99c:
 	or a
 	jp nz, .asm_cb9b0
 	ret
-.asm_cb9b0:
+.asm_cb9b0
 	writetext TreeBitstreamText_3ca00
 	setevent EVENT_0AE
 	ld a, [wPlayerFacing]
@@ -105,9 +105,9 @@ Func_cb99c:
 	jp nz, .asm_cb9d2
 	move_person 0, Data_cb96b, 1
 	jp .asm_cb9db
-.asm_cb9d2:
+.asm_cb9d2
 	move_person 0, Data_cb96f, 1
-.asm_cb9db:
+.asm_cb9db
 	scall WaitNPCStep
 	hideperson 0
 	ret

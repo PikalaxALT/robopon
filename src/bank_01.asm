@@ -126,7 +126,7 @@ FillToStackBottomWithWillTestString: ; 40cb (1:40cb)
 	jr nz, .loop
 	ret
 
-.WillTestString:
+.WillTestString
 	dstr "WILL TEST"
 
 Func_40f4: ; 40f4 (1:40f4)
@@ -141,7 +141,7 @@ Func_40f4: ; 40f4 (1:40f4)
 	jr nz, .asm_40fb
 	ret
 
-.PushOAM:
+.PushOAM
 	ld a, $c4
 	ldh [rDMA], a
 	ld a, $28
@@ -1864,7 +1864,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	jp .asm_6e0d
 
-.asm_6c15: ; 6c15 (1:6c15)
+.asm_6c15 ; 6c15 (1:6c15)
 IF DEF(LANG_JP)
 	macro_6b94 $14
 ELIF DEF(LANG_EN)
@@ -1872,7 +1872,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	jp .asm_6e0d
 
-.asm_6c53: ; 6c53 (1:6c53)
+.asm_6c53 ; 6c53 (1:6c53)
 IF DEF(LANG_JP)
 	macro_6b94 $18
 ELIF DEF(LANG_EN)
@@ -1880,14 +1880,14 @@ ELIF DEF(LANG_EN)
 ENDC
 	jp .asm_6e0d
 
-.asm_6c91: ; 6c91 (1:6c91)
+.asm_6c91 ; 6c91 (1:6c91)
 	read_hl_from_sp_plus $28
 	ld e, l
 	ld hl, sp+$18
 	ld [hl], e
 	jp .asm_6e0d
 
-.asm_6c9c: ; 6c9c (1:6c9c)
+.asm_6c9c ; 6c9c (1:6c9c)
 IF DEF(LANG_JP)
 	macro_6b94 $12
 ELIF DEF(LANG_EN)
@@ -1895,7 +1895,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	jp .asm_6e0d
 
-.asm_6cda: ; 6cda (1:6cda)
+.asm_6cda ; 6cda (1:6cda)
 IF DEF(LANG_JP)
 	macro_6b94 $16
 ELIF DEF(LANG_EN)
@@ -1903,7 +1903,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	jp .asm_6e0d
 
-.asm_6d18: ; 6d18 (1:6d18)
+.asm_6d18 ; 6d18 (1:6d18)
 IF DEF(LANG_JP)
 	macro_6b94 $1b
 ELIF DEF(LANG_EN)
@@ -1911,7 +1911,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	jp .asm_6e0d
 
-.asm_6d56: ; 6d56 (1:6d56)
+.asm_6d56 ; 6d56 (1:6d56)
 IF DEF(LANG_JP)
 	macro_6b94 $1d
 ELIF DEF(LANG_EN)
@@ -1919,7 +1919,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	jp .asm_6e0d
 
-.asm_6d94: ; 6d94 (1:6d94)
+.asm_6d94 ; 6d94 (1:6d94)
 IF DEF(LANG_JP)
 	macro_6b94 $1f
 ELIF DEF(LANG_EN)
@@ -1927,13 +1927,13 @@ ELIF DEF(LANG_EN)
 ENDC
 	jp .asm_6e0d
 
-.asm_6dd2: ; 6dd2 (1:6dd2)
+.asm_6dd2 ; 6dd2 (1:6dd2)
 IF DEF(LANG_JP)
 	macro_6b94 $21
 ELIF DEF(LANG_EN)
 	macro_6b94 $22
 ENDC
-.asm_6e0d: ; 6e0d (1:6e0d)
+.asm_6e0d ; 6e0d (1:6e0d)
 	pop hl
 	ld a, l
 	ld hl, sp+$0
@@ -2165,7 +2165,11 @@ Func_6fb7: ; 6fb7 (1:6fb7)
 	jp Func_6f7b
 
 Data_6fc1: ; 6fc1
+IF DEF(LANG_JP)
 	dstr "(つうしん まち)"
+ELIF DEF(LANG_EN)
+	dstr "Please Wait"
+ENDC
 
 Func_6fcb: ; 6fcb (1:6fcb)
 	reg16swap de, hl
@@ -2173,7 +2177,11 @@ Func_6fcb: ; 6fcb (1:6fcb)
 	jp Func_6f7b
 
 Data_6fd5: ; 6fd5
+IF DEF(LANG_JP)
 	dstr "(つうしん )エラー"
+ELIF DEF(LANG_EN)
+	dstr "Unable to connect!"
+ENDC
 
 Func_6fe0:: ; 6fe0
 	push bc
@@ -2207,7 +2215,7 @@ Func_6fe0:: ; 6fe0
 	ld b, h
 	pop hl
 	pop de
-Func_701d: ; 701d (1:701d)
+.asm_701d ; 701d (1:701d)
 	push hl
 	push bc
 	push de
@@ -2215,20 +2223,20 @@ Func_701d: ; 701d (1:701d)
 	xor a
 	ld [wTimerCounter + 1], a
 	pop de
-Func_7028: ; 7028 (1:7028)
+.asm_7028 ; 7028 (1:7028)
 	inc e
 	dec e
-	jp nz, Func_711e
+	jp nz, .asm_711e
 	ld a, [wTimerCounter + 1]
 	cp $2
-	jp c, Func_7038
-	jp Func_711e
+	jp c, .asm_7038
+	jp .asm_711e
 
-Func_7038: ; 7038 (1:7038)
+.asm_7038 ; 7038 (1:7038)
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
-	jp nz, Func_70bc
+	jp nz, .asm_70bc
 	xor a
 	ld [wc31a], a
 	ld a, $dd
@@ -2237,59 +2245,59 @@ Func_7038: ; 7038 (1:7038)
 	ld [wc31d], a
 	ld a, [wTextBlinkerFrameCounter]
 	ld l, a
-Func_7051: ; 7051 (1:7051)
+.asm_7051 ; 7051 (1:7051)
 	ld a, [wTextBlinkerFrameCounter]
 	xor l
 	and $2
-	jp nz, Func_7061
+	jp nz, .asm_7061
 	ld a, [wc31a]
 	or a
-	jp z, Func_7051
-Func_7061: ; 7061 (1:7061)
+	jp z, .asm_7051
+.asm_7061 ; 7061 (1:7061)
 	ld a, [wc31a]
 	or a
-	jp nz, Func_7090
+	jp nz, .asm_7090
 	push de
 	set_farcall_addrs_hli RandomRange
 	ld a, $64
 	call FarCall
 	cp $46
-	jp nc, Func_708c
+	jp nc, .asm_708c
 	ld a, $fe
 	ld [wc31b], a
 	ld a, $1
 	ld [wc31d], a
 	ld hl, sp+$6
 	ld [hl], $1
-Func_708c: ; 708c (1:708c)
+.asm_708c ; 708c (1:708c)
 	pop de
-	jp Func_70b9
+	jp .asm_70b9
 
-Func_7090: ; 7090 (1:7090)
+.asm_7090 ; 7090 (1:7090)
 	xor a
 	ld [wc31a], a
 	ld a, [wTextBlinkerFrameCounter]
 	ld l, a
-Func_7098: ; 7098 (1:7098)
+.asm_7098 ; 7098 (1:7098)
 	ld a, [wTextBlinkerFrameCounter]
 	xor l
 	and $2
-	jp nz, Func_70a8
+	jp nz, .asm_70a8
 	ld a, [wc31a]
 	or a
-	jp z, Func_7098
-Func_70a8: ; 70a8 (1:70a8)
+	jp z, .asm_7098
+.asm_70a8 ; 70a8 (1:70a8)
 	ld a, [wc31c]
 	cp $fe
-	jp nz, Func_70b9
+	jp nz, .asm_70b9
 	ld a, [wc31a]
 	or a
-	jp z, Func_70b9
+	jp z, .asm_70b9
 	ld e, $80
-Func_70b9: ; 70b9 (1:70b9)
-	jp Func_711b
+.asm_70b9 ; 70b9 (1:70b9)
+	jp .asm_711b
 
-Func_70bc: ; 70bc (1:70bc)
+.asm_70bc ; 70bc (1:70bc)
 	push de
 	xor a
 	ld [wc31a], a
@@ -2300,14 +2308,14 @@ Func_70bc: ; 70bc (1:70bc)
 	ld a, $81
 	ldh [rSC], a
 	ld l, $0
-Func_70d1: ; 70d1 (1:70d1)
+.asm_70d1 ; 70d1 (1:70d1)
 	ld a, l
 	cp $3
-	jp nc, Func_70fa
-Func_70d7: ; 70d7 (1:70d7)
+	jp nc, .asm_70fa
+.asm_70d7 ; 70d7 (1:70d7)
 	ld a, [wc31a]
 	or a
-	jp z, Func_70d7
+	jp z, .asm_70d7
 	push hl
 	xor a
 	ld [wc31a], a
@@ -2317,40 +2325,40 @@ Func_70d7: ; 70d7 (1:70d7)
 	pop hl
 	ld a, [wc31c]
 	cp $dd
-	jp z, Func_70f6
-	jp Func_70fa
+	jp z, .asm_70f6
+	jp .asm_70fa
 
-Func_70f6: ; 70f6 (1:70f6)
+.asm_70f6 ; 70f6 (1:70f6)
 	inc l
-	jp Func_70d1
+	jp .asm_70d1
 
-Func_70fa: ; 70fa (1:70fa)
+.asm_70fa ; 70fa (1:70fa)
 	pop de
 	ld a, l
 	cp $3
-	jp c, Func_710e
+	jp c, .asm_710e
 	ld a, [wc31c]
 	cp $dd
-	jp nz, Func_710e
+	jp nz, .asm_710e
 	ld e, $81
-	jp Func_711b
+	jp .asm_711b
 
-Func_710e: ; 710e (1:710e)
+.asm_710e ; 710e (1:710e)
 	ld a, $dd
 	ld [wc31b], a
 	xor a
 	ld [wc31d], a
 	ld hl, sp+$4
 	ld [hl], $0
-Func_711b: ; 711b (1:711b)
-	jp Func_7028
+.asm_711b ; 711b (1:711b)
+	jp .asm_7028
 
-Func_711e: ; 711e (1:711e)
+.asm_711e ; 711e (1:711e)
 	pop bc
 	pop hl
 	inc e
 	dec e
-	jp nz, Func_7161
+	jp nz, .asm_7161
 	push hl
 	xor a
 	ld [wc31a], a
@@ -2360,18 +2368,18 @@ Func_711e: ; 711e (1:711e)
 	ld [wc31d], a
 	ld a, $81
 	ldh [rSC], a
-Func_7137: ; 7137 (1:7137)
+.asm_7137 ; 7137 (1:7137)
 	ld a, [wc31a]
 	or a
-	jp z, Func_7137
+	jp z, .asm_7137
 	ld a, $81
 	ldh [rSC], a
 	xor a
 	ld [wc31a], a
-Func_7146: ; 7146 (1:7146)
+.asm_7146 ; 7146 (1:7146)
 	ld a, [wc31a]
 	or a
-	jp z, Func_7146
+	jp z, .asm_7146
 	ld a, $1
 	ld [wc39e], a
 	ld l, c
@@ -2381,24 +2389,24 @@ Func_7146: ; 7146 (1:7146)
 	ld a, l
 	call GetSRAMBank
 	ld a, $ff
-	jp Func_71ee
+	jp .asm_71ee
 
-Func_7161: ; 7161 (1:7161)
+.asm_7161 ; 7161 (1:7161)
 	ld a, e
 	cp $81
-	jp nz, Func_71a7
+	jp nz, .asm_71a7
 	push hl
 	push de
 	push bc
 	ld l, $0
-Func_716c: ; 716c (1:716c)
+.asm_716c ; 716c (1:716c)
 	ld a, l
 	cp $f
-	jp nc, Func_718a
-Func_7172: ; 7172 (1:7172)
+	jp nc, .asm_718a
+.asm_7172 ; 7172 (1:7172)
 	ld a, [wc31a]
 	or a
-	jp z, Func_7172
+	jp z, .asm_7172
 	push hl
 	xor a
 	ld [wc31a], a
@@ -2407,18 +2415,18 @@ Func_7172: ; 7172 (1:7172)
 	ldh [rSC], a
 	pop hl
 	inc l
-	jp Func_716c
+	jp .asm_716c
 
-Func_718a: ; 718a (1:718a)
+.asm_718a ; 718a (1:718a)
 	pop bc
 	pop de
 	pop hl
 	ld a, [wc31c]
 	cp $dd
-	jp z, Func_7198
-	jp Func_701d
+	jp z, .asm_7198
+	jp .asm_701d
 
-Func_7198: ; 7198 (1:7198)
+.asm_7198 ; 7198 (1:7198)
 	push hl
 	ld a, $81
 	ld [wc319], a
@@ -2426,41 +2434,41 @@ Func_7198: ; 7198 (1:7198)
 	ld h, b
 	call Func_2887
 	pop hl
-	jp Func_71e4
+	jp .asm_71e4
 
-Func_71a7: ; 71a7 (1:71a7)
+.asm_71a7 ; 71a7 (1:71a7)
 	push hl
 	push de
 	xor a
 	ld [wc31a], a
 	ld e, $0
-Func_71af: ; 71af (1:71af)
+.asm_71af ; 71af (1:71af)
 	ld a, e
 .asm_71b0
 	cp $f
-	jp nc, Func_71c4
+	jp nc, .asm_71c4
 	ld a, [wTextBlinkerFrameCounter]
 	ld l, a
-Func_71b9: ; 71b9 (1:71b9)
+.asm_71b9 ; 71b9 (1:71b9)
 	ld a, [wTextBlinkerFrameCounter]
 	cp l
-	jp z, Func_71b9
+	jp z, .asm_71b9
 	inc e
-	jp Func_71af
+	jp .asm_71af
 
-Func_71c4: ; 71c4 (1:71c4)
+.asm_71c4 ; 71c4 (1:71c4)
 	pop de
 	pop hl
 	ld a, [wc31c]
 	cp $fe
-	jp nz, Func_71d5
+	jp nz, .asm_71d5
 	ld a, [wc31a]
 	or a
-	jp nz, Func_71d8
-Func_71d5: ; 71d5 (1:71d5)
-	jp Func_701d
+	jp nz, .asm_71d8
+.asm_71d5 ; 71d5 (1:71d5)
+	jp .asm_701d
 
-Func_71d8: ; 71d8 (1:71d8)
+.asm_71d8 ; 71d8 (1:71d8)
 	push hl
 	ld a, $80
 	ld [wc319], a
@@ -2468,18 +2476,22 @@ Func_71d8: ; 71d8 (1:71d8)
 	ld h, b
 	call Func_2887
 	pop hl
-Func_71e4: ; 71e4 (1:71e4)
+.asm_71e4 ; 71e4 (1:71e4)
 	ld a, l
 	call GetSRAMBank
 	ld a, $1
 	ld [wc39e], a
 	xor a
-Func_71ee: ; 71ee (1:71ee)
+.asm_71ee ; 71ee (1:71ee)
 	pop bc
 	ret
 
 Data_71f0: ; 71f0
+IF DEF(LANG_JP)
 	dstr "(せつそﾞくちゅう)"
+ELIF DEF(LANG_EN)
+	dstr "Waiting..."
+ENDC
 
 Func_71fb: ; 71fb (1:71fb)
 	push af
@@ -3067,6 +3079,12 @@ Func_75e8: ; 75e8
 Func_760c: ; 760c (1:760c)
 	call NextOverworldFrame
 	call NextOverworldFrame
+IF DEF(LANG_EN)
+	call NextOverworldFrame
+	call NextOverworldFrame
+	call NextOverworldFrame
+	call NextOverworldFrame
+ENDC
 	xor a
 	pop bc
 	pop bc
@@ -3258,6 +3276,12 @@ Func_7726: ; 7726 (1:7726)
 Func_773c: ; 773c (1:773c)
 	call NextOverworldFrame
 	call NextOverworldFrame
+IF DEF(LANG_EN)
+	call NextOverworldFrame
+	call NextOverworldFrame
+	call NextOverworldFrame
+	call NextOverworldFrame
+ENDC
 	xor a
 	pop bc
 	pop bc
@@ -3304,7 +3328,11 @@ Func_777d: ; 777d (1:777d)
 	ret
 
 Data_7784: ; 7784
+IF DEF(LANG_JP)
 	dstr "ROBOPON IR TAKANORI"
+ELIF DEF(LANG_EN)
+	dstr "USROBO IR T.O"
+ENDC
 
 Func_7798: ; 7798 (1:7798)
 	push hl
@@ -3602,114 +3630,117 @@ Func_7987: ; 7987 (1:7987)
 INCLUDE "engine/validate_save.asm"
 
 Func_7b0d:: ; 7b0d
+IF DEF(LANG_JP)
 	push hl
 	push bc
 	ld hl, sp+$1
 	ld [hl], $0
-Func_7b13: ; 7b13 (1:7b13)
+ENDC
+.asm_7b13 ; 7b13 (1:7b13)
 	ld a, [de]
 	or a
-	jp z, Func_7bc4
+	jp z, .asm_7bc4
 	ld a, [de]
 	inc de
+IF DEF(LANG_JP)
 	ld hl, sp+$0
 	ld [hl], a
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $28
-	jp z, Func_7b2d
+	jp z, .asm_7b2d
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $29
-	jp nz, Func_7b38
-Func_7b2d: ; 7b2d (1:7b2d)
+	jp nz, .asm_7b38
+.asm_7b2d ; 7b2d (1:7b2d)
 	ld hl, sp+$1
 	ld a, [hl]
 	xor $1
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_7bc1
+	jp .asm_7bc1
 
-Func_7b38: ; 7b38 (1:7b38)
+.asm_7b38 ; 7b38 (1:7b38)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $30
-	jp c, Func_7b4d
+	jp c, .asm_7b4d
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $3a
-	jp nc, Func_7b4d
+	jp nc, .asm_7b4d
 	ld c, $0
-	jp Func_7b98
+	jp .asm_7b98
 
-Func_7b4d: ; 7b4d (1:7b4d)
+.asm_7b4d ; 7b4d (1:7b4d)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $b0
-	jp nz, Func_7b5a
+	jp nz, .asm_7b5a
 	ld c, $0
-	jp Func_7b98
+	jp .asm_7b98
 
-Func_7b5a: ; 7b5a (1:7b5a)
+.asm_7b5a ; 7b5a (1:7b5a)
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
-	jp nz, Func_7b7e
+	jp nz, .asm_7b7e
 	ld a, [de]
 	cp $de
-	jp nz, Func_7b6d
+	jp nz, .asm_7b6d
 	ld c, $c0
 	inc de
-	jp Func_7b7b
+	jp .asm_7b7b
 
-Func_7b6d: ; 7b6d (1:7b6d)
+.asm_7b6d ; 7b6d (1:7b6d)
 	ld a, [de]
 	cp $df
-	jp nz, Func_7b79
+	jp nz, .asm_7b79
 	inc de
 	ld c, $d4
-	jp Func_7b7b
+	jp .asm_7b7b
 
-Func_7b79: ; 7b79 (1:7b79)
+.asm_7b79 ; 7b79 (1:7b79)
 	ld c, $44
-Func_7b7b: ; 7b7b (1:7b7b)
-	jp Func_7b98
+.asm_7b7b ; 7b7b (1:7b7b)
+	jp .asm_7b98
 
-Func_7b7e: ; 7b7e (1:7b7e)
+.asm_7b7e ; 7b7e (1:7b7e)
 	ld a, [de]
 	cp $de
-	jp nz, Func_7b8a
+	jp nz, .asm_7b8a
 	ld c, $a0
 	inc de
-	jp Func_7b98
+	jp .asm_7b98
 
-Func_7b8a: ; 7b8a (1:7b8a)
+.asm_7b8a ; 7b8a (1:7b8a)
 	ld a, [de]
 	cp $df
-	jp nz, Func_7b96
+	jp nz, .asm_7b96
 	inc de
 	ld c, $b4
-	jp Func_7b98
+	jp .asm_7b98
 
-Func_7b96: ; 7b96 (1:7b96)
+.asm_7b96 ; 7b96 (1:7b96)
 	ld c, $a
-Func_7b98: ; 7b98 (1:7b98)
+.asm_7b98 ; 7b98 (1:7b98)
 	push de
 	ld e, c
 	ld d, $0
 	ld hl, PoncotNameCharacters
 	add hl, de
 	reg16swap de, hl
-Func_7ba4: ; 7ba4 (1:7ba4)
+.asm_7ba4 ; 7ba4 (1:7ba4)
 	ld a, [de]
 	ld hl, sp+$2
 	cp [hl]
-	jp z, Func_7bb0
+	jp z, .asm_7bb0
 	inc de
 	inc c
-	jp Func_7ba4
+	jp .asm_7ba4
 
-Func_7bb0: ; 7bb0 (1:7bb0)
+.asm_7bb0 ; 7bb0 (1:7bb0)
 	ld a, c
 	inc a
 	ld hl, sp+$2
@@ -3721,14 +3752,23 @@ Func_7bb0: ; 7bb0 (1:7bb0)
 	inc hl
 	call WriteHLToSPPlus6
 	pop de
-Func_7bc1: ; 7bc1 (1:7bc1)
-	jp Func_7b13
+.asm_7bc1 ; 7bc1 (1:7bc1)
+ELIF DEF(LANG_EN)
+	ld [hl], a
+	inc hl
+ENDC
+	jp .asm_7b13
 
-Func_7bc4: ; 7bc4 (1:7bc4)
+.asm_7bc4 ; 7bc4 (1:7bc4)
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus4
 	ld [hl], $0
 	pop bc
 	pop bc
+ELIF DEF(LANG_EN)
+	xor a
+	ld [hl],a
+ENDC
 	ret
 
 Func_7bcc: ; 7bcc (1:7bcc)
@@ -3911,7 +3951,7 @@ Func_7cdf: ; 7cdf (1:7cdf)
 Func_7ceb: ; 7ceb (1:7ceb)
 	push hl
 	inc c
-	ld hl, $1c
+	ld hl, warehouseRobot_SIZEOF
 	add hl, de
 	reg16swap de, hl
 	pop hl
@@ -3943,7 +3983,7 @@ Func_7d0e: ; 7d0e (1:7d0e)
 
 Func_7d1c: ; 7d1c (1:7d1c)
 	inc c
-	ld hl, $1c
+	ld hl, warehouseRobot_SIZEOF
 	add hl, de
 	reg16swap de, hl
 	jp Func_7d0e
@@ -3970,16 +4010,12 @@ Func_7d39:: ; 7d39
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+IF DEF(LANG_JP)
+	mulhlby28
+ELIF DEF(LANG_EN)
+	ld de, 29
+	call MultiplyHLbyDE
+ENDC
 	ld de, sWarehouse
 	add hl, de
 	ld a, $2
@@ -4002,46 +4038,34 @@ Func_7d39:: ; 7d39
 	ld a, h
 	sbc d
 	ld h, a
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+IF DEF(LANG_JP)
+	mulhlby28
+ELIF DEF(LANG_EN)
+	ld de, 29
+	call MultiplyHLbyDE
+ENDC
 	push hl
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ld de, sWarehouse + 28
+IF DEF(LANG_JP)
+	mulhlby28
+ELIF DEF(LANG_EN)
+	ld de, 29
+	call MultiplyHLbyDE
+ENDC
+	ld de, sWarehouse + warehouseRobot_SIZEOF
 	add hl, de
 	push hl
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+IF DEF(LANG_JP)
+	mulhlby28
+ELIF DEF(LANG_EN)
+	ld de, 29
+	call MultiplyHLbyDE
+ENDC
 	ld de, sWarehouse
 	add hl, de
 	pop de
@@ -4049,7 +4073,7 @@ Func_7d39:: ; 7d39
 	call CopyFromDEtoHL
 Func_7da6: ; 7da6 (1:7da6)
 	xor a
-	ld [sWarehouseEnd - 28], a
+	ld [sWarehouseEnd - warehouseRobot_SIZEOF], a
 	pop af
 	call GetSRAMBank
 	pop bc
@@ -4073,16 +4097,12 @@ Func_7db0:: ; 7db0 (1:7db0)
 	push hl
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+IF DEF(LANG_JP)
+	mulhlby28
+ELIF DEF(LANG_EN)
+	ld de, 29
+	call MultiplyHLbyDE
+ENDC
 	ld de, sWarehouse
 	add hl, de
 	push hl
@@ -4112,16 +4132,12 @@ GetRobotFromWarehouse:: ; 7dfc (1:7dfc)
 	push hl
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+IF DEF(LANG_JP)
+	mulhlby28
+ELIF DEF(LANG_EN)
+	ld de, 29
+	call MultiplyHLbyDE
+ENDC
 	ld de, sWarehouse
 	add hl, de
 	ld c, l

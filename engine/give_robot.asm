@@ -104,7 +104,7 @@ GiveRobot:: ; 31af1
 	xor a
 	call FarCall
 	ld a, $1
-.quit: ; 31bb9 (c:5bb9)
+.quit ; 31bb9 (c:5bb9)
 	pop bc
 	pop bc
 	pop bc

@@ -45,7 +45,7 @@ Func_b52d3:: ; b52d3
 	or a
 	jp nz, .asm_b5307
 	loadpeople $01, Data_b52c5
-.asm_b5307:
+.asm_b5307
 	playmusic SONG_0A
 	ld a, $04
 	scall LoadPlayerSprite

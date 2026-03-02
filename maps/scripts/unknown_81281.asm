@@ -116,7 +116,7 @@ Func_81281::
 	ld a, [wc793]
 	cp $3
 	jp nz, .asm_813ff
-.asm_812c9: ; 812c9 (20:52c9)
+.asm_812c9 ; 812c9 (20:52c9)
 	checkevent EVENT_00C
 	or a
 	jp nz, .asm_812ec
@@ -126,14 +126,14 @@ Func_81281::
 	setevent EVENT_00C
 	jp .asm_813fc
 
-.asm_812ec: ; 812ec (20:52ec)
+.asm_812ec ; 812ec (20:52ec)
 	checkevent EVENT_002
 	or a
 	jp z, .asm_81300
 	checkevent EVENT_003
 	or a
 	jp nz, .asm_8137b
-.asm_81300: ; 81300 (20:5300)
+.asm_81300 ; 81300 (20:5300)
 	loadpeople $6, Data_81169
 	checkevent EVENT_002
 	cp $1
@@ -145,11 +145,11 @@ Func_81281::
 	hideperson $2
 	jp .asm_81334
 
-.asm_8132e: ; 8132e (20:532e)
+.asm_8132e ; 8132e (20:532e)
 	sprite_face $2, 0
-.asm_81334: ; 81334 (20:5334)
+.asm_81334 ; 81334 (20:5334)
 	hideperson $1
-.asm_8133b: ; 8133b (20:533b)
+.asm_8133b ; 8133b (20:533b)
 	checkevent EVENT_003
 	cp $1
 	jp nz, .asm_8137b
@@ -159,16 +159,16 @@ Func_81281::
 	checkevent EVENT_002
 	cp $1
 	jp nz, .asm_8136d
-.asm_8135c: ; 8135c (20:535c)
+.asm_8135c ; 8135c (20:535c)
 	hideperson $3
 	hideperson $5
 	jp .asm_81374
 
-.asm_8136d: ; 8136d (20:536d)
+.asm_8136d ; 8136d (20:536d)
 	sprite_face $3, $3
-.asm_81374: ; 81374 (20:5374)
+.asm_81374 ; 81374 (20:5374)
 	hideperson $4
-.asm_8137b: ; 8137b (20:537b)
+.asm_8137b ; 8137b (20:537b)
 	loadpeople $6, Data_811bd
 	checkevent EVENT_021
 	cp $1
@@ -186,12 +186,12 @@ Func_81281::
 	ld de, Data_8113b
 	ld a, $7
 	scall SetPersonTextPointer
-.asm_813b7: ; 813b7 (20:53b7)
+.asm_813b7 ; 813b7 (20:53b7)
 	jp .asm_813c2
 
-.asm_813ba: ; 813ba (20:53ba)
+.asm_813ba ; 813ba (20:53ba)
 	loadpeople $2, Data_81211
-.asm_813c2: ; 813c2 (20:53c2)
+.asm_813c2 ; 813c2 (20:53c2)
 	ld a, [wc790]
 	or a
 	jp z, .asm_813ec
@@ -205,17 +205,17 @@ Func_81281::
 	loadpeople $1, Data_81273
 	jp .asm_813f4
 
-.asm_813ec: ; 813ec (20:53ec)
+.asm_813ec ; 813ec (20:53ec)
 	loadpeople $1, Data_81265
-.asm_813f4: ; 813f4 (20:53f4)
+.asm_813f4 ; 813f4 (20:53f4)
 	playmusic SONG_TOWN1
 	scall Func_8001c
-.asm_813fc: ; 813fc (20:53fc)
+.asm_813fc ; 813fc (20:53fc)
 	jp .asm_81402
 
-.asm_813ff: ; 813ff (20:53ff)
+.asm_813ff ; 813ff (20:53ff)
 	scall Func_8001c
-.asm_81402: ; 81402 (20:5402)
+.asm_81402 ; 81402 (20:5402)
 	ret
 
 Data_81403:
@@ -250,7 +250,7 @@ Func_81427: ; 81427 (20:5427)
 	scall Func_80f02
 	jp .asm_81490
 
-.asm_81449: ; 81449 (20:5449)
+.asm_81449 ; 81449 (20:5449)
 	ld a, [wc78c]
 	cp $a
 	jp c, .asm_8146b
@@ -264,7 +264,7 @@ Func_81427: ; 81427 (20:5427)
 	scall Func_80f02
 	jp .asm_81490
 
-.asm_8146b: ; 8146b (20:546b)
+.asm_8146b ; 8146b (20:546b)
 	ld a, [wc78c]
 	cp $f
 	jp c, .asm_81490
@@ -278,7 +278,7 @@ Func_81427: ; 81427 (20:5427)
 	ld hl, Data_81403
 	scall Func_80d9b
 	scall Func_80f02
-.asm_81490: ; 81490 (20:5490)
+.asm_81490 ; 81490 (20:5490)
 	ld a, [wc790]
 	or a
 	jp z, .asm_814a8
@@ -288,7 +288,7 @@ Func_81427: ; 81427 (20:5427)
 	ld hl, Data_81421
 	scall Func_80d9b
 	scall Func_80f02
-.asm_814a8: ; 814a8 (20:54a8)
+.asm_814a8 ; 814a8 (20:54a8)
 	ret
 
 Data_814a9:
@@ -392,9 +392,9 @@ Func_81607:
 	move_player $0, Data_815f9
 	jp .asm_81635
 
-.asm_8162b: ; 8162b (20:562b)
+.asm_8162b ; 8162b (20:562b)
 	move_player $0, Data_815ff
-.asm_81635: ; 81635 (20:5635)
+.asm_81635 ; 81635 (20:5635)
 	xor a
 	scall PlayerFace
 	ld a, $a
@@ -432,13 +432,13 @@ Func_81607:
 	writenpctext TreeBitstreamText_3976c
 	jp .asm_816cf
 
-.asm_816cc: ; 816cc (20:56cc)
+.asm_816cc ; 816cc (20:56cc)
 	call Func_8172f
-.asm_816cf: ; 816cf (20:56cf)
+.asm_816cf ; 816cf (20:56cf)
 	setevent EVENT_002
 	jp .asm_81701
 
-.asm_816da: ; 816da (20:56da)
+.asm_816da ; 816da (20:56da)
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_39718
 	script_sleep 30
@@ -446,19 +446,19 @@ Func_81607:
 	sprite_face FACE_RIGHT, $1
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
-.asm_81701: ; 81701 (20:5701)
+.asm_81701 ; 81701 (20:5701)
 	jp .asm_8171a
 
-.asm_81704: ; 81704 (20:5704)
+.asm_81704 ; 81704 (20:5704)
 	checkevent EVENT_003
 	or a
 	jp nz, .asm_81717
 	writenpctext TreeBitstreamText_397b1
 	jp .asm_8171a
 
-.asm_81717: ; 81717 (20:5717)
+.asm_81717 ; 81717 (20:5717)
 	call Func_8172f
-.asm_8171a: ; 8171a (20:571a)
+.asm_8171a ; 8171a (20:571a)
 	ret
 
 Data_8171b:
@@ -506,10 +506,10 @@ Func_8172f: ; 8172f (20:572f)
 	setevent EVENT_004
 	jp .asm_817d3
 
-.asm_817c9: ; 817c9 (20:57c9)
+.asm_817c9 ; 817c9 (20:57c9)
 	face_player 0
 	writenpctext TreeBitstreamText_399d1
-.asm_817d3: ; 817d3 (20:57d3)
+.asm_817d3 ; 817d3 (20:57d3)
 	ret
 
 Data_817d4:
@@ -558,7 +558,7 @@ Func_81811:
 	jp nz, .asm_8187c
 	jp .asm_81966
 
-.asm_8187c: ; 8187c (20:587c)
+.asm_8187c ; 8187c (20:587c)
 	writenpctext TreeBitstreamText_3985c
 	move_person $4, Data_817fd, 0
 	playsfx SFX_2E
@@ -572,7 +572,7 @@ Func_81811:
 	writenpctext TreeBitstreamText_39889
 	jp .asm_81905
 
-.asm_818b7: ; 818b7 (20:58b7)
+.asm_818b7 ; 818b7 (20:58b7)
 	move_player $1, Data_81801
 	scall WaitNPCStep
 	ld a, $1
@@ -588,11 +588,11 @@ Func_81811:
 	scall WaitNPCStep
 	hideperson $3
 	hideperson 0
-.asm_81905: ; 81905 (20:5905)
+.asm_81905 ; 81905 (20:5905)
 	setevent EVENT_003
 	jp .asm_81938
 
-.asm_81910: ; 81910 (20:5910)
+.asm_81910 ; 81910 (20:5910)
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_39847
 	script_sleep 30
@@ -600,22 +600,22 @@ Func_81811:
 	sprite_face $0, $4
 	playmusic SONG_NONE
 	playmusic SONG_TOWN1
-.asm_81938: ; 81938 (20:5938)
+.asm_81938 ; 81938 (20:5938)
 	jp .asm_81966
 
-.asm_8193b: ; 8193b (20:593b)
+.asm_8193b ; 8193b (20:593b)
 	checkevent EVENT_002
 	or a
 	jp nz, .asm_8194e
 	writenpctext TreeBitstreamText_39889
 	jp .asm_81966
 
-.asm_8194e: ; 8194e (20:594e)
+.asm_8194e ; 8194e (20:594e)
 	writenpctext TreeBitstreamText_398ba
 	writenpctext TreeBitstreamText_398e4
 	writenpctext TreeBitstreamText_39944
 	writenpctext TreeBitstreamText_39953
-.asm_81966: ; 81966 (20:5966)
+.asm_81966 ; 81966 (20:5966)
 	ret
 
 Data_81967:
@@ -640,7 +640,7 @@ Func_81973:
 	move_player $1, Data_8196f
 	scall WaitNPCStep
 	sprite_face $2, 0
-.asm_819aa: ; 819aa (20:59aa)
+.asm_819aa ; 819aa (20:59aa)
 	pop bc
 	ret
 
@@ -663,7 +663,7 @@ Func_819b0:
 	move_player $1, Data_819ac
 	scall WaitNPCStep
 	sprite_face $3, $3
-.asm_819e8: ; 819e8 (20:59e8)
+.asm_819e8 ; 819e8 (20:59e8)
 	pop bc
 	ret
 
@@ -676,7 +676,7 @@ Func_819ea:
 	jp z, .asm_819fb
 	jp .asm_81a21
 
-.asm_819fb: ; 819fb (20:59fb)
+.asm_819fb ; 819fb (20:59fb)
 	warp_player MAP_32_04, $0, $7
 	ld a, $1
 	ld [wSpawnPushX], a
@@ -687,7 +687,7 @@ Func_819ea:
 	ld [wBackupMapX], a
 	ld a, $8
 	ld [wBackupMapY], a
-.asm_81a21: ; 81a21 (20:5a21)
+.asm_81a21 ; 81a21 (20:5a21)
 	ret
 
 Func_81a22:
@@ -699,7 +699,7 @@ Func_81a22:
 	jp z, .asm_81a33
 	jp .asm_81a59
 
-.asm_81a33: ; 81a33 (20:5a33)
+.asm_81a33 ; 81a33 (20:5a33)
 	warp_player MAP_32_04, $0, $7
 	ld a, $1
 	ld [wSpawnPushX], a
@@ -710,7 +710,7 @@ Func_81a22:
 	ld [wBackupMapX], a
 	ld a, $f
 	ld [wBackupMapY], a
-.asm_81a59: ; 81a59 (20:5a59)
+.asm_81a59 ; 81a59 (20:5a59)
 	ret
 
 Func_81a5a:
@@ -719,6 +719,6 @@ Func_81a5a:
 	jp nz, .asm_81a65
 	ld a, $6
 	ld [wc78a], a
-.asm_81a65: ; 81a65 (20:5a65)
+.asm_81a65 ; 81a65 (20:5a65)
 	ret
 

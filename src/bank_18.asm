@@ -2177,7 +2177,7 @@ RobotPicPalettes: ; 61288
 LoadRobotPaletteCGB: ; 612f4
 	push af
 	push de
-.wait0: ; 612f6 (18:52f6)
+.wait0 ; 612f6 (18:52f6)
 	ld a, [wNextVBlankFlags]
 	and $40
 	jp nz, .wait0
@@ -2197,7 +2197,7 @@ LoadRobotPaletteCGB: ; 612f4
 	ld hl, $0
 	write_hl_to wCGB_BGPalsBuffer + 1 * 8 + 6
 	xor a
-.bgpal1_loop: ; 6133b (18:533b)
+.bgpal1_loop ; 6133b (18:533b)
 	cp $2
 	jp nc, .bgpal0
 	ld l, a
@@ -2219,9 +2219,9 @@ LoadRobotPaletteCGB: ; 612f4
 	inc a
 	jp .bgpal1_loop
 
-.bgpal0: ; 6135a (18:535a)
+.bgpal0 ; 6135a (18:535a)
 	xor a
-.bgpal0_loop: ; 6135b (18:535b)
+.bgpal0_loop ; 6135b (18:535b)
 	cp $2
 	jp nc, .bgpal2
 	ld l, a
@@ -2243,9 +2243,9 @@ LoadRobotPaletteCGB: ; 612f4
 	inc a
 	jp .bgpal0_loop
 
-.bgpal2: ; 6137a (18:537a)
+.bgpal2 ; 6137a (18:537a)
 	xor a
-.bgpal2_loop: ; 6137b (18:537b)
+.bgpal2_loop ; 6137b (18:537b)
 	cp $2
 	jp nc, .bgpal3
 	ld hl, sp+$3
@@ -2274,10 +2274,10 @@ LoadRobotPaletteCGB: ; 612f4
 	inc a
 	jp .bgpal2_loop
 
-.bgpal3: ; 613a6 (18:53a6)
+.bgpal3 ; 613a6 (18:53a6)
 	xor a
 	pop de
-.bgpal3_loop: ; 613a8 (18:53a8)
+.bgpal3_loop ; 613a8 (18:53a8)
 	cp $2
 	jp nc, .to_obpals
 	push de
@@ -2307,7 +2307,7 @@ LoadRobotPaletteCGB: ; 612f4
 	pop de
 	jp .bgpal3_loop
 
-.to_obpals: ; 613d3 (18:53d3)
+.to_obpals ; 613d3 (18:53d3)
 	ld bc, $40
 	ld de, wCGB_BGPalsBuffer
 	ld hl, wCGB_OBPalsBuffer
@@ -2319,11 +2319,11 @@ LoadRobotPaletteCGB: ; 612f4
 	ld a, [wNextVBlankFlags]
 	or $40
 	ld [wNextVBlankFlags], a
-.wait: ; 613f2 (18:53f2)
+.wait ; 613f2 (18:53f2)
 	ld a, [wNextVBlankFlags]
 	and $40
 	jp nz, .wait
-.quit: ; 613fa (18:53fa)
+.quit ; 613fa (18:53fa)
 	pop bc
 	ret
 
@@ -4957,7 +4957,7 @@ Func_63141:: ; 63141 (18:7141)
 	xor a
 	ret
 
-.Delay120: ; 63167 (18:7167)
+.Delay120 ; 63167 (18:7167)
 	ld b, 120
 .delayLoop
 	predef DelayFrame

@@ -52,7 +52,7 @@ Func_61612: ; 61612 (18:5612)
 	jp nc, .bc_lessthan_0x98
 .bc_not_in_range_0x98
 	ld bc, $0
-.bc_lessthan_0x98: ; 61630 (18:5630)
+.bc_lessthan_0x98 ; 61630 (18:5630)
 	ld hl, sp+$7
 	ld [hl], $0
 Func_61634: ; 61634 (18:5634)

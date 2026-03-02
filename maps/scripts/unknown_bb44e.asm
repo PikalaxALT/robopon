@@ -87,7 +87,7 @@ Data_bb41e:
 
 Func_bb44e:: ; bb44e
 	ld c, $00
-.asm_bb450:
+.asm_bb450
 	ld a, c
 	cp $0c
 	jp nc, .asm_bb4b8
@@ -149,10 +149,10 @@ Func_bb44e:: ; bb44e
 	ld e, $01
 	scall LoadWarps
 	jp .asm_bb4b8
-.asm_bb4b4:
+.asm_bb4b4
 	inc c
 	jp .asm_bb450
-.asm_bb4b8:
+.asm_bb4b8
 	ld a, [wBackupMapGroup]
 	or a
 	jp nz, .asm_bb4d7
@@ -162,10 +162,10 @@ Func_bb44e:: ; bb44e
 	loadpeople $06, Data_bb3ca
 	playmusic SONG_WORLD_MAP
 	jp .asm_bb4e4
-.asm_bb4d7:
+.asm_bb4d7
 	loadpeople $05, Data_bb384
 	playmusic SONG_CENTER
-.asm_bb4e4:
+.asm_bb4e4
 	scall Func_8001c
 	ret
 
@@ -175,7 +175,7 @@ Func_bb4e8:
 	jp nz, .asm_bb4f4
 	face_player 0
 	scall AskRepairRobots
-.asm_bb4f4:
+.asm_bb4f4
 	ret
 
 Data_bb4f5:
@@ -228,18 +228,18 @@ Func_bb5c2:
 	or a
 	jp nz, .asm_bb603
 	jp .asm_bb6fa
-.asm_bb603:
+.asm_bb603
 	writenpctext TreeBitstreamText_464ff
 	jp .asm_bb6fa
-.asm_bb60c:
+.asm_bb60c
 	writenpctext TreeBitstreamText_464f1
 	jp .asm_bb6fa
-.asm_bb615:
+.asm_bb615
 	writenpctext_yesorno TreeBitstreamText_463d7
 	or a
 	jp nz, .asm_bb646
 	writetext TreeBitstreamText_471a6
-.asm_bb625:
+.asm_bb625
 	ld de, Data_bb700
 	ld hl, Data_bb51e
 	scall Func_803f5
@@ -249,18 +249,18 @@ Func_bb5c2:
 	cp $01
 	jp nz, .asm_bb625
 	jp .asm_bb6fa
-.asm_bb63d:
+.asm_bb63d
 	writenpctext TreeBitstreamText_46480
 	jp .asm_bb6fa
-.asm_bb646:
+.asm_bb646
 	writenpctext TreeBitstreamText_4646b
 	jp .asm_bb6fa
-.asm_bb64f:
+.asm_bb64f
 	writenpctext_yesorno TreeBitstreamText_46218
 	or a
 	jp nz, .asm_bb680
 	writetext TreeBitstreamText_471cf
-.asm_bb65f:
+.asm_bb65f
 	ld de, Data_bb706
 	ld hl, Data_bb547
 	scall Func_802ef
@@ -270,18 +270,18 @@ Func_bb5c2:
 	cp $01
 	jp nz, .asm_bb65f
 	jp .asm_bb6fa
-.asm_bb677:
+.asm_bb677
 	writenpctext TreeBitstreamText_46294
 	jp .asm_bb6fa
-.asm_bb680:
+.asm_bb680
 	writenpctext TreeBitstreamText_46285
 	jp .asm_bb6fa
-.asm_bb689:
+.asm_bb689
 	writenpctext_yesorno TreeBitstreamText_46330
 	or a
 	jp nz, .asm_bb6ba
 	writetext TreeBitstreamText_471bb
-.asm_bb699:
+.asm_bb699
 	ld de, Data_bb70b
 	ld hl, Data_bb570
 	scall Func_80347
@@ -291,18 +291,18 @@ Func_bb5c2:
 	cp $01
 	jp nz, .asm_bb699
 	jp .asm_bb6fa
-.asm_bb6b1:
+.asm_bb6b1
 	writenpctext TreeBitstreamText_463c3
 	jp .asm_bb6fa
-.asm_bb6ba:
+.asm_bb6ba
 	writenpctext TreeBitstreamText_463ad
 	jp .asm_bb6fa
-.asm_bb6c3:
+.asm_bb6c3
 	writenpctext_yesorno TreeBitstreamText_462a0
 	or a
 	jp nz, .asm_bb6f4
 	writetext TreeBitstreamText_47192
-.asm_bb6d3:
+.asm_bb6d3
 	ld de, Data_bb712
 	ld hl, Data_bb599
 	scall Func_8039e
@@ -312,12 +312,12 @@ Func_bb5c2:
 	cp $01
 	jp nz, .asm_bb6d3
 	jp .asm_bb6fa
-.asm_bb6eb:
+.asm_bb6eb
 	writenpctext TreeBitstreamText_46322
 	jp .asm_bb6fa
-.asm_bb6f4:
+.asm_bb6f4
 	writenpctext TreeBitstreamText_4630b
-.asm_bb6fa:
+.asm_bb6fa
 	pop bc
 	ret
 

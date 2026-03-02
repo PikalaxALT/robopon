@@ -219,7 +219,7 @@ Func_b14d: ; b14d (2:714d)
 HandleNPCStep:: ; b150 (2:7150)
 	add sp, -$e
 	xor a
-.loop: ; b153 (2:7153)
+.loop ; b153 (2:7153)
 	cp $2
 	jp nc, .break
 	push af
@@ -242,7 +242,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	jp nz, .active
 	jp .next
 
-.active: ; b17d (2:717d)
+.active ; b17d (2:717d)
 	ld hl, sp+$e
 	ld l, [hl]
 	ld h, $0
@@ -374,7 +374,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	reg16swap de, hl
 	jp .increment_low_bits
 
-.walk_right: ; b25b (2:725b)
+.walk_right ; b25b (2:725b)
 	ld hl, sp+$f
 	ld a, [hl]
 	inc a
@@ -383,7 +383,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	inc de
 	jp .increment_low_bits
 
-.walk_down: ; b266 (2:7266)
+.walk_down ; b266 (2:7266)
 	ld hl, sp+$e
 	ld a, [hl]
 	inc a
@@ -396,14 +396,14 @@ HandleNPCStep:: ; b150 (2:7150)
 	reg16swap de, hl
 	jp .increment_low_bits
 
-.walk_left: ; b27b (2:727b)
+.walk_left ; b27b (2:727b)
 	ld hl, sp+$f
 	ld a, [hl]
 	dec a
 	ld hl, sp+$f
 	ld [hl], a
 	dec de
-.increment_low_bits: ; b283 (2:7283)
+.increment_low_bits ; b283 (2:7283)
 	ld a, [de]
 	inc a
 	and $7
@@ -426,7 +426,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	inc hl
 	ld [hl], a
 	pop de
-.loop2: ; b2a1 (2:72a1)
+.loop2 ; b2a1 (2:72a1)
 	push de
 	ld hl, sp+$b
 	ld a, [hl]
@@ -475,10 +475,10 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld hl, sp+$e
 	ld a, [hl]
 	call FarCall
-.asm_b301: ; b301 (2:7301)
+.asm_b301 ; b301 (2:7301)
 	jp .check_facing
 
-.asm_b304: ; b304 (2:7304)
+.asm_b304 ; b304 (2:7304)
 	ld hl, sp+$7
 	ld a, [hl]
 	add a
@@ -486,7 +486,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld [hl], a
 	jp .loop2
 
-.asm_b30e: ; b30e (2:730e)
+.asm_b30e ; b30e (2:730e)
 	ld hl, sp+$d
 	ld a, [hl]
 	ld hl, sp+$6
@@ -504,7 +504,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld [hl], a
 	jp .loop2
 
-.check_facing: ; b32a (2:732a)
+.check_facing ; b32a (2:732a)
 	call GetHLAtSPPlus6
 	ld a, [hl]
 	cp $ff
@@ -532,7 +532,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld hl, sp+$e
 	ld a, [hl]
 	call ChangePersonFacing
-.got_facing: ; b359 (2:7359)
+.got_facing ; b359 (2:7359)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetHLAtSPPlus4
@@ -545,12 +545,12 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld de, $5
 	add hl, de
 	ld [hl], a
-.next: ; b36f (2:736f)
+.next ; b36f (2:736f)
 	pop af
 	inc a
 	jp .loop
 
-.break: ; b374 (2:7374)
+.break ; b374 (2:7374)
 	add sp, $e
 	ret
 

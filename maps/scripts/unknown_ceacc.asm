@@ -187,12 +187,12 @@ Func_ceacc:: ; ceacc
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_ceae2:
+.asm_ceae2
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_ceaf2
 	setevent EVENT_061
-.asm_ceaf2:
+.asm_ceaf2
 	ld a, $02
 	scall Func_80d01
 	ld a, [wc7de]
@@ -286,36 +286,36 @@ Func_ceacc:: ; ceacc
 	jp z, .asm_cebdb
 	cp $01
 	jp nz, .asm_cec3e
-.asm_cebdb:
+.asm_cebdb
 	loadwilds $05, Data_ce7ca
 	jp .asm_cec46
-.asm_cebe6:
+.asm_cebe6
 	loadwilds $05, Data_ce810
 	jp .asm_cec46
-.asm_cebf1:
+.asm_cebf1
 	loadwilds $05, Data_ce856
 	jp .asm_cec46
-.asm_cebfc:
+.asm_cebfc
 	loadwilds $05, Data_ce89c
 	jp .asm_cec46
-.asm_cec07:
+.asm_cec07
 	loadwilds $05, Data_ce8e2
 	jp .asm_cec46
-.asm_cec12:
+.asm_cec12
 	loadwilds $05, Data_ce928
 	jp .asm_cec46
-.asm_cec1d:
+.asm_cec1d
 	loadwilds $05, Data_ce96e
 	jp .asm_cec46
-.asm_cec28:
+.asm_cec28
 	loadwilds $05, Data_ce9b4
 	jp .asm_cec46
-.asm_cec33:
+.asm_cec33
 	loadwilds $05, Data_ce9fa
 	jp .asm_cec46
-.asm_cec3e:
+.asm_cec3e
 	loadwilds $09, Data_cea40
-.asm_cec46:
+.asm_cec46
 	ld a, [wc7de]
 	inc a
 	cp $33
@@ -355,7 +355,7 @@ Func_ceacc:: ; ceacc
 	add hl, de
 	ld e, $01
 	scall LoadWarps
-.asm_cec86:
+.asm_cec86
 	loadwarps $01, Data_ce73b
 	loadpeople $01, Data_ceabe
 	playmusic SONG_CAVE
@@ -365,12 +365,12 @@ Func_ceacc:: ; ceacc
 	jp nz, .asm_cecaf
 	writetext TreeBitstreamText_47e17
 	jp .asm_cecb8
-.asm_cecaf:
+.asm_cecaf
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $00
 	scall Func_80f83
-.asm_cecb8:
+.asm_cecb8
 	ret
 
 Data_cecb9:
@@ -410,7 +410,7 @@ Func_ced03:
 	cp $02
 	jp nz, .asm_cedc7
 	ld c, $00
-.asm_ced1e:
+.asm_ced1e
 	ld a, c
 	cp $11
 	jp nc, .asm_ced58
@@ -439,10 +439,10 @@ Func_ced03:
 	jp nz, .asm_ced54
 	ld c, $ff
 	jp .asm_ced58
-.asm_ced54:
+.asm_ced54
 	inc c
 	jp .asm_ced1e
-.asm_ced58:
+.asm_ced58
 	ld a, c
 	cp $ff
 	jp nz, .asm_cedc7
@@ -454,7 +454,7 @@ Func_ced03:
 	scall StopShakingScreen
 	scall HideEmote
 	ld c, $00
-.asm_ced7a:
+.asm_ced7a
 	ld a, c
 	cp $04
 	jp nc, .asm_cedc7
@@ -470,7 +470,7 @@ Func_ced03:
 	or h
 	jp nz, .asm_ced95
 	jp .asm_cedc3
-.asm_ced95:
+.asm_ced95
 	pop hl
 	push hl
 	reg16swap de, hl
@@ -483,11 +483,11 @@ Func_ced03:
 	pop de
 	push hl
 	jp .asm_cedb1
-.asm_cedac:
+.asm_cedac
 	ld hl, $0014
 	pop de
 	push hl
-.asm_cedb1:
+.asm_cedb1
 	push bc
 	call GetHLAtSPPlus4
 	ld a, l
@@ -501,9 +501,9 @@ Func_ced03:
 	ld d, $00
 	scall Func_80e31
 	pop bc
-.asm_cedc3:
+.asm_cedc3
 	inc c
 	jp .asm_ced7a
-.asm_cedc7:
+.asm_cedc7
 	add sp, $24
 	ret

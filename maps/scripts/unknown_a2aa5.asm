@@ -135,12 +135,12 @@ Func_a2aa5:: ; a2aa5
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_a2abb:
+.asm_a2abb
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a2acb
 	setevent EVENT_05F
-.asm_a2acb:
+.asm_a2acb
 	ld a, $03
 	scall Func_80d01
 	ld a, [wc7de]
@@ -204,27 +204,27 @@ Func_a2aa5:: ; a2aa5
 	jp z, .asm_a2b69
 	cp $01
 	jp nz, .asm_a2bab
-.asm_a2b69:
+.asm_a2b69
 	loadwilds $05, Data_a28bb
 	jp .asm_a2bb3
-.asm_a2b74:
+.asm_a2b74
 	loadwilds $05, Data_a2901
 	jp .asm_a2bb3
-.asm_a2b7f:
+.asm_a2b7f
 	loadwilds $05, Data_a2947
 	jp .asm_a2bb3
-.asm_a2b8a:
+.asm_a2b8a
 	loadwilds $05, Data_a298d
 	jp .asm_a2bb3
-.asm_a2b95:
+.asm_a2b95
 	loadwilds $05, Data_a29d3
 	jp .asm_a2bb3
-.asm_a2ba0:
+.asm_a2ba0
 	loadwilds $05, Data_a2a19
 	jp .asm_a2bb3
-.asm_a2bab:
+.asm_a2bab
 	loadwilds $05, Data_a2a5f
-.asm_a2bb3:
+.asm_a2bb3
 	ld a, [wc7de]
 	inc a
 	cp $24
@@ -264,7 +264,7 @@ Func_a2aa5:: ; a2aa5
 	add hl, de
 	ld e, $01
 	scall LoadWarps
-.asm_a2bf3:
+.asm_a2bf3
 	loadwarps $01, Data_a282c
 	playmusic SONG_CAVE
 	scall Func_8001c
@@ -273,12 +273,12 @@ Func_a2aa5:: ; a2aa5
 	jp nz, .asm_a2c14
 	writetext TreeBitstreamText_47e17
 	jp .asm_a2c1d
-.asm_a2c14:
+.asm_a2c14
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $00
 	scall Func_80f83
-.asm_a2c1d:
+.asm_a2c1d
 	ret
 
 Data_a2c1e:

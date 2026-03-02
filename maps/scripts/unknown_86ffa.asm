@@ -193,7 +193,7 @@ Func_86ffa::
 	ld e, $12
 	ld hl, Data_86c7a
 	scall Func_80ce7
-.asm_8703a: ; 8703a (21:703a)
+.asm_8703a ; 8703a (21:703a)
 	loadpeople $a, Data_86cf8
 	ld a, [wc790]
 	or a
@@ -209,7 +209,7 @@ Func_86ffa::
 	scall SetPersonTextPointer
 	hideperson $8
 	hideperson $9
-.asm_8706e: ; 8706e (21:706e)
+.asm_8706e ; 8706e (21:706e)
 	playmusic SONG_TOWN1
 	ld a, $1
 	scall LoadPlayerSprite
@@ -248,7 +248,7 @@ Func_870fa: ; 870fa (21:70fa)
 	or a
 	jp nz, .asm_87122
 	xor a
-.asm_87105: ; 87105 (21:7105)
+.asm_87105 ; 87105 (21:7105)
 	cp $13
 	jp nc, .asm_8711f
 	push af
@@ -266,9 +266,9 @@ Func_870fa: ; 870fa (21:70fa)
 	inc a
 	jp .asm_87105
 
-.asm_8711f: ; 8711f (21:711f)
+.asm_8711f ; 8711f (21:711f)
 	scall Func_80f02
-.asm_87122: ; 87122 (21:7122)
+.asm_87122 ; 87122 (21:7122)
 	ld a, [wc790]
 	or a
 	jp z, .asm_87140
@@ -280,7 +280,7 @@ Func_870fa: ; 870fa (21:70fa)
 	ld hl, Data_87082
 	scall Func_80d9b
 	scall Func_80f02
-.asm_87140: ; 87140 (21:7140)
+.asm_87140 ; 87140 (21:7140)
 	ret
 
 Func_87141:
@@ -293,5 +293,5 @@ Func_87141:
 	or a
 	jp nz, .asm_87163
 	setevent EVENT_0F0
-.asm_87163: ; 87163 (21:7163)
+.asm_87163 ; 87163 (21:7163)
 	ret

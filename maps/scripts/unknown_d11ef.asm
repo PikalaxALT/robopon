@@ -134,22 +134,22 @@ Func_d121f:
 	ld [hl], $1
 	jp .asm_d12ab
 
-.asm_d129d: ; d129d (34:529d)
+.asm_d129d ; d129d (34:529d)
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_456f4
 	jp .asm_d1454
 
-.asm_d12ab: ; d12ab (34:52ab)
+.asm_d12ab ; d12ab (34:52ab)
 	jp .asm_d12b7
 
-.asm_d12ae: ; d12ae (34:52ae)
+.asm_d12ae ; d12ae (34:52ae)
 	writetext TreeBitstreamText_45a40
 	jp .asm_d1454
 
-.asm_d12b7: ; d12b7 (34:52b7)
+.asm_d12b7 ; d12b7 (34:52b7)
 	jp .asm_d13ff
 
-.asm_d12ba: ; d12ba (34:52ba)
+.asm_d12ba ; d12ba (34:52ba)
 	ld a, [wc796]
 	cp $8
 	jp nz, .asm_d1344
@@ -191,22 +191,22 @@ Func_d121f:
 	ld [hl], $1
 	jp .asm_d1335
 
-.asm_d1327: ; d1327 (34:5327)
+.asm_d1327 ; d1327 (34:5327)
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_456f4
 	jp .asm_d1454
 
-.asm_d1335: ; d1335 (34:5335)
+.asm_d1335 ; d1335 (34:5335)
 	jp .asm_d1341
 
-.asm_d1338: ; d1338 (34:5338)
+.asm_d1338 ; d1338 (34:5338)
 	writetext TreeBitstreamText_45a40
 	jp .asm_d1454
 
-.asm_d1341: ; d1341 (34:5341)
+.asm_d1341 ; d1341 (34:5341)
 	jp .asm_d13ff
 
-.asm_d1344: ; d1344 (34:5344)
+.asm_d1344 ; d1344 (34:5344)
 	ld a, $4e
 	scall Func_80e6d
 	ld hl, sp+$1
@@ -219,7 +219,7 @@ Func_d121f:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_d13ff
-.asm_d135e: ; d135e (34:535e)
+.asm_d135e ; d135e (34:535e)
 	ld a, [wc796]
 	cp $7
 	jp z, .asm_d13e7
@@ -245,42 +245,42 @@ Func_d121f:
 	jp z, .asm_d139c
 	cp $1
 	jp nz, .asm_d13f6
-.asm_d139c: ; d139c (34:539c)
+.asm_d139c ; d139c (34:539c)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45acc
 	jp .asm_d13fc
 
-.asm_d13ab: ; d13ab (34:53ab)
+.asm_d13ab ; d13ab (34:53ab)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45add
 	jp .asm_d13fc
 
-.asm_d13ba: ; d13ba (34:53ba)
+.asm_d13ba ; d13ba (34:53ba)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aee
 	jp .asm_d13fc
 
-.asm_d13c9: ; d13c9 (34:53c9)
+.asm_d13c9 ; d13c9 (34:53c9)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aff
 	jp .asm_d13fc
 
-.asm_d13d8: ; d13d8 (34:53d8)
+.asm_d13d8 ; d13d8 (34:53d8)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b10
 	jp .asm_d13fc
 
-.asm_d13e7: ; d13e7 (34:53e7)
+.asm_d13e7 ; d13e7 (34:53e7)
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45abb
 	jp .asm_d13fc
 
-.asm_d13f6: ; d13f6 (34:53f6)
+.asm_d13f6 ; d13f6 (34:53f6)
 	writenpctext TreeBitstreamText_45564
-.asm_d13fc: ; d13fc (34:53fc)
+.asm_d13fc ; d13fc (34:53fc)
 	jp .asm_d1454
 
-.asm_d13ff: ; d13ff (34:53ff)
+.asm_d13ff ; d13ff (34:53ff)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $ff
@@ -295,24 +295,24 @@ Func_d121f:
 	writenpctext TreeBitstreamText_45728
 	jp .asm_d1454
 
-.asm_d1426: ; d1426 (34:5426)
+.asm_d1426 ; d1426 (34:5426)
 	ld a, [wc796]
 	cp $f
 	jp nz, .asm_d1437
 	writenpctext TreeBitstreamText_45564
 	jp .asm_d1454
 
-.asm_d1437: ; d1437 (34:5437)
+.asm_d1437 ; d1437 (34:5437)
 	ld a, [wc796]
 	cp $9
 	jp c, .asm_d1448
 	writenpctext TreeBitstreamText_45875
 	jp .asm_d1454
 
-.asm_d1448: ; d1448 (34:5448)
+.asm_d1448 ; d1448 (34:5448)
 	writenpctext TreeBitstreamText_45564
 	writenpctext TreeBitstreamText_455be
-.asm_d1454: ; d1454 (34:5454)
+.asm_d1454 ; d1454 (34:5454)
 	pop bc
 	pop bc
 	ret

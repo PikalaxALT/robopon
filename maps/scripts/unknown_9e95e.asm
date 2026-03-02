@@ -30,16 +30,16 @@ Func_9e95e:: ; 9e95e
 	ld a, [wc792]
 	cp $02
 	jp nz, .asm_9e986
-.asm_9e976:
+.asm_9e976
 	loadwarps $02, Data_9e8fa
 	ld a, $02
 	ld [wc792], a
 	jp .asm_9e993
-.asm_9e986:
+.asm_9e986
 	loadwarps $02, Data_9e910
 	ld a, $05
 	ld [wc792], a
-.asm_9e993:
+.asm_9e993
 	ld a, $03
 	scall Func_80d01
 	loadwilds $04, Data_9e926

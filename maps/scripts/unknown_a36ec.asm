@@ -57,25 +57,25 @@ Func_a3730:
 	checkevent EVENT_0D3
 	cp $01
 	jp nz, .asm_a3787
-.asm_a3751:
+.asm_a3751
 	checkevent EVENT_0D1
 	cp $01
 	jp nz, .asm_a3762
 	ld hl, Data_a371e
 	scall Func_80d9b
-.asm_a3762:
+.asm_a3762
 	checkevent EVENT_0D2
 	cp $01
 	jp nz, .asm_a3773
 	ld hl, Data_a3724
 	scall Func_80d9b
-.asm_a3773:
+.asm_a3773
 	checkevent EVENT_0D3
 	cp $01
 	jp nz, .asm_a3784
 	ld hl, Data_a372a
 	scall Func_80d9b
-.asm_a3784:
+.asm_a3784
 	scall Func_80f02
-.asm_a3787:
+.asm_a3787
 	ret

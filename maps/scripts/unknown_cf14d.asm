@@ -184,12 +184,12 @@ Func_cf14d:: ; cf14d (33:714d)
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_cf163: ; cf163 (33:7163)
+.asm_cf163 ; cf163 (33:7163)
 	ld a, [wc7de]
 	cp $32
 	jp nz, .asm_cf173
 	setevent EVENT_061
-.asm_cf173: ; cf173 (33:7173)
+.asm_cf173 ; cf173 (33:7173)
 	ld a, $2
 	scall Func_80d01
 	ld a, [wc7de]
@@ -283,45 +283,45 @@ Func_cf14d:: ; cf14d (33:714d)
 	jp z, .asm_cf25c
 	cp $1
 	jp nz, .asm_cf2bf
-.asm_cf25c: ; cf25c (33:725c)
+.asm_cf25c ; cf25c (33:725c)
 	loadwilds $5, Data_cee59
 	jp .asm_cf2c7
 
-.asm_cf267: ; cf267 (33:7267)
+.asm_cf267 ; cf267 (33:7267)
 	loadwilds $5, Data_cee9f
 	jp .asm_cf2c7
 
-.asm_cf272: ; cf272 (33:7272)
+.asm_cf272 ; cf272 (33:7272)
 	loadwilds $5, Data_ceee5
 	jp .asm_cf2c7
 
-.asm_cf27d: ; cf27d (33:727d)
+.asm_cf27d ; cf27d (33:727d)
 	loadwilds $5, Data_cef2b
 	jp .asm_cf2c7
 
-.asm_cf288: ; cf288 (33:7288)
+.asm_cf288 ; cf288 (33:7288)
 	loadwilds $5, Data_cef71
 	jp .asm_cf2c7
 
-.asm_cf293: ; cf293 (33:7293)
+.asm_cf293 ; cf293 (33:7293)
 	loadwilds $5, Data_cefb7
 	jp .asm_cf2c7
 
-.asm_cf29e: ; cf29e (33:729e)
+.asm_cf29e ; cf29e (33:729e)
 	loadwilds $5, Data_ceffd
 	jp .asm_cf2c7
 
-.asm_cf2a9: ; cf2a9 (33:72a9)
+.asm_cf2a9 ; cf2a9 (33:72a9)
 	loadwilds $5, Data_cf043
 	jp .asm_cf2c7
 
-.asm_cf2b4: ; cf2b4 (33:72b4)
+.asm_cf2b4 ; cf2b4 (33:72b4)
 	loadwilds $5, Data_cf089
 	jp .asm_cf2c7
 
-.asm_cf2bf: ; cf2bf (33:72bf)
+.asm_cf2bf ; cf2bf (33:72bf)
 	loadwilds $9, Data_cf0cf
-.asm_cf2c7: ; cf2c7 (33:72c7)
+.asm_cf2c7 ; cf2c7 (33:72c7)
 	ld a, [wc7de]
 	inc a
 	cp $33
@@ -361,7 +361,7 @@ Func_cf14d:: ; cf14d (33:714d)
 	add hl, de
 	ld e, $1
 	scall LoadWarps
-.asm_cf307: ; cf307 (33:7307)
+.asm_cf307 ; cf307 (33:7307)
 	loadwarps $1, Data_cedca
 	playmusic SONG_CAVE
 	scall Func_8001c
@@ -371,12 +371,12 @@ Func_cf14d:: ; cf14d (33:714d)
 	writetext TreeBitstreamText_47e17
 	jp .asm_cf331
 
-.asm_cf328: ; cf328 (33:7328)
+.asm_cf328 ; cf328 (33:7328)
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
 	scall Func_80f83
-.asm_cf331: ; cf331 (33:7331)
+.asm_cf331 ; cf331 (33:7331)
 	ret
 
 Data_cf332:

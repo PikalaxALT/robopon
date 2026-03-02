@@ -226,7 +226,7 @@ Data_ba448:
 
 Func_ba46c:: ; ba46c
 	ld c, $00
-.asm_ba46e:
+.asm_ba46e
 	ld a, c
 	cp $09
 	jp nc, .asm_ba4d6
@@ -288,10 +288,10 @@ Func_ba46c:: ; ba46c
 	ld e, $01
 	scall LoadWarps
 	jp .asm_ba4d6
-.asm_ba4d2:
+.asm_ba4d2
 	inc c
 	jp .asm_ba46e
-.asm_ba4d6:
+.asm_ba4d6
 	ld a, [wBackupMapGroup]
 	or a
 	jp nz, .asm_ba4ff
@@ -305,9 +305,9 @@ Func_ba46c:: ; ba46c
 	cp $07
 	jp nz, .asm_ba4fc
 	loadpeople $07, Data_ba100
-.asm_ba4fc:
+.asm_ba4fc
 	jp .asm_ba654
-.asm_ba4ff:
+.asm_ba4ff
 	ld a, [wBackupMapGroup]
 	cp $01
 	jp nz, .asm_ba578
@@ -330,9 +330,9 @@ Func_ba46c:: ; ba46c
 	ld de, Data_ba0f0
 	xor a
 	scall SetPersonTextPointer
-.asm_ba53c:
+.asm_ba53c
 	jp .asm_ba575
-.asm_ba53f:
+.asm_ba53f
 	ld a, [wBackupMapX]
 	cp $19
 	jp nz, .asm_ba575
@@ -352,9 +352,9 @@ Func_ba46c:: ; ba46c
 	ld de, Data_ba0f8
 	ld a, $01
 	scall SetPersonTextPointer
-.asm_ba575:
+.asm_ba575
 	jp .asm_ba654
-.asm_ba578:
+.asm_ba578
 	ld a, [wBackupMapGroup]
 	cp $06
 	jp nz, .asm_ba5bd
@@ -369,7 +369,7 @@ Func_ba46c:: ; ba46c
 	jp nz, .asm_ba5a2
 	loadpeople $07, Data_ba226
 	jp .asm_ba5ba
-.asm_ba5a2:
+.asm_ba5a2
 	ld a, [wBackupMapX]
 	cp $1c
 	jp nz, .asm_ba5ba
@@ -377,9 +377,9 @@ Func_ba46c:: ; ba46c
 	cp $0e
 	jp nz, .asm_ba5ba
 	loadpeople $08, Data_ba288
-.asm_ba5ba:
+.asm_ba5ba
 	jp .asm_ba654
-.asm_ba5bd:
+.asm_ba5bd
 	ld a, [wBackupMapGroup]
 	cp $17
 	jp nz, .asm_ba612
@@ -397,7 +397,7 @@ Func_ba46c:: ; ba46c
 	ld hl, Data_ba088
 	scall Func_80ce7
 	jp .asm_ba60f
-.asm_ba5ef:
+.asm_ba5ef
 	ld a, [wBackupMapX]
 	cp $20
 	jp nz, .asm_ba60f
@@ -408,9 +408,9 @@ Func_ba46c:: ; ba46c
 	ld e, $02
 	ld hl, Data_ba092
 	scall Func_80ce7
-.asm_ba60f:
+.asm_ba60f
 	jp .asm_ba654
-.asm_ba612:
+.asm_ba612
 	ld a, [wBackupMapGroup]
 	cp $18
 	jp nz, .asm_ba654
@@ -425,7 +425,7 @@ Func_ba46c:: ; ba46c
 	jp nz, .asm_ba63c
 	loadpeople $07, Data_ba384
 	jp .asm_ba654
-.asm_ba63c:
+.asm_ba63c
 	ld a, [wBackupMapX]
 	cp $1e
 	jp nz, .asm_ba654
@@ -433,7 +433,7 @@ Func_ba46c:: ; ba46c
 	cp $19
 	jp nz, .asm_ba654
 	loadpeople $07, Data_ba3e6
-.asm_ba654:
+.asm_ba654
 	scall Func_8001c
 	playmusic SONG_TOWN3
 	ret

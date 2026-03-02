@@ -92,7 +92,7 @@ Func_8d256:: ; 8d256
 	cp $01
 	jp nz, .asm_8d2a9
 	hideperson $02
-.asm_8d2a9:
+.asm_8d2a9
 	ld a, [wc790]
 	or a
 	jp z, .asm_8d2c0
@@ -102,7 +102,7 @@ Func_8d256:: ; 8d256
 	ld de, Data_8d180
 	ld a, $09
 	scall SetPersonTextPointer
-.asm_8d2c0:
+.asm_8d2c0
 	ld a, [wc790]
 	or a
 	jp z, .asm_8d2e2
@@ -112,9 +112,9 @@ Func_8d256:: ; 8d256
 	loadwarps $01, Data_8d159
 	loadpeople $01, Data_8d248
 	jp .asm_8d2ea
-.asm_8d2e2:
+.asm_8d2e2
 	loadpeople $01, Data_8d23a
-.asm_8d2ea:
+.asm_8d2ea
 	scall Func_8001c
 	ret
 
@@ -141,7 +141,7 @@ Func_8d2f4:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_8d38f
-.asm_8d321:
+.asm_8d321
 	ld a, [wc790]
 	or a
 	jp z, .asm_8d386
@@ -155,7 +155,7 @@ Func_8d2f4:
 	or a
 	jp z, .asm_8d34b
 	move_player $01, Data_8d2ee
-.asm_8d34b:
+.asm_8d34b
 	playmusic SONG_NONE
 	playmusic SONG_0A
 	xor a
@@ -169,15 +169,15 @@ Func_8d2f4:
 	ld a, $03
 	scall PlayerFace
 	warp_player MAP_30_02, $2d, $09
-.asm_8d383:
+.asm_8d383
 	jp .asm_8d38c
-.asm_8d386:
+.asm_8d386
 	writetext TreeBitstreamText_470f0
-.asm_8d38c:
+.asm_8d38c
 	jp .asm_8d395
-.asm_8d38f:
+.asm_8d38f
 	writetext TreeBitstreamText_470d8
-.asm_8d395:
+.asm_8d395
 	ret
 
 Func_8d396:
@@ -194,12 +194,12 @@ Func_8d396:
 	cp $07
 	jp z, .asm_8d3b4
 	jp .asm_8d42b
-.asm_8d3b4:
+.asm_8d3b4
 	showperson 0
 	writenpctext TreeBitstreamText_3ccf9
 	ld l, $11
 	xor a
-.asm_8d3c3:
+.asm_8d3c3
 	cp l
 	jp nc, .asm_8d3e0
 	push hl
@@ -213,17 +213,17 @@ Func_8d396:
 	jp nz, .asm_8d3da
 	xor a
 	scall Func_80653
-.asm_8d3da:
+.asm_8d3da
 	pop af
 	inc a
 	pop hl
 	jp .asm_8d3c3
-.asm_8d3e0:
+.asm_8d3e0
 	push hl
 	call Func_8d435
 	xor a
 	pop hl
-.asm_8d3e6:
+.asm_8d3e6
 	cp l
 	jp nc, .asm_8d412
 	push hl
@@ -239,19 +239,19 @@ Func_8d396:
 	hideperson $01
 	ld a, $01
 	scall Func_80653
-.asm_8d40c:
+.asm_8d40c
 	pop af
 	inc a
 	pop hl
 	jp .asm_8d3e6
-.asm_8d412:
+.asm_8d412
 	hideperson $02
 	ld a, $0a
 	scall Func_80c94
 	ld a, $0b
 	scall Func_80c94
 	setevent EVENT_046
-.asm_8d42b:
+.asm_8d42b
 	pop bc
 	ret
 
@@ -356,30 +356,30 @@ Func_8d4d8:: ; 8d4d8
 	jp nz, .asm_8d5f2
 	call Func_8d8e9
 	jp .asm_8d5f2
-.asm_8d5bd:
+.asm_8d5bd
 	call Func_8d877
 	setevent EVENT_02F
 	jp .asm_8d5f2
-.asm_8d5cb:
+.asm_8d5cb
 	call Func_8d813
 	jp .asm_8d5f2
-.asm_8d5d1:
+.asm_8d5d1
 	call Func_8d7b8
 	jp .asm_8d5f2
-.asm_8d5d7:
+.asm_8d5d7
 	call Func_8d76b
 	jp .asm_8d5f2
-.asm_8d5dd:
+.asm_8d5dd
 	checkevent EVENT_049
 	or a
 	jp nz, .asm_8d5f2
 	call Func_8d61a
 	setevent EVENT_049
-.asm_8d5f2:
+.asm_8d5f2
 	jp .asm_8d5fa
-.asm_8d5f5:
+.asm_8d5f5
 	playmusic SONG_TOWN2
-.asm_8d5fa:
+.asm_8d5fa
 	call FillVisibleAreaWithBlankTile
 	ret
 
@@ -441,7 +441,7 @@ Func_8d61a:
 	script_sleep 30
 	sprite_face $02, 0
 	playmusic SONG_NONE
-.asm_8d6e1:
+.asm_8d6e1
 	writenpctext_yesorno TreeBitstreamText_3d552
 	or a
 	jp nz, .asm_8d75c
@@ -463,11 +463,11 @@ Func_8d61a:
 	hideperson 0
 	hideperson $01
 	jp .asm_8d76a
-.asm_8d75c:
+.asm_8d75c
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_3d63e
 	jp .asm_8d6e1
-.asm_8d76a:
+.asm_8d76a
 	ret
 Func_8d76b:
 	ld l, $03
@@ -479,7 +479,7 @@ Func_8d76b:
 	scall Func_80080
 	xor a
 	pop hl
-.asm_8d77e:
+.asm_8d77e
 	cp l
 	jp nc, .asm_8d790
 	push hl
@@ -491,13 +491,13 @@ Func_8d76b:
 	inc a
 	pop hl
 	jp .asm_8d77e
-.asm_8d790:
+.asm_8d790
 	push hl
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_3d404
 	xor a
 	pop hl
-.asm_8d79e:
+.asm_8d79e
 	cp l
 	jp nc, .asm_8d7b1
 	push hl
@@ -509,7 +509,7 @@ Func_8d76b:
 	inc a
 	pop hl
 	jp .asm_8d79e
-.asm_8d7b1:
+.asm_8d7b1
 	hideperson 0
 	ret
 Func_8d7b8:
@@ -522,7 +522,7 @@ Func_8d7b8:
 	scall Func_80080
 	xor a
 	pop hl
-.asm_8d7cd:
+.asm_8d7cd
 	cp l
 	jp nc, .asm_8d7df
 	push hl
@@ -534,7 +534,7 @@ Func_8d7b8:
 	inc a
 	pop hl
 	jp .asm_8d7cd
-.asm_8d7df:
+.asm_8d7df
 	push hl
 	playsfx SFX_68
 	script_sleep 30
@@ -542,7 +542,7 @@ Func_8d7b8:
 	writenpctext TreeBitstreamText_3d442
 	xor a
 	pop hl
-.asm_8d7f8:
+.asm_8d7f8
 	cp l
 	jp nc, .asm_8d80b
 	push hl
@@ -554,7 +554,7 @@ Func_8d7b8:
 	inc a
 	pop hl
 	jp .asm_8d7f8
-.asm_8d80b:
+.asm_8d80b
 	hideperson $01
 	ret
 Func_8d813:
@@ -567,7 +567,7 @@ Func_8d813:
 	scall Func_80080
 	xor a
 	pop hl
-.asm_8d826:
+.asm_8d826
 	cp l
 	jp nc, .asm_8d843
 	push hl
@@ -581,18 +581,18 @@ Func_8d813:
 	jp nz, .asm_8d83d
 	xor a
 	scall Func_80653
-.asm_8d83d:
+.asm_8d83d
 	pop af
 	inc a
 	pop hl
 	jp .asm_8d826
-.asm_8d843:
+.asm_8d843
 	push hl
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_3d37a
 	xor a
 	pop hl
-.asm_8d851:
+.asm_8d851
 	cp l
 	jp nc, .asm_8d870
 	push hl
@@ -606,12 +606,12 @@ Func_8d813:
 	jp nz, .asm_8d86a
 	ld a, $01
 	scall Func_80653
-.asm_8d86a:
+.asm_8d86a
 	pop af
 	inc a
 	pop hl
 	jp .asm_8d851
-.asm_8d870:
+.asm_8d870
 	hideperson 0
 	ret
 Func_8d877:
@@ -624,7 +624,7 @@ Func_8d877:
 	scall Func_80080
 	xor a
 	pop hl
-.asm_8d88c:
+.asm_8d88c
 	cp l
 	jp nc, .asm_8d8a9
 	push hl
@@ -638,12 +638,12 @@ Func_8d877:
 	jp nz, .asm_8d8a3
 	xor a
 	scall Func_80653
-.asm_8d8a3:
+.asm_8d8a3
 	pop af
 	inc a
 	pop hl
 	jp .asm_8d88c
-.asm_8d8a9:
+.asm_8d8a9
 	push hl
 	playsfx SFX_68
 	script_sleep 30
@@ -651,7 +651,7 @@ Func_8d877:
 	writenpctext TreeBitstreamText_3d2d1
 	xor a
 	pop hl
-.asm_8d8c2:
+.asm_8d8c2
 	cp l
 	jp nc, .asm_8d8e1
 	push hl
@@ -665,12 +665,12 @@ Func_8d877:
 	jp nz, .asm_8d8db
 	ld a, $01
 	scall Func_80653
-.asm_8d8db:
+.asm_8d8db
 	pop af
 	inc a
 	pop hl
 	jp .asm_8d8c2
-.asm_8d8e1:
+.asm_8d8e1
 	hideperson $01
 	ret
 Func_8d8e9:
@@ -683,7 +683,7 @@ Func_8d8e9:
 	scall Func_80080
 	xor a
 	pop hl
-.asm_8d8fc:
+.asm_8d8fc
 	cp l
 	jp nc, .asm_8d919
 	push hl
@@ -697,18 +697,18 @@ Func_8d8e9:
 	jp nz, .asm_8d913
 	xor a
 	scall Func_80653
-.asm_8d913:
+.asm_8d913
 	pop af
 	inc a
 	pop hl
 	jp .asm_8d8fc
-.asm_8d919:
+.asm_8d919
 	push hl
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_3d278
 	xor a
 	pop hl
-.asm_8d927:
+.asm_8d927
 	cp l
 	jp nc, .asm_8d946
 	push hl
@@ -722,12 +722,12 @@ Func_8d8e9:
 	jp nz, .asm_8d940
 	ld a, $01
 	scall Func_80653
-.asm_8d940:
+.asm_8d940
 	pop af
 	inc a
 	pop hl
 	jp .asm_8d927
-.asm_8d946:
+.asm_8d946
 	hideperson 0
 	ret
 
@@ -757,9 +757,9 @@ Func_8d955:
 	move_person $01, Data_8d951, 1
 	scall WaitNPCStep
 	jp .asm_8d9bb
-.asm_8d9b5:
+.asm_8d9b5
 	writenpctext TreeBitstreamText_3d63e
-.asm_8d9bb:
+.asm_8d9bb
 	ret
 
 Data_8d9bc:
@@ -845,7 +845,7 @@ Func_8da28:
 	ld hl, Data_8da0a
 	scall Func_80d9b
 	jp .asm_8db1a
-.asm_8da75:
+.asm_8da75
 	ld hl, Data_8d9c2
 	scall Func_80d9b
 	ld hl, Data_8d9c8
@@ -859,7 +859,7 @@ Func_8da28:
 	ld hl, Data_8d9e0
 	scall Func_80d9b
 	jp .asm_8db1a
-.asm_8da9c:
+.asm_8da9c
 	ld hl, Data_8da22
 	scall Func_80d9b
 	ld hl, Data_8d9c2
@@ -873,7 +873,7 @@ Func_8da28:
 	ld hl, Data_8d9da
 	scall Func_80d9b
 	jp .asm_8db1a
-.asm_8dac3:
+.asm_8dac3
 	ld hl, Data_8d9c2
 	scall Func_80d9b
 	ld hl, Data_8d9c8
@@ -883,7 +883,7 @@ Func_8da28:
 	ld hl, Data_8d9d4
 	scall Func_80d9b
 	jp .asm_8db1a
-.asm_8dade:
+.asm_8dade
 	ld hl, Data_8da16
 	scall Func_80d9b
 	ld hl, Data_8d9c2
@@ -893,7 +893,7 @@ Func_8da28:
 	ld hl, Data_8d9ce
 	scall Func_80d9b
 	jp .asm_8db1a
-.asm_8daf9:
+.asm_8daf9
 	ld hl, Data_8da1c
 	scall Func_80d9b
 	ld hl, Data_8d9c2
@@ -901,12 +901,12 @@ Func_8da28:
 	ld hl, Data_8d9c8
 	scall Func_80d9b
 	jp .asm_8db1a
-.asm_8db0e:
+.asm_8db0e
 	ld hl, Data_8d9e6
 	scall Func_80d9b
 	ld hl, Data_8d9bc
 	scall Func_80d9b
-.asm_8db1a:
+.asm_8db1a
 	ld a, [wc790]
 	or a
 	jp z, .asm_8db2f
@@ -915,7 +915,7 @@ Func_8da28:
 	jp nc, .asm_8db2f
 	ld hl, Data_8da10
 	scall Func_80d9b
-.asm_8db2f:
+.asm_8db2f
 	scall Func_80f02
 	ret
 
@@ -969,19 +969,19 @@ Func_8db33:
 	ld [hl], $01
 	call Func_8dd96
 	jp .asm_8dbc4
-.asm_8dbb3:
+.asm_8dbb3
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_44185
 	call Func_8dd96
 	jp .asm_8dd7d
-.asm_8dbc4:
+.asm_8dbc4
 	jp .asm_8dbd0
-.asm_8dbc7:
+.asm_8dbc7
 	writetext TreeBitstreamText_45a40
 	jp .asm_8dd7d
-.asm_8dbd0:
+.asm_8dbd0
 	jp .asm_8dd1f
-.asm_8dbd3:
+.asm_8dbd3
 	ld a, [wc796]
 	cp $07
 	jp nz, .asm_8dc63
@@ -1023,19 +1023,19 @@ Func_8db33:
 	ld [hl], $01
 	call Func_8dd96
 	jp .asm_8dc54
-.asm_8dc43:
+.asm_8dc43
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_44185
 	call Func_8dd96
 	jp .asm_8dd7d
-.asm_8dc54:
+.asm_8dc54
 	jp .asm_8dc60
-.asm_8dc57:
+.asm_8dc57
 	writetext TreeBitstreamText_45a40
 	jp .asm_8dd7d
-.asm_8dc60:
+.asm_8dc60
 	jp .asm_8dd1f
-.asm_8dc63:
+.asm_8dc63
 	ld a, $17
 	scall Func_80e6d
 	ld hl, sp+$01
@@ -1048,7 +1048,7 @@ Func_8db33:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_8dd1f
-.asm_8dc7d:
+.asm_8dc7d
 	ld a, [wc796]
 	cp $08
 	jp z, .asm_8dd07
@@ -1074,35 +1074,35 @@ Func_8db33:
 	jp z, .asm_8dcbc
 	cp $01
 	jp nz, .asm_8dd16
-.asm_8dcbc:
+.asm_8dcbc
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45acc
 	jp .asm_8dd1c
-.asm_8dccb:
+.asm_8dccb
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45add
 	jp .asm_8dd1c
-.asm_8dcda:
+.asm_8dcda
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aee
 	jp .asm_8dd1c
-.asm_8dce9:
+.asm_8dce9
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aff
 	jp .asm_8dd1c
-.asm_8dcf8:
+.asm_8dcf8
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b10
 	jp .asm_8dd1c
-.asm_8dd07:
+.asm_8dd07
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b20
 	jp .asm_8dd1c
-.asm_8dd16:
+.asm_8dd16
 	writenpctext TreeBitstreamText_44000
-.asm_8dd1c:
+.asm_8dd1c
 	jp .asm_8dd7d
-.asm_8dd1f:
+.asm_8dd1f
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $ff
@@ -1117,24 +1117,24 @@ Func_8db33:
 	writenpctext TreeBitstreamText_441b3
 	call Func_8dd96
 	jp .asm_8dd7d
-.asm_8dd49:
+.asm_8dd49
 	ld a, [wc796]
 	cp $0f
 	jp nz, .asm_8dd5a
 	writenpctext TreeBitstreamText_44000
 	jp .asm_8dd7d
-.asm_8dd5a:
+.asm_8dd5a
 	ld a, [wc796]
 	cp $08
 	jp c, .asm_8dd6e
 	writenpctext TreeBitstreamText_4428f
 	call Func_8dd96
 	jp .asm_8dd7d
-.asm_8dd6e:
+.asm_8dd6e
 	writenpctext TreeBitstreamText_44000
 	writenpctext TreeBitstreamText_44051
 	call Func_8dd96
-.asm_8dd7d:
+.asm_8dd7d
 	pop bc
 	pop bc
 	ret
@@ -1145,7 +1145,7 @@ Func_8dd80:
 	jp nz, .asm_8dd8b
 	ld a, $07
 	ld [wc78a], a
-.asm_8dd8b:
+.asm_8dd8b
 	ret
 
 Data_8dd8c:
@@ -1164,11 +1164,11 @@ Func_8dd96:
 	scall WaitNPCStep
 	hideperson $08
 	jp .asm_8dddf
-.asm_8ddc0:
+.asm_8ddc0
 	script_sleep 30
 	playsfx SFX_2E
 	move_person $08, Data_8dd8c, 1
 	scall WaitNPCStep
 	hideperson $08
-.asm_8dddf:
+.asm_8dddf
 	ret

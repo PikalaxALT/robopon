@@ -38,7 +38,7 @@ Func_d392b:: ; d392b (34:792b)
 	call Func_d3cb2
 	jp .asm_d39a5
 
-.asm_d3977: ; d3977 (34:7977)
+.asm_d3977 ; d3977 (34:7977)
 	checkevent EVENT_01C
 	cp $1
 	jp nz, .asm_d3998
@@ -51,12 +51,12 @@ Func_d392b:: ; d392b (34:792b)
 	call Func_d39a6
 	jp .asm_d39a5
 
-.asm_d3998: ; d3998 (34:7998)
+.asm_d3998 ; d3998 (34:7998)
 	playmusic SONG_PUNCH_MINIGAME
 	ld a, $1
 	scall LoadPlayerSprite
 	scall Func_8001c
-.asm_d39a5: ; d39a5 (34:79a5)
+.asm_d39a5 ; d39a5 (34:79a5)
 	ret
 
 Func_d39a6: ; d39a6 (34:79a6)
@@ -174,7 +174,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	ld hl, Data_d3ad9
 	scall Func_80d9b
 	scall Func_80f02
-.asm_d3af2: ; d3af2 (34:7af2)
+.asm_d3af2 ; d3af2 (34:7af2)
 	ld a, [wc78d + 1]
 	cp $1
 	jp nz, .asm_d3b0c
@@ -185,7 +185,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	scall Func_80f02
 	jp .asm_d3cb1
 
-.asm_d3b0c: ; d3b0c (34:7b0c)
+.asm_d3b0c ; d3b0c (34:7b0c)
 	ld a, [wc78d + 1]
 	cp $2
 	jp nz, .asm_d3b2c
@@ -198,7 +198,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	scall Func_80f02
 	jp .asm_d3cb1
 
-.asm_d3b2c: ; d3b2c (34:7b2c)
+.asm_d3b2c ; d3b2c (34:7b2c)
 	ld a, [wc78d + 1]
 	cp $3
 	jp nz, .asm_d3b52
@@ -213,7 +213,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	scall Func_80f02
 	jp .asm_d3cb1
 
-.asm_d3b52: ; d3b52 (34:7b52)
+.asm_d3b52 ; d3b52 (34:7b52)
 	ld a, [wc78d + 1]
 	cp $4
 	jp nz, .asm_d3b7e
@@ -230,7 +230,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	scall Func_80f02
 	jp .asm_d3cb1
 
-.asm_d3b7e: ; d3b7e (34:7b7e)
+.asm_d3b7e ; d3b7e (34:7b7e)
 	ld a, [wc78d + 1]
 	cp $5
 	jp nz, .asm_d3bb0
@@ -249,7 +249,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	scall Func_80f02
 	jp .asm_d3cb1
 
-.asm_d3bb0: ; d3bb0 (34:7bb0)
+.asm_d3bb0 ; d3bb0 (34:7bb0)
 	ld a, [wc78d + 1]
 	cp $6
 	jp nz, .asm_d3be8
@@ -270,7 +270,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	scall Func_80f02
 	jp .asm_d3cb1
 
-.asm_d3be8: ; d3be8 (34:7be8)
+.asm_d3be8 ; d3be8 (34:7be8)
 	ld a, [wc78d + 1]
 	cp $7
 	jp nz, .asm_d3c26
@@ -293,7 +293,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	scall Func_80f02
 	jp .asm_d3cb1
 
-.asm_d3c26: ; d3c26 (34:7c26)
+.asm_d3c26 ; d3c26 (34:7c26)
 	ld a, [wc78d + 1]
 	cp $8
 	jp nz, .asm_d3c6a
@@ -318,7 +318,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	scall Func_80f02
 	jp .asm_d3cb1
 
-.asm_d3c6a: ; d3c6a (34:7c6a)
+.asm_d3c6a ; d3c6a (34:7c6a)
 	ld a, [wc78d + 1]
 	cp $9
 	jp nz, .asm_d3cb1
@@ -343,7 +343,7 @@ Func_d3adf: ; d3adf (34:7adf)
 	ld hl, Data_d3ad3
 	scall Func_80d9b
 	scall Func_80f02
-.asm_d3cb1: ; d3cb1 (34:7cb1)
+.asm_d3cb1 ; d3cb1 (34:7cb1)
 	ret
 
 Func_d3cb2: ; d3cb2 (34:7cb2)

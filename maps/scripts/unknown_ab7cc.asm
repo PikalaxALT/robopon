@@ -50,17 +50,17 @@ Func_ab7cc:: ; ab7cc
 	ld a, [wBackupMapNumber]
 	cp $02
 	jp z, .asm_ab7f9
-.asm_ab7e9:
+.asm_ab7e9
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_ab804
 	ld a, [wBackupMapNumber]
 	cp $0e
 	jp nz, .asm_ab804
-.asm_ab7f9:
+.asm_ab7f9
 	loadpeople $08, Data_ab724
 	jp .asm_ab860
-.asm_ab804:
+.asm_ab804
 	loadwarps $01, Data_ab69d
 	checkevent EVENT_043
 	or a
@@ -68,7 +68,7 @@ Func_ab7cc:: ; ab7cc
 	loadpeople $05, Data_ab6b4
 	loadpeople $02, Data_ab794
 	jp .asm_ab860
-.asm_ab829:
+.asm_ab829
 	checkevent EVENT_023
 	cp $01
 	jp nz, .asm_ab858
@@ -79,27 +79,27 @@ Func_ab7cc:: ; ab7cc
 	loadpeople $02, Data_ab794
 	hideperson $03
 	jp .asm_ab860
-.asm_ab858:
+.asm_ab858
 	loadpeople $02, Data_ab794
-.asm_ab860:
+.asm_ab860
 	ld a, [wBackupMapGroup]
 	or a
 	jp nz, .asm_ab86f
 	ld a, [wBackupMapNumber]
 	cp $02
 	jp z, .asm_ab87f
-.asm_ab86f:
+.asm_ab86f
 	ld a, [wBackupMapGroup]
 	cp $1e
 	jp nz, .asm_ab88a
 	ld a, [wBackupMapNumber]
 	cp $0e
 	jp nz, .asm_ab88a
-.asm_ab87f:
+.asm_ab87f
 	playmusic SONG_TOWN1
 	call Func_abc22
 	jp .asm_ab8c8
-.asm_ab88a:
+.asm_ab88a
 	checkevent EVENT_043
 	or a
 	jp nz, .asm_ab8c0
@@ -115,10 +115,10 @@ Func_ab7cc:: ; ab7cc
 	playmusic SONG_NONE
 	playmusic SONG_TEIL_TOWN
 	jp .asm_ab8c8
-.asm_ab8c0:
+.asm_ab8c0
 	playmusic SONG_TEIL_TOWN
 	scall Func_8001c
-.asm_ab8c8:
+.asm_ab8c8
 	ret
 
 Data_ab8c9:
@@ -141,7 +141,7 @@ Data_ab8dd:
 
 Func_ab8e1:
 	xor a
-.asm_ab8e2:
+.asm_ab8e2
 	cp $0a
 	jp nc, .asm_ab8f3
 	push af
@@ -151,7 +151,7 @@ Func_ab8e1:
 	pop af
 	inc a
 	jp .asm_ab8e2
-.asm_ab8f3:
+.asm_ab8f3
 	script_sleep 60
 	ld c, $15
 	ld e, $0f
@@ -246,7 +246,7 @@ Func_aba78:
 	scall WaitEmote
 	scall HideEmote
 	xor a
-.asm_abad4:
+.asm_abad4
 	cp $02
 	jp nc, .asm_abae6
 	push af
@@ -256,7 +256,7 @@ Func_aba78:
 	pop af
 	inc a
 	jp .asm_abad4
-.asm_abae6:
+.asm_abae6
 	ld c, $19
 	ld e, $10
 	ld a, $02
@@ -286,7 +286,7 @@ Func_aba78:
 	ld a, $01
 	scall Func_80653
 	xor a
-.asm_abb61:
+.asm_abb61
 	cp $08
 	jp nc, .asm_abb73
 	push af
@@ -296,7 +296,7 @@ Func_aba78:
 	pop af
 	inc a
 	jp .asm_abb61
-.asm_abb73:
+.asm_abb73
 	ret
 
 Func_abb74:: ; abb74
@@ -330,7 +330,7 @@ Func_abb74:: ; abb74
 	give_robot SEABEE, $1e, $00
 	cp $ff
 	jp nz, .asm_abc02
-.asm_abc02:
+.asm_abc02
 	writenpctext TreeBitstreamText_42876
 	writetext TreeBitstreamText_427ca
 	ld e, $00
@@ -353,11 +353,11 @@ Func_abc22:
 	ld a, $03
 	scall ChangeSprite
 	jp .asm_abc44
-.asm_abc3d:
+.asm_abc3d
 	ld e, $23
 	ld a, $03
 	scall ChangeSprite
-.asm_abc44:
+.asm_abc44
 	sprite_face $02, $03
 	move_player $01, Data_abc1e
 	script_sleep 60
@@ -365,12 +365,12 @@ Func_abc22:
 	or a
 	jp nz, .asm_abc6b
 	writenpctext TreeBitstreamText_3ed13
-.asm_abc6b:
+.asm_abc6b
 	checkevent EVENT_048
 	or a
 	jp nz, .asm_abc7b
 	writenpctext TreeBitstreamText_3ed88
-.asm_abc7b:
+.asm_abc7b
 	checkevent EVENT_05A
 	or a
 	jp nz, .asm_abc9c
@@ -380,10 +380,10 @@ Func_abc22:
 	ld a, $07
 	scall Func_80d4d
 	setevent EVENT_05A
-.asm_abc9c:
+.asm_abc9c
 	writenpctext TreeBitstreamText_3ee04
 	script_sleep 60
-.asm_abca8:
+.asm_abca8
 	ld a, [wRTCTicker]
 	cp $11
 	jp z, .asm_abcc2
@@ -392,10 +392,10 @@ Func_abc22:
 	jp nz, .asm_abcbc
 	ld a, $01
 	ld [wRTCTicker], a
-.asm_abcbc:
+.asm_abcbc
 	call NextOverworldFrame
 	jp .asm_abca8
-.asm_abcc2:
+.asm_abcc2
 	xor a
 	ld [wc39e], a
 	playmusic SONG_CREDITS
@@ -420,7 +420,7 @@ Func_abc22:
 	ld a, [wNextVBlankFlags]
 	or $04
 	ld [wNextVBlankFlags], a
-.asm_abd24:
+.asm_abd24
 	ld a, [wNextVBlankFlags]
 	ld hl, $c204
 	cp [hl]
@@ -452,7 +452,7 @@ Func_abc22:
 	ld [wNextVBlankFlags], a
 	callba_hli Credits2
 	jp .asm_abe66
-.asm_abdda:
+.asm_abdda
 	resetevent EVENT_0E1
 	resetevent EVENT_0E2
 	resetevent EVENT_0E3
@@ -473,7 +473,7 @@ Func_abc22:
 	or $06
 	ld [wNextVBlankFlags], a
 	callba_hli Func_fafa8
-.asm_abe66:
+.asm_abe66
 	ret
 
 Func_abe67:
@@ -532,9 +532,9 @@ Func_abe67:
 	face_player 0
 	hideperson 0
 	jp .asm_abf5a
-.asm_abf54:
+.asm_abf54
 	writetext TreeBitstreamText_3f79e
-.asm_abf5a:
+.asm_abf5a
 	ret
 
 Func_abf5b:
@@ -546,7 +546,7 @@ Func_abf5b:
 	jp nz, .asm_abf73
 	writenpctext TreeBitstreamText_3e770
 	jp .asm_abf79
-.asm_abf73:
+.asm_abf73
 	writenpctext TreeBitstreamText_42899
-.asm_abf79:
+.asm_abf79
 	ret

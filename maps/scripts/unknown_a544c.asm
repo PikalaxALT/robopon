@@ -26,10 +26,10 @@ Func_a544c:: ; a544c
 	jp nz, .asm_a546e
 	loadwarps $01, Data_a53de
 	jp .asm_a547d
-.asm_a546e:
+.asm_a546e
 	loadwarps $01, Data_a53e9
 	hideperson $04
-.asm_a547d:
+.asm_a547d
 	hideperson $01
 	playmusic SONG_CENTER
 	ld a, $01
@@ -63,14 +63,14 @@ Func_a549d:
 	scall Func_80d4d
 	cp $ff
 	jp nz, .asm_a54df
-.asm_a54df:
+.asm_a54df
 	setevent EVENT_017
 	jp .asm_a54f1
-.asm_a54ea:
+.asm_a54ea
 	ld e, $00
 	ld a, $10
 	scall Func_806a0
-.asm_a54f1:
+.asm_a54f1
 	ret
 
 Data_a54f2:
@@ -88,7 +88,7 @@ Func_a5500:
 	sprite_face $02, $01
 	script_sleep 60
 	hideperson $01
-.asm_a5533:
+.asm_a5533
 	ret
 
 Data_a5534:
@@ -114,7 +114,7 @@ Func_a553a:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_a55b3
-.asm_a5567:
+.asm_a5567
 	ld a, [wc790]
 	or a
 	jp z, .asm_a55aa
@@ -128,21 +128,21 @@ Func_a553a:
 	or a
 	jp nz, .asm_a558a
 	jp .asm_a5597
-.asm_a558a:
+.asm_a558a
 	move_player $01, Data_a5534
 	scall WaitNPCStep
-.asm_a5597:
+.asm_a5597
 	call Func_a5640
 	warp_player MAP_30_02, $01, $10
-.asm_a55a7:
+.asm_a55a7
 	jp .asm_a55b0
-.asm_a55aa:
+.asm_a55aa
 	writetext TreeBitstreamText_470f0
-.asm_a55b0:
+.asm_a55b0
 	jp .asm_a55b9
-.asm_a55b3:
+.asm_a55b3
 	writetext TreeBitstreamText_470d8
-.asm_a55b9:
+.asm_a55b9
 	ret
 
 Data_a55ba:
@@ -169,7 +169,7 @@ Func_a55c0:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_a5639
-.asm_a55ed:
+.asm_a55ed
 	ld a, [wc790]
 	or a
 	jp z, .asm_a5630
@@ -183,21 +183,21 @@ Func_a55c0:
 	or a
 	jp nz, .asm_a5610
 	jp .asm_a561d
-.asm_a5610:
+.asm_a5610
 	move_player $01, $55ba
 	scall WaitNPCStep
-.asm_a561d:
+.asm_a561d
 	call Func_a5640
 	warp_player MAP_30_00, $2d, $12
-.asm_a562d:
+.asm_a562d
 	jp .asm_a5636
-.asm_a5630:
+.asm_a5630
 	writetext TreeBitstreamText_470f0
-.asm_a5636:
+.asm_a5636
 	jp .asm_a563f
-.asm_a5639:
+.asm_a5639
 	writetext TreeBitstreamText_470d8
-.asm_a563f:
+.asm_a563f
 	ret
 
 Func_a5640:

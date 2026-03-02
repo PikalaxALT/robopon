@@ -2615,41 +2615,41 @@ StartMenu_PressA:
 	call Func_3af6
 	jp .return
 
-.belongings: ; 55693 (15:5693)
+.belongings ; 55693 (15:5693)
 	callba_hli MainMenuSubmenu_Belongings
 	ld hl, $4000
 	pop de
 	push hl
 	jp .return
 
-.warehouse: ; 556a9 (15:56a9)
+.warehouse ; 556a9 (15:56a9)
 	callba_hli MainMenuSubmenu_Warehouse
 	jp .return
 
-.data: ; 556ba (15:56ba)
+.data ; 556ba (15:56ba)
 	callba_hli MainMenuSubmenu_Data
 	jp .return
 
-.options: ; 556cb (15:56cb)
+.options ; 556cb (15:56cb)
 	callba_hli MainMenuSubmenu_Options
 	ld hl, $4000
 	pop de
 	push hl
 	jp .return
 
-.save: ; 556e1 (15:56e1)
+.save ; 556e1 (15:56e1)
 	callba_hli MainMenuSubmenu_Save
 	ld hl, $4000
 	pop de
 	push hl
 	jp .return
 
-.title: ; 556f7 (15:56f7)
+.title ; 556f7 (15:56f7)
 	callba_hli MainMenuSubmenu_Title
 	ld hl, $4000
 	pop de
 	push hl
-.return: ; 5570a (15:570a)
+.return ; 5570a (15:570a)
 	ld a, [wc317]
 	or a
 	jp nz, .exit_menu
@@ -2657,9 +2657,9 @@ StartMenu_PressA:
 	push hl
 	jp .done
 
-.exit_menu: ; 55716 (15:5716)
+.exit_menu ; 55716 (15:5716)
 	ld hl, -1
-.done: ; 55719 (15:5719)
+.done ; 55719 (15:5719)
 	pop bc
 	ret
 

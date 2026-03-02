@@ -50,14 +50,14 @@ def load_charmap(infile: pathlib.Path):
 
 
 class Namespace(argparse.Namespace):
-    version: Literal["sun", "star"]
+    version: Literal["sun", "star", "sun-en"]
     offset: int
     kana_mode: bool = False
 
     @classmethod
     def from_cli(cls, args: list[str] | None = None):
         parser = argparse.ArgumentParser()
-        parser.add_argument("version", choices=["sun", "star"])
+        parser.add_argument("version", choices=["sun", "star", "sun-en"])
         parser.add_argument("offset", type=lambda arg: int(arg, 0))
         parser.add_argument("-k", dest="kana_mode", action="store_true")
         return parser.parse_args(args, cls())

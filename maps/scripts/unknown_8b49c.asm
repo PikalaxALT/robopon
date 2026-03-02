@@ -40,7 +40,7 @@ Func_8b49c:: ; 8b49c
 	or a
 	jp nz, .asm_8b4cb
 	loadpeople $02, Data_8b464
-.asm_8b4cb:
+.asm_8b4cb
 	loadpeople $02, Data_8b480
 	playmusic SONG_TOWER
 	scall Func_8001c
@@ -70,7 +70,7 @@ Func_8b4ea:
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
 	setevent EVENT_03C
-.asm_8b53c:
+.asm_8b53c
 	ret
 
 Func_8b53d:
@@ -81,13 +81,13 @@ Func_8b53d:
 	or a
 	jp z, .asm_8b54c
 	jp .asm_8b58b
-.asm_8b54c:
+.asm_8b54c
 	checkevent EVENT_059
 	cp $01
 	jp nz, .asm_8b560
 	writetext TreeBitstreamText_47037
 	jp .asm_8b58b
-.asm_8b560:
+.asm_8b560
 	xor a
 	scall Func_80653
 	loademote $01, $01, $09
@@ -96,7 +96,7 @@ Func_8b53d:
 	scall HideEmote
 	warp_player MAP_28_00, $07, $06
 	script_sleep 30
-.asm_8b58b:
+.asm_8b58b
 	ret
 
 Func_8b58c:
@@ -111,7 +111,7 @@ Func_8b58c:
 	jp nc, .asm_8b5a9
 	writetext TreeBitstreamText_47041
 	jp .asm_8b5dc
-.asm_8b5a9:
+.asm_8b5a9
 	checkevent EVENT_059
 	or a
 	jp nz, .asm_8b5c9
@@ -119,9 +119,9 @@ Func_8b58c:
 	playsfx SFX_32
 	writetext TreeBitstreamText_47029
 	jp .asm_8b5dc
-.asm_8b5c9:
+.asm_8b5c9
 	resetevent EVENT_059
 	playsfx SFX_28
 	writetext TreeBitstreamText_4701b
-.asm_8b5dc:
+.asm_8b5dc
 	ret

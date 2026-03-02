@@ -118,7 +118,7 @@ Func_c9d95:: ; c9d95
 	scall Func_8001c
 	landmarksign TreeBitstreamText_4699d
 	jp .asm_c9e73
-.asm_c9dde:
+.asm_c9dde
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c9c29
@@ -127,7 +127,7 @@ Func_c9d95:: ; c9d95
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a58
 	jp .asm_c9e73
-.asm_c9e04:
+.asm_c9e04
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c9c6f
@@ -136,7 +136,7 @@ Func_c9d95:: ; c9d95
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a17
 	jp .asm_c9e73
-.asm_c9e2a:
+.asm_c9e2a
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c9cb5
@@ -145,7 +145,7 @@ Func_c9d95:: ; c9d95
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469d9
 	jp .asm_c9e73
-.asm_c9e50:
+.asm_c9e50
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_c9cfb
@@ -153,7 +153,7 @@ Func_c9d95:: ; c9d95
 	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a99
-.asm_c9e73:
+.asm_c9e73
 	loadpeople $01, Data_c9d87
 	ret
 
@@ -178,17 +178,17 @@ Func_c9ea5:
 	or a
 	jp nz, .asm_c9ed8
 	jp .asm_c9ef8
-.asm_c9ed8:
+.asm_c9ed8
 	setevent EVENT_093
 	writetext TreeBitstreamText_42c39
 	jp .asm_c9eef
-.asm_c9ee9:
+.asm_c9ee9
 	writetext TreeBitstreamText_42cc4
-.asm_c9eef:
+.asm_c9eef
 	jp .asm_c9ef8
-.asm_c9ef2:
+.asm_c9ef2
 	writetext TreeBitstreamText_42c8e
-.asm_c9ef8:
+.asm_c9ef8
 	ret
 
 Data_c9ef9:
@@ -213,7 +213,7 @@ Func_c9f2b:
 	or a
 	jp nz, .asm_c9f7d
 	writetext TreeBitstreamText_471a6
-.asm_c9f54:
+.asm_c9f54
 	ld de, Data_c9f8d
 	ld hl, Data_c9f02
 	scall Func_803f5
@@ -223,17 +223,17 @@ Func_c9f2b:
 	cp $01
 	jp nz, .asm_c9f54
 	jp .asm_c9f8c
-.asm_c9f6c:
+.asm_c9f6c
 	setevent EVENT_098
 	writetext TreeBitstreamText_42c65
 	jp .asm_c9f83
-.asm_c9f7d:
+.asm_c9f7d
 	writetext TreeBitstreamText_42cb1
-.asm_c9f83:
+.asm_c9f83
 	jp .asm_c9f8c
-.asm_c9f86:
+.asm_c9f86
 	writetext TreeBitstreamText_42c72
-.asm_c9f8c:
+.asm_c9f8c
 	ret
 
 Data_c9f8d:
@@ -257,7 +257,7 @@ Func_c9fbf:
 	or a
 	jp nz, .asm_ca011
 	writetext TreeBitstreamText_471cf
-.asm_c9fe8:
+.asm_c9fe8
 	ld de, Data_ca021
 	ld hl, Data_c9f96
 	scall Func_802ef
@@ -267,17 +267,17 @@ Func_c9fbf:
 	cp $01
 	jp nz, .asm_c9fe8
 	jp .asm_ca020
-.asm_ca000:
+.asm_ca000
 	setevent EVENT_09D
 	writetext TreeBitstreamText_42c72
 	jp .asm_ca017
-.asm_ca011:
+.asm_ca011
 	writetext TreeBitstreamText_42c58
-.asm_ca017:
+.asm_ca017
 	jp .asm_ca020
-.asm_ca01a:
+.asm_ca01a
 	writetext TreeBitstreamText_42c65
-.asm_ca020:
+.asm_ca020
 	ret
 
 Data_ca021:
@@ -301,7 +301,7 @@ Func_ca053:
 	or a
 	jp nz, .asm_ca0a5
 	writetext TreeBitstreamText_471bb
-.asm_ca07c:
+.asm_ca07c
 	ld de, Data_ca0b5
 	ld hl, Data_ca02a
 	scall Func_80347
@@ -311,17 +311,17 @@ Func_ca053:
 	cp $01
 	jp nz, .asm_ca07c
 	jp .asm_ca0b4
-.asm_ca094:
+.asm_ca094
 	setevent EVENT_0A2
 	writetext TreeBitstreamText_42c58
 	jp .asm_ca0ab
-.asm_ca0a5:
+.asm_ca0a5
 	writetext TreeBitstreamText_42cb8
-.asm_ca0ab:
+.asm_ca0ab
 	jp .asm_ca0b4
-.asm_ca0ae:
+.asm_ca0ae
 	writetext TreeBitstreamText_42c8e
-.asm_ca0b4:
+.asm_ca0b4
 	ret
 
 Data_ca0b5:
@@ -346,7 +346,7 @@ Func_ca0e7:
 	or a
 	jp nz, .asm_ca139
 	writetext TreeBitstreamText_47192
-.asm_ca110:
+.asm_ca110
 	ld de, Data_ca149
 	ld hl, Data_ca0be
 	scall Func_8039e
@@ -356,17 +356,17 @@ Func_ca0e7:
 	cp $01
 	jp nz, .asm_ca110
 	jp .asm_ca148
-.asm_ca128:
+.asm_ca128
 	setevent EVENT_0A7
 	writetext TreeBitstreamText_42c8e
 	jp .asm_ca13f
-.asm_ca139:
+.asm_ca139
 	writetext TreeBitstreamText_42cc4
-.asm_ca13f:
+.asm_ca13f
 	jp .asm_ca148
-.asm_ca142:
+.asm_ca142
 	writetext TreeBitstreamText_42c8e
-.asm_ca148:
+.asm_ca148
 	ret
 
 Data_ca149:
@@ -394,16 +394,16 @@ Func_ca152:
 	jp nz, .asm_ca1ae
 	playmusic SONG_TOWER
 	jp .asm_ca1b3
-.asm_ca196:
+.asm_ca196
 	playmusic SONG_JUMP_MINIGAME
 	jp .asm_ca1b3
-.asm_ca19e:
+.asm_ca19e
 	playmusic SONG_MAZE_MINIGAME
 	jp .asm_ca1b3
-.asm_ca1a6:
+.asm_ca1a6
 	playmusic SONG_CARD_MINIGAME
 	jp .asm_ca1b3
-.asm_ca1ae:
+.asm_ca1ae
 	playmusic SONG_PUNCH_MINIGAME
-.asm_ca1b3:
+.asm_ca1b3
 	ret

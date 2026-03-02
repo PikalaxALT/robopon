@@ -2070,7 +2070,7 @@ BattleAnim_PlayMoveAnimScript: ; f0cf (3:70cf)
 	set_farcall_addrs_hli StartBattleSFXScript
 	pop af
 	call FarCall
-.loop: ; f122 (3:7122)
+.loop ; f122 (3:7122)
 	call NextBattleFrame
 	callba_hli PlayBattleSFXScript
 	set_farcall_addrs_hli PlayMoveAnimScript
@@ -2080,11 +2080,11 @@ BattleAnim_PlayMoveAnimScript: ; f0cf (3:70cf)
 	jp nz, .next
 	jp .done
 
-.next: ; f149 (3:7149)
+.next ; f149 (3:7149)
 	callba_hli QueueMoveAnimScriptGFXUpdate
 	jp .loop
 
-.done: ; f15a (3:715a)
+.done ; f15a (3:715a)
 	set_farcall_addrs_hli free
 	pop hl
 	call FarCall
@@ -2105,7 +2105,7 @@ BattleAnim_PlayMoveAnimScript: ; f0cf (3:70cf)
 	and $2
 	jp z, .skip_hblank_enable
 	call EnableHBlank
-.skip_hblank_enable: ; f191 (3:7191)
+.skip_hblank_enable ; f191 (3:7191)
 	ld l, $12
 	push hl
 	ld c, $14

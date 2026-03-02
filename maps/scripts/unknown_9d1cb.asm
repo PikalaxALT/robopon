@@ -75,10 +75,10 @@ Func_9d1cb:: ; 9d1cb
 	ld a, $06
 	ld [wc795], a
 	jp .asm_9d207
-.asm_9d203:
+.asm_9d203
 	xor a
 	ld [wc795], a
-.asm_9d207:
+.asm_9d207
 	set_frame_script Func_9d344
 	resetevent EVENT_010
 	loadwarps $03, Data_9d0b4
@@ -96,11 +96,11 @@ Func_9d1cb:: ; 9d1cb
 	ld a, [wBackupMapNumber]
 	cp $01
 	jp z, .asm_9d25d
-.asm_9d255:
+.asm_9d255
 	ld a, [wBackupMapGroup]
 	cp $ff
 	jp nz, .asm_9d2ab
-.asm_9d25d:
+.asm_9d25d
 	checkevent EVENT_0B9
 	cp $01
 	jp nz, .asm_9d29d
@@ -117,17 +117,17 @@ Func_9d1cb:: ; 9d1cb
 	jp nc, .asm_9d290
 	hideperson $03
 	jp .asm_9d297
-.asm_9d290:
+.asm_9d290
 	hideperson $02
-.asm_9d297:
+.asm_9d297
 	scall Func_8001c
 	jp .asm_9d2a8
-.asm_9d29d:
+.asm_9d29d
 	loadpeople $01, Data_9d185
 	scall Func_8001c
-.asm_9d2a8:
+.asm_9d2a8
 	jp .asm_9d31f
-.asm_9d2ab:
+.asm_9d2ab
 	ld a, [wBackupMapGroup]
 	cp $12
 	jp nz, .asm_9d31c
@@ -149,7 +149,7 @@ Func_9d1cb:: ; 9d1cb
 	checkevent EVENT_0EE
 	or a
 	jp nz, .asm_9d316
-.asm_9d2ed:
+.asm_9d2ed
 	loadpeople $03, Data_9d15b
 	hideperson $02
 	hideperson $04
@@ -160,13 +160,13 @@ Func_9d1cb:: ; 9d1cb
 	scall Func_8001c
 	call Func_9d4a7
 	jp .asm_9d319
-.asm_9d316:
+.asm_9d316
 	scall Func_8001c
-.asm_9d319:
+.asm_9d319
 	jp .asm_9d31f
-.asm_9d31c:
+.asm_9d31c
 	scall Func_8001c
-.asm_9d31f:
+.asm_9d31f
 	loadpeople $05, Data_9d115
 	pop bc
 	pop bc
@@ -195,12 +195,12 @@ Func_9d344:
 	ld hl, Data_9d332
 	scall Func_80d9b
 	jp .asm_9d367
-.asm_9d35b:
+.asm_9d35b
 	ld hl, Data_9d338
 	scall Func_80d9b
 	ld hl, Data_9d33e
 	scall Func_80d9b
-.asm_9d367:
+.asm_9d367
 	scall Func_80f02
 	ret
 
@@ -217,16 +217,16 @@ Func_9d36b:
 	ld a, [wc795]
 	cp $04
 	jp nz, .asm_9d396
-.asm_9d388:
+.asm_9d388
 	ld a, $04
 	ld [wc795], a
 	writetext TreeBitstreamText_42dac
 	jp .asm_9d3a0
-.asm_9d396:
+.asm_9d396
 	xor a
 	ld [wc795], a
 	writetext TreeBitstreamText_42dde
-.asm_9d3a0:
+.asm_9d3a0
 	ret
 
 Func_9d3a1:
@@ -242,16 +242,16 @@ Func_9d3a1:
 	ld a, [wc795]
 	cp $03
 	jp nz, .asm_9d3cc
-.asm_9d3be:
+.asm_9d3be
 	ld a, $03
 	ld [wc795], a
 	writetext TreeBitstreamText_42d9a
 	jp .asm_9d3d6
-.asm_9d3cc:
+.asm_9d3cc
 	xor a
 	ld [wc795], a
 	writetext TreeBitstreamText_42dde
-.asm_9d3d6:
+.asm_9d3d6
 	ret
 
 Func_9d3d7:
@@ -267,28 +267,28 @@ Func_9d3d7:
 	ld a, [wc795]
 	cp $02
 	jp nz, .asm_9d402
-.asm_9d3f4:
+.asm_9d3f4
 	ld a, $02
 	ld [wc795], a
 	writetext TreeBitstreamText_42d79
 	jp .asm_9d42a
-.asm_9d402:
+.asm_9d402
 	ld a, [wc795]
 	cp $04
 	jp z, .asm_9d412
 	ld a, [wc795]
 	cp $05
 	jp nz, .asm_9d420
-.asm_9d412:
+.asm_9d412
 	ld a, $05
 	ld [wc795], a
 	writetext TreeBitstreamText_42d89
 	jp .asm_9d42a
-.asm_9d420:
+.asm_9d420
 	xor a
 	ld [wc795], a
 	writetext TreeBitstreamText_42dde
-.asm_9d42a:
+.asm_9d42a
 	ret
 
 Func_9d42b:
@@ -304,12 +304,12 @@ Func_9d42b:
 	ld a, [wc795]
 	cp $01
 	jp nz, .asm_9d455
-.asm_9d447:
+.asm_9d447
 	ld a, $01
 	ld [wc795], a
 	writetext TreeBitstreamText_42d37
 	jp .asm_9d499
-.asm_9d455:
+.asm_9d455
 	ld a, [wc795]
 	cp $05
 	jp nz, .asm_9d48e
@@ -324,15 +324,15 @@ Func_9d42b:
 	call Func_9d344
 	setevent EVENT_0F2
 	jp .asm_9d499
-.asm_9d48e:
+.asm_9d48e
 	ld a, $01
 	ld [wc795], a
 	writetext TreeBitstreamText_42dde
-.asm_9d499:
+.asm_9d499
 	jp .asm_9d4a2
-.asm_9d49c:
+.asm_9d49c
 	writetext TreeBitstreamText_42df1
-.asm_9d4a2:
+.asm_9d4a2
 	ret
 
 Data_9d4a3:
@@ -362,34 +362,34 @@ Func_9d4a7:
 	call Func_9d56e
 	setevent EVENT_0BB
 	jp .asm_9d56a
-.asm_9d50d:
+.asm_9d50d
 	checkevent EVENT_0BC
 	or a
 	jp nz, .asm_9d525
 	call Func_9d61e
 	setevent EVENT_0BC
 	jp .asm_9d56a
-.asm_9d525:
+.asm_9d525
 	checkevent EVENT_0BD
 	or a
 	jp nz, .asm_9d53d
 	call Func_9d6ce
 	setevent EVENT_0BD
 	jp .asm_9d56a
-.asm_9d53d:
+.asm_9d53d
 	checkevent EVENT_0BE
 	or a
 	jp nz, .asm_9d555
 	call Func_9d77e
 	setevent EVENT_0BE
 	jp .asm_9d56a
-.asm_9d555:
+.asm_9d555
 	checkevent EVENT_0EE
 	or a
 	jp nz, .asm_9d56a
 	call Func_9d83b
 	setevent EVENT_0EE
-.asm_9d56a:
+.asm_9d56a
 	call Func_9d8fa
 	ret
 
@@ -601,7 +601,7 @@ Func_9d8fa:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9d910:
+.asm_9d910
 	checkevent EVENT_054
 	or a
 	jp nz, .asm_9d921
@@ -610,7 +610,7 @@ Func_9d8fa:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9d921:
+.asm_9d921
 	checkevent EVENT_055
 	or a
 	jp nz, .asm_9d932
@@ -619,7 +619,7 @@ Func_9d8fa:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9d932:
+.asm_9d932
 	checkevent EVENT_056
 	or a
 	jp nz, .asm_9d943
@@ -628,7 +628,7 @@ Func_9d8fa:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9d943:
+.asm_9d943
 	checkevent EVENT_057
 	or a
 	jp nz, .asm_9d954
@@ -637,7 +637,7 @@ Func_9d8fa:
 	inc a
 	ld hl, sp+$00
 	ld [hl], a
-.asm_9d954:
+.asm_9d954
 	ld hl, sp+$00
 	ld a, [hl]
 	or a
@@ -650,7 +650,7 @@ Func_9d8fa:
 	jp z, .asm_9d96f
 	cp $04
 	jp nz, .asm_9dae4
-.asm_9d96f:
+.asm_9d96f
 	script_sleep 30
 	writenpctext TreeBitstreamText_43362
 	playsfx SFX_59
@@ -676,7 +676,7 @@ Func_9d8fa:
 	hideperson $03
 	playsfx SFX_2E
 	jp .asm_9dae4
-.asm_9d9fd:
+.asm_9d9fd
 	script_sleep 30
 	writenpctext TreeBitstreamText_43362
 	playsfx SFX_59
@@ -696,7 +696,7 @@ Func_9d8fa:
 	hideperson $04
 	playsfx SFX_2E
 	jp .asm_9dae4
-.asm_9da64:
+.asm_9da64
 	script_sleep 30
 	loademote $01, $10, $23
 	ld e, $1b
@@ -726,7 +726,7 @@ Func_9d8fa:
 	hideperson $02
 	scall WaitEmote
 	scall HideEmote
-.asm_9dae4:
+.asm_9dae4
 	pop bc
 	ret
 
@@ -748,9 +748,9 @@ Func_9daea:
 	sprite_face $01, $02
 	setevent EVENT_010
 	jp .asm_9db2f
-.asm_9db29:
+.asm_9db29
 	writenpctext TreeBitstreamText_43c04
-.asm_9db2f:
+.asm_9db2f
 	ret
 
 Func_9db30:
@@ -809,7 +809,7 @@ Func_9db30:
 	face_player 0
 	hideperson 0
 	jp .asm_9dc23
-.asm_9dc1d:
+.asm_9dc1d
 	writetext TreeBitstreamText_3f79e
-.asm_9dc23:
+.asm_9dc23
 	ret

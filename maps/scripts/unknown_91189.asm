@@ -55,7 +55,7 @@ Func_91189:: ; 91189
 	scall Func_8001c
 	call Func_91219
 	jp .asm_9120c
-.asm_911c0:
+.asm_911c0
 	loadpeople $0a, Data_910fd
 	hideperson $02
 	checkevent EVENT_039
@@ -66,7 +66,7 @@ Func_91189:: ; 91189
 	ld a, $01
 	scall Func_80080
 	sprite_face $02, $01
-.asm_911ea:
+.asm_911ea
 	ld a, [wc790]
 	or a
 	jp z, .asm_91209
@@ -79,9 +79,9 @@ Func_91189:: ; 91189
 	ld de, Data_910cf
 	ld a, $09
 	scall SetPersonTextPointer
-.asm_91209:
+.asm_91209
 	scall Func_8001c
-.asm_9120c:
+.asm_9120c
 	ret
 
 Data_9120d:
@@ -162,17 +162,17 @@ Func_912e5:
 	setevent EVENT_05C
 	call Func_91342
 	jp .asm_91323
-.asm_9131d:
+.asm_9131d
 	writenpctext TreeBitstreamText_3b8b8
-.asm_91323:
+.asm_91323
 	jp .asm_91329
-.asm_91326:
+.asm_91326
 	call Func_91342
-.asm_91329:
+.asm_91329
 	jp .asm_91332
-.asm_9132c:
+.asm_9132c
 	writenpctext TreeBitstreamText_3b973
-.asm_91332:
+.asm_91332
 	pop bc
 	ret
 
@@ -237,13 +237,13 @@ Func_91342:
 	hideperson $02
 	setevent EVENT_039
 	jp .asm_91412
-.asm_9140c:
+.asm_9140c
 	writenpctext TreeBitstreamText_3b9d7
-.asm_91412:
+.asm_91412
 	jp .asm_9141b
-.asm_91415:
+.asm_91415
 	writenpctext TreeBitstreamText_3b9a9
-.asm_9141b:
+.asm_9141b
 	ret
 
 Func_9141c:
@@ -255,7 +255,7 @@ Func_9141c:
 	ld e, $00
 	ld a, $04
 	scall Func_806a0
-.asm_9142f:
+.asm_9142f
 	pop bc
 	ret
 
@@ -268,7 +268,7 @@ Func_91431:
 	ld e, $02
 	ld a, $04
 	scall Func_806a0
-.asm_91444:
+.asm_91444
 	pop bc
 	ret
 
@@ -281,7 +281,7 @@ Func_91446:
 	ld e, $01
 	ld a, $04
 	scall Func_806a0
-.asm_91459:
+.asm_91459
 	pop bc
 	ret
 
@@ -293,7 +293,7 @@ Func_9145b:
 	playsfx SFX_2E
 	ld a, $02
 	ld [wPlayerFacing], a
-.asm_91477:
+.asm_91477
 	ret
 
 Func_91478:
@@ -348,19 +348,19 @@ Func_91478:
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_9151d
-.asm_91508:
+.asm_91508
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_447bd
 	sprite_face $00, $07
 	jp .asm_9176c
-.asm_9151d:
+.asm_9151d
 	jp .asm_91529
-.asm_91520:
+.asm_91520
 	writetext TreeBitstreamText_45a40
 	jp .asm_9176c
-.asm_91529:
+.asm_91529
 	jp .asm_916a9
-.asm_9152c:
+.asm_9152c
 	ld a, [wc796]
 	cp $0b
 	jp nz, .asm_915dc
@@ -405,7 +405,7 @@ Func_91478:
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_915cd
-.asm_915b1:
+.asm_915b1
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_447bd
 	script_sleep 30
@@ -414,14 +414,14 @@ Func_91478:
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_9176c
-.asm_915cd:
+.asm_915cd
 	jp .asm_915d9
-.asm_915d0:
+.asm_915d0
 	writetext TreeBitstreamText_45a40
 	jp .asm_9176c
-.asm_915d9:
+.asm_915d9
 	jp .asm_916a9
-.asm_915dc:
+.asm_915dc
 	ld a, $13
 	scall Func_80e6d
 	ld hl, sp+$01
@@ -434,7 +434,7 @@ Func_91478:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_916a9
-.asm_915f6:
+.asm_915f6
 	face_player $07
 	ld a, [wc796]
 	cp $08
@@ -461,37 +461,37 @@ Func_91478:
 	jp z, .asm_91639
 	cp $01
 	jp nz, .asm_91693
-.asm_91639:
+.asm_91639
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45acc
 	jp .asm_91699
-.asm_91648:
+.asm_91648
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45abb
 	jp .asm_91699
-.asm_91657:
+.asm_91657
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aee
 	jp .asm_91699
-.asm_91666:
+.asm_91666
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aff
 	jp .asm_91699
-.asm_91675:
+.asm_91675
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b10
 	jp .asm_91699
-.asm_91684:
+.asm_91684
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b20
 	jp .asm_91699
-.asm_91693:
+.asm_91693
 	writenpctext TreeBitstreamText_4461b
-.asm_91699:
+.asm_91699
 	script_sleep 60
 	sprite_face $00, $07
 	jp .asm_9176c
-.asm_916a9:
+.asm_916a9
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $ff
@@ -510,7 +510,7 @@ Func_91478:
 	script_sleep 30
 	sprite_face $00, $07
 	jp .asm_9176c
-.asm_916ee:
+.asm_916ee
 	ld a, [wc796]
 	cp $0f
 	jp nz, .asm_9171e
@@ -524,7 +524,7 @@ Func_91478:
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_9176c
-.asm_9171e:
+.asm_9171e
 	ld a, [wc796]
 	cp $0c
 	jp c, .asm_91742
@@ -536,7 +536,7 @@ Func_91478:
 	ld a, [hl]
 	scall SpriteFace
 	jp .asm_9176c
-.asm_91742:
+.asm_91742
 	writenpctext TreeBitstreamText_44601
 	script_sleep 60
 	face_player $07
@@ -544,7 +544,7 @@ Func_91478:
 	writenpctext TreeBitstreamText_44657
 	script_sleep 30
 	sprite_face $00, $07
-.asm_9176c:
+.asm_9176c
 	pop bc
 	pop bc
 	ret

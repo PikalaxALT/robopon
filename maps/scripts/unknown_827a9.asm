@@ -35,7 +35,7 @@ Func_827a9::
 	ld a, [wc793]
 	cp $3
 	jp nz, .asm_8283f
-.asm_827de: ; 827de (20:67de)
+.asm_827de ; 827de (20:67de)
 	loadpeople $4, Data_82763
 	playmusic SONG_SHOP
 	ld a, [wBackupMapGroup]
@@ -50,7 +50,7 @@ Func_827a9::
 	call Func_829dd
 	jp .asm_8283c
 
-.asm_82811: ; 82811 (20:6811)
+.asm_82811 ; 82811 (20:6811)
 	checkevent EVENT_00D
 	or a
 	jp nz, .asm_8282c
@@ -59,19 +59,19 @@ Func_827a9::
 	setevent EVENT_00D
 	jp .asm_8283c
 
-.asm_8282c: ; 8282c (20:682c)
+.asm_8282c ; 8282c (20:682c)
 	hideperson $1
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ce3
-.asm_8283c: ; 8283c (20:683c)
+.asm_8283c ; 8283c (20:683c)
 	jp .asm_82859
 
-.asm_8283f: ; 8283f (20:683f)
+.asm_8283f ; 8283f (20:683f)
 	loadpeople $4, Data_82763
 	loadpeople $1, Data_8279b
 	hideperson $1
 	scall Func_8001c
-.asm_82859: ; 82859 (20:6859)
+.asm_82859 ; 82859 (20:6859)
 	ret
 
 Data_8285a:
@@ -86,13 +86,13 @@ Func_82866: ; 82866 (20:6866)
 	jp nc, .asm_82874
 	ld hl, Data_8285a
 	scall Func_80d9b
-.asm_82874: ; 82874 (20:6874)
+.asm_82874 ; 82874 (20:6874)
 	ld a, [wc78c]
 	cp $5
 	jp nc, .asm_82882
 	ld hl, Data_82860
 	scall Func_80d9b
-.asm_82882: ; 82882 (20:6882)
+.asm_82882 ; 82882 (20:6882)
 	scall Func_80f02
 	ret
 
@@ -150,22 +150,22 @@ Func_828df:
 	resetevent EVENT_0F8
 	jp .asm_82964
 
-.asm_82940: ; 82940 (20:6940)
+.asm_82940 ; 82940 (20:6940)
 	writenpctext TreeBitstreamText_45ebc
 	move_player $1, Data_828d7
 	move_person $2, Data_828d3, 1
 	scall WaitNPCStep
 	sprite_face $2, $2
-.asm_82964: ; 82964 (20:6964)
+.asm_82964 ; 82964 (20:6964)
 	jp .asm_8298b
 
-.asm_82967: ; 82967 (20:6967)
+.asm_82967 ; 82967 (20:6967)
 	writenpctext TreeBitstreamText_45ed5
 	move_player $1, Data_828d7
 	move_person $2, Data_828d3, 1
 	scall WaitNPCStep
 	sprite_face $2, $2
-.asm_8298b: ; 8298b (20:698b)
+.asm_8298b ; 8298b (20:698b)
 	ret
 
 Func_8298c:
@@ -174,7 +174,7 @@ Func_8298c:
 	jp nz, .asm_8299a
 	writenpctext TreeBitstreamText_45e48
 	scall Func_8045c
-.asm_8299a: ; 8299a (20:699a)
+.asm_8299a ; 8299a (20:699a)
 	ret
 
 Func_8299b:
@@ -190,14 +190,14 @@ Func_8299b:
 	jp nz, .asm_829b9
 	ld a, $1
 	ld [wc78c], a
-.asm_829b9: ; 829b9 (20:69b9)
+.asm_829b9 ; 829b9 (20:69b9)
 	set_farcall_addrs_hli Func_bd6fa
 	ld a, [wc78c]
 	ld e, a
 	ld d, $0
 	ld hl, Data_829d1
 	call FarCall
-.asm_829d0: ; 829d0 (20:69d0)
+.asm_829d0 ; 829d0 (20:69d0)
 	ret
 
 Data_829d1:
@@ -244,7 +244,7 @@ Func_829fd:
 	ld [wc79c], a
 	jp .asm_82a59
 
-.asm_82a43: ; 82a43 (20:6a43)
+.asm_82a43 ; 82a43 (20:6a43)
 	ld a, [wc79c]
 	or a
 	jp nz, .asm_82a52
@@ -252,11 +252,11 @@ Func_829fd:
 	ld [wc79c], a
 	jp .asm_82a59
 
-.asm_82a52: ; 82a52 (20:6a52)
+.asm_82a52 ; 82a52 (20:6a52)
 	ld a, [wc79c]
 	inc a
 	ld [wc79c], a
-.asm_82a59: ; 82a59 (20:6a59)
+.asm_82a59 ; 82a59 (20:6a59)
 	writetext TreeBitstreamText_45f3d
 	ld a, [wc79c]
 	cp $9
@@ -270,27 +270,27 @@ Func_829fd:
 	scall Func_80d4d
 	setevent EVENT_114
 	writetext TreeBitstreamText_45f98
-.asm_82a8f: ; 82a8f (20:6a8f)
+.asm_82a8f ; 82a8f (20:6a8f)
 	jp .asm_82a98
 
-.asm_82a92: ; 82a92 (20:6a92)
+.asm_82a92 ; 82a92 (20:6a92)
 	writetext TreeBitstreamText_45f1d
-.asm_82a98: ; 82a98 (20:6a98)
+.asm_82a98 ; 82a98 (20:6a98)
 	jp .asm_82aad
 
-.asm_82a9b: ; 82a9b (20:6a9b)
+.asm_82a9b ; 82a9b (20:6a9b)
 	writetext TreeBitstreamText_45ee8
 	ld a, [wc79c]
 	or a
 	jp nz, .asm_82aad
 	ld a, $1
 	ld [wc79c], a
-.asm_82aad: ; 82aad (20:6aad)
+.asm_82aad ; 82aad (20:6aad)
 	jp .asm_82ab6
 
-.asm_82ab0: ; 82ab0 (20:6ab0)
+.asm_82ab0 ; 82ab0 (20:6ab0)
 	writetext TreeBitstreamText_45fd7
-.asm_82ab6: ; 82ab6 (20:6ab6)
+.asm_82ab6 ; 82ab6 (20:6ab6)
 	pop bc
 	ret
 

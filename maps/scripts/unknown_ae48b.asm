@@ -51,11 +51,11 @@ Func_ae48b:: ; ae48b
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_ae4da
-.asm_ae4d2:
+.asm_ae4d2
 	ld a, $03
 	scall LoadPlayerSprite
 	jp .asm_ae4f1
-.asm_ae4da:
+.asm_ae4da
 	ld a, $1f
 	scall Func_80e6d
 	cp $ff
@@ -63,10 +63,10 @@ Func_ae48b:: ; ae48b
 	ld a, $02
 	scall LoadPlayerSprite
 	jp .asm_ae4f1
-.asm_ae4ec:
+.asm_ae4ec
 	ld a, $01
 	scall LoadPlayerSprite
-.asm_ae4f1:
+.asm_ae4f1
 	playmusic SONG_PRINCE_TEIL
 	scall Func_8001c
 	ret
@@ -109,23 +109,23 @@ Func_ae4fa:
 	add a, $05
 	ld [hl], a
 	jp .asm_ae553
-.asm_ae54b:
+.asm_ae54b
 	ld hl, sp+$01
 	ld a, [wMapY]
 	add a, $03
 	ld [hl], a
-.asm_ae553:
+.asm_ae553
 	ld c, $01
 	ld hl, sp+$00
 	reg16swap de, hl
 	ld a, $2b
 	scall MovePlayer
-.asm_ae560:
+.asm_ae560
 	jp .asm_ae568
-.asm_ae563:
+.asm_ae563
 	ld a, $03
 	scall LoadPlayerSprite
-.asm_ae568:
+.asm_ae568
 	pop bc
 	pop bc
 	pop bc
@@ -187,7 +187,7 @@ Func_ae56c:
 	face_player $04
 	hideperson $04
 	jp .asm_ae674
-.asm_ae66e:
+.asm_ae66e
 	writetext TreeBitstreamText_3f79e
-.asm_ae674:
+.asm_ae674
 	ret

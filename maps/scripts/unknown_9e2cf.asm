@@ -57,7 +57,7 @@ Func_9e305:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_9e3c2
-.asm_9e332:
+.asm_9e332
 	ld a, [wc790]
 	or a
 	jp z, .asm_9e3b9
@@ -74,12 +74,12 @@ Func_9e305:
 	jp nz, .asm_9e371
 	move_player $01, Data_9e2fb
 	jp .asm_9e37b
-.asm_9e364:
+.asm_9e364
 	move_player $01, Data_9e2ff
 	jp .asm_9e37b
-.asm_9e371:
+.asm_9e371
 	move_player $01, Data_9e2f5
-.asm_9e37b:
+.asm_9e37b
 	scall WaitNPCStep
 	playmusic SONG_NONE
 	playmusic SONG_0A
@@ -94,13 +94,13 @@ Func_9e305:
 	ld a, $03
 	scall PlayerFace
 	warp_player MAP_18_17, $07, $09
-.asm_9e3b6:
+.asm_9e3b6
 	jp .asm_9e3bf
-.asm_9e3b9:
+.asm_9e3b9
 	writetext TreeBitstreamText_470f0
-.asm_9e3bf:
+.asm_9e3bf
 	jp .asm_9e3c8
-.asm_9e3c2:
+.asm_9e3c2
 	writetext TreeBitstreamText_470d8
-.asm_9e3c8:
+.asm_9e3c8
 	ret

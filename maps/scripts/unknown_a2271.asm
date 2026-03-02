@@ -135,12 +135,12 @@ Func_a2271:: ; a2271
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_a2287:
+.asm_a2287
 	ld a, [wc7de]
 	cp $23
 	jp nz, .asm_a2297
 	setevent EVENT_05F
-.asm_a2297:
+.asm_a2297
 	ld a, $03
 	scall Func_80d01
 	ld a, [wc7de]
@@ -204,27 +204,27 @@ Func_a2271:: ; a2271
 	jp z, .asm_a2335
 	cp $01
 	jp nz, .asm_a2377
-.asm_a2335:
+.asm_a2335
 	loadwilds $05, Data_a2087
 	jp .asm_a237f
-.asm_a2340:
+.asm_a2340
 	loadwilds $05, Data_a20cd
 	jp .asm_a237f
-.asm_a234b:
+.asm_a234b
 	loadwilds $05, Data_a2113
 	jp .asm_a237f
-.asm_a2356:
+.asm_a2356
 	loadwilds $05, Data_a2159
 	jp .asm_a237f
-.asm_a2361:
+.asm_a2361
 	loadwilds $05, Data_a219f
 	jp .asm_a237f
-.asm_a236c:
+.asm_a236c
 	loadwilds $05, Data_a21e5
 	jp .asm_a237f
-.asm_a2377:
+.asm_a2377
 	loadwilds $05, Data_a222b
-.asm_a237f:
+.asm_a237f
 	ld a, [wc7de]
 	inc a
 	cp $24
@@ -264,7 +264,7 @@ Func_a2271:: ; a2271
 	add hl, de
 	ld e, $01
 	scall LoadWarps
-.asm_a23bf:
+.asm_a23bf
 	ld e, $01
 	ld hl, $5ff8
 	scall LoadWarps
@@ -275,12 +275,12 @@ Func_a2271:: ; a2271
 	jp nz, .asm_a23e0
 	writetext TreeBitstreamText_47e17
 	jp .asm_a23e9
-.asm_a23e0:
+.asm_a23e0
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $00
 	scall Func_80f83
-.asm_a23e9:
+.asm_a23e9
 	ret
 
 Data_a23ea:

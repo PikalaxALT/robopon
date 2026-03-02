@@ -39,7 +39,7 @@ Func_a167b:: ; a167b
 	hideperson $3
 	hideperson $4
 	hideperson $5
-.asm_a16e5:
+.asm_a16e5
 	playmusic SONG_WORLD_MAP
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46645
@@ -72,7 +72,7 @@ Func_a16f4:
 	jp nc, .asm_a1733
 	writenpctext TreeBitstreamText_3c390
 	jp .asm_a1752
-.asm_a1733:
+.asm_a1733
 	push hl
 	push hl
 	ld hl, $ffff
@@ -86,13 +86,13 @@ Func_a16f4:
 	pop bc
 	writenpctext TreeBitstreamText_3c3bd
 	setevent EVENT_03B
-.asm_a1752:
+.asm_a1752
 	jp .asm_a175b
-.asm_a1755:
+.asm_a1755
 	writenpctext TreeBitstreamText_3c35b
-.asm_a175b:
+.asm_a175b
 	jp .asm_a177c
-.asm_a175e:
+.asm_a175e
 	ld a, [wc790]
 	or a
 	jp z, .asm_a1776
@@ -101,9 +101,9 @@ Func_a16f4:
 	jp nc, .asm_a1776
 	writetext TreeBitstreamText_3d897
 	jp .asm_a177c
-.asm_a1776:
+.asm_a1776
 	writenpctext TreeBitstreamText_3c437
-.asm_a177c:
+.asm_a177c
 	ret
 
 Data_a177d:
@@ -134,7 +134,7 @@ Func_a17a6:
 	or a
 	jp nz, .asm_a17ef
 	jp .asm_a1848
-.asm_a17ef:
+.asm_a17ef
 	writetext TreeBitstreamText_3c677
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6dd
@@ -148,21 +148,21 @@ Func_a17a6:
 	ld a, $01
 	ld [wc78f], a
 	jp .asm_a182d
-.asm_a1827:
+.asm_a1827
 	writetext TreeBitstreamText_3c66a
-.asm_a182d:
+.asm_a182d
 	jp .asm_a1836
-.asm_a1830:
+.asm_a1830
 	writetext TreeBitstreamText_3c4f2
-.asm_a1836:
+.asm_a1836
 	jp .asm_a183f
-.asm_a1839:
+.asm_a1839
 	writetext TreeBitstreamText_3c4ab
-.asm_a183f:
+.asm_a183f
 	jp .asm_a1848
-.asm_a1842:
+.asm_a1842
 	writetext TreeBitstreamText_3c46d
-.asm_a1848:
+.asm_a1848
 	ret
 
 Data_a1849:
@@ -193,7 +193,7 @@ Func_a187b:
 	jp nz, .asm_a190a
 	writetext TreeBitstreamText_3c65d
 	writetext TreeBitstreamText_471a6
-.asm_a18ba:
+.asm_a18ba
 	ld de, Data_a192c
 	ld hl, Data_a1852
 	scall Func_803f5
@@ -203,7 +203,7 @@ Func_a187b:
 	cp $01
 	jp nz, .asm_a18ba
 	jp .asm_a192b
-.asm_a18d2:
+.asm_a18d2
 	writetext TreeBitstreamText_3c677
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c69d
@@ -217,21 +217,21 @@ Func_a187b:
 	ld a, $02
 	ld [wc78f], a
 	jp .asm_a1910
-.asm_a190a:
+.asm_a190a
 	writetext TreeBitstreamText_3c66a
-.asm_a1910:
+.asm_a1910
 	jp .asm_a1919
-.asm_a1913:
+.asm_a1913
 	writetext TreeBitstreamText_3c4f2
-.asm_a1919:
+.asm_a1919
 	jp .asm_a1922
-.asm_a191c:
+.asm_a191c
 	writetext TreeBitstreamText_3c4ab
-.asm_a1922:
+.asm_a1922
 	jp .asm_a192b
-.asm_a1925:
+.asm_a1925
 	writetext TreeBitstreamText_3c46d
-.asm_a192b:
+.asm_a192b
 	ret
 
 Data_a192c:
@@ -261,7 +261,7 @@ Func_a195e:
 	jp nz, .asm_a19ed
 	writetext TreeBitstreamText_3c65d
 	writetext TreeBitstreamText_471cf
-.asm_a199d:
+.asm_a199d
 	ld de, Data_a1a0f
 	ld hl, Data_a1935
 	scall Func_802ef
@@ -271,7 +271,7 @@ Func_a195e:
 	cp $01
 	jp nz, .asm_a199d
 	jp .asm_a1a0e
-.asm_a19b5:
+.asm_a19b5
 	writetext TreeBitstreamText_3c677
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6ad
@@ -285,21 +285,21 @@ Func_a195e:
 	ld a, $03
 	ld [wc78f], a
 	jp .asm_a19f3
-.asm_a19ed:
+.asm_a19ed
 	writetext TreeBitstreamText_3c66a
-.asm_a19f3:
+.asm_a19f3
 	jp .asm_a19fc
-.asm_a19f6:
+.asm_a19f6
 	writetext TreeBitstreamText_3c4f2
-.asm_a19fc:
+.asm_a19fc
 	jp .asm_a1a05
-.asm_a19ff:
+.asm_a19ff
 	writetext TreeBitstreamText_3c4ab
-.asm_a1a05:
+.asm_a1a05
 	jp .asm_a1a0e
-.asm_a1a08:
+.asm_a1a08
 	writetext TreeBitstreamText_3c46d
-.asm_a1a0e:
+.asm_a1a0e
 	ret
 
 Data_a1a0f:
@@ -329,7 +329,7 @@ Func_a1a41:
 	jp nz, .asm_a1ad0
 	writetext TreeBitstreamText_3c65d
 	writetext TreeBitstreamText_471bb
-.asm_a1a80:
+.asm_a1a80
 	ld de, Data_a1af2
 	ld hl, Data_a1a18
 	scall Func_80347
@@ -339,7 +339,7 @@ Func_a1a41:
 	cp $01
 	jp nz, .asm_a1a80
 	jp .asm_a1af1
-.asm_a1a98:
+.asm_a1a98
 	writetext TreeBitstreamText_3c677
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6ce
@@ -353,21 +353,21 @@ Func_a1a41:
 	ld a, $04
 	ld [wc78f], a
 	jp .asm_a1ad6
-.asm_a1ad0:
+.asm_a1ad0
 	writetext TreeBitstreamText_3c66a
-.asm_a1ad6:
+.asm_a1ad6
 	jp .asm_a1adf
-.asm_a1ad9:
+.asm_a1ad9
 	writetext TreeBitstreamText_3c4f2
-.asm_a1adf:
+.asm_a1adf
 	jp .asm_a1ae8
-.asm_a1ae2:
+.asm_a1ae2
 	writetext TreeBitstreamText_3c4ab
-.asm_a1ae8:
+.asm_a1ae8
 	jp .asm_a1af1
-.asm_a1aeb:
+.asm_a1aeb
 	writetext TreeBitstreamText_3c46d
-.asm_a1af1:
+.asm_a1af1
 	ret
 
 Data_a1af2:
@@ -397,7 +397,7 @@ Func_a1b24:
 	jp nz, .asm_a1bb3
 	writetext TreeBitstreamText_3c65d
 	writetext TreeBitstreamText_47192
-.asm_a1b63:
+.asm_a1b63
 	ld de, Data_a1bd5
 	ld hl, Data_a1afb
 	scall Func_8039e
@@ -407,7 +407,7 @@ Func_a1b24:
 	cp $01
 	jp nz, .asm_a1b63
 	jp .asm_a1bd4
-.asm_a1b7b:
+.asm_a1b7b
 	writetext TreeBitstreamText_3c677
 	playsfx SFX_2A
 	writetext TreeBitstreamText_3c6be
@@ -421,21 +421,21 @@ Func_a1b24:
 	ld a, $05
 	ld [wc78f], a
 	jp .asm_a1bb9
-.asm_a1bb3:
+.asm_a1bb3
 	writetext TreeBitstreamText_3c66a
-.asm_a1bb9:
+.asm_a1bb9
 	jp .asm_a1bc2
-.asm_a1bbc:
+.asm_a1bbc
 	writetext TreeBitstreamText_3c4f2
-.asm_a1bc2:
+.asm_a1bc2
 	jp .asm_a1bcb
-.asm_a1bc5:
+.asm_a1bc5
 	writetext TreeBitstreamText_3c4ab
-.asm_a1bcb:
+.asm_a1bcb
 	jp .asm_a1bd4
-.asm_a1bce:
+.asm_a1bce
 	writetext TreeBitstreamText_3c46d
-.asm_a1bd4:
+.asm_a1bd4
 	ret
 
 Data_a1bd5:

@@ -75,13 +75,13 @@ Func_85a1d::
 	ld d, b
 	call CompareHLtoDE
 	jp c, .asm_85a59
-.asm_85a4e: ; 85a4e (21:5a4e)
+.asm_85a4e ; 85a4e (21:5a4e)
 	setevent EVENT_038
 	jp .asm_85a61
 
-.asm_85a59: ; 85a59 (21:5a59)
+.asm_85a59 ; 85a59 (21:5a59)
 	resetevent EVENT_038
-.asm_85a61: ; 85a61 (21:5a61)
+.asm_85a61 ; 85a61 (21:5a61)
 	ld a, $1
 	ld [wc7de], a
 	loadwarps $5, Data_85992
@@ -102,16 +102,16 @@ Func_85a1d::
 	ld [wc7da], a
 	jp .asm_85aac
 
-.asm_85aa8: ; 85aa8 (21:5aa8)
+.asm_85aa8 ; 85aa8 (21:5aa8)
 	xor a
 	ld [wc7da], a
-.asm_85aac: ; 85aac (21:5aac)
+.asm_85aac ; 85aac (21:5aac)
 	jp .asm_85abc
 
-.asm_85aaf: ; 85aaf (21:5aaf)
+.asm_85aaf ; 85aaf (21:5aaf)
 	loadpeople $5, Data_859c9
 	playmusic SONG_TOWN3
-.asm_85abc: ; 85abc (21:5abc)
+.asm_85abc ; 85abc (21:5abc)
 	ld a, [wc797]
 	cp $7
 	jp c, .asm_85afc
@@ -121,7 +121,7 @@ Func_85a1d::
 	checkevent EVENT_007
 	cp $1
 	jp z, .asm_85afc
-.asm_85ada: ; 85ada (21:5ada)
+.asm_85ada ; 85ada (21:5ada)
 	hideperson $4
 	loadpeople $1, Data_85a0f
 	checkevent EVENT_014
@@ -130,7 +130,7 @@ Func_85a1d::
 	ld de, Data_8598e
 	ld a, $5
 	scall SetPersonTextPointer
-.asm_85afc: ; 85afc (21:5afc)
+.asm_85afc ; 85afc (21:5afc)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_467bb
 	pop bc
@@ -166,7 +166,7 @@ Func_85b17:
 	setevent EVENT_0C0
 	jp .asm_85b6d
 
-.asm_85b52: ; 85b52 (21:5b52)
+.asm_85b52 ; 85b52 (21:5b52)
 	face_player -$1
 	ld hl, wc797
 	ld l, [hl]
@@ -179,7 +179,7 @@ Func_85b17:
 	ld d, [hl]
 	reg16swap de, hl
 	scall PrintTextStandard
-.asm_85b6d: ; 85b6d (21:5b6d)
+.asm_85b6d ; 85b6d (21:5b6d)
 	pop bc
 	ret
 
@@ -209,7 +209,7 @@ Func_85b98:
 	jp nz, .asm_85bd9
 	jp .asm_85c1a
 
-.asm_85bd9: ; 85bd9 (21:5bd9)
+.asm_85bd9 ; 85bd9 (21:5bd9)
 	setevent EVENT_064
 	ld a, [wc797]
 	inc a
@@ -220,19 +220,19 @@ Func_85b98:
 	writenpctext TreeBitstreamText_39ed3
 	jp .asm_85c08
 
-.asm_85c02: ; 85c02 (21:5c02)
+.asm_85c02 ; 85c02 (21:5c02)
 	writenpctext TreeBitstreamText_39ef3
-.asm_85c08: ; 85c08 (21:5c08)
+.asm_85c08 ; 85c08 (21:5c08)
 	jp .asm_85c11
 
-.asm_85c0b: ; 85c0b (21:5c0b)
+.asm_85c0b ; 85c0b (21:5c0b)
 	writenpctext TreeBitstreamText_39f09
-.asm_85c11: ; 85c11 (21:5c11)
+.asm_85c11 ; 85c11 (21:5c11)
 	jp .asm_85c1a
 
-.asm_85c14: ; 85c14 (21:5c14)
+.asm_85c14 ; 85c14 (21:5c14)
 	writetext TreeBitstreamText_3a27f
-.asm_85c1a: ; 85c1a (21:5c1a)
+.asm_85c1a ; 85c1a (21:5c1a)
 	pop bc
 	ret
 

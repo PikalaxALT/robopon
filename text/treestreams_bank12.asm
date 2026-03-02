@@ -538,7 +538,7 @@ Func_4b8ac:: ; 4b8ac (12:78ac)
 	ld a, b
 	ret
 
-.GetNextBit: ; 4bc1e (12:7c1e)
+.GetNextBit ; 4bc1e (12:7c1e)
 	sla c
 	dec b
 	ret nz

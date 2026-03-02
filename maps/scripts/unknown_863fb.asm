@@ -132,13 +132,13 @@ Func_863fb::
 	ld d, b
 	call CompareHLtoDE
 	jp c, .asm_86437
-.asm_8642c: ; 8642c (21:642c)
+.asm_8642c ; 8642c (21:642c)
 	setevent EVENT_038
 	jp .asm_8643f
 
-.asm_86437: ; 86437 (21:6437)
+.asm_86437 ; 86437 (21:6437)
 	resetevent EVENT_038
-.asm_8643f: ; 8643f (21:643f)
+.asm_8643f ; 8643f (21:643f)
 	ld a, [wSaveFileExists]
 	or a
 	jp nz, .asm_86467
@@ -150,14 +150,14 @@ Func_863fb::
 	ld [wc7de], a
 	jp .asm_86467
 
-.asm_86458: ; 86458 (21:6458)
+.asm_86458 ; 86458 (21:6458)
 	ld a, [wMapX]
 	cp $4
 	jp nz, .asm_86467
 	ld a, [wc7de]
 	inc a
 	ld [wc7de], a
-.asm_86467: ; 86467 (21:6467)
+.asm_86467 ; 86467 (21:6467)
 	checkevent EVENT_038
 	cp $1
 	jp nz, .asm_8649b
@@ -172,15 +172,15 @@ Func_863fb::
 	ld [wc7da], a
 	jp .asm_86498
 
-.asm_86494: ; 86494 (21:6494)
+.asm_86494 ; 86494 (21:6494)
 	xor a
 	ld [wc7da], a
-.asm_86498: ; 86498 (21:6498)
+.asm_86498 ; 86498 (21:6498)
 	jp .asm_864a0
 
-.asm_8649b: ; 8649b (21:649b)
+.asm_8649b ; 8649b (21:649b)
 	playmusic SONG_TOWN3
-.asm_864a0: ; 864a0 (21:64a0)
+.asm_864a0 ; 864a0 (21:64a0)
 	ld a, [wc7de]
 	cp $6
 	jp z, .asm_86536
@@ -200,14 +200,14 @@ Func_863fb::
 	loadwilds $5, Data_8620c
 	jp .asm_864e8
 
-.asm_864e0: ; 864e0 (21:64e0)
+.asm_864e0 ; 864e0 (21:64e0)
 	loadpeople $3, Data_86361
-.asm_864e8: ; 864e8 (21:64e8)
+.asm_864e8 ; 864e8 (21:64e8)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_467c7
 	jp .asm_86575
 
-.asm_864f4: ; 864f4 (21:64f4)
+.asm_864f4 ; 864f4 (21:64f4)
 	loadwarps $3, Data_8631f
 	checkevent EVENT_038
 	cp $1
@@ -220,14 +220,14 @@ Func_863fb::
 	loadwilds $5, Data_86252
 	jp .asm_8652a
 
-.asm_86522: ; 86522 (21:6522)
+.asm_86522 ; 86522 (21:6522)
 	loadpeople $4, Data_8638b
-.asm_8652a: ; 8652a (21:652a)
+.asm_8652a ; 8652a (21:652a)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_467df
 	jp .asm_86575
 
-.asm_86536: ; 86536 (21:6536)
+.asm_86536 ; 86536 (21:6536)
 	loadwarps $3, Data_86340
 	checkevent EVENT_038
 	cp $1
@@ -240,12 +240,12 @@ Func_863fb::
 	loadwilds $5, Data_86298
 	jp .asm_8656c
 
-.asm_86564: ; 86564 (21:6564)
+.asm_86564 ; 86564 (21:6564)
 	loadpeople $4, Data_863c3
-.asm_8656c: ; 8656c (21:656c)
+.asm_8656c ; 8656c (21:656c)
 	scall Func_8001c
 	landmarksign TreeBitstreamText_467f7
-.asm_86575: ; 86575 (21:6575)
+.asm_86575 ; 86575 (21:6575)
 	pop bc
 	pop bc
 	pop bc
@@ -274,7 +274,7 @@ Func_86579:
 	setevent EVENT_0C5
 	jp .asm_865df
 
-.asm_865be: ; 865be (21:65be)
+.asm_865be ; 865be (21:65be)
 	writenpctext TreeBitstreamText_3f8cd
 	writetext TreeBitstreamText_3f8f1
 	ld e, $0
@@ -282,22 +282,22 @@ Func_86579:
 	scall Func_80d74
 	writenpctext TreeBitstreamText_3f901
 	setevent EVENT_0C5
-.asm_865df: ; 865df (21:65df)
+.asm_865df ; 865df (21:65df)
 	jp .asm_865e8
 
-.asm_865e2: ; 865e2 (21:65e2)
+.asm_865e2 ; 865e2 (21:65e2)
 	writenpctext TreeBitstreamText_3f7ae
-.asm_865e8: ; 865e8 (21:65e8)
+.asm_865e8 ; 865e8 (21:65e8)
 	jp .asm_865f1
 
-.asm_865eb: ; 865eb (21:65eb)
+.asm_865eb ; 865eb (21:65eb)
 	writetext TreeBitstreamText_3fa6b
-.asm_865f1: ; 865f1 (21:65f1)
+.asm_865f1 ; 865f1 (21:65f1)
 	jp .asm_865fa
 
-.asm_865f4: ; 865f4 (21:65f4)
+.asm_865f4 ; 865f4 (21:65f4)
 	writetext TreeBitstreamText_3fa6b
-.asm_865fa: ; 865fa (21:65fa)
+.asm_865fa ; 865fa (21:65fa)
 	pop bc
 	ret
 
@@ -327,7 +327,7 @@ Func_86625:
 	jp nz, .asm_86666
 	jp .asm_866a7
 
-.asm_86666: ; 86666 (21:6666)
+.asm_86666 ; 86666 (21:6666)
 	setevent EVENT_065
 	ld a, [wc797]
 	inc a
@@ -338,19 +338,19 @@ Func_86625:
 	writenpctext TreeBitstreamText_39f4e
 	jp .asm_86695
 
-.asm_8668f: ; 8668f (21:668f)
+.asm_8668f ; 8668f (21:668f)
 	writenpctext TreeBitstreamText_39f5f
-.asm_86695: ; 86695 (21:6695)
+.asm_86695 ; 86695 (21:6695)
 	jp .asm_8669e
 
-.asm_86698: ; 86698 (21:6698)
+.asm_86698 ; 86698 (21:6698)
 	writenpctext TreeBitstreamText_39f70
-.asm_8669e: ; 8669e (21:669e)
+.asm_8669e ; 8669e (21:669e)
 	jp .asm_866a7
 
-.asm_866a1: ; 866a1 (21:66a1)
+.asm_866a1 ; 866a1 (21:66a1)
 	writetext TreeBitstreamText_3a27f
-.asm_866a7: ; 866a7 (21:66a7)
+.asm_866a7 ; 866a7 (21:66a7)
 	pop bc
 	ret
 
@@ -383,7 +383,7 @@ Func_866df:
 	jp nz, .asm_86720
 	jp .asm_86761
 
-.asm_86720: ; 86720 (21:6720)
+.asm_86720 ; 86720 (21:6720)
 	setevent EVENT_067
 	ld a, [wc797]
 	inc a
@@ -394,19 +394,19 @@ Func_866df:
 	writenpctext TreeBitstreamText_3a0b1
 	jp .asm_8674f
 
-.asm_86749: ; 86749 (21:6749)
+.asm_86749 ; 86749 (21:6749)
 	writenpctext TreeBitstreamText_3a0c9
-.asm_8674f: ; 8674f (21:674f)
+.asm_8674f ; 8674f (21:674f)
 	jp .asm_86758
 
-.asm_86752: ; 86752 (21:6752)
+.asm_86752 ; 86752 (21:6752)
 	writenpctext TreeBitstreamText_3a0e1
-.asm_86758: ; 86758 (21:6758)
+.asm_86758 ; 86758 (21:6758)
 	jp .asm_86761
 
-.asm_8675b: ; 8675b (21:675b)
+.asm_8675b ; 8675b (21:675b)
 	writetext TreeBitstreamText_3a27f
-.asm_86761: ; 86761 (21:6761)
+.asm_86761 ; 86761 (21:6761)
 	pop bc
 	ret
 
@@ -439,7 +439,7 @@ Func_86799:
 	jp nz, .asm_867da
 	jp .asm_8681b
 
-.asm_867da: ; 867da (21:67da)
+.asm_867da ; 867da (21:67da)
 	setevent EVENT_069
 	ld a, [wc797]
 	inc a
@@ -450,19 +450,19 @@ Func_86799:
 	writenpctext TreeBitstreamText_39fc7
 	jp .asm_86809
 
-.asm_86803: ; 86803 (21:6803)
+.asm_86803 ; 86803 (21:6803)
 	writenpctext TreeBitstreamText_39fd9
-.asm_86809: ; 86809 (21:6809)
+.asm_86809 ; 86809 (21:6809)
 	jp .asm_86812
 
-.asm_8680c: ; 8680c (21:680c)
+.asm_8680c ; 8680c (21:680c)
 	writenpctext TreeBitstreamText_39fe7
-.asm_86812: ; 86812 (21:6812)
+.asm_86812 ; 86812 (21:6812)
 	jp .asm_8681b
 
-.asm_86815: ; 86815 (21:6815)
+.asm_86815 ; 86815 (21:6815)
 	writetext TreeBitstreamText_3a27f
-.asm_8681b: ; 8681b (21:681b)
+.asm_8681b ; 8681b (21:681b)
 	pop bc
 	ret
 

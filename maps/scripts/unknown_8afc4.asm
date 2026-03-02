@@ -70,13 +70,13 @@ Func_8afc4:: ; 8afc4
 	jp nz, .asm_8b001
 	hideperson 0
 	hideperson $01
-.asm_8b001:
+.asm_8b001
 	checkevent EVENT_085
 	cp $01
 	jp nz, .asm_8b01a
 	hideperson $02
 	hideperson $03
-.asm_8b01a:
+.asm_8b01a
 	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46904
@@ -103,7 +103,7 @@ Func_8b05e:
 	writetext TreeBitstreamText_42972
 	face_player -$01
 	writetext TreeBitstreamText_471a6
-.asm_8b07f:
+.asm_8b07f
 	ld de, Data_8b10b
 	ld hl, Data_8b035
 	scall Func_803f5
@@ -113,7 +113,7 @@ Func_8b05e:
 	cp $01
 	jp nz, .asm_8b07f
 	jp .asm_8b109
-.asm_8b097:
+.asm_8b097
 	writetext TreeBitstreamText_42972
 	move_person 0, Data_8b029, 1
 	scall WaitNPCStep
@@ -123,7 +123,7 @@ Func_8b05e:
 	sprite_face $02, $01
 	writetext TreeBitstreamText_429aa
 	writetext TreeBitstreamText_471a6
-.asm_8b0c6:
+.asm_8b0c6
 	ld de, Data_8b111
 	ld hl, Data_8b035
 	scall Func_803f5
@@ -133,7 +133,7 @@ Func_8b05e:
 	cp $01
 	jp nz, .asm_8b0c6
 	jp .asm_8b109
-.asm_8b0de:
+.asm_8b0de
 	writetext TreeBitstreamText_429aa
 	move_person $01, Data_8b02f, 1
 	scall WaitNPCStep
@@ -141,7 +141,7 @@ Func_8b05e:
 	setevent EVENT_084
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-.asm_8b109:
+.asm_8b109
 	pop bc
 	ret
 
@@ -172,7 +172,7 @@ Func_8b150:
 	face_player $01
 	writetext TreeBitstreamText_429aa
 	writetext TreeBitstreamText_471a6
-.asm_8b166:
+.asm_8b166
 	ld de, Data_8b1fe
 	ld hl, Data_8b127
 	scall Func_803f5
@@ -182,7 +182,7 @@ Func_8b150:
 	cp $01
 	jp nz, .asm_8b166
 	jp .asm_8b1fd
-.asm_8b17e:
+.asm_8b17e
 	writetext TreeBitstreamText_429aa
 	move_person $01, Data_8b11d, 1
 	scall WaitNPCStep
@@ -193,14 +193,14 @@ Func_8b150:
 	ld a, $03
 	scall PlayerFace
 	jp .asm_8b1b9
-.asm_8b1a7:
+.asm_8b1a7
 	move_person 0, Data_8b123, 1
 	scall WaitNPCStep
 	sprite_face $01, 0
-.asm_8b1b9:
+.asm_8b1b9
 	writetext TreeBitstreamText_42972
 	writetext TreeBitstreamText_471a6
-.asm_8b1c5:
+.asm_8b1c5
 	ld de, Data_8b204
 	ld hl, Data_8b127
 	scall Func_803f5
@@ -210,13 +210,13 @@ Func_8b150:
 	cp $01
 	jp nz, .asm_8b1c5
 	jp .asm_8b1fd
-.asm_8b1dd:
+.asm_8b1dd
 	writetext TreeBitstreamText_42972
 	move_person 0, Data_8b117, 1
 	scall WaitNPCStep
 	hideperson 0
 	setevent EVENT_084
-.asm_8b1fd:
+.asm_8b1fd
 	ret
 
 Data_8b1fe:
@@ -249,7 +249,7 @@ Func_8b243:
 	writetext TreeBitstreamText_42972
 	face_player -$01
 	writetext TreeBitstreamText_471a6
-.asm_8b264:
+.asm_8b264
 	ld de, Data_8b300
 	ld hl, Data_8b21a
 	scall Func_803f5
@@ -259,7 +259,7 @@ Func_8b243:
 	cp $01
 	jp nz, .asm_8b264
 	jp .asm_8b2fe
-.asm_8b27c:
+.asm_8b27c
 	writetext TreeBitstreamText_42972
 	move_person $02, Data_8b20a, 1
 	scall WaitNPCStep
@@ -271,7 +271,7 @@ Func_8b243:
 	scall PlayerFace
 	writetext TreeBitstreamText_429aa
 	writetext TreeBitstreamText_471a6
-.asm_8b2bb:
+.asm_8b2bb
 	ld de, Data_8b306
 	ld hl, Data_8b21a
 	scall Func_803f5
@@ -281,7 +281,7 @@ Func_8b243:
 	cp $01
 	jp nz, .asm_8b2bb
 	jp .asm_8b2fe
-.asm_8b2d3:
+.asm_8b2d3
 	writetext TreeBitstreamText_429aa
 	move_person $03, Data_8b214, 1
 	scall WaitNPCStep
@@ -289,7 +289,7 @@ Func_8b243:
 	setevent EVENT_085
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-.asm_8b2fe:
+.asm_8b2fe
 	pop bc
 	ret
 
@@ -323,7 +323,7 @@ Func_8b345:
 	writetext TreeBitstreamText_429aa
 	face_player -$01
 	writetext TreeBitstreamText_471a6
-.asm_8b366:
+.asm_8b366
 	ld de, Data_8b402
 	ld hl, Data_8b31c
 	scall Func_803f5
@@ -333,7 +333,7 @@ Func_8b345:
 	cp $01
 	jp nz, .asm_8b366
 	jp .asm_8b400
-.asm_8b37e:
+.asm_8b37e
 	writetext TreeBitstreamText_429aa
 	move_person $03, Data_8b30c, 1
 	scall WaitNPCStep
@@ -345,7 +345,7 @@ Func_8b345:
 	scall PlayerFace
 	writetext TreeBitstreamText_42972
 	writetext TreeBitstreamText_471a6
-.asm_8b3bd:
+.asm_8b3bd
 	ld de, Data_8b408
 	ld hl, Data_8b31c
 	scall Func_803f5
@@ -355,7 +355,7 @@ Func_8b345:
 	cp $01
 	jp nz, .asm_8b3bd
 	jp .asm_8b400
-.asm_8b3d5:
+.asm_8b3d5
 	writetext TreeBitstreamText_42972
 	move_person $02, Data_8b316, 1
 	scall WaitNPCStep
@@ -363,7 +363,7 @@ Func_8b345:
 	setevent EVENT_085
 	playmusic SONG_NONE
 	playmusic SONG_TOWER
-.asm_8b400:
+.asm_8b400
 	pop bc
 	ret
 

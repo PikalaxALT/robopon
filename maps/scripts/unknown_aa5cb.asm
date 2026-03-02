@@ -112,9 +112,9 @@ Func_aa5cb:: ; aa5cb
 	loadwarps $01, Data_aa472
 	loadpeople $01, Data_aa5bd
 	jp .asm_aa62a
-.asm_aa622:
+.asm_aa622
 	loadpeople $01, Data_aa5af
-.asm_aa62a:
+.asm_aa62a
 	checkevent EVENT_034
 	cp $01
 	jp nz, .asm_aa666
@@ -133,7 +133,7 @@ Func_aa5cb:: ; aa5cb
 	scall Func_8001c
 	call Func_aab3f
 	jp .asm_aa6dd
-.asm_aa666:
+.asm_aa666
 	checkevent EVENT_022
 	cp $01
 	jp nz, .asm_aa69e
@@ -149,9 +149,9 @@ Func_aa5cb:: ; aa5cb
 	loadpeople $01, Data_aa593
 	scall Func_8001c
 	call Func_aaad6
-.asm_aa69b:
+.asm_aa69b
 	jp .asm_aa6dd
-.asm_aa69e:
+.asm_aa69e
 	checkevent EVENT_022
 	or a
 	jp nz, .asm_aa6da
@@ -164,12 +164,12 @@ Func_aa5cb:: ; aa5cb
 	jp nz, .asm_aa6d4
 	hideperson $10
 	hideperson $11
-.asm_aa6d4:
+.asm_aa6d4
 	scall Func_8001c
 	jp .asm_aa6dd
-.asm_aa6da:
+.asm_aa6da
 	scall Func_8001c
-.asm_aa6dd:
+.asm_aa6dd
 	ret
 
 Data_aa6de:
@@ -201,7 +201,7 @@ Func_aa6ee:
 	scall Func_80e6d
 	cp $ff
 	jp z, .asm_aa7ab
-.asm_aa71b:
+.asm_aa71b
 	ld a, [wc790]
 	or a
 	jp z, .asm_aa7a2
@@ -218,12 +218,12 @@ Func_aa6ee:
 	jp nz, .asm_aa75a
 	move_player $01, Data_aa6de
 	jp .asm_aa764
-.asm_aa74d:
+.asm_aa74d
 	move_player $01, Data_aa6e2
 	jp .asm_aa764
-.asm_aa75a:
+.asm_aa75a
 	move_player $01, Data_aa6e8
-.asm_aa764:
+.asm_aa764
 	scall WaitNPCStep
 	playmusic SONG_NONE
 	playmusic SONG_0A
@@ -238,15 +238,15 @@ Func_aa6ee:
 	ld a, $02
 	scall PlayerFace
 	warp_player MAP_30_01, $0a, $12
-.asm_aa79f:
+.asm_aa79f
 	jp .asm_aa7a8
-.asm_aa7a2:
+.asm_aa7a2
 	writetext TreeBitstreamText_470f0
-.asm_aa7a8:
+.asm_aa7a8
 	jp .asm_aa7b1
-.asm_aa7ab:
+.asm_aa7ab
 	writetext TreeBitstreamText_470d8
-.asm_aa7b1:
+.asm_aa7b1
 	ret
 
 Data_aa7b2:
@@ -273,7 +273,7 @@ Func_aa7b6:
 	ld a, [hl]
 	dec a
 	scall SpriteFace
-.asm_aa7ef:
+.asm_aa7ef
 	pop bc
 	ret
 
@@ -301,7 +301,7 @@ Func_aa7f5:
 	ld a, [hl]
 	inc a
 	scall SpriteFace
-.asm_aa82e:
+.asm_aa82e
 	pop bc
 	ret
 
@@ -329,7 +329,7 @@ Func_aa834:
 	ld a, [hl]
 	dec a
 	scall SpriteFace
-.asm_aa86d:
+.asm_aa86d
 	pop bc
 	ret
 
@@ -382,18 +382,18 @@ Func_aa86f:
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_aa8fb
-.asm_aa8ed:
+.asm_aa8ed
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_44fed
 	jp .asm_aaaa4
-.asm_aa8fb:
+.asm_aa8fb
 	jp .asm_aa907
-.asm_aa8fe:
+.asm_aa8fe
 	writetext TreeBitstreamText_45a40
 	jp .asm_aaaa4
-.asm_aa907:
+.asm_aa907
 	jp .asm_aaa4f
-.asm_aa90a:
+.asm_aa90a
 	ld a, [wc796]
 	cp $0c
 	jp nz, .asm_aa994
@@ -434,18 +434,18 @@ Func_aa86f:
 	ld hl, sp+$00
 	ld [hl], $01
 	jp .asm_aa985
-.asm_aa977:
+.asm_aa977
 	playsfx SFX_69
 	writenpctext TreeBitstreamText_45194
 	jp .asm_aaaa4
-.asm_aa985:
+.asm_aa985
 	jp .asm_aa991
-.asm_aa988:
+.asm_aa988
 	writetext TreeBitstreamText_45a40
 	jp .asm_aaaa4
-.asm_aa991:
+.asm_aa991
 	jp .asm_aaa4f
-.asm_aa994:
+.asm_aa994
 	ld a, $49
 	scall Func_80e6d
 	ld hl, sp+$01
@@ -458,7 +458,7 @@ Func_aa86f:
 	ld [hl], a
 	cp $ff
 	jp z, .asm_aaa4f
-.asm_aa9ae:
+.asm_aa9ae
 	ld a, [wc796]
 	cp $08
 	jp z, .asm_aaa37
@@ -484,35 +484,35 @@ Func_aa86f:
 	jp z, .asm_aa9ec
 	cp $01
 	jp nz, .asm_aaa46
-.asm_aa9ec:
+.asm_aa9ec
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45acc
 	jp .asm_aaa4c
-.asm_aa9fb:
+.asm_aa9fb
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45add
 	jp .asm_aaa4c
-.asm_aaa0a:
+.asm_aaa0a
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45aee
 	jp .asm_aaa4c
-.asm_aaa19:
+.asm_aaa19
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45abb
 	jp .asm_aaa4c
-.asm_aaa28:
+.asm_aaa28
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b10
 	jp .asm_aaa4c
-.asm_aaa37:
+.asm_aaa37
 	writetext TreeBitstreamText_45a76
 	writetext TreeBitstreamText_45b20
 	jp .asm_aaa4c
-.asm_aaa46:
+.asm_aaa46
 	writenpctext TreeBitstreamText_44e62
-.asm_aaa4c:
+.asm_aaa4c
 	jp .asm_aaaa4
-.asm_aaa4f:
+.asm_aaa4f
 	ld hl, sp+$00
 	ld a, [hl]
 	cp $ff
@@ -526,22 +526,22 @@ Func_aa86f:
 	writenpctext TreeBitstreamText_44e62
 	writenpctext TreeBitstreamText_45042
 	jp .asm_aaaa4
-.asm_aaa76:
+.asm_aaa76
 	ld a, [wc796]
 	cp $0f
 	jp nz, .asm_aaa87
 	writenpctext TreeBitstreamText_44e62
 	jp .asm_aaaa4
-.asm_aaa87:
+.asm_aaa87
 	ld a, [wc796]
 	cp $0d
 	jp c, .asm_aaa98
 	writenpctext TreeBitstreamText_451e9
 	jp .asm_aaaa4
-.asm_aaa98:
+.asm_aaa98
 	writenpctext TreeBitstreamText_44e62
 	writenpctext TreeBitstreamText_44eb8
-.asm_aaaa4:
+.asm_aaaa4
 	pop bc
 	pop bc
 	ret
@@ -560,7 +560,7 @@ Func_aaaad:
 	ld hl, Data_aaaa7
 	scall Func_80d9b
 	scall Func_80f02
-.asm_aaac5:
+.asm_aaac5
 	ret
 
 Data_aaac6:
@@ -619,5 +619,5 @@ Func_aab87:
 	jp nz, .asm_aab92
 	ld a, $0c
 	ld [wc78a], a
-.asm_aab92:
+.asm_aab92
 	ret

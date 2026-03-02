@@ -112,12 +112,12 @@ Func_ca8dd:: ; ca8dd
 	or a
 	jp nz, .asm_ca91f
 	loadpeople $01, Data_ca897
-.asm_ca91f:
+.asm_ca91f
 	playmusic SONG_TOWER
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469b5
 	jp .asm_ca9ed
-.asm_ca930:
+.asm_ca930
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca77f
@@ -125,12 +125,12 @@ Func_ca8dd:: ; ca8dd
 	or a
 	jp nz, .asm_ca94f
 	loadpeople $01, Data_ca8a5
-.asm_ca94f:
+.asm_ca94f
 	playmusic SONG_JUMP_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a72
 	jp .asm_ca9ed
-.asm_ca960:
+.asm_ca960
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca7c5
@@ -138,12 +138,12 @@ Func_ca8dd:: ; ca8dd
 	or a
 	jp nz, .asm_ca97f
 	loadpeople $01, Data_ca8b3
-.asm_ca97f:
+.asm_ca97f
 	playmusic SONG_MAZE_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46a31
 	jp .asm_ca9ed
-.asm_ca990:
+.asm_ca990
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca80b
@@ -151,12 +151,12 @@ Func_ca8dd:: ; ca8dd
 	or a
 	jp nz, .asm_ca9af
 	loadpeople $01, Data_ca8c1
-.asm_ca9af:
+.asm_ca9af
 	playmusic SONG_CARD_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_469f1
 	jp .asm_ca9ed
-.asm_ca9c0:
+.asm_ca9c0
 	ld a, $03
 	scall Func_80d01
 	loadwilds $05, Data_ca851
@@ -164,11 +164,11 @@ Func_ca8dd:: ; ca8dd
 	or a
 	jp nz, .asm_ca9df
 	loadpeople $01, Data_ca8cf
-.asm_ca9df:
+.asm_ca9df
 	playmusic SONG_PUNCH_MINIGAME
 	scall Func_8001c
 	landmarksign TreeBitstreamText_46ab3
-.asm_ca9ed:
+.asm_ca9ed
 	ret
 
 Data_ca9ee:
@@ -195,7 +195,7 @@ Func_caa1f:
 	or a
 	jp nz, .asm_caa48
 	jp .asm_cab02
-.asm_caa48:
+.asm_caa48
 	writetext TreeBitstreamText_3c810
 	setevent EVENT_095
 	resetevent EVENT_042
@@ -209,7 +209,7 @@ Func_caa1f:
 	ld e, $01
 	ld a, $1e
 	scall Func_80d4d
-.asm_caa75:
+.asm_caa75
 	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_caaca
@@ -234,20 +234,20 @@ Func_caa1f:
 	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
-.asm_caaca:
+.asm_caaca
 	ld a, [wPlayerFacing]
 	cp $02
 	jp nz, .asm_caade
 	move_person 0, Data_ca9f2, 1
 	jp .asm_caae7
-.asm_caade:
+.asm_caade
 	move_person 0, Data_ca9ee, 1
-.asm_caae7:
+.asm_caae7
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $17, $1b
-.asm_cab02:
+.asm_cab02
 	ret
 
 Data_cab03:
@@ -274,7 +274,7 @@ Func_cab3c:
 	face_player 0
 	writetext TreeBitstreamText_3c83b
 	writetext TreeBitstreamText_471a6
-.asm_cab5b:
+.asm_cab5b
 	ld de, Data_cac3c
 	ld hl, Data_cab13
 	scall Func_803f5
@@ -284,7 +284,7 @@ Func_cab3c:
 	cp $01
 	jp nz, .asm_cab5b
 	jp .asm_cac3b
-.asm_cab73:
+.asm_cab73
 	writetext TreeBitstreamText_3c859
 	setevent EVENT_09A
 	resetevent EVENT_042
@@ -298,7 +298,7 @@ Func_cab3c:
 	ld e, $01
 	ld a, $1c
 	scall Func_80d4d
-.asm_caba0:
+.asm_caba0
 	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_cabf5
@@ -323,7 +323,7 @@ Func_cab3c:
 	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
-.asm_cabf5:
+.asm_cabf5
 	ld a, [wPlayerFacing]
 	cp $02
 	jp z, .asm_cac17
@@ -333,17 +333,17 @@ Func_cab3c:
 	jp z, .asm_cac0b
 	or a
 	jp nz, .asm_cac20
-.asm_cac0b:
+.asm_cac0b
 	move_person 0, Data_cab0b, 1
 	jp .asm_cac20
-.asm_cac17:
+.asm_cac17
 	move_person 0, Data_cab0f, 1
-.asm_cac20:
+.asm_cac20
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $0b, $1b
-.asm_cac3b:
+.asm_cac3b
 	ret
 
 Data_cac3c:
@@ -370,7 +370,7 @@ Func_cac75:
 	face_player 0
 	writetext TreeBitstreamText_3c878
 	writetext TreeBitstreamText_471cf
-.asm_cac94:
+.asm_cac94
 	ld de, Data_cad75
 	ld hl, Data_cac4c
 	scall Func_802ef
@@ -380,7 +380,7 @@ Func_cac75:
 	cp $01
 	jp nz, .asm_cac94
 	jp .asm_cad74
-.asm_cacac:
+.asm_cacac
 	writetext TreeBitstreamText_3c8aa
 	setevent EVENT_09F
 	resetevent EVENT_042
@@ -394,7 +394,7 @@ Func_cac75:
 	ld e, $01
 	ld a, $1d
 	scall Func_80d4d
-.asm_cacd9:
+.asm_cacd9
 	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_cad2e
@@ -419,7 +419,7 @@ Func_cac75:
 	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
-.asm_cad2e:
+.asm_cad2e
 	ld a, [wPlayerFacing]
 	cp $02
 	jp z, .asm_cad50
@@ -429,17 +429,17 @@ Func_cac75:
 	jp z, .asm_cad44
 	or a
 	jp nz, .asm_cad59
-.asm_cad44:
+.asm_cad44
 	move_person 0, Data_cac44, 1
 	jp .asm_cad59
-.asm_cad50:
+.asm_cad50
 	move_person 0, Data_cac48, 1
-.asm_cad59:
+.asm_cad59
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $1d, $12
-.asm_cad74:
+.asm_cad74
 	ret
 
 Data_cad75:
@@ -466,7 +466,7 @@ Func_cadae:
 	face_player 0
 	writetext TreeBitstreamText_3c8d2
 	writetext TreeBitstreamText_471bb
-.asm_cadcd:
+.asm_cadcd
 	ld de, Data_caeae
 	ld hl, Data_cad85
 	scall Func_80347
@@ -476,7 +476,7 @@ Func_cadae:
 	cp $01
 	jp nz, .asm_cadcd
 	jp .asm_caead
-.asm_cade5:
+.asm_cade5
 	writetext TreeBitstreamText_3c901
 	setevent EVENT_0A4
 	resetevent EVENT_042
@@ -490,7 +490,7 @@ Func_cadae:
 	ld e, $01
 	ld a, $20
 	scall Func_80d4d
-.asm_cae12:
+.asm_cae12
 	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_cae67
@@ -515,7 +515,7 @@ Func_cadae:
 	writetext TreeBitstreamText_3c963
 	xor a
 	ld [wc78f], a
-.asm_cae67:
+.asm_cae67
 	ld a, [wPlayerFacing]
 	cp $02
 	jp z, .asm_cae89
@@ -525,17 +525,17 @@ Func_cadae:
 	jp z, .asm_cae7d
 	or a
 	jp nz, .asm_cae92
-.asm_cae7d:
+.asm_cae7d
 	move_person 0, Data_cad7d, 1
 	jp .asm_cae92
-.asm_cae89:
+.asm_cae89
 	move_person 0, Data_cad81, 1
-.asm_cae92:
+.asm_cae92
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $05, $12
-.asm_caead:
+.asm_caead
 	ret
 
 Data_caeae:
@@ -562,7 +562,7 @@ Func_caee7:
 	face_player 0
 	writetext TreeBitstreamText_3c90e
 	writetext TreeBitstreamText_47192
-.asm_caf06:
+.asm_caf06
 	ld de, Data_cafe7
 	ld hl, Data_caebe
 	scall Func_8039e
@@ -572,7 +572,7 @@ Func_caee7:
 	cp $01
 	jp nz, .asm_caf06
 	jp .asm_cafe6
-.asm_caf1e:
+.asm_caf1e
 	writetext TreeBitstreamText_3c925
 	setevent EVENT_0A9
 	resetevent EVENT_042
@@ -586,7 +586,7 @@ Func_caee7:
 	ld e, $01
 	ld a, $1f
 	scall Func_80d4d
-.asm_caf4b:
+.asm_caf4b
 	checkevent EVENT_095
 	cp $01
 	jp nz, .asm_cafa0
@@ -611,7 +611,7 @@ Func_caee7:
 	scall Func_80d4d
 	xor a
 	ld [wc78f], a
-.asm_cafa0:
+.asm_cafa0
 	ld a, [wPlayerFacing]
 	cp $02
 	jp z, .asm_cafc2
@@ -621,17 +621,17 @@ Func_caee7:
 	jp z, .asm_cafb6
 	or a
 	jp nz, .asm_cafcb
-.asm_cafb6:
+.asm_cafb6
 	move_person 0, Data_caeb6, 1
 	jp .asm_cafcb
-.asm_cafc2:
+.asm_cafc2
 	move_person 0, Data_caeba, 1
-.asm_cafcb:
+.asm_cafcb
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
 	warp_player MAP_21_00, $11, $0a
-.asm_cafe6:
+.asm_cafe6
 	ret
 
 Data_cafe7:
