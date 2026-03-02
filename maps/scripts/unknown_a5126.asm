@@ -96,12 +96,7 @@ Func_a517c:: ; a517c
 	jp nz, .asm_a5247
 	playsfx SFX_45
 	writenpctext TreeBitstreamText_46f3e
-	ld l, $18
-	push hl
-	ld c, $13
-	ld e, $00
-	ld a, $17
-	scall Func_80dff
+	warp_player MAP_23_00, $13, $18
 	pop bc
 	jp .asm_a524c
 .asm_a5247:
@@ -195,12 +190,7 @@ Func_a5264:
 	playsfx SFX_65
 	move_player $01, Data_a5260
 	scall WaitNPCStep
-	ld l, $06
-	push hl
-	ld c, $16
-	ld e, $00
-	ld a, $18
-	scall Func_80dff
+	warp_player MAP_24_00, $16, $06
 	pop bc
 .asm_a5383:
 	pop bc
@@ -208,12 +198,7 @@ Func_a5264:
 
 Func_a5385:
 	playsfx SFX_45
-	ld l, $18
-	push hl
-	ld c, $13
-	ld e, $00
-	ld a, $17
-	scall Func_80dff
+	warp_player MAP_23_00, $13, $18
 	pop bc
 	ret
 
@@ -233,12 +218,7 @@ Func_a5398:
 	jp nz, .asm_a53d4
 	playsfx SFX_45
 	script_sleep 30
-	ld l, $18
-	push hl
-	ld c, $13
-	ld e, $00
-	ld a, $17
-	scall Func_80dff
+	warp_player MAP_23_00, $13, $18
 	pop bc
 .asm_a53d4:
 	jp .asm_a53dd

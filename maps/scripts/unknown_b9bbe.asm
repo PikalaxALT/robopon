@@ -649,12 +649,7 @@ Func_b9f71:
 	cp $02
 	jp nz, .asm_b9f8e
 	playsfx SFX_2E
-	ld l, $05
-	push hl
-	ld c, $0a
-	ld e, $00
-	ld a, $06
-	scall Func_80dff
+	warp_player MAP_06_00, $0a, $05
 	pop bc
 	ld a, $01
 	ld [wPlayerFacing], a
@@ -665,12 +660,7 @@ Func_b9f8f:
 	ld a, e
 	cp $02
 	jp nz, .asm_b9fac
-	ld l, $05
-	push hl
-	ld c, $17
-	ld e, $00
-	ld a, $06
-	scall Func_80dff
+	warp_player MAP_06_00, $17, $05
 	pop bc
 	playsfx SFX_2E
 	ld a, $01

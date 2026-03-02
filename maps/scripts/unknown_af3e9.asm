@@ -80,12 +80,7 @@ Func_af46a:
 	or a
 	jp nz, .asm_af4bd
 	playsfx SFX_5A
-	ld l, $1b
-	push hl
-	ld c, $12
-	ld e, $01
-	ld a, $1b
-	scall Func_80dff
+	warp_player MAP_27_01, $12, $1b
 	pop bc
 .asm_af4bd:
 	ret
@@ -109,12 +104,7 @@ Func_af4c3:
 	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af4f9
-	ld l, $1b
-	push hl
-	ld c, $12
-	ld e, $01
-	ld a, $1b
-	scall Func_80dff
+	warp_player MAP_27_01, $12, $1b
 	pop bc
 .asm_af4f9:
 	jp .asm_af502
@@ -133,12 +123,7 @@ Func_af4c3:
 	writenpctext_yesorno TreeBitstreamText_3ea97
 	or a
 	jp nz, .asm_af537
-	ld l, $1b
-	push hl
-	ld c, $12
-	ld e, $01
-	ld a, $1b
-	scall Func_80dff
+	warp_player MAP_27_01, $12, $1b
 	pop bc
 .asm_af537:
 	pop bc

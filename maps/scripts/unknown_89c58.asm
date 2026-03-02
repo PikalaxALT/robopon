@@ -74,12 +74,7 @@ Func_89ca9:
 	scall HideEmote
 	ld a, $02
 	scall PlayerFace
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 .asm_89d03:
 	ret

@@ -237,12 +237,7 @@ Func_aa6ee:
 	scall LoadPlayerSprite
 	ld a, $02
 	scall PlayerFace
-	ld l, $12
-	push hl
-	ld c, $0a
-	ld e, $01
-	ld a, $1e
-	scall Func_80dff
+	warp_player MAP_30_01, $0a, $12
 	pop bc
 .asm_aa79f:
 	jp .asm_aa7a8
@@ -597,12 +592,7 @@ Func_aaad6:
 	move_player $01, Data_aaad2
 	scall WaitNPCStep
 	setevent $00c2
-	ld l, $07
-	push hl
-	ld c, $19
-	ld e, $01
-	ld a, $19
-	scall Func_80dff
+	warp_player MAP_25_01, $19, $07
 	pop bc
 	ret
 
@@ -621,12 +611,7 @@ Func_aab3f:
 	move_person $0c, Data_aab3b, 1
 	scall WaitNPCStep
 	script_sleep 30
-	ld l, $06
-	push hl
-	ld c, $07
-	ld e, $00
-	ld a, $1a
-	scall Func_80dff
+	warp_player MAP_26_00, $07, $06
 	pop bc
 	setevent $00c3
 	ret

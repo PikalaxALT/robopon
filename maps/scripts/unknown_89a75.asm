@@ -80,12 +80,7 @@ Func_89ac3:
 	scall HideEmote
 	xor a
 	scall PlayerFace
-	ld l, $10
-	push hl
-	ld c, $09
-	ld e, $15
-	ld a, $05
-	scall Func_80dff
+	warp_player MAP_05_21, $09, $10
 	pop bc
 .asm_89b27:
 	ret

@@ -195,12 +195,7 @@ Func_8e66b:
 	ld a, $06
 	scall Func_80c94
 	setevent $0008
-	ld l, $08
-	push hl
-	ld c, $1b
-	ld e, $00
-	ld a, $06
-	scall Func_80dff
+	warp_player MAP_06_00, $1b, $08
 	pop bc
 	ld a, $0f
 	scall FadeOutAudio
@@ -219,12 +214,7 @@ Func_8e826:
 	xor a
 	scall Func_80653
 	playsfx SFX_2E
-	ld l, $01
-	push hl
-	ld c, $04
-	ld e, $01
-	ld a, $08
-	scall Func_80dff
+	warp_player MAP_08_01, $04, $01
 	pop bc
 	ld a, $02
 	ld [wPlayerFacing], a
@@ -243,12 +233,7 @@ Func_8e864:
 	cp $01
 	jp nz, .asm_8e88b
 	playsfx SFX_2E
-	ld l, $07
-	push hl
-	ld c, $09
-	ld e, $01
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_01, $09, $07
 	pop bc
 	ld a, $03
 	ld [wPlayerFacing], a
@@ -264,12 +249,7 @@ Func_8e88c:
 	cp $01
 	jp nz, .asm_8e8b3
 	playsfx SFX_2E
-	ld l, $07
-	push hl
-	ld c, $09
-	ld e, $01
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_01, $09, $07
 	pop bc
 	ld a, $03
 	ld [wPlayerFacing], a

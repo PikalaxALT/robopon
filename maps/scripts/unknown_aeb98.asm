@@ -83,12 +83,7 @@ Func_aec1d:
 	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
-	ld l, $08
-	push hl
-	ld c, $06
-	ld e, $08
-	ld a, $1b
-	scall Func_80dff
+	warp_player MAP_27_08, $06, $08
 	pop bc
 .asm_aec48:
 	ret

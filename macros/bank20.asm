@@ -1837,6 +1837,10 @@ ScriptedBattle_\1: ; 80dd3 (20:4dd3)
 	ret
 
 Func_80dff_\1: ; 80dff (20:4dff)
+	; a = mapGroup
+	; e = mapNum
+	; c = x
+	; l = y
 	push de
 	push af
 	push bc

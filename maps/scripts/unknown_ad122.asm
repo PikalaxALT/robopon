@@ -90,12 +90,7 @@ Func_ad1c6:
 	playsfx SFX_65
 	writenpctext TreeBitstreamText_3e01f
 	scall StopShakingScreen
-	ld l, $0a
-	push hl
-	ld c, $09
-	ld e, $02
-	ld a, $1f
-	scall Func_80dff
+	warp_player MAP_31_02, $09, $0a
 	pop bc
 	ret
 
@@ -170,11 +165,6 @@ Func_ad225:
 	pop bc
 	ret
 Func_ad302:
-	ld l, $06
-	push hl
-	ld c, $19
-	ld e, $01
-	ld a, $19
-	scall Func_80dff
+	warp_player MAP_25_01, $19, $06
 	pop bc
 	ret

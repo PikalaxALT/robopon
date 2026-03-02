@@ -141,12 +141,7 @@ Func_91219:
 	setevent $0036
 	ld a, $07
 	scall Func_80c94
-	ld l, $07
-	push hl
-	ld c, $0e
-	ld e, $00
-	ld a, $08
-	scall Func_80dff
+	warp_player MAP_08_00, $0e, $07
 	pop bc
 	ret
 
@@ -295,12 +290,7 @@ Func_9145b:
 	ld a, e
 	or a
 	jp nz, .asm_91477
-	ld l, $01
-	push hl
-	ld c, $04
-	ld e, $01
-	ld a, $08
-	scall Func_80dff
+	warp_player MAP_08_01, $04, $01
 	pop bc
 	playsfx SFX_2E
 	ld a, $02

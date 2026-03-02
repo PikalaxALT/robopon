@@ -182,12 +182,7 @@ Func_89353:
 	scall PlayerFace
 	ld a, $0e
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 .asm_893a5:
 	ret
@@ -216,12 +211,7 @@ Func_893a6:
 	scall PlayerFace
 	ld a, $0f
 	ld [wc78a], a
-	ld l, $09
-	push hl
-	ld c, $11
-	ld e, $20
-	ld a, $05
-	scall Func_80dff
+	warp_player MAP_05_32, $11, $09
 	pop bc
 .asm_893f8:
 	ret

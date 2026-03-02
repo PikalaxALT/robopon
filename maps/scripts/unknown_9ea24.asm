@@ -248,12 +248,7 @@ Func_9eb3c:
 	jp nz, .asm_9eceb
 	setevent $0057
 .asm_9eceb:
-	ld l, $1b
-	push hl
-	ld c, $1e
-	ld e, $00
-	ld a, $12
-	scall Func_80dff
+	warp_player MAP_18_00, $1e, $1b
 	pop bc
 .asm_9ecf8:
 	pop bc
@@ -395,11 +390,6 @@ Func_9ee27:
 	scall LoadPlayerSprite
 	ld a, $03
 	scall PlayerFace
-	ld l, $08
-	push hl
-	ld c, $04
-	ld e, $0e
-	ld a, $12
-	scall Func_80dff
+	warp_player MAP_18_14, $04, $08
 	pop bc
 	ret

@@ -43,12 +43,7 @@ Func_9ef8d:: ; 9ef8d
 	setevent $00e8
 	xor a
 	ld [wc7da], a
-	ld l, $19
-	push hl
-	ld c, $05
-	ld e, $02
-	ld a, $13
-	scall Func_80dff
+	warp_player MAP_19_02, $05, $19
 	pop bc
 	jp .asm_9efe6
 .asm_9efe3:

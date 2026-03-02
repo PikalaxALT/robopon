@@ -331,12 +331,7 @@ Func_a93b6:
 	script_sleep 30
 	move_player $01, Data_a93b2
 	script_sleep 30
-	ld l, $0f
-	push hl
-	ld c, $14
-	ld e, $00
-	ld a, $18
-	scall Func_80dff
+	warp_player MAP_24_00, $14, $0f
 	pop bc
 	ret
 

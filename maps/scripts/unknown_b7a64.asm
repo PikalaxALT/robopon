@@ -174,12 +174,7 @@ Func_b7ceb:
 	setevent $1b
 	ld a, $f
 	scall Func_80c94
-	ld l, $4
-	push hl
-	ld c, $7
-	ld e, $0
-	ld a, $1f
-	scall Func_80dff
+	warp_player MAP_31_00, $7, $4
 	pop bc
 	ret
 
@@ -220,12 +215,7 @@ Func_b7dba:
 	move_player $1, Data_b7d89
 	playsfx SFX_65
 	scall StopShakingScreen
-	ld l, $f
-	push hl
-	ld c, $7
-	ld e, $a
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_10, $7, $f
 	pop bc
 	ret
 
@@ -246,11 +236,6 @@ Func_b7df7:
 	playsfx SFX_37
 	scall WaitEmote
 	scall HideEmote
-	ld l, $b
-	push hl
-	ld c, $9
-	ld e, $4
-	ld a, $1e
-	scall Func_80dff
+	warp_player MAP_30_04, $9, $b
 	pop bc
 	ret

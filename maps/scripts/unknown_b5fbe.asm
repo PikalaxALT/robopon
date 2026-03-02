@@ -221,12 +221,7 @@ Func_b6117:
 	move_player $01, Data_b610f
 	scall WaitNPCStep
 	scall StopShakingScreen
-	ld l, $05
-	push hl
-	ld c, $07
-	ld e, $00
-	ld a, $1a
-	scall Func_80dff
+	warp_player MAP_26_00, $07, $05
 	pop bc
 .asm_b625f:
 	ret
@@ -723,12 +718,7 @@ Func_b66d1:
 .asm_b6736:
 	writenpctext TreeBitstreamText_3f2ff
 	setevent $00e6
-	ld l, $1a
-	push hl
-	ld c, $0f
-	ld e, $0a
-	ld a, $19
-	scall Func_80dff
+	warp_player MAP_25_10, $0f, $1a
 	pop bc
 .asm_b6751:
 	pop bc

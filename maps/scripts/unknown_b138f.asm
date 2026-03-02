@@ -396,12 +396,7 @@ Data_b17c1:
 Func_b17c6:
 	writenpctext TreeBitstreamText_3a7fb
 	setevent $0009
-	ld l, $05
-	push hl
-	ld c, $07
-	ld e, $00
-	ld a, $1c
-	scall Func_80dff
+	warp_player MAP_28_00, $07, $05
 	pop bc
 	ret
 

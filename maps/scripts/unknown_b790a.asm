@@ -100,11 +100,6 @@ Func_b79b6:
 	playsfx SFX_43
 	scall WaitEmote
 	scall HideEmote
-	ld l, $0e
-	push hl
-	ld c, $07
-	ld e, $0a
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_10, $07, $0e
 	pop bc
 	ret

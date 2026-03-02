@@ -40,12 +40,7 @@ Func_a9a32:
 	playsfx SFX_64
 	script_sleep 90
 	scall StopShakingScreen
-	ld l, $0f
-	push hl
-	ld c, $12
-	ld e, $0f
-	ld a, $18
-	scall Func_80dff
+	warp_player MAP_24_15, $12, $0f
 	pop bc
 .asm_a9a61:
 	ret

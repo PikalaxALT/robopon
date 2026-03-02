@@ -277,12 +277,7 @@ Func_92257:
 	scall HideEmote
 	ld a, $02
 	scall PlayerFace
-	ld l, $06
-	push hl
-	ld c, $0d
-	ld e, $01
-	ld a, $09
-	scall Func_80dff
+	warp_player MAP_09_01, $0d, $06
 	pop bc
 	jp .asm_9233a
 .asm_922b2:
@@ -333,12 +328,7 @@ Func_92257:
 	scall HideEmote
 	ld a, $02
 	scall PlayerFace
-	ld l, $06
-	push hl
-	ld c, $0d
-	ld e, $01
-	ld a, $09
-	scall Func_80dff
+	warp_player MAP_09_01, $0d, $06
 	pop bc
 .asm_9233a:
 	ret

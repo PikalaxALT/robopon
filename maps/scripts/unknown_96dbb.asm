@@ -272,12 +272,7 @@ Func_970d8:
 	script_sleep 30
 	sprite_face $01, $07
 	setevent $010e
-	ld l, $24
-	push hl
-	ld c, $09
-	ld e, $01
-	ld a, $0c
-	scall Func_80dff
+	warp_player MAP_12_01, $09, $24
 	pop bc
 	jp .asm_9714f
 .asm_97136:

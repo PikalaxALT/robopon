@@ -1504,6 +1504,10 @@ Func_ae4d:: ; ae4d
 	ret
 
 Func_af7a:: ; af7a
+	; h = mapGroup
+	; l = mapNum
+	; d = x
+	; e = y
 	push hl
 	push bc
 	push de

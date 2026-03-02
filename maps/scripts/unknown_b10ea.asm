@@ -28,12 +28,7 @@ Func_b110b:
 	checkevent $0009
 	or a
 	jp nz, .asm_b112d
-	ld l, $04
-	push hl
-	ld c, $11
-	ld e, $01
-	ld a, $1c
-	scall Func_80dff
+	warp_player MAP_28_01, $11, $04
 	pop bc
 .asm_b112d:
 	ret

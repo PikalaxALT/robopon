@@ -266,12 +266,7 @@ Func_81f8a: ; 81f8a (20:5f8a)
 	script_sleep 30
 	move_player $1, Data_81f3d
 	playsfx SFX_2E
-	ld l, $1a
-	push hl
-	ld c, $f
-	ld e, $a
-	ld a, $19
-	scall Func_80dff
+	warp_player MAP_25_10, $f, $1a
 	pop bc
 	ret
 
@@ -298,12 +293,7 @@ Func_82057: ; 82057 (20:6057)
 	ld e, $0
 	ld a, $1e
 	call GiveRobot_20
-	ld l, $1a
-	push hl
-	ld c, $f
-	ld e, $a
-	ld a, $19
-	scall Func_80dff
+	warp_player MAP_25_10, $f, $1a
 	pop bc
 Func_82078: ; 82078 (20:6078)
 	ret
@@ -355,199 +345,109 @@ Func_8208c:: ; 8208c (20:608c)
 	or a
 	jp nz, Func_8225c
 	playsfx SFX_5A
-	ld l, $7
-	push hl
-	ld c, $2b
-	ld e, $0
-	ld a, $3
-	scall Func_80dff
+	warp_player MAP_03_00, $2b, $7
 	pop bc
 	jp Func_8225c
 
 Func_820fa: ; 820fa (20:60fa)
 	playsfx SFX_5A
-	ld l, $13
-	push hl
-	ld c, $d
-	ld e, $0
-	ld a, $3
-	scall Func_80dff
+	warp_player MAP_03_00, $d, $13
 	pop bc
 	jp Func_8225c
 
 Func_8210f: ; 8210f (20:610f)
 	playsfx SFX_5A
-	ld l, $16
-	push hl
-	ld c, $5
-	ld e, $0
-	ld a, $5
-	scall Func_80dff
+	warp_player MAP_05_00, $5, $16
 	pop bc
 	jp Func_8225c
 
 Func_82124: ; 82124 (20:6124)
 	playsfx SFX_5A
-	ld l, $7
-	push hl
-	ld c, $10
-	ld e, $0
-	ld a, $5
-	scall Func_80dff
+	warp_player MAP_05_00, $10, $7
 	pop bc
 	jp Func_8225c
 
 Func_82139: ; 82139 (20:6139)
 	playsfx SFX_5A
-	ld l, $a
-	push hl
-	ld c, $a
-	ld e, $0
-	ld a, $8
-	scall Func_80dff
+	warp_player MAP_08_00, $a, $a
 	pop bc
 	jp Func_8225c
 
 Func_8214e: ; 8214e (20:614e)
 	playsfx SFX_5A
-	ld l, $e
-	push hl
-	ld c, $6
-	ld e, $0
-	ld a, $2
-	scall Func_80dff
+	warp_player MAP_02_00, $6, $e
 	pop bc
 	jp Func_8225c
 
 Func_82163: ; 82163 (20:6163)
 	playsfx SFX_5A
-	ld l, $2d
-	push hl
-	ld c, $5
-	ld e, $0
-	ld a, $9
-	scall Func_80dff
+	warp_player MAP_09_00, $5, $2d
 	pop bc
 	jp Func_8225c
 
 Func_82178: ; 82178 (20:6178)
 	playsfx SFX_5A
-	ld l, $14
-	push hl
-	ld c, $11
-	ld e, $0
-	ld a, $15
-	scall Func_80dff
+	warp_player MAP_21_00, $11, $14
 	pop bc
 	jp Func_8225c
 
 Func_8218d: ; 8218d (20:618d)
 	playsfx SFX_5A
-	ld l, $10
-	push hl
-	ld c, $7
-	ld e, $0
-	ld a, $18
-	scall Func_80dff
+	warp_player MAP_24_00, $7, $10
 	pop bc
 	jp Func_8225c
 
 Func_821a2: ; 821a2 (20:61a2)
 	playsfx SFX_5A
-	ld l, $5
-	push hl
-	ld c, $7
-	ld e, $0
-	ld a, $1c
-	scall Func_80dff
+	warp_player MAP_28_00, $7, $5
 	pop bc
 	jp Func_8225c
 
 Func_821b7: ; 821b7 (20:61b7)
 	playsfx SFX_5A
-	ld l, $7
-	push hl
-	ld c, $9
-	ld e, $0
-	ld a, $1b
-	scall Func_80dff
+	warp_player MAP_27_00, $9, $7
 	pop bc
 	jp Func_8225c
 
 Func_821cc: ; 821cc (20:61cc)
 	playsfx SFX_5A
-	ld l, $4
-	push hl
-	ld c, $6
-	ld e, $1
-	ld a, $1d
-	scall Func_80dff
+	warp_player MAP_29_01, $6, $4
 	pop bc
 	jp Func_8225c
 
 Func_821e1: ; 821e1 (20:61e1)
 	playsfx SFX_5A
-	ld l, $6
-	push hl
-	ld c, $7
-	ld e, $0
-	ld a, $1a
-	scall Func_80dff
+	warp_player MAP_26_00, $7, $6
 	pop bc
 	jp Func_8225c
 
 Func_821f6: ; 821f6 (20:61f6)
 	playsfx SFX_5A
-	ld l, $a
-	push hl
-	ld c, $10
-	ld e, $0
-	ld a, $6
-	scall Func_80dff
+	warp_player MAP_06_00, $10, $a
 	pop bc
 	jp Func_8225c
 
 Func_8220b: ; 8220b (20:620b)
 	playsfx SFX_5A
-	ld l, $17
-	push hl
-	ld c, $13
-	ld e, $16
-	ld a, $13
-	scall Func_80dff
+	warp_player MAP_19_22, $13, $17
 	pop bc
 	jp Func_8225c
 
 Func_82220: ; 82220 (20:6220)
 	playsfx SFX_5A
-	ld l, $4
-	push hl
-	ld c, $a
-	ld e, $1
-	ld a, $1d
-	scall Func_80dff
+	warp_player MAP_29_01, $a, $4
 	pop bc
 	jp Func_8225c
 
 Func_82235: ; 82235 (20:6235)
 	playsfx SFX_5A
-	ld l, $4
-	push hl
-	ld c, $e
-	ld e, $1
-	ld a, $1d
-	scall Func_80dff
+	warp_player MAP_29_01, $e, $4
 	pop bc
 	jp Func_8225c
 
 Func_8224a: ; 8224a (20:624a)
 	playsfx SFX_5A
-	ld l, $14
-	push hl
-	ld c, $5
-	ld e, $a
-	ld a, $12
-	scall Func_80dff
+	warp_player MAP_18_10, $5, $14
 	pop bc
 Func_8225c: ; 8225c (20:625c)
 	ret

@@ -677,12 +677,7 @@ Func_819ea:
 	jp .asm_81a21
 
 .asm_819fb: ; 819fb (20:59fb)
-	ld l, $7
-	push hl
-	ld c, $0
-	ld e, $4
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_04, $0, $7
 	pop bc
 	ld a, $1
 	ld [wSpawnPushX], a
@@ -706,12 +701,7 @@ Func_81a22:
 	jp .asm_81a59
 
 .asm_81a33: ; 81a33 (20:5a33)
-	ld l, $7
-	push hl
-	ld c, $0
-	ld e, $4
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_04, $0, $7
 	pop bc
 	ld a, $1
 	ld [wSpawnPushX], a

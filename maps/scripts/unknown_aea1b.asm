@@ -51,12 +51,7 @@ Func_aea4f:
 	scall HideEmote
 	ld a, $02
 	scall PlayerFace
-	ld l, $04
-	push hl
-	ld c, $0e
-	ld e, $07
-	ld a, $1b
-	scall Func_80dff
+	warp_player MAP_27_07, $0e, $04
 	pop bc
 .asm_aea7f:
 	ret

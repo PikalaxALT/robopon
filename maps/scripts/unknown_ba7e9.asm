@@ -379,133 +379,73 @@ Func_baa60:
 	jp nz, .asm_babdb
 	ld a, $02
 	ld [wc78a], a
-	ld l, $0c
-	push hl
-	ld c, $09
-	ld e, $14
-	ld a, $05
-	scall Func_80dff
+	warp_player MAP_05_20, $09, $0c
 	pop bc
 	jp .asm_babdb
 .asm_baaf7:
 	ld a, $05
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_bab0c:
 	ld a, $06
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_bab21:
 	ld a, $07
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_bab36:
 	ld a, $05
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_bab4b:
 	ld a, $09
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_bab60:
 	ld a, $0a
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_bab75:
 	ld a, $0b
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_bab8a:
 	ld a, $0c
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_bab9f:
 	ld a, $0d
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_babb4:
 	ld a, $0b
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_babdb
 .asm_babc9:
 	ld a, $0f
 	ld [wc78a], a
-	ld l, $04
-	push hl
-	ld c, $0c
-	ld e, $01
-	ld a, $04
-	scall Func_80dff
+	warp_player MAP_04_01, $0c, $04
 	pop bc
 .asm_babdb:
 	ret
@@ -561,133 +501,73 @@ Func_babdc:
 	jp nz, .asm_bad5b
 	xor a
 	scall PlayerFace
-	ld l, $10
-	push hl
-	ld c, $09
-	ld e, $15
-	ld a, $05
-	scall Func_80dff
+	warp_player MAP_05_21, $09, $10
 	pop bc
 	jp .asm_bad5b
 .asm_bac77:
 	ld a, $03
 	ld [wc78a], a
-	ld l, $0f
-	push hl
-	ld c, $16
-	ld e, $0c
-	ld a, $03
-	scall Func_80dff
+	warp_player MAP_03_12, $16, $0f
 	pop bc
 	jp .asm_bad5b
 .asm_bac8c:
 	ld a, $08
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_baca1:
 	ld a, $05
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_bacb6:
 	ld a, $06
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_baccb:
 	ld a, $05
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_bace0:
 	ld a, $08
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_bacf5:
 	ld a, $09
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_bad0a:
 	ld a, $0e
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_bad1f:
 	ld a, $0b
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_bad34:
 	ld a, $0c
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 	jp .asm_bad5b
 .asm_bad49:
 	ld a, $0b
 	ld [wc78a], a
-	ld l, $03
-	push hl
-	ld c, $03
-	ld e, $03
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $03, $03
 	pop bc
 .asm_bad5b:
 	ret

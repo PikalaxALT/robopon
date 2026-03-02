@@ -344,12 +344,7 @@ Func_9542c:
 	scall HideEmote
 	ld a, $01
 	scall PlayerFace
-	ld l, $04
-	push hl
-	ld c, $05
-	ld e, $0b
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_11, $05, $04
 	pop bc
 .asm_954f1:
 	jp .asm_954fa
@@ -442,12 +437,7 @@ Func_95540:
 	scall LoadPlayerSprite
 	xor a
 	scall PlayerFace
-	ld l, $1e
-	push hl
-	ld c, $18
-	ld e, $03
-	ld a, $1e
-	scall Func_80dff
+	warp_player MAP_30_03, $18, $1e
 	pop bc
 .asm_955e9:
 	jp .asm_955f2

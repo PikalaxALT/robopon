@@ -581,12 +581,7 @@ Func_85832:
 	scall LoadPlayerSprite
 	ld a, $1
 	scall PlayerFace
-	ld l, $b
-	push hl
-	ld c, $25
-	ld e, $0
-	ld a, $1e
-	scall Func_80dff
+	warp_player MAP_30_00, $25, $b
 	pop bc
 .asm_858bd: ; 858bd (21:58bd)
 	jp .asm_858c6

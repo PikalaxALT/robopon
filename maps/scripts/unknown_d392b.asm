@@ -107,12 +107,7 @@ Func_d39a6: ; d39a6 (34:79a6)
 	scall WaitEmote
 	scall HideEmote
 	scall StopShakingScreen
-	ld l, $6
-	push hl
-	ld c, $8
-	ld e, $0
-	ld a, $1a
-	scall Func_80dff
+	warp_player MAP_26_00, $8, $6
 	pop bc
 	ret
 
@@ -362,12 +357,7 @@ Func_d3cb2: ; d3cb2 (34:7cb2)
 	playsfx SFX_43
 	scall WaitEmote
 	setevent $f1
-	ld l, $9
-	push hl
-	ld c, $9
-	ld e, $1
-	ld a, $1f
-	scall Func_80dff
+	warp_player MAP_31_01, $9, $9
 	pop bc
 	ret
 
@@ -381,11 +371,6 @@ Func_d3ceb:: ; d3ceb (34:7ceb)
 	scall WaitEmote
 	ld a, $1
 	scall PlayerFace
-	ld l, $5
-	push hl
-	ld c, $f
-	ld e, $16
-	ld a, $13
-	scall Func_80dff
+	warp_player MAP_19_22, $f, $5
 	pop bc
 	ret

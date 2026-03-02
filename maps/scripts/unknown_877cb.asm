@@ -434,12 +434,7 @@ Func_87b14:
 	ld a, $2
 	scall PlayerFace
 	resetevent $fa
-	ld l, $3
-	push hl
-	ld c, $3
-	ld e, $3
-	ld a, $20
-	scall Func_80dff
+	warp_player MAP_32_03, $3, $3
 	pop bc
 .asm_87b86: ; 87b86 (21:7b86)
 	ret

@@ -246,12 +246,7 @@ Func_caa1f:
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
-	ld l, $1b
-	push hl
-	ld c, $17
-	ld e, $00
-	ld a, $15
-	scall Func_80dff
+	warp_player MAP_21_00, $17, $1b
 	pop bc
 .asm_cab02:
 	ret
@@ -348,12 +343,7 @@ Func_cab3c:
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
-	ld l, $1b
-	push hl
-	ld c, $0b
-	ld e, $00
-	ld a, $15
-	scall Func_80dff
+	warp_player MAP_21_00, $0b, $1b
 	pop bc
 .asm_cac3b:
 	ret
@@ -450,12 +440,7 @@ Func_cac75:
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
-	ld l, $12
-	push hl
-	ld c, $1d
-	ld e, $00
-	ld a, $15
-	scall Func_80dff
+	warp_player MAP_21_00, $1d, $12
 	pop bc
 .asm_cad74:
 	ret
@@ -552,12 +537,7 @@ Func_cadae:
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
-	ld l, $12
-	push hl
-	ld c, $05
-	ld e, $00
-	ld a, $15
-	scall Func_80dff
+	warp_player MAP_21_00, $05, $12
 	pop bc
 .asm_caead:
 	ret
@@ -654,12 +634,7 @@ Func_caee7:
 	playsfx SFX_2E
 	scall WaitNPCStep
 	hideperson 0
-	ld l, $0a
-	push hl
-	ld c, $11
-	ld e, $00
-	ld a, $15
-	scall Func_80dff
+	warp_player MAP_21_00, $11, $0a
 	pop bc
 .asm_cafe6:
 	ret

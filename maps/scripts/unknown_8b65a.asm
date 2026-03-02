@@ -95,12 +95,7 @@ Func_8b6ae:
 	scall LoadPlayerSprite
 	xor a
 	scall PlayerFace
-	ld l, $1e
-	push hl
-	ld c, $2e
-	ld e, $03
-	ld a, $1e
-	scall Func_80dff
+	warp_player MAP_30_03, $2e, $1e
 	pop bc
 .asm_8b72b:
 	jp .asm_8b734

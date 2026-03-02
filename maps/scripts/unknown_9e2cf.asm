@@ -93,12 +93,7 @@ Func_9e305:
 	scall LoadPlayerSprite
 	ld a, $03
 	scall PlayerFace
-	ld l, $09
-	push hl
-	ld c, $07
-	ld e, $11
-	ld a, $12
-	scall Func_80dff
+	warp_player MAP_18_17, $07, $09
 	pop bc
 .asm_9e3b6:
 	jp .asm_9e3bf

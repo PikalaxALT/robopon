@@ -94,12 +94,7 @@ Func_8b53d:
 	playsfx SFX_5A
 	scall WaitEmote
 	scall HideEmote
-	ld l, $06
-	push hl
-	ld c, $07
-	ld e, $00
-	ld a, $1c
-	scall Func_80dff
+	warp_player MAP_28_00, $07, $06
 	pop bc
 	script_sleep 30
 .asm_8b58b:

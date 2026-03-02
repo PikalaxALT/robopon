@@ -133,12 +133,7 @@ Func_a553a:
 	scall WaitNPCStep
 .asm_a5597:
 	call Func_a5640
-	ld l, $10
-	push hl
-	ld c, $01
-	ld e, $02
-	ld a, $1e
-	scall Func_80dff
+	warp_player MAP_30_02, $01, $10
 	pop bc
 .asm_a55a7:
 	jp .asm_a55b0
@@ -194,12 +189,7 @@ Func_a55c0:
 	scall WaitNPCStep
 .asm_a561d:
 	call Func_a5640
-	ld l, $12
-	push hl
-	ld c, $2d
-	ld e, $00
-	ld a, $1e
-	scall Func_80dff
+	warp_player MAP_30_00, $2d, $12
 	pop bc
 .asm_a562d:
 	jp .asm_a5636

@@ -168,12 +168,7 @@ Func_8d2f4:
 	scall LoadPlayerSprite
 	ld a, $03
 	scall PlayerFace
-	ld l, $09
-	push hl
-	ld c, $2d
-	ld e, $02
-	ld a, $1e
-	scall Func_80dff
+	warp_player MAP_30_02, $2d, $09
 	pop bc
 .asm_8d383:
 	jp .asm_8d38c

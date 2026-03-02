@@ -40,12 +40,7 @@ Func_a997d:
 	playsfx SFX_64
 	script_sleep 90
 	scall StopShakingScreen
-	ld l, $08
-	push hl
-	ld c, $05
-	ld e, $0a
-	ld a, $18
-	scall Func_80dff
+	warp_player MAP_24_10, $05, $08
 	pop bc
 .asm_a99ac:
 	ret

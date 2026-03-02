@@ -185,3 +185,12 @@ MACRO set_frame_script
 	ld hl, \1
 	scall Func_80f11
 	ENDM
+
+MACRO warp_player
+	ld l, \3
+	push hl
+	ld c, \2
+	ld e, MAP_\1
+	ld a, GROUP_\1
+	scall Func_80dff
+	ENDM
