@@ -439,12 +439,7 @@ Func_abc22:
 	resetevent $00e4
 	resetevent $00e5
 	resetevent $00e6
-	ld l, $0d
-	push hl
-	ld c, $10
-	ld e, $00
-	xor a
-	scall Func_80dff
+	warp_player MAP_00_00, $10, $0d
 	pop bc
 	callba_hli SaveGame
 	callba_hli Func_b6f2
@@ -467,12 +462,7 @@ Func_abc22:
 	resetevent $00e6
 	ld a, $01
 	ld [wc79a], a
-	ld l, $0d
-	push hl
-	ld c, $10
-	ld e, $00
-	xor a
-	scall Func_80dff
+	warp_player MAP_00_00, $10, $0d
 	pop bc
 	callba_hli SaveGame
 	callba_hli Func_b6f2

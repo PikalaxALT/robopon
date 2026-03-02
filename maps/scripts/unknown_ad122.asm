@@ -156,12 +156,7 @@ Func_ad225:
 	ld a, $01
 	scall FadeInAudio
 	playmusic SONG_NONE
-	ld l, $05
-	push hl
-	ld c, $04
-	ld e, $02
-	xor a
-	scall Func_80dff
+	warp_player MAP_00_02, $04, $05
 	pop bc
 	ret
 Func_ad302:

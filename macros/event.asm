@@ -191,6 +191,6 @@ MACRO warp_player
 	push hl
 	ld c, \2
 	ld e, MAP_\1
-	ld a, GROUP_\1
+	lda GROUP_\1
 	scall Func_80dff
 	ENDM
