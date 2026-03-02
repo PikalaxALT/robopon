@@ -1514,7 +1514,11 @@ GetRobotBaseStats:: ; 236f
 	; e: Poncots index
 	; hl: Destination pointer
 	push hl
+IF DEF(LANG_JP)
 	ld hl, -$ee
+ELIF DEF(LANG_EN)
+	ld hl, -$f2
+ENDC
 	add hl, sp
 	ld sp, hl
 	ld a, e
@@ -1533,8 +1537,19 @@ GetRobotBaseStats:: ; 236f
 	push af
 	ld l, e
 	ld h, $0
+IF DEF(LANG_JP)
 	ld de, robotBaseStats_SIZEOF
 	call MultiplyHLbyDE
+ELIF DEF(LANG_EN)
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+ENDC
 	ld de, sSRAMRobots - robotBaseStats_SIZEOF * NUM_ROBOTS
 	add hl, de
 	reg16swap de, hl
@@ -1546,7 +1561,11 @@ GetRobotBaseStats:: ; 236f
 	ld bc, robotBaseStats_SIZEOF
 	ld hl, sp+$0
 	push hl
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f2
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $f6
+ENDC
 	pop de
 	call CopyFromDEtoHL
 	jp .Done
@@ -1560,7 +1579,11 @@ GetRobotBaseStats:: ; 236f
 	ld a, BANK(PoncotsBaseStats)
 	call BankSwitch
 	ld hl, PoncotsBaseStats
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f1
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $f6
+ENDC
 	pop af
 	pop de
 	push af
@@ -1574,12 +1597,20 @@ GetRobotBaseStats:: ; 236f
 	add hl, hl
 	ld c, l
 	ld b, h
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f3
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $f8
+ENDC
 	add hl, bc
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f3
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $f8
+ENDC
 	add hl, bc
 	pop de
 	ld bc, 5 * robotBaseStats_SIZEOF
@@ -1589,20 +1620,40 @@ GetRobotBaseStats:: ; 236f
 	ld h, $0
 	ld de, $5
 	call DivideHLByDESigned
+IF DEF(LANG_JP)
 	ld hl, robotBaseStats_SIZEOF
 	call MultiplyHLbyDE
+ELIF DEF(LANG_EN)
+	reg16swap de, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+ENDC
 	reg16swap de, hl
 	ld hl, sp+$2
 	add hl, de
 	push hl
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f4
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $f8
+ENDC
 	pop de
 	ld bc, robotBaseStats_SIZEOF
 	call CopyFromDEtoHL
 	pop af
 	call BankSwitch
 .Done
+IF DEF(LANG_JP)
 	ld hl, $f0
+ELIF DEF(LANG_EN)
+	ld hl, $f4
+ENDC
 	add hl, sp
 	ld sp, hl
 	ret
@@ -1610,7 +1661,7 @@ GetRobotBaseStats:: ; 236f
 GetPart:: ; 241f
 ; Load 24 bytes from unrz(Parts[(e-1)/8])[(e-1)%8] to sp+$0
 	push hl
-	ld hl, -$c2
+	ld hl, -(2 + 8 * part_SIZEOF)
 	add hl, sp
 	ld sp, hl
 	dec e
@@ -1620,7 +1671,7 @@ GetPart:: ; 241f
 	ld a, BANK(Parts)
 	call BankSwitch
 	ld hl, Parts
-	write_hl_to_sp_plus $c6
+	write_hl_to_sp_plus 6 + 8 * part_SIZEOF
 	pop af
 	pop de
 	push af
@@ -1634,15 +1685,15 @@ GetPart:: ; 241f
 	add hl, hl
 	ld c, l
 	ld b, h
-	read_hl_from_sp_plus $c8
+	read_hl_from_sp_plus 8 + 8 * part_SIZEOF
 	add hl, bc
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	read_hl_from_sp_plus $c8
+	read_hl_from_sp_plus 8 + 8 * part_SIZEOF
 	add hl, bc
 	pop de
-	ld bc, $c0
+	ld bc, 8 * part_SIZEOF
 	call Decompress
 	pop de
 	ld l, e
@@ -1650,18 +1701,22 @@ GetPart:: ; 241f
 	ld de, $8
 	call DivideHLByDESigned
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	mulhlby24
+ELIF DEF(LANG_EN)
+	mulhlby26
+ENDC
 	reg16swap de, hl
 	ld hl, sp+$2
 	add hl, de
 	push hl
-	read_hl_from_sp_plus $c8
+	read_hl_from_sp_plus 8 + 8 * part_SIZEOF
 	pop de
-	ld bc, $18
+	ld bc, part_SIZEOF
 	call CopyFromDEtoHL
 	pop af
 	call BankSwitch
-	ld hl, $c4
+	ld hl, 4 + 8 * part_SIZEOF
 	add hl, sp
 	ld sp, hl
 	ret
@@ -2374,6 +2429,7 @@ Func_292b:: ; 292b (0:292b)
 	jp z, .asm_294f
 	ld a, [hl]
 	inc hl
+IF DEF(LANG_JP)
 	cp $28
 	jp z, .asm_2948
 	cp $29
@@ -2386,6 +2442,7 @@ Func_292b:: ; 292b (0:292b)
 	jp .asm_292d
 
 .asm_294b: ; 294b (0:294b)
+ENDC
 	inc e
 	jp .asm_292d
 
@@ -3846,7 +3903,16 @@ Func_3891:: ; 3891
 	ret
 
 CharacterMapping:: ; 3892 (0:3892)
-INCLUDE "data/charmap.asm"
+IF DEF(LANG_JP)
+INCLUDE "data/charmap-jp.asm"
+ELIF DEF(LANG_EN)
+DEF x = 0
+REPT 256
+	db x
+DEF x = x + 1
+ENDR
+PURGE x
+ENDC
 
 PrintNum:: ; 3992 (0:3992)
 	push hl
@@ -4024,6 +4090,7 @@ FillVisibleAreaWithBlankTile:: ; 3aa8 (0:3aa8)
 FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	push af
 	call ClearSprites
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -4031,6 +4098,7 @@ FillVisibleAreaWithTile:: ; 3aae (0:3aae)
 	xor a
 	call PushBGMapRegion_NoWaitBefore
 	pop bc
+ENDC
 	pop af
 	ld e, a
 	hlcoord 0, 0
@@ -4322,6 +4390,15 @@ DoublePushBGMapRegion:: ; 3ca1 (0:3ca1)
 	ret
 
 ToggleBGMapSelect:: ; 3cb8 (0:3cb8)
+IF DEF(LANG_EN)
+	push af
+.en_wait
+	ld a, [wNextVBlankFlags]
+	ld hl, wLastVBlankFlags
+	cp [hl]
+	jp nz, .en_wait
+	pop af
+ENDC
 	push af
 	or a
 	jp nz, .toggle_bgmap_select
@@ -4335,12 +4412,21 @@ ToggleBGMapSelect:: ; 3cb8 (0:3cb8)
 	or $8
 	ld [wLCDC], a
 .okay
+IF DEF(LANG_JP)
 	ld a, [wNextVBlankFlags]
 	or $6 ; push OAM, push LCDC
 	ld [wNextVBlankFlags], a
 	ld a, [wLCDC]
 	or $3
 	ld [wLCDC], a
+ELIF DEF(LANG_EN)
+	ld a, [wLCDC]
+	or $3
+	ld [wLCDC], a
+	ld a, [wNextVBlankFlags]
+	or $6 ; push OAM, push LCDC
+	ld [wNextVBlankFlags], a
+ENDC
 .wait_vblank
 	ld a, [wNextVBlankFlags]
 	ld hl, wLastVBlankFlags

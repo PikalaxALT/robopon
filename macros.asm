@@ -312,6 +312,19 @@ MACRO mulhlby24
 	add hl, de
 	ENDM
 
+MACRO mulhlby26
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ENDM
+
 MACRO mulhlby19
 	ld e, l
 	ld d, h
