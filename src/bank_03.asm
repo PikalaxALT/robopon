@@ -2648,6 +2648,7 @@ Data_d760: ; d760
 Data_d762: ; d762
 	dstr "/   "
 
+IF DEF(LANG_JP)
 Func_d767:: ; d767
 	ld c, $5
 	ld e, $14
@@ -2684,6 +2685,36 @@ Func_d767:: ; d767
 	ld a, $1
 	call Func_d596
 	ret
+ELIF DEF(LANG_EN)
+Func_d767::
+	set_farcall_addrs_hli Func_de812
+	ld hl, $0
+	call FarCall
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call Func_c896
+	xor a
+	call Func_d596
+	ld a, $1
+	call Func_d596
+	ret
+
+Func_d767_2:
+	set_farcall_addrs_hli Func_de812
+	ld hl, $0
+	call FarCall
+	set_farcall_addrs_hli Func_17e91
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	xor a
+	call Func_d596
+	ld a, $1
+	call Func_d596
+	ret
+ENDC
 
 INCLUDE "battle/intro2.asm"
 

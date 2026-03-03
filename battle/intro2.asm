@@ -4,6 +4,9 @@ Data_d7e7: ; d7e7
 Func_d7f5:: ; d7f5 (3:57f5)
 	push bc
 	push bc
+IF DEF(LANG_EN)
+	push hl
+ENDC
 	push de
 	read_hl_from wCurRobotPointer
 	ld de, $16
@@ -11,11 +14,18 @@ Func_d7f5:: ; d7f5 (3:57f5)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $5e
+ELIF DEF(LANG_EN)
+	ld hl, $60
+ENDC
 	add hl, de
 	ld c, l
 	ld b, h
 	pop de
+IF DEF(LANG_EN)
+	pop hl
+ENDC
 	push bc
 	cp $7
 	jp z, Func_da26
@@ -64,8 +74,13 @@ Func_d833: ; d833 (3:5833)
 	pop de
 	push de
 	ld a, [de]
+IF DEF(LANG_JP)
 	ld l, a
 	push hl
+ELIF DEF(LANG_EN)
+	ld hl, sp+$9
+	ld [hl], a
+ENDC
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -74,20 +89,39 @@ Func_d833: ; d833 (3:5833)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus10
+IF DEF(LANG_JP)
 	pop hl
+ENDC
 	pop de
+IF DEF(LANG_JP)
 	push hl
+ENDC
 	ld l, e
 	ld h, d
 	inc hl
+IF DEF(LANG_JP)
 	ld c, [hl]
 	ld a, c
+ELIF DEF(LANG_EN)
+	ld a, [hl]
+	ld hl, sp+$6
+	ld [hl], a
+ENDC
 	cp $ff
 	jp nz, Func_d8a2
+IF DEF(LANG_JP)
 	ld hl, sp+$8
 	ld [hl], $1
+ELIF DEF(LANG_EN)
+	ld l, $1
+	push hl
+ENDC
 	call GetHLAtSPPlus8
+IF DEF(LANG_JP)
 	ld de, $2f
+ELIF DEF(LANG_EN)
+	ld de, $30
+ENDC
 	add hl, de
 	call WriteHLToSPPlus8
 	call GetHLAtSPPlus8
@@ -95,23 +129,49 @@ Func_d833: ; d833 (3:5833)
 	add hl, de
 	ld a, [hl]
 	dec a
+IF DEF(LANG_JP)
 	ld c, a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$8
+	ld [hl], a
+ENDC
 	call GetHLAtSPPlus8
+IF DEF(LANG_JP)
 	ld de, hFFC9 + 8
+ELIF DEF(LANG_EN)
+	ld de, hFFC9 + 7
+ENDC
 	add hl, de
 	call WriteHLToSPPlus8
+IF DEF(LANG_EN)
+	pop hl
+ENDC
 	jp Func_d8a6
 
 Func_d8a2: ; d8a2 (3:58a2)
+IF DEF(LANG_JP)
 	ld hl, sp+$8
 	ld [hl], $0
+ELIF DEF(LANG_EN)
+	ld l, $0
+ENDC
 Func_d8a6: ; d8a6 (3:58a6)
+IF DEF(LANG_JP)
 	pop hl
+ENDC
 	pop af
 	or a
 	jp nz, Func_d8cd
+IF DEF(LANG_JP)
 	ld e, c
 	ld a, l
+ELIF DEF(LANG_EN)
+	push hl
+	ld hl, sp+$6
+	ld e, [hl]
+	ld hl, sp+$7
+	ld a, [hl]
+ENDC
 	call Func_e015
 	ld a, [wSystemType]
 	cp $1
@@ -124,9 +184,15 @@ Func_d8c1: ; d8c1 (3:58c1)
 	ld hl, Data_d7e7
 	call Func_2b7d
 Func_d8ca: ; d8ca (3:58ca)
+IF DEF(LANG_EN)
+	pop hl
+ENDC
 	jp Func_d938
 
 Func_d8cd: ; d8cd (3:58cd)
+IF DEF(LANG_EN)
+	push hl
+ENDC
 	call ClearSprites
 	ld a, [wOverworldTilemapSelector]
 	xor $1
@@ -165,10 +231,24 @@ Func_d932: ; d932 (3:5932)
 	call WaitVideoTransfer
 	call Func_c779
 Func_d938: ; d938 (3:5938)
+IF DEF(LANG_EN)
+	pop hl
+	push hl
+	set_farcall_addrs_hli Func_deb65
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	call FarCall
+ENDC
 	xor a
 	call Func_d030
 	call Func_c8fe
 	call Func_c7ba
+IF DEF(LANG_EN)
+	pop hl
+ENDC
 	jp Func_dacf
 
 Func_d945: ; d945 (3:5945)
@@ -192,8 +272,12 @@ Func_d945: ; d945 (3:5945)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
+IF DEF(LANG_JP)
 	ld hl, sp+$4
 	ld [hl], $1
+ELIF DEF(LANG_EN)
+	ld l, $1
+ENDC
 	jp Func_dacf
 
 Func_d96d: ; d96d (3:596d)
@@ -217,8 +301,12 @@ Func_d96d: ; d96d (3:596d)
 	ld hl, $2f
 	add hl, de
 	call WriteHLToSPPlus4
+IF DEF(LANG_JP)
 	ld hl, sp+$4
 	ld [hl], $2
+ELIF DEF(LANG_EN)
+	ld l, $2
+ENDC
 	jp Func_dacf
 
 Func_d99a: ; d99a (3:599a)
@@ -262,8 +350,12 @@ Func_d9de: ; d9de (3:59de)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
+IF DEF(LANG_JP)
 	ld hl, sp+$4
 	ld [hl], $0
+ELIF DEF(LANG_EN)
+	ld l, $0
+ENDC
 	jp Func_d8cd
 
 Func_d9f5: ; d9f5 (3:59f5)
@@ -275,8 +367,12 @@ Func_d9f5: ; d9f5 (3:59f5)
 	ld h, [hl]
 	ld l, a
 	call WriteHLToSPPlus4
+IF DEF(LANG_JP)
 	ld hl, sp+$4
 	ld [hl], $1
+ELIF DEF(LANG_EN)
+	ld l, $1
+ENDC
 	jp Func_dacf
 
 Func_da0c: ; da0c (3:5a0c)
@@ -289,8 +385,12 @@ Func_da0c: ; da0c (3:5a0c)
 	ld hl, $2f
 	add hl, de
 	call WriteHLToSPPlus4
+IF DEF(LANG_JP)
 	ld hl, sp+$4
 	ld [hl], $2
+ELIF DEF(LANG_EN)
+	ld l, $2
+ENDC
 	jp Func_dacf
 
 Func_da26: ; da26 (3:5a26)
@@ -339,9 +439,18 @@ Func_da6a: ; da6a (3:5a6a)
 	add hl, de
 	ld a, [hl]
 	dec a
+IF DEF(LANG_JP)
 	ld l, a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$5
+	ld [hl], a
+ENDC
 	call GetHLAtSPPlus4
+IF DEF(LANG_JP)
 	ld de, $2f
+ELIF DEF(LANG_EN)
+	ld de, $30
+ENDC
 	add hl, de
 	call WriteHLToSPPlus4
 	call GetHLAtSPPlus4

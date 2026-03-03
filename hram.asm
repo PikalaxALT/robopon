@@ -61,7 +61,8 @@ hFFC4:: ds 1 ; $FFC4
 
     ds 4
 
-hFFC9:: ds 9 ; $FFC9
+hFFC9:: ; $FFC9
+    ds 9
 
 hFFD2:: ds 1 ; $FFD2
 
