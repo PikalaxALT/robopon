@@ -1955,6 +1955,29 @@ Func_d365: ; d365 (3:5365)
 	ld de, $3
 	call Func_2230
 Func_d384: ; d384 (3:5384)
+IF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_dd7cc
+	pop hl
+	push hl
+	ld de, $1b
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	pop hl
+	push hl
+	ld de, $19
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$17
+	ld a, [hl]
+	ld hl, sp+$16
+	ld l, [hl]
+	ld h, a
+	call FarCall
+ENDC
 	ld l, $2
 	push hl
 	ld c, $8
@@ -2107,7 +2130,11 @@ Func_d474: ; d474 (3:5474)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $5e
+ELIF DEF(LANG_EN)
+	ld hl, $60
+ENDC
 	add hl, de
 	ld a, [hl]
 	and $1
@@ -2197,7 +2224,11 @@ Func_d51d: ; d51d (3:551d)
 	read_hl_from_sp_plus $12
 	push hl
 	call GetHLAtSPPlus4
+IF DEF(LANG_JP)
 	ld de, $18
+ELIF DEF(LANG_EN)
+	ld de, $19
+ENDC
 	add hl, de
 	pop de
 	ld [hl], e
@@ -2213,7 +2244,11 @@ Func_d51d: ; d51d (3:551d)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $5e
+ELIF DEF(LANG_EN)
+	ld hl, $60
+ENDC
 	add hl, de
 	ld a, [hl]
 	and $1
@@ -2221,7 +2256,11 @@ Func_d51d: ; d51d (3:551d)
 Func_d559: ; d559 (3:5559)
 	pop hl
 	push hl
+IF DEF(LANG_JP)
 	ld de, $18
+ELIF DEF(LANG_EN)
+	ld de, $19
+ENDC
 	add hl, de
 	ld c, [hl]
 	inc hl
@@ -2240,6 +2279,29 @@ Func_d559: ; d559 (3:5559)
 	ld de, $3
 	call Func_2230
 Func_d578: ; d578 (3:5578)
+IF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_dd7cc
+	pop hl
+	push hl
+	ld de, $1b
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	pop hl
+	push hl
+	ld de, $19
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$17
+	ld a, [hl]
+	ld hl, sp+$16
+	ld l, [hl]
+	ld h, a
+	call FarCall
+ENDC
 	ld l, $2
 	push hl
 	ld c, $8
@@ -2282,7 +2344,11 @@ Func_d5ab: ; d5ab (3:55ab)
 	jp Func_d5c5
 
 Func_d5c2: ; d5c2 (3:55c2)
+IF DEF(LANG_JP)
 	ld hl, $2f
+ELIF DEF(LANG_EN)
+	ld hl, $30
+ENDC
 Func_d5c5: ; d5c5 (3:55c5)
 	add hl, de
 	call WriteHLToSPPlus8
@@ -2292,7 +2358,19 @@ Func_d5c5: ; d5c5 (3:55c5)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, a
+IF DEF(LANG_EN)
+	dec hl
+ENDC
 	call PlaceStringDEatCoordHL
+IF DEF(LANG_EN)
+	ld de, Data_d747_2
+	ld hl, sp+$9
+	ld a, [hl]
+	ld hl, sp+$8
+	ld l, [hl]
+	ld h, a
+	call PlaceStringDEatCoordHL
+ENDC
 	ld de, Data_d751
 	ld hl, sp+$9
 	ld a, [hl]
@@ -2315,6 +2393,9 @@ Func_d5c5: ; d5c5 (3:55c5)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, a
+IF DEF(LANG_EN)
+	dec hl
+ENDC
 	call PlaceStringDEatCoordHL
 	ld hl, sp+$8
 	ld e, [hl]
@@ -2323,7 +2404,11 @@ Func_d5c5: ; d5c5 (3:55c5)
 	add $5
 	call SetStringStartState
 	call GetHLAtSPPlus8
+IF DEF(LANG_JP)
 	ld de, $22
+ELIF DEF(LANG_EN)
+	ld de, $23
+ENDC
 	add hl, de
 	ld a, [hl]
 	or a
@@ -2332,11 +2417,19 @@ Func_d5c5: ; d5c5 (3:55c5)
 	jp nz, Func_d63d
 Func_d621: ; d621 (3:5621)
 	call GetHLAtSPPlus8
+IF DEF(LANG_JP)
 	ld de, $13
+ELIF DEF(LANG_EN)
+	ld de, $14
+ENDC
 	add hl, de
 	ld l, [hl]
 	ld h, $0
 	push hl
+IF DEF(LANG_EN)
+	ld hl, $98
+	push hl
+ENDC
 	ld hl, $9a
 	push hl
 	ld hl, Data_d75a
@@ -2344,6 +2437,9 @@ Func_d621: ; d621 (3:5621)
 	call PlaceString
 	pop bc
 	pop bc
+IF DEF(LANG_EN)
+	pop bc
+ENDC
 	pop bc
 	jp Func_d665
 
@@ -2503,8 +2599,35 @@ Func_d735: ; d735 (3:5735)
 	ld a, [hl]
 	call Func_d18e
 	pop bc
+IF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_dd7cc
+	call GetHLAtSPPlus6
+	ld de, $1b
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus6
+	ld de, $19
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, sp+$7
+	ld a, [hl]
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, a
+	inc hl
+	call FarCall
+ENDC
 	add sp, $1a
 	ret
+
+IF DEF(LANG_EN)
+Data_d747_2: ; d747
+	dstr "         "
+ENDC
 
 Data_d747: ; d747
 	dstr "         "
@@ -2513,7 +2636,11 @@ Data_d751: ; d751
 	dstr "        "
 
 Data_d75a: ; d75a
+IF DEF(LANG_JP)
 	dstr "%cV%d"
+ELIF DEF(LANG_EN)
+	dstr "%c%c%d"
+ENDC
 
 Data_d760: ; d760
 	dstr " "

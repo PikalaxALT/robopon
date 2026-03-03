@@ -530,9 +530,11 @@ wVideoTransferQueue:: ; c239
 	char wTimeSetHoursOnesDigit ; c302
 	char wTimeSetMinutesTensDigit ; c303
 	char wTimeSetMinutesOnesDigit ; c304
-	; in english, there is a shift of +3 bytes somewhere between here and wOptionsMenu_BattleScene
 	char wc305 ; c305
 	char wc306 ; c306
+IF DEF(LANG_EN)
+	ds $3
+ENDC
 	char wOptionsMenu_BattleScene ; c307
 	char wOptionsMenu_StereoSelect ; c308
 
