@@ -19,7 +19,9 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	call FillMemory
 	; allocate an additional 128 bytes and store the pointer in the
 	; larger struct
+IF DEF(LANG_JP)
 	set_farcall_addrs_hli malloc
+ENDC
 	ld hl, $80
 	call FarCall
 	ld c, l
@@ -32,8 +34,12 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	ld [hl], b
 	; allocate an additional 145 bytes and store the pointer in the
 	; larger struct
+IF DEF(LANG_JP)
 	set_farcall_addrs_hli malloc
 	ld hl, $91
+ELIF DEF(LANG_EN)
+	ld hl, $93
+ENDC
 	call FarCall
 	ld c, l
 	ld b, h
@@ -44,7 +50,11 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	inc hl
 	ld [hl], b
 	; clear the 145-byte struct
+IF DEF(LANG_JP)
 	ld bc, $91
+ELIF DEF(LANG_EN)
+	ld bc, $93
+ENDC
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -56,7 +66,9 @@ AllocateMonsterStruct:: ; cb4a (3:4b4a)
 	call FillMemory
 	; allocate an additional 223 bytes and store the pointer in the
 	; larger struct
+IF DEF(LANG_JP)
 	set_farcall_addrs_hli malloc
+ENDC
 	ld hl, $df
 	call FarCall
 	ld c, l

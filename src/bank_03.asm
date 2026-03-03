@@ -756,12 +756,17 @@ Data_c8f6: ; c8f6
 	db $21, $01, $03, $15, $00, $0b, $0d, $0d
 
 Func_c8fe: ; c8fe
+IF DEF(LANG_JP)
 	add sp, -$68
+ELIF DEF(LANG_EN)
+	add sp, -$66
+ENDC
 	ld hl, sp+$0
 	reg16swap de, hl
 	ld hl, Data_c8f6
 	ld bc, $8
 	call MemCopy
+IF DEF(LANG_JP)
 	ld hl, sp+$29
 	write_hl_to_sp_plus $25
 	ld hl, sp+$48
@@ -769,59 +774,109 @@ Func_c8fe: ; c8fe
 	ld hl, $0
 	write_hl_to_sp_plus $29
 	ld hl, sp+$f
+ELIF DEF(LANG_EN)
+	ld hl, sp+$2a
+	write_hl_to_sp_plus $24
+	ld hl, sp+$3e
+	write_hl_to_sp_plus $26
+	ld hl, sp+$52
+	write_hl_to_sp_plus $28
+	ld hl, $0
+	write_hl_to_sp_plus $2a
+	ld hl, sp+$e
+ENDC
 	call Func_c812
+IF DEF(LANG_JP)
 	ld hl, sp+$f
 	push hl
 	read_hl_from_sp_plus $27
 	pop de
+ELIF DEF(LANG_EN)
+	ld hl, sp+$e
+	push hl
+	read_hl_from_sp_plus $26
+	pop de
+ENDC
 	call LiteralStringInTree
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $25
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $24
+ENDC
 	call Func_292b
 	ld e, a
 	push de
+IF DEF(LANG_JP)
 	ld hl, sp+$11
+ELIF DEF(LANG_EN)
+	ld hl, sp+$10
+ENDC
 	call Func_c82b
 	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
 	ld de, wSaveScratchParty
+IF DEF(LANG_JP)
 	ld hl, sp+$12
 	ld [hl], $0
-Func_c94f: ; c94f (3:494f)
+ELIF DEF(LANG_EN)
+	ld c, $0
+ENDC
+.asm_c94f: ; c94f (3:494f)
+IF DEF(LANG_JP)
 	ld hl, sp+$12
 	ld a, [hl]
+ELIF DEF(LANG_EN)
+	ld a, c
+ENDC
 	cp $4
-	jp nc, Func_c976
+	jp nc, .asm_c976
+IF DEF(LANG_JP)
 	ld hl, $c
+ELIF DEF(LANG_EN)
+	ld hl, $d
+ENDC
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_c964
-	jp Func_c976
+	jp nz, .asm_c964
+	jp .asm_c976
 
-Func_c964: ; c964 (3:4964)
+.asm_c964: ; c964 (3:4964)
+IF DEF(LANG_JP)
 	ld hl, sp+$12
 	ld a, [hl]
 	inc a
 	ld hl, sp+$12
 	ld [hl], a
-	ld hl, $23
+ELIF DEF(LANG_EN)
+	inc c
+ENDC
+	ld hl, partyRobot_SIZEOF
 	add hl, de
 	reg16swap de, hl
-	jp Func_c94f
+	jp .asm_c94f
 
-Func_c976: ; c976 (3:4976)
+.asm_c976: ; c976 (3:4976)
+IF DEF(LANG_JP)
 	ld hl, sp+$12
 	ld a, [hl]
+ELIF DEF(LANG_EN)
+	ld a, c
+ENDC
 	cp $4
-	jp nc, Func_c985
+	jp nc, .asm_c985
+IF DEF(LANG_JP)
 	ld hl, sp+$12
 	ld [hl], $0
-	jp Func_c9e8
+ELIF DEF(LANG_EN)
+	ld c, $0
+ENDC
+	jp .asm_c9e8
 
-Func_c985: ; c985 (3:4985)
+.asm_c985: ; c985 (3:4985)
 	ld hl, wc98d
 	ld l, [hl]
 	ld h, 0
@@ -831,14 +886,22 @@ Func_c985: ; c985 (3:4985)
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $12
+IF DEF(LANG_JP)
 	ld de, $e
+ELIF DEF(LANG_EN)
+	ld de, $f
+ENDC
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
 	read_hl_from_sp_plus $14
+IF DEF(LANG_JP)
 	ld de, $c
+ELIF DEF(LANG_EN)
+	ld de, $d
+ENDC
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -849,30 +912,46 @@ Func_c985: ; c985 (3:4985)
 	ld hl, sp+$c
 	ld a, [hl]
 	or a
-	jp nz, Func_c9de
+	jp nz, .asm_c9de
 	ld hl, sp+$d
 	ld a, [hl]
 	or a
-	jp nz, Func_c9de
+	jp nz, .asm_c9de
 	ld hl, sp+$e
 	ld a, [hl]
 	cp $80
-	jp nc, Func_c9de
+	jp nc, .asm_c9de
+IF DEF(LANG_JP)
 	ld hl, sp+$12
 	ld [hl], $1
-	jp Func_c9e8
+ELIF DEF(LANG_EN)
+	ld c, $1
+ENDC
+	jp .asm_c9e8
 
-Func_c9de: ; c9de (3:49de)
+.asm_c9de: ; c9de (3:49de)
 	ld a, $2
 	call RandomRange
 	add $2
+IF DEF(LANG_JP)
 	ld hl, sp+$12
 	ld [hl], a
-Func_c9e8: ; c9e8 (3:49e8)
+ELIF DEF(LANG_EN)
+	ld c, a
+ENDC
+.asm_c9e8: ; c9e8 (3:49e8)
 	pop af
+IF DEF(LANG_EN)
+	push bc
+ENDC
 	call GetSRAMBank
+IF DEF(LANG_JP)
 	ld hl, sp+$10
 	ld l, [hl]
+ELIF DEF(LANG_EN)
+	pop bc
+	ld l, c
+ENDC
 	ld h, $0
 	add hl, hl
 	ld de, Pointers_c8c1
@@ -881,15 +960,20 @@ Func_c9e8: ; c9e8 (3:49e8)
 	inc hl
 	ld d, [hl]
 	push de
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $2b
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $2a
+ENDC
 	pop de
 	call strcpy
+IF DEF(LANG_JP)
 	ld c, l
 	ld b, h
 	ld hl, sp+$10
 	ld a, [hl]
 	cp $3
-	jp nc, Func_ca22
+	jp nc, .asm_ca22
 	ld a, $21
 	ld [bc], a
 	inc bc
@@ -901,9 +985,9 @@ Func_c9e8: ; c9e8 (3:49e8)
 	ld l, c
 	ld h, b
 	call LiteralStringInTree
-	jp Func_ca3e
+	jp .asm_ca3e
 
-Func_ca22: ; ca22 (3:4a22)
+.asm_ca22: ; ca22 (3:4a22)
 	ld hl, sp+$11
 	reg16swap de, hl
 	ld l, c
@@ -911,35 +995,50 @@ Func_ca22: ; ca22 (3:4a22)
 	call LiteralStringInTree
 	ld c, l
 	ld b, h
-	read_hl_from $48c9
+	read_hl_from Pointers_c8c1 + 8
 	reg16swap de, hl
 	ld l, c
 	ld h, b
 	dec hl
 	call strcpy
-Func_ca3e: ; ca3e (3:4a3e)
+ELIF DEF(LANG_EN)
+	ld hl, sp+$10
+	push hl
+	read_hl_from_sp_plus $2c
+	pop de
+	call LiteralStringInTree
+ENDC
+.asm_ca3e: ; ca3e (3:4a3e)
 	pop de
 	push de
 	ld a, e
 	call Func_c8ab
 	ld c, $0
-Func_ca46: ; ca46 (3:4a46)
+.asm_ca46: ; ca46 (3:4a46)
 	ld l, c
 	ld h, $0
 	add hl, hl
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	ld hl, sp+$25
+ELIF DEF(LANG_EN)
+	ld hl, sp+$24
+ENDC
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp z, Func_ca78
+	jp z, .asm_ca78
 	push bc
 	ld l, c
 	ld h, $0
 	add hl, hl
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	ld hl, sp+$27
+ELIF DEF(LANG_EN)
+	ld hl, sp+$26
+ENDC
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -954,9 +1053,15 @@ Func_ca46: ; ca46 (3:4a46)
 	call PlaceStringDEatCoordHL
 	pop bc
 	inc c
-	jp Func_ca46
+	jp .asm_ca46
 
-Func_ca78: ; ca78 (3:4a78)
+.asm_ca78: ; ca78 (3:4a78)
+IF DEF(LANG_EN)
+	ld hl, Data_cb6e
+	push hl
+	call PlaceString
+	pop bc
+ENDC
 	ld a, [wOverworldTilemapSelector]
 	xor $1
 	ld [wOverworldTilemapSelector], a
@@ -971,11 +1076,13 @@ Func_ca78: ; ca78 (3:4a78)
 	inc h
 	call FarCall
 	pop de
+IF DEF(LANG_JP)
 	ld a, e
 	add $2
 	ld e, a
+ENDC
 	check_cgb
-	jp nz, Func_cb00
+	jp nz, .asm_cb00
 	push de
 	set_farcall_addrs_hli Func_667d
 	pop de
@@ -988,7 +1095,11 @@ Func_ca78: ; ca78 (3:4a78)
 	add hl, de
 	reg16swap de, hl
 	ld hl, $b
+IF DEF(LANG_JP)
 	ld bc, $3
+ELIF DEF(LANG_EN)
+	ld bc, $703
+ENDC
 	call FarCall
 	call WaitVideoTransfer
 	ldh a, [rVBK]
@@ -1008,46 +1119,55 @@ Func_ca78: ; ca78 (3:4a78)
 	and $fe
 	ldh [rVBK], a
 	pop de
-Func_cb00: ; cb00 (3:4b00)
+.asm_cb00: ; cb00 (3:4b00)
 	push de
 	call WaitVideoTransfer
 	pop de
 	ld a, [wSystemType]
 	cp $1
-	jp z, Func_cb15
+	jp z, .asm_cb15
 	ld a, [wSystemType]
 	cp $ff
-	jp nz, Func_cb22
-Func_cb15: ; cb15 (3:4b15)
+	jp nz, .asm_cb22
+.asm_cb15: ; cb15 (3:4b15)
 	ld hl, sp+$6
 	ld [hl], e
 	ld c, $1
 	ld de, $8
 	ld hl, sp+$0
 	call Func_2a79
-Func_cb22: ; cb22 (3:4b22)
+.asm_cb22: ; cb22 (3:4b22)
 	ld a, [wNextVBlankFlags]
 	or $4
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
 	xor a
-Func_cb2e: ; cb2e (3:4b2e)
+.asm_cb2e: ; cb2e (3:4b2e)
 	cp $3c
-	jp nc, Func_cb3c
+	jp nc, .asm_cb3c
 	push af
 	call NextBattleFrame
 	pop af
 	inc a
-	jp Func_cb2e
+	jp .asm_cb2e
 
-Func_cb3c: ; cb3c (3:4b3c)
+.asm_cb3c: ; cb3c (3:4b3c)
 	ld a, [wOverworldTilemapSelector]
 	xor $1
 	ld e, a
 	ld a, $2
 	call Func_c758
+IF DEF(LANG_JP)
 	add sp, $68
+ELIF DEF(LANG_EN)
+	add sp, $66
+ENDC
 	ret
+
+IF DEF(LANG_EN)
+Data_cb6e:
+	dstr "!"
+ENDC
 
 INCLUDE "engine/allocate_monster_struct.asm"
 
