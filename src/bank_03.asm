@@ -377,6 +377,7 @@ Data_c6ed: ; c6ed
 Data_c6fd: ; c6fd
 	dw Data_c038
 
+IF DEF(LANG_JP)
 Func_c6ff: ; c6ff (3:46ff)
 	set_farcall_addrs_hli Func_667d
 	ld bc, $8f02
@@ -389,6 +390,23 @@ Func_c6ff: ; c6ff (3:46ff)
 	ld hl, $0
 	call FarCall
 	ret
+ELIF DEF(LANG_EN)
+Func_c6ff_sub:
+	push hl
+	set_farcall_addrs_hli Func_667d
+	pop bc
+	ld de, $1311
+	ld hl, $0
+	call FarCall
+	ret
+
+Func_c6ff: ; c6ff (3:46ff)
+	ld hl, $8f02
+	call Func_c6ff_sub
+	ld hl, $0003
+	call Func_c6ff_sub
+	ret
+ENDC
 
 Func_c72e: ; c72e (3:472e)
 	ld a, [wOverworldTilemapSelector]
@@ -457,12 +475,44 @@ Func_c79d: ; c79d (3:479d)
 	pop bc
 	ret
 
+IF DEF(LANG_EN)
+Func_c7ba_sub:
+	push af
+	cp $40
+	jp nz, .asm_c7bb
+	ld bc, $b05
+	jp .asm_c7be
+.asm_c7bb:
+	ld bc, $105
+.asm_c7be:
+	push bc
+    set_farcall_addrs_hli Func_7c8a
+	pop bc
+	pop af
+    read_hl_from wCurRobotPointer
+	ld de, $0018
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, a
+	ld h, $00
+	add hl, de
+	reg16swap de, hl
+	ld l, c
+	ld h, b
+	ld c, $02
+	call FarCall
+	ret
+ENDC
+
 Func_c7ba: ; c7ba
 	ld a, [wOverworldTilemapSelector]
 	xor $1
 	ld [wOverworldTilemapSelector], a
 	call Func_c72e
 	call Func_c6ff
+IF DEF(LANG_JP)
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
 	read_hl_from wCurRobotPointer
@@ -486,6 +536,12 @@ Func_c7ba: ; c7ba
 	reg16swap de, hl
 	ld hl, $b05
 	call FarCall
+ELIF DEF(LANG_EN)
+	xor a
+	call Func_c7ba_sub
+	ld a, $40
+	call Func_c7ba_sub
+ENDC
 	call Func_c779
 	ret
 
@@ -575,6 +631,7 @@ PrintMapText_:: ; c868 (3:4868)
 	ret
 
 Func_c896: ; c896 (3:4896)
+IF DEF(LANG_JP)
 	push hl
 	push de
 	push bc
@@ -584,8 +641,30 @@ Func_c896: ; c896 (3:4896)
 	pop hl
 	call FarCall
 	ret
+ELIF DEF(LANG_EN)
+	push hl
+	push bc
+	push de
+	set_farcall_addrs_hli Func_17e95
+	pop de
+	pop bc
+	pop hl
+	push hl
+	push bc
+	push de
+	call FarCall
+	set_farcall_addrs_hli Func_de4dd
+	pop de
+	pop bc
+	pop hl
+	ld b, $00
+	ld d, $00
+	call FarCall
+	ret
+ENDC
 
 Func_c8ab: ; c8ab (3:48ab)
+IF DEF(LANG_JP)
 	add $2
 	ld e, a
 	ld hl, $b
@@ -596,6 +675,37 @@ Func_c8ab: ; c8ab (3:48ab)
 	ld hl, $d
 	call Func_c896
 	ret
+ELIF DEF(LANG_EN)
+	push af
+	set_farcall_addrs_hli Func_17e95
+	pop af
+	push af
+	add $2
+	ld e, a
+	ld hl, $b
+	ld c, $3
+	call FarCall
+	set_farcall_addrs_hli Func_de3e7
+	pop af
+	ld e, a
+	ld d, $0
+	inc de
+	inc de
+	ld hl, $b
+	ld bc, $3
+	call FarCall
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	set_farcall_addrs_hli Func_de3e7
+	ld bc, $5
+	ld de, $14
+	ld hl, $d
+	call FarCall
+	ret
+ENDC
 
 Pointers_c8c1: ; c8c1
 	dw Data_c8cb
@@ -603,21 +713,44 @@ Pointers_c8c1: ; c8c1
 	dw Data_c8de
 	dw Data_c8e6
 	dw Data_c8ed
+IF DEF(LANG_EN)
+	dw NULL
+ENDC
 
 Data_c8cb: ; c8cb
+IF DEF(LANG_JP)
 	dstr "(たのんたﾞそﾞ)"
+ELIF DEF(LANG_EN)
+	dstr "I pick you,"
+ENDC
 
 Data_c8d5: ; c8d5
+IF DEF(LANG_JP)
 	dstr "(かﾞんはﾞれ)"
+ELIF DEF(LANG_EN)
+	dstr "Stick to it"
+ENDC
 
 Data_c8de: ; c8de
+IF DEF(LANG_JP)
 	dstr "(いっけぇー)"
+ELIF DEF(LANG_EN)
+	dstr "Come on,"
+ENDC
 
 Data_c8e6: ; c8e6
+IF DEF(LANG_JP)
 	dstr "(よしっ) "
+ELIF DEF(LANG_EN)
+	dstr "Okay, get to it,"
+ENDC
 
 Data_c8ed:
+IF DEF(LANG_JP)
 	dstr " (ゆけっ!!)"
+ELIF DEF(LANG_EN)
+	dstr "Fight!"
+ENDC
 
 Data_c8f6: ; c8f6
 	db $21, $01, $03, $15, $00, $0b, $0d, $0d

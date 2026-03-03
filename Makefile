@@ -127,6 +127,7 @@ SRC_ASM := \
 	maps/bank_34.asm \
 	src/bank_35.asm \
 	maps/bank_36.asm \
+	src/bank_37.asm \
 	maps/bank_38.asm \
 	src/bank_39.asm \
 	src/bank_3e_2.asm \
