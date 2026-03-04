@@ -1,63 +1,45 @@
-Text_64000:
+IF DEF(LANG_JP)
 	dstr "1チップc", 7
-
-Text_64007:
 	dstr "2チップc", 7
-
-Text_6400e:
 	dstr "4チップc", 7
-
-Text_64015:
 	dstr "8チップc", 7
-
-Text_6401c:
 	dstr "16チップc", 7
-
-Text_64023:
 	dstr "32チップc", 7
-
-Text_6402a:
 	dstr "64チップc", 7
-
-Text_64031:
 	dstr "1チップ*", 7
-
-Text_64038:
 	dstr "1チップ*", 7
-
-Text_6403f:
 	dstr "2チップ*", 7
-
-Text_64046:
 	dstr "2チップ*", 7
-
-Text_6404d:
 	dstr "4チップ*", 7
-
-Text_64054:
 	dstr "4チップ*", 7
-
-Text_6405b:
 	dstr "8チップ*", 7
-
-Text_64062:
 	dstr "8チップ*", 7
-
-Text_64069:
 	dstr "16チップ*", 7
-
-Text_64070:
 	dstr "16チップ*", 7
-
-Text_64077:
 	dstr "32チップ*", 7
-
-Text_6407e:
 	dstr "32チップ*", 7
-
-Text_64085:
 	dstr "64チップ*", 7
-
-Text_6408c:
 	dstr "64チップ*", 7
-
+ELIF DEF(LANG_EN)
+	dstr "1CPUム", 7
+	dstr "2CPUム", 7
+	dstr "4CPUム", 7
+	dstr "8CPUム", 7
+	dstr "16CPUム", 7
+	dstr "32CPUム", 7
+	dstr "64CPUム", 7
+	dstr "1CPU~", 7
+	dstr "1CPU~", 7
+	dstr "2CPU~", 7
+	dstr "2CPU~", 7
+	dstr "4CPU~", 7
+	dstr "4CPU~", 7
+	dstr "8CPU~", 7
+	dstr "8CPU~", 7
+	dstr "16CPU~", 7
+	dstr "16CPU~", 7
+	dstr "32CPU~", 7
+	dstr "32CPU~", 7
+	dstr "64CPU~", 7
+	dstr "64CPU~", 7
+ENDC

@@ -9,7 +9,7 @@ my_file = pathlib.Path(__file__)
 repo_root = my_file.parent.parent
 
 
-def load_charmap(infile: pathlib.Path):
+def load_charmap(infile: pathlib.Path, charmap_name):
     CHARMAP = r'charmap "(?P<sym>.|<.+>)", \$(?P<val>[0-9a-f]{,2})'
     DEFCHAR = r'\s+defchar "(?P<sym>.|<.+>)"'
     charmap_pattern = re.compile(CHARMAP)
@@ -19,9 +19,14 @@ def load_charmap(infile: pathlib.Path):
 
     charmap: dict[int, list[str]] = {}
     cur_char = 0
+    parsing_charmap = False
     with infile.open() as ifp:
         for line in ifp:
             line = line.rstrip("\n")
+            if "newcharmap" in line:
+                parsing_charmap = charmap_name in line
+            if not parsing_charmap:
+                continue
             if "char_def" in line:
                 line = line.lstrip()
                 if line != "char_def":
@@ -66,8 +71,9 @@ class Namespace(argparse.Namespace):
 def main():
     args = Namespace.from_cli()
     baserom = repo_root / f"baserom-{args.version}.gbc"
-    charmap_basename = "charmap.asm" if args.kana_mode else "charmap2.asm"
-    charmap = load_charmap(repo_root / charmap_basename)
+    charmap_basename = "charmap.asm"
+    charmap_name = "kana" if args.kana_mode else "asciiplus"
+    charmap = load_charmap(repo_root / charmap_basename, charmap_name)
     kana = 1
     with baserom.open("rb") as rom:
         rom.seek(args.offset)

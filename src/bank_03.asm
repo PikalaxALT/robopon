@@ -3472,16 +3472,45 @@ Data_f74a: ; f74a
 
 Data_f752: ; f752
 	db $00, $00, $00, $00, $00, $00
+IF DEF(LANG_EN)
+	db $00, $00, $00, $00, $00, $00
+ENDC
 
 Data_f758: ; f758
-	db $ca, $de, $c4, $db, $ce, $de, $28, $bc, $ae, $b3, $cc, $de, $a6, $20, $b2, $c4
-	db $de, $dd, $c3, $de, $b7, $c0, $21, $29, $00
+IF DEF(LANG_JP)
+	dstr "ハﾞトロホﾞ(しょうふﾞを いとﾞんてﾞきた!)"
+ELIF DEF(LANG_EN)
+	dw Data_en_f7f6
+	dw Data_en_f7f7
+	dw Data_en_f806
+	dw Data_en_f814
+
+Data_en_f7f6:
+	dstr ""
+
+Data_en_f7f7:
+	dstr "challenges you"
+
+Data_en_f806:
+	dstr "to fight in a"
+
+Data_en_f814:
+	dstr "Robopon Battle!"
+ENDC
 
 Func_f771:: ; f771
+IF DEF(LANG_JP)
 	ld hl, -$ee
+ELIF DEF(LANG_EN)
+	ld hl, -$1ae
+ENDC
 	add hl, sp
 	ld sp, hl
+IF DEF(LANG_JP)
 	ld hl, $e5
+ELIF DEF(LANG_EN)
+	ld hl, $1a5
+ENDC
 	add hl, sp
 	reg16swap de, hl
 	ld hl, Data_f74a
@@ -3493,14 +3522,29 @@ Func_f771:: ; f771
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $68
+ELIF DEF(LANG_EN)
+	ld hl, $6a
+ENDC
 	add hl, de
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $e4
 	ld hl, sp+$0
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $104
+	ld hl, $a0
+	add hl, sp
+ENDC
 	reg16swap de, hl
 	ld hl, Data_f752
+IF DEF(LANG_JP)
 	ld bc, $6
+ELIF DEF(LANG_EN)
+	ld bc, $c
+ENDC
 	call MemCopy
+IF DEF(LANG_JP)
 	ld hl, sp+$6
 	pop de
 	push hl
@@ -3508,6 +3552,19 @@ Func_f771:: ; f771
 	call WriteHLToSPPlus4
 	ld hl, $0
 	call WriteHLToSPPlus6
+ELIF DEF(LANG_EN)
+	ld hl, $c0
+	add hl, sp
+	write_hl_to_sp_plus $a2
+	read_hl_from Data_f758 + 2
+	write_hl_to_sp_plus $a4
+	read_hl_from Data_f758 + 4
+	write_hl_to_sp_plus $a6
+	read_hl_from Data_f758 + 6
+	write_hl_to_sp_plus $a8
+	ld hl, $0
+	write_hl_to_sp_plus $aa
+ENDC
 	ldh a, [hSRAMBank]
 	push af
 	ld a, $3
@@ -3519,16 +3576,25 @@ Func_f7c3: ; f7c3 (3:77c3)
 	push af
 	ld l, a
 	ld h, $0
+IF DEF(LANG_JP)
 	mulhlby35
+ELIF DEF(LANG_EN)
+	mulhlby36
+ENDC
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	ld hl, sp+$57
+ELIF DEF(LANG_EN)
+	ld hl, $112
+	add hl, sp
+ENDC
 	add hl, de
 	push hl
 	ld l, a
 	ld h, 0
 	get_party_bot
 	pop de
-	ld bc, $23
+	ld bc, partyRobot_SIZEOF
 	call MemCopy
 	pop af
 	inc a
@@ -3537,22 +3603,38 @@ Func_f7c3: ; f7c3 (3:77c3)
 Func_f7fd: ; f7fd (3:77fd)
 	pop af
 	call GetSRAMBank
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e4
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a4
+ENDC
 	ld de, $b
 	add hl, de
 	ld c, l
 	ld b, h
 	push bc
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e6
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a6
+ENDC
 	ld de, $5
 	add hl, de
 	ld a, [hl]
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e6
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a6
+ENDC
 	ld de, $6
 	add hl, de
 	ld e, [hl]
 	call Func_e015
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e6
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a6
+ENDC
 	ld de, $27
 	add hl, de
 	ld a, [hl]
@@ -3575,77 +3657,220 @@ Func_f7fd: ; f7fd (3:77fd)
 	ld e, $14
 	ld hl, $d
 	call Func_c896
+IF DEF(LANG_JP)
 	ld hl, $e7
 	add hl, sp
 	write_hl_to_sp_plus $e3
 	ld hl, $e3
 	add hl, sp
 	ld [hl], $0
+ELIF DEF(LANG_EN)
+	ld hl, $1a6
+	add hl, sp
+	ld [hl], $0
+	ld hl, $1a7
+	add hl, sp
+	write_hl_to_sp_plus $1a2
+	ld c, $0
+ENDC
 Func_f86a: ; f86a (3:786a)
+IF DEF(LANG_JP)
 	ld hl, $e3
 	add hl, sp
 	ld a, [hl]
+ELIF DEF(LANG_EN)
+	ld a, c
+ENDC
 	cp $4
 	jp nc, Func_f91d
+IF DEF(LANG_JP)
 	ld hl, $e3
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
 	mulhlby35
+ELIF DEF(LANG_EN)
+	ld l, c
+	ld h, $0
+	mulhlby36
+ENDC
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	ld hl, sp+$55
+ELIF DEF(LANG_EN)
+	ld hl, $110
+	add hl, sp
+ENDC
 	add hl, de
 	ld a, [hl]
 	or a
 	jp z, Func_f906
+IF DEF(LANG_EN)
+	push bc
+ENDC
 	ld e, a
 	dec e
+IF DEF(LANG_JP)
 	ld hl, sp+$26
+ELIF DEF(LANG_EN)
+	ld hl, $e2
+	add hl, sp
+ENDC
 	call GetRobotBaseStats
-	set_farcall_addrs_hli LookUpRobotSpriteImage
-	ld hl, $e3
-	add hl, sp
-	ld l, [hl]
-	ld h, $0
-	mulhlby35
-	reg16swap de, hl
-	ld hl, sp+$55
-	add hl, de
-	ld de, $1f
-	add hl, de
-	ld e, [hl]
-	ld hl, sp+$2b
-	ld a, [hl]
-	call FarCall
-	read_hl_from_sp_plus $e3
-	ld [hl], a
-	ld hl, $e3
-	add hl, sp
-	ld l, [hl]
-	ld h, $0
-	mulhlby35
-	reg16swap de, hl
-	ld hl, sp+$55
-	add hl, de
-	inc hl
-	reg16swap de, hl
-	ld hl, sp+$8
-	call LiteralStringInTree
-	ld hl, sp+$8
-	push hl
-	ld hl, $e5
+IF DEF(LANG_EN)
+	ld hl, $e7
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
 	ld e, l
 	ld d, h
 	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
 	add hl, de
+	add hl, bc
+	ld de, Text_66ea7
+	add hl, de
+	ld c, l
+	ld b, a
+	ld hl, $1a8
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$4
+	add hl, de
+	ld e, c
+	ld d, b
+	ld c, BANK(Text_66ea7)
+	call strcpy_far
+	ld hl, $1a8
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $1a8
+	add hl, sp
+	ld [hl], a
+ENDC
+	set_farcall_addrs_hli LookUpRobotSpriteImage
+IF DEF(LANG_JP)
+	ld hl, $e3
+	add hl, sp
+	ld l, [hl]
+ELIF DEF(LANG_EN)
+	pop bc
+	push bc
+	ld l, c
+ENDC
+	ld h, $0
+IF DEF(LANG_JP)
+	mulhlby35
+ELIF DEF(LANG_EN)
+	mulhlby36
+ENDC
+	reg16swap de, hl
+IF DEF(LANG_JP)
+	ld hl, sp+$55
+ELIF DEF(LANG_EN)
+	ld hl, $112
+	add hl, sp
+ENDC
+	add hl, de
+IF DEF(LANG_JP)
+	ld de, $1f
+ELIF DEF(LANG_EN)
+	ld de, $20
+ENDC
+	add hl, de
+	ld e, [hl]
+IF DEF(LANG_JP)
+	ld hl, sp+$2b
+ELIF DEF(LANG_EN)
+	ld hl, $e7
+	add hl, sp
+ENDC
+	ld a, [hl]
+	call FarCall
+IF DEF(LANG_JP)
+	read_hl_from_sp_plus $e3
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a4
+ENDC
+	ld [hl], a
+IF DEF(LANG_JP)
+	ld hl, $e3
+	add hl, sp
+	ld l, [hl]
+ELIF DEF(LANG_EN)
+	pop bc
+	push bc
+	ld l, c
+ENDC
+	ld h, $0
+IF DEF(LANG_JP)
+	mulhlby35
+ELIF DEF(LANG_EN)
+	mulhlby36
+ENDC
+	reg16swap de, hl
+IF DEF(LANG_JP)
+	ld hl, sp+$55
+ELIF DEF(LANG_EN)
+	ld hl, $112
+	add hl, sp
+ENDC
+	add hl, de
+	inc hl
+	reg16swap de, hl
+IF DEF(LANG_JP)
+	ld hl, sp+$8
+ELIF DEF(LANG_EN)
+	ld hl, $c4
+	add hl, sp
+ENDC
+	call LiteralStringInTree
+IF DEF(LANG_JP)
+	ld hl, sp+$8
+ELIF DEF(LANG_EN)
+	pop bc
+	push bc
+	ld hl, $c4
+	add hl, sp
+ENDC
+	push hl
+IF DEF(LANG_JP)
+	ld hl, $e5
+	add hl, sp
+	ld l, [hl]
+ELIF DEF(LANG_EN)
+	ld l, c
+ENDC
+	ld h, $0
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, de
+IF DEF(LANG_JP)
 	ld de, $302
+ELIF DEF(LANG_EN)
+	ld de, $202
+ENDC
 	add hl, de
 	pop de
 	call PlaceStringDEatCoordHL
+IF DEF(LANG_EN)
+	pop bc
+ENDC
 Func_f906: ; f906 (3:7906)
+IF DEF(LANG_JP)
 	ld hl, $e3
 	add hl, sp
 	ld a, [hl]
@@ -3656,13 +3881,23 @@ Func_f906: ; f906 (3:7906)
 	read_hl_from_sp_plus $e3
 	inc hl
 	write_hl_to_sp_plus $e3
+ELIF DEF(LANG_EN)
+	inc c
+	read_hl_from_sp_plus $1a2
+	inc hl
+	write_hl_to_sp_plus $1a2
+ENDC
 	jp Func_f86a
 
 Func_f91d: ; f91d (3:791d)
 	xor a
 	pop bc
 Func_f91f: ; f91f (3:791f)
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e4
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a4
+ENDC
 	inc hl
 	inc hl
 	inc hl
@@ -3672,8 +3907,50 @@ Func_f91f: ; f91f (3:791f)
 	push af
 	ld a, [bc]
 	ld e, a
+IF DEF(LANG_JP)
 	ld hl, sp+$28
+ELIF DEF(LANG_EN)
+	ld hl, $e2
+	add hl, sp
+ENDC
 	call GetRobotBaseStats
+IF DEF(LANG_EN)
+	ld hl, $e7
+	add hl, sp
+	ld l, [hl]
+	ld h, 0
+	ld e, l
+	ld d, h
+	add hl, hl
+	ld c, l
+	ld b, h
+	add hl, hl
+	add hl, de
+	add hl, bc
+	ld de, Text_66ea7
+	add hl, de
+	ld c, l
+	ld b, h
+	ld hl, $1a8
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	mulhlby36
+	reg16swap de, hl
+	ld hl, sp+$4
+	add hl, de
+	ld e, c
+	ld d, b
+	ld c, BANK(Text_66ea7)
+	call strcpy_far
+	ld hl, $1a8
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $1a8
+	add hl, sp
+	ld [hl], a
+ENDC
 	set_farcall_addrs_hli LookUpRobotSpriteImage
 	ld hl, sp+$53
 	ld e, [hl]

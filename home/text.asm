@@ -1,5 +1,5 @@
 LiteralStringInTree:: ; 1494 (0:1494)
-	; Converts string from charmap2 to charmap
+	; Converts string from charmap kana to charmap asciiplus
 	; src: (wFarCallDestBank):de
 	; dest: hl
 	ldh a, [hROMBank]

@@ -28,7 +28,11 @@ INCBIN "baserom-sun-en.gbc", $de812, $353
 
 Func_deb65::
 
-INCBIN "baserom-sun-en.gbc", $deb65, $12d6
+INCBIN "baserom-sun-en.gbc", $deb65, $a2
+
+Func_dec07::
+
+INCBIN "baserom-sun-en.gbc", $dec07, $1234
 
 ENDC
 

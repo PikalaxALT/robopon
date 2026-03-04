@@ -9,7 +9,6 @@ ENDC
 
 SECTION "Bank 3f, 2", ROMX
 
-INCLUDE "charmap.asm"
 Func_fd73e:
 	ret
 

@@ -1,7 +1,6 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 SECTION "Bank 8 part 2", ROMX
-INCLUDE "charmap.asm"
 
 Func_202f0: ; 202f0 (8:42f0)
 	push hl

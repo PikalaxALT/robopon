@@ -1,5 +1,9 @@
 INCLUDE "includes.asm"
-INCLUDE "charmap2.asm"
+INCLUDE "charmap.asm"
+
+IF DEF(LANG_JP)
+setcharmap kana
+ENDC
 
 SECTION "Bank 3f", ROMX
 
@@ -2543,10 +2547,18 @@ IntroMovie:: ; fd314 (3f:5314)
 	ret
 
 Text_fd3d1:
+IF DEF(LANG_JP)
 	dstr "プロデューサー"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd3d9:
+IF DEF(LANG_JP)
 	dstr "えんどう ひでとし"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd3e3::
 	dw Text_fd3d1
@@ -2554,10 +2566,18 @@ Pointers_fd3e3::
 	dw $0000
 
 Text_fd3e9:
+IF DEF(LANG_JP)
 	dstr "プロデューサー"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd3f1:
+IF DEF(LANG_JP)
 	dstr "こばやし まさき"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd3fa:
 	dw Text_fd3e9
@@ -2565,22 +2585,46 @@ Pointers_fd3fa:
 	dw $0000
 
 Text_fd400:
+IF DEF(LANG_JP)
 	dstr "プロダクトマネージャー"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd40c:
+IF DEF(LANG_JP)
 	dstr " わけ まさのり"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd415:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd417:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd419:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd41b:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd41d:
 	dw Text_fd400
@@ -2592,22 +2636,46 @@ Pointers_fd41d:
 	dw $0000
 
 Text_fd42b:
+IF DEF(LANG_JP)
 	dstr "サブプロダクトマネージャー"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd439:
+IF DEF(LANG_JP)
 	dstr "あおやま えいじ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd442:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd444:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd446:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd448:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd44a:
 	dw Text_fd42b
@@ -2619,10 +2687,18 @@ Pointers_fd44a:
 	dw $0000
 
 Text_fd458:
+IF DEF(LANG_JP)
 	dstr "せいさくたんとう"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd461:
+IF DEF(LANG_JP)
 	dstr "おざき ただし"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd469:
 	dw Text_fd458
@@ -2630,10 +2706,18 @@ Pointers_fd469:
 	dw $0000
 
 Text_fd46f:
+IF DEF(LANG_JP)
 	dstr "サウンド プロダクツ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd47a:
+IF DEF(LANG_JP)
 	dstr "スタジオ グイド"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd483:
 	dw Text_fd46f
@@ -2641,16 +2725,32 @@ Pointers_fd483:
 	dw $0000
 
 Text_fd489:
+IF DEF(LANG_JP)
 	dstr "サウンドプロデュース"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd494:
+IF DEF(LANG_JP)
 	dstr "おおつき かるた"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd49d:
+IF DEF(LANG_JP)
 	dstr "くどう ともり"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd4a5:
+IF DEF(LANG_JP)
 	dstr "やまなか ちこ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd4ad:
 	dw Text_fd489
@@ -2660,16 +2760,32 @@ Pointers_fd4ad:
 	dw $0000
 
 Text_fd4b7:
+IF DEF(LANG_JP)
 	dstr "きかくサポート"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd4bf:
+IF DEF(LANG_JP)
 	dstr "おおはし しげやす"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd4c9:
+IF DEF(LANG_JP)
 	dstr "いえなが やまと"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd4d2:
+IF DEF(LANG_JP)
 	dstr "いしかわ たかし"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd4db:
 	dw Text_fd4b7
@@ -2679,19 +2795,39 @@ Pointers_fd4db:
 	dw $0000
 
 Text_fd4e5:
+IF DEF(LANG_JP)
 	dstr "プログラム"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd4eb:
+IF DEF(LANG_JP)
 	dstr "まきしま かずゆき"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd4f5:
+IF DEF(LANG_JP)
 	dstr "おおで たかのり"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd4fe:
+IF DEF(LANG_JP)
 	dstr "やじま ひでたか"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd507:
+IF DEF(LANG_JP)
 	dstr "さえき のりゆき"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd510:
 	dw Text_fd4e5
@@ -2702,13 +2838,25 @@ Pointers_fd510:
 	dw $0000
 
 Text_fd51c:
+IF DEF(LANG_JP)
 	dstr "グラフィック"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd523:
+IF DEF(LANG_JP)
 	dstr "ほしの なつこ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd52b:
+IF DEF(LANG_JP)
 	dstr "くまい じゅんいち"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd535:
 	dw Text_fd51c
@@ -2717,22 +2865,46 @@ Pointers_fd535:
 	dw $0000
 
 Text_fd53d:
+IF DEF(LANG_JP)
 	dstr "スペシャルサンクス"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd547:
+IF DEF(LANG_JP)
 	dstr "なかもと しんいち"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd551:
+IF DEF(LANG_JP)
 	dstr "おかだ せつお"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd559:
+IF DEF(LANG_JP)
 	dstr "もとさこ よしお"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd562:
+IF DEF(LANG_JP)
 	dstr "おおた ひろゆき"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd56b:
+IF DEF(LANG_JP)
 	dstr "さとう とおる"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd573:
 	dw Text_fd53d
@@ -2744,19 +2916,39 @@ Pointers_fd573:
 	dw $0000
 
 Text_fd581:
+IF DEF(LANG_JP)
 	dstr "スペシャルサンクス"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd58b:
+IF DEF(LANG_JP)
 	dstr "みつい けいすけ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd594:
+IF DEF(LANG_JP)
 	dstr "たかはし しょうた"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd59e:
+IF DEF(LANG_JP)
 	dstr "はんだ ゆきこ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd5a6:
+IF DEF(LANG_JP)
 	dstr "いとう たいじ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd5ae:
 	dw Text_fd581
@@ -2767,22 +2959,46 @@ Pointers_fd5ae:
 	dw $0000
 
 Text_fd5ba:
+IF DEF(LANG_JP)
 	dstr "スペシャルサンクス"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd5c4:
+IF DEF(LANG_JP)
 	dstr "あおき コブた"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd5cc:
+IF DEF(LANG_JP)
 	dstr "あきたか みか"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd5d4:
+IF DEF(LANG_JP)
 	dstr "いい りつこ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd5db:
+IF DEF(LANG_JP)
 	dstr "あらき ひろみ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd5e3:
+IF DEF(LANG_JP)
 	dstr "いぶ としろう"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd5eb:
 	dw Text_fd5ba
@@ -2794,25 +3010,53 @@ Pointers_fd5eb:
 	dw $0000
 
 Text_fd5f9:
+IF DEF(LANG_JP)
 	dstr "スペシャルサンクス"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd603:
+IF DEF(LANG_JP)
 	dstr "はすぬま ひさお"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd60c:
+IF DEF(LANG_JP)
 	dstr "はすぬま みつお"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd615:
+IF DEF(LANG_JP)
 	dstr "くりもと ひろし"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd61e:
+IF DEF(LANG_JP)
 	dstr "よしはら りえ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd626:
+IF DEF(LANG_JP)
 	dstr "おのでら のりひろ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd630:
+IF DEF(LANG_JP)
 	dstr "といだ たかし"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd638:
 	dw Text_fd5f9
@@ -2825,25 +3069,53 @@ Pointers_fd638:
 	dw $0000
 
 Text_fd648:
+IF DEF(LANG_JP)
 	dstr "スペシャルサンクス"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd652:
+IF DEF(LANG_JP)
 	dstr "コミックボンボンへんしゅうぶ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd661:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd663:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd665:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd667:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd669:
+IF DEF(LANG_JP)
 	dstr " "
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd66b:
 	dw Text_fd648
@@ -2856,10 +3128,18 @@ Pointers_fd66b:
 	dw $0000
 
 Text_fd67b:
+IF DEF(LANG_JP)
 	dstr "デザインさいようしゃ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd686:
+IF DEF(LANG_JP)
 	dstr "いわした のりふみ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd690:
 	dw Text_fd67b
@@ -2867,10 +3147,18 @@ Pointers_fd690:
 	dw $0000
 
 Text_fd696:
+IF DEF(LANG_JP)
 	dstr "デザインさいようしゃ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd6a1:
+IF DEF(LANG_JP)
 	dstr "かきもと だいじろう"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd6ac:
 	dw Text_fd696
@@ -2878,10 +3166,18 @@ Pointers_fd6ac:
 	dw $0000
 
 Text_fd6b2:
+IF DEF(LANG_JP)
 	dstr "ゲームデザイン"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd6ba:
+IF DEF(LANG_JP)
 	dstr "ますだ たつお"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd6c2:
 	dw Text_fd6b2
@@ -2889,10 +3185,18 @@ Pointers_fd6c2:
 	dw $0000
 
 Text_fd6c8:
+IF DEF(LANG_JP)
 	dstr "キャラクターデザイン"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd6d3:
+IF DEF(LANG_JP)
 	dstr "みずたに けんのすけ"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd6de:
 	dw Text_fd6c8
@@ -2900,10 +3204,18 @@ Pointers_fd6de:
 	dw $0000
 
 Text_fd6e4:
+IF DEF(LANG_JP)
 	dstr "ゲームディレクター"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd6ee:
+IF DEF(LANG_JP)
 	dstr "いい しゅんいち"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd6f7:
 	dw Text_fd6e4
@@ -2911,10 +3223,18 @@ Pointers_fd6f7:
 	dw $0000
 
 Text_fd6fd:
+IF DEF(LANG_JP)
 	dstr "トータルデザイン"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Text_fd706:
+IF DEF(LANG_JP)
 	dstr "しもだ あつし"
+ELIF DEF(LANG_EN)
+	dstr ""
+ENDC
 
 Pointers_fd70e:
 	dw Text_fd6fd

@@ -205,6 +205,7 @@ Func_e15d: ; e15d (3:615d)
 	or $2
 	ld [wNextVBlankFlags], a
 	call DelayFrames_NoHalt
+IF DEF(LANG_JP)
 	pop af
 	ld e, a
 	xor a
@@ -212,6 +213,14 @@ Func_e15d: ; e15d (3:615d)
 	pop de
 	ld a, $1
 	call Func_dc0a
+ELIF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_dec07 ; 37:6c07
+	pop af
+	pop de
+	ld h, a
+	ld l, e
+	call FarCall
+ENDC
 	call FillVisibleAreaWithBlankTile
 	ld a, $e4
 	ld [wOBP0], a

@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 SECTION "Bank 19 2", ROMX
-INCLUDE "charmap.asm"
+
 Func_67187: ; 67187 (19:7187)
 	push af
 	push bc

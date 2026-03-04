@@ -1,5 +1,9 @@
 INCLUDE "includes.asm"
-INCLUDE "charmap2.asm"
+INCLUDE "charmap.asm"
+
+IF DEF(LANG_JP)
+setcharmap kana
+ENDC
 
 SECTION "Bank 19", ROMX
 

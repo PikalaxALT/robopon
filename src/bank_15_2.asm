@@ -1,7 +1,7 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 SECTION "Bank 15, 2", ROMX
-INCLUDE "charmap.asm"
+
 Func_56ba1:: ; 56ba1 (15:6ba1)
 	push hl
 	push de

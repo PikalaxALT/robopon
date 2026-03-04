@@ -15,7 +15,12 @@ def load_charmap(infile: pathlib.Path):
     data = infile.open("r").read().splitlines()
     charmap: dict[int, list[str]] = {}
     cur_char = 0
+    parsing_charmap = False
     for line in data:
+        if "newcharmap" in line:
+            parsing_charmap = "kana" in line
+        if not parsing_charmap:
+            continue
         if "char_def" in line:
             if line != "\tchar_def":
                 if "$" in line:
@@ -52,7 +57,7 @@ my_file = pathlib.Path(__file__)
 repo_root = my_file.parent.parent
 bin_dir = repo_root / "data" / "base_stats"
 json_src = bin_dir / "base_stats.json"
-charmap = load_charmap(repo_root / "charmap2.asm")
+charmap = load_charmap(repo_root / "charmap.asm")
 base_stats_struct = struct.Struct("<")  # size=47
 json_data = {"base_stats": []}
 
