@@ -3935,7 +3935,13 @@ IF DEF(LANG_EN)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	mulhlby36
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$4
 	add hl, de
@@ -3952,20 +3958,49 @@ IF DEF(LANG_EN)
 	ld [hl], a
 ENDC
 	set_farcall_addrs_hli LookUpRobotSpriteImage
+IF DEF(LANG_JP)
 	ld hl, sp+$53
+ELIF DEF(LANG_EN)
+	ld hl, $10e
+	add hl, sp
+ENDC
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$2d
+ELIF DEF(LANG_EN)
+	ld hl, $e7
+	add hl, sp
+ENDC
 	ld a, [hl]
 	call FarCall
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e5
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a4
+ENDC
 	ld [hl], a
+IF DEF(LANG_JP)
 	ld hl, sp+$35
+ELIF DEF(LANG_EN)
+	ld hl, $ef
+	add hl, sp
+ENDC
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, $c4
+	add hl, sp
+ENDC
 	call LiteralStringInTree
 	pop af
 	push af
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, $c4
+	add hl, sp
+ENDC
 	push hl
 	ld l, a
 	ld h, $0
@@ -3973,7 +4008,11 @@ ENDC
 	ld d, h
 	add hl, hl
 	add hl, de
+IF DEF(LANG_JP)
 	ld de, $c02
+ELIF DEF(LANG_EN)
+	ld de, $b02
+ENDC
 	add hl, de
 	pop de
 	call PlaceStringDEatCoordHL
@@ -3984,18 +4023,34 @@ ENDC
 	add hl, bc
 	ld c, l
 	ld b, h
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e1
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a0
+ENDC
 	inc hl
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $e1
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $1a0
+ENDC
 	jp Func_f91f
 
 Func_f980: ; f980 (3:7980)
 	call ClearSprites
+IF DEF(LANG_JP)
 	ld hl, $e5
+ELIF DEF(LANG_EN)
+	ld hl, $1a5
+ENDC
 	add hl, sp
 	reg16swap de, hl
 	xor a
+IF DEF(LANG_JP)
 	ld hl, $e4
+ELIF DEF(LANG_EN)
+	ld hl, $1a4
+ENDC
 	add hl, sp
 	ld [hl], a
 Func_f991: ; f991 (3:7991)
@@ -4041,12 +4096,20 @@ Func_f9d2: ; f9d2 (3:79d2)
 	set_farcall_addrs_hli SetOAMUpdatePointer
 	xor a
 	call FarCall
+IF DEF(LANG_JP)
 	ld hl, $e5
+ELIF DEF(LANG_EN)
+	ld hl, $1a5
+ENDC
 	add hl, sp
 	ld c, l
 	ld b, h
 	ld e, $0
+IF DEF(LANG_JP)
 	ld hl, $e4
+ELIF DEF(LANG_EN)
+	ld hl, $1a4
+ENDC
 	add hl, sp
 	ld [hl], e
 Func_f9ee: ; f9ee (3:79ee)
@@ -4061,6 +4124,7 @@ Func_f9ee: ; f9ee (3:79ee)
 	ld a, e
 	ld b, $4
 	call DivideAbyB
+IF DEF(LANG_JP)
 	add a
 	add a
 	add a
@@ -4083,7 +4147,37 @@ Func_f9ee: ; f9ee (3:79ee)
 	add d
 	add $18
 	push af
+ELIF DEF(LANG_EN)
+	add a
+	add a
+	add a
+	add a
+	ld d, a
+	add a
+	add a
+	add a
+	add a, d
+	add $8
+	ld hl, $1a5
+	add hl, sp
+	ld [hl], a
+	pop de
+	push de
+	ld a, e
+	and $3
+	add a
+	add a
+	add a
+	ld d, a
+	add a
+	add d
+	add $18
+	ld hl, $1a4
+	add hl, sp
+	ld [hl], a
+ENDC
 	set_farcall_addrs_hli UpdateCurSprite
+IF DEF(LANG_JP)
 	pop af
 	pop hl
 	ld d, l
@@ -4099,7 +4193,60 @@ Func_f9ee: ; f9ee (3:79ee)
 	add a
 	add a
 	ld bc, $200
+ELIF DEF(LANG_EN)
+	ld bc, $200
+	ld hl, $1a4
+	add hl, sp
+	ld e, [hl]
+	ld hl, $1a5
+	add hl, sp
+	ld h, [hl]
+	ld d, h
+	ld hl, $1a8
+	add hl, sp
+	ld a, [hl]
+	add a
+	add a
+ENDC
 	call FarCall
+IF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_de5d9
+	ld hl, $1a8
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	add hl, hl
+	add hl, hl
+	ld e, l
+	ld d, h
+	add hl, hl
+	add hl, hl
+	add hl, de
+	reg16swap de, hl
+	ld hl, sp+$4
+	add hl, de
+	ld c, l
+	ld b, h
+	ld hl, $1a4
+	add hl, sp
+	ld e, [hl]
+	ld hl, $1a5
+	add hl, sp
+	ld h, [hl]
+	ld d, h
+	ld hl, $1a8
+	add hl, sp
+	ld l, [hl]
+	ld h, $0
+	call FarCall
+	ld hl, $1a8
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $1a8
+	add hl, sp
+	ld [hl], a
+ENDC
 	pop de
 Func_fa3f: ; fa3f (3:7a3f)
 	inc e
@@ -4115,29 +4262,103 @@ Func_fa45: ; fa45 (3:7a45)
 	xor a
 	call PushBGMapRegion
 	pop bc
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e4
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1a4
+ENDC
 	inc hl
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	push de
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus4
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $a4
+ENDC
 	pop de
 	call strcpy
+IF DEF(LANG_JP)
 	ld de, String_fa7b
+ELIF DEF(LANG_EN)
+	ld c, l
+	ld b, h
+	push bc
+	read_hl_from_sp_plus $a4
+	call FindFirstNonzero
+	reg16swap de, hl
+	ld hl, $12
+	call CompareHLtoDE
+	jp nc, .asm_fc68
+	ld hl, $c2
+	add hl, sp
+	write_hl_to_sp_plus $a4
+	ld hl, $ae
+	add hl, sp
+	write_hl_to_sp_plus $a6
+	ld c, $0
+.asm_fc24
+	ld a, c
+	cp $12
+	jp nc, .asm_fc40
+	ld e, c
+	ld d, $0
+	ld hl, $d4
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	ld e, c
+	ld d, $0
+	ld hl, $ae
+	add hl, sp
+	add hl, de
+	ld [hl], a
+	inc c
+	jp .asm_fc24
+.asm_fc40
+	ld hl, $d4
+	add hl, sp
+	ld [hl], $0
+	read_hl_from Data_f758 + 2
+	write_hl_to_sp_plus $a8
+	read_hl_from Data_f758 + 4
+	write_hl_to_sp_plus $aa
+	read_hl_from Data_f758 + 6
+	write_hl_to_sp_plus $ac
+	ld hl, $0
+	write_hl_to_sp_plus $ae
+.asm_fc68
+	pop bc
+	read_hl_from Data_f758
+	reg16swap de, hl
+	ld l, c
+	ld h, b
+ENDC
 	call strcpy
 	ld c, $83
+IF DEF(LANG_JP)
 	ld hl, sp+$0
+ELIF DEF(LANG_EN)
+	ld hl, $a0
+	add hl, sp
+ENDC
 	reg16swap de, hl
 	ld hl, $10e
 	call PrintMapText_
+IF DEF(LANG_JP)
 	ld hl, $ee
+ELIF DEF(LANG_EN)
+	ld hl, $1ae
+ENDC
 	add hl, sp
 	ld sp, hl
 	ret
 
+IF DEF(LANG_JP)
 String_fa7b: ; fa7b
 	dstr " (かﾞ)"
+ENDC
 
 INCLUDE "battle/intro.asm"
 
@@ -4207,4 +4428,3 @@ Func_fdf1: ; fdf1
 
 Func_fdf2: ; fdf2
 	ret
-
