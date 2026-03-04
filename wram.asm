@@ -548,6 +548,9 @@ ENDC
 	char wc317 ; c317
 	char wc318 ; c318
 	char wc319 ; c319
+IF DEF(LANG_EN)
+	ds $2  ; this might not be the right place
+ENDC
 	char wc31a ; c31a
 	char wc31b ; c31b
 	char wc31c ; c31c

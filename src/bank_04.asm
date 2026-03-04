@@ -228,16 +228,32 @@ Data_1019d: ; 1019d
 	dstr "%c"
 
 Data_101a0: ; 101a0
-	db "スヒﾟータﾞー", $0 ; speeder
+IF DEF(LANG_JP)
+	dstr "スヒﾟータﾞー" ; speeder
+ELIF DEF(LANG_EN)
+	dstr "Speeder"
+ENDC
 
 Data_101a8: ; 101a8
-	db "ハﾟンチャー", $0 ; puncher
+IF DEF(LANG_JP)
+	dstr "ハﾟンチャー" ; puncher
+ELIF DEF(LANG_EN)
+	dstr "Puncher"
+ENDC
 
 Data_101af: ; 101af
-	db "シールタﾞー", $0 ; shielder
+IF DEF(LANG_JP)
+	dstr "シールタﾞー" ; shielder
+ELIF DEF(LANG_EN)
+	dstr "Shielder"
+ENDC
 
 Data_101b6: ; 101b6
-	db "シﾞャンハﾟー", $0 ; jumper
+IF DEF(LANG_JP)
+	dstr "シﾞャンハﾟー" ; jumper
+ELIF DEF(LANG_EN)
+	dstr "Jumper"
+ENDC
 
 Func_101be:: ; 101be
 	push bc
@@ -360,26 +376,49 @@ Func_1025d: ; 1025d (4:425d)
 	ret
 
 Data_10268: ; 10268
-	db $6c, $42, $00, $00, $bd, $b8, $d7, $af, $cc, $df, $28, $c6, $20, $c5, $af, $c3
-	db $b2, $d9, $d6, $29, $00
+IF DEF(LANG_JP)
+	dw Data_1026c
+	dw NULL
+
+Data_1026c:
+	dstr "スクラッフﾟ(ニ ナッテイルヨ)"
+ELIF DEF(LANG_EN)
+	dw Data_10270_en
+	dw Data_1027f_en
+	dw NULL
+
+Data_10270_en:
+	dstr "The Robopon is"
+
+Data_1027f_en:
+	dstr "scrapped."
+ENDC
 
 Data_1027d: ; 1027d
 	db $21, $02, $07, $1a, $00, $05, $09, $0c, $03, $1f, $0a, $05, $13, $0c
 
 Func_1028b:: ; 1028b
+IF DEF(LANG_JP)
 	push bc
 	push bc
 	push bc
 	push bc
 	push bc
 	push bc
+ELIF DEF(LANG_EN)
+	add sp, -$e
+ENDC
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $68
+ELIF DEF(LANG_EN)
+	ld hl, $6a
+ENDC
 	add hl, de
 	push hl
 	read_hl_from wCurRobotPointer
@@ -388,13 +427,21 @@ Func_1028b:: ; 1028b
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $5e
+ELIF DEF(LANG_EN)
+	ld hl, $60
+ENDC
 	add hl, de
 	push hl
 	ld hl, sp+$a
 	reg16swap de, hl
 	ld hl, Data_10268
+IF DEF(LANG_JP)
 	ld bc, $4
+ELIF DEF(LANG_EN)
+	ld bc, $6
+ENDC
 	call MemCopy
 	ld a, $2
 	ld [wInBattle], a
@@ -558,16 +605,28 @@ Func_103fe: ; 103fe (4:43fe)
 	ld hl, sp+$a
 	ld [hl], $0
 Func_1040f: ; 1040f (4:440f)
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld a, [hl]
 	cp $2
 	jp nc, Func_10472
 	set_farcall_addrs_hli Func_dbf5
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld a, [hl]
 	or a
 	jp nz, Func_10445
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -578,13 +637,21 @@ Func_1040f: ; 1040f (4:440f)
 	ld c, [hl]
 	ld a, [wc2e9]
 	ld e, a
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld a, [hl]
 	call FarCall
 	jp Func_10468
 
 Func_10445: ; 10445 (4:4445)
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -593,7 +660,11 @@ Func_10445: ; 10445 (4:4445)
 	add hl, de
 	inc hl
 	ld c, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
@@ -601,14 +672,26 @@ Func_10445: ; 10445 (4:4445)
 	ld hl, sp+$2
 	add hl, de
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld a, [hl]
 	call FarCall
 Func_10468: ; 10468 (4:4468)
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld a, [hl]
 	inc a
+IF DEF(LANG_JP)
 	ld hl, sp+$a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$c
+ENDC
 	ld [hl], a
 	jp Func_1040f
 
@@ -641,7 +724,11 @@ Func_10480: ; 10480 (4:4480)
 	pop bc
 	inc c
 	pop de
+IF DEF(LANG_JP)
 	ld hl, $2f
+ELIF DEF(LANG_EN)
+	ld hl, $30
+ENDC
 	add hl, de
 	reg16swap de, hl
 	jp Func_10480
@@ -677,7 +764,11 @@ Func_104ef: ; 104ef (4:44ef)
 	ld a, $1
 	call FarCall
 Func_10503: ; 10503 (4:4503)
+IF DEF(LANG_JP)
 	add sp, $c
+ELIF DEF(LANG_EN)
+	add sp, $e
+ENDC
 	ret
 
 Func_10506: ; 10506 (4:4506)
@@ -1026,6 +1117,11 @@ Func_10876: ; 10876 (4:4876)
 	ld a, [hl]
 	cp $1
 	jp nz, Func_108b0
+IF DEF(LANG_EN)
+	ld e, $3
+	ld a, $5
+	call SetStringStartState
+ENDC
 	ld hl, Data_10964
 	push hl
 	call PlaceString
@@ -1041,11 +1137,20 @@ Func_10876: ; 10876 (4:4876)
 	ld hl, $40
 	add hl, de
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	ld hl, $401
+ELIF DEF(LANG_EN)
+	ld hl, $504
+ENDC
 	call FarCall
 	jp Func_108b8
 
 Func_108b0: ; 108b0 (4:48b0)
+IF DEF(LANG_EN)
+	ld e, $1
+	ld a, $1
+	call SetStringStartState
+ENDC
 	ld hl, Data_1096c
 	push hl
 	call PlaceString
@@ -1058,7 +1163,11 @@ Func_108b8: ; 108b8 (4:48b8)
 	push af
 	cp $2
 	jp z, Func_108d3
+IF DEF(LANG_JP)
 	ld e, $2
+ELIF DEF(LANG_EN)
+	ld e, $1
+ENDC
 	ld a, $d
 	call SetStringStartState
 	ld hl, Data_10973
@@ -1076,6 +1185,15 @@ Func_108d3: ; 108d3 (4:48d3)
 	ld e, $3
 	ld a, $e
 	call SetStringStartState
+IF DEF(LANG_EN)
+	ld hl, sp+$5
+	ld a, [hl]
+	cp $1
+	jp nz, Func_108fb
+	ld e, $3
+	ld a, $f
+	call SetStringStartState
+ENDC
 	pop de
 	push de
 	ld hl, Data_10979
@@ -1095,6 +1213,15 @@ Func_108fb: ; 108fb (4:48fb)
 	ld e, $3
 	ld a, $e
 	call SetStringStartState
+IF DEF(LANG_EN)
+	ld hl, sp+$5
+	ld a, [hl]
+	cp $1
+	jp nz, Func_10912
+	ld e, $3
+	ld a, $f
+	call SetStringStartState
+ENDC
 	pop de
 	push de
 	ld hl, Data_10983
@@ -1139,7 +1266,11 @@ Func_10935: ; 10935 (4:4935)
 	jp z, Func_1095a
 	ld a, $2
 	ld [wInBattle], a
-	callba_hli Func_222b7
+	set_farcall_addrs_hli Func_222b7
+IF DEF(LANG_EN)
+	ld hl, $1
+ENDC
+	call FarCall
 .asm_1094b
 	xor a
 	ld [wInBattle], a
@@ -1148,25 +1279,53 @@ Func_1095a: ; 1095a (4:495a)
 	ret
 
 Data_1095c: ; 1095c
+IF DEF(LANG_JP)
 	dstr "(のしょうり)"
+ELIF DEF(LANG_EN)
+	dstr "You Win!"
+ENDC
 
 Data_10964: ; 10964
+IF DEF(LANG_JP)
 	dstr "(のしょうり)"
+ELIF DEF(LANG_EN)
+	dstr "You Lose!"
+ENDC
 
 Data_1096c: ; 1096c
+IF DEF(LANG_JP)
 	dstr "(ひきわけ)"
+ELIF DEF(LANG_EN)
+	dstr "Draw"
+ENDC
 
 Data_10973: ; 10973
+IF DEF(LANG_JP)
 	dstr "(きろく)"
+ELIF DEF(LANG_EN)
+	dstr "Score"
+ENDC
 
 Data_10979: ; 10979
+IF DEF(LANG_JP)
 	dstr "%dキロ"
+ELIF DEF(LANG_EN)
+	dstr "%d"
+ENDC
 
 Data_1097e: ; 1097e
+IF DEF(LANG_JP)
 	dstr "メートル"
+ELIF DEF(LANG_EN)
+	dstr "Yards"
+ENDC
 
 Data_10983: ; 10983
+IF DEF(LANG_JP)
 	dstr "%d(とん)"
+ELIF DEF(LANG_EN)
+	dstr "%dt"
+ENDC
 
 Data_1098a: ; 1098a
 	db $20, $00, $40, $00, $60, $00, $7c, $00

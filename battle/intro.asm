@@ -6,10 +6,19 @@ BattleIntro:: ; fa81 (3:7a81)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $68
+ELIF DEF(LANG_EN)
+	ld hl, $6a
+ENDC
 	add hl, de
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $32
 	read_hl_from_sp_plus $32
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $31
+	read_hl_from_sp_plus $31
+ENDC
 	ld de, $b
 	add hl, de
 	ld c, l
@@ -21,16 +30,29 @@ BattleIntro:: ; fa81 (3:7a81)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $5e
+ELIF DEF(LANG_EN)
+	ld hl, $60
+ENDC
 	add hl, de
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $32
 	read_hl_from_sp_plus $34
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $31
+	read_hl_from_sp_plus $33
+ENDC
 	ld [hl], $10
 	read_hl_from wCurRobotPointer
 	ld de, $1aa
 	add hl, de
 	ld [hl], $0
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $34
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $33
+ENDC
 	inc hl
 	inc hl
 	inc hl
@@ -39,7 +61,11 @@ BattleIntro:: ; fa81 (3:7a81)
 	cp $1
 	jp c, Func_fb2d
 	push hl
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $36
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $35
+ENDC
 	ld de, $27
 	add hl, de
 	ld a, [hl]
@@ -54,22 +80,38 @@ Func_faeb: ; faeb (3:7aeb)
 	call OverworldPlaySong
 Func_faf0: ; faf0 (3:7af0)
 	call Func_f771
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $34
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $33
+ENDC
 	ld de, $9
 	add hl, de
 	ld [hl], $3
 	ld a, [hl]
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $34
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $33
+ENDC
 	ld de, $8
 	add hl, de
 	ld [hl], a
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $36
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $35
+ENDC
 	ld de, $5
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$27
 	ld [hl], e
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $36
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $35
+ENDC
 	ld de, $6
 	add hl, de
 	ld e, [hl]
@@ -77,7 +119,11 @@ Func_faf0: ; faf0 (3:7af0)
 	ld [hl], e
 	ld hl, sp+$2f
 	ld [hl], $1
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $34
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $33
+ENDC
 	ld [hl], $2
 	pop hl
 	jp Func_fb64
@@ -223,46 +269,92 @@ Func_fc20: ; fc20 (3:7c20)
 	read_hl_from wCurRobotPointer
 	ld de, $1c
 	add hl, de
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $30
 	ld hl, sp+$2c
+ELIF DEF(LANG_EN)
+	ld c, l
+	ld b, h
+	ld hl, sp+$2d
+ENDC
 	ld [hl], $0
 Func_fc31: ; fc31 (3:7c31)
+IF DEF(LANG_JP)
 	ld hl, sp+$2c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$2d
+ENDC
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
 	ld a, [hl]
 	or a
 	jp z, Func_fccb
+IF DEF(LANG_JP)
 	ld hl, sp+$2c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$2d
+ENDC
 	ld a, [hl]
 	cp $4
 	jp nc, Func_fccb
+IF DEF(LANG_EN)
+	push bc
+ENDC
 	ld c, $0
+IF DEF(LANG_JP)
 	ld hl, sp+$2c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$2d
+ENDC
 	ld e, [hl]
 	xor a
 	call Func_dbf5
+IF DEF(LANG_JP)
 	ld hl, sp+$2c
+ELIF DEF(LANG_EN)
+	pop bc
+	push bc
+	ld hl, sp+$2d
+ENDC
 	ld l, [hl]
 	ld h, $0
 	mulhlby17
+IF DEF(LANG_JP)
 	push hl
 	read_hl_from_sp_plus $32
 	ld de, $82
 	add hl, de
 	pop de
+ELIF DEF(LANG_EN)
+	reg16swap de, hl
+	ld hl, $82
+	add hl, bc
+ENDC
 	add hl, de
+IF DEF(LANG_JP)
 	push hl
 	read_hl_from_sp_plus $32
 	ld de, $71
 	add hl, de
 	pop de
+ELIF DEF(LANG_EN)
+	reg16swap de, hl
+	ld hl, $71
+	add hl, bc
+ENDC
 	ld bc, $11
 	call MemCopy
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $30
 	ld de, $75
 	add hl, de
+ELIF DEF(LANG_EN)
+	pop bc
+	push bc
+	ld hl, $75
+	add hl, bc
+ENDC
 	ld a, [hl]
 	read_hl_from wCurRobotPointer
 	ld de, $16
@@ -283,14 +375,29 @@ Func_fc31: ; fc31 (3:7c31)
 	ld hl, $c
 	add hl, de
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	ld hl, sp+$2c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$2f
+ENDC
 	ld a, [hl]
 	call FarCall
+IF DEF(LANG_JP)
 	ld hl, sp+$2c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$2f
+ENDC
 	ld a, [hl]
 	inc a
+IF DEF(LANG_JP)
 	ld hl, sp+$2c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$2f
+ENDC
 	ld [hl], a
+IF DEF(LANG_EN)
+	pop bc
+ENDC
 	jp Func_fc31
 
 Func_fccb: ; fccb (3:7ccb)

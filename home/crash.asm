@@ -1,3 +1,9 @@
+IF DEF(LANG_EN)
+	REPT $90
+	db $ff
+	ENDR
+ENDC
+
 Crash:: ; 1d00 (0:1d00)
 IF DEF(LANG_JP)
 	push de
@@ -61,9 +67,6 @@ IF DEF(LANG_JP)
 	pop bc
 	jp @ ; better luck next time
 ELIF DEF(LANG_EN)
-	REPT $90
-	db $ff
-	ENDR
 	ret
 ENDC
 

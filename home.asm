@@ -133,6 +133,10 @@ BankSwitch_00f7:: ; f7 (0:00f7)
 	ld [HuC3RomBank], a
 	ret
 
+; manual padding
+_highhome_end:
+	ds $100 - _highhome_end
+
 SECTION "Init", ROM0 [$100]
 Init::
 	nop
@@ -232,6 +236,10 @@ CopyPredef::
 	ei
 NullPredef::
 	ret
+
+; manual padding
+_predef_end:
+	ds $1e0 - _predef_end
 
 SECTION "01e0", ROM0 [$1e0]
 Pointers_01e0:: ; 01e0
