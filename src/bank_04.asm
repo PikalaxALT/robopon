@@ -1521,6 +1521,9 @@ Func_10ae6: ; 10ae6 (4:4ae6)
 	push hl
 	ld a, $d
 	call OverworldPlaySong
+IF DEF(LANG_EN)
+	callba_hli Func_de094 ; 37:6094
+ENDC
 	pop hl
 	pop de
 	pop bc
@@ -3815,25 +3818,53 @@ Func_11cb2: ; 11cb2 (4:5cb2)
 	ret
 
 Data_11cc1: ; 11cc1
+IF DEF(LANG_JP)
 	dstr "スタート"
+ELIF DEF(LANG_EN)
+	dstr "Start"
+ENDC
 
 Data_11cc6: ; 11cc6
+IF DEF(LANG_JP)
 	dstr " %d"
+ELIF DEF(LANG_EN)
+	dstr "  %d"
+ENDC
 
 Data_11cca: ; 11cca
+IF DEF(LANG_JP)
 	dstr "(あなたのかち)"
+ELIF DEF(LANG_EN)
+	dstr "You Win!"
+ENDC
 
 Data_11cd3: ; 11cd3
+IF DEF(LANG_JP)
 	dstr "(あなたのまけ)"
+ELIF DEF(LANG_EN)
+	dstr "You Lose!"
+ENDC
 
 Data_11cdc: ; 11cdc
+IF DEF(LANG_JP)
 	dstr "(ひきわけ)"
+ELIF DEF(LANG_EN)
+	dstr "Draw"
+ENDC
 
 Data_11ce3: ; 11ce3
+IF DEF(LANG_JP)
 	dstr "タイムオーハﾞー"
+ELIF DEF(LANG_EN)
+	dstr "TimeOver"
+ENDC
 
 Data_11cec: ; 11cec
+IF DEF(LANG_JP)
 	dstr "タイム"
+ELIF DEF(LANG_EN)
+	dstr "Time"
+ENDC
 
 Data_11cf0: ; 11cf0
 	dstr "%d"
@@ -3842,7 +3873,11 @@ Data_11cf3: ; 11cf3
 	dstr " %d"
 
 Data_11cf7: ; 11cf7
+IF DEF(LANG_JP)
 	dstr ":%d"
+ELIF DEF(LANG_EN)
+	dstr ".%d"
+ENDC
 
 Func_11cfb: ; 11cfb (4:5cfb)
 	push hl
@@ -4242,7 +4277,11 @@ Func_11fda: ; 11fda (4:5fda)
 	jp nz, Func_12021
 	ld a, $2
 	ld [wInBattle], a
-	callba_hli Func_222b7
+	set_farcall_addrs_hli Func_222b7
+IF DEF(LANG_EN)
+	ld hl, $1
+ENDC
+	call FarCall
 	xor a
 	ld [wInBattle], a
 Func_12021: ; 12021 (4:6021)
@@ -4389,26 +4428,276 @@ Func_1209f: ; 1209f (4:609f)
 	ret
 
 Data_12155: ; 12155
-	db $dc, $61, $00, $21, $03, $e1, $61, $00, $32, $01, $e6, $61, $05, $21, $03, $ed
-	db $61, $05, $32, $01, $f5, $61, $01, $21, $03, $fb, $61, $01, $32, $01, $01, $62
-	db $02, $21, $03, $06, $62, $02, $32, $01, $0d, $62, $04, $21, $03, $14, $62, $04
-	db $32, $01, $1b, $62, $03, $21, $03, $23, $62, $03, $32, $01, $2a, $62, $07, $21
-	db $03, $30, $62, $07, $32, $01, $38, $62, $08, $21, $03, $3d, $62, $08, $32, $01
-	db $44, $62, $09, $21, $03, $4b, $62, $09, $32, $01, $52, $62, $0a, $21, $03, $5a
-	db $62, $0a, $32, $01, $62, $62, $0b, $21, $03, $67, $62, $0b, $32, $01, $70, $62
-	db $00, $00, $04, $73, $62, $00, $00, $04, $7b, $62, $00, $64, $02, $81, $62, $00
-	db $c8, $01, $87, $62, $02, $32, $05, $ca, $df, $dd, $c1, $00, $ca, $dd, $cf, $b0
-	db $00, $28, $c3, $de, $dd, $b7, $29, $00, $28, $b2, $c5, $bd, $de, $cf, $29, $00
-	db $28, $cb, $c9, $ba, $29, $00, $28, $b6, $b4, $dd, $29, $00, $bd, $ba, $b0, $d9
-	db $00, $28, $bd, $b2, $b1, $c2, $29, $00, $28, $c4, $de, $bc, $ac, $29, $00, $28
-	db $d7, $b8, $be, $b7, $29, $00, $28, $b7, $c0, $b6, $be, $de, $29, $00, $28, $c0
-	db $c2, $cf, $b7, $29, $00, $28, $cb, $b6, $d8, $29, $00, $28, $bf, $b3, $ba, $de
-	db $dd, $29, $00, $28, $d4, $d0, $29, $00, $28, $b7, $ae, $b3, $cc, $29, $00, $28
-	db $bc, $de, $bc, $dd, $29, $00, $28, $bc, $de, $dc, $da, $29, $00, $28, $bb, $bb
-	db $de, $c5, $d0, $29, $00, $28, $b3, $bd, $de, $bc, $b5, $29, $00, $bf, $c6, $af
-	db $b8, $00, $28, $ca, $de, $b8, $b9, $de, $b7, $29, $00, $bd, $b6, $00, $28, $d0
-	db $b6, $de, $dc, $d8, $29, $00, $31, $30, $30, $c4, $dd, $00, $32, $30, $30, $c4
-	db $dd, $00, $28, $bc, $ad, $b3, $d8, $29, $00
+	dw Data_121dc
+	db $00, $21, $03
+
+	dw Data_121e1
+	db $00, $32, $01
+
+	dw Data_121e6
+	db $05, $21, $03
+
+	dw Data_121ed
+	db $05, $32, $01
+
+	dw Data_121f5
+	db $01, $21, $03
+
+	dw Data_121fb
+	db $01, $32, $01
+
+	dw Data_12201
+	db $02, $21, $03
+
+	dw Data_12206
+	db $02, $32, $01
+
+	dw Data_1220d
+	db $04, $21, $03
+
+	dw Data_12214
+	db $04, $32, $01
+
+	dw Data_1221b
+	db $03, $21, $03
+
+	dw Data_12223
+	db $03, $32, $01
+
+	dw Data_1222a
+	db $07, $21, $03
+
+	dw Data_12230
+	db $07, $32, $01
+
+	dw Data_12238
+	db $08, $21, $03
+
+	dw Data_1223d
+	db $08, $32, $01
+
+	dw Data_12244
+	db $09, $21, $03
+
+	dw Data_1224b
+	db $09, $32, $01
+
+	dw Data_12252
+	db $0a, $21, $03
+
+	dw Data_1225a
+	db $0a, $32, $01
+
+	dw Data_12262
+	db $0b, $21, $03
+
+	dw Data_12267
+	db $0b, $32, $01
+
+	dw Data_12270
+	db $00, $00, $04
+
+	dw Data_12273
+	db $00, $00, $04
+
+	dw Data_1227b
+	db $00, $64, $02
+
+	dw Data_12281
+	db $00, $c8, $01
+
+	dw Data_12287
+	db $02, $32, $05
+
+Data_121dc:
+IF DEF(LANG_JP)
+	dstr "ハﾟンチ"
+ELIF DEF(LANG_EN)
+	dstr "Punch"
+ENDC
+
+Data_121e1:
+IF DEF(LANG_JP)
+	dstr "ハンマー"
+ELIF DEF(LANG_EN)
+	dstr "Hamer"
+ENDC
+
+Data_121e6:
+IF DEF(LANG_JP)
+	dstr "(テﾞンキ)"
+ELIF DEF(LANG_EN)
+	dstr "Elctr"
+ENDC
+
+Data_121ed:
+IF DEF(LANG_JP)
+	dstr "(イナスﾞマ)"
+ELIF DEF(LANG_EN)
+	dstr "Thund"
+ENDC
+
+Data_121f5:
+IF DEF(LANG_JP)
+	dstr "(ヒノコ)"
+ELIF DEF(LANG_EN)
+	dstr "Fire"
+ENDC
+
+Data_121fb:
+IF DEF(LANG_JP)
+	dstr "(カエン)"
+ELIF DEF(LANG_EN)
+	dstr "Flame"
+ENDC
+
+Data_12201:
+IF DEF(LANG_JP)
+	dstr "スコール"
+ELIF DEF(LANG_EN)
+	dstr "Water"
+ENDC
+
+Data_12206:
+IF DEF(LANG_JP)
+	dstr "(スイアツ)"
+ELIF DEF(LANG_EN)
+	dstr "Press"
+ENDC
+
+Data_1220d:
+IF DEF(LANG_JP)
+	dstr "(トﾞシャ)"
+ELIF DEF(LANG_EN)
+	dstr "Stone"
+ENDC
+
+Data_12214:
+IF DEF(LANG_JP)
+	dstr "(ラクセキ)"
+ELIF DEF(LANG_EN)
+	dstr "Rock"
+ENDC
+
+Data_1221b:
+IF DEF(LANG_JP)
+	dstr "(キタカセﾞ)"
+ELIF DEF(LANG_EN)
+	dstr "Nwind"
+ENDC
+
+Data_12223:
+IF DEF(LANG_JP)
+	dstr "(タツマキ)"
+ELIF DEF(LANG_EN)
+	dstr "Trnad"
+ENDC
+
+Data_1222a:
+IF DEF(LANG_JP)
+	dstr "(ヒカリ)"
+ELIF DEF(LANG_EN)
+	dstr "Light"
+ENDC
+
+Data_12230:
+IF DEF(LANG_JP)
+	dstr "(ソウコﾞン)"
+ELIF DEF(LANG_EN)
+	dstr "Holy"
+ENDC
+
+Data_12238:
+IF DEF(LANG_JP)
+	dstr "(ヤミ)"
+ELIF DEF(LANG_EN)
+	dstr "Dark"
+ENDC
+
+Data_1223d:
+IF DEF(LANG_JP)
+	dstr "(キョウフ)"
+ELIF DEF(LANG_EN)
+	dstr "Fear"
+ENDC
+
+Data_12244:
+IF DEF(LANG_JP)
+	dstr "(シﾞシン)"
+ELIF DEF(LANG_EN)
+	dstr "Eqake"
+ENDC
+
+Data_1224b:
+IF DEF(LANG_JP)
+	dstr "(シﾞワレ)"
+ELIF DEF(LANG_EN)
+	dstr "Crpas"
+ENDC
+
+Data_12252:
+IF DEF(LANG_JP)
+	dstr "(ササﾞナミ)"
+ELIF DEF(LANG_EN)
+	dstr "Wave"
+ENDC
+
+Data_1225a:
+IF DEF(LANG_JP)
+	dstr "(ウスﾞシオ)"
+ELIF DEF(LANG_EN)
+	dstr "Spral"
+ENDC
+
+Data_12262:
+IF DEF(LANG_JP)
+	dstr "ソニック"
+ELIF DEF(LANG_EN)
+	dstr "Sonic"
+ENDC
+
+Data_12267:
+IF DEF(LANG_JP)
+	dstr "(ハﾞクケﾞキ)"
+ELIF DEF(LANG_EN)
+	dstr "Bomb"
+ENDC
+
+Data_12270:
+IF DEF(LANG_JP)
+	dstr "スカ"
+ELIF DEF(LANG_EN)
+	dstr "Vain"
+ENDC
+
+Data_12273:
+IF DEF(LANG_JP)
+	dstr "(ミカﾞワリ)"
+ELIF DEF(LANG_EN)
+	dstr "Chnge"
+ENDC
+
+Data_1227b:
+IF DEF(LANG_JP)
+	dstr "100トン"
+ELIF DEF(LANG_EN)
+	dstr "100T"
+ENDC
+
+Data_12281:
+IF DEF(LANG_JP)
+	dstr "200トン"
+ELIF DEF(LANG_EN)
+	dstr "200T"
+ENDC
+
+Data_12287:
+IF DEF(LANG_JP)
+	dstr "(シュウリ)"
+ELIF DEF(LANG_EN)
+	dstr "Repar"
+ENDC
+
 
 Func_1228e:: ; 1228e (4:628e)
 	push af
@@ -5194,7 +5483,11 @@ Func_127de: ; 127de (4:67de)
 	inc e
 	dec e
 	jp nz, Func_127fa
-	callba_hli Func_222b7
+	set_farcall_addrs_hli Func_222b7
+IF DEF(LANG_EN)
+	ld hl, $1
+ENDC
+	call FarCall
 Func_127fa: ; 127fa (4:67fa)
 	pop de
 	jp Func_12812
@@ -5429,8 +5722,10 @@ Func_1293a: ; 1293a (4:693a)
 	ld l, [hl]
 	ld h, c
 	inc hl
+IF DEF(LANG_JP)
 	inc hl
 	inc hl
+ENDC
 	ld de, Data_12974
 	call PlaceStringDEatCoordHL
 	jp Func_12972
@@ -5443,8 +5738,10 @@ Func_1295f: ; 1295f (4:695f)
 	ld l, [hl]
 	ld h, c
 	inc hl
+IF DEF(LANG_JP)
 	inc hl
 	inc hl
+ENDC
 	ld de, Data_1297c
 	call PlaceStringDEatCoordHL
 Func_12972: ; 12972 (4:6972)
@@ -5452,10 +5749,18 @@ Func_12972: ; 12972 (4:6972)
 	ret
 
 Data_12974: ; 12974
+IF DEF(LANG_JP)
 	dstr "(しﾞふﾞん)"
+ELIF DEF(LANG_EN)
+	dstr "You"
+ENDC
 
 Data_1297c: ; 1297c
+IF DEF(LANG_JP)
 	dstr "(あいて)"
+ELIF DEF(LANG_EN)
+	dstr "Rival"
+ENDC
 
 Func_12982: ; 12982 (4:6982)
 	push hl
@@ -5561,15 +5866,38 @@ Func_129f9: ; 129f9 (4:69f9)
 	cp $5
 	jp z, Func_12a6f
 	cp $2
-	jp z, Func_12a6f
+	jp z, Func_12a6f_en
 	cp $4
 	jp z, Func_12a50
 	cp $1
-	jp z, Func_12a50
+	jp z, Func_12a50_en
 	cp $3
 	jp z, Func_12a31
 	or a
 	jp nz, Func_12a8b
+IF DEF(LANG_EN)
+	push bc
+	ld e, c
+	ld d, $0
+	ld hl, sp+$2
+	add hl, de
+	ld a, [hl]
+	ld b, $3
+	call DivideAbyB
+	ld d, a
+	add a
+	ld e, a
+	add a
+	add d
+	add e
+	inc a
+	ld e, a
+	ld a, $1
+	call SetStringStartState
+	pop bc
+	jp Func_12a8b
+ENDC
+
 Func_12a31: ; 12a31 (4:6a31)
 	push bc
 	ld e, c
@@ -5585,12 +5913,40 @@ Func_12a31: ; 12a31 (4:6a31)
 	add a
 	add d
 	add e
+IF DEF(LANG_JP)
 	add $2
+ELIF DEF(LANG_EN)
+	add $3
+ENDC
 	ld e, a
 	ld a, $1
 	call SetStringStartState
 	pop bc
 	jp Func_12a8b
+
+Func_12a50_en:
+IF DEF(LANG_EN)
+	push bc
+	ld e, c
+	ld d, $0
+	ld hl, sp+$2
+	add hl, de
+	ld a, [hl]
+	ld b, $3
+	call DivideAbyB
+	ld d, a
+	add a
+	ld e, a
+	add a
+	add d
+	add e
+	inc a
+	ld e, a
+	ld a, $8
+	call SetStringStartState
+	pop bc
+	jp Func_12a8b
+ENDC
 
 Func_12a50: ; 12a50 (4:6a50)
 	push bc
@@ -5607,12 +5963,40 @@ Func_12a50: ; 12a50 (4:6a50)
 	add a
 	add d
 	add e
+IF DEF(LANG_JP)
 	add $2
+ELIF DEF(LANG_EN)
+	add $3
+ENDC
 	ld e, a
 	ld a, $8
 	call SetStringStartState
 	pop bc
 	jp Func_12a8b
+
+Func_12a6f_en:
+IF DEF(LANG_EN)
+	push bc
+	ld e, c
+	ld d, $0
+	ld hl, sp+$2
+	add hl, de
+	ld a, [hl]
+	ld b, $3
+	call DivideAbyB
+	ld d, a
+	add a
+	ld e, a
+	add a
+	add d
+	add e
+	inc a
+	ld e, a
+	ld a, $f
+	call SetStringStartState
+	pop bc
+	jp Func_12a8b
+ENDC
 
 Func_12a6f: ; 12a6f (4:6a6f)
 	push bc
@@ -5629,7 +6013,11 @@ Func_12a6f: ; 12a6f (4:6a6f)
 	add a
 	add d
 	add e
+IF DEF(LANG_JP)
 	add $2
+ELIF DEF(LANG_EN)
+	add $3
+ENDC
 	ld e, a
 	ld a, $f
 	call SetStringStartState
@@ -5903,10 +6291,18 @@ Func_12bba: ; 12bba (4:6bba)
 	ret
 
 Data_12c88: ; 12c88
+IF DEF(LANG_JP)
 	dstr "カートﾞ(を えらんてﾞ)"
+ELIF DEF(LANG_EN)
+	dstr "Select a card and"
+ENDC
 
 Data_12c96: ; 12c96
+IF DEF(LANG_JP)
 	dstr "Aホﾞタン(を おしてね)"
+ELIF DEF(LANG_EN)
+	dstr "press A Button."
+ENDC
 
 Func_12ca4: ; 12ca4 (4:6ca4)
 	push hl

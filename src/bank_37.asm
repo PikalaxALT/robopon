@@ -12,7 +12,11 @@ INCBIN "baserom-sun-en.gbc", $dc001, $17cb
 
 Func_dd7cc::
 
-INCBIN "baserom-sun-en.gbc", $dd7cc, $c1b
+INCBIN "baserom-sun-en.gbc", $dd7cc, $8c8
+
+Func_de094::
+
+INCBIN "baserom-sun-en.gbc", $de094, $363
 
 Func_de3e7::
 
