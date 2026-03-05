@@ -6829,7 +6829,11 @@ Func_1307a: ; 1307a (4:707a)
 	push af
 	push de
 	push bc
+IF DEF(LANG_JP)
 	add sp, -$4c
+ELIF DEF(LANG_EN)
+	add sp, -$50
+ENDC
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -6837,85 +6841,176 @@ Func_1307a: ; 1307a (4:707a)
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $42
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $46
+ENDC
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+IF DEF(LANG_JP)
 	ld hl, $2f
+ELIF DEF(LANG_EN)
+	ld hl, $30
+ENDC
 	add hl, de
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $40
 	read_hl_from_sp_plus $42
 	ld de, $13
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $44
+	read_hl_from_sp_plus $45
+	ld de, $14
+ENDC
 	add hl, de
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$49
+ELIF DEF(LANG_EN)
+	ld hl, sp+$4d
+ENDC
 	ld [hl], e
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $40
 	ld de, $13
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $44
+	ld de, $14
+ENDC
 	add hl, de
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$4a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$4e
+ENDC
 	ld [hl], e
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $42
 	ld de, $23
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $46
+	ld de, $24
+ENDC
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $3c
 	read_hl_from_sp_plus $40
 	ld de, $23
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $40
+	read_hl_from_sp_plus $44
+	ld de, $24
+ENDC
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $3e
 	read_hl_from_sp_plus $42
 	ld de, $25
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $42
+	read_hl_from_sp_plus $46
+	ld de, $26
+ENDC
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $38
 	read_hl_from_sp_plus $40
 	ld de, $25
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $3c
+	read_hl_from_sp_plus $44
+	ld de, $26
+ENDC
 	add hl, de
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $3a
 	read_hl_from_sp_plus $42
 	ld de, $17
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $3e
+	read_hl_from_sp_plus $46
+	ld de, $18
+ENDC
 	add hl, de
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$34
+ELIF DEF(LANG_EN)
+	ld hl, sp+$38
+ENDC
 	ld [hl], e
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $40
 	ld de, $17
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $44
+	ld de, $18
+ENDC
 	add hl, de
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$35
+ELIF DEF(LANG_EN)
+	ld hl, sp+$39
+ENDC
 	ld [hl], e
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $42
 	ld de, $2e
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $46
+	ld de, $2f
+ENDC
 	add hl, de
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$47
+ELIF DEF(LANG_EN)
+	ld hl, sp+$4b
+ENDC
 	ld [hl], e
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $40
 	ld de, $2e
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $44
+	ld de, $2f
+ENDC
 	add hl, de
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$48
+ELIF DEF(LANG_EN)
+	ld hl, sp+$4c
+ENDC
 	ld [hl], e
+IF DEF(LANG_JP)
 	ld hl, sp+$46
+ELIF DEF(LANG_EN)
+	ld hl, sp+$4a
+ENDC
 	ld [hl], $0
 Func_13130: ; 13130 (4:7130)
 	ld hl, sp+$46
@@ -6940,7 +7035,11 @@ Func_13130: ; 13130 (4:7130)
 	ld hl, sp+$48
 	ld l, [hl]
 	ld h, $0
+IF DEF(LANG_JP)
 	mulhlby24
+ELIF DEF(LANG_EN)
+	mulhlby25
+ENDC
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -6949,7 +7048,11 @@ Func_13130: ; 13130 (4:7130)
 	ld hl, sp+$46
 	ld l, [hl]
 	ld h, $0
+IF DEF(LANG_JP)
 	mulhlby24
+ELIF DEF(LANG_EN)
+	mulhlby25
+ENDC
 	reg16swap de, hl
 	ld hl, sp+$4
 	add hl, de
@@ -6974,7 +7077,11 @@ Func_13130: ; 13130 (4:7130)
 	ld hl, sp+$46
 	ld l, [hl]
 	ld h, $0
+IF DEF(LANG_JP)
 	mulhlby24
+ELIF DEF(LANG_EN)
+	mulhlby25
+ENDC
 	reg16swap de, hl
 	ld hl, sp+$4
 	add hl, de
@@ -7639,9 +7746,27 @@ Func_135ce: ; 135ce (4:75ce)
 	push hl
 	call PlaceString
 	pop bc
+IF DEF(LANG_EN)
+	ld e, $10
+	ld a, $6
+	call SetStringStartState
+	ld hl, Data_13715_en
+	push hl
+	call PlaceString
+	pop bc
+ENDC
 	jp Func_135fe
 
 .asm_135ed
+IF DEF(LANG_EN)
+	ld hl, Data_13718_en
+	push hl
+	call PlaceString
+	pop bc
+	ld e, $10
+	ld a, $6
+	call SetStringStartState
+ENDC
 	read_hl_from_sp_plus $4e
 	ld e, [hl]
 	inc hl
@@ -7672,9 +7797,27 @@ Func_135fe: ; 135fe (4:75fe)
 	push hl
 	call PlaceString
 	pop bc
+IF DEF(LANG_EN)
+	ld e, $10
+	ld a, $10
+	call SetStringStartState
+	ld hl, Data_1372a_en
+	push hl
+	call PlaceString
+	pop bc
+ENDC
 	jp Func_13632
 
 .asm_1361f
+IF DEF(LANG_EN)
+	ld hl, Data_1372d_en
+	push hl
+	call PlaceString
+	pop bc
+	ld e, $10
+	ld a, $10
+	call SetStringStartState
+ENDC
 	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
@@ -7695,16 +7838,44 @@ Func_13632: ; 13632 (4:7632)
 	ret
 
 Data_13640: ; 13640
+IF DEF(LANG_JP)
 	dstr "(かいふく) 50"
+ELIF DEF(LANG_EN)
+	dstr "Recover"
+Data_13715_en:
+	dstr "50"
+ENDC
 
+IF DEF(LANG_EN)
+Data_13718_en:
+	dstr "Damage"
+ENDC
 Data_1364a: ; 1364a
+IF DEF(LANG_JP)
 	dstr "タﾞメーシﾞ %d"
+ELIF DEF(LANG_EN)
+	dstr "%d"
+ENDC
 
 Data_13654: ; 13654
+IF DEF(LANG_JP)
 	dstr "(かいふく) 50"
+ELIF DEF(LANG_EN)
+	dstr "Recover"
+Data_1372a_en:
+	dstr "50"
+ENDC
 
+IF DEF(LANG_EN)
+Data_1372d_en:
+	dstr "Damage"
+ENDC
 Data_1365e: ; 1365e
+IF DEF(LANG_JP)
 	dstr "タﾞメーシﾞ %d"
+ELIF DEF(LANG_EN)
+	dstr "%d"
+ENDC
 
 Func_13668: ; 13668 (4:7668)
 	inc c

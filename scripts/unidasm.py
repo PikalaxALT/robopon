@@ -181,7 +181,11 @@ def update_instructions_symbols(
         if insn.has_addr_operand():
             oper_i = Instruction.addr_operand[insn.raw[0]]
             addr_operand = int(insn[oper_i].strip("$[]"), 16)
-            if insn.mnemonic == "ldh":
+            if insn.mnemonic.startswith("jr"):
+                addr_operand &= 0x3FFF
+                if bank != 0:
+                    addr_operand |= 0x4000
+            elif insn.mnemonic == "ldh":
                 region = "HRAM"
                 addr_operand |= 0xFF00
             else:
