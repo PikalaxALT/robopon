@@ -568,7 +568,7 @@ Func_c82b: ; c82b
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld hl, wc98d
+	ld hl, wSaveBlock1_c98d
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
@@ -816,7 +816,7 @@ ENDC
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, wSaveScratchParty
+	ld de, wSaveBlock1_Party
 IF DEF(LANG_JP)
 	ld hl, sp+$12
 	ld [hl], $0
@@ -877,7 +877,7 @@ ENDC
 	jp .asm_c9e8
 
 .asm_c985: ; c985 (3:4985)
-	ld hl, wc98d
+	ld hl, wSaveBlock1_c98d
 	ld l, [hl]
 	ld h, 0
 	get_party_bot

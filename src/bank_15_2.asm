@@ -250,7 +250,7 @@ Func_5712f:: ; 5712f (15:712f)
 	call GetBanks_15
 	ld c, a
 	read_hl_from_sp_plus $14
-	ld de, wc98e
+	ld de, wSaveBlock1_c98e
 	add hl, de
 	ld a, [hl]
 	push af
@@ -634,14 +634,14 @@ Func_573a4::
 	ld a, $3
 	call GetBanks_15
 	push af
-	ld hl, wSaveScratchPlayerName
+	ld hl, wSaveBlock1_PlayerName
 	reg16swap de, hl
 	ld hl, sp+$b
 	ld bc, $5
 	call CopyFromDEtoHL
 	ld hl, sp+$4
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	ld hl, $0
@@ -1082,7 +1082,7 @@ Func_57777: ; 57777 (15:7777)
 	pop af
 	ld e, a
 	ld d, $0
-	ld hl, wSaveScratchDexSeenFlags
+	ld hl, wSaveBlock1_DexSeenFlags
 	add hl, de
 	ld a, [hl]
 	ld b, c
@@ -1298,7 +1298,7 @@ Func_578e9::
 	ld h, $0
 	ld de, $8
 	call DivideHLByDESigned
-	ld de, wSaveScratchDexSeenFlags
+	ld de, wSaveBlock1_DexSeenFlags
 	add hl, de
 	ld a, [hl]
 	pop bc
@@ -1362,7 +1362,7 @@ Func_578e9::
 	sub l
 	ld c, a
 	ld d, $0
-	ld hl, wSaveScratchDexCaughtFlags
+	ld hl, wSaveBlock1_DexCaughtFlags
 	add hl, de
 	ld a, [hl]
 	ld b, c

@@ -1036,7 +1036,7 @@ DoItemEffect:: ; 4f800 (13:7800)
 	push hl
 	ld e, a
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld c, [hl]
 	pop hl

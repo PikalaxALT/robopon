@@ -273,17 +273,17 @@ Func_58df9:: ; 58df9 (16:4df9)
 	ld a, $3
 	call FarCall
 	push af
-	ld hl, wSaveScratchPlayerName
+	ld hl, wSaveBlock1_PlayerName
 	reg16swap de, hl
 	ld hl, sp+$c
 	ld bc, $5
 	call FarCopyVideoData
-	ld a, [wSaveScratchZodiacSign]
+	ld a, [wSaveBlock1_ZodiacSign]
 	ld l, a
 	push hl
 	ld hl, sp+$8
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$c
@@ -595,7 +595,7 @@ Func_590a8: ; 590a8 (16:50a8)
 	push af
 	ld hl, sp+$5
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	ld hl, wc2e9
@@ -909,7 +909,7 @@ Func_59314: ; 59314 (16:5314)
 	ld a, $1f
 	and [hl]
 	ld [hl], a
-	ld de, wSaveScratchMoney
+	ld de, wSaveBlock1_Money
 	ld hl, sp+$5
 	ld bc, $4
 	call MemCopy
@@ -1945,13 +1945,13 @@ Func_59c89::
 	push af
 	ld hl, sp+$2
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	ld de, wcb33
+	ld de, wSaveBlock1_cb33
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$6
@@ -2044,7 +2044,7 @@ Func_59d3e: ; 59d3e (16:5d3e)
 	ld a, $3
 	call FarCall
 	push af
-	ld de, wSaveScratchMoney
+	ld de, wSaveBlock1_Money
 	ld hl, sp+$2
 	ld bc, $4
 	call MemCopy
@@ -2554,13 +2554,13 @@ Func_5a4c8: ; 5a4c8 (16:64c8)
 	push af
 	ld hl, sp+$4
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	ld de, wcb33
+	ld de, wSaveBlock1_cb33
 	add hl, de
 	ld c, [hl]
 	pop af
@@ -3195,7 +3195,7 @@ Func_5aa2f: ; 5aa2f (16:6a2f)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	ld de, wcb33
+	ld de, wSaveBlock1_cb33
 	add hl, de
 	ld a, [hl]
 	ld a, c
@@ -3314,12 +3314,12 @@ Func_5aaf7: ; 5aaf7 (16:6af7)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	ld de, wcb33
+	ld de, wSaveBlock1_cb33
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$31
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	pop af

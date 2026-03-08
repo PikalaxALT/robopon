@@ -499,7 +499,7 @@ Func_93468: ; 93468 (24:7468)
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wOptions]
+	ld a, [wSaveBlock1_Options]
 	and $2 ; stereo
 	push af
 	ld a, l
@@ -694,7 +694,7 @@ Func_935ce: ; 935ce (24:75ce)
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wOptions]
+	ld a, [wSaveBlock1_Options]
 	and $2 ; stereo
 	push af
 	ld a, l

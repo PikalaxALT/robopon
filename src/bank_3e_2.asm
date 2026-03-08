@@ -146,11 +146,11 @@ Func_fb18e:: ; fb18e (3e:718e)
 	call FarCall
 	ld l, a
 	ld a, $1
-	ld [wSaveScratchBirthMonth], a
+	ld [wSaveBlock1_BirthMonth], a
 	ld a, $1
-	ld [wSaveScratchBirthDay], a
+	ld [wSaveBlock1_BirthDay], a
 	ld a, $9
-	ld [wSaveScratchZodiacSign], a
+	ld [wSaveBlock1_ZodiacSign], a
 	ld a, l
 	call GetSRAMBank
 	call FillVisibleAreaWithBlankTile
@@ -1466,7 +1466,7 @@ Func_fbbfb: ; fbbfb (3e:7bfb)
 	push af
 	ld hl, sp+$4
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	pop af

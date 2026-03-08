@@ -1614,7 +1614,7 @@ Func_e1f2d:: ; e1f2d (38:5f2d)
 	ld a, $3
 	call GetSRAMBank_ReadOnly
 	ld hl, sp+$2
-	ld a, [wSaveScratchca6c]
+	ld a, [wSaveBlock1_ca6c]
 	ld [hl], a
 	ld hl, sp+$3
 	ld [hl], $0
@@ -1626,7 +1626,7 @@ Func_e1f43: ; e1f43 (38:5f43)
 	jp nc, Func_e1f70
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$5
@@ -1634,7 +1634,7 @@ Func_e1f43: ; e1f43 (38:5f43)
 	jp nz, Func_e1f6c
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld a, [hl]
 	cp $1
@@ -3697,7 +3697,7 @@ Func_e3222: ; e3222 (38:7222)
 	push hl
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld a, [wOptions]
+	ld a, [wSaveBlock1_Options]
 	pop hl
 	push af
 	ld a, l
@@ -4144,7 +4144,7 @@ Func_e350e: ; e350e (38:750e)
 	push hl
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld a, [wOptions]
+	ld a, [wSaveBlock1_Options]
 	pop hl
 	push af
 	ld a, l

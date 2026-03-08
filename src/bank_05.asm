@@ -84,7 +84,7 @@ Func_1551f::
 	ld c, a
 	pop hl
 	push hl
-	ld de, wc98e
+	ld de, wSaveBlock1_c98e
 	add hl, de
 	ld l, [hl]
 	ld h, $0
@@ -217,7 +217,7 @@ Func_1564a: ; 1564a (5:564a)
 	call GetBanks
 	ld c, a
 	read_hl_from_sp_plus $1a
-	ld de, wc98e
+	ld de, wSaveBlock1_c98e
 	add hl, de
 	ld l, [hl]
 	ld h, $0
@@ -564,7 +564,7 @@ Func_158b7: ; 158b7
 	push hl
 	ld e, a
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld a, [hl]
 	and $3f
@@ -903,7 +903,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld hl, wCurItem
 	ld l, [hl]
 	ld h, $0
-	ld de, wc98e
+	ld de, wSaveBlock1_c98e
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$3
@@ -2004,7 +2004,7 @@ Func_16427: ; 16427 (5:6427)
 	ld [hl], a
 	ld hl, sp+$6
 	ld [hl], $0
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	ld c, a
 	push bc
 	ld hl, sp+$7
@@ -2621,7 +2621,7 @@ Func_1686d: ; 1686d (5:686d)
 	or a
 	jp nz, Func_16b21
 Func_168e9: ; 168e9 (5:68e9)
-	ld a, [wSaveScratchca6c]
+	ld a, [wSaveBlock1_ca6c]
 	or a
 	jp nz, Func_168fc
 	ld hl, sp+$b
@@ -2634,7 +2634,7 @@ Func_168fc: ; 168fc (5:68fc)
 	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
-	ld a, [wSaveScratchca6c]
+	ld a, [wSaveBlock1_ca6c]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -2656,7 +2656,7 @@ Func_16923: ; 16923 (5:6923)
 	jp Func_16b21
 
 Func_16926: ; 16926 (5:6926)
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	or a
 	jp nz, Func_16963
 	ld hl, sp+$b
@@ -2692,7 +2692,7 @@ Func_16963: ; 16963 (5:6963)
 	jp Func_16b21
 
 Func_16966: ; 16966 (5:6966)
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	or a
 	jp nz, Func_169b2
 	ld hl, sp+$b
@@ -2751,7 +2751,7 @@ Func_169dd: ; 169dd (5:69dd)
 	jp Func_16b21
 
 Func_169e0: ; 169e0 (5:69e0)
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	or a
 	jp nz, Func_16a2e
 	ld hl, sp+$b
@@ -3103,7 +3103,7 @@ Func_16c8e: ; 16c8e (5:6c8e)
 	call GetHLAtSPPlus6
 	pop de
 	add hl, de
-	ld de, wSaveScratchBagItems
+	ld de, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	push af
@@ -3632,7 +3632,7 @@ Func_17080: ; 17080 (5:7080)
 	read_hl_from_sp_plus $10
 	pop de
 	add hl, de
-	ld de, wSaveScratchBagItems
+	ld de, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	push af

@@ -3558,7 +3558,7 @@ Func_55ed2:: ; 55ed2 (15:5ed2)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -3626,7 +3626,7 @@ Func_55f3e: ; 55f3e (15:5f3e)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld l, [hl]
 	ld h, $0
@@ -3669,7 +3669,7 @@ Func_55f95:: ; 55f95 (15:5f95)
 	or a
 	jp nz, Func_55fc8
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$0
@@ -3815,7 +3815,7 @@ Func_5609d: ; 5609d (15:609d)
 
 Func_560a3: ; 560a3 (15:60a3)
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$1
@@ -4165,7 +4165,7 @@ Func_56340: ; 56340 (15:6340)
 	jp z, Func_563c3
 	cp $7
 	jp nz, Func_564dc
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	or a
 	jp nz, Func_56374
 	ld a, c
@@ -4177,7 +4177,7 @@ Func_56374: ; 56374 (15:6374)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -4215,7 +4215,7 @@ Func_563bf: ; 563bf (15:63bf)
 	jp Func_564dc
 
 Func_563c3: ; 563c3 (15:63c3)
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	or a
 	jp nz, Func_563d4
 	ld a, c
@@ -4227,7 +4227,7 @@ Func_563d4: ; 563d4 (15:63d4)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -4265,7 +4265,7 @@ Func_5641f: ; 5641f (15:641f)
 	jp Func_564dc
 
 Func_56423: ; 56423 (15:6423)
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	cp $14
 	jp nc, Func_56478
 	push bc
@@ -4308,7 +4308,7 @@ Func_5647e: ; 5647e (15:647e)
 	jp Func_564dc
 
 Func_56481: ; 56481 (15:6481)
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	cp $14
 	jp nc, Func_564d6
 	push bc
@@ -4914,7 +4914,7 @@ Func_569d9:: ; 569d9 (15:69d9)
 	call GetBanks_15
 	push af
 	read_hl_from_sp_plus $20
-	ld de, wc9a3
+	ld de, wSaveBlock1_c9a3
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$4
@@ -4925,7 +4925,7 @@ Func_569d9:: ; 569d9 (15:69d9)
 	ld [hl], c
 	ld hl, sp+$3
 	ld [hl], c
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	or a
 	jp z, Func_56a21
 	ld hl, sp+$4
@@ -5027,7 +5027,7 @@ Func_56abf:: ; 56abf (15:6abf)
 	call GetBanks_15
 	push af
 	read_hl_from_sp_plus $1c
-	ld de, wc9a3
+	ld de, wSaveBlock1_c9a3
 	add hl, de
 	ld l, [hl]
 	ld h, $0

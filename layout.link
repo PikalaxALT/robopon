@@ -223,9 +223,7 @@ WRAM0
     align 2
     "CGB Palettes Buffer"
     align 4
-    "Save Game Scratch"
-    align 4
-    "Allocatable Memory"
+    "Save Game Scratch and Allocatable Memory"
     align 4
     "Stack"
 HRAM

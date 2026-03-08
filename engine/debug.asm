@@ -4853,14 +4853,14 @@ Func_be1dc: ; be1dc (2f:61dc)
 	ld b, h
 	call FillVisibleAreaWithBlankTile
 	call Func_bc092
-	ld hl, wSaveScratchPlayerName
+	ld hl, wSaveBlock1_PlayerName
 	push hl
 	ld hl, Data_be27f
 	push hl
 	call PrintDebugMenuText
 	pop bc
 	pop bc
-	ld hl, wSaveScratchParty
+	ld hl, wSaveBlock1_Party
 	push hl
 	ld hl, Data_be28e
 	push hl
@@ -5842,7 +5842,7 @@ Func_bed16: ; bed16 (2f:6d16)
 	ld a, $3
 	call GetSRAMBank
 	ld a, $ab
-	ld [wSaveScratchParty], a
+	ld [wSaveBlock1_Party], a
 	ld a, BANK(PoncotPicHeaders);
 	ld [wFarCallDestBank], a
 	ld bc, $4

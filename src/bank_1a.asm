@@ -79,7 +79,7 @@ Func_6810b:: ; 6810b (1a:410b)
 	push de
 	ld e, a
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld a, [hl]
 	push af
@@ -3364,7 +3364,7 @@ Func_69878: ; 69878 (1a:5878)
 	ld a, $3
 	call GetBanks_1a
 	push af
-	ld hl, wSaveScratchPlayerName
+	ld hl, wSaveBlock1_PlayerName
 	reg16swap de, hl
 	ld hl, sp+$d
 	ld bc, $5
@@ -3458,7 +3458,7 @@ Func_6991e: ; 6991e (1a:591e)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	ld de, wcb3f
+	ld de, wSaveBlock1_cb3f
 	add hl, de
 	ld c, [hl]
 	inc hl
@@ -3475,7 +3475,7 @@ Func_6991e: ; 6991e (1a:591e)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	ld de, wcb49
+	ld de, wSaveBlock1_cb49
 	add hl, de
 	ld c, [hl]
 	inc hl
@@ -3520,11 +3520,11 @@ Func_6991e: ; 6991e (1a:591e)
 	jp Func_6991e
 
 Func_699a3: ; 699a3 (1a:59a3)
-	read_hl_from wcb53
+	read_hl_from wSaveBlock1_cb53
 	call WriteHLToSPPlus4
-	read_hl_from wcb55
+	read_hl_from wSaveBlock1_cb55
 	reg16swap de, hl
-	ld a, [wcb57]
+	ld a, [wSaveBlock1_cb57]
 	pop hl
 	push de
 	push af
@@ -6054,11 +6054,11 @@ Func_6ae7b: ; 6ae7b (1a:6e7b)
 	call GetBanks_1a
 	ld e, a
 	ld a, $1
-	ld [wcb57], a
+	ld [wSaveBlock1_cb57], a
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	write_hl_to wcb55
+	write_hl_to wSaveBlock1_cb55
 	ld a, e
 	call GetSRAMBank
 	set_farcall_addrs_hli GetRobotInParty
@@ -6261,7 +6261,7 @@ Func_6af9d::
 	pop de
 	push de
 	push af
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld a, [hl]
 	ld hl, wc2e9
@@ -6273,7 +6273,7 @@ Func_6af9d::
 	ld [hl], a
 	pop af
 	pop de
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld [hl], a
 	ld hl, wc2e9

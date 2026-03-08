@@ -159,7 +159,7 @@ MainMenuSubmenu_Options:: ; 5019a
 	ld a, $3
 	call FarCall
 	ld e, a
-	ld a, [wOptions]
+	ld a, [wSaveBlock1_Options]
 	ld l, a
 	push hl
 	ld a, e
@@ -674,7 +674,7 @@ Func_504e1: ; 504e1 (14:44e1)
 	ld e, a
 	pop hl
 	ld a, l
-	ld [wOptions], a
+	ld [wSaveBlock1_Options], a
 	ld a, e
 	call GetSRAMBank
 	callba_hli Func_4fef1
@@ -1752,7 +1752,7 @@ GetZodiacSign:: ; 50d09
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wSaveScratchZodiacSign]
+	ld a, [wSaveBlock1_ZodiacSign]
 	push af
 	ld a, l
 	call GetSRAMBank
@@ -1814,7 +1814,7 @@ Func_50d85:: ; 50d85
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wcb57]
+	ld a, [wSaveBlock1_cb57]
 	push af
 	ld a, l
 	call GetSRAMBank
@@ -1848,7 +1848,7 @@ Func_50dd4: ; 50dd4 (14:4dd4)
 	jp nc, Func_50dfa
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$5
@@ -1856,7 +1856,7 @@ Func_50dd4: ; 50dd4 (14:4dd4)
 	jp nz, Func_50df6
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
@@ -1925,7 +1925,7 @@ Func_50e59: ; 50e59 (14:4e59)
 	jp nc, Func_50e7c
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	or a
@@ -2015,7 +2015,7 @@ Func_50eed: ; 50eed (14:4eed)
 	jp nc, Func_50f10
 	ld e, c
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld a, [hl]
 	or a
@@ -3903,14 +3903,14 @@ Func_51ea4:: ; 51ea4
 	pop bc
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2
 	ld [hl], e
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$1
@@ -5331,51 +5331,51 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld c, [hl]
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld a, [hl]
 	push af
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, wSaveScratchBagItems
+	ld de, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld [hl], a
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, wSaveScratchBagItemQuantities
+	ld de, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld [hl], a
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, wSaveScratchBagItems
+	ld de, wSaveBlock1_BagItems
 	add hl, de
 	ld [hl], c
 	pop af
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, wSaveScratchBagItemQuantities
+	ld de, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld [hl], a
 	jp Func_52cdc
@@ -5384,25 +5384,25 @@ Func_52c85: ; 52c85 (14:6c85)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld c, [hl]
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, wc98e
+	ld de, wSaveBlock1_c98e
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld [hl], a
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, wc98e
+	ld de, wSaveBlock1_c98e
 	add hl, de
 	ld [hl], c
 	jp Func_52cdc
@@ -5411,25 +5411,25 @@ Func_52cb2: ; 52cb2 (14:6cb2)
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld c, [hl]
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, wc9a3
+	ld de, wSaveBlock1_c9a3
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld [hl], a
 	ld hl, wc39b
 	ld l, [hl]
 	ld h, $0
-	ld de, wc9a3
+	ld de, wSaveBlock1_c9a3
 	add hl, de
 	ld [hl], c
 Func_52cdc: ; 52cdc (14:6cdc)
@@ -5472,7 +5472,7 @@ Func_52d1f:: ; 52d1f (14:6d1f)
 
 Func_52d58:: ; 52d58 (14:6d58)
 	push hl
-	ld bc, wSaveScratchParty
+	ld bc, wSaveBlock1_Party
 	pop hl
 	push hl
 	inc hl

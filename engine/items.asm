@@ -30,7 +30,7 @@ Func_5a171: ; 5a171 (16:6171)
 
 Func_5a178: ; 5a178 (16:6178)
 	ld hl, sp+$2
-	ld a, [wSaveScratchca6c]
+	ld a, [wSaveBlock1_ca6c]
 	ld [hl], a
 Func_5a17e: ; 5a17e (16:617e)
 	ld c, $0
@@ -60,7 +60,7 @@ Func_5a1a7: ; 5a1a7 (16:61a7)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	cp [hl]
 	jp nz, Func_5a26f
@@ -71,7 +71,7 @@ Func_5a1a7: ; 5a1a7 (16:61a7)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld a, [hl]
 	cp 99
@@ -81,7 +81,7 @@ Func_5a1a7: ; 5a1a7 (16:61a7)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	add [hl]
 	ld [hl], a
@@ -105,7 +105,7 @@ Func_5a1f0: ; 5a1f0 (16:61f0)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld a, [hl]
 	sub c
@@ -113,7 +113,7 @@ Func_5a1f0: ; 5a1f0 (16:61f0)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld a, [hl]
 	or a
@@ -139,23 +139,23 @@ Func_5a225: ; 5a225 (16:6225)
 	ld e, c
 	ld d, $0
 	inc de
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld [hl], a
 	ld e, c
 	ld d, $0
 	inc de
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld [hl], a
 	inc c
@@ -164,9 +164,9 @@ Func_5a225: ; 5a225 (16:6225)
 Func_5a251: ; 5a251 (16:6251)
 	ld hl, sp+$2
 	ld a, [hl]
-	ld [wSaveScratchca6c], a
+	ld [wSaveBlock1_ca6c], a
 	xor a
-	ld [wSaveScratchBagItems + 19], a
+	ld [wSaveBlock1_BagItems + 19], a
 	ld hl, sp+$3
 	ld a, [hl]
 	call GetSRAMBank
@@ -305,7 +305,7 @@ Func_5a2d1: ; 5a2d1 (16:62d1)
 	call CopyFromDEtoHL
 Func_5a329: ; 5a329 (16:6329)
 	xor a
-	ld [wWarehouseItemQuantities + $9e], a
+	ld [wSaveBlock2_WarehouseItemQuantities + $9e], a
 	ld hl, sp+$3
 	ld a, [hl]
 	call GetSRAMBank
@@ -344,7 +344,7 @@ Func_5a348: ; 5a348 (16:6348)
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$6
@@ -352,12 +352,12 @@ Func_5a348: ; 5a348 (16:6348)
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld [hl], a
-	ld a, [wSaveScratchca6c]
+	ld a, [wSaveBlock1_ca6c]
 	inc a
-	ld [wSaveScratchca6c], a
+	ld [wSaveBlock1_ca6c], a
 	ld hl, sp+$1
 	ld [hl], $1
 Func_5a386: ; 5a386 (16:6386)

@@ -416,7 +416,7 @@ IF _NARG > 0
 	ld de, \1
 	add hl, de
 ENDC
-	ld de, wSaveScratchParty
+	ld de, wSaveBlock1_Party
 	add hl, de
 	ENDM
 

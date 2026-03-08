@@ -2209,7 +2209,7 @@ AdjustMoney:: ; 277c
 	call GetSRAMBank_ReadOnly
 	ld hl, sp+$8
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$4
@@ -2238,7 +2238,7 @@ AdjustMoney:: ; 277c
 .asm_27e0 ; 27e0 (0:27e0)
 	ld a, $3
 	call GetSRAMBank
-	ld de, wSaveScratchMoney
+	ld de, wSaveBlock1_Money
 	ld hl, sp+$8
 	ld bc, $4
 	call MemCopy

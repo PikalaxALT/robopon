@@ -133,22 +133,22 @@ SaveGame:: ; 56d9b (15:6d9b)
 	call CopyFromDEtoHL
 	ld bc, $32
 	ld de, wEventFlags
-	ld hl, wSaveScratchEventFlags
+	ld hl, wSaveBlock1_EventFlags
 	call CopyFromDEtoHL
 	ld bc, $64
 	ld de, wc789
-	ld hl, wSaveScratchc789
+	ld hl, wSaveBlock1_c789
 	call CopyFromDEtoHL
 	ld bc, $3c
 	ld de, wc347
-	ld hl, wSaveScratchc347
+	ld hl, wSaveBlock1_c347
 	call CopyFromDEtoHL
 	read_hl_from wGameTimer
-	write_hl_to wcb3b
+	write_hl_to wSaveBlock1_cb3b
 	read_hl_from wGameTimer + 2
-	write_hl_to wcb3b + 2
+	write_hl_to wSaveBlock1_cb3b + 2
 	ld de, wPlayerName
-	ld hl, wSaveScratchPlayerName
+	ld hl, wSaveBlock1_PlayerName
 	call strcpy
 	ld a, $1
 	call GetSRAMBank
@@ -312,7 +312,7 @@ LoadGame:: ; 56fc2 (15:6fc2)
 	write_hl_to wGameTimer
 	read_hl_from wSaveBlock1 + $1bd
 	write_hl_to wGameTimer + 2
-	ld de, wSaveScratchPlayerName
+	ld de, wSaveBlock1_PlayerName
 	ld hl, wPlayerName
 	call strcpy
 	ld a, $1

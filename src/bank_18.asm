@@ -706,7 +706,7 @@ Func_60556: ; 60556 (18:4556)
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, wSaveScratchPlayerName
+	ld de, wSaveBlock1_PlayerName
 	ld hl, sp+$8
 	call strcpy
 	pop af
@@ -744,7 +744,7 @@ Func_605be: ; 605be (18:45be)
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, wSaveScratchPlayerName
+	ld de, wSaveBlock1_PlayerName
 	ld hl, sp+$a
 	call strcpy
 	pop af
@@ -1812,7 +1812,7 @@ Func_61076: ; 61076 (18:5076)
 	pop hl
 	pop bc
 	ld a, c
-	ld [wc98d], a
+	ld [wSaveBlock1_c98d], a
 	ld a, l
 	call GetSRAMBank
 	pop af

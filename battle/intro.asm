@@ -166,7 +166,7 @@ Func_fb64: ; fb64 (3:7b64)
 	push de
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld a, [wOptions]
+	ld a, [wSaveBlock1_Options]
 	pop de
 	push de
 	push af
@@ -239,7 +239,7 @@ Func_fb95: ; fb95 (3:7b95)
 	ld h, $0
 	ld de, $8
 	call DivideHLByDESigned
-	ld de, wSaveScratchDexSeenFlags
+	ld de, wSaveBlock1_DexSeenFlags
 	add hl, de
 	push hl
 	ld a, [hl]
@@ -479,7 +479,7 @@ Func_fd26: ; fd26 (3:7d26)
 	call GetSRAMBank
 	pop bc
 	ld a, c
-	ld [wc98d], a
+	ld [wSaveBlock1_c98d], a
 	pop de
 	ld a, e
 	call GetSRAMBank

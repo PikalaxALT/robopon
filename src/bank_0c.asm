@@ -799,7 +799,7 @@ Func_306db: ; 306db (c:46db)
 	jp z, Func_3075b
 	cp $33
 	jp nz, Func_30786
-	ld a, [wSaveScratchca6c]
+	ld a, [wSaveBlock1_ca6c]
 	cp $1
 	jp nc, Func_30758
 	ld a, e
@@ -812,7 +812,7 @@ Func_30758: ; 30758 (c:4758)
 	jp Func_30786
 
 Func_3075b: ; 3075b (c:475b)
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	cp $1
 	jp nc, Func_3076f
 	ld a, e
@@ -825,7 +825,7 @@ Func_3076f: ; 3076f (c:476f)
 	jp Func_30786
 
 Func_30772: ; 30772 (c:4772)
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	cp $1
 	jp nc, Func_30786
 	ld a, e
@@ -1693,7 +1693,7 @@ Func_30da7: ; 30da7 (c:4da7)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	dec a
@@ -1844,7 +1844,7 @@ Func_30ea5: ; 30ea5 (c:4ea5)
 
 Func_30ed2: ; 30ed2 (c:4ed2)
 	read_hl_from_sp_plus $3c
-	ld de, wc98e
+	ld de, wSaveBlock1_c98e
 	add hl, de
 	ld a, [hl]
 	dec a
@@ -1957,7 +1957,7 @@ Func_30f98: ; 30f98 (c:4f98)
 
 Func_30fae: ; 30fae (c:4fae)
 	read_hl_from_sp_plus $3a
-	ld de, wc9a3
+	ld de, wSaveBlock1_c9a3
 	add hl, de
 	ld c, [hl]
 	ld e, c
@@ -2085,7 +2085,7 @@ Func_3103d: ; 3103d
 	push af
 	ld e, l
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	dec a
@@ -2193,7 +2193,7 @@ Func_31154: ; 31154 (c:5154)
 	jp nz, Func_31229
 	ld e, l
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld a, [hl]
 	dec a
@@ -2253,7 +2253,7 @@ Func_31154: ; 31154 (c:5154)
 Func_311e9: ; 311e9 (c:51e9)
 	ld e, l
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$3c
@@ -2797,7 +2797,7 @@ Func_3161f: ; 3161f (c:561f)
 	call GetHLAtSPPlus8
 	ld de, $7
 	add hl, de
-	ld a, [wSaveScratchca6c]
+	ld a, [wSaveBlock1_ca6c]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -2827,7 +2827,7 @@ Func_31679: ; 31679 (c:5679)
 	call GetHLAtSPPlus8
 	ld de, $7
 	add hl, de
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -2859,7 +2859,7 @@ Func_316b2: ; 316b2 (c:56b2)
 	call GetHLAtSPPlus8
 	ld de, $7
 	add hl, de
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	ld e, a
 	ld d, $0
 	ld [hl], e
@@ -4388,7 +4388,7 @@ Func_32822: ; 32822 (c:6822)
 	jp Func_328bb
 
 Func_3284e: ; 3284e (c:684e)
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	cp $14
 	jp nz, Func_32881
 	ld c, $0
@@ -4427,7 +4427,7 @@ Func_32883: ; 32883 (c:6883)
 	jp Func_328bb
 
 Func_32886: ; 32886 (c:6886)
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	cp $14
 	jp nz, Func_328b9
 	ld c, $0
@@ -4489,12 +4489,12 @@ Func_328c4: ; 328c4 (c:68c4)
 	ld c, $0
 Func_328e8: ; 328e8 (c:68e8)
 	ld a, c
-	ld hl, wSaveScratchca6c
+	ld hl, wSaveBlock1_ca6c
 	cp [hl]
 	jp nc, Func_32916
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$1d
@@ -4502,7 +4502,7 @@ Func_328e8: ; 328e8 (c:68e8)
 	jp nz, Func_32912
 	ld e, c
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld a, $63
 	sub [hl]
@@ -4521,7 +4521,7 @@ Func_32916: ; 32916 (c:6916)
 	ld a, [hl]
 	cp $ff
 	jp nz, Func_3292e
-	ld a, [wSaveScratchca6c]
+	ld a, [wSaveBlock1_ca6c]
 	cp $14
 	jp nc, Func_3292e
 	ld hl, sp+$1a
@@ -4582,7 +4582,7 @@ Func_3297b: ; 3297b (c:697b)
 	ld [hl], $63
 	ld hl, sp+$13
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$1d
@@ -5018,7 +5018,7 @@ Func_32c96: ; 32c96 (c:6c96)
 	push af
 	ld hl, sp+$2b
 	reg16swap de, hl
-	ld hl, wSaveScratchMoney
+	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$33
@@ -5828,7 +5828,7 @@ Func_333ba:: ; 333ba
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	ld de, wcb33
+	ld de, wSaveBlock1_cb33
 	add hl, de
 	ld [hl], a
 	ld a, c
@@ -6417,7 +6417,7 @@ Func_3383d: ; 3383d (c:783d)
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchPlayerName
+	ld hl, wSaveBlock1_PlayerName
 	add hl, de
 	ld [hl], a
 	ld hl, sp+$8
@@ -6488,7 +6488,7 @@ Func_338d5: ; 338d5 (c:78d5)
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchPlayerName
+	ld hl, wSaveBlock1_PlayerName
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$8
@@ -7222,7 +7222,7 @@ Func_33db7:: ; 33db7 (c:7db7)
 	ld hl, sp+$0
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItemQuantities
+	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, de
 	ld l, [hl]
 	push hl
@@ -7235,7 +7235,7 @@ Func_33db7:: ; 33db7 (c:7db7)
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	pop de
@@ -7354,7 +7354,7 @@ Func_33f72: ; 33f72 (c:7f72)
 	push hl
 	ld e, a
 	ld d, $0
-	ld hl, wSaveScratchBagItems
+	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	ld a, [hl]
 	ld l, a

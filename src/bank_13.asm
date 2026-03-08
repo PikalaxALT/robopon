@@ -434,7 +434,7 @@ Func_4c4ca: ; 4c4ca (13:44ca)
 	call FarCall
 	ld e, a
 	ld hl, sp+$0
-	ld a, [wcb57]
+	ld a, [wSaveBlock1_cb57]
 	ld [hl], a
 	ld a, e
 	call GetSRAMBank
@@ -626,7 +626,7 @@ Func_4c68a: ; 4c68a
 	ld a, $3
 	call FarCall
 	ld e, a
-	ld a, [wcb57]
+	ld a, [wSaveBlock1_cb57]
 	ld l, a
 	push hl
 	ld a, e
@@ -1973,7 +1973,7 @@ Func_4d303: ; 4d303 (13:5303)
 	ld a, $3
 	call FarCall
 	push af
-	read_hl_from wcb55
+	read_hl_from wSaveBlock1_cb55
 	call WriteHLToSPPlus8
 	ld hl, sp+$8
 	xor a
@@ -2011,7 +2011,7 @@ Func_4d32b: ; 4d32b (13:532b)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, wcb3f
+	ld de, wSaveBlock1_cb3f
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -2027,7 +2027,7 @@ Func_4d32b: ; 4d32b (13:532b)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, wcb3f
+	ld de, wSaveBlock1_cb3f
 	add hl, de
 	ld a, [hl]
 	add $1
@@ -2052,7 +2052,7 @@ Func_4d390: ; 4d390 (13:5390)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, wcb49
+	ld de, wSaveBlock1_cb49
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -2068,7 +2068,7 @@ Func_4d390: ; 4d390 (13:5390)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, wcb49
+	ld de, wSaveBlock1_cb49
 	add hl, de
 	ld a, [hl]
 	add $1
@@ -2102,7 +2102,7 @@ Func_4d3d4: ; 4d3d4 (13:53d4)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, wcb3f
+	ld de, wSaveBlock1_cb3f
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -2118,7 +2118,7 @@ Func_4d3d4: ; 4d3d4 (13:53d4)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, wcb3f
+	ld de, wSaveBlock1_cb3f
 	add hl, de
 	ld a, [hl]
 	add $1
@@ -2145,7 +2145,7 @@ Func_4d423: ; 4d423 (13:5423)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, wcb49
+	ld de, wSaveBlock1_cb49
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -2161,7 +2161,7 @@ Func_4d423: ; 4d423 (13:5423)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	ld de, wcb49
+	ld de, wSaveBlock1_cb49
 	add hl, de
 	ld a, [hl]
 	add $1
@@ -2603,34 +2603,34 @@ Func_4d7d6: ; 4d7d6 (13:57d6)
 	pop de
 	or a
 	jp nz, Func_4d825
-	read_hl_from wcb53
+	read_hl_from wSaveBlock1_cb53
 	inc hl
-	write_hl_to wcb53
-	read_hl_from wcb55
+	write_hl_to wSaveBlock1_cb53
+	read_hl_from wSaveBlock1_cb55
 	add hl, de
 	ld a, low(30000)
 	sub l
 	ld a, high(30000)
 	sbc h
 	jp c, Func_4d81a
-	read_hl_from wcb55
+	read_hl_from wSaveBlock1_cb55
 	add hl, de
-	write_hl_to wcb55
+	write_hl_to wSaveBlock1_cb55
 	jp Func_4d822
 
 Func_4d81a: ; 4d81a (13:581a)
 	ld hl, 30000
-	write_hl_to wcb55
+	write_hl_to wSaveBlock1_cb55
 Func_4d822: ; 4d822 (13:5822)
 	jp Func_4d839
 
 Func_4d825: ; 4d825 (13:5825)
 	xor a
-	ld [wcb57], a
+	ld [wSaveBlock1_cb57], a
 	ld hl, $0
-	write_hl_to wcb55
+	write_hl_to wSaveBlock1_cb55
 	ld hl, $0
-	write_hl_to wcb53
+	write_hl_to wSaveBlock1_cb53
 Func_4d839: ; 4d839 (13:5839)
 	ld a, c
 	call GetSRAMBank
@@ -4635,7 +4635,7 @@ Func_4e58b:: ; 4e58b
 	ld a, $3
 	call FarCall
 	push af
-	ld hl, wSaveScratchPlayerName
+	ld hl, wSaveBlock1_PlayerName
 	reg16swap de, hl
 	ld hl, sp+$a
 	ld bc, $5
@@ -5434,7 +5434,7 @@ Func_4eb71:: ; 4eb71
 	add d
 	ld hl, wTimeSetMonthsOnesDigit
 	add [hl]
-	ld [wSaveScratchBirthMonth], a
+	ld [wSaveBlock1_BirthMonth], a
 	ld a, [wTimeSetDaysTensDigit]
 	add a
 	ld d, a
@@ -5443,10 +5443,10 @@ Func_4eb71:: ; 4eb71
 	add d
 	ld hl, wTimeSetDaysOnesDigit
 	add [hl]
-	ld [wSaveScratchBirthDay], a
+	ld [wSaveBlock1_BirthDay], a
 	pop bc
 	ld a, c
-	ld [wSaveScratchZodiacSign], a
+	ld [wSaveBlock1_ZodiacSign], a
 	ld a, e
 	call GetSRAMBank
 	call FillVisibleAreaWithBlankTile
@@ -5495,7 +5495,7 @@ Func_4ec2b:: ; 4ec2b (13:6c2b)
 	jp z, Func_4ec88
 	or a
 	jp nz, Func_4ed53
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	cp $14
 	jp c, Func_4ec6c
 	ld a, c
@@ -5506,15 +5506,15 @@ Func_4ec2b:: ; 4ec2b (13:6c2b)
 Func_4ec6c: ; 4ec6c (13:6c6c)
 	ld hl, sp+$3
 	ld a, [hl]
-	ld hl, wc9a2
+	ld hl, wSaveBlock1_c9a2
 	ld l, [hl]
 	ld h, $0
-	ld de, wc98e
+	ld de, wSaveBlock1_c98e
 	add hl, de
 	ld [hl], a
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	inc a
-	ld [wc9a2], a
+	ld [wSaveBlock1_c9a2], a
 	ld hl, sp+$0
 	ld [hl], $1
 	jp Func_4ed53
@@ -5524,28 +5524,28 @@ Func_4ec88: ; 4ec88 (13:6c88)
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld [hl], $0
-	ld a, [wc9a2]
+	ld a, [wSaveBlock1_c9a2]
 	dec a
-	ld [wc9a2], a
+	ld [wSaveBlock1_c9a2], a
 	ld hl, sp+$5
 	ld c, [hl]
 Func_4ec9e: ; 4ec9e (13:6c9e)
 	ld a, c
-	ld hl, wc9a2
+	ld hl, wSaveBlock1_c9a2
 	cp [hl]
 	jp nc, Func_4ecbb
 	ld e, c
 	ld d, $0
 	inc de
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld [hl], a
 	inc c
@@ -5554,7 +5554,7 @@ Func_4ec9e: ; 4ec9e (13:6c9e)
 Func_4ecbb: ; 4ecbb (13:6cbb)
 	ld e, c
 	ld d, $0
-	ld hl, wc98e
+	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$2
@@ -5676,7 +5676,7 @@ Func_4ed70:: ; 4ed70 (13:6d70)
 	jp z, Func_4edcd
 	or a
 	jp nz, Func_4eea3
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	cp $14
 	jp c, Func_4edb1
 	ld a, c
@@ -5687,21 +5687,21 @@ Func_4ed70:: ; 4ed70 (13:6d70)
 Func_4edb1: ; 4edb1 (13:6db1)
 	ld hl, sp+$3
 	ld a, [hl]
-	ld hl, wc9b7
+	ld hl, wSaveBlock1_c9b7
 	ld l, [hl]
 	ld h, $0
-	ld de, wc9a3
+	ld de, wSaveBlock1_c9a3
 	add hl, de
 	ld [hl], a
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	inc a
-	ld [wc9b7], a
+	ld [wSaveBlock1_c9b7], a
 	ld hl, sp+$0
 	ld [hl], $1
 	jp Func_4eea3
 
 Func_4edcd: ; 4edcd (13:6dcd)
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	or a
 	jp nz, Func_4eddd
 	ld a, c
@@ -5714,28 +5714,28 @@ Func_4eddd: ; 4eddd (13:6ddd)
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld [hl], $0
-	ld a, [wc9b7]
+	ld a, [wSaveBlock1_c9b7]
 	dec a
-	ld [wc9b7], a
+	ld [wSaveBlock1_c9b7], a
 	ld hl, sp+$5
 	ld c, [hl]
 Func_4edf3: ; 4edf3 (13:6df3)
 	ld a, c
-	ld hl, wc9b7
+	ld hl, wSaveBlock1_c9b7
 	cp [hl]
 	jp nc, Func_4ee10
 	ld e, c
 	ld d, $0
 	inc de
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld a, [hl]
 	ld e, c
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld [hl], a
 	inc c
@@ -5744,7 +5744,7 @@ Func_4edf3: ; 4edf3 (13:6df3)
 Func_4ee10: ; 4ee10 (13:6e10)
 	ld e, c
 	ld d, $0
-	ld hl, wc9a3
+	ld hl, wSaveBlock1_c9a3
 	add hl, de
 	ld [hl], $0
 	ld hl, sp+$2
@@ -6497,7 +6497,7 @@ Func_4fef1:: ; 4fef1 (13:7ef1)
 	ld a, $3
 	call FarCall
 	ld l, a
-	ld a, [wOptions]
+	ld a, [wSaveBlock1_Options]
 	and $2 ; Stereo
 	push af
 	ld a, l

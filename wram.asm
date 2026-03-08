@@ -11,7 +11,7 @@ wVBlank:: ds $16 ; c006
 	; One increment per frame as described.
 	array wRTCBuffer, 3, 1, 1 ; c10d
 
-SECTION "Audio RAM Backup", WRAM0 [$c020]
+SECTION "Audio RAM Backup", WRAM0
 	char wBackupSongIndex ; c020
 	char wBackupAudioROMBank ; c021
 	char wBackupGlobalDuty ; c022
@@ -185,11 +185,11 @@ wBackupChannelSFXPointers::
 	char wBackupSFXActive2
 	char wBackupSFXChannelFlags2
 
-SECTION "High WRAM", WRAM0 [$c0f8]
+SECTION "High WRAM", WRAM0
 	char wc0f8 ; c0f8
 	char wc0f9 ; c0f9
 
-SECTION "Audio RAM", WRAM0 [$c100]
+SECTION "Audio RAM", WRAM0
 	char wSongIndex ; c100
 	char wAudioROMBank ; c101
 	char wSFXIndex ; c102
@@ -393,7 +393,7 @@ wChannelSFXPointers::
 	char wSFXActive2 ; c1d3
 	char wSFXChannelFlags2 ; c1d4
 
-SECTION "LCD Interrupt", WRAM0 [$c200]
+SECTION "LCD Interrupt", WRAM0
 wLCD:: ds $3 ; c200
 
 ; bit 7: call wVBlankCallback (far call with SRAM open)
@@ -538,7 +538,11 @@ ENDC
 	char wOptionsMenu_BattleScene ; c307
 	char wOptionsMenu_StereoSelect ; c308
 
-	array wPlayerName, 5, 1, 1 ; c309
+IF DEF(LANG_EN)
+	db
+ENDC
+
+	array wPlayerName, PLAYER_NAME_LENGTH, 1, 1 ; c309
 	short wc30e ; c30e
 	char wc310 ; c310
 	char wCurItem ; c311
@@ -618,7 +622,7 @@ ENDC
 	short wc3ec ; c3ec
 	short wc3ee ; c3ee
 
-SECTION "OAM Buffer", WRAM0 [$c400]
+SECTION "OAM Buffer", WRAM0
 wOAMBuffer:: ; c400
 	oam_ram wOAM00
 	oam_ram wOAM01
@@ -662,11 +666,11 @@ wOAMBuffer:: ; c400
 	oam_ram wOAM27
 wOAMBufferEnd::
 
-SECTION "Tile Map", WRAM0 [$c4a0]
+SECTION "Tile Map", WRAM0
 	array wTileMap, SCREEN_WIDTH, SCREEN_HEIGHT, 1
 	array wAttrMap, SCREEN_WIDTH, SCREEN_HEIGHT, 1
 
-SECTION "Overworld RAM", WRAM0 [$c770]
+SECTION "Overworld RAM", WRAM0
 wLCDInterrupt2:: ; c770
 	ds $2
 
@@ -861,7 +865,7 @@ NEXTU
 	ds $14
 ENDU
 
-SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
+SECTION "CGB Palettes Buffer", WRAM0
 	array wCGB_BGPalsBuffer, $8, $8, $1 ; c89c
 	array wCGB_OBPalsBuffer, $8, $8, $1 ; c8dc
 
@@ -888,40 +892,12 @@ SECTION "CGB Palettes Buffer", WRAM0 [$c89c]
 	array wc936, 2, 1, 1 ; c936
 	array wc938, 9, 8, 1 ; c938
 
-SECTION "Save Game Scratch", WRAM0 [$c980]
+	; EN ROM overlfows into wAllocatableBlock0 by 5 bytes
+SECTION UNION "Save Game Scratch and Allocatable Memory", WRAM0
 wSaveScratch::
-wSaveBlock1::
-	array wSaveScratchPlayerName, 5, 1, 1 ; c980
-	char wSaveScratchBirthMonth ; c985
-	char wSaveScratchBirthDay ; c986
-	char wSaveScratchZodiacSign ; c987
-	ds $1
-	array wSaveScratchMoney, 4, 1, 1 ; c989
-	char wc98d ; c98d
-	array wc98e, 20, 1, 1 ; c98e
-	char wc9a2 ; c9a2
-	array wc9a3, 20, 1, 1 ; c9a3
-	char wc9b7 ; c9b7
-	array wSaveScratchParty, 4, 35, 1 ; c9b8
-	array wSaveScratchBagItems, 20, 1, 1 ; ca44
-	array wSaveScratchBagItemQuantities, 20, 1, 1 ; ca58
-	char wSaveScratchca6c ; ca6c
-	ds $3
-	bitfield wSaveScratchDexSeenFlags, NUM_ROBOTS ; ca70
-	bitfield wSaveScratchDexCaughtFlags, NUM_ROBOTS ; ca86
-	char wOptions ; ca9c
-	bitfield wSaveScratchEventFlags, 400 ; ca9d
-	array wSaveScratchc789, 100, 1, 1 ; cacf
-	array wcb33, 8, 1, 1 ; cb33
-	long wcb3b ; cb3b
-	array wcb3f, 5, 1, 2 ; cb3f
-	array wcb49, 5, 1, 2 ; cb49
-	short wcb53 ; cb53
-	short wcb55 ; cb55
-	char wcb57 ; cb57
-	array wSaveScratchc347, 3, 20, 1 ; cb58
+	save_block_1 wSaveBlock1
 wSaveBlock2::
-wWarehouseItemQuantities:: ds $a0  ; cb94
+wSaveBlock2_WarehouseItemQuantities:: ds $a0  ; cb94
 wSaveBlock3:: ds $dc  ; cc34
 wSaveBlock4:: ds $fa  ; cd10
 wSaveScratchEnd:: ; ce0a
@@ -930,10 +906,11 @@ wSaveScratchEnd:: ; ce0a
 	ds $3
 	char wce0f ; ce0f
 
-SECTION "Allocatable Memory", WRAM0 [$ce10]
+SECTION UNION "Save Game Scratch and Allocatable Memory", WRAM0
+	ds $ce10 - $c980
 	alloc_block wAllocatableBlock0 ; ce10
 	ds $a00 - 5
 
-SECTION "Stack", WRAM0 [$d810]
+SECTION "Stack", WRAM0
 wStackBottom:: ds $7f0 ; d810
 wStackTop:: ; e000

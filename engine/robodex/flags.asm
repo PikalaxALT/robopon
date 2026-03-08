@@ -36,7 +36,7 @@ Func_53a1c: ; 53a1c (14:7a1c)
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchDexSeenFlags
+	ld hl, wSaveBlock1_DexSeenFlags
 	add hl, de
 	ld c, [hl]
 	jp Func_53a63
@@ -45,7 +45,7 @@ Func_53a59: ; 53a59 (14:7a59)
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchDexCaughtFlags
+	ld hl, wSaveBlock1_DexCaughtFlags
 	add hl, de
 	ld c, [hl]
 Func_53a63: ; 53a63 (14:7a63)
@@ -74,7 +74,7 @@ Func_53a7a: ; 53a7a (14:7a7a)
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchDexSeenFlags
+	ld hl, wSaveBlock1_DexSeenFlags
 	add hl, de
 	ld [hl], c
 	jp Func_53a9e
@@ -83,7 +83,7 @@ Func_53a94: ; 53a94 (14:7a94)
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
-	ld hl, wSaveScratchDexCaughtFlags
+	ld hl, wSaveBlock1_DexCaughtFlags
 	add hl, de
 	ld [hl], c
 Func_53a9e: ; 53a9e (14:7a9e)
@@ -176,7 +176,7 @@ Func_53b1e:: ; 53b1e (14:7b1e)
 	jp nz, Func_53b55
 	ld e, l
 	ld d, $0
-	ld hl, wSaveScratchDexSeenFlags
+	ld hl, wSaveBlock1_DexSeenFlags
 	add hl, de
 	ld a, [hl]
 	jp Func_53b5d
@@ -184,7 +184,7 @@ Func_53b1e:: ; 53b1e (14:7b1e)
 Func_53b55: ; 53b55 (14:7b55)
 	ld e, l
 	ld d, $0
-	ld hl, wSaveScratchDexCaughtFlags
+	ld hl, wSaveBlock1_DexCaughtFlags
 	add hl, de
 	ld a, [hl]
 Func_53b5d: ; 53b5d (14:7b5d)

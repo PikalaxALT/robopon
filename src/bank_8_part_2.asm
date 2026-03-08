@@ -1118,7 +1118,7 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 	ld a, $3
 	call GetSRAMBank_ReadOnly
 	read_hl_from_sp_plus $32
-	ld de, wSaveScratchBagItems
+	ld de, wSaveBlock1_BagItems
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$2f
@@ -3033,7 +3033,7 @@ Func_2193a: ; 2193a
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, wSaveScratchParty
+	ld de, wSaveBlock1_Party
 	ld c, $0
 Func_21988: ; 21988 (8:5988)
 	ld a, c
@@ -3165,7 +3165,7 @@ Func_21a51: ; 21a51 (8:5a51)
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, wSaveScratchParty
+	ld de, wSaveBlock1_Party
 	ld c, $0
 Func_21a6d: ; 21a6d (8:5a6d)
 	ld a, c
@@ -3297,7 +3297,7 @@ Func_21b0d: ; 21b0d
 	push af
 	ld a, $3
 	call GetSRAMBank_ReadOnly
-	ld de, wSaveScratchParty
+	ld de, wSaveBlock1_Party
 	ld c, $0
 Func_21b54: ; 21b54 (8:5b54)
 	ld a, c
@@ -6502,23 +6502,23 @@ LoadDebugSaveState:: ; 238c8 (8:78c8)
 	ld hl, wSaveBlock1
 	call FarCopyVideoData
 	ld bc, $32
-	ld de, wSaveScratchEventFlags
+	ld de, wSaveBlock1_EventFlags
 	ld hl, wEventFlags
 	call CopyFromDEtoHL
 	ld bc, $64
-	ld de, wSaveScratchc789
+	ld de, wSaveBlock1_c789
 	ld hl, wc789
 	call CopyFromDEtoHL
 	ld bc, $3c
-	ld de, wSaveScratchc347
+	ld de, wSaveBlock1_c347
 	ld hl, wc347
 	call CopyFromDEtoHL
-	read_hl_from wcb3b
+	read_hl_from wSaveBlock1_cb3b
 	write_hl_to wGameTimer
-	read_hl_from wcb3b + 2
+	read_hl_from wSaveBlock1_cb3b + 2
 	write_hl_to wGameTimer + 2
 	ld bc, $5
-	ld de, wSaveScratchPlayerName
+	ld de, wSaveBlock1_PlayerName
 	ld hl, wPlayerName
 	call CopyFromDEtoHL
 	ret

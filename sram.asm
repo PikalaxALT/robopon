@@ -5,10 +5,10 @@ SECTION "SRAM0", SRAM
 SECTION "SRAM1", SRAM
 
 SECTION "Save Game", SRAM
-	array sSavedWarehouse, 1, 28, 170 ; a300
+	array sSavedWarehouse, 1, warehouseRobot_SIZEOF, 170 ; a300
 
 sSaveGame::
-sSaveBlock1:: ds $214 ; b598
+	save_block_1 sSaveBlock1
 sSaveBlock1End::
 sSaveBlock2:: ds $a0 ; b7ac
 sSaveBlock2End::
