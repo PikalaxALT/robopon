@@ -1019,7 +1019,7 @@ Func_609d3:: ; 609d3 (18:49d3)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -1215,7 +1215,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	push hl
 	call GetHLAtSPPlus8
 	ld de, $82
@@ -1725,7 +1725,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	push hl
 	read_hl_from_sp_plus $36
 	ld de, $82

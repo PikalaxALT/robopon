@@ -3798,7 +3798,7 @@ Func_5af1c: ; 5af1c (16:6f1c)
 	push af
 	ld l, a
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -3828,7 +3828,7 @@ Func_5af6d: ; 5af6d (16:6f6d)
 	push af
 	ld l, a
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -4010,7 +4010,7 @@ Func_5b0f5: ; 5b0f5 (16:70f5)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	pop de
 	add hl, de
 	ld a, [hl]
@@ -5130,7 +5130,7 @@ Func_5ba6d: ; 5ba6d (16:7a6d)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	mulhlby35
+	mulhl 35
 	ld de, -$8c
 	add hl, de
 	pop de

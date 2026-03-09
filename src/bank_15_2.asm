@@ -33,7 +33,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	ld hl, sp+$2a
 	call GetPart
 	read_hl_from_sp_plus $44
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -130,7 +130,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	mulhlby19
+	mulhl 19
 	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
@@ -258,7 +258,7 @@ Func_5712f:: ; 5712f (15:712f)
 	and $3f
 	ld l, a
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	ld de, Software - 17
 	add hl, de
 	reg16swap de, hl
@@ -377,7 +377,7 @@ Func_5720f: ; 5720f (15:720f)
 	ld a, $3
 	call GetSRAMBank
 	pop hl
-	mulhlby19
+	mulhl 19
 	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl

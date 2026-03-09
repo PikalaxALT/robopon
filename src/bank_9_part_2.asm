@@ -288,7 +288,7 @@ Func_247eb: ; 247eb (9:47eb)
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -834,7 +834,7 @@ Func_24c32: ; 24c32 (9:4c32)
 	write_hl_to_sp_plus $37
 	ld l, c
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -942,7 +942,7 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	write_hl_to_sp_plus $39
 	ld l, c
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -1654,7 +1654,7 @@ Func_2520c: ; 2520c (9:520c)
 	call WriteHLToSPPlus9
 	ld l, c
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -1670,7 +1670,7 @@ Func_2520c: ; 2520c (9:520c)
 	ld a, l
 	xor $1
 	ld l, a
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -1904,7 +1904,7 @@ Func_253f0: ; 253f0 (9:53f0)
 	push hl
 	ld l, c
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -2168,7 +2168,7 @@ Func_25604: ; 25604 (9:5604)
 	ld a, [bc]
 	ld l, a
 	ld h, $0
-	mulhlby19
+	mulhl 19
 	ld de, Moves - $13
 	add hl, de
 	push hl
@@ -5874,7 +5874,7 @@ Func_27063: ; 27063 (9:7063)
 	ld hl, sp+$59
 	ld l, [hl]
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -5888,7 +5888,7 @@ Func_27063: ; 27063 (9:7063)
 	ld a, l
 	xor $1
 	ld l, a
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -6247,7 +6247,7 @@ Func_27357: ; 27357 (9:7357)
 	ld hl, sp+$13
 	ld l, [hl]
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -6261,7 +6261,7 @@ Func_27357: ; 27357 (9:7357)
 	ld a, l
 	xor $1
 	ld l, a
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -6542,7 +6542,7 @@ Func_2759b: ; 2759b (9:759b)
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer

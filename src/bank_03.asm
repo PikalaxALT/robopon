@@ -3577,9 +3577,9 @@ Func_f7c3: ; f7c3 (3:77c3)
 	ld l, a
 	ld h, $0
 IF DEF(LANG_JP)
-	mulhlby35
+	mulhl 35
 ELIF DEF(LANG_EN)
-	mulhlby36
+	mulhl 36
 ENDC
 	reg16swap de, hl
 IF DEF(LANG_JP)
@@ -3688,11 +3688,11 @@ IF DEF(LANG_JP)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 ELIF DEF(LANG_EN)
 	ld l, c
 	ld h, $0
-	mulhlby36
+	mulhl 36
 ENDC
 	reg16swap de, hl
 IF DEF(LANG_JP)
@@ -3772,9 +3772,9 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld h, $0
 IF DEF(LANG_JP)
-	mulhlby35
+	mulhl 35
 ELIF DEF(LANG_EN)
-	mulhlby36
+	mulhl 36
 ENDC
 	reg16swap de, hl
 IF DEF(LANG_JP)
@@ -3816,9 +3816,9 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld h, $0
 IF DEF(LANG_JP)
-	mulhlby35
+	mulhl 35
 ELIF DEF(LANG_EN)
-	mulhlby36
+	mulhl 36
 ENDC
 	reg16swap de, hl
 IF DEF(LANG_JP)

@@ -2929,7 +2929,7 @@ Func_1168e: ; 1168e (4:568e)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -2965,7 +2965,7 @@ Func_116e3: ; 116e3 (4:56e3)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3002,7 +3002,7 @@ Func_11722: ; 11722 (4:5722)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3040,7 +3040,7 @@ Func_11762: ; 11762 (4:5762)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3077,7 +3077,7 @@ Func_117a3: ; 117a3 (4:57a3)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3108,7 +3108,7 @@ Func_117db: ; 117db (4:57db)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3139,7 +3139,7 @@ Func_11813: ; 11813 (4:5813)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3235,7 +3235,7 @@ Func_118bb: ; 118bb (4:58bb)
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3270,7 +3270,7 @@ Func_1190a: ; 1190a (4:590a)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3307,7 +3307,7 @@ Func_11948: ; 11948 (4:5948)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3346,7 +3346,7 @@ Func_11988: ; 11988 (4:5988)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3381,7 +3381,7 @@ Func_119c7: ; 119c7 (4:59c7)
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3412,7 +3412,7 @@ Func_119ff: ; 119ff (4:59ff)
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -3443,7 +3443,7 @@ Func_11a37: ; 11a37 (4:5a37)
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
-	mulhlby35
+	mulhl 35
 	ld de, Data_111de - 35
 	add hl, de
 	ld c, l
@@ -7036,9 +7036,9 @@ Func_13130: ; 13130 (4:7130)
 	ld l, [hl]
 	ld h, $0
 IF DEF(LANG_JP)
-	mulhlby24
+	mulhl 24
 ELIF DEF(LANG_EN)
-	mulhlby25
+	mulhl 25
 ENDC
 	reg16swap de, hl
 	ld hl, sp+$6
@@ -7049,9 +7049,9 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 IF DEF(LANG_JP)
-	mulhlby24
+	mulhl 24
 ELIF DEF(LANG_EN)
-	mulhlby25
+	mulhl 25
 ENDC
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -7078,9 +7078,9 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 IF DEF(LANG_JP)
-	mulhlby24
+	mulhl 24
 ELIF DEF(LANG_EN)
-	mulhlby25
+	mulhl 25
 ENDC
 	reg16swap de, hl
 	ld hl, sp+$4

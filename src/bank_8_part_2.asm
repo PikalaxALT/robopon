@@ -581,7 +581,7 @@ Func_206ae: ; 206ae (8:46ae)
 	ld a, [hl]
 	ld l, a
 	ld h, $0
-	mulhlby19
+	mulhl 19
 	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
@@ -2365,7 +2365,7 @@ Func_21441: ; 21441 (8:5441)
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2389,7 +2389,7 @@ Func_21441: ; 21441 (8:5441)
 	push hl
 	ld l, a
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2409,7 +2409,7 @@ Func_21441: ; 21441 (8:5441)
 	push bc
 	ld l, a
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2513,7 +2513,7 @@ Func_215b7: ; 215b7 (8:55b7)
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -2737,7 +2737,7 @@ Func_21744: ; 21744 (8:5744)
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2798,7 +2798,7 @@ Func_21744: ; 21744 (8:5744)
 	push hl
 	ld l, a
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2860,7 +2860,7 @@ Func_21820: ; 21820 (8:5820)
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -2885,7 +2885,7 @@ Func_21820: ; 21820 (8:5820)
 	push hl
 	ld l, a
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	reg16swap de, hl
 	ld hl, $82
 	add hl, bc
@@ -5904,7 +5904,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	push hl
 	read_hl_from_sp_plus $18
 	ld de, $82
@@ -5923,7 +5923,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	push hl
 	read_hl_from_sp_plus $18
 	ld de, $82
@@ -6187,7 +6187,7 @@ Func_230ad: ; 230ad (8:70ad)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	push hl
 	read_hl_from_sp_plus $18
 	ld de, $82

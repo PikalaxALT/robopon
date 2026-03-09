@@ -43,7 +43,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	or a  ; GETNAME_SOFTWARE
 	jp nz, .gotName
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	ld de, Software
 	add hl, de
 	write_hl_to_sp_plus $6e
@@ -51,7 +51,7 @@ GetName:: ; 15ad6 (5:5ad6)
 
 .getMoveName ; 15b3b (5:5b3b)
 	ld h, $0
-	mulhlby19
+	mulhl 19
 	ld de, Moves
 	add hl, de
 	write_hl_to_sp_plus $6e
@@ -75,7 +75,7 @@ GetName:: ; 15ad6 (5:5ad6)
 
 .getItemName ; 15b70 (5:5b70)
 	ld h, $0
-	mulhlby13
+	mulhl 13
 	ld de, ItemAttributes
 	add hl, de
 	write_hl_to_sp_plus $6e

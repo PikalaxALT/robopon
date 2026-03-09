@@ -27,8 +27,15 @@ SECTION "Robopon Title", SRAM
 
 SECTION "SRAM2", SRAM
 	array sRoboponTitle, 7, 1, 1
-	array sWarehouse, 1, 28, 170 ; a007
+	array sWarehouse, 1, warehouseRobot_SIZEOF, 170 ; a007
+
+	; The EN ROM would overflow this bank by $8d bytes.
+	; RGBLINK does not allow this.
+IF DEF(LANG_JP)
 	array s2_b29f, 1, 4, $351 ; b29f
+ELIF DEF(LANG_EN)
+s2_b29f::
+ENDC
 
 SECTION "SRAM3", SRAM
 sHeap:: alloc_block s3_a002

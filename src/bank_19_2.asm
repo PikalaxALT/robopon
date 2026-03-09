@@ -389,7 +389,7 @@ Func_6741a: ; 6741a (19:741a)
 	push de
 	ld l, a
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -802,7 +802,7 @@ Func_6777f: ; 6777f (19:777f)
 	read_hl_from_sp_plus $40
 	ld l, [hl]
 	ld h, $0
-	mulhlby19
+	mulhl 19
 	ld de, Moves - $13
 	add hl, de
 	ld de, $12
@@ -980,7 +980,7 @@ Func_678e7: ; 678e7 (19:78e7)
 	read_hl_from_sp_plus $29
 	ld l, [hl]
 	ld h, $0
-	mulhlby19
+	mulhl 19
 	ld de, Moves - $13
 	add hl, de
 	ld de, $12

@@ -214,7 +214,7 @@ Func_fb95: ; fb95 (3:7b95)
 	push af
 	ld l, a
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $166
@@ -319,7 +319,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 IF DEF(LANG_JP)
 	push hl
 	read_hl_from_sp_plus $32

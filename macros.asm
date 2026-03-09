@@ -273,145 +273,54 @@ ENDC
 ENDR
 ENDM
 
-MACRO mulhlby3
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
-	ENDM
+	; Multiply hl by argument
+MACRO mulhl
+    ; Get popcnt
+    DEF POPCNT = 0
+	DEF n = 8
+    FOR i, 8
+        IF (\1 >> i) == 0
+            DEF n = i
+            BREAK
+        ENDC
+        IF ((\1 >> i) & 1) != 0
+            DEF POPCNT += 1
+        ENDC
+    ENDR
+    ; Do multiplication
+    IF POPCNT > 3
+        ld de, \1
+        call MultiplyHLbyDE
+    ELSE
+        DEF POPCNT = 0
+        FOR i, n - 1
+            IF ((\1 >> i) & 1) != 0
+                IF POPCNT == 0
+					ld e, l
+					ld d, h
+                ELIF POPCNT == 1
+					ld c, l
+					ld b, h
+                ELSE
+                    STATIC_ASSERT 0, "invalid state"
+                ENDC
+                DEF POPCNT += 1
+            ENDC
+            add hl, hl
+        ENDR
+        IF POPCNT >= 1
+            add hl, de
+            IF POPCNT == 2
+                add hl, bc
+            ENDC
+        ENDC
+    ENDC
+ENDM
 
-MACRO mulhlby13
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ENDM
-
-MACRO mulhlby17
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ENDM
-
-MACRO mulhlby19
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ENDM
-
-MACRO mulhlby24
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
-	ENDM
-
-MACRO mulhlby25
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ENDM
-
-MACRO mulhlby26
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ENDM
-
-MACRO mulhlby28
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ENDM
-
-MACRO mulhlby35
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ENDM
-
-MACRO mulhlby36
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, de
-	ENDM
-
-MACRO mulhlby200
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
-	ENDM
 
 	; optional arg: byte offset within struct
 MACRO get_party_bot
-IF DEF(LANG_JP)
-	mulhlby35
-ELIF DEF(LANG_EN)
-	mulhlby36
-ENDC
+	mulhl partyRobot_SIZEOF
 IF _NARG > 0
 	ld de, \1
 	add hl, de

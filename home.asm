@@ -134,8 +134,7 @@ BankSwitch_00f7:: ; f7 (0:00f7)
 	ret
 
 ; manual padding
-_highhome_end:
-	ds $100 - _highhome_end
+	ds $100 - @
 
 SECTION "Init", ROM0 [$100]
 Init::
@@ -1545,19 +1544,7 @@ ENDC
 	push af
 	ld l, e
 	ld h, $0
-IF DEF(LANG_JP)
-	ld de, robotBaseStats_SIZEOF
-	call MultiplyHLbyDE
-ELIF DEF(LANG_EN)
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
-ENDC
+	mulhl robotBaseStats_SIZEOF
 	ld de, sSRAMRobots - robotBaseStats_SIZEOF * NUM_ROBOTS
 	add hl, de
 	reg16swap de, hl
@@ -1709,11 +1696,7 @@ GetPart:: ; 241f
 	ld de, $8
 	call DivideHLByDESigned
 	reg16swap de, hl
-IF DEF(LANG_JP)
-	mulhlby24
-ELIF DEF(LANG_EN)
-	mulhlby26
-ENDC
+	mulhl part_SIZEOF
 	reg16swap de, hl
 	ld hl, sp+$2
 	add hl, de
@@ -1742,7 +1725,7 @@ GetMove:: ; 248f
 	push af
 	ld l, e
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	ld de, Software
 	add hl, de
 	push hl
@@ -1768,7 +1751,7 @@ GetItemAttributes::
 	push af
 	ld l, e
 	ld h, $0
-	mulhlby13
+	mulhl 13
 	ld de, ItemAttributes
 	add hl, de
 	push hl
@@ -4507,6 +4490,9 @@ AudioEngineFarCall::
 	ld [HuC3RomBank], a
 	ret
 
+	; manual padding
+	ds $3fe0 - @
+
 SECTION "3fe0", ROM0 [$3fe0]
 Func_3fe0:: ; 3fe0
 	push af
@@ -4522,3 +4508,5 @@ Func_3fe0:: ; 3fe0
 	rst $20
 	ret
 
+	; manual padding
+	ds $4000 - @

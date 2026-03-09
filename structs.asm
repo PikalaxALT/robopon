@@ -18,10 +18,17 @@ ELIF DEF(LANG_EN)
 DEF part_SIZEOF EQU 26
 ENDC
 
-IF DEF(LANG_JP)
-DEF warehouseRobot_SIZEOF EQU 28
-ELIF DEF(LANG_EN)
-DEF warehouseRobot_SIZEOF EQU 29
-ENDC
+                                RSRESET
+DEF warehouseBot_Name           RB ROBOT_NAME_LENGTH
+DEF warehouseBot_Unk06          RB 1
+DEF warehouseBot_Unk07          RB 7
+DEF warehouseBot_Unk0E          RB 2
+DEF warehouseBot_Unk10          RB 2
+DEF warehouseBot_Unk12          RB 2
+DEF warehouseBot_Unk14          RB 2
+DEF warehouseBot_Unk16          RB 2
+DEF warehouseBot_Unk18          RB 2
+DEF warehouseBot_Unk1A          RB 2
+DEF warehouseRobot_SIZEOF       RB 0
 
 DEF partyRobot_SIZEOF EQU warehouseRobot_SIZEOF + 7

@@ -72,7 +72,7 @@ Func_23303: ; 23303 (8:7303)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	mulhlby17
+	mulhl 17
 	push hl
 	read_hl_from_sp_plus $51
 	ld de, $82

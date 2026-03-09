@@ -136,7 +136,7 @@ Func_5c3a3: ; 5c3a3 (17:43a3)
 	ld hl, sp+$36
 	ld l, [hl]
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -194,7 +194,7 @@ Func_5c40a: ; 5c40a (17:440a)
 	ld hl, sp+$38
 	ld l, [hl]
 	ld h, $0
-	mulhlby24
+	mulhl 24
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -348,7 +348,7 @@ Func_5c511: ; 5c511 (17:4511)
 	ld hl, sp+$34
 	ld l, [hl]
 	ld h, $0
-	mulhlby24
+	mulhl 24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -367,7 +367,7 @@ Func_5c536: ; 5c536 (17:4536)
 	ld hl, sp+$33
 	ld l, [hl]
 	ld h, $0
-	mulhlby24
+	mulhl 24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -381,7 +381,7 @@ Func_5c536: ; 5c536 (17:4536)
 	ld hl, sp+$34
 	ld l, [hl]
 	ld h, $0
-	mulhlby24
+	mulhl 24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -403,7 +403,7 @@ Func_5c57d: ; 5c57d (17:457d)
 	ld hl, sp+$34
 	ld l, [hl]
 	ld h, $0
-	mulhlby24
+	mulhl 24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -417,7 +417,7 @@ Func_5c57d: ; 5c57d (17:457d)
 	ld hl, sp+$33
 	ld l, [hl]
 	ld h, $0
-	mulhlby24
+	mulhl 24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -439,7 +439,7 @@ Func_5c5c4: ; 5c5c4 (17:45c4)
 	ld hl, sp+$33
 	ld l, [hl]
 	ld h, $0
-	mulhlby24
+	mulhl 24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -453,7 +453,7 @@ Func_5c5c4: ; 5c5c4 (17:45c4)
 	ld hl, sp+$34
 	ld l, [hl]
 	ld h, $0
-	mulhlby24
+	mulhl 24
 	reg16swap de, hl
 	ld hl, sp+$0
 	add hl, de
@@ -765,7 +765,7 @@ Func_5c7d5: ; 5c7d5 (17:47d5)
 	pop af
 	ld l, a
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -778,7 +778,7 @@ Func_5c7d5: ; 5c7d5 (17:47d5)
 	ld a, l
 	xor $1
 	ld l, a
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -904,7 +904,7 @@ Func_5c8e2: ; 5c8e2 (17:48e2)
 	ld a, [bc]
 	ld l, a
 	ld h, $0
-	mulhlby19
+	mulhl 19
 	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
@@ -2111,7 +2111,7 @@ Func_5d1c0: ; 5d1c0 (17:51c0)
 	push bc
 	ld l, a
 	ld h, $0
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -2124,7 +2124,7 @@ Func_5d1c0: ; 5d1c0 (17:51c0)
 	ld a, l
 	xor $1
 	ld l, a
-	mulhlby200
+	mulhl 200
 	ld c, l
 	ld b, h
 	read_hl_from wCurRobotPointer
@@ -2233,7 +2233,7 @@ Func_5d2b1: ; 5d2b1 (17:52b1)
 	read_hl_from_sp_plus $40
 	ld l, [hl]
 	ld h, $0
-	mulhlby19
+	mulhl 19
 	ld de, Moves - $13
 	add hl, de
 	reg16swap de, hl
