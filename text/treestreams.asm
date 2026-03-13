@@ -1,5 +1,5 @@
 
-	tree "string_tree.pickle"
+	tree "string_tree.json"
 SECTION "Tree Bitstream Text Pointers", ROMX
 TextTreeBitstreams:: ; 38000
 
