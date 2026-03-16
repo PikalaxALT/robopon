@@ -362,9 +362,17 @@ ENDC
 	ld a, [hl]
 	or a
 	jp z, .asm_14213
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $d
+ENDC
 	inc hl
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	jp .asm_14216
 
 .asm_14213 ; 14213 (5:4213)
@@ -381,23 +389,41 @@ ENDC
 	ld hl, wSaveBlock1_c9a2
 	ld l, [hl]
 	ld h, $0
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	jp .asm_14366
 
 .asm_1422a ; 1422a (5:422a)
 	ld hl, wSaveBlock1_c9b7
 	ld l, [hl]
 	ld h, $0
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	jp .asm_14366
 
 .asm_14237 ; 14237 (5:4237)
 	ld hl, $0
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
 	ld hl, $0
 	call WriteHLToSPPlus6
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+	ld bc, $0
+ENDC
 .asm_14244 ; 14244 (5:4244)
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus6
+ELIF DEF(LANG_EN)
+	ld l, c
+	ld h, b
+ENDC
 	ld de, $3
 	call CompareHLtoDE
 	jp nc, .asm_14287
@@ -405,22 +431,36 @@ ENDC
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
+IF DEF(LANG_JP)
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus6
+ENDC
 	add hl, bc
 	ld a, [hl]
 	or a
 	jp z, .asm_1427d
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $d
+ENDC
 	inc hl
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 .asm_1427d ; 1427d (5:427d)
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus6
 	inc hl
 	call WriteHLToSPPlus6
+ELIF DEF(LANG_EN)
+	inc bc
+ENDC
 	jp .asm_14244
 
 .asm_14287 ; 14287 (5:4287)
@@ -428,7 +468,11 @@ ENDC
 
 .asm_1428a ; 1428a (5:428a)
 	ld hl, $0
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	ld bc, $0
 .asm_14294 ; 14294 (5:4294)
 	ld l, c
@@ -441,9 +485,17 @@ ENDC
 	ld a, [hl]
 	or a
 	jp z, .asm_142b4
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $d
+ENDC
 	inc hl
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	jp .asm_142b7
 
 .asm_142b4 ; 142b4 (5:42b4)
@@ -458,7 +510,11 @@ ENDC
 
 .asm_142be ; 142be (5:42be)
 	ld hl, $0
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	ld bc, $0
 .asm_142c8 ; 142c8 (5:42c8)
 	ld l, c
@@ -471,9 +527,17 @@ ENDC
 	ld a, [hl]
 	or a
 	jp z, .asm_142e8
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $d
+ENDC
 	inc hl
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	jp .asm_142eb
 
 .asm_142e8 ; 142e8 (5:42e8)
@@ -491,7 +555,11 @@ ENDC
 	ld a, [hl]
 	call GetSRAMBank
 	ld hl, $1
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	ld bc, $0
 .asm_14302 ; 14302 (5:4302)
 	ld l, c
@@ -518,9 +586,17 @@ ENDC
 	ld a, [hl]
 	or a
 	jp z, .asm_14336
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $f
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $d
+ENDC
 	inc hl
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 .asm_14336 ; 14336 (5:4336)
 	inc bc
 	jp .asm_14302
@@ -536,12 +612,20 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	inc hl
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 	jp .asm_14359
 
 .asm_14352 ; 14352 (5:4352)
 	ld hl, $7
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 .asm_14359 ; 14359 (5:4359)
 	jp .asm_14366
 
@@ -549,7 +633,11 @@ ENDC
 	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $d
+ENDC
 .asm_14366 ; 14366 (5:4366)
 	ld hl, sp+$3e
 	ld a, [hl]
@@ -770,11 +858,11 @@ Func_144fd:: ; 144fd (5:44fd)
 	pop bc
 	ld a, [wc213]
 	cp $ff
-	jp nz, Func_1451a
+	jp nz, .asm_1451a
 	ld c, $0
 	xor a
 	ld [wc213], a
-Func_1451a: ; 1451a (5:451a)
+.asm_1451a: ; 1451a (5:451a)
 	push bc
 	set_farcall_addrs_hli CalcSaveChecksum
 	ld a, $1
@@ -789,38 +877,38 @@ Func_1451a: ; 1451a (5:451a)
 	pop de
 	pop hl
 	call CompareHLtoDE
-	jp nz, Func_1455c
+	jp nz, .asm_1455c
 	call FarCall
 	cp $ff
-	jp nz, Func_14560
-Func_1455c: ; 1455c (5:455c)
+	jp nz, .asm_14560
+.asm_1455c: ; 1455c (5:455c)
 	ld hl, sp+$2
 	ld [hl], $ff
-Func_14560: ; 14560 (5:4560)
+.asm_14560: ; 14560 (5:4560)
 	pop bc
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $1
-	jp nz, Func_145ef
+	jp nz, .asm_145ef
 	ld a, [wSystemType]
 	cp $1
-	jp z, Func_14579
+	jp z, .asm_14579
 	ld a, [wSystemType]
 	cp $ff
-	jp nz, Func_1458e
-Func_14579: ; 14579 (5:4579)
+	jp nz, .asm_1458e
+.asm_14579: ; 14579 (5:4579)
 	push bc
 	set_farcall_addrs_hli Func_fbd5e
 	pop bc
 	ld e, c
 	xor a
 	call FarCall
-	jp Func_145ec
+	jp .asm_145ec
 
-Func_1458e: ; 1458e (5:458e)
+.asm_1458e: ; 1458e (5:458e)
 	inc c
 	dec c
-	jp nz, Func_145b5
+	jp nz, .asm_145b5
 	ld l, BANK(Data_5403f)
 	push hl
 	ld hl, $502
@@ -837,9 +925,9 @@ Func_1458e: ; 1458e (5:458e)
 	pop bc
 	pop bc
 	pop bc
-	jp Func_145ec
+	jp .asm_145ec
 
-Func_145b5: ; 145b5 (5:45b5)
+.asm_145b5: ; 145b5 (5:45b5)
 	ld l, BANK(Data_5405e)
 	push hl
 	ld e, c
@@ -877,29 +965,29 @@ Func_145b5: ; 145b5 (5:45b5)
 	pop bc
 	pop bc
 	pop bc
-Func_145ec: ; 145ec (5:45ec)
-	jp Func_14673
+.asm_145ec: ; 145ec (5:45ec)
+	jp .asm_14673
 
-Func_145ef: ; 145ef (5:45ef)
+.asm_145ef: ; 145ef (5:45ef)
 	ld a, [wSystemType]
 	cp $1
-	jp z, Func_145ff
+	jp z, .asm_145ff
 	ld a, [wSystemType]
 	cp $ff
-	jp nz, Func_14615
-Func_145ff: ; 145ff (5:45ff)
+	jp nz, .asm_14615
+.asm_145ff: ; 145ff (5:45ff)
 	push bc
 	set_farcall_addrs_hli Func_fbd5e
 	pop bc
 	ld e, c
 	ld a, $1
 	call FarCall
-	jp Func_14673
+	jp .asm_14673
 
-Func_14615: ; 14615 (5:4615)
+.asm_14615: ; 14615 (5:4615)
 	inc c
 	dec c
-	jp nz, Func_1463c
+	jp nz, .asm_1463c
 	ld l, BANK(Data_5407d)
 	push hl
 	ld hl, $402
@@ -916,14 +1004,18 @@ Func_14615: ; 14615 (5:4615)
 	pop bc
 	pop bc
 	pop bc
-	jp Func_14673
+	jp .asm_14673
 
-Func_1463c: ; 1463c (5:463c)
+.asm_1463c: ; 1463c (5:463c)
 	ld l, BANK(Data_5409c)
 	push hl
 	ld e, c
 	ld d, $0
+IF DEF(LANG_JP)
 	ld hl, $4
+ELIF DEF(LANG_EN)
+	ld hl, $3
+ENDC
 	ld a, l
 	sub e
 	ld l, a
@@ -937,7 +1029,11 @@ Func_1463c: ; 1463c (5:463c)
 	push hl
 	ld e, c
 	ld d, $0
+IF DEF(LANG_JP)
 	ld hl, $4
+ELIF DEF(LANG_EN)
+	ld hl, $3
+ENDC
 	ld a, l
 	sub e
 	ld l, a
@@ -956,22 +1052,39 @@ Func_1463c: ; 1463c (5:463c)
 	pop bc
 	pop bc
 	pop bc
-Func_14673: ; 14673 (5:4673)
+.asm_14673: ; 14673 (5:4673)
 	pop bc
 	ret
 
+IF DEF(LANG_EN)
+Func_1465f_en:
+	callba_hli Func_dd169
+	ret
+ENDC
+
 StartMenu:: ; 14675 (5:4675)
+IF DEF(LANG_EN)
+	ld a, [wSystemType]
+	cp $1
+	jp z, .asm_1467e_en
+	ld a, [wSystemType]
+	cp $ff
+	jp nz, .asm_14681_en
+.asm_1467e_en
+ENDC
 	call FillVisibleAreaWithBlankTile
+.asm_14681_en
 	set_farcall_addrs_hli Func_6183
 	ld a, [wLCDC]
 	and $7f
 	call FarCall
+IF DEF(LANG_JP)
 	ld bc, $800
 	ld e, $8f
 	hlbgcoord 0, 0
 	call FillMemory
 	check_cgb
-	jp nz, Func_146b5
+	jp nz, .asm_146b5
 	ldh a, [rVBK]
 	or $1
 	ldh [rVBK], a
@@ -982,7 +1095,7 @@ StartMenu:: ; 14675 (5:4675)
 	ldh a, [rVBK]
 	and $fe
 	ldh [rVBK], a
-Func_146b5: ; 146b5 (5:46b5)
+.asm_146b5: ; 146b5 (5:46b5)
 	set_farcall_addrs_hli Func_6183
 	ld a, [wLCDC]
 	or $80
@@ -994,8 +1107,21 @@ Func_146b5: ; 146b5 (5:46b5)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1465f_en
+	ld a, BANK(GFX_4122)
+	ld [wFarCallDestBank], a
+	ld bc, $10
+	ld de, GFX_4122 + $cb0
+	ld hl, $88e0
+	call FarCopyVideoData
+	set_farcall_addrs_hli Func_6183
+	ld a, [wLCDC]
+	or $80
+	call FarCall
+ENDC
 	check_cgb
-	jp nz, Func_14703
+	jp nz, .asm_14703
 	set_farcall_addrs_hli Func_613fc
 	ld e, $0
 	xor a
@@ -1005,15 +1131,15 @@ Func_146b5: ; 146b5 (5:46b5)
 	ld e, $0
 	xor a
 	call FarCall
-	jp Func_14717
+	jp .asm_14717
 
-Func_14703: ; 14703 (5:4703)
+.asm_14703: ; 14703 (5:4703)
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
 	ld e, $1
 	ld a, $1
 	call FarCall
-Func_14717: ; 14717 (5:4717)
+.asm_14717: ; 14717 (5:4717)
 	xor a
 	ld [wSCY2], a
 	ld [wSCY], a
@@ -1022,12 +1148,14 @@ Func_14717: ; 14717 (5:4717)
 	ld a, [wNextVBlankFlags]
 	or $10
 	ld [wNextVBlankFlags], a
-Func_1472c: ; 1472c (5:472c)
+.asm_1472c: ; 1472c (5:472c)
 	ld a, [wNextVBlankFlags]
 	ld hl, wLastVBlankFlags
 	cp [hl]
-	jp nz, Func_1472c
+	jp nz, .asm_1472c
+IF DEF(LANG_JP)
 	call Func_17470
+ENDC
 	ld l, BANK(StartMenuHeader)
 	push hl
 	ld hl, $702
@@ -1046,11 +1174,29 @@ Func_1472c: ; 1472c (5:472c)
 	pop bc
 	ld a, [wc317]
 	or a
-	jp z, Func_14763
+	jp z, .asm_14763
 	xor a
 	ld [wc317], a
-Func_14763: ; 14763 (5:4763)
+.asm_14763: ; 14763 (5:4763)
+IF DEF(LANG_JP)
 	call Func_17488
+ELIF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_6183
+	ld a, [wLCDC]
+	and $7f
+	call FarCall
+	call Func_1465f_en
+	ld a, BANK(GFX_4122)
+	ld [wFarCallDestBank], a
+	ld bc, $10
+	ld de, GFX_4122 + $8e0
+	ld hl, $88e0
+	call FarCopyVideoData
+	set_farcall_addrs_hli Func_6183
+	ld a, [wLCDC]
+	or $80
+	call FarCall
+ENDC
 	ret
 
 Data_14767: ; 14767
@@ -1074,26 +1220,26 @@ DisplayPartyMenu_:: ; 14771 (5:4771)
 	ld [wc396], a
 	pop af
 	cp $1
-	jp z, Func_147d4
+	jp z, .asm_147d4
 	cp $9
-	jp z, Func_147b1
+	jp z, .asm_147b1
 	cp $8
-	jp z, Func_147b1
+	jp z, .asm_147b1
 	cp $7
-	jp z, Func_147b1
+	jp z, .asm_147b1
 	cp $6
-	jp z, Func_147b1
+	jp z, .asm_147b1
 	cp $5
-	jp z, Func_147b1
+	jp z, .asm_147b1
 	cp $4
-	jp z, Func_147b1
+	jp z, .asm_147b1
 	cp $3
-	jp z, Func_147b1
+	jp z, .asm_147b1
 	cp $2
-	jp z, Func_147b1
+	jp z, .asm_147b1
 	or a
-	jp nz, Func_147e7
-Func_147b1: ; 147b1 (5:47b1)
+	jp nz, .asm_147e7
+.asm_147b1: ; 147b1 (5:47b1)
 	push af
 	set_farcall_addrs_hli DisplayPartyMenu
 	pop af
@@ -1107,14 +1253,14 @@ Func_147b1: ; 147b1 (5:47b1)
 	call FarCall
 	ld a, l
 	ld [wc310], a
-	jp Func_147e7
+	jp .asm_147e7
 
-Func_147d4: ; 147d4 (5:47d4)
+.asm_147d4: ; 147d4 (5:47d4)
 	set_farcall_addrs_hli DisplayPartyMenu
 	ld de, $0
 	ld a, $7
 	call FarCall
-Func_147e7: ; 147e7 (5:47e7)
+.asm_147e7: ; 147e7 (5:47e7)
 	ret
 
 Func_147e8:: ; 147e8
@@ -1373,17 +1519,17 @@ Func_14980:: ; 14980
 	call FillVisibleAreaWithBlankTile
 	ld a, [wSystemType]
 	cp $1
-	jp z, Func_149b2
+	jp z, .asm_149b2
 	ld a, [wSystemType]
 	cp $ff
-	jp nz, Func_149c6
-Func_149b2: ; 149b2 (5:49b2)
+	jp nz, .asm_149c6
+.asm_149b2: ; 149b2 (5:49b2)
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
 	ld e, $1
 	ld a, $1
 	call FarCall
-Func_149c6: ; 149c6 (5:49c6)
+.asm_149c6: ; 149c6 (5:49c6)
 	callba_hli Func_e1e83
 	ret
 
@@ -1395,9 +1541,9 @@ Func_149d5:: ; 149d5
 	ld hl, sp+$1
 	ld [hl], a
 	xor a
-Func_149de: ; 149de (5:49de)
+.asm_149de: ; 149de (5:49de)
 	cp $a8
-	jp nc, Func_14a07
+	jp nc, .asm_14a07
 	push af
 	set_farcall_addrs_hli Func_53b1e
 	pop af
@@ -1405,22 +1551,22 @@ Func_149de: ; 149de (5:49de)
 	ld e, $0
 	call FarCall
 	cp $1
-	jp nz, Func_14a02
+	jp nz, .asm_14a02
 	ld hl, sp+$3
 	ld a, [hl]
 	inc a
 	ld hl, sp+$3
 	ld [hl], a
-Func_14a02: ; 14a02 (5:4a02)
+.asm_14a02: ; 14a02 (5:4a02)
 	pop af
 	inc a
-	jp Func_149de
+	jp .asm_149de
 
-Func_14a07: ; 14a07 (5:4a07)
+.asm_14a07: ; 14a07 (5:4a07)
 	xor a
-Func_14a08: ; 14a08 (5:4a08)
+.asm_14a08: ; 14a08 (5:4a08)
 	cp $a8
-	jp nc, Func_14a31
+	jp nc, .asm_14a31
 	push af
 	set_farcall_addrs_hli Func_53b1e
 	pop af
@@ -1428,18 +1574,18 @@ Func_14a08: ; 14a08 (5:4a08)
 	ld e, $1
 	call FarCall
 	cp $1
-	jp nz, Func_14a2c
+	jp nz, .asm_14a2c
 	ld hl, sp+$2
 	ld a, [hl]
 	inc a
 	ld hl, sp+$2
 	ld [hl], a
-Func_14a2c: ; 14a2c (5:4a2c)
+.asm_14a2c: ; 14a2c (5:4a2c)
 	pop af
 	inc a
-	jp Func_14a08
+	jp .asm_14a08
 
-Func_14a31: ; 14a31 (5:4a31)
+.asm_14a31: ; 14a31 (5:4a31)
 	ld hl, sp+$1
 	ld a, [hl]
 	ld [wc39c], a
@@ -1649,11 +1795,11 @@ ReceptionCommandMenu:: ; 14b44
 	push hl
 	ld a, [wSystemType]
 	cp $1
-	jp z, Func_14bc4
+	jp z, .asm_14bc4
 	ld a, [wSystemType]
 	cp $ff
-	jp nz, Func_14be6
-Func_14bc4: ; 14bc4 (5:4bc4)
+	jp nz, .asm_14be6
+.asm_14bc4: ; 14bc4 (5:4bc4)
 	ld l, BANK(Data_5441e)
 	push hl
 	ld hl, $200
@@ -1670,9 +1816,9 @@ Func_14bc4: ; 14bc4 (5:4bc4)
 	pop bc
 	pop bc
 	pop bc
-	jp Func_14c05
+	jp .asm_14c05
 
-Func_14be6: ; 14be6 (5:4be6)
+.asm_14be6: ; 14be6 (5:4be6)
 	ld l, BANK(Data_543ff)
 	push hl
 	ld hl, $300
@@ -1689,7 +1835,7 @@ Func_14be6: ; 14be6 (5:4be6)
 	pop bc
 	pop bc
 	pop bc
-Func_14c05: ; 14c05 (5:4c05)
+.asm_14c05: ; 14c05 (5:4c05)
 	call Func_14001
 	pop hl
 	pop bc
@@ -1846,17 +1992,17 @@ ElevatorMenu:: ; 14ca9
 	ld a, l
 	and h
 	inc a
-	jp nz, Func_14d48
+	jp nz, .asm_14d48
 	ld hl, wc7de
 	ld l, [hl]
 	ld h, $0
-Func_14d48: ; 14d48 (5:4d48)
+.asm_14d48: ; 14d48 (5:4d48)
 	ld a, l
 	ret
 
 NamingScreen:: ; 14d4a (5:4d4a)
 	or a
-	jp nz, Func_14d70
+	jp nz, .asm_14d70
 	ld l, BANK(Data_5449a)
 	push hl
 	ld hl, $381b
@@ -1873,9 +2019,9 @@ NamingScreen:: ; 14d4a (5:4d4a)
 	pop bc
 	pop bc
 	pop bc
-	jp Func_14d8f
+	jp .asm_14d8f
 
-Func_14d70: ; 14d70 (5:4d70)
+.asm_14d70: ; 14d70 (5:4d70)
 	ld l, BANK(Data_5449a)
 	push hl
 	ld hl, $381b
@@ -1892,7 +2038,7 @@ Func_14d70: ; 14d70 (5:4d70)
 	pop bc
 	pop bc
 	pop bc
-Func_14d8f: ; 14d8f (5:4d8f)
+.asm_14d8f: ; 14d8f (5:4d8f)
 	call Func_2009
 	ret
 
@@ -1954,23 +2100,23 @@ Func_14db8:: ; 14db8
 	push af
 	ld a, e
 	cp $33
-	jp z, Func_14ecb
+	jp z, .asm_14ecb
 	or a
-	jp z, Func_14ecb
+	jp z, .asm_14ecb
 	cp $d
-	jp z, Func_14e68
+	jp z, .asm_14e68
 	cp $e
-	jp z, Func_14e0b
+	jp z, .asm_14e0b
 	cp $32
-	jp nz, Func_14edb
+	jp nz, .asm_14edb
 	ld hl, sp+$4
 	ld a, [wc2f6]
 	ld [hl], a
 	xor a
 	ld [wc2f6], a
-	jp Func_14edb
+	jp .asm_14edb
 
-Func_14e0b: ; 14e0b (5:4e0b)
+.asm_14e0b: ; 14e0b (5:4e0b)
 	ld hl, sp+$5
 	ld l, [hl]
 	ld h, $0
@@ -1983,12 +2129,12 @@ Func_14e0b: ; 14e0b (5:4e0b)
 	ld [hl], a
 	ld [wc2f6], a
 	ld bc, $0
-Func_14e20: ; 14e20 (5:4e20)
+.asm_14e20: ; 14e20 (5:4e20)
 	ld l, c
 	ld h, b
 	ld de, $14
 	call CompareHLtoDE
-	jp nc, Func_14e65
+	jp nc, .asm_14e65
 	ld hl, wSaveBlock1_BagItems
 	add hl, bc
 	ld a, [hl]
@@ -1999,7 +2145,7 @@ Func_14e20: ; 14e20 (5:4e20)
 	ld de, wSaveBlock2
 	add hl, de
 	cp [hl]
-	jp nz, Func_14e61
+	jp nz, .asm_14e61
 	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, bc
 	ld a, [hl]
@@ -2012,7 +2158,7 @@ Func_14e20: ; 14e20 (5:4e20)
 	inc hl
 	add [hl]
 	cp 100
-	jp c, Func_14e61
+	jp c, .asm_14e61
 	ld hl, wSaveBlock1_BagItemQuantities
 	add hl, bc
 	ld a, 99
@@ -2020,14 +2166,14 @@ Func_14e20: ; 14e20 (5:4e20)
 	ld hl, sp+$4
 	ld [hl], a
 	ld [wc2f6], a
-Func_14e61: ; 14e61 (5:4e61)
+.asm_14e61: ; 14e61 (5:4e61)
 	inc bc
-	jp Func_14e20
+	jp .asm_14e20
 
-Func_14e65: ; 14e65 (5:4e65)
-	jp Func_14edb
+.asm_14e65: ; 14e65 (5:4e65)
+	jp .asm_14edb
 
-Func_14e68: ; 14e68 (5:4e68)
+.asm_14e68: ; 14e68 (5:4e68)
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
@@ -2038,12 +2184,12 @@ Func_14e68: ; 14e68 (5:4e68)
 	ld [hl], a
 	ld [wc2f6], a
 	ld bc, $0
-Func_14e7b: ; 14e7b (5:4e7b)
+.asm_14e7b: ; 14e7b (5:4e7b)
 	ld l, c
 	ld h, b
 	ld de, $50
 	call CompareHLtoDE
-	jp nc, Func_14ec8
+	jp nc, .asm_14ec8
 	ld l, c
 	ld h, b
 	add hl, hl
@@ -2056,7 +2202,7 @@ Func_14e7b: ; 14e7b (5:4e7b)
 	ld hl, wSaveBlock1_BagItems
 	add hl, de
 	cp [hl]
-	jp nz, Func_14ec4
+	jp nz, .asm_14ec4
 	ld l, c
 	ld h, b
 	add hl, hl
@@ -2071,7 +2217,7 @@ Func_14e7b: ; 14e7b (5:4e7b)
 	add hl, de
 	add [hl]
 	cp $64
-	jp c, Func_14ec4
+	jp c, .asm_14ec4
 	ld l, c
 	ld h, b
 	add hl, hl
@@ -2083,14 +2229,14 @@ Func_14e7b: ; 14e7b (5:4e7b)
 	ld hl, sp+$4
 	ld [hl], a
 	ld [wc2f6], a
-Func_14ec4: ; 14ec4 (5:4ec4)
+.asm_14ec4: ; 14ec4 (5:4ec4)
 	inc bc
-	jp Func_14e7b
+	jp .asm_14e7b
 
-Func_14ec8: ; 14ec8 (5:4ec8)
-	jp Func_14edb
+.asm_14ec8: ; 14ec8 (5:4ec8)
+	jp .asm_14edb
 
-Func_14ecb: ; 14ecb (5:4ecb)
+.asm_14ecb: ; 14ecb (5:4ecb)
 	ld hl, sp+$5
 	ld e, [hl]
 	ld d, $0
@@ -2100,7 +2246,7 @@ Func_14ecb: ; 14ecb (5:4ecb)
 	ld hl, sp+$4
 	ld [hl], a
 	ld [wc2f6], a
-Func_14edb: ; 14edb (5:4edb)
+.asm_14edb: ; 14edb (5:4edb)
 	pop af
 	call GetSRAMBank
 	call Func_1fbe
@@ -2248,16 +2394,16 @@ BagSubmenu:: ; 14f0e
 	push de
 	ld a, [wInBattle]
 	or a
-	jp nz, Func_14ffa
+	jp nz, .asm_14ffa
 	ld a, [wc317]
 	or a
-	jp nz, Func_14ffa
+	jp nz, .asm_14ffa
 	ld c, e
 	ld b, d
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
-Func_14ffa: ; 14ffa (5:4ffa)
+.asm_14ffa: ; 14ffa (5:4ffa)
 	pop hl
 	call free
 	pop hl
@@ -2412,12 +2558,12 @@ Func_1503d:: ; 1503d (5:503d)
 	add [hl]
 	ld hl, sp+$44
 	cp [hl]
-	jp nc, Func_1514f
+	jp nc, .asm_1514f
 	xor a
-Func_150eb: ; 150eb (5:50eb)
+.asm_150eb: ; 150eb (5:50eb)
 	ld hl, sp+$44
 	cp [hl]
-	jp nc, Func_1514c
+	jp nc, .asm_1514c
 	push af
 	push de
 	ld hl, sp+$4a
@@ -2465,15 +2611,15 @@ Func_150eb: ; 150eb (5:50eb)
 	pop de
 	pop af
 	inc a
-	jp Func_150eb
+	jp .asm_150eb
 
-Func_1514c: ; 1514c (5:514c)
-	jp Func_151b9
+.asm_1514c: ; 1514c (5:514c)
+	jp .asm_151b9
 
-Func_1514f: ; 1514f (5:514f)
+.asm_1514f: ; 1514f (5:514f)
 	ld hl, sp+$43
 	ld c, [hl]
-Func_15152: ; 15152 (5:5152)
+.asm_15152: ; 15152 (5:5152)
 	ld hl, sp+$43
 	ld a, [hl]
 	ld hl, sp+$44
@@ -2481,7 +2627,7 @@ Func_15152: ; 15152 (5:5152)
 	ld l, a
 	ld a, c
 	cp l
-	jp nc, Func_151b9
+	jp nc, .asm_151b9
 	push bc
 	push de
 	ld hl, sp+$4a
@@ -2529,9 +2675,9 @@ Func_15152: ; 15152 (5:5152)
 	pop de
 	pop bc
 	inc c
-	jp Func_15152
+	jp .asm_15152
 
-Func_151b9: ; 151b9 (5:51b9)
+.asm_151b9: ; 151b9 (5:51b9)
 	add sp, $4c
 	ret
 
@@ -2574,10 +2720,10 @@ StartMenu_MoveCursor:: ; 151c2
 	ld a, e
 	dec a
 	or d
-	jp z, Func_15220
+	jp z, .asm_15220
 	ld a, e
 	or d
-	jp nz, Func_15258
+	jp nz, .asm_15258
 	call GetHLAtSPPlus4
 	dec hl
 	call WriteHLToSPPlus4
@@ -2600,16 +2746,16 @@ StartMenu_MoveCursor:: ; 151c2
 	pop de
 	push hl
 .asm_1521d
-	jp Func_15258
+	jp .asm_15258
 
-Func_15220: ; 15220 (5:5220)
+.asm_15220: ; 15220 (5:5220)
 	call GetHLAtSPPlus4
 	inc hl
 	call WriteHLToSPPlus4
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp c, Func_15258
+	jp c, .asm_15258
 	ld l, c
 	ld h, b
 	dec hl
@@ -2632,13 +2778,13 @@ Func_15220: ; 15220 (5:5220)
 	reg16swap de, hl
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_15258
+	jp nc, .asm_15258
 	pop hl
 	push hl
 	dec hl
 	pop de
 	push hl
-Func_15258: ; 15258 (5:5258)
+.asm_15258: ; 15258 (5:5258)
 	call GetHLAtSPPlus4
 	push hl
 	call GetHLAtSPPlus8

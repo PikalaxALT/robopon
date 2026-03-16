@@ -8,7 +8,11 @@ IF DEF(LANG_EN)
 Func_dc000::
     ret
 
-INCBIN "baserom-sun-en.gbc", $dc001, $17cb
+INCBIN "baserom-sun-en.gbc", $dc001, $1168
+
+Func_dd169::
+
+INCBIN "baserom-sun-en.gbc", $dd169, $663
 
 Func_dd7cc::
 

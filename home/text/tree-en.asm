@@ -122,7 +122,7 @@
 	ld a, 0
 	jp .queue_character
 .bits001111
-	ld a, CHARVAL(",")
+	ld a, CHARVAL(".")
 	jp .queue_character
 .bits01
 	call .GetNextBit

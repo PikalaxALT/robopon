@@ -2,12 +2,15 @@ import json
 import os
 import re
 import sys
+from typing import Literal, TextIO
 
 pattern = re.compile(r'\t(ctxt|line) "(.*)"')
 
 
-def get_path(tree, character):
-    output = []
+type TreeNode = str | bytes | list[TreeNode]
+
+
+def get_path(tree: TreeNode, character: str) -> list[Literal[0, 1]]:
     if isinstance(tree, bytes):
         tree = tree.decode("utf-8")
     if isinstance(tree, list):
@@ -21,7 +24,7 @@ def get_path(tree, character):
         return []
 
 
-def write_paths(outstream, paths):
+def write_paths(outstream: TextIO, paths: list[Literal[0, 1]]):
     cur_byte = 0
     cur_mask = 0x80
     outbytes = [[]]
@@ -40,13 +43,14 @@ def write_paths(outstream, paths):
             outstream.write("\tdb " + out + "\n")
 
 
-def textcomp(filename):
+def textcomp(filename: str):
     kata = True
-    paths = []
-    tree = []
-    with open(filename, "r") as instream, open(
-        os.path.splitext(filename)[0] + ".ctf", "w"
-    ) as outstream:
+    paths: list[Literal[0, 1]] = []
+    tree: TreeNode = []
+    with (
+        open(filename, "r") as instream,
+        open(os.path.splitext(filename)[0] + ".ctf", "w") as outstream,
+    ):
         for line in instream:
             if line.startswith('\ttree "'):
                 treefname = line[7:-2]
@@ -60,8 +64,7 @@ def textcomp(filename):
                 ctrldaku = get_path(tree, "ﾞ")
                 ctrlhand = get_path(tree, "ﾟ")
                 continue
-            M = pattern.match(line)
-            if M:
+            if M := pattern.match(line):
                 opcode, characters = M.groups()
                 characters = list(characters)
                 # Resolve control characters
@@ -99,9 +102,9 @@ def textcomp(filename):
                         paths += ctrlkata
                         kata = True
                     # elif character == '<KATA>':
-                    # kata = True
+                    #     kata = True
                     # elif character == '<HIRA>':
-                    # kata = False
+                    #     kata = False
                     path = get_path(tree, character)
                     if path:
                         paths += path

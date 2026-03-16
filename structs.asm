@@ -21,7 +21,8 @@ ENDC
                                 RSRESET
 DEF warehouseBot_Name           RB ROBOT_NAME_LENGTH
 DEF warehouseBot_Unk06          RB 1
-DEF warehouseBot_Unk07          RB 7
+DEF warehouseBot_Unk07          RB 1
+DEF warehouseBot_Unk08          RB 6
 DEF warehouseBot_Unk0E          RB 2
 DEF warehouseBot_Unk10          RB 2
 DEF warehouseBot_Unk12          RB 2
