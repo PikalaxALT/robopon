@@ -1543,7 +1543,11 @@ Func_149d5:: ; 149d5
 	xor a
 .asm_149de: ; 149de (5:49de)
 	cp $a8
+IF DEF(LANG_JP)
 	jp nc, .asm_14a07
+ELIF DEF(LANG_EN)
+	jp nc, .asm_14a31
+ENDC
 	push af
 	set_farcall_addrs_hli Func_53b1e
 	pop af
@@ -1558,6 +1562,7 @@ Func_149d5:: ; 149d5
 	ld hl, sp+$3
 	ld [hl], a
 .asm_14a02: ; 14a02 (5:4a02)
+IF DEF(LANG_JP)
 	pop af
 	inc a
 	jp .asm_149de
@@ -1568,6 +1573,7 @@ Func_149d5:: ; 149d5
 	cp $a8
 	jp nc, .asm_14a31
 	push af
+ENDC
 	set_farcall_addrs_hli Func_53b1e
 	pop af
 	push af
@@ -1583,7 +1589,11 @@ Func_149d5:: ; 149d5
 .asm_14a2c: ; 14a2c (5:4a2c)
 	pop af
 	inc a
+IF DEF(LANG_JP)
 	jp .asm_14a08
+ELIF DEF(LANG_EN)
+	jp .asm_149de
+ENDC
 
 .asm_14a31: ; 14a31 (5:4a31)
 	ld hl, sp+$1
@@ -1749,6 +1759,7 @@ Func_14b24:: ; 14b24
 ReceptionCommandMenu:: ; 14b44
 	ld a, $3
 	ld [wEnableAttrMapTransfer], a
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -1763,6 +1774,10 @@ ReceptionCommandMenu:: ; 14b44
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_14001
+	call Func_1400e
+ENDC
 	ld hl, $c8
 	call malloc
 	reg16swap de, hl
@@ -1912,6 +1927,7 @@ MartMenu:: ; 14c89
 	ret
 
 ElevatorMenu:: ; 14ca9
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -1926,6 +1942,10 @@ ElevatorMenu:: ; 14ca9
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_14001
+	call Func_1400e
+ENDC
 	ld hl, $c8
 	call malloc
 	reg16swap de, hl
@@ -2279,6 +2299,7 @@ Func_14db8:: ; 14db8
 
 BagSubmenu:: ; 14f0e
 	push bc
+IF DEF(LANG_JP)
 	push hl
 	ld bc, $8000
 	push bc
@@ -2289,17 +2310,35 @@ BagSubmenu:: ; 14f0e
 	xor a
 	call PushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	push bc
+	push hl
+	ld de, $8000
+	push de
+	call Func_1401b
+ENDC
 	ld hl, $64
 	call malloc
+IF DEF(LANG_JP)
 	reg16swap de, hl
 	push de
 	ld c, e
 	ld b, d
+ELIF DEF(LANG_EN)
+	ld c, l
+	ld b, h
+	push bc
+ENDC
 	ld de, $1405
 	ld hl, $d
 	call BackUpTileMapRectangle
+IF DEF(LANG_JP)
 	pop de
 	pop bc
+ELIF DEF(LANG_EN)
+	pop bc
+	pop de
+ENDC
 	pop hl
 	push de
 	push bc
@@ -2319,11 +2358,21 @@ BagSubmenu:: ; 14f0e
 	ld h, [hl]
 	ld l, a
 	add hl, bc
+IF DEF(LANG_JP)
 	ld e, l
 	push de
+ELIF DEF(LANG_EN)
+	ld a, l
+	ld hl, sp+$6
+	ld [hl], a
+ENDC
 	call UseTossSelect
 	pop de
+IF DEF(LANG_JP)
 	pop bc
+ELIF DEF(LANG_EN)
+	push hl
+ENDC
 	ld a, l
 	dec a
 	or h
@@ -2331,19 +2380,42 @@ BagSubmenu:: ; 14f0e
 	ld a, l
 	or h
 	jp nz, .pressed_b
+IF DEF(LANG_JP)
 	push de
+ELIF DEF(LANG_EN)
+	ld de, $19
+	ld a, $3
+	call GetBanks
+	ld l, a
+	ld a, [wSaveBlock1_ca6c]
+	ld c, a
+	push bc
+	ld a, l
+	call GetSRAMBank
+ENDC
 	set_farcall_addrs_hli DoItemEffect
+IF DEF(LANG_JP)
 	pop de
 	ld a, e
+ELIF DEF(LANG_EN)
+	ld hl, sp+$8
+	ld a, [hl]
+ENDC
 	call FarCall
 	ld a, $ff
 	ld [wc39b], a
+IF DEF(LANG_EN)
+	pop bc
+ENDC
 	ld a, [wInBattle]
 	or a
 	jp nz, .skip_use
 	ld a, [wc317]
 	or a
 	jp nz, .skip_use
+IF DEF(LANG_EN)
+	push bc
+ENDC
 	ld de, $19
 	ld a, $3
 	call GetBanks
@@ -2359,6 +2431,7 @@ BagSubmenu:: ; 14f0e
 	ld [hl], d
 	ld a, c
 	call GetSRAMBank
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus4
 	inc hl
 	inc hl
@@ -2375,31 +2448,141 @@ BagSubmenu:: ; 14f0e
 	inc hl
 	ld [hl], d
 	ld bc, $8000
+ELIF DEF(LANG_EN)
+	pop bc
+	call GetHLAtSPPlus6
+	ld de, $7
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld l, c
+	ld h, $0
+	call CompareHLtoDE
+	jp z, .do_use
+	call GetHLAtSPPlus6
+	ld de, $9
+	add hl, de
+	ld e, c
+	ld d, $0
+	ld a, e
+	sub [hl]
+	ld e, a
+	inc hl
+	ld a, d
+	sbc a, [hl]
+	ld d, a
+	ld hl, sp+$6
+	ld l, [hl]
+	ld h, $0
+	call CompareHLtoDE
+	jp c, .do_use
+	call GetHLAtSPPlus6
+	ld de, $5
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $0
+	call CompareHLtoDE
+	jp nc, .check_use_2
+	call GetHLAtSPPlus6
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	sub $1
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	sbc a, $0
+	ld [hl], a
+	jp .do_use
+.check_use_2
+	ld hl, sp+$6
+	ld a, [hl]
+	ld l, c
+	dec l
+	cp l
+	jp c, .do_use
+	call GetHLAtSPPlus6
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $0
+	call CompareHLtoDE
+	jp nc, .do_use
+	call GetHLAtSPPlus6
+	inc hl
+	inc hl
+	inc hl
+	ld a, [hl]
+	sub $1
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	sbc a, $0
+	ld [hl], a
+.do_use
+	ld de, $8000
+ENDC
 	jp .done_use
 
 .skip_use ; 14fc5 (5:4fc5)
+IF DEF(LANG_JP)
 	ld bc, -1
+ELIF DEF(LANG_EN)
+	ld de, -1
+ENDC
 .done_use ; 14fc8 (5:4fc8)
 	jp .pressed_b
 
 .toss ; 14fcb (5:4fcb)
+IF DEF(LANG_JP)
 	push bc
+ELIF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_33db7
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus6
+ELIF DEF(LANG_EN)
+	call GetHLAtSPPlus4
+ENDC
 	call FarCall
+IF DEF(LANG_JP)
 	pop bc
+ELIF DEF(LANG_EN)
+	pop de
+ENDC
 .pressed_b ; 14fde (5:4fde)
+IF DEF(LANG_JP)
 	pop de
 	push bc
 	push de
+ELIF DEF(LANG_EN)
+	pop hl
+	pop bc
+	push de
+	push bc
+ENDC
 	ld a, [wInBattle]
 	or a
 	jp nz, .asm_14ffa
 	ld a, [wc317]
 	or a
 	jp nz, .asm_14ffa
+IF DEF(LANG_JP)
 	ld c, e
 	ld b, d
+ELIF DEF(LANG_EN)
+	ld a, l
+	dec a
+	or h
+	jp nz, .asm_14ffa
+ENDC
 	ld de, $1405
 	ld hl, $d
 	call PopBGMapRegion
@@ -2407,6 +2590,9 @@ BagSubmenu:: ; 14f0e
 	pop hl
 	call free
 	pop hl
+IF DEF(LANG_EN)
+	pop bc
+ENDC
 	pop bc
 	ret
 
