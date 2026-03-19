@@ -4156,7 +4156,7 @@ ELIF DEF(LANG_EN)
 	add a
 	add a
 	add a
-	add a, d
+	add d
 	add $8
 	ld hl, $1a5
 	add hl, sp

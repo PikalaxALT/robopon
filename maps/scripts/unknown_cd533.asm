@@ -389,7 +389,7 @@ Func_cd6d0:
 	ld [hl], b
 	ld hl, sp+$01
 	ld a, [hl]
-	add a, a
+	add a
 	ld hl, sp+$01
 	ld [hl], a
 	xor a

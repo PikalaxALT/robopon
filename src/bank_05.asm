@@ -992,6 +992,7 @@ Func_15bde:: ; 15bde
 	ld [hl], d
 	call GetHLAtSPPlus7
 	call Func_16128
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -999,6 +1000,9 @@ Func_15bde:: ; 15bde
 	xor a
 	call PushBGMapRegion
 	pop bc
+ELSE
+	call Func_1401b
+ENDC
 	ld hl, $4000
 	jp Func_15fe4
 

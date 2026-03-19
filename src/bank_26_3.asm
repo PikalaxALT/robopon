@@ -423,7 +423,7 @@ Func_9a41d:: ; 9a41d
 	dec a
 	ld e, a
 	ld a, [wMapX]
-	add a, c
+	add c
 	dec a
 	call FarCall
 	ld c, l
@@ -570,7 +570,7 @@ Func_9a41d:: ; 9a41d
 	dec a
 	ld e, a
 	ld a, [wMapX]
-	add a, c
+	add c
 	dec a
 	call FarCall
 	ld c, l
@@ -1118,12 +1118,12 @@ Func_9a8c3:: ; 9a8c3
 	ld a, c
 	sub e
 	ld a, b
-	sbc a, d
+	sbc d
 	jp c, .asm_9aa25
 	ld a, c
 	sub l
 	ld a, b
-	sbc a, h
+	sbc h
 	jp c, .asm_9aa2a
 .asm_9aa25
 	ld a, $01
@@ -1178,12 +1178,12 @@ Func_9a8c3:: ; 9a8c3
 	ld a, c
 	sub l
 	ld a, b
-	sbc a, h
+	sbc h
 	jp c, .asm_9aaa2
 	ld a, c
 	sub e
 	ld a, b
-	sbc a, d
+	sbc d
 	jp nc, .asm_9aaa2
 	ld a, $01
 	jp .asm_9aaa3
@@ -1256,12 +1256,12 @@ Func_9a8c3:: ; 9a8c3
 	ld a, c
 	sub l
 	ld a, b
-	sbc a, h
+	sbc h
 	jp c, .asm_9ab4a
 	ld a, c
 	sub e
 	ld a, b
-	sbc a, d
+	sbc d
 	jp nc, .asm_9ab4a
 	ld hl, sp+$07
 	ld [hl], $01

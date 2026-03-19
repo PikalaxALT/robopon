@@ -277,8 +277,8 @@ ENDM
 MACRO mulhl
     ; Get popcnt
     DEF POPCNT = 0
-	DEF n = 8
-    FOR i, 8
+	DEF n = 16
+    FOR i, 16
         IF (\1 >> i) == 0
             DEF n = i
             BREAK
@@ -310,13 +310,12 @@ MACRO mulhl
         ENDR
         IF POPCNT >= 1
             add hl, de
-            IF POPCNT == 2
-                add hl, bc
-            ENDC
-        ENDC
+		ENDC
+		IF POPCNT >= 2
+			add hl, bc
+		ENDC
     ENDC
 ENDM
-
 
 	; optional arg: byte offset within struct
 MACRO get_party_bot
