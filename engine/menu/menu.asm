@@ -2683,10 +2683,12 @@ Func_1503d:: ; 1503d (5:503d)
 	ld e, [hl]
 	ld hl, sp+$47
 	ld [hl], e
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $4e
 	ld de, $b
 	add hl, de
 	ld a, [hl]
+ENDC
 	read_hl_from_sp_plus $4e
 	ld de, $9
 	add hl, de
@@ -2917,6 +2919,7 @@ StartMenu_MoveCursor:: ; 151c2
 	dec h
 	bit 7, h
 	jr z, .asm_1521d
+IF DEF(LANG_JP)
 	ld hl, $0
 	call WriteHLToSPPlus4
 	pop hl
@@ -2931,6 +2934,12 @@ StartMenu_MoveCursor:: ; 151c2
 	ld hl, $0
 	pop de
 	push hl
+ELIF DEF(LANG_EN)
+	ld l, c
+	ld h, b
+	dec hl
+	call WriteHLToSPPlus4
+ENDC
 .asm_1521d
 	jp .asm_15258
 
@@ -2946,6 +2955,7 @@ StartMenu_MoveCursor:: ; 151c2
 	ld h, b
 	dec hl
 	call WriteHLToSPPlus4
+IF DEF(LANG_JP)
 	pop hl
 	push hl
 	inc hl
@@ -2970,6 +2980,7 @@ StartMenu_MoveCursor:: ; 151c2
 	dec hl
 	pop de
 	push hl
+ENDC
 .asm_15258: ; 15258 (5:5258)
 	call GetHLAtSPPlus4
 	push hl

@@ -86,17 +86,24 @@ Func_1551f::
 	push hl
 	ld de, wSaveBlock1_c98e
 	add hl, de
+IF DEF(LANG_JP)
 	ld l, [hl]
 	ld h, $0
 	reg16swap de, hl
 	ld a, e
 	and $3f
 	ld l, a
+ELIF DEF(LANG_EN)
+	ld a, [hl]
+	and $3f
+	ld l, a
+ENDC
 	ld h, $0
 	reg16swap de, hl
 	push de
 	ld a, c
 	call GetSRAMBank
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -104,6 +111,9 @@ Func_1551f::
 	xor a
 	call PushBGMapRegion_NoWaitBefore
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_14001
+ENDC
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -113,6 +123,7 @@ Func_1551f::
 	call Func_1564a
 	ld c, a
 	push bc
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -120,6 +131,9 @@ Func_1551f::
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1400e
+ENDC
 	xor a
 	pop bc
 	pop de
@@ -219,11 +233,15 @@ Func_1564a: ; 1564a (5:564a)
 	read_hl_from_sp_plus $1a
 	ld de, wSaveBlock1_c98e
 	add hl, de
+IF DEF(LANG_JP)
 	ld l, [hl]
 	ld h, $0
 	write_hl_to_sp_plus $1a
 	read_hl_from_sp_plus $1a
 	ld a, l
+ELIF DEF(LANG_EN)
+	ld a, [hl]
+ENDC
 	and $3f
 	ld l, a
 	ld h, $0
@@ -251,8 +269,17 @@ Func_1564a: ; 1564a (5:564a)
 	ld hl, $1
 	call Func_16019
 	ld de, Data_157b6
+IF DEF(LANG_JP)
 	lb hl, -1, -1
+ELIF DEF(LANG_EN)
+	lb hl, 1, 14
+ENDC
 	call PlaceStringDEatCoordHL
+IF DEF(LANG_EN)
+	ld de, Data_157b6_2
+	lb hl, 1, 15
+	call PlaceStringDEatCoordHL
+ENDC
 	ld bc, $0
 	xor a
 Func_156af: ; 156af (5:56af)
@@ -393,10 +420,17 @@ Func_15780: ; 15780 (5:5780)
 	ld e, $10
 	ld a, $12
 	call SetStringStartState
+IF DEF(LANG_EN)
+	ld hl, $8a
+	push hl
+ENDC
 	ld hl, Data_157c3
 	push hl
 	call PlaceString
 	pop bc
+IF DEF(LANG_EN)
+	pop bc
+ENDC
 	read_hl_from_sp_plus $18
 	ld a, l
 	jp Func_157b3
@@ -411,10 +445,20 @@ Func_157b3: ; 157b3 (5:57b3)
 	ret
 
 Data_157b6: ; 157b6
+IF DEF(LANG_JP)
 	dstr "(てﾞ つかえるわさﾞ)"
+ELIF DEF(LANG_EN)
+	dstr "The move you can"
+Data_157b6_2:
+	dstr "use with "
+ENDC
 
 Data_157c3: ; 157c3
+IF DEF(LANG_JP)
 	dstr "^"
+ELIF DEF(LANG_EN)
+	dstr "%c"
+ENDC
 
 Func_157c5: ; 157c5 (5:57c5)
 	push hl
@@ -487,7 +531,7 @@ Func_1580d: ; 1580d (5:580d)
 	ld a, l
 	or h
 	jp nz, Func_1584b
-	ld c, $5
+	ld c, SOFTWARE_NAME_LENGTH
 	call GetHLAtSPPlus8
 	reg16swap de, hl
 	ld hl, sp+$4
@@ -518,11 +562,13 @@ Func_1585a: ; 1585a (5:585a)
 	ld [hl], $7f
 	inc hl
 	call WriteHLToSPPlus8
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus8
 	ld [hl], $0
 	inc hl
 	call WriteHLToSPPlus8
 	jp Func_15887
+ENDC
 
 Func_1587e: ; 1587e (5:587e)
 	call GetHLAtSPPlus8
@@ -538,6 +584,7 @@ Func_15887: ; 15887 (5:5887)
 	ret
 
 Pointers_1588f:
+IF DEF(LANG_JP)
 	dw Data_15895
 	dw Data_158ae
 	dw $0
@@ -547,27 +594,48 @@ Data_15895:
 
 Data_158ae:
 	dstr "(てﾞきないよ)"
+ELIF DEF(LANG_EN)
+	dw .line1
+	dw .line2
+	dw .line3
+	dw .line4
+	dw NULL
+
+.line1 dstr "You can't install"
+.line2 dstr "software"
+.line3 dstr "into Boot Type"
+.line4 dstr "Robopon."
+ENDC
 
 Func_158b7: ; 158b7
 	add sp, -$76
 	push af
+IF DEF(LANG_JP)
 	ld hl, sp+$2
 	reg16swap de, hl
 	ld hl, Pointers_1588f
 	ld bc, $6
 	call MemCopy
+ENDC
 	ld de, $19
 	ld a, $3
 	call GetBanks
+IF DEF(LANG_JP)
 	ld l, a
+ELIF DEF(LANG_EN)
+	ld c, a
+ENDC
 	pop af
+IF DEF(LANG_JP)
 	push hl
+ENDC
 	ld e, a
 	ld d, $0
 	ld hl, wSaveBlock1_c98e
 	add hl, de
 	ld a, [hl]
 	and $3f
+IF DEF(LANG_JP)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
@@ -595,14 +663,20 @@ Func_158b7: ; 158b7
 	ld e, [hl]
 	ld hl, sp+$77
 	ld [hl], e
+ENDC
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
 	ld a, [hl]
+IF DEF(LANG_JP)
 	pop hl
 	push af
 	push hl
+ELIF DEF(LANG_EN)
+	push af
+	push bc
+ENDC
 	ld bc, $0
 Func_15951: ; 15951 (5:5951)
 	ld l, c
@@ -610,7 +684,22 @@ Func_15951: ; 15951 (5:5951)
 	ld de, $3
 	call CompareHLtoDE
 	jp nc, Func_1598d
+IF DEF(LANG_JP)
 	ld hl, sp+$77
+ELIF DEF(LANG_EN)
+	ld hl, wc2e9
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
+	ld de, $9
+	add hl, de
+	add hl, bc
+	ld a, [hl]
+	ld hl, sp+$72
+	add hl, bc
+	ld [hl], a
+	ld hl, sp+$72
+ENDC
 	add hl, bc
 	ld a, [hl]
 	or a
@@ -621,15 +710,13 @@ Func_15951: ; 15951 (5:5951)
 	push bc
 	ld l, c
 	ld h, b
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	reg16swap de, hl
+IF DEF(LANG_JP)
 	ld hl, sp+$3d
+ELIF DEF(LANG_EN)
+	ld hl, sp+$38
+ENDC
 	add hl, de
 	ld e, c
 	ld c, $1
@@ -661,12 +748,27 @@ Func_1598d: ; 1598d (5:598d)
 	push hl
 	call PlaceString
 	pop bc
+IF DEF(LANG_JP)
 	ld de, Data_15aa4
 	ld hl, $a01
 	call PlaceStringDEatCoordHL
 	ld de, Data_15aae
 	ld hl, $101
 	call PlaceStringDEatCoordHL
+ELIF DEF(LANG_EN)
+	ld de, Data_15a8c_en
+	ld hl, $a00
+	call PlaceStringDEatCoordHL
+	ld de, Data_15a96_en
+	ld hl, $b01
+	call PlaceStringDEatCoordHL
+	ld de, Data_15a9a_en
+	ld hl, $100
+	call PlaceStringDEatCoordHL
+	ld de, Data_15aa2_en
+	ld hl, $201
+	call PlaceStringDEatCoordHL
+ENDC
 	ld c, $7
 	ld e, $a
 	ld hl, $a02
@@ -675,12 +777,24 @@ Func_1598d: ; 1598d (5:598d)
 	ld e, $a
 	ld hl, $a09
 	call Func_17e95
+IF DEF(LANG_JP)
 	ld de, Data_15ab8
 	ld hl, $c0a
 	call PlaceStringDEatCoordHL
 	ld de, Data_15ac3
 	ld hl, $c0c
 	call PlaceStringDEatCoordHL
+ELIF DEF(LANG_EN)
+	ld de, Data_15aa6_en
+	ld hl, $b0a
+	call PlaceStringDEatCoordHL
+	ld de, Data_15aad_en
+	ld hl, $c0b
+	call PlaceStringDEatCoordHL
+	ld de, Data_15ab2_en
+	ld hl, $b0c
+	call PlaceStringDEatCoordHL
+ENDC
 	ld hl, sp+$75
 	ld a, [hl]
 	or a
@@ -693,7 +807,11 @@ Func_1598d: ; 1598d (5:598d)
 	ld a, [hl]
 	or a
 	jp nz, Func_15a0e
+IF DEF(LANG_JP)
 	ld de, Data_15ace
+ELIF DEF(LANG_EN)
+	ld de, Data_15ab7_en
+ENDC
 	ld hl, $c03
 	call PlaceStringDEatCoordHL
 	jp Func_15a64
@@ -748,6 +866,7 @@ Func_15a64: ; 15a64 (5:5a64)
 	ld e, $14
 	ld hl, $d
 	call Func_17e95
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -755,10 +874,17 @@ Func_15a64: ; 15a64 (5:5a64)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1400e
+ENDC
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $5
+IF DEF(LANG_JP)
 	ld hl, sp+$0
 	reg16swap de, hl
+ELIF DEF(LANG_EN)
+	ld de, Pointers_1588f
+ENDC
 	ld hl, $10e
 	call FarCall
 	ld a, $ff
@@ -773,6 +899,7 @@ Func_15a9f: ; 15a9f (5:5a9f)
 Data_15aa2: ; 15aa2
 	dstr "M"
 
+IF DEF(LANG_JP)
 Data_15aa4: ; 15aa4
 	dstr "(そうひﾞ)ソフト"
 
@@ -787,7 +914,16 @@ Data_15ac3: ; 15ac3
 
 Data_15ace: ; 15ace
 	dstr "ソフト(なし)"
-
+ELIF DEF(LANG_EN)
+Data_15a8c_en: dstr "Installed"
+Data_15a96_en: dstr "S/W"
+Data_15a9a_en: dstr "S/W you"
+Data_15aa2_en: dstr "Own"
+Data_15aa6_en: dstr "Remove"
+Data_15aad_en: dstr "All?"
+Data_15ab2_en: dstr "Move"
+Data_15ab7_en: dstr "No S/W"
+ENDC
 INCLUDE "engine/get_name.asm"
 
 Func_15bde:: ; 15bde

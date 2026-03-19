@@ -114,5 +114,20 @@ GetName:: ; 15ad6 (5:5ad6)
 	read_hl_from_sp_plus $70
 	pop de
 	call FarCopyVideoData
+IF DEF(LANG_JP)
 	add sp, $70
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $72
+	ld de, $9
+	add hl, de
+	ld a, [hl]
+	or a
+	jp z, .asm_5bd7_en
+	read_hl_from_sp_plus $72
+	ld de, $a
+	add hl, de
+	ld [hl], $0
+.asm_5bd7_en
+	add sp, $74
+ENDC
 	ret
