@@ -137,19 +137,19 @@ ENDC
 	xor a
 	pop bc
 	pop de
-Func_155bb: ; 155bb (5:55bb)
+.asm_155bb: ; 155bb (5:55bb)
 	push de
 	push bc
 	call WaitAorBButtonOverworld_17a44
 	pop bc
 	pop de
 	cp $10
-	jp nz, Func_15619
+	jp nz, .asm_15619
 	ld a, c
 	ld hl, Data_15399 - 1
 	add hl, de
 	cp [hl]
-	jp nc, Func_155f9
+	jp nc, .asm_155f9
 	push de
 	push bc
 	ld c, $5
@@ -172,9 +172,9 @@ Func_155bb: ; 155bb (5:55bb)
 	pop bc
 	pop bc
 	pop de
-	jp Func_15616
+	jp .asm_15616
 
-Func_155f9: ; 155f9 (5:55f9)
+.asm_155f9: ; 155f9 (5:55f9)
 	call GetHLAtSPPlus4
 	ld c, l
 	ld b, h
@@ -188,14 +188,14 @@ Func_155f9: ; 155f9 (5:55f9)
 	xor a
 	call PushBGMapRegion
 	pop bc
-	jp Func_1563e
+	jp .asm_1563e
 
-Func_15616: ; 15616 (5:5616)
-	jp Func_1563b
+.asm_15616: ; 15616 (5:5616)
+	jp .asm_1563b
 
-Func_15619: ; 15619 (5:5619)
+.asm_15619: ; 15619 (5:5619)
 	cp $20
-	jp nz, Func_1563b
+	jp nz, .asm_1563b
 	call GetHLAtSPPlus4
 	ld c, l
 	ld b, h
@@ -209,12 +209,12 @@ Func_15619: ; 15619 (5:5619)
 	xor a
 	call PushBGMapRegion
 	pop bc
-	jp Func_1563e
+	jp .asm_1563e
 
-Func_1563b: ; 1563b (5:563b)
-	jp Func_155bb
+.asm_1563b: ; 1563b (5:563b)
+	jp .asm_155bb
 
-Func_1563e: ; 1563e (5:563e)
+.asm_1563e: ; 1563e (5:563e)
 	call GetHLAtSPPlus4
 	call free
 	ld hl, $8000
@@ -256,7 +256,7 @@ ENDC
 	ld a, c
 	and b
 	inc a
-	jp nz, Func_15703
+	jp nz, .asm_15703
 	ld bc, -1
 	read_hl_from_sp_plus $1a
 	ld e, l
@@ -282,9 +282,9 @@ IF DEF(LANG_EN)
 ENDC
 	ld bc, $0
 	xor a
-Func_156af: ; 156af (5:56af)
+.asm_156af: ; 156af (5:56af)
 	cp $3
-	jp nc, Func_156f9
+	jp nc, .asm_156f9
 	push af
 	push bc
 	read_hl_from_sp_plus $1e
@@ -302,7 +302,7 @@ Func_156af: ; 156af (5:56af)
 	add hl, de
 	ld de, $12
 	call CompareHLtoDE
-	jp nc, Func_156ec
+	jp nc, .asm_156ec
 	inc bc
 	push bc
 	ld hl, sp+$6
@@ -314,7 +314,7 @@ Func_156af: ; 156af (5:56af)
 	ld h, $0
 	call Func_16019
 	pop bc
-Func_156ec: ; 156ec (5:56ec)
+.asm_156ec: ; 156ec (5:56ec)
 	pop de
 	ld hl, sp+$17
 	ld a, [hl]
@@ -323,27 +323,27 @@ Func_156ec: ; 156ec (5:56ec)
 	ld [hl], a
 	pop af
 	inc a
-	jp Func_156af
+	jp .asm_156af
 
-Func_156f9: ; 156f9 (5:56f9)
+.asm_156f9: ; 156f9 (5:56f9)
 	ld hl, $0
 	write_hl_to_sp_plus $18
-	jp Func_15780
+	jp .asm_15780
 
-Func_15703: ; 15703 (5:5703)
+.asm_15703: ; 15703 (5:5703)
 	ld hl, sp+$14
 	ld [hl], $0
-Func_15707: ; 15707 (5:5707)
+.asm_15707: ; 15707 (5:5707)
 	ld hl, sp+$14
 	ld a, [hl]
 	cp $2
-	jp nc, Func_15780
+	jp nc, .asm_15780
 	ld hl, sp+$15
 	ld [hl], $1
 	xor a
-Func_15714: ; 15714 (5:5714)
+.asm_15714: ; 15714 (5:5714)
 	cp $3
-	jp nc, Func_15769
+	jp nc, .asm_15769
 	push af
 	push bc
 	read_hl_from_sp_plus $1e
@@ -361,7 +361,7 @@ Func_15714: ; 15714 (5:5714)
 	add hl, de
 	ld de, $12
 	call CompareHLtoDE
-	jp nc, Func_1575c
+	jp nc, .asm_1575c
 	push bc
 	ld hl, sp+$6
 	ld c, l
@@ -379,7 +379,7 @@ Func_15714: ; 15714 (5:5714)
 	call Func_16019
 	pop bc
 	inc bc
-Func_1575c: ; 1575c (5:575c)
+.asm_1575c: ; 1575c (5:575c)
 	pop de
 	ld hl, sp+$17
 	ld a, [hl]
@@ -388,26 +388,26 @@ Func_1575c: ; 1575c (5:575c)
 	ld [hl], a
 	pop af
 	inc a
-	jp Func_15714
+	jp .asm_15714
 
-Func_15769: ; 15769 (5:5769)
+.asm_15769: ; 15769 (5:5769)
 	ld hl, sp+$14
 	ld a, [hl]
 	or a
-	jp nz, Func_15776
+	jp nz, .asm_15776
 	ld l, c
 	ld h, b
 	write_hl_to_sp_plus $18
-Func_15776: ; 15776 (5:5776)
+.asm_15776: ; 15776 (5:5776)
 	ld hl, sp+$14
 	ld a, [hl]
 	inc a
 	ld hl, sp+$14
 .asm_1577b
 	ld [hl], a
-	jp Func_15707
+	jp .asm_15707
 
-Func_15780: ; 15780 (5:5780)
+.asm_15780: ; 15780 (5:5780)
 	read_hl_from_sp_plus $1a
 	ld de, Data_15399 - 1
 	add hl, de
@@ -416,7 +416,7 @@ Func_15780: ; 15780 (5:5780)
 	ld l, c
 	ld h, b
 	call CompareHLtoDE
-	jp nc, Func_157aa
+	jp nc, .asm_157aa
 	ld e, $10
 	ld a, $12
 	call text_cursor_pos_set
@@ -433,14 +433,14 @@ IF DEF(LANG_EN)
 ENDC
 	read_hl_from_sp_plus $18
 	ld a, l
-	jp Func_157b3
+	jp .asm_157b3
 
-Func_157aa: ; 157aa (5:57aa)
+.asm_157aa: ; 157aa (5:57aa)
 	read_hl_from_sp_plus $1a
 	ld de, Data_15399 - 1
 	add hl, de
 	ld a, [hl]
-Func_157b3: ; 157b3 (5:57b3)
+.asm_157b3: ; 157b3 (5:57b3)
 	add sp, $1a
 	ret
 
@@ -470,7 +470,7 @@ Func_157c5: ; 157c5 (5:57c5)
 	ld a, c
 	and b
 	inc a
-	jp nz, Func_157ea
+	jp nz, .asm_157ea
 	ld c, $5
 	call GetHLAtSPPlus8
 	reg16swap de, hl
@@ -479,19 +479,19 @@ Func_157c5: ; 157c5 (5:57c5)
 	ld h, GETNAME_SOFTWARE
 	dec hl
 	call GetName
-	jp Func_15887
+	jp .asm_15887
 
-Func_157ea: ; 157ea (5:57ea)
+.asm_157ea: ; 157ea (5:57ea)
 	push bc
 	ld e, $0
-Func_157ed: ; 157ed (5:57ed)
+.asm_157ed: ; 157ed (5:57ed)
 	ld hl, sp+$6
 	ld a, [hl]
 	dec a
 	ld l, a
 	ld a, e
 	cp l
-	jp nc, Func_1580d
+	jp nc, .asm_1580d
 	push de
 	ld d, $0
 	ld hl, Data_15399
@@ -503,9 +503,9 @@ Func_157ed: ; 157ed (5:57ed)
 	call WriteHLToSPPlus8
 	pop de
 	inc e
-	jp Func_157ed
+	jp .asm_157ed
 
-Func_1580d: ; 1580d (5:580d)
+.asm_1580d: ; 1580d (5:580d)
 	pop bc
 	call GetHLAtSPPlus4
 	add hl, bc
@@ -525,12 +525,12 @@ Func_1580d: ; 1580d (5:580d)
 	ld l, c
 	ld h, b
 	call CompareHLtoDE
-	jp nc, Func_1587e
+	jp nc, .asm_1587e
 	pop hl
 	push hl
 	ld a, l
 	or h
-	jp nz, Func_1584b
+	jp nz, .asm_1584b
 	ld c, SOFTWARE_NAME_LENGTH
 	call GetHLAtSPPlus8
 	reg16swap de, hl
@@ -539,9 +539,9 @@ Func_1580d: ; 1580d (5:580d)
 	ld h, GETNAME_SOFTWARE
 	dec hl
 	call GetName
-	jp Func_1585a
+	jp .asm_1585a
 
-Func_1584b: ; 1584b (5:584b)
+.asm_1584b: ; 1584b (5:584b)
 	ld c, $9
 	call GetHLAtSPPlus8
 	push hl
@@ -550,7 +550,7 @@ Func_1584b: ; 1584b (5:584b)
 	dec hl
 	pop de
 	call GetName
-Func_1585a: ; 1585a (5:585a)
+.asm_1585a: ; 1585a (5:585a)
 	call GetHLAtSPPlus8
 	call FindFirstNonzero
 	ld c, l
@@ -567,15 +567,15 @@ IF DEF(LANG_JP)
 	ld [hl], $0
 	inc hl
 	call WriteHLToSPPlus8
-	jp Func_15887
+	jp .asm_15887
 ENDC
 
-Func_1587e: ; 1587e (5:587e)
+.asm_1587e: ; 1587e (5:587e)
 	call GetHLAtSPPlus8
 	ld [hl], $0
 	inc hl
 	call WriteHLToSPPlus8
-Func_15887: ; 15887 (5:5887)
+.asm_15887: ; 15887 (5:5887)
 	call GetHLAtSPPlus8
 	pop bc
 	pop bc
@@ -649,7 +649,7 @@ IF DEF(LANG_JP)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, warehouseBot_Unk09
+	ld de, warehouseBot_Unk08+1
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$76
@@ -658,7 +658,7 @@ IF DEF(LANG_JP)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, warehouseBot_Unk0A
+	ld de, warehouseBot_Unk08+2
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$77
@@ -678,12 +678,12 @@ ELIF DEF(LANG_EN)
 	push bc
 ENDC
 	ld bc, $0
-Func_15951: ; 15951 (5:5951)
+.asm_15951: ; 15951 (5:5951)
 	ld l, c
 	ld h, b
 	ld de, $3
 	call CompareHLtoDE
-	jp nc, Func_1598d
+	jp nc, .asm_1598d
 IF DEF(LANG_JP)
 	ld hl, sp+$77
 ELIF DEF(LANG_EN)
@@ -703,7 +703,7 @@ ENDC
 	add hl, bc
 	ld a, [hl]
 	or a
-	jp z, Func_15989
+	jp z, .asm_15989
 	push bc
 	set_farcall_addrs_hli Func_5601b
 	pop bc
@@ -722,11 +722,11 @@ ENDC
 	ld c, $1
 	call FarCall
 	pop bc
-Func_15989: ; 15989 (5:5989)
+.asm_15989: ; 15989 (5:5989)
 	inc bc
-	jp Func_15951
+	jp .asm_15951
 
-Func_1598d: ; 1598d (5:598d)
+.asm_1598d: ; 1598d (5:598d)
 	pop hl
 	ld a, l
 	call GetSRAMBank
@@ -798,15 +798,15 @@ ENDC
 	ld hl, sp+$75
 	ld a, [hl]
 	or a
-	jp nz, Func_15a0e
+	jp nz, .asm_15a0e
 	ld hl, sp+$75
 	ld a, [hl]
 	or a
-	jp nz, Func_15a0e
+	jp nz, .asm_15a0e
 	ld hl, sp+$75
 	ld a, [hl]
 	or a
-	jp nz, Func_15a0e
+	jp nz, .asm_15a0e
 IF DEF(LANG_JP)
 	ld de, Data_15ace
 ELIF DEF(LANG_EN)
@@ -814,23 +814,23 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld hl, $c03
 	call PlaceStringDEatCoordHL
-	jp Func_15a64
+	jp .asm_15a64
 
-Func_15a0e: ; 15a0e (5:5a0e)
+.asm_15a0e: ; 15a0e (5:5a0e)
 	ld hl, $0
 	write_hl_to_sp_plus $39
-Func_15a15: ; 15a15 (5:5a15)
+.asm_15a15: ; 15a15 (5:5a15)
 	read_hl_from_sp_plus $39
 	ld de, $3
 	call CompareHLtoDE
-	jp nc, Func_15a64
+	jp nc, .asm_15a64
 	read_hl_from_sp_plus $39
 	reg16swap de, hl
 	ld hl, sp+$75
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_15a58
+	jp z, .asm_15a58
 	read_hl_from_sp_plus $39
 	add hl, hl
 	add hl, hl
@@ -852,16 +852,16 @@ Func_15a15: ; 15a15 (5:5a15)
 	reg16swap de, hl
 	ld hl, $c
 	call Func_16019
-Func_15a58: ; 15a58 (5:5a58)
+.asm_15a58: ; 15a58 (5:5a58)
 	read_hl_from_sp_plus $39
 	inc hl
 	write_hl_to_sp_plus $39
-	jp Func_15a15
+	jp .asm_15a15
 
-Func_15a64: ; 15a64 (5:5a64)
+.asm_15a64: ; 15a64 (5:5a64)
 	pop af
 	cp $b
-	jp nz, Func_15a9e
+	jp nz, .asm_15a9e
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -888,11 +888,11 @@ ENDC
 	ld hl, $10e
 	call FarCall
 	ld a, $ff
-	jp Func_15a9f
+	jp .asm_15a9f
 
-Func_15a9e: ; 15a9e (5:5a9e)
+.asm_15a9e: ; 15a9e (5:5a9e)
 	xor a
-Func_15a9f: ; 15a9f (5:5a9f)
+.asm_15a9f: ; 15a9f (5:5a9f)
 	add sp, $76
 	ret
 
@@ -951,7 +951,7 @@ Func_15bde:: ; 15bde
 	reg16swap de, hl
 	ld de, $14
 	call CompareHLtoDE
-	jp nc, Func_15c59
+	jp nc, .asm_15c59
 	call GetHLAtSPPlus7
 	ld de, $5
 	add hl, de
@@ -1004,9 +1004,9 @@ ELSE
 	call Func_1401b
 ENDC
 	ld hl, $4000
-	jp Func_15fe4
+	jp .asm_15fe4
 
-Func_15c59: ; 15c59 (5:5c59)
+.asm_15c59: ; 15c59 (5:5c59)
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -1017,7 +1017,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	reg16swap de, hl
 	ld de, $14
 	call CompareHLtoDE
-	jp c, Func_15e9c
+	jp c, .asm_15e9c
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -1028,10 +1028,10 @@ Func_15c59: ; 15c59 (5:5c59)
 	reg16swap de, hl
 	ld de, $17
 	call CompareHLtoDE
-	jp nc, Func_15e9c
+	jp nc, .asm_15e9c
 	ld a, [wCurItem]
 	cp $ff
-	jp z, Func_15df5
+	jp z, .asm_15df5
 	call Func_15ff9
 	ld hl, sp+$2
 	ld [hl], a
@@ -1070,7 +1070,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	add hl, bc
 	ld a, [hl]
 	or a
-	jp z, Func_15d0b
+	jp z, .asm_15d0b
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
@@ -1092,7 +1092,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld e, [hl]
 	ld hl, sp+$1
 	ld [hl], e
-Func_15d0b: ; 15d0b (5:5d0b)
+.asm_15d0b: ; 15d0b (5:5d0b)
 	ld hl, sp+$3
 	ld a, [hl]
 	rlca
@@ -1103,7 +1103,7 @@ Func_15d0b: ; 15d0b (5:5d0b)
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
-	jp z, Func_15d27
+	jp z, .asm_15d27
 	ld hl, sp+$1
 	ld a, [hl]
 	rlca
@@ -1111,11 +1111,11 @@ Func_15d0b: ; 15d0b (5:5d0b)
 	and $3
 	inc a
 	ld c, a
-	jp Func_15d29
+	jp .asm_15d29
 
-Func_15d27: ; 15d27 (5:5d27)
+.asm_15d27: ; 15d27 (5:5d27)
 	ld c, $0
-Func_15d29: ; 15d29 (5:5d29)
+.asm_15d29: ; 15d29 (5:5d29)
 	ld a, e
 	add a
 	ld d, a
@@ -1132,7 +1132,7 @@ Func_15d29: ; 15d29 (5:5d29)
 	ld hl, sp+$2
 	add [hl]
 	cp e
-	jp c, Func_15de5
+	jp c, .asm_15de5
 	ld hl, sp+$3
 	ld a, [hl]
 IF DEF(LANG_EN)
@@ -1182,21 +1182,21 @@ IF DEF(LANG_JP)
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
-	jp z, Func_15da0
+	jp z, .asm_15da0
 	set_farcall_addrs_hli Func_4ec2b
 	ld e, $0
 	ld hl, sp+$1
 	ld a, [hl]
 	call FarCall
-	jp Func_15db0
-Func_15da0: ; 15da0 (5:5da0)
+	jp .asm_15db0
+.asm_15da0: ; 15da0 (5:5da0)
 ELIF DEF(LANG_EN)
 	set_farcall_addrs_hli Func_53c88
 	ld hl, sp+$1
 	ld a, [hl]
 	call FarCall
 	cp $1
-	jp nz, Func_15db0
+	jp nz, .asm_15db0
 ENDC
 	call GetHLAtSPPlus7
 	ld de, $7
@@ -1233,7 +1233,7 @@ IF DEF(LANG_EN)
 	ld h, [hl]
 	ld l, a
 	call CompareHLtoBC
-	jp c, Func_15db0
+	jp c, .asm_15db0
 	call GetHLAtSPPlus7
 	ld de, $5
 	add hl, de
@@ -1242,7 +1242,7 @@ IF DEF(LANG_EN)
 	ld d, [hl]
 	ld hl, $0
 	call CompareHLtoDE
-	jp nc, Func_15db0
+	jp nc, .asm_15db0
 	call GetHLAtSPPlus7
 	ld de, $5
 	add hl, de
@@ -1254,7 +1254,7 @@ IF DEF(LANG_EN)
 	sbc a, $0
 	ld [hl], a
 ENDC
-Func_15db0: ; 15db0 (5:5db0)
+.asm_15db0: ; 15db0 (5:5db0)
 IF DEF(LANG_EN)
 	call GetHLAtSPPlus7
 	inc hl
@@ -1288,18 +1288,18 @@ ENDC
 	ld a, $ff
 	ld [wCurItem], a
 	ld hl, $8000
-	jp Func_15fe4
+	jp .asm_15fe4
 
-Func_15de5: ; 15de5 (5:5de5)
+.asm_15de5: ; 15de5 (5:5de5)
 	ld hl, sp+$4
 	ld a, [hl]
 	call GetSRAMBank
 	xor a
 	call Func_15fe9
 	ld hl, $4000
-	jp Func_15fe4
+	jp .asm_15fe4
 
-Func_15df5: ; 15df5 (5:5df5)
+.asm_15df5: ; 15df5 (5:5df5)
 	ld de, $19
 	ld a, $3
 	call GetBanks
@@ -1353,7 +1353,7 @@ ENDC
 	ld hl, sp+$1
 	ld a, [hl]
 	or a
-	jp z, Func_15e96
+	jp z, .asm_15e96
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -1368,12 +1368,12 @@ ENDC
 	ld a, $2
 	call Func_15fe9
 	or a
-	jp z, Func_15e59
+	jp z, .asm_15e59
 	cp $2
-	jp nz, Func_15e91
-Func_15e59: ; 15e59 (5:5e59)
+	jp nz, .asm_15e91
+.asm_15e59: ; 15e59 (5:5e59)
 	or a
-	jp nz, Func_15e6d
+	jp nz, .asm_15e6d
 	call GetHLAtSPPlus7
 	ld de, $7
 	add hl, de
@@ -1384,7 +1384,7 @@ Func_15e59: ; 15e59 (5:5e59)
 	ld a, [hl]
 	adc $0
 	ld [hl], a
-Func_15e6d: ; 15e6d (5:5e6d)
+.asm_15e6d: ; 15e6d (5:5e6d)
 	ld a, $ff
 	ld [wCurItem], a
 	call GetHLAtSPPlus7
@@ -1403,16 +1403,16 @@ Func_15e6d: ; 15e6d (5:5e6d)
 	inc hl
 	ld [hl], d
 	ld hl, $8000
-	jp Func_15fe4
+	jp .asm_15fe4
 
-Func_15e91: ; 15e91 (5:5e91)
+.asm_15e91: ; 15e91 (5:5e91)
 	ld a, $ff
 	ld [wCurItem], a
-Func_15e96: ; 15e96 (5:5e96)
+.asm_15e96: ; 15e96 (5:5e96)
 	ld hl, $4000
-	jp Func_15fe4
+	jp .asm_15fe4
 
-Func_15e9c: ; 15e9c (5:5e9c)
+.asm_15e9c: ; 15e9c (5:5e9c)
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -1421,11 +1421,11 @@ Func_15e9c: ; 15e9c (5:5e9c)
 	sub $17
 	inc hl
 	or [hl]
-	jp nz, Func_15fcb
+	jp nz, .asm_15fcb
 	ld a, $1
 	call Func_15fe9
 	or a
-	jp nz, Func_15fc5
+	jp nz, .asm_15fc5
 	ld de, $19
 	ld a, $3
 	call GetBanks
@@ -1433,11 +1433,11 @@ Func_15e9c: ; 15e9c (5:5e9c)
 	ld [hl], a
 	ld hl, sp+$0
 	ld [hl], $0
-Func_15ec2: ; 15ec2 (5:5ec2)
+.asm_15ec2: ; 15ec2 (5:5ec2)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $3
-	jp nc, Func_15f9b
+	jp nc, .asm_15f9b
 IF DEF(LANG_EN)
 	ld hl, sp+$0
 	ld c, [hl]
@@ -1464,28 +1464,29 @@ ENDC
 	ld hl, sp+$3
 	ld a, [hl]
 	or a
-	jp z, Func_15f91
+	jp z, .asm_15f91
 	set_farcall_addrs_hli Func_4ec2b
 	ld e, $0
 	ld hl, sp+$3
 	ld a, [hl]
 	call FarCall
 	cp $ff
-	jp nz, Func_15f5c
+	jp nz, .asm_15f5c
 	set_farcall_addrs_hli Func_4ec2b
 	ld e, $2
 	ld hl, sp+$3
 	ld a, [hl]
 	call FarCall
 	cp $ff
-	jp nz, Func_15f34
+	jp nz, .asm_15f34
 	ld a, $3
 	call Func_15fe9
 	ld hl, sp+$0
 	ld [hl], $3
-	jp Func_15f59
+	jp .asm_15f59
 
-Func_15f34: ; 15f34 (5:5f34)
+.asm_15f34: ; 15f34 (5:5f34)
+IF DEF(LANG_JP)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
@@ -1497,11 +1498,24 @@ Func_15f34: ; 15f34 (5:5f34)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
+ELIF DEF(LANG_EN)
+	ld hl, sp+$0
+	ld c, [hl]
+	ld b, $0
+	ld hl, wc2e9
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
+	ld de, warehouseBot_Unk08
+	add hl, de
+	add hl, bc
+ENDC
 	ld [hl], $0
-Func_15f59: ; 15f59 (5:5f59)
-	jp Func_15f91
+.asm_15f59: ; 15f59 (5:5f59)
+	jp .asm_15f91
 
-Func_15f5c: ; 15f5c (5:5f5c)
+.asm_15f5c: ; 15f5c (5:5f5c)
+IF DEF(LANG_JP)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
@@ -1513,6 +1527,18 @@ Func_15f5c: ; 15f5c (5:5f5c)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
+ELIF DEF(LANG_EN)
+	ld hl, sp+$0
+	ld c, [hl]
+	ld b, $0
+	ld hl, wc2e9
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
+	ld de, warehouseBot_Unk08
+	add hl, de
+	add hl, bc
+ENDC
 	ld [hl], $0
 	call GetHLAtSPPlus7
 	ld de, $7
@@ -1524,15 +1550,15 @@ Func_15f5c: ; 15f5c (5:5f5c)
 	ld a, [hl]
 	adc $0
 	ld [hl], a
-Func_15f91: ; 15f91 (5:5f91)
+.asm_15f91: ; 15f91 (5:5f91)
 	ld hl, sp+$0
 	ld a, [hl]
 	inc a
 	ld hl, sp+$0
 	ld [hl], a
-	jp Func_15ec2
+	jp .asm_15ec2
 
-Func_15f9b: ; 15f9b (5:5f9b)
+.asm_15f9b: ; 15f9b (5:5f9b)
 	ld hl, sp+$4
 	ld a, [hl]
 	call GetSRAMBank
@@ -1554,20 +1580,20 @@ Func_15f9b: ; 15f9b (5:5f9b)
 	ld a, $ff
 	ld [wCurItem], a
 	ld hl, $8000
-	jp Func_15fe4
+	jp .asm_15fe4
 
-Func_15fc5: ; 15fc5 (5:5fc5)
+.asm_15fc5: ; 15fc5 (5:5fc5)
 	ld hl, $4000
-	jp Func_15fe4
+	jp .asm_15fe4
 
-Func_15fcb: ; 15fcb (5:5fcb)
+.asm_15fcb: ; 15fcb (5:5fcb)
 	ld a, [wc2e9]
 	ld [wc310], a
 	set_farcall_addrs_hli Func_56b35
 	ld a, $1
 	call FarCall
 	ld hl, $4000
-Func_15fe4: ; 15fe4 (5:5fe4)
+.asm_15fe4: ; 15fe4 (5:5fe4)
 	pop bc
 	pop bc
 	pop bc
@@ -1583,6 +1609,10 @@ Func_15fe9: ; 15fe9 (5:5fe9)
 Func_15ff9: ; 15ff9 (5:5ff9)
 	jpba_hli Func_623d0
 
+	; Opens SRAM to bank (a) and sets farcall dest ROM bank (e)
+	; a: SRAM bank
+	; e: ROM bank
+	; returns: l = previous SRAM bank
 GetBanks:: ; 16007 (5:6007)
 	push de
 	push af
@@ -1629,12 +1659,12 @@ Func_16038:: ; 16038
 	ld a, [hl]
 	pop hl
 	cp $3
-	jp nz, Func_16052
+	jp nz, .asm_16052
 	ld de, $2
 	call Func_16377
-	jp Func_160be
+	jp .asm_160be
 
-Func_16052: ; 16052 (5:6052)
+.asm_16052: ; 16052 (5:6052)
 	ld hl, $9
 	add hl, bc
 	ld a, [hl]
@@ -1677,7 +1707,7 @@ Func_16052: ; 16052 (5:6052)
 	ld h, a
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_160a8
+	jp nc, .asm_160a8
 	call GetHLAtSPPlus6
 	push hl
 	call GetHLAtSPPlus4
@@ -1689,7 +1719,7 @@ Func_16052: ; 16052 (5:6052)
 	sbc d
 	ld h, a
 	call WriteHLToSPPlus4
-Func_160a8: ; 160a8 (5:60a8)
+.asm_160a8: ; 160a8 (5:60a8)
 	call GetHLAtSPPlus4
 	reg16swap de, hl
 	ld hl, $5
@@ -1701,7 +1731,7 @@ Func_160a8: ; 160a8 (5:60a8)
 	ld h, b
 	call Func_16777
 	ld hl, $4000
-Func_160be: ; 160be (5:60be)
+.asm_160be: ; 160be (5:60be)
 	pop bc
 	pop bc
 	pop bc
@@ -1716,12 +1746,12 @@ Func_160c2:: ; 160c2
 	ld a, [hl]
 	pop hl
 	cp $3
-	jp nz, Func_160d9
+	jp nz, .asm_160d9
 	ld de, $3
 	call Func_16377
-	jp Func_16103
+	jp .asm_16103
 
-Func_160d9: ; 160d9 (5:60d9)
+.asm_160d9: ; 160d9 (5:60d9)
 	ld hl, $5
 	add hl, bc
 	ld e, [hl]
@@ -1751,7 +1781,7 @@ Func_160d9: ; 160d9 (5:60d9)
 	ld h, b
 	call Func_16777
 	ld hl, $4000
-Func_16103: ; 16103 (5:6103)
+.asm_16103: ; 16103 (5:6103)
 	ret
 
 Func_16104:: ; 16104 (5:6104)
@@ -1852,16 +1882,16 @@ Func_16128: ; 16128 (5:6128)
 	ld a, l
 	and h
 	inc a
-	jp z, Func_1620c
+	jp z, .asm_1620c
 	call GetHLAtSPPlus10
 	ld de, $14
 	call CompareHLtoDE
-	jp c, Func_161c9
+	jp c, .asm_161c9
 	call GetHLAtSPPlus10
 	reg16swap de, hl
 	ld hl, $16
 	call CompareHLtoDE
-	jp c, Func_161c9
+	jp c, .asm_161c9
 	ld hl, sp+$4
 	ld c, [hl]
 	ld b, $0
@@ -1876,13 +1906,13 @@ Func_16128: ; 16128 (5:6128)
 	ld a, [hl]
 	add $b
 	call text_cursor_pos_set
-	jp Func_16204
+	jp .asm_16204
 
-Func_161c9: ; 161c9 (5:61c9)
+.asm_161c9: ; 161c9 (5:61c9)
 	call GetHLAtSPPlus10
 	ld de, $17
 	call CompareHLtoDE
-	jp c, Func_161f1
+	jp c, .asm_161f1
 	ld hl, sp+$4
 	ld c, [hl]
 	ld b, $0
@@ -1898,9 +1928,9 @@ Func_161c9: ; 161c9 (5:61c9)
 	ld a, [hl]
 	add $b
 	call text_cursor_pos_set
-	jp Func_16204
+	jp .asm_16204
 
-Func_161f1: ; 161f1 (5:61f1)
+.asm_161f1: ; 161f1 (5:61f1)
 	ld hl, sp+$4
 	ld c, [hl]
 	ld b, $0
@@ -1913,26 +1943,26 @@ Func_161f1: ; 161f1 (5:61f1)
 	ld a, [hl]
 	inc a
 	call text_cursor_pos_set
-Func_16204: ; 16204 (5:6204)
+.asm_16204: ; 16204 (5:6204)
 	ld hl, Data_16367
 	push hl
 	call printf
 	pop bc
-Func_1620c: ; 1620c (5:620c)
+.asm_1620c: ; 1620c (5:620c)
 	ld c, $0
-Func_1620e: ; 1620e (5:620e)
+.asm_1620e: ; 1620e (5:620e)
 	read_hl_from_sp_plus $e
 	reg16swap de, hl
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
-	jp nc, Func_16281
+	jp nc, .asm_16281
 	push bc
 	read_hl_from_sp_plus $e
 	ld e, c
 	ld d, $0
 	call CompareHLtoDE
-	jp z, Func_1624a
+	jp z, .asm_1624a
 	ld hl, sp+$6
 	ld a, [hl]
 	inc a
@@ -1952,7 +1982,7 @@ Func_1620e: ; 1620e (5:620e)
 	call printf
 	pop bc
 	pop bc
-Func_1624a: ; 1624a (5:624a)
+.asm_1624a: ; 1624a (5:624a)
 	pop bc
 	push bc
 	call GetHLAtSPPlus10
@@ -1963,7 +1993,7 @@ Func_1624a: ; 1624a (5:624a)
 	ld e, a
 	ld d, $0
 	call CompareHLtoDE
-	jp nz, Func_1627c
+	jp nz, .asm_1627c
 	ld hl, sp+$6
 	ld a, [hl]
 	inc a
@@ -1983,21 +2013,21 @@ Func_1624a: ; 1624a (5:624a)
 	call printf
 	pop bc
 	pop bc
-Func_1627c: ; 1627c (5:627c)
+.asm_1627c: ; 1627c (5:627c)
 	pop bc
 	inc c
-	jp Func_1620e
+	jp .asm_1620e
 
-Func_16281: ; 16281 (5:6281)
+.asm_16281: ; 16281 (5:6281)
 	read_hl_from_sp_plus $c
 	ld de, $14
 	call CompareHLtoDE
-	jp c, Func_162bb
+	jp c, .asm_162bb
 	read_hl_from_sp_plus $c
 	reg16swap de, hl
 	ld hl, $16
 	call CompareHLtoDE
-	jp c, Func_162bb
+	jp c, .asm_162bb
 	ld hl, sp+$4
 	ld c, [hl]
 	ld b, $0
@@ -2012,13 +2042,13 @@ Func_16281: ; 16281 (5:6281)
 	ld a, [hl]
 	add $b
 	call text_cursor_pos_set
-	jp Func_162f9
+	jp .asm_162f9
 
-Func_162bb: ; 162bb (5:62bb)
+.asm_162bb: ; 162bb (5:62bb)
 	read_hl_from_sp_plus $c
 	ld de, $17
 	call CompareHLtoDE
-	jp c, Func_162e5
+	jp c, .asm_162e5
 	ld hl, sp+$4
 	ld c, [hl]
 	ld b, $0
@@ -2034,9 +2064,9 @@ Func_162bb: ; 162bb (5:62bb)
 	ld a, [hl]
 	add $b
 	call text_cursor_pos_set
-	jp Func_162f9
+	jp .asm_162f9
 
-Func_162e5: ; 162e5 (5:62e5)
+.asm_162e5: ; 162e5 (5:62e5)
 	ld hl, sp+$4
 	ld c, [hl]
 	ld b, $0
@@ -2049,7 +2079,7 @@ Func_162e5: ; 162e5 (5:62e5)
 	ld a, [hl]
 	inc a
 	call text_cursor_pos_set
-Func_162f9: ; 162f9 (5:62f9)
+.asm_162f9: ; 162f9 (5:62f9)
 	ld hl, $8b
 	push hl
 	ld hl, Data_1636f
@@ -2062,7 +2092,7 @@ Func_162f9: ; 162f9 (5:62f9)
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp z, Func_16364
+	jp z, .asm_16364
 	push bc
 	call GetHLAtSPPlus4
 	inc hl
@@ -2100,7 +2130,7 @@ Func_162f9: ; 162f9 (5:62f9)
 	ld e, c
 	ld d, b
 	call CompareHLtoDE
-	jp nc, Func_1635c
+	jp nc, .asm_1635c
 	ld hl, $8a
 	push hl
 	ld hl, Data_16372
@@ -2108,14 +2138,14 @@ Func_162f9: ; 162f9 (5:62f9)
 	call printf
 	pop bc
 	pop bc
-	jp Func_16364
+	jp .asm_16364
 
-Func_1635c: ; 1635c (5:635c)
+.asm_1635c: ; 1635c (5:635c)
 	ld hl, Data_16375
 	push hl
 	call printf
 	pop bc
-Func_16364: ; 16364 (5:6364)
+.asm_16364: ; 16364 (5:6364)
 	add sp, $c
 	ret
 
@@ -2231,7 +2261,7 @@ Func_16377:: ; 16377 (5:6377)
 	reg16swap de, hl
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_16427
+	jp nc, .asm_16427
 	read_hl_from_sp_plus $15
 	ld de, $7
 	add hl, de
@@ -2240,7 +2270,7 @@ Func_16377:: ; 16377 (5:6377)
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $11
-Func_16427: ; 16427 (5:6427)
+.asm_16427: ; 16427 (5:6427)
 	read_hl_from_sp_plus $13
 	push hl
 	read_hl_from_sp_plus $17
@@ -2262,11 +2292,11 @@ Func_16427: ; 16427 (5:6427)
 	push bc
 	ld hl, sp+$7
 	ld [hl], $0
-Func_16450: ; 16450 (5:6450)
+.asm_16450: ; 16450 (5:6450)
 	ld hl, sp+$7
 	ld a, [hl]
 	cp $3
-	jp nc, Func_16497
+	jp nc, .asm_16497
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
@@ -2280,33 +2310,33 @@ Func_16450: ; 16450 (5:6450)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_1648a
+	jp z, .asm_1648a
 	ld hl, sp+$8
 	ld a, [hl]
 	inc a
 	ld hl, sp+$8
 	ld [hl], a
-	jp Func_1648d
+	jp .asm_1648d
 
-Func_1648a: ; 1648a (5:648a)
-	jp Func_16497
+.asm_1648a: ; 1648a (5:648a)
+	jp .asm_16497
 
-Func_1648d: ; 1648d (5:648d)
+.asm_1648d: ; 1648d (5:648d)
 	ld hl, sp+$7
 	ld a, [hl]
 	inc a
 	ld hl, sp+$7
 	ld [hl], a
-	jp Func_16450
+	jp .asm_16450
 
-Func_16497: ; 16497 (5:6497)
+.asm_16497: ; 16497 (5:6497)
 	ld hl, sp+$8
 	ld a, [hl]
 	cp $3
-	jp nz, Func_164a3
+	jp nz, .asm_164a3
 	ld hl, sp+$8
 	ld [hl], $2
-Func_164a3: ; 164a3 (5:64a3)
+.asm_164a3: ; 164a3 (5:64a3)
 	ld hl, sp+$a
 	ld a, [hl]
 	call GetSRAMBank
@@ -2315,22 +2345,22 @@ Func_164a3: ; 164a3 (5:64a3)
 	ld a, e
 	sub $3
 	or d
-	jp z, Func_16627
+	jp z, .asm_16627
 	ld a, e
 	sub $2
 	or d
-	jp z, Func_16610
+	jp z, .asm_16610
 	ld a, e
 	dec a
 	or d
-	jp z, Func_16558
+	jp z, .asm_16558
 	ld a, e
 	or d
-	jp nz, Func_16645
+	jp nz, .asm_16645
 	read_hl_from_sp_plus $11
 	ld de, $14
 	call CompareHLtoDE
-	jp nc, Func_16507
+	jp nc, .asm_16507
 	read_hl_from_sp_plus $11
 	dec hl
 	write_hl_to_sp_plus $11
@@ -2355,50 +2385,50 @@ Func_164a3: ; 164a3 (5:64a3)
 	ld hl, sp+$2
 	ld [hl], $1
 .asm_16504
-	jp Func_16555
+	jp .asm_16555
 
-Func_16507: ; 16507 (5:6507)
+.asm_16507: ; 16507 (5:6507)
 	read_hl_from_sp_plus $11
 	ld de, $17
 	call CompareHLtoDE
-	jp nc, Func_16531
+	jp nc, .asm_16531
 	read_hl_from_sp_plus $11
 	reg16swap de, hl
 	ld hl, $14
 	call CompareHLtoDE
-	jp nc, Func_1652e
+	jp nc, .asm_1652e
 	read_hl_from_sp_plus $11
 	dec hl
 	write_hl_to_sp_plus $11
-Func_1652e: ; 1652e (5:652e)
-	jp Func_16555
+.asm_1652e: ; 1652e (5:652e)
+	jp .asm_16555
 
-Func_16531: ; 16531 (5:6531)
+.asm_16531: ; 16531 (5:6531)
 	read_hl_from_sp_plus $11
 	ld a, l
 	sub $17
 	or h
-	jp nz, Func_1654c
+	jp nz, .asm_1654c
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
 	ld de, $14
 	add hl, de
 	write_hl_to_sp_plus $11
-	jp Func_16555
+	jp .asm_16555
 
-Func_1654c: ; 1654c (5:654c)
+.asm_1654c: ; 1654c (5:654c)
 	read_hl_from_sp_plus $11
 	dec hl
 	write_hl_to_sp_plus $11
-Func_16555: ; 16555 (5:6555)
-	jp Func_16645
+.asm_16555: ; 16555 (5:6555)
+	jp .asm_16645
 
-Func_16558: ; 16558 (5:6558)
+.asm_16558: ; 16558 (5:6558)
 	read_hl_from_sp_plus $11
 	ld de, $14
 	call CompareHLtoDE
-	jp nc, Func_165c1
+	jp nc, .asm_165c1
 	read_hl_from_sp_plus $f
 	push hl
 	read_hl_from_sp_plus $13
@@ -2406,7 +2436,7 @@ Func_16558: ; 16558 (5:6558)
 	write_hl_to_sp_plus $13
 	pop de
 	call CompareHLtoDE
-	jp c, Func_165be
+	jp c, .asm_165be
 	read_hl_from_sp_plus $f
 	dec hl
 	write_hl_to_sp_plus $11
@@ -2428,23 +2458,23 @@ Func_16558: ; 16558 (5:6558)
 	reg16swap de, hl
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_165ba
+	jp nc, .asm_165ba
 	read_hl_from_sp_plus $d
 	dec hl
 	write_hl_to_sp_plus $d
-	jp Func_165be
+	jp .asm_165be
 
-Func_165ba: ; 165ba (5:65ba)
+.asm_165ba: ; 165ba (5:65ba)
 	ld hl, sp+$2
 	ld [hl], $2
-Func_165be: ; 165be (5:65be)
-	jp Func_1660d
+.asm_165be: ; 165be (5:65be)
+	jp .asm_1660d
 
-Func_165c1: ; 165c1 (5:65c1)
+.asm_165c1: ; 165c1 (5:65c1)
 	read_hl_from_sp_plus $11
 	ld de, $17
 	call CompareHLtoDE
-	jp nc, Func_165f9
+	jp nc, .asm_165f9
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
@@ -2454,53 +2484,53 @@ Func_165c1: ; 165c1 (5:65c1)
 	read_hl_from_sp_plus $13
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_165ef
+	jp nc, .asm_165ef
 	read_hl_from_sp_plus $11
 	inc hl
 	write_hl_to_sp_plus $11
-	jp Func_165f6
+	jp .asm_165f6
 
-Func_165ef: ; 165ef (5:65ef)
+.asm_165ef: ; 165ef (5:65ef)
 	ld hl, $17
 	write_hl_to_sp_plus $11
-Func_165f6: ; 165f6 (5:65f6)
-	jp Func_1660d
+.asm_165f6: ; 165f6 (5:65f6)
+	jp .asm_1660d
 
-Func_165f9: ; 165f9 (5:65f9)
+.asm_165f9: ; 165f9 (5:65f9)
 	read_hl_from_sp_plus $11
 	ld a, l
 	sub $17
 	or h
-	jp nz, Func_1660d
+	jp nz, .asm_1660d
 	read_hl_from_sp_plus $11
 	inc hl
 	write_hl_to_sp_plus $11
-Func_1660d: ; 1660d (5:660d)
-	jp Func_16645
+.asm_1660d: ; 1660d (5:660d)
+	jp .asm_16645
 
-Func_16610: ; 16610 (5:6610)
+.asm_16610: ; 16610 (5:6610)
 	read_hl_from_sp_plus $11
 	ld de, $14
 	call CompareHLtoDE
-	jp nc, Func_16624
+	jp nc, .asm_16624
 	ld hl, $14
 	write_hl_to_sp_plus $11
-Func_16624: ; 16624 (5:6624)
-	jp Func_16645
+.asm_16624: ; 16624 (5:6624)
+	jp .asm_16645
 
-Func_16627: ; 16627 (5:6627)
+.asm_16627: ; 16627 (5:6627)
 	read_hl_from_sp_plus $11
 	ld de, $14
 	call CompareHLtoDE
-	jp c, Func_16645
+	jp c, .asm_16645
 	ld a, c
 	cp $1
-	jp c, Func_16645
+	jp c, .asm_16645
 	ld hl, $0
 	write_hl_to_sp_plus $11
 	ld hl, sp+$2
 	ld [hl], $4
-Func_16645: ; 16645 (5:6645)
+.asm_16645: ; 16645 (5:6645)
 	read_hl_from_sp_plus $11
 	push hl
 	read_hl_from_sp_plus $15
@@ -2523,11 +2553,11 @@ Func_16645: ; 16645 (5:6645)
 	ld hl, sp+$2
 	ld a, [hl]
 	or a
-	jp z, Func_16748
+	jp z, .asm_16748
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $3
-	jp nc, Func_16748
+	jp nc, .asm_16748
 	ld hl, sp+$7
 	ld e, [hl]
 	ld d, $0
@@ -2591,7 +2621,7 @@ Func_16645: ; 16645 (5:6645)
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $1
-	jp nz, Func_166f2
+	jp nz, .asm_166f2
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
@@ -2609,13 +2639,13 @@ Func_16645: ; 16645 (5:6645)
 	pop hl
 	push hl
 	ld [hl], $8a
-	jp Func_16742
+	jp .asm_16742
 
-Func_166f2: ; 166f2 (5:66f2)
+.asm_166f2: ; 166f2 (5:66f2)
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $2
-	jp nz, Func_16742
+	jp nz, .asm_16742
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
@@ -2652,15 +2682,15 @@ Func_166f2: ; 166f2 (5:66f2)
 	pop de
 	add hl, de
 	call CompareHLtoBC
-	jp c, Func_16742
+	jp c, .asm_16742
 	pop hl
 	push hl
 	ld [hl], $8f
-Func_16742: ; 16742 (5:6742)
+.asm_16742: ; 16742 (5:6742)
 	ld hl, sp+$6
 	ld a, [hl]
 	call GetSRAMBank
-Func_16748: ; 16748 (5:6748)
+.asm_16748: ; 16748 (5:6748)
 	read_hl_from_sp_plus $13
 	call Func_16128
 	ld l, $12
@@ -2673,13 +2703,13 @@ Func_16748: ; 16748 (5:6748)
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $3
-	jp c, Func_16769
+	jp c, .asm_16769
 	ld hl, $8000
-	jp Func_1676c
+	jp .asm_1676c
 
-Func_16769: ; 16769 (5:6769)
+.asm_16769: ; 16769 (5:6769)
 	ld hl, $4000
-Func_1676c: ; 1676c (5:676c)
+.asm_1676c: ; 1676c (5:676c)
 	reg16swap de, hl
 	add sp, $14
 	reg16swap de, hl
@@ -2776,10 +2806,10 @@ Func_16777:: ; 16777 (5:6777)
 	ld l, c
 	ld h, b
 	call CompareHLtoDE
-	jp nc, Func_1681b
+	jp nc, .asm_1681b
 	ld hl, sp+$e
 	ld [hl], c
-Func_1681b: ; 1681b (5:681b)
+.asm_1681b: ; 1681b (5:681b)
 	ld hl, sp+$e
 	ld c, [hl]
 	ld b, $0
@@ -2792,9 +2822,9 @@ Func_1681b: ; 1681b (5:681b)
 	ld hl, sp+$8
 	ld a, [hl]
 	cp $8
-	jp nz, Func_16841
+	jp nz, .asm_16841
 	callba_hli Func_566fe
-Func_16841: ; 16841 (5:6841)
+.asm_16841: ; 16841 (5:6841)
 	pop af
 	pop hl
 	ld c, a
@@ -2808,17 +2838,17 @@ Func_16841: ; 16841 (5:6841)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $3
-	jp nz, Func_16866
+	jp nz, .asm_16866
 	ld a, $ff
 	ld [wCurItem], a
 	read_hl_from_sp_plus $e
 	call Func_16128
-	jp Func_1686d
+	jp .asm_1686d
 
-Func_16866: ; 16866 (5:6866)
+.asm_16866: ; 16866 (5:6866)
 	read_hl_from_sp_plus $e
 	call Func_17863
-Func_1686d: ; 1686d (5:686d)
+.asm_1686d: ; 1686d (5:686d)
 	call GetHLAtSPPlus4
 	push hl
 	read_hl_from_sp_plus $10
@@ -2836,54 +2866,54 @@ Func_1686d: ; 1686d (5:686d)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $1b
-	jp z, Func_16ae2
+	jp z, .asm_16ae2
 	cp $1a
-	jp z, Func_16ae2
+	jp z, .asm_16ae2
 	cp $21
-	jp z, Func_16ae2
+	jp z, .asm_16ae2
 	cp $15
-	jp z, Func_16ae2
+	jp z, .asm_16ae2
 	cp $11
-	jp z, Func_16ae2
+	jp z, .asm_16ae2
 	cp $6
-	jp z, Func_16a92
+	jp z, .asm_16a92
 	cp $1f
-	jp z, Func_16a5c
+	jp z, .asm_16a5c
 	cp $8
-	jp z, Func_16a5c
+	jp z, .asm_16a5c
 	cp $a
-	jp z, Func_16a31
+	jp z, .asm_16a31
 	cp $7
-	jp z, Func_169e0
+	jp z, .asm_169e0
 	cp $3
-	jp z, Func_169e0
+	jp z, .asm_169e0
 	cp $1
-	jp z, Func_169e0
+	jp z, .asm_169e0
 	cp $b
-	jp z, Func_169b5
+	jp z, .asm_169b5
 	cp $5
-	jp z, Func_16966
+	jp z, .asm_16966
 	cp $9
-	jp z, Func_16926
+	jp z, .asm_16926
 	cp $2
-	jp z, Func_16926
+	jp z, .asm_16926
 	cp $e
-	jp z, Func_16910
+	jp z, .asm_16910
 	cp $d
-	jp z, Func_168e9
+	jp z, .asm_168e9
 	or a
-	jp nz, Func_16b21
-Func_168e9: ; 168e9 (5:68e9)
+	jp nz, .asm_16b21
+.asm_168e9: ; 168e9 (5:68e9)
 	ld a, [wSaveBlock1_ca6c]
 	or a
-	jp nz, Func_168fc
+	jp nz, .asm_168fc
 	ld hl, sp+$b
 	ld a, [hl]
 	call Func_16d2d
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_168fc: ; 168fc (5:68fc)
+.asm_168fc: ; 168fc (5:68fc)
 	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
@@ -2893,25 +2923,25 @@ Func_168fc: ; 168fc (5:68fc)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	jp Func_16b21
+	jp .asm_16b21
 
-Func_16910: ; 16910 (5:6910)
+.asm_16910: ; 16910 (5:6910)
 	ld a, [wSaveBlock2]
 	or a
-	jp nz, Func_16923
+	jp nz, .asm_16923
 	ld hl, sp+$b
 	ld a, [hl]
 	call Func_16d2d
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_16923: ; 16923 (5:6923)
-	jp Func_16b21
+.asm_16923: ; 16923 (5:6923)
+	jp .asm_16b21
 
-Func_16926: ; 16926 (5:6926)
+.asm_16926: ; 16926 (5:6926)
 	ld a, [wSaveBlock1_c9b7]
 	or a
-	jp nz, Func_16963
+	jp nz, .asm_16963
 	ld hl, sp+$b
 	ld c, [hl]
 	ld hl, sp+$8
@@ -2922,13 +2952,13 @@ Func_16926: ; 16926 (5:6926)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $9
-	jp z, Func_1694e
+	jp z, .asm_1694e
 	read_hl_from_sp_plus $e
 	call Func_15388
 	call Func_16d1a
-	jp Func_1695d
+	jp .asm_1695d
 
-Func_1694e: ; 1694e (5:694e)
+.asm_1694e: ; 1694e (5:694e)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -2937,17 +2967,17 @@ Func_1694e: ; 1694e (5:694e)
 	call DoublePushBGMapRegion
 	pop bc
 	call WaitAorBButtonOverworld_17a44
-Func_1695d: ; 1695d (5:695d)
+.asm_1695d: ; 1695d (5:695d)
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_16963: ; 16963 (5:6963)
-	jp Func_16b21
+.asm_16963: ; 16963 (5:6963)
+	jp .asm_16b21
 
-Func_16966: ; 16966 (5:6966)
+.asm_16966: ; 16966 (5:6966)
 	ld a, [wSaveBlock1_c9b7]
 	or a
-	jp nz, Func_169b2
+	jp nz, .asm_169b2
 	ld hl, sp+$b
 	ld c, [hl]
 	ld hl, sp+$8
@@ -2973,15 +3003,15 @@ Func_16966: ; 16966 (5:6966)
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_169b2: ; 169b2 (5:69b2)
-	jp Func_16b21
+.asm_169b2: ; 169b2 (5:69b2)
+	jp .asm_16b21
 
-Func_169b5: ; 169b5 (5:69b5)
+.asm_169b5: ; 169b5 (5:69b5)
 	ld a, [wSaveBlock3]
 	or a
-	jp nz, Func_169dd
+	jp nz, .asm_169dd
 	ld hl, sp+$b
 	ld c, [hl]
 	ld hl, sp+$8
@@ -2998,15 +3028,15 @@ Func_169b5: ; 169b5 (5:69b5)
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_169dd: ; 169dd (5:69dd)
-	jp Func_16b21
+.asm_169dd: ; 169dd (5:69dd)
+	jp .asm_16b21
 
-Func_169e0: ; 169e0 (5:69e0)
+.asm_169e0: ; 169e0 (5:69e0)
 	ld a, [wSaveBlock1_c9a2]
 	or a
-	jp nz, Func_16a2e
+	jp nz, .asm_16a2e
 	ld hl, sp+$b
 	ld c, [hl]
 	ld hl, sp+$8
@@ -3017,19 +3047,19 @@ Func_169e0: ; 169e0 (5:69e0)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $1
-	jp nz, Func_16a02
+	jp nz, .asm_16a02
 	read_hl_from_sp_plus $e
 	call Func_15388
-Func_16a02: ; 16a02 (5:6a02)
+.asm_16a02: ; 16a02 (5:6a02)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $3
-	jp z, Func_16a13
+	jp z, .asm_16a13
 	call Func_16d1a
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_16a13: ; 16a13 (5:6a13)
+.asm_16a13: ; 16a13 (5:6a13)
 	read_hl_from_sp_plus $e
 	ld de, $b
 	add hl, de
@@ -3045,13 +3075,13 @@ Func_16a13: ; 16a13 (5:6a13)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_16a2e: ; 16a2e (5:6a2e)
-	jp Func_16b21
+.asm_16a2e: ; 16a2e (5:6a2e)
+	jp .asm_16b21
 
-Func_16a31: ; 16a31 (5:6a31)
+.asm_16a31: ; 16a31 (5:6a31)
 	ld a, [wSaveBlock4]
 	or a
-	jp nz, Func_16a59
+	jp nz, .asm_16a59
 	ld hl, sp+$b
 	ld c, [hl]
 	ld hl, sp+$8
@@ -3068,12 +3098,12 @@ Func_16a31: ; 16a31 (5:6a31)
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_16a59: ; 16a59 (5:6a59)
-	jp Func_16b21
+.asm_16a59: ; 16a59 (5:6a59)
+	jp .asm_16b21
 
-Func_16a5c: ; 16a5c (5:6a5c)
+.asm_16a5c: ; 16a5c (5:6a5c)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetSRAMBank
@@ -3083,7 +3113,7 @@ Func_16a5c: ; 16a5c (5:6a5c)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_16a8f
+	jp nz, .asm_16a8f
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
@@ -3099,12 +3129,12 @@ Func_16a5c: ; 16a5c (5:6a5c)
 	call PlaceStringDEatCoordHL
 	call Func_16d1a
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_16a8f: ; 16a8f (5:6a8f)
-	jp Func_16b21
+.asm_16a8f: ; 16a8f (5:6a8f)
+	jp .asm_16b21
 
-Func_16a92: ; 16a92 (5:6a92)
+.asm_16a92: ; 16a92 (5:6a92)
 	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
@@ -3114,18 +3144,18 @@ Func_16a92: ; 16a92 (5:6a92)
 	ld [hl], d
 	ld hl, sp+$7
 	ld [hl], $96
-Func_16aa4: ; 16aa4 (5:6aa4)
+.asm_16aa4: ; 16aa4 (5:6aa4)
 	ld hl, sp+$7
 	ld a, [hl]
 	cp $a8
-	jp nc, Func_16adf
+	jp nc, .asm_16adf
 	set_farcall_addrs_hli Func_53b1e
 	ld e, $0
 	ld hl, sp+$7
 	ld a, [hl]
 	call FarCall
 	cp $1
-	jp nz, Func_16ad5
+	jp nz, .asm_16ad5
 	read_hl_from_sp_plus $e
 	ld de, $7
 	add hl, de
@@ -3133,20 +3163,20 @@ Func_16aa4: ; 16aa4 (5:6aa4)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	jp Func_16adf
+	jp .asm_16adf
 
-Func_16ad5: ; 16ad5 (5:6ad5)
+.asm_16ad5: ; 16ad5 (5:6ad5)
 	ld hl, sp+$7
 	ld a, [hl]
 	inc a
 	ld hl, sp+$7
 	ld [hl], a
-	jp Func_16aa4
+	jp .asm_16aa4
 
-Func_16adf: ; 16adf (5:6adf)
-	jp Func_16b21
+.asm_16adf: ; 16adf (5:6adf)
+	jp .asm_16b21
 
-Func_16ae2: ; 16ae2 (5:6ae2)
+.asm_16ae2: ; 16ae2 (5:6ae2)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetSRAMBank
@@ -3156,7 +3186,7 @@ Func_16ae2: ; 16ae2 (5:6ae2)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_16b21
+	jp nz, .asm_16b21
 	ld hl, sp+$8
 	ld e, [hl]
 	ld d, $0
@@ -3179,9 +3209,9 @@ Func_16ae2: ; 16ae2 (5:6ae2)
 	pop bc
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_16b21: ; 16b21 (5:6b21)
+.asm_16b21: ; 16b21 (5:6b21)
 	ld hl, sp+$9
 	ld a, [hl]
 	add $2
@@ -3193,10 +3223,10 @@ Func_16b21: ; 16b21 (5:6b21)
 	ld hl, sp+$5
 	ld [hl], a
 	xor a
-Func_16b31: ; 16b31 (5:6b31)
+.asm_16b31: ; 16b31 (5:6b31)
 	ld hl, sp+$a
 	cp [hl]
-	jp nc, Func_16b5b
+	jp nc, .asm_16b5b
 	push af
 	ld hl, sp+$6
 	ld l, [hl]
@@ -3219,30 +3249,30 @@ Func_16b31: ; 16b31 (5:6b31)
 	ld [hl], a
 	pop af
 	inc a
-	jp Func_16b31
+	jp .asm_16b31
 
-Func_16b5b: ; 16b5b (5:6b5b)
+.asm_16b5b: ; 16b5b (5:6b5b)
 	ld hl, sp+$b
 	ld a, [hl]
 	call GetSRAMBank
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
-	jp z, Func_16c8e
+	jp z, .asm_16c8e
 	cp $21
-	jp z, Func_16c78
+	jp z, .asm_16c78
 	cp $1a
-	jp z, Func_16c4f
+	jp z, .asm_16c4f
 	cp $6
-	jp z, Func_16c3e
+	jp z, .asm_16c3e
 	cp $5
-	jp z, Func_16c17
+	jp z, .asm_16c17
 	cp $2
-	jp z, Func_16bf7
+	jp z, .asm_16bf7
 	cp $3
-	jp z, Func_16bab
+	jp z, .asm_16bab
 	cp $1
-	jp nz, Func_16cd4
+	jp nz, .asm_16cd4
 	read_hl_from_sp_plus $e
 	call Func_15388
 	set_farcall_addrs_hli Func_5712f
@@ -3253,9 +3283,9 @@ Func_16b5b: ; 16b5b (5:6b5b)
 	pop de
 	add hl, de
 	call FarCall
-	jp Func_16cd4
+	jp .asm_16cd4
 
-Func_16bab: ; 16bab (5:6bab)
+.asm_16bab: ; 16bab (5:6bab)
 	callba_hli Func_5615c
 	pop hl
 	push hl
@@ -3266,11 +3296,11 @@ Func_16bab: ; 16bab (5:6bab)
 	ld a, l
 	call Func_158b7
 	cp $ff
-	jp nz, Func_16bd0
+	jp nz, .asm_16bd0
 	ld hl, -1
-	jp Func_16ce3
+	jp .asm_16ce3
 
-Func_16bd0: ; 16bd0 (5:6bd0)
+.asm_16bd0: ; 16bd0 (5:6bd0)
 	read_hl_from_sp_plus $e
 	inc hl
 	inc hl
@@ -3279,7 +3309,7 @@ Func_16bd0: ; 16bd0 (5:6bd0)
 	sub $14
 	inc hl
 	or [hl]
-	jp nz, Func_16bf4
+	jp nz, .asm_16bf4
 	read_hl_from_sp_plus $e
 	call Func_16128
 	read_hl_from_sp_plus $e
@@ -3289,10 +3319,10 @@ Func_16bd0: ; 16bd0 (5:6bd0)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_16bf4: ; 16bf4 (5:6bf4)
-	jp Func_16cd4
+.asm_16bf4: ; 16bf4 (5:6bf4)
+	jp .asm_16cd4
 
-Func_16bf7: ; 16bf7 (5:6bf7)
+.asm_16bf7: ; 16bf7 (5:6bf7)
 	read_hl_from_sp_plus $e
 	call Func_15388
 	set_farcall_addrs_hli Func_56abf
@@ -3303,9 +3333,9 @@ Func_16bf7: ; 16bf7 (5:6bf7)
 	pop de
 	add hl, de
 	call FarCall
-	jp Func_16cd4
+	jp .asm_16cd4
 
-Func_16c17: ; 16c17 (5:6c17)
+.asm_16c17: ; 16c17 (5:6c17)
 	callba_hli Func_33bd0
 	set_farcall_addrs_hli Func_569d9
 	pop hl
@@ -3315,13 +3345,13 @@ Func_16c17: ; 16c17 (5:6c17)
 	pop de
 	add hl, de
 	call FarCall
-	jp Func_16cd4
+	jp .asm_16cd4
 
-Func_16c3e: ; 16c3e (5:6c3e)
+.asm_16c3e: ; 16c3e (5:6c3e)
 	callba_hli Func_57840
-	jp Func_16cd4
+	jp .asm_16cd4
 
-Func_16c4f: ; 16c4f (5:6c4f)
+.asm_16c4f: ; 16c4f (5:6c4f)
 	callba_hli Func_681a6
 	set_farcall_addrs_hli Func_681bd
 	ld hl, sp+$a
@@ -3332,9 +3362,9 @@ Func_16c4f: ; 16c4f (5:6c4f)
 	call GetHLAtSPPlus4
 	ld e, l
 	call FarCall
-	jp Func_16cd4
+	jp .asm_16cd4
 
-Func_16c78: ; 16c78 (5:6c78)
+.asm_16c78: ; 16c78 (5:6c78)
 	ld c, $5
 	ld e, $14
 	ld hl, $d
@@ -3342,9 +3372,9 @@ Func_16c78: ; 16c78 (5:6c78)
 	ld de, Data_16d03
 	ld hl, $10e
 	call PlaceStringDEatCoordHL
-	jp Func_16cd4
+	jp .asm_16cd4
 
-Func_16c8e: ; 16c8e (5:6c8e)
+.asm_16c8e: ; 16c8e (5:6c8e)
 	ld de, $19
 	ld a, $3
 	call GetBanks
@@ -3376,7 +3406,7 @@ Func_16c8e: ; 16c8e (5:6c8e)
 	reg16swap de, hl
 	ld hl, $101
 	call FarCall
-Func_16cd4: ; 16cd4 (5:6cd4)
+.asm_16cd4: ; 16cd4 (5:6cd4)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3385,7 +3415,7 @@ Func_16cd4: ; 16cd4 (5:6cd4)
 	call PushBGMapRegion
 	pop bc
 	ld hl, $4000
-Func_16ce3: ; 16ce3 (5:6ce3)
+.asm_16ce3: ; 16ce3 (5:6ce3)
 	reg16swap de, hl
 	add sp, $10
 	reg16swap de, hl
@@ -3562,7 +3592,7 @@ Func_16d8e:: ; 16d8e
 	reg16swap de, hl
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_16e3e
+	jp nc, .asm_16e3e
 	read_hl_from_sp_plus $12
 	ld de, $7
 	add hl, de
@@ -3571,7 +3601,7 @@ Func_16d8e:: ; 16d8e
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $e
-Func_16e3e: ; 16e3e (5:6e3e)
+.asm_16e3e: ; 16e3e (5:6e3e)
 	ldh a, [hSRAMBank]
 	ld c, a
 	read_hl_from_sp_plus $10
@@ -3588,10 +3618,10 @@ Func_16e3e: ; 16e3e (5:6e3e)
 	ld a, e
 	dec a
 	or d
-	jp z, Func_16e95
+	jp z, .asm_16e95
 	ld a, e
 	or d
-	jp nz, Func_16eee
+	jp nz, .asm_16eee
 	read_hl_from_sp_plus $10
 	dec hl
 	write_hl_to_sp_plus $10
@@ -3616,9 +3646,9 @@ Func_16e3e: ; 16e3e (5:6e3e)
 	ld hl, sp+$4
 	ld [hl], $1
 .asm_16e92
-	jp Func_16eee
+	jp .asm_16eee
 
-Func_16e95: ; 16e95 (5:6e95)
+.asm_16e95: ; 16e95 (5:6e95)
 	read_hl_from_sp_plus $e
 	push hl
 	read_hl_from_sp_plus $12
@@ -3626,7 +3656,7 @@ Func_16e95: ; 16e95 (5:6e95)
 	write_hl_to_sp_plus $12
 	pop de
 	call CompareHLtoDE
-	jp c, Func_16eee
+	jp c, .asm_16eee
 	read_hl_from_sp_plus $e
 	dec hl
 	write_hl_to_sp_plus $10
@@ -3648,16 +3678,16 @@ Func_16e95: ; 16e95 (5:6e95)
 	reg16swap de, hl
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_16eea
+	jp nc, .asm_16eea
 	read_hl_from_sp_plus $c
 	dec hl
 	write_hl_to_sp_plus $c
-	jp Func_16eee
+	jp .asm_16eee
 
-Func_16eea: ; 16eea (5:6eea)
+.asm_16eea: ; 16eea (5:6eea)
 	ld hl, sp+$4
 	ld [hl], $2
-Func_16eee: ; 16eee (5:6eee)
+.asm_16eee: ; 16eee (5:6eee)
 	read_hl_from_sp_plus $10
 	push hl
 	read_hl_from_sp_plus $14
@@ -3680,7 +3710,7 @@ Func_16eee: ; 16eee (5:6eee)
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
-	jp z, Func_16fee
+	jp z, .asm_16fee
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
@@ -3741,18 +3771,18 @@ Func_16eee: ; 16eee (5:6eee)
 	ld hl, sp+$5
 	ld a, [hl]
 	cp $8
-	jp z, Func_16f7e
+	jp z, .asm_16f7e
 	ld hl, sp+$5
 	ld a, [hl]
 	cp $1f
-	jp z, Func_16f7e
+	jp z, .asm_16f7e
 	ld a, $3
 	call GetSRAMBank
-Func_16f7e: ; 16f7e (5:6f7e)
+.asm_16f7e: ; 16f7e (5:6f7e)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $1
-	jp nz, Func_16fa5
+	jp nz, .asm_16fa5
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
@@ -3769,9 +3799,9 @@ Func_16f7e: ; 16f7e (5:6f7e)
 	pop bc
 	call GetHLAtSPPlus4
 	ld [hl], $8a
-	jp Func_16fee
+	jp .asm_16fee
 
-Func_16fa5: ; 16fa5 (5:6fa5)
+.asm_16fa5: ; 16fa5 (5:6fa5)
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
@@ -3808,34 +3838,34 @@ Func_16fa5: ; 16fa5 (5:6fa5)
 	pop de
 	add hl, de
 	call CompareHLtoBC
-	jp c, Func_16fee
+	jp c, .asm_16fee
 	call GetHLAtSPPlus4
 	ld [hl], $8f
-Func_16fee: ; 16fee (5:6fee)
+.asm_16fee: ; 16fee (5:6fee)
 	pop bc
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $8
-	jp z, Func_17003
+	jp z, .asm_17003
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $1f
-	jp z, Func_17003
+	jp z, .asm_17003
 	ld a, c
 	call GetSRAMBank
-Func_17003: ; 17003 (5:7003)
+.asm_17003: ; 17003 (5:7003)
 	ld hl, sp+$3
 	ld a, [hl]
 	or a
-	jp z, Func_17080
+	jp z, .asm_17080
 	cp $5
-	jp z, Func_17065
+	jp z, .asm_17065
 	cp $3
-	jp z, Func_17054
+	jp z, .asm_17054
 	cp $2
-	jp z, Func_17039
+	jp z, .asm_17039
 	cp $1
-	jp nz, Func_170c4
+	jp nz, .asm_170c4
 	set_farcall_addrs_hli Func_5712f
 	call GetHLAtSPPlus10
 	push hl
@@ -3843,9 +3873,9 @@ Func_17003: ; 17003 (5:7003)
 	pop de
 	add hl, de
 	call FarCall
-	jp Func_170c4
+	jp .asm_170c4
 
-Func_17039: ; 17039 (5:7039)
+.asm_17039: ; 17039 (5:7039)
 	set_farcall_addrs_hli Func_56abf
 	call GetHLAtSPPlus10
 	push hl
@@ -3853,9 +3883,9 @@ Func_17039: ; 17039 (5:7039)
 	pop de
 	add hl, de
 	call FarCall
-	jp Func_170c4
+	jp .asm_170c4
 
-Func_17054: ; 17054 (5:7054)
+.asm_17054: ; 17054 (5:7054)
 	call GetHLAtSPPlus10
 	push hl
 	read_hl_from_sp_plus $10
@@ -3863,9 +3893,9 @@ Func_17054: ; 17054 (5:7054)
 	add hl, de
 	ld a, l
 	call Func_158b7
-	jp Func_170c4
+	jp .asm_170c4
 
-Func_17065: ; 17065 (5:7065)
+.asm_17065: ; 17065 (5:7065)
 	set_farcall_addrs_hli Func_569d9
 	call GetHLAtSPPlus10
 	push hl
@@ -3873,9 +3903,9 @@ Func_17065: ; 17065 (5:7065)
 	pop de
 	add hl, de
 	call FarCall
-	jp Func_170c4
+	jp .asm_170c4
 
-Func_17080: ; 17080 (5:7080)
+.asm_17080: ; 17080 (5:7080)
 	ld de, $19
 	ld a, $3
 	call GetBanks
@@ -3904,13 +3934,13 @@ Func_17080: ; 17080 (5:7080)
 	reg16swap de, hl
 	ld hl, $101
 	call FarCall
-Func_170c4: ; 170c4 (5:70c4)
+.asm_170c4: ; 170c4 (5:70c4)
 	read_hl_from_sp_plus $10
 	call Func_17863
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $1a
-	jp nz, Func_170ef
+	jp nz, .asm_170ef
 	set_farcall_addrs_hli Func_681bd
 	read_hl_from_sp_plus $c
 	ld c, l
@@ -3919,12 +3949,12 @@ Func_170c4: ; 170c4 (5:70c4)
 	read_hl_from_sp_plus $e
 	ld e, l
 	call FarCall
-Func_170ef: ; 170ef (5:70ef)
+.asm_170ef: ; 170ef (5:70ef)
 	ld a, [wc39b]
 	cp $ff
-	jp z, Func_17195
+	jp z, .asm_17195
 	ld c, $0
-Func_170f9: ; 170f9 (5:70f9)
+.asm_170f9: ; 170f9 (5:70f9)
 	read_hl_from_sp_plus $10
 	ld de, $9
 	add hl, de
@@ -3934,7 +3964,7 @@ Func_170f9: ; 170f9 (5:70f9)
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
-	jp nc, Func_17195
+	jp nc, .asm_17195
 	read_hl_from_sp_plus $10
 	ld de, $5
 	add hl, de
@@ -3948,7 +3978,7 @@ Func_170f9: ; 170f9 (5:70f9)
 	ld e, a
 	ld d, $0
 	call CompareHLtoDE
-	jp nz, Func_1715d
+	jp nz, .asm_1715d
 	push bc
 	read_hl_from_sp_plus $12
 	inc hl
@@ -3960,7 +3990,7 @@ Func_170f9: ; 170f9 (5:70f9)
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
-	jp z, Func_17159
+	jp z, .asm_17159
 	ld hl, sp+$8
 	ld a, [hl]
 	inc a
@@ -3980,11 +4010,11 @@ Func_170f9: ; 170f9 (5:70f9)
 	call printf
 	pop bc
 	pop bc
-Func_17159: ; 17159 (5:7159)
+.asm_17159: ; 17159 (5:7159)
 	pop bc
-	jp Func_17191
+	jp .asm_17191
 
-Func_1715d: ; 1715d (5:715d)
+.asm_1715d: ; 1715d (5:715d)
 	read_hl_from_sp_plus $10
 	inc hl
 	inc hl
@@ -3995,7 +4025,7 @@ Func_1715d: ; 1715d (5:715d)
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
-	jp z, Func_17191
+	jp z, .asm_17191
 	push bc
 	ld hl, sp+$8
 	ld e, [hl]
@@ -4016,11 +4046,11 @@ Func_1715d: ; 1715d (5:715d)
 	ld de, Data_171a9
 	call PlaceStringDEatCoordHL
 	pop bc
-Func_17191: ; 17191 (5:7191)
+.asm_17191: ; 17191 (5:7191)
 	inc c
-	jp Func_170f9
+	jp .asm_170f9
 
-Func_17195: ; 17195 (5:7195)
+.asm_17195: ; 17195 (5:7195)
 	call Func_1401b
 	ld hl, $4000
 	reg16swap de, hl
@@ -4042,114 +4072,114 @@ Func_171ab: ; 171ab (5:71ab)
 	ld hl, sp+$28
 	ld a, [hl]
 	cp $1b
-	jp z, Func_172cd
+	jp z, .asm_172cd
 	cp $1a
-	jp z, Func_172cd
+	jp z, .asm_172cd
 	cp $21
-	jp z, Func_172cd
+	jp z, .asm_172cd
 	cp $15
-	jp z, Func_172cd
+	jp z, .asm_172cd
 	cp $11
-	jp z, Func_172cd
+	jp z, .asm_172cd
 	cp $1f
-	jp z, Func_172b7
+	jp z, .asm_172b7
 	cp $8
-	jp z, Func_172b7
+	jp z, .asm_172b7
 	cp $6
-	jp z, Func_172a1
+	jp z, .asm_172a1
 	cp $b
-	jp z, Func_17289
+	jp z, .asm_17289
 	cp $9
-	jp z, Func_17271
+	jp z, .asm_17271
 	cp $5
-	jp z, Func_17271
+	jp z, .asm_17271
 	cp $2
-	jp z, Func_17271
+	jp z, .asm_17271
 	cp $a
-	jp z, Func_17259
+	jp z, .asm_17259
 	cp $7
-	jp z, Func_17241
+	jp z, .asm_17241
 	cp $3
-	jp z, Func_17241
+	jp z, .asm_17241
 	cp $1
-	jp z, Func_17241
+	jp z, .asm_17241
 	cp $e
-	jp z, Func_17229
+	jp z, .asm_17229
 	cp $d
-	jp z, Func_17211
+	jp z, .asm_17211
 	or a
-	jp nz, Func_17352
-Func_17211: ; 17211 (5:7211)
+	jp nz, .asm_17352
+.asm_17211: ; 17211 (5:7211)
 	set_farcall_addrs_hli Func_55ed2
 	ld c, $0
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	jp Func_17352
+	jp .asm_17352
 
-Func_17229: ; 17229 (5:7229)
+.asm_17229: ; 17229 (5:7229)
 	set_farcall_addrs_hli Func_55ed2
 	ld c, $1
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	jp Func_17352
+	jp .asm_17352
 
-Func_17241: ; 17241 (5:7241)
+.asm_17241: ; 17241 (5:7241)
 	set_farcall_addrs_hli Func_5601b
 	ld c, $0
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	jp Func_17352
+	jp .asm_17352
 
-Func_17259: ; 17259 (5:7259)
+.asm_17259: ; 17259 (5:7259)
 	set_farcall_addrs_hli Func_5601b
 	ld c, $2
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	jp Func_17352
+	jp .asm_17352
 
-Func_17271: ; 17271 (5:7271)
+.asm_17271: ; 17271 (5:7271)
 	set_farcall_addrs_hli Func_55f95
 	ld c, $0
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	jp Func_17352
+	jp .asm_17352
 
-Func_17289: ; 17289 (5:7289)
+.asm_17289: ; 17289 (5:7289)
 	set_farcall_addrs_hli Func_55f95
 	ld c, $1
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	jp Func_17352
+	jp .asm_17352
 
-Func_172a1: ; 172a1 (5:72a1)
+.asm_172a1: ; 172a1 (5:72a1)
 	set_farcall_addrs_hli Func_576c1
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	jp Func_17352
+	jp .asm_17352
 
-Func_172b7: ; 172b7 (5:72b7)
+.asm_172b7: ; 172b7 (5:72b7)
 	set_farcall_addrs_hli Func_56d87
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
-	jp Func_17352
+	jp .asm_17352
 
-Func_172cd: ; 172cd (5:72cd)
+.asm_172cd: ; 172cd (5:72cd)
 	set_farcall_addrs_hli Func_55dd6
 	ld hl, sp+$22
 	ld e, [hl]
@@ -4158,14 +4188,14 @@ Func_172cd: ; 172cd (5:72cd)
 	ld hl, sp+$28
 	ld a, [hl]
 	cp $1a
-	jp nz, Func_17352
+	jp nz, .asm_17352
 	ld hl, sp+$3
 	ld [hl], $0
-Func_172ec: ; 172ec (5:72ec)
+.asm_172ec: ; 172ec (5:72ec)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $3
-	jp nc, Func_17352
+	jp nc, .asm_17352
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -4182,14 +4212,14 @@ Func_172ec: ; 172ec (5:72ec)
 	add hl, de
 	ld a, [hl]
 	cp $1
-	jp nz, Func_17348
+	jp nz, .asm_17348
 	ld hl, sp+$2
 	ld [hl], $0
-Func_17312: ; 17312 (5:7312)
+.asm_17312: ; 17312 (5:7312)
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $4
-	jp nc, Func_17348
+	jp nc, .asm_17348
 	ld hl, sp+$2
 	ld c, [hl]
 	ld b, $0
@@ -4209,34 +4239,34 @@ Func_17312: ; 17312 (5:7312)
 	ld a, [hl]
 	ld hl, sp+$22
 	cp [hl]
-	jp nz, Func_1733e
+	jp nz, .asm_1733e
 	ld hl, sp+$d
 	ld [hl], $80
-	jp Func_17348
+	jp .asm_17348
 
-Func_1733e: ; 1733e (5:733e)
+.asm_1733e: ; 1733e (5:733e)
 	ld hl, sp+$2
 	ld a, [hl]
 	inc a
 	ld hl, sp+$2
 	ld [hl], a
-	jp Func_17312
+	jp .asm_17312
 
-Func_17348: ; 17348 (5:7348)
+.asm_17348: ; 17348 (5:7348)
 	ld hl, sp+$3
 	ld a, [hl]
 	inc a
 	ld hl, sp+$3
 	ld [hl], a
-	jp Func_172ec
+	jp .asm_172ec
 
-Func_17352: ; 17352 (5:7352)
+.asm_17352: ; 17352 (5:7352)
 	pop de
 	push de
 	ld a, [wc39b]
 	ld hl, sp+$22
 	cp [hl]
-	jp nz, Func_17371
+	jp nz, .asm_17371
 	ld hl, sp+$25
 	ld a, [hl]
 	dec a
@@ -4248,7 +4278,7 @@ Func_17352: ; 17352 (5:7352)
 	call printf
 	pop bc
 	pop bc
-Func_17371: ; 17371 (5:7371)
+.asm_17371: ; 17371 (5:7371)
 	pop de
 	ld hl, sp+$2
 	ld c, l
@@ -4261,13 +4291,13 @@ Func_17371: ; 17371 (5:7371)
 	ld hl, sp+$26
 	ld a, [hl]
 	cp $5
-	jp nz, Func_1739b
+	jp nz, .asm_1739b
 	set_farcall_addrs_hli Func_6810b
 	ld e, $0
 	ld hl, sp+$20
 	ld a, [hl]
 	call FarCall
-Func_1739b: ; 1739b (5:739b)
+.asm_1739b: ; 1739b (5:739b)
 	add sp, $24
 	ret
 
@@ -4279,14 +4309,14 @@ Func_173a1: ; 173a1 (5:73a1)
 	ld a, l
 	and h
 	inc a
-	jp z, Func_173b2
+	jp z, .asm_173b2
 	ld a, e
 	and d
 	inc a
-	jp z, Func_173b2
+	jp z, .asm_173b2
 	ld a, l
 	call text_cursor_pos_set
-Func_173b2: ; 173b2 (5:73b2)
+.asm_173b2: ; 173b2 (5:73b2)
 	pop bc
 	push bc
 	ld hl, Data_173c1
@@ -4318,7 +4348,7 @@ Func_173c4: ; 173c4 (5:73c4)
 	ld hl, sp+$0
 	ld [hl], a
 	ld c, $0
-Func_173df: ; 173df (5:73df)
+.asm_173df: ; 173df (5:73df)
 	call GetHLAtSPPlus4
 	ld de, $9
 	add hl, de
@@ -4328,7 +4358,7 @@ Func_173df: ; 173df (5:73df)
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
-	jp nc, Func_17429
+	jp nc, .asm_17429
 	push bc
 	call GetHLAtSPPlus6
 	inc hl
@@ -4340,7 +4370,7 @@ Func_173df: ; 173df (5:73df)
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
-	jp z, Func_17424
+	jp z, .asm_17424
 	ld hl, sp+$2
 	ld e, [hl]
 	ld d, $0
@@ -4359,12 +4389,12 @@ Func_173df: ; 173df (5:73df)
 	add hl, de
 	ld de, Data_1743d
 	call PlaceStringDEatCoordHL
-Func_17424: ; 17424 (5:7424)
+.asm_17424: ; 17424 (5:7424)
 	pop bc
 	inc c
-	jp Func_173df
+	jp .asm_173df
 
-Func_17429: ; 17429 (5:7429)
+.asm_17429: ; 17429 (5:7429)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -4384,28 +4414,28 @@ Data_1743d: ; 1743d
 StartMenu_PressB:: ; 1743f
 	ld a, [wc39b]
 	cp $ff
-	jp z, Func_17450
+	jp z, .asm_17450
 	call Func_173c4
 	ld hl, $8000
-	jp Func_17453
+	jp .asm_17453
 
-Func_17450: ; 17450 (5:7450)
+.asm_17450: ; 17450 (5:7450)
 	ld hl, -1
-Func_17453: ; 17453 (5:7453)
+.asm_17453: ; 17453 (5:7453)
 	ret
 
 Func_17454:: ; 17454
 	ld a, [wc39b]
 	cp $ff
-	jp z, Func_17465
+	jp z, .asm_17465
 	call Func_173c4
 	ld hl, $8000
-	jp Func_1746b
+	jp .asm_1746b
 
-Func_17465: ; 17465 (5:7465)
+.asm_17465: ; 17465 (5:7465)
 	call Func_3af6
 	ld hl, -1
-Func_1746b: ; 1746b (5:746b)
+.asm_1746b: ; 1746b (5:746b)
 	ret
 
 Func_1746c:: ; 1746c
@@ -4520,7 +4550,7 @@ Func_17863:: ; 17863 (5:7863)
 	ld a, c
 	and b
 	inc a
-	jp z, Func_178e5
+	jp z, .asm_178e5
 	ld hl, sp+$4
 	ld e, [hl]
 	ld d, $0
@@ -4538,7 +4568,7 @@ Func_17863:: ; 17863 (5:7863)
 	push hl
 	call printf
 	pop bc
-Func_178e5: ; 178e5 (5:78e5)
+.asm_178e5: ; 178e5 (5:78e5)
 	pop bc
 	ld hl, sp+$2
 	ld e, [hl]
@@ -4565,7 +4595,7 @@ Func_178e5: ; 178e5 (5:78e5)
 	read_hl_from_sp_plus $c
 	pop de
 	call CompareHLtoDE
-	jp z, Func_17965
+	jp z, .asm_17965
 	pop hl
 	push hl
 	inc hl
@@ -4603,7 +4633,7 @@ Func_178e5: ; 178e5 (5:78e5)
 	add hl, de
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_1795d
+	jp nc, .asm_1795d
 	ld hl, $8a
 	push hl
 	ld hl, Data_17970
@@ -4611,14 +4641,14 @@ Func_178e5: ; 178e5 (5:78e5)
 	call printf
 	pop bc
 	pop bc
-	jp Func_17965
+	jp .asm_17965
 
-Func_1795d: ; 1795d (5:795d)
+.asm_1795d: ; 1795d (5:795d)
 	ld hl, Data_17973
 	push hl
 	call printf
 	pop bc
-Func_17965: ; 17965 (5:7965)
+.asm_17965: ; 17965 (5:7965)
 	pop bc
 	pop bc
 	pop bc
@@ -4655,16 +4685,16 @@ Func_17975:: ; 17975
 	ld hl, sp+$3
 	ld a, [hl]
 	or a
-	jp nz, Func_1799c
+	jp nz, .asm_1799c
 	push de
 	ld hl, Data_174a3
 	call WriteHLToSPPlus4
 	ld hl, sp+$6
 	ld [hl], $4
 	pop de
-	jp Func_179ba
+	jp .asm_179ba
 
-Func_1799c: ; 1799c (5:799c)
+.asm_1799c: ; 1799c (5:799c)
 	push de
 	ld hl, sp+$5
 	ld e, [hl]
@@ -4685,14 +4715,14 @@ Func_1799c: ; 1799c (5:799c)
 	ld hl, sp+$6
 	ld [hl], a
 	pop de
-Func_179ba: ; 179ba (5:79ba)
+.asm_179ba: ; 179ba (5:79ba)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $1
-	jp c, Func_17a39
+	jp c, .asm_17a39
 	push de
 	ld c, $0
-Func_179c5: ; 179c5 (5:79c5)
+.asm_179c5: ; 179c5 (5:79c5)
 	call GetHLAtSPPlus10
 	inc h
 	dec h
@@ -4713,7 +4743,7 @@ Func_179c5: ; 179c5 (5:79c5)
 	write_hl_to_sp_plus $c
 	pop bc
 	inc c
-	jp Func_179c5
+	jp .asm_179c5
 
 .asm_179e8
 	push bc
@@ -4728,32 +4758,32 @@ Func_179c5: ; 179c5 (5:79c5)
 	pop de
 	ld a, c
 	cp $2
-	jp nc, Func_17a0f
+	jp nc, .asm_17a0f
 	ld hl, sp+$2
 	ld a, [hl]
 	or a
-	jp z, Func_17a0f
+	jp z, .asm_17a0f
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $1
-	jp nz, Func_17a19
-Func_17a0f: ; 17a0f (5:7a0f)
+	jp nz, .asm_17a19
+.asm_17a0f: ; 17a0f (5:7a0f)
 	ld hl, sp+$2
 	ld [hl], $0
 	ld a, c
 	ld [de], a
 	inc de
-	jp Func_17a25
+	jp .asm_17a25
 
-Func_17a19: ; 17a19 (5:7a19)
+.asm_17a19: ; 17a19 (5:7a19)
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $1
-	jp c, Func_17a25
+	jp c, .asm_17a25
 	ld a, $90
 	ld [de], a
 	inc de
-Func_17a25: ; 17a25 (5:7a25)
+.asm_17a25: ; 17a25 (5:7a25)
 	push de
 	ld hl, sp+$6
 	ld a, [hl]
@@ -4765,9 +4795,9 @@ Func_17a25: ; 17a25 (5:7a25)
 	inc hl
 	call WriteHLToSPPlus4
 	pop de
-	jp Func_179ba
+	jp .asm_179ba
 
-Func_17a39: ; 17a39 (5:7a39)
+.asm_17a39: ; 17a39 (5:7a39)
 	xor a
 	ld [de], a
 	reg16swap de, hl
@@ -4784,21 +4814,21 @@ WaitAorBButtonOverworld_17a44:: ; 17a44 (5:7a44)
 	ld h, $0
 	ld a, l
 	and A_BUTTON
-	jp z, Func_17a58
+	jp z, .asm_17a58
 	ld a, A_BUTTON
-	jp Func_17a66
+	jp .asm_17a66
 
-Func_17a58: ; 17a58 (5:7a58)
+.asm_17a58: ; 17a58 (5:7a58)
 	ld a, l
 	and B_BUTTON
-	jp z, Func_17a63
+	jp z, .asm_17a63
 	ld a, B_BUTTON
-	jp Func_17a66
+	jp .asm_17a66
 
-Func_17a63: ; 17a63 (5:7a63)
+.asm_17a63: ; 17a63 (5:7a63)
 	jp WaitAorBButtonOverworld_17a44
 
-Func_17a66: ; 17a66 (5:7a66)
+.asm_17a66: ; 17a66 (5:7a66)
 	ret
 
 INCLUDE "engine/malloc.asm"
