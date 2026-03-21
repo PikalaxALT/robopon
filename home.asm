@@ -1116,7 +1116,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	call BankSwitch
 	ld e, $0
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	set_farcall_addrs_hli CalcSaveChecksum
 	ld a, $1
 	call FarCall
@@ -1338,12 +1338,12 @@ Func_2230:: ; 2230
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	call GetHLAtSPPlus8
 	push hl
 	ld hl, Data_2304
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp .asm_22fe
@@ -1380,21 +1380,21 @@ Func_2230:: ; 2230
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$0
 	ld a, [hl]
 	and $2
 	jp z, .asm_22ce
 	ld hl, Data_2307
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp .asm_22d6
 
 .asm_22ce ; 22ce (0:22ce)
 	ld hl, Data_2309
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 .asm_22d6 ; 22d6 (0:22d6)
 	call GetHLAtSPPlus5
@@ -1413,12 +1413,12 @@ Func_2230:: ; 2230
 	ld e, [hl]
 	ld hl, sp+$2
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	call GetHLAtSPPlus8
 	push hl
 	ld hl, Data_230b
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .asm_22fe ; 22fe (0:22fe)
@@ -1453,11 +1453,11 @@ PlaceStringDEatCoordHL:: ; 230e (0:230e)
 	ld a, l
 	ld e, a
 	ld a, c
-	call SetStringStartState
+	call text_cursor_pos_set
 .okay
 	pop de
 	push de
-	call PlaceString
+	call printf
 	pop bc
 	ret
 
@@ -4050,7 +4050,7 @@ ReverseString:: ; 3a36 (0:3a36)
 	pop bc
 	ret
 
-SetStringStartState:: ; 3a83 (0:3a83)
+text_cursor_pos_set:: ; 3a83 (0:3a83)
 	ld [wStringDestX], a
 	ld a, e
 	ld [wStringDestY], a

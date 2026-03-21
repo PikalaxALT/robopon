@@ -172,7 +172,7 @@ HandleMap: ; 90e9 (2:50e9)
 	ld [hl], a
 	ld e, $1
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	set_farcall_addrs_hli Func_17e95
 	ld c, $3
 	ld e, $14
@@ -194,7 +194,7 @@ HandleMap: ; 90e9 (2:50e9)
 	push hl
 	ld hl, Data_9416
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -209,7 +209,7 @@ HandleMap: ; 90e9 (2:50e9)
 	push hl
 	ld hl, Data_9420
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp .asm_92ba
@@ -221,7 +221,7 @@ HandleMap: ; 90e9 (2:50e9)
 	push hl
 	ld hl, Data_9425
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .asm_92ba ; 92ba (2:52ba)
@@ -235,7 +235,7 @@ HandleMap: ; 90e9 (2:50e9)
 	push hl
 	ld hl, Data_9429
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp .asm_92e3
@@ -247,7 +247,7 @@ HandleMap: ; 90e9 (2:50e9)
 	push hl
 	ld hl, Data_942d
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .asm_92e3 ; 92e3 (2:52e3)

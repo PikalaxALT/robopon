@@ -1505,8 +1505,7 @@ Func_60da5: ; 60da5 (18:4da5)
 	call GetSRAMBank_ReadOnly
 	pop hl
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
 	reg16swap de, hl
@@ -2843,12 +2842,12 @@ Func_61cc6: ; 61cc6 (18:5cc6)
 	inc a
 	ld e, a
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_61d34
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop af
@@ -2885,12 +2884,12 @@ Func_61cc6: ; 61cc6 (18:5cc6)
 	ld a, l
 	ld e, a
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_61d37
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_61d23: ; 61d23 (18:5d23)
@@ -3161,12 +3160,12 @@ Func_61f3b: ; 61f3b (18:5f3b)
 	inc a
 	ld e, a
 	ld a, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8f
 	push hl
 	ld hl, Data_61fb2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_61f64: ; 61f64 (18:5f64)
@@ -3196,12 +3195,12 @@ Func_61f66: ; 61f66 (18:5f66)
 	inc a
 	ld e, a
 	ld a, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8c
 	push hl
 	ld hl, $5fb5
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_61f9e: ; 61f9e (18:5f9e)
@@ -3890,7 +3889,7 @@ Func_6251c: ; 6251c (18:651c)
 	call FarCall
 	ld hl, Data_6274e
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_6256a: ; 6256a (18:656a)
 	ld l, $12

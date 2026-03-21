@@ -1810,7 +1810,7 @@ Func_30e8f: ; 30e8f (c:4e8f)
 	call Func_2230
 	ld hl, Data_30fe7
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_30fe0
 
@@ -1899,7 +1899,7 @@ Func_30f3f: ; 30f3f (c:4f3f)
 	push hl
 	ld hl, Data_30fea
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld de, $5
@@ -1907,7 +1907,7 @@ Func_30f3f: ; 30f3f (c:4f3f)
 	call Func_2230
 	ld hl, Data_30fef
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_30fe0
 
@@ -1951,7 +1951,7 @@ Func_30f98: ; 30f98 (c:4f98)
 	call Func_2230
 	ld hl, Data_30ff1
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_30fe0
 
@@ -1979,7 +1979,7 @@ Func_30fae: ; 30fae (c:4fae)
 	call Func_2230
 	ld hl, Data_30ff5
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_30fe0: ; 30fe0 (c:4fe0)
 	pop af
@@ -2010,7 +2010,7 @@ Func_30ff8: ; 30ff8 (c:4ff8)
 	call Func_30313
 	ld e, $14
 	ld a, $d
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop af
 	or a
 	jp nz, Func_3101b
@@ -2441,7 +2441,7 @@ Func_3135a: ; 3135a (c:535a)
 	call PlaceStringDEatCoordHL
 	ld e, $f
 	ld a, $c
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$d
 	call PutLongFromHLOnStack
 	ld hl, $0
@@ -2454,7 +2454,7 @@ Func_3135a: ; 3135a (c:535a)
 	call PutLongFromHLOnStack
 	ld hl, Data_3143c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -2473,7 +2473,7 @@ Func_3138f: ; 3138f (c:538f)
 	call PutLongFromHLOnStack
 	ld hl, Data_31446
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -2492,7 +2492,7 @@ Func_313b4: ; 313b4 (c:53b4)
 	call PutLongFromHLOnStack
 	ld hl, Data_31450
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -2511,7 +2511,7 @@ Func_313d9: ; 313d9 (c:53d9)
 	call PutLongFromHLOnStack
 	ld hl, Data_31459
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -2531,7 +2531,7 @@ Func_313fe: ; 313fe (c:53fe)
 	call PutLongFromHLOnStack
 	ld hl, $5461
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -2542,7 +2542,7 @@ Func_31423: ; 31423 (c:5423)
 	call PutLongFromHLOnStack
 	ld hl, Data_31468
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -2625,12 +2625,12 @@ Func_314da: ; 314da (c:54da)
 	push af
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$4
 	call PutLongFromHLOnStack
 	ld hl, Data_31515
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -2916,10 +2916,10 @@ Func_316e8: ; 316e8 (c:56e8)
 	pop bc
 	ld e, $1
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_31756
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$0
 	call PutLongFromHLOnStack
@@ -3037,7 +3037,7 @@ Func_3178a: ; 3178a (c:578a)
 	push hl
 	ld hl, Data_31940
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld de, Data_31945
@@ -3056,14 +3056,14 @@ Func_3178a: ; 3178a (c:578a)
 	call Func_2230
 	ld e, $a
 	ld a, $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $7d
 	push hl
 	ld hl, $8c
 	push hl
 	ld hl, Data_3194c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3141,7 +3141,7 @@ Func_31869: ; 31869 (c:5869)
 	call Func_2230
 	ld hl, Data_3196f
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$1c
 	ld a, [hl]
@@ -3218,7 +3218,7 @@ Func_319be: ; 319be (c:59be)
 	ld b, $4
 	call RightShiftHL
 	ld a, l
-	call SetStringStartState
+	call text_cursor_pos_set
 Func_319ce: ; 319ce (c:59ce)
 	ld hl, sp+$2
 	call PutLongFromHLOnStack
@@ -3232,7 +3232,7 @@ Func_319ce: ; 319ce (c:59ce)
 	call PutLongFromHLOnStack
 	ld hl, Data_31a97
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3251,7 +3251,7 @@ Func_319f3: ; 319f3 (c:59f3)
 	call PutLongFromHLOnStack
 	ld hl, Data_31aa2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3270,7 +3270,7 @@ Func_31a18: ; 31a18 (c:5a18)
 	call PutLongFromHLOnStack
 	ld hl, Data_31aac
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3289,7 +3289,7 @@ Func_31a3d: ; 31a3d (c:5a3d)
 	call PutLongFromHLOnStack
 	ld hl, Data_31ab5
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3308,7 +3308,7 @@ Func_31a62: ; 31a62 (c:5a62)
 	call PutLongFromHLOnStack
 	ld hl, Data_31abd
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3319,7 +3319,7 @@ Func_31a87: ; 31a87 (c:5a87)
 	call PutLongFromHLOnStack
 	ld hl, Data_31ac4
 	push hl
-	call PlaceString
+	call printf
 .asm_31a91
 	pop bc
 	pop bc
@@ -3995,8 +3995,7 @@ Func_324f5: ; 324f5 (c:64f5)
 	call DivideHLByDESigned
 	write_hl_to_sp_plus $c
 	read_hl_from_sp_plus $c
-	ld de, $3e8
-	call MultiplyHLbyDE
+	mulhl $3e8
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $e
@@ -4894,10 +4893,10 @@ Func_32b4d: ; 32b4d (c:6b4d)
 	call PutLongFromStackToHL
 	ld e, $1
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_32c27
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$d
 	call PutLongFromHLOnStack
@@ -5325,10 +5324,10 @@ Func_32eec: ; 32eec (c:6eec)
 	call PutLongFromStackToHL
 	ld e, $1
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_32f7a
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$2b
 	call PutLongFromHLOnStack
@@ -5913,7 +5912,7 @@ Func_3345e: ; 3345e (c:745e)
 	call FarCall
 	ld hl, Data_334ee
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld de, Data_334f0
 	ld hl, $207
@@ -7016,7 +7015,7 @@ Func_33bd0:: ; 33bd0 (c:7bd0)
 	call FarCall
 	ld hl, Data_33d73
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	set_farcall_addrs_hli Func_16019
 	ld hl, sp+$1e
@@ -7091,7 +7090,7 @@ Func_33bd0:: ; 33bd0 (c:7bd0)
 	call Func_2230
 	ld hl, Data_33da6
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, $8e
 	add hl, sp

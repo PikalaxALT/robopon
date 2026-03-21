@@ -5913,8 +5913,7 @@ Func_27063: ; 27063 (9:7063)
 Func_270f3: ; 270f3 (9:70f3)
 	ld hl, $1
 Func_270f6: ; 270f6 (9:70f6)
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	pop de
 	add hl, de
 	call WriteHLToSPPlus8
@@ -5935,8 +5934,7 @@ Func_270f6: ; 270f6 (9:70f6)
 Func_2711b: ; 2711b (9:711b)
 	ld hl, $0
 Func_2711e: ; 2711e (9:711e)
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	pop de
 	add hl, de
 	call WriteHLToSPPlus10
@@ -6217,8 +6215,7 @@ Func_272f0: ; 272f0 (9:72f0)
 Func_2732b: ; 2732b (9:732b)
 	ld hl, $1
 Func_2732e: ; 2732e (9:732e)
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	pop de
 	add hl, de
 	write_hl_to_sp_plus $f
@@ -6239,8 +6236,7 @@ Func_2732e: ; 2732e (9:732e)
 Func_27354: ; 27354 (9:7354)
 	ld hl, $0
 Func_27357: ; 27357 (9:7357)
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	pop de
 	add hl, de
 	write_hl_to_sp_plus $d

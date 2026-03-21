@@ -4231,8 +4231,7 @@ Func_7e8a:: ; 7e8a
 	push hl
 	ld l, a
 	ld h, $0
-	ld de, 849
-	call MultiplyHLbyDE
+	mulhl 849
 	ld de, s2_b29f
 	add hl, de
 	ld c, l
@@ -4313,8 +4312,7 @@ Func_7f14:: ; 7f14
 	push hl
 	ld l, a
 	ld h, $0
-	ld de, 849
-	call MultiplyHLbyDE
+	mulhl 849
 	ld de, s2_b29f
 	add hl, de
 	ld c, l

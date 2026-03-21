@@ -26,8 +26,7 @@ RandomRange:: ; dd67 (3:5d67)
 	ld bc, $4
 	call MemCopy
 	read_hl_from wRNGState
-	ld de, $6d
-	call MultiplyHLbyDE
+	mulhl $6d
 	ld de, $3fd
 	add hl, de
 	ld a, h

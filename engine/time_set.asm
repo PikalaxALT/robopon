@@ -25,12 +25,12 @@ Func_52df8:: ; 52df8 (14:6df8)
 	call Func_53327
 	ld e, $1
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b ; cursor
 	push hl
 	ld hl, Data_530ca
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld l, $12
@@ -80,24 +80,12 @@ Func_52e4d: ; 52e4d (14:6e4d)
 	ld hl, wTimeSetCenturies
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhl 100
 	push hl
 	ld hl, wTimeSetMillennia
 	ld l, [hl]
 	ld h, $0
-	ld de, 1000
-	call MultiplyHLbyDE
+	mulhl 1000
 	pop de
 	add hl, de
 	ld c, l
@@ -105,12 +93,7 @@ Func_52e4d: ; 52e4d (14:6e4d)
 	ld hl, wTimeSetDecades
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	add hl, bc
 	ld a, [wTimeSetYears]
 	ld e, a
@@ -147,10 +130,10 @@ Func_52f08: ; 52f08 (14:6f08)
 	; Set the date to February 28.
 	ld e, $5
 	ld a, $d
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_530cd
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld a, $8
 	ld [wTimeSetDaysOnesDigit], a
@@ -222,7 +205,7 @@ Func_52f83: ; 52f83 (14:6f83)
 	push de
 	ld e, $c
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	jp Func_52fb1
 
@@ -234,13 +217,13 @@ Func_52fa5: ; 52fa5 (14:6fa5)
 	inc a
 	ld e, a
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 Func_52fb1: ; 52fb1 (14:6fb1)
 	push de
 	ld hl, Data_530cf
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop de
 	pop hl
@@ -277,7 +260,7 @@ Func_52fdf: ; 52fdf (14:6fdf)
 	push de
 	ld e, $c
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	jp Func_52ffe
 
@@ -289,7 +272,7 @@ Func_52ff2: ; 52ff2 (14:6ff2)
 	inc a
 	ld e, a
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 Func_52ffe: ; 52ffe (14:6ffe)
 	push de
@@ -297,7 +280,7 @@ Func_52ffe: ; 52ffe (14:6ffe)
 	push hl
 	ld hl, Data_530d1
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld l, $12
@@ -318,24 +301,12 @@ Func_5301d: ; 5301d (14:701d)
 	ld hl, wTimeSetCenturies
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhl 100
 	push hl
 	ld hl, wTimeSetMillennia
 	ld l, [hl]
 	ld h, $0
-	ld de, 1000
-	call MultiplyHLbyDE
+	mulhl 1000
 	pop de
 	add hl, de
 	ld c, l
@@ -343,12 +314,7 @@ Func_5301d: ; 5301d (14:701d)
 	ld hl, wTimeSetDecades
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	add hl, bc
 	ld a, [wTimeSetYears]
 	ld e, a
@@ -513,7 +479,7 @@ Func_53149: ; 53149 (14:7149)
 	ld [wTimeSetYears], a
 	ld e, $1
 	ld a, $7
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetYears
 	ld l, [hl]
 	ld h, $0
@@ -532,7 +498,7 @@ Func_53149: ; 53149 (14:7149)
 	push hl
 	ld hl, Data_531f5
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -664,7 +630,7 @@ Func_53260: ; 53260 (14:7260)
 	ld [wTimeSetDaysOnesDigit], a
 	ld e, $5
 	ld a, $7
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetMonthsOnesDigit
 	ld l, [hl]
 	ld h, $0
@@ -675,13 +641,13 @@ Func_53260: ; 53260 (14:7260)
 	push hl
 	ld hl, Data_5331d
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
 	ld e, $5
 	ld a, $c
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetDaysOnesDigit
 	ld l, [hl]
 	ld h, $0
@@ -692,7 +658,7 @@ Func_53260: ; 53260 (14:7260)
 	push hl
 	ld hl, Data_53322
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -762,7 +728,7 @@ Func_53327: ; 53327 (14:7327)
 	ld [wTimeSetMinutesOnesDigit], a
 	ld e, $9
 	ld a, $7
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetHoursOnesDigit
 	ld l, [hl]
 	ld h, $0
@@ -773,13 +739,13 @@ Func_53327: ; 53327 (14:7327)
 	push hl
 	ld hl, Data_533e2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
 	ld e, $9
 	ld a, $a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetMinutesOnesDigit
 	ld l, [hl]
 	ld h, $0
@@ -790,7 +756,7 @@ Func_53327: ; 53327 (14:7327)
 	push hl
 	ld hl, Data_533e7
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1052,24 +1018,12 @@ Func_53561: ; 53561 (14:7561)
 	ld hl, wTimeSetCenturies
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhl 100
 	push hl
 	ld hl, wTimeSetMillennia
 	ld l, [hl]
 	ld h, $0
-	ld de, 1000
-	call MultiplyHLbyDE
+	mulhl 1000
 	pop de
 	add hl, de
 	ld c, l
@@ -1077,12 +1031,7 @@ Func_53561: ; 53561 (14:7561)
 	ld hl, wTimeSetDecades
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	add hl, bc
 	ld a, [wTimeSetYears]
 	ld e, a
@@ -1105,24 +1054,12 @@ Func_535b7: ; 535b7 (14:75b7)
 	ld hl, wTimeSetCenturies
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhl 100
 	push hl
 	ld hl, wTimeSetMillennia
 	ld l, [hl]
 	ld h, $0
-	ld de, 1000
-	call MultiplyHLbyDE
+	mulhl 1000
 	pop de
 	add hl, de
 	ld c, l
@@ -1130,12 +1067,7 @@ Func_535b7: ; 535b7 (14:75b7)
 	ld hl, wTimeSetDecades
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	add hl, bc
 	ld a, [wTimeSetYears]
 	ld e, a
@@ -1156,7 +1088,7 @@ Func_535b7: ; 535b7 (14:75b7)
 Func_5360d: ; 5360d (14:760d)
 	ld e, $1
 	ld a, $7
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetYears
 	ld l, [hl]
 	ld h, $0
@@ -1175,7 +1107,7 @@ Func_5360d: ; 5360d (14:760d)
 	push hl
 	ld hl, Data_53652
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1367,7 +1299,7 @@ Func_53762: ; 53762 (14:7762)
 Func_53771: ; 53771 (14:7771)
 	ld e, $9
 	ld a, $7
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetHoursOnesDigit
 	ld l, [hl]
 	ld h, $0
@@ -1378,13 +1310,13 @@ Func_53771: ; 53771 (14:7771)
 	push hl
 	ld hl, Data_537c6
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
 	ld e, $9
 	ld a, $a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetMinutesOnesDigit
 	ld l, [hl]
 	ld h, $0
@@ -1395,7 +1327,7 @@ Func_53771: ; 53771 (14:7771)
 	push hl
 	ld hl, Data_537cb
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc

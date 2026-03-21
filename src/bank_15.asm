@@ -1010,7 +1010,7 @@ Func_54846:
 	call Func_2230
 	ld hl, Data_54975
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	read_hl_from_sp_plus $29
 	ld c, l
@@ -1040,7 +1040,7 @@ Func_54846:
 	call Func_2230
 	ld hl, Data_5497a
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	read_hl_from_sp_plus $2b
 	ld c, l
@@ -1067,7 +1067,7 @@ Func_54846:
 	call Func_2230
 	ld hl, Data_5497f
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	add sp, $3a
 	ret
@@ -2778,7 +2778,7 @@ Func_5575d:: ; 5575d (15:575d)
 	jp nz, Func_5582b
 	ld hl, Data_55bfe
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_5582b: ; 5582b (15:582b)
 	pop af
@@ -2808,7 +2808,7 @@ Func_5582b: ; 5582b (15:582b)
 	call FarCopyVideoData
 	ld hl, Data_55c00
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, $38f
 	add hl, sp
@@ -2819,7 +2819,7 @@ Func_5582b: ; 5582b (15:582b)
 	call Func_2230
 	ld hl, Data_55c04
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, $35c
 	add hl, sp
@@ -2888,13 +2888,13 @@ Func_5582b: ; 5582b (15:582b)
 	call LiteralStringInTree
 	ld e, $5
 	ld a, $9
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $35c
 	add hl, sp
 	push hl
 	ld hl, Data_55c0c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop de
@@ -2917,8 +2917,7 @@ Func_5582b: ; 5582b (15:582b)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, $7b84
 	add hl, de
 	push hl
@@ -3047,7 +3046,7 @@ Func_55a26: ; 55a26 (15:5a26)
 	call Func_2230
 	ld hl, Data_55c15
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	read_hl_from_sp_plus $396
 	ld c, l
@@ -3063,7 +3062,7 @@ Func_55a26: ; 55a26 (15:5a26)
 	call Func_2230
 	ld hl, Data_55c17
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	read_hl_from_sp_plus $39a
 	ld c, l
@@ -3170,7 +3169,7 @@ Func_55b8a: ; 55b8a (15:5b8a)
 Func_55ba5: ; 55ba5 (15:5ba5)
 	ld e, $6
 	ld a, $9
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$6
 	call PutLongFromHLOnStack
 	read_hl_from_sp_plus $3a0
@@ -3180,18 +3179,18 @@ Func_55ba5: ; 55ba5 (15:5ba5)
 	call AddLongsFromStack
 	ld hl, Data_55c32
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
 	ld e, $8
 	ld a, $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$2
 	call PutLongFromHLOnStack
 	ld hl, Data_55c3a
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -4651,12 +4650,12 @@ Func_56732: ; 56732 (15:6732)
 	jp nz, Func_567d1
 	ld hl, Data_56981
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_567d1: ; 567d1 (15:67d1)
 	ld hl, Data_56983
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop af
 	call GetSRAMBank
@@ -4799,7 +4798,7 @@ Func_568d0: ; 568d0 (15:68d0)
 	push hl
 	ld hl, Data_569a1
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_56902
@@ -4826,7 +4825,7 @@ Func_56902: ; 56902 (15:6902)
 	call Func_2230
 	ld hl, Data_569b1
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld de, Data_569b3
 	ld hl, $c03
@@ -4999,7 +4998,7 @@ Func_56a21: ; 56a21 (15:6a21)
 	call Func_2230
 	ld hl, Data_56abd
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	add sp, $1e
 	ret
@@ -5072,7 +5071,7 @@ Func_56abf:: ; 56abf (15:6abf)
 	call Func_2230
 	ld hl, Data_56b33
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	add sp, $1a
 	ret

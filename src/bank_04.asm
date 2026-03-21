@@ -26,41 +26,41 @@ Func_10011:: ; 10011 (4:4011)
 	call FarCall
 	ld e, $2
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_1019d
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld e, $2
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_101a0
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $4
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_101a8
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $6
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_101af
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $8
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_101b6
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld l, $12
 	push hl
@@ -141,7 +141,7 @@ Func_10011:: ; 10011 (4:4011)
 	add $2
 	ld e, a
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld a, $8f
 	ld [hl], a
@@ -152,7 +152,7 @@ Func_10011:: ; 10011 (4:4011)
 	add $2
 	ld e, a
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld a, $8b
 	ld [hl], a
@@ -175,7 +175,7 @@ Func_10011:: ; 10011 (4:4011)
 	add $2
 	ld e, a
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld a, $8f
 	ld [hl], a
@@ -186,7 +186,7 @@ Func_10011:: ; 10011 (4:4011)
 	add $2
 	ld e, a
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld a, $8b
 	ld [hl], a
@@ -282,7 +282,7 @@ Func_101be:: ; 101be
 	push hl
 	ld e, a
 	ld a, c
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld c, l
 	ld b, h
@@ -322,7 +322,7 @@ Func_101be:: ; 101be
 Func_10215: ; 10215
 	push bc
 	push bc
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	call WriteHLToSPPlus4
 	xor a
@@ -1092,14 +1092,14 @@ Func_107d7:: ; 107d7
 	pop bc
 	ld e, $a
 	ld a, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$7
 	ld a, [hl]
 	or a
 	jp nz, .asm_10876
 	ld hl, Data_1095c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
@@ -1121,11 +1121,11 @@ Func_107d7:: ; 107d7
 IF DEF(LANG_EN)
 	ld e, $3
 	ld a, $5
-	call SetStringStartState
+	call text_cursor_pos_set
 ENDC
 	ld hl, Data_10964
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
@@ -1150,11 +1150,11 @@ ENDC
 IF DEF(LANG_EN)
 	ld e, $1
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 ENDC
 	ld hl, Data_1096c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 .asm_108b8: ; 108b8 (4:48b8)
 	call WaitVideoTransfer
@@ -1170,10 +1170,10 @@ ELIF DEF(LANG_EN)
 	ld e, $1
 ENDC
 	ld a, $d
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_10973
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 .asm_108d3: ; 108d3 (4:48d3)
 	pop af
@@ -1185,7 +1185,7 @@ ENDC
 	push de
 	ld e, $3
 	ld a, $e
-	call SetStringStartState
+	call text_cursor_pos_set
 IF DEF(LANG_EN)
 	ld hl, sp+$5
 	ld a, [hl]
@@ -1193,13 +1193,13 @@ IF DEF(LANG_EN)
 	jp nz, .asm_108fb
 	ld e, $3
 	ld a, $f
-	call SetStringStartState
+	call text_cursor_pos_set
 ENDC
 	pop de
 	push de
 	ld hl, Data_10979
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld de, Data_1097e
@@ -1213,7 +1213,7 @@ ENDC
 	push de
 	ld e, $3
 	ld a, $e
-	call SetStringStartState
+	call text_cursor_pos_set
 IF DEF(LANG_EN)
 	ld hl, sp+$5
 	ld a, [hl]
@@ -1221,13 +1221,13 @@ IF DEF(LANG_EN)
 	jp nz, .asm_10912
 	ld e, $3
 	ld a, $f
-	call SetStringStartState
+	call text_cursor_pos_set
 ENDC
 	pop de
 	push de
 	ld hl, Data_10983
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .asm_10912: ; 10912 (4:4912)
@@ -3509,7 +3509,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	ld a, l
 	add $7
 	ld e, $4
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop af
 	pop hl
 	push af
@@ -3522,7 +3522,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	push hl
 	ld hl, Data_11b47
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3531,7 +3531,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	ld a, l
 	add $7
 	ld e, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	pop af
 	push af
@@ -3544,7 +3544,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	push hl
 	ld hl, Data_11b4c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3553,7 +3553,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	ld a, l
 	add $7
 	ld e, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	pop af
 	push af
@@ -3566,7 +3566,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	push hl
 	ld hl, Data_11b51
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3575,7 +3575,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	ld a, l
 	add $7
 	ld e, $a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	pop af
 	push af
@@ -3588,7 +3588,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	push hl
 	ld hl, Data_11b56
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3596,7 +3596,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	ld a, l
 	add $7
 	ld e, $c
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop af
 	ld l, a
 	ld h, $0
@@ -3606,7 +3606,7 @@ Func_11a81: ; 11a81 (4:5a81)
 	push hl
 	ld hl, Data_11b5b
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3659,7 +3659,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	call FarCall
 	ld e, $6
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	jp .asm_11bb6
 
 .asm_11b9b: ; 11b9b (4:5b9b)
@@ -3669,13 +3669,13 @@ Func_11b60: ; 11b60 (4:5b60)
 	call FarCall
 	ld e, $7
 	ld a, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 	jp .asm_11bb6
 
 .asm_11baf: ; 11baf (4:5baf)
 	ld e, $7
 	ld a, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 .asm_11bb6: ; 11bb6 (4:5bb6)
 	pop de
 	ld a, e
@@ -3691,7 +3691,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	jp nz, .asm_11cb2
 	ld hl, Data_11cc1
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp .asm_11cb2
 
@@ -3701,7 +3701,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	push hl
 	ld hl, Data_11cc6
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp .asm_11cb2
@@ -3717,21 +3717,21 @@ Func_11b60: ; 11b60 (4:5b60)
 	jp nz, .asm_11c1a
 	ld hl, Data_11cca
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp .asm_11c1a
 
 .asm_11c07: ; 11c07 (4:5c07)
 	ld hl, Data_11cd3
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp .asm_11c1a
 
 .asm_11c12: ; 11c12 (4:5c12)
 	ld hl, Data_11cdc
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 .asm_11c1a: ; 11c1a (4:5c1a)
 	pop hl
@@ -3744,20 +3744,20 @@ Func_11b60: ; 11b60 (4:5b60)
 	jp nc, .asm_11c41
 	ld e, $8
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_11ce3
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp .asm_11c9e
 
 .asm_11c41: ; 11c41 (4:5c41)
 	ld e, $8
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_11cec
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	push hl
@@ -3774,7 +3774,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	push hl
 	ld hl, Data_11cf0
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp .asm_11c8c
@@ -3787,7 +3787,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	push hl
 	ld hl, Data_11cf3
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .asm_11c8c: ; 11c8c (4:5c8c)
@@ -3798,7 +3798,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	push de
 	ld hl, Data_11cf7
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .asm_11c9e: ; 11c9e (4:5c9e)
@@ -5894,7 +5894,7 @@ IF DEF(LANG_EN)
 	inc a
 	ld e, a
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	jp .asm_12a8b
 ENDC
@@ -5921,7 +5921,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld e, a
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	jp .asm_12a8b
 
@@ -5944,7 +5944,7 @@ IF DEF(LANG_EN)
 	inc a
 	ld e, a
 	ld a, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	jp .asm_12a8b
 ENDC
@@ -5971,7 +5971,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld e, a
 	ld a, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	jp .asm_12a8b
 
@@ -5994,7 +5994,7 @@ IF DEF(LANG_EN)
 	inc a
 	ld e, a
 	ld a, $f
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	jp .asm_12a8b
 ENDC
@@ -6021,7 +6021,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld e, a
 	ld a, $f
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 .asm_12a8b: ; 12a8b (4:6a8b)
 	push bc
@@ -6044,7 +6044,7 @@ ENDC
 	push de
 	ld hl, Data_12ac2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -6105,7 +6105,7 @@ Func_12acb: ; 12acb (4:6acb)
 	rrca
 	and $f
 	pop de
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld a, $8f
 	ld [hl], a
@@ -6131,7 +6131,7 @@ Func_12acb: ; 12acb (4:6acb)
 	rrca
 	and $f
 	pop de
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld a, $8f
 	ld [hl], a
@@ -6156,7 +6156,7 @@ Func_12acb: ; 12acb (4:6acb)
 	rrca
 	and $f
 	pop de
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld a, $8b
 	ld [hl], a
@@ -6181,7 +6181,7 @@ Func_12acb: ; 12acb (4:6acb)
 	rrca
 	and $f
 	pop de
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from wStringStartTilemapAddress
 	ld a, $8c
 	ld [hl], a
@@ -6217,7 +6217,7 @@ Func_12b93: ; 12b93 (4:6b93)
 	call Func_1fbe
 	ld e, $5
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, BANK(Func_17e95)
 	ld [wFarCallDestBank], a
 	ld hl, Func_17e95
@@ -6277,17 +6277,17 @@ Func_12b93: ; 12b93 (4:6b93)
 	call FarCall
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_12c88
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $10
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_12c96
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ret
 
@@ -6616,7 +6616,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	call FarCall
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$e
 	ld l, [hl]
 	ld h, $0
@@ -6633,12 +6633,12 @@ Func_12db3: ; 12db3 (4:6db3)
 	push de
 	ld hl, Data_13074
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld e, $e
 	ld a, $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$f
 	ld l, [hl]
 	ld h, $0
@@ -6655,7 +6655,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	push de
 	ld hl, Data_13077
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -7890,7 +7890,7 @@ ENDC
 .asm_135ce: ; 135ce (4:75ce)
 	ld e, $10
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from_sp_plus $4e
 	ld e, [hl]
 	inc hl
@@ -7901,15 +7901,15 @@ ENDC
 	jr z, .asm_135ed
 	ld hl, Data_13640
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 IF DEF(LANG_EN)
 	ld e, $10
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_13715_en
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 ENDC
 	jp .asm_135fe
@@ -7918,11 +7918,11 @@ ENDC
 IF DEF(LANG_EN)
 	ld hl, Data_13718_en
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $10
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 ENDC
 	read_hl_from_sp_plus $4e
 	ld e, [hl]
@@ -7932,13 +7932,13 @@ ENDC
 	ld hl, Data_1364a
 .asm_135f8
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .asm_135fe: ; 135fe (4:75fe)
 	ld e, $10
 	ld a, $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_hl_from_sp_plus $4e
 	inc hl
 	inc hl
@@ -7952,15 +7952,15 @@ ENDC
 	jr z, .asm_1361f
 	ld hl, Data_13654
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 IF DEF(LANG_EN)
 	ld e, $10
 	ld a, $10
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_1372a_en
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 ENDC
 	jp .asm_13632
@@ -7969,11 +7969,11 @@ ENDC
 IF DEF(LANG_EN)
 	ld hl, Data_1372d_en
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $10
 	ld a, $10
-	call SetStringStartState
+	call text_cursor_pos_set
 ENDC
 	read_hl_from_sp_plus $4e
 	inc hl
@@ -7984,7 +7984,7 @@ ENDC
 	push de
 	ld hl, Data_1365e
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .asm_13632: ; 13632 (4:7632)

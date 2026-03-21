@@ -58,8 +58,7 @@ Func_9d1cb:: ; 9d1cb
 	ld hl, sp+$05
 	ld l, [hl]
 	ld h, $00
-	ld de, $003c
-	call MultiplyHLbyDE
+	mulhl $003c
 	reg16swap de, hl
 	ld hl, sp+$06
 	ld l, [hl]

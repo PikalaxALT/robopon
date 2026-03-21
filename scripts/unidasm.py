@@ -143,7 +143,7 @@ def sanitize_operand(operand: str):
 
 
 def get_disassembly(
-    unidasm: pathlib.Path, rom: pathlib.Path, start: int, end: int
+    unidasm: pathlib.Path, rom: pathlib.Path, start: int, end: int, verbose=True
 ) -> list[Instruction]:
     args = [
         str(unidasm.absolute()),
@@ -166,7 +166,9 @@ def get_disassembly(
         if mnemonic == "ld" and (raw[0] & 0xEF) == 0xE0:
             mnemonic = "ldh"
         operands = [sanitize_operand(op) for op in rest[15:].strip().split(",")]
-        result.append(Instruction(int(offset, 16), raw, mnemonic, operands))
+        result.append(
+            Instruction(int(offset, 16), raw, mnemonic, operands, verbose=verbose)
+        )
     return result
 
 
@@ -226,6 +228,7 @@ class Namespace(argparse.Namespace):
     start: int
     end: int
     unidasm: pathlib.Path = root_dir / "tools" / "unidasm"
+    no_comments: bool = False
 
     @classmethod
     def from_cli(cls, args: list[str] | None = None):
@@ -234,6 +237,7 @@ class Namespace(argparse.Namespace):
         parser.add_argument("start", type=any_int)
         parser.add_argument("end", type=any_int)
         parser.add_argument("--unidasm", type=pathlib.Path)
+        parser.add_argument("-q", dest="no_comments", action="store_true")
         return parser.parse_args(args, cls())
 
 
@@ -279,7 +283,9 @@ def main():
     baserom, symfile = verify_paths(args.version, args.unidasm)
     addr_to_symbol = parse_symfile(symfile)
     addr_to_symbol["HRAM"] |= parse_gbhw_asm(root_dir / "gbhw.asm")
-    instructions = get_disassembly(args.unidasm, baserom, args.start, args.end)
+    instructions = get_disassembly(
+        args.unidasm, baserom, args.start, args.end, verbose=not args.no_comments
+    )
     update_instructions_symbols(instructions, addr_to_symbol)
     for insn in instructions:
         print(insn)

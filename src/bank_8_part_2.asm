@@ -340,17 +340,17 @@ DrawBattleSelectionMenu: ; 20476 (8:4476)
 	pop bc
 	ld e, a
 	ld a, c
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b ; selection cursor
 	push hl
 	ld hl, Data_20591
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld e, $10
 	ld a, $12
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	pop de
 	push bc
@@ -361,7 +361,7 @@ DrawBattleSelectionMenu: ; 20476 (8:4476)
 	push hl
 	ld hl, Data_20594
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp .finish
@@ -369,7 +369,7 @@ DrawBattleSelectionMenu: ; 20476 (8:4476)
 .clear_down_arrow
 	ld hl, Data_20597
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 .finish
 	ld l, $5
@@ -749,12 +749,12 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	call LiteralStringInTree
 	ld e, $e
 	ld a, $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$16
 	push hl
 	ld hl, Data_20951
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -794,7 +794,7 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	call LiteralStringInTree
 	ld hl, sp+$16
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	set_farcall_addrs_hli Func_56d87
 	read_hl_from_sp_plus $36
@@ -827,12 +827,12 @@ PrintMoveInfoInBattle: ; 20754 (8:4754)
 	jp z, .no_more_moves
 	ld e, $10
 	ld a, $9
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8a ; down arrow
 	push hl
 	ld hl, Data_20962
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 .no_more_moves
@@ -2116,8 +2116,7 @@ Func_2126c: ; 2126c (8:526c)
 	pop bc
 	ld l, c
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
 	reg16swap de, hl
@@ -2291,8 +2290,7 @@ Func_213c3: ; 213c3 (8:53c3)
 	pop bc
 	ld l, c
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
 	reg16swap de, hl

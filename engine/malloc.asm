@@ -266,10 +266,10 @@ malloc:: ; 17aba (5:7aba)
 	call FillVisibleAreaWithBlankTile
 	ld e, $1
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_17c44
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld l, $12
 	push hl
@@ -597,39 +597,39 @@ Func_17d7b: ; 17d7b
 	pop bc
 	ld e, $0
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	call GetHLAtSPPlus8
 	push hl
 	read_hl_from wMallocNBlocks
 	push hl
 	ld hl, Data_17e6c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
 	ld e, $2
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	push bc
 	call GetHLAtSPPlus6
 	push hl
 	ld hl, Data_17e77
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
 	ld e, $4
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	push hl
 	push hl
 	ld hl, Data_17e88
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld l, $12

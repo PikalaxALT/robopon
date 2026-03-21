@@ -2126,8 +2126,7 @@ Func_f19f: ; f19f
 	push hl
 	ld l, a
 	ld h, $0
-	ld de, $9c
-	call MultiplyHLbyDE
+	mulhl $9c
 	call Func_ddc2
 	pop hl
 	push hl
@@ -2887,10 +2886,10 @@ Func_f689: ; f689
 	push hl
 	ld e, $0
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_f6cb
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld l, $12
 	push hl
@@ -2908,10 +2907,10 @@ Func_f6a8: ; f6a8 (3:76a8)
 	jp z, Func_f6a8
 	ld e, $0
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_f6d1
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld l, $12
 	push hl

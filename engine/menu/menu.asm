@@ -2758,7 +2758,7 @@ ENDC
 	ld e, [hl]
 	ld hl, sp+$4b
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	ld a, e
 	ld [wFarCallDestBank], a
@@ -2788,7 +2788,7 @@ ENDC
 	push hl
 	ld hl, Data_151bc
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld hl, sp+$4a
@@ -2822,7 +2822,7 @@ ENDC
 	ld e, [hl]
 	ld hl, sp+$4b
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	ld a, e
 	ld [wFarCallDestBank], a
@@ -2852,7 +2852,7 @@ ENDC
 	push hl
 	ld hl, Data_151bf
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld hl, sp+$4a

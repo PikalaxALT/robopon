@@ -50,8 +50,7 @@ Func_83e56:: ; 83e56 (20:7e56)
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	reg16swap de, hl
 	ld hl, sp+$a
 	ld l, [hl]
@@ -70,8 +69,7 @@ Func_83e56:: ; 83e56 (20:7e56)
 	ld hl, wc7a1
 	ld l, [hl]
 	ld h, $0
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	ld a, [wc7a2]
 	ld e, a
 	ld d, $0
@@ -137,8 +135,7 @@ Func_83e56:: ; 83e56 (20:7e56)
 	ld b, a
 	push bc
 	call GetHLAtSPPlus4
-	ld de, $5a0
-	call MultiplyHLbyDE
+	mulhl $5a0
 	pop bc
 	add hl, bc
 	ld a, l

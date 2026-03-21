@@ -76,54 +76,54 @@ Func_9310e:
 	call FarCall
 	ld e, $1
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_93224
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $3
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_93235
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $5
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_93240
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $7
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_93256
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $9
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9325f
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $b
 	ld a, $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_93271
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_93281
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld l, $12
@@ -155,7 +155,7 @@ Func_931c0: ; 931c0 (24:71c0)
 	push hl
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	push hl
 	inc l
@@ -165,7 +165,7 @@ Func_931c0: ; 931c0 (24:71c0)
 	push hl
 	ld hl, Data_93295
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_931ec
@@ -175,7 +175,7 @@ Func_931df: ; 931df (24:71df)
 	push hl
 	ld hl, Data_932a9
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_931ec: ; 931ec (24:71ec)
@@ -263,8 +263,7 @@ Func_932bd:: ; 932bd (24:72bd)
 	inc hl
 	ld l, [hl]
 	ld h, $0
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus6
@@ -559,8 +558,7 @@ Func_934b6: ; 934b6 (24:74b6)
 	inc hl
 	ld l, [hl]
 	ld h, $0
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $e
@@ -1225,8 +1223,7 @@ Func_93941:: ; 93941 (24:7941)
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	reg16swap de, hl
 	ld hl, sp+$8
 	ld l, [hl]

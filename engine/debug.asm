@@ -267,7 +267,7 @@ Func_bc170: ; bc170 (2f:4170)
 	push hl
 	ld hl, Data_bc1f1
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp .quit
@@ -482,7 +482,7 @@ PrintDebugMenuText: ; bc2be (2f:42be)
 	call PrintNumSigned
 	ld hl, sp+$2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	jp .incrementPointer
@@ -723,7 +723,7 @@ Func_bc4a6:
 	call Func_bc486
 	ld e, $8
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	pop de
 	pop hl
@@ -890,7 +890,7 @@ Func_bc71f: ; bc71f (2f:471f)
 	ld a, [hl]
 	add $2
 	add c
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	ld hl, $d
 	add hl, bc
@@ -1044,7 +1044,7 @@ Func_bc788: ; bc788 (2f:4788)
 	ld hl, sp+$7
 	ld a, [hl]
 	add $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	push bc
 	call GetHLAtSPPlus10
@@ -1199,7 +1199,7 @@ Func_bc878:
 	ld hl, sp+$b
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $8f
 	call Func_bc170
 .asm_bc8ff ; bc8ff (2f:48ff)
@@ -1214,7 +1214,7 @@ Func_bc878:
 	ld hl, sp+$b
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $8b
 	call Func_bc170
 	pop de
@@ -1436,7 +1436,7 @@ Func_bc934:
 	ld hl, sp+$c
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $8f
 	call Func_bc170
 .asm_bca8b ; bca8b (2f:4a8b)
@@ -1450,7 +1450,7 @@ Func_bc934:
 	ld hl, sp+$c
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $8b
 	call Func_bc170
 .asm_bcaa2 ; bcaa2 (2f:4aa2)
@@ -4231,7 +4231,7 @@ Func_bde4b: ; bde4b (2f:5e4b)
 	inc hl
 	ld d, [hl]
 	push de
-	call PlaceString
+	call printf
 	pop bc
 	ret
 
@@ -4351,7 +4351,7 @@ Func_bde59: ; bde59 (2f:5e59)
 	ld hl, sp+$7
 	ld a, [hl]
 	add $2
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	push bc
 	call GetHLAtSPPlus6
@@ -4481,7 +4481,7 @@ Func_bdf27:
 	ld hl, sp+$b
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $8f
 	call Func_bc170
 .asm_bdfaf ; bdfaf (2f:5faf)
@@ -4496,7 +4496,7 @@ Func_bdf27:
 	ld hl, sp+$b
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $8b
 	call Func_bc170
 	pop af
@@ -4722,7 +4722,7 @@ Func_bdfea:
 	ld hl, sp+$f
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $8f
 	call Func_bc170
 .asm_be14d ; be14d (2f:614d)
@@ -4737,7 +4737,7 @@ Func_bdfea:
 	ld hl, sp+$f
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $8b
 	call Func_bc170
 .asm_be165 ; be165 (2f:6165)
@@ -5702,19 +5702,19 @@ Func_bebdb: ; bebdb (2f:6bdb)
 .asm_bebe5 ; bebe5 (2f:6be5)
 	ld e, $1
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_long_from_and_push wGameTimer
 	push_long 216840
 	call StackDivideLongSigned
 	ld hl, Data_bec5b
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
 	ld e, $3
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	read_long_from_and_push wGameTimer
 	push_long 3614
 	call StackDivideLongSigned
@@ -5722,7 +5722,7 @@ Func_bebdb: ; bebdb (2f:6bdb)
 	call StackModulusLongSigned
 	ld hl, Data_bec5e
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -6749,35 +6749,35 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	call FarRequestVideoData
 	ld e, $1
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	call GetHLAtSPPlus7
 	push hl
 	ld hl, Data_bf707
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld e, $3
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
 	push hl
 	ld hl, Data_bf714
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld e, $5
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	push hl
 	push hl
 	ld hl, Data_bf71b
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld l, $12
@@ -6998,7 +6998,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	call FillMemory
 	ld e, $1
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop af
 	pop de
 	pop bc
@@ -7009,19 +7009,19 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	push hl
 	ld hl, Data_bf724
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	call Func_bf397
 	push hl
 	ld e, $3
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	push hl
 	ld hl, Data_bf730
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	set_farcall_addrs_hli PushBGMapRegion_

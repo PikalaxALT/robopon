@@ -968,8 +968,7 @@ Func_9a8c3:: ; 9a8c3
 	ld hl, sp+$03
 	ld l, [hl]
 	ld h, $00
-	ld de, $003c
-	call MultiplyHLbyDE
+	mulhl $003c
 	reg16swap de, hl
 	ld hl, sp+$04
 	ld l, [hl]
@@ -997,10 +996,10 @@ Func_9a8c3:: ; 9a8c3
 	inc a
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9abb6
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$08
 	ld a, [hl]
@@ -1068,24 +1067,24 @@ Func_9a8c3:: ; 9a8c3
 	inc a
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9abcf
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$08
 	ld a, [hl]
 	add a, $03
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$07
 	ld l, [hl]
 	ld h, $00
 	push hl
 	ld hl, Data_9abe5
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld hl, sp+$08
@@ -1145,20 +1144,20 @@ Func_9a8c3:: ; 9a8c3
 	inc a
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9abf9
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$08
 	ld a, [hl]
 	add a, $03
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9ac0e
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$08
 	ld a, [hl]
@@ -1204,20 +1203,20 @@ Func_9a8c3:: ; 9a8c3
 	inc a
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9ac16
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$08
 	ld a, [hl]
 	add a, $03
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9ac2c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$08
 	ld a, [hl]
@@ -1286,20 +1285,20 @@ Func_9a8c3:: ; 9a8c3
 	inc a
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9ac34
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$06
 	ld a, [hl]
 	add a, $03
 	ld e, a
 	ld a, $01
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_9ac4c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$06
 	ld a, [hl]

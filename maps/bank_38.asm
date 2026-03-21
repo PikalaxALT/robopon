@@ -1032,8 +1032,7 @@ Func_e1b27: ; e1b27 (38:5b27)
 	push bc
 	push de
 	ld h, $0
-	ld de, $78
-	call MultiplyHLbyDE
+	mulhl $78
 	reg16swap de, hl
 	push de
 	ld a, e
@@ -1153,8 +1152,7 @@ Func_e1bdb: ; e1bdb (38:5bdb)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	ld de, 27
-	call MultiplyHLbyDE
+	mulhl 27
 	ld de, Data_e10c0
 	add hl, de
 	reg16swap de, hl
@@ -1272,17 +1270,17 @@ Func_e1c97: ; e1c97 (38:5c97)
 	pop bc
 	ld e, $2
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_e1d74
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $8
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_e1d88
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$0
 	ld [hl], $0
@@ -1555,17 +1553,17 @@ Func_e1e83:: ; e1e83 (38:5e83)
 	call FarCall
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_e1eeb
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld e, $10
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_e1ef9
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld l, $12
 	push hl
@@ -1667,7 +1665,7 @@ Func_e262f: ; e262f (38:662f)
 	call FarCall
 	ld e, $10
 	ld a, $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	set_farcall_addrs_hli CheckEventFlag
 	ld hl, $1c
 	call FarCall
@@ -1681,7 +1679,7 @@ Func_e262f: ; e262f (38:662f)
 	jp nz, Func_e2677
 	ld hl, Data_e26ce
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_e26cc
 
@@ -1709,7 +1707,7 @@ Func_e2677: ; e2677 (38:6677)
 	jp nz, Func_e26ba
 	ld hl, Data_e26d7
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_e26cc
 
@@ -1724,7 +1722,7 @@ Func_e26ba: ; e26ba (38:66ba)
 	inc hl
 	ld d, [hl]
 	push de
-	call PlaceString
+	call printf
 	pop bc
 Func_e26cc: ; e26cc (38:66cc)
 	pop bc
@@ -3386,8 +3384,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld e, a
 	ld d, $0
 	add hl, de
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	ld c, l
 	ld b, h
 	ld hl, wTimeSetDaysTensDigit

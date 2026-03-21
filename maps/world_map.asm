@@ -289,8 +289,7 @@ WorldMap:: ; e220d
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	reg16swap de, hl
 	ld hl, $88
 	add hl, sp

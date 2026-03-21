@@ -1059,7 +1059,7 @@ ENDC
 IF DEF(LANG_EN)
 	ld hl, Data_cb6e
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 ENDC
 	ld a, [wOverworldTilemapSelector]
@@ -2402,7 +2402,7 @@ ENDC
 	ld hl, sp+$9
 	ld a, [hl]
 	add $5
-	call SetStringStartState
+	call text_cursor_pos_set
 	call GetHLAtSPPlus8
 IF DEF(LANG_JP)
 	ld de, $22
@@ -2434,7 +2434,7 @@ ENDC
 	push hl
 	ld hl, Data_d75a
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 IF DEF(LANG_EN)
@@ -2447,7 +2447,7 @@ Func_d63d: ; d63d (3:563d)
 	push af
 	ld hl, Data_d760
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld a, $19
 	ld [wFarCallDestBank], a
@@ -2463,7 +2463,7 @@ Func_d63d: ; d63d (3:563d)
 	call LiteralStringInTree
 	ld hl, sp+$a
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_d665: ; d665 (3:5665)
 	pop af

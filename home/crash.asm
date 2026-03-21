@@ -30,32 +30,32 @@ IF DEF(LANG_JP)
 	call PlaceStringDEatCoordHL
 	ld e, $5
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	push hl
 	ld hl, Data_1da2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld e, $7
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	push bc
 	ld hl, Data_1daa
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld e, $9
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	push de
 	ld hl, Data_1db0
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld l, $12

@@ -26,8 +26,7 @@ Func_5c0b2::
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, $7ed5
 	add hl, de
 	push hl

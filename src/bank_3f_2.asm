@@ -175,7 +175,7 @@ Func_fd84a: ; fd84a (3f:584a)
 	ld e, [hl]
 	ld hl, sp+$3
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, $3f
 	ld [wFarCallDestBank], a
 	pop de
@@ -188,7 +188,7 @@ Func_fd84a: ; fd84a (3f:584a)
 	call LiteralStringInTree
 	ld hl, sp+$4
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop de
 	inc de
@@ -846,10 +846,10 @@ Func_fde2e: ; fde2e (3f:5e2e)
 Func_fde41: ; fde41 (3f:5e41)
 	ld e, $8
 	ld a, $8
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_fdf06
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld a, $2
 	ld [wEnableAttrMapTransfer], a

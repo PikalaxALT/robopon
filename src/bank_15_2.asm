@@ -270,7 +270,7 @@ Func_5712f:: ; 5712f (15:712f)
 	call GetSRAMBank
 	ld e, $7
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop af
 	rlca
 	rlca
@@ -288,7 +288,7 @@ Func_5712f:: ; 5712f (15:712f)
 	push hl
 	ld hl, Data_571bb
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop af
@@ -746,7 +746,7 @@ Func_574ce: ; 574ce (15:74ce)
 	push hl
 	ld hl, Data_57659
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_57532
@@ -758,7 +758,7 @@ Func_57522: ; 57522 (15:7522)
 	push hl
 	ld hl, Data_57662
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_57532: ; 57532 (15:7532)
@@ -767,12 +767,12 @@ Func_57532: ; 57532 (15:7532)
 	call FarCall
 	ld e, $3
 	ld a, $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$9
 	push hl
 	ld hl, Data_5766a
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld de, Data_5766d
@@ -789,7 +789,7 @@ Func_57532: ; 57532 (15:7532)
 	push hl
 	ld hl, Data_57675
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop af
@@ -804,7 +804,7 @@ Func_57584: ; 57584 (15:7584)
 	push af
 	ld hl, Data_57678
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop af
 Func_5758e: ; 5758e (15:758e)
@@ -821,7 +821,7 @@ Func_5758e: ; 5758e (15:758e)
 	push hl
 	ld hl, Data_57682
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld de, Data_57688
@@ -835,7 +835,7 @@ Func_575b5: ; 575b5 (15:75b5)
 	call PutLongFromHLOnStack
 	ld hl, Data_5769d
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -848,7 +848,7 @@ Func_575b5: ; 575b5 (15:75b5)
 	push hl
 	ld hl, Data_576b0
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	read_hl_from wGameTimer + 2
@@ -865,10 +865,10 @@ Func_575b5: ; 575b5 (15:75b5)
 	push hl
 	ld e, $10
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_576b3
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	push hl
@@ -881,7 +881,7 @@ Func_575b5: ; 575b5 (15:75b5)
 	call Func_2230
 	ld hl, Data_576bf
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	ld de, $3c
@@ -1483,7 +1483,7 @@ Func_57a28: ; 57a28 (15:7a28)
 	call PlaceStringDEatCoordHL
 	ld e, $9
 	ld a, $f
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$37
 	ld l, [hl]
 	ld h, $0
@@ -1496,12 +1496,12 @@ Func_57a28: ; 57a28 (15:7a28)
 	push de
 	ld hl, Data_57bba
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld e, $5
 	ld a, $f
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	ld a, e
 	cp $3
@@ -1514,33 +1514,33 @@ Func_57a28: ; 57a28 (15:7a28)
 	jp nz, Func_57ae8
 	ld hl, Data_57bbd
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_57ae8
 
 Func_57aca: ; 57aca (15:7aca)
 	ld hl, Data_57bc3
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_57ae8
 
 Func_57ad5: ; 57ad5 (15:7ad5)
 	ld hl, Data_57bc9
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_57ae8
 
 Func_57ae0: ; 57ae0 (15:7ae0)
 	ld hl, Data_57bcf
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_57ae8: ; 57ae8 (15:7ae8)
 	ld e, $7
 	ld a, $f
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop af
 	cp $3
 	jp z, Func_57b24
@@ -1552,28 +1552,28 @@ Func_57ae8: ; 57ae8 (15:7ae8)
 	jp nz, Func_57b2c
 	ld hl, Data_57bd7
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_57b2c
 
 Func_57b0e: ; 57b0e (15:7b0e)
 	ld hl, Data_57bdd
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_57b2c
 
 Func_57b19: ; 57b19 (15:7b19)
 	ld hl, Data_57be3
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_57b2c
 
 Func_57b24: ; 57b24 (15:7b24)
 	ld hl, Data_57be9
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_57b2c: ; 57b2c (15:7b2c)
 	set_farcall_addrs_hli Func_101be
@@ -1667,7 +1667,7 @@ Func_57bf1: ; 57bf1 (15:7bf1)
 	inc a
 	jp z, Func_57c02
 	ld a, l
-	call SetStringStartState
+	call text_cursor_pos_set
 Func_57c02: ; 57c02 (15:7c02)
 	pop bc
 	ld l, c
@@ -1678,7 +1678,7 @@ Func_57c02: ; 57c02 (15:7c02)
 	push bc
 	ld hl, Data_57c3e
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_57c3d
@@ -1692,7 +1692,7 @@ Func_57c1b: ; 57c1b (15:7c1b)
 	push bc
 	ld hl, Data_57c43
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_57c3d
@@ -1701,7 +1701,7 @@ Func_57c33: ; 57c33 (15:7c33)
 	push bc
 	ld hl, Data_57c47
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_57c3d: ; 57c3d (15:7c3d)

@@ -419,14 +419,14 @@ Func_15780: ; 15780 (5:5780)
 	jp nc, Func_157aa
 	ld e, $10
 	ld a, $12
-	call SetStringStartState
+	call text_cursor_pos_set
 IF DEF(LANG_EN)
 	ld hl, $8a
 	push hl
 ENDC
 	ld hl, Data_157c3
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 IF DEF(LANG_EN)
 	pop bc
@@ -640,7 +640,7 @@ IF DEF(LANG_JP)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$75
@@ -649,7 +649,7 @@ IF DEF(LANG_JP)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $9
+	ld de, warehouseBot_Unk09
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$76
@@ -658,7 +658,7 @@ IF DEF(LANG_JP)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $a
+	ld de, warehouseBot_Unk0A
 	add hl, de
 	ld e, [hl]
 	ld hl, sp+$77
@@ -691,7 +691,7 @@ ELIF DEF(LANG_EN)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $9
+	ld de, warehouseBot_Unk08
 	add hl, de
 	add hl, bc
 	ld a, [hl]
@@ -746,7 +746,7 @@ Func_1598d: ; 1598d (5:598d)
 	call Func_2230
 	ld hl, Data_15aa2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 IF DEF(LANG_JP)
 	ld de, Data_15aa4
@@ -1054,7 +1054,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
 	ld c, l
 	ld b, h
@@ -1075,7 +1075,7 @@ Func_15c59: ; 15c59 (5:5c59)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
 	ld c, l
 	ld b, h
@@ -1135,12 +1135,25 @@ Func_15d29: ; 15d29 (5:5d29)
 	jp c, Func_15de5
 	ld hl, sp+$3
 	ld a, [hl]
+IF DEF(LANG_EN)
+	call GetHLAtSPPlus7
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, -$14
+	add hl, de
+	push hl
+ENDC
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
+IF DEF(LANG_JP)
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus7
@@ -1153,10 +1166,15 @@ Func_15d29: ; 15d29 (5:5d29)
 	ld hl, -$14
 	add hl, de
 	add hl, bc
+ELIF DEF(LANG_EN)
+	pop de
+	add hl, de
+ENDC
 	ld [hl], a
 	ld hl, sp+$4
 	ld a, [hl]
 	call GetSRAMBank
+IF DEF(LANG_JP)
 	set_farcall_addrs_hli Func_4ec2b
 	ld e, $1
 	ld a, [wCurItem]
@@ -1171,8 +1189,15 @@ Func_15d29: ; 15d29 (5:5d29)
 	ld a, [hl]
 	call FarCall
 	jp Func_15db0
-
 Func_15da0: ; 15da0 (5:5da0)
+ELIF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_53c88
+	ld hl, sp+$1
+	ld a, [hl]
+	call FarCall
+	cp $1
+	jp nz, Func_15db0
+ENDC
 	call GetHLAtSPPlus7
 	ld de, $7
 	add hl, de
@@ -1183,10 +1208,67 @@ Func_15da0: ; 15da0 (5:5da0)
 	ld a, [hl]
 	sbc $0
 	ld [hl], a
+IF DEF(LANG_EN)
+	call GetHLAtSPPlus7
+	ld de, $7
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	call GetHLAtSPPlus7
+	ld de, $9
+	add hl, de
+	ld a, c
+	sub [hl]
+	ld c, a
+	inc hl
+	ld a, b
+	sbc a, [hl]
+	ld b, a
+	call GetHLAtSPPlus7
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	call CompareHLtoBC
+	jp c, Func_15db0
+	call GetHLAtSPPlus7
+	ld de, $5
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, $0
+	call CompareHLtoDE
+	jp nc, Func_15db0
+	call GetHLAtSPPlus7
+	ld de, $5
+	add hl, de
+	ld a, [hl]
+	sub $1
+	ld [hl], a
+	inc hl
+	ld a, [hl]
+	sbc a, $0
+	ld [hl], a
+ENDC
 Func_15db0: ; 15db0 (5:5db0)
+IF DEF(LANG_EN)
+	call GetHLAtSPPlus7
+	inc hl
+	inc hl
+	inc hl
+	ld de, $0
+	ld [hl], d
+	inc hl
+	ld [hl], e
+ENDC
 	set_farcall_addrs_hli Func_fb2ed
 	ld a, [wc2e9]
 	call FarCall
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus7
 	inc hl
 	inc hl
@@ -1202,6 +1284,7 @@ Func_15db0: ; 15db0 (5:5db0)
 	ld [hl], e
 	inc hl
 	ld [hl], d
+ENDC
 	ld a, $ff
 	ld [wCurItem], a
 	ld hl, $8000
@@ -1222,11 +1305,12 @@ Func_15df5: ; 15df5 (5:5df5)
 	call GetBanks
 	ld hl, sp+$4
 	ld [hl], a
+IF DEF(LANG_JP)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
 	ld c, l
 	ld b, h
@@ -1240,6 +1324,26 @@ Func_15df5: ; 15df5 (5:5df5)
 	ld hl, -$14
 	add hl, de
 	add hl, bc
+ELIF DEF(LANG_EN)
+	call GetHLAtSPPlus7
+	inc hl
+	inc hl
+	inc hl
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	ld hl, -$14
+	add hl, de
+	push hl
+	ld hl, wc2e9
+	ld l, [hl]
+	ld h, 0
+	get_party_bot
+	ld de, warehouseBot_Unk08
+	add hl, de
+	pop de
+	add hl, de
+ENDC
 	ld e, [hl]
 	ld hl, sp+$1
 	ld [hl], e
@@ -1334,17 +1438,26 @@ Func_15ec2: ; 15ec2 (5:5ec2)
 	ld a, [hl]
 	cp $3
 	jp nc, Func_15f9b
+IF DEF(LANG_EN)
+	ld hl, sp+$0
+	ld c, [hl]
+	ld b, $0
+ENDC
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
+IF DEF(LANG_JP)
 	reg16swap de, hl
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
 	add hl, de
+ELIF DEF(LANG_EN)
+	add hl, bc
+ENDC
 	ld e, [hl]
 	ld hl, sp+$3
 	ld [hl], e
@@ -1377,7 +1490,7 @@ Func_15f34: ; 15f34 (5:5f34)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -1393,7 +1506,7 @@ Func_15f5c: ; 15f5c (5:5f5c)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -1646,7 +1759,7 @@ Func_16104:: ; 16104 (5:6104)
 	ld l, a
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$0
@@ -1762,7 +1875,7 @@ Func_16128: ; 16128 (5:6128)
 	ld hl, sp+$5
 	ld a, [hl]
 	add $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	jp Func_16204
 
 Func_161c9: ; 161c9 (5:61c9)
@@ -1784,7 +1897,7 @@ Func_161c9: ; 161c9 (5:61c9)
 	ld hl, sp+$5
 	ld a, [hl]
 	add $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	jp Func_16204
 
 Func_161f1: ; 161f1 (5:61f1)
@@ -1799,11 +1912,11 @@ Func_161f1: ; 161f1 (5:61f1)
 	ld hl, sp+$5
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 Func_16204: ; 16204 (5:6204)
 	ld hl, Data_16367
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_1620c: ; 1620c (5:620c)
 	ld c, $0
@@ -1831,12 +1944,12 @@ Func_1620e: ; 1620e (5:620e)
 	ld hl, sp+$7
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8f
 	push hl
 	ld hl, Data_16369
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_1624a: ; 1624a (5:624a)
@@ -1862,12 +1975,12 @@ Func_1624a: ; 1624a (5:624a)
 	ld hl, sp+$7
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8c
 	push hl
 	ld hl, Data_1636c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_1627c: ; 1627c (5:627c)
@@ -1898,7 +2011,7 @@ Func_16281: ; 16281 (5:6281)
 	ld hl, sp+$5
 	ld a, [hl]
 	add $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	jp Func_162f9
 
 Func_162bb: ; 162bb (5:62bb)
@@ -1920,7 +2033,7 @@ Func_162bb: ; 162bb (5:62bb)
 	ld hl, sp+$5
 	ld a, [hl]
 	add $b
-	call SetStringStartState
+	call text_cursor_pos_set
 	jp Func_162f9
 
 Func_162e5: ; 162e5 (5:62e5)
@@ -1935,13 +2048,13 @@ Func_162e5: ; 162e5 (5:62e5)
 	ld hl, sp+$5
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 Func_162f9: ; 162f9 (5:62f9)
 	ld hl, $8b
 	push hl
 	ld hl, Data_1636f
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1977,7 +2090,7 @@ Func_162f9: ; 162f9 (5:62f9)
 	add [hl]
 	add $fe
 	pop de
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop bc
 	read_hl_from_sp_plus $c
 	push hl
@@ -1992,7 +2105,7 @@ Func_162f9: ; 162f9 (5:62f9)
 	push hl
 	ld hl, Data_16372
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_16364
@@ -2000,7 +2113,7 @@ Func_162f9: ; 162f9 (5:62f9)
 Func_1635c: ; 1635c (5:635c)
 	ld hl, Data_16375
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_16364: ; 16364 (5:6364)
 	add sp, $c
@@ -2158,7 +2271,7 @@ Func_16450: ; 16450 (5:6450)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	ld de, $8
+	ld de, warehouseBot_Unk08
 	add hl, de
 	reg16swap de, hl
 	ld hl, sp+$7
@@ -3859,12 +3972,12 @@ Func_170f9: ; 170f9 (5:70f9)
 	ld hl, sp+$9
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8c
 	push hl
 	ld hl, Data_171a6
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_17159: ; 17159 (5:7159)
@@ -4127,12 +4240,12 @@ Func_17352: ; 17352 (5:7352)
 	ld hl, sp+$25
 	ld a, [hl]
 	dec a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8c
 	push hl
 	ld hl, Data_1739e
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_17371: ; 17371 (5:7371)
@@ -4172,13 +4285,13 @@ Func_173a1: ; 173a1 (5:73a1)
 	inc a
 	jp z, Func_173b2
 	ld a, l
-	call SetStringStartState
+	call text_cursor_pos_set
 Func_173b2: ; 173b2 (5:73b2)
 	pop bc
 	push bc
 	ld hl, Data_173c1
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld hl, $4000
@@ -4420,10 +4533,10 @@ Func_17863:: ; 17863 (5:7863)
 	ld hl, sp+$5
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_1796b
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_178e5: ; 178e5 (5:78e5)
 	pop bc
@@ -4439,12 +4552,12 @@ Func_178e5: ; 178e5 (5:78e5)
 	ld hl, sp+$3
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_1796d
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	call GetHLAtSPPlus8
@@ -4480,7 +4593,7 @@ Func_178e5: ; 178e5 (5:78e5)
 	add [hl]
 	add $fe
 	pop de
-	call SetStringStartState
+	call text_cursor_pos_set
 	call GetHLAtSPPlus8
 	push hl
 	read_hl_from_sp_plus $c
@@ -4495,7 +4608,7 @@ Func_178e5: ; 178e5 (5:78e5)
 	push hl
 	ld hl, Data_17970
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_17965
@@ -4503,7 +4616,7 @@ Func_178e5: ; 178e5 (5:78e5)
 Func_1795d: ; 1795d (5:795d)
 	ld hl, Data_17973
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 Func_17965: ; 17965 (5:7965)
 	pop bc

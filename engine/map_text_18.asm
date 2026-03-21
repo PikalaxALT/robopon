@@ -98,7 +98,7 @@ PrintMapText:: ; 60621
 	ld e, [hl]
 	ld hl, sp+$49
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	push de
 	ld a, e
@@ -170,7 +170,7 @@ PrintMapText:: ; 60621
 	jp z, .stack_manip
 	ld hl, sp+$4
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp .asm_607dc
 
@@ -190,7 +190,7 @@ PrintMapText:: ; 60621
 .asm_6075b ; 6075b (18:475b)
 	ld hl, sp+$46
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld hl, sp+$46
 	ld a, [hl]
@@ -219,7 +219,7 @@ PrintMapText:: ; 60621
 .asm_6078d ; 6078d (18:478d)
 	ld hl, sp+$46
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	read_hl_from_sp_plus $45
 	inc hl
@@ -254,7 +254,7 @@ PrintMapText:: ; 60621
 	ld [hl], $1
 	read_hl_from_sp_plus $45
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp .asm_607dc
 

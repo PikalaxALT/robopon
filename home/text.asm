@@ -109,8 +109,7 @@ OverworldStopSFX:: ; 150b
 	xor a
 	jr OverworldPlaySFX
 
-PlaceString:: ; 150e (0:150e)
-; printf
+printf:: ; 150e (0:150e)
 ; source: on stack
 ; dest: screen at (wStringDestX, wStringDestY)
 ; additional arguments on stack, if applicable
@@ -302,14 +301,14 @@ ENDC
 	push bc
 	ld e, l
 	ld d, h
-	; pass sp-$c to PlaceString later
+	; pass sp-$c to printf later
 	ld hl, sp-$c
 	add sp, -$c
 	push hl
 	reg16swap de, hl
 	ld bc, 10 ; destroyed immediately in PrintNumSigned
 	call PrintNumSigned ; de contains [sp]=sp+2, hl contains the s16 we just read
-	call PlaceString
+	call printf
 	add sp, $e
 	pop bc
 	pop de
@@ -333,7 +332,7 @@ ENDC
 	inc bc
 	push bc
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop de
@@ -374,7 +373,7 @@ ENDC
 	call PrintNum
 	pop bc
 	pop bc
-	call PlaceString
+	call printf
 	add sp, $e
 	pop bc
 	pop de

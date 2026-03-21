@@ -69,8 +69,7 @@ Func_fb0db:: ; fb0db (3e:70db)
 	push af
 	ld l, e
 	ld h, $0
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	ld de, sSRAMRobots
 	add hl, de
 	reg16swap de, hl
@@ -646,12 +645,12 @@ OptionsMenu_Redraw::
 	add e
 	add $3
 	pop de
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_fb696
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld a, [wOptionsMenu_StereoSelect]
@@ -673,12 +672,12 @@ OptionsMenu_Redraw::
 	add e
 	add $3
 	pop de
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8c
 	push hl
 	ld hl, Data_fb699
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld l, $7
@@ -790,7 +789,7 @@ Func_fb6df: ; fb6df (3e:76df)
 	ld e, c
 	ld hl, sp+$6
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	inc l
 	dec l
@@ -798,7 +797,7 @@ Func_fb6df: ; fb6df (3e:76df)
 	push hl
 	ld hl, Data_fb773
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	jp Func_fb726
@@ -812,7 +811,7 @@ Func_fb701: ; fb701 (3e:7701)
 	push hl
 	ld hl, Data_fb778
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -824,7 +823,7 @@ Func_fb718: ; fb718 (3e:7718)
 	push hl
 	ld hl, Data_fb77c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -851,7 +850,7 @@ Func_fb734: ; fb734 (3e:7734)
 	ld e, c
 	ld hl, sp+$6
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop af
 	pop bc
 	push af
@@ -862,7 +861,7 @@ Func_fb734: ; fb734 (3e:7734)
 	push hl
 	ld hl, Data_fb77f
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1152,7 +1151,7 @@ Func_fb8e9:: ; fb8e9 (3e:78e9)
 	call Func_fb0c6
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	ld a, [wBackupMapGroup]
 	or a
@@ -1163,7 +1162,7 @@ Func_fb8e9:: ; fb8e9 (3e:78e9)
 	push hl
 	ld hl, Data_fba37
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	jp Func_fb942
@@ -1174,7 +1173,7 @@ Func_fb934: ; fb934 (3e:7934)
 	push hl
 	ld hl, Data_fba3c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -1188,7 +1187,7 @@ Func_fb945: ; fb945 (3e:7945)
 	push hl
 	ld hl, Data_fba3f
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -1236,7 +1235,7 @@ Func_fb998: ; fb998 (3e:7998)
 	call Func_fb0c6
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	ld a, [wBackupMapGroup]
 	or a
@@ -1247,7 +1246,7 @@ Func_fb998: ; fb998 (3e:7998)
 	push hl
 	ld hl, Data_fba42
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	jp Func_fba03
@@ -1258,7 +1257,7 @@ Func_fb9f5: ; fb9f5 (3e:79f5)
 	push hl
 	ld hl, Data_fba4b
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -1272,7 +1271,7 @@ Func_fba06: ; fba06 (3e:7a06)
 	push hl
 	ld hl, Data_fba56
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -1483,7 +1482,7 @@ Func_fbbfb: ; fbbfb (3e:7bfb)
 	call PlaceStringDEatCoordHL
 	ld e, $2
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$0
 	call PutLongFromHLOnStack
 	ld hl, $0
@@ -1496,7 +1495,7 @@ Func_fbbfb: ; fbbfb (3e:7bfb)
 	call PutLongFromHLOnStack
 	ld hl, Data_fbd2b
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1515,7 +1514,7 @@ Func_fbc70: ; fbc70 (3e:7c70)
 	call PutLongFromHLOnStack
 	ld hl, Data_fbd36
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1534,7 +1533,7 @@ Func_fbc95: ; fbc95 (3e:7c95)
 	call PutLongFromHLOnStack
 	ld hl, Data_fbd40
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1553,7 +1552,7 @@ Func_fbcba: ; fbcba (3e:7cba)
 	call PutLongFromHLOnStack
 	ld hl, Data_fbd49
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1572,7 +1571,7 @@ Func_fbcdf: ; fbcdf (3e:7cdf)
 	call PutLongFromHLOnStack
 	ld hl, Data_fbd51
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -1583,7 +1582,7 @@ Func_fbd04: ; fbd04 (3e:7d04)
 	call PutLongFromHLOnStack
 	ld hl, Data_fbd58
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc

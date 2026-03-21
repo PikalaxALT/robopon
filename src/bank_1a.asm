@@ -114,7 +114,7 @@ Func_6810b:: ; 6810b (1a:410b)
 	jp nz, Func_6817f
 	ld hl, Data_681a2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_68184
 
@@ -132,7 +132,7 @@ Func_68187: ; 68187 (1a:4187)
 	jp nz, Func_68199
 	ld hl, Data_681a4
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	jp Func_6819e
 
@@ -630,7 +630,7 @@ Func_684dc: ; 684dc (1a:44dc)
 Func_68516: ; 68516 (1a:4516)
 	ld e, $8
 	ld a, $3
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, wTimeSetDaysOnesDigit
 	ld l, [hl]
 	ld h, $0
@@ -649,7 +649,7 @@ Func_68516: ; 68516 (1a:4516)
 	push hl
 	ld hl, Data_688af
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -979,7 +979,7 @@ Func_6860e: ; 6860e (1a:460e)
 	call PlaceStringDEatCoordHL
 	ld e, $8
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, [wc388]
 	cp $a
 	jp nc, Func_68794
@@ -989,7 +989,7 @@ Func_6860e: ; 6860e (1a:460e)
 	push hl
 	ld hl, Data_688d4
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_687a4
@@ -1001,7 +1001,7 @@ Func_68794: ; 68794 (1a:4794)
 	push hl
 	ld hl, Data_688dd
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_687a4: ; 687a4 (1a:47a4)
@@ -1014,7 +1014,7 @@ Func_687a4: ; 687a4 (1a:47a4)
 	push hl
 	ld hl, Data_688e5
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_687cf
@@ -1026,13 +1026,13 @@ Func_687bf: ; 687bf (1a:47bf)
 	push hl
 	ld hl, Data_688ed
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_687cf: ; 687cf (1a:47cf)
 	ld e, $a
 	ld a, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld a, [wc38b]
 	cp $a
 	jp nc, Func_687f1
@@ -1042,7 +1042,7 @@ Func_687cf: ; 687cf (1a:47cf)
 	push hl
 	ld hl, Data_688f4
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_68801
@@ -1054,7 +1054,7 @@ Func_687f1: ; 687f1 (1a:47f1)
 	push hl
 	ld hl, Data_688f9
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_68801: ; 68801 (1a:4801)
@@ -1067,7 +1067,7 @@ Func_68801: ; 68801 (1a:4801)
 	push hl
 	ld hl, Data_688fd
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_6882c
@@ -1079,7 +1079,7 @@ Func_6881c: ; 6881c (1a:481c)
 	push hl
 	ld hl, Data_68901
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_6882c: ; 6882c (1a:482c)
@@ -1271,12 +1271,12 @@ Func_689f0: ; 689f0 (1a:49f0)
 	call FarCall
 	ld e, $3
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$2
 	push hl
 	ld hl, Data_68a28
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -1498,7 +1498,7 @@ Func_68bc1: ; 68bc1 (1a:4bc1)
 	add hl, de
 	ld a, [hl]
 	ld e, $6
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop hl
 	push hl
 	ld e, l
@@ -1510,7 +1510,7 @@ Func_68bc1: ; 68bc1 (1a:4bc1)
 	push hl
 	ld hl, Data_68bef
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -2284,7 +2284,7 @@ Func_690e3: ; 690e3 (1a:50e3)
 	call Func_2230
 	ld hl, Data_6911e
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	call Func_69581
 	ld l, $12
@@ -2434,12 +2434,12 @@ Func_6912c: ; 6912c (1a:512c)
 	ld e, [hl]
 	ld hl, sp+$c
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_6927c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	jp Func_69279
@@ -2464,12 +2464,12 @@ Func_6921f: ; 6921f (1a:521f)
 	ld e, [hl]
 	ld hl, sp+$c
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_69281
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	call GetHLAtSPPlus10
@@ -3258,7 +3258,7 @@ Func_697b2: ; 697b2 (1a:57b2)
 	push af
 	ld hl, sp+$8
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$4
 	ld a, [hl]
 	ld [wFarCallDestBank], a
@@ -3288,7 +3288,7 @@ Func_697b2: ; 697b2 (1a:57b2)
 	push hl
 	ld hl, Data_698e2
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop de
@@ -3318,7 +3318,7 @@ Func_69815: ; 69815 (1a:5815)
 	push bc
 	ld hl, sp+$8
 	ld a, [hl]
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, sp+$4
 	ld a, [hl]
 	ld [wFarCallDestBank], a
@@ -3348,7 +3348,7 @@ Func_69815: ; 69815 (1a:5815)
 	push hl
 	ld hl, Data_698e5
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop de
@@ -3688,7 +3688,7 @@ Func_69ae7: ; 69ae7 (1a:5ae7)
 	call Func_2230
 	ld hl, Data_69b78
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	push hl
@@ -3699,7 +3699,7 @@ Func_69ae7: ; 69ae7 (1a:5ae7)
 	call Func_2230
 	ld hl, Data_69b7a
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld l, $12
 	push hl
@@ -3923,12 +3923,12 @@ Func_69cc9: ; 69cc9 (1a:5cc9)
 	ld hl, sp+$4
 	ld a, [hl]
 	inc a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8c
 	push hl
 	ld hl, Data_69d10
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop de
@@ -4076,8 +4076,7 @@ Func_69ddb: ; 69ddb (1a:5ddb)
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
-	ld de, $1e
-	call MultiplyHLbyDE
+	mulhl $1e
 	reg16swap de, hl
 	ld hl, sp+$6
 	add hl, de
@@ -4118,8 +4117,7 @@ Func_69e43: ; 69e43 (1a:5e43)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	ld de, $1e
-	call MultiplyHLbyDE
+	mulhl $1e
 	reg16swap de, hl
 	ld hl, sp+$4
 	add hl, de
@@ -4913,8 +4911,7 @@ Func_6a52b: ; 6a52b (1a:652b)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	debgcoord 31, 21
 	add hl, de
 	reg16swap de, hl
@@ -4938,8 +4935,7 @@ Func_6a570: ; 6a570 (1a:6570)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, $7b84
 	add hl, de
 	reg16swap de, hl
@@ -4971,8 +4967,7 @@ Func_6a5a5: ; 6a5a5 (1a:65a5)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	ld de, sSRAMRobots
 	add hl, de
 	reg16swap de, hl
@@ -4996,8 +4991,7 @@ Func_6a5ea: ; 6a5ea (1a:65ea)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, s2_b29f
 	add hl, de
 	reg16swap de, hl
@@ -5098,8 +5092,7 @@ Func_6a6c2: ; 6a6c2 (1a:66c2)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	ld de, sSRAMRobots
 	add hl, de
 	reg16swap de, hl
@@ -5123,8 +5116,7 @@ Func_6a707: ; 6a707 (1a:6707)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, s2_b29f
 	add hl, de
 	reg16swap de, hl
@@ -5162,8 +5154,7 @@ Func_6a744: ; 6a744 (1a:6744)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	debgcoord 31, 21
 	add hl, de
 	reg16swap de, hl
@@ -5187,8 +5178,7 @@ Func_6a789: ; 6a789 (1a:6789)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, $7b84
 	add hl, de
 	reg16swap de, hl
@@ -5339,8 +5329,7 @@ Func_6a8a8: ; 6a8a8 (1a:68a8)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	debgcoord 31, 21
 	add hl, de
 	reg16swap de, hl
@@ -5364,8 +5353,7 @@ Func_6a8ed: ; 6a8ed (1a:68ed)
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, $7b84
 	add hl, de
 	reg16swap de, hl
@@ -5477,8 +5465,7 @@ Func_6a9c9: ; 6a9c9 (1a:69c9)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	ld de, $2f
-	call MultiplyHLbyDE
+	mulhl $2f
 	ld de, sSRAMRobots
 	add hl, de
 	reg16swap de, hl
@@ -5502,8 +5489,7 @@ Func_6aa0e: ; 6aa0e (1a:6a0e)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	ld de, $351
-	call MultiplyHLbyDE
+	mulhl $351
 	ld de, s2_b29f
 	add hl, de
 	reg16swap de, hl
@@ -7063,7 +7049,7 @@ Func_6b607: ; 6b607 (1a:7607)
 	push hl
 	ld hl, Data_6ba07
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	ld l, $12
@@ -7311,7 +7297,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	call FarCall
 	ld hl, Data_6ba15
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	set_farcall_addrs_hli Func_16019
 	ld hl, sp+$41
@@ -7322,7 +7308,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	call FarCall
 	ld hl, Data_6ba1c
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	ld l, $12
 	push hl
@@ -7826,14 +7812,14 @@ Func_6bd4f: ; 6bd4f (1a:7d4f)
 	push de
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	ld l, e
 	ld h, $0
 	push hl
 	ld hl, Data_6bdde
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
@@ -7847,7 +7833,7 @@ Func_6bd7e: ; 6bd7e (1a:7d7e)
 	push de
 	ld e, $e
 	ld a, $1
-	call SetStringStartState
+	call text_cursor_pos_set
 	pop de
 	ld l, e
 	ld h, $0
@@ -7855,7 +7841,7 @@ Func_6bd7e: ; 6bd7e (1a:7d7e)
 	push hl
 	ld hl, Data_6bdf5
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	set_farcall_addrs_hli PrintMapText_
@@ -7911,8 +7897,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	ld hl, sp+$b
 	ld l, [hl]
 	ld h, $0
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	reg16swap de, hl
 	ld hl, sp+$c
 	ld l, [hl]
@@ -7986,8 +7971,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld de, $3c
-	call MultiplyHLbyDE
+	mulhl $3c
 	ld c, l
 	ld b, h
 	ld hl, sp+$11
@@ -8067,8 +8051,7 @@ Func_6bf0e: ; 6bf0e (1a:7f0e)
 	ld b, a
 	push bc
 	call GetHLAtSPPlus4
-	ld de, $5a0
-	call MultiplyHLbyDE
+	mulhl $5a0
 	pop bc
 	add hl, bc
 	ld a, $70

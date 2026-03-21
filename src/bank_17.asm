@@ -2490,10 +2490,10 @@ Func_5d453: ; 5d453 (17:5453)
 	inc a
 	ld e, a
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, Data_5d4a4
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop hl
 	push hl
@@ -2611,7 +2611,7 @@ Func_5d4a6:
 	call Func_2230
 	ld hl, Data_5d65d
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	read_hl_from_sp_plus $55
 	ld c, l
@@ -2641,7 +2641,7 @@ Func_5d4a6:
 	call Func_2230
 	ld hl, Data_5d662
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	read_hl_from_sp_plus $59
 	ld c, l
@@ -2665,7 +2665,7 @@ Func_5d4a6:
 	call Func_2230
 	ld hl, Data_5d667
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop af
 	cp $3
@@ -3132,12 +3132,12 @@ Func_5d8df: ; 5d8df (17:58df)
 	pop hl
 	ld e, a
 	ld a, l
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_5d90b
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop bc
@@ -3380,12 +3380,12 @@ Func_5da36: ; 5da36 (17:5a36)
 	inc a
 	ld e, a
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8c
 	push hl
 	ld hl, Data_5db15
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 Func_5da75: ; 5da75 (17:5a75)
@@ -3397,12 +3397,12 @@ Func_5da75: ; 5da75 (17:5a75)
 	inc a
 	ld e, a
 	xor a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8b
 	push hl
 	ld hl, Data_5db18
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	pop hl
@@ -4168,12 +4168,12 @@ Func_5e021: ; 5e021 (17:6021)
 	inc a
 	ld hl, sp+$55
 	ld [hl], a
-	call SetStringStartState
+	call text_cursor_pos_set
 	ld hl, $8c
 	push hl
 	ld hl, Data_5e271
 	push hl
-	call PlaceString
+	call printf
 	pop bc
 	pop bc
 	read_hl_from_sp_plus $58
