@@ -1786,6 +1786,7 @@ Func_160c2:: ; 160c2
 
 Func_16104:: ; 16104 (5:6104)
 	push de
+IF DEF(LANG_JP)
 	ld l, a
 	ld h, 0
 	get_party_bot
@@ -1796,6 +1797,17 @@ Func_16104:: ; 16104 (5:6104)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
+ELIF DEF(LANG_EN)
+	ld hl, sp+$0
+	ld c, [hl]
+	ld b, $0
+	ld l, a
+	ld h, 0
+	get_party_bot
+	ld de, warehouseBot_Unk08
+	add hl, de
+	add hl, bc
+ENDC
 	ld a, [hl]
 	pop bc
 	ret
@@ -2169,6 +2181,7 @@ Data_16375: ; 16375
 
 Func_16377:: ; 16377 (5:6377)
 	push hl
+IF DEF(LANG_JP)
 	add sp, -$12
 	ld hl, sp+$12
 	ld a, [hl]
@@ -2182,6 +2195,15 @@ Func_16377:: ; 16377 (5:6377)
 	pop hl
 	write_hl_to_sp_plus $15
 	read_hl_from_sp_plus $15
+ELIF DEF(LANG_EN)
+	push de
+	add sp, $f0
+	ld hl, sp+$02
+	ld [hl], $00
+	read_hl_from_sp_plus $14
+	write_hl_to_sp_plus $10
+	read_hl_from_sp_plus $10
+ENDC
 	inc hl
 	inc hl
 	inc hl
@@ -2205,8 +2227,13 @@ Func_16377:: ; 16377 (5:6377)
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	write_hl_to_sp_plus $f
 	read_hl_from_sp_plus $15
+ELIF DEF(LANG_EN)
+	call WriteHLToSPPlus10
+	read_hl_from_sp_plus $10
+ENDC
 	inc hl
 	ld e, [hl]
 	inc hl
@@ -2248,8 +2275,12 @@ Func_16377:: ; 16377 (5:6377)
 	ld de, $d
 	add hl, de
 	ld e, [hl]
+IF DEF(LANG_JP)
 	ld hl, sp+$7
 	ld [hl], e
+ELIF DEF(LANG_EN)
+	push bc
+ENDC
 	read_hl_from_sp_plus $11
 	push hl
 	read_hl_from_sp_plus $17
@@ -2283,18 +2314,31 @@ Func_16377:: ; 16377 (5:6377)
 	ld de, $19
 	ld a, $3
 	call GetBanks
+IF DEF(LANG_JP)
 	ld hl, sp+$8
 	ld [hl], a
+ELIF DEF(LANG_EN)
+	ld e, a
+ENDC
 	ld hl, sp+$6
 	ld [hl], $0
 	ld a, [wSaveBlock1_c9a2]
 	ld c, a
 	push bc
+IF DEF(LANG_JP)
 	ld hl, sp+$7
 	ld [hl], $0
+ELIF DEF(LANG_EN)
+	push de
+	ld c, $0
+ENDC
 .asm_16450: ; 16450 (5:6450)
+IF DEF(LANG_JP)
 	ld hl, sp+$7
 	ld a, [hl]
+ELIF DEF(LANG_EN)
+	ld a, c
+ENDC
 	cp $3
 	jp nc, .asm_16497
 	ld hl, wc2e9
@@ -2303,10 +2347,15 @@ Func_16377:: ; 16377 (5:6377)
 	get_party_bot
 	ld de, warehouseBot_Unk08
 	add hl, de
+IF DEF(LANG_JP)
 	reg16swap de, hl
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
+ELIF DEF(LANG_EN)
+	ld e, c
+	ld d, $0
+ENDC
 	add hl, de
 	ld a, [hl]
 	or a
@@ -2322,11 +2371,15 @@ Func_16377:: ; 16377 (5:6377)
 	jp .asm_16497
 
 .asm_1648d: ; 1648d (5:648d)
+IF DEF(LANG_JP)
 	ld hl, sp+$7
 	ld a, [hl]
 	inc a
 	ld hl, sp+$7
 	ld [hl], a
+ELIF DEF(LANG_EN)
+	inc c
+ENDC
 	jp .asm_16450
 
 .asm_16497: ; 16497 (5:6497)
@@ -2337,25 +2390,64 @@ Func_16377:: ; 16377 (5:6377)
 	ld hl, sp+$8
 	ld [hl], $2
 .asm_164a3: ; 164a3 (5:64a3)
+IF DEF(LANG_JP)
 	ld hl, sp+$a
 	ld a, [hl]
+ELIF DEF(LANG_EN)
+	pop de
+	push de
+	ld a, e
+ENDC
 	call GetSRAMBank
+IF DEF(LANG_JP)
 	pop bc
 	pop de
 	ld a, e
+ELIF DEF(LANG_EN)
+	pop de
+	pop bc
+	push de
+	read_hl_from_sp_plus $16
+	ld a, l
+ENDC
 	sub $3
+IF DEF(LANG_JP)
 	or d
+ELIF DEF(LANG_EN)
+	or h
+ENDC
 	jp z, .asm_16627
+IF DEF(LANG_JP)
 	ld a, e
+ELIF DEF(LANG_EN)
+	ld a, l
+ENDC
 	sub $2
+IF DEF(LANG_JP)
 	or d
+ELIF DEF(LANG_EN)
+	or h
+ENDC
 	jp z, .asm_16610
+IF DEF(LANG_JP)
 	ld a, e
+ELIF DEF(LANG_EN)
+	ld a, l
+ENDC
 	dec a
+IF DEF(LANG_JP)
 	or d
+ELIF DEF(LANG_EN)
+	or h
+ENDC
 	jp z, .asm_16558
+IF DEF(LANG_JP)
 	ld a, e
 	or d
+ELIF DEF(LANG_EN)
+	ld a, l
+	or h
+ENDC
 	jp nz, .asm_16645
 	read_hl_from_sp_plus $11
 	ld de, $14
@@ -2377,8 +2469,30 @@ Func_16377:: ; 16377 (5:6377)
 	dec h
 	bit 7, h
 	jr z, .asm_16500
+IF DEF(LANG_JP)
 	ld hl, $0
 	write_hl_to_sp_plus $d
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $10
+	dec hl
+	write_hl_to_sp_plus $12
+	read_hl_from_sp_plus $14
+	ld de, $0007
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	read_hl_from_sp_plus $10
+	ld a, c
+	sub l
+	ld l, a
+	ld a, b
+	sbc a, h
+	ld h, a
+	write_hl_to_sp_plus $e
+	ld hl, sp+$06
+	ld [hl], $05
+ENDC
 	jp .asm_16504
 
 .asm_16500
@@ -2459,9 +2573,18 @@ Func_16377:: ; 16377 (5:6377)
 	pop de
 	call CompareHLtoDE
 	jp nc, .asm_165ba
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $d
 	dec hl
 	write_hl_to_sp_plus $d
+ELIF DEF(LANG_EN)
+	ld hl, sp+$06
+	ld [hl], $05
+	ld hl, $0000
+	write_hl_to_sp_plus $e
+	ld hl, $0000
+	write_hl_to_sp_plus $12
+ENDC
 	jp .asm_165be
 
 .asm_165ba: ; 165ba (5:65ba)
@@ -2550,6 +2673,19 @@ Func_16377:: ; 16377 (5:6377)
 	ld [hl], e
 	inc hl
 	ld [hl], d
+IF DEF(LANG_EN)
+	pop de
+	pop bc
+	ld hl, sp+$2
+	ld a, [hl]
+	cp $5
+	jp nz, .asm_1667f_en
+	read_hl_from_sp_plus $14
+	call Func_16777
+	ld hl, $4000
+	jp .asm_16742
+.asm_1667f_en
+ENDC
 	ld hl, sp+$2
 	ld a, [hl]
 	or a
@@ -2558,6 +2694,10 @@ Func_16377:: ; 16377 (5:6377)
 	ld a, [hl]
 	cp $3
 	jp nc, .asm_16748
+IF DEF(LANG_EN)
+	push de
+	push bc
+ENDC
 	ld hl, sp+$7
 	ld e, [hl]
 	ld d, $0
@@ -2582,9 +2722,14 @@ Func_16377:: ; 16377 (5:6377)
 	pop de
 	add hl, de
 	call Coord2TileMap
+IF DEF(LANG_JP)
 	pop de
 	push hl
 	ld hl, sp+$2
+ELIF DEF(LANG_EN)
+	call WriteHLToSPPlus6
+	ld hl, sp+$6
+ENDC
 	ld a, [hl]
 	dec a
 	ld c, a
@@ -2618,12 +2763,19 @@ Func_16377:: ; 16377 (5:6377)
 	call Func_17ef7
 	ld a, $3
 	call GetSRAMBank
+IF DEF(LANG_EN)
+	pop bc
+ENDC
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $1
 	jp nz, .asm_166f2
+IF DEF(LANG_JP)
 	ld hl, sp+$5
 	ld l, [hl]
+ELIF DEF(LANG_EN)
+	ld l, c
+ENDC
 	push hl
 	read_hl_from_sp_plus $f
 	ld c, l
@@ -2636,8 +2788,12 @@ Func_16377:: ; 16377 (5:6377)
 	add $2
 	call Func_171ab
 	pop bc
+IF DEF(LANG_JP)
 	pop hl
 	push hl
+ELIF DEF(LANG_EN)
+	call GetHLAtSPPlus4
+ENDC
 	ld [hl], $8a
 	jp .asm_16742
 
@@ -2646,8 +2802,12 @@ Func_16377:: ; 16377 (5:6377)
 	ld a, [hl]
 	cp $2
 	jp nz, .asm_16742
+IF DEF(LANG_JP)
 	ld hl, sp+$5
 	ld l, [hl]
+ELIF DEF(LANG_EN)
+	ld l, c
+ENDC
 	push hl
 	read_hl_from_sp_plus $11
 	push hl
@@ -2683,16 +2843,26 @@ Func_16377:: ; 16377 (5:6377)
 	add hl, de
 	call CompareHLtoBC
 	jp c, .asm_16742
+IF DEF(LANG_JP)
 	pop hl
 	push hl
+ELIF DEF(LANG_EN)
+	call GetHLAtSPPlus4
+ENDC
 	ld [hl], $8f
 .asm_16742: ; 16742 (5:6742)
+IF DEF(LANG_JP)
 	ld hl, sp+$6
 	ld a, [hl]
+ELIF DEF(LANG_EN)
+	pop de
+	ld a, e
+ENDC
 	call GetSRAMBank
 .asm_16748: ; 16748 (5:6748)
 	read_hl_from_sp_plus $13
 	call Func_16128
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -2700,6 +2870,9 @@ Func_16377:: ; 16377 (5:6377)
 	xor a
 	call PushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1401b
+ENDC
 	ld hl, sp+$2
 	ld a, [hl]
 	cp $3

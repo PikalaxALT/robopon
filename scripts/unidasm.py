@@ -6,6 +6,7 @@ import hashlib
 import pathlib
 import re
 import subprocess
+import sys
 from typing import Literal, SupportsIndex
 
 my_file = pathlib.Path(__file__)
@@ -56,8 +57,6 @@ class Instruction:
     label: str | None = dataclasses.field(default=None)
 
     def __str__(self):
-        bank, addr = rom_offset_to_addr(self.offset)
-        raw = " ".join(f"{x:02X}" for x in self.raw)
         if self.operands:
             operands = ", ".join(self.operands)
             insn = f"{self.mnemonic} {operands}"
@@ -65,16 +64,32 @@ class Instruction:
             insn = self.mnemonic
         label = f"{self.label}:\n" if self.label else ""
         if self.verbose:
-            return (
-                f"{label}\t{insn} ; {self.offset:05X} ({bank:02x}:{addr:04x}) -> {raw}"
-            )
-        return f"{label}\t{insn}"
+            bank, addr = rom_offset_to_addr(self.offset)
+            raw = " ".join(f"{x:02X}" for x in self.raw)
+            comment = f" ; {self.offset:05X} ({bank:02x}:{addr:04x}) -> {raw}"
+        else:
+            comment = ""
+        return f"{label}\t{insn}{comment}"
 
     def __getitem__(self, index: SupportsIndex) -> str:
         return self.operands[index]
 
     def has_addr_operand(self):
         return self.raw[0] in Instruction.addr_operand
+
+    def has_addr_macro(self):
+        return self.mnemonic in {"read_hl_from", "write_hl_to"}
+
+    def has_nonaddr_macro(self):
+        return self.mnemonic in {"read_hl_from_sp_plus", "write_hl_to_sp_plus"}
+
+    def get_addr_operand(self):
+        if self.has_addr_macro():
+            return int(self[0].strip("$[]"), 16)
+        if self.has_nonaddr_macro():
+            return None
+        if (oper_i := Instruction.addr_operand.get(self.raw[0])) is not None:
+            return int(self[oper_i].strip("$[]"), 16)
 
     def __len__(self):
         return len(self.raw)
@@ -157,7 +172,7 @@ def get_disassembly(
         "-arch",
         "lr35902",
     ]
-    proc = subprocess.run(args, capture_output=True, check=True, text=True)
+    proc = subprocess.run(args, capture_output=True, check=True, text=True, timeout=10)
     result: list[Instruction] = []
     for line in proc.stdout.splitlines():
         offset, rest = line.split(": ", 1)
@@ -172,6 +187,79 @@ def get_disassembly(
     return result
 
 
+def redisassemble(
+    instructions: list[Instruction],
+    index: int,
+    start: int,
+    chomp: int,
+    unidasm: pathlib.Path,
+    rom: pathlib.Path,
+    verbose: bool,
+):
+    with rom.open("rb") as romfile:
+        romfile.seek(start)
+        value = int.from_bytes(romfile.read(chomp), "little")
+    end = instructions[-1].offset + len(instructions[-1])
+    if end > start + chomp:
+        new_instructions = get_disassembly(unidasm, rom, start + chomp, end, verbose)
+        old_index = index
+        new_index = 0
+        while instructions[index].offset != new_instructions[new_index].offset:
+            if instructions[index].offset < new_instructions[new_index].offset:
+                index += 1
+            else:
+                new_index += 1
+
+        del instructions[old_index:index]
+        for new_insn in new_instructions[:new_index][::-1]:
+            instructions.insert(old_index, new_insn)
+    else:
+        del instructions[index:]
+    return value
+
+
+def handle_constant_stack_args(
+    instructions: list[Instruction],
+    symbols: dict[str, dict[tuple[int, int], str]],
+    unidasm: pathlib.Path,
+    rom: pathlib.Path,
+):
+    # we will be modifying instructions in-place, so can't iterate over it pythonically
+    i = -1
+    while (i := i + 1) < len(instructions):
+        insn = instructions[i]
+        if not insn.mnemonic.startswith("call"):
+            continue
+        operand = insn.get_addr_operand()
+        if not (0x4000 > operand >= 0):  # ROM0
+            continue
+        if (symbol := symbols["ROM"].get((0, operand))) is None:
+            continue
+        chomp_map = {
+            "GetHLAtSPPlusParam8": ("read_hl_from_sp_plus", 1),
+            "GetHLAtSPPlusParam16": ("read_hl_from_sp_plus", 2),
+            "WriteHLToSPPlusParam8": ("write_hl_to_sp_plus", 1),
+            "WriteHLToSPPlusParam16": ("write_hl_to_sp_plus", 2),
+            "ReadHalfWordAt": ("read_hl_from", 2),
+            "WriteHalfWordTo": ("write_hl_to", 2),
+        }
+        macro, chomp = chomp_map.get(symbol, (None, None))
+        if macro is None:
+            continue
+        value = redisassemble(
+            instructions,
+            i + 1,
+            insn.offset + 3,
+            chomp,
+            unidasm,
+            rom,
+            verbose=insn.verbose,
+        )
+        insn.mnemonic = macro
+        insn.operands = [f"${{:0{chomp}x}}".format(value)]
+        insn.raw += value.to_bytes(chomp, "little")
+
+
 def update_instructions_symbols(
     instructions: list[Instruction], symbols: dict[str, dict[tuple[int, int], str]]
 ):
@@ -180,9 +268,7 @@ def update_instructions_symbols(
     # second pass: insert labels into the instructions list
     for insn in instructions:
         bank, _ = rom_offset_to_addr(insn.offset)
-        if insn.has_addr_operand():
-            oper_i = Instruction.addr_operand[insn.raw[0]]
-            addr_operand = int(insn[oper_i].strip("$[]"), 16)
+        if (addr_operand := insn.get_addr_operand()) is not None:
             if insn.mnemonic.startswith("jr"):
                 addr_operand &= 0x3FFF
                 if bank != 0:
@@ -207,6 +293,7 @@ def update_instructions_symbols(
                 symbols[region][(op_bank, addr_operand)] = name
             else:
                 name = symbols[region][(op_bank, addr_operand)]
+            oper_i = Instruction.addr_operand[insn.raw[0]]
             insn.operands[oper_i] = (
                 f"[{name}]" if "[" in insn.operands[oper_i] else name
             )
@@ -286,6 +373,7 @@ def main():
     instructions = get_disassembly(
         args.unidasm, baserom, args.start, args.end, verbose=not args.no_comments
     )
+    handle_constant_stack_args(instructions, addr_to_symbol, args.unidasm, baserom)
     update_instructions_symbols(instructions, addr_to_symbol)
     for insn in instructions:
         print(insn)
