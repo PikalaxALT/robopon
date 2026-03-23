@@ -140,14 +140,14 @@ Func_233ac: ; 233ac (8:73ac)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	add hl, de
 	push hl
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3f
 	add hl, de
 	pop de
@@ -170,7 +170,7 @@ Func_233d6: ; 233d6 (8:73d6)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -200,7 +200,7 @@ Func_23412: ; 23412 (8:7412)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3d
 	add hl, de
 	ld a, [hl]
@@ -266,7 +266,7 @@ Func_23489: ; 23489 (8:7489)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3f
 	add hl, de
 	ld a, [hl]
@@ -601,7 +601,7 @@ Func_23747: ; 23747 (8:7747)
 	read_hl_from_sp_plus $4d
 	ld de, $c
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	read_hl_from_sp_plus $4d
 	ld de, $18
@@ -629,7 +629,7 @@ Func_2378e: ; 2378e (8:778e)
 	read_hl_from_sp_plus $4d
 	ld de, $c
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop af
 	inc a

@@ -272,20 +272,20 @@ MACRO del
 	ld hl, $0
 	write_hl_to \1
 	ENDM
-	
+
 	push af
 	push de
 	add sp, -$62
 
 	push bc
 	ld hl, sp+$55
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_84f1
 	ld bc, $8
 	call MemCopy
 
 	ld hl, sp+$3
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_84f9
 	ld bc, $52
 	call MemCopy
@@ -393,7 +393,7 @@ MACRO del
 	add hl, de
 	ld de, Pointers_1c000
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5e
 	call FarCopyVideoData
 	ld hl, $728
@@ -413,7 +413,7 @@ MACRO del
 	read_hl_from wTilesetPointer
 	ld de, $2a8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $400
 	add hl, de
 	push hl

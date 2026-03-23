@@ -679,7 +679,7 @@ Func_68546: ; 68546 (1a:4546)
 	inc hl
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $b
 	call FarCall
 	pop af
@@ -1179,7 +1179,7 @@ Func_6890a: ; 6890a (1a:490a)
 	push hl
 	ld a, e
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$9
 	ld a, [hl]
@@ -1188,7 +1188,7 @@ Func_6890a: ; 6890a (1a:490a)
 	set_farcall_addrs_hli Func_17975
 	ld c, $1
 	read_hl_from_sp_plus $28
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -1206,7 +1206,7 @@ Func_68972: ; 68972 (1a:4972)
 	set_farcall_addrs_hli Func_17975
 	ld c, $2
 	read_hl_from_sp_plus $28
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -1252,9 +1252,9 @@ Func_689db: ; 689db (1a:49db)
 	read_hl_from_sp_plus $26
 	ld [hl], $0
 	read_hl_from_sp_plus $26
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $26
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_689f0: ; 689f0 (1a:49f0)
@@ -1958,7 +1958,7 @@ Data_68ee0:
 	dstr "(てんほﾞうたﾞい)"
 
 Func_68eeb::
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld l, $12
 	push hl
@@ -2012,7 +2012,7 @@ Func_68eeb::
 	add hl, de
 	ld de, Pointers_68d2e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	ld c, BANK(Pointers_68d2e)
 	call FarCall
@@ -2230,7 +2230,7 @@ Func_6909a: ; 6909a (1a:509a)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
@@ -2322,7 +2322,7 @@ Func_6912c: ; 6912c (1a:512c)
 	ld l, a
 	push hl
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_69126
 	ld bc, $6
 	call MemCopy
@@ -2334,7 +2334,7 @@ Func_6912c: ; 6912c (1a:512c)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld e, [hl]
@@ -2343,7 +2343,7 @@ Func_6912c: ; 6912c (1a:512c)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	inc hl
@@ -2374,7 +2374,7 @@ Func_6912c: ; 6912c (1a:512c)
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$e
 	ld l, [hl]
 	ld h, $0
@@ -2386,9 +2386,9 @@ Func_6912c: ; 6912c (1a:512c)
 	call GetHLAtSPPlus10
 	ld de, $7
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	ld l, [hl]
 	ld h, $0
@@ -2404,7 +2404,7 @@ Func_6912c: ; 6912c (1a:512c)
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$e
 	ld l, [hl]
 	ld h, $0
@@ -2416,9 +2416,9 @@ Func_6912c: ; 6912c (1a:512c)
 	call GetHLAtSPPlus8
 	ld de, $7
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	ld l, [hl]
 	ld h, $0
@@ -2575,7 +2575,7 @@ Func_692e1: ; 692e1 (1a:52e1)
 	inc hl
 	pop de
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
@@ -2596,7 +2596,7 @@ Func_692fb: ; 692fb (1a:52fb)
 	push hl
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
@@ -2721,7 +2721,7 @@ Func_693c7: ; 693c7 (1a:53c7)
 	add hl, hl
 	ld de, MapTiles_CGB
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld bc, $10
@@ -2762,7 +2762,7 @@ Func_69405: ; 69405 (1a:5405)
 	add hl, hl
 	ld de, MapTiles_SGB_DMG
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld bc, $10
@@ -2795,7 +2795,7 @@ Func_69436:: ; 69436 (1a:5436)
 	ld a, $6
 	ld [wFarCallDestBank], a
 	read_hl_from wc38e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld bc, $150
@@ -2974,7 +2974,7 @@ Func_695aa: ; 695aa (1a:55aa)
 	ld h, $0
 	ld de, $b
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -3267,12 +3267,12 @@ Func_697b2: ; 697b2 (1a:57b2)
 	push af
 	push de
 	read_hl_from_sp_plus $d
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	ld bc, $2
 	call FarCopyVideoData
@@ -3281,7 +3281,7 @@ Func_697b2: ; 697b2 (1a:57b2)
 	ld [wFarCallDestBank], a
 	ld bc, $3f
 	read_hl_from_sp_plus $f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$23
 	call FarCopyVideoData
 	ld hl, sp+$23
@@ -3327,12 +3327,12 @@ Func_69815: ; 69815 (1a:5815)
 	push bc
 	push de
 	read_hl_from_sp_plus $d
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	ld bc, $2
 	call FarCopyVideoData
@@ -3341,7 +3341,7 @@ Func_69815: ; 69815 (1a:5815)
 	ld [wFarCallDestBank], a
 	ld bc, $3f
 	read_hl_from_sp_plus $f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$23
 	call FarCopyVideoData
 	ld hl, sp+$23
@@ -3365,7 +3365,7 @@ Func_69878: ; 69878 (1a:5878)
 	call GetBanks_1a
 	push af
 	ld hl, wSaveBlock1_PlayerName
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	ld bc, $5
 	call FarCopyVideoData
@@ -3396,9 +3396,9 @@ Func_69878: ; 69878 (1a:5878)
 	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $60
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_698e2:
@@ -3439,7 +3439,7 @@ Func_6991e: ; 6991e (1a:591e)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$b
 	add hl, de
 	ld bc, $0
@@ -3449,7 +3449,7 @@ Func_6991e: ; 6991e (1a:591e)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$15
 	add hl, de
 	ld [hl], c
@@ -3466,7 +3466,7 @@ Func_6991e: ; 6991e (1a:591e)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$15
 	add hl, de
 	ld [hl], c
@@ -3483,7 +3483,7 @@ Func_6991e: ; 6991e (1a:591e)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$b
 	add hl, de
 	ld [hl], c
@@ -3492,7 +3492,7 @@ Func_6991e: ; 6991e (1a:591e)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$15
 	add hl, de
 	ld c, [hl]
@@ -3505,7 +3505,7 @@ Func_6991e: ; 6991e (1a:591e)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	add hl, de
 	ld a, [hl]
@@ -3523,7 +3523,7 @@ Func_699a3: ; 699a3 (1a:59a3)
 	read_hl_from wSaveBlock1_cb53
 	call WriteHLToSPPlus4
 	read_hl_from wSaveBlock1_cb55
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wSaveBlock1_cb57]
 	pop hl
 	push de
@@ -3580,7 +3580,7 @@ Func_69a38: ; 69a38 (1a:5a38)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$17
 	add hl, de
 	ld c, [hl]
@@ -3598,7 +3598,7 @@ Func_69a38: ; 69a38 (1a:5a38)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	add hl, de
 	ld c, [hl]
@@ -3709,9 +3709,9 @@ Func_69ae7: ; 69ae7 (1a:5ae7)
 	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $1a
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_69b31:
@@ -3779,7 +3779,7 @@ Func_69bb9:
 	inc hl
 	ld l, [hl]
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -4077,10 +4077,10 @@ Func_69ddb: ; 69ddb (1a:5ddb)
 	ld l, [hl]
 	ld h, $0
 	mulhl $1e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
@@ -4118,7 +4118,7 @@ Func_69e43: ; 69e43 (1a:5e43)
 	ld l, [hl]
 	ld h, $0
 	mulhl $1e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld c, l
@@ -4130,7 +4130,7 @@ Func_69e43: ; 69e43 (1a:5e43)
 	inc hl
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $c
 	call FarCall
 	ld hl, sp+$0
@@ -4168,9 +4168,9 @@ Func_69e88: ; 69e88 (1a:5e88)
 	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $7e
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_69ed2:
@@ -4524,7 +4524,7 @@ Func_6a1cb: ; 6a1cb (1a:61cb)
 	inc hl
 	ld a, [hl]
 	ld hl, sp+$15
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$15
 	ld a, [hl]
@@ -4590,7 +4590,7 @@ Func_6a26a: ; 6a26a (1a:626a)
 	jp nz, Func_6a353
 	ld c, $0
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -4602,7 +4602,7 @@ Func_6a26a: ; 6a26a (1a:626a)
 Func_6a293: ; 6a293 (1a:6293)
 	ld c, $0
 	ld hl, sp+$9
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -4614,7 +4614,7 @@ Func_6a293: ; 6a293 (1a:6293)
 Func_6a2ae: ; 6a2ae (1a:62ae)
 	ld c, $0
 	ld hl, sp+$c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -4626,7 +4626,7 @@ Func_6a2ae: ; 6a2ae (1a:62ae)
 Func_6a2c9: ; 6a2c9 (1a:62c9)
 	ld c, $0
 	ld hl, sp+$b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -4638,7 +4638,7 @@ Func_6a2c9: ; 6a2c9 (1a:62c9)
 Func_6a2e4: ; 6a2e4 (1a:62e4)
 	ld c, $0
 	ld hl, sp+$8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -4650,7 +4650,7 @@ Func_6a2e4: ; 6a2e4 (1a:62e4)
 Func_6a2ff: ; 6a2ff (1a:62ff)
 	ld c, $0
 	ld hl, sp+$7
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -4662,7 +4662,7 @@ Func_6a2ff: ; 6a2ff (1a:62ff)
 Func_6a31a: ; 6a31a (1a:631a)
 	ld c, $0
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -4674,7 +4674,7 @@ Func_6a31a: ; 6a31a (1a:631a)
 Func_6a335: ; 6a335 (1a:6335)
 	ld c, $0
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -4689,7 +4689,7 @@ Func_6a350: ; 6a350 (1a:6350)
 Func_6a353: ; 6a353 (1a:6353)
 	ld c, $0
 	ld hl, sp+$9
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -4701,7 +4701,7 @@ Func_6a353: ; 6a353 (1a:6353)
 Func_6a36e: ; 6a36e (1a:636e)
 	ld c, $0
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -4713,7 +4713,7 @@ Func_6a36e: ; 6a36e (1a:636e)
 Func_6a389: ; 6a389 (1a:6389)
 	ld c, $0
 	ld hl, sp+$b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -4725,7 +4725,7 @@ Func_6a389: ; 6a389 (1a:6389)
 Func_6a3a4: ; 6a3a4 (1a:63a4)
 	ld c, $0
 	ld hl, sp+$c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -4737,7 +4737,7 @@ Func_6a3a4: ; 6a3a4 (1a:63a4)
 Func_6a3bf: ; 6a3bf (1a:63bf)
 	ld c, $0
 	ld hl, sp+$7
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -4749,7 +4749,7 @@ Func_6a3bf: ; 6a3bf (1a:63bf)
 Func_6a3da: ; 6a3da (1a:63da)
 	ld c, $0
 	ld hl, sp+$8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -4761,7 +4761,7 @@ Func_6a3da: ; 6a3da (1a:63da)
 Func_6a3f5: ; 6a3f5 (1a:63f5)
 	ld c, $0
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -4773,7 +4773,7 @@ Func_6a3f5: ; 6a3f5 (1a:63f5)
 Func_6a410: ; 6a410 (1a:6410)
 	ld c, $0
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -4876,7 +4876,7 @@ Func_6a4c4: ; 6a4c4 (1a:64c4)
 Func_6a4f5: ; 6a4f5 (1a:64f5)
 	ld c, $0
 	ld hl, sp+$38
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_69d4c
 	or a
@@ -4888,7 +4888,7 @@ Func_6a4f5: ; 6a4f5 (1a:64f5)
 Func_6a510: ; 6a510 (1a:6510)
 	ld c, $0
 	ld hl, sp+$15
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_69d60
 	or a
@@ -4914,7 +4914,7 @@ Func_6a52b: ; 6a52b (1a:652b)
 	mulhl $2f
 	debgcoord 31, 21
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2f
 	ld c, $0
 	call Func_69d60
@@ -4938,7 +4938,7 @@ Func_6a570: ; 6a570 (1a:6570)
 	mulhl $351
 	ld de, $7b84
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $351
 	ld c, $0
 	call Func_69d60
@@ -4970,7 +4970,7 @@ Func_6a5a5: ; 6a5a5 (1a:65a5)
 	mulhl $2f
 	ld de, sSRAMRobots
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2f
 	ld c, $0
 	call Func_69d4c
@@ -4994,7 +4994,7 @@ Func_6a5ea: ; 6a5ea (1a:65ea)
 	mulhl $351
 	ld de, s2_b29f
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $351
 	ld c, $0
 	call Func_69d4c
@@ -5057,7 +5057,7 @@ Func_6a65b: ; 6a65b (1a:665b)
 Func_6a68c: ; 6a68c (1a:668c)
 	ld c, $0
 	ld hl, sp+$15
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_69d60
 	or a
@@ -5069,7 +5069,7 @@ Func_6a68c: ; 6a68c (1a:668c)
 Func_6a6a7: ; 6a6a7 (1a:66a7)
 	ld c, $0
 	ld hl, sp+$38
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_69d4c
 	or a
@@ -5095,7 +5095,7 @@ Func_6a6c2: ; 6a6c2 (1a:66c2)
 	mulhl $2f
 	ld de, sSRAMRobots
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2f
 	ld c, $0
 	call Func_69d4c
@@ -5119,7 +5119,7 @@ Func_6a707: ; 6a707 (1a:6707)
 	mulhl $351
 	ld de, s2_b29f
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $351
 	ld c, $0
 	call Func_69d4c
@@ -5157,7 +5157,7 @@ Func_6a744: ; 6a744 (1a:6744)
 	mulhl $2f
 	debgcoord 31, 21
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2f
 	ld c, $0
 	call Func_69d60
@@ -5181,7 +5181,7 @@ Func_6a789: ; 6a789 (1a:6789)
 	mulhl $351
 	ld de, $7b84
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $351
 	ld c, $0
 	call Func_69d60
@@ -5206,7 +5206,7 @@ Func_6a7be: ; 6a7be (1a:67be)
 	inc hl
 	ld a, [hl]
 	ld hl, sp+$38
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$38
 	ld a, [hl]
@@ -5268,7 +5268,7 @@ Func_6a83c: ; 6a83c (1a:683c)
 Func_6a840: ; 6a840 (1a:6840)
 	ld c, $0
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d60
 	or a
@@ -5306,7 +5306,7 @@ Func_6a86c: ; 6a86c (1a:686c)
 Func_6a88d: ; 6a88d (1a:688d)
 	ld c, $0
 	ld hl, sp+$15
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_69d60
 	or a
@@ -5332,7 +5332,7 @@ Func_6a8a8: ; 6a8a8 (1a:68a8)
 	mulhl $2f
 	debgcoord 31, 21
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2f
 	ld c, $0
 	call Func_69d60
@@ -5356,7 +5356,7 @@ Func_6a8ed: ; 6a8ed (1a:68ed)
 	mulhl $351
 	ld de, $7b84
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $351
 	ld c, $0
 	call Func_69d60
@@ -5404,7 +5404,7 @@ Func_6a950: ; 6a950 (1a:6950)
 Func_6a961: ; 6a961 (1a:6961)
 	ld c, $0
 	ld hl, sp+$3
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_69d4c
 	or a
@@ -5442,7 +5442,7 @@ Func_6a98d: ; 6a98d (1a:698d)
 Func_6a9ae: ; 6a9ae (1a:69ae)
 	ld c, $0
 	ld hl, sp+$38
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_69d4c
 	or a
@@ -5468,7 +5468,7 @@ Func_6a9c9: ; 6a9c9 (1a:69c9)
 	mulhl $2f
 	ld de, sSRAMRobots
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2f
 	ld c, $0
 	call Func_69d4c
@@ -5492,7 +5492,7 @@ Func_6aa0e: ; 6aa0e (1a:6a0e)
 	mulhl $351
 	ld de, s2_b29f
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $351
 	ld c, $0
 	call Func_69d4c
@@ -5518,7 +5518,7 @@ Func_6aa4b: ; 6aa4b (1a:6a4b)
 	call Func_69f36
 	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$38
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$c
 	ld a, [hl]
 	call FarCall
@@ -5531,9 +5531,9 @@ Func_6aa6d: ; 6aa6d (1a:6a6d)
 	call Func_69ee5
 	ld hl, -1
 Func_6aa84: ; 6aa84 (1a:6a84)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $5e
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_6aa8f:
@@ -5793,7 +5793,7 @@ Func_6acc5: ; 6acc5 (1a:6cc5)
 	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld c, e
 	ld b, d
@@ -6049,7 +6049,7 @@ Func_6ae7b: ; 6ae7b (1a:6e7b)
 	call GetSRAMBank
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$1
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	ld hl, sp+$20
@@ -6059,7 +6059,7 @@ Func_6ae7b: ; 6ae7b (1a:6e7b)
 	ld [hl], a
 	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$1
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	jp Func_6af0a
@@ -6073,7 +6073,7 @@ Func_6aed2: ; 6aed2 (1a:6ed2)
 	push de
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$3
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	pop de
@@ -6177,7 +6177,7 @@ Func_6af9d::
 	ld h, [hl]
 	ld l, a
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld l, $12
 	push hl
@@ -6490,9 +6490,9 @@ Func_6b2d2: ; 6b2d2 (1a:72d2)
 Func_6b2f1: ; 6b2f1 (1a:72f1)
 	ld hl, $8000
 Func_6b2f4: ; 6b2f4 (1a:72f4)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $18
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_6b2ff:
@@ -6739,7 +6739,7 @@ Func_6b46e: ; 6b46e (1a:746e)
 	push bc
 	ld a, c
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	call Func_6b4e8
 	ld hl, sp+$2
 	ld a, [hl]
@@ -6904,7 +6904,7 @@ GetRobotInPartyd: ; 6b55d (1a:755d)
 	add hl, bc
 	ld a, [hl]
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, $1
 	write_hl_to_sp_plus $10
@@ -6927,7 +6927,7 @@ GetRobotInPartyd: ; 6b55d (1a:755d)
 	add hl, bc
 	ld a, [hl]
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 Func_6b5e2: ; 6b5e2 (1a:75e2)
 	ld hl, sp+$62
@@ -7087,7 +7087,7 @@ Func_6b6d4: ; 6b6d4 (1a:76d4)
 	add hl, bc
 	ld a, [hl]
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, $1
 	write_hl_to_sp_plus $12
@@ -7110,7 +7110,7 @@ Func_6b6d4: ; 6b6d4 (1a:76d4)
 	add hl, bc
 	ld a, [hl]
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop bc
 Func_6b733: ; 6b733 (1a:7733)
@@ -7898,7 +7898,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	ld l, [hl]
 	ld h, $0
 	mulhl $3c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$c
 	ld l, [hl]
 	ld h, $0
@@ -7953,7 +7953,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	add hl, de
 	ld e, [hl]
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld hl, sp+$11
 	ld l, [hl]

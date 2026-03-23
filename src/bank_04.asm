@@ -269,7 +269,7 @@ Func_101be:: ; 101be
 	push bc
 	push af
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $100
 	call DivideHLByDESigned
 	ld a, l
@@ -436,7 +436,7 @@ ENDC
 	add hl, de
 	push hl
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_10268
 IF DEF(LANG_JP)
 	ld bc, $4
@@ -561,7 +561,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, .asm_103b5
@@ -590,7 +590,7 @@ ENDC
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $4
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	jp .asm_10381
@@ -631,7 +631,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	add hl, de
 	inc hl
@@ -656,7 +656,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	add hl, de
 	inc hl
@@ -669,7 +669,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	add hl, de
 	ld e, [hl]
@@ -731,7 +731,7 @@ ELIF DEF(LANG_EN)
 	ld hl, $30
 ENDC
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	jp .asm_10480
 
 .asm_104b0: ; 104b0 (4:44b0)
@@ -801,7 +801,7 @@ Func_1052e: ; 1052e (4:452e)
 	jp nz, .asm_1054c
 	ld c, $0
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	jp .asm_1055a
@@ -809,7 +809,7 @@ Func_1052e: ; 1052e (4:452e)
 .asm_1054c: ; 1054c (4:454c)
 	ld c, $0
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 .asm_1055a: ; 1055a (4:455a)
@@ -1004,12 +1004,12 @@ Data_1073d: ; 1073d
 Func_10766:: ; 10766
 	add sp, -$32
 	ld hl, sp+$29
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_10734
 	ld bc, $9
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_1073d
 	ld bc, $29
 	call MemCopy
@@ -1024,7 +1024,7 @@ Func_10766:: ; 10766
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld bc, $29
 	call MemCopy
@@ -1137,7 +1137,7 @@ ENDC
 	ld d, [hl]
 	ld hl, $40
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, $401
 ELIF DEF(LANG_EN)
@@ -1338,12 +1338,12 @@ Func_1099a:: ; 1099a
 	add sp, -$2a
 	push af
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_1098a
 	ld bc, $8
 	call MemCopy
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_10992
 	ld bc, $8
 	call MemCopy
@@ -1367,7 +1367,7 @@ Func_1099a:: ; 1099a
 	ld d, [hl]
 	ld hl, $2f
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 .asm_109e3: ; 109e3 (4:49e3)
 	ld hl, $27
 	add hl, de
@@ -1435,7 +1435,7 @@ Func_1099a:: ; 1099a
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	add hl, de
 	ld a, [hl]
@@ -1449,7 +1449,7 @@ Func_1099a:: ; 1099a
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld a, [hl]
@@ -1461,14 +1461,14 @@ Func_1099a:: ; 1099a
 	ld b, h
 	ld l, c
 	ld h, b
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $2a
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_10a8b:: ; 10a8b
 	call Func_1099a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 220
 	call CompareHLtoDE
 	jp c, .asm_10aa0
@@ -1628,7 +1628,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	ld hl, sp+$1b
 	ld c, [hl]
 	ld hl, sp+$b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	call Func_11cfb
 	set_farcall_addrs_hli malloc
@@ -1645,7 +1645,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	or a
 	jp nz, .asm_10bed
 	ld hl, sp+$d
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	call Func_115af
 	ld hl, sp+$13
@@ -1657,7 +1657,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	or a
 	jp nz, .asm_10be3
 	ld hl, sp+$d
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $4
 	call Func_115af
 .asm_10be3: ; 10be3 (4:4be3)
@@ -1683,14 +1683,14 @@ Func_10b8a: ; 10b8a (4:4b8a)
 .asm_10c07: ; 10c07 (4:4c07)
 	ld de, $0
 .asm_10c0a: ; 10c0a (4:4c0a)
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	ld e, l
 	ld d, h
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	add hl, de
 	call Func_10ff0
@@ -1714,22 +1714,22 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	jp nz, .asm_10c8f
 	ld c, $1
 	ld hl, sp+$11
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 	ld c, $1
 	ld hl, sp+$7
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	ld c, $1
 	ld hl, sp+$10
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 	ld c, $1
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	ld c, $0
@@ -1745,22 +1745,22 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	jp nz, .asm_10cda
 	ld c, $1
 	ld hl, sp+$7
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	ld c, $1
 	ld hl, sp+$11
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 	ld c, $1
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	ld c, $1
 	ld hl, sp+$10
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 	ld c, $0
@@ -1783,7 +1783,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	add hl, de
 	ld de, $6
@@ -1799,7 +1799,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	add hl, de
 	ld de, $6
@@ -1906,7 +1906,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	read_hl_from_sp_plus $18
 	ld de, $a
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $63
 	call CompareHLtoDE
 	jp nc, .asm_10dfa
@@ -1999,7 +1999,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $8
 	call DivideHLByDESigned
 	ld a, e
@@ -2023,7 +2023,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $8
 	call DivideHLByDESigned
 	ld a, e
@@ -2077,7 +2077,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	call GetHLAtSPPlus6
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call Func_115af
 .asm_10ee2: ; 10ee2 (4:4ee2)
 	ld hl, sp+$0
@@ -2171,7 +2171,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $8
 	call DivideHLByDESigned
 	ld a, e
@@ -2195,7 +2195,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $8
 	call DivideHLByDESigned
 	ld a, e
@@ -2249,7 +2249,7 @@ Func_10efa: ; 10efa (4:4efa)
 	call GetHLAtSPPlus6
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call Func_11872
 .asm_10fd9: ; 10fd9 (4:4fd9)
 	ld hl, sp+$0
@@ -2690,12 +2690,12 @@ Func_114ea: ; 114ea (4:54ea)
 	push bc
 	push bc
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_114e0
 	ld bc, $5
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_114e5
 	ld bc, $5
 	call MemCopy
@@ -2799,12 +2799,12 @@ Func_115af: ; 115af (4:55af)
 	push de
 	add sp, -$20
 	ld hl, sp+$7
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_11593
 	ld bc, $15
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_115a8
 	ld bc, $7
 	call MemCopy
@@ -3188,7 +3188,7 @@ Func_11872: ; 11872 (4:5872)
 	push de
 	add sp, -$18
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_1185d
 	ld bc, $15
 	call MemCopy
@@ -3738,7 +3738,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	push hl
 	ld de, $a
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $63
 	call CompareHLtoDE
 	jp nc, .asm_11c41
@@ -3763,7 +3763,7 @@ Func_11b60: ; 11b60 (4:5b60)
 	push hl
 	ld de, $a
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $64
 	call CompareHLtoDE
 	jp nc, .asm_11c7a
@@ -3972,7 +3972,7 @@ Func_11cfb: ; 11cfb (4:5cfb)
 	ld d, [hl]
 	ld hl, $2f
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	jp .asm_11dfb
 
 .asm_11ddb: ; 11ddb (4:5ddb)
@@ -4225,7 +4225,7 @@ Func_11cfb: ; 11cfb (4:5cfb)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_12029
 	pop bc
@@ -4298,7 +4298,7 @@ Func_12029: ; 12029 (4:6029)
 	push de
 	push bc
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_12025
 	ld bc, $4
 	call MemCopy
@@ -4387,7 +4387,7 @@ Func_12029: ; 12029 (4:6029)
 	ld l, $0
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$1a
 	ld e, [hl]
@@ -4422,7 +4422,7 @@ Func_12029: ; 12029 (4:6029)
 	ld l, $0
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	callba_hli QueueMoveAnimScriptGFXUpdate
 	add sp, $14
@@ -5204,22 +5204,22 @@ Func_12448: ; 12448 (4:6448)
 	push bc
 	ld c, $1
 	ld hl, sp+$9
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	ld c, $1
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 	ld c, $1
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	ld c, $1
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 	pop bc
@@ -5229,22 +5229,22 @@ Func_12448: ; 12448 (4:6448)
 	push bc
 	ld c, $1
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 	ld c, $1
 	ld hl, sp+$9
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	ld c, $1
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 	ld c, $1
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	pop bc
@@ -5364,7 +5364,7 @@ Func_12448: ; 12448 (4:6448)
 	ld [hl], $0
 	ld c, $1
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_1051a
 	jp .asm_1273f
@@ -5374,7 +5374,7 @@ Func_12448: ; 12448 (4:6448)
 	ld [hl], $0
 	ld c, $1
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_10506
 .asm_1273f: ; 1273f (4:673f)
@@ -5465,7 +5465,7 @@ Func_12448: ; 12448 (4:6448)
 	ld c, l
 	ld b, h
 	ld hl, sp+$4c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	call Func_12ca4
 	pop bc
@@ -6080,7 +6080,7 @@ Func_12acb: ; 12acb (4:6acb)
 	push bc
 	push bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_12ac5
 	ld bc, $6
 	call MemCopy
@@ -6602,7 +6602,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	ld d, [hl]
 	ld hl, $40
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $b05
 	call FarCall
 	set_farcall_addrs_hli Func_17e95
@@ -6706,7 +6706,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld e, [hl]
@@ -6722,7 +6722,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
 	ld e, [hl]
@@ -6737,7 +6737,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld e, [hl]
@@ -6754,7 +6754,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
 	ld a, [hl]
@@ -7061,7 +7061,7 @@ IF DEF(LANG_JP)
 ELIF DEF(LANG_EN)
 	mulhl 26
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
 	pop de
@@ -7078,7 +7078,7 @@ IF DEF(LANG_JP)
 ELIF DEF(LANG_EN)
 	mulhl 26
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld de, $10
@@ -7089,7 +7089,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3a
 	add hl, de
 	ld a, [hl]
@@ -7111,7 +7111,7 @@ IF DEF(LANG_JP)
 ELIF DEF(LANG_EN)
 	mulhl 26
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld de, $11
@@ -7126,7 +7126,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$36
 	add hl, de
 	ld a, [hl]
@@ -7191,7 +7191,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$36
 ELIF DEF(LANG_EN)
@@ -7212,7 +7212,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$36
 ELIF DEF(LANG_EN)
@@ -7233,7 +7233,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$36
 ELIF DEF(LANG_EN)
@@ -7267,7 +7267,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$3a
 ELIF DEF(LANG_EN)
@@ -7288,7 +7288,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$3a
 ELIF DEF(LANG_EN)
@@ -7309,7 +7309,7 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$3a
 ELIF DEF(LANG_EN)
@@ -7474,7 +7474,7 @@ ENDC
 	cp $2
 	jp nc, .asm_1334b
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -7487,7 +7487,7 @@ ENDC
 	bit 7, d
 	jr z, .asm_13347
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -7525,7 +7525,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call FarCall
 	ld hl, sp+$0
@@ -7559,7 +7559,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $a
 	call CompareHLtoDE
 	jp nc, .asm_133ee
@@ -7621,7 +7621,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call FarCall
 	ld hl, sp+$0
@@ -7663,7 +7663,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $a
 	call CompareHLtoDE
 	jp nc, .asm_1349b
@@ -7709,7 +7709,7 @@ ENDC
 	cp $2
 	jp nc, .asm_134d3
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -7721,7 +7721,7 @@ ENDC
 	call CompareHLtoDE
 	jp nc, .asm_134cf
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -7764,7 +7764,7 @@ ENDC
 	cp $16
 	jp nz, .asm_13572
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -7777,7 +7777,7 @@ ENDC
 
 .asm_1351d: ; 1351d (4:751d)
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -7790,7 +7790,7 @@ ENDC
 
 .asm_13533: ; 13533 (4:7533)
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -7803,7 +7803,7 @@ ENDC
 
 .asm_13549: ; 13549 (4:7549)
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -7816,7 +7816,7 @@ ENDC
 
 .asm_1355f: ; 1355f (4:755f)
 	read_hl_from_sp_plus $4e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -7989,9 +7989,9 @@ ENDC
 	pop bc
 .asm_13632: ; 13632 (4:7632)
 	ld hl, $0
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $52
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_13640: ; 13640
@@ -8080,7 +8080,7 @@ Func_136cc: ; 136cc (4:76cc)
 	push af
 	add sp, -$1c
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_136b1
 	ld bc, $1b
 	call MemCopy

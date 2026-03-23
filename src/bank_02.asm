@@ -48,22 +48,22 @@ ENDC
 Func_804c:: ; 804c (2:404c)
 	add sp, -$64
 	ld hl, sp+$52
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_8020
 	ld bc, $a
 	call MemCopy
 	ld hl, sp+$48
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_802a
 	ld bc, $a
 	call MemCopy
 	ld hl, sp+$3b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_8034
 	ld bc, $d
 	call MemCopy
 	ld hl, sp+$30
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_8041
 	ld bc, $b
 	call MemCopy
@@ -76,7 +76,7 @@ Func_804c:: ; 804c (2:404c)
 	ld hl, sp+$30
 	write_hl_to_sp_plus $64
 	ld hl, sp+$11
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_8001
 	ld bc, $1f
 	call MemCopy
@@ -103,7 +103,7 @@ Func_804c:: ; 804c (2:404c)
 	ret
 
 Func_80f6: ; 80f6
-	reg16swap de, hl
+	swap_de_hl
 	ld l, e
 	ld h, d
 	inc hl
@@ -165,7 +165,7 @@ Func_8b33: ; 8b33 (2:4b33)
 	ld l, c
 	ld h, b
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc85d
 	add hl, de
 	ld e, [hl]
@@ -176,7 +176,7 @@ Func_8b33: ; 8b33 (2:4b33)
 	push bc
 	ld a, BANK(MapTiles_CGB)
 	ld [wFarCallDestBank], a
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -202,7 +202,7 @@ Func_8b7e: ; 8b7e (2:4b7e)
 	push bc
 	ld a, BANK(MapTiles_SGB_DMG)
 	ld [wFarCallDestBank], a
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -275,7 +275,7 @@ Func_8bdc: ; 8bdc (2:4bdc)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $6
@@ -388,10 +388,10 @@ Func_8ce9: ; 8ce9 (2:4ce9)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wPlayerSpritePointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $8000
 	ld bc, $c0
 	call RequestVideoData
@@ -442,7 +442,7 @@ LoadBlockData: ; 8d2a (2:4d2a)
 	add hl, de
 	ld de, BlockDataHeaders
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $5
 	call FarCopyVideoData
@@ -606,7 +606,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	push hl
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld a, [bc]
@@ -616,7 +616,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	push hl
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	add hl, de
 	ld a, [bc]
@@ -626,7 +626,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	push hl
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1c
 	add hl, de
 	ld a, [bc]
@@ -636,7 +636,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	push hl
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1d
 	add hl, de
 	ld a, [bc]
@@ -713,7 +713,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	push hl
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld a, [bc]
@@ -723,7 +723,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	push hl
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	add hl, de
 	ld a, [bc]
@@ -733,7 +733,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	push hl
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1c
 	add hl, de
 	ld a, [bc]
@@ -743,7 +743,7 @@ Func_8f44:: ; 8f44 (2:4f44)
 	push hl
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1d
 	add hl, de
 	ld a, [bc]
@@ -1143,7 +1143,7 @@ Func_9ed1: ; 9ed1 (2:5ed1)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wLoadAttrsSourcePointer
 	add hl, de
 	pop bc
@@ -1170,7 +1170,7 @@ Func_9efa: ; 9efa (2:5efa)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc824
 	add hl, de
 	write_hl_to wc91d
@@ -1178,7 +1178,7 @@ Func_9efa: ; 9efa (2:5efa)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wLoadAttrsSourcePointer
 	add hl, de
 	ret
@@ -1207,7 +1207,7 @@ Func_9f3b: ; 9f3b (2:5f3b)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc824
 	add hl, de
 	pop bc
@@ -1219,7 +1219,7 @@ Func_9f4c: ; 9f4c (2:5f4c)
 	push hl
 	push hl
 	read_hl_from wPlayerStandingTileOffset
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
 	pop de
@@ -1235,10 +1235,10 @@ Func_9f64:: ; 9f64 (2:5f64)
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
@@ -1256,7 +1256,7 @@ Func_a184: ; a184 (2:6184)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wLoadAttrsSourcePointer
 	add hl, de
 	ld a, [hl]
@@ -1278,7 +1278,7 @@ Func_a1ad: ; a1ad (2:61ad)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wLoadAttrsSourcePointer
 	add hl, de
 	ld e, c
@@ -1302,7 +1302,7 @@ Func_a1ad: ; a1ad (2:61ad)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc82c
 	add hl, de
 	pop de
@@ -1348,7 +1348,7 @@ Func_a21c: ; a21c (2:621c)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc82c
 	add hl, de
 	push hl
@@ -1510,7 +1510,7 @@ Func_ae4d:: ; ae4d
 .asm_af68 ; af68 (2:6f68)
 	ld c, $1
 	ld hl, sp+$3
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $2
 	call StartMovement
 	pop bc
@@ -1645,7 +1645,7 @@ Func_b58e:: ; b58e
 	push bc
 	push af
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_b58a
 	ld bc, $4
 	call MemCopy
@@ -1661,7 +1661,7 @@ Func_b58e:: ; b58e
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wPlayerSpritePointer
 	add hl, de
 	push hl
@@ -1687,7 +1687,7 @@ Func_b5db:: ; b5db
 .loop
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call CompareHLtoDE
@@ -2003,7 +2003,7 @@ Func_bc6d:: ; bc6d
 	push af
 	ld c, a
 	read_hl_from_sp_plus $26
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	call strcpy_far
 	callba_hli AllocateMonsterStruct
@@ -2050,7 +2050,7 @@ Func_bce5:: ; bce5
 	push af
 	ld c, a
 	read_hl_from_sp_plus $26
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	call strcpy_far
 	callba_hli AllocateMonsterStruct
@@ -2097,7 +2097,7 @@ Func_bd5d:: ; bd5d
 	push af
 	ld c, a
 	read_hl_from_sp_plus $26
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	call strcpy_far
 	callba_hli AllocateMonsterStruct
@@ -2144,7 +2144,7 @@ Func_bdd5:: ; bdd5
 	push af
 	ld c, a
 	read_hl_from_sp_plus $26
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	call strcpy_far
 	callba_hli AllocateMonsterStruct
@@ -2210,7 +2210,7 @@ LoadPlayerSprite:: ; be77 (2:7e77)
 	ld a, [hl]
 	or a
 	jp nz, .already_allocated
-	reg16swap de, hl
+	swap_de_hl
 	call malloc_Bank02
 	write_hl_to wPlayerSpritePointer
 	ld hl, sp+$1
@@ -2249,7 +2249,7 @@ LoadPlayerSprite:: ; be77 (2:7e77)
 	add hl, de
 	ld de, OverworldSpriteGFX
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wPlayerSpritePointer
 	ld bc, $240
 	call FarCopyVideoData
@@ -2264,7 +2264,7 @@ LoadPlayerSprite:: ; be77 (2:7e77)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wPlayerSpritePointer
 	add hl, de
 	push hl
@@ -2320,7 +2320,7 @@ Func_bf2c: ; bf2c (2:7f2c)
 
 Func_bf39:: ; bf39
 	ld [wc851], a
-	reg16swap de, hl
+	swap_de_hl
 	write_hl_to wc852
 	ret
 
@@ -2343,7 +2343,7 @@ CheckBlackedOut: ; bf4a (2:7f4a)
 	push de
 	ld a, e
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop de
 	pop bc

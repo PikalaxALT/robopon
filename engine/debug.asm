@@ -81,7 +81,7 @@ _bc09d: ; bc09d (2f:409d)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
 	add $a0
@@ -108,7 +108,7 @@ _bc0c3: ; bc0c3 (2f:40c3)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
 	ld e, a
@@ -125,7 +125,7 @@ _bc0e5: ; bc0e5 (2f:40e5)
 	push de
 	ld bc, $340
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $90a0
 	call RequestVideoData
 	call WaitVideoTransfer
@@ -151,7 +151,7 @@ _bc0fd: ; bc0fd (2f:40fd)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	add hl, de
 	pop de
@@ -278,7 +278,7 @@ Func_bc170: ; bc170 (2f:4170)
 	ld a, [wStringDestX]
 	ld h, a
 	call Coord2TileMap
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld a, [hl]
 	ld [de], a
@@ -394,7 +394,7 @@ Func_bc241: ; bc241 (2f:4241)
 	ld b, $0
 	call GetHLAtSPPlus6
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld a, [hl]
 	ld [de], a
@@ -2371,7 +2371,7 @@ Func_bd097: ; bd097 (2f:5097)
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	call FillVisibleAreaWithBlankTile
 	pop de
@@ -2395,7 +2395,7 @@ Func_bd097: ; bd097 (2f:5097)
 	pop bc
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	push hl
 	ld hl, Data_bd1c6
@@ -2405,7 +2405,7 @@ Func_bd097: ; bd097 (2f:5097)
 	pop bc
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	ld l, [hl]
 	ld h, $0
@@ -2417,7 +2417,7 @@ Func_bd097: ; bd097 (2f:5097)
 	pop bc
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld l, [hl]
@@ -2439,7 +2439,7 @@ Func_bd097: ; bd097 (2f:5097)
 	jp nc, .asm_bd134
 	push de
 	push af
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -2676,7 +2676,7 @@ Func_bd242:
 	call GetHLAtSPPlus6
 	pop de
 	call Debug_MenuWithSecondaryHeader
-	reg16swap de, hl
+	swap_de_hl
 	ld a, e
 	cp $3
 	jp z, .asm_bd4eb
@@ -2725,7 +2725,7 @@ Func_bd242:
 	call GetHLAtSPPlus6
 	pop de
 	call Debug_MenuWithSecondaryHeader
-	reg16swap de, hl
+	swap_de_hl
 	jp .asm_bd2c7
 
 .asm_bd37b ; bd37b (2f:537b)
@@ -2777,7 +2777,7 @@ Func_bd242:
 	call GetHLAtSPPlus6
 	pop de
 	call Debug_MenuWithSecondaryHeader
-	reg16swap de, hl
+	swap_de_hl
 	ld a, e
 	and d
 	inc a
@@ -2787,7 +2787,7 @@ Func_bd242:
 	pop de
 	ld hl, .return
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	ld de, Pointers_bcc31
 	add hl, de
@@ -2871,7 +2871,7 @@ Func_bd242:
 	call GetHLAtSPPlus6
 	pop de
 	call Debug_MenuWithSecondaryHeader
-	reg16swap de, hl
+	swap_de_hl
 	ld a, e
 	and d
 	inc a
@@ -2900,7 +2900,7 @@ Func_bd242:
 	pop de
 	ld hl, .return2
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	ld de, Pointers_bd226
 	add hl, de
@@ -2943,7 +2943,7 @@ Func_bd242:
 	call Func_bc14e
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	hlcoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
@@ -2979,9 +2979,9 @@ Func_bd542:
 	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	decoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
@@ -3030,9 +3030,9 @@ Func_bd5b7:
 	set_farcall_addrs_hli malloc
 	ld hl, $168
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	decoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
@@ -3084,7 +3084,7 @@ Func_bd5b7:
 	pop bc
 	push bc
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $c
 	add hl, bc
 	ld [hl], e
@@ -3108,7 +3108,7 @@ Func_bd5b7:
 	ld e, c
 	ld d, b
 	call Debug_MenuWithSecondaryHeader
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	pop hl
 	ld a, e
@@ -3119,7 +3119,7 @@ Func_bd5b7:
 	push bc
 	ld hl, .return
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	ld de, Pointers_bd226
 	add hl, de
@@ -3226,7 +3226,7 @@ Func_bd72d:
 	call Func_bc092
 .asm_bd75c ; bd75c (2f:575c)
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, .asm_bd7bd
@@ -3282,7 +3282,7 @@ Func_bd72d:
 	call Func_bc14e
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	hlcoord 0, 0
 	ld bc, $168
 	call CopyFromDEtoHL
@@ -3615,7 +3615,7 @@ Func_bd92f:
 	ld hl, sp+$11
 	ld c, [hl]
 	ld hl, sp+$3
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$13
 	ld a, [hl]
 	ld hl, sp+$12
@@ -4093,7 +4093,7 @@ Func_bd92f:
 	ld hl, sp+$11
 	ld c, [hl]
 	ld hl, sp+$3
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$13
 	ld a, [hl]
 	ld hl, sp+$12
@@ -4512,7 +4512,7 @@ Func_bdf27:
 	pop bc
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $b
 	add hl, bc
 	ld [hl], e
@@ -4814,7 +4814,7 @@ Func_be1dc: ; be1dc (2f:61dc)
 	ld d, b
 	ld hl, $1298
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $214
 	add hl, bc
 	ld c, l
@@ -4974,7 +4974,7 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	ld c, $1
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $168
 	call FarCall
 	ld l, $12
@@ -4994,7 +4994,7 @@ DebugMenu_SerialTest: ; be2c9 (2f:62c9)
 	ld c, $1
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $168
 	call FarCall
 	ld bc, $0
@@ -5063,7 +5063,7 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	add hl, sp
 	ld sp, hl
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be3f7
 	ld bc, $100
 	call MemCopy
@@ -5121,7 +5121,7 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	set_farcall_addrs_hli Func_790f
 	ld c, $5
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $100
 	call FarCall
 	jp .asm_be5ca
@@ -5130,7 +5130,7 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	set_farcall_addrs_hli Func_7882
 	ld c, $5
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $100
 	call FarCall
 .asm_be5ca ; be5ca (2f:65ca)
@@ -5149,7 +5149,7 @@ DebugMenu_IRTest: ; be4f7 (2f:64f7)
 	call FarCall
 	set_farcall_addrs_hli Func_bd72d
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $100
 	call FarCall
 	jp .asm_be61e
@@ -5202,22 +5202,22 @@ Data_be682:
 Func_be6ab: ; be6ab (2f:66ab)
 	add sp, -$52
 	ld hl, sp+$41
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be65b
 	ld bc, $10
 	call MemCopy
 	ld hl, sp+$31
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be66b
 	ld bc, $10
 	call MemCopy
 	ld hl, sp+$2a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be67b
 	ld bc, $7
 	call MemCopy
 	ld hl, sp+$1
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be682
 	ld bc, $29
 	call MemCopy
@@ -5258,7 +5258,7 @@ Func_be6ab: ; be6ab (2f:66ab)
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	ld bc, $29
 	call MemCopy
@@ -5410,12 +5410,12 @@ Data_be897:
 Func_be8c0: ; be8c0 (2f:68c0)
 	add sp, -$38
 	ld hl, sp+$29
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be889
 	ld bc, $e
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be897
 	ld bc, $29
 	call MemCopy
@@ -5432,7 +5432,7 @@ Func_be8c0: ; be8c0 (2f:68c0)
 	ld d, [hl]
 	ld hl, $68
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld bc, $29
 	call MemCopy
@@ -5453,12 +5453,12 @@ Data_be955:
 Func_be965: ; be965 (2f:6965)
 	add sp, -$22
 	ld hl, sp+$11
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be945
 	ld bc, $10
 	call MemCopy
 	ld hl, sp+$1
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_be955
 	ld bc, $10
 	call MemCopy
@@ -5603,7 +5603,7 @@ Func_bea7d: ; bea7d (2f:6a7d)
 	add hl, sp
 	ld sp, hl
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_bea77
 	ld bc, $6
 	call MemCopy
@@ -5644,13 +5644,13 @@ Func_bea7d: ; bea7d (2f:6a7d)
 	set_farcall_addrs_hli Func_1c11
 	ld hl, $108
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $100
 	call FarCall
 	set_farcall_addrs_hli Func_1c27
 	ld hl, $108
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	call FarCall
 	ld c, l
@@ -5666,7 +5666,7 @@ Func_bea7d: ; bea7d (2f:6a7d)
 	set_farcall_addrs_hli Func_bd72d
 	pop bc
 	ld hl, sp+$8
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	call FarCall
@@ -5782,12 +5782,12 @@ Data_becba:
 Func_becc2: ; becc2 (2f:6cc2)
 	add sp, -$18
 	ld hl, sp+$8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_becab
 	ld bc, $f
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_becba
 	ld bc, $8
 	call MemCopy
@@ -5800,7 +5800,7 @@ Func_becc2: ; becc2 (2f:6cc2)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	ld h, l
@@ -5836,7 +5836,7 @@ Func_bed16: ; bed16 (2f:6d16)
 	ld bc, $2f
 	ld hl, $356
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sSRAMRobots
 	call CopyFromDEtoHL
 	ld a, $3
@@ -5852,15 +5852,15 @@ Func_bed16: ; bed16 (2f:6d16)
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
-	reg16swap de, hl
-	reg16swap de, hl
+	swap_de_hl
+	swap_de_hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
 	ld de, $40
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld a, [hl]
 	ld [wFarCallDestBank], a
@@ -5877,7 +5877,7 @@ Func_bed16: ; bed16 (2f:6d16)
 	ld [s2_b29f], a
 	ld bc, $350
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, s2_b29f + 1
 	call CopyFromDEtoHL
 	pop af
@@ -5896,12 +5896,12 @@ Data_bedb4:
 DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	add sp, -$24
 	ld hl, sp+$13
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_beda4
 	ld bc, $10
 	call MemCopy
 	ld hl, sp+$3
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_bedb4
 	ld bc, $10
 	call MemCopy
@@ -6013,7 +6013,7 @@ DebugTest_SeeBattleChara: ; bedc4 (2f:6dc4)
 	ld hl, $40
 .asm_beee0 ; beee0 (2f:6ee0)
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $105
 	call FarCall
 	set_farcall_addrs_hli Func_61424
@@ -6161,7 +6161,7 @@ Func_bf01e: ; bf01e (2f:701e)
 	push bc
 	push bc
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Pointers_befdc
 	ld bc, $a
 	call MemCopy
@@ -6174,7 +6174,7 @@ Func_bf01e: ; bf01e (2f:701e)
 	set_farcall_addrs_hli PrintMapText
 	ld bc, $42f
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	jp .asm_bf032
@@ -6192,17 +6192,17 @@ Func_bf094: ; bf094 (2f:7094)
 	add sp, -$30
 	push de
 	ld hl, sp+$22
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_bf064
 	ld bc, $10
 	call MemCopy
 	ld hl, sp+$12
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_bf074
 	ld bc, $10
 	call MemCopy
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_bf084
 	ld bc, $10
 	call MemCopy
@@ -6452,7 +6452,7 @@ Func_bf214:: ; bf214 (2f:7214)
 .asm_bf297 ; bf297 (2f:7297)
 	push bc
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Debug_MenuWithSecondaryHeader
@@ -7040,7 +7040,7 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	jp z, .asm_bf680
 	ld bc, $50
 	ld hl, sp+$f
-	reg16swap de, hl
+	swap_de_hl
 	hlcoord 0, 0
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli PushBGMapRegion_
@@ -7055,13 +7055,13 @@ PrintMemoryAllocationErrorDetails:: ; bf431 (2f:7431)
 	call WaitVideoTransfer
 	ld bc, $50
 	ld hl, sp+$5d
-	reg16swap de, hl
+	swap_de_hl
 	hlcoord 0, 0
 	call CopyFromDEtoHL
 	ld bc, $a0
 	ld hl, $ad
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wOAM00YCoord
 	call CopyFromDEtoHL
 	ld hl, sp+$6

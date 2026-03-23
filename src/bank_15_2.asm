@@ -26,7 +26,7 @@ Func_56bc6: ; 56bc6 (15:6bc6)
 	ld hl, $2f
 Func_56bc9: ; 56bc9 (15:6bc9)
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $17
 	add hl, de
 	ld e, [hl]
@@ -45,7 +45,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 	pop bc
 	push hl
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -64,7 +64,7 @@ Func_56bc9: ; 56bc9 (15:6bc9)
 
 Func_56c23: ; 56c23 (15:6c23)
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -122,7 +122,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -133,7 +133,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	mulhl 19
 	ld de, Moves - $13
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld bc, $13
 	call FarCopyVideoData
@@ -144,7 +144,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	cp $5
 	jp nc, Func_56cf1
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -154,7 +154,7 @@ Func_56c8f: ; 56c8f (15:6c8f)
 	cp $5e
 	jp c, Func_56d03
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -230,9 +230,9 @@ Func_56d72: ; 56d72 (15:6d72)
 	read_hl_from_sp_plus $42
 	ld [hl], $0
 	read_hl_from_sp_plus $42
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $42
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_56d87:: ; 56d87 (15:6d87)
@@ -261,7 +261,7 @@ Func_5712f:: ; 5712f (15:712f)
 	mulhl 17
 	ld de, Software - 17
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $11
 	call FarCopyVideoData
@@ -332,7 +332,7 @@ Func_571bf:
 	ld hl, sp+$16
 	ld [hl], a
 	read_hl_from_sp_plus $1e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$16
 	ld l, [hl]
 	ld h, $0
@@ -380,7 +380,7 @@ Func_5720f: ; 5720f (15:720f)
 	mulhl 19
 	ld de, Moves - $13
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $13
 	call FarCopyVideoData
@@ -541,13 +541,13 @@ Func_57309: ; 57309 (15:7309)
 Func_57327: ; 57327 (15:7327)
 	ld hl, -1
 Func_5732a: ; 5732a (15:732a)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $1c
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_57335:
-	reg16swap de, hl
+	swap_de_hl
 	ld l, e
 	ld h, d
 	inc hl
@@ -635,12 +635,12 @@ Func_573a4::
 	call GetBanks_15
 	push af
 	ld hl, wSaveBlock1_PlayerName
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$b
 	ld bc, $5
 	call CopyFromDEtoHL
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
@@ -696,7 +696,7 @@ Func_5747f: ; 5747f (15:747f)
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus8
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $c5
 	call DecompressRequestRoboponPic
 	call WaitVideoTransfer
@@ -722,7 +722,7 @@ Func_574ce: ; 574ce (15:74ce)
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
 	call GetHLAtSPPlus8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
@@ -899,9 +899,9 @@ Func_575b5: ; 575b5 (15:75b5)
 	call DoublePushBGMapRegion
 	pop bc
 	ld hl, $4000
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $1c
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_57655:
@@ -1340,7 +1340,7 @@ Func_578e9::
 	add hl, bc
 	ld de, Text_66ea7
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$36
 	ld bc, $7
 	call FarCopyVideoData
@@ -1401,7 +1401,7 @@ Func_579a5: ; 579a5 (15:79a5)
 	pop bc
 	push bc
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld a, c
 	ld bc, $89b0
 	call DecompressRequestRoboponPic
@@ -1409,7 +1409,7 @@ Func_579a5: ; 579a5 (15:79a5)
 	set_farcall_addrs_hli Func_7c8a
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	ld c, $2
 	call FarCall
@@ -1612,9 +1612,9 @@ Func_57b62: ; 57b62 (15:7b62)
 	call FarCall
 	ld hl, $8000
 Func_57b8e: ; 57b8e (15:7b8e)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $62
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_57b99:
@@ -1746,7 +1746,7 @@ Func_57c4a:: ; 57c4a (15:7c4a)
 	ld l, a
 	ld h, 0
 	get_party_bot
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld bc, $23
 	call FarCopyVideoData
@@ -1812,7 +1812,7 @@ Func_57d24: ; 57d24 (15:7d24)
 	dec c
 	jp nz, Func_57d3b
 	call GetHLAtSPPlus10
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_57d3b
@@ -1884,7 +1884,7 @@ Func_57d91: ; 57d91 (15:7d91)
 	pop de
 	ld hl, -8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	inc c
 	jp Func_57db5
 
@@ -1949,7 +1949,7 @@ Func_57e16: ; 57e16 (15:7e16)
 	ld c, l
 	ld b, h
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld bc, $9
@@ -2025,7 +2025,7 @@ Func_57ea2:: ; 57ea2 (15:7ea2)
 	ld c, l
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, a

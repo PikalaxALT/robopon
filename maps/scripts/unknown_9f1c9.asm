@@ -48,7 +48,7 @@ Func_9f214:
 	add sp, $e6
 	push de
 	ld hl, sp+$04
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_9f1fc
 	ld bc, $0018
 	call MemCopy
@@ -64,7 +64,7 @@ Func_9f214:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$02
 	add hl, de
 	ld a, [wMapX]
@@ -74,7 +74,7 @@ Func_9f214:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$03
 	add hl, de
 	ld a, [wMapY]
@@ -117,7 +117,7 @@ Func_9f214:
 .asm_9f2a3
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0015
 	call CompareHLtoDE
 	jp c, .asm_9f2ba

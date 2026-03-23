@@ -181,7 +181,7 @@ ENDC
 	ld [hl], a
 	pop hl
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$17
 ELIF DEF(LANG_EN)
@@ -573,7 +573,7 @@ ENDC
 	call CompareHLtoDE
 	jp nc, .asm_14336
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	add hl, hl
@@ -751,9 +751,9 @@ ENDC
 	call FillVisibleAreaWithBlankTile
 .asm_14452 ; 14452 (5:4452)
 	pop hl
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $34
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 MenuWithSecondaryHeader:: ; 1445e
@@ -804,9 +804,9 @@ MenuWithSecondaryHeader:: ; 1445e
 	pop bc
 	pop bc
 	pop bc
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $12
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_144bd:: ; 144bd
@@ -871,7 +871,7 @@ Func_144fd:: ; 144fd (5:44fd)
 	set_farcall_addrs_hli GetSaveChecksum
 	ld a, $1
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	set_farcall_addrs_hli ValidateSaveGameSignature
 	pop de
@@ -1780,7 +1780,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld hl, $c8
 	call malloc
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld c, e
 	ld b, d
@@ -1948,7 +1948,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld hl, $c8
 	call malloc
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld c, e
 	ld b, d
@@ -2320,7 +2320,7 @@ ENDC
 	ld hl, $64
 	call malloc
 IF DEF(LANG_JP)
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld c, e
 	ld b, d
@@ -2617,7 +2617,7 @@ DrawDebugMenu:: ; 15001 (5:5001)
 	inc hl
 	inc hl
 	ld c, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -2671,7 +2671,7 @@ Func_1503d:: ; 1503d (5:503d)
 	inc hl
 	ld a, [hl]
 	push af
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -2766,12 +2766,12 @@ ENDC
 	push af
 	push de
 	read_hl_from_sp_plus $47
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $2
 	call FarCopyVideoData
@@ -2781,7 +2781,7 @@ ENDC
 	ld [wFarCallDestBank], a
 	ld bc, $3f
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	call FarCopyVideoData
 	ld hl, sp+$6
@@ -2830,12 +2830,12 @@ ENDC
 	push bc
 	push de
 	read_hl_from_sp_plus $47
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $2
 	call FarCopyVideoData
@@ -2845,7 +2845,7 @@ ENDC
 	ld [wFarCallDestBank], a
 	ld bc, $3f
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	call FarCopyVideoData
 	ld hl, sp+$6
@@ -2971,7 +2971,7 @@ IF DEF(LANG_JP)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, .asm_15258

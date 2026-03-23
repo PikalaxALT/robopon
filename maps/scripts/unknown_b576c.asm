@@ -64,7 +64,7 @@ Func_b5798:
 .asm_b57d0
 	ld c, $01
 	ld hl, sp+$00
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b57dd

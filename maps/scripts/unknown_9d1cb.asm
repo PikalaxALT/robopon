@@ -59,7 +59,7 @@ Func_9d1cb:: ; 9d1cb
 	ld l, [hl]
 	ld h, $00
 	mulhl $003c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$06
 	ld l, [hl]
 	ld h, $00

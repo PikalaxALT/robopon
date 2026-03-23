@@ -462,35 +462,35 @@ Func_ce409:
 	push af
 	ld hl, $01b8
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce1f9
 	ld bc, $005a
 	call MemCopy
 	ld hl, $015e
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce253
 	ld bc, $005a
 	call MemCopy
 	ld hl, $010a
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce2ad
 	ld bc, $0054
 	call MemCopy
 	ld hl, $00b0
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce301
 	ld bc, $005a
 	call MemCopy
 	ld hl, sp+$56
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce35b
 	ld bc, $005a
 	call MemCopy
 	ld hl, sp+$02
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce3b5
 	ld bc, $0054
 	call MemCopy
@@ -513,7 +513,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $01b8
 	add hl, sp
 	add hl, de
@@ -534,7 +534,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$56
 	add hl, de
 	scall Func_80d9b
@@ -554,7 +554,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$02
 	add hl, de
 	scall Func_80d9b
@@ -577,7 +577,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $015e
 	add hl, sp
 	add hl, de
@@ -598,7 +598,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $00b0
 	add hl, sp
 	add hl, de
@@ -619,7 +619,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$02
 	add hl, de
 	scall Func_80d9b
@@ -642,7 +642,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $010a
 	add hl, sp
 	add hl, de
@@ -663,7 +663,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $00b0
 	add hl, sp
 	add hl, de
@@ -684,7 +684,7 @@ Func_ce409:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$56
 	add hl, de
 	scall Func_80d9b
@@ -716,17 +716,17 @@ Func_ce60e:
 	add sp, $a0
 	push de
 	ld hl, sp+$38
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce5ae
 	ld bc, $002a
 	call MemCopy
 	ld hl, sp+$1e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce5d8
 	ld bc, $001a
 	call MemCopy
 	ld hl, sp+$02
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_ce5f2
 	ld bc, $001c
 	call MemCopy
@@ -742,7 +742,7 @@ Func_ce60e:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$36
 	add hl, de
 	ld a, [wMapX]
@@ -752,7 +752,7 @@ Func_ce60e:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$37
 	add hl, de
 	ld a, [wMapY]
@@ -783,7 +783,7 @@ Func_ce60e:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1c
 	add hl, de
 	ld a, [wMapX]
@@ -793,7 +793,7 @@ Func_ce60e:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1d
 	add hl, de
 	ld a, [wMapY]
@@ -824,7 +824,7 @@ Func_ce60e:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$00
 	add hl, de
 	ld a, [wMapX]
@@ -834,7 +834,7 @@ Func_ce60e:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$01
 	add hl, de
 	ld a, [wMapY]

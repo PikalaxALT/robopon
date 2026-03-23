@@ -223,7 +223,7 @@ Func_501de: ; 501de (14:41de)
 	call GetHLAtSPPlus7
 	ld de, $2
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	ld de, $c
 	add hl, de
@@ -250,7 +250,7 @@ Func_501de: ; 501de (14:41de)
 	call GetHLAtSPPlus5
 	ld de, $2
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	ld de, $c
 	add hl, de
@@ -1032,7 +1032,7 @@ Func_5079d: ; 5079d (14:479d)
 	call GetHLAtSPPlus4
 	ld de, $6
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	inc hl
 	inc hl
@@ -1083,7 +1083,7 @@ Func_507ff: ; 507ff (14:47ff)
 	call GetHLAtSPPlus6
 	ld de, $6
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	inc hl
 	inc hl
@@ -1133,7 +1133,7 @@ Func_5083c: ; 5083c (14:483c)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1168,7 +1168,7 @@ Func_5087e: ; 5087e (14:487e)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1738,9 +1738,9 @@ Func_50ccc: ; 50ccc (14:4ccc)
 	pop hl
 	call FarCall
 	ld hl, $8000
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $1a
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_50cf6: ; 50cf6
@@ -2103,7 +2103,7 @@ Func_50f58:: ; 50f58 (14:4f58)
 	call WriteHLToSPPlus8
 	set_farcall_addrs_hli GetRobotFromWarehouse
 	call GetHLAtSPPlus8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	ld a, [hl]
 	call FarCall
@@ -2878,7 +2878,7 @@ Func_515fd: ; 515fd (14:55fd)
 	set_farcall_addrs_hli malloc
 	ld hl, $23
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	set_farcall_addrs_hli GetRobotFromWarehouse
 	pop de
@@ -2904,7 +2904,7 @@ Func_51644: ; 51644 (14:5644)
 	pop bc
 	pop de
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop bc
 Func_5165b: ; 5165b (14:565b)
@@ -2985,7 +2985,7 @@ Func_516e6: ; 516e6 (14:56e6)
 	push de
 	ld a, e
 	ld hl, sp+$27
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	set_farcall_addrs_hli GetRobotInParty
 	pop de
@@ -2993,18 +2993,18 @@ Func_516e6: ; 516e6 (14:56e6)
 	push af
 	push de
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	set_farcall_addrs_hli Func_7db0
 	pop de
 	ld a, e
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	set_farcall_addrs_hli StackGetRobotInParty
 	pop af
 	ld hl, sp+$23
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	add sp, $46
 	ret
@@ -3077,11 +3077,11 @@ Func_5178a: ; 5178a
 	push hl
 	ld a, l
 	ld hl, sp+$1b
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld bc, $6
 	ld hl, sp+$1c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli TryGiveRobot
@@ -4246,9 +4246,9 @@ Func_52287: ; 52287 (14:6287)
 	call FarCall
 	read_hl_from_sp_plus $1b
 Func_522ac: ; 522ac (14:62ac)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $1e
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_522b7: ; 522b7
@@ -4430,7 +4430,7 @@ Func_52447: ; 52447 (14:6447)
 	pop bc
 	push bc
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $5
 	add hl, bc
 	ld [hl], e
@@ -4553,13 +4553,13 @@ Func_524b6:: ; 524b6 (14:64b6)
 	call Func_50185
 	set_farcall_addrs_hli GetRobotFromWarehouse
 	ld hl, sp+$72
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$e
 	ld a, [hl]
 	call FarCall
 	ld bc, $6
 	ld hl, sp+$73
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$17
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli Func_16019
@@ -4607,7 +4607,7 @@ Func_52591: ; 52591 (14:6591)
 	write_hl_to_sp_plus $15
 	ld c, BANK(Text_66ea7)
 	read_hl_from_sp_plus $15
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1b
 	call strcpy_far
 	ld hl, Data_52ac1
@@ -4646,7 +4646,7 @@ Func_52591: ; 52591 (14:6591)
 	write_hl_to_sp_plus $15
 	ld c, BANK(TypeNames)
 	read_hl_from_sp_plus $15
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1b
 	call strcpy_far
 	ld de, Data_52ac7
@@ -4675,7 +4675,7 @@ Func_52591: ; 52591 (14:6591)
 	add hl, bc
 	ld de, $3ff9
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1b
 	call LiteralStringInTree
 	ld e, $5
@@ -4718,7 +4718,7 @@ Func_52591: ; 52591 (14:6591)
 	write_hl_to_sp_plus $1f
 	set_farcall_addrs_hli Func_7e8a
 	read_hl_from_sp_plus $1f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7a
 	ld a, [hl]
 	add $55
@@ -4760,7 +4760,7 @@ Func_5270e: ; 5270e (14:670e)
 	read_hl_from_sp_plus $1f
 	ld de, $41
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $89b0
 	call FarCall
 	call WaitVideoTransfer
@@ -4772,7 +4772,7 @@ Func_5270e: ; 5270e (14:670e)
 	ld c, $2
 	read_hl_from_sp_plus $1f
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
@@ -4788,7 +4788,7 @@ Func_5276c: ; 5276c (14:676c)
 	write_hl_to_sp_plus $1f
 	ld bc, $89b0
 	read_hl_from_sp_plus $1f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7a
 	ld a, [hl]
 	dec a
@@ -4797,7 +4797,7 @@ Func_5276c: ; 5276c (14:676c)
 	set_farcall_addrs_hli Func_7c8a
 	ld c, $2
 	read_hl_from_sp_plus $1f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2
 	call FarCall
 	call WaitVideoTransfer
@@ -4825,14 +4825,14 @@ Func_527db: ; 527db (14:67db)
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $88
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10d
 	call FarCall
 	read_hl_from_sp_plus $8e
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $8c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10f
 	call FarCall
 	ld de, Data_52ad4
@@ -4877,7 +4877,7 @@ Func_527db: ; 527db (14:67db)
 	ld e, a
 	ld d, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_528a5
@@ -4896,7 +4896,7 @@ Func_528a5: ; 528a5 (14:68a5)
 	ld e, c
 	ld d, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_528d2
@@ -4915,7 +4915,7 @@ Func_528d2: ; 528d2 (14:68d2)
 	ld b, $0
 	read_hl_from_sp_plus $93
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_52900
@@ -4932,12 +4932,12 @@ Func_52900: ; 52900 (14:6900)
 	ld hl, sp+$4c
 	ld a, [hl]
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7d
 	ld l, [hl]
 	ld h, a
 	call Func_270a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7d
 	ld a, [hl]
 	cp $63
@@ -4951,7 +4951,7 @@ Func_52900: ; 52900 (14:6900)
 	jp Func_5295a
 
 Func_52940: ; 52940 (14:6940)
-	reg16swap de, hl
+	swap_de_hl
 	ld bc, $0
 	push bc
 	push hl
@@ -5184,7 +5184,7 @@ Data_52b2e:
 	dstr "(ひきたﾞすかい)?"
 
 Func_52b39:
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $d
 	add hl, de
 	ld a, [hl]
@@ -5306,7 +5306,7 @@ Func_52bbb: ; 52bbb (14:6bbb)
 	set_farcall_addrs_hli malloc
 	ld hl, $64
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld c, e
 	ld b, d
@@ -5605,7 +5605,7 @@ Func_53b6e::
 	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld c, e
 	ld b, d
@@ -5711,7 +5711,7 @@ Func_53c88::
 Func_53cb4: ; 53cb4 (14:7cb4)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	ld hl, sp+$1f
@@ -5752,7 +5752,7 @@ Func_53cb4: ; 53cb4 (14:7cb4)
 Func_53d22: ; 53d22 (14:7d22)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	ld hl, sp+$0
@@ -5829,7 +5829,7 @@ Func_53dec: ; 53dec (14:7dec)
 Func_53e02: ; 53e02 (14:7e02)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	ld hl, sp+$0

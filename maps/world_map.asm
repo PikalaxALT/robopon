@@ -263,17 +263,17 @@ WorldMap:: ; e220d
 	add hl, sp
 	ld sp, hl
 	ld hl, sp+$74
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e2196
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$70
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e219a
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e219e
 	ld bc, $6f
 	call MemCopy
@@ -290,7 +290,7 @@ WorldMap:: ; e220d
 	ld l, [hl]
 	ld h, $0
 	mulhl $3c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $88
 	add hl, sp
 	ld l, [hl]
@@ -404,7 +404,7 @@ WorldMap:: ; e220d
 	pop de
 	ld hl, $14
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	jp .asm_e22f2
@@ -742,7 +742,7 @@ WorldMap:: ; e220d
 	ld h, $0
 	ld b, $4
 	call RightShiftHL
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$72
 	add hl, de
 	ld c, [hl]
@@ -779,7 +779,7 @@ WorldMap:: ; e220d
 	add hl, de
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	call FarCall
 	callba_hli QueueMoveAnimScriptGFXUpdate

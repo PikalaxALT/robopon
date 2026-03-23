@@ -628,7 +628,7 @@ HandleMenu:: ; 174ab (5:74ab)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call free
 .quit
 	pop hl

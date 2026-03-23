@@ -72,7 +72,7 @@ Func_fb0db:: ; fb0db (3e:70db)
 	mulhl $2f
 	ld de, sSRAMRobots
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $2f
 	call MemCopy
@@ -200,7 +200,7 @@ Func_fb205:: ; fb205 (3e:7205)
 	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld c, e
 	ld b, d
@@ -310,7 +310,7 @@ Func_fb328: ; fb328 (3e:7328)
 	get_party_bot
 	ld de, $8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
@@ -342,7 +342,7 @@ Func_fb368: ; fb368 (3e:7368)
 	pop de
 	push hl
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	call Func_fb3bb
 	set_farcall_addrs_hli GetBanks
@@ -575,7 +575,7 @@ Func_fb55f:: ; fb55f (3e:755f)
 	push af
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	call FarCall
 	pop af
@@ -584,7 +584,7 @@ Func_fb55f:: ; fb55f (3e:755f)
 	write_hl_to_sp_plus $16
 	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	call FarCall
 	add sp, $24
@@ -1061,7 +1061,7 @@ Func_fb85a: ; fb85a (3e:785a)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_fb88c
@@ -1359,7 +1359,7 @@ MainMenuSubmenu_Title:: ; fba6f (3e:7a6f)
 	call DoublePushBGMapRegion
 	pop bc
 	callba_hli Func_1482e
-	reg16swap de, hl
+	swap_de_hl
 	pop hl
 	push de
 	push hl
@@ -1464,7 +1464,7 @@ Func_fbbfb: ; fbbfb (3e:7bfb)
 	call FarCall
 	push af
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy

@@ -401,7 +401,7 @@ Func_ced03:
 	add sp, $dc
 	push de
 	ld hl, sp+$04
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_cece1
 	ld bc, $0022
 	call MemCopy
@@ -417,7 +417,7 @@ Func_ced03:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$02
 	add hl, de
 	ld a, [hl]
@@ -430,7 +430,7 @@ Func_ced03:
 	ld l, c
 	ld h, $00
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$03
 	add hl, de
 	ld a, [wMapY]
@@ -473,7 +473,7 @@ Func_ced03:
 .asm_ced95
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0015
 	call CompareHLtoDE
 	jp c, .asm_cedac

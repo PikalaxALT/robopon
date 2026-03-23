@@ -7,7 +7,7 @@ InitHeap:: ; 17a67 (5:7a67)
 	ld [bc], a
 	ld hl, -5
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	inc hl
@@ -56,7 +56,7 @@ malloc:: ; 17aba (5:7aba)
 	push hl
 	push bc
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, .okay
@@ -122,7 +122,7 @@ malloc:: ; 17aba (5:7aba)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp c, .next
@@ -479,7 +479,7 @@ free:: ; 17c57 (5:7c57)
 	ld d, [hl]
 	ld hl, $5
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	inc hl

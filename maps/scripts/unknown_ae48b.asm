@@ -117,7 +117,7 @@ Func_ae4fa:
 .asm_ae553
 	ld c, $01
 	ld hl, sp+$00
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $2b
 	scall MovePlayer
 .asm_ae560

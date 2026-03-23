@@ -153,7 +153,7 @@ Func_b5576:
 .asm_b55ae
 	ld c, $01
 	ld hl, sp+$00
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b55bb

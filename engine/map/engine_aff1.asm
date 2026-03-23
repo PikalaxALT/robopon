@@ -13,7 +13,7 @@ Func_aff1: ; aff1 (2:6ff1)
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	ld [hl], $ff
@@ -45,7 +45,7 @@ Func_b025: ; b025 (2:7025)
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	call WriteHLToSPPlus4
@@ -103,7 +103,7 @@ Func_b065: ; b065 (2:7065)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	call WriteHLToSPPlus4
@@ -118,7 +118,7 @@ Func_b065: ; b065 (2:7065)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -136,7 +136,7 @@ Func_b0c5: ; b0c5 (2:70c5)
 	ld h, $0
 	add hl, hl
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld bc, $2
 	call FarCopyVideoData
@@ -198,7 +198,7 @@ Func_b109: ; b109 (2:7109)
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	ld [hl], $ff
@@ -230,7 +230,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	call WriteHLToSPPlus6
@@ -255,7 +255,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	call WriteHLToSPPlus4
@@ -264,7 +264,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	ld c, l
@@ -329,15 +329,15 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$f
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [de]
 	dec a
 	and $7
@@ -371,7 +371,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld a, d
 	sbc h
 	ld h, a
-	reg16swap de, hl
+	swap_de_hl
 	jp .increment_low_bits
 
 .walk_right ; b25b (2:725b)
@@ -393,7 +393,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	jp .increment_low_bits
 
 .walk_left ; b27b (2:727b)
@@ -436,7 +436,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	ld h, $0
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	ld bc, $2
 	call FarCopyVideoData
@@ -613,7 +613,7 @@ Func_b3ab:: ; b3ab (2:73ab)
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
 	ld a, [hl]

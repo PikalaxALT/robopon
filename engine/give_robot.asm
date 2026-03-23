@@ -18,7 +18,7 @@ GiveRobot:: ; 31af1
 	push de
 	push bc
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_31aca
 	ld bc, $6
 	call MemCopy
@@ -74,7 +74,7 @@ GiveRobot:: ; 31af1
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $c
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	ld a, $2
@@ -366,7 +366,7 @@ Func_31d95: ; 31d95 (c:5d95)
 	ld l, [hl]
 	ld h, $0
 	get_party_bot $23
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $23
 	call FarCopyVideoData
@@ -432,7 +432,7 @@ Func_31e24: ; 31e24 (c:5e24)
 	ld [hl], c
 	set_farcall_addrs_hli Func_7db0
 	ld hl, sp+$33
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$58
 	ld a, [hl]
 	call FarCall
@@ -470,7 +470,7 @@ Func_31eb7: ; 31eb7 (c:5eb7)
 	ld l, [hl]
 	ld h, $0
 	get_party_bot $23
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $23
 	call FarCopyVideoData

@@ -486,7 +486,7 @@ asm_62fb:
 	ld h, d
 	call Coord2TileMap
 	pop bc
-	reg16swap de, hl
+	swap_de_hl
 	ld a, l
 	cp SCREEN_HEIGHT
 	jp c, .asm_631e
@@ -1806,7 +1806,7 @@ Func_6b94:: ; 6b94
 	push af
 	ld a, l
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	call GetRobotInParty
 	pop af
 	cp $9
@@ -1838,7 +1838,7 @@ MACRO macro_6b94
 	add hl, de
 	write_hl_to_sp_plus \1
 	read_hl_from_sp_plus \1
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, .check_negative_\@
@@ -1937,7 +1937,7 @@ ENDC
 	pop hl
 	ld a, l
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	call StackGetRobotInParty
 	add sp, $26
 	ret
@@ -1955,7 +1955,7 @@ Func_6e1b:: ; 6e1b
 	push af
 	ld a, e
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call GetRobotInParty
 	pop af
 	cp $b
@@ -2070,9 +2070,9 @@ ENDC
 	ld l, [hl]
 	ld h, $0
 .asm_6eb4: ; 6eb4 (1:6eb4)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $24
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_6ebf:: ; 6ebf
@@ -2084,7 +2084,7 @@ Func_6ebf:: ; 6ebf
 	push af
 	ld a, l
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	call GetRobotInParty
 	pop af
 	cp $9
@@ -2161,7 +2161,7 @@ Func_6ebf:: ; 6ebf
 	pop hl
 	ld a, l
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	call StackGetRobotInParty
 	add sp, $26
 	ret
@@ -2179,7 +2179,7 @@ Func_6f7b: ; 6f7b (1:6f7b)
 	ld a, e
 	or d
 	jp z, .asm_6f95
-	reg16swap de, hl
+	swap_de_hl
 	call Func_2887
 .asm_6f95: ; 6f95 (1:6f95)
 	pop af
@@ -2187,7 +2187,7 @@ Func_6f7b: ; 6f7b (1:6f7b)
 	push af
 	ld e, $5
 	call Func_2a3e
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	push de
 	push af
@@ -2204,7 +2204,7 @@ Func_6f7b: ; 6f7b (1:6f7b)
 	ret
 
 Func_6fb7: ; 6fb7 (1:6fb7)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_6fc1
 	jp Func_6f7b
 
@@ -2216,7 +2216,7 @@ ELIF DEF(LANG_EN)
 ENDC
 
 Func_6fcb: ; 6fcb (1:6fcb)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_6fd5
 	jp Func_6f7b
 
@@ -2721,7 +2721,7 @@ Func_7286: ; 7286 (1:7286)
 	read_hl_from_sp_plus $c
 	pop de
 	call CalcChecksum
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc324
 	call CompareHLtoDE
 	jp z, .asm_7376
@@ -3079,7 +3079,7 @@ Func_7507: ; 7507 (1:7507)
 	call GetHLAtSPPlus10
 	pop de
 	call CalcChecksum
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc324
 	call CompareHLtoDE
 	jp z, .asm_75e8
@@ -3176,9 +3176,9 @@ Func_7618: ; 7618 (1:7618)
 	ld a, c
 	and $2
 	jp nz, .asm_7658
-	reg16swap de, hl
+	swap_de_hl
 	call Func_6fb7
-	reg16swap de, hl
+	swap_de_hl
 .asm_7658: ; 7658 (1:7658)
 	push de
 	read_hl_from_sp_plus $e
@@ -3295,9 +3295,9 @@ Func_7618: ; 7618 (1:7618)
 	push bc
 	ld a, $1
 	push af
-	reg16swap de, hl
+	swap_de_hl
 	call Func_725f
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	pop bc
 	jp .asm_7642
@@ -3315,7 +3315,7 @@ Func_7618: ; 7618 (1:7618)
 	ld a, e
 	or d
 	jp z, .asm_773c
-	reg16swap de, hl
+	swap_de_hl
 	call Func_2887
 .asm_773c: ; 773c (1:773c)
 	call NextOverworldFrame
@@ -3531,7 +3531,7 @@ Func_7882:: ; 7882
 
 .asm_7891: ; 7891 (1:7891)
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, .asm_790a
@@ -3612,7 +3612,7 @@ Func_790f:: ; 790f
 
 .asm_791e: ; 791e (1:791e)
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, .asm_7986
@@ -3634,7 +3634,7 @@ Func_790f:: ; 790f
 	ld c, [hl]
 	ld b, $0
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wc327
 	call CopyFromDEtoHL
 	call Func_1c78
@@ -3774,7 +3774,7 @@ IF DEF(LANG_JP)
 	ld d, $0
 	ld hl, PoncotNameCharacters
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 .asm_7ba4 ; 7ba4 (1:7ba4)
 	ld a, [de]
 	ld hl, sp+$2
@@ -3997,7 +3997,7 @@ Func_7cd1:: ; 7cd1
 	inc c
 	ld hl, warehouseRobot_SIZEOF
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop hl
 	jp .asm_7cdf
 
@@ -4029,7 +4029,7 @@ Func_7d01:: ; 7d01
 	inc c
 	ld hl, warehouseRobot_SIZEOF
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	jp .asm_7d0e
 
 .asm_7d28: ; 7d28 (1:7d28)
@@ -4126,7 +4126,7 @@ Func_7db0:: ; 7db0 (1:7db0)
 	add hl, de
 	push hl
 	ld hl, sp+$42
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$26
 	call Func_6493
 	ld a, $2
@@ -4161,7 +4161,7 @@ GetRobotFromWarehouse:: ; 7dfc (1:7dfc)
 	call GetSRAMBank_ReadOnly
 	pop bc
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_6392
@@ -4198,11 +4198,11 @@ Func_7e56:: ; 7e56
 	push af
 	ld a, e
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call GetRobotInParty
 	pop af
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	call Func_7db0
 	add sp, $24
 	ret
@@ -4211,12 +4211,12 @@ Func_7e70:: ; 7e70
 	add sp, -$24
 	push de
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call GetRobotFromWarehouse
 	pop de
 	ld a, e
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	call StackGetRobotInParty
 	add sp, $24
 	ret
@@ -4341,7 +4341,7 @@ Func_7f14:: ; 7f14
 	pop bc
 	push bc
 	ld hl, sp+$8
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld bc, $40
@@ -4354,7 +4354,7 @@ Func_7f14:: ; 7f14
 	pop de
 	ld hl, $40
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	pop hl
@@ -4374,7 +4374,7 @@ Func_7f14:: ; 7f14
 	call GetSRAMBank
 	pop bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld bc, $11

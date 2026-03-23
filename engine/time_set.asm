@@ -320,7 +320,7 @@ Func_5301d: ; 5301d (14:701d)
 	ld e, a
 	ld d, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, -1924
 	add hl, de
 	ld a, l
@@ -456,7 +456,7 @@ Func_53149: ; 53149 (14:7149)
 	ld h, b
 	ld de, 1000
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $64
 	call DivideHLByDESigned
 	ld a, l
@@ -467,7 +467,7 @@ Func_53149: ; 53149 (14:7149)
 	ld h, b
 	ld de, $64
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $a
 	call DivideHLByDESigned
 	ld a, l
@@ -814,7 +814,7 @@ Func_533fb: ; 533fb (14:73fb)
 	ld l, $0
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -844,7 +844,7 @@ Func_53436: ; 53436 (14:7436)
 	ld l, $0
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1073,7 +1073,7 @@ Func_535b7: ; 535b7 (14:75b7)
 	ld e, a
 	ld d, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $802
 	call CompareHLtoDE
 	jp nc, Func_5360d

@@ -59,7 +59,7 @@ CalcSaveChecksum:: ; 79b3 (1:79b3)
 	add hl, de
 	ld de, Data_7995
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -67,7 +67,7 @@ CalcSaveChecksum:: ; 79b3 (1:79b3)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CalcChecksum
 	ld c, l

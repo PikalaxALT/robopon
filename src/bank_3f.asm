@@ -136,14 +136,14 @@ Func_fc0ae: ; fc0ae (3f:40ae)
 	pop de
 	ld hl, $10
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld a, [hl]
 	and $40
 	jp z, Func_fc0ee
 	ld hl, $30
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld bc, -$10
 	jp Func_fc0f1
 
@@ -206,7 +206,7 @@ Func_fc114: ; fc114 (3f:4114)
 
 Func_fc142: ; fc142 (3f:4142)
 	read_hl_from_sp_plus $e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -258,9 +258,9 @@ Func_fc169: ; fc169 (3f:4169)
 Func_fc192: ; fc192 (3f:4192)
 	pop de
 	pop bc
-	reg16swap de, hl
+	swap_de_hl
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	jp Func_fc0f2
@@ -459,7 +459,7 @@ IntroMovie_SlideRobotLeftToRight: ; fc2d7 (3f:42d7)
 	push bc
 	push af
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fc2ce
 	ld bc, $5
 	call MemCopy
@@ -528,7 +528,7 @@ IntroMovie_SlideRobotRightToLeft: ; fc360 (3f:4360)
 	push bc
 	push af
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fc357
 	ld bc, $5
 	call MemCopy
@@ -805,7 +805,7 @@ Func_fc580: ; fc580 (3f:4580)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $28
 	call Func_fc0ae
 	call GetHLAtSPPlus10
@@ -885,7 +885,7 @@ IntroMovie_SlideRobotsForCombat: ; fc615 (3f:4615)
 	push de
 	push af
 	ld hl, sp+$7
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fc610
 	ld bc, $5
 	call MemCopy
@@ -1157,7 +1157,7 @@ IntroMovie_FadeToBlack:
 	push bc
 	push bc
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fc857
 	ld bc, $5
 	call MemCopy
@@ -1235,7 +1235,7 @@ Func_fc8de: ; fc8de (3f:48de)
 	ld e, c
 	ld d, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $1
 	call FarCopyVideoData
@@ -1589,7 +1589,7 @@ Func_fcabb: ; fcabb (3f:4abb)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $608
 	call FarCall
 	call Func_fc756
@@ -1751,7 +1751,7 @@ ENDC
 Func_fccaa:
 	add sp, -$14
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld l, $0
 Func_fccb4: ; fccb4 (3f:4cb4)
 	ld a, l
@@ -1766,7 +1766,7 @@ Func_fccb4: ; fccb4 (3f:4cb4)
 Func_fccc2: ; fccc2 (3f:4cc2)
 	ld bc, $10
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $88e0
 	call FarRequestVideoData
 	ld a, [wNextVBlankFlags]
@@ -1914,7 +1914,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	ld de, Data_d9048
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$10
 	ld bc, $1
 	call FarCopyVideoData
@@ -2314,7 +2314,7 @@ Func_fd142: ; fd142 (3f:5142)
 	ld l, $0
 	ld de, $103
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	ld h, l

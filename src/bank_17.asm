@@ -149,7 +149,7 @@ Func_5c3a3: ; 5c3a3 (17:43a3)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$39
 	add hl, de
 	ld [hl], c
@@ -195,7 +195,7 @@ Func_5c40a: ; 5c40a (17:440a)
 	ld l, [hl]
 	ld h, $0
 	mulhl 24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
 	pop de
@@ -246,7 +246,7 @@ Func_5c44b: ; 5c44b (17:444b)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$35
 	add hl, de
 	ld e, [hl]
@@ -257,7 +257,7 @@ Func_5c44b: ; 5c44b (17:444b)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -291,7 +291,7 @@ Func_5c49b: ; 5c49b (17:449b)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$35
 	add hl, de
 	ld e, [hl]
@@ -302,7 +302,7 @@ Func_5c49b: ; 5c49b (17:449b)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -349,7 +349,7 @@ Func_5c511: ; 5c511 (17:4511)
 	ld l, [hl]
 	ld h, $0
 	mulhl 24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld de, $13
@@ -368,7 +368,7 @@ Func_5c536: ; 5c536 (17:4536)
 	ld l, [hl]
 	ld h, $0
 	mulhl 24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld de, $13
@@ -382,7 +382,7 @@ Func_5c536: ; 5c536 (17:4536)
 	ld l, [hl]
 	ld h, $0
 	mulhl 24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld de, $13
@@ -404,7 +404,7 @@ Func_5c57d: ; 5c57d (17:457d)
 	ld l, [hl]
 	ld h, $0
 	mulhl 24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld de, $13
@@ -418,7 +418,7 @@ Func_5c57d: ; 5c57d (17:457d)
 	ld l, [hl]
 	ld h, $0
 	mulhl 24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld de, $13
@@ -440,7 +440,7 @@ Func_5c5c4: ; 5c5c4 (17:45c4)
 	ld l, [hl]
 	ld h, $0
 	mulhl 24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld de, $13
@@ -454,7 +454,7 @@ Func_5c5c4: ; 5c5c4 (17:45c4)
 	ld l, [hl]
 	ld h, $0
 	mulhl 24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
 	ld de, $13
@@ -473,7 +473,7 @@ Func_5c608: ; 5c608 (17:4608)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$35
 	add hl, de
 	ld e, [hl]
@@ -488,7 +488,7 @@ Func_5c608: ; 5c608 (17:4608)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$35
 	add hl, de
 	ld e, [hl]
@@ -511,7 +511,7 @@ Func_5c643: ; 5c643 (17:4643)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$35
 	add hl, de
 	ld e, [hl]
@@ -526,7 +526,7 @@ Func_5c643: ; 5c643 (17:4643)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$35
 	add hl, de
 	ld e, [hl]
@@ -907,7 +907,7 @@ Func_5c8e2: ; 5c8e2 (17:48e2)
 	mulhl 19
 	ld de, Moves - $13
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $13
 	call FarCopyVideoData
@@ -932,7 +932,7 @@ Func_5c913: ; 5c913 (17:4913)
 	ld e, a
 	inc hl
 	ld d, $0
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -946,11 +946,11 @@ Func_5c913: ; 5c913 (17:4913)
 	ld e, a
 	inc hl
 	ld d, $0
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	dec hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4e
 	ld l, [hl]
 	ld h, $0
@@ -1015,7 +1015,7 @@ Func_5c9b4: ; 5c9b4 (17:49b4)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_2617
 	ld hl, sp+$46
@@ -1034,7 +1034,7 @@ Func_5c9ea: ; 5c9ea (17:49ea)
 	read_hl_from_sp_plus $44
 	ld de, $4e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -1098,7 +1098,7 @@ Func_5ca57: ; 5ca57 (17:4a57)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
@@ -1156,7 +1156,7 @@ Func_5cac8: ; 5cac8 (17:4ac8)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
@@ -1278,7 +1278,7 @@ Func_5cb9d: ; 5cb9d (17:4b9d)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_5c06f
 	read_hl_from_sp_plus $46
@@ -1289,7 +1289,7 @@ Func_5cb9d: ; 5cb9d (17:4b9d)
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $4c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$46
 	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$46
@@ -1345,7 +1345,7 @@ Func_5cc20: ; 5cc20 (17:4c20)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -1504,7 +1504,7 @@ Func_5cd7a: ; 5cd7a (17:4d7a)
 	inc hl
 	ld [hl], b
 	read_hl_from_sp_plus $4a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_5cd9c
@@ -1656,7 +1656,7 @@ Func_5ce98: ; 5ce98 (17:4e98)
 	call WriteHLToSPPlus4
 Func_5cea4: ; 5cea4 (17:4ea4)
 	call GetHLAtSPPlus8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_5ceba
@@ -1664,7 +1664,7 @@ Func_5cea4: ; 5cea4 (17:4ea4)
 	call WriteHLToSPPlus8
 Func_5ceba: ; 5ceba (17:4eba)
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_5ced0
@@ -1672,7 +1672,7 @@ Func_5ceba: ; 5ceba (17:4eba)
 	call WriteHLToSPPlus6
 Func_5ced0: ; 5ced0 (17:4ed0)
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_5cee6
@@ -1686,7 +1686,7 @@ Func_5cee6: ; 5cee6 (17:4ee6)
 	or a
 	jp nz, Func_5cefe
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $60
 	add hl, bc
 	ld [hl], e
@@ -1694,7 +1694,7 @@ Func_5cee6: ; 5cee6 (17:4ee6)
 	ld [hl], d
 Func_5cefe: ; 5cefe (17:4efe)
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $62
 	add hl, bc
 	ld [hl], e
@@ -1702,7 +1702,7 @@ Func_5cefe: ; 5cefe (17:4efe)
 	ld [hl], d
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $64
 	add hl, bc
 	ld [hl], e
@@ -1749,7 +1749,7 @@ Func_5cf2f: ; 5cf2f (17:4f2f)
 	call GetHLAtSPPlus4
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1762,7 +1762,7 @@ Func_5cf2f: ; 5cf2f (17:4f2f)
 	push hl
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1823,7 +1823,7 @@ Func_5cfb7: ; 5cfb7 (17:4fb7)
 	ld hl, sp+$20
 	ld c, [hl]
 	read_hl_from_sp_plus $24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	call strcpy_far
 	read_hl_from_sp_plus $20
@@ -1841,14 +1841,14 @@ Func_5cfb7: ; 5cfb7 (17:4fb7)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call FindFirstNonzero
 	push hl
 	ld hl, sp+$2
 	call FindFirstNonzero
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $12
 	call CompareHLtoDE
 	jp nc, Func_5d00a
@@ -1869,7 +1869,7 @@ Func_5d00a: ; 5d00a (17:500a)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call strcpy_far
 	ld c, l
@@ -2003,7 +2003,7 @@ Func_5d096:: ; 5d096 (17:5096)
 	push hl
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	call Func_5cf1d
@@ -2029,7 +2029,7 @@ Func_5d113:: ; 5d113 (17:5113)
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld hl, $8
 	add hl, de
@@ -2063,7 +2063,7 @@ Func_5d151: ; 5d151 (17:5151)
 	ld d, [hl]
 	ld hl, $40
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $b05
 	call FarCall
 Func_5d183: ; 5d183 (17:5183)
@@ -2236,7 +2236,7 @@ Func_5d2b1: ; 5d2b1 (17:52b1)
 	mulhl 19
 	ld de, Moves - $13
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld bc, $13
 	call FarCopyVideoData
@@ -2252,7 +2252,7 @@ Func_5d2de: ; 5d2de (17:52de)
 	ld e, a
 	inc hl
 	ld d, $0
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -2266,7 +2266,7 @@ Func_5d2de: ; 5d2de (17:52de)
 	ld e, a
 	inc hl
 	ld d, $0
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	dec hl
@@ -2323,7 +2323,7 @@ Func_5d35f: ; 5d35f (17:535f)
 	pop af
 	push af
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$2
 	ld a, [hl]
@@ -2548,14 +2548,14 @@ Func_5d4a6:
 	push af
 	ld a, c
 	ld hl, sp+$45
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$46
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	call LiteralStringInTree
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$69
 	ld a, [hl]
 	ld hl, sp+$68
@@ -2571,7 +2571,7 @@ Func_5d4a6:
 	add hl, hl
 	ld de, $6f37
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	call LiteralStringInTree
 	ld hl, sp+$2
@@ -2888,7 +2888,7 @@ Func_5d739: ; 5d739 (17:5739)
 	push bc
 	push hl
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_5d735
 	ld bc, $4
 	call MemCopy
@@ -3196,7 +3196,7 @@ Func_5d91f:
 	inc hl
 	ld l, [hl]
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -3240,7 +3240,7 @@ Func_5d95c: ; 5d95c (17:595c)
 	inc h
 	inc h
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -3424,13 +3424,13 @@ Func_5daa7: ; 5daa7 (17:5aa7)
 	push bc
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$26
 	ld a, [hl]
 	call FarCall
 	pop bc
 	read_hl_from_sp_plus $e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_5daf2
@@ -3489,7 +3489,7 @@ Func_5db1b: ; 5db1b (17:5b1b)
 	push bc
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$27
 	ld a, [hl]
 	call FarCall
@@ -3980,11 +3980,11 @@ Func_5df18: ; 5df18 (17:5f18)
 
 Func_5df1b: ; 5df1b (17:5f1b)
 	read_hl_from Pointers_5dde1
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call PlaceStringDEatCoordHL
 	read_hl_from Pointers_5dde3
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $110
 	call PlaceStringDEatCoordHL
 	jp Func_5df96
@@ -4212,7 +4212,7 @@ Func_5e0f4: ; 5e0f4 (17:60f4)
 	call GetHLAtSPPlus4
 	ld a, l
 	ld hl, sp+$33
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop bc
 	read_hl_from_sp_plus $3f
@@ -4239,7 +4239,7 @@ Func_5e135: ; 5e135 (17:6135)
 	push hl
 	ld a, l
 	ld hl, sp+$31
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$31
 	ld a, [hl]
@@ -4356,9 +4356,9 @@ Func_5e264: ; 5e264 (17:6264)
 	pop hl
 	push hl
 Func_5e266: ; 5e266 (17:6266)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $5a
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_5e271:
@@ -4591,7 +4591,7 @@ Func_5e398: ; 5e398 (17:6398)
 	ld l, [hl]
 	ld h, 0
 	get_party_bot
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	ld bc, $23
 	call MemCopy
@@ -4631,9 +4631,9 @@ Func_5e4b3: ; 5e4b3 (17:64b3)
 	call Func_5de14
 	ld hl, $4000
 Func_5e4bd: ; 5e4bd (17:64bd)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $2c
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 INCLUDE "engine/menu/party_menu.asm"

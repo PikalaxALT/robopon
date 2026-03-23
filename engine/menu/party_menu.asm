@@ -15,7 +15,7 @@ DisplayPartyMenu:: ; 5e504 (17:6504)
 	push de
 	push bc
 	ld hl, sp+$3a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_5e4f6
 	ld bc, $e
 	call MemCopy
@@ -189,10 +189,10 @@ Func_5e663: ; 5e663 (17:6663)
 	xor a
 	ld [wc395], a
 	ld hl, sp+$29
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	call Func_5d34b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$42
 	ld a, [hl]
 	or a
@@ -237,7 +237,7 @@ Func_5e6eb: ; 5e6eb (17:66eb)
 	push de
 	push bc
 	ld hl, sp+$2b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$c
 	call Func_5d34b
 	pop bc
@@ -269,7 +269,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	push de
 	push bc
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld bc, $c8
@@ -298,7 +298,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	ld l, [hl]
 	ld h, $0
 	mulhl 17
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $82
 	add hl, bc
 	add hl, de
@@ -326,7 +326,7 @@ Func_5e72d: ; 5e72d (17:672d)
 	ld l, [hl]
 	ld h, $0
 	mulhl 17
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $82
 	add hl, bc
 	add hl, de
@@ -392,7 +392,7 @@ Func_5e835: ; 5e835 (17:6835)
 	jp nc, Func_5e8bc
 	set_farcall_addrs_hli GetRobotInParty
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$48
 	ld a, [hl]
 	call FarCall
@@ -491,10 +491,10 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	xor a
 	ld [wc395], a
 	ld hl, sp+$27
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	call Func_5d34b
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld a, e
 	and d
@@ -510,7 +510,7 @@ Func_5e8bc: ; 5e8bc (17:68bc)
 	write_hl_to_sp_plus $48
 	set_farcall_addrs_hli GetRobotInParty
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	call GetHLAtSPPlus6
@@ -552,7 +552,7 @@ Func_5e962: ; 5e962 (17:6962)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call CompareHLtoBC
 	jp nc, Func_5e993
 	jp Func_5e9e1
@@ -665,7 +665,7 @@ Func_5ea13: ; 5ea13 (17:6a13)
 	xor a
 	ld [wc395], a
 	ld hl, sp+$29
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	call Func_5d34b
 	pop de
@@ -731,10 +731,10 @@ Func_5ea9c: ; 5ea9c (17:6a9c)
 	xor a
 	ld [wc395], a
 	ld hl, sp+$27
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	call Func_5d34b
-	reg16swap de, hl
+	swap_de_hl
 	jp Func_5eb43
 
 Func_5eadb: ; 5eadb (17:6adb)
@@ -788,7 +788,7 @@ Func_5eafa: ; 5eafa (17:6afa)
 	xor a
 	ld [wc395], a
 	ld hl, sp+$29
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	call Func_5d34b
 	pop de
@@ -893,9 +893,9 @@ Func_5ec1b: ; 5ec1b (17:6c1b)
 	call GetHLAtSPPlus8
 	call FarCall
 	pop hl
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $4e
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_5ec5a:

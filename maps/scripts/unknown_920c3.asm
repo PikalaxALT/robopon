@@ -375,7 +375,7 @@ Func_9233b:
 .asm_92391
 	ld c, $01
 	ld hl, sp+$00
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $24
 	scall MovePlayer
 	jp .asm_923f6
@@ -404,7 +404,7 @@ Func_9233b:
 .asm_923d3
 	ld c, $01
 	ld hl, sp+$00
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $24
 	scall MovePlayer
 	writenpctext TreeBitstreamText_46ffa

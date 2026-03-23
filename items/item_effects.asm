@@ -9,7 +9,7 @@ ItemEffect_NoUse: ; 4eebc (13:6ebc)
 	push bc
 	push bc
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Pointers_4eead
 	ld bc, $4
 	call MemCopy
@@ -34,7 +34,7 @@ ItemEffect_NoUse: ; 4eebc (13:6ebc)
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $13
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	pop bc
@@ -856,7 +856,7 @@ Func_4f613: ; 4f613 (13:7613)
 	ld e, a
 	ld d, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call FarCall

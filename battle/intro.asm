@@ -193,7 +193,7 @@ Func_fb95: ; fb95 (3:7b95)
 	push bc
 	read_hl_from_sp_plus $38
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	inc hl
@@ -327,7 +327,7 @@ IF DEF(LANG_JP)
 	add hl, de
 	pop de
 ELIF DEF(LANG_EN)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $82
 	add hl, bc
 ENDC
@@ -339,7 +339,7 @@ IF DEF(LANG_JP)
 	add hl, de
 	pop de
 ELIF DEF(LANG_EN)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $71
 	add hl, bc
 ENDC
@@ -374,7 +374,7 @@ ENDC
 	ld d, [hl]
 	ld hl, $c
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$2c
 ELIF DEF(LANG_EN)
@@ -430,11 +430,11 @@ Func_fcef: ; fcef (3:7cef)
 	push bc
 	ld a, c
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop bc
 	read_hl_from_sp_plus $10
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_fd22
@@ -453,7 +453,7 @@ Func_fd26: ; fd26 (3:7d26)
 	ld b, h
 	read_hl_from_sp_plus $34
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	inc hl
@@ -512,7 +512,7 @@ Func_fd26: ; fd26 (3:7d26)
 	ld [hl], $5
 Func_fda8: ; fda8 (3:7da8)
 	ld hl, sp+$23
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_d7f5

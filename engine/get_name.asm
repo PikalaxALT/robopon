@@ -12,7 +12,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	call DivideHLByDESigned
 	ld c, l
 	read_hl_from_sp_plus $72
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	ld h, l
@@ -102,7 +102,7 @@ GetName:: ; 15ad6 (5:5ad6)
 	pop hl
 	ld a, l
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$3
 	write_hl_to_sp_plus $6e

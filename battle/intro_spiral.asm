@@ -11,7 +11,7 @@ Func_e015:: ; e015 (3:6015)
 	ld hl, sp+$14
 	ld [hl], $11
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, $0
 Func_e031: ; e031 (3:6031)
 	ld a, l
@@ -26,7 +26,7 @@ Func_e031: ; e031 (3:6031)
 Func_e03f: ; e03f (3:603f)
 	ld bc, $10
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $88e0
 	call FarRequestVideoData
 	call WaitVideoTransfer

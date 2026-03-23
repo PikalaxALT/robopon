@@ -63,7 +63,7 @@ Func_b5d98:
 .asm_b5dd0
 	ld c, $01
 	ld hl, sp+$00
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $2d
 	scall MovePlayer
 .asm_b5ddd

@@ -51,7 +51,7 @@ Func_83e56:: ; 83e56 (20:7e56)
 	ld l, [hl]
 	ld h, $0
 	mulhl $3c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	ld l, [hl]
 	ld h, $0
@@ -82,7 +82,7 @@ Func_83e56:: ; 83e56 (20:7e56)
 	ld e, a
 	ld a, [wc79e]
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	ld c, $0
 	pop hl
 	call CompareHLtoDE

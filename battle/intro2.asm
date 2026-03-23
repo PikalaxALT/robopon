@@ -52,7 +52,7 @@ Func_d833: ; d833 (3:5833)
 	inc hl
 	inc hl
 	ld c, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld e, [hl]
@@ -63,7 +63,7 @@ Func_d833: ; d833 (3:5833)
 	ld hl, $5
 	add hl, de
 	ld c, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -258,7 +258,7 @@ Func_d945: ; d945 (3:5945)
 	inc hl
 	inc hl
 	ld c, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld e, [hl]
@@ -284,7 +284,7 @@ Func_d96d: ; d96d (3:596d)
 	ld hl, $5
 	add hl, de
 	ld c, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl

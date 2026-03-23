@@ -166,7 +166,7 @@ Func_c7109:: ; c7109 (31:7109)
 	ld e, c
 	ld d, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	pop hl
 	pop bc
@@ -176,7 +176,7 @@ Func_c712c: ; c712c (31:712c)
 	push hl
 	push af
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	call WriteHLToSPPlus8
 	xor a
 Func_c713b: ; c713b (31:713b)
@@ -197,7 +197,7 @@ Func_c7150: ; c7150 (31:7150)
 	pop de
 	ld hl, $14
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	pop hl
@@ -331,7 +331,7 @@ Func_c7bd0:: ; c7bd0 (31:7bd0)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_c796a
 	ret

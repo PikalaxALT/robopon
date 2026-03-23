@@ -498,7 +498,7 @@ Func_c7ba_sub:
 	ld l, a
 	ld h, $00
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld c, $02
@@ -533,7 +533,7 @@ IF DEF(LANG_JP)
 	ld d, [hl]
 	ld hl, $40
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $b05
 	call FarCall
 ELIF DEF(LANG_EN)
@@ -762,7 +762,7 @@ ELIF DEF(LANG_EN)
 	add sp, -$66
 ENDC
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_c8f6
 	ld bc, $8
 	call MemCopy
@@ -856,7 +856,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld hl, partyRobot_SIZEOF
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	jp .asm_c94f
 
 .asm_c976: ; c976 (3:4976)
@@ -906,7 +906,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_2617
 	ld hl, sp+$c
@@ -981,7 +981,7 @@ IF DEF(LANG_JP)
 	ld [bc], a
 	inc bc
 	ld hl, sp+$11
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call LiteralStringInTree
@@ -989,14 +989,14 @@ IF DEF(LANG_JP)
 
 .asm_ca22: ; ca22 (3:4a22)
 	ld hl, sp+$11
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call LiteralStringInTree
 	ld c, l
 	ld b, h
 	read_hl_from Pointers_c8c1 + 8
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	dec hl
@@ -1018,7 +1018,7 @@ ENDC
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$25
 ELIF DEF(LANG_EN)
@@ -1033,7 +1033,7 @@ ENDC
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$27
 ELIF DEF(LANG_EN)
@@ -1093,7 +1093,7 @@ ENDC
 	ld l, $0
 	ld de, $11
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $b
 IF DEF(LANG_JP)
 	ld bc, $3
@@ -1252,7 +1252,7 @@ Func_ce18: ; ce18 (3:4e18)
 	ld d, [hl]
 	ld hl, $40
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $b05
 	call FarCall
 	jp Func_ce79
@@ -1440,7 +1440,7 @@ Func_cfaa: ; cfaa (3:4faa)
 	ld hl, sp+$9
 	ld [hl], a
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld a, [hl]
@@ -1742,7 +1742,7 @@ Func_d1e1: ; d1e1 (3:51e1)
 	ld h, a
 	write_hl_to_sp_plus $12
 	read_hl_from_sp_plus $12
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_d221
@@ -1781,7 +1781,7 @@ Func_d252: ; d252 (3:5252)
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $10
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld a, [hl]
 	ld hl, sp+$7
@@ -1857,7 +1857,7 @@ Func_d2c9: ; d2c9 (3:52c9)
 	call PushBGMapRegion
 	pop bc
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	call Func_fdb7
 	or a
@@ -1866,7 +1866,7 @@ Func_d2c9: ; d2c9 (3:52c9)
 
 Func_d2ea: ; d2ea (3:52ea)
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	call Func_fddb
 	cp $1
@@ -1988,9 +1988,9 @@ ENDC
 	call DoublePushBGMapRegion
 	pop bc
 	read_hl_from_sp_plus $12
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $1a
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_d3a2:: ; d3a2
@@ -2089,7 +2089,7 @@ Func_d446: ; d446 (3:5446)
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $10
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld a, [hl]
 	ld hl, sp+$7
@@ -2169,7 +2169,7 @@ Func_d4bd: ; d4bd (3:54bd)
 	call PushBGMapRegion
 	pop bc
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	call Func_fdc9
 	or a
@@ -2178,7 +2178,7 @@ Func_d4bd: ; d4bd (3:54bd)
 
 Func_d4de: ; d4de (3:54de)
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	call Func_fddb
 	cp $ff
@@ -2312,9 +2312,9 @@ ENDC
 	call DoublePushBGMapRegion
 	pop bc
 	read_hl_from_sp_plus $12
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $1a
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_d596: ; d596 (3:5596)
@@ -2383,11 +2383,11 @@ ENDC
 	call GetHLAtSPPlus8
 	ld de, $d
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	call LiteralStringInTree
 	ld hl, sp+$a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	ld a, [hl]
 	ld hl, sp+$8
@@ -2458,7 +2458,7 @@ Func_d63d: ; d63d (3:563d)
 	add hl, hl
 	ld de, $6f37
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	call LiteralStringInTree
 	ld hl, sp+$a
@@ -2557,7 +2557,7 @@ Func_d6e2: ; d6e2 (3:56e2)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_2617
 	ld hl, sp+$2
@@ -2815,7 +2815,7 @@ Func_dcaf:: ; dcaf
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $ff
@@ -2851,7 +2851,7 @@ Func_dcf3: ; dcf3 (3:5cf3)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_dc2c
 Func_dd07: ; dd07 (3:5d07)
 	pop bc
@@ -2873,7 +2873,7 @@ Func_dd0a:: ; dd0a
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_dc2c
 	ret
 
@@ -2890,7 +2890,7 @@ Func_dd29:: ; dd29
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_dc2c
 	ret
 
@@ -2998,14 +2998,14 @@ Func_de2c: ; de2c (3:5e2c)
 	pop de
 	ld hl, $10
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld a, [hl]
 	and $40
 	jp z, Func_de6c
 	ld hl, $30
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld bc, -$10
 	jp Func_de6f
 
@@ -3068,7 +3068,7 @@ Func_de92: ; de92 (3:5e92)
 
 Func_dec0: ; dec0 (3:5ec0)
 	read_hl_from_sp_plus $e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -3120,9 +3120,9 @@ Func_dee7: ; dee7 (3:5ee7)
 Func_df10: ; df10 (3:5f10)
 	pop de
 	pop bc
-	reg16swap de, hl
+	swap_de_hl
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	jp Func_de70
@@ -3234,7 +3234,7 @@ Func_dfd1: ; dfd1 (3:5fd1)
 	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wCGB_BGPalsBuffer
 	call CopyFromDEtoHL
 Func_dfe7: ; dfe7 (3:5fe7)
@@ -3512,7 +3512,7 @@ ELIF DEF(LANG_EN)
 	ld hl, $1a5
 ENDC
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_f74a
 	ld bc, $8
 	call MemCopy
@@ -3536,7 +3536,7 @@ ELIF DEF(LANG_EN)
 	ld hl, $a0
 	add hl, sp
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_f752
 IF DEF(LANG_JP)
 	ld bc, $6
@@ -3581,7 +3581,7 @@ IF DEF(LANG_JP)
 ELIF DEF(LANG_EN)
 	mulhl 36
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$57
 ELIF DEF(LANG_EN)
@@ -3694,7 +3694,7 @@ ELIF DEF(LANG_EN)
 	ld h, $0
 	mulhl 36
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$55
 ELIF DEF(LANG_EN)
@@ -3745,7 +3745,7 @@ IF DEF(LANG_EN)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld e, c
@@ -3776,7 +3776,7 @@ IF DEF(LANG_JP)
 ELIF DEF(LANG_EN)
 	mulhl 36
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$55
 ELIF DEF(LANG_EN)
@@ -3820,7 +3820,7 @@ IF DEF(LANG_JP)
 ELIF DEF(LANG_EN)
 	mulhl 36
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$55
 ELIF DEF(LANG_EN)
@@ -3829,7 +3829,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	add hl, de
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$8
 ELIF DEF(LANG_EN)
@@ -3942,7 +3942,7 @@ IF DEF(LANG_EN)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld e, c
@@ -3985,7 +3985,7 @@ ELIF DEF(LANG_EN)
 	ld hl, $ef
 	add hl, sp
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$a
 ELIF DEF(LANG_EN)
@@ -4044,7 +4044,7 @@ ELIF DEF(LANG_EN)
 	ld hl, $1a5
 ENDC
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 IF DEF(LANG_JP)
 	ld hl, $e4
@@ -4222,7 +4222,7 @@ IF DEF(LANG_EN)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
 	ld c, l
@@ -4287,7 +4287,7 @@ ELIF DEF(LANG_EN)
 	push bc
 	read_hl_from_sp_plus $a4
 	call FindFirstNonzero
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $12
 	call CompareHLtoDE
 	jp nc, .asm_fc68
@@ -4331,7 +4331,7 @@ ELIF DEF(LANG_EN)
 .asm_fc68
 	pop bc
 	read_hl_from Data_f758
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 ENDC
@@ -4343,7 +4343,7 @@ ELIF DEF(LANG_EN)
 	ld hl, $a0
 	add hl, sp
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call PrintMapText_
 IF DEF(LANG_JP)

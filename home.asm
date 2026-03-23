@@ -1124,7 +1124,7 @@ Func_1e4d:: ; 1e4d (0:1e4d)
 	set_farcall_addrs_hli GetSaveChecksum
 	ld a, $1
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	set_farcall_addrs_hli ValidateSaveGameSignature
 	xor a
@@ -1179,7 +1179,7 @@ Func_1f7b:: ; 1f7b
 	ld [wFarCallDestBank], a
 	ld bc, $f0
 	read_hl_from wc30e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $88f0
 	call FarRequestVideoData
 	call WaitVideoTransfer
@@ -1227,7 +1227,7 @@ Func_2009:: ; 2009
 	ld [wFarCallDestBank], a
 	ld bc, $1ba
 	read_hl_from wc2f2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $8cc0
 	call FarRequestVideoData
 	call WaitVideoTransfer
@@ -1275,7 +1275,7 @@ Func_2097:: ; 2097
 	ld [wFarCallDestBank], a
 	ld bc, $50
 	read_hl_from wc2f2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $8fa0
 	call FarRequestVideoData
 	call WaitVideoTransfer
@@ -1547,7 +1547,7 @@ ENDC
 	mulhl robotBaseStats_SIZEOF
 	ld de, sSRAMRobots - robotBaseStats_SIZEOF * NUM_ROBOTS
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, robotBaseStats_SIZEOF
 	call CopyFromDEtoHL
@@ -1619,7 +1619,7 @@ IF DEF(LANG_JP)
 	ld hl, robotBaseStats_SIZEOF
 	call MultiplyHLbyDE
 ELIF DEF(LANG_EN)
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -1629,7 +1629,7 @@ ELIF DEF(LANG_EN)
 	add hl, hl
 	add hl, de
 ENDC
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	add hl, de
 	push hl
@@ -1695,9 +1695,9 @@ GetPart:: ; 241f
 	ld h, $0
 	ld de, $8
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	mulhl part_SIZEOF
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	add hl, de
 	push hl
@@ -1934,7 +1934,7 @@ Func_2515:: ; 2515
 	ld c, l
 	ld b, h
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld bc, $9
@@ -2191,7 +2191,7 @@ AdjustMoney:: ; 277c
 	ld a, $3
 	call GetSRAMBank_ReadOnly
 	ld hl, sp+$8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
@@ -2249,14 +2249,14 @@ Func_2801:: ; 2801 (0:2801)
 	ld h, $0
 	pop de
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld a, $3
 	call GetSRAMBank
 	set_farcall_addrs_hli malloc
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	inc hl
 	inc hl
@@ -2296,14 +2296,14 @@ Func_2801:: ; 2801 (0:2801)
 	pop af
 	push bc
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	ld [hl], e
 	inc hl
 	ld [hl], d
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	inc hl
@@ -2491,7 +2491,7 @@ Func_2951:: ; 2951 (0:2951)
 	inc hl
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	ld a, [hl]
 	ld hl, sp+$4
@@ -2532,7 +2532,7 @@ Func_2951:: ; 2951 (0:2951)
 	inc hl
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7
 	ld a, [hl]
 	ld hl, sp+$6
@@ -2590,7 +2590,7 @@ Func_2951:: ; 2951 (0:2951)
 
 Func_2a3e:: ; 2a3e
 	ld c, e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $ffff
 	jp Func_2951
 
@@ -2639,7 +2639,7 @@ Func_2a79:: ; 2a79 (0:2a79)
 	push af
 .loop
 	read_hl_from_sp_plus $16
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, .quit
@@ -2667,7 +2667,7 @@ Func_2a79:: ; 2a79 (0:2a79)
 	ld c, [hl]
 	ld b, $0
 	read_hl_from_sp_plus $1a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	call CopyFromDEtoHL
 	ld hl, sp+$14
@@ -2813,7 +2813,7 @@ Func_2b97:: ; 2b97
 .asm_2bd7 ; 2bd7 (0:2bd7)
 	ld hl, wOAMBuffer
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	inc de
 	ld a, d
 	dec de
@@ -2827,7 +2827,7 @@ Func_2b97:: ; 2b97
 	call LeftShiftArbitrarySize
 	ld hl, $c
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
@@ -2859,7 +2859,7 @@ Func_2c10:: ; 2c10
 	ld d, [hl]
 	dec hl
 	ld e, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld c, l
 	xor a
 	add hl, hl
@@ -2891,7 +2891,7 @@ Func_2c10:: ; 2c10
 .asm_2c46 ; 2c46 (0:2c46)
 	ld bc, $3c01
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld b, $7
 .asm_2c51 ; 2c51 (0:2c51)
@@ -2899,11 +2899,11 @@ Func_2c10:: ; 2c10
 	ld d, a
 	ld e, [hl]
 	ld a, e
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld [hl], d
 	dec b
 	jp nz, .asm_2c51
@@ -2964,10 +2964,10 @@ Func_2c72:: ; 2c72
 	jp .asm_2cc4
 
 .asm_2cb1 ; 2cb1 (0:2cb1)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $c080
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld a, d
 	or a
 	jp z, .asm_2cc4
@@ -3039,10 +3039,10 @@ Func_2ce7:: ; 2ce7
 	jp nz, .asm_2d10
 	ld bc, $407e
 .asm_2d10 ; 2d10 (0:2d10)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $3f81
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	dec hl
 	ld b, [hl]
@@ -3187,7 +3187,7 @@ Func_2dc3:: ; 2dc3 (0:2dc3)
 	ld b, a
 	dec b
 	ld c, $8
-	reg16swap de, hl
+	swap_de_hl
 	call RightShiftArbitrarySize
 	pop af
 	and a
@@ -3216,7 +3216,7 @@ Func_2def:: ; 2def
 	jp nz, .asm_2e09
 	ld [hl], $0
 .asm_2e09 ; 2e09 (0:2e09)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $16
 	add hl, sp
 	push hl
@@ -3240,7 +3240,7 @@ Func_2def:: ; 2def
 	or [hl]
 	bit 7, a
 	jp nz, .asm_2e34
-	reg16swap de, hl
+	swap_de_hl
 .asm_2e34 ; 2e34 (0:2e34)
 	ld c, $a
 .asm_2e36 ; 2e36 (0:2e36)
@@ -3293,7 +3293,7 @@ Func_2e60:: ; 2e60
 	ld hl, $26
 	add hl, sp
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $e
 	add hl, sp
 	ld c, $8
@@ -3320,7 +3320,7 @@ Func_2e60:: ; 2e60
 	ld c, $ff
 	ld hl, $c
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1c
 	add hl, sp
 	ld a, $48
@@ -3357,10 +3357,10 @@ Func_2e60:: ; 2e60
 	pop hl
 .asm_2ed6 ; 2ed6 (0:2ed6)
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	ld bc, $110
 	call RightShiftArbitrarySize
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	pop af
 	dec a
@@ -3387,11 +3387,11 @@ Func_2e60:: ; 2e60
 	ld de, $c001
 	call CompareHLtoDE
 	jp nc, .asm_2f14
-	reg16swap de, hl
+	swap_de_hl
 .asm_2f14 ; 2f14 (0:2f14)
 	ld de, $3fff
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	pop hl
 	push hl
@@ -3402,7 +3402,7 @@ Func_2e60:: ; 2e60
 	pop de
 	pop bc
 	ld sp, hl
-	reg16swap de, hl
+	swap_de_hl
 	push bc
 	ret
 
@@ -3418,7 +3418,7 @@ Func_2f2f:: ; 2f2f
 	push hl
 	ld hl, $27
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $4
 	add hl, sp
 	ld b, $80
@@ -3434,10 +3434,10 @@ Func_2f2f:: ; 2f2f
 	jp z, .asm_2f79
 	push bc
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1c
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld bc, $8
 	call AddArbitrarySize
 	pop de
@@ -3458,7 +3458,7 @@ Func_2f2f:: ; 2f2f
 	pop af
 	dec a
 	jp nz, .asm_2f4c
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	push hl
 	ld bc, $9
@@ -3508,7 +3508,7 @@ Func_2f2f:: ; 2f2f
 .asm_2fcc ; 2fcc (0:2fcc)
 	ld de, -$3fff
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	pop hl
 	ld c, $10
@@ -3523,11 +3523,11 @@ Func_2f2f:: ; 2f2f
 	dec c
 	jp nz, .asm_2fde
 	inc de
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	pop bc
 	ld sp, hl
-	reg16swap de, hl
+	swap_de_hl
 	push bc
 	ret
 
@@ -3549,9 +3549,9 @@ Func_2ff4:: ; 2ff4
 	and c
 	inc a
 	jp z, .asm_302d
-	reg16swap de, hl
+	swap_de_hl
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	bit 7, d
 	jp z, .asm_3026
 	ld de, $0
@@ -3569,13 +3569,13 @@ Func_2ff4:: ; 2ff4
 	ret
 
 Func_302f:: ; 302f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Pointer_0015
 	add hl, sp
 	ld a, [hl]
 	xor $80
 	ld [hl], a
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	ld de, $0
 	push de
@@ -3591,7 +3591,7 @@ Func_302f:: ; 302f
 	call Func_31a4
 	dec hl
 	ld [hl], $0
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	push af
 	xor c
@@ -3601,7 +3601,7 @@ Func_302f:: ; 302f
 	jp c, .asm_3076
 	ld b, d
 	ld c, e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $9
 	jp .asm_307b
 
@@ -3642,7 +3642,7 @@ Func_302f:: ; 302f
 .asm_30a2 ; 30a2 (0:30a2)
 	ld hl, $b
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Pointer_0015
 	add hl, sp
 	pop bc
@@ -3683,7 +3683,7 @@ Func_302f:: ; 302f
 	ld hl, $c
 	add hl, sp
 	ld sp, hl
-	reg16swap de, hl
+	swap_de_hl
 	push bc
 	ret
 
@@ -3982,7 +3982,7 @@ PrintNumSigned:: ; 3a20 (0:3a20)
 .positive
 	push bc
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	call PrintNum
 	pop bc
 	pop bc
@@ -4167,7 +4167,7 @@ PushBGMapRegion_NoWaitBefore:: ; 3afc (0:3afc)
 	ld l, $0
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	ld a, [hl]
 	ld hl, sp+$0
@@ -4215,7 +4215,7 @@ PushBGMapRegion_NoWaitBefore:: ; 3afc (0:3afc)
 	ld l, $0
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	ld a, [hl]
 	ld hl, sp+$0
@@ -4282,7 +4282,7 @@ PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	ld l, $0
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	ld a, [hl]
 	ld hl, sp+$0
@@ -4330,7 +4330,7 @@ PushBGMapRegion:: ; 3bc5 (0:3bc5)
 	ld l, $0
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1
 	ld a, [hl]
 	ld hl, sp+$0

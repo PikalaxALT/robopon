@@ -54,13 +54,13 @@ RightShiftPointer::
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call RightShiftHL
-	reg16swap de, hl
+	swap_de_hl
 	ld [hl], d
 	dec hl
 	ld [hl], e
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	ret
 
@@ -94,13 +94,13 @@ LeftShiftPointer::
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call LeftShiftHL
-	reg16swap de, hl
+	swap_de_hl
 	ld [hl], d
 	dec hl
 	ld [hl], e
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	ret
 
@@ -147,12 +147,12 @@ DividePointerByDESigned:: ; *s16
 	ld h, [hl]
 	ld l, a
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	pop hl
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 DividePointerByDE:: ; *u16
@@ -162,12 +162,12 @@ DividePointerByDE:: ; *u16
 	ld h, [hl]
 	ld l, a
 	call DivideHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	pop hl
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 DivideAbyB:: ; 36af (0:36af)
@@ -200,16 +200,16 @@ DivideHLByDESigned:: ; 36c6 (0:36c6)
 	xor d
 	push af
 	call .AbsoluteValueHL
-	reg16swap de, hl
+	swap_de_hl
 	call .AbsoluteValueHL
-	reg16swap de, hl
+	swap_de_hl
 	call DivideHLbyDE
 	pop af
 	call .CorrectSignOfHL
 	pop af
-	reg16swap de, hl
+	swap_de_hl
 	call .CorrectSignOfHL
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 .CorrectSignOfHL
@@ -242,16 +242,16 @@ DivideHLbyDE:: ; 3706 (0:3706)
 ; returns quotient hl and remainder de
 	ld b, d
 	ld c, e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	ld a, $10
 .loop
 	push af
 	add hl, hl
 	xor a
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	adc l
 	sub c
 	ld l, a
@@ -266,7 +266,7 @@ DivideHLbyDE:: ; 3706 (0:3706)
 	pop af
 	dec a
 	jp nz, .loop
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 MultiplyAbyB::
@@ -295,11 +295,11 @@ MultiplyPointerByDE::
 	ld l, a
 	call MultiplyHLbyDE
 	pop de
-	reg16swap de, hl
+	swap_de_hl
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 MultiplyHLbyDE:: ; 3759 (0:3759)
@@ -310,9 +310,9 @@ MultiplyHLbyDE:: ; 3759 (0:3759)
 	ld a, $10
 .loop
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	jp nc, .next
 	add hl, bc
 .next

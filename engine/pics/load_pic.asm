@@ -34,7 +34,7 @@ Func_5c0b2::
 	call GetSRAMBank_ReadOnly
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	inc de
 	ld hl, sp+$4
 	ld bc, $350
@@ -128,7 +128,7 @@ Func_5c0b2::
 	inc hl
 	ld d, [hl]
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	ld c, l
 	ld b, h
@@ -245,7 +245,7 @@ Func_5c0b2::
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $354
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $354
 	add hl, sp
 	ld a, [hl]

@@ -26,7 +26,7 @@ Func_fd746:
 	push bc
 	push bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fd740
 	ld bc, $4
 	call MemCopy
@@ -55,7 +55,7 @@ Func_fd787: ; fd787 (3f:5787)
 	push bc
 	push bc
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fd783
 	ld bc, $4
 	call MemCopy
@@ -180,7 +180,7 @@ Func_fd84a: ; fd84a (3f:584a)
 	ld [wFarCallDestBank], a
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -216,7 +216,7 @@ Func_fd894: ; fd894 (3f:5894)
 	push af
 	push de
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fd887
 	ld bc, $d
 	call MemCopy
@@ -354,7 +354,7 @@ Func_fd989:
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $105
 	call FarCall
 	ld a, [wOverworldTilemapSelector]
@@ -950,7 +950,7 @@ Credits:: ; fdf13 (3f:5f13)
 	push bc
 	push bc
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fdf0c
 	ld bc, $7
 	call MemCopy
@@ -978,7 +978,7 @@ ENDC
 Credits2:: ; fdf59 (3f:5f59)
 	add sp, -$e
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fdf4b
 	ld bc, $e
 	call MemCopy
@@ -1009,7 +1009,7 @@ ENDC
 Func_fafa8::
 	add sp, -$16
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_fdf93
 	ld bc, $15
 	call MemCopy

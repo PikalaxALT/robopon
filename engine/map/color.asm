@@ -534,7 +534,7 @@ Func_c7542: ; c7542 (31:7542)
 Func_c7548: ; c7548 (31:7548)
 	ld de, MapPalettes6
 Func_c754b: ; c754b (31:754b)
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	ret
 
@@ -571,7 +571,7 @@ Func_c756f: ; c756f (31:756f)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $a
 	call RightShiftHL
 	ld a, l
@@ -588,7 +588,7 @@ Func_c756f: ; c756f (31:756f)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $5
 	call RightShiftHL
 	ld a, l
@@ -639,7 +639,7 @@ Func_c75e8: ; c75e8 (31:75e8)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -735,7 +735,7 @@ Func_c7681: ; c7681 (31:7681)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $a
 	call RightShiftHL
 	ld a, l
@@ -751,7 +751,7 @@ Func_c7681: ; c7681 (31:7681)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $5
 	call RightShiftHL
 	ld a, l
@@ -802,7 +802,7 @@ Func_c7681: ; c7681 (31:7681)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	ld h, l
@@ -894,7 +894,7 @@ Func_c7777: ; c7777 (31:7777)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $a
 	call RightShiftHL
 	ld a, l
@@ -911,7 +911,7 @@ Func_c7777: ; c7777 (31:7777)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $5
 	call RightShiftHL
 	ld a, l
@@ -962,7 +962,7 @@ Func_c77f0: ; c77f0 (31:77f0)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -1061,7 +1061,7 @@ Func_c788b: ; c788b (31:788b)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $a
 	call RightShiftHL
 	ld a, l
@@ -1078,7 +1078,7 @@ Func_c788b: ; c788b (31:788b)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $5
 	call RightShiftHL
 	ld a, l
@@ -1123,7 +1123,7 @@ Func_c788b: ; c788b (31:788b)
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	ld h, l

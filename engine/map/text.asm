@@ -25,7 +25,7 @@ DrawTextBoxAndOverworldText:: ; aa5d (2:6a5d)
 	ld hl, -1
 	write_hl_to_sp_plus $45
 	ld hl, sp+$5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$41
 	call PrintCharacterFromTree
 	ld hl, sp+$4
@@ -79,7 +79,7 @@ Func_aad8: ; aad8 (2:6ad8)
 	ld l, $0
 	ld de, $203
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $b
 	call FarCall
 	call WriteHLToSPPlus4
@@ -96,7 +96,7 @@ Func_ab15: ; ab15 (2:6b15)
 	ld de, $1405
 	ld hl, $d
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	set_farcall_addrs_hli Func_17e95
 	ld c, $5
@@ -126,7 +126,7 @@ Func_ab15: ; ab15 (2:6b15)
 	set_farcall_addrs_hli PrintMapText
 	ld bc, $1603
 	ld hl, sp+$45
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4a
 	ld l, [hl]
 	ld h, $0
@@ -138,7 +138,7 @@ Func_ab15: ; ab15 (2:6b15)
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $c3
 	ld hl, sp+$45
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4a
 	ld l, [hl]
 	ld h, $0

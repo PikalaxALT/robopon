@@ -84,7 +84,7 @@ Func_83a1f:
 	ld sp, hl
 	push de
 	ld hl, sp+$33
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_83902
 	ld bc, $fc
 	call MemCopy
@@ -225,7 +225,7 @@ Func_83a1f:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$33
 	add hl, de
 	ld de, $8
@@ -262,7 +262,7 @@ Func_83a1f:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$33
 	add hl, de
 	pop de
@@ -283,7 +283,7 @@ Func_83a1f:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$33
 	add hl, de
 	inc hl
@@ -308,7 +308,7 @@ Func_83a1f:
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$33
 	add hl, de
 	ld de, $8
@@ -325,7 +325,7 @@ Func_83a1f:
 	pop bc
 	ld hl, sp+$f
 	call FindFirstNonzero
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$f
 	add hl, de
 	ld de, Data_83e4e
@@ -372,7 +372,7 @@ Func_83a1f:
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
 	ld hl, sp+$2f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
@@ -425,7 +425,7 @@ Func_83a1f:
 	ld l, [hl]
 	ld h, $0
 	mulhl $3c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0

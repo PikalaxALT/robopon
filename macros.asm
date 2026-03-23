@@ -244,11 +244,11 @@ MACRO reg8rot
 	ld \3, \1
 	ENDM
 
-MACRO reg16swap
-	push \1
-	push \2
-	pop \1
-	pop \2
+MACRO swap_de_hl
+	push de
+	push hl
+	pop de
+	pop hl
 	ENDM
 
 MACRO menu_header

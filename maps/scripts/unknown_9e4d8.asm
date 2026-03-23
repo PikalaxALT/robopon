@@ -165,7 +165,7 @@ Func_9e5f6:
 	push bc
 	push de
 	ld hl, sp+$09
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_9e5f2
 	ld bc, $0004
 	call MemCopy

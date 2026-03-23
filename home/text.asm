@@ -305,7 +305,7 @@ ENDC
 	ld hl, sp-$c
 	add sp, -$c
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld bc, 10 ; destroyed immediately in PrintNumSigned
 	call PrintNumSigned ; de contains [sp]=sp+2, hl contains the s16 we just read
 	call printf

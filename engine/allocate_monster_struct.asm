@@ -61,7 +61,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $0
 	call FillMemory
 	; allocate an additional 223 bytes and store the pointer in the
@@ -131,7 +131,7 @@ AllocateMonsterStruct2:: ; cc0c
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $0
 	call FillMemory
 	set_farcall_addrs_hli malloc
@@ -174,7 +174,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	set_farcall_addrs_hli free
 	read_hl_from wCurRobotPointer
@@ -183,7 +183,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	set_farcall_addrs_hli free
 	read_hl_from wCurRobotPointer
@@ -192,7 +192,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	read_hl_from wCurRobotPointer
 	ld de, $1a
@@ -208,7 +208,7 @@ FreeMonsterStruct:: ; cced (3:4ced)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 Func_cd7e: ; cd7e (3:4d7e)
 	set_farcall_addrs_hli free

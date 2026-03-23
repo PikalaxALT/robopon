@@ -70,12 +70,12 @@ WriteHLToSPPlusParam16::
 	pop af
 WriteHLToSPPlusDE:: ; 37c7 (0:37c7)
 	; write the previous value of hl at sp + param
-	reg16swap de, hl
+	swap_de_hl
 	add hl, sp
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 WriteHLToSPPlusParam8:: ; 37d4 (0:37d4)
@@ -116,12 +116,12 @@ WriteHLToSPPlusParam8:: ; 37d4 (0:37d4)
 	pop de
 	pop af
 	; write the previous value of hl at sp + param
-	reg16swap de, hl
+	swap_de_hl
 	add hl, sp
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 GetHLAtSPPlus10:: ; 3805 (0:3805)
@@ -163,13 +163,13 @@ GetHLAtSPPlusParam16::
 	ld d, [hl]
 	inc hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 GetHLAtSPPlusHL:: ; 383f (0:383f)
 	add hl, sp
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 GetHLAtSPPlusParam8:: ; 3848 (0:3848)

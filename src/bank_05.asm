@@ -89,7 +89,7 @@ Func_1551f::
 IF DEF(LANG_JP)
 	ld l, [hl]
 	ld h, $0
-	reg16swap de, hl
+	swap_de_hl
 	ld a, e
 	and $3f
 	ld l, a
@@ -99,7 +99,7 @@ ELIF DEF(LANG_EN)
 	ld l, a
 ENDC
 	ld h, $0
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld a, c
 	call GetSRAMBank
@@ -293,7 +293,7 @@ ENDC
 	call Func_157c5
 	ld hl, sp+$4
 	call FindFirstNonzero
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	push de
 	ld hl, sp+$19
@@ -352,7 +352,7 @@ ENDC
 	call Func_157c5
 	ld hl, sp+$4
 	call FindFirstNonzero
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	push de
 	ld hl, sp+$19
@@ -372,7 +372,7 @@ ENDC
 	add hl, hl
 	ld de, $e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1b
 	ld l, [hl]
 	ld h, $0
@@ -473,7 +473,7 @@ Func_157c5: ; 157c5 (5:57c5)
 	jp nz, .asm_157ea
 	ld c, $5
 	call GetHLAtSPPlus8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, GETNAME_SOFTWARE
@@ -533,7 +533,7 @@ Func_157c5: ; 157c5 (5:57c5)
 	jp nz, .asm_1584b
 	ld c, SOFTWARE_NAME_LENGTH
 	call GetHLAtSPPlus8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, GETNAME_SOFTWARE
@@ -612,7 +612,7 @@ Func_158b7: ; 158b7
 	push af
 IF DEF(LANG_JP)
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Pointers_1588f
 	ld bc, $6
 	call MemCopy
@@ -711,7 +711,7 @@ ENDC
 	ld l, c
 	ld h, b
 	mulhl 20
-	reg16swap de, hl
+	swap_de_hl
 IF DEF(LANG_JP)
 	ld hl, sp+$3d
 ELIF DEF(LANG_EN)
@@ -825,7 +825,7 @@ ENDC
 	call CompareHLtoDE
 	jp nc, .asm_15a64
 	read_hl_from_sp_plus $39
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$75
 	add hl, de
 	ld a, [hl]
@@ -839,7 +839,7 @@ ENDC
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$39
 	add hl, de
 	ld c, l
@@ -849,7 +849,7 @@ ENDC
 	inc hl
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $c
 	call Func_16019
 .asm_15a58: ; 15a58 (5:5a58)
@@ -881,7 +881,7 @@ ENDC
 	ld c, $5
 IF DEF(LANG_JP)
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 ELIF DEF(LANG_EN)
 	ld de, Pointers_1588f
 ENDC
@@ -948,7 +948,7 @@ Func_15bde:: ; 15bde
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $14
 	call CompareHLtoDE
 	jp nc, .asm_15c59
@@ -1014,7 +1014,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $14
 	call CompareHLtoDE
 	jp c, .asm_15e9c
@@ -1025,7 +1025,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $17
 	call CompareHLtoDE
 	jp nc, .asm_15e9c
@@ -1450,7 +1450,7 @@ ENDC
 	ld de, warehouseBot_Unk08
 	add hl, de
 IF DEF(LANG_JP)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
@@ -1493,7 +1493,7 @@ IF DEF(LANG_JP)
 	get_party_bot
 	ld de, warehouseBot_Unk08
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
@@ -1522,7 +1522,7 @@ IF DEF(LANG_JP)
 	get_party_bot
 	ld de, warehouseBot_Unk08
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
@@ -1721,7 +1721,7 @@ Func_16038:: ; 16038
 	call WriteHLToSPPlus4
 .asm_160a8: ; 160a8 (5:60a8)
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $5
 	add hl, bc
 	ld [hl], e
@@ -1792,7 +1792,7 @@ IF DEF(LANG_JP)
 	get_party_bot
 	ld de, warehouseBot_Unk08
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
@@ -1900,7 +1900,7 @@ Func_16128: ; 16128 (5:6128)
 	call CompareHLtoDE
 	jp c, .asm_161c9
 	call GetHLAtSPPlus10
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $16
 	call CompareHLtoDE
 	jp c, .asm_161c9
@@ -1964,7 +1964,7 @@ Func_16128: ; 16128 (5:6128)
 	ld c, $0
 .asm_1620e: ; 1620e (5:620e)
 	read_hl_from_sp_plus $e
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	call CompareHLtoDE
@@ -2036,7 +2036,7 @@ Func_16128: ; 16128 (5:6128)
 	call CompareHLtoDE
 	jp c, .asm_162bb
 	read_hl_from_sp_plus $c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $16
 	call CompareHLtoDE
 	jp c, .asm_162bb
@@ -2289,7 +2289,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, .asm_16427
@@ -2348,7 +2348,7 @@ ENDC
 	ld de, warehouseBot_Unk08
 	add hl, de
 IF DEF(LANG_JP)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
@@ -2507,7 +2507,7 @@ ENDC
 	call CompareHLtoDE
 	jp nc, .asm_16531
 	read_hl_from_sp_plus $11
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $14
 	call CompareHLtoDE
 	jp nc, .asm_1652e
@@ -2569,7 +2569,7 @@ ENDC
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, .asm_165ba
@@ -2883,9 +2883,9 @@ ENDC
 .asm_16769: ; 16769 (5:6769)
 	ld hl, $4000
 .asm_1676c: ; 1676c (5:676c)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $14
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_16777:: ; 16777 (5:6777)
@@ -3132,6 +3132,7 @@ Func_16777:: ; 16777 (5:6777)
 	jp .asm_1695d
 
 .asm_1694e: ; 1694e (5:694e)
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3139,6 +3140,9 @@ Func_16777:: ; 16777 (5:6777)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1400e
+ENDC
 	call WaitAorBButtonOverworld_17a44
 .asm_1695d: ; 1695d (5:695d)
 	ld hl, -1
@@ -3167,6 +3171,7 @@ Func_16777:: ; 16777 (5:6777)
 	pop de
 	add hl, de
 	call FarCall
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3174,6 +3179,9 @@ Func_16777:: ; 16777 (5:6777)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1400e
+ENDC
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
 	jp .asm_16ce3
@@ -3192,6 +3200,7 @@ Func_16777:: ; 16777 (5:6777)
 	ld hl, sp+$9
 	ld a, [hl]
 	call Func_16d47
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3199,6 +3208,9 @@ Func_16777:: ; 16777 (5:6777)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1400e
+ENDC
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
 	jp .asm_16ce3
@@ -3262,6 +3274,7 @@ Func_16777:: ; 16777 (5:6777)
 	ld hl, sp+$9
 	ld a, [hl]
 	call Func_16d6b
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3269,6 +3282,9 @@ Func_16777:: ; 16777 (5:6777)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1400e
+ENDC
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
 	jp .asm_16ce3
@@ -3373,6 +3389,7 @@ Func_16777:: ; 16777 (5:6777)
 	add hl, de
 	ld de, $6cf7
 	call PlaceStringDEatCoordHL
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3380,6 +3397,9 @@ Func_16777:: ; 16777 (5:6777)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1400e
+ENDC
 	call WaitAorBButtonOverworld_17a44
 	ld hl, -1
 	jp .asm_16ce3
@@ -3576,10 +3596,11 @@ Func_16777:: ; 16777 (5:6777)
 	ld h, $0
 	ld de, $a9 - 1 ; TreeBitstreamText_4b486
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $101
 	call FarCall
 .asm_16cd4: ; 16cd4 (5:6cd4)
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3587,23 +3608,39 @@ Func_16777:: ; 16777 (5:6777)
 	xor a
 	call PushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_14001
+ENDC
 	ld hl, $4000
 .asm_16ce3: ; 16ce3 (5:6ce3)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $10
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_16cee: ; 16cee
+IF DEF(LANG_JP)
 	dstr "(わさﾞ なし)"
+ELIF DEF(LANG_EN)
+	dstr "no techniqe"
+ENDC
 
 Data_16cf7: ; 16cf7
+IF DEF(LANG_JP)
 	dstr "ロホﾞホﾟン (なし)"
+ELIF DEF(LANG_EN)
+	dstr "No Robopon"
+ENDC
 
 Data_16d03: ; 16d03
+IF DEF(LANG_JP)
 	dstr "(とﾞの)ロホﾞホﾟン(をさくしﾞょする)?"
+ELIF DEF(LANG_EN)
+	dstr "Scrap the Robopon?"
+ENDC
 
 Func_16d1a: ; 16d1a (5:6d1a)
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3611,6 +3648,9 @@ Func_16d1a: ; 16d1a (5:6d1a)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_1400e
+ENDC
 	call WaitAorBButtonOverworld_17a44
 .asm_16d27
 	call Func_3af6
@@ -3625,7 +3665,11 @@ Func_16d2d: ; 16d2d (5:6d2d)
 	ret
 
 Data_16d3d: ; 16d3d
+IF DEF(LANG_JP)
 	dstr "アイテム (なし)"
+ELIF DEF(LANG_EN)
+	dstr "No Items."
+ENDC
 
 Func_16d47: ; 16d47 (5:6d47)
 	push de
@@ -3647,7 +3691,11 @@ Func_16d47: ; 16d47 (5:6d47)
 	ret
 
 Data_16d61: ; 16d61
+IF DEF(LANG_JP)
 	dstr "ハﾟーツ (なし)"
+ELIF DEF(LANG_EN)
+	dstr "No parts"
+ENDC
 
 Func_16d6b: ; 16d6b (5:6d6b)
 	push de
@@ -3669,7 +3717,11 @@ Func_16d6b: ; 16d6b (5:6d6b)
 	ret
 
 Data_16d85: ; 16d85
+IF DEF(LANG_JP)
 	dstr "ソフト (なし)"
+ELIF DEF(LANG_EN)
+	dstr "No S/W"
+ENDC
 
 Func_16d8e:: ; 16d8e
 	push hl
@@ -3710,6 +3762,14 @@ Func_16d8e:: ; 16d8e
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $c
+IF DEF(LANG_EN)
+	read_hl_from_sp_plus $13
+	ld de, $7
+	add hl, de
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+ENDC
 	read_hl_from_sp_plus $12
 	inc hl
 	ld e, [hl]
@@ -3755,6 +3815,7 @@ Func_16d8e:: ; 16d8e
 	ld hl, sp+$5
 	ld [hl], e
 	read_hl_from_sp_plus $e
+IF DEF(LANG_JP)
 	push hl
 	read_hl_from_sp_plus $14
 	ld de, $7
@@ -3762,10 +3823,16 @@ Func_16d8e:: ; 16d8e
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
+ELIF DEF(LANG_EN)
+	swap_de_hl
+	ld l, c
+	ld h, b
+ENDC
 	call CompareHLtoDE
 	jp nc, .asm_16e3e
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $12
 	ld de, $7
 	add hl, de
@@ -3774,9 +3841,20 @@ Func_16d8e:: ; 16d8e
 	ld h, [hl]
 	ld l, a
 	write_hl_to_sp_plus $e
+ELIF DEF(LANG_EN)
+	ld c, l
+	ld h, b
+	write_hl_to_sp_plus $f
+ENDC
 .asm_16e3e: ; 16e3e (5:6e3e)
+IF DEF(LANG_JP)
 	ldh a, [hSRAMBank]
 	ld c, a
+ELIF DEF(LANG_EN)
+	ld hl, sp+$6
+	ldh a, [hSRAMBank]
+	ld [hl], a
+ENDC
 	read_hl_from_sp_plus $10
 	push hl
 	read_hl_from_sp_plus $14
@@ -3787,7 +3865,9 @@ Func_16d8e:: ; 16d8e
 	inc hl
 	ld [hl], d
 	pop de
+IF DEF(LANG_JP)
 	push bc
+ENDC
 	ld a, e
 	dec a
 	or d
@@ -3802,8 +3882,10 @@ Func_16d8e:: ; 16d8e
 	dec h
 	bit 7, h
 	jr z, .asm_16e92
+IF DEF(LANG_JP)
 	ld hl, $0
 	write_hl_to_sp_plus $10
+ENDC
 	read_hl_from_sp_plus $c
 	dec hl
 	write_hl_to_sp_plus $c
@@ -3811,12 +3893,34 @@ Func_16d8e:: ; 16d8e
 	dec h
 	bit 7, h
 	jr z, .asm_16e8e
+IF DEF(LANG_JP)
 	ld hl, $0
 	write_hl_to_sp_plus $c
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $d
+	dec hl
+	write_hl_to_sp_plus $f
+	read_hl_from_sp_plus $d
+	ld a, c
+	sub l
+	ld l, a
+	ld a, b
+	sbc h
+	ld h, a
+	write_hl_to_sp_plus $b
+	ld hl, sp+$2
+	ld [hl], $3
+ENDC
 	jp .asm_16e92
 
 .asm_16e8e
+IF DEF(LANG_JP)
 	ld hl, sp+$4
+ELIF DEF(LANG_EN)
+	ld hl, $0
+	write_hl_to_sp_plus $f
+	ld hl, sp+$2
+ENDC
 	ld [hl], $1
 .asm_16e92
 	jp .asm_16eee
@@ -3830,9 +3934,11 @@ Func_16d8e:: ; 16d8e
 	pop de
 	call CompareHLtoDE
 	jp c, .asm_16eee
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $e
 	dec hl
 	write_hl_to_sp_plus $10
+ENDC
 	read_hl_from_sp_plus $c
 	inc hl
 	write_hl_to_sp_plus $c
@@ -3841,6 +3947,7 @@ Func_16d8e:: ; 16d8e
 	read_hl_from_sp_plus $e
 	pop de
 	add hl, de
+IF DEF(LANG_JP)
 	push hl
 	read_hl_from_sp_plus $14
 	ld de, $7
@@ -3848,17 +3955,37 @@ Func_16d8e:: ; 16d8e
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
+ELIF DEF(LANG_EN)
+	swap_de_hl
+	ld l, c
+	ld h, b
+ENDC
 	call CompareHLtoDE
 	jp nc, .asm_16eea
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $c
 	dec hl
 	write_hl_to_sp_plus $c
+ELIF DEF(LANG_EN)
+	ld hl, $0
+	write_hl_to_sp_plus $b
+	write_hl_to_sp_plus $f
+	ld hl, sp+$2
+	ld [hl], $3
+ENDC
 	jp .asm_16eee
 
 .asm_16eea: ; 16eea (5:6eea)
+IF DEF(LANG_JP)
 	ld hl, sp+$4
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $d
+	dec hl
+	write_hl_to_sp_plus $f
+	ld hl, sp+$02
+ENDC
 	ld [hl], $2
 .asm_16eee: ; 16eee (5:6eee)
 	read_hl_from_sp_plus $10
@@ -3884,6 +4011,13 @@ Func_16d8e:: ; 16d8e
 	ld a, [hl]
 	or a
 	jp z, .asm_16fee
+IF DEF(LANG_EN)
+	push bc
+	ld hl, sp+$04
+	ld a, [hl]
+	cp $03
+	jp z, .asm_16f45_en
+ENDC
 	ld hl, sp+$6
 	ld e, [hl]
 	ld d, $0
@@ -3941,6 +4075,7 @@ Func_16d8e:: ; 16d8e
 	add hl, de
 	pop de
 	call Func_17ef7
+.asm_16f45_en
 	ld hl, sp+$5
 	ld a, [hl]
 	cp $8
@@ -3952,7 +4087,12 @@ Func_16d8e:: ; 16d8e
 	ld a, $3
 	call GetSRAMBank
 .asm_16f7e: ; 16f7e (5:6f7e)
+IF DEF(LANG_JP)
 	ld hl, sp+$4
+ELIF DEF(LANG_EN)
+	pop bc
+	ld hl, sp+$2
+ENDC
 	ld a, [hl]
 	cp $1
 	jp nz, .asm_16fa5
@@ -3970,11 +4110,23 @@ Func_16d8e:: ; 16d8e
 	add $2
 	call Func_171ab
 	pop bc
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus4
+ELIF DEF(LANG_EN)
+	pop hl
+	push hl
+ENDC
 	ld [hl], $8a
 	jp .asm_16fee
 
 .asm_16fa5: ; 16fa5 (5:6fa5)
+IF DEF(LANG_EN)
+	ld hl, sp+$02
+	ld a, [hl]
+	cp $02
+	jp nz, .asm_16fcd_en
+	push bc
+ENDC
 	ld hl, sp+$5
 	ld l, [hl]
 	push hl
@@ -3999,12 +4151,16 @@ Func_16d8e:: ; 16d8e
 	pop bc
 	call Func_171ab
 	pop bc
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $12
 	ld de, $7
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
+ELIF DEF(LANG_EN)
+	pop bc
+ENDC
 	read_hl_from_sp_plus $e
 	push hl
 	read_hl_from_sp_plus $e
@@ -4015,7 +4171,15 @@ Func_16d8e:: ; 16d8e
 	call GetHLAtSPPlus4
 	ld [hl], $8f
 .asm_16fee: ; 16fee (5:6fee)
+IF DEF(LANG_JP)
 	pop bc
+ELIF DEF(LANG_EN)
+	jp .asm_16fd4_en
+.asm_16fcd_en:
+	read_hl_from_sp_plus $11
+	call Func_16777
+.asm_16fd4_en
+ENDC
 	ld hl, sp+$3
 	ld a, [hl]
 	cp $8
@@ -4104,7 +4268,7 @@ Func_16d8e:: ; 16d8e
 	ld h, $0
 	ld de, $a9 - 1 ; TreeBitstreamText_4b486
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $101
 	call FarCall
 .asm_170c4: ; 170c4 (5:70c4)
@@ -4208,7 +4372,7 @@ Func_16d8e:: ; 16d8e
 	ld h, $0
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -4226,9 +4390,9 @@ Func_16d8e:: ; 16d8e
 .asm_17195: ; 17195 (5:7195)
 	call Func_1401b
 	ld hl, $4000
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $10
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_171a6: ; 171a6
@@ -4515,7 +4679,7 @@ Func_173c4: ; 173c4 (5:73c4)
 	ld a, [de]
 	ld hl, sp+$1
 	ld [hl], a
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	ld a, [hl]
 	ld hl, sp+$0
@@ -4552,7 +4716,7 @@ Func_173c4: ; 173c4 (5:73c4)
 	ld h, $0
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
@@ -4568,6 +4732,7 @@ Func_173c4: ; 173c4 (5:73c4)
 	jp .asm_173df
 
 .asm_17429: ; 17429 (5:7429)
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -4575,6 +4740,9 @@ Func_173c4: ; 173c4 (5:73c4)
 	xor a
 	call PushBGMapRegion
 	pop bc
+ELIF DEF(LANG_EN)
+	call Func_14001
+ENDC
 	ld a, $ff
 	ld [wc39b], a
 	pop bc
@@ -4973,7 +5141,7 @@ Func_17975:: ; 17975
 .asm_17a39: ; 17a39 (5:7a39)
 	xor a
 	ld [de], a
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	pop bc
 	pop bc

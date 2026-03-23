@@ -18,14 +18,14 @@ Func_615ce: ; 615ce (18:55ce)
 	pop de
 	ld hl, $10
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld a, [hl]
 	and $40
 	jp z, Func_6160e
 	ld hl, $30
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld bc, -$10
 	jp Func_61611
 
@@ -88,7 +88,7 @@ Func_61634: ; 61634 (18:5634)
 
 Func_61662: ; 61662 (18:5662)
 	read_hl_from_sp_plus $e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
@@ -140,9 +140,9 @@ Func_61689: ; 61689 (18:5689)
 Func_616b2: ; 616b2 (18:56b2)
 	pop de
 	pop bc
-	reg16swap de, hl
+	swap_de_hl
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	jp Func_61612
@@ -196,13 +196,13 @@ DamageOrHeal:: ; 616dd
 	ld [hl], $0
 
 	ld hl, sp+$9
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_616c6
 	ld bc, $8
 	call MemCopy
 
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_616ce
 	ld bc, $7
 	call MemCopy
@@ -319,7 +319,7 @@ Func_617ba: ; 617ba (18:57ba)
 	ld h, a
 	write_hl_to_sp_plus $22
 	read_hl_from_sp_plus $22
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_61802
@@ -446,7 +446,7 @@ Func_618b1: ; 618b1 (18:58b1)
 	pop de
 	call DrawHPBar
 	ld hl, sp+$1a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1e
 	call Func_63ce1
 	ld hl, sp+$2d
@@ -472,7 +472,7 @@ Func_618eb: ; 618eb (18:58eb)
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $2a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
@@ -573,7 +573,7 @@ Func_619a5: ; 619a5 (18:59a5)
 	or a
 	jp nz, Func_619c1
 	read_hl_from_sp_plus $22
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_619c1
@@ -604,7 +604,7 @@ Func_619e7: ; 619e7 (18:59e7)
 	call WaitVideoTransfer
 	pop bc
 	read_hl_from_sp_plus $20
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $18
 	add hl, bc
 	ld [hl], e
@@ -632,7 +632,7 @@ Func_619e7: ; 619e7 (18:59e7)
 	cp [hl]
 	jp nz, .waitLoop
 	read_hl_from_sp_plus $1c
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $2a
-	reg16swap de, hl
+	swap_de_hl
 	ret

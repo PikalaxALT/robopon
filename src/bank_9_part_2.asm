@@ -102,7 +102,7 @@ Func_2469a: ; 2469a (9:469a)
 	ld hl, $2f
 Func_2469d: ; 2469d (9:469d)
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $18
 	add hl, de
 	ld a, [hl]
@@ -353,7 +353,7 @@ Func_2486e: ; 2486e (9:486e)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	ld hl, sp+$14
 	ld [hl], $1
@@ -450,7 +450,7 @@ Func_24901: ; 24901 (9:4901)
 	pop bc
 	push bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_24744
@@ -501,7 +501,7 @@ Func_249ab: ; 249ab (9:49ab)
 	pop bc
 	push bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_24744
@@ -566,7 +566,7 @@ Func_24a28: ; 24a28 (9:4a28)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24010
 	ld hl, Text_24065
 	call Func_24010
@@ -643,7 +643,7 @@ Func_24ab1: ; 24ab1 (9:4ab1)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24010
 	ld hl, Text_24065
 	call Func_24010
@@ -870,7 +870,7 @@ Func_24c32: ; 24c32 (9:4c32)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	pop bc
 	read_hl_from_sp_plus $34
@@ -978,7 +978,7 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
@@ -995,7 +995,7 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
@@ -1030,7 +1030,7 @@ Func_24daf: ; 24daf (9:4daf)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24779
 	ld c, l
 	ld b, h
@@ -1135,7 +1135,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24779
 	ld c, l
 	ld b, h
@@ -1245,7 +1245,7 @@ Func_24f15: ; 24f15 (9:4f15)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24779
 	ld c, l
 	ld b, h
@@ -1265,7 +1265,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	read_hl_from_sp_plus $36
 	ld de, $3e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2f
 	ld l, [hl]
 	ld h, $0
@@ -1713,7 +1713,7 @@ Func_2520c: ; 2520c (9:520c)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	call GetHLAtSPPlus9
 	ld de, $71
@@ -1845,7 +1845,7 @@ Func_25395: ; 25395 (9:5395)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -1911,7 +1911,7 @@ Func_253f0: ; 253f0 (9:53f0)
 	ld de, $1c
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $6f
 	add hl, de
 	ld a, [hl]
@@ -1972,7 +1972,7 @@ Func_2543f: ; 2543f (9:543f)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -2384,7 +2384,7 @@ Func_2570e: ; 2570e (9:570e)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -2426,7 +2426,7 @@ Func_257c4: ; 257c4 (9:57c4)
 	jp nz, Func_25813
 Func_257e0: ; 257e0 (9:57e0)
 	read_hl_from_sp_plus $2a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_2639a
@@ -2434,7 +2434,7 @@ Func_257e0: ; 257e0 (9:57e0)
 
 Func_257f1: ; 257f1 (9:57f1)
 	read_hl_from_sp_plus $2a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_2639a
@@ -2442,7 +2442,7 @@ Func_257f1: ; 257f1 (9:57f1)
 
 Func_25802: ; 25802 (9:5802)
 	read_hl_from_sp_plus $2a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_26c02
@@ -2461,7 +2461,7 @@ Func_25813: ; 25813 (9:5813)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $18
 	call DivideHLByDESigned
 	inc hl
@@ -2476,12 +2476,12 @@ Func_25813: ; 25813 (9:5813)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $c
 	call DivideHLByDESigned
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_25869
@@ -2492,7 +2492,7 @@ Func_25869: ; 25869 (9:5869)
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Bank9_DamageOrHeal
-	reg16swap de, hl
+	swap_de_hl
 	ld a, e
 	or d
 	jp nz, Func_2587e
@@ -2550,7 +2550,7 @@ Func_25881: ; 25881 (9:5881)
 	ld hl, Text_24252
 	call Func_24010
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $1d
 	call Func_24759
 	ld hl, sp+$6
@@ -2576,7 +2576,7 @@ Func_25881: ; 25881 (9:5881)
 	call Func_24010
 	call Func_24045
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	xor $1
@@ -2605,7 +2605,7 @@ Func_25944: ; 25944 (9:5944)
 	ld hl, Text_24252
 	call Func_24023
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $21
 	call Func_24759
 	ld hl, sp+$6
@@ -2647,7 +2647,7 @@ Func_259a4: ; 259a4 (9:59a4)
 	ld hl, Text_24252
 	call Func_24023
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $22
 	call Func_24759
 	ld hl, sp+$6
@@ -2666,7 +2666,7 @@ Func_259a4: ; 259a4 (9:59a4)
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	call MultiplyULongAtHLByUShortDE
 	ld hl, sp+$1
@@ -2682,7 +2682,7 @@ Func_259a4: ; 259a4 (9:59a4)
 	sbc b
 	ld h, a
 	call WriteHLToSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_25a06
@@ -2711,7 +2711,7 @@ Func_25a06: ; 25a06 (9:5a06)
 	ld [hl], d
 
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	xor $1
@@ -2719,7 +2719,7 @@ Func_25a06: ; 25a06 (9:5a06)
 	call WriteHLToSPPlus6
 
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_25a66
@@ -2834,7 +2834,7 @@ Func_25ab0: ; 25ab0 (9:5ab0)
 
 Func_25b19: ; 25b19 (9:5b19)
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	xor $1
@@ -2842,7 +2842,7 @@ Func_25b19: ; 25b19 (9:5b19)
 	call WriteHLToSPPlus6
 
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_25b48
@@ -2868,7 +2868,7 @@ Func_25b48: ; 25b48 (9:5b48)
 	or h
 	jp nz, Func_25b71
 	read_hl_from_sp_plus $2a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_26bab
@@ -2973,7 +2973,7 @@ Func_25c3d: ; 25c3d (9:5c3d)
 	call Func_24036
 Func_25c40: ; 25c40 (9:5c40)
 	read_hl_from_sp_plus $2a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_2639a
@@ -2990,7 +2990,7 @@ Func_25c40: ; 25c40 (9:5c40)
 
 Func_25c66: ; 25c66 (9:5c66)
 	read_hl_from_sp_plus $2a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_25c81
@@ -3153,7 +3153,7 @@ Func_25d3d: ; 25d3d (9:5d3d)
 	add hl, de
 	ld de, $2
 	call DividePointerByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_25d94
@@ -3173,13 +3173,13 @@ Func_25d94: ; 25d94 (9:5d94)
 	ld [hl], a
 	inc hl
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$59
 	ld a, [hl]
 	xor $1
 	call Func_2543f
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$59
 	ld a, [hl]
 	xor $1
@@ -3233,7 +3233,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	push af
 	add sp, -$12
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -3241,7 +3241,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	write_hl_to_sp_plus $13
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -3251,7 +3251,7 @@ Func_25e07: ; 25e07 (9:5e07)
 	write_hl_to_sp_plus $11
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -3326,7 +3326,7 @@ Func_25e90: ; 25e90 (9:5e90)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	ld hl, Text_24071
 	call Func_24010
@@ -3488,7 +3488,7 @@ Func_25f9c: ; 25f9c (9:5f9c)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	ld hl, Text_241b9
 	call Func_24010
@@ -3753,7 +3753,7 @@ Func_261ed: ; 261ed (9:61ed)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	ld hl, Text_24071
 	call Func_24010
@@ -3766,7 +3766,7 @@ Func_261ed: ; 261ed (9:61ed)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24010
 	ld a, $64
 	call Func_24600
@@ -3837,7 +3837,7 @@ Func_26292: ; 26292 (9:6292)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	ld hl, Text_24257
 	call Func_24010
@@ -3869,7 +3869,7 @@ Func_262e0: ; 262e0 (9:62e0)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	ld hl, Text_241b9
 	call Func_24010
@@ -3986,7 +3986,7 @@ Func_263cb: ; 263cb (9:63cb)
 	push af
 	push bc
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -4030,7 +4030,7 @@ Func_263cb: ; 263cb (9:63cb)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $83
 	call Func_2478b
 	pop bc
@@ -4067,7 +4067,7 @@ Func_2645b: ; 2645b (9:645b)
 	push af
 	push bc
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -4111,7 +4111,7 @@ Func_2645b: ; 2645b (9:645b)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $81
 	call Func_2478b
 	pop bc
@@ -4162,7 +4162,7 @@ Func_264f1: ; 264f1
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -4176,7 +4176,7 @@ Func_264f1: ; 264f1
 	inc hl
 	ld d, [hl]
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $83
 	call Func_2478b
 	ld hl, sp+$1e
@@ -4258,7 +4258,7 @@ Func_26570: ; 26570 (9:6570)
 Func_265a8: ; 265a8 (9:65a8)
 	push bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_24744
@@ -4282,7 +4282,7 @@ Func_265d0: ; 265d0
 	push af
 	add sp, -$1c
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -4295,7 +4295,7 @@ Func_265d0: ; 265d0
 	inc hl
 	ld d, [hl]
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $81
 	call Func_2478b
 	ld hl, sp+$1b
@@ -4347,7 +4347,7 @@ Func_265d0: ; 265d0
 Func_26649: ; 26649 (9:6649)
 	push bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_24744
@@ -4396,7 +4396,7 @@ Func_26675: ; 26675 (9:6675)
 	pop de
 	push de
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -4437,7 +4437,7 @@ Func_26675: ; 26675 (9:6675)
 	ld l, a
 	call WriteHLToSPPlus5
 	call GetHLAtSPPlus5
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	ld a, [hl]
 	call Bank9_DamageOrHeal
@@ -4508,7 +4508,7 @@ Func_26759: ; 26759 (9:6759)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_26796
@@ -4523,7 +4523,7 @@ Func_26759: ; 26759 (9:6759)
 	call WriteHLToSPPlus3
 Func_26796: ; 26796 (9:6796)
 	call GetHLAtSPPlus3
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$b
 	ld a, [hl]
 	xor $1
@@ -4603,7 +4603,7 @@ Func_2681d: ; 2681d
 	call WriteHLToSPPlus6
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -4617,7 +4617,7 @@ Func_2681d: ; 2681d
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $81
 	call Func_2478b
 	push af
@@ -4696,7 +4696,7 @@ Func_268b9: ; 268b9
 	write_hl_to_sp_plus $1b
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -4710,7 +4710,7 @@ Func_268b9: ; 268b9
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $81
 	call Func_2478b
 	push af
@@ -4728,7 +4728,7 @@ Func_268f8: ; 268f8 (9:68f8)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -4882,7 +4882,7 @@ Func_269f7: ; 269f7
 	call WriteHLToSPPlus6
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -4896,7 +4896,7 @@ Func_269f7: ; 269f7
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $81
 	call Func_2478b
 	push af
@@ -4925,7 +4925,7 @@ Func_26a43: ; 26a43 (9:6a43)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -4968,7 +4968,7 @@ Func_26a8e: ; 26a8e
 	push bc
 	push bc
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -4989,7 +4989,7 @@ Func_26a8e: ; 26a8e
 	call WriteHLToSPPlus8
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -5025,7 +5025,7 @@ Func_26adf: ; 26adf (9:6adf)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -5123,7 +5123,7 @@ Func_26b87: ; 26b87 (9:6b87)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	call Func_24045
 	ld hl, sp+$9
@@ -5144,13 +5144,13 @@ Func_26baa: ; 26baa
 Func_26bab: ; 26bab (9:6bab)
 	add sp, -$14
 	push af
-	reg16swap de, hl
+	swap_de_hl
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
 	push bc
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $1e
 	call Func_24759
 	ld hl, sp+$4
@@ -5162,7 +5162,7 @@ Func_26bab: ; 26bab (9:6bab)
 	pop bc
 	push bc
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $6d
 	add hl, bc
 	ld a, [hl]
@@ -5190,7 +5190,7 @@ Func_26c02: ; 26c02 (9:6c02)
 	add sp, -$1c
 	push af
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -5211,7 +5211,7 @@ Func_26c02: ; 26c02 (9:6c02)
 	ld d, [hl]
 	ld hl, sp+$18
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $81
 	call Func_2478b
 	ld l, a
@@ -5236,7 +5236,7 @@ Func_26c02: ; 26c02 (9:6c02)
 	ld l, [hl]
 	ld h, a
 	write_hl_to_sp_plus $18
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp c, Func_26c6a
@@ -5264,7 +5264,7 @@ Func_26c6a: ; 26c6a (9:6c6a)
 	inc hl
 	write_hl_to_sp_plus $18
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld a, $1f
 	call Func_24759
 	ld hl, sp+$2
@@ -5285,7 +5285,7 @@ Func_26c6a: ; 26c6a (9:6c6a)
 	call Func_24045
 	pop af
 	read_hl_from_sp_plus $16
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24632
 	add sp, $1c
 	ret
@@ -5294,7 +5294,7 @@ Func_26cd6: ; 26cd6
 	push bc
 	push bc
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -5332,7 +5332,7 @@ Func_26cd6: ; 26cd6
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24023
 	ld hl, Text_2406d
 	call Func_24010
@@ -5347,7 +5347,7 @@ Func_26cd6: ; 26cd6
 	ld d, h
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $76
 	add hl, bc
 	add hl, de
@@ -5356,7 +5356,7 @@ Func_26cd6: ; 26cd6
 	call GetHLAtSPPlus4
 	ld de, $25
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -5382,7 +5382,7 @@ Func_26cd6: ; 26cd6
 	ld d, [hl]
 	dec hl
 	ld e, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $3e8
 	call CompareHLtoDE
 	jp c, Func_26d7c
@@ -5407,7 +5407,7 @@ Func_26d80: ; 26d80
 Func_26d81: ; 26d81
 	push af
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld a, [hl]
@@ -5461,7 +5461,7 @@ Func_26dd8: ; 26dd8
 	push bc
 	push bc
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -5568,7 +5568,7 @@ Func_26e70: ; 26e70 (9:6e70)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call Func_24010
 	ld hl, Text_24065
 	call Func_24010
@@ -5614,7 +5614,7 @@ Func_26ee8: ; 26ee8
 	push af
 	add sp, -$18
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -5676,7 +5676,7 @@ Func_26f50: ; 26f50 (9:6f50)
 asm_26f53:
 	push bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_24744
@@ -5807,7 +5807,7 @@ Func_26fe8: ; 26fe8 (9:6fe8)
 	ld d, [hl]
 	push de
 	call GetHLAtSPPlus10
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$b
 	ld a, [hl]
 	ret
@@ -5829,7 +5829,7 @@ Func_26fe8: ; 26fe8 (9:6fe8)
 Func_27046: ; 27046 (9:7046)
 	ld hl, $2f
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $18
 	add hl, de
 	ld a, [hl]
@@ -5952,7 +5952,7 @@ Func_2711e: ; 2711e (9:711e)
 	ld hl, $195
 	write_hl_to_sp_plus $c
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$57
 	ld a, [hl]
 	call Func_26675
@@ -6100,14 +6100,14 @@ Func_27252: ; 27252 (9:7252)
 	jp nc, Func_272ed
 	push bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$59
 	ld a, [hl]
 	call Func_256a3
 	ld hl, sp+$50
 	ld [hl], a
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$59
 	ld a, [hl]
 	call Func_2543f
@@ -6122,7 +6122,7 @@ Func_27252: ; 27252 (9:7252)
 	or a
 	jp z, Func_27298
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$59
 	ld a, [hl]
 	call Func_2570e
@@ -6130,7 +6130,7 @@ Func_27252: ; 27252 (9:7252)
 
 Func_27298: ; 27298 (9:7298)
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$59
 	ld a, [hl]
 	call Func_25dd5
@@ -6345,7 +6345,7 @@ Func_2741e: ; 2741e (9:741e)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_2617
 	ld hl, sp+$0
@@ -6533,7 +6533,7 @@ Func_2759b: ; 2759b (9:759b)
 	ld d, [hl]
 	ld hl, $5e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld hl, sp+$9
 	ld l, [hl]
@@ -6617,7 +6617,7 @@ Func_2762e: ; 2762e (9:762e)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l

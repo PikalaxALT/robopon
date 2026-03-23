@@ -118,7 +118,7 @@ Func_863fb::
 	ld l, [hl]
 	ld h, $0
 	mulhl $3c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0

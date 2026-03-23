@@ -76,7 +76,7 @@ Func_b7f2: ; b7f2 (2:77f2)
 
 LoadEncounterTable:: ; b7fd
 	ld [wRandomEncounterTableBank], a
-	reg16swap de, hl
+	swap_de_hl
 	write_hl_to wRandomEncounterTableAddr
 	ld a, c
 	ld [wRandomEncounterTableLength], a
@@ -153,10 +153,10 @@ RollRandomEncounter: ; b821 (2:7821)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wRandomEncounterTableAddr
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$30
 	ld bc, $e
 	call FarCopyVideoData
@@ -389,7 +389,7 @@ RollRandomEncounter: ; b821 (2:7821)
 	ld [hl], a
 	ld bc, $0
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	call StartBattle
 	jp .quit

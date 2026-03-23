@@ -75,7 +75,7 @@ Func_e408: ; e408 (3:6408)
 	add hl, hl
 	add hl, hl
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld a, [hl]
 	ld hl, sp+$2
@@ -438,7 +438,7 @@ Func_e608: ; e608 (3:6608)
 	inc hl
 	ld [hl], b
 	ld hl, wOAMBuffer
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld [hl], $0
 Func_e675: ; e675 (3:6675)
@@ -573,7 +573,7 @@ Func_e6b7: ; e6b7
 	add hl, de
 	ld de, $7
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld a, [hl]
 	ld l, c
@@ -598,7 +598,7 @@ Func_e6b7: ; e6b7
 	add hl, de
 	ld de, $7
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld a, [hl]
 	ld l, c
@@ -859,7 +859,7 @@ Func_e92b: ; e92b (3:692b)
 	push bc
 	push af
 	call GetHLAtSPPlus6
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_de2c
@@ -1159,7 +1159,7 @@ Func_eb15: ; eb15 (3:6b15)
 	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	read_hl_from wCurRobotPointer
 	ld de, $24a
@@ -1178,7 +1178,7 @@ Func_eb3b: ; eb3b (3:6b3b)
 	jp nc, Func_ec0b
 	push bc
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	and $1f
 	ld e, a
@@ -1202,7 +1202,7 @@ Func_eb3b: ; eb3b (3:6b3b)
 	ld h, $0
 	ld a, l
 	push af
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -1349,7 +1349,7 @@ Func_ec40: ; ec40 (3:6c40)
 	jp nc, Func_ed10
 	push bc
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	and $1f
 	ld e, a
@@ -1373,7 +1373,7 @@ Func_ec40: ; ec40 (3:6c40)
 	ld h, $0
 	ld a, l
 	push af
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -1509,7 +1509,7 @@ Func_ed38: ; ed38 (3:6d38)
 	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	read_hl_from wCurRobotPointer
 	ld de, $2ca
@@ -1528,7 +1528,7 @@ Func_ed5e: ; ed5e (3:6d5e)
 	jp nc, Func_ee2e
 	push bc
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	and $1f
 	ld e, a
@@ -1552,7 +1552,7 @@ Func_ed5e: ; ed5e (3:6d5e)
 	ld h, $0
 	ld a, l
 	push af
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -1697,7 +1697,7 @@ Func_ee61: ; ee61 (3:6e61)
 	jp nc, Func_ef2c
 	push bc
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	and $1f
 	ld e, a
@@ -1721,7 +1721,7 @@ Func_ee61: ; ee61 (3:6e61)
 	ld h, $0
 	ld a, l
 	push af
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	inc hl
 	ld h, [hl]
@@ -1862,7 +1862,7 @@ Func_ef53: ; ef53 (3:6f53)
 	read_hl_from wCurRobotPointer
 	ld de, $24a
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wCGB_BGPalsBuffer
 	call CopyFromDEtoHL
 	jp Func_ef96
@@ -1872,7 +1872,7 @@ Func_ef80: ; ef80 (3:6f80)
 	read_hl_from wCurRobotPointer
 	ld de, $2ca
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wCGB_BGPalsBuffer
 	call CopyFromDEtoHL
 Func_ef96: ; ef96 (3:6f96)
@@ -2003,7 +2003,7 @@ Func_f07c: ; f07c (3:707c)
 	read_hl_from wCurRobotPointer
 	ld de, $1ca
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wCGB_BGPalsBuffer
 	call CopyFromDEtoHL
 	ld a, [wNextVBlankFlags]
@@ -2571,7 +2571,7 @@ Func_f496: ; f496 (3:7496)
 	push de
 	push af
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	add hl, bc
 	push hl
 	read_hl_from_sp_plus $c
@@ -2706,7 +2706,7 @@ Func_f554: ; f554 (3:7554)
 	push de
 	ld hl, -8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $8
 	add hl, bc
 	call Func_de2c
@@ -2720,7 +2720,7 @@ Func_f554: ; f554 (3:7554)
 	push de
 	ld hl, -8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_de2c
@@ -2780,7 +2780,7 @@ Func_f5d6: ; f5d6 (3:75d6)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PlayBattleAnimScript
 	pop bc
 	dec c

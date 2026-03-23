@@ -346,7 +346,7 @@ Func_d9f7e:: ; d9f7e (36:5f7e)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc267
 	add hl, de
 	ld a, [hl]
@@ -372,7 +372,7 @@ Func_d9f7e:: ; d9f7e (36:5f7e)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc267
 	add hl, de
 	ld e, [hl]
@@ -551,7 +551,7 @@ Func_da0ca: ; da0ca (36:60ca)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc269
 	add hl, de
 	ld a, [hl]
@@ -561,7 +561,7 @@ Func_da0ca: ; da0ca (36:60ca)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc269
 	add hl, de
 	ld e, [hl]
@@ -1030,7 +1030,7 @@ Func_da3bf: ; da3bf (36:63bf)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc267
 	add hl, de
 	ld e, [hl]
@@ -1292,13 +1292,13 @@ LoadEmoteGFX:: ; da545 (36:6545)
 	push af
 	ld [wFarCallDestBank], a
 	read_hl_from_sp_plus $c
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld bc, $4
 	call FarCopyVideoData
@@ -1372,13 +1372,13 @@ DecompressEmoteAttrs:: ; da5db (36:65db)
 	push af
 	ld [wFarCallDestBank], a
 	call GetHLAtSPPlus10
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $4
 	call FarCopyVideoData

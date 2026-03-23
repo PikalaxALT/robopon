@@ -31,7 +31,7 @@ SaveGame:: ; 56d9b (15:6d9b)
 	push hl
 	ld c, $5
 	read_hl_from Pointers_56d8e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $ff07
 	call Func_2951
 	push hl
@@ -51,7 +51,7 @@ SaveGame:: ; 56d9b (15:6d9b)
 	add hl, hl
 	ld de, wc938
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	inc hl
@@ -87,7 +87,7 @@ SaveGame:: ; 56d9b (15:6d9b)
 	call GetSRAMBank_ReadOnly
 	ld bc, $400
 	read_hl_from_sp_plus $c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$c
 	call CopyFromDEtoHL
 	ld a, BANK(sSavedWarehouse)
@@ -120,7 +120,7 @@ SaveGame:: ; 56d9b (15:6d9b)
 	pop bc
 	push bc
 	read_hl_from_sp_plus $c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$c
 	call CopyFromDEtoHL
 	ld a, $1
@@ -188,7 +188,7 @@ SaveGame:: ; 56d9b (15:6d9b)
 	set_farcall_addrs_hli CalcSaveChecksum
 	ld a, $1
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	callba_hli SignSaveFiles
 	set_farcall_addrs_hli ValidateSaveGameSignature
@@ -246,7 +246,7 @@ LoadGame:: ; 56fc2 (15:6fc2)
 	call GetSRAMBank_ReadOnly
 	ld bc, $400
 	call GetHLAtSPPlus8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	call CopyFromDEtoHL
 	ld a, BANK(sWarehouse)
@@ -279,7 +279,7 @@ LoadGame:: ; 56fc2 (15:6fc2)
 	pop bc
 	push bc
 	call GetHLAtSPPlus8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	call CopyFromDEtoHL
 	ld a, $2
@@ -342,7 +342,7 @@ LoadGame:: ; 56fc2 (15:6fc2)
 	set_farcall_addrs_hli GetSaveChecksum
 	ld a, $1
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	set_farcall_addrs_hli ValidateSaveGameSignature
 	pop de

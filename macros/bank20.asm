@@ -51,7 +51,7 @@ LoadWarps_\1: ; 8003a (20:403a)
 	ld b, h
 	read_hl_from_sp_plus $12
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $b
 	call CopyFromDEtoHL
@@ -117,7 +117,7 @@ ChangeSprite_\1: ; 800c8
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld [hl], a
@@ -157,7 +157,7 @@ LoadMapObjects_\1: ; 800fb (20:40fb)
 	ld b, h
 	read_hl_from_sp_plus $14
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $e
 	call CopyFromDEtoHL
@@ -321,7 +321,7 @@ Func_802ef_\1:
 	pop hl
 	ld c, e
 	ld b, d
-	reg16swap de, hl
+	swap_de_hl
 	ld a, csbnk
 	call FarCall
 	or a
@@ -363,7 +363,7 @@ Func_80347_\1:
 	pop hl
 	ld c, e
 	ld b, d
-	reg16swap de, hl
+	swap_de_hl
 	ld a, csbnk
 	call FarCall
 	or a
@@ -405,7 +405,7 @@ Func_8039e_\1:
 	pop hl
 	ld c, e
 	ld b, d
-	reg16swap de, hl
+	swap_de_hl
 	ld a, csbnk
 	call FarCall
 	or a
@@ -447,7 +447,7 @@ Func_803f5_\1:
 	pop hl
 	ld c, e
 	ld b, d
-	reg16swap de, hl
+	swap_de_hl
 	ld a, csbnk
 	call FarCall
 	or a
@@ -560,7 +560,7 @@ Func_80519_\1: ; 80519 (20:4519)
 	pop bc
 	pop hl
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	call strcpy
 	set_farcall_addrs_hli Func_ac36
@@ -630,7 +630,7 @@ Func_805b2_\1: ; 805b2 (20:45b2)
 	pop bc
 	pop hl
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	call strcpy
 	set_farcall_addrs_hli Func_aca4
@@ -757,7 +757,7 @@ Func_806dd_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -855,7 +855,7 @@ Func_80799_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -880,7 +880,7 @@ Func_80799_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -901,7 +901,7 @@ Func_80799_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -963,7 +963,7 @@ Func_80799_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -990,7 +990,7 @@ PrintTextFacePlayer_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -1016,7 +1016,7 @@ PrintTextFacePlayer_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1025,7 +1025,7 @@ PrintTextFacePlayer_\1:
 .asm_808ad ; 808ad (20:48ad)
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1048,7 +1048,7 @@ PrintTextFacePlayer_\1:
 .asm_808cb ; 808cb (20:48cb)
 	push bc
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1056,7 +1056,7 @@ PrintTextFacePlayer_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextStandard_\1
 	pop bc
 	ld hl, sp+$3
@@ -1064,7 +1064,7 @@ PrintTextFacePlayer_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1093,7 +1093,7 @@ Func_808fc_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -1119,7 +1119,7 @@ Func_808fc_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1128,7 +1128,7 @@ Func_808fc_\1:
 .asm_8094a ; 8094a (20:494a)
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1151,7 +1151,7 @@ Func_808fc_\1:
 .asm_80968 ; 80968 (20:4968)
 	push bc
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1159,7 +1159,7 @@ Func_808fc_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextWithNPCName_\1
 	pop bc
 	ld hl, sp+$3
@@ -1167,7 +1167,7 @@ Func_808fc_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1196,7 +1196,7 @@ Func_80999_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -1222,7 +1222,7 @@ Func_80999_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1244,7 +1244,7 @@ Func_80999_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_805b2_\1
 	or a
@@ -1265,7 +1265,7 @@ Func_80999_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_80519_\1
 	ld hl, sp+$3
@@ -1273,7 +1273,7 @@ Func_80999_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1296,7 +1296,7 @@ Func_80999_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_80519_\1
 .asm_80a5a ; 80a5a (20:4a5a)
@@ -1319,7 +1319,7 @@ Func_80999_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call Func_80519_\1
 .asm_80a79 ; 80a79 (20:4a79)
@@ -1343,7 +1343,7 @@ PrintTextFacePlayerYesOrNo_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -1369,7 +1369,7 @@ PrintTextFacePlayerYesOrNo_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1384,7 +1384,7 @@ PrintTextFacePlayerYesOrNo_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextWithYesNoBox_\1
 	or a
 	jp nz, .asm_80b09
@@ -1395,14 +1395,14 @@ PrintTextFacePlayerYesOrNo_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextStandard_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1420,7 +1420,7 @@ PrintTextFacePlayerYesOrNo_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextStandard_\1
 .asm_80b19 ; 80b19 (20:4b19)
 	jp .asm_80b2a
@@ -1433,7 +1433,7 @@ PrintTextFacePlayerYesOrNo_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextStandard_\1
 .asm_80b2a ; 80b2a (20:4b2a)
 	pop bc
@@ -1456,7 +1456,7 @@ Func_80b2d_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -1482,7 +1482,7 @@ Func_80b2d_\1:
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1497,7 +1497,7 @@ Func_80b2d_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextWithNPCNameAndYesNoBox_\1
 	or a
 	jp nz, .asm_80bba
@@ -1508,14 +1508,14 @@ Func_80b2d_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextWithNPCName_\1
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -1533,7 +1533,7 @@ Func_80b2d_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextWithNPCName_\1
 .asm_80bca ; 80bca (20:4bca)
 	jp .asm_80bdb
@@ -1546,7 +1546,7 @@ Func_80b2d_\1:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call PrintTextWithNPCName_\1
 .asm_80bdb ; 80bdb (20:4bdb)
 	pop bc
@@ -1567,7 +1567,7 @@ Func_80bde_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	inc hl
@@ -1586,7 +1586,7 @@ Func_80bde_\1:
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	inc hl
@@ -1693,7 +1693,7 @@ Func_80ce7_\1: ; 80ce7 (20:4ce7)
 	pop de
 	pop hl
 	ld c, e
-	reg16swap de, hl
+	swap_de_hl
 	ld a, csbnk
 	call FarCall
 	ret
@@ -1729,7 +1729,7 @@ LoadEncounters_\1: ; 80d24 (20:4d24)
 	pop de
 	pop hl
 	ld c, e
-	reg16swap de, hl
+	swap_de_hl
 	ld a, csbnk
 	call FarCall
 .quit
@@ -1828,7 +1828,7 @@ ScriptedBattle_\1: ; 80dd3 (20:4dd3)
 	pop hl
 	ld c, e
 	ld b, d
-	reg16swap de, hl
+	swap_de_hl
 	ld a, csbnk
 	call FarCall
 	ld l, a
@@ -2027,7 +2027,7 @@ Func_80fa5_\1:
 	add sp, -$66
 	set_farcall_addrs_hli Func_1c11
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $66
 	call FarCall
 	set_farcall_addrs_hli Func_1c27
@@ -2036,9 +2036,9 @@ Func_80fa5_\1:
 	read_hl_from_sp_plus $6a
 	pop de
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $68
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_80fe0_\1:

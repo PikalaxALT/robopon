@@ -47,7 +47,7 @@ AskRepairRobots:: ; 6f512 (1b:7512)
 	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld c, e
 	ld b, d

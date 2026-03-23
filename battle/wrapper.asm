@@ -5,7 +5,7 @@ StartBattle:: ; bbee (2:7bee)
 	push af
 	ld c, a
 	read_hl_from_sp_plus $24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	call strcpy_far
 	pop af

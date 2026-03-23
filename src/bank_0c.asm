@@ -356,7 +356,7 @@ Func_30393: ; 30393 (c:4393)
 	set_farcall_addrs_hli malloc
 	ld hl, $c8
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld hl, $5a
 	call FarCall
@@ -435,7 +435,7 @@ Func_30454: ; 30454 (c:4454)
 	ld hl, sp+$d
 	ld a, [hl]
 	call Func_30590
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	ld [hl], $1
 	ld a, e
@@ -650,7 +650,7 @@ Func_305f4: ; 305f4 (c:45f4)
 	ld de, Data_30142
 	ld hl, Data_30115
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	set_farcall_addrs_hli SetSpriteYCoordinatesAndCollectGarbage
 	pop de
@@ -699,7 +699,7 @@ Func_30676: ; 30676 (c:4676)
 	inc hl
 	ld l, [hl]
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -945,7 +945,7 @@ Func_30803: ; 30803 (c:4803)
 	ld h, $0
 	ld de, $a9 - 1 ; TreeBitstreamText_4b486
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10c
 	call FarCall
 Func_30851: ; 30851 (c:4851)
@@ -1226,7 +1226,7 @@ Func_309da: ; 309da
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_30a85
@@ -1281,7 +1281,7 @@ Func_30a85: ; 30a85 (c:4a85)
 
 Func_30acb: ; 30acb (c:4acb)
 	read_hl_from_sp_plus $f
-	reg16swap de, hl
+	swap_de_hl
 	inc bc
 	ld l, c
 	ld h, b
@@ -1306,7 +1306,7 @@ Func_30acb: ; 30acb (c:4acb)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_30b1a
@@ -1526,7 +1526,7 @@ Func_30c5f: ; 30c5f (c:4c5f)
 	ld h, $0
 	ld de, $a9 - 1 ; TreeBitstreamText_4b486
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10c
 	call FarCall
 Func_30ca7: ; 30ca7 (c:4ca7)
@@ -1538,9 +1538,9 @@ Func_30ca7: ; 30ca7 (c:4ca7)
 	call PushBGMapRegion
 	pop bc
 	ld hl, $4000
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $12
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_30cc1: ; 30cc1
@@ -1604,7 +1604,7 @@ Func_30d16: ; 30d16 (c:4d16)
 	pop bc
 	push bc
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $5
 	add hl, bc
 	ld [hl], e
@@ -1785,7 +1785,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	mulhl 13
 	ld de, ItemAttributes
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld bc, $d
 	call FarCopyVideoData
@@ -1858,13 +1858,13 @@ Func_30edd: ; 30edd (c:4edd)
 	mulhl 17
 	ld de, $4093
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1e
 	ld bc, $11
 	call FarCopyVideoData
 	pop bc
 	read_hl_from_sp_plus $2c
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	ld b, $6
@@ -2097,7 +2097,7 @@ Func_3103d: ; 3103d
 	mulhl 13
 	ld de, ItemAttributes
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2b
 	ld bc, $d
 	call FarCopyVideoData
@@ -2207,7 +2207,7 @@ Func_31154: ; 31154 (c:5154)
 	mulhl 17
 	ld de, Software
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1a
 	ld bc, $11
 	call FarCopyVideoData
@@ -2339,9 +2339,9 @@ Func_31277: ; 31277 (c:5277)
 Func_31296: ; 31296 (c:5296)
 	ld hl, -1
 Func_31299: ; 31299 (c:5299)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $3e
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_312a4: ; 312a4
@@ -2379,7 +2379,7 @@ Func_312c7: ; 312c7 (c:52c7)
 	mulhl 13
 	ld de, ItemAttributes
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $d
 	call FarCopyVideoData
@@ -2986,7 +2986,7 @@ Func_3178a: ; 3178a (c:578a)
 	mulhl 17
 	ld de, Software
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$30
 	ld bc, $11
 	call FarCopyVideoData
@@ -3000,7 +3000,7 @@ Func_3178a: ; 3178a (c:578a)
 	add hl, de
 	ld de, TypeNames
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld bc, $5
 	call FarCopyVideoData
@@ -3451,7 +3451,7 @@ Func_320d8:: ; 320d8
 	jp z, Func_3214e
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	ld hl, sp+$1f
@@ -3517,7 +3517,7 @@ Func_3214e: ; 3214e (c:614e)
 	pop bc
 	set_farcall_addrs_hli Func_1c11
 	ld hl, sp+$2d
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $66
 	call FarCall
 	push af
@@ -3532,7 +3532,7 @@ Func_3214e: ; 3214e (c:614e)
 Func_321ab: ; 321ab (c:61ab)
 	set_farcall_addrs_hli Func_1c27
 	ld hl, sp+$2d
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$23
 	call FarCall
 	ld c, h
@@ -3578,7 +3578,7 @@ Func_321db: ; 321db (c:61db)
 Func_3220d: ; 3220d (c:620d)
 	ld a, e
 	ld hl, sp+$23
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	ld c, [hl]
 	call Func_324c1
@@ -3587,7 +3587,7 @@ Func_3220d: ; 3220d (c:620d)
 Func_3221d: ; 3221d (c:621d)
 	ld a, e
 	ld hl, sp+$23
-	reg16swap de, hl
+	swap_de_hl
 	call Func_322ce
 Func_32227: ; 32227 (c:6227)
 	ld e, $0
@@ -3684,7 +3684,7 @@ ENDC
 	push bc
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	xor a
@@ -3697,7 +3697,7 @@ Func_322ed: ; 322ed (c:62ed)
 	push af
 	push de
 	push bc
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	ld hl, sp+$2a
 	ld [hl], a
@@ -3796,7 +3796,7 @@ Func_322ed: ; 322ed (c:62ed)
 	add hl, bc
 	write_hl_to_sp_plus $1f
 	read_hl_from_sp_plus $1f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_3239e
@@ -3813,7 +3813,7 @@ Func_323a1: ; 323a1 (c:63a1)
 	add hl, bc
 	write_hl_to_sp_plus $21
 	read_hl_from_sp_plus $21
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_323c7
@@ -3827,7 +3827,7 @@ Func_323c7: ; 323c7 (c:63c7)
 	add hl, bc
 	write_hl_to_sp_plus $23
 	read_hl_from_sp_plus $23
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_323ed
@@ -3844,7 +3844,7 @@ Func_323f0: ; 323f0 (c:63f0)
 	add hl, bc
 	write_hl_to_sp_plus $16
 	read_hl_from_sp_plus $16
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_32416
@@ -3858,7 +3858,7 @@ Func_32416: ; 32416 (c:6416)
 	add hl, bc
 	write_hl_to_sp_plus $1a
 	read_hl_from_sp_plus $1a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_3243c
@@ -3924,7 +3924,7 @@ Func_3248b: ; 3248b (c:648b)
 	ld [hl], a
 	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	add sp, $28
@@ -3974,7 +3974,7 @@ Func_324d3: ; 324d3 (c:64d3)
 	jp nc, Func_324f5
 	push af
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [hl]
 	ld l, a
 	ld h, $0
@@ -4123,7 +4123,7 @@ Func_325d5: ; 325d5 (c:65d5)
 	push af
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$31
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	ld hl, sp+$31
@@ -4296,7 +4296,7 @@ Func_326fe: ; 326fe (c:66fe)
 	ld hl, sp+$51
 	ld [hl], e
 	read_hl_from_sp_plus $3f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_32770
@@ -4304,7 +4304,7 @@ Func_326fe: ; 326fe (c:66fe)
 	write_hl_to_sp_plus $3f
 Func_32770: ; 32770 (c:6770)
 	read_hl_from_sp_plus $43
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_32788
@@ -4330,7 +4330,7 @@ Func_327a0: ; 327a0 (c:67a0)
 	write_hl_to_sp_plus $41
 Func_327b8: ; 327b8 (c:67b8)
 	read_hl_from_sp_plus $48
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_327d0
@@ -4338,7 +4338,7 @@ Func_327b8: ; 327b8 (c:67b8)
 	write_hl_to_sp_plus $48
 Func_327d0: ; 327d0 (c:67d0)
 	read_hl_from_sp_plus $4a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_327e8
@@ -4346,7 +4346,7 @@ Func_327d0: ; 327d0 (c:67d0)
 	write_hl_to_sp_plus $4a
 Func_327e8: ; 327e8 (c:67e8)
 	read_hl_from_sp_plus $4c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, 999
 	call CompareHLtoDE
 	jp nc, Func_32800
@@ -4360,7 +4360,7 @@ Func_32800: ; 32800 (c:6800)
 	ld [hl], a
 	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$2f
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [wc2e9]
 	call FarCall
 	add sp, $52
@@ -4580,7 +4580,7 @@ Func_3297b: ; 3297b (c:697b)
 	ld hl, sp+$1a
 	ld [hl], $63
 	ld hl, sp+$13
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
@@ -4590,7 +4590,7 @@ Func_3297b: ; 3297b (c:697b)
 	mulhl 13
 	ld de, $57b8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $d
 	call FarCopyVideoData
@@ -4704,7 +4704,7 @@ Func_32a37: ; 32a37
 	push bc
 	ld a, c
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	call GetItemAttributes2
 	ld l, $10
 	push hl
@@ -4926,9 +4926,9 @@ Func_32c0f: ; 32c0f (c:6c0f)
 Func_32c19: ; 32c19 (c:6c19)
 	ld hl, -1
 Func_32c1c: ; 32c1c (c:6c1c)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $18
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_32c27: ; 32c27
@@ -5016,7 +5016,7 @@ Func_32c96: ; 32c96 (c:6c96)
 	call FarCall
 	push af
 	ld hl, sp+$2b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wSaveBlock1_Money
 	ld bc, $4
 	call MemCopy
@@ -5032,7 +5032,7 @@ Func_32c96: ; 32c96 (c:6c96)
 	mulhl 17
 	ld de, $4093
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$1a
 	ld bc, $11
 	call FarCopyVideoData
@@ -5161,7 +5161,7 @@ Func_32da6: ; 32da6 (c:6da6)
 	set_farcall_addrs_hli malloc
 	ld hl, $b4
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	push de
 	ld l, $9
@@ -5183,7 +5183,7 @@ Func_32df4: ; 32df4 (c:6df4)
 	set_farcall_addrs_hli malloc
 	ld hl, $1b8
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	push de
 	ld l, $b
@@ -5370,9 +5370,9 @@ Func_32f62: ; 32f62 (c:6f62)
 Func_32f6c: ; 32f6c (c:6f6c)
 	ld hl, -1
 Func_32f6f: ; 32f6f (c:6f6f)
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $34
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Data_32f7a: ; 32f7a
@@ -5864,7 +5864,7 @@ Func_333e0:: ; 333e0
 	ld hl, sp+$4
 	call GetRobotBaseStats
 	call GetHLAtSPPlus9
-	reg16swap de, hl
+	swap_de_hl
 	pop hl
 	push de
 	push hl
@@ -6460,7 +6460,7 @@ Func_3387c: ; 3387c (c:787c)
 	ld h, 0
 	get_party_bot
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
@@ -6712,7 +6712,7 @@ Func_33a1f:: ; 33a1f
 	push bc
 	push hl
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $5
 	add hl, de
 	ld a, [hl]
@@ -6723,7 +6723,7 @@ Func_33a1f:: ; 33a1f
 	ld h, $0
 	ld de, $a
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	call WriteHLToSPPlus8
 	ld hl, wc2f6
 	ld l, [hl]
@@ -6775,7 +6775,7 @@ Func_33a99: ; 33a99 (c:7a99)
 	ld h, $0
 	ld de, $a
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_33abd
@@ -6799,7 +6799,7 @@ Func_33ac0: ; 33ac0 (c:7ac0)
 	add hl, de
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
@@ -6851,7 +6851,7 @@ Func_33b26: ; 33b26 (c:7b26)
 	ld h, $0
 	ld de, $a
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	call WriteHLToSPPlus6
 Func_33b45: ; 33b45 (c:7b45)
 	jp Func_33b9b
@@ -6879,7 +6879,7 @@ Func_33b48: ; 33b48 (c:7b48)
 	ld b, h
 	call GetHLAtSPPlus6
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
@@ -6972,7 +6972,7 @@ Func_33bd0:: ; 33bd0 (c:7bd0)
 	set_farcall_addrs_hli GetName
 	ld c, $6
 	ld hl, sp+$36
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
@@ -7000,7 +7000,7 @@ Func_33bd0:: ; 33bd0 (c:7bd0)
 	add hl, bc
 	ld de, Text_66ea7
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$20
 	ld bc, $7
 	call FarCopyVideoData
@@ -7361,7 +7361,7 @@ Func_33f72: ; 33f72 (c:7f72)
 	mulhl 13
 	ld de, $57b8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $d
 	call FarCopyVideoData

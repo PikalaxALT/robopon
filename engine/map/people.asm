@@ -73,7 +73,7 @@ LoadSpriteGFX:: ; a26c (2:626c)
 	ld b, h
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
@@ -129,7 +129,7 @@ LoadMapObject:: ; a2eb
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	pop de
@@ -140,7 +140,7 @@ LoadMapObject:: ; a2eb
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	ld c, l
@@ -158,7 +158,7 @@ LoadMapObject:: ; a2eb
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	call WriteHLToSPPlus6
@@ -260,15 +260,15 @@ LoadMapObject:: ; a2eb
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	pop hl
 .loop
@@ -301,7 +301,7 @@ LoadMapObject:: ; a2eb
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	pop hl
@@ -343,7 +343,7 @@ SetPersonVisibilityState:: ; a444
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -359,7 +359,7 @@ SetPersonVisibilityState:: ; a444
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -386,10 +386,10 @@ SetPersonVisibilityState:: ; a444
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, e
 	ld h, d
 	inc hl
@@ -423,15 +423,15 @@ SetPersonVisibilityState:: ; a444
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
@@ -470,7 +470,7 @@ SetPersonVisibilityState:: ; a444
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	jp .asm_a510
@@ -513,7 +513,7 @@ SetPersonVisibilityState:: ; a444
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	pop af
 	inc a
 	jp .asm_a54b
@@ -541,7 +541,7 @@ Func_a580:: ; a580
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -577,7 +577,7 @@ Func_a5a4:: ; a5a4
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -602,7 +602,7 @@ Func_a5a4:: ; a5a4
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld de, $c
@@ -648,10 +648,10 @@ Func_a60f:: ; a60f
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 
 	ld l, e
 	ld h, d
@@ -679,7 +679,7 @@ Func_a60f:: ; a60f
 	ld [hl], a
 
 	pop bc
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	inc hl
@@ -690,7 +690,7 @@ Func_a60f:: ; a60f
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	inc hl
@@ -708,15 +708,15 @@ Func_a60f:: ; a60f
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 
 	ld a, [de]
 	dec a
@@ -734,15 +734,15 @@ Func_a60f:: ; a60f
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 
 	ld a, [de]
 	inc a
@@ -768,7 +768,7 @@ ChangePersonFacing:: ; a6d8 (2:66d8)
 	push bc
 	push de
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_a6d4
 	ld bc, $4
 	call MemCopy
@@ -799,7 +799,7 @@ ChangePersonFacing:: ; a6d8 (2:66d8)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	ld c, l
@@ -856,7 +856,7 @@ ChangePersonFacing:: ; a6d8 (2:66d8)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc776
 	add hl, de
 	ld d, [hl]

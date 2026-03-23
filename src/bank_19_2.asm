@@ -385,7 +385,7 @@ Func_67417: ; 67417 (19:7417)
 	ld hl, $2f
 Func_6741a: ; 6741a (19:741a)
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld l, a
 	ld h, $0
@@ -516,7 +516,7 @@ Func_67533: ; 67533 (19:7533)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -957,7 +957,7 @@ Func_6782c: ; 6782c (19:782c)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CompareHLtoDE
 	jp nc, Func_678dd
@@ -1103,7 +1103,7 @@ Func_679e5:: ; 679e5 (19:79e5)
 	add hl, hl
 	ld de, Text_66f37
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$0
 	call LiteralStringInTree
 	ld hl, sp+$0

@@ -349,7 +349,7 @@ Func_93370:: ; 93370 (24:7370)
 	push hl
 	pop hl
 	push hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wRTCDays
 	call FixDays
 	read_hl_from wMinutesSinceMidnight
@@ -405,7 +405,7 @@ Func_933c1:: ; 933c1 (24:73c1)
 	ld a, [hl]
 	or a
 	jp nz, Func_933d8
-	reg16swap de, hl
+	swap_de_hl
 	ld e, $0
 	ld bc, $8
 	call FillMemory
@@ -426,7 +426,7 @@ Func_933d8: ; 933d8 (24:73d8)
 	ld [hl], a
 Func_933ea: ; 933ea (24:73ea)
 	ld a, [wRTCTicker]
-	reg16swap de, hl
+	swap_de_hl
 	write_hl_to wc874
 	pop hl
 	push af
@@ -486,7 +486,7 @@ Func_9342a::
 	call FillMemory
 	pop bc
 	read_hl_from_sp_plus $c
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_935a8
@@ -520,7 +520,7 @@ Func_93468: ; 93468 (24:7468)
 	call FillMemory
 	pop bc
 	read_hl_from_sp_plus $c
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call Func_935a8
@@ -550,7 +550,7 @@ Func_934b6: ; 934b6 (24:74b6)
 	ld h, a
 	pop de
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	read_hl_from_sp_plus $e
 	inc hl
@@ -569,7 +569,7 @@ Func_934b6: ; 934b6 (24:74b6)
 	ld l, [hl]
 	ld h, $0
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld a, e
 	and $f
@@ -1071,7 +1071,7 @@ FixDays:: ; 93792 (24:7792)
 	ld h, d
 	inc hl
 	ld [hl], a
-	reg16swap de, hl
+	swap_de_hl
 	inc hl
 	inc hl
 	ld [hl], c
@@ -1224,7 +1224,7 @@ Func_93941:: ; 93941 (24:7941)
 	ld l, [hl]
 	ld h, $0
 	mulhl $3c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
@@ -1496,7 +1496,7 @@ Func_93b08: ; 93b08 (24:7b08)
 	ld [hl], a
 Func_93b76: ; 93b76 (24:7b76)
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	ld l, [hl]
 	ld h, $0
@@ -1758,7 +1758,10 @@ Func_93d05: ; 93d05 (24:7d05)
 	push hl
 	call SuppressVBlankCallback
 	push bc
-	reg16swap hl, de
+	push hl
+	push de
+	pop hl
+	pop de
 	ldh a, [hSRAMBank]
 	push af
 	push af

@@ -117,7 +117,7 @@ PrintMapText:: ; 60621
 	write_hl_to_sp_plus $52
 	dec hl
 	dec hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$43
 	call FarCopyVideoData
 .no_copy
@@ -135,7 +135,7 @@ PrintMapText:: ; 60621
 	ld hl, sp+$45
 	ld c, [hl]
 	read_hl_from_sp_plus $45
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	call strcpy_far
 	pop bc
@@ -144,7 +144,7 @@ PrintMapText:: ; 60621
 .one
 	push bc
 	read_hl_from_sp_plus $45
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	call LiteralStringInTree
 	pop bc
@@ -153,7 +153,7 @@ PrintMapText:: ; 60621
 .two
 	push bc
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call PrintCharacterFromTree
@@ -277,7 +277,7 @@ PrintMapText:: ; 60621
 	ld [wFarCallDestBank], a
 	ld bc, $2
 	read_hl_from_sp_plus $52
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$43
 	call FarCopyVideoData
 	read_hl_from_sp_plus $45

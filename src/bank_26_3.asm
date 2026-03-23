@@ -54,7 +54,7 @@ LandmarkSign::
 	call Func_9a377
 	call Func_9a391
 	ld hl, sp+$1
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3d
 	call PrintCharacterFromTree
 	ld hl, sp+$1
@@ -78,7 +78,7 @@ LandmarkSign::
 	inc hl
 	inc hl
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	ld h, l
@@ -91,7 +91,7 @@ LandmarkSign::
 	push hl
 	ld c, $5
 	ld hl, sp+$3
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $ff04
 	call Func_2951
 	push hl
@@ -165,7 +165,7 @@ Func_9a28c::
 	read_hl_from_sp_plus $40
 	ld de, $64
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	write_hl_to_sp_plus $40
 	ld hl, sp+$0
 	ld [hl], $1
@@ -192,7 +192,7 @@ Func_9a28c::
 	read_hl_from_sp_plus $40
 	ld de, $a
 	call DivideHLByDESigned
-	reg16swap de, hl
+	swap_de_hl
 	write_hl_to_sp_plus $40
 	ld hl, sp+$0
 	ld [hl], $1
@@ -205,7 +205,7 @@ Func_9a28c::
 	ld [hl], e
 	ld c, $5
 	ld hl, sp+$1
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $ff04
 	call Func_2951
 	push hl
@@ -275,7 +275,7 @@ CheckObjectsOccupyingSameTile::
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	inc hl
@@ -293,7 +293,7 @@ CheckObjectsOccupyingSameTile::
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	inc hl
@@ -312,7 +312,7 @@ CheckObjectsOccupyingSameTile::
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	inc hl
@@ -331,7 +331,7 @@ CheckObjectsOccupyingSameTile::
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wObjectStructPointer
 	add hl, de
 	inc hl
@@ -440,7 +440,7 @@ Func_9a41d:: ; 9a41d
 	inc de
 	ld hl, $001e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [bc]
 	inc bc
 	ld [de], a
@@ -466,7 +466,7 @@ Func_9a41d:: ; 9a41d
 	ld a, h
 	or d
 	ld h, a
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	inc c
 	jp .asm_9a476
@@ -587,7 +587,7 @@ Func_9a41d:: ; 9a41d
 	inc de
 	ld hl, $001e
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [bc]
 	inc bc
 	ld [de], a
@@ -613,7 +613,7 @@ Func_9a41d:: ; 9a41d
 	ld a, h
 	or d
 	ld h, a
-	reg16swap de, hl
+	swap_de_hl
 	pop bc
 	inc c
 	jp .asm_9a552
@@ -969,7 +969,7 @@ Func_9a8c3:: ; 9a8c3
 	ld l, [hl]
 	ld h, $00
 	mulhl $003c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$04
 	ld l, [hl]
 	ld h, $00
@@ -1418,7 +1418,7 @@ Func_9ace0:: ; 9ace0
 	call Func_2a3e
 	set_farcall_addrs_hli Func_1c11
 	ld hl, sp+$11
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0066
 	call FarCall
 	ld hl, sp+$05
@@ -1459,10 +1459,10 @@ Func_9ace0:: ; 9ace0
 	push de
 	set_farcall_addrs_hli Func_1c27
 	ld hl, sp+$0f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$05
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$76
 	ld [hl], d
 	ld hl, sp+$75
@@ -1789,7 +1789,7 @@ Func_9af6f:
 	set_farcall_addrs_hli GetName
 	ld c, $08
 	ld hl, sp+$26
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$44
 	ld l, [hl]
 	ld h, $00
@@ -1801,7 +1801,7 @@ Func_9af6f:
 	set_farcall_addrs_hli GetName
 	ld c, $05
 	ld hl, sp+$26
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$44
 	ld a, [hl]
 	and $3f
@@ -1836,10 +1836,10 @@ Func_9af6f:
 	ld l, [hl]
 	ld h, $00
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4a
 	ld l, [hl]
 	ld h, $00
@@ -1854,10 +1854,10 @@ Func_9af6f:
 	ld l, [hl]
 	ld h, $00
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4a
 	ld l, [hl]
 	ld h, $00
@@ -1868,7 +1868,7 @@ Func_9af6f:
 	call FarCall
 .asm_9b0ad
 	ld hl, sp+$24
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$06
 	call LiteralStringInTree
 	dec hl
@@ -1902,7 +1902,7 @@ Func_9af6f:
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
 	ld hl, sp+$02
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $010e
 	call FarCall
 	set_farcall_addrs_hli Func_8f44
@@ -1984,7 +1984,7 @@ Func_9af6f:
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
 	ld hl, sp+$02
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $010e
 	call FarCall
 	ld hl, sp+$4c
@@ -1994,15 +1994,15 @@ Func_9af6f:
 	ld l, [hl]
 	ld h, $00
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4a
 	ld l, [hl]
 	ld h, $00
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$00
 	ld a, [hl]
 	ld [de], a
@@ -2031,7 +2031,7 @@ Func_9b251:: ; 9b251
 
 Func_9b262::
 	ld [wc785], a
-	reg16swap de, hl
+	swap_de_hl
 	write_hl_to wc786
 	ld a, c
 	ld [wc788], a
@@ -2065,10 +2065,10 @@ Func_9b276:
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc786
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3
 	ld bc, $5
 	call FarCopyVideoData
@@ -2106,10 +2106,10 @@ Func_9b276:
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
@@ -2154,10 +2154,10 @@ Func_9b326::
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc786
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$45
 	ld bc, $5
 	call FarCopyVideoData
@@ -2308,7 +2308,7 @@ Func_9b326::
 	set_farcall_addrs_hli GetName
 	pop af
 	ld hl, sp+$2a
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	inc h
@@ -2325,7 +2325,7 @@ Func_9b326::
 	set_farcall_addrs_hli GetName
 	pop af
 	ld hl, sp+$2a
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	ld c, $5
@@ -2351,10 +2351,10 @@ Func_9b326::
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$46
 	ld l, [hl]
 	ld h, $0
@@ -2369,10 +2369,10 @@ Func_9b326::
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$46
 	ld l, [hl]
 	ld h, $0
@@ -2392,7 +2392,7 @@ Func_9b326::
 .asm_9b55e
 	push de
 	ld hl, sp+$28
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	call LiteralStringInTree
 	dec hl
@@ -2440,7 +2440,7 @@ Func_9b326::
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
 	ld hl, sp+$8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	callba_hli Func_8f44
@@ -2515,7 +2515,7 @@ Func_9b326::
 	set_farcall_addrs_hli PrintMapText_
 	ld c, $80
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	pop de
@@ -2531,15 +2531,15 @@ Func_9b326::
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$44
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld a, [hl]
 	ld [de], a

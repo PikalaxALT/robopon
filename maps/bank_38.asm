@@ -277,32 +277,32 @@ Func_e1513:: ; e1513 (38:5513)
 	push af
 	ld hl, $81
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e1255
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$7b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e1259
 	ld bc, $6
 	call MemCopy
 	ld hl, sp+$75
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e127f
 	ld bc, $6
 	call MemCopy
 	ld hl, sp+$6f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e129e
 	ld bc, $6
 	call MemCopy
 	ld hl, sp+$6b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e12af
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e12c0
 	ld bc, $60
 	call MemCopy
@@ -440,7 +440,7 @@ Func_e16a3: ; e16a3 (38:56a3)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wc267
 	add hl, de
 	ld e, [hl]
@@ -649,7 +649,7 @@ Func_e179f: ; e179f (38:579f)
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	add hl, de
 	ld e, $0
@@ -884,7 +884,7 @@ Func_e1981: ; e1981 (38:5981)
 	ld h, $0
 	ld b, $4
 	call RightShiftHL
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$7d
 	add hl, de
 	ld c, [hl]
@@ -974,7 +974,7 @@ Func_e1aa9:: ; e1aa9 (38:5aa9)
 	push bc
 	push bc
 	callba_hli Func_9336a
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld bc, $8
 	ld e, $0
@@ -986,14 +986,14 @@ Func_e1aa9:: ; e1aa9 (38:5aa9)
 	pop bc
 	push bc
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call FarCall
 	set_farcall_addrs_hli Func_935a8
 	pop bc
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	inc hl
@@ -1033,7 +1033,7 @@ Func_e1b27: ; e1b27 (38:5b27)
 	push de
 	ld h, $0
 	mulhl $78
-	reg16swap de, hl
+	swap_de_hl
 	push de
 	ld a, e
 	and $f
@@ -1070,7 +1070,7 @@ Func_e1b27: ; e1b27 (38:5b27)
 	ld [hl], e
 	pop de
 	push de
-	reg16swap de, hl
+	swap_de_hl
 	ld b, $4
 	call RightShiftHL
 	ld a, l
@@ -1090,7 +1090,7 @@ Func_e1b27: ; e1b27 (38:5b27)
 	pop bc
 	push de
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, b
 	call FarCall
@@ -1155,12 +1155,12 @@ Func_e1bdb: ; e1bdb (38:5bdb)
 	mulhl 27
 	ld de, Data_e10c0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $3
 	call FarCopyVideoData
@@ -1423,7 +1423,7 @@ Func_e1da5: ; e1da5 (38:5da5)
 	cp $5
 	jp nc, Func_e1e28
 	read_hl_from_sp_plus $d6
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1434,7 +1434,7 @@ Func_e1da5: ; e1da5 (38:5da5)
 	jp z, Func_e1e0e
 	push bc
 	read_hl_from_sp_plus $d8
-	reg16swap de, hl
+	swap_de_hl
 	ld l, c
 	ld h, $0
 	add hl, hl
@@ -1453,7 +1453,7 @@ Func_e1da5: ; e1da5 (38:5da5)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
 	pop de
@@ -1469,14 +1469,14 @@ Func_e1da5: ; e1da5 (38:5da5)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	add hl, de
 	push hl
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $cc
 	add hl, sp
 	add hl, de
@@ -1490,7 +1490,7 @@ Func_e1e0e: ; e1e0e (38:5e0e)
 	ld l, c
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $ca
 	add hl, sp
 	add hl, de
@@ -1518,7 +1518,7 @@ Func_e1e28: ; e1e28 (38:5e28)
 	ld c, $80
 	ld hl, $c8
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 	jp Func_e1e7d
@@ -1528,7 +1528,7 @@ Func_e1e61: ; e1e61 (38:5e61)
 	ld bc, $880
 	ld hl, $c8
 	add hl, sp
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call FarCall
 Func_e1e7d: ; e1e7d (38:5e7d)
@@ -2107,7 +2107,7 @@ Func_e28c5: ; e28c5 (38:68c5)
 	add hl, de
 	add hl, bc
 	inc hl
-	reg16swap de, hl
+	swap_de_hl
 	ld c, $1
 Func_e2964: ; e2964 (38:6964)
 	ld hl, sp+$3
@@ -2173,7 +2173,7 @@ Func_e2986: ; e2986 (38:6986)
 	decoord 0, 1, wAttrMap
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	ld c, $1
 Func_e29c3: ; e29c3 (38:69c3)
 	ld hl, sp+$2
@@ -2198,7 +2198,7 @@ Func_e29c3: ; e29c3 (38:69c3)
 	pop de
 	ld hl, $14
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	inc c
 	jp Func_e29c3
 
@@ -2776,7 +2776,7 @@ Func_e2cd2: ; e2cd2 (38:6cd2)
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	read_hl_from_sp_plus $10
 	write_hl_to_sp_plus $e
@@ -2793,7 +2793,7 @@ Func_e2cd2: ; e2cd2 (38:6cd2)
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	ld hl, sp+$7
 	ld c, [hl]
@@ -2803,7 +2803,7 @@ Func_e2cd2: ; e2cd2 (38:6cd2)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$74
 	add hl, de
 	ld [hl], c
@@ -2816,7 +2816,7 @@ Func_e2cd2: ; e2cd2 (38:6cd2)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6e
 	add hl, de
 	pop de
@@ -2963,7 +2963,7 @@ Func_e2e12: ; e2e12 (38:6e12)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$74
 	add hl, de
 	ld e, [hl]
@@ -2980,7 +2980,7 @@ Func_e2e12: ; e2e12 (38:6e12)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$74
 	add hl, de
 	ld [hl], c
@@ -3045,7 +3045,7 @@ Func_e2e79: ; e2e79 (38:6e79)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$76
 	add hl, de
 	ld e, [hl]
@@ -3057,13 +3057,13 @@ Func_e2e79: ; e2e79 (38:6e79)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$70
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	ld de, $a
 	call DivideHLByDESigned
 	pop de
@@ -3105,7 +3105,7 @@ Func_e2e79: ; e2e79 (38:6e79)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$62
 	add hl, de
 	ld [hl], c
@@ -3116,7 +3116,7 @@ Func_e2e79: ; e2e79 (38:6e79)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$62
 	add hl, de
 	ld e, [hl]
@@ -3131,7 +3131,7 @@ Func_e2e79: ; e2e79 (38:6e79)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$62
 	add hl, de
 	ld de, $1
@@ -3181,7 +3181,7 @@ Func_e2f7b: ; e2f7b (38:6f7b)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$62
 	add hl, de
 	ld c, [hl]
@@ -3197,7 +3197,7 @@ Func_e2f7b: ; e2f7b (38:6f7b)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$62
 	add hl, de
 	ld a, [hl]
@@ -3264,7 +3264,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$62
 	add hl, de
 	ld a, [hl]
@@ -3287,7 +3287,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$64
 	add hl, de
 	ld a, [hl]
@@ -3312,7 +3312,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$64
 	add hl, de
 	ld a, [hl]
@@ -3337,7 +3337,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$64
 	add hl, de
 	ld a, [hl]
@@ -3744,7 +3744,7 @@ Func_e3322: ; e3322 (38:7322)
 	add hl, hl
 	add hl, hl
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	call CompareHLtoDE
@@ -3772,22 +3772,22 @@ Data_e336e:
 Func_e3379: ; e3379 (38:7379)
 	add sp, -$2e
 	ld hl, sp+$21
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e334d
 	ld bc, $b
 	call MemCopy
 	ld hl, sp+$16
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e3358
 	ld bc, $b
 	call MemCopy
 	ld hl, sp+$b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e3363
 	ld bc, $b
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_e336e
 	ld bc, $b
 	call MemCopy
@@ -4224,15 +4224,15 @@ Func_e3635: ; e3635 (38:7635)
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
@@ -4248,15 +4248,15 @@ Func_e3635: ; e3635 (38:7635)
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
@@ -4292,10 +4292,10 @@ Func_e36ad: ; e36ad (38:76ad)
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
@@ -4315,10 +4315,10 @@ Func_e36ad: ; e36ad (38:76ad)
 	ld e, a
 	ld d, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0
@@ -4366,10 +4366,10 @@ Func_e3714:: ; e3714 (38:7714)
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$a
 	ld l, [hl]
 	ld h, $0
@@ -4382,10 +4382,10 @@ Func_e3714:: ; e3714 (38:7714)
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wBlockdataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld l, [hl]
 	ld h, $0

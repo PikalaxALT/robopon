@@ -223,7 +223,7 @@ Func_60181: ; 60181 (18:4181)
 	jp z, Func_601a6
 	ld c, $0
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_6015e
 	jp Func_601b4
@@ -231,7 +231,7 @@ Func_60181: ; 60181 (18:4181)
 Func_601a6: ; 601a6 (18:41a6)
 	ld c, $0
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_6014a
 Func_601b4: ; 601b4 (18:41b4)
@@ -265,12 +265,12 @@ Func_6020a: ; 6020a (18:420a)
 	add hl, sp
 	ld sp, hl
 	ld hl, sp+$7e
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_601e3
 	ld bc, $8
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_601eb
 	ld bc, $6
 	call MemCopy
@@ -323,7 +323,7 @@ Func_60268: ; 60268 (18:4268)
 	call GetSRAMBank
 	ld c, $1
 	ld hl, sp+$5a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_6015e
 	pop bc
@@ -335,7 +335,7 @@ Func_60268: ; 60268 (18:4268)
 	push af
 	ld c, $1
 	ld hl, sp+$5c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_6015e
 	pop af
@@ -352,7 +352,7 @@ Func_60268: ; 60268 (18:4268)
 	read_hl_from_sp_plus $7f
 	ld [hl], a
 	ld hl, sp+$5b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	call LiteralStringInTree
 	pop bc
@@ -374,7 +374,7 @@ Func_60302: ; 60302 (18:4302)
 	push bc
 	ld c, $1
 	ld hl, sp+$5a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_6014a
 	pop bc
@@ -386,7 +386,7 @@ Func_60302: ; 60302 (18:4302)
 	push af
 	ld c, $1
 	ld hl, sp+$5c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_6014a
 	pop af
@@ -407,7 +407,7 @@ Func_60302: ; 60302 (18:4302)
 	inc hl
 	ld [hl], a
 	ld hl, sp+$5b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	call LiteralStringInTree
 	pop bc
@@ -446,7 +446,7 @@ Func_60386: ; 60386 (18:4386)
 	push bc
 	ld c, $1
 	ld hl, sp+$5a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_6014a
 	pop bc
@@ -458,7 +458,7 @@ Func_60386: ; 60386 (18:4386)
 	push af
 	ld c, $1
 	ld hl, sp+$5c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_6014a
 	pop af
@@ -479,7 +479,7 @@ Func_60386: ; 60386 (18:4386)
 	inc hl
 	ld [hl], a
 	ld hl, sp+$5b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	call LiteralStringInTree
 	pop bc
@@ -519,7 +519,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	call GetSRAMBank
 	ld c, $1
 	ld hl, sp+$5a
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $1
 	call Func_6015e
 	pop bc
@@ -531,7 +531,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	push af
 	ld c, $1
 	ld hl, sp+$5c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $23
 	call Func_6015e
 	pop af
@@ -548,7 +548,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	read_hl_from_sp_plus $7f
 	ld [hl], a
 	ld hl, sp+$5b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$d
 	call LiteralStringInTree
 	pop bc
@@ -576,7 +576,7 @@ Func_6048c: ; 6048c (18:448c)
 Func_60499: ; 60499 (18:4499)
 	call ClearSprites
 	ld hl, sp+$7e
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	ld hl, sp+$7d
 	ld [hl], a
@@ -713,16 +713,16 @@ Func_60556: ; 60556 (18:4556)
 	call GetSRAMBank
 	ld c, $1
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $5
 	call Func_6015e
 	ld c, $1
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $5
 	call Func_6014a
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$b
 	call LiteralStringInTree
 	dec hl
@@ -731,11 +731,11 @@ Func_60556: ; 60556 (18:4556)
 Func_605be: ; 605be (18:45be)
 	ld c, $1
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $5
 	call Func_6014a
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$b
 	call LiteralStringInTree
 	dec hl
@@ -751,7 +751,7 @@ Func_605be: ; 605be (18:45be)
 	call GetSRAMBank
 	ld c, $1
 	ld hl, sp+$8
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $5
 	call Func_6015e
 	pop hl
@@ -760,7 +760,7 @@ Func_605fc: ; 605fc (18:45fc)
 	call strcpy
 	ld c, $98
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call Func_6011c
 	call Func_60181
@@ -1069,7 +1069,7 @@ Func_60a23: ; 60a23 (18:4a23)
 	jp nz, Func_60d8c
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $358
 	add hl, sp
 	ld a, [hl]
@@ -1127,7 +1127,7 @@ Func_60abb: ; 60abb (18:4abb)
 Func_60af2: ; 60af2 (18:4af2)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $358
 	add hl, sp
 	ld a, [hl]
@@ -1163,12 +1163,12 @@ Func_60b42: ; 60b42 (18:4b42)
 	read_hl_from_sp_plus $357
 	ld de, $c
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	call CopyFromDEtoHL
 	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $358
 	add hl, sp
 	ld a, [hl]
@@ -1411,7 +1411,7 @@ Func_60c66: ; 60c66 (18:4c66)
 Func_60d07: ; 60d07 (18:4d07)
 	set_farcall_addrs_hli GetRobotInParty
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $358
 	add hl, sp
 	ld a, [hl]
@@ -1445,7 +1445,7 @@ Func_60d07: ; 60d07 (18:4d07)
 	ld [hl], a
 	ld c, $1
 	read_hl_from_sp_plus $357
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2f
 	call Func_6015e
 	jp Func_60d8c
@@ -1453,7 +1453,7 @@ Func_60d07: ; 60d07 (18:4d07)
 Func_60d7b: ; 60d7b (18:4d7b)
 	ld c, $1
 	read_hl_from_sp_plus $357
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $2f
 	call Func_6014a
 Func_60d8c: ; 60d8c (18:4d8c)
@@ -1490,7 +1490,7 @@ Func_60da5: ; 60da5 (18:4da5)
 	push hl
 	ld c, $1
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $c8
 	call Func_6015e
 	pop hl
@@ -1508,7 +1508,7 @@ Func_60da5: ; 60da5 (18:4da5)
 	mulhl $351
 	ld de, (s2_b29f - $351 * $ab) & $ffff
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2
 	ld bc, $351
 	call CopyFromDEtoHL
@@ -1518,7 +1518,7 @@ Func_60da5: ; 60da5 (18:4da5)
 	call GetSRAMBank
 	ld c, $1
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $351
 	call Func_6015e
 Func_60e21: ; 60e21 (18:4e21)
@@ -1528,7 +1528,7 @@ Func_60e24: ; 60e24 (18:4e24)
 	push hl
 	ld c, $1
 	call GetHLAtSPPlus4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $c8
 	call Func_6014a
 	pop hl
@@ -1540,7 +1540,7 @@ Func_60e24: ; 60e24 (18:4e24)
 	jp nc, Func_60e69
 	ld c, $1
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $351
 	call Func_6014a
 	ld bc, $351
@@ -1552,7 +1552,7 @@ Func_60e24: ; 60e24 (18:4e24)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	pop de
 	call CopyFromDEtoHL
 Func_60e69: ; 60e69 (18:4e69)
@@ -1598,7 +1598,7 @@ Func_60e9e: ; 60e9e (18:4e9e)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2a
 	add hl, de
 	ld [hl], c
@@ -1609,7 +1609,7 @@ Func_60e9e: ; 60e9e (18:4e9e)
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2a
 	add hl, de
 	ld e, [hl]
@@ -1638,11 +1638,11 @@ Func_60ef4: ; 60ef4 (18:4ef4)
 	pop af
 	push af
 	ld hl, sp+$7
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	set_farcall_addrs_hli StackGetRobotInParty
 	ld hl, sp+$7
-	reg16swap de, hl
+	swap_de_hl
 	xor a
 	call FarCall
 	ld hl, sp+$7
@@ -1656,7 +1656,7 @@ Func_60f30: ; 60f30 (18:4f30)
 	pop af
 	push af
 	ld hl, sp+$9
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop af
 	inc a
@@ -1760,7 +1760,7 @@ Func_60fa3: ; 60fa3 (18:4fa3)
 	ld d, [hl]
 	ld hl, $c
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$6
 	ld a, [hl]
 	call FarCall
@@ -1783,11 +1783,11 @@ Func_6103f: ; 6103f (18:503f)
 	push bc
 	ld a, c
 	ld hl, sp+$9
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop bc
 	read_hl_from_sp_plus $15
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_61072
@@ -1825,7 +1825,7 @@ Func_61076: ; 61076 (18:5076)
 	jp Func_610d1
 
 Func_610b1: ; 610b1 (18:50b1)
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_60e77
 	ld bc, $a
 	call MemCopy
@@ -1852,7 +1852,7 @@ Func_610df: ; 610df (18:50df)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2a
 	add hl, de
 	ld e, [hl]
@@ -1865,13 +1865,13 @@ Func_610df: ; 610df (18:50df)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$2a
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	call FarCall
 	pop af
 	inc a
@@ -1899,7 +1899,7 @@ Func_61133:: ; 61133
 	jp z, .break
 	set_farcall_addrs_hli Func_4b8ac
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3f
 	call FarCall
 	push af
@@ -2009,7 +2009,7 @@ LoadRobotPaletteSGB: ; 611f7
 	add sp, -$10
 	push de
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_6117c
 	ld bc, $f
 	call MemCopy
@@ -2026,7 +2026,7 @@ Func_61211: ; 61211 (18:5211)
 	add hl, hl
 	ld de, Palettes_6118b
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -2037,7 +2037,7 @@ Func_61211: ; 61211 (18:5211)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$5
 	add hl, de
 	ld [hl], c
@@ -2061,7 +2061,7 @@ Func_61248: ; 61248 (18:5248)
 	add hl, hl
 	ld de, Palettes_6118b
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -2072,7 +2072,7 @@ Func_61248: ; 61248 (18:5248)
 	ld l, a
 	ld h, $0
 	add hl, hl
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$b
 	add hl, de
 	ld [hl], c
@@ -2254,7 +2254,7 @@ LoadRobotPaletteCGB: ; 612f4
 	add hl, hl
 	ld de, RobotPicPalettes
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -2286,7 +2286,7 @@ LoadRobotPaletteCGB: ; 612f4
 	add hl, hl
 	ld de, RobotPicPalettes
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -2352,7 +2352,7 @@ Func_61424:: ; 61424 (18:5424)
 	push de
 	push bc
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_61416
 	ld bc, $e
 	call MemCopy
@@ -2681,7 +2681,7 @@ Func_61b92: ; 61b92 (18:5b92)
 	pop de
 	call DrawHPBar
 	ld hl, sp+$b
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$f
 	call Func_63cf3
 	ld hl, sp+$1b
@@ -2707,7 +2707,7 @@ Func_61bcc: ; 61bcc (18:5bcc)
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $19
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, wOverworldTilemapSelector
 	ld l, [hl]
 	ld h, $0
@@ -2746,7 +2746,7 @@ Func_61c21: ; 61c21 (18:5c21)
 	or a
 	jp nz, Func_61c3d
 	read_hl_from_sp_plus $11
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
 	jp nc, Func_61c3d
@@ -2777,7 +2777,7 @@ Func_61c63: ; 61c63 (18:5c63)
 	call WaitVideoTransfer
 	pop bc
 	read_hl_from_sp_plus $f
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $18
 	add hl, bc
 	ld [hl], e
@@ -2791,9 +2791,9 @@ Func_61c63: ; 61c63 (18:5c63)
 	call DoublePushBGMapRegion
 	pop bc
 	read_hl_from_sp_plus $b
-	reg16swap de, hl
+	swap_de_hl
 	add sp, $18
-	reg16swap de, hl
+	swap_de_hl
 	ret
 
 Func_61c90:: ; 61c90
@@ -3019,7 +3019,7 @@ NamingScreen_:: ; 61deb
 	set_farcall_addrs_hli DisplayPartyMenu_
 	xor a
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $3
 	call CompareHLtoDE
 	jp c, .next_
@@ -3045,7 +3045,7 @@ NamingScreen_:: ; 61deb
 	set_farcall_addrs_hli Func_14d93
 	ld hl, $0
 	call FarCall
-	reg16swap de, hl
+	swap_de_hl
 	ld a, e
 	dec a
 	or d
@@ -3060,7 +3060,7 @@ NamingScreen_:: ; 61deb
 	ret
 
 Func_61e5b:: ; 61e5b
-	reg16swap de, hl
+	swap_de_hl
 	ld l, e
 	ld h, d
 	inc hl
@@ -3674,7 +3674,7 @@ Func_622e9: ; 622e9 (18:62e9)
 	write_hl_to_sp_plus $33
 	set_farcall_addrs_hli Func_7db0
 	ld hl, sp+$14
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$3a
 	ld a, [hl]
 	call FarCall
@@ -3826,12 +3826,12 @@ Func_624af:: ; 624af
 	push af
 	add sp, -$2c
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_62482
 	ld bc, $4
 	call MemCopy
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_62493
 	ld bc, $4
 	call MemCopy
@@ -3907,7 +3907,7 @@ Func_6256a: ; 6256a (18:656a)
 	jp nz, Func_625ab
 	ld c, $18
 	ld hl, sp+$6
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call Func_6011c
 	ld hl, $0
@@ -3917,7 +3917,7 @@ Func_6256a: ; 6256a (18:656a)
 Func_6259a: ; 6259a (18:659a)
 	ld c, $18
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call Func_6011c
 	jp Func_625bd
@@ -3970,7 +3970,7 @@ Func_625bd: ; 625bd (18:65bd)
 	jp nz, Func_6264f
 	ld c, $18
 	ld hl, sp+$4
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, $10e
 	call Func_6011c
 	ld hl, sp+$e
@@ -4010,7 +4010,7 @@ Func_62685: ; 62685 (18:6685)
 	get_party_bot
 	ld de, $8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$10
 	ld l, [hl]
 	ld h, $0
@@ -4023,7 +4023,7 @@ Func_62685: ; 62685 (18:6685)
 	get_party_bot
 	ld de, $8
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$10
 	ld l, [hl]
 	ld h, $0
@@ -5393,7 +5393,7 @@ asm_63ec7:
 	ld h, d
 	call Coord2TileMap
 	pop bc
-	reg16swap de, hl
+	swap_de_hl
 	ld a, l
 	cp $12
 	jp c, Func_63eea

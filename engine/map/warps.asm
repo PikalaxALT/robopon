@@ -25,7 +25,7 @@ LoadWarp:: ; acc8
 	ld l, [hl]
 	ld h, $0
 	call MultiplyHLbyDE
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
 	ld c, l
@@ -89,7 +89,7 @@ LoadWarp:: ; acc8
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wWarpDataPointer
 	add hl, de
 	pop de
@@ -104,7 +104,7 @@ LoadWarp:: ; acc8
 
 CheckWarpTile: ; ad56 (2:6d56)
 	read_hl_from wPlayerStandingTileOffset
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wMapCollisionPointer
 	add hl, de
 	ld a, [hl]
@@ -132,10 +132,10 @@ CheckWarpTile: ; ad56 (2:6d56)
 	add hl, hl
 	add hl, de
 	add hl, bc
-	reg16swap de, hl
+	swap_de_hl
 	read_hl_from wWarpDataPointer
 	add hl, de
-	reg16swap de, hl
+	swap_de_hl
 	ld a, [de]
 	ld [wCurWarpMinX], a
 	ld l, e

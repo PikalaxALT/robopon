@@ -21,7 +21,7 @@ RandomRange:: ; dd67 (3:5d67)
 	push bc
 	push af
 	ld hl, sp+$2
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_dd63
 	ld bc, $4
 	call MemCopy

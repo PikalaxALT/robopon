@@ -61,7 +61,7 @@ Func_85a1d::
 	ld l, [hl]
 	ld h, $0
 	mulhl $3c
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
@@ -176,7 +176,7 @@ Func_85b17:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	reg16swap de, hl
+	swap_de_hl
 	scall PrintTextStandard
 .asm_85b6d ; 85b6d (21:5b6d)
 	pop bc

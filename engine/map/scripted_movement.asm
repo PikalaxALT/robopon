@@ -58,7 +58,7 @@ Func_b44d: ; b44d (2:744d)
 	push bc
 	push bc
 	ld hl, sp+$0
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, Data_b449
 	ld bc, $4
 	call MemCopy
@@ -135,7 +135,7 @@ Func_b4bd: ; b4bd (2:74bd)
 	ld [wFarCallDestBank], a
 	ld bc, $2
 	read_hl_from wMovementDataAddr
-	reg16swap de, hl
+	swap_de_hl
 	ld hl, sp+$4
 	call FarCopyVideoData
 	ld hl, sp+$4
