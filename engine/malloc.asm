@@ -256,6 +256,7 @@ malloc:: ; 17aba (5:7aba)
 	jp .loop
 
 .crash
+IF DEF(LANG_JP)
 	ld l, $12
 	push hl
 	ld c, $14
@@ -278,6 +279,7 @@ malloc:: ; 17aba (5:7aba)
 	xor a
 	call DoublePushBGMapRegion
 	pop bc
+ENDC
 .crash_wait
 	call CheckButton
 	or a
@@ -295,8 +297,10 @@ malloc:: ; 17aba (5:7aba)
 	pop bc
 	ret
 
+IF DEF(LANG_JP)
 Data_17c44: ; 17c44
 	db "ケﾞットハﾞッファー ヌル エラー", $0 ; GET BUFFER FULL ERROR
+ENDC
 
 Func_17c56: ; 17c56
 	ret
@@ -646,13 +650,25 @@ Func_17d7b: ; 17d7b
 	ret
 
 Data_17e6c: ; 17e6c
+IF DEF(LANG_JP)
 	dstr "カウント %d %d"
+ELIF DEF(LANG_EN)
+	dstr "Count %d %d"
+ENDC
 
 Data_17e77: ; 17e77
+IF DEF(LANG_JP)
 	dstr "ナイフﾞ %d カﾞイフﾞ %d"
+ELIF DEF(LANG_EN)
+	dstr "Inside%d Outside%d"
+ENDC
 
 Data_17e88: ; 17e88
+IF DEF(LANG_JP)
 	dstr "サイタﾞイ %d"
+ELIF DEF(LANG_EN)
+	dstr "Max %d"
+ENDC
 
 Func_17e91:: ; 17e91 (5:7e91)
 	call Func_17d7b

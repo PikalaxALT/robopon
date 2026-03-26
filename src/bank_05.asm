@@ -5211,6 +5211,9 @@ Func_17975:: ; 17975
 	ld hl, sp+$2
 	ld [hl], $0
 	ld a, c
+IF DEF(LANG_EN)
+	add $2f
+ENDC
 	ld [de], a
 	inc de
 	jp .asm_17a25
