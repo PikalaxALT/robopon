@@ -4445,7 +4445,9 @@ Func_171ab: ; 171ab (5:71ab)
 	push af
 	push bc
 	add sp, -$20
+IF DEF(LANG_JP)
 	push de
+ENDC
 	ld hl, sp+$28
 	ld a, [hl]
 	cp $1b
@@ -4487,76 +4489,133 @@ Func_171ab: ; 171ab (5:71ab)
 	or a
 	jp nz, .asm_17352
 .asm_17211: ; 17211 (5:7211)
+IF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_55ed2
 	ld c, $0
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
+IF DEF(LANG_EN)
+	pop de
+ENDC
 	jp .asm_17352
 
 .asm_17229: ; 17229 (5:7229)
+IF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_55ed2
 	ld c, $1
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
+IF DEF(LANG_EN)
+	pop de
+ENDC
 	jp .asm_17352
 
 .asm_17241: ; 17241 (5:7241)
+IF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_5601b
 	ld c, $0
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
+IF DEF(LANG_EN)
+	pop de
+ENDC
 	jp .asm_17352
 
 .asm_17259: ; 17259 (5:7259)
+IF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_5601b
 	ld c, $2
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
+IF DEF(LANG_EN)
+	pop de
+ENDC
 	jp .asm_17352
 
 .asm_17271: ; 17271 (5:7271)
+IF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_55f95
 	ld c, $0
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
+IF DEF(LANG_EN)
+	pop de
+ENDC
 	jp .asm_17352
 
 .asm_17289: ; 17289 (5:7289)
+IF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_55f95
 	ld c, $1
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
+IF DEF(LANG_EN)
+	pop de
+ENDC
 	jp .asm_17352
 
 .asm_172a1: ; 172a1 (5:72a1)
+IF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_576c1
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
+IF DEF(LANG_EN)
+	pop de
+ENDC
 	jp .asm_17352
 
 .asm_172b7: ; 172b7 (5:72b7)
+IF DEF(LANG_EN)
+	push de
+ENDC
 	set_farcall_addrs_hli Func_56d87
 	ld hl, sp+$22
 	ld e, [hl]
 	ld hl, sp+$4
 	call FarCall
+IF DEF(LANG_EN)
+	pop de
+ENDC
 	jp .asm_17352
 
 .asm_172cd: ; 172cd (5:72cd)
+IF DEF(LANG_EN)
+	push de
+	ld hl, sp+$25
+	ld a, [hl]
+	ld hl, sp+$4
+	ld [hl], a
+	ld hl, sp+$5
+	ld [hl], e
+ENDC
 	set_farcall_addrs_hli Func_55dd6
 	ld hl, sp+$22
 	ld e, [hl]
