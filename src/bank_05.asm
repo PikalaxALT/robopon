@@ -4166,9 +4166,20 @@ ENDC
 	read_hl_from_sp_plus $e
 	pop de
 	add hl, de
+IF DEF(LANG_JP)
 	call CompareHLtoBC
+ELIF DEF(LANG_EN)
+	ld e, c
+	ld d, b
+	call CompareHLtoDE
+ENDC
 	jp c, .asm_16fee
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus4
+ELIF DEF(LANG_EN)
+	pop hl
+	push hl
+ENDC
 	ld [hl], $8f
 .asm_16fee: ; 16fee (5:6fee)
 IF DEF(LANG_JP)
@@ -4188,7 +4199,12 @@ ENDC
 	ld a, [hl]
 	cp $1f
 	jp z, .asm_17003
+IF DEF(LANG_JP)
 	ld a, c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$4
+	ld a, [hl]
+ENDC
 	call GetSRAMBank
 .asm_17003: ; 17003 (5:7003)
 	ld hl, sp+$3
@@ -4204,7 +4220,11 @@ ENDC
 	cp $1
 	jp nz, .asm_170c4
 	set_farcall_addrs_hli Func_5712f
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus10
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $b
+ENDC
 	push hl
 	read_hl_from_sp_plus $10
 	pop de
@@ -4214,7 +4234,11 @@ ENDC
 
 .asm_17039: ; 17039 (5:7039)
 	set_farcall_addrs_hli Func_56abf
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus10
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $b
+ENDC
 	push hl
 	read_hl_from_sp_plus $10
 	pop de
@@ -4223,7 +4247,11 @@ ENDC
 	jp .asm_170c4
 
 .asm_17054: ; 17054 (5:7054)
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus10
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $b
+ENDC
 	push hl
 	read_hl_from_sp_plus $10
 	pop de
@@ -4234,7 +4262,11 @@ ENDC
 
 .asm_17065: ; 17065 (5:7065)
 	set_farcall_addrs_hli Func_569d9
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus10
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $b
+ENDC
 	push hl
 	read_hl_from_sp_plus $10
 	pop de
@@ -4247,7 +4279,11 @@ ENDC
 	ld a, $3
 	call GetBanks
 	ld c, a
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus10
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $b
+ENDC
 	push hl
 	read_hl_from_sp_plus $10
 	pop de
@@ -4281,7 +4317,11 @@ ENDC
 	set_farcall_addrs_hli Func_681bd
 	read_hl_from_sp_plus $c
 	ld c, l
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus10
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $b
+ENDC
 	ld a, l
 	read_hl_from_sp_plus $e
 	ld e, l

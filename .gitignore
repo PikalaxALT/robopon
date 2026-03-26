@@ -44,3 +44,7 @@ pokecrystal.txt
 *~
 tools/unidasm
 .vscode
+
+# temporary dev state
+build-en.sh
+diff-jp-en.diff
