@@ -127,10 +127,20 @@ ENDC
 	ret
 
 Func_20398: ; 20398 (8:4398)
+IF DEF(LANG_JP)
 	ld c, $5
 	ld e, $14
 	ld hl, $d
 	call Func_20383
+ELIF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_17e95
+	ld c, $14
+	ld hl, $d
+	call FarCall
+	set_farcall_addrs_hli Func_de228
+	ld hl, $0
+	call FarCall
+ENDC
 	ret
 
 Func_203a3: ; 203a3 (8:43a3)
