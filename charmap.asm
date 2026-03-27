@@ -166,6 +166,9 @@
     defchar "\}"
     defchar "~"
 
+	char_def $90
+	defchar "<P:>"
+
 	newcharmap kana
 
 	char_def 1

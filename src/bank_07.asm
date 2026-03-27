@@ -1,6 +1,8 @@
 INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
+
 SECTION "Bank 07", ROMX
+
 Pointers_1c000:: ; 1c000
 	dbw BANK(Data_1c018) - BANK(Pointers_1c000), Data_1c018
 	dbw BANK(Data_1c4fe) - BANK(Pointers_1c000), Data_1c4fe
@@ -20,3 +22,6 @@ Data_1d90f: INCBIN "maps/unknown_1c018/unknown_1d90f.bin.rz"
 Data_1dda1: INCBIN "maps/unknown_1c018/unknown_1dda1.bin.rz"
 Data_1e2bf: INCBIN "maps/unknown_1c018/unknown_1e2bf.bin.rz"
 
+IF DEF(LANG_EN)
+Data_1e7ec_en:: INCBIN "data/unk_1e7ec_en.bin"
+ENDC

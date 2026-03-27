@@ -2,6 +2,27 @@ INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 SECTION "Bank 8 part 2", ROMX
 
+IF DEF(LANG_EN)
+Func_2026f_en:
+	push hl
+	push bc
+	ld a, $37
+	ld [wFarCallDestBank], a
+	ld hl, sp+$0
+	ld bc, $2
+	call FarCopyVideoData
+	ld c, $37
+	pop hl
+	push hl
+	push hl
+	call GetHLAtSPPlus6
+	pop de
+	call strcpy_far
+	pop bc
+	pop bc
+	ret
+ENDC
+
 Func_202f0: ; 202f0 (8:42f0)
 	push hl
 	push de
@@ -71,6 +92,7 @@ Func_2036d: ; 2036d (8:436d)
 	ret
 
 Func_20383: ; 20383 (8:4383)
+IF DEF(LANG_JP)
 	push hl
 	push de
 	push bc
@@ -79,6 +101,29 @@ Func_20383: ; 20383 (8:4383)
 	pop de
 	pop hl
 	call FarCall
+ELIF DEF(LANG_EN)
+	push hl
+	push bc
+	push de
+	set_farcall_addrs_hli Func_17e95
+	pop de
+	pop bc
+	pop hl
+	push hl
+	push bc
+	push de
+	call FarCall
+	set_farcall_addrs_hli Func_de228
+	ld hl, $0
+	call FarCall
+	set_farcall_addrs_hli Func_de3e7
+	pop de
+	pop bc
+	pop hl
+	ld b, $0
+	ld d, $0
+	call FarCall
+ENDC
 	ret
 
 Func_20398: ; 20398 (8:4398)
