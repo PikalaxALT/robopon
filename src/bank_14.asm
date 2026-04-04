@@ -1127,12 +1127,7 @@ Func_5083c: ; 5083c (14:483c)
 	call GetHLAtSPPlus6
 	ld de, $4
 	call DivideHLByDESigned
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
@@ -1162,12 +1157,7 @@ Func_5087e: ; 5087e (14:487e)
 	call GetHLAtSPPlus8
 	ld de, $4
 	call DivideHLByDESigned
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	swap_de_hl
 	ld hl, sp+$3
 	ld l, [hl]
@@ -2618,13 +2608,7 @@ Func_513d6: ; 513d6 (14:53d6)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -2640,13 +2624,7 @@ Func_513fa: ; 513fa (14:53fa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld e, c
@@ -4636,11 +4614,7 @@ Func_52591: ; 52591 (14:6591)
 	and $f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, TypeNames - 5
 	add hl, de
 	write_hl_to_sp_plus $15

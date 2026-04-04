@@ -1190,13 +1190,7 @@ Func_e1c19: ; e1c19 (38:5c19)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	pop de
@@ -1227,13 +1221,7 @@ Func_e1c50: ; e1c50 (38:5c50)
 	ld l, [hl]
 	ld h, $0
 	add hl, de
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	pop de
@@ -1312,13 +1300,7 @@ Func_e1cc4: ; e1cc4 (38:5cc4)
 	pop bc
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	ld e, c
@@ -1445,14 +1427,7 @@ Func_e1da5: ; e1da5 (38:5da5)
 	push de
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 40
 	swap_de_hl
 	ld hl, sp+$6
 	add hl, de
@@ -1461,14 +1436,7 @@ Func_e1da5: ; e1da5 (38:5da5)
 	pop bc
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 40
 	swap_de_hl
 	ld hl, sp+$2
 	add hl, de
@@ -2004,13 +1972,7 @@ Func_e28c5: ; e28c5 (38:68c5)
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	add hl, bc
@@ -2021,13 +1983,7 @@ Func_e28c5: ; e28c5 (38:68c5)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	add hl, bc
@@ -2038,13 +1994,7 @@ Func_e28c5: ; e28c5 (38:68c5)
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0, wAttrMap
 	add hl, de
 	add hl, bc
@@ -2055,13 +2005,7 @@ Func_e28c5: ; e28c5 (38:68c5)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0, wAttrMap
 	add hl, de
 	add hl, bc
@@ -2077,13 +2021,7 @@ Func_e28c5: ; e28c5 (38:68c5)
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	add hl, bc
@@ -2096,13 +2034,7 @@ Func_e28c5: ; e28c5 (38:68c5)
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0, wAttrMap
 	add hl, de
 	add hl, bc
@@ -2145,13 +2077,7 @@ Func_e2986: ; e2986 (38:6986)
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 1
 	add hl, de
 	add hl, bc
@@ -2163,13 +2089,7 @@ Func_e2986: ; e2986 (38:6986)
 	ld hl, sp+$4
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 1, wAttrMap
 	add hl, de
 	add hl, bc
@@ -2941,13 +2861,7 @@ Func_e2e12: ; e2e12 (38:6e12)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $11
@@ -3017,13 +2931,7 @@ Func_e2e79: ; e2e79 (38:6e79)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $11
@@ -3073,13 +2981,7 @@ Func_e2e79: ; e2e79 (38:6e79)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $11
@@ -3271,12 +3173,7 @@ Func_e3010: ; e3010 (38:7010)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld de, -10
 	add hl, de
 	write_hl_to_sp_plus $5c
@@ -3294,12 +3191,7 @@ Func_e3010: ; e3010 (38:7010)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld de, -10
 	add hl, de
 	pop de
@@ -3319,12 +3211,7 @@ Func_e3010: ; e3010 (38:7010)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld de, -10
 	add hl, de
 	pop de
@@ -3344,12 +3231,7 @@ Func_e3010: ; e3010 (38:7010)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld de, -10
 	add hl, de
 	pop de
@@ -3374,12 +3256,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld hl, wTimeSetMonthsTensDigit
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld a, [wTimeSetMonthsOnesDigit]
 	ld e, a
 	ld d, $0
@@ -3390,12 +3267,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld hl, wTimeSetDaysTensDigit
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld a, [wTimeSetDaysOnesDigit]
 	ld e, a
 	ld d, $0
@@ -3414,13 +3286,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $a
@@ -3429,13 +3295,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $b
@@ -3444,13 +3304,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $c
@@ -3459,13 +3313,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $d
@@ -3474,13 +3322,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -3489,13 +3331,7 @@ Func_e3010: ; e3010 (38:7010)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -3513,13 +3349,7 @@ Func_e31b8: ; e31b8 (38:71b8)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $d
@@ -3534,13 +3364,7 @@ Func_e31b8: ; e31b8 (38:71b8)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $11
@@ -3561,13 +3385,7 @@ Func_e31b8: ; e31b8 (38:71b8)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $12
@@ -3579,13 +3397,7 @@ Func_e3222: ; e3222 (38:7222)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $9
@@ -3596,13 +3408,7 @@ Func_e3222: ; e3222 (38:7222)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	inc hl
@@ -3615,13 +3421,7 @@ Func_e3222: ; e3222 (38:7222)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $5
@@ -3632,13 +3432,7 @@ Func_e3222: ; e3222 (38:7222)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $6
@@ -3649,13 +3443,7 @@ Func_e3222: ; e3222 (38:7222)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $7
@@ -3666,13 +3454,7 @@ Func_e3222: ; e3222 (38:7222)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $8
@@ -3739,11 +3521,7 @@ Func_e3322: ; e3322 (38:7322)
 	ld a, $64
 	call FarCall
 	pop hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	swap_de_hl
 	ld l, a
 	ld h, $0
@@ -3799,13 +3577,7 @@ Func_e3379: ; e3379 (38:7379)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -3819,13 +3591,7 @@ Func_e33e6: ; e33e6 (38:73e6)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -3837,13 +3603,7 @@ Func_e3405: ; e3405 (38:7405)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -3879,13 +3639,7 @@ Func_e3433: ; e3433 (38:7433)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -3901,13 +3655,7 @@ Func_e3433: ; e3433 (38:7433)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -3919,13 +3667,7 @@ Func_e348a: ; e348a (38:748a)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -3941,13 +3683,7 @@ Func_e348a: ; e348a (38:748a)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -3959,13 +3695,7 @@ Func_e34c5: ; e34c5 (38:74c5)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -3981,13 +3711,7 @@ Func_e34c5: ; e34c5 (38:74c5)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -4017,13 +3741,7 @@ Func_e350e: ; e350e (38:750e)
 	jp nc, Func_e3613
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -4033,13 +3751,7 @@ Func_e350e: ; e350e (38:750e)
 	jp nz, Func_e35e3
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $9
@@ -4050,13 +3762,7 @@ Func_e350e: ; e350e (38:750e)
 	push bc
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	inc hl
@@ -4068,13 +3774,7 @@ Func_e350e: ; e350e (38:750e)
 	ld [hl], e
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $5
@@ -4084,13 +3784,7 @@ Func_e350e: ; e350e (38:750e)
 	ld [hl], e
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $6
@@ -4100,13 +3794,7 @@ Func_e350e: ; e350e (38:750e)
 	ld [hl], e
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $7
@@ -4116,13 +3804,7 @@ Func_e350e: ; e350e (38:750e)
 	ld [hl], e
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $8

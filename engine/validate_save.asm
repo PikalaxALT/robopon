@@ -25,11 +25,7 @@ CalcSaveChecksum:: ; 79b3 (1:79b3)
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_798b
 	add hl, de
 	ld e, a
@@ -51,12 +47,7 @@ CalcSaveChecksum:: ; 79b3 (1:79b3)
 	ld hl, sp+$9
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld de, Data_7995
 	add hl, de
 	swap_de_hl

@@ -205,13 +205,7 @@ Func_681f5: ; 681f5 (1a:41f5)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -232,13 +226,7 @@ Func_6821b: ; 6821b (1a:421b)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -726,13 +714,7 @@ Func_68580: ; 68580 (1a:4580)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $9
@@ -744,13 +726,7 @@ Func_685f7: ; 685f7 (1a:45f7)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $9
@@ -766,13 +742,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -781,13 +751,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld a, [wc383]
@@ -795,13 +759,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	inc hl
@@ -810,13 +768,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	inc hl
@@ -826,13 +778,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	inc hl
@@ -843,13 +789,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	inc hl
@@ -861,13 +801,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $5
@@ -877,13 +811,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $6
@@ -893,13 +821,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $7
@@ -909,13 +831,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $8
@@ -927,13 +843,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $11
@@ -942,13 +852,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -957,13 +861,7 @@ Func_6860e: ; 6860e (1a:460e)
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -1684,13 +1582,7 @@ Func_68ce2:
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $7
@@ -1707,13 +1599,7 @@ Func_68ce2:
 	ld hl, wc387
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $8
@@ -3652,13 +3538,7 @@ Func_69aba: ; 69aba (1a:5aba)
 	ld a, [hl]
 	ld l, e
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 13
 	add hl, de
 	ld e, c
@@ -5875,13 +5755,7 @@ Func_6ad7e: ; 6ad7e (1a:6d7e)
 	jp nc, Func_6ada6
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -6551,13 +6425,7 @@ Func_6b376: ; 6b376 (1a:7376)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -6578,13 +6446,7 @@ Func_6b376: ; 6b376 (1a:7376)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -6601,13 +6463,7 @@ Func_6b3cb: ; 6b3cb (1a:73cb)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -6625,13 +6481,7 @@ Func_6b3e9: ; 6b3e9 (1a:73e9)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $a
@@ -6647,13 +6497,7 @@ Func_6b40c: ; 6b40c (1a:740c)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -6662,13 +6506,7 @@ Func_6b40c: ; 6b40c (1a:740c)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -6716,13 +6554,7 @@ Func_6b46e: ; 6b46e (1a:746e)
 	jp nc, Func_6b4ae
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -6789,13 +6621,7 @@ Func_6b4e8: ; 6b4e8 (1a:74e8)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $a
@@ -6806,13 +6632,7 @@ Func_6b4e8: ; 6b4e8 (1a:74e8)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $b
@@ -6823,13 +6643,7 @@ Func_6b4e8: ; 6b4e8 (1a:74e8)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $c
@@ -6840,13 +6654,7 @@ Func_6b4e8: ; 6b4e8 (1a:74e8)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $d
@@ -6870,13 +6678,7 @@ GetRobotInPartyd: ; 6b55d (1a:755d)
 	ld hl, sp+$67
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $a
@@ -6892,13 +6694,7 @@ GetRobotInPartyd: ; 6b55d (1a:755d)
 	ld hl, sp+$67
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -6915,13 +6711,7 @@ GetRobotInPartyd: ; 6b55d (1a:755d)
 	ld hl, sp+$67
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -6962,13 +6752,7 @@ Func_6b607: ; 6b607 (1a:7607)
 	ld hl, sp+$67
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $a
@@ -6998,13 +6782,7 @@ Func_6b607: ; 6b607 (1a:7607)
 	ld hl, sp+$6d
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld e, c
@@ -7075,13 +6853,7 @@ Func_6b6d4: ; 6b6d4 (1a:76d4)
 	ld hl, sp+$69
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -7098,13 +6870,7 @@ Func_6b6d4: ; 6b6d4 (1a:76d4)
 	ld hl, sp+$69
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -7130,13 +6896,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -7157,13 +6917,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	ld hl, sp+$67
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld l, [hl]
@@ -7180,13 +6934,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	ld hl, sp+$67
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -7204,13 +6952,7 @@ Func_6b745: ; 6b745 (1a:7745)
 	ld hl, sp+$69
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -7230,13 +6972,7 @@ Func_6b7f6: ; 6b7f6 (1a:77f6)
 	ld hl, sp+$69
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -7257,13 +6993,7 @@ Func_6b81d: ; 6b81d (1a:781d)
 	ld hl, sp+$69
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -7346,13 +7076,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -7369,13 +7093,7 @@ Func_6b83f: ; 6b83f (1a:783f)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -7396,13 +7114,7 @@ Func_6b939: ; 6b939 (1a:7939)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -7423,13 +7135,7 @@ Func_6b96d: ; 6b96d (1a:796d)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -7446,13 +7152,7 @@ Func_6b99e: ; 6b99e (1a:799e)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -7461,13 +7161,7 @@ Func_6b99e: ; 6b99e (1a:799e)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $e
@@ -7476,13 +7170,7 @@ Func_6b99e: ; 6b99e (1a:799e)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $f
@@ -7495,13 +7183,7 @@ Func_6b9e1: ; 6b9e1 (1a:79e1)
 	ld hl, sp+$65
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $a
@@ -7908,13 +7590,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	ld hl, sp+$f
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $6
@@ -7923,13 +7599,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	ld hl, sp+$f
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	inc hl
@@ -7940,13 +7610,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	ld hl, sp+$f
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $5
@@ -7958,13 +7622,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	ld hl, sp+$11
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $7
@@ -7977,13 +7635,7 @@ Func_6bdfa:: ; 6bdfa (1a:7dfa)
 	ld hl, sp+$11
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $8

@@ -1223,13 +1223,7 @@ Func_fc8de: ; fc8de (3f:48de)
 	ld [wFarCallDestBank], a
 	ld l, e
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, Data_d8790
 	add hl, de
 	ld e, c
@@ -1246,13 +1240,7 @@ Func_fc8de: ; fc8de (3f:48de)
 	ld a, [hl]
 	ld l, e
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	ld e, c
@@ -1904,13 +1892,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	ld hl, sp+$12
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, Data_d9048
 	add hl, de
 	add hl, bc
@@ -1926,13 +1908,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	ld hl, sp+$12
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	add hl, bc
@@ -1952,13 +1928,7 @@ Func_fce19: ; fce19 (3f:4e19)
 	ld hl, sp+$12
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0, wAttrMap
 	add hl, de
 	add hl, bc

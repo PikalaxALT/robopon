@@ -663,11 +663,7 @@ Func_891c: ; 891c (2:491c)
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld a, l
 	cpl
 	ld l, a
@@ -681,11 +677,7 @@ Func_891c: ; 891c (2:491c)
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld a, l
 	cpl
 	ld l, a

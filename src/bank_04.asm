@@ -1684,12 +1684,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	ld de, $0
 .asm_10c0a: ; 10c0a (4:4c0a)
 	swap_de_hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	swap_de_hl
 	ld hl, sp+$3
 	add hl, de
@@ -1777,12 +1772,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	jp nc, .asm_10d19
 	ld l, c
 	ld h, b
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	swap_de_hl
 	ld hl, sp+$1
 	add hl, de
@@ -1793,12 +1783,7 @@ Func_10b8a: ; 10b8a (4:4b8a)
 	jp nz, .asm_10d15
 	ld l, c
 	ld h, b
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	swap_de_hl
 	ld hl, sp+$1
 	add hl, de
@@ -1936,12 +1921,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -1950,12 +1930,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -1968,12 +1943,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -1986,12 +1956,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2008,12 +1973,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2032,12 +1992,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2046,12 +2001,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2067,12 +2017,7 @@ Func_10e03: ; 10e03 (4:4e03)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2108,12 +2053,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2122,12 +2062,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2140,12 +2075,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2158,12 +2088,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2180,12 +2105,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2204,12 +2124,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2218,12 +2133,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2239,12 +2149,7 @@ Func_10efa: ; 10efa (4:4efa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus6
 	pop de
@@ -2938,11 +2843,7 @@ Func_115af: ; 115af (4:55af)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	ld e, [hl]
 	ld hl, sp+$1c
@@ -2974,11 +2875,7 @@ Func_115af: ; 115af (4:55af)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	add [hl]
@@ -3011,11 +2908,7 @@ Func_115af: ; 115af (4:55af)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3049,11 +2942,7 @@ Func_115af: ; 115af (4:55af)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3086,11 +2975,7 @@ Func_115af: ; 115af (4:55af)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3117,11 +3002,7 @@ Func_115af: ; 115af (4:55af)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3148,11 +3029,7 @@ Func_115af: ; 115af (4:55af)
 	ld hl, sp+$1d
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3244,11 +3121,7 @@ Func_11872: ; 11872 (4:5872)
 	ld hl, sp+$16
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	ld e, [hl]
 	ld hl, sp+$15
@@ -3279,11 +3152,7 @@ Func_11872: ; 11872 (4:5872)
 	ld hl, sp+$18
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	add [hl]
@@ -3316,11 +3185,7 @@ Func_11872: ; 11872 (4:5872)
 	ld hl, sp+$18
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3355,11 +3220,7 @@ Func_11872: ; 11872 (4:5872)
 	ld hl, sp+$18
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3390,11 +3251,7 @@ Func_11872: ; 11872 (4:5872)
 	ld hl, sp+$16
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3421,11 +3278,7 @@ Func_11872: ; 11872 (4:5872)
 	ld hl, sp+$16
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -3452,11 +3305,7 @@ Func_11872: ; 11872 (4:5872)
 	ld hl, sp+$16
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	add hl, bc
 	inc hl
 	inc hl
@@ -5801,11 +5650,7 @@ Func_12982: ; 12982 (4:6982)
 	ld a, [hl]
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	inc hl
@@ -6031,11 +5876,7 @@ ENDC
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	ld e, [hl]
@@ -6473,11 +6314,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	ld a, [hl]
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	inc hl
@@ -6620,11 +6457,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	ld hl, sp+$e
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	ld e, [hl]
@@ -6642,11 +6475,7 @@ Func_12db3: ; 12db3 (4:6db3)
 	ld hl, sp+$f
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	ld e, [hl]
@@ -7344,11 +7173,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	inc hl
@@ -7373,11 +7198,7 @@ ELIF DEF(LANG_EN)
 ENDC
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	inc hl
@@ -7508,11 +7329,7 @@ ENDC
 	ld hl, sp+$51
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	inc hl
@@ -7566,11 +7383,7 @@ ENDC
 	ld hl, sp+$51
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	inc hl
@@ -7580,12 +7393,7 @@ ENDC
 	and $f
 	ld l, a
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	read_hl_from_sp_plus $50
 	pop de
@@ -7604,11 +7412,7 @@ ENDC
 	ld hl, sp+$4e
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	inc hl
@@ -7670,11 +7474,7 @@ ENDC
 	ld hl, sp+$4e
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, Data_12155
 	add hl, de
 	inc hl
@@ -7684,12 +7484,7 @@ ENDC
 	and $f
 	ld l, a
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	read_hl_from_sp_plus $50
 	inc hl

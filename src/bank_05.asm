@@ -832,13 +832,7 @@ ENDC
 	or a
 	jp z, .asm_15a58
 	read_hl_from_sp_plus $39
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$39
 	add hl, de
@@ -4635,13 +4629,7 @@ ENDC
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -4662,13 +4650,7 @@ ENDC
 	ld hl, sp+$3
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc

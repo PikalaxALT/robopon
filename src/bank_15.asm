@@ -2839,11 +2839,7 @@ Func_5582b: ; 5582b (15:582b)
 	and $f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, $6ef6
 	add hl, de
 	swap_de_hl
@@ -5058,12 +5054,7 @@ Func_56abf:: ; 56abf (15:6abf)
 	ld hl, sp+$f
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld c, l
 	ld b, h
 	ld de, $3

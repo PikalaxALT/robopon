@@ -435,11 +435,7 @@ LoadBlockData: ; 8d2a (2:4d2a)
 	push af
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, BlockDataHeaders
 	add hl, de
 	swap_de_hl

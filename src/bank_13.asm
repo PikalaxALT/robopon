@@ -5219,12 +5219,7 @@ Func_4ea12: ; 4ea12 (13:6a12)
 	ld hl, wTimeSetDecades
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	add hl, bc
 	ld a, [wTimeSetYears]
 	ld e, a

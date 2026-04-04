@@ -2204,13 +2204,7 @@ Func_59ee3: ; 59ee3 (16:5ee3)
 	ld hl, sp+$59
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -2231,13 +2225,7 @@ Func_59f09: ; 59f09 (16:5f09)
 	ld hl, sp+$59
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -5469,11 +5457,7 @@ Func_5bdcc: ; 5bdcc (16:7dcc)
 	and $f
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, $6ef6
 	add hl, de
 	push hl

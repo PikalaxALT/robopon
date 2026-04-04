@@ -4057,13 +4057,7 @@ text_cursor_pos_set:: ; 3a83 (0:3a83)
 	ld hl, wStringDestY
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	ld a, [wStringDestX]

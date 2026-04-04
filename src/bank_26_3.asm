@@ -1016,13 +1016,7 @@ Func_9a8c3:: ; 9a8c3
 	jp nc, .asm_9a989
 	ld l, c
 	ld h, $00
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $0010
@@ -2060,11 +2054,7 @@ Func_9b276:
 	ld [wFarCallDestBank], a
 	ld l, e
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	swap_de_hl
 	read_hl_from wc786
 	add hl, de
@@ -2149,11 +2139,7 @@ Func_9b326::
 	ld [wFarCallDestBank], a
 	ld l, e
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	swap_de_hl
 	read_hl_from wc786
 	add hl, de

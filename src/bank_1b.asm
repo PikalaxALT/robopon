@@ -227,13 +227,7 @@ Func_6c11d:: ; 6c11d (1b:411d)
 	jp nc, .next
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$31
 	add hl, de
@@ -1872,11 +1866,7 @@ Func_6ce61: ; 6ce61 (1b:4e61)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, $4
 	call DivideHLByDESigned
 	ld c, l
@@ -2302,13 +2292,7 @@ Func_6d195: ; 6d195 (1b:5195)
 	ld d, $0
 	inc de
 	add hl, de
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	pop de
@@ -6752,13 +6736,7 @@ Func_6f1eb:: ; 6f1eb (1b:71eb)
 	push af
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $12
@@ -6781,13 +6759,7 @@ Func_6f1eb:: ; 6f1eb (1b:71eb)
 	ld b, $0
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -7021,13 +6993,7 @@ Func_6f3fb: ; 6f3fb (1b:73fb)
 	ld b, $0
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -7053,13 +7019,7 @@ Func_6f441: ; 6f441 (1b:7441)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -7082,13 +7042,7 @@ Func_6f467: ; 6f467 (1b:7467)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc
@@ -7100,13 +7054,7 @@ Func_6f467: ; 6f467 (1b:7467)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc

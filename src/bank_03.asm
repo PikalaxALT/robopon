@@ -3738,13 +3738,7 @@ IF DEF(LANG_EN)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
@@ -3935,13 +3929,7 @@ IF DEF(LANG_EN)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$4
 	add hl, de
@@ -4215,13 +4203,7 @@ IF DEF(LANG_EN)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$4
 	add hl, de

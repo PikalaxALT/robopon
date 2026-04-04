@@ -1732,13 +1732,7 @@ Func_5cf2f: ; 5cf2f (17:4f2f)
 	jp nc, Func_5cf73
 	ld l, c
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	push hl
 	call GetHLAtSPPlus4
 	ld de, $17

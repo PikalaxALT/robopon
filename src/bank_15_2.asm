@@ -279,12 +279,7 @@ Func_5712f:: ; 5712f (15:712f)
 	push af
 	ld l, a
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	ld hl, Data_571bb
 	push hl

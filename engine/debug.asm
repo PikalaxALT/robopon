@@ -3953,12 +3953,7 @@ Func_bd92f:
 	jp nc, .asm_bdc58
 	push af
 	read_hl_from_sp_plus $12
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	write_hl_to_sp_plus $12
 	ld e, a
 	ld d, $0
@@ -4031,12 +4026,7 @@ Func_bd92f:
 	jp nc, .asm_bdce8
 	push af
 	read_hl_from_sp_plus $12
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	write_hl_to_sp_plus $12
 	ld e, a
 	ld d, $0

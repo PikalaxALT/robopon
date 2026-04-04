@@ -72,6 +72,7 @@ class Instruction:
     operands: list[str]
     verbose: bool = dataclasses.field(default=True)
     label: str | None = dataclasses.field(default=None)
+    comment: str = dataclasses.field(default="")
 
     def __str__(self):
         if self.operands:
@@ -80,12 +81,13 @@ class Instruction:
         else:
             insn = self.mnemonic
         label = f"{self.label}:\n" if self.label else ""
+        comment = ""
         if self.verbose:
             bank, addr = rom_offset_to_addr(self.offset)
             raw = " ".join(f"{x:02X}" for x in self.raw)
-            comment = f" ; {self.offset:05X} ({bank:02x}:{addr:04x}) -> {raw}"
-        else:
-            comment = ""
+            comment += f" ; {self.offset:05X} ({bank:02x}:{addr:04x}) -> {raw}"
+        if self.comment:
+            comment += f" ; {self.comment}"
         return f"{label}\t{insn}{comment}"
 
     def __getitem__(self, index: SupportsIndex) -> str:
@@ -314,7 +316,7 @@ class Namespace(argparse.Namespace):
             del instructions[index:]
         return value
 
-    def handle_macros(self, instructions: list[Instruction]):
+    def handle_stack_macros(self, instructions: list[Instruction]):
         # we will be modifying instructions in-place, so can't iterate over it pythonically
         i = -1
         while (i := i + 1) < len(instructions):
@@ -390,6 +392,108 @@ class Namespace(argparse.Namespace):
                     label = "." + label.rsplit(".", 1)[-1]
                 insn.label = label
 
+    def handle_mulhl_macro(
+        self, instructions: list[Instruction], index: int
+    ) -> int | None:
+        end = index
+        result = 0
+        if instructions[index].raw == b"\x29":  # add hl, hl
+            de_pos = None
+            bc_pos = None
+            hl_pos = 0
+            # Look earlier for `ld e, l / ld d, h`
+            if (
+                index >= 2
+                and instructions[index - 2].raw == b"\x5d"
+                and instructions[index - 1].raw == b"\x54"
+            ):
+                end = index = index - 2
+            # Scan forward for the end
+            while True:
+                if instructions[end].raw in (b"\x09", b"\x19", b"\x29"):
+                    # add hl, bc | add hl, de | add hl, hl
+                    if instructions[end].raw == b"\x29":
+                        hl_pos += 1
+                    end += 1
+                elif (
+                    instructions[end].raw == b"\x5d"
+                    and instructions[end + 1].raw == b"\x54"
+                    and de_pos is None
+                    and bc_pos is None
+                ):
+                    # ld e, l / ld d, h
+                    de_pos = hl_pos
+                    end += 2
+                elif (
+                    instructions[end].raw == b"\x4d"
+                    and instructions[end + 1].raw == b"\x44"
+                    and bc_pos is None
+                ):
+                    # ld c, l / ld b, h
+                    bc_pos = hl_pos
+                    end += 2
+                else:
+                    break
+            result = 2**hl_pos
+            if de_pos is not None:
+                result += 2**de_pos
+            if bc_pos is not None:
+                result += 2**bc_pos
+        return index, end, result
+
+    def is_regswap_de_hl_macro(self, instructions: list[Instruction], index: int):
+        # push de | push hl | pop de | pop hl
+        return (
+            instructions[index].raw == b"\xd5"
+            and instructions[index + 1].raw == b"\xe5"
+            and instructions[index + 2].raw == b"\xd1"
+            and instructions[index + 3].raw == b"\xe1"
+        )
+
+    def handle_combining_macros(self, instructions: list[Instruction]):
+        """Function to combine multiple well-formed instructions into one"""
+        # we will be modifying instructions in-place, so can't iterate over it pythonically
+        i = -1
+        while (i := i + 1) < len(instructions):
+            # mulhl -- Hudson pattern for 16-bit multiplication by a constant
+            new_i, end, mul = self.handle_mulhl_macro(instructions, i)
+            if end > new_i and mul > 2:
+                mnemonic = "mulhl"
+                operands = [str(mul)]
+            elif self.is_regswap_de_hl_macro(instructions, i):
+                new_i = i
+                end = i + 4
+                mnemonic = "swap_de_hl"
+                operands = []
+            else:
+                continue
+            old_instructions = instructions[new_i:end]
+            new_instruction = Instruction(
+                offset=old_instructions[0].offset,
+                mnemonic=mnemonic,
+                operands=operands,
+                raw=b"".join(insn.raw for insn in old_instructions),
+                verbose=old_instructions[0].verbose,
+                label=old_instructions[0].label,
+            )
+            del instructions[new_i:end]
+            instructions.insert(
+                new_i,
+                new_instruction,
+            )
+            i = new_i
+
+    def dumps(self, instructions: list[Instruction]):
+        result = ""
+        for i, insn in enumerate(instructions):
+            result += str(insn) + "\n"
+            if insn.mnemonic == "ret" and len(insn) == 1:
+                if i != len(instructions) - 1:
+                    warnings.warn(f"Encountered ret at ${insn.offset:x}, truncating")
+                break
+        else:
+            warnings.warn(f"Reached ${insn.offset + len(insn.raw)} without a ret")
+
     def dump(self, instructions: list[Instruction]):
         if self.outfile is None:
             outfile = sys.stdout
@@ -416,8 +520,9 @@ def check_md5sum(rom: pathlib.Path, target: str):
 def main():
     args = Namespace.from_cli()
     instructions = args.disassemble()
-    args.handle_macros(instructions)
+    args.handle_stack_macros(instructions)
     args.apply_symtab(instructions)
+    args.handle_combining_macros(instructions)
     args.dump(instructions)
 
 

@@ -1964,12 +1964,7 @@ Func_30fae: ; 30fae (c:4fae)
 	ld hl, sp+$2
 	call GetPart
 	read_hl_from_sp_plus $19
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
@@ -2993,11 +2988,7 @@ Func_3178a: ; 3178a (c:578a)
 	ld hl, sp+$35
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 5
 	ld de, TypeNames
 	add hl, de
 	swap_de_hl
@@ -3028,12 +3019,7 @@ Func_3178a: ; 3178a (c:578a)
 	push af
 	ld l, a
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	ld hl, Data_31940
 	push hl
@@ -3128,12 +3114,7 @@ Func_31869: ; 31869 (c:5869)
 	ld hl, sp+$23
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld c, l
 	ld b, h
 	ld de, $3
@@ -4038,12 +4019,7 @@ Func_324f5: ; 324f5 (c:64f5)
 	call DivideHLByDESigned
 	call WriteHLToSPPlus8
 	call GetHLAtSPPlus8
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus8
 	pop de
@@ -6791,12 +6767,7 @@ Func_33ac0: ; 33ac0 (c:7ac0)
 	call GetHLAtSPPlus6
 	push hl
 	call GetHLAtSPPlus6
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	pop de
 	add hl, de
 	swap_de_hl
@@ -6869,12 +6840,7 @@ Func_33b48: ; 33b48 (c:7b48)
 	ld h, $0
 	ld de, $a
 	call DivideHLByDESigned
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	ld c, l
 	ld b, h
 	call GetHLAtSPPlus6
@@ -6903,12 +6869,7 @@ Func_33b8d: ; 33b8d (c:7b8d)
 	call WriteHLToSPPlus4
 Func_33b9b: ; 33b9b (c:7b9b)
 	call GetHLAtSPPlus4
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 10
 	push hl
 	call GetHLAtSPPlus8
 	pop de

@@ -64,13 +64,7 @@ BackUpTileMapRectangle:: ; 2124
 	ld a, l
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	ld e, c
@@ -98,13 +92,7 @@ BackUpAttrMapRectangle:: ; 2152
 	ld a, l
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0, wAttrMap
 	add hl, de
 	ld e, c
@@ -188,13 +176,7 @@ RestoreTileMapRectangle:: ; 21ca
 	ld a, l
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0
 	add hl, de
 	ld e, c
@@ -222,13 +204,7 @@ RestoreAttrMapRectangle:: ; 21f8
 	ld a, l
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0, wAttrMap
 	add hl, de
 	ld e, c

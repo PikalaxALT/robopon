@@ -4129,13 +4129,7 @@ Func_62793: ; 62793 (18:6793)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	ld de, $10
@@ -4156,13 +4150,7 @@ Func_627b9: ; 627b9 (18:67b9)
 	ld hl, sp+$1
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	ld de, wc347
 	add hl, de
 	add hl, bc

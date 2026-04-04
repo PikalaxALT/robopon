@@ -133,13 +133,7 @@ Func_233ac: ; 233ac (8:73ac)
 	jp nc, Func_233d6
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$1
 	add hl, de

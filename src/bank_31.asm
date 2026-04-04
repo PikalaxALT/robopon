@@ -154,13 +154,7 @@ Func_c7109:: ; c7109 (31:7109)
 	push hl
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, hl
-	add hl, de
+	mulhl 20
 	decoord 0, 0, wAttrMap
 	add hl, de
 	ld e, c
