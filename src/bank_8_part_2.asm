@@ -1234,7 +1234,11 @@ Func_20965: ; 20965
 	push hl
 	call Func_20398
 	set_farcall_addrs_hli PrintMapText_
+IF DEF(LANG_JP)
 	ld c, $a0 | BANK(Pointers_202ea)
+ELIF DEF(LANG_EN)
+	ld bc, $0137
+ENDC
 	ld de, Pointers_202ea
 	ld hl, $10e
 	call FarCall
@@ -1396,7 +1400,11 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 	jp nz, .asm_20b38
 	call Func_20398
 	set_farcall_addrs_hli PrintMapText_
+IF DEF(LANG_JP)
 	ld c, $a0 | BANK(Pointers_20199)
+ELIF DEF(LANG_EN)
+	ld bc, $0537
+ENDC
 	ld de, Pointers_20199
 	ld hl, $10e
 	call FarCall
@@ -1417,7 +1425,11 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 	jp nz, .asm_20b67
 	call Func_20398
 	set_farcall_addrs_hli PrintMapText_
+IF DEF(LANG_JP)
 	ld c, $a0 | BANK(Pointers_20199)
+ELIF DEF(LANG_EN)
+	ld bc, $0537
+ENDC
 	ld de, Pointers_20199
 	ld hl, $10e
 	call FarCall
@@ -1443,7 +1455,11 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 .is_magnet
 	call Func_20398
 	set_farcall_addrs_hli PrintMapText_
+IF DEF(LANG_JP)
 	ld c, $a0 | BANK(Pointers_201b1)
+ELIF DEF(LANG_EN)
+	ld bc, $0537
+ENDC
 	ld de, Pointers_201b1
 	ld hl, $10e
 	call FarCall
@@ -1451,6 +1467,11 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 
 .asm_20ba3: ; 20ba3 (8:4ba3)
 	call Func_20398
+IF DEF(LANG_EN)
+	ld de, Data_20c99
+	ld hl, $010e
+	call PlaceStringDEatCoordHL
+ENDC
 	ld hl, sp+$1e
 	swap_de_hl
 	ld hl, sp+$0
@@ -1459,9 +1480,16 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 	swap_de_hl
 	ld hl, $10e
 	call PlaceStringDEatCoordHL
+IF DEF(LANG_JP)
 	ld de, Data_20c99
 	ld hl, $110
 	call PlaceStringDEatCoordHL
+ELIF DEF(LANG_EN)
+	ld hl, Data_20cce_en
+	push hl
+	call printf
+	pop bc
+ENDC
 	ld l, $12
 	push hl
 	ld c, $14
@@ -1526,6 +1554,23 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 	ld de, $1311
 	ld hl, $d
 	call FarCall
+IF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_667d
+	ld bc, $8302
+	ld de, $d
+	ld hl, $d
+	call FarCall
+	set_farcall_addrs_hli Func_667d
+	ld bc, $8402
+	ld de, $100d
+	ld hl, $010d
+	call FarCall
+	set_farcall_addrs_hli Func_667d
+	ld bc, $8502
+	ld de, $110d
+	ld hl, $110d
+	call FarCall
+ENDC
 	ld l, $5
 	push hl
 	ld c, $14
@@ -1542,7 +1587,14 @@ Battle_ItemMenu_AButtonReactor: ; 20ab0
 	ret
 
 Data_20c99: ; 20c99
+IF DEF(LANG_JP)
 	dstr "(を つかいますか?)"
+ELIF DEF(LANG_EN)
+	dstr "Will you use"
+
+Data_20cce_en:
+	dstr "?"
+ENDC
 
 Data_20ca5: ; 20ca5
 	db $00, $00, $00, $00, $ff, $ff, $04, $00, $04, $00, $ff, $ff, $00, $00, $03
