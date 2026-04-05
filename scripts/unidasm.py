@@ -4,13 +4,20 @@ import argparse
 import atexit
 import dataclasses
 import hashlib
+import logging
 import pathlib
 import re
 import subprocess
 import sys
 import warnings
+from collections.abc import Callable
 from functools import cached_property
 from typing import Literal, SupportsIndex, get_args
+
+logging.basicConfig(
+    format="[%(asctime)s] %(name)s: %(levelname)s: %(message)s", level=logging.INFO
+)
+log = logging.getLogger("unidasm")
 
 SymbolsDict = dict[str, dict[tuple[int, int], str]]
 SupportedROMsLiteral = Literal["sun", "star", "sun-en"]
@@ -43,12 +50,15 @@ REGION_LIMITS = {
 @dataclasses.dataclass
 class Instruction:
     addr_operand = {
+        0x01: 1,  # ld bc, n16
         0x08: 0,  # ld [a16], sp
+        0x11: 1,  # ld de, n16
         0x18: 0,  # jr r8
         0x20: 1,  # jr nz, r8
+        0x21: 1,  # ld hl, n16
         0x28: 1,  # jr z, r8
         0x30: 1,  # jr nc, r8
-        0x31: 1,  # ld sp, d16
+        0x31: 1,  # ld sp, n16
         0x38: 1,  # jr c, r8
         0xC2: 1,  # jp nz, a16
         0xC3: 0,  # jp a16
@@ -104,14 +114,21 @@ class Instruction:
 
     def get_addr_operand(self):
         if self.has_addr_macro():
-            return int(self[0].strip("$[]"), 16)
+            return rgbds_str_to_int(self[0].strip("[]"))
         if self.has_nonaddr_macro():
             return None
         if (oper_i := Instruction.addr_operand.get(self.raw[0])) is not None:
-            return int(self[oper_i].strip("$[]"), 16)
+            return rgbds_str_to_int(self[oper_i].strip("[]"))
 
     def __len__(self):
         return len(self.raw)
+
+
+def rgbds_str_to_int(x: str):
+    if x.startswith("$"):
+        return int(x[1:], 16)
+    else:  # assume base 10
+        return int(x)
 
 
 def get_region(addr: int) -> str | None:
@@ -177,16 +194,44 @@ class Namespace(argparse.Namespace):
     _unidasm: pathlib.Path = ROOT_DIR / "tools" / "unidasm"
     outfile: pathlib.Path = None
     no_comments: bool = False
+    no_trim: bool = False
 
     @classmethod
     def from_cli(cls, args: list[str] | None = None):
         parser = argparse.ArgumentParser()
-        parser.add_argument("version", choices=SUPPORTED_ROMS)
-        parser.add_argument("start", type=any_int)
-        parser.add_argument("end", type=any_int)
-        parser.add_argument("-o", "--outfile", type=pathlib.Path)
-        parser.add_argument("--unidasm", dest="_unidasm", type=pathlib.Path)
-        parser.add_argument("-q", dest="no_comments", action="store_true")
+        parser.add_argument(
+            "version",
+            choices=SUPPORTED_ROMS,
+            help="ROM version, used to find the baserom and symtab",
+        )
+        parser.add_argument(
+            "start", type=any_int, help="Start offset in the flat ROM image, inclusive"
+        )
+        parser.add_argument(
+            "end", type=any_int, help="End offset in the flat ROM image, exclusive"
+        )
+        parser.add_argument(
+            "-o", "--outfile", type=pathlib.Path, help="Output file path"
+        )
+        parser.add_argument(
+            "--unidasm",
+            dest="_unidasm",
+            type=pathlib.Path,
+            help="Path to the unidasm executable",
+        )
+        parser.add_argument(
+            "-q",
+            dest="no_comments",
+            action="store_true",
+            help="Suppress address and raw bytes comments",
+        )
+        parser.add_argument(
+            "-T",
+            "--no-trim",
+            dest="no_trim",
+            action="store_true",
+            help="Suppress trimming past the first absolute ret instruction",
+        )
         return parser.parse_args(args, cls())
 
     @property
@@ -349,6 +394,17 @@ class Namespace(argparse.Namespace):
             insn.operands = [f"${{:0{chomp}x}}".format(value)]
             insn.raw += value.to_bytes(chomp, "little")
 
+    def trim_to_ret(self, instructions: list[Instruction]):
+        if self.no_trim:
+            return
+        for i, insn in enumerate(instructions):
+            if insn.mnemonic == "ret" and len(insn) == 1:
+                if i != len(instructions) - 1:
+                    warnings.warn(f"Encountered ret at ${insn.offset:x}, truncating")
+                break
+        else:
+            warnings.warn(f"Reached ${insn.offset + len(insn.raw)} without a ret")
+
     def apply_symtab(self, instructions: list[Instruction]):
         # 2-pass operation
         # first pass: find all addresses and update the symbols dict
@@ -373,11 +429,23 @@ class Namespace(argparse.Namespace):
                     op_bank = 0
                 if (op_bank, addr_operand) not in self.symbols[region]:
                     if region == "ROM":
+                        # ld r16, n16 --> suppress unlikely targets
+                        if (
+                            insn.raw[0] in (0x01, 0x11, 0x21, 0x31)
+                            and addr_operand <= 0x800
+                        ):
+                            continue
                         op_offset = addr_to_rom_offset(op_bank, addr_operand)
                         name = f"label_{op_offset:04x}"
                     else:
                         name = f"{region[0].lower()}{addr_operand:04x}"
                     self.symbols[region][(op_bank, addr_operand)] = name
+                    log.info(
+                        "soft adding symbol %s at %02x:%04x",
+                        name,
+                        op_bank,
+                        addr_operand,
+                    )
                 else:
                     name = self.symbols[region][(op_bank, addr_operand)]
                 oper_i = Instruction.addr_operand[insn.raw[0]]
@@ -394,105 +462,135 @@ class Namespace(argparse.Namespace):
 
     def handle_mulhl_macro(
         self, instructions: list[Instruction], index: int
-    ) -> int | None:
+    ) -> tuple[int, int, str] | None:
+        if instructions[index].raw != b"\x29":  # add hl, hl
+            return
         end = index
-        result = 0
-        if instructions[index].raw == b"\x29":  # add hl, hl
-            de_pos = None
-            bc_pos = None
-            hl_pos = 0
-            # Look earlier for `ld e, l / ld d, h`
-            if (
-                index >= 2
-                and instructions[index - 2].raw == b"\x5d"
-                and instructions[index - 1].raw == b"\x54"
+        multiplicand = 0
+        de_pos = None
+        bc_pos = None
+        hl_pos = 0
+        # Look earlier for `ld e, l / ld d, h`
+        if (
+            index >= 2
+            and instructions[index - 2].raw == b"\x5d"
+            and instructions[index - 1].raw == b"\x54"
+        ):
+            end = index = index - 2
+        # Scan forward for the end
+        while True:
+            if instructions[end].raw in (b"\x09", b"\x19", b"\x29"):
+                # add hl, bc | add hl, de | add hl, hl
+                if instructions[end].raw == b"\x29":
+                    hl_pos += 1
+                end += 1
+            elif (
+                instructions[end].raw == b"\x5d"
+                and instructions[end + 1].raw == b"\x54"
+                and de_pos is None
+                and bc_pos is None
             ):
-                end = index = index - 2
-            # Scan forward for the end
-            while True:
-                if instructions[end].raw in (b"\x09", b"\x19", b"\x29"):
-                    # add hl, bc | add hl, de | add hl, hl
-                    if instructions[end].raw == b"\x29":
-                        hl_pos += 1
-                    end += 1
-                elif (
-                    instructions[end].raw == b"\x5d"
-                    and instructions[end + 1].raw == b"\x54"
-                    and de_pos is None
-                    and bc_pos is None
-                ):
-                    # ld e, l / ld d, h
-                    de_pos = hl_pos
-                    end += 2
-                elif (
-                    instructions[end].raw == b"\x4d"
-                    and instructions[end + 1].raw == b"\x44"
-                    and bc_pos is None
-                ):
-                    # ld c, l / ld b, h
-                    bc_pos = hl_pos
-                    end += 2
-                else:
-                    break
-            result = 2**hl_pos
-            if de_pos is not None:
-                result += 2**de_pos
-            if bc_pos is not None:
-                result += 2**bc_pos
-        return index, end, result
+                # ld e, l / ld d, h
+                de_pos = hl_pos
+                end += 2
+            elif (
+                instructions[end].raw == b"\x4d"
+                and instructions[end + 1].raw == b"\x44"
+                and bc_pos is None
+            ):
+                # ld c, l / ld b, h
+                bc_pos = hl_pos
+                end += 2
+            else:
+                break
+        multiplicand = 2**hl_pos
+        if de_pos is not None:
+            multiplicand += 2**de_pos
+        if bc_pos is not None:
+            multiplicand += 2**bc_pos
+        if multiplicand >= 3:  # use for 3x or more
+            return index, end, str(multiplicand)
 
     def is_regswap_de_hl_macro(self, instructions: list[Instruction], index: int):
         # push de | push hl | pop de | pop hl
-        return (
+        if (
             instructions[index].raw == b"\xd5"
             and instructions[index + 1].raw == b"\xe5"
             and instructions[index + 2].raw == b"\xd1"
             and instructions[index + 3].raw == b"\xe1"
-        )
+        ):
+            return index, index + 4
+
+    def is_set_farcall_addrs_hli_macro(
+        self, instructions: list[Instruction], index: int
+    ):
+        if (
+            instructions[index].mnemonic == "ld"
+            and instructions[index].operands == ["hl", "wFarCallDestBank"]
+            and instructions[index + 1].mnemonic == "ld"
+            and instructions[index + 1].operands[0] == "[hl]"
+            and instructions[index + 2].mnemonic == "inc"
+            and instructions[index + 2].operands[0] == "hl"
+            and instructions[index + 3].mnemonic == "ld"
+            and instructions[index + 3].operands[0] == "[hl]"
+            and instructions[index + 4].mnemonic == "inc"
+            and instructions[index + 4].operands[0] == "hl"
+            and instructions[index + 5].mnemonic == "ld"
+            and instructions[index + 5].operands[0] == "[hl]"
+        ):
+            bank = rgbds_str_to_int(instructions[index + 1].operands[1])
+            addr = (
+                rgbds_str_to_int(instructions[index + 5].operands[1]) << 8
+            ) | rgbds_str_to_int(instructions[index + 3].operands[1])
+            if (bank, addr) not in self.symbols["ROM"]:
+                op_offset = addr_to_rom_offset(bank, addr)
+                name = f"Func_{op_offset:x}"
+                self.symbols["ROM"][(bank, addr)] = name
+                log.info(
+                    "soft adding symbol %s at %02x:%04x",
+                    name,
+                    bank,
+                    addr,
+                )
+            else:
+                name = self.symbols["ROM"][(bank, addr)]
+            return index, index + 6, name
+
+    combining_macros: dict[
+        str, Callable[["Namespace", list[Instruction], int], tuple[int, int, str]]
+    ] = {
+        "mulhl": handle_mulhl_macro,
+        "swap_de_hl": is_regswap_de_hl_macro,
+        "set_farcall_addrs_hli": is_set_farcall_addrs_hli_macro,
+    }
 
     def handle_combining_macros(self, instructions: list[Instruction]):
         """Function to combine multiple well-formed instructions into one"""
         # we will be modifying instructions in-place, so can't iterate over it pythonically
         i = -1
         while (i := i + 1) < len(instructions):
-            # mulhl -- Hudson pattern for 16-bit multiplication by a constant
-            new_i, end, mul = self.handle_mulhl_macro(instructions, i)
-            if end > new_i and mul > 2:
-                mnemonic = "mulhl"
-                operands = [str(mul)]
-            elif self.is_regswap_de_hl_macro(instructions, i):
-                new_i = i
-                end = i + 4
-                mnemonic = "swap_de_hl"
-                operands = []
-            else:
-                continue
-            old_instructions = instructions[new_i:end]
-            new_instruction = Instruction(
-                offset=old_instructions[0].offset,
-                mnemonic=mnemonic,
-                operands=operands,
-                raw=b"".join(insn.raw for insn in old_instructions),
-                verbose=old_instructions[0].verbose,
-                label=old_instructions[0].label,
-            )
-            del instructions[new_i:end]
-            instructions.insert(
-                new_i,
-                new_instruction,
-            )
-            i = new_i
+            for mnemonic, func in self.combining_macros.items():
+                if result := func(self, instructions, i):
+                    new_i, end, *operands = result
+                    old_instructions = instructions[new_i:end]
+                    new_instruction = Instruction(
+                        offset=old_instructions[0].offset,
+                        mnemonic=mnemonic,
+                        operands=operands,
+                        raw=b"".join(insn.raw for insn in old_instructions),
+                        verbose=old_instructions[0].verbose,
+                        label=old_instructions[0].label,
+                    )
+                    del instructions[new_i:end]
+                    instructions.insert(
+                        new_i,
+                        new_instruction,
+                    )
+                    i = new_i
+                    break
 
     def dumps(self, instructions: list[Instruction]):
-        result = ""
-        for i, insn in enumerate(instructions):
-            result += str(insn) + "\n"
-            if insn.mnemonic == "ret" and len(insn) == 1:
-                if i != len(instructions) - 1:
-                    warnings.warn(f"Encountered ret at ${insn.offset:x}, truncating")
-                break
-        else:
-            warnings.warn(f"Reached ${insn.offset + len(insn.raw)} without a ret")
+        return "\n".join(str(insn) for insn in instructions)
 
     def dump(self, instructions: list[Instruction]):
         if self.outfile is None:
@@ -500,14 +598,8 @@ class Namespace(argparse.Namespace):
         else:
             outfile = self.outfile.open("w")
             atexit.register(outfile.close)
-        for i, insn in enumerate(instructions):
+        for insn in instructions:
             print(insn, file=outfile)
-            if insn.mnemonic == "ret" and len(insn) == 1:
-                if i != len(instructions) - 1:
-                    warnings.warn(f"Encountered ret at ${insn.offset:x}, truncating")
-                break
-        else:
-            warnings.warn(f"Reached ${insn.offset + len(insn.raw)} without a ret")
 
 
 def check_md5sum(rom: pathlib.Path, target: str):
@@ -521,6 +613,7 @@ def main():
     args = Namespace.from_cli()
     instructions = args.disassemble()
     args.handle_stack_macros(instructions)
+    args.trim_to_ret(instructions)
     args.apply_symtab(instructions)
     args.handle_combining_macros(instructions)
     args.dump(instructions)

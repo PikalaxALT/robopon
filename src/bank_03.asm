@@ -2700,7 +2700,7 @@ Func_d767::
 	call Func_d596
 	ret
 
-Func_d767_2:
+Func_d767_2::
 	set_farcall_addrs_hli Func_de812
 	ld hl, $0
 	call FarCall

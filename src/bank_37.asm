@@ -8,7 +8,63 @@ IF DEF(LANG_EN)
 Func_dc000::
     ret
 
-INCBIN "baserom-sun-en.gbc", $dc001, $1168
+INCBIN "baserom-sun-en.gbc", $dc001, $973
+
+Data_dc974::
+
+INCBIN "baserom-sun-en.gbc", $dc974, $2
+
+Data_dc976::
+
+INCBIN "baserom-sun-en.gbc", $dc976, $2
+
+Data_dc978::
+
+INCBIN "baserom-sun-en.gbc", $dc978, $99
+
+Pointers_dca11::
+
+INCBIN "baserom-sun-en.gbc", $dca11, $1f7
+
+Data_dcc08::
+
+INCBIN "baserom-sun-en.gbc", $dcc08, $2
+
+Data_dcc0a::
+
+INCBIN "baserom-sun-en.gbc", $dcc0a, $2
+
+Data_dcc0c::
+
+INCBIN "baserom-sun-en.gbc", $dcc0c, $2
+
+Data_dcc0e::
+
+INCBIN "baserom-sun-en.gbc", $dcc0e, $18
+
+Data_dcc26::
+
+INCBIN "baserom-sun-en.gbc", $dcc26, $2
+
+Data_dcc28::
+
+INCBIN "baserom-sun-en.gbc", $dcc28, $2
+
+Data_dcc2a::
+
+INCBIN "baserom-sun-en.gbc", $dcc2a, $17
+
+Data_dcc41::
+
+INCBIN "baserom-sun-en.gbc", $dcc41, $2
+
+Data_dcc43::
+
+INCBIN "baserom-sun-en.gbc", $dcc43, $2
+
+Data_dcc45::
+
+INCBIN "baserom-sun-en.gbc", $dcc45, $524
 
 Func_dd169::
 

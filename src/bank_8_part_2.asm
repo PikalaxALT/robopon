@@ -2,7 +2,21 @@ INCLUDE "includes.asm"
 INCLUDE "charmap.asm"
 SECTION "Bank 8 part 2", ROMX
 
-IF DEF(LANG_EN)
+IF DEF(LANG_JP)
+PUSHC
+SETCHARMAP kana
+Text_202d7: ; 202d7
+	dstr "エネルギー ポイントが"
+
+Text_202e3: ; 202e3
+	dstr "たりません!"
+
+Pointers_202ea:: ; 202ea
+	dw Text_202d7
+	dw Text_202e3
+	dw $0
+POPC
+ELIF DEF(LANG_EN)
 Func_2026f_en:
 	push hl
 	push bc
@@ -1236,10 +1250,11 @@ Func_20965: ; 20965
 	set_farcall_addrs_hli PrintMapText_
 IF DEF(LANG_JP)
 	ld c, $a0 | BANK(Pointers_202ea)
-ELIF DEF(LANG_EN)
-	ld bc, $0137
-ENDC
 	ld de, Pointers_202ea
+ELIF DEF(LANG_EN)
+	lb bc, $01, BANK(Pointers_dca11)
+	ld de, Pointers_dca11
+ENDC
 	ld hl, $10e
 	call FarCall
 	pop hl
@@ -2299,12 +2314,38 @@ Data_21152: ; 21152
 	db $21, $02, $07, $1a, $00, $05, $09, $0c, $03, $1f, $0a, $05, $13, $0c
 
 Func_21160: ; 21160 (8:5160)
+IF DEF(LANG_EN)
+	push hl
+	ld a, l
+	or h
+	jp nz, .asm_211a3_en
+ENDC
 	callba_hli Func_d767
+IF DEF(LANG_EN)
+	jp .asm_211b1_en
+
+.asm_211a3_en
+	callba_hli Func_d767_2
+.asm_211b1_en
+ENDC
 	ld de, $130d
 	ld hl, $5
 	call Func_2036d
 	callba_hli Func_5d113
+IF DEF(LANG_EN)
+	pop hl
+	ld a, l
+	or h
+	jp nz, .asm_211d4_en
+ENDC
 	call Func_20398
+IF DEF(LANG_EN)
+	jp .asm_211d7_en
+
+.asm_211d4_en
+	call Func_20385_en
+.asm_211d7_en
+ENDC
 	ld a, [wSystemType]
 	cp $1
 	jp z, .asm_21198
@@ -2800,6 +2841,9 @@ Func_21441: ; 21441 (8:5441)
 	ld de, $22
 	add hl, de
 	ld [hl], a
+IF DEF(LANG_EN)
+	ld hl, $0
+ENDC
 	call Func_21160
 	pop bc
 	pop bc
@@ -2982,6 +3026,9 @@ Func_21593: ; 21593
 	ld a, [hl]
 	or a
 	jp z, .asm_216d7
+IF DEF(LANG_EN)
+	ld hl, $0
+ENDC
 	call Func_21160
 .asm_216d7: ; 216d7 (8:56d7)
 	pop bc
@@ -3267,9 +3314,7 @@ Func_218e2: ; 218e2
 	jp nc, .asm_21912
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	mulhl 5
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
@@ -3304,8 +3349,31 @@ Func_218e2: ; 218e2
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	ld de, Text_2016b
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dc974
+	call Func_2026f_en
+	ld hl, sp+$44
+	ld a, [hl]
+	inc a
+	ld hl, sp+$44
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $0
+	add hl, hl
+	swap_de_hl
+	ld hl, sp+$3c
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dc976
+	call Func_2026f_en
+ENDC
 	ld hl, sp+$44
 	ld e, [hl]
 	ld hl, sp+$3c
@@ -3433,6 +3501,9 @@ Func_2193a: ; 2193a
 	ld a, l
 	or h
 	jp nz, .asm_21a2f
+IF DEF(LANG_EN)
+	ld hl, $0
+ENDC
 	call Func_21160
 	pop hl
 	push hl
@@ -3550,6 +3621,9 @@ Func_2193a: ; 2193a
 	ld a, l
 	or h
 	jp nz, .asm_21af8
+IF DEF(LANG_EN)
+	ld hl, $0
+ENDC
 	call Func_21160
 	pop hl
 	push hl
@@ -3658,6 +3732,9 @@ Func_21b0d: ; 21b0d
 	ld a, l
 	or h
 	jp nz, .asm_21bb2
+IF DEF(LANG_EN)
+	ld hl, $0
+ENDC
 	call Func_21160
 	call GetHLAtSPPlus4
 	ld de, $5e
@@ -3714,6 +3791,9 @@ Func_21bc5: ; 21bc5 (8:5bc5)
 
 Func_21bf5: ; 21bf5
 	push af
+IF DEF(LANG_EN)
+	push de
+ENDC
 	ld hl, -$114
 	add hl, sp
 	ld sp, hl
@@ -3733,6 +3813,10 @@ Func_21bf5: ; 21bf5
 	ld de, $1c5
 	add hl, de
 	ld a, [hl]
+IF DEF(LANG_EN)
+	ld hl, $0
+	write_hl_to_sp_plus $116
+ENDC
 	cp $b
 	jp z, .asm_21c4b
 	cp $a
@@ -3765,9 +3849,7 @@ Func_21bf5: ; 21bf5
 	jp nc, .asm_21c7e
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	mulhl 5
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$31
 	add hl, de
@@ -3809,14 +3891,20 @@ Func_21bf5: ; 21bf5
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	ld de, Text_200fd
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcc08
+	call Func_2026f_en
+ENDC
 	swap_de_hl
 	ld hl, $115
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
 	call Func_20d35
+IF DEF(LANG_JP)
 	ld hl, $f9
 	add hl, sp
 	ld a, [hl]
@@ -3838,6 +3926,53 @@ Func_21bf5: ; 21bf5
 	ld l, a
 	ld de, Text_20116
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld c, $1
+	ld hl, $117
+	add hl, sp
+	ld a, [hl]
+	cp $a
+	jp c, .asm_21d47_en
+	ld c, $2
+.asm_21d47_en
+	ld hl, $117
+	add hl, sp
+	ld a, [hl]
+	cp $64
+	jp c, .asm_21d53_en
+	ld c, $3
+.asm_21d53_en
+	push bc
+	ld hl, $fc
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $fc
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $0
+	add hl, hl
+	swap_de_hl
+	ld hl, $fd
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcc0a
+	call Func_2026f_en
+	swap_de_hl
+	pop bc
+	ld l, c
+	ld h, $00
+	add hl, de
+	ld de, Data_dcc0c
+	call Func_2026f_en
+	swap_de_hl
+ENDC
 	ld hl, $10e
 	add hl, sp
 	ld [hl], $0
@@ -3923,9 +4058,41 @@ Func_21bf5: ; 21bf5
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	ld de, Text_2015d
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcc41
+	call Func_2026f_en
+	ld hl, $fa
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $fa
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $0
+	add hl, hl
+	swap_de_hl
+	ld hl, $fb
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcc43
+	call Func_2026f_en
+ENDC
 .asm_21d74: ; 21d74 (8:5d74)
+IF DEF(LANG_EN)
+	read_hl_from_sp_plus $116
+	ld a, l
+	or h
+	jp nz, .asm_21e65_en
+ENDC
 	ld hl, $f9
 	add hl, sp
 	ld e, [hl]
@@ -3933,6 +4100,19 @@ Func_21bf5: ; 21bf5
 	add hl, sp
 	call Func_203fa
 	call Func_20398
+IF DEF(LANG_EN)
+	jp .asm_21e74_en
+
+.asm_21e65_en
+	ld hl, $fa
+	add hl, sp
+	ld e, [hl]
+	ld hl, $fb
+	add hl, sp
+	call Func_203fd_en
+	call Func_20385_en
+.asm_21e74_en
+ENDC
 	ld hl, $10e
 	add hl, sp
 	ld a, [hl]
@@ -3944,6 +4124,11 @@ Func_21bf5: ; 21bf5
 	ld de, Data_21f22
 	ld hl, $10e
 	call PlaceStringDEatCoordHL
+IF DEF(LANG_EN)
+	ld de, Data_22046_en
+	ld hl, $110
+	call PlaceStringDEatCoordHL
+ENDC
 	ld l, $12
 	push hl
 	ld c, $14
@@ -3966,6 +4151,9 @@ Func_21bf5: ; 21bf5
 	ld a, $3
 	call FarCall
 	push hl
+IF DEF(LANG_EN)
+	read_hl_from_sp_plus $118
+ENDC
 	call Func_21160
 	pop hl
 	ld a, l
@@ -4083,8 +4271,13 @@ Func_21bf5: ; 21bf5
 	ld l, a
 	pop de
 	call strcpy
+IF DEF(LANG_JP)
 	ld de, Text_20102
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcc26
+	call Func_2026f_en
+ENDC
 	ld hl, $f9
 	add hl, sp
 	ld a, [hl]
@@ -4104,14 +4297,33 @@ Func_21bf5: ; 21bf5
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	ld de, Text_2011d
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcc28
+	call Func_2026f_en
+	read_hl_from_sp_plus $116
+	ld a, l
+	or h
+	jp nz, .asm_22046_en
+ENDC
 	ld hl, $f9
 	add hl, sp
 	ld e, [hl]
 	ld hl, $fa
 	add hl, sp
 	call Func_203fa
+IF DEF(LANG_EN)
+	jp .asm_21f1c
+.asm_22046_en
+	ld hl, $fa
+	add hl, sp
+	ld e, [hl]
+	ld hl, $fb
+	add hl, sp
+	call Func_203fd_en
+ENDC
 .asm_21f1c: ; 21f1c (8:5f1c)
 	ld hl, $116
 	add hl, sp
@@ -4119,7 +4331,14 @@ Func_21bf5: ; 21bf5
 	ret
 
 Data_21f22: ; 21f22
+IF DEF(LANG_JP)
 	dstr "(たへﾞさせますか?)"
+ELIF DEF(LANG_EN)
+	dstr "Use them on"
+
+Data_22046_en:
+	dstr "your Robopon?"
+ENDC
 
 Func_21f2e: ; 21f2e
 	push af
@@ -4132,9 +4351,7 @@ Func_21f2e: ; 21f2e
 	jp nc, .asm_21f61
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	mulhl 5
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$d
 	add hl, de
@@ -4276,9 +4493,7 @@ Func_22030: ; 22030
 	jp nc, .asm_22063
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	mulhl 5
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$18
 	add hl, de
@@ -4528,9 +4743,7 @@ Func_2212e: ; 2212e
 	jp nc, .asm_22250
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	mulhl 5
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$0
 	add hl, de
@@ -4798,9 +5011,7 @@ Func_223b8: ; 223b8 (8:63b8)
 	jp nc, .asm_2241d
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	mulhl 5
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$2
 	add hl, de
@@ -5509,9 +5720,7 @@ Func_228d3:: ; 228d3
 	jp nc, .asm_2298e
 	ld l, a
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	mulhl 5
+	mulhl 20
 	swap_de_hl
 	ld hl, sp+$2
 	add hl, de

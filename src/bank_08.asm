@@ -138,19 +138,3 @@ Text_201b7::
 ENDC
 
 INCLUDE "text/attack_categories.asm"
-
-IF DEF(LANG_JP)
-Text_202d7: ; 202d7
-	dstr "エネルギー ポイントが"
-
-Text_202e3: ; 202e3
-	dstr "たりません!"
-
-Pointers_202ea:: ; 202ea
-	dw Text_202d7
-	dw Text_202e3
-	dw $0
-ELIF DEF(LANG_EN)
-	; temporary dead pointer
-Pointers_202ea::
-ENDC
