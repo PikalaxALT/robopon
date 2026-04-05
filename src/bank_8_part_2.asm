@@ -4617,6 +4617,29 @@ Func_22030: ; 22030
 	ld e, [hl]
 	ld hl, sp+$0
 	call GetPart
+IF DEF(LANG_EN)
+	ld hl, $00e2
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $00e2
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $00
+	add hl, hl
+	swap_de_hl
+	ld hl, $00e3
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcc78
+	call Func_2026f_en
+ENDC
 	ld hl, sp+$0
 	push hl
 	ld hl, $e2
@@ -4640,6 +4663,7 @@ Func_22030: ; 22030
 	ld l, a
 	pop de
 	call strcpy
+IF DEF(LANG_JP)
 	ld hl, $e0
 	add hl, sp
 	ld a, [hl]
@@ -4661,16 +4685,17 @@ Func_22030: ; 22030
 	ld l, a
 	ld de, Text_20116
 	call strcpy
-	ld hl, BankSwitch_00f7
+ENDC
+	ld hl, $f7
 	add hl, sp
 	ld a, [hl]
 	inc a
-	ld hl, BankSwitch_00f7
+	ld hl, $f7
 	add hl, sp
 	ld [hl], a
 	set_farcall_addrs_hli Func_4ed70
 	ld e, $0
-	ld hl, BankSwitch_00f7
+	ld hl, $f7
 	add hl, sp
 	ld a, [hl]
 	call FarCall
@@ -4678,7 +4703,7 @@ Func_22030: ; 22030
 	jp nz, .asm_220f4
 	set_farcall_addrs_hli Func_4ed70
 	ld e, $2
-	ld hl, BankSwitch_00f7
+	ld hl, $f7
 	add hl, sp
 	ld a, [hl]
 	call FarCall
@@ -4704,8 +4729,34 @@ Func_22030: ; 22030
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	ld de, Text_20124
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcc8d
+	call Func_2026f_en
+	ld hl, $00e2
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $00e2
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $00
+	add hl, hl
+	swap_de_hl
+	ld hl, $00e3
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcc8f
+	call Func_2026f_en
+ENDC
 .asm_2211c: ; 2211c (8:611c)
 	ld hl, $e0
 	add hl, sp
