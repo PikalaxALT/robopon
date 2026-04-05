@@ -4345,6 +4345,9 @@ Func_21f2e: ; 21f2e
 	ld hl, -$ea
 	add hl, sp
 	ld sp, hl
+IF DEF(LANG_EN)
+	push de
+ENDC
 	xor a
 .asm_21f35: ; 21f35 (8:5f35)
 	cp $a
@@ -4374,6 +4377,29 @@ Func_21f2e: ; 21f2e
 	ld hl, $d5
 	add hl, sp
 	ld [hl], $0
+IF DEF(LANG_EN)
+	ld hl, $00d7
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $00d7
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $00
+	add hl, hl
+	swap_de_hl
+	ld hl, $00d8
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcc78
+	call Func_2026f_en
+ENDC
 	ld hl, $eb
 	add hl, sp
 	ld e, [hl]
@@ -4402,6 +4428,7 @@ Func_21f2e: ; 21f2e
 	ld l, a
 	pop de
 	call strcpy
+IF DEF(LANG_JP)
 	ld hl, $d5
 	add hl, sp
 	ld a, [hl]
@@ -4423,6 +4450,10 @@ Func_21f2e: ; 21f2e
 	ld l, a
 	ld de, Text_20116
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcc7a
+	call Func_2026f_en
+ENDC
 	ld hl, $eb
 	add hl, sp
 	ld a, [hl]
@@ -4468,15 +4499,80 @@ Func_21f2e: ; 21f2e
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	ld de, Text_20124
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcc8b
+	call Func_2026f_en
+	ld hl, $00d7
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $00d7
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $00
+	add hl, hl
+	swap_de_hl
+	ld hl, $00d8
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcc8d
+	call Func_2026f_en
+	ld hl, $00d7
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $00d7
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $00
+	add hl, hl
+	swap_de_hl
+	ld hl, $00d8
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcc8f
+	call Func_2026f_en
+ENDC
 .asm_2201e: ; 2201e (8:601e)
+IF DEF(LANG_EN)
+	pop de
+	ld a, e
+	or d
+	jp nz, .asm_221a6_en
+ENDC
 	ld hl, $d5
 	add hl, sp
 	ld e, [hl]
 	ld hl, $d6
 	add hl, sp
 	call Func_203fa
+IF DEF(LANG_EN)
+	jp .asm_221b2_en
+
+.asm_221a6_en
+	ld hl, $d5
+	add hl, sp
+	ld e, [hl]
+	ld hl, $d6
+	add hl, sp
+	call Func_203fd_en
+.asm_221b2_en
+ENDC
 	ld hl, $ec
 	add hl, sp
 	ld sp, hl

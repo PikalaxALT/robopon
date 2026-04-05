@@ -64,7 +64,35 @@ INCBIN "baserom-sun-en.gbc", $dcc43, $2
 
 Data_dcc45::
 
-INCBIN "baserom-sun-en.gbc", $dcc45, $524
+INCBIN "baserom-sun-en.gbc", $dcc45, $33
+
+Data_dcc78::
+
+INCBIN "baserom-sun-en.gbc", $dcc78, $2
+
+Data_dcc7a::
+
+INCBIN "baserom-sun-en.gbc", $dcc7a, $2
+
+Data_dcc7c::
+
+INCBIN "baserom-sun-en.gbc", $dcc7c, $f
+
+Data_dcc8b::
+
+INCBIN "baserom-sun-en.gbc", $dcc8b, $2
+
+Data_dcc8d::
+
+INCBIN "baserom-sun-en.gbc", $dcc8d, $2
+
+Data_dcc8f::
+
+INCBIN "baserom-sun-en.gbc", $dcc8f, $2
+
+Data_dcc91::
+
+INCBIN "baserom-sun-en.gbc", $dcc91, $4d8
 
 Func_dd169::
 

@@ -401,6 +401,7 @@ class Namespace(argparse.Namespace):
             if insn.mnemonic == "ret" and len(insn) == 1:
                 if i != len(instructions) - 1:
                     warnings.warn(f"Encountered ret at ${insn.offset:x}, truncating")
+                    del instructions[i + 1 :]
                 break
         else:
             warnings.warn(f"Reached ${insn.offset + len(insn.raw)} without a ret")
