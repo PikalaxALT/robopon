@@ -4733,6 +4733,27 @@ IF DEF(LANG_JP)
 	ld de, Text_20124
 	call strcpy
 ELIF DEF(LANG_EN)
+	ld de, Data_dcc8b
+	call Func_2026f_en
+	ld hl, $00e2
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $00e2
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $00
+	add hl, hl
+	swap_de_hl
+	ld hl, $00e3
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
 	ld de, Data_dcc8d
 	call Func_2026f_en
 	ld hl, $00e2
@@ -4774,6 +4795,9 @@ Func_2212e: ; 2212e
 	ld hl, -$e4
 	add hl, sp
 	ld sp, hl
+IF DEF(LANG_EN)
+	push de
+ENDC
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -4925,6 +4949,7 @@ Func_2212e: ; 2212e
 	ld h, $0
 	add hl, hl
 	swap_de_hl
+IF DEF(LANG_JP)
 	ld hl, $c9
 	add hl, sp
 	add hl, de
@@ -4939,12 +4964,63 @@ Func_2212e: ; 2212e
 	call strcpy
 	ld de, Text_20116
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld hl, $00cb
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcc64
+	call Func_2026f_en
+	ld hl, $00ca
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $00ca
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $00
+	add hl, hl
+	swap_de_hl
+	ld hl, $00cb
+	add hl, sp
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	push de
+	read_hl_from_sp_plus $e5
+	pop de
+	call Func_20d35
+	ld de, Data_dcc66
+	call Func_2026f_en
+	pop de
+	ld a, e
+	or d
+	jp nz, .asm_22488_en
+ENDC
 	ld hl, $c8
 	add hl, sp
 	ld e, [hl]
 	ld hl, $c9
 	add hl, sp
 	call Func_203fa
+IF DEF(LANG_EN)
+	jp .asm_22494_en
+
+.asm_22488_en
+	ld hl, $00c8
+	add hl, sp
+	ld e, [hl]
+	ld hl, Func_00c9
+	add hl, sp
+	call Func_203fd_en
+.asm_22494_en
+ENDC
 	push hl
 	push hl
 	read_hl_from_sp_plus $e5

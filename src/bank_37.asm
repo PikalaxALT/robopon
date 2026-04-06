@@ -64,7 +64,19 @@ INCBIN "baserom-sun-en.gbc", $dcc43, $2
 
 Data_dcc45::
 
-INCBIN "baserom-sun-en.gbc", $dcc45, $33
+INCBIN "baserom-sun-en.gbc", $dcc45, $1f
+
+Data_dcc64::
+
+INCBIN "baserom-sun-en.gbc", $dcc64, $2
+
+Data_dcc66::
+
+INCBIN "baserom-sun-en.gbc", $dcc66, $2
+
+Data_dcc668::
+
+INCBIN "baserom-sun-en.gbc", $dcc68, $10
 
 Data_dcc78::
 
