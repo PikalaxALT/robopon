@@ -5047,6 +5047,10 @@ Data_222b2: ; 222b2
 	db $01, $03, $05, $0a, $14
 
 Func_222b7:: ; 222b7 (8:62b7)
+IF DEF(LANG_EN)
+	push hl
+	push bc
+ENDC
 	push bc
 	push bc
 	read_hl_from wCurRobotPointer
@@ -5064,12 +5068,7 @@ Func_222b7:: ; 222b7 (8:62b7)
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 12
 	ld de, $4001
 	add hl, de
 	call WriteHLToSPPlus5
@@ -5085,57 +5084,107 @@ Func_222b7:: ; 222b7 (8:62b7)
 	add hl, bc
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 12
 	ld de, $4001
 	add hl, de
 	call WriteHLToSPPlus5
 .asm_22304: ; 22304 (8:6304)
 	ld a, $64
 	call BattleRandom
+IF DEF(LANG_JP)
 	ld hl, sp+$2
 	ld [hl], a
 	ld c, $0
+ELIF DEF(LANG_EN)
+	ld hl, sp+$4
+	ld [hl], a
+	ld hl, sp+$2
+	ld [hl], $0
+ENDC
 .asm_2230e: ; 2230e (8:630e)
+IF DEF(LANG_JP)
 	ld a, c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$2
+	ld a, [hl]
+ENDC
 	cp $5
 	jp nc, .asm_22329
+IF DEF(LANG_JP)
 	ld hl, sp+$2
 	ld a, [hl]
 	call GetHLAtSPPlus5
 	ld e, c
 	ld d, $0
 	add hl, de
+ELIF DEF(LANG_EN)
+	ld hl, sp+$4
+	ld a, [hl]
+	ld hl, sp+$2
+	ld c, [hl]
+	ld b, $0
+	call GetHLAtSPPlus7
+	add hl, bc
+ENDC
 	cp [hl]
 	jp nc, .asm_22325
 	jp .asm_22329
 
 .asm_22325: ; 22325 (8:6325)
+IF DEF(LANG_JP)
 	inc c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$02
+	ld a, [hl]
+	inc a
+	ld hl, sp+$02
+	ld [hl], a
+ENDC
 	jp .asm_2230e
 
 .asm_22329: ; 22329 (8:6329)
+IF DEF(LANG_JP)
 	ld e, c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$02
+	ld e, [hl]
+ENDC
 	ld d, $0
 	ld hl, Data_222b2
 	add hl, de
+IF DEF(LANG_JP)
 	ld c, [hl]
+ELIF DEF(LANG_EN)
+	ld e, [hl]
+	ld hl, sp+$02
+	ld [hl], e
+ENDC
 	ld a, [wInBattle]
 	cp $2
 	jp nz, .asm_2234d
+IF DEF(LANG_JP)
 	push bc
+ENDC
 	set_farcall_addrs_hli Func_6c11d
+IF DEF(LANG_JP)
 	pop bc
 	ld a, c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$02
+	ld a, [hl]
+ENDC
 	call FarCall
 	jp .asm_22351
 
 .asm_2234d: ; 2234d (8:634d)
+IF DEF(LANG_JP)
 	ld a, c
+ELIF DEF(LANG_EN)
+	call GetHLAtSPPlus10
+	swap_de_hl
+	ld hl, sp+$02
+	ld a, [hl]
+ENDC
 	call Func_21bf5
 .asm_22351: ; 22351 (8:6351)
 	ld a, $64
@@ -5144,30 +5193,64 @@ Func_222b7:: ; 222b7 (8:62b7)
 	jp nc, .asm_223a3
 	ld a, $64
 	call BattleRandom
+IF DEF(LANG_JP)
 	ld hl, sp+$2
 	ld [hl], a
 	ld c, $0
+ELIF DEF(LANG_EN)
+	ld hl, sp+$04
+	ld [hl], a
+	ld hl, sp+$03
+	ld [hl], $00
+ENDC
 .asm_22365: ; 22365 (8:6365)
+IF DEF(LANG_JP)
 	ld a, c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$03
+	ld a, [hl]
+ENDC
 	cp $2
 	jp nc, .asm_22384
+IF DEF(LANG_JP)
 	ld hl, sp+$2
 	ld a, [hl]
 	call GetHLAtSPPlus5
+ELIF DEF(LANG_EN)
+	ld hl, sp+$04
+	ld a, [hl]
+	ld hl, sp+$03
+	ld c, [hl]
+	ld b, $00
+	call GetHLAtSPPlus7
+ENDC
 	ld de, $8
 	add hl, de
+IF DEF(LANG_JP)
 	ld e, c
 	ld d, $0
 	add hl, de
+ELIF DEF(LANG_EN)
+	add hl, bc
+ENDC
 	cp [hl]
 	jp nc, .asm_22380
 	jp .asm_22384
 
 .asm_22380: ; 22380 (8:6380)
+IF DEF(LANG_JP)
 	inc c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$03
+	ld a, [hl]
+	inc a
+	ld hl, sp+$03
+	ld [hl], a
+ENDC
 	jp .asm_22365
 
 .asm_22384: ; 22384 (8:6384)
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus5
 	ld de, $5
 	add hl, de
@@ -5176,14 +5259,40 @@ Func_222b7:: ; 222b7 (8:62b7)
 	add hl, de
 	ld c, [hl]
 	ld a, c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$03
+	ld c, [hl]
+	ld b, $00
+	call GetHLAtSPPlus7
+	ld de, $0005
+	add hl, de
+	add hl, bc
+	ld e, [hl]
+	ld hl, sp+$03
+	ld [hl], e
+	ld hl, sp+$03
+	ld a, [hl]
+ENDC
 	and $80
 	jp nz, .asm_2239d
+IF DEF(LANG_JP)
 	ld a, c
+ELIF DEF(LANG_EN)
+	call GetHLAtSPPlus10
+	swap_de_hl
+	ld hl, sp+$03
+	ld a, [hl]
+ENDC
 	call Func_21f2e
 	jp .asm_223a3
 
 .asm_2239d: ; 2239d (8:639d)
+IF DEF(LANG_JP)
 	ld a, c
+ELIF DEF(LANG_EN)
+	ld hl, sp+$03
+	ld a, [hl]
+ENDC
 	and $7f
 	call Func_22030
 .asm_223a3: ; 223a3 (8:63a3)
@@ -5196,11 +5305,22 @@ Func_222b7:: ; 222b7 (8:62b7)
 	ld a, [hl]
 	cp $1
 	jp c, .asm_223b5
+IF DEF(LANG_JP)
 	call GetHLAtSPPlus3
+ELIF DEF(LANG_EN)
+	call GetHLAtSPPlus8
+	push hl
+	call GetHLAtSPPlus7
+	pop de
+ENDC
 	call Func_2212e
 .asm_223b5: ; 223b5 (8:63b5)
 	pop bc
 	pop bc
+IF DEF(LANG_EN)
+	pop bc
+	pop bc
+ENDC
 	ret
 
 Func_223b8: ; 223b8 (8:63b8)
