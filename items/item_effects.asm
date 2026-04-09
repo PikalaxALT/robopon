@@ -1046,20 +1046,14 @@ DoItemEffect:: ; 4f800 (13:7800)
 	pop bc
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, ItemEffectPointers - 3
 	add hl, de
 	ld a, [hl]
 	ld [wFarCallDestBank], a
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, ItemEffectPointers - 3
 	add hl, de
 	inc hl

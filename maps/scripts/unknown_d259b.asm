@@ -311,11 +311,7 @@ Func_d277d: ; d277d (34:677d)
 	ld hl, wc7dd
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_d276b
 	add hl, de
 	scall Func_80d9b

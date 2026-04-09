@@ -1899,10 +1899,7 @@ Func_6ced8: ; 6ced8 (1b:4ed8)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $2
 	call DivideHLByDESigned
 	ld c, l
@@ -7461,10 +7458,7 @@ Func_6f962:: ; 6f962 (1b:7962)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $502
 	add hl, de
 	ld de, $103

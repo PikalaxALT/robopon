@@ -1891,11 +1891,7 @@ Func_68eeb::
 	inc hl
 	ld h, [hl]
 	ld l, a
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Pointers_68d2e
 	add hl, de
 	swap_de_hl
@@ -2256,10 +2252,7 @@ Func_6912c: ; 6912c (1a:512c)
 	call GetHLAtSPPlus10
 	ld de, $7
 	call DivideHLByDESigned
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	swap_de_hl
 	ld hl, sp+$e
 	ld l, [hl]
@@ -2286,10 +2279,7 @@ Func_6912c: ; 6912c (1a:512c)
 	call GetHLAtSPPlus8
 	ld de, $7
 	call DivideHLByDESigned
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	swap_de_hl
 	ld hl, sp+$e
 	ld l, [hl]
@@ -2844,11 +2834,7 @@ Func_695aa: ; 695aa (1a:55aa)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	add hl, bc
 	ld de, Data_69484
 	add hl, de

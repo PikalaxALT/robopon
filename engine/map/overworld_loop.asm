@@ -196,11 +196,7 @@ OverworldLoop:: ; 81cf (2:41cf)
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, SpawnsFromWorldMap
 	add hl, de
 	ld c, l

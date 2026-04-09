@@ -311,11 +311,7 @@ Func_d23de: ; d23de (34:63de)
 	ld hl, wc7dd
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_d23cc
 	add hl, de
 	scall Func_80d9b

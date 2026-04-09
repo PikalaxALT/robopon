@@ -3705,11 +3705,7 @@ Func_4df98: ; 4df98 (13:5f98)
 	ld hl, sp+$2
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	add hl, bc
 	push hl
 	ld hl, sp+$7

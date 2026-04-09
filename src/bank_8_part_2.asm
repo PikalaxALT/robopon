@@ -1714,11 +1714,7 @@ Func_20d3a: ; 20d3a (8:4d3a)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1740,11 +1736,7 @@ Func_20d3a: ; 20d3a (8:4d3a)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1760,11 +1752,7 @@ Func_20d3a: ; 20d3a (8:4d3a)
 	ld hl, sp+$a
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1801,11 +1789,7 @@ Func_20d3a: ; 20d3a (8:4d3a)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1910,11 +1894,7 @@ Func_20e75: ; 20e75 (8:4e75)
 	ld b, [hl]
 	ld l, a
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac

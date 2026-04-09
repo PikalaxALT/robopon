@@ -304,11 +304,7 @@ Func_d2b0f: ; d2b0f (34:6b0f)
 	ld hl, wc7dd
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_d2afd
 	add hl, de
 	scall Func_80d9b

@@ -14,20 +14,14 @@ EnterMap:: ; daa72 (36:6a72)
 	ld b, h
 	ld l, c
 	ld h, b
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, MapTriggerPointers
 	add hl, de
 	ld a, [hl]
 	ld [wFarCallDestBank], a
 	ld l, c
 	ld h, b
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, MapTriggerPointers
 	add hl, de
 	inc hl

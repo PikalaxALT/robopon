@@ -5253,10 +5253,7 @@ Func_26c6a: ; 26c6a (9:6c6a)
 	ld h, $0
 	push hl
 	read_hl_from_sp_plus $1a
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $4
 	call DivideHLByDESigned
 	pop de
@@ -5343,10 +5340,7 @@ Func_26cd6: ; 26cd6
 	pop bc
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	swap_de_hl
 	ld hl, $76
 	add hl, bc

@@ -1252,10 +1252,7 @@ Func_50914: ; 50914
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	inc hl
 	ld a, l
 	ld l, a
@@ -1277,10 +1274,7 @@ Func_50914: ; 50914
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	inc hl
 	ld a, l
 	ld l, a

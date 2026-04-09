@@ -3330,11 +3330,7 @@ Func_e298: ; e298 (3:6298)
 	ld hl, sp+$8
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_e233
 	add hl, de
 	add hl, bc
@@ -3848,10 +3844,7 @@ ELIF DEF(LANG_EN)
 	ld l, c
 ENDC
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 IF DEF(LANG_JP)
 	ld de, $302
 ELIF DEF(LANG_EN)
@@ -3992,10 +3985,7 @@ ENDC
 	push hl
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 IF DEF(LANG_JP)
 	ld de, $c02
 ELIF DEF(LANG_EN)

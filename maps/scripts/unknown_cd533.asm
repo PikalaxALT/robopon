@@ -339,11 +339,7 @@ Func_cd696:
 	ld hl, wc7dd
 	ld l, [hl]
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_cd684
 	add hl, de
 	scall Func_80d9b

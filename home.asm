@@ -1620,14 +1620,7 @@ IF DEF(LANG_JP)
 	call MultiplyHLbyDE
 ELIF DEF(LANG_EN)
 	swap_de_hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl robotBaseStats_SIZEOF
 ENDC
 	swap_de_hl
 	ld hl, sp+$2

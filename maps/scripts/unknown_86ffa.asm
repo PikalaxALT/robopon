@@ -254,11 +254,7 @@ Func_870fa: ; 870fa (21:70fa)
 	push af
 	ld l, a
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_87088
 	add hl, de
 	scall Func_80d9b

@@ -219,12 +219,7 @@ Func_83a1f:
 	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 12
 	swap_de_hl
 	ld hl, sp+$33
 	add hl, de
@@ -256,12 +251,7 @@ Func_83a1f:
 	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 12
 	swap_de_hl
 	ld hl, sp+$33
 	add hl, de
@@ -277,12 +267,7 @@ Func_83a1f:
 	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 12
 	swap_de_hl
 	ld hl, sp+$33
 	add hl, de
@@ -302,12 +287,7 @@ Func_83a1f:
 	ld hl, wc78c
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 12
 	swap_de_hl
 	ld hl, sp+$33
 	add hl, de

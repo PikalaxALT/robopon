@@ -255,11 +255,7 @@ Func_d203f: ; d203f (34:603f)
 	ld hl, wc7dd
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_d202d
 	add hl, de
 	scall Func_80d9b

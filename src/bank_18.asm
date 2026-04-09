@@ -361,10 +361,7 @@ Func_60268: ; 60268 (18:4268)
 	push hl
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $302
 	add hl, de
 	pop de
@@ -416,10 +413,7 @@ Func_60302: ; 60302 (18:4302)
 	push hl
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $c02
 	add hl, de
 	pop de
@@ -488,10 +482,7 @@ Func_60386: ; 60386 (18:4386)
 	push hl
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $c02
 	add hl, de
 	pop de
@@ -557,10 +548,7 @@ Func_603f8: ; 603f8 (18:43f8)
 	push hl
 	ld l, c
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $302
 	add hl, de
 	pop de
@@ -1187,11 +1175,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1237,11 +1221,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1261,11 +1241,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1287,11 +1263,7 @@ Func_60b8a: ; 60b8a (18:4b8a)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1320,11 +1292,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1344,11 +1312,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1368,11 +1332,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -1392,11 +1352,7 @@ Func_60c66: ; 60c66 (18:4c66)
 	add hl, sp
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	push hl
 	read_hl_from wCurRobotPointer
 	ld de, $1ac
@@ -2876,10 +2832,7 @@ Func_61cc6: ; 61cc6 (18:5cc6)
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	inc hl
 	ld a, l
 	ld e, a

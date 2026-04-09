@@ -932,11 +932,7 @@ Func_30803: ; 30803 (c:4803)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, ShopItems
 	add hl, de
 	pop de
@@ -1064,11 +1060,7 @@ Func_30935: ; 30935 (c:4935)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_301bd
 	add hl, de
 	add hl, bc
@@ -1098,11 +1090,7 @@ Func_3097b: ; 3097b (c:497b)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_30223
 	add hl, de
 	add hl, bc
@@ -1513,11 +1501,7 @@ Func_30c5f: ; 30c5f (c:4c5f)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, ShopItems
 	add hl, de
 	pop de
@@ -1677,11 +1661,7 @@ Func_30d85: ; 30d85 (c:4d85)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, ShopItems
 	add hl, de
 	add hl, bc
@@ -1768,11 +1748,7 @@ Func_30dfd: ; 30dfd (c:4dfd)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, ShopItems
 	add hl, de
 	pop de
@@ -1828,11 +1804,7 @@ Func_30ea5: ; 30ea5 (c:4ea5)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_301bd
 	add hl, de
 	pop de
@@ -1917,11 +1889,7 @@ Func_30f5d: ; 30f5d (c:4f5d)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_30223
 	add hl, de
 	pop de
@@ -2352,11 +2320,7 @@ Func_312a4: ; 312a4
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, ShopItems
 	add hl, de
 	add hl, bc
@@ -3747,11 +3711,7 @@ Func_322ed: ; 322ed (c:62ed)
 	push de
 	ld l, c
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_322bc
 	add hl, de
 	ld e, a
@@ -4664,11 +4624,7 @@ Func_32a37: ; 32a37
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, ShopItems
 	add hl, de
 	ld e, a
@@ -4953,11 +4909,7 @@ Func_32c30: ; 32c30
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_301bd
 	add hl, de
 	add hl, bc
@@ -4974,11 +4926,7 @@ Func_32c7d: ; 32c7d (c:6c7d)
 	ld hl, wCurShop
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_30223
 	add hl, de
 	add hl, bc

@@ -1051,10 +1051,7 @@ Func_54846:
 	pop de
 	ld l, e
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $302
 	add hl, de
 	ld de, Data_5497c
@@ -1661,10 +1658,7 @@ Func_54e1f: ; 54e1f (15:4e1f)
 	ld hl, wc2e9
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, $802
 	add hl, de
 	pop de

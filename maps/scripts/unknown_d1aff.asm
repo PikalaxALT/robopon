@@ -332,11 +332,7 @@ Func_d1d08: ; d1d08 (34:5d08)
 	ld hl, wc7dd
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_d1cf6
 	add hl, de
 	scall Func_80d9b

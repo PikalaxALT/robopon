@@ -396,11 +396,7 @@ Func_ce1e3:
 	ld hl, wc7dd
 	ld l, [hl]
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, Data_ce1d1
 	add hl, de
 	scall Func_80d9b
@@ -508,11 +504,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, $01b8
 	add hl, sp
@@ -529,11 +521,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, sp+$56
 	add hl, de
@@ -549,11 +537,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, sp+$02
 	add hl, de
@@ -572,11 +556,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, $015e
 	add hl, sp
@@ -593,11 +573,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, $00b0
 	add hl, sp
@@ -614,11 +590,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, sp+$02
 	add hl, de
@@ -637,11 +609,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, $010a
 	add hl, sp
@@ -658,11 +626,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, $00b0
 	add hl, sp
@@ -679,11 +643,7 @@ Func_ce409:
 	push af
 	ld l, a
 	ld h, $00
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	ld hl, sp+$56
 	add hl, de

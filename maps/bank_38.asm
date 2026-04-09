@@ -2938,10 +2938,7 @@ Func_e2e79: ; e2e79 (38:6e79)
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, Data_e2c88
 	add hl, de
 	add hl, bc

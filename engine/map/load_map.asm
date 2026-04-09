@@ -387,10 +387,7 @@ MACRO del
 	and $7
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 3
 	ld de, Pointers_1c000
 	add hl, de
 	swap_de_hl
@@ -634,11 +631,7 @@ Func_891c: ; 891c (2:491c)
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld a, l
 	cpl
 	ld l, a
@@ -652,11 +645,7 @@ Func_891c: ; 891c (2:491c)
 	ld hl, wMapWidth
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	ld de, -6
 	add hl, de
 	write_hl_to wc86e

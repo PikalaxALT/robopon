@@ -8,11 +8,7 @@ Func_aff1: ; aff1 (2:6ff1)
 	jp nc, .quit
 	ld l, a
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
@@ -40,11 +36,7 @@ Func_b025: ; b025 (2:7025)
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
@@ -193,11 +185,7 @@ Func_b109: ; b109 (2:7109)
 	ld hl, sp+$7
 	ld l, [hl]
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
@@ -225,11 +213,7 @@ HandleNPCStep:: ; b150 (2:7150)
 	push af
 	ld l, a
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
@@ -608,11 +592,7 @@ Func_b3ab:: ; b3ab (2:73ab)
 	jp nc, .next
 	ld l, c
 	ld h, $0
-	add hl, hl
-	ld e, l
-	ld d, h
-	add hl, hl
-	add hl, de
+	mulhl 6
 	swap_de_hl
 	read_hl_from wNPCMovementDataPointer
 	add hl, de
