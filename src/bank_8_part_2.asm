@@ -5303,6 +5303,11 @@ IF DEF(LANG_EN)
 ENDC
 	ret
 
+IF DEF(LANG_EN)
+Data_225fa_en:
+	db $21, $01, $03, $15, $08, $05, $13, $0c
+ENDC
+
 Func_223b8: ; 223b8 (8:63b8)
 	ld hl, -$13a
 	add hl, sp
@@ -5574,6 +5579,31 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld hl, $cd
 	add hl, sp
 	push hl
+IF DEF(LANG_EN)
+	ld hl, $127
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $127
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $0
+	add hl, hl
+	swap_de_hl
+	ld hl, $128
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	pop de
+	call strcpy
+	ld de, Data_dcbc6
+	call Func_2026f_en
+ENDC
 	ld hl, $125
 	add hl, sp
 	ld a, [hl]
@@ -5593,12 +5623,25 @@ Func_223b8: ; 223b8 (8:63b8)
 	inc hl
 	ld h, [hl]
 	ld l, a
+IF DEF(LANG_JP)
 	pop de
 	call strcpy
 	ld de, Text_20102
+ELIF DEF(LANG_EN)
+	ld de, Data_22c19_en
+ENDC
 	call strcpy
 	pop bc
 	push bc
+IF DEF(LANG_EN)
+	ld e, l
+	ld d, h
+	ld l, c
+	ld h, b
+	call Func_20d35
+	ld de, Data_dcbc8
+	call Func_2026f_en
+ENDC
 	ld hl, $123
 	add hl, sp
 	ld a, [hl]
@@ -5614,6 +5657,7 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld hl, $124
 	add hl, sp
 	add hl, de
+IF DEF(LANG_JP)
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -5622,6 +5666,14 @@ Func_223b8: ; 223b8 (8:63b8)
 	call Func_20d35
 	ld de, Text_20134
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	ld de, Data_dcbca
+	call Func_2026f_en
+ENDC
 	ld hl, $123
 	add hl, sp
 	ld e, [hl]
@@ -5750,8 +5802,13 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld l, a
 	pop de
 	call strcpy
+IF DEF(LANG_JP)
 	ld de, Text_20102
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcbeb
+	call Func_2026f_en
+ENDC
 	pop bc
 .asm_22701: ; 22701 (8:6701)
 	read_hl_from_sp_plus $e0
@@ -5786,7 +5843,11 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld h, [hl]
 	ld l, a
 	ld de, Text_20106
+IF DEF(LANG_JP)
 	call strcpy
+ELIF DEF(LANG_EN)
+    call Func_2026f_en
+ENDC
 	swap_de_hl
 	ld hl, $d3
 	add hl, sp
@@ -5803,7 +5864,11 @@ Func_223b8: ; 223b8 (8:63b8)
 	swap_de_hl
 	swap_de_hl
 	ld de, Text_2013f
+IF DEF(LANG_JP)
 	call strcpy
+ELIF DEF(LANG_EN)
+    call Func_2026f_en
+ENDC
 	swap_de_hl
 	ld hl, $123
 	add hl, sp
@@ -5935,10 +6000,114 @@ Func_223b8: ; 223b8 (8:63b8)
 	ld a, [hl]
 	or a
 	jp z, .asm_228a0
+IF DEF(LANG_EN)
+	set_farcall_addrs_hli CheckEventFlag
+	ld hl, $115
+	call FarCall
+	or a
+    jp nz, .asm_22b20_en
+    ld a, $1
+    jp .asm_22b21_en
+
+.asm_22b20_en
+    xor a
+.asm_22b21_en
+    or a
+    jp z, .asm_22b35_en
+ENDC
 	read_hl_from_sp_plus $da
 	write_hl_to_sp_plus $d8
 	read_hl_from_sp_plus $de
 	write_hl_to_sp_plus $dc
+IF DEF(LANG_EN)
+.asm_22b35_en
+	ld de, $c08
+	ld hl, $805
+	call Func_2801
+	push hl
+	ld c, $8
+	ld e, $c
+	ld hl, $805
+	call Func_20383
+	ld e, $6
+	ld a, $9
+	call text_cursor_pos_set
+	ld hl, Data_22c1a_en
+	push hl
+	call printf
+	pop bc
+	ld e, $7
+	ld a, $10
+	call text_cursor_pos_set
+	read_hl_from_sp_plus $e6
+	push hl
+	ld hl, Data_22c21_en
+	push hl
+	call printf
+	pop bc
+	pop bc
+	ld e, $8
+	ld a, $9
+	call text_cursor_pos_set
+	ld hl, Data_22c24_en
+	push hl
+	call printf
+	pop bc
+	ld e, $9
+	ld a, $10
+	call text_cursor_pos_set
+	read_hl_from_sp_plus $e8
+	push hl
+	ld hl, Data_22c2c_en
+	push hl
+	call printf
+	pop bc
+	pop bc
+	ld e, $a
+	ld a, $9
+	call text_cursor_pos_set
+	ld hl, Data_22c2f_en
+	push hl
+	call printf
+	pop bc
+	ld e, $b
+	ld a, $10
+	call text_cursor_pos_set
+	read_hl_from_sp_plus $ea
+	push hl
+	ld hl, Data_22c35_en
+	push hl
+	call printf
+	pop bc
+	pop bc
+	ld de, $8
+	ld hl, Data_225fa_en
+	call Func_2b83
+	ld a, $1
+	ld [wEnableAttrMapTransfer], a
+	ld l, $8
+	push hl
+	ld c, $c
+	ld e, $5
+	ld a, $8
+	call PushBGMapRegion
+	pop bc
+.asm_22bd0:
+	call CheckButton
+	and $30
+	jp z, .asm_22bd0
+	pop hl
+	call Func_2887
+	ld a, $1
+	ld [wEnableAttrMapTransfer], a
+	ld l, $8
+	push hl
+	ld c, $c
+	ld e, $5
+	ld a, $8
+	call PushBGMapRegion
+	pop bc
+ENDC
 .asm_228a0: ; 228a0 (8:68a0)
 	set_farcall_addrs_hli StackGetRobotInParty
 	pop de
@@ -5962,6 +6131,48 @@ Func_223b8: ; 223b8 (8:63b8)
 	add hl, sp
 	ld sp, hl
 	ret
+
+IF DEF(LANG_EN)
+Data_22c19_en:
+	dstr ""
+
+Data_22c1a_en:
+	dstr "Attack"
+
+Data_22c21_en:
+	dstr "%d"
+
+Data_22c24_en:
+	dstr "Defense"
+
+Data_22c2c_en:
+	dstr "%d"
+
+Data_22c2f_en:
+	dstr "Speed"
+
+Data_22c35_en:
+	dstr "%d"
+
+Data_22c38_en:
+	dw Data_22c42_en
+	dw Data_22c4d_en
+	dw Data_22c56_en
+	dw Data_22c63_en
+	dw NULL
+
+Data_22c42_en:
+	dstr "The garage"
+
+Data_22c4d_en:
+	dstr "is full."
+
+Data_22c56_en:
+	dstr "Please scrap"
+
+Data_22c63_en:
+	dstr "Robopon."
+ENDC
 
 Data_228cb: ; 228cb
 	dw 10, 20, 30, 1000

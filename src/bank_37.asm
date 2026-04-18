@@ -24,7 +24,31 @@ INCBIN "baserom-sun-en.gbc", $dc978, $99
 
 Pointers_dca11::
 
-INCBIN "baserom-sun-en.gbc", $dca11, $1f7
+INCBIN "baserom-sun-en.gbc", $dca11, $1b5
+
+Data_dcbc6::
+
+INCBIN "baserom-sun-en.gbc", $dcbc6, $2
+
+Data_dcbc8::
+
+INCBIN "baserom-sun-en.gbc", $dcbc8, $2
+
+Data_dcbca::
+
+INCBIN "baserom-sun-en.gbc", $dcbca, $2
+
+Data_dcbcc::
+
+INCBIN "baserom-sun-en.gbc", $dcbcc, $1f
+
+Data_dcbeb::
+
+INCBIN "baserom-sun-en.gbc", $dcbeb, $2
+
+Data_dcbed::
+
+INCBIN "baserom-sun-en.gbc", $dcbed, $1b
 
 Data_dcc08::
 
