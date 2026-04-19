@@ -8,7 +8,19 @@ IF DEF(LANG_EN)
 Func_dc000::
     ret
 
-INCBIN "baserom-sun-en.gbc", $dc001, $973
+INCBIN "baserom-sun-en.gbc", $dc001, $67c
+
+Data_dc67b::
+
+INCBIN "baserom-sun-en.gbc", $dc67b, $2
+
+Data_dc67d::
+
+INCBIN "baserom-sun-en.gbc", $dc67d, $2
+
+Data_dc67f::
+
+INCBIN "baserom-sun-en.gbc", $dc67f, $2f5
 
 Data_dc974::
 
@@ -164,7 +176,19 @@ INCBIN "baserom-sun-en.gbc", $dcce3, $2
 
 Data_dcce5::
 
-INCBIN "baserom-sun-en.gbc", $dcce5, $484
+INCBIN "baserom-sun-en.gbc", $dcce5, $193
+
+Data_dce78::
+
+INCBIN "baserom-sun-en.gbc", $dce78, $2
+
+Data_dce7a::
+
+INCBIN "baserom-sun-en.gbc", $dce7a, $2
+
+Data_dce7c::
+
+INCBIN "baserom-sun-en.gbc", $dce7c, $2ed
 
 Func_dd169::
 

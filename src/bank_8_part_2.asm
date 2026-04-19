@@ -6814,6 +6814,9 @@ Func_22cd0: ; 22cd0
 	ld a, [hl]
 	or a
 	jp nz, .asm_22d26
+IF DEF(LANG_EN)
+	ld hl, $0
+ENDC
 	call Func_222b7
 	call Func_223b8
 .asm_22d26: ; 22d26 (8:6d26)
@@ -6826,6 +6829,9 @@ Func_22cd0: ; 22cd0
 	ld de, $5e
 	add hl, de
 	ld [hl], $ff
+IF DEF(LANG_EN)
+	ld hl, $0
+ENDC
 	call Func_21160
 	call GetHLAtSPPlus6
 	ld de, $5e
@@ -7382,6 +7388,7 @@ Func_22e48: ; 22e48 (8:6e48)
 	ret
 
 Pointers_2313a: ; 2313a
+IF DEF(LANG_JP)
 	dw Data_23140
 	dw Data_23150
 	dw $0
@@ -7391,6 +7398,25 @@ Data_23140: ; 23140
 
 Data_23150: ; 23150
 	dstr "(つかえない)!"
+ELIF DEF(LANG_EN)
+	dw Text_2358f_en
+	dw Text_235a0_en
+	dw Text_235b0_en
+	dw Text_235be_en
+	dw NULL
+
+Text_2358f_en:
+	dstr "You can't use it"
+
+Text_235a0_en:
+	dstr "when you play a"
+
+Text_235b0_en:
+	dstr "communication"
+
+Text_235be_en:
+	dstr "battle."
+ENDC
 
 Battle_ItemMenu: ; 23159
 	read_hl_from wCurRobotPointer
@@ -7691,14 +7717,22 @@ Func_2391e:: ; 2391e
 	push af
 	ld l, $b
 	push hl
+IF DEF(LANG_JP)
 	ld c, $b
 	ld e, $3
 	ld a, $4
+ELIF DEF(LANG_EN)
+	ld c, $14
+	ld e, $0
+	xor a
+ENDC
 	call PushBGMapRegion
 	pop bc
 	pop af
+IF DEF(LANG_JP)
 	cp $4
 	jp z, .asm_23a31
+ENDC
 	cp $3
 	jp z, .asm_23a05
 	cp $2
@@ -7744,6 +7778,7 @@ Func_2391e:: ; 2391e
 	jp .asm_23a64
 
 .asm_23a05: ; 23a05 (8:7a05)
+IF DEF(LANG_JP)
 	call FillVisibleAreaWithBlankTile
 	call Func_237be
 	ld l, $12
@@ -7760,6 +7795,7 @@ Func_2391e:: ; 2391e
 	jp .asm_23a64
 
 .asm_23a31: ; 23a31 (8:7a31)
+ENDC
 	call LoadDebugSaveState
 	callba_hli Func_17488
 	call Func_2097
@@ -7792,14 +7828,22 @@ Func_23a68:: ; 23a68
 	push af
 	ld l, $b
 	push hl
+IF DEF(LANG_JP)
 	ld c, $b
 	ld e, $3
 	ld a, $4
+ELIF DEF(LANG_EN)
+	ld c, $14
+	ld e, $0
+	xor a
+ENDC
 	call PushBGMapRegion
 	pop bc
 	pop af
+IF DEF(LANG_JP)
 	cp $3
 	jp z, .asm_23b2a
+ENDC
 	cp $2
 	jp z, .asm_23afe
 	cp $1
@@ -7827,6 +7871,7 @@ Func_23a68:: ; 23a68
 	jp .asm_23b5d
 
 .asm_23afe: ; 23afe (8:7afe)
+IF DEF(LANG_JP)
 	call FillVisibleAreaWithBlankTile
 	call Func_237be
 	ld l, $12
@@ -7843,6 +7888,7 @@ Func_23a68:: ; 23a68
 	jp .asm_23b5d
 
 .asm_23b2a: ; 23b2a (8:7b2a)
+ENDC
 	call LoadDebugSaveState
 	callba_hli Func_17488
 	call Func_2097
@@ -7852,4 +7898,3 @@ Func_23a68:: ; 23a68
 .asm_23b5d: ; 23b5d (8:7b5d)
 	ld hl, $8000
 	ret
-
