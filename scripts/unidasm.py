@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import abc
 import argparse
 import atexit
 import dataclasses
@@ -86,7 +87,10 @@ class Instruction:
 
     def __str__(self):
         if self.operands:
-            operands = ", ".join(self.operands)
+            if self.should_mask_a_dest_operand():
+                operands = self.operands[-1]
+            else:
+                operands = ", ".join(self.operands)
             insn = f"{self.mnemonic} {operands}"
         else:
             insn = self.mnemonic
@@ -122,6 +126,12 @@ class Instruction:
 
     def __len__(self):
         return len(self.raw)
+
+    def should_mask_a_dest_operand(self):
+        return (
+            self.mnemonic in {"add", "adc", "sub", "sbc", "or", "and", "xor", "cp"}
+            and self.operands[0] == "a"
+        )
 
 
 def rgbds_str_to_int(x: str):
@@ -166,21 +176,14 @@ def rom_offset_to_addr(offset: int) -> tuple[int, int]:
 
 
 def sanitize_operand(operand: str):
-    return (
+    result = (
         operand.lower()
         .replace("(", "[")
         .replace(")", "]")
         .replace("hl+", "hli")
         .replace("hl-", "hld")
     )
-
-
-class Macro:
-    def __init_subclass__(cls):
-        pass
-
-    def __call__(self, instructions: list[Instruction], symbols: SymbolsDict):
-        pass
+    return re.sub(r"^\$0*([0-9a-f])", r"$\1", result)
 
 
 def any_int(arg: str):

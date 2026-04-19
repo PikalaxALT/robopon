@@ -3105,14 +3105,7 @@ Func_216e2: ; 216e2 (8:56e2)
 	ld a, [hl]
 	ld l, a
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhl 7
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $e
@@ -6178,9 +6171,21 @@ Data_228cb: ; 228cb
 	dw 10, 20, 30, 1000
 
 Func_228d3:: ; 228d3
+IF DEF(LANG_JP)
 	ld hl, -$f0
+ELIF DEF(LANG_EN)
+	ld hl, -$fa
+ENDC
 	add hl, sp
 	ld sp, hl
+IF DEF(LANG_EN)
+	ld hl, $f0
+	add hl, sp
+	swap_de_hl
+	ld hl, Data_22c38_en
+	ld bc, $a
+	call MemCopy
+ENDC
 	read_hl_from wCurRobotPointer
 	ld de, $e4
 	add hl, de
@@ -6203,14 +6208,7 @@ Func_228d3:: ; 228d3
 	add hl, de
 	ld l, [hl]
 	ld h, $0
-	ld e, l
-	ld d, h
-	add hl, hl
-	ld c, l
-	ld b, h
-	add hl, hl
-	add hl, de
-	add hl, bc
+	mulhl 7
 	ld c, l
 	ld b, h
 	read_hl_from_sp_plus $f0
@@ -6444,42 +6442,16 @@ Func_228d3:: ; 228d3
 	add hl, sp
 	ld [hl], $1
 .asm_22ae7: ; 22ae7 (8:6ae7)
-	read_hl_from_sp_plus $ec
-	ld de, $d
-	add hl, de
-	push hl
-	ld hl, $d7
-	add hl, sp
-	ld a, [hl]
-	inc a
-	ld hl, $d7
-	add hl, sp
-	ld [hl], a
-	dec a
-	ld l, a
-	ld h, $0
-	add hl, hl
-	swap_de_hl
-	ld hl, $d8
-	add hl, sp
-	add hl, de
-	ld a, [hl]
-	inc hl
-	ld h, [hl]
-	ld l, a
-	pop de
-	call strcpy
-	ld de, Text_2010a
-	call strcpy
+IF DEF(LANG_EN)
 	ld hl, $d2
 	add hl, sp
 	ld a, [hl]
 	cp $2
 	jp z, .asm_22baa
 	cp $1
-	jp z, .asm_22b6f
+	jp z, .asm_22f44
 	or a
-	jp nz, .asm_22baa
+	jp z, .asm_22baa
 	read_hl_from_sp_plus $ee
 	ld de, $9
 	add hl, de
@@ -6505,16 +6477,8 @@ Func_228d3:: ; 228d3
 	inc hl
 	ld h, [hl]
 	ld l, a
-	ld de, Text_20145
-	call strcpy
-	set_farcall_addrs_hli Func_dd29
-	ld hl, $d4
-	add hl, sp
-	ld a, [hl]
-	call FarCall
-	jp .asm_22baa
-
-.asm_22b6f: ; 22b6f (8:6b6f)
+	ld de, Data_dccbe
+	call Func_2026f_en
 	ld hl, $d5
 	add hl, sp
 	ld a, [hl]
@@ -6534,8 +6498,139 @@ Func_228d3:: ; 228d3
 	inc hl
 	ld h, [hl]
 	ld l, a
+	ld de, Data_dccc0
+	call Func_2026f_en
+ENDC
+	read_hl_from_sp_plus $ec
+	ld de, $d
+	add hl, de
+	push hl
+	ld hl, $d7
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $d7
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $0
+	add hl, hl
+	swap_de_hl
+	ld hl, $d8
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+	pop de
+	call strcpy
+IF DEF(LANG_JP)
+	ld de, Text_2010a
+	call strcpy
+	ld hl, $d2
+	add hl, sp
+	ld a, [hl]
+	cp $2
+	jp z, .asm_22baa
+	cp $1
+	jp z, .asm_22b6f
+	or a
+	jp nz, .asm_22baa
+	read_hl_from_sp_plus $ee
+	ld de, $9
+	add hl, de
+	ld a, $4
+	or [hl]
+	ld [hl], a
+ELIF DEF(LANG_EN)
+	ld de, Data_dccc2
+	call Func_2026f_en
+	set_farcall_addrs_hli Func_dd29
+	ld hl, $d4
+	add hl, sp
+	ld a, [hl]
+	call FarCall
+	jp .asm_22baa
+
+.asm_22f44:
+ENDC
+	ld hl, $d5
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $d5
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $0
+	add hl, hl
+	swap_de_hl
+	ld hl, $d6
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+IF DEF(LANG_JP)
+	ld de, Text_20145
+	call strcpy
+	set_farcall_addrs_hli Func_dd29
+	ld hl, $d4
+	add hl, sp
+	ld a, [hl]
+	call FarCall
+	jp .asm_22baa
+
+.asm_22b6f: ; 22b6f (8:6b6f)
+ELIF DEF(LANG_EN)
+	ld de, Data_dccb4
+	call Func_2026f_en
+ENDC
+	ld hl, $d5
+	add hl, sp
+	ld a, [hl]
+	inc a
+	ld hl, $d5
+	add hl, sp
+	ld [hl], a
+	dec a
+	ld l, a
+	ld h, $0
+	add hl, hl
+	swap_de_hl
+	ld hl, $d6
+	add hl, sp
+	add hl, de
+	ld a, [hl]
+	inc hl
+	ld h, [hl]
+	ld l, a
+IF DEF(LANG_JP)
 	ld de, Text_20151
 	call strcpy
+ELIF DEF(LANG_EN)
+	ld de, Data_dcce1
+	call Func_2026f_en
+	ld c, l
+	ld b, h
+	read_hl_from_sp_plus $ec
+	ld de, $d
+	add hl, de
+	swap_de_hl
+	ld l, c
+	ld h, b
+	call strcpy
+	ld c, l
+	ld b, h
+	ld l, c
+	ld h, b
+	ld de, Data_dcce3
+	call Func_2026f_en
+ENDC
 	set_farcall_addrs_hli Func_dd29
 	ld hl, $d4
 	add hl, sp
@@ -6608,6 +6703,20 @@ Func_228d3:: ; 228d3
 	jp .asm_22cb6
 
 .asm_22c2a: ; 22c2a (8:6c2a)
+IF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_17e95
+	ld c, $5
+	ld e, $14
+	ld hl, $d
+	call FarCall
+	set_farcall_addrs_hli PrintMapText_
+	ld c, $8
+	ld hl, $f0
+	add hl, sp
+	swap_de_hl
+	ld hl, $10e
+	call FarCall
+ENDC
 	call FillVisibleAreaWithBlankTile
 	set_farcall_addrs_hli Func_61424
 	ld c, $1
