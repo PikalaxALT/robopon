@@ -3362,29 +3362,46 @@ Func_2543f: ; 2543f (9:543f)
 	jp z, .asm_254c4
 	cp $18
 	jp nz, .asm_254f4
+IF DEF(LANG_JP)
 	ld hl, Text_24069
 	call Func_24010
 	ld hl, Text_2433a
 	call Func_24023
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc67b
+	call Func_2407b_en
+ENDC
 	call Func_24036
 	jp .asm_25662
 
 .asm_254c4: ; 254c4 (9:54c4)
+IF DEF(LANG_JP)
 	ld hl, Text_24069
 	call Func_24010
 	ld hl, Text_2432c
 	call Func_24023
+ENDC
 	ld hl, sp+$1b
 	ld a, [hl]
 	or a
 	jp nz, .asm_254e0
+IF DEF(LANG_JP)
 	ld hl, Text_24347
 	call Func_24010
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc633
+	call Func_24094_en
+ENDC
 	jp .asm_254e6
 
 .asm_254e0: ; 254e0 (9:54e0)
+IF DEF(LANG_JP)
 	ld hl, Text_24342
 	call Func_24010
+ELIF DEF(LANG_EN)
+	ld hl, Data_dcd7c
+	call Func_24094_en
+ENDC
 .asm_254e6: ; 254e6 (9:54e6)
 	call Func_24036
 	read_hl_from_sp_plus $16
@@ -3400,8 +3417,13 @@ Func_2543f: ; 2543f (9:543f)
 	jp z, .asm_25532
 	cp $fe
 	jp nz, .asm_25662
+IF DEF(LANG_JP)
 	ld hl, Text_24247
 	call Func_24010
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc231
+	call Func_2407b_en
+ENDC
 	read_hl_from_sp_plus $16
 	ld de, $17
 	add hl, de
@@ -3418,6 +3440,11 @@ Func_2543f: ; 2543f (9:543f)
 	ld a, [hl]
 	xor $1
 	call Func_2465a
+IF DEF(LANG_EN)
+	ld hl, Data_dc244
+	call Func_2407b_en
+	call Func_24036
+ENDC
 	jp .asm_25662
 
 .asm_25532: ; 25532 (9:5532)
@@ -3437,8 +3464,13 @@ Func_2543f: ; 2543f (9:543f)
 	ld b, h
 	push bc
 	push af
+IF DEF(LANG_JP)
 	ld hl, Text_2406f
 	call Func_24010
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc9cf
+	call Func_24037_en
+ENDC
 	set_farcall_addrs_hli Func_56ba1
 	pop af
 	ld c, a
@@ -3448,9 +3480,15 @@ Func_2543f: ; 2543f (9:543f)
 	ld hl, sp+$2
 	call FarCall
 	ld hl, sp+$2
+IF DEF(LANG_JP)
 	call Func_24023
 	ld hl, Text_24067
 	call Func_24010
+ELIF DEF(LANG_EN)
+	call Func_24010
+	ld hl, Data_dc9d1
+	call Func_24037_en
+ENDC
 	read_hl_from_sp_plus $18
 	ld de, $17
 	add hl, de
@@ -3530,7 +3568,11 @@ Func_2543f: ; 2543f (9:543f)
 	ld a, [bc]
 	ld l, a
 	ld h, $0
+IF DEF(LANG_JP)
 	mulhl 19
+ELIF DEF(LANG_EN)
+	mulhl 21
+ENDC
 	ld de, Moves - $13
 	add hl, de
 	push hl
@@ -3563,12 +3605,17 @@ Func_2543f: ; 2543f (9:543f)
 	jp .asm_25662
 
 .asm_2564d: ; 2564d (9:564d)
+IF DEF(LANG_JP)
 	ld hl, Text_24252
 	call Func_24010
 	ld hl, Text_24278
 	call Func_24023
 	ld hl, Text_241ce
 	call Func_24010
+ELIF DEF(LANG_EN)
+	ld hl, Data_dcd92
+	call Func_2407b_en
+ENDC
 	call Func_24045
 .asm_25662: ; 25662 (9:5662)
 	read_hl_from_sp_plus $18

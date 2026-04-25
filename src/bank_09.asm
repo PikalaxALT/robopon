@@ -99,7 +99,7 @@ Func_2407b_en::
 	pop bc
 	ret
 
-Func_24094_en:
+Func_24094_en::
 	push hl
 	call Func_24059_en
 	pop hl

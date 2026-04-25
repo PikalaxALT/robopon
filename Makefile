@@ -49,6 +49,7 @@ endif
 BUILDDIR := build/$(shortname)
 BUILD_SUBDIRS := src maps
 ROM := robo$(shortname).gbc
+BASEROM := baserom-$(shortname).gbc
 dummy := $(foreach dir,$(BUILD_SUBDIRS),$(shell mkdir -p $(BUILDDIR)/$(dir)))
 
 RGBASM_OPTS  = -D $(GAME_VERSION) -D LANG_$(GAME_LANGUAGE)
@@ -197,6 +198,6 @@ $(ALL_OBJS): $(BUILDDIR)/%.o: %.asm $$(%_dep)
 	rgbasm $(RGBASM_OPTS) -o $@ $<
 
 $(ROM): $(ALL_OBJS) layout.link
-	rgblink $(RGBLINK_OPTS) -l layout.link -n $*.sym -m $*.map -o $@ $(ALL_OBJS)
+	rgblink $(RGBLINK_OPTS) -l layout.link -n $*.sym -m $*.map -O $(BASEROM) -o $@ $(ALL_OBJS)
 	./trim.py $@
 	rgbfix $(RGBFIX_OPTS) $@
