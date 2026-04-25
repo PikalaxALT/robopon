@@ -2162,6 +2162,7 @@ Func_24c0b: ; 24c0b
 	read_hl_from_sp_plus $39
 	ld de, $d
 	add hl, de
+IF DEF(LANG_JP)
 	call Func_24010
 	ld hl, Text_24069
 	call Func_24010
@@ -2191,6 +2192,20 @@ Func_24c0b: ; 24c0b
 	call Func_24010
 	ld hl, Text_24180
 	call Func_24010
+ELIF DEF(LANG_EN)
+	call Func_24023
+	ld hl, Data_dcd31
+	call Func_2407b_en
+	pop bc
+	read_hl_from_sp_plus $37
+	ld de, $75
+	add hl, de
+	ld [hl], c
+	read_hl_from_sp_plus $3a
+	ld de, $23
+	add hl, de
+	ld [hl], c
+ENDC
 	call Func_24036
 	callba_hli Func_d767
 .asm_24ccc: ; 24ccc (9:4ccc)
@@ -2919,6 +2934,26 @@ Func_24c0b: ; 24c0b
 	add sp, $34
 	ret
 
+IF DEF(LANG_EN)
+Data_24cd0_en:
+	dw $0000
+	dw $40a1
+	dw $41b3
+	dw $420e
+	dw $427e
+	dw $42d3
+	dw $433a
+	dw $4388
+	dw $43d1
+	dw $4417
+	dw $401f
+	dw $401f
+	dw $401f
+	dw $401f
+	dw $401f
+	dw $401f
+ENDC
+
 Func_251d1: ; 251d1
 	push bc
 	push bc
@@ -2990,12 +3025,14 @@ Func_251d1: ; 251d1
 	ld [hl], a
 	call Func_24001
 	xor a
+IF DEF(LANG_JP)
 	read_hl_from_sp_plus $b
 	ld de, $d
 	add hl, de
 	call Func_24010
 	ld hl, Text_24069
 	call Func_24010
+ENDC
 	call GetHLAtSPPlus9
 	ld de, $75
 	add hl, de
@@ -3008,13 +3045,30 @@ Func_251d1: ; 251d1
 	ld a, [hl]
 	cp $a
 	jp z, .asm_25395
+IF DEF(LANG_EN)
+	call GetHLAtSPPlus9
+	ld de, $75
+	add hl, de
+	ld a, [hl]
+	cp $5
+	jp z, .asm_24db3
+	read_hl_from_sp_plus $b
+	ld de, $d
+	add hl, de
+	call Func_24023
+.asm_24db3:
+ENDC
 	call GetHLAtSPPlus9
 	ld de, $75
 	add hl, de
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
+IF DEF(LANG_JP)
 	ld de, Pointers_240ce
+ELIF DEF(LANG_EN)
+	ld de, Data_24cd0_en
+ENDC
 	add hl, de
 	ld e, [hl]
 	inc hl
@@ -3137,10 +3191,12 @@ Func_251d1: ; 251d1
 	ld de, $22
 	add hl, de
 	ld [hl], a
+IF DEF(LANG_JP)
 	ld hl, Text_2406d
 	call Func_24010
 	ld hl, Text_24180
 	call Func_24010
+ENDC
 	xor a
 	call Func_24036
 	callba_hli Func_d767

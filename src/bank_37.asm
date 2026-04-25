@@ -284,7 +284,15 @@ INCBIN "baserom-sun-en.gbc", $dcce3, $2
 
 Data_dcce5::
 
-INCBIN "baserom-sun-en.gbc", $dcce5, $6e
+INCBIN "baserom-sun-en.gbc", $dcce5, $4c
+
+Data_dcd31::
+
+INCBIN "baserom-sun-en.gbc", $dcd31, $2
+
+Data_dcd33::
+
+INCBIN "baserom-sun-en.gbc", $dcd33, $20
 
 Data_dcd53::
 
