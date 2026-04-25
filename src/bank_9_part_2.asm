@@ -951,6 +951,11 @@ Func_24611: ; 24611
 Bank9_DamageOrHeal: ; 24620 (9:4620)
 	push af
 	push de
+IF DEF(LANG_EN)
+	set_farcall_addrs_hli Func_de228
+	ld hl, $2
+	call FarCall
+ENDC
 	set_farcall_addrs_hli DamageOrHeal
 	pop de
 	pop af
@@ -1003,13 +1008,13 @@ Func_2466d: ; 2466d (9:466d)
 	ld hl, sp+$3
 	ld a, [hl]
 	or a
-	jp nz, Func_2469a
+	jp nz, .asm_2469a
 	ld hl, $0
-	jp Func_2469d
+	jp .asm_2469d
 
-Func_2469a: ; 2469a (9:469a)
+.asm_2469a: ; 2469a (9:469a)
 	ld hl, $2f
-Func_2469d: ; 2469d (9:469d)
+.asm_2469d: ; 2469d (9:469d)
 	add hl, de
 	swap_de_hl
 	ld hl, $18
@@ -1017,7 +1022,7 @@ Func_2469d: ; 2469d (9:469d)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_246c2
+	jp nz, .asm_246c2
 	push de
 	ld hl, sp+$5
 	ld c, [hl]
@@ -1030,12 +1035,12 @@ Func_2469d: ; 2469d (9:469d)
 	or [hl]
 	ld [hl], a
 	pop de
-	jp Func_246c5
+	jp .asm_246c5
 
-Func_246c2: ; 246c2 (9:46c2)
-	jp Func_2472d
+.asm_246c2: ; 246c2 (9:46c2)
+	jp .asm_2472d
 
-Func_246c5: ; 246c5 (9:46c5)
+.asm_246c5: ; 246c5 (9:46c5)
 	push de
 	ld a, $2d
 	call OverworldPlaySFX
@@ -1051,23 +1056,33 @@ Func_246c5: ; 246c5 (9:46c5)
 	ld hl, sp+$5
 	ld a, [hl]
 	or a
-	jp z, Func_24701
+	jp z, .asm_24701
+IF DEF(LANG_JP)
 	ld hl, Text_24071
 	call Func_24010
 	ld hl, Text_241eb
 	call Func_24023
 	ld hl, Text_241f1
 	call Func_24010
-	jp Func_24713
+ELIF DEF(LANG_EN)
+	ld hl, Data_dca25
+	call Func_2407b_en
+ENDC
+	jp .asm_24713
 
-Func_24701: ; 24701 (9:4701)
+.asm_24701: ; 24701 (9:4701)
+IF DEF(LANG_JP)
 	ld hl, Text_24069
 	call Func_24010
 	ld hl, Text_241eb
 	call Func_24023
 	ld hl, Text_241b9
 	call Func_24010
-Func_24713: ; 24713 (9:4713)
+ELIF DEF(LANG_EN)
+	ld hl, Data_dca38
+	call Func_2407b_en
+ENDC
+.asm_24713: ; 24713 (9:4713)
 	call Func_24045
 	pop de
 	ld hl, $22
@@ -1083,7 +1098,7 @@ Func_24713: ; 24713 (9:4713)
 	add hl, de
 	or [hl]
 	ld [hl], a
-Func_2472d: ; 2472d (9:472d)
+.asm_2472d: ; 2472d (9:472d)
 	pop bc
 	pop bc
 	ret
@@ -1109,6 +1124,7 @@ Func_24749: ; 24749 (9:4749)
 	jp FarCall
 
 Func_24759: ; 24759 (9:4759)
+IF DEF(LANG_JP)
 	push de
 	ld l, a
 	ld h, $0
@@ -1130,6 +1146,7 @@ Func_24759: ; 24759 (9:4759)
 	call strcpy
 	pop bc
 	ret
+ENDC
 
 Func_24779: ; 24779 (9:4779)
 	push af
@@ -1148,7 +1165,32 @@ Func_2478b: ; 2478b (9:478b)
 	jp FarCall
 
 Data_2479d: ; 2479d
-	db $0, $0, $26, $66
+	bigdx 4, $2666
+
+IF DEF(LANG_EN)
+Data_24280_en:
+	bigdx 4, $3240
+
+Data_24284_en:
+	dw $40c2
+	dw $41d9
+	dw $4231
+	dw $429f
+	dw $431b
+	dw $4376
+	dw $43a1
+	dw $43f0
+	dw $4439
+	dw $401f
+	dw $401f
+	dw $401f
+	dw $401f
+	dw $401f
+	dw $40d3
+	dw $410c
+	dw $4145
+	dw $416f
+ENDC
 
 Func_247a1: ; 247a1 (9:47a1)
 	add sp, -$16
@@ -1162,20 +1204,20 @@ Func_247a1: ; 247a1 (9:47a1)
 	add hl, de
 	ld a, [hl]
 	cp $1
-	jp nz, Func_247c3
+	jp nz, .asm_247c3
 	ld hl, sp+$13
 	ld a, [hl]
 	xor $1
 	ld hl, sp+$13
 	ld [hl], a
-Func_247c3: ; 247c3 (9:47c3)
+.asm_247c3: ; 247c3 (9:47c3)
 	ld hl, sp+$a
 	ld [hl], $0
-Func_247c7: ; 247c7 (9:47c7)
+.asm_247c7: ; 247c7 (9:47c7)
 	ld hl, sp+$a
 	ld a, [hl]
 	cp $2
-	jp nc, Func_24bd4
+	jp nc, .asm_24bd4
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -1185,13 +1227,13 @@ Func_247c7: ; 247c7 (9:47c7)
 	ld hl, sp+$13
 	ld a, [hl]
 	or a
-	jp nz, Func_247e8
+	jp nz, .asm_247e8
 	ld hl, $0
-	jp Func_247eb
+	jp .asm_247eb
 
-Func_247e8: ; 247e8 (9:47e8)
+.asm_247e8: ; 247e8 (9:47e8)
 	ld hl, $2f
-Func_247eb: ; 247eb (9:47eb)
+.asm_247eb: ; 247eb (9:47eb)
 	add hl, de
 	write_hl_to_sp_plus $13
 	ld hl, sp+$13
@@ -1213,92 +1255,154 @@ Func_247eb: ; 247eb (9:47eb)
 	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
+IF DEF(LANG_JP)
 	call Func_24010
 	ld hl, Text_24069
 	call Func_24010
+ELIF DEF(LANG_EN)
+	call Func_24023
+ENDC
 	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
 	ld a, [hl]
 	and $3
-	jp z, Func_2486e
+	jp z, .asm_2486e
 	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
 	ld a, [hl]
 	and $2
-	jp z, Func_24858
+	jp z, .asm_24858
+IF DEF(LANG_JP)
 	ld hl, Text_240b9
 	call Func_24023
-	jp Func_2485e
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc45c
+	call Func_2407b_en
+ENDC
+	jp .asm_2485e
 
-Func_24858: ; 24858 (9:4858)
+.asm_24858: ; 24858 (9:4858)
+IF DEF(LANG_JP)
 	ld hl, Text_240bf
 	call Func_24023
-Func_2485e: ; 2485e (9:485e)
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc483
+	call Func_2407b_en
+ENDC
+.asm_2485e: ; 2485e (9:485e)
 	ld hl, sp+$14
 	ld [hl], $1
+IF DEF(LANG_JP)
 	ld hl, Text_2406b
 	call Func_24010
 	ld hl, Text_2417a
 	call Func_24010
-Func_2486e: ; 2486e (9:486e)
+ENDC
+.asm_2486e: ; 2486e (9:486e)
 	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_248a9
+	jp z, .asm_248a9
+IF DEF(LANG_EN)
+	read_hl_from_sp_plus $21
+	ld de, $71
+	add hl, de
+	inc hl
+	ld a, [hl]
+	and $3
+	jp z, .asm_24390_en
+	call Func_24036
+	call Func_24001
+	read_hl_from_sp_plus $23
+	ld de, $d
+	add hl, de
+	call Func_24010
+.asm_24390_en:
+	read_hl_from_sp_plus $21
+	ld de, $75
+	add hl, de
+	ld a, [hl]
+	cp $6
+	jp nz, .asm_243af_en
+	ld hl, Data_dc2fe
+	call Func_2407b_en
+	read_hl_from_sp_plus $23
+	ld de, $d
+	add hl, de
+	call Func_24010
+.asm_243af_en:
+ENDC
 	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld l, [hl]
 	ld h, $0
 	add hl, hl
+IF DEF(LANG_JP)
 	ld de, Pointers_240ce
+ELIF DEF(LANG_EN)
+	ld de, Data_24280_en
+ENDC
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	swap_de_hl
+IF DEF(LANG_JP)
 	call Func_24023
+ELIF DEF(LANG_EN)
+	call Func_2407b_en
+ENDC
 	ld hl, sp+$14
 	ld [hl], $1
+IF DEF(LANG_JP)
 	ld hl, Text_2406b
 	call Func_24010
 	ld hl, Text_2417a
 	call Func_24010
 	ld hl, sp+$14
 	ld [hl], $1
-Func_248a9: ; 248a9 (9:48a9)
+ENDC
+.asm_248a9: ; 248a9 (9:48a9)
 	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
 	ld a, [hl]
 	and $4
-	jp nz, Func_248c7
+	jp nz, .asm_248c7
 	read_hl_from_sp_plus $11
 	ld de, $74
 	add hl, de
 	ld a, $a
 	add [hl]
 	ld [hl], a
-	jp Func_248f7
+	jp .asm_248f7
 
-Func_248c7: ; 248c7 (9:48c7)
+.asm_248c7: ; 248c7 (9:48c7)
 	ld hl, sp+$14
 	ld [hl], $1
+IF DEF(LANG_JP)
 	ld hl, Text_240c6
 	call Func_24023
+ENDC
 	ld a, $64
 	call Func_24600
 	cp $1e
-	jp nc, Func_248f1
+	jp nc, .asm_248f1
+IF DEF(LANG_JP)
 	ld hl, Text_24233
 	call Func_24010
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc50d
+	call Func_2407b_en
+ENDC
 	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
@@ -1306,19 +1410,25 @@ Func_248c7: ; 248c7 (9:48c7)
 	ld a, [hl]
 	and $fb
 	ld [hl], a
-	jp Func_248f7
+	jp .asm_248f7
 
-Func_248f1: ; 248f1 (9:48f1)
+.asm_248f1: ; 248f1 (9:48f1)
+IF DEF(LANG_JP)
 	ld hl, Text_2423d
 	call Func_24010
-Func_248f7: ; 248f7 (9:48f7)
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc4b7
+	call Func_2407b_en
+ENDC
+.asm_248f7: ; 248f7 (9:48f7)
 	ld hl, sp+$14
 	ld a, [hl]
 	or a
-	jp z, Func_24901
+	jp z, .asm_24901
 	call Func_24036
-Func_24901: ; 24901 (9:4901)
+.asm_24901: ; 24901 (9:4901)
 	call Func_24001
+IF DEF(LANG_JP)
 	ld hl, sp+$14
 	ld [hl], $0
 	read_hl_from_sp_plus $13
@@ -1328,23 +1438,29 @@ Func_24901: ; 24901 (9:4901)
 	ld hl, Text_24069
 	call Func_24010
 	ld bc, $0
+ELIF DEF(LANG_EN)
+	ld c, $0
+	ld hl, $0
+	write_hl_to_sp_plus $1f
+ENDC
 	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $1
-	jp z, Func_24a7a
+	jp z, .asm_24a7a
 	cp $2
-	jp z, Func_249ea
+	jp z, .asm_249ea
 	cp $3
-	jp z, Func_24985
+	jp z, .asm_24985
 	cp $8
-	jp nz, Func_24b00
+	jp nz, .asm_24b00
 	read_hl_from_sp_plus $13
 	ld de, $13
 	add hl, de
 	ld l, [hl]
 	ld h, $0
+IF DEF(LANG_JP)
 	ld c, l
 	ld b, h
 	push bc
@@ -1371,10 +1487,32 @@ Func_24901: ; 24901 (9:4901)
 	call Func_24010
 	ld hl, Text_24067
 	call Func_24010
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $1f
+	ld c, $1
+	push bc
+	read_hl_from_sp_plus $25
+	ld de, $d
+	add hl, de
+	call Func_24010
+	ld hl, Data_dc3b2
+	call Func_24037_en
+	ld hl, sp+$03
+	push hl
+	read_hl_from_sp_plus $23
+	pop de
+	call Func_24744
+	ld hl, sp+$03
+	call Func_24023
+	ld hl, Data_dc3b4
+	call Func_24037_en
+	ld hl, Data_dc3b6
+	call Func_24059_en
+ENDC
 	pop bc
-	jp Func_24b00
+	jp .asm_24b00
 
-Func_24985: ; 24985 (9:4985)
+.asm_24985: ; 24985 (9:4985)
 	ld hl, sp+$b
 	ld c, l
 	ld b, h
@@ -1391,13 +1529,23 @@ Func_24985: ; 24985 (9:4985)
 	ld hl, sp+$c
 	ld l, [hl]
 	ld h, a
+IF DEF(LANG_JP)
 	ld c, l
 	ld b, h
 	ld a, c
 	or b
-	jp nz, Func_249ab
+	jp nz, .asm_249ab
 	ld bc, $1
-Func_249ab: ; 249ab (9:49ab)
+ELIF DEF(LANG_EN)
+	write_hl_to_sp_plus $1f
+	ld a, l
+	or h
+	jp nz, .asm_249ab
+	ld hl, $1
+	write_hl_to_sp_plus $1f
+ENDC
+.asm_249ab: ; 249ab (9:49ab)
+IF DEF(LANG_JP)
 	push bc
 	ld hl, sp+$16
 	ld [hl], $1
@@ -1423,9 +1571,26 @@ Func_249ab: ; 249ab (9:49ab)
 	ld hl, Text_24067
 	call Func_24010
 	pop bc
-	jp Func_24b00
+ELIF DEF(LANG_EN)
+	ld c, $1
+	push bc
+	ld hl, sp+$03
+	push hl
+	read_hl_from_sp_plus $23
+	pop de
+	call Func_24744
+	ld hl, sp+$03
+	call Func_24023
+	ld hl, Data_dc1ef
+	call Func_24037_en
+	ld hl, Data_dc1f1
+	call Func_24037_en
+	pop bc
+ENDC
+	jp .asm_24b00
 
-Func_249ea: ; 249ea (9:49ea)
+.asm_249ea: ; 249ea (9:49ea)
+IF DEF(LANG_JP)
 	push bc
 	ld hl, sp+$16
 	ld [hl], $1
@@ -1436,6 +1601,11 @@ Func_249ea: ; 249ea (9:49ea)
 	ld hl, Text_24225
 	call Func_24010
 	read_hl_from_sp_plus $13
+ELIF DEF(LANG_EN)
+	ld c, $1
+	push bc
+	read_hl_from_sp_plus $23
+ENDC
 	ld de, $73
 	add hl, de
 	ld a, [hl]
@@ -1444,6 +1614,7 @@ Func_249ea: ; 249ea (9:49ea)
 	rrca
 	rrca
 	and $f
+IF DEF(LANG_JP)
 	ld c, a
 	push bc
 	read_hl_from_sp_plus $15
@@ -1457,25 +1628,52 @@ Func_249ea: ; 249ea (9:49ea)
 	ld e, $0
 	pop hl
 	pop bc
-Func_24a28: ; 24a28 (9:4a28)
+ELIF DEF(LANG_EN)
+	ld l, a
+	push hl
+	read_hl_from_sp_plus $25
+	ld de, $76
+	add hl, de
+	write_hl_to_sp_plus $1b
+	ld c, $0
+	pop hl
+ENDC
+.asm_24a28: ; 24a28 (9:4a28)
+IF DEF(LANG_JP)
 	ld a, e
+ELIF DEF(LANG_EN)
+	ld a, c
+ENDC
 	cp $4
-	jp nc, Func_24a6a
+	jp nc, .asm_24a6a
+IF DEF(LANG_JP)
 	push bc
 	push de
 	ld a, c
 	and $1
-	jp z, Func_24a5c
+	jp z, .asm_24a5c
 	push hl
 	ld l, e
 	ld h, $0
 	add hl, hl
 	ld de, Pointers_24122
+ELIF DEF(LANG_EN)
+	push hl
+	push bc
+	ld a, l
+	and $1
+	jp z, .asm_24a5c
+	ld l, c
+	ld h, $0
+	add hl, hl
+	ld de, Data_dc2a0
+ENDC
 	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
 	swap_de_hl
+IF DEF(LANG_JP)
 	call Func_24010
 	ld hl, Text_24065
 	call Func_24010
@@ -1484,10 +1682,22 @@ Func_24a28: ; 24a28 (9:4a28)
 	add [hl]
 	ld [hl], a
 	cp $65
-	jp c, Func_24a5c
+	jp c, .asm_24a5c
 	ld a, $64
 	ld [hl], a
-Func_24a5c: ; 24a5c (9:4a5c)
+ELIF DEF(LANG_EN)
+	call Func_2407b_en
+	read_hl_from_sp_plus $1d
+	ld a, $14
+	add [hl]
+	ld [hl], a
+	cp $65
+	jp c, .asm_24a5c
+	read_hl_from_sp_plus $1d
+	ld [hl], $64
+ENDC
+.asm_24a5c: ; 24a5c (9:4a5c)
+IF DEF(LANG_JP)
 	pop de
 	inc e
 	pop bc
@@ -1498,17 +1708,36 @@ Func_24a5c: ; 24a5c (9:4a5c)
 	inc hl
 	inc hl
 	inc hl
-	jp Func_24a28
+ELIF DEF(LANG_EN)
+	pop bc
+	inc c
+	pop hl
+	ld a, l
+	rrca
+	and $7f
+	ld l, a
+	push hl
+	read_hl_from_sp_plus $1b
+	inc hl
+	inc hl
+	inc hl
+	write_hl_to_sp_plus $1b
+	pop hl
+ENDC
+	jp .asm_24a28
 
-Func_24a6a: ; 24a6a (9:4a6a)
+.asm_24a6a: ; 24a6a (9:4a6a)
+IF DEF(LANG_JP)
 	ld hl, Text_2406d
 	call Func_24010
 	ld hl, Text_24165
 	call Func_24010
+ENDC
 	pop bc
-	jp Func_24b00
+	jp .asm_24b00
 
-Func_24a7a: ; 24a7a (9:4a7a)
+.asm_24a7a: ; 24a7a (9:4a7a)
+IF DEF(LANG_JP)
 	push bc
 	ld hl, sp+$16
 	ld [hl], $1
@@ -1518,9 +1747,14 @@ Func_24a7a: ; 24a7a (9:4a7a)
 	call Func_24010
 	ld hl, Text_2422d
 	call Func_24010
+ELIF DEF(LANG_EN)
+	ld c, $1
+	push bc
+ENDC
 	read_hl_from_sp_plus $13
 	ld de, $73
 	add hl, de
+IF DEF(LANG_JP)
 	ld c, [hl]
 	push bc
 	read_hl_from_sp_plus $15
@@ -1534,15 +1768,26 @@ Func_24a7a: ; 24a7a (9:4a7a)
 	ld e, $0
 	pop hl
 	pop bc
-Func_24ab1: ; 24ab1 (9:4ab1)
+ELIF DEF(LANG_EN)
+	ld e, [hl]
+	ld c, $0
+	ld hl, sp+$02
+	ld [hl], c
+ENDC
+.asm_24ab1: ; 24ab1 (9:4ab1)
+IF DEF(LANG_JP)
 	ld a, e
+ELIF DEF(LANG_EN)
+	ld a, c
+ENDC
 	cp $4
-	jp nc, Func_24af3
+	jp nc, .asm_24af3
+IF DEF(LANG_JP)
 	push bc
 	push de
 	ld a, c
 	and $1
-	jp z, Func_24ae5
+	jp z, .asm_24ae5
 	push hl
 	ld l, e
 	ld h, $0
@@ -1557,16 +1802,81 @@ Func_24ab1: ; 24ab1 (9:4ab1)
 	ld hl, Text_24065
 	call Func_24010
 	pop hl
+ELIF DEF(LANG_EN)
+	ld a, e
+	and $1
+	jp z, .asm_24570
+	ld hl, sp+$02
+	ld a, [hl]
+	inc a
+	ld hl, sp+$02
+	ld [hl], a
+.asm_24570:
+	inc c
+	ld a, e
+	rrca
+	and $7f
+	ld e, a
+	push de
+	read_hl_from_sp_plus $1b
+	inc hl
+	inc hl
+	inc hl
+	write_hl_to_sp_plus $1b
+	pop de
+	jp .asm_24ab1
+.asm_24586:
+	ld hl, Data_dc046
+	call Func_24059_en
+	ld hl, Data_dc048
+	call Func_24059_en
+	ld hl, sp+$02
+	ld a, [hl]
+	cp $1
+	jp c, .asm_24af3
+	read_hl_from_sp_plus $23
+	ld de, $73
+	add hl, de
+	ld e, [hl]
+	ld hl, sp+$19
+	ld [hl], e
+	read_hl_from_sp_plus $23
+	ld de, $76
+	add hl, de
+	write_hl_to_sp_plus $19
+	ld hl, sp+$03
+	ld [hl], $0
+	ld hl, sp+$03
+	call Func_24010
+	ld c, $0
+	ld e, c
+.asm_245be:
+	ld a, c
+	cp $4
+	jp nc, .asm_24af3
+	ld hl, sp+$19
+	ld a, [hl]
+	and $1
+	jp z, .asm_24616
+	push de
+	read_hl_from_sp_plus $1b
+ENDC
 	ld a, $a
 	add [hl]
 	ld [hl], a
 	cp $65
-	jp c, Func_24ae5
+	jp c, .asm_24ae5
+IF DEF(LANG_JP)
 	ld a, $64
 	ld [hl], a
-Func_24ae5: ; 24ae5 (9:4ae5)
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1b
+	ld [hl], $64
+ENDC
+.asm_24ae5: ; 24ae5 (9:4ae5)
 	pop de
 	inc e
+IF DEF(LANG_JP)
 	pop bc
 	ld a, c
 	rrca
@@ -1575,29 +1885,95 @@ Func_24ae5: ; 24ae5 (9:4ae5)
 	inc hl
 	inc hl
 	inc hl
-	jp Func_24ab1
+ELIF DEF(LANG_EN)
+	ld hl, sp+$02
+	ld a, [hl]
+	cp $1
+	jp nz, .asm_245ed
+	jp .asm_24af3
+.asm_245ed:
+	ld hl, sp+$02
+	ld a, [hl]
+	dec a
+	ld l, a
+	ld a, e
+	cp l
+	jp nc, .asm_24604
+	push de
+	push bc
+	ld hl, Data_dc04c
+	call Func_24037_en
+	pop bc
+	pop de
+	jp .asm_24616
+.asm_24604:
+	ld hl, sp+$02
+	ld a, [hl]
+	dec a
+	cp e
+	jp nz, .asm_24616
+	push de
+	push bc
+	ld hl, Data_dc04a
+	call Func_24037_en
+	pop bc
+	pop de
+.asm_24616:
+	push de
+	inc c
+	ld hl, sp+$1b
+	ld a, [hl]
+	rrca
+	and $7f
+	ld hl, sp+$1b
+	ld [hl], a
+	read_hl_from_sp_plus $1b
+	inc hl
+	inc hl
+	inc hl
+	write_hl_to_sp_plus $1b
+	pop de
+ENDC
+	jp .asm_24ab1
 
-Func_24af3: ; 24af3 (9:4af3)
+.asm_24af3: ; 24af3 (9:4af3)
+IF DEF(LANG_JP)
 	ld hl, Text_2406d
 	call Func_24010
 	ld hl, Text_24160
 	call Func_24010
+ENDC
 	pop bc
-Func_24b00: ; 24b00 (9:4b00)
+.asm_24b00: ; 24b00 (9:4b00)
+IF DEF(LANG_JP)
 	push bc
 	ld hl, sp+$16
 	ld a, [hl]
 	or a
-	jp z, Func_24b0b
+ELIF DEF(LANG_EN)
+	inc c
+	dec c
+ENDC
+	jp z, .asm_24b0b
 	call Func_24036
-Func_24b0b: ; 24b0b (9:4b0b)
+.asm_24b0b: ; 24b0b (9:4b0b)
+IF DEF(LANG_JP)
 	pop bc
 	ld a, c
 	or b
-	jp z, Func_24b4d
+	jp z, .asm_24b4d
 	ld e, c
 	ld d, b
 	ld hl, sp+$13
+ELIF DEF(LANG_EN)
+	read_hl_from_sp_plus $1f
+	ld a, l
+	or h
+	jp z, .asm_24b4d
+	read_hl_from_sp_plus $1f
+	swap_de_hl
+	ld hl, sp+$23
+ENDC
 	ld a, [hl]
 	call Bank9_DamageOrHeal
 	ld c, l
@@ -1610,7 +1986,7 @@ Func_24b0b: ; 24b0b (9:4b0b)
 	ld [hl], b
 	ld a, c
 	or b
-	jp nz, Func_24b4d
+	jp nz, .asm_24b4d
 	ld hl, sp+$13
 	ld a, [hl]
 	call Func_2466d
@@ -1627,56 +2003,77 @@ Func_24b0b: ; 24b0b (9:4b0b)
 	ld hl, $65
 	add hl, de
 	ld [hl], a
-	jp Func_24bd4
+	jp .asm_24bd4
 
-Func_24b4d: ; 24b4d (9:4b4d)
+.asm_24b4d: ; 24b4d (9:4b4d)
 	read_hl_from_sp_plus $11
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $ff
-	jp z, Func_24ba5
+	jp z, .asm_24ba5
 	cp $5
-	jp z, Func_24b85
+	jp z, .asm_24b85
 	cp $4
-	jp nz, Func_24bc2
+	jp nz, .asm_24bc2
 	call Func_24001
 	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
+IF DEF(LANG_JP)
 	call Func_24023
 	ld hl, Text_24069
+ENDC
 	call Func_24010
+IF DEF(LANG_JP)
 	ld hl, Text_243ef
 	call Func_24023
+ELIF DEF(LANG_EN)
+	ld hl, Data_dcd53
+	call Func_2407b_en
+ENDC
 	call Func_24036
-	jp Func_24bc2
+	jp .asm_24bc2
 
-Func_24b85: ; 24b85 (9:4b85)
+.asm_24b85: ; 24b85 (9:4b85)
 	call Func_24001
 	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
+IF DEF(LANG_JP)
 	call Func_24023
 	ld hl, Text_24069
+ENDC
 	call Func_24010
+IF DEF(LANG_JP)
 	ld hl, Text_243f8
 	call Func_24023
+ELIF DEF(LANG_EN)
+	ld hl, Data_dc994
+	call Func_2407b_en
+ENDC
 	call Func_24036
-	jp Func_24bc2
+	jp .asm_24bc2
 
-Func_24ba5: ; 24ba5 (9:4ba5)
+.asm_24ba5: ; 24ba5 (9:4ba5)
 	call Func_24001
 	read_hl_from_sp_plus $13
 	ld de, $d
 	add hl, de
+IF DEF(LANG_JP)
 	call Func_24023
 	ld hl, Text_24069
+ENDC
 	call Func_24010
+IF DEF(LANG_JP)
 	ld hl, Text_24404
 	call Func_24023
+ELIF DEF(LANG_EN)
+	ld hl, Data_dcd6a
+	call Func_2407b_en
+ENDC
 	call Func_24036
-Func_24bc2: ; 24bc2 (9:4bc2)
+.asm_24bc2: ; 24bc2 (9:4bc2)
 	ld hl, sp+$a
 	ld a, [hl]
 	inc a
@@ -1687,9 +2084,9 @@ Func_24bc2: ; 24bc2 (9:4bc2)
 	xor $1
 	ld hl, sp+$13
 	ld [hl], a
-	jp Func_247c7
+	jp .asm_247c7
 
-Func_24bd4: ; 24bd4 (9:4bd4)
+.asm_24bd4: ; 24bd4 (9:4bd4)
 	call Func_24001
 	read_hl_from wCurRobotPointer
 	ld de, $16
@@ -1718,10 +2115,10 @@ Func_24c0b: ; 24c0b
 	add sp, -$34
 	ld l, $0
 	ld c, l
-Func_24c10: ; 24c10 (9:4c10)
+.asm_24c10: ; 24c10 (9:4c10)
 	ld a, l
 	cp $2
-	jp nc, Func_24cd6
+	jp nc, .asm_24cd6
 	push bc
 	push hl
 	read_hl_from wCurRobotPointer
@@ -1732,13 +2129,13 @@ Func_24c10: ; 24c10 (9:4c10)
 	ld d, [hl]
 	inc c
 	dec c
-	jp nz, Func_24c2f
+	jp nz, .asm_24c2f
 	ld hl, $0
-	jp Func_24c32
+	jp .asm_24c32
 
-Func_24c2f: ; 24c2f (9:4c2f)
+.asm_24c2f: ; 24c2f (9:4c2f)
 	ld hl, $2f
-Func_24c32: ; 24c32 (9:4c32)
+.asm_24c32: ; 24c32 (9:4c32)
 	add hl, de
 	write_hl_to_sp_plus $37
 	ld l, c
@@ -1759,7 +2156,7 @@ Func_24c32: ; 24c32 (9:4c32)
 	add hl, de
 	ld a, [hl]
 	cp $a
-	jp nz, Func_24ccc
+	jp nz, .asm_24ccc
 	push bc
 	call Func_24001
 	read_hl_from_sp_plus $39
@@ -1796,40 +2193,40 @@ Func_24c32: ; 24c32 (9:4c32)
 	call Func_24010
 	call Func_24036
 	callba_hli Func_d767
-Func_24ccc: ; 24ccc (9:4ccc)
+.asm_24ccc: ; 24ccc (9:4ccc)
 	pop hl
 	inc l
 	pop bc
 	ld a, c
 	xor $1
 	ld c, a
-	jp Func_24c10
+	jp .asm_24c10
 
-Func_24cd6: ; 24cd6 (9:4cd6)
+.asm_24cd6: ; 24cd6 (9:4cd6)
 	call Func_247a1
 	or a
-	jp z, Func_24ce0
-	jp Func_251ce
+	jp z, .asm_24ce0
+	jp .asm_251ce
 
-Func_24ce0: ; 24ce0 (9:4ce0)
+.asm_24ce0: ; 24ce0 (9:4ce0)
 	push af
 	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	cp $1
-	jp nz, Func_24cf5
+	jp nz, .asm_24cf5
 	ld c, $1
-	jp Func_24cf7
+	jp .asm_24cf7
 
-Func_24cf5: ; 24cf5 (9:4cf5)
+.asm_24cf5: ; 24cf5 (9:4cf5)
 	ld c, $0
-Func_24cf7: ; 24cf7 (9:4cf7)
+.asm_24cf7: ; 24cf7 (9:4cf7)
 	ld l, $0
-Func_24cf9: ; 24cf9 (9:4cf9)
+.asm_24cf9: ; 24cf9 (9:4cf9)
 	ld a, l
 	cp $2
-	jp nc, Func_2518e
+	jp nc, .asm_2518e
 	push bc
 	push hl
 	read_hl_from wCurRobotPointer
@@ -1840,13 +2237,13 @@ Func_24cf9: ; 24cf9 (9:4cf9)
 	ld d, [hl]
 	inc c
 	dec c
-	jp nz, Func_24d18
+	jp nz, .asm_24d18
 	ld hl, $0
-	jp Func_24d1b
+	jp .asm_24d1b
 
-Func_24d18: ; 24d18 (9:4d18)
+.asm_24d18: ; 24d18 (9:4d18)
 	ld hl, $2f
-Func_24d1b: ; 24d1b (9:4d1b)
+.asm_24d1b: ; 24d1b (9:4d1b)
 	add hl, de
 	write_hl_to_sp_plus $39
 	ld l, c
@@ -1864,7 +2261,7 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	add hl, de
 	ld a, [hl]
 	cp $9
-	jp nz, Func_24daf
+	jp nz, .asm_24daf
 	read_hl_from_sp_plus $39
 	ld de, $23
 	add hl, de
@@ -1915,9 +2312,9 @@ Func_24d1b: ; 24d1b (9:4d1b)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-	jp Func_25025
+	jp .asm_25025
 
-Func_24daf: ; 24daf (9:4daf)
+.asm_24daf: ; 24daf (9:4daf)
 	read_hl_from_sp_plus $39
 	ld de, $17
 	add hl, de
@@ -1975,7 +2372,7 @@ Func_24daf: ; 24daf (9:4daf)
 	add hl, de
 	ld a, [hl]
 	and $1
-	jp z, Func_24e3c
+	jp z, .asm_24e3c
 	ld hl, sp+$33
 	ld c, [hl]
 	ld hl, sp+$32
@@ -1991,15 +2388,15 @@ Func_24daf: ; 24daf (9:4daf)
 	ld a, [hl]
 	adc b
 	ld [hl], a
-	jp Func_24e60
+	jp .asm_24e60
 
-Func_24e3c: ; 24e3c (9:4e3c)
+.asm_24e3c: ; 24e3c (9:4e3c)
 	read_hl_from_sp_plus $38
 	ld de, $73
 	add hl, de
 	ld a, [hl]
 	and $10
-	jp z, Func_24e60
+	jp z, .asm_24e60
 	ld hl, sp+$33
 	ld c, [hl]
 	ld hl, sp+$32
@@ -2015,7 +2412,7 @@ Func_24e3c: ; 24e3c (9:4e3c)
 	ld a, [hl]
 	sbc b
 	ld [hl], a
-Func_24e60: ; 24e60 (9:4e60)
+.asm_24e60: ; 24e60 (9:4e60)
 	read_hl_from_sp_plus $38
 	ld de, $77
 	add hl, de
@@ -2080,7 +2477,7 @@ Func_24e60: ; 24e60 (9:4e60)
 	add hl, de
 	ld a, [hl]
 	and $4
-	jp z, Func_24ef1
+	jp z, .asm_24ef1
 	ld hl, sp+$33
 	ld c, [hl]
 	ld hl, sp+$32
@@ -2096,15 +2493,15 @@ Func_24e60: ; 24e60 (9:4e60)
 	ld a, [hl]
 	adc b
 	ld [hl], a
-	jp Func_24f15
+	jp .asm_24f15
 
-Func_24ef1: ; 24ef1 (9:4ef1)
+.asm_24ef1: ; 24ef1 (9:4ef1)
 	read_hl_from_sp_plus $38
 	ld de, $73
 	add hl, de
 	ld a, [hl]
 	and $40
-	jp z, Func_24f15
+	jp z, .asm_24f15
 	ld hl, sp+$33
 	ld c, [hl]
 	ld hl, sp+$32
@@ -2120,7 +2517,7 @@ Func_24ef1: ; 24ef1 (9:4ef1)
 	ld a, [hl]
 	sbc b
 	ld [hl], a
-Func_24f15: ; 24f15 (9:4f15)
+.asm_24f15: ; 24f15 (9:4f15)
 	read_hl_from_sp_plus $38
 	ld de, $7d
 	add hl, de
@@ -2163,14 +2560,14 @@ Func_24f15: ; 24f15 (9:4f15)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_24f71
+	jp z, .asm_24f71
 	read_hl_from_sp_plus $36
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $fe
-	jp nz, Func_25025
-Func_24f71: ; 24f71 (9:4f71)
+	jp nz, .asm_25025
+.asm_24f71: ; 24f71 (9:4f71)
 	read_hl_from_sp_plus $36
 	ld de, $3e
 	add hl, de
@@ -2220,7 +2617,7 @@ Func_24f71: ; 24f71 (9:4f71)
 	add hl, de
 	ld a, [hl]
 	and $2
-	jp z, Func_24fe7
+	jp z, .asm_24fe7
 	ld hl, sp+$31
 	ld c, [hl]
 	ld hl, sp+$30
@@ -2236,15 +2633,15 @@ Func_24f71: ; 24f71 (9:4f71)
 	ld a, [hl]
 	adc b
 	ld [hl], a
-	jp Func_2500b
+	jp .asm_2500b
 
-Func_24fe7: ; 24fe7 (9:4fe7)
+.asm_24fe7: ; 24fe7 (9:4fe7)
 	read_hl_from_sp_plus $36
 	ld de, $73
 	add hl, de
 	ld a, [hl]
 	and $20
-	jp z, Func_2500b
+	jp z, .asm_2500b
 	ld hl, sp+$31
 	ld c, [hl]
 	ld hl, sp+$30
@@ -2260,7 +2657,7 @@ Func_24fe7: ; 24fe7 (9:4fe7)
 	ld a, [hl]
 	sbc b
 	ld [hl], a
-Func_2500b: ; 2500b (9:500b)
+.asm_2500b: ; 2500b (9:500b)
 	read_hl_from_sp_plus $36
 	ld de, $7a
 	add hl, de
@@ -2277,14 +2674,14 @@ Func_2500b: ; 2500b (9:500b)
 	ld a, [hl]
 	adc b
 	ld [hl], a
-Func_25025: ; 25025 (9:5025)
+.asm_25025: ; 25025 (9:5025)
 	ld hl, sp+$36
 	ld [hl], $0
-Func_25029: ; 25029 (9:5029)
+.asm_25029: ; 25029 (9:5029)
 	ld hl, sp+$36
 	ld a, [hl]
 	cp $3
-	jp nc, Func_2511e
+	jp nc, .asm_2511e
 	ld hl, sp+$36
 	ld c, [hl]
 	ld b, $0
@@ -2294,7 +2691,7 @@ Func_25029: ; 25029 (9:5029)
 	add hl, bc
 	ld a, [hl]
 	or a
-	jp z, Func_25114
+	jp z, .asm_25114
 	ld hl, sp+$36
 	ld c, [hl]
 	ld b, $0
@@ -2310,7 +2707,7 @@ Func_25029: ; 25029 (9:5029)
 	read_hl_from_sp_plus $14
 	ld a, l
 	and $80
-	jp z, Func_25114
+	jp z, .asm_25114
 	read_hl_from_sp_plus $14
 	ld a, l
 	and $7f
@@ -2318,17 +2715,17 @@ Func_25029: ; 25029 (9:5029)
 	ld h, $0
 	ld a, l
 	cp $2b
-	jp nz, Func_25114
+	jp nz, .asm_25114
 	read_hl_from_sp_plus $14
 	ld de, $100
 	call DivideHLByDESigned
 	ld a, l
 	cp $2
-	jp z, Func_250e9
+	jp z, .asm_250e9
 	cp $1
-	jp z, Func_250bb
+	jp z, .asm_250bb
 	or a
-	jp nz, Func_25114
+	jp nz, .asm_25114
 	read_hl_from_sp_plus $e
 	push hl
 	ld hl, sp+$38
@@ -2354,9 +2751,9 @@ Func_25029: ; 25029 (9:5029)
 	ld a, [hl]
 	adc b
 	ld [hl], a
-	jp Func_25114
+	jp .asm_25114
 
-Func_250bb: ; 250bb (9:50bb)
+.asm_250bb: ; 250bb (9:50bb)
 	read_hl_from_sp_plus $e
 	push hl
 	ld hl, sp+$38
@@ -2382,9 +2779,9 @@ Func_250bb: ; 250bb (9:50bb)
 	ld a, [hl]
 	adc b
 	ld [hl], a
-	jp Func_25114
+	jp .asm_25114
 
-Func_250e9: ; 250e9 (9:50e9)
+.asm_250e9: ; 250e9 (9:50e9)
 	read_hl_from_sp_plus $e
 	push hl
 	ld hl, sp+$38
@@ -2410,15 +2807,15 @@ Func_250e9: ; 250e9 (9:50e9)
 	ld a, [hl]
 	adc b
 	ld [hl], a
-Func_25114: ; 25114 (9:5114)
+.asm_25114: ; 25114 (9:5114)
 	ld hl, sp+$36
 	ld a, [hl]
 	inc a
 	ld hl, sp+$36
 	ld [hl], a
-	jp Func_25029
+	jp .asm_25029
 
-Func_2511e: ; 2511e (9:511e)
+.asm_2511e: ; 2511e (9:511e)
 	read_hl_from_sp_plus $36
 	ld de, $60
 	add hl, de
@@ -2427,7 +2824,7 @@ Func_2511e: ; 2511e (9:511e)
 	ld d, [hl]
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_25140
+	jp c, .asm_25140
 	read_hl_from_sp_plus $36
 	ld de, $60
 	add hl, de
@@ -2435,7 +2832,7 @@ Func_2511e: ; 2511e (9:511e)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_25140: ; 25140 (9:5140)
+.asm_25140: ; 25140 (9:5140)
 	read_hl_from_sp_plus $36
 	ld de, $62
 	add hl, de
@@ -2444,7 +2841,7 @@ Func_25140: ; 25140 (9:5140)
 	ld d, [hl]
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_25162
+	jp c, .asm_25162
 	read_hl_from_sp_plus $36
 	ld de, $62
 	add hl, de
@@ -2452,7 +2849,7 @@ Func_25140: ; 25140 (9:5140)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_25162: ; 25162 (9:5162)
+.asm_25162: ; 25162 (9:5162)
 	read_hl_from_sp_plus $36
 	ld de, $64
 	add hl, de
@@ -2461,7 +2858,7 @@ Func_25162: ; 25162 (9:5162)
 	ld d, [hl]
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_25184
+	jp c, .asm_25184
 	read_hl_from_sp_plus $36
 	ld de, $64
 	add hl, de
@@ -2469,41 +2866,41 @@ Func_25162: ; 25162 (9:5162)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_25184: ; 25184 (9:5184)
+.asm_25184: ; 25184 (9:5184)
 	pop hl
 	inc l
 	pop bc
 	ld a, c
 	xor $1
 	ld c, a
-	jp Func_24cf9
+	jp .asm_24cf9
 
-Func_2518e: ; 2518e (9:518e)
+.asm_2518e: ; 2518e (9:518e)
 	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_2519f
+	jp nz, .asm_2519f
 	call Func_24bfc
-Func_2519f: ; 2519f (9:519f)
+.asm_2519f: ; 2519f (9:519f)
 	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	cp $1
-	jp nz, Func_251b3
+	jp nz, .asm_251b3
 	ld l, $1
-	jp Func_251b5
+	jp .asm_251b5
 
-Func_251b3: ; 251b3 (9:51b3)
+.asm_251b3: ; 251b3 (9:51b3)
 	ld l, $0
-Func_251b5: ; 251b5 (9:51b5)
+.asm_251b5: ; 251b5 (9:51b5)
 	ld e, $0
-Func_251b7: ; 251b7 (9:51b7)
+.asm_251b7: ; 251b7 (9:51b7)
 	ld a, e
 	cp $2
-	jp nc, Func_251cd
+	jp nc, .asm_251cd
 	push hl
 	push de
 	ld a, l
@@ -2514,11 +2911,11 @@ Func_251b7: ; 251b7 (9:51b7)
 	ld a, l
 	xor $1
 	ld l, a
-	jp Func_251b7
+	jp .asm_251b7
 
-Func_251cd: ; 251cd (9:51cd)
+.asm_251cd: ; 251cd (9:51cd)
 	pop af
-Func_251ce: ; 251ce (9:51ce)
+.asm_251ce: ; 251ce (9:51ce)
 	add sp, $34
 	ret
 
@@ -2534,15 +2931,15 @@ Func_251d1: ; 251d1
 	add hl, de
 	ld a, [hl]
 	cp $1
-	jp nz, Func_251eb
+	jp nz, .asm_251eb
 	ld a, c
 	xor $1
 	ld c, a
-Func_251eb: ; 251eb (9:51eb)
+.asm_251eb: ; 251eb (9:51eb)
 	xor a
-Func_251ec: ; 251ec (9:51ec)
+.asm_251ec: ; 251ec (9:51ec)
 	cp $2
-	jp nc, Func_253e9
+	jp nc, .asm_253e9
 	push bc
 	read_hl_from wCurRobotPointer
 	ld de, $16
@@ -2552,13 +2949,13 @@ Func_251ec: ; 251ec (9:51ec)
 	ld d, [hl]
 	inc c
 	dec c
-	jp nz, Func_25209
+	jp nz, .asm_25209
 	ld hl, $0
-	jp Func_2520c
+	jp .asm_2520c
 
-Func_25209: ; 25209 (9:5209)
+.asm_25209: ; 25209 (9:5209)
 	ld hl, $2f
-Func_2520c: ; 2520c (9:520c)
+.asm_2520c: ; 2520c (9:520c)
 	add hl, de
 	call WriteHLToSPPlus9
 	ld l, c
@@ -2604,13 +3001,13 @@ Func_2520c: ; 2520c (9:520c)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_25395
+	jp z, .asm_25395
 	call GetHLAtSPPlus9
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $a
-	jp z, Func_25395
+	jp z, .asm_25395
 	call GetHLAtSPPlus9
 	ld de, $75
 	add hl, de
@@ -2630,30 +3027,30 @@ Func_2520c: ; 2520c (9:520c)
 	inc hl
 	ld a, [hl]
 	and $4
-	jp nz, Func_25395
+	jp nz, .asm_25395
 	ld a, $64
 	call Func_24600
 	call GetHLAtSPPlus9
 	ld de, $74
 	add hl, de
 	cp [hl]
-	jp nc, Func_25395
+	jp nc, .asm_25395
 	call GetHLAtSPPlus9
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$4
 	cp [hl]
-	jp z, Func_25395
+	jp z, .asm_25395
 	call GetHLAtSPPlus9
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $1
-	jp z, Func_252e4
+	jp z, .asm_252e4
 	cp $2
-	jp nz, Func_25310
-Func_252e4: ; 252e4 (9:52e4)
+	jp nz, .asm_25310
+.asm_252e4: ; 252e4 (9:52e4)
 	call GetHLAtSPPlus9
 	ld de, $73
 	add hl, de
@@ -2664,9 +3061,9 @@ Func_252e4: ; 252e4 (9:52e4)
 	ld c, l
 	ld b, h
 	xor a
-Func_252f7: ; 252f7 (9:52f7)
+.asm_252f7: ; 252f7 (9:52f7)
 	cp $4
-	jp nc, Func_25310
+	jp nc, .asm_25310
 	push af
 	xor a
 	ld [bc], a
@@ -2682,21 +3079,21 @@ Func_252f7: ; 252f7 (9:52f7)
 	inc bc
 	inc bc
 	inc bc
-	jp Func_252f7
+	jp .asm_252f7
 
-Func_25310: ; 25310 (9:5310)
+.asm_25310: ; 25310 (9:5310)
 	call GetHLAtSPPlus9
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $4
-	jp nz, Func_2534d
+	jp nz, .asm_2534d
 	call GetHLAtSPPlus9
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $fe
-	jp nz, Func_2534a
+	jp nz, .asm_2534a
 	call GetHLAtSPPlus9
 	ld de, $5e
 	add hl, de
@@ -2715,21 +3112,21 @@ Func_25310: ; 25310 (9:5310)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-Func_2534a: ; 2534a (9:534a)
-	jp Func_25363
+.asm_2534a: ; 2534a (9:534a)
+	jp .asm_25363
 
-Func_2534d: ; 2534d (9:534d)
+.asm_2534d: ; 2534d (9:534d)
 	call GetHLAtSPPlus9
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $6
-	jp nz, Func_25363
+	jp nz, .asm_25363
 	call GetHLAtSPPlus9
 	ld de, $5e
 	add hl, de
 	ld [hl], $ff
-Func_25363: ; 25363 (9:5363)
+.asm_25363: ; 25363 (9:5363)
 	ld hl, sp+$4
 	ld a, [hl]
 	call GetHLAtSPPlus9
@@ -2747,7 +3144,7 @@ Func_25363: ; 25363 (9:5363)
 	xor a
 	call Func_24036
 	callba_hli Func_d767
-Func_25395: ; 25395 (9:5395)
+.asm_25395: ; 25395 (9:5395)
 	call GetHLAtSPPlus7
 	ld de, $6f
 	add hl, de
@@ -2764,13 +3161,13 @@ Func_25395: ; 25395 (9:5395)
 	ld a, l
 	dec a
 	or h
-	jp nz, Func_253dd
+	jp nz, .asm_253dd
 	call GetHLAtSPPlus9
 	ld de, $6f
 	add hl, de
 	ld a, [hl]
 	and $80
-	jp z, Func_253dd
+	jp z, .asm_253dd
 	call GetHLAtSPPlus7
 	ld de, $6f
 	add hl, de
@@ -2789,7 +3186,7 @@ Func_25395: ; 25395 (9:5395)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-Func_253dd: ; 253dd (9:53dd)
+.asm_253dd: ; 253dd (9:53dd)
 	pop af
 	inc a
 	pop bc
@@ -2798,17 +3195,17 @@ Func_253dd: ; 253dd (9:53dd)
 	xor $1
 	ld c, a
 	pop af
-	jp Func_251ec
+	jp .asm_251ec
 
-Func_253e9: ; 253e9 (9:53e9)
+.asm_253e9: ; 253e9 (9:53e9)
 	push bc
 	call Func_24001
 	ld l, $0
 	pop bc
-Func_253f0: ; 253f0 (9:53f0)
+.asm_253f0: ; 253f0 (9:53f0)
 	ld a, l
 	cp $2
-	jp nc, Func_2542b
+	jp nc, .asm_2542b
 	push bc
 	push hl
 	ld l, c
@@ -2833,9 +3230,9 @@ Func_253f0: ; 253f0 (9:53f0)
 	ld a, c
 	xor $1
 	ld c, a
-	jp Func_253f0
+	jp .asm_253f0
 
-Func_2542b: ; 2542b (9:542b)
+.asm_2542b: ; 2542b (9:542b)
 	pop bc
 	pop bc
 	pop bc
@@ -2891,32 +3288,32 @@ Func_2543f: ; 2543f (9:543f)
 	ld a, l
 	dec a
 	or h
-	jp nz, Func_25497
+	jp nz, .asm_25497
 	ld c, $18
-	jp Func_254a7
+	jp .asm_254a7
 
-Func_25497: ; 25497 (9:5497)
+.asm_25497: ; 25497 (9:5497)
 	read_hl_from_sp_plus $18
 	ld de, $6f
 	add hl, de
 	ld a, [hl]
 	and $2
-	jp z, Func_254a7
+	jp z, .asm_254a7
 	ld c, $16
-Func_254a7: ; 254a7 (9:54a7)
+.asm_254a7: ; 254a7 (9:54a7)
 	ld a, c
 	cp $16
-	jp z, Func_254c4
+	jp z, .asm_254c4
 	cp $18
-	jp nz, Func_254f4
+	jp nz, .asm_254f4
 	ld hl, Text_24069
 	call Func_24010
 	ld hl, Text_2433a
 	call Func_24023
 	call Func_24036
-	jp Func_25662
+	jp .asm_25662
 
-Func_254c4: ; 254c4 (9:54c4)
+.asm_254c4: ; 254c4 (9:54c4)
 	ld hl, Text_24069
 	call Func_24010
 	ld hl, Text_2432c
@@ -2924,29 +3321,29 @@ Func_254c4: ; 254c4 (9:54c4)
 	ld hl, sp+$1b
 	ld a, [hl]
 	or a
-	jp nz, Func_254e0
+	jp nz, .asm_254e0
 	ld hl, Text_24347
 	call Func_24010
-	jp Func_254e6
+	jp .asm_254e6
 
-Func_254e0: ; 254e0 (9:54e0)
+.asm_254e0: ; 254e0 (9:54e0)
 	ld hl, Text_24342
 	call Func_24010
-Func_254e6: ; 254e6 (9:54e6)
+.asm_254e6: ; 254e6 (9:54e6)
 	call Func_24036
 	read_hl_from_sp_plus $16
 	ld de, $d
 	add hl, de
 	call Func_24010
-Func_254f4: ; 254f4 (9:54f4)
+.asm_254f4: ; 254f4 (9:54f4)
 	read_hl_from_sp_plus $18
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_25532
+	jp z, .asm_25532
 	cp $fe
-	jp nz, Func_25662
+	jp nz, .asm_25662
 	ld hl, Text_24247
 	call Func_24010
 	read_hl_from_sp_plus $16
@@ -2965,9 +3362,9 @@ Func_254f4: ; 254f4 (9:54f4)
 	ld a, [hl]
 	xor $1
 	call Func_2465a
-	jp Func_25662
+	jp .asm_25662
 
-Func_25532: ; 25532 (9:5532)
+.asm_25532: ; 25532 (9:5532)
 	read_hl_from_sp_plus $18
 	ld de, $5f
 	add hl, de
@@ -3015,18 +3412,18 @@ Func_25532: ; 25532 (9:5532)
 	add hl, de
 	ld a, [hl]
 	and $8
-	jp nz, Func_2564d
+	jp nz, .asm_2564d
 	read_hl_from_sp_plus $1a
 	ld de, $4e
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_2564a
+	jp z, .asm_2564a
 	ld a, [bc]
 	cp $fe
-	jp z, Func_255c4
+	jp z, .asm_255c4
 	or a
-	jp nz, Func_25604
+	jp nz, .asm_25604
 	read_hl_from_sp_plus $1a
 	ld de, $29
 	add hl, de
@@ -3034,9 +3431,9 @@ Func_25532: ; 25532 (9:5532)
 	ld hl, sp+$1b
 	ld a, [hl]
 	call Func_2465a
-	jp Func_2564a
+	jp .asm_2564a
 
-Func_255c4: ; 255c4 (9:55c4)
+.asm_255c4: ; 255c4 (9:55c4)
 	push bc
 	read_hl_from_sp_plus $1c
 	ld de, $29
@@ -3069,9 +3466,9 @@ Func_255c4: ; 255c4 (9:55c4)
 	ld hl, sp+$1b
 	ld a, [hl]
 	call Func_2465a
-	jp Func_2564a
+	jp .asm_2564a
 
-Func_25604: ; 25604 (9:5604)
+.asm_25604: ; 25604 (9:5604)
 	ld a, BANK(Moves)
 	ld [wFarCallDestBank], a
 	ld a, [bc]
@@ -3088,9 +3485,9 @@ Func_25604: ; 25604 (9:5604)
 	ld bc, $13
 	call FarCopyVideoData
 	xor a
-Func_2562c: ; 2562c (9:562c)
+.asm_2562c: ; 2562c (9:562c)
 	cp $3
-	jp nc, Func_2564a
+	jp nc, .asm_2564a
 	push af
 	read_hl_from_sp_plus $1c
 	ld de, $49
@@ -3104,12 +3501,12 @@ Func_2562c: ; 2562c (9:562c)
 	call Func_2465a
 	pop af
 	inc a
-	jp Func_2562c
+	jp .asm_2562c
 
-Func_2564a: ; 2564a (9:564a)
-	jp Func_25662
+.asm_2564a: ; 2564a (9:564a)
+	jp .asm_25662
 
-Func_2564d: ; 2564d (9:564d)
+.asm_2564d: ; 2564d (9:564d)
 	ld hl, Text_24252
 	call Func_24010
 	ld hl, Text_24278
@@ -3117,7 +3514,7 @@ Func_2564d: ; 2564d (9:564d)
 	ld hl, Text_241ce
 	call Func_24010
 	call Func_24045
-Func_25662: ; 25662 (9:5662)
+.asm_25662: ; 25662 (9:5662)
 	read_hl_from_sp_plus $18
 	ld de, $66
 	add hl, de
@@ -3189,7 +3586,7 @@ Func_256a3: ; 256a3 (9:56a3)
 	add hl, de
 	ld a, [hl]
 	and $40
-	jp nz, Func_25707
+	jp nz, .asm_25707
 	call GetHLAtSPPlus6
 	ld de, $f
 	add hl, de
@@ -3203,17 +3600,17 @@ Func_256a3: ; 256a3 (9:56a3)
 	ld h, $0
 	pop de
 	call CompareHLtoDE
-	jp c, Func_25703
+	jp c, .asm_25703
 	call GetHLAtSPPlus3
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $fe
-	jp nz, Func_25707
-Func_25703: ; 25703 (9:5703)
+	jp nz, .asm_25707
+.asm_25703: ; 25703 (9:5703)
 	ld hl, sp+$0
 	ld [hl], $1
-Func_25707: ; 25707 (9:5707)
+.asm_25707: ; 25707 (9:5707)
 	ld hl, sp+$0
 	ld a, [hl]
 	pop bc
@@ -3303,67 +3700,67 @@ Func_2570e: ; 2570e (9:570e)
 	ld a, l
 	dec a
 	or h
-	jp nz, Func_257ab
-	jp Func_25c7e
+	jp nz, .asm_257ab
+	jp .asm_25c7e
 
-Func_257ab: ; 257ab (9:57ab)
+.asm_257ab: ; 257ab (9:57ab)
 	ld a, c
 	and $80
-	jp z, Func_257c4
+	jp z, .asm_257c4
 	read_hl_from_sp_plus $25
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_257c4
+	jp nz, .asm_257c4
 	ld a, c
 	and $7f
 	ld hl, sp+$1a
 	ld [hl], a
-Func_257c4: ; 257c4 (9:57c4)
+.asm_257c4: ; 257c4 (9:57c4)
 	ld hl, sp+$1a
 	ld a, [hl]
 	cp $12
-	jp z, Func_25813
+	jp z, .asm_25813
 	cp $1f
-	jp z, Func_25802
+	jp z, .asm_25802
 	cp $d
-	jp z, Func_257f1
+	jp z, .asm_257f1
 	cp $26
-	jp z, Func_257e0
+	jp z, .asm_257e0
 	cp $25
-	jp nz, Func_25813
-Func_257e0: ; 257e0 (9:57e0)
+	jp nz, .asm_25813
+.asm_257e0: ; 257e0 (9:57e0)
 	read_hl_from_sp_plus $2a
 	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_2639a
-	jp Func_25c7e
+	jp .asm_25c7e
 
-Func_257f1: ; 257f1 (9:57f1)
+.asm_257f1: ; 257f1 (9:57f1)
 	read_hl_from_sp_plus $2a
 	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_2639a
-	jp Func_25c7e
+	jp .asm_25c7e
 
-Func_25802: ; 25802 (9:5802)
+.asm_25802: ; 25802 (9:5802)
 	read_hl_from_sp_plus $2a
 	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_26c02
-	jp Func_25c7e
+	jp .asm_25c7e
 
-Func_25813: ; 25813 (9:5813)
+.asm_25813: ; 25813 (9:5813)
 	read_hl_from_sp_plus $25
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $fe
-	jp nz, Func_25881
+	jp nz, .asm_25881
 	read_hl_from_sp_plus $25
 	ld de, $60
 	add hl, de
@@ -3393,25 +3790,25 @@ Func_25813: ; 25813 (9:5813)
 	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_25869
+	jp c, .asm_25869
 	ld de, $1
-	jp Func_25869
+	jp .asm_25869
 
-Func_25869: ; 25869 (9:5869)
+.asm_25869: ; 25869 (9:5869)
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Bank9_DamageOrHeal
 	swap_de_hl
 	ld a, e
 	or d
-	jp nz, Func_2587e
+	jp nz, .asm_2587e
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_2466d
-Func_2587e: ; 2587e (9:587e)
-	jp Func_25c7e
+.asm_2587e: ; 2587e (9:587e)
+	jp .asm_25c7e
 
-Func_25881: ; 25881 (9:5881)
+.asm_25881: ; 25881 (9:5881)
 	read_hl_from_sp_plus $25
 	ld de, $6d
 	add hl, de
@@ -3425,11 +3822,11 @@ Func_25881: ; 25881 (9:5881)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_25a7b
+	jp nz, .asm_25a7b
 	read_hl_from_sp_plus $1e
 	ld a, l
 	and $80
-	jp z, Func_25a7b
+	jp z, .asm_25a7b
 	read_hl_from_sp_plus $1e
 	ld a, l
 	and $7f
@@ -3438,15 +3835,15 @@ Func_25881: ; 25881 (9:5881)
 	ld a, l
 	sub $22
 	or h
-	jp z, Func_259a4
+	jp z, .asm_259a4
 	ld a, l
 	sub $21
 	or h
-	jp z, Func_25944
+	jp z, .asm_25944
 	ld a, l
 	sub $1d
 	or h
-	jp nz, Func_25a75
+	jp nz, .asm_25a75
 	read_hl_from_sp_plus $1e
 	ld e, h
 	ld d, $0
@@ -3454,7 +3851,7 @@ Func_25881: ; 25881 (9:5881)
 	ld l, [hl]
 	ld h, $0
 	call CompareHLtoDE
-	jp nz, Func_2593e
+	jp nz, .asm_2593e
 	ld a, $1
 	ld hl, Text_24252
 	call Func_24010
@@ -3493,15 +3890,15 @@ Func_25881: ; 25881 (9:5881)
 	call WriteHLToSPPlus6
 	ld hl, sp+$1b
 	ld [hl], $0
-	jp Func_25941
+	jp .asm_25941
 
-Func_2593e: ; 2593e (9:593e)
-	jp Func_25a7b
+.asm_2593e: ; 2593e (9:593e)
+	jp .asm_25a7b
 
-Func_25941: ; 25941 (9:5941)
-	jp Func_25a78
+.asm_25941: ; 25941 (9:5941)
+	jp .asm_25a78
 
-Func_25944: ; 25944 (9:5944)
+.asm_25944: ; 25944 (9:5944)
 	read_hl_from_sp_plus $1e
 	ld e, h
 	ld d, $0
@@ -3509,7 +3906,7 @@ Func_25944: ; 25944 (9:5944)
 	ld l, [hl]
 	ld h, $0
 	call CompareHLtoDE
-	jp nz, Func_2599e
+	jp nz, .asm_2599e
 	ld a, $2
 	ld hl, Text_24252
 	call Func_24023
@@ -3524,13 +3921,13 @@ Func_25944: ; 25944 (9:5944)
 	ld hl, sp+$2b
 	ld a, [hl]
 	or a
-	jp nz, Func_25981
+	jp nz, .asm_25981
 	call Func_24045
-	jp Func_25984
+	jp .asm_25984
 
-Func_25981: ; 25981 (9:5981)
+.asm_25981: ; 25981 (9:5981)
 	call Func_24036
-Func_25984: ; 25984 (9:5984)
+.asm_25984: ; 25984 (9:5984)
 	ld hl, sp+$4
 	ld bc, $1
 	ld [hl], c
@@ -3544,15 +3941,15 @@ Func_25984: ; 25984 (9:5984)
 	ld [hl], b
 	ld hl, sp+$1b
 	ld [hl], $0
-	jp Func_259a1
+	jp .asm_259a1
 
-Func_2599e: ; 2599e (9:599e)
-	jp Func_25a7b
+.asm_2599e: ; 2599e (9:599e)
+	jp .asm_25a7b
 
-Func_259a1: ; 259a1 (9:59a1)
-	jp Func_25a78
+.asm_259a1: ; 259a1 (9:59a1)
+	jp .asm_25a78
 
-Func_259a4: ; 259a4 (9:59a4)
+.asm_259a4: ; 259a4 (9:59a4)
 	ld hl, Text_24252
 	call Func_24023
 	ld hl, sp+$6
@@ -3594,10 +3991,10 @@ Func_259a4: ; 259a4 (9:59a4)
 	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_25a06
+	jp c, .asm_25a06
 	ld hl, $1
 	call WriteHLToSPPlus6
-Func_25a06: ; 25a06 (9:5a06)
+.asm_25a06: ; 25a06 (9:5a06)
 	ld hl, Text_24195
 	call Func_24023
 	ld hl, sp+$6
@@ -3631,36 +4028,36 @@ Func_25a06: ; 25a06 (9:5a06)
 	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
-	jp nc, Func_25a66
+	jp nc, .asm_25a66
 	ld hl, sp+$2b
 	ld a, [hl]
 	or a
-	jp nz, Func_25a60
+	jp nz, .asm_25a60
 	call Func_24045
-	jp Func_25a63
+	jp .asm_25a63
 
-Func_25a60: ; 25a60 (9:5a60)
+.asm_25a60: ; 25a60 (9:5a60)
 	call Func_24036
-Func_25a63: ; 25a63 (9:5a63)
-	jp Func_25a6e
+.asm_25a63: ; 25a63 (9:5a63)
+	jp .asm_25a6e
 
-Func_25a66: ; 25a66 (9:5a66)
+.asm_25a66: ; 25a66 (9:5a66)
 	ld hl, sp+$2b
 	ld a, [hl]
 	xor $1
 	call Func_2466d
-Func_25a6e: ; 25a6e (9:5a6e)
+.asm_25a6e: ; 25a6e (9:5a6e)
 	ld hl, sp+$1b
 	ld [hl], $0
-	jp Func_25a78
+	jp .asm_25a78
 
-Func_25a75: ; 25a75 (9:5a75)
-	jp Func_25a7b
+.asm_25a75: ; 25a75 (9:5a75)
+	jp .asm_25a7b
 
-Func_25a78: ; 25a78 (9:5a78)
-	jp Func_25b71
+.asm_25a78: ; 25a78 (9:5a78)
+	jp .asm_25b71
 
-Func_25a7b: ; 25a7b (9:5a7b)
+.asm_25a7b: ; 25a7b (9:5a7b)
 	read_hl_from_sp_plus $25
 	ld de, $6f
 	add hl, de
@@ -3683,10 +4080,10 @@ Func_25a7b: ; 25a7b (9:5a7b)
 	ld hl, sp+$1a
 	ld a, [hl]
 	cp $12
-	jp nz, Func_25ab0
+	jp nz, .asm_25ab0
 	ld hl, Text_24310
 	call Func_24010
-Func_25ab0: ; 25ab0 (9:5ab0)
+.asm_25ab0: ; 25ab0 (9:5ab0)
 	ld hl, Text_2406b
 	call Func_24010
 	ld hl, sp+$6
@@ -3705,7 +4102,7 @@ Func_25ab0: ; 25ab0 (9:5ab0)
 	ld hl, sp+$1a
 	ld a, [hl]
 	cp $12
-	jp nz, Func_25b19
+	jp nz, .asm_25b19
 	call GetHLAtSPPlus6
 	push hl
 	read_hl_from_sp_plus $23
@@ -3739,9 +4136,9 @@ Func_25ab0: ; 25ab0 (9:5ab0)
 	inc hl
 	ld [hl], d
 .asm_25b16
-	jp Func_25b71
+	jp .asm_25b71
 
-Func_25b19: ; 25b19 (9:5b19)
+.asm_25b19: ; 25b19 (9:5b19)
 	call GetHLAtSPPlus6
 	swap_de_hl
 	ld hl, sp+$2b
@@ -3754,15 +4151,15 @@ Func_25b19: ; 25b19 (9:5b19)
 	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
-	jp nc, Func_25b48
+	jp nc, .asm_25b48
 	ld hl, sp+$2b
 	ld a, [hl]
 	or a
-	jp nz, Func_25b48
+	jp nz, .asm_25b48
 	call Func_24045
-	jp Func_25b71
+	jp .asm_25b71
 
-Func_25b48: ; 25b48 (9:5b48)
+.asm_25b48: ; 25b48 (9:5b48)
 	call Func_24036
 	ld hl, sp+$2b
 	ld a, [hl]
@@ -3771,32 +4168,32 @@ Func_25b48: ; 25b48 (9:5b48)
 	ld hl, sp+$1a
 	ld a, [hl]
 	cp $1e
-	jp nz, Func_25b71
+	jp nz, .asm_25b71
 	call GetHLAtSPPlus6
 	ld a, l
 	or h
-	jp nz, Func_25b71
+	jp nz, .asm_25b71
 	read_hl_from_sp_plus $2a
 	swap_de_hl
 	ld hl, sp+$2b
 	ld a, [hl]
 	call Func_26bab
-Func_25b71: ; 25b71 (9:5b71)
+.asm_25b71: ; 25b71 (9:5b71)
 	read_hl_from_sp_plus $27
 	ld de, $7
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_25b81
-	jp Func_25c7e
+	jp z, .asm_25b81
+	jp .asm_25c7e
 
-Func_25b81: ; 25b81 (9:5b81)
+.asm_25b81: ; 25b81 (9:5b81)
 	read_hl_from_sp_plus $2a
 	ld de, $11
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_25c7e
+	jp nz, .asm_25c7e
 	read_hl_from_sp_plus $2a
 	ld de, $11
 	add hl, de
@@ -3806,81 +4203,81 @@ Func_25b81: ; 25b81 (9:5b81)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_25c40
+	jp z, .asm_25c40
 	ld hl, sp+$1b
 	ld a, [hl]
 	or a
-	jp z, Func_25c40
+	jp z, .asm_25c40
 	ld hl, sp+$2b
 	ld a, [hl]
 	or a
-	jp nz, Func_25bec
+	jp nz, .asm_25bec
 	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_25bcf
+	jp nz, .asm_25bcf
 	ld hl, Text_2456f
 	call Func_24023
 	ld hl, Text_24574
 	call Func_24023
-	jp Func_25be9
+	jp .asm_25be9
 
-Func_25bcf: ; 25bcf (9:5bcf)
+.asm_25bcf: ; 25bcf (9:5bcf)
 	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
 	cp $4
-	jp nz, Func_25be9
+	jp nz, .asm_25be9
 	ld hl, Text_2459a
 	call Func_24023
 	ld hl, Text_245a0
 	call Func_24023
-Func_25be9: ; 25be9 (9:5be9)
-	jp Func_25c22
+.asm_25be9: ; 25be9 (9:5be9)
+	jp .asm_25c22
 
-Func_25bec: ; 25bec (9:5bec)
+.asm_25bec: ; 25bec (9:5bec)
 	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_25c08
+	jp nz, .asm_25c08
 	ld hl, Text_24584
 	call Func_24023
 	ld hl, Text_2458a
 	call Func_24023
-	jp Func_25c22
+	jp .asm_25c22
 
-Func_25c08: ; 25c08 (9:5c08)
+.asm_25c08: ; 25c08 (9:5c08)
 	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
 	cp $4
-	jp nz, Func_25c22
+	jp nz, .asm_25c22
 	ld hl, Text_245b3
 	call Func_24023
 	ld hl, Text_245b8
 	call Func_24023
-Func_25c22: ; 25c22 (9:5c22)
+.asm_25c22: ; 25c22 (9:5c22)
 	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_25c3d
+	jp z, .asm_25c3d
 	read_hl_from_sp_plus $25
 	ld de, $c7
 	add hl, de
 	ld a, [hl]
 	cp $4
-	jp nz, Func_25c40
-Func_25c3d: ; 25c3d (9:5c3d)
+	jp nz, .asm_25c40
+.asm_25c3d: ; 25c3d (9:5c3d)
 	call Func_24036
-Func_25c40: ; 25c40 (9:5c40)
+.asm_25c40: ; 25c40 (9:5c40)
 	read_hl_from_sp_plus $2a
 	swap_de_hl
 	ld hl, sp+$2b
@@ -3894,10 +4291,10 @@ Func_25c40: ; 25c40 (9:5c40)
 	ld de, $9
 	add hl, de
 	or [hl]
-	jp z, Func_25c66
-	jp Func_25c7e
+	jp z, .asm_25c66
+	jp .asm_25c7e
 
-Func_25c66: ; 25c66 (9:5c66)
+.asm_25c66: ; 25c66 (9:5c66)
 	read_hl_from_sp_plus $2a
 	swap_de_hl
 	ld hl, sp+$2b
@@ -3907,7 +4304,7 @@ Func_25c66: ; 25c66 (9:5c66)
 	ld de, $11
 	add hl, de
 	ld [hl], $0
-Func_25c7e: ; 25c7e (9:5c7e)
+.asm_25c7e: ; 25c7e (9:5c7e)
 	add sp, $2c
 	ret
 
@@ -3963,22 +4360,22 @@ Func_25c81: ; 25c81 (9:5c81)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_25cdc
-	jp Func_25dd2
+	jp z, .asm_25cdc
+	jp .asm_25dd2
 
-Func_25cdc: ; 25cdc (9:5cdc)
+.asm_25cdc: ; 25cdc (9:5cdc)
 	pop hl
 	push hl
 	ld de, $6f
 	add hl, de
 	ld a, [hl]
 	and $1
-	jp z, Func_25d05
+	jp z, .asm_25d05
 	ld hl, $75
 	add hl, bc
 	ld a, [hl]
 	cp $a
-	jp z, Func_25d05
+	jp z, .asm_25d05
 	ld hl, $6f
 	add hl, bc
 	ld a, [hl]
@@ -3989,11 +4386,11 @@ Func_25cdc: ; 25cdc (9:5cdc)
 	call RightShiftHL
 	ld a, l
 	and $3
-	jp z, Func_25d08
-Func_25d05: ; 25d05 (9:5d05)
-	jp Func_25dd2
+	jp z, .asm_25d08
+.asm_25d05: ; 25d05 (9:5d05)
+	jp .asm_25dd2
 
-Func_25d08: ; 25d08 (9:5d08)
+.asm_25d08: ; 25d08 (9:5d08)
 	pop hl
 	push hl
 	ld de, $67
@@ -4021,10 +4418,10 @@ Func_25d08: ; 25d08 (9:5d08)
 	call Func_24600
 	pop bc
 	cp b
-	jp c, Func_25d3d
-	jp Func_25dd2
+	jp c, .asm_25d3d
+	jp .asm_25dd2
 
-Func_25d3d: ; 25d3d (9:5d3d)
+.asm_25d3d: ; 25d3d (9:5d3d)
 	call GetHLAtSPPlus4
 	ld e, l
 	ld hl, sp+$10
@@ -4065,7 +4462,7 @@ Func_25d3d: ; 25d3d (9:5d3d)
 	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_25d94
+	jp c, .asm_25d94
 	call GetHLAtSPPlus4
 	ld de, $6d
 	add hl, de
@@ -4073,7 +4470,7 @@ Func_25d3d: ; 25d3d (9:5d3d)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_25d94: ; 25d94 (9:5d94)
+.asm_25d94: ; 25d94 (9:5d94)
 	call GetHLAtSPPlus4
 	ld de, $6f
 	add hl, de
@@ -4108,7 +4505,7 @@ Func_25d94: ; 25d94 (9:5d94)
 	ld [hl], c
 	inc hl
 	ld [hl], b
-Func_25dd2: ; 25dd2 (9:5dd2)
+.asm_25dd2: ; 25dd2 (9:5dd2)
 	add sp, $58
 	ret
 
@@ -4213,19 +4610,19 @@ Func_25e07: ; 25e07 (9:5e07)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $1
-	jp z, Func_25e90
+	jp z, .asm_25e90
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $d
-	jp nz, Func_25f9c
-Func_25e90: ; 25e90 (9:5e90)
+	jp nz, .asm_25f9c
+.asm_25e90: ; 25e90 (9:5e90)
 	read_hl_from_sp_plus $11
 	ld de, $71
 	add hl, de
 	inc hl
 	ld a, [hl]
 	and $4
-	jp nz, Func_25f99
+	jp nz, .asm_25f99
 	ld hl, sp+$0
 	ld l, [hl]
 	ld h, $0
@@ -4244,7 +4641,7 @@ Func_25e90: ; 25e90 (9:5e90)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $d
-	jp nz, Func_25f12
+	jp nz, .asm_25f12
 	ld a, $64
 	call Func_24600
 	push af
@@ -4257,7 +4654,7 @@ Func_25e90: ; 25e90 (9:5e90)
 	add hl, de
 	pop af
 	cp [hl]
-	jp nc, Func_25f12
+	jp nc, .asm_25f12
 	ld a, $64
 	call Func_24600
 	push af
@@ -4270,7 +4667,7 @@ Func_25e90: ; 25e90 (9:5e90)
 	add hl, bc
 	pop af
 	cp [hl]
-	jp nc, Func_25f0b
+	jp nc, .asm_25f0b
 	ld hl, sp+$4
 	ld [hl], $3
 	read_hl_from_sp_plus $11
@@ -4280,19 +4677,19 @@ Func_25e90: ; 25e90 (9:5e90)
 	ld a, [hl]
 	or $4
 	ld [hl], a
-	jp Func_25f0f
+	jp .asm_25f0f
 
-Func_25f0b: ; 25f0b (9:5f0b)
+.asm_25f0b: ; 25f0b (9:5f0b)
 	ld hl, sp+$4
 	ld [hl], $2
-Func_25f0f: ; 25f0f (9:5f0f)
-	jp Func_25f99
+.asm_25f0f: ; 25f0f (9:5f0f)
+	jp .asm_25f99
 
-Func_25f12: ; 25f12 (9:5f12)
+.asm_25f12: ; 25f12 (9:5f12)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $1
-	jp nz, Func_25f99
+	jp nz, .asm_25f99
 	ld a, $64
 	call Func_24600
 	push af
@@ -4305,7 +4702,7 @@ Func_25f12: ; 25f12 (9:5f12)
 	add hl, de
 	pop af
 	cp [hl]
-	jp nc, Func_25f99
+	jp nc, .asm_25f99
 	ld a, $64
 	call Func_24600
 	push af
@@ -4318,13 +4715,13 @@ Func_25f12: ; 25f12 (9:5f12)
 	add hl, bc
 	pop af
 	cp [hl]
-	jp nc, Func_25f95
+	jp nc, .asm_25f95
 	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $1
-	jp nc, Func_25f95
+	jp nc, .asm_25f95
 	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
@@ -4352,25 +4749,25 @@ Func_25f12: ; 25f12 (9:5f12)
 	ld [hl], $7
 	ld hl, sp+$4
 	ld [hl], $3
-	jp Func_25f99
+	jp .asm_25f99
 
-Func_25f95: ; 25f95 (9:5f95)
+.asm_25f95: ; 25f95 (9:5f95)
 	ld hl, sp+$4
 	ld [hl], $2
-Func_25f99: ; 25f99 (9:5f99)
-	jp Func_26265
+.asm_25f99: ; 25f99 (9:5f99)
+	jp .asm_26265
 
-Func_25f9c: ; 25f9c (9:5f9c)
+.asm_25f9c: ; 25f9c (9:5f9c)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $a
-	jp nz, Func_26008
+	jp nz, .asm_26008
 	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_26005
+	jp nz, .asm_26005
 	read_hl_from_sp_plus $11
 	ld de, $75
 	add hl, de
@@ -4403,38 +4800,38 @@ Func_25f9c: ; 25f9c (9:5f9c)
 	call Func_24010
 	call Func_24045
 	callba_hli Func_d767
-	jp Func_26397
+	jp .asm_26397
 
-Func_26005: ; 26005 (9:6005)
-	jp Func_26265
+.asm_26005: ; 26005 (9:6005)
+	jp .asm_26265
 
-Func_26008: ; 26008 (9:6008)
+.asm_26008: ; 26008 (9:6008)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $d
-	jp z, Func_261cc
+	jp z, .asm_261cc
 	cp $c
-	jp z, Func_261a8
+	jp z, .asm_261a8
 	cp $b
-	jp z, Func_26184
+	jp z, .asm_26184
 	cp $9
-	jp z, Func_26160
+	jp z, .asm_26160
 	cp $8
-	jp z, Func_2613c
+	jp z, .asm_2613c
 	cp $7
-	jp z, Func_26118
+	jp z, .asm_26118
 	cp $6
-	jp z, Func_260f4
+	jp z, .asm_260f4
 	cp $5
-	jp z, Func_260d0
+	jp z, .asm_260d0
 	cp $4
-	jp z, Func_260ac
+	jp z, .asm_260ac
 	cp $3
-	jp z, Func_26088
+	jp z, .asm_26088
 	cp $2
-	jp z, Func_2606b
+	jp z, .asm_2606b
 	cp $1
-	jp nz, Func_261ed
+	jp nz, .asm_261ed
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4450,9 +4847,9 @@ Func_26008: ; 26008 (9:6008)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_2606b: ; 2606b (9:606b)
+.asm_2606b: ; 2606b (9:606b)
 	ld hl, sp+$3
 	ld [hl], $64
 	call GetHLAtSPPlus7
@@ -4465,9 +4862,9 @@ Func_2606b: ; 2606b (9:606b)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_26088: ; 26088 (9:6088)
+.asm_26088: ; 26088 (9:6088)
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4483,9 +4880,9 @@ Func_26088: ; 26088 (9:6088)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_260ac: ; 260ac (9:60ac)
+.asm_260ac: ; 260ac (9:60ac)
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4501,9 +4898,9 @@ Func_260ac: ; 260ac (9:60ac)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_260d0: ; 260d0 (9:60d0)
+.asm_260d0: ; 260d0 (9:60d0)
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4519,9 +4916,9 @@ Func_260d0: ; 260d0 (9:60d0)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_260f4: ; 260f4 (9:60f4)
+.asm_260f4: ; 260f4 (9:60f4)
 	call GetHLAtSPPlus7
 	ld e, $81
 	call Func_2478b
@@ -4537,9 +4934,9 @@ Func_260f4: ; 260f4 (9:60f4)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_26118: ; 26118 (9:6118)
+.asm_26118: ; 26118 (9:6118)
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4555,9 +4952,9 @@ Func_26118: ; 26118 (9:6118)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_2613c: ; 2613c (9:613c)
+.asm_2613c: ; 2613c (9:613c)
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4573,9 +4970,9 @@ Func_2613c: ; 2613c (9:613c)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_26160: ; 26160 (9:6160)
+.asm_26160: ; 26160 (9:6160)
 	call GetHLAtSPPlus7
 	ld e, $81
 	call Func_2478b
@@ -4591,9 +4988,9 @@ Func_26160: ; 26160 (9:6160)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_26184: ; 26184 (9:6184)
+.asm_26184: ; 26184 (9:6184)
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4609,9 +5006,9 @@ Func_26184: ; 26184 (9:6184)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_261a8: ; 261a8 (9:61a8)
+.asm_261a8: ; 261a8 (9:61a8)
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4627,9 +5024,9 @@ Func_261a8: ; 261a8 (9:61a8)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-	jp Func_261ed
+	jp .asm_261ed
 
-Func_261cc: ; 261cc (9:61cc)
+.asm_261cc: ; 261cc (9:61cc)
 	call GetHLAtSPPlus7
 	ld e, $83
 	call Func_2478b
@@ -4645,12 +5042,12 @@ Func_261cc: ; 261cc (9:61cc)
 	call Func_2478b
 	ld hl, sp+$1
 	ld [hl], a
-Func_261ed: ; 261ed (9:61ed)
+.asm_261ed: ; 261ed (9:61ed)
 	ld a, $64
 	call Func_24600
 	ld hl, sp+$3
 	cp [hl]
-	jp nc, Func_26265
+	jp nc, .asm_26265
 	ld hl, sp+$4
 	ld [hl], $1
 	ld hl, sp+$0
@@ -4681,56 +5078,56 @@ Func_261ed: ; 261ed (9:61ed)
 	call Func_24600
 	ld hl, sp+$2
 	cp [hl]
-	jp nc, Func_26261
+	jp nc, .asm_26261
 	read_hl_from_sp_plus $f
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	ld hl, sp+$0
 	cp [hl]
-	jp nc, Func_26261
+	jp nc, .asm_26261
 	read_hl_from_sp_plus $f
 	ld de, $71
 	add hl, de
 	inc hl
 	ld a, [hl]
 	and $4
-	jp z, Func_2625a
+	jp z, .asm_2625a
 	ld hl, sp+$4
 	ld [hl], $4
-	jp Func_2625e
+	jp .asm_2625e
 
-Func_2625a: ; 2625a (9:625a)
+.asm_2625a: ; 2625a (9:625a)
 	ld hl, sp+$4
 	ld [hl], $5
-Func_2625e: ; 2625e (9:625e)
-	jp Func_26265
+.asm_2625e: ; 2625e (9:625e)
+	jp .asm_26265
 
-Func_26261: ; 26261 (9:6261)
+.asm_26261: ; 26261 (9:6261)
 	ld hl, sp+$4
 	ld [hl], $2
-Func_26265: ; 26265 (9:6265)
+.asm_26265: ; 26265 (9:6265)
 	ld hl, sp+$4
 	ld a, [hl]
 	or a
-	jp z, Func_26397
+	jp z, .asm_26397
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $5
-	jp z, Func_262e0
+	jp z, .asm_262e0
 	cp $4
-	jp z, Func_262d1
+	jp z, .asm_262d1
 	cp $3
-	jp z, Func_26292
+	jp z, .asm_26292
 	cp $2
-	jp nz, Func_26394
+	jp nz, .asm_26394
 	ld hl, Text_24252
 	call Func_24023
 	ld hl, Text_241b2
 	call Func_24010
-	jp Func_26394
+	jp .asm_26394
 
-Func_26292: ; 26292 (9:6292)
+.asm_26292: ; 26292 (9:6292)
 	read_hl_from_sp_plus $d
 	ld de, $d
 	add hl, de
@@ -4752,16 +5149,16 @@ Func_26292: ; 26292 (9:6292)
 	call Func_24010
 	call Func_24045
 	callba_hli Func_d767
-	jp Func_26397
+	jp .asm_26397
 
-Func_262d1: ; 262d1 (9:62d1)
+.asm_262d1: ; 262d1 (9:62d1)
 	ld hl, Text_24252
 	call Func_24023
 	ld hl, Text_2425f
 	call Func_24010
-	jp Func_26394
+	jp .asm_26394
 
-Func_262e0: ; 262e0 (9:62e0)
+.asm_262e0: ; 262e0 (9:62e0)
 	call Func_24036
 	read_hl_from_sp_plus $b
 	ld de, $d
@@ -4785,16 +5182,16 @@ Func_262e0: ; 262e0 (9:62e0)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $b
-	jp z, Func_2631e
+	jp z, .asm_2631e
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $c
-	jp nz, Func_26346
-Func_2631e: ; 2631e (9:631e)
+	jp nz, .asm_26346
+.asm_2631e: ; 2631e (9:631e)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $b
-	jp nz, Func_26336
+	jp nz, .asm_26336
 	read_hl_from_sp_plus $f
 	ld de, $71
 	add hl, de
@@ -4802,9 +5199,9 @@ Func_2631e: ; 2631e (9:631e)
 	ld a, [hl]
 	or $2
 	ld [hl], a
-	jp Func_26343
+	jp .asm_26343
 
-Func_26336: ; 26336 (9:6336)
+.asm_26336: ; 26336 (9:6336)
 	read_hl_from_sp_plus $f
 	ld de, $71
 	add hl, de
@@ -4812,10 +5209,10 @@ Func_26336: ; 26336 (9:6336)
 	ld a, [hl]
 	or $1
 	ld [hl], a
-Func_26343: ; 26343 (9:6343)
-	jp Func_26380
+.asm_26343: ; 26343 (9:6343)
+	jp .asm_26380
 
-Func_26346: ; 26346 (9:6346)
+.asm_26346: ; 26346 (9:6346)
 	ld hl, sp+$1
 	ld a, [hl]
 	read_hl_from_sp_plus $f
@@ -4837,7 +5234,7 @@ Func_26346: ; 26346 (9:6346)
 	ld hl, sp+$0
 	ld a, [hl]
 	cp $2
-	jp nz, Func_26380
+	jp nz, .asm_26380
 	ld hl, sp+$7
 	ld a, [hl]
 	and $f0
@@ -4845,14 +5242,14 @@ Func_26346: ; 26346 (9:6346)
 	ld de, $73
 	add hl, de
 	ld [hl], a
-Func_26380: ; 26380 (9:6380)
+.asm_26380: ; 26380 (9:6380)
 	call Func_24045
 	callba_hli Func_d767
-	jp Func_26397
+	jp .asm_26397
 
-Func_26394: ; 26394 (9:6394)
+.asm_26394: ; 26394 (9:6394)
 	call Func_24045
-Func_26397: ; 26397 (9:6397)
+.asm_26397: ; 26397 (9:6397)
 	add sp, $14
 	ret
 
@@ -4865,10 +5262,10 @@ Func_2639a: ; 2639a (9:639a)
 	ld b, [hl]
 	ld a, c
 	or b
-	jp nz, Func_263aa
-	jp Func_263c9
+	jp nz, .asm_263aa
+	jp .asm_263c9
 
-Func_263aa: ; 263aa (9:63aa)
+.asm_263aa: ; 263aa (9:63aa)
 	ld hl, $c
 	add hl, de
 	ld [hl], c
@@ -4877,17 +5274,17 @@ Func_263aa: ; 263aa (9:63aa)
 	add hl, de
 	ld [hl], b
 	and $80
-	jp nz, Func_263c3
+	jp nz, .asm_263c3
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_25e07
-	jp Func_263c9
+	jp .asm_263c9
 
-Func_263c3: ; 263c3 (9:63c3)
+.asm_263c3: ; 263c3 (9:63c3)
 	ld hl, sp+$1
 	ld a, [hl]
 	call Func_26fe8
-Func_263c9: ; 263c9 (9:63c9)
+.asm_263c9: ; 263c9 (9:63c9)
 	pop bc
 	ret
 
@@ -4918,7 +5315,7 @@ Func_263cb: ; 263cb (9:63cb)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_2644e
+	jp nz, .asm_2644e
 	ld hl, sp+$5
 	ld c, [hl]
 	ld b, $0
@@ -4929,7 +5326,7 @@ Func_263cb: ; 263cb (9:63cb)
 	add hl, bc
 	ld a, [hl]
 	and $1
-	jp nz, Func_2644e
+	jp nz, .asm_2644e
 	ld a, $64
 	call Func_24600
 	push af
@@ -4944,7 +5341,7 @@ Func_263cb: ; 263cb (9:63cb)
 	call Func_2478b
 	pop bc
 	cp b
-	jp c, Func_2644e
+	jp c, .asm_2644e
 	ld hl, Text_24299
 	call Func_24023
 	ld hl, sp+$5
@@ -4960,13 +5357,13 @@ Func_263cb: ; 263cb (9:63cb)
 	or [hl]
 	ld [hl], a
 	ld hl, $1
-	jp Func_26457
+	jp .asm_26457
 
-Func_2644e: ; 2644e (9:644e)
+.asm_2644e: ; 2644e (9:644e)
 	ld hl, Text_2428c
 	call Func_24023
 	ld hl, $0
-Func_26457: ; 26457 (9:6457)
+.asm_26457: ; 26457 (9:6457)
 	pop bc
 	pop bc
 	pop bc
@@ -4999,7 +5396,7 @@ Func_2645b: ; 2645b (9:645b)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_264de
+	jp nz, .asm_264de
 	ld hl, sp+$5
 	ld c, [hl]
 	ld b, $0
@@ -5010,7 +5407,7 @@ Func_2645b: ; 2645b (9:645b)
 	add hl, bc
 	ld a, [hl]
 	and $1
-	jp nz, Func_264de
+	jp nz, .asm_264de
 	ld a, $64
 	call Func_24600
 	push af
@@ -5025,7 +5422,7 @@ Func_2645b: ; 2645b (9:645b)
 	call Func_2478b
 	pop bc
 	cp b
-	jp c, Func_264de
+	jp c, .asm_264de
 	ld hl, Text_24299
 	call Func_24023
 	ld hl, sp+$5
@@ -5041,13 +5438,13 @@ Func_2645b: ; 2645b (9:645b)
 	or [hl]
 	ld [hl], a
 	ld hl, $1
-	jp Func_264e7
+	jp .asm_264e7
 
-Func_264de: ; 264de (9:64de)
+.asm_264de: ; 264de (9:64de)
 	ld hl, Text_2428c
 	call Func_24023
 	ld hl, $0
-Func_264e7: ; 264e7 (9:64e7)
+.asm_264e7: ; 264e7 (9:64e7)
 	pop bc
 	pop bc
 	pop bc
@@ -5113,29 +5510,29 @@ Func_264f1: ; 264f1
 	call Func_24600
 	ld hl, sp+$1a
 	cp [hl]
-	jp nc, Func_265cd
+	jp nc, .asm_265cd
 	ld hl, sp+$19
 	ld a, [hl]
 	ld hl, sp+$18
 	cp [hl]
-	jp z, Func_26570
+	jp z, .asm_26570
 	ld hl, sp+$19
 	ld a, [hl]
 	cp $d
-	jp z, Func_26570
+	jp z, .asm_26570
 	ld hl, sp+$19
 	ld a, [hl]
 	cp $e
-	jp nz, Func_265cd
+	jp nz, .asm_265cd
 	ld hl, sp+$18
 	ld a, [hl]
 	cp $a
-	jp z, Func_26570
+	jp z, .asm_26570
 	ld hl, sp+$18
 	ld a, [hl]
 	cp $c
-	jp nz, Func_265cd
-Func_26570: ; 26570 (9:6570)
+	jp nz, .asm_265cd
+.asm_26570: ; 26570 (9:6570)
 	ld hl, Text_2426b
 	call Func_24010
 	ld hl, Text_24313
@@ -5162,9 +5559,9 @@ Func_26570: ; 26570 (9:6570)
 	ld d, b
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_265a8
+	jp c, .asm_265a8
 	ld bc, $1
-Func_265a8: ; 265a8 (9:65a8)
+.asm_265a8: ; 265a8 (9:65a8)
 	push bc
 	ld hl, sp+$2
 	swap_de_hl
@@ -5183,7 +5580,7 @@ Func_265a8: ; 265a8 (9:65a8)
 	ld a, [hl]
 	xor $1
 	call Func_2466d
-Func_265cd: ; 265cd (9:65cd)
+.asm_265cd: ; 265cd (9:65cd)
 	add sp, $20
 	ret
 
@@ -5218,7 +5615,7 @@ Func_265d0: ; 265d0
 	call Func_24600
 	ld hl, sp+$19
 	cp [hl]
-	jp nc, Func_26672
+	jp nc, .asm_26672
 	ld hl, Text_24413
 	call Func_24010
 	ld hl, sp+$14
@@ -5251,9 +5648,9 @@ Func_265d0: ; 265d0
 	ld d, b
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_26649
+	jp c, .asm_26649
 	ld bc, $1
-Func_26649: ; 26649 (9:6649)
+.asm_26649: ; 26649 (9:6649)
 	push bc
 	ld hl, sp+$2
 	swap_de_hl
@@ -5274,7 +5671,7 @@ Func_26649: ; 26649 (9:6649)
 	ld hl, sp+$1d
 	ld a, [hl]
 	call Func_2466d
-Func_26672: ; 26672 (9:6672)
+.asm_26672: ; 26672 (9:6672)
 	add sp, $1e
 	ret
 
@@ -5365,7 +5762,7 @@ Func_26675: ; 26675 (9:6675)
 	call Func_24600
 	ld hl, sp+$0
 	cp [hl]
-	jp c, Func_2671a
+	jp c, .asm_2671a
 	call GetHLAtSPPlus9
 	ld de, $18
 	add hl, de
@@ -5373,8 +5770,8 @@ Func_26675: ; 26675 (9:6675)
 	dec a
 	inc hl
 	or [hl]
-	jp nz, Func_267a8
-Func_2671a: ; 2671a (9:671a)
+	jp nz, .asm_267a8
+.asm_2671a: ; 2671a (9:671a)
 	call GetHLAtSPPlus9
 	ld de, $d
 	add hl, de
@@ -5385,7 +5782,7 @@ Func_2671a: ; 2671a (9:671a)
 	inc hl
 	ld a, [hl]
 	and $4
-	jp z, Func_26759
+	jp z, .asm_26759
 	ld hl, Text_2406f
 	call Func_24010
 	ld hl, Text_2411d
@@ -5398,9 +5795,9 @@ Func_2671a: ; 2671a (9:671a)
 	call Func_24010
 	ld hl, Text_24185
 	call Func_24010
-	jp Func_267a5
+	jp .asm_267a5
 
-Func_26759: ; 26759 (9:6759)
+.asm_26759: ; 26759 (9:6759)
 	ld hl, Text_24069
 	call Func_24010
 	ld hl, Text_242a1
@@ -5420,7 +5817,7 @@ Func_26759: ; 26759 (9:6759)
 	swap_de_hl
 	pop de
 	call CompareHLtoDE
-	jp nc, Func_26796
+	jp nc, .asm_26796
 	call GetHLAtSPPlus9
 	ld de, $18
 	add hl, de
@@ -5430,17 +5827,17 @@ Func_26759: ; 26759 (9:6759)
 	ld l, a
 	dec hl
 	call WriteHLToSPPlus3
-Func_26796: ; 26796 (9:6796)
+.asm_26796: ; 26796 (9:6796)
 	call GetHLAtSPPlus3
 	swap_de_hl
 	ld hl, sp+$b
 	ld a, [hl]
 	xor $1
 	call Bank9_DamageOrHeal
-Func_267a5: ; 267a5 (9:67a5)
-	jp Func_267be
+.asm_267a5: ; 267a5 (9:67a5)
+	jp .asm_267be
 
-Func_267a8: ; 267a8 (9:67a8)
+.asm_267a8: ; 267a8 (9:67a8)
 	ld hl, Text_24252
 	call Func_24010
 	call GetHLAtSPPlus9
@@ -5449,7 +5846,7 @@ Func_267a8: ; 267a8 (9:67a8)
 	call Func_24010
 	ld hl, Text_241d9
 	call Func_24023
-Func_267be: ; 267be (9:67be)
+.asm_267be: ; 267be (9:67be)
 	ld hl, sp+$b
 	ld c, [hl]
 	ld b, $0
@@ -5470,7 +5867,7 @@ Func_267be: ; 267be (9:67be)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_26816
+	jp nz, .asm_26816
 	ld hl, sp+$b
 	ld l, [hl]
 	ld h, $0
@@ -5490,7 +5887,7 @@ Func_267be: ; 267be (9:67be)
 	ld a, [hl]
 	xor $1
 	call FarCall
-Func_26816: ; 26816 (9:6816)
+.asm_26816: ; 26816 (9:6816)
 	call Func_24045
 	add sp, $c
 	ret
@@ -5534,10 +5931,10 @@ Func_2681d: ; 2681d
 	call Func_24600
 	pop bc
 	cp b
-	jp c, Func_2685a
-	jp Func_268a2
+	jp c, .asm_2685a
+	jp .asm_268a2
 
-Func_2685a: ; 2685a (9:685a)
+.asm_2685a: ; 2685a (9:685a)
 	pop hl
 	push hl
 	ld de, $71
@@ -5545,15 +5942,15 @@ Func_2685a: ; 2685a (9:685a)
 	inc hl
 	ld a, [hl]
 	and $4
-	jp z, Func_26879
+	jp z, .asm_26879
 	ld hl, Text_2442a
 	call Func_24010
 	ld hl, Text_2442e
 	call Func_24023
 	call Func_24045
-	jp Func_268a2
+	jp .asm_268a2
 
-Func_26879: ; 26879 (9:6879)
+.asm_26879: ; 26879 (9:6879)
 	ld hl, Text_2443f
 	call Func_24010
 	ld hl, Text_2444b
@@ -5573,7 +5970,7 @@ Func_26879: ; 26879 (9:6879)
 	ld a, [hl]
 	xor $1
 	call Func_2466d
-Func_268a2: ; 268a2 (9:68a2)
+.asm_268a2: ; 268a2 (9:68a2)
 	pop bc
 	pop bc
 	pop bc
@@ -5627,10 +6024,10 @@ Func_268b9: ; 268b9
 	call Func_24600
 	pop bc
 	cp b
-	jp c, Func_268f8
-	jp Func_269f4
+	jp c, .asm_268f8
+	jp .asm_269f4
 
-Func_268f8: ; 268f8 (9:68f8)
+.asm_268f8: ; 268f8 (9:68f8)
 	read_hl_from_sp_plus $17
 	ld de, $6f
 	add hl, de
@@ -5642,23 +6039,23 @@ Func_268f8: ; 268f8 (9:68f8)
 	call RightShiftHL
 	ld a, l
 	and $3
-	jp z, Func_26915
-	jp Func_269f4
+	jp z, .asm_26915
+	jp .asm_269f4
 
-Func_26915: ; 26915 (9:6915)
+.asm_26915: ; 26915 (9:6915)
 	ld c, $0
 	ld hl, sp+$14
 	ld [hl], c
-Func_2691a: ; 2691a (9:691a)
+.asm_2691a: ; 2691a (9:691a)
 	ld a, c
 	cp $3
-	jp nc, Func_26972
+	jp nc, .asm_26972
 	read_hl_from_sp_plus $17
 	ld de, $71
 	add hl, de
 	ld a, [hl]
 	and $8
-	jp nz, Func_2695c
+	jp nz, .asm_2695c
 	read_hl_from_sp_plus $17
 	ld de, $71
 	add hl, de
@@ -5676,7 +6073,7 @@ Func_2691a: ; 2691a (9:691a)
 	ld h, a
 	ld a, l
 	or h
-	jp nz, Func_2695c
+	jp nz, .asm_2695c
 	read_hl_from_sp_plus $17
 	ld de, $23
 	add hl, de
@@ -5685,11 +6082,11 @@ Func_2691a: ; 2691a (9:691a)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_2695f
-Func_2695c: ; 2695c (9:695c)
-	jp Func_2696e
+	jp nz, .asm_2695f
+.asm_2695c: ; 2695c (9:695c)
+	jp .asm_2696e
 
-Func_2695f: ; 2695f (9:695f)
+.asm_2695f: ; 2695f (9:695f)
 	ld hl, sp+$14
 	ld a, [hl]
 	inc a
@@ -5701,18 +6098,18 @@ Func_2695f: ; 2695f (9:695f)
 	ld hl, sp+$11
 	add hl, de
 	ld [hl], c
-Func_2696e: ; 2696e (9:696e)
+.asm_2696e: ; 2696e (9:696e)
 	inc c
-	jp Func_2691a
+	jp .asm_2691a
 
-Func_26972: ; 26972 (9:6972)
+.asm_26972: ; 26972 (9:6972)
 	ld hl, sp+$14
 	ld a, [hl]
 	or a
-	jp nz, Func_2697c
-	jp Func_269f4
+	jp nz, .asm_2697c
+	jp .asm_269f4
 
-Func_2697c: ; 2697c (9:697c)
+.asm_2697c: ; 2697c (9:697c)
 	ld hl, sp+$14
 	ld a, [hl]
 	call Func_24600
@@ -5773,7 +6170,7 @@ Func_2697c: ; 2697c (9:697c)
 	ld a, [hl]
 	xor $1
 	call Func_268a8
-Func_269f4: ; 269f4 (9:69f4)
+.asm_269f4: ; 269f4 (9:69f4)
 	add sp, $1c
 	ret
 
@@ -5813,20 +6210,20 @@ Func_269f7: ; 269f7
 	call Func_24600
 	pop bc
 	cp b
-	jp c, Func_26a34
-	jp Func_26a8a
+	jp c, .asm_26a34
+	jp .asm_26a8a
 
-Func_26a34: ; 26a34 (9:6a34)
+.asm_26a34: ; 26a34 (9:6a34)
 	pop hl
 	push hl
 	ld de, $71
 	add hl, de
 	ld a, [hl]
 	and $8
-	jp z, Func_26a43
-	jp Func_26a8a
+	jp z, .asm_26a43
+	jp .asm_26a8a
 
-Func_26a43: ; 26a43 (9:6a43)
+.asm_26a43: ; 26a43 (9:6a43)
 	pop hl
 	push hl
 	ld de, $6f
@@ -5839,10 +6236,10 @@ Func_26a43: ; 26a43 (9:6a43)
 	call RightShiftHL
 	ld a, l
 	and $3
-	jp z, Func_26a5e
-	jp Func_26a8a
+	jp z, .asm_26a5e
+	jp .asm_26a8a
 
-Func_26a5e: ; 26a5e (9:6a5e)
+.asm_26a5e: ; 26a5e (9:6a5e)
 	call GetHLAtSPPlus4
 	ld de, $d
 	add hl, de
@@ -5864,7 +6261,7 @@ Func_26a5e: ; 26a5e (9:6a5e)
 	ld a, [hl]
 	xor $1
 	call Func_268a8
-Func_26a8a: ; 26a8a (9:6a8a)
+.asm_26a8a: ; 26a8a (9:6a8a)
 	pop bc
 	pop bc
 	pop bc
@@ -5924,10 +6321,10 @@ Func_26a8e: ; 26a8e
 	call Func_24600
 	pop bc
 	cp b
-	jp c, Func_26adf
-	jp Func_26ba4
+	jp c, .asm_26adf
+	jp .asm_26ba4
 
-Func_26adf: ; 26adf (9:6adf)
+.asm_26adf: ; 26adf (9:6adf)
 	call GetHLAtSPPlus4
 	ld de, $6f
 	add hl, de
@@ -5939,26 +6336,26 @@ Func_26adf: ; 26adf (9:6adf)
 	call RightShiftHL
 	ld a, l
 	and $3
-	jp z, Func_26afb
-	jp Func_26ba4
+	jp z, .asm_26afb
+	jp .asm_26ba4
 
-Func_26afb: ; 26afb (9:6afb)
+.asm_26afb: ; 26afb (9:6afb)
 	call GetHLAtSPPlus4
 	ld de, $71
 	add hl, de
 	ld a, [hl]
 	and $8
-	jp nz, Func_26b15
+	jp nz, .asm_26b15
 	call GetHLAtSPPlus4
 	ld de, $71
 	add hl, de
 	ld a, [hl]
 	and $f0
-	jp z, Func_26b18
-Func_26b15: ; 26b15 (9:6b15)
-	jp Func_26ba4
+	jp z, .asm_26b18
+.asm_26b15: ; 26b15 (9:6b15)
+	jp .asm_26ba4
 
-Func_26b18: ; 26b18 (9:6b18)
+.asm_26b18: ; 26b18 (9:6b18)
 	pop hl
 	push hl
 	ld l, h
@@ -6003,27 +6400,27 @@ Func_26b18: ; 26b18 (9:6b18)
 	call Func_24010
 	pop af
 	cp $1
-	jp z, Func_26b85
+	jp z, .asm_26b85
 	cp $c
-	jp z, Func_26b80
+	jp z, .asm_26b80
 	cp $b
-	jp z, Func_26b7b
+	jp z, .asm_26b7b
 	cp $a
-	jp nz, Func_26b87
+	jp nz, .asm_26b87
 	xor a
-	jp Func_26b87
+	jp .asm_26b87
 
-Func_26b7b: ; 26b7b (9:6b7b)
+.asm_26b7b: ; 26b7b (9:6b7b)
 	ld a, $1
-	jp Func_26b87
+	jp .asm_26b87
 
-Func_26b80: ; 26b80 (9:6b80)
+.asm_26b80: ; 26b80 (9:6b80)
 	ld a, $2
-	jp Func_26b87
+	jp .asm_26b87
 
-Func_26b85: ; 26b85 (9:6b85)
+.asm_26b85: ; 26b85 (9:6b85)
 	ld a, $3
-Func_26b87: ; 26b87 (9:6b87)
+.asm_26b87: ; 26b87 (9:6b87)
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -6039,7 +6436,7 @@ Func_26b87: ; 26b87 (9:6b87)
 	ld a, [hl]
 	xor $1
 	call Func_268a8
-Func_26ba4: ; 26ba4 (9:6ba4)
+.asm_26ba4: ; 26ba4 (9:6ba4)
 	pop bc
 	pop bc
 	pop bc
@@ -6148,10 +6545,10 @@ Func_26c02: ; 26c02 (9:6c02)
 	swap_de_hl
 	ld hl, $0
 	call CompareHLtoDE
-	jp c, Func_26c6a
+	jp c, .asm_26c6a
 	ld hl, $1
 	write_hl_to_sp_plus $18
-Func_26c6a: ; 26c6a (9:6c6a)
+.asm_26c6a: ; 26c6a (9:6c6a)
 	read_hl_from_sp_plus $18
 	ld de, $4
 	call DivideHLByDESigned
@@ -6288,7 +6685,7 @@ Func_26cd6: ; 26cd6
 	swap_de_hl
 	ld de, $3e8
 	call CompareHLtoDE
-	jp c, Func_26d7c
+	jp c, .asm_26d7c
 	pop hl
 	push hl
 	inc hl
@@ -6296,7 +6693,7 @@ Func_26cd6: ; 26cd6
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_26d7c: ; 26d7c (9:6d7c)
+.asm_26d7c: ; 26d7c (9:6d7c)
 	pop bc
 	pop bc
 	ret
@@ -6324,11 +6721,11 @@ Func_26d81: ; 26d81
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_26dd4
+	jp nz, .asm_26dd4
 	ld hl, sp+$3
 	ld a, [hl]
 	or a
-	jp nz, Func_26dd4
+	jp nz, .asm_26dd4
 	pop hl
 	push hl
 	ld de, $71
@@ -6336,11 +6733,11 @@ Func_26d81: ; 26d81
 	inc hl
 	ld a, [hl]
 	and $8
-	jp nz, Func_26dd4
+	jp nz, .asm_26dd4
 	ld a, $64
 	call Func_24600
 	cp $46
-	jp nc, Func_26dd4
+	jp nc, .asm_26dd4
 	callba_hli Func_222b7
 	pop hl
 	push hl
@@ -6350,7 +6747,7 @@ Func_26d81: ; 26d81
 	ld a, [hl]
 	or $8
 	ld [hl], a
-Func_26dd4: ; 26dd4 (9:6dd4)
+.asm_26dd4: ; 26dd4 (9:6dd4)
 	pop bc
 	pop bc
 	ret
@@ -6403,17 +6800,17 @@ Func_26dd8: ; 26dd8
 	call Func_24600
 	pop bc
 	cp b
-	jp c, Func_26e1e
-	jp Func_26edb
+	jp c, .asm_26e1e
+	jp .asm_26edb
 
-Func_26e1e: ; 26e1e (9:6e1e)
+.asm_26e1e: ; 26e1e (9:6e1e)
 	ld hl, sp+$7
 	ld a, [hl]
 	or a
-	jp z, Func_26e28
-	jp Func_26edb
+	jp z, .asm_26e28
+	jp .asm_26edb
 
-Func_26e28: ; 26e28 (9:6e28)
+.asm_26e28: ; 26e28 (9:6e28)
 	call GetHLAtSPPlus5
 	ld de, $d
 	add hl, de
@@ -6445,9 +6842,9 @@ Func_26e28: ; 26e28 (9:6e28)
 	call Func_24023
 	xor a
 	pop de
-Func_26e70: ; 26e70 (9:6e70)
+.asm_26e70: ; 26e70 (9:6e70)
 	cp $4
-	jp nc, Func_26ea8
+	jp nc, .asm_26ea8
 	push de
 	push af
 	ld l, e
@@ -6462,7 +6859,7 @@ Func_26e70: ; 26e70 (9:6e70)
 	ld h, $0
 	ld a, l
 	or a
-	jp z, Func_26ea2
+	jp z, .asm_26ea2
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -6475,13 +6872,13 @@ Func_26e70: ; 26e70 (9:6e70)
 	call Func_24010
 	ld hl, Text_24065
 	call Func_24010
-Func_26ea2: ; 26ea2 (9:6ea2)
+.asm_26ea2: ; 26ea2 (9:6ea2)
 	pop af
 	inc a
 	pop de
-	jp Func_26e70
+	jp .asm_26e70
 
-Func_26ea8: ; 26ea8 (9:6ea8)
+.asm_26ea8: ; 26ea8 (9:6ea8)
 	ld hl, Text_244fe
 	call Func_24023
 	ld hl, Text_24507
@@ -6500,7 +6897,7 @@ Func_26ea8: ; 26ea8 (9:6ea8)
 	or [hl]
 	ld [hl], a
 	callba_hli Func_d767
-Func_26edb: ; 26edb (9:6edb)
+.asm_26edb: ; 26edb (9:6edb)
 	pop bc
 	pop bc
 	pop bc
@@ -6544,11 +6941,11 @@ Func_26ee8: ; 26ee8
 	ld b, h
 	ld a, c
 	or a
-	jp z, Func_26fa4
+	jp z, .asm_26fa4
 	ld hl, sp+$19
 	ld a, [hl]
 	cp $1
-	jp z, Func_26fa4
+	jp z, .asm_26fa4
 	read_hl_from_sp_plus $16
 	ld e, [hl]
 	inc hl
@@ -6569,14 +6966,14 @@ Func_26ee8: ; 26ee8
 	ld d, b
 	ld hl, 9990
 	call CompareHLtoDE
-	jp c, Func_26f50
+	jp c, .asm_26f50
 	inc b
 	dec b
 	bit 7, b
-	jr z, asm_26f53
-Func_26f50: ; 26f50 (9:6f50)
+	jr z, .asm_26f53
+.asm_26f50: ; 26f50 (9:6f50)
 	ld bc, 9990
-asm_26f53:
+.asm_26f53:
 	push bc
 	ld hl, sp+$2
 	swap_de_hl
@@ -6618,7 +7015,7 @@ asm_26f53:
 	pop bc
 	pop bc
 	pop bc
-Func_26fa4: ; 26fa4 (9:6fa4)
+.asm_26fa4: ; 26fa4 (9:6fa4)
 	call Func_24045
 	add sp, $1a
 	ret
@@ -6723,13 +7120,13 @@ Func_26fe8: ; 26fe8 (9:6fe8)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_27046
+	jp nz, .asm_27046
 	ld hl, $7
 	add hl, bc
 	ld a, $1
 	or [hl]
 	ld [hl], a
-Func_27046: ; 27046 (9:7046)
+.asm_27046: ; 27046 (9:7046)
 	ld hl, $2f
 	add hl, de
 	swap_de_hl
@@ -6738,13 +7135,13 @@ Func_27046: ; 27046 (9:7046)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_27060
+	jp nz, .asm_27060
 	ld hl, $7
 	add hl, bc
 	ld a, $2
 	or [hl]
 	ld [hl], a
-Func_27060: ; 27060 (9:7060)
+.asm_27060: ; 27060 (9:7060)
 	pop bc
 	pop bc
 	ret
@@ -6809,13 +7206,13 @@ Func_27063: ; 27063 (9:7063)
 	ld hl, sp+$5b
 	ld a, [hl]
 	or a
-	jp nz, Func_270f3
+	jp nz, .asm_270f3
 	ld hl, $0
-	jp Func_270f6
+	jp .asm_270f6
 
-Func_270f3: ; 270f3 (9:70f3)
+.asm_270f3: ; 270f3 (9:70f3)
 	ld hl, $1
-Func_270f6: ; 270f6 (9:70f6)
+.asm_270f6: ; 270f6 (9:70f6)
 	mulhl $2f
 	pop de
 	add hl, de
@@ -6830,13 +7227,13 @@ Func_270f6: ; 270f6 (9:70f6)
 	ld hl, sp+$5b
 	ld a, [hl]
 	or a
-	jp nz, Func_2711b
+	jp nz, .asm_2711b
 	ld hl, $1
-	jp Func_2711e
+	jp .asm_2711e
 
-Func_2711b: ; 2711b (9:711b)
+.asm_2711b: ; 2711b (9:711b)
 	ld hl, $0
-Func_2711e: ; 2711e (9:711e)
+.asm_2711e: ; 2711e (9:711e)
 	mulhl $2f
 	pop de
 	add hl, de
@@ -6851,7 +7248,7 @@ Func_2711e: ; 2711e (9:711e)
 	add hl, de
 	ld a, [hl]
 	cp $fd
-	jp nz, Func_27187
+	jp nz, .asm_27187
 	ld hl, $195
 	write_hl_to_sp_plus $c
 	ld hl, sp+$0
@@ -6865,45 +7262,45 @@ Func_2711e: ; 2711e (9:711e)
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_2716a
+	jp nz, .asm_2716a
 	read_hl_from_sp_plus $52
 	ld de, $7
 	add hl, de
 	ld a, $1
 	or [hl]
 	ld [hl], a
-Func_2716a: ; 2716a (9:716a)
+.asm_2716a: ; 2716a (9:716a)
 	read_hl_from_sp_plus $54
 	ld de, $47
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_27184
+	jp nz, .asm_27184
 	read_hl_from_sp_plus $52
 	ld de, $7
 	add hl, de
 	ld a, $2
 	or [hl]
 	ld [hl], a
-Func_27184: ; 27184 (9:7184)
-	jp Func_272ed
+.asm_27184: ; 27184 (9:7184)
+	jp .asm_272ed
 
-Func_27187: ; 27187 (9:7187)
+.asm_27187: ; 27187 (9:7187)
 	pop hl
 	push hl
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_2720f
+	jp nz, .asm_2720f
 	pop hl
 	push hl
 	ld de, $5f
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_2720f
+	jp nz, .asm_2720f
 	push bc
 	call GetHLAtSPPlus8
 	ld de, $17
@@ -6915,18 +7312,18 @@ Func_27187: ; 27187 (9:7187)
 	read_hl_from_sp_plus $27
 	ld a, l
 	and $80
-	jp z, Func_271c1
+	jp z, .asm_271c1
 	read_hl_from_sp_plus $27
 	ld a, l
 	and $7f
 	ld l, a
 	ld h, $0
 	ld c, l
-Func_271c1: ; 271c1 (9:71c1)
+.asm_271c1: ; 271c1 (9:71c1)
 	push bc
 	ld a, c
 	cp $27
-	jp nz, Func_271e5
+	jp nz, .asm_271e5
 	call GetHLAtSPPlus8
 	ld de, $d
 	add hl, de
@@ -6938,15 +7335,15 @@ Func_271c1: ; 271c1 (9:71c1)
 	call Func_24036
 	ld hl, sp+$51
 	ld [hl], $3
-Func_271e5: ; 271e5 (9:71e5)
+.asm_271e5: ; 271e5 (9:71e5)
 	pop bc
 	ld a, c
 	cp $28
-	jp nz, Func_2720c
+	jp nz, .asm_2720c
 	ld hl, sp+$54
 	ld a, [hl]
 	or a
-	jp nz, Func_2720c
+	jp nz, .asm_2720c
 	call GetHLAtSPPlus6
 	ld de, $d
 	add hl, de
@@ -6956,17 +7353,17 @@ Func_271e5: ; 271e5 (9:71e5)
 	ld hl, Text_24550
 	call Func_24023
 	call Func_24036
-Func_2720c: ; 2720c (9:720c)
-	jp Func_27250
+.asm_2720c: ; 2720c (9:720c)
+	jp .asm_27250
 
-Func_2720f: ; 2720f (9:720f)
+.asm_2720f: ; 2720f (9:720f)
 	pop hl
 	push hl
 	ld de, $69
 	add hl, de
 	ld a, [hl]
 	and $80
-	jp z, Func_27229
+	jp z, .asm_27229
 	pop hl
 	push hl
 	ld de, $69
@@ -6977,14 +7374,14 @@ Func_2720f: ; 2720f (9:720f)
 	inc hl
 	ld d, $0
 	ld c, e
-Func_27229: ; 27229 (9:7229)
+.asm_27229: ; 27229 (9:7229)
 	ld a, c
 	cp $19
-	jp nz, Func_27250
+	jp nz, .asm_27250
 	ld hl, sp+$57
 	ld a, [hl]
 	or a
-	jp nz, Func_27250
+	jp nz, .asm_27250
 	read_hl_from_sp_plus $54
 	ld de, $d
 	add hl, de
@@ -6994,13 +7391,13 @@ Func_27229: ; 27229 (9:7229)
 	ld hl, Text_2447a
 	call Func_24010
 	call Func_24036
-Func_27250: ; 27250 (9:7250)
+.asm_27250: ; 27250 (9:7250)
 	ld c, $0
-Func_27252: ; 27252 (9:7252)
+.asm_27252: ; 27252 (9:7252)
 	ld a, c
 	ld hl, sp+$4f
 	cp [hl]
-	jp nc, Func_272ed
+	jp nc, .asm_272ed
 	push bc
 	ld hl, sp+$2
 	swap_de_hl
@@ -7019,67 +7416,67 @@ Func_27252: ; 27252 (9:7252)
 	add hl, de
 	ld a, [hl]
 	and $8
-	jp nz, Func_272a4
+	jp nz, .asm_272a4
 	ld hl, sp+$50
 	ld a, [hl]
 	or a
-	jp z, Func_27298
+	jp z, .asm_27298
 	ld hl, sp+$2
 	swap_de_hl
 	ld hl, sp+$59
 	ld a, [hl]
 	call Func_2570e
-	jp Func_272a4
+	jp .asm_272a4
 
-Func_27298: ; 27298 (9:7298)
+.asm_27298: ; 27298 (9:7298)
 	ld hl, sp+$2
 	swap_de_hl
 	ld hl, sp+$59
 	ld a, [hl]
 	call Func_25dd5
-Func_272a4: ; 272a4 (9:72a4)
+.asm_272a4: ; 272a4 (9:72a4)
 	read_hl_from_sp_plus $56
 	ld de, $18
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_272be
+	jp nz, .asm_272be
 	read_hl_from_sp_plus $54
 	ld de, $7
 	add hl, de
 	ld a, $1
 	or [hl]
 	ld [hl], a
-Func_272be: ; 272be (9:72be)
+.asm_272be: ; 272be (9:72be)
 	read_hl_from_sp_plus $56
 	ld de, $47
 	add hl, de
 	ld a, [hl]
 	inc hl
 	or [hl]
-	jp nz, Func_272d8
+	jp nz, .asm_272d8
 	read_hl_from_sp_plus $54
 	ld de, $7
 	add hl, de
 	ld a, $2
 	or [hl]
 	ld [hl], a
-Func_272d8: ; 272d8 (9:72d8)
+.asm_272d8: ; 272d8 (9:72d8)
 	pop bc
 	read_hl_from_sp_plus $52
 	ld de, $7
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_272e9
-	jp Func_272ed
+	jp z, .asm_272e9
+	jp .asm_272ed
 
-Func_272e9: ; 272e9 (9:72e9)
+.asm_272e9: ; 272e9 (9:72e9)
 	inc c
-	jp Func_27252
+	jp .asm_27252
 
-Func_272ed: ; 272ed (9:72ed)
+.asm_272ed: ; 272ed (9:72ed)
 	add sp, $58
 	ret
 
@@ -7100,7 +7497,7 @@ Func_272f0: ; 272f0 (9:72f0)
 	ld hl, sp+$10
 	ld a, [hl]
 	or a
-	jp nz, Func_2747e
+	jp nz, .asm_2747e
 	read_hl_from wCurRobotPointer
 	ld de, $16
 	add hl, de
@@ -7111,13 +7508,13 @@ Func_272f0: ; 272f0 (9:72f0)
 	ld hl, sp+$15
 	ld a, [hl]
 	or a
-	jp nz, Func_2732b
+	jp nz, .asm_2732b
 	ld hl, $0
-	jp Func_2732e
+	jp .asm_2732e
 
-Func_2732b: ; 2732b (9:732b)
+.asm_2732b: ; 2732b (9:732b)
 	ld hl, $1
-Func_2732e: ; 2732e (9:732e)
+.asm_2732e: ; 2732e (9:732e)
 	mulhl $2f
 	pop de
 	add hl, de
@@ -7132,13 +7529,13 @@ Func_2732e: ; 2732e (9:732e)
 	ld hl, sp+$15
 	ld a, [hl]
 	or a
-	jp nz, Func_27354
+	jp nz, .asm_27354
 	ld hl, $1
-	jp Func_27357
+	jp .asm_27357
 
-Func_27354: ; 27354 (9:7354)
+.asm_27354: ; 27354 (9:7354)
 	ld hl, $0
-Func_27357: ; 27357 (9:7357)
+.asm_27357: ; 27357 (9:7357)
 	mulhl $2f
 	pop de
 	add hl, de
@@ -7176,12 +7573,12 @@ Func_27357: ; 27357 (9:7357)
 	ld de, $13
 	add hl, de
 	cp [hl]
-	jp nc, Func_273c6
+	jp nc, .asm_273c6
 	ld hl, sp+$4
 	ld [hl], $46
-	jp Func_273f7
+	jp .asm_273f7
 
-Func_273c6: ; 273c6 (9:73c6)
+.asm_273c6: ; 273c6 (9:73c6)
 	ld hl, sp+$0
 	ld c, l
 	ld b, h
@@ -7208,7 +7605,7 @@ Func_273c6: ; 273c6 (9:73c6)
 	ld a, [hl]
 	ld hl, sp+$4
 	ld [hl], a
-Func_273f7: ; 273f7 (9:73f7)
+.asm_273f7: ; 273f7 (9:73f7)
 	read_hl_from_sp_plus $b
 	ld de, $64
 	add hl, de
@@ -7223,15 +7620,15 @@ Func_273f7: ; 273f7 (9:73f7)
 	ld h, [hl]
 	ld l, a
 	call CompareHLtoBC
-	jp nc, Func_2741e
+	jp nc, .asm_2741e
 	ld hl, sp+$4
 	ld a, [hl]
 	add $1e
 	ld hl, sp+$4
 	ld [hl], a
-	jp Func_27455
+	jp .asm_27455
 
-Func_2741e: ; 2741e (9:741e)
+.asm_2741e: ; 2741e (9:741e)
 	ld hl, sp+$0
 	ld c, l
 	ld b, h
@@ -7263,17 +7660,17 @@ Func_2741e: ; 2741e (9:741e)
 	add [hl]
 	ld hl, sp+$4
 	ld [hl], a
-Func_27455: ; 27455 (9:7455)
+.asm_27455: ; 27455 (9:7455)
 	ld hl, sp+$4
 	ld a, [hl]
 	cp $5b
-	jp c, Func_27467
+	jp c, .asm_27467
 	ld a, $a
 	call Func_24600
 	add $5a
 	ld hl, sp+$4
 	ld [hl], a
-Func_27467: ; 27467 (9:7467)
+.asm_27467: ; 27467 (9:7467)
 	read_hl_from_sp_plus $f
 	ld de, $d
 	add hl, de
@@ -7282,17 +7679,17 @@ Func_27467: ; 27467 (9:7467)
 	call Func_24010
 	ld hl, Text_24284
 	call Func_24023
-Func_2747e: ; 2747e (9:747e)
+.asm_2747e: ; 2747e (9:747e)
 	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_274ce
+	jp nz, .asm_274ce
 	ld hl, sp+$10
 	ld a, [hl]
 	or a
-	jp nz, Func_274b1
+	jp nz, .asm_274b1
 	ld hl, sp+$13
 	ld c, [hl]
 	ld b, $0
@@ -7302,13 +7699,13 @@ Func_2747e: ; 2747e (9:747e)
 	add hl, bc
 	ld a, [hl]
 	and $1
-	jp nz, Func_274ce
+	jp nz, .asm_274ce
 	ld a, $64
 	call Func_24600
 	ld hl, sp+$4
 	cp [hl]
-	jp nc, Func_274ce
-Func_274b1: ; 274b1 (9:74b1)
+	jp nc, .asm_274ce
+.asm_274b1: ; 274b1 (9:74b1)
 	ld hl, Text_24299
 	call Func_24023
 	ld hl, sp+$13
@@ -7322,12 +7719,12 @@ Func_274b1: ; 274b1 (9:74b1)
 	add hl, de
 	or [hl]
 	ld [hl], a
-	jp Func_274d4
+	jp .asm_274d4
 
-Func_274ce: ; 274ce (9:74ce)
+.asm_274ce: ; 274ce (9:74ce)
 	ld hl, Text_2428c
 	call Func_24023
-Func_274d4: ; 274d4 (9:74d4)
+.asm_274d4: ; 274d4 (9:74d4)
 	call Func_24045
 	add sp, $14
 	ret
@@ -7357,13 +7754,13 @@ Func_274da: ; 274da (9:74da)
 	push de
 	push af
 	or a
-	jp nz, Func_27516
+	jp nz, .asm_27516
 	set_farcall_addrs_hli Func_c812
 	ld hl, sp+$11
 	call FarCall
-	jp Func_2752c
+	jp .asm_2752c
 
-Func_27516: ; 27516 (9:7516)
+.asm_27516: ; 27516 (9:7516)
 	push hl
 	set_farcall_addrs_hli Func_7b0d
 	pop hl
@@ -7373,7 +7770,7 @@ Func_27516: ; 27516 (9:7516)
 	ld d, [hl]
 	ld hl, sp+$11
 	call FarCall
-Func_2752c: ; 2752c (9:752c)
+.asm_2752c: ; 2752c (9:752c)
 	ld hl, sp+$11
 	call Func_24010
 	ld hl, Text_24069
@@ -7388,7 +7785,7 @@ Func_2752c: ; 2752c (9:752c)
 	pop af
 	pop de
 	or a
-	jp nz, Func_27566
+	jp nz, .asm_27566
 	push de
 	set_farcall_addrs_hli AdjustItemQuantity
 	pop de
@@ -7396,7 +7793,7 @@ Func_2752c: ; 2752c (9:752c)
 	ld e, $1
 	ld c, $1
 	call FarCall
-Func_27566: ; 27566 (9:7566)
+.asm_27566: ; 27566 (9:7566)
 	add sp, $22
 	ret
 
@@ -7419,13 +7816,13 @@ Func_2757b: ; 2757b
 	ld hl, sp+$7
 	ld a, [hl]
 	or a
-	jp nz, Func_27598
+	jp nz, .asm_27598
 	ld hl, $0
-	jp Func_2759b
+	jp .asm_2759b
 
-Func_27598: ; 27598 (9:7598)
+.asm_27598: ; 27598 (9:7598)
 	ld hl, $2f
-Func_2759b: ; 2759b (9:759b)
+.asm_2759b: ; 2759b (9:759b)
 	add hl, de
 	call WriteHLToSPPlus4
 	read_hl_from wCurRobotPointer
@@ -7454,26 +7851,26 @@ Func_2759b: ; 2759b (9:759b)
 	add hl, de
 	ld a, [hl]
 	or a
-	jp z, Func_275e7
+	jp z, .asm_275e7
 	ld hl, $7
 	add hl, de
 	ld a, [hl]
-	jp Func_2774b
+	jp .asm_2774b
 
-Func_275e7: ; 275e7 (9:75e7)
+.asm_275e7: ; 275e7 (9:75e7)
 	push de
 	call GetHLAtSPPlus4
 	ld de, $75
 	add hl, de
 	ld a, [hl]
 	cp $7
-	jp nz, Func_2762e
+	jp nz, .asm_2762e
 	call GetHLAtSPPlus4
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $ff
-	jp z, Func_2761e
+	jp z, .asm_2761e
 	call Func_24001
 	call GetHLAtSPPlus6
 	ld de, $d
@@ -7484,36 +7881,36 @@ Func_275e7: ; 275e7 (9:75e7)
 	ld hl, Text_243de
 	call Func_24023
 	call Func_24036
-Func_2761e: ; 2761e (9:761e)
+.asm_2761e: ; 2761e (9:761e)
 	call GetHLAtSPPlus4
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $2
-	jp z, Func_2762e
-	jp Func_27745
+	jp z, .asm_2762e
+	jp .asm_27745
 
-Func_2762e: ; 2762e (9:762e)
+.asm_2762e: ; 2762e (9:762e)
 	call GetHLAtSPPlus4
 	ld de, $5e
 	add hl, de
 	ld a, [hl]
 	cp $3
-	jp z, Func_2773d
+	jp z, .asm_2773d
 	cp $1
-	jp z, Func_2773a
+	jp z, .asm_2773a
 	cp $2
-	jp z, Func_276c2
+	jp z, .asm_276c2
 	cp $fd
-	jp z, Func_276b6
+	jp z, .asm_276b6
 	cp $fe
-	jp z, Func_276b6
+	jp z, .asm_276b6
 	or a
-	jp nz, Func_27745
+	jp nz, .asm_27745
 	ld hl, sp+$9
 	ld a, [hl]
 	or a
-	jp nz, Func_276b6
+	jp nz, .asm_276b6
 	call GetHLAtSPPlus4
 	ld de, $6f
 	add hl, de
@@ -7525,7 +7922,7 @@ Func_2762e: ; 2762e (9:762e)
 	call RightShiftHL
 	ld a, l
 	and $3
-	jp nz, Func_276b6
+	jp nz, .asm_276b6
 	call GetHLAtSPPlus4
 	ld de, $5f
 	add hl, de
@@ -7560,7 +7957,7 @@ Func_2762e: ; 2762e (9:762e)
 	inc d
 	dec d
 	bit 7, d
-	jr z, Func_276b6
+	jr z, .asm_276b6
 	call GetHLAtSPPlus6
 	ld de, $1c
 	add hl, de
@@ -7568,30 +7965,30 @@ Func_2762e: ; 2762e (9:762e)
 	ld [hl], e
 	inc hl
 	ld [hl], d
-Func_276b6: ; 276b6 (9:76b6)
+.asm_276b6: ; 276b6 (9:76b6)
 	ld hl, sp+$6
 	ld e, [hl]
 	ld hl, sp+$9
 	ld a, [hl]
 	call Func_27063
-	jp Func_27745
+	jp .asm_27745
 
-Func_276c2: ; 276c2 (9:76c2)
+.asm_276c2: ; 276c2 (9:76c2)
 	call GetHLAtSPPlus4
 	ld de, $5f
 	add hl, de
 	ld c, [hl]
 	ld a, c
 	cp $4f
-	jp z, Func_276f6
+	jp z, .asm_276f6
 	cp $4e
-	jp z, Func_276f6
+	jp z, .asm_276f6
 	cp $4d
-	jp z, Func_276f6
+	jp z, .asm_276f6
 	cp $4c
-	jp z, Func_276f6
+	jp z, .asm_276f6
 	cp $48
-	jp nz, Func_27700
+	jp nz, .asm_27700
 	ld e, c
 	ld hl, sp+$9
 	ld a, [hl]
@@ -7600,54 +7997,54 @@ Func_276c2: ; 276c2 (9:76c2)
 	ld hl, sp+$9
 	ld a, [hl]
 	call Func_272f0
-	jp Func_27737
+	jp .asm_27737
 
-Func_276f6: ; 276f6 (9:76f6)
+.asm_276f6: ; 276f6 (9:76f6)
 	ld e, c
 	ld hl, sp+$9
 	ld a, [hl]
 	call Func_27569
-	jp Func_27737
+	jp .asm_27737
 
-Func_27700: ; 27700 (9:7700)
+.asm_27700: ; 27700 (9:7700)
 	read_hl_from wCurRobotPointer
 	ld de, $1c4
 	add hl, de
 	ld a, [hl]
 	or a
-	jp nz, Func_27737
+	jp nz, .asm_27737
 	ld hl, sp+$9
 	ld a, [hl]
 	cp $1
-	jp nz, Func_27737
+	jp nz, .asm_27737
 	ld a, c
 	cp $2f
-	jp c, Func_27737
+	jp c, .asm_27737
 	ld a, c
 	cp $33
-	jp nc, Func_27737
+	jp nc, .asm_27737
 	ld e, c
 	ld hl, sp+$9
 	ld a, [hl]
 	call Func_274da
 	callba_hli Func_22e03
-Func_27737: ; 27737 (9:7737)
-	jp Func_27745
+.asm_27737: ; 27737 (9:7737)
+	jp .asm_27745
 
-Func_2773a: ; 2773a (9:773a)
-	jp Func_27745
+.asm_2773a: ; 2773a (9:773a)
+	jp .asm_27745
 
-Func_2773d: ; 2773d (9:773d)
+.asm_2773d: ; 2773d (9:773d)
 	ld e, $0
 	ld hl, sp+$9
 	ld a, [hl]
 	call Func_272f0
-Func_27745: ; 27745 (9:7745)
+.asm_27745: ; 27745 (9:7745)
 	pop de
 	ld hl, $7
 	add hl, de
 	ld a, [hl]
-Func_2774b: ; 2774b (9:774b)
+.asm_2774b: ; 2774b (9:774b)
 	pop bc
 	pop bc
 	pop bc
@@ -7658,10 +8055,10 @@ Func_27750:: ; 27750 (9:7750)
 	push bc
 	call Func_24c0b
 	or a
-	jp z, Func_2775b
-	jp Func_27780
+	jp z, .asm_2775b
+	jp .asm_27780
 
-Func_2775b: ; 2775b (9:775b)
+.asm_2775b: ; 2775b (9:775b)
 	call Func_25430
 	ld hl, sp+$0
 	ld [hl], a
@@ -7670,18 +8067,18 @@ Func_2775b: ; 2775b (9:775b)
 	ld a, [hl]
 	call Func_2757b
 	or a
-	jp nz, Func_27780
+	jp nz, .asm_27780
 	ld e, $1
 	ld hl, sp+$0
 	ld a, [hl]
 	xor $1
 	call Func_2757b
 	or a
-	jp nz, Func_27780
+	jp nz, .asm_27780
 	push af
 	call Func_251d1
 	pop af
-Func_27780: ; 27780 (9:7780)
+.asm_27780: ; 27780 (9:7780)
 	pop bc
 	ret
 

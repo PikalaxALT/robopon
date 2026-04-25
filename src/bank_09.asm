@@ -31,7 +31,7 @@ Func_24023:: ; 24023
 	ret
 
 IF DEF(LANG_EN)
-Func_24037_en:
+Func_24037_en::
 	push bc
 	ld a, $37
 	ld [wFarCallDestBank], a
@@ -53,7 +53,7 @@ Func_24037_en:
 	pop bc
 	ret
 
-Func_24059_en:
+Func_24059_en::
 	push bc
 	ld a, $37
 	ld [wFarCallDestBank], a
@@ -75,7 +75,7 @@ Func_24059_en:
 	pop bc
 	ret
 
-Func_2407b_en:
+Func_2407b_en::
 	push hl
 .asm_2407c
 	pop hl

@@ -621,6 +621,9 @@ RightShiftULong:: ; 1a06
 	ret
 
 MultiplyULongAtHLByUShortDE:: ; 1a1f
+	; *hl: big-endian ulong
+	; de: short
+	; *bc: dest
 	push bc
 	ld c, l
 	ld b, h
